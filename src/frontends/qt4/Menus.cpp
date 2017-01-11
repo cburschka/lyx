@@ -1703,7 +1703,7 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 {
 	if (!bv)
 		return;
-    
+
 	if (!bv->cursor().inTexted())
 		return;
 
@@ -1719,7 +1719,7 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 
 	map<string, docstring> styles = quoteparams.getTypes();
 	string const qtype = qinset->getType();
-	
+
 	map<string, docstring>::const_iterator qq = styles.begin();
 	map<string, docstring>::const_iterator end = styles.end();
 
@@ -1768,7 +1768,7 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 		docstring const style = from_ascii(qq->first);
 		bool langdef = (style[0] == langqs);
 		bool globaldef = (style[0] == globalqsc);
-		
+
 		if (prefixIs(style, qtype[0])) {
 			FuncRequest cmd = FuncRequest(LFUN_INSET_MODIFY, subcmd + style);
 			docstring const desc = quoteparams.getShortGuiLabel(style);
@@ -1786,7 +1786,6 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 
 	add(MenuItem(MenuItem::Separator));
 
-	bool have_section = false;
 	bool display_static = false;
 	// ... then potentially items to reset to the defaults and to dynamic style ...
 	if (!main_dynamic_qs && globalqsc != 'x') {
@@ -1794,7 +1793,6 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 		docstring const desc = bformat(_("Use dynamic quotes (%1$s)|d"),
 						quoteparams.getGuiLabel(globalqs));
 		add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-		have_section = true;
 		display_static = true;
 	}
 	if (!main_global_qs && langdefqs != globalqs) {
@@ -1803,7 +1801,6 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 		docstring const desc = bformat(_("Reset to document default (%1$s, %2$s)|o"),
 						quoteparams.getGuiLabel(globalqs), variant);
 		add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-		have_section = true;
 	}
 	if (!main_langdef_qs) {
 		FuncRequest cmd = FuncRequest(LFUN_INSET_MODIFY, subcmd + globalqsc + wildcards);
@@ -1813,11 +1810,9 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 					: bformat(_("Reset to language default (%1$s)|l"),
 						  quoteparams.getGuiLabel(langdefqs));
 		add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-		have_section = true;
 	}
 
-	if (have_section)
-		add(MenuItem(MenuItem::Separator));
+	add(MenuItem(MenuItem::Separator));
 
 	// ... and a subitem with the rest
 	MenuItem item(MenuItem::Submenu, qt_("Change Style|y"));
