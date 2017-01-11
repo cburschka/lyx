@@ -672,19 +672,21 @@ def checkFormatEntries(dtl_tools):
     #
     #checkProg('a Postscript interpreter', ['gs'],
     #  rc_entry = [ r'\ps_command "%%"' ])
-    checkViewer('a Postscript previewer', ['kghostview', 'okular', 'qpdfview --unique',
-                                           'evince', 'gv', 'ghostview -swap',
-                                           'gsview64', 'gsview32'],
+    checkViewer('a Postscript previewer',
+                ['kghostview', 'okular', 'qpdfview --unique',
+                 'evince', 'xreader',
+                 'gv', 'ghostview -swap', 'gsview64', 'gsview32'],
         rc_entry = [r'''\Format eps        eps     EPS                    "" "%%"	""	"vector"	"image/x-eps"
 \Format eps2       eps    "EPS (uncropped)"       "" "%%"	""	"vector"	""
 \Format eps3       eps    "EPS (cropped)"         "" "%%"	""	"document"	""
 \Format ps         ps      Postscript             t  "%%"	""	"document,vector,menu=export"	"application/postscript"'''])
     # for xdg-open issues look here: http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg151818.html
     # the MIME type is set for pdf6, because that one needs to be autodetectable by libmime
-    checkViewer('a PDF previewer', ['pdfview', 'kpdf', 'okular', 'qpdfview --unique',
-                                    'evince', 'kghostview', 'xpdf', 'SumatraPDF',
-                                    'acrobat', 'acroread', 'mupdf', 'gv',
-                                    'ghostview', 'AcroRd32', 'gsview64', 'gsview32'],
+    checkViewer('a PDF previewer',
+                ['pdfview', 'kpdf', 'okular', 'qpdfview --unique',
+                 'evince', 'xreader', 'kghostview', 'xpdf', 'SumatraPDF',
+                 'acrobat', 'acroread', 'mupdf',
+                 'gv', 'ghostview', 'AcroRd32', 'gsview64', 'gsview32'],
         rc_entry = [r'''\Format pdf        pdf    "PDF (ps2pdf)"          P  "%%"	""	"document,vector,menu=export"	""
 \Format pdf2       pdf    "PDF (pdflatex)"        F  "%%"	""	"document,vector,menu=export"	""
 \Format pdf3       pdf    "PDF (dvipdfm)"         m  "%%"	""	"document,vector,menu=export"	""
@@ -694,7 +696,8 @@ def checkFormatEntries(dtl_tools):
 \Format pdf7       pdf    "PDF (cropped)"         "" "%%"	""	"document,vector"	""
 \Format pdf8       pdf    "PDF (lower resolution)"         "" "%%"	""	"document,vector"	""'''])
     #
-    checkViewer('a DVI previewer', ['xdvi', 'kdvi', 'okular', 'evince',
+    checkViewer('a DVI previewer', ['xdvi', 'kdvi', 'okular',
+                                    'evince', 'xreader',
                                     'yap', 'dviout -Set=!m'],
         rc_entry = [r'''\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector,menu=export"	"application/x-dvi"
 \Format dvi3       dvi     "DVI (LuaTeX)"          V  "%%"	""	"document,vector,menu=export"	""'''])
