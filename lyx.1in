@@ -85,6 +85,11 @@ else other than "\fBall\fR", "\fBmain\fR" or "\fBnone\fR", the behavior is as
 if "\fBall\fR" was specified, but what follows is left on the command line for
 further processing.
 .TP
+\fB \-\-ignore\-error\-message\fP \fIwhich
+allows you to ignore specific LaTeX error messages.
+Do not use for final documents! Currently supported values:
+"\fBmissing_glyphs\fR" Fontspec "missing glyphs" error.
+.TP
 \fB \-n [\-\-no\-remote]\fP
 open documents passed as arguments in a new instance, even if another
 instance of LyX is already running.
