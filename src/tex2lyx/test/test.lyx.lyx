@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.3
-\lyxformat 526
+\lyxformat 527
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -425,6 +425,7 @@ LatexCommand ref
 reference "sec:mysection"
 plural "false"
 caps "false"
+noprefix "false"
 
 \end_inset
 
@@ -434,6 +435,7 @@ LatexCommand pageref
 reference "sec:mysection"
 plural "false"
 caps "false"
+noprefix "false"
 
 \end_inset
 
