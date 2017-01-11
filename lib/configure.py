@@ -694,7 +694,8 @@ def checkFormatEntries(dtl_tools):
 \Format pdf7       pdf    "PDF (cropped)"         "" "%%"	""	"document,vector"	""
 \Format pdf8       pdf    "PDF (lower resolution)"         "" "%%"	""	"document,vector"	""'''])
     #
-    checkViewer('a DVI previewer', ['xdvi', 'kdvi', 'okular', 'yap', 'dviout -Set=!m'],
+    checkViewer('a DVI previewer', ['xdvi', 'kdvi', 'okular', 'evince',
+                                    'yap', 'dviout -Set=!m'],
         rc_entry = [r'''\Format dvi        dvi     DVI                    D  "%%"	""	"document,vector,menu=export"	"application/x-dvi"
 \Format dvi3       dvi     "DVI (LuaTeX)"          V  "%%"	""	"document,vector,menu=export"	""'''])
     if dtl_tools:
