@@ -18,6 +18,7 @@
 #include "BufferList.h"
 #include "LaTeX.h"
 #include "LyXRC.h"
+#include "LyX.h"
 #include "DepTable.h"
 
 #include "support/debug.h"
@@ -899,8 +900,9 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 						 from_local8bit("pdfTeX Error"),
 						 from_local8bit(token),
 						 child_name);
-			} else if (prefixIs(token, "Missing character: There is no ")
-					   && !contains(token, "nullfont")) {
+			} else if (!ignore_missing_glyphs
+				   && prefixIs(token, "Missing character: There is no ")
+				   && !contains(token, "nullfont")) {
 				// Warning about missing glyph in selected font
 				// may be dataloss (bug 9610)
 				// but can be ignored for 'nullfont' (bug 10394).

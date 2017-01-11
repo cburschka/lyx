@@ -98,6 +98,13 @@ bool use_gui = true;
 bool verbose = false;
 
 
+// Do not treat the "missing glyphs" warning of fontspec as an error message.
+// The default is false and can be changed with the option
+// --ignore-error-message missing_glyphs
+// This is used in automated testing.
+bool ignore_missing_glyphs = false;
+
+
 // We default to open documents in an already running instance, provided that
 // the lyxpipe has been setup. This can be overridden either on the command
 // line or through preference settings.
@@ -1161,6 +1168,10 @@ int parse_help(string const &, string const &, string &)
 		  "                  specifying whether all files, main file only, or no files,\n"
 		  "                  respectively, are to be overwritten during a batch export.\n"
 		  "                  Anything else is equivalent to `all', but is not consumed.\n"
+		  "\t--ignore-error-message which\n"
+		  "                  allows you to ignore specific LaTeX error messages.\n"
+		  "                  Do not use for final documents! Currently supported values:\n"
+                  "                  * missing_glyphs: Fontspec `missing glyphs' error.\n"
 		  "\t-n [--no-remote]\n"
 		  "                  open documents in a new instance\n"
 		  "\t-r [--remote]\n"
@@ -1309,6 +1320,16 @@ int parse_verbose(string const &, string const &, string &)
 }
 
 
+int parse_ignore_error_message(string const & arg1, string const &, string &)
+{
+	if (arg1 == "missing_glyphs") {
+		ignore_missing_glyphs = true;
+		return 1;
+	}
+	return 0;
+}
+
+
 int parse_force(string const & arg, string const &, string &)
 {
 	if (arg == "all") {
@@ -1358,6 +1379,7 @@ void LyX::easyParse(int & argc, char * argv[])
 	cmdmap["--remote"] = parse_remote;
 	cmdmap["-v"] = parse_verbose;
 	cmdmap["--verbose"] = parse_verbose;
+	cmdmap["--ignore-error-message"] = parse_ignore_error_message;
 
 	for (int i = 1; i < argc; ++i) {
 		map<string, cmd_helper>::const_iterator it
