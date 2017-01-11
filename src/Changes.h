@@ -94,7 +94,7 @@ class BufferParams;
 
 class Changes {
 public:
-	Changes() : is_update_required_(false) {}
+	Changes() : previously_changed_(false) {}
 
 	/// set the pos to the given change
 	void set(Change const & change, pos_type pos);
@@ -142,7 +142,7 @@ public:
 	///
 	void updateBuffer(Buffer const & buf);
 	///
-	bool isUpdateRequired() const { return is_update_required_; }
+	bool isUpdateRequired() const { return previously_changed_ != isChanged(); }
 
 private:
 	class Range {
@@ -187,9 +187,9 @@ private:
 	/// table of changes, every row a change and range descriptor
 	ChangeTable table_;
 
-	/// signals that the buffer's flag tracked_changes_present_ needs to be
-	/// recalculated
-	bool is_update_required_;
+	/// cache previous value of isChanged to be able to tell whether the
+	/// buffer's flag tracked_changes_present_ needs to be recomputed
+	bool previously_changed_;
 };
 
 
