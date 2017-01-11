@@ -626,8 +626,10 @@ def checkFormatEntries(dtl_tools):
     addToRC(imageformats %
         (iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie) )
     #
-    checkViewerEditor('a text editor', ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate',
-        'nedit', 'gedit', 'notepad', 'geany', 'leafpad', 'mousepad'],
+    checkViewerEditor('a text editor',
+        ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate',
+         'nedit', 'gedit', 'notepad',
+         'geany', 'leafpad', 'mousepad', 'xed'],
         rc_entry = [r'''\Format asciichess asc    "Plain text (chess output)"  "" ""	"%%"	""	""
 \Format docbook    sgml    DocBook                B  ""	"%%"	"document,menu=export"	""
 \Format docbook-xml xml   "DocBook (XML)"         "" ""	"%%"	"document,menu=export"	"application/docbook+xml"
