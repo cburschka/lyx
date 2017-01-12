@@ -511,6 +511,14 @@ contributors = [
                  "24 February 2005",
                  u"A (pseudo) threaded graphics loader queue, lots of fixes, etc."),
 
+     contributor(u"Martin A. Brown",
+                 "martin () linux-ip ! net",
+                 "GPL",
+                 "Re: public identifier for DocBook XML export",
+                 "m=148391461928571",
+                 "8 January 2017",
+                 u"Docbook fixes"),
+
      contributor(u"Christian Buescher",
                  "christian.buescher () uni-bielefeld ! de",
                  "",
