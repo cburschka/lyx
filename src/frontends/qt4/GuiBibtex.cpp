@@ -524,7 +524,7 @@ bool GuiBibtex::bibtotoc() const
 
 bool GuiBibtex::usingBiblatex() const
 {
-	return buffer().params().useBiblatex();
+	return buffer().masterBuffer()->params().useBiblatex();
 }
 
 

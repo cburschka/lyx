@@ -172,7 +172,7 @@ void InsetBibtex::editDatabases() const
 
 bool InsetBibtex::usingBiblatex() const
 {
-	return buffer().params().useBiblatex();
+	return buffer().masterBuffer()->params().useBiblatex();
 }
 
 
