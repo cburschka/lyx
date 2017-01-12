@@ -289,7 +289,7 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 			// the box is not visible in non-editable context (except for grey macro boxes).
 			if (e.color != Color_none)
 				pi.pain.rectangle(x + e.before, y - d.ascent(),
-				                  d.width(), d.height(), e.color);
+				                  d.width() - 1, d.height() - 1, e.color);
 			x += d.wid + e.before + e.after;
 			break;
 		}

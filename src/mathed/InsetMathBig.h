@@ -24,6 +24,8 @@ public:
 	InsetMathBig(docstring const & name, docstring const & delim);
 	///
 	docstring name() const;
+	/// class is different for l(eft), r(ight) and m(iddle)
+	MathClass mathClass() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
