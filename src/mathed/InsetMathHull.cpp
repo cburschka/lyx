@@ -567,8 +567,9 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 			dim.wid += 30 + l;
 	}
 
-	if (type_ == hullRegexp)
-		dim.wid += 2;
+	// reserve some space for marker.
+	dim.wid += 2;
+
 	// make it at least as high as the current font
 	int asc = 0;
 	int des = 0;
@@ -644,6 +645,7 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	                                                    : LM_ST_TEXT);
 
 	InsetMathGrid::draw(pi, x + 1, y);
+	drawMarkers2(pi, x, y);
 
 	if (numberedType()) {
 		int const xx = x + colinfo_.back().offset_ + colinfo_.back().width_ + 20;

@@ -114,6 +114,9 @@ public:
 	/// this is overridden by specific insets
 	virtual mode_type currentMode() const { return MATH_MODE; }
 
+	/// this is overridden by insets with specific edit marker type
+	virtual marker_type marker() const;
+
 	/// the ascent of the inset above the baseline
 	/// compute the size of the object for text based drawing
 	virtual void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
@@ -168,15 +171,6 @@ public:
 	virtual MathClass mathClass() const;
 	/// Add this inset to a math row. Return true if contents got added
 	virtual bool addToMathRow(MathRow &, MetricsInfo & mi) const;
-
-	/// draw four angular markers
-	void drawMarkers(PainterInfo & pi, int x, int y) const;
-	/// draw two angular markers
-	void drawMarkers2(PainterInfo & pi, int x, int y) const;
-	/// add space for markers
-	void metricsMarkers(MetricsInfo & mi, Dimension & dim, int framesize = 1) const;
-	/// add space for markers
-	void metricsMarkers2(MetricsInfo & mi, Dimension & dim, int framesize = 1) const;
 
 	/// identifies things that can get scripts
 	virtual bool isScriptable() const { return false; }

@@ -337,7 +337,6 @@ void InsetMathScript::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.des = max(nd, des);
 	} else
 		dim.des = nd;
-	metricsMarkers(mi, dim);
 }
 
 
@@ -357,7 +356,6 @@ void InsetMathScript::draw(PainterInfo & pi, int x, int y) const
 		up().draw(pi, x + dx1(bv), y - dy1(bv));
 	if (hasDown())
 		down().draw(pi, x + dx0(bv), y + dy0(bv));
-	drawMarkers(pi, x, y);
 }
 
 

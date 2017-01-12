@@ -40,7 +40,6 @@ void InsetMathPhantom::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Changer dummy = mi.base.changeEnsureMath();
 	cell(0).metrics(mi, dim);
-	metricsMarkers(mi, dim);
 }
 
 
@@ -53,7 +52,7 @@ void InsetMathPhantom::draw(PainterInfo & pi, int x, int y) const
 	ColorCode const origcol = pi.base.font.color();
 	if (visibleContents())
 		pi.base.font.setColor(Color_special);
-	cell(0).draw(pi, x + 1, y);
+	cell(0).draw(pi, x, y);
 	if (visibleContents())
 		pi.base.font.setColor(origcol);
 	Dimension const dim = dimension(*pi.base.bv);
@@ -247,8 +246,6 @@ void InsetMathPhantom::draw(PainterInfo & pi, int x, int y) const
 		else
 			pi.pain.line(x2, y1, x2, y5, Color_added_space);
 	}
-
-	drawMarkers(pi, x, y);
 }
 
 

@@ -222,7 +222,6 @@ void InsetMathSideset::metrics(MetricsInfo & mi, Dimension & dim) const
 	int nd = ndes(bv);
 	int des = dyb(bv) + max(dimbl.descent(), dimbr.descent());
 	dim.des = max(nd, des);
-	metricsMarkers(mi, dim);
 }
 
 
@@ -244,7 +243,6 @@ void InsetMathSideset::draw(PainterInfo & pi, int x, int y) const
 		br().draw(pi, x + dxr(bv), y + dyb(bv));
 		tr().draw(pi, x + dxr(bv), y - dyt(bv));
 	}
-	drawMarkers(pi, x, y);
 }
 
 

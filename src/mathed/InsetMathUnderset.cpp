@@ -41,7 +41,6 @@ void InsetMathUnderset::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = max(dim0.width(), dim1.width()) + 4;
 	dim.asc = dim1.ascent();
 	dim.des = dim1.descent() + dim0.height() + 4;
-	metricsMarkers(mi, dim);
 }
 
 
@@ -56,7 +55,6 @@ void InsetMathUnderset::draw(PainterInfo & pi, int x, int y) const
 	cell(1).draw(pi, m - dim1.width() / 2, y);
 	Changer dummy = pi.base.changeFrac();
 	cell(0).draw(pi, m - dim0.width() / 2, yo);
-	drawMarkers(pi, x, y);
 }
 
 

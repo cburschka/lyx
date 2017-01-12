@@ -42,26 +42,24 @@ void InsetMathSqrt::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc += 4;
 	dim.des += 2;
 	dim.wid += 12;
-	metricsMarkers(mi, dim);
 }
 
 
 void InsetMathSqrt::draw(PainterInfo & pi, int x, int y) const
 {
 	Changer dummy = pi.base.changeEnsureMath();
-	cell(0).draw(pi, x + 10, y);
+	cell(0).draw(pi, x + 9, y);
 	Dimension const dim = dimension(*pi.base.bv);
 	int const a = dim.ascent();
 	int const d = dim.descent();
 	int xp[3];
 	int yp[3];
 	pi.pain.line(x + dim.width(), y - a + 1,
-		x + 8, y - a + 1, pi.base.font.color());
-	xp[0] = x + 8;            yp[0] = y - a + 1;
-	xp[1] = x + 5;            yp[1] = y + d - 1;
+		x + 7, y - a + 1, pi.base.font.color());
+	xp[0] = x + 7;            yp[0] = y - a + 1;
+	xp[1] = x + 4;            yp[1] = y + d - 1;
 	xp[2] = x;                yp[2] = y + (d - a)/2;
 	pi.pain.lines(xp, yp, 3, pi.base.font.color());
-	drawMarkers(pi, x, y);
 }
 
 

@@ -55,7 +55,6 @@ void InsetMathBrace::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = max(dim0.asc, t.asc);
 	dim.des = max(dim0.des, t.des);
 	dim.wid = dim0.width() + 2 * t.wid;
-	metricsMarkers(mi, dim);
 }
 
 
@@ -70,7 +69,6 @@ void InsetMathBrace::draw(PainterInfo & pi, int x, int y) const
 	cell(0).draw(pi, x + t.wid, y);
 	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
 	pi.pain.text(x + t.wid + dim0.width(), y, '}', font);
-	drawMarkers(pi, x, y);
 }
 
 

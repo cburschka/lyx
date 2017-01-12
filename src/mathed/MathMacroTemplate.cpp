@@ -269,14 +269,12 @@ Inset * InsetMathWrapper::clone() const
 void InsetMathWrapper::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	value_->metrics(mi, dim);
-	//metricsMarkers2(mi, dim);
 }
 
 
 void InsetMathWrapper::draw(PainterInfo & pi, int x, int y) const
 {
 	value_->draw(pi, x, y);
-	//drawMarkers(pi, x, y);
 }
 
 

@@ -125,12 +125,11 @@ public:
 	/// Generalized fractions are of inner class (see The TeXbook, p.292)
 	MathClass mathClass() const { return MC_INNER; }
 	///
+	marker_type marker() const { return MARKER2; }
+	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
-	/// draw decorations.
-	void drawDecoration(PainterInfo & pi, int x, int y) const
-	{ drawMarkers2(pi, x, y); }
 	///
 	bool extraBraces() const;
 	///

@@ -261,7 +261,6 @@ void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.des = max(0, dim1.height() + dy/2 - dy + t);
 	}
 	} //switch (kind_)
-	metricsMarkers(mi, dim);
 }
 
 
@@ -278,12 +277,12 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 		// is there an extra cell holding the value being given a dimension?
 		// (this is \unittwo)
 		if (nargs() == 2) {
-			cell(0).draw(pi, x + 1, y);
+			cell(0).draw(pi, x, y);
 			xx += dim0.wid + 4;
 			unit_cell = 1;
 		}
 		Changer dummy = pi.base.font.changeShape(UP_SHAPE);
-		cell(unit_cell).draw(pi, xx + 1, y);
+		cell(unit_cell).draw(pi, xx, y);
 	}
 		break;
 
@@ -295,24 +294,24 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 		// is there an extra cell holding the value being given a dimension?
 		// (this is \unitfracthree)
 		if (kind_ == UNITFRAC && nargs() == 3) {
-			cell(2).draw(pi, x + 1, y);
+			cell(2).draw(pi, x, y);
 			xx += cell(2).dimension(*pi.base.bv).wid + 4;
 		}
 		Changer dummy = (kind_ == UNITFRAC) ? pi.base.font.changeShape(UP_SHAPE)
 			: Changer();
 		// nice fraction
 		Changer dummy2 = pi.base.changeScript();
-		cell(0).draw(pi, xx + 2, y - dy);
+		cell(0).draw(pi, xx, y - dy);
 		// reference LaTeX code from nicefrac.sty:
 		//    \mkern-2mu/\mkern-1mu
 		if (latexkeys const * slash = slash_symbol()) {
 			int mkern = mathed_mu(pi.base.font, 2.0);
-			mathedSymbolDraw(pi, xx + 2 + dim0.wid - mkern, y, slash);
+			mathedSymbolDraw(pi, xx + 1 + dim0.wid - mkern, y, slash);
 			Dimension dimslash;
 			mathedSymbolDim(pi.base, dimslash, slash);
 			xx += dimslash.wid - mathed_mu(pi.base.font, 3.0);
 		}
-		cell(1).draw(pi, xx + 2 + dim0.wid, y);
+		cell(1).draw(pi, xx + 1 + dim0.wid, y);
 	}
 		break;
 
@@ -339,7 +338,7 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 		int const m = x + dim.wid / 2;
 		int const xx =
 			// align left
-			(kind_ == CFRACLEFT) ? x + 2 :
+			(kind_ == CFRACLEFT) ? x + 1 :
 			// align right
 			(kind_ == CFRACRIGHT) ? x + dim.wid - dim0.wid - 2 :
 			// center
@@ -355,11 +354,10 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 		cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + dy/2 - dy + t);
 		// horizontal line
 		if (kind_ != ATOP)
-			pi.pain.line(x + 1, y - dy, x + dim.wid - 2, y - dy,
+			pi.pain.line(x, y - dy, x + dim.wid - 2, y - dy,
 			             pi.base.font.color(), pi.pain.line_solid, t);
 	}
 	} //switch (kind_)
-	drawMarkers(pi, x, y);
 }
 
 
@@ -660,7 +658,6 @@ void InsetMathBinom::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = dim0.height() + 1 + dy/2 + dy;
 	dim.des = max(0, dim1.height() + 1 + dy/2 - dy);
 	dim.wid = max(dim0.wid, dim1.wid) + 2 * dw(dim.height()) + 4;
-	metricsMarkers2(mi, dim);
 }
 
 
@@ -693,7 +690,6 @@ void InsetMathBinom::draw(PainterInfo & pi, int x, int y) const
 		dim.height(), bra);
 	mathed_draw_deco(pi, x + dim.width() - dw(dim.height()),
 		y - dim.ascent(), dw(dim.height()), dim.height(), ket);
-	drawMarkers2(pi, x, y);
 }
 
 

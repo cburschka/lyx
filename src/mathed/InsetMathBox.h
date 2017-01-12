@@ -58,6 +58,8 @@ public:
 	///
 	mode_type currentMode() const { return TEXT_MODE; }
 	///
+	marker_type marker() const { return NO_MARKER; }
+	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -115,6 +117,8 @@ class InsetMathBoxed : public InsetMathNest {
 public:
 	///
 	InsetMathBoxed(Buffer * buf);
+	///
+	marker_type marker() const { return NO_MARKER; }
 	///
 	void validate(LaTeXFeatures & features) const;
 	///

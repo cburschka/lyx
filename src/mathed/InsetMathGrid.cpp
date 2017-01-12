@@ -588,7 +588,6 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 */
 	dim.wid += leftMargin() + rightMargin();
-	metricsMarkers2(mi, dim);
 }
 
 
@@ -653,8 +652,6 @@ void InsetMathGrid::draw(PainterInfo & pi, int x, int y) const
 			pi.pain.line(xx1, yy, xx2, yy, Color_foreground);
 		}
 	}
-
-	drawMarkers2(pi, x, y);
 }
 
 

@@ -58,43 +58,20 @@ MathClass InsetMath::mathClass() const
 }
 
 
-bool InsetMath::addToMathRow(MathRow & mrow, MetricsInfo & ) const
+InsetMath::marker_type InsetMath::marker() const
 {
-	MathRow::Element e(MathRow::INSET, mathClass());
+	return nargs() > 0 ? MARKER : NO_MARKER;
+}
+
+
+bool InsetMath::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
+{
+	MathRow::Element e(mi, MathRow::INSET, mathClass());
 	e.inset = this;
+	e.marker = mi.base.macro_nesting ? NO_MARKER : marker();
 	mrow.push_back(e);
 	return true;
 }
-
-void InsetMath::metricsMarkers(MetricsInfo & mi, Dimension & dim,
-                           int framesize) const
-{
-	if (!mi.base.macro_nesting)
-		Inset::metricsMarkers(dim, framesize);
-}
-
-
-void InsetMath::metricsMarkers2(MetricsInfo & mi, Dimension & dim,
-                            int framesize) const
-{
-	if (!mi.base.macro_nesting)
-		Inset::metricsMarkers2(dim, framesize);
-}
-
-
-void InsetMath::drawMarkers(PainterInfo & pi, int x, int y) const
-{
-	if (!pi.base.macro_nesting)
-		Inset::drawMarkers(pi, x, y);
-}
-
-
-void InsetMath::drawMarkers2(PainterInfo & pi, int x, int y) const
-{
-	if (!pi.base.macro_nesting)
-		Inset::drawMarkers2(pi, x, y);
-}
-
 
 
 void InsetMath::dump() const

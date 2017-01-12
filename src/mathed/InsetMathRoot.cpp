@@ -48,7 +48,6 @@ void InsetMathRoot::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = max(dim0.ascent()  + 5, dim1.ascent())  + 2;
 	dim.des = max(dim0.descent() - 5, dim1.descent()) + 2;
 	dim.wid = dim0.width() + dim1.width() + 10;
-	metricsMarkers(mi, dim);
 }
 
 
@@ -73,7 +72,6 @@ void InsetMathRoot::draw(PainterInfo & pi, int x, int y) const
 	xp[2] = x + w - 2;         yp[2] = y + (d - a)/2 + 2;
 	xp[3] = x + w - 5;         yp[3] = y + (d - a)/2 + 4;
 	pi.pain.lines(xp, yp, 4, pi.base.font.color());
-	drawMarkers(pi, x, y);
 }
 
 

@@ -42,15 +42,13 @@ void InsetMathEnv::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Changer dummy = mi.base.changeEnsureMath();
 	cell(0).metrics(mi, dim);
-	metricsMarkers(mi, dim);
 }
 
 
 void InsetMathEnv::draw(PainterInfo & pi, int x, int y) const
 {
 	Changer dummy = pi.base.changeEnsureMath();
-	cell(0).draw(pi, x + 1, y);
-	drawMarkers(pi, x, y);
+	cell(0).draw(pi, x, y);
 }
 
 

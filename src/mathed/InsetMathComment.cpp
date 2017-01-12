@@ -50,14 +50,12 @@ Inset * InsetMathComment::clone() const
 void InsetMathComment::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	cell(0).metrics(mi, dim);
-	metricsMarkers(mi, dim);
 }
 
 
 void InsetMathComment::draw(PainterInfo & pi, int x, int y) const
 {
-	cell(0).draw(pi, x + 1, y);
-	drawMarkers(pi, x, y);
+	cell(0).draw(pi, x, y);
 }
 
 

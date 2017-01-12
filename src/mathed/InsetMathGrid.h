@@ -103,9 +103,6 @@ public:
 	void metrics(MetricsInfo & mi, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
-	/// draw decorations.
-	void drawDecoration(PainterInfo & pi, int x, int y) const
-	{ drawMarkers2(pi, x, y); }
 	///
 	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
 	///
@@ -248,9 +245,9 @@ protected:
 	/// Width of cell, taking combined columns into account
 	int cellWidth(idx_type idx) const;
 	///
-	virtual int leftMargin() const { return 1; }
+	virtual int leftMargin() const { return 0; }
 	///
-	virtual int rightMargin() const { return 1; }
+	virtual int rightMargin() const { return 0; }
 
 	/// returns proper 'end of line' code for LaTeX
 	virtual docstring eolString(row_type row, bool fragile, bool latex,

@@ -48,9 +48,6 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// draw selection background
 	void drawSelection(PainterInfo & pi, int x, int y) const;
-	/// draw decorations.
-	void drawDecoration(PainterInfo & pi, int x, int y) const
-	{ drawMarkers(pi, x, y); }
 	///
 	void updateBuffer(ParIterator const &, UpdateType);
 	/// identifies NestInsets

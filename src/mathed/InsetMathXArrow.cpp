@@ -52,7 +52,6 @@ void InsetMathXArrow::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = max(dim0.width(), dim1.width()) + 10;
 	dim.asc = dim0.height() + 10;
 	dim.des = dim1.height();
-	metricsMarkers(mi, dim);
 }
 
 
@@ -66,8 +65,7 @@ void InsetMathXArrow::draw(PainterInfo & pi, int x, int y) const
 	cell(0).draw(pi, x + dim.width()/2 - dim0.width()/2, y - 10);
 	Dimension const & dim1 = cell(1).dimension(*pi.base.bv);
 	cell(1).draw(pi, x + dim.width()/2 - dim1.width()/2, y + dim1.height());
-	mathed_draw_deco(pi, x + 1, y - 7, dim.wid - 2, 5, name_);
-	drawMarkers(pi, x, y);
+	mathed_draw_deco(pi, x, y - 7, dim.wid, 5, name_);
 }
 
 

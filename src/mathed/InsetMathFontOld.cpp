@@ -62,7 +62,6 @@ void InsetMathFontOld::metrics(MetricsInfo & mi, Dimension & dim) const
 	Changer dummy = really_change_font ? mi.base.changeFontSet(fontname)
 		: Changer();
 	cell(0).metrics(mi, dim);
-	metricsMarkers(mi, dim);
 }
 
 
@@ -79,8 +78,7 @@ void InsetMathFontOld::draw(PainterInfo & pi, int x, int y) const
 
 	Changer dummy = really_change_font ? pi.base.changeFontSet(fontname)
 		: Changer();
-	cell(0).draw(pi, x + 1, y);
-	drawMarkers(pi, x, y);
+	cell(0).draw(pi, x, y);
 }
 
 
