@@ -39,6 +39,25 @@ docstring InsetMathBig::name() const
 }
 
 
+MathClass InsetMathBig::mathClass() const
+{
+	/* The class of the delimiter depends on the type (l, m, r, nothing).
+	 * For example, the definition of \bigl in LaTeX sources is
+	 * \def\bigl{\mathopen\big}
+	 */
+	switch(name_.back()) {
+	case 'l':
+		return MC_OPEN;
+	case 'm':
+		return MC_REL;
+	case 'r':
+		return MC_CLOSE;
+	default:
+		return MC_ORD;
+	}
+}
+
+
 Inset * InsetMathBig::clone() const
 {
 	return new InsetMathBig(*this);
@@ -49,9 +68,9 @@ InsetMathBig::size_type InsetMathBig::size() const
 {
 	// order: big Big bigg Bigg biggg Biggg
 	//        0   1   2    3    4     5
-	char_type const c = name_[name_.size() - 1];
+	char_type const c = name_.back();
 	int const base_size = (c == 'l' || c == 'm' || c == 'r') ? 4 : 3;
-	return name_[0] == 'B' ?
+	return name_.front() == 'B' ?
 		2 * (name_.size() - base_size) + 1:
 		2 * (name_.size() - base_size);
 }
