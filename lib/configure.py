@@ -621,10 +621,14 @@ def checkFormatEntries(dtl_tools):
 \Format tiff       tif     TIFF                   "" "%s"	"%s"	""	"image/tiff"
 \Format xbm        xbm     XBM                    "" "%s"	"%s"	""	"image/x-xbitmap"
 \Format xpm        xpm     XPM                    "" "%s"	"%s"	""	"image/x-xpixmap"'''
-    path, iv = checkViewerNoRC('a raster image viewer', ['xv', 'kview', 'gimp-remote', 'gimp'], rc_entry = [imageformats])
-    path, ie = checkEditorNoRC('a raster image editor', ['gimp-remote', 'gimp'], rc_entry = [imageformats])
-    addToRC(imageformats %
-        (iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie, iv, ie) )
+    path, iv = checkViewerNoRC('a raster image viewer',
+        ['xv', 'gwenview', 'kview',
+         'eog', 'xviewer', 'ristretto', 'gpicview', 'lximage-qt',
+         'xdg-open', 'gimp-remote', 'gimp'],
+        rc_entry = [imageformats])
+    path, ie = checkEditorNoRC('a raster image editor',
+        ['gimp-remote', 'gimp'], rc_entry = [imageformats])
+    addToRC(imageformats % ((iv, ie)*10))
     #
     checkViewerEditor('a text editor',
         ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate',
