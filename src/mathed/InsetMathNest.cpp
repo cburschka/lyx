@@ -176,12 +176,12 @@ void InsetMathNest::cursorPos(BufferView const & bv,
 }
 
 
-void InsetMathNest::metrics(MetricsInfo const & mi) const
+void InsetMathNest::cellsMetrics(MetricsInfo const & mi) const
 {
 	MetricsInfo m = mi;
-	for (idx_type i = 0, n = nargs(); i != n; ++i) {
+	for (auto const & cell : cells_) {
 		Dimension dim;
-		cell(i).metrics(m, dim);
+		cell.metrics(m, dim);
 	}
 }
 

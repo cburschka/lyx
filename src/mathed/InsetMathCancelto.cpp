@@ -42,7 +42,7 @@ Inset * InsetMathCancelto::clone() const
 void InsetMathCancelto::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Changer dummy = mi.base.changeEnsureMath();
-	InsetMathNest::metrics(mi);
+	cellsMetrics(mi);
 	Dimension const & dim0 = cell(0).dimension(*mi.base.bv);
 	Dimension const & dim1 = cell(1).dimension(*mi.base.bv);
 	dim.asc = max(dim0.ascent() + 2, dim0.ascent() + dim1.ascent()) + 2 + 8;

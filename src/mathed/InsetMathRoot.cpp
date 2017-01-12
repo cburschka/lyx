@@ -42,7 +42,7 @@ Inset * InsetMathRoot::clone() const
 void InsetMathRoot::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Changer dummy = mi.base.changeEnsureMath();
-	InsetMathNest::metrics(mi);
+	cellsMetrics(mi);
 	Dimension const & dim0 = cell(0).dimension(*mi.base.bv);
 	Dimension const & dim1 = cell(1).dimension(*mi.base.bv);
 	dim.asc = max(dim0.ascent()  + 5, dim1.ascent())  + 2;
