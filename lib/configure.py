@@ -628,8 +628,7 @@ def checkFormatEntries(dtl_tools):
     #
     checkViewerEditor('a text editor',
         ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate',
-         'nedit', 'gedit', 'notepad',
-         'geany', 'leafpad', 'mousepad', 'xed'],
+         'nedit', 'gedit', 'geany', 'leafpad', 'mousepad', 'xed', 'notepad'],
         rc_entry = [r'''\Format asciichess asc    "Plain text (chess output)"  "" ""	"%%"	""	""
 \Format docbook    sgml    DocBook                B  ""	"%%"	"document,menu=export"	""
 \Format docbook-xml xml   "DocBook (XML)"         "" ""	"%%"	"document,menu=export"	"application/docbook+xml"
