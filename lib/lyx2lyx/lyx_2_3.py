@@ -1400,6 +1400,50 @@ def revert_citekeyonly(document):
         i = j + 1
 
 
+
+def revert_bibpackopts(document):
+    " Revert support for natbib/jurabib package options "
+
+    engine = "basic"
+    i = find_token(document.header, "\\cite_engine", 0)
+    if i == -1:
+        document.warning("Malformed document! Missing \\cite_engine")
+    else:
+        engine = get_value(document.header, "\\cite_engine", i)
+
+    biblatex = False
+    if engine not in ["natbib", "jurabib"]:
+        return
+
+    biblio_options = ""
+    i = find_token(document.header, "\\biblio_options", 0)
+    if i != -1:
+        biblio_options = get_value(document.header, "\\biblio_options", i)
+        del document.header[i]
+
+    i = find_token(document.header, "\\begin_local_layout", 0)
+    if i == -1:
+        k = find_token(document.header, "\\language", 0)
+        if k == -1:
+            # this should not happen
+            document.warning("Malformed LyX document! No \\language header found!")
+            return
+        document.header[k-1 : k-1] = ["\\begin_local_layout", "\\end_local_layout"]
+        i = k - 1
+
+    j = find_end_of(document.header, i, "\\begin_local_layout", "\\end_local_layout")
+    if j == -1:
+        # this should not happen
+        document.warning("Malformed LyX document! Can't find end of local layout!")
+        return
+
+    document.header[i+1 : i+1] = [
+        "### Inserted by lyx2lyx (bibliography package options) ###",
+        "PackageOptions " + engine + " " + biblio_options,
+        "### End of insertion by lyx2lyx (bibliography package options) ###"
+    ]
+
+
 ##
 # Conversion hub
 #
@@ -1426,10 +1470,12 @@ convert = [
            [526, []],
            [527, []],
            [528, []],
-           [529, []]
+           [529, []],
+           [530, []]
           ]
 
 revert =  [
+           [529, [revert_bibpackopts]],
            [528, [revert_citekeyonly]],
            [527, [revert_biblatex]],
            [526, [revert_noprefix]],

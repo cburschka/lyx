@@ -2378,8 +2378,6 @@ void GuiDocument::updateEngineDependends()
 	biblioModule->bibtopicCB->setEnabled(!biblatex);
 
 	// These are only useful with Biblatex
-	biblioModule->citePackageOptionsLE->setEnabled(biblatex);
-	biblioModule->citePackageOptionsL->setEnabled(biblatex);
 	biblioModule->biblatexBbxCO->setEnabled(biblatex);
 	biblioModule->biblatexBbxLA->setEnabled(biblatex);
 	biblioModule->biblatexCbxCO->setEnabled(biblatex);
@@ -2387,6 +2385,17 @@ void GuiDocument::updateEngineDependends()
 	biblioModule->resetBbxPB->setEnabled(biblatex);
 	biblioModule->resetCbxPB->setEnabled(biblatex);
 	biblioModule->matchBbxPB->setEnabled(biblatex);
+
+	// These are useful with biblatex, jurabib and natbib
+	QString const engine =
+		biblioModule->citeEngineCO->itemData(
+				biblioModule->citeEngineCO->currentIndex()).toString();
+	LyXCiteEngine const * ce = theCiteEnginesList[fromqstr(engine)];
+
+	bool const citepack = ce->requires("biblatex.sty") || ce->requires("jurabib.sty")
+			|| ce->requires("natbib.sty");
+	biblioModule->citePackageOptionsLE->setEnabled(citepack);
+	biblioModule->citePackageOptionsL->setEnabled(citepack);
 }
 
 

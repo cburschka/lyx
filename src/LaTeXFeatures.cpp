@@ -1211,6 +1211,8 @@ string const LaTeXFeatures::getPackages() const
 			packages << "numbers";
 		else
 			packages << "authoryear";
+		if (!params_.biblio_opts.empty())
+			packages << ',' << params_.biblio_opts;
 		packages << "]{natbib}\n";
 	}
 
@@ -1222,8 +1224,12 @@ string const LaTeXFeatures::getPackages() const
 	}
 
 	// jurabib -- we need version 0.6 at least.
-	if (mustProvide("jurabib"))
-		packages << "\\usepackage{jurabib}[2004/01/25]\n";
+	if (mustProvide("jurabib")) {
+		packages << "\\usepackage";
+		if (!params_.biblio_opts.empty())
+			packages << '[' << params_.biblio_opts << ']';
+		packages << "{jurabib}[2004/01/25]\n";
+	}
 
 	// opcit -- we pass custombst as we output \bibliographystyle ourselves
 	if (mustProvide("opcit")) {

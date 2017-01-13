@@ -80,6 +80,8 @@ public:
 	///
 	std::vector<std::string> const & getPackageList() const
 		{ return package_list_; }
+	///
+	bool requires(std::string const p) const;
 private:
 	/// what appears in the ui
 	std::string name_;
