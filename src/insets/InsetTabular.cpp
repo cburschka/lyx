@@ -3510,9 +3510,9 @@ docstring InsetTableCell::asString(bool intoInsets)
 
 
 void InsetTableCell::addToToc(DocIterator const & di, bool output_active,
-							  UpdateType utype) const
+							  UpdateType utype, TocBackend & backend) const
 {
-	InsetText::iterateForToc(di, output_active, utype);
+	InsetText::iterateForToc(di, output_active, utype, backend);
 }
 
 
@@ -3981,13 +3981,13 @@ void InsetTabular::updateBuffer(ParIterator const & it, UpdateType utype)
 
 
 void InsetTabular::addToToc(DocIterator const & cpit, bool output_active,
-							UpdateType utype) const
+							UpdateType utype, TocBackend & backend) const
 {
 	DocIterator dit = cpit;
 	dit.forwardPos();
 	size_t const end = dit.nargs();
 	for ( ; dit.idx() < end; dit.top().forwardIdx())
-		cell(dit.idx())->addToToc(dit, output_active, utype);
+		cell(dit.idx())->addToToc(dit, output_active, utype, backend);
 }
 
 

@@ -1384,15 +1384,16 @@ string MathMacroTemplate::contextMenuName() const
 	return "context-math-macro-definition";
 }
 
+
 void MathMacroTemplate::addToToc(DocIterator const & pit, bool output_active,
-								 UpdateType) const
+								 UpdateType, TocBackend & backend) const
 {
 	docstring str;
 	if (!validMacro())
 		str = bformat(_("Invalid macro! \\%1$s"), name());
 	else
 		str = "\\" + name();
-	TocBuilder & b = buffer().tocBackend().builder("math-macro");
+	TocBuilder & b = backend.builder("math-macro");
 	b.pushItem(pit, str, output_active);
 	b.pop();
 }

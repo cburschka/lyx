@@ -830,20 +830,20 @@ void InsetText::forOutliner(docstring & os, size_t const maxlen,
 
 
 void InsetText::addToToc(DocIterator const & cdit, bool output_active,
-						 UpdateType utype) const
+						 UpdateType utype, TocBackend & backend) const
 {
 	DocIterator dit = cdit;
 	dit.push_back(CursorSlice(const_cast<InsetText &>(*this)));
-	iterateForToc(dit, output_active, utype);
+	iterateForToc(dit, output_active, utype, backend);
 }
 
 
 void InsetText::iterateForToc(DocIterator const & cdit, bool output_active,
-							  UpdateType utype) const
+							  UpdateType utype, TocBackend & backend) const
 {
 	DocIterator dit = cdit;
 	// This also ensures that any document has a table of contents
-	shared_ptr<Toc> toc = buffer().tocBackend().toc("tableofcontents");
+	shared_ptr<Toc> toc = backend.toc("tableofcontents");
 
 	BufferParams const & bufparams = buffer_->params();
 	int const min_toclevel = bufparams.documentClass().min_toclevel();
@@ -870,7 +870,8 @@ void InsetText::iterateForToc(DocIterator const & cdit, bool output_active,
 
 		// Custom AddToToc in paragraph layouts (i.e. theorems)
 		if (par.layout().addToToc() && text().isFirstInSequence(pit)) {
-			pit_type end = openAddToTocForParagraph(pit, dit, output_active);
+			pit_type end =
+				openAddToTocForParagraph(pit, dit, output_active, backend);
 			addtotoc_stack.push({pit, end});
 		}
 
@@ -882,7 +883,7 @@ void InsetText::iterateForToc(DocIterator const & cdit, bool output_active,
 			Inset & inset = *it->inset;
 			dit.pos() = it->pos;
 			//lyxerr << (void*)&inset << " code: " << inset.lyxCode() << std::endl;
-			inset.addToToc(dit, doing_output, utype);
+			inset.addToToc(dit, doing_output, utype, backend);
 			if (inset.lyxCode() == ARG_CODE)
 				arginset = inset.asInsetText();
 		}
@@ -891,7 +892,7 @@ void InsetText::iterateForToc(DocIterator const & cdit, bool output_active,
 		while (!addtotoc_stack.empty() && addtotoc_stack.top().second == pit) {
 			// execute the closing function
 			closeAddToTocForParagraph(addtotoc_stack.top().first,
-			                          addtotoc_stack.top().second);
+			                          addtotoc_stack.top().second, backend);
 			addtotoc_stack.pop();
 		}
 
@@ -915,27 +916,29 @@ void InsetText::iterateForToc(DocIterator const & cdit, bool output_active,
 		}
 
 		// And now the list of changes.
-		par.addChangesToToc(dit, buffer(), doing_output);
+		par.addChangesToToc(dit, buffer(), doing_output, backend);
 	}
 }
 
 
 pit_type InsetText::openAddToTocForParagraph(pit_type pit,
                                              DocIterator const & dit,
-                                             bool output_active) const
+                                             bool output_active,
+                                             TocBackend & backend) const
 {
 	Paragraph const & par = paragraphs()[pit];
-	TocBuilder & b = buffer().tocBackend().builder(par.layout().tocType());
+	TocBuilder & b = backend.builder(par.layout().tocType());
 	docstring const label = par.labelString();
 	b.pushItem(dit, label + (label.empty() ? "" : " "), output_active);
 	return text().lastInSequence(pit);
 }
 
 
-void InsetText::closeAddToTocForParagraph(pit_type start, pit_type end) const
+void InsetText::closeAddToTocForParagraph(pit_type start, pit_type end,
+                                          TocBackend & backend) const
 {
 	Paragraph const & par = paragraphs()[start];
-	TocBuilder & b = buffer().tocBackend().builder(par.layout().tocType());
+	TocBuilder & b = backend.builder(par.layout().tocType());
 	if (par.layout().isTocCaption()) {
 		docstring str;
 		text().forOutliner(str, TOC_ENTRY_LENGTH, start, end);

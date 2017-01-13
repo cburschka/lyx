@@ -1141,12 +1141,11 @@ void InsetInclude::addPreview(DocIterator const & /*inset_pos*/,
 
 
 void InsetInclude::addToToc(DocIterator const & cpit, bool output_active,
-							UpdateType utype) const
+                            UpdateType utype, TocBackend & backend) const
 {
-	TocBackend & backend = buffer().tocBackend();
 	if (isListings(params())) {
 		if (label_)
-			label_->addToToc(cpit, output_active, utype);
+			label_->addToToc(cpit, output_active, utype, backend);
 		TocBuilder & b = backend.builder("listing");
 		b.pushItem(cpit, screenLabel(), output_active);
 		InsetListingsParams p(to_utf8(params()["lstparams"]));
@@ -1165,13 +1164,7 @@ void InsetInclude::addToToc(DocIterator const & cpit, bool output_active,
 			return;
 
 		// Include Tocs from children
-		childbuffer->tocBackend().update(output_active, utype);
-		for(auto const & pair : childbuffer->tocBackend().tocs()) {
-			string const & type = pair.first;
-			shared_ptr<Toc const> child_toc = pair.second;
-			shared_ptr<Toc> toc = backend.toc(type);
-			toc->insert(toc->end(), child_toc->begin(), child_toc->end());
-		}
+		childbuffer->inset().addToToc(cpit, output_active, utype, backend);
 		//Copy missing outliner names (though the user has been warned against
 		//having different document class and module selection between master
 		//and child).

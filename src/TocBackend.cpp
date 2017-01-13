@@ -217,7 +217,7 @@ void TocBackend::update(bool output_active, UpdateType utype)
 	resetOutlinerNames();
 	if (!buffer_->isInternal()) {
 		DocIterator dit;
-		buffer_->inset().addToToc(dit, output_active, utype);
+		buffer_->inset().addToToc(dit, output_active, utype, *this);
 	}
 }
 

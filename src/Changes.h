@@ -29,10 +29,11 @@ namespace lyx {
 class AuthorList;
 class Buffer;
 class DocIterator;
+class FontInfo;
 class OutputParams;
 class otexstream;
 class PainterInfo;
-class FontInfo;
+class TocBackend;
 
 
 class Change {
@@ -137,7 +138,7 @@ public:
 
 	///
 	void addToToc(DocIterator const & cdit, Buffer const & buffer,
-	        bool output_active) const;
+	              bool output_active, TocBackend & backend) const;
 
 	///
 	void updateBuffer(Buffer const & buf);

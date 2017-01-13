@@ -121,7 +121,7 @@ public:
 	bool clickable(BufferView const &, int, int) const { return true; }
 	///
 	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype) const;
+				  UpdateType utype, TocBackend & backend) const;
 private:
 	///
 	InsetExternal(InsetExternal const &);

@@ -335,7 +335,7 @@ void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype)
 
 
 void InsetMathHull::addToToc(DocIterator const & pit, bool output_active,
-							 UpdateType utype) const
+							 UpdateType utype, TocBackend & backend) const
 {
 	if (!buffer_) {
 		//FIXME: buffer_ should be set at creation for this inset! Problem is
@@ -344,7 +344,7 @@ void InsetMathHull::addToToc(DocIterator const & pit, bool output_active,
 		return;
 	}
 
-	TocBuilder & b = buffer().tocBackend().builder("equation");
+	TocBuilder & b = backend.builder("equation");
 	// compute first and last item
 	row_type first = nrows();
 	for (row_type row = 0; row != nrows(); ++row)
@@ -368,7 +368,7 @@ void InsetMathHull::addToToc(DocIterator const & pit, bool output_active,
 		if (!numbered(row))
 			continue;
 		if (label_[row])
-			label_[row]->addToToc(pit, output_active, utype);
+			label_[row]->addToToc(pit, output_active, utype, backend);
 		docstring label = nicelabel(row);
 		if (first == last)
 			// this is the only equation

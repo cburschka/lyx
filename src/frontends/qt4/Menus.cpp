@@ -1311,20 +1311,20 @@ void MenuDefinition::expandToc(Buffer const * buf)
 	}
 
 	MenuDefinition other_lists;
-	TocList const & toc_list = buf->tocBackend().tocs();
-	TocList::const_iterator cit = toc_list.begin();
-	TocList::const_iterator end = toc_list.end();
-	for (; cit != end; ++cit) {
+	// In the navigation menu, only add tocs from this document
+	TocBackend const & backend = buf->tocBackend();
+	TocList const & toc_list = backend.tocs();
+	for (pair<string, shared_ptr<Toc>> const & toc : toc_list) {
 		// Handle table of contents later
-		if (cit->first == "tableofcontents" || cit->second->empty())
+		if (toc.first == "tableofcontents" || toc.second->empty())
 			continue;
 		MenuDefinition submenu;
-		submenu.expandTocSubmenu(cit->first, *cit->second);
-		docstring const toc_name = buf->tocBackend().outlinerName(cit->first);
+		submenu.expandTocSubmenu(toc.first, *toc.second);
+		docstring const toc_name = backend.outlinerName(toc.first);
 		MenuItem item(MenuItem::Submenu, toqstr(toc_name));
 		item.setSubmenu(submenu);
 		// deserves to be in the main menu?
-		if (!TocBackend::isOther(cit->first))
+		if (!TocBackend::isOther(toc.first))
 			add(item);
 		else
 			other_lists.add(item);
@@ -1336,8 +1336,8 @@ void MenuDefinition::expandToc(Buffer const * buf)
 	}
 	// Handle normal TOC
 	add(MenuItem(MenuItem::Separator));
-	cit = toc_list.find("tableofcontents");
-	if (cit == end)
+	TocList::const_iterator cit = toc_list.find("tableofcontents");
+	if (cit == toc_list.end())
 		LYXERR(Debug::GUI, "No table of contents.");
 	else {
 		if (!cit->second->empty())

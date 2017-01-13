@@ -475,12 +475,12 @@ void Changes::checkAuthors(AuthorList const & authorList)
 
 
 void Changes::addToToc(DocIterator const & cdit, Buffer const & buffer,
-        bool output_active) const
+                       bool output_active, TocBackend & backend) const
 {
 	if (table_.empty())
 		return;
 
-	shared_ptr<Toc> change_list = buffer.tocBackend().toc("change");
+	shared_ptr<Toc> change_list = backend.toc("change");
 	AuthorList const & author_list = buffer.params().authors();
 	DocIterator dit = cdit;
 
