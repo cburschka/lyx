@@ -51,10 +51,10 @@ MathRow::MathRow(MetricsInfo & mi, MathData const * ar)
 	// Then insert the MathData argument
 	bool const has_contents = ar->addToMathRow(*this, mi);
 
-	// empty arrays are visible when they are editable
-	// we reserve the necessary space anyway (even if nothing gets drawn)
+	// A MathRow should not be completely empty
 	if (!has_contents) {
 		Element e(mi, BOX, MC_ORD);
+		// empty arrays are visible when they are editable
 		e.color = mi.base.macro_nesting == 0 ? Color_mathline : Color_none;
 		push_back(e);
 	}
@@ -175,7 +175,13 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim) const
 			break;
 		case BOX:
 			d = theFontMetrics(mi.base.font).dimension('I');
-			d.wid += e.before + e.after;
+			if (e.color != Color_none) {
+				// allow for one pixel before/after the box.
+				d.wid += e.before + e.after + 2;
+			} else {
+				// hide the box, but give it some height
+				d.wid = 0;
+			}
 			break;
 		}
 
@@ -285,12 +291,12 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 				pi.pain.enterMonochromeMode(Color_mathbg, Color_mathmacroblend);
 			break;
 		case BOX: {
+			if (e.color == Color_none)
+				break;
 			Dimension const d = theFontMetrics(pi.base.font).dimension('I');
-			// the box is not visible in non-editable context (except for grey macro boxes).
-			if (e.color != Color_none)
-				pi.pain.rectangle(x + e.before, y - d.ascent(),
-				                  d.width() - 1, d.height() - 1, e.color);
-			x += d.wid + e.before + e.after;
+			pi.pain.rectangle(x + e.before + 1, y - d.ascent(),
+			                  d.width() - 1, d.height() - 1, e.color);
+			x += d.wid + 2 + e.before + e.after;
 			break;
 		}
 		case DUMMY:
