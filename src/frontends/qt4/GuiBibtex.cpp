@@ -107,9 +107,9 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 	connect(add_->closePB, SIGNAL(clicked()),
 		add_, SLOT(reject()));
 
-	add_->bibLW->setToolTip(formatToolTip(qt_("This list consists of all databases that are indexed by LaTeX and thus are found without a file path. "
+	add_->bibLW->setToolTip(toqstr(wrap(_("This list consists of all databases that are indexed by LaTeX and thus are found without a file path. "
 				    "This is usually everything in the bib/ subdirectory of LaTeX's texmf tree. "
-				    "If you want to reuse your own database, this is the place you should store it.")));
+				    "If you want to reuse your own database, this is the place you should store it."))));
 
 	bc().setPolicy(ButtonPolicy::NoRepeatedApplyReadOnlyPolicy);
 	bc().setOK(okPB);
