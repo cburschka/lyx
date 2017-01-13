@@ -5,7 +5,7 @@
 #
 
 set(check_layout_SOURCES)
-foreach(_f insets/InsetLayout.cpp Color.cpp Counters.cpp Floating.cpp
+foreach(_f insets/InsetLayout.cpp CiteEnginesList.cpp Color.cpp Counters.cpp Floating.cpp
        FloatList.cpp FontInfo.cpp Layout.cpp LayoutFile.cpp Lexer.cpp
        ModuleList.cpp Spacing.cpp TextClass.cpp tests/check_layout.cpp
        tests/boost.cpp support/tests/dummy_functions.cpp)
