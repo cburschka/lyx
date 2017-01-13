@@ -3,13 +3,13 @@
 # Zdenko Podobný <zdpo@mailbox.sk>
 #
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
-# Kornel Benko <kornel@lyx.org>, 2009-2016.
+# Kornel Benko <kornel@lyx.org>, 2009-2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-12-29 09:18+0100\n"
-"PO-Revision-Date: 2016-12-29 08:40+0000\n"
+"POT-Creation-Date: 2017-01-13 13:22+0100\n"
+"PO-Revision-Date: 2017-01-13 12:22+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -167,6 +167,14 @@ msgstr "Definujte možnosti ako napr. --min-crossrefs (viď dokumentáciu BibTeX
 msgid "LyX: Add BibTeX Database"
 msgstr "LyX: Pridať BibTeX databázu"
 
+#: src/frontends/qt4/ui/BibtexAddUi.ui:31
+msgid "&Databases found by LaTeX:"
+msgstr "&Databáza nájdená LaTeXom:"
+
+#: src/frontends/qt4/ui/BibtexAddUi.ui:67
+msgid "Rescan LaTeX's index for new databases and styles"
+msgstr "Znovu prehľadať nové LaTeXové databázy a štýle"
+
 #: src/frontends/qt4/ui/BibtexAddUi.ui:36 src/frontends/qt4/ui/BibtexUi.ui:47
 msgid "Scan for new databases and styles"
 msgstr "hľadať nové databázy a štýle"
@@ -176,16 +184,30 @@ msgstr "hľadať nové databázy a štýle"
 msgid "&Rescan"
 msgstr "Z&novu prehľadať"
 
+#: src/frontends/qt4/ui/BibtexAddUi.ui:81
+msgid ""
+"Here you can enter a local BibTeX database name or browse your directory."
+msgstr ""
+"Tu môžte vložiť meno lokálnej BibTeX databázy alebo prehľadať váš adresár."
+
+#: src/frontends/qt4/ui/BibtexAddUi.ui:84
+msgid "&Local databases:"
+msgstr "&Lokálne databázy:"
+
+#: src/frontends/qt4/ui/BibtexAddUi.ui:102
+msgid "Here you can enter a local BibTeX database name"
+msgstr "Tu môžte vložiť meno lokálnej BibTeX databázy"
+
+#: src/frontends/qt4/ui/BibtexAddUi.ui:109
+msgid "Browse your local directory"
+msgstr "Prehľadať váš lokálny adresár"
+
 #: src/frontends/qt4/ui/BibtexAddUi.ui:46 src/frontends/qt4/ui/BibtexUi.ui:97
 #: src/frontends/qt4/ui/CompareUi.ui:50 src/frontends/qt4/ui/ExternalUi.ui:70
 #: src/frontends/qt4/ui/GraphicsUi.ui:58 src/frontends/qt4/ui/IncludeUi.ui:335
 #: src/frontends/qt4/ui/LaTeXUi.ui:161 src/frontends/qt4/ui/PrefInputUi.ui:111
 msgid "&Browse..."
 msgstr "Pr&echádzať…"
-
-#: src/frontends/qt4/ui/BibtexAddUi.ui:83
-msgid "Enter BibTeX database name"
-msgstr "Vložte názov BibTeX databázy"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:114
 #: src/frontends/qt4/ui/BranchesUi.ui:113 src/frontends/qt4/ui/CitationUi.ui:84
@@ -4273,7 +4295,7 @@ msgstr "Vyberte si heslo z listiny hore alebo vložte heslo manuálne"
 
 #: src/frontends/qt4/ui/RefUi.ui:191 src/frontends/qt4/GuiRef.cpp:351
 msgid "Jump to the selected label"
-msgstr "Skok na vybrané heslo"
+msgstr "Skočiť na vybrané heslo"
 
 #: src/frontends/qt4/ui/RefUi.ui:181 src/frontends/qt4/GuiRef.cpp:323
 msgid "&Go to Label"
@@ -27269,6 +27291,18 @@ msgstr "Nastavenia Záznamu Bibliografie"
 msgid "BibTeX Bibliography"
 msgstr "BibTeX bibliografia"
 
+#: src/frontends/qt4/GuiBibtex.cpp:110
+msgid ""
+"This list consists of all databases that are indexed by LaTeX and thus are "
+"found without a file path. This is usually everything in the bib/ "
+"subdirectory of LaTeX's texmf tree. If you want to reuse your own database, "
+"this is the place you should store it."
+msgstr ""
+"Táto listina sa skladá zo všetkých databáz ktoré boli indexované LaTeXom, a "
+"preto nájdené aj bez adresára. To je zvyčajne v bib/ adresáre v LaTeXovom "
+"texmf-strome. Na tomto mieste by mala ležať aj vaša vlastná databáza keď ju "
+"chcete použiť. "
+
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
 #: src/frontends/qt4/GuiDocument.cpp:2201 src/frontends/qt4/GuiExternal.cpp:680
@@ -30244,7 +30278,7 @@ msgstr "Obsahuje:"
 
 #: src/insets/InsetBibtex.cpp:220
 msgid "included in TOC"
-msgstr "zahrnuté do Obsahu"
+msgstr "zahrnuté do obsahu"
 
 #: src/insets/InsetBibtex.cpp:325 src/insets/InsetBibtex.cpp:374
 msgid "Export Warning!"
@@ -35236,3 +35270,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Giant-sized icons"
 #~ msgstr "Gigantické ikony"
+
+#~ msgid "Enter BibTeX database name"
+#~ msgstr "Vložte názov BibTeX databázy"
