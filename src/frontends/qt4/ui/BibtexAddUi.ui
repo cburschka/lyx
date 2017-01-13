@@ -38,7 +38,7 @@
      <item row="1" column="0" colspan="2">
       <widget class="QListWidget" name="bibLW">
        <property name="toolTip">
-        <string>This list consists of all databases that are indexed by LaTeX and thus are found without a file path. This is usually everything in the bib/ subdirectory of LaTeX's texmf tree. If you want to reuse your own database, this is the place you should store it.</string>
+        <string/>
        </property>
        <property name="selectionMode">
         <enum>QAbstractItemView::ExtendedSelection</enum>
