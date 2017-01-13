@@ -44,6 +44,8 @@ MaxCiteNames 3
 #
 # Note further:
 #
+# * The LyXName "keyonly" has a special meaning: only the citation key,
+#   without any latex command, is output.
 # * Capitalization indicates that the command also has a capitalized
 #   form (\Latexcmd vs. \latexcmd). These usually enforce upcasing of
 #   name prefixes (von Goethe => Von Goethe).
@@ -80,6 +82,7 @@ CiteEngine authoryear
 	fullcite[][]
 	footfullcite[][]
 	nocite
+	keyonly
 End
 
 CiteEngine numerical
@@ -94,6 +97,7 @@ CiteEngine numerical
 	fullcite[][]
 	footfullcite[][]
 	nocite
+	keyonly
 End
 
 
@@ -117,6 +121,8 @@ CiteFormat default
 	#
 	_notcited not cited
 	_addtobib Add to bibliography only.
+	_keyonly Key only.
+	_key Key
 	_footnote Footnote
 	_foot Foot
 	_fullcite bibliography entry
@@ -209,6 +215,8 @@ CiteFormat default
 	footfullcite {%dialog%[[%_footnote%]][[%_foot%]]}: {%dialog%[[%_bibentry%]][[{%label%[[%!fullcite%]][[%key%%!nextkey% (%_fullcite%)]]}]]}
 	# "Add to bibliography only." (dialog) / "[ID] (not cited)" (button)
 	nocite {%dialog%[[%_addtobib%]][[%key%%!nextkey% (%_notcited%)]]}
+	# Output only the key
+	keyonly {%dialog%[[%_keyonly%]][[%_key%: %key%%!nextkey%]]}
 End
 
 CiteFormat authoryear

@@ -7,6 +7,12 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2017-01-13 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 529:
+	  \begin_inset CommandInset citation
+	    New LatexCommand value: keyonly -> outputs only the key,
+	    without any cite command.
+
 2017-01-08 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 528: Biblatex support
 	  - New buffer param options:

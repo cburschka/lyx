@@ -508,9 +508,18 @@ void InsetCitation::forOutliner(docstring & os, size_t const, bool const) const
 // engine, e.g. \cite[]{} for the basic engine.
 void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 {
+	BiblioInfo const & bi = buffer().masterBibInfo();
+	if (getCmdName() == "keyonly") {
+		// Special command to only return the key
+		if (!bi.isBibtex(getParam("key")))
+			// escape chars with bibitems
+			os << escape(cleanupWhitespace(getParam("key")));
+		else
+			os << cleanupWhitespace(getParam("key"));
+		return;
+	}
 	vector<CitationStyle> citation_styles = buffer().params().citeStyles();
 	CitationStyle cs = asValidLatexCommand(buffer().params(), getCmdName(), citation_styles);
-	BiblioInfo const & bi = buffer().masterBibInfo();
 	// FIXME UNICODE
 	docstring const cite_str = from_utf8(citationStyleToString(cs, true));
 

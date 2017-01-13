@@ -1369,6 +1369,37 @@ def revert_biblatex(document):
         ]
 
 
+def revert_citekeyonly(document):
+    " Revert keyonly cite command to ERT "
+
+    i = 0
+    while (True):
+        i = find_token(document.body, "\\begin_inset CommandInset citation", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of citation inset at line %d!!" %(i))
+            i += 1
+            continue
+        k = find_token(document.body, "LatexCommand", i, j)
+        if k == -1:
+            document.warning("Can't find LatexCommand for citation inset at line %d!" %(i))
+            i = j + 1
+            continue
+        cmd = get_value(document.body, "LatexCommand", k)
+        if cmd != "keyonly":
+            i = j + 1
+            continue
+
+        key = get_quoted_value(document.body, "key", i, j)
+        if not key:
+            document.warning("Citation inset at line %d does not have a key!" %(i))
+        # Replace known new commands with ERT
+        document.body[i:j+1] = put_cmd_in_ert([key])
+        i = j + 1
+
+
 ##
 # Conversion hub
 #
@@ -1394,10 +1425,12 @@ convert = [
            [525, []],
            [526, []],
            [527, []],
-           [528, []]
+           [528, []],
+           [529, []]
           ]
 
 revert =  [
+           [528, [revert_citekeyonly]],
            [527, [revert_biblatex]],
            [526, [revert_noprefix]],
            [525, [revert_plural_refs]],

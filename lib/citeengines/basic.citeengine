@@ -26,6 +26,7 @@ DefaultBiblio  plain
 CiteEngine default
 	cite[]
 	nocite
+	keyonly
 End
 
 
@@ -46,6 +47,8 @@ CiteFormat default
 	#
 	_notcited not cited
 	_addtobib Add to bibliography only.
+	_keyonly Key only.
+	_key Key
 
 	#
 	# 2. Macros re-used in the style definitions
@@ -80,4 +83,6 @@ CiteFormat default
 	cite %!open%{%dialog%[[#ID]][[%!makecite%]]}%!textafter%%!close%
 	# "Add to bibliography only." (dialog) / "[ID] (not cited)" (button)
 	nocite {%dialog%[[%_addtobib%]][[%key%%!nextkey% (%_notcited%)]]}
+	# Output only the key
+	keyonly {%dialog%[[%_keyonly%]][[%_key%: %key%%!nextkey%]]}
 End
