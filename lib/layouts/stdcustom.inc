@@ -2,7 +2,7 @@
 # Author : Martin vermeer <martin.vermeer@tkk.fi>
 # Custom Inset layouts definition
 
-Format 62
+Format 63
 
 # Error fallback:
 InsetLayout "Flex:Custom"

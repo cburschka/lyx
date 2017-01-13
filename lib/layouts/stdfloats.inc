@@ -4,7 +4,7 @@
 # in most LyX layouts.
 
 
-Format 62
+Format 63
 
 OutlinerName table        "Tables" #no AddToToc (built-in)
 OutlinerName figure       "Figures" #no AddToToc (built-in)
