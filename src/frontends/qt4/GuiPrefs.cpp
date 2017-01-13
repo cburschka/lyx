@@ -870,6 +870,7 @@ void PrefLatex::updateRC(LyXRC const & rc)
 {
 	latexBibtexCO->clear();
 
+	latexBibtexCO->addItem(qt_("Automatic"), "automatic");
 	latexBibtexCO->addItem(qt_("Custom"), QString());
 	for (LyXRC::CommandSet::const_iterator it = rc.bibtex_alternatives.begin();
 			     it != rc.bibtex_alternatives.end(); ++it) {

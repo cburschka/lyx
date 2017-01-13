@@ -236,7 +236,7 @@ void LyXRC::setDefaults()
 	default_view_format = "pdf2";
 	default_otf_view_format = "pdf4";
 	chktex_command = "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38";
-	bibtex_command = "bibtex";
+	bibtex_command = "automatic";
 	fontenc = "default";
 	index_command = "makeindex -c -q";
 	nomencl_command = "makeindex -s nomencl.ist";

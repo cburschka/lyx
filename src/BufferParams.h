@@ -463,7 +463,7 @@ public:
 	std::vector<CitationStyle> citeStyles() const;
 
 	/// Return the actual bibtex command (lyxrc or buffer param)
-	std::string const & bibtexCommand() const;
+	std::string const bibtexCommand() const;
 
 	/// Are we using biblatex?
 	bool useBiblatex() const;

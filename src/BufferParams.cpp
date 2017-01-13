@@ -3355,14 +3355,26 @@ vector<CitationStyle> BufferParams::citeStyles() const
 }
 
 
-string const & BufferParams::bibtexCommand() const
+string const BufferParams::bibtexCommand() const
 {
+	// Return document-specific setting if available
 	if (bibtex_command != "default")
 		return bibtex_command;
+	// For Japanese, return the specific program
 	else if (encoding().package() == Encoding::japanese)
 		return lyxrc.jbibtex_command;
-	else
+	// Else return the processor set in prefs
+	else if (lyxrc.bibtex_command != "automatic")
 		return lyxrc.bibtex_command;
+	// Automatic means: find the most suitable for the current cite framework
+	if (useBiblatex()) {
+		// For biblatex, we prefer biber and fall back to bibtex8 and, as last resort, bibtex
+		if (lyxrc.bibtex_alternatives.find("biber") != lyxrc.bibtex_alternatives.end())
+			return "biber";
+		else if (lyxrc.bibtex_alternatives.find("bibtex8") != lyxrc.bibtex_alternatives.end())
+			return "bibtex8";
+	}
+	return "bibtex";
 }
 
 

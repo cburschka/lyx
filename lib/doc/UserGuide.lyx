@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 528
+\lyxformat 530
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -29322,7 +29322,7 @@ bibtex8 allows all characters that are possible to encode in an 8-bit encoding
 bibtex
 \family default
 , works with all bibliography packages
-\change_inserted -712698321 1483887200
+\change_inserted -712698321 1484330876
 , although more complex 
 \family sans
 Biblatex
@@ -29336,16 +29336,57 @@ Biblatex
 
 \begin_layout Standard
 
-\change_inserted -712698321 1483887384
-In addition to these, you can set a specific processor for Japanese documents
- in 
+\change_inserted -712698321 1484331301
+By default (with 
+\begin_inset Quotes eld
+\end_inset
+
+Default
+\begin_inset Quotes erd
+\end_inset
+
+ bibliography processor set in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Bibliography
+\family default
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+Automatic
+\begin_inset Quotes erd
+\end_inset
+
+ bibliography processor in 
 \family sans
 Tools\SpecialChar menuseparator
 Preferences\SpecialChar menuseparator
 Output\SpecialChar menuseparator
 LaTeX
 \family default
-.
+), \SpecialChar LyX
+ selects the most appropriate (available) processor for the current bibliogra
+phy approach (
+\family sans
+biber
+\family default
+ for Biblatex, 
+\family sans
+bibtex
+\family default
+ for Bib\SpecialChar TeX
+-based bibliography styles).
+ This should suit most needs.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1484331395
+In Japanese documents, a specific processor is used.
  By default, this is 
 \family sans
 pbibtex
@@ -29355,11 +29396,14 @@ pbibtex
 bibtex
 \family default
  variant specifically aimed at Japanese.
- It is automatically used, instead of 
+ You can adjust it in 
 \family sans
-bibtex
+Tools\SpecialChar menuseparator
+Preferences\SpecialChar menuseparator
+Output\SpecialChar menuseparator
+LaTeX
 \family default
-, in Japanese documents.
+.
 \change_unchanged
 
 \end_layout
@@ -29369,11 +29413,16 @@ bibtex
 \change_deleted -712698321 1483886683
 Bib\SpecialChar TeX
 
-\change_inserted -712698321 1483887395
-The selected processor
+\change_inserted -712698321 1484331419
+Selected bibliography processors
 \change_unchanged
- can be controlled with options that you can add below the specification
- of the variants.
+ can be controlled with options that you can add below the 
+\change_deleted -712698321 1484331437
+specification of the variants
+\change_inserted -712698321 1484331439
+selection
+\change_unchanged
+.
  Before adding options, it is strongly recommended that you read the manual
  
 \change_inserted -712698321 1483886810
