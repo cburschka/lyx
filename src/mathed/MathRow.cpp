@@ -175,7 +175,8 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim) const
 			break;
 		case BOX:
 			d = theFontMetrics(mi.base.font).dimension('I');
-			d.wid += e.before + e.after;
+			// allow for one pixel in front of the box.
+			d.wid += e.before + e.after + 1;
 			break;
 		}
 
@@ -288,7 +289,7 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 			Dimension const d = theFontMetrics(pi.base.font).dimension('I');
 			// the box is not visible in non-editable context (except for grey macro boxes).
 			if (e.color != Color_none)
-				pi.pain.rectangle(x + e.before, y - d.ascent(),
+				pi.pain.rectangle(x + e.before + 1, y - d.ascent(),
 				                  d.width() - 1, d.height() - 1, e.color);
 			x += d.wid + e.before + e.after;
 			break;
