@@ -89,15 +89,15 @@
 #   view(er)             -> ansehen / Ansicht / Betrachter
 #   wrap                 -> umflossenes Gleitobjekt
 #
-# Jürgen Spitzmüller <spitz@lyx.org>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016.
+# Jürgen Spitzmüller <spitz@lyx.org>, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2016-12-29 08:50+0100\n"
-"PO-Revision-Date: 2016-12-29 08:57+0100\n"
+"POT-Creation-Date: 2017-01-13 12:42+0100\n"
+"PO-Revision-Date: 2017-01-12 16:43+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
-"Language-Team: German <lyx-docs@lists.lyx.org>\n"
+"Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -248,38 +248,57 @@ msgid ""
 "Define options such as --min-crossrefs (see the documentation of BibTeX)"
 msgstr "Optionen wie --min-crossrefs definieren (siehe BibTeX-Dokumentation)"
 
-#: src/frontends/qt4/ui/BibtexAddUi.ui:21
+#: src/frontends/qt4/ui/BibtexAddUi.ui:20
 msgid "LyX: Add BibTeX Database"
 msgstr "LyX: BibTeX-Datenbank hinzufügen"
 
-#: src/frontends/qt4/ui/BibtexAddUi.ui:36 src/frontends/qt4/ui/BibtexUi.ui:47
-msgid "Scan for new databases and styles"
-msgstr "Überprüfe auf neue Datenbanken und Stildateien"
+#: src/frontends/qt4/ui/BibtexAddUi.ui:31
+msgid "&Databases found by LaTeX:"
+msgstr "Von &LaTeX gefundene Datenbanken:"
 
-#: src/frontends/qt4/ui/BibtexAddUi.ui:39 src/frontends/qt4/ui/BibtexUi.ui:50
+#: src/frontends/qt4/ui/BibtexAddUi.ui:67
+msgid "Rescan LaTeX's index for new databases and styles"
+msgstr "Lese LaTeX' Index neu ein"
+
+#: src/frontends/qt4/ui/BibtexAddUi.ui:70 src/frontends/qt4/ui/BibtexUi.ui:50
 #: src/frontends/qt4/ui/TexinfoUi.ui:94
 msgid "&Rescan"
 msgstr "&Neu lesen"
 
-#: src/frontends/qt4/ui/BibtexAddUi.ui:46 src/frontends/qt4/ui/BibtexUi.ui:97
+#: src/frontends/qt4/ui/BibtexAddUi.ui:81
+msgid ""
+"Here you can enter a local BibTeX database name or browse your directory."
+msgstr ""
+"Hier können Sie einen lokalen BibTeX-Datenbanknamen eingeben oder Ihr "
+"Verzeichnis durchsuchen."
+
+#: src/frontends/qt4/ui/BibtexAddUi.ui:84
+msgid "&Local databases:"
+msgstr "L&okale Datenbanken:"
+
+#: src/frontends/qt4/ui/BibtexAddUi.ui:102
+msgid "Here you can enter a local BibTeX database name"
+msgstr "Hier können Sie einen lokalen BibTeX-Datenbanknamen eingeben"
+
+#: src/frontends/qt4/ui/BibtexAddUi.ui:109
+msgid "Browse your local directory"
+msgstr "Lokales Verzeichnis durchsuchen"
+
+#: src/frontends/qt4/ui/BibtexAddUi.ui:112 src/frontends/qt4/ui/BibtexUi.ui:97
 #: src/frontends/qt4/ui/CompareUi.ui:50 src/frontends/qt4/ui/ExternalUi.ui:70
 #: src/frontends/qt4/ui/GraphicsUi.ui:58 src/frontends/qt4/ui/IncludeUi.ui:335
 #: src/frontends/qt4/ui/LaTeXUi.ui:161 src/frontends/qt4/ui/PrefInputUi.ui:111
 msgid "&Browse..."
 msgstr "&Durchsuchen..."
 
-#: src/frontends/qt4/ui/BibtexAddUi.ui:83
-msgid "Enter BibTeX database name"
-msgstr "Name der BibTeX-Datenbank eingeben"
-
-#: src/frontends/qt4/ui/BibtexAddUi.ui:114
+#: src/frontends/qt4/ui/BibtexAddUi.ui:162
 #: src/frontends/qt4/ui/BranchesUi.ui:113
 #: src/frontends/qt4/ui/CitationUi.ui:143 src/frontends/qt4/ui/IndicesUi.ui:134
 #: src/CutAndPaste.cpp:374
 msgid "&Add"
 msgstr "&Hinzufügen"
 
-#: src/frontends/qt4/ui/BibtexAddUi.ui:127 src/frontends/qt4/ui/BibtexUi.ui:213
+#: src/frontends/qt4/ui/BibtexAddUi.ui:175 src/frontends/qt4/ui/BibtexUi.ui:213
 #: src/frontends/qt4/ui/ChangesUi.ui:91 src/frontends/qt4/ui/SendtoUi.ui:92
 #: src/frontends/qt4/ui/ShortcutUi.ui:65 src/buffer_funcs.cpp:123
 #: src/frontends/qt4/ButtonController.cpp:239
@@ -287,6 +306,10 @@ msgstr "&Hinzufügen"
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "Abbrechen"
+
+#: src/frontends/qt4/ui/BibtexUi.ui:47
+msgid "Scan for new databases and styles"
+msgstr "Überprüfe auf neue Datenbanken und Stildateien"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:81
 msgid "The BibTeX style"
@@ -312,7 +335,7 @@ msgstr "&Inhalt:"
 msgid "all cited references"
 msgstr "alle zitierten Literatureinträge"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:153 src/frontends/qt4/GuiBibtex.cpp:328
+#: src/frontends/qt4/ui/BibtexUi.ui:153 src/frontends/qt4/GuiBibtex.cpp:332
 #: src/insets/InsetBibtex.cpp:214
 msgid "all uncited references"
 msgstr "alle nicht zitierten Literatureinträge"
@@ -1202,8 +1225,8 @@ msgid ""
 "Swap left and right delimiter type (while reversing to the appropriate "
 "direction)"
 msgstr ""
-"Vertauscht den linken und rechten Trennzeichentyp und dreht sie gleichzeitig"
-" in die passende Richtung."
+"Vertauscht den linken und rechten Trennzeichentyp und dreht sie gleichzeitig "
+"in die passende Richtung."
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:265
 msgid "S&wap && Reverse"
@@ -24696,7 +24719,7 @@ msgid "Document class not available"
 msgstr "Die Dokumentklasse ist nicht verfügbar"
 
 #: src/BufferParams.cpp:1946 src/insets/InsetCommandParams.cpp:434
-#: src/insets/InsetHyperlink.cpp:198
+#: src/insets/InsetHyperlink.cpp:199
 msgid "Uncodable characters"
 msgstr "unkodierbare Zeichen"
 
@@ -26843,19 +26866,19 @@ msgstr "Format "
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/Text3.cpp:2042 src/frontends/qt4/GuiApplication.cpp:1676
+#: src/Text3.cpp:2038 src/frontends/qt4/GuiApplication.cpp:1676
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
-#: src/Text3.cpp:2187 src/Text3.cpp:2199
+#: src/Text3.cpp:2183 src/Text3.cpp:2195
 msgid "Character set"
 msgstr "Zeichensatz"
 
-#: src/Text3.cpp:2352
+#: src/Text3.cpp:2348
 msgid "Path to thesaurus directory not set!"
 msgstr "Pfad zum Thesaurus-Wörterbuch nicht festlegt!"
 
-#: src/Text3.cpp:2353
+#: src/Text3.cpp:2349
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -26867,7 +26890,7 @@ msgstr ""
 "Im Benutzerhandbuch, Abschnitt 6.15.11, finden Sie Hinweise,\n"
 "um den Thesaurus einzurichten."
 
-#: src/Text3.cpp:2420 src/Text3.cpp:2431
+#: src/Text3.cpp:2416 src/Text3.cpp:2427
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
@@ -27686,7 +27709,20 @@ msgstr "Literatureintrag-Einstellungen"
 msgid "BibTeX Bibliography"
 msgstr "BibTeX-Literaturverzeichnis"
 
-#: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
+#: src/frontends/qt4/GuiBibtex.cpp:110
+msgid ""
+"This list consists of all databases that are indexed by LaTeX and thus are "
+"found without a file path. This is usually everything in the bib/ "
+"subdirectory of LaTeX's texmf tree. If you want to reuse your own database, "
+"this is the place you should store it."
+msgstr ""
+"Diese Liste enthält alle Datenbanken, die von LaTeX indiziert wurden und die "
+"daher ohne genaue Pfadangabe gefunden werden können. Üblicherweise sind dies "
+"alle Datenbanken im Unterverzeichnis bib/ von LaTeX' Texmf-Verzeichnis. Wenn "
+"Sie Ihre eigenen Datenbanken in verschiedenen Dokumenten verwenden wollen, "
+"ist dies der Ort, an dem Sie sie ablegen sollten."
+
+#: src/frontends/qt4/GuiBibtex.cpp:439 src/frontends/qt4/GuiBibtex.cpp:449
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
 #: src/frontends/qt4/GuiDocument.cpp:2201 src/frontends/qt4/GuiExternal.cpp:680
 #: src/frontends/qt4/GuiGraphics.cpp:793 src/frontends/qt4/GuiInclude.cpp:334
@@ -27696,19 +27732,19 @@ msgstr "BibTeX-Literaturverzeichnis"
 msgid "Documents|#o#O"
 msgstr "Dokumente|#k"
 
-#: src/frontends/qt4/GuiBibtex.cpp:437
+#: src/frontends/qt4/GuiBibtex.cpp:441
 msgid "BibTeX Databases (*.bib)"
 msgstr "BibTeX-Datenbanken (*.bib)"
 
-#: src/frontends/qt4/GuiBibtex.cpp:439
+#: src/frontends/qt4/GuiBibtex.cpp:443
 msgid "Select a BibTeX database to add"
 msgstr "Wählen Sie eine hinzuzufügende BibTeX-Datenbank"
 
-#: src/frontends/qt4/GuiBibtex.cpp:447
+#: src/frontends/qt4/GuiBibtex.cpp:451
 msgid "BibTeX Styles (*.bst)"
 msgstr "BibTeX-Stile (*.bst)"
 
-#: src/frontends/qt4/GuiBibtex.cpp:449
+#: src/frontends/qt4/GuiBibtex.cpp:453
 msgid "Select a BibTeX style"
 msgstr "Wählen Sie einen BibTeX-Stil"
 
@@ -30848,7 +30884,7 @@ msgstr ""
 "aktuellen Zeichenkodierung nicht darstellbar und wurden daher weggelassen:\n"
 "%2$s."
 
-#: src/insets/InsetExternal.cpp:395
+#: src/insets/InsetExternal.cpp:396
 #, c-format
 msgid "External template %1$s is not installed"
 msgstr "Externe Vorlage %1$s ist nicht installiert"
@@ -30908,11 +30944,11 @@ msgstr "Es ist keine Konvertierung von %1$s notwendig"
 msgid "Graphics file: %1$s"
 msgstr "Grafikdatei: %1$s"
 
-#: src/insets/InsetHyperlink.cpp:59
+#: src/insets/InsetHyperlink.cpp:60
 msgid "Hyperlink: "
 msgstr "Hyperlink:"
 
-#: src/insets/InsetHyperlink.cpp:199
+#: src/insets/InsetHyperlink.cpp:200
 #, c-format
 msgid ""
 "The following characters that are used in the href inset are not\n"
@@ -30924,19 +30960,19 @@ msgstr ""
 "aktuellen Zeichenkodierung nicht darstellbar und wurden daher weggelassen:\n"
 "%1$s."
 
-#: src/insets/InsetHyperlink.cpp:276
+#: src/insets/InsetHyperlink.cpp:277
 msgid "www"
 msgstr "www"
 
-#: src/insets/InsetHyperlink.cpp:278
+#: src/insets/InsetHyperlink.cpp:279
 msgid "email"
 msgstr "E-Mail"
 
-#: src/insets/InsetHyperlink.cpp:280
+#: src/insets/InsetHyperlink.cpp:281
 msgid "file"
 msgstr "Datei"
 
-#: src/insets/InsetHyperlink.cpp:281
+#: src/insets/InsetHyperlink.cpp:282
 #, c-format
 msgid "Hyperlink (%1$s) to %2$s"
 msgstr "Hyperlink (%1$s) to %2$s"
