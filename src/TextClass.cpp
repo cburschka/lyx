@@ -1416,18 +1416,6 @@ bool TextClass::readOutlinerName(Lexer & lexrc)
 }
 
 
-docstring TextClass::outlinerName(std::string const & type) const
-{
-	std::map<std::string,docstring>::const_iterator const it
-		= outliner_names_.find(type);
-	if (it == outliner_names_.end()) {
-		LYXERR0("Missing OutlinerName for " << type << "!");
-		return translateIfPossible(from_utf8(type));
-	} else
-		return translateIfPossible(it->second);
-}
-
-
 string const & TextClass::prerequisites(string const & sep) const
 {
 	if (contains(prerequisites_, ',')) {

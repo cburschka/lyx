@@ -351,7 +351,8 @@ void TocModels::reset(BufferView const * bv)
 	names_->blockSignals(true);
 	names_->beginResetModel();
 	names_->insertColumns(0, 1);
-	TocList const & tocs = bv->buffer().masterBuffer()->tocBackend().tocs();
+	TocBackend const & backend = bv->buffer().masterBuffer()->tocBackend();
+	TocList const & tocs = backend.tocs();
 	TocList::const_iterator it = tocs.begin();
 	TocList::const_iterator toc_end = tocs.end();
 	for (; it != toc_end; ++it) {
@@ -364,7 +365,7 @@ void TocModels::reset(BufferView const * bv)
 		mod_it.value()->reset(it->second);
 
 		// Fill in the names_ model.
-		QString const gui_name = guiName(it->first, bv->buffer().params());
+		QString const gui_name = toqstr(backend.outlinerName(it->first));
 		int const current_row = names_->rowCount();
 		names_->insertRows(current_row, 1);
 		QModelIndex const index = names_->index(current_row, 0);

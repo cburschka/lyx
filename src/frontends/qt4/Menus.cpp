@@ -1320,7 +1320,8 @@ void MenuDefinition::expandToc(Buffer const * buf)
 			continue;
 		MenuDefinition submenu;
 		submenu.expandTocSubmenu(cit->first, *cit->second);
-		MenuItem item(MenuItem::Submenu, guiName(cit->first, buf->params()));
+		docstring const toc_name = buf->tocBackend().outlinerName(cit->first);
+		MenuItem item(MenuItem::Submenu, toqstr(toc_name));
 		item.setSubmenu(submenu);
 		// deserves to be in the main menu?
 		if (!TocBackend::isOther(cit->first))
