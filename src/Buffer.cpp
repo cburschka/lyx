@@ -912,6 +912,9 @@ int Buffer::readHeader(Lexer & lex)
 	params().output_sync_macro.erase();
 	params().setLocalLayout(docstring(), false);
 	params().setLocalLayout(docstring(), true);
+	params().biblio_opts.erase();
+	params().biblatex_bibstyle.erase();
+	params().biblatex_citestyle.erase();
 
 	for (int i = 0; i < 4; ++i) {
 		params().user_defined_bullet(i) = ITEMIZE_DEFAULTS[i];
