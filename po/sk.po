@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-01-13 11:00+0100\n"
-"PO-Revision-Date: 2017-01-13 11:51+0000\n"
+"POT-Creation-Date: 2017-01-14 19:13+0100\n"
+"PO-Revision-Date: 2017-01-14 18:22+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -83,17 +83,18 @@ msgid "Citation Style"
 msgstr "Štýl citovania"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:55
-msgid "Sty&le engine:"
-msgstr "Obsluha Štý&lu:"
+msgid "Sty&le format:"
+msgstr "Štý&l formátu:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:65
 msgid ""
-"A selection of different style engines (such as natbib) that respectively "
-"provide support for specific citytion and bibliography styles. Expand to get "
-"more information."
+"A selection of different style format approaches (such as natbib) that "
+"respectively provide support for specific citation and bibliography styles. "
+"Expand to get more information."
 msgstr ""
-"Výber inej obsluhy (ako napr. natbib) ktorá poskytuje podporu špecifických "
-"bibliografických štýlov. Rozviňte keď chcete viac informácií."
+"Výber iných formátových metód (ako napr. natbib) ktoré poskytujú podporu "
+"špecifických citácií a bibliografických štýlov. Rozviňte keď chcete viac "
+"informácií."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:75
 msgid "&Variant:"
@@ -103,16 +104,17 @@ msgstr "&Variácia:"
 msgid "Provides available cite style variants."
 msgstr "Poskytuje dostupné varianty štýlov citovania."
 
-#: src/frontends/qt4/ui/BiblioUi.ui:118
+#: src/frontends/qt4/ui/BiblioUi.ui:118 src/frontends/qt4/GuiPrefs.cpp:825
+#: src/frontends/qt4/GuiPrefs.cpp:958
 msgid "Opt&ions:"
-msgstr "M&ožnosti:"
+msgstr "Možno&sti:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134
-msgid "Here you can enter further options of the biblatex package"
-msgstr "Tu môžte vložiť ďalšie voľby balíka biblatex"
+msgid "Here you can enter further options of the bibliography package"
+msgstr "Tu môžte vložiť ďalšie voľby balíka pre bibliografické záznamy"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:154
-msgid "&Biblatex citation style:"
+msgid "Biblatex &citation style:"
 msgstr "Štýl &biblatex-citácie:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:164
@@ -167,10 +169,10 @@ msgstr ""
 msgid "Bibliography Generation"
 msgstr "Generácia Bibliografie"
 
-#: src/frontends/qt4/ui/BiblioUi.ui:167 src/frontends/qt4/ui/IndicesUi.ui:33
-#: src/frontends/qt4/ui/PrefLatexUi.ui:85
+#: src/frontends/qt4/ui/BiblioUi.ui:363 src/frontends/qt4/ui/IndicesUi.ui:33
+#: src/frontends/qt4/ui/PrefLatexUi.ui:209
 msgid "&Processor:"
-msgstr "&Generátor:"
+msgstr "&Procesor:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:177 src/frontends/qt4/ui/IndicesUi.ui:43
 msgid "Select a processor"
@@ -373,9 +375,9 @@ msgstr "Prid&ať…"
 msgid "Remove the selected database"
 msgstr "Odstrániť vybranú databázu"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:282 src/frontends/qt4/ui/CitationUi.ui:156
+#: src/frontends/qt4/ui/BibtexUi.ui:61 src/frontends/qt4/ui/CitationUi.ui:156
 msgid "&Delete"
-msgstr "Zm&azať"
+msgstr "&Zmazať"
 
 #: src/frontends/qt4/ui/BoxUi.ui:23
 msgid "Type and Size"
@@ -613,7 +615,7 @@ msgstr "Ukázať ne-definované vetvy použité v tomto dokumente."
 
 #: src/frontends/qt4/ui/BranchesUi.ui:64
 msgid "&Undefined Branches"
-msgstr "&Nedefinované vetvy"
+msgstr "N&edefinované vetvy"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:84
 msgid "A&vailable Branches:"
@@ -3305,7 +3307,7 @@ msgstr "&Konvertor:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:91
 msgid "E&xtra flag:"
-msgstr "Prí&davný indikátor:"
+msgstr "Prída&vný indikátor:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:121
 msgid "&From format:"
@@ -3313,7 +3315,7 @@ msgstr "&Z formátu:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:153
 msgid "&To format:"
-msgstr "D&o formátu:"
+msgstr "&Do formátu:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:194
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:54
@@ -3356,9 +3358,9 @@ msgid ""
 msgstr ""
 "Keď aktívne, používanie konvertorov s 'needauth' voľbou je neprístupné."
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:340
+#: src/frontends/qt4/ui/PrefConvertersUi.ui:322
 msgid "Use need&auth option"
-msgstr "Použi needau&th voľbu"
+msgstr "Použi needa&uth voľbu"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:343
 msgid ""
@@ -3620,7 +3622,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:83
 msgid "Sho&w in export menu"
-msgstr "Zobraziť v menu &export"
+msgstr "Zobraziť v menu e&xport"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:90
 msgid "Vector &graphics format"
@@ -3628,7 +3630,7 @@ msgstr "&Vektorový formát obrázku"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:97
 msgid "S&hort name:"
-msgstr "K&rátke meno:"
+msgstr "&Krátke meno:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:110
 msgid "E&xtensions:"
@@ -3900,6 +3902,10 @@ msgid "Optional paper size flag (-paper) for some DVI viewers"
 msgstr ""
 "Voliteľný indikátor veľkosti papiera (-paper) pre niektoré DVI prehliadače"
 
+#: src/frontends/qt4/ui/PrefLatexUi.ui:107
+msgid "P&rocessor:"
+msgstr "Pro&cesor:"
+
 #: src/frontends/qt4/ui/PrefLatexUi.ui:108
 msgid "BibTeX command and options"
 msgstr "Príkaz a voľby pre BibTeX"
@@ -3909,18 +3915,20 @@ msgstr "Príkaz a voľby pre BibTeX"
 msgid "Processor for &Japanese:"
 msgstr "Generátor pre &Japončinu:"
 
+#: src/frontends/qt4/ui/PrefLatexUi.ui:150
+msgid "Options:"
+msgstr "Možnosti:"
+
 #: src/frontends/qt4/ui/PrefLatexUi.ui:138
 msgid "Specific BibTeX command and options for pLaTeX (Japanese)"
 msgstr "BibTeX príkaz a voľby pre pLaTeX (Japonsky)"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:173
-msgid "Pr&ocessor:"
-msgstr "&Generátor:"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:199 src/frontends/qt4/GuiPrefs.cpp:824
-#: src/frontends/qt4/GuiPrefs.cpp:919
+#: src/frontends/qt4/ui/BiblioUi.ui:397
+#: src/frontends/qt4/ui/PrefLatexUi.ui:120
+#: src/frontends/qt4/ui/PrefLatexUi.ui:222 src/frontends/qt4/GuiPrefs.cpp:850
+#: src/frontends/qt4/GuiPrefs.cpp:985
 msgid "Op&tions:"
-msgstr "&Možnosti:"
+msgstr "Možnos&ti:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:209
 msgid "Index command and options (makeindex, xindy)"
@@ -3938,13 +3946,13 @@ msgstr "P&ríkaz nomenklatúry:"
 msgid "Command and options for nomencl (usually makeindex)"
 msgstr "Príkaz a voľby pre nomenklatúru (bežne makeindex)"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:265
-msgid "Chec&kTeX command:"
-msgstr "Príkaz Chec&kTeX:"
-
 #: src/frontends/qt4/ui/PrefLatexUi.ui:275
 msgid "CheckTeX start options and flags"
 msgstr "Začiatočné voľby a indikátory pre CheckTeX"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:299
+msgid "&CheckTeX command:"
+msgstr "Príkaz Chec&kTeX:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:285
 msgid ""
@@ -29058,6 +29066,10 @@ msgstr "Klávesnica/Myš"
 msgid "Input Completion"
 msgstr "Doplňovanie"
 
+#: src/frontends/qt4/GuiPrefs.cpp:784 src/frontends/qt4/GuiPrefs.cpp:934
+msgid "C&ommand:"
+msgstr "Príkaz:"
+
 #: src/frontends/qt4/GuiPrefs.cpp:783 src/frontends/qt4/GuiPrefs.cpp:808
 #: src/frontends/qt4/GuiPrefs.cpp:896 src/frontends/qt4/GuiPrefs.cpp:923
 msgid "Co&mmand:"
@@ -30653,10 +30665,6 @@ msgstr ""
 msgid "Biblatex"
 msgstr "Biblatex"
 
-#: src/insets/InsetBibtex.cpp:152
-msgid "BibTex"
-msgstr "BibTeX"
-
 #: src/insets/InsetBibtex.cpp:153
 #, c-format
 msgid ""
@@ -32243,6 +32251,15 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Sty&le engine:"
+#~ msgstr "Obsluha Štý&lu:"
+
+#~ msgid "BibTex"
+#~ msgstr "BibTeX"
+
+#~ msgid "Pr&ocessor:"
+#~ msgstr "&Generátor:"
 
 #~ msgid "Use BibTeX's default numerical styles"
 #~ msgstr "Použiť štandardné BibTeX numerické štýly"
@@ -36286,3 +36303,20 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Vložka BibTeX-u zahrňuje %1$s databázy.\n"
 #~ "Keď budete pokračovať, budú všetky otvorené."
+
+#~ msgid "Here you can enter further options of the biblatex package"
+#~ msgstr "Tu môžte vložiť ďalšie voľby balíka biblatex"
+
+#~ msgid "Chec&kTeX command:"
+#~ msgstr "Príkaz Chec&kTeX:"
+
+#~ msgid ""
+#~ "A selection of different style engines (such as natbib) that respectively "
+#~ "provide support for specific citytion and bibliography styles. Expand to get "
+#~ "more information."
+#~ msgstr ""
+#~ "Výber inej obsluhy (ako napr. natbib) ktorá poskytuje podporu špecifických "
+#~ "bibliografických štýlov. Rozviňte keď chcete viac informácií."
+
+#~ msgid "&Biblatex citation style:"
+#~ msgstr "Štýl &biblatex-citácie:"
