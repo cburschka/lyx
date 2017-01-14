@@ -98,6 +98,7 @@ public:
 		RC_INDEX_ALTERNATIVES,
 		RC_INDEX_COMMAND,
 		RC_INPUT,
+		RC_JBIBTEX_ALTERNATIVES,
 		RC_JBIBTEX_COMMAND,
 		RC_JINDEX_COMMAND,
 		RC_KBMAP,
@@ -240,6 +241,8 @@ public:
 	std::string bibtex_command;
 	/// command to run japanese bibtex incl. options
 	std::string jbibtex_command;
+	/// all available commands to run japanese bibtex incl. options
+	CommandSet jbibtex_alternatives;
 	/// all available index commands incl. options
 	CommandSet index_alternatives;
 	/// command to run makeindex incl. options or other index programs

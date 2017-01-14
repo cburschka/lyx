@@ -84,6 +84,11 @@
 #   Add options to forbid/ignore 'needauth' option
 #   No conversion necessary.
 
+# Incremented to format 21, by spitz
+#   Add jbibtex_alternatives, allow "automatic" value
+#   of bibtex_command and jbibtex_command (actually the
+#   default now)
+
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py.
 
@@ -380,5 +385,6 @@ conversions = [
 	[ 17, [remove_rtl]],
 	[ 18, []],
 	[ 19, [remove_print_support]],
-	[ 20, []]
+	[ 20, []],
+	[ 21, []]
 ]

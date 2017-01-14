@@ -216,11 +216,14 @@ public:
 private Q_SLOTS:
 	void on_latexEncodingCB_stateChanged(int state);
 	void on_latexBibtexCO_activated(int n);
+	void on_latexJBibtexCO_activated(int n);
 	void on_latexIndexCO_activated(int n);
 
 private:
 	///
 	std::set<std::string> bibtex_alternatives;
+	///
+	std::set<std::string> jbibtex_alternatives;
 	///
 	std::set<std::string> index_alternatives;
 };

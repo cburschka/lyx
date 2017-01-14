@@ -59,7 +59,7 @@ namespace {
 
 // The format should also be updated in configure.py, and conversion code
 // should be added to prefs2prefs_prefs.py.
-static unsigned int const LYXRC_FILEFORMAT = 20; // tommaso: 'needauth' options
+static unsigned int const LYXRC_FILEFORMAT = 21; // spitz: jbibtex_alternatives
 
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
@@ -124,6 +124,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\index_alternatives", LyXRC::RC_INDEX_ALTERNATIVES },
 	{ "\\index_command", LyXRC::RC_INDEX_COMMAND },
 	{ "\\input", LyXRC::RC_INPUT },
+	{ "\\jbibtex_alternatives", LyXRC::RC_JBIBTEX_ALTERNATIVES },
 	{ "\\jbibtex_command", LyXRC::RC_JBIBTEX_COMMAND },
 	{ "\\jindex_command", LyXRC::RC_JINDEX_COMMAND },
 	{ "\\kbmap", LyXRC::RC_KBMAP },
@@ -570,6 +571,12 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 		case RC_JBIBTEX_COMMAND:
 			if (lexrc.next(true)) {
 				jbibtex_command = lexrc.getString();
+			}
+			break;
+
+		case RC_JBIBTEX_ALTERNATIVES:
+			if (lexrc.next(true)) {
+				jbibtex_alternatives.insert(lexrc.getString());
 			}
 			break;
 
@@ -1441,6 +1448,18 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 		if (tag != RC_LAST)
 			break;
+	case RC_JBIBTEX_ALTERNATIVES: {
+		CommandSet::const_iterator it = jbibtex_alternatives.begin();
+		CommandSet::const_iterator end = jbibtex_alternatives.end();
+		for ( ; it != end; ++it) {
+			if (ignore_system_lyxrc
+			    || !system_lyxrc.jbibtex_alternatives.count(*it))
+				os << "\\jbibtex_alternatives \""
+				   << *it << "\"\n";
+		}
+		if (tag != RC_LAST)
+			break;
+	}
 	case RC_INDEX_ALTERNATIVES: {
 		CommandSet::const_iterator it = index_alternatives.begin();
 		CommandSet::const_iterator end = index_alternatives.end();
@@ -2786,6 +2805,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_INDEX_ALTERNATIVES:
 	case LyXRC::RC_INDEX_COMMAND:
 	case LyXRC::RC_JBIBTEX_COMMAND:
+	case LyXRC::RC_JBIBTEX_ALTERNATIVES:
 	case LyXRC::RC_JINDEX_COMMAND:
 	case LyXRC::RC_NOMENCL_COMMAND:
 	case LyXRC::RC_INPUT:

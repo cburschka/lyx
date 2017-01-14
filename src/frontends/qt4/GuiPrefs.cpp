@@ -743,6 +743,8 @@ PrefLatex::PrefLatex(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(latexBibtexED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+	connect(latexJBibtexCO, SIGNAL(activated(int)),
+		this, SIGNAL(changed()));
 	connect(latexJBibtexED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(latexIndexCO, SIGNAL(activated(int)),
@@ -779,7 +781,7 @@ void PrefLatex::on_latexBibtexCO_activated(int n)
 	QString const bibtex = latexBibtexCO->itemData(n).toString();
 	if (bibtex.isEmpty()) {
 		latexBibtexED->clear();
-		latexBibtexOptionsLA->setText(qt_("Co&mmand:"));
+		latexBibtexOptionsLA->setText(qt_("C&ommand:"));
 		return;
 	}
 	for (LyXRC::CommandSet::const_iterator it = bibtex_alternatives.begin();
@@ -796,6 +798,31 @@ void PrefLatex::on_latexBibtexCO_activated(int n)
 		}
 	}
 	latexBibtexOptionsLA->setText(qt_("&Options:"));
+}
+
+
+void PrefLatex::on_latexJBibtexCO_activated(int n)
+{
+	QString const jbibtex = latexJBibtexCO->itemData(n).toString();
+	if (jbibtex.isEmpty()) {
+		latexJBibtexED->clear();
+		latexJBibtexOptionsLA->setText(qt_("Co&mmand:"));
+		return;
+	}
+	for (LyXRC::CommandSet::const_iterator it = jbibtex_alternatives.begin();
+	     it != jbibtex_alternatives.end(); ++it) {
+		QString const bib = toqstr(*it);
+		int ind = bib.indexOf(" ");
+		QString sel_command = bib.left(ind);
+		QString sel_options = ind < 0 ? QString() : bib.mid(ind + 1);
+		if (jbibtex == sel_command) {
+			if (ind < 0)
+				latexJBibtexED->clear();
+			else
+				latexJBibtexED->setText(sel_options.trimmed());
+		}
+	}
+	latexJBibtexOptionsLA->setText(qt_("Opt&ions:"));
 }
 
 
@@ -838,6 +865,18 @@ void PrefLatex::applyRC(LyXRC & rc) const
 	else
 		rc.bibtex_command = fromqstr(bibtex) + " " + fromqstr(bibopt);
 
+	// If jbibtex is not empty, jbibopt contains the options, otherwise
+	// it is a customized bibtex command with options.
+	QString const jbibtex = latexJBibtexCO->itemData(
+		latexJBibtexCO->currentIndex()).toString();
+	QString const jbibopt = latexJBibtexED->text();
+	if (jbibtex.isEmpty())
+		rc.jbibtex_command = fromqstr(jbibopt);
+	else if (jbibopt.isEmpty())
+		rc.jbibtex_command = fromqstr(jbibtex);
+	else
+		rc.jbibtex_command = fromqstr(jbibtex) + " " + fromqstr(jbibopt);
+
 	// If index is not empty, idxopt contains the options, otherwise
 	// it is a customized index command with options.
 	QString const index = latexIndexCO->itemData(
@@ -855,7 +894,6 @@ void PrefLatex::applyRC(LyXRC & rc) const
 	else
 		rc.fontenc = "default";
 	rc.chktex_command = fromqstr(latexChecktexED->text());
-	rc.jbibtex_command = fromqstr(latexJBibtexED->text());
 	rc.jindex_command = fromqstr(latexJIndexED->text());
 	rc.nomencl_command = fromqstr(latexNomenclED->text());
 	rc.auto_reset_options = latexAutoresetCB->isChecked();
@@ -893,7 +931,35 @@ void PrefLatex::updateRC(LyXRC const & rc)
 	} else {
 		latexBibtexED->setText(toqstr(rc.bibtex_command));
 		latexBibtexCO->setCurrentIndex(0);
-		latexBibtexOptionsLA->setText(qt_("Co&mmand:"));
+		latexBibtexOptionsLA->setText(qt_("C&ommand:"));
+	}
+
+	latexJBibtexCO->clear();
+
+	latexJBibtexCO->addItem(qt_("Automatic"), "automatic");
+	latexJBibtexCO->addItem(qt_("Custom"), QString());
+	for (LyXRC::CommandSet::const_iterator it = rc.jbibtex_alternatives.begin();
+			     it != rc.jbibtex_alternatives.end(); ++it) {
+		QString const command = toqstr(*it).left(toqstr(*it).indexOf(" "));
+		latexJBibtexCO->addItem(command, command);
+	}
+
+	jbibtex_alternatives = rc.jbibtex_alternatives;
+
+	QString const jbib = toqstr(rc.jbibtex_command);
+	ind = jbib.indexOf(" ");
+	sel_command = jbib.left(ind);
+	sel_options = ind < 0 ? QString() : jbib.mid(ind + 1);
+
+	pos = latexJBibtexCO->findData(sel_command);
+	if (pos != -1) {
+		latexJBibtexCO->setCurrentIndex(pos);
+		latexJBibtexED->setText(sel_options.trimmed());
+		latexJBibtexOptionsLA->setText(qt_("Opt&ions:"));
+	} else {
+		latexJBibtexED->setText(toqstr(rc.bibtex_command));
+		latexJBibtexCO->setCurrentIndex(0);
+		latexJBibtexOptionsLA->setText(qt_("Co&mmand:"));
 	}
 
 	latexIndexCO->clear();
@@ -932,7 +998,6 @@ void PrefLatex::updateRC(LyXRC const & rc)
 		latexEncodingED->setText(toqstr(rc.fontenc));
 	}
 	latexChecktexED->setText(toqstr(rc.chktex_command));
-	latexJBibtexED->setText(toqstr(rc.jbibtex_command));
 	latexJIndexED->setText(toqstr(rc.jindex_command));
 	latexNomenclED->setText(toqstr(rc.nomencl_command));
 	latexAutoresetCB->setChecked(rc.auto_reset_options);
