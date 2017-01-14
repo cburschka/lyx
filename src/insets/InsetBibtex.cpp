@@ -149,7 +149,7 @@ void InsetBibtex::editDatabases() const
 
 	int nr_databases = bibfilelist.size();
 	if (nr_databases > 1) {
-			docstring const engine = usingBiblatex() ? _("Biblatex") : _("BibTex");
+			docstring const engine = usingBiblatex() ? _("Biblatex") : _("BibTeX");
 			docstring message = bformat(_("The %1$s[[BibTeX/Biblatex]] inset includes %2$s databases.\n"
 						       "If you proceed, all of them will be opened."),
 							engine, convert<docstring>(nr_databases));

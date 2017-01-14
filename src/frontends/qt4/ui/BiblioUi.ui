@@ -52,7 +52,7 @@
            <string/>
           </property>
           <property name="text">
-           <string>Sty&amp;le engine:</string>
+           <string>Sty&amp;le format:</string>
           </property>
           <property name="buddy">
            <cstring>citeEngineCO</cstring>
@@ -62,7 +62,7 @@
         <item>
          <widget class="QComboBox" name="citeEngineCO">
           <property name="toolTip">
-           <string>A selection of different style engines (such as natbib) that respectively provide support for specific citytion and bibliography styles. Expand to get more information.</string>
+           <string>A selection of different style format approaches (such as natbib) that respectively provide support for specific citation and bibliography styles. Expand to get more information.</string>
           </property>
          </widget>
         </item>
@@ -151,7 +151,7 @@
            <string/>
           </property>
           <property name="text">
-           <string>&amp;Biblatex citation style:</string>
+           <string>Biblatex &amp;citation style:</string>
           </property>
           <property name="buddy">
            <cstring>biblatexCbxCO</cstring>
