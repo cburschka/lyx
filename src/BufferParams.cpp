@@ -849,13 +849,13 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		biblio_style = lex.getString();
 	} else if (token == "\\biblio_options") {
 		lex.eatLine();
-		biblio_opts = lex.getString();
+		biblio_opts = trim(lex.getString());
 	} else if (token == "\\biblatex_bibstyle") {
 		lex.eatLine();
-		biblatex_bibstyle = lex.getString();
+		biblatex_bibstyle = trim(lex.getString());
 	} else if (token == "\\biblatex_citestyle") {
 		lex.eatLine();
-		biblatex_citestyle = lex.getString();
+		biblatex_citestyle = trim(lex.getString());
 	} else if (token == "\\use_bibtopic") {
 		lex >> use_bibtopic;
 	} else if (token == "\\use_indices") {
