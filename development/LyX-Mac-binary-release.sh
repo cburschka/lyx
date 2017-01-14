@@ -65,7 +65,7 @@ case "${QtVersion}:${QtAPI}" in
 	QtConfigureOptions="${QtConfigureOptions} -nomake examples -nomake demos -nomake docs -nomake tools"
 	QtMajorVersion=qt5
 	;;
-5.6*)
+5.6*|5.7*)
 	QtConfigureOptions="${QtConfigureOptions} -no-strip"
 	QtConfigureOptions="${QtConfigureOptions} -no-kms -no-pkg-config"
 	QtConfigureOptions="${QtConfigureOptions} -nomake examples -nomake tools"
@@ -274,6 +274,11 @@ while [ $# -gt 0 ]; do
 		;;
 	--only-package=*)
 		LyxOnlyPackage=$(echo ${1}|cut -d= -f2)
+		shift
+		;;
+	--enable-cxx11)
+		LyXConfigureOptions="${LyXConfigureOptions} ${1}"
+		EnableCXX11="--enable-cxx11"
 		shift
 		;;
 	--*)
@@ -628,6 +633,14 @@ build_lyx() {
 	# Clear Output
 	if [ -n "${LyxAppZip}" -a -f "${LyxAppZip}" ]; then rm "${LyxAppZip}"; fi
 	if [ -d "${LyxAppPrefix}" ]; then rm -rf "${LyxAppPrefix}"; fi
+
+	case "${EnableCXX11}" in
+	"--enable-cxx11")
+		export CC=cc
+		export CXX="c++ -stdlib=libc++"
+		export CXXFLAGS=-std=c++11
+		;;
+	esac
 
 	# -------------------------------------
 	# Automate configure check
