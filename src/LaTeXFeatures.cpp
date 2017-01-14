@@ -865,10 +865,11 @@ void LaTeXFeatures::getFontEncodings(vector<string> & encodings) const
 {
 	// these must be loaded if glyphs of this script are used
 	// unless a language providing them is used in the document
-	// FIXME: currently the option is written twice in this case
-	if (mustProvide("textgreek"))
+	if (mustProvide("textgreek")
+	    && find(encodings.begin(), encodings.end(), "LGR") == encodings.end())
 		encodings.insert(encodings.begin(), "LGR");
-	if (mustProvide("textcyr"))
+	if (mustProvide("textcyr")
+	    && find(encodings.begin(), encodings.end(), "T2A") == encodings.end())
 		encodings.insert(encodings.begin(), "T2A");
 
 	LanguageList::const_iterator it  = UsedLanguages_.begin();
