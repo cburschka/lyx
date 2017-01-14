@@ -123,7 +123,7 @@ void InsetCitation::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (cmd.getArg(0) == "toggleparam") {
 			string cmdname = getCmdName();
 			string const alias =
-				buffer().params().getCiteAlias(cmdname);
+				buffer().masterParams().getCiteAlias(cmdname);
 			if (!alias.empty())
 				cmdname = alias;
 			string const par = cmd.getArg(1);
@@ -157,7 +157,7 @@ bool InsetCitation::getStatus(Cursor & cur, FuncRequest const & cmd,
 		if (cmd.getArg(0) == "changetype") {
 			string cmdname = getCmdName();
 			string const alias =
-				buffer().params().getCiteAlias(cmdname);
+				buffer().masterParams().getCiteAlias(cmdname);
 			if (!alias.empty())
 				cmdname = alias;
 			if (suffixIs(cmdname, "*"))
@@ -169,12 +169,12 @@ bool InsetCitation::getStatus(Cursor & cur, FuncRequest const & cmd,
 		if (cmd.getArg(0) == "toggleparam") {
 			string cmdname = getCmdName();
 			string const alias =
-				buffer().params().getCiteAlias(cmdname);
+				buffer().masterParams().getCiteAlias(cmdname);
 			if (!alias.empty())
 				cmdname = alias;
 			vector<CitationStyle> citation_styles =
-				buffer().params().citeStyles();
-			CitationStyle cs = getCitationStyle(buffer().params(),
+				buffer().masterParams().citeStyles();
+			CitationStyle cs = getCitationStyle(buffer().masterParams(),
 							    cmdname, citation_styles);
 			if (cmd.getArg(1) == "star") {
 				status.setEnabled(cs.hasStarredVersion);
@@ -349,7 +349,7 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 		cite_type = cite_type.substr(0, cite_type.size() - 1);
 
 	// handle alias
-	string const alias = buf.params().getCiteAlias(cite_type);
+	string const alias = buf.masterParams().getCiteAlias(cite_type);
 	if (!alias.empty())
 		cite_type = alias;
 
@@ -518,8 +518,9 @@ void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 			os << cleanupWhitespace(getParam("key"));
 		return;
 	}
-	vector<CitationStyle> citation_styles = buffer().params().citeStyles();
-	CitationStyle cs = asValidLatexCommand(buffer().params(), getCmdName(), citation_styles);
+	vector<CitationStyle> citation_styles = buffer().masterParams().citeStyles();
+	CitationStyle cs = asValidLatexCommand(buffer().masterParams(),
+					       getCmdName(), citation_styles);
 	// FIXME UNICODE
 	docstring const cite_str = from_utf8(citationStyleToString(cs, true));
 

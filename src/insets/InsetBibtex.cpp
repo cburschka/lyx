@@ -172,7 +172,7 @@ void InsetBibtex::editDatabases() const
 
 bool InsetBibtex::usingBiblatex() const
 {
-	return buffer().masterBuffer()->params().useBiblatex();
+	return buffer().masterParams().useBiblatex();
 }
 
 
@@ -279,9 +279,9 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 			buffer().prepareBibFilePaths(runparams, getBibFiles(), false);
 		// Style options
 		if (style == "default")
-			style = buffer().params().defaultBiblioStyle();
-		if (!style.empty() && !buffer().params().use_bibtopic) {
-			string base = buffer().prepareFileNameForLaTeX(style, ".bst", runparams.nice);
+			style = buffer().masterParams().defaultBiblioStyle();
+		if (!style.empty() && !buffer().masterParams().use_bibtopic) {
+			string base = buffer().masterBuffer()->prepareFileNameForLaTeX(style, ".bst", runparams.nice);
 			FileName const try_in_file =
 				makeAbsPath(base + ".bst", buffer().filePath());
 			bool const not_from_texmf = try_in_file.isReadableFile();
@@ -316,7 +316,7 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 						      "BibTeX will be unable to find it."));
 		}
 		// Handle the bibtopic case
-		if (!db_out.empty() && buffer().params().use_bibtopic) {
+		if (!db_out.empty() && buffer().masterParams().use_bibtopic) {
 			os << "\\begin{btSect}";
 			if (!style.empty())
 				os << "[" << style << "]";
@@ -329,17 +329,17 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 			   << "\\end{btSect}\n";
 		}
 		// bibtotoc option
-		if (!bibtotoc.empty() && !buffer().params().use_bibtopic) {
+		if (!bibtotoc.empty() && !buffer().masterParams().use_bibtopic) {
 			// set label for hyperref, see http://www.lyx.org/trac/ticket/6470
-			if (buffer().params().pdfoptions().use_hyperref)
+			if (buffer().masterParams().pdfoptions().use_hyperref)
 					os << "\\phantomsection";
-			if (buffer().params().documentClass().hasLaTeXLayout("chapter"))
+			if (buffer().masterParams().documentClass().hasLaTeXLayout("chapter"))
 				os << "\\addcontentsline{toc}{chapter}{\\bibname}";
-			else if (buffer().params().documentClass().hasLaTeXLayout("section"))
+			else if (buffer().masterParams().documentClass().hasLaTeXLayout("section"))
 				os << "\\addcontentsline{toc}{section}{\\refname}";
 		}
 		// The bibliography command
-		if (!db_out.empty() && !buffer().params().use_bibtopic) {
+		if (!db_out.empty() && !buffer().masterParams().use_bibtopic) {
 			docstring btprint = getParam("btprint");
 			if (btprint == "btPrintAll") {
 				os << "\\nocite{*}\n";
@@ -651,7 +651,7 @@ void InsetBibtex::parseBibTeXFiles() const
 	support::FileNamePairList::const_iterator en = files.end();
 	for (; it != en; ++ it) {
 		ifdocstream ifs(it->second.toFilesystemEncoding().c_str(),
-			ios_base::in, buffer().params().encoding().iconvName());
+			ios_base::in, buffer().masterParams().encoding().iconvName());
 
 		char_type ch;
 		VarMap strings;
@@ -862,7 +862,7 @@ bool InsetBibtex::delDatabase(docstring const & db)
 
 void InsetBibtex::validate(LaTeXFeatures & features) const
 {
-	if (features.bufferParams().use_bibtopic)
+	if (features.buffer().masterParams().use_bibtopic)
 		features.require("bibtopic");
 	// FIXME XHTML
 	// It'd be better to be able to get this from an InsetLayout, but at present
