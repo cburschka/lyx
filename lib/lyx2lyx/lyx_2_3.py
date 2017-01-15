@@ -1415,11 +1415,17 @@ def revert_bibpackopts(document):
     if engine not in ["natbib", "jurabib"]:
         return
 
-    biblio_options = ""
     i = find_token(document.header, "\\biblio_options", 0)
-    if i != -1:
-        biblio_options = get_value(document.header, "\\biblio_options", i)
-        del document.header[i]
+    if i == -1:
+        # Nothing to do if we have no options
+        return
+
+    biblio_options = get_value(document.header, "\\biblio_options", i)
+    del document.header[i]
+
+    if not biblio_options:
+        # Nothing to do for empty options
+        return
 
     i = find_token(document.header, "\\begin_local_layout", 0)
     if i == -1:
