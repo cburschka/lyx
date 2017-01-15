@@ -2173,7 +2173,6 @@ def revert_passthru(document):
           # but first let's check and make sure there is no content between the
           # two layouts. i'm not sure if that can happen or not.
           for l in range(end + 1, next):
-            document.warning("c'" + document.body[l] + "'")
             if document.body[l] != "":
               document.warning("Found content between adjacent " + lay + " layouts!")
               break
@@ -2183,7 +2182,6 @@ def revert_passthru(document):
             break
           empty = True
           for l in range(next + 1, nextend):
-            document.warning("e'" + document.body[l] + "'")
             if document.body[l] != "":
               empty = False
               break
