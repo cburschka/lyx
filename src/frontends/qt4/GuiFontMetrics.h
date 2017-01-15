@@ -106,7 +106,7 @@ private:
 
 #ifdef CACHE_METRICS_BREAKAT
 	/// Cache for breakAt
-	mutable QCache<docstring, std::pair<int, int>> breakat_cache_;
+	mutable QCache<docstring, std::pair<int, int> > breakat_cache_;
 #endif
 
 #ifdef CACHE_METRICS_QTEXTLAYOUT
