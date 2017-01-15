@@ -105,7 +105,7 @@ public:
 	std::string contextMenuName() const;
 	///
 	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype) const;
+				  UpdateType utype, TocBackend & backend) const;
 protected:
 	///
 	virtual void doDispatch(Cursor & cur, FuncRequest & cmd);

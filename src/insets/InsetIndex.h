@@ -72,7 +72,7 @@ private:
 	bool neverIndent() const { return true; }
 	///
 	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype) const;
+				  UpdateType utype, TocBackend & backend) const;
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///

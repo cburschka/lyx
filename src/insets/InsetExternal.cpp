@@ -504,10 +504,10 @@ bool InsetExternal::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 
 void InsetExternal::addToToc(DocIterator const & cpit, bool output_active,
-							 UpdateType) const
+							 UpdateType, TocBackend & backend) const
 {
 	docstring str = screenLabel(params_, buffer());
-	TocBuilder & b = buffer().tocBackend().builder("external");
+	TocBuilder & b = backend.builder("external");
 	b.pushItem(cpit, str, output_active);
 	b.pop();
 }

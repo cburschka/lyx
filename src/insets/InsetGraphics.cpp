@@ -1036,11 +1036,11 @@ void InsetGraphics::editGraphics(InsetGraphicsParams const & p) const
 
 
 void InsetGraphics::addToToc(DocIterator const & cpit, bool output_active,
-							 UpdateType) const
+							 UpdateType, TocBackend & backend) const
 {
 	//FIXME UNICODE
 	docstring const str = from_utf8(params_.filename.onlyFileName());
-	TocBuilder & b = buffer().tocBackend().builder("graphics");
+	TocBuilder & b = backend.builder("graphics");
 	b.pushItem(cpit, str, output_active);
 	b.pop();
 }

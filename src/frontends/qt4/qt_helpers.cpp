@@ -21,7 +21,6 @@
 
 #include "BufferParams.h"
 #include "FloatList.h"
-#include "IndicesList.h"
 #include "Language.h"
 #include "Length.h"
 #include "TextClass.h"
@@ -593,47 +592,6 @@ QStringList fileFilters(QString const & desc)
 		list.append(f);
 	}
 	return list;
-}
-
-
-QString guiName(string const & type, BufferParams const & bp)
-{
-	// Hardcoded types
-	if (type == "tableofcontents")
-		return qt_("Table of Contents");
-	if (type == "change")
-		return qt_("Changes");
-	if (type == "senseless")
-		return qt_("Senseless");
-	if (type == "citation")
-		return qt_("Citations");
-	if (type == "label")
-		return qt_("Labels and References");
-	// Customizable, but the corresponding insets have no layout definition
-	if (type == "child")
-		return qt_("Child Documents");
-	if (type == "graphics")
-		return qt_("Graphics");
-	if (type == "equation")
-		return qt_("Equations");
-	if (type == "external")
-		return qt_("External material");
-	if (type == "math-macro")
-		return qt_("Math macros");
-	if (type == "nomencl")
-		return qt_("Nomenclature Entries");
-
-	if (prefixIs(type, "index:")) {
-		string const itype = split(type, ':');
-		IndicesList const & indiceslist = bp.indiceslist();
-		Index const * index = indiceslist.findShortcut(from_utf8(itype));
-		docstring indextype = _("unknown type!");
-		if (index)
-			indextype = index->index();
-		return toqstr(bformat(_("Index Entries (%1$s)"), indextype));
-	}
-
-	return toqstr(bp.documentClass().outlinerName(type));
 }
 
 

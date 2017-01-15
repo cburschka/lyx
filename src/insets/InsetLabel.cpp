@@ -170,10 +170,10 @@ void InsetLabel::updateBuffer(ParIterator const & par, UpdateType utype)
 
 
 void InsetLabel::addToToc(DocIterator const & cpit, bool output_active,
-						  UpdateType) const
+						  UpdateType, TocBackend & backend) const
 {
 	docstring const & label = getParam("name");
-	shared_ptr<Toc> toc = buffer().tocBackend().toc("label");
+	shared_ptr<Toc> toc = backend.toc("label");
 	if (buffer().insetLabel(label) != this) {
 		toc->push_back(TocItem(cpit, 0, screen_label_, output_active));
 	} else {

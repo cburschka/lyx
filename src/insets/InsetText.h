@@ -25,6 +25,7 @@ class Dimension;
 class ParagraphList;
 class InsetCaption;
 class InsetTabular;
+class TocBuilder;
 
 /**
  A text inset is like a TeX box to write full text
@@ -176,7 +177,7 @@ public:
 	void forOutliner(docstring &, size_t const, bool const) const;
 	///
 	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype) const;
+				  UpdateType utype, TocBackend & backend) const;
 	///
 	Inset * clone() const { return new InsetText(*this); }
 	///
@@ -221,15 +222,17 @@ public:
 protected:
 	///
 	void iterateForToc(DocIterator const & cdit, bool output_active,
-					   UpdateType utype) const;
+					   UpdateType utype, TocBackend & backend) const;
 private:
 	/// Open the toc item for paragraph pit. Returns the paragraph index where
 	/// it should end.
 	pit_type openAddToTocForParagraph(pit_type pit,
 	                                  DocIterator const & dit,
-	                                  bool output_active) const;
+	                                  bool output_active,
+	                                  TocBackend & backend) const;
 	/// Close a toc item opened in start and closed in end
-	void closeAddToTocForParagraph(pit_type start, pit_type end) const;
+	void closeAddToTocForParagraph(pit_type start, pit_type end,
+	                               TocBackend & backend) const;
 	///
 	bool drawFrame_;
 	///

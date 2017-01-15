@@ -97,7 +97,7 @@ docstring InsetCaptionable::getCaptionHTML(OutputParams const & runparams) const
 
 
 void InsetCaptionable::addToToc(DocIterator const & cpit, bool output_active,
-								UpdateType utype) const
+								UpdateType utype, TocBackend & backend) const
 {
 	DocIterator pit = cpit;
 	pit.push_back(CursorSlice(const_cast<InsetCaptionable &>(*this)));
@@ -107,10 +107,10 @@ void InsetCaptionable::addToToc(DocIterator const & cpit, bool output_active,
 	// non-empty.
 	if (utype != OutputUpdate)
 		text().forOutliner(str, TOC_ENTRY_LENGTH);
-	TocBuilder & b = buffer().tocBackend().builder(caption_type_);
+	TocBuilder & b = backend.builder(caption_type_);
 	b.pushItem(pit, str, output_active);
 	// Proceed with the rest of the inset.
-	InsetCollapsable::addToToc(cpit, output_active, utype);
+	InsetCollapsable::addToToc(cpit, output_active, utype, backend);
 	b.pop();
 }
 

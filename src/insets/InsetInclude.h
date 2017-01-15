@@ -110,7 +110,7 @@ public:
 	void addPreview(DocIterator const &, graphics::PreviewLoader &) const;
 	///
 	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype) const;
+				  UpdateType utype, TocBackend & backend) const;
 	///
 	void updateBuffer(ParIterator const &, UpdateType);
 	///

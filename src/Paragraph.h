@@ -47,6 +47,7 @@ class MetricsInfo;
 class OutputParams;
 class PainterInfo;
 class ParagraphParameters;
+class TocBackend;
 class WordLangTuple;
 class XHTMLStream;
 class otexstream;
@@ -150,7 +151,7 @@ public:
 
 	///
 	void addChangesToToc(DocIterator const & cdit, Buffer const & buf,
-	        bool output_active) const;
+	                     bool output_active, TocBackend & backend) const;
 	/// set the buffer flag if there are changes in the paragraph
 	void addChangesToBuffer(Buffer const & buf) const;
 	///

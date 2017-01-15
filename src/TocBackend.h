@@ -133,17 +133,23 @@ public:
 	///
 	void writePlaintextTocList(std::string const & type,
 	        odocstringstream & os, size_t max_length) const;
-	///
+	/// Localised name for type
 	docstring outlinerName(std::string const & type) const;
+	/// Add a new (localised) name if yet unknown
+	void addName(std::string const & type, docstring const & name);
 	/// Whether a toc type is less important and appears in the "Other lists"
 	/// submenu
 	static bool isOther(std::string const & type);
 
 private:
 	///
+	void resetOutlinerNames();
+	///
 	TocList tocs_;
 	///
 	std::map<std::string, unique_ptr<TocBuilder>> builders_;
+	/// Stores localised outliner names from this buffer and its children
+	std::map<std::string, docstring> outliner_names_;
 	///
 	Buffer const * buffer_;
 }; // TocBackend

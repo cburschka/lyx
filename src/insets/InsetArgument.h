@@ -83,7 +83,7 @@ public:
 	//@}
 	///
 	void addToToc(DocIterator const & dit, bool output_active,
-	              UpdateType utype) const; //override
+	              UpdateType utype, TocBackend & backend) const; //override
 
 private:
 	///

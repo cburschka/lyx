@@ -71,7 +71,7 @@ public:
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
 	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype) const;
+				  UpdateType utype, TocBackend & backend) const;
 private:
 	/// unimplemented
 	InsetTableCell();
@@ -959,7 +959,7 @@ public:
 	void updateBuffer(ParIterator const &, UpdateType);
 	///
 	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype) const;
+				  UpdateType utype, TocBackend & backend) const;
 
 	///
 	bool completionSupported(Cursor const &) const;

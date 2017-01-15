@@ -57,6 +57,7 @@ class PainterInfo;
 class ParConstIterator;
 class ParIterator;
 class Text;
+class TocBackend;
 class TocList;
 class XHTMLStream;
 class otexstream;
@@ -512,9 +513,12 @@ public:
 	///
 	/// \param utype : is the toc being generated for use by the output
 	/// routines?
+	///
+	/// \param tocbackend : where to add the toc information.
 	virtual void addToToc(DocIterator const & /* di */,
 						  bool /* output_active */,
-						  UpdateType /* utype*/) const {}
+	                      UpdateType /* utype*/,
+	                      TocBackend & /* tocbackend */) const {}
 	/// Collect BibTeX information
 	virtual void collectBibKeys(InsetIterator const &) const {}
 	/// Update the counters of this inset and of its contents.

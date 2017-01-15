@@ -58,7 +58,7 @@ public:
 	void updateBuffer(ParIterator const & it, UpdateType);
 	///
 	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype) const;
+				  UpdateType utype, TocBackend & backend) const;
 	/// Is the content of this inset part of the immediate (visible) text sequence?
 	bool isPartOfTextSequence() const { return false; }
 	//@}

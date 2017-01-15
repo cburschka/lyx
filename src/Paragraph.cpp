@@ -562,10 +562,10 @@ Paragraph::Private::Private(Private const & p, Paragraph * owner,
 }
 
 
-void Paragraph::addChangesToToc(DocIterator const & cdit,
-	Buffer const & buf, bool output_active) const
+void Paragraph::addChangesToToc(DocIterator const & cdit, Buffer const & buf,
+                                bool output_active, TocBackend & backend) const
 {
-	d->changes_.addToToc(cdit, buf, output_active);
+	d->changes_.addToToc(cdit, buf, output_active, backend);
 }
 
 

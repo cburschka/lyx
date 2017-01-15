@@ -52,7 +52,7 @@ public:
 	void updateBuffer(ParIterator const &, UpdateType);
 	///
 	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype) const;
+				  UpdateType utype, TocBackend & backend) const;
 	///
 	InsetMathHull & operator=(InsetMathHull const &);
 	///

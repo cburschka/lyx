@@ -420,7 +420,7 @@ void InsetCitation::updateBuffer(ParIterator const &, UpdateType)
 
 
 void InsetCitation::addToToc(DocIterator const & cpit, bool output_active,
-							 UpdateType) const
+							 UpdateType, TocBackend & backend) const
 {
 	// NOTE
 	// BiblioInfo::collectCitedEntries() uses the TOC to collect the citations 
@@ -428,7 +428,7 @@ void InsetCitation::addToToc(DocIterator const & cpit, bool output_active,
 	// by both XHTML and plaintext output. So, if we change what goes into the TOC,
 	// then we will also need to change that routine.
 	docstring const tocitem = getParam("key");
-	TocBuilder & b = buffer().tocBackend().builder("citation");
+	TocBuilder & b = backend.builder("citation");
 	b.pushItem(cpit, tocitem, output_active);
 	b.pop();
 }

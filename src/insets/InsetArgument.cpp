@@ -317,17 +317,16 @@ void InsetArgument::latexArgument(otexstream & os,
 }
 
 
-
 void InsetArgument::addToToc(DocIterator const & dit, bool output_active,
-                             UpdateType utype) const
+                             UpdateType utype, TocBackend & backend) const
 {
 	if (!caption_of_toc_.empty()) {
 		docstring str;
 		text().forOutliner(str, TOC_ENTRY_LENGTH);
-		buffer().tocBackend().builder(caption_of_toc_).argumentItem(str);
+		backend.builder(caption_of_toc_).argumentItem(str);
 	}
 	// Proceed with the rest of the inset.
-	InsetText::addToToc(dit, output_active, utype);
+	InsetText::addToToc(dit, output_active, utype, backend);
 }
 
 

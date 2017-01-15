@@ -205,8 +205,10 @@ public:
 	OutputType outputType() const { return outputType_; }
 	/// Can be latex, docbook ... (the name of a format)
 	std::string outputFormat() const { return outputFormat_; }
-	///
-	docstring outlinerName(std::string const & type) const;
+	/// Return the non-localised names for the toc types.
+	std::map<std::string, docstring> const &
+	outlinerNames() const { return outliner_names_; }
+
 protected:
 	/// Protect construction
 	TextClass();

@@ -145,8 +145,6 @@ void Changes::set(Change const & change, pos_type const start, pos_type const en
 			<< ", author: " << change.author 
 			<< ", time: " << long(change.changetime)
 			<< ") in range (" << start << ", " << end << ")");
-		if (!isChanged())
-			is_update_required_ = true;
 	}
 
 	Range const newRange(start, end);
@@ -215,16 +213,13 @@ void Changes::erase(pos_type const pos)
 {
 	LYXERR(Debug::CHANGES, "Erasing change at position " << pos);
 
-	ChangeTable::iterator it = table_.begin();
-	ChangeTable::iterator end = table_.end();
-
-	for (; it != end; ++it) {
+	for (ChangeRange & cr : table_) {
 		// range (pos,pos+x) becomes (pos,pos+x-1)
-		if (it->range.start > pos)
-			--(it->range.start);
+		if (cr.range.start > pos)
+			--(cr.range.start);
 		// range (pos-x,pos) stays (pos-x,pos)
-		if (it->range.end > pos)
-			--(it->range.end);
+		if (cr.range.end > pos)
+			--(cr.range.end);
 	}
 
 	merge();
@@ -238,17 +233,14 @@ void Changes::insert(Change const & change, lyx::pos_type pos)
 			<< " at position " << pos);
 	}
 
-	ChangeTable::iterator it = table_.begin();
-	ChangeTable::iterator end = table_.end();
-
-	for (; it != end; ++it) {
+	for (ChangeRange & cr : table_) {
 		// range (pos,pos+x) becomes (pos+1,pos+x+1)
-		if (it->range.start >= pos)
-			++(it->range.start);
+		if (cr.range.start >= pos)
+			++(cr.range.start);
 
 		// range (pos-x,pos) stays as it is
-		if (it->range.end > pos)
-			++(it->range.end);
+		if (cr.range.end > pos)
+			++(cr.range.end);
 	}
 
 	set(change, pos, pos + 1); // set will call merge
@@ -258,70 +250,52 @@ void Changes::insert(Change const & change, lyx::pos_type pos)
 Change const & Changes::lookup(pos_type const pos) const
 {
 	static Change const noChange = Change(Change::UNCHANGED);
-
-	ChangeTable::const_iterator it = table_.begin();
-	ChangeTable::const_iterator const end = table_.end();
-
-	for (; it != end; ++it) {
-		if (it->range.contains(pos))
-			return it->change;
-	}
-
+	for (ChangeRange const & cr : table_)
+		if (cr.range.contains(pos))
+			return cr.change;
 	return noChange;
 }
 
 
 bool Changes::isDeleted(pos_type start, pos_type end) const
 {
-	ChangeTable::const_iterator it = table_.begin();
-	ChangeTable::const_iterator const itend = table_.end();
-
-	for (; it != itend; ++it) {
-		if (it->range.contains(Range(start, end))) {
+	for (ChangeRange const & cr : table_)
+		if (cr.range.contains(Range(start, end))) {
 			LYXERR(Debug::CHANGES, "range ("
 				<< start << ", " << end << ") fully contains ("
-				<< it->range.start << ", " << it->range.end
-				<< ") of type " << it->change.type);
-			return it->change.type == Change::DELETED;
+				<< cr.range.start << ", " << cr.range.end
+				<< ") of type " << cr.change.type);
+			return cr.change.type == Change::DELETED;
 		}
-	}
 	return false;
 }
 
 
 bool Changes::isChanged(pos_type const start, pos_type const end) const
 {
-	ChangeTable::const_iterator it = table_.begin();
-	ChangeTable::const_iterator const itend = table_.end();
-
-	for (; it != itend; ++it) {
-		if (it->range.intersects(Range(start, end))) {
+	for (ChangeRange const & cr : table_)
+		if (cr.range.intersects(Range(start, end))) {
 			LYXERR(Debug::CHANGES, "found intersection of range ("
 				<< start << ", " << end << ") with ("
-				<< it->range.start << ", " << it->range.end
-				<< ") of type " << it->change.type);
+				<< cr.range.start << ", " << cr.range.end
+				<< ") of type " << cr.change.type);
 			return true;
 		}
-	}
 	return false;
 }
 
 
 bool Changes::isChanged() const
 {
-	ChangeTable::const_iterator it = table_.begin();
-	ChangeTable::const_iterator const itend = table_.end();
-	for (; it != itend; ++it) {
-		if (it->change.changed())
+	for (ChangeRange const & cr : table_)
+		if (cr.change.changed())
 			return true;
-	}
 	return false;
 }
 
 
 void Changes::merge()
 {
-	bool merged = false;
 	ChangeTable::iterator it = table_.begin();
 
 	while (it != table_.end()) {
@@ -334,7 +308,6 @@ void Changes::merge()
 				<< it->range.start);
 
 			table_.erase(it);
-			merged = true;
 			// start again
 			it = table_.begin();
 			continue;
@@ -353,7 +326,6 @@ void Changes::merge()
 			(it + 1)->change.changetime = max(it->change.changetime,
 							  (it + 1)->change.changetime);
 			table_.erase(it);
-			merged = true;
 			// start again
 			it = table_.begin();
 			continue;
@@ -361,8 +333,6 @@ void Changes::merge()
 
 		++it;
 	}
-	if (merged && !isChanged())
-		is_update_required_ = true;
 }
 
 
@@ -498,29 +468,25 @@ void Changes::lyxMarkChange(ostream & os, BufferParams const & bparams, int & co
 
 void Changes::checkAuthors(AuthorList const & authorList)
 {
-	ChangeTable::const_iterator it = table_.begin();
-	ChangeTable::const_iterator endit = table_.end();
-	for ( ; it != endit ; ++it) 
-		if (it->change.type != Change::UNCHANGED)
-			authorList.get(it->change.author).setUsed(true);
+	for (ChangeRange const & cr : table_)
+		if (cr.change.type != Change::UNCHANGED)
+			authorList.get(cr.change.author).setUsed(true);
 }
 
 
 void Changes::addToToc(DocIterator const & cdit, Buffer const & buffer,
-        bool output_active) const
+                       bool output_active, TocBackend & backend) const
 {
 	if (table_.empty())
 		return;
 
-	shared_ptr<Toc> change_list = buffer.tocBackend().toc("change");
+	shared_ptr<Toc> change_list = backend.toc("change");
 	AuthorList const & author_list = buffer.params().authors();
 	DocIterator dit = cdit;
 
-	ChangeTable::const_iterator it = table_.begin();
-	ChangeTable::const_iterator const itend = table_.end();
-	for (; it != itend; ++it) {
+	for (ChangeRange const & cr : table_) {
 		docstring str;
-		switch (it->change.type) {
+		switch (cr.change.type) {
 		case Change::UNCHANGED:
 			continue;
 		case Change::DELETED:
@@ -532,13 +498,13 @@ void Changes::addToToc(DocIterator const & cdit, Buffer const & buffer,
 			str.push_back(0x270d);
 			break;
 		}
-		dit.pos() = it->range.start;
+		dit.pos() = cr.range.start;
 		Paragraph const & par = dit.paragraph();
-		str += " " + par.asString(it->range.start, min(par.size(), it->range.end));
-		if (it->range.end > par.size())
+		str += " " + par.asString(cr.range.start, min(par.size(), cr.range.end));
+		if (cr.range.end > par.size())
 			// ¶ U+00B6 PILCROW SIGN
 			str.push_back(0xb6);
-		docstring const & author = author_list.get(it->change.author).name();
+		docstring const & author = author_list.get(cr.change.author).name();
 		Toc::iterator it = TocBackend::findItem(*change_list, 0, author);
 		if (it == change_list->end()) {
 			change_list->push_back(TocItem(dit, 0, author, true));
@@ -556,9 +522,9 @@ void Changes::addToToc(DocIterator const & cdit, Buffer const & buffer,
 
 void Changes::updateBuffer(Buffer const & buf)
 {
-	is_update_required_ = false;
-	if (!buf.areChangesPresent() && isChanged())
-		buf.setChangesPresent(true);
+	bool const changed = isChanged();
+	buf.setChangesPresent(buf.areChangesPresent() || changed);
+	previously_changed_ = changed;
 }
 
 

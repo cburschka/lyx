@@ -367,6 +367,7 @@ Inset * InsetNameWrapper::clone() const
 
 void InsetNameWrapper::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	Changer dummy = mi.base.changeFontSet("textit");
 	InsetMathWrapper::metrics(mi, dim);
 	dim.wid += mathed_string_width(mi.base.font, from_ascii("\\"));
 }
@@ -374,19 +375,17 @@ void InsetNameWrapper::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetNameWrapper::draw(PainterInfo & pi, int x, int y) const
 {
-	// create fonts
-	PainterInfo namepi = pi;
-	if (parent_.validMacro())
-		namepi.base.font.setColor(Color_latex);
-	else
-		namepi.base.font.setColor(Color_error);
+	ColorCode const color = parent_.validMacro() ? Color_latex : Color_error;
+
+	Changer dummy = pi.base.changeFontSet("textit");
+	Changer dummy2 = pi.base.font.changeColor(color);
 
 	// draw backslash
-	pi.pain.text(x, y, from_ascii("\\"), namepi.base.font);
-	x += mathed_string_width(namepi.base.font, from_ascii("\\"));
+	pi.pain.text(x, y, from_ascii("\\"), pi.base.font);
+	x += mathed_string_width(pi.base.font, from_ascii("\\"));
 
 	// draw name
-	InsetMathWrapper::draw(namepi, x, y);
+	InsetMathWrapper::draw(pi, x, y);
 }
 
 
@@ -1384,15 +1383,16 @@ string MathMacroTemplate::contextMenuName() const
 	return "context-math-macro-definition";
 }
 
+
 void MathMacroTemplate::addToToc(DocIterator const & pit, bool output_active,
-								 UpdateType) const
+								 UpdateType, TocBackend & backend) const
 {
 	docstring str;
 	if (!validMacro())
 		str = bformat(_("Invalid macro! \\%1$s"), name());
 	else
 		str = "\\" + name();
-	TocBuilder & b = buffer().tocBackend().builder("math-macro");
+	TocBuilder & b = backend.builder("math-macro");
 	b.pushItem(pit, str, output_active);
 	b.pop();
 }

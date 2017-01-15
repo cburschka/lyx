@@ -41,7 +41,7 @@ public:
 	void validate(LaTeXFeatures & features) const;
 	///
 	void addToToc(DocIterator const & di, bool output_active,
-				  UpdateType utype) const;
+				  UpdateType utype, TocBackend & backend) const;
 	///
 	InsetCode lyxCode() const { return NOMENCL_CODE; }
 	///

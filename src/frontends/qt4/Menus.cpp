@@ -1311,19 +1311,20 @@ void MenuDefinition::expandToc(Buffer const * buf)
 	}
 
 	MenuDefinition other_lists;
-	TocList const & toc_list = buf->tocBackend().tocs();
-	TocList::const_iterator cit = toc_list.begin();
-	TocList::const_iterator end = toc_list.end();
-	for (; cit != end; ++cit) {
+	// In the navigation menu, only add tocs from this document
+	TocBackend const & backend = buf->tocBackend();
+	TocList const & toc_list = backend.tocs();
+	for (pair<string, shared_ptr<Toc>> const & toc : toc_list) {
 		// Handle table of contents later
-		if (cit->first == "tableofcontents" || cit->second->empty())
+		if (toc.first == "tableofcontents" || toc.second->empty())
 			continue;
 		MenuDefinition submenu;
-		submenu.expandTocSubmenu(cit->first, *cit->second);
-		MenuItem item(MenuItem::Submenu, guiName(cit->first, buf->params()));
+		submenu.expandTocSubmenu(toc.first, *toc.second);
+		docstring const toc_name = backend.outlinerName(toc.first);
+		MenuItem item(MenuItem::Submenu, toqstr(toc_name));
 		item.setSubmenu(submenu);
 		// deserves to be in the main menu?
-		if (!TocBackend::isOther(cit->first))
+		if (!TocBackend::isOther(toc.first))
 			add(item);
 		else
 			other_lists.add(item);
@@ -1335,8 +1336,8 @@ void MenuDefinition::expandToc(Buffer const * buf)
 	}
 	// Handle normal TOC
 	add(MenuItem(MenuItem::Separator));
-	cit = toc_list.find("tableofcontents");
-	if (cit == end)
+	TocList::const_iterator cit = toc_list.find("tableofcontents");
+	if (cit == toc_list.end())
 		LYXERR(Debug::GUI, "No table of contents.");
 	else {
 		if (!cit->second->empty())
@@ -1703,7 +1704,7 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 {
 	if (!bv)
 		return;
-    
+
 	if (!bv->cursor().inTexted())
 		return;
 
@@ -1719,7 +1720,7 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 
 	map<string, docstring> styles = quoteparams.getTypes();
 	string const qtype = qinset->getType();
-	
+
 	map<string, docstring>::const_iterator qq = styles.begin();
 	map<string, docstring>::const_iterator end = styles.end();
 
@@ -1768,7 +1769,7 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 		docstring const style = from_ascii(qq->first);
 		bool langdef = (style[0] == langqs);
 		bool globaldef = (style[0] == globalqsc);
-		
+
 		if (prefixIs(style, qtype[0])) {
 			FuncRequest cmd = FuncRequest(LFUN_INSET_MODIFY, subcmd + style);
 			docstring const desc = quoteparams.getShortGuiLabel(style);
@@ -1786,7 +1787,6 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 
 	add(MenuItem(MenuItem::Separator));
 
-	bool have_section = false;
 	bool display_static = false;
 	// ... then potentially items to reset to the defaults and to dynamic style ...
 	if (!main_dynamic_qs && globalqsc != 'x') {
@@ -1794,7 +1794,6 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 		docstring const desc = bformat(_("Use dynamic quotes (%1$s)|d"),
 						quoteparams.getGuiLabel(globalqs));
 		add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-		have_section = true;
 		display_static = true;
 	}
 	if (!main_global_qs && langdefqs != globalqs) {
@@ -1803,7 +1802,6 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 		docstring const desc = bformat(_("Reset to document default (%1$s, %2$s)|o"),
 						quoteparams.getGuiLabel(globalqs), variant);
 		add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-		have_section = true;
 	}
 	if (!main_langdef_qs) {
 		FuncRequest cmd = FuncRequest(LFUN_INSET_MODIFY, subcmd + globalqsc + wildcards);
@@ -1813,11 +1811,9 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 					: bformat(_("Reset to language default (%1$s)|l"),
 						  quoteparams.getGuiLabel(langdefqs));
 		add(MenuItem(MenuItem::Command, toqstr(desc), cmd));
-		have_section = true;
 	}
 
-	if (have_section)
-		add(MenuItem(MenuItem::Separator));
+	add(MenuItem(MenuItem::Separator));
 
 	// ... and a subitem with the rest
 	MenuItem item(MenuItem::Submenu, qt_("Change Style|y"));

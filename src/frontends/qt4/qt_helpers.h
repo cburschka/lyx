@@ -191,10 +191,6 @@ QString getExtension(QString const & name);
 QString makeAbsPath(QString const & relpath, QString const & base);
 QString changeExtension(QString const & oldname, QString const & ext);
 
-/// \return the display string associated with given type and buffer
-/// parameter.
-QString guiName(std::string const & type, BufferParams const & bp);
-
 /// Format \param text for display as a ToolTip, breaking at lines of \param
 /// width ems. Note: this function is expensive. Better call it in a delayed
 /// manner, i.e. not to fill in a model (see for instance the function

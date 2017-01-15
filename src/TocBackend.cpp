@@ -17,6 +17,7 @@
 
 #include "Buffer.h"
 #include "BufferParams.h"
+#include "IndicesList.h"
 #include "InsetList.h"
 #include "Paragraph.h"
 #include "TextClass.h"
@@ -213,9 +214,10 @@ void TocBackend::update(bool output_active, UpdateType utype)
 		it->second->clear();
 	tocs_.clear();
 	builders_.clear();
+	resetOutlinerNames();
 	if (!buffer_->isInternal()) {
 		DocIterator dit;
-		buffer_->inset().addToToc(dit, output_active, utype);
+		buffer_->inset().addToToc(dit, output_active, utype, *this);
 	}
 }
 
@@ -249,8 +251,56 @@ void TocBackend::writePlaintextTocList(string const & type,
 
 docstring TocBackend::outlinerName(string const & type) const
 {
-	return translateIfPossible(
-	    buffer_->params().documentClass().outlinerName(type));
+	map<string, docstring>::const_iterator const it
+		= outliner_names_.find(type);
+	if (it != outliner_names_.end())
+		return it->second;
+
+	// Legacy treatment of index:... type
+	if (support::prefixIs(type, "index:")) {
+		string const itype = support::split(type, ':');
+		IndicesList const & indiceslist = buffer_->params().indiceslist();
+		Index const * index = indiceslist.findShortcut(from_utf8(itype));
+		docstring indextype = _("unknown type!");
+		if (index)
+			indextype = index->index();
+		return support::bformat(_("Index Entries (%1$s)"), indextype);
+	}
+
+	LYXERR0("Missing OutlinerName for " << type << "!");
+	return from_utf8(type);
+}
+
+
+void TocBackend::resetOutlinerNames()
+{
+	outliner_names_.clear();
+	// names from this document class
+	for (pair<string, docstring> const & name
+		     : buffer_->params().documentClass().outlinerNames())
+		addName(name.first, translateIfPossible(name.second));
+	// Hardcoded types
+	addName("tableofcontents", _("Table of Contents"));
+	addName("change", _("Changes"));
+	addName("senseless", _("Senseless"));
+	addName("citation", _("Citations"));
+	addName("label", _("Labels and References"));
+	// Customizable, but the corresponding insets have no layout definition
+	addName("child", _("Child Documents"));
+	addName("graphics", _("Graphics"));
+	addName("equation", _("Equations"));
+	addName("external", _("External Material"));
+	addName("math-macro", _("Math Macros"));
+	addName("nomencl", _("Nomenclature Entries"));
+}
+
+
+void TocBackend::addName(string const & type, docstring const & name)
+{
+	if (name.empty())
+		return;
+	// only inserts if the key does not exist
+	outliner_names_.insert({type, name});
 }
 
 

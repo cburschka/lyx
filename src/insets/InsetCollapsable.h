@@ -152,7 +152,7 @@ public:
 	std::string contextMenuName() const;
 	///
 	void addToToc(DocIterator const & dit, bool output_active,
-	              UpdateType utype) const; //override
+	              UpdateType utype, TocBackend & backend) const; //override
 
 protected:
 	///
