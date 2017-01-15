@@ -516,7 +516,7 @@ void GuiBibtex::rescanBibStyles() const
 
 bool GuiBibtex::usingBibtopic() const
 {
-	return buffer().params().use_bibtopic;
+	return buffer().params().useBibtopic();
 }
 
 

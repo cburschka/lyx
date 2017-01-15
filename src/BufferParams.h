@@ -379,7 +379,9 @@ public:
 	/// All packages that can be switched on or off
 	static std::map<std::string, std::string> const & auto_packages();
 	/// Split bibliography?
-	bool use_bibtopic;
+	bool useBibtopic() const { return use_bibtopic && !useBiblatex(); }
+	/// Set split bibliography
+	void bibtopic(bool const b) { use_bibtopic = b; }
 	/// Split the index?
 	bool use_indices;
 	/// Save transient properties?
@@ -552,6 +554,8 @@ private:
 	CiteEngineType cite_engine_type_;
 	/// the default BibTeX style file for the document
 	std::string biblio_style;
+	/// Split bibliography?
+	bool use_bibtopic;
 	///
 	DocumentClassPtr doc_class_;
 	///

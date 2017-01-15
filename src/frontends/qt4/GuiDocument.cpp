@@ -2726,8 +2726,7 @@ void GuiDocument::applyView()
 	else
 		bp_.setCiteEngineType(ENGINE_TYPE_DEFAULT);
 
-	bp_.use_bibtopic =
-		biblioModule->bibtopicCB->isChecked();
+	bp_.bibtopic(biblioModule->bibtopicCB->isChecked());
 
 	bp_.setDefaultBiblioStyle(fromqstr(biblioModule->defaultBiblioCO->currentText()));
 
@@ -3154,7 +3153,7 @@ void GuiDocument::paramsToDialog()
 		biblioModule->citeStyleCO->findData(bp_.citeEngineType()));
 
 	biblioModule->bibtopicCB->setChecked(
-		bp_.use_bibtopic);
+		bp_.useBibtopic());
 
 	updateEngineDependends();
 

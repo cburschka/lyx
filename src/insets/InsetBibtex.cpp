@@ -280,7 +280,7 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 		// Style options
 		if (style == "default")
 			style = buffer().masterParams().defaultBiblioStyle();
-		if (!style.empty() && !buffer().masterParams().use_bibtopic) {
+		if (!style.empty() && !buffer().masterParams().useBibtopic()) {
 			string base = buffer().masterBuffer()->prepareFileNameForLaTeX(style, ".bst", runparams.nice);
 			FileName const try_in_file =
 				makeAbsPath(base + ".bst", buffer().filePath());
@@ -316,7 +316,7 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 						      "BibTeX will be unable to find it."));
 		}
 		// Handle the bibtopic case
-		if (!db_out.empty() && buffer().masterParams().use_bibtopic) {
+		if (!db_out.empty() && buffer().masterParams().useBibtopic()) {
 			os << "\\begin{btSect}";
 			if (!style.empty())
 				os << "[" << style << "]";
@@ -329,7 +329,7 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 			   << "\\end{btSect}\n";
 		}
 		// bibtotoc option
-		if (!bibtotoc.empty() && !buffer().masterParams().use_bibtopic) {
+		if (!bibtotoc.empty() && !buffer().masterParams().useBibtopic()) {
 			// set label for hyperref, see http://www.lyx.org/trac/ticket/6470
 			if (buffer().masterParams().pdfoptions().use_hyperref)
 					os << "\\phantomsection";
@@ -339,7 +339,7 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 				os << "\\addcontentsline{toc}{section}{\\refname}";
 		}
 		// The bibliography command
-		if (!db_out.empty() && !buffer().masterParams().use_bibtopic) {
+		if (!db_out.empty() && !buffer().masterParams().useBibtopic()) {
 			docstring btprint = getParam("btprint");
 			if (btprint == "btPrintAll") {
 				os << "\\nocite{*}\n";
@@ -862,7 +862,7 @@ bool InsetBibtex::delDatabase(docstring const & db)
 
 void InsetBibtex::validate(LaTeXFeatures & features) const
 {
-	if (features.buffer().masterParams().use_bibtopic)
+	if (features.buffer().masterParams().useBibtopic())
 		features.require("bibtopic");
 	// FIXME XHTML
 	// It'd be better to be able to get this from an InsetLayout, but at present
