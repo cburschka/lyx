@@ -301,7 +301,7 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 			: Changer();
 		// nice fraction
 		Changer dummy2 = pi.base.changeScript();
-		cell(0).draw(pi, xx, y - dy);
+		cell(0).draw(pi, xx + 1, y - dy);
 		// reference LaTeX code from nicefrac.sty:
 		//    \mkern-2mu/\mkern-1mu
 		if (latexkeys const * slash = slash_symbol()) {
@@ -354,7 +354,7 @@ void InsetMathFrac::draw(PainterInfo & pi, int x, int y) const
 		cell(1).draw(pi, m - dim1.wid / 2, y + dim1.asc + dy/2 - dy + t);
 		// horizontal line
 		if (kind_ != ATOP)
-			pi.pain.line(x, y - dy, x + dim.wid - 2, y - dy,
+			pi.pain.line(x, y - dy, x + dim.wid, y - dy,
 			             pi.base.font.color(), pi.pain.line_solid, t);
 	}
 	} //switch (kind_)
