@@ -8320,14 +8320,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8340,7 +8338,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8364,7 +8361,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -27547,7 +27543,7 @@ refstyle
 newref{fig}{refcmd={Image on page 
 \backslash
 pageref{#1}}}
-\change_inserted 424524441 1484843594
+\change_inserted 424524441 1484857490
 
 \series default
 
@@ -27572,7 +27568,7 @@ refstyle
 \series bold
 prettyref
 \series default
-, you could do so as follows:
+, you might do so as follows:
 \begin_inset Newline newline
 \end_inset
 
