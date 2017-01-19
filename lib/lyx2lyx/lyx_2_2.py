@@ -620,7 +620,7 @@ def convert_dashes(document):
     while i < len(document.body):
         words = document.body[i].split()
         if len(words) > 1 and words[0] == "\\begin_inset" and \
-           words[1] in ["CommandInset", "ERT", "External", "Formula", "Graphics", "IPA", "listings"]:
+           words[1] in ["CommandInset", "ERT", "External", "Formula", "FormulaMacro", "Graphics", "IPA", "listings"]:
             # must not replace anything in insets that store LaTeX contents in .lyx files
             # (math and command insets withut overridden read() and write() methods
             # filtering out IPA makes Text::readParToken() more simple
