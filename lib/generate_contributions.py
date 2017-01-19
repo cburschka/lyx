@@ -855,6 +855,14 @@ contributors = [
                  "9 June 2015",
                  u"Haiku OS support"),
 
+     contributor(u"Jan Niklas Hasse",
+                 "jhasse () bixense ! com",
+                 "GPL",
+                 "Re: Patch to make it possible to open empty files",
+                 "m=148163124122780",
+                 "23 December 2016",
+                 u"File opening enhancement"),
+
      contributor(u"Richard Heck",
                  "rgheck () comcast ! net",
                  "GPL",

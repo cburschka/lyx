@@ -95,12 +95,18 @@ Buffer * checkAndLoadLyXFile(FileName const & filename, bool const acceptDirty)
 	bool const exists = filename.exists();
 	bool const tryVC = exists ? false : LyXVC::fileInVC(filename);
 	if (exists || tryVC) {
-		if (exists && !filename.isReadableFile()) {
-			docstring text = bformat(_("The file %1$s exists but is not "
-				"readable by the current user."),
-				from_utf8(filename.absFileName()));
-			Alert::error(_("File not readable!"), text);
-			return 0;
+		if (exists) {
+			if (!filename.isReadableFile()) {
+				docstring text = bformat(_("The file %1$s exists but is not "
+					"readable by the current user."),
+					from_utf8(filename.absFileName()));
+				Alert::error(_("File not readable!"), text);
+				return 0;
+			}
+			if (filename.extension() == "lyx" && filename.isFileEmpty()) {
+				// Makes it possible to open an empty (0 bytes) .lyx file
+				return newFile(filename.absFileName(), "", true);
+			}
 		}
 		Buffer * b = theBufferList().newBuffer(filename.absFileName());
 		if (!b) {
