@@ -27526,7 +27526,11 @@ fig
 
 ) can be done
 \change_inserted 424524441 1483414614
-, for refstyle,
+, for 
+\series bold
+refstyle
+\series default
+,
 \change_unchanged
  with this command
 \change_inserted 424524441 1483414616
@@ -27543,13 +27547,60 @@ fig
 newref{fig}{refcmd={Image on page 
 \backslash
 pageref{#1}}}
+\change_inserted 424524441 1484843594
+
 \series default
 
 \begin_inset Newline newline
 \end_inset
 
-For more information about the format, have a look at the package documentations
-, 
+Please note that neither 
+\series bold
+prettyref
+\series default
+ nor 
+\series bold
+refstyle
+\series default
+ (nor \SpecialChar LyX
+ itself) predefines reference formats for all available types.
+ This is especially true for the wide variety of mathematical `theorem'
+ environments.
+ So if you want to make formatted references to, say, Propositions, then
+ you will need to define the relevant format yourself.
+ For 
+\series bold
+prettyref
+\series default
+, you could do so as follows:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+newrefformat{prop}{Proposition 
+\backslash
+ref{#1}}
+\change_unchanged
+
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+For more information about 
+\change_inserted 424524441 1484843645
+defining formatted references
+\change_deleted 424524441 1484843647
+the format
+\change_unchanged
+, have a look at the package documentation
+\change_deleted 424524441 1484843659
+s,
+\change_unchanged
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "prettyref,refstyle"
@@ -27557,7 +27608,7 @@ key "prettyref,refstyle"
 \end_inset
 
 .
-\change_inserted 424524441 1483414624
+\change_inserted 424524441 1484843594
 
 \begin_inset Newline newline
 \end_inset
