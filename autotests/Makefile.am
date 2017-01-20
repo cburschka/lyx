@@ -4,14 +4,14 @@ EXTRA_DIST = $(TEST_FILES)
 
 TEST_FILES = \
 	export/IncludeMissingEndTagDiv.lyx \
-	export/ja/wrong_auto_encoding.lyx \
-	export/languagenesting1.lyx \
-	export/languagenesting2.lyx \
-	export/LongestLabelWithUnderscore.lyx \
+	export/latex/ja_wrong_auto_encoding.lyx \
+	export/latex/languagenesting1.lyx \
+	export/latex/languagenesting2.lyx \
+	export/latex/LongestLabelWithUnderscore.lyx \
 	export/MissingEndLayoutBetweenTables.lyx \
 	export/MissingEndTagDiv.lyx \
-	export/TableErrorIfSlovakTextInserted.lyx \
-	export/utf8-plain-with-tex-fonts.lyx \
+	export/latex/TableErrorIfSlovakTextInserted.lyx \
+	export/latex/utf8-plain-with-tex-fonts.lyx \
 	export/WrongDfnTagHandling.lyx \
 	mathmacros/architecture.lyx \
 	mathmacros/architecture.lyx \
