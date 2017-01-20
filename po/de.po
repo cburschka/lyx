@@ -97,7 +97,7 @@ msgstr ""
 "POT-Creation-Date: 2017-01-15 11:39-0500\n"
 "PO-Revision-Date: 2017-01-12 16:43+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
-"Language-Team: German <kde-i18n-de@kde.org>\n"
+"Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24105,7 +24105,7 @@ msgstr "Datei nicht gefunden"
 #: src/Buffer.cpp:1142
 #, c-format
 msgid "Unable to open file `%1$s'."
-msgstr "Kann Datei `%1$s' nicht öffnen."
+msgstr "Kann Datei ,%1$s` nicht öffnen."
 
 #: src/Buffer.cpp:1170 src/Buffer.cpp:1239
 msgid "Document format failure"
@@ -24486,7 +24486,7 @@ msgstr "Der Export des Dokuments wurde abgebrochen."
 #: src/Buffer.cpp:4325
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
-msgstr "Dokument als %1$s in die Datei `%2$s' exportiert"
+msgstr "Dokument als %1$s in die Datei ,%2$s` exportiert"
 
 #: src/Buffer.cpp:4332
 #, c-format
@@ -24843,7 +24843,7 @@ msgstr "Ein absoluter Dateipfad wird erwartet."
 #: src/BufferView.cpp:1300 src/BufferView.cpp:1332
 #, c-format
 msgid "The document class `%1$s' could not be loaded."
-msgstr "Die Dokumentklasse %1$s konnte nicht geladen werden."
+msgstr "Die Dokumentklasse ,%1$s` konnte nicht geladen werden."
 
 #: src/BufferView.cpp:1353
 msgid "No further undo information"
@@ -24913,7 +24913,7 @@ msgstr "Statistik"
 msgid ""
 "`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
-"'inset-forall' wurde abgebrochen, da die Zahl der Aktionen %1$d übersteigt"
+",inset-forall` wurde abgebrochen, da die Zahl der Aktionen %1$d übersteigt"
 
 #: src/BufferView.cpp:1860
 #, c-format
@@ -25539,7 +25539,7 @@ msgstr "&Nicht hinzufügen"
 #: src/CutAndPaste.cpp:760 src/Text.cpp:402
 #, c-format
 msgid "Layout `%1$s' was not found."
-msgstr "Der Absatzstil `%1$s' wurde nicht gefunden."
+msgstr "Der Absatzstil ,%1$s` wurde nicht gefunden."
 
 #: src/CutAndPaste.cpp:762 src/Text.cpp:404
 msgid "Layout Not Found"
@@ -25550,7 +25550,7 @@ msgstr "Absatzstil nicht gefunden"
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr ""
 "Die Einfügung %1$s ist nach dem Laden des Dokumentformats\n"
-"`%2$s' undefiniert."
+",%2$s` undefiniert."
 
 #: src/CutAndPaste.cpp:792
 #, c-format
@@ -25559,7 +25559,7 @@ msgid ""
 "%3$s'."
 msgstr ""
 "Der Zeichenstil %1$s ist aufgrund des Wechsels vom\n"
-"Dokumentformat `%2$s' zu `%3$s' undefiniert."
+"Dokumentformat ,%2$s` zu ,%3$s` undefiniert."
 
 #: src/CutAndPaste.cpp:797
 msgid "Undefined flex inset"
@@ -25751,14 +25751,14 @@ msgstr ""
 
 #: src/KeyMap.cpp:235
 msgid "Could not find `cua.bind' file"
-msgstr "Die Tastenkürzeldatei `cua.bind' konnte nicht gefunden werden."
+msgstr "Die Tastenkürzeldatei ,cua.bind` konnte nicht gefunden werden."
 
 #: src/KeyMap.cpp:236
 msgid ""
 "Unable to find the default bind file `cua.bind'.\n"
 "Please check your installation."
 msgstr ""
-"Kann die Standard-Tastenkürzeldatei `cua.bind' nicht finden.\n"
+"Kann die Standard-Tastenkürzeldatei ,cua.bind` nicht finden.\n"
 "Bitte überprüfen Sie Ihre Installation."
 
 #: src/KeyMap.cpp:243
@@ -25810,7 +25810,7 @@ msgid ""
 "The LaTeX package `%1$s' needed for the font `%2$s'\n"
 "is not available on your system. LyX will fall back to the default font."
 msgstr ""
-"Das LaTeX-Paket `%1$s', das für die Schriftart `%2$s'\n"
+"Das LaTeX-Paket ,%1$s`, das für die Schriftart ,%2$s'\n"
 "benötigt wird, ist auf Ihrem System nicht verfügbar. LyX wird auf die "
 "Standardschrift zurückgreifen."
 
@@ -25850,7 +25850,7 @@ msgstr "Das temporäre Verzeichnis %1$s konnte nicht entfernt werden"
 #: src/LyX.cpp:436
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
-msgstr "Falsche Befehlszeilenoption `%1$s'. Das Programm wird beendet."
+msgstr "Falsche Befehlszeilenoption ,%1$s`. Das Programm wird beendet."
 
 #: src/LyX.cpp:454
 msgid "Missing filename for this operation."
@@ -26218,7 +26218,7 @@ msgid ""
 msgstr ""
 "Normalerweise bleibt der LyX-Cursor an seiner Position im Dokument, auch "
 "wenn Sie im Dokument scrollen. Ist dieser Schalter aktiv, wird der Cursor "
-"`mitgenommen'."
+",mitgenommen`."
 
 #: src/LyXRC.cpp:2953
 msgid ""
@@ -29345,7 +29345,7 @@ msgid ""
 "Shortcut `%1$s' is already bound to %2$s.\n"
 "Are you sure you want to unbind the current shortcut and bind it to %3$s?"
 msgstr ""
-"Tastenkürzel `%1$s' ist bereits mit %2$s belegt.\n"
+"Tastenkürzel ,%1$s` ist bereits mit %2$s belegt.\n"
 "Sind Sie sicher, dass Sie dies aufheben und das\n"
 "Tastenkürzel mit %3$s belegen wollen?"
 
@@ -30550,7 +30550,7 @@ msgstr "Die TeX-Informationen konnten nicht aktualisiert werden"
 #: src/frontends/qt4/qt_helpers.cpp:284
 #, c-format
 msgid "The script `%1$s' failed."
-msgstr "Das Skript `%1$s' ist fehlgeschlagen."
+msgstr "Das Skript ,%1$s` ist fehlgeschlagen."
 
 #: src/frontends/qt4/qt_helpers.cpp:536
 msgid "All Files "
@@ -31013,7 +31013,7 @@ msgid ""
 "`%1$s'\n"
 "Please, check whether it actually exists."
 msgstr ""
-"Die eingebettete Datei '%1$s' kann nicht geladen werden.\n"
+"Die eingebettete Datei ,%1$s` kann nicht geladen werden.\n"
 "Bitte prüfen Sie, ob diese Datei existiert."
 
 #: src/insets/InsetInclude.cpp:641
@@ -31027,9 +31027,9 @@ msgid ""
 "has textclass `%2$s'\n"
 "while parent file has textclass `%3$s'."
 msgstr ""
-"Die eingebundene Datei `%1$s'\n"
-"hat die Textklasse `%2$s',\n"
-"während die Hauptdatei die Textklasse `%3$s' hat."
+"Die eingebundene Datei ,%1$s`\n"
+"hat die Textklasse ,%2$s`,\n"
+"während die Hauptdatei die Textklasse ,%3$s` hat."
 
 #: src/insets/InsetInclude.cpp:655
 msgid "Different textclasses"
@@ -31042,8 +31042,8 @@ msgid ""
 "uses module `%2$s'\n"
 "which is not used in parent file."
 msgstr ""
-"Eingebundene Datei `%1$s'\n"
-"benutzt Modul `%2$s',\n"
+"Eingebundene Datei ,%1$s`\n"
+"benutzt Modul ,%2$s`,\n"
 "das nicht in der Hauptdatei benutzt wird."
 
 #: src/insets/InsetInclude.cpp:674
@@ -31983,9 +31983,9 @@ msgid ""
 msgstr ""
 "Kann das Systemverzeichnis nicht in \n"
 "\t%1$s\n"
-"finden. Benutzen Sie die Kommandozeilenoption '-sysdir' oder setzen Sie die "
+"finden. Benutzen Sie die Kommandozeilenoption ,-sysdir` oder setzen Sie die "
 "Umgebungsvariable\n"
-"%2$s auf das Systemverzeichnis von LyX, das die Datei `chkconfig.ltx' "
+"%2$s auf das Systemverzeichnis von LyX, das die Datei ,chkconfig.ltx` "
 "enthält."
 
 #: src/support/Package.cpp:718 src/support/Package.cpp:745
@@ -32185,7 +32185,7 @@ msgstr "Alle Testmeldungen"
 #: src/support/debug.cpp:154
 #, c-format
 msgid "Debugging `%1$s' (%2$s)"
-msgstr "Testen von `%1$s' (%2$s)"
+msgstr "Testen von ,%1$s` (%2$s)"
 
 #: src/support/lassert.cpp:60
 #, c-format
