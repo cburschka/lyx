@@ -186,7 +186,8 @@ int GuiFontMetrics::width(docstring const & s) const
 #endif
 	/* For some reason QMetrics::width returns a wrong value with Qt5
 	 * with some arabic text. OTOH, QTextLayout is broken for single
-	 * characters with null width (like \not in mathed).
+	 * characters with null width (like \not in mathed). Also, as a
+	 * safety measure, always use QMetrics::width with our math fonts.
 	*/
 	int w = 0;
 	if (s.length() == 1
