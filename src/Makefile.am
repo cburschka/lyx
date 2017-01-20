@@ -738,7 +738,7 @@ ADD_FRAMEWORKS = -framework QtGui -framework QtCore -framework AppKit -framework
 endif
 
 check_layout_CPPFLAGS = $(AM_CPPFLAGS)
-check_layout_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ \
+check_layout_LDADD = support/liblyxsupport.a CiteEnginesList.o $(LIBICONV) $(BOOST_LIBS) @LIBS@ \
 	$(ICONV_LIBS) $(ZLIB_LIBS) $(QT_LIB) $(LIBSHLWAPI)
 check_layout_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_layout_SOURCES = \
