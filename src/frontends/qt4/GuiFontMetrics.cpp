@@ -178,16 +178,28 @@ int GuiFontMetrics::width(docstring const & s) const
 	int * pw = strwidth_cache_[s];
 	if (pw)
 		return *pw;
-	// For some reason QMetrics::width returns a wrong value with Qt5
-	// int w = metrics_.width(toqstr(s));
 #endif
-	QTextLayout tl;
-	tl.setText(toqstr(s));
-	tl.setFont(font_);
-	tl.beginLayout();
-	QTextLine line = tl.createLine();
-	tl.endLayout();
-	int w = int(line.naturalTextWidth());
+	/* For some reason QMetrics::width returns a wrong value with Qt5
+	 * with some arabic text. OTOH, QTextLayout is broken for single
+	 * characters with null width (like \not in mathed). Also, as a
+	 * safety measure, always use QMetrics::width with our math fonts.
+	*/
+	int w = 0;
+	if (s.length() == 1
+#if QT_VERSION >= 0x040800
+	    || font_.styleName() == "LyX"
+#endif
+	    )
+		w = metrics_.width(toqstr(s));
+	else {
+		QTextLayout tl;
+		tl.setText(toqstr(s));
+		tl.setFont(font_);
+		tl.beginLayout();
+		QTextLine line = tl.createLine();
+		tl.endLayout();
+		w = int(line.naturalTextWidth());
+	}
 #ifdef CACHE_METRICS_WIDTH
 	strwidth_cache_.insert(s, new int(w), s.size() * sizeof(char_type));
 #endif
