@@ -314,7 +314,7 @@ spadesuit          cmsy        127 170 mathord  &spades;
 lyxnot             cmsy         54  47 mathrel  /           hiddensymbol
 iffont cmsy
 # kerning is slightly imperfect so that one can see when \not is selected
-\def\not{\lyxnot\mathrel{\kern-11mu}}
+\def\not{\lyxnot}
 else
 \def\not{\kern4mu\lyxnot\kern-19mu}
 endif
@@ -991,11 +991,11 @@ bignplus           stmry 112   0 mathop     x  stmaryrd # caution: named hugenpl
 
 \def\varcopyright{\mathord{c\kern-11mu\varbigcirc}}         stmaryrd
 # kerning is slightly imperfect so that one sees when \[Aa]rrownot is selected
-\def\arrownot{\lyxarrownot\mathrel{\kern-11mu}}             stmaryrd
-\def\Arrownot{\lyxArrownot\mathrel{\kern-10.5mu}}           stmaryrd
+\def\arrownot{\lyxarrownot}                                 stmaryrd
+\def\Arrownot{\lyxArrownot\mathrel{\kern0.5mu}}             stmaryrd
 \def\longarrownot{\mathrel{\kern5.5mu}\arrownot\mathrel{\kern-5.5mu}} stmaryrd
 \def\Longarrownot{\mathrel{\kern5.5mu}\Arrownot\mathrel{\kern-5.5mu}} stmaryrd
-\def\Mapsto{\Mapstochar\mathrel{\kern-2mu}\Rightarrow}   mathrel &#x2907; stmaryrd
+\def\Mapsto{\Mapstochar\mathrel\Rightarrow}              mathrel &#x2907; stmaryrd
 \def\mapsfrom{\leftarrow\kern-9mu\mapsfromchar}          mathrel &#x21a4; stmaryrd
 \def\Mapsfrom{\Leftarrow\kern-9mu\Mapsfromchar}          mathrel &#x2906; stmaryrd
 \def\Longmapsto{\Mapstochar\Longrightarrow}              mathrel &#x27fe; stmaryrd
@@ -1174,7 +1174,7 @@ iffont cmsy
 \def\Longleftarrow{\Leftarrow\joinrel\Relbar}                   mathrel &#x27F8;
 \def\implies{\Longrightarrow}                                   mathrel &#x27F9; amsmath
 \def\impliedby{\Longleftarrow}                                  mathrel &#x27F8; amsmath
-\def\mapsto{\mapstochar\mathrel{\kern-2mu}\rightarrow}          mathrel &#x21A4;
+\def\mapsto{\mapstochar\rightarrow}                             mathrel &#x21A4;
 \def\longmapsto{\mapstochar\joinrel\relbar\joinrel\rightarrow}  mathrel &#x27FB;
 \def\models{\mathrel{\vert}\joinrel\Relbar}                     mathrel &vDash;
 else
