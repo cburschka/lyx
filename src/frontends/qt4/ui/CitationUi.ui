@@ -234,11 +234,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QListView" name="selectedLV">
-             <property name="editTriggers">
-              <set>QAbstractItemView::NoEditTriggers</set>
-             </property>
-            </widget>
+            <widget class="QTableView" name="selectedLV"/>
            </item>
           </layout>
          </item>
@@ -290,7 +286,7 @@
           <item>
            <widget class="QLabel" name="textBeforeLA">
             <property name="text">
-             <string>Text &amp;before:</string>
+             <string>Text befo&amp;re:</string>
             </property>
             <property name="buddy">
              <cstring>textBeforeED</cstring>
@@ -483,7 +479,6 @@
   <tabstop>entriesCO</tabstop>
   <tabstop>searchOptionsPB</tabstop>
   <tabstop>availableLV</tabstop>
-  <tabstop>selectedLV</tabstop>
   <tabstop>addPB</tabstop>
   <tabstop>deletePB</tabstop>
   <tabstop>upPB</tabstop>

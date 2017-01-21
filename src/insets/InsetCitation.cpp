@@ -69,6 +69,8 @@ ParamInfo const & InsetCitation::findInfo(string const & /* cmdName */)
 		param_info_.add("after", ParamInfo::LATEX_OPTIONAL);
 		param_info_.add("before", ParamInfo::LATEX_OPTIONAL);
 		param_info_.add("key", ParamInfo::LATEX_REQUIRED);
+		param_info_.add("pretextlist", ParamInfo::LATEX_OPTIONAL);
+		param_info_.add("posttextlist", ParamInfo::LATEX_OPTIONAL);
 	}
 	return param_info_;
 }
@@ -312,6 +314,20 @@ inline docstring wrapCitation(docstring const & key,
 
 } // anonymous namespace
 
+
+map<docstring, docstring> InsetCitation::getQualifiedLists(docstring const p) const
+{
+	vector<docstring> ps =
+		getVectorFromString(p, from_ascii("\t"));
+	std::map<docstring, docstring> res;
+	for (docstring const & s: ps) {
+		docstring key;
+		docstring val = split(s, key, ' ');
+		res[key] = val;
+	}
+	return res;
+}
+
 docstring InsetCitation::generateLabel(bool for_xhtml) const
 {
 	docstring label;
@@ -360,12 +376,24 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 	*/
 	docstring label;
 	vector<docstring> keys = getVectorFromString(key);
+	CitationStyle cs = getCitationStyle(buffer().masterParams(),
+					    cite_type, buffer().masterParams().citeStyles());
+	bool const qualified = cs.hasQualifiedList
+		&& (keys.size() > 1
+		    || !getParam("pretextlist").empty()
+		    || !getParam("posttextlist").empty());
+	map<docstring, docstring> pres = getQualifiedLists(getParam("pretextlist"));
+	map<docstring, docstring> posts = getQualifiedLists(getParam("posttextlist"));
+
 	CiteItem ci;
 	ci.textBefore = getParam("before");
 	ci.textAfter = getParam("after");
 	ci.forceUpperCase = uppercase;
 	ci.Starred = starred;
 	ci.max_size = UINT_MAX;
+	ci.isQualified = qualified;
+	ci.pretexts = pres;
+	ci.posttexts = posts;
 	if (for_xhtml) {
 		ci.max_key_size = UINT_MAX;
 		ci.context = CiteItem::Export;
@@ -509,13 +537,15 @@ void InsetCitation::forOutliner(docstring & os, size_t const, bool const) const
 void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 {
 	BiblioInfo const & bi = buffer().masterBibInfo();
+	docstring const key = getParam("key");
+	// "keyonly" command: output the plain key and stop.
 	if (getCmdName() == "keyonly") {
 		// Special command to only return the key
 		if (!bi.isBibtex(getParam("key")))
 			// escape chars with bibitems
-			os << escape(cleanupWhitespace(getParam("key")));
+			os << escape(cleanupWhitespace(key));
 		else
-			os << cleanupWhitespace(getParam("key"));
+			os << cleanupWhitespace(key);
 		return;
 	}
 	vector<CitationStyle> citation_styles = buffer().masterParams().citeStyles();
@@ -524,23 +554,62 @@ void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 	// FIXME UNICODE
 	docstring const cite_str = from_utf8(citationStyleToString(cs, true));
 
+	// check if we have to do a qualified list
+	vector<docstring> keys = getVectorFromString(cleanupWhitespace(key));
+	bool const qualified = cs.hasQualifiedList
+		&& (!getParam("pretextlist").empty()
+		    || !getParam("posttextlist").empty());
+
 	if (runparams.inulemcmd > 0)
 		os << "\\mbox{";
 
 	os << "\\" << cite_str;
 
-	docstring const & before = getParam("before");
-	docstring const & after  = getParam("after");
-	if (!before.empty() && cs.textBefore)
-		os << '[' << before << "][" << after << ']';
-	else if (!after.empty() && cs.textAfter)
-		os << '[' << after << ']';
+	if (qualified)
+		os << "s";
 
-	if (!bi.isBibtex(getParam("key")))
+	docstring before = getParam("before");
+	docstring after  = getParam("after");
+	if (!before.empty() && cs.textBefore) {
+		if (qualified) {
+			if (contains(before, '(') || contains(before, ')'))
+				// protect parens
+				before = '{' + before + '}';
+			if (contains(after, '(') || contains(after, ')'))
+				// protect parens
+				after = '{' + after + '}';
+			os << '(' << before << ")(" << after << ')';
+		} else
+			os << '[' << before << "][" << after << ']';
+	} else if (!after.empty() && cs.textAfter) {
+		if (qualified) {
+			if (contains(after, '(') || contains(after, ')'))
+				// protect parens
+				after = '{' + after + '}';
+			os << '(' << after << ')';
+		} else
+			os << '[' << after << ']';
+	}
+
+	if (!bi.isBibtex(key))
 		// escape chars with bibitems
-		os << '{' << escape(cleanupWhitespace(getParam("key"))) << '}';
-	else
-		os << '{' << cleanupWhitespace(getParam("key")) << '}';
+		os << '{' << escape(cleanupWhitespace(key)) << '}';
+	else {
+		if (qualified) {
+			map<docstring, docstring> pres = getQualifiedLists(getParam("pretextlist"));
+			map<docstring, docstring> posts = getQualifiedLists(getParam("posttextlist"));
+			for (docstring const & k: keys) {
+				docstring const bef = pres[k];
+				docstring const aft  = posts[k];
+				if (!bef.empty())
+					os << '[' << bef << "][" << aft << ']';
+				else if (!aft.empty())
+					os << '[' << aft << ']';
+				os << '{' << k << '}';
+			}
+		} else
+			os << '{' << cleanupWhitespace(key) << '}';
+	}
 
 	if (runparams.inulemcmd)
 		os << "}";

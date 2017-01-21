@@ -14,6 +14,7 @@
 
 #include <QObject>
 
+class QAbstractItemModel;
 class QAbstractListModel;
 class QModelIndex;
 class QListView;
@@ -42,13 +43,14 @@ public:
 	///
 	GuiSelectionManager(
 		QAbstractItemView * availableLV,
-		QListView * selectedLV,
+		QAbstractItemView * selectedLV,
 		QPushButton * addPB, 
 		QPushButton * delPB, 
 		QPushButton * upPB, 
 		QPushButton * downPB,
 		QAbstractListModel * availableModel,
-		QAbstractListModel * selectedModel);
+		QAbstractItemModel * selectedModel,
+		int const main_sel_col = 0);
 	/// Sets the state of the various push buttons, depending upon the
 	/// state of the widgets. (E.g., "delete" is enabled only if the
 	/// selection is non-empty.)
@@ -64,7 +66,7 @@ public:
 	bool selectedFocused() const { return selectedHasFocus_; }
 	/// Returns the selected index. Note that this will depend upon
 	/// selectedFocused().
-	QModelIndex getSelectedIndex() const;
+	QModelIndex getSelectedIndex(int const c = 0) const;
 
 Q_SIGNALS:
 	/// Emitted when the list of selected items has changed. 
@@ -87,11 +89,13 @@ protected:
 	/// been selected (i.e., is also in selectedLV).
 	bool isSelected(const QModelIndex & idx);
 	///
- 	bool insertRowToSelected(int i, QMap<int, QVariant> const & itemData);
+	bool insertRowToSelected(int i, QMap<int, QVariant> const & itemData);
+	///
+	bool insertRowToSelected(int i, QMap<int, QMap<int, QVariant>> &);
 	///
 	QAbstractItemView * availableLV;
 	///
-	QListView * selectedLV;
+	QAbstractItemView * selectedLV;
 	///
 	QPushButton * addPB;
 	///
@@ -103,7 +107,7 @@ protected:
 	///
 	QAbstractListModel * availableModel;
 	///
-	QAbstractListModel * selectedModel;
+	QAbstractItemModel * selectedModel;
 
 protected Q_SLOTS:
 	///
@@ -114,6 +118,8 @@ protected Q_SLOTS:
 	void availableChanged(QItemSelection const & qis, QItemSelection const &);
 	///
 	void selectedChanged(QItemSelection const & qis, QItemSelection const &);
+	///
+	void selectedEdited();
 	///
 	virtual void addPB_clicked();
 	///
@@ -138,6 +144,8 @@ private:
 	virtual void updateUpPB();
 	///
 	bool selectedHasFocus_;
+	///
+	int main_sel_col_;
 };
 
 } // namespace frontend

@@ -1097,6 +1097,8 @@ bool TextClass::readCiteEngine(Lexer & lexrc)
 				latex_cmd += ichar;
 			else if (mode == StarDesc)
 				stardesc += ichar;
+			else if (ichar == '$')
+				cs.hasQualifiedList = true;
 			else if (ichar == '*')
 				cs.hasStarredVersion = true;
 			else if (ichar == '[' && cs.textAfter)

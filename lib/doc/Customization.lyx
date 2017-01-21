@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 528
+\lyxformat 530
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21598,8 +21598,8 @@ The full syntax is:
 
 \begin_layout LyX-Code
 
-\change_inserted -712698321 1483870927
-LyXName|alias*<!_stardesc!_stardesctooltip>[][]=latexcmd
+\change_inserted -712698321 1484997816
+LyXName|alias$*<!_stardesc!_stardesctooltip>[][]=latexcmd
 \end_layout
 
 \begin_layout Itemize
@@ -22048,11 +22048,50 @@ _stardesc Sta&rred command label
 
 \begin_layout LyX-Code
 
-\change_inserted -712698321 1483872184
+\change_inserted -712698321 1484997832
 _stardesctooltip Tooltip for the starred command checkbox.
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+
+\change_inserted -712698321 1484997948
+A dollar sign 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1484997871
+$
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ indicates that this command features 
+\begin_inset Quotes eld
+\end_inset
+
+qualified citation lists
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This is a 
+\family sans
+Biblatex
+\family default
+-specific feature for multi-reference citations where an individual pre-
+ and postnote can be given to each reference in the list.
+ Please refer to the 
+\family sans
+Biblatex
+\family default
+ manual for details.
+\end_layout
+
 \begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
@@ -22670,7 +22709,7 @@ status collapsed
 
 \begin_layout Itemize
 
-\change_inserted -712698321 1483978548
+\change_inserted -712698321 1484997600
 \begin_inset Flex Code
 status collapsed
 
@@ -22704,6 +22743,36 @@ status collapsed
 \end_inset
 
 )
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1484997681
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1484997608
+{%ifqualified%[[true]][[false]]}
+\end_layout
+
+\end_inset
+
+: process the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ part if the current citation is a qualified citation list (a specific 
+\family sans
+Biblatex
+\family default
+ format for multi-reference citations), the false part if this is not the
+ case.
 \change_unchanged
 
 \end_layout

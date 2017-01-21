@@ -30040,7 +30040,7 @@ key "latexcompanion"
 
 \begin_layout Standard
 
-\change_inserted -712698321 1483891777
+\change_inserted -712698321 1484998090
 All styles except for 
 \family sans
 Basic
@@ -30056,6 +30056,99 @@ cf.
 ).
  This text is then also included in the parentheses, if the style requires
  this.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1484998495
+Note that these pre- and postnotes apply to the whole citation.
+ That is to say, if you refer to multiple references at one, the prenote
+ will precede the first citation in the list, the postnote will follow the
+ last.
+ Some 
+\family sans
+Biblatex
+\family default
+ styles allow for adding pre- and postnotes to any individual reference
+ in a multi-citation (so-called 
+\begin_inset Quotes eld
+\end_inset
+
+qualified citation lists
+\begin_inset Quotes erd
+\end_inset
+
+).
+ \SpecialChar LyX
+ supports this.
+ If you use such a style, and if the current reference includes multiple
+ items, the 
+\begin_inset Quotes eld
+\end_inset
+
+Selected Citations
+\begin_inset Quotes erd
+\end_inset
+
+ window will display three columns: 
+\begin_inset Quotes eld
+\end_inset
+
+Text before
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+Cite key
+\begin_inset Quotes erd
+\end_inset
+
+, and 
+\begin_inset Quotes eld
+\end_inset
+
+Text after
+\begin_inset Quotes erd
+\end_inset
+
+.
+ If you double-click on an item's 
+\begin_inset Quotes eld
+\end_inset
+
+Text before
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+Text after
+\begin_inset Quotes erd
+\end_inset
+
+ field, you can add such individual pre- and postnotes.
+ In the 
+\begin_inset Quotes eld
+\end_inset
+
+General text before
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+General text after
+\begin_inset Quotes erd
+\end_inset
+
+ input widgets, you can add pre- and postnotes that apply to the whole list.
 \change_unchanged
 
 \end_layout

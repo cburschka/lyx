@@ -7,6 +7,13 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2017-01-21 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 531: Support for qualified citation lists.
+	  \begin_inset CommandInset citation
+	    New params: pretextlist, posttextlist
+	    A tab-separated list consisting of a cite key, a space and the the
+	    pre- or postnote associated with that specific key.
+
 2017-01-13 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 530: Support natbib & jurabib package options.
 

@@ -23,6 +23,8 @@
 
 #include "Citation.h"
 
+#include <QAbstractListModel>
+#include <QStandardItemModel>
 #include <QStringList>
 #include <QStringListModel>
 
@@ -33,6 +35,7 @@ class BiblioInfo;
 namespace frontend {
 
 class GuiSelectionManager;
+
 
 class GuiCitation : public DialogView, public Ui::CitationUi
 {
@@ -114,6 +117,19 @@ private:
 	/// Clear selected keys
 	void clearSelection();
 
+	/// Set selected keys
+	void setSelectedKeys(QStringList const);
+	/// Get selected keys
+	QStringList selectedKeys();
+	/// Set pre texts of qualified lists
+	void setPreTexts(std::vector<docstring> const m);
+	/// Get pre texts of qualified lists
+	std::vector<docstring> getPreTexts();
+	/// Set post texts of qualified lists
+	void setPostTexts(std::vector<docstring> const m);
+	/// Get post texts of qualified lists
+	std::vector<docstring> getPostTexts();
+
 	/// Find keys containing a string.
 	void findKey(
 		BiblioInfo const & bi, //< optimize by passing this
@@ -171,7 +187,7 @@ private:
 	/// available keys.
 	QStringListModel available_model_;
 	/// selected keys.
-	QStringListModel selected_model_;
+	QStandardItemModel selected_model_;
 	/// All keys.
 	QStringList all_keys_;
 	/// Cited keys.

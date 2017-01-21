@@ -39,6 +39,7 @@
 #include <QMenu>
 #include <QSettings>
 #include <QShowEvent>
+#include <QStandardItemModel>
 #include <QVariant>
 
 #include <vector>
@@ -138,7 +139,7 @@ GuiCitation::GuiCitation(GuiView & lv)
 		this, SLOT(on_okPB_clicked()));
 
 	selectionManager = new GuiSelectionManager(availableLV, selectedLV,
-			addPB, deletePB, upPB, downPB, &available_model_, &selected_model_);
+			addPB, deletePB, upPB, downPB, &available_model_, &selected_model_, 1);
 	connect(selectionManager, SIGNAL(selectionChanged()),
 		this, SLOT(setCitedKeys()));
 	connect(selectionManager, SIGNAL(updateHook()),
@@ -158,6 +159,12 @@ GuiCitation::GuiCitation(GuiView & lv)
 		this, SLOT(caseChanged()));
 	connect(instant_, SIGNAL(triggered(bool)),
 		this, SLOT(instantChanged(bool)));
+
+#if (QT_VERSION < 0x050000)
+	selectedLV->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+#else
+	selectedLV->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+#endif
 
 	setFocusProxy(filter_);
 }
@@ -239,7 +246,7 @@ void GuiCitation::updateControls()
 // will not have changed.
 void GuiCitation::updateControls(BiblioInfo const & bi)
 {
-	QModelIndex idx = selectionManager->getSelectedIndex();
+	QModelIndex idx = selectionManager->getSelectedIndex(1);
 	updateInfo(bi, idx);
 	selectionManager->update();
 }
@@ -254,8 +261,31 @@ void GuiCitation::updateFormatting(CitationStyle currentStyle)
 	bool const textbefore = currentStyle.textBefore;
 	bool const textafter = currentStyle.textAfter;
 
-	bool const haveSelection =
-		selectedLV->model()->rowCount() > 0;
+	int const rows = selectedLV->model()->rowCount();
+
+	bool const qualified = currentStyle.hasQualifiedList
+		&& (rows > 1
+		    || !params_["pretextlist"].empty()
+		    || !params_["posttextlist"].empty());
+	selectedLV->horizontalHeader()->setVisible(qualified);
+	selectedLV->setColumnHidden(0, !qualified);
+	selectedLV->setColumnHidden(2, !qualified);
+	if (qualified) {
+		textBeforeLA->setText(qt_("General text befo&re:"));
+		textAfterLA->setText(qt_("General &text after:"));
+		textBeforeED->setToolTip(qt_("Text that precedes the whole reference list. "
+					     "For text that precedes individual items, double-click on the respective entry above."));
+		textAfterLA->setToolTip(qt_("General &text after:"));
+		textAfterED->setToolTip(qt_("Text that follows the whole reference list. "
+					     "For text that follows individual items, double-click on the respective entry above."));
+	} else {
+		textBeforeLA->setText(qt_("Text befo&re:"));
+		textBeforeED->setToolTip(qt_("Text that precedes the reference (e.g., \"cf.\")"));
+		textAfterLA->setText(qt_("&Text after:"));
+		textAfterED->setToolTip(qt_("Text that follows the reference (e.g., pages)"));
+	}
+
+	bool const haveSelection = rows > 0;
 
 	forceuppercaseCB->setEnabled(force && haveSelection);
 	starredCB->setEnabled(full && haveSelection);
@@ -306,7 +336,7 @@ void GuiCitation::updateStyles()
 // Update the styles for the style combo, citationStyleCO.
 void GuiCitation::updateStyles(BiblioInfo const & bi)
 {
-	QStringList selected_keys = selected_model_.stringList();
+	QStringList selected_keys = selectedKeys();
 	int curr = selectedLV->model()->rowCount() - 1;
 
 	if (curr < 0 || selected_keys.empty()) {
@@ -376,7 +406,7 @@ void GuiCitation::fillEntries(BiblioInfo const & bi)
 bool GuiCitation::isSelected(QModelIndex const & idx)
 {
 	QString const str = idx.data().toString();
-	return selected_model_.stringList().contains(str);
+	return selectedKeys().contains(str);
 }
 
 
@@ -551,6 +581,10 @@ void GuiCitation::applyParams(int const choice, bool full, bool force,
 	params_["key"] = qstring_to_ucs4(cited_keys_.join(","));
 	params_["before"] = qstring_to_ucs4(before);
 	params_["after"] = qstring_to_ucs4(after);
+	if (cs.hasQualifiedList) {
+		params_["pretextlist"] = getStringFromVector(getPreTexts(), from_ascii("\t"));
+		params_["posttextlist"] = getStringFromVector(getPostTexts(), from_ascii("\t"));
+	}
 	dispatchParams();
 }
 
@@ -558,7 +592,107 @@ void GuiCitation::applyParams(int const choice, bool full, bool force,
 void GuiCitation::clearSelection()
 {
 	cited_keys_.clear();
-	selected_model_.setStringList(cited_keys_);
+	setSelectedKeys(cited_keys_);
+}
+
+
+void GuiCitation::setSelectedKeys(QStringList const sl)
+{
+	selected_model_.clear();
+	selected_model_.setColumnCount(3);
+	QStringList headers;
+	headers << qt_("Text before")
+		<< qt_("Cite key")
+		<< qt_("Text after");
+	selected_model_.setHorizontalHeaderLabels(headers);
+	selectedLV->setColumnHidden(0, true);
+	selectedLV->setColumnHidden(2, true);
+	selectedLV->verticalHeader()->setVisible(false);
+	selectedLV->horizontalHeader()->setVisible(false);
+	QStringList::const_iterator it  = sl.begin();
+	QStringList::const_iterator end = sl.end();
+	for (int i = 0; it != end; ++it, ++i) {
+		QStandardItem * si = new QStandardItem();
+		si->setData(*it);
+		si->setText(*it);
+		si->setToolTip(*it);
+		si->setEditable(false);
+		selected_model_.setItem(i, 1, si);
+	}
+}
+
+
+QStringList GuiCitation::selectedKeys()
+{
+	QStringList res;
+	for (int i = 0; i != selected_model_.rowCount(); ++i) {
+		QStandardItem const * item = selected_model_.item(i, 1);
+		if (item)
+			res.append(item->text());
+	}
+	return res;
+}
+
+
+void GuiCitation::setPreTexts(vector<docstring> const m)
+{
+	for (docstring const & s: m) {
+		QStandardItem * si = new QStandardItem();
+		docstring key;
+		docstring pre = split(s, key, ' ');
+		si->setData(toqstr(pre));
+		si->setText(toqstr(pre));
+		QModelIndexList qmil =
+				selected_model_.match(selected_model_.index(0, 1),
+						     Qt::DisplayRole, toqstr(key), 1,
+						     Qt::MatchFlags(Qt::MatchExactly | Qt::MatchWrap));
+		if (!qmil.empty())
+			selected_model_.setItem(qmil.front().row(), 0, si);
+	}
+}
+
+
+vector<docstring> GuiCitation::getPreTexts()
+{
+	vector<docstring> res;
+	for (int i = 0; i != selected_model_.rowCount(); ++i) {
+		QStandardItem const * key = selected_model_.item(i, 1);
+		QStandardItem const * pre = selected_model_.item(i, 0);
+		if (key && pre && !key->text().isEmpty() && !pre->text().isEmpty())
+			res.push_back(qstring_to_ucs4(key->text()) + " " + qstring_to_ucs4(pre->text()));
+	}
+	return res;
+}
+
+
+void GuiCitation::setPostTexts(vector<docstring> const m)
+{
+	for (docstring const & s: m) {
+		QStandardItem * si = new QStandardItem();
+		docstring key;
+		docstring post = split(s, key, ' ');
+		si->setData(toqstr(post));
+		si->setText(toqstr(post));
+		QModelIndexList qmil =
+				selected_model_.match(selected_model_.index(0, 1),
+						     Qt::DisplayRole, toqstr(key), 1,
+						     Qt::MatchFlags(Qt::MatchExactly | Qt::MatchWrap));
+		if (!qmil.empty())
+			selected_model_.setItem(qmil.front().row(), 2, si);
+	}
+}
+
+
+vector<docstring> GuiCitation::getPostTexts()
+{
+	vector<docstring> res;
+	for (int i = 0; i != selected_model_.rowCount(); ++i) {
+		QStandardItem const * key = selected_model_.item(i, 1);
+		QStandardItem const * post = selected_model_.item(i, 2);
+		if (key && post)
+			res.push_back(qstring_to_ucs4(key->text()) + " " + qstring_to_ucs4(post->text()));
+	}
+	return res;
 }
 
 
@@ -567,6 +701,7 @@ void GuiCitation::init()
 	// Make the list of all available bibliography keys
 	BiblioInfo const & bi = bibInfo();
 	all_keys_ = to_qstring_list(bi.getKeys());
+
 	available_model_.setStringList(all_keys_);
 
 	// Ditto for the keys cited in this inset
@@ -575,7 +710,7 @@ void GuiCitation::init()
 		cited_keys_.clear();
 	else
 		cited_keys_ = str.split(",");
-	selected_model_.setStringList(cited_keys_);
+	setSelectedKeys(cited_keys_);
 
 	// Initialize the drop downs
 	fillEntries(bi);
@@ -585,11 +720,15 @@ void GuiCitation::init()
 	string const & cmd = params_.getCmdName();
 	CitationStyle const cs =
 		citationStyleFromString(cmd, documentBuffer().params());
+
 	forceuppercaseCB->setChecked(cs.forceUpperCase);
 	starredCB->setChecked(cs.hasStarredVersion &&
 		documentBuffer().params().fullAuthorList());
 	textBeforeED->setText(toqstr(params_["before"]));
 	textAfterED->setText(toqstr(params_["after"]));
+
+	setPreTexts(getVectorFromString(params_["pretextlist"], from_ascii("\t")));
+	setPostTexts(getVectorFromString(params_["posttextlist"], from_ascii("\t")));
 
 	// Update the interface
 	updateControls(bi);
@@ -597,9 +736,7 @@ void GuiCitation::init()
 	if (selected_model_.rowCount()) {
 		selectedLV->blockSignals(true);
 		selectedLV->setFocus();
-		QModelIndex idx = selected_model_.index(0, 0);
-		selectedLV->selectionModel()->select(idx,
-				QItemSelectionModel::ClearAndSelect);
+		selectedLV->selectRow(0);
 		selectedLV->blockSignals(false);
 
 		// Find the citation style
@@ -682,6 +819,28 @@ QStringList GuiCitation::citationStyles(BiblioInfo const & bi, size_t max_size)
 {
 	vector<docstring> const keys = to_docstring_vector(cited_keys_);
 	vector<CitationStyle> styles = citeStyles_;
+	int ind = citationStyleCO->currentIndex();
+	if (ind == -1)
+		ind = 0;
+	CitationStyle cs = styles[ind];
+	vector<docstring> pretexts = getPreTexts();
+	vector<docstring> posttexts = getPostTexts();
+	bool const qualified = cs.hasQualifiedList
+		&& (selectedLV->model()->rowCount() > 1
+		    || !pretexts.empty()
+		    || !posttexts.empty());
+	std::map<docstring, docstring> pres;
+	for (docstring const & s: pretexts) {
+		docstring key;
+		docstring val = split(s, key, ' ');
+		pres[key] = val;
+	}
+	std::map<docstring, docstring> posts;
+	for (docstring const & s: posttexts) {
+		docstring key;
+		docstring val = split(s, key, ' ');
+		posts[key] = val;
+	}
 	CiteItem ci;
 	ci.textBefore = qstring_to_ucs4(textBeforeED->text());
 	ci.textAfter = qstring_to_ucs4(textAfterED->text());
@@ -689,6 +848,9 @@ QStringList GuiCitation::citationStyles(BiblioInfo const & bi, size_t max_size)
 	ci.Starred = starredCB->isChecked();
 	ci.context = CiteItem::Dialog;
 	ci.max_size = max_size;
+	ci.isQualified = qualified;
+	ci.pretexts = pres;
+	ci.posttexts = posts;
 	vector<docstring> ret = bi.getCiteStrings(keys, styles, documentBuffer(), ci);
 	return to_qstring_list(ret);
 }
@@ -696,7 +858,7 @@ QStringList GuiCitation::citationStyles(BiblioInfo const & bi, size_t max_size)
 
 void GuiCitation::setCitedKeys()
 {
-	cited_keys_ = selected_model_.stringList();
+	cited_keys_ = selectedKeys();
 	updateStyles();
 }
 

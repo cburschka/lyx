@@ -1540,7 +1540,7 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 				static_cast<InsetCitation const *>(inset);
 
 	Buffer const * buf = &bv->buffer();
-	BufferParams const & bp = buf->params();
+	BufferParams const & bp = buf->masterParams();
 	string const cmd = citinset->params().getCmdName();
 
 	docstring const & key = citinset->getParam("key");
@@ -1557,7 +1557,18 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 
 	vector<docstring> const keys = getVectorFromString(key);
 
-	vector<CitationStyle> const citeStyleList = buf->params().citeStyles();
+	vector<CitationStyle> const citeStyleList = bp.citeStyles();
+
+	CitationStyle cs = citinset->getCitationStyle(bp, cmd, citeStyleList);
+	bool const qualified = cs.hasQualifiedList
+		&& (keys.size() > 1
+		    || !citinset->getParam("pretextlist").empty()
+		    || !citinset->getParam("posttextlist").empty());
+	std::map<docstring, docstring> pres =
+		citinset->getQualifiedLists(citinset->getParam("pretextlist"));
+	std::map<docstring, docstring> posts =
+		citinset->getQualifiedLists(citinset->getParam("posttextlist"));
+
 	CiteItem ci;
 	ci.textBefore = citinset->getParam("before");
 	ci.textAfter = citinset->getParam("after");
@@ -1565,6 +1576,9 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 	ci.Starred = star;
 	ci.context = CiteItem::Dialog;
 	ci.max_size = 40;
+	ci.isQualified = qualified;
+	ci.pretexts = pres;
+	ci.posttexts = posts;
 	vector<docstring> citeStrings =
 		buf->masterBibInfo().getCiteStrings(keys, citeStyleList, bv->buffer(), ci);
 
@@ -1580,9 +1594,6 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 				    FuncRequest(LFUN_INSET_MODIFY,
 						"changetype " + from_utf8(citationStyleToString(cs)))));
 	}
-
-	// Extra features of the citation styles
-	CitationStyle cs = citinset->getCitationStyle(bp, cmd, citeStyleList);
 
 	if (cs.hasStarredVersion) {
 		docstring starred = _("All authors|h");

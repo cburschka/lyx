@@ -1331,10 +1331,10 @@ def revert_biblatex(document):
             res = "\\" + new_citations[cmd]
             if pre:
                 res += "[" + pre + "]"
-            elif post:
-                res += "[]"
             if post:
                 res += "[" + post + "]"
+            elif pre:
+                res += "[]"
             res += "{" + key + "}"
             document.body[i:j+1] = put_cmd_in_ert([res])
         elif cmd not in old_citations:
@@ -1450,6 +1450,103 @@ def revert_bibpackopts(document):
     ]
 
 
+def revert_qualicites(document):
+    " Revert qualified citation list commands to ERT "
+
+    # Citation insets that support qualified lists, with their LaTeX code
+    ql_citations = {
+        "cite" : "cites",
+        "Cite" : "Cites",
+        "citet" : "textcites",
+        "Citet" : "Textcites",
+        "citep" : "parencites",
+        "Citep" : "Parencites",
+        "Footcite" : "Smartcites",
+        "footcite" : "smartcites",
+        "Autocite" : "Autocites",
+        "autocite" : "autocites",
+        }
+
+    # Get cite engine
+    engine = "basic"
+    i = find_token(document.header, "\\cite_engine", 0)
+    if i == -1:
+        document.warning("Malformed document! Missing \\cite_engine")
+    else:
+        engine = get_value(document.header, "\\cite_engine", i)
+
+    biblatex = engine in ["biblatex", "biblatex-natbib"]
+
+    i = 0
+    while (True):
+        i = find_token(document.body, "\\begin_inset CommandInset citation", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of citation inset at line %d!!" %(i))
+            i += 1
+            continue
+        pres = find_token(document.body, "pretextlist", i, j)
+        posts = find_token(document.body, "posttextlist", i, j)
+        if pres == -1 and posts == -1:
+            # nothing to do.
+            i = j + 1
+            continue
+        pretexts = get_quoted_value(document.body, "pretextlist", pres)
+        posttexts = get_quoted_value(document.body, "posttextlist", posts)
+        k = find_token(document.body, "LatexCommand", i, j)
+        if k == -1:
+            document.warning("Can't find LatexCommand for citation inset at line %d!" %(i))
+            i = j + 1
+            continue
+        cmd = get_value(document.body, "LatexCommand", k)
+        if biblatex and cmd in list(ql_citations.keys()):
+            pre = get_quoted_value(document.body, "before", i, j)
+            post = get_quoted_value(document.body, "after", i, j)
+            key = get_quoted_value(document.body, "key", i, j)
+            if not key:
+                document.warning("Citation inset at line %d does not have a key!" %(i))
+                key = "???"
+            keys = key.split(",")
+            prelist = pretexts.split("\t")
+            premap = dict()
+            for pp in prelist:
+                ppp = pp.split(" ", 1)
+                premap[ppp[0]] = ppp[1]
+            postlist = posttexts.split("\t")
+            postmap = dict()
+            for pp in postlist:
+                ppp = pp.split(" ", 1)
+                postmap[ppp[0]] = ppp[1]
+            # Replace known new commands with ERT
+            if "(" in pre or ")" in pre:
+                pre = "{" + pre + "}"
+            if "(" in post or ")" in post:
+                post = "{" + post + "}"
+            res = "\\" + ql_citations[cmd]
+            if pre:
+                res += "(" + pre + ")"
+            if post:
+                res += "(" + post + ")"
+            elif pre:
+                res += "()"
+            for kk in keys:
+                if premap.get(kk, "") != "":
+                    res += "[" + premap[kk] + "]"
+                if postmap.get(kk, "") != "":
+                    res += "[" + postmap[kk] + "]"
+                elif premap.get(kk, "") != "":
+                    res += "[]"
+                res += "{" + kk + "}"
+            document.body[i:j+1] = put_cmd_in_ert([res])
+        else:
+            # just remove the params
+            del document.body[posttexts]
+            del document.body[pretexts]
+            i += 1
+
+
 ##
 # Conversion hub
 #
@@ -1477,10 +1574,12 @@ convert = [
            [527, []],
            [528, []],
            [529, []],
-           [530, []]
+           [530, []],
+           [531, []]
           ]
 
 revert =  [
+           [530, [revert_qualicites]],
            [529, [revert_bibpackopts]],
            [528, [revert_citekeyonly]],
            [527, [revert_biblatex]],

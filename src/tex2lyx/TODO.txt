@@ -134,7 +134,20 @@ Format LaTeX feature                        LyX feature
        \citecite[*]                         LatexCmd citecite[*]
        \fullcite                            LatexCmd fullcite
        \footfullcite                        LatexCmd footfullcite
-       \supercite                           LatexCmd supercite 
+       \supercite                           LatexCmd supercite
+531    Biblatex "qualified citation lists"
+       \cites(pre)(post)[pre1][post1]{key1}[pre2][post2]{key2}...
+                                           \begin_inset CommandInset citation
+                                           LatexCmd cite
+                                           after "post"
+                                           before "pre"
+                                           key "key1,key2..."
+                                           pretextlist "key1 pre1\tab key2 pre2..."
+                                           posttextlist "key1 post1\tab key2 post2..."
+      Same for:
+      \Cites, \textcites, \Textcites, \parencites, \Parencites, \smartcites, \Smartcites, \autocites, Autocites
+                                           
+                                           
 
 
 General

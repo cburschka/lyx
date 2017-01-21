@@ -18,6 +18,7 @@
 
 #include "support/debug.h"
 
+#include <QAbstractItemModel>
 #include <QAbstractListModel>
 #include <QItemSelection>
 #include <QListView>
@@ -42,21 +43,24 @@ namespace frontend {
 
 GuiSelectionManager::GuiSelectionManager(
 	QAbstractItemView * avail,
-	QListView * sel,
+	QAbstractItemView * sel,
 	QPushButton * add, 
 	QPushButton * del, 
 	QPushButton * up, 
 	QPushButton * down,
 	QAbstractListModel * amod,
-	QAbstractListModel * smod)
+	QAbstractItemModel * smod,
+	int const main_sel_col)
   : availableLV(avail), selectedLV(sel), addPB(add), deletePB(del),
 		upPB(up), downPB(down), availableModel(amod), selectedModel(smod),
-    selectedHasFocus_(false)
+		selectedHasFocus_(false), main_sel_col_(main_sel_col)
 {
 	
 	selectedLV->setModel(smod);
 	availableLV->setModel(amod);
-	
+	selectedLV->setSelectionBehavior(QAbstractItemView::SelectRows);
+	selectedLV->setSelectionMode(QAbstractItemView::SingleSelection);
+
 	connect(availableLV->selectionModel(),
 	        SIGNAL(currentChanged(QModelIndex, QModelIndex)),
 	        this, SLOT(availableChanged(QModelIndex, QModelIndex)));
@@ -69,6 +73,8 @@ GuiSelectionManager::GuiSelectionManager(
 	connect(selectedLV->selectionModel(),
 	        SIGNAL(selectionChanged(QItemSelection, QItemSelection)),
 	        this, SLOT(selectedChanged(QItemSelection, QItemSelection)));
+	connect(selectedLV->itemDelegate(), SIGNAL(commitData(QWidget*)),
+		this, SLOT(selectedEdited()));
 	connect(addPB, SIGNAL(clicked()), 
 	        this, SLOT(addPB_clicked()));
 	connect(deletePB, SIGNAL(clicked()), 
@@ -94,10 +100,10 @@ void GuiSelectionManager::update()
 }
 
 
-QModelIndex GuiSelectionManager::getSelectedIndex() const
+QModelIndex GuiSelectionManager::getSelectedIndex(int const c) const
 {
 	QModelIndexList avail = availableLV->selectionModel()->selectedIndexes();
-	QModelIndexList sel   = selectedLV->selectionModel()->selectedIndexes();
+	QModelIndexList sel   = selectedLV->selectionModel()->selectedRows(c);
 	bool const have_avl = !avail.isEmpty();
 	bool const have_sel = !sel.isEmpty();
 
@@ -137,7 +143,7 @@ void GuiSelectionManager::updateDelPB()
 	}
 	QModelIndexList const selSels = 
 		selectedLV->selectionModel()->selectedIndexes();
-	int const sel_nr = 	selSels.empty() ? -1 : selSels.first().row();
+	int const sel_nr = selSels.empty() ? -1 : selSels.first().row();
 	deletePB->setEnabled(sel_nr >= 0);
 }
 
@@ -151,7 +157,7 @@ void GuiSelectionManager::updateUpPB()
 	}
 	QModelIndexList const selSels = 
 			selectedLV->selectionModel()->selectedIndexes();
-	int const sel_nr = 	selSels.empty() ? -1 : selSels.first().row();
+	int const sel_nr = selSels.empty() ? -1 : selSels.first().row();
 	upPB->setEnabled(sel_nr > 0);
 }
 
@@ -165,7 +171,7 @@ void GuiSelectionManager::updateDownPB()
 	}
 	QModelIndexList const selSels = 
 			selectedLV->selectionModel()->selectedIndexes();
-	int const sel_nr = 	selSels.empty() ? -1 : selSels.first().row();
+	int const sel_nr = selSels.empty() ? -1 : selSels.first().row();
 	downPB->setEnabled(sel_nr >= 0 && sel_nr < srows - 1);
 }
 
@@ -176,7 +182,7 @@ bool GuiSelectionManager::isSelected(const QModelIndex & idx)
 		return false;
 	QVariant const & str = availableModel->data(idx, Qt::DisplayRole);
 	QModelIndexList qmil = 
-			selectedModel->match(selectedModel->index(0), 
+			selectedModel->match(selectedModel->index(0, main_sel_col_),
 			                     Qt::DisplayRole, str, 1,
 			                     Qt::MatchFlags(Qt::MatchExactly | Qt::MatchWrap));
 	return !qmil.empty();
@@ -221,6 +227,12 @@ void GuiSelectionManager::selectedChanged(const QModelIndex & idx, const QModelI
 }
 
 
+void GuiSelectionManager::selectedEdited()
+{
+	selectionChanged();
+}
+
+
 bool GuiSelectionManager::insertRowToSelected(int i, 
 		QMap<int, QVariant> const & itemData)
 {
@@ -230,7 +242,23 @@ bool GuiSelectionManager::insertRowToSelected(int i,
 		i = selectedModel->rowCount();
 	if (!selectedModel->insertRow(i))
 		return false;
-	return selectedModel->setItemData(selectedModel->index(i), itemData);
+	return selectedModel->setItemData(selectedModel->index(i, main_sel_col_), itemData);
+}
+
+
+bool GuiSelectionManager::insertRowToSelected(int i, QMap<int, QMap<int, QVariant>> & qms)
+{
+	if (i <= -1)
+		i = 0;
+	if (i > selectedModel->rowCount())
+		i = selectedModel->rowCount();
+	if (!selectedModel->insertRow(i))
+		return false;
+	bool res = true;
+	QMap<int, QMap<int, QVariant>>::const_iterator it = qms.constBegin();
+	for (; it != qms.constEnd(); ++it)
+		res &= selectedModel->setItemData(selectedModel->index(i, it.key()), it.value());
+	return res;
 }
 
 
@@ -291,11 +319,14 @@ void GuiSelectionManager::upPB_clicked()
 	int const pos = idx.row();
 	if (pos <= 0)
 		return;
-	
-	QMap<int, QVariant> qm = selectedModel->itemData(idx);
+
+	QMap<int, QMap<int, QVariant>> qms;
+	QList<QModelIndex>::const_iterator it = selIdx.constBegin();
+	for (; it != selIdx.constEnd(); ++it)
+		qms[it->column()] = selectedModel->itemData(*it);
 
 	selectedModel->removeRow(pos);
-	insertRowToSelected(pos - 1, qm);
+	insertRowToSelected(pos - 1, qms);
 
 	selectionChanged(); //signal
 
@@ -317,10 +348,13 @@ void GuiSelectionManager::downPB_clicked()
 	if (pos >= selectedModel->rowCount() - 1)
 		return;
 
-	QMap<int, QVariant> qm = selectedModel->itemData(idx);
+	QMap<int, QMap<int, QVariant>> qms;
+	QList<QModelIndex>::const_iterator it = selIdx.constBegin();
+	for (; it != selIdx.constEnd(); ++it)
+		qms[it->column()] = selectedModel->itemData(*it);
 
 	selectedModel->removeRow(pos);
-	insertRowToSelected(pos + 1, qm);
+	insertRowToSelected(pos + 1, qms);
 
 	selectionChanged(); //signal
 	

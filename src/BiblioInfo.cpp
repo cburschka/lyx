@@ -36,6 +36,7 @@
 #include "support/regex.h"
 #include "support/textutils.h"
 
+#include <map>
 #include <set>
 
 using namespace std;
@@ -812,6 +813,8 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			ret = from_ascii("x"); // any non-empty string will do
 		else if (key == "ifstar" && ci.Starred)
 			ret = from_ascii("x"); // any non-empty string will do
+		else if (key == "ifqualified" && ci.isQualified)
+			ret = from_ascii("x"); // any non-empty string will do
 		else if (key == "entrytype")
 			ret = entry_type_;
 		else if (prefixIs(key, "ifentrytype:")
@@ -908,6 +911,10 @@ docstring BibTeXInfo::getValueForKey(string const & oldkey, Buffer const & buf,
 			ret = ci.textBefore;
 		else if (key == "textafter")
 			ret = ci.textAfter;
+		else if (key == "curpretext")
+			ret = ci.getPretexts()[bib_key_];
+		else if (key == "curposttext")
+			ret = ci.getPosttexts()[bib_key_];
 		else if (key == "year")
 			ret = getYear();
 	}

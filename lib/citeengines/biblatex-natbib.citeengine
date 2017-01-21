@@ -68,6 +68,8 @@ MaxCiteNames 3
 #   dropping the '!' from the prefix (see below), e.g.:
 #   _stardesc Starred command label
 #   _stardesctooltip Tooltip for the starred command checkbox.
+# * A trailing $ indicates that a command features "qualified citation
+#   lists" (a specific Biblatex feature)
 
 #
 # CITE COMMAND DEFINITIONS for either engine type
@@ -84,8 +86,8 @@ CiteEngine authoryear
 	citeyearpar[][]
 	citeyear=cite*
 	citebyear[][]=citeyear
-	Footcite[][]=smartcite
-	Autocite[][]
+	Footcite$[][]=smartcite
+	Autocite$[][]
 	citetitle*<!_citetitlestar!_citetitlestartooltip>[][]
 	fullcite[][]
 	footfullcite[][]
@@ -97,8 +99,8 @@ CiteEngine numerical
 	Citep|citealp,citealt*[][]
 	Citet|textcite*[][]
 	supercite
-	Footcite[][]=smartcite
-	Autocite[][]
+	Footcite$[][]=smartcite
+	Autocite$[][]
 	Citeauthor[][]*
 	citeyearpar[][]
 	citeyear|citebyear[][]
@@ -177,6 +179,10 @@ CiteFormat default
 	!textbefore {%textbefore%[[%textbefore% ]]}
 	# ", postnote"
 	!textafter {%textafter%[[, %textafter%]]}
+	# "prenote " (for qualified lists)
+	!ctextbefore {%curpretext%[[%curpretext% ]]}
+	# ", postnote" (for qualified lists)
+	!ctextafter {%curposttext%[[, %curposttext%]]}
 	# Add a year if it exists (else "??") and possibly a modifier (as in 2017a)
 	!makeyear {%year%[[%year%]][[??]]}{%modifier%[[%modifier%]]}
 	# Add a year if it exists (else "??") and indicate a possible modifier (as in 2017[a])
@@ -239,6 +245,8 @@ CiteFormat authoryear
 	!sep ;
 	!close )
 
+	# "cf. Author et. al Year..."
+	!makecite %!ctextbefore%%!startlink%%!abbrvciteauthor% %!makeyear%%!endlink%%!ctextafter%%!nextcite%
 	# "Author et al. (cf. Year..."
 	!makecitet %!startlink%%!makeauthor%%!endlink% %!open%%!textbefore%%!makeyear%%!nextcitet%
 	# "cf. Author et al. Year..."
@@ -246,6 +254,8 @@ CiteFormat authoryear
 	# "Author et al., Year..."
 	!makecitealp %!startlink%%!makeauthor%, %!makeyear%%!endlink%%!nextcitealp%
 
+	# "...; Nextauthor Year..."
+	!nextcite {%next%[[%!sep% %!makecite%]]}
 	# "...), [and] Nextauthor (Year..."
 	!nextcitet {%next%[[%!close%%!smartsep%%!startlink%%!makeauthor%%!endlink% %!open%%!makeyear%%!nextcitet%]]}
 	# "...; NextAuthor et al. Year..."
@@ -268,9 +278,9 @@ CiteFormat authoryear
 	# "cf. Author Year; NextAuthor Year, p. xx" [NB: textbefore position differs from real natbib!]
 	citealt %!makecitealt%%!textafter%
 	# "Footnote: cf. Author A Year; Author B Year, p. xx."
-	footcite {%dialog%[[%_footnote%]][[%_foot%]]}: %!textbefore%%!makecitealp%%!textafter%.
+	footcite {%dialog%[[%_footnote%]][[%_foot%]]}: %!textbefore%%!makecite%%!textafter%.
 	# "Auto: (cf. Author A Year; Author B Year, p. xx)"
-	autocite {%dialog%[[%_autocite%]][[%_auto%]]}: %!open%%!textbefore%%!makecitealp%%!textafter%%!close%
+	autocite {%dialog%[[%_autocite%]][[%_auto%]]}: %!open%%!textbefore%%!makecite%%!textafter%%!close%
 
 	# Fallback style: "Author A (cf. Year),[ and] Author B (Year, p. xx)"
 	cite %!makecitet%%!textafter%%!close%
@@ -298,6 +308,8 @@ CiteFormat numerical
 	!makecitealt {%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitealt%
 	# "ID..."
 	!hashkey {%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%%!nexthashkey%]]}
+	# "ID"
+	!makekey %!ctextbefore%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!ctextafter%%!nextkey%
 
 	# "...], [and] NextAuthor [ID..."
 	!nextcitet {%next%[[%!close%%!smartsep%%!makeauthor% %!open%%!textbefore%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitet%]]}
@@ -309,6 +321,8 @@ CiteFormat numerical
 	!nexthashkey {%next%[[%!sep% %!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%%!nexthashkey%]]}
 	# "...); Nextauthor [ID..."
 	!nextcitet {%next%[[%!close%%!smartsep%%!makeauthor% %!open%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!nextcitet%]]}
+	# "..., NextID..."
+	!nextkey {%next%[[%!sep% %!ctextbefore%{%dialog%[[#ID]][[%!startlink%{%numericallabel%[[%numericallabel%]][[#%key%]]}%!endlink%]]}%!ctextafter%%!nextkey%]]}
 
 	#
 	# ACTUAL STYLE DEFINITIONS
