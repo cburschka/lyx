@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-01-14 19:13+0100\n"
-"PO-Revision-Date: 2017-01-14 18:22+0000\n"
+"POT-Creation-Date: 2017-01-21 14:42+0100\n"
+"PO-Revision-Date: 2017-01-21 15:31+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1026,17 +1026,42 @@ msgstr "&Možnosti"
 msgid "Search as you &type"
 msgstr "V&yhľadávať pri zadávaní"
 
+#: src/frontends/qt4/GuiCitation.cpp:274
+msgid "General text befo&re:"
+msgstr "Všeobecný text pred:"
+
+#: src/frontends/qt4/GuiCitation.cpp:275 src/frontends/qt4/GuiCitation.cpp:278
+msgid "General &text after:"
+msgstr "Všeobecný text po:"
+
+#: src/frontends/qt4/GuiCitation.cpp:276
+msgid ""
+"Text that precedes the whole reference list. For text that precedes "
+"individual items, double-click on the respective entry above."
+msgstr ""
+"Text pred celou odkazovou listinou. Dvojité kliknutie na patričný záznam "
+"hore pridá text pred príslušnou položkou. "
+
+#: src/frontends/qt4/GuiCitation.cpp:279
+msgid ""
+"Text that follows the whole reference list. For text that follows individual "
+"items, double-click on the respective entry above."
+msgstr ""
+"Text za celou odkazovou listinou. Dvojité kliknutie na patričný záznam hore "
+"pridá text za príslušnou položkou. "
+
 #: src/frontends/qt4/ui/CitationUi.ui:398
 msgid "Citation st&yle:"
 msgstr "Štý&l citácie:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:415
-msgid "Text &before:"
+#: src/frontends/qt4/ui/CitationUi.ui:289
+#: src/frontends/qt4/GuiCitation.cpp:282
+msgid "Text befo&re:"
 msgstr "&Text pred:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:313
 msgid "Citation style to use, if different styles are provided"
-msgstr "Použitý štýl citácie, v prípade keď je viacej štýlov prístupných"
+msgstr "Použitý štýl citácie, v prípade keď je viacej prístupných štýlov"
 
 #: src/frontends/qt4/ui/CitationUi.ui:322
 msgid "Text that precedes the reference (e.g., \"cf.\")"
@@ -6464,24 +6489,6 @@ msgstr "Dôkaz."
 #: lib/layouts/InStar.module:2
 msgid "Title and Preamble Hacks"
 msgstr "Kúzla v Titule a v Preambule"
-
-#: lib/layouts/InStar.module:12
-msgid ""
-"Provides two new styles: 1. An 'In Preamble' style that puts whatever is "
-"entered into it into the preamble. This can be used, if one wishes, to "
-"include preamble code in the body of the LyX document. 2. An 'In Title' "
-"style that will put its contents into the body of the LaTeX document, but "
-"before \\maketitle is issued. This is useful for making branches and notes "
-"in title-related material. (If you put these in a Standard layout, this "
-"signals to LyX to output \\maketitle, which may then come too early.)"
-msgstr ""
-"Poskytuje dva nové štýly: 1. Štýl 'V Preambule' ktorý položí všetko do neho "
-"zadané do preambuly. Keď si to niekto želá, dá sa použiť aj na inklúziu kódu "
-"preambuly do tela LyXového dokumentu. 2. Štýl 'V Titule' položí svoj obsah "
-"do tela LaTeXového dokumentu, ale pred vydaním \\maketitle. Je to vhodné pre "
-"tvorbu vetiev a poznámok v titulnom materiáli. (Vložením do 'Štandardné "
-"rozloženie' signalizujete LyXu vložiť \\maketitle do výstupu, čo by mohlo "
-"byť predčasné.)"
 
 #: lib/layouts/InStar.module:16
 msgid "In Preamble"
@@ -13478,25 +13485,9 @@ msgstr "Poznámka \\thenote."
 msgid "Algorithm2e"
 msgstr "Algorithm2e"
 
-#: lib/layouts/algorithm2e.module:6
-msgid ""
-"Use the algorithm2e package for algorithm floats rather than LyX's home-"
-"brewed algorithm floats."
-msgstr ""
-"Použiť balík algorithm2e pre plávajúce algoritmy namiesto LyXovej samohonky "
-"plávajúcich algoritmov."
-
 #: lib/layouts/bicaption.module:2
 msgid "Multilingual Captions"
 msgstr "Viac-jazykové Popisy"
-
-#: lib/layouts/bicaption.module:6
-msgid ""
-"Provides two styles to typeset multilingual captions. For a description see "
-"the file MultilingualCaptions.lyx in LyX's examples folder."
-msgstr ""
-"Poskytuje dva štýly na sádzanie viac-jazykových popisov. Pre vysvetlenie "
-"pozri súbor MultilingualCaptions.lyx v adresári príkladov."
 
 #: lib/layouts/bicaption.module:10
 msgid "Caption setup"
@@ -13548,14 +13539,6 @@ msgstr "Krátky titul pre druhý jazyk"
 #: lib/layouts/braille.module:2
 msgid "Braille"
 msgstr "Braille"
-
-#: lib/layouts/braille.module:6
-msgid ""
-"Defines an environment to typeset Braille. For more details see Braille.lyx "
-"in examples."
-msgstr ""
-"Definuje prostredie pre sadu Brailleho slepeckého písma. Detaily si obzri v "
-"súbore Braille.lyx v príkladoch."
 
 #: lib/layouts/braille.module:22
 msgid "Braille (default)"
@@ -13613,27 +13596,9 @@ msgstr "Braille rámik"
 msgid "Change bars"
 msgstr "Pruhy zmien"
 
-#: lib/layouts/changebars.module:7
-msgid ""
-"Enables LyX to add vertical change bars in the margin of PDF output when "
-"change tracking is turned on and pdflatex output format is chosen."
-msgstr ""
-"Umožní LyX pridať vertikálne pruhy zmien na okraji PDF-výstupu. Treba na to "
-"zapnúť sledovanie zmien a zvoliť pdflatex ako výstupný formát."
-
 #: lib/layouts/customHeadersFooters.module:2
 msgid "Custom Header/Footerlines"
 msgstr "Vlastné riadky pre Hlavičku/Pätu"
-
-#: lib/layouts/customHeadersFooters.module:7
-msgid ""
-"Adds environments to define header and footer lines. NOTE: To use this "
-"module you must set the 'Headings style' in the menu Document Settings -> "
-"Page Layout to 'fancy'!"
-msgstr ""
-"Pridáva prostredia na definície riadkov hlavičiek a pätičiek. POZOR: Na "
-"použitie tohto modulu treba nastaviť Štýl hlavičky v menu Dokument -> "
-"Nastavenia… -> Formát Stránky na 'pestrý' (fancy)!"
 
 #: lib/layouts/customHeadersFooters.module:12
 msgid "Header/Footer"
@@ -13675,14 +13640,6 @@ msgstr "Centrovaná Päta:"
 msgid "Endnote"
 msgstr "Koncová poznámka"
 
-#: lib/layouts/endnotes.module:6
-msgid ""
-"Adds an endnote inset, in addition to footnotes. You will need to add "
-"\\theendnotes in TeX-code where you want the endnotes to appear."
-msgstr ""
-"Pridáva vložku pre koncové poznámky (Endnote). Nutné je pridať \\theendnotes "
-"do vložky TeX-ového kódu tam, kde sa koncové poznámky majú objaviť."
-
 #: lib/layouts/endnotes.module:10
 msgid "Endnote ##"
 msgstr "Koncová poznámka ##"
@@ -13694,15 +13651,6 @@ msgstr "koncová poznámka"
 #: lib/layouts/enumitem.module:2
 msgid "Customisable Lists (enumitem)"
 msgstr "Prispôsobilé Listiny (enumitem)"
-
-#: lib/layouts/enumitem.module:6
-msgid ""
-"Controls the layout of enumerate, itemize, description, and list/labeling. "
-"See section Customized Lists of the User's Guide for a detailed description."
-msgstr ""
-"Kontroluje schému pre číslovanie, položky, opis a listina/etiketovanie.\n"
-"Pozrite si sekciu 'Customized Lists' v Užívateľskej Príručke pre detailné "
-"vysvetlenie."
 
 #: lib/layouts/enumitem.module:74
 msgid "Description Options"
@@ -13716,14 +13664,6 @@ msgstr "Pokračovať číslovaním"
 msgid "Number Equations by Section"
 msgstr "Číslovanie rovníc podľa sekcie"
 
-#: lib/layouts/eqs-within-sections.module:6
-msgid ""
-"Resets the equation number at section start and prepends the section number "
-"to the equation number, as in '(2.1)'."
-msgstr ""
-"Vynuluje číslovanie rovníc na začiatku sekcie a predčísli ich sekciou, ako "
-"pri '(2.1)'."
-
 #: lib/layouts/eqs-within-sections.module:17
 msgid "\\thesection.\\arabic{equation}"
 msgstr "\\thesection.\\arabic{equation}"
@@ -13732,70 +13672,17 @@ msgstr "\\thesection.\\arabic{equation}"
 msgid "Number Figures by Section"
 msgstr "Číslovanie obrázkov podľa sekcie"
 
-#: lib/layouts/figs-within-sections.module:6
-msgid ""
-"Resets the figure number at section start and prepends the section number to "
-"the figure number, as in 'fig. 2.1'."
-msgstr ""
-"Vynuluje číslovanie obrázkov na začiatku sekcie a predčísli ich sekciou, ako "
-"pri 'Obrázok 2.1'."
-
 #: lib/layouts/fix-cm.module:2
 msgid "Fix cm"
 msgstr "Fix cm"
-
-#: lib/layouts/fix-cm.module:8
-msgid ""
-"Fix-cm improves the appearance of Computer Modern fonts and makes them "
-"available with arbitrary sizes. For details see the documentation of the fix-"
-"cm.sty package: http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
-msgstr ""
-"Fix-cm zlepšuje zobrazenie fontov Computer Modern a robí ich dostupné s "
-"ľubovoľným rozmerom. Pre detaily pozrite na dokumentáciu balíka fix-cm.sty: "
-"http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
 
 #: lib/layouts/fixltx2e.module:2
 msgid "Fix LaTeX"
 msgstr "Upraviť LaTeX"
 
-#: lib/layouts/fixltx2e.module:9
-msgid ""
-"Loads the LaTeX package fixltx2e which contains some bug fixes for LaTeX. "
-"Those fixes are not part of the LaTeX kernel because of backward "
-"compatibility. If you use this module your typeset document may look "
-"different when you process it with future LaTeX versions, because fixltx2e "
-"may provide more bugfixes in future versions."
-msgstr ""
-"Nahrá LaTeX-ov balík fixltx2e ktorý obsahuje pár korektúr pre LaTeX. Tieto "
-"korektúry nie sú časťou LaTeX-ovho jadra kvôli spätnej kompatibilite. "
-"Použitím tohto modulu môžu vaše vytlačené dokumenty vyzerať ináč pri "
-"spracovaní s budúcimi verziami LaTeX-u, lebo fixltx2e vtedy môže poskytovať "
-"aj viac korektúr."
-
 #: lib/layouts/fixme.module:2
 msgid "FiXme"
 msgstr "FiXme"
-
-#: lib/layouts/fixme.module:11
-msgid ""
-"Provides 'FiXme' (marginal) annotations for document revision purposes. A "
-"list of annotations can be produced by using the 'List of FIXMEs' paragraph "
-"style. The annotations are customizable via the LaTeX preamble. See the "
-"FiXme documentation for details. NOTE: By default, the notes are only "
-"displayed in 'draft' mode (if the option 'draft' has been inserted to "
-"Document > Settings > Document Class > Class Options > Custom). To display "
-"them always, insert \\\\fxsetup{draft} to Document > Settings > Preamble. "
-"NOTE also that you need version 4 or later of the FiXme package for some "
-"features."
-msgstr ""
-"Poskytuje 'FiXme' (okrajové) vysvetlivky pre revízne zámery v dokumente. "
-"Súpis vysvetliviek sa dá vytvoriť použitím odstavcového štýlu 'Súpis "
-"FIXMEs'. Vysvetlivky sú upraviteľné v LaTeXovej preambule. Viď dokumentáciu "
-"FiXme. NOTA: Štandardne sú poznámky viditeľné len v režime 'draft' (keď "
-"voľbu 'draft' vložíte pomocou Dokument -> Nastavenia… -> Trieda dokumentu -> "
-"Nastavenie triedy -> Vlastné). Chcete to vidieť vždy, vložte \\"
-"\\fxsetup{draft} do Dokument -> Preambula LaTeX-u. POZOR: pre niektoré "
-"vlastnosti potrebujete balík 'FiXme' verziu 4 alebo vzostupnú."
 
 #: lib/layouts/fixme.module:17 lib/layouts/fixme.module:55
 msgid "Fixme"
@@ -14010,22 +13897,9 @@ msgstr "FxFatálny*"
 msgid "Foot to End"
 msgstr "Pätky na koncové"
 
-#: lib/layouts/foottoend.module:6
-msgid ""
-"Sets all footnotes as endnotes. You will need to add \\theendnotes in TeX-"
-"code where you want the endnotes to appear."
-msgstr ""
-"Nastaviť všetky poznámky pod čiarou ako koncové poznámky. Nutné je pridať "
-"\\theendnotes do vložky TeX-ového kódu tam, kde sa koncové poznámky majú "
-"objaviť."
-
 #: lib/layouts/graphicboxes.module:2
 msgid "GraphicBoxes"
 msgstr "GrafickéRámčeky"
-
-#: lib/layouts/graphicboxes.module:5
-msgid "Boxes to scale and rotate its contents"
-msgstr "Rámček na rozmer a rotáciu jeho obsahu"
 
 #: lib/layouts/graphicboxes.module:11 lib/layouts/graphicboxes.module:14
 msgid "Reflectbox"
@@ -14087,28 +13961,9 @@ msgstr "Točiaci uhol v stupňoch (v protismere hodín)"
 msgid "Hanging"
 msgstr "Visiaci Odstavec"
 
-#: lib/layouts/hanging.module:6
-msgid ""
-"Adds an environment for hanging paragraphs. Hanging paragraph is a paragraph "
-"in which the first line is set to the left margin, but all subsequent lines "
-"are indented."
-msgstr ""
-"Pridáva prostredie pre \"visiace\" odstavce. Visiaci odstavec začína na "
-"prvom riadku bez zasunutia, nasledujúce riadky sú naopak zasunuté."
-
 #: lib/layouts/hpstatement.module:2
 msgid "Hazard and Precautionary Statements"
 msgstr "Rizikové a Bezpečnostné Inštrukcie"
-
-#: lib/layouts/hpstatement.module:7
-msgid ""
-"Provides two insets to typeset numbers and phrases of chemical hazard and "
-"precautionary statements. For a description see the file H-P-statements.lyx "
-"in LyX's examples folder."
-msgstr ""
-"Poskytuje dve vložky na sádzanie čísiel a zvratov pre chemické rizikové a "
-"bezpečnostné inštrukcie. Pre vysvetlenie pozri súbor H-P-statements.lyx v "
-"adresári príkladov."
 
 #: lib/layouts/hpstatement.module:11 lib/layouts/hpstatement.module:16
 msgid "H-P number"
@@ -14129,14 +13984,6 @@ msgstr "Text pre inštrukcie ktoré vyžadujú nejaké informácie"
 #: lib/layouts/initials.module:2
 msgid "Initials"
 msgstr "Iniciálky"
-
-#: lib/layouts/initials.module:6
-msgid ""
-"Define a style for paragraphs with an initial. See the EmbeddedObjects "
-"manual for a detailed description."
-msgstr ""
-"Definuje štýl pre odstavce s iniciálkou. Pozri manuál 'Vložené Objekty' pre "
-"detailné vysvetlenie."
 
 #: lib/layouts/initials.module:14 lib/layouts/initials.module:16
 #: lib/layouts/initials.module:26 lib/layouts/initials.module:32
@@ -14164,17 +14011,6 @@ msgstr "Zvyšok iniciálneho slova alebo textu"
 msgid "Rnw (knitr)"
 msgstr "Rnw (knitr)"
 
-#: lib/layouts/knitr.module:6
-msgid ""
-"Uses the knitr package in R for dynamic report generation. This R package "
-"has to be installed for this module to work: install.packages('knitr'). Note "
-"it depends on R >= 2.14.1. For more info see http://yihui.name/knitr"
-msgstr ""
-"Používa balík knitr v R pre generáciu dynamickej reportáže. Aby tento modul "
-"pracoval musí byť balík R inštalovaný: install.packages('knitr'). "
-"Zaznamenajte si že závisí na R >= 2.14.1. Pre viac informácie pozri na "
-"http://yihui.name/knitr"
-
 #: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
 #: lib/layouts/sweave.module:6
 msgid "literate"
@@ -14200,14 +14036,6 @@ msgstr "S/R výraz"
 msgid "LilyPond Book"
 msgstr "LilyPond Kniha"
 
-#: lib/layouts/lilypond.module:6
-msgid ""
-"This module adds an inset to enter LilyPond code directly into LyX. It will "
-"be processed in the output. See the lilypond.lyx example file."
-msgstr ""
-"Tento modul pridáva vložku na priamy vklad kódu LilyPond do LyXu. Bude "
-"spracovaný vo výstupe. Pozrite si príkladný súbor lilypond.lyx."
-
 #: lib/layouts/lilypond.module:13 lib/layouts/lilypond.module:14
 #: lib/external_templates:320
 msgid "LilyPond"
@@ -14228,16 +14056,6 @@ msgstr ""
 #: lib/layouts/linguistics.module:2 lib/layouts/linguistics.module:33
 msgid "Linguistics"
 msgstr "Lingvistika"
-
-#: lib/layouts/linguistics.module:7
-msgid ""
-"Defines some special environments useful for linguistics (numbered examples, "
-"glosses, semantic markup, tableau floats). See linguistics.lyx file in "
-"examples."
-msgstr ""
-"Definuje špeciálne prostredie užitočné pre lingvistiku (číslované príklady, "
-"glosy, sémantické štýly znakov (markup), plávajúce tabuľky). Pozri na súbor "
-"linguistics.lyx v príkladoch."
 
 #: lib/layouts/linguistics.module:14
 msgid "(\\arabic{example})"
@@ -14348,14 +14166,6 @@ msgid "Logical Markup"
 msgstr "Logické značkovanie"
 
 #: lib/layouts/logicalmkup.module:5
-msgid ""
-"Defines some character styles for logical markup: noun, emph, strong, and "
-"code."
-msgstr ""
-"Definuje niektoré logické štýly znakov (logical markup): meno (noun), dôraz "
-"(emph), (silný dôraz) strong, kód (code)."
-
-#: lib/layouts/logicalmkup.module:5
 msgid "charstyles"
 msgstr "Štýly znakov"
 
@@ -14383,24 +14193,9 @@ msgstr "silný dôraz"
 msgid "Minimalistic"
 msgstr "Minimalistické"
 
-#: lib/layouts/minimalistic.module:5
-msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
-msgstr ""
-"Predefinuje niektoré z vložiek ako minimalistické (Register, Vetva, URL)."
-
 #: lib/layouts/multicol.module:2 lib/layouts/multicol.module:11
 msgid "Multiple Columns"
 msgstr "Viac Stĺpcové"
-
-#: lib/layouts/multicol.module:7
-msgid ""
-"Adds a custom inset whose content is set with multiple columns (2 by "
-"default). See the Additional manual, section 'Multiple Text Columns', for a "
-"detailed description of multiple columns."
-msgstr ""
-"Pridáva vlastnú vložku, ktorej obsah je postavený z viacerých stĺpcov (2 .sú "
-"prednastavené). Pozri Prídavný manuál, sekcia 'Viac Stĺpcový Text', pre "
-"detailné vysvetlenie viac-stĺpcového prostredia."
 
 #: lib/layouts/multicol.module:19
 msgid "Number of Columns"
@@ -14430,41 +14225,13 @@ msgstr ""
 msgid "Natbibapa"
 msgstr "Natbibapa"
 
-#: lib/layouts/natbibapa.module:9
-msgid ""
-"This module adds support for using natbib together with apacite (the "
-"bibliography style need not be apacite--it could be apacite, apacitex, or "
-"any bibliography that works with both the natbib and apacite packages.)"
-msgstr ""
-"Tento modul pridáva podporu na používanie natbib spolu s apacite (štýl "
-"bibliografie nemusí byť apacite--môže byť apacite, apacitex,, alebo "
-"ktorákoľvek iná bibliografia ktorá spolupracuje s natbib i apacite balíkmi.)"
-
 #: lib/layouts/noweb.module:2
 msgid "Noweb"
 msgstr "Noweb"
 
-#: lib/layouts/noweb.module:5
-msgid "Allows to use Noweb as a literate programming tool."
-msgstr "Dovoľuje použiť Noweb ako nástroj pre dokumentačné programovanie."
-
 #: lib/layouts/paralist.module:2
 msgid "Paragraph Lists (paralist)"
 msgstr "Odstavcové Listiny (paralist)"
-
-#: lib/layouts/paralist.module:9
-msgid ""
-"The package paralist provides some new list environments. Itemized and "
-"enumerated lists can be typeset within paragraphs, as paragraphs and in a "
-"compact version. Most environments have optional arguments to format the "
-"labels. Additionally, the LaTeX environments itemize and enumerate are "
-"extended to use a similar optional argument."
-msgstr ""
-"Balík paralist poskytuje niekoľké nové listinové prostredia. Položkové a "
-"číslované listiny môžu byť vysádzané vnútri odstavcov, ako odstavce a aj v "
-"kompaktnej verzii. Väčšina prostredí má voliteľné argumenty na formátovanie "
-"návestia. Dodatočne, LaTeX-ové prostredia itemize a enumerate sú rozšírené "
-"na použitie obdobného voliteľného argumentu."
 
 #: lib/layouts/paralist.module:30 lib/layouts/paralist.module:37
 #: lib/layouts/paralist.module:52 lib/layouts/paralist.module:61
@@ -14550,16 +14317,6 @@ msgstr "Parametre pre kompaktný opis"
 #: lib/layouts/pdfcomment.module:2
 msgid "PDF Comments"
 msgstr "PDF Komentáre"
-
-#: lib/layouts/pdfcomment.module:7
-msgid ""
-"Provides various kinds of annotations for the PDF output. The module uses "
-"the pdfcomment package. Please consult the LyX example file PDF-comment.lyx "
-"and the package documentation for details."
-msgstr ""
-"Poskytuje rôzne druhy poznámok pre PDF výstup. Tento modul používa balík "
-"pdfcomment. Pre detaily si pozrite aj príkladný LyX-súbor\n"
-"PDF-comment.lyx a dokumentáciu balíka."
 
 #: lib/layouts/pdfcomment.module:19
 msgid "Define Avatar"
@@ -14758,16 +14515,6 @@ msgstr "Vložte sem voľby listiny (viď pdfcomment manuál)"
 msgid "PDF Form"
 msgstr "PDF Form"
 
-#: lib/layouts/pdfform.module:7
-msgid ""
-"Provides fields and buttons for PDF forms. The module uses the LaTeX package "
-"hyperref. Please consult the LyX example file PDF-form.lyx and the "
-"documentation of hyperref for details."
-msgstr ""
-"Poskytuje plochy a tlačidlá pre PDF forms. Tento modul používa balík "
-"hyperref. Pre detaily si pozrite aj príkladný LyX-súbor\n"
-"PDF-form.lyx a dokumentáciu balíka hyperref."
-
 #: lib/layouts/pdfform.module:15 lib/layouts/pdfform.module:26
 msgid "Begin PDF Form"
 msgstr "Začiatok PDF Form"
@@ -14916,16 +14663,6 @@ msgstr "Štandardný štýl prepínacieho políčka"
 msgid "Risk and Safety Statements"
 msgstr "Rizikové a Poistné Uzávierky"
 
-#: lib/layouts/rsphrase.module:7
-msgid ""
-"Provides two insets and one environment to typeset numbers and phrases of "
-"chemical risk and safety statements. For a description see the file R-S-"
-"statements.lyx in LyX's examples folder."
-msgstr ""
-"Poskytuje dve vložky a jedno prostredie na sádzanie čísiel a zvratov pre "
-"poistné a rizikové uzávierky v chémii. Pre vysvetlenie pozri súbor R-S-"
-"statements.lyx v adresári príkladov."
-
 #: lib/layouts/rsphrase.module:11 lib/layouts/rsphrase.module:16
 msgid "R-S number"
 msgstr "R-P číslo"
@@ -14953,12 +14690,6 @@ msgstr "P zvrat:"
 #: lib/layouts/sectionbox.module:2
 msgid "Section Boxes"
 msgstr "Sekciové Rámčeky"
-
-#: lib/layouts/sectionbox.module:6
-msgid ""
-"Defines Boxes with section header. Mainly intended for the SciPoster class."
-msgstr ""
-"Definuje Rámiky s hlavičkou sekcie. Hlavne myslené pre Sci-Plagát triedu."
 
 #: lib/layouts/sectionbox.module:11
 msgid "SectionBox"
@@ -15007,16 +14738,6 @@ msgstr "Podpodsekcia Rámik"
 #: lib/layouts/shapepar.module:2
 msgid "Custom Paragraph Shapes"
 msgstr "Vlastné Tvary Odstavca"
-
-#: lib/layouts/shapepar.module:7
-msgid ""
-"Provides several paragraph shapes as well as commands to define custom "
-"shapes. For a description see LyX's Additional features manual, section 'Non-"
-"standard Paragraph Shapes'."
-msgstr ""
-"Poskytuje niekoľko tvarov odstavca ako aj príkazy na definovanie vlastných "
-"tvarov. Pre vysvetlenie pozri LyXov manuál Prídavné vlastnosti, sekcia 'Nie "
-"štandardné Tvary Odstavca'."
 
 #: lib/layouts/shapepar.module:26
 msgid "CD label"
@@ -15110,15 +14831,6 @@ msgstr "ParameterTvaru"
 msgid "Sweave"
 msgstr "Sweave"
 
-#: lib/layouts/sweave.module:6
-msgid ""
-"Allows to use the statistical language S/R as a literate programming tool "
-"via the Sweave() function. For more info see the LyX example file sweave.lyx."
-msgstr ""
-"Umožňuje použiť štatistický jazyk S/R ako nástroj pre dokumentačné "
-"programovanie cez funkciu z balíka Sweave(). Pre viac informácie pozri "
-"príkladný súbor sweave.lyx."
-
 #: lib/layouts/sweave.module:74 lib/layouts/sweave.module:75
 msgid "Sweave Input File"
 msgstr "Sweave Vstupný Súbor"
@@ -15127,25 +14839,9 @@ msgstr "Sweave Vstupný Súbor"
 msgid "Number Tables by Section"
 msgstr "Číslovanie tabuliek podľa sekcie"
 
-#: lib/layouts/tabs-within-sections.module:6
-msgid ""
-"Resets the table number at section start and prepends the section number to "
-"the table number, as in 'Table 2.1'."
-msgstr ""
-"Vynuluje číslovanie tabuliek na začiatku sekcie a predčísli ich sekciou, ako "
-"pri 'Tabuľka 2.1'."
-
 #: lib/layouts/tcolorbox.module:2
 msgid "Fancy Colored Boxes"
 msgstr "Pestro Zafarbené Rámiky"
-
-#: lib/layouts/tcolorbox.module:6
-msgid ""
-"Adds custom insets that support colored boxes via the tcolorbox package. See "
-"the tcolorbox documentation for details."
-msgstr ""
-"Pridáva vlastné vložky podporujúce farebné rámiky pomocou balíka tcolorbox. "
-"Viď dokumentáciu tcolorbox."
 
 #: lib/layouts/tcolorbox.module:11 lib/layouts/tcolorbox.module:14
 msgid "Color Box"
@@ -15271,25 +14967,6 @@ msgstr "Vlastný Farebný Rámik 5"
 msgid "Theorems (AMS, Numbered by Type)"
 msgstr "Teorémy (AMS, číslované podľa typu)"
 
-#: lib/layouts/theorems-ams-bytype.module:11
-msgid ""
-"Defines theorem environments and the proof environment using the extended "
-"AMS machinery. Both numbered and unnumbered types are provided. Contrary to "
-"the plain AMS Theorem module, the different theorem types provided here each "
-"have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
-"theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
-"proposition 4, ...). The numbering's scope is the whole document. For "
-"chapter- and section-wide numbering, use one of the 'within "
-"Sections'/'within Chapters' modules, respectively."
-msgstr ""
-"Definuje prostredie mat. viet a dôkazov používajúce rozšírenie AMS. K "
-"dispozícii sú číslované a neočíslované typy. Opačne k jednoduchému modulu "
-"rozšírenia AMS, má tu každý poskytnutý typ teorémou svoje vlastné číslovanie "
-"(čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma 2, …, oproti veta "
-"1, veta 2, lemma 3, tvrdenie 4…). Číslovanie je postupne bez ohľadu na "
-"štruktúru dokumentu. To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované "
-"podľa …)' modulu."
-
 #: lib/layouts/theorems-ams-chap-bytype.inc:82
 msgid "Theorem \\thechapter.\\thetheorem."
 msgstr "Teoréma \\thechapter.\\thetheorem."
@@ -15346,44 +15023,9 @@ msgstr "Nárok \\thechapter.\\theclaim."
 msgid "Theorems (AMS, Numbered by Type within Chapters)"
 msgstr "Teorémy (AMS, Číslované podľa Typu vnútri Kapitol)"
 
-#: lib/layouts/theorems-ams-chap-bytype.module:11
-msgid ""
-"Defines theorem environments and the proof environment using the extended "
-"AMS machinery. Both numbered and unnumbered types are provided. Contrary to "
-"the plain AMS Theorem module, the different theorem types provided here each "
-"have a separate counter (e.g., theorem 1.1, theorem 1.2, lemma 1.1, "
-"proposition 1.1, theorem 1.3, lemma 1.2, ..., as opposed to theorem 1, "
-"theorem 2, lemma 3, proposition 4, ...). The numbering restarts for each "
-"chapter: theorem 1.1, theorem 2.1, ..."
-msgstr ""
-"Definuje prostredie mat. viet a dôkazov používajúce rozšírenie AMS. K "
-"dispozícii sú číslované a neočíslované typy. Opačne k jednoduchému modulu "
-"rozšírenia AMS, má tu každý poskytnutý typ teorémou svoje vlastné číslovanie "
-"(čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma 2, …, oproti veta "
-"1, veta 2, lemma 3, tvrdenie 4…). Číslovanie sa reštartuje na začiatku "
-"každej kapitoli: teoréma 1.1, teoréma 2.1, … "
-
 #: lib/layouts/theorems-ams-extended-bytype.module:2
 msgid "Theorems (AMS-Extended, Numbered by Type)"
 msgstr "Teorémy (rozšírenie AMS, číslované podľa typu)"
-
-#: lib/layouts/theorems-ams-extended-bytype.module:12
-msgid ""
-"Defines some additional theorem environments for use with the AMS theorems "
-"packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
-"Summary, Acknowledgement, Conclusion, Assumption, and Case, in both numbered "
-"and non-numbered forms. Contrary to the plain AMS-Extended module, the "
-"different theorem types provided here each have a separate counter (e.g., "
-"criterion 1, criterion 2, axiom 1, assumption 1, criterion 3, ..., as "
-"opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
-msgstr ""
-"Definuje niektoré prídavné prostredie teorémou pre použitie s balíkmi AMS. "
-"Zahrňuje Kritérium, Algoritmus, Axióma, Podmienka,Poznámka, Notácia, Súhrn, "
-"Poďakovania, Záver, Predpoklad, a Prípad v oboch formách (číslované/"
-"neočíslované). Opačne k jednoduchému modulu rozšírenia AMS, má tu každý "
-"poskytnutý typ teorémou svoje vlastné číslovanie (čiže kritérium 1, "
-"kritérium 2, axióma 1, predpoklad 1, kritérium 3, …, oproti kritérium 1, "
-"kritérium 2, axióma 3, predpoklad 4, …)."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:66
 msgid "Criterion \\thecriterion."
@@ -15538,26 +15180,6 @@ msgstr "Otázka."
 msgid "Theorems (AMS-Extended, Numbered by Type within Chapters)"
 msgstr "Teorémy (AMS-Rozšírenie, Číslované podľa Typu vnútri Kapitol)"
 
-#: lib/layouts/theorems-ams-extended-chap-bytype.module:12
-msgid ""
-"Defines some additional theorem environments for use with the AMS theorems "
-"packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
-"Summary, Acknowledgement, Conclusion, Assumption, and Case, in both numbered "
-"and non-numbered forms. Contrary to the plain AMS-Extended module, the "
-"different theorem types provided here each have a separate counter, "
-"restarted with each new chapter (e.g., criterion 1.1, criterion 1.2, axiom "
-"1.1, assumption 1.1, #criterion 2.1, criterion 2.2, axiom 2.1..., as opposed "
-"to criterion 1, criterion 2, axiom 3, assumption 4...)"
-msgstr ""
-"Definuje niektoré prídavné prostredie teorémou pre použitie s balíkmi AMS-"
-"teorémy. Zahrňuje Kritérium, Algoritmus, Axióma, Podmienka,Poznámka, "
-"Notácia, Súhrn, Poďakovania, Záver, Predpoklad, a Prípad v oboch formách "
-"(číslované/neočíslované). Opačne k jednoduchému modulu rozšírenia AMS, má tu "
-"každý poskytnutý typ teorémou svoje vlastné číslovanie, reštartované pri "
-"každej novej kapitole (čiže kritérium 1.1, kritérium 1.2, axióma 1.1, "
-"predpoklad 1.1, kritérium 2.1, axióma 2.1, …, oproti kritérium 1.1, "
-"kritérium 1.2, axióma 1.3, predpoklad 1.4, …)"
-
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:69
 msgid "Criterion \\thechapter.\\thecriterion."
 msgstr "Kritérium \\thechapter.\\thecriterion."
@@ -15605,18 +15227,6 @@ msgstr "Otázka \\thechapter.\\thequestion."
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
 msgstr "Teorémy (rozšírenie AMS)"
-
-#: lib/layouts/theorems-ams-extended.module:9
-msgid ""
-"Defines some additional theorem environments for use with the AMS theorems "
-"packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
-"Summary, Acknowledgement, Conclusion, Fact, Assumption, Case, and Question, "
-"in both numbered and non-numbered forms."
-msgstr ""
-"Definuje niektoré prídavné prostredie teorémou pre použitie s balíkmi AMS. "
-"Zahrňuje Kritérium, Algoritmus, Axióma, Podmienka, Poznámka, Notácia, Súhrn, "
-"Poďakovania, Záver, Fakt, Predpoklad, Prípad a Otázka v oboch formách "
-"(číslované/neočíslované)."
 
 #: lib/layouts/theorems-ams-extended.module:10
 #: lib/layouts/theorems-ams.module:9 lib/layouts/theorems-chap.module:9
@@ -15673,82 +15283,21 @@ msgstr "Otázka \\thetheorem."
 msgid "Theorems (AMS)"
 msgstr "Teorémy (AMS)"
 
-#: lib/layouts/theorems-ams.module:8
-msgid ""
-"Defines theorem environments and the proof environment using the extended "
-"AMS machinery. Both numbered and unnumbered types are provided. By default, "
-"the theorems are numbered consecutively throughout the document. This can be "
-"changed by loading one of the 'Theorems (Numbered by ...)' modules."
-msgstr ""
-"Definuje prostredie mat. viet a dôkazov používajúce rozšírenie AMS. K "
-"dispozícii sú číslované a ne-číslované typy. Implicitne sú vety číslované "
-"postupne bez ohľadu na štruktúru dokumentu. To sa dá zmeniť voľbou jedného z "
-"'Teorémy (Číslované podľa …)' modulu."
-
 #: lib/layouts/theorems-bytype.module:2
 msgid "Theorems (Numbered by Type)"
 msgstr "Teorémy (Číslované podľa Typu)"
-
-#: lib/layouts/theorems-bytype.module:10
-msgid ""
-"Defines some theorem environments for use with non-AMS classes. Contrary to "
-"the plain Theorem module, the different theorem types provided here each "
-"have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
-"theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
-"proposition 4, ...). The numbering's scope is the whole document. For "
-"chapter- and section-wide numbering, use one of the 'within "
-"Sections'/'within Chapters' modules, respectively."
-msgstr ""
-"Definuje niektoré prostredia mat. viet nepoužívajúce AMS. Opačne k "
-"jednoduchému modulu teorémou, má tu každý poskytnutý typ teorémou svoje "
-"vlastné číslovanie (čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma "
-"2, …, oproti veta 1, veta 2, lemma 3, tvrdenie 4, …). Číslovanie je "
-"usporiadané bez ohľadu na štruktúru dokumentu. To sa dá zmeniť voľbou "
-"jedného z 'Teorémy (Číslované podľa …)' modulu."
 
 #: lib/layouts/theorems-chap-bytype.module:2
 msgid "Theorems (Numbered by Type within Chapters)"
 msgstr "Teorémy (Číslované podľa Typu vnútri Kapitol)"
 
-#: lib/layouts/theorems-chap-bytype.module:9
-msgid ""
-"Defines some theorem environments for use with non-AMS classes. Contrary to "
-"the plain Theorem module, the different theorem types provided here each "
-"have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
-"theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
-"proposition 4, ...). The numbering is reset at each chapter start."
-msgstr ""
-"Definuje niektoré prostredia mat. viet nepoužívajúce AMS. Opačne k "
-"jednoduchému modulu teorémou, má tu každý poskytnutý typ teorémou svoje "
-"vlastné číslovanie (čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma "
-"2, …, oproti veta 1, veta 2, lemma 3, tvrdenie 4, …). Číslovanie sa nuluje "
-"na začiatku každej kapitoly."
-
 #: lib/layouts/theorems-chap.module:2
 msgid "Theorems (Numbered by Chapter)"
 msgstr "Teorémy (Číslované podľa Kapitoly)"
 
-#: lib/layouts/theorems-chap.module:7
-msgid ""
-"Numbers theorems and the like by chapter (i.e., the counter is reset at each "
-"chapter start). Use this module only with document classes that provide a "
-"chapter environment."
-msgstr ""
-"Číslovanie mat. viet a pod. podľa kapitoly. (čiže číslovanie sa nuluje na "
-"začiatku každej kapitoly). Použiť tento modul len s takou triedou "
-"dokumentov, ktorá podporuje prostredie kapitoly."
-
 #: lib/layouts/theorems-named.module:3
 msgid "Named Theorems"
 msgstr "Menované Teorémy"
-
-#: lib/layouts/theorems-named.module:7
-msgid ""
-"Facilitates the use of named theorems. The name of the theorem goes into the "
-"'Additional Theorem Text' argument."
-msgstr ""
-"Umožňuje používanie menovaných teorém. Meno teorému ide do vložky 'Dodatočný "
-"Text Teorémy'."
 
 #: lib/layouts/theorems-named.module:55
 msgid "Named Theorem"
@@ -15762,72 +15311,21 @@ msgstr "Menovaný Teorém."
 msgid "Theorems (Numbered by Type within Sections)"
 msgstr "Teorémy (Číslovanie podľa Typu vnútri Sekcií)"
 
-#: lib/layouts/theorems-sec-bytype.module:9
-msgid ""
-"Defines some theorem environments for use with non-AMS classes. Contrary to "
-"the plain Theorem module, the different theorem types provided here each "
-"have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
-"theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
-"proposition 4, ...). The numbering is reset at each section start."
-msgstr ""
-"Definuje niektoré prostredia mat. viet nepoužívajúce AMS. Opačne k "
-"jednoduchému modulu teorémou, má tu každý poskytnutý typ teorémou svoje "
-"vlastné číslovanie (čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma "
-"2, …, oproti veta 1, veta 2, lemma 3, tvrdenie 4, …). Číslovanie sa nuluje "
-"na začiatku každej sekcie."
-
 #: lib/layouts/theorems-sec.module:2
 msgid "Theorems (Numbered by Section)"
 msgstr "Teorémy (Číslovanie podľa Sekcie)"
-
-#: lib/layouts/theorems-sec.module:6
-msgid ""
-"Numbers theorems and the like by section (i.e., the counter is reset at each "
-"section start)."
-msgstr ""
-"Číslovanie teorém a pod. podľa sekcie (čiže číslovanie sa nuluje na začiatku "
-"každej sekcie)."
 
 #: lib/layouts/theorems-starred.module:2
 msgid "Theorems (Unnumbered)"
 msgstr "Teorémy (Neočíslované)"
 
-#: lib/layouts/theorems-starred.module:6
-msgid ""
-"Defines only unnumbered theorem environments, and the proof environment, "
-"using the extended AMS machinery."
-msgstr ""
-"Definuje len neočíslované prostredie pre vety a dôkazy, použitím rozšírenie "
-"AMS."
-
 #: lib/layouts/theorems-std.module:2
 msgid "Theorems"
 msgstr "Teorémy"
 
-#: lib/layouts/theorems-std.module:7
-msgid ""
-"Defines some theorem environments for use with non-AMS classes. By default, "
-"the theorems are numbered consecutively throughout the document. This can be "
-"changed by loading one of the 'Theorems (Numbered by ...)' modules."
-msgstr ""
-"Definuje niektoré prostredia mat. viet pre použitie v triedach neodvodených "
-"od AMS. Implicitne sú vety číslované postupne bez ohľadu na štruktúru "
-"dokumentu. To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované podľa …)' "
-"modulu."
-
 #: lib/layouts/todonotes.module:2
 msgid "TODO Notes"
 msgstr "TODO Poznámky"
-
-#: lib/layouts/todonotes.module:7
-msgid ""
-"Provides custom insets to insert TODO items in your document (using the "
-"todonotes package). In order to generate a 'List of TODOs', the module "
-"provides a paragraph style."
-msgstr ""
-"Poskytuje vlastné vložky na vklad TODO prvkov do vášho dokumentu (používajúc "
-"balík todonotes). Pre generáciu 'Zoznam TODOs' poskytuje tento modul štýl "
-"odstavca."
 
 #: lib/layouts/todonotes.module:13 lib/layouts/todonotes.module:116
 msgid "TODO"
@@ -15896,20 +15394,6 @@ msgstr "ChybiaciObrázok"
 #: lib/layouts/varwidth.module:2
 msgid "Variable-width Minipages"
 msgstr "Variabilná Šírka pre Minipage"
-
-#: lib/layouts/varwidth.module:11
-msgid ""
-"Adds a 'Minipage (Var. Width)' inset using the varwidth LaTeX package. The "
-"varwidth package provides a variable-width minipage, whose resulting width "
-"is the width of its contents (if this does not exceed the specified maximum "
-"width).  The inset has two optional arguments: vertical adjustment (c|t|b) "
-"and maximum width (defaults to \\linewidth)."
-msgstr ""
-"Pridá vložku 'Minipage (Var. Šírka)' použijúc LaTeX balík varwidth. Balík "
-"varwidth poskytuje minipage s variabilnou šírkou, rezultuje v šírke jej "
-"obsahu (kým to nepresahuje stanovenú maximálnu šírku).  Vložka má dva "
-"voliteľné argumenty: vertikálna úprava (c|t|b) a maximálna šírka (štandardne "
-"\\linewidth)."
 
 #: lib/layouts/varwidth.module:17
 msgid "Minipage (Var. Width)"
@@ -27897,6 +27381,18 @@ msgid ""
 msgstr ""
 "Zadajte reťazec na výber z listiny dostupných citácií a stlačte <Enter>"
 
+#: src/frontends/qt4/GuiCitation.cpp:604
+msgid "Text before"
+msgstr "Text pred"
+
+#: src/frontends/qt4/GuiCitation.cpp:605
+msgid "Cite key"
+msgstr "Heslo citácie"
+
+#: src/frontends/qt4/GuiCitation.cpp:606
+msgid "Text after"
+msgstr "Text za"
+
 #: src/frontends/qt4/GuiClipboard.cpp:173
 msgid "LinkBack PDF"
 msgstr "LinkBack PDF"
@@ -30547,10 +30043,6 @@ msgstr "Obsah"
 msgid "Equations"
 msgstr "Rovnice"
 
-#: src/frontends/qt4/qt_helpers.cpp:617
-msgid "External material"
-msgstr "Externý materiál"
-
 #: src/frontends/qt4/qt_helpers.cpp:619
 msgid "Footnotes"
 msgstr "Poznámky pod čiarou"
@@ -32251,6 +31743,509 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid ""
+#~ "Provides two new styles: 1. An 'In Preamble' style that puts whatever is "
+#~ "entered into it into the preamble. This can be used, if one wishes, to "
+#~ "include preamble code in the body of the LyX document. 2. An 'In Title' "
+#~ "style that will put its contents into the body of the LaTeX document, but "
+#~ "before \\maketitle is issued. This is useful for making branches and "
+#~ "notes in title-related material. (If you put these in a Standard layout, "
+#~ "this signals to LyX to output \\maketitle, which may then come too early.)"
+#~ msgstr ""
+#~ "Poskytuje dva nové štýly: 1. Štýl 'V Preambule' ktorý položí všetko do "
+#~ "neho zadané do preambuly. Keď si to niekto želá, dá sa použiť aj na "
+#~ "inklúziu kódu preambuly do tela LyXového dokumentu. 2. Štýl 'V Titule' "
+#~ "položí svoj obsah do tela LaTeXového dokumentu, ale pred vydaním "
+#~ "\\maketitle. Je to vhodné pre tvorbu vetiev a poznámok v titulnom "
+#~ "materiáli. (Vložením do 'Štandardné rozloženie' signalizujete LyXu vložiť "
+#~ "\\maketitle do výstupu, čo by mohlo byť predčasné.)"
+
+#~ msgid ""
+#~ "Use the algorithm2e package for algorithm floats rather than LyX's home-"
+#~ "brewed algorithm floats."
+#~ msgstr ""
+#~ "Použiť balík algorithm2e pre plávajúce algoritmy namiesto LyXovej "
+#~ "samohonky plávajúcich algoritmov."
+
+#~ msgid ""
+#~ "Provides two styles to typeset multilingual captions. For a description "
+#~ "see the file MultilingualCaptions.lyx in LyX's examples folder."
+#~ msgstr ""
+#~ "Poskytuje dva štýly na sádzanie viac-jazykových popisov. Pre vysvetlenie "
+#~ "pozri súbor MultilingualCaptions.lyx v adresári príkladov."
+
+#~ msgid ""
+#~ "Defines an environment to typeset Braille. For more details see Braille."
+#~ "lyx in examples."
+#~ msgstr ""
+#~ "Definuje prostredie pre sadu Brailleho slepeckého písma. Detaily si obzri "
+#~ "v súbore Braille.lyx v príkladoch."
+
+#~ msgid ""
+#~ "Enables LyX to add vertical change bars in the margin of PDF output when "
+#~ "change tracking is turned on and pdflatex output format is chosen."
+#~ msgstr ""
+#~ "Umožní LyX pridať vertikálne pruhy zmien na okraji PDF-výstupu. Treba na "
+#~ "to zapnúť sledovanie zmien a zvoliť pdflatex ako výstupný formát."
+
+#~ msgid ""
+#~ "Adds environments to define header and footer lines. NOTE: To use this "
+#~ "module you must set the 'Headings style' in the menu Document Settings -> "
+#~ "Page Layout to 'fancy'!"
+#~ msgstr ""
+#~ "Pridáva prostredia na definície riadkov hlavičiek a pätičiek. POZOR: Na "
+#~ "použitie tohto modulu treba nastaviť Štýl hlavičky v menu Dokument -> "
+#~ "Nastavenia… -> Formát Stránky na 'pestrý' (fancy)!"
+
+#~ msgid ""
+#~ "Adds an endnote inset, in addition to footnotes. You will need to add "
+#~ "\\theendnotes in TeX-code where you want the endnotes to appear."
+#~ msgstr ""
+#~ "Pridáva vložku pre koncové poznámky (Endnote). Nutné je pridať "
+#~ "\\theendnotes do vložky TeX-ového kódu tam, kde sa koncové poznámky majú "
+#~ "objaviť."
+
+#~ msgid ""
+#~ "Controls the layout of enumerate, itemize, description, and list/"
+#~ "labeling. See section Customized Lists of the User's Guide for a detailed "
+#~ "description."
+#~ msgstr ""
+#~ "Kontroluje schému pre číslovanie, položky, opis a listina/etiketovanie.\n"
+#~ "Pozrite si sekciu 'Customized Lists' v Užívateľskej Príručke pre detailné "
+#~ "vysvetlenie."
+
+#~ msgid ""
+#~ "Resets the equation number at section start and prepends the section "
+#~ "number to the equation number, as in '(2.1)'."
+#~ msgstr ""
+#~ "Vynuluje číslovanie rovníc na začiatku sekcie a predčísli ich sekciou, "
+#~ "ako pri '(2.1)'."
+
+#~ msgid ""
+#~ "Resets the figure number at section start and prepends the section number "
+#~ "to the figure number, as in 'fig. 2.1'."
+#~ msgstr ""
+#~ "Vynuluje číslovanie obrázkov na začiatku sekcie a predčísli ich sekciou, "
+#~ "ako pri 'Obrázok 2.1'."
+
+#~ msgid ""
+#~ "Fix-cm improves the appearance of Computer Modern fonts and makes them "
+#~ "available with arbitrary sizes. For details see the documentation of the "
+#~ "fix-cm.sty package: http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
+#~ msgstr ""
+#~ "Fix-cm zlepšuje zobrazenie fontov Computer Modern a robí ich dostupné s "
+#~ "ľubovoľným rozmerom. Pre detaily pozrite na dokumentáciu balíka fix-cm."
+#~ "sty: http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
+
+#~ msgid ""
+#~ "Loads the LaTeX package fixltx2e which contains some bug fixes for LaTeX. "
+#~ "Those fixes are not part of the LaTeX kernel because of backward "
+#~ "compatibility. If you use this module your typeset document may look "
+#~ "different when you process it with future LaTeX versions, because "
+#~ "fixltx2e may provide more bugfixes in future versions."
+#~ msgstr ""
+#~ "Nahrá LaTeX-ov balík fixltx2e ktorý obsahuje pár korektúr pre LaTeX. "
+#~ "Tieto korektúry nie sú časťou LaTeX-ovho jadra kvôli spätnej "
+#~ "kompatibilite. Použitím tohto modulu môžu vaše vytlačené dokumenty "
+#~ "vyzerať ináč pri spracovaní s budúcimi verziami LaTeX-u, lebo fixltx2e "
+#~ "vtedy môže poskytovať aj viac korektúr."
+
+#~ msgid ""
+#~ "Provides 'FiXme' (marginal) annotations for document revision purposes. A "
+#~ "list of annotations can be produced by using the 'List of FIXMEs' "
+#~ "paragraph style. The annotations are customizable via the LaTeX preamble. "
+#~ "See the FiXme documentation for details. NOTE: By default, the notes are "
+#~ "only displayed in 'draft' mode (if the option 'draft' has been inserted "
+#~ "to Document > Settings > Document Class > Class Options > Custom). To "
+#~ "display them always, insert \\\\fxsetup{draft} to Document > Settings > "
+#~ "Preamble. NOTE also that you need version 4 or later of the FiXme package "
+#~ "for some features."
+#~ msgstr ""
+#~ "Poskytuje 'FiXme' (okrajové) vysvetlivky pre revízne zámery v dokumente. "
+#~ "Súpis vysvetliviek sa dá vytvoriť použitím odstavcového štýlu 'Súpis "
+#~ "FIXMEs'. Vysvetlivky sú upraviteľné v LaTeXovej preambule. Viď "
+#~ "dokumentáciu FiXme. NOTA: Štandardne sú poznámky viditeľné len v režime "
+#~ "'draft' (keď voľbu 'draft' vložíte pomocou Dokument -> Nastavenia… -> "
+#~ "Trieda dokumentu -> Nastavenie triedy -> Vlastné). Chcete to vidieť vždy, "
+#~ "vložte \\\\fxsetup{draft} do Dokument -> Preambula LaTeX-u. POZOR: pre "
+#~ "niektoré vlastnosti potrebujete balík 'FiXme' verziu 4 alebo vzostupnú."
+
+#~ msgid ""
+#~ "Sets all footnotes as endnotes. You will need to add \\theendnotes in TeX-"
+#~ "code where you want the endnotes to appear."
+#~ msgstr ""
+#~ "Nastaviť všetky poznámky pod čiarou ako koncové poznámky. Nutné je pridať "
+#~ "\\theendnotes do vložky TeX-ového kódu tam, kde sa koncové poznámky majú "
+#~ "objaviť."
+
+#~ msgid "Boxes to scale and rotate its contents"
+#~ msgstr "Rámček na rozmer a rotáciu jeho obsahu"
+
+#~ msgid ""
+#~ "Adds an environment for hanging paragraphs. Hanging paragraph is a "
+#~ "paragraph in which the first line is set to the left margin, but all "
+#~ "subsequent lines are indented."
+#~ msgstr ""
+#~ "Pridáva prostredie pre \"visiace\" odstavce. Visiaci odstavec začína na "
+#~ "prvom riadku bez zasunutia, nasledujúce riadky sú naopak zasunuté."
+
+#~ msgid ""
+#~ "Provides two insets to typeset numbers and phrases of chemical hazard and "
+#~ "precautionary statements. For a description see the file H-P-statements."
+#~ "lyx in LyX's examples folder."
+#~ msgstr ""
+#~ "Poskytuje dve vložky na sádzanie čísiel a zvratov pre chemické rizikové a "
+#~ "bezpečnostné inštrukcie. Pre vysvetlenie pozri súbor H-P-statements.lyx v "
+#~ "adresári príkladov."
+
+#~ msgid ""
+#~ "Define a style for paragraphs with an initial. See the EmbeddedObjects "
+#~ "manual for a detailed description."
+#~ msgstr ""
+#~ "Definuje štýl pre odstavce s iniciálkou. Pozri manuál 'Vložené Objekty' "
+#~ "pre detailné vysvetlenie."
+
+#~ msgid ""
+#~ "Uses the knitr package in R for dynamic report generation. This R package "
+#~ "has to be installed for this module to work: install.packages('knitr'). "
+#~ "Note it depends on R >= 2.14.1. For more info see http://yihui.name/knitr"
+#~ msgstr ""
+#~ "Používa balík knitr v R pre generáciu dynamickej reportáže. Aby tento "
+#~ "modul pracoval musí byť balík R inštalovaný: install.packages('knitr'). "
+#~ "Zaznamenajte si že závisí na R >= 2.14.1. Pre viac informácie pozri na "
+#~ "http://yihui.name/knitr"
+
+#~ msgid ""
+#~ "This module adds an inset to enter LilyPond code directly into LyX. It "
+#~ "will be processed in the output. See the lilypond.lyx example file."
+#~ msgstr ""
+#~ "Tento modul pridáva vložku na priamy vklad kódu LilyPond do LyXu. Bude "
+#~ "spracovaný vo výstupe. Pozrite si príkladný súbor lilypond.lyx."
+
+#~ msgid ""
+#~ "Defines some special environments useful for linguistics (numbered "
+#~ "examples, glosses, semantic markup, tableau floats). See linguistics.lyx "
+#~ "file in examples."
+#~ msgstr ""
+#~ "Definuje špeciálne prostredie užitočné pre lingvistiku (číslované "
+#~ "príklady, glosy, sémantické štýly znakov (markup), plávajúce tabuľky). "
+#~ "Pozri na súbor linguistics.lyx v príkladoch."
+
+#~ msgid ""
+#~ "Defines some character styles for logical markup: noun, emph, strong, and "
+#~ "code."
+#~ msgstr ""
+#~ "Definuje niektoré logické štýly znakov (logical markup): meno (noun), "
+#~ "dôraz (emph), (silný dôraz) strong, kód (code)."
+
+#~ msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
+#~ msgstr ""
+#~ "Predefinuje niektoré z vložiek ako minimalistické (Register, Vetva, URL)."
+
+#~ msgid ""
+#~ "Adds a custom inset whose content is set with multiple columns (2 by "
+#~ "default). See the Additional manual, section 'Multiple Text Columns', for "
+#~ "a detailed description of multiple columns."
+#~ msgstr ""
+#~ "Pridáva vlastnú vložku, ktorej obsah je postavený z viacerých stĺpcov (2 ."
+#~ "sú prednastavené). Pozri Prídavný manuál, sekcia 'Viac Stĺpcový Text', "
+#~ "pre detailné vysvetlenie viac-stĺpcového prostredia."
+
+#~ msgid ""
+#~ "This module adds support for using natbib together with apacite (the "
+#~ "bibliography style need not be apacite--it could be apacite, apacitex, or "
+#~ "any bibliography that works with both the natbib and apacite packages.)"
+#~ msgstr ""
+#~ "Tento modul pridáva podporu na používanie natbib spolu s apacite (štýl "
+#~ "bibliografie nemusí byť apacite--môže byť apacite, apacitex,, alebo "
+#~ "ktorákoľvek iná bibliografia ktorá spolupracuje s natbib i apacite "
+#~ "balíkmi.)"
+
+#~ msgid "Allows to use Noweb as a literate programming tool."
+#~ msgstr "Dovoľuje použiť Noweb ako nástroj pre dokumentačné programovanie."
+
+#~ msgid ""
+#~ "The package paralist provides some new list environments. Itemized and "
+#~ "enumerated lists can be typeset within paragraphs, as paragraphs and in a "
+#~ "compact version. Most environments have optional arguments to format the "
+#~ "labels. Additionally, the LaTeX environments itemize and enumerate are "
+#~ "extended to use a similar optional argument."
+#~ msgstr ""
+#~ "Balík paralist poskytuje niekoľké nové listinové prostredia. Položkové a "
+#~ "číslované listiny môžu byť vysádzané vnútri odstavcov, ako odstavce a aj "
+#~ "v kompaktnej verzii. Väčšina prostredí má voliteľné argumenty na "
+#~ "formátovanie návestia. Dodatočne, LaTeX-ové prostredia itemize a "
+#~ "enumerate sú rozšírené na použitie obdobného voliteľného argumentu."
+
+#~ msgid ""
+#~ "Provides various kinds of annotations for the PDF output. The module uses "
+#~ "the pdfcomment package. Please consult the LyX example file PDF-comment."
+#~ "lyx and the package documentation for details."
+#~ msgstr ""
+#~ "Poskytuje rôzne druhy poznámok pre PDF výstup. Tento modul používa balík "
+#~ "pdfcomment. Pre detaily si pozrite aj príkladný LyX-súbor\n"
+#~ "PDF-comment.lyx a dokumentáciu balíka."
+
+#~ msgid ""
+#~ "Provides fields and buttons for PDF forms. The module uses the LaTeX "
+#~ "package hyperref. Please consult the LyX example file PDF-form.lyx and "
+#~ "the documentation of hyperref for details."
+#~ msgstr ""
+#~ "Poskytuje plochy a tlačidlá pre PDF forms. Tento modul používa balík "
+#~ "hyperref. Pre detaily si pozrite aj príkladný LyX-súbor\n"
+#~ "PDF-form.lyx a dokumentáciu balíka hyperref."
+
+#~ msgid ""
+#~ "Provides two insets and one environment to typeset numbers and phrases of "
+#~ "chemical risk and safety statements. For a description see the file R-S-"
+#~ "statements.lyx in LyX's examples folder."
+#~ msgstr ""
+#~ "Poskytuje dve vložky a jedno prostredie na sádzanie čísiel a zvratov pre "
+#~ "poistné a rizikové uzávierky v chémii. Pre vysvetlenie pozri súbor R-S-"
+#~ "statements.lyx v adresári príkladov."
+
+#~ msgid ""
+#~ "Defines Boxes with section header. Mainly intended for the SciPoster "
+#~ "class."
+#~ msgstr ""
+#~ "Definuje Rámiky s hlavičkou sekcie. Hlavne myslené pre Sci-Plagát triedu."
+
+#~ msgid ""
+#~ "Provides several paragraph shapes as well as commands to define custom "
+#~ "shapes. For a description see LyX's Additional features manual, section "
+#~ "'Non-standard Paragraph Shapes'."
+#~ msgstr ""
+#~ "Poskytuje niekoľko tvarov odstavca ako aj príkazy na definovanie "
+#~ "vlastných tvarov. Pre vysvetlenie pozri LyXov manuál Prídavné vlastnosti, "
+#~ "sekcia 'Nie štandardné Tvary Odstavca'."
+
+#~ msgid ""
+#~ "Allows to use the statistical language S/R as a literate programming tool "
+#~ "via the Sweave() function. For more info see the LyX example file sweave."
+#~ "lyx."
+#~ msgstr ""
+#~ "Umožňuje použiť štatistický jazyk S/R ako nástroj pre dokumentačné "
+#~ "programovanie cez funkciu z balíka Sweave(). Pre viac informácie pozri "
+#~ "príkladný súbor sweave.lyx."
+
+#~ msgid ""
+#~ "Resets the table number at section start and prepends the section number "
+#~ "to the table number, as in 'Table 2.1'."
+#~ msgstr ""
+#~ "Vynuluje číslovanie tabuliek na začiatku sekcie a predčísli ich sekciou, "
+#~ "ako pri 'Tabuľka 2.1'."
+
+#~ msgid ""
+#~ "Adds custom insets that support colored boxes via the tcolorbox package. "
+#~ "See the tcolorbox documentation for details."
+#~ msgstr ""
+#~ "Pridáva vlastné vložky podporujúce farebné rámiky pomocou balíka "
+#~ "tcolorbox. Viď dokumentáciu tcolorbox."
+
+#~ msgid ""
+#~ "Defines theorem environments and the proof environment using the extended "
+#~ "AMS machinery. Both numbered and unnumbered types are provided. Contrary "
+#~ "to the plain AMS Theorem module, the different theorem types provided "
+#~ "here each have a separate counter (e.g., theorem 1, theorem 2, lemma 1, "
+#~ "proposition 1, theorem 3, lemma 2, ..., as opposed to theorem 1, theorem "
+#~ "2, lemma 3, proposition 4, ...). The numbering's scope is the whole "
+#~ "document. For chapter- and section-wide numbering, use one of the 'within "
+#~ "Sections'/'within Chapters' modules, respectively."
+#~ msgstr ""
+#~ "Definuje prostredie mat. viet a dôkazov používajúce rozšírenie AMS. K "
+#~ "dispozícii sú číslované a neočíslované typy. Opačne k jednoduchému modulu "
+#~ "rozšírenia AMS, má tu každý poskytnutý typ teorémou svoje vlastné "
+#~ "číslovanie (čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma 2, …, "
+#~ "oproti veta 1, veta 2, lemma 3, tvrdenie 4…). Číslovanie je postupne bez "
+#~ "ohľadu na štruktúru dokumentu. To sa dá zmeniť voľbou jedného z 'Teorémy "
+#~ "(Číslované podľa …)' modulu."
+
+#~ msgid ""
+#~ "Defines theorem environments and the proof environment using the extended "
+#~ "AMS machinery. Both numbered and unnumbered types are provided. Contrary "
+#~ "to the plain AMS Theorem module, the different theorem types provided "
+#~ "here each have a separate counter (e.g., theorem 1.1, theorem 1.2, lemma "
+#~ "1.1, proposition 1.1, theorem 1.3, lemma 1.2, ..., as opposed to theorem "
+#~ "1, theorem 2, lemma 3, proposition 4, ...). The numbering restarts for "
+#~ "each chapter: theorem 1.1, theorem 2.1, ..."
+#~ msgstr ""
+#~ "Definuje prostredie mat. viet a dôkazov používajúce rozšírenie AMS. K "
+#~ "dispozícii sú číslované a neočíslované typy. Opačne k jednoduchému modulu "
+#~ "rozšírenia AMS, má tu každý poskytnutý typ teorémou svoje vlastné "
+#~ "číslovanie (čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, lemma 2, …, "
+#~ "oproti veta 1, veta 2, lemma 3, tvrdenie 4…). Číslovanie sa reštartuje na "
+#~ "začiatku každej kapitoli: teoréma 1.1, teoréma 2.1, … "
+
+#~ msgid ""
+#~ "Defines some additional theorem environments for use with the AMS "
+#~ "theorems packages. Includes Criterion, Algorithm, Axiom, Condition, Note, "
+#~ "Notation, Summary, Acknowledgement, Conclusion, Assumption, and Case, in "
+#~ "both numbered and non-numbered forms. Contrary to the plain AMS-Extended "
+#~ "module, the different theorem types provided here each have a separate "
+#~ "counter (e.g., criterion 1, criterion 2, axiom 1, assumption 1, criterion "
+#~ "3, ..., as opposed to criterion 1, criterion 2, axiom 3, assumption "
+#~ "4, ...)."
+#~ msgstr ""
+#~ "Definuje niektoré prídavné prostredie teorémou pre použitie s balíkmi "
+#~ "AMS. Zahrňuje Kritérium, Algoritmus, Axióma, Podmienka,Poznámka, Notácia, "
+#~ "Súhrn, Poďakovania, Záver, Predpoklad, a Prípad v oboch formách "
+#~ "(číslované/neočíslované). Opačne k jednoduchému modulu rozšírenia AMS, má "
+#~ "tu každý poskytnutý typ teorémou svoje vlastné číslovanie (čiže kritérium "
+#~ "1, kritérium 2, axióma 1, predpoklad 1, kritérium 3, …, oproti kritérium "
+#~ "1, kritérium 2, axióma 3, predpoklad 4, …)."
+
+#~ msgid ""
+#~ "Defines some additional theorem environments for use with the AMS "
+#~ "theorems packages. Includes Criterion, Algorithm, Axiom, Condition, Note, "
+#~ "Notation, Summary, Acknowledgement, Conclusion, Assumption, and Case, in "
+#~ "both numbered and non-numbered forms. Contrary to the plain AMS-Extended "
+#~ "module, the different theorem types provided here each have a separate "
+#~ "counter, restarted with each new chapter (e.g., criterion 1.1, criterion "
+#~ "1.2, axiom 1.1, assumption 1.1, #criterion 2.1, criterion 2.2, axiom "
+#~ "2.1..., as opposed to criterion 1, criterion 2, axiom 3, assumption 4...)"
+#~ msgstr ""
+#~ "Definuje niektoré prídavné prostredie teorémou pre použitie s balíkmi AMS-"
+#~ "teorémy. Zahrňuje Kritérium, Algoritmus, Axióma, Podmienka,Poznámka, "
+#~ "Notácia, Súhrn, Poďakovania, Záver, Predpoklad, a Prípad v oboch formách "
+#~ "(číslované/neočíslované). Opačne k jednoduchému modulu rozšírenia AMS, má "
+#~ "tu každý poskytnutý typ teorémou svoje vlastné číslovanie, reštartované "
+#~ "pri každej novej kapitole (čiže kritérium 1.1, kritérium 1.2, axióma 1.1, "
+#~ "predpoklad 1.1, kritérium 2.1, axióma 2.1, …, oproti kritérium 1.1, "
+#~ "kritérium 1.2, axióma 1.3, predpoklad 1.4, …)"
+
+#~ msgid ""
+#~ "Defines some additional theorem environments for use with the AMS "
+#~ "theorems packages. Includes Criterion, Algorithm, Axiom, Condition, Note, "
+#~ "Notation, Summary, Acknowledgement, Conclusion, Fact, Assumption, Case, "
+#~ "and Question, in both numbered and non-numbered forms."
+#~ msgstr ""
+#~ "Definuje niektoré prídavné prostredie teorémou pre použitie s balíkmi "
+#~ "AMS. Zahrňuje Kritérium, Algoritmus, Axióma, Podmienka, Poznámka, "
+#~ "Notácia, Súhrn, Poďakovania, Záver, Fakt, Predpoklad, Prípad a Otázka v "
+#~ "oboch formách (číslované/neočíslované)."
+
+#~ msgid ""
+#~ "Defines theorem environments and the proof environment using the extended "
+#~ "AMS machinery. Both numbered and unnumbered types are provided. By "
+#~ "default, the theorems are numbered consecutively throughout the document. "
+#~ "This can be changed by loading one of the 'Theorems (Numbered by ...)' "
+#~ "modules."
+#~ msgstr ""
+#~ "Definuje prostredie mat. viet a dôkazov používajúce rozšírenie AMS. K "
+#~ "dispozícii sú číslované a ne-číslované typy. Implicitne sú vety číslované "
+#~ "postupne bez ohľadu na štruktúru dokumentu. To sa dá zmeniť voľbou "
+#~ "jedného z 'Teorémy (Číslované podľa …)' modulu."
+
+#~ msgid ""
+#~ "Defines some theorem environments for use with non-AMS classes. Contrary "
+#~ "to the plain Theorem module, the different theorem types provided here "
+#~ "each have a separate counter (e.g., theorem 1, theorem 2, lemma 1, "
+#~ "proposition 1, theorem 3, lemma 2, ..., as opposed to theorem 1, theorem "
+#~ "2, lemma 3, proposition 4, ...). The numbering's scope is the whole "
+#~ "document. For chapter- and section-wide numbering, use one of the 'within "
+#~ "Sections'/'within Chapters' modules, respectively."
+#~ msgstr ""
+#~ "Definuje niektoré prostredia mat. viet nepoužívajúce AMS. Opačne k "
+#~ "jednoduchému modulu teorémou, má tu každý poskytnutý typ teorémou svoje "
+#~ "vlastné číslovanie (čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, "
+#~ "lemma 2, …, oproti veta 1, veta 2, lemma 3, tvrdenie 4, …). Číslovanie je "
+#~ "usporiadané bez ohľadu na štruktúru dokumentu. To sa dá zmeniť voľbou "
+#~ "jedného z 'Teorémy (Číslované podľa …)' modulu."
+
+#~ msgid ""
+#~ "Defines some theorem environments for use with non-AMS classes. Contrary "
+#~ "to the plain Theorem module, the different theorem types provided here "
+#~ "each have a separate counter (e.g., theorem 1, theorem 2, lemma 1, "
+#~ "proposition 1, theorem 3, lemma 2, ..., as opposed to theorem 1, theorem "
+#~ "2, lemma 3, proposition 4, ...). The numbering is reset at each chapter "
+#~ "start."
+#~ msgstr ""
+#~ "Definuje niektoré prostredia mat. viet nepoužívajúce AMS. Opačne k "
+#~ "jednoduchému modulu teorémou, má tu každý poskytnutý typ teorémou svoje "
+#~ "vlastné číslovanie (čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, "
+#~ "lemma 2, …, oproti veta 1, veta 2, lemma 3, tvrdenie 4, …). Číslovanie sa "
+#~ "nuluje na začiatku každej kapitoly."
+
+#~ msgid ""
+#~ "Numbers theorems and the like by chapter (i.e., the counter is reset at "
+#~ "each chapter start). Use this module only with document classes that "
+#~ "provide a chapter environment."
+#~ msgstr ""
+#~ "Číslovanie mat. viet a pod. podľa kapitoly. (čiže číslovanie sa nuluje na "
+#~ "začiatku každej kapitoly). Použiť tento modul len s takou triedou "
+#~ "dokumentov, ktorá podporuje prostredie kapitoly."
+
+#~ msgid ""
+#~ "Facilitates the use of named theorems. The name of the theorem goes into "
+#~ "the 'Additional Theorem Text' argument."
+#~ msgstr ""
+#~ "Umožňuje používanie menovaných teorém. Meno teorému ide do vložky "
+#~ "'Dodatočný Text Teorémy'."
+
+#~ msgid ""
+#~ "Defines some theorem environments for use with non-AMS classes. Contrary "
+#~ "to the plain Theorem module, the different theorem types provided here "
+#~ "each have a separate counter (e.g., theorem 1, theorem 2, lemma 1, "
+#~ "proposition 1, theorem 3, lemma 2, ..., as opposed to theorem 1, theorem "
+#~ "2, lemma 3, proposition 4, ...). The numbering is reset at each section "
+#~ "start."
+#~ msgstr ""
+#~ "Definuje niektoré prostredia mat. viet nepoužívajúce AMS. Opačne k "
+#~ "jednoduchému modulu teorémou, má tu každý poskytnutý typ teorémou svoje "
+#~ "vlastné číslovanie (čiže veta 1, veta 2, lemma 1, tvrdenie 1, veta 3, "
+#~ "lemma 2, …, oproti veta 1, veta 2, lemma 3, tvrdenie 4, …). Číslovanie sa "
+#~ "nuluje na začiatku každej sekcie."
+
+#~ msgid ""
+#~ "Numbers theorems and the like by section (i.e., the counter is reset at "
+#~ "each section start)."
+#~ msgstr ""
+#~ "Číslovanie teorém a pod. podľa sekcie (čiže číslovanie sa nuluje na "
+#~ "začiatku každej sekcie)."
+
+#~ msgid ""
+#~ "Defines only unnumbered theorem environments, and the proof environment, "
+#~ "using the extended AMS machinery."
+#~ msgstr ""
+#~ "Definuje len neočíslované prostredie pre vety a dôkazy, použitím "
+#~ "rozšírenie AMS."
+
+#~ msgid ""
+#~ "Defines some theorem environments for use with non-AMS classes. By "
+#~ "default, the theorems are numbered consecutively throughout the document. "
+#~ "This can be changed by loading one of the 'Theorems (Numbered by ...)' "
+#~ "modules."
+#~ msgstr ""
+#~ "Definuje niektoré prostredia mat. viet pre použitie v triedach "
+#~ "neodvodených od AMS. Implicitne sú vety číslované postupne bez ohľadu na "
+#~ "štruktúru dokumentu. To sa dá zmeniť voľbou jedného z 'Teorémy (Číslované "
+#~ "podľa …)' modulu."
+
+#~ msgid ""
+#~ "Provides custom insets to insert TODO items in your document (using the "
+#~ "todonotes package). In order to generate a 'List of TODOs', the module "
+#~ "provides a paragraph style."
+#~ msgstr ""
+#~ "Poskytuje vlastné vložky na vklad TODO prvkov do vášho dokumentu "
+#~ "(používajúc balík todonotes). Pre generáciu 'Zoznam TODOs' poskytuje "
+#~ "tento modul štýl odstavca."
+
+#~ msgid ""
+#~ "Adds a 'Minipage (Var. Width)' inset using the varwidth LaTeX package. "
+#~ "The varwidth package provides a variable-width minipage, whose resulting "
+#~ "width is the width of its contents (if this does not exceed the specified "
+#~ "maximum width).  The inset has two optional arguments: vertical "
+#~ "adjustment (c|t|b) and maximum width (defaults to \\linewidth)."
+#~ msgstr ""
+#~ "Pridá vložku 'Minipage (Var. Šírka)' použijúc LaTeX balík varwidth. Balík "
+#~ "varwidth poskytuje minipage s variabilnou šírkou, rezultuje v šírke jej "
+#~ "obsahu (kým to nepresahuje stanovenú maximálnu šírku).  Vložka má dva "
+#~ "voliteľné argumenty: vertikálna úprava (c|t|b) a maximálna šírka "
+#~ "(štandardne \\linewidth)."
+
+#~ msgid "External material"
+#~ msgstr "Externý materiál"
 
 #~ msgid "Sty&le engine:"
 #~ msgstr "Obsluha Štý&lu:"
@@ -36320,3 +36315,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "&Biblatex citation style:"
 #~ msgstr "Štýl &biblatex-citácie:"
+
+#~ msgid "Text &before:"
+#~ msgstr "&Text pred:"
