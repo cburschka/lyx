@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-01-15 11:39-0500\n"
-"PO-Revision-Date: 2017-01-13 12:22+0000\n"
+"POT-Creation-Date: 2017-01-21 07:58+0100\n"
+"PO-Revision-Date: 2017-01-21 15:42+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -145,7 +145,7 @@ msgstr "Generácia Bibliografie"
 #: src/frontends/qt4/ui/BiblioUi.ui:167 src/frontends/qt4/ui/IndicesUi.ui:33
 #: src/frontends/qt4/ui/PrefLatexUi.ui:85
 msgid "&Processor:"
-msgstr "&Generátor:"
+msgstr "&Procesor:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:177 src/frontends/qt4/ui/IndicesUi.ui:43
 msgid "Select a processor"
@@ -324,7 +324,7 @@ msgstr "Odstrániť vybranú databázu"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:282 src/frontends/qt4/ui/CitationUi.ui:156
 msgid "&Delete"
-msgstr "Zm&azať"
+msgstr "&Zmazať"
 
 #: src/frontends/qt4/ui/BoxUi.ui:23
 msgid "Type and Size"
@@ -556,7 +556,7 @@ msgstr "Ukázať ne-definované vetvy použité v tomto dokumente."
 
 #: src/frontends/qt4/ui/BranchesUi.ui:64
 msgid "&Undefined Branches"
-msgstr "&Nedefinované vetvy"
+msgstr "N&edefinované vetvy"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:84
 msgid "A&vailable Branches:"
@@ -957,7 +957,7 @@ msgstr "&Text pred:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:313
 msgid "Citation style to use, if different styles are provided"
-msgstr "Použitý štýl citácie, v prípade keď je viacej štýlov prístupných"
+msgstr "Použitý štýl citácie, v prípade keď je viacej prístupných štýlov"
 
 #: src/frontends/qt4/ui/CitationUi.ui:322
 msgid "Text that precedes the reference (e.g., \"cf.\")"
@@ -3172,7 +3172,7 @@ msgstr "&Konvertor:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:91
 msgid "E&xtra flag:"
-msgstr "Prí&davný indikátor:"
+msgstr "Prída&vný indikátor:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:121
 msgid "&From format:"
@@ -3180,7 +3180,7 @@ msgstr "&Z formátu:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:153
 msgid "&To format:"
-msgstr "D&o formátu:"
+msgstr "&Do formátu:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:194
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:54
@@ -3464,7 +3464,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:83
 msgid "Sho&w in export menu"
-msgstr "Zobraziť v menu &export"
+msgstr "Zobraziť v menu e&xport"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:90
 msgid "Vector &graphics format"
@@ -3472,7 +3472,7 @@ msgstr "&Vektorový formát obrázku"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:97
 msgid "S&hort name:"
-msgstr "K&rátke meno:"
+msgstr "&Krátke meno:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:110
 msgid "E&xtensions:"
@@ -3764,7 +3764,7 @@ msgstr "&Generátor:"
 #: src/frontends/qt4/ui/PrefLatexUi.ui:199 src/frontends/qt4/GuiPrefs.cpp:824
 #: src/frontends/qt4/GuiPrefs.cpp:919
 msgid "Op&tions:"
-msgstr "&Možnosti:"
+msgstr "Možnos&ti:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:209
 msgid "Index command and options (makeindex, xindy)"
