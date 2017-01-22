@@ -52,6 +52,7 @@
 #include "frontends/Application.h"
 
 #include "support/ConsoleApplication.h"
+#include "support/convert.h"
 #include "support/lassert.h"
 #include "support/debug.h"
 #include "support/environment.h"
@@ -119,6 +120,14 @@ RunMode run_mode = PREFERRED;
 // environment variable LYX_FORCE_OVERWRITE, the default will be MAIN_FILE.
 
 OverwriteFiles force_overwrite = UNSPECIFIED;
+
+
+// Scale the GUI by this factor. This works whether we have a HiDpi screen
+// or not and scales everything, also fonts. Can only be changed by setting
+// the QT_SCALE_FACTOR environment variable before launching LyX and only
+// works properly with Qt 5.6 or higher.
+
+double qt_scale_factor = 1.0;
 
 
 namespace {
@@ -302,6 +311,15 @@ int LyX::exec(int & argc, char * argv[])
 	// Here we need to parse the command line. At least
 	// we need to parse for "-dbg" and "-help"
 	easyParse(argc, argv);
+
+	// Check whether Qt will scale all GUI elements and accordingly
+	// set the scale factor so that to avoid blurred images and text
+	char const * const scale_factor = getenv("QT_SCALE_FACTOR");
+	if (scale_factor) {
+		qt_scale_factor = convert<double>(scale_factor);
+		if (qt_scale_factor < 1.0)
+			qt_scale_factor = 1.0;
+	}
 
 	try {
 		init_package(os::utf8_argv(0), cl_system_support, cl_user_support);

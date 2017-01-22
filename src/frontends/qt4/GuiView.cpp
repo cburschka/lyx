@@ -227,7 +227,7 @@ private:
 	/// Current ratio between physical pixels and device-independent pixels
 	double pixelRatio() const {
 #if QT_VERSION >= 0x050000
-		return devicePixelRatio();
+		return qt_scale_factor * devicePixelRatio();
 #else
 		return 1.0;
 #endif
@@ -1341,7 +1341,7 @@ void GuiView::resetCommandExecute()
 double GuiView::pixelRatio() const
 {
 #if QT_VERSION >= 0x050000
-	return devicePixelRatio();
+	return qt_scale_factor * devicePixelRatio();
 #else
 	return 1.0;
 #endif

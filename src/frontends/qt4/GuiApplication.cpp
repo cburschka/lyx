@@ -1017,6 +1017,9 @@ GuiApplication::GuiApplication(int & argc, char ** argv)
 	QCoreApplication::setOrganizationName(app_name);
 	QCoreApplication::setOrganizationDomain("lyx.org");
 	QCoreApplication::setApplicationName(lyx_package);
+#if QT_VERSION >= 0x050000
+	QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+#endif
 
 	qsrand(QDateTime::currentDateTime().toTime_t());
 
@@ -1101,7 +1104,7 @@ GuiApplication * theGuiApp()
 double GuiApplication::pixelRatio() const
 {
 #if QT_VERSION >= 0x050000
-	return devicePixelRatio();
+	return qt_scale_factor * devicePixelRatio();
 #else
 	return 1.0;
 #endif
