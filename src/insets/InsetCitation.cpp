@@ -312,6 +312,15 @@ inline docstring wrapCitation(docstring const & key,
 			html::htmlize(content, XHTMLStream::ESCAPE_ALL) + "</a>";
 }
 
+docstring protectArgument(docstring & arg, char const l = '[',
+			  char const r = ']')
+{
+	if (contains(arg, l) || contains(arg, r))
+		// protect brackets
+		arg = '{' + arg + '}';
+	return arg;
+}
+
 } // anonymous namespace
 
 
@@ -571,24 +580,17 @@ void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 	docstring before = getParam("before");
 	docstring after  = getParam("after");
 	if (!before.empty() && cs.textBefore) {
-		if (qualified) {
-			if (contains(before, '(') || contains(before, ')'))
-				// protect parens
-				before = '{' + before + '}';
-			if (contains(after, '(') || contains(after, ')'))
-				// protect parens
-				after = '{' + after + '}';
-			os << '(' << before << ")(" << after << ')';
-		} else
-			os << '[' << before << "][" << after << ']';
+		if (qualified)
+			os << '(' << protectArgument(before, '(', ')')
+			   << ")(" << protectArgument(after, '(', ')') << ')';
+		else
+			os << '[' << protectArgument(before) << "]["
+			   << protectArgument(after) << ']';
 	} else if (!after.empty() && cs.textAfter) {
-		if (qualified) {
-			if (contains(after, '(') || contains(after, ')'))
-				// protect parens
-				after = '{' + after + '}';
-			os << '(' << after << ')';
-		} else
-			os << '[' << after << ']';
+		if (qualified)
+			os << '(' << protectArgument(after, '(', ')') << ')';
+		else
+			os << '[' << protectArgument(after) << ']';
 	}
 
 	if (!bi.isBibtex(key))
@@ -599,12 +601,13 @@ void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 			map<docstring, docstring> pres = getQualifiedLists(getParam("pretextlist"));
 			map<docstring, docstring> posts = getQualifiedLists(getParam("posttextlist"));
 			for (docstring const & k: keys) {
-				docstring const bef = pres[k];
-				docstring const aft  = posts[k];
+				docstring bef = pres[k];
+				docstring aft  = posts[k];
 				if (!bef.empty())
-					os << '[' << bef << "][" << aft << ']';
+					os << '[' << protectArgument(bef)
+					   << "][" << protectArgument(aft) << ']';
 				else if (!aft.empty())
-					os << '[' << aft << ']';
+					os << '[' << protectArgument(aft) << ']';
 				os << '{' << k << '}';
 			}
 		} else
