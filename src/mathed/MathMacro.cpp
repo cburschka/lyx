@@ -313,7 +313,7 @@ bool MathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 	MathRow::Element e_beg(mi, MathRow::BEG_MACRO);
 	e_beg.inset = this;
 	e_beg.macro = this;
-	e_beg.marker = d->nesting_ == 1 ? marker() : NO_MARKER;
+	e_beg.marker = (d->nesting_ == 1 && nargs()) ? marker() : NO_MARKER;
 	mrow.push_back(e_beg);
 
 	d->macro_->lock();
