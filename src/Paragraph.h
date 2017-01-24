@@ -17,6 +17,7 @@
 #define PARAGRAPH_H
 
 #include "FontEnums.h"
+#include "LayoutEnums.h"
 #include "SpellChecker.h"
 
 #include "support/strfwd.h"
@@ -309,7 +310,7 @@ public:
 	/// Set label width string.
 	void setLabelWidthString(docstring const & s);
 	/// Actual paragraph alignment used
-	char getAlign() const;
+	LyXAlignment getAlign() const;
 	/// The nesting depth of a paragraph
 	depth_type getDepth() const;
 	/// The maximal possible depth of a paragraph after this one

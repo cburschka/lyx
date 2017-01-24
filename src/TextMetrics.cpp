@@ -514,13 +514,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 
 LyXAlignment TextMetrics::getAlign(Paragraph const & par, Row const & row) const
 {
-	Layout const & layout = par.layout();
-
-	LyXAlignment align;
-	if (par.params().align() == LYX_ALIGN_LAYOUT)
-		align = layout.align;
-	else
-		align = par.params().align();
+	LyXAlignment align = par.getAlign();
 
 	// handle alignment inside tabular cells
 	Inset const & owner = text_->inset();
@@ -1788,12 +1782,7 @@ int TextMetrics::leftMargin(int max_width,
 	if (!par.params().leftIndent().zero())
 		l_margin += par.params().leftIndent().inPixels(max_width, lfm.em());
 
-	LyXAlignment align;
-
-	if (par.params().align() == LYX_ALIGN_LAYOUT)
-		align = layout.align;
-	else
-		align = par.params().align();
+	LyXAlignment align = par.getAlign();
 
 	// set the correct parindent
 	if (pos == 0
