@@ -151,21 +151,12 @@ class CommandSourceFromFile(CommandSource):
         self.i = self.i + 1
         return line
 
+
 def lyx_exists():
     if lyx_pid is None:
         return False
     fname = '/proc/' + lyx_pid + '/status'
     return os.path.exists(fname)
-
-def lyx_sleeping():
-    fname = '/proc/' + lyx_pid + '/status'
-    f = open(fname, 'r')
-    lines = f.readlines()
-    sleeping = lines[1].find('(sleeping)') > 0
-
-    # print 'LYX_STATE', lines[1] , 'SLEEPING=', sleeping
-
-    return sleeping
 
 
 # Interruptible os.system()
@@ -175,8 +166,14 @@ def intr_system(cmd, ignore_err = False):
     if os.WIFSIGNALED(ret):
         raise KeyboardInterrupt
     if ret != 0 and not ignore_err:
-        raise BaseException("command failed.")
+        raise BaseException("command failed:" + cmd)
     return ret
+
+
+# Return true if LyX (identified via lyx_pid) is sleeping
+def lyx_sleeping():
+    fname = '/proc/' + lyx_pid + '/status'
+    return intr_system("grep 'State.*sleeping' " + fname, True)
 
 
 def sendKeystring(keystr, LYX_PID):
@@ -351,8 +348,10 @@ while not failed:
         count = 5
         while count > 0:
             lyx_pid=os.popen("pidof " + lyx).read().rstrip()
+            print 'lyx_pid=' + lyx_pid, '\n'
             if lyx_pid != "":
                 lyx_window_name=os.popen("wmctrl -l -p | grep ' " + str(lyx_pid) +  " ' | cut -d ' ' -f 1").read().rstrip()
+                print 'lyx_win=' + lyx_window_name, '\n'
                 if lyx_window_name != "":
                     break
             else:

@@ -26,6 +26,10 @@ if [ "$(pidof lyx)" != "" ]; then
     export LYX_PID=$(pidof lyx)
     export LYX_WINDOW_NAME=$(wmctrl -l -p | grep " $LYX_PID " | cut -d ' ' -f 1);
 fi
+
+echo LYX_PID=$LYX_PID
+echo LYX_WINDOW_NAME=$LYX_WINDOW_NAME
+
 export MAX_LOOPS=1
 export LYX_EXE=${LYX_EXE:-../../src/lyx}
 
@@ -35,4 +39,4 @@ else
     export XVKBD_EXE=${XVKBD_EXE:-xvkbd};
 fi
 
-$KEYTEST
+python -m trace --trace $KEYTEST
