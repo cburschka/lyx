@@ -293,10 +293,10 @@ bool Converters::checkAuth(Converter const & conv, string const & doc_fname)
 	      from_utf8(conv.command()), from_utf8(conv.from()),
 	      from_utf8(conv.to()));
 	if (lyxrc.use_converter_needauth_forbidden) {
-		frontend::Alert::warning(
+		frontend::Alert::error(
 		    _("An external converter is disabled for security reasons"),
 		    security_warning + _(
-		    "<p>Your current settings forbid its execution.</p>"
+		    "<p><b>Your current preference settings forbid its execution.</b></p>"
 		    "<p>(To change this setting, go to <i>Preferences &#x25b9; File "
 		    "Handling &#x25b9; Converters</i> and uncheck <i>Security &#x25b9; "
 		    "Forbid needauth converters</i>.)"), false);
