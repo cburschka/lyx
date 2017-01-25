@@ -312,6 +312,7 @@ int LyX::exec(int & argc, char * argv[])
 	// we need to parse for "-dbg" and "-help"
 	easyParse(argc, argv);
 
+#if QT_VERSION >= 0x050600
 	// Check whether Qt will scale all GUI elements and accordingly
 	// set the scale factor so that to avoid blurred images and text
 	char const * const scale_factor = getenv("QT_SCALE_FACTOR");
@@ -320,6 +321,7 @@ int LyX::exec(int & argc, char * argv[])
 		if (qt_scale_factor < 1.0)
 			qt_scale_factor = 1.0;
 	}
+#endif
 
 	try {
 		init_package(os::utf8_argv(0), cl_system_support, cl_user_support);
