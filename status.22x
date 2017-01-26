@@ -161,6 +161,9 @@ What's new
 - Fix cursor movement when the document contains high-plane Unicode
   characters (bug 10443).
 
+- Fix wrong on-screen text layout where a word would be alone on a
+  line.
+
 - Fix crash when the document contains Unicode line-breaking characters.
 
 - Allow using colors supported by xcolor inside mathed (bug 10417).
