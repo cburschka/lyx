@@ -243,10 +243,11 @@ public:
 	 * separator and update endpos if necessary. If all that
 	 * remains is a large word, cut it to \param width.
 	 * \param body_pos minimum amount of text to keep.
-	 * \param width maximum width of the row
+	 * \param width maximum width of the row.
+	 * \param available width on next row.
 	 * \return true if the row has been shortened.
 	 */
-	bool shortenIfNeeded(pos_type const body_pos, int const width);
+	bool shortenIfNeeded(pos_type const body_pos, int const width, int const next_width);
 
 	/**
 	 * If last element of the row is a string, compute its width
