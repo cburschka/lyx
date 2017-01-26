@@ -1164,7 +1164,8 @@ void InsetInclude::addToToc(DocIterator const & cpit, bool output_active,
 			return;
 
 		// Include Tocs from children
-		childbuffer->inset().addToToc(cpit, output_active, utype, backend);
+		childbuffer->inset().addToToc(DocIterator(), output_active, utype,
+		                              backend);
 		//Copy missing outliner names (though the user has been warned against
 		//having different document class and module selection between master
 		//and child).
