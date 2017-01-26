@@ -4733,14 +4733,16 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 	ParIterator parit = cbuf.par_iterator_begin();
 	updateBuffer(parit, utype);
 
+	/// FIXME: Perf
+	/// Update the tocBackend for any buffer. The outliner uses the master's,
+	/// and the navigation menu uses the child's.
+	cbuf.tocBackend().update(true, utype);
+
 	if (master != this)
-		// TocBackend update will be done later.
 		return;
 
 	d->bibinfo_cache_valid_ = true;
 	d->cite_labels_valid_ = true;
-	/// FIXME: Perf
-	cbuf.tocBackend().update(true, utype);
 	if (scope == UpdateMaster)
 		cbuf.structureChanged();
 }
