@@ -168,19 +168,19 @@ SectionEnd
 
 Section /o "English (AU)" SecDEnglishAU
  StrCpy $DictCodes "en_AU,$DictCodes"
- AddSize 651
+ AddSize 552
 SectionEnd
 
 Section /o "English (CA)" SecDEnglishCA
  StrCpy $DictCodes "en_CA,$DictCodes"
- AddSize 531
+ AddSize 550
 SectionEnd
 
 Section "English (GB)" SecDEnglishGB
  # already installed by default
  SectionIn RO
  #StrCpy $DictCodes "en_GB,$DictCodes"
- AddSize 735
+ AddSize 742
 SectionEnd
 
 Section /o "English (NZ)" SecDEnglishNZ
@@ -192,7 +192,7 @@ Section "English (US)" SecDEnglishUS
  # already installed by default
  SectionIn RO
  #StrCpy $DictCodes "en_US,$DictCodes"
- AddSize 547
+ AddSize 548
 SectionEnd
 
 Section "Español (ES)" SecDSpanishES
@@ -433,7 +433,7 @@ SectionEnd
 
 Section /o "Ukrainian" SecDUkrainian
  StrCpy $DictCodes "uk_UA,$DictCodes"
- AddSize 5298
+ AddSize 5555
 SectionEnd
 
 Section /o "Urdu" SecDUrdu

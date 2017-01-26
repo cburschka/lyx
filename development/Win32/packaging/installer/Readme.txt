@@ -7,7 +7,7 @@
  !define FILES_DEPS "C:\LyX-Installer\LyX2.2x\lyx-windows-deps-msvc2015"
  !define FILES_QT "C:\LyX-Installer\LyXPackage\LyX"
 3. install the latest version 3.x of NSIS (http://nsis.sourceforge.net/Download)
-4. install the NSIS Large Strings extension (http://nsis.sourceforge.net/Special_Builds)
+4. install the NSIS Large Strings build (http://nsis.sourceforge.net/Special_Builds)
    (extract the extension ZIP file in your NSIS installation folder and this way overwrite some files) 
 5. open the file FindProcDLL.zip (that is part of this bundle),
    extract from it the file FindProc.dll to the folder \Plugins\x86-ansi of
