@@ -1,4 +1,18 @@
-﻿Changelog for LyX-222-3:
+﻿Changelog for LyX-222-4:
+- fix bug that spell checker for Vietnamese was not installed
+- fix bug that thesaurus for Ukrainian was not installed
+- updated to MiKTeX 2.9 build 6219 (fixes problems with the update of LaTeX packages)
+- updated to Python 2.7.13
+- updated to ImageMagick 7.0.4-5
+- updated to JabRef 3.8.1
+- updated to Perl 5.22.3.1
+- updated thesaurus for Ukrainian
+- updated spell checker dictionaries for English (CA, GB and US) and Ukrainian
+  (To benefit from them you must uninstall an already installed LyX 2.2.x and
+   then use this installer.)
+
+
+Changelog for LyX-222-3:
 - updated to MiKTeX 2.9 build 6161
   (should fix all compilation errors you might have encountered recently
    with your LyX files)
@@ -70,8 +84,8 @@ Changelog for LyX.220-1:
 - updated to ImageMagick 6.9.4-4
 - updated to JabRef 3.3
 - new thesaurus for Norwegian (Nynorsk)
-- updated thesaurus for English (US) and Norwegian (Bokmal)
-- updated spell-checker dictionary for English (AU and GB), Norwegian (Bokmal and Nynorsk) and Scottish
+- updated thesaurus for English (US) and Norwegian (Bokmål)
+- updated spell-checker dictionary for English (AU and GB), Norwegian (Bokmål and Nynorsk) and Scottish
   (To benefit from it you must uninstall an already installed LyX 2.2.0 and
    then use this installer.)
 
@@ -160,7 +174,7 @@ Changelog for LyX-212-2:
 - fix problem that some LaTeX language packages were not installed automatically
   leading to LaTeX errors when compiling LyX documents 
 - new spell checker for Turkish
-- updated spell-checker dictionaries for English, Norwegian(Bokmal), Portuguese
+- updated spell-checker dictionaries for English, Norwegian(Bokmål), Portuguese
   and Scottish
   (To benefit from them you must uninstall an already installed LyX 2.1.x and
    then use this installer.)
@@ -240,7 +254,7 @@ Changelog for LyX-207:
 Changelog for LyX-206-3:
 - XeTeX support for Arabic and Farsi will now
   automatically be installed to MiKTeX
-- updated spell-checker dictionary for Norwegian(Bokmal)
+- updated spell-checker dictionary for Norwegian(Bokmål)
 
 
 Changelog for LyX-206-2:
@@ -263,7 +277,7 @@ Changelog for LyX-206-1:
   Slovakian and Swedish
   (To benefit from them you must uninstall an already installed LyX 2.0.x and
    then use this installer.)
-- updated thesaurus for Italian, Norwegian(Bokmal), Portuguese, Romanian,
+- updated thesaurus for Italian, Norwegian(Bokmål), Portuguese, Romanian,
   Slovakian and Slovenian
   (need to reinstall LyX to benefit from this)
 - updated to Python 2.7.4
