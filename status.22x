@@ -122,6 +122,10 @@ What's new
 - Fix mathtools, amsmath and amssymb not loading automatically for some
   symbols (bug 10467)
 
+- Protect citation arguments (pre and post text) which contain brackets
+  (part of bug 2751).
+
+
 * LYX2LYX
 
 - Do not convert "--" to "\twohyphens" in formula macros.

@@ -226,6 +226,15 @@ inline docstring wrapCitation(docstring const & key,
 			html::htmlize(content, XHTMLStream::ESCAPE_ALL) + "</a>";
 }
 
+
+docstring protectArgument(docstring & arg)
+{
+	if (contains(arg, '[') || contains(arg, ']'))
+		// protect brackets
+		arg = '{' + arg + '}';
+	return arg;
+}
+
 } // anonymous namespace
 
 docstring InsetCitation::generateLabel(bool for_xhtml) const
@@ -422,12 +431,13 @@ void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 
 	os << "\\" << cite_str;
 
-	docstring const & before = getParam("before");
-	docstring const & after  = getParam("after");
+	docstring before = getParam("before");
+	docstring after  = getParam("after");
 	if (!before.empty() && cs.textBefore)
-		os << '[' << before << "][" << after << ']';
+		os << '[' << protectArgument(before)
+		   << "][" << protectArgument(after) << ']';
 	else if (!after.empty() && cs.textAfter)
-		os << '[' << after << ']';
+		os << '[' << protectArgument(after) << ']';
 
 	if (!bi.isBibtex(getParam("key")))
 		// escape chars with bibitems
