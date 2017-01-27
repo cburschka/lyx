@@ -1180,7 +1180,8 @@ docstring const escape(docstring const & lab)
 	for (size_t i = 0; i < lab.length(); ++i) {
 		char_type c = lab[i];
 		if (c >= 128 || c == '=' || c == '%' || c == '#' || c == '$'
-		    || c == '}' || c == '{' || c == ']' || c == '[' || c == '&') {
+		    || c == '}' || c == '{' || c == ']' || c == '[' || c == '&'
+		    || c == '\\') {
 			// Although char_type is a 32 bit type we know that
 			// UCS4 occupies only 21 bits, so we don't need to
 			// encode bigger values. Test for 2^24 because we
