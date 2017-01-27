@@ -2245,6 +2245,7 @@ void Cursor::sanitize()
 {
 	setBuffer(&bv_->buffer());
 	DocIterator::sanitize();
+	new_word_.sanitize();
 	if (selection())
 		anchor_.sanitize();
 	else
