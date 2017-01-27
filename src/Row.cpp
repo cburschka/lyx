@@ -164,7 +164,7 @@ Row::Row()
 	  sel_beg(-1), sel_end(-1),
 	  begin_margin_sel(false), end_margin_sel(false),
 	  changed_(false), crc_(0),
-	  pit_(0), pos_(0), end_(0), right_boundary_(false)
+	  pit_(0), pos_(0), end_(0), right_boundary_(false), flushed_(false)
 {}
 
 
