@@ -160,6 +160,10 @@ public:
 	void right_boundary(bool b) { right_boundary_ = b; }
 	///
 	bool right_boundary() const { return right_boundary_; }
+	///
+	void flushed(bool b) { flushed_ = b; }
+	///
+	bool flushed() const { return flushed_; }
 
 	///
 	Dimension const & dimension() const { return dim_; }
@@ -297,8 +301,10 @@ private:
 	pos_type pos_;
 	/// one behind last pos covered by this row
 	pos_type end_;
-	// Is there is a boundary at the end of the row (display inset...)
+	// Is there a boundary at the end of the row (display inset...)
 	bool right_boundary_;
+	// Shall the row be flushed when it is supposed to be justified?
+	bool flushed_;
 	/// Row dimension.
 	Dimension dim_;
 };

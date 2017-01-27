@@ -164,6 +164,8 @@ What's new
 - Fix wrong on-screen text layout where a word would be alone on a
   line.
 
+- Fix wrong on-screen flushing of a row that was cut after an hyphen.
+
 - Fix crash when the document contains Unicode line-breaking characters.
 
 - Allow using colors supported by xcolor inside mathed (bug 10417).

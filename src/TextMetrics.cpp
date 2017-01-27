@@ -553,8 +553,7 @@ LyXAlignment TextMetrics::getAlign(Paragraph const & par, Row const & row) const
 		// not justify stuff, then don't stretch.
 		// A forced block alignment can only be overridden the 'no
 		// justification on screen' setting.
-		if (((row.right_boundary() || row.endpos() == par.size())
-		     && !forced_block)
+		if ((row.flushed() && !forced_block)
 		    || !bv_->buffer().params().justification)
 			align = text_->isRTL(par) ? LYX_ALIGN_RIGHT : LYX_ALIGN_LEFT;
 	}
@@ -904,7 +903,7 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 			&& inset->display())
 		    || (!row.empty() && row.back().inset
 			&& row.back().inset->display())) {
-			row.right_boundary(true);
+			row.flushed(true);
 			need_new_row = par.isNewline(i);
 			++i;
 			break;
@@ -935,8 +934,13 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 	// of success, reset indication that the row was broken abruptly.
 	int const next_width = max_width_ - leftMargin(max_width_, row.pit(), row.endpos())
 		- rightMargin(row.pit());
-	if (row.shortenIfNeeded(body_pos, width, next_width))
-		row.right_boundary(!row.empty() && row.back().endpos == row.endpos());
+
+	row.shortenIfNeeded(body_pos, width, next_width);
+	row.right_boundary(!row.empty() && row.endpos() < end
+	                   && row.back().endpos == row.endpos());
+	// Last row in paragraph is flushed
+	if (row.endpos() == end)
+		row.flushed(true);
 
 	// make sure that the RTL elements are in reverse ordering
 	row.reverseRTL(is_rtl);
