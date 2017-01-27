@@ -109,11 +109,11 @@ What's new
 
 - Fix some quote inset bugs (bug 10451):
   # Adjoining closing Single + double quote becomes double + single quote
-    (for English, Swedish and German). 
+    (for English, Swedish and German).
   # French double quotes are converted to << >> in the LaTeX file and to double
     inverted question/interrogation marks in the output, if the font encoding is
     set to [None] or OT1 but the global default is T1.
-  # Quote type ignored for LyXHTML: always "English" quotes used. 
+  # Quote type ignored for LyXHTML: always "English" quotes used.
 
 - Output correct identifier for DocBook XML.
 
@@ -186,6 +186,8 @@ What's new
   selection.
 
 - Fix size of Section* headings in amsart.
+
+- Fix possible crash with Save As... when online spell-checking is active.
 
 
 * INTERNALS
