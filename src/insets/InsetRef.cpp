@@ -152,7 +152,7 @@ docstring InsetRef::getEscapedLabel(OutputParams const & rp) const
 	InsetCommandParams const & p = params();
 	ParamInfo const & pi = p.info();
 	ParamInfo::ParamData const & pd = pi["reference"];
-	return p.prepareCommand(rp, getParam("reference"), pd.handling());		
+	return p.prepareCommand(rp, getParam("reference"), pd.handling());
 }
 
 

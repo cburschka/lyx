@@ -437,7 +437,7 @@ docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 					from_utf8(insetType()), command_latexed.second));
 		}
 		break;
-	} 
+	}
 	case ParamInfo::HANDLING_ESCAPE:
 		result = escape(command);
 		break;
