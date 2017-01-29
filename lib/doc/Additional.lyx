@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 531
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -52,6 +52,7 @@ shapepar
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -104,15 +105,17 @@ shapepar
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -2181,16 +2184,31 @@ Supplemental Tools
 \begin_layout Section
 Customizing Bibliographies with Bib\SpecialChar TeX
 
+\change_inserted -712698321 1485694846
+ or Biblatex
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 The most basic information about how to use Bib\SpecialChar TeX
- with \SpecialChar LyX
- is contained in the
- section 
+ 
+\change_inserted -712698321 1485694851
+or 
+\family sans
+Biblatex
+\family default
+ 
+\change_unchanged
+with \SpecialChar LyX
+ is contained in the section 
 \emph on
-Bibliography databases (Bib\SpecialChar TeX
+Bibliography databases
+\change_deleted -712698321 1485694823
+ (Bib\SpecialChar TeX
 )
+\change_unchanged
+
 \emph default
  of the 
 \emph on
@@ -2244,7 +2262,31 @@ Knuth 1984a
 
 ).
  \SpecialChar LyX
- supports two packages that provide this style, 
+ supports 
+\change_deleted -712698321 1485694902
+two
+\change_inserted -712698321 1485694902
+three
+\change_unchanged
+ packages that provide this style,
+\change_inserted -712698321 1485694917
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485694917
+biblatex
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+,
+\change_unchanged
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -2254,6 +2296,10 @@ natbib
 
 \end_inset
 
+
+\change_inserted -712698321 1485696751
+,
+\change_unchanged
  and 
 \begin_inset Flex Code
 status collapsed
@@ -2265,7 +2311,19 @@ jurabib
 \end_inset
 
 .
- Both packages have their pros and cons, which cannot be listed in detail.
+ 
+\change_deleted -712698321 1485695091
+Both
+\change_inserted -712698321 1485695093
+Each of these
+\change_unchanged
+ packages ha
+\change_deleted -712698321 1485695095
+ve
+\change_inserted -712698321 1485695095
+s
+\change_unchanged
+ their pros and cons, which cannot be listed in detail.
  If you only want to have simple author-year (or author-numerical) style,
  or if you want to use one of the countless style files for 
 \begin_inset Flex Code
@@ -2288,8 +2346,13 @@ natbib
 \end_inset
 
  package is probably your choice.
- If you need special features like short title references, ibidem etc., you
- might consider the 
+ If you 
+\change_inserted -712698321 1485695152
+look for specific citation styles common in law studies
+\change_deleted -712698321 1485695162
+need special features like short title references, ibidem etc.
+\change_unchanged
+, you might consider the 
 \begin_inset Flex Code
 status collapsed
 
@@ -2300,10 +2363,37 @@ jurabib
 \end_inset
 
  package.
+
+\change_inserted -712698321 1485695432
+ If you want to have full control over the formatting or look for advanced
+ features such as ibidem, footnote citations, full title citations, advanced
+ date formats (such as 400 BC) or full localization to other languages than
+ English, you should definitely consider 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485695328
+biblatex
+\end_layout
+
+\end_inset
+
+, which exceeds all other packages in terms of features, but is also quite
+ heavy and more resource-hungry.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-The handling of both packages in \SpecialChar LyX
+The handling of 
+\change_deleted -712698321 1485695449
+both
+\change_inserted -712698321 1485695449
+these
+\change_unchanged
+ packages in \SpecialChar LyX
  is basically the same.
  Go to 
 \begin_inset Flex Noun
@@ -2326,12 +2416,58 @@ Bibliography
 
 \end_inset
 
- the option 
+ 
+\change_deleted -712698321 1485695462
+the option
+\change_inserted -712698321 1485695559
+the 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485695499
+Style Format
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485695527
+Biblatex
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485695554
+Biblatex (Natbib mode)
+\end_layout
+
+\end_inset
+
+,
+\change_unchanged
+ 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
 Natbib
+\change_inserted -712698321 1485695505
+ (BibTeX)
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -2342,13 +2478,31 @@ status collapsed
 
 \begin_layout Plain Layout
 Jurabib
+\change_inserted -712698321 1485695511
+ (BibTeX)
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
+
+\change_inserted -712698321 1485695637
+ (see sec.
+\begin_inset space ~
+\end_inset
+
+6.5.3 in the User's Guide for more information on these choices)
+\change_unchanged
 .
- With both packages, you will get some extra features in the citation dialog
- and you can select the style of the reference (
+ With 
+\change_deleted -712698321 1485695643
+both
+\change_inserted -712698321 1485695645
+all these
+\change_unchanged
+ packages, you will get some extra features in the citation dialog and you
+ can select the style of the reference (
 \begin_inset Quotes eld
 \end_inset
 
@@ -2381,9 +2535,29 @@ Knuth, 1984
 \end_inset
 
  etc.).
- Note that both packages need specifically designed style files.
- They both ship their own, but there are lots of additional style files,
- and there is even an interactive style file builder
+ Note that 
+\change_deleted -712698321 1485695659
+both
+\change_inserted -712698321 1485695660
+either
+\change_unchanged
+ package
+\change_deleted -712698321 1485695663
+s
+\change_unchanged
+ need
+\change_inserted -712698321 1485695664
+s
+\change_unchanged
+ specifically designed style files.
+ They 
+\change_deleted -712698321 1485695676
+both
+\change_inserted -712698321 1485695676
+all
+\change_unchanged
+ ship their own, but there are lots of additional style files, and there
+ is even an interactive style file builder
 \begin_inset Foot
 status collapsed
 
@@ -2467,7 +2641,13 @@ ftp://ctan.tug.org/tex-archive/macros/latex/contrib/bibtopic/
 
 \end_inset
 
- The advantage of this package (compared to other packages like 
+ The advantage of this package (compared to other packages 
+\change_deleted -712698321 1485695727
+like
+\change_inserted -712698321 1485695729
+such as
+\change_unchanged
+ 
 \family typewriter
 multibib
 \family default
@@ -2647,6 +2827,170 @@ bibtopic
 
  removes the bibliography title, you have to manually re-add that, too (as
  a chapter* or section*, for instance).
+\change_inserted -712698321 1485695762
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1485696667
+With 
+\family sans
+Biblatex
+\family default
+, the procedure is a bit different.
+ Since 
+\family typewriter
+bibtopic
+\family default
+ does not work with 
+\family sans
+Biblatex
+\family default
+, the aforementioned 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485695841
+Sectioned bibliography
+\end_layout
+
+\end_inset
+
+ option is disabled if you use 
+\family sans
+Biblatex
+\family default
+.
+ However, 
+\family sans
+Biblatex
+\family default
+ provides its own means to generate sectioned bibliographies.
+ You can either add keywords to bibliography entries via the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485696318
+keywords
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ entry option and then filter bibliography sections by keyword (by adding
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485696306
+keyword=mykeyword
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ to the 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485696431
+Options
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ field of the dialog that opens if you right-click on the 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485696518
+Biblatex Generated Bibliography
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ button), or you can filter by entry types (such as 
+\emph on
+book
+\emph default
+ or 
+\emph on
+article
+\emph default
+) by entering e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485696628
+type=book
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485696643
+nottype=collection
+\end_layout
+
+\end_inset
+
+ to the mentioned 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485696667
+Options
+\end_layout
+
+\end_inset
+
+ field, or you can create so-called 
+\begin_inset Quotes eld
+\end_inset
+
+Bibliography Categories
+\begin_inset Quotes erd
+\end_inset
+
+ to which you can assign individual entries.
+ Please refer to the Biblatex manual, section 
+\emph on
+Subdivided Bibliographies
+\emph default
+, for details.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -2834,6 +3178,369 @@ btUnit
 \end_inset
 
 s cannot be nested.
+\change_inserted -712698321 1485696937
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1485698355
+Again, with 
+\family sans
+Biblatex
+\family default
+, the procedure differs, since 
+\family typewriter
+bibtopic
+\family default
+ does not work with 
+\family sans
+Biblatex
+\family default
+.
+ Biblatex has its own commands to get multiple bibliographies.
+ Generally, two different ways are differentiated: 
+\emph on
+refsections
+\emph default
+ are fully self-enclosed sections containing their own bibliography, 
+\emph on
+refsegments
+\emph default
+ are sections that contain their own bibliography, but maintain a global
+ numbering scheme (so that if two different 
+\emph on
+refsegments
+\emph default
+ contain references to two different papers by Miller published in 2016,
+ they will be labeled as 
+\begin_inset Quotes eld
+\end_inset
+
+Miller 2016a
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+Miller 2016b
+\begin_inset Quotes erd
+\end_inset
+
+ in an author-year scheme, while with 
+\emph on
+refsections
+\emph default
+, they will both be labeled as 
+\begin_inset Quotes eld
+\end_inset
+
+Miller 2016
+\begin_inset Quotes erd
+\end_inset
+
+, as the two sections are considered to be independent).
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1485698499
+If you need a 
+\emph on
+refsection
+\emph default
+ or 
+\emph on
+refsegment
+\emph default
+ per part, chapter, section or subsection, all you have to do is to enter,
+ respectively, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485697458
+refsection=part
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485697463
+refsection=chapter
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485697469
+refsection=section
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485697474
+refsection=subsection
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ (or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485697532
+refsegment=\SpecialChar ldots
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ for 
+\emph on
+refsegments
+\emph default
+) to 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485697573
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Bibliography\SpecialChar menuseparator
+Options
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+ If you need specific 
+\emph on
+refsections
+\emph default
+ or 
+\emph on
+refsegments
+\emph default
+, you can start them with the \SpecialChar TeX
+ code 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485697716
+
+\backslash
+newrefsection
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485697724
+
+\backslash
+newrefsegment
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, respectively.
+ If you also want to control the end of the section\SpecialChar breakableslash
+segment, use the environment
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485697769
+
+\backslash
+begin{refsection}
+\end_layout
+
+\end_inset
+
+ \SpecialChar ldots
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485697780
+
+\backslash
+end{refsection}
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485697791
+
+\backslash
+begin{refsegment}
+\end_layout
+
+\end_inset
+
+ \SpecialChar ldots
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485697797
+
+\backslash
+end{refsegment}
+\end_layout
+
+\end_inset
+
+ instead.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1485698580
+In order to actually output the bibliography of the respective section or
+ segment, simply insert it at the place where it should appear via 
+\family sans
+Insert\SpecialChar menuseparator
+List
+\family default
+/
+\family sans
+TOC\SpecialChar menuseparator
+Bib(la)TeX
+\begin_inset space ~
+\end_inset
+
+Bibliography
+\family default
+ (within the given 
+\emph on
+refsection
+\emph default
+ or 
+\emph on
+refsegment
+\emph default
+).
+ If you want to output all 
+\emph on
+refsections
+\emph default
+ or 
+\emph on
+refsegments
+\emph default
+ at one place (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., at the end of the document), 
+\family sans
+Biblatex
+\family default
+ provides the commands 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485698571
+
+\backslash
+bibbysection
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1485698580
+
+\backslash
+bibbysegment
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ which automatically loop over all sections/segments and output them subsequentl
+y.
+ Currently, these commands need to be entered as \SpecialChar TeX
+ code in \SpecialChar LyX
+.
+ Please refer to the 
+\family sans
+Biblatex
+\family default
+ manual for more information on this topic.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
