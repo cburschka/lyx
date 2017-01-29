@@ -269,6 +269,10 @@ docstring const rsplit(docstring const & a, char_type delim);
 /// problems in latex labels.
 docstring const escape(docstring const & lab);
 
+/// Group contents of an argument if needed
+docstring const protectArgument(docstring & arg, char const l = '[',
+			  char const r = ']');
+
 /// Truncates a string with an ellipsis at the end.  Leaves str unchanged and
 /// returns false if it is shorter than len. Otherwise resizes str to len, with
 /// U+2026 HORIZONTAL ELLIPSIS at the end, and returns true.

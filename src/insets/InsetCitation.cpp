@@ -312,15 +312,6 @@ inline docstring wrapCitation(docstring const & key,
 			html::htmlize(content, XHTMLStream::ESCAPE_ALL) + "</a>";
 }
 
-docstring protectArgument(docstring & arg, char const l = '[',
-			  char const r = ']')
-{
-	if (contains(arg, l) || contains(arg, r))
-		// protect brackets
-		arg = '{' + arg + '}';
-	return arg;
-}
-
 } // anonymous namespace
 
 

@@ -1203,6 +1203,16 @@ docstring const escape(docstring const & lab)
 }
 
 
+docstring const protectArgument(docstring & arg, char const l,
+			  char const r)
+{
+	if (contains(arg, l) || contains(arg, r))
+		// protect brackets
+		arg = '{' + arg + '}';
+	return arg;
+}
+
+
 bool truncateWithEllipsis(docstring & str, size_t const len)
 {
 	if (str.size() <= len)
