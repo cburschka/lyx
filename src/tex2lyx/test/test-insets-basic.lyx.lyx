@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.3
-\lyxformat 531
+\lyxformat 532
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -370,6 +370,7 @@ LatexCommand citep
 after "after"
 before ""
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -381,6 +382,7 @@ LatexCommand citep
 after "after"
 before ""
 key "whole-set,article-crossref"
+literal "true"
 
 \end_inset
 
@@ -400,6 +402,7 @@ LatexCommand citet
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -411,6 +414,7 @@ LatexCommand citet*
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -422,6 +426,7 @@ LatexCommand Citet
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -433,6 +438,7 @@ LatexCommand Citet*
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -448,6 +454,7 @@ LatexCommand citep
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -459,6 +466,7 @@ LatexCommand citep*
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -470,6 +478,7 @@ LatexCommand Citep
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -481,6 +490,7 @@ LatexCommand Citep*
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -496,6 +506,7 @@ LatexCommand citealt
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -507,6 +518,7 @@ LatexCommand citealt*
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -518,6 +530,7 @@ LatexCommand Citealt
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -529,6 +542,7 @@ LatexCommand Citealt*
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -544,6 +558,7 @@ LatexCommand citealp
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -555,6 +570,7 @@ LatexCommand citealp*
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -566,6 +582,7 @@ LatexCommand Citep
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -577,6 +594,7 @@ LatexCommand Citealp*
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -592,6 +610,7 @@ LatexCommand citeauthor
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -603,6 +622,7 @@ LatexCommand citeauthor*
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -614,6 +634,7 @@ LatexCommand Citeauthor
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -625,6 +646,7 @@ LatexCommand Citeauthor*
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -640,6 +662,7 @@ LatexCommand citeyear
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -655,6 +678,7 @@ LatexCommand citeyearpar
 after "after"
 before "before"
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -669,6 +693,7 @@ nocite:
 LatexCommand nocite
 after ""
 key "article-crossref"
+literal "true"
 
 \end_inset
 
@@ -745,6 +770,7 @@ LatexCommand citet
 after ""
 before ""
 key "gur+04"
+literal "true"
 
 \end_inset
 
@@ -757,6 +783,7 @@ key "gur+04"
 LatexCommand bibitem
 label "Möstl et~al.(2010)"
 key "Mostl2010"
+literal "true"
 
 \end_inset
 
@@ -779,6 +806,7 @@ A. 2004, ApJ, 604, 632
 LatexCommand bibitem
 label "{{Gürkan et~al.}(2004)}"
 key "gur+04"
+literal "true"
 
 \end_inset
 
@@ -921,6 +949,7 @@ LatexCommand nomenclature
 prefix "www"
 symbol "URL"
 description "uniform resource locator"
+literal "true"
 
 \end_inset
 
@@ -943,6 +972,7 @@ http://www.lyx.org
 LatexCommand nomenclature
 symbol "URL2"
 description "uniform resource locator"
+literal "true"
 
 \end_inset
 
@@ -968,6 +998,7 @@ link:
 \begin_inset CommandInset href
 LatexCommand href
 target "www.test.test"
+literal "true"
 
 \end_inset
 
@@ -979,6 +1010,7 @@ link2:
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.test.test"
+literal "true"
 
 \end_inset
 
@@ -992,6 +1024,7 @@ LatexCommand href
 name "name"
 target "www.test.test"
 type "mailto:"
+literal "true"
 
 \end_inset
 
@@ -1004,6 +1037,7 @@ file:
 LatexCommand href
 target "www.test.test"
 type "file:"
+literal "true"
 
 \end_inset
 
@@ -1015,6 +1049,7 @@ ftp:
 \begin_inset CommandInset href
 LatexCommand href
 target "ftp://www.test.test"
+literal "true"
 
 \end_inset
 
@@ -1027,6 +1062,7 @@ ftp2:
 LatexCommand href
 name "www.test.test"
 target "ftp://www.test.test"
+literal "true"
 
 \end_inset
 
@@ -7014,6 +7050,7 @@ undefined index:
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
+literal "true"
 
 \end_inset
 
@@ -7029,6 +7066,7 @@ index "idx":
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
+literal "true"
 
 \end_inset
 
@@ -7044,6 +7082,7 @@ index "new":
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "new"
+literal "true"
 
 \end_inset
 
@@ -7059,6 +7098,7 @@ subindex "new":
 \begin_inset CommandInset index_print
 LatexCommand printsubindex
 type "idx"
+literal "true"
 
 \end_inset
 

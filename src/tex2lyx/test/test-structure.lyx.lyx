@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.3
-\lyxformat 531
+\lyxformat 532
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -1098,6 +1098,7 @@ and bibliography:
 LatexCommand bibitem
 label ""
 key "FOO"
+literal "true"
 
 \end_inset
 
@@ -1114,6 +1115,7 @@ The Foo Book
 LatexCommand bibitem
 label ""
 key "FO2"
+literal "true"
 
 \end_inset
 
