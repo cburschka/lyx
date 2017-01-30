@@ -160,7 +160,8 @@ int InsetCommand::docbook(odocstream &, OutputParams const &) const
 
 void InsetCommand::validate(LaTeXFeatures & features) const
 {
-	if (params()["literal"] == "true")
+	if (params().info().hasParam("literal")
+	    && params()["literal"] == "true")
 		return;
 
 	ParamInfo::const_iterator it = params().info().begin();
