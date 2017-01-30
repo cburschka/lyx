@@ -48,9 +48,11 @@ ParamInfo const & InsetHyperlink::findInfo(string const & /* cmdName */)
 {
 	static ParamInfo param_info_;
 	if (param_info_.empty()) {
-		param_info_.add("name", ParamInfo::LATEX_OPTIONAL);
+		param_info_.add("name", ParamInfo::LATEX_OPTIONAL,
+		                ParamInfo::HANDLING_LATEXIFY);
 		param_info_.add("target", ParamInfo::LATEX_REQUIRED);
 		param_info_.add("type", ParamInfo::LATEX_REQUIRED);
+		param_info_.add("literal", ParamInfo::LYX_INTERNAL);
 	}
 	return param_info_;
 }
@@ -119,11 +121,7 @@ void InsetHyperlink::latex(otexstream & os,
 {
 	docstring url = getParam("target");
 	docstring name = getParam("name");
-	static docstring const backslash = from_ascii("\\");
-	static docstring const braces = from_ascii("{}");
 	static char_type const chars_url[2] = {'%', '#'};
-	static char_type const chars_name[6] = {
-		'&', '_', '$', '%', '#', '^'};
 
 	// For the case there is no name given, the target is set as name.
 	// Do this before !url.empty() and !name.empty() to handle characters
@@ -151,7 +149,7 @@ void InsetHyperlink::latex(otexstream & os,
 			for (size_t i = 0, pos;
 				(pos = url.find(chars_url[k], i)) != string::npos;
 				i = pos + 2)
-				url.replace(pos, 1, backslash + chars_url[k]);
+				url.replace(pos, 1, from_ascii("\\") + chars_url[k]);
 		
 		// add "http://" when the type is web (type = empty)
 		// and no "://" or "run:" is given
@@ -163,46 +161,19 @@ void InsetHyperlink::latex(otexstream & os,
 
 	} // end if (!url.empty())
 
-	// The characters in chars_name[] need to be changed to a command when
-	// they are in the name field.
 	if (!name.empty()) {
-		// handle the "\" character, but only when the following character
-		// is not also a "\", because "\\" is valid code
-		docstring const textbackslash = from_ascii("\\textbackslash{}");
-		for (size_t i = 0, pos;
-			(pos = name.find('\\', i)) != string::npos;
-			i = pos + 2) {
-			if (name[pos + 1] != '\\')
-				name.replace(pos, 1, textbackslash);
-		}
-		// The characters in chars_name[] need to be changed to a command
-		// when they are in the name field.
-		// Therefore the treatment of "\" must be the first thing
-		for (int k = 0; k < 6; k++)
-			for (size_t i = 0, pos;
-				(pos = name.find(chars_name[k], i)) != string::npos;
-				i = pos + 2)
-				name.replace(pos, 1, backslash + chars_name[k] + braces);
-
+		name = params().prepareCommand(runparams, getParam("name"),
+					ParamInfo::HANDLING_LATEXIFY);
 		// replace the tilde by the \sim character as suggested in the
 		// LaTeX FAQ for URLs
-		docstring const sim = from_ascii("$\\sim$");
-		for (size_t i = 0, pos;
-			(pos = name.find('~', i)) != string::npos;
-			i = pos + 1)
-			name.replace(pos, 1, sim);
-		pair<docstring, docstring> name_latexed =
-			runparams.encoding->latexString(name, runparams.dryrun);
-		name = name_latexed.first;
-		if (!name_latexed.second.empty() && !runparams.silent) {
-			// issue a warning about omitted characters
-			// FIXME: should be passed to the error dialog
-			frontend::Alert::warning(_("Uncodable characters"),
-				bformat(_("The following characters that are used in the href inset are not\n"
-					  "representable in the current encoding and therefore have been omitted:\n%1$s."),
-					name_latexed.second));
+		if (getParam("literal") != from_ascii("true")) {
+			docstring const sim = from_ascii("$\\sim$");
+			for (size_t i = 0, pos;
+				(pos = name.find('~', i)) != string::npos;
+				i = pos + 1)
+				name.replace(pos, 1, sim);
 		}
-	}  // end if (!name.empty())
+	}
 	
 	if (runparams.moving_arg)
 		os << "\\protect";
@@ -287,6 +258,7 @@ docstring InsetHyperlink::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*
 void InsetHyperlink::validate(LaTeXFeatures & features) const
 {
 	features.require("hyperref");
+	InsetCommand::validate(features);
 }
 
 

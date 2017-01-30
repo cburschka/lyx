@@ -64,8 +64,6 @@ public:
 	///
 	void forOutliner(docstring &, size_t const, bool const) const;
 	///
-	void validate(LaTeXFeatures &) const {}
-	///
 	void updateBuffer(ParIterator const & it, UpdateType);
 	///
 	void addToToc(DocIterator const & di, bool output_active,

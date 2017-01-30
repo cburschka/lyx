@@ -360,6 +360,16 @@
          <number>0</number>
         </property>
         <item>
+         <widget class="QCheckBox" name="literalCB">
+          <property name="toolTip">
+           <string>Pass content of `Text before' and `Text after' fields literally to LaTeX. Check this if you want to enter LaTeX code.</string>
+          </property>
+          <property name="text">
+           <string>Li&amp;teral</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>

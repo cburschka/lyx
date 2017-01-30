@@ -7,6 +7,11 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2017-01-28 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 532: literal command inset parameter.
+	  With this, inset command params with ParamInfo::HANDLING_LATEXIFY
+	  can be passed to LaTeX either verbatim or latexified.
+
 2017-01-21 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 531: Support for qualified citation lists.
 	  \begin_inset CommandInset citation

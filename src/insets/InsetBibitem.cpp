@@ -108,6 +108,7 @@ ParamInfo const & InsetBibitem::findInfo(string const & /* cmdName */)
 				ParamInfo::HANDLING_LATEXIFY);
 		param_info_.add("key", ParamInfo::LATEX_REQUIRED,
 				ParamInfo::HANDLING_ESCAPE);
+		param_info_.add("literal", ParamInfo::LYX_INTERNAL);
 	}
 	return param_info_;
 }
@@ -129,54 +130,24 @@ void InsetBibitem::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 		docstring const & old_key = params()["key"];
 		docstring const & old_label = params()["label"];
+		docstring const & old_literal = params()["literal"];
 		docstring label = p["label"];
-
-		// definitions for escaping
-		static docstring const backslash = from_ascii("\\");
-		static docstring const lbrace = from_ascii("{");
-		static docstring const rbrace = from_ascii("}");
-		static char_type const chars_escape[6] = {
-			'&', '_', '$', '%', '#', '^'};
-		static char_type const brackets_escape[2] = {'[', ']'};
-
-		if (!label.empty()) {
-			int previous;
-			// The characters in chars_name[] need to be changed to a command when
-			// they are in the name field.
-			for (int k = 0; k < 6; k++)
-				for (size_t i = 0, pos;
-					(pos = label.find(chars_escape[k], i)) != string::npos;
-					i = pos + 2) {
-						if (pos == 0)
-							previous = 0;
-						else
-							previous = pos - 1;
-						// only if not already escaped
-						if (label[previous] != '\\')
-							label.replace(pos, 1, backslash + chars_escape[k] + lbrace + rbrace);
-				}
-			// The characters '[' and ']' need to be put into braces
-			for (int k = 0; k < 2; k++)
-				for (size_t i = 0, pos;
-					(pos = label.find(brackets_escape[k], i)) != string::npos;
-					i = pos + 2) {
-						if (pos == 0)
-							previous = 0;
-						else
-							previous = pos - 1;
-						// only if not already escaped
-						if (label[previous] != '{')
-							label.replace(pos, 1, lbrace + brackets_escape[k] + rbrace);
-				}
-		}
+		docstring literal = p["literal"];
 
 		if (old_label != label) {
 			p["label"] = label;
 			cur.forceBufferUpdate();
 			buffer().invalidateBibinfoCache();
 		}
-
 		setParam("label", p["label"]);
+
+		if (old_literal != literal) {
+			p["literal"] = literal;
+			cur.forceBufferUpdate();
+			buffer().invalidateBibinfoCache();
+		}
+		setParam("literal", p["literal"]);
+
 		if (p["key"] != old_key) {
 			updateCommand(p["key"]);
 			cur.bv().buffer().changeRefsIfUnique(old_key, params()["key"]);
@@ -301,9 +272,8 @@ docstring bibitemWidest(Buffer const & buffer, OutputParams const & runparams)
 	}
 
 	if (!lbl.empty()) {
-		pair<docstring, docstring> latex_lbl =
-			runparams.encoding->latexString(lbl, runparams.dryrun);
-		return latex_lbl.first;
+		InsetCommandParams p(BIBITEM_CODE);
+		return p.prepareCommand(runparams, lbl, ParamInfo::HANDLING_LATEXIFY);
 	}
 
 	return from_ascii("99");

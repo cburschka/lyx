@@ -422,19 +422,49 @@ docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 					     docstring const & command,
 					     ParamInfo::ParamHandling handling) const
 {
+	if (handling == ParamInfo::HANDLING_LATEXIFY)
+		if ((*this)["literal"] == "true")
+			handling = ParamInfo::HANDLING_NONE;
 	docstring result;
 	switch (handling) {
 	case ParamInfo::HANDLING_LATEXIFY: {
+		// First handle backslash
+		result = subst(command, from_ascii("\\"), from_ascii("\\textbackslash{}"));
+		// Then get LaTeX macros
 		pair<docstring, docstring> command_latexed =
-			runparams.encoding->latexString(command, runparams.dryrun);
+			runparams.encoding->latexString(result, runparams.dryrun);
 		result = command_latexed.first;
 		if (!command_latexed.second.empty()) {
-			// issue a warning about omitted characters
+			// Issue a warning about omitted characters
 			// FIXME: should be passed to the error dialog
 			frontend::Alert::warning(_("Uncodable characters"),
 				bformat(_("The following characters that are used in the inset %1$s are not\n"
 					  "representable in the current encoding and therefore have been omitted:\n%2$s."),
 					from_utf8(insetType()), command_latexed.second));
+		}
+		// Now escape special commands
+		static docstring const backslash = from_ascii("\\");
+		static char_type const chars_escape[6] = {
+			'&', '_', '$', '%', '#', '^'};
+
+		if (!result.empty()) {
+			int previous;
+			// The characters in chars_name[] need to be changed to a command when
+			// they are LaTeXified.
+			for (int k = 0; k < 6; k++)
+				for (size_t i = 0, pos;
+					(pos = result.find(chars_escape[k], i)) != string::npos;
+					i = pos + 2) {
+						//(Only) \\^ needs to be terminated
+						docstring const term = (k == 5) ? from_ascii("{}") : docstring();
+						if (pos == 0)
+							previous = 0;
+						else
+							previous = pos - 1;
+						// only if not already escaped
+						if (result[previous] != '\\')
+							result.replace(pos, 1, backslash + chars_escape[k] + term);
+				}
 		}
 		break;
 	}
@@ -470,10 +500,10 @@ docstring InsetCommandParams::getCommand(OutputParams const & runparams) const
 			break;
 		}
 		case ParamInfo::LATEX_OPTIONAL: {
-			docstring const data =
+			docstring data =
 				prepareCommand(runparams, (*this)[name], it->handling());
 			if (!data.empty()) {
-				s += '[' + data + ']';
+				s += '[' + protectArgument(data) + ']';
 				noparam = false;
 			} else if (writeEmptyOptional(it)) {
 					s += "[]";

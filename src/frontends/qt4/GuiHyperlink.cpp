@@ -40,6 +40,8 @@ GuiHyperlink::GuiHyperlink(QWidget * parent) : InsetParamsWidget(parent)
 		this, SIGNAL(changed()));
 	connect(nameED, SIGNAL(textChanged(const QString &)),
 		this, SIGNAL(changed()));
+	connect(literalCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
 	connect(webRB, SIGNAL(clicked()),
 		this, SIGNAL(changed()));
 	connect(emailRB, SIGNAL(clicked()),
@@ -58,6 +60,7 @@ void GuiHyperlink::paramsToDialog(Inset const * inset)
 
 	targetED->setText(toqstr(params["target"]));
 	nameED->setText(toqstr(params["name"]));
+	literalCB->setChecked(params["literal"] == "true");
 	docstring const & type = params["type"];
 	if (type.empty())
 		webRB->setChecked(true);
@@ -75,6 +78,7 @@ bool GuiHyperlink::initialiseParams(std::string const & data)
 		return false;
 	targetED->setText(toqstr(params["target"]));
 	nameED->setText(toqstr(params["name"]));
+	literalCB->setChecked(params["literal"] == "true");
 	if (params["type"] == from_utf8("mailto:"))
 		emailRB->setChecked(true);
 	else if (params["type"] == from_utf8("file:"))
@@ -97,6 +101,8 @@ docstring GuiHyperlink::dialogToParams() const
 		params["type"] = from_utf8("mailto:");
 	else if (fileRB->isChecked())
 		params["type"] = from_utf8("file:");
+	params["literal"] = literalCB->isChecked()
+			? from_ascii("true") : from_ascii("false");
 	params.setCmdName("href");
 	return from_utf8(InsetHyperlink::params2string(params));
 }

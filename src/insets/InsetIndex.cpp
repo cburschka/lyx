@@ -436,8 +436,10 @@ ParamInfo const & InsetPrintIndex::findInfo(string const & /* cmdName */)
 	static ParamInfo param_info_;
 	if (param_info_.empty()) {
 		param_info_.add("type", ParamInfo::LATEX_OPTIONAL,
-		                ParamInfo::HANDLING_ESCAPE);
-		param_info_.add("name", ParamInfo::LATEX_REQUIRED);
+				ParamInfo::HANDLING_ESCAPE);
+		param_info_.add("name", ParamInfo::LATEX_OPTIONAL,
+				ParamInfo::HANDLING_LATEXIFY);
+		param_info_.add("literal", ParamInfo::LYX_INTERNAL);
 	}
 	return param_info_;
 }
@@ -560,6 +562,15 @@ bool InsetPrintIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
+void InsetPrintIndex::updateBuffer(ParIterator const &, UpdateType)
+{
+	Index const * index =
+		buffer().masterParams().indiceslist().findShortcut(getParam("type"));
+	if (index)
+		setParam("name", index->index());
+}
+
+
 void InsetPrintIndex::latex(otexstream & os, OutputParams const & runparams_in) const
 {
 	if (!buffer().masterBuffer()->params().use_indices) {
@@ -577,6 +588,7 @@ void InsetPrintIndex::validate(LaTeXFeatures & features) const
 	features.require("makeidx");
 	if (buffer().masterBuffer()->params().use_indices)
 		features.require("splitidx");
+	InsetCommand::validate(features);
 }
 
 

@@ -1682,8 +1682,8 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			p.skip_spaces(true);
 			os << "btprint " << '"' << "btPrintAll" << '"' << "\n";
 		}
-		os << "bibfiles " << '"' << bibfile << '"' << "\n";
-		os << "options " << '"' << bibstyle << '"' <<  "\n";
+		os << "bibfiles " << '"' << bibfile << "\"\n"
+		   << "options " << '"' << bibstyle << "\"\n";
 		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
 		end_inset(os);
 		p.skip_spaces();
@@ -2760,7 +2760,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			} else {
 				begin_command_inset(os, "bibitem", "bibitem");
 				os << "label \"" << label << "\"\n"
-				      "key \"" << key << "\"\n";
+				   << "key \"" << key << "\"\n"
+				   << "literal \"true\"\n";
 				end_inset(os);
 			}
 		}
@@ -3439,6 +3440,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "target \"" << target << "\"\n";
 			if (type == "mailto:" || type == "file:")
 				os << "type \"" << type << "\"\n";
+			os << "literal \"true\"\n";
 			end_inset(os);
 			skip_spaces_braces(p);
 		}
@@ -3585,7 +3587,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "before " << '"' << before << '"' << "\n";
 			os << "key \""
 			   << convert_command_inset_arg(p.verbatim_item())
-			   << "\"\n";
+			   << "\"\n"
+			   << "literal \"true\"\n";
 			end_inset(os);
 			// Need to set the cite engine if natbib is loaded by
 			// the document class directly
@@ -3637,9 +3640,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				before.erase(before.length() - 1, 1);
 			}
 			begin_command_inset(os, "citation", command);
-			os << "after " << '"' << after << '"' << "\n";
-			os << "before " << '"' << before << '"' << "\n";
-			os << "key " << '"' << citation << '"' << "\n";
+			os << "after " << '"' << after << "\"\n"
+			   << "before " << '"' << before << "\"\n"
+			   << "key " << '"' << citation << "\"\n"
+			   << "literal \"true\"\n";
 			end_inset(os);
 			// Need to set the cite engine if jurabib is loaded by
 			// the document class directly
@@ -3656,8 +3660,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// the BibTeX inset
 			if (key != "*") {
 				begin_command_inset(os, "citation", t.cs());
-				os << "after " << '"' << after << '"' << "\n";
-				os << "key " << '"' << key << '"' << "\n";
+				os << "after " << '"' << after << "\"\n"
+				   << "key " << '"' << key << "\"\n"
+				   << "literal \"true\"\n";
 				end_inset(os);
 			} else if (t.cs() == "nocite")
 				btprint = key;
@@ -3687,7 +3692,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			   << convert_command_inset_arg(p.verbatim_item());
 			os << "\"\ndescription \""
 			   << convert_command_inset_arg(p.verbatim_item())
-			   << "\"\n";
+			   << "\"\n"
+			   << "literal \"true\"\n";
 			end_inset(os);
 			preamble.registerAutomaticallyLoadedPackage("nomencl");
 		}
@@ -3717,6 +3723,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					os << "type \"idx\"\n";
 				else
 					os << "type \"" << indexname << "\"\n";
+				os << "literal \"true\"\n";
 			}
 			end_inset(os);
 			skip_spaces_braces(p);

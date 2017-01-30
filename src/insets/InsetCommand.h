@@ -87,6 +87,8 @@ public:
 	///
 	int docbook(odocstream &, OutputParams const & runparams) const;
 	///
+	void validate(LaTeXFeatures & features) const;
+	///
 	bool setMouseHover(BufferView const * bv, bool mouse_hover) const;
 	///
 	bool clickable(BufferView const &, int, int) const { return hasSettings(); }

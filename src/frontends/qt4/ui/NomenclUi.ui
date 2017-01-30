@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>NomenclUi</class>
  <widget class="QWidget" name="NomenclUi">
@@ -6,46 +7,17 @@
     <x>0</x>
     <y>0</y>
     <width>254</width>
-    <height>172</height>
+    <height>222</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Nomenclature</string>
   </property>
-  <layout class="QGridLayout">
-   <property name="margin">
-    <number>9</number>
-   </property>
-   <property name="spacing">
-    <number>6</number>
-   </property>
-   <item row="2" column="1">
-    <widget class="QLineEdit" name="prefixED"/>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="prefixLA">
-     <property name="text">
-      <string>Sort &amp;as:</string>
-     </property>
-     <property name="buddy">
-      <cstring>prefixED</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="descrLA">
-     <property name="text">
-      <string>&amp;Description:</string>
-     </property>
-     <property name="buddy">
-      <cstring>descriptionTE</cstring>
-     </property>
-    </widget>
-   </item>
+  <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QLabel" name="symbolLA">
      <property name="text">
-      <string>&amp;Symbol:</string>
+      <string>Sy&amp;mbol:</string>
      </property>
      <property name="buddy">
       <cstring>symbolED</cstring>
@@ -59,10 +31,43 @@
      </property>
     </widget>
    </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="descrLA">
+     <property name="text">
+      <string>Des&amp;cription:</string>
+     </property>
+     <property name="buddy">
+      <cstring>descriptionTE</cstring>
+     </property>
+    </widget>
+   </item>
    <item row="1" column="1">
     <widget class="QTextEdit" name="descriptionTE">
      <property name="acceptRichText">
       <bool>false</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="prefixLA">
+     <property name="text">
+      <string>Sort &amp;as:</string>
+     </property>
+     <property name="buddy">
+      <cstring>prefixED</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="prefixED"/>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="QCheckBox" name="literalCB">
+     <property name="toolTip">
+      <string>Pass content of the `Symbol' and `Description' fields literally to LaTeX. Check this if you want to enter LaTeX code.</string>
+     </property>
+     <property name="text">
+      <string>Li&amp;teral</string>
      </property>
     </widget>
    </item>

@@ -1547,6 +1547,54 @@ def revert_qualicites(document):
             i += 1
 
 
+command_insets = ["bibitem", "citation", "href", "index_print", "nomenclature"]
+def convert_literalparam(document):
+    " Add param literal "
+
+    # These already had some sort of latexify method
+    latexified_insets = ["href", "index_print", "nomenclature"]
+
+    for inset in command_insets:
+        i = 0
+        while True:
+            i = find_token(document.body, '\\begin_inset CommandInset %s' % inset, i)
+            if i == -1:
+                break
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of %s inset at line %d" % (inset, i))
+                i += 1
+                continue
+            while i < j and document.body[i].strip() != '':
+                i += 1
+            if inset in latexified_insets:
+                document.body.insert(i, "literal \"false\"")
+            else:
+                document.body.insert(i, "literal \"true\"")
+
+
+
+def revert_literalparam(document):
+    " Remove param literal "
+
+    for inset in command_insets:
+        i = 0
+        while True:
+            i = find_token(document.body, '\\begin_inset CommandInset %s' % inset, i)
+            if i == -1:
+                break
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of %s inset at line %d" % (inset, i))
+                i += 1
+                continue
+            k = find_token(document.body, 'literal', i, j)
+            if k == -1:
+                i += 1
+                continue
+            del document.body[k]
+
+
 ##
 # Conversion hub
 #
@@ -1575,10 +1623,12 @@ convert = [
            [528, []],
            [529, []],
            [530, []],
-           [531, []]
+           [531, []],
+           [532, [convert_literalparam]]
           ]
 
 revert =  [
+           [531, [revert_literalparam]],
            [530, [revert_qualicites]],
            [529, [revert_bibpackopts]],
            [528, [revert_citekeyonly]],

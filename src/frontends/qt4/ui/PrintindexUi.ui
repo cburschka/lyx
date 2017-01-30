@@ -1,92 +1,114 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>PrintindexUi</class>
- <widget class="QDialog" name="PrintindexUi" >
-  <property name="geometry" >
+ <widget class="QDialog" name="PrintindexUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>262</width>
-    <height>130</height>
+    <width>287</width>
+    <height>148</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <property name="sizeGripEnabled" >
+  <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
-    <number>6</number>
-   </property>
-   <item row="2" column="2" >
-    <widget class="QPushButton" name="cancelPB" >
-     <property name="text" >
-      <string>&amp;Cancel</string>
-     </property>
-     <property name="default" >
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1" >
-    <widget class="QPushButton" name="okPB" >
-     <property name="text" >
-      <string>&amp;OK</string>
-     </property>
-     <property name="default" >
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="sizeHint" >
-      <size>
-       <width>78</width>
-       <height>29</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="1" column="0" colspan="3" >
-    <widget class="QCheckBox" name="subindexCB" >
-     <property name="toolTip" >
-      <string>Check if this index should be part (e.g., a section) of the former one.</string>
-     </property>
-     <property name="text" >
-      <string>&amp;Subindex</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="3" >
-    <layout class="QVBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <layout class="QVBoxLayout">
+     <property name="spacing">
       <number>6</number>
      </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <item>
-      <widget class="QLabel" name="indicesLA" >
-       <property name="text" >
-        <string>A&amp;vailable indexes:</string>
+      <widget class="QLabel" name="indicesLA">
+       <property name="text">
+        <string>Avai&amp;lable indexes:</string>
        </property>
-       <property name="buddy" >
+       <property name="buddy">
         <cstring>indicesCO</cstring>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="indicesCO" >
-       <property name="toolTip" >
+      <widget class="QComboBox" name="indicesCO">
+       <property name="toolTip">
         <string>Select the index that shall be printed at this place of the document.</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QCheckBox" name="subindexCB">
+       <property name="toolTip">
+        <string>Check if this index should be part (e.g., a section) of the former one.</string>
+       </property>
+       <property name="text">
+        <string>&amp;Subindex</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="literalCB">
+       <property name="toolTip">
+        <string>Pass index names literally to LaTeX. Check this if you want to use LaTeX code in index names.</string>
+       </property>
+       <property name="text">
+        <string>Li&amp;teral</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>78</width>
+         <height>29</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="okPB">
+       <property name="text">
+        <string>&amp;OK</string>
+       </property>
+       <property name="default">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancelPB">
+       <property name="text">
+        <string>&amp;Cancel</string>
+       </property>
+       <property name="default">
+        <bool>true</bool>
        </property>
       </widget>
      </item>
@@ -100,7 +122,7 @@
   <tabstop>cancelPB</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>

@@ -68,6 +68,7 @@ ParamInfo const & InsetNomencl::findInfo(string const & /* cmdName */)
 				ParamInfo::HANDLING_LATEXIFY);
 		param_info_.add("description", ParamInfo::LATEX_REQUIRED,
 				ParamInfo::HANDLING_LATEXIFY);
+		param_info_.add("literal", ParamInfo::LYX_INTERNAL);
 	}
 	return param_info_;
 }
@@ -134,6 +135,7 @@ int InsetNomencl::docbookGlossary(odocstream & os) const
 void InsetNomencl::validate(LaTeXFeatures & features) const
 {
 	features.require("nomencl");
+	InsetCommand::validate(features);
 }
 
 

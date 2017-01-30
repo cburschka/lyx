@@ -29,6 +29,8 @@ GuiNomenclature::GuiNomenclature(QWidget * parent) : InsetParamsWidget(parent)
 		this, SIGNAL(changed()));
 	connect(descriptionTE, SIGNAL(textChanged()),
 		this, SIGNAL(changed()));
+	connect(literalCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
 
 	setFocusProxy(descriptionTE);
 }
@@ -41,6 +43,7 @@ void GuiNomenclature::paramsToDialog(Inset const * inset)
 
 	prefixED->setText(toqstr(params["prefix"]));
 	symbolED->setText(toqstr(params["symbol"]));
+	literalCB->setChecked(params["literal"] == "true");
 	QString description = toqstr(params["description"]);
 	description.replace("\\\\","\n");
 	descriptionTE->setPlainText(description);
@@ -56,6 +59,8 @@ docstring GuiNomenclature::dialogToParams() const
 	QString description = descriptionTE->toPlainText();
 	description.replace('\n',"\\\\");
 	params["description"] = qstring_to_ucs4(description);
+	params["literal"] = literalCB->isChecked()
+			? from_ascii("true") : from_ascii("false");
 	return from_utf8(InsetNomencl::params2string(params));
 }
 

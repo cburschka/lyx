@@ -127,6 +127,8 @@ GuiCitation::GuiCitation(GuiView & lv)
 		this, SLOT(on_citationStyleCO_currentIndexChanged(int)));
 	connect(starredCB, SIGNAL(clicked()),
 		this, SLOT(updateStyles()));
+	connect(literalCB, SIGNAL(clicked()),
+		this, SLOT(changed()));
 	connect(forceuppercaseCB, SIGNAL(clicked()),
 		this, SLOT(updateStyles()));
 	connect(textBeforeED, SIGNAL(textChanged(QString)),
@@ -585,6 +587,7 @@ void GuiCitation::applyParams(int const choice, bool full, bool force,
 		params_["pretextlist"] = getStringFromVector(getPreTexts(), from_ascii("\t"));
 		params_["posttextlist"] = getStringFromVector(getPostTexts(), from_ascii("\t"));
 	}
+	params_["literal"] = literalCB->isChecked() ? from_ascii("true") : from_ascii("false");
 	dispatchParams();
 }
 
@@ -726,6 +729,7 @@ void GuiCitation::init()
 		documentBuffer().params().fullAuthorList());
 	textBeforeED->setText(toqstr(params_["before"]));
 	textAfterED->setText(toqstr(params_["after"]));
+	literalCB->setChecked(params_["literal"] == "true");
 
 	setPreTexts(getVectorFromString(params_["pretextlist"], from_ascii("\t")));
 	setPostTexts(getVectorFromString(params_["posttextlist"], from_ascii("\t")));

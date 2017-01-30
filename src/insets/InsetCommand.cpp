@@ -14,6 +14,7 @@
 #include "InsetCommand.h"
 
 #include "Buffer.h"
+#include "BufferEncodings.h"
 #include "BufferView.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
@@ -154,6 +155,25 @@ int InsetCommand::plaintext(odocstringstream & os,
 int InsetCommand::docbook(odocstream &, OutputParams const &) const
 {
 	return 0;
+}
+
+
+void InsetCommand::validate(LaTeXFeatures & features) const
+{
+	if (params()["literal"] == "true")
+		return;
+
+	ParamInfo::const_iterator it = params().info().begin();
+	ParamInfo::const_iterator end = params().info().end();
+	for (; it != end; ++it) {
+		if (it->handling() == ParamInfo::HANDLING_LATEXIFY) {
+			docstring const text = params()[it->name()];
+			// Validate the contents (if we LaTeXify, specific
+			// macros might require packages)
+			for (pos_type i = 0; i < int(text.size()) ; ++i)
+				BufferEncodings::validate(text[i], features);
+		}
+	}
 }
 
 

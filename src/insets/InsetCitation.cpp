@@ -66,11 +66,16 @@ ParamInfo const & InsetCitation::findInfo(string const & /* cmdName */)
 	// we have to allow both here. InsetCitation takes care that
 	// LaTeX output is nevertheless correct.
 	if (param_info_.empty()) {
-		param_info_.add("after", ParamInfo::LATEX_OPTIONAL);
-		param_info_.add("before", ParamInfo::LATEX_OPTIONAL);
+		param_info_.add("after", ParamInfo::LATEX_OPTIONAL,
+				ParamInfo::HANDLING_LATEXIFY);
+		param_info_.add("before", ParamInfo::LATEX_OPTIONAL,
+				ParamInfo::HANDLING_LATEXIFY);
 		param_info_.add("key", ParamInfo::LATEX_REQUIRED);
-		param_info_.add("pretextlist", ParamInfo::LATEX_OPTIONAL);
-		param_info_.add("posttextlist", ParamInfo::LATEX_OPTIONAL);
+		param_info_.add("pretextlist", ParamInfo::LATEX_OPTIONAL,
+				ParamInfo::HANDLING_LATEXIFY);
+		param_info_.add("posttextlist", ParamInfo::LATEX_OPTIONAL,
+				ParamInfo::HANDLING_LATEXIFY);
+		param_info_.add("literal", ParamInfo::LYX_INTERNAL);
 	}
 	return param_info_;
 }
@@ -568,8 +573,10 @@ void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 	if (qualified)
 		os << "s";
 
-	docstring before = getParam("before");
-	docstring after  = getParam("after");
+	docstring before = params().prepareCommand(runparams, getParam("before"),
+						   param_info_["before"].handling());
+	docstring after = params().prepareCommand(runparams, getParam("after"),
+						   param_info_["after"].handling());
 	if (!before.empty() && cs.textBefore) {
 		if (qualified)
 			os << '(' << protectArgument(before, '(', ')')
@@ -592,8 +599,10 @@ void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 			map<docstring, docstring> pres = getQualifiedLists(getParam("pretextlist"));
 			map<docstring, docstring> posts = getQualifiedLists(getParam("posttextlist"));
 			for (docstring const & k: keys) {
-				docstring bef = pres[k];
-				docstring aft  = posts[k];
+				docstring bef = params().prepareCommand(runparams, pres[k],
+									param_info_["pretextlist"].handling());
+				docstring aft  = params().prepareCommand(runparams, posts[k],
+									 param_info_["posttextlist"].handling());
 				if (!bef.empty())
 					os << '[' << protectArgument(bef)
 					   << "][" << protectArgument(aft) << ']';

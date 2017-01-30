@@ -32,6 +32,8 @@ GuiBibitem::GuiBibitem(QWidget * parent) : InsetParamsWidget(parent)
 		this, SIGNAL(changed()));
 	connect(labelED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
+	connect(literalCB, SIGNAL(clicked()),
+		this, SIGNAL(changed()));
 }
 
 
@@ -41,6 +43,7 @@ void GuiBibitem::paramsToDialog(Inset const * inset)
 	InsetCommandParams const & params = ic->params();
 	keyED->setText(toqstr(params["key"]));
 	labelED->setText(toqstr(params["label"]));
+	literalCB->setChecked(params["literal"] == "true");
 }
 
 
@@ -49,6 +52,8 @@ docstring GuiBibitem::dialogToParams() const
 	InsetCommandParams params(insetCode());
 	params["key"] = qstring_to_ucs4(keyED->text());
 	params["label"] = qstring_to_ucs4(labelED->text());
+	params["literal"] = literalCB->isChecked()
+			? from_ascii("true") : from_ascii("false");
 	return from_utf8(InsetCommand::params2string(params));
 }
 

@@ -111,6 +111,8 @@ public:
 	///
 	bool getStatus(Cursor &, FuncRequest const &, FuncStatus &) const;
 	///
+	void updateBuffer(ParIterator const & it, UpdateType);
+	///
 	std::string contextMenuName() const;
 	/// Updates needed features for this inset.
 	void validate(LaTeXFeatures & features) const;
