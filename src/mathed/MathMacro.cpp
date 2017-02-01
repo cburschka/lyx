@@ -87,7 +87,7 @@ public:
 		Changer chg = make_change(mi.base.macro_nesting,
 		                          mathMacro_->nesting() == 1 ? 0 : mathMacro_->nesting());
 
-		MathRow::Element e_beg(mi, MathRow::BEG_ARG);
+		MathRow::Element e_beg(mi, MathRow::BEGIN);
 		e_beg.inset = this;
 		e_beg.ar = &mathMacro_->cell(idx_);
 		mrow.push_back(e_beg);
@@ -106,10 +106,9 @@ public:
 			has_contents = true;
 		}
 
-		MathRow::Element e_end(mi, MathRow::END_ARG);
+		MathRow::Element e_end(mi, MathRow::END);
 		e_end.inset = this;
 		e_end.ar = &mathMacro_->cell(idx_);
-
 		mrow.push_back(e_end);
 
 		return has_contents;
@@ -338,7 +337,7 @@ bool MathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 	/// The macro nesting can change display of insets. Change it locally.
 	Changer chg = make_change(mi.base.macro_nesting, d->nesting_);
 
-	MathRow::Element e_beg(mi, MathRow::BEG_MACRO);
+	MathRow::Element e_beg(mi, MathRow::BEGIN);
 	e_beg.inset = this;
 	e_beg.marker = (d->nesting_ == 1 && nargs()) ? marker() : NO_MARKER;
 	mrow.push_back(e_beg);
@@ -357,7 +356,7 @@ bool MathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 		has_contents = true;
 	}
 
-	MathRow::Element e_end(mi, MathRow::END_MACRO);
+	MathRow::Element e_end(mi, MathRow::END);
 	e_end.inset = this;
 	mrow.push_back(e_end);
 

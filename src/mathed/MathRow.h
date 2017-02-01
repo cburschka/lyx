@@ -48,10 +48,8 @@ public:
 	enum Type {
 		INSET, // this element is a plain inset
 		BOX, // an empty box
-		BEG_MACRO, // a macro begins here
-		END_MACRO, // a macro ends here
-		BEG_ARG, // a macro argument begins here
-		END_ARG, // a macro argument ends here
+		BEGIN, // an inset and/or a math array begins here
+		END, // an inset and/or a math array ends here
 		DUMMY // a dummy element (used before or after row)
 	};
 
@@ -73,14 +71,14 @@ public:
 		InsetMath::marker_type marker;
 
 		/// When type is INSET
-		/// the math inset
+		/// the math inset (also for BEGIN and END)
 		InsetMath const * inset;
 		// Non empty when there is a completion to draw
 		docstring compl_text;
 		// the number of characters forming the unique part.
 		size_t compl_unique_to;
 
-		// type is BEG_ARG, END_ARG
+		// type is BEGIN, END
 		MathData const * ar;
 
 		// type is BOX
