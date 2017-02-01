@@ -42,13 +42,22 @@ public:
 	/// the row. Otherwise, just insert the inset.
 	bool addToMathRow(MathRow &, MetricsInfo & mi) const;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
-	/// draw selection background
-	void drawSelection(PainterInfo & pi, int x, int y) const;
+	void beforeMetrics() const;
+	///
+	void afterMetrics() const;
+	///
+	void beforeDraw(PainterInfo const &) const;
+	///
+	void afterDraw(PainterInfo const &) const;
+
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// was the macro in edit mode when computing metrics?
 	bool editMetrics(BufferView const * bv) const;
+	///
+	void draw(PainterInfo & pi, int x, int y) const;
+	/// draw selection background
+	void drawSelection(PainterInfo & pi, int x, int y) const;
 	///
 	int kerning(BufferView const * bv) const;
 	/// get cursor position

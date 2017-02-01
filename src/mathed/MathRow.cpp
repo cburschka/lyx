@@ -15,7 +15,6 @@
 #include "InsetMath.h"
 #include "MathClass.h"
 #include "MathData.h"
-#include "MathMacro.h"
 #include "MathSupport.h"
 
 #include "BufferView.h"
@@ -39,7 +38,7 @@ namespace lyx {
 MathRow::Element::Element(MetricsInfo const & mi, Type t, MathClass mc)
 	: type(t), mclass(mc), before(0), after(0), macro_nesting(mi.base.macro_nesting),
 	  marker(InsetMath::NO_MARKER), inset(0), compl_unique_to(0),
-	  macro(0), color(Color_red)
+	  color(Color_red)
 {}
 
 
@@ -133,7 +132,7 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = 0;
 	// In order to compute the dimension of macros and their
 	// arguments, it is necessary to keep track of them.
-	map<MathMacro const *, Dimension> dim_macros;
+	map<InsetMath const *, Dimension> dim_insets;
 	map<MathData const *, Dimension> dim_arrays;
 	CoordCache & coords = mi.base.bv->coordCache();
 	for (Element const & e : elements_) {
@@ -148,28 +147,26 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim) const
 			coords.insets().add(e.inset, d);
 			break;
 		case BEG_MACRO:
-			e.macro->macro()->lock();
+			e.inset->beforeMetrics();
 			// Add a macro to current list
-			dim_macros[e.macro] = Dimension();
+			dim_insets[e.inset] = Dimension();
 			break;
 		case END_MACRO:
-			LATTEST(dim_macros.find(e.macro) != dim_macros.end());
-			e.macro->macro()->unlock();
+			LATTEST(dim_insets.find(e.inset) != dim_insets.end());
+			e.inset->afterMetrics();
 			// Cache the dimension of the macro and remove it from
 			// tracking map.
-			coords.insets().add(e.macro, dim_macros[e.macro]);
-			dim_macros.erase(e.macro);
+			coords.insets().add(e.inset, dim_insets[e.inset]);
+			dim_insets.erase(e.inset);
 			break;
 			// This is basically like macros
 		case BEG_ARG:
-			if (e.macro)
-				e.macro->macro()->unlock();
+			e.inset->beforeMetrics();
 			dim_arrays[e.ar] = Dimension();
 			break;
 		case END_ARG:
 			LATTEST(dim_arrays.find(e.ar) != dim_arrays.end());
-			if (e.macro)
-				e.macro->macro()->lock();
+			e.inset->afterMetrics();
 			coords.arrays().add(e.ar, dim_arrays[e.ar]);
 			dim_arrays.erase(e.ar);
 			break;
@@ -200,7 +197,7 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim) const
 		if (!d.empty()) {
 			dim += d;
 			// Now add the dimension to current macros and arguments.
-			for (auto & dim_macro : dim_macros)
+			for (auto & dim_macro : dim_insets)
 				dim_macro.second += d;
 			for (auto & dim_array : dim_arrays)
 				dim_array.second += d;
@@ -212,7 +209,7 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim) const
 		augmentFont(font, "mathnormal");
 		dim.wid += mathed_string_width(font, e.compl_text);
 	}
-	LATTEST(dim_macros.empty() && dim_arrays.empty());
+	LATTEST(dim_insets.empty() && dim_arrays.empty());
 }
 
 
@@ -275,25 +272,19 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 			break;
 		}
 		case BEG_MACRO:
-			coords.insets().add(e.macro, x, y);
+			coords.insets().add(e.inset, x, y);
 			drawMarkers(pi, e, x, y);
-			if (e.macro->editMetrics(pi.base.bv))
-				pi.pain.enterMonochromeMode(Color_mathbg, Color_mathmacroblend);
+			e.inset->beforeDraw(pi);
 			break;
 		case END_MACRO:
-			if (e.macro->editMetrics(pi.base.bv))
-				pi.pain.leaveMonochromeMode();
+			e.inset->afterDraw(pi);
 			break;
 		case BEG_ARG:
 			coords.arrays().add(e.ar, x, y);
-			// if the macro is being edited, then the painter is in
-			// monochrome mode.
-			if (e.macro->editMetrics(pi.base.bv))
-				pi.pain.leaveMonochromeMode();
+			e.inset->beforeDraw(pi);
 			break;
 		case END_ARG:
-			if (e.macro->editMetrics(pi.base.bv))
-				pi.pain.enterMonochromeMode(Color_mathbg, Color_mathmacroblend);
+			e.inset->afterDraw(pi);
 			break;
 		case BOX: {
 			if (e.color == Color_none)
@@ -354,8 +345,8 @@ ostream & operator<<(ostream & os, MathRow::Element const & e)
 		   << "-" << e.after << ">";
 		break;
 	case MathRow::BEG_MACRO:
-		os << "\\" << to_utf8(e.macro->name())
-		   << "^" << e.macro->nesting() << "[";
+		os << "\\" << to_utf8(e.inset->name())
+		   << "^" << e.macro_nesting << "[";
 		break;
 	case MathRow::END_MACRO:
 		os << "]";

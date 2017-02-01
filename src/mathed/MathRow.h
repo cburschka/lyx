@@ -30,7 +30,6 @@ class PainterInfo;
 
 class InsetMath;
 class MathData;
-class MathMacro;
 
 /*
  * While for editing purpose it is important that macros are counted
@@ -80,10 +79,6 @@ public:
 		docstring compl_text;
 		// the number of characters forming the unique part.
 		size_t compl_unique_to;
-
-		/// When type is BEG_MACRO, END_MACRO, BEG_ARG, END_ARG
-		/// the math macro
-		MathMacro const * macro;
 
 		// type is BEG_ARG, END_ARG
 		MathData const * ar;

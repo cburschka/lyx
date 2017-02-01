@@ -88,7 +88,7 @@ public:
 		                          mathMacro_->nesting() == 1 ? 0 : mathMacro_->nesting());
 
 		MathRow::Element e_beg(mi, MathRow::BEG_ARG);
-		e_beg.macro = mathMacro_;
+		e_beg.inset = this;
 		e_beg.ar = &mathMacro_->cell(idx_);
 		mrow.push_back(e_beg);
 
@@ -107,7 +107,7 @@ public:
 		}
 
 		MathRow::Element e_end(mi, MathRow::END_ARG);
-		e_end.macro = mathMacro_;
+		e_end.inset = this;
 		e_end.ar = &mathMacro_->cell(idx_);
 
 		mrow.push_back(e_end);
@@ -115,7 +115,36 @@ public:
 		return has_contents;
 	}
 	///
+	void beforeMetrics() const
+	{
+		mathMacro_->macro()->unlock();
+	}
+	///
+	void afterMetrics() const
+	{
+		mathMacro_->macro()->lock();
+	}
+	///
+	void beforeDraw(PainterInfo const & pi) const
+	{
+		// if the macro is being edited, then the painter is in
+		// monochrome mode.
+		if (mathMacro_->editMetrics(pi.base.bv))
+			pi.pain.leaveMonochromeMode();
+	}
+	///
+	void afterDraw(PainterInfo const & pi) const
+	{
+		if (mathMacro_->editMetrics(pi.base.bv))
+			pi.pain.enterMonochromeMode(Color_mathbg, Color_mathmacroblend);
+	}
+	///
 	void metrics(MetricsInfo &, Dimension &) const {
+		// This should never be invoked, since ArgumentProxy insets are linearized
+		LATTEST(false);
+	}
+	///
+	void draw(PainterInfo &, int, int) const {
 		// This should never be invoked, since ArgumentProxy insets are linearized
 		LATTEST(false);
 	}
@@ -123,11 +152,6 @@ public:
 	int kerning(BufferView const * bv) const
 	{
 		return displayCell(bv).kerning(bv);
-	}
-	///
-	void draw(PainterInfo &, int, int) const {
-		// This should never be invoked, since ArgumentProxy insets are linearized
-		LATTEST(false);
 	}
 	// write(), normalize(), infoize() and infoize2() are not needed since
 	// MathMacro uses the definition and not the expanded cells.
@@ -316,7 +340,6 @@ bool MathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 
 	MathRow::Element e_beg(mi, MathRow::BEG_MACRO);
 	e_beg.inset = this;
-	e_beg.macro = this;
 	e_beg.marker = (d->nesting_ == 1 && nargs()) ? marker() : NO_MARKER;
 	mrow.push_back(e_beg);
 
@@ -335,10 +358,35 @@ bool MathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 	}
 
 	MathRow::Element e_end(mi, MathRow::END_MACRO);
-	e_end.macro = this;
+	e_end.inset = this;
 	mrow.push_back(e_end);
 
 	return has_contents;
+}
+
+void MathMacro::beforeMetrics() const
+{
+	d->macro_->lock();
+}
+
+
+void MathMacro::afterMetrics() const
+{
+	d->macro_->unlock();
+}
+
+
+void MathMacro::beforeDraw(PainterInfo const & pi) const
+{
+	if (d->editing_[pi.base.bv])
+		pi.pain.enterMonochromeMode(Color_mathbg, Color_mathmacroblend);
+}
+
+
+void MathMacro::afterDraw(PainterInfo const & pi) const
+{
+	if (d->editing_[pi.base.bv])
+		pi.pain.leaveMonochromeMode();
 }
 
 
@@ -720,13 +768,14 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.rectangle(expx, expy - dim.asc + 1, dim.wid - 3,
 				  dim.height() - 2, Color_mathmacroframe);
 	} else {
-		bool drawBox = lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_INLINE_BOX;
+		bool drawBox = lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_INLINE_BOX
+			&& d->editing_[pi.base.bv];
 
 		// warm up cells
 		for (size_t i = 0; i < nargs(); ++i)
 			cell(i).setXY(*pi.base.bv, x, y);
 
-		if (drawBox && d->editing_[pi.base.bv]) {
+		if (drawBox) {
 			// draw header and rectangle around
 			FontInfo font = pi.base.font;
 			augmentFont(font, "lyxtex");
@@ -740,16 +789,13 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 			expx += (dim.wid - d->expanded_.dimension(*pi.base.bv).width()) / 2;
 		}
 
-		if (d->editing_[pi.base.bv]) {
-			pi.pain.enterMonochromeMode(Color_mathbg, Color_mathmacroblend);
-			d->expanded_.draw(pi, expx, expy);
-			pi.pain.leaveMonochromeMode();
+		beforeDraw(pi);
+		d->expanded_.draw(pi, expx, expy);
+		afterDraw(pi);
 
-			if (drawBox)
-				pi.pain.rectangle(x, y - dim.asc, dim.wid,
-						  dim.height(), Color_mathmacroframe);
-		} else
-			d->expanded_.draw(pi, expx, expy);
+		if (drawBox)
+			pi.pain.rectangle(x, y - dim.asc, dim.wid,
+			                  dim.height(), Color_mathmacroframe);
 	}
 
 	// edit mode changed?
