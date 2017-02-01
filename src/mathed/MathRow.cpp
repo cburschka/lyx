@@ -276,8 +276,13 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 		}
 		case BEG_MACRO:
 			coords.insets().add(e.macro, x, y);
-
 			drawMarkers(pi, e, x, y);
+			if (e.macro->editMetrics(pi.base.bv))
+				pi.pain.enterMonochromeMode(Color_mathbg, Color_mathmacroblend);
+			break;
+		case END_MACRO:
+			if (e.macro->editMetrics(pi.base.bv))
+				pi.pain.leaveMonochromeMode();
 			break;
 		case BEG_ARG:
 			coords.arrays().add(e.ar, x, y);
@@ -300,7 +305,6 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 			break;
 		}
 		case DUMMY:
-		case END_MACRO:
 			break;
 		}
 

@@ -303,8 +303,12 @@ bool MathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 	// This is the same as what is done in metrics().
 	d->editing_[mi.base.bv] = editMode(mi.base.bv);
 
+	// For now we do not linearize in the following cases (can be improved)
+	// - display mode different from normal
+	// - editing with parameter list
+	// - editing with box around macro
 	if (displayMode() != MathMacro::DISPLAY_NORMAL
-	    || d->editing_[mi.base.bv])
+		|| (d->editing_[mi.base.bv] && lyxrc.macro_edit_style != LyXRC::MACRO_EDIT_INLINE))
 		return InsetMath::addToMathRow(mrow, mi);
 
 	/// The macro nesting can change display of insets. Change it locally.
