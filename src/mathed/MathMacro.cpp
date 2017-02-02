@@ -764,7 +764,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 			y += max(fontDim.des, cdim.des);
 		}
 
-		pi.pain.rectangle(expx, expy - dim.asc + 1, dim.wid - 3,
+		pi.pain.rectangle(expx, expy - dim.asc + 1, dim.wid - 1,
 				  dim.height() - 2, Color_mathmacroframe);
 	} else {
 		bool drawBox = lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_INLINE_BOX
