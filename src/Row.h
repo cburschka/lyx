@@ -266,6 +266,8 @@ public:
 	void reverseRTL(bool rtl_par);
 	///
 	bool isRTL() const { return rtl_; }
+	/// Find row element that contains \c pos, and compute x offset.
+	const_iterator const findElement(pos_type pos, bool boundary, double & x) const;
 
 	friend std::ostream & operator<<(std::ostream & os, Row const & row);
 

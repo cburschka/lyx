@@ -569,4 +569,53 @@ void Row::reverseRTL(bool const rtl_par)
 	rtl_ = rtl_par;
 }
 
+Row::const_iterator const
+Row::findElement(pos_type const pos, bool const boundary, double & x) const
+{
+	/**
+	 * When boundary is true, position i is in the row element (pos, endpos)
+	 * if
+	 *    pos < i <= endpos
+	 * whereas, when boundary is false, the test is
+	 *    pos <= i < endpos
+	 * The correction below allows to handle both cases.
+	*/
+	int const boundary_corr = (boundary && pos) ? -1 : 0;
+
+	x = left_margin;
+
+	/** Early return in trivial cases
+	 * 1) the row is empty
+	 * 2) the position is the left-most position of the row; there
+	 * is a quirk here however: if the first element is virtual
+	 * (end-of-par marker for example), then we have to look
+	 * closer
+	 */
+	if (empty()
+	    || (pos == begin()->left_pos() && !boundary
+			&& !begin()->isVirtual()))
+		return begin();
+
+	Row::const_iterator cit = begin();
+	for ( ; cit != end() ; ++cit) {
+		/** Look whether the cursor is inside the element's
+		 * span. Note that it is necessary to take the
+		 * boundary into account, and to accept virtual
+		 * elements, which have pos == endpos.
+		 */
+		if (pos + boundary_corr >= cit->pos
+		    && (pos + boundary_corr < cit->endpos || cit->isVirtual())) {
+				x += cit->pos2x(pos);
+				break;
+		}
+		x += cit->full_width();
+	}
+
+	if (cit == end())
+		--cit;
+
+	return cit;
+}
+
+
 } // namespace lyx

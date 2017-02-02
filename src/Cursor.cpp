@@ -785,9 +785,8 @@ void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos) const
 	right_pos = -1;
 
 	Row const & row = textRow();
-	TextMetrics const & tm = bv_->textMetrics(text());
 	double dummy = 0;
-	Row::const_iterator cit = tm.findRowElement(row, pos(), boundary(), dummy);
+	Row::const_iterator cit = row.findElement(pos(), boundary(), dummy);
 	// Handle the case of empty row
 	if (cit == row.end()) {
 		if (row.isRTL())
