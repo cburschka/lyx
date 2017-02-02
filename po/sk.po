@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-01-21 14:42+0100\n"
-"PO-Revision-Date: 2017-01-21 15:31+0000\n"
+"POT-Creation-Date: 2017-02-02 20:54+0100\n"
+"PO-Revision-Date: 2017-02-02 20:30+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -65,6 +65,10 @@ msgstr "&Zavrieť"
 msgid "The bibliography key"
 msgstr "Kľúč literatúry"
 
+#: src/frontends/qt4/ui/BibitemUi.ui:25
+msgid "Ke&y:"
+msgstr "&Kľúč:"
+
 #: src/frontends/qt4/ui/BibitemUi.ui:44 src/frontends/qt4/ui/BibitemUi.ui:51
 msgid "The label as it appears in the document"
 msgstr "Značka ako sa zobrazí v dokumente"
@@ -74,9 +78,19 @@ msgstr "Značka ako sa zobrazí v dokumente"
 msgid "&Label:"
 msgstr "Z&načka:"
 
-#: src/frontends/qt4/ui/BibitemUi.ui:67
-msgid "&Key:"
-msgstr "&Kľúč:"
+#: src/frontends/qt4/ui/BibitemUi.ui:85
+msgid ""
+"Pass content of the `Label' field literally to LaTeX. Check this if you want "
+"to enter LaTeX code."
+msgstr ""
+"Podaj obsah poľa `Značka' priamo pre LaTeX. Označte toto keď vkladáte LaTeX "
+"kód."
+
+#: src/frontends/qt4/ui/BibitemUi.ui:88 src/frontends/qt4/ui/CitationUi.ui:368
+#: src/frontends/qt4/ui/HyperlinkUi.ui:80 src/frontends/qt4/ui/NomenclUi.ui:70
+#: src/frontends/qt4/ui/PrintindexUi.ui:74
+msgid "Li&teral"
+msgstr "Doslovne"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:19
 msgid "Citation Style"
@@ -1075,6 +1089,14 @@ msgstr "Te&xt za:"
 msgid "Text that follows the reference (e.g., pages)"
 msgstr "Text nasledujúci referencie (napr., strany)"
 
+#: src/frontends/qt4/ui/CitationUi.ui:365
+msgid ""
+"Pass content of `Text before' and `Text after' fields literally to LaTeX. "
+"Check this if you want to enter LaTeX code."
+msgstr ""
+"Podaj obsah poľa `Text pred' a `Text za' priamo pre LaTeX. Označte toto keď "
+"vkladáte LaTeX kód."
+
 #: src/frontends/qt4/ui/CitationUi.ui:382
 msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")"
 msgstr ""
@@ -2049,6 +2071,14 @@ msgstr "Názov asociovaný s URL"
 msgid "&Name:"
 msgstr "&Meno:"
 
+#: src/frontends/qt4/ui/HyperlinkUi.ui:77
+msgid ""
+"Pass content of the `Name' field literally to LaTeX. Check this if you want "
+"to enter LaTeX code."
+msgstr ""
+"Podaj obsah poľa `Meno' priamo pre LaTeX. Označte toto keď vkladáte LaTeX "
+"kód."
+
 #: src/frontends/qt4/ui/HyperlinkUi.ui:59
 msgid "Specify the link target"
 msgstr "Nastaviť ciel odkazu"
@@ -2069,17 +2099,17 @@ msgstr "&Web"
 msgid "Link to an email address"
 msgstr "Odkaz na e-mailovú adresu"
 
-#: src/frontends/qt4/ui/HyperlinkUi.ui:90
-msgid "&Email"
-msgstr "&E-mail"
+#: src/frontends/qt4/ui/HyperlinkUi.ui:146
+msgid "E&mail"
+msgstr "Ema&il"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:97
 msgid "Link to a file"
 msgstr "Odkaz na súbor"
 
-#: src/frontends/qt4/ui/HyperlinkUi.ui:100
-msgid "&File"
-msgstr "&Súbor"
+#: src/frontends/qt4/ui/HyperlinkUi.ui:156
+msgid "Fi&le"
+msgstr "Súbo&r"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:36
 msgid "Listing Parameters"
@@ -2799,17 +2829,25 @@ msgstr "&Vybrané:"
 msgid "Nomenclature"
 msgstr "Nomenklatúra"
 
+#: src/frontends/qt4/ui/NomenclUi.ui:20
+msgid "Sy&mbol:"
+msgstr "&Symbol:"
+
+#: src/frontends/qt4/ui/NomenclUi.ui:37
+msgid "Des&cription:"
+msgstr "&Opis:"
+
 #: src/frontends/qt4/ui/NomenclUi.ui:28
 msgid "Sort &as:"
 msgstr "&Triediť ako:"
 
-#: src/frontends/qt4/ui/NomenclUi.ui:38
-msgid "&Description:"
-msgstr "O&pis:"
-
-#: src/frontends/qt4/ui/NomenclUi.ui:48
-msgid "&Symbol:"
-msgstr "&Symbol:"
+#: src/frontends/qt4/ui/NomenclUi.ui:67
+msgid ""
+"Pass content of the `Symbol' and `Description' fields literally to LaTeX. "
+"Check this if you want to enter LaTeX code."
+msgstr ""
+"Podaj obsah poľa `Symbol' a `Opis' priamo pre LaTeX. Označte toto keď "
+"vkladáte LaTeX kód."
 
 #: src/frontends/qt4/ui/NoteUi.ui:48 src/frontends/qt4/ui/PhantomUi.ui:48
 msgid "Type"
@@ -4380,6 +4418,10 @@ msgstr ""
 "Vlastná hodnota. &quot;Odsadzovanie Zoznamov&quot; je treba nastaviť na "
 "&quot;Vlastné&quot;."
 
+#: src/frontends/qt4/ui/PrintindexUi.ui:40
+msgid "Avai&lable indexes:"
+msgstr "&Dostupné registre:"
+
 #: src/frontends/qt4/ui/PrintindexUi.ui:61
 msgid "Check if this index should be part (e.g., a section) of the former one."
 msgstr ""
@@ -4389,9 +4431,12 @@ msgstr ""
 msgid "&Subindex"
 msgstr "&Pod-register"
 
-#: src/frontends/qt4/ui/PrintindexUi.ui:79
-msgid "A&vailable indexes:"
-msgstr "&Dostupné registre:"
+#: src/frontends/qt4/ui/PrintindexUi.ui:71
+msgid ""
+"Pass index names literally to LaTeX. Check this if you want to use LaTeX "
+"code in index names."
+msgstr ""
+"Podaj mená registrov priamo pre LaTeX. Označte toto keď vkladáte LaTeX kód."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:89
 msgid "Select the index that shall be printed at this place of the document."
@@ -18728,9 +18773,9 @@ msgstr "Matematické Panely"
 msgid "Math spacings"
 msgstr "Mat. rozstupy"
 
-#: lib/ui/stdtoolbars.inc:298 lib/ui/stdtoolbars.inc:377
-msgid "Styles"
-msgstr "Štýly"
+#: lib/ui/stdtoolbars.inc:298
+msgid "Styles & classes"
+msgstr "Štýly & triedy"
 
 #: lib/ui/stdtoolbars.inc:299 lib/ui/stdtoolbars.inc:384
 msgid "Fractions"
@@ -18971,28 +19016,28 @@ msgid "Vertical phantom\t\\vphantom"
 msgstr "Vertikálny fantóm\t\\vphantom"
 
 #: lib/ui/stdtoolbars.inc:364
-msgid "Smash \\smash"
-msgstr "Nulovať(výšku a hĺbku) \\smash"
+msgid "Smash\t\\smash"
+msgstr "Nulovať\t\\smash"
 
 #: lib/ui/stdtoolbars.inc:365
-msgid "Top smash \\smasht"
-msgstr "Nulovať nahor \\smasht"
+msgid "Top smash\t\\smasht"
+msgstr "Nulovať nahor\t\\smasht"
 
 #: lib/ui/stdtoolbars.inc:366
-msgid "Bottom smash \\smashb"
-msgstr "Nulovať nadol \\smashb"
+msgid "Bottom smash\t\\smashb"
+msgstr "Nulovať nadol\t\\smashb"
 
 #: lib/ui/stdtoolbars.inc:367
-msgid "Left overlap \\mathllap"
-msgstr "Prekrytie doľava \\mathllap"
+msgid "Left overlap\t\\mathllap"
+msgstr "Prekrytie doľava\t\\mathllap"
 
 #: lib/ui/stdtoolbars.inc:368
-msgid "Center overlap \\mathclap"
-msgstr "Prekrytie na stred \\mathclap"
+msgid "Center overlap\t\\mathclap"
+msgstr "Prekrytie na stred\t\\mathclap"
 
 #: lib/ui/stdtoolbars.inc:369
-msgid "Right overlap \\mathrlap"
-msgstr "Prekryte doprava \\mathrlap"
+msgid "Right overlap\t\\mathrlap"
+msgstr "Prekryte doprava\t\\mathrlap"
 
 #: lib/ui/stdtoolbars.inc:372
 msgid "Roots"
@@ -19005,6 +19050,10 @@ msgstr "Druhá odmocnina\t\\sqrt"
 #: lib/ui/stdtoolbars.inc:374
 msgid "Other root\t\\root"
 msgstr "Iná odmocnina\t\\root"
+
+#: lib/ui/stdtoolbars.inc:377
+msgid "Styles & Classes"
+msgstr "Štýly & Triedy"
 
 #: lib/ui/stdtoolbars.inc:378
 msgid "Display style\t\\displaystyle"
@@ -19021,6 +19070,22 @@ msgstr "Malý (script)\t\\scriptstyle"
 #: lib/ui/stdtoolbars.inc:381
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr "Menší (scriptscript)\t\\scriptscriptstyle"
+
+#: lib/ui/stdtoolbars.inc:382
+msgid "Relation class\t\\mathrel"
+msgstr "Relácia\t\\mathrel"
+
+#: lib/ui/stdtoolbars.inc:383
+msgid "Binary operator class\t\\mathbin"
+msgstr "Binárny operátor\t\\mathbin"
+
+#: lib/ui/stdtoolbars.inc:384
+msgid "Large operator class\t\\mathop"
+msgstr "Veľký operátor\t\\mathop"
+
+#: lib/ui/stdtoolbars.inc:385
+msgid "Ordinary class\t\\mathord"
+msgstr "Bežná trieda \t\\mathord"
 
 #: lib/ui/stdtoolbars.inc:385
 msgid "Standard\t\\frac"
@@ -24155,17 +24220,6 @@ msgstr "Nedostupná trieda dokumentu"
 msgid "Uncodable characters"
 msgstr "Nekódovateľné znaky"
 
-#: src/BufferParams.cpp:1911
-#, c-format
-msgid ""
-"The following characters that are used in an index name are not\n"
-"representable in the current encoding and therefore have been omitted:\n"
-"%1$s."
-msgstr ""
-"Nasledujúce znaky použité v mene vložky sú nereprezentovateľné\n"
-"v aktuálnom kódovaní a boli vynechané:\n"
-"%1$s."
-
 #: src/BufferParams.cpp:2003 src/Encoding.cpp:245 src/Paragraph.cpp:2518
 #: src/frontends/qt4/LaTeXHighlighter.cpp:108 src/insets/InsetListings.cpp:168
 #: src/insets/InsetListings.cpp:176 src/insets/InsetListings.cpp:199
@@ -24862,14 +24916,15 @@ msgstr "Spúšťanie externého konvertora je z bezpečnostných dôvodov blokov
 
 #: src/Converter.cpp:299
 msgid ""
-"<p>Your current settings forbid its execution.</p><p>(To change this "
-"setting, go to <i>Preferences &#x25b9; File Handling &#x25b9; Converters</i> "
-"and uncheck <i>Security &#x25b9; Forbid needauth converters</i>.)"
+"<p><b>Your current preference settings forbid its execution.</b></p><p>(To "
+"change this setting, go to <i>Preferences &#x25b9; File Handling &#x25b9; "
+"Converters</i> and uncheck <i>Security &#x25b9; Forbid needauth converters</"
+"i>.)"
 msgstr ""
-"<p>Vaše súčasné nastavenie blokuje jeho vykonávanie.</p><p> (Keď chcete ich "
-"spúšťanie odblokovať, choďte na<i>Nástroje &#x25b9; Preferencie… &#x25b9; "
-"Obsluha Súborov</i> a zrušte <i>Bezpečnosť &#x25b9; Zakázať overovacie "
-"konvertory</i>.) "
+"<p><b>Vaše súčasné nastavenie blokuje jeho vykonávanie.<b></p><p> (Keď "
+"chcete ich spúšťanie odblokovať, choďte na<i>Nástroje &#x25b9; Preferencie… "
+"&#x25b9; Obsluha Súborov</i> a zrušte <i>Bezpečnosť &#x25b9; Zakázať "
+"overovacie konvertory</i>.) "
 
 #: src/Converter.cpp:308
 msgid "An external converter requires your authorization"
@@ -30439,17 +30494,6 @@ msgstr "Grafický súbor: %1$s"
 msgid "Hyperlink: "
 msgstr "Hyperlinka: "
 
-#: src/insets/InsetHyperlink.cpp:199
-#, c-format
-msgid ""
-"The following characters that are used in the href inset are not\n"
-"representable in the current encoding and therefore have been omitted:\n"
-"%1$s."
-msgstr ""
-"Nasledujúce znaky použité vo vložke href sú nereprezentovateľné\n"
-"v aktuálnom kódovaní a boli vynechané:\n"
-"%1$s."
-
 #: src/insets/InsetHyperlink.cpp:276
 msgid "www"
 msgstr "www"
@@ -31743,6 +31787,39 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Styles"
+#~ msgstr "Štýly"
+
+#~ msgid "&Key:"
+#~ msgstr "&Kľúč:"
+
+#~ msgid "&Email"
+#~ msgstr "&E-mail"
+
+#~ msgid "&File"
+#~ msgstr "&Súbor"
+
+#~ msgid "&Description:"
+#~ msgstr "O&pis:"
+
+#~ msgid ""
+#~ "The following characters that are used in an index name are not\n"
+#~ "representable in the current encoding and therefore have been omitted:\n"
+#~ "%1$s."
+#~ msgstr ""
+#~ "Nasledujúce znaky použité v mene vložky sú nereprezentovateľné\n"
+#~ "v aktuálnom kódovaní a boli vynechané:\n"
+#~ "%1$s."
+
+#~ msgid ""
+#~ "The following characters that are used in the href inset are not\n"
+#~ "representable in the current encoding and therefore have been omitted:\n"
+#~ "%1$s."
+#~ msgstr ""
+#~ "Nasledujúce znaky použité vo vložke href sú nereprezentovateľné\n"
+#~ "v aktuálnom kódovaní a boli vynechané:\n"
+#~ "%1$s."
 
 #~ msgid ""
 #~ "Provides two new styles: 1. An 'In Preamble' style that puts whatever is "
@@ -36318,3 +36395,34 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Text &before:"
 #~ msgstr "&Text pred:"
+
+#~ msgid ""
+#~ "<p>Your current settings forbid its execution.</p><p>(To change this "
+#~ "setting, go to <i>Preferences &#x25b9; File Handling &#x25b9; Converters</i> "
+#~ "and uncheck <i>Security &#x25b9; Forbid needauth converters</i>.)"
+#~ msgstr ""
+#~ "<p>Vaše súčasné nastavenie blokuje jeho vykonávanie.</p><p> (Keď chcete ich "
+#~ "spúšťanie odblokovať, choďte na<i>Nástroje &#x25b9; Preferencie… &#x25b9; "
+#~ "Obsluha Súborov</i> a zrušte <i>Bezpečnosť &#x25b9; Zakázať overovacie "
+#~ "konvertory</i>.) "
+
+#~ msgid "A&vailable indexes:"
+#~ msgstr "&Dostupné registre:"
+
+#~ msgid "Smash \\smash"
+#~ msgstr "Nulovať(výšku a hĺbku) \\smash"
+
+#~ msgid "Top smash \\smasht"
+#~ msgstr "Nulovať nahor \\smasht"
+
+#~ msgid "Bottom smash \\smashb"
+#~ msgstr "Nulovať nadol \\smashb"
+
+#~ msgid "Left overlap \\mathllap"
+#~ msgstr "Prekrytie doľava \\mathllap"
+
+#~ msgid "Center overlap \\mathclap"
+#~ msgstr "Prekrytie na stred \\mathclap"
+
+#~ msgid "Right overlap \\mathrlap"
+#~ msgstr "Prekryte doprava \\mathrlap"
