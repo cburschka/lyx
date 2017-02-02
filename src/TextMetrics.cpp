@@ -1427,28 +1427,12 @@ InsetList::InsetTable * TextMetrics::checkInsetHit(pit_type pit, int x, int y)
 
 	LYXERR(Debug::DEBUG, "x: " << x << " y: " << y << "  pit: " << pit);
 
-	InsetList::const_iterator iit = par.insetList().begin();
-	InsetList::const_iterator iend = par.insetList().end();
-	for (; iit != iend; ++iit) {
-		Inset * inset = iit->inset;
+	for (auto const & it : par.insetList()) {
+		LYXERR(Debug::DEBUG, "examining inset " << it.inset);
 
-		LYXERR(Debug::DEBUG, "examining inset " << inset);
-
-		if (!insetCache.has(inset)) {
-			LYXERR(Debug::DEBUG, "inset has no cached position");
-			return 0;
-		}
-
-		Dimension const & dim = insetCache.dim(inset);
-		Point p = insetCache.xy(inset);
-
-		LYXERR(Debug::DEBUG, "xo: " << p.x_ << "..." << p.x_ + dim.wid
-			<< " yo: " << p.y_ - dim.asc << "..." << p.y_ + dim.des);
-
-		if (x >= p.x_ && x <= p.x_ + dim.wid
-		    && y >= p.y_ - dim.asc && y <= p.y_ + dim.des) {
-			LYXERR(Debug::DEBUG, "Hit inset: " << inset);
-			return const_cast<InsetList::InsetTable *>(&(*iit));
+		if (insetCache.covers(it.inset, x, y)) {
+			LYXERR(Debug::DEBUG, "Hit inset: " << it.inset);
+			return const_cast<InsetList::InsetTable *>(&it);
 		}
 	}
 
