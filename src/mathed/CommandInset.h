@@ -28,6 +28,8 @@ public:
 	explicit CommandInset(Buffer * buf, docstring const & name,
 		bool needs_math_mode = true);
 	///
+	marker_type marker() const { return NO_MARKER; }
+	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
