@@ -1403,7 +1403,7 @@ void latexParagraphs(Buffer const & buf,
 		}
 	}
 
-	if (runparams.openbtUnit)
+	if (maintext && !is_child && runparams.openbtUnit)
 		os << "\\end{btUnit}\n";
 
 	// if "auto end" is switched off, explicitly close the language at the end
