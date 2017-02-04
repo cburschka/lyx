@@ -1191,7 +1191,7 @@ def revert_biblatex(document):
     biblatex = False
     if engine in ["biblatex", "biblatex-natbib"]:
         biblatex = True
-        document.header[i] = "\cite_engine natbib"
+        document.header[i] = "\\cite_engine natbib"
 
     # 3. Store and remove new document headers
     bibstyle = ""
@@ -1595,6 +1595,148 @@ def revert_literalparam(document):
             del document.body[k]
 
 
+
+def revert_multibib(document):
+    " Revert multibib support "
+
+    # 1. Get cite engine
+    engine = "basic"
+    i = find_token(document.header, "\\cite_engine", 0)
+    if i == -1:
+        document.warning("Malformed document! Missing \\cite_engine")
+    else:
+        engine = get_value(document.header, "\\cite_engine", i)
+
+    # 2. Do we use biblatex?
+    biblatex = False
+    if engine in ["biblatex", "biblatex-natbib"]:
+        biblatex = True
+
+    # 3. Store and remove multibib document header
+    multibib = ""
+    i = find_token(document.header, "\\multibib", 0)
+    if i != -1:
+        multibib = get_value(document.header, "\\multibib", i)
+        del document.header[i]
+
+    if not multibib:
+        return
+
+    # 4. The easy part: Biblatex
+    if biblatex:
+        i = find_token(document.header, "\\biblio_options", 0)
+        if i == -1:
+            k = find_token(document.header, "\\use_bibtopic", 0)
+            if k == -1:
+                # this should not happen
+                document.warning("Malformed LyX document! No \\use_bibtopic header found!")
+                return
+            document.header[k-1 : k-1] = ["\\biblio_options " + "refsection=" + multibib]
+        else:
+            biblio_options = get_value(document.header, "\\biblio_options", i)
+            if biblio_options:
+                biblio_options += ","
+            biblio_options += "refsection=" + multibib
+            document.header[i] = "\\biblio_options " + biblio_options
+
+        # Bibtex insets
+        i = 0
+        while (True):
+            i = find_token(document.body, "\\begin_inset CommandInset bibtex", i)
+            if i == -1:
+                break
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Can't find end of bibtex inset at line %d!!" %(i))
+                i += 1
+                continue
+            btprint = get_quoted_value(document.body, "btprint", i, j)
+            if btprint != "bibbysection":
+                i += 1
+                continue
+            opts = get_quoted_value(document.body, "biblatexopts", i, j)
+            # change btprint line
+            k = find_token(document.body, "btprint", i, j)
+            if k != -1:
+                document.body[k] = "btprint \"btPrintCited\""
+            # Insert ERT \\bibbysection and wrap bibtex inset to a Note
+            pcmd = "bibbysection"
+            if opts:
+                pcmd += "[" + opts + "]"
+            repl = ["\\begin_inset ERT", "status open", "", "\\begin_layout Plain Layout",\
+                    "", "", "\\backslash", pcmd, "\\end_layout", "", "\\end_inset", "", "",\
+                    "\\end_layout", "", "\\begin_layout Standard", "\\begin_inset Note Note",\
+                    "status open", "", "\\begin_layout Plain Layout" ]
+            repl += document.body[i:j+1]
+            repl += ["", "\\end_layout", "", "\\end_inset", "", ""]
+            document.body[i:j+1] = repl
+            j += 27
+
+            i = j + 1
+        return
+
+    # 5. More tricky: Bibtex/Bibtopic
+    k = find_token(document.header, "\\use_bibtopic", 0)
+    if k == -1:
+        # this should not happen
+        document.warning("Malformed LyX document! No \\use_bibtopic header found!")
+        return
+    document.header[k] = "\\use_bibtopic true"
+
+    # Possible units. This assumes that the LyX name follows the std,
+    # which might not always be the case. But it's as good as we can get.
+    units = {
+        "part" : "Part",
+        "chapter" : "Chapter",
+        "section" : "Section",
+        "subsection" : "Subsection",
+        }
+
+    if multibib not in units.keys():
+        document.warning("Unknown multibib value `%s'!" % nultibib)
+        return
+    unit = units[multibib]
+    btunit = False
+    i = 0
+    while (True):
+        i = find_token(document.body, "\\begin_layout " + unit, i)
+        if i == -1:
+            break
+        if btunit:
+            document.body[i-1 : i-1] = ["\\begin_layout Standard",
+                                "\\begin_inset ERT", "status open", "",
+                                "\\begin_layout Plain Layout", "", "",
+                                "\\backslash",
+                                "end{btUnit}", "\\end_layout",
+                                "\\begin_layout Plain Layout", "",
+                                "\\backslash",
+                                "begin{btUnit}"
+                                "\\end_layout", "", "\\end_inset", "", "",
+                                "\\end_layout", ""]
+            i += 21
+        else:
+            document.body[i-1 : i-1] = ["\\begin_layout Standard",
+                                "\\begin_inset ERT", "status open", "",
+                                "\\begin_layout Plain Layout", "", "",
+                                "\\backslash",
+                                "begin{btUnit}"
+                                "\\end_layout", "", "\\end_inset", "", "",
+                                "\\end_layout", ""]
+            i += 16
+        btunit = True
+        i += 1
+
+    if btunit:
+        i = find_token(document.body, "\\end_body", i)
+        document.body[i-1 : i-1] = ["\\begin_layout Standard",
+                                "\\begin_inset ERT", "status open", "",
+                                "\\begin_layout Plain Layout", "", "",
+                                "\\backslash",
+                                "end{btUnit}"
+                                "\\end_layout", "", "\\end_inset", "", "",
+                                "\\end_layout", ""]
+    
+
 ##
 # Conversion hub
 #
@@ -1624,10 +1766,12 @@ convert = [
            [529, []],
            [530, []],
            [531, []],
-           [532, [convert_literalparam]]
+           [532, [convert_literalparam]],
+           [533, []],
           ]
 
 revert =  [
+           [532, [revert_multibib]],
            [531, [revert_literalparam]],
            [530, [revert_qualicites]],
            [529, [revert_bibpackopts]],

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>545</width>
-    <height>481</height>
+    <width>534</width>
+    <height>482</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -305,7 +305,7 @@
            <string>Select this if you want to split your bibliography into sections</string>
           </property>
           <property name="text">
-           <string>Secti&amp;oned bibliography</string>
+           <string>Subdivided bibli&amp;ography</string>
           </property>
          </widget>
         </item>
@@ -329,6 +329,33 @@
           </property>
           <property name="text">
            <string>Re&amp;scan</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="3" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout_8">
+        <item>
+         <widget class="QLabel" name="bibunitsLA">
+          <property name="text">
+           <string>&amp;Multiple bibliographies:</string>
+          </property>
+          <property name="buddy">
+           <cstring>bibunitsCO</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="bibunitsCO">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="toolTip">
+           <string>Generate a bibliography per defined unit.</string>
           </property>
          </widget>
         </item>

@@ -330,20 +330,15 @@ void GuiBibtex::updateContents()
 	bibtocCB->setChecked(bibtotoc() && !bibtopic);
 	bibtocCB->setEnabled(!bibtopic);
 
-	if (!bibtopic && btPrintCO->count() == 3)
-		btPrintCO->removeItem(1);
-	else if (bibtopic && btPrintCO->count() < 3)
-		btPrintCO->insertItem(1, qt_("all uncited references", 0));
+	btPrintCO->clear();
+	btPrintCO->addItem(qt_("all cited references"), toqstr("btPrintCited"));
+	if (bibtopic)
+		btPrintCO->addItem(qt_("all uncited references"), toqstr("btPrintNotCited"));
+	btPrintCO->addItem(qt_("all references"), toqstr("btPrintAll"));
+	if (usingBiblatex() && !buffer().masterParams().multibib.empty())
+		btPrintCO->addItem(qt_("all reference units"), toqstr("bibbysection"));
 
-	docstring const & btprint = params_["btprint"];
-	int btp = 0;
-	if ((bibtopic && btprint == from_ascii("btPrintNotCited")) ||
-	   (!bibtopic && btprint == from_ascii("btPrintAll")))
-		btp = 1;
-	else if (bibtopic && btprint == from_ascii("btPrintAll"))
-		btp = 2;
-
-	btPrintCO->setCurrentIndex(btp);
+	btPrintCO->setCurrentIndex(btPrintCO->findData(toqstr(params_["btprint"])));
 
 	// Only useful for biblatex
 	biblatexOptsLA->setVisible(biblatex);
@@ -415,35 +410,7 @@ void GuiBibtex::applyView()
 
 	params_["biblatexopts"] = qstring_to_ucs4(biblatexOptsLE->text());
 
-	int btp = btPrintCO->currentIndex();
-
-	if (usingBibtopic()) {
-		// bibtopic allows three kinds of sections:
-		// 1. sections that include all cited references of the database(s)
-		// 2. sections that include all uncited references of the database(s)
-		// 3. sections that include all references of the database(s), cited or not
-		switch (btp) {
-		case 0:
-			params_["btprint"] = from_ascii("btPrintCited");
-			break;
-		case 1:
-			params_["btprint"] = from_ascii("btPrintNotCited");
-			break;
-		case 2:
-			params_["btprint"] = from_ascii("btPrintAll");
-			break;
-		}
-	} else {
-		switch (btp) {
-		case 0:
-			params_["btprint"] = docstring();
-			break;
-		case 1:
-			// use \nocite{*}
-			params_["btprint"] = from_ascii("btPrintAll");
-			break;
-		}
-	}
+	params_["btprint"] = qstring_to_ucs4(btPrintCO->itemData(btPrintCO->currentIndex()).toString());
 }
 
 

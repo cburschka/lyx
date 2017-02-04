@@ -393,6 +393,7 @@ BufferParams::BufferParams()
 	use_geometry = false;
 	biblio_style = "plain";
 	use_bibtopic = false;
+	multibib = string();
 	use_indices = false;
 	save_transient_properties = true;
 	track_changes = false;
@@ -858,6 +859,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		biblatex_citestyle = trim(lex.getString());
 	} else if (token == "\\use_bibtopic") {
 		lex >> use_bibtopic;
+	} else if (token == "\\multibib") {
+		lex >> multibib;
 	} else if (token == "\\use_indices") {
 		lex >> use_indices;
 	} else if (token == "\\tracking_changes") {
@@ -1233,6 +1236,8 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 		os << "\n\\biblatex_bibstyle " << biblatex_bibstyle;
 	if (!biblatex_citestyle.empty())
 		os << "\n\\biblatex_citestyle " << biblatex_citestyle;
+	if (!multibib.empty())
+		os << "\n\\multibib " << multibib;
 
 	os << "\n\\use_bibtopic " << convert<string>(use_bibtopic)
 	   << "\n\\use_indices " << convert<string>(use_indices)
@@ -2212,6 +2217,10 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 				opts += delim + "citestyle=" + biblatex_citestyle;
 				delim = ",";
 			}
+		}
+		if (!multibib.empty()) {
+			opts += delim + "refsection=" + multibib;
+			delim = ",";
 		}
 		if (bibtexCommand() == "bibtex8"
 		    || prefixIs(bibtexCommand(), "bibtex8 ")) {

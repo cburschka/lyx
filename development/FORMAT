@@ -7,6 +7,14 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2017-02-04 Jürgen Spitzmüller <spitz@lyx.org>
+	* Format incremented to 533: Support for multiple bibliographies
+          - New buffer param \multibib {none|part|chapter|section|subsetion}
+            LaTeX support either via biblatex option "refsection" or bibtopic's
+            btUnit environment.
+          - New btprint value "bibbysection" of CommandInset bibtex:
+            outputs \bibbysection instead of \printbibliography.
+
 2017-01-28 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 532: literal command inset parameter.
 	  With this, inset command params with ParamInfo::HANDLING_LATEXIFY

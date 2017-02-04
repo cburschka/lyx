@@ -378,10 +378,14 @@ public:
 	void use_package(std::string const & p, Package u);
 	/// All packages that can be switched on or off
 	static std::map<std::string, std::string> const & auto_packages();
+	/// Do we use the bibtopic package?
+	bool useBibtopic() const { return (use_bibtopic || !multibib.empty()) && !useBiblatex(); }
 	/// Split bibliography?
-	bool useBibtopic() const { return use_bibtopic && !useBiblatex(); }
+	bool splitbib() const { return use_bibtopic; }
 	/// Set split bibliography
-	void bibtopic(bool const b) { use_bibtopic = b; }
+	void splitbib(bool const b) { use_bibtopic = b; }
+	/// Do we have multiple bibliographies (by chapter etc.)?
+	std::string multibib;
 	/// Split the index?
 	bool use_indices;
 	/// Save transient properties?

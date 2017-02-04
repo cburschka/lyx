@@ -146,6 +146,14 @@ Format LaTeX feature                        LyX feature
                                            posttextlist "key1 post1\tab key2 post2..."
       Same for:
       \Cites, \textcites, \Textcites, \parencites, \Parencites, \smartcites, \Smartcites, \autocites, Autocites
+533   Multibib support
+      \begin{btUnit}...\end{btUnit}        \multibib {none|part|chapter|section|subsetion}
+        (if a part, chapter, section etc.
+         follows the \begin...)
+      \usepackage[refsection=<val>         \multibib <val>
+      \bibbysection[<opts>]                \begin_inset CommandInset bibtex
+                                             biblatexopts "<opts>"
+                                             btprint "bibbysection"
                                            
                                            
 

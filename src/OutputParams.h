@@ -205,6 +205,10 @@ public:
 	 */
 	bool inComment;
 
+	/** Whether a btUnit (for multiple biblographies) is open.
+	 */
+	bool openbtUnit;
+
 	/** Whether we are in a table cell.
 	 *  For newline, it matters whether its content is aligned or not.
          */

@@ -1126,6 +1126,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(citeStyleChanged()));
 	connect(biblioModule->bibtopicCB, SIGNAL(clicked()),
 		this, SLOT(biblioChanged()));
+	connect(biblioModule->bibunitsCO, SIGNAL(activated(int)),
+		this, SLOT(biblioChanged()));
 	connect(biblioModule->bibtexCO, SIGNAL(activated(int)),
 		this, SLOT(bibtexChanged(int)));
 	connect(biblioModule->bibtexOptionsLE, SIGNAL(textChanged(QString)),
@@ -2726,7 +2728,10 @@ void GuiDocument::applyView()
 	else
 		bp_.setCiteEngineType(ENGINE_TYPE_DEFAULT);
 
-	bp_.bibtopic(biblioModule->bibtopicCB->isChecked());
+	bp_.splitbib(biblioModule->bibtopicCB->isChecked());
+
+	bp_.multibib = fromqstr(biblioModule->bibunitsCO->itemData(
+				biblioModule->bibunitsCO->currentIndex()).toString());
 
 	bp_.setDefaultBiblioStyle(fromqstr(biblioModule->defaultBiblioCO->currentText()));
 
@@ -3152,8 +3157,24 @@ void GuiDocument::paramsToDialog()
 	biblioModule->citeStyleCO->setCurrentIndex(
 		biblioModule->citeStyleCO->findData(bp_.citeEngineType()));
 
-	biblioModule->bibtopicCB->setChecked(
-		bp_.useBibtopic());
+	biblioModule->bibtopicCB->setChecked(bp_.splitbib());
+
+	biblioModule->bibunitsCO->clear();
+	biblioModule->bibunitsCO->addItem(qt_("No"), QString());
+	if (documentClass().hasLaTeXLayout("part"))
+		biblioModule->bibunitsCO->addItem(qt_("per part"), toqstr("part"));
+	if (documentClass().hasLaTeXLayout("chapter"))
+		biblioModule->bibunitsCO->addItem(qt_("per chapter"), toqstr("chapter"));
+	if (documentClass().hasLaTeXLayout("section"))
+		biblioModule->bibunitsCO->addItem(qt_("per section"), toqstr("section"));
+	if (documentClass().hasLaTeXLayout("subsection"))
+		biblioModule->bibunitsCO->addItem(qt_("per subsection"), toqstr("subsection"));
+
+	int const mbpos = biblioModule->bibunitsCO->findData(toqstr(bp_.multibib));
+	if (mbpos != -1)
+		biblioModule->bibunitsCO->setCurrentIndex(mbpos);
+	else
+		biblioModule->bibunitsCO->setCurrentIndex(0);
 
 	updateEngineDependends();
 

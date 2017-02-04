@@ -1259,9 +1259,10 @@ void TeXOnePar(Buffer const & buf,
 void latexParagraphs(Buffer const & buf,
 		     Text const & text,
 		     otexstream & os,
-		     OutputParams const & runparams,
+		     OutputParams const & runparams_in,
 		     string const & everypar)
 {
+	OutputParams runparams = runparams_in;
 	LASSERT(runparams.par_begin <= runparams.par_end,
 		{ os << "% LaTeX Output Error\n"; return; } );
 
@@ -1361,6 +1362,15 @@ void latexParagraphs(Buffer const & buf,
 			was_title = false;
 		}
 
+		if (layout.isCommand() && !layout.latexname().empty()
+		    && layout.latexname() == bparams.multibib) {
+			if (runparams.openbtUnit)
+				os << "\\end{btUnit}\n";
+			if (!bparams.useBiblatex()) {
+				os << '\n' << "\\begin{btUnit}\n";
+				runparams.openbtUnit = true;
+			}
+		}
 
 		if (!layout.isEnvironment() && par->params().leftIndent().zero()) {
 			// This is a standard top level paragraph, TeX it and continue.
@@ -1392,6 +1402,9 @@ void latexParagraphs(Buffer const & buf,
 			   << "\n";
 		}
 	}
+
+	if (runparams.openbtUnit)
+		os << "\\end{btUnit}\n";
 
 	// if "auto end" is switched off, explicitly close the language at the end
 	// but only if the last par is in a babel or polyglossia language
