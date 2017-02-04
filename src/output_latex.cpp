@@ -1267,9 +1267,19 @@ void latexParagraphs(Buffer const & buf,
 		{ os << "% LaTeX Output Error\n"; return; } );
 
 	BufferParams const & bparams = buf.params();
+	BufferParams const & mparams = buf.masterParams();
 
 	bool const maintext = text.isMainText();
 	bool const is_child = buf.masterBuffer() != &buf;
+	bool const multibib_child = maintext && is_child
+			&& mparams.multibib == "child";
+
+	if (multibib_child && mparams.useBiblatex())
+		os << "\\newrefsection";
+	else if (multibib_child && mparams.useBibtopic()) {
+		os << "\\begin{btUnit}\n";
+		runparams.openbtUnit = true;
+	}
 
 	// Open a CJK environment at the beginning of the main buffer
 	// if the document's language is a CJK language
@@ -1442,6 +1452,11 @@ void latexParagraphs(Buffer const & buf,
 		state->cjk_inherited_ -= 1;
 		if (state->cjk_inherited_ == 0)
 			state->open_encoding_ = CJK;
+	}
+
+	if (multibib_child && mparams.useBibtopic()) {
+		os << "\\end{btUnit}\n";
+		runparams.openbtUnit = false;
 	}
 }
 

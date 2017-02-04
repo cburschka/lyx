@@ -209,6 +209,11 @@ public:
 	 */
 	bool openbtUnit;
 
+	/** Process only the children's aux files with BibTeX.
+	 *  This is necessary with chapterbib.
+	 */
+	bool only_childbibs;
+
 	/** Whether we are in a table cell.
 	 *  For newline, it matters whether its content is aligned or not.
          */

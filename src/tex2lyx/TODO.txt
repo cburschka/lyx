@@ -154,6 +154,8 @@ Format LaTeX feature                        LyX feature
       \bibbysection[<opts>]                \begin_inset CommandInset bibtex
                                              biblatexopts "<opts>"
                                              btprint "bibbysection"
+534   Chapterbib support
+      \usepackage{chapterbib}              \multibib child
                                            
                                            
 

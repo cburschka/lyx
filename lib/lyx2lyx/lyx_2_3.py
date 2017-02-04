@@ -1735,6 +1735,111 @@ def revert_multibib(document):
                                 "end{btUnit}"
                                 "\\end_layout", "", "\\end_inset", "", "",
                                 "\\end_layout", ""]
+
+
+def revert_chapterbib(document):
+    " Revert chapterbib support "
+
+    # 1. Get cite engine
+    engine = "basic"
+    i = find_token(document.header, "\\cite_engine", 0)
+    if i == -1:
+        document.warning("Malformed document! Missing \\cite_engine")
+    else:
+        engine = get_value(document.header, "\\cite_engine", i)
+
+    # 2. Do we use biblatex?
+    biblatex = False
+    if engine in ["biblatex", "biblatex-natbib"]:
+        biblatex = True
+
+    # 3. Store multibib document header value
+    multibib = ""
+    i = find_token(document.header, "\\multibib", 0)
+    if i != -1:
+        multibib = get_value(document.header, "\\multibib", i)
+
+    if not multibib or multibib != "child":
+        # nothing to do
+        return
+
+    # 4. remove multibib header
+    del document.header[i]
+
+    # 5. Biblatex
+    if biblatex:
+        # find include insets
+        i = 0
+        while (True):
+            i = find_token(document.body, "\\begin_inset CommandInset include", i)
+            if i == -1:
+                break
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Can't find end of bibtex inset at line %d!!" %(i))
+                i += 1
+                continue
+            parent = get_containing_layout(document.body, i)
+            parbeg = parent[1]
+
+            # Insert ERT \\newrefsection before inset
+            beg = ["\\begin_layout Standard",
+                   "\\begin_inset ERT", "status open", "",
+                   "\\begin_layout Plain Layout", "", "",
+                   "\\backslash",
+                   "newrefsection"
+                   "\\end_layout", "", "\\end_inset", "", "",
+                   "\\end_layout", ""]
+            document.body[parbeg-1:parbeg-1] = beg
+            j += len(beg)
+            i = j + 1
+        return
+
+    # 6. Bibtex/Bibtopic
+    i = find_token(document.header, "\\use_bibtopic", 0)
+    if i == -1:
+        # this should not happen
+        document.warning("Malformed LyX document! No \\use_bibtopic header found!")
+        return
+    if get_value(document.header, "\\use_bibtopic", i) == "true":
+        # find include insets
+        i = 0
+        while (True):
+            i = find_token(document.body, "\\begin_inset CommandInset include", i)
+            if i == -1:
+                break
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Can't find end of bibtex inset at line %d!!" %(i))
+                i += 1
+                continue
+            parent = get_containing_layout(document.body, i)
+            parbeg = parent[1]
+            parend = parent[2]
+
+            # Insert wrap inset into \\begin{btUnit}...\\end{btUnit}
+            beg = ["\\begin_layout Standard",
+                   "\\begin_inset ERT", "status open", "",
+                   "\\begin_layout Plain Layout", "", "",
+                   "\\backslash",
+                   "begin{btUnit}"
+                   "\\end_layout", "", "\\end_inset", "", "",
+                   "\\end_layout", ""]
+            end = ["\\begin_layout Standard",
+                   "\\begin_inset ERT", "status open", "",
+                   "\\begin_layout Plain Layout", "", "",
+                   "\\backslash",
+                   "end{btUnit}"
+                   "\\end_layout", "", "\\end_inset", "", "",
+                   "\\end_layout", ""]
+            document.body[parend+1:parend+1] = end
+            document.body[parbeg-1:parbeg-1] = beg
+            j += len(beg) + len(end)
+            i = j + 1
+        return
+
+    # 7. Chapterbib proper
+    add_to_preamble(document, ["\\usepackage{chapterbib}"])
     
 
 ##
@@ -1768,9 +1873,11 @@ convert = [
            [531, []],
            [532, [convert_literalparam]],
            [533, []],
+           [534, []]
           ]
 
 revert =  [
+           [533, [revert_chapterbib]],
            [532, [revert_multibib]],
            [531, [revert_literalparam]],
            [530, [revert_qualicites]],

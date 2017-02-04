@@ -237,7 +237,7 @@ int LaTeX::run(TeXErrors & terr)
 	/// in which case we will not need to run bibtex again.
 	vector<AuxInfo> bibtex_info_old;
 	if (!run_bibtex)
-		bibtex_info_old = scanAuxFiles(aux_file);
+		bibtex_info_old = scanAuxFiles(aux_file, runparams.only_childbibs);
 
 	++count;
 	LYXERR(Debug::LATEX, "Run #" << count);
@@ -253,7 +253,7 @@ int LaTeX::run(TeXErrors & terr)
 		scanres = scanLogFile(terr);
 	}
 
-	vector<AuxInfo> const bibtex_info = scanAuxFiles(aux_file);
+	vector<AuxInfo> const bibtex_info = scanAuxFiles(aux_file, runparams.only_childbibs);
 	if (!run_bibtex && bibtex_info_old != bibtex_info)
 		run_bibtex = true;
 
@@ -491,12 +491,26 @@ bool LaTeX::runMakeIndexNomencl(FileName const & file,
 
 
 vector<AuxInfo> const
-LaTeX::scanAuxFiles(FileName const & file)
+LaTeX::scanAuxFiles(FileName const & file, bool const only_childbibs)
 {
 	vector<AuxInfo> result;
 
+	// With chapterbib, we have to bibtex all children's aux files
+	// but _not_ the master's!
+	if (only_childbibs) {
+		for (string const &s: children) {
+			FileName fn =
+				makeAbsPath(s, file.onlyPath().realPath());
+			fn.changeExtension("aux");
+			if (fn.exists())
+				result.push_back(scanAuxFile(fn));
+		}
+		return result;
+	}
+
 	result.push_back(scanAuxFile(file));
 
+	// This is for bibtopic
 	string const basename = removeExtension(file.absFileName());
 	for (int i = 1; i < 1000; ++i) {
 		FileName const file2(basename
@@ -647,6 +661,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 	string child_name;
 	int pnest = 0;
 	stack <pair<string, int> > child;
+	children.clear();
 
 	string token;
 	while (getline(ifs, token)) {
@@ -675,6 +690,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				if (regex_match(substr, sub, child_file)) {
 					string const name = sub.str(1);
 					child.push(make_pair(name, pnest));
+					children.push_back(name);
 					i += len;
 				}
 			} else if (token[i] == ')') {

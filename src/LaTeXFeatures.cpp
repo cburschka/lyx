@@ -963,6 +963,7 @@ char const * bibliofeatures[] = {
 	"authordate1-4",
 	"babelbib",
 	"bibgerm",
+	"chapterbib",
 	"chicago",
 	"chscite",
 	"harvard",

@@ -379,7 +379,7 @@ public:
 	/// All packages that can be switched on or off
 	static std::map<std::string, std::string> const & auto_packages();
 	/// Do we use the bibtopic package?
-	bool useBibtopic() const { return (use_bibtopic || !multibib.empty()) && !useBiblatex(); }
+	bool useBibtopic() const;
 	/// Split bibliography?
 	bool splitbib() const { return use_bibtopic; }
 	/// Set split bibliography

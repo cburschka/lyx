@@ -222,6 +222,12 @@ docstring InsetBibtex::toolTip(BufferView const & /*bv*/, int /*x*/, int /*y*/) 
 			tip += ", ";
 			tip += _("included in TOC");
 		}
+		if (!buffer().parent()
+		    && buffer().params().multibib == "child") {
+			tip += "<br />";
+			tip += _("Note: This bibliography is not output, since bibliographies in the master file "
+				 "are not allowed with the setting 'Multiple bibliographies per child document'");
+		}
 	} else {
 		tip += _("Lists:") + " ";
 		if (btprint == "bibbysection")
@@ -261,6 +267,11 @@ void InsetBibtex::latex(otexstream & os, OutputParams const & runparams) const
 	// \printbibliography[biblatexopts]
 	// or
 	// \bibbysection[biblatexopts] - if btprint is "bibbysection"
+
+	// chapterbib does not allow bibliographies in the master
+	if (!usingBiblatex() && !runparams.is_child
+	    && buffer().params().multibib == "child")
+		return;
 
 	string style = to_utf8(getParam("options")); // maybe empty! and with bibtotoc
 	string bibtotoc;
@@ -876,8 +887,11 @@ bool InsetBibtex::delDatabase(docstring const & db)
 
 void InsetBibtex::validate(LaTeXFeatures & features) const
 {
-	if (features.buffer().masterParams().useBibtopic())
+	BufferParams const & mparams = features.buffer().masterParams();
+	if (mparams.useBibtopic())
 		features.require("bibtopic");
+	else if (!mparams.useBiblatex() && mparams.multibib == "child")
+		features.require("chapterbib");
 	// FIXME XHTML
 	// It'd be better to be able to get this from an InsetLayout, but at present
 	// InsetLayouts do not seem really to work for things that aren't InsetTexts.

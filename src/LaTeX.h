@@ -197,7 +197,8 @@ private:
 				 std::string const &, std::string const &);
 
 	///
-	std::vector<AuxInfo> const scanAuxFiles(support::FileName const &);
+	std::vector<AuxInfo> const scanAuxFiles(support::FileName const &,
+						bool const only_childbibs = false);
 
 	///
 	AuxInfo const scanAuxFile(support::FileName const &);
@@ -242,6 +243,9 @@ private:
 	
 	/// Do we use biber?
 	bool biber;
+
+	///
+	std::vector <std::string> children;
 };
 
 

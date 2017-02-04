@@ -402,6 +402,9 @@ bool Converters::convert(Buffer const * buffer,
 		runparams.index_command = (buffer->params().index_command == "default") ?
 			string() : buffer->params().index_command;
 		runparams.document_language = buffer->params().language->babel();
+		runparams.only_childbibs = !buffer->params().useBiblatex()
+				&& !buffer->params().useBibtopic()
+				&& buffer->params().multibib == "child";
 	}
 
 	// Some converters (e.g. lilypond) can only output files to the

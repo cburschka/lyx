@@ -3169,6 +3169,7 @@ void GuiDocument::paramsToDialog()
 		biblioModule->bibunitsCO->addItem(qt_("per section"), toqstr("section"));
 	if (documentClass().hasLaTeXLayout("subsection"))
 		biblioModule->bibunitsCO->addItem(qt_("per subsection"), toqstr("subsection"));
+	biblioModule->bibunitsCO->addItem(qt_("per child document"), toqstr("child"));
 
 	int const mbpos = biblioModule->bibunitsCO->findData(toqstr(bp_.multibib));
 	if (mbpos != -1)
