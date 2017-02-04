@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 531
+\lyxformat 533
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -1029,6 +1029,7 @@ On that last point, \SpecialChar LyX
 LatexCommand href
 name "CTAN"
 target "http://www.ctan.org/"
+literal "false"
 
 \end_inset
 
@@ -2592,7 +2593,13 @@ natbib
 \end_layout
 
 \begin_layout Subsection
-Sectioned Bibliographies
+S
+\change_deleted -712698321 1486199102
+ection
+\change_inserted -712698321 1486199104
+ubdivid
+\change_unchanged
+ed Bibliographies
 \end_layout
 
 \begin_layout Standard
@@ -2730,7 +2737,13 @@ Bibliography
 status collapsed
 
 \begin_layout Plain Layout
-Sectioned bibliography
+S
+\change_deleted -712698321 1486199132
+ection
+\change_inserted -712698321 1486199136
+ubdivid
+\change_unchanged
+ed bibliography
 \end_layout
 
 \end_inset
@@ -2833,7 +2846,7 @@ bibtopic
 
 \begin_layout Standard
 
-\change_inserted -712698321 1485696667
+\change_inserted -712698321 1486200403
 With 
 \family sans
 Biblatex
@@ -2853,8 +2866,8 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1485695841
-Sectioned bibliography
+\change_inserted -712698321 1486200382
+Subdivided bibliography
 \end_layout
 
 \end_inset
@@ -2868,7 +2881,7 @@ Biblatex
 \family sans
 Biblatex
 \family default
- provides its own means to generate sectioned bibliographies.
+ provides its own means to generate subdivided bibliographies.
  You can either add keywords to bibliography entries via the 
 \begin_inset Flex Code
 status collapsed
@@ -3006,10 +3019,94 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-a bibliography for each section or chapter of the document, are not supported
- by Bib\SpecialChar TeX
+a bibliography for each 
+\change_inserted -712698321 1486199441
+part, chapter, 
+\change_unchanged
+section or 
+\change_inserted -712698321 1486199445
+subsection
+\change_deleted -712698321 1486199447
+chapter
+\change_unchanged
+ of the document, are 
+\change_deleted -712698321 1486199458
+not 
+\change_inserted -712698321 1486200433
+also 
+\change_unchanged
+supported 
+\change_inserted -712698321 1486202058
+by \SpecialChar LyX
+.
+ In order to enable it, go to 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1486199572
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Bibliography
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ and select the relevant unit (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., 
+\begin_inset Quotes eld
+\end_inset
+
+by section
+\begin_inset Quotes erd
+\end_inset
+
+) in the 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1486199553
+Multiple Bibliographies
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ combo box.
+ 
+\change_deleted -712698321 1486199771
+by Bib\SpecialChar TeX
  itself.
- But the 
+ 
+\change_inserted -712698321 1486200569
+Then add a Bib(la)\SpecialChar TeX
+ bibliography to each unit (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., section) of your document.
+ In the output, a separate bibliography, containing only the references
+ done in the current unit is generated.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1486199829
+If you use Bib\SpecialChar TeX
+, 
+\change_deleted -712698321 1486199835
+But 
+\change_unchanged
+the 
 \begin_inset Flex Code
 status collapsed
 
@@ -3019,10 +3116,23 @@ bibtopic
 
 \end_inset
 
- package, which is used for the creation of sectioned bibliographies in
- \SpecialChar LyX
- (see the previous section), provides an easy way to solve this task, if
- you are willing to use some 
+ package, which is
+\change_inserted -712698321 1486199815
+ also
+\change_unchanged
+ used for the creation of 
+\change_deleted -712698321 1486199277
+section
+\change_inserted -712698321 1486199815
+subdivid
+\change_unchanged
+ed bibliographies in \SpecialChar LyX
+ (see the previous section), 
+\change_inserted -712698321 1486199852
+is used to create multiple bibliographies.
+\change_deleted -712698321 1486200505
+provides an easy way to solve this task, if you are willing to use some
+ 
 \begin_inset Flex Noun
 status collapsed
 
@@ -3045,11 +3155,41 @@ reference "sec:Inserting-TeX-Code"
 \end_inset
 
 ).
+\change_unchanged
+
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-An alternative approach is to use the 
+An alternative approach
+\change_inserted -712698321 1486199215
+, if you are willing to use some 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1486199212
+\SpecialChar TeX
+ Code
+\end_layout
+
+\end_inset
+
+ (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Inserting-TeX-Code"
+
+\end_inset
+
+),
+\change_unchanged
+ is to use the 
 \begin_inset Flex Code
 status collapsed
 
@@ -3075,9 +3215,15 @@ bibunits
 \end_inset
 
 
+\change_inserted -712698321 1486202156
+ 
+\change_deleted -712698321 1486202138
+
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1486202126
 First go to 
 \begin_inset Flex Noun
 status collapsed
@@ -3114,6 +3260,23 @@ Sectioned bibliography
  their own bibliography (including the Bib\SpecialChar TeX
  bibliography itself), between
  
+\change_inserted -712698321 1486201472
+\SpecialChar LyX
+ encloses the specified units in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1486201443
+bibtopic
+\end_layout
+
+\end_inset
+
+'s 
+\change_unchanged
+
 \begin_inset Flex Code
 status collapsed
 
@@ -3137,7 +3300,17 @@ end{btUnit}
 
 \end_inset
 
- (those commands have to be inserted as \SpecialChar TeX
+
+\change_inserted -712698321 1486201491
+ in order to create the units.
+ Note that this approach has
+\change_unchanged
+ 
+\change_inserted -712698321 1486201489
+some limitations.
+ 
+\change_deleted -712698321 1486200476
+(those commands have to be inserted as \SpecialChar TeX
  code).
  The bibliography will contain all references that have been cited in the
  current 
@@ -3155,8 +3328,11 @@ btUnit
 \series bold
 Note:
 \series default
- If you are using this approach, then every citation reference has to be
- inside some 
+ If you are using this approach, then 
+\change_inserted -712698321 1486201489
+First, 
+\change_unchanged
+every citation reference has to be inside some 
 \begin_inset Flex Code
 status collapsed
 
@@ -3167,7 +3343,64 @@ btUnit
 \end_inset
 
 .
- Also, the 
+ 
+\change_inserted -712698321 1486201489
+So citations outside a defined unit (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., before the first section if you use 
+\begin_inset Quotes eld
+\end_inset
+
+by section
+\begin_inset Quotes erd
+\end_inset
+
+) will appear as 
+\begin_inset Quotes eld
+\end_inset
+
+???
+\begin_inset Quotes erd
+\end_inset
+
+.
+ You can also create your own units by entering 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1486200131
+
+\backslash
+begin{btUnit}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1486200131
+
+\backslash
+end{btUnit}
+\end_layout
+
+\end_inset
+
+ as \SpecialChar TeX
+ code (for instance to work around the mentioned limitation).
+ Note, though, that
+\change_deleted -712698321 1486200476
+Also, the
+\change_unchanged
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -3178,186 +3411,62 @@ btUnit
 \end_inset
 
 s cannot be nested.
-\change_inserted -712698321 1485696937
 
-\end_layout
+\change_inserted -712698321 1486201489
+ A second limitation is that 
+\begin_inset Flex Code
+status collapsed
 
-\begin_layout Standard
+\begin_layout Plain Layout
 
-\change_inserted -712698321 1485698355
-Again, with 
-\family sans
-Biblatex
-\family default
-, the procedure differs, since 
-\family typewriter
+\change_inserted -712698321 1486200199
 bibtopic
-\family default
- does not work with 
-\family sans
-Biblatex
-\family default
-.
- Biblatex has its own commands to get multiple bibliographies.
- Generally, two different ways are differentiated: 
-\emph on
-refsections
-\emph default
- are fully self-enclosed sections containing their own bibliography, 
-\emph on
-refsegments
-\emph default
- are sections that contain their own bibliography, but maintain a global
- numbering scheme (so that if two different 
-\emph on
-refsegments
-\emph default
- contain references to two different papers by Miller published in 2016,
- they will be labeled as 
+\end_layout
+
+\end_inset
+
+ always processes all references of a bibliography database, even if they
+ are not cited.
+ This can result in odd labels (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ 
 \begin_inset Quotes eld
 \end_inset
 
-Miller 2016a
+Miller 2014b
 \begin_inset Quotes erd
 \end_inset
 
- and 
-\begin_inset Quotes eld
-\end_inset
-
-Miller 2016b
-\begin_inset Quotes erd
-\end_inset
-
- in an author-year scheme, while with 
-\emph on
-refsections
-\emph default
-, they will both be labeled as 
-\begin_inset Quotes eld
-\end_inset
-
-Miller 2016
-\begin_inset Quotes erd
-\end_inset
-
-, as the two sections are considered to be independent).
+ if two works of this author from 2014 are in the database, even if only
+ one is cited).
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted -712698321 1485698499
-If you need a 
-\emph on
+\change_inserted -712698321 1486204109
+If you use 
+\family sans
+Biblatex
+\family default
+, the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1486202183
 refsection
-\emph default
- or 
-\emph on
-refsegment
-\emph default
- per part, chapter, section or subsection, all you have to do is to enter,
- respectively, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted -712698321 1485697458
-refsection=part
 \change_unchanged
 
 \end_layout
 
 \end_inset
 
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted -712698321 1485697463
-refsection=chapter
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted -712698321 1485697469
-refsection=section
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
- or 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted -712698321 1485697474
-refsection=subsection
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
- (or 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted -712698321 1485697532
-refsegment=\SpecialChar ldots
-
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
- for 
-\emph on
-refsegments
-\emph default
-) to 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted -712698321 1485697573
-Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Bibliography\SpecialChar menuseparator
-Options
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-.
- If you need specific 
-\emph on
-refsections
-\emph default
- or 
-\emph on
-refsegments
-\emph default
-, you can start them with the \SpecialChar TeX
+ option is used instead.
+ If you need specific units, you can start them with the \SpecialChar TeX
  code 
 \begin_inset Flex Code
 status collapsed
@@ -3391,9 +3500,7 @@ newrefsegment
 \end_inset
 
 , respectively.
- If you also want to control the end of the section\SpecialChar breakableslash
-segment, use the environment
- 
+ If you also want to control the end of the unit, use the environment 
 \begin_inset Flex Code
 status collapsed
 
@@ -3422,118 +3529,42 @@ end{refsection}
 
 \end_inset
 
- or 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted -712698321 1485697791
-
-\backslash
-begin{refsegment}
-\end_layout
-
-\end_inset
-
- \SpecialChar ldots
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted -712698321 1485697797
-
-\backslash
-end{refsegment}
-\end_layout
-
-\end_inset
-
  instead.
+ Note, though, that 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1486201999
+refsection
+\change_unchanged
+
 \end_layout
 
-\begin_layout Standard
-
-\change_inserted -712698321 1485698580
-In order to actually output the bibliography of the respective section or
- segment, simply insert it at the place where it should appear via 
-\family sans
-Insert\SpecialChar menuseparator
-List
-\family default
-/
-\family sans
-TOC\SpecialChar menuseparator
-Bib(la)TeX
-\begin_inset space ~
 \end_inset
 
-Bibliography
-\family default
- (within the given 
-\emph on
-refsection
-\emph default
- or 
-\emph on
-refsegment
-\emph default
-).
- If you want to output all 
-\emph on
-refsections
-\emph default
- or 
-\emph on
-refsegments
-\emph default
- at one place (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., at the end of the document), 
+s cannot be nested.
+ In addition to the individual bibliography of the current unit, 
 \family sans
 Biblatex
 \family default
- provides the commands 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted -712698321 1485698571
-
-\backslash
-bibbysection
-\change_unchanged
-
-\end_layout
-
+ also provides an easy way to output all bibliographies, subsequently, at
+ one place (e.
+\begin_inset space \thinspace{}
 \end_inset
 
- and 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted -712698321 1485698580
-
-\backslash
-bibbysegment
-\change_unchanged
-
-\end_layout
-
+g., at the end of the document).
+ Select 
+\begin_inset Quotes eld
 \end_inset
 
- which automatically loop over all sections/segments and output them subsequentl
-y.
- Currently, these commands need to be entered as \SpecialChar TeX
- code in \SpecialChar LyX
-.
+all reference units
+\begin_inset Quotes erd
+\end_inset
+
+ from the Content combo box of the Bib(la)TeX inset dialog in order to achieve
+ this.
  Please refer to the 
 \family sans
 Biblatex
@@ -5291,6 +5322,7 @@ er
 LatexCommand href
 name "http://elyxer.nongnu.org/"
 target "http://elyxer.nongnu.org/"
+literal "false"
 
 \end_inset
 
@@ -5396,6 +5428,7 @@ development/HTML.notes
 LatexCommand href
 name "accessed online"
 target "http://www.lyx.org/trac/browser/lyxgit/development/HTML/HTML.notes?rev=master"
+literal "false"
 
 \end_inset
 
@@ -5405,6 +5438,7 @@ target "http://www.lyx.org/trac/browser/lyxgit/development/HTML/HTML.notes?rev=m
 LatexCommand href
 name "the bug tracker"
 target "http://www.lyx.org/trac/query?status=reopened&status=assigned&status=new&max=0&component=xhtml+export&order=id&col=id&col=summary&col=reporter&col=keywords&keywords=%21%7Efixedintrunk&desc=1"
+literal "false"
 
 \end_inset
 
@@ -5648,6 +5682,7 @@ have to be on for images to be output, however.
 LatexCommand href
 name "bug 6894"
 target "http://www.lyx.org/trac/ticket/6894"
+literal "false"
 
 \end_inset
 
@@ -5713,6 +5748,7 @@ Finally, \SpecialChar LyX
 LatexCommand href
 name "jsMath"
 target "http://www.math.union.edu/~dpvc/jsMath/"
+literal "false"
 
 \end_inset
 
@@ -8225,6 +8261,7 @@ SumatraPDF can also use DDE commands through the external program CMCDDE
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.istri.fr/spip/zip/CMCDDE.zip"
+literal "false"
 
 \end_inset
 
@@ -19161,6 +19198,7 @@ chktex
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.ctan.org/tex-archive/help/Catalogue/entries/chktex.html"
+literal "false"
 
 \end_inset
 
@@ -20278,6 +20316,7 @@ status collapsed
 \begin_inset CommandInset href
 LatexCommand href
 target "http://svnbook.red-bean.com/"
+literal "false"
 
 \end_inset
 
@@ -22508,6 +22547,7 @@ In addition to installing \SpecialChar LyX
 LatexCommand href
 name "CollabNet"
 target "http://www.collab.net/nonav/downloads/subversion/"
+literal "false"
 
 \end_inset
 
@@ -22517,6 +22557,7 @@ target "http://www.collab.net/nonav/downloads/subversion/"
 LatexCommand href
 name "TortoiseSVN"
 target "http://tortoisesvn.tigris.org/"
+literal "false"
 
 \end_inset
 
@@ -25058,6 +25099,7 @@ multicol
 \begin_inset CommandInset citation
 LatexCommand cite
 key "multicol"
+literal "true"
 
 \end_inset
 
@@ -26853,6 +26895,7 @@ Install the program
 LatexCommand href
 name "Jpgfdraw"
 target "http://www.ctan.org/tex-archive/graphics/jpgfdraw"
+literal "false"
 
 \end_inset
 
@@ -26899,6 +26942,7 @@ For more information see
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.dickimaw-books.com/apps/jpgfdraw/manual/shapepar.html"
+literal "false"
 
 \end_inset
 
@@ -27072,6 +27116,7 @@ shapepar
 \begin_inset CommandInset citation
 LatexCommand cite
 key "shapepar"
+literal "true"
 
 \end_inset
 
@@ -27082,6 +27127,7 @@ key "shapepar"
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "multicol"
+literal "true"
 
 \end_inset
 
@@ -27091,6 +27137,7 @@ Documentation of the \SpecialChar LaTeX
 LatexCommand href
 name "multicol"
 target "http://mirror.ctan.org/macros/latex/required/tools/multicol.pdf"
+literal "false"
 
 \end_inset
 
@@ -27101,6 +27148,7 @@ target "http://mirror.ctan.org/macros/latex/required/tools/multicol.pdf"
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "shapepar"
+literal "true"
 
 \end_inset
 
@@ -27110,6 +27158,7 @@ Documentation of the \SpecialChar LaTeX
 LatexCommand href
 name "shapepar"
 target "http://mirrors.ctan.org/macros/latex/contrib/shapepar/shapepar.pdf"
+literal "false"
 
 \end_inset
 
