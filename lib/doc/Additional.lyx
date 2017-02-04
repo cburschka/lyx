@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 533
+\lyxformat 534
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -3023,20 +3023,30 @@ a bibliography for each
 \change_inserted -712698321 1486199441
 part, chapter, 
 \change_unchanged
-section or 
+section
+\change_inserted -712698321 1486231742
+,
+\change_unchanged
+ 
+\change_deleted -712698321 1486231742
+or 
 \change_inserted -712698321 1486199445
 subsection
 \change_deleted -712698321 1486199447
 chapter
 \change_unchanged
- of the document, are 
+ 
+\change_inserted -712698321 1486231758
+or child (sub-document) 
+\change_unchanged
+of the document, are 
 \change_deleted -712698321 1486199458
 not 
 \change_inserted -712698321 1486200433
 also 
 \change_unchanged
 supported 
-\change_inserted -712698321 1486202058
+\change_inserted -712698321 1486231617
 by \SpecialChar LyX
 .
  In order to enable it, go to 
@@ -3063,7 +3073,7 @@ g.,
 \begin_inset Quotes eld
 \end_inset
 
-by section
+per section
 \begin_inset Quotes erd
 \end_inset
 
@@ -3105,8 +3115,28 @@ If you use Bib\SpecialChar TeX
 , 
 \change_deleted -712698321 1486199835
 But 
+\change_inserted -712698321 1486231520
+either 
 \change_unchanged
-the 
+the
+\change_inserted -712698321 1486231576
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1486231576
+chapterbib
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ of the
+\change_unchanged
+ 
 \begin_inset Flex Code
 status collapsed
 
@@ -3116,20 +3146,55 @@ bibtopic
 
 \end_inset
 
- package, which is
-\change_inserted -712698321 1486199815
- also
+ package
+\change_deleted -712698321 1486231584
+, which is used for the creation of sectioned bibliographies in \SpecialChar LyX
+ (see the
+ previous section),
 \change_unchanged
- used for the creation of 
-\change_deleted -712698321 1486199277
-section
-\change_inserted -712698321 1486199815
-subdivid
-\change_unchanged
-ed bibliographies in \SpecialChar LyX
- (see the previous section), 
-\change_inserted -712698321 1486199852
+ 
+\change_inserted -712698321 1486231676
 is used to create multiple bibliographies.
+ The former package is used if you select 
+\begin_inset Quotes eld
+\end_inset
+
+per child document
+\begin_inset Quotes erd
+\end_inset
+
+ and do 
+\emph on
+not
+\emph default
+ check 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1486231676
+Sectioned Bibliography
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+ In all other cases, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1486231655
+bibtopic
+\end_layout
+
+\end_inset
+
+ is used.
 \change_deleted -712698321 1486200505
 provides an easy way to solve this task, if you are willing to use some
  
@@ -3190,6 +3255,8 @@ reference "sec:Inserting-TeX-Code"
 ),
 \change_unchanged
  is to use the 
+\change_deleted -712698321 1486231820
+
 \begin_inset Flex Code
 status collapsed
 
@@ -3200,6 +3267,8 @@ chapterbib
 \end_inset
 
  or 
+\change_unchanged
+
 \begin_inset Flex Code
 status collapsed
 
@@ -3209,13 +3278,17 @@ bibunits
 
 \end_inset
 
- package, respectively.
+ package
+\change_deleted -712698321 1486231824
+, respectively
+\change_unchanged
+.
 \end_layout
 
 \end_inset
 
 
-\change_inserted -712698321 1486202156
+\change_inserted -712698321 1486231646
  
 \change_deleted -712698321 1486202138
 
@@ -3260,8 +3333,20 @@ Sectioned bibliography
  their own bibliography (including the Bib\SpecialChar TeX
  bibliography itself), between
  
-\change_inserted -712698321 1486201472
-\SpecialChar LyX
+\change_inserted -712698321 1486231702
+If 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1486231702
+bibtopic
+\end_layout
+
+\end_inset
+
+ is used, \SpecialChar LyX
  encloses the specified units in 
 \begin_inset Flex Code
 status collapsed
@@ -3301,12 +3386,12 @@ end{btUnit}
 \end_inset
 
 
-\change_inserted -712698321 1486201491
+\change_inserted -712698321 1486231697
  in order to create the units.
  Note that this approach has
 \change_unchanged
  
-\change_inserted -712698321 1486201489
+\change_inserted -712698321 1486231697
 some limitations.
  
 \change_deleted -712698321 1486200476
@@ -3329,7 +3414,7 @@ btUnit
 Note:
 \series default
  If you are using this approach, then 
-\change_inserted -712698321 1486201489
+\change_inserted -712698321 1486231697
 First, 
 \change_unchanged
 every citation reference has to be inside some 
@@ -3344,7 +3429,7 @@ btUnit
 
 .
  
-\change_inserted -712698321 1486201489
+\change_inserted -712698321 1486231697
 So citations outside a defined unit (e.
 \begin_inset space \thinspace{}
 \end_inset
@@ -3412,7 +3497,7 @@ btUnit
 
 s cannot be nested.
 
-\change_inserted -712698321 1486201489
+\change_inserted -712698321 1486231697
  A second limitation is that 
 \begin_inset Flex Code
 status collapsed
