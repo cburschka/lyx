@@ -244,6 +244,10 @@ void GuiCitation::updateControls(BiblioInfo const & bi)
 {
 	QModelIndex idx = selectionManager->getSelectedIndex();
 	updateInfo(bi, idx);
+	int i = citationStyleCO->currentIndex();
+	if (i == -1)
+		i = 0;
+	updateFormatting(citeStyles_[i]);
 	selectionManager->update();
 }
 
