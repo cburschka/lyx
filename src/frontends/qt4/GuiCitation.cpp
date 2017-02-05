@@ -299,6 +299,7 @@ void GuiCitation::updateFormatting(CitationStyle currentStyle)
 	textBeforeLA->setEnabled(textbefore && haveSelection);
 	textAfterED->setEnabled(textafter && haveSelection);
 	textAfterLA->setEnabled(textafter && haveSelection);
+	literalCB->setEnabled(textbefore || textafter);
 	citationStyleCO->setEnabled(haveSelection);
 	citationStyleLA->setEnabled(haveSelection);
 
