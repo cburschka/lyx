@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-02-02 20:54+0100\n"
-"PO-Revision-Date: 2017-02-02 20:30+0000\n"
+"POT-Creation-Date: 2017-02-05 10:42+0100\n"
+"PO-Revision-Date: 2017-02-05 10:17+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -162,8 +162,8 @@ msgid "Select this if you want to split your bibliography into sections"
 msgstr "Vyberte túto možnosť keď chcete rozdeliť bibliografiu na sekcie"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:308
-msgid "Secti&oned bibliography"
-msgstr "Úseková bibliografia"
+msgid "Subdivided bibli&ography"
+msgstr "Rozčlenená bibli&ografia"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:328
 msgid "Rescan style files"
@@ -172,6 +172,14 @@ msgstr "Znovu prehľadať súbory so štýlom"
 #: src/frontends/qt4/ui/BiblioUi.ui:331
 msgid "Re&scan"
 msgstr "Znovu prehľadať"
+
+#: src/frontends/qt4/ui/BiblioUi.ui:342
+msgid "&Multiple bibliographies:"
+msgstr "Via&cnásobné bibliografie:"
+
+#: src/frontends/qt4/ui/BiblioUi.ui:358
+msgid "Generate a bibliography per defined unit."
+msgstr "Vytvoriť bibliografiu pre každý definovaný celok."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:153
 msgid ""
@@ -222,6 +230,10 @@ msgstr ""
 "preto nájdené aj bez adresára. To je zvyčajne v bib/ adresáre v LaTeXovom "
 "texmf-strome. Na tomto mieste by mala ležať aj vaša vlastná databáza keď ju "
 "chcete použiť. "
+
+#: src/frontends/qt4/GuiBibtex.cpp:339 src/insets/InsetBibtex.cpp:234
+msgid "all reference units"
+msgstr "bibliografie pre každý referovaný celok"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:67
 msgid "Rescan LaTeX's index for new databases and styles"
@@ -16408,35 +16420,35 @@ msgstr "Vložiť"
 
 #: lib/ui/stdcontext.inc:65
 msgid "Add Line Above|o"
-msgstr "Pridať riadok ponad"
+msgstr "Pridať Líniu Nad"
 
 #: lib/ui/stdcontext.inc:66 lib/ui/stdmenus.inc:249
 msgid "Add Line Below|B"
-msgstr "Pridať riadok popod"
+msgstr "Pridať Líniu Pod"
 
 #: lib/ui/stdcontext.inc:67
 msgid "Delete Line Above|v"
-msgstr "Zmazať Riadok Nad"
+msgstr "Zmazať Líniu Nad"
 
 #: lib/ui/stdcontext.inc:68
 msgid "Delete Line Below|w"
-msgstr "Zmazať Riadok Pod"
+msgstr "Zmazať Líniu Pod"
 
 #: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:253
 msgid "Add Line to Left"
-msgstr "Pridať líniu vľavo"
+msgstr "Pridať Líniu Vľavo"
 
 #: lib/ui/stdcontext.inc:71 lib/ui/stdmenus.inc:254
 msgid "Add Line to Right"
-msgstr "Pridať líniu vpravo"
+msgstr "Pridať Líniu Vpravo"
 
 #: lib/ui/stdcontext.inc:72 lib/ui/stdmenus.inc:255
 msgid "Delete Line to Left"
-msgstr "Zmazať riadok doľava"
+msgstr "Zmazať Líniu Vľavo"
 
 #: lib/ui/stdcontext.inc:73 lib/ui/stdmenus.inc:256
 msgid "Delete Line to Right"
-msgstr "Zmazať riadok doprava"
+msgstr "Zmazať Líniu Vpravo"
 
 #: lib/ui/stdcontext.inc:75
 msgid "Show Math Toolbar"
@@ -28055,6 +28067,26 @@ msgstr "Vylúčené moduly: %1$s."
 msgid "WARNING: Some required packages are unavailable!"
 msgstr "Upozornenie: Niektoré vyžadované balíky sú nedostupné!"
 
+#: src/frontends/qt4/GuiDocument.cpp:3165
+msgid "per part"
+msgstr "každú časť"
+
+#: src/frontends/qt4/GuiDocument.cpp:3167
+msgid "per chapter"
+msgstr "každú kapitolu"
+
+#: src/frontends/qt4/GuiDocument.cpp:3169
+msgid "per section"
+msgstr "každú sekciu"
+
+#: src/frontends/qt4/GuiDocument.cpp:3171
+msgid "per subsection"
+msgstr "každú podsekciu"
+
+#: src/frontends/qt4/GuiDocument.cpp:3172
+msgid "per child document"
+msgstr "každý podriadený dokument"
+
 #: src/frontends/qt4/GuiDocument.cpp:3257
 msgid "[No options predefined]"
 msgstr "[Niet preddefinovaných volieb]"
@@ -30253,9 +30285,15 @@ msgstr "Obsahuje:"
 msgid "included in TOC"
 msgstr "zahrnuté do obsahu"
 
-#: src/insets/InsetBibtex.cpp:227
-msgid "Included in TOC"
-msgstr "Zahrnuté do obsahu"
+#: src/insets/InsetBibtex.cpp:228
+msgid ""
+"Note: This bibliography is not output, since bibliographies in the master "
+"file are not allowed with the setting 'Multiple bibliographies per child "
+"document'"
+msgstr ""
+"Uvedomte si že táto bibliografia nebude vytvorená kvôli nastaveniu "
+"'Viacnásobné bibliografie' pre 'každý podriadený dokument' v hlavnom "
+"dokumente "
 
 #: src/insets/InsetBibtex.cpp:231
 msgid "Options: "
@@ -31787,6 +31825,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Included in TOC"
+#~ msgstr "Zahrnuté do obsahu"
 
 #~ msgid "Styles"
 #~ msgstr "Štýly"
@@ -36426,3 +36467,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Right overlap \\mathrlap"
 #~ msgstr "Prekryte doprava \\mathrlap"
+
+#~ msgid "Secti&oned bibliography"
+#~ msgstr "Úseková bibliografia"
