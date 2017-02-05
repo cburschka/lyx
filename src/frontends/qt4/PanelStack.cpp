@@ -120,7 +120,7 @@ void PanelStack::addCategory(QString const & name, QString const & parent)
 	QFontMetrics fm(list_->font());
 		
 	// calculate the real size the current item needs in the listview
-	int itemsize = fm.width(name) + 10 + list_->indentation() * depth;
+	int itemsize = fm.width(qt_(name)) + 10 + list_->indentation() * depth;
 	// adjust the listview width to the max. itemsize
 	if (itemsize > list_->minimumWidth())
 		list_->setMinimumWidth(itemsize);
