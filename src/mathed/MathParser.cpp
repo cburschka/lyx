@@ -1785,7 +1785,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					break;
 			}
 			if (s.empty())
-				cell->push_back(MathAtom(new InsetMathKern));
+				cell->push_back(MathAtom(new MathMacro(buf, t.cs())));
 			else
 				cell->push_back(MathAtom(new InsetMathKern(s)));
 		}
