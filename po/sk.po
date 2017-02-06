@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-02-05 10:42+0100\n"
-"PO-Revision-Date: 2017-02-05 10:17+0000\n"
+"POT-Creation-Date: 2017-02-06 12:58+0100\n"
+"PO-Revision-Date: 2017-02-06 12:07+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1089,6 +1089,14 @@ msgstr "&Text pred:"
 msgid "Citation style to use, if different styles are provided"
 msgstr "Použitý štýl citácie, v prípade keď je viacej prístupných štýlov"
 
+#: src/frontends/qt4/ui/CitationUi.ui:318
+msgid ""
+"Text that precedes the reference (e.g., \"cf.\"), if the current citation "
+"style supports this."
+msgstr ""
+"Text predchádzajúci referencie (napr., \"por.\"), keď to aktuálny štýl "
+"podporuje."
+
 #: src/frontends/qt4/ui/CitationUi.ui:322
 msgid "Text that precedes the reference (e.g., \"cf.\")"
 msgstr "Text predchádzajúci referencie (napr., \"por.\")"
@@ -1096,6 +1104,13 @@ msgstr "Text predchádzajúci referencie (napr., \"por.\")"
 #: src/frontends/qt4/ui/CitationUi.ui:432
 msgid "&Text after:"
 msgstr "Te&xt za:"
+
+#: src/frontends/qt4/ui/CitationUi.ui:335
+msgid ""
+"Text that follows the reference (e.g., pages), if the current style supports "
+"this."
+msgstr ""
+"Text nasledujúci referencie (napr., strany), keď to aktuálny štýl podporuje."
 
 #: src/frontends/qt4/ui/CitationUi.ui:339
 msgid "Text that follows the reference (e.g., pages)"
@@ -1109,10 +1124,13 @@ msgstr ""
 "Podaj obsah poľa `Text pred' a `Text za' priamo pre LaTeX. Označte toto keď "
 "vkladáte LaTeX kód."
 
-#: src/frontends/qt4/ui/CitationUi.ui:382
-msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")"
+#: src/frontends/qt4/ui/CitationUi.ui:388
+msgid ""
+"Force upper case in names (\"Del Piero\", not \"del Piero\"), if the current "
+"style supports this."
 msgstr ""
-"Vynúti veľké prvé písmená v menách (\"Del Piero\", miesto \"del Piero\")"
+"Vynúti veľké prvé písmená v menách (\"Del Piero\", miesto \"del Piero\"), "
+"keď to aktuálny štýl podporuje."
 
 #: src/frontends/qt4/ui/CitationUi.ui:369
 msgid "All aut&hors"
@@ -1121,6 +1139,14 @@ msgstr "Každý a&utor"
 #: src/frontends/qt4/ui/CitationUi.ui:359
 msgid "Force upcas&ing"
 msgstr "Vynútiť v&eľké písmo"
+
+#: src/frontends/qt4/ui/CitationUi.ui:398
+msgid ""
+"Always list all authors (rather than using \"et al.\"), if the current style "
+"supports this."
+msgstr ""
+"Vynúti výpis všetkých autorov (miesto použitia \"a kol.\") keď to aktuálny "
+"štýl podporuje. "
 
 #: src/frontends/qt4/ui/CitationUi.ui:392
 msgid "Always list all authors (rather than using \"et al.\")"
@@ -36470,3 +36496,7 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Secti&oned bibliography"
 #~ msgstr "Úseková bibliografia"
+
+#~ msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")"
+#~ msgstr ""
+#~ "Vynúti veľké prvé písmená v menách (\"Del Piero\", miesto \"del Piero\")"
