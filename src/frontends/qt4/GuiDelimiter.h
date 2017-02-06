@@ -16,6 +16,8 @@
 
 #include "ui_DelimiterUi.h"
 
+#include "support/docstring.h"
+
 class QListWidgetItem;
 
 namespace lyx {
