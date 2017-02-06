@@ -332,7 +332,7 @@
             <item>
              <widget class="QLineEdit" name="textAfterED">
               <property name="toolTip">
-               <string>Text that follows the reference (e.g., pages), if the current style supports this.</string>
+               <string>Text that follows the reference (e.g., pages), if the current citation style supports this.</string>
               </property>
              </widget>
             </item>
@@ -385,7 +385,7 @@
         <item>
          <widget class="QCheckBox" name="forceuppercaseCB">
           <property name="toolTip">
-           <string>Force upper case in names (&quot;Del Piero&quot;, not &quot;del Piero&quot;), if the current style supports this.</string>
+           <string>Force upper case in names (&quot;Del Piero&quot;, not &quot;del Piero&quot;), if the current citation style supports this.</string>
           </property>
           <property name="text">
            <string>Force upcas&amp;ing</string>
@@ -395,7 +395,7 @@
         <item>
          <widget class="QCheckBox" name="starredCB">
           <property name="toolTip">
-           <string>Always list all authors (rather than using &quot;et al.&quot;), if the current style supports this.</string>
+           <string>Always list all authors (rather than using &quot;et al.&quot;), if the current citation style supports this.</string>
           </property>
           <property name="text">
            <string>All aut&amp;hors</string>

@@ -276,24 +276,38 @@ void GuiCitation::updateFormatting(CitationStyle currentStyle)
 	selectedLV->horizontalHeader()->setVisible(qualified);
 	selectedLV->setColumnHidden(0, !qualified);
 	selectedLV->setColumnHidden(2, !qualified);
+	bool const haveSelection = rows > 0;
 	if (qualified) {
 		textBeforeLA->setText(qt_("General text befo&re:"));
 		textAfterLA->setText(qt_("General &text after:"));
 		textBeforeED->setToolTip(qt_("Text that precedes the whole reference list. "
-					     "For text that precedes individual items, double-click on the respective entry above."));
+					     "For text that precedes individual items, "
+					     "double-click on the respective entry above."));
 		textAfterLA->setToolTip(qt_("General &text after:"));
 		textAfterED->setToolTip(qt_("Text that follows the whole reference list. "
-					     "For text that follows individual items, double-click on the respective entry above."));
+					     "For text that follows individual items, "
+					     "double-click on the respective entry above."));
 	} else {
 		textBeforeLA->setText(qt_("Text befo&re:"));
-		textBeforeED->setToolTip(qt_("Text that precedes the reference (e.g., \"cf.\")"));
+		if (textbefore && haveSelection)
+			textBeforeED->setToolTip(qt_("Text that precedes the reference (e.g., \"cf.\")"));
+		else
+			textBeforeED->setToolTip(qt_("Text that precedes the reference (e.g., \"cf.\"), "
+						     "if the current citation style supports this."));
 		textAfterLA->setText(qt_("&Text after:"));
-		textAfterED->setToolTip(qt_("Text that follows the reference (e.g., pages)"));
+		if (textafter && haveSelection)
+			textAfterED->setToolTip(qt_("Text that follows the reference (e.g., pages)"));
+		else
+			textAfterED->setToolTip(qt_("Text that follows the reference (e.g., pages), "
+						    "if the current citation style supports this."));
 	}
 
-	bool const haveSelection = rows > 0;
-
 	forceuppercaseCB->setEnabled(force && haveSelection);
+	if (force && haveSelection)
+		forceuppercaseCB->setToolTip("Force upper case in names (\"Del Piero\", not \"del Piero\").");
+	else
+		forceuppercaseCB->setToolTip("Force upper case in names (\"Del Piero\", not \"del Piero\"), "
+					     "if the current citation style supports this.");
 	starredCB->setEnabled(full && haveSelection);
 	textBeforeED->setEnabled(textbefore && haveSelection);
 	textBeforeLA->setEnabled(textbefore && haveSelection);
@@ -324,7 +338,11 @@ void GuiCitation::updateFormatting(CitationStyle currentStyle)
 	} else {
 		// This is the default meaning of the starred commands
 		starredCB->setText(qt_("All aut&hors"));
-		starredCB->setToolTip(qt_("Always list all authors (rather than using \"et al.\")"));
+		if (full && haveSelection)
+			starredCB->setToolTip(qt_("Always list all authors (rather than using \"et al.\")"));
+		else
+			starredCB->setToolTip(qt_("Always list all authors (rather than using \"et al.\"), "
+						  "if the current citation style supports this."));
 	}
 }
 
