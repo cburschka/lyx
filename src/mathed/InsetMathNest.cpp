@@ -171,8 +171,10 @@ void InsetMathNest::cursorPos(BufferView const & bv,
 //		<< " asc: " << ascent() << "  des: " << descent()
 //		<< " ar.asc: " << ar.ascent() << " ar.des: " << ar.descent() << endl;
 	// move cursor visually into empty cells ("blue rectangles");
-	if (ar.empty())
-		x += 3;
+	if (ar.empty()) {
+		Dimension const dim = coord_cache.getArrays().dim(&ar);
+		x += dim.wid / 2;
+	}
 }
 
 
