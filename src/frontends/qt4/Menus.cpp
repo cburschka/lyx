@@ -1676,7 +1676,7 @@ void MenuDefinition::expandCaptions(Buffer const * buf, bool switchcap)
 	for (pair<docstring, InsetLayout> const & il : dc.insetLayouts()) {
 		docstring instype;
 		docstring const type = split(il.first, instype, ':');
-		if (instype == "Caption") {
+		if (instype == from_ascii("Caption")) {
 			// skip forbidden caption types
 			FuncRequest const cmd = switchcap
 				? FuncRequest(LFUN_INSET_MODIFY, from_ascii("changetype ") + type)
