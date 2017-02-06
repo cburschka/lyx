@@ -80,11 +80,8 @@ MathRow::MathRow(MetricsInfo & mi, MathData const * ar)
 	for (int i = 1 ; i != static_cast<int>(elements_.size()) ; ++i) {
 		Element & e = elements_[i];
 
-		if (e.mclass == MC_UNKNOWN)
-			continue;
-
 		Element & bef = elements_[before(i)];
-		if (dospacing) {
+		if (dospacing && e.mclass != MC_UNKNOWN) {
 			int spc = class_spacing(bef.mclass, e.mclass, mi.base);
 			bef.after += spc / 2;
 			// this is better than spc / 2 to avoid rounding problems
@@ -94,8 +91,15 @@ MathRow::MathRow(MetricsInfo & mi, MathData const * ar)
 		// finally reserve space for markers
 		if (bef.marker != Inset::NO_MARKER)
 			bef.after = max(bef.after, 1);
-		if (e.marker != Inset::NO_MARKER)
+		if (e.mclass != MC_UNKNOWN && e.marker != Inset::NO_MARKER)
 			e.before = max(e.before, 1);
+		// for linearized insets (macros...) too
+		if (e.type == BEGIN && e.marker != Inset::NO_MARKER)
+			bef.after = max(bef.after, 1);
+		if (e.type == END && e.marker != Inset::NO_MARKER) {
+			Element & aft = elements_[after(i)];
+			aft.before = max(aft.before, 1);
+		}
 	}
 
 	// Do not lose spacing allocated to extremities
@@ -126,6 +130,27 @@ int MathRow::after(int i) const
 }
 
 
+namespace {
+
+void metricsMarkersVertical(MetricsInfo const & , MathRow::Element const & e,
+                            Dimension & dim)
+{
+	// handle vertical space for markers
+	switch(e.marker) {
+	case InsetMath::NO_MARKER:
+		break;
+	case InsetMath::MARKER:
+		++dim.des;
+		break;
+	case InsetMath::MARKER2:
+		++dim.asc;
+		++dim.des;
+	}
+}
+
+}
+
+
 void MathRow::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	dim.asc = 0;
@@ -149,6 +174,7 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim) const
 		case BEGIN:
 			if (e.inset) {
 				dim_insets.push_back(make_pair(e.inset, Dimension()));
+				dim_insets.back().second.wid += e.before + e.after;
 				e.inset->beforeMetrics();
 			}
 			if (e.ar)
@@ -158,7 +184,10 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim) const
 			if (e.inset) {
 				e.inset->afterMetrics();
 				LATTEST(dim_insets.back().first == e.inset);
-				coords.insets().add(e.inset, dim_insets.back().second);
+				Dimension & idim = dim_insets.back().second;
+				metricsMarkersVertical(mi, e, idim);
+				idim.wid += e.before + e.after;
+				coords.insets().add(e.inset, idim);
 				dim_insets.pop_back();
 			}
 			if (e.ar) {
@@ -177,18 +206,6 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim) const
 				d.wid = 0;
 			}
 			break;
-		}
-
-		// handle vertical space for markers
-		switch(e.marker) {
-		case InsetMath::NO_MARKER:
-			break;
-		case InsetMath::MARKER:
-			++d.des;
-			break;
-		case InsetMath::MARKER2:
-			++d.asc;
-			++d.des;
 		}
 
 		if (!d.empty()) {
@@ -274,12 +291,14 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 				drawMarkers(pi, e, x, y);
 				e.inset->beforeDraw(pi);
 			}
+			x += e.before + e.after;
 			if (e.ar)
 				coords.arrays().add(e.ar, x, y);
 			break;
 		case END:
 			if (e.inset)
 				e.inset->afterDraw(pi);
+			x += e.before + e.after;
 			break;
 		case BOX: {
 			if (e.color == Color_none)
