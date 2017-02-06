@@ -172,7 +172,7 @@ void InsetMathNest::cursorPos(BufferView const & bv,
 //		<< " ar.asc: " << ar.ascent() << " ar.des: " << ar.descent() << endl;
 	// move cursor visually into empty cells ("blue rectangles");
 	if (ar.empty())
-		x += 2;
+		x += 3;
 }
 
 
