@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-02-05 07:31+0100\n"
-"PO-Revision-Date: 2017-02-05 07:39+0100\n"
+"POT-Creation-Date: 2017-02-06 12:24+0100\n"
+"PO-Revision-Date: 2017-02-06 12:36+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -1083,7 +1083,7 @@ msgstr "&Filter:"
 msgid "Select the fields on which the filter applies"
 msgstr "Wählen Sie hier die Felder, auf die der Filter angewendet werden soll."
 
-#: src/frontends/qt4/ui/CitationUi.ui:61 src/frontends/qt4/GuiCitation.cpp:385
+#: src/frontends/qt4/ui/CitationUi.ui:61 src/frontends/qt4/GuiCitation.cpp:390
 msgid "All fields"
 msgstr "Alle Felder"
 
@@ -1092,7 +1092,7 @@ msgid "Select the entry types on which the filter applies"
 msgstr ""
 "Wählen Sie hier die Eintragstypen, auf die der Filter angewendet werden soll."
 
-#: src/frontends/qt4/ui/CitationUi.ui:85 src/frontends/qt4/GuiCitation.cpp:400
+#: src/frontends/qt4/ui/CitationUi.ui:85 src/frontends/qt4/GuiCitation.cpp:405
 msgid "All entry types"
 msgstr "Alle Eintragstypen"
 
@@ -1139,7 +1139,7 @@ msgstr "Formatierung"
 msgid "Citation st&yle:"
 msgstr "Zitier&stil:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:289 src/frontends/qt4/GuiCitation.cpp:284
+#: src/frontends/qt4/ui/CitationUi.ui:289 src/frontends/qt4/GuiCitation.cpp:288
 msgid "Text befo&re:"
 msgstr "Text &davor:"
 
@@ -1147,17 +1147,25 @@ msgstr "Text &davor:"
 msgid "Citation style to use, if different styles are provided"
 msgstr "Verwendeter Zitierstil, falls mehrere Stile verfügbar sind."
 
-#: src/frontends/qt4/ui/CitationUi.ui:318 src/frontends/qt4/GuiCitation.cpp:285
-msgid "Text that precedes the reference (e.g., \"cf.\")"
-msgstr "Text, der dem Verweis vorausgeht (z.B. \"vgl.\")"
+#: src/frontends/qt4/ui/CitationUi.ui:318
+msgid ""
+"Text that precedes the reference (e.g., \"cf.\"), if the current citation "
+"style supports this."
+msgstr ""
+"Text, der dem Verweis vorausgeht (z.B. \"vgl.\"), falls der ausgewählte"
+" Zitierstil dies unterstützt."
 
-#: src/frontends/qt4/ui/CitationUi.ui:325 src/frontends/qt4/GuiCitation.cpp:286
+#: src/frontends/qt4/ui/CitationUi.ui:325 src/frontends/qt4/GuiCitation.cpp:290
 msgid "&Text after:"
 msgstr "&Text danach:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:335 src/frontends/qt4/GuiCitation.cpp:287
-msgid "Text that follows the reference (e.g., pages)"
-msgstr "Text, der dem Verweis folgt (z.B. die Seitenzahlen)"
+#: src/frontends/qt4/ui/CitationUi.ui:335
+msgid ""
+"Text that follows the reference (e.g., pages), if the current style supports "
+"this."
+msgstr ""
+"Text, der dem Verweis folgt (z.B. die Seitenzahlen), falls der ausgewählte"
+" Zitierstil dies unterstützt."
 
 #: src/frontends/qt4/ui/CitationUi.ui:365
 msgid ""
@@ -1168,22 +1176,26 @@ msgstr ""
 "an LaTeX. Aktivieren Sie dies, wenn Sie LaTeX-Code eingeben wollen."
 
 #: src/frontends/qt4/ui/CitationUi.ui:388
-msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")"
+msgid ""
+"Force upper case in names (\"Del Piero\", not \"del Piero\"), if the current "
+"style supports this."
 msgstr ""
 "Erzwingt Anfangsgroßschreibung in Namen (\"Von Humboldt\" statt \"von "
-"Humboldt\")."
+"Humboldt\"), falls der ausgewählte Zitierstil dies unterstützt."
 
 #: src/frontends/qt4/ui/CitationUi.ui:391
 msgid "Force upcas&ing"
 msgstr "A&nfangsgroßschreibung erzwingen"
 
-#: src/frontends/qt4/ui/CitationUi.ui:398 src/frontends/qt4/GuiCitation.cpp:322
-msgid "Always list all authors (rather than using \"et al.\")"
+#: src/frontends/qt4/ui/CitationUi.ui:398
+msgid ""
+"Always list all authors (rather than using \"et al.\"), if the current style "
+"supports this."
 msgstr ""
 "Erzwingt eine vollständige Autorenliste (statt der Verwendung von \"et al.\" "
-"oder \"u.a.\")."
+"oder \"u.a.\"), falls der ausgewählte Zitierstil dies unterstützt."
 
-#: src/frontends/qt4/ui/CitationUi.ui:401 src/frontends/qt4/GuiCitation.cpp:321
+#: src/frontends/qt4/ui/CitationUi.ui:401 src/frontends/qt4/GuiCitation.cpp:326
 msgid "All aut&hors"
 msgstr "Alle A&utoren"
 
@@ -7109,7 +7121,7 @@ msgstr "Unterabschnitt"
 #: lib/layouts/scrclass.inc:96 lib/layouts/siamltex.layout:387
 #: lib/layouts/stdsections.inc:121 lib/layouts/svcommon.inc:213
 msgid "Subsubsection"
-msgstr "Unterunterabschn."
+msgstr "Unterunterabschnitt"
 
 #: lib/layouts/aa.layout:227 lib/layouts/aapaper.layout:99
 #: lib/layouts/aapaper.layout:194 lib/layouts/aastex.layout:237
@@ -8391,7 +8403,7 @@ msgstr "Unnummeriert"
 #: lib/layouts/isprs.layout:200 lib/layouts/stdstarsections.inc:57
 #: lib/layouts/svcommon.inc:270
 msgid "Subsubsection*"
-msgstr "Unterunterabschn.*"
+msgstr "Unterunterabschnitt*"
 
 #: lib/layouts/amsbook.layout:3
 msgid "American Mathematical Society (AMS) Book"
@@ -28101,15 +28113,15 @@ msgstr "&Groß-/Kleinschreibung beachten"
 msgid "Search as you &type"
 msgstr "Während der &Eingabe suchen"
 
-#: src/frontends/qt4/GuiCitation.cpp:276
+#: src/frontends/qt4/GuiCitation.cpp:280
 msgid "General text befo&re:"
 msgstr "Allgemeiner Text &davor:"
 
-#: src/frontends/qt4/GuiCitation.cpp:277 src/frontends/qt4/GuiCitation.cpp:280
+#: src/frontends/qt4/GuiCitation.cpp:281 src/frontends/qt4/GuiCitation.cpp:284
 msgid "General &text after:"
 msgstr "Allgemeiner &Text danach:"
 
-#: src/frontends/qt4/GuiCitation.cpp:278
+#: src/frontends/qt4/GuiCitation.cpp:282
 msgid ""
 "Text that precedes the whole reference list. For text that precedes "
 "individual items, double-click on the respective entry above."
@@ -28118,7 +28130,7 @@ msgstr ""
 "bestimmten Einträgen vorausgeht, doppelklicken Sie bitte auf den "
 "entsprechenden Eintrag oben."
 
-#: src/frontends/qt4/GuiCitation.cpp:281
+#: src/frontends/qt4/GuiCitation.cpp:285
 msgid ""
 "Text that follows the whole reference list. For text that follows individual "
 "items, double-click on the respective entry above."
@@ -28127,39 +28139,53 @@ msgstr ""
 "bestimmten Einträgen folgt, doppelklicken Sie bitte auf den entsprechenden "
 "Eintrag oben."
 
-#: src/frontends/qt4/GuiCitation.cpp:386
+#: src/frontends/qt4/GuiCitation.cpp:289
+msgid "Text that precedes the reference (e.g., \"cf.\")"
+msgstr "Text, der dem Verweis vorausgeht (z.B. \"vgl.\")"
+
+#: src/frontends/qt4/GuiCitation.cpp:291
+msgid "Text that follows the reference (e.g., pages)"
+msgstr "Text, der dem Verweis folgt (z.B. die Seitenzahlen)"
+
+#: src/frontends/qt4/GuiCitation.cpp:327
+msgid "Always list all authors (rather than using \"et al.\")"
+msgstr ""
+"Erzwingt eine vollständige Autorenliste (statt der Verwendung von \"et al.\" "
+"oder \"u.a.\")."
+
+#: src/frontends/qt4/GuiCitation.cpp:391
 msgid "Keys"
 msgstr "Schlüssel"
 
-#: src/frontends/qt4/GuiCitation.cpp:427
+#: src/frontends/qt4/GuiCitation.cpp:432
 msgid "Displays a sketchy preview if a citation is selected above"
 msgstr ""
 "Zeigt eine ungefähre Vorschau an, wenn oben ein Verweis ausgewählt wurde."
 
-#: src/frontends/qt4/GuiCitation.cpp:431
+#: src/frontends/qt4/GuiCitation.cpp:436
 msgid "Sketchy preview of the selected citation"
 msgstr "Ungefähre Vorschau des ausgewählten Verweises."
 
-#: src/frontends/qt4/GuiCitation.cpp:542
+#: src/frontends/qt4/GuiCitation.cpp:547
 msgid "Enter string to filter the list of available citations"
 msgstr "Geben Sie eine Zeichenkette zum Filtern der verfügbaren Verweise ein."
 
-#: src/frontends/qt4/GuiCitation.cpp:543
+#: src/frontends/qt4/GuiCitation.cpp:548
 msgid ""
 "Enter string to filter the list of available citations and press <Enter>"
 msgstr ""
 "Geben Sie eine Zeichenkette zum Filtern der verfügbaren Verweise ein und "
 "drücken Sie <Enter>."
 
-#: src/frontends/qt4/GuiCitation.cpp:607
+#: src/frontends/qt4/GuiCitation.cpp:612
 msgid "Text before"
 msgstr "Text davor"
 
-#: src/frontends/qt4/GuiCitation.cpp:608
+#: src/frontends/qt4/GuiCitation.cpp:613
 msgid "Cite key"
 msgstr "Zitierschlüssel"
 
-#: src/frontends/qt4/GuiCitation.cpp:609
+#: src/frontends/qt4/GuiCitation.cpp:614
 msgid "Text after"
 msgstr "Text danach"
 
@@ -30896,10 +30922,10 @@ msgid ""
 "file are not allowed with the setting 'Multiple bibliographies per child "
 "document'"
 msgstr ""
-"Beachten Sie, dass dieses Literaturverzeichnis nicht ausgegeben wird, "
-"da Literaturverzeichnisse im Hauptdokument nicht möglich sind, wenn "
-"die Einstellung ,Mehrere Literaturverzeichnisse: pro Unterdokument` "
-"gewählt wurde."
+"Beachten Sie, dass dieses Literaturverzeichnis nicht ausgegeben wird, da "
+"Literaturverzeichnisse im Hauptdokument nicht möglich sind, wenn die "
+"Einstellung ,Mehrere Literaturverzeichnisse: pro Unterdokument` gewählt "
+"wurde."
 
 #: src/insets/InsetBibtex.cpp:246
 msgid "Options: "
