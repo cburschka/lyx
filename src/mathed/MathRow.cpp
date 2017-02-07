@@ -28,6 +28,7 @@
 #include "support/docstring.h"
 #include "support/lassert.h"
 
+#include <algorithm>
 #include <ostream>
 
 using namespace std;
