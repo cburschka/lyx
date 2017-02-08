@@ -67,7 +67,7 @@ public:
 	///
 	MathMacro const * owner() { return mathMacro_; }
 	///
-	marker_type marker() const { return NO_MARKER; }
+	marker_type marker(BufferView const *) const { return NO_MARKER; }
 	///
 	InsetCode lyxCode() const { return ARGUMENT_PROXY_CODE; }
 	/// The math data to use for display
@@ -331,7 +331,7 @@ bool MathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 	// - editing with parameter list
 	// - editing with box around macro
 	if (displayMode() != MathMacro::DISPLAY_NORMAL
-		|| (d->editing_[mi.base.bv] && lyxrc.macro_edit_style != LyXRC::MACRO_EDIT_INLINE))
+		|| (d->editing_[mi.base.bv] && lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_LIST))
 		return InsetMath::addToMathRow(mrow, mi);
 
 	/// The macro nesting can change display of insets. Change it locally.
@@ -339,7 +339,7 @@ bool MathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 
 	MathRow::Element e_beg(mi, MathRow::BEGIN);
 	e_beg.inset = this;
-	e_beg.marker = (d->nesting_ == 1 && nargs()) ? marker() : NO_MARKER;
+	e_beg.marker = (d->nesting_ == 1) ? marker(mi.base.bv) : NO_MARKER;
 	mrow.push_back(e_beg);
 
 	d->macro_->lock();
@@ -358,6 +358,7 @@ bool MathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 
 	MathRow::Element e_end(mi, MathRow::END);
 	e_end.inset = this;
+	e_end.marker = (d->nesting_ == 1) ? marker(mi.base.bv) : NO_MARKER;
 	mrow.push_back(e_end);
 
 	return has_contents;
@@ -485,24 +486,29 @@ bool MathMacro::editMetrics(BufferView const * bv) const
 }
 
 
-Inset::marker_type MathMacro::marker() const
+InsetMath::marker_type MathMacro::marker(BufferView const * bv) const
 {
+	if (nargs() == 0)
+		return NO_MARKER;
+
 	switch (d->displayMode_) {
 	case DISPLAY_INIT:
 	case DISPLAY_INTERACTIVE_INIT:
 		return NO_MARKER;
 	case DISPLAY_UNFOLDED:
 		return MARKER;
-	default:
+	case DISPLAY_NORMAL:
 		switch (lyxrc.macro_edit_style) {
+		case LyXRC::MACRO_EDIT_INLINE:
+			return MARKER;
+		case LyXRC::MACRO_EDIT_INLINE_BOX:
+			return d->editing_[bv] ? BOX_MARKER : MARKER;
 		case LyXRC::MACRO_EDIT_LIST:
 			return MARKER2;
-		case LyXRC::MACRO_EDIT_INLINE_BOX:
-			return NO_MARKER;
-		default:
-			return MARKER;
 		}
 	}
+	// please gcc 4.6
+	return NO_MARKER;
 }
 
 
@@ -566,38 +572,8 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		dim.des += 1;
 		dim.wid += 2;
 	} else {
-		LBUFERR(d->macro_);
-
-		// calculate metrics, hoping that all cells are seen
-		d->macro_->lock();
-		d->expanded_.metrics(mi, dim);
-
-		// otherwise do a manual metrics call
-		CoordCache & coords = mi.base.bv->coordCache();
-		for (idx_type i = 0; i < nargs(); ++i) {
-			if (!coords.getArrays().hasDim(&cell(i))) {
-				Dimension tdim;
-				cell(i).metrics(mi, tdim);
-			}
-		}
-		d->macro_->unlock();
-
-		// calculate dimension with label while editing
-		if (lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_INLINE_BOX
-		    && d->editing_[mi.base.bv]) {
-			FontInfo font = mi.base.font;
-			augmentFont(font, "lyxtex");
-			Dimension namedim;
-			mathed_string_dim(font, name(), namedim);
-#if 0
-			dim.wid += 2 + namedim.wid + 2 + 2;
-			dim.asc = max(dim.asc, namedim.asc) + 2;
-			dim.des = max(dim.des, namedim.des) + 2;
-#endif
-			dim.wid = max(1 + namedim.wid + 1, 2 + dim.wid + 2);
-			dim.asc += 1 + namedim.height() + 1;
-			dim.des += 2;
-		}
+		// We should not be here, since the macro is linearized in this case.
+		LBUFERR(false);
 	}
 }
 
@@ -767,34 +743,8 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.rectangle(expx, expy - dim.asc + 1, dim.wid - 1,
 				  dim.height() - 2, Color_mathmacroframe);
 	} else {
-		bool drawBox = lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_INLINE_BOX
-			&& d->editing_[pi.base.bv];
-
-		// warm up cells
-		for (size_t i = 0; i < nargs(); ++i)
-			cell(i).setXY(*pi.base.bv, x, y);
-
-		if (drawBox) {
-			// draw header and rectangle around
-			FontInfo font = pi.base.font;
-			augmentFont(font, "lyxtex");
-			font.setSize(FONT_SIZE_TINY);
-			font.setColor(Color_mathmacrolabel);
-			Dimension namedim;
-			mathed_string_dim(font, name(), namedim);
-
-			pi.pain.fillRectangle(x, y - dim.asc, dim.wid, 1 + namedim.height() + 1, Color_mathmacrobg);
-			pi.pain.text(x + 1, y - dim.asc + namedim.asc + 2, name(), font);
-			expx += (dim.wid - d->expanded_.dimension(*pi.base.bv).width()) / 2;
-		}
-
-		beforeDraw(pi);
-		d->expanded_.draw(pi, expx, expy);
-		afterDraw(pi);
-
-		if (drawBox)
-			pi.pain.rectangle(x, y - dim.asc, dim.wid,
-			                  dim.height(), Color_mathmacroframe);
+		// We should not be here, since the macro is linearized in this case.
+		LBUFERR(false);
 	}
 
 	// edit mode changed?

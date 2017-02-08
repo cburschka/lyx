@@ -37,7 +37,7 @@ public:
 	///
 	virtual MathMacro const * asMacro() const { return this; }
 	///
-	marker_type marker() const;
+	marker_type marker(BufferView const *) const;
 	/// If the macro is in normal edit mode, dissolve its contents in
 	/// the row. Otherwise, just insert the inset.
 	bool addToMathRow(MathRow &, MetricsInfo & mi) const;
