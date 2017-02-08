@@ -58,7 +58,7 @@ MathClass InsetMath::mathClass() const
 }
 
 
-InsetMath::marker_type InsetMath::marker() const
+InsetMath::marker_type InsetMath::marker(BufferView const *) const
 {
 	return nargs() > 0 ? MARKER : NO_MARKER;
 }
@@ -68,7 +68,7 @@ bool InsetMath::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 {
 	MathRow::Element e(mi, MathRow::INSET, mathClass());
 	e.inset = this;
-	e.marker = mi.base.macro_nesting ? NO_MARKER : marker();
+	e.marker = mi.base.macro_nesting ? NO_MARKER : marker(mi.base.bv);
 	mrow.push_back(e);
 	return true;
 }

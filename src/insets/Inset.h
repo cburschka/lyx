@@ -201,8 +201,6 @@ public:
 	///
 	virtual bool showInsetDialog(BufferView *) const;
 
-	// The possible marker types for insets
-	enum marker_type { NO_MARKER, MARKER2, MARKER };
 	/// draw two angular markers
 	void drawMarkers(PainterInfo & pi, int x, int y) const;
 	/// draw four angular markers

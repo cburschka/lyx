@@ -125,7 +125,7 @@ public:
 	/// Generalized fractions are of inner class (see The TeXbook, p.292)
 	MathClass mathClass() const { return MC_INNER; }
 	///
-	marker_type marker() const { return MARKER2; }
+	marker_type marker(BufferView const *) const { return MARKER2; }
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
