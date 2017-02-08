@@ -162,7 +162,7 @@ void InsetHyperlink::latex(otexstream & os,
 	} // end if (!url.empty())
 
 	if (!name.empty()) {
-		name = params().prepareCommand(runparams, getParam("name"),
+		name = params().prepareCommand(runparams, name,
 					ParamInfo::HANDLING_LATEXIFY);
 		// replace the tilde by the \sim character as suggested in the
 		// LaTeX FAQ for URLs
