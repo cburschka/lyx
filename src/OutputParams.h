@@ -207,7 +207,7 @@ public:
 
 	/** Whether a btUnit (for multiple biblographies) is open.
 	 */
-	bool openbtUnit;
+	mutable bool openbtUnit;
 
 	/** Process only the children's aux files with BibTeX.
 	 *  This is necessary with chapterbib.

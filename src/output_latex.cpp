@@ -1259,10 +1259,9 @@ void TeXOnePar(Buffer const & buf,
 void latexParagraphs(Buffer const & buf,
 		     Text const & text,
 		     otexstream & os,
-		     OutputParams const & runparams_in,
+		     OutputParams const & runparams,
 		     string const & everypar)
 {
-	OutputParams runparams = runparams_in;
 	LASSERT(runparams.par_begin <= runparams.par_end,
 		{ os << "% LaTeX Output Error\n"; return; } );
 
