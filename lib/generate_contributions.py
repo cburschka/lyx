@@ -1267,8 +1267,8 @@ contributors = [
                  "20 October 2014",
                  u"New lfun server-get-statistics"),
 
-     contributor(u"Guillaume Munch>",
-                 "gadmm () free ! fr",
+     contributor(u"Guillaume Munch",
+                 "gm () lyx ! org",
                  "GPL",
                  "Re: -std=c++11 and [PATCH] Improve the display of the source (bugs #6501,#7359)",
                  "m=143890980923229",
@@ -1475,6 +1475,14 @@ contributors = [
                  "6 April 2005",
                  u"initial configure script"),
 
+     contributor(u"Zheru Qiu",
+                 "qzr () mail ! ustc ! edu ! cn",
+                 "GPL",
+                 "Fwd: Permission of using my translation under GPL",
+                 "m=148702600212546",
+                 "5 February 2017",
+                 u"Chinese localisation"),
+
      contributor(u"Allan Rae",
                  "rae () itee ! uq ! edu ! au",
                  "GPL",
@@ -1482,7 +1490,7 @@ contributors = [
                  "m=110905169512662",
                  "21 February 2005",
                  u"GUI-I architect, LyX PR head, LDN, bug reports/fixes, Itemize Bullet Selection, xforms-0.81 + gcc-2.6.3 compatibility"),
-     
+
      contributor(u"Manoj Rajagopalan",
                  "rmanoj () umich ! edu", 
                  "GPL", 
@@ -1490,7 +1498,7 @@ contributors = [
                  "m=123506398801004", 
                  "Feb 19 2009", 
                  u"reference dialog tweaks"),
-     
+
      contributor(u"Vincent van Ravesteijn",
                  "V.F.vanRavesteijn () tudelft ! nl",
                  "GPL",
