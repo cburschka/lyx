@@ -1511,6 +1511,14 @@ contributors = [
                  "6 April 2005",
                  u"initial configure script"),
 
+     contributor(u"Zheru Qiu",
+                 "qzr () mail ! ustc ! edu ! cn",
+                 "GPL",
+                 "Fwd: Permission of using my translation under GPL",
+                 "m=148702600212546",
+                 "5 February 2017",
+                 u"Chinese localisation"),
+
      contributor(u"Allan Rae",
                  "rae () itee ! uq ! edu ! au",
                  "GPL",

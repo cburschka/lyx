@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: zh_CN\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2016-04-24 10:40+0200\n"
-"PO-Revision-Date: 2014-04-28 10:00+1000\n"
-"Last-Translator: Yihui Xie <xie@yihui.name>\n"
+"PO-Revision-Date: 2017-02-04 10:00+1000\n"
+"Last-Translator: Zheru Qiu <qzr@mail.ustc.edu.cn>\n"
 "Language-Team: 简体中文 <lyx-docs@lists.lyx.org>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
@@ -82,11 +82,11 @@ msgstr "关键字(&K)"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:19
 msgid "Citation Style"
-msgstr "文献引用风格"
+msgstr "文献引用样式"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:28
 msgid "Use BibTeX's default numerical styles"
-msgstr "使用BibTeX缺省数字风格"
+msgstr "使用BibTeX缺省数字样式"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:31
 msgid "&Default (numerical)"
@@ -96,7 +96,7 @@ msgstr "缺省（数字）(&D)"
 msgid ""
 "Use the natbib styles for natural sciences and arts. Set additional "
 "parameters in document class options."
-msgstr "为科技文献使用natbib风格。在文档类选项中设置附加参数。"
+msgstr "为科技文献使用natbib样式。在文档类选项中设置附加参数。"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:41
 msgid "&Natbib"
@@ -104,15 +104,15 @@ msgstr "&Natbib"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:59
 msgid "Natbib &style:"
-msgstr "Natbib风格(s)"
+msgstr "Natbib样式(s)"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:97
 msgid "Use the jurabib styles for law and humanities"
-msgstr "为法律和人文文献使用jurabib风格"
+msgstr "为法律和人文文献使用jurabib样式"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:100
 msgid "&Jurabib"
-msgstr "&Jurabib"
+msgstr "法律文献样式&Jurabib"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:110
 #, fuzzy
@@ -122,20 +122,22 @@ msgstr "参考书目"
 #: src/frontends/qt4/ui/BiblioUi.ui:121
 #, fuzzy
 msgid "Default st&yle:"
-msgstr "缺省打印机(&p)"
+msgstr "缺省样式(&p)"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:131
 #, fuzzy
 msgid "Define the default BibTeX style"
-msgstr "选择一个BibTeX式样"
+msgstr "选择一个BibTeX样式"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:140
 msgid "Select this if you want to split your bibliography into sections"
-msgstr "选择此项按章节划分文献引用"
+msgstr "选择此项按章节分段放置文献引用\n"
+"每段可以指定不同样式的参考书目\n"
+"请参考 bibtopic 套件说明文件"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:143
 msgid "S&ectioned bibliography"
-msgstr "按章节划分的文献引用(&e)"
+msgstr "按章节分段放置的文献引用(&e)"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:153
 msgid ""
@@ -268,7 +270,7 @@ msgstr "添加文献引用到目录(&T)"
 #: src/frontends/qt4/ui/ToggleWarningUi.ui:90
 #: src/frontends/qt4/ui/WrapUi.ui:150
 msgid "&OK"
-msgstr "确认(&O)"
+msgstr "确定(&O)"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:225
 msgid "Move the selected database downwards in the list"
@@ -489,7 +491,7 @@ msgstr "ThickLine"
 #: src/frontends/qt4/ui/BoxUi.ui:338
 #, fuzzy
 msgid "Separation value"
-msgstr "文献引用风格"
+msgstr "文献引用样式"
 
 #: src/frontends/qt4/ui/BoxUi.ui:345
 #, fuzzy
@@ -564,7 +566,7 @@ msgstr "切换选中分支"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:97
 msgid "(&De)activate"
-msgstr "不使用(&D)"
+msgstr "(禁)启用(&D)"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:110
 msgid "Add a new branch to the list"
@@ -1039,7 +1041,7 @@ msgstr "强制使用大写字母(&p)"
 #: src/frontends/qt4/ui/ParagraphUi.ui:218 src/frontends/qt4/ui/PrefsUi.ui:44
 #: src/frontends/qt4/ui/WrapUi.ui:121
 msgid "&Restore"
-msgstr "重置"
+msgstr "重置(&R)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:540
 msgid "App&ly"
@@ -1234,7 +1236,7 @@ msgstr "描述："
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:83
 msgid "Open the LaTeX Log File dialog"
-msgstr "打开LaTeX日志文件窗口"
+msgstr "打开 LaTeX 日志文件窗口"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:86
 msgid "View Complete &Log..."
@@ -1242,17 +1244,17 @@ msgstr "查看全部日志（&L）"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:93
 msgid "Attempt to show the output even if there were compilation errors"
-msgstr ""
+msgstr "即使有编译错误，仍然尝试显示输出"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:96
 msgid "Show Output &Anyway"
-msgstr ""
+msgstr "仍然显示输出(&A)"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:103
 msgid ""
 "Selecting an error will show the error message in the panel below, and jump "
 "the cursor to the location in the document where the error occurred."
-msgstr ""
+msgstr "选中错误会在下面的面板里显示错误，然后跳转到错误发生的地方"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:35
 msgid "F&ile"
@@ -1309,7 +1311,9 @@ msgstr "格式(&t)"
 msgid ""
 "Enable LyX to preview this material; only if graphics previewing is not "
 "disabled at application level (see Preference dialog)."
-msgstr "预览该图形"
+msgstr ""
+"允许 LyX 预览这个素材; 只有在图像预览功能没有被关闭时可用 (参考 工具->偏"
+"好设定 对话框)."
 
 #: src/frontends/qt4/ui/ExternalUi.ui:194
 msgid "&Show in LyX"
@@ -1466,7 +1470,7 @@ msgstr "匹配完整词语(&y)"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:115
 msgid "W&hole words"
-msgstr "整个词(&h)"
+msgstr "全字相符(&h)"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:131
 msgid "Replace and find next occurrence [Enter]"
@@ -1481,7 +1485,7 @@ msgstr "替换(&R)"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:141
 msgid "Shift+Enter search backwards directly"
-msgstr ""
+msgstr "按 Shift+Enter 直接进行向后搜索"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:144
 #: src/frontends/qt4/ui/SearchUi.ui:196
@@ -1491,7 +1495,7 @@ msgstr "向后搜索(&b)"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:160
 #, fuzzy
 msgid "Replace all occurences at once"
-msgstr "用当前选中词替换"
+msgstr "全部替换所有的匹配项"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:163
 #: src/frontends/qt4/ui/SearchUi.ui:189
@@ -1502,15 +1506,15 @@ msgstr "全部替换(&A)"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:173
 #, fuzzy
 msgid "S&ettings"
-msgstr "设置"
+msgstr "设置(&e)"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:188
 msgid "The scope to which the search horizon is restricted"
-msgstr ""
+msgstr "限制搜索的范围"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:194
 msgid "Scope"
-msgstr ""
+msgstr "范围"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:206
 #, fuzzy
@@ -1526,7 +1530,7 @@ msgstr "当前文档和所有相关文档同属一个主文档"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:228
 #, fuzzy
 msgid "&Master document"
-msgstr "主文档"
+msgstr "主文档(&M)"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:238
 msgid "All open documents"
@@ -1534,33 +1538,34 @@ msgstr "所有打开文档"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:241
 msgid "&Open documents"
-msgstr "打开文档（&O）"
+msgstr "打开的文档(&O)"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:251
 #, fuzzy
 msgid "&All manuals"
-msgstr "所有手册（&n）"
+msgstr "所有手册(&n)"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:269
 msgid ""
 "If unchecked, the search will be limited to occurrences of the selected text "
 "and paragraph style"
-msgstr ""
+msgstr "如果没有勾选，搜索将限制在选中的文字与段落样式中"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:272
 #, fuzzy
 msgid "I&gnore format"
-msgstr "到格式(&T)"
+msgstr "忽略格式(&g)"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:282
 msgid ""
 "Keep the case of the replacement's first letter as in each matching text "
 "first letter"
 msgstr ""
+"保持替换文字首字母大小写与匹配文字首字母大小写相同"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:285
 msgid "&Preserve first case on replace"
-msgstr ""
+msgstr "替换是保留首字大小写(&P)"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:295
 msgid "&Expand macros"
@@ -1569,12 +1574,12 @@ msgstr "展开宏"
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:302
 #, fuzzy
 msgid "Restrict search to math environments only"
-msgstr "匹配完整词语(&y)"
+msgstr "限制只搜索数学环境的内容"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:305
 #, fuzzy
 msgid "Search on&ly in maths"
-msgstr "搜索文本为空"
+msgstr "只在数学公式中搜索(&l)"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:13
 #: src/frontends/qt4/ui/OutputUi.ui:14 src/frontends/qt4/ui/PDFSupportUi.ui:13
@@ -1583,11 +1588,11 @@ msgstr "表单"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:19
 msgid "Float Type:"
-msgstr "浮动项类型："
+msgstr "浮动体类型："
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:36
 msgid "Use &default placement"
-msgstr "使用默认放置方式"
+msgstr "使用默认放置方式(&d)"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:43
 msgid "Advanced Placement Options"
@@ -1603,11 +1608,11 @@ msgstr "忽略LaTeX规则(&i)"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:69
 msgid "Here de&finitely"
-msgstr "强制此处"
+msgstr "强制此处(&f)"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:76
 msgid "&Here if possible"
-msgstr "此处优先"
+msgstr "尽量在此(&f)"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:83
 msgid "&Page of floats"
@@ -1623,11 +1628,11 @@ msgstr "跨列(&S)"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:107
 msgid "&Rotate sideways"
-msgstr "旋转(&R)"
+msgstr "侧向旋转(&R)"
 
 #: src/frontends/qt4/ui/FontUi.ui:14
 msgid "FontUi"
-msgstr "FontUi"
+msgstr "字体使用页面"
 
 #: src/frontends/qt4/ui/FontUi.ui:20
 #, fuzzy
@@ -1642,7 +1647,7 @@ msgstr "使用非TeX字体（通过XeTeX/LuaTeX）"
 
 #: src/frontends/qt4/ui/FontUi.ui:43
 msgid "&Default family:"
-msgstr "默认字体族"
+msgstr "默认字体族(&D):"
 
 #: src/frontends/qt4/ui/FontUi.ui:53
 msgid "Select the default family for the document"
@@ -1651,7 +1656,7 @@ msgstr "使用默认字体族"
 #: src/frontends/qt4/ui/FontUi.ui:60
 #, fuzzy
 msgid "&Base size:"
-msgstr "基准字号"
+msgstr "基准字号(&B)"
 
 #: src/frontends/qt4/ui/FontUi.ui:77
 msgid "LaTe&X font encoding:"
@@ -1659,7 +1664,7 @@ msgstr "LaTe&X编码"
 
 #: src/frontends/qt4/ui/FontUi.ui:90 src/frontends/qt4/ui/PrefLatexUi.ui:34
 msgid "Specify the font encoding (e.g., T1)."
-msgstr ""
+msgstr "指定字体编码（如：T1）"
 
 #: src/frontends/qt4/ui/FontUi.ui:97
 msgid "&Roman:"
@@ -1667,31 +1672,31 @@ msgstr "衬线字体"
 
 #: src/frontends/qt4/ui/FontUi.ui:107
 msgid "Select the roman (serif) typeface"
-msgstr "选择衬线字体（serif）"
+msgstr "选择衬线字体(serif)"
 
 #: src/frontends/qt4/ui/FontUi.ui:114
 msgid "&Sans Serif:"
-msgstr "非衬线字体"
+msgstr "无衬线字体(&S)"
 
 #: src/frontends/qt4/ui/FontUi.ui:124
 msgid "Select the Sans Serif (grotesque) typeface"
-msgstr "选择非衬线字体（Sans Serif）"
+msgstr "选择无衬线字体(Sans Serif)"
 
 #: src/frontends/qt4/ui/FontUi.ui:131
 msgid "S&cale (%):"
-msgstr "缩放 (%):"
+msgstr "缩放比例(&c) (%):"
 
 #: src/frontends/qt4/ui/FontUi.ui:141
 msgid "Scale the Sans Serif font to match the base font's dimensions"
-msgstr ""
+msgstr "缩放无衬线字体以适应基准字号"
 
 #: src/frontends/qt4/ui/FontUi.ui:154
 msgid "&Typewriter:"
-msgstr "等宽字体"
+msgstr "等宽字体(&T)"
 
 #: src/frontends/qt4/ui/FontUi.ui:164
 msgid "Select the typewriter (monospaced) typeface"
-msgstr ""
+msgstr "选择等宽（typewriter,monospaced）字体"
 
 #: src/frontends/qt4/ui/FontUi.ui:171
 msgid "Sc&ale (%):"
@@ -1699,21 +1704,21 @@ msgstr "缩放 (%):"
 
 #: src/frontends/qt4/ui/FontUi.ui:181
 msgid "Scale the Typewriter font to match the base font's dimensions"
-msgstr "拉伸等宽字体以适应基准字号"
+msgstr "缩放等宽字体以适应基准字号"
 
 #: src/frontends/qt4/ui/FontUi.ui:194
 #, fuzzy
 msgid "&Math:"
-msgstr "数学"
+msgstr "数学(&M)"
 
 #: src/frontends/qt4/ui/FontUi.ui:204
 #, fuzzy
 msgid "Select the math typeface"
-msgstr "选择衬线字体（serif）"
+msgstr "选择数学字体"
 
 #: src/frontends/qt4/ui/FontUi.ui:211
 msgid "C&JK:"
-msgstr "CJK字体"
+msgstr "C&JK字体"
 
 #: src/frontends/qt4/ui/FontUi.ui:221
 msgid "Input the font to be used for Chinese, Japanese or Korean (CJK) script"
@@ -1721,21 +1726,21 @@ msgstr "输入欲使用的CJK字体"
 
 #: src/frontends/qt4/ui/FontUi.ui:228
 msgid "Use a real small caps shape, if the font provides one"
-msgstr ""
+msgstr "如果字体有提供，使用真小号大写字体"
 
 #: src/frontends/qt4/ui/FontUi.ui:231
 #, fuzzy
 msgid "Use true s&mall caps"
-msgstr "使用真小号大写字体"
+msgstr "使用真小号大写字体(&m)"
 
 #: src/frontends/qt4/ui/FontUi.ui:238
 msgid "Use old style instead of lining figures"
-msgstr ""
+msgstr "使用数字高度会变动的格式（古风体数字），而非现代的样式"
 
 #: src/frontends/qt4/ui/FontUi.ui:241
 #, fuzzy
 msgid "Use &old style figures"
-msgstr "使用老式数字字体"
+msgstr "使用老式数字字体(&o)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
@@ -1743,7 +1748,7 @@ msgstr "图像(&G)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:55
 msgid "Select an image file"
-msgstr "选择一图像文件"
+msgstr "选择图像文件"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:65
 msgid "Output Size"
@@ -1830,11 +1835,11 @@ msgstr "LaTeX选项(&o)"
 msgid ""
 "Enable LyX to preview this graphics, if graphics previewing is not disabled "
 "at application level (see Preferences dialog)."
-msgstr "预览该图形"
+msgstr "允许 LyX 预览该图形"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:520
 msgid "Sho&w in LyX"
-msgstr "在LyX中显示"
+msgstr "在LyX中显示(&w)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:559
 #, fuzzy
@@ -1936,7 +1941,7 @@ msgstr "即使在新起一行后也插入间隔"
 #: lib/layouts/amsdefs.inc:157 lib/layouts/stdinsets.inc:459
 #: lib/layouts/stdinsets.inc:462 lib/layouts/minimalistic.module:26
 msgid "URL"
-msgstr "网址"
+msgstr "网址(URL)"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:22
 msgid "&Target:"
@@ -1986,13 +1991,13 @@ msgstr "文件(&F)"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:36
 msgid "Listing Parameters"
-msgstr "Listing参数"
+msgstr "Listing 参数"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:66
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:83
 #: src/frontends/qt4/ui/ListingsUi.ui:507
 msgid "Check it to enter parameters that are not recognizable by LyX"
-msgstr "选中此项可以输入LyX不认识的参数"
+msgstr "选中此项可以输入 LyX 不认识的参数"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:69
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:86
@@ -2002,7 +2007,7 @@ msgstr "(&B)跳过选项验证"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:86
 msgid "C&aption:"
-msgstr "表题(&A)："
+msgstr "表题(&a)："
 
 #: src/frontends/qt4/ui/IncludeUi.ui:99
 msgid "La&bel:"
@@ -2030,7 +2035,7 @@ msgstr "显示预览(&S)"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:275
 msgid "File name to include"
-msgstr "包含的文件名"
+msgstr "要包含的文件名"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:282
 msgid "&Include Type:"
@@ -2063,16 +2068,16 @@ msgstr "编辑(&E)"
 
 #: src/frontends/qt4/ui/IndexUi.ui:59 src/frontends/qt4/ui/IndicesUi.ui:143
 msgid "A&vailable Indexes:"
-msgstr "可用索引(&A)"
+msgstr "可用索引(&v)"
 
 #: src/frontends/qt4/ui/IndexUi.ui:69
 msgid "Select the index this entry should be listed in."
-msgstr ""
+msgstr "选择这项应该被列入的索引"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:19
 msgid ""
 "Here you can define an alternative index processor and specify its options."
-msgstr ""
+msgstr "在这里设定其他索引处理器与命令选项"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22
 #: src/frontends/qt4/ui/PrefLatexUi.ui:161
@@ -2082,29 +2087,29 @@ msgstr "生成索引"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:64
 msgid "Define program options of the selected processor."
-msgstr ""
+msgstr "给选定的处理器设置选项"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:89
 msgid "Check if you need multiple indexes (e.g., an Index of Names)"
-msgstr ""
+msgstr "如果需要多个索引（如人名索引），请勾选"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:92
 msgid "&Use multiple indexes"
-msgstr "使用多重索引"
+msgstr "使用多个索引(&U)"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:114
 msgid "&New:[[index]]"
-msgstr ""
+msgstr "新增(&N):[[index]]"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid ""
 "Enter the name of the desired index (e.g. \"Index of Names\") and hit \"Add\""
-msgstr ""
+msgstr "输入想要的索引名，后点击添加"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:131
 #, fuzzy
 msgid "Add a new index to the list"
-msgstr "添加分支"
+msgstr "添加索引"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:154
 #: src/frontends/qt4/ui/ProgressViewUi.ui:149 src/frontends/qt4/ui/RefUi.ui:60
@@ -2114,21 +2119,21 @@ msgstr "1"
 #: src/frontends/qt4/ui/IndicesUi.ui:162
 #, fuzzy
 msgid "Remove the selected index"
-msgstr "删除选择的数据库"
+msgstr "删除选择的索引"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:172
 #, fuzzy
 msgid "Rename the selected index"
-msgstr "删除选择的数据库"
+msgstr "重命名选择的索引"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:175
 msgid "R&ename..."
-msgstr "重命名"
+msgstr "重命名(&e)"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:182
 #, fuzzy
 msgid "Define or change button color"
-msgstr "定义或改变背景颜色"
+msgstr "定义或改变按钮颜色"
 
 #: src/frontends/qt4/ui/InfoUi.ui:24
 msgid "Information Type:"
@@ -2141,45 +2146,45 @@ msgstr "信息名称："
 #: src/frontends/qt4/ui/InsetParamsUi.ui:16
 #, fuzzy
 msgid "Inset Parameter Configuration"
-msgstr "插入分数"
+msgstr "嵌框参数设置"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:46
 msgid "Update dialog when moving context"
-msgstr ""
+msgstr "移动上下文时同步对话框"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:49
 #, fuzzy
 msgid "S&ynchronize Dialog"
-msgstr "Adapt outp&ut"
+msgstr "同步对话框(&y)"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:56
 #, fuzzy
 msgid "Apply settings immediately"
-msgstr "立即改变字体"
+msgstr "立即应用设置"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:62
 #: src/frontends/qt4/ui/ParagraphUi.ui:45
 msgid "I&mmediate Apply"
-msgstr "即时应用(&m)"
+msgstr "立即应用(&m)"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:79
 msgid "Restore initial values in dialog"
-msgstr ""
+msgstr "恢复初始值"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:92
 #, fuzzy
 msgid "Push new inset into the document"
-msgstr "文本中出现之标记"
+msgstr "在文中放入新嵌框"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:95
 #, fuzzy
 msgid "New Inset"
-msgstr "打开所有嵌入项(O)|O"
+msgstr "新嵌框"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:19
 #, fuzzy
 msgid "Document &Class"
-msgstr "文档类"
+msgstr "文档类(&C)"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:44
 msgid "Click to select a local document class definition file"
@@ -2187,7 +2192,7 @@ msgstr "点击选择本地文档类定义文件"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:47
 msgid "&Local Layout..."
-msgstr "本地 Layout(&L)..."
+msgstr "本地布局文件(&L)..."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:57
 #, fuzzy
@@ -2200,7 +2205,7 @@ msgstr "使用布局文件中预定义的文档类选项"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:66
 msgid "&Predefined:"
-msgstr "预定义："
+msgstr "预定义(&P)："
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:73
 msgid ""
@@ -2210,7 +2215,7 @@ msgstr "布局文件中预定义的选项。单击选定或取消选定。"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:83
 msgid "Cus&tom:"
-msgstr "自定义："
+msgstr "自定义(&t)："
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:99
 msgid "&Graphics driver:"
@@ -2226,7 +2231,7 @@ msgstr "选择默认主文档(&f)"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:150
 msgid "&Master:"
-msgstr "主文档"
+msgstr "主文档(&M)"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:167
 msgid "Enter the name of the default master document"
@@ -2234,25 +2239,25 @@ msgstr "输入缺省主文档名"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:186
 msgid "&Suppress default date on front page"
-msgstr "去掉文档中默认的日期显示"
+msgstr "去掉文档首页默认的日期显示(&S)"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:206
 msgid "&Use refstyle (not prettyref) for cross-references"
-msgstr "对交叉引用使用refstyle而不用prettyref"
+msgstr "对交叉引用使用refstyle而不用prettyref (&U)"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:53
 #, fuzzy
 msgid "&Quote style:"
-msgstr "引号样式(&Q):"
+msgstr "引言样式(&Q):"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:66
 msgid "Encoding"
-msgstr "编码"
+msgstr "文件编码"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:81
 #, fuzzy
 msgid "Language &default"
-msgstr "缺省语言(&D)"
+msgstr "缺省语言(&d)"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:104
 msgid "&Other:"
@@ -2272,47 +2277,47 @@ msgstr "选择 LyX 要使用的语言包"
 #, fuzzy
 msgid ""
 "Enter the command to load the language package (default: \\usepackage{babel})"
-msgstr "输入命令以载入语言包"
+msgstr "输入载入语言包需要的命令 默认为\\usepackage{babel}"
 
 #: src/frontends/qt4/ui/LineUi.ui:22
 #, fuzzy
 msgid "Of&fset:"
-msgstr "Offsets"
+msgstr "垂直偏移(&f)"
 
 #: src/frontends/qt4/ui/LineUi.ui:35
 #, fuzzy
 msgid "Value of the vertical line offset."
-msgstr "竖直距离(&V)"
+msgstr "垂直偏移量，正值向上，负值向下"
 
 #: src/frontends/qt4/ui/LineUi.ui:71
 #, fuzzy
 msgid "Value of the line width."
-msgstr "打断长过行宽的行"
+msgstr "线宽数值"
 
 #: src/frontends/qt4/ui/LineUi.ui:94
 #, fuzzy
 msgid "&Thickness:"
-msgstr "ThickLine"
+msgstr "线粗(&T)"
 
 #: src/frontends/qt4/ui/LineUi.ui:107
 #, fuzzy
 msgid "Value of the line thickness."
-msgstr "打断长过行宽的行"
+msgstr "线粗数值"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:49
 msgid "Input here the listings parameters"
-msgstr "输入列表参数"
+msgstr "输入 listings 的参数"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:67
 #: src/frontends/qt4/ui/ListingsUi.ui:477
 msgid "Feedback window"
-msgstr "回馈窗口"
+msgstr "反馈窗口"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:283
 #: lib/layouts/stdinsets.inc:289 src/insets/InsetCaption.cpp:383
 #: src/insets/InsetListings.cpp:365 src/insets/InsetListings.cpp:367
 msgid "Listing"
-msgstr "列表"
+msgstr "程序列表"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:23
 msgid "&Main Settings"
@@ -2320,19 +2325,19 @@ msgstr "(&M)主要设定"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:29
 msgid "Placement"
-msgstr "放置"
+msgstr "放置位置"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:35
 msgid "Check for inline listings"
-msgstr "检查行内程序列表"
+msgstr "勾选后使程序列表不断行"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:38
 msgid "&Inline listing"
-msgstr "行内程序列表"
+msgstr "行内程序列表(&I)"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:45
 msgid "Check for floating listings"
-msgstr "检查浮动程序列表"
+msgstr "勾选后使程序列表浮动"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:48
 msgid "&Float"
@@ -2345,6 +2350,10 @@ msgstr "放置策略(&P)："
 #: src/frontends/qt4/ui/ListingsUi.ui:68
 msgid "Specify placement (htbp) for floating listings"
 msgstr "设定浮动程序列表的放置选项(htbp)"
+" t: 页顶\n"
+" b: 页底\n"
+" p: 另外一頁(seperate page)\n"
+" h: 目前位置 (here)"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:78
 msgid "Line numbering"
@@ -2356,7 +2365,7 @@ msgstr "边(&S):"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:94
 msgid "On which side should line numbers be printed?"
-msgstr "在合"
+msgstr "行号印在那一侧"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:119
 msgid "S&tep:"
@@ -2364,11 +2373,11 @@ msgstr "增量(&t)"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:132
 msgid "Difference between two numbered lines"
-msgstr "两编号行的间距"
+msgstr "两编号行的间距（默认为1，如输入3，则印出行号1，4，7）"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:148
 msgid "Font si&ze:"
-msgstr "字体大小(&Z)："
+msgstr "字体大小(&z)："
 
 #: src/frontends/qt4/ui/ListingsUi.ui:169
 msgid "Choose the font size for line numbers"
@@ -2393,7 +2402,7 @@ msgstr "字体集(&y):"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:252
 msgid "The content's base font style"
-msgstr "内容的基准字体风格"
+msgstr "内容的基准字体样式"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:268
 msgid "Break lines longer than the linewidth"
@@ -2405,7 +2414,7 @@ msgstr "打断过长行(&B)"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:281
 msgid "Make spaces visible by a special symbol"
-msgstr "使用特殊符合标出空格"
+msgstr "使用特殊符号标出空格"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:284
 msgid "S&pace as symbol"
@@ -2425,7 +2434,7 @@ msgstr "表格(&u)大小："
 
 #: src/frontends/qt4/ui/ListingsUi.ui:323
 msgid "Use extended character table"
-msgstr "使用额外字符表"
+msgstr "使用额外字符表（CJK环境建议不选）"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:326
 msgid "&Extended character table"
@@ -2477,7 +2486,7 @@ msgstr "更多参数"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:499
 msgid "Input listing parameters here. Enter ? for a list of parameters."
-msgstr "在右边输入listings参数. 输入 ? 显示所有参数."
+msgstr "在右边输入 listings 的参数. 输入 ? 显示所有参数."
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:19
 msgid "Document-specific layout information"
@@ -2486,13 +2495,13 @@ msgstr "特定文档的布局信息"
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:35
 #, fuzzy
 msgid "&Validate"
-msgstr "预览/更新"
+msgstr "验证(&V)"
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:45
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:68
 #, fuzzy
 msgid "Errors reported in terminal."
-msgstr "无导出格式 %1$s 的信息."
+msgstr "错误已在终端中报告"
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:58
 msgid "Convert"
@@ -2500,11 +2509,11 @@ msgstr "转换"
 
 #: src/frontends/qt4/ui/LogUi.ui:39
 msgid "Hit Enter to search, or click Go!"
-msgstr "回车或点击“Go”按钮开始搜索"
+msgstr "回车或点击“开始”按钮开始搜索"
 
 #: src/frontends/qt4/ui/LogUi.ui:46
 msgid "Log &Type:"
-msgstr ""
+msgstr "日志类型(&T)"
 
 #: src/frontends/qt4/ui/LogUi.ui:75
 msgid "Update the display"
@@ -2588,31 +2597,31 @@ msgstr "主文档输出"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:40
 msgid "Include only the selected subdocuments in the output"
-msgstr ""
+msgstr "只输出选中的子文件"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:43
 msgid "Include only &selected children"
-msgstr ""
+msgstr "只包含选中的子文件"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:50
 msgid ""
 "Assure counters and references are as in the complete document (prolonges "
 "compilation)"
-msgstr ""
+msgstr "保证计数器与参考文献与最终完整输出相同"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:53
 #, fuzzy
 msgid "&Maintain counters and references"
-msgstr "使用未引用的文献"
+msgstr "支持计数器与参考(&M)"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:63
 msgid "Include all subdocuments in the output"
-msgstr ""
+msgstr "包含全部子文件"
 
 #: src/frontends/qt4/ui/MasterChildUi.ui:66
 #, fuzzy
 msgid "&Include all children"
-msgstr "插入文件"
+msgstr "插入所有子文件(&I)"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:31
 #: src/frontends/qt4/ui/MathMatrixUi.ui:44
@@ -2645,7 +2654,7 @@ msgstr "Resize this to the correct table dimensions"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:164 src/frontends/qt4/ui/WrapUi.ui:195
 msgid "Vertical alignment"
-msgstr "垂直排列"
+msgstr "垂直对齐"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:171
 msgid "&Vertical:"
@@ -2665,7 +2674,7 @@ msgstr "类型"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:229
 msgid "decoration type / matrix border"
-msgstr ""
+msgstr "矩阵边缘"
 
 #: src/frontends/qt4/ui/MathsUi.ui:45
 #, fuzzy
@@ -2675,16 +2684,16 @@ msgstr "软件包"
 #: src/frontends/qt4/ui/MathsUi.ui:52
 #, fuzzy
 msgid "Load A&utomatically"
-msgstr "自动地"
+msgstr "自动加载(&u)"
 
 #: src/frontends/qt4/ui/MathsUi.ui:59
 msgid "Load Alwa&ys"
-msgstr ""
+msgstr "总是加载(&y)"
 
 #: src/frontends/qt4/ui/MathsUi.ui:66
 #, fuzzy
 msgid "Do &Not Load"
-msgstr "文档未读入"
+msgstr "不要加载(&N)"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:60
 msgid "A&vailable:"
@@ -2694,7 +2703,7 @@ msgstr "可用包(&v)："
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:187
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:216
 msgid "A&dd"
-msgstr "添加(&D)"
+msgstr "添加(&d)"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:110
 msgid "De&lete"
@@ -2742,7 +2751,7 @@ msgstr "注释(&C)"
 
 #: src/frontends/qt4/ui/NoteUi.ui:80
 msgid "Print as grey text"
-msgstr "灰度打印"
+msgstr "以灰色文字印出"
 
 #: src/frontends/qt4/ui/NoteUi.ui:83
 msgid "&Greyed out"
@@ -2767,25 +2776,25 @@ msgstr "为预览和更新指定默认输出格式"
 #: src/frontends/qt4/ui/OutputUi.ui:46
 #, fuzzy
 msgid "De&fault output format:"
-msgstr "默认输出格式"
+msgstr "默认输出格式(&f)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:68
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
-msgstr ""
+msgstr "启用编辑器与输出间的正向/反向搜索支持（如SyncTeX）"
 
 #: src/frontends/qt4/ui/OutputUi.ui:71
 #, fuzzy
 msgid "S&ynchronize with output"
-msgstr "与输出同步"
+msgstr "与输出同步(&y)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:88
 #, fuzzy
 msgid "C&ustom macro:"
-msgstr "自定义宏："
+msgstr "自定义宏(&u)："
 
 #: src/frontends/qt4/ui/OutputUi.ui:98
 msgid "Custom LaTeX preamble macro"
-msgstr "自定义LaTeX导言区"
+msgstr "自定义LaTeX导言区宏"
 
 #: src/frontends/qt4/ui/OutputUi.ui:113
 msgid "XHTML Output Options"
@@ -2793,7 +2802,7 @@ msgstr "XHTML输出选项"
 
 #: src/frontends/qt4/ui/OutputUi.ui:122
 msgid "Whether to comply strictly with XHTML 1.1."
-msgstr ""
+msgstr "是否严格遵循 XHTML 1.1规范"
 
 #: src/frontends/qt4/ui/OutputUi.ui:125
 msgid "&Strict XHTML 1.1"
@@ -2801,7 +2810,7 @@ msgstr "严格XHTML 1.1"
 
 #: src/frontends/qt4/ui/OutputUi.ui:138
 msgid "&Math output:"
-msgstr "数学输出"
+msgstr "数学输出(&M)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:154
 msgid "Format to use for math output."
@@ -2838,11 +2847,11 @@ msgstr "数学输出中图片的缩放因子"
 #: src/frontends/qt4/ui/OutputUi.ui:222
 #, fuzzy
 msgid "Write CSS to File"
-msgstr "打印到文件"
+msgstr "把CSS写入文件"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:28
 msgid "&Use hyperref support"
-msgstr "使用 hyperref"
+msgstr "使用 hyperref (&U)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:53
 msgid "&General"
@@ -2850,7 +2859,7 @@ msgstr "常规(&G)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:91
 msgid "Header Information"
-msgstr "元信息"
+msgstr "PDF元信息"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:103
 msgid "&Title:"
@@ -2871,15 +2880,15 @@ msgstr "关键词(&K)："
 #: src/frontends/qt4/ui/PDFSupportUi.ui:166
 msgid ""
 "If not stated explicitly, fill title and author from appropriate environments"
-msgstr "未定义时，使用环境缺省值。"
+msgstr "未定义时，使用环境缺省值"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:169
 msgid "Automatically fi&ll header"
-msgstr "自动填充元信息"
+msgstr "自动填充元信息(&l)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:176
 msgid "Enable fullscreen PDF presentation"
-msgstr "允许全屏播放"
+msgstr "启用全屏PDF播放"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:179
 msgid "Load in &fullscreen mode"
@@ -2907,7 +2916,7 @@ msgstr "超链接彩色显示(&o)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:249
 msgid "Bibliographical backreferences"
-msgstr "文献反向链接"
+msgstr "参考文献加入反向超链接"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:252
 msgid "B&ackreferences:"
@@ -2929,7 +2938,7 @@ msgstr "书签编号(&N)"
 #: src/frontends/qt4/ui/PDFSupportUi.ui:321
 #, fuzzy
 msgid "&Open bookmark tree"
-msgstr "打开书签(&O)"
+msgstr "打开书签树(&O)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:346
 msgid "Number of levels"
@@ -3090,7 +3099,7 @@ msgstr "占位内容垂直间距"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:83
 msgid "&Vertical Phantom"
-msgstr "垂直占位"
+msgstr "垂直占位(&V)"
 
 #: src/frontends/qt4/ui/PrefColorsUi.ui:46
 msgid "A&lter..."
@@ -3340,7 +3349,7 @@ msgstr "备份文档(&B)，每隔"
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:120
 #, fuzzy
 msgid "&minutes"
-msgstr "分钟"
+msgstr "分钟(&m)"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:145
 msgid ""
@@ -3348,12 +3357,13 @@ msgid ""
 "format by default.\n"
 "Existing documents will still be saved in their current state (compressed or "
 "uncompressed)."
-msgstr ""
+msgstr "如果勾选这个，新文档将默认以压缩二进制形式存储"
+"现存的文件仍以原状保存"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
 #, fuzzy
 msgid "&Save new documents compressed by default"
-msgstr "保存为文档缺省设定"
+msgstr "保存为文档缺省设定(&S)"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
 msgid ""
@@ -4443,7 +4453,7 @@ msgstr "快捷键(&S)"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:117
 msgid "&Function:"
-msgstr "函数(&F)"
+msgstr "功能(&F)"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:130
 msgid ""
@@ -4461,7 +4471,7 @@ msgstr "拼写检查器"
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:43
 msgid ""
 "The checked language. Switching this alters the language of the checked word."
-msgstr ""
+msgstr "检查的语言，切换此项以改变检查语言"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:59
 msgid "Unknown word:"
@@ -4473,15 +4483,15 @@ msgstr "当前词"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:85
 msgid "&Find Next"
-msgstr "查找下一个"
+msgstr "查找下一个(&F)"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:92
 msgid "Re&placement:"
-msgstr "替换:"
+msgstr "替换(&p):"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:105
 msgid "Replace with selected word"
-msgstr "以当前词替换"
+msgstr "以当前选中词替换"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:130
 msgid "Replace word with current choice"
@@ -4489,7 +4499,7 @@ msgstr "用当前选中词替换"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:146
 msgid "S&uggestions:"
-msgstr "建议:"
+msgstr "建议(&u):"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:181
 msgid "Ignore this word"
@@ -4552,11 +4562,11 @@ msgstr "边框设定"
 
 #: src/frontends/qt4/ui/TabularUi.ui:118
 msgid "Merge cells of different rows"
-msgstr ""
+msgstr "把不同列的单元格合并"
 
 #: src/frontends/qt4/ui/TabularUi.ui:121
 msgid "M&ultirow"
-msgstr ""
+msgstr "多列(&u)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:133
 #, fuzzy
@@ -4566,12 +4576,12 @@ msgstr "竖直距离(&V)"
 #: src/frontends/qt4/ui/TabularUi.ui:146
 #, fuzzy
 msgid "Optional vertical offset"
-msgstr "竖直距离(&V)"
+msgstr "可选的垂直偏移"
 
 #: src/frontends/qt4/ui/TabularUi.ui:164
 #, fuzzy
 msgid "Cell setting"
-msgstr "注释设置"
+msgstr "单元格设置"
 
 #: src/frontends/qt4/ui/TabularUi.ui:172
 msgid "Rotate this cell by 90 degrees"
@@ -4580,12 +4590,12 @@ msgstr "旋转此单元90度"
 #: src/frontends/qt4/ui/TabularUi.ui:188 src/frontends/qt4/ui/TabularUi.ui:332
 #, fuzzy
 msgid "rotation angle"
-msgstr "文献引用风格"
+msgstr "文献引用样式"
 
 #: src/frontends/qt4/ui/TabularUi.ui:207 src/frontends/qt4/ui/TabularUi.ui:351
 #, fuzzy
 msgid "degrees"
-msgstr "绿"
+msgstr "度"
 
 #: src/frontends/qt4/ui/TabularUi.ui:238
 #, fuzzy
@@ -4600,7 +4610,7 @@ msgstr "宽度(&W)："
 #: src/frontends/qt4/ui/TabularUi.ui:260
 #, fuzzy
 msgid "Verti&cal alignment:"
-msgstr "垂直排列"
+msgstr "垂直排列(&c)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:270
 #, fuzzy
@@ -4609,12 +4619,12 @@ msgstr "垂直排列"
 
 #: src/frontends/qt4/ui/TabularUi.ui:316
 msgid "Rotate the table by 90 degrees"
-msgstr "旋转此表格90度"
+msgstr "旋转此表格 90 度"
 
 #: src/frontends/qt4/ui/TabularUi.ui:319
 #, fuzzy
 msgid "&Rotate"
-msgstr "旋转"
+msgstr "旋转(&R)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:366
 #, fuzzy
@@ -4744,6 +4754,7 @@ msgstr "旋转表格"
 #: src/frontends/qt4/ui/TabularUi.ui:1310
 msgid "Select for tables that span multiple pages"
 msgstr "选中此项如果表格将跨越多页"
+"注意长表格不能用于浮动表格环境"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1313
 #, fuzzy
@@ -4777,7 +4788,7 @@ msgstr "页首:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1364
 msgid "Repeat this row as header on every (except the first) page"
-msgstr "在每页重复此行为表头"
+msgstr "在每页重复此行为表头（除第一页）"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1367
 #: src/frontends/qt4/ui/TabularUi.ui:1404
@@ -7351,7 +7362,7 @@ msgstr "Acknowledgements."
 
 #: lib/layouts/amsart.layout:3
 msgid "American Mathematical Society (AMS) Article"
-msgstr ""
+msgstr "American Mathematical Society (AMS) Article"
 
 #: lib/layouts/amsart.layout:75 lib/layouts/amsbook.layout:84
 #: lib/layouts/beamer.layout:278 lib/layouts/egs.layout:603
@@ -7364,12 +7375,12 @@ msgstr "节*"
 #: lib/layouts/amsart.layout:85
 #, fuzzy
 msgid "SpecialSection"
-msgstr "Special-section"
+msgstr "SpecialSection 特殊节"
 
 #: lib/layouts/amsart.layout:94
 #, fuzzy
 msgid "SpecialSection*"
-msgstr "Special-section"
+msgstr "SpecialSection* 特殊节"
 
 #: lib/layouts/amsart.layout:96 lib/layouts/beamer.layout:280
 #: lib/layouts/beamer.layout:339 lib/layouts/beamer.layout:398
@@ -7398,7 +7409,7 @@ msgstr "子小节*"
 
 #: lib/layouts/amsbook.layout:3
 msgid "American Mathematical Society (AMS) Book"
-msgstr ""
+msgstr "American Mathematical Society (AMS) Book"
 
 #: lib/layouts/amsbook.layout:4 lib/layouts/book.layout:4
 #: lib/layouts/ctex-book.layout:4 lib/layouts/extbook.layout:4
@@ -7409,7 +7420,7 @@ msgstr ""
 #: lib/layouts/tbook.layout:4 lib/layouts/tufte-book.layout:4
 #, fuzzy
 msgid "Books"
-msgstr "书签(&B)"
+msgstr "书"
 
 #: lib/layouts/amsbook.layout:136
 msgid "Chapter Exercises"
@@ -7417,7 +7428,7 @@ msgstr "章练习"
 
 #: lib/layouts/apa.layout:3
 msgid "American Psychological Association (APA)"
-msgstr ""
+msgstr "American Psychological Association (APA)"
 
 #: lib/layouts/apa.layout:54
 msgid "RightHeader"
@@ -7676,18 +7687,18 @@ msgstr "展示"
 #: lib/layouts/beamer.layout:1318
 #, fuzzy
 msgid "Overlay Specifications|v"
-msgstr "选中文本(S)|S"
+msgstr "重叠指定"
 
 #: lib/layouts/beamer.layout:87 lib/layouts/beamer.layout:121
 #: lib/layouts/beamer.layout:161
 msgid "Overlay specifications for this list"
-msgstr ""
+msgstr "指定这个列表的重叠方式"
 
 #: lib/layouts/beamer.layout:96 lib/layouts/beamer.layout:134
 #: lib/layouts/beamer.layout:170 lib/layouts/beamer.layout:712
 #: lib/layouts/powerdot.layout:284 lib/layouts/powerdot.layout:336
 msgid "Item Overlay Specifications"
-msgstr ""
+msgstr "项目重叠指定"
 
 #: lib/layouts/beamer.layout:97 lib/layouts/beamer.layout:135
 #: lib/layouts/beamer.layout:171 lib/layouts/beamer.layout:555
@@ -7704,25 +7715,25 @@ msgstr "幻灯片"
 #: lib/layouts/beamer.layout:172 lib/layouts/beamer.layout:714
 #: lib/layouts/powerdot.layout:286 lib/layouts/powerdot.layout:338
 msgid "Overlay specifications for this item"
-msgstr ""
+msgstr "指定这个项目的重叠方式"
 
 #: lib/layouts/beamer.layout:126
 #, fuzzy
 msgid "Mini Template"
-msgstr "模板(&T)"
+msgstr "小模板"
 
 #: lib/layouts/beamer.layout:127
 msgid "Mini template for this list (see beamer manual for details)"
-msgstr ""
+msgstr "最小的模板，见beamer手册"
 
 #: lib/layouts/beamer.layout:166
 #, fuzzy
 msgid "Longest label|s"
-msgstr "最长标签(&n)"
+msgstr "最长标签"
 
 #: lib/layouts/beamer.layout:167
 msgid "The longest label in this list (to determine the indendation width)"
-msgstr ""
+msgstr "最长的标签（用来决定缩排的宽度）"
 
 #: lib/layouts/beamer.layout:197 lib/layouts/beamer.layout:237
 #: lib/layouts/beamer.layout:296 lib/layouts/beamer.layout:355
@@ -7755,14 +7766,14 @@ msgstr ""
 #: lib/layouts/beamer.layout:405
 #, fuzzy
 msgid "Mode Specification|S"
-msgstr "Close Section"
+msgstr "模式指定"
 
 #: lib/layouts/beamer.layout:204 lib/layouts/beamer.layout:257
 #: lib/layouts/beamer.layout:288 lib/layouts/beamer.layout:316
 #: lib/layouts/beamer.layout:347 lib/layouts/beamer.layout:375
 #: lib/layouts/beamer.layout:406
 msgid "Specify in which mode (article, presentation etc.) this header appears"
-msgstr ""
+msgstr "指定标头的模式(article, presentation等)"
 
 #: lib/layouts/beamer.layout:210 lib/layouts/memoir.layout:57
 #: lib/layouts/tufte-handout.layout:41 lib/layouts/scrclass.inc:127
@@ -8135,7 +8146,7 @@ msgstr "警告区："
 #: lib/layouts/beamer.layout:1016 lib/layouts/beamer.layout:1039
 #, fuzzy
 msgid "Titling"
-msgstr "程序列表"
+msgstr "标题"
 
 #: lib/layouts/beamer.layout:905
 msgid "Short title which appears in the sidebar/header"
@@ -8149,7 +8160,7 @@ msgstr "BeginPlainFrame"
 #: lib/layouts/beamer.layout:937
 #, fuzzy
 msgid "Short Subtitle|S"
-msgstr "短标题(S)|S"
+msgstr "短小标题(S)|S"
 
 #: lib/layouts/beamer.layout:938
 msgid "Short subtitle which appears in the sidebar/header"
@@ -8162,7 +8173,7 @@ msgstr ""
 #: lib/layouts/beamer.layout:984
 #, fuzzy
 msgid "Short Institute|S"
-msgstr "短标题(S)|S"
+msgstr "短机构名(S)|S"
 
 #: lib/layouts/beamer.layout:985
 msgid "Short institute which appears in the sidebar/header"
@@ -8171,12 +8182,12 @@ msgstr ""
 #: lib/layouts/beamer.layout:994
 #, fuzzy
 msgid "InstituteMark"
-msgstr "Institute"
+msgstr "InstituteMark"
 
 #: lib/layouts/beamer.layout:1028
 #, fuzzy
 msgid "Short Date|S"
-msgstr "短标题(S)|S"
+msgstr "短日期(S)|S"
 
 #: lib/layouts/beamer.layout:1029
 msgid "Short date which appears in the sidebar/header"
@@ -8216,7 +8227,7 @@ msgstr "推论."
 #: lib/layouts/beamer.layout:1513
 #, fuzzy
 msgid "Action Specifications|S"
-msgstr "选中文本(S)|S"
+msgstr ""
 
 #: lib/layouts/beamer.layout:1201 lib/layouts/theorems-ams-bytype.inc:65
 #: lib/layouts/theorems-ams.inc:37 lib/layouts/theorems-bytype.inc:35
@@ -8224,7 +8235,7 @@ msgstr "选中文本(S)|S"
 #: lib/layouts/theorems-named.module:21
 #, fuzzy
 msgid "Additional Theorem Text"
-msgstr "其他LaTeX选项"
+msgstr "其他定理文本"
 
 #: lib/layouts/beamer.layout:1202 lib/layouts/theorems-ams-bytype.inc:66
 #: lib/layouts/theorems-ams.inc:38 lib/layouts/theorems-bytype.inc:36
@@ -8336,27 +8347,27 @@ msgstr "InvisibleText"
 #: lib/layouts/beamer.layout:1479 lib/layouts/beamer.layout:1481
 #, fuzzy
 msgid "Alternative"
-msgstr "其他语言(&t):"
+msgstr "替代文字:"
 
 #: lib/layouts/beamer.layout:1495
 #, fuzzy
 msgid "Default Text"
-msgstr "缺省(t)|t"
+msgstr "缺省文字"
 
 #: lib/layouts/beamer.layout:1496
 #, fuzzy
 msgid "Enter the default text here"
-msgstr "缺省打印机名"
+msgstr "在此输入缺省文字"
 
 #: lib/layouts/beamer.layout:1502
 #, fuzzy
 msgid "Beamer Note"
-msgstr "New Note:"
+msgstr "Beamer Note"
 
 #: lib/layouts/beamer.layout:1519
 #, fuzzy
 msgid "Note Options"
-msgstr "数学选项"
+msgstr "Note选项"
 
 #: lib/layouts/beamer.layout:1520
 msgid "Specifiy note options (see beamer manual)"
@@ -8411,20 +8422,20 @@ msgstr "New Note:"
 
 #: lib/layouts/book.layout:3
 msgid "Book (Standard Class)"
-msgstr ""
+msgstr "书 (Standard Class)"
 
 #: lib/layouts/broadway.layout:3
 msgid "Broadway"
-msgstr ""
+msgstr "百老汇(Broadway)"
 
 #: lib/layouts/broadway.layout:4 lib/layouts/hollywood.layout:4
 #, fuzzy
 msgid "Scripts"
-msgstr "下标"
+msgstr "剧本"
 
 #: lib/layouts/broadway.layout:34 lib/layouts/hollywood.layout:41
 msgid "Dialogue"
-msgstr "Dialogue"
+msgstr "对话"
 
 #: lib/layouts/broadway.layout:45 lib/layouts/hollywood.layout:209
 msgid "Narrative"
@@ -8456,7 +8467,7 @@ msgstr "AT RISE:"
 
 #: lib/layouts/broadway.layout:124 lib/layouts/hollywood.layout:145
 msgid "Speaker"
-msgstr "扬声器"
+msgstr "说话者"
 
 #: lib/layouts/broadway.layout:137 lib/layouts/hollywood.layout:160
 msgid "Parenthetical"
@@ -14732,7 +14743,7 @@ msgstr ""
 #: lib/layouts/linguistics.module:164
 #, fuzzy
 msgid "Expression"
-msgstr "使用正则表达式(&x)"
+msgstr "正则表达式"
 
 #: lib/layouts/linguistics.module:166
 #, fuzzy
@@ -14826,7 +14837,7 @@ msgstr ""
 #: lib/layouts/multicol.module:2 lib/layouts/multicol.module:11
 #, fuzzy
 msgid "Multiple Columns"
-msgstr "多列(&M)"
+msgstr "多列"
 
 #: lib/layouts/multicol.module:7
 msgid ""
@@ -14843,12 +14854,12 @@ msgstr "列数"
 #: lib/layouts/multicol.module:20
 #, fuzzy
 msgid "Insert the number of columns here"
-msgstr "无法改变列数至 '%1$s'"
+msgstr "插入列数'"
 
 #: lib/layouts/multicol.module:26
 #, fuzzy
 msgid "An optional preface"
-msgstr "额外空间"
+msgstr "可选序言"
 
 #: lib/layouts/multicol.module:29
 #, fuzzy
@@ -14933,7 +14944,7 @@ msgstr "项目列表"
 #: lib/layouts/paralist.module:65
 #, fuzzy
 msgid "CompactItem"
-msgstr "NoteItem"
+msgstr ""
 
 #: lib/layouts/paralist.module:72
 #, fuzzy
@@ -14948,57 +14959,57 @@ msgstr "段落"
 #: lib/layouts/paralist.module:81
 #, fuzzy
 msgid "As Paragraph Enumerate Options"
-msgstr "Sweave选项"
+msgstr ""
 
 #: lib/layouts/paralist.module:86
 #, fuzzy
 msgid "InParagraphEnum"
-msgstr "段落"
+msgstr ""
 
 #: lib/layouts/paralist.module:90
 #, fuzzy
 msgid "In Paragraph Enumerate Options"
-msgstr "Sweave选项"
+msgstr ""
 
 #: lib/layouts/paralist.module:95
 #, fuzzy
 msgid "CompactEnum"
-msgstr "信息名称："
+msgstr "："
 
 #: lib/layouts/paralist.module:102
 #, fuzzy
 msgid "Compact Enumerate Options"
-msgstr "Sweave选项"
+msgstr ""
 
 #: lib/layouts/paralist.module:107
 #, fuzzy
 msgid "AsParagraphDescr"
-msgstr "段落"
+msgstr ""
 
 #: lib/layouts/paralist.module:111
 #, fuzzy
 msgid "As Paragraph Description Options"
-msgstr "描述(&D)："
+msgstr ""
 
 #: lib/layouts/paralist.module:116
 #, fuzzy
 msgid "InParagraphDescr"
-msgstr "段落"
+msgstr ""
 
 #: lib/layouts/paralist.module:120
 #, fuzzy
 msgid "In Paragraph Description Options"
-msgstr "描述(&D)："
+msgstr ""
 
 #: lib/layouts/paralist.module:125
 #, fuzzy
 msgid "CompactDescr"
-msgstr "计算机"
+msgstr ""
 
 #: lib/layouts/paralist.module:132
 #, fuzzy
 msgid "Compact Description Options"
-msgstr "描述(&D)："
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:2
 #, fuzzy
@@ -15028,7 +15039,7 @@ msgstr ""
 #: lib/layouts/pdfcomment.module:30
 #, fuzzy
 msgid "Name of the Avatar"
-msgstr "缺省打印机名"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:41
 msgid "Define PDF-Comment Style"
@@ -15042,7 +15053,7 @@ msgstr "注释标记"
 #: lib/layouts/pdfcomment.module:47
 #, fuzzy
 msgid "Name of the style"
-msgstr "无语言"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:52
 msgid "Define PDF-Comment List Style"
@@ -15055,7 +15066,7 @@ msgstr ""
 #: lib/layouts/pdfcomment.module:58
 #, fuzzy
 msgid "Name of the list style"
-msgstr "缺省打印机名"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:63
 msgid "Set PDF-Comment List Style"
@@ -15091,7 +15102,7 @@ msgstr ""
 #: lib/layouts/pdfcomment.module:93
 #, fuzzy
 msgid "PDF-Annotation"
-msgstr "记号"
+msgstr "PDF记号"
 
 #: lib/layouts/pdfcomment.module:97 src/frontends/qt4/GuiClipboard.cpp:174
 msgid "PDF"
@@ -15342,7 +15353,7 @@ msgstr "缺省打印机(&p)"
 #: lib/layouts/pdfform.module:141
 #, fuzzy
 msgid "Submit Button Style"
-msgstr "文献引用风格"
+msgstr "文献引用样式"
 
 #: lib/layouts/pdfform.module:144
 #, fuzzy
@@ -15352,7 +15363,7 @@ msgstr "缺省打印机(&p)"
 #: lib/layouts/pdfform.module:147
 #, fuzzy
 msgid "Push Button Style"
-msgstr "文献引用风格"
+msgstr "文献引用样式"
 
 #: lib/layouts/pdfform.module:150
 #, fuzzy
@@ -15372,7 +15383,7 @@ msgstr "缺省打印机(&p)"
 #: lib/layouts/pdfform.module:159
 #, fuzzy
 msgid "Reset Button Style"
-msgstr "文献引用风格"
+msgstr "文献引用样式"
 
 #: lib/layouts/pdfform.module:162
 #, fuzzy
@@ -15411,7 +15422,7 @@ msgstr "缺省打印机(&p)"
 #: lib/layouts/pdfform.module:183
 #, fuzzy
 msgid "Radio Box Style"
-msgstr "文献引用风格"
+msgstr "文献引用样式"
 
 #: lib/layouts/pdfform.module:186
 #, fuzzy
@@ -18890,26 +18901,26 @@ msgstr "LaTeX日志(L)|L"
 #: lib/ui/stdmenus.inc:527
 #, fuzzy
 msgid "Start Appendix Here|x"
-msgstr "开始附录(A)|A"
+msgstr "从此开始附录(x)|x"
 
 #: lib/ui/stdmenus.inc:531
 #, fuzzy
 msgid "View Master Document|M"
-msgstr "主文档"
+msgstr "查看主文档(M)|M"
 
 #: lib/ui/stdmenus.inc:532
 #, fuzzy
 msgid "Update Master Document|a"
-msgstr "主文档"
+msgstr "更新主文档(a)|a"
 
 #: lib/ui/stdmenus.inc:534
 #, fuzzy
 msgid "Compressed|o"
-msgstr "压缩文档(m)|m"
+msgstr "压缩文档(o)|o"
 
 #: lib/ui/stdmenus.inc:535
 msgid "Disable Editing|E"
-msgstr ""
+msgstr "禁用编辑(E)|E"
 
 #: lib/ui/stdmenus.inc:540
 msgid "Track Changes|T"
@@ -18993,7 +19004,7 @@ msgstr "同义词(T)...|T"
 
 #: lib/ui/stdmenus.inc:582
 msgid "Statistics...|a"
-msgstr "字数统计..."
+msgstr "字数统计(a)...|a"
 
 #: lib/ui/stdmenus.inc:583
 msgid "Check TeX|h"
@@ -19009,7 +19020,7 @@ msgstr "文档比较(C)...|C"
 
 #: lib/ui/stdmenus.inc:590
 msgid "Reconfigure|R"
-msgstr "重配置(R)|R"
+msgstr "重新配置LyX(R)|R"
 
 #: lib/ui/stdmenus.inc:591
 msgid "Preferences...|P"
@@ -19224,7 +19235,7 @@ msgstr "更新主文档"
 
 #: lib/ui/stdtoolbars.inc:105
 msgid "Enable Forward/Reverse Search"
-msgstr ""
+msgstr "启用编辑器与输出间的正向/反向搜索支持（如SyncTeX）"
 
 #: lib/ui/stdtoolbars.inc:107
 msgid "View other formats"
@@ -22677,20 +22688,20 @@ msgstr ""
 #: lib/ui/stdtoolbars.inc:1100
 #, fuzzy
 msgid "wasypropto"
-msgstr "propto"
+msgstr "wasypropto"
 
 #: lib/ui/stdtoolbars.inc:1101
 msgid "logof"
-msgstr ""
+msgstr "logof"
 
 #: lib/ui/stdtoolbars.inc:1102
 msgid "Join"
-msgstr ""
+msgstr "Join"
 
 #: lib/ui/stdtoolbars.inc:1105
 #, fuzzy
 msgid "Negative Relations (extended)"
-msgstr "Relacions negatives AMS "
+msgstr "Negative Relations (extended)"
 
 #: lib/ui/stdtoolbars.inc:1106
 msgid "nless"
@@ -22783,12 +22794,12 @@ msgstr "nsucceq"
 #: lib/ui/stdtoolbars.inc:1128
 #, fuzzy
 msgid "precneqq"
-msgstr "preceq"
+msgstr "precneqq"
 
 #: lib/ui/stdtoolbars.inc:1129
 #, fuzzy
 msgid "succneqq"
-msgstr "succeq"
+msgstr "succneqq"
 
 #: lib/ui/stdtoolbars.inc:1130
 msgid "precnsim"
@@ -24530,7 +24541,7 @@ msgstr "OpenOffice.Org (sxw)"
 
 #: lib/configure.py:711
 msgid "Rich Text Format"
-msgstr "带格式文本"
+msgstr "带格式文本(RTF)"
 
 #: lib/configure.py:712
 msgid "MS Word"
@@ -24551,7 +24562,7 @@ msgstr ""
 #: lib/configure.py:716
 #, fuzzy
 msgid "date command"
-msgstr "下一命令"
+msgstr "日期命令"
 
 #: lib/configure.py:717
 msgid "Table (CSV)"
@@ -24581,12 +24592,12 @@ msgstr "LyX 1.6.x"
 #: lib/configure.py:724
 #, fuzzy
 msgid "LyX 2.0.x"
-msgstr "LyX 1.3.x"
+msgstr "LyX 2.0.x"
 
 #: lib/configure.py:725
 #, fuzzy
 msgid "LyX 2.1.x"
-msgstr "LyX 1.3.x"
+msgstr "LyX 2.1.x"
 
 #: lib/configure.py:726
 msgid "CJK LyX 1.4.x (big5)"
@@ -24628,15 +24639,15 @@ msgstr "Enhanced Metafile"
 
 #: lib/configure.py:847
 msgid "LyXBlogger"
-msgstr ""
+msgstr "LyXBlogger"
 
 #: lib/configure.py:1082
 msgid "LyX Archive (zip)"
-msgstr ""
+msgstr "LyX Archive (zip)"
 
 #: lib/configure.py:1085
 msgid "LyX Archive (tar.gz)"
-msgstr ""
+msgstr "LyX Archive (tar.gz)"
 
 #: src/BiblioInfo.cpp:318 src/frontends/qt4/GuiDocument.cpp:2339
 #, c-format
@@ -24660,7 +24671,7 @@ msgstr "未知年份"
 #: src/BiblioInfo.cpp:879
 #, fuzzy
 msgid "Bibliography entry not found!"
-msgstr "生成参考文献"
+msgstr "找不到参考文献"
 
 #: src/Buffer.cpp:403
 msgid "Disk Error: "
@@ -24670,7 +24681,7 @@ msgstr "磁盘错误："
 #, fuzzy, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
-msgstr "无法删除临时目录 %1$s"
+msgstr "无法创建临时目录 %1$s"
 
 #: src/Buffer.cpp:529
 msgid "LyX attempted to close a document that had unsaved changes!\n"
@@ -24879,7 +24890,7 @@ msgstr ""
 #: src/Buffer.cpp:1502
 #, c-format
 msgid "Saving document %1$s..."
-msgstr "保存文件 %1$s..."
+msgstr "正在保存文件 %1$s..."
 
 #: src/Buffer.cpp:1517
 msgid " could not write file!"
@@ -24936,14 +24947,13 @@ msgid ""
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
-"Some characters of your document are probably not representable in the "
-"chosen encoding.\n"
-"Changing the document encoding to utf8 could help."
+"部分字符可能无法用所选编码表示\n"
+"尝试将文件编码换为 utf-8."
 
 #: src/Buffer.cpp:1708
 #, fuzzy
 msgid "iconv conversion failed"
-msgstr "转换出错"
+msgstr "iconv转换出错"
 
 #: src/Buffer.cpp:1713
 #, fuzzy
@@ -24953,7 +24963,7 @@ msgstr "转换出错"
 #: src/Buffer.cpp:1824
 #, fuzzy
 msgid "Uncodable character in file path"
-msgstr "作者名中存在非法字符"
+msgstr "文件路径中存在非法字符"
 
 #: src/Buffer.cpp:1826
 #, c-format
@@ -24975,7 +24985,7 @@ msgstr "执行 chktex..."
 
 #: src/Buffer.cpp:2186
 msgid "chktex failure"
-msgstr "chktex执行出错"
+msgstr "chktex 执行出错"
 
 #: src/Buffer.cpp:2187
 msgid "Could not run chktex successfully."
@@ -25119,7 +25129,7 @@ msgstr "文档已被成功修复。"
 
 #: src/Buffer.cpp:4373
 msgid "Document was NOT successfully recovered."
-msgstr "文档未被成功修复。"
+msgstr "文档 未 被成功修复。"
 
 #: src/Buffer.cpp:4374
 #, fuzzy, c-format
@@ -25134,7 +25144,7 @@ msgstr "删除紧急保存的文件吗？"
 
 #: src/Buffer.cpp:4379 src/Buffer.cpp:4392
 msgid "&Keep"
-msgstr "固定"
+msgstr "保留(&K)"
 
 #: src/Buffer.cpp:4383
 msgid "Emergency file deleted"
@@ -25142,7 +25152,7 @@ msgstr "紧急保存的文件已删除。"
 
 #: src/Buffer.cpp:4384
 msgid "Do not forget to save your file now!"
-msgstr "别忘了现在就保存你分文件。"
+msgstr "别忘了现在保存你的文件。"
 
 #: src/Buffer.cpp:4391
 msgid "Remove emergency file now?"
@@ -25190,25 +25200,25 @@ msgstr "文档 %1$s 已打开"
 #: src/Buffer.cpp:4990
 #, fuzzy, c-format
 msgid "Could not reload document %1$s."
-msgstr "无法读取文档"
+msgstr "无法读取文档%1$s"
 
 #: src/BufferParams.cpp:475
 msgid ""
 "The LaTeX package amsmath is only used if AMS formula types or symbols from "
 "the AMS math toolbars are inserted into formulas"
-msgstr ""
+msgstr "只有在文章中插入 AMS 公式类型或符号, 才会加载 amsmath 套件"
 
 #: src/BufferParams.cpp:477
 msgid ""
 "The LaTeX package amssymb is only used if symbols from the AMS math toolbars "
 "are inserted into formulas"
-msgstr ""
+msgstr "只有在文章中插入 AMS 的数学符号, amssymb 套件才会载入"
 
 #: src/BufferParams.cpp:479
 msgid ""
 "The LaTeX package cancel is only used if \\cancel commands are used in "
 "formulas"
-msgstr ""
+msgstr "只有在文章中插入 \\cancel 等命令时, cancel 套件才会载入"
 
 #: src/BufferParams.cpp:481
 msgid ""
@@ -25220,37 +25230,40 @@ msgstr ""
 msgid ""
 "The LaTeX package mathdots is only used if the command \\iddots is inserted "
 "into formulas"
-msgstr ""
-
+msgstr "只有在文章中插入 \\iddots 等命令时, mathdots 套件才会载入"
 #: src/BufferParams.cpp:485
 msgid ""
 "The LaTeX package mathtools is only used if some mathematical relations are "
 "inserted into formulas"
-msgstr ""
+msgstr "只有在文章中插入一些数学的关系符号命令时, mathtools 套件才会载入"
+
 
 #: src/BufferParams.cpp:487
 msgid ""
 "The LaTeX package mhchem is only used if either the command \\ce or \\cf is "
 "inserted into formulas"
-msgstr ""
+msgstr "只有在文章中插入 \\ce 或 \\cf 等命令时, mhchem 套件才会载入. (在数学模式中写"
+"化学式)"
 
 #: src/BufferParams.cpp:489
 msgid ""
 "The LaTeX package stackrel is only used if the command \\stackrel with "
 "subscript is inserted into formulas"
-msgstr ""
+msgstr "只有在文章中插入 \\stackrel 等命令时, stackrel 套件才会载入"
+
 
 #: src/BufferParams.cpp:491
 msgid ""
 "The LaTeX package stmaryrd is only used if symbols from the St Mary's Road "
 "symbol font for theoretical computer science are inserted into formulas"
-msgstr ""
+msgstr "只有在文章中插入来自 St Mary's Road 的理论电脑科学符号时, stmaryrd 套件才会载"
+"入"
 
 #: src/BufferParams.cpp:493
 msgid ""
 "The LaTeX package undertilde is only used if you use the math frame "
 "decoration 'utilde'"
-msgstr ""
+msgstr "只有在文章中插入下划波浪线 'utilde' 图案时，undertilde 套件才会载入"
 
 #: src/BufferParams.cpp:665
 #, c-format
@@ -25274,7 +25287,7 @@ msgstr "未知文档类"
 #: src/insets/InsetHyperlink.cpp:198
 #, fuzzy
 msgid "Uncodable characters"
-msgstr "非法字符"
+msgstr "无法编码的字符"
 
 #: src/BufferParams.cpp:1911
 #, c-format
@@ -25295,12 +25308,12 @@ msgstr "LyX 警告："
 #: src/insets/InsetListings.cpp:169 src/insets/InsetListings.cpp:177
 #: src/mathed/MathExtern.cpp:1473
 msgid "uncodable character"
-msgstr "非法字符"
+msgstr "无法编码的字符"
 
 #: src/BufferParams.cpp:2017
 #, fuzzy
 msgid "Uncodable character in user preamble"
-msgstr "作者名中存在非法字符"
+msgstr "作者名中存在无法编码的字符"
 
 #: src/BufferParams.cpp:2019
 #, c-format
@@ -25395,19 +25408,19 @@ msgstr "无进一步重做信息"
 
 #: src/BufferView.cpp:1586
 msgid "Mark off"
-msgstr "Mark off"
+msgstr "关闭标记"
 
 #: src/BufferView.cpp:1592
 msgid "Mark on"
-msgstr "Mark on"
+msgstr "启用标记"
 
 #: src/BufferView.cpp:1599
 msgid "Mark removed"
-msgstr "Mark removed"
+msgstr "移除标记"
 
 #: src/BufferView.cpp:1602
 msgid "Mark set"
-msgstr "Mark set"
+msgstr "设置标记"
 
 #: src/BufferView.cpp:1658
 msgid "Statistics for the selection:"
@@ -25470,7 +25483,7 @@ msgstr ""
 
 #: src/BufferView.cpp:2358
 msgid "Inverse Search Failed"
-msgstr ""
+msgstr "反向查找失败"
 
 #: src/BufferView.cpp:2359
 msgid ""
@@ -25605,7 +25618,7 @@ msgstr "绿"
 #: src/Color.cpp:212
 #, fuzzy
 msgid "lightgray"
-msgstr "右对齐"
+msgstr ""
 
 #: src/Color.cpp:213
 msgid "lime"
@@ -25679,11 +25692,11 @@ msgstr "自动完成"
 #: src/Color.cpp:232
 #, fuzzy
 msgid "non-unique inline completion"
-msgstr "嵌入(&I)"
+msgstr ""
 
 #: src/Color.cpp:234
 msgid "previewed snippet"
-msgstr "预览图"
+msgstr "预览片段"
 
 #: src/Color.cpp:235
 msgid "note label"
@@ -27559,7 +27572,7 @@ msgstr "否"
 
 #: src/VCBackend.cpp:1583
 msgid "SVN File Locking"
-msgstr ""
+msgstr "SVN 文件锁定"
 
 #: src/VCBackend.cpp:1584 src/VCBackend.cpp:1589
 msgid "Locking property unset."
@@ -27731,22 +27744,24 @@ msgstr "手册"
 msgid ""
 "%1$s: the end was reached while searching forward.\n"
 "Continue searching from the beginning?"
-msgstr ""
+msgstr "%1$s: 已经搜索到文件末端\n"
+"从头继续搜索?"
 
 #: src/frontends/qt4/FindAndReplace.cpp:293
 #, c-format
 msgid ""
 "%1$s: the beginning was reached while searching backward.\n"
 "Continue searching from the end?"
-msgstr ""
+msgstr "%1$s: 已经搜索到文件头端\n"
+"从尾继续搜索?"
 
 #: src/frontends/qt4/FindAndReplace.cpp:315
 msgid "Advanced search in progress (press ESC to cancel) . . ."
-msgstr ""
+msgstr "高级搜索进行中（按下ESC以取消）"
 
 #: src/frontends/qt4/FindAndReplace.cpp:361
 msgid "Advanced search cancelled by user"
-msgstr ""
+msgstr "高级搜索被用户取消"
 
 #: src/frontends/qt4/FindAndReplace.cpp:379
 #: src/frontends/qt4/GuiSearch.cpp:139
@@ -27792,11 +27807,11 @@ msgstr "出错: LyX无法读取CREDIR文件\n"
 #: src/frontends/qt4/GuiAbout.cpp:94 src/frontends/qt4/GuiAbout.cpp:100
 #, fuzzy
 msgid "Please install correctly to see what has changed\n"
-msgstr "请正确安装LyX以便估计其他\n"
+msgstr "请正确安装LyX以查看更改内容\n"
 
 #: src/frontends/qt4/GuiAbout.cpp:95 src/frontends/qt4/GuiAbout.cpp:101
 msgid "for this version of LyX."
-msgstr ""
+msgstr "对于这个版本的LyX"
 
 #: src/frontends/qt4/GuiAbout.cpp:99
 #, fuzzy
@@ -28099,11 +28114,11 @@ msgstr "选择一个BibTeX数据库"
 
 #: src/frontends/qt4/GuiBibtex.cpp:447
 msgid "BibTeX Styles (*.bst)"
-msgstr "BibTeX 式样 (*.bst)"
+msgstr "BibTeX 样式 (*.bst)"
 
 #: src/frontends/qt4/GuiBibtex.cpp:449
 msgid "Select a BibTeX style"
-msgstr "选择一个BibTeX式样"
+msgstr "选择一个BibTeX样式"
 
 #: src/frontends/qt4/GuiBox.cpp:59
 #, fuzzy
@@ -32849,6 +32864,7 @@ msgstr "未知用户"
 #~ msgid "Included File Invalid"
 #~ msgstr "包含文件(d)...|d"
 
+
 #~ msgid "Unable to remove temporary directory"
 #~ msgstr "无法删除临时目录"
 
@@ -32880,6 +32896,7 @@ msgstr "未知用户"
 
 #~ msgid "The option to print only odd pages."
 #~ msgstr "仅打印奇数页的参数"
+
 
 #~ msgid "The option to reverse the order of the pages printed."
 #~ msgstr "反向打印的参数"
@@ -33002,6 +33019,7 @@ msgstr "未知用户"
 
 #~ msgid "TeX Code|X"
 #~ msgstr "TeX代码|X"
+
 
 #~ msgid "LyX-1.3.x Documents (*.lyx13)"
 #~ msgstr "LyX-1.3.x 文档 (*.lyx)"
@@ -33167,6 +33185,7 @@ msgstr "未知用户"
 #~ msgid "Table Caption"
 #~ msgstr "表格标题"
 
+
 #~ msgid "Captionabove"
 #~ msgstr "Captionabove"
 
@@ -33269,6 +33288,7 @@ msgstr "未知用户"
 
 #~ msgid "Memory problem"
 #~ msgstr "内存故障"
+
 
 #~ msgid "Utopia"
 #~ msgstr "Utopia"
@@ -33627,7 +33647,7 @@ msgstr "未知用户"
 #~ msgstr "数学花体族"
 
 #~ msgid "Math Fraktur Family"
-#~ msgstr "Math Fraktur Family"
+#~ msgstr "Math Fraktur 字族"
 
 #~ msgid "Math Roman Family"
 #~ msgstr "罗马数学字体"
@@ -33642,7 +33662,7 @@ msgstr "未知用户"
 #~ msgstr "普通文本字体"
 
 #~ msgid "Floatflt Figure"
-#~ msgstr "Floatflt Figure"
+#~ msgstr "Floatflt 图形"
 
 #~ msgid "Accept All Changes|A"
 #~ msgstr "接受所有变更(A)|A"
@@ -33675,7 +33695,7 @@ msgstr "未知用户"
 #~ msgstr "增加环境深度(i)|i"
 
 #~ msgid "Start Appendix Here|S"
-#~ msgstr "开始附录(S)|S"
+#~ msgstr "从此开始附录(S)|S"
 
 #~ msgid "Update|U"
 #~ msgstr "更新(U)|U"
