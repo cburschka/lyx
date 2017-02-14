@@ -185,6 +185,17 @@ export/.*/he/.*pdf4_texF
 export/doc/ru/(Intro|Tutorial)_(dvi3|pdf[45])_texF
 export/examples/ru/splash_(dvi3|pdf[45])_texF
 
+# Babel-Spanish uses  UTF-8 for auto-strings if it detects Xe/LuaTeX.
+# This leads to wrong output (see unreliableTests) and fails in some cases
+# unless the inputencoding is set to utf-8, too.
+#
+# ! Undefined control sequence.
+# <argument> ...art {link}{\Hy@tocdestname }{\nonumberline Ã
+#                                                   ndice alfabÃ©tico}\hyper...
+# l.393 ... Ãndice alfabÃ©tico}{175}{chapter*.10}
+export/doc/es/UserGuide_(dvi3|pdf5)_systemF
+
+
 # Gives the following error:
 # # ! Package hpstatement Error: H or P statement "H251"
 # # (hpstatement)                is not defined.
@@ -203,12 +214,9 @@ export/examples/(|de/|es/)tufte-(book|handout)_(dvi.*|pdf|pdf3|pdf4.*)
 # xy package:
 .*(|fr/)xy(pic|figure).*pdf5.*
 
-# Polyglossia + LuaTeX + \verb bug with Cyrillic and Greek:
-# when compiling with LuaTeX, the "verb" and "url" macros trigger a false
-# error (also with fonts supporting Cyrillic!) and spurious output
-# See https://github.com/reutenauer/polyglossia/issues/160
-export/examples/(ru|uk)/splash_(dvi3|pdf5)_systemF
-export/doc/(ru|uk)/Intro_(dvi3|pdf5)_systemF
+# command \textipa not defined with LuaTeX and Unicode fonts:
+export/examples/(|de/|es/|fr/)linguistics_(dvi3|pdf5)_systemF
+
 
 # Problem with Check and Slovak Babel support.
 # (reported per mail to Petr Tesa\v{r}\'ik, 2016-09-06)
