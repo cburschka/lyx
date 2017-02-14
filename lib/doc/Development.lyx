@@ -81,11 +81,12 @@ logicalmkup
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author 34634807 "Jean-Pierre"
 \end_header
 
 \begin_body
@@ -2704,6 +2705,26 @@ unreliable:nonstandard
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted 34634807 1486630943
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1486631129
+With an up-to-date Texlive 2016 installation, there are standard tests which
+ will fail because of missing packages or external applications, see below
+ for a list of those which should be installed to avoid these failures.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 .
  
 \end_layout
@@ -3404,8 +3425,282 @@ unreliable:nonstandard
  or testing on a system withonly a subset of TeXLive installed), ignore
  the failure, ask for someone else to run the test, or install the missing
  ressources and try again.
+\change_inserted 34634807 1486631183
+
 \end_layout
 
+\begin_layout Standard
+
+\change_inserted 34634807 1486631268
+With TeXLive 2016, here are the resources which should be installed to avoid
+ standard tests failure:
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 34634807 1486631544
+
+\family typewriter
+Rscript
+\family default
+ is needed for literate programming, so 
+\begin_inset CommandInset href
+LatexCommand href
+name "R"
+target "http://www.r-project.org"
+
+\end_inset
+
+ should be installed;
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 34634807 1487083795
+
+\family typewriter
+\begin_inset CommandInset href
+LatexCommand href
+name "gnuplot"
+target "http://www.gnuplot.info/download.html"
+
+\end_inset
+
+
+\family default
+scripts are needed for spreadsheet export;
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 34634807 1487083980
+
+\family typewriter
+lilypond-book
+\family default
+ script should be installed, see the lilypond 
+\begin_inset CommandInset href
+LatexCommand href
+name "download page"
+target "http://lilypond.org/download.html"
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 34634807 1486634133
+
+\family typewriter
+\begin_inset CommandInset href
+LatexCommand href
+name "foiltex"
+target "https://www.ctan.org/pkg/foiltex"
+
+\end_inset
+
+ 
+\family default
+is not part of the TeXLive distribution;
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 34634807 1486631975
+LaTeX packages which are not in the 
+\begin_inset Quotes eld
+\end_inset
+
+collection-publishers
+\begin_inset Quotes erd
+\end_inset
+
+ TeXLive set are needed from editors of various papers and books:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\change_inserted 34634807 1486634149
+Springer packages, see 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1486633436
+
+http://wiki.lyx.org/Examples/Springer
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 34634807 1486634154
+Astronomy & Astrophysics, see 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1486632086
+
+http://www.aanda.org/author-information/latex-issues/texnical-background-informati
+on
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 34634807 1486721678
+ACM files for 
+\begin_inset CommandInset href
+LatexCommand href
+name "ACM-SIGS"
+target "http://www.acm.org/sigs/publications/acm_proc_article-sp.cls"
+
+\end_inset
+
+, 
+\begin_inset CommandInset href
+LatexCommand href
+name "ACM-sigplan"
+target "http://drupal.sigplan.org/sites/default/files/sigplanconf.cls"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset href
+LatexCommand href
+name "ACM-siggraph"
+target "http://www.siggraph.org/sites/default/files/acmsiggraph.zip"
+
+\end_inset
+
+ template files;
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 34634807 1486721793
+American Economic Association, see 
+\begin_inset CommandInset href
+LatexCommand href
+name "AEA"
+target "https://wiki.lyx.org/Examples/AEA"
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 34634807 1486735769
+American Geophysical Union, the template changed in 2016, see 
+\begin_inset CommandInset href
+LatexCommand href
+name "AGU2015"
+target "http://publications.agu.org/files/2015/10/agutex2015.zip"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset href
+LatexCommand href
+name "AGU2016"
+target "https://publications.agu.org/files/2016/03/AGUJournal_Feb18_2016.zip"
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 34634807 1486735844
+Institute of Optics, see 
+\begin_inset CommandInset href
+LatexCommand href
+name "IOP"
+target "ftp://ftp.iop.org/pub/journals/ioplatexguidelines.tar.gz"
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 34634807 1486747241
+International Union of Cristallography, see 
+\begin_inset CommandInset href
+LatexCommand href
+name "IUCr"
+target "http://wiki.lyx.org/Layouts/IUCr"
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 34634807 1486748022
+Journal of the Acoustical Society of America, see 
+\begin_inset CommandInset href
+LatexCommand href
+name "JASA"
+target "http://wiki.lyx.org/Layouts/JASATeX"
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 34634807 1486748960
+RJournal, see 
+\begin_inset CommandInset href
+LatexCommand href
+name "RJournal"
+target "https://journal.r-project.org/submissions.html"
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted 34634807 1486749098
+Econometrica, see 
+\begin_inset CommandInset href
+LatexCommand href
+name "ecta"
+target "https://wiki.lyx.org/Examples/Econometrica"
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
 \begin_layout Paragraph
 \begin_inset CommandInset label
 LatexCommand label
