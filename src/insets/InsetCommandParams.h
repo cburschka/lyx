@@ -52,7 +52,9 @@ public:
 	// flag for all commands.
 	public:
 		///
-		ParamData(std::string const &, ParamType, ParamHandling = HANDLING_NONE);
+		ParamData(std::string const &, ParamType, ParamHandling = HANDLING_NONE,
+		          bool ignore = false,
+		          docstring default_value = docstring());
 		///
 		std::string name() const { return name_; }
 		///
@@ -61,6 +63,10 @@ public:
 		ParamHandling handling() const { return handling_; }
 		/// whether this is an optional LaTeX argument
 		bool isOptional() const;
+		///
+		bool ignore() const { return ignore_; }
+		///
+		docstring const & defaultValue() const { return default_value_; }
 		///
 		bool operator==(ParamData const &) const;
 		/// 
@@ -73,11 +79,18 @@ public:
 		ParamType type_;
 		/// do we need special handling on latex output?
 		ParamHandling handling_;
+		///
+		bool ignore_;
+		///
+		docstring default_value_;
 	};
 
 	/// adds a new parameter
+	/// If ignore is true, then the parameter is never saved, and is always
+	/// given the default value.
 	void add(std::string const & name, ParamType type,
-		 ParamHandling = HANDLING_NONE);
+	         ParamHandling = HANDLING_NONE, bool ignore = false,
+	         docstring default_value = docstring());
 	///
 	bool empty() const { return info_.empty(); }
 	///

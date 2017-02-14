@@ -99,8 +99,10 @@ static ParamInfo const & findInfo(InsetCode code, string const & cmdName)
 /////////////////////////////////////////////////////////////////////
 
 ParamInfo::ParamData::ParamData(std::string const & s, ParamType t,
-				ParamHandling h)
-	: name_(s), type_(t), handling_(h)
+                                ParamHandling h, bool ignore,
+                                docstring default_value)
+	: name_(s), type_(t), handling_(h), ignore_(ignore),
+	  default_value_(default_value)
 {}
 
 
@@ -130,9 +132,10 @@ bool ParamInfo::hasParam(std::string const & name) const
 
 
 void ParamInfo::add(std::string const & name, ParamType type,
-		    ParamHandling handling)
-{ 
-	info_.push_back(ParamData(name, type, handling)); 
+                    ParamHandling handling, bool ignore,
+                    docstring default_value)
+{
+	info_.push_back(ParamData(name, type, handling, ignore, default_value));
 }
 
 
@@ -296,6 +299,11 @@ void InsetCommandParams::Read(Lexer & lex, Buffer const * buffer)
 	}
 
 	info_ = findInfo(insetCode_, cmdName_);
+
+	for (ParamInfo::ParamData const & param : info_)
+		if (param.ignore()) {
+			params_[param.name()] = param.defaultValue();
+		}
 	
 	string token;
 	while (lex.isOK()) {
@@ -361,6 +369,8 @@ void InsetCommandParams::Write(ostream & os, Buffer const * buffer) const
 	ParamInfo::const_iterator it  = info_.begin();
 	ParamInfo::const_iterator end = info_.end();
 	for (; it != end; ++it) {
+		if (it->ignore())
+			continue;
 		string const & name = it->name();
 		string data = to_utf8((*this)[name]);
 		if (!data.empty()) {
@@ -538,6 +548,9 @@ docstring const & InsetCommandParams::operator[](string const & name) const
 	ParamMap::const_iterator data = params_.find(name);
 	if (data == params_.end() || data->second.empty())
 		return dummy;
+	ParamInfo::ParamData const & param = info_[name];
+	if (param.ignore())
+		return param.defaultValue();
 	return data->second;
 }
 
@@ -546,6 +559,9 @@ docstring & InsetCommandParams::operator[](string const & name)
 {
 	LATTEST(info_.hasParam(name));
 	// this will add the name in release mode
+	ParamInfo::ParamData const & param = info_[name];
+	if (param.ignore())
+		params_[name] = param.defaultValue();
 	return params_[name];
 }
 
