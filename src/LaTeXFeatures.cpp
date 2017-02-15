@@ -123,19 +123,19 @@ static docstring const textquotedbl_def = from_ascii(
 
 static docstring const textquotedblp_xetex_def = from_ascii(
 	"\\providecommand\\textquotedblplain{%\n"
-	"  \\bgroup\\addfontfeatures{Mapping=}\\textquotedbl\\egroup}");
+	"  \\bgroup\\addfontfeatures{Mapping=}\\char`\\\"\\egroup}");
 
 static docstring const textquotedblp_luatex_def = from_ascii(
 	"\\providecommand\\textquotedblplain{%\n"
-	"  \\bgroup\\addfontfeatures{RawFeature=-tlig}\\textquotedbl\\egroup}");
+	"  \\bgroup\\addfontfeatures{RawFeature=-tlig}\\char`\\\"\\egroup}");
 
 static docstring const textquotesinglep_xetex_def = from_ascii(
 	"\\providecommand\\textquotesingleplain{%\n"
-	"  \\bgroup\\addfontfeatures{Mapping=}\\textquotesingle\\egroup}");
+	"  \\bgroup\\addfontfeatures{Mapping=}\\char`\\\'\\egroup}");
 
 static docstring const textquotesinglep_luatex_def = from_ascii(
 	"\\providecommand\\textquotesingleplain{%\n"
-	"  \\bgroup\\addfontfeatures{RawFeature=-tlig}\\textquotesingle\\egroup}");
+	"  \\bgroup\\addfontfeatures{RawFeature=-tlig}\\char`\\\'\\egroup}");
 
 static docstring const paragraphleftindent_def = from_ascii(
 	"\\newenvironment{LyXParagraphLeftIndent}[1]%\n"
