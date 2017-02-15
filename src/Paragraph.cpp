@@ -1187,8 +1187,10 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 	// NOTE: Some languages reset the font encoding internally to a
 	//       non-standard font encoding. If we are using such a language,
 	//       we do not output special T1 chars.
+	// NOTE: XeTeX and LuaTeX use OT1 (pre 2017) or TU (as of 2017) encoding
 	if (!runparams.inIPA && !running_font.language()->internalFontEncoding()
-	    && bparams.font_encoding() == "T1" && latexSpecialT1(c, os, i, column))
+	    && !runparams.isFullUnicode() && bparams.font_encoding() == "T1"
+	    && latexSpecialT1(c, os, i, column))
 		return;
 
 	// Otherwise, we use what LaTeX provides us.
