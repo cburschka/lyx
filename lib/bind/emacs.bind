@@ -228,6 +228,8 @@ Format 4
 \bind "M-Return"		"paragraph-break inverse"
 \bind "C-Return"		"newline-insert newline"
 \bind "C-S-Return"		"newline-insert linebreak"
+\bind "M-S-Right"		"depth-increment"
+\bind "M-S-Left"		"depth-decrement"
 \bind "C-S-L"			"specialchar-insert ligature-break"
 \bind "C-space"			"command-alternatives math-space ; space-insert protected"
 \bind "nobreakspace"		"space-insert protected"
