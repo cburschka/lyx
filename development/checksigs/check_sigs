@@ -1,0 +1,7 @@
+#Keeping track of GPG sig files on ftp server, additional safety measure.
+DIR=/tmp/lyxftp.$$
+mkdir $DIR
+#curlftpfs ftp://ftp.ucsd.edu/LyX/ $DIR
+curlftpfs ftp://ftp.lyx.org/pub/lyx/ $DIR
+cp ${DIR}/stable/*/*.sig ${DIR}/bin/*/*.sig archive/
+git status .
