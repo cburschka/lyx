@@ -52,7 +52,7 @@ InsetLayout Flex:Strong
 	  Series              Bold
 	EndFont
 	Preamble
-	\newcommand{\strong}[1]{\textbf{#1}}
+	\providecommand*{\strong}[1]{\textbf{#1}}
 	EndPreamble
 	InToc                 true
 	HTMLTag               strong
@@ -69,7 +69,7 @@ InsetLayout Flex:Code
 	  Family              Typewriter
 	EndFont
 	Preamble
-	\newcommand{\code}[1]{\texttt{#1}}
+	\providecommand*{\code}[1]{\texttt{#1}}
 	EndPreamble
 	InToc                 true
 	HTMLTag               code
