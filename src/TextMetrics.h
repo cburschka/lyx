@@ -150,7 +150,8 @@ public:
 	/// returns the position near the specified x-coordinate of the row.
 	/// x is an absolute screen coord, it is set to the real beginning
 	/// of this column. This takes in account horizontal cursor row scrolling.
-	pos_type getPosNearX(Row const & row, int & x, bool & boundary) const;
+	pos_type getPosNearX(Row const & row, int & x, bool & boundary,
+	                     bool select = false) const;
 
 	/// returns pos in given par at given x coord.
 	pos_type x2pos(pit_type pit, int row, int x) const;
@@ -188,7 +189,10 @@ public:
 
 	/// sets cursor only within this Text.
 	/// x,y are screen coordinates
-	void setCursorFromCoordinates(Cursor & cur, int x, int y);
+	/// If select is true, move to the next position if closer to the right
+	/// edge.
+	void setCursorFromCoordinates(Cursor & cur, int x, int y,
+	                              bool select = false);
 
 	///
 	int cursorX(CursorSlice const & cursor, bool boundary) const;

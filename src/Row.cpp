@@ -95,7 +95,7 @@ double Row::Element::pos2x(pos_type const i) const
 }
 
 
-pos_type Row::Element::x2pos(int &x) const
+pos_type Row::Element::x2pos(int &x, bool const select) const
 {
 	//lyxerr << "x2pos: x=" << x << " w=" << width() << " " << *this;
 	size_t i = 0;
@@ -112,17 +112,18 @@ pos_type Row::Element::x2pos(int &x) const
 		x = isRTL() ? int(full_width()) : 0;
 		break;
 	case INSET:
-	case SPACE:
+	case SPACE: {
+		int const boundary = select ? (full_width() + 1) / 2 : full_width();
 		// those elements contain only one position. Round to
 		// the closest side.
-		if (x > full_width()) {
+		if (x > boundary) {
 			x = int(full_width());
 			i = !isRTL();
 		} else {
 			x = 0;
 			i = isRTL();
 		}
-
+	}
 	}
 	//lyxerr << "=> p=" << pos + i << " x=" << x << endl;
 	return pos + i;

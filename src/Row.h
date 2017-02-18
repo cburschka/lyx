@@ -80,12 +80,13 @@ public:
 		/** Return position in pixels (from the left) of position
 		 * \param i in the row element.
 		 */
-		double pos2x(pos_type const i) const;
+		double pos2x(pos_type i) const;
 		/** Return character position that is the closest to
 		 *  pixel position \param x. The value \param x is
 		 *  adjusted to the actual pixel position.
-		*/
-		pos_type x2pos(int &x) const;
+		 *  \param select if true, return the right edge when closer.
+		 */
+		pos_type x2pos(int & x, bool select = false) const;
 		/** Break the element if possible, so that its width is less
 		 * than \param w. Returns true on success. When \param force
 		 * is true, the string is cut at any place, other wise it
