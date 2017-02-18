@@ -485,7 +485,6 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cur.undispatched();
 		break;
 
-	case LFUN_MOUSE_MOTION:
 	case LFUN_MOUSE_DOUBLE:
 	case LFUN_MOUSE_TRIPLE:
 		if (hitButton)
