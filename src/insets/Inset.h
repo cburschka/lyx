@@ -581,6 +581,10 @@ public:
 	//
 	enum { TEXT_TO_INSET_OFFSET = 4 };
 
+	/// Determine the action of backspace and delete: do we select instead of
+	/// deleting if not already selected?
+	virtual bool confirmDeletion() const { return false; }
+
 protected:
 	/// Constructors
 	Inset(Buffer * buf) : buffer_(buf) {}

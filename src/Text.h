@@ -223,9 +223,10 @@ public:
 	///
 	bool cursorVisRightOneWord(Cursor & cur);
 	/// Delete from cursor up to the end of the current or next word.
-	void deleteWordForward(Cursor & cur);
+	/// Use force to skip the confirmDeletion check.
+	void deleteWordForward(Cursor & cur, bool force = false);
 	/// Delete from cursor to start of current or prior word.
-	void deleteWordBackward(Cursor & cur);
+	void deleteWordBackward(Cursor & cur, bool force = false);
 	///
 	bool cursorUpParagraph(Cursor & cur);
 	///

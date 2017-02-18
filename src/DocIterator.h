@@ -184,6 +184,10 @@ public:
 	//
 	// elementary moving
 	//
+	/// move one step backwards
+	bool posBackward();
+	/// move one step forward
+	bool posForward();
 	/**
 	 * move on one logical position, descend into nested insets
 	 * including collapsed insets

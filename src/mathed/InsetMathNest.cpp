@@ -862,8 +862,8 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		else if (!cur.inMacroMode())
 			cur.recordUndoSelection();
 		// if the inset can not be removed from within, delete it
-		if (!cur.backspace()) {
-			FuncRequest cmd = FuncRequest(LFUN_CHAR_DELETE_FORWARD);
+		if (!cur.backspace(cmd.getArg(0) == "force")) {
+			FuncRequest cmd = FuncRequest(LFUN_CHAR_DELETE_FORWARD, "force");
 			cur.innerText()->dispatch(cur, cmd);
 		}
 		break;
@@ -876,8 +876,8 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		else
 			cur.recordUndoSelection();
 		// if the inset can not be removed from within, delete it
-		if (!cur.erase()) {
-			FuncRequest cmd = FuncRequest(LFUN_CHAR_DELETE_FORWARD);
+		if (!cur.erase(cmd.getArg(0) == "force")) {
+			FuncRequest cmd = FuncRequest(LFUN_CHAR_DELETE_FORWARD, "force");
 			cur.innerText()->dispatch(cur, cmd);
 		}
 		break;

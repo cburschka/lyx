@@ -1466,7 +1466,7 @@ void Text::rejectChanges()
 }
 
 
-void Text::deleteWordForward(Cursor & cur)
+void Text::deleteWordForward(Cursor & cur, bool const force)
 {
 	LBUFERR(this == cur.text());
 	if (cur.lastpos() == 0)
@@ -1476,13 +1476,15 @@ void Text::deleteWordForward(Cursor & cur)
 		cur.selection(true);
 		cursorForwardOneWord(cur);
 		cur.setSelection();
-		cutSelection(cur, true, false);
-		cur.checkBufferStructure();
+		if (force || !cur.confirmDeletion()) {
+			cutSelection(cur, true, false);
+			cur.checkBufferStructure();
+		}
 	}
 }
 
 
-void Text::deleteWordBackward(Cursor & cur)
+void Text::deleteWordBackward(Cursor & cur, bool const force)
 {
 	LBUFERR(this == cur.text());
 	if (cur.lastpos() == 0)
@@ -1492,8 +1494,10 @@ void Text::deleteWordBackward(Cursor & cur)
 		cur.selection(true);
 		cursorBackwardOneWord(cur);
 		cur.setSelection();
-		cutSelection(cur, true, false);
-		cur.checkBufferStructure();
+		if (force || !cur.confirmDeletion()) {
+			cutSelection(cur, true, false);
+			cur.checkBufferStructure();
+		}
 	}
 }
 

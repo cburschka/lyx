@@ -318,6 +318,24 @@ Inset * DocIterator::innerInsetOfType(int code) const
 }
 
 
+bool DocIterator::posBackward()
+{
+	if (pos() == 0)
+		return false;
+	--pos();
+	return true;
+}
+
+
+bool DocIterator::posForward()
+{
+	if (pos() == lastpos())
+		return false;
+	++pos();
+	return true;
+}
+
+
 // This duplicates code above, but is in the critical path.
 // So please think twice before adding stuff
 void DocIterator::forwardPos()

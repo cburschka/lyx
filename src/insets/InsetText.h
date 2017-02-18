@@ -219,6 +219,10 @@ public:
 	std::string contextMenuName() const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
+
+	///
+	bool confirmDeletion() const { return !text().empty(); }
+
 protected:
 	///
 	void iterateForToc(DocIterator const & cdit, bool output_active,

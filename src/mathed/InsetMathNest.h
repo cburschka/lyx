@@ -131,6 +131,9 @@ public:
 	///
 	InsetCode lyxCode() const { return MATH_NEST_CODE; }
 
+	///
+	bool confirmDeletion() const { return nargs() > 0; }
+
 protected:
 	///
 	InsetMathNest(InsetMathNest const & inset);

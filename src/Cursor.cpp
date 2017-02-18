@@ -551,24 +551,6 @@ void Cursor::checkNewWordPosition()
 }
 
 
-bool Cursor::posBackward()
-{
-	if (pos() == 0)
-		return false;
-	--pos();
-	return true;
-}
-
-
-bool Cursor::posForward()
-{
-	if (pos() == lastpos())
-		return false;
-	++pos();
-	return true;
-}
-
-
 bool Cursor::posVisRight(bool skip_inset)
 {
 	Cursor new_cur = *this; // where we will move to
@@ -1301,7 +1283,7 @@ void Cursor::insert(MathData const & ar)
 }
 
 
-bool Cursor::backspace()
+bool Cursor::backspace(bool const force)
 {
 	if (selection()) {
 		cap::eraseSelection(*this);
@@ -1337,7 +1319,7 @@ bool Cursor::backspace()
 		}
 	}
 
-	if (pos() != 0 && prevAtom()->nargs() > 0) {
+	if (pos() != 0 && !force && prevAtom()->confirmDeletion()) {
 		// let's require two backspaces for 'big stuff' and
 		// highlight on the first
 		resetAnchor();
@@ -1351,7 +1333,7 @@ bool Cursor::backspace()
 }
 
 
-bool Cursor::erase()
+bool Cursor::erase(bool const force)
 {
 	if (inMacroMode())
 		return true;
@@ -1386,7 +1368,7 @@ bool Cursor::erase()
 	}
 
 	// 'clever' UI hack: only erase large items if previously slected
-	if (pos() != lastpos() && nextAtom()->nargs() > 0) {
+	if (pos() != lastpos() && !force && nextAtom()->confirmDeletion()) {
 		resetAnchor();
 		selection(true);
 		++pos();
@@ -2433,6 +2415,23 @@ void Cursor::checkBufferStructure()
 	// tracked_changes_present_.
 	if (inTexted() && paragraph().isChangeUpdateRequired())
 		disp_.forceChangesUpdate();
+}
+
+
+bool Cursor::confirmDeletion(bool const before) const
+{
+	if (!selection()) {
+		if (Inset const * inset = before ? prevInset() : nextInset())
+			return inset->confirmDeletion();
+	} else {
+		DocIterator dit = selectionBegin();
+		DocIterator const sel_end = selectionEnd();
+		for (; dit < sel_end; dit.posForward())
+			if (Inset const * inset = dit.nextInset())
+				if (inset->confirmDeletion())
+					return true;
+	}
+	return false;
 }
 
 

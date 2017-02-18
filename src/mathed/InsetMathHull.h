@@ -189,6 +189,8 @@ public:
 	InsetCode lyxCode() const { return MATH_HULL_CODE; }
 	///
 	bool canPaintChange(BufferView const &) const;
+	///
+	bool confirmDeletion() const { return nargs() != 1 || !cell(0).empty(); }
 
 protected:
 	InsetMathHull(InsetMathHull const &);
