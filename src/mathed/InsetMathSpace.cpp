@@ -305,8 +305,6 @@ bool InsetMathSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_MODIFY:
 	case LFUN_INSET_DIALOG_UPDATE:
 	case LFUN_MOUSE_RELEASE:
-	case LFUN_MOUSE_PRESS:
-	case LFUN_MOUSE_MOTION:
 		status.setEnabled(true);
 		return true;
 	default:
@@ -332,16 +330,11 @@ void InsetMathSpace::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_MOUSE_RELEASE:
-		if (cmd.button() == mouse_button::button1) {
+		if (cmd.button() == mouse_button::button1 && !cur.selection()) {
 			showInsetDialog(&cur.bv());
 			break;
 		}
 		cur.undispatched();
-		break;
-
-	case LFUN_MOUSE_PRESS:
-	case LFUN_MOUSE_MOTION:
-		// eat other mouse commands
 		break;
 
 	default:
