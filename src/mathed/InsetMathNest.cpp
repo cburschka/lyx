@@ -1625,6 +1625,16 @@ void InsetMathNest::lfunMouseMotion(Cursor & cur, FuncRequest & cmd)
 		return;
 	}
 
+	// set cursor after the inset if x is nearer to that position (bug 9748)
+	if (Inset const * inset = cur.nextInset()) {
+		CoordCache::Insets const & insetCache =
+			cur.bv().coordCache().getInsets();
+		int const wid = insetCache.dim(inset).wid;
+		Point p = insetCache.xy(inset);
+		if (cmd.x() > p.x_ + (wid + 1) / 2)
+			cur.posForward();
+	}
+
 	CursorSlice old = bvcur.top();
 
 	// We continue with our existing selection or start a new one, so don't
