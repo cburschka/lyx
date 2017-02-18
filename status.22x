@@ -73,8 +73,6 @@ What's new
 - Updated Arabic, Brazilian, Chinese, German, Italian, Slovakian, Swedish,
   Ukrainian and French user interface localization.
 
-- Fix translation of Fixme module description (bug 10058).
-
 
 * BUILD/INSTALLATION
 
@@ -130,6 +128,9 @@ What's new
   (part of bug 2751).
 
 - Handle backslash in label and ref insets (bug 4595).
+
+- Output Preamble code of InPreamble styles before the styles themselves
+  (bug 10215).
 
 
 * LYX2LYX
@@ -220,6 +221,8 @@ What's new
 
 - Added some comments to User Guide section 6.1 about defining formatted
   references (bug 10545).
+
+- Fix translation of Fixme module description (bug 10058).
 
 
 * LYXHTML

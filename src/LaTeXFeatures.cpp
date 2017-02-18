@@ -1484,7 +1484,10 @@ docstring const LaTeXFeatures::getTClassPreamble() const
 	list<docstring>::const_iterator cit = usedLayouts_.begin();
 	list<docstring>::const_iterator end = usedLayouts_.end();
 	for (; cit != end; ++cit)
-		tcpreamble << tclass[*cit].preamble();
+		// For InPreamble layouts, we output the preamble stuff earlier
+		// (before the layouts). See Paragraph::Private::validate.
+		if (!tclass[*cit].inpreamble)
+			tcpreamble << tclass[*cit].preamble();
 
 	cit = usedInsetLayouts_.begin();
 	end = usedInsetLayouts_.end();

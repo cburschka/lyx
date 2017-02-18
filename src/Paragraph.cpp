@@ -1386,6 +1386,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 		// that needs to switch encoding.
 		odocstringstream ods;
 		otexstream os(ods, texrow);
+		os << layout_->preamble();
 		if (is_command) {
 			os << '\\' << from_ascii(layout_->latexname());
 			// we have to provide all the optional arguments here, even though
