@@ -1391,6 +1391,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 		// output is wrong if this paragraph contains content
 		// that needs to switch encoding.
 		otexstringstream os;
+		os << layout_->preamble();
 		if (is_command) {
 			os << '\\' << from_ascii(layout_->latexname());
 			// we have to provide all the optional arguments here, even though
