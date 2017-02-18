@@ -1225,7 +1225,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		}
 		break;
 	case '\"':
-		os << "\\char`\\\"" << termcmd;
+		os << "\\char34" << termcmd;
 		column += 9;
 		break;
 
