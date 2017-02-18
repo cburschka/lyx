@@ -2435,4 +2435,20 @@ bool Cursor::confirmDeletion(bool const before) const
 }
 
 
+void Cursor::moveToClosestEdge(int const x, bool const edit)
+{
+	if (Inset const * inset = nextInset()) {
+		// stay in front of insets for which we want to open the dialog
+		// (e.g. InsetMathSpace).
+		if (edit && (inset->hasSettings() || !inset->contextMenuName().empty()))
+			return;
+		CoordCache::Insets const & insetCache = bv().coordCache().getInsets();
+		int const wid = insetCache.dim(inset).wid;
+		Point p = insetCache.xy(inset);
+		if (x > p.x_ + (wid + 1) / 2)
+			posForward();
+	}
+}
+
+
 } // namespace lyx

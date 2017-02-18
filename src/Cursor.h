@@ -399,6 +399,12 @@ public:
 	/// one inset in the selection has confirmDeletion.
 	bool confirmDeletion(bool before = false) const;
 
+	/// Determine if x falls to the left or to the side of the middle of the
+	/// inset, and advance the cursor to match this position. If edit is true,
+	/// keep the cursor in front of the inset if it matter for dialogs.
+	/// Note: it does not handle RTL text yet, and is only used in math for now.
+	void moveToClosestEdge(int x, bool edit = false);
+
 public:
 //private:
 	

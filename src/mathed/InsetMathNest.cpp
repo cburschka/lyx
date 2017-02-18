@@ -1581,6 +1581,10 @@ void InsetMathNest::lfunMousePress(Cursor & cur, FuncRequest & cmd)
 			return;
 		}
 	}
+
+	// set cursor after the inset if x is nearer to that position (bug 9748)
+	cur.moveToClosestEdge(cmd.x(), true);
+
 	bool do_selection = cmd.button() == mouse_button::button1
 		&& cmd.modifier() == ShiftModifier;
 	bv.mouseSetCursor(cur, do_selection);
@@ -1626,14 +1630,7 @@ void InsetMathNest::lfunMouseMotion(Cursor & cur, FuncRequest & cmd)
 	}
 
 	// set cursor after the inset if x is nearer to that position (bug 9748)
-	if (Inset const * inset = cur.nextInset()) {
-		CoordCache::Insets const & insetCache =
-			cur.bv().coordCache().getInsets();
-		int const wid = insetCache.dim(inset).wid;
-		Point p = insetCache.xy(inset);
-		if (cmd.x() > p.x_ + (wid + 1) / 2)
-			cur.posForward();
-	}
+	cur.moveToClosestEdge(cmd.x());
 
 	CursorSlice old = bvcur.top();
 
