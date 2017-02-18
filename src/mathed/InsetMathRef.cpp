@@ -81,6 +81,10 @@ void InsetMathRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_MOUSE_RELEASE:
+		if (cur.selection()) {
+			cur.undispatched();
+			break;
+		}
 		if (cmd.button() == mouse_button::button3) {
 			LYXERR0("trying to goto ref '" << to_utf8(asString(cell(0))) << "'");
 			//FIXME: use DispatchResult argument
@@ -96,8 +100,18 @@ void InsetMathRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 		cur.undispatched();
 		break;
 
-	case LFUN_MOUSE_PRESS:
-	case LFUN_MOUSE_MOTION:
+	case LFUN_MOUSE_PRESS: {
+		bool do_selection = cmd.button() == mouse_button::button1
+			&& cmd.modifier() == ShiftModifier;
+		// For some reason the cursor points inside the first cell, which is not
+		// active.
+		cur.leaveInset(*this);
+		cur.bv().mouseSetCursor(cur, do_selection);
+		break;
+	}
+
+	case LFUN_MOUSE_DOUBLE:
+	case LFUN_MOUSE_TRIPLE:
 		// eat other mouse commands
 		break;
 
@@ -117,7 +131,8 @@ bool InsetMathRef::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_DIALOG_UPDATE:
 	case LFUN_MOUSE_RELEASE:
 	case LFUN_MOUSE_PRESS:
-	case LFUN_MOUSE_MOTION:
+	case LFUN_MOUSE_DOUBLE:
+	case LFUN_MOUSE_TRIPLE:
 		status.setEnabled(true);
 		return true;
 	default:
