@@ -87,6 +87,7 @@ Style Itemize
     Tooltip        "Overlay specifications for this list"
     LeftDelim      [<
     RightDelim     >]
+    PassThru       1
   EndArgument
   Argument item:1
     LabelString   "Custom Item|s"
@@ -98,6 +99,7 @@ Style Itemize
     Tooltip       "Overlay specifications for this item"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
   NextNoIndent     1
   ToggleIndent     Never
@@ -121,6 +123,7 @@ Style Enumerate
     Tooltip        "Overlay specifications for this list"
     LeftDelim      [<
     RightDelim     >]
+    PassThru       1
   EndArgument
   Argument 2
     LabelString    "Mini Template"
@@ -136,6 +139,7 @@ Style Enumerate
     Tooltip       "Overlay specifications for this item"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
   NextNoIndent     1
   ToggleIndent     Never
@@ -161,6 +165,7 @@ Style Description
     Tooltip        "Overlay specifications for this list"
     LeftDelim      [<
     RightDelim     >]
+    PassThru       1
   EndArgument
   Argument 2
     LabelString    "Longest label|s"
@@ -172,6 +177,7 @@ Style Description
     Tooltip       "Overlay specifications for this item"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
   NextNoIndent     1
   LeftMargin       MM
@@ -204,6 +210,7 @@ Style Part
     Tooltip        "Specify in which mode (article, presentation etc.) this header appears"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
   Argument 2
     LabelString    "Short Title|S"
@@ -257,6 +264,7 @@ Style Section
     Tooltip        "Specify in which mode (article, presentation etc.) this header appears"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
   Argument 2
     LabelString    "Short Title|S"
@@ -288,6 +296,7 @@ Style Section*
     Tooltip        "Specify in which mode (article, presentation etc.) this header appears"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
   LaTeXParam       *
 End
@@ -316,6 +325,7 @@ Style Subsection
     Tooltip        "Specify in which mode (article, presentation etc.) this header appears"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
   Argument 2
     LabelString    "Short Title|S"
@@ -347,6 +357,7 @@ Style Subsection*
     Tooltip        "Specify in which mode (article, presentation etc.) this header appears"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
   LaTeXParam       *
 End
@@ -375,6 +386,7 @@ Style Subsubsection
     Tooltip        "Specify in which mode (article, presentation etc.) this header appears"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
   Argument 2
     LabelString    "Short Title|S"
@@ -406,6 +418,7 @@ Style Subsubsection*
     Tooltip        "Specify in which mode (article, presentation etc.) this header appears"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
   LaTeXParam       *
 End
@@ -443,12 +456,14 @@ Style Frame
     Tooltip         "Overlay specifications for this frame"
     LeftDelim       <
     RightDelim      >
+    PassThru       1
   EndArgument
   Argument 2
     LabelString     "Default Overlay Specifications"
     Tooltip         "Default overlay specifications within this frame"
     LeftDelim       [<
     RightDelim      >]
+    PassThru       1
   EndArgument
   Argument 3
     MenuString      "Frame Options"
@@ -502,12 +517,14 @@ Style AgainFrame
     Tooltip         "Overlay specifications for this frame"
     LeftDelim       <
     RightDelim      >
+    PassThru       1
   EndArgument
   Argument 2
     LabelString     "Default Overlay Specifications"
     Tooltip         "Default overlay specifications within this frame"
     LeftDelim       [<
     RightDelim      >]
+    PassThru       1
   EndArgument
   Argument 3
     MenuString      "Frame Options"
@@ -557,6 +574,7 @@ Style FrameTitle
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
   Argument 2
     LabelString    "Short Frame Title|S"
@@ -586,6 +604,7 @@ Style FrameSubtitle
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
 End
 
@@ -714,6 +733,7 @@ Style Overprint
     Tooltip       "Overlay specifications for this item"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
     AutoInsert     1
   EndArgument
   NextNoIndent     1
@@ -789,6 +809,7 @@ Style Uncover
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
 End
 
@@ -817,6 +838,7 @@ Style Only
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
 End
 
@@ -850,6 +872,7 @@ Style Block
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
   Argument 2
     LabelString    "Block Title"
@@ -1111,6 +1134,7 @@ Style Quotation
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
 End
 
@@ -1135,6 +1159,7 @@ Style Quote
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
 End
 
@@ -1161,6 +1186,7 @@ Style Verse
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
 End
 
@@ -1196,6 +1222,7 @@ Style Corollary
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
   Argument 2
     LabelString    "Additional Theorem Text"
@@ -1319,6 +1346,7 @@ Style NoteItem
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
 End
  
@@ -1342,6 +1370,7 @@ InsetLayout Flex:Bold
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
   ResetsFont       true
 End
@@ -1360,6 +1389,7 @@ InsetLayout Flex:Emphasize
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
   ResetsFont       true
 End
@@ -1378,6 +1408,7 @@ InsetLayout Flex:Alert
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
   ResetsFont       true
 End
@@ -1396,6 +1427,7 @@ InsetLayout Flex:Structure
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
   ResetsFont       true
 End
@@ -1414,6 +1446,7 @@ InsetLayout Flex:Only
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
     AutoInsert     1
   EndArgument
   ResetsFont       true
@@ -1433,6 +1466,7 @@ InsetLayout Flex:Uncover
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
     AutoInsert     1
   EndArgument
   ResetsFont       true
@@ -1452,6 +1486,7 @@ InsetLayout Flex:Visible
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
     AutoInsert     1
   EndArgument
   ResetsFont       true
@@ -1471,6 +1506,7 @@ InsetLayout Flex:Invisible
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
     AutoInsert     1
   EndArgument
   ResetsFont       true
@@ -1490,6 +1526,7 @@ InsetLayout Flex:Alternative
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
   Argument 2
     LabelString    "Default Text"
@@ -1514,6 +1551,7 @@ InsetLayout Flex:Beamer_Note
     Tooltip        "Specify the overlay settings (see beamer manual)"
     LeftDelim      <
     RightDelim     >
+    PassThru       1
   EndArgument
   Argument 2
     LabelString    "Note Options"
