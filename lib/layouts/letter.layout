@@ -17,3 +17,6 @@ Input stdlayouts.inc
 NoStyle         Right_Address
 NoStyle         Address
 
+ModifyStyle Standard
+  ParIndent          ""
+End

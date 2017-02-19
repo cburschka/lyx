@@ -9,6 +9,10 @@ Input stdinsets.inc
 Input stdfloats.inc
 Input stdcounters.inc
 
+ModifyStyle Standard
+	ParIndent	""
+End
+
 Columns                 1
 Sides                   1
 PageStyle               Empty
