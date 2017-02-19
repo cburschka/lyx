@@ -2425,8 +2425,8 @@ bool Cursor::confirmDeletion(bool const before) const
 			return inset->confirmDeletion();
 	} else {
 		DocIterator dit = selectionBegin();
-		DocIterator const sel_end = selectionEnd();
-		for (; dit < sel_end; dit.posForward())
+		CursorSlice const end = selectionEnd().top();
+		for (; dit.top() < end; dit.top().forwardPos())
 			if (Inset const * inset = dit.nextInset())
 				if (inset->confirmDeletion())
 					return true;
