@@ -1024,3 +1024,7 @@ NoStyle			Verse
 # Remove some unwanted styles.
 # NoStyle		Right_Address
 # NoStyle		Address
+
+ModifyStyle Standard
+  ParIndent		""
+End
