@@ -8,6 +8,11 @@
 # BibTeX style and template, and the documentation is available at
 # http://www.siggraph.org/learn/instructions-authors
 #
+# NOTE: As from Spring 2017, the class will not be usable to submit
+# a publication to ACM, it is OBSOLETE.
+# Please use instead the new acmart.cls class file, distributed with
+# TeXLive >= 2016
+#
 # Versions:
 #  siggraph 0.9:  initial layout
 #  siggraph 0.92: Removed styles "TOG project URL", "TOG video URL", 
@@ -110,6 +115,10 @@ Style "Copyright_year"
 	CopyStyle		"TOG online ID"
 	LatexName		copyrightyear
 	LabelString		"Year of copyright:"
+	Preamble
+	% Compatibility fix for acmsiggraph >= 0.93.
+	\@ifundefined{copyrightyear}{\let\copyrightyear\CopyrightYear}{}
+	EndPreamble
 End
 
 
