@@ -481,7 +481,8 @@ void GuiPainter::text(int x, int y, docstring const & s,
 	// don't use the pixmap cache
 	setQPainterPen(computeColor(f.realColor()));
 	if (dir != Auto) {
-		QTextLayout const * ptl = fm.getTextLayout(s, dir == RtL, wordspacing);
+		shared_ptr<QTextLayout const> ptl =
+			fm.getTextLayout(s, dir == RtL, wordspacing);
 		ptl->draw(this, QPointF(x, y - fm.maxAscent()));
 	}
 	else {

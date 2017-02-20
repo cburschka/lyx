@@ -27,14 +27,11 @@
 #define DISABLE_PMPROF
 #include "support/pmprof.h"
 
-#ifdef CACHE_SOME_METRICS
 #include <QByteArray>
-#endif
 
 using namespace std;
 using namespace lyx::support;
 
-#ifdef CACHE_SOME_METRICS
 namespace std {
 
 /*
@@ -49,10 +46,20 @@ uint qHash(lyx::docstring const & s)
 }
 
 }
-#endif
 
 namespace lyx {
 namespace frontend {
+
+
+int cache_metrics_width_size = 1 << 19;
+int cache_metrics_breakat_size = 1 << 19;
+// Qt 5.x already has its own caching of QTextLayout objects
+#if (QT_VERSION < 0x050000)
+int cache_metrics_qtextlayout_size = 500;
+#else
+int cache_metrics_qtextlayout_size = 0;
+#endif
+
 
 namespace {
 /**
@@ -83,16 +90,10 @@ inline QChar const ucs4_to_qchar(char_type const ucs4)
  * Note that all these numbers are arbitrary.
  */
 GuiFontMetrics::GuiFontMetrics(QFont const & font)
-	: font_(font), metrics_(font, 0)
-#ifdef CACHE_METRICS_WIDTH
-	, strwidth_cache_(1 << 19)
-#endif
-#ifdef CACHE_METRICS_BREAKAT
-	, breakat_cache_(1 << 19)
-#endif
-#ifdef CACHE_METRICS_QTEXTLAYOUT
-	,  qtextlayout_cache_(500)
-#endif
+	: font_(font), metrics_(font, 0),
+	  strwidth_cache_(cache_metrics_width_size),
+	  breakat_cache_(cache_metrics_breakat_size),
+	  qtextlayout_cache_(cache_metrics_qtextlayout_size)
 {
 }
 
@@ -177,13 +178,10 @@ int GuiFontMetrics::rbearing(char_type c) const
 
 int GuiFontMetrics::width(docstring const & s) const
 {
-	PROFILE_THIS_BLOCK(width)
-#ifdef CACHE_METRICS_WIDTH
-	int * pw = strwidth_cache_[s];
-	if (pw)
-		return *pw;
-	PROFILE_CACHE_MISS(width)
-#endif
+	PROFILE_THIS_BLOCK(width);
+	if (strwidth_cache_.contains(s))
+		return strwidth_cache_[s];
+	PROFILE_CACHE_MISS(width);
 	/* For some reason QMetrics::width returns a wrong value with Qt5
 	 * with some arabic text. OTOH, QTextLayout is broken for single
 	 * characters with null width (like \not in mathed). Also, as a
@@ -205,9 +203,7 @@ int GuiFontMetrics::width(docstring const & s) const
 		tl.endLayout();
 		w = int(line.naturalTextWidth());
 	}
-#ifdef CACHE_METRICS_WIDTH
-	strwidth_cache_.insert(s, new int(w), s.size() * sizeof(char_type));
-#endif
+	strwidth_cache_.insert(s, w, s.size() * sizeof(char_type));
 	return w;
 }
 
@@ -230,33 +226,28 @@ int GuiFontMetrics::signedWidth(docstring const & s) const
 }
 
 
-QTextLayout const *
+shared_ptr<QTextLayout const>
 GuiFontMetrics::getTextLayout(docstring const & s, bool const rtl,
                               double const wordspacing) const
 {
-	PROFILE_THIS_BLOCK(getTextLayout)
-	QTextLayout * ptl;
-#ifdef CACHE_METRICS_QTEXTLAYOUT
-	docstring const s_cache = s + (rtl ? "r" : "l") + convert<docstring>(wordspacing);
-	ptl = qtextlayout_cache_[s_cache];
-	if (!ptl) {
-		PROFILE_CACHE_MISS(getTextLayout)
-#endif
-		ptl = new QTextLayout();
-		ptl->setCacheEnabled(true);
-		ptl->setText(toqstr(s));
-		QFont copy = font_;
-		copy.setWordSpacing(wordspacing);
-		ptl->setFont(copy);
-		// Note that both setFlags and the enums are undocumented
-		ptl->setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
-		ptl->beginLayout();
-		ptl->createLine();
-		ptl->endLayout();
-#ifdef CACHE_METRICS_QTEXTLAYOUT
-		qtextlayout_cache_.insert(s_cache, ptl);
-	}
-#endif
+	PROFILE_THIS_BLOCK(getTextLayout);
+	docstring const s_cache =
+		s + (rtl ? "r" : "l") + convert<docstring>(wordspacing);
+	if (auto ptl = qtextlayout_cache_[s_cache])
+		return ptl;
+	PROFILE_CACHE_MISS(getTextLayout);
+	auto const ptl = make_shared<QTextLayout>();
+	ptl->setCacheEnabled(true);
+	ptl->setText(toqstr(s));
+	QFont copy = font_;
+	copy.setWordSpacing(wordspacing);
+	ptl->setFont(copy);
+	// Note that both setFlags and the enums are undocumented
+	ptl->setFlags(rtl ? Qt::TextForceRightToLeft : Qt::TextForceLeftToRight);
+	ptl->beginLayout();
+	ptl->createLine();
+	ptl->endLayout();
+	qtextlayout_cache_.insert(s_cache, ptl);
 	return ptl;
 }
 
@@ -266,7 +257,7 @@ int GuiFontMetrics::pos2x(docstring const & s, int pos, bool const rtl,
 {
 	if (pos <= 0)
 		pos = 0;
-	QTextLayout const * tl = getTextLayout(s, rtl, wordspacing);
+	shared_ptr<QTextLayout const> tl = getTextLayout(s, rtl, wordspacing);
 	/* Since QString is UTF-16 and docstring is UCS-4, the offsets may
 	 * not be the same when there are high-plan unicode characters
 	 * (bug #10443).
@@ -279,7 +270,7 @@ int GuiFontMetrics::pos2x(docstring const & s, int pos, bool const rtl,
 int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl,
                           double const wordspacing) const
 {
-	QTextLayout const * tl = getTextLayout(s, rtl, wordspacing);
+	shared_ptr<QTextLayout const> tl = getTextLayout(s, rtl, wordspacing);
 	int const qpos = tl->lineForTextPosition(0).xToCursor(x);
 	// correct x value to the actual cursor position.
 	x = static_cast<int>(tl->lineForTextPosition(0).cursorToX(qpos));
@@ -328,7 +319,7 @@ int GuiFontMetrics::countExpanders(docstring const & str) const
 }
 
 
-pair<int, int> *
+pair<int, int>
 GuiFontMetrics::breakAt_helper(docstring const & s, int const x,
                                bool const rtl, bool const force) const
 {
@@ -373,7 +364,7 @@ GuiFontMetrics::breakAt_helper(docstring const & s, int const x,
 	tl.createLine();
 	tl.endLayout();
 	if ((force && line.textLength() == offset) || int(line.naturalTextWidth()) > x)
-		return new pair<int, int>(-1, -1);
+		return {-1, -1};
 	/* Since QString is UTF-16 and docstring is UCS-4, the offsets may
 	 * not be the same when there are high-plan unicode characters
 	 * (bug #10443).
@@ -398,35 +389,31 @@ GuiFontMetrics::breakAt_helper(docstring const & s, int const x,
 	LASSERT(len > 0 || qlen == 0, /**/);
 #endif
 	// The -1 is here to account for the leading zerow_nbsp.
-	return new pair<int, int>(len, int(line.naturalTextWidth()));
+	return {len, int(line.naturalTextWidth())};
 }
 
 
 bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const force) const
 {
-	PROFILE_THIS_BLOCK(breakAt)
+	PROFILE_THIS_BLOCK(breakAt);
 	if (s.empty())
 		return false;
-	pair<int, int> * pp;
-#ifdef CACHE_METRICS_BREAKAT
-	docstring const s_cache = s + convert<docstring>(x) + (rtl ? "r" : "l") + (force ? "f" : "w");
 
-	pp = breakat_cache_[s_cache];
-	if (!pp) {
-		PROFILE_CACHE_MISS(breakAt)
-#endif
+	docstring const s_cache =
+		s + convert<docstring>(x) + (rtl ? "r" : "l") + (force ? "f" : "w");
+	pair<int, int> pp;
+
+	if (breakat_cache_.contains(s_cache))
+		pp = breakat_cache_[s_cache];
+	else {
+		PROFILE_CACHE_MISS(breakAt);
 		pp = breakAt_helper(s, x, rtl, force);
-#ifdef CACHE_METRICS_BREAKAT
 		breakat_cache_.insert(s_cache, pp, s_cache.size() * sizeof(char_type));
 	}
-#endif
-	if (pp->first == -1)
+	if (pp.first == -1)
 		return false;
-	s = s.substr(0, pp->first);
-	x = pp->second;
-#ifndef CACHE_METRICS_BREAKAT
-	delete pp;
-#endif
+	s = s.substr(0, pp.first);
+	x = pp.second;
 	return true;
 }
 

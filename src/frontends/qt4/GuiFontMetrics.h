@@ -14,6 +14,7 @@
 
 #include "frontends/FontMetrics.h"
 
+#include "support/Cache.h"
 #include "support/docstring.h"
 
 #include <QFont>
@@ -21,23 +22,7 @@
 #include <QHash>
 #include <QTextLayout>
 
-// Declare which font metrics elements have to be cached
-
-#define CACHE_METRICS_WIDTH
-#define CACHE_METRICS_BREAKAT
-// Qt 5.x already has its own caching of QTextLayout objects
-#if (QT_VERSION < 0x050000)
-#define CACHE_METRICS_QTEXTLAYOUT
-#endif
-
-#if defined(CACHE_METRICS_WIDTH) || defined(CACHE_METRICS_BREAKAT) \
-  || defined(CACHE_METRICS_QTEXTLAYOUT)
-#define CACHE_SOME_METRICS
-#endif
-
-#ifdef CACHE_SOME_METRICS
-#include <QCache>
-#endif
+#include <memory>
 
 namespace lyx {
 namespace frontend {
@@ -82,15 +67,14 @@ public:
 	int width(QString const & str) const;
 
 	/// Return a pointer to a cached QTextLayout object
-	QTextLayout const *
+	std::shared_ptr<QTextLayout const>
 	getTextLayout(docstring const & s, bool const rtl,
-                  double const wordspacing) const;
+	              double const wordspacing) const;
 
 private:
 
-	std::pair<int, int> *
-	breakAt_helper(docstring const & s, int const x,
-	               bool const rtl, bool const force) const;
+	std::pair<int, int> breakAt_helper(docstring const & s, int const x,
+	                                   bool const rtl, bool const force) const;
 
 	/// The font
 	QFont font_;
@@ -100,21 +84,12 @@ private:
 
 	/// Cache of char widths
 	mutable QHash<char_type, int> width_cache_;
-
-#ifdef CACHE_METRICS_WIDTH
 	/// Cache of string widths
-	mutable QCache<docstring, int> strwidth_cache_;
-#endif
-
-#ifdef CACHE_METRICS_BREAKAT
+	mutable Cache<docstring, int> strwidth_cache_;
 	/// Cache for breakAt
-	mutable QCache<docstring, std::pair<int, int>> breakat_cache_;
-#endif
-
-#ifdef CACHE_METRICS_QTEXTLAYOUT
-	/// Cache for QTextLayout:s
-	mutable QCache<docstring, QTextLayout> qtextlayout_cache_;
-#endif
+	mutable Cache<docstring, std::pair<int, int>> breakat_cache_;
+	/// Cache for QTextLayout
+	mutable Cache<docstring, std::shared_ptr<QTextLayout>> qtextlayout_cache_;
 
 	struct AscendDescend {
 		int ascent;
