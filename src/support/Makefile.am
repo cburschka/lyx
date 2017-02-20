@@ -33,6 +33,7 @@ liblyxsupport_a_SOURCES = \
 	FileMonitor.cpp \
 	RandomAccessList.h \
 	bind.h \
+	Cache.h \
 	ConsoleApplication.cpp \
 	ConsoleApplication.h \
 	ConsoleApplicationPrivate.h \
