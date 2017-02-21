@@ -1880,12 +1880,10 @@ key "tipa"
 
 \end_inset
 
-.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-If you use Xe\SpecialChar TeX
+, which is automatically loaded by \SpecialChar LyX
+ if you follow the procedure described
+ below.
+ If you use Xe\SpecialChar TeX
  or Lua\SpecialChar TeX
  (i.
 \begin_inset space \thinspace{}
@@ -1906,13 +1904,86 @@ Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
 Fonts
 \family default
-), no extra package is needed.
+), the package 
+\emph on
+xunicode
+\emph default
+ is loaded instead (since 
+\emph on
+tipa
+\emph default
+ does not work in this context).
+ The 
+\emph on
+xunicode
+\emph default
+ package emulates the 
+\emph on
+tipa
+\emph default
+ output, but is not perfect at that, so some things might not look as expected.
+ Furthermore, you need to take care in this case to use a non-TeX font that
+ includes the IPA glyphs (such as 
+\emph on
+CMU Serif
+\emph default
+ or 
+\emph on
+SIL Doulos
+\emph default
+).
+ You can also specify an extra font only for IPA by adding the following
+ to 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+LaTeX Preamble
+\family default
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginDocument{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newfontfamily{
+\backslash
+ipafont}{CMU Serif}% or another font
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+useTIPAfont{
+\backslash
+ipafont}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \end_inset
 
- Additionally, if you want to have instant preview, you should have the
- 
+Additionally, and independent from which of the above approaches you use,
+ if you want to have instant preview, you should have the 
 \emph on
 preview-latex
 \emph default

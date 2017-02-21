@@ -1933,6 +1933,156 @@ key "preview"
 \end_inset
 
  soit installé.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+If you use traditional \SpecialChar LaTeX
+ or PDF\SpecialChar LaTeX
+, a prerequisite to use \SpecialChar LyX
+'s IPA support is
+ the \SpecialChar LaTeX
+ package 
+\emph on
+tipa
+\emph default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "tipa"
+
+\end_inset
+
+, which is automatically loaded by \SpecialChar LyX
+ if you follow the procedure described
+ below.
+ If you use Xe\SpecialChar TeX
+ or Lua\SpecialChar TeX
+ (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e., if you have clicked 
+\begin_inset Quotes eld
+\end_inset
+
+Use non-\SpecialChar TeX
+ fonts
+\begin_inset Quotes erd
+\end_inset
+
+ in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Fonts
+\family default
+), the package 
+\emph on
+xunicode
+\emph default
+ is loaded instead (since 
+\emph on
+tipa
+\emph default
+ does not work in this context).
+ The 
+\emph on
+xunicode
+\emph default
+ package emulates the 
+\emph on
+tipa
+\emph default
+ output, but is not perfect at that, so some things might not look as expected.
+ Furthermore, you need to take care in this case to use a non-TeX font that
+ includes the IPA glyphs (such as 
+\emph on
+CMU Serif
+\emph default
+ or 
+\emph on
+SIL Doulos
+\emph default
+).
+ You can also specify an extra font only for IPA by adding the following
+ to 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+LaTeX Preamble
+\family default
+:
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+\begin_inset listings
+lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginDocument{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newfontfamily{
+\backslash
+ipafont}{CMU Serif}% or another font
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+useTIPAfont{
+\backslash
+ipafont}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\lang english
+Additionally, and independent from which of the above approaches you use,
+ if you want to have instant preview, you should have the 
+\emph on
+preview-latex
+\emph default
+ package 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "preview"
+
+\end_inset
+
+ installed.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

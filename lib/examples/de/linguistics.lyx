@@ -1902,11 +1902,10 @@ key "tipa"
 \end_inset
 
  installiert haben.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Wenn Sie Xe\SpecialChar TeX
+ Es wird von \SpecialChar LyX
+ automatisch geladen, wenn Sie dem unten beschriebenen Vorgehen
+ folgen.
+ Wenn Sie Xe\SpecialChar TeX
  oder Lua\SpecialChar TeX
  verwenden (und 
 \begin_inset Quotes gld
@@ -1923,13 +1922,89 @@ Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
 Schriften
 \family default
- aktiviert haben), brauchen Sie kein zusätzliches Paket.
+ aktiviert haben), wird statt dessen das Paket 
+\emph on
+xunicode
+\emph default
+ geladen, da 
+\emph on
+tipa
+\emph default
+ in diesem Fall nicht funktioniert.
+ Das Paket 
+\emph on
+xunicode
+\emph default
+ emuliert die Ausgabe von 
+\emph on
+tipa
+\emph default
+, ist aber nicht perfekt, so dass die Ausgabe möglicherweise nicht wie erwartet
+ ist.
+ Außerdem müssen Sie in diesem Fall darauf achten, dass die Nicht-\SpecialChar TeX
+-Schrift
+ die IPA-Symbole auch enthält (empfehlenswert sind Schriften wie 
+\emph on
+CMU Serif
+\emph default
+ oder 
+\emph on
+SIL Doulos
+\emph default
+).
+ Sie können auch eine Schrift nur für IPA definieren, indem sie das Folgende
+ in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+LaTeX-Vorspann
+\family default
+ eingeben:
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language={[LaTeX]TeX},basicstyle={\footnotesize\ttfamily}"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+AtBeginDocument{%
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newfontfamily{
+\backslash
+ipafont}{CMU Serif}% oder eine ander Schriftart
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+useTIPAfont{
+\backslash
+ipafont}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \end_inset
 
- Für eine direkte Vorschau der IPA-Symbole im Arbeitsfenster sollten Sie
- weiterhin das 
+Für eine direkte Vorschau der IPA-Symbole im Arbeitsfenster sollten Sie
+ weiterhin (egal, welche der oben beschriebenen Ausgabeformate Sie verwenden)
+ das 
 \emph on
 preview-latex
 \emph default
