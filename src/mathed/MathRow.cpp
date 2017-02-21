@@ -90,14 +90,14 @@ MathRow::MathRow(MetricsInfo & mi, MathData const * ar)
 		}
 
 		// finally reserve space for markers
-		if (bef.marker != InsetMath::NO_MARKER)
+		if (bef.marker != Inset::NO_MARKER)
 			bef.after = max(bef.after, 1);
-		if (e.mclass != MC_UNKNOWN && e.marker != InsetMath::NO_MARKER)
+		if (e.mclass != MC_UNKNOWN && e.marker != Inset::NO_MARKER)
 			e.before = max(e.before, 1);
 		// for linearized insets (macros...) too
-		if (e.type == BEGIN && e.marker != InsetMath::NO_MARKER)
+		if (e.type == BEGIN && e.marker != Inset::NO_MARKER)
 			bef.after = max(bef.after, 1);
-		if (e.type == END && e.marker != InsetMath::NO_MARKER) {
+		if (e.type == END && e.marker != Inset::NO_MARKER) {
 			Element & aft = elements_[after(i)];
 			aft.before = max(aft.before, 1);
 		}
@@ -133,7 +133,7 @@ int MathRow::after(int i) const
 
 namespace {
 
-void afterMetricsMarkers(MetricsInfo const & mi, MathRow::Element & e,
+void metricsMarkersVertical(MetricsInfo const & , MathRow::Element const & e,
                             Dimension & dim)
 {
 	// handle vertical space for markers
@@ -146,26 +146,13 @@ void afterMetricsMarkers(MetricsInfo const & mi, MathRow::Element & e,
 	case InsetMath::MARKER2:
 		++dim.asc;
 		++dim.des;
-		break;
-	case InsetMath::BOX_MARKER:
-		FontInfo font = mi.base.font;
-		augmentFont(font, "lyxtex");
-		font.setSize(FONT_SIZE_TINY);
-		Dimension namedim;
-		mathed_string_dim(font, e.inset->name(), namedim);
-		int const namewid = 1 + namedim.wid + 1;
-		dim.wid += 2;
-		if (namewid > dim.wid)
-			e.after += namewid - dim.wid;
-		dim.asc += 2;
-		dim.des += 2 + namedim.height();
 	}
 }
 
 }
 
 
-void MathRow::metrics(MetricsInfo & mi, Dimension & dim)
+void MathRow::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	dim.asc = 0;
 	dim.wid = 0;
@@ -174,7 +161,7 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim)
 	vector<pair<InsetMath const *, Dimension>> dim_insets;
 	vector<pair<MathData const *, Dimension>> dim_arrays;
 	CoordCache & coords = mi.base.bv->coordCache();
-	for (Element & e : elements_) {
+	for (Element const & e : elements_) {
 		mi.base.macro_nesting = e.macro_nesting;
 		Dimension d;
 		switch (e.type) {
@@ -189,7 +176,6 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim)
 			if (e.inset) {
 				dim_insets.push_back(make_pair(e.inset, Dimension()));
 				dim_insets.back().second.wid += e.before + e.after;
-				d.wid = e.before + e.after;
 				e.inset->beforeMetrics();
 			}
 			if (e.ar)
@@ -199,14 +185,11 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim)
 			if (e.inset) {
 				e.inset->afterMetrics();
 				LATTEST(dim_insets.back().first == e.inset);
-				d = dim_insets.back().second;
-				afterMetricsMarkers(mi, e, d);
-				d.wid += e.before + e.after;
-				coords.insets().add(e.inset, d);
+				Dimension & idim = dim_insets.back().second;
+				metricsMarkersVertical(mi, e, idim);
+				idim.wid += e.before + e.after;
+				coords.insets().add(e.inset, idim);
 				dim_insets.pop_back();
-				// We do not want to count the width again, but the
-				// padding and the vertical dimension are meaningful.
-				d.wid = e.before + e.after;
 			}
 			if (e.ar) {
 				LATTEST(dim_arrays.back().first == e.ar);
@@ -220,7 +203,7 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim)
 				// allow for one pixel before/after the box.
 				d.wid += e.before + e.after + 2;
 			} else {
-				// hide the box, but keep its height
+				// hide the box, but give it some height
 				d.wid = 0;
 			}
 			break;
@@ -258,22 +241,6 @@ void drawMarkers(PainterInfo const & pi, MathRow::Element const & e, int const x
 	// the marker is before/after the inset. Normally some space has been reserved already.
 	int const l = x + e.before - 1;
 	int const r = x + dim.width() - e.after;
-
-	if (e.marker == InsetMath::BOX_MARKER) {
-		// draw header and rectangle around
-		FontInfo font = pi.base.font;
-		augmentFont(font, "lyxtex");
-		font.setSize(FONT_SIZE_TINY);
-		font.setColor(Color_mathmacrolabel);
-		Dimension namedim;
-		mathed_string_dim(font, e.inset->name(), namedim);
-		pi.pain.rectangle(l, y - dim.asc, dim.wid,
-		                  dim.height(), Color_mathmacroframe);
-		pi.pain.fillRectangle(l, y + dim.des - namedim.height() - 2,
-		                      dim.wid, namedim.height() + 2, Color_mathmacrobg);
-		pi.pain.text(l + 1, y + dim.des - namedim.des - 1, e.inset->name(), font);
-		return;
-	}
 
 	// Duplicated from Inset.cpp and adapted. It is believed that the
 	// Inset version should die eventually

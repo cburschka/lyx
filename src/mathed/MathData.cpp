@@ -276,8 +276,8 @@ void MathData::metrics(MetricsInfo & mi, Dimension & dim) const
 	sshift_ = xascent / 4;
 
 	MathRow mrow(mi, this);
-	mrow.metrics(mi, dim);
 	mrow_cache_[mi.base.bv] = mrow;
+	mrow.metrics(mi, dim);
 	kerning_ = mrow.kerning(mi.base.bv);
 
 	// Cache the dimension.

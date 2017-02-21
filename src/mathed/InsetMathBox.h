@@ -58,7 +58,7 @@ public:
 	///
 	mode_type currentMode() const { return TEXT_MODE; }
 	///
-	marker_type marker(BufferView const *) const { return NO_MARKER; }
+	marker_type marker() const { return NO_MARKER; }
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -118,7 +118,7 @@ public:
 	///
 	InsetMathBoxed(Buffer * buf);
 	///
-	marker_type marker(BufferView const *) const { return NO_MARKER; }
+	marker_type marker() const { return NO_MARKER; }
 	///
 	void validate(LaTeXFeatures & features) const;
 	///

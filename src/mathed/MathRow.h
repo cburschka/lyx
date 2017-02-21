@@ -111,7 +111,7 @@ public:
 	MathRow(MetricsInfo & mi, MathData const * ar);
 
 	//
-	void metrics(MetricsInfo & mi, Dimension & dim);
+	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	//
 	void draw(PainterInfo & pi, int const x, int const y) const;
 

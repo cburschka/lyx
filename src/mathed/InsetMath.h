@@ -114,10 +114,8 @@ public:
 	/// this is overridden by specific insets
 	virtual mode_type currentMode() const { return MATH_MODE; }
 
-	// The possible marker types for math insets
-	enum marker_type { NO_MARKER, MARKER2, MARKER, BOX_MARKER };
 	/// this is overridden by insets with specific edit marker type
-	virtual marker_type marker(BufferView const *) const;
+	virtual marker_type marker() const;
 
 	/// the ascent of the inset above the baseline
 	/// compute the size of the object for text based drawing
