@@ -585,8 +585,8 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 		// calculate dimension with label while editing
 		if (lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_INLINE_BOX
 		    && d->editing_[mi.base.bv]) {
-			FontInfo font = mi.base.font;
-			augmentFont(font, "lyxtex");
+			FontInfo font;
+			font.setSize(FONT_SIZE_TINY);
 			Dimension namedim;
 			mathed_string_dim(font, name(), namedim);
 #if 0
@@ -776,8 +776,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 
 		if (drawBox) {
 			// draw header and rectangle around
-			FontInfo font = pi.base.font;
-			augmentFont(font, "lyxtex");
+			FontInfo font;
 			font.setSize(FONT_SIZE_TINY);
 			font.setColor(Color_mathmacrolabel);
 			Dimension namedim;
