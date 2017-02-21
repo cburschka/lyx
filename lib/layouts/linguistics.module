@@ -29,6 +29,8 @@ Counter subexamplei
 	LabelString          "\theexamplei (\alph{subexamplei})"
 End
 
+OutlinerName tableau    "Tableaux" #no AddToToc (built-in)
+
 # single numbered example with covington.sty
 Style Numbered_Example_(multiline)
 	LatexType             Environment
