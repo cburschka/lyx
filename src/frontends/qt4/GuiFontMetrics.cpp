@@ -51,6 +51,13 @@ namespace lyx {
 namespace frontend {
 
 
+/*
+ * Limit (strwidth|breakat)_cache_ size to 512kB of string data.
+ * Limit qtextlayout_cache_ size to 500 elements (we do not know the
+ * size of the QTextLayout objects anyway).
+ * Note that all these numbers are arbitrary.
+ * Also, setting size to 0 is tantamount to disabling the cache.
+ */
 int cache_metrics_width_size = 1 << 19;
 int cache_metrics_breakat_size = 1 << 19;
 // Qt 5.x already has its own caching of QTextLayout objects
@@ -83,12 +90,6 @@ inline QChar const ucs4_to_qchar(char_type const ucs4)
 } // anon namespace
 
 
-/*
- * Limit (strwidth|breakat)_cache_ size to 512kB of string data.
- * Limit qtextlayout_cache_ size to 500 elements (we do not know the
- * size of the QTextLayout objects anyway).
- * Note that all these numbers are arbitrary.
- */
 GuiFontMetrics::GuiFontMetrics(QFont const & font)
 	: font_(font), metrics_(font, 0),
 	  strwidth_cache_(cache_metrics_width_size),
