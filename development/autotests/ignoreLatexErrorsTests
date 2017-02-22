@@ -1,2 +1,10 @@
 Sublabel: missing_glyphs
 export/doc/UserGuide_(dvi3|pdf4|pdf5)_systemF
+
+# Juergen Spitzmueller: They do not have problems with xunicode, but without.
+# The reason is that the asterisk glyph is not included in the arabic font
+# (Scheherazade), but apparently, xunicode defines an extra asterisk
+# glyph (for a different purpose) that is being used here. Clearly the
+# problem should be fixed somewhere else.
+export/export/latex/arabic_simple_pdf4_systemF
+export/doc/ar/Intro_pdf4_systemF
