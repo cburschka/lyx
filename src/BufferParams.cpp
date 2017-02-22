@@ -2176,12 +2176,19 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		os << "}\n";
 	}
 
-	// xunicode needs to be loaded at least after amsmath, amssymb,
+	// xunicode only needs to be loaded if tipa is used
+	// (the rest is obsoleted by the new TU encoding).
+	// It needs to be loaded at least after amsmath, amssymb,
 	// esint and the other packages that provide special glyphs
-	// The package only supports XeTeX currently.
-	if (features.runparams().flavor == OutputParams::XETEX
-	    && useNonTeXFonts)
+	if (features.mustProvide("tipa") && useNonTeXFonts) {
+		// The package officially only supports XeTeX, but also works
+		// with LuaTeX. Thus we work around its XeTeX test.
+		if (features.runparams().flavor != OutputParams::XETEX) {
+			os << "% Pretend to xunicode that we are XeTeX\n"
+			   << "\\def\\XeTeXpicfile{}\n";
+		}
 		os << "\\usepackage{xunicode}\n";
+	}
 
 	// Polyglossia must be loaded last ...
 	if (use_polyglossia) {
