@@ -193,7 +193,7 @@ export/examples/ru/splash_(dvi3|pdf[45])_texF
 # <argument> ...art {link}{\Hy@tocdestname }{\nonumberline Ã
 #                                                   ndice alfabÃ©tico}\hyper...
 # l.393 ... Ãndice alfabÃ©tico}{175}{chapter*.10}
-export/doc/es/UserGuide_(dvi3|pdf5)_systemF
+#export/doc/es/UserGuide_(dvi3|pdf5)_systemF
 
 
 # Gives the following error:
@@ -215,7 +215,7 @@ export/examples/(|de/|es/)tufte-(book|handout)_(dvi.*|pdf|pdf3|pdf4.*)
 .*(|fr/)xy(pic|figure).*pdf5.*
 
 # command \textipa not defined with LuaTeX and Unicode fonts:
-export/examples/(|de/|es/|fr/)linguistics_(dvi3|pdf5)_systemF
+#export/examples/(|de/|es/|fr/)linguistics_(dvi3|pdf5)_systemF
 
 
 # Problem with Check and Slovak Babel support.
