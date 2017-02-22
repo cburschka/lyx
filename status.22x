@@ -172,6 +172,8 @@ What's new
 
 - Fix crash when the document contains Unicode line-breaking characters.
 
+- Fix assertion when selecting muticolumn in math (bug 10486).
+
 - Allow using colors supported by xcolor inside mathed (bug 10417).
 
 - Change description of "frame of button" color to "button frame" (bug

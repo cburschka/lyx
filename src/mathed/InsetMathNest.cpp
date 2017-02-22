@@ -311,6 +311,9 @@ void InsetMathNest::drawSelection(PainterInfo & pi, int x, int y) const
 		for (idx_type i = 0; i < nargs(); ++i) {
 			if (idxBetween(i, s1.idx(), s2.idx())) {
 				MathData const & c = cell(i);
+				// this can happen when cell is part of multicolumn
+				if (!bv.coordCache().getArrays().has(&c))
+					continue;
 				Geometry const & g = bv.coordCache().getArrays().geometry(&c);
 				int x1 = g.pos.x_;
 				int y1 = g.pos.y_ - g.dim.ascent();
