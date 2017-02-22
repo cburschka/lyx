@@ -214,9 +214,12 @@ export/examples/(|de/|es/)tufte-(book|handout)_(dvi.*|pdf|pdf3|pdf4.*)
 # xy package:
 .*(|fr/)xy(pic|figure).*pdf5.*
 
-# command \textipa not defined with LuaTeX and Unicode fonts:
+# command \textipa not defined with LuaTeX and Unicode fonts.
+# Issue reported here:
+# https://github.com/wspr/fontspec/issues/280
+# see here for discussion and ideas for a fix:
+# https://www.mail-archive.com/search?l=mid&q=1487664738.2405.6.camel%40lyx.org
 #export/examples/(|de/|es/|fr/)linguistics_(dvi3|pdf5)_systemF
-
 
 # Problem with Check and Slovak Babel support.
 # (reported per mail to Petr Tesa\v{r}\'ik, 2016-09-06)
