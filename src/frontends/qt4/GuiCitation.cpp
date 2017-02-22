@@ -1052,7 +1052,7 @@ void GuiCitation::restoreSession()
 	QSettings settings;
 	regexp_->setChecked(settings.value(sessionKey() + "/regex").toBool());
 	casesense_->setChecked(settings.value(sessionKey() + "/casesensitive").toBool());
-	instant_->setChecked(settings.value(sessionKey() + "/autofind").toBool());
+	instant_->setChecked(settings.value(sessionKey() + "/autofind", true).toBool());
 	style_ = settings.value(sessionKey() + "/citestyle").toInt();
 	updateFilterHint();
 }
