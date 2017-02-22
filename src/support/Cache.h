@@ -51,15 +51,17 @@ public:
 	{
 		return Q::insert(key, new Val(std::move(object)), cost);
 	}
-	// Returns the default value (e.g. null pointer) before using the result. If
-	// this is not convenient for your type, check if it exists beforehand with
-	// Cache::contains.
+	// Returns the default value (e.g. null pointer) if not found in the
+	// cache. If this is not convenient for your class Val, check if it exists
+	// beforehand with Cache::contains.
 	Val object(Key const & key) const
 	{
 		if (Val * obj = Q::object(key))
 			return *obj;
 		return Val();
 	}
+	/// Synonymous for object, same remark as above.
+	Val operator[](Key const & key) const { return object(key); }
 	/// Everything from QCache except QCache::take.
 	using Q::clear;
 	using Q::contains;
@@ -71,7 +73,6 @@ public:
 	int max_cost() const { return Q::maxCost(); }
 	void set_max_cost(int cost) { Q::setMaxCost(cost); }
 	int total_cost() const { return Q::totalCost(); }
-	Val operator[](Key const & key) const { return object(key); }
 };
 
 } // namespace lyx
