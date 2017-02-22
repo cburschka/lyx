@@ -216,9 +216,15 @@ if(LYX_USE_QT MATCHES "QT5")
   set(CMAKE_REQUIRED_INCLUDES ${Qt5Core_INCLUDE_DIRS})
   set(CMAKE_REQUIRED_FLAGS)
   #message(STATUS "Qt5Core_INCLUDE_DIRS = ${Qt5Core_INCLUDE_DIRS}")
+  check_include_file_cxx(QtGui/qtgui-config.h HAVE_QTGUI_CONFIG_H)
+  if (HAVE_QTGUI_CONFIG_H)
+    set(lyx_qt5_config "QtGui/qtgui-config.h")
+  else()
+    set(lyx_qt5_config "QtCore/qconfig.h")
+  endif()
   check_cxx_source_runs(
     "
-    #include <QtCore/qconfig.h>
+    #include <${lyx_qt5_config}>
     #include <string>
     using namespace std;
     string a(QT_QPA_DEFAULT_PLATFORM_NAME);
