@@ -277,54 +277,6 @@ void InsetMathNest::draw(PainterInfo &, int, int) const
 }
 
 
-void InsetMathNest::drawSelection(PainterInfo & pi, int x, int y) const
-{
-	BufferView & bv = *pi.base.bv;
-	// this should use the x/y values given, not the cached values
-	Cursor & cur = bv.cursor();
-	if (!cur.selection())
-		return;
-	if (&cur.inset() != this)
-		return;
-
-	// FIXME: hack to get position cache warm
-	bool const original_drawing_state = pi.pain.isDrawingEnabled();
-	pi.pain.setDrawingEnabled(false);
-	draw(pi, x, y);
-	pi.pain.setDrawingEnabled(original_drawing_state);
-
-	CursorSlice s1 = cur.selBegin();
-	CursorSlice s2 = cur.selEnd();
-
-	//lyxerr << "InsetMathNest::drawing selection: "
-	//	<< " s1: " << s1 << " s2: " << s2 << endl;
-	if (s1.idx() == s2.idx()) {
-		MathData const & c = cell(s1.idx());
-		Geometry const & g = bv.coordCache().getArrays().geometry(&c);
-		int x1 = g.pos.x_ + c.pos2x(pi.base.bv, s1.pos());
-		int y1 = g.pos.y_ - g.dim.ascent();
-		int x2 = g.pos.x_ + c.pos2x(pi.base.bv, s2.pos());
-		int y2 = g.pos.y_ + g.dim.descent();
-		pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, Color_selection);
-	//lyxerr << "InsetMathNest::drawing selection 3: "
-	//	<< " x1: " << x1 << " x2: " << x2
-	//	<< " y1: " << y1 << " y2: " << y2 << endl;
-	} else {
-		for (idx_type i = 0; i < nargs(); ++i) {
-			if (idxBetween(i, s1.idx(), s2.idx())) {
-				MathData const & c = cell(i);
-				Geometry const & g = bv.coordCache().getArrays().geometry(&c);
-				int x1 = g.pos.x_;
-				int y1 = g.pos.y_ - g.dim.ascent();
-				int x2 = g.pos.x_ + g.dim.width();
-				int y2 = g.pos.y_ + g.dim.descent();
-				pi.pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, Color_selection);
-			}
-		}
-	}
-}
-
-
 void InsetMathNest::validate(LaTeXFeatures & features) const
 {
 	for (idx_type i = 0; i < nargs(); ++i)

@@ -278,7 +278,6 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 			Dimension d2 = d;
 			d2.wid -= e.before + e.after;
 			coords.insets().add(e.inset, d2);
-			e.inset->drawSelection(pi, x + e.before, y);
 			e.inset->draw(pi, x + e.before, y);
 			coords.insets().add(e.inset, x, y);
 			coords.insets().add(e.inset, d);
@@ -287,14 +286,16 @@ void MathRow::draw(PainterInfo & pi, int x, int const y) const
 			break;
 		}
 		case BEGIN:
+			if (e.ar) {
+				coords.arrays().add(e.ar, x, y);
+				e.ar->drawSelection(pi, x, y);
+			}
 			if (e.inset) {
 				coords.insets().add(e.inset, x, y);
 				drawMarkers(pi, e, x, y);
 				e.inset->beforeDraw(pi);
 			}
 			x += e.before + e.after;
-			if (e.ar)
-				coords.arrays().add(e.ar, x, y);
 			break;
 		case END:
 			if (e.inset)

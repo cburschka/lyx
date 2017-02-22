@@ -129,6 +129,8 @@ public:
 	///
 	Dimension const & dimension(BufferView const &) const;
 
+	/// draw the selection over the cell
+	void drawSelection(PainterInfo & pi, int x, int y) const;
 	/// redraw cell using cache metrics information
 	void draw(PainterInfo & pi, int x, int y) const;
 	/// rebuild cached metrics information

@@ -37,8 +37,6 @@ public:
 	void cellsMetrics(MetricsInfo const & mi) const;
 	/// draw background if locked
 	void draw(PainterInfo & pi, int x, int y) const;
-	/// draw selection background
-	void drawSelection(PainterInfo & pi, int x, int y) const;
 	///
 	void updateBuffer(ParIterator const &, UpdateType);
 	/// identifies NestInsets
@@ -49,7 +47,7 @@ public:
 	void cursorPos(BufferView const & bv, CursorSlice const & sl,
 		bool boundary, int & x, int & y) const;
 	///
-	void edit(Cursor & cur, bool front, 
+	void edit(Cursor & cur, bool front,
 		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
 	///
 	Inset * editXY(Cursor & cur, int x, int y);

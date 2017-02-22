@@ -802,14 +802,6 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathMacro::drawSelection(PainterInfo & pi, int x, int y) const
-{
-	// We may have 0 arguments, but InsetMathNest requires at least one.
-	if (!cells_.empty())
-		InsetMathNest::drawSelection(pi, x, y);
-}
-
-
 void MathMacro::setDisplayMode(MathMacro::DisplayMode mode, int appetite)
 {
 	if (d->displayMode_ != mode) {

@@ -56,8 +56,6 @@ public:
 	bool editMetrics(BufferView const * bv) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
-	/// draw selection background
-	void drawSelection(PainterInfo & pi, int x, int y) const;
 	///
 	int kerning(BufferView const * bv) const;
 	/// get cursor position
