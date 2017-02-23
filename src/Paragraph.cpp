@@ -363,6 +363,12 @@ public:
 		pos_type i,
 		unsigned int & column);
 	///
+	bool latexSpecialTU(
+		char_type const c,
+		otexstream & os,
+		pos_type i,
+		unsigned int & column);
+	///
 	bool latexSpecialT3(
 		char_type const c,
 		otexstream & os,
@@ -1187,11 +1193,14 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 	// NOTE: Some languages reset the font encoding internally to a
 	//       non-standard font encoding. If we are using such a language,
 	//       we do not output special T1 chars.
-	// NOTE: XeTeX and LuaTeX use OT1 (pre 2017) or TU (as of 2017) encoding
 	if (!runparams.inIPA && !running_font.language()->internalFontEncoding()
 	    && !runparams.isFullUnicode() && bparams.font_encoding() == "T1"
 	    && latexSpecialT1(c, os, i, column))
 		return;
+	// NOTE: XeTeX and LuaTeX use EU1/2 (pre 2017) or TU (as of 2017) encoding
+	else if (!runparams.inIPA && !running_font.language()->internalFontEncoding()
+		 && runparams.isFullUnicode() && latexSpecialTU(c, os, i, column))
+		     return;
 
 	// Otherwise, we use what LaTeX provides us.
 	switch (c) {
@@ -1355,6 +1364,14 @@ bool Paragraph::Private::latexSpecialT1(char_type const c, otexstream & os,
 	default:
 		return false;
 	}
+}
+
+
+bool Paragraph::Private::latexSpecialTU(char_type const c, otexstream & os,
+	pos_type i, unsigned int & column)
+{
+	// TU encoding is currently on par with T1.
+	return latexSpecialT1(c, os, i, column);
 }
 
 
