@@ -374,7 +374,10 @@ docstring InsetQuotesParams::getLaTeXQuote(char_type c, string const & op) const
 		break;
 	}
 	case 0x0027: {// ' (plain)
-		res = "\\textquotesingle";
+		if (op == "t1")
+			res = "\\textquotesingle";
+		else
+			res = "\\char39";
 		break;
 	}
 	case 0x201e: {// ,,
@@ -419,7 +422,10 @@ docstring InsetQuotesParams::getLaTeXQuote(char_type c, string const & op) const
 		break;
 	}
 	case 0x0022: {// "
-		res = "\\textquotedbl";
+		if (op == "t1")
+			res = "\\textquotedbl";
+		else
+			res = "\\char34";
 		break;
 	}
 	// The following are fakes
