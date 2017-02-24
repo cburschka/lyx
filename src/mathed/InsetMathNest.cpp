@@ -1495,7 +1495,7 @@ void InsetMathNest::edit(Cursor & cur, bool front, EntryDirection entry_from)
 
 Inset * InsetMathNest::editXY(Cursor & cur, int x, int y)
 {
-	int idx_min = 0;
+	int idx_min = -1;
 	int dist_min = 1000000;
 	for (idx_type i = 0, n = nargs(); i != n; ++i) {
 		int const d = cell(i).dist(cur.bv(), x, y);
@@ -1504,6 +1504,9 @@ Inset * InsetMathNest::editXY(Cursor & cur, int x, int y)
 			idx_min = i;
 		}
 	}
+	if (idx_min == -1)
+		return this;
+
 	MathData & ar = cell(idx_min);
 	cur.push(*this);
 	cur.idx() = idx_min;
