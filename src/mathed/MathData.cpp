@@ -323,17 +323,7 @@ void MathData::drawSelection(PainterInfo & pi, int const x, int const y) const
 void MathData::draw(PainterInfo & pi, int const x, int const y) const
 {
 	//lyxerr << "MathData::draw: x: " << x << " y: " << y << endl;
-	BufferView & bv  = *pi.base.bv;
-	setXY(bv, x, y);
-
-	Dimension const & dim = bv.coordCache().getArrays().dim(this);
-
-	// don't draw outside the workarea
-	if (y + dim.descent() <= 0
-		|| y - dim.ascent() >= bv.workHeight()
-		|| x + dim.width() <= 0
-		|| x >= bv. workWidth())
-		return;
+	setXY(*pi.base.bv, x, y);
 
 	drawSelection(pi, x, y);
 	MathRow const & mrow = mrow_cache_[pi.base.bv];
