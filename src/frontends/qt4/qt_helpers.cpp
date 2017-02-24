@@ -614,17 +614,16 @@ QString formatToolTip(QString text, int em)
 	QFont const font = QToolTip::font();
 	int const px_width = em * QFontMetrics(font).width("M");
 	// Determine the ideal width of the tooltip
-    QTextDocument td("");
-    td.setHtml(text);
-    td.setDefaultFont(QToolTip::font());
-    td.setTextWidth(px_width);
-    double best_width = td.idealWidth();
+	QTextDocument td("");
+	td.setHtml(text);
+	td.setDefaultFont(QToolTip::font());
+	td.setTextWidth(px_width);
+	double best_width = td.idealWidth();
 	// Set the line wrapping with appropriate width
 	return QString("<html><body><table><tr>"
 	               "<td align=justify width=%1>%2</td>"
 	               "</tr></table></body></html>")
 		.arg(QString::number(int(best_width) + 1), text);
-	return text;
 }
 
 
