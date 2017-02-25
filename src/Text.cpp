@@ -1057,11 +1057,6 @@ void Text::insertChar(Cursor & cur, char_type c)
 			par.eraseChar(pos - 1, cur.buffer()->params().track_changes);
 			c = 0x2014;
 			pos--;
-		} else if (par.getChar(pos - 1) == 0x2014) {
-			// convert "----" to "-"
-			par.eraseChar(pos - 1, cur.buffer()->params().track_changes);
-			c = '-';
-			pos--;
 		}
 	}
 
