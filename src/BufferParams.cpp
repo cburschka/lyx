@@ -1646,7 +1646,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 
 	// if we use fontspec or newtxmath, we have to load the AMS packages here
 	string const ams = features.loadAMSPackages();
-	bool const ot1 = (font_encoding() == "default" || font_encoding() == "OT1");
+	bool const ot1 = (main_font_encoding() == "default" || main_font_encoding() == "OT1");
 	bool const use_newtxmath =
 		theLaTeXFonts().getLaTeXFont(from_ascii(fontsMath())).getUsedPackage(
 			ot1, false, false) == "newtxmath";
@@ -1673,7 +1673,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// set font encoding
 	// XeTeX and LuaTeX (with OS fonts) do not need fontenc
 	if (!useNonTeXFonts && !features.isProvided("fontenc")
-	    && font_encoding() != "default") {
+	    && main_font_encoding() != "default") {
 		// get main font encodings
 		vector<string> fontencs = font_encodings();
 		// get font encodings of secondary languages
@@ -2992,7 +2992,7 @@ string const BufferParams::dvips_options() const
 }
 
 
-string const BufferParams::font_encoding() const
+string const BufferParams::main_font_encoding() const
 {
 	return font_encodings().empty() ? "default" : font_encodings().back();
 }
@@ -3228,7 +3228,7 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 	}
 
 	// Tex Fonts
-	bool const ot1 = (font_encoding() == "default" || font_encoding() == "OT1");
+	bool const ot1 = (main_font_encoding() == "default" || main_font_encoding() == "OT1");
 	bool const dryrun = features.runparams().dryrun;
 	bool const complete = (fontsSans() == "default" && fontsTypewriter() == "default");
 	bool const nomath = (fontsMath() == "default");

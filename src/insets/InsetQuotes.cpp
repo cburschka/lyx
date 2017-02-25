@@ -628,7 +628,7 @@ InsetQuotes::InsetQuotes(Buffer * buf, char_type c, InsetQuotesParams::QuoteLeve
 	bool dynamic = false;
 	if (buf) {
 		global_style_ = buf->masterBuffer()->params().quotes_style;
-		fontenc_ = buf->masterBuffer()->params().font_encoding();
+		fontenc_ = buf->masterBuffer()->params().main_font_encoding();
 		dynamic = buf->masterBuffer()->params().dynamic_quotes;
 		fontspec_ = buf->masterBuffer()->params().useNonTeXFonts;
 	} else {
@@ -979,7 +979,7 @@ void InsetQuotes::updateBuffer(ParIterator const & it, UpdateType /* utype*/)
 	BufferParams const & bp = buffer().masterBuffer()->params();
 	pass_thru_ = it.paragraph().isPassThru();
 	context_lang_ = it.paragraph().getFontSettings(bp, it.pos()).language()->code();
-	fontenc_ = bp.font_encoding();
+	fontenc_ = bp.main_font_encoding();
 	global_style_ = bp.quotes_style;
 	fontspec_ = bp.useNonTeXFonts;
 }

@@ -1194,7 +1194,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 	//       non-standard font encoding. If we are using such a language,
 	//       we do not output special T1 chars.
 	if (!runparams.inIPA && !running_font.language()->internalFontEncoding()
-	    && !runparams.isFullUnicode() && bparams.font_encoding() == "T1"
+	    && !runparams.isFullUnicode() && bparams.main_font_encoding() == "T1"
 	    && latexSpecialT1(c, os, i, column))
 		return;
 	// NOTE: XeTeX and LuaTeX use EU1/2 (pre 2017) or TU (as of 2017) encoding

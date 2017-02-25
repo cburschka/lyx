@@ -591,8 +591,8 @@ bool LaTeXFeatures::isProvided(string const & name) const
 	if (params_.useNonTeXFonts)
 		return params_.documentClass().provides(name);
 
-	bool const ot1 = (params_.font_encoding() == "default"
-		|| params_.font_encoding() == "OT1");
+	bool const ot1 = (params_.main_font_encoding() == "default"
+		|| params_.main_font_encoding() == "OT1");
 	bool const complete = (params_.fontsSans() == "default"
 		&& params_.fontsTypewriter() == "default");
 	bool const nomath = (params_.fontsMath() == "default");
@@ -1089,7 +1089,8 @@ string const LaTeXFeatures::getPackages() const
 	// if fontspec or newtxmath is used, AMS packages have to be loaded
 	// before fontspec (in BufferParams)
 	string const amsPackages = loadAMSPackages();
-	bool const ot1 = (params_.font_encoding() == "default" || params_.font_encoding() == "OT1");
+	bool const ot1 = (params_.main_font_encoding() == "default"
+			  || params_.main_font_encoding() == "OT1");
 	bool const use_newtxmath =
 		theLaTeXFonts().getLaTeXFont(from_ascii(params_.fontsMath())).getUsedPackage(
 			ot1, false, false) == "newtxmath";
@@ -1318,14 +1319,14 @@ TexString LaTeXFeatures::getMacros() const
 
 	if (!usePolyglossia() && mustProvide("textgreek")) {
 	    // ensure LGR font encoding is defined also if fontenc is not loaded by LyX
-	   	if (params_.font_encoding() == "default")
+	   	if (params_.main_font_encoding() == "default")
 			macros << textgreek_LGR_def;
 		macros << textgreek_def << '\n';
 	}
 
 	if (!usePolyglossia() && mustProvide("textcyr")) {
 		// ensure T2A font encoding is set up also if fontenc is not loaded by LyX
-		if (params_.font_encoding() == "default")
+		if (params_.main_font_encoding() == "default")
 			macros << textcyr_T2A_def;
 		macros << textcyr_def << '\n';
 	}

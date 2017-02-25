@@ -411,7 +411,7 @@ public:
 	AuthorMap author_map_;
 
 	/// the buffer's active font encoding
-	std::string const font_encoding() const;
+	std::string const main_font_encoding() const;
 	/// all font encodings requested by the prefs/document/main language.
 	/// This does NOT include font encodings required by secondary languages
 	std::vector<std::string> const font_encodings() const;
