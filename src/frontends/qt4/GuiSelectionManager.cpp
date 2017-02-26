@@ -393,7 +393,7 @@ bool GuiSelectionManager::eventFilter(QObject * obj, QEvent * event)
 				if (addPB->isEnabled()) {
 					if (!keyModifiers) {
 						addPB_clicked();
-					} else if (keyModifiers == Qt::ControlModifier || 
+					} else if (keyModifiers == Qt::ControlModifier ||
 						  keyModifiers == Qt::KeypadModifier  ||
 						  keyModifiers == (Qt::ControlModifier | Qt::KeypadModifier)) {
 						addPB_clicked();
@@ -413,9 +413,8 @@ bool GuiSelectionManager::eventFilter(QObject * obj, QEvent * event)
 				selectedHasFocus_ = false;
 				updateHook();
 			}
-			event->accept();
-			return true;
-		} 
+			return false;
+		}
 	} else if (obj == selectedLV) {
 		if (etype == QEvent::KeyPress) {
 			QKeyEvent * keyEvent = static_cast<QKeyEvent *>(event);
@@ -432,7 +431,7 @@ bool GuiSelectionManager::eventFilter(QObject * obj, QEvent * event)
 					updateHook();
 				} else
 					return QObject::eventFilter(obj, event);
-			} 
+			}
 			// Ctrl-Up activates upPB
 			else if (keyPressed == Qt::Key_Up) {
 				if (keyModifiers == Qt::ControlModifier) {
@@ -441,7 +440,7 @@ bool GuiSelectionManager::eventFilter(QObject * obj, QEvent * event)
 					event->accept();
 					return true;
 				}
-			} 
+			}
 			// Ctrl-Down activates downPB
 			else if (keyPressed == Qt::Key_Down) {
 				if (keyModifiers == Qt::ControlModifier) {
@@ -461,8 +460,7 @@ bool GuiSelectionManager::eventFilter(QObject * obj, QEvent * event)
 				selectedHasFocus_ = true;
 				updateHook();
 			}
-			event->accept();
-			return true;
+			return false;
 		}
 	}
 	return QObject::eventFilter(obj, event);
