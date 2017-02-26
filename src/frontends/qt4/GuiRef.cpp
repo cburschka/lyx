@@ -130,6 +130,8 @@ GuiRef::GuiRef(GuiView & lv)
 
 	restored_buffer_ = -1;
 	active_buffer_ = -1;
+
+	setFocusProxy(filter_);
 }
 
 
@@ -539,8 +541,6 @@ void GuiRef::updateRefs()
 	sortingCO->setEnabled(!refs_.empty());
 	refsTW->setEnabled(!refs_.empty());
 	groupCB->setEnabled(!refs_.empty());
-	// refsTW should only be the focus proxy when it is enabled
-	setFocusProxy(refs_.empty() ? 0 : refsTW);
 	redoRefs();
 }
 
