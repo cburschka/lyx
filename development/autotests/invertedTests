@@ -104,6 +104,19 @@ export/doc/ar/(Intro|Shortcuts|Tutorial)_pdf4_texF
 export/export/latex/arabic_simple_(dvi3|pdf5)_(texF|systemF)
 export/export/latex/arabic_simple_pdf4_texF
 
+# Polyglossia + LuaTeX does not support Farsi yet. See:
+#     https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
+# Why does farsi fail with Babel?
+export/examples/fa/splash_(dvi|pdf).*
+
+# nonstandard tests failing for unknown reason:
+export/examples/aa_sample_(dvi3|pdf[45])_.*
+export/templates/ACM-siggraph_pdf5_(texF|systemF)
+export/templates/IUCr-article_pdf4_systemF
+export/templates/RJournal_(dvi3|pdf[45])_systemF
+export/templates/aa_(dvi3|pdf[45])_.*
+export/templates/kluwer_.*_systemF
+
 
 # ================================================
 Sublabel: lyxbugs
@@ -127,7 +140,12 @@ export/export/latex/LongestLabelWithUnderscore.*
 # most probably due to BabelPreamble code (language specific headings for
 # theorems, problems , ... are written in the language's default encoding
 # if they contain non-ASCII characters)
+# Error 84 returned from iconv when converting from UCS-4LE to ascii:
+# Invalid or incomplete multibyte or wide character
 export/doc/(es|fr)/Additional_pdf4_texF
+export/doc/(de|es)/EmbeddedObjects_pdf4_texF
+export/doc/es/Customization_pdf4_texF
+
 
 #9637 textgreek and textcyr depend on font-encoding, not input encoding
 #6463 font encoding changes and combining accents
@@ -152,6 +170,7 @@ Sublabel: ert
 # "Wontfix" if demonstrating correct use and OK in the default output format.
 
 # Non-ASCII in ERT, fails with inputenc==ASCII (e.g. XeTeX with tex-fonts)
+#   Could not find LaTeX command for character 'í' (code point 0xed)
 export/doc/(de|es)/Additional_pdf4_texF
 
 # inputencoding="utf8-plain" with Xe/LuaTeX: characters with
@@ -188,13 +207,10 @@ export/examples/ru/splash_(dvi3|pdf[45])_texF
 # Babel-Spanish uses  UTF-8 for auto-strings if it detects Xe/LuaTeX.
 # This leads to wrong output (see unreliableTests) and fails in some cases
 # unless the inputencoding is set to utf-8, too.
-#
 # ! Undefined control sequence.
 # <argument> ...art {link}{\Hy@tocdestname }{\nonumberline Ã
 #                                                   ndice alfabÃ©tico}\hyper...
-# l.393 ... Ãndice alfabÃ©tico}{175}{chapter*.10}
-#export/doc/es/UserGuide_(dvi3|pdf5)_systemF
-
+export/doc/es/(UserGuide|Math)_(dvi3|pdf5)_texF
 
 # Gives the following error:
 # # ! Package hpstatement Error: H or P statement "H251"
@@ -213,13 +229,6 @@ export/examples/(|de/|es/)tufte-(book|handout)_(dvi.*|pdf|pdf3|pdf4.*)
 # fix the root issue themselves.
 # xy package:
 .*(|fr/)xy(pic|figure).*pdf5.*
-
-# command \textipa not defined with LuaTeX and Unicode fonts.
-# Issue reported here:
-# https://github.com/wspr/fontspec/issues/280
-# see here for discussion and ideas for a fix:
-# https://www.mail-archive.com/search?l=mid&q=1487664738.2405.6.camel%40lyx.org
-#export/examples/(|de/|es/|fr/)linguistics_(dvi3|pdf5)_systemF
 
 # Problem with Check and Slovak Babel support.
 # (reported per mail to Petr Tesa\v{r}\'ik, 2016-09-06)
@@ -243,14 +252,16 @@ export/doc/(sk|nb)/Intro_(dvi3|pdf5)_systemF
 # Lines 2608 ... 2614 in fontspec-luatex.sty
 export/templates/slides_.*_systemF
 
+# Beamer: conflicts with some combinations of packages/settings/languages
+export/templates/ja_beamer-conference-ornate-20min_(pdf2|pdf[45]).*
+export/templates/es_beamer-conference-ornate-20min_pdf4_texF
 
 
-# ================================================
+# ======================================================================
 Sublabel: attic
-# ================================================
-#
-# Documents in the attic are kept for reference and format conversion test.
+# Documents in the attic, kept for reference and format conversion test.
 # However, many problems here are "wontfix".
+# ======================================================================
 
 # Fails because of missing .png graphic files.
 # They were replaced by .svgz, but, as this file is in the attic, we do not
@@ -263,24 +274,3 @@ export/doc/attic/eu_UserGuide_pdf[25].*
 export/doc/attic/it_(UserGuide_dvi3|UserGuide_pdf4)_systemF
 export/doc/attic/sk_UserGuide_pdf4_texF
 export/doc/attic/id_UserGuide_.*systemF
-
-
-Sublabel: RESET
-# ==============================================================
-# See file unreliableTests for why these exports fail
-# ==============================================================
-
-export/doc/de/EmbeddedObjects_pdf4_texF
-export/doc/es/EmbeddedObjects_.*texF
-export/doc/es/Customization_pdf4_texF
-export/doc/es/(UserGuide|Math)_(dvi3|pdf5)_texF
-export/examples/aa_sample_(dvi3|pdf[45])_.*
-export/examples/es/linguistics_pdf4_texF
-export/examples/fa/splash_(dvi|pdf|pdf[23]|(dvi3|pdf4|pdf5)_(texF|systemF))
-export/templates/ACM-siggraph_pdf5_(texF|systemF)
-export/templates/IUCr-article_pdf4_systemF
-export/templates/RJournal_(dvi3|pdf[45])_systemF
-export/templates/aa_(dvi3|pdf[45])_.*
-export/templates/ja_beamer-conference-ornate-20min_(pdf2|pdf[45]).*
-export/templates/es_beamer-conference-ornate-20min_pdf4_texF
-export/templates/kluwer_.*_systemF

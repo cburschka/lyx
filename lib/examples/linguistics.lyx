@@ -1883,9 +1883,7 @@ key "tipa"
 , which is automatically loaded by \SpecialChar LyX
  if you follow the procedure described
  below.
- If you use Xe\SpecialChar TeX
- or Lua\SpecialChar TeX
- (i.
+ If you use Unicode fonts (i.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1913,6 +1911,18 @@ xunicode
 tipa
 \emph default
  does not work in this context).
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+See also https://github.com/wspr/fontspec/issues/280 and the discussion in
+ docutils-devel (https://www.mail-archive.com/search?l=mid&q=1487664738.2405.6.camel%
+40lyx.org).
+\end_layout
+
+\end_inset
+
  The 
 \emph on
 xunicode
@@ -1922,8 +1932,8 @@ xunicode
 tipa
 \emph default
  output, but is not perfect at that, so some things might not look as expected.
- Furthermore, you need to take care in this case to use a non-TeX font that
- includes the IPA glyphs (such as 
+ Furthermore, you need to take care in this case to use a font that includes
+ the IPA glyphs (such as 
 \emph on
 CMU Serif
 \emph default

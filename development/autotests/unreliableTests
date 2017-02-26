@@ -16,15 +16,8 @@ Sublabel: nonstandard
 # TODO: rename to "extra" or "exotic"?
 
 export/templates/IUCr-article_(dvi|pdf).*
-# does not work with pdflatex, lualatex (PDF) or XeTeX (postscript specials?).
-export/templates/(ja|es)_beamer-conference-ornate-20min_(pdf2|pdf[45]).*
 export/templates/kluwer_.*_systemF
 export/templates/ectaart_(dvi3|pdf5).*
-
-# 1.) missing farsi package with lfeenc.def
-# 2.) LuaTeX does not support Farsi yet. See:
-#     https://github.com/reutenauer/polyglossia/commit/ccb0e9e2c6411170ad779b05ff5076f1193cc323
-export/examples/fa/splash_(dvi|pdf|pdf[23]|(dvi3|pdf4|pdf5)_(texF|systemF))
 
 # requires knitr, requires rjournal.sty (not in TeXLive)
 # incompatible with fontspec?
