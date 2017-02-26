@@ -104,9 +104,12 @@ FancyLineEdit::FancyLineEdit(QWidget *parent) :
     ensurePolished();
     updateMargins();
 
-    connect(this, SIGNAL(textChanged(QString)), this, SLOT(checkButtons(QString)));
-    connect(m_d->m_iconbutton[Left], SIGNAL(clicked()), this, SLOT(iconClicked()));
-    connect(m_d->m_iconbutton[Right], SIGNAL(clicked()), this, SLOT(iconClicked()));
+    connect(this, SIGNAL(textChanged(QString)),
+            this, SLOT(checkButtons(QString)));
+    connect(m_d->m_iconbutton[Left], SIGNAL(clicked()),
+            this, SLOT(iconClicked()));
+    connect(m_d->m_iconbutton[Right], SIGNAL(clicked()),
+            this, SLOT(iconClicked()));
 }
 
 void FancyLineEdit::checkButtons(const QString &text)
@@ -186,10 +189,12 @@ void FancyLineEdit::updateButtonPositions()
 
         if (iconpos == FancyLineEdit::Right) {
             const int iconoffset = textMargins().right() + 4;
-            m_d->m_iconbutton[i]->setGeometry(contentRect.adjusted(width() - iconoffset, 0, 0, 0));
+            m_d->m_iconbutton[i]->
+	            setGeometry(contentRect.adjusted(width() - iconoffset, 0, 0, 0));
         } else {
             const int iconoffset = textMargins().left() + 4;
-            m_d->m_iconbutton[i]->setGeometry(contentRect.adjusted(0, 0, -width() + iconoffset, 0));
+            m_d->m_iconbutton[i]->
+	            setGeometry(contentRect.adjusted(0, 0, -width() + iconoffset, 0));
         }
     }
 }
@@ -295,12 +300,14 @@ void IconButton::paintEvent(QPaintEvent *)
 void IconButton::animateShow(bool visible)
 {
     if (visible) {
-        QPropertyAnimation *animation = new QPropertyAnimation(this, "iconOpacity");
+        QPropertyAnimation *animation =
+	        new QPropertyAnimation(this, "iconOpacity");
         animation->setDuration(FADE_TIME);
         animation->setEndValue(1.0);
         animation->start(QAbstractAnimation::DeleteWhenStopped);
     } else {
-        QPropertyAnimation *animation = new QPropertyAnimation(this, "iconOpacity");
+        QPropertyAnimation *animation =
+	        new QPropertyAnimation(this, "iconOpacity");
         animation->setDuration(FADE_TIME);
         animation->setEndValue(0.0);
         animation->start(QAbstractAnimation::DeleteWhenStopped);

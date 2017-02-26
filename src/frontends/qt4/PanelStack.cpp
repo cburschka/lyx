@@ -63,29 +63,28 @@ PanelStack::PanelStack(QWidget * parent)
 	list_->header()->setStretchLastSection(false);
 	list_->setMinimumSize(list_->viewport()->size());
 
-	connect(list_, SIGNAL(currentItemChanged(QTreeWidgetItem*, QTreeWidgetItem*)),
+	connect(list_, SIGNAL(currentItemChanged(QTreeWidgetItem*,
+	                                         QTreeWidgetItem*)),
 		this, SLOT(switchPanel(QTreeWidgetItem *, QTreeWidgetItem*)));
 	connect(list_, SIGNAL(itemClicked (QTreeWidgetItem*, int)),
 		this, SLOT(itemSelected(QTreeWidgetItem *, int)));
 
 	// Configure the search box
-#if QT_VERSION >= 0x040700
 	search_->setPlaceholderText(qt_("Search"));
-#endif
-
-#if QT_VERSION >= 0x040600
-	search_->setButtonPixmap(FancyLineEdit::Right, getPixmap("images/", "editclear", "svgz,png"));
+	search_->setButtonPixmap(FancyLineEdit::Right,
+	                         getPixmap("images/", "editclear", "svgz,png"));
 	search_->setButtonVisible(FancyLineEdit::Right, true);
 	search_->setButtonToolTip(FancyLineEdit::Right, qt_("Clear text"));
 	search_->setAutoHideButton(FancyLineEdit::Right, true);
-#endif
-	connect(search_, SIGNAL(rightButtonClicked()), this, SLOT(resetSearch()));
-	connect(search_, SIGNAL(textEdited(QString)), this, SLOT(filterChanged(QString)));
+	connect(search_, SIGNAL(rightButtonClicked()),
+	        this, SLOT(resetSearch()));
+	connect(search_, SIGNAL(textEdited(QString)),
+	        this, SLOT(filterChanged(QString)));
 	connect(search_, SIGNAL(downPressed()),
 	        list_, SLOT(setFocus()));
 
-	// Create the output layout, horizontal plus a VBox on the left with the search
-	// box and the tree
+	// Create the output layout, horizontal plus a VBox on the left with the
+	// search box and the tree
 	QVBoxLayout * left_layout = new QVBoxLayout;
 	left_layout->addWidget(search_, 0);
 	left_layout->addWidget(list_, 1);
@@ -120,7 +119,7 @@ void PanelStack::addCategory(QString const & name, QString const & parent)
 	panel_map_[name] = item;
 
 	QFontMetrics fm(list_->font());
-		
+
 	// calculate the real size the current item needs in the listview
 	int itemsize = fm.width(qt_(name)) + 10 + list_->indentation() * depth;
 	// adjust the listview width to the max. itemsize
@@ -129,7 +128,8 @@ void PanelStack::addCategory(QString const & name, QString const & parent)
 }
 
 
-void PanelStack::addPanel(QWidget * panel, QString const & name, QString const & parent)
+void PanelStack::addPanel(QWidget * panel, QString const & name,
+                          QString const & parent)
 {
 	addCategory(name, parent);
 	QTreeWidgetItem * item = panel_map_.value(name);
@@ -210,8 +210,10 @@ static void setTreeItemStatus(QTreeWidgetItem * tree_item, bool enabled)
 	tree_item->setDisabled(!enabled);
 
 	// Change the color from black to gray or viceversa
-	QPalette::ColorGroup new_color = enabled ? QPalette::Active : QPalette::Disabled;
-	tree_item->setTextColor(0, QApplication::palette().color(new_color, QPalette::Text));
+	QPalette::ColorGroup new_color =
+		enabled ? QPalette::Active : QPalette::Disabled;
+	tree_item->setTextColor(0, QApplication::palette().color(new_color,
+	                                                         QPalette::Text));
 }
 
 void PanelStack::hideEvent(QHideEvent * event)
@@ -254,7 +256,8 @@ void PanelStack::search()
 		QWidget * pane_widget = widget_map_[tree_item];
 
 		// First of all we look in the pane name
-		bool pane_matches = tree_item->text(0).contains(search, Qt::CaseInsensitive);
+		bool pane_matches = tree_item->text(0).contains(search,
+		                                                Qt::CaseInsensitive);
 
 		// If the tree item has an associated pane
 		if (pane_widget) {
@@ -263,30 +266,45 @@ void PanelStack::search()
 			for (QWidget * child_widget : children) {
 				bool widget_matches = false;
 
-				// Try to cast to the most common widgets and looks in it's content
-				// It's bad OOP, it would be nice to have a QWidget::toString() overloaded by
-				// each widget, but this would require to change Qt or subclass each widget.
+				// Try to cast to the most common widgets and looks in it's
+				// content.
+				// It's bad OOP, it would be nice to have a QWidget::toString()
+				// overloaded by each widget, but this would require to change
+				// Qt or subclass each widget.
 				// Note that we have to ignore the amperstand symbol
-				if (QAbstractButton * button = qobject_cast<QAbstractButton *>(child_widget)) {
+				if (QAbstractButton * button =
+				    qobject_cast<QAbstractButton *>(child_widget)) {
 					widget_matches = matches(button->text(), search);
 
-				} else if (QGroupBox * group_box = qobject_cast<QGroupBox *>(child_widget)) {
+				} else if (QGroupBox * group_box =
+				           qobject_cast<QGroupBox *>(child_widget)) {
 					widget_matches = matches(group_box->title(), search);
 
-				} else if (QLabel * label = qobject_cast<QLabel *>(child_widget)) {
+				} else if (QLabel * label =
+				           qobject_cast<QLabel *>(child_widget)) {
 					widget_matches = matches(label->text(), search);
 
-				} else if (QLineEdit * line_edit = qobject_cast<QLineEdit *>(child_widget)) {
+				} else if (QLineEdit * line_edit =
+				           qobject_cast<QLineEdit *>(child_widget)) {
 					widget_matches = matches(line_edit->text(), search);
 
-				} else if (QListWidget * list_widget = qobject_cast<QListWidget *>(child_widget)) {
-					widget_matches = (list_widget->findItems(search, Qt::MatchContains)).count() > 0;
+				} else if (QListWidget * list_widget =
+				           qobject_cast<QListWidget *>(child_widget)) {
+					widget_matches =
+						list_widget->findItems(search,
+						                       Qt::MatchContains).count() > 0;
 
-				} else if (QTreeWidget * tree_view = qobject_cast<QTreeWidget *>(child_widget)) {
-					widget_matches = (tree_view->findItems(search, Qt::MatchContains)).count() > 0;
+				} else if (QTreeWidget * tree_view =
+				           qobject_cast<QTreeWidget *>(child_widget)) {
+					widget_matches =
+						tree_view->findItems(search,
+						                     Qt::MatchContains).count() > 0;
 
-				} else if (QComboBox * combo_box = qobject_cast<QComboBox *>(child_widget)) {
-					widget_matches = (combo_box->findText(search, Qt::MatchContains)) != -1;
+				} else if (QComboBox * combo_box =
+				           qobject_cast<QComboBox *>(child_widget)) {
+					widget_matches =
+						combo_box->findText(search,
+						                    Qt::MatchContains) != -1;
 
 				} else {
 					continue;
@@ -299,7 +317,8 @@ void PanelStack::search()
 
 					// Highlight the widget
 					QPalette widget_palette = child_widget->palette();
-					widget_palette.setColor(child_widget->foregroundRole(), Qt::red);
+					widget_palette.setColor(child_widget->foregroundRole(),
+					                        Qt::red);
 					child_widget->setPalette(widget_palette);
 				} else {
 					// Reset the color of the widget
@@ -309,7 +328,8 @@ void PanelStack::search()
 
 			// If the pane meets the search criteria
 			if (pane_matches && !enable_all) {
-				// Expand and enable the pane and his ancestors	(typically just the parent)
+				// Expand and enable the pane and his ancestors (typically just
+				// the parent)
 				QTreeWidgetItem * item = tree_item;
 				do {
 					item->setExpanded(true);
