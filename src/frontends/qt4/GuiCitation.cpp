@@ -18,7 +18,6 @@
 
 #include "GuiApplication.h"
 #include "GuiSelectionManager.h"
-#include "LyXToolBox.h"
 #include "qt_helpers.h"
 
 #include "Buffer.h"
