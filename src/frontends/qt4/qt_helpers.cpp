@@ -230,6 +230,15 @@ void setValid(QWidget * widget, bool valid)
 	}
 }
 
+
+void focusAndHighlight(QAbstractItemView * w)
+{
+	w->setFocus();
+	w->setCurrentIndex(w->currentIndex());
+	w->scrollTo(w->currentIndex());
+}
+
+
 /// wrapper to hide the change of method name to setSectionResizeMode
 void setSectionResizeMode(QHeaderView * view,
     int logicalIndex, QHeaderView::ResizeMode mode) {

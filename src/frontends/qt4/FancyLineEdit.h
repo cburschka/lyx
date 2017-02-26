@@ -22,7 +22,6 @@ namespace frontend {
 
 class FancyLineEditPrivate;
 
-#if QT_VERSION >= 0x040600
 class IconButton: public QAbstractButton
 {
 	Q_OBJECT
@@ -45,7 +44,6 @@ private:
     bool m_autoHide;
     QPixmap m_pixmap;
 };
-#endif
 
 /* A line edit with an embedded pixmap on one side that is connected to
  * a menu. Additionally, it can display a grayed hintText (like "Type Here to")
@@ -67,8 +65,8 @@ Q_SIGNALS:
     void buttonClicked(Side side);
     void leftButtonClicked();
     void rightButtonClicked();
+	void downPressed();
 
-#if QT_VERSION >= 0x040600
 public:
     explicit FancyLineEdit(QWidget *parent = 0);
     ~FancyLineEdit();
@@ -99,6 +97,7 @@ private Q_SLOTS:
 
 protected:
     virtual void resizeEvent(QResizeEvent *e);
+	virtual void keyPressEvent(QKeyEvent *e);
 
 private:
     void updateMargins();
@@ -106,12 +105,6 @@ private:
 
     FancyLineEditPrivate *m_d;
     QString m_oldText;
-#else
-public:
-	explicit FancyLineEdit(QWidget *parent = 0) 
-		: QLineEdit(parent) 
-	{}
-#endif // QT_VERSION >= 0x040600*/
 };
 
 }

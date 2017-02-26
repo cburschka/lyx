@@ -15,6 +15,7 @@
 #include <config.h>
 
 #include "GuiSelectionManager.h"
+#include "qt_helpers.h"
 
 #include "support/debug.h"
 
@@ -403,8 +404,7 @@ bool GuiSelectionManager::eventFilter(QObject * obj, QEvent * event)
 				return true;
 			}
 			else if (keyPressed == Qt::Key_Right) {
-				selectedLV->setFocus();
-				selectedLV->setCurrentIndex(selectedLV->currentIndex());
+				focusAndHighlight(selectedLV);
 				event->accept();
 				return true;
 			}
@@ -452,8 +452,7 @@ bool GuiSelectionManager::eventFilter(QObject * obj, QEvent * event)
 				}
 			}
 			else if (keyPressed == Qt::Key_Left) {
-				availableLV->setFocus();
-				availableLV->setCurrentIndex(availableLV->currentIndex());
+				focusAndHighlight(availableLV);
 				event->accept();
 				return true;
 			}

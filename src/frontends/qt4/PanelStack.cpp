@@ -81,6 +81,8 @@ PanelStack::PanelStack(QWidget * parent)
 #endif
 	connect(search_, SIGNAL(rightButtonClicked()), this, SLOT(resetSearch()));
 	connect(search_, SIGNAL(textEdited(QString)), this, SLOT(filterChanged(QString)));
+	connect(search_, SIGNAL(downPressed()),
+	        list_, SLOT(setFocus()));
 
 	// Create the output layout, horizontal plus a VBox on the left with the search
 	// box and the tree

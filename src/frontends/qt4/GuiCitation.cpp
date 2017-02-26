@@ -155,6 +155,13 @@ GuiCitation::GuiCitation(GuiView & lv)
 		this, SLOT(filterChanged(QString)));
 	connect(filter_, SIGNAL(returnPressed()),
 		this, SLOT(filterPressed()));
+#if (QT_VERSION < 0x050000)
+	connect(filter_, SIGNAL(downPressed()),
+	        availableLV, SLOT(setFocus()));
+#else
+	connect(filter_, &FancyLineEdit::downPressed,
+	        availableLV, [=](){ focusAndHighlight(availableLV); });
+#endif
 	connect(regexp_, SIGNAL(triggered()),
 		this, SLOT(regexChanged()));
 	connect(casesense_, SIGNAL(triggered()),

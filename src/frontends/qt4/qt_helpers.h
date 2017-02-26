@@ -80,6 +80,9 @@ bool ColorSorter(ColorCode lhs, ColorCode rhs);
 /// colors a widget red if invalid
 void setValid(QWidget * widget, bool valid);
 
+// set focus and highlight the current item if there is no selection already
+void focusAndHighlight(QAbstractItemView * w);
+
 /// Qt5 changed setSectionMode to setSectionResizeMode
 /// These wrappers work for Qt4 and Qt5
 void setSectionResizeMode(QHeaderView * view,

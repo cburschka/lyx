@@ -199,6 +199,16 @@ void FancyLineEdit::resizeEvent(QResizeEvent *)
     updateButtonPositions();
 }
 
+
+void FancyLineEdit::keyPressEvent(QKeyEvent * e)
+{
+	if (e->type() == QEvent::KeyPress && e->key() == Qt::Key_Down)
+		Q_EMIT downPressed();
+	else
+		QLineEdit::keyPressEvent(e);
+}
+
+
 void FancyLineEdit::setButtonPixmap(Side side, const QPixmap &buttonPixmap)
 {
     m_d->m_iconbutton[side]->setPixmap(buttonPixmap);
