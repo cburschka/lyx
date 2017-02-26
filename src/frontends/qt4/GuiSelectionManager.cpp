@@ -402,6 +402,12 @@ bool GuiSelectionManager::eventFilter(QObject * obj, QEvent * event)
 				event->accept();
 				return true;
 			}
+			else if (keyPressed == Qt::Key_Right) {
+				selectedLV->setFocus();
+				selectedLV->setCurrentIndex(selectedLV->currentIndex());
+				event->accept();
+				return true;
+			}
 		} else if (etype == QEvent::FocusIn) {
 			if (selectedHasFocus_) {
 				selectedHasFocus_ = false;
@@ -444,6 +450,12 @@ bool GuiSelectionManager::eventFilter(QObject * obj, QEvent * event)
 					event->accept();
 					return true;
 				}
+			}
+			else if (keyPressed == Qt::Key_Left) {
+				availableLV->setFocus();
+				availableLV->setCurrentIndex(availableLV->currentIndex());
+				event->accept();
+				return true;
 			}
 		} else if (etype == QEvent::FocusIn) {
 			if (!selectedHasFocus_) {
