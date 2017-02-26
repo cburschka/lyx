@@ -44,8 +44,6 @@ class GuiCitation : public DialogView, public Ui::CitationUi
 public:
 	///
 	GuiCitation(GuiView & lv);
-	///
-	~GuiCitation();
 
 private Q_SLOTS:
 	void on_okPB_clicked();

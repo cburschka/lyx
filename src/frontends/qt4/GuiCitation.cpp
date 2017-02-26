@@ -140,7 +140,7 @@ GuiCitation::GuiCitation(GuiView & lv)
 	connect(textAfterED, SIGNAL(returnPressed()),
 		this, SLOT(on_okPB_clicked()));
 
-	selectionManager = new GuiSelectionManager(availableLV, selectedLV,
+	selectionManager = new GuiSelectionManager(this, availableLV, selectedLV,
 			addPB, deletePB, upPB, downPB, &available_model_, &selected_model_, 1);
 	connect(selectionManager, SIGNAL(selectionChanged()),
 		this, SLOT(setCitedKeys()));
@@ -169,12 +169,6 @@ GuiCitation::GuiCitation(GuiView & lv)
 #endif
 
 	setFocusProxy(filter_);
-}
-
-
-GuiCitation::~GuiCitation()
-{
-	delete selectionManager;
 }
 
 

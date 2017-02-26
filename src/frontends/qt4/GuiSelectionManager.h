@@ -29,9 +29,9 @@ namespace frontend {
 
 /** Class to manage a collection of widgets that allows selection
  *  of items from a list of available items. Adapted from code originally
- *  written for GuiCitationDialog. 
+ *  written for GuiCitationDialog.
  *  Note that this is a not a QWidget, though it could be converted to
- *  one. Rather, the managed widgets---see constructor for descripton 
+ *  one. Rather, the managed widgets---see constructor for descripton
  *  of them---should be created independently, and then passed to the
  *  constructor.
  */
@@ -41,23 +41,23 @@ class GuiSelectionManager : public QObject
 
 public:
 	///
-	GuiSelectionManager(
-		QAbstractItemView * availableLV,
-		QAbstractItemView * selectedLV,
-		QPushButton * addPB, 
-		QPushButton * delPB, 
-		QPushButton * upPB, 
-		QPushButton * downPB,
-		QAbstractListModel * availableModel,
-		QAbstractItemModel * selectedModel,
-		int const main_sel_col = 0);
+	GuiSelectionManager(QObject * parent,
+						QAbstractItemView * availableLV,
+						QAbstractItemView * selectedLV,
+						QPushButton * addPB,
+						QPushButton * delPB,
+						QPushButton * upPB,
+						QPushButton * downPB,
+						QAbstractListModel * availableModel,
+						QAbstractItemModel * selectedModel,
+						int const main_sel_col = 0);
 	/// Sets the state of the various push buttons, depending upon the
 	/// state of the widgets. (E.g., "delete" is enabled only if the
 	/// selection is non-empty.)
-	/// Note: this is separated out into updateAddPB(), etc, below, 
+	/// Note: this is separated out into updateAddPB(), etc, below,
 	/// for easy over-riding of these functions.
 	void update();
-	
+
 	/// Not strictly a matter of focus, which may be elsewhere, but
 	/// whether selectedLV is `more focused' than availableLV. Intended
 	/// to be used, for example, in displaying information about a
@@ -69,9 +69,9 @@ public:
 	QModelIndex getSelectedIndex(int const c = 0) const;
 
 Q_SIGNALS:
-	/// Emitted when the list of selected items has changed. 
+	/// Emitted when the list of selected items has changed.
 	void selectionChanged();
-	/// Emitted when something has changed that might lead the containing 
+	/// Emitted when something has changed that might lead the containing
 	/// dialog to want to update---the focused subwidget or selected item.
 	/// (Specifically, it is emitted by *_PB_clicked() and *_LV_clicked.)
 	/// NOTE: No automatic update of the button state is done here. If you
@@ -79,7 +79,7 @@ Q_SIGNALS:
 	/// time, though, you will want to do a bit more processing first, so
 	/// you can connect to some other function that itself calls updateView().
 	void updateHook();
-	/// Emitted on Ctrl-Enter in the availableLV. Intended to be connected 
+	/// Emitted on Ctrl-Enter in the availableLV. Intended to be connected
 	/// to an "OK" event in the parent dialog.
 	void okHook();
 
@@ -99,7 +99,7 @@ protected:
 	///
 	QPushButton * addPB;
 	///
-	QPushButton * deletePB; 
+	QPushButton * deletePB;
 	///
 	QPushButton * upPB;
 	///

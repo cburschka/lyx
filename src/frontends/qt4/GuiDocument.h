@@ -61,7 +61,7 @@ template<class UI>
 class UiWidget : public QWidget, public UI
 {
 public:
-	UiWidget(QWidget * parent = 0) : QWidget(parent) { UI::setupUi(this); }
+	UiWidget(QWidget * parent) : QWidget(parent) { UI::setupUi(this); }
 };
 
 
@@ -306,7 +306,7 @@ class PreambleModule : public UiWidget<Ui::PreambleUi>
 {
 	Q_OBJECT
 public:
-	PreambleModule();
+	PreambleModule(QWidget * parent);
 	void update(BufferParams const & params, BufferId id);
 	void apply(BufferParams & params);
 
@@ -329,7 +329,7 @@ class LocalLayout : public UiWidget<Ui::LocalLayoutUi>
 {
 	Q_OBJECT
 public:
-	LocalLayout();
+	LocalLayout(QWidget * parent);
 	void update(BufferParams const & params, BufferId id);
 	void apply(BufferParams & params);
 	bool isValid() const { return validated_; }
@@ -357,6 +357,7 @@ class FontModule : public UiWidget<Ui::FontUi>
 {
 	Q_OBJECT
 public:
+	FontModule(QWidget * parent) : UiWidget<Ui::FontUi>(parent) {}
 	/// The roman font currently not selected by osFontsCB->isChecked()
 	QString font_roman;
 	/// The sans font currently not selected by osFontsCB->isChecked()

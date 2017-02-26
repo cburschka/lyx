@@ -251,18 +251,19 @@ class ModuleSelectionManager : public GuiSelectionManager
 {
 public:
 	///
-	ModuleSelectionManager(
-		QTreeView * availableLV,
-		QListView * selectedLV,
-		QPushButton * addPB,
-		QPushButton * delPB,
-		QPushButton * upPB,
-		QPushButton * downPB,
-		GuiIdListModel * availableModel,
-		GuiIdListModel * selectedModel,
-		GuiDocument const * container)
-	: GuiSelectionManager(availableLV, selectedLV, addPB, delPB,
-				upPB, downPB, availableModel, selectedModel), container_(container)
+	ModuleSelectionManager(QObject * parent,
+	                       QTreeView * availableLV,
+	                       QListView * selectedLV,
+	                       QPushButton * addPB,
+	                       QPushButton * delPB,
+	                       QPushButton * upPB,
+	                       QPushButton * downPB,
+	                       GuiIdListModel * availableModel,
+	                       GuiIdListModel * selectedModel,
+	                       GuiDocument const * container)
+		: GuiSelectionManager(parent, availableLV, selectedLV, addPB, delPB,
+		                      upPB, downPB, availableModel, selectedModel),
+		  container_(container)
 		{}
 	///
 	void updateProvidedModules(LayoutModuleList const & pm)
@@ -451,7 +452,8 @@ void ModuleSelectionManager::updateDelPB()
 //
 /////////////////////////////////////////////////////////////////////
 
-PreambleModule::PreambleModule() : current_id_(0)
+PreambleModule::PreambleModule(QWidget * parent)
+	: UiWidget<Ui::PreambleUi>(parent), current_id_(0)
 {
 	// This is not a memory leak. The object will be destroyed
 	// with this.
@@ -517,7 +519,8 @@ void PreambleModule::closeEvent(QCloseEvent * e)
 /////////////////////////////////////////////////////////////////////
 
 
-LocalLayout::LocalLayout() : current_id_(0), validated_(false)
+LocalLayout::LocalLayout(QWidget * parent)
+	: UiWidget<Ui::LocalLayoutUi>(parent), current_id_(0), validated_(false)
 {
 	connect(locallayoutTE, SIGNAL(textChanged()), this, SLOT(textChanged()));
 	connect(validatePB, SIGNAL(clicked()), this, SLOT(validatePressed()));
@@ -676,7 +679,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 
 	// text layout
-	textLayoutModule = new UiWidget<Ui::TextLayoutUi>;
+	textLayoutModule = new UiWidget<Ui::TextLayoutUi>(this);
 	connect(textLayoutModule->lspacingCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(textLayoutModule->lspacingCO, SIGNAL(activated(int)),
@@ -749,7 +752,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 
 	// master/child handling
-	masterChildModule = new UiWidget<Ui::MasterChildUi>;
+	masterChildModule = new UiWidget<Ui::MasterChildUi>(this);
 
 	connect(masterChildModule->childrenTW, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)),
 		this, SLOT(includeonlyClicked(QTreeWidgetItem *, int)));
@@ -771,7 +774,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 
 	// Formats
-	outputModule = new UiWidget<Ui::OutputUi>;
+	outputModule = new UiWidget<Ui::OutputUi>(this);
 
 	connect(outputModule->defaultFormatCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
@@ -800,7 +803,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	        this, SLOT(change_adaptor()));
 
 	// fonts
-	fontModule = new FontModule;
+	fontModule = new FontModule(this);
 	connect(fontModule->osFontsCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(fontModule->osFontsCB, SIGNAL(toggled(bool)),
@@ -875,7 +878,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 
 	// page layout
-	pageLayoutModule = new UiWidget<Ui::PageLayoutUi>;
+	pageLayoutModule = new UiWidget<Ui::PageLayoutUi>(this);
 	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)),
 		this, SLOT(papersizeChanged(int)));
 	connect(pageLayoutModule->papersizeCO, SIGNAL(activated(int)),
@@ -955,7 +958,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 
 	// margins
-	marginsModule = new UiWidget<Ui::MarginsUi>;
+	marginsModule = new UiWidget<Ui::MarginsUi>(this);
 	connect(marginsModule->marginCB, SIGNAL(toggled(bool)),
 		this, SLOT(setCustomMargins(bool)));
 	connect(marginsModule->marginCB, SIGNAL(clicked()),
@@ -1028,7 +1031,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 
 	// language & quote
-	langModule = new UiWidget<Ui::LanguageUi>;
+	langModule = new UiWidget<Ui::LanguageUi>(this);
 	connect(langModule->languageCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(langModule->languageCO, SIGNAL(activated(int)),
@@ -1083,7 +1086,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 
 	// color
-	colorModule = new UiWidget<Ui::ColorUi>;
+	colorModule = new UiWidget<Ui::ColorUi>(this);
 	connect(colorModule->fontColorPB, SIGNAL(clicked()),
 		this, SLOT(changeFontColor()));
 	connect(colorModule->delFontColorTB, SIGNAL(clicked()),
@@ -1103,7 +1106,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 
 	// numbering
-	numberingModule = new UiWidget<Ui::NumberingUi>;
+	numberingModule = new UiWidget<Ui::NumberingUi>(this);
 	connect(numberingModule->depthSL, SIGNAL(valueChanged(int)),
 		this, SLOT(change_adaptor()));
 	connect(numberingModule->tocSL, SIGNAL(valueChanged(int)),
@@ -1119,7 +1122,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	setSectionResizeMode(numberingModule->tocTW->header(), QHeaderView::ResizeToContents);
 
 	// biblio
-	biblioModule = new UiWidget<Ui::BiblioUi>;
+	biblioModule = new UiWidget<Ui::BiblioUi>(this);
 	connect(biblioModule->citeEngineCO, SIGNAL(activated(int)),
 		this, SLOT(citeEngineChanged(int)));
 	connect(biblioModule->citeStyleCO, SIGNAL(activated(int)),
@@ -1189,7 +1192,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 
 	// maths
-	mathsModule = new UiWidget<Ui::MathsUi>;
+	mathsModule = new UiWidget<Ui::MathsUi>(this);
 	QStringList headers;
 	headers << qt_("Package") << qt_("Load automatically")
 		<< qt_("Load always") << qt_("Do not load");
@@ -1257,7 +1260,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 
 	// latex class
-	latexModule = new UiWidget<Ui::LaTeXUi>;
+	latexModule = new UiWidget<Ui::LaTeXUi>(this);
 	connect(latexModule->optionsLE, SIGNAL(textChanged(QString)),
 		this, SLOT(change_adaptor()));
 	connect(latexModule->defaultOptionsCB, SIGNAL(clicked()),
@@ -1322,7 +1325,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 
 	// branches
-	branchesModule = new GuiBranches;
+	branchesModule = new GuiBranches(this);
 	connect(branchesModule, SIGNAL(changed()),
 		this, SLOT(change_adaptor()));
 	connect(branchesModule, SIGNAL(renameBranches(docstring const &, docstring const &)),
@@ -1332,32 +1335,34 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 
 	// preamble
-	preambleModule = new PreambleModule;
+	preambleModule = new PreambleModule(this);
 	connect(preambleModule, SIGNAL(changed()),
 		this, SLOT(change_adaptor()));
 
-	localLayout = new LocalLayout;
+	localLayout = new LocalLayout(this);
 	connect(localLayout, SIGNAL(changed()),
 		this, SLOT(change_adaptor()));
 
 
 	// bullets
-	bulletsModule = new BulletsModule;
+	bulletsModule = new BulletsModule(this);
 	connect(bulletsModule, SIGNAL(changed()),
 		this, SLOT(change_adaptor()));
 
 
 	// Modules
-	modulesModule = new UiWidget<Ui::ModulesUi>;
+	modulesModule = new UiWidget<Ui::ModulesUi>(this);
 	modulesModule->availableLV->header()->setVisible(false);
 	setSectionResizeMode(modulesModule->availableLV->header(), QHeaderView::ResizeToContents);
 	modulesModule->availableLV->header()->setStretchLastSection(false);
 	selectionManager =
-		new ModuleSelectionManager(modulesModule->availableLV,
-			modulesModule->selectedLV,
-			modulesModule->addPB, modulesModule->deletePB,
-			modulesModule->upPB, modulesModule->downPB,
-			availableModel(), selectedModel(), this);
+		new ModuleSelectionManager(this, modulesModule->availableLV,
+		                           modulesModule->selectedLV,
+		                           modulesModule->addPB,
+		                           modulesModule->deletePB,
+		                           modulesModule->upPB,
+		                           modulesModule->downPB,
+		                           availableModel(), selectedModel(), this);
 	connect(selectionManager, SIGNAL(updateHook()),
 		this, SLOT(updateModuleInfo()));
 	connect(selectionManager, SIGNAL(selectionChanged()),
@@ -1365,7 +1370,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 
 	// PDF support
-	pdfSupportModule = new UiWidget<Ui::PDFSupportUi>;
+	pdfSupportModule = new UiWidget<Ui::PDFSupportUi>(this);
 	connect(pdfSupportModule->use_hyperrefGB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
 	connect(pdfSupportModule->titleLE, SIGNAL(textChanged(QString)),
@@ -1421,7 +1426,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 
 	// listings
-	listingsModule = new UiWidget<Ui::ListingsSettingsUi>;
+	listingsModule = new UiWidget<Ui::ListingsSettingsUi>(this);
 	connect(listingsModule->listingsED, SIGNAL(textChanged()),
 		this, SLOT(change_adaptor()));
 	connect(listingsModule->bypassCB, SIGNAL(clicked()),
