@@ -3548,14 +3548,17 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			else
 				target_dir = doc_buffer->fileName().onlyPath();
 
+			string const format = argument.empty() ?
+				doc_buffer->params().getDefaultOutputFormat() : argument;
+
 			if ((dest.empty() && doc_buffer->isUnnamed())
 			    || !target_dir.isDirWritable()) {
-				exportBufferAs(*doc_buffer, cmd.argument());
+				exportBufferAs(*doc_buffer, from_utf8(format));
 				break;
 			}
 			/* TODO/Review: Is it a problem to also export the children?
 					See the update_unincluded flag */
-			d.asyncBufferProcessing(argument,
+			d.asyncBufferProcessing(format,
 						doc_buffer,
 						_("Exporting ..."),
 						&GuiViewPrivate::exportAndDestroy,
