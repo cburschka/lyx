@@ -558,6 +558,7 @@ dist_images_DATA1X = \
 	images/toolbar-toggle_math.svgz \
 	images/toolbar-toggle_math_panels.svgz \
 	images/toolbar-toggle_table.svgz \
+	images/toolbar-toggle_review.svgz \
 	images/undo.svgz \
 	images/unknown.svgz \
 	images/up.svgz \
