@@ -15,6 +15,9 @@
 #ifndef FILEMONITOR_H
 #define FILEMONITOR_H
 
+// TODO: Remove FileMonitor
+#include "support/FileMonitor2.h"
+
 #include <boost/signals2.hpp>
 
 namespace lyx {
@@ -28,7 +31,8 @@ public:
 	/** Once monitoring begins, the file will be monitored every
 	 *  interval ms.
 	 *
-	 * FIXME: rewrite and simplify using an encapsulation of QFileSystemWatcher.
+	 * This is now obsoleted by FileMonitor2 based on QFileSystemWatcher.
+	 * FIXME: Remove FileMonitor
 	 */
 	FileMonitor(FileName const & file_with_path, int interval);
 
