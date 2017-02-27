@@ -77,6 +77,7 @@ export/examples/(|fr/)seminar_(dvi|pdf).*
 # set inputenc to utf8?
 # (Changing the default in lib/languages requires more tests for utf8 first.)
 export/examples/es/linguistics_pdf4_texF
+export/examples/es/(ejemplo_con_lyx|tufte_book)_(pdf[45]|dvi3)_texF
 export/doc/es/.*_(pdf[45]|dvi3)_texF
 
 # Non-ASCII char in verbatim environment is dropped (with a warning when
