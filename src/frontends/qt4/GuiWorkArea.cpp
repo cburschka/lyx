@@ -251,7 +251,7 @@ GuiWorkArea::Private::Private(GuiWorkArea * parent)
   need_resize_(false), schedule_redraw_(false), preedit_lines_(1),
   pixel_ratio_(1.0),
   completer_(new GuiCompleter(p, p)), dialog_mode_(false),
-  read_only_(false), clean_(true)
+  read_only_(false), clean_(true), externally_modified_(false)
 {
 }
 
@@ -1390,12 +1390,16 @@ QVariant GuiWorkArea::inputMethodQuery(Qt::InputMethodQuery query) const
 void GuiWorkArea::updateWindowTitle()
 {
 	Buffer const & buf = bufferView().buffer();
-	if (buf.fileName() != d->file_name_ || buf.isReadonly() != d->read_only_
-	    || buf.lyxvc().vcstatus() != d->vc_status_ || buf.isClean() != d->clean_) {
+	if (buf.fileName() != d->file_name_
+	    || buf.isReadonly() != d->read_only_
+	    || buf.lyxvc().vcstatus() != d->vc_status_
+	    || buf.isClean() != d->clean_
+	    || buf.notifiesExternalModification() != d->externally_modified_) {
 		d->file_name_ = buf.fileName();
 		d->read_only_ = buf.isReadonly();
 		d->vc_status_ = buf.lyxvc().vcstatus();
 		d->clean_ = buf.isClean();
+		d->externally_modified_ = buf.notifiesExternalModification();
 		Q_EMIT titleChanged(this);
 	}
 }
@@ -2052,9 +2056,14 @@ void TabWorkArea::updateTabTexts()
 		QString tab_tooltip = it->abs();
 		if (buf.isReadonly()) {
 			setTabIcon(tab_index, QIcon(getPixmap("images/", "emblem-readonly", "svgz,png")));
-			tab_tooltip = qt_("%1 (read only)").arg(it->abs());
+			tab_tooltip = qt_("%1 (read only)").arg(tab_tooltip);
 		} else
 			setTabIcon(tab_index, QIcon());
+		if (buf.notifiesExternalModification()) {
+			QString const warn = qt_("%1 (modified externally)");
+			tab_tooltip = warn.arg(tab_tooltip);
+			tab_text += QChar(0x26a0);
+		}
 		setTabText(tab_index, tab_text);
 		setTabToolTip(tab_index, tab_tooltip);
 	}

@@ -33,10 +33,8 @@ void WorkAreaManager::remove(WorkArea * wa)
 
 void WorkAreaManager::redrawAll(bool update_metrics)
 {
-	iterator it = work_areas_.begin();
-	iterator const en = work_areas_.end();
-	for (; it != en; ++it)
-		(*it)->redraw(update_metrics);
+	for (WorkArea * wa : work_areas_)
+		wa->redraw(update_metrics);
 }
 
 
@@ -50,11 +48,10 @@ void WorkAreaManager::closeAll()
 
 void WorkAreaManager::updateTitles()
 {
-	iterator it = work_areas_.begin();
-	iterator const en = work_areas_.end();
-	for (; it != en; ++it)
-		(*it)->updateWindowTitle();
+	for (WorkArea * wa : work_areas_)
+		wa->updateWindowTitle();
 }
+
 
 } // namespace frontend
 } // namespace lyx

@@ -1121,6 +1121,12 @@ void GuiView::updateWindowTitle(GuiWorkArea * wa)
 	Buffer const & buf = wa->bufferView().buffer();
 	// Set the windows title
 	docstring title = buf.fileName().displayName(130) + from_ascii("[*]");
+	if (buf.notifiesExternalModification()) {
+		title = bformat(_("%1$s (modified externally)"), title);
+		// If the external modification status has changed, then maybe the status of
+		// buffer-save has changed too.
+		updateToolbars();
+	}
 #ifndef Q_WS_MAC
 	title += from_ascii(" - LyX");
 #endif

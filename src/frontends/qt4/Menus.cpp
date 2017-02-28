@@ -990,6 +990,8 @@ void MenuDefinition::expandDocuments()
 		QString label = toqstr(b.fileName().displayName(20));
 		if (!b.isClean())
 			label += "*";
+		if (b.notifiesExternalModification())
+			label += QChar(0x26a0);
 		if (i < 10)
 			label = QString::number(i) + ". " + label + '|' + QString::number(i);
 		add(MenuItem(MenuItem::Command, label,
@@ -1007,6 +1009,8 @@ void MenuDefinition::expandDocuments()
 			QString label = toqstr(b->fileName().displayName(20));
 			if (!b->isClean())
 				label += "*";
+			if (b->notifiesExternalModification())
+				label += QChar(0x26a0);
 			if (i < 10)
 				label = QString::number(i) + ". " + label + '|' + QString::number(i);
 			item.submenu().add(MenuItem(MenuItem::Command, label,

@@ -38,7 +38,8 @@ public:
 	void redrawAll(bool update_metrics);
 	///
 	void closeAll();
-	/// Update window titles of all users.
+	/// Update window titles of all users and the external modifications
+	/// warning.
 	void updateTitles();
 
 private:

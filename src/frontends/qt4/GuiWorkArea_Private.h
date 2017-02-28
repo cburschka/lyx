@@ -196,6 +196,8 @@ struct GuiWorkArea::Private
 	docstring vc_status_;
 	///
 	bool clean_;
+	///
+	bool externally_modified_;
 
 }; // GuiWorkArea
 
