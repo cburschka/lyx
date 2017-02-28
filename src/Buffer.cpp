@@ -1411,12 +1411,12 @@ bool Buffer::save() const
 
 	// if the file does not yet exist, none of the backup activity
 	// that follows is necessary
-  if (!fileName().exists()) {
+	if (!fileName().exists()) {
 		if (!writeFile(fileName()))
-      return false;
-    markClean();
-    return true;
-  }
+			return false;
+		markClean();
+		return true;
+	}
 
 	// we first write the file to a new name, then move it to its
 	// proper location once that has been done successfully. that
