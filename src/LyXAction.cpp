@@ -583,8 +583,8 @@ void LyXAction::init()
                         want to start from and for the command that you want to
                         apply to this format. Internally the control is then passed
                         to #LFUN_BUFFER_EXPORT_CUSTOM.\n
-                        If absent, the default output format of the document is
-                        used.
+                        If absent or *, then the default output format of the
+                        document is used.
 		<DEST>	If present, this argument provides the export destination
 			filename. Its containing folder will also be the destination
 			folder, where all the needed external files will be copied.

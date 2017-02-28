@@ -3548,7 +3548,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			else
 				target_dir = doc_buffer->fileName().onlyPath();
 
-			string const format = argument.empty() ?
+			string const format = (argument.empty() || argument == "*") ?
 				doc_buffer->params().getDefaultOutputFormat() : argument;
 
 			if ((dest.empty() && doc_buffer->isUnnamed())

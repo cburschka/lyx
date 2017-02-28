@@ -2534,8 +2534,8 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			enable = true;
 			break;
 		}
-		string format =
-			arg.empty() ? params().getDefaultOutputFormat() : to_utf8(arg);
+		string format = (arg.empty() || arg == "*") ?
+			params().getDefaultOutputFormat() : to_utf8(arg);
 		size_t pos = format.find(' ');
 		if (pos != string::npos)
 			format = format.substr(0, pos);
@@ -2643,8 +2643,8 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		break;
 
 	case LFUN_BUFFER_EXPORT: {
-		string const format =
-			argument.empty() ? params().getDefaultOutputFormat() : argument;
+		string const format = (argument.empty() || argument == "*") ?
+			params().getDefaultOutputFormat() : argument;
 		ExportStatus const status = doExport(format, false);
 		dr.setError(status != ExportSuccess);
 		if (status != ExportSuccess)
