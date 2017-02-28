@@ -1,5 +1,9 @@
 Sublabel: missing_glyphs
 export/doc/UserGuide_(dvi3|pdf4|pdf5)_systemF
+# started failing after a TL 2016 update
+# for discussion on whether a bug should be reported or LyX output should be changed, see:
+# https://www.mail-archive.com/search?l=mid&q=20170225203955.nas2qopy4l4ukyqq%40steph
+export/latex/languagenesting2_pdf5_systemF
 
 # Juergen Spitzmueller: They do not have problems with xunicode, but without.
 # The reason is that the asterisk glyph is not included in the arabic font
