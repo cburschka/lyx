@@ -221,11 +221,6 @@ export/doc/es/(UserGuide|Math|EmbeddedObjects)_(dvi3|pdf5)_texF
 # seems to be polyglossia-related (dvi3 worked with babel)
 export/examples/H-P-statements_.*_systemF
 
-# tufte (partially) incompatible with latex and xelatex:
-# \MakeTextUppercase requires microtype.
-# http://tex.stackexchange.com/questions/202142/problems-compiling-tufte-title-page-in-xelatex
-export/examples/(|de/|es/)tufte-(book|handout)_(dvi.*|pdf|pdf3|pdf4.*)
-
 # These files use packages that are not compatible with the newest LuaTeX. We
 # could potentially fix these by loading the luatex85 package early in the
 # LyX-generated preamble, but it seems it's better to wait until the packages
