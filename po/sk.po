@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-02-16 10:52+0100\n"
-"PO-Revision-Date: 2017-02-16 09:59+0000\n"
+"POT-Creation-Date: 2017-03-01 09:51+0100\n"
+"PO-Revision-Date: 2017-03-01 11:10+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -13237,6 +13237,10 @@ msgstr "Poznámka pri päte ##"
 msgid "\\fnsymbol{thanks}"
 msgstr "\\fnsymbol{thanks}"
 
+#: lib/layouts/stdfloats.inc:11
+msgid "Algorithms"
+msgstr "Algoritmy"
+
 #: lib/layouts/stdinsets.inc:12 src/insets/InsetMarginal.cpp:36
 msgid "margin"
 msgstr "okraje"
@@ -14365,6 +14369,10 @@ msgstr "\\theexamplei (\\alph{subexample})"
 #: lib/layouts/linguistics.module:29
 msgid "\\theexamplei (\\alph{subexamplei})"
 msgstr "\\theexamplei (\\alph{subexamplei})"
+
+#: lib/layouts/linguistics.module:32
+msgid "Tableaux"
+msgstr "Tablá"
 
 #: lib/layouts/linguistics.module:13
 msgid "Numbered Example (multiline)"
@@ -28476,6 +28484,14 @@ msgstr "Odrážky"
 msgid "Branches"
 msgstr "Vetvy"
 
+#: lib/layouts/stdinsets.inc:15
+msgid "Index Entries"
+msgstr "Heslá Registier"
+
+#: lib/layouts/stdinsets.inc:16
+msgid "Listings"
+msgstr "Výpisy"
+
 #: src/frontends/qt4/GuiDocument.cpp:1447
 msgid "Formats[[output]]"
 msgstr "Výstupné Formáty"
@@ -32512,12 +32528,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "short title"
 #~ msgstr "krátky titul"
-
-#~ msgid "Listings"
-#~ msgstr "Výpisy"
-
-#~ msgid "Index Entries"
-#~ msgstr "Heslá Registier"
 
 #~ msgid "%1$stext (dynamic)"
 #~ msgstr "%1$stext (dynamická)"
