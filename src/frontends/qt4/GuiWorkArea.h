@@ -13,6 +13,8 @@
 #ifndef WORKAREA_H
 #define WORKAREA_H
 
+#include "ui_WorkAreaUi.h"
+
 #include "frontends/WorkArea.h"
 
 #include <QAbstractScrollArea>
@@ -31,6 +33,7 @@ class QWidget;
 namespace lyx {
 
 class Buffer;
+class FuncRequest;
 
 namespace frontend {
 
@@ -206,6 +209,7 @@ public:
 	bool removeWorkArea(GuiWorkArea *);
 	GuiWorkArea * currentWorkArea();
 	GuiWorkArea * workArea(Buffer & buffer);
+	GuiWorkArea const * workArea(int index) const;
 	GuiWorkArea * workArea(int index);
 	void paintEvent(QPaintEvent *);
 
@@ -237,6 +241,8 @@ private Q_SLOTS:
 	void mouseReleaseEvent(QMouseEvent * me);
 	///
 	void mouseDoubleClickEvent(QMouseEvent * event);
+	///
+	int indexOfWorkArea(GuiWorkArea * w) const;
 
 private:
 	/// true if position is a tab (rather than the blank space in tab bar)
@@ -275,6 +281,29 @@ Q_SIGNALS:
 	///
 	void tabMoveRequested(int fromIndex, int toIndex);
 };
+
+
+class GuiWorkAreaContainer : public QWidget, public Ui::WorkAreaUi
+{
+	Q_OBJECT
+	GuiWorkArea * const wa_;
+	void dispatch(FuncRequest f) const;
+
+private Q_SLOTS:
+	void updateDisplay();
+	void reload() const;
+	void ignore() const;
+
+protected:
+	void mouseDoubleClickEvent(QMouseEvent * event); //override
+
+public:
+	///
+	GuiWorkAreaContainer(GuiWorkArea * wa, QWidget * parent = 0);
+	GuiWorkArea * workArea() const { return wa_; }
+};
+
+
 
 } // namespace frontend
 } // namespace lyx

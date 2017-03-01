@@ -1352,13 +1352,13 @@ double GuiView::pixelRatio() const
 	return 1.0;
 #endif
 }
-	
-	
+
+
 GuiWorkArea * GuiView::workArea(int index)
 {
 	if (TabWorkArea * twa = d.currentTabWorkArea())
 		if (index < twa->count())
-			return dynamic_cast<GuiWorkArea *>(twa->widget(index));
+			return twa->workArea(index);
 	return 0;
 }
 
@@ -2767,7 +2767,7 @@ void GuiView::writeSession() const {
 	for (int i = 0; i < d.splitter_->count(); ++i) {
 		TabWorkArea * twa = d.tabWorkArea(i);
 		for (int j = 0; j < twa->count(); ++j) {
-			GuiWorkArea * wa = static_cast<GuiWorkArea *>(twa->widget(j));
+			GuiWorkArea * wa = twa->workArea(j);
 			Buffer & buf = wa->bufferView().buffer();
 			theSession().lastOpened().add(buf.fileName(), wa == active_wa);
 		}

@@ -355,6 +355,7 @@ UIFILES = \
 	ToggleWarningUi.ui \
 	ViewSourceUi.ui \
 	VSpaceUi.ui \
+	WorkAreaUi.ui \
 	WrapUi.ui
 
 nodist_liblyxqt4_a_SOURCES = Resources.cpp
