@@ -43,8 +43,8 @@ Sublabel: erratic
 #################
 # Tests depending on local configuration, or the phase of the moon.
 
-# Export fails the first time but works the second time. (Why?)
-export/doc/es/Customization_pdf4_texF
+# Manual export fails the first time but works the second time. (Why?)
+export/doc/es/(Customization|Intro)_pdf4_texF
 
 
 Sublabel: varying_versions
@@ -70,15 +70,16 @@ Sublabel: wrong_output
 # -> wrong output with DVI and PDF (ps2pdf) (de-placed landscape slides).
 export/examples/(|fr/)seminar_(dvi|pdf).*
 
-# Babel-Spanish uses Babel's "strings" feature to define
-# separate auto-strings using UTF-8 literals.
-# Babel uses the "unicode" strings if it detects XeTeX or LuaTeX.
-# This is wrong for Xe/Lua with 8-bit TeX-fonts.
-# set inputenc to utf8?
-# (Changing the default in lib/languages requires more tests for utf8 first.)
-export/examples/es/linguistics_pdf4_texF
-export/examples/es/(ejemplo_con_lyx|tufte_book)_(pdf[45]|dvi3)_texF
-export/doc/es/.*_(pdf[45]|dvi3)_texF
+# Babel-Spanish uses UTF-8 encoded "unicode" strings if it detects LuaTeX
+# (with TeXLive 2016 also for XeTeX).
+# With LuaTeX and 8-bit TeX-fonts, e.g., the toc heading becomes
+# ÃŊndice instead of Índice.
+# The problem is generic to all Spanish documents but only manifests itself
+# if Babel strings with non-ASCII chars are deployed.
+# Set inputenc to utf8? (Changing the default in lib/languages
+# requires more tests for utf8 first.)
+export/examples/es/(ejemplo_con_lyx|tufte_book)_(pdf5|dvi3)_texF
+export/doc/es/.*_(pdf5|dvi3)_texF
 
 # Non-ASCII char in verbatim environment is dropped (with a warning when
 # doing this interactively) with ASCII (and hence also with XeTeX).
@@ -86,7 +87,7 @@ export/doc/(|de/|es/|fr/)EmbeddedObjects_pdf4_texF
 
 # inputencoding="utf8-plain" with 8-bit TeX: non-ASCII characters are passed
 #  as two 8-bit characters leading to garbage in the output
-export/export/utf8-plain-with-tex-fonts_(dvi|pdf.?)
+export/export/latex/utf8-plain-with-tex-fonts_(dvi|pdf.?)
 
 # The following document mixes inTitle layouts and leads to
 # likely unintended output. See #10347
