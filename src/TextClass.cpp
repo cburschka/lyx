@@ -447,8 +447,13 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 
 		case TC_INPUT: // Include file
 			if (lexrc.next()) {
+				FileName tmp;
 				string const inc = lexrc.getString();
-				FileName tmp = libFileSearch("layouts", inc,
+				if (!path().empty() && (prefixIs(inc, "./") ||
+							prefixIs(inc, "../")))
+					tmp = fileSearch(path(), inc, "layout");
+				else
+					tmp = libFileSearch("layouts", inc,
 							    "layout");
 
 				if (tmp.empty()) {
