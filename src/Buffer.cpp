@@ -264,9 +264,8 @@ public:
 	/// Container for all sort of Buffer dependant errors.
 	map<string, ErrorList> errorLists;
 
-	/// timestamp and checksum used to test if the file has been externally
-	/// modified. (Used to properly enable 'File->Revert to saved', bug 4114).
-	time_t timestamp_;
+	/// checksum used to test if the file has been externally modified.  Used to
+	/// double check whether the file had been externally modified when saving.
 	unsigned long checksum_;
 
 	///
@@ -436,7 +435,7 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	: owner_(owner), lyx_clean(true), bak_clean(true), unnamed(false),
 	  internal_buffer(false), read_only(readonly_), filename(file),
 	  file_fully_loaded(false), file_format(LYX_FORMAT), need_format_backup(false),
-	  ignore_parent(false),  toc_backend(owner), macro_lock(false), timestamp_(0),
+	  ignore_parent(false),  toc_backend(owner), macro_lock(false),
 	  checksum_(0), wa_(0),  gui_(0), undo_(*owner), bibinfo_cache_valid_(false),
 	  bibfile_cache_valid_(false), cite_labels_valid_(false), preview_error_(false),
 	  inset(0), preview_loader_(0), cloned_buffer_(cloned_buffer),
@@ -3026,16 +3025,9 @@ bool Buffer::isChecksumModified() const
 void Buffer::saveCheckSum() const
 {
 	FileName const & file = d->filename;
-
 	file.refresh();
-	if (file.exists()) {
-		d->timestamp_ = file.lastModified();
-		d->checksum_ = file.checksum();
-	} else {
-		// in the case of save to a new file.
-		d->timestamp_ = 0;
-		d->checksum_ = 0;
-	}
+	d->checksum_ = file.exists() ? file.checksum()
+		: 0; // in the case of save to a new file.
 }
 
 

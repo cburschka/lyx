@@ -231,7 +231,7 @@ private:
 	typedef std::map<Buffer const *, Buffer *> BufferMap;
 	///
 	void cloneWithChildren(BufferMap &, CloneList *) const;
-	/// save timestamp and checksum of the given file.
+	/// save checksum of the given file.
 	void saveCheckSum() const;
 	/// read a new file
 	ReadStatus readFile(support::FileName const & fn);
