@@ -194,6 +194,8 @@ public:
 	///
 	std::string const & name() const { return name_; }
 	///
+	std::string const & path() const { return path_; }
+	///
 	std::string const & category() const { return category_; }
 	///
 	std::string const & description() const { return description_; }
@@ -242,6 +244,8 @@ protected:
 	mutable LayoutList layoutlist_;
 	/// Layout file name
 	std::string name_;
+	/// Layout file path (empty for system layout files)
+	std::string path_;
 	/// Class category
 	std::string category_;
 	/// document class name

@@ -43,7 +43,8 @@ LayoutFile::LayoutFile(string const & fn, string const & cln,
 		       string const & desc, string const & prereq,
 		       string const & category, bool texclassavail) 
 {
-	name_ = fn;
+	name_ = onlyFileName(fn);
+	path_ = fn.rfind('/') == string::npos ? string() : onlyPath(fn);
 	latexname_ = cln;
 	description_ = desc;
 	prerequisites_ = prereq;
@@ -331,7 +332,8 @@ LayoutFileIndex  LayoutFileList::addLocalLayout(
 		return string();
 
 	LayoutFile * tmpl =
-		new LayoutFile(textclass, class_name, textclass, class_prereq, category, true);
+		new LayoutFile(addName(moved ? oldpath : path, textclass),
+			class_name, textclass, class_prereq, category, true);
 	//FIXME: The prerequisites are available from the layout file and
 	//       can be extracted from the above regex, but for now this
 	//       field is simply set to class_name + ".cls"
