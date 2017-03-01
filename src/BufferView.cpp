@@ -1028,7 +1028,10 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	if (buffer_.isReadonly()
 	    && !lyxaction.funcHasFlag(act, LyXAction::ReadOnly)
 	    && !lyxaction.funcHasFlag(act, LyXAction::NoBuffer)) {
-		flag.message(from_utf8(N_("Document is read-only")));
+		if (buffer_.hasReadonlyFlag())
+			flag.message(from_utf8(N_("Document is read-only")));
+		else
+			flag.message(from_utf8(N_("Document has been modified externally")));
 		flag.setEnabled(false);
 		return true;
 	}

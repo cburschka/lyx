@@ -2535,7 +2535,7 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	switch (cmd.action()) {
 
 	case LFUN_BUFFER_TOGGLE_READ_ONLY:
-		flag.setOnOff(isReadonly());
+		flag.setOnOff(hasReadonlyFlag());
 		break;
 
 		// FIXME: There is need for a command-line import.
@@ -2659,7 +2659,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 				dr.setMessage(log);
 		}
 		else
-			setReadonly(!isReadonly());
+			setReadonly(!hasReadonlyFlag());
 		break;
 
 	case LFUN_BUFFER_EXPORT: {
@@ -3262,9 +3262,15 @@ void Buffer::setLayoutPos(string const & path)
 }
 
 
-bool Buffer::isReadonly() const
+bool Buffer::hasReadonlyFlag() const
 {
 	return d->read_only;
+}
+
+
+bool Buffer::isReadonly() const
+{
+	return hasReadonlyFlag() || notifiesExternalModification();
 }
 
 
@@ -4144,7 +4150,7 @@ void Buffer::moveAutosaveFile(support::FileName const & oldauto) const
 bool Buffer::autoSave() const
 {
 	Buffer const * buf = d->cloned_buffer_ ? d->cloned_buffer_ : this;
-	if (buf->d->bak_clean || isReadonly())
+	if (buf->d->bak_clean || hasReadonlyFlag())
 		return true;
 
 	message(_("Autosaving current document..."));
@@ -4541,7 +4547,7 @@ Buffer::ReadStatus Buffer::loadEmergency()
 		ReadStatus const ret_llf = loadThisLyXFile(emergencyFile);
 		bool const success = (ret_llf == ReadSuccess);
 		if (success) {
-			if (isReadonly()) {
+			if (hasReadonlyFlag()) {
 				Alert::warning(_("File is read-only"),
 					bformat(_("An emergency file is successfully loaded, "
 					"but the original file %1$s is marked read-only. "
@@ -4604,7 +4610,7 @@ Buffer::ReadStatus Buffer::loadAutosave()
 		ReadStatus const ret_llf = loadThisLyXFile(autosaveFile);
 		// the file is not saved if we load the autosave file.
 		if (ret_llf == ReadSuccess) {
-			if (isReadonly()) {
+			if (hasReadonlyFlag()) {
 				Alert::warning(_("File is read-only"),
 					bformat(_("A backup file is successfully loaded, "
 					"but the original file %1$s is marked read-only. "

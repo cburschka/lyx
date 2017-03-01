@@ -1391,12 +1391,12 @@ void GuiWorkArea::updateWindowTitle()
 {
 	Buffer const & buf = bufferView().buffer();
 	if (buf.fileName() != d->file_name_
-	    || buf.isReadonly() != d->read_only_
+	    || buf.hasReadonlyFlag() != d->read_only_
 	    || buf.lyxvc().vcstatus() != d->vc_status_
 	    || buf.isClean() != d->clean_
 	    || buf.notifiesExternalModification() != d->externally_modified_) {
 		d->file_name_ = buf.fileName();
-		d->read_only_ = buf.isReadonly();
+		d->read_only_ = buf.hasReadonlyFlag();
 		d->vc_status_ = buf.lyxvc().vcstatus();
 		d->clean_ = buf.isClean();
 		d->externally_modified_ = buf.notifiesExternalModification();
@@ -2074,7 +2074,7 @@ void TabWorkArea::updateTabTexts()
 		if (!buf.fileName().empty() && !buf.isClean())
 			tab_text += "*";
 		QString tab_tooltip = it->abs();
-		if (buf.isReadonly()) {
+		if (buf.hasReadonlyFlag()) {
 			setTabIcon(tab_index, QIcon(getPixmap("images/", "emblem-readonly", "svgz,png")));
 			tab_tooltip = qt_("%1 (read only)").arg(tab_tooltip);
 		} else

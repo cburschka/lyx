@@ -262,7 +262,7 @@ string LyXVC::checkOut()
 	if (!vcs)
 		return string();
 	//RCS allows checkOut only in ReadOnly mode
-	if (vcs->toggleReadOnlyEnabled() && !owner_->isReadonly())
+	if (vcs->toggleReadOnlyEnabled() && !owner_->hasReadonlyFlag())
 		return string();
 
 	LYXERR(Debug::LYXVC, "LyXVC: checkOut");
@@ -335,7 +335,7 @@ string LyXVC::toggleReadOnly()
 	}
 	case VCS::NOLOCKING:
 		Buffer * b = vcs->owner();
-		bool const newstate = !b->isReadonly();
+		bool const newstate = !b->hasReadonlyFlag();
 		string result = "LyXVC: toggle to ";
 		result += (newstate ? "readonly" : "readwrite");
 		LYXERR(Debug::LYXVC, result);

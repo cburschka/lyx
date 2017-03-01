@@ -471,8 +471,12 @@ public:
 	/// thing from whichever Buffer it is called.
 	ListOfBuffers allRelatives() const;
 
-	/// Is buffer read-only?
+	/// Is buffer read-only? True if it has either the read-only flag or the
+	/// externally modified flag.
 	bool isReadonly() const;
+
+	/// Does the buffer have the read-only flag?
+	bool hasReadonlyFlag() const;
 
 	/// Set buffer read-only flag
 	void setReadonly(bool flag = true);

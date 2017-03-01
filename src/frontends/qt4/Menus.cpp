@@ -1221,7 +1221,7 @@ void MenuDefinition::expandFlexInsert(
 		}
 	}
 	// FIXME This is a little clunky.
-	if (items_.empty() && type == InsetLayout::CUSTOM && !buf->isReadonly())
+	if (items_.empty() && type == InsetLayout::CUSTOM && !buf->hasReadonlyFlag())
 		add(MenuItem(MenuItem::Help, qt_("No Custom Insets Defined!")));
 }
 
@@ -1412,7 +1412,7 @@ void MenuDefinition::expandToolbars()
 
 void MenuDefinition::expandBranches(Buffer const * buf)
 {
-	if (!buf || buf->isReadonly())
+	if (!buf || buf->hasReadonlyFlag())
 		return;
 
 	BufferParams const & master_params = buf->masterBuffer()->params();

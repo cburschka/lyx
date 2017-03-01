@@ -284,7 +284,7 @@ LyXVC::CommandResult RCS::checkIn(string const & msg, string & log)
 
 bool RCS::checkInEnabled()
 {
-	return owner_ && !owner_->isReadonly();
+	return owner_ && !owner_->hasReadonlyFlag();
 }
 
 
@@ -326,7 +326,7 @@ string RCS::checkOut()
 
 bool RCS::checkOutEnabled()
 {
-	return owner_ && owner_->isReadonly();
+	return owner_ && owner_->hasReadonlyFlag();
 }
 
 

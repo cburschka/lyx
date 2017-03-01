@@ -1138,7 +1138,7 @@ void GuiView::updateWindowTitle(GuiWorkArea * wa)
 	// Tell Qt whether the current document is changed
 	setWindowModified(!buf.isClean());
 
-	if (buf.isReadonly())
+	if (buf.hasReadonlyFlag())
 		read_only_->show();
 	else
 		read_only_->hide();
@@ -2040,12 +2040,13 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		enable = doc_buffer && doc_buffer->lyxvc().checkOutEnabled();
 		break;
 	case LFUN_VC_LOCKING_TOGGLE:
-		enable = doc_buffer && !doc_buffer->isReadonly()
+		enable = doc_buffer && !doc_buffer->hasReadonlyFlag()
 			&& doc_buffer->lyxvc().lockingToggleEnabled();
 		flag.setOnOff(enable && doc_buffer->lyxvc().locking());
 		break;
 	case LFUN_VC_REVERT:
-		enable = doc_buffer && doc_buffer->lyxvc().inUse() && !doc_buffer->isReadonly();
+		enable = doc_buffer && doc_buffer->lyxvc().inUse()
+			&& !doc_buffer->hasReadonlyFlag();
 		break;
 	case LFUN_VC_UNDO_LAST:
 		enable = doc_buffer && doc_buffer->lyxvc().undoLastEnabled();
@@ -3112,7 +3113,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_VC_COPY: {
 		if (!buffer || !ensureBufferClean(buffer))
 			break;
-		if (buffer->lyxvc().inUse() && !buffer->isReadonly()) {
+		if (buffer->lyxvc().inUse() && !buffer->hasReadonlyFlag()) {
 			if (buffer->lyxvc().isCheckInWithConfirmation()) {
 				// Some changes are not yet committed.
 				// We test here and not in getStatus(), since
@@ -3141,7 +3142,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_VC_CHECK_IN:
 		if (!buffer || !ensureBufferClean(buffer))
 			break;
-		if (buffer->lyxvc().inUse() && !buffer->isReadonly()) {
+		if (buffer->lyxvc().inUse() && !buffer->hasReadonlyFlag()) {
 			string log;
 			LyXVC::CommandResult ret = buffer->lyxvc().checkIn(log);
 			dr.setMessage(log);
@@ -3165,7 +3166,7 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_VC_LOCKING_TOGGLE:
 		LASSERT(buffer, return);
-		if (!ensureBufferClean(buffer) || buffer->isReadonly())
+		if (!ensureBufferClean(buffer) || buffer->hasReadonlyFlag())
 			break;
 		if (buffer->lyxvc().inUse()) {
 			string res = buffer->lyxvc().lockingToggle();
