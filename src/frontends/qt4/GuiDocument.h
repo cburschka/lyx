@@ -357,7 +357,8 @@ class FontModule : public UiWidget<Ui::FontUi>
 {
 	Q_OBJECT
 public:
-	FontModule(QWidget * parent) : UiWidget<Ui::FontUi>(parent) {}
+	FontModule(QWidget * parent) : UiWidget<Ui::FontUi>(parent),
+	   font_sf_scale(100), font_tt_scale(100) {}
 	/// The roman font currently not selected by osFontsCB->isChecked()
 	QString font_roman;
 	/// The sans font currently not selected by osFontsCB->isChecked()
