@@ -1848,6 +1848,10 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 	}
 
+	case LFUN_BUFFER_EXTERNAL_MODIFICATION_CLEAR:
+		enable = doc_buffer && doc_buffer->notifiesExternalModification();
+		break;
+
 	case LFUN_BUFFER_WRITE_AS:
 	case LFUN_BUFFER_EXPORT_AS:
 		enable = doc_buffer != 0;
@@ -3772,6 +3776,11 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			dr.setMessage(_("All documents saved."));
 			break;
 		}
+
+		case LFUN_BUFFER_EXTERNAL_MODIFICATION_CLEAR:
+			LASSERT(doc_buffer, break);
+			doc_buffer->clearExternalModification();
+			break;
 
 		case LFUN_BUFFER_CLOSE:
 			closeBuffer();

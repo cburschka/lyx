@@ -879,6 +879,16 @@ void LyXAction::init()
 		{ LFUN_BUFFER_WRITE_AS, "buffer-write-as", ReadOnly, Buffer },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_EXTERNAL_MODIFICATION_CLEAR
+ * \li Action: Clear the external modification flag on the current buffer.
+ * \li Syntax: buffer-external-modification-clear
+ * \li Origin: gm, 2 March 2017
+ * \endvar
+ */
+		{ LFUN_BUFFER_EXTERNAL_MODIFICATION_CLEAR,
+		  "buffer-external-modification-clear", ReadOnly, Buffer },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_ZOOM_IN
  * \li Action: Increases the zoom of the screen fonts.
  * \li Syntax: buffer-zoom-in [<ZOOM>]

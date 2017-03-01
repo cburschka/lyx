@@ -468,6 +468,7 @@ enum FuncCode
 	LFUN_BRANCH_INVERT,             // rgheck, 20160712
 	LFUN_LYX_ACTIVATE,              // skostysh, 20160804
 	LFUN_ICON_SIZE,                 // daniel, 20160712
+	LFUN_BUFFER_EXTERNAL_MODIFICATION_CLEAR,// gm, 20170302
 	LFUN_LASTACTION                 // end of the table
 };
 
