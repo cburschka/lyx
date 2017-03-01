@@ -4645,7 +4645,7 @@ Buffer::ReadStatus Buffer::loadThisLyXFile(FileName const & fn)
 void Buffer::bufferErrors(TeXErrors const & terr, ErrorList & errorList) const
 {
 	for (auto const & err : terr) {
-		TexRow::TextEntry start, end = TexRow::text_none;
+		TexRow::TextEntry start = TexRow::text_none, end = TexRow::text_none;
 		int errorRow = err.error_in_line;
 		Buffer const * buf = 0;
 		Impl const * p = d;
