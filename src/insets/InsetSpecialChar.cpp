@@ -573,7 +573,7 @@ void InsetSpecialChar::validate(LaTeXFeatures & features) const
 
 bool InsetSpecialChar::isChar() const
 {
-	return kind_ != HYPHENATION || kind_ != LIGATURE_BREAK;
+	return kind_ != HYPHENATION && kind_ != LIGATURE_BREAK;
 }
 
 
