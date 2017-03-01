@@ -149,6 +149,7 @@ void InsetCitation::doDispatch(Cursor & cur, FuncRequest & cmd)
 			cmd = FuncRequest(LFUN_INSET_MODIFY, "changetype " + newcmdname);
 		}
 	}
+		// fall through
 	default:
 		InsetCommand::doDispatch(cur, cmd);
 	}
