@@ -550,7 +550,7 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			else {
 				Layout lay;
 				// false positive from coverity
-				// coverity[CHECKED_RETURN]
+				// coverity[checked_return]
 				readStyle(lexrc, lay);
 			}
 			break;
