@@ -419,11 +419,15 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
           else()
             set(TestName "export/${libsubfolder}/${f}${_enc}_${format}_${fonttype}")
           endif()
-          set(mytestlabel ${testlabel})
+	  set(missingLabels )
+	  findexpr(mfound TestName ignoreLatexErrorsTests missingLabels)
+	  if (mfound)
+	    set(mytestlabel ${testlabel} "ignoring" ${missingLabels})
+	  else()
+	    set(mytestlabel ${testlabel})
+	  endif()
           maketestname(TestName inverted invertedTests ignoredTests unreliableTests mytestlabel)
           if(TestName)
-	    set(missingLabels )
-	    findexpr(mfound TestName ignoreLatexErrorsTests missingLabels)
             add_test(NAME ${TestName}
               WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}"
               COMMAND ${CMAKE_COMMAND} -DLYX_ROOT=${LIBSUB_SRC_DIR}
