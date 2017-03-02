@@ -36,9 +36,7 @@ class Correction {
 public:
 	///
 	/// \brief Correction
-	// it is fine not to initialize from2_
-	// coverity[UNINIT_CTOR]
-	Correction() {}
+	Correction() : from2_(0) {}
 	///
 	bool correct(MathAtom & at, char_type c) const;
 	///
