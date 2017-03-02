@@ -73,12 +73,13 @@ dnl        be used.
 AC_DEFUN([LYX_USE_INCLUDED_HUNSPELL],[
 	AC_MSG_CHECKING([whether to use included hunspell library])
 	AC_ARG_WITH(included-hunspell,
-		[AC_HELP_STRING([--without-included-hunspell], [do not use the hunspell lib supplied with LyX, try to find one in the system directories - compilation will abort if nothing suitable is found])],
+		[AC_HELP_STRING([--with-included-hunspell], [use the hunspell lib supplied with LyX instead of the system one])],
 		[lyx_cv_with_included_hunspell=$withval],
 		[lyx_cv_with_included_hunspell=no])
 	AM_CONDITIONAL(USE_INCLUDED_HUNSPELL, test x$lyx_cv_with_included_hunspell = xyes)
 	AC_MSG_RESULT([$lyx_cv_with_included_hunspell])
 	if test x$lyx_cv_with_included_hunspell = xyes ; then
+		lyx_included_libs="$lyx_included_libs hunspell"
 		HUNSPELL_CFLAGS='-I$(top_srcdir)/3rdparty/hunspell/1.3.3/src'
 		HUNSPELL_LIBS='$(top_builddir)/3rdparty/hunspell/liblyxhunspell.a'
 		AC_SUBST(HUNSPELL_CFLAGS)

@@ -256,9 +256,11 @@ LYX_SET_VERSION_INFO
 real_bindir=`eval "echo \`eval \"echo ${bindir}\"\`"`
 real_pkgdatadir=`eval "echo \`eval \"echo \\\`eval \\\"echo ${pkgdatadir}\\\"\\\`\"\`"`
 real_localedir=`eval "echo \`eval \"echo ${datadir}/locale\"\`"`
+test -z "${lyx_included_libs}" && lyx_included_libs="(none)"
 VERSION_INFO="Configuration\n\
   Host type:               ${host}\n\
   Special build flags:     ${lyx_flags}\n\
+  Bundled libraries:       ${lyx_included_libs}\n\
   C++ Compiler:            ${CXX} ${CXX_VERSION}\n\
   C++ Compiler flags:      ${AM_CPPFLAGS} ${AM_CXXFLAGS}\n\
   C++ Compiler user flags: ${CPPFLAGS} ${CXXFLAGS}\n\
