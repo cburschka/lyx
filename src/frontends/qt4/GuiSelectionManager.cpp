@@ -390,15 +390,16 @@ bool GuiSelectionManager::eventFilter(QObject * obj, QEvent * event)
 			// This is designed to work both with the main enter key
 			// and the one on the numeric keypad.
 			if (keyPressed == Qt::Key_Enter || keyPressed == Qt::Key_Return) {
-				if (addPB->isEnabled()) {
-					if (!keyModifiers) {
+				if (!keyModifiers ||
+				    keyModifiers == Qt::ControlModifier ||
+				    keyModifiers == Qt::KeypadModifier  ||
+				    keyModifiers == (Qt::ControlModifier
+				                     | Qt::KeypadModifier)) {
+					if (addPB->isEnabled()) {
 						addPB_clicked();
-					} else if (keyModifiers == Qt::ControlModifier ||
-						  keyModifiers == Qt::KeypadModifier  ||
-						  keyModifiers == (Qt::ControlModifier | Qt::KeypadModifier)) {
-						addPB_clicked();
-						okHook(); //signal
 					}
+					if (keyModifiers)
+						okHook(); //signal
 				}
 				event->accept();
 				return true;
