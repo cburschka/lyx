@@ -5185,7 +5185,6 @@ int InsetTabular::dist(BufferView & bv, idx_type const cell, int x, int y) const
 Inset * InsetTabular::editXY(Cursor & cur, int x, int y)
 {
 	//lyxerr << "InsetTabular::editXY: " << this << endl;
-	cur.selection(false);
 	cur.push(*this);
 	cur.idx() = getNearestCell(cur.bv(), x, y);
 	return cur.bv().textMetrics(&cell(cur.idx())->text()).editXY(cur, x, y);

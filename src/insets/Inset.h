@@ -183,6 +183,8 @@ public:
 	virtual void edit(Cursor & cur, bool front, 
 		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
 	/// cursor enters
+	/// Note: this method must preserve the selection status. See:
+	/// https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg199001.html
 	virtual Inset * editXY(Cursor & cur, int x, int y);
 
 	/// compute the size of the object returned in dim
