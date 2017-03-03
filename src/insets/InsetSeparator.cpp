@@ -136,7 +136,7 @@ ColorCode InsetSeparator::ColorName() const
 }
 
 
-void InsetSeparator::latex(otexstream & os, OutputParams const &) const
+void InsetSeparator::latex(otexstream & os, OutputParams const & runparams) const
 {
 	// Do nothing if a paragraph break was just output
 	if (!os.afterParbreak()) {
@@ -146,7 +146,10 @@ void InsetSeparator::latex(otexstream & os, OutputParams const &) const
 				break;
 			case InsetSeparatorParams::PARBREAK:
 			case InsetSeparatorParams::LATEXPAR:
-				os << breakln << "\n";
+				if (runparams.inDeletedInset)
+					os << breakln << "}\n\n{";
+				else
+					os << breakln << "\n";
 				break;
 			default:
 				os << breakln << "%\n";
