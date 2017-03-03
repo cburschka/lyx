@@ -628,9 +628,9 @@ dnl        be used.
 AC_DEFUN([LYX_USE_INCLUDED_MYTHES],[
 	AC_MSG_CHECKING([whether to use included MyThes library])
 	AC_ARG_WITH(included-mythes,
-	    [AC_HELP_STRING([--with-included-mythes], [use the MyThes lib supplied with LyX instead of the system one])],
+	    [AC_HELP_STRING([--without-included-mythes], [use the system MyThes lib instead of the one supplied with LyX])],
 	    [lyx_cv_with_included_mythes=$withval],
-	    [lyx_cv_with_included_mythes=no])
+	    [lyx_cv_with_included_mythes=yes])
 	AM_CONDITIONAL(USE_INCLUDED_MYTHES, test x$lyx_cv_with_included_mythes = xyes)
 	AC_MSG_RESULT([$lyx_cv_with_included_mythes])
 	if test x$lyx_cv_with_included_mythes != xyes ; then
