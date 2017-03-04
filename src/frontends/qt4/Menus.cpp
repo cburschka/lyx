@@ -135,6 +135,9 @@ public:
 		/** This is a list of exportable formats
 		    typically for the File->Export menu. */
 		ExportFormats,
+		/** This exports the document default format
+		    typically for the File->Export menu. */
+		ExportFormat,
 		/** This is a list of importable formats
 		    typically for the File->Import menu. */
 		ImportFormats,
@@ -455,6 +458,7 @@ void MenuDefinition::read(Lexer & lex)
 		md_elements,
 		md_endmenu,
 		md_exportformats,
+		md_exportformat,
 		md_importformats,
 		md_indices,
 		md_indicescontext,
@@ -496,6 +500,7 @@ void MenuDefinition::read(Lexer & lex)
 		{ "end", md_endmenu },
 		{ "environmentseparators", md_env_separators },
 		{ "exportformats", md_exportformats },
+		{ "exportformat", md_exportformat },
 		{ "floatinsert", md_floatinsert },
 		{ "floatlistinsert", md_floatlistinsert },
 		{ "graphicsgroups", md_graphicsgroups },
@@ -585,6 +590,10 @@ void MenuDefinition::read(Lexer & lex)
 
 		case md_exportformats:
 			add(MenuItem(MenuItem::ExportFormats));
+			break;
+
+		case md_exportformat:
+			add(MenuItem(MenuItem::ExportFormat));
 			break;
 
 		case md_importformats:
@@ -2174,6 +2183,19 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 		case MenuItem::ExportFormats:
 			tomenu.expandFormats(cit->kind(), buf);
 			break;
+
+		case MenuItem::ExportFormat: {
+			if (!buf)
+				break;
+			string const format = buf->params().getDefaultOutputFormat();
+			Format const * f = formats.getFormat(format);
+			docstring const name = f ? f->prettyname() : from_utf8(format);
+			docstring const label = bformat(_("Export [%1$s]|E"), name);
+			MenuItem item(MenuItem::Command, toqstr(label),
+			              FuncRequest(LFUN_BUFFER_EXPORT));
+			tomenu.addWithStatusCheck(item);
+			break;
+		}
 
 		case MenuItem::CharStyles:
 			tomenu.expandFlexInsert(buf, InsetLayout::CHARSTYLE);

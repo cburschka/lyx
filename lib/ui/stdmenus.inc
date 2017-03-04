@@ -88,7 +88,9 @@ Menuset
 	End
 
 	Menu "file_export"
+		ExportFormat
 		Item "Export As...|s" "buffer-export-as"
+		Separator
 		ExportFormats
 		Item "More Formats & Options...|r" "buffer-export custom"
 	End
