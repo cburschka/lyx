@@ -113,7 +113,7 @@ pos_type Row::Element::x2pos(int &x, bool const select) const
 		break;
 	case INSET:
 	case SPACE: {
-		int const boundary = select ? (full_width() + 1) / 2 : full_width();
+		double const boundary = select ? (full_width() + 1) / 2 : full_width();
 		// those elements contain only one position. Round to
 		// the closest side.
 		if (x > boundary) {
