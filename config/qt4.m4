@@ -180,10 +180,13 @@ AC_DEFUN([QT_DO_IT_ALL],
 
 	if test x$USE_QT5 = xyes ; then
 	  save_CPPFLAGS=$CPPFLAGS
-	  AC_MSG_CHECKING([whether Qt uses the X Window system])
 	  CPPFLAGS="$save_CPPFLAGS $QT_CORE_INCLUDES"
+	  AC_CHECK_HEADER(QtGui/qtgui-config.h,
+	    [lyx_qt5_config=QtGui/qtgui-config.h],
+	    [lyx_qt5_config=qconfig.h],[-])
+	  AC_MSG_CHECKING([whether Qt uses the X Window system])
 	  AC_EGREP_CPP(xcb,
-	    [#include <qconfig.h>
+	    [#include <$lyx_qt5_config>
 	    QT_QPA_DEFAULT_PLATFORM_NAME],
 	    [AC_MSG_RESULT(yes)
 	     AC_DEFINE(QPA_XCB, 1, [Define if Qt uses the X Window System])],
