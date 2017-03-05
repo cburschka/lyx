@@ -1812,9 +1812,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_BUFFER_RELOAD:
 		enable = doc_buffer && !doc_buffer->isUnnamed()
-			&& doc_buffer->fileName().exists()
-			&& (!doc_buffer->isClean()
-			   || doc_buffer->isExternallyModified(Buffer::timestamp_method));
+			&& doc_buffer->fileName().exists() && !doc_buffer->isClean();
 		break;
 
 	case LFUN_BUFFER_CHILD_OPEN:
@@ -3070,8 +3068,7 @@ void GuiView::checkExternallyModifiedBuffers()
 	BufferList::iterator const bend = theBufferList().end();
 	for (; bit != bend; ++bit) {
 		Buffer * buf = *bit;
-		if (buf->fileName().exists()
-			&& buf->isExternallyModified(Buffer::checksum_method)) {
+		if (buf->fileName().exists() && buf->isChecksumModified()) {
 			docstring text = bformat(_("Document \n%1$s\n has been externally modified."
 					" Reload now? Any local changes will be lost."),
 					from_utf8(buf->absFileName()));

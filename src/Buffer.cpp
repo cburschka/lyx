@@ -91,6 +91,7 @@
 #include "support/debug.h"
 #include "support/docstring_list.h"
 #include "support/ExceptionMessage.h"
+#include "support/FileMonitor.h"
 #include "support/FileName.h"
 #include "support/FileNameList.h"
 #include "support/filetools.h"
@@ -376,6 +377,18 @@ public:
 	// display the review toolbar, for instance)
 	mutable bool tracked_changes_present_;
 
+	// Make sure the file monitor monitors the good file.
+	void refreshFileMonitor();
+
+	/// has it been notified of an external modification?
+	bool isExternallyModified() const { return externally_modified_; }
+
+	/// Notify or clear of external modification
+	void fileExternallyModified(bool modified) const;
+
+	/// Block notifications of external modifications
+	FileMonitorBlocker blockFileMonitor() { return file_monitor_->block(10); }
+
 private:
 	/// So we can force access via the accessors.
 	mutable Buffer const * parent_buffer;
@@ -384,6 +397,10 @@ private:
 	int char_count_;
 	int blank_count_;
 
+	/// has been externally modified? Can be reset by the user.
+	mutable bool externally_modified_;
+
+	FileMonitorPtr file_monitor_;
 };
 
 
@@ -425,8 +442,10 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	  inset(0), preview_loader_(0), cloned_buffer_(cloned_buffer),
 	  clone_list_(0), doing_export(false),
 	  tracked_changes_present_(0), parent_buffer(0),
-	  word_count_(0), char_count_(0), blank_count_(0)
+	  word_count_(0), char_count_(0), blank_count_(0),
+	  externally_modified_(false)
 {
+	refreshFileMonitor();
 	if (!cloned_buffer_) {
 		temppath = createBufferTmpDir();
 		lyxvc.setBuffer(owner_);
@@ -864,6 +883,7 @@ void Buffer::setFileName(FileName const & fname)
 {
 	bool const changed = fname != d->filename;
 	d->filename = fname;
+	d->refreshFileMonitor();
 	if (changed)
 		lyxvc().file_found_hook(fname);
 	setReadonly(d->filename.isReadOnly());
@@ -1360,6 +1380,7 @@ FileName Buffer::getBackupName() const {
 // Should probably be moved to somewhere else: BufferView? GuiView?
 bool Buffer::save() const
 {
+	FileMonitorBlocker block = d->blockFileMonitor();
 	docstring const file = makeDisplayPath(absFileName(), 20);
 	d->filename.refresh();
 
@@ -1375,7 +1396,7 @@ bool Buffer::save() const
 	}
 
 	// ask if the disk file has been externally modified (use checksum method)
-	if (fileName().exists() && isExternallyModified(checksum_method)) {
+	if (fileName().exists() && isChecksumModified()) {
 		docstring text =
 			bformat(_("Document %1$s has been externally modified. "
 				"Are you sure you want to overwrite this file?"), file);
@@ -2995,13 +3016,10 @@ bool Buffer::isClean() const
 }
 
 
-bool Buffer::isExternallyModified(CheckMethod method) const
+bool Buffer::isChecksumModified() const
 {
 	LASSERT(d->filename.exists(), return false);
-	// if method == timestamp, check timestamp before checksum
-	return (method == checksum_method
-		|| d->timestamp_ != d->filename.lastModified())
-		&& d->checksum_ != d->filename.checksum();
+	return d->checksum_ != d->filename.checksum();
 }
 
 
@@ -3031,6 +3049,7 @@ void Buffer::markClean() const
 	// autosave
 	d->bak_clean = true;
 	d->undo_.markDirty();
+	clearExternalModification();
 }
 
 
@@ -5297,6 +5316,42 @@ void Buffer::updateChangesPresent() const
 		it->addChangesToBuffer(*this);
 }
 
+
+void Buffer::Impl::refreshFileMonitor()
+{
+	if (file_monitor_ && file_monitor_->filename() == filename.absFileName())
+		return file_monitor_->refresh();
+
+	// The previous file monitor is invalid
+	// This also destroys the previous file monitor and all its connections
+	file_monitor_ = FileSystemWatcher::monitor(filename);
+	fileExternallyModified(false);
+	// file_monitor_ will be destroyed with *this, so it is not going to call a
+	// destroyed object method.
+	file_monitor_->connect([this](){ fileExternallyModified(true); });
+}
+
+
+void Buffer::Impl::fileExternallyModified(bool modified) const
+{
+	if (modified)
+		lyx_clean = bak_clean = false;
+	externally_modified_ = modified;
+	if (wa_)
+		wa_->updateTitles();
+}
+
+
+bool Buffer::notifiesExternalModification() const
+{
+	return d->isExternallyModified();
+}
+
+
+void Buffer::clearExternalModification() const
+{
+	d->fileExternallyModified(false);
+}
 
 
 } // namespace lyx
