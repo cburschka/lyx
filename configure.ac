@@ -122,7 +122,6 @@ AC_CHECK_LIB(gdi32, main)
 AC_CHECK_LIB(ole32, main)
 
 LYX_USE_INCLUDED_BOOST
-LYX_USE_INCLUDED_MYTHES
 
 ### we need to know the byte order for unicode conversions
 AC_C_BIGENDIAN
@@ -220,6 +219,7 @@ AC_FUNC_MKDIR
 AC_FUNC_SELECT_ARGTYPES
 
 LYX_CHECK_SPELL_ENGINES
+LYX_USE_INCLUDED_MYTHES
 
 lyx_client_subdir=true
 dnl AC_LANG_PUSH(C)

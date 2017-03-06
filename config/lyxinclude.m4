@@ -626,34 +626,42 @@ fi
 dnl Usage: LYX_USE_INCLUDED_MYTHES : select if the included MyThes should
 dnl        be used.
 AC_DEFUN([LYX_USE_INCLUDED_MYTHES],[
-	AC_MSG_CHECKING([whether to use included MyThes library])
-	AC_ARG_WITH(included-mythes,
-	    [AC_HELP_STRING([--without-included-mythes], [use the system MyThes lib instead of the one supplied with LyX])],
-	    [lyx_cv_with_included_mythes=$withval],
-	    [lyx_cv_with_included_mythes=yes])
-	AM_CONDITIONAL(USE_INCLUDED_MYTHES, test x$lyx_cv_with_included_mythes = xyes)
-	AC_MSG_RESULT([$lyx_cv_with_included_mythes])
-	if test x$lyx_cv_with_included_mythes != xyes ; then
-		AC_LANG_PUSH(C++)
-		AC_CHECK_HEADER(mythes.hxx,[ac_cv_header_mythes_h=yes lyx_cv_mythes_h_location="<mythes.hxx>"])
-		if test x$ac_cv_header_mythes_h != xyes; then
-			AC_CHECK_HEADER(mythes/mythes.hxx,[ac_cv_header_mythes_h=yes lyx_cv_mythes_h_location="<mythes/mythes.hxx>"])
-		fi
-		AC_CHECK_LIB(mythes, main, [MYTHES_LIBS="-lmythes" lyx_mythes=yes], [lyx_mythes=no])
-		if test x$lyx_mythes != xyes; then
-			AC_CHECK_LIB(mythes-1.2, main, [MYTHES_LIBS="-lmythes-1.2" lyx_mythes=yes], [lyx_mythes=no])
-		fi
-		AC_LANG_POP(C++)
-		if test x$lyx_mythes != xyes -o x$ac_cv_header_mythes_h != xyes; then
-			AC_MSG_ERROR([cannot find suitable MyThes library (do not use --without-included-mythes)])
-		fi
-		AC_DEFINE(USE_EXTERNAL_MYTHES, 1, [Define as 1 to use an external MyThes library])
-		AC_DEFINE_UNQUOTED(MYTHES_H_LOCATION,$lyx_cv_mythes_h_location,[Location of mythes.hxx])
-		AC_SUBST(MYTHES_LIBS)
-	else
-		lyx_included_libs="$lyx_included_libs mythes"
-	fi
-
+  AC_ARG_WITH(included-mythes,
+    [AC_HELP_STRING([--with-included-mythes], [force to use the MyThes lib supplied with LyX])],
+    [use_included_mythes=$withval],
+    [use_included_mythes=no])
+  if test x$use_included_mythes != xyes ; then
+    AC_LANG_PUSH(C++)
+    use_included_mythes=yes
+    AC_CHECK_HEADERS([mythes.hxx mythes/mythes.hxx],
+      [mythes_h_location="<$ac_header>"
+       save_LIBS=$LIBS
+       AC_MSG_CHECKING([checking for MyThes library])
+       for ac_lib in mythes mythes-1.2 ; do
+	 LIBS="-l$ac_lib $save_LIBS"
+	 AC_LINK_IFELSE(
+	   [AC_LANG_PROGRAM([#include <cstdio>]
+              [#include $mythes_h_location], [MyThes dummy("idx","dat")])],
+	   [MYTHES_LIBS=-l$ac_lib
+            AC_MSG_RESULT([$MYTHES_LIBS])
+	    use_included_mythes=no])
+       done
+       if test $use_included_mythes != no ; then
+	 AC_MSG_RESULT([not found])
+       fi
+       break])
+    AC_LANG_POP(C++)
+  fi
+  if test $use_included_mythes = no ; then
+    AC_DEFINE(USE_EXTERNAL_MYTHES, 1, [Define as 1 to use an external MyThes library])
+    AC_DEFINE_UNQUOTED(MYTHES_H_LOCATION,$mythes_h_location,[Location of mythes.hxx])
+    AC_SUBST(MYTHES_LIBS)
+  else
+    lyx_included_libs="$lyx_included_libs mythes"
+  fi
+  AM_CONDITIONAL(USE_INCLUDED_MYTHES, test x$use_included_mythes = xyes)
+  AC_MSG_CHECKING([whether to use included MyThes library])
+  AC_MSG_RESULT([$use_included_mythes])
 ])
 
 
@@ -670,7 +678,8 @@ AC_DEFUN([LYX_WITH_DIR],[
     test "x$with_$3" = xyes && with_$3=$5
     lyx_cv_$3="$with_$3"
   fi
-  AC_MSG_RESULT($lyx_cv_$3)])
+  AC_MSG_RESULT($lyx_cv_$3)
+])
 
 
 dnl Usage: LYX_LOOP_DIR(value,action)
