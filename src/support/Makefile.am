@@ -113,12 +113,6 @@ liblyxsupport_a_SOURCES = \
 	unicode.cpp \
 	unicode.h \
 	weighted_btree.h
-if USE_INCLUDED_MYTHES
-liblyxsupport_a_SOURCES += \
-	mythes/mythes.cxx \
-	mythes/mythes.hxx \
-	mythes/license.readme
-endif
 
 #if INSTALL_MACOSX
 #liblyxsupport_a_SOURCES += \

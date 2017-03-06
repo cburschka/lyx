@@ -27,12 +27,8 @@
 #include "support/lstrings.h"
 #include "support/os.h"
 
-#ifdef USE_EXTERNAL_MYTHES
-#include MYTHES_H_LOCATION
-#else
 #include <cstdio>
-#include "support/mythes/mythes.hxx"
-#endif
+#include MYTHES_H_LOCATION
 
 #include "frontends/alert.h"
 

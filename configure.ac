@@ -372,6 +372,7 @@ AC_CONFIG_FILES([Makefile \
       3rdparty/Makefile \
       3rdparty/boost/Makefile \
       3rdparty/hunspell/Makefile \
+      3rdparty/mythes/Makefile \
       3rdparty/libiconv/Makefile \
       $ICONV_ICONV_H_IN \
       3rdparty/zlib/Makefile \

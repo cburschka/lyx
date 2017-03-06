@@ -652,14 +652,16 @@ AC_DEFUN([LYX_USE_INCLUDED_MYTHES],[
        break])
     AC_LANG_POP(C++)
   fi
-  if test $use_included_mythes = no ; then
-    AC_DEFINE(USE_EXTERNAL_MYTHES, 1, [Define as 1 to use an external MyThes library])
-    AC_DEFINE_UNQUOTED(MYTHES_H_LOCATION,$mythes_h_location,[Location of mythes.hxx])
-    AC_SUBST(MYTHES_LIBS)
-  else
+  if test $use_included_mythes = yes ; then
+    mythes_h_location="<mythes.hxx>"
+    MYTHES_INCLUDES='-I$(top_srcdir)/3rdparty/mythes/1.2.5/'
+    MYTHES_LIBS='$(top_builddir)/3rdparty/mythes/liblyxmythes.a'
     lyx_included_libs="$lyx_included_libs mythes"
   fi
   AM_CONDITIONAL(USE_INCLUDED_MYTHES, test x$use_included_mythes = xyes)
+  AC_DEFINE_UNQUOTED(MYTHES_H_LOCATION,$mythes_h_location,[Location of mythes.hxx])
+  AC_SUBST(MYTHES_INCLUDES)
+  AC_SUBST(MYTHES_LIBS)
   AC_MSG_CHECKING([whether to use included MyThes library])
   AC_MSG_RESULT([$use_included_mythes])
 ])
