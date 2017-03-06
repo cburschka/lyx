@@ -18,8 +18,8 @@ endif()
 
 file(GLOB support_headers ${TOP_SRC_DIR}/src/support/${LYX_HPP_FILES})
 
-file(GLOB support_mythes_sources ${TOP_SRC_DIR}/src/support/mythes/*.cxx)
-file(GLOB support_mythes_headers ${TOP_SRC_DIR}/src/support/mythes/*.hxx)
+file(GLOB support_mythes_sources ${MYTHES_DIR}/*.cxx)
+file(GLOB support_mythes_headers ${MYTHES_DIR}/*.hxx)
 
 file(GLOB support_linkback_sources ${TOP_SRC_DIR}/src/support/linkback/*.m*)
 file(GLOB support_linkback_headers ${TOP_SRC_DIR}/src/support/linkback/*.h)
@@ -58,7 +58,7 @@ lyx_automoc(${support_sources})
 include_directories(
 	${TOP_SRC_DIR}/src/support
 	${TOP_BINARY_DIR}/src/support
-	${TOP_SRC_DIR}/src/support/mythes
+	${MYTHES_DIR}
 	${QT_INCLUDES}
 	${ICONV_INCLUDE_DIR}
 	${ZLIB_INCLUDE_DIR})

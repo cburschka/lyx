@@ -96,7 +96,7 @@ ${Include_used_spellchecker}
 
 #endif // config.h guard
 
-
+#define MYTHES_H_LOCATION <${MYTHES_DIR}/mythes.hxx>
 
 // Unguarded cleanup of global namespace:
 
