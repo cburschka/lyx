@@ -6,6 +6,10 @@ changes happened in particular if possible. A good example would be
 2010-01-10 entry.
 
 -----------------------
+2017-04-19 Günter Milde <milde@lyx.org>
+ 	* Format incremented to 541: changes \SpecialChar:
+	  - new argument "allowbreak" to mark an optional line break
+	    without inserting a hyphen (= ZWSP). See #10585.
 
 2017-04-15 Uwe Stöhr <uwestoehr@web.de>
  	* Format incremented to 540: support for rotated float placements

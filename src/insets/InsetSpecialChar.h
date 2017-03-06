@@ -30,6 +30,8 @@ public:
 	enum Kind {
 		/// Optional hyphenation point (\-)
 		HYPHENATION,
+		/// Optional line wrap point without hyphen (ZWSP)
+		ALLOWBREAK,
 		/// Ligature break point (\textcompwordmark)
 		LIGATURE_BREAK,
 		/// ... (\ldots)
@@ -58,6 +60,8 @@ public:
 	explicit InsetSpecialChar(Kind k);
 	///
 	Kind kind() const;
+	///
+	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///

@@ -3532,8 +3532,9 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_SPECIALCHAR_INSERT
  * \li Action: Inserts various characters into the document.
  * \li Syntax: specialchar-insert <CHAR>
- * \li Params: <CHAR>: hyphenation, ligature-break, slash, nobreakdash, dots,
-                       end-of-sentence, menu-separator, lyx, tex, latex, latex2e.
+ * \li Params: <CHAR>: hyphenation, allowbreak, ligature-break, slash,
+   	   		   		   nobreakdash, dots, end-of-sentence, menu-separator, 
+ 					   lyx, tex, latex, latex2e.
  * \li Origin: JSpitzm, 6 Dec 2007
  * \endvar
  */

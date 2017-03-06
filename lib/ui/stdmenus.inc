@@ -433,6 +433,7 @@ Menuset
 		Separator
 		Item "Hyphenation Point|H" "specialchar-insert hyphenation"
 		Item "Ligature Break|k" "specialchar-insert ligature-break"
+		Item "Optional Line Break|B" "specialchar-insert allowbreak"
 		Item "Ragged Line Break|R" "newline-insert newline"
 		Item "Justified Line Break|J" "newline-insert linebreak"
 		Separator

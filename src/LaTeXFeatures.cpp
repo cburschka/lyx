@@ -79,6 +79,15 @@ static docstring const lyxarrow_def = from_ascii(
 	"{\\leavevmode\\,$\\triangleleft$\\,\\allowbreak}\n"
 	"{\\leavevmode\\,$\\triangleright$\\,\\allowbreak}}");
 
+// ZERO WIDTH SPACE (ZWSP) is actually not a space character
+// but marks a line break opportunity. Several commands provide a
+// line break opportunity. They differ in side-effects:
+// \allowbreak prevents hyphenation after hyphen or dash + ZWSP
+// \linebreak[<n>] takes an optional argument denoting "urgency".
+// The \LyXZeroWidthSpace wrapper allows customization in the preamble.
+static docstring const lyxZWSP_def = from_ascii(
+	"\\newcommand*\\LyXZeroWidthSpace{\\hspace{0pt}}");
+
 // for quotes without babel. This does not give perfect results, but
 // anybody serious about non-english quotes should use babel (JMarc).
 
@@ -1316,6 +1325,9 @@ TexString LaTeXFeatures::getMacros() const
 
 	if (mustProvide("lyxarrow"))
 		macros << lyxarrow_def << '\n';
+
+	if (mustProvide("lyxzerowidthspace"))
+		macros << lyxZWSP_def << '\n';
 
 	if (!usePolyglossia() && mustProvide("textgreek")) {
 	    // ensure LGR font encoding is defined also if fontenc is not loaded by LyX

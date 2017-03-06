@@ -1243,6 +1243,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		string const name = to_utf8(cmd.argument());
 		if (name == "hyphenation")
 			specialChar(cur, InsetSpecialChar::HYPHENATION);
+		else if (name == "allowbreak")
+			specialChar(cur, InsetSpecialChar::ALLOWBREAK);
 		else if (name == "ligature-break")
 			specialChar(cur, InsetSpecialChar::LIGATURE_BREAK);
 		else if (name == "slash")

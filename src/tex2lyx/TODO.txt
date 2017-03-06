@@ -159,3 +159,12 @@ General
 
 * Use the language information provided by Language.cpp and the languages file (for babel/lyx/polyglossia name, quote style etc.)
   instead of hardcoding this information in Preamble.cpp.
+
+* Store alias commands for characters in a file with
+  "lib/unicodesymbols"-format, e.g.
+  
+    0x200b "\\dots" "" "" "" # HORIZONTAL ELLIPSIS
+    0x200b "\\ldots" "" "" "\\ldots" # HORIZONTAL ELLIPSIS
+    0x200b "\\textellipsis" "" "" "" # HORIZONTAL ELLIPSIS
+  
+  Look up LaTeX->Unicode conversion in the combined files.

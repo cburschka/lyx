@@ -86,6 +86,32 @@ int logoWidth(FontInfo const & font, InsetSpecialChar::Kind kind) {
 
 }
 
+docstring InsetSpecialChar::toolTip(BufferView const &, int, int) const
+{
+	docstring message;
+	switch (kind_) {
+		case ALLOWBREAK:
+			message = from_ascii("Optional Line Break (ZWSP)");
+			break;
+		case LIGATURE_BREAK:
+			message = from_ascii("Ligature Break (ZWNJ)");
+			break;
+		case END_OF_SENTENCE:
+			message = from_ascii("End of Sentence");
+			break;
+		case HYPHENATION:
+			message = from_ascii("Hyphenation Point");
+			break;
+		case SLASH:
+			message = from_ascii("Breakable Slash");
+			break;
+		case NOBREAKDASH:
+			message = from_ascii("Protected Hyphen (SHY)");
+			break;
+	}
+	return message;
+}
+
 
 void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 {
@@ -97,6 +123,9 @@ void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	docstring s;
 	switch (kind_) {
+		case ALLOWBREAK:
+			dim.wid = fm.em() / 8;
+			break;
 		case LIGATURE_BREAK:
 			s = from_ascii("|");
 			break;
@@ -224,6 +253,18 @@ void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.text(x, y, char_type('-'), font);
 		break;
 	}
+	case ALLOWBREAK:
+	{
+		// A small vertical line
+		int const asc = theFontMetrics(pi.base.font).ascent('x');
+		int const desc = theFontMetrics(pi.base.font).descent('g');
+		int const x0 = x; // x + 1; // FIXME: incline,
+		int const x1 = x; // x - 1; // similar to LibreOffice?
+		int const y0 = y + desc;
+		int const y1 = y - asc / 3;
+		pi.pain.line(x0, y1, x1, y0, Color_special);
+		break;
+	}
 	case LIGATURE_BREAK:
 	{
 		font.setColor(Color_special);
@@ -292,6 +333,9 @@ void InsetSpecialChar::write(ostream & os) const
 	case HYPHENATION:
 		command = "softhyphen";
 		break;
+	case ALLOWBREAK:
+		command = "allowbreak";
+		break;
 	case LIGATURE_BREAK:
 		command = "ligaturebreak";
 		break;
@@ -334,6 +378,8 @@ void InsetSpecialChar::read(Lexer & lex)
 
 	if (command == "softhyphen")
 		kind_ = HYPHENATION;
+	else if (command == "allowbreak")
+		kind_ = ALLOWBREAK;
 	else if (command == "ligaturebreak")
 		kind_ = LIGATURE_BREAK;
 	else if (command == "endofsentence")
@@ -365,6 +411,9 @@ void InsetSpecialChar::latex(otexstream & os,
 	switch (kind_) {
 	case HYPHENATION:
 		os << "\\-";
+		break;
+	case ALLOWBREAK:
+		os << "\\LyXZeroWidthSpace" << termcmd;
 		break;
 	case LIGATURE_BREAK:
 		os << "\\textcompwordmark" << termcmd;
@@ -420,6 +469,9 @@ int InsetSpecialChar::plaintext(odocstringstream & os,
 	switch (kind_) {
 	case HYPHENATION:
 		return 0;
+	case ALLOWBREAK:
+		os.put(0x200b);
+		return 1;
 	case LIGATURE_BREAK:
 		os.put(0x200c);
 		return 1;
@@ -460,6 +512,10 @@ int InsetSpecialChar::docbook(odocstream & os, OutputParams const &) const
 {
 	switch (kind_) {
 	case HYPHENATION:
+		break;
+	case ALLOWBREAK:
+		os.put(0x200b);
+		break;
 	case LIGATURE_BREAK:
 		break;
 	case END_OF_SENTENCE:
@@ -500,6 +556,9 @@ docstring InsetSpecialChar::xhtml(XHTMLStream & xs, OutputParams const &) const
 	switch (kind_) {
 	case HYPHENATION:
 		break;
+	case ALLOWBREAK:
+		xs << XHTMLStream::ESCAPE_NONE << "&#8203;";
+		break;
 	case LIGATURE_BREAK:
 		xs << XHTMLStream::ESCAPE_NONE << "&#8204;";
 		break;
@@ -538,8 +597,9 @@ docstring InsetSpecialChar::xhtml(XHTMLStream & xs, OutputParams const &) const
 void InsetSpecialChar::toString(odocstream & os) const
 {
 	switch (kind_) {
+	case ALLOWBREAK:
 	case LIGATURE_BREAK:
-		// Do not output ZERO WIDTH NON JOINER here
+		// Do not output ZERO WIDTH SPACE and ZERO WIDTH NON JOINER here
 		// Spell checker would choke on it.
 		return;
 	default:
@@ -562,6 +622,8 @@ void InsetSpecialChar::forOutliner(docstring & os, size_t const,
 
 void InsetSpecialChar::validate(LaTeXFeatures & features) const
 {
+	if (kind_ == ALLOWBREAK)
+		features.require("lyxzerowidthspace");
 	if (kind_ == MENU_SEPARATOR)
 		features.require("lyxarrow");
 	if (kind_ == NOBREAKDASH)
@@ -591,8 +653,8 @@ bool InsetSpecialChar::isLineSeparator() const
 	// Paragraph::stripLeadingSpaces nukes the characters which
 	// have this property. I leave the code here, since it should
 	// eventually be made to work. (JMarc 20020327)
-	return kind_ == HYPHENATION || kind_ == MENU_SEPARATOR
-		|| kind_ == SLASH;
+	return kind_ == HYPHENATION || kind_ == ALLOWBREAK
+	    || kind_ == MENU_SEPARATOR || kind_ == SLASH;
 #else
 	return false;
 #endif
