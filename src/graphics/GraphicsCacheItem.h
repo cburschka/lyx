@@ -66,11 +66,6 @@ public:
 	void startMonitoring() const;
 	///
 	bool monitoring() const;
-	/** Returns the check checksum of filename() so that, for example, you can
-	 *  ascertain whether to output a new PostScript version of the file
-	 *  for a LaTeX run.
-	 */
-	unsigned long checksum() const;
 
 	/** Get the image associated with filename().
 	 *  If the image is not yet loaded, returns 0.
@@ -85,8 +80,7 @@ public:
 	/** Connect and you'll be informed when the loading status of the image
 	 *  changes.
 	 */
-	typedef boost::signals2::signal<void()> sig_type;
-	typedef sig_type::slot_type slot_type;
+	typedef boost::signals2::signal<void()>::slot_type slot_type;
 	///
 	boost::signals2::connection connect(slot_type const &) const;
 

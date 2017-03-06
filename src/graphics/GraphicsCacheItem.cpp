@@ -45,6 +45,8 @@ public:
 	///
 	Impl(FileName const & file, FileName const & doc_file);
 
+	void startMonitor();
+
 	/**
 	 *  If no file conversion is needed, then tryDisplayFormat() calls
 	 *  loadImage() directly.
@@ -97,7 +99,7 @@ public:
 	/// The document filename this graphic item belongs to
 	FileName const & doc_file_;
 	///
-	FileMonitor const monitor_;
+	FileMonitorPtr monitor_;
 
 	/// Is the file compressed?
 	bool zipped_;
@@ -167,20 +169,13 @@ void CacheItem::startLoading() const
 
 void CacheItem::startMonitoring() const
 {
-	if (!pimpl_->monitor_.monitoring())
-		pimpl_->monitor_.start();
+	pimpl_->startMonitor();
 }
 
 
 bool CacheItem::monitoring() const
 {
-	return pimpl_->monitor_.monitoring();
-}
-
-
-unsigned long CacheItem::checksum() const
-{
-	return pimpl_->monitor_.checksum();
+	return (bool)pimpl_->monitor_;
 }
 
 
@@ -209,12 +204,18 @@ boost::signals2::connection CacheItem::connect(slot_type const & slot) const
 
 CacheItem::Impl::Impl(FileName const & file, FileName const & doc_file)
 	: filename_(file), doc_file_(doc_file),
-	  monitor_(file, 2000),
 	  zipped_(false),
 	  remove_loaded_file_(false),
 	  status_(WaitingToLoad)
+{}
+
+
+void CacheItem::Impl::startMonitor()
 {
-	monitor_.connect(bind(&Impl::startLoading, this));
+	if (monitor_)
+		return;
+	monitor_ = FileSystemWatcher::monitor(filename_);
+	monitor_->connect([=](){ startLoading(); });
 }
 
 

@@ -328,15 +328,6 @@ bool Loader::monitoring() const
 }
 
 
-unsigned long Loader::checksum() const
-{
-	if (!pimpl_->cached_item_)
-		return 0;
-
-	return pimpl_->cached_item_->checksum();
-}
-
-
 FileName const & Loader::filename() const
 {
 	static FileName const empty;
