@@ -68,7 +68,7 @@ FuncRequest::FuncRequest(FuncRequest const & cmd, docstring const & arg, Origin 
 
 namespace {
 
-// Extracts arguments from str into args. Arguments are delimted by
+// Extracts arguments from str into args. Arguments are delimited by
 // whitespace or by double quotes.
 // We extract at most max + 1 arguments, treating args[max] as
 // continuing to eol.
