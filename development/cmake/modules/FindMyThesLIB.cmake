@@ -15,7 +15,7 @@ find_path(MYTHESLIB_INCLUDE_DIR ${MYTHES_H}
  /usr/include
  /usr/local/include)
 
-set(POTENTIAL_MYTHES_LIBS mythes)
+set(POTENTIAL_MYTHES_LIBS mythes-1.2)
 
 find_library(MYTHESLIB_LIBRARY NAMES ${POTENTIAL_MYTHES_LIBS}
 	PATHS ${SYSTEM_LIB_DIRS} )

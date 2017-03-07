@@ -130,6 +130,7 @@ target_link_libraries(${_lyx}
 	frontend_qt
 	graphics
 	support
+	${MYTHESLIB_LIBRARY}
 	${ICONV_LIBRARY}
 	${LYX_QTMAIN_LIBRARY}
 	${vld_dll})

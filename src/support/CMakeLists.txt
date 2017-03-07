@@ -18,9 +18,6 @@ endif()
 
 file(GLOB support_headers ${TOP_SRC_DIR}/src/support/${LYX_HPP_FILES})
 
-file(GLOB support_mythes_sources ${MYTHES_DIR}/*.cxx)
-file(GLOB support_mythes_headers ${MYTHES_DIR}/*.hxx)
-
 file(GLOB support_linkback_sources ${TOP_SRC_DIR}/src/support/linkback/*.m*)
 file(GLOB support_linkback_headers ${TOP_SRC_DIR}/src/support/linkback/*.h)
 
@@ -58,15 +55,14 @@ lyx_automoc(${support_sources})
 include_directories(
 	${TOP_SRC_DIR}/src/support
 	${TOP_BINARY_DIR}/src/support
-	${MYTHES_DIR}
 	${QT_INCLUDES}
 	${ICONV_INCLUDE_DIR}
 	${ZLIB_INCLUDE_DIR})
 
 
 if(NOT LYX_MERGE_FILES)
-	set(support_sources ${support_sources} ${support_mythes_sources} ${support_linkback_sources})
-	set(support_headers ${support_headers} ${support_mythes_headers} ${support_linkback_headers})
+	set(support_sources ${support_sources} ${support_linkback_sources})
+	set(support_headers ${support_headers} ${support_linkback_headers})
 	add_library(support ${library_type} ${support_sources} ${support_headers} ${dont_merge})
 else()
 	# GCC bug: gcc resolves ::bind as boost::bind
@@ -79,7 +75,7 @@ else()
 	set_source_files_properties(_allinone_touched.C
 		PROPERTIES OBJECT_DEPENDS "${depends_moc}")
 	add_library(support ${library_type} ${_allinone_files} ${support_separate}
-		${support_mythes_sources} ${support_linkback_sources} ${support_headers} ${dont_merge})
+		${support_linkback_sources} ${support_headers} ${dont_merge})
 endif()
 set_target_properties(support PROPERTIES FOLDER "applications/LyX")
 
