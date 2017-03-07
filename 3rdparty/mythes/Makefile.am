@@ -9,4 +9,4 @@ EXTRA_DIST = \
 
 liblyxmythes_a_SOURCES = \
 	1.2.5/mythes.cxx \
-	1.2.5/myspell.hxx
+	1.2.5/mythes.hxx
