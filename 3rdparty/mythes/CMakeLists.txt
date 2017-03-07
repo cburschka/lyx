@@ -1,7 +1,4 @@
-cmake_minimum_required(VERSION 2.4.4)
-set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS ON)
-
-project(zlib C)
+cmake_minimum_required(VERSION 2.8)
 
 set(VERSION "1.2.5")
 set(SRCDIR ${CMAKE_CURRENT_SOURCE_DIR}/${VERSION})
