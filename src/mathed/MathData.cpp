@@ -739,7 +739,9 @@ void MathData::collectOptionalParameters(Cursor * cur,
 			params.push_back(optarg);
 
 		// place cursor in optional argument of macro
-		if (thisSlice != -1
+		// Note: The two expressions on the first line are equivalent
+		// (see caller), but making this explicit pleases coverity.
+		if (cur && thisSlice != -1
 		    && thisPos >= int(pos) && thisPos <= int(right)) {
 			int paramPos = max(0, thisPos - int(pos) - 1);
 			vector<CursorSlice> x;
