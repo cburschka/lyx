@@ -781,7 +781,10 @@ void MathData::collectParameters(Cursor * cur,
 		// fix cursor
 		vector<CursorSlice> argSlices;
 		int argPos = 0;
-		if (thisSlice != -1 && thisPos == int(pos))
+		// Note: The two expressions on the first line are equivalent
+		// (see caller), but making this explicit pleases coverity.
+		if (cur && thisSlice != -1
+			&& thisPos == int(pos))
 			cur->cutOff(thisSlice, argSlices);
 
 		// which kind of parameter is it? In {}? With index x^n?
