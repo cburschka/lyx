@@ -4231,6 +4231,8 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 	if (pos != string::npos) {
 		dest_filename = target.substr(pos + 1, target.length() - pos - 1);
 		format = target.substr(0, pos);
+		if (format == "*")
+			format = params().getDefaultOutputFormat();
 		runparams.export_folder = FileName(dest_filename).onlyPath().realPath();
 		FileName(dest_filename).onlyPath().createPath();
 		LYXERR(Debug::FILES, "format=" << format << ", dest_filename=" << dest_filename << ", export_folder=" << runparams.export_folder);
