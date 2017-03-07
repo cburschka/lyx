@@ -433,7 +433,7 @@ string Formats::getFormatFromFile(FileName const & filename) const
 					Formats::const_iterator cit =
 						find_if(formatlist.begin(), formatlist.end(),
 							FormatMimeEqual(mime));
-					if (cit != formats.end()) {
+					if (cit != formatlist.end()) {
 						LYXERR(Debug::GRAPHICS, "\tgot format from MIME type: "
 							<< mime << " -> " << cit->name());
 						// See special eps/ps handling below
