@@ -1278,6 +1278,9 @@ void BiblioInfo::makeCitationLabels(Buffer const & buf)
 			docstring const num = convert<docstring>(++keynumber);
 			entry.setCiteNumber(num);
 		} else {
+			// The first test here is checking whether this is the first
+			// time through the loop. If so, then we do not have anything
+			// with which to compare.
 			if (last != bimap_.end()
 			    && entry.getAuthorOrEditorList() == last->second.getAuthorOrEditorList()
 			    // we access the year via getYear() so as to get it from the xref,
