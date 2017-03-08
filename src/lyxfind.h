@@ -102,7 +102,8 @@ public:
 		SearchRestriction restr = R_EVERYTHING
 	);
 	FindAndReplaceOptions() : casesensitive(false), matchword(false), forward(false),
-	                          expandmacros(false), ignoreformat(false) {}
+	                          expandmacros(false), ignoreformat(false),
+							  keep_case(false), scope(S_BUFFER), restr(R_EVERYTHING) {}
 	docstring find_buf_name;
 	bool casesensitive;
 	bool matchword;
