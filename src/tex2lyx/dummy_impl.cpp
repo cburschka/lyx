@@ -20,7 +20,6 @@
 
 #include "Format.h"
 #include "LaTeXFeatures.h"
-#include "LyXRC.h"
 #include "output_xhtml.h"
 
 #include "support/Messages.h"
@@ -58,15 +57,8 @@ bool verbose = false;
 // Dummy LyXRC support
 //
 
-LyXRC lyxrc;
 
-/** Note that some variables are not initialized correctly. Hopefully
- * they are not used in our code (currently valgrind does not complain).
- * Linking against the full LyXRC.cpp forces us to pull too much
- * stuff.
- */
-LyXRC::LyXRC()
-{}
+class LyXRC {} lyxrc;
 
 
 //
