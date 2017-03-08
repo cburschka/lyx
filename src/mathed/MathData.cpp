@@ -825,7 +825,10 @@ void MathData::collectParameters(Cursor * cur,
 		}
 
 		// put cursor in argument again
-		if (thisSlice != - 1 && thisPos == int(pos)) {
+		// Note: The first two expressions on the first line are
+		// equivalent (see caller), but making this explicit pleases
+		// coverity.
+		if (cur && thisSlice != -1 && thisPos == int(pos)) {
 			cur->append(params.size() - 1, argPos);
 			cur->append(argSlices);
 			(*cur)[thisSlice].pos() = macroPos;
