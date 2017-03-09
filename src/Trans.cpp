@@ -280,17 +280,17 @@ int Trans::load(Lexer & lex)
 				    && it->second[1] == accent_2)
 					break;
 			}
+
+			// could not find accent2 on a key -- this should not happen.
+			if (it == end)
+				return -1;
+
 			docstring allowed;
 			if (!lex.next())
 				return -1;
-
 			allowed = lex.getDocString();
 			LYXERR(Debug::KBMAP, "allowed: " << to_utf8(allowed));
 
-			// FIXME Coverity
-			// This is being flagged because we could in principle fail
-			// ever to hit the break above, in which case we exit the loop
-			// when it == end. Then this crashes.
 			insertException(kmod_list_[accent_1].exception_list,
 					it->first, allowed, true, accent_2);
 		}
