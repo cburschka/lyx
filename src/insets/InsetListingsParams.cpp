@@ -687,9 +687,6 @@ docstring ParValidator::validate(string const & name,
 			return bformat(_("Parameters starting with '%1$s': %2$s"),
 								from_utf8(name), from_utf8(matching_names));
 	}
-	// this stifles a warning but upsets coverity
-	// coverity[UNREACHABLE]
-	return docstring();
 }
 
 
