@@ -2117,9 +2117,6 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 	default:
 		return InsetMathGrid::getStatus(cur, cmd, status);
 	}
-
-	// This cannot really happen, but inserted to shut-up gcc
-	return InsetMathGrid::getStatus(cur, cmd, status);
 }
 
 

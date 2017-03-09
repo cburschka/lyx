@@ -651,9 +651,6 @@ get_system_support_dir(FileName const & abs_binary,
 				"to the LyX system directory containing the "
 				"file `chkconfig.ltx'."),
 			  from_utf8(searched_dirs_str), from_ascii(LYX_DIR_VER)));
-
-	// Keep the compiler happy.
-	return FileName();
 }
 
 
