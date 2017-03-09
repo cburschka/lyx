@@ -20,6 +20,7 @@
 
 #include "support/docstring.h"
 #include "support/FileMonitor.h"
+#include "support/FileName.h"
 
 #include <boost/signals2.hpp>
 #include <boost/signals2/trackable.hpp>
@@ -30,8 +31,6 @@ namespace lyx {
 class Buffer;
 class MetricsInfo;
 class PainterInfo;
-
-namespace support { class FileName; }
 
 namespace graphics {
 
@@ -120,21 +119,27 @@ public:
 	///
 	void setAbsFile(support::FileName const & file);
 	///
-	bool monitoring() const { return monitor_.monitoring(); }
-	void startMonitoring() const { monitor_.start(); }
-	void stopMonitoring() const { monitor_.stop(); }
+	bool monitoring() const;
+	void startMonitoring() const;
+	void stopMonitoring() const;
 
 	/// Connect and you'll be informed when the file changes.
-	typedef support::FileMonitor::slot_type slot_type;
-	boost::signals2::connection fileChanged(slot_type const &);
+	typedef boost::signals2::signal<void()> ChangedSig;
+	boost::signals2::connection connect(ChangedSig::slot_type const &);
 
 	/// equivalent to dynamic_cast
 	virtual RenderMonitoredPreview * asMonitoredPreview() { return this; }
 
 private:
+	/// This signal is emitted if the file is modified
+	ChangedSig changed_;
 	///
-	mutable support::FileMonitor monitor_;
+	mutable support::FileMonitorPtr monitor_;
+	///
+	support::FileName filename_;
 };
+
+
 
 } // namespace lyx
 

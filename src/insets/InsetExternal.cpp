@@ -629,14 +629,12 @@ void InsetExternal::setParams(InsetExternalParams const & p)
 		LASSERT(false, return);
 		break;
 	case PREVIEW_INSTANT: {
-		renderer_.reset(new RenderMonitoredPreview(this));
+		renderer_ = make_unique<RenderMonitoredPreview>(this);
 		RenderMonitoredPreview * preview_ptr = renderer_->asMonitoredPreview();
-		preview_ptr->fileChanged(bind(&InsetExternal::fileChanged, this));
-		if (preview_ptr->monitoring())
-			preview_ptr->stopMonitoring();
+		preview_ptr->connect([=]() { fileChanged(); });
 		add_preview_and_start_loading(*preview_ptr, *this, buffer());
 		break;
-	} 
+	}
 	case PREVIEW_GRAPHICS: {
 		RenderGraphic * graphic_ptr = renderer_->asGraphic();
 		if (!graphic_ptr) {
@@ -837,7 +835,7 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 
 
 void InsetExternal::addPreview(DocIterator const & /*inset_pos*/,
-	graphics::PreviewLoader & ploader) const	
+                               graphics::PreviewLoader & ploader) const
 {
 	RenderMonitoredPreview * const ptr = renderer_->asMonitoredPreview();
 	if (!ptr)

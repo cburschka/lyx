@@ -170,10 +170,10 @@ InsetLabel * createLabel(Buffer * buf, docstring const & label_str)
 
 InsetInclude::InsetInclude(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(buf, p), include_label(uniqueID()),
-	  preview_(new RenderMonitoredPreview(this)), failedtoload_(false),
+	  preview_(make_unique<RenderMonitoredPreview>(this)), failedtoload_(false),
 	  set_label_(false), label_(0), child_buffer_(0)
 {
-	preview_->fileChanged(bind(&InsetInclude::fileChanged, this));
+	preview_->connect([=](){ fileChanged(); });
 
 	if (isListings(params())) {
 		InsetListingsParams listing_params(to_utf8(p["lstparams"]));
@@ -185,10 +185,10 @@ InsetInclude::InsetInclude(Buffer * buf, InsetCommandParams const & p)
 
 InsetInclude::InsetInclude(InsetInclude const & other)
 	: InsetCommand(other), include_label(other.include_label),
-	  preview_(new RenderMonitoredPreview(this)), failedtoload_(false),
+	  preview_(make_unique<RenderMonitoredPreview>(this)), failedtoload_(false),
 	  set_label_(false), label_(0), child_buffer_(0)
 {
-	preview_->fileChanged(bind(&InsetInclude::fileChanged, this));
+	preview_->connect([=](){ fileChanged(); });
 
 	if (other.label_)
 		label_ = new InsetLabel(*other.label_);

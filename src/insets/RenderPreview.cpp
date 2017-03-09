@@ -271,28 +271,58 @@ void RenderPreview::imageReady(graphics::PreviewImage const & pimage)
 
 
 RenderMonitoredPreview::RenderMonitoredPreview(Inset const * inset)
-	: RenderPreview(inset), monitor_(FileName(), 2000)
-{}
+	: RenderPreview(inset)
+{
+	setAbsFile(FileName());
+}
 
 
 void RenderMonitoredPreview::setAbsFile(FileName const & file)
 {
-	monitor_.reset(file);
+	bool mon = monitoring();
+	if (mon)
+		stopMonitoring();
+	filename_ = file;
+	if (mon)
+		startMonitoring();
 }
 
 
 void RenderMonitoredPreview::draw(PainterInfo & pi, int x, int y) const
 {
 	RenderPreview::draw(pi, x, y);
-	if (!monitoring())
-		startMonitoring();
+	startMonitoring();
 }
 
 
 boost::signals2::connection
-RenderMonitoredPreview::fileChanged(slot_type const & slot)
+RenderMonitoredPreview::connect(ChangedSig::slot_type const & slot)
 {
-	return monitor_.connect(slot);
+	return changed_.connect(slot);
 }
+
+
+bool RenderMonitoredPreview::monitoring() const
+{
+	return (bool) monitor_;
+}
+
+
+void RenderMonitoredPreview::startMonitoring() const
+{
+	if (!monitoring()) {
+		monitor_ = FileSystemWatcher::monitor(filename_);
+		monitor_->connect(changed_);
+	}
+}
+
+
+void RenderMonitoredPreview::stopMonitoring() const
+{
+	monitor_ = nullptr;
+}
+
+
+
 
 } // namespace lyx
