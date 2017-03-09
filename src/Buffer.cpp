@@ -2534,7 +2534,7 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 			enable = true;
 			break;
 		}
-		string format = (arg.empty() || arg == "*") ?
+		string format = (arg.empty() || arg == "default") ?
 			params().getDefaultOutputFormat() : to_utf8(arg);
 		size_t pos = format.find(' ');
 		if (pos != string::npos)
@@ -2643,7 +2643,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		break;
 
 	case LFUN_BUFFER_EXPORT: {
-		string const format = (argument.empty() || argument == "*") ?
+		string const format = (argument.empty() || argument == "default") ?
 			params().getDefaultOutputFormat() : argument;
 		ExportStatus const status = doExport(format, false);
 		dr.setError(status != ExportSuccess);
@@ -4231,7 +4231,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 	if (pos != string::npos) {
 		dest_filename = target.substr(pos + 1, target.length() - pos - 1);
 		format = target.substr(0, pos);
-		if (format == "*")
+		if (format == "default")
 			format = params().getDefaultOutputFormat();
 		runparams.export_folder = FileName(dest_filename).onlyPath().realPath();
 		FileName(dest_filename).onlyPath().createPath();

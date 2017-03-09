@@ -1182,7 +1182,7 @@ int parse_help(string const &, string const &, string &)
 		  "                  Tools->Preferences->File Handling->File Formats->Short Name\n"
 		  "                  to see which parameter (which differs from the format name\n"
 		  "                  in the File->Export menu) should be passed. To export to\n"
-		  "                  the document's default output format, use '*'.\n"
+		  "                  the document's default output format, use 'default'.\n"
 		  "                  Note that the order of -e and -x switches matters.\n"
 		  "\t-E [--export-to] fmt filename\n"
 		  "                  where fmt is the export format of choice (see --export),\n"
