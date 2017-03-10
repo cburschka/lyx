@@ -1741,6 +1741,7 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 	catch (exception const & e) {
 		errorList.push_back(ErrorItem(_("conversion failed"),
 		                              _(e.what())));
+		lyxerr << e.what() << endl;
 		failed_export = true;
 	}
 	catch (...) {
