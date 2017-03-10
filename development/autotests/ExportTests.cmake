@@ -48,7 +48,7 @@ macro(initLangVars varname)
   endforeach()
 endmacro()
 
-macro(getoutputformats filepath varname)
+macro(getoutputformats filepath varname format_set)
   file(STRINGS "${filepath}" lines)
   # What should we test, if default_output_format is not defined?
   # For now we test everything ...
@@ -58,18 +58,21 @@ macro(getoutputformats filepath varname)
       set(_format ${CMAKE_MATCH_1})
       if(_format STREQUAL "default")
         set(out_formats "xhtml" ${DVI_FORMATS} ${PDF_FORMATS})
-      elseif(_format STREQUAL "pdf2" AND "${filepath}" MATCHES "/doc/")
-        set(out_formats "xhtml" ${DVI_FORMATS} ${PDF_FORMATS})
-      elseif(_format MATCHES "pdf$")
-        set(out_formats "xhtml" ${PDF_FORMATS})
-      elseif(_format MATCHES "dvi$")
-        set(out_formats "xhtml" ${DVI_FORMATS})
-      elseif(_format MATCHES "xhtml")
-        set(out_formats "xhtml")
       else()
-        # Respect all other output formats
-        # like "eps3"
-        set(out_formats "xhtml" ${_format})
+        set(${format_set} ${_format})
+        if(_format STREQUAL "pdf2" AND "${filepath}" MATCHES "/doc/")
+          set(out_formats "xhtml" ${DVI_FORMATS} ${PDF_FORMATS})
+        elseif(_format MATCHES "pdf$")
+          set(out_formats "xhtml" ${PDF_FORMATS})
+        elseif(_format MATCHES "dvi$")
+          set(out_formats "xhtml" ${DVI_FORMATS})
+        elseif(_format MATCHES "xhtml")
+          set(out_formats "xhtml")
+        else()
+          # Respect all other output formats
+          # like "eps3"
+          set(out_formats "xhtml" ${_format})
+        endif()
       endif()
       break()
     endif()
@@ -161,10 +164,10 @@ macro(maketestname testname inverted listinverted listignored listunreliable lis
       findexpr(foundsuspended ${testname} ${listsuspendedx} sublabel3)
       set(${inverted} 1)
       if (foundsuspended)
-	set(sublabel "suspended" ${sublabel} ${sublabel2} ${sublabel3})
-	list(REMOVE_ITEM sublabel "export" "inverted" )
+        set(sublabel "suspended" ${sublabel} ${sublabel2} ${sublabel3})
+        list(REMOVE_ITEM sublabel "export" "inverted" )
       else()
-	set(sublabel "inverted" ${sublabel} ${sublabel2} ${sublabel3})
+        set(sublabel "inverted" ${sublabel} ${sublabel2} ${sublabel3})
       endif()
     else()
       set(${inverted} 0)
@@ -218,12 +221,12 @@ macro(loadTestList filename resList depth splitlangs)
         list(REMOVE_DUPLICATES mylabels)
         set(sublabel ${_newl})
       else()
-	if (${splitlangs} MATCHES "ON")
-	  string(REGEX REPLACE "(\\/|\\||\\(|\\))" "  " _vxx ${_newl})
-	  string(REGEX MATCHALL " ([a-z][a-z](_[A-Z][A-Z])?) " _vx ${_vxx})
-	else()
-	  set(_vx OFF)
-	endif()
+        if (${splitlangs} MATCHES "ON")
+          string(REGEX REPLACE "(\\/|\\||\\(|\\))" "  " _vxx ${_newl})
+          string(REGEX MATCHALL " ([a-z][a-z](_[A-Z][A-Z])?) " _vx ${_vxx})
+        else()
+          set(_vx OFF)
+        endif()
         if(_vx)
           foreach(_v ${_vx})
             string(REGEX REPLACE " " "" _v ${_v})
@@ -377,7 +380,8 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
       setmarkedtestlabel(${TestName} ${mytestlabel})
       #set_tests_properties(${TestName} PROPERTIES RUN_SERIAL ON)
     endif()
-    getoutputformats("${LIBSUB_SRC_DIR}/${f}.lyx" formatlist)
+    set(default_output_format)
+    getoutputformats("${LIBSUB_SRC_DIR}/${f}.lyx" formatlist default_output_format)
     foreach(format ${formatlist})
       if(format MATCHES "dvi3|pdf4|pdf5")
         set(fonttypes "texF" "systemF")
@@ -387,24 +391,24 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
       foreach(fonttype ${fonttypes})
         if (format MATCHES "pdf2" AND f MATCHES "latex/unicodesymbols")
           #message(STATUS "Test ${TestName} matches Unicode encodings")
-	  # test_encodings does not include "default", since it should be covered
-	  # by one of the supplied encodings
+          # test_encodings does not include "default", since it should be covered
+          # by one of the supplied encodings
           set(test_encodings "ascii" "utf8x" "armscii8" "applemac"
-	    "cp437" "cp437de" "cp850" "cp852"
-	    "cp855" "cp862" "cp865"
-	    "cp866" "cp1250" "cp1251" "cp1252"
-	    "cp1255" "cp1256" "cp1257"
-	    "koi8-r" "koi8-u"
-	    "iso8859-1" "iso8859-2" "iso8859-3"
-	    "iso8859-4" "iso8859-5" "iso8859-6"
-	    "iso8859-7" "iso8859-8" "iso8859-9"
-	    "iso8859-13" "iso8859-15" "iso8859-16"
-	    "pt154" "big5" "shift-jis"
-	    "euc-cn" "gbk" "jis" "euc-kr"
-	    "utf8-cjk" "euc-tw" "euc-jp"
-	    "euc-jp-platex" "jis-platex"
-	    "shift-jis-platex" "utf8-platex"
-	    "tis620-0")
+            "cp437" "cp437de" "cp850" "cp852"
+            "cp855" "cp862" "cp865"
+            "cp866" "cp1250" "cp1251" "cp1252"
+            "cp1255" "cp1256" "cp1257"
+            "koi8-r" "koi8-u"
+            "iso8859-1" "iso8859-2" "iso8859-3"
+            "iso8859-4" "iso8859-5" "iso8859-6"
+            "iso8859-7" "iso8859-8" "iso8859-9"
+            "iso8859-13" "iso8859-15" "iso8859-16"
+            "pt154" "big5" "shift-jis"
+            "euc-cn" "gbk" "jis" "euc-kr"
+            "utf8-cjk" "euc-tw" "euc-jp"
+            "euc-jp-platex" "jis-platex"
+            "shift-jis-platex" "utf8-platex"
+            "tis620-0")
         else()
           set(test_encodings "default")
         endif()
@@ -419,13 +423,18 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
           else()
             set(TestName "export/${libsubfolder}/${f}${_enc}_${format}_${fonttype}")
           endif()
-	  set(missingLabels )
-	  findexpr(mfound TestName ignoreLatexErrorsTests missingLabels)
-	  if (mfound)
-	    set(mytestlabel ${testlabel} "ignoring" ${missingLabels})
-	  else()
-	    set(mytestlabel ${testlabel})
-	  endif()
+          if (format MATCHES "^${default_output_format}$")
+            set(extraLabels "defaultoutput")
+          else()
+            set(extraLabels )
+          endif()
+          set(missingLabels )
+          findexpr(mfound TestName ignoreLatexErrorsTests missingLabels)
+          if (mfound)
+            set(mytestlabel ${testlabel} "ignoring" ${missingLabels} ${extraLabels})
+          else()
+            set(mytestlabel ${testlabel} ${extraLabels})
+          endif()
           maketestname(TestName inverted invertedTests ignoredTests unreliableTests mytestlabel)
           if(TestName)
             add_test(NAME ${TestName}
@@ -440,7 +449,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
               -Dfile=${f}
               -Dinverted=${inverted}
               -DTOP_SRC_DIR=${TOP_SRC_DIR}
-	      "-DIgnoreErrorMessage=${missingLabels}"
+              "-DIgnoreErrorMessage=${missingLabels}"
               -DPERL_EXECUTABLE=${PERL_EXECUTABLE}
               -DXMLLINT_EXECUTABLE=${XMLLINT_EXECUTABLE}
               -DENCODING=${_enc2}
