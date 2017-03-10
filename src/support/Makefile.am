@@ -11,7 +11,7 @@ noinst_LIBRARIES = liblyxsupport.a
 
 MOCHEADER = \
 	ConsoleApplicationPrivate.h \
-	FileMonitor2.h \
+	FileMonitor.h \
 	SystemcallPrivate.h
 
 MOCEDFILES = $(MOCHEADER:%.h=moc_%.cpp)
@@ -34,8 +34,6 @@ AM_CPPFLAGS += -I$(srcdir)/.. \
 liblyxsupport_a_SOURCES = \
 	FileMonitor.h \
 	FileMonitor.cpp \
-	FileMonitor2.h \
-	FileMonitor2.cpp \
 	RandomAccessList.h \
 	bind.h \
 	Cache.h \
