@@ -2443,6 +2443,8 @@ void Cursor::moveToClosestEdge(int const x, bool const edit)
 		if (edit && (inset->hasSettings() || !inset->contextMenuName().empty()))
 			return;
 		CoordCache::Insets const & insetCache = bv().coordCache().getInsets();
+		if (!insetCache.has(inset))
+			return;
 		int const wid = insetCache.dim(inset).wid;
 		Point p = insetCache.xy(inset);
 		if (x > p.x_ + (wid + 1) / 2)
