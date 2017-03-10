@@ -74,6 +74,7 @@
 #include "LyX.h" // use_gui
 #include "OutputParams.h"
 
+#include <iomanip>
 
 using namespace std;
 using namespace lyx::support;
@@ -188,7 +189,7 @@ void initSymbols()
 			string extra;
 			string xmlname;
 			bool hidden = false;
-			is >> macro >> requires;
+			is >> setw(65536) >> macro >> requires;
 			if ((is >> xmlname)) {
 				extra = requires;
 				if (!(is >> requires))
