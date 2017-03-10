@@ -320,10 +320,10 @@ QString LayoutItemDelegate::underlineFilter(QString const & s) const
 	// step through data item and put "(x)" for every matching character
 	QString r;
 	int lastp = -1;
-	layout_->filter();
 	for (int i = 0; i < f.length(); ++i) {
 		int p = s.indexOf(f[i], lastp + 1, Qt::CaseInsensitive);
-		LASSERT(p != -1, continue);
+		if (p < 0)
+			continue;
 		if (lastp == p - 1 && lastp != -1) {
 			// remove ")" and append "x)"
 			r = r.left(r.length() - 4) + s[p] + "</u>";
