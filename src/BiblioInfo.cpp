@@ -417,7 +417,9 @@ docstring const BibTeXInfo::getYear() const
 		static regex const ereg(".*/[-]?([\\d]{4}).*");
 		smatch sm;
 		string const date = to_utf8(year);
-		regex_match(date, sm, yreg);
+		if (!regex_match(date, sm, yreg))
+			// cannot parse year.
+			return docstring();
 		year = from_ascii(sm[1]);
 		// check for an endyear
 		if (regex_match(date, sm, ereg))
