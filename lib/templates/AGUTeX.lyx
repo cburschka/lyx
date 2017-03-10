@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 534
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -59,6 +59,7 @@ theorems-std
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -96,7 +97,8 @@ theorems-std
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -114,9 +116,9 @@ theorems-std
 status open
 
 \begin_layout Plain Layout
-This is a template \SpecialChar LyX
- file for articles to be submitted to Journals of the
- American Geophysical Union (AGU).
+This is an OBSOLETE template \SpecialChar LyX
+ file for articles to be submitted to Journals
+ of the American Geophysical Union (AGU).
  How to install the AGU\SpecialChar TeX
  \SpecialChar LaTeX
  class to your \SpecialChar LaTeX
@@ -131,7 +133,12 @@ http://wiki.lyx.org/Examples/AGUTeX
 
 \end_inset
 
+: the new AGU class name is 
+\family sans
+agujournal.cls
+\family default
 .
+ A template LyX file and the corresponding layout are pending.
 \end_layout
 
 \end_inset
@@ -385,6 +392,7 @@ A & = & \prod_{i=1}^{\infty}B\nonumber \\
 \begin_inset CommandInset citation
 LatexCommand citet
 key "jskilby,inproceedings-minimal"
+literal "true"
 
 \end_inset
 
@@ -393,6 +401,7 @@ key "jskilby,inproceedings-minimal"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "jskilbye"
+literal "true"
 
 \end_inset
 
@@ -569,6 +578,7 @@ Or plain bibliography:
 LatexCommand bibitem
 label "\\textit{Kilby}(2008)"
 key "jskilby"
+literal "true"
 
 \end_inset
 
@@ -591,6 +601,7 @@ IEEE Trans.
 LatexCommand bibitem
 label "\\textit{Kilby et al.}(2008)"
 key "jskilbye"
+literal "true"
 
 \end_inset
 
