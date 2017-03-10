@@ -18,6 +18,7 @@
 #include "support/unique_ptr.h"
 
 #include <QFile>
+#include <QStringList>
 #include <QTimer>
 
 #include <algorithm>
@@ -103,6 +104,7 @@ void FileMonitorGuard::refresh(bool new_file)
 	QString const qfilename = toqstr(filename_);
 	if(!qwatcher_->files().contains(qfilename)) {
 		bool exists = QFile(qfilename).exists();
+#if (QT_VERSION >= 0x050000)
 		if (!exists || !qwatcher_->addPath(qfilename)) {
 			if (exists)
 				LYXERR(Debug::FILES,
@@ -111,6 +113,21 @@ void FileMonitorGuard::refresh(bool new_file)
 			QTimer::singleShot(1000, this, [=](){
 					refresh(new_file || !exists);
 				});
+#else
+		auto add_path = [&]() {
+			qwatcher_->addPath(qfilename);
+			return qwatcher_->files().contains(qfilename);
+		};
+		if (!exists || !add_path()) {
+			if (exists)
+				LYXERR(Debug::FILES,
+				       "Could not add path to QFileSystemWatcher: "
+				       << filename_);
+			if (new_file || !exists)
+				QTimer::singleShot(1000, this, SLOT(refreshTrue()));
+			else
+				QTimer::singleShot(1000, this, SLOT(refreshFalse()));
+#endif
 		} else if (exists && new_file)
 			Q_EMIT fileChanged();
 	}
@@ -199,9 +216,7 @@ FileMonitorBlockerGuard::~FileMonitorBlockerGuard()
 	// from QFileSystemWatcher that we meant to ignore are not going to be
 	// treated immediately, so we must yield to give us the opportunity to
 	// ignore them.
-	QTimer::singleShot(delay_, parent, [parent]() {
-			parent->connectToFileMonitorGuard();
-		});
+	QTimer::singleShot(delay_, parent, SLOT(connectToFileMonitorGuard()));
 }
 
 } // namespace support

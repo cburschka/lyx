@@ -34,7 +34,7 @@ class FileName;
 
 class FileMonitor;
 class FileMonitorGuard;
-using FileMonitorPtr = std::unique_ptr<FileMonitor>;
+typedef std::unique_ptr<FileMonitor> FileMonitorPtr;
 
 ///
 /// Watch a file:
@@ -115,6 +115,14 @@ private Q_SLOTS:
 	/// Receive notifications from the QFileSystemWatcher
 	void notifyChange(QString const & path);
 
+	/// nonsense introduced for when QT_VERSION < 0x050000, cannot be placed
+	/// between #ifdef
+	void refreshTrue() { refresh(true); }
+	/// nonsense introduced for when QT_VERSION < 0x050000, cannot be placed
+	/// between #ifdef
+	void refreshFalse() { refresh(false); }
+
+
 private:
 	std::string const filename_;
 	QFileSystemWatcher * qwatcher_;
@@ -134,7 +142,7 @@ public:
 };
 
 
-using FileMonitorBlocker = std::shared_ptr<FileMonitorBlockerGuard>;
+typedef std::shared_ptr<FileMonitorBlockerGuard> FileMonitorBlocker;
 
 
 /// Main class
@@ -146,7 +154,7 @@ class FileMonitor : public QObject
 public:
 	FileMonitor(std::shared_ptr<FileMonitorGuard> monitor);
 
-	using sig = boost::signals2::signal<void()>;
+	typedef boost::signals2::signal<void()> sig;
 	/// Connect and you'll be informed when the file has changed.
 	boost::signals2::connection connect(sig::slot_type const &);
 	/// disconnect all slots connected to the boost signal fileChanged_ or to
@@ -173,9 +181,10 @@ Q_SIGNALS:
 private Q_SLOTS:
 	/// Receive notifications from the FileMonitorGuard
 	void changed();
+	///
+	void connectToFileMonitorGuard();
 
 private:
-	void connectToFileMonitorGuard();
 	// boost signal
 	sig fileChanged_;
 	// the unique watch for our file
