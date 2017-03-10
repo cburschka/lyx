@@ -640,7 +640,8 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 					"file\n`%1$s'\n"
 					"Please, check whether it actually exists."),
 					included_file.displayName());
-				Alert::warning(_("Missing included file"), text);
+				throw ExceptionMessage(ErrorException, _("Error: "),
+						       text);
 			}
 			return;
 		}
