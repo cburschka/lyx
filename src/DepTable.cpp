@@ -19,8 +19,6 @@
 #include "support/lstrings.h"
 #include "support/lyxtime.h"
 
-#include <sys/stat.h>
-
 #include <fstream>
 
 using namespace std;
@@ -41,13 +39,11 @@ void DepTable::insert(FileName const & f, bool upd)
 	if (deplist.find(f) == deplist.end()) {
 		dep_info di;
 		di.crc_prev = 0;
-		if (upd) {
+		if (upd && f.exists()) {
 			LYXERR(Debug::DEPEND, " CRC...");
 			di.crc_cur = f.checksum();
 			LYXERR(Debug::DEPEND, "done.");
-			struct stat f_info;
-			stat(f.toFilesystemEncoding().c_str(), &f_info);
-			di.mtime_cur = long(f_info.st_mtime);
+			di.mtime_cur = f.lastModified();
 		} else {
 			di.crc_cur = 0;
 			di.mtime_cur = 0;
@@ -66,25 +62,24 @@ void DepTable::update()
 
 	DepList::iterator itr = deplist.begin();
 	while (itr != deplist.end()) {
+		FileName const & fn = itr->first;
 		dep_info &di = itr->second;
 
-		struct stat f_info;
-		if (stat(itr->first.toFilesystemEncoding().c_str(), &f_info) == 0) {
-			if (di.mtime_cur == f_info.st_mtime) {
+		if (fn.exists()) {
+			if (di.mtime_cur == fn.lastModified()) {
 				di.crc_prev = di.crc_cur;
 				LYXERR(Debug::DEPEND, itr->first << " same mtime");
 			} else {
 				di.crc_prev = di.crc_cur;
 				LYXERR(Debug::DEPEND, itr->first << " CRC... ");
-				di.crc_cur = itr->first.checksum();
+				di.crc_cur = fn.checksum();
 				LYXERR(Debug::DEPEND, "done");
 			}
 		} else {
 			// file doesn't exist
 			// remove stale files - if it's re-created, it
 			// will be re-inserted by deplog.
-			LYXERR(Debug::DEPEND, itr->first
-				<< " doesn't exist. removing from DepTable.");
+			LYXERR(Debug::DEPEND, fn << " doesn't exist. removing from DepTable.");
 			DepList::iterator doomed = itr++;
 			deplist.erase(doomed);
 			continue;
