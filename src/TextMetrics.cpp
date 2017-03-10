@@ -481,6 +481,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 			pm.rows().push_back(Row());
 		Row & row = pm.rows()[row_index];
 		row.pos(first);
+		row.pit(pit);
 		breakRow(row, right_margin, pit);
 		setRowHeight(row, pit);
 		row.setChanged(false);
@@ -932,8 +933,8 @@ void TextMetrics::breakRow(Row & row, int const right_margin, pit_type const pit
 
 	// if the row is too large, try to cut at last separator. In case
 	// of success, reset indication that the row was broken abruptly.
-	int const next_width = max_width_ - leftMargin(max_width_, row.pit(), row.endpos())
-		- rightMargin(row.pit());
+	int const next_width = max_width_ - leftMargin(max_width_, pit, row.endpos())
+		- rightMargin(pit);
 
 	row.shortenIfNeeded(body_pos, width, next_width);
 	row.right_boundary(!row.empty() && row.endpos() < end
