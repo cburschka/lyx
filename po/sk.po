@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-03-01 09:51+0100\n"
-"PO-Revision-Date: 2017-03-01 11:10+0000\n"
+"POT-Creation-Date: 2017-03-11 09:38+0100\n"
+"PO-Revision-Date: 2017-03-11 09:09+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2449,7 +2449,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/LineUi.ui:22
 msgid "Of&fset:"
-msgstr "&Posun:"
+msgstr "&Pozdvihnúť:"
 
 #: src/frontends/qt4/ui/LineUi.ui:35
 msgid "Value of the vertical line offset."
@@ -3654,7 +3654,7 @@ msgstr "Vynechať bočné písmená nepatriace k slovu"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:100
 msgid "Use M&ac-style cursor movement"
-msgstr "Použiť &MAC-štýl na posun kurzora"
+msgstr "Použiť &MAC-štýl na pohyb kurzora"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:107
 msgid "Sort &environments alphabetically"
@@ -4841,7 +4841,7 @@ msgstr "V&iacriadkové"
 
 #: src/frontends/qt4/ui/TabularUi.ui:133
 msgid "&Vertical Offset:"
-msgstr "Vertikálny &posun:"
+msgstr "Z&dvihnúť:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:146
 msgid "Optional vertical offset"
@@ -8018,10 +8018,10 @@ msgstr "Štandardné špecifikácie prekrytia"
 msgid "Default overlay specifications within this frame"
 msgstr "Štandardné špecifikácie prekrytia tohto rámca"
 
-#: lib/layouts/beamer.layout:454 lib/layouts/beamer.layout:476
-#: lib/layouts/beamer.layout:487 lib/layouts/beamer.layout:513
+#: lib/layouts/beamer.layout:469 lib/layouts/beamer.layout:491
+#: lib/layouts/beamer.layout:502 lib/layouts/beamer.layout:530
 msgid "Frame Options"
-msgstr "Voľby Rám"
+msgstr "Rám: Voľby"
 
 #: lib/layouts/beamer.layout:455 lib/layouts/beamer.layout:477
 #: lib/layouts/beamer.layout:488 lib/layouts/beamer.layout:514
@@ -8039,9 +8039,9 @@ msgstr "Možnosti"
 msgid "Frame options (see beamer manual)"
 msgstr "Rám voľby (viď beamer manuál)"
 
-#: lib/layouts/beamer.layout:459
+#: lib/layouts/beamer.layout:474
 msgid "Frame Title"
-msgstr "Titul Rámu"
+msgstr "Rám: Titul"
 
 #: lib/layouts/beamer.layout:460
 msgid "Enter the frame title here"
@@ -24908,6 +24908,10 @@ msgstr "Prevádzam dokument do novej triedy dokumentov…"
 msgid "Document is read-only"
 msgstr "Dokument je iba na čítanie"
 
+#: src/BufferView.cpp:1034
+msgid "Document has been modified externally"
+msgstr "Dokument bol externe upravený"
+
 #: src/BufferView.cpp:1035
 msgid "This portion of the document is deleted."
 msgstr "Táto časť dokumentu je vymazaná."
@@ -26105,7 +26109,7 @@ msgstr "Zoznam podporovaných ladiacich indikátorov:"
 msgid "Setting debug level to %1$s"
 msgstr "Nastavenie úrovne ladenia na %1$s"
 
-#: src/LyX.cpp:1147
+#: src/LyX.cpp:1169
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -26124,7 +26128,8 @@ msgid ""
 "Name\n"
 "                  to see which parameter (which differs from the format "
 "name\n"
-"                  in the File->Export menu) should be passed.\n"
+"                  in the File->Export menu) should be passed. To export to\n"
+"                  the document's default output format, use 'default'.\n"
 "                  Note that the order of -e and -x switches matters.\n"
 "\t-E [--export-to] fmt filename\n"
 "                  where fmt is the export format of choice (see --export),\n"
@@ -26171,7 +26176,10 @@ msgstr ""
 "                  kde fmt je vybraný exportný formát. Pozrite si\n"
 "                  Nástroje -> Preferencie… -> Obsluha súborov -> Formáty "
 "Súborov -> Skratka\n"
-"                  aby ste videli, ktoré parametre sú vhodné.\\n\n"
+"                  aby ste videli, ktoré parametre sú vhodné. Pre export do "
+"formátu\n"
+"                  ktorý je nastavený v dokumente ako štandard použite "
+"'default'.\n"
 "                 (Líšia sa od mena formátu v menu Súbor->Exportovať).\n"
 "                  Všimnite si že poradie prepínačov -e a -x je významné.\n"
 "\t-E [--export-to] fmt názov\n"
@@ -26181,7 +26189,7 @@ msgstr ""
 "                  kde fmt je vybraný formát k importu\n"
 "                  a file.xxx je meno súboru určeného pre import.\n"
 "\t-f [--force-overwrite] čo\n"
-"                  kde \"čo\" je alebo `all' alebo `main' alebo `none'.\n"
+"                  kde \"čo\" je `all' alebo `main' alebo `none'.\n"
 "                  Keď `all', tak bude prepísaný každý súbor počas\n"
 "                    dávkového exportu.\n"
 "                  Keď `main' bude prepísaný len hlavný súbor.\n"
@@ -29987,6 +29995,11 @@ msgstr "Skončiť LyX"
 msgid "LyX could not be closed because documents are being processed by LyX."
 msgstr "Nemohol som zavrieť LyX, lebo LyX ešte spracováva dokumenty."
 
+#: src/frontends/qt4/GuiView.cpp:1125
+#, c-format
+msgid "%1$s (modified externally)"
+msgstr "%1$s (externe upravený)"
+
 #: src/frontends/qt4/GuiView.cpp:1196
 #, c-format
 msgid "%1$s lock"
@@ -30361,6 +30374,15 @@ msgstr "Vyberte súbor na vloženie"
 msgid "All Files (*)"
 msgstr "Všetky súbory (*)"
 
+#: src/frontends/qt4/GuiView.cpp:3740
+#, c-format
+msgid ""
+"Any changes will be lost. Are you sure you want to load the version on disk "
+"of the document %1$s?"
+msgstr ""
+"Všetky zmeny sa stratia. Naozaj sa chcete vrátiť ku uloženej verzii "
+"dokumentu %1$s?"
+
 #: src/frontends/qt4/GuiView.cpp:3702
 #, c-format
 msgid ""
@@ -30370,9 +30392,9 @@ msgstr ""
 "Všetky zmeny sa stratia. Naozaj sa chcete vrátiť k pôvodnej verzii dokumentu "
 "%1$s ?"
 
-#: src/frontends/qt4/GuiView.cpp:3705
-msgid "Revert to saved document?"
-msgstr "Vrátiť sa k uloženej verzii?"
+#: src/frontends/qt4/GuiView.cpp:3746
+msgid "Revert to file on disk?"
+msgstr "Vrátiť sa k uloženému súboru?"
 
 #: src/frontends/qt4/GuiView.cpp:3731
 msgid "Saving all documents..."
@@ -30420,6 +30442,10 @@ msgstr "Zavrieť Súbor"
 #: src/frontends/qt4/GuiWorkArea.cpp:2025
 msgid "%1 (read only)"
 msgstr "%1 (iba pre čítanie)"
+
+#: src/frontends/qt4/GuiWorkArea.cpp:2083
+msgid "%1 (modified externally)"
+msgstr "%1 (externe upravený)"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:2044
 msgid "Hide tab"
@@ -30646,6 +30672,11 @@ msgstr "Vytvoriť Nové Prostredie (%1$s)"
 #, c-format
 msgid "Start New Parent Environment (%1$s)"
 msgstr "Vytvoriť Nové Nadriadené Prostredie (%1$s)"
+
+#: src/frontends/qt4/Menus.cpp:2193
+#, c-format
+msgid "Export [%1$s]|E"
+msgstr "Exportovať [%1$s]|E"
 
 #: src/frontends/qt4/Menus.cpp:2341
 msgid "No Action Defined!"
@@ -31172,10 +31203,6 @@ msgstr ""
 "LyX nemohol načítať zahrnutý súbor\n"
 "`%1$s'\n"
 "Skontrolujte, či daný súbor naozaj existuje."
-
-#: src/insets/InsetInclude.cpp:641
-msgid "Missing included file"
-msgstr "Chýba zahrnutý súbor"
 
 #: src/insets/InsetInclude.cpp:649
 #, c-format
@@ -32411,6 +32438,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Missing included file"
+#~ msgstr "Chýba zahrnutý súbor"
 
 #~ msgid "Included in TOC"
 #~ msgstr "Zahrnuté do obsahu"
@@ -35780,7 +35810,7 @@ msgstr "Neznámy používateľ"
 #~ msgstr "Zostavený %1$s, %2$s"
 
 #~ msgid "Use Mac-style for cursor moving between &words"
-#~ msgstr "Použiť &MAC-štýl na posun kurzora medzi slovami"
+#~ msgstr "Použiť &MAC-štýl na pohyb kurzora medzi slovami"
 
 #~ msgid "Use the Mac OS X conventions for the word-level cursor movement"
 #~ msgstr "Použiť dohody Mac OS X pre pohyb kurzoru po slovách"
