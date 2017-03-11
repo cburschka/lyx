@@ -106,19 +106,13 @@ void FileMonitorGuard::refresh(bool new_file)
 		bool exists = QFile(qfilename).exists();
 #if (QT_VERSION >= 0x050000)
 		if (!exists || !qwatcher_->addPath(qfilename)) {
-			if (exists)
-				LYXERR(Debug::FILES,
-				       "Could not add path to QFileSystemWatcher: "
-				       << filename_);
-			QTimer::singleShot(1000, this, [=](){
-					refresh(new_file || !exists);
-				});
 #else
 		auto add_path = [&]() {
 			qwatcher_->addPath(qfilename);
 			return qwatcher_->files().contains(qfilename);
 		};
 		if (!exists || !add_path()) {
+#endif
 			if (exists)
 				LYXERR(Debug::FILES,
 				       "Could not add path to QFileSystemWatcher: "
@@ -127,7 +121,10 @@ void FileMonitorGuard::refresh(bool new_file)
 				QTimer::singleShot(1000, this, SLOT(refreshTrue()));
 			else
 				QTimer::singleShot(1000, this, SLOT(refreshFalse()));
-#endif
+			// Better (qt>=5.4):
+			/*QTimer::singleShot(1000, this, [=](){
+					refresh(new_file || !exists);
+				});*/
 		} else if (exists && new_file)
 			Q_EMIT fileChanged();
 	}
