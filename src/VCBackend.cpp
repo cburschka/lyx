@@ -31,6 +31,7 @@
 #include "support/TempFile.h"
 
 #include <fstream>
+#include <iomanip>
 #include <sstream>
 
 using namespace std;
