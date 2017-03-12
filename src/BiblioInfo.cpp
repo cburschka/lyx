@@ -65,15 +65,18 @@ pair<docstring, docstring> nameParts(docstring const & name)
 	// include the "von" part. This isn't perfect.
 	// Split on spaces, to get various tokens.
 	pieces = getVectorFromString(name, from_ascii(" "));
-	// If we only get two, assume the last one is the last name
-	if (pieces.size() <= 2)
+	// unusual not to have a space, but could happen
+	if (pieces.size() < 2)
+		return make_pair(from_ascii(""), name);
+	// If we get two, assume the last one is the last name
+	if (pieces.size() == 2)
 		return make_pair(pieces.front(), pieces.back());
 
 	// Now we look for the first token that begins with
 	// a lower case letter or an opening group {.
 	docstring prename;
 	vector<docstring>::const_iterator it = pieces.begin();
-	vector<docstring>::const_iterator en = pieces.end();
+	vector<docstring>::const_iterator const en = pieces.end();
 	bool first = true;
 	for (; it != en; ++it) {
 		if ((*it).empty())
@@ -81,6 +84,12 @@ pair<docstring, docstring> nameParts(docstring const & name)
 		char_type const c = (*it)[0];
 		if (isLower(c) || c == '{')
 			break;
+		// if this is the last time through the loop, then
+		// what we now have is the last name, so we do not want
+		// to add that to the prename.
+		if (it + 1 == en)
+			break;
+		// add this piece to the prename
 		if (!first)
 			prename += " ";
 		else
@@ -88,10 +97,10 @@ pair<docstring, docstring> nameParts(docstring const & name)
 		prename += *it;
 	}
 
-	if (it == en) // we never found a "von" or group
-		return make_pair(prename, pieces.back());
-
 	// reconstruct the family name
+	// note that if we left the loop with because it + 1 == en,
+	// then this will still do the right thing, i.e., make surname
+	// just be the last piece.
 	docstring surname;
 	first = true;
 	for (; it != en; ++it) {
