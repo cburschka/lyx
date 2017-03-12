@@ -289,6 +289,7 @@ BibTeXInfo::BibTeXInfo(docstring const & key, docstring const & type)
 {}
 
 
+
 docstring const BibTeXInfo::getAuthorOrEditorList(Buffer const * buf,
 					  bool full, bool forceshort) const
 {
@@ -300,9 +301,9 @@ docstring const BibTeXInfo::getAuthorOrEditorList(Buffer const * buf,
 }
 
 
-docstring const BibTeXInfo::getAuthorList(Buffer const * buf, docstring author,
-					  bool full, bool forceshort, bool allnames,
-					  bool beginning) const
+docstring const BibTeXInfo::getAuthorList(Buffer const * buf, 
+		docstring const & author, bool const full, bool const forceshort, 
+		bool const allnames, bool const beginning) const
 {
 	// Maxnames treshold depend on engine
 	size_t maxnames = buf ?
@@ -364,7 +365,7 @@ docstring const BibTeXInfo::getAuthorList(Buffer const * buf, docstring author,
 					     : "%prename% %surname%";
 
 	// Shorten the list (with et al.) if forceshort is set
-	// and the list can actually be shorten, else if maxcitenames
+	// and the list can actually be shortened, else if maxcitenames
 	// is passed and full is not set.
 	bool shorten = forceshort && authors.size() > 1;
 	vector<docstring>::const_iterator it = authors.begin();

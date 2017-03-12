@@ -59,12 +59,12 @@ public:
 	/// used for sorting.
 	/// This will be translated to the UI language if buf is null
 	/// otherwise, it will be translated to the buffer language.
-	docstring const getAuthorOrEditorList(Buffer const * buf = 0, bool full = false,
-				      bool forceshort = false) const;
+	docstring const getAuthorOrEditorList(Buffer const * buf = 0, 
+			bool full = false, bool forceshort = false) const;
 	/// Same for a specific author role (editor, author etc.)
-	docstring const getAuthorList(Buffer const * buf = 0, docstring author = docstring(),
-				      bool full = false, bool forceshort = false,
-				      bool allnames = false, bool beginning = true) const;
+	docstring const getAuthorList(Buffer const * buf, docstring const & author,
+				      bool const full = false, bool const forceshort = false,
+				      bool const allnames = false, bool const beginning = true) const;
 	///
 	docstring const getYear() const;
 	/// \return formatted BibTeX data suitable for framing.
