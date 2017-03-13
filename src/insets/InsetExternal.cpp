@@ -289,17 +289,23 @@ bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 			filename = buffer.getReferencedFileName(name);
 			break;
 		}
-		
+
 		case EX_DISPLAY: {
 			lex.next();
 			display = lex.getString() != "false";
 			break;
 		}
 
-		case EX_LYXSCALE:
+		case EX_LYXSCALE: {
 			lex.next();
-			lyxscale = lex.getInteger();
+			int const ls = lex.getInteger();
+			// negative values are not accepted.
+			if (ls >= 0)
+				lyxscale = ls;
+			else
+				lex.printError("ExternalInset::read: Wrong lyxscale: $$Token");
 			break;
+		}
 
 		case EX_DRAFT:
 			draft = true;
@@ -379,8 +385,6 @@ bool InsetExternalParams::read(Buffer const & buffer, Lexer & lex)
 
 	if (lyxerr.debugging(Debug::EXTERNAL)) {
 		lyxerr	<< "InsetExternalParams::read:\n";
-		// false positive
-		// coverity[NEGATIVE_RETURNS]
 		write(buffer, lyxerr);
 	}
 
