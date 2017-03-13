@@ -172,9 +172,9 @@ void Format::setExtensions(string const & e)
 Format const * Formats::getFormat(string const & name) const
 {
 	FormatList::const_iterator cit =
-		find_if(formatlist.begin(), formatlist.end(),
+		find_if(formatlist_.begin(), formatlist_.end(),
 			FormatNamesEqual(name));
-	if (cit != formatlist.end())
+	if (cit != formatlist_.end())
 		return &(*cit);
 	else
 		return 0;
@@ -431,9 +431,9 @@ string Formats::getFormatFromFile(FileName const & filename) const
 				if (!mime.empty() && mime != "application/octet-stream" &&
 				    mime != "text/plain") {
 					Formats::const_iterator cit =
-						find_if(formatlist.begin(), formatlist.end(),
+						find_if(formatlist_.begin(), formatlist_.end(),
 							FormatMimeEqual(mime));
-					if (cit != formatlist.end()) {
+					if (cit != formatlist_.end()) {
 						LYXERR(Debug::GRAPHICS, "\tgot format from MIME type: "
 							<< mime << " -> " << cit->name());
 						// See special eps/ps handling below
@@ -469,9 +469,9 @@ string Formats::getFormatFromFile(FileName const & filename) const
 		}
 
 		if (isZippedFileFormat(format) && !ext.empty()) {
-			string const & fmt_name = formats.getFormatFromExtension(ext);
+			string const & fmt_name = getFormatFromExtension(ext);
 			if (!fmt_name.empty()) {
-				Format const * p_format = formats.getFormat(fmt_name);
+				Format const * p_format = getFormat(fmt_name);
 				if (p_format && p_format->zippedNative())
 					return p_format->name();
 			}
@@ -500,9 +500,9 @@ string Formats::getFormatFromExtension(string const & ext) const
 		// this is ambigous if two formats have the same extension,
 		// but better than nothing
 		Formats::const_iterator cit =
-			find_if(formatlist.begin(), formatlist.end(),
+			find_if(formatlist_.begin(), formatlist_.end(),
 				FormatExtensionsEqual(ext));
-		if (cit != formats.end()) {
+		if (cit != formatlist_.end()) {
 			LYXERR(Debug::GRAPHICS, "\twill guess format from file extension: "
 				<< ext << " -> " << cit->name());
 			return cit->name();
@@ -577,8 +577,8 @@ static string fixCommand(string const & cmd, string const & ext,
 
 void Formats::setAutoOpen()
 {
-	FormatList::iterator fit = formatlist.begin();
-	FormatList::iterator const fend = formatlist.end();
+	FormatList::iterator fit = formatlist_.begin();
+	FormatList::iterator const fend = formatlist_.end();
 	for ( ; fit != fend ; ++fit) {
 		fit->setViewer(fixCommand(fit->viewer(), fit->extension(), os::VIEW));
 		fit->setEditor(fixCommand(fit->editor(), fit->extension(), os::EDIT));
@@ -589,10 +589,10 @@ void Formats::setAutoOpen()
 int Formats::getNumber(string const & name) const
 {
 	FormatList::const_iterator cit =
-		find_if(formatlist.begin(), formatlist.end(),
+		find_if(formatlist_.begin(), formatlist_.end(),
 			FormatNamesEqual(name));
-	if (cit != formatlist.end())
-		return distance(formatlist.begin(), cit);
+	if (cit != formatlist_.end())
+		return distance(formatlist_.begin(), cit);
 	else
 		return -1;
 }
@@ -612,10 +612,10 @@ void Formats::add(string const & name, string const & extensions,
 		  string const & mime, int flags)
 {
 	FormatList::iterator it =
-		find_if(formatlist.begin(), formatlist.end(),
+		find_if(formatlist_.begin(), formatlist_.end(),
 			FormatNamesEqual(name));
-	if (it == formatlist.end())
-		formatlist.push_back(Format(name, extensions, prettyname,
+	if (it == formatlist_.end())
+		formatlist_.push_back(Format(name, extensions, prettyname,
 					    shortcut, viewer, editor, mime, flags));
 	else
 		*it = Format(name, extensions, prettyname, shortcut, viewer,
@@ -626,16 +626,16 @@ void Formats::add(string const & name, string const & extensions,
 void Formats::erase(string const & name)
 {
 	FormatList::iterator it =
-		find_if(formatlist.begin(), formatlist.end(),
+		find_if(formatlist_.begin(), formatlist_.end(),
 			FormatNamesEqual(name));
-	if (it != formatlist.end())
-		formatlist.erase(it);
+	if (it != formatlist_.end())
+		formatlist_.erase(it);
 }
 
 
 void Formats::sort()
 {
-	std::sort(formatlist.begin(), formatlist.end());
+	std::sort(formatlist_.begin(), formatlist_.end());
 }
 
 
@@ -643,9 +643,9 @@ void Formats::setViewer(string const & name, string const & command)
 {
 	add(name);
 	FormatList::iterator it =
-		find_if(formatlist.begin(), formatlist.end(),
+		find_if(formatlist_.begin(), formatlist_.end(),
 			FormatNamesEqual(name));
-	if (it != formatlist.end())
+	if (it != formatlist_.end())
 		it->setViewer(command);
 }
 
@@ -654,9 +654,9 @@ void Formats::setEditor(string const & name, string const & command)
 {
 	add(name);
 	FormatList::iterator it =
-		find_if(formatlist.begin(), formatlist.end(),
+		find_if(formatlist_.begin(), formatlist_.end(),
 			FormatNamesEqual(name));
-	if (it != formatlist.end())
+	if (it != formatlist_.end())
 		it->setEditor(command);
 }
 

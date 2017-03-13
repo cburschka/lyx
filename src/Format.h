@@ -143,9 +143,9 @@ public:
 	///
 	typedef FormatList::const_iterator const_iterator;
 	///
-	Format const & get(FormatList::size_type i) const { return formatlist[i]; }
+	Format const & get(FormatList::size_type i) const { return formatlist_[i]; }
 	///
-	Format & get(FormatList::size_type i) { return formatlist[i]; }
+	Format & get(FormatList::size_type i) { return formatlist_[i]; }
 	/// \returns format named \p name if it exists, otherwise 0
 	Format const * getFormat(std::string const & name) const;
 	/*!
@@ -200,16 +200,16 @@ public:
 	///
 	std::string const extensions(std::string const & name) const;
 	///
-	const_iterator begin() const { return formatlist.begin(); }
+	const_iterator begin() const { return formatlist_.begin(); }
 	///
-	const_iterator end() const { return formatlist.end(); }
+	const_iterator end() const { return formatlist_.end(); }
 	///
-	bool empty() const { return formatlist.empty(); }
+	bool empty() const { return formatlist_.empty(); }
 	///
-	FormatList::size_type size() const { return formatlist.size(); }
+	FormatList::size_type size() const { return formatlist_.size(); }
 private:
 	///
-	FormatList formatlist;
+	FormatList formatlist_;
 };
 
 ///
