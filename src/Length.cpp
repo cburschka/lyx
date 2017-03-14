@@ -21,6 +21,7 @@
 
 #include "frontends/FontMetrics.h"
 
+#include "support/debug.h"
 #include "support/docstream.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
@@ -362,9 +363,8 @@ GlueLength::GlueLength(Length const & len, Length const & plus,
 
 GlueLength::GlueLength(string const & data)
 {
-	// false positive from coverity
-	// coverity[CHECKED_RETURN]
-	isValidGlueLength(data, this);
+	if (!isValidGlueLength(data, this))
+		LYXERR0("Invalid glue length " + data);
 }
 
 
