@@ -84,7 +84,7 @@ Messages const & getGuiMessages()
 //
 
 
-Formats & theFormats() 
+Formats & theFormats()
 {
 	static Formats dummy_formats;
 	return dummy_formats;

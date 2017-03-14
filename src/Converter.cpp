@@ -235,8 +235,8 @@ void Converters::update(Formats const & formats)
 	ConverterList::iterator it = converterlist_.begin();
 	ConverterList::iterator end = converterlist_.end();
 	for (; it != end; ++it) {
-		it->setFrom(theFormats().getFormat(it->from()));
-		it->setTo(theFormats().getFormat(it->to()));
+		it->setFrom(formats.getFormat(it->from()));
+		it->setTo(formats.getFormat(it->to()));
 	}
 }
 
@@ -247,8 +247,8 @@ void Converters::updateLast(Formats const & formats)
 {
 	if (converterlist_.begin() != converterlist_.end()) {
 		ConverterList::iterator it = converterlist_.end() - 1;
-		it->setFrom(theFormats().getFormat(it->from()));
-		it->setTo(theFormats().getFormat(it->to()));
+		it->setFrom(formats.getFormat(it->from()));
+		it->setTo(formats.getFormat(it->to()));
 	}
 }
 

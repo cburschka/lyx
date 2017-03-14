@@ -1,5 +1,6 @@
 #include <config.h>
 
+#include "Format.h"
 #include "support/Messages.h"
 
 using namespace std;
@@ -31,6 +32,13 @@ namespace lyx {
 		static Messages lyx_messages;
 
 		return lyx_messages;
+	}
+
+	// Dummy formats support (needed by Lexer)
+	Formats & theFormats()
+	{
+		static Formats dummy_formats;
+		return dummy_formats;
 	}
 
 	string alignmentToCSS(LyXAlignment)
