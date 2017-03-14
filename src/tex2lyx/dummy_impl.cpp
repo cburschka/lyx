@@ -83,7 +83,12 @@ Messages const & getGuiMessages()
 // Dummy formats support (needed by Lexer)
 //
 
-Formats formats;
+
+Formats & theFormats() 
+{
+	static Formats dummy_formats;
+	return dummy_formats;
+}
 
 bool Formats::isZippedFile(support::FileName const&) const
 {

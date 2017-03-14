@@ -834,7 +834,7 @@ string Buffer::logName(LogType * type) const
 	FileName const bname(
 		addName(path, onlyFileName(
 			changeExtension(filename,
-					formats.extension(params().bufferFormat()) + ".out"))));
+					theFormats().extension(params().bufferFormat()) + ".out"))));
 
 	// Also consider the master buffer log file
 	FileName masterfname = fname;
@@ -1085,7 +1085,7 @@ bool Buffer::readDocument(Lexer & lex)
 
 bool Buffer::importString(string const & format, docstring const & contents, ErrorList & errorList)
 {
-	Format const * fmt = formats.getFormat(format);
+	Format const * fmt = theFormats().getFormat(format);
 	if (!fmt)
 		return false;
 	// It is important to use the correct extension here, since some
@@ -1199,7 +1199,7 @@ Buffer::ReadStatus Buffer::readFile(FileName const & fn)
 
 	d->file_fully_loaded = true;
 	d->read_only = !d->filename.isWritable();
-	params().compressed = formats.isZippedFile(d->filename);
+	params().compressed = theFormats().isZippedFile(d->filename);
 	saveCheckSum();
 	return ReadSuccess;
 }
@@ -2689,7 +2689,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 	case LFUN_BUFFER_EXPORT_CUSTOM: {
 		string format_name;
 		string command = split(argument, format_name, ' ');
-		Format const * format = formats.getFormat(format_name);
+		Format const * format = theFormats().getFormat(format_name);
 		if (!format) {
 			lyxerr << "Format \"" << format_name
 				<< "\" not recognized!"
@@ -2848,7 +2848,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 	}
 
 	case LFUN_BUFFER_VIEW_CACHE:
-		if (!formats.view(*this, d->preview_file_,
+		if (!theFormats().view(*this, d->preview_file_,
 				  d->preview_format_))
 			dr.setMessage(_("Error viewing the output file."));
 		break;
@@ -4281,7 +4281,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 				// file (not for previewing).
 				Alert::error(_("Couldn't export file"), bformat(
 					_("No information for exporting the format %1$s."),
-					formats.prettyName(format)));
+					theFormats().prettyName(format)));
 			}
 			return ExportNoPathToFormat;
 		}
@@ -4311,7 +4311,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 	string filename = latexName(false);
 	filename = addName(temppath(), filename);
 	filename = changeExtension(filename,
-				   formats.extension(backend_format));
+				   theFormats().extension(backend_format));
 	LYXERR(Debug::FILES, "filename=" << filename);
 
 	// Plain text backend
@@ -4357,7 +4357,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 	string const error_type = (format == "program")
 		? "Build" : params().bufferFormat();
 	ErrorList & error_list = d->errorLists[error_type];
-	string const ext = formats.extension(format);
+	string const ext = theFormats().extension(format);
 	FileName const tmp_result_file(changeExtension(filename, ext));
 	bool const success = converters.convert(this, FileName(filename),
 		tmp_result_file, FileName(absFileName()), backend_format, format,
@@ -4425,7 +4425,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 	vector<ExportedFile>::const_iterator it = files.begin();
 	vector<ExportedFile>::const_iterator const en = files.end();
 	for (; it != en && status != CANCEL; ++it) {
-		string const fmt = formats.getFormatFromFile(it->sourceName);
+		string const fmt = theFormats().getFormatFromFile(it->sourceName);
 		string fixedName = it->exportName;
 		if (!runparams.export_folder.empty()) {
 			// Relative pathnames starting with ../ will be sanitized
@@ -4461,13 +4461,13 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 		} else {
 			message(bformat(_("Document exported as %1$s "
 				"to file `%2$s'"),
-				formats.prettyName(format),
+				theFormats().prettyName(format),
 				makeDisplayPath(result_file)));
 		}
 	} else {
 		// This must be a dummy converter like fax (bug 1888)
 		message(bformat(_("Document exported as %1$s"),
-			formats.prettyName(format)));
+			theFormats().prettyName(format)));
 	}
 
 	return success ? ExportSuccess : ExportConverterError;
@@ -4506,7 +4506,7 @@ Buffer::ExportStatus Buffer::preview(string const & format, bool includeall) con
 		return status;
 
 	if (previewFile.exists())
-		return formats.view(*this, previewFile, format) ?
+		return theFormats().view(*this, previewFile, format) ?
 			PreviewSuccess : PreviewError;
 
 	// Successful export but no output file?

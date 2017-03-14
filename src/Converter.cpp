@@ -134,7 +134,7 @@ void Converter::readFlags()
 			need_auth_ = true;
 	}
 	if (!result_dir_.empty() && result_file_.empty())
-		result_file_ = "index." + formats.extension(to_);
+		result_file_ = "index." + theFormats().extension(to_);
 	//if (!contains(command, token_from))
 	//	latex = true;
 }
@@ -168,8 +168,8 @@ int Converters::getNumber(string const & from, string const & to) const
 void Converters::add(string const & from, string const & to,
 		     string const & command, string const & flags)
 {
-	formats.add(from);
-	formats.add(to);
+	theFormats().add(from);
+	theFormats().add(to);
 	ConverterList::iterator it = find_if(converterlist_.begin(),
 					     converterlist_.end(),
 					     ConverterEqual(from , to));
@@ -235,8 +235,8 @@ void Converters::update(Formats const & formats)
 	ConverterList::iterator it = converterlist_.begin();
 	ConverterList::iterator end = converterlist_.end();
 	for (; it != end; ++it) {
-		it->setFrom(formats.getFormat(it->from()));
-		it->setTo(formats.getFormat(it->to()));
+		it->setFrom(theFormats().getFormat(it->from()));
+		it->setTo(theFormats().getFormat(it->to()));
 	}
 }
 
@@ -247,8 +247,8 @@ void Converters::updateLast(Formats const & formats)
 {
 	if (converterlist_.begin() != converterlist_.end()) {
 		ConverterList::iterator it = converterlist_.end() - 1;
-		it->setFrom(formats.getFormat(it->from()));
-		it->setTo(formats.getFormat(it->to()));
+		it->setFrom(theFormats().getFormat(it->from()));
+		it->setTo(theFormats().getFormat(it->to()));
 	}
 }
 
@@ -350,8 +350,8 @@ bool Converters::convert(Buffer const * buffer,
 			// default one from ImageMagic.
 			string const from_ext = from_format.empty() ?
 				getExtension(from_file.absFileName()) :
-				formats.extension(from_format);
-			string const to_ext = formats.extension(to_format);
+				theFormats().extension(from_format);
+			string const to_ext = theFormats().extension(to_format);
 			string const command =
 				os::python() + ' ' +
 				quoteName(libFileSearch("scripts", "convertDefault.py").toFilesystemEncoding()) +
@@ -761,15 +761,15 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 void Converters::buildGraph()
 {
 	// clear graph's data structures
-	G_.init(formats.size());
+	G_.init(theFormats().size());
 	// each of the converters knows how to convert one format to another
 	// so, for each of them, we create an arrow on the graph, going from
 	// the one to the other
 	ConverterList::iterator it = converterlist_.begin();
 	ConverterList::iterator const end = converterlist_.end();
 	for (; it != end ; ++it) {
-		int const from = formats.getNumber(it->from());
-		int const to   = formats.getNumber(it->to());
+		int const from = theFormats().getNumber(it->from());
+		int const to   = theFormats().getNumber(it->to());
 		LASSERT(from >= 0, continue);
 		LASSERT(to >= 0, continue);
 		G_.addEdge(from, to);
@@ -785,7 +785,7 @@ FormatList const Converters::intToFormat(vector<int> const & input)
 	vector<int>::const_iterator const end = input.end();
 	FormatList::iterator rit = result.begin();
 	for ( ; it != end; ++it, ++rit) {
-		*rit = &formats.get(*it);
+		*rit = &theFormats().get(*it);
 	}
 	return result;
 }
@@ -795,7 +795,7 @@ FormatList const Converters::getReachableTo(string const & target,
 		bool const clear_visited)
 {
 	vector<int> const & reachablesto =
-		G_.getReachableTo(formats.getNumber(target), clear_visited);
+		G_.getReachableTo(theFormats().getNumber(target), clear_visited);
 
 	return intToFormat(reachablesto);
 }
@@ -810,10 +810,10 @@ FormatList const Converters::getReachable(string const & from,
 	set<string>::const_iterator sit = excludes.begin();
 	set<string>::const_iterator const end = excludes.end();
 	for (; sit != end; ++sit)
-		excluded_numbers.insert(formats.getNumber(*sit));
+		excluded_numbers.insert(theFormats().getNumber(*sit));
 
 	vector<int> const & reachables =
-		G_.getReachable(formats.getNumber(from),
+		G_.getReachable(theFormats().getNumber(from),
 				only_viewable,
 				clear_visited,
 				excluded_numbers);
@@ -824,15 +824,15 @@ FormatList const Converters::getReachable(string const & from,
 
 bool Converters::isReachable(string const & from, string const & to)
 {
-	return G_.isReachable(formats.getNumber(from),
-			      formats.getNumber(to));
+	return G_.isReachable(theFormats().getNumber(from),
+			      theFormats().getNumber(to));
 }
 
 
 Graph::EdgePath Converters::getPath(string const & from, string const & to)
 {
-	return G_.getPath(formats.getNumber(from),
-			  formats.getNumber(to));
+	return G_.getPath(theFormats().getNumber(from),
+			  theFormats().getNumber(to));
 }
 
 

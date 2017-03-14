@@ -3491,7 +3491,7 @@ void GuiPreferences::applyView()
 bool GuiPreferences::initialiseParams(string const &)
 {
 	rc_ = lyxrc;
-	formats_ = lyx::formats;
+	formats_ = theFormats();
 	converters_ = theConverters();
 	converters_.update(formats_);
 	movers_ = theMovers();
@@ -3522,10 +3522,10 @@ void GuiPreferences::dispatchParams()
 		Author(from_utf8(rc_.user_name), from_utf8(rc_.user_email));
 	theBufferList().recordCurrentAuthor(author);
 
-	lyx::formats = formats_;
+	theFormats() = formats_;
 
 	theConverters() = converters_;
-	theConverters().update(lyx::formats);
+	theConverters().update(formats_);
 	theConverters().buildGraph();
 	theBufferList().invalidateConverterCache();
 	

@@ -190,9 +190,14 @@ struct LyX::Impl {
 
 	/// The file converters.
 	Converters converters_;
-
-	// The system converters copy after reading lyxrc.defaults.
+	/// The system converters after reading lyxrc.defaults.
 	Converters system_converters_;
+	
+	/// Global format information
+	Formats formats_;
+	/// The system formats after reading lyxrc.defaults.
+	Formats system_formats_;
+
 
 	///
 	Movers movers_;
@@ -938,13 +943,13 @@ bool LyX::init()
 		return false;
 
 	// Query the OS to know what formats are viewed natively
-	formats.setAutoOpen();
+	theFormats().setAutoOpen();
 
 	// Read lyxrc.dist again to be able to override viewer auto-detection.
 	readRcFile("lyxrc.dist");
 
 	system_lyxrc = lyxrc;
-	system_formats = formats;
+	theSystemFormats() = theFormats();
 	pimpl_->system_converters_ = pimpl_->converters_;
 	pimpl_->system_movers_ = pimpl_->movers_;
 	system_lcolor = lcolor;
@@ -1499,17 +1504,31 @@ KeyMap & theTopLevelKeymap()
 }
 
 
+Formats & theFormats()
+{
+	LAPPERR(singleton_);
+	return singleton_->pimpl_->formats_;
+}
+
+
+Formats & theSystemFormats()
+{
+	LAPPERR(singleton_);
+	return singleton_->pimpl_->system_formats_;
+}
+
+
 Converters & theConverters()
 {
 	LAPPERR(singleton_);
-	return  singleton_->pimpl_->converters_;
+	return singleton_->pimpl_->converters_;
 }
 
 
 Converters & theSystemConverters()
 {
 	LAPPERR(singleton_);
-	return  singleton_->pimpl_->system_converters_;
+	return singleton_->pimpl_->system_converters_;
 }
 
 

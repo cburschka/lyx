@@ -25,6 +25,7 @@ class CmdDef;
 class Converters;
 class DispatchResult;
 class ErrorItem;
+class Formats;
 class FuncRequest;
 class FuncStatus;
 class KeyMap;
@@ -139,6 +140,8 @@ private:
 	friend ServerSocket & theServerSocket();
 	friend Converters & theConverters();
 	friend Converters & theSystemConverters();
+	friend Formats & theFormats();
+	friend Formats & theSystemFormats();
 	friend Messages const & getMessages(std::string const & language);
 	friend Messages const & getGuiMessages();
 	friend KeyMap & theTopLevelKeymap();

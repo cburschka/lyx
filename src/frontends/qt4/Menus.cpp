@@ -2192,7 +2192,7 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 			if (!buf)
 				break;
 			string const format = buf->params().getDefaultOutputFormat();
-			Format const * f = formats.getFormat(format);
+			Format const * f = theFormats().getFormat(format);
 			docstring const name = f ? f->prettyname() : from_utf8(format);
 			docstring const label = bformat(_("Export [%1$s]|E"), name);
 			MenuItem item(MenuItem::Command, toqstr(label),

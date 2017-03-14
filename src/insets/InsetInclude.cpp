@@ -310,7 +310,7 @@ void InsetInclude::editIncluded(string const & file)
 		lyx::dispatch(fr);
 	} else
 		// tex file or other text file in verbatim mode
-		formats.edit(buffer(),
+		theFormats().edit(buffer(),
 			support::makeAbsPath(file, support::onlyPath(buffer().absFileName())),
 			"text");
 }
@@ -696,7 +696,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		// Don't assume the child's format is latex
 		string const inc_format = tmp->params().bufferFormat();
 		FileName const tmpwritefile(changeExtension(writefile.absFileName(),
-			formats.extension(inc_format)));
+			theFormats().extension(inc_format)));
 
 		// FIXME: handle non existing files
 		// The included file might be written in a different encoding

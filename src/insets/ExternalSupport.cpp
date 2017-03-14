@@ -51,8 +51,8 @@ Template const * getTemplatePtr(InsetExternalParams const & params)
 
 void editExternal(InsetExternalParams const & params, Buffer const & buffer)
 {
-	formats.edit(buffer, params.filename, 
-		formats.getFormatFromFile(params.filename));
+	theFormats().edit(buffer, params.filename, 
+		theFormats().getFormatFromFile(params.filename));
 }
 
 
@@ -89,7 +89,7 @@ string const doSubstitution(InsetExternalParams const & params,
 		// This is for raster images and pdflatex:
 		// Since pdflatex supports both jpg and png, we choose the best format:
 		// jpg if the original file is jpg to retain the compression, else png.
-		string format = formats.getFormatFromFile(params.filename);
+		string format = theFormats().getFormatFromFile(params.filename);
 		if (format == "jpg")
 			result = subst(result, "$$pngOrjpg", "jpg");
 		else
@@ -245,7 +245,7 @@ void updateExternal(InsetExternalParams const & params,
 			return; // NOT_NEEDED
 
 		// Try and ascertain the file format from its contents.
-		from_format = formats.getFormatFromFile(params.filename);
+		from_format = theFormats().getFormatFromFile(params.filename);
 		if (from_format.empty())
 			return; // FAILURE
 	}

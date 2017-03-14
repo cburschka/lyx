@@ -994,7 +994,7 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 		case RC_VIEWER: {
 			string format, command;
 			lexrc >> format >> command;
-			formats.setViewer(format, command);
+			theFormats().setViewer(format, command);
 			break;
 		}
 		case RC_FILEFORMAT: {
@@ -1045,9 +1045,9 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 				if (theConverters().formatIsUsed(format))
 					LYXERR0("Can't delete format " << format);
 				else
-					formats.erase(format);
+					theFormats().erase(format);
 			} else {
-				formats.add(format, extensions, prettyname,
+				theFormats().add(format, extensions, prettyname,
 					    shortcut, viewer, editor, mime, flgs);
 			}
 			break;
@@ -1227,7 +1227,7 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 	}
 
 	/// Update converters data-structures
-	theConverters().update(formats);
+	theConverters().update(theFormats());
 	theConverters().buildGraph();
 	theBufferList().invalidateConverterCache();
 
@@ -2558,10 +2558,10 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 
 	case RC_FILEFORMAT:
 		// New/modified formats
-		for (Formats::const_iterator cit = formats.begin();
-		     cit != formats.end(); ++cit) {
+		for (Formats::const_iterator cit = theFormats().begin(); 
+		     cit != theFormats().end(); ++cit) {
 			Format const * format =
-				system_formats.getFormat(cit->name());
+				theSystemFormats().getFormat(cit->name());
 			if (!format ||
 			    format->extensions() != cit->extensions() ||
 			    format->prettyname() != cit->prettyname() ||
@@ -2594,9 +2594,9 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 
 		// Look for deleted formats
-		for (Formats::const_iterator cit = system_formats.begin();
-		     cit != system_formats.end(); ++cit)
-			if (!formats.getFormat(cit->name()))
+		for (Formats::const_iterator cit = theSystemFormats().begin(); 
+		     cit != theSystemFormats().end(); ++cit)
+			if (!theFormats().getFormat(cit->name()))
 				os << "\\format \"" << cit->name()
 				   << "\" \"\" \"\" \"\" \"\" \"\" \"\" \"\"\n";
 		if (tag != RC_LAST)

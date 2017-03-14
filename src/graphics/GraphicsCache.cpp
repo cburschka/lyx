@@ -71,8 +71,8 @@ vector<string> const & Cache::loadableFormats() const
 		return fmts;
 
 	// The formats recognised by LyX
-	Formats::const_iterator begin = formats.begin();
-	Formats::const_iterator end   = formats.end();
+	Formats::const_iterator begin = theFormats().begin();
+	Formats::const_iterator end   = theFormats().end();
 
 	// The formats natively loadable.
 	vector<string> nformat = frontend::loadableImageFormats();

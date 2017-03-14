@@ -163,7 +163,7 @@ void ConverterCache::Impl::readIndex()
 				// cached files on opening. This slows LyX startup a lot. It
 				// would be better if this information was retrieved in a
 				// delayed fashion.
-				formats.getFormatFromFile(orig_from_name);
+				theFormats().getFormatFromFile(orig_from_name);
 		format_cache.cache[to_format] = item;
 	}
 	is.close();
@@ -320,7 +320,7 @@ void ConverterCache::add(FileName const & orig_from, string const & to_format,
 			FormatCache & format_cache = pimpl_->cache[orig_from];
 			if (format_cache.from_format.empty())
 				format_cache.from_format =
-					formats.getFormatFromFile(orig_from);
+					theFormats().getFormatFromFile(orig_from);
 			format_cache.cache[to_format] = new_item;
 		} else
 			LYXERR(Debug::FILES, "ConverterCache::add(" << orig_from << "):\n"

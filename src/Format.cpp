@@ -872,9 +872,4 @@ OutputParams::FLAVOR format2flavor(std::string fmt)
 	return flavorTranslator().find(fmt);
 } */
 
-Formats formats;
-
-Formats system_formats;
-
-
 } // namespace lyx

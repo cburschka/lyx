@@ -652,7 +652,7 @@ QVector<GuiWorkArea*> GuiView::GuiViewPrivate::guiWorkAreas()
 static void handleExportStatus(GuiView * view, Buffer::ExportStatus status,
 	string const & format)
 {
-	docstring const fmt = formats.prettyName(format);
+	docstring const fmt = theFormats().prettyName(format);
 	docstring msg;
 	switch (status) {
 	case Buffer::ExportSuccess:
@@ -2231,7 +2231,7 @@ static bool import(GuiView * lv, FileName const & filename,
 
 			string const tofile =
 				support::changeExtension(filename.absFileName(),
-				formats.extension(*it));
+				theFormats().extension(*it));
 			if (!theConverters().convert(0, filename, FileName(tofile),
 				filename, format, *it, errorList))
 				return false;
@@ -2241,7 +2241,7 @@ static bool import(GuiView * lv, FileName const & filename,
 		if (loader_format.empty()) {
 			frontend::Alert::error(_("Couldn't import file"),
 					 bformat(_("No information for importing the format %1$s."),
-					 formats.prettyName(format)));
+					 theFormats().prettyName(format)));
 			return false;
 		}
 	} else
@@ -2259,7 +2259,7 @@ static bool import(GuiView * lv, FileName const & filename,
 		bool as_paragraphs = loader_format == "textparagraph";
 		string filename2 = (loader_format == format) ? filename.absFileName()
 			: support::changeExtension(filename.absFileName(),
-					  formats.extension(loader_format));
+					  theFormats().extension(loader_format));
 		lv->currentBufferView()->insertPlaintextFile(FileName(filename2),
 			as_paragraphs);
 		guiApp->setCurrentView(lv);
@@ -2288,17 +2288,17 @@ void GuiView::importDocument(string const & argument)
 		}
 
 		docstring const text = bformat(_("Select %1$s file to import"),
-			formats.prettyName(format));
+			theFormats().prettyName(format));
 
 		FileDialog dlg(toqstr(text));
 		dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 		dlg.setButton2(qt_("Examples|#E#e"),
 			toqstr(addPath(package().system_support().absFileName(), "examples")));
 
-		docstring filter = formats.prettyName(format);
+		docstring filter = theFormats().prettyName(format);
 		filter += " (*.{";
 		// FIXME UNICODE
-		filter += from_utf8(formats.extensions(format));
+		filter += from_utf8(theFormats().extensions(format));
 		filter += "})";
 
 		FileDialog::Result result =
@@ -2592,7 +2592,7 @@ bool GuiView::exportBufferAs(Buffer & b, docstring const & iformat)
 	types << anyformat;
 
 	vector<Format const *> export_formats;
-	for (Format const & f : formats)
+	for (Format const & f : theFormats())
 		if (f.documentFormat())
 			export_formats.push_back(&f);
 	sort(export_formats.begin(), export_formats.end(), Format::formatSorter);
@@ -2625,7 +2625,7 @@ bool GuiView::exportBufferAs(Buffer & b, docstring const & iformat)
 	string fmt_name;
 	fname.set(fromqstr(result.second));
 	if (filter == anyformat)
-		fmt_name = formats.getFormatFromExtension(fname.extension());
+		fmt_name = theFormats().getFormatFromExtension(fname.extension());
 	else
 		fmt_name = fmap[filter];
 	LYXERR(Debug::FILES, "filter=" << fromqstr(filter)

@@ -110,8 +110,8 @@ void InsetHyperlink::viewTarget() const
 {
 	if (getParam("type") == "file:") {
 		FileName url = makeAbsPath(to_utf8(getParam("target")), buffer().filePath());
-		string const format = formats.getFormatFromFile(url);
-		formats.view(buffer(), url, format);
+		string const format = theFormats().getFormatFromFile(url);
+		theFormats().view(buffer(), url, format);
 	}
 }
 

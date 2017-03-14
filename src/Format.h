@@ -217,10 +217,13 @@ std::string flavor2format(OutputParams::FLAVOR flavor);
 // Not currently used.
 // OutputParams::FLAVOR format2flavor(std::string fmt);
 
-extern Formats formats;
+/// The global instance.
+/// Implementation is in LyX.cpp.
+extern Formats & theFormats();
 
-extern Formats system_formats;
-
+/// The global copy after reading lyxrc.defaults.
+/// Implementation is in LyX.cpp.
+extern Formats & theSystemFormats();
 
 } // namespace lyx
 

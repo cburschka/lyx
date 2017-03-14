@@ -63,7 +63,7 @@ Graph::EdgePath const
 	while (!Q.empty()) {
 		int const current = Q.front();
 		Q.pop();
-		if (current != target || formats.get(target).name() != "lyx")
+		if (current != target || theFormats().get(target).name() != "lyx")
 			result.push_back(current);
 
 		vector<Arrow *>::iterator it = vertices_[current].in_arrows.begin();
@@ -93,12 +93,12 @@ Graph::EdgePath const
 	while (!Q.empty()) {
 		int const current = Q.front();
 		Q.pop();
-		Format const & format = formats.get(current);
+		Format const & format = theFormats().get(current);
 		if (!only_viewable || !format.viewer().empty())
 			result.push_back(current);
 		else if (format.isChildFormat()) {
 			Format const * const parent =
-				formats.getFormat(format.parentFormat());
+				theFormats().getFormat(format.parentFormat());
 			if (parent && !parent->viewer().empty())
 				result.push_back(current);
 		}

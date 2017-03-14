@@ -139,7 +139,7 @@ Converter::Impl::Impl(FileName const & doc_fname,
 	// The converted image is to be stored in this file (we do not
 	// use ChangeExtension because this is a basename which may
 	// nevertheless contain a '.')
-	to_file_ = FileName(to_file_base + '.' +  formats.extension(to_format));
+	to_file_ = FileName(to_file_base + '.' +  theFormats().extension(to_format));
 
 	// The conversion commands are stored in a stringstream
 	ostringstream script;

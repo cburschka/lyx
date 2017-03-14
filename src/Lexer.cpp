@@ -239,7 +239,7 @@ void Lexer::Pimpl::popTable()
 bool Lexer::Pimpl::setFile(FileName const & filename)
 {
 	// Check the format of the file.
-	if (formats.isZippedFile(filename)) {
+	if (theFormats().isZippedFile(filename)) {
 		LYXERR(Debug::LYXLEX, "lyxlex: compressed");
 		// The check only outputs a debug message, because it triggers
 		// a bug in compaq cxx 6.2, where is_open() returns 'true' for

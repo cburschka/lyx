@@ -303,7 +303,7 @@ docstring ViewSourceWidget::currentFormatName(BufferView const * bv) const
 	// Compute the actual format used
 	string const format = !bv ? ""
 		: flavor2format(bv->buffer().params().getOutputFlavor(view_format_));
-	Format const * f = formats.getFormat(format.empty() ? view_format_ : format);
+	Format const * f = theFormats().getFormat(format.empty() ? view_format_ : format);
 	return f ? f->prettyname() : from_utf8(view_format_);
 }
 
@@ -343,7 +343,7 @@ void ViewSourceWidget::updateDefaultFormat(BufferView const & bv)
 	vector<string>::const_iterator en = tmp.end();
 	for (; it != en; ++it) {
 		string const format = *it;
-		Format const * fmt = formats.getFormat(format);
+		Format const * fmt = theFormats().getFormat(format);
 		if (!fmt) {
 			LYXERR0("Can't find format for backend " << format << "!");
 			continue;

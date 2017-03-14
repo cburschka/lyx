@@ -107,7 +107,7 @@ string findTargetFormat(string const & format, OutputParams const & runparams)
 	    || runparams.flavor == OutputParams::XETEX
 	    || runparams.flavor == OutputParams::LUATEX) {
 		LYXERR(Debug::GRAPHICS, "findTargetFormat: PDF mode");
-		Format const * const f = formats.getFormat(format);
+		Format const * const f = theFormats().getFormat(format);
 		// Convert vector graphics to pdf
 		if (f && f->vectorFormat())
 			return "pdf6";
@@ -119,7 +119,7 @@ string findTargetFormat(string const & format, OutputParams const & runparams)
 	}
 	// for HTML, we leave the known formats and otherwise convert to png
 	if (runparams.flavor == OutputParams::HTML) {
-		Format const * const f = formats.getFormat(format);
+		Format const * const f = theFormats().getFormat(format);
 		// Convert vector graphics to svg
 		if (f && f->vectorFormat() && theConverters().isReachable(format, "svg"))
 			return "svg";
@@ -483,7 +483,7 @@ copyFileIfNeeded(FileName const & file_in, FileName const & file_out)
 		// Nothing to do...
 		return make_pair(IDENTICAL_CONTENTS, file_out);
 
-	Mover const & mover = getMover(formats.getFormatFromFile(file_in));
+	Mover const & mover = getMover(theFormats().getFormatFromFile(file_in));
 	bool const success = mover.copy(file_in, file_out);
 	if (!success) {
 		// FIXME UNICODE
@@ -507,7 +507,7 @@ copyToDirIfNeeded(DocFileName const & file, string const & dir)
 		return make_pair(IDENTICAL_PATHS, FileName(file_in));
 
 	string mangled = file.mangledFileName();
-	if (formats.isZippedFile(file)) {
+	if (theFormats().isZippedFile(file)) {
 		// We need to change _eps.gz to .eps.gz. The mangled name is
 		// still unique because of the counter in mangledFileName().
 		// We can't just call mangledFileName() with the zip
@@ -548,7 +548,7 @@ string const stripExtensionIfPossible(string const & file, string const & to, bo
 {
 	// No conversion is needed. LaTeX can handle the graphic file as is.
 	// This is true even if the orig_file is compressed.
-	string const to_format = formats.getFormat(to)->extension();
+	string const to_format = theFormats().getFormat(to)->extension();
 	string const file_format = getExtension(file);
 	// for latex .ps == .eps
 	if (to_format == file_format ||
@@ -629,7 +629,7 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 	// determine the export format
 	string const tex_format = flavor2format(runparams.flavor);
 
-	if (formats.isZippedFile(params().filename)) {
+	if (theFormats().isZippedFile(params().filename)) {
 		FileName const unzipped_temp_file =
 			FileName(unzippedFileName(temp_file.absFileName()));
 		output_file = unzippedFileName(output_file);
@@ -646,12 +646,12 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 		}
 	}
 
-	string const from = formats.getFormatFromFile(temp_file);
+	string const from = theFormats().getFormatFromFile(temp_file);
 	if (from.empty())
 		LYXERR(Debug::GRAPHICS, "\tCould not get file format.");
 
 	string const to   = findTargetFormat(from, runparams);
-	string const ext  = formats.extension(to);
+	string const ext  = theFormats().extension(to);
 	LYXERR(Debug::GRAPHICS, "\t we have: from " << from << " to " << to);
 
 	// We're going to be running the exported buffer through the LaTeX
@@ -893,14 +893,14 @@ string InsetGraphics::prepareHTMLFile(OutputParams const & runparams) const
 	if (status == FAILURE)
 		return string();
 
-	string const from = formats.getFormatFromFile(temp_file);
+	string const from = theFormats().getFormatFromFile(temp_file);
 	if (from.empty()) {
 		LYXERR(Debug::GRAPHICS, "\tCould not get file format.");
 		return string();
 	}
 
 	string const to   = findTargetFormat(from, runparams);
-	string const ext  = formats.extension(to);
+	string const ext  = theFormats().extension(to);
 	string const orig_file = params().filename.absFileName();
 	string output_file = onlyFileName(temp_file.absFileName());
 	LYXERR(Debug::GRAPHICS, "\t we have: from " << from << " to " << to);
@@ -1030,8 +1030,8 @@ InsetGraphicsParams const & InsetGraphics::params() const
 
 void InsetGraphics::editGraphics(InsetGraphicsParams const & p) const
 {
-	formats.edit(buffer(), p.filename,
-		     formats.getFormatFromFile(p.filename));
+	theFormats().edit(buffer(), p.filename,
+		     theFormats().getFormatFromFile(p.filename));
 }
 
 
