@@ -223,9 +223,6 @@ docstring ListingsParam::validate(string const & par) const
 			return bformat(_("Try one of %1$s."), from_utf8(info_));
 		else
 			return bformat(_("I guess you mean %1$s."), from_utf8(matching_names));
-		// this stifles a warning but upsets coverity
-		// coverity[UNREACHABLE]
-		return docstring();
 	}
 	case SUBSETOF:
 		if (par2.empty() && !onoff_) {
