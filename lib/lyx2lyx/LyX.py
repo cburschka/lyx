@@ -29,6 +29,7 @@ import sys
 import re
 import time
 import io
+import codecs
 
 try:
     import lyx2lyx_version
@@ -304,11 +305,19 @@ class LyX_base:
         # use latin1. This works since a) the parts we are interested in are
         # pure ASCII (subset of latin1) and b) in contrast to pure ascii or
         # utf8, one can decode any 8byte string using latin1.
+        first_line = True
         while True:
             line = self.input.readline()
             if not line:
                 # eof found before end of header
                 self.error("Invalid LyX file: Missing body.")
+
+            if first_line:
+                # Remove UTF8 BOM marker if present
+                if line.startswith(codecs.BOM_UTF8):
+                    line = line[len(codecs.BOM_UTF8):]
+
+                first_line = False
 
             if PY2:
                 line = trim_eol(line)
