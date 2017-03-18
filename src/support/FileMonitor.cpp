@@ -3,6 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
+ * \author Angus Leeming
  * \author Guillaume Munch
  *
  * Full author contact details are available in file CREDITS.
@@ -42,17 +43,32 @@ FileSystemWatcher::FileSystemWatcher()
 {}
 
 
-//static
-FileMonitorPtr FileSystemWatcher::monitor(FileName const & file_with_path)
+shared_ptr<FileMonitorGuard>
+FileSystemWatcher::getGuard(FileName const & filename)
 {
-	FileSystemWatcher & f = instance();
-	string const filename = file_with_path.absFileName();
-	weak_ptr<FileMonitorGuard> & wptr = f.store_[filename];
+	string const absfilename = filename.absFileName();
+	weak_ptr<FileMonitorGuard> & wptr = store_[absfilename];
 	if (shared_ptr<FileMonitorGuard> mon = wptr.lock())
-		return make_unique<FileMonitor>(mon);
-	auto mon = make_shared<FileMonitorGuard>(filename, f.qwatcher_.get());
+		return mon;
+	auto mon = make_shared<FileMonitorGuard>(absfilename, qwatcher_.get());
 	wptr = mon;
-	return make_unique<FileMonitor>(mon);
+	return mon;
+}
+
+
+//static
+FileMonitorPtr FileSystemWatcher::monitor(FileName const & filename)
+{
+	return make_unique<FileMonitor>(instance().getGuard(filename));
+}
+
+
+//static
+ActiveFileMonitorPtr FileSystemWatcher::activeMonitor(FileName const & filename,
+                                                      int interval)
+{
+	return make_unique<ActiveFileMonitor>(instance().getGuard(filename),
+	                                      filename, interval);
 }
 
 
@@ -210,6 +226,59 @@ FileMonitorBlockerGuard::~FileMonitorBlockerGuard()
 	// ignore them.
 	QTimer::singleShot(delay_, monitor_, SLOT(reconnectToFileMonitorGuard()));
 }
+
+
+ActiveFileMonitor::ActiveFileMonitor(std::shared_ptr<FileMonitorGuard> monitor,
+                                     FileName const & filename, int interval)
+	: FileMonitor(monitor), filename_(filename), interval_(interval),
+	  timestamp_(0), checksum_(0), cooldown_(true)
+{
+	QObject::connect(this, SIGNAL(fileChanged()), this, SLOT(setCooldown()));
+	QTimer::singleShot(interval_, this, SLOT(clearCooldown()));
+	if (!filename_.exists())
+		return;
+	timestamp_ = filename_.lastModified();
+	checksum_ = filename_.checksum();
+}
+
+
+void ActiveFileMonitor::checkModified()
+{
+	if (cooldown_)
+		return;
+
+	cooldown_ = true;
+	bool changed = false;
+	if (!filename_.exists()) {
+		changed = timestamp_ || checksum_;
+		timestamp_ = 0;
+		checksum_ = 0;
+	} else {
+		time_t const new_timestamp = filename_.lastModified();
+
+		if (new_timestamp != timestamp_) {
+			timestamp_ = new_timestamp;
+
+			unsigned long const new_checksum = filename_.checksum();
+			if (new_checksum != checksum_) {
+				checksum_ = new_checksum;
+				changed = true;
+			}
+		}
+	}
+	if (changed)
+		FileMonitor::changed();
+	QTimer::singleShot(interval_, this, SLOT(clearCooldown()));
+}
+
+
+void ActiveFileMonitor::checkModifiedAsync()
+{
+	if (!cooldown_)
+		QTimer::singleShot(0, this, SLOT(checkModified()));
+}
+
+
 
 } // namespace support
 } // namespace lyx
