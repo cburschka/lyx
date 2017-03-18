@@ -3735,7 +3735,6 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			if (!doc_buffer->isClean()) {
 				docstring const file =
 					makeDisplayPath(doc_buffer->absFileName(), 20);
-				doc_buffer->notifiesExternalModification();
 				docstring text = doc_buffer->notifiesExternalModification() ?
 					  _("Any changes will be lost. "
 					    "Are you sure you want to load the version on disk "

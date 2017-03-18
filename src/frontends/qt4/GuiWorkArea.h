@@ -193,12 +193,18 @@ private:
 }; // EmbeddedWorkArea
 
 
+class GuiWorkAreaContainer;
+
 /// A tabbed set of GuiWorkAreas.
 class TabWorkArea : public QTabWidget
 {
 	Q_OBJECT
 public:
 	TabWorkArea(QWidget * parent = 0);
+
+	/// hide QTabWidget methods
+	GuiWorkAreaContainer * currentWidget() const;
+	GuiWorkAreaContainer * widget(int index) const;
 
 	///
 	void setFullScreen(bool full_screen);
@@ -207,10 +213,9 @@ public:
 	bool setCurrentWorkArea(GuiWorkArea *);
 	GuiWorkArea * addWorkArea(Buffer & buffer, GuiView & view);
 	bool removeWorkArea(GuiWorkArea *);
-	GuiWorkArea * currentWorkArea();
-	GuiWorkArea * workArea(Buffer & buffer);
-	GuiWorkArea const * workArea(int index) const;
-	GuiWorkArea * workArea(int index);
+	GuiWorkArea * currentWorkArea() const;
+	GuiWorkArea * workArea(Buffer & buffer) const;
+	GuiWorkArea * workArea(int index) const;
 	void paintEvent(QPaintEvent *);
 
 Q_SIGNALS:
@@ -230,7 +235,7 @@ public Q_SLOTS:
 	void moveTab(int fromIndex, int toIndex);
 	///
 	void updateTabTexts();
-	
+
 private Q_SLOTS:
 	///
 	void on_currentTabChanged(int index);
@@ -245,6 +250,9 @@ private Q_SLOTS:
 	int indexOfWorkArea(GuiWorkArea * w) const;
 
 private:
+	using QTabWidget::addTab;
+	using QTabWidget::insertTab;
+
 	/// true if position is a tab (rather than the blank space in tab bar)
 	bool posIsTab(QPoint position);
 
@@ -286,6 +294,7 @@ Q_SIGNALS:
 class GuiWorkAreaContainer : public QWidget, public Ui::WorkAreaUi
 {
 	Q_OBJECT
+	// non-null
 	GuiWorkArea * const wa_;
 	void dispatch(FuncRequest f) const;
 
@@ -298,8 +307,9 @@ protected:
 	void mouseDoubleClickEvent(QMouseEvent * event); //override
 
 public:
-	///
+	/// wa != 0
 	GuiWorkAreaContainer(GuiWorkArea * wa, QWidget * parent = 0);
+	/// non-null
 	GuiWorkArea * workArea() const { return wa_; }
 };
 

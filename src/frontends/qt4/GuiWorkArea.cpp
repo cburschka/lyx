@@ -1683,35 +1683,41 @@ void TabWorkArea::showBar(bool show)
 }
 
 
-GuiWorkArea * TabWorkArea::currentWorkArea()
+GuiWorkAreaContainer * TabWorkArea::widget(int index) const
 {
-	if (count() == 0)
-		return 0;
-
-	GuiWorkAreaContainer * wac =
-		dynamic_cast<GuiWorkAreaContainer *>(currentWidget());
+	QWidget * w = QTabWidget::widget(index);
+	if (!w)
+		return nullptr;
+	GuiWorkAreaContainer * wac = dynamic_cast<GuiWorkAreaContainer *>(w);
 	LATTEST(wac);
-	GuiWorkArea * wa = wac->workArea();
-	LATTEST(wa);
-	return wa;
+	return wac;
 }
 
 
-GuiWorkArea const * TabWorkArea::workArea(int index) const
+GuiWorkAreaContainer * TabWorkArea::currentWidget() const
 {
-	return (dynamic_cast<GuiWorkAreaContainer *>(widget(index)))->workArea();
+	return widget(currentIndex());
 }
 
 
-GuiWorkArea * TabWorkArea::workArea(int index)
+GuiWorkArea * TabWorkArea::workArea(int index) const
 {
-	return (dynamic_cast<GuiWorkAreaContainer *>(widget(index)))->workArea();
+	GuiWorkAreaContainer * w = widget(index);
+	if (!w)
+		return nullptr;
+	return w->workArea();
 }
 
 
-GuiWorkArea * TabWorkArea::workArea(Buffer & buffer)
+GuiWorkArea * TabWorkArea::currentWorkArea() const
 {
-	// FIXME: this method doesn't work if we have more than work area
+	return workArea(currentIndex());
+}
+
+
+GuiWorkArea * TabWorkArea::workArea(Buffer & buffer) const
+{
+	// FIXME: this method doesn't work if we have more than one work area
 	// showing the same buffer.
 	for (int i = 0; i != count(); ++i) {
 		GuiWorkArea * wa = workArea(i);
@@ -2220,9 +2226,6 @@ GuiWorkAreaContainer::GuiWorkAreaContainer(GuiWorkArea * wa, QWidget * parent)
 
 void GuiWorkAreaContainer::updateDisplay()
 {
-	if (!wa_)
-		notificationFrame->hide();
-
 	Buffer const & buf = wa_->bufferView().buffer();
 	notificationFrame->setHidden(!buf.notifiesExternalModification());
 	QString const label = QString("<b>The file \"%1\" changed on disk.</b>")
@@ -2233,8 +2236,6 @@ void GuiWorkAreaContainer::updateDisplay()
 
 void GuiWorkAreaContainer::dispatch(FuncRequest f) const
 {
-	if (!wa_)
-		return;
 	lyx::dispatch(FuncRequest(LFUN_BUFFER_SWITCH,
 	                          wa_->bufferView().buffer().absFileName()));
 	lyx::dispatch(f);
