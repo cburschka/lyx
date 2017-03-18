@@ -101,12 +101,14 @@ public:
 	~FileMonitorGuard();
 	/// absolute path being tracked
 	std::string const & filename() { return filename_; }
+	/// if false, emit fileChanged() when we notice the existence of the file
+	void setExists(bool exists) { exists_ = exists; }
+
+public Q_SLOTS:
 	/// Make sure it is being monitored, after e.g. a deletion. See
 	/// <https://bugreports.qt.io/browse/QTBUG-46483>. This is called
 	/// automatically.
-	/// \param new_file  If true, emit fileChanged if the file exists and was
-	/// successfully added.
-	void refresh(bool new_file = false);
+	void refresh();
 
 Q_SIGNALS:
 	/// Connect to this to be notified when the file changes
@@ -116,17 +118,10 @@ private Q_SLOTS:
 	/// Receive notifications from the QFileSystemWatcher
 	void notifyChange(QString const & path);
 
-	/// nonsense introduced for when QT_VERSION < 0x050000, cannot be placed
-	/// between #ifdef
-	void refreshTrue() { refresh(true); }
-	/// nonsense introduced for when QT_VERSION < 0x050000, cannot be placed
-	/// between #ifdef
-	void refreshFalse() { refresh(false); }
-
-
 private:
 	std::string const filename_;
 	QFileSystemWatcher * qwatcher_;
+	bool exists_;
 };
 
 
@@ -183,7 +178,7 @@ private Q_SLOTS:
 	/// Receive notifications from the FileMonitorGuard
 	void changed();
 	///
-	void connectToFileMonitorGuard();
+	void reconnectToFileMonitorGuard();
 
 private:
 	// boost signal

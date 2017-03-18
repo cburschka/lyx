@@ -82,7 +82,7 @@ void FileSystemWatcher::debug()
 
 FileMonitorGuard::FileMonitorGuard(string const & filename,
                                    QFileSystemWatcher * qwatcher)
-	: filename_(filename), qwatcher_(qwatcher)
+	: filename_(filename), qwatcher_(qwatcher), exists_(true)
 {
 	QObject::connect(qwatcher, SIGNAL(fileChanged(QString const &)),
 	                 this, SLOT(notifyChange(QString const &)));
@@ -99,7 +99,7 @@ FileMonitorGuard::~FileMonitorGuard()
 }
 
 
-void FileMonitorGuard::refresh(bool new_file)
+void FileMonitorGuard::refresh()
 {
 	QString const qfilename = toqstr(filename_);
 	if(!qwatcher_->files().contains(qfilename)) {
@@ -117,16 +117,10 @@ void FileMonitorGuard::refresh(bool new_file)
 				LYXERR(Debug::FILES,
 				       "Could not add path to QFileSystemWatcher: "
 				       << filename_);
-			if (new_file || !exists)
-				QTimer::singleShot(1000, this, SLOT(refreshTrue()));
-			else
-				QTimer::singleShot(1000, this, SLOT(refreshFalse()));
-			// Better (qt>=5.4):
-			/*QTimer::singleShot(1000, this, [=](){
-					refresh(new_file || !exists);
-				});*/
-		} else if (exists && new_file)
+			QTimer::singleShot(2000, this, SLOT(refresh()));
+		} else if (exists && !exists_)
 			Q_EMIT fileChanged();
+		setExists(exists);
 	}
 }
 
@@ -146,13 +140,15 @@ void FileMonitorGuard::notifyChange(QString const & path)
 FileMonitor::FileMonitor(std::shared_ptr<FileMonitorGuard> monitor)
 	: monitor_(monitor)
 {
-	connectToFileMonitorGuard();
+	QObject::connect(monitor_.get(), SIGNAL(fileChanged()),
+	                 this, SLOT(changed()));
 	refresh();
 }
 
 
-void FileMonitor::connectToFileMonitorGuard()
+void FileMonitor::reconnectToFileMonitorGuard()
 {
+	monitor_->setExists(true);
 	QObject::connect(monitor_.get(), SIGNAL(fileChanged()),
 	                 this, SLOT(changed()));
 }
