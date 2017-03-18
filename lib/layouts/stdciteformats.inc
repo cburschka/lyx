@@ -1,4 +1,12 @@
-# Standard formats for citations.
+# Standard formats for bibliography entries.
+#
+# This defines how LyX displays bibliographic information in the GUI
+# as well as in text/xhtml output. The format of citation references
+# is defined in the *.citeengines files, which might override the
+# default formatting defined here.
+#
+# This file is included by the citation engines, so there is no need
+# to include it in individual classes.
 #
 # Author: Richard Heck <rgheck@comcast.net>
 #         Jürgen Spitzmüller <spitz@lyx.org>

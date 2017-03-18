@@ -123,6 +123,10 @@ End
 # There are common definitions (default) and specific definitions for
 # either cite engine type (which overwrite existing defaults.
 #
+
+# Input standard format definitions for the bibliography
+Input stdciteformats.inc
+
 CiteFormat default
 	#
 	# MACROS

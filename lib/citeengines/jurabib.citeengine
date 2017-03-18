@@ -106,6 +106,10 @@ End
 # (inset button and citation dialog) as well as in XHTML, docbook and
 # plain text output.
 #
+
+# Input standard format definitions for the bibliography
+Input stdciteformats.inc
+
 CiteFormat authoryear
 	#
 	# MACROS
