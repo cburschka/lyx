@@ -19,6 +19,7 @@
 
 #include <QFileSystemWatcher>
 #include <QObject>
+#include <QPointer>
 
 #include <boost/signals2.hpp>
 
@@ -132,11 +133,11 @@ private:
 class FileMonitorBlockerGuard : public QObject
 {
 	Q_OBJECT
-	FileMonitor * parent_;
+	QPointer<FileMonitor> monitor_;
 	int delay_;
 
 public:
-	FileMonitorBlockerGuard(FileMonitor * parent);
+	FileMonitorBlockerGuard(FileMonitor * monitor);
 	~FileMonitorBlockerGuard();
 	void setDelay(int delay);
 };

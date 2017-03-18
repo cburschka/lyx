@@ -31,7 +31,7 @@ namespace support {
 
 FileSystemWatcher & FileSystemWatcher::instance()
 {
-	// This thread-safe because QFileSystemWatcher is thread-safe.
+	// This is thread-safe because QFileSystemWatcher is thread-safe.
 	static FileSystemWatcher f;
 	return f;
 }
@@ -190,11 +190,11 @@ FileMonitorBlocker FileMonitor::block(int delay)
 }
 
 
-FileMonitorBlockerGuard::FileMonitorBlockerGuard(FileMonitor * parent)
-	: QObject(parent), parent_(parent), delay_(0)
+FileMonitorBlockerGuard::FileMonitorBlockerGuard(FileMonitor * monitor)
+	: monitor_(monitor), delay_(0)
 {
-	QObject::disconnect(parent_->monitor_.get(), SIGNAL(fileChanged()),
-	                    parent_, SLOT(changed()));
+	QObject::disconnect(monitor->monitor_.get(), SIGNAL(fileChanged()),
+	                    monitor, SLOT(changed()));
 }
 
 
@@ -206,14 +206,13 @@ void FileMonitorBlockerGuard::setDelay(int delay)
 
 FileMonitorBlockerGuard::~FileMonitorBlockerGuard()
 {
-	// closures can only copy local copies
-	FileMonitor * parent = parent_;
-	// parent is also our QObject::parent() so we are deleted before parent.
+	if (!monitor_)
+		return;
 	// Even if delay_ is 0, the QTimer is necessary. Indeed, the notifications
 	// from QFileSystemWatcher that we meant to ignore are not going to be
 	// treated immediately, so we must yield to give us the opportunity to
 	// ignore them.
-	QTimer::singleShot(delay_, parent, SLOT(connectToFileMonitorGuard()));
+	QTimer::singleShot(delay_, monitor_, SLOT(reconnectToFileMonitorGuard()));
 }
 
 } // namespace support
