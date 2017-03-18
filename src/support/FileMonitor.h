@@ -74,13 +74,13 @@ typedef std::unique_ptr<ActiveFileMonitor> ActiveFileMonitorPtr;
 class FileSystemWatcher
 {
 public:
-	// as described above
+	/// as described above
 	static FileMonitorPtr monitor(FileName const & filename);
 	/// same but with an ActiveFileMonitor
 	static ActiveFileMonitorPtr activeMonitor(FileName const & filename,
 	                                          int interval = 10000);
-	// Output whether the paths tracked by qwatcher_ and the active
-	// FileMonitorGuards are in correspondence.
+	/// Output whether the paths tracked by qwatcher_ and the active
+	/// FileMonitorGuards are in correspondence.
 	static void debug();
 private:
 	FileSystemWatcher();
@@ -88,9 +88,9 @@ private:
 	static FileSystemWatcher & instance();
 	///
 	std::shared_ptr<FileMonitorGuard> getGuard(FileName const & filename);
-	// Caches the monitor guards but allow them to be destroyed
+	/// Caches the monitor guards but allow them to be destroyed
 	std::map<std::string, std::weak_ptr<FileMonitorGuard>> store_;
-	// This class is a wrapper for QFileSystemWatcher
+	/// This class is a wrapper for QFileSystemWatcher
 	std::unique_ptr<QFileSystemWatcher> const qwatcher_;
 };
 
@@ -189,11 +189,11 @@ protected Q_SLOTS:
 	void reconnectToFileMonitorGuard();
 
 private:
-	// boost signal
+	/// boost signal
 	sig fileChanged_;
-	// the unique watch for our file
+	/// the unique watch for our file
 	std::shared_ptr<FileMonitorGuard> const monitor_;
-	//
+	///
 	std::weak_ptr<FileMonitorBlockerGuard> blocker_;
 };
 
