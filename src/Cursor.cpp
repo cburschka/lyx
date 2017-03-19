@@ -1906,10 +1906,13 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 		int yo = bv().getPos(*this).y_;
 		Cursor old = *this;
 		// To next/previous row
+		// FIXME: the y position is often guessed wrongly across styles and
+		// insets, which leads to weird behaviour.
 		if (up)
 			tm.editXY(*this, xo, yo - textRow().ascent() - 1);
 		else
 			tm.editXY(*this, xo, yo + textRow().descent() + 1);
+		x_target_ = old.x_target_;
 		clearSelection();
 
 		// This happens when you move out of an inset.
