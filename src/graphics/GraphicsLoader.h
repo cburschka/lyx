@@ -81,6 +81,8 @@ public:
 	void startMonitoring() const;
 	///
 	bool monitoring() const;
+	///
+	void checkModifiedAsync() const;
 
 	/// How far have we got in loading the image?
 	ImageStatus status() const;

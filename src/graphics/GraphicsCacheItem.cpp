@@ -99,7 +99,7 @@ public:
 	/// The document filename this graphic item belongs to
 	FileName const & doc_file_;
 	///
-	FileMonitorPtr monitor_;
+	ActiveFileMonitorPtr monitor_;
 
 	/// Is the file compressed?
 	bool zipped_;
@@ -179,6 +179,14 @@ bool CacheItem::monitoring() const
 }
 
 
+void CacheItem::checkModifiedAsync() const
+{
+	if (!pimpl_->monitor_)
+		return;
+	pimpl_->monitor_->checkModifiedAsync();
+}
+
+
 Image const * CacheItem::image() const
 {
 	return pimpl_->image_.get();
@@ -214,7 +222,7 @@ void CacheItem::Impl::startMonitor()
 {
 	if (monitor_)
 		return;
-	monitor_ = FileSystemWatcher::monitor(filename_);
+	monitor_ = FileSystemWatcher::activeMonitor(filename_);
 	monitor_->connect([=](){ startLoading(); });
 }
 

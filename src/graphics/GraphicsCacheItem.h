@@ -66,6 +66,8 @@ public:
 	void startMonitoring() const;
 	///
 	bool monitoring() const;
+	/// perform a modification check asynchronously
+	void checkModifiedAsync() const;
 
 	/** Get the image associated with filename().
 	 *  If the image is not yet loaded, returns 0.

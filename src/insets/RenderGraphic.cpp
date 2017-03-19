@@ -142,6 +142,7 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 			loader_.startLoading();
 		if (!loader_.monitoring())
 			loader_.startMonitoring();
+		loader_.checkModifiedAsync();
 	}
 
 	bool const image_ready = displayGraphic(params_) && readyToDisplay(loader_);

@@ -328,6 +328,15 @@ bool Loader::monitoring() const
 }
 
 
+void Loader::checkModifiedAsync() const
+{
+	if (!pimpl_->cached_item_)
+		return;
+
+	pimpl_->cached_item_->checkModifiedAsync();
+}
+
+
 FileName const & Loader::filename() const
 {
 	static FileName const empty;
