@@ -292,6 +292,7 @@ void RenderMonitoredPreview::draw(PainterInfo & pi, int x, int y) const
 {
 	RenderPreview::draw(pi, x, y);
 	startMonitoring();
+	monitor_->checkModifiedAsync();
 }
 
 
@@ -311,7 +312,7 @@ bool RenderMonitoredPreview::monitoring() const
 void RenderMonitoredPreview::startMonitoring() const
 {
 	if (!monitoring()) {
-		monitor_ = FileSystemWatcher::monitor(filename_);
+		monitor_ = FileSystemWatcher::activeMonitor(filename_);
 		monitor_->connect(changed_);
 	}
 }

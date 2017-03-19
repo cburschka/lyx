@@ -134,7 +134,7 @@ private:
 	/// This signal is emitted if the file is modified
 	ChangedSig changed_;
 	///
-	mutable support::FileMonitorPtr monitor_;
+	mutable support::ActiveFileMonitorPtr monitor_;
 	///
 	support::FileName filename_;
 };
