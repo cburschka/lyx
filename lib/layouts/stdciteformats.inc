@@ -32,13 +32,15 @@ CiteFormat default
 	# Macros
 	#
 	# Scheme of the first author in the bibliography
-	!firstnameform %surname%{%suffix%[[, %suffix%]]}{%prename%[[, %prename%]]}
+	!firstnameform {%prefix%[[%prefix% ]]}%surname%{%suffix%[[, %suffix%]]}{%prename%[[, %prename%]]}
 	# Scheme of other authors in the bibliography
-	!othernameform %surname%{%suffix%[[, %suffix%]]}{%prename%[[, %prename%]]}
+	!othernameform {%prefix%[[%prefix% ]]}%surname%{%suffix%[[, %suffix%]]}{%prename%[[, %prename%]]}
 	# Scheme of the first name in later parts (such as book editor)
-	!firstbynameform %prename% %surname%{%suffix%[[, %suffix%]]}
+	!firstbynameform %prename% {%prefix%[[%prefix% ]]}%surname%{%suffix%[[, %suffix%]]}
 	# Scheme of other authors in later parts (such as book editor)
-	!otherbynameform %prename% %surname%{%suffix%[[, %suffix%]]}
+	!otherbynameform %prename% {%prefix%[[%prefix% ]]}%surname%{%suffix%[[, %suffix%]]}
+	# Scheme of authors in citation references
+	!citenameform {%prefix%[[%prefix% ]]}%surname%
 	# pagination
 	!pages {%pages%[[, %_pptext% %pages%]]}
 	# ed. or eds.
