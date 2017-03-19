@@ -378,7 +378,18 @@ docstring convertLaTeXCommands(docstring const & str)
 			continue;
 		}
 
-		// we just ignore braces
+		// Change text mode accents in the form
+		// {\v a} to \v{a} (see #9340).
+		// FIXME: This is a sort of mini-tex2lyx.
+		//        Use the real tex2lyx instead!
+		static lyx::regex const tma_reg("^\\{\\\\[bcCdfGhHkrtuUv]\\s\\w\\}");
+		if (lyx::regex_search(to_utf8(val), tma_reg)) {
+			val = val.substr(1);
+			val.replace(2, 1, from_ascii("{"));
+			continue;
+		}
+
+		// Apart from the above, we just ignore braces
 		if (ch == '{' || ch == '}') {
 			val = val.substr(1);
 			continue;
