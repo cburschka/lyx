@@ -58,7 +58,7 @@ docstring renormalize(docstring const & input)
 struct name_parts {
 	docstring surname;
 	docstring prename;
-	docstring junior;
+	docstring suffix;
 };
 
 
@@ -101,7 +101,7 @@ name_parts nameParts(docstring const & iname)
 		// If we have three pieces (the maximum allowed by BibTeX),
 		// the second one is the jr part.
 		if (pieces.size() > 2)
-			res.junior = renormalize(pieces.at(1));
+			res.suffix = renormalize(pieces.at(1));
 		return res;
 	}
 
@@ -173,10 +173,10 @@ docstring constructName(docstring const & name, string const scheme)
 	// to a given scheme
 	docstring const prename = nameParts(name).prename;
 	docstring const surname = nameParts(name).surname;
-	docstring const junior = nameParts(name).junior;
+	docstring const suffix = nameParts(name).suffix;
 	string res = scheme;
 	static regex const reg1("(.*)(\\{%prename%\\[\\[)([^\\]]+)(\\]\\]\\})(.*)");
-	static regex const reg2("(.*)(\\{%junior%\\[\\[)([^\\]]+)(\\]\\]\\})(.*)");
+	static regex const reg2("(.*)(\\{%suffix%\\[\\[)([^\\]]+)(\\]\\]\\})(.*)");
 	smatch sub;
 	if (regex_match(scheme, sub, reg1)) {
 		res = sub.str(1);
@@ -186,14 +186,14 @@ docstring constructName(docstring const & name, string const scheme)
 	}
 	if (regex_match(res, sub, reg2)) {
 		res = sub.str(1);
-		if (!junior.empty())
+		if (!suffix.empty())
 			res += sub.str(3);
 		res += sub.str(5);
 	}
 	docstring result = from_ascii(res);
 	result = subst(result, from_ascii("%prename%"), prename);
 	result = subst(result, from_ascii("%surname%"), surname);
-	result = subst(result, from_ascii("%junior%"), junior);
+	result = subst(result, from_ascii("%suffix%"), suffix);
 	return result;
 }
 
@@ -476,15 +476,15 @@ docstring const BibTeXInfo::getAuthorList(Buffer const * buf,
 		     : " and ";
 	string firstnameform =
 			buf ? buf->params().documentClass().getCiteMacro(engine_type, "!firstnameform")
-			     : "%surname%{%junior%[[, %junior%]]}{%prename%[[, %prename%]]}";
+			     : "%surname%{%suffix%[[, %suffix%]]}{%prename%[[, %prename%]]}";
 	if (!beginning)
 		firstnameform = buf ? buf->params().documentClass().getCiteMacro(engine_type, "!firstbynameform")
-					     : "%prename% %surname%{%junior%[[, %junior%]]}";
+					     : "%prename% %surname%{%suffix%[[, %suffix%]]}";
 	string othernameform = buf ? buf->params().documentClass().getCiteMacro(engine_type, "!othernameform")
-			     : "%surname%{%junior%[[, %junior%]]}{%prename%[[, %prename%]]}";
+			     : "%surname%{%suffix%[[, %suffix%]]}{%prename%[[, %prename%]]}";
 	if (!beginning)
 		othernameform = buf ? buf->params().documentClass().getCiteMacro(engine_type, "!otherbynameform")
-					     : "%prename% %surname%{%junior%[[, %junior%]]}";
+					     : "%prename% %surname%{%suffix%[[, %suffix%]]}";
 
 	// Shorten the list (with et al.) if forceshort is set
 	// and the list can actually be shortened, else if maxcitenames
