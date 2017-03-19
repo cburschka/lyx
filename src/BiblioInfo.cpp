@@ -151,7 +151,16 @@ docstring constructName(docstring const & name, string const scheme)
 	// to a given scheme
 	docstring const prename = nameParts(name).first;
 	docstring const surname = nameParts(name).second;
-	docstring result = from_ascii(scheme);
+	string res = scheme;
+	static regex const reg1("(.*)(\\{%prename%\\[\\[)([^\\]]+)(\\]\\]\\})(.*)");
+	smatch sub;
+	if (regex_match(scheme, sub, reg1)) {
+		res = sub.str(1);
+		if (!prename.empty())
+			res += sub.str(3);
+		res += sub.str(5);
+	}
+	docstring result = from_ascii(res);
 	result = subst(result, from_ascii("%prename%"), prename);
 	result = subst(result, from_ascii("%surname%"), surname);
 	return result;

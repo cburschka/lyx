@@ -32,9 +32,9 @@ CiteFormat default
 	# Macros
 	#
 	# Scheme of the first author in the bibliography
-	!firstnameform %surname%, %prename%
+	!firstnameform %surname%{%prename%[[, %prename%]]}
 	# Scheme of other authors in the bibliography
-	!othernameform %surname%, %prename%
+	!othernameform %surname%{%prename%[[, %prename%]]}
 	# Scheme of the first name in later parts (such as book editor)
 	!firstbynameform %prename% %surname%
 	# Scheme of other authors in later parts (such as book editor)
