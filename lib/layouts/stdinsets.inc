@@ -473,6 +473,10 @@ InsetLayout Float
 	EndHTMLStyle
 End
 
+#InsetWrap requires these, independently of whether stdfloats.inc is included
+OutlinerName table        "Tables" #no AddToToc (built-in)
+OutlinerName figure       "Figures" #no AddToToc (built-in)
+
 InsetLayout Wrap
 	LabelFont
 	  Color               collapsable
