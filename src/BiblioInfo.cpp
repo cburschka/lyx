@@ -55,11 +55,19 @@ docstring renormalize(docstring const & input)
 }
 
 
+struct name_parts {
+	docstring surname;
+	docstring prename;
+	docstring junior;
+};
+
+
 // gets the "prename" and "family name" from an author-type string
-pair<docstring, docstring> nameParts(docstring const & iname)
+name_parts nameParts(docstring const & iname)
 {
+	name_parts res;
 	if (iname.empty())
-		return make_pair(docstring(), docstring());
+		return res;
 
 	// First we check for goupings (via {...}) and replace blanks and
 	// commas inside groups with temporary placeholders
@@ -85,21 +93,33 @@ pair<docstring, docstring> nameParts(docstring const & iname)
 	// Now we look for a comma, and take the last name to be everything
 	// preceding the right-most one, so that we also get the "jr" part.
 	vector<docstring> pieces = getVectorFromString(name);
-	if (pieces.size() > 1)
+	if (pieces.size() > 1) {
 		// whether we have a jr. part or not, it's always
 		// the first and last item (reversed)
-		return make_pair(renormalize(pieces.back()), renormalize(pieces.front()));
+		res.surname = renormalize(pieces.front());
+		res.prename = renormalize(pieces.back());
+		// If we have three pieces (the maximum allowed by BibTeX),
+		// the second one is the jr part.
+		if (pieces.size() > 2)
+			res.junior = renormalize(pieces.at(1));
+		return res;
+	}
 
 	// OK, so now we want to look for the last name. We're going to
 	// include the "von" part. This isn't perfect.
 	// Split on spaces, to get various tokens.
 	pieces = getVectorFromString(name, from_ascii(" "));
 	// No space: Only a family name given
-	if (pieces.size() < 2)
-		return make_pair(from_ascii(""), renormalize(pieces.back()));
+	if (pieces.size() < 2) {
+		res.surname = renormalize(pieces.back());
+		return res;
+	}
 	// If we get two pieces, assume the last one is the last name
-	if (pieces.size() == 2)
-		return make_pair(renormalize(pieces.front()), renormalize(pieces.back()));
+	if (pieces.size() == 2) {
+		res.surname = renormalize(pieces.back());
+		res.prename = renormalize(pieces.front());
+		return res;
+	}
 
 	// More than 3 pieces: Now we look for the first piece that
 	// begins with a lower case letter (the "von-part").
@@ -141,7 +161,9 @@ pair<docstring, docstring> nameParts(docstring const & iname)
 			first = false;
 		surname += *it;
 	}
-	return make_pair(renormalize(prename), renormalize(surname));
+	res.surname = renormalize(surname);
+	res.prename = renormalize(prename);
+	return res;
 }
 
 
@@ -149,10 +171,12 @@ docstring constructName(docstring const & name, string const scheme)
 {
 	// re-constructs a name from name parts according
 	// to a given scheme
-	docstring const prename = nameParts(name).first;
-	docstring const surname = nameParts(name).second;
+	docstring const prename = nameParts(name).prename;
+	docstring const surname = nameParts(name).surname;
+	docstring const junior = nameParts(name).junior;
 	string res = scheme;
 	static regex const reg1("(.*)(\\{%prename%\\[\\[)([^\\]]+)(\\]\\]\\})(.*)");
+	static regex const reg2("(.*)(\\{%junior%\\[\\[)([^\\]]+)(\\]\\]\\})(.*)");
 	smatch sub;
 	if (regex_match(scheme, sub, reg1)) {
 		res = sub.str(1);
@@ -160,9 +184,16 @@ docstring constructName(docstring const & name, string const scheme)
 			res += sub.str(3);
 		res += sub.str(5);
 	}
+	if (regex_match(res, sub, reg2)) {
+		res = sub.str(1);
+		if (!junior.empty())
+			res += sub.str(3);
+		res += sub.str(5);
+	}
 	docstring result = from_ascii(res);
 	result = subst(result, from_ascii("%prename%"), prename);
 	result = subst(result, from_ascii("%surname%"), surname);
+	result = subst(result, from_ascii("%junior%"), junior);
 	return result;
 }
 
@@ -445,15 +476,15 @@ docstring const BibTeXInfo::getAuthorList(Buffer const * buf,
 		     : " and ";
 	string firstnameform =
 			buf ? buf->params().documentClass().getCiteMacro(engine_type, "!firstnameform")
-			     : "%surname%, %prename%";
+			     : "%surname%{%junior%[[, %junior%]]}{%prename%[[, %prename%]]}";
 	if (!beginning)
 		firstnameform = buf ? buf->params().documentClass().getCiteMacro(engine_type, "!firstbynameform")
-					     : "%prename% %surname%";
+					     : "%prename% %surname%{%junior%[[, %junior%]]}";
 	string othernameform = buf ? buf->params().documentClass().getCiteMacro(engine_type, "!othernameform")
-			     : "%surname%, %prename%";
+			     : "%surname%{%junior%[[, %junior%]]}{%prename%[[, %prename%]]}";
 	if (!beginning)
 		othernameform = buf ? buf->params().documentClass().getCiteMacro(engine_type, "!otherbynameform")
-					     : "%prename% %surname%";
+					     : "%prename% %surname%{%junior%[[, %junior%]]}";
 
 	// Shorten the list (with et al.) if forceshort is set
 	// and the list can actually be shortened, else if maxcitenames
@@ -481,13 +512,13 @@ docstring const BibTeXInfo::getAuthorList(Buffer const * buf,
 			retval += (i == 0) ? constructName(*it, firstnameform)
 				: constructName(*it, othernameform);
 		else
-			retval += nameParts(*it).second;
+			retval += nameParts(*it).surname;
 	}
 	if (shorten) {
 		if (allnames)
 			retval = constructName(authors[0], firstnameform) + (buf ? buf->B_(etal) : from_ascii(etal));
 		else
-			retval = nameParts(authors[0]).second + (buf ? buf->B_(etal) : from_ascii(etal));
+			retval = nameParts(authors[0]).surname + (buf ? buf->B_(etal) : from_ascii(etal));
 	}
 
 	return convertLaTeXCommands(retval);
