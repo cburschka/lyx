@@ -13,6 +13,12 @@
   be safely dissolved, as it will be automatically inserted at export time
   if needed, as usual.
 
+* LyX now outputs en- and em-dashes as -- and --- ligatures when exporting to
+  latex using TeX fonts, as done in version 2.1 and earlier. In version 2.2
+  they were instead output as the macros \textendash and \textemdash, causing
+  changed output with old documents and bugs. The 2.2 behavior can be restored
+  by don't allowing using dash ligatures in Document→Settings→Fonts.
+
 
 !!!The following pref variables were added in 2.3:
 
@@ -82,3 +88,16 @@
 
 !!Caveats when upgrading from earlier versions to 2.3.x
 
+* When loading documents created with LyX 2.2, you might need to check
+  "Don't use ligatures for en- and em-dashes" in Document→Settings→Fonts
+  to avoid changed output if they contain en- or em-dashes and use TeX fonts.
+  You don't need to do this for documents created with earlier versions.
+
+* If the "Use non-TeX fonts" and "Don't use ligatures for en- and em-dashes"
+  document preferences are not checked, when exporting documents containing
+  en- and em-dashes to the format of LyX 2.0 or earlier, the following line
+  has to be manually added to the unicodesymbols file of that LyX version:<br>
+  0x200b "\\hspace{0pt}" "" "" "" "" # ZERO WIDTH SPACE<br>
+  This avoids "uncodable character" issues if the document is actually
+  loaded by that LyX version. LyX 2.1 and later versions already have the
+  necessary definition in their unicodesymbols file.

@@ -1274,6 +1274,21 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		// written. (Asger)
 		break;
 
+	case 0x2013:
+	case 0x2014:
+		if (bparams.use_dash_ligatures && !bparams.useNonTeXFonts) {
+			if (c == 0x2013) {
+				// en-dash
+				os << "--";
+				column +=2;
+			} else {
+				// em-dash
+				os << "---";
+				column +=3;
+			}
+			break;
+		}
+		// fall through
 	default:
 		if (c == '\0')
 			return;

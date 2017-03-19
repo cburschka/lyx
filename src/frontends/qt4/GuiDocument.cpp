@@ -838,6 +838,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(fontModule->microtypeCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
+	connect(fontModule->dashesCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 	connect(fontModule->scaleSansSB, SIGNAL(valueChanged(int)),
 		this, SLOT(change_adaptor()));
 	connect(fontModule->scaleTypewriterSB, SIGNAL(valueChanged(int)),
@@ -3046,6 +3048,7 @@ void GuiDocument::applyView()
 		fromqstr(fontModule->cjkFontLE->text());
 
 	bp_.use_microtype = fontModule->microtypeCB->isChecked();
+	bp_.use_dash_ligatures = !fontModule->dashesCB->isChecked();
 
 	bp_.fonts_sans_scale[nontexfonts] = fontModule->scaleSansSB->value();
 	bp_.fonts_sans_scale[!nontexfonts] = fontModule->font_sf_scale;
@@ -3550,6 +3553,7 @@ void GuiDocument::paramsToDialog()
 		fontModule->cjkFontLE->setText(QString());
 	
 	fontModule->microtypeCB->setChecked(bp_.use_microtype);
+	fontModule->dashesCB->setChecked(!bp_.use_dash_ligatures);
 
 	fontModule->fontScCB->setChecked(bp_.fonts_expert_sc);
 	fontModule->fontOsfCB->setChecked(bp_.fonts_old_figures);

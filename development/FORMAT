@@ -7,6 +7,13 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2017-03-19 Enrico Forestieri <forenr@lyx.org>
+	* Format incremented to 535: support for en/em-dash as ligatures.
+	  The en- and em-dashes (U+2013 and U+2014) are now exported as
+	  the font ligatures -- and --- when they would have been exported
+	  as the macros \textendash and \textemdash, unless instructed
+	  otherwise by a document preference.
+
 2017-02-04 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 534: Support for chapterbib
           - New buffer param value \multibib child

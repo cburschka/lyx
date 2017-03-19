@@ -1840,6 +1840,97 @@ def revert_chapterbib(document):
 
     # 7. Chapterbib proper
     add_to_preamble(document, ["\\usepackage{chapterbib}"])
+
+
+def convert_dashligatures(document):
+    " Remove a zero-length space (U+200B) after en- and em-dashes. "
+
+    i = 0
+    while i < len(document.body):
+        words = document.body[i].split()
+        # Skip some document parts where dashes are not converted
+        if len(words) > 1 and words[0] == "\\begin_inset" and \
+           words[1] in ["CommandInset", "ERT", "External", "Formula", \
+                        "FormulaMacro", "Graphics", "IPA", "listings"]:
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of " \
+                                 + words[1] + " inset at line " + str(i))
+                i += 1
+            else:
+                i = j
+            continue
+        if len(words) > 0 and words[0] in ["\\leftindent", \
+                "\\paragraph_spacing", "\\align", "\\labelwidthstring"]:
+            i += 1
+            continue
+
+        start = 0
+        while True:
+            j = document.body[i].find(u"\u2013", start) # en-dash
+            k = document.body[i].find(u"\u2014", start) # em-dash
+            if j == -1 and k == -1:
+                break
+            if j == -1 or (k != -1 and k < j):
+                j = k
+            after = document.body[i][j+1:]
+            if after.startswith(u"\u200B"):
+                document.body[i] = document.body[i][:j+1] + after[1:]
+            else:
+                if len(after) == 0 and document.body[i+1].startswith(u"\u200B"):
+                    document.body[i+1] = document.body[i+1][1:]
+                    break
+            start = j+1
+        i += 1
+
+
+def revert_dashligatures(document):
+    " Remove font ligature settings for en- and em-dashes. "
+    i = find_token(document.header, "\\use_dash_ligatures", 0)
+    if i == -1:
+        return
+    use_dash_ligatures = get_bool_value(document.header, "\\use_dash_ligatures", i)
+    del document.header[i]
+    use_non_tex_fonts = False
+    i = find_token(document.header, "\\use_non_tex_fonts", 0)
+    if i != -1:
+        use_non_tex_fonts = get_bool_value(document.header, "\\use_non_tex_fonts", i)
+    if not use_dash_ligatures or use_non_tex_fonts:
+        return
+
+    # Add a zero-length space (U+200B) after en- and em-dashes
+    i = 0
+    while i < len(document.body):
+        words = document.body[i].split()
+        # Skip some document parts where dashes are not converted
+        if len(words) > 1 and words[0] == "\\begin_inset" and \
+           words[1] in ["CommandInset", "ERT", "External", "Formula", \
+                        "FormulaMacro", "Graphics", "IPA", "listings"]:
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: Can't find end of " \
+                                 + words[1] + " inset at line " + str(i))
+                i += 1
+            else:
+                i = j
+            continue
+        if len(words) > 0 and words[0] in ["\\leftindent", \
+                "\\paragraph_spacing", "\\align", "\\labelwidthstring"]:
+            i += 1
+            continue
+
+        start = 0
+        while True:
+            j = document.body[i].find(u"\u2013", start) # en-dash
+            k = document.body[i].find(u"\u2014", start) # em-dash
+            if j == -1 and k == -1:
+                break
+            if j == -1 or (k != -1 and k < j):
+                j = k
+            after = document.body[i][j+1:]
+            document.body[i] = document.body[i][:j+1] + u"\u200B" + after
+            start = j+1
+        i += 1
     
 
 ##
@@ -1873,10 +1964,12 @@ convert = [
            [531, []],
            [532, [convert_literalparam]],
            [533, []],
-           [534, []]
+           [534, []],
+           [535, [convert_dashligatures]]
           ]
 
 revert =  [
+           [534, [revert_dashligatures]],
            [533, [revert_chapterbib]],
            [532, [revert_multibib]],
            [531, [revert_literalparam]],

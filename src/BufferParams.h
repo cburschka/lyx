@@ -280,6 +280,8 @@ public:
 	std::string fonts_cjk;
 	/// use LaTeX microtype package
 	bool use_microtype;
+	/// use font ligatures for en- and em-dashes
+	bool use_dash_ligatures;
 	///
 	Spacing & spacing();
 	Spacing const & spacing() const;
