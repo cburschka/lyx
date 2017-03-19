@@ -158,11 +158,57 @@ docstring constructName(docstring const & name, string const scheme)
 }
 
 
+vector<docstring> const getAuthors(docstring const & author)
+{
+	// We check for goupings (via {...}) and only consider " and "
+	// outside groups as author separator. This is to account
+	// for cases such as {{Barnes and Noble, Inc.}}, which
+	// need to be treated as one single family name.
+	// We use temporary placeholders in order to differentiate the
+	// diverse " and " cases.
+
+	// First, we temporarily replace all ampersands. It is rather unusual
+	// in author names, but can happen (consider cases such as "C \& A Corp.").
+	docstring iname = subst(author, from_ascii("&"), from_ascii("$$amp!"));
+	// Then, we temporarily make all " and " strings to ampersands in order
+	// to handle them later on a per-char level.
+	iname = subst(iname, from_ascii(" and "), from_ascii(" & "));
+	// Now we traverse through the string and replace the "&" by the proper
+	// output in- and outside groups
+	docstring name;
+	int gl = 0;
+	docstring::const_iterator p = iname.begin();
+	while (p != iname.end()) {
+		// count grouping level
+		if (*p == '{')
+			++gl;
+		else if (*p == '}')
+			--gl;
+		// generate string with probable placeholders
+		if (*p == '&') {
+			if (gl > 0)
+				// Inside groups, we output "and"
+				name += from_ascii("and");
+			else
+				// Outside groups, we output a separator
+				name += from_ascii("$$namesep!");
+		}
+		else
+			name += *p;
+		++p;
+	}
+
+	// re-insert the literal ampersands
+	name = subst(name, from_ascii("$$amp!"), from_ascii("&"));
+
+	// Now construct the actual vector
+	return getVectorFromString(name, from_ascii(" $$namesep! "));
+}
+
+
 bool multipleAuthors(docstring const author)
 {
-	vector<docstring> const authors =
-		getVectorFromString(author, from_ascii(" and "));
-	return authors.size() > 1;
+	return getAuthors(author).size() > 1;
 }
 
 
@@ -366,13 +412,9 @@ docstring const BibTeXInfo::getAuthorList(Buffer const * buf,
 	if (author.empty())
 		return author;
 
-	// FIXME Move this to a separate routine that can
-	// be called from elsewhere.
-	//
 	// OK, we've got some names. Let's format them.
-	// Try to split the author list on " and "
-	vector<docstring> const authors =
-		getVectorFromString(author, from_ascii(" and "));
+	// Try to split the author list
+	vector<docstring> const authors = getAuthors(author);
 
 	docstring retval;
 
