@@ -47,33 +47,62 @@ namespace lyx {
 
 namespace {
 
-// gets the "prename" and "family name" from an author-type string
-pair<docstring, docstring> nameParts(docstring const & name)
+// Remove placeholders from names
+docstring renormalize(docstring const & input)
 {
-	if (name.empty())
+	docstring res = subst(input, from_ascii("$$space!"), from_ascii(" "));
+	return subst(res, from_ascii("$$comma!"), from_ascii(","));
+}
+
+
+// gets the "prename" and "family name" from an author-type string
+pair<docstring, docstring> nameParts(docstring const & iname)
+{
+	if (iname.empty())
 		return make_pair(docstring(), docstring());
 
-	// first we look for a comma, and take the last name to be everything
+	// First we check for goupings (via {...}) and replace blanks and
+	// commas inside groups with temporary placeholders
+	docstring name;
+	int gl = 0;
+	docstring::const_iterator p = iname.begin();
+	while (p != iname.end()) {
+		// count grouping level
+		if (*p == '{')
+			++gl;
+		else if (*p == '}')
+			--gl;
+		// generate string with probable placeholders
+		if (*p == ' ' && gl > 0)
+			name += from_ascii("$$space!");
+		else if (*p == ',' && gl > 0)
+			name += from_ascii("$$comma!");
+		else
+			name += *p;
+		++p;
+	}
+
+	// Now we look for a comma, and take the last name to be everything
 	// preceding the right-most one, so that we also get the "jr" part.
 	vector<docstring> pieces = getVectorFromString(name);
 	if (pieces.size() > 1)
 		// whether we have a jr. part or not, it's always
 		// the first and last item (reversed)
-		return make_pair(pieces.back(), pieces.front());
+		return make_pair(renormalize(pieces.back()), renormalize(pieces.front()));
 
 	// OK, so now we want to look for the last name. We're going to
 	// include the "von" part. This isn't perfect.
 	// Split on spaces, to get various tokens.
 	pieces = getVectorFromString(name, from_ascii(" "));
-	// unusual not to have a space, but could happen
+	// No space: Only a family name given
 	if (pieces.size() < 2)
-		return make_pair(from_ascii(""), name);
-	// If we get two, assume the last one is the last name
+		return make_pair(from_ascii(""), renormalize(pieces.back()));
+	// If we get two pieces, assume the last one is the last name
 	if (pieces.size() == 2)
-		return make_pair(pieces.front(), pieces.back());
+		return make_pair(renormalize(pieces.front()), renormalize(pieces.back()));
 
-	// Now we look for the first token that begins with
-	// a lower case letter or an opening group {.
+	// More than 3 pieces: Now we look for the first piece that
+	// begins with a lower case letter (the "von-part").
 	docstring prename;
 	vector<docstring>::const_iterator it = pieces.begin();
 	vector<docstring>::const_iterator const en = pieces.end();
@@ -82,14 +111,16 @@ pair<docstring, docstring> nameParts(docstring const & name)
 		if ((*it).empty())
 			continue;
 		char_type const c = (*it)[0];
-		if (isLower(c) || c == '{')
+		// If the piece starts with a lower case char, we assume
+		// this is the "von-part" (family name prefix) and thus part
+		// of the family name.
+		if (isLower(c))
 			break;
-		// if this is the last time through the loop, then
-		// what we now have is the last name, so we do not want
-		// to add that to the prename.
+		// If this is the last piece, then what we now have is
+		// the family name.
 		if (it + 1 == en)
 			break;
-		// add this piece to the prename
+		// Nothing of the former, so add this piece to the prename
 		if (!first)
 			prename += " ";
 		else
@@ -97,8 +128,8 @@ pair<docstring, docstring> nameParts(docstring const & name)
 		prename += *it;
 	}
 
-	// reconstruct the family name
-	// note that if we left the loop with because it + 1 == en,
+	// Reconstruct the family name.
+	// Note that if we left the loop with because it + 1 == en,
 	// then this will still do the right thing, i.e., make surname
 	// just be the last piece.
 	docstring surname;
@@ -110,7 +141,7 @@ pair<docstring, docstring> nameParts(docstring const & name)
 			first = false;
 		surname += *it;
 	}
-	return make_pair(prename, surname);
+	return make_pair(renormalize(prename), renormalize(surname));
 }
 
 
