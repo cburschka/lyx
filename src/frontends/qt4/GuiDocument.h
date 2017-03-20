@@ -105,6 +105,7 @@ private Q_SLOTS:
 	void ttChanged(int);
 	void fontOsfToggled(bool state);
 	void fontScToggled(bool state);
+	void dashesToggled(bool state);
 	void setIndent(int);
 	void enableIndent(bool);
 	void setSkip(int);

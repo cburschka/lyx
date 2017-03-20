@@ -88,10 +88,10 @@
 
 !!Caveats when upgrading from earlier versions to 2.3.x
 
-* If the "Use non-TeX fonts" and "Don't use ligatures for en- and em-dashes"
-  document preferences are not checked, when exporting documents containing
-  en- and em-dashes to the format of LyX 2.0 or earlier, the following line
-  has to be manually added to the unicodesymbols file of that LyX version:<br>
+* If using TeX fonts and en- and em-dashes are output as font ligatures,
+  when exporting documents containing en- and em-dashes to the format of
+  LyX 2.0 or earlier, the following line has to be manually added to the
+  unicodesymbols file of that LyX version:<br>
   0x200b "\\hspace{0pt}" "" "" "" "" # ZERO WIDTH SPACE<br>
   This avoids "uncodable character" issues if the document is actually
   loaded by that LyX version. LyX 2.1 and later versions already have the

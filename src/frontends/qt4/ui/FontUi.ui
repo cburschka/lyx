@@ -255,10 +255,10 @@
    <item row="11" column="1">
     <widget class="QCheckBox" name="dashesCB">
      <property name="toolTip">
-      <string>Use \textendash and \textemdash instead of -- and --- for en- and em-dashes</string>
+      <string>Use font ligatures -- and --- instead of \textendash and \textemdash for en- and em-dashes</string>
      </property>
      <property name="text">
-      <string>Don't use ligatures for en- and &amp;em-dashes</string>
+      <string>Output en- and &amp;em-dashes as ligatures</string>
      </property>
     </widget>
    </item>
