@@ -88,11 +88,6 @@
 
 !!Caveats when upgrading from earlier versions to 2.3.x
 
-* When loading documents created with LyX 2.2, you might need to check
-  "Don't use ligatures for en- and em-dashes" in Document→Settings→Fonts
-  to avoid changed output if they contain en- or em-dashes and use TeX fonts.
-  You don't need to do this for documents created with earlier versions.
-
 * If the "Use non-TeX fonts" and "Don't use ligatures for en- and em-dashes"
   document preferences are not checked, when exporting documents containing
   en- and em-dashes to the format of LyX 2.0 or earlier, the following line

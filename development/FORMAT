@@ -13,6 +13,7 @@ changes happened in particular if possible. A good example would be
 	  the font ligatures -- and --- when they would have been exported
 	  as the macros \textendash and \textemdash, unless instructed
 	  otherwise by a document preference.
+	  - New buffer param \use_dash_ligatures {true|false}
 
 2017-02-04 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 534: Support for chapterbib
