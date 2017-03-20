@@ -58,7 +58,7 @@ private:
 		/// Current CRC value - only re-computed if mtime has changed.
 		unsigned long crc_cur;
 		/// mtime from last time current CRC was calculated.
-		long mtime_cur;
+		std::time_t mtime_cur;
 		///
 		bool changed() const;
 	};
