@@ -1847,7 +1847,7 @@ def convert_dashligatures(document):
 
     i = find_token(document.header, "\\use_microtype", 0)
     if i != -1:
-        if document.start == 508:
+        if document.start > 474 and document.start < 509:
             # This was created by LyX 2.2
             document.header[i+1:i+1] = ["\\use_dash_ligatures false"]
         else:
