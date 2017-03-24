@@ -82,7 +82,7 @@ public:
 		TeX2LyXDocClass const & textclass_,
 		Layout const * layout_ = 0,
 		Layout const * parent_layout_= 0,
-		TeXFont font_ = TeXFont());
+		TeXFont const & font_ = normalfont);
 	~Context();
 
 	/// Output a \\begin_layout if requested

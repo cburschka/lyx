@@ -78,7 +78,7 @@ bool Context::empty = true;
 Context::Context(bool need_layout_,
 		 TeX2LyXDocClass const & textclass_,
 		 Layout const * layout_, Layout const * parent_layout_,
-		 TeXFont font_)
+		 TeXFont const & font_)
 	: need_layout(need_layout_),
 	  need_end_layout(false), need_end_deeper(false),
 	  has_item(false), deeper_paragraph(false),

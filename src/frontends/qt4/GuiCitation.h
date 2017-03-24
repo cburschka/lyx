@@ -105,7 +105,7 @@ private:
 	/// set the styles combo
 	void updateStyles(BiblioInfo const & bi);
 	/// set the formatting widgets
-	void updateFormatting(CitationStyle currentStyle);
+	void updateFormatting(CitationStyle const & currentStyle);
 	///
 	void updateControls(BiblioInfo const & bi);
 	/// Set the appropriate hinting text on the filter bar
