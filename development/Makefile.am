@@ -9,6 +9,7 @@ SUBDIRS = cygwin
 endif
 
 EXTRA_DIST = coding/Rules coding/Recommendations \
+	coverity_modeling.cpp \
 	FORMAT lyx.rpm.README \
 	lyxserver lyx.spec.in lyx.spec \
 	LyX-Mac-binary-release.sh \

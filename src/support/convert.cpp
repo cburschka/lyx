@@ -23,9 +23,24 @@
 
 using namespace std;
 
-namespace lyx {
+namespace {
 
-using boost::lexical_cast;
+// A version of lexical cast that does not throw. Useful for when we convert to string
+template<typename To, typename From>
+To lexical_cast(From const & value, To const & defaultResult = To())
+{
+	try {
+		return boost::lexical_cast<To>(value);
+	} catch(...) {
+		// Ignore all exceptions and use default.
+		return defaultResult;
+	}
+}
+
+}
+
+
+namespace lyx {
 
 template<>
 string convert<string>(bool b)
