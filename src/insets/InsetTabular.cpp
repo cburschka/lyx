@@ -66,6 +66,7 @@
 #include "support/unique_ptr.h"
 
 #include <cstring>
+#include <iomanip>
 #include <iostream>
 #include <limits>
 #include <sstream>
@@ -5356,6 +5357,8 @@ void InsetTabular::tabularFeatures(Cursor & cur, string const & argument)
 	cur.recordUndoInset(this);
 
 	istringstream is(argument);
+	// limit the size of strings we read to avoid memory problems
+	is >> setw(65636);
 	string s;
 	// Safe guard.
 	size_t safe_guard = 0;

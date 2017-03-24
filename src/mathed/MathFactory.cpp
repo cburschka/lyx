@@ -149,6 +149,8 @@ void initSymbols()
 	}
 
 	ifstream fs(filename.toFilesystemEncoding().c_str());
+	// limit the size of strings we read to avoid memory problems
+	fs >> setw(65636);
 	string line;
 	bool skip = false;
 	while (getline(fs, line)) {
@@ -160,6 +162,8 @@ void initSymbols()
 		// special case of iffont/else/endif
 		if (line.size() >= 7 && line.substr(0, 6) == "iffont") {
 			istringstream is(line);
+			// limit the size of strings we read to avoid memory problems
+			is >> setw(65636);
 			string tmp;
 			is >> tmp;
 			is >> tmp;
