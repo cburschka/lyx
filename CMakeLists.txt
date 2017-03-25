@@ -125,7 +125,7 @@ LYX_OPTION(REQUIRE_SPELLCHECK "Abort if no spellchecker available" OFF ALL)
 LYX_OPTION(ASPELL           "Require aspell" OFF ALL)
 LYX_OPTION(ENCHANT          "Require Enchant" OFF ALL)
 LYX_OPTION(HUNSPELL         "Require Hunspell" OFF ALL)
-LYX_OPTION(DEVEL_VERSION    "Build developer version" OFF ALL) 
+LYX_OPTION(DEVEL_VERSION    "Build developer version" OFF ALL)
 LYX_OPTION(RELEASE          "Build release version, build debug when disabled" OFF ALL)
 LYX_OPTION(DEBUG            "Enforce debug build"  OFF ALL)
 LYX_OPTION(NO_OPTIMIZE      "Don't use any optimization/debug flags"  OFF ALL)
@@ -144,8 +144,8 @@ LYX_OPTION(ASAN             "Use address sanitizer" OFF ALL)
 LYX_COMBO(USE_QT            "Use Qt version as frontend" QT4 QT5)
 #LYX_OPTION(3RDPARTY_BUILD   "Build 3rdparty libs" OFF ALL)
 LYX_OPTION(EXTERNAL_Z       "OFF := Build 3rdparty lib zlib" ON ALL)
-LYX_OPTION(EXTERNAL_ICONV   "OFF :=  Build 3rdparty lib iconvlib" ON ALL)
-LYX_OPTION(EXTERNAL_HUNSPELL "OFF :=  Build 3rdparty lib hunspelllib" ON ALL)
+LYX_OPTION(EXTERNAL_ICONV   "OFF := Build 3rdparty lib iconvlib" ON ALL)
+LYX_OPTION(EXTERNAL_HUNSPELL "OFF := Build 3rdparty lib hunspelllib" ON ALL)
 LYX_COMBO(EXTERNAL_MYTHES   "OFF := Build 3rdparty lib mytheslib" AUTO OFF ON)
 
 # GCC specific
@@ -625,6 +625,16 @@ if(LYX_USE_QT MATCHES "QT5")
 		find_package(Qt5X11Extras QUIET)
 		find_package(Qt5WinExtras QUIET)
 		set(QTVERSION ${Qt5Core_VERSION})
+		if (QTVERSION VERSION_LESS "5.4")
+			message(STATUS "QTVERSION = \"${QTVERSION}\"")
+			message(STATUS "This version is not recommended, try either option -DLYX_USE_QT=QT4 or")
+			message(STATUS "install QT-Version >= \"5.4\"")
+			# see thread in lyx-devel list
+			# From: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>
+			# Date 11.03.2017
+			# Subject: cmake compilation error
+			#message(FATAL_ERROR "Wrong Qt-Version")
+		endif()
 		macro (qt_use_modules)
 			qt5_use_modules(${ARGN})
 		endmacro()
@@ -675,9 +685,9 @@ if (LYX_EXTERNAL_MYTHES MATCHES "AUTO")
   # try system library first
   find_package(MyThesLIB)
   if (MYTHESLIB_FOUND)
-    set(LYX_EXTERNAL_MYTHES CACHE STRING "ON" FORCE)
+    set(LYX_EXTERNAL_MYTHES ON CACHE STRING "OFF:= Build 3rdparty mytheslib" FORCE)
   else()
-    set(LYX_EXTERNAL_MYTHES CACHE STRING "OFF" FORCE)
+    set(LYX_EXTERNAL_MYTHES OFF CACHE STRING "OFF:= Build 3rdparty mytheslib" FORCE)
   endif()
 endif()
 if (LYX_EXTERNAL_MYTHES MATCHES "ON")
@@ -814,7 +824,7 @@ if(WIN32)
 	endif()
 endif()
 
-# Compute qt4-version from ${QTVERSION}
+# Compute qt-version from ${QTVERSION}
 
 message(STATUS "")
 foreach(_v PACKAGE PACKAGE_VERSION
