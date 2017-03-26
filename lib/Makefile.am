@@ -6,7 +6,7 @@ CHMOD = chmod
 
 EXTRA_DIST = examples/CMakeLists.txt scripts/CMakeLists.txt
 
-dist_pkgdata_DATA = CREDITS autocorrect chkconfig.ltx external_templates \
+dist_pkgdata_DATA = CREDITS autocorrect chkconfig.ltx \
 	encodings layouttranslations languages latexfonts RELEASE-NOTES \
 	symbols syntax.default unicodesymbols
 
@@ -2420,6 +2420,18 @@ dist_ui_DATA = \
 	ui/stdcontext.inc \
 	ui/stdmenus.inc \
 	ui/stdtoolbars.inc
+
+xtemplatesdir = $(pkgdatadir)/xtemplates
+dist_xtemplates_DATA = \
+	xtemplates/chess.xtemplate \
+	xtemplates/dia.xtemplate \
+	xtemplates/gnumeric.xtemplate \
+	xtemplates/inkscape.xtemplate \
+	xtemplates/lilypond.xtemplate \
+	xtemplates/pdfpages.xtemplate \
+	xtemplates/raster_image.xtemplate \
+	xtemplates/vector_graphics.xtemplate \
+	xtemplates/xfig.xtemplate
 
 if INSTALL_POSIX
 # install application icons. The 'hicolor' theme is the default theme

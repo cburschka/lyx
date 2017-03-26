@@ -50,7 +50,7 @@ encodings_l10n.pot: $(top_srcdir)/lib/encodings
 ui_l10n.pot: $(top_srcdir)/lib/ui/*.ui $(top_srcdir)/lib/ui/*.inc
 	$(LYX_POT) -o $@ -t ui $^
 
-external_l10n.pot: $(top_srcdir)/lib/external_templates
+external_l10n.pot: $(top_srcdir)/lib/xtemplates/*.xtemplate
 	$(LYX_POT) -o $@ -t external $^
 
 formats_l10n.pot: $(top_srcdir)/lib/configure.py

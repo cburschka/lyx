@@ -1,0 +1,67 @@
+#
+# Chess Diagram External Template
+#
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+#
+# author Asger Alstrup Nielsen
+# author Angus Leeming
+# author Johnathan Burchill
+#
+# Full author contact details are available in file CREDITS.
+
+
+Template ChessDiagram
+	GuiName "Chess diagram"
+	HelpText
+		A chess position diagram.
+		This template will use XBoard to edit the position.
+		Use the 'File->Save Position' in XBoard to save
+		the position that you want to display.
+		Make sure to give it a '.fen' extension
+		and remember to type in a relative path
+		to the LyX document location.
+		Within XBoard, use 'Edit->Edit Position'
+		to enable general editing of the board.
+		You might also check out the
+		'Options->Test legality' option, and
+		remember to middle and right click to
+		insert new material in the board.
+		In order for this to work, you have to
+		put the bundled lyxskak.sty in a place
+		that TeX will find it, and you will need
+		to install the skak package from CTAN.
+	HelpTextEnd
+	InputFormat fen
+	FileFilter "*.fen"
+	AutomaticProduction true
+	Preview InstantPreview
+	Format LaTeX
+		Product "\\loadgame{$$AbsOrRelPathMaster$$Basename}\\showboard"
+		Requirement "chess"
+		UpdateFormat fen
+		UpdateResult "$$AbsPath$$Basename$$Extension"
+		ReferencedFile latex "$$AbsPath$$Basename$$Extension"
+	FormatEnd
+	Format PDFLaTeX
+		Product "\\loadgame{$$AbsOrRelPathMaster$$Basename}\\showboard"
+		Requirement "chess"
+		UpdateFormat fen
+		UpdateResult "$$AbsPath$$Basename$$Extension"
+		ReferencedFile pdflatex "$$AbsPath$$Basename$$Extension"
+	FormatEnd
+	Format Ascii
+		Product "$$Contents(\"$$AbsPath$$Basename.asc\")"
+		UpdateFormat asciichess
+		UpdateResult "$$AbsPath$$Basename.asc"
+	FormatEnd
+	Format DocBook
+		Product "[Chess: $$AbsOrRelPathMaster$$Basename]"
+	FormatEnd
+	Format XHTML
+		Product "<pre>$$Contents(\"$$AbsPath$$Basename.asc\")</pre>"
+		UpdateFormat asciichess
+		UpdateResult "$$AbsPath$$Basename.asc"
+	FormatEnd
+TemplateEnd
+

@@ -1,0 +1,57 @@
+#
+# PDFPages External Template
+#
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+#
+# author Asger Alstrup Nielsen
+# author Angus Leeming
+# author Johnathan Burchill
+#
+# Full author contact details are available in file CREDITS.
+
+Template PDFPages
+	GuiName "PDF pages"
+	HelpText
+		Includes PDF documents, using the 'pdfpages' package.
+		To include multiple pages, use the 'pages'-option,
+		which must be inserted to 'Options'.
+		Examples:
+		* pages={x-y} (for a range of pages)
+		* pages={x,y,z} (for specific pages)
+		* pages=- (to include all pages)
+		* pages=last-1 (to include all pages in reverse order)
+		With the option 'noautoscale' the PDF pages are
+		inserted in their original size.
+		Read the documentation of the pdfpages package
+		for further options and details.
+	HelpTextEnd
+	InputFormat pdf6
+	FileFilter "*.pdf"
+	AutomaticProduction true
+	Transform Rotate
+	Transform Resize
+	Transform Extra
+	Preview Graphics
+	Format LaTeX
+		TransformOption Rotate RotationLatexOption
+		TransformOption Resize ResizeLatexOption
+		TransformOption Extra  ExtraOption
+		Option Arg "[$$Extra,$$Rotate,$$Resize]"
+		Product "\\includepdf$$Arg{$$AbsOrRelPathMaster$$Basename}"
+		UpdateFormat pdf6
+		UpdateResult "$$AbsPath$$Basename.pdf"
+		Requirement "pdfpages"
+		ReferencedFile pdflatex "$$AbsPath$$Basename.pdf"
+	FormatEnd
+	Format Ascii
+		Product "[PDFPages: $$FName]"
+	FormatEnd
+	Format DocBook
+		Product "[PDFPages: $$FName]"
+	FormatEnd
+	Format XHTML
+		Product "[PDFPages: $$FName]"
+	FormatEnd
+TemplateEnd
+

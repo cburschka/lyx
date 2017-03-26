@@ -93,7 +93,7 @@ add_gettext_python(languages lib languages)
 add_gettext_python(latexfonts lib latexfonts)
 add_gettext_python(encodings lib encodings)
 add_gettext_python(ui lib/ui *.ui *.inc)
-add_gettext_python(external lib external_templates)
+add_gettext_python(external lib/xtemplates *.xtemplate)
 add_gettext_python(formats lib configure.py)
 add_gettext_python(layouttranslations lib/layouts *.layout *.inc *.module)
 

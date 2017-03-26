@@ -1,0 +1,88 @@
+#
+# XFig External Template
+#
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+#
+# author Asger Alstrup Nielsen
+# author Angus Leeming
+# author Johnathan Burchill
+#
+# Full author contact details are available in file CREDITS.
+
+
+PreambleDef WarnNotFound
+	%% Print a warning encased in an fbox.
+	\def\lyxstripprefix#1>{}
+	\newcommand{\warnNotFound}[1]{%
+	        \def\lyxtempfilename{#1}%
+	        \fbox{Could not find
+	                \ttfamily\expandafter\lyxstripprefix\meaning\lyxtempfilename!}%
+	        \typeout{Could not find \lyxtempfilename!}%
+	}
+PreambleDefEnd
+
+
+PreambleDef InputOrWarn
+	%% Input the file if it exists, using \input, else print a warning
+	\newcommand{\inputOrWarn}[1]{%
+	        \IfFileExists{#1}{\input{#1}}{\warnNotFound{#1}}}
+PreambleDefEnd
+
+
+Template XFig
+	GuiName "Xfig figure"
+	HelpText
+		An Xfig figure.
+	HelpTextEnd
+	InputFormat fig
+	FileFilter "*.fig"
+	AutomaticProduction true
+	Transform Rotate
+	Transform Resize
+	Preview InstantPreview
+	Format LaTeX
+		TransformCommand Rotate RotationLatexCommand
+		TransformCommand Resize ResizeLatexCommand
+		Product "$$RotateFront$$ResizeFront\\input{$$AbsOrRelPathMaster$$Basename.pstex_t}$$ResizeBack$$RotateBack"
+		UpdateFormat pstex
+		UpdateResult "$$AbsPath$$Basename.pstex_t"
+		Requirement "color"
+		Requirement "graphicx"
+		# Preamble WarnNotFound
+		# Preamble InputOrWarn
+		ReferencedFile latex "$$AbsOrRelPathMaster$$Basename.pstex_t"
+		ReferencedFile latex "$$AbsPath$$Basename.eps"
+		ReferencedFile dvi   "$$AbsPath$$Basename.eps"
+	FormatEnd
+	Format PDFLaTeX
+		TransformCommand Rotate RotationLatexCommand
+		TransformCommand Resize ResizeLatexCommand
+		Product "$$RotateFront$$ResizeFront\\input{$$AbsOrRelPathMaster$$Basename.pdftex_t}$$ResizeBack$$RotateBack"
+		UpdateFormat pdftex
+		UpdateResult "$$AbsPath$$Basename.pdftex_t"
+		Requirement "color"
+		Requirement "graphicx"
+		# Preamble WarnNotFound
+		# Preamble InputOrWarn
+		ReferencedFile pdflatex "$$AbsOrRelPathMaster$$Basename.pdftex_t"
+		ReferencedFile pdflatex "$$AbsPath$$Basename.pdf"
+	FormatEnd
+	Format Ascii
+		Product "[XFig: $$FName]"
+	FormatEnd
+	Format DocBook
+		Product "<graphic fileref=\"$$AbsOrRelPathMaster$$Basename.eps\"></graphic>"
+		UpdateFormat eps
+		UpdateResult "$$AbsPath$$Basename.eps"
+		ReferencedFile docbook     "$$AbsPath$$Basename.eps"
+		ReferencedFile docbook-xml "$$AbsPath$$Basename.eps"
+	FormatEnd
+	Format XHTML
+		Product "<img src=\"$$AbsOrRelPathMaster$$Basename.svg\" />"
+		UpdateFormat svg
+		UpdateResult "$$AbsPath$$Basename.svg"
+		ReferencedFile xhtml "$$AbsPath$$Basename.svg"
+	FormatEnd
+TemplateEnd
+

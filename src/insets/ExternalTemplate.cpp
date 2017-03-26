@@ -260,43 +260,91 @@ void TemplateManager::readTemplates(FileName const & path)
 		{ "templateend", TM_TEMPLATE_END }
 	};
 
-	Lexer lex(templatetags);
+	// Read the templates list
+	vector<string> templateslist;
+	FileName const real_file = libFileSearch("", "xtemplates.lst");
+	LYXERR(Debug::EXTERNAL, "Reading external templates from `" << real_file << '\'');
 
-	FileName const filename = libFileSearch("", "external_templates");
-	if (filename.empty() || !lex.setFile(filename)) {
-		lex.printError("external::TemplateManager::readTemplates: "
-			       "No template file");
+	if (real_file.empty()) {
+		LYXERR0("unable to find external templates file `xtemplates.lst'.\n"
+			<< "No external templates will be available.");
 		return;
 	}
 
-	char const * const preamble_end_tag =
-		templatetags[TM_PREAMBLEDEF_END-1].tag;
+	Lexer tlex;
+	if (!tlex.setFile(real_file)) {
+		LYXERR0("lyxlex was not able to set file: "
+			<< real_file << ".\nNo external templates will be available.");
+		return;
+	}
 
-	while (lex.isOK()) {
-		switch (lex.lex()) {
-		case TM_PREAMBLEDEF: {
-			lex.next();
-			string const name = lex.getString();
-			preambledefs[name] = lex.getLongString(from_ascii(preamble_end_tag));
+	if (!tlex.isOK()) {
+		LYXERR0("unable to open external templates file  `"
+			<< to_utf8(makeDisplayPath(real_file.absFileName(), 1000))
+			<< "'\nNo external templates will be available.");
+		return;
+	}
+
+	bool finished = false;
+	// Parse external templates files
+	LYXERR(Debug::EXTERNAL, "Starting parsing of xtemplates.lst");
+	while (tlex.isOK() && !finished) {
+		LYXERR(Debug::EXTERNAL, "\tline by line");
+		switch (tlex.lex()) {
+		case Lexer::LEX_FEOF:
+			finished = true;
+			break;
+		default:
+			string const name = tlex.getString();
+			LYXERR(Debug::EXTERNAL, "Template name: " << name);
+			templateslist.push_back(name);
+			break;
 		}
-		break;
+	}
 
-		case TM_TEMPLATE: {
-			lex.next();
-			string const name = lex.getString();
-			Template & tmp = templates[name];
-			tmp.lyxName = name;
-			tmp.readTemplate(lex);
+	LYXERR(Debug::EXTERNAL, "End of parsing of xtemplates.lst");
+
+	for (vector<string>::const_iterator it = templateslist.begin(); it != templateslist.end(); ++it) {
+		FileName const filename = libFileSearch("xtemplates", *it);
+		LYXERR(Debug::EXTERNAL, "Reading template file " << filename.absFileName());
+		Lexer lex(templatetags);
+		if (filename.empty() || !lex.setFile(filename)) {
+			lex.printError("external::TemplateManager::readTemplates: "
+				       "No template file");
+			return;
 		}
-		break;
 
-		case TM_TEMPLATE_END:
-			lex.printError("Warning: End outside Template.");
-		break;
+		char const * const preamble_end_tag =
+			templatetags[TM_PREAMBLEDEF_END-1].tag;
 
-		case TM_PREAMBLEDEF_END:
-			lex.printError("Warning: End outside PreambleDef.");
-		break;
+		while (lex.isOK()) {
+			switch (lex.lex()) {
+			case TM_PREAMBLEDEF: {
+				lex.next();
+				string const name = lex.getString();
+				preambledefs[name] = lex.getLongString(from_ascii(preamble_end_tag));
+				break;
+			}
+
+			case TM_TEMPLATE: {
+				lex.next();
+				string const name = lex.getString();
+				Template & tmp = templates[name];
+				tmp.lyxName = name;
+				tmp.readTemplate(lex);
+				break;
+			}
+
+			case TM_TEMPLATE_END:
+				lex.printError("Warning: End outside Template.");
+				break;
+
+			case TM_PREAMBLEDEF_END:
+				lex.printError("Warning: End outside PreambleDef.");
+				break;
+			default:
+				break;
+			}
 		}
 	}
 }

@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 530
+\lyxformat 535
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -57,6 +57,7 @@ logicalmkup
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -151,6 +152,7 @@ n mailing list,
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -908,6 +910,49 @@ status collapsed
 .
  That is, the files define which items appear in which menus and the items
  appearing on the toolbar.
+\change_inserted -712698321 1490533733
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\change_inserted -712698321 1490533849
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1490533738
+xtemplates/
+\end_layout
+
+\end_inset
+
+ contains files with the extension 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1490533759
+.xtemplate
+\end_layout
+
+\end_inset
+
+ which define the templates for the insertion of external material to a
+ \SpecialChar LyX
+ document; see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Including-External-Material"
+
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -1004,6 +1049,8 @@ encodings
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\change_deleted -712698321 1490533856
 \begin_inset Flex Code
 status collapsed
 
@@ -1035,6 +1082,8 @@ reference "chap:Including-External-Material"
 \end_inset
 
 .
+\change_unchanged
+
 \end_layout
 
 \begin_layout Labeling
@@ -1617,6 +1666,7 @@ MIME
 LatexCommand href
 name "IANA"
 target "http://www.iana.org/assignments/media-types/"
+literal "false"
 
 \end_inset
 
@@ -1627,6 +1677,7 @@ target "http://www.iana.org/assignments/media-types/"
 LatexCommand href
 name "freedesktop.org"
 target "http://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec"
+literal "false"
 
 \end_inset
 
@@ -3009,6 +3060,7 @@ Check out the \SpecialChar LyX
 LatexCommand href
 name "information on the web"
 target "http://www.lyx.org/HowToUseGIT"
+literal "false"
 
 \end_inset
 
@@ -3440,6 +3492,7 @@ Check out the documentation translation web page at
 LatexCommand href
 name "http://www.lyx.org/Translation"
 target "http://www.lyx.org/Translation"
+literal "false"
 
 \end_inset
 
@@ -3554,6 +3607,7 @@ Sometimes the original document (from the \SpecialChar LyX
 LatexCommand href
 name "http://www.lyx.org/trac/timeline"
 target "http://www.lyx.org/trac/timeline"
+literal "false"
 
 \end_inset
 
@@ -6033,6 +6087,7 @@ Get the package from
 LatexCommand href
 name "CTAN"
 target "http://www.ctan.org/"
+literal "false"
 
 \end_inset
 
@@ -6568,6 +6623,7 @@ As you prepare to write a new layout, it is extremely helpful to look at
 LatexCommand href
 name "layout section on the LyX wiki"
 target "http://wiki.lyx.org/Layouts/Layouts"
+literal "false"
 
 \end_inset
 
@@ -25647,6 +25703,10 @@ Besides supporting the production of different products according to the
 
 \begin_layout Section
 The external template configuration file
+\change_inserted -712698321 1490533960
+s
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -25674,27 +25734,84 @@ Having said that, we encourage you to submit any interesting templates that
 \end_layout
 
 \begin_layout Standard
-The external templates are defined in the 
+The external templates are defined in the
+\change_inserted -712698321 1490534022
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-LyXDir/lib/external_templates
+
+\change_inserted -712698321 1490533996
+*.xtemplate
 \end_layout
 
 \end_inset
 
- file.
- You can place your own version in 
+ files that are stored in the
+\change_unchanged
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-UserDir/external_templates
+LyXDir/lib/
+\change_deleted -712698321 1490533984
+external_
+\change_inserted -712698321 1490533984
+x
+\change_unchanged
+templates
+\change_inserted -712698321 1490534077
+/
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
+ 
+\change_deleted -712698321 1490534025
+file
+\change_inserted -712698321 1490534028
+directory
+\change_unchanged
+.
+ 
+\change_inserted -712698321 1490534233
+Each template is defined in a file of its own.
+ 
+\change_unchanged
+You can place your own 
+\change_deleted -712698321 1490534089
+version
+\change_inserted -712698321 1490534090
+templates
+\change_unchanged
+ in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+UserDir/
+\change_deleted -712698321 1490534069
+external_
+\change_inserted -712698321 1490534069
+x
+\change_unchanged
+templates
+\change_inserted -712698321 1490534080
+/
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_inserted -712698321 1490534112
+ or copy existing templates to that directory in order to modify them
+\change_unchanged
 .
 \end_layout
 

@@ -1,0 +1,63 @@
+#
+# Gumeric Spreadsheet External Template
+#
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+#
+# author Asger Alstrup Nielsen
+# author Angus Leeming
+# author Johnathan Burchill
+#
+# Full author contact details are available in file CREDITS.
+
+Template GnumericSpreadsheet
+	GuiName "Spreadsheet"
+	HelpText
+		A spreadsheet made with Gnumeric, LibreOffice, OpenOffice or Excel.
+		It imports as a multi-page table, so any length
+		is ok. Excessive width could be a problem.
+		The gnumeric software is necessary for conversion,
+		both for gnumeric and excel files.
+	HelpTextEnd
+	InputFormat "gnumeric"
+	FileFilter "*.{gnumeric,ods,xls,xlsx}"
+	AutomaticProduction true
+	Format LaTeX
+		Product "\\def\\inputGnumericTable{}\\input{$$AbsOrRelPathMaster$$Basename.tex}"
+		UpdateFormat latex
+		UpdateResult "$$AbsPath$$Basename.tex"
+		Requirement "color"
+		Requirement "array"
+		Requirement "longtable"
+		Requirement "calc"
+		Requirement "multirow"
+		Requirement "hhline"
+		Requirement "ifthen"
+		ReferencedFile latex "$$AbsOrRelPathMaster$$Basename.tex"
+		FormatEnd
+	Format PDFLaTeX
+		Product "\\def\\inputGnumericTable{}\\input{$$AbsOrRelPathMaster$$Basename.tex}"
+		UpdateFormat latex
+		UpdateResult "$$AbsPath$$Basename.tex"
+		Requirement "color"
+		Requirement "array"
+		Requirement "longtable"
+		Requirement "calc"
+		Requirement "multirow"
+		Requirement "hhline"
+		Requirement "ifthen"
+		ReferencedFile pdflatex "$$AbsOrRelPathMaster$$Basename.tex"
+	FormatEnd
+	Format Ascii
+		Product "[Spreadsheet: $$FName]"
+	FormatEnd
+	Format DocBook
+		Product "[Spreadsheet: $$FName]"
+	FormatEnd
+	Format XHTML
+		Product "$$Contents(\"$$AbsPath$$Basename.html\")</p>"
+		UpdateFormat html_table
+		UpdateResult "$$AbsPath$$Basename.html"
+	FormatEnd
+TemplateEnd
+

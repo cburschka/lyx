@@ -1057,7 +1057,8 @@ bool LyX::queryUserLyXDir(bool explicit_userdir)
 			|| configFileNeedsUpdate("lyxmodules.lst")
 			|| configFileNeedsUpdate("textclass.lst")
 			|| configFileNeedsUpdate("packages.lst")
-			|| configFileNeedsUpdate("lyxciteengines.lst");
+			|| configFileNeedsUpdate("lyxciteengines.lst")
+			|| configFileNeedsUpdate("xtemplates.lst");
 	}
 
 	first_start = !explicit_userdir;

@@ -512,7 +512,7 @@ def latexfonts_l10n(input_files, output, base):
 
 
 def external_l10n(input_files, output, base):
-    '''Generate pot file from lib/external_templates'''
+    '''Generate pot file from lib/xtemplates'''
     output = io.open(output, 'w', encoding='utf_8', newline='\n')
     Template = re.compile(r'^Template\s+(.*)', re.IGNORECASE)
     GuiName = re.compile(r'\s*GuiName\s+(.*)', re.IGNORECASE)
@@ -631,7 +631,7 @@ where
         languages: file lib/languages
         latexfonts: file lib/latexfonts
         encodings: file lib/encodings
-        external: external templates file
+        external: external templates files
         formats: formats predefined in lib/configure.py
 '''
 
