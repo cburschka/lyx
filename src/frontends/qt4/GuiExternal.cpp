@@ -80,16 +80,6 @@ char const * const origin_gui_strs[] = {
 	N_("Top right"), N_("Bottom right"), N_("Baseline right")
 };
 
-external::Template getTemplate(int i)
-{
-	if (external::TemplateManager::get().getTemplates().empty())
-		return Template();
-	external::TemplateManager::Templates::const_iterator i1
-		= external::TemplateManager::get().getTemplates().begin();
-	advance(i1, i);
-	return i1->second;
-}
-
 } // namespace anon
 
 
@@ -213,7 +203,9 @@ GuiExternal::GuiExternal(GuiView & lv)
 	i1 = external::TemplateManager::get().getTemplates().begin();
 	i2 = external::TemplateManager::get().getTemplates().end();
 	for (; i1 != i2; ++i1)
-		externalCO->addItem(qt_(i1->second.guiName));
+		externalCO->addItem(qt_(i1->second.guiName), toqstr(i1->second.lyxName));
+	// Sort alphabetically by(localized) GUI name
+	externalCO->model()->sort(0);
 
 	// Fill the origins combo
 	for (size_t i = 0; i != sizeof(origins) / sizeof(origins[0]); ++i)
@@ -282,8 +274,8 @@ void GuiExternal::bbChanged()
 
 void GuiExternal::browseClicked()
 {
-	int const choice =  externalCO->currentIndex();
-	QString const template_name = toqstr(getTemplate(choice).lyxName);
+	QString const template_name =
+		externalCO->itemData(externalCO->currentIndex()).toString();
 	QString const str = browse(fileED->text(), template_name);
 	if (!str.isEmpty()) {
 		fileED->setText(str);
@@ -499,18 +491,8 @@ void GuiExternal::updateContents()
 		params_.filename.outputFileName(fromqstr(bufferFilePath()));
 	fileED->setText(toqstr(name));
 
-	int index = 0;
-	external::TemplateManager::Templates::const_iterator i1, i2;
-	i1 = external::TemplateManager::get().getTemplates().begin();
-	i2 = external::TemplateManager::get().getTemplates().end();
-	for (int i = 0; i1 != i2; ++i1, ++i) {
-		if (i1->second.lyxName == params_.templatename()) {
-			index = i;
-			break;
-		}
-	}
-
-	externalCO->setCurrentIndex(index);
+	externalCO->setCurrentIndex(
+		externalCO->findData(toqstr(params_.templatename())));
 	updateTemplate();
 
 	draftCB->setChecked(params_.draft);
@@ -539,13 +521,16 @@ void GuiExternal::updateContents()
 
 void GuiExternal::updateTemplate()
 {
-	external::Template templ = getTemplate(externalCO->currentIndex());
-	externalTB->setPlainText(toqstr(translateIfPossible(templ.helpText)));
+	external::TemplateManager const & etm =
+		external::TemplateManager::get();
+	external::Template const * const templ = etm.getTemplateByName(
+		fromqstr(externalCO->itemData(externalCO->currentIndex()).toString()));
+	externalTB->setPlainText(toqstr(translateIfPossible(templ->helpText)));
 
 	// Ascertain which (if any) transformations the template supports
 	// and disable tabs and Group Boxes hosting unsupported transforms.
 	typedef vector<external::TransformID> TransformIDs;
-	TransformIDs const transformIds = templ.transformIds;
+	TransformIDs const transformIds = templ->transformIds;
 	TransformIDs::const_iterator tr_begin = transformIds.begin();
 	TransformIDs::const_iterator const tr_end = transformIds.end();
 
@@ -565,7 +550,7 @@ void GuiExternal::updateTemplate()
 	optionsGB->setEnabled(found);
 
 	bool scaled = displayGB->isChecked() && displayGB->isEnabled() &&
-			!isBufferReadonly() && (templ.preview_mode != PREVIEW_INSTANT);
+			!isBufferReadonly() && (templ->preview_mode != PREVIEW_INSTANT);
 	displayscaleED->setEnabled(scaled);
 	scaleLA->setEnabled(scaled);
 
@@ -578,8 +563,8 @@ void GuiExternal::updateTemplate()
 	extraED->clear();
 	extraFormatCO->clear();
 
-	external::Template::Formats::const_iterator it  = templ.formats.begin();
-	external::Template::Formats::const_iterator end = templ.formats.end();
+	external::Template::Formats::const_iterator it  = templ->formats.begin();
+	external::Template::Formats::const_iterator end = templ->formats.end();
 	for (; it != end; ++it) {
 		if (it->second.option_transformers.find(external::Extra) ==
 		    it->second.option_transformers.end())
@@ -606,7 +591,7 @@ void GuiExternal::updateTemplate()
 void GuiExternal::applyView()
 {
 	params_.filename.set(fromqstr(fileED->text()), fromqstr(bufferFilePath()));
-	params_.settemplate(getTemplate(externalCO->currentIndex()).lyxName);
+	params_.settemplate(fromqstr(externalCO->itemData(externalCO->currentIndex()).toString()));
 
 	params_.draft = draftCB->isChecked();
 	params_.lyxscale = displayscaleED->text().toInt();
