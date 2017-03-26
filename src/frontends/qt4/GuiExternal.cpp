@@ -647,7 +647,7 @@ static QStringList templateFilters(QString const & template_name)
 
 	string filter;
 	if (et_ptr && et_ptr->fileRegExp != "" && et_ptr->fileRegExp != "*") {
-		filter += et_ptr->guiName;
+		filter += to_utf8(_(et_ptr->guiName));
 		filter += " (";
 		filter += et_ptr->fileRegExp;
 		filter += ")";
