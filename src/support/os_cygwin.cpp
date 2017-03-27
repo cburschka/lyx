@@ -456,8 +456,16 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode,
 		cygwin_internal(CW_SYNC_WINENV);
 	}
 
+	string win_path;
+	try {
+		win_path = to_local8bit(from_utf8(convert_path(filename, PathStyle(windows))));
+	} catch (...) {
+		LYXERR0("Cannot encode file name `" << filename << "' to local 8 bit encoding");
+		return false;
+	}
+
+
 	// reference: http://msdn.microsoft.com/en-us/library/bb762153.aspx
-	string const win_path = to_local8bit(from_utf8(convert_path(filename, PathStyle(windows))));
 	char const * action = (mode == VIEW) ? "open" : "edit";
 	bool success = reinterpret_cast<long>(ShellExecute(NULL, action,
 					win_path.c_str(), NULL, NULL, 1)) > 32;

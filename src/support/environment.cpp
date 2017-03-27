@@ -57,7 +57,13 @@ bool setEnv(string const & name, string const & value)
 	// CHECK Look at and fix this.
 	// f.ex. what about error checking?
 
-	string const encoded = to_local8bit(from_utf8(value));
+	string encoded;
+	try {
+		encoded = to_local8bit(from_utf8(value));
+	} catch (...) {
+		return false;
+	}
+
 #if defined (HAVE_SETENV)
 	return ::setenv(name.c_str(), encoded.c_str(), 1) == 0;
 #elif defined (HAVE_PUTENV)

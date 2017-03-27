@@ -211,9 +211,8 @@ void doError(docstring const & title0, docstring const & message, bool backtrace
 	       << toPlainText(message) << endl;
 
 	QString details;
-	if (backtrace) {
-		details = QString::fromLocal8Bit(to_local8bit(printCallStack()).c_str());
-	}
+	if (backtrace)
+		details = toqstr(printCallStack());
 
 	if (!use_gui)
 		return;
