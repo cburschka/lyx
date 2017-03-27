@@ -840,8 +840,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(fontModule->dashesCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
-	connect(fontModule->dashesCB, SIGNAL(toggled(bool)),
-		this, SLOT(dashesToggled(bool)));
 	connect(fontModule->scaleSansSB, SIGNAL(valueChanged(int)),
 		this, SLOT(change_adaptor()));
 	connect(fontModule->scaleTypewriterSB, SIGNAL(valueChanged(int)),
@@ -1935,13 +1933,6 @@ void GuiDocument::fontScToggled(bool state)
 			fontModule->fontsRomanCO->currentIndex()).toString();
 	if (hasMonolithicExpertSet(font))
 		fontModule->fontOsfCB->setChecked(state);
-}
-
-
-void GuiDocument::dashesToggled(bool state)
-{
-	if (!fontModule->osFontsCB->isChecked())
-		fontModule->dashesCB->setChecked(state);
 }
 
 
