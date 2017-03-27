@@ -112,8 +112,8 @@ public:
 	/// reset associated Buffer to null value
 	virtual void resetBuffer();
 	/// retrieve associated Buffer
-	virtual Buffer & buffer();
-	virtual Buffer const & buffer() const;
+	Buffer & buffer();
+	Buffer const & buffer() const;
 	/// Returns true if buffer_ actually points to a Buffer that has
 	/// been loaded into LyX and is still open. Note that this will
 	/// always return false for cloned Buffers. If you want to allow
