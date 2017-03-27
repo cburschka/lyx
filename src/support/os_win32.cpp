@@ -567,18 +567,13 @@ bool autoOpenFile(string const & filename, auto_open_mode const mode,
 		setEnv("TEXFONTS", newtexfonts);
 	}
 
-	string fname8;
-	try {
-		fname8 = to_local8bit(from_utf8(filename));
-	} catch (...) {
-		LYXERR0("Cannot encode file name `" << filename << "' to local 8 bit encoding");
-		return false;
-	}
+	QString const wname = toqstr(filename);
 
 	// reference: http://msdn.microsoft.com/en-us/library/bb762153.aspx
-	char const * action = (mode == VIEW) ? "open" : "edit";
-	bool success = reinterpret_cast<intptr_t>(ShellExecute(NULL, action,
-		fname8.c_str(), NULL, NULL, 1)) > 32;
+	wchar_t const * action = (mode == VIEW) ? L"open" : L"edit";
+	bool success = reinterpret_cast<intptr_t>(ShellExecuteW(NULL, action,
+			reinterpret_cast<wchar_t const *>(wname.utf16()),
+			NULL, NULL, 1)) > 32;
 
 	if (!path.empty() && !lyxrc.texinputs_prefix.empty()) {
 		setEnv("TEXINPUTS", oldtexinputs);
