@@ -23,12 +23,7 @@ import unicodedata
 import sys, os
 
 from parser_tools import find_token, find_end_of, find_tokens, get_value
-
-# Provide support for both python 2 and 3
-PY2 = sys.version_info[0] == 2
-if not PY2:
-    unichr = chr
-# End of code to support for both python 2 and 3
+from unicode_symbols import read_unicodesymbols
 
 ####################################################################
 # Private helper functions
@@ -151,9 +146,18 @@ def set_option(document, m, option, value):
     return l
 
 
-# FIXME: Use the version in unicode_symbols.py which has some bug fixes
-def read_unicodesymbols():
+# FIXME: Remove this function if the version imported from unicode_symbols works.
+# This function was the predecessor from that function, that in the meanwhile got
+# new fixes.
+def read_unicodesymbols2():
     " Read the unicodesymbols list of unicode characters and corresponding commands."
+
+    # Provide support for both python 2 and 3
+    PY2 = sys.version_info[0] == 2
+    if not PY2:
+        unichr = chr
+    # End of code to support for both python 2 and 3
+
     pathname = os.path.abspath(os.path.dirname(sys.argv[0]))
     fp = open(os.path.join(pathname.strip('lyx2lyx'), 'unicodesymbols'))
     spec_chars = []
