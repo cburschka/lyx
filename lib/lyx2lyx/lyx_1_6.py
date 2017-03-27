@@ -430,7 +430,7 @@ def lyx2latex(document, lines):
             continue
         inert = ert_end >= curline
         content += lyxline2latex(document, lines[curline], inert)
-      
+
     return content
 
 
