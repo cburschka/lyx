@@ -393,6 +393,7 @@ class LyX_base:
             self.inputencoding = get_value(self.header, b"\\inputencoding", 0,
                                            default = b"auto").decode('ascii')
         self.format = self.read_format()
+        self.initial_format = self.format
         self.encoding = get_encoding(self.language,
                                      self.inputencoding, self.format,
                                      self.cjk_encoding)
@@ -698,7 +699,6 @@ class LyX_base:
         conversion are taken.  It returns a list of modules needed to
         convert the LyX file from self.format to self.end_format"""
 
-        self.start =  self.format
         format = self.format
         correct_version = 0
 
@@ -732,7 +732,7 @@ class LyX_base:
 
         # Convertion mode, back or forth
         steps = []
-        if (initial_step, self.start) < (final_step, self.end_format):
+        if (initial_step, self.initial_format) < (final_step, self.end_format):
             mode = "convert"
             full_steps = []
             for step in format_relation:

@@ -820,7 +820,7 @@ def revert_suppress_date(document):
 
 def convert_mhchem(document):
     "Set mhchem to off for versions older than 1.6.x"
-    if document.start < 277:
+    if document.initial_format < 277:
         # LyX 1.5.x and older did never load mhchem.
         # Therefore we must switch it off: Documents that use mhchem have
         # a manual \usepackage anyway, and documents not using mhchem but
