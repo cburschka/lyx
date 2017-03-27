@@ -463,11 +463,12 @@ bool Converters::convert(Buffer const * buffer,
 			return false;
 
 		if (conv.latex()) {
+			LATTEST(buffer);
 			run_latex = true;
 			string command = conv.command();
 			command = subst(command, token_from, "");
-			command = subst(command, token_latex_encoding, buffer ?
-				buffer->params().encoding().latexName() : string());
+			command = subst(command, token_latex_encoding,
+			                buffer->params().encoding().latexName());
 			LYXERR(Debug::FILES, "Running " << command);
 			if (!runLaTeX(*buffer, command, runparams, errorList))
 				return false;
