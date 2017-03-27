@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 # This file is part of lyx2lyx
-# -*- coding: utf-8 -*-
 # Copyright (C) 2011 The LyX team
 #
 # This program is free software; you can redistribute it and/or
@@ -117,7 +116,7 @@ def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment, o
     isInset must be true, if braces inside an InsetLayout needs to be converted
     isEnvironment must be true, if the layout is for a LaTeX environment
     isOpt must be true, if the argument is an optional one
-    
+
     Todo: this routine can currently handle only one mandatory argument of environments
     '''
 
@@ -168,7 +167,7 @@ def convert_TeX_brace_to_Argument(document, line, n, nmax, inset, environment, o
           n += 1
           endn = end
           loop += 1
-        else: 
+        else:
           # no brace pair found
           # now check the case that we have "}" + "{" in two ERTs
           if opt:
@@ -449,16 +448,16 @@ def revert_justification(document):
 
 
 def revert_australian(document):
-    "Set English language variants Australian and Newzealand to English" 
+    "Set English language variants Australian and Newzealand to English"
 
-    if document.language == "australian" or document.language == "newzealand": 
+    if document.language == "australian" or document.language == "newzealand":
         document.language = "english"
-        i = find_token(document.header, "\\language", 0) 
-        if i != -1: 
-            document.header[i] = "\\language english" 
-    j = 0 
-    while True: 
-        j = find_token(document.body, "\\lang australian", j) 
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language english"
+    j = 0
+    while True:
+        j = find_token(document.body, "\\lang australian", j)
         if j == -1:
             j = find_token(document.body, "\\lang newzealand", 0)
             if j == -1:
@@ -466,7 +465,7 @@ def revert_australian(document):
             else:
                 document.body[j] = document.body[j].replace("\\lang newzealand", "\\lang english")
         else:
-            document.body[j] = document.body[j].replace("\\lang australian", "\\lang english") 
+            document.body[j] = document.body[j].replace("\\lang australian", "\\lang english")
         j += 1
 
 
@@ -565,7 +564,7 @@ def handle_longtable_captions(document, forward):
                 if get_option_value(document.body[begin_row], 'endlastfoot') == 'true':
                     document.body[begin_row] = set_option_value(document.body[begin_row], 'endlastfoot', 'false')
             begin_row = end_row
-        # since there could be a tabular inside this one, we 
+        # since there could be a tabular inside this one, we
         # cannot jump to end.
         begin_table += 1
 
@@ -975,9 +974,9 @@ def revert_cell_rotation(document):
             put_cmd_in_ert("\\end{turn}")
           document.body[i + 4 : i + 4] = \
             put_cmd_in_ert("\\begin{turn}{" + value + "}")
-        
+
       i += 1
-        
+
   finally:
     if load_rotating:
       add_to_preamble(document, ["\\@ifundefined{turnbox}{\\usepackage{rotating}}{}"])
@@ -997,7 +996,7 @@ def convert_cell_rotation(document):
         rgx = re.compile(r'rotate="[^"]+?"')
         # convert "true" to "90"
         document.body[i] = rgx.sub('rotate="90"', document.body[i])
-        
+
       i += 1
 
 
@@ -1034,9 +1033,9 @@ def revert_table_rotation(document):
             put_cmd_in_ert("\\end{turn}")
           document.body[i - 2 : i - 2] = \
             put_cmd_in_ert("\\begin{turn}{" + value + "}")
-        
+
       i += 1
-        
+
   finally:
     if load_rotating:
       add_to_preamble(document, ["\\@ifundefined{turnbox}{\\usepackage{rotating}}{}"])
@@ -1056,7 +1055,7 @@ def convert_table_rotation(document):
         rgx = re.compile(r'rotate="[^"]+?"')
         # convert "true" to "90"
         document.body[i] = rgx.sub('rotate="90"', document.body[i])
-        
+
       i += 1
 
 
@@ -1150,25 +1149,25 @@ def revert_use_cancel(document):
 
 
 def revert_ancientgreek(document):
-    "Set the document language for ancientgreek to greek" 
+    "Set the document language for ancientgreek to greek"
 
-    if document.language == "ancientgreek": 
+    if document.language == "ancientgreek":
         document.language = "greek"
-        i = find_token(document.header, "\\language", 0) 
-        if i != -1: 
-            document.header[i] = "\\language greek" 
-    j = 0 
-    while True: 
-        j = find_token(document.body, "\\lang ancientgreek", j) 
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language greek"
+    j = 0
+    while True:
+        j = find_token(document.body, "\\lang ancientgreek", j)
         if j == -1:
             return
         else:
-            document.body[j] = document.body[j].replace("\\lang ancientgreek", "\\lang greek") 
+            document.body[j] = document.body[j].replace("\\lang ancientgreek", "\\lang greek")
         j += 1
 
 
 def revert_languages(document):
-    "Set the document language for new supported languages to English" 
+    "Set the document language for new supported languages to English"
 
     languages = [
                  "coptic", "divehi", "hindi", "kurmanji", "lao", "marathi", "occitan", "sanskrit",
@@ -1177,11 +1176,11 @@ def revert_languages(document):
     for n in range(len(languages)):
         if document.language == languages[n]:
             document.language = "english"
-            i = find_token(document.header, "\\language", 0) 
-            if i != -1: 
-                document.header[i] = "\\language english" 
+            i = find_token(document.header, "\\language", 0)
+            if i != -1:
+                document.header[i] = "\\language english"
         j = 0
-        while j < len(document.body): 
+        while j < len(document.body):
             j = find_token(document.body, "\\lang " + languages[n], j)
             if j != -1:
                 document.body[j] = document.body[j].replace("\\lang " + languages[n], "\\lang english")
@@ -1191,27 +1190,27 @@ def revert_languages(document):
 
 
 def convert_armenian(document):
-    "Use polyglossia and thus non-TeX fonts for Armenian" 
+    "Use polyglossia and thus non-TeX fonts for Armenian"
 
-    if document.language == "armenian": 
-        i = find_token(document.header, "\\use_non_tex_fonts", 0) 
-        if i != -1: 
-            document.header[i] = "\\use_non_tex_fonts true" 
+    if document.language == "armenian":
+        i = find_token(document.header, "\\use_non_tex_fonts", 0)
+        if i != -1:
+            document.header[i] = "\\use_non_tex_fonts true"
 
 
 def revert_armenian(document):
-    "Use ArmTeX and thus TeX fonts for Armenian" 
+    "Use ArmTeX and thus TeX fonts for Armenian"
 
-    if document.language == "armenian": 
-        i = find_token(document.header, "\\use_non_tex_fonts", 0) 
-        if i != -1: 
-            document.header[i] = "\\use_non_tex_fonts false" 
+    if document.language == "armenian":
+        i = find_token(document.header, "\\use_non_tex_fonts", 0)
+        if i != -1:
+            document.header[i] = "\\use_non_tex_fonts false"
 
 
 def revert_libertine(document):
-    " Revert native libertine font definition to LaTeX " 
+    " Revert native libertine font definition to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
         i = find_token(document.header, "\\font_roman libertine", 0)
         if i != -1:
             osf = False
@@ -1230,9 +1229,9 @@ def revert_libertine(document):
 
 
 def revert_txtt(document):
-    " Revert native txtt font definition to LaTeX " 
+    " Revert native txtt font definition to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
         i = find_token(document.header, "\\font_typewriter txtt", 0)
         if i != -1:
             preamble = "\\renewcommand{\\ttdefault}{txtt}"
@@ -1241,9 +1240,9 @@ def revert_txtt(document):
 
 
 def revert_mathdesign(document):
-    " Revert native mathdesign font definition to LaTeX " 
+    " Revert native mathdesign font definition to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
         mathdesign_dict = {
         "mdbch":  "charter",
         "mdput":  "utopia",
@@ -1272,9 +1271,9 @@ def revert_mathdesign(document):
 
 
 def revert_texgyre(document):
-    " Revert native TeXGyre font definition to LaTeX " 
+    " Revert native TeXGyre font definition to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
         texgyre_fonts = ["tgadventor", "tgbonum", "tgchorus", "tgcursor", \
                          "tgheros", "tgpagella", "tgschola", "tgtermes"]
         i = find_token(document.header, "\\font_roman", 0)
@@ -1331,7 +1330,7 @@ def revert_ipadeco(document):
           i = end
           continue
       substi = ["\\begin_inset ERT", "status collapsed", "",
-                "\\begin_layout Plain Layout", "", "", "\\backslash", 
+                "\\begin_layout Plain Layout", "", "", "\\backslash",
                 decotype + "{", "\\end_layout", "", "\\end_inset"]
       substj = ["\\size default", "", "\\begin_inset ERT", "status collapsed", "",
                 "\\begin_layout Plain Layout", "", "}", "\\end_layout", "", "\\end_inset"]
@@ -1371,9 +1370,9 @@ def revert_ipachar(document):
 
 
 def revert_minionpro(document):
-    " Revert native MinionPro font definition to LaTeX " 
+    " Revert native MinionPro font definition to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
         i = find_token(document.header, "\\font_roman minionpro", 0)
         if i != -1:
             osf = False
@@ -1391,12 +1390,12 @@ def revert_minionpro(document):
 
 
 def revert_mathfonts(document):
-    " Revert native math font definitions to LaTeX " 
+    " Revert native math font definitions to LaTeX "
 
     i = find_token(document.header, "\\font_math", 0)
     if i == -1:
        return
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
         val = get_value(document.header, "\\font_math", i)
         if val == "eulervm":
             add_to_preamble(document, "\\usepackage{eulervm}")
@@ -1426,9 +1425,9 @@ def revert_mathfonts(document):
 
 
 def revert_mdnomath(document):
-    " Revert mathdesign and fourier without math " 
+    " Revert mathdesign and fourier without math "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
         mathdesign_dict = {
         "md-charter": "mdbch",
         "md-utopia": "mdput",
@@ -1455,9 +1454,9 @@ def convert_mathfonts(document):
 
 
 def convert_mdnomath(document):
-    " Change mathdesign font name " 
+    " Change mathdesign font name "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
         mathdesign_dict = {
         "mdbch":  "md-charter",
         "mdput":  "md-utopia",
@@ -1472,12 +1471,12 @@ def convert_mdnomath(document):
 
 
 def revert_newtxmath(document):
-    " Revert native newtxmath definitions to LaTeX " 
+    " Revert native newtxmath definitions to LaTeX "
 
     i = find_token(document.header, "\\font_math", 0)
     if i == -1:
        return
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
         val = get_value(document.header, "\\font_math", i)
         mathfont_dict = {
         "libertine-ntxm":  "\\usepackage[libertine]{newtxmath}",
@@ -1490,9 +1489,9 @@ def revert_newtxmath(document):
 
 
 def revert_biolinum(document):
-    " Revert native biolinum font definition to LaTeX " 
+    " Revert native biolinum font definition to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
         i = find_token(document.header, "\\font_sans biolinum", 0)
         if i != -1:
             osf = False
@@ -1595,7 +1594,7 @@ def convert_latexargs(document):
             document.body[i] = "\\begin_inset Argument 999"
             i += 1
             continue
-        
+
         # Find containing paragraph layout
         parent = get_containing_layout(document.body, i)
         if parent == False:
@@ -2174,7 +2173,7 @@ def revert_literate(document):
 
 def convert_literate(document):
     " Convert Literate document to new format"
-    i = find_token(document.header, "\\textclass", 0)    
+    i = find_token(document.header, "\\textclass", 0)
     if (i != -1) and "literate-" in document.header[i]:
       document.textclass = document.header[i].replace("\\textclass literate-", "")
       j = find_token(document.header, "\\begin_modules", 0)
@@ -2218,12 +2217,12 @@ def revert_itemargs(document):
 
 
 def revert_garamondx_newtxmath(document):
-    " Revert native garamond newtxmath definition to LaTeX " 
+    " Revert native garamond newtxmath definition to LaTeX "
 
     i = find_token(document.header, "\\font_math", 0)
     if i == -1:
        return
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
         val = get_value(document.header, "\\font_math", i)
         if val == "garamondx-ntxm":
             add_to_preamble(document, "\\usepackage[garamondx]{newtxmath}")
@@ -2231,9 +2230,9 @@ def revert_garamondx_newtxmath(document):
 
 
 def revert_garamondx(document):
-    " Revert native garamond font definition to LaTeX " 
+    " Revert native garamond font definition to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
         i = find_token(document.header, "\\font_roman garamondx", 0)
         if i != -1:
             osf = False
@@ -2250,7 +2249,7 @@ def revert_garamondx(document):
 
 def convert_beamerargs(document):
     " Converts beamer arguments to new layout "
-    
+
     beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
     if document.textclass not in beamer_classes:
         return
@@ -2421,7 +2420,7 @@ def convert_againframe_args(document):
     beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
     if document.textclass not in beamer_classes:
         return
-   
+
     i = 0
     while True:
         i = find_token(document.body, "\\begin_layout AgainFrame", i)
@@ -2443,11 +2442,11 @@ def convert_againframe_args(document):
 
 def convert_corollary_args(document):
     " Converts beamer corrolary-style ERT arguments native InsetArgs "
-    
+
     beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
     if document.textclass not in beamer_classes:
         return
-   
+
     corollary_layouts = ["Corollary", "Definition", "Definitions", "Example", "Examples", "Fact", "Proof", "Theorem"]
     for lay in corollary_layouts:
         i = 0
@@ -2533,11 +2532,11 @@ def convert_corollary_args(document):
 
 def convert_quote_args(document):
     " Converts beamer quote style ERT args to native InsetArgs "
-    
+
     beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
     if document.textclass not in beamer_classes:
         return
-   
+
     quote_layouts = ["Uncover", "Only", "Quotation", "Quote", "Verse"]
     for lay in quote_layouts:
         i = 0
@@ -2602,7 +2601,7 @@ def cleanup_beamerargs(document):
 
 def revert_beamerargs(document):
     " Reverts beamer arguments to old layout "
-    
+
     beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
     if document.textclass not in beamer_classes:
         return
@@ -2793,13 +2792,13 @@ def revert_beamerargs(document):
                         del document.body[p : endInset + 1]
                         subst = put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
                         document.body[realparbeg : realparbeg] = subst
-        
+
         i = realparend
 
 
 def revert_beamerargs2(document):
     " Reverts beamer arguments to old layout, step 2 "
-    
+
     beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
     if document.textclass not in beamer_classes:
         return
@@ -2833,7 +2832,7 @@ def revert_beamerargs2(document):
                 if m:
                     argnr = m.group(1)
                     if argnr == "2":
-                        document.body[p] = "\\begin_inset Argument 1"       
+                        document.body[p] = "\\begin_inset Argument 1"
             if layoutname in corollary_layouts:
                 m = rx.match(document.body[p])
                 if m:
@@ -2884,7 +2883,7 @@ def revert_beamerargs2(document):
 
 def revert_beamerargs3(document):
     " Reverts beamer arguments to old layout, step 3 "
-    
+
     beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
     if document.textclass not in beamer_classes:
         return
@@ -2930,7 +2929,7 @@ def revert_beamerargs3(document):
 
 def revert_beamerflex(document):
     " Reverts beamer Flex insets "
-    
+
     beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
     if document.textclass not in beamer_classes:
         return
@@ -3030,13 +3029,13 @@ def revert_beamerflex(document):
                 document.body[i : beginPlain + 1] = pre
                 post = put_cmd_in_ert("}")
                 document.body[z - 2 : z + 1] = post
-        
+
         i += 1
 
 
 def revert_beamerblocks(document):
     " Reverts beamer block arguments to ERT "
-    
+
     beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
     if document.textclass not in beamer_classes:
         return
@@ -3096,11 +3095,11 @@ def revert_beamerblocks(document):
 
 def convert_beamerblocks(document):
     " Converts beamer block ERT args to native InsetArgs "
-    
+
     beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
     if document.textclass not in beamer_classes:
         return
-   
+
     blocks = ["Block", "ExampleBlock", "AlertBlock"]
     for lay in blocks:
         i = 0
@@ -3211,7 +3210,7 @@ def convert_beamerblocks(document):
                                                 document.body[ertcontlastline : ertcontlastline + 1] = [
                                                                                     document.body[ertcontlastline], '\\end_layout', '', '\\end_inset']
                                                 document.body[ertcontdivline : ertcontdivlinetwo + 1] = [document.body[ertcontdivline][:tok],
-                                                                                    '\\end_layout', '', '\\end_inset', '', '\\end_layout', '', 
+                                                                                    '\\end_layout', '', '\\end_inset', '', '\\end_layout', '',
                                                                                     '\\end_inset', '', '', '\\begin_inset Argument 2',
                                                                                     'status collapsed', '', '\\begin_layout Plain Layout',
                                                                                     '\\begin_inset ERT', '', 'status open' '', '\\begin_layout Plain Layout',
@@ -3300,7 +3299,7 @@ def convert_beamerblocks(document):
                                                         document.body[ertcontlastline : ertcontlastline + 1] = [
                                                                                             document.body[ertcontlastline], '\\end_layout', '', '\\end_inset']
                                                         document.body[ertcontdivline : ertcontdivlinetwo + 1] = [document.body[ertcontdivline][:tok],
-                                                                                            '\\end_layout', '', '\\end_inset', '', '\\end_layout', '', 
+                                                                                            '\\end_layout', '', '\\end_inset', '', '\\end_layout', '',
                                                                                             '\\end_inset', '', '', '\\begin_inset Argument 1',
                                                                                             'status collapsed', '', '\\begin_layout Plain Layout',
                                                                                             '\\begin_inset ERT', '', 'status open' '', '\\begin_layout Plain Layout',
@@ -3346,7 +3345,7 @@ def convert_beamerblocks(document):
 
 def convert_overprint(document):
     " Convert old beamer overprint layouts to ERT "
-    
+
     beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
     if document.textclass not in beamer_classes:
         return
@@ -3386,11 +3385,11 @@ def convert_overprint(document):
             # Remove arg inset
             del document.body[argbeg : argend + 1]
             subst += put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
-            
+
         endseq = endseq - len(document.body[i : i])
         document.body[i : i] = subst + ["\\end_layout"]
         endseq += len(subst)
-        
+
         for p in range(i, endseq):
             if document.body[p] == "\\begin_layout Overprint":
                 document.body[p] = "\\begin_layout Standard"
@@ -3400,7 +3399,7 @@ def convert_overprint(document):
 
 def revert_overprint(document):
     " Revert old beamer overprint layouts to ERT "
-    
+
     beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
     if document.textclass not in beamer_classes:
         return
@@ -3452,11 +3451,11 @@ def revert_overprint(document):
                 # Remove arg inset
                 del document.body[argbeg : argend + 1]
                 subst += put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
-            
+
         endseq = endseq - len(document.body[i : i])
         document.body[i : i] = subst + ["\\end_layout"]
         endseq += len(subst)
-     
+
         p = i
         while True:
             if p >= endseq:
@@ -3492,7 +3491,7 @@ def revert_overprint(document):
 
 def revert_frametitle(document):
     " Reverts beamer frametitle layout to ERT "
-    
+
     beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
     if document.textclass not in beamer_classes:
         return
@@ -3538,7 +3537,7 @@ def revert_frametitle(document):
                     # Remove arg inset
                     del document.body[p : endInset + 1]
                     subst += put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
-                    
+
         subst += put_cmd_in_ert("{")
         document.body[i : i + 1] = subst
         i = endlay
@@ -3546,7 +3545,7 @@ def revert_frametitle(document):
 
 def convert_epigraph(document):
     " Converts memoir epigraph to new syntax "
-    
+
     if document.textclass != "memoir":
         return
 
@@ -3581,13 +3580,13 @@ def convert_epigraph(document):
                 endlay += len(begsubst) + len(endsubst)
                 endlay = endlay - len(document.body[ert : endInset + 1])
                 del document.body[ert : endInset + 1]
-                    
+
         i = endlay
 
 
 def revert_epigraph(document):
     " Reverts memoir epigraph argument to ERT "
-    
+
     if document.textclass != "memoir":
         return
 
@@ -3616,14 +3615,14 @@ def revert_epigraph(document):
             subst += put_cmd_in_ert("}{") + content
         else:
             subst += put_cmd_in_ert("}{")
-                    
+
         document.body[j : j] = subst + document.body[j : j]
         i = endlay
 
 
 def convert_captioninsets(document):
     " Converts caption insets to new syntax "
-    
+
     i = 0
     while True:
       i = find_token(document.body, "\\begin_inset Caption", i)
@@ -3635,7 +3634,7 @@ def convert_captioninsets(document):
 
 def revert_captioninsets(document):
     " Reverts caption insets to old syntax "
-    
+
     i = 0
     while True:
       i = find_token(document.body, "\\begin_inset Caption Standard", i)
@@ -3678,7 +3677,7 @@ def convert_captionlayouts(document):
 
 def revert_captionlayouts(document):
     " Revert caption insets to caption layouts. "
-    
+
     caption_dict = {
         "Above" : "Captionabove",
         "Below" : "Captionbelow",
@@ -3687,7 +3686,7 @@ def revert_captionlayouts(document):
         "Centered" : "CenteredCaption",
         "Bicaption" : "Bicaption",
         }
-    
+
     i = 0
     rx = re.compile(r'^\\begin_inset Caption (\S+)$')
     while True:
@@ -3702,7 +3701,7 @@ def revert_captionlayouts(document):
         if val not in list(caption_dict.keys()):
             i += 1
             continue
-        
+
         # We either need to delete the previous \begin_layout line, or we
         # need to end the previous layout if this inset is not in the first
         # position of the paragraph.
@@ -3770,7 +3769,7 @@ def revert_captionlayouts(document):
 
 def revert_fragileframe(document):
     " Reverts beamer FragileFrame layout to ERT "
-    
+
     beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
     if document.textclass not in beamer_classes:
         return
@@ -3852,14 +3851,14 @@ def revert_fragileframe(document):
                     subst += put_cmd_in_ert("{") + content + put_cmd_in_ert("}")
             elif p == 3:
                 subst += put_cmd_in_ert("[fragile]")
-                    
+
         document.body[i : i + 1] = subst
         i = j
 
 
 def revert_newframes(document):
     " Reverts beamer Frame and PlainFrame layouts to old forms "
-    
+
     beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
     if document.textclass not in beamer_classes:
         return
@@ -3954,7 +3953,7 @@ def revert_newframes(document):
                     # Remove arg inset
                     del document.body[arg : endInset + 1]
                     subst += content
-                    
+
         document.body[i : i + 1] = subst
         i = j
 
@@ -4079,18 +4078,18 @@ def revert_IEEEtran_3(document):
 
 def revert_kurier_fonts(document):
   " Revert kurier font definition to LaTeX "
-  
+
   i = find_token(document.header, "\\font_math", 0)
   if i != -1:
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
       val = get_value(document.header, "\\font_math", i)
       if val == "kurier-math":
         add_to_preamble(document, "\\let\\Myrmdefault\\rmdefault\n" \
           "\\usepackage[math]{kurier}\n" \
           "\\renewcommand{\\rmdefault}{\\Myrmdefault}")
         document.header[i] = "\\font_math auto"
-  
-  if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+
+  if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
     kurier_fonts = ["kurier", "kurierc", "kurierl", "kurierlc"]
     k = find_token(document.header, "\\font_sans kurier", 0)
     if k != -1:
@@ -4101,18 +4100,18 @@ def revert_kurier_fonts(document):
 
 def revert_iwona_fonts(document):
   " Revert iwona font definition to LaTeX "
-  
+
   i = find_token(document.header, "\\font_math", 0)
   if i != -1:
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
       val = get_value(document.header, "\\font_math", i)
       if val == "iwona-math":
         add_to_preamble(document, "\\let\\Myrmdefault\\rmdefault\n" \
           "\\usepackage[math]{iwona}\n" \
           "\\renewcommand{\\rmdefault}{\\Myrmdefault}")
         document.header[i] = "\\font_math auto"
-  
-  if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+
+  if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
     iwona_fonts = ["iwona", "iwonac", "iwonal", "iwonalc"]
     k = find_token(document.header, "\\font_sans iwona", 0)
     if k != -1:
@@ -4124,7 +4123,7 @@ def revert_iwona_fonts(document):
 
 def revert_new_libertines(document):
     " Revert new libertine font definition to LaTeX "
-  
+
     if find_token(document.header, "\\use_non_tex_fonts true", 0) != -1:
         return
 
@@ -4140,7 +4139,7 @@ def revert_new_libertines(document):
         preamble += "{libertineMono-type1}"
         add_to_preamble(document, [preamble])
         document.header[i] = "\\font_typewriter default"
-   
+
     k = find_token(document.header, "\\font_sans biolinum", 0)
     if k != -1:
         preamble = "\\usepackage"
@@ -4165,11 +4164,11 @@ def revert_new_libertines(document):
 
 def convert_lyxframes(document):
     " Converts old beamer frames to new style "
-    
+
     beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
     if document.textclass not in beamer_classes:
         return
-   
+
     framebeg = ["BeginFrame", "BeginPlainFrame"]
     frameend = ["Frame", "PlainFrame", "EndFrame", "BeginFrame", "BeginPlainFrame", "AgainFrame",
                 "Section", "Section*", "Subsection", "Subsection*", "Subsubsection", "Subsubsection*"]
@@ -4238,11 +4237,11 @@ def convert_lyxframes(document):
 
 def remove_endframes(document):
     " Remove deprecated beamer endframes "
-    
+
     beamer_classes = ["beamer", "article-beamer", "scrarticle-beamer"]
     if document.textclass not in beamer_classes:
         return
-   
+
     i = 0
     while True:
         i = find_token_exact(document.body, "\\begin_layout EndFrame", i)
@@ -4258,7 +4257,7 @@ def remove_endframes(document):
 
 def revert_powerdot_flexes(document):
     " Reverts powerdot flex insets "
-    
+
     if document.textclass != "powerdot":
         return
 
@@ -4306,13 +4305,13 @@ def revert_powerdot_flexes(document):
                 z += len(pre)
                 document.body[i : beginPlain + 1] = pre
                 post = put_cmd_in_ert("}")
-                document.body[z - 2 : z + 1] = post     
+                document.body[z - 2 : z + 1] = post
         i += 1
 
 
 def revert_powerdot_pause(document):
     " Reverts powerdot pause layout to ERT "
-    
+
     if document.textclass != "powerdot":
         return
 
@@ -4342,14 +4341,14 @@ def revert_powerdot_pause(document):
                 # Remove arg inset
                 del document.body[p : endInset + 1]
                 subst += put_cmd_in_ert("[") + content + put_cmd_in_ert("]")
-                    
+
         document.body[i : i + 1] = subst
         i = endlay
 
 
 def revert_powerdot_itemargs(document):
     " Reverts powerdot item arguments to ERT "
-    
+
     if document.textclass != "powerdot":
         return
 
@@ -4398,7 +4397,7 @@ def revert_powerdot_itemargs(document):
                         del document.body[i:j+1]
                         subst = put_cmd_in_ert("<") + content + put_cmd_in_ert(">")
                         document.body[realparbeg : realparbeg] = subst
-        
+
         i = realparend
 
 
@@ -4448,7 +4447,7 @@ def revert_powerdot_columns(document):
                     # Remove arg inset
                     del document.body[p : endInset + 1]
                     subst += put_cmd_in_ert("{") + content + put_cmd_in_ert("}")
-                    
+
         subst += put_cmd_in_ert("{")
         document.body[i : i + 1] = subst
         i = endlay
@@ -4485,7 +4484,7 @@ def revert_mbox_fbox(document):
 
 def revert_starred_caption(document):
     " Reverts unnumbered longtable caption insets "
-    
+
     i = 0
     while True:
       i = find_token(document.body, "\\begin_inset Caption LongTableNoNumber", i)
@@ -4560,15 +4559,15 @@ def revert_aa2(document):
 
 
 def revert_tibetan(document):
-    "Set the document language for Tibetan to English" 
+    "Set the document language for Tibetan to English"
 
     if document.language == "tibetan":
         document.language = "english"
-        i = find_token(document.header, "\\language", 0) 
-        if i != -1: 
-            document.header[i] = "\\language english" 
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language english"
     j = 0
-    while j < len(document.body): 
+    while j < len(document.body):
         j = find_token(document.body, "\\lang tibetan", j)
         if j != -1:
             document.body[j] = document.body[j].replace("\\lang tibetan", "\\lang english")
@@ -4612,14 +4611,14 @@ def convert_chunks(document):
                 # there is no point continuing, as we will run into the same error again.
                 return
             this_chunk = "".join(document.body[i + 1:j])
-            
+
             # there may be empty lines between chunks
             # we just skip them.
             if not chunk_started:
                 if this_chunk != "":
                     # new chunk starts
                     chunk_started = True
-            
+
             if chunk_started:
                 contents.append(document.body[i + 1:j])
 
@@ -4666,7 +4665,7 @@ def convert_chunks(document):
         # the first par (separated from the options by a newline).
         # We collect such stuff to re-insert it later.
         postoptstuff = []
-        
+
         match = first_re.search(optarg)
         if match:
             optarg = match.groups()[0]
@@ -4806,7 +4805,7 @@ def revert_chunks(document):
         # replace old content with new content
         document.body[lstart : lend + 1] = newlines
         i = lstart + len(newlines)
-        
+
 
 ##
 # Conversion hub

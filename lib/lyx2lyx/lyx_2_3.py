@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 # This file is part of lyx2lyx
-# -*- coding: utf-8 -*-
 # Copyright (C) 2016 The LyX team
 #
 # This program is free software; you can redistribute it and/or
@@ -99,7 +98,7 @@ def convert_inputenc(document):
         return
     if get_value(document.header, "\\inputencoding", i) == "pt254":
         document.header[i] = "\\inputencoding pt154"
-    
+
 
 def convert_ibranches(document):
     ' Add "inverted 0" to branch insets'
@@ -129,7 +128,7 @@ def revert_ibranches(document):
         else:
             document.warning("Malformed LyX document: No selection indicator for branch " + branch)
             selected = 1
-            
+
         # the value tells us whether the branch is selected
         ourbranches[document.header[i][8:].strip()] = selected
         i += 1
@@ -582,7 +581,7 @@ def revert_quotes(document):
                 replace = "'"
             document.body[k:l+1] = [replace]
         i = l
-    
+
 
 def revert_iopart(document):
     " Input new styles via local layout "
@@ -1031,7 +1030,7 @@ def revert_cjkquotes(document):
 
 
 def revert_crimson(document):
-    " Revert native Cochineal/Crimson font definition to LaTeX " 
+    " Revert native Cochineal/Crimson font definition to LaTeX "
 
     if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
         preamble = ""
@@ -1051,9 +1050,9 @@ def revert_crimson(document):
 
 
 def revert_cochinealmath(document):
-    " Revert cochineal newtxmath definitions to LaTeX " 
+    " Revert cochineal newtxmath definitions to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1: 
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
         i = find_token(document.header, "\\font_math \"cochineal-ntxm\"", 0)
         if i != -1:
             add_to_preamble(document, "\\usepackage[cochineal]{newtxmath}")
@@ -1940,7 +1939,7 @@ def revert_dashligatures(document):
             document.body[i] = document.body[i][:j+1] + u"\u200B" + after
             start = j+1
         i += 1
-    
+
 
 ##
 # Conversion hub

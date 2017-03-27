@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 # This file is part of lyx2lyx
-# -*- coding: utf-8 -*-
 # Copyright (C) 2015 The LyX team
 #
 # This program is free software; you can redistribute it and/or
@@ -78,7 +77,7 @@ def revert_Argument_to_TeX_brace(document, line, endline, n, nmax, environment, 
             if nolastopt == False:
               document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}{")
             else:
-              document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}") 
+              document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}")
             del(document.body[lineArg : beginPlain + 1])
             wasOpt = False
           else:
@@ -1196,7 +1195,7 @@ def revert_textcolor(document):
                     j = find_token(document.body, "\\color", i + 1)
                     k = find_token(document.body, "\\end_layout", i + 1)
                     if j == -1 and k != -1:
-                        j = k +1 
+                        j = k +1
                     # output TeX code
                     # first output the closing brace
                     if k < j:
@@ -1697,7 +1696,7 @@ def revert_tcolorbox_1(document):
     i = find_token(document.header, "tcolorbox", i)
     if i == -1:
       break
-    else:    
+    else:
       flex = 0
       flexEnd = -1
       flex = find_token(document.body, "\\begin_inset Flex Subtitle", flex)
@@ -1722,7 +1721,7 @@ def revert_tcolorbox_2(document):
     i = find_token(document.header, "tcolorbox", i)
     if i == -1:
       break
-    else:    
+    else:
       flex = 0
       flexEnd = -1
       flex = find_token(document.body, "\\begin_inset Flex Raster Color Box", flex)
@@ -1743,7 +1742,7 @@ def revert_tcolorbox_3(document):
     i = find_token(document.header, "tcolorbox", i)
     if i == -1:
       break
-    else:    
+    else:
       flex = 0
       flexEnd = -1
       flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 1", flex)
@@ -1765,7 +1764,7 @@ def revert_tcolorbox_4(document):
     i = find_token(document.header, "tcolorbox", i)
     if i == -1:
       break
-    else:    
+    else:
       flex = 0
       flexEnd = -1
       flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 2", flex)
@@ -1787,7 +1786,7 @@ def revert_tcolorbox_5(document):
     i = find_token(document.header, "tcolorbox", i)
     if i == -1:
       break
-    else:    
+    else:
       flex = 0
       flexEnd = -1
       flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 3", flex)
@@ -1809,7 +1808,7 @@ def revert_tcolorbox_6(document):
     i = find_token(document.header, "tcolorbox", i)
     if i == -1:
       break
-    else:    
+    else:
       flex = 0
       flexEnd = -1
       flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 4", flex)
@@ -1831,7 +1830,7 @@ def revert_tcolorbox_7(document):
     i = find_token(document.header, "tcolorbox", i)
     if i == -1:
       break
-    else:    
+    else:
       flex = 0
       flexEnd = -1
       flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 5", flex)
@@ -1879,7 +1878,7 @@ def revert_tcolorbox_8(document):
 
 def revert_moderncv_1(document):
   " Reverts the new inset of moderncv to TeX-code in preamble "
-  
+
   if document.textclass != "moderncv":
     return
   i = 0
@@ -1947,7 +1946,7 @@ def revert_moderncv_1(document):
 
 def revert_moderncv_2(document):
   " Reverts the phone inset of moderncv to the obsoleted mobile or fax "
-  
+
   if document.textclass != "moderncv":
     return
   i = 0
@@ -2089,7 +2088,7 @@ def convert_moderncv_name(document):
 
 def revert_achemso(document):
   " Reverts the flex inset Latin to TeX code "
-  
+
   if document.textclass != "achemso":
     return
   i = 0
