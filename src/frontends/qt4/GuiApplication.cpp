@@ -1857,10 +1857,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		// repeat command
 		string countstr;
 		string rest = split(argument, countstr, ' ');
-		istringstream is(countstr);
-		int count = 0;
-		is >> count;
-		//lyxerr << "repeat: count: " << count << " cmd: " << rest << endl;
+		int const count = convert<int>(countstr);
 		for (int i = 0; i < count; ++i)
 			dispatch(lyxaction.lookupFunc(rest));
 		break;
