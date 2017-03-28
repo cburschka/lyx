@@ -1374,7 +1374,8 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			MathData count;
 			parse(count, FLAG_ITEM, mode);
 			int cols;
-			if (extractNumber(count, cols)) {
+			// limit arbitrarily to 100 columns
+			if (extractNumber(count, cols) && cols < 100) {
 				// resize the table if necessary
 				size_t first = grid.index(cellrow, cellcol);
 				for (int i = 1; i < cols; ++i) {
