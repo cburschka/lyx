@@ -1858,8 +1858,15 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		string countstr;
 		string rest = split(argument, countstr, ' ');
 		int const count = convert<int>(countstr);
-		for (int i = 0; i < count; ++i)
-			dispatch(lyxaction.lookupFunc(rest));
+		// an arbitrary number to limit number of iterations
+		int const max_iter = 10000;
+		if (count > max_iter) {
+			dr.setMessage(bformat(_("Cannot iterate more than %1$d times"), max_iter));
+			dr.setError(true);
+		} else {
+			for (int i = 0; i < count; ++i)
+				dispatch(lyxaction.lookupFunc(rest));
+		}
 		break;
 	}
 

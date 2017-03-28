@@ -3262,6 +3262,7 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_REPEAT
  * \li Action: Repeat the given command.
+ * \li Notion: fails when the repeat count is greater than 10000.
  * \li Syntax: repeat <COUNT> <LFUN-COMMAND>
  * \li Origin: Andre, 27 Oct 2003
  * \endvar
