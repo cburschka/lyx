@@ -30,7 +30,7 @@ namespace {
 template<typename OFStream>
 bool doOpenFileWrite(OFStream & ofs, FileName const & fname)
 {
-	ofs.open(fname.toFilesystemEncoding().c_str());
+	ofs.open(fname.toSafeFilesystemEncoding(os::CREATE).c_str());
 	if (ofs)
 		return true;
 	docstring const file = fname.displayName(50);

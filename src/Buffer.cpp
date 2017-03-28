@@ -1313,7 +1313,7 @@ Buffer::ReadStatus Buffer::convertLyXFormat(FileName const & fn,
 	command << os::python()
 		<< ' ' << quoteName(lyx2lyx.toFilesystemEncoding())
 		<< " -t " << convert<string>(LYX_FORMAT)
-		<< " -o " << quoteName(tmpfile.toFilesystemEncoding())
+		<< " -o " << quoteName(tmpfile.toSafeFilesystemEncoding())
 		<< ' ' << quoteName(fn.toSafeFilesystemEncoding());
 	string const command_str = command.str();
 
