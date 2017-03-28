@@ -896,6 +896,10 @@ void extractDiff(MathData & ar)
 				int mult = 1;
 				if (extractNumber(script->up(), mult)) {
 					//lyxerr << "mult: " << mult << endl;
+					if (mult > 1000) {
+						lyxerr << "Cannot differentiate more than 1000 times !" << endl;
+						continue;
+					}
 					for (int i = 0; i < mult; ++i)
 						diff->addDer(MathData(buf, dt + 1, st));
 				}
