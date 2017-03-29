@@ -22,7 +22,7 @@ namespace lyx {
 
 
 RenderButton::RenderButton()
-	: editable_(false)
+	: editable_(false), inherit_font_(false)
 {}
 
 
