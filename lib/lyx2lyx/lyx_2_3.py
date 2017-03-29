@@ -166,7 +166,7 @@ def revert_ibranches(document):
         i += 1
 
     # now we need to add the new branches to the header
-    for old, new in ibranches.iteritems():
+    for old, new in ibranches.items():
         i = find_token(document.header, "\\branch " + old, 0)
         if i == -1:
             document.warning("Can't find branch %s even though we found it before!" % (old))
