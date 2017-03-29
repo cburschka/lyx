@@ -196,10 +196,7 @@ def checkTeXPaths():
         from tempfile import mkstemp
         fd, tmpfname = mkstemp(suffix='.ltx')
         if os.name == 'nt':
-            from locale import getdefaultlocale
-            language, encoding = getdefaultlocale()
-            if encoding == None:
-                encoding = 'latin1'
+            encoding = sys.getfilesystemencoding()
             if sys.version_info[0] < 3:
                 inpname = shortPath(unicode(tmpfname, encoding)).replace('\\', '/')
             else:
