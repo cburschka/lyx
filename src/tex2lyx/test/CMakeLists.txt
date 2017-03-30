@@ -4,7 +4,7 @@
 # Copyright (c) 2012 Kornel Benko, <kornel@lyx.org>
 #
 
-project(test)
+project(testTex2lyx)
 
 #file(GLOB _tex_tests RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/*.ltx" "${CMAKE_CURRENT_SOURCE_DIR}/*.tex")
 #

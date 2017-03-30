@@ -3,7 +3,7 @@
 #
 # Copyright (c) 2013 Kornel Benko, <kornel@lyx.org>
 
-project(test)
+project(testFrontends)
 
 set(TESTS "test_biblio")
 
