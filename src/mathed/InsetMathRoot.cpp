@@ -15,6 +15,7 @@
 
 #include "MathData.h"
 #include "MathStream.h"
+#include "MathSupport.h"
 
 #include "Cursor.h"
 #include "LaTeXFeatures.h"
@@ -42,27 +43,44 @@ Inset * InsetMathRoot::clone() const
 void InsetMathRoot::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Changer dummy = mi.base.changeEnsureMath();
-	cellsMetrics(mi);
-	Dimension const & dim0 = cell(0).dimension(*mi.base.bv);
-	Dimension const & dim1 = cell(1).dimension(*mi.base.bv);
-	dim.asc = max(dim0.ascent()  + 5, dim1.ascent())  + 2;
-	dim.des = max(dim0.descent() - 5, dim1.descent()) + 2;
-	dim.wid = dim0.width() + dim1.width() + 10;
+	Dimension dim0;
+	{
+		Changer script = mi.base.font.changeStyle(LM_ST_SCRIPTSCRIPT);
+		cell(0).metrics(mi, dim0);
+		// make sure that the dim is high enough for any character
+		Dimension fontDim;
+		math_font_max_dim(mi.base.font, fontDim.asc, fontDim.des);
+		dim0 += fontDim;
+	}
+
+	Dimension dim1;
+	cell(1).metrics(mi, dim1);
+	// make sure that the dim is high enough for any character
+	Dimension fontDim;
+	math_font_max_dim(mi.base.font, fontDim.asc, fontDim.des);
+	dim1 += fontDim;
+
+	dim.asc = max(dim0.ascent()  + 5, dim1.ascent()) + 1;
+	dim.des = max(dim0.descent() - 5, dim1.descent());
+	dim.wid = dim0.width() + dim1.width() + 4;
 }
 
 
 void InsetMathRoot::draw(PainterInfo & pi, int x, int y) const
 {
 	Changer dummy = pi.base.changeEnsureMath();
-	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
-	int const w = dim0.width();
-	// the "exponent"
-	cell(0).draw(pi, x, y - 5 - dim0.descent());
-	// the "base"
-	cell(1).draw(pi, x + w + 8, y);
 	Dimension const dim = dimension(*pi.base.bv);
 	int const a = dim.ascent();
 	int const d = dim.descent();
+	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
+	int const w = dim0.width();
+	// the "exponent"
+	{
+		Changer script = pi.base.font.changeStyle(LM_ST_SCRIPTSCRIPT);
+		cell(0).draw(pi, x, y + (d - a)/2 - dim0.descent());
+	}
+	// the "base"
+	cell(1).draw(pi, x + w + 4, y);
 	int xp[4];
 	int yp[4];
 	pi.pain.line(x + dim.width(), y - a + 1,

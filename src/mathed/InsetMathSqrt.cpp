@@ -14,6 +14,7 @@
 
 #include "MathData.h"
 #include "MathStream.h"
+#include "MathSupport.h"
 
 #include "LaTeXFeatures.h"
 #include "MetricsInfo.h"
@@ -39,9 +40,13 @@ void InsetMathSqrt::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	Changer dummy = mi.base.changeEnsureMath();
 	cell(0).metrics(mi, dim);
-	dim.asc += 4;
-	dim.des += 2;
-	dim.wid += 12;
+	// make sure that the dim is high enough for any character
+	Dimension fontDim;
+	math_font_max_dim(mi.base.font, fontDim.asc, fontDim.des);
+	dim += fontDim;
+	// Some room for the decoration
+	dim.asc += 1;
+	dim.wid += 7;
 }
 
 
