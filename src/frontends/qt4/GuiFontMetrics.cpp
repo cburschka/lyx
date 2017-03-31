@@ -272,9 +272,34 @@ int GuiFontMetrics::x2pos(docstring const & s, int & x, bool const rtl,
                           double const wordspacing) const
 {
 	shared_ptr<QTextLayout const> tl = getTextLayout(s, rtl, wordspacing);
-	int const qpos = tl->lineForTextPosition(0).xToCursor(x);
+	QTextLine const & tline = tl->lineForTextPosition(0);
+	int qpos = tline.xToCursor(x);
+	int newx = static_cast<int>(tline.cursorToX(qpos));
+	// The value of qpos may be wrong in rtl text (see ticket #10569).
+	// To work around this, let's have a look at adjacent positions to
+	// see whether we find closer matches.
+	if (rtl && newx < x) {
+		while (qpos > 0) {
+			int const xm = static_cast<int>(tline.cursorToX(qpos - 1));
+			if (abs(xm - x) < abs(newx - x)) {
+				--qpos;
+				newx = xm;
+			} else
+				break;
+		}
+	} else if (rtl && newx > x) {
+		while (qpos < tline.textLength()) {
+			int const xp = static_cast<int>(tline.cursorToX(qpos + 1));
+			if (abs(xp - x) < abs(newx - x)) {
+				++qpos;
+				newx = xp;
+			} else
+				break;
+		}
+	}
 	// correct x value to the actual cursor position.
-	x = static_cast<int>(tl->lineForTextPosition(0).cursorToX(qpos));
+	x = newx;
+
 	/* Since QString is UTF-16 and docstring is UCS-4, the offsets may
 	 * not be the same when there are high-plan unicode characters
 	 * (bug #10443).
