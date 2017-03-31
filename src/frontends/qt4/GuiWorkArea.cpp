@@ -341,7 +341,10 @@ void GuiWorkArea::init()
 
 GuiWorkArea::~GuiWorkArea()
 {
-	d->buffer_view_->buffer().workAreaManager().remove(this);
+	// If something is wrong with the buffer, we can ignore it safely
+	try {
+		d->buffer_view_->buffer().workAreaManager().remove(this);
+	} catch(...) {}
 	delete d->screen_;
 	delete d->buffer_view_;
 	delete d->cursor_;
