@@ -403,7 +403,12 @@ void Loader::Impl::resetFile(FileName const & file)
 		continue_monitoring = cached_item_->monitoring();
 		// cached_item_ is going to be reset, so the connected
 		// signal needs to be disconnected.
-		sc_.disconnect();
+		try {
+			// This can in theory throw a BufferException
+			sc_.disconnect();
+		} catch (...) {
+			LYXERR(Debug::GRAPHICS, "Unable to disconnect signal.");
+		}
 		cached_item_.reset();
 		if (status_ != Converting) {
 			Cache::get().remove(old_file);
