@@ -55,6 +55,9 @@ InsetCitation::InsetCitation(Buffer * buf, InsetCommandParams const & p)
 InsetCitation::~InsetCitation()
 {
 	if (isBufferLoaded())
+		/* Coverity believes that this may throw an exception, but
+		 * actually this code path is not taken when buffer_ == 0 */
+		// coverity[exn_spec_violation]
 		buffer().removeBiblioTempFiles();
 }
 
