@@ -569,10 +569,10 @@ void CVS::scanMaster()
 		if (contains(line, tmpf)) {
 			// Ok extract the fields.
 			smatch sm;
-
-			// false positive from coverity
-			// coverity[CHECKED_RETURN]
-			regex_match(line, sm, reg);
+			if (!regex_match(line, sm, reg)) {
+				LYXERR(Debug::LYXVC, "\t  Cannot parse line. Skipping.");
+				continue;
+			}
 
 			//sm[0]; // whole matched string
 			//sm[1]; // filename
