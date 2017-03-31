@@ -1475,11 +1475,8 @@ static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, M
 		docstring repl_latex = ods.str();
 		LYXERR(Debug::FIND, "Latexified replace_buffer: '" << repl_latex << "'");
 		string s;
-		// false positive from coverity
-		// coverity[check_return]
-		regex_replace(to_utf8(repl_latex), s, "\\$(.*)\\$", "$1");
-		// coverity[check_return]
-		regex_replace(s, s, "\\\\\\[(.*)\\\\\\]", "$1");
+		(void)regex_replace(to_utf8(repl_latex), s, "\\$(.*)\\$", "$1");
+		(void)regex_replace(s, s, "\\\\\\[(.*)\\\\\\]", "$1");
 		repl_latex = from_utf8(s);
 		LYXERR(Debug::FIND, "Replacing by insert()ing latex: '" << repl_latex << "' cur=" << cur << " with depth=" << cur.depth());
 		MathData ar(cur.buffer());
