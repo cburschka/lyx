@@ -70,7 +70,7 @@ InsetBibitem::~InsetBibitem()
 	if (isBufferLoaded())
 		/* Coverity believes that this may throw an exception, but
 		 * actually this code path is not taken when buffer_ == 0 */
-		// coverity[exn_spec_violation]
+		// coverity[fun_call_w_exception]
 		buffer().invalidateBibinfoCache();
 }
 
