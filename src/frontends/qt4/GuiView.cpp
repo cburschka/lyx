@@ -3253,10 +3253,9 @@ void GuiView::dispatchVC(FuncRequest const & cmd, DispatchResult & dr)
 
 		string rev1 = cmd.getArg(0);
 		string f1, f2;
+		LATTEST(buffer)
 
 		// f1
-		// it seems safe to assume we have a buffer
-		// coverity[FORWARD_NULL]
 		if (!buffer->lyxvc().prepareFileRevision(rev1, f1))
 			break;
 
@@ -4019,9 +4018,9 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			break;
 
 		case LFUN_FORWARD_SEARCH: {
-		// it seems safe to assume we have a document buffer, since
-		// getStatus wants one.
-		// coverity[FORWARD_NULL]
+			// it seems safe to assume we have a document buffer, since
+			// getStatus wants one.
+			LATTEST(doc_buffer);
 			Buffer const * doc_master = doc_buffer->masterBuffer();
 			FileName const path(doc_master->temppath());
 			string const texname = doc_master->isChild(doc_buffer)
