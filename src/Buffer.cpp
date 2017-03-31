@@ -553,7 +553,11 @@ Buffer::~Buffer()
 
 		if (!isClean()) {
 			docstring msg = _("LyX attempted to close a document that had unsaved changes!\n");
-			msg += emergencyWrite();
+			try {
+				msg += emergencyWrite();
+			} catch (...) {
+				msg += "  " + _("Save failed! Bummer. Document is lost.");
+			}
 			Alert::warning(_("Attempting to close changed document!"), msg);
 		}
 
