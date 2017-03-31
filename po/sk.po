@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-03-31 15:22-0400\n"
-"PO-Revision-Date: 2017-02-03 11:21+0000\n"
+"POT-Creation-Date: 2017-03-30 11:20+0200\n"
+"PO-Revision-Date: 2017-03-31 20:31+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2218,7 +2218,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/LineUi.ui:22
 msgid "Of&fset:"
-msgstr "&Posun:"
+msgstr "&Pozdvihnúť:"
 
 #: src/frontends/qt4/ui/LineUi.ui:35
 msgid "Value of the vertical line offset."
@@ -3391,7 +3391,7 @@ msgstr "Vynechať bočné písmená nepatriace k slovu"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:100
 msgid "Use M&ac-style cursor movement"
-msgstr "Použiť &MAC-štýl na posun kurzora"
+msgstr "Použiť &MAC-štýl na pohyb kurzora"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:107
 msgid "Sort &environments alphabetically"
@@ -4500,7 +4500,7 @@ msgstr "V&iacriadkové"
 
 #: src/frontends/qt4/ui/TabularUi.ui:133
 msgid "&Vertical Offset:"
-msgstr "Vertikálny &posun:"
+msgstr "Z&dvihnúť:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:146
 msgid "Optional vertical offset"
@@ -8316,7 +8316,7 @@ msgstr "Štandardné špecifikácie prekrytia tohto rámca"
 #: lib/layouts/beamer.layout:454 lib/layouts/beamer.layout:476
 #: lib/layouts/beamer.layout:487 lib/layouts/beamer.layout:513
 msgid "Frame Options"
-msgstr "Voľby Rám"
+msgstr "Rám: Voľby"
 
 #: lib/layouts/beamer.layout:455 lib/layouts/beamer.layout:477
 #: lib/layouts/beamer.layout:488 lib/layouts/beamer.layout:514
@@ -8336,7 +8336,7 @@ msgstr "Rám voľby (viď beamer manuál)"
 
 #: lib/layouts/beamer.layout:459
 msgid "Frame Title"
-msgstr "Titul Rámu"
+msgstr "Rám: Titul"
 
 #: lib/layouts/beamer.layout:460
 msgid "Enter the frame title here"
@@ -10529,7 +10529,6 @@ msgid "FiXme"
 msgstr "FiXme"
 
 #: lib/layouts/fixme.module:11
-#, fuzzy
 msgid ""
 "Provides 'FiXme' (marginal) annotations for document revision purposes. A "
 "list of annotations can be produced by using the 'List of FIXMEs' paragraph "
@@ -10545,7 +10544,7 @@ msgstr ""
 "FIXMEs'. Vysvetlivky sú upraviteľné v LaTeXovej preambule. Viď dokumentáciu "
 "FiXme. NOTA: Štandardne sú poznámky viditeľné len v režime 'draft' (keď "
 "voľbu 'draft' vložíte pomocou Dokument -> Nastavenia… -> Trieda dokumentu -> "
-"Nastavenie triedy -> Vlastné). Chcete to vidieť vždy, vložte \\"
+"Nastavenie triedy -> Vlastné). Chcete to vidieť vždy, vložte "
 "\\fxsetup{draft} do Dokument -> Preambula LaTeX-u. POZOR: pre niektoré "
 "vlastnosti potrebujete balík 'FiXme' verziu 4 alebo vzostupnú."
 
@@ -35018,7 +35017,7 @@ msgstr "Neznámy používateľ"
 #~ msgstr "Zostavený %1$s, %2$s"
 
 #~ msgid "Use Mac-style for cursor moving between &words"
-#~ msgstr "Použiť &MAC-štýl na posun kurzora medzi slovami"
+#~ msgstr "Použiť &MAC-štýl na pohyb kurzora medzi slovami"
 
 #~ msgid "Use the Mac OS X conventions for the word-level cursor movement"
 #~ msgstr "Použiť dohody Mac OS X pre pohyb kurzoru po slovách"
@@ -35401,3 +35400,23 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Enter BibTeX database name"
 #~ msgstr "Vložte názov BibTeX databázy"
+
+#~ msgid ""
+#~ "Provides 'FiXme' (marginal) annotations for document revision purposes. A "
+#~ "list of annotations can be produced by using the 'List of FIXMEs' "
+#~ "paragraph style. The annotations are customizable via the LaTeX preamble. "
+#~ "See the FiXme documentation for details. NOTE: By default, the notes are "
+#~ "only displayed in 'draft' mode (if the option 'draft' has been inserted "
+#~ "to Document > Settings > Document Class > Class Options > Custom). To "
+#~ "display them always, insert \\\\fxsetup{draft} to Document > Settings > "
+#~ "Preamble. NOTE also that you need version 4 or later of the FiXme package "
+#~ "for some features."
+#~ msgstr ""
+#~ "Poskytuje 'FiXme' (okrajové) vysvetlivky pre revízne zámery v dokumente. "
+#~ "Súpis vysvetliviek sa dá vytvoriť použitím odstavcového štýlu 'Súpis "
+#~ "FIXMEs'. Vysvetlivky sú upraviteľné v LaTeXovej preambule. Viď "
+#~ "dokumentáciu FiXme. NOTA: Štandardne sú poznámky viditeľné len v režime "
+#~ "'draft' (keď voľbu 'draft' vložíte pomocou Dokument -> Nastavenia… -> "
+#~ "Trieda dokumentu -> Nastavenie triedy -> Vlastné). Chcete to vidieť vždy, "
+#~ "vložte \\\\fxsetup{draft} do Dokument -> Preambula LaTeX-u. POZOR: pre "
+#~ "niektoré vlastnosti potrebujete balík 'FiXme' verziu 4 alebo vzostupnú."
