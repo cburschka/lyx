@@ -1094,7 +1094,7 @@ void TextMetrics::setRowHeight(Row & row) const
 // returns the column near the specified x-coordinate of the row
 // x is set to the real beginning of this column
 pos_type TextMetrics::getPosNearX(Row const & row, int & x,
-                                  bool & boundary, bool const select) const
+				  bool & boundary) const
 {
 	//LYXERR0("getPosNearX(" << x << ") row=" << row);
 	/// For the main Text, it is possible that this pit is not
@@ -1124,7 +1124,7 @@ pos_type TextMetrics::getPosNearX(Row const & row, int & x,
 		for ( ; cit != cend; ++cit) {
 			if (w <= x &&  w + cit->full_width() > x) {
 				int x_offset = int(x - w);
-				pos = cit->x2pos(x_offset, select);
+				pos = cit->x2pos(x_offset);
 				x = int(x_offset + w);
 				break;
 			}
@@ -1372,8 +1372,7 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 }
 
 
-void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x,
-                                           int const y, bool const select)
+void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x, int const y)
 {
 	LASSERT(text_ == cur.text(), return);
 	pit_type const pit = getPitNearY(y);
@@ -1400,7 +1399,7 @@ void TextMetrics::setCursorFromCoordinates(Cursor & cur, int const x,
 
 	bool bound = false;
 	int xx = x;
-	pos_type const pos = getPosNearX(row, xx, bound, select);
+	pos_type const pos = getPosNearX(row, xx, bound);
 
 	LYXERR(Debug::DEBUG, "setting cursor pit: " << pit << " pos: " << pos);
 

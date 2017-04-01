@@ -1690,7 +1690,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		int const wh = bv->workHeight();
 		int const y = max(0, min(wh - 1, cmd.y()));
 
-		tm->setCursorFromCoordinates(cur, cmd.x(), y, true);
+		tm->setCursorFromCoordinates(cur, cmd.x(), y);
 		cur.setTargetX(cmd.x());
 		// Don't allow selecting a separator inset
 		if (cur.pos() && cur.paragraph().isEnvSeparator(cur.pos() - 1))
