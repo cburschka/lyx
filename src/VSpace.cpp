@@ -212,13 +212,13 @@ int VSpace::inPixels(BufferView const & bv) const
 	case DEFSKIP:
 		return bv.buffer().params().getDefSkip().inPixels(bv);
 
-	// This is how the skips are normally defined by LateX.
+	// This is how the skips are normally defined by LaTeX.
 	// But there should be some way to change this per document.
 	case SMALLSKIP:
-		return default_height / 4;
+		return int(default_height / 4);
 
 	case MEDSKIP:
-		return default_height / 2;
+		return int(default_height / 2);
 
 	case BIGSKIP:
 		return default_height;
