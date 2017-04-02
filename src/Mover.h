@@ -28,6 +28,12 @@ class Mover
 {
 public:
 	virtual ~Mover() {}
+	Mover(Mover &&) = default;
+	Mover & operator=(Mover &&) = default;
+	Mover(Mover const &) = default;
+	Mover & operator=(Mover const &) = default;
+
+	Mover() = default;
 
 	/** Copy file @c from to @c to.
 	 *  This version should be used to copy files from the original
@@ -109,9 +115,7 @@ protected:
 class SpecialisedMover : public Mover
 {
 public:
-	SpecialisedMover() {}
-
-	virtual ~SpecialisedMover() {}
+	SpecialisedMover() = default;
 
 	/** @c command should be of the form
 	 *  <code>
