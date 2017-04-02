@@ -144,8 +144,8 @@ What's new
 - Use \providecommand for logical markup macros. This fixes a LaTeX error
   with strong and fontenc.
 
-- Fix problem with deleted paragraph breaks when changes are shown in
-  output (bug 10579).
+- Fix problem with deleted page and paragraph breaks when changes are
+  shown in output (bugs 10554 and 10579).
 
 - Allow for empty .lyx files to be opened (bug 9198).
 
