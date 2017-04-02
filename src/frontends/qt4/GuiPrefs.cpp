@@ -72,6 +72,7 @@
 #include <iomanip>
 #include <sstream>
 #include <algorithm>
+#include <math.h>
 
 using namespace Ui;
 
@@ -1683,7 +1684,7 @@ PrefConverters::PrefConverters(GuiPreferences * form)
 
 	converterED->setValidator(new NoNewLineValidator(converterED));
 	converterFlagED->setValidator(new NoNewLineValidator(converterFlagED));
-	maxAgeLE->setValidator(new QDoubleValidator(maxAgeLE));
+	maxAgeLE->setValidator(new QDoubleValidator(0, HUGE_VAL, 6, maxAgeLE));
 	//converterDefGB->setFocusProxy(convertersLW);
 }
 
