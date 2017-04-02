@@ -961,8 +961,13 @@ docstring asString(MathData const & ar)
 
 void asArray(docstring const & str, MathData & ar, Parse::flags pf)
 {
+	// If the QUIET flag is set, we are going to parse for either
+	// a paste operation or a macro definition. We try to do the
+	// right thing in all cases.
+
 	bool quiet = pf & Parse::QUIET;
-	if ((str.size() == 1 && quiet) || (!mathed_parse_cell(ar, str, pf) && quiet))
+	bool macro = pf & Parse::MACRODEF;
+	if ((str.size() == 1 && quiet) || (!mathed_parse_cell(ar, str, pf) && quiet && !macro))
 		mathed_parse_cell(ar, str, pf | Parse::VERBATIM);
 }
 

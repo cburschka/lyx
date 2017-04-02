@@ -1757,7 +1757,8 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 
 			else {
 				success_ = false;
-				if (!(mode_ & Parse::QUIET)) {
+				if (!(mode_ & Parse::QUIET) &&
+				    !(mode_ & Parse::TRACKMACRO)) {
 					dump();
 					lyxerr << "found unknown math environment '"
 					       << to_utf8(name) << "'" << endl;

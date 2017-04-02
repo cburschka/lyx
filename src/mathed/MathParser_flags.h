@@ -28,7 +28,9 @@ enum flags {
 	/// Wrap unicode symbols in \text{}.
 	USETEXT = 0x08,
 	/// Track macro creation while loading a document
-	TRACKMACRO = 0x10
+	TRACKMACRO = 0x10,
+	/// Parse a macro definition
+	MACRODEF = 0x20
 };
 
 
