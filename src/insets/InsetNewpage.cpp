@@ -213,7 +213,11 @@ ColorCode InsetNewpage::ColorName() const
 
 void InsetNewpage::latex(otexstream & os, OutputParams const & runparams) const
 {
-	switch (params_.kind) {
+	if (runparams.inDeletedInset) {
+		os << "\\mbox{}\\\\\\makebox[\\columnwidth]{\\dotfill\\ "
+		   << insetLabel() << "\\ \\dotfill}";
+	} else {
+		switch (params_.kind) {
 		case InsetNewpageParams::NEWPAGE:
 			os << "\\newpage" << termcmd;
 			break;
@@ -231,6 +235,7 @@ void InsetNewpage::latex(otexstream & os, OutputParams const & runparams) const
 		default:
 			os << "\\newpage" << termcmd;
 			break;
+		}
 	}
 }
 
