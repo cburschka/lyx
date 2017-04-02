@@ -40,33 +40,27 @@ Andre'
 
 */
 
+#include <memory>
+
+
 namespace lyx {
 
 class Inset;
 class InsetMath;
 
-class MathAtom {
+class MathAtom : public std::unique_ptr<InsetMath> {
 public:
-	/// default constructor, object is useless, but we need it to put it into
-	/// std::containers
-	MathAtom();
+	MathAtom() = default;
+	MathAtom(MathAtom &&) = default;
+	MathAtom & operator=(MathAtom &&) = default;
 	/// the "real constructor"
 	explicit MathAtom(InsetMath * p);
-	/// copy constructor, invokes nucleus_->clone()
+	/// copy constructor, invokes clone()
 	MathAtom(MathAtom const &);
-	/// we really need to clean up
-	~MathAtom();
-	/// assignment invokes nucleus_->clone()
 	MathAtom & operator=(MathAtom const &);
-	/// access to the inset (checked with gprof)
-	InsetMath       * nucleus()       { return nucleus_; }
-	InsetMath const * nucleus() const { return nucleus_; }
 	/// access to the inset
-	InsetMath const * operator->() const { return nucleus_; }
-
-private:
-	///
-	InsetMath * nucleus_;
+	InsetMath * nucleus() { return get(); }
+	InsetMath const * nucleus() const { return get(); }
 };
 
 

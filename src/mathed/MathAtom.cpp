@@ -18,37 +18,20 @@ using namespace std;
 namespace lyx {
 
 
-MathAtom::MathAtom()
-	: nucleus_(0)
-{}
-
-
 MathAtom::MathAtom(InsetMath * p)
-	: nucleus_(p)
+	: unique_ptr<InsetMath>(p)
 {}
 
 
 MathAtom::MathAtom(MathAtom const & at)
-	: nucleus_(0)
-{
-	if (at.nucleus_)
-		nucleus_ = static_cast<InsetMath*>(at.nucleus_->clone());
-}
+	: unique_ptr<InsetMath>(at ? static_cast<InsetMath*>(at->clone()) : nullptr)
+{}
 
 
 MathAtom & MathAtom::operator=(MathAtom const & at)
 {
-	if (&at == this)
-		return *this;
-	MathAtom tmp(at);
-	swap(tmp.nucleus_, nucleus_);
-	return *this;
-}
-
-
-MathAtom::~MathAtom()
-{
-	delete nucleus_;
+	// copy then move-assign
+	return operator=(MathAtom(at));
 }
 
 
