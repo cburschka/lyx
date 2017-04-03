@@ -463,6 +463,7 @@ bool Converters::convert(Buffer const * buffer,
 			return false;
 
 		if (conv.latex()) {
+			// We are not importing, we have a buffer
 			LATTEST(buffer);
 			run_latex = true;
 			string command = conv.command();
@@ -474,6 +475,8 @@ bool Converters::convert(Buffer const * buffer,
 				return false;
 		} else {
 			if (conv.need_aux() && !run_latex) {
+				// We are not importing, we have a buffer
+				LATTEST(buffer);
 				string command;
 				switch (runparams.flavor) {
 				case OutputParams::DVILUATEX:
