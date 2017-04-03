@@ -2,13 +2,13 @@
 # Copyright (C) 2008 LyX Developers
 # This file is distributed under the same license as the LyX package.
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2016.
+# Yuri Chornoivan <yurchor@ukr.net>, 2007 - 2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2017-03-31 15:22-0400\n"
-"PO-Revision-Date: 2016-10-11 19:18+0300\n"
+"PO-Revision-Date: 2017-04-03 18:40+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "Language: uk\n"
@@ -166,12 +166,11 @@ msgstr "Додати файл бази даних BiBTeX"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:31
 msgid "&Databases found by LaTeX:"
-msgstr ""
+msgstr "&Бази даних, знайдені LaTeX:"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:67
-#, fuzzy
 msgid "Rescan LaTeX's index for new databases and styles"
-msgstr "Знайти нові бази даних і стилі"
+msgstr "Повторно шукати у покажчику LaTeX нові бази даних та стилі"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:70 src/frontends/qt4/ui/BibtexUi.ui:50
 #: src/frontends/qt4/ui/TexinfoUi.ui:94
@@ -182,21 +181,20 @@ msgstr "&Пересканувати"
 msgid ""
 "Here you can enter a local BibTeX database name or browse your directory."
 msgstr ""
+"Тут ви можете ввести назву локальної бази даних BibTeX або вказати її у "
+"вашому каталозі."
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:84
-#, fuzzy
 msgid "&Local databases:"
-msgstr "Бази даних:"
+msgstr "&Локальні бази даних:"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:102
-#, fuzzy
 msgid "Here you can enter a local BibTeX database name"
-msgstr "Використовувана база даних BiBTeX"
+msgstr "Тут ви можете ввести назву локальної бази даних BibTeX"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:109
-#, fuzzy
 msgid "Browse your local directory"
-msgstr "Відсутня тека користувача"
+msgstr "Навігація у вашому локальному каталозі"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:112 src/frontends/qt4/ui/BibtexUi.ui:97
 #: src/frontends/qt4/ui/CompareUi.ui:50 src/frontends/qt4/ui/ExternalUi.ui:70
@@ -893,13 +891,12 @@ msgid "Close"
 msgstr "Закрити"
 
 #: src/frontends/qt4/ui/CitationUi.ui:27 src/frontends/qt4/ui/RefUi.ui:27
-#, fuzzy
 msgid "&Filter:"
-msgstr "Фільтр:"
+msgstr "&Фільтр:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:48
 msgid "Select the fields on which the filter applies"
-msgstr ""
+msgstr "Виберіть поля, яких стосуватиметься фільтрування"
 
 #: src/frontends/qt4/ui/CitationUi.ui:61 src/frontends/qt4/GuiCitation.cpp:334
 msgid "All fields"
@@ -907,7 +904,7 @@ msgstr "Всі поля"
 
 #: src/frontends/qt4/ui/CitationUi.ui:75
 msgid "Select the entry types on which the filter applies"
-msgstr ""
+msgstr "Виберіть типи записів, яких стосуватиметься фільтрування"
 
 #: src/frontends/qt4/ui/CitationUi.ui:85 src/frontends/qt4/GuiCitation.cpp:349
 msgid "All entry types"
@@ -915,12 +912,11 @@ msgstr "Всі типи записів"
 
 #: src/frontends/qt4/ui/CitationUi.ui:93
 msgid "Click for more filter options"
-msgstr ""
+msgstr "Натисніть, щоб дістатися додаткових параметрів фільтрування"
 
 #: src/frontends/qt4/ui/CitationUi.ui:96
-#, fuzzy
 msgid "O&ptions"
-msgstr "Параметри"
+msgstr "&Параметри"
 
 #: src/frontends/qt4/ui/CitationUi.ui:116
 msgid "A&vailable Citations:"
@@ -947,14 +943,12 @@ msgid "Move the selected citation down (Ctrl-Down)"
 msgstr "Перемістити позначене посилання нижче (Ctrl-Стрілка вниз)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:229
-#, fuzzy
 msgid "Selected &Citations:"
 msgstr "П&означені посилання:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:273
-#, fuzzy
 msgid "Formatting"
-msgstr "&Форматування"
+msgstr "Форматування"
 
 #: src/frontends/qt4/ui/CitationUi.ui:283
 msgid "Citation st&yle:"
@@ -966,11 +960,11 @@ msgstr "Текст &перед:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:313
 msgid "Citation style to use, if different styles are provided"
-msgstr ""
+msgstr "Стиль посилань, яким слід скористатися, якщо вказано різні стилі"
 
 #: src/frontends/qt4/ui/CitationUi.ui:322
 msgid "Text that precedes the reference (e.g., \"cf.\")"
-msgstr ""
+msgstr "Текст, який передує посиланню (наприклад, «пор.»)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:329
 msgid "&Text after:"
@@ -978,25 +972,23 @@ msgstr "&Текст після:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:339
 msgid "Text that follows the reference (e.g., pages)"
-msgstr ""
+msgstr "Текст, який слідує за посиланням (наприклад, сторінки)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:382
 msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")"
-msgstr ""
+msgstr "Примусовий верхній регістр у іменах («Дель П’єро», а не «дель П’єро»)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:385
-#, fuzzy
 msgid "Force upcas&ing"
 msgstr "&Примусовий верхній регістр"
 
 #: src/frontends/qt4/ui/CitationUi.ui:392
 msgid "Always list all authors (rather than using \"et al.\")"
-msgstr ""
+msgstr "Завжди виводити список усіх авторів (замість використання «та ін.»)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:395
-#, fuzzy
 msgid "All aut&hors"
-msgstr "Автори"
+msgstr "&Усі автори"
 
 #: src/frontends/qt4/ui/CitationUi.ui:424 src/frontends/qt4/ui/DocumentUi.ui:44
 #: src/frontends/qt4/ui/GraphicsUi.ui:682
@@ -1141,10 +1133,12 @@ msgid ""
 "Swap left and right delimiter type (while reversing to the appropriate "
 "direction)"
 msgstr ""
+"Поміняти місцями типи лівого і правого роздільника (помінявши відповідний "
+"напрямок)"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:265
 msgid "S&wap && Reverse"
-msgstr ""
+msgstr "По&міняти і обернути"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:112
 msgid "Reset to the default settings for the document class"
@@ -4276,72 +4270,64 @@ msgid "&Statusbar messages"
 msgstr "Повідомлення у с&мужці стану"
 
 #: src/frontends/qt4/ui/RefUi.ui:37
-#, fuzzy
 msgid "&In[[buffer]]:"
-msgstr "буфер"
+msgstr "&У:"
 
 #: src/frontends/qt4/ui/RefUi.ui:56
 msgid "Filter case-sensitively"
 msgstr "Фільтрувати з врахуванням регістру"
 
 #: src/frontends/qt4/ui/RefUi.ui:59
-#, fuzzy
 msgid "Case Sensiti&ve"
 msgstr "З &урахуванням регістру"
 
 #: src/frontends/qt4/ui/RefUi.ui:74
 msgid "The (sub-)document from which the available labels are displayed"
-msgstr ""
+msgstr "Документ (піддокумент), з якого буде показано доступні мітки"
 
 #: src/frontends/qt4/ui/RefUi.ui:85
-#, fuzzy
 msgid "Available &Labels:"
-msgstr "&Доступні версії:"
+msgstr "&Доступні мітки:"
 
 #: src/frontends/qt4/ui/RefUi.ui:121
 msgid "So&rt:"
-msgstr ""
+msgstr "У&порядковування:"
 
 #: src/frontends/qt4/ui/RefUi.ui:131
 msgid "Sorting of the list of available labels"
-msgstr ""
+msgstr "Упорядковування списку доступних міток"
 
 #: src/frontends/qt4/ui/RefUi.ui:138
-#, fuzzy
 msgid "Group the list of available labels by prefix (e.g. \"sec:\")"
-msgstr "Групувати мітки за префіксом (наприклад, \"sec:\")"
+msgstr "Групувати список доступних міток за префіксом (наприклад, \"sec:\")"
 
 #: src/frontends/qt4/ui/RefUi.ui:141
 msgid "Grou&p"
 msgstr "Гр&упувати"
 
 #: src/frontends/qt4/ui/RefUi.ui:165
-#, fuzzy
 msgid "Sele&cted Label:"
-msgstr "Ви&бране:"
+msgstr "&Позначена мітка:"
 
 #: src/frontends/qt4/ui/RefUi.ui:178
 msgid "Select a label from the list above or enter a label manually"
-msgstr ""
+msgstr "Виберіть мітку із наведеного вище списку або введіть мітку вручну"
 
 #: src/frontends/qt4/ui/RefUi.ui:191 src/frontends/qt4/GuiRef.cpp:351
-#, fuzzy
 msgid "Jump to the selected label"
-msgstr "Перейти до мітки"
+msgstr "Перейти до позначеної мітки"
 
 #: src/frontends/qt4/ui/RefUi.ui:194 src/frontends/qt4/GuiRef.cpp:350
 msgid "&Go to Label"
 msgstr "&Перейти до мітки"
 
 #: src/frontends/qt4/ui/RefUi.ui:205
-#, fuzzy
 msgid "Reference For&mat:"
-msgstr "Посилання:"
+msgstr "Фор&мат посилань:"
 
 #: src/frontends/qt4/ui/RefUi.ui:224
-#, fuzzy
 msgid "Adjust the style of the cross-reference"
-msgstr "В&икористовувати refstyle (не prettyref) для перехресних посилань"
+msgstr "Скоригувати стиль перехресних посилань"
 
 #: src/frontends/qt4/ui/RefUi.ui:228
 msgid "<reference>"
@@ -10590,7 +10576,6 @@ msgid "FiXme"
 msgstr "FiXme"
 
 #: lib/layouts/fixme.module:11
-#, fuzzy
 msgid ""
 "Provides 'FiXme' (marginal) annotations for document revision purposes. A "
 "list of annotations can be produced by using the 'List of FIXMEs' paragraph "
@@ -10607,7 +10592,7 @@ msgstr ""
 "опис наведено у документації з FiXme. ЗАУВАЖЕННЯ: типово, нотатки буде "
 "показано лише у режимі «draft» (якщо буде вибрано варіант «draft» на "
 "сторінці налаштувань «Документ > Налаштувати > Клас документа > Параметри "
-"класу > Нетипове). Щоб програма показувала їх завжди, вставте команду \\"
+"класу > Нетипове). Щоб програма показувала їх завжди, вставте команду "
 "\\fxsetup{draft} на сторінці «Документ > Налаштувати > Преамбула». Також "
 "зауважте, що для працездатності деяких із можливостей вам слід встановити "
 "версію 4 або новішу пакунка FiXme."
@@ -15019,77 +15004,62 @@ msgstr ""
 "скористайтеся одним з модулів «у межах розділів»/«у межах глав», відповідно."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:82
-#, fuzzy
 msgid "Theorem \\thechapter.\\thetheorem."
-msgstr "Теорема \\thetheorem."
+msgstr "Теорема \\thechapter.\\thetheorem."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:112
-#, fuzzy
 msgid "Corollary \\thechapter.\\thecorollary."
-msgstr "Наслідок \\thecorollary."
+msgstr "Наслідок \\thechapter.\\thecorollary."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:134
-#, fuzzy
 msgid "Lemma \\thechapter.\\thelemma."
-msgstr "Лема \\thelemma."
+msgstr "Лема \\thechapter.\\thelemma."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:156
-#, fuzzy
 msgid "Proposition \\thechapter.\\theproposition."
-msgstr "Твердження \\theproposition."
+msgstr "Твердження \\thechapter.\\theproposition."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:178
-#, fuzzy
 msgid "Conjecture \\thechapter.\\theconjecture."
-msgstr "Припущення \\theconjecture."
+msgstr "Припущення \\thechapter.\\theconjecture."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:200
-#, fuzzy
 msgid "Fact \\thechapter.\\thefact."
-msgstr "Факт \\thefact."
+msgstr "Факт \\thechapter.\\thefact."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:222
-#, fuzzy
 msgid "Definition \\thechapter.\\thedefinition."
-msgstr "Означення \\thedefinition."
+msgstr "Означення \\thechapter.\\thedefinition."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:251
-#, fuzzy
 msgid "Example \\thechapter.\\theexample."
-msgstr "Приклад \\theexample."
+msgstr "Приклад \\thechapter.\\theexample."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:274
-#, fuzzy
 msgid "Problem \\thechapter.\\theproblem."
-msgstr "Задача \\theproblem."
+msgstr "Задача \\thechapter.\\theproblem."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:297
-#, fuzzy
 msgid "Exercise \\thechapter.\\theexercise."
-msgstr "Вправа \\theexercise."
+msgstr "Вправа \\thechapter.\\theexercise."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:320
-#, fuzzy
 msgid "Solution \\thechapter.\\thesolution."
-msgstr "Розв’язування \\thesolution."
+msgstr "Розв’язування \\thechapter.\\thesolution."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:343
-#, fuzzy
 msgid "Remark \\thechapter.\\theremark."
-msgstr "Примітка \\theremark."
+msgstr "Примітка \\thechapter.\\theremark."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:373
-#, fuzzy
 msgid "Claim \\thechapter.\\theclaim."
-msgstr "Вимога \\theclaim."
+msgstr "Вимога \\thechapter.\\theclaim."
 
 #: lib/layouts/theorems-ams-chap-bytype.module:2
-#, fuzzy
 msgid "Theorems (AMS, Numbered by Type within Chapters)"
-msgstr "Теореми (нумерація за типом у межах глав)"
+msgstr "Теореми (AMS, нумерація за типом у межах глав)"
 
 #: lib/layouts/theorems-ams-chap-bytype.module:11
-#, fuzzy
 msgid ""
 "Defines theorem environments and the proof environment using the extended "
 "AMS machinery. Both numbered and unnumbered types are provided. Contrary to "
@@ -15103,10 +15073,9 @@ msgstr ""
 "«proof» (доведення) з використанням алгоритмів класів AMS. Підтримуються "
 "нумеровані та ненумеровані типи. На відміну від звичайного модуля теорем "
 "AMS, передбачено окрему нумерацію для кожного з типів теорем (наприклад, "
-"теорема 1, теорема 2, лема 1, твердження 1, теорема 3, лема 2…, а не теорема "
-"1, теорема 2, лема 3, твердження 4…). Нумерація є наскрізною для цілого "
-"документа. Щоб отримати окрему нумерацію у межах глави або розділу, "
-"скористайтеся одним з модулів «у межах розділів»/«у межах глав», відповідно."
+"теорема 1.1, теорема 1.2, лема 1.1, твердження 1.1, теорема 1.3, лема 1.2…, "
+"а не теорема 1, теорема 2, лема 3, твердження 4…). Нумерація починається з "
+"початку у кожній главі: теорема 1.1, теорема 2.1…"
 
 #: lib/layouts/theorems-ams-extended-bytype.module:2
 msgid "Theorems (AMS-Extended, Numbered by Type)"
@@ -15310,12 +15279,10 @@ msgid "Question."
 msgstr "Питання."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:2
-#, fuzzy
 msgid "Theorems (AMS-Extended, Numbered by Type within Chapters)"
-msgstr "Теореми (нумерація за типом у межах глав)"
+msgstr "Теореми (розширений AMS, нумерація за типом у межах глав)"
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:12
-#, fuzzy
 msgid ""
 "Defines some additional theorem environments for use with the AMS theorems "
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
@@ -15330,64 +15297,53 @@ msgstr ""
 "теорем AMS. Зокрема Criterion, Algorithm, Axiom, Condition, Note, Notation, "
 "Summary, Acknowledgement, Conclusion, Fact, Assumption і Case, у варіантах з "
 "нумерацією і без. На відміну від звичайного модуля AMS-Extended, передбачено "
-"окрему нумерацію різних типів теорем (наприклад, критерій 1, критерій 2, "
-"аксіома 1, припущення 1, критерій 3…, а не критерій 1, критерій 2, аксіома "
-"3, припущення 4…)."
+"окрему нумерацію різних типів теорем (починається з початку у кожній главі, "
+"наприклад, критерій 1.1, критерій 1.2, аксіома 1.1, припущення 1.1, критерій "
+"1.3…, а не критерій 1, критерій 2, аксіома 3, припущення 4…)."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:69
-#, fuzzy
 msgid "Criterion \\thechapter.\\thecriterion."
-msgstr "Критерій \\thecriterion."
+msgstr "Критерій \\thechapter.\\thecriterion."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:108
-#, fuzzy
 msgid "Algorithm \\thechapter.\\thealgorithm."
-msgstr "Алгоритм \\thealgorithm."
+msgstr "Алгоритм \\thechapter.\\thealgorithm."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:147
-#, fuzzy
 msgid "Axiom \\thechapter.\\theaxiom."
-msgstr "Аксіома \\theaxiom.rem."
+msgstr "Аксіома \\thechapter.\\theaxiom."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:186
-#, fuzzy
 msgid "Condition \\thechapter.\\thecondition."
-msgstr "Умова \\thecondition."
+msgstr "Умова \\thechapter.\\thecondition."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:225
-#, fuzzy
 msgid "Note \\thechapter.\\thenote."
-msgstr "Примітка \\thenote."
+msgstr "Примітка \\thechapter.\\thenote."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:264
-#, fuzzy
 msgid "Notation \\thechapter.\\thenotation."
-msgstr "Позначення \\thenotation."
+msgstr "Позначення \\thechapter.\\thenotation."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:303
-#, fuzzy
 msgid "Summary \\thechapter.\\thesummary."
-msgstr "Резюме \\thesummary."
+msgstr "Резюме \\thechapter.\\thesummary."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:343
-#, fuzzy
 msgid "Acknowledgement \\thechapter.\\theacknowledgement."
-msgstr "Подяка \\theacknowledgement."
+msgstr "Подяка \\thechapter.\\theacknowledgement."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:382
-#, fuzzy
 msgid "Conclusion \\thechapter.\\theconclusion."
-msgstr "Висновок \\theconclusion."
+msgstr "Висновок \\thechapter.\\theconclusion."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:421
-#, fuzzy
 msgid "Assumption \\thechapter.\\theassumption."
-msgstr "Припущення \\theassumption."
+msgstr "Припущення \\thechapter.\\theassumption."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:460
-#, fuzzy
 msgid "Question \\thechapter.\\thequestion."
-msgstr "Питання \\thequestion."
+msgstr "Питання \\thechapter.\\thequestion."
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
@@ -17554,27 +17510,22 @@ msgid "Wrap by Preview|y"
 msgstr "Обрізати за областю перегляду|я"
 
 #: lib/ui/stdcontext.inc:667 lib/ui/stdmenus.inc:354
-#, fuzzy
 msgid "Small-sized Icons"
 msgstr "Малі піктограми"
 
 #: lib/ui/stdcontext.inc:668 lib/ui/stdmenus.inc:355
-#, fuzzy
 msgid "Normal-sized Icons"
 msgstr "Звичайні піктограми"
 
 #: lib/ui/stdcontext.inc:669 lib/ui/stdmenus.inc:356
-#, fuzzy
 msgid "Big-sized Icons"
 msgstr "Великі піктограми"
 
 #: lib/ui/stdcontext.inc:670 lib/ui/stdmenus.inc:357
-#, fuzzy
 msgid "Huge-sized Icons"
 msgstr "Величезні піктограми"
 
 #: lib/ui/stdcontext.inc:671 lib/ui/stdmenus.inc:358
-#, fuzzy
 msgid "Giant-sized Icons"
 msgstr "Гігантські піктограми"
 
@@ -23920,7 +23871,7 @@ msgstr "Архів LyX (tar.gz)"
 #: src/Author.cpp:57
 #, c-format
 msgid "%1$s[[name]] (%2$s[[email]])"
-msgstr "%1$s[[name]] (%2$s[[email]])"
+msgstr "%1$s (%2$s)"
 
 #: src/BiblioInfo.cpp:313 src/frontends/qt4/GuiDocument.cpp:2343
 #, c-format
@@ -24272,27 +24223,26 @@ msgstr ""
 #: src/Buffer.cpp:1894
 #, c-format
 msgid "The languages %1$s are only supported by Babel."
-msgstr ""
+msgstr "Підтримку мов %1$s передбачено лише у Babel."
 
 #: src/Buffer.cpp:1895
 #, c-format
 msgid "The language %1$s is only supported by Babel."
-msgstr ""
+msgstr "Підтримку мови %1$s передбачено лише у Babel."
 
 #: src/Buffer.cpp:1905
 #, c-format
 msgid "The languages %1$s are only supported by Polyglossia."
-msgstr ""
+msgstr "Підтримку мов %1$s передбачено лише у Polyglossia."
 
 #: src/Buffer.cpp:1906
 #, c-format
 msgid "The language %1$s is only supported by Polyglossia."
-msgstr ""
+msgstr "Підтримку мови %1$s передбачено лише у Polyglossia."
 
 #: src/Buffer.cpp:1912
-#, fuzzy
 msgid "Incompatible Languages!"
-msgstr "Несумісна назва команди."
+msgstr "Несумісні мови!"
 
 #: src/Buffer.cpp:1914
 #, c-format
@@ -24301,6 +24251,9 @@ msgid ""
 "because they require conflicting language packages:\n"
 "%1$s%2$s"
 msgstr ""
+"Не можна використовувати вказані нижче мови разом у одному документі LaTeX, "
+"оскільки для їхнього використання потрібні різні мовні пакунки:\n"
+"%1$s%2$s"
 
 #: src/Buffer.cpp:2226
 msgid "Running chktex..."
@@ -25300,9 +25253,8 @@ msgid "page break / line break"
 msgstr "розрив сторінки/рядка"
 
 #: src/Color.cpp:295
-#, fuzzy
 msgid "button frame"
-msgstr "Без рамки"
+msgstr "рамка кнопки"
 
 #: src/Color.cpp:296
 msgid "button background"
@@ -26524,9 +26476,9 @@ msgstr ""
 "введіть \"-paper\")"
 
 #: src/LyXVC.cpp:54
-#, fuzzy, c-format
+#, c-format
 msgid "%1$s lock"
-msgstr "%1$s файлів"
+msgstr "Блокування %1$s"
 
 #: src/LyXVC.cpp:116
 #, c-format
@@ -27246,7 +27198,7 @@ msgstr "Складний пошук з заміною"
 
 #: src/frontends/qt4/FloatPlacement.h:38
 msgid "Float Settings"
-msgstr "Параметри рухомих об’єктів"
+msgstr "Налаштування рухомих об’єктів"
 
 #: src/frontends/qt4/GuiAbout.cpp:51
 msgid "ERROR: LyX wasn't able to find the CREDITS file\n"
@@ -27557,7 +27509,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiBibitem.h:36
 msgid "Bibliography Item Settings"
-msgstr "Параметри пункту бібліографії"
+msgstr "Параметри записів бібліографії"
 
 #: src/frontends/qt4/GuiBibtex.cpp:53
 msgid "BibTeX Bibliography"
@@ -27570,6 +27522,10 @@ msgid ""
 "subdirectory of LaTeX's texmf tree. If you want to reuse your own database, "
 "this is the place you should store it."
 msgstr ""
+"У цьому списку наведено усі бази даних, які індексовано LaTeX, а отже "
+"знайдено без шляху до файла. Зазвичай, це вміст підкаталогу bib у дереві "
+"каталогів texmf LaTeX. Якщо ви хочете повторно скористатися вашою власною "
+"базою даних, це саме те місце, де вам слід її зберігати."
 
 #: src/frontends/qt4/GuiBibtex.cpp:439 src/frontends/qt4/GuiBibtex.cpp:449
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
@@ -27715,7 +27671,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiChanges.cpp:78
 msgid "Change made on %1\n"
-msgstr "Зміни внесено %1$s\n"
+msgstr "Зміни внесено %1\n"
 
 #: src/frontends/qt4/GuiCharacter.cpp:49 src/frontends/qt4/GuiCharacter.cpp:62
 #: src/frontends/qt4/GuiCharacter.cpp:83 src/frontends/qt4/GuiCharacter.cpp:124
@@ -27767,9 +27723,8 @@ msgid "Clear text"
 msgstr "Спорожнити поле"
 
 #: src/frontends/qt4/GuiCitation.cpp:107
-#, fuzzy
 msgid "All avail. citations"
-msgstr "До&ступні посилання:"
+msgstr "Усі доступні посилання"
 
 #: src/frontends/qt4/GuiCitation.cpp:114
 msgid "Regular e&xpression"
@@ -27789,23 +27744,21 @@ msgstr "Ключі"
 
 #: src/frontends/qt4/GuiCitation.cpp:376
 msgid "Displays a sketchy preview if a citation is selected above"
-msgstr ""
+msgstr "Показує ескізний перегляд, якщо вище позначено посилання"
 
 #: src/frontends/qt4/GuiCitation.cpp:380
-#, fuzzy
 msgid "Sketchy preview of the selected citation"
-msgstr "Змінити назву вибраної гілки"
+msgstr "Ескізний попередній перегляд позначеного посилання"
 
 #: src/frontends/qt4/GuiCitation.cpp:489
-#, fuzzy
 msgid "Enter string to filter the list of available citations"
-msgstr "Введіть рядок для фільтрування списку міток"
+msgstr "Введіть рядок для фільтрування списку доступних посилань"
 
 #: src/frontends/qt4/GuiCitation.cpp:490
-#, fuzzy
 msgid ""
 "Enter string to filter the list of available citations and press <Enter>"
-msgstr "Введіть рядок для фільтрування списку міток"
+msgstr ""
+"Введіть рядок для фільтрування списку доступних посилань і натисніть <Enter>"
 
 #: src/frontends/qt4/GuiClipboard.cpp:174
 msgid "LinkBack PDF"
@@ -28286,7 +28239,7 @@ msgstr "Версії"
 
 #: src/frontends/qt4/GuiDocument.cpp:1428
 msgid "Formats[[output]]"
-msgstr ""
+msgstr "Формати"
 
 #: src/frontends/qt4/GuiDocument.cpp:1429
 msgid "LaTeX Preamble"
@@ -29174,7 +29127,7 @@ msgstr "Невідома або неправильна функція LyX"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3138
 msgid "This LyX function is hidden and cannot be bound."
-msgstr ""
+msgstr "Ця функція LyX є прихованою, її не можна обмежувати."
 
 #: src/frontends/qt4/GuiPrefs.cpp:3144
 msgid "Invalid or empty key sequence"
@@ -29258,27 +29211,24 @@ msgid "Cross-reference"
 msgstr "Перехресне посилання"
 
 #: src/frontends/qt4/GuiRef.cpp:62
-#, fuzzy
 msgid "All available labels"
-msgstr "Доступні шаблони"
+msgstr "Усі доступні мітки"
 
 #: src/frontends/qt4/GuiRef.cpp:64
-#, fuzzy
 msgid "Enter string to filter the list of available labels"
-msgstr "Введіть рядок для фільтрування списку міток"
+msgstr "Введіть рядок для фільтрування списку доступних міток"
 
 #: src/frontends/qt4/GuiRef.cpp:69
-#, fuzzy
 msgid "By Occurrence"
-msgstr "Посилання PDB"
+msgstr "За використанням"
 
 #: src/frontends/qt4/GuiRef.cpp:70
 msgid "Alphabetically (Case-Insensitive)"
-msgstr ""
+msgstr "За абеткою (без урахування регістру)"
 
 #: src/frontends/qt4/GuiRef.cpp:71
 msgid "Alphabetically (Case-Sensitive)"
-msgstr ""
+msgstr "За абеткою (із урахуванням регістру)"
 
 #: src/frontends/qt4/GuiRef.cpp:343
 msgid "&Go Back"
@@ -29286,7 +29236,7 @@ msgstr "&Назад"
 
 #: src/frontends/qt4/GuiRef.cpp:344
 msgid "Jump back to the original cursor location"
-msgstr ""
+msgstr "Повернутися до початкового розташування курсора"
 
 #: src/frontends/qt4/GuiRef.cpp:416 src/frontends/qt4/GuiRef.cpp:436
 msgid "<No prefix>"
@@ -30139,7 +30089,7 @@ msgstr "Всі документи збережено."
 #: src/frontends/qt4/GuiView.cpp:3775
 #, c-format
 msgid "Icon size set to %1$dx%2$d."
-msgstr ""
+msgstr "Встановлено розмір піктограм %1$dx%2$d."
 
 #: src/frontends/qt4/GuiView.cpp:3861
 #, c-format
@@ -30160,13 +30110,12 @@ msgstr "Не вдалося продовжити."
 
 #: src/frontends/qt4/GuiViewSource.cpp:407
 #: src/frontends/qt4/GuiViewSource.cpp:452
-#, fuzzy
 msgid "Code Preview"
-msgstr "Перегляд"
+msgstr "Перегляд коду"
 
 #: src/frontends/qt4/GuiViewSource.cpp:453
 msgid "%1[[preview format name]] Preview"
-msgstr ""
+msgstr "Попередній перегляд %1"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1576
 msgid "Close File"
