@@ -15,8 +15,6 @@
 #include "Author.h"
 #include "BufferParams.h"
 #include "Changes.h"
-#include "CutAndPaste.h"
-#include "ErrorList.h"
 #include "Font.h"
 
 #include "insets/InsetText.h"
@@ -384,16 +382,7 @@ void Compare::run()
 	// Copy the buffer params to the destination buffer
 	dest_buffer->params() = options_.settings_from_new
 		? new_buffer->params() : old_buffer->params();
-	
-	// We do not want to share the DocumentClass with the other Buffer
-	// See bug #10295
-	DocumentClassConstPtr olddc = dest_buffer->params().documentClassPtr();
-	dest_buffer->params().makeDocumentClass();
-	ErrorList el;
-	cap::switchBetweenClasses(
-			olddc, dest_buffer->params().documentClassPtr(),
-			static_cast<InsetText &>(dest_buffer->inset()), el);
-	
+
 	// Copy extra authors to the destination buffer
 	AuthorList const & extra_authors = options_.settings_from_new ?
 		old_buffer->params().authors() : new_buffer->params().authors();
