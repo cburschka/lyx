@@ -15,6 +15,8 @@
 #include "Author.h"
 #include "BufferParams.h"
 #include "Changes.h"
+#include "CutAndPaste.h"
+#include "ErrorList.h"
 #include "Font.h"
 
 #include "insets/InsetText.h"
@@ -382,7 +384,6 @@ void Compare::run()
 	// Copy the buffer params to the destination buffer
 	dest_buffer->params() = options_.settings_from_new
 		? new_buffer->params() : old_buffer->params();
-
 	// Copy extra authors to the destination buffer
 	AuthorList const & extra_authors = options_.settings_from_new ?
 		old_buffer->params().authors() : new_buffer->params().authors();
@@ -390,11 +391,26 @@ void Compare::run()
 	for (; it != extra_authors.end(); ++it)
 		dest_buffer->params().authors().record(*it);
 
-	doStatusMessage();
+	// We will need this later
+	DocumentClassConstPtr const olddc = 
+		dest_buffer->params().documentClassPtr();
+	// We do not want to share the DocumentClass with the other Buffer.
+	// See bug #10295.
+	dest_buffer->params().makeDocumentClass();
 
-	// do the real work
+	doStatusMessage();
+	// Do the real work
 	if (!doCompare())
 		return;
+
+	// The comparison routine simply copies the paragraphs over into the
+	// new buffer with the document class from wherever they came from.
+	// So we need to reset the document class of all the paragraphs.
+	// See bug #10295.
+	ErrorList el;
+	cap::switchBetweenClasses(
+			olddc, dest_buffer->params().documentClassPtr(),
+			static_cast<InsetText &>(dest_buffer->inset()), el);
 
 	finished(pimpl_->abort_);
 	return;
