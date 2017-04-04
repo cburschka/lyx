@@ -9,7 +9,7 @@
 # Full author contact details are available in file CREDITS.
 
 from __future__ import print_function
-import glob, logging, os, re, shutil, subprocess, sys, stat
+import glob, logging, os, re, shutil, subprocess, sys, stat, io
 
 # set up logging
 logging.basicConfig(level = logging.DEBUG,
@@ -200,12 +200,12 @@ def checkTeXPaths():
             if sys.version_info[0] < 3:
                 inpname = shortPath(unicode(tmpfname, encoding)).replace('\\', '/')
             else:
-                inpname = shortPath(str(tmpfname, encoding)).replace('\\', '/')
+                inpname = shortPath(tmpfname).replace('\\', '/') 
         else:
             inpname = cmdOutput('cygpath -m ' + tmpfname)
         logname = os.path.basename(re.sub("(?i).ltx", ".log", inpname))
         inpname = inpname.replace('~', '\\string~')
-        os.write(fd, r'\relax')
+        os.write(fd, b'\\relax')
         os.close(fd)
         latex_out = cmdOutput(r'latex "\nonstopmode\input{%s}\makeatletter\@@end"'
                               % inpname)
@@ -1349,7 +1349,11 @@ def checkLatexConfig(check_config, bool_docbook):
         classname = file.split(os.sep)[-1].split('.')[0]
         decline = ""
         catline = ""
-        for line in open(file).readlines():
+        if os.name == 'nt':
+            enco = sys.getfilesystemencoding()
+        else:
+            enco="utf8"
+        for line in io.open(file, encoding=enco).readlines():
             if not empty.match(line) and line[0] != '#':
                 if decline == "":
                     logger.warning("Failed to find valid \Declare line "
