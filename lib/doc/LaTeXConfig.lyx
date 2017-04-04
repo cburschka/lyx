@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 534
+\lyxformat 537
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -22,6 +22,7 @@
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -1003,6 +1004,40 @@ Minion Pro
  font.
  Note that the font itself is not part of the package and must be installed
  separately (please consult the MinionPro package manual for details).
+\end_layout
+
+\begin_layout Subsection
+Noto
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "noto"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family sans
+fonts/noto
+\end_layout
+
+\begin_layout Description
+Notes: The noto fonts are designed to cover all the scripts encoded in the
+ Unicode standard.
+ They are therefore the choice for documents with mixed scripts like e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+Cyrillc in combination with Georgian.
 \end_layout
 
 \begin_layout Subsection
