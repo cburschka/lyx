@@ -2166,6 +2166,13 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
+	case LFUN_FONT_CROSSOUT: {
+		Font font(ignore_font, ignore_language);
+		font.fontInfo().setXout(FONT_TOGGLE);
+		toggleAndShow(cur, this, font);
+		break;
+	}
+
 	case LFUN_FONT_UNDERUNDERLINE: {
 		Font font(ignore_font, ignore_language);
 		font.fontInfo().setUuline(FONT_TOGGLE);
@@ -3203,6 +3210,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_FONT_STATE:
 	case LFUN_FONT_UNDERLINE:
 	case LFUN_FONT_STRIKEOUT:
+	case LFUN_FONT_CROSSOUT:
 	case LFUN_FONT_UNDERUNDERLINE:
 	case LFUN_FONT_UNDERWAVE:
 	case LFUN_TEXTSTYLE_APPLY:

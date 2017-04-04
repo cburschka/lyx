@@ -3294,14 +3294,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			preamble.registerAutomaticallyLoadedPackage("ulem");
 		}
 
-		else if (t.cs() == "uuline" || t.cs() == "uwave" ||
-		         t.cs() == "emph" || t.cs() == "noun") {
+		else if (t.cs() == "uuline" || t.cs() == "uwave"
+		        || t.cs() == "emph" || t.cs() == "noun"
+		        || t.cs() == "xout") {
 			context.check_layout(os);
 			os << "\n\\" << t.cs() << " on\n";
 			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
 			context.check_layout(os);
 			os << "\n\\" << t.cs() << " default\n";
-			if (t.cs() == "uuline" || t.cs() == "uwave")
+			if (t.cs() == "uuline" || t.cs() == "uwave" || t.cs() == "xout")
 				preamble.registerAutomaticallyLoadedPackage("ulem");
 		}
 

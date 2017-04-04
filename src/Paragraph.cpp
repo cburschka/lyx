@@ -2852,6 +2852,7 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 	bool ubar_flag = false;
 	bool dbar_flag = false;
 	bool sout_flag = false;
+	bool xout_flag = false;
 	bool wave_flag = false;
 	// shape tags
 	bool shap_flag = false;
@@ -2905,6 +2906,11 @@ docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,
 		curstate = font.fontInfo().strikeout();
 		if (font_old.strikeout() != curstate)
 			doFontSwitch(tagsToOpen, tagsToClose, sout_flag, curstate, html::FT_SOUT);
+
+		// xout
+		curstate = font.fontInfo().xout();
+		if (font_old.xout() != curstate)
+			doFontSwitch(tagsToOpen, tagsToClose, xout_flag, curstate, html::FT_XOUT);
 
 		// double underbar
 		curstate = font.fontInfo().uuline();

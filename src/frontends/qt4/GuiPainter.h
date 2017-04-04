@@ -169,6 +169,10 @@ private:
 	void strikeoutLine(FontInfo const & f,
 		int x, int y, int width);
 
+	/// check the font, and if set, draw cross-through lines
+	void crossoutLines(FontInfo const & f,
+		int x, int y, int width);
+
 	/// check the font, and if set, draw double underline
 	void doubleUnderline(FontInfo const & f,
 		int x, int y, int width);

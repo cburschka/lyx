@@ -464,6 +464,9 @@ void Text::readParToken(Paragraph & par, Lexer & lex,
 	} else if (token == "\\strikeout") {
 		lex.next();
 		font.fontInfo().setStrikeout(setLyXMisc(lex.getString()));
+	} else if (token == "\\xout") {
+		lex.next();
+		font.fontInfo().setXout(setLyXMisc(lex.getString()));
 	} else if (token == "\\uuline") {
 		lex.next();
 		font.fontInfo().setUuline(setLyXMisc(lex.getString()));

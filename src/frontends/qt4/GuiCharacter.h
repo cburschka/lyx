@@ -39,6 +39,8 @@ enum FontState {
 	///
 	STRIKEOUT_TOGGLE,
 	///
+	XOUT_TOGGLE,
+	///
 	UULINE_TOGGLE,
 	///
 	UWAVE_TOGGLE,

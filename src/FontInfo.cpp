@@ -70,6 +70,7 @@ FontInfo const sane_font(
 	FONT_OFF,
 	FONT_OFF,
 	FONT_OFF,
+	FONT_OFF,
 	FONT_OFF);
 
 FontInfo const inherit_font(
@@ -85,6 +86,7 @@ FontInfo const inherit_font(
 	FONT_INHERIT,
 	FONT_INHERIT,
 	FONT_INHERIT,
+	FONT_INHERIT,
 	FONT_OFF);
 
 FontInfo const ignore_font(
@@ -94,6 +96,7 @@ FontInfo const ignore_font(
 	FONT_SIZE_IGNORE,
 	Color_ignore,
 	Color_ignore,
+	FONT_IGNORE,
 	FONT_IGNORE,
 	FONT_IGNORE,
 	FONT_IGNORE,
@@ -211,6 +214,8 @@ void FontInfo::reduce(FontInfo const & tmplt)
 		underbar_ = FONT_INHERIT;
 	if (strikeout_ == tmplt.strikeout_)
 		strikeout_ = FONT_INHERIT;
+	if (xout_ == tmplt.xout_)
+		xout_ = FONT_INHERIT;
 	if (uuline_ == tmplt.uuline_)
 		uuline_ = FONT_INHERIT;
 	if (uwave_ == tmplt.uwave_)
@@ -252,6 +257,9 @@ FontInfo & FontInfo::realize(FontInfo const & tmplt)
 
 	if (strikeout_ == FONT_INHERIT)
 		strikeout_ = tmplt.strikeout_;
+
+	if (xout_ == FONT_INHERIT)
+		xout_ = tmplt.xout_;
 
 	if (uuline_ == FONT_INHERIT)
 		uuline_ = tmplt.uuline_;
@@ -362,6 +370,7 @@ void FontInfo::update(FontInfo const & newfont, bool toggleall)
 	setEmph(setMisc(newfont.emph_, emph_));
 	setUnderbar(setMisc(newfont.underbar_, underbar_));
 	setStrikeout(setMisc(newfont.strikeout_, strikeout_));
+	setXout(setMisc(newfont.xout_, xout_));
 	setUuline(setMisc(newfont.uuline_, uuline_));
 	setUwave(setMisc(newfont.uwave_, uwave_));
 	setNoun(setMisc(newfont.noun_, noun_));
@@ -385,8 +394,8 @@ bool FontInfo::resolved() const
 		&& shape_ != INHERIT_SHAPE && size_ != FONT_SIZE_INHERIT
 		&& emph_ != FONT_INHERIT && underbar_ != FONT_INHERIT
 		&& uuline_ != FONT_INHERIT && uwave_ != FONT_INHERIT
-		&& strikeout_ != FONT_INHERIT && noun_ != FONT_INHERIT
-		&& color_ != Color_inherit
+		&& strikeout_ != FONT_INHERIT && xout_ != FONT_INHERIT
+		&& noun_ != FONT_INHERIT && color_ != Color_inherit
 		&& background_ != Color_inherit);
 }
 
@@ -656,6 +665,8 @@ FontInfo lyxRead(Lexer & lex, FontInfo const & fi)
 				f.setUnderbar(FONT_OFF);
 			} else if (ttok == "no_strikeout") {
 				f.setStrikeout(FONT_OFF);
+			} else if (ttok == "no_xout") {
+				f.setXout(FONT_OFF);
 			} else if (ttok == "no_uuline") {
 				f.setUuline(FONT_OFF);
 			} else if (ttok == "no_uwave") {
@@ -670,6 +681,8 @@ FontInfo lyxRead(Lexer & lex, FontInfo const & fi)
 				f.setUnderbar(FONT_ON);
 			} else if (ttok == "strikeout") {
 				f.setStrikeout(FONT_ON);
+			} else if (ttok == "xout") {
+				f.setXout(FONT_ON);
 			} else if (ttok == "uuline") {
 				f.setUuline(FONT_ON);
 			} else if (ttok == "uwave") {
@@ -718,6 +731,10 @@ void lyxWrite(ostream & os, FontInfo const & f, string const & start, int level)
 		oss << indent << "\tMisc Strikeout\n";
 	else if (f.strikeout() == FONT_OFF)
 		oss << indent << "\tMisc No_Strikeout\n";
+	if (f.xout() == FONT_ON)
+		oss << indent << "\tMisc Xout\n";
+	else if (f.xout() == FONT_OFF)
+		oss << indent << "\tMisc No_Xout\n";
 	if (f.uuline() == FONT_ON)
 		oss << indent << "\tMisc Uuline\n";
 	else if (f.uuline() == FONT_OFF)

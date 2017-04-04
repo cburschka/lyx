@@ -172,6 +172,7 @@ string fontToTag(html::FontTypes type)
 	case FT_DBAR:
 		return "u";
 	case FT_SOUT:
+	case FT_XOUT:
 		return "del";
 	case FT_ITALIC:
 		return "i";
@@ -211,6 +212,7 @@ string fontToAttribute(html::FontTypes type)
 		return "";
 	case FT_DBAR:
 		return "class='dline'";
+	case FT_XOUT:
 	case FT_SOUT:
 		return "class='strikeout'";
 	case FT_WAVE:

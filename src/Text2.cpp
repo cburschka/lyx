@@ -337,6 +337,8 @@ void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 			newfi.setUnderbar(oldfi.underbar() == FONT_OFF ? FONT_ON : FONT_OFF);
 		if (newfi.strikeout() == FONT_TOGGLE)
 			newfi.setStrikeout(oldfi.strikeout() == FONT_OFF ? FONT_ON : FONT_OFF);
+		if (newfi.xout() == FONT_TOGGLE)
+			newfi.setXout(oldfi.xout() == FONT_OFF ? FONT_ON : FONT_OFF);
 		if (newfi.uuline() == FONT_TOGGLE)
 			newfi.setUuline(oldfi.uuline() == FONT_OFF ? FONT_ON : FONT_OFF);
 		if (newfi.uwave() == FONT_TOGGLE)

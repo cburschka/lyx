@@ -104,7 +104,7 @@ public:
 
 	/** inulemcmd > 0 means that the environment in which the
 	    inset is typeset is part of a ulem command (\uline, \uuline,
-	    \uwave, or \sout). Insets that output latex commands relying
+	    \uwave, \sout  or \xout). Insets that output latex commands relying
 	    on local assignments (such as \cite) should enclose such
 	    commands in \mbox{} in order to avoid breakage.
 	*/

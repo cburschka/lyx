@@ -26,15 +26,15 @@ import sys, os
 
 from parser_tools import find_end_of, find_token_backwards, find_end_of_layout, \
     find_token, find_end_of_inset, get_value,  get_bool_value, \
-    get_containing_layout, get_quoted_value, del_token
+    get_containing_layout, get_quoted_value, del_token, find_re
 #  find_tokens, find_token_exact, is_in_inset, \
 #  check_token, get_option_value
 
-from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert
+from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, revert_font_attrs, \
+    insert_to_preamble
 #  get_ert, lyx2latex, \
 #  lyx2verbatim, length_in_bp, convert_info_insets
-#  insert_to_preamble, latex_length, revert_flex_inset, \
-#  revert_font_attrs, hex2ratio, str2bool
+#  latex_length, revert_flex_inset, hex2ratio, str2bool
 
 ####################################################################
 # Private helper functions
@@ -1960,6 +1960,16 @@ def revert_noto(document):
             document.header[i] = document.header[i].replace("NotoMono-TLF", "default")
 
 
+def revert_xout(document):
+  " Reverts \\xout font attribute "
+  changed = revert_font_attrs(document.body, "\\xout", "\\xout")
+  if changed == True:
+    insert_to_preamble(document, \
+        ['%  for proper cross-out',
+        '\\PassOptionsToPackage{normalem}{ulem}',
+        '\\usepackage{ulem}'])
+
+
 ##
 # Conversion hub
 #
@@ -1993,10 +2003,12 @@ convert = [
            [533, []],
            [534, []],
            [535, [convert_dashligatures]],
-           [536, []]
+           [536, []],
+           [537, []]
           ]
 
 revert =  [
+           [536, [revert_xout]],
            [535, [revert_noto]],
            [534, [revert_dashligatures]],
            [533, [revert_chapterbib]],

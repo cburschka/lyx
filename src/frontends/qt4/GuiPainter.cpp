@@ -543,6 +543,8 @@ void GuiPainter::textDecoration(FontInfo const & f, int x, int y, int width)
 		underline(f, x, y, width);
 	if (f.strikeout() == FONT_ON)
 		strikeoutLine(f, x, y, width);
+	if (f.xout() == FONT_ON)
+		crossoutLines(f, x, y, width);
 	if (f.uuline() == FONT_ON)
 		doubleUnderline(f, x, y, width);
 	if (f.uwave() == FONT_ON)
@@ -662,6 +664,22 @@ void GuiPainter::strikeoutLine(FontInfo const & f, int x, int y, int width)
 
 	line(x, y - pos, x + width, y - pos,
 	     f.realColor(), line_solid, fm.lineWidth());
+}
+
+
+void GuiPainter::crossoutLines(FontInfo const & f, int x, int y, int width)
+{
+	FontMetrics const & fm = theFontMetrics(f);
+	int const bottom = fm.underlinePos();
+	int const middle = fm.strikeoutPos();
+
+	// we draw several lines to fill the whole selection with strokes
+	// use 5 as diagonal width since this is close to the PDf output
+	// with normal font zoom levels
+	for(int x_current = x; x_current < x + width - 5; x_current = x_current + 5) {
+		line(x_current, y + bottom, x_current + 5, y - 2 * middle - 2 * bottom,
+			f.realColor(), line_solid, fm.lineWidth());
+	}
 }
 
 

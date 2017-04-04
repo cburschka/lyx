@@ -8,6 +8,11 @@ changes happened in particular if possible. A good example would be
 -----------------------
 
 2017-04-04 Uwe Stöhr <uwestoehr@web.de>
+	* Format incremented to 537: support for \xout.
+	  Character style via ulem's \xout. New
+	  LFUN_FONT_CROSSOUT
+
+2017-04-04 Uwe Stöhr <uwestoehr@web.de>
  	* Format incremented to 536: support for Noto fonts.
 	  - \usepackage[rm]{noto} > \font_roman "NotoSerif-TLF" "<nontexfont>"
 	  - \usepackage[sf]{noto} > \font_sans "NotoSans-TLF" "<nontexfont>"

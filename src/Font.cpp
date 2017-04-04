@@ -166,8 +166,11 @@ docstring const stateText(FontInfo const & f)
 		os << bformat(_("Underline %1$s, "),
 			      _(GUIMiscNames[f.underbar()]));
 	if (f.strikeout() != FONT_INHERIT)
-		os << bformat(_("Strikeout %1$s, "),
+		os << bformat(_("Strike out %1$s, "),
 			      _(GUIMiscNames[f.strikeout()]));
+	if (f.xout() != FONT_INHERIT)
+		os << bformat(_("Cross out %1$s, "),
+			      _(GUIMiscNames[f.xout()]));
 	if (f.uuline() != FONT_INHERIT)
 		os << bformat(_("Double underline %1$s, "),
 			      _(GUIMiscNames[f.uuline()]));
@@ -240,6 +243,9 @@ void Font::lyxWriteChanges(Font const & orgfont,
 	}
 	if (orgfont.fontInfo().strikeout() != bits_.strikeout()) {
 		os << "\\strikeout " << LyXMiscNames[bits_.strikeout()] << "\n";
+	}
+	if (orgfont.fontInfo().xout() != bits_.xout()) {
+		os << "\\xout " << LyXMiscNames[bits_.xout()] << "\n";
 	}
 	if (orgfont.fontInfo().uuline() != bits_.uuline()) {
 		os << "\\uuline " << LyXMiscNames[bits_.uuline()] << "\n";
@@ -428,6 +434,11 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 		count += 9;
 		++runparams.inulemcmd;
 	}
+	if (f.xout() == FONT_ON) {
+		os << "\\xout{";
+		count += 9;
+		++runparams.inulemcmd;
+	}
 	if (f.uuline() == FONT_ON) {
 		os << "\\uuline{";
 		count += 11;
@@ -507,6 +518,11 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 		++count;
 		--runparams.inulemcmd;
 	}
+	if (f.xout() == FONT_ON) {
+		os << '}';
+		++count;
+		--runparams.inulemcmd;
+	}
 	if (f.uuline() == FONT_ON) {
 		os << '}';
 		++count;
@@ -569,6 +585,7 @@ string Font::toString(bool const toggle) const
 	   << "emph " << bits_.emph() << '\n'
 	   << "underbar " << bits_.underbar() << '\n'
 	   << "strikeout " << bits_.strikeout() << '\n'
+	   << "xout " << bits_.xout() << '\n'
 	   << "uuline " << bits_.uuline() << '\n'
 	   << "uwave " << bits_.uwave() << '\n'
 	   << "noun " << bits_.noun() << '\n'
@@ -611,10 +628,10 @@ bool Font::fromString(string const & data, bool & toggle)
 			int const next = lex.getInteger();
 			bits_.setSize(FontSize(next));
 
-		} else if (token == "emph" || token == "underbar" ||
-			   token == "noun" || token == "number" ||
-			   token == "uuline" || token == "uwave" ||
-			   token == "strikeout") {
+		} else if (token == "emph" || token == "underbar"
+			|| token == "noun" || token == "number"
+			|| token == "uuline" || token == "uwave"
+			|| token == "strikeout" || token == "xout") {
 
 			int const next = lex.getInteger();
 			FontState const misc = FontState(next);
@@ -625,6 +642,8 @@ bool Font::fromString(string const & data, bool & toggle)
 				bits_.setUnderbar(misc);
 			else if (token == "strikeout")
 				bits_.setStrikeout(misc);
+			else if (token == "xout")
+				bits_.setXout(misc);
 			else if (token == "uuline")
 				bits_.setUuline(misc);
 			else if (token == "uwave")
@@ -680,7 +699,12 @@ void Font::validate(LaTeXFeatures & features) const
 	if (bits_.strikeout() == FONT_ON) {
 		LYXERR(Debug::LATEX, "font.strikeout: " << bits_.strikeout());
 		features.require("ulem");
-		LYXERR(Debug::LATEX, "Strikeout enabled. Font: " << to_utf8(stateText(0)));
+		LYXERR(Debug::LATEX, "Strike out enabled. Font: " << to_utf8(stateText(0)));
+	}
+	if (bits_.xout() == FONT_ON) {
+		LYXERR(Debug::LATEX, "font.xout: " << bits_.xout());
+		features.require("ulem");
+		LYXERR(Debug::LATEX, "Cross out enabled. Font: " << to_utf8(stateText(0)));
 	}
 	if (bits_.uuline() == FONT_ON) {
 		LYXERR(Debug::LATEX, "font.uuline: " << bits_.uuline());
@@ -752,6 +776,7 @@ ostream & operator<<(ostream & os, FontInfo const & f)
 		<< " emph " << f.emph()
 		<< " underbar " << f.underbar()
 		<< " strikeout " << f.strikeout()
+		<< " xout " << f.xout()
 		<< " uuline " << f.uuline()
 		<< " uwave " << f.uwave()
 		<< " noun " << f.noun()

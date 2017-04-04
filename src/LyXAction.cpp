@@ -1750,6 +1750,15 @@ void LyXAction::init()
 		{ LFUN_FONT_STRIKEOUT, "font-strikeout", Noop, Layout },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_FONT_CROSSOUT
+ * \li Action: Toggles xout (cross-through) in the font (selection-wise).
+ * \li Syntax: font-crossout
+ * \li Origin: uwestoehr, 4 April 2017
+ * \endvar
+ */
+		{ LFUN_FONT_CROSSOUT, "font-crossout", Noop, Layout },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_FONT_TYPEWRITER
  * \li Action: Toggles the typewriter family font (selection-wise).
  * \li Syntax: font-typewriter

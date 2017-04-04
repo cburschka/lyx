@@ -133,6 +133,7 @@ enum FontTypes {
 	FT_DBAR,
 	FT_WAVE,
 	FT_SOUT,
+	FT_XOUT,
 	// bold
 	FT_BOLD,
 	// shapes
