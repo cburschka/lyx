@@ -636,10 +636,6 @@ Font NotoMono-TLF
 	GuiName          "Noto Mono"
 	Family           tt
 	SwitchDefault    1
-	ScaleOption      $$val
-	Preamble
-	 \newcommand*{\NotoMono@scale}{$$val}
-	EndPreamble
 	Requires         noto
 EndFont
 
