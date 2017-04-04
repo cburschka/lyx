@@ -32,8 +32,8 @@ extern char const * const lyx_version_info;
 
 // Do not remove the comment below, so we get merge conflict in
 // independent branches. Instead add your own.
-#define LYX_FORMAT_LYX 535 // ef: support for en/em-dash as ligatures
-#define LYX_FORMAT_TEX2LYX 535
+#define LYX_FORMAT_LYX 536 // uwestoehr: support for Noto fonts
+#define LYX_FORMAT_TEX2LYX 536
 
 #if LYX_FORMAT_TEX2LYX != LYX_FORMAT_LYX
 #ifndef _MSC_VER

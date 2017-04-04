@@ -1941,6 +1941,25 @@ def revert_dashligatures(document):
         i += 1
 
 
+def revert_noto(document):
+    " Revert Noto font definitions to LaTeX "
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        preamble = ""
+        i = find_token(document.header, "\\font_roman \"NotoSerif-TLF\"", 0)
+        if i != -1:
+            add_to_preamble(document, ["\\renewcommand{\\rmdefault}{NotoSerif-TLF}"])
+            document.header[i] = document.header[i].replace("NotoSerif-TLF", "default")
+        i = find_token(document.header, "\\font_sans \"NotoSans-TLF\"", 0)
+        if i != -1:
+            add_to_preamble(document, ["\\renewcommand{\\sfdefault}{NotoSans-TLF}"])
+            document.header[i] = document.header[i].replace("NotoSans-TLF", "default")
+        i = find_token(document.header, "\\font_typewriter \"NotoMono-TLF\"", 0)
+        if i != -1:
+            add_to_preamble(document, ["\\renewcommand{\\ttdefault}{NotoMono-TLF}"])
+            document.header[i] = document.header[i].replace("NotoMono-TLF", "default")
+
+
 ##
 # Conversion hub
 #
@@ -1973,10 +1992,12 @@ convert = [
            [532, [convert_literalparam]],
            [533, []],
            [534, []],
-           [535, [convert_dashligatures]]
+           [535, [convert_dashligatures]],
+           [536, []]
           ]
 
 revert =  [
+           [535, [revert_noto]],
            [534, [revert_dashligatures]],
            [533, [revert_chapterbib]],
            [532, [revert_multibib]],

@@ -289,6 +289,20 @@ Font newcent
 	Package          newcent
 EndFont
 
+Font NotoSerif-TLF
+	GuiName          "Noto Serif"
+	Family           rm
+	SwitchDefault    1
+	Requires         noto
+	CompleteFont     noto
+EndFont
+
+AltFont noto
+	GuiName          "Noto Serif"
+	Family           rm
+	Package          noto
+EndFont
+
 Font palatino
 	GuiName          "Palatino"
 	Family           rm
@@ -538,6 +552,13 @@ Font lmss
 	Requires         lmodern
 EndFont
 
+Font NotoSans-TLF
+	GuiName          "Noto Sans"
+	Family           sf
+	SwitchDefault    1
+	Requires         noto
+EndFont
+
 Font tgadventor
 	GuiName          "TeX Gyre Adventor"
 	Family           sf
@@ -609,6 +630,17 @@ Font luximono
 	Family           tt
 	ScaleOption      scaled=$$val
 	Package          luximono
+EndFont
+
+Font NotoMono-TLF
+	GuiName          "Noto Mono"
+	Family           tt
+	SwitchDefault    1
+	ScaleOption      $$val
+	Preamble
+	 \newcommand*{\NotoMono@scale}{$$val}
+	EndPreamble
+	Requires         noto
 EndFont
 
 Font tgcursor
