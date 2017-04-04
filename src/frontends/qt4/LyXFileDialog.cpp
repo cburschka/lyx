@@ -51,6 +51,7 @@ LyXFileDialog::LyXFileDialog(QString const & title,
 {
 	setNameFilters(filters);
 	setWindowTitle(title);
+	setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 	setOption(QFileDialog::DontUseNativeDialog);
 
 	QList<QHBoxLayout *> layout = findChildren<QHBoxLayout *>();
