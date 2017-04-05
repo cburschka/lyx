@@ -1640,7 +1640,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_BUFFER_NEW:
 		validateCurrentView();
-		if (d->views_.empty()
+		if (!current_view_
 		   || (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
 			createView(QString(), false); // keep hidden
 			current_view_->newDocument(to_utf8(cmd.argument()), false);
@@ -1653,7 +1653,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 	case LFUN_BUFFER_NEW_TEMPLATE:
 		validateCurrentView();
-		if (d->views_.empty()
+		if (!current_view_
 		   || (!lyxrc.open_buffers_in_tabs && current_view_->documentBufferView() != 0)) {
 			createView();
 			current_view_->newDocument(to_utf8(cmd.argument()), true);
@@ -1665,12 +1665,14 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 
 	case LFUN_FILE_OPEN: {
+		// FIXME: normally the code below is not needed, since getStatus makes sure that
+		//   current_view_ is not null.
 		validateCurrentView();
 		// FIXME: create a new method shared with LFUN_HELP_OPEN.
 		string const fname = to_utf8(cmd.argument());
 		bool const is_open = FileName::isAbsolute(fname)
 			&& theBufferList().getBuffer(FileName(fname));
-		if (d->views_.empty()
+		if (!current_view_
 		    || (!lyxrc.open_buffers_in_tabs
 			&& current_view_->documentBufferView() != 0
 			&& !is_open)) {
@@ -1679,9 +1681,6 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			boost::crc_32_type crc;
 			crc = for_each(fname.begin(), fname.end(), crc);
 			createView(crc.checksum());
-			// we know current_view_ is non-null, because createView sets it.
-			// but let's make sure
-			LASSERT(current_view_, break);
 			current_view_->openDocument(fname);
 			if (!current_view_->documentBufferView())
 				current_view_->close();
@@ -1691,9 +1690,6 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				current_view_->showNormal();
 			}
 		} else {
-			// we know !d->views.empty(), so this should be ok
-			// but let's make sure
-			LASSERT(current_view_, break);
 			current_view_->openDocument(fname);
 			if (cmd.origin() == FuncRequest::LYXSERVER) {
 				current_view_->raise();
@@ -2357,6 +2353,8 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow,
 
 	LYXERR(Debug::GUI, "About to create new window with ID " << id);
 	GuiView * view = new GuiView(id);
+	// `view' is the new current_view_. Tell coverity that is is not 0.
+	LATTEST(current_view_);
 	// register view
 	d->views_[id] = view;
 
@@ -2588,7 +2586,7 @@ void GuiApplication::restoreGuiSession()
 	// not be added at all (help files).
 	for (size_t i = 0; i < lastopened.size(); ++i) {
 		FileName const & file_name = lastopened[i].file_name;
-		if (d->views_.empty() || (!lyxrc.open_buffers_in_tabs
+		if (!current_view_ || (!lyxrc.open_buffers_in_tabs
 			  && current_view_->documentBufferView() != 0)) {
 			boost::crc_32_type crc;
 			string const & fname = file_name.absFileName();
