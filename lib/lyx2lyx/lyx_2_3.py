@@ -1970,6 +1970,38 @@ def revert_xout(document):
         '\\usepackage{ulem}'])
 
 
+def convert_mathindent(document):
+    " add the \\is_formula_indent tag "
+    k = find_token(document.header, "\\quotes_style", 0)
+    document.header.insert(k, "\\is_formula_indent 0")
+
+
+def revert_mathindent(document):
+    " Define mathindent if set in the document "
+    # first output the length
+    regexp = re.compile(r'(\\formula_indentation)')
+    i = find_re(document.header, regexp, 0)
+    if i != -1:
+        value = get_value(document.header, "\\formula_indentation" , i).split()[0]
+        add_to_preamble(document, ["\\setlength{\\mathindent}{" + value + '}'])
+        del document.header[i]
+    # now set the document class option
+    regexp = re.compile(r'(\\is_formula_indent)')
+    i = find_re(document.header, regexp, 0)
+    value = "1"
+    if i == -1:
+        return
+    else:    
+        k = find_token(document.header, "\\options", 0)
+        if k != -1:
+    	    document.header[k] = document.header[k].replace("\\options", "\\options fleqn,")
+    	    del document.header[i]
+        else:
+            l = find_token(document.header, "\\use_default_options", 0)
+            document.header.insert(l, "\\options fleqn")
+            del document.header[i + 1]
+
+
 ##
 # Conversion hub
 #
@@ -2004,10 +2036,12 @@ convert = [
            [534, []],
            [535, [convert_dashligatures]],
            [536, []],
-           [537, []]
+           [537, []],
+           [538, [convert_mathindent]]
           ]
 
 revert =  [
+           [537, [revert_mathindent]],
            [536, [revert_xout]],
            [535, [revert_noto]],
            [534, [revert_dashligatures]],

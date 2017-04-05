@@ -1259,7 +1259,21 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(mathsModule->allPackagesNotPB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
+	connect(mathsModule->FormulaIndentGB, SIGNAL(toggled(bool)),
+		this, SLOT(change_adaptor()));
+	connect(mathsModule->FormulaIndentLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(mathsModule->FormulaIndentCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
 
+	mathsModule->FormulaIndentLE->setValidator(new LengthValidator(
+		mathsModule->FormulaIndentLE));
+	// initialize the length validator
+	bc().addCheckedLineEdit(mathsModule->FormulaIndentLE);
+	
+	// LaTeX's default for FormulaIndent is 30pt
+	mathsModule->FormulaIndentCO->setCurrentItem(Length::PT);
+	
 
 	// latex class
 	latexModule = new UiWidget<Ui::LaTeXUi>(this);
@@ -2873,6 +2887,18 @@ void GuiDocument::applyView()
 		if (rb->isChecked())
 			bp_.use_package(it->first, BufferParams::package_off);
 	}
+	bp_.is_formula_indent = mathsModule->FormulaIndentGB->isChecked();
+	// if formulas are indented
+	if (bp_.is_formula_indent) {
+		// fill value if empty to avoid LaTeX errors
+		if (mathsModule->FormulaIndentLE->text().isEmpty())
+			mathsModule->FormulaIndentLE->setText("0");
+		HSpace FormulaIndentation = HSpace(
+				widgetsToLength(mathsModule->FormulaIndentLE,
+				mathsModule->FormulaIndentCO)
+				);
+			bp_.setFormulaIndentation(FormulaIndentation);
+	}
 
 	// Page Layout
 	if (pageLayoutModule->pagestyleCO->currentIndex() == 0)
@@ -3323,6 +3349,17 @@ void GuiDocument::paramsToDialog()
 	if (nitem >= 0)
 		latexModule->psdriverCO->setCurrentIndex(nitem);
 	updateModuleInfo();
+
+	// math
+	if (bp_.is_formula_indent) {
+		mathsModule->FormulaIndentGB->setChecked(bp_.is_formula_indent);
+		string FormulaIndentation = bp_.getFormulaIndentation().asLyXCommand();
+		if (!FormulaIndentation.empty()) {
+			lengthToWidgets(mathsModule->FormulaIndentLE,
+			mathsModule->FormulaIndentCO,
+			FormulaIndentation, default_unit);
+		}
+	}
 
 	map<string, string> const & packages = BufferParams::auto_packages();
 	for (map<string, string>::const_iterator it = packages.begin();

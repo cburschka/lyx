@@ -152,6 +152,8 @@ private:
 	bool h_font_cjk_set;
 	std::string h_font_cjk;
 	bool h_use_microtype;
+	std::string h_is_formulaindent;
+	std::string h_formulaindentation;
 	std::string h_graphics;
 	std::string h_default_output_format;
 	std::string h_html_be_strict;
