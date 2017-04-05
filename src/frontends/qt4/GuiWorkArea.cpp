@@ -2037,17 +2037,18 @@ void TabWorkArea::updateTabTexts()
 				continue;
 			}
 
-			// we found a non-atomic segment segStart <= sit <= it < next.
+			// We found a non-atomic segment
+			// We know that segStart <= it < next <= paths.end().
+			// The assertion below tells coverity about it.
+			LATTEST(segStart != paths.end());
+			QString dspString = segStart->forecastPathString();
+			LYXERR(Debug::GUI, "first forecast found for "
+			       << segStart->abs() << " => " << dspString);
+			It sit = segStart;
+			++sit;
 			// Shift path segments and hope for the best
 			// that it makes the path more unique.
 			somethingChanged = true;
-			It sit = segStart;
-			// this is ok for the reason mentioned  in the previous comment.
-			// coverity[INVALIDATE_ITERATOR]
-			QString dspString = sit->forecastPathString();
-			LYXERR(Debug::GUI, "first forecast found for "
-			       << sit->abs() << " => " << dspString);
-			++sit;
 			bool moreUnique = false;
 			for (; sit != next; ++sit) {
 				if (sit->forecastPathString() != dspString) {
