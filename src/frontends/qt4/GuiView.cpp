@@ -1935,7 +1935,7 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		else if (name == "latexlog")
 			enable = FileName(doc_buffer->logName()).isReadableFile();
 		else if (name == "spellchecker")
-			enable = theSpellChecker() 
+			enable = theSpellChecker()
 				&& !doc_buffer->isReadonly()
 				&& !doc_buffer->text().empty();
 		else if (name == "vclog")
@@ -3854,6 +3854,8 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				if (!data.empty())
 					showDialog("character", data);
 			} else if (name == "latexlog") {
+				// getStatus checks that
+				LATTEST(doc_buffer);
 				Buffer::LogType type;
 				string const logfile = doc_buffer->logName(&type);
 				switch (type) {
@@ -3867,6 +3869,8 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				data += Lexer::quoteString(logfile);
 				showDialog("log", data);
 			} else if (name == "vclog") {
+				// getStatus checks that
+				LATTEST(doc_buffer);
 				string const data = "vc " +
 					Lexer::quoteString(doc_buffer->lyxvc().getLogFile());
 				showDialog("log", data);
