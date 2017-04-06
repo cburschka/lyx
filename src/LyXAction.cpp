@@ -1093,7 +1093,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_CHAR_DELETE_BACKWARD
  * \li Action: Deletes one character in the backward direction (usually the "BackSpace" key).
  * \li Syntax: char-delete-backward [force]
- * \li Params: force: Delete big insets, do no only select them.
+ * \li Params: force: Delete big insets, do not only select them.
  * \endvar
  */
 		{ LFUN_CHAR_DELETE_BACKWARD, "char-delete-backward", SingleParUpdate, Edit },
@@ -1102,7 +1102,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_CHAR_DELETE_FORWARD
  * \li Action: Deletes one character in the backward direction (usually the "Delete" key).
  * \li Syntax: char-delete-forward [force]
- * \li Params: force: Delete big insets, do no only select them.
+ * \li Params: force: Delete big insets, do not only select them.
  * \endvar
  */
 		{ LFUN_CHAR_DELETE_FORWARD, "char-delete-forward", SingleParUpdate, Edit },
@@ -2031,7 +2031,7 @@ void LyXAction::init()
                matches all note insets, while "Note:Note" only matches LyX
                yellow note insets.
  * \li Sample: Remove all index insets: \n
-	           inset-forall Index char-delete-forward \n
+	           inset-forall Index char-delete-forward force \n
                Close all Notes (also works for a particular branch, for example): \n
 	           inset-forall Note inset-toggle close \n
                Transform all yellow notes to comments \n
@@ -4032,7 +4032,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_WORD_DELETE_BACKWARD
  * \li Action: Deletes characters to the beginning of the word (usually the "C+BackSpace" key).
  * \li Syntax: word-delete-backward [force]
- * \li Params: force: Delete big insets, do no only select them.
+ * \li Params: force: Delete big insets, do not only select them.
  * \endvar
  */
 		{ LFUN_WORD_DELETE_BACKWARD, "word-delete-backward", Noop, Edit },
@@ -4041,7 +4041,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_WORD_DELETE_FORWARD
  * \li Action: Deletes characters to the end of the word (usually the "C+Delete" key).
  * \li Syntax: word-delete-forward [force]
- * \li Params: force: Delete big insets, do no only select them.
+ * \li Params: force: Delete big insets, do not only select them.
  * \endvar
  */
 		{ LFUN_WORD_DELETE_FORWARD, "word-delete-forward", Noop, Edit },
