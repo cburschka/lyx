@@ -11,16 +11,16 @@ automake_version=`$AUTOMAKE --version 2>/dev/null | head -n 1`
 test "$automake_version" != "" && {
     echo "Using $automake_version"
 } || {
-    echo "LyX requires automake >= 1.8"
+    echo "LyX requires automake >= 1.14"
     exit 1
 }
 
 case $automake_version in
-    *' '1.[8-9]*|*' '1.1[012345]*)
+    *' '1.1[45]*)
 	;;
     *)
 	echo "This automake version is not supported by LyX."
-	echo "LyX only supports automake 1.8 to 1.15."
+	echo "LyX only supports automake 1.14 to 1.15."
 	exit 1
 	;;
 esac
@@ -31,16 +31,16 @@ autoversion=`$AUTOCONF --version 2>/dev/null | head -n 1`
 test "$autoversion" != "" && {
     echo "Using $autoversion"
 } || {
-    echo "LyX requires autoconf >= 2.60"
+    echo "LyX requires autoconf >= 2.65"
     exit 1
 }
 
 case $autoversion in
-    *' '2.60[ab]|*' '2.6[0-9])
+    *' '2.6[5-9])
 	;;
     *)
 	echo "This autoconf version is not supported by LyX."
-	echo "LyX only supports autoconf 2.60-2.69."
+	echo "LyX only supports autoconf 2.65-2.69."
 	exit 1
 	;;
 esac

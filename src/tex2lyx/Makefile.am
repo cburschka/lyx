@@ -81,33 +81,32 @@ alltests-recursive: tex2lyx
 updatetests: tex2lyx
 	$(PYTHON) "$(srcdir)/test/runtests.py" ./tex2lyx "$(top_srcdir)/lib/scripts" "$(srcdir)/test"
 
-LINKED_FILES = \
-	../Author.cpp \
-	../CiteEnginesList.cpp \
-	../Color.cpp \
-	../Counters.cpp \
-	../Encoding.cpp \
-	../FloatList.cpp \
-	../Floating.cpp \
-	../FontInfo.cpp \
-	../graphics/GraphicsParams.cpp \
-	../insets/ExternalTemplate.cpp \
-	../insets/ExternalTransforms.cpp \
-	../insets/InsetLayout.cpp \
-	../LaTeXPackages.cpp \
-	../Layout.cpp \
-	../LayoutFile.cpp \
-	../LayoutModuleList.cpp \
-	../Length.cpp \
-	../lengthcommon.cpp \
-	../Lexer.cpp \
-	../ModuleList.cpp \
-	../Spacing.cpp \
-	../TextClass.cpp \
-	../version.cpp
+LYX_OBJS = \
+	../Author.o \
+	../CiteEnginesList.o \
+	../Color.o \
+	../Counters.o \
+	../Encoding.o \
+	../FloatList.o \
+	../Floating.o \
+	../FontInfo.o \
+	../graphics/GraphicsParams.o \
+	../insets/ExternalTemplate.o \
+	../insets/ExternalTransforms.o \
+	../insets/InsetLayout.o \
+	../LaTeXPackages.o \
+	../Layout.o \
+	../LayoutFile.o \
+	../LayoutModuleList.o \
+	../Length.o \
+	../lengthcommon.o \
+	../Lexer.o \
+	../ModuleList.o \
+	../Spacing.o \
+	../TextClass.o \
+	../version.o
 
 tex2lyx_SOURCES = \
-	$(LINKED_FILES) \
 	boost.cpp \
 	Context.cpp \
 	Context.h \
@@ -123,6 +122,7 @@ tex2lyx_SOURCES = \
 	text.cpp
 
 tex2lyx_LDADD = \
+	$(LYX_OBJS) \
 	$(top_builddir)/src/support/liblyxsupport.a \
 	$(LIBICONV) $(BOOST_LIBS) \
 	$(QT_LIB) $(QT_LDFLAGS) \

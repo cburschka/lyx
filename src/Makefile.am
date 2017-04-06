@@ -705,13 +705,16 @@ endif
 EXTRA_DIST += \
 	tests/test_ExternalTransforms \
 	tests/test_ListingsCaption \
+	tests/test_layout \
+	tests/test_Length \
 	tests/regfiles/ExternalTransforms \
 	tests/regfiles/Length \
 	tests/regfiles/ListingsCaption \
-	tests/test_layout \
-	tests/test_Length
+	tests/dummy_functions.cpp \
+	tests/boost.cpp
 
-TESTS = tests/test_ExternalTransforms tests/test_Length tests/test_ListingsCaption
+TESTS = tests/test_ExternalTransforms tests/test_ListingsCaption \
+	tests/test_layout tests/test_Length
 
 alltests: check alltests-recursive
 
@@ -737,58 +740,63 @@ if INSTALL_MACOSX
 ADD_FRAMEWORKS = -framework QtGui -framework QtCore -framework AppKit -framework ApplicationServices
 endif
 
-check_layout_CPPFLAGS = $(AM_CPPFLAGS)
-check_layout_LDADD = support/liblyxsupport.a CiteEnginesList.o $(LIBICONV) $(BOOST_LIBS) @LIBS@ \
+TESTS_LIBS = support/liblyxsupport.a \
+	$(LIBICONV) $(BOOST_LIBS) @LIBS@ \
 	$(ICONV_LIBS) $(ZLIB_LIBS) $(QT_LIB) $(LIBSHLWAPI)
+
+check_layout_CPPFLAGS = $(AM_CPPFLAGS)
+check_layout_LDADD = $(check_layout_LYX_OBJS) $(TESTS_LIBS)
 check_layout_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_layout_SOURCES = \
-	insets/InsetLayout.cpp \
-	Color.cpp \
-	Counters.cpp \
-	Floating.cpp \
-	FloatList.cpp \
-	FontInfo.cpp \
-	Layout.cpp \
-	LayoutFile.cpp \
-	Lexer.cpp \
-	ModuleList.cpp \
-	Spacing.cpp \
-	TextClass.cpp \
-	support/tests/dummy_functions.cpp \
-	tests/check_layout.cpp \
-	tests/boost.cpp
+	tests/check_layout.cpp
+check_layout_LYX_OBJS = \
+	insets/InsetLayout.o \
+	CiteEnginesList.o \
+	Color.o \
+	Counters.o \
+	Floating.o \
+	FloatList.o \
+	FontInfo.o \
+	Layout.o \
+	LayoutFile.o \
+	Lexer.o \
+	ModuleList.o \
+	Spacing.o \
+	TextClass.o \
+	tests/dummy_functions.o \
+	tests/boost.o
 
 check_ExternalTransforms_CPPFLAGS = $(AM_CPPFLAGS)
-check_ExternalTransforms_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ \
-	$(ICONV_LIBS) $(ZLIB_LIBS) $(QT_LIB) $(LIBSHLWAPI)
+check_ExternalTransforms_LDADD = $(check_ExternalTransforms_LYX_OBJS) $(TESTS_LIBS)
 check_ExternalTransforms_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_ExternalTransforms_SOURCES = \
-	graphics/GraphicsParams.cpp \
-	insets/ExternalTransforms.cpp \
-	Length.cpp \
-	lengthcommon.cpp \
-	support/tests/dummy_functions.cpp \
-	tests/check_ExternalTransforms.cpp \
-	tests/boost.cpp
+	tests/check_ExternalTransforms.cpp
+check_ExternalTransforms_LYX_OBJS = \
+	tests/dummy_functions.o \
+	tests/boost.o \
+	graphics/GraphicsParams.o \
+	insets/ExternalTransforms.o \
+	Length.o \
+	lengthcommon.o
 
 check_Length_CPPFLAGS = $(AM_CPPFLAGS)
-check_Length_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ \
-	$(ICONV_LIBS) $(ZLIB_LIBS) $(QT_LIB) $(LIBSHLWAPI)
+check_Length_LDADD = $(check_Length_LYX_OBJS) $(TESTS_LIBS)
 check_Length_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_Length_SOURCES = \
-	Length.cpp \
-	lengthcommon.cpp \
-	support/tests/dummy_functions.cpp \
-	tests/check_Length.cpp \
-	tests/boost.cpp
+	tests/check_Length.cpp
+check_Length_LYX_OBJS = \
+	tests/dummy_functions.o \
+	tests/boost.o \
+	Length.o \
+	lengthcommon.o
 
 check_ListingsCaption_CPPFLAGS = $(AM_CPPFLAGS)
-check_ListingsCaption_LDADD = support/liblyxsupport.a $(LIBICONV) $(BOOST_LIBS) @LIBS@ \
-	$(ICONV_LIBS) $(ZLIB_LIBS) $(QT_LIB) $(LIBSHLWAPI)
+check_ListingsCaption_LDADD = $(check_ListingsCaption_LYX_OBJS) $(TESTS_LIBS)
 check_ListingsCaption_LDFLAGS = $(QT_LDFLAGS) $(ADD_FRAMEWORKS)
 check_ListingsCaption_SOURCES = \
-	support/tests/dummy_functions.cpp \
-	tests/check_ListingsCaption.cpp \
-	tests/boost.cpp
+	tests/check_ListingsCaption.cpp
+check_ListingsCaption_LYX_OBJS = \
+	tests/dummy_functions.o \
+	tests/boost.o
 
 .PHONY: alltests alltests-recursive updatetests

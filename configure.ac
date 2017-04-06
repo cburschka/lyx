@@ -4,7 +4,7 @@ AC_INIT(LyX,2.3.0dev,[lyx-devel@lists.lyx.org],[lyx])
 AC_PRESERVE_HELP_ORDER
 # Use ISO format only. The frontend needs to parse this
 AC_SUBST(LYX_DATE, ["2016-04-16"])
-AC_PREREQ(2.60)
+AC_PREREQ(2.65)
 AC_CONFIG_SRCDIR(src/main.cpp)
 AC_CONFIG_HEADERS([config.h])
 
@@ -26,17 +26,12 @@ if test "${enable_maintainer_mode+set}" != set; then
   enable_maintainer_mode=$lyx_devel_version
 fi
 AM_MAINTAINER_MODE
-
-save_PACKAGE=$PACKAGE
-dnl The test for _AM_PROG_CC_C_O intends to test for automake 1.14 or newer,
-dnl which are the versions where subdir-objects can beused.
-dnl see: https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg181023.html
-m4_define([LYX_OBJECTS_LAYOUT], m4_ifdef([_AM_PROG_CC_C_O],[subdir-objects],))
+AM_SILENT_RULES([yes])
 # Automake is pulling the historical V7 format. This tar format supports
 # file names only up to 99 characters. tar-ustar selects the ustar format defined
 # by POSIX 1003.1-1988. This format is believed to be old enough to be portable.
-AM_INIT_AUTOMAKE([foreign dist-bzip2 no-define 1.8 tar-ustar] LYX_OBJECTS_LAYOUT)
-m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
+save_PACKAGE=$PACKAGE
+AM_INIT_AUTOMAKE([foreign dist-bzip2 no-define 1.8 tar-ustar subdir-objects])
 PACKAGE=$save_PACKAGE
 
 # Allow to build some parts of the code as one big chunk
@@ -72,7 +67,7 @@ LYX_PATH_PYTHON23([2.7.0], [3.3.0])
 AM_PATH_PYTHON
 
 # Tools for creating libraries (note that we do not use libtool)
-m4_ifdef([AM_PROG_AR], [AM_PROG_AR]) dnl AM_PROG_AR requires automake 1.12
+AM_PROG_AR
 AC_PROG_RANLIB
 dnl Recent debian/ubuntu (at least) have built 'ar' so that deterministic mode is the default.
 dnl This means that it does not make sense to use the 'u' flag (default ARFLAGS is 'cru').
