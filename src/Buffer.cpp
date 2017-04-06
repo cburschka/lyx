@@ -556,7 +556,7 @@ Buffer::~Buffer()
 			try {
 				msg += emergencyWrite();
 			} catch (...) {
-				msg += "  " + _("Save failed! Bummer. Document is lost.");
+				msg += "  " + _("Save failed! Document is lost.");
 			}
 			Alert::warning(_("Attempting to close changed document!"), msg);
 		}
@@ -1610,7 +1610,7 @@ docstring Buffer::emergencyWrite()
 		return user_message;
 	}
 
-	user_message += "  " + _("Save failed! Bummer. Document is lost.");
+	user_message += "  " + _("Save failed! Document is lost.");
 	// Don't try again.
 	markClean();
 	return user_message;
