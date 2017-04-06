@@ -385,7 +385,7 @@ BufferParams::BufferParams()
 	makeDocumentClass();
 	paragraph_separation = ParagraphIndentSeparation;
 	is_formula_indent = false;
-	formula_indentation = string();
+	formula_indentation = "30pt";
 	quotes_style = InsetQuotesParams::EnglishQuotes;
 	dynamic_quotes = false;
 	fontsize = "default";
