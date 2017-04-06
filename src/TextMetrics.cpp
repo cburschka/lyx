@@ -1181,8 +1181,10 @@ pos_type TextMetrics::getPosNearX(Row const & row, int & x,
 		 * how boundary helps here.
 		 */
 		else if (pos == cit->endpos
-			 && cit + 1 != row.end()
-			 && cit->isRTL() != (cit + 1)->isRTL())
+		         && ((!cit->isRTL() && cit + 1 != row.end()
+		              && (cit + 1)->isRTL())
+		             || (cit->isRTL() && cit != row.begin()
+		                 && !(cit - 1)->isRTL())))
 			boundary = true;
 	}
 
