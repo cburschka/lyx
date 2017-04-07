@@ -394,7 +394,7 @@ int LyX::exec(int & argc, char * argv[])
 			FileName(package().temp_dir().absFileName() + "/lyxsocket")));
 
 	// Start the real execution loop.
-	if (!theServer().deferredLoadingToOtherInstance())
+	if (!pimpl_->lyx_server_->deferredLoadingToOtherInstance())
 		exit_status = pimpl_->application_->exec();
 	else if (!pimpl_->files_to_load_.empty()) {
 		vector<string>::const_iterator it = pimpl_->files_to_load_.begin();
