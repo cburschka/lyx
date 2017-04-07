@@ -68,12 +68,11 @@ InsetBibtex::InsetBibtex(Buffer * buf, InsetCommandParams const & p)
 InsetBibtex::~InsetBibtex()
 {
 	if (isBufferLoaded()) {
-		/* Coverity believes that this may throw an exception, but
-		 * actually this code path is not taken when buffer_ == 0 */
-		// coverity[fun_call_w_exception]
-		buffer().invalidateBibfileCache();
-		// coverity[fun_call_w_exception]
-		buffer().removeBiblioTempFiles();
+		/* We do not use buffer() because Coverity believes that this
+		 * may throw an exception. Actually this code path is not
+		 * taken when buffer_ == 0 */
+		buffer_-> invalidateBibfileCache();
+		buffer_->removeBiblioTempFiles();
 	}
 }
 

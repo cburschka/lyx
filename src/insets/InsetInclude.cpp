@@ -198,10 +198,10 @@ InsetInclude::InsetInclude(InsetInclude const & other)
 InsetInclude::~InsetInclude()
 {
 	if (isBufferLoaded())
-		/* Coverity believes that this may throw an exception, but
-		 * actually this code path is not taken when buffer_ == 0 */
-		// coverity[exn_spec_violation]
-		buffer().invalidateBibfileCache();
+		/* We do not use buffer() because Coverity believes that this
+		 * may throw an exception. Actually this code path is not
+		 * taken when buffer_ == 0 */
+		buffer_->invalidateBibfileCache();
 	delete label_;
 }
 

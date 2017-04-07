@@ -69,10 +69,10 @@ InsetBibitem::InsetBibitem(Buffer * buf, InsetCommandParams const & p)
 InsetBibitem::~InsetBibitem()
 {
 	if (isBufferLoaded()) {
-		/* Coverity believes that this may throw an exception, but
-		 * actually this code path is not taken when buffer_ == 0 */
-		LATTEST(buffer_);
-		buffer().invalidateBibinfoCache();
+		/* We do not use buffer() because Coverity believes that this
+		 * may throw an exception. Actually this code path is not
+		 * taken when buffer_ == 0 */
+		buffer_->invalidateBibinfoCache();
 	}
 }
 
