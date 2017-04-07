@@ -15,6 +15,8 @@
 # suffix, since I don't know how to transport command line arguments through
 # the autotools "make check" mechanism.
 
+from __future__ import print_function
+
 import os, string, sys, time, difflib, filecmp, subprocess, re
 
 def usage(prog_name):
@@ -97,13 +99,13 @@ def main(argv):
         else:
             lyxfile = os.path.join(outputdir, base + ".lyx")
             cmd = '%s -roundtrip -copyfiles -f %s %s' % (tex2lyx, texfile, lyxfile)
-        print 'Executing: ' + cmd + "\n"
+        print('Executing: ' + cmd + "\n")
         proc = subprocess.Popen(cmd, shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         proc.wait()
         err = proc.returncode
         errorstring = proc.stderr.read()
         if not errorstring is None:
-            print errorstring
+            print(errorstring)
         if err != 0:
             errors.append(f)
         elif not overwrite:
