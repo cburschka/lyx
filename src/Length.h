@@ -58,6 +58,7 @@ public:
 		PLW, //< Percent of LineWidth
 		PTH, //< Percent of TextHeight          // Herbert 2002-05-16
 		PPH, //< Percent of PaperHeight         // Herbert 2002-05-16
+		BLS, //< Percent of BaselineSkip        // uwestoehr 2017-04-01
 		UNIT_NONE ///< no unit
 	};
 

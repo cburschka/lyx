@@ -2002,6 +2002,67 @@ def revert_mathindent(document):
             del document.header[i + 1]
 
 
+def revert_baselineskip(document):
+  " Revert baselineskips to TeX code "
+  i = 0
+  vspaceLine = 0
+  hspaceLine = 0
+  while True:
+    regexp = re.compile(r'^.*baselineskip%.*$')
+    i = find_re(document.body, regexp, i)
+    if i == -1:
+      return
+    vspaceLine = find_token(document.body, "\\begin_inset VSpace", i)
+    if  vspaceLine == i:
+      # output VSpace inset as TeX code
+      # first read out the values
+      beg = document.body[i].rfind("VSpace ");
+      end = document.body[i].rfind("baselineskip%");
+      baselineskip = float(document.body[i][beg + 7:end]);
+      # we store the value in percent, thus divide by 100
+      baselineskip = baselineskip/100;
+      baselineskip = str(baselineskip);
+      # check if it is the starred version
+      if document.body[i].find('*') != -1:
+        star = '*'
+      else:
+        star = ''
+      # now output TeX code
+      endInset = find_end_of_inset(document.body, i)
+      if endInset == -1:
+        document.warning("Malformed LyX document: Missing '\\end_inset' of VSpace inset.")
+        return
+      else:
+        document.body[vspaceLine: endInset + 1] = put_cmd_in_ert("\\vspace" + star + '{' + baselineskip + "\\baselineskip}")
+    hspaceLine = find_token(document.body, "\\begin_inset space \\hspace", i - 1)
+    document.warning("hspaceLine: " + str(hspaceLine))
+    document.warning("i: " + str(i))
+    if  hspaceLine == i - 1:
+      # output space inset as TeX code
+      # first read out the values
+      beg = document.body[i].rfind("\\length ");
+      end = document.body[i].rfind("baselineskip%");
+      baselineskip = float(document.body[i][beg + 7:end]);
+      document.warning("baselineskip: " + str(baselineskip))
+      # we store the value in percent, thus divide by 100
+      baselineskip = baselineskip/100;
+      baselineskip = str(baselineskip);
+      # check if it is the starred version
+      if document.body[i-1].find('*') != -1:
+        star = '*'
+      else:
+        star = ''
+      # now output TeX code
+      endInset = find_end_of_inset(document.body, i)
+      if endInset == -1:
+        document.warning("Malformed LyX document: Missing '\\end_inset' of space inset.")
+        return
+      else:
+        document.body[hspaceLine: endInset + 1] = put_cmd_in_ert("\\hspace" + star + '{' + baselineskip + "\\baselineskip}")
+    
+    i = i + 1
+
+
 ##
 # Conversion hub
 #
@@ -2037,10 +2098,12 @@ convert = [
            [535, [convert_dashligatures]],
            [536, []],
            [537, []],
-           [538, [convert_mathindent]]
+           [538, [convert_mathindent]],
+           [539, []]
           ]
 
 revert =  [
+           [538, [revert_baselineskip]],
            [537, [revert_mathindent]],
            [536, [revert_xout]],
            [535, [revert_noto]],

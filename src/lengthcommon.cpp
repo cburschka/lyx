@@ -32,7 +32,7 @@ char const * const unit_name[] = {
 	"bp", "cc", "cm", "dd", "em", "ex", "in", "mm", "mu",
 	"pc", "pt", "sp",
 	"text%",  "col%", "page%", "line%",
-	"theight%", "pheight%", "" };
+	"theight%", "pheight%", "baselineskip%", "" };
 
 int const num_units = int(sizeof(unit_name) / sizeof(unit_name[0]) - 1);
 
@@ -42,7 +42,7 @@ char const * const unit_name_gui[] = {
 	N_("ex"), N_("in[[unit of measure]]"), N_("mm"), N_("mu[[unit of measure]]"), N_("pc"),
 	N_("pt"), N_("sp"), N_("Text Width %"),
 	N_("Column Width %"), N_("Page Width %"), N_("Line Width %"),
-	N_("Text Height %"), N_("Page Height %"), "" };
+	N_("Text Height %"), N_("Page Height %"), N_("Line Distance %"), "" };
 
 
 Length::UNIT unitFromString(string const & data)

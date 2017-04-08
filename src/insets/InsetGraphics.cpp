@@ -413,6 +413,7 @@ docstring InsetGraphics::toDocbookLength(Length const & len) const
 		case Length::PLW: // Percent of LineWidth
 		case Length::PTH: // Percent of TextHeight
 		case Length::PPH: // Percent of PaperHeight
+		case Length::BLS: // Percent of BaselineSkip
 			// Sigh, this will go wrong.
 			result << len.value() << "%";
 			break;

@@ -107,6 +107,9 @@ string const Length::asLatexString() const
 	case PPH:
 		os << formatFPNumber(val_ / 100.0) << "\\paperheight";
 		break;
+	case BLS:
+		os << formatFPNumber(val_ / 100.0) << "\\baselineskip";
+		break;
 	case UNIT_NONE:
 		break;
 	default:
@@ -147,6 +150,7 @@ string const Length::asHTMLString() const
 	case PCW:
 	case PTH:
 	case PPH:
+	case BLS:
 		// what it's a percentage of probably won't make sense for HTML,
 		// so we'll assume people have chosen these appropriately
 		os << formatFPNumber(val_) << '%';
@@ -290,6 +294,12 @@ double Length::inInch(double text_width, double em_width) const
 		break;
 	case Length::PPH:
 		result = val_ * text_width * 2.2 / 100;
+		break;
+	case Length::BLS:
+		// baselineskip is approximately 1.2 times the font size for the cmr fonts
+		// The value actually depends on the current paragraph (see TextMetrics::setRowHeight),
+		// but we do not have this information here.
+		result = val_ * em_width * 1.2 / 100;
 		break;
 	case Length::UNIT_NONE:
 		result = 0;  // this cannot happen
