@@ -136,6 +136,7 @@ private:
 	std::string h_cite_engine_type;
 	std::string h_color;
 	std::string h_defskip;
+	bool h_dynamic_quotes;
 	std::string h_float_placement;
 	std::string h_fontcolor;
 	std::string h_fontencoding;
@@ -151,7 +152,7 @@ private:
 	std::string h_font_tt_scale[2];
 	bool h_font_cjk_set;
 	std::string h_font_cjk;
-	bool h_use_microtype;
+	std::string h_use_microtype;
 	std::string h_is_formulaindent;
 	std::string h_formulaindentation;
 	std::string h_graphics;
@@ -207,6 +208,7 @@ private:
 	std::string h_tocdepth;
 	std::string h_tracking_changes;
 	std::string h_use_bibtopic;
+	std::string h_use_dash_ligatures;
 	std::string h_use_indices;
 	std::string h_use_geometry;
 	std::map<std::string, std::string> h_use_packages;

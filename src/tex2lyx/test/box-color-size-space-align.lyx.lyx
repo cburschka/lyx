@@ -56,7 +56,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
-\use_microtype 0
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -106,8 +107,8 @@
 \paragraph_separation skip
 \defskip 3mm
 \is_formula_indent 0
-\formula_indentation 
 \quotes_style english
+\dynamic_quotes 0
 \papercolumns 2
 \papersides 2
 \paperpagestyle default
