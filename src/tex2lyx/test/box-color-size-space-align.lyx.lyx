@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.3
-\lyxformat 535
+\lyxformat 539
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -105,6 +105,8 @@
 \tocdepth 3
 \paragraph_separation skip
 \defskip 3mm
+\is_formula_indent 0
+\formula_indentation 
 \quotes_style english
 \papercolumns 2
 \papersides 2
@@ -2124,37 +2126,9 @@ test
 
 \size normal
 Crossed out: 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-xout
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-{
-\end_layout
-
-\end_inset
-
+\xout on
 test
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-}
-\end_layout
-
-\end_inset
-
+\xout default
 
 \end_layout
 
@@ -2807,6 +2781,10 @@ in the middle. Lines can have a vfill
 
  in the middle. Lines can have a vertical absolute space 
 \begin_inset VSpace 2cm
+\end_inset
+
+ in the middle. Lines can have a baselineskip 
+\begin_inset VSpace 120baselineskip%
 \end_inset
 
  in the middle. Lines can have a vertical relative space 
