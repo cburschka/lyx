@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-03-11 09:38+0100\n"
-"PO-Revision-Date: 2017-03-11 09:09+0000\n"
+"POT-Creation-Date: 2017-04-08 11:08+0200\n"
+"PO-Revision-Date: 2017-04-08 09:40+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1896,6 +1896,18 @@ msgstr ""
 #: src/frontends/qt4/ui/FontUi.ui:264
 msgid "Enable micr&o-typographic extensions"
 msgstr "Povoliť mikr&o-typografické rozšírenia"
+
+#: src/frontends/qt4/ui/FontUi.ui:258
+msgid ""
+"Use font ligatures -- and --- instead of \\textendash and \\textemdash for "
+"en- and em-dashes"
+msgstr ""
+"Použiť zliatky fontu pre '--' a '---' namiesto \\textendash a \\textemdash "
+"pre en a em čiarky"
+
+#: src/frontends/qt4/ui/FontUi.ui:261
+msgid "Output en- and &em-dashes as ligatures"
+msgstr "Výstup pre en a em čiarky ako zliatky"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
@@ -5234,6 +5246,14 @@ msgstr "Bloková sadzba v LyX editore (to nemá vplyv na sadzbu vo výstupe)"
 #: src/frontends/qt4/ui/TextLayoutUi.ui:284
 msgid "Use &justification in LyX work area"
 msgstr "Použiť blokovú sadzbu v &LyX-ovej pracovnej ploche"
+
+#: src/frontends/qt4/ui/TextLayoutUi.ui:278
+msgid "Indent &Formulas"
+msgstr "Odsadiť Vzorce"
+
+#: src/frontends/qt4/ui/TextLayoutUi.ui:288
+msgid "30"
+msgstr "30"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:32
 msgid "Language of the thesaurus"
@@ -16525,6 +16545,10 @@ msgstr "Minion Pro"
 msgid "New Century Schoolbook"
 msgstr "New Century Schoolbook"
 
+#: lib/latexfonts:293 lib/latexfonts:301
+msgid "Noto Serif"
+msgstr "Noto Serif"
+
 #: lib/latexfonts:279 lib/latexfonts:291 lib/latexfonts:298 lib/latexfonts:304
 #: lib/latexfonts:311
 msgid "Palatino"
@@ -16618,6 +16642,10 @@ msgstr "Kurier (Svetlý Zhustený)"
 msgid "Latin Modern Sans"
 msgstr "Latin Modern Sans"
 
+#: lib/latexfonts:556
+msgid "Noto Sans"
+msgstr "Noto Sans"
+
 #: lib/latexfonts:528
 msgid "TeX Gyre Adventor"
 msgstr "TeX Gyre Adventor"
@@ -16657,6 +16685,10 @@ msgstr "Latin Modern Typewriter"
 #: lib/latexfonts:594
 msgid "LuxiMono"
 msgstr "LuxiMono"
+
+#: lib/latexfonts:636
+msgid "Noto Mono"
+msgstr "Noto Mono"
 
 #: lib/latexfonts:601
 msgid "TeX Gyre Cursor"
@@ -24140,6 +24172,10 @@ msgstr "LyX nemohol vytvoriť pomocný adresár '%1$s' (možné že je plný dis
 msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr "LyX sa pokúsil zavrieť dokument s neuloženými zmenami!\n"
 
+#: src/Buffer.cpp:559 src/Buffer.cpp:1614
+msgid "Save failed! Document is lost."
+msgstr "Uloženie zlyhalo! Dokument je stratený."
+
 #: src/Buffer.cpp:531
 msgid "Attempting to close changed document!"
 msgstr "Pokúšam sa zavrieť zmenený dokument!"
@@ -24370,10 +24406,6 @@ msgstr "Uloženie zlyhalo! Skúšam ešte raz…\n"
 msgid "Save failed! Trying yet again...\n"
 msgstr "Uloženie zlyhalo! Skúšam zatiaľ ešte raz…\n"
 
-#: src/Buffer.cpp:1581
-msgid "Save failed! Bummer. Document is lost."
-msgstr "Uloženie zlyhalo! Och. Dokument je stratený."
-
 #: src/Buffer.cpp:1670
 msgid "Iconv software exception Detected"
 msgstr "Iconv detegoval softvérovú výnimku"
@@ -24544,9 +24576,9 @@ msgstr "Prostý text nemá preambulu."
 msgid "Auto-saving %1$s"
 msgstr "Automatické ukladanie %1$s"
 
-#: src/Buffer.cpp:3905
+#: src/Buffer.cpp:4101
 msgid "Autosave failed!"
-msgstr "Automatické ukladanie sa nepodarilo!"
+msgstr "Automatické ukladanie zlyhalo!"
 
 #: src/Buffer.cpp:3966
 msgid "Autosaving current document..."
@@ -25793,10 +25825,15 @@ msgstr "Zvýrazniť %1$s, "
 msgid "Underline %1$s, "
 msgstr "Podčiarknuť %1$s, "
 
-#: src/Font.cpp:168
+#: src/Font.cpp:169
 #, c-format
-msgid "Strikeout %1$s, "
+msgid "Strike out %1$s, "
 msgstr "Preškrtnúť %1$s, "
+
+#: src/Font.cpp:172
+#, c-format
+msgid "Cross out %1$s, "
+msgstr "Krížom prečiarknuť %1$s, "
 
 #: src/Font.cpp:171
 #, c-format
@@ -27721,6 +27758,11 @@ msgstr ""
 "Nepodarilo sa nastaviť farbu \"%1$s\" - alebo nie je definovaná alebo sa "
 "nedá predefinovať"
 
+#: src/frontends/qt4/GuiApplication.cpp:1860
+#, c-format
+msgid "Cannot iterate more than %1$d times"
+msgstr "Nemôžem iterovať viac ako %1$d krát"
+
 #: src/frontends/qt4/GuiApplication.cpp:1913
 #, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
@@ -28001,8 +28043,12 @@ msgid "Wavy underbar"
 msgstr "Vlnovkou podčiarknuté"
 
 #: src/frontends/qt4/GuiCharacter.cpp:88
-msgid "Strikeout"
+msgid "Strike out"
 msgstr "Preškrtnuté"
+
+#: src/frontends/qt4/GuiCharacter.cpp:89
+msgid "Cross out"
+msgstr "Krížom prečiarknuté"
 
 #: src/frontends/qt4/GuiCharacter.cpp:179
 msgid "No color"
@@ -30013,9 +30059,9 @@ msgstr "Vitajte v LyXe!"
 msgid "Automatic save done."
 msgstr "Automatický úklad hotový."
 
-#: src/frontends/qt4/GuiView.cpp:1722
+#: src/frontends/qt4/GuiView.cpp:1725
 msgid "Automatic save failed!"
-msgstr "Automatické ukladanie sa nepodarilo!"
+msgstr "Automatické ukladanie zlyhalo!"
 
 #: src/frontends/qt4/GuiView.cpp:1778
 msgid "Command not allowed without any document open"
@@ -31913,6 +31959,10 @@ msgstr "Výška textu %"
 msgid "Page Height %"
 msgstr "Výška Stránky %"
 
+#: src/lengthcommon.cpp:45
+msgid "Line Distance %"
+msgstr "Odstup Riadku %"
+
 #: src/lyxfind.cpp:127
 msgid "Search error"
 msgstr "Chyba pri hľadaní"
@@ -32438,6 +32488,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Don't use ligatures for en- and &em-dashes"
+#~ msgstr "Nepoužívať zliatky pre en a em čiarkovanie"
 
 #~ msgid "Missing included file"
 #~ msgstr "Chýba zahrnutý súbor"
@@ -36624,3 +36677,17 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Vynúti výpis všetkých autorov (miesto použitia \"a kol.\") keď to aktuálny "
 #~ "štýl podporuje. "
+
+#~ msgid ""
+#~ "Use \\textendash and \\textemdash instead of -- and --- for en- and em-dashes"
+#~ msgstr ""
+#~ "Použiť \\textendash a \\textemdash namiesto čiarkovania pre '---' a '--' "
+
+#~ msgid "Save failed! Bummer. Document is lost."
+#~ msgstr "Uloženie zlyhalo! Och. Dokument je stratený."
+
+#~ msgid "Strikeout %1$s, "
+#~ msgstr "Preškrtnúť %1$s, "
+
+#~ msgid "Strikeout"
+#~ msgstr "Preškrtnuté"
