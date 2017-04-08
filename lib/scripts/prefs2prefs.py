@@ -31,15 +31,17 @@
 # These will be different for the bind and ui files and for the preferences
 # file. 
 
+from __future__ import print_function
 import os, re, string, sys
 from getopt import getopt
+import io
 
 ###########################################################
 # Utility functions, borrowed from layout2layout.py
 
 def trim_bom(line):
 	" Remove byte order mark."
-	if line[0:3] == "\357\273\277":
+	if line[0:3] == u"\357\273\277":
 		return line[3:]
 	else:
 		return 	line
@@ -119,11 +121,11 @@ def abort(msg):
 ###########################################################
 
 def usage():
-	print "%s [-l] [-p] infile outfile" % sys.argv[0]
-	print "or: %s [-l] [-p] <infile >outfile" % sys.argv[0]
-	print "  -l: convert LFUNs (bind and ui files)"
-	print "  -p: convert preferences"
-	print "Note that exactly one of -l and -p is required."
+	print ("%s [-l] [-p] infile outfile" % sys.argv[0])
+	print ("or: %s [-l] [-p] <infile >outfile" % sys.argv[0])
+	print ("  -l: convert LFUNs (bind and ui files)")
+	print ("  -p: convert preferences")
+	print ("Note that exactly one of -l and -p is required.")
 
 
 def main(argv):
@@ -139,8 +141,8 @@ def main(argv):
 		source = sys.stdin
 		output = sys.stdout
 	elif len(args) == 2:
-		source = open(args[0], 'rb')
-		output = open(args[1], 'wb')
+		source = io.open(args[0], 'r', encoding='utf_8', errors='surrogateescape')
+		output = io.open(args[1], 'w', encoding='utf_8', newline='\n')
 		opened_files = True
 	else:
 		usage()
