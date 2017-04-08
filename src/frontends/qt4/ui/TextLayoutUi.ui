@@ -14,7 +14,7 @@
    <string/>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
+   <item row="0" column="0" colspan="4">
     <widget class="QGroupBox" name="separateGB">
      <property name="title">
       <string>Paragraph Separation</string>
@@ -179,7 +179,7 @@
      </layout>
     </widget>
    </item>
-   <item row="1" column="0">
+   <item row="1" column="0" colspan="4">
     <widget class="QGroupBox" name="spacingGB">
      <property name="minimumSize">
       <size>
@@ -249,7 +249,70 @@
      </layout>
     </widget>
    </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="QCheckBox" name="twoColumnCB">
+     <property name="toolTip">
+      <string>Format text into two columns</string>
+     </property>
+     <property name="text">
+      <string>Two-&amp;column document</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="QCheckBox" name="justCB">
+     <property name="toolTip">
+      <string>Justify text in the LyX editor (this does not affect whether the text is justified in the output)</string>
+     </property>
+     <property name="text">
+      <string>Use &amp;justification in LyX work area</string>
+     </property>
+    </widget>
+   </item>
    <item row="4" column="0">
+    <widget class="QCheckBox" name="FormulaIndentCB">
+     <property name="toolTip">
+      <string>Justify text in the LyX editor (this does not affect whether the text is justified in the output)</string>
+     </property>
+     <property name="text">
+      <string>Indent &amp;Formulas</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QLineEdit" name="FormulaIndentLE">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+      <string>30</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2">
+    <widget class="lyx::frontend::LengthCombo" name="FormulaIndentCO">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="toolTip">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="3">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>79</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="5" column="0" colspan="4">
     <spacer>
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -264,26 +327,6 @@
       </size>
      </property>
     </spacer>
-   </item>
-   <item row="2" column="0">
-    <widget class="QCheckBox" name="twoColumnCB">
-     <property name="toolTip">
-      <string>Format text into two columns</string>
-     </property>
-     <property name="text">
-      <string>Two-&amp;column document</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
-    <widget class="QCheckBox" name="justCB">
-      <property name="toolTip">
-      <string>Justify text in the LyX editor (this does not affect whether the text is justified in the output)</string>
-     </property>
-     <property name="text">
-      <string>Use &amp;justification in LyX work area</string>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>
@@ -310,5 +353,38 @@
   <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>FormulaIndentCB</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>FormulaIndentCO</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>274</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>289</x>
+     <y>273</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>FormulaIndentCB</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>FormulaIndentLE</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>274</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>182</x>
+     <y>273</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
