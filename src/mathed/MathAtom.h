@@ -40,15 +40,14 @@ Andre'
 
 */
 
-#include <memory>
-
+#include "support/unique_ptr.h"
 
 namespace lyx {
 
 class Inset;
 class InsetMath;
 
-class MathAtom : public std::unique_ptr<InsetMath> {
+class MathAtom {
 public:
 	MathAtom() = default;
 	MathAtom(MathAtom &&) = default;
@@ -59,8 +58,12 @@ public:
 	MathAtom(MathAtom const &);
 	MathAtom & operator=(MathAtom const &);
 	/// access to the inset
-	InsetMath * nucleus() { return get(); }
-	InsetMath const * nucleus() const { return get(); }
+	InsetMath * nucleus() { return nucleus_.get(); }
+	InsetMath const * nucleus() const { return nucleus_.get(); }
+	InsetMath * operator->() { return nucleus_.get(); }
+	InsetMath const * operator->() const { return nucleus_.get(); }
+private:
+	std::unique_ptr<InsetMath> nucleus_;
 };
 
 

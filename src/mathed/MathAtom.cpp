@@ -19,12 +19,12 @@ namespace lyx {
 
 
 MathAtom::MathAtom(InsetMath * p)
-	: unique_ptr<InsetMath>(p)
+	: nucleus_(p)
 {}
 
 
 MathAtom::MathAtom(MathAtom const & at)
-	: unique_ptr<InsetMath>(at ? static_cast<InsetMath*>(at->clone()) : nullptr)
+	: nucleus_(at.nucleus_ ? static_cast<InsetMath*>(at->clone()) : nullptr)
 {}
 
 
