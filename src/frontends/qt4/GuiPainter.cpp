@@ -26,8 +26,9 @@
 
 #include "insets/Inset.h"
 
-#include "support/lassert.h"
 #include "support/debug.h"
+#include "support/lassert.h"
+#include "support/lyxlib.h"
 
 #include <algorithm>
 
@@ -669,17 +670,15 @@ void GuiPainter::strikeoutLine(FontInfo const & f, int x, int y, int width)
 
 void GuiPainter::crossoutLines(FontInfo const & f, int x, int y, int width)
 {
-	FontMetrics const & fm = theFontMetrics(f);
-	int const bottom = fm.underlinePos();
-	int const middle = fm.strikeoutPos();
+	FontInfo tmpf = f;
+	tmpf.setXout(FONT_OFF);
 
-	// we draw several lines to fill the whole selection with strokes
-	// use 5 as diagonal width since this is close to the PDf output
-	// with normal font zoom levels
-	for(int x_current = x; x_current < x + width - 5; x_current = x_current + 5) {
-		line(x_current, y + bottom, x_current + 5, y - 2 * middle - 2 * bottom,
-			f.realColor(), line_solid, fm.lineWidth());
-	}
+	// the definition of \xout in ulem.sty is
+    //  \def\xout{\bgroup \markoverwith{\hbox to.35em{\hss/\hss}}\ULon}
+	// Let's mimick it somewhat.
+	double offset = max(0.35 * theFontMetrics(tmpf).em(), 1);
+	for (int i = 0 ; i < iround(width / offset) ; ++i)
+		text(x + iround(i * offset), y, '/', tmpf);
 }
 
 
