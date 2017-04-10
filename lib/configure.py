@@ -1374,7 +1374,7 @@ def checkLatexConfig(check_config, bool_docbook):
         if nodeclaration:
             continue
     testclasses.sort()
-    cl = open('chklayouts.tex', 'w')
+    cl = io.open('chklayouts.tex', 'w', encoding=enco)
     for line in testclasses:
         cl.write(line + '\n')
     cl.close()
