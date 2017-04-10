@@ -115,7 +115,7 @@ pos_type Row::Element::x2pos(int &x) const
 	case SPACE:
 		// those elements contain only one position. Round to
 		// the closest side.
-		if (x > full_width() / 2) {
+		if (x > (full_width() + 1) / 2) {
 			x = int(full_width());
 			i = !isRTL();
 		} else {
