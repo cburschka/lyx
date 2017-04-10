@@ -2,7 +2,8 @@
 #DescriptionBegin
 #Provides custom insets to insert TODO items in your document
 #(using the todonotes package). In order to generate a 'List of TODOs',
-#the module provides a paragraph style.
+#the module provides a paragraph style. Passing 'final' as document class
+#option suppresses the output of TODO notes.
 #DescriptionEnd
 
 # Authors: Stephen <stephen4mailinglists@googlemail.com>
@@ -11,6 +12,8 @@
 Format 63
 
 OutlinerName todonotes "TODO"
+
+PackageOptions todonotes obeyFinal
 
 #
 # List of TODOs
