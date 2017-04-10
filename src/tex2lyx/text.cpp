@@ -1466,13 +1466,16 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 	}
 
 	else if (unstarred_name == "sidewaysfigure"
-		|| unstarred_name == "sidewaystable") {
+		|| unstarred_name == "sidewaystable"
+		|| unstarred_name == "sidewaysalgorithm") {
 		eat_whitespace(p, os, parent_context, false);
 		parent_context.check_layout(os);
 		if (unstarred_name == "sidewaysfigure")
 			begin_inset(os, "Float figure\n");
-		else
+		else if (unstarred_name == "sidewaystable")
 			begin_inset(os, "Float table\n");
+		else if (unstarred_name == "sidewaysalgorithm")
+			begin_inset(os, "Float algorithm\n");
 		os << "wide " << convert<string>(is_starred)
 		   << "\nsideways true"
 		   << "\nstatus open\n\n";
