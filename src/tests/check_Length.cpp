@@ -18,7 +18,7 @@ void test_inPixels()
 	lyxrc.dpi = 72;
 	for (int i = Length::BP; i <= Length::UNIT_NONE; ++i) {
 		Length const l(2342, static_cast<Length::UNIT>(i));
-		cout << l.inPixels(250) << endl;
+		cout << l.inPixels(250) << " pix(250) = " << l.asString() << endl;
 	}
 }
 
@@ -27,7 +27,7 @@ void test_inBP()
 {
 	for (int i = Length::BP; i <= Length::UNIT_NONE; ++i) {
 		Length const l(2342, static_cast<Length::UNIT>(i));
-		cout << l.inBP() << endl;
+		cout << l.inBP() << " BP = " << l.asString() << endl;
 	}
 }
 
