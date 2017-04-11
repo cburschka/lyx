@@ -158,10 +158,9 @@ export/export/latex/ru-accent-ascii.*
 #9681 textgreek and textcyr also required for encodable characters
 # Greek fails with utf8 and utf8x,
 # Cyrillic fails with utf8 and cyrillic encodings:
-export/export/latex/unicodesymbols/008-greek-and-coptic(|_utf8x)_pdf2
-export/export/latex/unicodesymbols/009-cyrillic(|_utf8x)_pdf2
-export/export/latex/unicodesymbols/009-cyrillic_(cp855|cp866|cp1251|koi8-r|koi8-u|iso8859-5|pt154)_pdf2
-export/export/latex/unicodesymbols/069-greek-extended(|_utf8x)_pdf2
+export/export/latex/unicodesymbols/008-greek-and-coptic_utf8x?_pdf2
+export/export/latex/unicodesymbols/009-cyrillic_(utf8|utf8x|cp855|cp866|cp1251|koi8-r|koi8-u|iso8859-5|pt154)_pdf2
+export/export/latex/unicodesymbols/069-greek-extended_utf8x?_pdf2
 export/export/latex/unicodesymbols/069-greek-extended-textalpha_utf8x_pdf2
 
 

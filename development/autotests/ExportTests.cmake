@@ -393,7 +393,7 @@ foreach(libsubfolderx autotests/export lib/doc lib/examples lib/templates autote
           #message(STATUS "Test ${TestName} matches Unicode encodings")
           # test_encodings does not include "default", since it should be covered
           # by one of the supplied encodings
-          set(test_encodings "ascii" "utf8x" "armscii8" "applemac"
+          set(test_encodings "ascii" "utf8" "utf8x" "armscii8" "applemac"
             "cp437" "cp437de" "cp850" "cp852"
             "cp855" "cp862" "cp865"
             "cp866" "cp1250" "cp1251" "cp1252"
