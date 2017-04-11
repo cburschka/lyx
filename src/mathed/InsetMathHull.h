@@ -294,6 +294,8 @@ public:
 	Inset * editXY(Cursor & cur, int x, int y);
 	///
 	DisplayType display() const;
+	///
+	int indent(BufferView const &) const;
 
 protected:
 	///

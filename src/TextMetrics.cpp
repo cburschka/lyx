@@ -627,15 +627,25 @@ void TextMetrics::computeRowMetrics(Row & row, int width) const
 				row.dimension().wid += w;
 			}
 			break;
+		case LYX_ALIGN_LEFT:
+			// a displayed inset that is flushed
+			if (Inset const * inset = par.getInset(row.pos()))
+				row.left_margin += inset->indent(*bv_);
+			break;
 		case LYX_ALIGN_RIGHT:
-			row.left_margin += w;
-			row.dimension().wid += w;
+			if (Inset const * inset = par.getInset(row.pos())) {
+				int const new_w = max(w - inset->indent(*bv_), 0);
+				row.left_margin += new_w;
+				row.dimension().wid += new_w;
+			} else {
+				row.left_margin += w;
+				row.dimension().wid += w;
+			}
 			break;
 		case LYX_ALIGN_CENTER:
 			row.dimension().wid += w / 2;
 			row.left_margin += w / 2;
 			break;
-		case LYX_ALIGN_LEFT:
 		case LYX_ALIGN_NONE:
 		case LYX_ALIGN_LAYOUT:
 		case LYX_ALIGN_SPECIAL:

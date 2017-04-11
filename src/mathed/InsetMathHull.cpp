@@ -993,11 +993,30 @@ Inset::DisplayType InsetMathHull::display() const
 	case hullEquation:
 	case hullMultline:
 	case hullGather:
-		return AlignCenter;
+		if (buffer().params().is_math_indent)
+			return AlignLeft;
+		else
+			return AlignCenter;
 	}
 	// avoid warning
 	return AlignCenter;
 }
+
+
+int InsetMathHull::indent(BufferView const & bv) const
+{
+	// FIXME: set this in the textclass. This value is what the article class uses.
+	static Length default_indent(2.5, Length::EM);
+	if (buffer().params().is_math_indent) {
+		Length const & len = buffer().params().getMathIndent();
+		if (len.empty())
+			return bv.inPixels(default_indent);
+		else
+			return bv.inPixels(len);
+	} else
+		return Inset::indent(bv);
+}
+
 
 bool InsetMathHull::numberedType() const
 {

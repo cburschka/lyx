@@ -460,6 +460,8 @@ public:
 
 	/// should we have a non-filled line before this inset?
 	virtual DisplayType display() const { return Inline; }
+	/// indentation before this inset (only needed for displayed hull insets with fleqn option)
+	virtual int indent(BufferView const &) const { return 0; }
 	///
 	virtual LyXAlignment contentAlignment() const { return LYX_ALIGN_NONE; }
 	/// should we break lines after this inset?
