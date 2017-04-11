@@ -129,7 +129,7 @@ void InsetFloat::setCaptionType(std::string const & type)
 	params_.type = captionType();
 	// check if the float type exists
 	if (buffer().params().documentClass().floats().typeExist(params_.type))
-		setLabel(_("float: ") + floatName(params_.type));
+		setNewLabel();
 	else
 		setLabel(bformat(_("ERROR: Unknown float type: %1$s"), from_utf8(params_.type)));
 }
