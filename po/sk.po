@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-04-08 11:08+0200\n"
-"PO-Revision-Date: 2017-04-08 09:40+0000\n"
+"POT-Creation-Date: 2017-04-11 09:03+0200\n"
+"PO-Revision-Date: 2017-04-11 07:20+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3504,9 +3504,9 @@ msgstr "Vypnutý"
 msgid "No math"
 msgstr "Bez matematiky"
 
-#: src/frontends/qt4/ui/PrefDisplayUi.ui:72 src/Font.cpp:76
+#: src/frontends/qt4/ui/PrefDisplayUi.ui:72 src/Font.cpp:77
 msgid "On"
-msgstr "Zapnutý"
+msgstr "Zapnuté"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:80
 msgid "Preview si&ze:"
@@ -5246,6 +5246,10 @@ msgstr "Bloková sadzba v LyX editore (to nemá vplyv na sadzbu vo výstupe)"
 #: src/frontends/qt4/ui/TextLayoutUi.ui:284
 msgid "Use &justification in LyX work area"
 msgstr "Použiť blokovú sadzbu v &LyX-ovej pracovnej ploche"
+
+#: src/frontends/qt4/ui/TextLayoutUi.ui:275
+msgid "Indent displayed formulas instead of centering"
+msgstr "Odsadiť exponované vzorce namiesto vystreďovania"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:278
 msgid "Indent &Formulas"
@@ -25833,7 +25837,7 @@ msgstr "Preškrtnúť %1$s, "
 #: src/Font.cpp:172
 #, c-format
 msgid "Cross out %1$s, "
-msgstr "Krížom prečiarknuť %1$s, "
+msgstr "Šikmo začiarkovať %1$s, "
 
 #: src/Font.cpp:171
 #, c-format
@@ -28032,7 +28036,7 @@ msgstr "Vynulovať"
 
 #: src/frontends/qt4/GuiCharacter.cpp:85
 msgid "Underbar"
-msgstr "Podčiarknuť"
+msgstr "Podčiarknuté"
 
 #: src/frontends/qt4/GuiCharacter.cpp:86
 msgid "Double underbar"
@@ -28048,7 +28052,7 @@ msgstr "Preškrtnuté"
 
 #: src/frontends/qt4/GuiCharacter.cpp:89
 msgid "Cross out"
-msgstr "Krížom prečiarknuté"
+msgstr "Šikmo začiarkované"
 
 #: src/frontends/qt4/GuiCharacter.cpp:179
 msgid "No color"
