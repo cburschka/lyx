@@ -38,7 +38,7 @@ enum file_access {
 };
 
 /// Do some work just once.
-void init(int argc, char * argv[]);
+void init(int argc, char ** argv[]);
 
 /// Returns the i-th program argument in utf8 encoding.
 std::string utf8_argv(int i);

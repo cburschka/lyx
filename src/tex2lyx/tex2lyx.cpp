@@ -1179,7 +1179,7 @@ int main(int argc, char * argv[])
 
 	lyx::lyxerr.setStream(cerr);
 
-	os::init(argc, argv);
+	os::init(argc, &argv);
 
 	lyx::TeX2LyXApp app(argc, argv);
 	return app.exec();

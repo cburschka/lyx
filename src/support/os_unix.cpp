@@ -45,10 +45,10 @@ char ** argv_ = 0;
 
 } // namespace anon
 
-void init(int argc, char * argv[])
+void init(int argc, char ** argv[])
 {
 	argc_ = argc;
-	argv_ = argv;
+	argv_ = *argv;
 
 	// Set environment's default locale
 	setlocale(LC_ALL, "");

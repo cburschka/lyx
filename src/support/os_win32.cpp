@@ -99,7 +99,7 @@ BOOL terminate_handler(DWORD event)
 
 } // namespace anon
 
-void init(int argc, char * argv[])
+void init(int argc, char ** argv[])
 {
 	/* Note from Angus, 17 Jan 2005:
 	 *
@@ -156,6 +156,22 @@ void init(int argc, char * argv[])
 	 * development/Win32 which hides the console window of lyx when
 	 * lyx is invoked as a parameter of hidecmd.exe.
 	 */
+
+
+#if defined(_MSC_VER) && (_MSC_VER >= 1900)
+	// Removing an argument from argv leads to an assertion on Windows
+	// when compiling with MSVC 2015 in debug mode (see bug #10440).
+	// To avoid this we make a copy of the array of pointers.
+	char ** newargv = (char **) malloc((argc + 1) * sizeof(char *));
+	if (newargv) {
+		memcpy(newargv, *argv, (argc + 1) * sizeof(char *));
+		*argv = newargv;
+	} else {
+		lyxerr << "LyX warning: Cannot make a copy of "
+		          "command line arguments!"
+		       << endl;
+	}
+#endif
 
 
 	// Get the wide program arguments array

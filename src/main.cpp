@@ -35,7 +35,7 @@ int main(int argc, char * argv[])
 	// early as possible.
 	lyx::lyxerr.setStream(cerr);
 
-	lyx::support::os::init(argc, argv);
+	lyx::support::os::init(argc, &argv);
 
 	lyx::LyX the_lyx_instance;
 
