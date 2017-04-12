@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>421</width>
-    <height>327</height>
+    <width>470</width>
+    <height>380</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
+  <layout class="QGridLayout" name="gridLayout_3">
    <item row="0" column="0" colspan="4">
     <widget class="QGroupBox" name="separateGB">
      <property name="title">
@@ -22,7 +22,7 @@
      <property name="flat">
       <bool>true</bool>
      </property>
-     <layout class="QGridLayout" name="gridLayout_3">
+     <layout class="QGridLayout" name="gridLayout">
       <item row="0" column="0">
        <widget class="QRadioButton" name="indentRB">
         <property name="minimumSize">
@@ -59,8 +59,8 @@
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>135</width>
-          <height>26</height>
+          <width>133</width>
+          <height>23</height>
          </size>
         </property>
        </spacer>
@@ -103,6 +103,12 @@
       </item>
       <item row="2" column="0">
        <widget class="QRadioButton" name="skipRB">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>91</width>
