@@ -44,6 +44,7 @@ class IndicesList;
 class Language;
 class LayoutFile;
 class LayoutFileIndex;
+class Length;
 class Lexer;
 class PDFOptions;
 class Spacing;
@@ -93,9 +94,9 @@ public:
 	bool hasClassDefaults() const;
 
 	///
-	HSpace const & getIndentation() const;
+	Length const & getParIndent() const;
 	///
-	void setIndentation(HSpace const & indent);
+	void setParIndent(Length const & indent);
 	///
 	VSpace const & getDefSkip() const;
 	///

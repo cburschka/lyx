@@ -2953,19 +2953,19 @@ void GuiDocument::applyView()
 		bp_.paragraph_separation = BufferParams::ParagraphIndentSeparation;
 		switch (textLayoutModule->indentCO->currentIndex()) {
 		case 0:
-			bp_.setIndentation(HSpace(HSpace::DEFAULT));
+			bp_.setParIndent(Length());
 			break;
 		case 1:	{
-			HSpace indent = HSpace(
+			Length indent(
 				widgetsToLength(textLayoutModule->indentLE,
 				textLayoutModule->indentLengthCO)
 				);
-			bp_.setIndentation(indent);
+			bp_.setParIndent(indent);
 			break;
 			}
 		default:
 			// this should never happen
-			bp_.setIndentation(HSpace(HSpace::DEFAULT));
+			bp_.setParIndent(Length());
 			break;
 		}
 	} else {
@@ -3445,12 +3445,12 @@ void GuiDocument::paramsToDialog()
 
 	if (bp_.paragraph_separation == BufferParams::ParagraphIndentSeparation) {
 		textLayoutModule->indentRB->setChecked(true);
-		string indentation = bp_.getIndentation().asLyXCommand();
+		string parindent = bp_.getParIndent().asString();
 		int indent = 0;
-		if (indentation != "default") {
+		if (!parindent.empty()) {
 			lengthToWidgets(textLayoutModule->indentLE,
-			textLayoutModule->indentLengthCO,
-			indentation, default_unit);
+			                textLayoutModule->indentLengthCO,
+			                parindent, default_unit);
 			indent = 1;
 		}
 		textLayoutModule->indentCO->setCurrentIndex(indent);

@@ -1717,32 +1717,32 @@ int TextMetrics::leftMargin(int max_width,
 	// set the correct parindent
 	if (pos == 0
 	    && (layout.labeltype == LABEL_NO_LABEL
-		|| layout.labeltype == LABEL_ABOVE
-		|| layout.labeltype == LABEL_CENTERED
-		|| (layout.labeltype == LABEL_STATIC
-		    && layout.latextype == LATEX_ENVIRONMENT
-		    && !text_->isFirstInSequence(pit)))
+	        || layout.labeltype == LABEL_ABOVE
+	        || layout.labeltype == LABEL_CENTERED
+	        || (layout.labeltype == LABEL_STATIC
+	            && layout.latextype == LATEX_ENVIRONMENT
+	            && !text_->isFirstInSequence(pit)))
 	    && (align == LYX_ALIGN_BLOCK || align == LYX_ALIGN_LEFT)
 	    && !par.params().noindent()
 	    // in some insets, paragraphs are never indented
 	    && !text_->inset().neverIndent()
 	    // display style insets are always centered, omit indentation
 	    && !(!par.empty()
-		 && par.isInset(pos)
-		 && par.getInset(pos)->display())
+	         && par.isInset(pos)
+	         && par.getInset(pos)->display())
 	    && (!(tclass.isDefaultLayout(par.layout())
-		  || tclass.isPlainLayout(par.layout()))
+	        || tclass.isPlainLayout(par.layout()))
 	        || buffer.params().paragraph_separation
 				== BufferParams::ParagraphIndentSeparation)) {
-			// use the parindent of the layout when the
-			// default indentation is used otherwise use
-			// the indentation set in the document
-			// settings
-			if (buffer.params().getIndentation().asLyXCommand() == "default")
-				l_margin += bfm.signedWidth(parindent);
-			else
-				l_margin += buffer.params().getIndentation().inPixels(*bv_);
-		}
+		/* use the parindent of the layout when the default
+		 * indentation is used otherwise use the indentation set in
+		 * the document settings
+		 */
+		if (buffer.params().getParIndent().empty())
+			l_margin += bfm.signedWidth(parindent);
+		else
+			l_margin += buffer.params().getParIndent().inPixels(max_width_, bfm.em());
+	}
 
 	return l_margin;
 }

@@ -145,7 +145,7 @@ int HSpace::inPixels(BufferView const & bv) const
 	switch (kind_) {
 	case DEFAULT:
 		// FIXME: replace by correct length
-		return bv.buffer().params().getIndentation().inPixels(bv);
+		return bv.buffer().params().getParIndent().inPixels(bv.workWidth());
 	case LENGTH:
 		return len_.len().inPixels(bv.workWidth());
 	default:

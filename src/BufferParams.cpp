@@ -337,10 +337,10 @@ public:
 	Bullet user_defined_bullets[4];
 	IndicesList indiceslist;
 	Spacing spacing;
+	Length parindent;
 	/** This is the amount of space used for paragraph_separation "skip",
 	 * and for detached paragraphs in "indented" documents.
 	 */
-	HSpace indentation;
 	VSpace defskip;
 	HSpace math_indentation;
 	PDFOptions pdfoptions;
@@ -641,15 +641,15 @@ void BufferParams::setMathIndentation(HSpace const & indent)
 }
 
 
-HSpace const & BufferParams::getIndentation() const
+Length const & BufferParams::getParIndent() const
 {
-	return pimpl_->indentation;
+	return pimpl_->parindent;
 }
 
 
-void BufferParams::setIndentation(HSpace const & indent)
+void BufferParams::setParIndent(Length const & indent)
 {
-	pimpl_->indentation = indent;
+	pimpl_->parindent = indent;
 }
 
 
@@ -835,9 +835,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex >> parsep;
 		paragraph_separation = parseptranslator().find(parsep);
 	} else if (token == "\\paragraph_indentation") {
-		lex.next();
-		string indentation = lex.getString();
-		pimpl_->indentation = HSpace(indentation);
+		lex >> pimpl_->parindent;
 	} else if (token == "\\defskip") {
 		lex.next();
 		string const defskip = lex.getString();
@@ -1344,7 +1342,7 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	   << "\n\\paragraph_separation "
 	   << string_paragraph_separation[paragraph_separation];
 	if (!paragraph_separation)
-		os << "\n\\paragraph_indentation " << getIndentation().asLyXCommand();
+		os << "\n\\paragraph_indentation " << Lexer::quoteString(pimpl_->parindent.asString());
 	else
 		os << "\n\\defskip " << getDefSkip().asLyXCommand();
 	os << "\n\\is_math_indent " << is_math_indent;
@@ -1951,9 +1949,9 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	} else {
 		// when separation by indentation
 		// only output something when a width is given
-		if (getIndentation().asLyXCommand() != "default") {
+		if (!getParIndent().empty()) {
 			os << "\\setlength{\\parindent}{"
-			   << from_utf8(getIndentation().asLatexCommand())
+			   << from_utf8(getParIndent().asLatexString())
 			   << "}\n";
 		}
 	}
