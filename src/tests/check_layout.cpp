@@ -118,7 +118,7 @@ bool test_Layout(string const & input, string const & output)
 
 int main(int argc, char * argv[])
 {
-	os::init(argc, argv);
+	os::init(argc, &argv);
 	lyxerr.setStream(cerr);
 	if (argc < 2 || argc > 3) {
 		cerr << "Usage: " << argv[0] << " <input layout file> [<output layout file>]\n";
