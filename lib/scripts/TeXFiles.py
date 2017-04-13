@@ -35,6 +35,7 @@
 # relies on python and kpsewhich (no shell command is used).
 # 
 
+from __future__ import print_function
 import os, sys, re
 
 cls_stylefile = 'clsFiles.lst'
@@ -56,15 +57,15 @@ def cmdOutput(cmd):
 # processing command line options
 if len(sys.argv) > 1:
     if sys.argv[1] in ['--help', '-help']:
-        print '''Usage: TeXFiles.py [-version | cls | sty | bst | bib | bbx| cbx ]
+        print('''Usage: TeXFiles.py [-version | cls | sty | bst | bib | bbx| cbx ]
             Default is without any Parameters,
-            so that all files will be created'''
+            so that all files will be created''')
         sys.exit(0)
     else:
         types = sys.argv[1:]
         for type in types:
             if type not in ['cls', 'sty', 'bst', 'bib', 'bbx', 'cbx']:
-                print 'ERROR: unknown type', type
+                print('ERROR: unknown type', type)
                 sys.exit(1)
 else:
     # if no parameter is specified, assume all
@@ -84,7 +85,7 @@ if sys.platform == 'cygwin':
 
 # process each file type
 for type in types:
-    print "Indexing files of type", type
+    print("Indexing files of type", type)
     if type == 'cls':
         outfile = cls_stylefile
         kpsetype = '.tex'
@@ -120,6 +121,6 @@ for type in types:
             for file in files:
                 if len(file) > 4 and file[-4:] == file_ext:
                     # force the use of / since miktex uses / even under windows
-                    print >> out, root.replace('\\', '/') + '/' + file
+                    print(root.replace('\\', '/') + '/' + file, file=out)
     out.close()
 
