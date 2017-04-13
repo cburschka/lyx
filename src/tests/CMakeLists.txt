@@ -38,10 +38,18 @@ foreach(bns ${layout_files} ${module_files})
   if("${_checktype}" STREQUAL "module")
     file(WRITE "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" "#% Do not delete the line below; configure depends on this\n")
     file(APPEND "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" "#  \\DeclareLaTeXClass{test${bn}}\n")
-    file(APPEND "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" "Format 55\n")
+    file(APPEND "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" "Format 63\n")
+    file(APPEND "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" "Style Standard\n")
+    file(APPEND "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" " LabelType No_Label\n")
+    file(APPEND "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" " Category MainText\n")
+    file(APPEND "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" "End\n")
     file(APPEND "${LYX_TESTS_USERDIR}/layouts/test${bn}.layout" "Input ${bns}\n")
     add_test(NAME "check_layout/${bns}"
-      COMMAND $<TARGET_FILE:check_layout> "${LYX_TESTS_USERDIR}/layouts/test${bn}" "${CMAKE_CURRENT_BINARY_DIR}/${bn}.out${_checktype}")
+      COMMAND ${CMAKE_COMMAND}
+	"-DCheckLayout=$<TARGET_FILE:check_layout>"
+	"-DModule=${LYX_TESTS_USERDIR}/layouts/test${bn}"
+	"-DOutput=${CMAKE_CURRENT_BINARY_DIR}/${bn}.out${_checktype}"
+	-P "${TOP_SRC_DIR}/src/tests/check_layout.cmake")
     set_tests_properties("check_layout/${bns}" PROPERTIES ENVIRONMENT ${LYX_USERDIR_VER}=${LYX_TESTS_USERDIR})
   else()
     add_test(NAME "check_layout/${bns}"
