@@ -9,7 +9,7 @@
 # Full author contact details are available in file CREDITS.
 
 from __future__ import print_function
-import glob, logging, os, re, shutil, subprocess, sys, stat, io
+import glob, logging, os, re, shutil, subprocess, sys, stat
 
 # set up logging
 logging.basicConfig(level = logging.DEBUG,
@@ -1337,9 +1337,9 @@ def checkLatexConfig(check_config, bool_docbook):
     # Construct the list of classes to test for.
     # build the list of available layout files and convert it to commands
     # for chkconfig.ltx
-    declare = re.compile(r'^\s*#\s*\\Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}\s*$')
-    category = re.compile(r'^\s*#\s*\\DeclareCategory{(.*)}\s*$')
-    empty = re.compile(r'^\s*$')
+    declare = re.compile(b'^\\s*#\\s*\\\\Declare(LaTeX|DocBook)Class\\s*(\[([^,]*)(,.*)*\])*\\s*{(.*)}\\s*$')
+    category = re.compile(b'^\\s*#\\s*\\\\DeclareCategory{(.*)}\\s*$')
+    empty = re.compile(b'^\\s*$')
     testclasses = list()
     for file in (glob.glob( os.path.join('layouts', '*.layout') )
                  + glob.glob( os.path.join(srcdir, 'layouts', '*.layout' ) ) ):
@@ -1347,36 +1347,34 @@ def checkLatexConfig(check_config, bool_docbook):
         if not os.path.isfile(file):
             continue
         classname = file.split(os.sep)[-1].split('.')[0]
-        decline = ""
-        catline = ""
-        if os.name == 'nt':
-            enco = sys.getfilesystemencoding()
-        else:
-            enco="utf8"
-        for line in io.open(file, encoding=enco).readlines():
-            if not empty.match(line) and line[0] != '#':
-                if decline == "":
+        decline = b""
+        catline = b""
+        for line in open(file, 'rb').readlines():
+            if not empty.match(line) and line[0] != b'#'[0]:
+                if decline == b"":
                     logger.warning("Failed to find valid \Declare line "
                         "for layout file `%s'.\n\t=> Skipping this file!" % file)
                     nodeclaration = True
                 # A class, but no category declaration. Just break.
                 break
             if declare.search(line) != None:
-                decline = "\\TestDocClass{%s}{%s}" % (classname, line[1:].strip())
+                decline = b"\\TestDocClass{%s}{%s}" \
+                           % (classname.encode('ascii'), line[1:].strip())
                 testclasses.append(decline)
             elif category.search(line) != None:
-                catline = ("\\DeclareCategory{%s}{%s}"
-                           % (classname, category.search(line).groups()[0]))
+                catline = (b"\\DeclareCategory{%s}{%s}"
+                           % (classname.encode('ascii'),
+                              category.search(line).groups()[0]))
                 testclasses.append(catline)
-            if catline == "" or decline == "":
+            if catline == b"" or decline == b"":
                 continue
             break
         if nodeclaration:
             continue
     testclasses.sort()
-    cl = io.open('chklayouts.tex', 'w', encoding=enco)
+    cl = open('chklayouts.tex', 'wb')
     for line in testclasses:
-        cl.write(line + '\n')
+        cl.write(line + b'\n')
     cl.close()
     #
     # we have chklayouts.tex, then process it
