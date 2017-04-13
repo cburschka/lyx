@@ -245,7 +245,7 @@ End
 \papersides 2
 \paperpagestyle plain
 \tracking_changes false
-\output_changes true
+\output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
@@ -27147,16 +27147,9 @@ mathindent}{15mm}
 
 \begin_layout Standard
 
-\series bold
-
-\backslash
-mathindent
-\series default
-を明示的に指定しない場合には，事前に定義されている30
-\begin_inset space \thinspace{}
-\end_inset
-
-ptが適用されます．
+\lang english
+When no length is specified, a predefined value will be used.
+ The value depends on the used document class.
 \end_layout
 
 \end_deeper
