@@ -725,21 +725,25 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(textLayoutModule->justCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 
-	connect(textLayoutModule->FormulaIndentCB, SIGNAL(toggled(bool)),
+	connect(textLayoutModule->MathIndentCB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
-	connect(textLayoutModule->FormulaIndentLE, SIGNAL(textChanged(const QString &)),
+	connect(textLayoutModule->MathIndentCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
-	connect(textLayoutModule->FormulaIndentCO, SIGNAL(activated(int)),
+	connect(textLayoutModule->MathIndentCO, SIGNAL(activated(int)),
+		this, SLOT(setMathIndent(int)));
+	connect(textLayoutModule->MathIndentLE, SIGNAL(textChanged(const QString &)),
+		this, SLOT(change_adaptor()));
+	connect(textLayoutModule->MathIndentLengthCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 
-	textLayoutModule->FormulaIndentLE->setValidator(new LengthValidator(
-		textLayoutModule->FormulaIndentLE));
-	// initialize the length validator
-	bc().addCheckedLineEdit(textLayoutModule->FormulaIndentLE);
 	
-	// LaTeX's default for FormulaIndent is 30pt
-	textLayoutModule->FormulaIndentCO->setCurrentItem(Length::PT);
-
+	textLayoutModule->MathIndentCO->addItem(qt_("Default"));
+	textLayoutModule->MathIndentCO->addItem(qt_("Custom"));
+	textLayoutModule->MathIndentLE->setValidator(new LengthValidator(
+		textLayoutModule->MathIndentLE));
+	// initialize the length validator
+	bc().addCheckedLineEdit(textLayoutModule->MathIndentLE);
+	
 	textLayoutModule->lspacingLE->setValidator(new QDoubleValidator(
 		textLayoutModule->lspacingLE));
 	textLayoutModule->indentLE->setValidator(new LengthValidator(
@@ -1604,6 +1608,14 @@ void GuiDocument::enableSkip(bool skip)
 	textLayoutModule->indentLengthCO->setEnabled(!skip);
 	if (skip)
 		setSkip(textLayoutModule->skipCO->currentIndex());
+}
+
+void GuiDocument::setMathIndent(int item)
+{
+	bool const enable = (item == 1);
+	textLayoutModule->MathIndentLE->setEnabled(enable);
+	textLayoutModule->MathIndentLengthCO->setEnabled(enable);
+	isValid();
 }
 
 
@@ -2888,17 +2900,14 @@ void GuiDocument::applyView()
 		if (rb->isChecked())
 			bp_.use_package(it->first, BufferParams::package_off);
 	}
-	bp_.is_formula_indent = textLayoutModule->FormulaIndentCB->isChecked();
-	// if formulas are indented
-	if (bp_.is_formula_indent) {
-		// fill value if empty to avoid LaTeX errors
-		if (textLayoutModule->FormulaIndentLE->text().isEmpty())
-			textLayoutModule->FormulaIndentLE->setText("0");
-		HSpace FormulaIndentation = HSpace(
-				widgetsToLength(textLayoutModule->FormulaIndentLE,
-				textLayoutModule->FormulaIndentCO)
+	bp_.is_math_indent = textLayoutModule->MathIndentCB->isChecked();
+	// if math is indented
+	if (bp_.is_math_indent) {
+		HSpace MathIndentation = HSpace(
+				widgetsToLength(textLayoutModule->MathIndentLE,
+				textLayoutModule->MathIndentLengthCO)
 				);
-			bp_.setFormulaIndentation(FormulaIndentation);
+			bp_.setMathIndentation(MathIndentation);
 	}
 
 	// Page Layout
@@ -2984,6 +2993,27 @@ void GuiDocument::applyView()
 		default:
 			// this should never happen
 			bp_.setDefSkip(VSpace(VSpace::MEDSKIP));
+			break;
+		}
+	}
+
+	if (textLayoutModule->MathIndentCB->isChecked()) {
+		// if formulas are indented
+		switch (textLayoutModule->MathIndentCO->currentIndex()) {
+		case 0:
+			bp_.setMathIndentation(HSpace(HSpace::DEFAULT));
+			break;
+		case 1:	{
+			HSpace MathIndent = HSpace(
+				widgetsToLength(textLayoutModule->MathIndentLE,
+				textLayoutModule->MathIndentLengthCO)
+				);
+			bp_.setMathIndentation(MathIndent);
+			break;
+			}
+		default:
+			// this should never happen
+			bp_.setMathIndentation(HSpace(HSpace::DEFAULT));
 			break;
 		}
 	}
@@ -3352,14 +3382,18 @@ void GuiDocument::paramsToDialog()
 	updateModuleInfo();
 
 	// math
-	if (bp_.is_formula_indent) {
-		textLayoutModule->FormulaIndentCB->setChecked(bp_.is_formula_indent);
-		string FormulaIndentation = bp_.getFormulaIndentation().asLyXCommand();
-		if (!FormulaIndentation.empty()) {
-			lengthToWidgets(textLayoutModule->FormulaIndentLE,
-			textLayoutModule->FormulaIndentCO,
-			FormulaIndentation, default_unit);
+	if (bp_.is_math_indent) {
+		textLayoutModule->MathIndentCB->setChecked(bp_.is_math_indent);
+		string MathIndentation = bp_.getMathIndentation().asLyXCommand();
+		int MathIndent = 0;
+		if (MathIndentation != "default") {
+			lengthToWidgets(textLayoutModule->MathIndentLE,
+			textLayoutModule->MathIndentLengthCO,
+			MathIndentation, default_unit);
+			MathIndent = 1;
 		}
+		textLayoutModule->MathIndentCO->setCurrentIndex(MathIndent);
+		setMathIndent(MathIndent);
 	}
 
 	map<string, string> const & packages = BufferParams::auto_packages();

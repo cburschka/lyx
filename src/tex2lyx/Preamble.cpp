@@ -493,7 +493,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_font_tt_scale[0]        = "100";
 	h_font_tt_scale[1]        = "100";
 	//h_font_cjk
-	h_is_formulaindent        = "0";
+	h_is_mathindent           = "0";
 	h_graphics                = "default";
 	h_default_output_format   = "default";
 	h_html_be_strict          = "false";
@@ -1290,9 +1290,9 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 		os << "\\defskip " << h_defskip << "\n";
 	else
 		os << "\\paragraph_indentation " << h_paragraph_indentation << "\n";
-	os << "\\is_formula_indent " << h_is_formulaindent << "\n";
-	if (!h_formulaindentation.empty())
-		os << "\\formula_indentation " << h_formulaindentation << "\n";
+	os << "\\is_math_indent " << h_is_mathindent << "\n";
+	if (!h_mathindentation.empty())
+		os << "\\math_indentation " << h_mathindentation << "\n";
 	os << "\\quotes_style " << h_quotes_style << "\n"
 	   << "\\dynamic_quotes " << h_dynamic_quotes << "\n"
 	   << "\\papercolumns " << h_papercolumns << "\n"
@@ -1681,10 +1681,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			handle_opt(opts, known_languages, h_language);
 			delete_opt(opts, known_languages);
 
-			// formula indentation
+			// math indentation
 			if ((it = find(opts.begin(), opts.end(), "fleqn"))
 				 != opts.end()) {
-				h_is_formulaindent = "1";
+				h_is_mathindent = "1";
 				opts.erase(it);
 			}
 			// paper orientation
@@ -1845,7 +1845,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				else
 					h_defskip = translate_len(content);
 			} else if (name == "\\mathindent") {
-				h_formulaindentation = translate_len(content);
+				h_mathindentation = translate_len(content);
 			} else
 				h_preamble << "\\setlength{" << name << "}{" << content << "}";
 		}

@@ -102,15 +102,15 @@ public:
 	void setDefSkip(VSpace const & vs);
 
 	///
-	HSpace const & getFormulaIndentation() const;
+	HSpace const & getMathIndentation() const;
 	///
-	void setFormulaIndentation(HSpace const & indent);
+	void setMathIndentation(HSpace const & indent);
 
 	/// Whether formulas are indented
-	bool is_formula_indent;
+	bool is_math_indent;
 
 	/// the indentation of formulas
-	std::string formula_indentation;
+	std::string math_indentation;
 
 	/** Whether paragraphs are separated by using a indent like in
 	 *  articles or by using a little skip like in letters.

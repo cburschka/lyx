@@ -342,7 +342,7 @@ public:
 	 */
 	HSpace indentation;
 	VSpace defskip;
-	HSpace formula_indentation;
+	HSpace math_indentation;
 	PDFOptions pdfoptions;
 	LayoutFileIndex baseClass_;
 	FormatList exportableFormatList;
@@ -384,8 +384,8 @@ BufferParams::BufferParams()
 	cite_engine_type_ = ENGINE_TYPE_DEFAULT;
 	makeDocumentClass();
 	paragraph_separation = ParagraphIndentSeparation;
-	is_formula_indent = false;
-	formula_indentation = "30pt";
+	is_math_indent = false;
+	math_indentation = "default";
 	quotes_style = InsetQuotesParams::EnglishQuotes;
 	dynamic_quotes = false;
 	fontsize = "default";
@@ -629,15 +629,15 @@ PDFOptions const & BufferParams::pdfoptions() const
 }
 
 
-HSpace const & BufferParams::getFormulaIndentation() const
+HSpace const & BufferParams::getMathIndentation() const
 {
-	return pimpl_->formula_indentation;
+	return pimpl_->math_indentation;
 }
 
 
-void BufferParams::setFormulaIndentation(HSpace const & indent)
+void BufferParams::setMathIndentation(HSpace const & indent)
 {
-	pimpl_->formula_indentation = indent;
+	pimpl_->math_indentation = indent;
 }
 
 
@@ -845,12 +845,12 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		if (pimpl_->defskip.kind() == VSpace::DEFSKIP)
 			// that is invalid
 			pimpl_->defskip = VSpace(VSpace::MEDSKIP);
-	} else if (token == "\\is_formula_indent") {
-		lex >> is_formula_indent;
-	} else if (token == "\\formula_indentation") {
+	} else if (token == "\\is_math_indent") {
+		lex >> is_math_indent;
+	} else if (token == "\\math_indentation") {
 		lex.next();
-		string formula_indentation = lex.getString();
-		pimpl_->formula_indentation = HSpace(formula_indentation);
+		string math_indentation = lex.getString();
+		pimpl_->math_indentation = HSpace(math_indentation);
 	} else if (token == "\\quotes_style") {
 		string qstyle;
 		lex >> qstyle;
@@ -1347,9 +1347,9 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 		os << "\n\\paragraph_indentation " << getIndentation().asLyXCommand();
 	else
 		os << "\n\\defskip " << getDefSkip().asLyXCommand();
-	os << "\n\\is_formula_indent " << is_formula_indent;
-	if (is_formula_indent)
-		os << "\n\\formula_indentation " << getFormulaIndentation().asLyXCommand();
+	os << "\n\\is_math_indent " << is_math_indent;
+	if (is_math_indent)
+		os << "\n\\math_indentation " << getMathIndentation().asLyXCommand();
 	os << "\n\\quotes_style "
 	   << string_quotes_style[quotes_style]
 	   << "\n\\dynamic_quotes " << dynamic_quotes
@@ -1631,7 +1631,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	    && orientation == ORIENTATION_LANDSCAPE)
 		clsoptions << "landscape,";
 
-	if (is_formula_indent)
+	if (is_math_indent)
 		clsoptions << "fleqn,";
 
 	// language should be a parameter to \documentclass
@@ -1958,12 +1958,12 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		}
 	}
 
-	if (is_formula_indent) {
+	if (is_math_indent) {
 		// when formula indentation
-		// only output something when it is not the default of 30pt
-		if (getFormulaIndentation().asLyXCommand() != "30pt") {
+		// only output something when it is not the default
+		if (getMathIndentation().asLyXCommand() != "default") {
 			os << "\\setlength{\\mathindent}{"
-			   << from_utf8(getFormulaIndentation().asLatexCommand())
+			   << from_utf8(getMathIndentation().asLatexCommand())
 			   << "}\n";
 		}
 	}
