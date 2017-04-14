@@ -950,14 +950,14 @@ make_dmg() {
 	VOLUME=$(mount |grep ${DEVICE} | cut -f 3 -d ' ')
 
 	# copy in the application bundle
-	cp -Rp "${LyxAppDir}.app" "${VOLUME}/${LyxName}.app"
+	ditto --hfsCompression "${LyxAppDir}.app" "${VOLUME}/${LyxName}.app"
 
 	# copy in background image
 	mkdir -p "${VOLUME}/Pictures"
-	cp "${DmgBackground}" "${VOLUME}/Pictures/background.png"
+	ditto --hfsCompression "${DmgBackground}" "${VOLUME}/Pictures/background.png"
 	# symlink applications
 	ln -s /Applications/ "${VOLUME}"/Applications
-	test -d "${DocumentationDir}" && cp -r "${DocumentationDir}" "${VOLUME}"
+	test -d "${DocumentationDir}" && ditto --hfsCompression "${DocumentationDir}" "${VOLUME}"
 	set_bundle_display_options "${VOLUME}" ${BG_W} ${BG_H}
 	${XCODE_DEVELOPER}/Tools/SetFile -a C "${VOLUME}"
 	mv "${VOLUME}/Pictures" "${VOLUME}/.Pictures"
