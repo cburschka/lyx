@@ -943,12 +943,11 @@ make_dmg() {
 	test -d /Volumes/"${LyxBase}" && rmdir /Volumes/"${LyxBase}"
 
 	# Mount the disk image
-	hdiutil attach "${DMGNAME}.sparseimage"
+	DEVICES=$(hdiutil attach "${DMGNAME}.sparseimage" | cut -f 1)
 
 	# Obtain device information
-	DEVS=$(hdiutil attach "${DMGNAME}.sparseimage" | cut -f 1)
-	DEV=$(echo $DEVS | cut -f 1 -d ' ')
-	VOLUME=$(mount |grep ${DEV} | cut -f 3 -d ' ')
+	DEVICE=$(echo $DEVICES | cut -f 1 -d ' ')
+	VOLUME=$(mount |grep ${DEVICE} | cut -f 3 -d ' ')
 
 	# copy in the application bundle
 	cp -Rp "${LyxAppDir}.app" "${VOLUME}/${LyxName}.app"
@@ -964,7 +963,7 @@ make_dmg() {
 	mv "${VOLUME}/Pictures" "${VOLUME}/.Pictures"
 
 	# Unmount the disk image
-	hdiutil detach ${DEV}
+	hdiutil detach ${DEVICE}
 
 	# Convert the disk image to read-only
 	hdiutil convert "${DMGNAME}.sparseimage" -format UDBZ -o "${DMGNAME}.dmg"
