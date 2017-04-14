@@ -767,6 +767,7 @@ EOF
 		test -d "${condir}/${fwdir}" || (
 			echo Copy framework "${source}/lib/"$(basename "${fwdir}")
 			cp -pR "${source}/lib/"$(basename "${fwdir}") "${condir}/${fwdir}"
+			rm -f "${condir}/${fwdir}/${version}${libnm}"_debug
 			installname -id "@executable_path/../${fwdir}/${version}${libnm}" "${condir}/${fwdir}/${version}${libnm}"
 			find "${condir}/PlugIns" "${condir}/"$(dirname "${fwdir}") -name Headers -prune -o -type f -print | while read filename ; do
 				if [ "${filename}" != "${target}" ]; then
