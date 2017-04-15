@@ -1275,7 +1275,7 @@ def revert_colorbox(document):
         else:
             # we also neeed to load xcolor in the preamble but only once
             add_to_preamble(document, ["\\@ifundefined{rangeHsb}{\\usepackage{xcolor}}{}"])
-            document.body[einset + 1 : einset + 1] = put_cmd_in_ert("}")
+            document.body[einset + 2 : einset + 2] = put_cmd_in_ert("}")
             if framecolor != defaultframecolor:
                 document.body[binset:binset] = put_cmd_in_ert("\\fcolorbox{" + framecolor + "}{" + backcolor + "}{")
             else:
