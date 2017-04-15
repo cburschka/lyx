@@ -89,7 +89,7 @@ struct FileName::Private
 {
 	Private() {}
 
-	Private(string const & abs_filename) : fi(toqstr(abs_filename))
+	Private(string const & abs_filename) : fi(toqstr(handleTildeName(abs_filename)))
 	{
 		name = fromqstr(fi.absoluteFilePath());
 		fi.setCaching(fi.exists() ? true : false);
@@ -100,12 +100,19 @@ struct FileName::Private
 		fi.refresh();
 	}
 
-
 	static
 	bool isFilesystemEqual(QString const & lhs, QString const & rhs)
 	{
 		return QString::compare(lhs, rhs, os::isFilesystemCaseSensitive() ?
 			Qt::CaseSensitive : Qt::CaseInsensitive) == 0;
+	}
+
+	static
+	string const handleTildeName(string const & name)
+	{
+		return name == "~" ? Package::get_home_dir().absFileName() :
+			prefixIs(name, "~/") ? Package::get_home_dir().absFileName() + name.substr(1) :
+			name;
 	}
 
 	/// The absolute file name in UTF-8 encoding.
@@ -171,7 +178,7 @@ bool FileName::empty() const
 
 bool FileName::isAbsolute(string const & name)
 {
-	QFileInfo fi(toqstr(name));
+	QFileInfo fi(toqstr(Private::handleTildeName(name)));
 	return fi.isAbsolute();
 }
 
@@ -190,7 +197,7 @@ string FileName::realPath() const
 
 void FileName::set(string const & name)
 {
-	d->fi.setFile(toqstr(name));
+	d->fi.setFile(toqstr(Private::handleTildeName(name)));
 	d->name = fromqstr(d->fi.absoluteFilePath());
 	//LYXERR(Debug::FILES, "FileName::set(" << name << ')');
 	LATTEST(empty() || isAbsolute(d->name));
