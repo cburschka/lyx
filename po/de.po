@@ -95,14 +95,14 @@ msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2017-03-31 15:22-0400\n"
-"PO-Revision-Date: 2017-02-06 13:20+0100\n"
-"Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
+"PO-Revision-Date: 2017-04-15 03:58+0200\n"
+"Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 2.0\n"
+"X-Generator: Poedit 1.8.12\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:33
@@ -13439,7 +13439,7 @@ msgstr "Textfeld"
 
 #: lib/layouts/pdfform.module:78 lib/layouts/pdfform.module:81
 msgid "CheckBox"
-msgstr "Ankreuzfeld"
+msgstr "CheckBox"
 
 #: lib/layouts/pdfform.module:84 lib/layouts/pdfform.module:87
 msgid "ChoiceMenu"
@@ -13455,15 +13455,15 @@ msgstr "Geben Sie hier die Marke ein"
 
 #: lib/layouts/pdfform.module:96 lib/layouts/pdfform.module:99
 msgid "PushButton"
-msgstr "Knopf"
+msgstr "Taste"
 
 #: lib/layouts/pdfform.module:102 lib/layouts/pdfform.module:105
 msgid "SubmitButton"
-msgstr "Sende-Knopf"
+msgstr "Sendeknopf"
 
 #: lib/layouts/pdfform.module:108 lib/layouts/pdfform.module:111
 msgid "ResetButton"
-msgstr "Zurücksetzen-Knopf"
+msgstr "Zurücksetzknopf"
 
 #: lib/layouts/pdfform.module:118 lib/layouts/pdfform.module:121
 msgid "PDFAction"
@@ -13491,19 +13491,19 @@ msgstr "Standard-Sendeknopf-Stil"
 
 #: lib/layouts/pdfform.module:147
 msgid "Push Button Style"
-msgstr "Knopf-Stil"
+msgstr "Taste-Stil"
 
 #: lib/layouts/pdfform.module:150
 msgid "Default push button style"
-msgstr "Standard-Knopfstil:"
+msgstr "Standard-Taste-Stil:"
 
 #: lib/layouts/pdfform.module:153
 msgid "Check Box Style"
-msgstr "Ankreuzfeld-Stil"
+msgstr "Checkbox-Stil"
 
 #: lib/layouts/pdfform.module:156
 msgid "Default check box style"
-msgstr "Standard-Ankreuzfeld-Stil"
+msgstr "Standard-Checkbox-Stil"
 
 #: lib/layouts/pdfform.module:159
 msgid "Reset Button Style"
@@ -13515,35 +13515,35 @@ msgstr "Standard-Zurücksetzknopf-Stil"
 
 #: lib/layouts/pdfform.module:165
 msgid "List Box Style"
-msgstr "Listen-Auswahlbox-Stil"
+msgstr "Listen-Auswahlmenü-Stil"
 
 #: lib/layouts/pdfform.module:168
 msgid "Default list box style"
-msgstr "Standard-Listen-Auswahlbox-Stil"
+msgstr "Standard-Listen-Auswahlmenü-Stil"
 
 #: lib/layouts/pdfform.module:171
 msgid "Combo Box Style"
-msgstr "Auswahlbox-Stil"
+msgstr "Combo-Auswahlmenü-Stil"
 
 #: lib/layouts/pdfform.module:174
 msgid "Default combo box style"
-msgstr "Standard-Listen-Auswahlbox-Stil"
+msgstr "Standard-Combo-Auswahlmenü-Stil"
 
 #: lib/layouts/pdfform.module:177
 msgid "Popdown Box Style"
-msgstr "Popdownbox-Stil"
+msgstr "Popdown-Auswahlmenü-Stil"
 
 #: lib/layouts/pdfform.module:180
 msgid "Default popdown box style"
-msgstr "Standard-Popdownbox-Stil"
+msgstr "Standard-Popdown-Auswahlmenü-Stil"
 
 #: lib/layouts/pdfform.module:183
 msgid "Radio Box Style"
-msgstr "Optionsschaltflächenstil"
+msgstr "Radio-Auswahlmenü-Stil"
 
 #: lib/layouts/pdfform.module:186
 msgid "Default radio box style"
-msgstr "Standard-Optionsschaltflächenstil"
+msgstr "Standard-Radio-Auswahlmenü-Stil"
 
 #: lib/layouts/powerdot.layout:3
 msgid "Powerdot"
@@ -25075,7 +25075,7 @@ msgstr "Hellgrau"
 
 #: src/Color.cpp:213
 msgid "lime"
-msgstr "Limette"
+msgstr "Neongrün"
 
 #: src/Color.cpp:214
 msgid "magenta"
@@ -25103,7 +25103,7 @@ msgstr "Rot"
 
 #: src/Color.cpp:220
 msgid "teal"
-msgstr "Teal"
+msgstr "Blaugrün"
 
 #: src/Color.cpp:221
 msgid "violet"

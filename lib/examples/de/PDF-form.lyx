@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin /systemlyxdir/examples/
+\origin unavailable
 \textclass scrartcl
 \begin_preamble
 % used to check for needed LaTeX packages
@@ -24,13 +24,13 @@
 
   function validateTime(){
    this.delay = true;
-   if((event.value == "u") || (event.value == "unlimited")) {
-    this.getField("from").display = display.hidden;
-    this.getField("to").display = display.hidden;
+   if((event.value == "u") || (event.value == "unbefristet")) {
+    this.getField("von").display = display.hidden;
+    this.getField("an").display = display.hidden;
    } else {
-    this.getField("from").display = display.visible;
-    this.getField("to").display = display.visible;
-    this.getField("from").setFocus();
+    this.getField("von").display = display.visible;
+    this.getField("an").display = display.visible;
+    this.getField("von").setFocus();
    }
    this.delay = false;
   }
@@ -39,7 +39,7 @@
   event.rc = true;
   if (!Number(event.value))
   {
-   app.alert("Value must be a number!");
+   app.alert("Wert muss eine Nummer sein!");
    event.value = "";
   }  else {
    event.target.textColor = color.green;
@@ -67,7 +67,7 @@
 pdfform
 \end_modules
 \maintain_unincluded_children false
-\language english
+\language ngerman
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -133,7 +133,7 @@ pdfform
 \tocdepth 2
 \paragraph_separation skip
 \defskip medskip
-\quotes_language english
+\quotes_language german
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -147,11 +147,12 @@ pdfform
 \begin_body
 
 \begin_layout Begin PDF Form
+
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-action=mailto:forms@lyx.test?subject=The submitted PDF form, method=post
+action=mailto:formular@lyx.test?subject=Das gesendete PDF-Formular, method=post
 \end_layout
 
 \end_inset
@@ -160,7 +161,7 @@ action=mailto:forms@lyx.test?subject=The submitted PDF form, method=post
 \end_layout
 
 \begin_layout Title
-Description of the module PDF Form
+Beschreibung des Moduls PDF-Formular
 \end_layout
 
 \begin_layout Author
@@ -172,14 +173,15 @@ Uwe Stöhr
 status open
 
 \begin_layout Plain Layout
-To export all parts of this document to PDF the \SpecialChar LaTeX
--package 
+Um diese Datei als PDF zu exportieren, muss das \SpecialChar LaTeX
+-Paket 
 \series bold
 insdljs
 \series default
- must be installed.
- If it is not installed you can export the document anyway but the example
- in the section about dynamic form fields won't appear in the output.
+ installiert sein.
+ Wenn es nicht installiert ist, kann das Dokument zwar exportiert werden,
+ aber das Beispiel im Abschnitt über dynamische Formularfelder wird nicht
+ in der Ausgabe erscheinen.
 \end_layout
 
 \end_inset
@@ -188,20 +190,21 @@ insdljs
 \end_layout
 
 \begin_layout Standard
-By loading the module PDF
-\begin_inset space ~
+Durch das Laden des Moduls PDF-Formular können Dokumente oder Teile davon
+ zu einem PDF-Formular gemacht werden.
+ Sie können darin alle möglichen Formularelemente wie Textfelder, Knöpfe
+ usw.
+\begin_inset space \space{}
 \end_inset
 
-Form the whole document or a part of it can be made a PDF form.
- You can add all possible form elements like text fields buttons etc.
- This document describes how this is done.
+verwenden.
 \end_layout
 
 \begin_layout Section
-Preparation
+Vorbereitung
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Preparation"
+name "sec:Vorbereitung"
 
 \end_inset
 
@@ -209,14 +212,12 @@ name "sec:Preparation"
 \end_layout
 
 \begin_layout Standard
-At first load the module PDF
-\begin_inset space ~
-\end_inset
-
-Form in the document settings of your file.
- To make the whole document a form, insert the environment
+Laden Sie zuerst das Modul PDF-Formular in den Dokumenteinstellungen Ihrer
+ Datei.
+ Um aus dem kompletten Dokument in ein PDF-Formular zu machen, fügen Sie
+ die Umgebung 
 \family sans
- Begin
+Beginne
 \begin_inset space ~
 \end_inset
 
@@ -224,13 +225,12 @@ PDF
 \begin_inset space ~
 \end_inset
 
-Form
+Formular
 \family default
- from \SpecialChar LyX
-'s dropdown menu at the beginning of the document.
- If only a part of the document should be a form, add 
+ zu Beginn des Dokuments ein.Wenn nur ein Teil des Dokuments ein Formular
+ werden soll, fügen Sie 
 \family sans
-Begin
+Beginne
 \begin_inset space ~
 \end_inset
 
@@ -238,9 +238,9 @@ PDF
 \begin_inset space ~
 \end_inset
 
-Form
+Formular
 \family default
- at the position where the form should start.
+ an der Stelle ein, an der das Formular beginnen soll.
 \end_layout
 
 \begin_layout Standard
@@ -250,9 +250,9 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note:
+Achtung:
 \series default
- It is only possible to have one form in a PDF file!
+ Es ist nur ein Formular in einer PDF-Datei möglich!
 \end_layout
 
 \end_inset
@@ -261,10 +261,10 @@ Note:
 \end_layout
 
 \begin_layout Standard
-If the form data should be submitted to a server or the like, then you must
- specify the URL as parameter of the 
+Wenn die Formulardateien an einen Server oder Ähnliches gesendet werden
+ sollen, muss eine URL als Parameter der Umgebung 
 \family sans
-Begin
+Beginne
 \begin_inset space ~
 \end_inset
 
@@ -272,31 +272,23 @@ PDF
 \begin_inset space ~
 \end_inset
 
-Form
+Formular
 \family default
- environment.
- This is done by using the menu 
+ angegeben werden.
+ Dies wird über das Menü 
 \family sans
-Insert\SpecialChar menuseparator
-PDF
-\begin_inset space ~
-\end_inset
-
-Form
-\begin_inset space ~
-\end_inset
-
-Parameters
+Einfügen\SpecialChar menuseparator
+PDF-Formular-Parameter
 \family default
-.
- For example in this document the following was inserted to the parameter
- inset:
+ getan.
+ Zum Beispiel wurde in diesem Dokument das Folgende in die Parameter-Einfügung
+ geschrieben:
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-action=mailto:forms@lyx.test?subject=The submitted PDF form,
+action=mailto:formular@lyx.test?subject=Das gesendete PDF-Formular,
 \begin_inset Newline newline
 \end_inset
 
@@ -304,36 +296,36 @@ method=post
 \end_layout
 
 \begin_layout Standard
-This sends the form data as email to 
+Dies sendet die Formulardaten als Email an 
 \emph on
-forms@lyx.test
+formular@lyx.test
 \emph default
- when the user presses the submit button.
- The email subject will be 
-\begin_inset Quotes eld
+ wenn der Nutzer den den Sende-Knopf drückt.
+ Der Email-Betreff wird 
+\begin_inset Quotes gld
 \end_inset
 
-The submitted PDF form
-\begin_inset Quotes erd
+Das gesendete PDF-Formular
+\begin_inset Quotes grd
 \end_inset
 
- and the submit method is 
+ sein und die Sende-Methode ist 
 \series bold
 post
 \series default
 .
- (The other possible method would be 
+ (Die andere mögliche Methode ist 
 \series bold
 get
 \series default
-.) For more about submitting see sec.
+.) Mehr zum Senden siehe Kap.
 \begin_inset space \thinspace{}
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Submit-button"
+reference "subsec:Sendeknopf"
 
 \end_inset
 
@@ -348,39 +340,91 @@ reference "subsec:Submit-button"
 \end_layout
 
 \begin_layout Section
-Form fields
+Formularfelder
 \end_layout
 
 \begin_layout Standard
-There are 6
+Es gibt 6
 \begin_inset space ~
 \end_inset
 
-possible elements in a PDF form:
+mögliche Elemente in einem PDF-Formular:
 \end_layout
 
 \begin_layout Subsection
-Text field
+Textfeld
 \end_layout
 
 \begin_layout Standard
-A text field is added by inserting the custom inset 
+Ein Textfeld wird erstellt, indem man die benutzerdefinierte Einfügung 
 \family sans
-TextField
+Textfeld
 \family default
- using the menu 
+ mit dem Menü
 \family sans
-Insert\SpecialChar menuseparator
-Custom
+ Einfügen\SpecialChar menuseparator
+Benutzerdefinierte Einfügungen
+\family default
+ einfügt.
+ Die Beschriftung für das Textfeld, die im PDF vor dem Feld erscheint, wird
+ in die Einfügung geschrieben.
+ Hier ist ein Beispiel:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex TextField
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+name=Kunde
+\end_layout
+
+\end_inset
+
+Geben Sie hier Ihren Namen ein:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Man muss Textfeldern einen Namen geben: Setzen Sie den Cursor in die Einfügung
+ 
+\family sans
+Parameter 
+\family default
+und fügen Sie dort den Parameter 
+\series bold
+name=Kunde
+\series default
+ ein (wobei 
+\series bold
+Kunde
+\series default
+ der Feldname ist).
+\end_layout
+
+\begin_layout Standard
+Verwendet man denselben Namen für mehrere Textfelder, wird automatisch der
+ eingefügte Text dupliziert.
+ Dies ist zum Beispiel nützlich, wenn der Nutzer Daten eingeben soll, die
+ an mehreren Stellen des Formulars erscheinen sollen.
+\begin_inset Newline newline
+\end_inset
+
+Hier sind 2
 \begin_inset space ~
 \end_inset
 
-Insets
-\family default
-.
- Write inside the inset the label for the text field that will be printed
- in the PDF output before the field.
- Here is an example:
+Felder als Beispiel: Füllen Sie eins und sehen, dass das andere automatisch
+ auch gefüllt wird, sobald Sie außerhalb des Feldes klicken:
 \begin_inset Newline newline
 \end_inset
 
@@ -393,63 +437,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=customer
-\end_layout
-
-\end_inset
-
-Enter your name here:
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-You must also specify a name for text fields: Set the cursor into its 
-\family sans
-Params
-\family default
- inset.
- There insert the parameter 
-\series bold
-name=customer
-\series default
- (where 
-\series bold
-customer
-\series default
- is the field name).
-\end_layout
-
-\begin_layout Standard
-Using the same name for several text fields results in an automatic duplication
- of the inserted text.
- This is for example useful if the user should input a date that should
- appear at different places in the form.
-\begin_inset Newline newline
-\end_inset
-
-Here are 2
-\begin_inset space ~
-\end_inset
-
-fields as example: Fill one and see that the other one will also be filled
- automatically when you click outside of the field:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex TextField
-status open
-
-\begin_layout Plain Layout
-\begin_inset Argument 1
-status open
-
-\begin_layout Plain Layout
-name=identic
+name=identisch
 \end_layout
 
 \end_inset
@@ -472,7 +460,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=identic
+name=identisch
 \end_layout
 
 \end_inset
@@ -492,9 +480,9 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note:
+Achtung:
 \series default
- Special characters should be avoided in element names.
+ Sonderzeichen sollten in Elementnamen vermieden werden.
 \end_layout
 
 \end_inset
@@ -503,19 +491,19 @@ Note:
 \end_layout
 
 \begin_layout Standard
-All form fields can be customized by adding parameters.
+Alle Formularfelder können durch die Angabe von Parametern angepasst werden.
 \end_layout
 
 \begin_layout Standard
-Here is a customized multiline text field with a width of 60
+Hier ist ein angepasstes, mehrzeiliges Textfeld mit einer Breite von 60
 \begin_inset space \thinspace{}
 \end_inset
 
-% of the text width, 3
+% der Textbreite, 3
 \begin_inset space \thinspace{}
 \end_inset
 
-cm height and a proposed content:
+cm Höhe und einem vorgeschlagenen Inhalt:
 \begin_inset VSpace defskip
 \end_inset
 
@@ -532,14 +520,14 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=customer2, multiline, width=0.6
+name=Kunde2, multiline, width=0.6
 \backslash
-textwidth, height=3cm, value={Testman}
+textwidth, height=3cm, value={Testmann}
 \end_layout
 
 \end_inset
 
-Enter your name here:
+Geben Sie hier Ihren Namen ein:
 \end_layout
 
 \end_inset
@@ -554,21 +542,22 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note:
+Achtung:
 \series default
- It is highly recommended to use a uniform layout of all fields in a form.
- See sec.
+ Es wird dringend empfohlen, ein einheitliches Aussehen aller Felder in
+ einem Formular zu verwenden.
+ Siehe Kap.
 \begin_inset space \thinspace{}
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Form-element-customization"
+reference "sec:Anpassung-der-Formularelemente"
 
 \end_inset
 
- how this is done.
+ wie dies erreicht werden kann.
 \end_layout
 
 \end_inset
@@ -577,17 +566,18 @@ reference "sec:Form-element-customization"
 \end_layout
 
 \begin_layout Subsection
-Check box
+Checkbox
 \end_layout
 
 \begin_layout Standard
-A check box is added by inserting the custom inset 
+Eine Checkbox wird eingefügt, indem man die benutzerdefinierte Einfügung
+ 
 \family sans
 CheckBox
 \family default
-.
- Write inside the inset the label for the box.
- Here is an example:
+ einfügt.
+ Die Beschriftung für den Knopf wird in die Einfügung geschrieben.
+ Hier ist ein Beispiel:
 \begin_inset Newline newline
 \end_inset
 
@@ -600,12 +590,12 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=age
+name=Alter
 \end_layout
 
 \end_inset
 
-Are you older than 18 years?
+Sind Sie älter als 18 Jahre?
 \end_layout
 
 \end_inset
@@ -614,75 +604,74 @@ Are you older than 18 years?
 \end_layout
 
 \begin_layout Standard
-You must specify also for check boxes a name.
- Insert e.
+Man muss auch für Checkboxen einen Namen angeben.
+ Fügen Sie z.
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
-\begin_inset space \space{}
-\end_inset
-
-the parameter 
+B.
+ den Parameter 
 \series bold
-name=age
+name=Alter
 \series default
- (where 
+ (wobei 
 \series bold
-age
+Alter
 \series default
- is the field name) into the 
+ der Name ist) in die Einfügung 
 \family sans
-Params
+Parameter
 \family default
- inset.
+ ein.
 \end_layout
 
 \begin_layout Subsection
-Choice menu
+Auswahlmenü
 \end_layout
 
 \begin_layout Standard
-A choice menu is added by inserting the custom inset 
+Ein Auswahlmenü wird erstellt, indem man die benutzerdefinierte Einfügung
+ 
 \family sans
-ChoiceMenu
+Auswahlmenü
 \family default
-.
- A label for the inset is added by using the menu 
+ einfügt.
+ Eine Beschriftung für das Auswahlmenü wird über das Menü 
 \family sans
-Insert\SpecialChar menuseparator
-Label
+Einfügen\SpecialChar menuseparator
+Marke
 \family default
-.
- Insert the label text into this inset.
+ eingefügt.
+ Schreiben Sie die Beschriftung in diese Einfügung.
 \begin_inset Newline newline
 \end_inset
 
-The different choices are inserted to the inset as comma-separated list.
- There are 3
+Die verschiedenen Auswahlen werden in die Einfügung als Komma-getrennte
+ Liste eingegeben.
+ Es gibt 3
 \begin_inset space ~
 \end_inset
 
-choice menu types:
+Auswahlmenü-Typen:
 \end_layout
 
 \begin_layout Description
-Radio Only one choice can be selected
+Radio Nur eine Auswahl möglich
 \end_layout
 
 \begin_layout Description
-Combo The choices are listed in a combo box (dropdown list) but the user
- is allowed to input something that is not in the predefined list.
+Combo Die Auswahlen werden in einer Combobox gelistet aber der Nutzer kann
+ etwas eingeben, das nicht in der voreingestellten Auswahlliste ist.
 \end_layout
 
 \begin_layout Description
-Popdown All choices are listed below each other.
- If the field is not high enough a scroll bar is automatically added to
- the field.
+Popdown All Auswahlen sind übereinander gelistet.
+ Wenn das Feld nicht groß genug ist, wir automatisch eine Bildlaufleiste
+ zum Feld hinzugefügt..
 \end_layout
 
 \begin_layout Standard
-To determine the choice menu type one uses the parameter 
+Um den Auswahlmenü-Typ festzulegen, verwendet man den Parameter 
 \series bold
 radio
 \series default
@@ -690,7 +679,7 @@ radio
 \series bold
 combo
 \series default
- or 
+ oder 
 \series bold
 popdown
 \series default
@@ -698,7 +687,7 @@ popdown
 \end_layout
 
 \begin_layout Standard
-Here is an example for the radio type:
+Hier ist ein Beispiel für den Typ Radio:
 \begin_inset VSpace defskip
 \end_inset
 
@@ -720,12 +709,12 @@ radio, name=radio
 
 \end_inset
 
-male=m, female=f
+männlich=m, weiblich=w
 \begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
-Sex:
+Geschlecht:
 \end_layout
 
 \end_inset
@@ -739,7 +728,7 @@ Sex:
 \end_layout
 
 \begin_layout Standard
-Here is an example for the combo type:
+Hier ist ein Beispiel für den Typ Combo:
 \begin_inset VSpace defskip
 \end_inset
 
@@ -761,12 +750,12 @@ combo, name=combo
 
 \end_inset
 
-Albania=Al, Armenia=Ar, Azerbaidschan=Az
+Albanien=Al, Armenien=Ar, Aserbaidschan=As
 \begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
-Country:
+Land:
 \end_layout
 
 \end_inset
@@ -780,7 +769,7 @@ Country:
 \end_layout
 
 \begin_layout Standard
-Here is an example for the popdown type:
+Hier ist ein Beispiel für den Typ Popdown:
 \begin_inset VSpace defskip
 \end_inset
 
@@ -797,17 +786,17 @@ status open
 status open
 
 \begin_layout Plain Layout
-popdown, name=country
+popdown, name=Land
 \end_layout
 
 \end_inset
 
-Albania=Al, Armenia=Ar, Azerbaidschan=Az
+Albanien=Al, Armenien=Ar, Aserbaidschan=As
 \begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
-Country:
+Land:
 \end_layout
 
 \end_inset
@@ -821,74 +810,81 @@ Country:
 \end_layout
 
 \begin_layout Standard
-You must also specify a name for choice menus.
- Insert for example the parameter 
+Man muss auch für Auswahlmenü einen Namen angeben.
+ Fügen Sie z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ den Parameter 
 \series bold
-name=country
+name=Land
 \series default
- (where 
+ (wobei 
 \series bold
-country
+Land
 \series default
- is the name) into the 
+ der Name ist) in die Einfügung 
 \family sans
-Params
+Parameter
 \family default
- inset.
+ ein.
 \end_layout
 
 \begin_layout Standard
-It is recommended to add a short name for every choice to be able to access
- them and to know which one was chosen by the user.
- This is done by adding 
+Es wird empfohlen für jede Auswahl einen kurzen Namen zu vergeben, um auf
+ sie zugreifen zu können und um zu wissen, welche vom Nutzer ausgewählt
+ wurde.
+ Dazu fügt man 
 \series bold
-=name
+=Name
 \series default
- behind each choice (where 
+ hinter jede Auswahl ein (wobei 
 \series bold
-name
+Name
 \series default
- is the choice name).
- For example the radio type example contains this choice list:
+ der Auswahlname ist).
+ Der Typ Radio enthält zum Beispiel diese Auswahlliste:
 \series bold
- male=m, female=f
+ männlich=m, weiblich=w
 \series default
 .
- If the user chose 
-\begin_inset Quotes eld
+ Wenn der Nutzer 
+\begin_inset Quotes gld
 \end_inset
 
-male
-\begin_inset Quotes erd
+männlich
+\begin_inset Quotes grd
 \end_inset
 
- you know that he chose the choice 
-\begin_inset Quotes eld
+ gewählt hat, wissen Sie, dass er die Auswahl 
+\begin_inset Quotes gld
 \end_inset
 
 m
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
-.
- With the name you can also preset/propose e.g.
-\begin_inset space \space{}
+ gewählt hat.
+ Mit dem Namen können Sie auch eine Vorauswahl treffen; z.
+\begin_inset space \thinspace{}
 \end_inset
 
-the choice 
-\begin_inset Quotes eld
+B.
+ 
+\begin_inset Quotes gld
 \end_inset
 
-male
-\begin_inset Quotes erd
+männlich
+\begin_inset Quotes grd
 \end_inset
 
- by adding the parameter 
+ durch den Parameter 
 \series bold
 default=m
 \series default
 .
- Here is an example:
+ Hier ist ein Beispiel:
 \end_layout
 
 \begin_layout Standard
@@ -900,17 +896,17 @@ status open
 status open
 
 \begin_layout Plain Layout
-radio, name=sex, default=m
+radio, name=Geschlecht, default=m
 \end_layout
 
 \end_inset
 
-male=m, female=f
+männlich=m, weiblich=w
 \begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
-Sex:
+Geschlecht:
 \end_layout
 
 \end_inset
@@ -924,17 +920,17 @@ Sex:
 \end_layout
 
 \begin_layout Subsection
-Push button
+Taste
 \end_layout
 
 \begin_layout Standard
-A push button is added by inserting the custom inset 
+Ein Taste wird hinzugefügt, indem die benutzerdefinierte Einfügung 
 \family sans
-PushButton
+Taste
 \family default
-.
- Write inside the inset the label for the button.
- Here is an example:
+ eingefügt wird.
+ Die Beschriftung für die Taste wird in die Einfügung geschrieben.
+ Hier ist ein Beispiel:
 \end_layout
 
 \begin_layout Standard
@@ -951,7 +947,7 @@ status open
 
 \end_inset
 
-Don't click on this button or your fridge will be destroyed!!!
+Klicken Sie nicht auf diese Taste oder Ihr Kühlschrank wird zerstört!!!
 \end_layout
 
 \end_inset
@@ -960,14 +956,14 @@ Don't click on this button or your fridge will be destroyed!!!
 \end_layout
 
 \begin_layout Standard
-The action that is triggered by pressing the button is specified by JavaScript
- code.
- To do this, add the parameter 
+Die Aktion, die ausgelöst wird, wenn die Taste gedrückt wird, wird mit JavaScrip
+t-Code festgelegt.
+ Um das zu tun, fügen Sie den Parameter 
 \series bold
 onclick={}
 \series default
- and insert the JavaScript code between the braces.
- For info about JavaScript, see its documentation, 
+ ein und geben den JavaScript-Code zwischen die geschweiften Klammern ein.
+ Für Informationen zu JavaScript, siehe dessen Dokumentation, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "JavaScript"
@@ -975,7 +971,7 @@ key "JavaScript"
 \end_inset
 
 .
- In the following example this JavaScript code was used:
+ Im folgenden Beispiel wurde dieser JavaScript-Code verwendet:
 \begin_inset Newline newline
 \end_inset
 
@@ -992,8 +988,8 @@ status collapsed
 
 \end_inset
 
-What the hell? Now you destroyed your fridge.
- Congratulations.
+Was zur Hölle? Nun haben Sie Ihren Kühlschrank zerstört.
+ Glückwunsch.
 \begin_inset ERT
 status collapsed
 
@@ -1027,8 +1023,8 @@ status collapsed
 
 \end_inset
 
-What the hell? Now you destroyed your fridge.
- Congratulations.
+Was zur Hölle? Nun haben Sie Ihren Kühlschrank zerstört.
+ Glückwunsch.
 \begin_inset ERT
 status collapsed
 
@@ -1044,7 +1040,7 @@ status collapsed
 
 \end_inset
 
-Don't click on this button or your fridge will be destroyed!!!
+Klicken Sie nicht auf diese Taste oder Ihr Kühlschrank wird zerstört!!!
 \end_layout
 
 \end_inset
@@ -1059,10 +1055,11 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note:
+Achtung:
 \series default
- All quote characters in form parameters must be inserted as \SpecialChar TeX
- code!
+ Alle Anführungszeichen in Formularparametern müssen als \SpecialChar TeX
+-Code eingefügt
+ werden!
 \end_layout
 
 \end_inset
@@ -1071,13 +1068,13 @@ Note:
 \end_layout
 
 \begin_layout Standard
-A common usage for push buttons is to open a weblink.
- Such a button is created by inserting a hyperlink into the 
+Eine typische Anwendung für Tasten ist, einen Weblink zu öffnen.
+ Solch eine Taste wird erstellt, indem man einen Hyperlink in die 
 \family sans
-PushButton
+Taste
 \family default
- inset.
- Here is an example:
+ Einfügung einfügt.
+ Hier ist ein Beispiel:
 \end_layout
 
 \begin_layout Standard
@@ -1097,7 +1094,7 @@ status open
 
 \begin_inset CommandInset href
 LatexCommand href
-name "Information how to fill out this form"
+name "Informationen wie dieses Formular ausgefüllt wird"
 target "http://wiki.lyx.org"
 
 \end_inset
@@ -1111,16 +1108,12 @@ target "http://wiki.lyx.org"
 \end_layout
 
 \begin_layout Standard
-To get rid of the special frame for weblinks add this to the additional
- options in the document settings under 
+Um den speziellen Rahmen für Weblinks zu entfernen, fügen Sie dies zu den
+ zusätzlichen Optionen in den Dokumenteinstellungen unter 
 \family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-properties
+PDF-Eigenschaften
 \family default
-:
+ ein:
 \end_layout
 
 \begin_layout Standard
@@ -1130,15 +1123,15 @@ urlbordercolor={1 0 0}
 \end_layout
 
 \begin_layout Standard
-if your push button border color is red (the default), otherwise use the
- same color definition as for your push button border color.
+wenn Ihr Tastenrand rot ist (Voreinstellung), ansonsten verwenden Sie dieselbe
+ Farbdefinition wie für Ihren Tastenrand.
 \end_layout
 
 \begin_layout Subsection
-Submit button
+Sendeknopf
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:Submit-button"
+name "subsec:Sendeknopf"
 
 \end_inset
 
@@ -1146,14 +1139,14 @@ name "subsec:Submit-button"
 \end_layout
 
 \begin_layout Standard
-A submit button is used to submit the form data to a server.
- It is added by inserting the custom inset 
+Ein Sendeknopf wird verwendet, um die Formulardaten an einen Server zu schicken.
+ Er wird eingefügt, indem man die benutzerdefinierte Einfügung 
 \family sans
-SubmitButton
+Sendeknopf
 \family default
-.
- The label for the button is written into the inset.
- Here is an example:
+ einfügt.
+ Der Text für den Knopf wird in die Einfügung geschrieben.
+ Hier ist ein Beispiel:
 \end_layout
 
 \begin_layout Standard
@@ -1165,12 +1158,12 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=submit1
+name=senden1
 \end_layout
 
 \end_inset
 
-Send your data via email
+Ihre Daten als Email senden
 \end_layout
 
 \end_inset
@@ -1179,11 +1172,11 @@ Send your data via email
 \end_layout
 
 \begin_layout Standard
-The submit button creates a forms data format (FDF) file (file extension
- *.fdf) which is then submitted.
- The FDF file contains only the form data.
- They can only be applied to a PDF form if all elements in the form have
- a name.
+Der Sendeknopf erzeugt eine Formulardaten-Datei (FDF) (Dateinamenserweiterung
+ *.fdf), die dann gesendet wird.
+ Die FDF-Datei enthält nur die Formulardaten.
+ Sie können nur in ein Formular gegeben werden, wenn alle Formularelemente
+ einen Namen haben.
 \end_layout
 
 \begin_layout Standard
@@ -1193,35 +1186,27 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note:
+Achtung:
 \series default
- You can only use a submit button if you specified the submit method and
- a target in the inset 
+ Sie können einen Sendeknopf nur verwenden, wenn Sie eine Sende-Methode
+ und ein Ziel in der Einfügung 
 \family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-Form
-\begin_inset space ~
-\end_inset
-
-Parameters
+PDF-Formular-Parameter
 \family default
-! See sec.
+ angegeben haben! Siehe Kap.
 \begin_inset space \thinspace{}
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Preparation"
+reference "sec:Vorbereitung"
 
 \end_inset
 
- for the description.
- If there are no specifications you will get \SpecialChar LaTeX
- errors!
+ für die Beschreibung.
+ Gibt es keine Angaben, werden Sie \SpecialChar LaTeX
+-Fehler bekommen!
 \end_layout
 
 \end_inset
@@ -1230,18 +1215,19 @@ reference "sec:Preparation"
 \end_layout
 
 \begin_layout Subsection
-Reset button
+Zurücksetzknopf
 \end_layout
 
 \begin_layout Standard
-A reset button is used to reset all form elements to the initial state.
- It is added by inserting the custom inset 
+Ein Zurücksetzknopf wird verwendet, um alle Formularelemente auf den initialen
+ Status zurückzusetzen.
+ Er wird eingefügt, indem man die benutzerdefinierte Einfügung 
 \family sans
-ResetButton
+Zurücksetzknopf
 \family default
-.
- The label for the button is written into the inset.
- Here is an example:
+ einfügt.
+ Der Text für den Knopf wird in die Einfügung geschrieben.
+ Hier ist ein Beispiel:
 \end_layout
 
 \begin_layout Standard
@@ -1253,12 +1239,12 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=reset1
+name=zuruecksetzen1
 \end_layout
 
 \end_inset
 
-Reset the form
+Formular zurücksetzen
 \end_layout
 
 \end_inset
@@ -1267,10 +1253,10 @@ Reset the form
 \end_layout
 
 \begin_layout Section
-Form element customization
+Anpassung der Formularelemente
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Form-element-customization"
+name "sec:Anpassung-der-Formularelemente"
 
 \end_inset
 
@@ -1278,116 +1264,44 @@ name "sec:Form-element-customization"
 \end_layout
 
 \begin_layout Standard
-Since all form elements should look uniform, one can determine their layout
- using the following styles:
+Da alle Formularelemente einheitlich aussehen sollten, dann man ihren Stil
+ mit den folgenden Stilen festlegen:
 \end_layout
 
 \begin_layout Description
-Text
-\begin_inset space ~
-\end_inset
-
-Field
-\begin_inset space ~
-\end_inset
-
-Style
+Textfeld-Stil
 \end_layout
 
 \begin_layout Description
-Check
-\begin_inset space ~
-\end_inset
-
-Box
-\begin_inset space ~
-\end_inset
-
-Style
+Checkbox-Stil
 \end_layout
 
 \begin_layout Description
-List
-\begin_inset space ~
-\end_inset
-
-Box
-\begin_inset space ~
-\end_inset
-
-Style affects all choice menu types
+Listen-Auswahlmenü-Stil verändert alle Auswahlmenüs
 \end_layout
 
 \begin_layout Description
-Combo
-\begin_inset space ~
-\end_inset
-
-Box
-\begin_inset space ~
-\end_inset
-
-Style affects only the combo box style
+Combo-Auswahlmenü-Stil verändert nur den Typ Combo
 \end_layout
 
 \begin_layout Description
-Popdown
-\begin_inset space ~
-\end_inset
-
-Box
-\begin_inset space ~
-\end_inset
-
-Style affects only the popdown box style
+Popdown-Auswahlmenü-Stil verändert nur den Typ Popdown
 \end_layout
 
 \begin_layout Description
-Radio
-\begin_inset space ~
-\end_inset
-
-Box
-\begin_inset space ~
-\end_inset
-
-Style affects only the radio box style
+Radio-Auswahlmenü-Stil verändert nur den Typ Radio
 \end_layout
 
 \begin_layout Description
-Push
-\begin_inset space ~
-\end_inset
-
-Button
-\begin_inset space ~
-\end_inset
-
-Style
+Taste-Stil
 \end_layout
 
 \begin_layout Description
-Submit
-\begin_inset space ~
-\end_inset
-
-Button
-\begin_inset space ~
-\end_inset
-
-Style
+Sendeknopf-Stil
 \end_layout
 
 \begin_layout Description
-Reset
-\begin_inset space ~
-\end_inset
-
-Button
-\begin_inset space ~
-\end_inset
-
-Style
+Zurücksetzknopf-Stil
 \end_layout
 
 \begin_layout Text Field Style
@@ -1395,8 +1309,8 @@ Style
 \end_layout
 
 \begin_layout Standard
-The content of the styles is a comma-separated list of parameters.
- The possible parameters are listed in sec.
+Der Inhalt der Stile ist eine Komma-getrennte Liste von Parametern.
+ Die möglichen Parameter sind in Kap.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1408,12 +1322,12 @@ Forms optional parameters
 \begin_inset Quotes erd
 \end_inset
 
- of the documentation of the \SpecialChar LaTeX
- package 
+ der Dokumentation des \SpecialChar LaTeX
+-Pakets 
 \series bold
 hyperref
 \series default
-, 
+ aufgelistet, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hyperref"
@@ -1421,65 +1335,74 @@ key "hyperref"
 \end_inset
 
 .
- It is important that the parameter 
+ Es ist wichtig, dass der Parameter 
 \emph on
 print
 \emph default
- is always part of the definition.
- Otherwise the fields will not appear in the PDF.
- The defined style is applied to all elements following the definition.
+ immer Teil der Definition ist.
+ Ansonsten werden die Elemente nicht im PDF erscheinen.
+ Der definierte Stil wird für alle Elemente angewendet, die der Definition
+ folgen.
 \end_layout
 
 \begin_layout Subsubsection*
-Here are some examples:
+Hier sind einige Beispiele:
 \end_layout
 
 \begin_layout Text Field Style
+
 print, bordercolor=red, borderstyle=U, backgroundcolor=lightgray, color=lime,
  maxlen=10, align=2, charsize=16pt
 \end_layout
 
 \begin_layout Check Box Style
+
 print, borderstyle=S, checkboxsymbol=
 \backslash
 ding{55}
 \end_layout
 
 \begin_layout Combo Box Style
+
 print, bordercolor={0.33 0.66 0.33}, borderstyle=D
 \end_layout
 
 \begin_layout Popdown Box Style
+
 print, menulength=2
 \end_layout
 
 \begin_layout Radio Box Style
+
 print, borderstyle=I, radiosymbol=3
 \end_layout
 
 \begin_layout Push Button Style
+
 print, borderstyle=B, bordercolor=lime
 \end_layout
 
 \begin_layout Submit Button Style
+
 print, borderwidth=0, bordercolor=white
 \end_layout
 
 \begin_layout Reset Button Style
+
 print, bordercolor=lime
 \end_layout
 
 \begin_layout Itemize
-Text field with gray background, lime text color, a red border only below
- the field, right alignment, 16
+Textfeld mit grauem Hintergrund, neongrüne Textfarbe, einen roten Rand nur
+ unter den Feld, rechts ausgerichtet, 16
 \begin_inset space \thinspace{}
 \end_inset
 
-pt font size and a limitation for maximal 10
+pt Schriftgröße und ein Limit auf maximal 10
 \begin_inset space ~
 \end_inset
 
-characters to insert:
+Zeichen für die Eingabe:
 \begin_inset VSpace defskip
 \end_inset
 
@@ -1501,7 +1424,7 @@ status open
 
 \end_inset
 
-Enter your name here:
+Geben Sie hier Ihren Namen ein:
 \end_layout
 
 \end_inset
@@ -1516,24 +1439,24 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note:
+Achtung:
 \series default
- To see in 
+ Um in 
 \emph on
 Adobe Reader
 \emph default
- and 
+ und 
 \emph on
 Acrobat
 \emph default
- custom background colors you must disable in these programs the highlighting
- of form fields.
+ eigene Hintergrundfarben zu sehen, muss in diesen Programmen das farbige
+ Hervorheben von Formularfeldern ausgeschaltet werden.
  (Option 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
-Show border hover color for fields
-\begin_inset Quotes erd
+Randfarbe für Felder bei Mauskontakt anzeigen
+\begin_inset Quotes grd
 \end_inset
 
 )
@@ -1545,35 +1468,36 @@ Show border hover color for fields
 \end_layout
 
 \begin_layout Standard
+
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
-The option 
+Die Option 
 \series bold
 borderstyle
 \series default
- can be 
+ kann 
 \series bold
 U
 \series default
- (underlined), 
+ (unterstrichen), 
 \series bold
 S
 \series default
- (solid), 
+ (durchgezogen), 
 \series bold
 D
 \series default
- (dashed), 
+ (gestrichelt), 
 \series bold
 B
 \series default
- (bevel) or 
+ (geschrägt) oder 
 \series bold
 I
 \series default
- (inverted bevel).
+ (umgekehrt geschrägt) sein.
 \end_layout
 
 \end_inset
@@ -1582,7 +1506,7 @@ I
 \end_layout
 
 \begin_layout Itemize
-Check box with normal border and symbol 
+Checkbox mit normalem Rand und Symbol 
 \backslash
 ding{55}:
 \begin_inset VSpace defskip
@@ -1606,7 +1530,7 @@ status open
 
 \end_inset
 
-Are you older than 18 years?
+Sind Sie älter als 18 Jahre?
 \end_layout
 
 \end_inset
@@ -1615,7 +1539,7 @@ Are you older than 18 years?
 \end_layout
 
 \begin_layout Standard
-The symbol is either specified as number or with the command
+Das Symbol wird entweder als Nummer angegeben oder mit dem Befehl
 \begin_inset Newline newline
 \end_inset
 
@@ -1623,33 +1547,33 @@ The symbol is either specified as number or with the command
 \series bold
 
 \backslash
-ding{number}
+ding{Nummer}
 \series default
 
 \begin_inset Newline newline
 \end_inset
 
-where 
+wobei 
 \series bold
-number
+Nummer
 \series default
- is one of the possible numbers listed in Table
+ eine der möglichen Nummern ist, die in Tabelle
 \begin_inset space ~
 \end_inset
 
-2 of 
+2 von 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "pifont"
 
 \end_inset
 
-.
+ aufgelistet sind.
 \end_layout
 
 \begin_layout Itemize
-Combo choice menu with dashed, colored border where the last entry is preselecte
-d:
+Combo-Auswahlmenü mit gestricheltem, farbigem Rand, bei dem der letzte Eintrag
+ vorausgewählt ist:
 \begin_inset VSpace defskip
 \end_inset
 
@@ -1666,17 +1590,17 @@ status open
 status open
 
 \begin_layout Plain Layout
-combo, name=combo2, default=Az
+combo, name=combo2, default=As
 \end_layout
 
 \end_inset
 
-Albania=Al, Armenia=Ar, Azerbaidschan=Az
+Albanien=Al, Armenien=Ar, Aserbaidschan=As
 \begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
-Country:
+Land:
 \end_layout
 
 \end_inset
@@ -1690,7 +1614,7 @@ Country:
 \end_layout
 
 \begin_layout Itemize
-Popdown choice menu where the second entry is preselected:
+Popdown-Auswahlmenü bei dem der zweite Eintrag vorausgewählt ist:
 \begin_inset VSpace defskip
 \end_inset
 
@@ -1712,12 +1636,12 @@ popdown, name=country2, default=Ar
 
 \end_inset
 
-Albania=Al, Armenia=Ar, Azerbaidschan=Az
+Albanien=Al, Armenien=Ar, Aserbaidschan=As
 \begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
-Country:
+Land:
 \end_layout
 
 \end_inset
@@ -1741,21 +1665,21 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note
+Achtung:
 \series default
- that the options 
+ Die Optionen 
 \series bold
 borderstyle B
 \series default
- and 
+ und 
 \series bold
 I
 \series default
- and 
+ und 
 \series bold
 color
 \series default
- have no effect for popdown choice menus.
+ haben keinen Effekt für Popdown-Auswahlmenüs.
 \end_layout
 
 \end_inset
@@ -1764,11 +1688,11 @@ color
 \end_layout
 
 \begin_layout Itemize
-Radio choice menu with inverted bevel border and symbol number
+Radio-Auswahlmenü mit invertiert geschrägtem Rand und Symbol Nummer
 \begin_inset space ~
 \end_inset
 
-3 as checkmark:
+3 als Häkchen:
 \begin_inset VSpace defskip
 \end_inset
 
@@ -1790,12 +1714,12 @@ radio, name=radio2
 
 \end_inset
 
-male=m, female=f
+männlich=m, weiblich=w
 \begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
-Sex:
+Geschlecht:
 \end_layout
 
 \end_inset
@@ -1809,7 +1733,7 @@ Sex:
 \end_layout
 
 \begin_layout Itemize
-Push button with a bevel border and colored text:
+Taste mit geschrägtem Rand und farbigem Text:
 \begin_inset VSpace defskip
 \end_inset
 
@@ -1837,7 +1761,7 @@ status collapsed
 
 \end_inset
 
-Why do you click this?
+Warum Klicken Sie hier?
 \begin_inset ERT
 status collapsed
 
@@ -1875,7 +1799,7 @@ status open
 \begin_layout Plain Layout
 
 \color red
-Don't click on this button!!!
+Nicht auf diese Taste klicken!!!
 \end_layout
 
 \end_inset
@@ -1899,25 +1823,25 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note
+Achtung:
 \series default
-: The options 
+ Die Optionen 
 \series bold
 backgroundcolor
 \series default
-, 
+,
 \series bold
-color
+ color
 \series default
 , 
 \series bold
 height 
 \series default
-and 
+und 
 \series bold
 width
 \series default
- have no effect for push, submit and reset buttons.
+ haben keinen Effekt für Tasten, Sende- und Zurücksetzknöpfe.
 \end_layout
 
 \end_inset
@@ -1926,11 +1850,12 @@ width
 \end_layout
 
 \begin_layout Standard
-As workaround use a colored box and/or color the box text.
+Stattdessen kann man einen farbige Box und/oder farbigen Text in einer Box
+ verwenden.
 \end_layout
 
 \begin_layout Itemize
-Submit button without border, with cyan background and increased height:
+Sendeknopf ohne Rahmen, mit cyanem Hintergrund und vergrößerter Höhe:
 \begin_inset VSpace defskip
 \end_inset
 
@@ -1947,7 +1872,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=submit2
+name=senden2
 \end_layout
 
 \end_inset
@@ -1972,7 +1897,7 @@ backgroundcolor "cyan"
 status open
 
 \begin_layout Plain Layout
-Send your data via mail
+Ihre Daten als Email senden
 \end_layout
 
 \end_inset
@@ -1990,7 +1915,7 @@ Send your data via mail
 \end_layout
 
 \begin_layout Itemize
-Reset button with a width of 7
+Zurücksetzknopf mit einer Breite von 7
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -2011,7 +1936,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=reset2
+name=zuruecksetzen2
 \end_layout
 
 \end_inset
@@ -2036,7 +1961,7 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-Reset the form
+Formular zurücksetzen
 \end_layout
 
 \end_inset
@@ -2044,55 +1969,46 @@ Reset the form
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
 \end_inset
 
 
 \end_layout
 
 \begin_layout Section
-PDF viewer action buttons
+PDF-Betrachter Aktionsknöpfe
 \end_layout
 
 \begin_layout Standard
-One often needs basic actions to be done by the PDF viewer program.
- For example to print the form.
- Such PDF program-specific actions can be triggered by adding inserting
- the custom inset 
+Man benötigt oft, dass das PDF-Betrachtungsprogramm grundlegende Funktionen
+ ausführt.
+ Zum Beispiel, das Drucken des Formulars.
+ Solche PDF-Programm-spezifischen Funktionen können ausgelöst werden, indem
+ man die benutzerdefinierte Einfügung 
 \family sans
-PDFAction
+PDF-Aktion
 \family default
-.
- The PDF viewers 
+ einfügt.
+ Die PDF-Betrachter 
 \emph on
 Acrobat
 \emph default
- and 
+ und 
 \emph on
 Adobe Reader
 \emph default
- can handle all possible actions while other PDF viewers might only support
- some of them.
- However, all PDF viewers support the basic things like printing, save
-\begin_inset space ~
-\end_inset
-
-as, view in fullscreen etc..
+ können alle möglichen Aktionen ausführen, während andere PDF-Betrachter
+ möglicherweise nur einige unterstützen.
+ Alle PDF-Betrachter unterstützen aber die grundlegenden Dinge wie Drucken,
+ Speichern, als Vollbild anschauen usw..
 \end_layout
 
 \begin_layout Standard
-To specify the action insert its name to the 
+Um eine Aktion festzulegen, gibt man dessen Namen in die Einfügung 
 \family sans
-Action
+Aktion
 \family default
- inset.
- A list with possible action names can be found in sec.
+ ein.
+ Eine Liste mit allen möglichen Aktionsnamen ist in Kap.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -2104,12 +2020,12 @@ Acrobat-specific behavior
 \begin_inset Quotes erd
 \end_inset
 
- of the documentation of the \SpecialChar LaTeX
- package 
+ der Dokumentation des \SpecialChar LaTeX
+-Pakets 
 \series bold
 hyperref
 \series default
-, 
+ zu finden, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hyperref"
@@ -2120,11 +2036,11 @@ key "hyperref"
 \end_layout
 
 \begin_layout Standard
-Here are some examples:
+Hier sind einige Beispiele:
 \end_layout
 
 \begin_layout Description
-Printing: 
+Drucken: 
 \begin_inset Flex PDFAction
 status open
 
@@ -2138,7 +2054,7 @@ Print
 
 \end_inset
 
-Print the document
+Formular drucken
 \end_layout
 
 \end_inset
@@ -2147,11 +2063,11 @@ Print the document
 \end_layout
 
 \begin_layout Description
-Save
+Speichern
 \begin_inset space ~
 \end_inset
 
-as: 
+unter: 
 \begin_inset Flex PDFAction
 status open
 
@@ -2165,7 +2081,7 @@ SaveAs
 
 \end_inset
 
-Save document as
+Formular speichern unter
 \end_layout
 
 \end_inset
@@ -2174,15 +2090,15 @@ Save document as
 \end_layout
 
 \begin_layout Description
-View
+Als
 \begin_inset space ~
 \end_inset
 
-in
+Vollbild
 \begin_inset space ~
 \end_inset
 
-fullscreen: 
+anschauen: 
 \begin_inset Flex PDFAction
 status open
 
@@ -2196,7 +2112,7 @@ FullScreen
 
 \end_inset
 
-View the form in fullscreen
+Formular als Vollbild anschauen
 \end_layout
 
 \end_inset
@@ -2205,10 +2121,10 @@ View the form in fullscreen
 \end_layout
 
 \begin_layout Subsection
-Action button customization
+Anpassung der Aktionsknöpfe
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:Action-button-customization"
+name "subsec:Anpassung-der-Aktionsknöpfe"
 
 \end_inset
 
@@ -2216,23 +2132,22 @@ name "subsec:Action-button-customization"
 \end_layout
 
 \begin_layout Standard
-Customizing the action buttons requires the usage of boxes because things
- like the width, height and border separation cannot be specified as button
- parameters.
+Die Anpassung der Aktionsknöpfe benötigt die Verwendung von Boxen, denn
+ Dinge wie die Breite, Höhe, Abstand zum Rand können nicht in den Knopf-Paramete
+rn festgelegt werden.
 \end_layout
 
 \begin_layout Standard
-The easiest way to customize the buttons is to fill it with a custom box.
- For example the button should be 5
+Der einfachste Weg die Knöpfe anzupassen, ist sie mit einer Box zu füllen.
+ Soll zum Beispiel der Knopf 5
 \begin_inset space \thinspace{}
 \end_inset
 
-cm wide and have the height of 2
+cm breit sein und eine Höhe von 2
 \begin_inset space ~
 \end_inset
 
-lines.
- Then create this parbox:
+Zeilen haben, fügt man diese Parbox:
 \end_layout
 
 \begin_layout Standard
@@ -2256,7 +2171,7 @@ status open
 
 \begin_layout Plain Layout
 \noindent
-Save form as
+Formular speichern unter
 \end_layout
 
 \end_inset
@@ -2265,12 +2180,12 @@ Save form as
 \end_layout
 
 \begin_layout Standard
-inside a 
+in einer 
 \family sans
-PDFAction
+PDF-Aktion
 \family default
- inset.
- This is the result:
+ Einfügung.
+ Dies ist das Ergebnis:
 \end_layout
 
 \begin_layout Standard
@@ -2307,7 +2222,8 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-Save form as
+\noindent
+Formular speichern unter
 \end_layout
 
 \end_inset
@@ -2321,12 +2237,14 @@ Save form as
 \end_layout
 
 \begin_layout PDF Link Setup
+
 pdfborder={0 0 0}
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-Sets the thickness of the predefined link border to zero as described below.
+Setzt die Randdicke des voreingestellten Linkrahmens auf Null, wie es weiter
+ unten beschrieben ist.
 \end_layout
 
 \end_inset
@@ -2335,13 +2253,13 @@ Sets the thickness of the predefined link border to zero as described below.
 \end_layout
 
 \begin_layout Standard
-To customize the border color, border thickness and the distance to the
- border one changes the border settings of the box.
- An example with a 4
+Um die Randfarbe, -dicke und den Abstand zum Rand anzupassen, ändert man
+ die Randeinstellungen der Box.
+ Ein Beispiel mit 4
 \begin_inset space \thinspace{}
 \end_inset
 
-pt thick, teal border:
+pt dickem, blaugrünem Rand:
 \begin_inset Newline newline
 \end_inset
 
@@ -2380,7 +2298,7 @@ status open
 
 \begin_layout Plain Layout
 \noindent
-Save form as
+Formular speichern unter
 \end_layout
 
 \end_inset
@@ -2394,46 +2312,35 @@ Save form as
 \end_layout
 
 \begin_layout Standard
-To customize the border thickness, add the command 
+Alternativ kann man die Randdicke für alle Aktionsknöpfe ändern.
+ Dazu fügen Sie den Befehl 
 \series bold
-pdfborder={0 0 t}
+pdfborder={0 0 d}
 \series default
- to the additional options in the document settings under 
+ zu den zusätzlichen Optionen in den Dokumenteinstellungen unter 
 \family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-properties
+PDF-Eigenschaften
 \family default
- and replace 
+ und ersetzen 
 \series bold
-t
+d
 \series default
- with a number that is the thickness in pixels.
- If you want to change the border thickness only for certain buttons, use
- the environment 
+ mit einer Zahl, die der Dicke in Pixeln entspricht.
+ Wenn Sie die Randdicke nur für bestimmte Knöpfe ändern wollen, verwenden
+ Sie die Umgebung 
 \family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-link
-\begin_inset space ~
-\end_inset
-
-setup
+PDF-Link-Einstellungen
 \family default
- before the button and insert there the command 
+ vor dem Knopf und fügen dort den Befehl 
 \series bold
 pdfborder
 \series default
-.
- The default value of 
+ ein.
+ Der voreingestellte Wert von 
 \series bold
 pdfborder
 \series default
- is 
+ ist 
 \series bold
 {0 0 1}
 \series default
@@ -2447,13 +2354,13 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note:
+Achtung:
 \series default
  
 \series bold
 pdfborder
 \series default
- affects all link types, not only the menu links.
+ betrifft alle Linktypen, nicht nur Menülinks.
 \end_layout
 
 \end_inset
@@ -2462,15 +2369,16 @@ pdfborder
 \end_layout
 
 \begin_layout PDF Link Setup
+
 pdfborder={0 0 4}
 \end_layout
 
 \begin_layout Standard
-An example with a 4
+Ein Beispiel mit einem 4
 \begin_inset space ~
 \end_inset
 
-pixel thick border:
+Pixel dickem Rand:
 \begin_inset Newline newline
 \end_inset
 
@@ -2509,7 +2417,7 @@ status open
 
 \begin_layout Plain Layout
 \noindent
-Save form as
+Formular speichern unter
 \end_layout
 
 \end_inset
@@ -2523,11 +2431,12 @@ Save form as
 \end_layout
 
 \begin_layout Standard
-To change the border color use the command 
+Um die Randfarbe für alle Aktionsknöpfe zu ändern, verwendet man den Befehl
+ 
 \series bold
 menubordercolor={r g b}
 \series default
- where 
+, wobei 
 \series bold
 r
 \series default
@@ -2535,16 +2444,16 @@ r
 \series bold
 g
 \series default
- and 
+ und 
 \series bold
 b
 \series default
- are numbers between 0 and 1 for the colors red, green and blue.
- The default value of 
+ eine Nummer zwischen 0 und 1 für die Farben rot, grün und blau ist.
+ Der voreingestellte Wert von 
 \series bold
 menubordercolor
 \series default
- is 
+ ist 
 \series bold
 {1 0 0}
 \series default
@@ -2552,11 +2461,12 @@ menubordercolor
 \end_layout
 
 \begin_layout PDF Link Setup
+
 pdfborder={0 0 1}, menubordercolor={0.1 0.9 0.5}
 \end_layout
 
 \begin_layout Standard
-An example with 
+Ein Beispiel mit 
 \series bold
 menubordercolor={0.1 0.9 0.5}
 \series default
@@ -2599,7 +2509,7 @@ status open
 
 \begin_layout Plain Layout
 \noindent
-Save form as
+Formular speichern unter
 \end_layout
 
 \end_inset
@@ -2613,15 +2523,16 @@ Save form as
 \end_layout
 
 \begin_layout Standard
-To change the background color use a colored box.
+Um die Hintergrundfarbe zu ändern, verwendet man eine farbige Box.
 \end_layout
 
 \begin_layout PDF Link Setup
+
 pdfborder={0 0 0}
 \end_layout
 
 \begin_layout Standard
-An example without a border and with lime background color:
+Ein Beispiel ohne Rand und mit neongrüner Hintergrundfarbe:
 \begin_inset Newline newline
 \end_inset
 
@@ -2660,7 +2571,7 @@ status open
 
 \begin_layout Plain Layout
 \noindent
-Save form as
+Formular speichern unter
 \end_layout
 
 \end_inset
@@ -2674,18 +2585,20 @@ Save form as
 \end_layout
 
 \begin_layout PDF Link Setup
+
 pdfborder={0 0 1}, menubordercolor={1 0 0}
 \end_layout
 
 \begin_layout Section
-Dynamic form fields
+Dynamische Formularfelder
 \end_layout
 
 \begin_layout Standard
-It is also possible to have dynamic form fields.
- This means that depending on the actions of the user fields can (dis)appear
- or change their appearance.
- To use this feature, add these lines to your LaTeX preamble:
+Es ist auch möglich dynamische Formularfelder zu haben.
+ Das bedeutet, dass je nachdem, was der Nutzer macht, Felder verschwinden/ersche
+inen oder ihr Aussehen verändern können.
+ Um dieses Feature zu nutzen, fügen Sie diese Zeilen zu Ihrem LaTeX-Vorspann
+ hinzu:
 \end_layout
 
 \begin_layout Standard
@@ -2709,10 +2622,10 @@ space 0 R}
 \end_layout
 
 \begin_layout Standard
-Then add the necessary JavaScript code to your document LaTeX preamble or
- as \SpecialChar TeX
- code to your document.
- For info about JavaScript, see its documentation, 
+Danach fügen Sie den benötigten JavaScript-Code in den LaTeX-Vorspann ein
+ oder als \SpecialChar TeX
+-Code in Ihr Dokument.
+ Für Informationen über JavaScript, siehe dessen Dokumentation, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "JavaScript"
@@ -2740,12 +2653,12 @@ ifinsdljs
 status open
 
 \begin_layout Plain Layout
-The following section will only be displayed when the \SpecialChar LaTeX
- package 
+Der folgende Teil wird nur gedruckt, wenn das \SpecialChar LaTeX
+-Paket 
 \series bold
 insdljs
 \series default
- is installed.
+ installiert ist.
 \end_layout
 
 \end_inset
@@ -2754,7 +2667,7 @@ insdljs
 \end_layout
 
 \begin_layout Standard
-For the following choice menu this JavaScript code was used:
+Für das folgende Auswahlmenü wird dieser JavaScript-Code verwendet:
 \end_layout
 
 \begin_layout Standard
@@ -2782,17 +2695,17 @@ begin{insDLJS}[exaaae]{exaaae}{JavaScript}
 
 \begin_layout Plain Layout
 
-  if((event.value == "u") || (event.value == "unlimited")) {
+  if((event.value == "u") || (event.value == "unbefristet")) {
 \end_layout
 
 \begin_layout Plain Layout
 
-   this.getField("from").display = display.hidden;
+   this.getField("von").display = display.hidden;
 \end_layout
 
 \begin_layout Plain Layout
 
-   this.getField("to").display = display.hidden;
+   this.getField("an").display = display.hidden;
 \end_layout
 
 \begin_layout Plain Layout
@@ -2802,17 +2715,17 @@ begin{insDLJS}[exaaae]{exaaae}{JavaScript}
 
 \begin_layout Plain Layout
 
-   this.getField("from").display = display.visible;
+   this.getField("von").display = display.visible;
 \end_layout
 
 \begin_layout Plain Layout
 
-   this.getField("to").display = display.visible;
+   this.getField("an").display = display.visible;
 \end_layout
 
 \begin_layout Plain Layout
 
-   this.getField("from").setFocus();
+   this.getField("von").setFocus();
 \end_layout
 
 \begin_layout Plain Layout
@@ -2849,17 +2762,17 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note:
+Achtung:
 \series default
  
 \emph on
-All
+Alle
 \emph default
- JavaScript functions must be inserted into the same 
+ JavaScript-Funktionen müssen in dieselbe 
 \family sans
 insDLJS
 \family default
- environment.
+ Einfügung eingegeben werden..
 \end_layout
 
 \end_inset
@@ -2868,17 +2781,17 @@ insDLJS
 \end_layout
 
 \begin_layout Standard
-The 
+Die 
 \family sans
-Parameters
+Parameter
 \family default
- of the following choice menu are
+ des folgenden Auswahlmenüs sind
 \begin_inset Newline newline
 \end_inset
 
 
 \series bold
-name=contract,radio,default=tl,validate={validateTime();}
+name=Vertrag,radio,default=b,validate={validateTime();}
 \end_layout
 
 \begin_layout Standard
@@ -2890,17 +2803,17 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=contract,radio,default=tl,validate={validateTime();}
+name=Vertrag,radio,default=b,validate={validateTime();}
 \end_layout
 
 \end_inset
 
-term-limited=tl, unlimited=u
+befristet=b, unbefristet=u
 \begin_inset Argument 2
 status open
 
 \begin_layout Plain Layout
-Job contract:
+Arbeitsvertrag:
 \end_layout
 
 \end_inset
@@ -2928,7 +2841,7 @@ Job contract:
 \begin_inset Text
 
 \begin_layout Plain Layout
-From:
+Von:
 \end_layout
 
 \end_inset
@@ -2945,7 +2858,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=from,width=10em
+name=von,width=10em
 \end_layout
 
 \end_inset
@@ -2989,7 +2902,7 @@ name=from,width=10em
 \begin_inset Text
 
 \begin_layout Plain Layout
-To:
+An:
 \end_layout
 
 \end_inset
@@ -3006,7 +2919,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=to,width=10em
+name=an,width=10em
 \end_layout
 
 \end_inset
@@ -3037,8 +2950,8 @@ name=to,width=10em
 \end_layout
 
 \begin_layout Standard
-To check and assure that the user only enters a number to a text field you
- can for example use this JavaScript code:
+Um zu überprüfen und sicherzustellen, dass der Nutzer nur Nummern in ein
+ Textfeld eingibt, kann man zum Beispiel diesen JavaScript-Code verwenden:
 \end_layout
 
 \begin_layout Standard
@@ -3064,7 +2977,7 @@ function checkNumber() {
 
 \begin_layout Plain Layout
 
-  app.alert("Value must be a number!");
+  app.alert("Wert muss eine Nummer sein!");
 \end_layout
 
 \begin_layout Plain Layout
@@ -3093,7 +3006,7 @@ function checkNumber() {
 \end_layout
 
 \begin_layout Standard
-An example text field: 
+Ein Beispiel-Textfeld: 
 \begin_inset Flex TextField
 status open
 
@@ -3102,7 +3015,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=onlyNumbers, align=1, validate={checkNumber();}
+name=nurNummern, align=1, validate={checkNumber();}
 \end_layout
 
 \end_inset
@@ -3133,12 +3046,12 @@ else
 status open
 
 \begin_layout Plain Layout
-The following will be displayed when the \SpecialChar LaTeX
- package 
+Der folgende Teil wird gedruckt, wenn das \SpecialChar LaTeX
+-Paket 
 \series bold
 insdljs
 \series default
- is not installed:
+ nicht installiert ist:
 \end_layout
 
 \end_inset
@@ -3147,11 +3060,12 @@ insdljs
 \end_layout
 
 \begin_layout Standard
-You need to install the package 
+Sie müssen das \SpecialChar LaTeX
+-Paket 
 \series bold
 insdljs
 \series default
- to see the content of this section in the output.
+ installiert haben um den Inhalt dieses Abschnitts zu sehen.
 \end_layout
 
 \begin_layout Standard
@@ -3171,11 +3085,12 @@ fi
 \end_layout
 
 \begin_layout End PDF Form
+
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-keep this empty
+Lassen Sie diese Umgebung leer
 \end_layout
 
 \end_inset
@@ -3184,27 +3099,28 @@ keep this empty
 \end_layout
 
 \begin_layout Section
-General notes
+Allgemeine Hinweise
 \end_layout
 
 \begin_layout Itemize
-Submitting and applying data requires that all form elements have a name.
+Das Senden und Anwenden von Daten setzt voraus, dass alle Formularelemente
+ Namen haben.
 \end_layout
 
 \begin_layout Itemize
-All braces, brackets, backslashes and quote characters in form parameters
- must be inserted as \SpecialChar TeX
- code!
+Alle geschweiften und eckigen Klammern, Backslashs und Anführungszeichen
+ in Formular-Parametern müssen als \SpecialChar TeX
+-code eingegeben werden!
 \end_layout
 
 \begin_layout Itemize
-Creating a PDF form requires pdflatex or lualatex.
- Use therefore either the \SpecialChar LyX
- export formats 
+Ein PDF-Formular zu erstellen, benötigt pdflatex oder lualatex.
+ Verwenden Sie daher die \SpecialChar LyX
+-Exportformate 
 \family sans
 PDF (pdflatex)
 \family default
- or 
+ oder 
 \family sans
 PDF (Lua\SpecialChar TeX
 )
@@ -3213,22 +3129,22 @@ PDF (Lua\SpecialChar TeX
 \end_layout
 
 \begin_layout Itemize
-To see in 
+Um in 
 \emph on
 Adobe Reader
 \emph default
- and 
+ und 
 \emph on
 Acrobat
 \emph default
- custom background colors you must disable in these programs the highlighting
- of form fields.
+ eigene Hintergrundfarben zu sehen, muss in diesen Programmen das farbige
+ Hervorheben von Formularfeldern ausgeschaltet werden.
  (Option 
-\begin_inset Quotes eld
+\begin_inset Quotes gld
 \end_inset
 
-Show border hover color for fields
-\begin_inset Quotes erd
+Randfarbe für Felder bei Mauskontakt anzeigen
+\begin_inset Quotes grd
 \end_inset
 
 )
@@ -3244,7 +3160,7 @@ key "JavaScript"
 
 \begin_inset CommandInset href
 LatexCommand href
-name "JavaScript reference"
+name "JavaScript Referenz"
 target "https://developer.mozilla.org/en/docs/Web/JavaScript/Reference"
 
 \end_inset
@@ -3262,13 +3178,13 @@ key "hyperref"
 
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "Dokumentation"
 target "http://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/manual.pdf"
 
 \end_inset
 
- of the \SpecialChar LaTeX
- package 
+ des \SpecialChar LaTeX
+-Pakets 
 \series bold
 hyperref
 \end_layout
@@ -3283,13 +3199,13 @@ key "pifont"
 
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "Dokumentation"
 target "http://mirrors.ctan.org/macros/latex/required/psnfss/psnfss2e.pdf"
 
 \end_inset
 
- of the \SpecialChar LaTeX
- package 
+ des \SpecialChar LaTeX
+-Pakets 
 \series bold
 pifont
 \end_layout
