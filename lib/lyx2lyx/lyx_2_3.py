@@ -2000,11 +2000,12 @@ def revert_mathindent(document):
         add_to_preamble(document, ["\\setlength{\\mathindent}{" + value + '}'])
         del document.header[i]
     # now set the document class option
-    regexp = re.compile(r'(\\is_math_indent)')
+    regexp = re.compile(r'(\\is_math_indent 1)')
     i = find_re(document.header, regexp, 0)
-    value = "1"
     if i == -1:
-        return
+        regexp = re.compile(r'(\\is_math_indent)')
+        j = find_re(document.header, regexp, 0)
+        del document.header[j]
     else:    
         k = find_token(document.header, "\\options", 0)
         if k != -1:

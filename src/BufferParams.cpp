@@ -1348,7 +1348,7 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	else
 		os << "\n\\defskip " << getDefSkip().asLyXCommand();
 	os << "\n\\is_math_indent " << is_math_indent;
-	if (is_math_indent)
+	if (is_math_indent && getMathIndentation().asLyXCommand() != "default")
 		os << "\n\\math_indentation " << getMathIndentation().asLyXCommand();
 	os << "\n\\quotes_style "
 	   << string_quotes_style[quotes_style]
