@@ -389,8 +389,10 @@ void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 	if (runparams.lastid != -1)
 		os.texrow().start(runparams.lastid, runparams.lastpos);
 	// We only output placement if different from the def_placement.
-	// sidewaysfloats always use their own page
-	if (!placement.empty() && !params_.sideways)
+	// sidewaysfloats always use their own page,
+	// therefore don't output the p option that is always set
+	if (!placement.empty()
+	    && (!params_.sideways || (params_.sideways && from_ascii(placement) != "p")))
 		os << '[' << from_ascii(placement) << ']';
 	os << '\n';
 

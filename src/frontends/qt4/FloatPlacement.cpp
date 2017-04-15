@@ -244,21 +244,36 @@ void FloatPlacement::checkAllowed() const
 	if (spanCB->isVisible()) {
 		bool const span = spanCB->isChecked();
 		bool const sideways = sidewaysCB->isChecked();
-		defaultsCB->setEnabled(!sideways);
 		topCB->setEnabled(!sideways && !defaults && !heredefinitely
 				  && contains(allowed_placement_, 't'));
 		bottomCB->setEnabled(!sideways && !defaults && !span && !heredefinitely
 				     && contains(allowed_placement_, 'b'));
 		pageCB->setEnabled(!sideways && !defaults && !heredefinitely
 				   && contains(allowed_placement_, 'p'));
-		herepossiblyCB->setEnabled(!sideways && !defaults && !span && !heredefinitely
+		if (!pageCB->isChecked())
+			pageCB->setChecked(sideways && contains(allowed_placement_, 'p'));
+		herepossiblyCB->setEnabled(!defaults && !span && !heredefinitely
 					   && contains(allowed_placement_, 'h'));
-		heredefinitelyCB->setEnabled(!sideways && !defaults && !span
+		heredefinitelyCB->setEnabled(!defaults && !span
 					     && contains(allowed_placement_, 'H'));
-		ignoreCB->setEnabled(!sideways && !defaults && ignore && !heredefinitely
+		ignoreCB->setEnabled(!defaults && ignore && !heredefinitely
 				     && contains(allowed_placement_, '!'));
+		// handle special case with sideways
+		if ((!herepossiblyCB->isChecked() && sideways) || (span && sideways))
+			ignoreCB->setEnabled(false);
+		// when disabled the options must be unchecked to avoid strange LaTeX export
+		// don't do it for pageCB because this case is handled with sideways
+		if (ignoreCB->isChecked() && !ignoreCB->isEnabled())
+			ignoreCB->setChecked(false);
+		if (herepossiblyCB->isChecked() && !herepossiblyCB->isEnabled())
+			herepossiblyCB->setChecked(false);
+		if (topCB->isChecked() && !topCB->isEnabled())
+			topCB->setChecked(false);
+		if (bottomCB->isChecked() && !bottomCB->isEnabled())
+			bottomCB->setChecked(false);
 		spanCB->setEnabled(allows_wide_ && (!sideways || standardfloat_));
 		sidewaysCB->setEnabled(allows_sideways_);
+		defaultsCB->setEnabled(!(sideways && span));
 	} else {
 		topCB->setEnabled(!defaults && !heredefinitely);
 		bottomCB->setEnabled(!defaults && !heredefinitely);
