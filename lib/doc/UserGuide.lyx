@@ -8315,14 +8315,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8335,7 +8333,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8359,7 +8356,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -30474,8 +30470,17 @@ You can insert complete or incomplete commands as \SpecialChar TeX
  Code.
  Incomplete means that the command argument can be Standard \SpecialChar LyX
  text.
- For example, if you want to draw a frame around a word and are therefore
- using the \SpecialChar LaTeX
+ For example, if you want to draw a frame around a word
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+The LyX way would be to use a framed box.
+\end_layout
+
+\end_inset
+
+ and are therefore using the \SpecialChar LaTeX
 -command 
 \series bold
 
@@ -30503,7 +30508,7 @@ fbox{
 \begin_layout Standard
 \begin_inset Graphics
 	filename clipart/ERT.png
-	scale 89
+	scale 95
 
 \end_inset
 
@@ -30799,7 +30804,7 @@ key "latexcompanion,latexguide"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage cleardoublepage
+\begin_inset Newpage clearpage
 \end_inset
 
 

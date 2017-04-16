@@ -8544,14 +8544,12 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
-
 Esto es entorno Literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8564,7 +8562,6 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
-
 Casi todo está permitido en entorno Literal:"%&$§#~'`
 \backslash
 }][{|
@@ -8589,7 +8586,6 @@ con la diferencia de que los espacios aparecen en la salida como el carácter
 \end_layout
 
 \begin_layout Verbatim*
-
 Esto es entorno Literal*.
 \end_layout
 
@@ -30988,8 +30984,23 @@ En un cuadro de código \SpecialChar TeX
  se pueden insertar los comandos total o parcialmente.
  Parcialmente significa que el argumento del comando puede ser texto \SpecialChar LyX
  normal.
- Por ejemplo, si quieres dibujar un marco alrededor de una palabra con el
- comando \SpecialChar LaTeX
+ Por ejemplo, si quieres dibujar un marco alrededor de una palabra
+\lang english
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+The LyX way would be to use a framed box.
+\end_layout
+
+\end_inset
+
+
+\lang spanish
+ con el comando \SpecialChar LaTeX
  
 \series bold
 
@@ -31018,7 +31029,7 @@ fbox{
 \begin_layout Standard
 \begin_inset Graphics
 	filename clipart/es_ERT.png
-	scale 90
+	scale 95
 
 \end_inset
 
@@ -31310,7 +31321,7 @@ key "latexcompanion,latexguide"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage cleardoublepage
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -32289,7 +32300,7 @@ key "fancyhdr"
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -32302,7 +32313,7 @@ pagestyle{headings}
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 retorno al estilo de página con los encabezados predeterminados

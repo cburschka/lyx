@@ -29793,8 +29793,17 @@ In das \SpecialChar TeX
 -Befehle
  schreiben.
  Unvollständig bedeutet, dass das Befehlsargument normaler Text sein kann.
- Sie wollen zum Beispiel einen Rahmen um ein Wort zeichnen und verwenden
- daher den \SpecialChar LaTeX
+ Sie wollen zum Beispiel einen Rahmen um ein Wort zeichnen
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Der LyX-Weg wäre eine gerahmte Box zu verwenden.
+\end_layout
+
+\end_inset
+
+ und verwenden daher den \SpecialChar LaTeX
 -Befehl 
 \series bold
 
@@ -29823,8 +29832,8 @@ fbox{
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename ../clipart/ERT.png
-	scale 75
+	filename clipart/ERT.png
+	scale 95
 
 \end_inset
 
@@ -30096,7 +30105,7 @@ key "latexcompanion,latexguide"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage cleardoublepage
+\begin_inset Newpage clearpage
 \end_inset
 
 
