@@ -1974,12 +1974,44 @@ docstring Text::currentState(CursorData const & cur, bool devel_mode) const
 
 docstring Text::getPossibleLabel(DocIterator const & cur) const
 {
-	pit_type pit = cur.pit();
+	pit_type textpit = cur.pit();
+	Layout const * layout = &(pars_[textpit].layout());
 
-	Layout const * layout = &(pars_[pit].layout());
+	// Will contain the label prefix.
+	docstring name;
+
+	// For captions, we just take the caption type
+	Inset * caption_inset = cur.innerInsetOfType(CAPTION_CODE);
+	if (caption_inset) {
+		string const & ftype = static_cast<InsetCaption *>(caption_inset)->floattype();
+		FloatList const & fl = cur.buffer()->params().documentClass().floats();
+		if (fl.typeExist(ftype)) {
+			Floating const & flt = fl.getType(ftype);
+			name = from_utf8(flt.refPrefix());
+		}
+		if (name.empty())
+			name = from_utf8(ftype.substr(0,3));
+	} else {
+		// For section, subsection, etc...
+		if (layout->latextype == LATEX_PARAGRAPH && textpit != 0) {
+			Layout const * layout2 = &(pars_[textpit - 1].layout());
+			if (layout2->latextype != LATEX_PARAGRAPH) {
+				--textpit;
+				layout = layout2;
+			}
+		}
+		if (layout->latextype != LATEX_PARAGRAPH)
+			name = layout->refprefix;
+
+		// If none of the above worked, see if the inset knows.
+		if (name.empty()) {
+			InsetLayout const & il = cur.inset().getLayout();
+			name = il.refprefix();
+		}
+	}
 
 	docstring text;
-	docstring par_text = pars_[pit].asString(AS_STR_SKIPDELETE);
+	docstring par_text = pars_[textpit].asString(AS_STR_SKIPDELETE);
 
 	// The return string of math matrices might contain linebreaks
 	par_text = subst(par_text, '\n', '-');
@@ -1999,39 +2031,6 @@ docstring Text::getPossibleLabel(DocIterator const & cur) const
 	unsigned int const max_label_length = 32;
 	if (text.size() > max_label_length)
 		text.resize(max_label_length);
-
-	// Will contain the label prefix.
-	docstring name;
-
-	// For section, subsection, etc...
-	if (layout->latextype == LATEX_PARAGRAPH && pit != 0) {
-		Layout const * layout2 = &(pars_[pit - 1].layout());
-		if (layout2->latextype != LATEX_PARAGRAPH) {
-			--pit;
-			layout = layout2;
-		}
-	}
-	if (layout->latextype != LATEX_PARAGRAPH)
-		name = layout->refprefix;
-
-	// For captions, we just take the caption type
-	Inset * caption_inset = cur.innerInsetOfType(CAPTION_CODE);
-	if (caption_inset) {
-		string const & ftype = static_cast<InsetCaption *>(caption_inset)->floattype();
-		FloatList const & fl = cur.buffer()->params().documentClass().floats();
-		if (fl.typeExist(ftype)) {
-			Floating const & flt = fl.getType(ftype);
-			name = from_utf8(flt.refPrefix());
-		}
-		if (name.empty())
-			name = from_utf8(ftype.substr(0,3));
-	}
-
-	// If none of the above worked, see if the inset knows.
-	if (name.empty()) {
-		InsetLayout const & il = cur.inset().getLayout();
-		name = il.refprefix();
-	}
 
 	if (!name.empty())
 		text = name + ':' + text;
