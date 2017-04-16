@@ -1192,7 +1192,7 @@ def revert_textcolor(document):
                     # register that xcolor must be loaded in the preamble
                     if xcolor == False:
                         xcolor = True
-                        add_to_preamble(document, ["\\@ifundefined{rangeHsb}{\usepackage{xcolor}}{}"])
+                        add_to_preamble(document, ["\\@ifundefined{rangeHsb}{\\usepackage{xcolor}}{}"])
                     # find the next \\color and/or the next \\end_layout
                     j = find_token(document.body, "\\color", i + 1)
                     k = find_token(document.body, "\\end_layout", i + 1)
@@ -1276,8 +1276,8 @@ def revert_colorbox(document):
             pass
         else:
             # we also neeed to load xcolor in the preamble but only once
-            add_to_preamble(document, ["\\@ifundefined{rangeHsb}{\usepackage{xcolor}}{}"])
-            document.body[einset + 1 : einset + 1] = put_cmd_in_ert("}")
+            add_to_preamble(document, ["\\@ifundefined{rangeHsb}{\\usepackage{xcolor}}{}"])
+            document.body[einset + 2 : einset + 2] = put_cmd_in_ert("}")
             if framecolor != defaultframecolor:
                 document.body[binset:binset] = put_cmd_in_ert("\\fcolorbox{" + framecolor + "}{" + backcolor + "}{")
             else:
@@ -1698,7 +1698,7 @@ def revert_tcolorbox_1(document):
     i = find_token(document.header, "tcolorbox", i)
     if i == -1:
       break
-    else:    
+    else:
       flex = 0
       flexEnd = -1
       flex = find_token(document.body, "\\begin_inset Flex Subtitle", flex)
@@ -1723,7 +1723,7 @@ def revert_tcolorbox_2(document):
     i = find_token(document.header, "tcolorbox", i)
     if i == -1:
       break
-    else:    
+    else:
       flex = 0
       flexEnd = -1
       flex = find_token(document.body, "\\begin_inset Flex Raster Color Box", flex)
@@ -1744,7 +1744,7 @@ def revert_tcolorbox_3(document):
     i = find_token(document.header, "tcolorbox", i)
     if i == -1:
       break
-    else:    
+    else:
       flex = 0
       flexEnd = -1
       flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 1", flex)
@@ -1766,7 +1766,7 @@ def revert_tcolorbox_4(document):
     i = find_token(document.header, "tcolorbox", i)
     if i == -1:
       break
-    else:    
+    else:
       flex = 0
       flexEnd = -1
       flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 2", flex)
@@ -1788,7 +1788,7 @@ def revert_tcolorbox_5(document):
     i = find_token(document.header, "tcolorbox", i)
     if i == -1:
       break
-    else:    
+    else:
       flex = 0
       flexEnd = -1
       flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 3", flex)
@@ -1810,7 +1810,7 @@ def revert_tcolorbox_6(document):
     i = find_token(document.header, "tcolorbox", i)
     if i == -1:
       break
-    else:    
+    else:
       flex = 0
       flexEnd = -1
       flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 4", flex)
@@ -1832,7 +1832,7 @@ def revert_tcolorbox_7(document):
     i = find_token(document.header, "tcolorbox", i)
     if i == -1:
       break
-    else:    
+    else:
       flex = 0
       flexEnd = -1
       flex = find_token(document.body, "\\begin_inset Flex Custom Color Box 5", flex)
