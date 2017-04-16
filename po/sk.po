@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-03-30 11:20+0200\n"
-"PO-Revision-Date: 2017-03-31 20:31+0000\n"
+"POT-Creation-Date: 2017-04-16 19:31+0200\n"
+"PO-Revision-Date: 2017-04-16 19:13+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1687,7 +1687,7 @@ msgstr "Použiť číslice minuskové, nie verzálové"
 
 #: src/frontends/qt4/ui/FontUi.ui:241
 msgid "Use &old style figures"
-msgstr "Použiť &minuskové číslice (old style figures)"
+msgstr "Použiť min&uskové číslice (old style figures)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
@@ -3228,7 +3228,7 @@ msgstr "Bez matematiky"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:72 src/Font.cpp:76
 msgid "On"
-msgstr "Zapnutý"
+msgstr "Zapnuté"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:80
 msgid "Preview si&ze:"
@@ -24249,7 +24249,7 @@ msgstr "Automatické ukladanie %1$s"
 
 #: src/Buffer.cpp:3961
 msgid "Autosave failed!"
-msgstr "Automatické ukladanie sa nepodarilo!"
+msgstr "Automatické ukladanie zlyhalo!"
 
 #: src/Buffer.cpp:4022
 msgid "Autosaving current document..."
@@ -27588,7 +27588,7 @@ msgstr "Vynulovať"
 
 #: src/frontends/qt4/GuiCharacter.cpp:85
 msgid "Underbar"
-msgstr "Podčiarknuť"
+msgstr "Podčiarknuté"
 
 #: src/frontends/qt4/GuiCharacter.cpp:86
 msgid "Double underbar"
@@ -29582,7 +29582,7 @@ msgstr "Automatický úklad hotový."
 
 #: src/frontends/qt4/GuiView.cpp:1716
 msgid "Automatic save failed!"
-msgstr "Automatické ukladanie sa nepodarilo!"
+msgstr "Automatické ukladanie zlyhalo!"
 
 #: src/frontends/qt4/GuiView.cpp:1772
 msgid "Command not allowed without any document open"
