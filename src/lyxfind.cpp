@@ -961,6 +961,8 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 		LYXERR(Debug::FIND, "Searching in regexp mode: at_begin=" << at_begin);
 		regex const & p_regexp = at_begin ? regexp : regexp2;
 		sregex_iterator re_it(str.begin(), str.end(), p_regexp);
+		if (re_it == std::sregex_iterator())
+			return 0;
 		match_results<string::const_iterator> const & m = *re_it;
 
 		// Check braces on the segment that matched the entire regexp expression,
