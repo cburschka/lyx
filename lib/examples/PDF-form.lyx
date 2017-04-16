@@ -179,7 +179,7 @@ insdljs
 \series default
  must be installed.
  If it is not installed you can export the document anyway but the example
- in the section about dynamic form fields won't appear in the output.
+ in the section about dynamic form elements will not appear in the output.
 \end_layout
 
 \end_inset
@@ -348,7 +348,7 @@ reference "subsec:Submit-button"
 \end_layout
 
 \begin_layout Section
-Form fields
+Form elements
 \end_layout
 
 \begin_layout Standard
@@ -407,12 +407,12 @@ Enter your name here:
 \end_layout
 
 \begin_layout Standard
-You must also specify a name for text fields: Set the cursor into its 
+You must also specify a name for text fields.
+ To do this set the cursor into its 
 \family sans
 Params
 \family default
- inset.
- There insert the parameter 
+ inset and insert the parameter 
 \series bold
 name=customer
 \series default
@@ -435,8 +435,8 @@ Here are 2
 \begin_inset space ~
 \end_inset
 
-fields as example: Fill one and see that the other one will also be filled
- automatically when you click outside of the field:
+fields as example: Fill one and see that the other one will be filled automatica
+lly when you click outside of the field:
 \begin_inset Newline newline
 \end_inset
 
@@ -534,7 +534,7 @@ status open
 \begin_layout Plain Layout
 name=customer2, multiline, width=0.6
 \backslash
-textwidth, height=3cm, value={Testman}
+textwidth, height=3cm, value={proposed text}
 \end_layout
 
 \end_inset
@@ -631,7 +631,7 @@ name=age
 \series bold
 age
 \series default
- is the field name) into the 
+ is the name) into the 
 \family sans
 Params
 \family default
@@ -654,11 +654,7 @@ Insert\SpecialChar menuseparator
 Label
 \family default
 .
- Insert the label text into this inset.
-\begin_inset Newline newline
-\end_inset
-
-The different choices are inserted to the inset as comma-separated list.
+ The different choices are inserted to the inset as comma-separated list.
  There are 3
 \begin_inset space ~
 \end_inset
@@ -677,8 +673,7 @@ Combo The choices are listed in a combo box (dropdown list) but the user
 
 \begin_layout Description
 Popdown All choices are listed below each other.
- If the field is not high enough a scroll bar is automatically added to
- the field.
+ If the menu is not high enough a scroll bar is automatically added.
 \end_layout
 
 \begin_layout Standard
@@ -993,7 +988,15 @@ status collapsed
 \end_inset
 
 What the hell? Now you destroyed your fridge.
- Congratulations.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Congratulations.
+\begin_inset Quotes erd
+\end_inset
+
+
 \begin_inset ERT
 status collapsed
 
@@ -1061,7 +1064,8 @@ status open
 \series bold
 Note:
 \series default
- All quote characters in form parameters must be inserted as \SpecialChar TeX
+ The outer quotes are part of the JavaScript code and must therefore be
+ inserted as \SpecialChar TeX
  code!
 \end_layout
 
@@ -1072,11 +1076,7 @@ Note:
 
 \begin_layout Standard
 A common usage for push buttons is to open a weblink.
- Such a button is created by inserting a hyperlink into the 
-\family sans
-PushButton
-\family default
- inset.
+ Such a button is created by inserting a hyperlink as button text.
  Here is an example:
 \end_layout
 
@@ -1111,7 +1111,7 @@ target "http://wiki.lyx.org"
 \end_layout
 
 \begin_layout Standard
-To get rid of the special frame for weblinks add this to the additional
+To get rid of the predefined frame for weblinks add this to the additional
  options in the document settings under 
 \family sans
 PDF
@@ -1182,8 +1182,8 @@ Send your data via email
 The submit button creates a forms data format (FDF) file (file extension
  *.fdf) which is then submitted.
  The FDF file contains only the form data.
- They can only be applied to a PDF form if all elements in the form have
- a name.
+ They can later only be applied to a PDF form if all elements in the form
+ have a name.
 \end_layout
 
 \begin_layout Standard
@@ -1221,7 +1221,7 @@ reference "sec:Preparation"
 
  for the description.
  If there are no specifications you will get \SpecialChar LaTeX
- errors!
+ errors.
 \end_layout
 
 \end_inset
@@ -1390,10 +1390,6 @@ Button
 Style
 \end_layout
 
-\begin_layout Text Field Style
-
-\end_layout
-
 \begin_layout Standard
 The content of the styles is a comma-separated list of parameters.
  The possible parameters are listed in sec.
@@ -1426,7 +1422,7 @@ key "hyperref"
 print
 \emph default
  is always part of the definition.
- Otherwise the fields will not appear in the PDF.
+ Otherwise the elements will not appear in the PDF.
  The defined style is applied to all elements following the definition.
 \end_layout
 
@@ -1437,6 +1433,40 @@ Here are some examples:
 \begin_layout Text Field Style
 print, bordercolor=red, borderstyle=U, backgroundcolor=lightgray, color=lime,
  maxlen=10, align=2, charsize=16pt
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The parameter 
+\series bold
+borderstyle
+\series default
+ can be 
+\series bold
+U
+\series default
+ (underlined), 
+\series bold
+S
+\series default
+ (solid), 
+\series bold
+D
+\series default
+ (dashed), 
+\series bold
+B
+\series default
+ (bevel) or 
+\series bold
+I
+\series default
+ (inverted bevel).
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Check Box Style
@@ -1451,6 +1481,26 @@ print, bordercolor={0.33 0.66 0.33}, borderstyle=D
 
 \begin_layout Popdown Box Style
 print, menulength=2
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The parameter
+\series bold
+ menulength
+\series default
+ determines the number of displayed menu entries.
+ It does not work currently because of a bug in the \SpecialChar LaTeX
+ package 
+\series bold
+hyperref
+\series default
+.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Radio Box Style
@@ -1544,43 +1594,6 @@ Show border hover color for fields
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-The option 
-\series bold
-borderstyle
-\series default
- can be 
-\series bold
-U
-\series default
- (underlined), 
-\series bold
-S
-\series default
- (solid), 
-\series bold
-D
-\series default
- (dashed), 
-\series bold
-B
-\series default
- (bevel) or 
-\series bold
-I
-\series default
- (inverted bevel).
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Itemize
 Check box with normal border and symbol 
 \backslash
@@ -1637,7 +1650,12 @@ number
 \begin_inset space ~
 \end_inset
 
-2 of 
+2 of the documentation of the \SpecialChar LaTeX
+ package 
+\series bold
+pifont
+\series default
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "pifont"
@@ -1741,9 +1759,9 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note
+Note: 
 \series default
- that the options 
+The parameters 
 \series bold
 borderstyle B
 \series default
@@ -1806,6 +1824,47 @@ Sex:
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ The parameters 
+\series bold
+backgroundcolor
+\series default
+, 
+\series bold
+color
+\series default
+, 
+\series bold
+height 
+\series default
+and 
+\series bold
+width
+\series default
+ have no effect for push, submit and reset buttons.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As workaround use a colored box and/or color the box text.
 \end_layout
 
 \begin_layout Itemize
@@ -1886,47 +1945,10 @@ Don't click on this button!!!
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace defskip
+\begin_inset VSpace bigskip
 \end_inset
 
 
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Note
-\series default
-: The options 
-\series bold
-backgroundcolor
-\series default
-, 
-\series bold
-color
-\series default
-, 
-\series bold
-height 
-\series default
-and 
-\series bold
-width
-\series default
- have no effect for push, submit and reset buttons.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-As workaround use a colored box and/or color the box text.
 \end_layout
 
 \begin_layout Itemize
@@ -1958,11 +1980,11 @@ position "c"
 hor_pos "c"
 has_inner_box 1
 inner_pos "c"
-use_parbox 1
-use_makebox 0
-width "5cm"
+use_parbox 0
+use_makebox 1
+width "6cm"
 special "none"
-height "4in"
+height "1in"
 height_special "totalheight"
 thickness "0.4pt"
 separation "3pt"
@@ -1972,7 +1994,31 @@ backgroundcolor "cyan"
 status open
 
 \begin_layout Plain Layout
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 1
+use_makebox 0
+width "4.5cm"
+special "none"
+height "4in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 Send your data via mail
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2057,12 +2103,12 @@ Reset the form
 \end_layout
 
 \begin_layout Section
-PDF viewer action buttons
+PDF action buttons
 \end_layout
 
 \begin_layout Standard
-One often needs basic actions to be done by the PDF viewer program.
- For example to print the form.
+One often needs basic actions to be done by the PDF viewer program, for
+ example to print the form.
  Such PDF program-specific actions can be triggered by adding inserting
  the custom inset 
 \family sans
@@ -2341,7 +2387,15 @@ To customize the border color, border thickness and the distance to the
 \begin_inset space \thinspace{}
 \end_inset
 
-pt thick, teal border:
+pt thick, teal border and 3
+\begin_inset space \thinspace{}
+\end_inset
+
+pt border separation :
+\begin_inset VSpace defskip
+\end_inset
+
+
 \begin_inset Newline newline
 \end_inset
 
@@ -2453,7 +2507,7 @@ Note:
 \series bold
 pdfborder
 \series default
- affects all link types, not only the menu links.
+ affects all link types, not only the action links.
 \end_layout
 
 \end_inset
@@ -2678,12 +2732,12 @@ pdfborder={0 0 1}, menubordercolor={1 0 0}
 \end_layout
 
 \begin_layout Section
-Dynamic form fields
+Dynamic form elements
 \end_layout
 
 \begin_layout Standard
-It is also possible to have dynamic form fields.
- This means that depending on the actions of the user fields can (dis)appear
+It is also possible to have dynamic form elements.
+ This means that depending on the actions of the user elements can (dis)appear
  or change their appearance.
  To use this feature, add these lines to your LaTeX preamble:
 \end_layout
@@ -3189,12 +3243,6 @@ General notes
 
 \begin_layout Itemize
 Submitting and applying data requires that all form elements have a name.
-\end_layout
-
-\begin_layout Itemize
-All braces, brackets, backslashes and quote characters in form parameters
- must be inserted as \SpecialChar TeX
- code!
 \end_layout
 
 \begin_layout Itemize
