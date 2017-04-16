@@ -53,7 +53,7 @@ if [ ! -d ../../locale ]; then
 fi
 
 if [ "$#" -eq 0 ]; then
-    TESTS=$(ls *-in.txt *-in.sh | sed -e 's/hello-world-in.txt\|first-time-in.txt//')
+    TESTS=$(ls *-in.txt *-in.sh | sed -e 's/hello-world-in.txt\|first-time-in.txt\|export-in.sh//')
     rm -rf out-*;
 else
     TESTS=$*
