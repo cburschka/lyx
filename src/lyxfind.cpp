@@ -672,23 +672,13 @@ string escape_for_regex(string s, bool match_latex)
 bool regex_replace(string const & s, string & t, string const & searchstr,
 		   string const & replacestr)
 {
-	LYXERR(Debug::FIND, "regex_replace() - s='" << s
-	       << "', searchstr='" << searchstr
-	       << "', replacestr='" << replacestr);
-#if LYX_USE_STD_REGEX
-	// this is the default anyway
 	lyx::regex e(searchstr, regex_constants::ECMAScript);
-#else
-	// TBD: check
-	lyx::regex e(searchstr, regex_constants::ECMAScript);
-#endif
 	ostringstream oss;
 	ostream_iterator<char, char> it(oss);
 	lyx::regex_replace(it, s.begin(), s.end(), e, replacestr);
 	// tolerate t and s be references to the same variable
 	bool rv = (s != oss.str());
 	t = oss.str();
-	LYXERR(Debug::FIND, "regex_replace() - t='" << t << "', rv=" << rv);
 	return rv;
 }
 
