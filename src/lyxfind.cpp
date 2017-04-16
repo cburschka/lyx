@@ -556,7 +556,7 @@ Escapes const & get_regexp_escapes()
 		escape_map.push_back(P(".", "_x_."));
 		escape_map.push_back(P("\\", "(?:\\\\|\\\\backslash)"));
 		escape_map.push_back(P("~", "(?:\\\\textasciitilde|\\\\sim)"));
-		escape_map.push_back(P("^", "(?:\\^|\\\\textasciicircum\\{\\}|\\\\mathcircumflex)"));
+		escape_map.push_back(P("^", "(?:\\^|\\\\textasciicircum\\{\\}|\\\\textasciicircum|\\\\mathcircumflex)"));
 		escape_map.push_back(P("_x_", "\\"));
 	}
 	return escape_map;
@@ -589,12 +589,12 @@ Escapes const & get_regexp_latex_escapes()
 
 	static Escapes escape_map;
 	if (escape_map.empty()) {
-		escape_map.push_back(P("\\\\", "(?:\\\\\\\\|\\\\backslash|\\\\textbackslash\\{\\})"));
+		escape_map.push_back(P("\\\\", "(?:\\\\\\\\|\\\\backslash|\\\\textbackslash\\{\\}|\\\\textbackslash)"));
 		escape_map.push_back(P("(<?!\\\\\\\\textbackslash)\\{", "\\\\\\{"));
 		escape_map.push_back(P("(<?!\\\\\\\\textbackslash\\\\\\{)\\}", "\\\\\\}"));
 		escape_map.push_back(P("\\[", "\\{\\[\\}"));
 		escape_map.push_back(P("\\]", "\\{\\]\\}"));
-		escape_map.push_back(P("\\^", "(?:\\^|\\\\textasciicircum\\{\\}|\\\\mathcircumflex)"));
+		escape_map.push_back(P("\\^", "(?:\\^|\\\\textasciicircum\\{\\}|\\\\textasciicircum|\\\\mathcircumflex)"));
 		escape_map.push_back(P("%", "\\\\\\%"));
 	}
 	return escape_map;
