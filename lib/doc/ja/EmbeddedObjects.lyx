@@ -37432,6 +37432,7 @@ reference "sec:画像ダイアログ"
 \begin_inset External
 	template VectorGraphics
 	filename ../clipart/SVG-Drawing.svg
+	lyxscale 50
 	scale 33
 
 \end_inset
@@ -37688,14 +37689,11 @@ DVI, PDF, PS
 \SpecialChar LyX
 中での外部素材は，ダイアログ内の
 \family sans
-\SpecialChar LaTeX
-と\SpecialChar LyX
-のオプション
+LaTeXとLyXのオプション
 \family default
 タブにある
 \family sans
-\SpecialChar LyX
-内に表示
+LyX内に表示
 \family default
 オプションの指定に従って，
 \begin_inset Graphics
@@ -37780,6 +37778,7 @@ status collapsed
 中で
 \begin_inset Graphics
 	filename clipart/ChildDocument.png
+	scale 95
 	scaleBeforeRotation
 
 \end_inset

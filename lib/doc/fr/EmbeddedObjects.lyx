@@ -25755,7 +25755,7 @@ reference "sec:Placement-légende"
  Une boîte de flottant fermée ressemble à ceci : 
 \begin_inset Graphics
 	filename clipart/float.png
-	scale 60
+	scale 95
 
 \end_inset
 
@@ -31748,7 +31748,7 @@ bas
  qui ressemble à ceci : 
 \begin_inset Graphics
 	filename clipart/footnote.png
-	scale 80
+	scale 95
 	scaleBeforeRotation
 
 \end_inset
@@ -34224,7 +34224,7 @@ Boîte
 : 
 \begin_inset Graphics
 	filename clipart/BoxInsetDefault.png
-	scale 65
+	scale 95
 	scaleBeforeRotation
 
 \end_inset
@@ -40703,6 +40703,7 @@ reference "sec:Graphics-Dialog"
 \begin_inset External
 	template VectorGraphics
 	filename ../clipart/SVG-Drawing.svg
+	lyxscale 50
 	scale 33
 
 \end_inset
@@ -40971,7 +40972,7 @@ Les objets externes apparaissent dans \SpecialChar LyX
  : 
 \begin_inset Graphics
 	filename ../clipart/ExternalMaterial.png
-	scale 75
+	scale 95
 	scaleBeforeRotation
 
 \end_inset
@@ -40991,9 +40992,7 @@ dans
 \family default
  de l'onglet 
 \family sans
-Options \SpecialChar LaTeX
- et \SpecialChar LyX
-
+Options LaTeX et LyX
 \family default
  de la fenêtre de dialogue.
 \end_layout
@@ -41073,6 +41072,7 @@ Les documents inclus sont visualisés dans \SpecialChar LyX
  celle-ci : 
 \begin_inset Graphics
 	filename clipart/SousDocument.png
+	scale 95
 	scaleBeforeRotation
 
 \end_inset

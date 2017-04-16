@@ -25436,7 +25436,7 @@ reference "sec:Caption-Placement"
  A closed float box looks like this: 
 \begin_inset Graphics
 	filename clipart/float.png
-	scale 70
+	scale 95
 	scaleBeforeRotation
 
 \end_inset
@@ -31211,7 +31211,7 @@ Footnote
  You will then see the following footnote-box: 
 \begin_inset Graphics
 	filename clipart/footnote.png
-	scale 80
+	scale 95
 	scaleBeforeRotation
 
 \end_inset
@@ -33683,7 +33683,7 @@ Box (Minipage)
 : 
 \begin_inset Graphics
 	filename clipart/BoxInsetDefault.png
-	scale 85
+	scale 95
 	scaleBeforeRotation
 
 \end_inset
@@ -39936,6 +39936,7 @@ reference "sec:Graphics-Dialog"
 \begin_inset External
 	template VectorGraphics
 	filename clipart/SVG-Drawing.svg
+	lyxscale 50
 	scale 33
 
 \end_inset
@@ -40195,7 +40196,7 @@ External material is displayed in \SpecialChar LyX
  either as a box like this: 
 \begin_inset Graphics
 	filename clipart/ExternalMaterial.png
-	scale 75
+	scale 95
 	scaleBeforeRotation
 
 \end_inset
@@ -40219,6 +40220,13 @@ Customization
 \family default
 \emph default
  manual explains how you can define your own templates.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -40295,6 +40303,7 @@ Included documents are displayed in \SpecialChar LyX
  as a box like this: 
 \begin_inset Graphics
 	filename clipart/ChildDocument.png
+	scale 95
 	scaleBeforeRotation
 
 \end_inset
