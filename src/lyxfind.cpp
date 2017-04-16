@@ -672,13 +672,23 @@ string escape_for_regex(string s, bool match_latex)
 bool regex_replace(string const & s, string & t, string const & searchstr,
 		   string const & replacestr)
 {
-	lyx::regex e(searchstr);
+	LYXERR(Debug::FIND, "regex_replace() - s='" << s
+	       << "', searchstr='" << searchstr
+	       << "', replacestr='" << replacestr);
+#if LYX_USE_STD_REGEX
+	// this is the default anyway
+	lyx::regex e(searchstr, regex_constants::ECMAScript);
+#else
+	// TBD: check
+	lyx::regex e(searchstr, regex_constants::ECMAScript);
+#endif
 	ostringstream oss;
 	ostream_iterator<char, char> it(oss);
 	lyx::regex_replace(it, s.begin(), s.end(), e, replacestr);
 	// tolerate t and s be references to the same variable
 	bool rv = (s != oss.str());
 	t = oss.str();
+	LYXERR(Debug::FIND, "regex_replace() - t='" << t << "', rv=" << rv);
 	return rv;
 }
 
@@ -841,11 +851,11 @@ static size_t identifyLeading(string const & s)
 {
 	string t = s;
 	// @TODO Support \item[text]
-	while (regex_replace(t, t, "^\\\\(emph|textbf|subsubsection|subsection|section|subparagraph|paragraph|part)\\*?\\{", "")
-	       || regex_replace(t, t, "^\\$", "")
-	       || regex_replace(t, t, "^\\\\\\[ ", "")
-	       || regex_replace(t, t, "^\\\\item ", "")
-	       || regex_replace(t, t, "^\\\\begin\\{[a-zA-Z_]*\\*?\\} ", ""))
+	while (regex_replace(t, t, REGEX_BOS "\\\\(emph|textbf|subsubsection|subsection|section|subparagraph|paragraph|part)\\*?\\{", "")
+	       || regex_replace(t, t, REGEX_BOS "\\$", "")
+	       || regex_replace(t, t, REGEX_BOS "\\\\\\[ ", "")
+	       || regex_replace(t, t, REGEX_BOS "\\\\item ", "")
+	       || regex_replace(t, t, REGEX_BOS "\\\\begin\\{[a-zA-Z_]*\\*?\\} ", ""))
 		LYXERR(Debug::FIND, "  after removing leading $, \\[ , \\emph{, \\textbf{, etc.: '" << t << "'");
 	return s.find(t);
 }
@@ -857,13 +867,13 @@ static int identifyClosing(string & t)
 	int open_braces = 0;
 	do {
 		LYXERR(Debug::FIND, "identifyClosing(): t now is '" << t << "'");
-		if (regex_replace(t, t, "(.*[^\\\\])\\$\\'", "$1"))
+		if (regex_replace(t, t, "(.*[^\\\\])\\$" REGEX_EOS, "$1"))
 			continue;
-		if (regex_replace(t, t, "(.*[^\\\\]) \\\\\\]\\'", "$1"))
+		if (regex_replace(t, t, "(.*[^\\\\]) \\\\\\]" REGEX_EOS, "$1"))
 			continue;
-		if (regex_replace(t, t, "(.*[^\\\\]) \\\\end\\{[a-zA-Z_]*\\*?\\}\\'", "$1"))
+		if (regex_replace(t, t, "(.*[^\\\\]) \\\\end\\{[a-zA-Z_]*\\*?\\}" REGEX_EOS, "$1"))
 			continue;
-		if (regex_replace(t, t, "(.*[^\\\\])\\}\\'", "$1")) {
+		if (regex_replace(t, t, "(.*[^\\\\])\\}" REGEX_EOS, "$1")) {
 			++open_braces;
 			continue;
 		}
@@ -933,13 +943,14 @@ MatchStringAdv::MatchStringAdv(lyx::Buffer & buf, FindAndReplaceOptions const & 
 		LYXERR(Debug::FIND, "Open braces: " << open_braces);
 		LYXERR(Debug::FIND, "Close .*?  : " << close_wildcards);
 		LYXERR(Debug::FIND, "Replaced text (to be used as regex): " << par_as_string);
+
 		// If entered regexp must match at begin of searched string buffer
-		string regexp_str = string("\\`") + lead_as_regexp + par_as_string;
+		string regexp_str = lead_as_regexp + par_as_string;
 		LYXERR(Debug::FIND, "Setting regexp to : '" << regexp_str << "'");
 		regexp = lyx::regex(regexp_str);
 
 		// If entered regexp may match wherever in searched string buffer
-		string regexp2_str = string("\\`.*") + lead_as_regexp + ".*" + par_as_string;
+		string regexp2_str = lead_as_regexp + ".*" + par_as_string;
 		LYXERR(Debug::FIND, "Setting regexp2 to: '" << regexp2_str << "'");
 		regexp2 = lyx::regex(regexp2_str);
 	}
@@ -959,8 +970,16 @@ int MatchStringAdv::findAux(DocIterator const & cur, int len, bool at_begin) con
 
 	if (use_regexp) {
 		LYXERR(Debug::FIND, "Searching in regexp mode: at_begin=" << at_begin);
-		regex const & p_regexp = at_begin ? regexp : regexp2;
-		sregex_iterator re_it(str.begin(), str.end(), p_regexp);
+		regex const *p_regexp;
+		regex_constants::match_flag_type flags;
+		if (at_begin) {
+			flags = regex_constants::match_continuous;
+			p_regexp = &regexp;
+		} else {
+			flags = regex_constants::match_default;
+			p_regexp = &regexp2;
+		}
+		sregex_iterator re_it(str.begin(), str.end(), *p_regexp, flags);
 		if (re_it == sregex_iterator())
 			return 0;
 		match_results<string::const_iterator> const & m = *re_it;

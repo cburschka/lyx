@@ -63,7 +63,7 @@ echo
 
 if [ ! -d $LYX_HOME ]; then
     mkdir -p $LYX_HOME
-#    mkdir -p $LYX_USERDIR
+    mkdir -p $LYX_USERDIR
 #    cp preferences $LYX_USERDIR
     cd $LYX_HOME
     echo "Initializing testing environment . . ."

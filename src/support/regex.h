@@ -43,4 +43,14 @@ using LR_NS::regex_constants::match_flag_type;
 
 #undef LR_NS
 
+#ifdef LYX_USE_STD_REGEX
+// Match Begin and End of String when using ECMAScript (default std::regex)
+#define REGEX_BOS "^"
+#define REGEX_EOS "$"
+#else
+// Match Begin and End of String when using Perl RE (default boost::regex)
+#define REGEX_BOS "\\`"
+#define REGEX_EOS "\\'"
+#endif
+
 #endif
