@@ -1984,7 +1984,7 @@ def convert_mathindent(document):
         document.header[i] = document.header[i].replace("fleqn,", "")
         j = find_re(document.header, regexp, 0)
         if i == j:
-            # then we have fleqn as the only option 
+            # then we have fleqn as the only option
             del document.header[i]
     else:
         document.header.insert(k, "\\is_math_indent 0")
@@ -2006,7 +2006,7 @@ def revert_mathindent(document):
         regexp = re.compile(r'(\\is_math_indent)')
         j = find_re(document.header, regexp, 0)
         del document.header[j]
-    else:    
+    else:
         k = find_token(document.header, "\\options", 0)
         if k != -1:
     	    document.header[k] = document.header[k].replace("\\options", "\\options fleqn,")
