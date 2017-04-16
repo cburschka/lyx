@@ -214,6 +214,9 @@ What's new
 
 - Handle math insets properly when inserting index entries (bug 6344).
 
+- When adding a label in the first paragraph after a division (section,
+  etc), use the label prefix for it (bug 10624).
+
 
 * INTERNALS
 
