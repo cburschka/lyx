@@ -25242,7 +25242,7 @@ reference "sec:Colocación-de-leyendas"
  Un cuadro cerrado se muestra así: 
 \begin_inset Graphics
 	filename clipart/flotante.png
-	scale 70
+	scale 95
 
 \end_inset
 
@@ -30946,7 +30946,7 @@ Aparece un recuadro como este:
  
 \begin_inset Graphics
 	filename clipart/notapie.png
-	scale 80
+	scale 90
 
 \end_inset
 
@@ -30988,7 +30988,7 @@ Aquí hay un ejemplo de nota al pie:
 \bar no
 
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -33367,7 +33367,7 @@ Marco (Minipágina)
 : 
 \begin_inset Graphics
 	filename clipart/CuadroMinipagina.png
-	scale 75
+	scale 95
 
 \end_inset
 
@@ -39598,6 +39598,7 @@ reference "sec:Diálogo-Gráficos"
 \begin_inset External
 	template VectorGraphics
 	filename ../clipart/SVG-Drawing.svg
+	lyxscale 50
 	scale 33
 
 \end_inset
@@ -39865,20 +39866,17 @@ El material externo se muestra en \SpecialChar LyX
 
 \begin_inset Graphics
 	filename clipart/MaterialExterno.png
-	scale 75
+	scale 95
 
 \end_inset
 
  o como imagen, dependiendo de si se marca la opción 
 \family sans
-Mostrar en \SpecialChar LyX
- 
+Mostrar en LyX 
 \family default
 de la pestaña 
 \family sans
-Opciones de \SpecialChar LaTeX
- y \SpecialChar LyX
-
+Opciones de LaTeX y LyX
 \family default
  del diálogo
 \family sans
@@ -39891,6 +39889,13 @@ En el manual
 Personalización
 \emph default
  se explica cómo definir tus propias plantillas.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -39946,7 +39951,7 @@ Los documentos incluidos como hijos se muestran en la pantalla de \SpecialChar L
  recuadros del tipo: 
 \begin_inset Graphics
 	filename clipart/DocumentoHijo.png
-	scale 75
+	scale 95
 
 \end_inset
 

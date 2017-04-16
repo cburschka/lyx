@@ -2191,10 +2191,8 @@ Maj-Tab
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-By right-clicking on a section in the outliner you can select the whole
- section to copy, cut or delete it.
+Un clic droit sur un nom de section dans le panneau du plan permet de sélectionn
+er toute la section pour la copier, la coller ou la couper.
 \end_layout
 
 \begin_layout Subsection
@@ -32192,6 +32190,21 @@ Vous pouvez mettre une commande complète ou incomplète dans une boîte de
  \SpecialChar LyX
  standard et donc se trouver hors de la boîte.
  Un exemple pour comprendre: vous voulez tracer un cadre autour d'un mot
+\lang english
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+The LyX way would be to use a framed box.
+\end_layout
+
+\end_inset
+
+
+\lang french
  et donc utiliser la commande \SpecialChar LaTeX
 
 \series bold
@@ -32218,8 +32231,7 @@ fbox{
 \begin_layout Standard
 \begin_inset Graphics
 	filename clipart/ERT.png
-	lyxscale 75
-	scale 50
+	scale 95
 
 \end_inset
 
@@ -32518,7 +32530,7 @@ key "latexcompanion,latexguide"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage cleardoublepage
+\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -33498,7 +33510,7 @@ key "fancyhdr"
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 

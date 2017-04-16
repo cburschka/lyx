@@ -25577,7 +25577,7 @@ reference "abs:Titel-Platzierung"
  Ein geschlossenes Gleitobjekt-Kästchen sieht so aus: 
 \begin_inset Graphics
 	filename clipart/Gleitobjekt.png
-	scale 70
+	scale 95
 	scaleBeforeRotation
 
 \end_inset
@@ -31322,7 +31322,7 @@ Fußnote
  Man sieht dann diese Fußnotenbox: 
 \begin_inset Graphics
 	filename clipart/Fussnote.png
-	scale 80
+	scale 95
 	scaleBeforeRotation
 
 \end_inset
@@ -33748,7 +33748,7 @@ Box (Minipage)
  erscheint: 
 \begin_inset Graphics
 	filename clipart/StandardBox.png
-	scale 85
+	scale 95
 	scaleBeforeRotation
 
 \end_inset
@@ -40026,6 +40026,7 @@ reference "abs:Grafik-Dialog"
 \begin_inset External
 	template VectorGraphics
 	filename ../clipart/SVG-Drawing.svg
+	lyxscale 50
 	scale 33
 
 \end_inset
@@ -40282,10 +40283,14 @@ Entwurf
 \end_inset
 
 \SpecialChar LyX
- kann externes Material entweder als Box wie hier: 
+ kann externes Material entweder als Box wie hier:
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Graphics
 	filename clipart/ExternesMaterial.png
-	scale 75
+	scale 95
 	scaleBeforeRotation
 
 \end_inset
@@ -40297,9 +40302,7 @@ Entwurf
 \family default
 in der Karteikarte 
 \family sans
-\SpecialChar LaTeX
-- und \SpecialChar LyX
--Optionen
+LaTeX- und LyX-Optionen
 \family default
  die Option 
 \family sans
@@ -40307,8 +40310,7 @@ In
 \begin_inset space ~
 \end_inset
 
-\SpecialChar LyX
-
+LyX
 \begin_inset space ~
 \end_inset
 
@@ -40382,8 +40384,8 @@ Dokumentklasse
 Unterdokumente werden in \SpecialChar LyX
  als Box angezeigt: 
 \begin_inset Graphics
-	filename clipart/Unterdokument.png
-	scale 75
+	filename ../clipart/ChildDocument.png
+	scale 95
 	scaleBeforeRotation
 
 \end_inset

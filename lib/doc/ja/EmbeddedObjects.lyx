@@ -24476,7 +24476,7 @@ reference "sec:キャプションの配置"
 畳んだフロートボックスは，
 \begin_inset Graphics
 	filename clipart/float.png
-	scale 70
+	scale 95
 	scaleBeforeRotation
 
 \end_inset
@@ -29691,7 +29691,7 @@ arg   "footnote-insert"
 メニューを使って挿入することができます．すると，脚註文を挿入したところに，
 \begin_inset Graphics
 	filename clipart/footnote.png
-	scale 80
+	scale 95
 	scaleBeforeRotation
 
 \end_inset
@@ -31821,7 +31821,7 @@ arg   "box-insert Frameless"
 を使って挿入することができます．すると，
 \begin_inset Graphics
 	filename clipart/BoxInsetDefault.png
-	scale 85
+	scale 95
 	scaleBeforeRotation
 
 \end_inset
@@ -37432,6 +37432,7 @@ reference "sec:画像ダイアログ"
 \begin_inset External
 	template VectorGraphics
 	filename ../clipart/SVG-Drawing.svg
+	lyxscale 50
 	scale 33
 
 \end_inset
@@ -37688,19 +37689,16 @@ DVI, PDF, PS
 \SpecialChar LyX
 中での外部素材は，ダイアログ内の
 \family sans
-\SpecialChar LaTeX
-と\SpecialChar LyX
-のオプション
+LaTeXとLyXのオプション
 \family default
 タブにある
 \family sans
-\SpecialChar LyX
-内に表示
+LyX内に表示
 \family default
 オプションの指定に従って，
 \begin_inset Graphics
 	filename clipart/ExternalMaterial.png
-	scale 85
+	scale 95
 	scaleBeforeRotation
 
 \end_inset
@@ -37780,6 +37778,7 @@ status collapsed
 中で
 \begin_inset Graphics
 	filename clipart/ChildDocument.png
+	scale 95
 	scaleBeforeRotation
 
 \end_inset
