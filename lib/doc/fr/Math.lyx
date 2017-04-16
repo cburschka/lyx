@@ -11331,7 +11331,7 @@ Les tailles 5
 \begin_inset space \thinspace{}
 \end_inset
 
-–
+–​
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -25442,12 +25442,12 @@ sgn
 \end_layout
 
 \begin_layout Itemize
-écrire la formule comme d'habitude, marquer le nom de la fonction – dans
+écrire la formule comme d'habitude, marquer le nom de la fonction –​ dans
  notre exemple les lettres 
 \emph on
 sgn
 \emph default
- – et les changer en texte mathématique.
+ –​ et les changer en texte mathématique.
  Pour finir, on insère une espace entre le préfacteur et la fonction.
 \end_layout
 
@@ -27691,9 +27691,7 @@ mathindent}{15mm}
 
 \begin_layout Standard
 Si on ne spécifie pas de distance, une valeur prédéfinie est utilisée.
- 
-\lang english
-The value depends on the used document class.
+ Cette valeur dépend de la clase de document utilisée.
 \end_layout
 
 \end_deeper
@@ -38424,6 +38422,7 @@ target "http://physics.nist.gov/Pubs/SP811/sec11.html"
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
+name "Index"
 
 \end_inset
 
