@@ -342,7 +342,6 @@ public:
 	 * and for detached paragraphs in "indented" documents.
 	 */
 	VSpace defskip;
-	HSpace math_indentation;
 	PDFOptions pdfoptions;
 	LayoutFileIndex baseClass_;
 	FormatList exportableFormatList;
@@ -629,18 +628,6 @@ PDFOptions const & BufferParams::pdfoptions() const
 }
 
 
-HSpace const & BufferParams::getMathIndentation() const
-{
-	return pimpl_->math_indentation;
-}
-
-
-void BufferParams::setMathIndentation(HSpace const & indent)
-{
-	pimpl_->math_indentation = indent;
-}
-
-
 Length const & BufferParams::getParIndent() const
 {
 	return pimpl_->parindent;
@@ -846,9 +833,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\is_math_indent") {
 		lex >> is_math_indent;
 	} else if (token == "\\math_indentation") {
-		lex.next();
-		string math_indentation = lex.getString();
-		pimpl_->math_indentation = HSpace(math_indentation);
+		lex >> math_indentation;
 	} else if (token == "\\quotes_style") {
 		string qstyle;
 		lex >> qstyle;
@@ -1346,8 +1331,8 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	else
 		os << "\n\\defskip " << getDefSkip().asLyXCommand();
 	os << "\n\\is_math_indent " << is_math_indent;
-	if (is_math_indent && getMathIndentation().asLyXCommand() != "default")
-		os << "\n\\math_indentation " << getMathIndentation().asLyXCommand();
+	if (is_math_indent && math_indentation != "default")
+		os << "\n\\math_indentation " << math_indentation;
 	os << "\n\\quotes_style "
 	   << string_quotes_style[quotes_style]
 	   << "\n\\dynamic_quotes " << dynamic_quotes
@@ -1959,9 +1944,9 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	if (is_math_indent) {
 		// when formula indentation
 		// only output something when it is not the default
-		if (getMathIndentation().asLyXCommand() != "default") {
+		if (math_indentation != "default") {
 			os << "\\setlength{\\mathindent}{"
-			   << from_utf8(getMathIndentation().asLatexCommand())
+			   << from_utf8(math_indentation)
 			   << "}\n";
 		}
 	}

@@ -727,6 +727,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 	connect(textLayoutModule->MathIndentCB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
+	connect(textLayoutModule->MathIndentCB, SIGNAL(toggled(bool)),
+		this, SLOT(allowMathIndent()));
 	connect(textLayoutModule->MathIndentCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(textLayoutModule->MathIndentCO, SIGNAL(activated(int)),
@@ -1608,6 +1610,22 @@ void GuiDocument::enableSkip(bool skip)
 	textLayoutModule->indentLengthCO->setEnabled(!skip);
 	if (skip)
 		setSkip(textLayoutModule->skipCO->currentIndex());
+}
+
+void GuiDocument::allowMathIndent()
+{
+	// only disable when not checked, checked does not always allow enabling
+	if (!textLayoutModule->MathIndentCB->isChecked()) {
+		textLayoutModule->MathIndentLE->setEnabled(false);
+		textLayoutModule->MathIndentLengthCO->setEnabled(false);
+	}
+	if (textLayoutModule->MathIndentCB->isChecked()
+	    && textLayoutModule->MathIndentCO->currentIndex() == 1) {
+		textLayoutModule->MathIndentLE->setEnabled(true);
+		textLayoutModule->MathIndentLengthCO->setEnabled(true);
+		
+	}
+	isValid();
 }
 
 void GuiDocument::setMathIndent(int item)
@@ -2900,16 +2918,7 @@ void GuiDocument::applyView()
 		if (rb->isChecked())
 			bp_.use_package(it->first, BufferParams::package_off);
 	}
-	bp_.is_math_indent = textLayoutModule->MathIndentCB->isChecked();
-	// if math is indented
-	if (bp_.is_math_indent) {
-		HSpace MathIndentation = HSpace(
-				widgetsToLength(textLayoutModule->MathIndentLE,
-				textLayoutModule->MathIndentLengthCO)
-				);
-			bp_.setMathIndentation(MathIndentation);
-	}
-
+	
 	// Page Layout
 	if (pageLayoutModule->pagestyleCO->currentIndex() == 0)
 		bp_.pagestyle = "default";
@@ -2997,26 +3006,24 @@ void GuiDocument::applyView()
 		}
 	}
 
-	if (textLayoutModule->MathIndentCB->isChecked()) {
-		// if formulas are indented
+	bp_.is_math_indent = textLayoutModule->MathIndentCB->isChecked();
+	if (bp_.is_math_indent) {
+		// if math is indented
 		switch (textLayoutModule->MathIndentCO->currentIndex()) {
 		case 0:
-			bp_.setMathIndentation(HSpace(HSpace::DEFAULT));
+			bp_.math_indentation = "default";
 			break;
-		case 1:	{
-			HSpace MathIndent = HSpace(
-				widgetsToLength(textLayoutModule->MathIndentLE,
-				textLayoutModule->MathIndentLengthCO)
-				);
-			bp_.setMathIndentation(MathIndent);
+		case 1:
+			bp_.math_indentation = widgetsToLength(textLayoutModule->MathIndentLE,
+				textLayoutModule->MathIndentLengthCO);
 			break;
-			}
 		default:
 			// this should never happen
-			bp_.setMathIndentation(HSpace(HSpace::DEFAULT));
+			bp_.math_indentation = "default";
 			break;
 		}
-	}
+	} else
+		bp_.math_indentation = "default";
 
 	bp_.options =
 		fromqstr(latexModule->optionsLE->text());
@@ -3384,12 +3391,11 @@ void GuiDocument::paramsToDialog()
 	// math
 	if (bp_.is_math_indent) {
 		textLayoutModule->MathIndentCB->setChecked(bp_.is_math_indent);
-		string MathIndentation = bp_.getMathIndentation().asLyXCommand();
 		int MathIndent = 0;
-		if (MathIndentation != "default") {
+		if (bp_.math_indentation != "default") {
 			lengthToWidgets(textLayoutModule->MathIndentLE,
 			textLayoutModule->MathIndentLengthCO,
-			MathIndentation, default_unit);
+			bp_.math_indentation, default_unit);
 			MathIndent = 1;
 		}
 		textLayoutModule->MathIndentCO->setCurrentIndex(MathIndent);
