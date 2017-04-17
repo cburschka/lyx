@@ -4066,6 +4066,14 @@ bool GuiDocument::isValid()
 			textLayoutModule->indentCO->currentIndex() != 1 ||
 			// or else a length has been given
 			!textLayoutModule->indentLE->text().isEmpty()
+		) &&
+		(
+			// if we're asking for indentation
+			!textLayoutModule->MathIndentCB->isChecked() ||
+			// then either we haven't chosen custom
+			textLayoutModule->MathIndentCO->currentIndex() != 1 ||
+			// or else a length has been given
+			!textLayoutModule->MathIndentLE->text().isEmpty()
 		);
 }
 
