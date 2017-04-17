@@ -1089,43 +1089,57 @@ def revert_BoxFeatures(document):
     defaultThick = "0.4pt"
     defaultShadow = "4pt"
     while True:
-        i = find_token(document.body, "height_special", i)
+        i = find_token(document.body, "thickness", i)
         if i == -1:
             return
+        binset = find_token(document.body, "\\begin_inset Box", i - 11)
+        if binset == -1:
+            return # then "thickness" is is just a word in the text
+        einset = find_end_of_inset(document.body, binset)
+        if einset == -1:
+            document.warning("Malformed LyX document: Can't find end of box inset!")
+            continue
         # read out the values
+        beg = document.body[i].find('"');
+        end = document.body[i].rfind('"');
+        thickness = document.body[i][beg+1:end];
         beg = document.body[i+1].find('"');
         end = document.body[i+1].rfind('"');
-        thickness = document.body[i+1][beg+1:end];
+        separation = document.body[i+1][beg+1:end];
         beg = document.body[i+2].find('"');
         end = document.body[i+2].rfind('"');
-        separation = document.body[i+2][beg+1:end];
-        beg = document.body[i+3].find('"');
-        end = document.body[i+3].rfind('"');
-        shadowsize = document.body[i+3][beg+1:end];
+        shadowsize = document.body[i+2][beg+1:end];
         # delete the specification
-        del document.body[i+1:i+4]
+        del document.body[i:i+3]
         # output ERT
         # first output the closing brace
         if shadowsize != defaultShadow or separation != defaultSep or thickness != defaultThick:
-            document.body[i + 10 : i + 10] = put_cmd_in_ert("}")
+            document.body[einset -1 : einset - 1] = put_cmd_in_ert("}")
+        # we have now the problem that if there is already \(f)colorbox in ERT around the inset
+        # the ERT from this routine must be around it
+        regexp = re.compile(r'^.*colorbox{.*$')
+        pos = find_re(document.body, regexp, binset - 4)
+        if pos != -1 and pos == binset - 4:
+            pos = i - 11 - 10
+        else:
+            pos = i - 11
         # now output the lengths
         if shadowsize != defaultShadow or separation != defaultSep or thickness != defaultThick:
-            document.body[i - 10 : i - 10] = put_cmd_in_ert("{")
+            document.body[pos : pos] = put_cmd_in_ert("{")
         if thickness != defaultThick:
-            document.body[i - 5 : i - 4] = ["{\\backslash fboxrule " + thickness]
+            document.body[pos + 5 : pos +6] = ["{\\backslash fboxrule " + thickness]
         if separation != defaultSep and thickness == defaultThick:
-            document.body[i - 5 : i - 4] = ["{\\backslash fboxsep " + separation]
+            document.body[pos + 5 : pos +6] = ["{\\backslash fboxsep " + separation]
         if separation != defaultSep and thickness != defaultThick:
-            document.body[i - 5 : i - 4] = ["{\\backslash fboxrule " + thickness + "\\backslash fboxsep " + separation]
+            document.body[pos + 5 : pos +6] = ["{\\backslash fboxrule " + thickness + "\\backslash fboxsep " + separation]
         if shadowsize != defaultShadow and separation == defaultSep and thickness == defaultThick:
-            document.body[i - 5 : i - 4] = ["{\\backslash shadowsize " + shadowsize]
+            document.body[pos + 5 : pos +6] = ["{\\backslash shadowsize " + shadowsize]
         if shadowsize != defaultShadow and separation != defaultSep and thickness == defaultThick:
-            document.body[i - 5 : i - 4] = ["{\\backslash fboxsep " + separation + "\\backslash shadowsize " + shadowsize]
+            document.body[pos + 5 : pos +6] = ["{\\backslash fboxsep " + separation + "\\backslash shadowsize " + shadowsize]
         if shadowsize != defaultShadow and separation == defaultSep and thickness != defaultThick:
-            document.body[i - 5 : i - 4] = ["{\\backslash fboxrule " + thickness + "\\backslash shadowsize " + shadowsize]
+            document.body[pos + 5 : pos +6] = ["{\\backslash fboxrule " + thickness + "\\backslash shadowsize " + shadowsize]
         if shadowsize != defaultShadow and separation != defaultSep and thickness != defaultThick:
-            document.body[i - 5 : i - 4] = ["{\\backslash fboxrule " + thickness + "\\backslash fboxsep " + separation + "\\backslash shadowsize " + shadowsize]
-        i = i + 11
+            document.body[pos + 5 : pos +6] = ["{\\backslash fboxrule " + thickness + "\\backslash fboxsep " + separation + "\\backslash shadowsize " + shadowsize]
 
 
 def convert_origin(document):
@@ -1224,66 +1238,53 @@ def convert_colorbox(document):
 def revert_colorbox(document):
     " outputs color settings for boxes as TeX code "
 
-    binset = 0
+    i = 0
     defaultframecolor = "black"
     defaultbackcolor = "none"
     while True:
-        binset = find_token(document.body, "\\begin_inset Box", binset)
+        i = find_token(document.body, "framecolor", i)
+        if i == -1:
+            return
+        binset = find_token(document.body, "\\begin_inset Box", i - 14)
         if binset == -1:
             return
-
         einset = find_end_of_inset(document.body, binset)
         if einset == -1:
             document.warning("Malformed LyX document: Can't find end of box inset!")
-            binset += 1
             continue
-
-        blay = find_token(document.body, "\\begin_layout", binset, einset)
-        if blay == -1:
-            document.warning("Malformed LyX document: Can't find start of layout!")
-            binset = einset
-            continue
-
-        # doing it this way, we make sure only to find a framecolor option
-        frame = find_token(document.body, "framecolor", binset, blay)
-        if frame == -1:
-            binset = einset
-            continue
-
-        beg = document.body[frame].find('"')
-        end = document.body[frame].rfind('"')
-        framecolor = document.body[frame][beg + 1 : end]
-
-        # this should be on the next line
-        bgcolor = frame + 1
-        beg = document.body[bgcolor].find('"')
-        end = document.body[bgcolor].rfind('"')
-        backcolor = document.body[bgcolor][beg + 1 : end]
-
-        # delete those bits
-        del document.body[frame : frame + 2]
-        # adjust end of inset
-        einset -= 2
-
-        if document.body[binset] == "\\begin_inset Box Boxed" and \
-            framecolor != defaultframecolor:
-          document.body[binset] = "\\begin_inset Box Frameless"
-
-        # output TeX code
+        # read out the values
+        beg = document.body[i].find('"');
+        end = document.body[i].rfind('"');
+        framecolor = document.body[i][beg+1:end];
+        beg = document.body[i + 1].find('"');
+        end = document.body[i + 1].rfind('"');
+        backcolor = document.body[i+1][beg+1:end];
+        # delete the specification
+        del document.body[i:i + 2]
+        # output ERT
         # first output the closing brace
-        if framecolor == defaultframecolor and backcolor == defaultbackcolor:
-            # nothing needed
-            pass
-        else:
-            # we also neeed to load xcolor in the preamble but only once
+        if framecolor != defaultframecolor or backcolor != defaultbackcolor:
             add_to_preamble(document, ["\\@ifundefined{rangeHsb}{\\usepackage{xcolor}}{}"])
-            document.body[einset + 2 : einset + 2] = put_cmd_in_ert("}")
-            if framecolor != defaultframecolor:
-                document.body[binset:binset] = put_cmd_in_ert("\\fcolorbox{" + framecolor + "}{" + backcolor + "}{")
-            else:
-              document.body[binset:binset] = put_cmd_in_ert("\\colorbox{" + backcolor + "}{")
-
-        binset = einset
+            document.body[einset : einset] = put_cmd_in_ert("}")
+        # determine the box type
+        isBox = find_token(document.body, "\\begin_inset Box Boxed", binset)
+        # now output the box commands
+        if (framecolor != defaultframecolor and isBox == binset) or (backcolor != defaultbackcolor and isBox == binset):
+            document.body[i - 14 : i - 14] = put_cmd_in_ert("\\fcolorbox{" + framecolor + "}{" + backcolor + "}{")
+            # in the case we must also change the box type because the ERT code adds a frame
+            document.body[i - 4] = "\\begin_inset Box Frameless"
+            # if has_inner_box 0 we must set it and use_makebox to 1
+            ibox = find_token(document.body, "has_inner_box", i - 4)
+            if ibox == -1 or ibox != i - 1:
+                document.warning("Malformed LyX document: Can't find has_inner_box statement!")
+                continue
+            # read out the value
+            innerbox = document.body[ibox][-1:];
+            if innerbox == "0":
+                document.body[ibox] = "has_inner_box 1"
+                document.body[ibox + 3] = "use_makebox 1"
+        if backcolor != defaultbackcolor and isBox != binset:
+            document.body[i - 14 : i - 14] =  put_cmd_in_ert("\\colorbox{" + backcolor + "}{")
 
 
 def revert_mathmulticol(document):
