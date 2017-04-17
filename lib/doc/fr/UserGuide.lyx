@@ -9014,14 +9014,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -9034,7 +9032,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9067,7 +9064,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -32196,9 +32192,15 @@ Vous pouvez mettre une commande complète ou incomplète dans une boîte de
 status collapsed
 
 \begin_layout Plain Layout
+Avec LyX, il est possible d'utiliser une boîte avec l'option 
+\begin_inset Quotes fld
+\end_inset
 
-\lang english
-The LyX way would be to use a framed box.
+Cadre simple
+\begin_inset Quotes frd
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -33526,9 +33528,7 @@ pagestyle{headings}
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-switches back to page style with the default headings
+Revient à la mise en pages avec les en-têtes implicites
 \end_layout
 
 \end_inset
