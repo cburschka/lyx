@@ -3162,7 +3162,9 @@ Das Senden und Anwenden von Daten setzt voraus, dass alle Formularelemente
 \end_layout
 
 \begin_layout Itemize
-Ein PDF-Formular zu erstellen, benötigt pdflatex oder lualatex.
+Ein PDF-Formular zu erstellen, benötigt pdf\SpecialChar TeX
+ oder Lua\SpecialChar TeX
+.
  Verwenden Sie daher die \SpecialChar LyX
 -Exportformate 
 \family sans
@@ -3170,8 +3172,7 @@ PDF (pdflatex)
 \family default
  oder 
 \family sans
-PDF (Lua\SpecialChar TeX
-)
+PDF (LuaTeX)
 \family default
 .
 \end_layout
