@@ -1516,17 +1516,16 @@ def revert_makebox(document):
       document.warning("Malformed LyX document: Can't find layout in box.")
       i = z
       continue
-    # by looking before the layout we make sure we're actually finding
-    # an option, not text.
-    j = find_token(document.body, 'use_makebox', i, blay)
-    if j == -1:
-        i = z
-        continue
-
+    j = find_token(document.body, 'use_makebox', i)
+    if j == -1 or j != i +6:
+      document.warning("Malformed LyX document: Can't find use_makebox statement in box.")
+      i = z
+      continue
+    # delete use_makebox
     if not check_token(document.body[i], "\\begin_inset Box Frameless") \
       or get_value(document.body, 'use_makebox', j) != 1:
         del document.body[j]
-        i = z
+        i += 1
         continue
     bend = find_end_of_layout(document.body, blay)
     if bend == -1 or bend > z:
@@ -1553,26 +1552,14 @@ def convert_use_makebox(document):
     i = find_token(document.body, '\\begin_inset Box', i)
     if i == -1:
       return
-    # all of this is to make sure we actually find the use_parbox
-    # that is an option for this box, not some text elsewhere.
-    z = find_end_of_inset(document.body, i)
-    if z == -1:
-      document.warning("Can't find end of box inset!!")
+    k = find_token(document.body, 'use_parbox', i)
+    if k == -1 or k != i + 5:
+      document.warning("Malformed LyX document: Can't find use_parbox statement in box.")
       i += 1
       continue
-    blay = find_token(document.body, "\\begin_layout", i, z)
-    if blay == -1:
-      document.warning("Can't find layout in box inset!!")
-      i = z
-      continue
-    # so now we are looking for use_parbox before the box's layout
-    k = find_token(document.body, 'use_parbox', i, blay)
-    if k == -1:
-      document.warning("Malformed LyX document: Can't find use_parbox statement in box.")
-      i = z
-      continue
-    document.body.insert(k + 1, "use_makebox 0")
-    i = blay + 1 # not z + 1 (box insets may be nested)
+    if k == i + 5:
+      document.body.insert(k + 1, "use_makebox 0")
+    i += 1
 
 
 def revert_IEEEtran(document):
