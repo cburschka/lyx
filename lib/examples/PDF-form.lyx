@@ -26,10 +26,10 @@
    this.delay = true;
    if((event.value == "u") || (event.value == "unlimited")) {
     this.getField("from").display = display.hidden;
-    this.getField("to").display = display.hidden;
+    this.getField("until").display = display.hidden;
    } else {
     this.getField("from").display = display.visible;
-    this.getField("to").display = display.visible;
+    this.getField("until").display = display.visible;
     this.getField("from").setFocus();
    }
    this.delay = false;
@@ -2868,7 +2868,7 @@ begin{insDLJS}[exaaae]{exaaae}{JavaScript}
 
 \begin_layout Plain Layout
 
-   this.getField("to").display = display.hidden;
+   this.getField("until").display = display.hidden;
 \end_layout
 
 \begin_layout Plain Layout
@@ -2883,7 +2883,7 @@ begin{insDLJS}[exaaae]{exaaae}{JavaScript}
 
 \begin_layout Plain Layout
 
-   this.getField("to").display = display.visible;
+   this.getField("until").display = display.visible;
 \end_layout
 
 \begin_layout Plain Layout
@@ -3065,7 +3065,7 @@ name=from,width=10em
 \begin_inset Text
 
 \begin_layout Plain Layout
-To:
+Until:
 \end_layout
 
 \end_inset
@@ -3082,7 +3082,7 @@ status open
 status open
 
 \begin_layout Plain Layout
-name=to,width=10em
+name=until,width=10em
 \end_layout
 
 \end_inset
@@ -3269,7 +3269,9 @@ Submitting and applying data requires that all form elements have a name.
 \end_layout
 
 \begin_layout Itemize
-Creating a PDF form requires pdflatex or lualatex.
+Creating a PDF form requires pdf\SpecialChar TeX
+ or Lua\SpecialChar TeX
+.
  Use therefore either the \SpecialChar LyX
  export formats 
 \family sans
@@ -3277,8 +3279,7 @@ PDF (pdflatex)
 \family default
  or 
 \family sans
-PDF (Lua\SpecialChar TeX
-)
+PDF (LuaTeX)
 \family default
 .
 \end_layout
