@@ -15,7 +15,6 @@
 #include "InsetMathChar.h"
 #include "InsetMathColor.h"
 #include "InsetMathFrac.h"
-#include "InsetMathGrid.h"
 #include "InsetMathNest.h"
 #include "InsetMathScript.h"
 #include "MathExtern.h"

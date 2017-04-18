@@ -160,7 +160,7 @@ What's new
 
 - Do not convert "--" to "\twohyphens" in formula macros.
 
-- Fix bug in the reversion of colored boxes with special frame settings.
+- Fix bugs in the reversion of colored boxes with special frame settings.
 
 
 * USER INTERFACE
@@ -218,6 +218,8 @@ What's new
 
 - Fix display and output of math macros with optional arguments appearing
   in the optional argument of another macro.
+
+- Handle the command \multicolumn correctly in math macros (bug 10466).
 
 - Do not prematurely cut selected text when inserting a Hyperref (bug 10306).
 

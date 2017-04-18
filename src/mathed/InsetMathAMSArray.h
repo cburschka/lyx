@@ -54,6 +54,9 @@ public:
 	char const * name_left() const;
 	///
 	char const * name_right() const;
+	/// 
+	bool handlesMulticolumn() const { return true; } //override 
+
 private:
 	virtual Inset * clone() const;
 	///

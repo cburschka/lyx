@@ -47,6 +47,8 @@ public:
 	void maple(MapleStream &) const;
 	///
 	InsetCode lyxCode() const { return MATH_TABULAR_CODE; }
+	/// 
+	bool handlesMulticolumn() const { return true; } //override
 
 private:
 	Inset * clone() const;

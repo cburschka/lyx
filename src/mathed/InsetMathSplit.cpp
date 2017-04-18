@@ -48,11 +48,6 @@ Inset * InsetMathSplit::clone() const
 }
 
 
-// FIXME: InsetMathGrid should be changed to let the real column alignment be
-// given by a virtual method like displayColAlign, because the values produced
-// by defaultColAlign can be invalidated by lfuns such as add-column. I suspect
-// that for the moment the values produced by defaultColAlign are not used,
-// notably because alignment is not implemented in the LyXHTML output.
 char InsetMathSplit::defaultColAlign(col_type col)
 {
 	if (name_ == "gathered")

@@ -221,6 +221,8 @@ public:
 	virtual int vlinesep() const;
 	///
 	virtual int border() const;
+	/// 
+	virtual bool handlesMulticolumn() const { return false; }
 
 	///
 	void write(WriteStream & os) const;

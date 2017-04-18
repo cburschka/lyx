@@ -54,6 +54,9 @@ public:
 	InsetCode lyxCode() const { return MATH_CASES_CODE; }
 	///
 	int displayColSpace(col_type) const;
+	/// see e.g. https://tex.stackexchange.com/a/133283/87201 
+	bool handlesMulticolumn() const { return true; } //override
+
 private:
 	virtual Inset * clone() const;
 };

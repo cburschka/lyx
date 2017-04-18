@@ -51,6 +51,9 @@ public:
 	void validate(LaTeXFeatures & features) const;
 	///
 	InsetCode lyxCode() const { return MATH_ARRAY_CODE; }
+	/// 
+	bool handlesMulticolumn() const { return true; } //override 
+
 private:
 	virtual Inset * clone() const;
 	///
