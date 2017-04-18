@@ -2153,8 +2153,7 @@ void GuiView::openDocument(string const & fname)
 	if (fname.empty()) {
 		FileDialog dlg(qt_("Select document to open"));
 		dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
-		dlg.setButton2(qt_("Examples|#E#e"),
-				toqstr(addPath(package().system_support().absFileName(), "examples")));
+		dlg.setButton2(qt_("Examples|#E#e"), toqstr(lyxrc.example_path));
 
 		QStringList const filter(qt_("LyX Documents (*.lyx)"));
 		FileDialog::Result result =
@@ -2292,8 +2291,7 @@ void GuiView::importDocument(string const & argument)
 
 		FileDialog dlg(toqstr(text));
 		dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
-		dlg.setButton2(qt_("Examples|#E#e"),
-			toqstr(addPath(package().system_support().absFileName(), "examples")));
+		dlg.setButton2(qt_("Examples|#E#e"), toqstr(lyxrc.example_path));
 
 		docstring filter = theFormats().prettyName(format);
 		filter += " (*.{";
@@ -2426,9 +2424,7 @@ void GuiView::insertLyXFile(docstring const & fname)
 		// FIXME UNICODE
 		FileDialog dlg(qt_("Select LyX document to insert"));
 		dlg.setButton1(qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
-		dlg.setButton2(qt_("Examples|#E#e"),
-			toqstr(addPath(package().system_support().absFileName(),
-			"examples")));
+		dlg.setButton2(qt_("Examples|#E#e"), toqstr(lyxrc.example_path));
 
 		FileDialog::Result result = dlg.open(toqstr(initpath),
 					 QStringList(qt_("LyX Documents (*.lyx)")));
