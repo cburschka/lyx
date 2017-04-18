@@ -52,7 +52,7 @@ Length::Length(double v, Length::UNIT u)
 
 
 Length::Length(string const & data)
-	: val_(0), unit_(Length::PT)
+	: val_(0), unit_(Length::UNIT_NONE)
 {
 	Length tmp;
 

@@ -822,7 +822,12 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex >> parsep;
 		paragraph_separation = parseptranslator().find(parsep);
 	} else if (token == "\\paragraph_indentation") {
-		lex >> pimpl_->parindent;
+		lex.next();
+		string parindent = lex.getString();
+		if (parindent == "default")
+			pimpl_->parindent = Length();
+		else
+			pimpl_->parindent = Length(parindent);
 	} else if (token == "\\defskip") {
 		lex.next();
 		string const defskip = lex.getString();
@@ -1327,7 +1332,8 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	   << "\n\\paragraph_separation "
 	   << string_paragraph_separation[paragraph_separation];
 	if (!paragraph_separation)
-		os << "\n\\paragraph_indentation " << Lexer::quoteString(pimpl_->parindent.asString());
+		os << "\n\\paragraph_indentation "
+		   << (pimpl_->parindent.empty() ? "default" : pimpl_->parindent.asString());
 	else
 		os << "\n\\defskip " << getDefSkip().asLyXCommand();
 	os << "\n\\is_math_indent " << is_math_indent;
