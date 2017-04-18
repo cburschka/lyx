@@ -20,7 +20,7 @@ CLEANFILES = $(MOCEDFILES)
 BUILT_SOURCES = $(MOCEDFILES)
 
 moc_%.cpp: %.h
-	$(QT_MOC) -o $@ $<
+	$(AM_V_GEN)$(QT_MOC) -o $@ $<
 
 liblyxsupport_a_DEPENDENCIES = $(MOCEDFILES)
 
