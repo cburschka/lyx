@@ -55,7 +55,10 @@ What's new
 - fixes to cursor positionning on mouse click for right-to-left text
   (bug 10569).
 
-- Fix metricsof full-width insets when paragraph endings are shown (bug #10537).
+- Fix metrics of full-width insets when paragraph endings are shown
+  (bug #10537).
+
+- Fix glacial performance with ancient Hebrew text on macOS.
 
 
 * INTERNALS
