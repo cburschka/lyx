@@ -61,7 +61,8 @@ namespace frontend {
 int cache_metrics_width_size = 1 << 19;
 int cache_metrics_breakat_size = 1 << 19;
 // Qt 5.x already has its own caching of QTextLayout objects
-#if (QT_VERSION < 0x050000)
+// but it does not seem to work well on MacOS X.
+#if (QT_VERSION < 0x050000) || defined(Q_OS_MAC)
 int cache_metrics_qtextlayout_size = 500;
 #else
 int cache_metrics_qtextlayout_size = 0;
