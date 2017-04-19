@@ -26,7 +26,6 @@
 #include "CoordCache.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
-#include "HSpace.h"
 #include "InsetList.h"
 #include "Language.h"
 #include "Layout.h"

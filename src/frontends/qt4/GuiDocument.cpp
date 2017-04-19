@@ -38,7 +38,6 @@
 #include "FloatPlacement.h"
 #include "Format.h"
 #include "FuncRequest.h"
-#include "HSpace.h"
 #include "IndicesList.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
@@ -2903,13 +2902,10 @@ void GuiDocument::applyView()
 	bp_.is_math_indent = textLayoutModule->MathIndentCB->isChecked();
 	// if math is indented
 	if (bp_.is_math_indent) {
-		HSpace MathIndentation = HSpace(
-				widgetsToLength(textLayoutModule->MathIndentLE,
-				textLayoutModule->MathIndentLengthCO)
-				);
-			bp_.setMathIndentation(MathIndentation);
+		Length mathindent(widgetsToLength(textLayoutModule->MathIndentLE,
+		                                  textLayoutModule->MathIndentLengthCO));
+		bp_.setMathIndent(mathindent);
 	}
-
 	// Page Layout
 	if (pageLayoutModule->pagestyleCO->currentIndex() == 0)
 		bp_.pagestyle = "default";
@@ -2955,14 +2951,12 @@ void GuiDocument::applyView()
 		case 0:
 			bp_.setParIndent(Length());
 			break;
-		case 1:	{
-			Length indent(
-				widgetsToLength(textLayoutModule->indentLE,
-				textLayoutModule->indentLengthCO)
-				);
-			bp_.setParIndent(indent);
+		case 1: {
+			Length parindent(widgetsToLength(textLayoutModule->indentLE,
+			                                 textLayoutModule->indentLengthCO));
+			bp_.setParIndent(parindent);
 			break;
-			}
+		}
 		default:
 			// this should never happen
 			bp_.setParIndent(Length());
@@ -3001,19 +2995,17 @@ void GuiDocument::applyView()
 		// if formulas are indented
 		switch (textLayoutModule->MathIndentCO->currentIndex()) {
 		case 0:
-			bp_.setMathIndentation(HSpace(HSpace::DEFAULT));
+			bp_.setMathIndent(Length());
 			break;
-		case 1:	{
-			HSpace MathIndent = HSpace(
-				widgetsToLength(textLayoutModule->MathIndentLE,
-				textLayoutModule->MathIndentLengthCO)
-				);
-			bp_.setMathIndentation(MathIndent);
+		case 1: {
+			Length mathindent(widgetsToLength(textLayoutModule->MathIndentLE,
+			                                  textLayoutModule->MathIndentLengthCO));
+			bp_.setMathIndent(mathindent);
 			break;
-			}
+		}
 		default:
 			// this should never happen
-			bp_.setMathIndentation(HSpace(HSpace::DEFAULT));
+			bp_.setMathIndent(Length());
 			break;
 		}
 	}
@@ -3384,16 +3376,16 @@ void GuiDocument::paramsToDialog()
 	// math
 	if (bp_.is_math_indent) {
 		textLayoutModule->MathIndentCB->setChecked(bp_.is_math_indent);
-		string MathIndentation = bp_.getMathIndentation().asLyXCommand();
-		int MathIndent = 0;
-		if (MathIndentation != "default") {
+		Length const mathindent = bp_.getMathIndent();
+		int indent = 0;
+		if (!mathindent.empty()) {
 			lengthToWidgets(textLayoutModule->MathIndentLE,
-			textLayoutModule->MathIndentLengthCO,
-			MathIndentation, default_unit);
-			MathIndent = 1;
+			                textLayoutModule->MathIndentLengthCO,
+			                mathindent, default_unit);
+			indent = 1;
 		}
-		textLayoutModule->MathIndentCO->setCurrentIndex(MathIndent);
-		setMathIndent(MathIndent);
+		textLayoutModule->MathIndentCO->setCurrentIndex(indent);
+		setMathIndent(indent);
 	}
 
 	map<string, string> const & packages = BufferParams::auto_packages();
