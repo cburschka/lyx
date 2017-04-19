@@ -102,6 +102,11 @@ public:
 	///
 	void setDefSkip(VSpace const & vs);
 
+	///
+	HSpace const & getMathIndentation() const;
+	///
+	void setMathIndentation(HSpace const & indent);
+
 	/// Whether formulas are indented
 	bool is_math_indent;
 
