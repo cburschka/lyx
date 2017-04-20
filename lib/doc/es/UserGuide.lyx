@@ -1691,20 +1691,20 @@ En ciertos casos, al hacer clic derecho sobre un elemento se abre un menú
 
 \begin_layout Standard
 El campo 
-\begin_inset Quotes fld
-\end_inset
-
+\family sans
 Filtro
-\begin_inset Quotes frd
-\end_inset
-
+\family default
  permite restringir las entradas que deben aparecer en el Esquema.
- Por ejemplo, si está abierta la lista de Etiquetas y referencias y quieres
- ver solamente las referencias a subsecciones, introduce el texto 
+ Por ejemplo, si está abierta la lista de 
+\emph on
+Etiquetas y referencias
+\emph default
+ y quieres ver solamente las referencias a subsecciones, introduce el texto
+ 
 \begin_inset Quotes fld
 \end_inset
 
-sub:
+sub
 \begin_inset Quotes frd
 \end_inset
 

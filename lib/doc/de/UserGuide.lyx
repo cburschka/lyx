@@ -1872,9 +1872,13 @@ Das Feld
 Filter
 \family default
  erlaubt es, die angezeigten Einträge einzugrenzen.
- Wenn zum Beispiel die Liste der Marken und Querverweise angezeigt ist und
- Sie nur Verweise auf Unterabschnitte sehen wollen, geben Sie den Text „sub:“
- in den Filter ein und nur Einträge mit diesem Text werden angezeigt.
+ Wenn zum Beispiel die Liste der 
+\emph on
+Marken und Querverweise
+\emph default
+ angezeigt ist und Sie nur Verweise auf Unterabschnitte sehen wollen, geben
+ Sie den Text „sub“ in den Filter ein und nur Einträge mit diesem Text werden
+ angezeigt.
 \end_layout
 
 \begin_layout Standard
@@ -8585,12 +8589,10 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8603,7 +8605,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8627,7 +8628,6 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
-
 Dies ist Unformatiert*.
 \end_layout
 

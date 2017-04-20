@@ -1802,14 +1802,21 @@ Right-clicking on elements in the Outline opens in many cases a context
 \end_layout
 
 \begin_layout Standard
-The “Filter” field at the top allows you to restrict which entries appear
- in the Outline.
- For example, if you are displaying the list of Labels and References and
- wish to see only references to subsections, you can enter the text 
+The 
+\family sans
+Filter
+\family default
+ field at the top allows you to restrict which entries appear in the outline.
+ For example, if you are displaying the list of 
+\emph on
+Labels and References
+\emph default
+ and wish to see only references to subsections, you can enter the text
+ 
 \begin_inset Quotes eld
 \end_inset
 
-sub:
+sub
 \begin_inset Quotes erd
 \end_inset
 
