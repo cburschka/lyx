@@ -1435,7 +1435,7 @@ reference "sec:書誌情報"
 
 \begin_layout Standard
 上部の「フィルタ」フィールドを使うと，文書構造に表示される項目を制限することができます．例えば，ラベルと参照の一覧を表示しているときに，小節への参照のみを見たい
-場合には，フィルタに「sub:」というテキストを入力すれば，このテキストを含む項目，すなわち小節のみが表示されるようになります．
+場合には，フィルタに「sub」というテキストを入力すれば，このテキストを含む項目，すなわち小節のみが表示されるようになります．
 \end_layout
 
 \begin_layout Standard
@@ -7162,14 +7162,12 @@ Space
 \end_layout
 
 \begin_layout Verbatim
-
 これは原文儘(verbatim)環境です．
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 この下の2行は空白行です．
 \end_layout
 
@@ -7182,7 +7180,6 @@ Space
 \end_layout
 
 \begin_layout Verbatim
-
 右記の各文字を始め，ほぼすべての文字が使えます．例："%&$§#~'`
 \backslash
 }][{|
@@ -7205,7 +7202,6 @@ Space
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 

@@ -2022,17 +2022,16 @@ Un clic droit sur un élément du plan ouvrira dans la plupart de cas un menu
 
 \begin_layout Standard
 Le champ 
-\begin_inset Quotes fld
-\end_inset
-
+\family sans
 Filtre
-\begin_inset Quotes frd
-\end_inset
-
+\family default
  situé en haut vous permet de restreindre les éléments apparaissant dans
  le plan.
- Par exemple, si vous affichez une liste des étiquettes et références et
- souhaitez ne voir que les références dans les sous-sections, vous pouvez
+ Par exemple, si vous affichez une liste des 
+\emph on
+étiquettes et références
+\emph default
+ et souhaitez ne voir que les références dans les sous-sections, vous pouvez
  saisir le texte 
 \begin_inset Quotes fld
 \end_inset
@@ -2042,7 +2041,7 @@ Filtre
 status collapsed
 
 \begin_layout Plain Layout
-sub:
+sub
 \end_layout
 
 \end_inset
