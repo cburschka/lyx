@@ -97,7 +97,7 @@ public:
 	/// The filename we refer too.
 	FileName const filename_;
 	/// The document filename this graphic item belongs to
-	FileName const & doc_file_;
+	FileName const doc_file_;
 	///
 	ActiveFileMonitorPtr monitor_;
 

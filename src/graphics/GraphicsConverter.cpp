@@ -63,7 +63,7 @@ public:
 	SignalType finishedConversion;
 
 	///
-	FileName const & doc_fname_;
+	FileName const doc_fname_;
 	///
 	string script_command_;
 	///
