@@ -96,6 +96,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Conversion of files using the command line (e.g. for batch processing) is
+  again possible on Windows (bug 10440).
+
 - Fix nested language handling with polyglossia (bug 9633).
 
 - Fix usage of multiple varieties of the same polyglossia language.

@@ -210,10 +210,10 @@ BOOL terminate_handler(DWORD event)
 
 } // namespace anon
 
-void init(int argc, char * argv[])
+void init(int argc, char ** argv[])
 {
 	argc_ = argc;
-	argv_ = argv;
+	argv_ = *argv;
 
 	// Set environment's default locale
 	setlocale(LC_ALL, "");
