@@ -351,8 +351,8 @@ BufferView::~BufferView()
 
 int BufferView::rightMargin() const
 {
-	// The value used to be hardcoded to 10, which is 2.5mm at 100dpi
-	int const default_margin = Length(2.5, Length::MM).inPixels(0);
+	// The value used to be hardcoded to 10, which is 0.1in at 100dpi
+	int const default_margin = Length(0.1, Length::IN).inPixels(0);
 	// The additional test for the case the outliner is opened.
 	if (!full_screen_ || !lyxrc.full_screen_limit
 	    || width_ < lyxrc.full_screen_width + 2 * default_margin)

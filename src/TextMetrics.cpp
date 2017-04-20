@@ -479,19 +479,21 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	// specially tailored for the main text.
 	// Top and bottom margin of the document (only at top-level)
 	if (text_->isMainText()) {
+		// original value was 20px, which is 0.2in at 100dpi
+		int const margin = Length(0.2, Length::IN).inPixels(0);
 		if (pit == 0) {
-			pm.rows().front().dimension().asc += 20;
+			pm.rows().front().dimension().asc += margin;
 			/* coverity thinks that we should update pm.dim().asc
 			 * below, but all the rows heights are actually counted as
 			 * part of the paragraph metric descent see loop above).
 			 */
 			// coverity[copy_paste_error]
-			pm.dim().des += 20;
+			pm.dim().des += margin;
 		}
 		ParagraphList const & pars = text_->paragraphs();
 		if (pit + 1 == pit_type(pars.size())) {
-			pm.rows().back().dimension().des += 20;
-			pm.dim().des += 20;
+			pm.rows().back().dimension().des += margin;
+			pm.dim().des += margin;
 		}
 	}
 
