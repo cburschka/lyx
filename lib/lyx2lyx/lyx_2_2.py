@@ -1092,11 +1092,13 @@ def revert_BoxFeatures(document):
         if i == -1:
             return
         binset = find_token(document.body, "\\begin_inset Box", i - 11)
-        if binset == -1:
-            return # then "thickness" is is just a word in the text
+        if binset == -1 or binset != i - 11:
+            i = i + 1
+            continue # then "thickness" is is just a word in the text
         einset = find_end_of_inset(document.body, binset)
         if einset == -1:
             document.warning("Malformed LyX document: Can't find end of box inset!")
+            i = i + 1
             continue
         # read out the values
         beg = document.body[i].find('"');
