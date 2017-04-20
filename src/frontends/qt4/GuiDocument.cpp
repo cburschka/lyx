@@ -726,6 +726,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 
 	connect(textLayoutModule->MathIndentCB, SIGNAL(toggled(bool)),
 		this, SLOT(change_adaptor()));
+	connect(textLayoutModule->MathIndentCB, SIGNAL(toggled(bool)),
+		this, SLOT(allowMathIndent()));
 	connect(textLayoutModule->MathIndentCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(textLayoutModule->MathIndentCO, SIGNAL(activated(int)),
@@ -1607,6 +1609,20 @@ void GuiDocument::enableSkip(bool skip)
 	textLayoutModule->indentLengthCO->setEnabled(!skip);
 	if (skip)
 		setSkip(textLayoutModule->skipCO->currentIndex());
+}
+
+void GuiDocument::allowMathIndent() {
+	// only disable when not checked, checked does not always allow enabling
+	if (!textLayoutModule->MathIndentCB->isChecked()) {
+		textLayoutModule->MathIndentLE->setEnabled(false);
+		textLayoutModule->MathIndentLengthCO->setEnabled(false);
+	}
+	if (textLayoutModule->MathIndentCB->isChecked()
+	    && textLayoutModule->MathIndentCO->currentIndex() == 1) {
+			textLayoutModule->MathIndentLE->setEnabled(true);
+			textLayoutModule->MathIndentLengthCO->setEnabled(true);
+	}
+	isValid();
 }
 
 void GuiDocument::setMathIndent(int item)
