@@ -3,6 +3,12 @@ dnl Author: Jean-Marc Lasgouttes (Jean-Marc.Lasgouttes@inria.fr)
 dnl         Lars Gullik Bjønnes (larsbj@lyx.org)
 dnl         Allan Rae (rae@lyx.org)
 
+dnl Compute the default build type from AC_PACKAGE_VERSION at autoconf time.
+m4_define([LYX_BUILD_TYPE], [m4_bmatch(AC_PACKAGE_VERSION,
+    [dev], [development],
+    [pre\|alpha\|beta\|rc], [prerelease],
+    [release])])
+
 
 dnl Usage LYX_CHECK_VERSION   Displays version of LyX being built and
 dnl sets variable "build_type"
@@ -13,7 +19,7 @@ AC_MSG_CHECKING([for build type])
 lyx_devel_version=no
 lyx_prerelease=no
 AC_ARG_ENABLE(build-type,
-  AC_HELP_STRING([--enable-build-type=TYPE],[set build setting according to TYPE=rel(ease), pre(release), dev(elopment), prof(iling), gprof]),
+  AC_HELP_STRING([--enable-build-type=STR],[set build type to rel(ease), pre(release), dev(elopment), prof(iling), or gprof (default: LYX_BUILD_TYPE)]),
   [case $enableval in
     dev*) build_type=development;;
     pre*) build_type=prerelease;;
@@ -22,11 +28,7 @@ AC_ARG_ENABLE(build-type,
     rel*) build_type=release;;
     *) AC_MSG_ERROR([bad build type specification \"$enableval\". Please use one of rel(ease), pre(release), dev(elopment), prof(iling), or gprof]);;
    esac],
-  [case AC_PACKAGE_VERSION in
-    *dev*) build_type=development;;
-    *pre*|*alpha*|*beta*|*rc*) build_type=prerelease;;
-    *) build_type=release ;;
-   esac])
+  [build_type=LYX_BUILD_TYPE])
 AC_MSG_RESULT([$build_type])
 lyx_flags="$lyx_flags build=$build_type"
 case $build_type in
@@ -48,7 +50,7 @@ AC_MSG_CHECKING([for version suffix])
 dnl We need the literal double quotes in the rpm spec file
 RPM_VERSION_SUFFIX='""'
 AC_ARG_WITH(version-suffix,
-  [AC_HELP_STRING([--with-version-suffix@<:@=VERSION@:>@], install lyx files as lyxVERSION (VERSION=-AC_PACKAGE_VERSION))],
+  [AC_HELP_STRING([--with-version-suffix@<:@=STR@:>@], install lyx files as lyxSTR (default STR: -AC_PACKAGE_VERSION))],
   [if test "x$withval" = "xyes";
    then
      withval="-"AC_PACKAGE_VERSION
@@ -352,7 +354,7 @@ AC_ARG_ENABLE(stdlib-debug,
 
 ### set up optimization
 AC_ARG_ENABLE(optimization,
-    AC_HELP_STRING([--enable-optimization[=value]],[enable compiler optimisation]),,
+    AC_HELP_STRING([--enable-optimization@<:@=ARG@:>@],[enable compiler optimisation]),,
     enable_optimization=yes;)
 case $enable_optimization in
     yes)
@@ -755,8 +757,8 @@ rm -f conftest*])
 AC_DEFUN([LYX_USE_PACKAGING],
 [AC_MSG_CHECKING([what packaging should be used])
 AC_ARG_WITH(packaging,
-  [AC_HELP_STRING([--with-packaging=THIS], [use THIS packaging for installation:
-			    Possible values: posix, windows, macosx, haiku])],
+  [AC_HELP_STRING([--with-packaging=STR], [set packaging for installation among:
+			    posix, windows, macosx, haiku (default is autodetected)])],
   [lyx_use_packaging="$withval"], [
   case $host in
     *-apple-darwin*) lyx_use_packaging=macosx ;;
