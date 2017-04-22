@@ -20,7 +20,31 @@
   by don't allowing using dash ligatures in Document->Settings->Fonts.
 
 
+!!Documents compilation process and images conversion
+
+* The converters definition syntax (LYX_HOME/lyxrc*) now supports a
+  new option, 'needauth', to prevent completely automated execution of
+  the converter, unless LyX acquired explicit consent by the
+  user. This is a new security feature, useful for converters that are
+  capable of executing arbitrary code, such as R scripts (used with
+  sweave/knitr), embedded within LyX documents. The user needs to
+  explicitly grant per-document permission on the first need for using
+  the converter on each document, unless he/she checks the "Don't ask
+  again for this document" checkbox in the permission dialog. The new
+  behavior can be fine-tuned from two new options in the preferences
+  dialog (see their description below). These also allow for disabling
+  'needauth' converters altogether, if desired (default behavior).
+
+
 !!!The following pref variables were added in 2.3:
+
+* \use_converter_needauth
+  when enabled, user is asked before calling any external converter with the
+  'needauth' option
+
+* \use_converter_needauth_forbidden
+  when enabled, use of external converters with the 'needauth' option is
+  forbidden
 
 
 !!!The following pref variables were changed in 2.3:
@@ -124,3 +148,10 @@
   This avoids "uncodable character" issues if the document is actually
   loaded by that LyX version. LyX 2.1 and later versions already have the
   necessary definition in their unicodesymbols file.
+
+* If trying to compile documents using R scripts and sweave/knitr, LyX
+  2.3.x would not allow for re-running the R scripts, unless the user:
+  1) explicitly disables the "Forbid use of needauth converters"
+  option in the LyX preferences;
+  2) provides explicit consent to the use of the converter on the first
+  compilation of the R-enhanced document.
