@@ -88,6 +88,7 @@
 #   Add jbibtex_alternatives, allow "automatic" value
 #   of bibtex_command and jbibtex_command (actually the
 #   default now)
+#   No conversion necessary.
 
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py.
