@@ -1,3 +1,34 @@
+What's new in version 2.2.2?
+----------------------------
+
+LyX 2.2.2 is the second maintenance release in the 2.2.x series. 
+
+We have fixed a number of bugs and made a number  of improvements. 
+Most of these are relatively minor, but we nonetheless encourage all 
+users of 2.2.1 to upgrade to this version.
+
+Perhaps the most important bug we fixed affected use of covington.sty with
+2.2.1. This will only have affected users of the Linguistics module.
+
+One new feature is the use of the "scaling" option when exporting images
+for XHTML. This does not work the same way as with LaTeX export. What it
+does is add something like "width: 50%" to the style attribute. This will
+ordinarily be interpreted by the browser as a percentage relative to the
+current element.
+
+
+What's new in version 2.2.1?
+----------------------------
+
+LyX 2.2.1 is the first maintenance relase in the 2.2.x series.
+
+A large number of bugs have been fixed since the 2.2.0 release.
+We are pleased to say that most of these were relatively minor:
+LyX 2.2.0 was perhaps the stable major version release we have
+produced in a some time. Nontheless, we encourage all users of
+2.2.0 to upgrade to this version.
+
+
 What's new in version 2.2.0?
 ----------------------------
 
@@ -22,6 +53,23 @@ http://wiki.lyx.org/LyX/NewInLyX22
 * Module enhancements
 * New preferences settings
 * New converters
+
+
+What's new in version 2.1.5?
+----------------------------
+
+We have fixed a number of bugs and made a number of improvements. Many 
+of these were minor, but there were a few crashes we fixed, too. 
+
+Please note that this is the final release in the 2.1.x series. It is 
+intended for users who for some reason do not wish to upgrade to 2.2.x
+at this time. We strongly encourage all such users to upgrade to this
+version.
+
+One of the main features of 2.1.5 is its ability to read and write files 
+in the 2.2.x format. Since the conversion process back and forth usually
+will not leave one with an identical file, however, we do not recommend 
+attempting to collaborate with users of 2.2.x. 
 
 
 What's new in version 2.1.4?
