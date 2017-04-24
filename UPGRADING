@@ -1,5 +1,35 @@
-How do I upgrade my existing LyX system to version 2.2.x?
+How do I upgrade my existing LyX system to version 2.3.x?
 ---------------------------------------------------------
+
+* Upgrading from LyX 2.2.x:
+
+The format of preference and session files has changed. LyX 2.3.x is able to
+read old files but will save them in the new format.
+
+The format of layout files has changed but, as before, layout2layout.py will
+convert older versions to the new format automatically.
+
+The external_templates file has been split into one file per template,
+which are now located in lib/xtemplates/*.xtemplate. This makes it easier
+to add new templates or modify existing ones. If you have modified
+the external_templates file, you will have to move the modifications to
+the respective *.xtemplate file manually.
+
+If using TeX fonts and en- and em-dashes are output as font ligatures,
+when exporting documents containing en- and em-dashes to the format of
+LyX 2.0 or earlier, the following line has to be manually added to the
+unicodesymbols file of that LyX version:<br>
+0x200b "\\hspace{0pt}" "" "" "" "" # ZERO WIDTH SPACE<br>
+This avoids "uncodable character" issues if the document is actually
+loaded by that LyX version. LyX 2.1 and later versions already have the
+necessary definition in their unicodesymbols file.
+
+If trying to compile documents using R scripts and sweave/knitr, LyX
+2.3.x would not allow for re-running the R scripts, unless the user:
+1) explicitly disables the "Forbid use of needauth converters"
+option in the LyX preferences;
+2) provides explicit consent to the use of the converter on the first
+compilation of the R-enhanced document.
 
 * Upgrading from LyX 2.1.x:
 
