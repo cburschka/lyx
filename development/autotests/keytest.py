@@ -8,6 +8,7 @@
 # Adapted by Tommaso Cucinotta from the original MonKey Test by
 # John McCabe-Dansted.
 
+from __future__ import print_function
 import random
 import os
 import re
@@ -16,7 +17,7 @@ import time
 #from subprocess import call
 import subprocess
 
-print 'Beginning keytest.py'
+print('Beginning keytest.py')
 
 FNULL = open('/dev/null', 'w')
 
@@ -78,7 +79,7 @@ class CommandSourceFromFile(CommandSource):
         self.infile.close()
         linesbak = self.lines
         self.p = p
-        print p, self.p, 'self.p'
+        print(p, self.p, 'self.p')
         self.i = 0
         self.count = 0
         self.loops = 0
@@ -88,10 +89,10 @@ class CommandSourceFromFile(CommandSource):
 
         if p > 0.001:
             if random.uniform(0, 1) < 0.5:
-                print 'randomdrop_independant\n'
+                print('randomdrop_independant\n')
                 self.randomdrop_independant()
             else:
-                print 'randomdrop_slice\n'
+                print('randomdrop_slice\n')
                 self.randomdrop_slice()
         if screenshot_out is None:
             count_atleast = 100
@@ -113,11 +114,11 @@ class CommandSourceFromFile(CommandSource):
         self.lines = []
         for l in origlines:
             if random.uniform(0, 1) < self.p:
-                print 'Randomly dropping line ' + l + '\n'
+                print('Randomly dropping line ' + l + '\n')
             else:
                 self.lines.append(l)
-        print 'LINES\n'
-        print self.lines
+        print('LINES\n')
+        print(self.lines)
         sys.stdout.flush()
 
     def randomdrop_slice(self):
@@ -131,10 +132,10 @@ class CommandSourceFromFile(CommandSource):
         drop_mid = random.randint(0, num_lines)
         drop_start = max(drop_mid - num_drop / 2, 0)
         drop_end = min(drop_start + num_drop, num_lines)
-        print drop_start, drop_mid, drop_end
-        print lines
+        print(drop_start, drop_mid, drop_end)
+        print(lines)
         del lines[drop_start:drop_end]
-        print lines
+        print(lines)
         self.lines = lines
 
     def getCommand(self):
@@ -161,7 +162,7 @@ def lyx_exists():
 
 # Interruptible os.system()
 def intr_system(cmd, ignore_err = False):
-    print "Executing " + cmd + "\n"
+    print("Executing " + cmd + "\n")
     ret = os.system(cmd)
     if os.WIFSIGNALED(ret):
         raise KeyboardInterrupt
@@ -169,26 +170,53 @@ def intr_system(cmd, ignore_err = False):
         raise BaseException("command failed:" + cmd)
     return ret
 
+statreg = re.compile(r'^State:.*\(([a-z]+)\)')
+
+def lyx_status(pid):
+  if lyx_pid is None:
+    return "dead"
+  fname = '/proc/' + pid + '/status'
+  try:
+    f = open(fname)
+    for line in f:
+      m = statreg.match(line)
+      if m:
+        status = m.group(1)
+        f.close()
+        return status
+    f.close()
+  except IOError as e:
+     print("I/O error({0}): {1}".format(e.errno, e.strerror))
+     return "dead"
+  except:
+    print("Unexpected error:", sys.exc_info()[0])
+  return "dead"
 
 # Return true if LyX (identified via lyx_pid) is sleeping
 def lyx_sleeping():
-    fname = '/proc/' + lyx_pid + '/status'
-    return intr_system("grep 'State.*sleeping' " + fname, True)
+    return lyx_status(lyx_pid) == "sleeping"
 
+# Return true if LyX (identified via lyx_pid) is zombie
+def lyx_zombie():
+    return lyx_status(lyx_pid) == "zombie"
+
+def lyx_dead():
+    status = lyx_status(lyx_pid)
+    return (status == "dead") or (status == "zombie")
 
 def sendKeystring(keystr, LYX_PID):
 
     # print "sending keystring "+keystr+"\n"
 
     if not re.match(".*\w.*", keystr):
-        print 'print .' + keystr + '.\n'
+        print('print .' + keystr + '.\n')
         keystr = 'a'
     before_secs = time.time()
     while lyx_exists() and not lyx_sleeping():
         time.sleep(0.02)
         sys.stdout.flush()
         if time.time() - before_secs > 180:
-            print 'Killing due to freeze (KILL_FREEZE)'
+            print('Killing due to freeze (KILL_FREEZE)')
 
             # Do profiling, but sysprof has no command line interface?
             # intr_system("killall -KILL lyx")
@@ -198,7 +226,7 @@ def sendKeystring(keystr, LYX_PID):
         while lyx_exists() and not lyx_sleeping():
             time.sleep(0.02)
             sys.stdout.flush()
-        print 'Making Screenshot: ' + screenshot_out + ' OF ' + infilename
+        print('Making Screenshot: ' + screenshot_out + ' OF ' + infilename)
         time.sleep(0.2)
         intr_system('import -window root '+screenshot_out+str(x.count)+".png")
         time.sleep(0.1)
@@ -225,8 +253,8 @@ def system_retry(num_retry, cmd):
         rtn = intr_system(cmd)
         time.sleep(1)
     if ( rtn != 0 ):
-        print "Command Failed: "+cmd
-        print " EXITING!\n"
+        print("Command Failed: "+cmd)
+        print(" EXITING!\n")
         os._exit(1)
 
 def RaiseWindow():
@@ -238,7 +266,7 @@ def RaiseWindow():
 
 
 lyx_pid = os.environ.get('LYX_PID')
-print 'lyx_pid: ' + str(lyx_pid) + '\n'
+print('lyx_pid: ' + str(lyx_pid) + '\n')
 infilename = os.environ.get('KEYTEST_INFILE')
 outfilename = os.environ.get('KEYTEST_OUTFILE')
 max_drop = os.environ.get('MAX_DROP')
@@ -252,11 +280,11 @@ if max_loops is None:
 
 PACKAGE = os.environ.get('PACKAGE')
 if not PACKAGE is None:
-  print "PACKAGE = " + PACKAGE + "\n"
+  print("PACKAGE = " + PACKAGE + "\n")
 
 PO_BUILD_DIR = os.environ.get('PO_BUILD_DIR')
 if not PO_BUILD_DIR is None:
-  print "PO_BUILD_DIR = " + PO_BUILD_DIR + "\n"
+  print("PO_BUILD_DIR = " + PO_BUILD_DIR + "\n")
 
 lyx = os.environ.get('LYX')
 if lyx is None:
@@ -295,27 +323,28 @@ if ResetCommand is None:
 if lyx_window_name is None:
     lyx_window_name = 'LyX'
 
-print 'outfilename: ' + outfilename + '\n'
-print 'max_drop: ' + max_drop + '\n'
+print('outfilename: ' + outfilename + '\n')
+print('max_drop: ' + max_drop + '\n')
 
 if infilename is None:
-    print 'infilename is None\n'
+    print('infilename is None\n')
     x = CommandSource()
-    print 'Using x=CommandSource\n'
+    print('Using x=CommandSource\n')
 else:
-    print 'infilename: ' + infilename + '\n'
+    print('infilename: ' + infilename + '\n')
     probability_we_drop_a_command = random.uniform(0, float(max_drop))
-    print 'probability_we_drop_a_command: '
-    print '%s' % probability_we_drop_a_command
-    print '\n'
+    print('probability_we_drop_a_command: ')
+    print('%s' % probability_we_drop_a_command)
+    print('\n')
     x = CommandSourceFromFile(infilename, probability_we_drop_a_command)
-    print 'Using x=CommandSourceFromFile\n'
+    print('Using x=CommandSourceFromFile\n')
 
 outfile = open(outfilename, 'w')
 
 if not lyx_pid is None:
     RaiseWindow()
-    sendKeystring("\Afn", lyx_pid)
+    # Next command is language dependent
+    #sendKeystring("\Afn", lyx_pid)
 
 write_commands = True
 failed = False
@@ -330,17 +359,17 @@ while not failed:
     outfile.writelines(c + '\n')
     outfile.flush()
     if c[0] == '#':
-        print "Ignoring comment line: " + c
+        print("Ignoring comment line: " + c)
     elif c[0:9] == 'TestBegin':
-        print "\n"
+        print("\n")
         lyx_pid=os.popen("pidof " + lyx).read()
         if lyx_pid != "":
-            print "Found running instance(s) of LyX: " + lyx_pid + ": killing them all\n"
+            print("Found running instance(s) of LyX: " + lyx_pid + ": killing them all\n")
             intr_system("killall " + lyx, True)
             time.sleep(0.5)
             intr_system("killall -KILL " + lyx, True)
         time.sleep(0.2)
-        print "Starting LyX . . ."
+        print("Starting LyX . . .")
         if lyx_userdir is None:
             intr_system(lyx_exe + c[9:] + "&")
         else:
@@ -348,25 +377,26 @@ while not failed:
         count = 5
         while count > 0:
             lyx_pid=os.popen("pidof " + lyx).read().rstrip()
-            print 'lyx_pid=' + lyx_pid, '\n'
+            print('lyx_pid=' + lyx_pid, '\n')
             if lyx_pid != "":
                 lyx_window_name=os.popen("wmctrl -l -p | grep ' " + str(lyx_pid) +  " ' | cut -d ' ' -f 1").read().rstrip()
-                print 'lyx_win=' + lyx_window_name, '\n'
+                print('lyx_win=' + lyx_window_name, '\n')
                 if lyx_window_name != "":
                     break
             else:
                 count = count - 1
-            print 'lyx_win: ' + lyx_window_name + '\n'
-            print "Waiting for LyX to show up . . ."
+            print('lyx_win: ' + lyx_window_name + '\n')
+            print("Waiting for LyX to show up . . .")
             time.sleep(1)
         if count <= 0:
-            print 'Timeout: could not start ' + lyx_exe, '\n'
+            print('Timeout: could not start ' + lyx_exe, '\n')
             sys.stdout.flush()
             failed = True
-        print 'lyx_pid: ' + lyx_pid + '\n'
-        print 'lyx_win: ' + lyx_window_name + '\n'
+        print('lyx_pid: ' + lyx_pid + '\n')
+        print('lyx_win: ' + lyx_window_name + '\n')
+        sendKeystring("\C\[Home]", lyx_pid)
     elif c[0:5] == 'Sleep':
-        print "Sleeping for " + c[6:] + " seconds\n"
+        print("Sleeping for " + c[6:] + " seconds\n")
         time.sleep(float(c[6:]))
     elif c[0:4] == 'Exec':
         cmd = c[5:].rstrip()
@@ -374,9 +404,9 @@ while not failed:
     elif c == 'Loop':
         outfile.close()
         outfile = open(outfilename + '+', 'w')
-        print 'Now Looping'
+        print('Now Looping')
     elif c == 'RaiseLyx':
-        print 'Raising Lyx'
+        print('Raising Lyx')
         RaiseWindow()
     elif c[0:4] == 'KK: ':
         if lyx_exists():
@@ -384,13 +414,13 @@ while not failed:
         else:
             ##intr_system('killall lyx; sleep 2 ; killall -9 lyx')
             if lyx_pid is None:
-              print 'No path /proc/xxxx/status, exiting'
+              print('No path /proc/xxxx/status, exiting')
             else:
-              print 'No path /proc/' + lyx_pid + '/status, exiting'
+              print('No path /proc/' + lyx_pid + '/status, exiting')
             os._exit(1)
     elif c[0:4] == 'KD: ':
         key_delay = c[4:].rstrip('\n')
-        print 'Setting DELAY to ' + key_delay + '.\n'
+        print('Setting DELAY to ' + key_delay + '.\n')
     elif c == 'Loop':
         RaiseWindow()
         sendKeystring(ResetCommand, lyx_pid)
@@ -398,26 +428,41 @@ while not failed:
         cmd = c[7:].rstrip()
         result = intr_system(cmd)
         failed = failed or (result != 0)
-        print "result=" + str(result) + ", failed=" + str(failed)
+        print("result=" + str(result) + ", failed=" + str(failed))
     elif c[0:7] == 'TestEnd':
-        time.sleep(0.5)
+#        time.sleep(0.5)
         if not lyx_exists():
-            print "LyX instance not found because of crash or assert !\n"
+            print("LyX instance not found because of crash or assert !\n")
             failed = True
         else:
-            print "Terminating lyx instance: " + str(lyx_pid) + "\n"
-            intr_system("kill -9 " + str(lyx_pid), True);
-            while lyx_exists():
-                print "Waiting for lyx to die...\n"
+            print("Forcing quit of lyx instance: " + str(lyx_pid) + "...\n")
+            # \Ax Enter command line is sometimes blocked
+	    # \[Escape] works after this 
+	    sendKeystring("\Ax\[Escape]", lyx_pid)
+	    # now we should be outside any dialog
+	    # and so the function lyx-quit should work
+            sendKeystring("\Cq", lyx_pid)
+            time.sleep(0.5)
+            if lyx_sleeping():
+                # probably waiting for Save/Discard/Abort, we select 'Discard'
+                sendKeystring("\[Tab]\[Return]", lyx_pid)
+                lcount = 0
+            else:
+                lcount = 1
+            while not lyx_dead():
+                lcount = lcount + 1
+                if lcount > 20:
+                    print("LyX still up, killing process and waiting for it to die...\n")
+                    intr_system("kill -9 " + str(lyx_pid), True);
                 time.sleep(0.5)
         cmd = c[8:].rstrip()
-        print "Executing " + cmd
+        print("Executing " + cmd)
         result = intr_system(cmd)
         failed = failed or (result != 0)
-        print "result=" + str(result) + ", failed=" + str(failed)
+        print("result=" + str(result) + ", failed=" + str(failed))
     elif c[0:4] == 'Lang':
         lang = c[5:].rstrip()
-        print "Setting LANG=" + lang + "\n"
+        print("Setting LANG=" + lang + "\n")
         os.environ['LANG'] = lang
         os.environ['LC_ALL'] = lang
 # If it doesn't exist, create a link <locale_dir>/<country-code>/LC_MESSAGES/lyx<version-suffix>.mo
@@ -429,7 +474,7 @@ while not failed:
         else:
             ccode = lang
 
-        print "Setting LANGUAGE=" + ccode + "\n"
+        print("Setting LANGUAGE=" + ccode + "\n")
         os.environ['LANGUAGE'] = ccode
 
         idx = lang.find("_")
@@ -442,10 +487,10 @@ while not failed:
           # on cmake-build there is no Makefile in this directory
           # so PACKAGE has to be provided
           if os.path.exists(lyx_dir + "/Makefile"):
-            print "Executing: grep 'PACKAGE =' " + lyx_dir + "/Makefile | sed -e 's/PACKAGE = \(.*\)/\\1/'"
+            print("Executing: grep 'PACKAGE =' " + lyx_dir + "/Makefile | sed -e 's/PACKAGE = \(.*\)/\\1/'")
             lyx_name = os.popen("grep 'PACKAGE =' " + lyx_dir + "/Makefile | sed -e 's/PACKAGE = \(.*\)/\\1/'").read().rstrip()
           else:
-            print 'Could not determine PACKAGE name needed for translations\n'
+            print('Could not determine PACKAGE name needed for translations\n')
             failed = True
         else:
           lyx_name = PACKAGE
@@ -460,13 +505,13 @@ while not failed:
         else:
             intr_system("ln -s " + PO_BUILD_DIR + "/" + short_code + ".gmo " + locale_dir + "/" + ccode + "/LC_MESSAGES/" + lyx_name + ".mo")
     else:
-        print "Unrecognised Command '" + c + "'\n"
+        print("Unrecognised Command '" + c + "'\n")
         failed = True
 
-print "Test case terminated: "
+print("Test case terminated: ")
 if failed:
-    print "FAIL\n"
+    print("FAIL\n")
     os._exit(1)
 else:
-    print "Ok\n"
+    print("Ok\n")
     os._exit(0)
