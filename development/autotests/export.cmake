@@ -31,7 +31,7 @@
 #       -P "${TOP_SRC_DIR}/development/autotests/export.cmake"
 #
 
-message(STATUS "IgnoreErrorMessage = ${IgnoreErrorMessage}")
+message(STATUS "IgnoreErrorMessage = \"${IgnoreErrorMessage}\"")
 set(Perl_Script "${TOP_SRC_DIR}/development/autotests/useSystemFonts.pl")
 set(Structure_Script "${TOP_SRC_DIR}/development/autotests/beginEndStructureCheck.pl")
 set(LanguageFile "${TOP_SRC_DIR}/lib/languages")
