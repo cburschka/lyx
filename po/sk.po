@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-04-11 09:03+0200\n"
-"PO-Revision-Date: 2017-04-11 07:20+0000\n"
+"POT-Creation-Date: 2017-04-22 09:08+0200\n"
+"PO-Revision-Date: 2017-04-24 16:04+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1799,11 +1799,11 @@ msgstr ""
 "&Základná\n"
 "veľkosť:"
 
-#: src/frontends/qt4/ui/FontUi.ui:77
-msgid "LaTe&X font encoding:"
+#: src/frontends/qt4/ui/FontUi.ui:81
+msgid "&LaTeX font encoding:"
 msgstr ""
 "Kódovanie\n"
-"písma LaTe&X:"
+"písma &LaTeX:"
 
 #: src/frontends/qt4/ui/FontUi.ui:90 src/frontends/qt4/ui/PrefLatexUi.ui:34
 msgid "Specify the font encoding (e.g., T1)."
@@ -1881,9 +1881,9 @@ msgstr "Použiť pravé malé &kapitálky"
 msgid "Use old style instead of lining figures"
 msgstr "Použiť číslice minuskové, nie verzálové"
 
-#: src/frontends/qt4/ui/FontUi.ui:241
+#: src/frontends/qt4/ui/FontUi.ui:283
 msgid "Use &old style figures"
-msgstr "Použiť &minuskové číslice (old style figures)"
+msgstr "Použiť min&uskové číslice (old style figures)"
 
 #: src/frontends/qt4/ui/FontUi.ui:261
 msgid ""
@@ -5254,10 +5254,6 @@ msgstr "Odsadiť exponované vzorce namiesto vystreďovania"
 #: src/frontends/qt4/ui/TextLayoutUi.ui:278
 msgid "Indent &Formulas"
 msgstr "Odsadiť Vzorce"
-
-#: src/frontends/qt4/ui/TextLayoutUi.ui:288
-msgid "30"
-msgstr "30"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:32
 msgid "Language of the thesaurus"
@@ -15962,15 +15958,17 @@ msgstr ""
 msgid "TODO Notes"
 msgstr "TODO Poznámky"
 
-#: lib/layouts/todonotes.module:7
+#: lib/layouts/todonotes.module:8
 msgid ""
 "Provides custom insets to insert TODO items in your document (using the "
 "todonotes package). In order to generate a 'List of TODOs', the module "
-"provides a paragraph style."
+"provides a paragraph style. Passing 'final' as document class option "
+"suppresses the output of TODO notes."
 msgstr ""
 "Poskytuje vlastné vložky na vklad TODO prvkov do vášho dokumentu (používajúc "
 "balík todonotes). Pre generáciu 'Zoznam TODOs' poskytuje tento modul štýl "
-"odstavca."
+"odstavca. Nastaviť 'final' ako voľbu dokumentu potlačí výstup 'TODO' "
+"poznámok."
 
 #: lib/layouts/todonotes.module:13 lib/layouts/todonotes.module:116
 msgid "TODO"
@@ -18526,6 +18524,10 @@ msgstr "Bod Rozdeľovania"
 #: lib/ui/stdmenus.inc:427
 msgid "Ligature Break|k"
 msgstr "Zlomiť zliatku (ligatúru)"
+
+#: lib/ui/stdmenus.inc:436
+msgid "Optional Line Break|B"
+msgstr "Voliteľný Zlom Riadku|Z"
 
 #: lib/ui/stdmenus.inc:440
 msgid "Display Formula|D"
@@ -36695,3 +36697,12 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Strikeout"
 #~ msgstr "Preškrtnuté"
+
+#~ msgid ""
+#~ "Provides custom insets to insert TODO items in your document (using the "
+#~ "todonotes package). In order to generate a 'List of TODOs', the module "
+#~ "provides a paragraph style."
+#~ msgstr ""
+#~ "Poskytuje vlastné vložky na vklad TODO prvkov do vášho dokumentu (používajúc "
+#~ "balík todonotes). Pre generáciu 'Zoznam TODOs' poskytuje tento modul štýl "
+#~ "odstavca."
