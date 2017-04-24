@@ -3,5 +3,6 @@
 Lang en_US.utf8
 TestBegin > lyx-log.txt 2>&1
 KK: \Ax
+KD: 1
 KK: command-sequence buffer-new; layout Itemize; self-insert a; paragraph-break; depth-increment; self-insert b; up; char-delete-backward; down\[Return]
 TestEnd

@@ -1,4 +1,5 @@
 # Test export lyx-icon-info 
+# creates lib/images/math-mode.pdf in lyx-source tree, but it should not
 # 
 # 
 
@@ -6,6 +7,8 @@ Lang C
 TestBegin -dbg files test.lyx > lyx-log.txt 2>&1
 KK: \Axinfo-insert icon math-mode\[Return]
 KK: \Axbuffer-export luatex\[Return]
+KK: \[Tab]\[Return]
+KK: \Axbuffer-write\[Return]
 KK: \[Tab]\[Return]
 TestEnd
 Lang C
