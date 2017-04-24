@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -44,6 +44,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -95,7 +97,8 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -217,11 +220,11 @@ t des graphiques et des diagrammes en \SpecialChar LaTeX
  et non pas le diagramme résultant.
  Le mode \SpecialChar LaTeX
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Aperçu sur le vif
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (
@@ -233,6 +236,7 @@ preview-style
 \begin_inset CommandInset citation
 LatexCommand cite
 key "AUCTeX"
+literal "true"
 
 \end_inset
 
@@ -392,11 +396,11 @@ Xy
 \end_inset
 
 -pic dans une 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 zone d'édition mathématique
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -440,6 +444,7 @@ Xy
 \begin_inset CommandInset citation
 LatexCommand cite
 key "xypic manual"
+literal "true"
 
 \end_inset
 
@@ -471,6 +476,7 @@ preview
 \begin_inset CommandInset citation
 LatexCommand cite
 key "instant-preview"
+literal "true"
 
 \end_inset
 
@@ -483,6 +489,7 @@ key "instant-preview"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "xypic"
+literal "true"
 
 \end_inset
 
@@ -637,6 +644,7 @@ Xy
 \begin_inset CommandInset citation
 LatexCommand cite
 key "xypic manual"
+literal "true"
 
 \end_inset
 
@@ -2415,7 +2423,7 @@ restore
  du rectangle.
  Chaque point, à son tour, est spécifié par une paire d'accolades doubles
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -2423,7 +2431,7 @@ restore
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  précisant la ligne 
@@ -2869,20 +2877,20 @@ devez
  que l'aperçu la convertit correctement dans sa version graphique.
  Si cela ne se produit pas, cela peut venir du fait que l'aperçu n'est pas
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 conscient
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , pour une raison ou une autre, de la nécessité de la conversion graphique.
  Survoler le zone et ressortir peut 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 réveiller
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  l'aperçu.
@@ -3487,13 +3495,13 @@ vdots
  invisible pour importer le texte 
 \family typewriter
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Étirement horizontal
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  au centre de la figure.
@@ -3576,6 +3584,7 @@ Xy
 \begin_inset CommandInset citation
 LatexCommand cite
 key "xypic manual"
+literal "true"
 
 \end_inset
 
@@ -3586,6 +3595,7 @@ key "xypic manual"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lauda"
+literal "true"
 
 \end_inset
 
@@ -3644,6 +3654,7 @@ Aperçu.
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "xypic manual"
+literal "true"
 
 \end_inset
 
@@ -3690,6 +3701,7 @@ https://www.ctan.org/tex-archive/macros/generic/diagrams/xypic/doc/xyguide.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "xypic reference"
+literal "true"
 
 \end_inset
 
@@ -3736,6 +3748,7 @@ https://www.ctan.org/tex-archive/macros/generic/diagrams/xypic/doc/xyrefer.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "xypic"
+literal "true"
 
 \end_inset
 
@@ -3777,6 +3790,7 @@ http://www.ctan.org/pkg/xypic
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "instant-preview"
+literal "true"
 
 \end_inset
 
@@ -3806,6 +3820,7 @@ http://www.gnu.org/software/auctex/preview-latex.html
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "AUCTeX"
+literal "true"
 
 \end_inset
 
@@ -3832,6 +3847,7 @@ http://www.gnu.org/software/auctex/
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Lauda"
+literal "true"
 
 \end_inset
 

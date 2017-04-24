@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,6 +21,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -58,7 +60,8 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
@@ -100,11 +103,11 @@ Indication:
 
 \begin_layout Plain Layout
 Le titre devrait ressembler un peu plus à un titre (
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Titre
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  dans le menu des styles)
@@ -127,11 +130,11 @@ Indication:
 
 \begin_layout Plain Layout
 Fée est l'auteur de ce document (
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Auteur
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 )
@@ -153,11 +156,11 @@ Indication:
 
 \begin_layout Plain Layout
 Ceci est une 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Date
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .(NdT: Si si !)
@@ -182,11 +185,11 @@ Ce serait plus agréable de ne pas avoir à taper la
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Table des Matières
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  explicitement.
@@ -245,11 +248,11 @@ Indication:
 
 \begin_layout Plain Layout
 Les titres de 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Sections
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ne sont pas assez en valeur, et ne
@@ -296,11 +299,11 @@ Indication:
 
 \begin_layout Plain Layout
 Cette 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Citation Bibliographique
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ne devrait probablement pas
@@ -321,7 +324,7 @@ passe en seconde position dans la bibliographie?
 \end_layout
 
 \begin_layout Standard
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Le but de la typographie est d'aider le lecteur à comprendre l'idée de l'auteur.
@@ -335,7 +338,7 @@ Le but de la typographie est d'aider le lecteur à comprendre l'idée de l'auteu
  sa structure logique en insérant des codes appropriés...
  Lors de l'écriture de votre document, vous devez vous préoccuper de sa
  structure logique, et non pas de son apparence.
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  
@@ -369,7 +372,7 @@ C'est une citation (QUOTE).
 , qui est pratiquement un langage de programmation.
  \SpecialChar LyX
  est en bien des points comparable à d'autres traitements de texte 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 What you see is what you get
@@ -384,16 +387,16 @@ n orthographique.
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (WYSIWYG), excepté que \SpecialChar LyX
  est plutôt 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 What you see is what you mean
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (WYSIWYM).
@@ -425,11 +428,11 @@ Indication:
 
 \begin_layout Plain Layout
 Cette parenthèse serait bien mieux en 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Note de bas de page
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -447,19 +450,19 @@ Indication:
 
 \begin_layout Plain Layout
 A mettre en 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Italique
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (ou en 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Evidence
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ) plutôt qu'en majuscules!
@@ -492,11 +495,11 @@ Indication:
 
 \begin_layout Plain Layout
 Cette 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Référence Croisée
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ne devrait pas être écrite en dur.
@@ -551,11 +554,11 @@ status collapsed
 
 \begin_layout Plain Layout
 Indication: C'est du source de programme (
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Lyx-Code
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ).
@@ -598,11 +601,11 @@ Pas terrible comme poésie! Mais ce sont quand m^eme
 
 \begin_layout Plain Layout
 des vers (
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Vers
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ).
@@ -629,11 +632,11 @@ Les mathématiques qui suivent devraient être traitées
 
 \begin_layout Plain Layout
 en 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Mode mathématique
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .

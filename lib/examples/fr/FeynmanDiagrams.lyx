@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -58,6 +58,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -108,7 +110,8 @@
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -166,19 +169,19 @@ Diagram
 \begin_layout Standard
 Les éléments matriciels sont créés par des commandes agissant comme des
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 particules
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ou des 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 propagateurs
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , par exemple:
@@ -809,6 +812,7 @@ feyn
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Feyn"
+literal "true"
 
 \end_inset
 
@@ -854,6 +858,7 @@ Align Environments
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Feyn"
+literal "true"
 
 \end_inset
 
@@ -862,6 +867,7 @@ key "Feyn"
 LatexCommand href
 name "Documentation"
 target "http://mirror.ctan.org/fonts/feyn/feyn.pdf"
+literal "false"
 
 \end_inset
 

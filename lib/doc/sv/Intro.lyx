@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -41,6 +41,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -92,7 +94,8 @@
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language swedish
+\is_math_indent 0
+\quotes_style swedish
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
@@ -124,6 +127,7 @@ Om du har kommentarer eller felkorrigeringar, vänligen skicka dem till \Special
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -893,6 +897,7 @@ Dessutom, gör oss alla en tjänst – om något i dokumentationen verkar förvi
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -904,6 +909,7 @@ type "mailto:"
 LatexCommand href
 target "lyx-users@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -2179,6 +2185,7 @@ http://www.lyx.org/trac/wiki/BugTrackerHome
 LatexCommand href
 target "lyx-devel@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -2267,6 +2274,7 @@ Om du hittar ett problem med dokumentationen, skicka ett meddelande till
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -2343,6 +2351,7 @@ Kontakta gruppen på:
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 

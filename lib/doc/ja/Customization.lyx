@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -28,7 +28,7 @@
 % This is needed to use \textquotedbl (this doesn't exist in OT1 encoding)
 \usepackage[T1]{fontenc}
 \end_preamble
-\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
 \begin_modules
 logicalmkup
@@ -99,6 +99,8 @@ End
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format pdf3
 \output_sync 0
@@ -156,7 +158,8 @@ End
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 1
+\quotes_style english
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
@@ -192,6 +195,7 @@ status collapsed
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -273,6 +277,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset Branch OutDated
+inverted 0
 status collapsed
 
 \begin_layout Standard
@@ -1500,6 +1505,7 @@ MIME
 LatexCommand href
 name "IANA"
 target "http://www.iana.org/assignments/media-types/"
+literal "false"
 
 \end_inset
 
@@ -1509,6 +1515,7 @@ target "http://www.iana.org/assignments/media-types/"
 LatexCommand href
 name "freedesktop.org"
 target "http://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec"
+literal "false"
 
 \end_inset
 
@@ -2794,6 +2801,7 @@ gettext
 LatexCommand href
 name "ウェブ上の情報"
 target "http://www.lyx.org/HowToUseGIT"
+literal "false"
 
 \end_inset
 
@@ -3170,6 +3178,7 @@ DocName
 LatexCommand href
 name "http://www.lyx.org/Translation"
 target "http://www.lyx.org/Translation"
+literal "false"
 
 \end_inset
 
@@ -3276,6 +3285,7 @@ http://www.lyx.org/HowToUseGIT
 LatexCommand href
 name "http://www.lyx.org/trac/timeline"
 target "http://www.lyx.org/trac/timeline"
+literal "false"
 
 \end_inset
 
@@ -3288,6 +3298,7 @@ target "http://www.lyx.org/trac/timeline"
 
 \begin_layout Standard
 \begin_inset Branch OutDated
+inverted 0
 status collapsed
 
 \begin_layout Section
@@ -5265,6 +5276,7 @@ Manager」プログラムを起動すると，利用できるパッケージの�
 LatexCommand href
 name "CTAN"
 target "http://www.ctan.org/"
+literal "false"
 
 \end_inset
 
@@ -5704,6 +5716,7 @@ status collapsed
 LatexCommand href
 name "LyX Wikiのレイアウトに関する節"
 target "http://wiki.lyx.org/Layouts/Layouts"
+literal "false"
 
 \end_inset
 

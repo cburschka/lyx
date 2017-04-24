@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -34,6 +34,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format pdf
 \output_sync 0
@@ -71,7 +73,8 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -96,28 +99,28 @@ status open
 Note:
 \series default
  Vous ne devez pas utiliser le bouton 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Visionner PDF (pdflatex)
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  pour visualiser ce fichier ! Pour visionner et exporter en PDF, utiliser
  les méthodes 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 PDF (ps2pdf)
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ou 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 PDF (dvipdfm)
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -136,11 +139,11 @@ Note:
  En fonction de votre distribution \SpecialChar LaTeX
 , vous pouvez avoir à ajouter l'option
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 dvips
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  aux options de classe du document pour obtenir un affichage DVI correct.
@@ -217,11 +220,11 @@ Mon premier transparent
 
 \begin_layout Standard
 Nous utilisons le style 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Diapo
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (couleur magenta, voyez le texte ci-dessus dans la fenêtre \SpecialChar LyX
@@ -241,11 +244,11 @@ name "toc"
 \end_inset
 
 Mais nous pouvons aussi utiliser 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 DiapoLarge
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  pour des transparents larges (couleur verte, voyez le texte ci-dessus dans
@@ -523,11 +526,11 @@ pause
 \begin_layout Standard
 \align center
 Il utilise le style 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 DiapoVide
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  style pour le titre (voyez la couleur cyan dans la fenêtre \SpecialChar LyX
@@ -553,13 +556,13 @@ pause
 \begin_layout Standard
 \align center
 Vous aurez sans doute remarqué l'option de style 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
 \family typewriter
 randomdots
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -587,11 +590,11 @@ Exemple de code source \SpecialChar LaTeX
 
 \begin_layout Standard
 Utilisons maintenant le paquetage 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 listings
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  pour saisir du code source.
@@ -708,11 +711,11 @@ Fin.
 
 \begin_layout Standard
 N'oubliez pas d'insérer un style 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 FinDiapo
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  

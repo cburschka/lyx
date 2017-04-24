@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -29,6 +29,8 @@ braille
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -80,7 +82,8 @@ braille
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
-\quotes_language english
+\is_math_indent 0
+\quotes_style english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -719,6 +722,7 @@ Za više informacija o dimenziji Brajeve ćelije možete pogledi na
 LatexCommand href
 name "http://www.tiresias.org/research/reports/braille_cell.htm"
 target "http://www.tiresias.org/research/reports/braille_cell.htm"
+literal "false"
 
 \end_inset
 

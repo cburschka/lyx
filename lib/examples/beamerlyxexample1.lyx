@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -167,6 +167,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -204,7 +206,8 @@
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\quotes_style english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -5440,6 +5443,7 @@ beamertemplatebookbibitems
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Moon1968"
+literal "true"
 
 \end_inset
 
@@ -5500,6 +5504,7 @@ beamertemplatearticlebibitems
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "NickelsenT2002"
+literal "true"
 
 \end_inset
 
@@ -5546,6 +5551,7 @@ Proc.
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Tantau2004b"
+literal "true"
 
 \end_inset
 

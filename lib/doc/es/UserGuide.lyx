@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -68,6 +68,8 @@ enumitem
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -130,7 +132,8 @@ enumitem
 \tocdepth 2
 \paragraph_separation skip
 \defskip medskip
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -163,6 +166,7 @@ Si tienes comentarios o correcciones, por favor, escribe a la lista de correo
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -1701,11 +1705,11 @@ Etiquetas y referencias
 \emph default
  y quieres ver solamente las referencias a subsecciones, introduce el texto
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sub
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  como filtro y solo se mostrarán las entradas de la lista que contengan
@@ -2104,7 +2108,7 @@ Autocorrección
 \end_inset
 
 , puedes insertar en la ecuación los caracteres 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -2112,7 +2116,7 @@ Autocorrección
 =>
 \series default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  para obtenerlo.
@@ -2259,6 +2263,7 @@ Tab
 LatexCommand nomenclature
 symbol "Tab"
 description "tecla Tabulador"
+literal "false"
 
 \end_inset
 
@@ -2320,6 +2325,7 @@ Esc
 LatexCommand nomenclature
 symbol "Esc"
 description "tecla Escape"
+literal "false"
 
 \end_inset
 
@@ -2372,6 +2378,7 @@ Ctrl
 LatexCommand nomenclature
 symbol "Ctrl"
 description "tecla Control"
+literal "false"
 
 \end_inset
 
@@ -2433,6 +2440,7 @@ Mayúsculas
 LatexCommand nomenclature
 symbol "Mayúsculas"
 description "tecla Mayúsculas"
+literal "false"
 
 \end_inset
 
@@ -2456,6 +2464,7 @@ Alt
 LatexCommand nomenclature
 symbol "Alt"
 description "tecla Alt o Meta"
+literal "false"
 
 \end_inset
 
@@ -2486,7 +2495,7 @@ teclas de aceleración de menú
 \begin_deeper
 \begin_layout Standard
 Por ejemplo, la secuencia 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -2502,11 +2511,11 @@ S
 E
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  abre el diálogo «Estilo del texto», 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -2514,7 +2523,7 @@ E
 Alt+A
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  abre el menú «Archivo».
@@ -2740,11 +2749,11 @@ American Mathematical Society
  se secuencian juntos, pero las definiciones, los ejemplos y cosas por el
  estilo tienen su propia secuencia.
  El esquema de 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 numeración secuencial
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  no sitúa el número de sección con cada resultado, sino que los numera a
@@ -2908,11 +2917,11 @@ Documentos ! Configuración
 \end_inset
 
  están marcadas como 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 No disponible
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -2942,11 +2951,11 @@ IOP
 
 \begin_layout Standard
 Si necesitaras una clase de documento 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 No disponible
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , tienes que instalar los archivos del paquete apropiado.
@@ -2955,12 +2964,12 @@ No disponible
  mostrará un aviso en el que
  se indicarán los archivos requeridos.
  Véase la sección 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Instalación de nuevos paquetes \SpecialChar LaTeX
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  del manual 
@@ -3141,11 +3150,11 @@ Los módulos son a \SpecialChar LyX
  En esos casos, lo que necesitamos es algo como el preámbulo \SpecialChar LaTeX
  de un documento.
  Se trata del 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Formato local
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  de \SpecialChar LyX
@@ -3637,7 +3646,7 @@ ninguno
 
 \begin_layout Standard
 Quizás te preguntes qué significa 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Nivel
@@ -3646,7 +3655,7 @@ Nivel
 
 máx.
  de sección
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -4129,11 +4138,11 @@ todo
  En ese caso, si cambias la clase del documento, \SpecialChar LyX
  marcará los párrafos cuyo
  estilo no es reconocido como 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 desconocido
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -4519,11 +4528,11 @@ Tutorial
 
 \begin_layout Standard
 Un entorno de párrafo es simplemente un 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 contenedor
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  que le da al párrafo ciertas propiedades.
@@ -4570,11 +4579,11 @@ Normal
 \family default
 .
  Decimos 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 típicamente
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  porque si estás en uno de estos entornos:
@@ -4701,11 +4710,11 @@ Documentos !Título
 En \SpecialChar LaTeX
 , la página del título tiene tres partes: el título en sí, el nombre(s)
  del autor(es) y una 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 nota
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  para agradecimientos o información de contacto.
@@ -4984,11 +4993,11 @@ Subsubsección
  se encuentra.
  Por ejemplo, la quinta sección del segundo capítulo de este libro tiene
  la etiqueta 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2.5
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -5011,11 +5020,11 @@ Encabezados de sección ! No numerados
 
 \begin_layout Standard
 Los encabezados de sección sin numerar tienen un 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 *
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  al final del nombre.
@@ -5171,11 +5180,11 @@ corto
 \family default
 .
  Así se inserta un cuadro etiquetado 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Título corto
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  que te permite introducir el texto del título.
@@ -6325,6 +6334,7 @@ spanish
 \begin_inset CommandInset citation
 LatexCommand cite
 key "spanish"
+literal "true"
 
 \end_inset
 
@@ -6935,11 +6945,11 @@ arabic
 \series default
 .
  Para 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 numerar
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  los ítems con letras mayúsculas o minúsculas, respectivamente, usa 
@@ -6978,11 +6988,11 @@ Nota:
 
 \begin_layout Standard
 Para cambiar la numeración de los subniveles de la lista, reemplaza el 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 i
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  del comando por el número romano en minúsculas correspondiente al nivel
@@ -7482,6 +7492,7 @@ status collapsed
 \begin_inset CommandInset citation
 LatexCommand cite
 key "enumitem"
+literal "true"
 
 \end_inset
 
@@ -7648,6 +7659,7 @@ status collapsed
 \begin_inset CommandInset citation
 LatexCommand cite
 key "enumitem"
+literal "true"
 
 \end_inset
 
@@ -7679,11 +7691,11 @@ derecha
 \begin_layout Standard
 Aunque \SpecialChar LyX
  tiene clases de documento para cartas (
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 letter
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ), también dispone de dos entornos de párrafo llamados 
@@ -7953,28 +7965,28 @@ Resumen
 Resumen
 \family default
  solo se aplica en las clases 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 artículo
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  e 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 informe
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  Las clases de documento 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 libro
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  lo ignoran totalmente, y sería ridículo usar 
@@ -7991,11 +8003,11 @@ Resumen
 \family default
  hace varias cosas por ti.
  Primero, pone una etiqueta 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Resumen
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  centrada sobre el texto.
@@ -8070,11 +8082,11 @@ Nos gustaría poner directamente un ejemplo de
 Resumen,
 \family default
  pero como este documento es clase 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 book
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , no podemos.
@@ -8091,11 +8103,11 @@ reference "fig:Párrafo-en"
 
 .
  Si nunca habías oído hablar de un 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 resumen
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , puedes ignorar sin problema este entorno.
@@ -8145,19 +8157,19 @@ Bibliografía,
 \family default
  \SpecialChar LyX
  añade un gran espacio vertical seguido por el encabezado 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Bibliografía
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  o 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Referencias
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , según la clase de documento.
@@ -8421,11 +8433,11 @@ n");
 
 \begin_layout Standard
 Esto es justo el programa estándar 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Hello world!
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -8624,11 +8636,11 @@ Introducción
  #2 tiene a su vez dos subapartados.
  Dicho de otra forma, tienes una lista dentro de otra, con la lista interna
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 atada
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  al ítem #2:
@@ -9101,19 +9113,19 @@ Flotantes
 
 \begin_layout Standard
 Por otra parte, si tienes una ecuación, figura o cuadro en su propio 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 párrafo
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , se comportan igual que un entorno del tipo 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 anidación parcial
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -9537,11 +9549,11 @@ Empleo y características generales
 Hablando de niveles, \SpecialChar LyX
  puede poner hasta seis niveles de anidación.
  En otras palabras, 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 nivel #6
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  es el nivel más interno posible de profundidad.
@@ -9600,11 +9612,11 @@ Enumeración*
 Enumeración
 \family default
  bajo el ítem 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 A.
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , se generará error.
@@ -9772,11 +9784,11 @@ Normal
 podemos
 \emph default
  mantener cosas anidadas en 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 #3-a
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -10533,11 +10545,11 @@ Cita
  Aún estamos en el nivel #1.
  Queremos mostrar algunas cosas que puedes hacer mezclando entornos.
  El próximo grupo de párrafos es una 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 carta en cita
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -10853,15 +10865,15 @@ reference "sec:Bibliografía"
 
 \begin_layout Standard
 Obviamente, sería bueno poner un espacio protegido entre 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sección
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  y 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -10872,7 +10884,7 @@ reference "sec:Bibliografía"
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -11877,7 +11889,7 @@ jumps
 
 \begin_layout Standard
 Así las opciones aparecen exactamente después de las palabras 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Mr.
@@ -11889,7 +11901,7 @@ Edge
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -11903,7 +11915,7 @@ Fantasma
 .
  En nuestro caso se ha insertado un fantasma horizontal al principio de
  las dos últimas líneas y en el recuadro hemos escrito 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Mr.
@@ -11915,26 +11927,26 @@ Edge
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (observa el espacio detrás de 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Edge
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ).
  Un recuadro fantasma imprime solo el espacio correspondiente a su contenido
  (como un marcador de posición).
  De ahí su nombre, 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 fantasma
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -12864,11 +12876,11 @@ Muchos modernos lenguajes de diseño y de tipografía han comenzado a migrar
  de una tipografía particular.
  Por ejemplo, en lugar de cambiar a una versión en cursiva de la tipografía
  actual para enfatizar un texto, puedes usar un 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 estilo énfasis
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -13100,7 +13112,7 @@ Predeterminado
 \family default
  usa las tipografías estándar de \SpecialChar TeX
 , conocidas como 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -13112,7 +13124,7 @@ Computer
 Modern
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (
@@ -13120,7 +13132,7 @@ Modern
 cm
 \family default
 ) o 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -13128,7 +13140,7 @@ cm
 European Computer Modern
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (
@@ -13257,20 +13269,20 @@ ec
 AE
 \family default
  se refiere a 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Almost European
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  y es una tipografía virtual.
  Virtual significa que 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 roba
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  perfiles de otras tipografías.
@@ -13342,24 +13354,24 @@ AE
 .
  Por ejemplo.
  si buscas la palabra francesa 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 brève
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  en un PDF, no obtienes ningún resultado, porque el visor PDF busca el carácter
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 è
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  y no los caracteres 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
  e +
@@ -13367,7 +13379,7 @@ brève
 \end_inset
 
  ̀ 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -13782,7 +13794,7 @@ Documentos ! Configuración
  En la mayoría de los casos será la predeterminada por \SpecialChar LaTeX
 : la variante para
  ecuaciones de la familia tipográfica 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -13794,7 +13806,7 @@ Computer
 Modern
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -13852,7 +13864,7 @@ Si usas tipografías no \SpecialChar TeX
  el tipo de letra \SpecialChar TeX
  predeterminada de la clase de documento (en la mayoría
  de los casos 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -13864,13 +13876,13 @@ Computer
 Modern
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ) o usar la variante no \SpecialChar TeX
  de la tipografía predeterminada de la clase de
  documento (en la mayoría de los casos 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -13882,7 +13894,7 @@ Latin
 Modern
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ).
@@ -13964,7 +13976,7 @@ Versalitas
 \family default
  se utiliza típicamente para nombres propios.
  Por ejemplo: 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -13973,7 +13985,7 @@ Matthias Ettrich
 \noun default
  es el autor original de \SpecialChar LyX
 .
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -14531,11 +14543,11 @@ Diminuta
  
 \size tiny
 Este es el tamaño 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Diminuta
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -14569,11 +14581,11 @@ Pequeñísima
  
 \size scriptsize
 Este es el tamaño 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Pequeñísima
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -14603,11 +14615,11 @@ pequeña
  
 \size footnotesize
 Este es el tamaño 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Más Pequeña
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -14641,11 +14653,11 @@ Pequeña
  
 \size small
 Este es el tamaño 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Pequeña
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -14677,11 +14689,11 @@ Alt+S
 Normal
 \family default
  Este es el tamaño 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Normal
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -14714,11 +14726,11 @@ Grande
  
 \size large
 Este es el tamaño 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Grande
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -14756,11 +14768,11 @@ grande
  
 \size larger
 Este es el tamaño 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Más grande
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -14794,11 +14806,11 @@ Grandísima
  
 \size largest
 Este es el tamaño 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Grandísima
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -14824,11 +14836,11 @@ Enorme
  
 \size huge
 Este es el tamaño 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Enorme
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -14862,11 +14874,11 @@ Gigante
  
 \size giant
 Este es el tamaño 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Gigante
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -14898,19 +14910,19 @@ Alt+S
 Aumentar
 \family default
  Aumenta el tamaño un escalón (por ejemplo, de 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Grandísima
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  a 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Enorme
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ).
@@ -14928,19 +14940,19 @@ Alt+S+
 Disminuir
 \family default
  Disminuye el tamaño un escalón (por ejemplo, de 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Normal
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  a 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Pequeña
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ).
@@ -15219,19 +15231,19 @@ Espacio
 .
  Si quieres conmutar solo aquellas propiedades recién cambiadas (supón que
  solo pones forma 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 inclinada
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  y serie 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 negrita
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ), marca el cuadro 
@@ -15288,27 +15300,27 @@ typewriter
 Ancho fijo
 \family default
  es una tipografía de 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 ancho fijo
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (mono), significa que cada carácter tiene la misma anchura, la 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 i
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ocupa el mismo espacio que la 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 m
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -15366,19 +15378,19 @@ sin texto en ancho fijo
 Romanas
 \family default
  son tipografías formadas por caracteres con pequeños 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 apéndices
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  o 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 remates
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  en los extremos de las líneas que los dibujan.
@@ -15421,11 +15433,11 @@ Sans serif
 \end_layout
 
 \begin_layout Standard
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Conmutar
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  significa cambiar entre dos estados excluyentes de una propiedad de estilo
@@ -15437,28 +15449,28 @@ Conmutar
  tiene las propiedades B, C, F y G, y si B es conmutable y C no lo es, el
  texto acabará por tener las propiedades A, C, F y G.
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Nunca conmutado
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  y 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Siempre conmutado
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  implican que no tienes control sobre este comportamiento.
  Para las propiedades de la parte izquierda del diálogo (
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Familia
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , etc.), la conmutación depende de tu elección.
@@ -15473,28 +15485,28 @@ todo
  está marcado, todas las propiedades de esa parte se conmutan; por omisión
  no lo está ninguna de ellas.
  Por último, 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Reiniciar
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  nunca se conmuta.
  Si eliges 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Reiniciar
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  el 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Grosor
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  y marcas 
@@ -15507,11 +15519,11 @@ todo
 \family default
 , y luego aplicas el estilo a texto en negrita, este texto volverá al grosor
  por omisión, (
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Medio
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ), independientemente del número de veces que apliques el estilo.
@@ -15567,7 +15579,7 @@ Primero, \SpecialChar LyX
  convierte tu documento a una serie de comandos de texto para \SpecialChar LaTeX
 ,
  generando un archivo con la extensión 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -15575,7 +15587,7 @@ Primero, \SpecialChar LyX
 .tex
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -15628,7 +15640,7 @@ Formatos de archivo ! Texto simple
 
 \begin_layout Standard
 Este tipo de archivo tiene la extensión 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -15636,7 +15648,7 @@ Este tipo de archivo tiene la extensión
 .txt
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -15713,7 +15725,7 @@ Formatos de archivo ! \SpecialChar LaTeX
 
 \begin_layout Standard
 Este tipo de archivo tiene extensión 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -15721,7 +15733,7 @@ Este tipo de archivo tiene extensión
 .tex
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  y contiene todos los comandos necesarios para procesar el documento con
@@ -15782,7 +15794,7 @@ Formatos de archivo ! DVI
 
 \begin_layout Standard
 Este tipo de archivo tiene extensión 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -15790,24 +15802,24 @@ Este tipo de archivo tiene extensión
 .dvi
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  Se conoce como 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 independiente del dispositivo
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 device-independent
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , DVI), porque es completamente portable; puedes moverlo de una máquina
@@ -15893,7 +15905,7 @@ Formatos de archivo ! PostScript
 
 \begin_layout Standard
 Este tipo de archivo tiene la extensión 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -15901,7 +15913,7 @@ Este tipo de archivo tiene la extensión
 .ps
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -15912,11 +15924,11 @@ Adobe
  como lenguaje para impresoras.
  Por eso estos archivos contienen comandos que usa la impresora para imprimirlos.
  PostScript puede considerarse como un 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 lenguaje de programación
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ; con él puedes calcular y dibujar imágenes y diagramas.
@@ -15950,15 +15962,15 @@ status collapsed
 
 \begin_layout Standard
 Los archivos PostScript solo pueden contener imágenes en el formato 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Encapsulated PostScript
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (EPS, extensión 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -15966,7 +15978,7 @@ Encapsulated PostScript
 .eps
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ).
@@ -16023,7 +16035,7 @@ PDF
 
 \begin_layout Standard
 Este tipo de archivo tiene la extensión 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -16031,16 +16043,16 @@ Este tipo de archivo tiene la extensión
 .pdf
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  El formato 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Portable Document Format
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (PDF) fue desarrollado por 
@@ -16050,11 +16062,11 @@ Adobe
  como un derivado de PostScript.
  Es más comprimido y utiliza muchos menos comandos que PostScript.
  Como su nombre 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 portable
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  indica, puede ser procesado en cualquier sistema operativo y la salida
@@ -16064,15 +16076,15 @@ portable
 \begin_layout Standard
 PDF puede contener imágenes en su propio formato PDF, y en los formatos
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Joint Photographic Experts Group
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (JPG, extensión 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -16080,11 +16092,11 @@ Joint Photographic Experts Group
 .jpg
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  o 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -16092,19 +16104,19 @@ Joint Photographic Experts Group
 .jpeg
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ), y 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Portable Network Graphics
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (PNG, extensión 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -16112,7 +16124,7 @@ Portable Network Graphics
 .png
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ).
@@ -16333,7 +16345,7 @@ XHTML
 
 \begin_layout Standard
 Este tipo de archivo tiene la extensión 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -16341,7 +16353,7 @@ Este tipo de archivo tiene la extensión
 .xhtml
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -16369,11 +16381,11 @@ Características adicionales
 
 \begin_layout Standard
 La salida XHTML se encuentra 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 en desarrollo
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  y aún no soporta todas las características de \SpecialChar LyX
@@ -16546,7 +16558,7 @@ Rayas
 \begin_layout Standard
 En \SpecialChar LyX
 , el carácter 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -16554,7 +16566,7 @@ En \SpecialChar LyX
 -
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  dispone de cuatro longitudes, 
@@ -16794,7 +16806,7 @@ La semirraya y la raya se pueden generar también insertando el carácter
 Los tres tipos de guión son distintos del signo menos, que se usa en modo
  matemático y tiene su propia longitud.
  Aquí tenemos unos ejemplos de uso de 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -16802,7 +16814,7 @@ Los tres tipos de guión son distintos del signo menos, que se usa en modo
 -
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 :
@@ -16911,11 +16923,11 @@ status collapsed
 ancho fijo
 \family default
  y con estructuras inusuales, como 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 h3knix/m0n0wall
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -16938,21 +16950,21 @@ Guión de división silábica
 A veces interesará evitar que ciertas palabras o estructuras se partan.
  Supongamos que en el documento se describe una combinación de teclas en
  la forma 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 A-b c
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  \SpecialChar LaTeX
  se encuentra con el guión 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 -
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  y lo interpreta como posibilidad de ruptura, lo que en este caso quedaría
@@ -17002,11 +17014,11 @@ Cuando \SpecialChar LyX
  automáticamente entre palabras, frases y abreviaturas.
  \SpecialChar LaTeX
  añade entonces la 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 cantidad de espacio adecuada
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -17019,7 +17031,7 @@ cantidad de espacio adecuada
 Desafortunadamente, el algoritmo para identificar abreviaturas no siempre
  funciona.
  Si un 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -17027,7 +17039,7 @@ Desafortunadamente, el algoritmo para identificar abreviaturas no siempre
 .
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  está detrás de minúscula, es un fin de frase; si está detrás de mayúscula
@@ -17265,11 +17277,11 @@ En general, \SpecialChar LyX
  En concreto, pondrá comillas de apertura al principio de una cita y comillas
  de cierre al final.
  Por ejemplo, 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 abrir cerrar
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -17421,21 +17433,21 @@ estas
 \labelwidthstring 00.00.0000
 
 \family sans
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Texto
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
 \family default
  Comillas como 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 estas
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -17594,19 +17606,19 @@ Algunos idiomas usan otras ligaduras si la tipografía del documento las
 \begin_layout Standard
 Puede ser que en ocasiones no te guste cómo quedan ciertas letras ligadas.
  Mientras que una ligadura puede quedar bien en una palabra como 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 graffiti
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , puede dar un aspecto raro en otras como la palabra inglesa 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 cufflink
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  o la alemana «Dorffest».
@@ -17626,29 +17638,29 @@ ligadura.
 
 \family default
  Esto cambia el aspecto de 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 cufflinks
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  a 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 cuff\SpecialChar ligaturebreak
 links
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  y de «Dorffest» a 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Dorf\SpecialChar ligaturebreak
 fest
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -17720,7 +17732,7 @@ Logotipos
 
 \begin_layout Standard
 Quizá te preguntes por qué versión 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
@@ -17728,7 +17740,7 @@ Quizá te preguntes por qué versión
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -17744,21 +17756,21 @@ Quizá te preguntes por qué versión
 \end_inset
 
 : La versión actual es 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 \SpecialChar TeX
 -3.141592
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , la anterior fue 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 \SpecialChar TeX
 -3.14159
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -17945,6 +17957,7 @@ en el preámbulo \SpecialChar LaTeX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexcompanion"
+literal "true"
 
 \end_inset
 
@@ -17956,6 +17969,7 @@ key "latexcompanion"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexguide"
+literal "true"
 
 \end_inset
 
@@ -18305,11 +18319,11 @@ arg   "marginalnote-insert"
 \family roman
 \series medium
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 margen
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , que es su representación en \SpecialChar LyX
@@ -18643,19 +18657,19 @@ bits
  Por tanto, estas imágenes no son totalmente escalables y se ven pixeladas
  a valores altos de zoom.
  Formatos de imagen en bitmap bien conocidos son 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Graphics Interchange Format
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (GIF, extensión 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 .gif
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 )
@@ -18691,19 +18705,19 @@ status collapsed
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Portable Network Graphics
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (PNG, extensión 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 .png
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 )
@@ -18739,27 +18753,27 @@ status collapsed
 \end_inset
 
 , y 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Joint Photographic Experts Group
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (JPG, extensión 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 .jpg
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  o 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 .jpeg
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 )
@@ -18812,15 +18826,15 @@ vectoriales se generan mediante una descripción de una serie de trazos (vectore
 \end_inset
 
 Formatos de imagen escalables pueden ser 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Scalable Vector Graphics
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (SVG, extensión 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 .
@@ -18828,7 +18842,7 @@ Scalable Vector Graphics
 svg
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 )
@@ -18864,15 +18878,15 @@ status collapsed
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Encapsulated PostScript
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (EPS, extensión 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 .
@@ -18880,7 +18894,7 @@ Encapsulated PostScript
 eps
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 )
@@ -18916,15 +18930,15 @@ status collapsed
 \end_inset
 
  y 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Portable Document Format
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (PDF, extensión 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 .
@@ -18932,7 +18946,7 @@ Portable Document Format
 pdf
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 )
@@ -18969,11 +18983,11 @@ status collapsed
 
 .
  Escribimos 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 pueden ser
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , porque se puede convertir cualquier imagen bitmap a PDF o EPS y el resultado
@@ -22755,11 +22769,11 @@ arg   "float-insert table"
  cuadros se sitúan normalmente bajo la leyenda, no encima de la misma como
  en el caso de las figuras, y que la etiqueta para el título comienza con
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 tab:
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -23344,11 +23358,11 @@ que se muestran cuando el cursor está en una ecuación.
 
 \begin_layout Standard
 Hay dos tipos principales de ecuaciones: Las ecuaciones 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 en línea
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  se muestran en la misma línea del texto, como en este caso:
@@ -23364,11 +23378,11 @@ Línea de texto con una ecuación,
 
 \begin_layout Standard
 Las ecuaciones 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 presentadas
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  se muestran separadas del texto, como si estuvieran en su propio párrafo,
@@ -23392,7 +23406,7 @@ Solo se pueden numerar y referir las ecuaciones presentadas.
 \end_inset
 
 e., escribir 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -23402,7 +23416,7 @@ e., escribir
 alpha
 \series default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , seguido de espacio, en una ecuación imprime la letra griega 
@@ -23485,7 +23499,7 @@ El
 Espacio
 \family default
 , representado en este documento como 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -23493,7 +23507,7 @@ Espacio
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , parece que no hace nada en una ecuación, puesto que no añade espacio,
@@ -23668,11 +23682,11 @@ y
 Espacio
 \family default
  extra entre el acento 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 ^
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  y el carácter.
@@ -23710,11 +23724,11 @@ Este será el método a usar habitualmente en teclados en español para entrar
 \end_inset
 
  Los subíndices se ponen con guión bajo 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 _
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 : Para 
@@ -23991,11 +24005,11 @@ que pondrá
 \end_inset
 
  bajo 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 lím
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  en estilo presentación.
@@ -24304,6 +24318,7 @@ Ecuaciones
 \begin_inset CommandInset citation
 LatexCommand cite
 key "spanish"
+literal "true"
 
 \end_inset
 
@@ -25273,7 +25288,7 @@ reference "sec:Paréntesis-y-delimitadores"
 Horizontal,
 \family default
  con las letras 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -25281,11 +25296,11 @@ Horizontal,
 l
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -25293,11 +25308,11 @@ l
 r
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , y 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -25305,12 +25320,12 @@ r
 c
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  Lyx utiliza 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -25318,12 +25333,12 @@ c
 c
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  por omisión.
  Por ejemplo, la secuencia 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -25331,7 +25346,7 @@ c
 lcr
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  indica que la primera columna se alineará a la izquierda, la segunda al
@@ -25424,11 +25439,11 @@ Ctrl+Entrar
 \series default
  en una ecuación no vacía, la parte anterior al signo de relación (signo
  igual 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 =
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , etc.) se insertará automáticamente en la primera columna, el signo de relación
@@ -25628,7 +25643,7 @@ arg   "label-insert"
 ) cuando el cursor está en la ecuación: se abre un diálogo para introducir
  el texto.
  Se recomienda dejar como primera parte de la etiqueta la propuesta 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -25636,17 +25651,17 @@ arg   "label-insert"
 eq:
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , porque esto ayuda después a identificar el tipo de etiqueta si hay muchas
  en el documento.
  En el ejemplo siguiente hemos insertado la etiqueta 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 eq:tanhExp
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  en la segunda línea:
@@ -26143,11 +26158,11 @@ Espa
 cio dentro del cuadro el cursor sale del mismo, por lo que si necesitas
  un espacio debe ser protegido.
  En este ejemplo la letra 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 N
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  en estilo 
@@ -26450,11 +26465,11 @@ o.
  De forma que, si el tamaño base de la tipografía del documento se cambia,
  todos los caracteres serán reajustados.
  Como ejemplo una ecuación con letra en tamaño 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 grandísima
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 :
@@ -26607,6 +26622,7 @@ multilínea
 \begin_inset CommandInset citation
 LatexCommand cite
 key "AMS"
+literal "true"
 
 \end_inset
 
@@ -26685,7 +26701,7 @@ arg   "label-insert"
  Aparece una ventanilla para escribir el texto de la etiqueta, en la que
  \SpecialChar LyX
  propone un prefijo y un posible título, en este caso 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -26693,11 +26709,11 @@ arg   "label-insert"
 enu:Segundo-ítem
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ; el prefijo 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -26705,15 +26721,15 @@ enu:Segundo-ítem
 enu:
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  por 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 enumeración
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -26736,7 +26752,7 @@ Aceptar
 
 ej.
  si pones una etiqueta en un encabezado de sección, el prefijo será 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -26744,7 +26760,7 @@ ej.
 sec:
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -26771,7 +26787,7 @@ arg   "dialog-show-new-inset ref"
  Aparece la ventana de referencias cruzadas con la lista de todas las etiquetas
  del documento, que podemos ordenar alfabéticamente, y escogemos en ella
  la entrada 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -26779,7 +26795,7 @@ arg   "dialog-show-new-inset ref"
 enu:Segundo-ítem
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -26885,11 +26901,11 @@ reference "fig:Dos-imágenes"
 (<referencia>): imprime el número entre paréntesis, este estilo es el habitual
  para referir ecuaciones, especialmente cuando se omite el nombre de referencia
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Ecuación
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 : 
@@ -26927,11 +26943,11 @@ página
 \end_inset
 
 <página>: imprime el texto 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 en la página
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  y el número de página: 
@@ -26946,37 +26962,37 @@ reference "fig:Dos-imágenes"
 \end_inset
 
 Si la etiqueta está en la misma página se imprime 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 en esta página
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ; en documentos a dos caras, si la etiqueta está en la página de enfrente
  se imprime 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 en la página de enfrente
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ; si está en la página anterior que no es la de enfrente, se imprime 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 en la página anterior
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , y si está en la página siguiente pero no es la de enfrente se imprime
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 en la página siguiente
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -27002,11 +27018,11 @@ página
 \end_inset
 
 <página>: imprime el número, el texto 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 en la página
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  y el número de página: 
@@ -27145,7 +27161,7 @@ newref
  del documento.
  Por ejemplo, para redefinir todas las referencias a figuras (que tienen
  la etiqueta 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -27153,7 +27169,7 @@ newref
 fig
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ), se usa el comando
@@ -27177,6 +27193,7 @@ Para más información sobre el formato echa un vistazo a las documentaciones
 \begin_inset CommandInset citation
 LatexCommand cite
 key "prettyref,refstyle"
+literal "true"
 
 \end_inset
 
@@ -27288,11 +27305,11 @@ En cualquier momento puedes cambiar el texto de una etiqueta pulsando sobre
 Si hay alguna referencia cruzada a una etiqueta inexistente, en la etiqueta
  de la referencia en \SpecialChar LyX
  se mostrará el aviso 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 ROTO
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ―por "enlace"― y en la salida dos signos de interrogación en vez de la
@@ -27595,6 +27612,7 @@ Nombre
 LatexCommand href
 name "Página de LyX"
 target "http://www.lyx.org"
+literal "false"
 
 \end_inset
 
@@ -27623,6 +27641,7 @@ En la salida PDF los enlaces se partirán con un guión si es necesario, y
 LatexCommand href
 name "Página de LyX"
 target "http://www.lyx.org"
+literal "false"
 
 \end_inset
 
@@ -27832,11 +27851,11 @@ Etiqueta.
  Por ejemplo, nuestra segunda entrada en la bibliografía es un libro sobre
  \SpecialChar LaTeX
  para el que hemos puesto como clave una abreviatura de su título, 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 latexcompanion
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -27861,11 +27880,11 @@ arg   "dialog-show-new-inset citation"
 
 \family default
  Saldrá una ventana 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Añadir cita
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  en la que puedes seleccionar una o más claves en la lista de las disponibles.
@@ -27885,11 +27904,11 @@ Etiqueta
  para la entrada, esta se verá en lugar del número.
  Aquí vemos dos ejemplos, el primero sin etiqueta, el segundo con la etiqueta
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Créditos
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 : 
@@ -27905,6 +27924,7 @@ Echa un vistazo a
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexcompanion"
+literal "true"
 
 \end_inset
 
@@ -27917,6 +27937,7 @@ Los miembros del equipo \SpecialChar LyX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "lyxcredit"
+literal "true"
 
 \end_inset
 
@@ -28002,7 +28023,7 @@ También son útiles simplemente para mantener una base de datos de artículos
 
 \begin_layout Standard
 La base de datos es un archivo de texto con la extensión 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -28010,7 +28031,7 @@ La base de datos es un archivo de texto con la extensión
 .bib
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  que contiene la bibliografía en un formato especial, como se explica en
@@ -28018,6 +28039,7 @@ La base de datos es un archivo de texto con la extensión
 \begin_inset CommandInset citation
 LatexCommand cite
 key "BibTeX-2"
+literal "true"
 
 \end_inset
 
@@ -28030,6 +28052,7 @@ key "BibTeX-2"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Mittelbach,Kopka,Lamport"
+literal "true"
 
 \end_inset
 
@@ -28081,7 +28104,7 @@ Contenido
 
 \begin_layout Standard
 El archivo de estilo es un archivo de texto con extensión 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -28089,7 +28112,7 @@ El archivo de estilo es un archivo de texto con extensión
 .bst
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  que define el estilo de todas las entradas bibliográficas.
@@ -28111,6 +28134,7 @@ Hay información sobre el modo de hacerlo en
 \begin_inset CommandInset href
 LatexCommand href
 target "http://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxhak.pdf"
+literal "false"
 
 \end_inset
 
@@ -28211,6 +28235,7 @@ Bib\SpecialChar TeX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "BibTeX"
+literal "true"
 
 \end_inset
 
@@ -28306,7 +28331,7 @@ Documentos ! Configuración
 En la ventana de referencia de cita también puedes poner un texto para que
  aparezca antes o después de la referencia.
  Aquí hay un ejemplo en el que el texto 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Capítulo
@@ -28314,7 +28339,7 @@ Capítulo
 \end_inset
 
 3
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  va detrás de la referencia: 
@@ -28326,6 +28351,7 @@ Echa un vistazo a
 LatexCommand cite
 after "Capítulo 3"
 key "latexcompanion"
+literal "true"
 
 \end_inset
 
@@ -28391,7 +28417,7 @@ Alfabético
 .
  En \SpecialChar LyX
  se muestra un cuadro azul claro con la etiqueta 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -28399,7 +28425,7 @@ Alfabético
 Índice
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  en el lugar en que saldrá impreso en la salida.
@@ -28416,6 +28442,7 @@ En las siguientes subsecciones describiremos brevemente los comandos para
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexcompanion,latexbook,latexguide"
+literal "true"
 
 \end_inset
 
@@ -28441,7 +28468,7 @@ Es frecuente agrupar entradas del índice de forma que el lector pueda hacer
  búsquedas más rápidas.
  Supongamos que queremos agrupar las entradas del índice para las listas
  enumeración y enumeración* bajo la entrada 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -28449,7 +28476,7 @@ Es frecuente agrupar entradas del índice de forma que el lector pueda hacer
 Listas
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -28512,22 +28539,22 @@ Listas ! Enumeración
 
 \begin_layout Standard
 El signo de exclamación 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 !
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  indica los niveles de agrupación.
  Puedes tener tres niveles; cada nivel se sangra un poco más.
  Para el nivel más alto no hace falta entrada de índice.
  Si no ponemos ninguna entrada de índice para 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Listas
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , se imprimirá de todas formas pero sin número de página.
@@ -28600,7 +28627,7 @@ Entornos de párrafo|)
 
 \begin_layout Standard
 Los comandos 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -28608,11 +28635,11 @@ Los comandos
 |(
 \series default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  y 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -28620,7 +28647,7 @@ Los comandos
 |)
 \series default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  respectivamente inician y finalizan el rango de páginas.
@@ -28650,11 +28677,11 @@ Ind@Índice alfabético ! Referencias cruzadas
 \begin_layout Standard
 Es posible hacer referencia a otra entrada del índice.
  Por ejemplo, en la entrada 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 GIF
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (en la sección
@@ -28669,11 +28696,11 @@ reference "subsec:Formatos-de-imagen"
 \end_inset
 
 ) del índice, se hace una referencia a la entrada 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Formatos de imagen
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  en la misma sección con el comando
@@ -28970,11 +28997,11 @@ Entrada en cursiva
 \end_inset
 
  También se puede formatear el número de página mediante el carácter 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 |
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  seguido del comando \SpecialChar LaTeX
@@ -29002,7 +29029,7 @@ Entradas postizas ! número en cursiva:|textit
  Normalmente todos los comandos \SpecialChar LaTeX
  comienzan con barra invertida, pero en
  este caso especial 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -29010,7 +29037,7 @@ Entradas postizas ! número en cursiva:|textit
 |command
 \series default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  equivale a 
@@ -29082,6 +29109,7 @@ xindy
 LatexCommand cite
 after "p. 678 ff."
 key "latexcompanion"
+literal "true"
 
 \end_inset
 
@@ -29159,6 +29187,7 @@ xindy
 \begin_inset CommandInset citation
 LatexCommand cite
 key "makeindex,xindy"
+literal "true"
 
 \end_inset
 
@@ -29243,6 +29272,7 @@ reference "subsec:LaTeX-Configuración"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "makeindex-man,xindy"
+literal "true"
 
 \end_inset
 
@@ -29270,11 +29300,11 @@ Configuración\SpecialChar menuseparator
 \begin_layout Standard
 En muchos campos es frecuente tener más de un índice.
  Por ejemplo, tener un 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Índice de nombres
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  además del índice alfabético.
@@ -29309,6 +29339,7 @@ Si no es así consulta \SpecialChar TeX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "TeXCatalogue"
+literal "true"
 
 \end_inset
 
@@ -29342,11 +29373,11 @@ Configuración\SpecialChar menuseparator
 Índices disponibles
 \family default
  ya contiene el índice estándar 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Índice
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -29390,11 +29421,11 @@ Si quieres cambiar la atribución de una entrada de índice específica, haciend
 \begin_layout Itemize
 Con clic derecho sobre un índice, puedes cambiar su tipo.
  Además, es posible calificar una lista de índice como 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Subíndice
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -29489,6 +29520,7 @@ status collapsed
 \begin_inset CommandInset citation
 LatexCommand cite
 key "TeXCatalogue"
+literal "true"
 
 \end_inset
 
@@ -29766,6 +29798,7 @@ Para introducir en entradas de la nomenclatura caracteres como |
 LatexCommand nomenclature
 symbol "\"@, \"|, \"!, \"\""
 description "El carácter comillas se obtiene escribiendo ' \"\"\"\" '"
+literal "false"
 
 \end_inset
 
@@ -29799,6 +29832,7 @@ a
 LatexCommand nomenclature
 symbol "a"
 description "entrada postiza para el carácter <<a>>"
+literal "false"
 
 \end_inset
 
@@ -29814,6 +29848,7 @@ LatexCommand nomenclature
 prefix "Sigma"
 symbol "$\\sigma$"
 description "entrada postiza para el carácter \\textsf{sigma}"
+literal "false"
 
 \end_inset
 
@@ -29880,6 +29915,7 @@ nomencl
 \begin_inset CommandInset citation
 LatexCommand cite
 key "nomencl"
+literal "true"
 
 \end_inset
 
@@ -30032,11 +30068,11 @@ nomnorefeqpage Deshabilita las opciones correspondientes
 
 \begin_layout Standard
 Palabras como 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 page
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  se traducen automáticamente para algunos idiomas.
@@ -30071,19 +30107,19 @@ nobreakspace{}#1}
 \end_inset
 
 reemplazando 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 see equation
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  y 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 page
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  por su traducción.
@@ -30234,6 +30270,7 @@ reference "subsec:LaTeX-Configuración"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "nomencl,makeindex"
+literal "true"
 
 \end_inset
 
@@ -30303,11 +30340,11 @@ Ramas
 .
  Además, el diálogo permite mezclar dos ramas (renombrando una con el nombre
  de la otra) y añadir 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 ramas desconocidas
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , (o sea, ramas que se añadieron al documento mediante copia y pega desde
@@ -30333,6 +30370,7 @@ A continuación hay un ejemplo en el que solo está activada la pregunta,
 
 \begin_layout Standard
 \begin_inset Branch Pregunta
+inverted 0
 status open
 
 \begin_layout Standard
@@ -30346,6 +30384,7 @@ Pregunta: ¿Quién fue el primer Nobel de Física?
 
 \begin_layout Standard
 \begin_inset Branch Respuesta
+inverted 0
 status collapsed
 
 \begin_layout Standard
@@ -30370,84 +30409,84 @@ Ramas
 \family default
 , se añadirá el nombre de las ramas activas al nombre del archivo al exportarlo.
  Considera, por ejemplo, un archivo 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Examen.lyx
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  que tiene las ramas de arriba.
  Si 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Sufijo del nombre de archivo
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  está activo, el archivo PDF exportado será nombrado 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Examen.pdf
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  si 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Pregunta
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  y 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Respuesta
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  están inactivas, 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Examen-Pregunta.pdf
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  si solo está activa la rama 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Pregunta
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Examen-Respuesta.pdf
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  si solo está activa la rama 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Respuesta
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  y 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Examen-Pregunta-Respuesta.pdf
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  si ambas ramas están activas.
@@ -30538,6 +30577,7 @@ respuesta}[1]{#1}
 
 \begin_layout Standard
 \begin_inset Branch Pregunta
+inverted 0
 status open
 
 \begin_layout Standard
@@ -30574,6 +30614,7 @@ respuesta}[1]{}
 
 \begin_layout Standard
 \begin_inset Branch Respuesta
+inverted 0
 status collapsed
 
 \begin_layout Standard
@@ -30884,6 +30925,7 @@ hyperref
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hyperref"
+literal "true"
 
 \end_inset
 
@@ -31129,11 +31171,11 @@ Cuando escribas documentos extensos o libros, necesitarás saber algo sobre
  usa en segundo plano.
  Como \SpecialChar LaTeX
  se basa en comandos puedes 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 programar
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  tu texto, lo que tiene la ventaja de que se puede cambiar el formato del
@@ -31157,6 +31199,7 @@ programar
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Catalogue"
+literal "true"
 
 \end_inset
 
@@ -31248,6 +31291,7 @@ caption
 \begin_inset CommandInset citation
 LatexCommand cite
 key "caption"
+literal "true"
 
 \end_inset
 
@@ -31314,6 +31358,7 @@ Para saber más sobre \SpecialChar LaTeX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexcompanion,latexguide"
+literal "true"
 
 \end_inset
 
@@ -31552,11 +31597,11 @@ Configuración
 \family default
 .
  En segundo lugar, añade el módulo 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Encabezado/Pie personalizados
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  en el menú 
@@ -31892,11 +31937,11 @@ de
 página
 \family default
  está como 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Predeterminado
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -31960,11 +32005,11 @@ leftmark imprime el número de la sección actual y el título.
  Si el documento tiene capítulos, imprime el número de capítulo actual y
  el título.
  Se llama 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 leftmark
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  porque generalmente va en un encabezado izquierda.
@@ -32076,6 +32121,7 @@ Las líneas pueden ser en color, aunque requiere más conocimientos de \SpecialC
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Mittelbach"
+literal "true"
 
 \end_inset
 
@@ -32285,6 +32331,7 @@ fancyhdr
 \begin_inset CommandInset citation
 LatexCommand cite
 key "fancyhdr"
+literal "true"
 
 \end_inset
 
@@ -32384,6 +32431,7 @@ preview
 \begin_inset CommandInset citation
 LatexCommand cite
 key "TeXCatalogue"
+literal "true"
 
 \end_inset
 
@@ -33068,7 +33116,7 @@ func()
 \begin_layout Itemize
 Realizar una modificación de símbolos matemáticos, por ejemplo, reemplazar
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -33076,11 +33124,11 @@ Realizar una modificación de símbolos matemáticos, por ejemplo, reemplazar
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  por 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -33088,15 +33136,15 @@ Realizar una modificación de símbolos matemáticos, por ejemplo, reemplazar
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , (para evitar reemplazar todas las letras 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 R
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  en texto normal, puedes marcar las opciones 
@@ -33151,6 +33199,7 @@ En la entrada de Wikipedia
 \begin_inset CommandInset href
 LatexCommand href
 target "http://en.wikipedia.org/wiki/Regular_expression"
+literal "false"
 
 \end_inset
 
@@ -33671,6 +33720,7 @@ status collapsed
 \begin_inset CommandInset href
 LatexCommand href
 target "http://lingucomponent.openoffice.org/thesaurus.html"
+literal "false"
 
 \end_inset
 
@@ -34637,6 +34687,7 @@ status collapsed
 \begin_inset CommandInset citation
 LatexCommand cite
 key "TeXCatalogue"
+literal "true"
 
 \end_inset
 
@@ -34721,6 +34772,7 @@ Esta sección describe cómo usar \SpecialChar LyX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Arabic,Armenian,Farsi,Hebrew,Japanese,Latvian,Lithuanian,Mongolian,Vietnamese"
+literal "true"
 
 \end_inset
 
@@ -37048,11 +37100,11 @@ layout
 \emph default
 ) para una determinada clase de documento.
  Un ejemplo es la clase de documento 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 article (Elsevier)
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  con tres recuadros personalizados.
@@ -38028,11 +38080,11 @@ Ver documento maestro
 \begin_layout Standard
 Este ítem del menú solo es visible si el documento actual está incluido
  en otro que es su documento 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 maestro
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , (véase la sección 
@@ -38146,11 +38198,11 @@ Actualizar documento maestro
 \begin_layout Standard
 Este ítem solo es visible si el documento actual está incluido en otro que
  es su documento 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 maestro
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , (véase la sección 
@@ -40764,11 +40816,11 @@ Los submenús del diálogo se explican a continuación.
  Para encontrar rápidamente una determinada configuración puedes usar el
  campo de búsqueda que hay sobre los submenús del diálogo.
  Si escribes ahí 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 página
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , por ej., verás cómo algunos submenús se difuminan y deshabilitan, mientras
@@ -40872,6 +40924,7 @@ Driver support
 \begin_inset CommandInset href
 LatexCommand href
 target "http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf"
+literal "false"
 
 \end_inset
 
@@ -41221,11 +41274,11 @@ Paquete de idiomas
  determina el paquete \SpecialChar LaTeX
  que se usa para la división de palabras y la traducción
  de cadenas de texto como 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Part
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -43234,11 +43287,11 @@ Separators
 Icons
 \family default
  y en el caso del Menu 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 file_lastfiles
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , una entrada 
@@ -43313,11 +43366,11 @@ Item "Guardar marcador 6" "bookmark-save 6"
 \end_inset
 
 en la sección 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 navigate_bookmarks
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -43348,6 +43401,7 @@ Set
 LatexCommand href
 name "esta imagen"
 target "http://wiki.lyx.org/uploads/LyX/NewInLyX20/themes.png"
+literal "false"
 
 \end_inset
 
@@ -43479,7 +43533,7 @@ reference "sec:Rutas"
 
 ) o en la misma carpeta del documento si no se ha especificado tal directorio.
  La copia de seguridad tiene la extensión 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -43487,7 +43541,7 @@ reference "sec:Rutas"
 .lyx~
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -44199,11 +44253,11 @@ De igual manera se modifica una combinación ya existente.
 Función
 \family default
  con 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 command alternatives
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  y siguiendo con los diferentes nombres de función separados con punto y
@@ -44867,6 +44921,7 @@ usuario Aquí puedes seleccionar el idioma de los menús de \SpecialChar LyX
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.lyx.org/I18n"
+literal "false"
 
 \end_inset
 
@@ -44985,6 +45040,7 @@ Arab\SpecialChar TeX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Arabic"
+literal "true"
 
 \end_inset
 
@@ -45421,7 +45477,7 @@ X2
 \family default
 son para cirílico.
  Se pueden combinar codificaciones, como 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -45429,7 +45485,7 @@ son para cirílico.
 T1, T2B
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -46761,6 +46817,7 @@ El Equipo \SpecialChar LyX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "lyxcredit"
+literal "true"
 
 \end_inset
 
@@ -46783,6 +46840,7 @@ Bibliografía
 LatexCommand bibitem
 label "Créditos"
 key "lyxcredit"
+literal "true"
 
 \end_inset
 
@@ -46791,6 +46849,7 @@ El Equipo Lyx:
 LatexCommand href
 name "Créditos"
 target "http://www.lyx.org/Credits"
+literal "false"
 
 \end_inset
 
@@ -46816,6 +46875,7 @@ http://www.lyx.org/Credits
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexcompanion"
+literal "true"
 
 \end_inset
 
@@ -46832,6 +46892,7 @@ The \SpecialChar LaTeX
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexguide"
+literal "true"
 
 \end_inset
 
@@ -46849,6 +46910,7 @@ A Guide to \SpecialChar LaTeX
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexbook"
+literal "true"
 
 \end_inset
 
@@ -46865,6 +46927,7 @@ Leslie Lamport:
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "texbook"
+literal "true"
 
 \end_inset
 
@@ -46883,6 +46946,7 @@ book.
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "TeXCatalogue"
+literal "true"
 
 \end_inset
 
@@ -46909,6 +46973,7 @@ http://mirrors.ctan.org/help/Catalogue/bytopic.html
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "LaTeXFAQ"
+literal "true"
 
 \end_inset
 
@@ -46935,6 +47000,7 @@ http://www.tex.ac.uk/faq/
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "BibTeX"
+literal "true"
 
 \end_inset
 
@@ -46943,6 +47009,7 @@ key "BibTeX"
 LatexCommand href
 name "Documentación"
 target "http://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxdoc.pdf"
+literal "false"
 
 \end_inset
 
@@ -46973,6 +47040,7 @@ http://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxdoc.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "BibTeX-2"
+literal "true"
 
 \end_inset
 
@@ -46981,6 +47049,7 @@ key "BibTeX-2"
 LatexCommand href
 name "Documentación"
 target "http://www.ctan.org/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf"
+literal "false"
 
 \end_inset
 
@@ -47011,6 +47080,7 @@ http://www.ctan.org/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "makeindex"
+literal "true"
 
 \end_inset
 
@@ -47019,6 +47089,7 @@ key "makeindex"
 LatexCommand href
 name "Documentación"
 target "http://mirrors.ctan.org/indexing/makeindex/doc/makeindex.pdf"
+literal "false"
 
 \end_inset
 
@@ -47048,6 +47119,7 @@ http://mirrors.ctan.org/indexing/makeindex/doc/makeindex.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "makeindex-man"
+literal "true"
 
 \end_inset
 
@@ -47056,6 +47128,7 @@ key "makeindex-man"
 LatexCommand href
 name "Opciónes"
 target "http://mirrors.ctan.org/indexing/makeindex/doc/manpages.dvi"
+literal "false"
 
 \end_inset
 
@@ -47085,6 +47158,7 @@ http://mirrors.ctan.org/indexing/makeindex/doc/manpages.dvi
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "xindy"
+literal "true"
 
 \end_inset
 
@@ -47093,6 +47167,7 @@ key "xindy"
 LatexCommand href
 name "Documentación"
 target "http://www.xindy.org/documentation.html"
+literal "false"
 
 \end_inset
 
@@ -47122,6 +47197,7 @@ http://www.xindy.org/documentation.html
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "AMS"
+literal "true"
 
 \end_inset
 
@@ -47130,6 +47206,7 @@ key "AMS"
 LatexCommand href
 name "Documentación"
 target "http://www.ams.org/publications/authors/tex/amslatex"
+literal "false"
 
 \end_inset
 
@@ -47155,6 +47232,7 @@ http://www.ams.org/publications/authors/tex/amslatex
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "caption"
+literal "true"
 
 \end_inset
 
@@ -47163,6 +47241,7 @@ key "caption"
 LatexCommand href
 name "Documentación"
 target "http://mirrors.ctan.org/macros/latex/contrib/caption/caption-eng.pdf"
+literal "false"
 
 \end_inset
 
@@ -47204,6 +47283,7 @@ http://mirrors.ctan.org/macros/latex/contrib/caption/caption-eng.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "enumitem"
+literal "true"
 
 \end_inset
 
@@ -47212,6 +47292,7 @@ key "enumitem"
 LatexCommand href
 name "Documentación"
 target "http://mirrors.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf"
+literal "false"
 
 \end_inset
 
@@ -47253,6 +47334,7 @@ http://mirrors.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "fancyhdr"
+literal "true"
 
 \end_inset
 
@@ -47261,6 +47343,7 @@ key "fancyhdr"
 LatexCommand href
 name "Documentación"
 target "http://mirrors.ctan.org/macros/latex/contrib/fancyhdr/fancyhdr.pdf"
+literal "false"
 
 \end_inset
 
@@ -47302,6 +47385,7 @@ http://mirrors.ctan.org/macros/latex/contrib/fancyhdr/fancyhdr.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hyperref"
+literal "true"
 
 \end_inset
 
@@ -47310,6 +47394,7 @@ key "hyperref"
 LatexCommand href
 name "Documentación"
 target "http://www.ctan.org/pkg/hyperref"
+literal "false"
 
 \end_inset
 
@@ -47351,6 +47436,7 @@ http://www.ctan.org/pkg/hyperref
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "nomencl"
+literal "true"
 
 \end_inset
 
@@ -47359,6 +47445,7 @@ key "nomencl"
 LatexCommand href
 name "Documentación"
 target "http://mirrors.ctan.org/macros/latex/contrib/nomencl/nomencl.pdf"
+literal "false"
 
 \end_inset
 
@@ -47400,6 +47487,7 @@ http://mirrors.ctan.org/macros/latex/contrib/nomencl/nomencl.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "prettyref"
+literal "true"
 
 \end_inset
 
@@ -47408,6 +47496,7 @@ key "prettyref"
 LatexCommand href
 name "Documentación"
 target "http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf"
+literal "false"
 
 \end_inset
 
@@ -47449,6 +47538,7 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "refstyle"
+literal "true"
 
 \end_inset
 
@@ -47457,6 +47547,7 @@ key "refstyle"
 LatexCommand href
 name "Documentación"
 target "http://www.ctan.org/tex-archive/macros/latex/contrib/refstyle/refstyle.pdf"
+literal "false"
 
 \end_inset
 
@@ -47498,6 +47589,7 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/refstyle/refstyle.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Arabic"
+literal "true"
 
 \end_inset
 
@@ -47506,6 +47598,7 @@ key "Arabic"
 LatexCommand href
 name "Página wiki"
 target "http://wiki.lyx.org/Windows/Arabic"
+literal "false"
 
 \end_inset
 
@@ -47532,6 +47625,7 @@ http://wiki.lyx.org/Windows/Arabic
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Armenian"
+literal "true"
 
 \end_inset
 
@@ -47540,6 +47634,7 @@ key "Armenian"
 LatexCommand href
 name "Página wiki"
 target "http://wiki.lyx.org/Windows/Armenian"
+literal "false"
 
 \end_inset
 
@@ -47566,6 +47661,7 @@ http://wiki.lyx.org/Windows/Armenian
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Cyrillic"
+literal "true"
 
 \end_inset
 
@@ -47574,6 +47670,7 @@ key "Cyrillic"
 LatexCommand href
 name "Página wiki"
 target "http://wiki.lyx.org/Windows/Cyrillic"
+literal "false"
 
 \end_inset
 
@@ -47600,6 +47697,7 @@ http://wiki.lyx.org/Windows/Cyrillic
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Farsi"
+literal "true"
 
 \end_inset
 
@@ -47608,6 +47706,7 @@ key "Farsi"
 LatexCommand href
 name "Página wiki"
 target "http://wiki.lyx.org/Windows/Farsi"
+literal "false"
 
 \end_inset
 
@@ -47634,6 +47733,7 @@ http://wiki.lyx.org/Windows/Farsi
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Hebrew"
+literal "true"
 
 \end_inset
 
@@ -47642,6 +47742,7 @@ key "Hebrew"
 LatexCommand href
 name "Página wiki"
 target "http://wiki.lyx.org/Windows/Hebrew"
+literal "false"
 
 \end_inset
 
@@ -47668,6 +47769,7 @@ http://wiki.lyx.org/Windows/Hebrew
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Japanese"
+literal "true"
 
 \end_inset
 
@@ -47676,6 +47778,7 @@ key "Japanese"
 LatexCommand href
 name "Página wiki"
 target "http://wiki.lyx.org/Windows/Japanese"
+literal "false"
 
 \end_inset
 
@@ -47702,6 +47805,7 @@ http://wiki.lyx.org/Windows/Japanese
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Latvian"
+literal "true"
 
 \end_inset
 
@@ -47710,6 +47814,7 @@ key "Latvian"
 LatexCommand href
 name "Página wiki"
 target "http://wiki.lyx.org/Windows/Latvian"
+literal "false"
 
 \end_inset
 
@@ -47736,6 +47841,7 @@ http://wiki.lyx.org/Windows/Latvian
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Lithuanian"
+literal "true"
 
 \end_inset
 
@@ -47744,6 +47850,7 @@ key "Lithuanian"
 LatexCommand href
 name "Página wiki"
 target "http://wiki.lyx.org/Windows/Lithuanian"
+literal "false"
 
 \end_inset
 
@@ -47770,6 +47877,7 @@ http://wiki.lyx.org/Windows/Lithuanian
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Mongolian"
+literal "true"
 
 \end_inset
 
@@ -47778,6 +47886,7 @@ key "Mongolian"
 LatexCommand href
 name "Página wiki"
 target "http://wiki.lyx.org/Windows/Mongolian"
+literal "false"
 
 \end_inset
 
@@ -47804,6 +47913,7 @@ http://wiki.lyx.org/Windows/Mongolian
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Vietnamese"
+literal "true"
 
 \end_inset
 
@@ -47812,6 +47922,7 @@ key "Vietnamese"
 LatexCommand href
 name "Página wiki"
 target "http://wiki.lyx.org/Windows/Vietnamese"
+literal "false"
 
 \end_inset
 
@@ -47838,6 +47949,7 @@ http://wiki.lyx.org/Windows/Vietnamese
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "NewInLyX20"
+literal "true"
 
 \end_inset
 
@@ -47846,6 +47958,7 @@ key "NewInLyX20"
 LatexCommand href
 name "Página wiki"
 target "http://wiki.lyx.org/LyX/NewInLyX20"
+literal "false"
 
 \end_inset
 
@@ -47876,6 +47989,7 @@ http://wiki.lyx.org/LyX/NewInLyX20
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "spanish"
+literal "true"
 
 \end_inset
 
@@ -47884,6 +47998,7 @@ key "spanish"
 LatexCommand href
 name "Página web"
 target "http://www.tex-tipografia.com/spanish.html"
+literal "false"
 
 \end_inset
 
@@ -47995,6 +48110,7 @@ set_width "auto"
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
+literal "false"
 
 \end_inset
 

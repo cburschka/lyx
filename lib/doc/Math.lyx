@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -149,6 +149,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -201,7 +203,8 @@
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
-\quotes_language english
+\is_math_indent 0
+\quotes_style english
 \papercolumns 1
 \papersides 2
 \paperpagestyle plain
@@ -240,6 +243,7 @@ LatexCommand href
 name "lyx-docs@lists.lyx.org"
 target "lyx-docs@lists.lyx.org?subject=LyX's Math manual"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -461,6 +465,7 @@ AmS
 LatexCommand href
 name "amsguide.ps"
 target "ftp://ftp.ams.org/pub/tex/doc/amstex/amsguide.pdf"
+literal "false"
 
 \end_inset
 
@@ -7485,6 +7490,7 @@ status collapsed
 LatexCommand href
 name "LyX-bug #1505"
 target "http://www.lyx.org/trac/ticket/1505"
+literal "false"
 
 \end_inset
 
@@ -18730,6 +18736,7 @@ status collapsed
 LatexCommand href
 name "LyX-bug #4629"
 target "http://www.lyx.org/trac/ticket/4629"
+literal "false"
 
 \end_inset
 
@@ -19020,6 +19027,7 @@ status collapsed
 LatexCommand href
 name "LyX-bug #5269"
 target "http://www.lyx.org/trac/ticket/5269"
+literal "false"
 
 \end_inset
 
@@ -21038,6 +21046,7 @@ A list with all symbols of most of the \SpecialChar LaTeX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Symbols"
+literal "true"
 
 \end_inset
 
@@ -27819,6 +27828,7 @@ see
 LatexCommand href
 name "LyX-bug #1505"
 target "http://www.lyx.org/trac/ticket/1505"
+literal "false"
 
 \end_inset
 
@@ -28395,6 +28405,7 @@ status collapsed
 LatexCommand href
 name "LyX-bug #1429"
 target "http://www.lyx.org/trac/ticket/1429"
+literal "false"
 
 \end_inset
 
@@ -31452,6 +31463,7 @@ As you see, formulas are numbered serially independent from the numbering
 LatexCommand href
 name "Formula-numbering.lyx"
 target "run:Formula-numbering.lyx"
+literal "false"
 
 \end_inset
 
@@ -32146,6 +32158,7 @@ mhchem
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mhchem"
+literal "true"
 
 \end_inset
 
@@ -35518,6 +35531,7 @@ cancel
 \begin_inset CommandInset citation
 LatexCommand cite
 key "cancel"
+literal "true"
 
 \end_inset
 
@@ -36716,6 +36730,7 @@ status collapsed
 LatexCommand href
 name "LyX-bug #9002"
 target "http://www.lyx.org/trac/ticket/9002"
+literal "false"
 
 \end_inset
 
@@ -36785,6 +36800,7 @@ Duden
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Duden"
+literal "true"
 
 \end_inset
 
@@ -36793,6 +36809,7 @@ key "Duden"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Checklist"
+literal "true"
 
 \end_inset
 
@@ -37651,6 +37668,7 @@ Vert
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "TLC2"
+literal "true"
 
 \end_inset
 
@@ -37672,6 +37690,7 @@ The \SpecialChar LaTeX
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Mathmode"
+literal "true"
 
 \end_inset
 
@@ -37680,6 +37699,7 @@ key "Mathmode"
 LatexCommand href
 name "Description"
 target "ftp://ftp.dante.de/tex-archive/info/math/voss/mathmode/Mathmode.pdf"
+literal "false"
 
 \end_inset
 
@@ -37691,6 +37711,7 @@ target "ftp://ftp.dante.de/tex-archive/info/math/voss/mathmode/Mathmode.pdf"
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "AMS"
+literal "true"
 
 \end_inset
 
@@ -37699,6 +37720,7 @@ key "AMS"
 LatexCommand href
 name "Description"
 target "http://mirrors.ctan.org/macros/latex/required/amslatex/math/amsldoc.pdf"
+literal "false"
 
 \end_inset
 
@@ -37723,6 +37745,7 @@ AmS
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Symbols"
+literal "true"
 
 \end_inset
 
@@ -37731,6 +37754,7 @@ key "Symbols"
 LatexCommand href
 name "List"
 target "ftp://ftp.dante.de/tex-archive/info/symbols/comprehensive/symbols-a4.pdf"
+literal "false"
 
 \end_inset
 
@@ -37742,6 +37766,7 @@ target "ftp://ftp.dante.de/tex-archive/info/symbols/comprehensive/symbols-a4.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "cancel"
+literal "true"
 
 \end_inset
 
@@ -37750,6 +37775,7 @@ key "cancel"
 LatexCommand href
 name "Documentation"
 target "http://mirrors.ctan.org/macros/latex/contrib/cancel/cancel.pdf"
+literal "false"
 
 \end_inset
 
@@ -37775,6 +37801,7 @@ Packages ! cancel
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hyperref"
+literal "true"
 
 \end_inset
 
@@ -37783,6 +37810,7 @@ key "hyperref"
 LatexCommand href
 name "Documentation"
 target "http://www.tug.org/applications/hyperref/ftp/doc/manual.pdf"
+literal "false"
 
 \end_inset
 
@@ -37808,6 +37836,7 @@ Packages ! hyperref
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "mhchem"
+literal "true"
 
 \end_inset
 
@@ -37816,6 +37845,7 @@ key "mhchem"
 LatexCommand href
 name "Documentation"
 target "http://www.ctan.org/tex-archive/macros/latex/contrib/mhchem/mhchem.pdf"
+literal "false"
 
 \end_inset
 
@@ -37841,6 +37871,7 @@ Packages ! mhchem
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Duden"
+literal "true"
 
 \end_inset
 
@@ -37857,6 +37888,7 @@ Duden Band 1
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Checklist"
+literal "true"
 
 \end_inset
 
@@ -37865,6 +37897,7 @@ key "Checklist"
 LatexCommand href
 name "Check list"
 target "http://physics.nist.gov/Pubs/SP811/sec11.html"
+literal "false"
 
 \end_inset
 
@@ -37875,6 +37908,7 @@ target "http://physics.nist.gov/Pubs/SP811/sec11.html"
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
+literal "false"
 
 \end_inset
 

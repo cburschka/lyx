@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -39,6 +39,8 @@ pdfcomment
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -91,7 +93,8 @@ pdfcomment
 \tocdepth 2
 \paragraph_separation skip
 \defskip medskip
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -141,11 +144,11 @@ reference "subsec:PDF-Comment-setup"
 
 \begin_layout Title
 Description du module 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Commentaires PDF
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -283,11 +286,11 @@ Nota:
 
 \begin_layout Standard
 Voici un exemple d'annotation PDF où l'auteur est précisé en tant que 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Daisy Duck
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 : 
@@ -359,11 +362,11 @@ Ceci est une Note PDF dotée d'une option compliquée.
 \begin_layout Standard
 Pour éviter d'avoir à saisir les mêmes options à chaque annotation, vous
  pouvez définir ce qu'on nomme un 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 avatar
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  pour chaque personne ou format de commentaire.
@@ -511,11 +514,11 @@ type=typewriter
 \series default
  , vous pouvez écrire un commentaire n'importe où dans la page avec une
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 machine à écrire
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  virtuelle.
@@ -958,11 +961,11 @@ replyto
 
 \begin_layout Standard
 En tant qu'exemple, voyez cette réponse au balisage 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Mise en évidence
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  de la section précédente.
@@ -1691,11 +1694,11 @@ Si vous désirez relire un document, vous devrez ajouter votre nom à chacun
 
 \begin_layout Standard
 Supposons que votre nom soit 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Pierre Testeur
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , vous pouvez créer un avatar pour vous avec l’environnement Définir un
@@ -1717,7 +1720,7 @@ Vous pouvez utiliser un icône particulier pour voir au premier regard quelles
  sont vos commentaires.
  Vous ajoutez alors après la spécification de l’auteur, une virgule puis
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1725,7 +1728,7 @@ Vous pouvez utiliser un icône particulier pour voir au premier regard quelles
 icon=Check
 \series default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  pour afficher un marqueur
@@ -1851,11 +1854,11 @@ color=NavyBlue,opacity=0.5,open=false,icon=Circle,author={Alain Relecteur}
 
 \begin_layout Standard
 Voici un exemple où un autre avatar 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Alain
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  n'est utilisé que pour ce commentaire:

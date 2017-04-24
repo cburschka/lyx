@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -22,6 +22,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -60,7 +62,8 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\quotes_style english
 \papercolumns 2
 \papersides 1
 \paperpagestyle default
@@ -348,6 +351,7 @@ Bla bla, as listed in
 \begin_inset CommandInset citation
 LatexCommand cite
 key "article-minimal,phdthesis-minimal"
+literal "true"
 
 \end_inset
 
@@ -442,6 +446,7 @@ Or plain bibliography:
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "ahmed02"
+literal "true"
 
 \end_inset
 
@@ -510,6 +515,7 @@ newblock
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "appel01:fpcc"
+literal "true"
 
 \end_inset
 

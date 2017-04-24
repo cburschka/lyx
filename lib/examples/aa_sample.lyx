@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,6 +21,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -58,7 +60,8 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\quotes_style english
 \papercolumns 2
 \papersides 2
 \paperpagestyle default
@@ -375,6 +378,7 @@ nucleated instability
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Eisenstein2005"
+literal "true"
 
 \end_inset
 
@@ -403,6 +407,7 @@ Although no hydrodynamical study has been available many workers conjectured
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Abernethy2003"
+literal "true"
 
 \end_inset
 
@@ -416,6 +421,7 @@ Phenomena similar to the ones described above for giant planet formation
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Cotton1999"
+literal "true"
 
 \end_inset
 
@@ -423,6 +429,7 @@ key "Cotton1999"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Mena2000"
+literal "true"
 
 \end_inset
 
@@ -498,6 +505,7 @@ Adiabatic exponent
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Abernethy2003"
+literal "true"
 
 \end_inset
 
@@ -512,6 +520,7 @@ Baker (
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Abernethy2003"
+literal "true"
 
 \end_inset
 
@@ -551,6 +560,7 @@ c) in Baker
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Abernethy2003"
+literal "true"
 
 \end_inset
 
@@ -708,6 +718,7 @@ stability
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Abernethy2003"
+literal "true"
 
 \end_inset
 
@@ -715,6 +726,7 @@ key "Abernethy2003"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Parkin2005"
+literal "true"
 
 \end_inset
 
@@ -1158,6 +1170,7 @@ The conditions for the stability of static, radiative layers in gas spheres,
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Abernethy2003"
+literal "true"
 
 \end_inset
 

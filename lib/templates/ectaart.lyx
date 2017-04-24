@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -34,6 +34,8 @@ theorems-ams
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -71,7 +73,8 @@ theorems-ams
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\quotes_style english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -523,6 +526,7 @@ Section label must not be inserted in the section line, but put it in the
 LatexCommand bibitem
 label "Smith(1759)"
 key "Smith-1"
+literal "true"
 
 \end_inset
 
@@ -535,6 +539,7 @@ Smith, Adam (1759) The Theory of Moral Sentiments, A.
 LatexCommand bibitem
 label "Smith(1776)"
 key "Smith-2"
+literal "true"
 
 \end_inset
 

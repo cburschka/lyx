@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -50,6 +50,8 @@ linguistics
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -96,7 +98,8 @@ linguistics
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -135,6 +138,7 @@ Traduction française Jean-Pierre Chrétien, <jeanpierre.chretien@free.fr>,
 LatexCommand href
 target "spitz@lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -160,21 +164,21 @@ Buts et pré-requis
 
 \begin_layout Standard
 Dans l'ensemble, ce document décrit les fonctionnalités du module 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 linguistique
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  qui accompagne \SpecialChar LyX
  à partir de la version 1.6.0.
  Les 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 modules
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  sont des fichiers de configuration auxiliaires (introduits avec LyX 1.6.0)
@@ -186,11 +190,11 @@ Paramètres...\SpecialChar menuseparator
 Modules
 \family default
 , sélectionner 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Linguistique
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  dans le liste des modules disponibles, et appuyer sur le bouton 
@@ -220,6 +224,7 @@ covington.sty
 \begin_inset CommandInset citation
 LatexCommand cite
 key "covington"
+literal "true"
 
 \end_inset
 
@@ -252,15 +257,16 @@ enumitem.sty
 \begin_inset CommandInset citation
 LatexCommand cite
 key "enumitem"
+literal "true"
 
 \end_inset
 
 : ce paquetage est utilisé pour le style 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Sous-exemples
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -305,6 +311,7 @@ csquotes.sty
 \begin_inset CommandInset citation
 LatexCommand cite
 key "csquotes"
+literal "true"
 
 \end_inset
 
@@ -342,6 +349,7 @@ float.sty
 \begin_inset CommandInset citation
 LatexCommand cite
 key "float"
+literal "true"
 
 \end_inset
 
@@ -372,6 +380,7 @@ forest.sty
 \begin_inset CommandInset citation
 LatexCommand cite
 key "forest"
+literal "true"
 
 \end_inset
 
@@ -671,11 +680,11 @@ This is a simple example
 \noindent
 Si vous désirez numéroter les gloses, il vous suffit de mettre l'insert
  de glose dans un paragraphe du style 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 exemple numéroté
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , comme suit:
@@ -1032,19 +1041,19 @@ EndPreamble
 
 \begin_layout Standard
 Appuyez sur 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Valider
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  puis 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 OK
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -1071,11 +1080,11 @@ Par ailleurs, si vous voulez utiliser des gloses en
 beamer
 \emph default
 , vous devez les inclure dans un cadre 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 fragile
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -1728,11 +1737,11 @@ status open
 \begin_layout Standard
 \noindent
 Les toits peuvent être facilement engendrés via l'option 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 roof
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1742,11 +1751,11 @@ status collapsed
 \begin_layout Plain Layout
 \noindent
 Notez que l'option 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 roof
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  n'existe qu'à partir de la version 2.0 de 
@@ -1762,19 +1771,19 @@ forest
 \family default
  inférieure à 2.0, vous devez soit copier le code dans le préambule de votre
  document, soit utiliser l'ancienne option 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 triangle
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  à la place de 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 roof
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -1803,20 +1812,20 @@ status open
 \noindent
 Pour aligner les nœuds de l'arbre de manière agréable, utiliser l'option
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 tier
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  Tous les nœuds qui utilisent le même 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 tier
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  sont alignés.
@@ -1845,6 +1854,7 @@ Le paquetage inclut de nombreuses  fonctionnalités, comme les flèches et
 \begin_inset CommandInset citation
 LatexCommand cite
 key "forest"
+literal "true"
 
 \end_inset
 
@@ -1876,6 +1886,7 @@ tipa
 \begin_inset CommandInset citation
 LatexCommand cite
 key "tipa"
+literal "true"
 
 \end_inset
 
@@ -1895,12 +1906,12 @@ Si vous utilisez Xe\SpecialChar TeX
 \end_inset
 
 e., si vous avez sélectionné 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Utiliser les polices non-\SpecialChar TeX
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  dans 
@@ -1929,6 +1940,7 @@ preview-latex
 \begin_inset CommandInset citation
 LatexCommand cite
 key "preview"
+literal "true"
 
 \end_inset
 
@@ -1952,6 +1964,7 @@ tipa
 \begin_inset CommandInset citation
 LatexCommand cite
 key "tipa"
+literal "true"
 
 \end_inset
 
@@ -2074,6 +2087,7 @@ preview-latex
 \begin_inset CommandInset citation
 LatexCommand cite
 key "preview"
+literal "true"
 
 \end_inset
 
@@ -2094,11 +2108,11 @@ Symboles phonétiques.
  
 \family default
 Une boîte des saisie s'ouvre (un 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 insert
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  en langage LyX), dans laquelle vous pouvez saisir les symboles.
@@ -2283,6 +2297,7 @@ Pour accéder à une description détaillée des possibilités spécifiques de
 \begin_inset CommandInset citation
 LatexCommand cite
 key "linguistlyx"
+literal "true"
 
 \end_inset
 
@@ -2293,6 +2308,7 @@ key "linguistlyx"
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "covington"
+literal "true"
 
 \end_inset
 
@@ -2314,6 +2330,7 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/covington/
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "csquotes"
+literal "true"
 
 \end_inset
 
@@ -2335,6 +2352,7 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/csquotes/
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "enumitem"
+literal "true"
 
 \end_inset
 
@@ -2356,6 +2374,7 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/enumitem/
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "float"
+literal "true"
 
 \end_inset
 
@@ -2377,6 +2396,7 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/float/
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "forest"
+literal "true"
 
 \end_inset
 
@@ -2398,6 +2418,7 @@ http://www.ctan.org/tex-archive/graphics/pgf/contrib/forest
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "linguistlyx"
+literal "true"
 
 \end_inset
 
@@ -2425,6 +2446,7 @@ http://wiki.lyx.org/LyX/LinguistLyX
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "preview"
+literal "true"
 
 \end_inset
 
@@ -2446,6 +2468,7 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/preview/
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "tipa"
+literal "true"
 
 \end_inset
 

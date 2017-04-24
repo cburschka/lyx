@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -41,6 +41,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -92,7 +94,8 @@
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -123,6 +126,7 @@ Bruk epostlisten for \SpecialChar LyX
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -184,11 +188,11 @@ ner\SpecialChar ldots
 \SpecialChar LyX
  gir oss en moderne måte å skrive dokumenter på datamaskinen, et markeringsparad
 igme som bryter med den foreldete 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 skrivemaskin-modellen
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -205,11 +209,11 @@ Noe av utfordringen med å ta i bruk \SpecialChar LyX
  En gang i tiden var skrivemaskinen alt vi hadde, så vi lærte oss noen triks
  for å komme rundt dens begrensninger.
  Understreking med tegnet 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 _
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  var en måte å fremheve tekst.
@@ -228,7 +232,7 @@ Med andre ord, vi er trent opp til å bekymre oss om små detaljer om hvor
  Å utheve tekst betyr å bytte skrifttype, omtrent som når man bytter skrivehode
  på en skrivemaskin.
  Dette er filosofien bak tekstbehandlere av typen WYSIWYG 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -236,16 +240,16 @@ Med andre ord, vi er trent opp til å bekymre oss om små detaljer om hvor
 What you see is what you get
 \lang norsk
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (Det du ser er det du får) .
  Dessverre er resultatet av dette paradigmet ofte 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Det du ser er alt du får
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -284,22 +288,22 @@ Riktignok har andre populære kontorprogrammer også fått seg noen slags stiler
 \begin_layout Standard
 Du skriver en rapport.
  Først vil du ha et avsnitt kalt 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Introduksjon
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  Så du bruker menyen i tekstbehandleren og velger en større skrift.
  Deretter aktiverer du fet skrift, og skriver 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 1.
  Introduksjon
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -315,11 +319,11 @@ I \SpecialChar LyX
 Seksjon
 \family default
  i menyen til venstre for knapperaden og skriver 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Introduksjon
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -387,16 +391,16 @@ hvordan
 \emph default
  du gjør det.
  I stedet for 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Det du ser er det du får
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  er \SpecialChar LyX
 -filosofien 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Det du ser er det du 
@@ -404,7 +408,7 @@ Det du ser er det du
 mener
 \emph default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (
@@ -590,12 +594,12 @@ status collapsed
 
 \begin_layout Plain Layout
 Informasjonen i dette avsnittet kommer fra 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 A Guide to \SpecialChar LaTeX2e
 ,
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  av Helmut Kopka og Patrick Dal, som er nevnt i 
@@ -613,11 +617,11 @@ Håndbokas
  \SpecialChar TeX
  leser typesettingskommandoer fra en tekstfil, og utfører dem.
  Mange av trykkerifagets 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 triks
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  er implementert som algoritmer av Knuth, dette er grunnen til den fremragende
@@ -629,11 +633,11 @@ triks
 pdf,
 \emph default
  eller en såkalt 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 utstyrsuavhengig
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (
@@ -800,11 +804,11 @@ Forhåpentligvis stopper aldri utviklingen av \SpecialChar LyX
  Men vi prøver å holde følge! Som for resten av \SpecialChar LyX
  produseres bruksanvisningene
  av frivillige, som har 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 virkelige jobber
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , familier, oppvask, 
@@ -834,6 +838,7 @@ Og gjør oss en tjeneste — hvis noe i bruksanvisningene forvirrer deg, er
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -845,6 +850,7 @@ type "mailto:"
 LatexCommand href
 target "lyx-users@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -968,11 +974,11 @@ Når vi beskriver taster, bruker vi følgende konvensjon:
 \begin_layout Itemize
 
 \family sans
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Ctrl-
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -987,11 +993,11 @@ Ctrl-
 \begin_layout Itemize
 
 \family sans
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Shift-
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1006,11 +1012,11 @@ Skift-
 \begin_layout Itemize
 
 \family sans
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Alt-
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1027,11 +1033,11 @@ Meta
 \begin_layout Itemize
 
 \family sans
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 F1
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1040,11 +1046,11 @@ F1
  
 \family sans
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 F12
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1055,11 +1061,11 @@ F12
 \begin_layout Itemize
 
 \family sans
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Esc
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1074,11 +1080,11 @@ escape
 \begin_layout Itemize
 
 \family sans
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Venstre
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ,
@@ -1086,11 +1092,11 @@ Venstre
  
 \family sans
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Høyre
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ,
@@ -1098,11 +1104,11 @@ Høyre
  
 \family sans
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Opp
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1110,11 +1116,11 @@ Opp
  og 
 \family sans
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Ned
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1125,7 +1131,7 @@ Ned
 \begin_layout Itemize
 
 \family sans
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1133,7 +1139,7 @@ Ned
 Insert
 \lang norsk
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1141,7 +1147,7 @@ Insert
 , 
 \family sans
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1149,7 +1155,7 @@ Insert
 Delete
 \lang norsk
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1157,7 +1163,7 @@ Delete
 , 
 \family sans
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1165,7 +1171,7 @@ Delete
 Home
 \lang norsk
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1173,7 +1179,7 @@ Home
 , 
 \family sans
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1181,7 +1187,7 @@ Home
 End
 \lang norsk
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1189,11 +1195,11 @@ End
 , 
 \family sans
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 PageUp
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1201,11 +1207,11 @@ PageUp
 , 
 \family sans
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 PageDown
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1218,11 +1224,11 @@ taster som fins over piltastene på endel PC-tastaturer.
  
 \family sans
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 PageUp
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1230,11 +1236,11 @@ PageUp
  og 
 \family sans
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 PageDown
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1242,7 +1248,7 @@ PageDown
  kalles 
 \family sans
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1250,7 +1256,7 @@ PageDown
 Prior
 \lang norsk
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1258,7 +1264,7 @@ Prior
  og 
 \family sans
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1266,7 +1272,7 @@ Prior
 Next
 \lang norsk
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1289,7 +1295,7 @@ Enter
 \lang norsk
  refererer til samme tast.
  Noen tastaturer bruker navnet 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1297,11 +1303,11 @@ Enter
 Return
 \lang norsk
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , noen bruker 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1309,7 +1315,7 @@ Return
 Enter
 \lang norsk
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  i stedet, noen har to taster.
@@ -2125,7 +2131,7 @@ Hvis \SpecialChar LyX
 Innføringen,
 \emph default
  fra og med avsnittet 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -2135,7 +2141,7 @@ Innføringen,
  users.
 \lang norsk
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  Det skader ikke å skumlese resten av dokumentet heller.
@@ -2436,6 +2442,7 @@ http://www.lyx.org/trac/wiki/BugTrackerHome
 LatexCommand href
 target "lyx-devel@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -2488,11 +2495,11 @@ Bidra med retting og nye funksjoner
 Hvis du har gjort forandringer i kildekoden som du synes bør bli med i \SpecialChar LyX
 ,
  kan du sende inn endringene i form av en diff-fil (i 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 unified
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  format) til listen referert ovenfor, sammen med en beskrivelse av hva forandrin
@@ -2524,6 +2531,7 @@ Hvis du finner feil i en bruksanvisning, send et engelskspråklig brev til
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -2596,6 +2604,7 @@ Kontakt teamet på engelsk på:
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 

@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -22,6 +22,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -59,7 +61,8 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\quotes_style english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -237,6 +240,7 @@ mathematical, physical, statistical and computer sciences
 \begin_inset CommandInset citation
 LatexCommand cite
 key "science-contrib, science-online, science-mono, science-journal, science-DOI"
+literal "true"
 
 \end_inset
 
@@ -248,6 +252,7 @@ key "science-contrib, science-online, science-mono, science-journal, science-DOI
 \begin_inset CommandInset citation
 LatexCommand cite
 key "phys-online, phys-mono, phys-journal, phys-DOI, phys-contrib"
+literal "true"
 
 \end_inset
 
@@ -268,6 +273,7 @@ Psychology, Social Sciences
 \begin_inset CommandInset citation
 LatexCommand cite
 key "psysoc-mono, psysoc-online,psysoc-journal, psysoc-contrib, psysoc-DOI"
+literal "true"
 
 \end_inset
 
@@ -288,6 +294,7 @@ Humanities, Linguistics, Philosophy
 \begin_inset CommandInset citation
 LatexCommand cite
 key "humlinphil-journal, humlinphil-contrib, humlinphil-mono, humlinphil-online, humlinphil-DOI"
+literal "true"
 
 \end_inset
 
@@ -310,6 +317,7 @@ Computer Science, Economics, Engineering, Geosciences, Life Sciences, Medicine,
 \begin_inset CommandInset citation
 LatexCommand cite
 key "basic-contrib, basic-online, basic-journal, basic-DOI, basic-mono"
+literal "true"
 
 \end_inset
 
@@ -364,6 +372,7 @@ Use the following syntax and markup for your references if the subject of
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "science-contrib"
+literal "true"
 
 \end_inset
 
@@ -378,6 +387,7 @@ key "science-contrib"
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "science-online"
+literal "true"
 
 \end_inset
 
@@ -407,6 +417,7 @@ http://www.rsc.org/dose/title of subordinate document.
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "science-mono"
+literal "true"
 
 \end_inset
 
@@ -418,6 +429,7 @@ key "science-mono"
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "science-journal"
+literal "true"
 
 \end_inset
 
@@ -438,6 +450,7 @@ key "science-journal"
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "science-DOI"
+literal "true"
 
 \end_inset
 
@@ -474,6 +487,7 @@ Use the following (APS) syntax and markup for your references if the subject
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "phys-online"
+literal "true"
 
 \end_inset
 
@@ -502,6 +516,7 @@ http://www.rsc.org/dose/title of subordinate document.
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "phys-mono"
+literal "true"
 
 \end_inset
 
@@ -520,6 +535,7 @@ Solid-State Physics
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "phys-journal"
+literal "true"
 
 \end_inset
 
@@ -537,6 +553,7 @@ key "phys-journal"
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "phys-DOI"
+literal "true"
 
 \end_inset
 
@@ -551,6 +568,7 @@ key "phys-DOI"
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "phys-contrib"
+literal "true"
 
 \end_inset
 
@@ -575,6 +593,7 @@ Neuromuscular Junction
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "psysoc-mono"
+literal "true"
 
 \end_inset
 
@@ -600,6 +619,7 @@ APA guide to preparing manuscripts for journal publication.
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "psysoc-online"
+literal "true"
 
 \end_inset
 
@@ -631,6 +651,7 @@ http://www.rsc.org/dose/Effective substances.
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "psysoc-journal"
+literal "true"
 
 \end_inset
 
@@ -648,6 +669,7 @@ J Film
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "psysoc-contrib"
+literal "true"
 
 \end_inset
 
@@ -677,6 +699,7 @@ Gender issues across the life cycle
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "psysoc-DOI"
+literal "true"
 
 \end_inset
 
@@ -710,6 +733,7 @@ Use the following syntax and markup for your references if the subject of
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "humlinphil-journal"
+literal "true"
 
 \end_inset
 
@@ -728,6 +752,7 @@ Pragmatics
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "humlinphil-contrib"
+literal "true"
 
 \end_inset
 
@@ -747,6 +772,7 @@ Gender and discourse
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "humlinphil-mono"
+literal "true"
 
 \end_inset
 
@@ -765,6 +791,7 @@ Feminism and linguistic theory.
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "humlinphil-online"
+literal "true"
 
 \end_inset
 
@@ -786,6 +813,7 @@ key "humlinphil-online"
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "humlinphil-DOI"
+literal "true"
 
 \end_inset
 
@@ -811,6 +839,7 @@ Journal of Psycholinguistic Research
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "basic-contrib"
+literal "true"
 
 \end_inset
 
@@ -823,6 +852,7 @@ key "basic-contrib"
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "basic-online"
+literal "true"
 
 \end_inset
 
@@ -853,6 +883,7 @@ http://www.rsc.org/dose/title of subordinate document.
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "basic-DOI"
+literal "true"
 
 \end_inset
 
@@ -865,6 +896,7 @@ key "basic-DOI"
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "basic-journal"
+literal "true"
 
 \end_inset
 
@@ -876,6 +908,7 @@ key "basic-journal"
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "basic-mono"
+literal "true"
 
 \end_inset
 

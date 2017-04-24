@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -41,6 +41,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -92,7 +94,8 @@
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -205,11 +208,11 @@ status collapsed
 \begin_layout Plain Layout
 \SpecialChar LyX
  произносится как 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 ликс
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  — 
@@ -266,11 +269,11 @@ status collapsed
  при этом научились некоторым приёмам обхождения их ограничений.
  Единственным способом выделения текста тогда было подчёркивание, которое
  является ни чем иным, как наложением знаков 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 _
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  поверх набранного текста.
@@ -290,7 +293,7 @@ _
  Выделение текста подразумевает изменение шрифта, подобное смене печатающего
  барабана.
  Эта философия лежит в основе WYSIWYG текстового процессора: 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -298,20 +301,20 @@ _
 What You See Is What You Get
 \lang russian
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Что видите, то и получите
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ).
  К несчастью, эта парадигма часто приводит к результату 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -319,15 +322,15 @@ What You See Is What You Get
 What You See Is All You Get
 \lang russian
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 То, что вы видите — это всё, что вы получите
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ).
@@ -366,11 +369,11 @@ status collapsed
 \begin_layout Standard
 Предположим, вы пишете доклад.
  Чтобы начать доклад, вам нужен раздел 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Введение
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -378,7 +381,7 @@ status collapsed
  размер шрифта, и выбираете новый размер шрифта.
  Затем включаете жирный шрифт.
  Далее вы набираете: 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 1.
@@ -390,16 +393,16 @@ status collapsed
 \end_inset
 
 Введение
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  Конечно, если позже вы решите, что этот раздел должен располагаться в другом
@@ -417,11 +420,11 @@ status collapsed
 Раздел
 \family default
  и набираете: 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Введение
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -510,7 +513,7 @@ status collapsed
 \emph default
  это делать.
  Вместо 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -518,12 +521,12 @@ status collapsed
 What You See Is What You Get
 \lang russian
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , модель \SpecialChar LyX
  — 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -534,23 +537,23 @@ Mean
 \emph default
 \lang russian
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Вы видите то, что вы имели в виду
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ) или 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 WYSIWYM
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -749,7 +752,7 @@ status collapsed
 \begin_layout Plain Layout
 \SpecialChar LaTeX
  произносится как 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 лат
@@ -766,7 +769,7 @@ status collapsed
 \end_inset
 
 ех
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  — 
@@ -788,7 +791,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Источником этого раздела послужила книга 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -797,7 +800,7 @@ A Guide to \SpecialChar LaTeX2e
 
 \emph default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  авторов Helmut Kopka и Patrick Daly, на которую есть ссылка в библиографии
@@ -820,7 +823,7 @@ status collapsed
 \begin_layout Plain Layout
 \SpecialChar TeX
  произносится как 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 т
@@ -837,7 +840,7 @@ status collapsed
 \end_inset
 
 ех
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  — 
@@ -855,20 +858,20 @@ Donald Knuth
 \lang russian
 ) в 1984 году.
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 \SpecialChar TeX
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  произносится как 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 blech!
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (пузырь), так его и воспринимают многие люди.
@@ -884,19 +887,19 @@ blech!
 , таким образом, это великолепное печатное явление.
  Так или иначе, \SpecialChar TeX
  выдаёт так называемый 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 device independent
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 независимый от устройства
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ) формат файла, если коротко — 
@@ -1113,11 +1116,11 @@ status collapsed
  произносится сходно с \SpecialChar TeX
 .
  Он рифмуется с 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 hey blech.
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1126,19 +1129,19 @@ status collapsed
 
 \begin_layout Plain Layout
 или 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 ha blech
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , в зависимости от того, как вы произносите 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 a
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 \SpecialChar ldots
@@ -1148,7 +1151,7 @@ a
 \end_inset
 
  Лампорт говорит в своей книге, что также возможно 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1156,42 +1159,42 @@ a
 lay
 \emph default
 -tecks
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 \SpecialChar LyX
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  же произносится как 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 licks
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  Или 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 lucks
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , или 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 looks
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , в зависимости от вашей страны\SpecialChar ldots
@@ -1200,11 +1203,11 @@ looks
 , так что произносите его как вам
  удобнее.
  Просто не произносите его как 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 word
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -1230,11 +1233,11 @@ word
 \begin_layout Standard
 Не смотря на то, что \SpecialChar LyX
  уже прошёл отметку 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 версия 1.0
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , некоторые части документации могут быть неполными или устаревшими, хотя
@@ -1268,6 +1271,7 @@ reference "sec:Contrib"
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -1280,6 +1284,7 @@ type "mailto:"
 LatexCommand href
 target "lyx-users@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -1310,11 +1315,11 @@ status collapsed
 \begin_layout Plain Layout
 Чтобы закрыть меня, нажмите на серый прямоугольник слева вверху с надписью
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 сноска
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -1352,22 +1357,22 @@ reference "sec:Contrib"
  прямоугольник левой кнопкой мыши, появится диалоговое окно со списком всех
  перекрёстных ссылок документа.
  Данное введение содержит только одну ссылку с именем 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sec:Contrib
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  Вы можете перейти к указанному разделу, нажав на кнопку "Перейти к ссылке".
  Вернуться назад очень просто.
  Для возврата в предыдущую позицию нажмите на 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Вернуться назад
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  или нажмите 
@@ -1376,7 +1381,7 @@ C-<
 \family default
 .
  (Что обозначает 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1384,7 +1389,7 @@ C-<
 C-<
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ? Смотрите ниже.)
@@ -1439,7 +1444,7 @@ C-<
 Комбинации клавиш
 \emph default
  в 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1447,7 +1452,7 @@ C-<
 Дополнительные возможности
 \emph default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (файл 
@@ -1460,7 +1465,7 @@ Additional.lyx
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1468,7 +1473,7 @@ Additional.lyx
 C-
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  обозначает клавишу 
@@ -1477,7 +1482,7 @@ Control;
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1485,7 +1490,7 @@ Control;
 S-
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  обозначает клавишу 
@@ -1494,7 +1499,7 @@ Shift;
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1502,7 +1507,7 @@ Shift;
 M-
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  обозначает клавишу 
@@ -1515,7 +1520,7 @@ Alt;
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1523,12 +1528,12 @@ Alt;
 F1
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  \SpecialChar ldots
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1536,14 +1541,14 @@ F1
 F12
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  — функциональные клавиши;
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1551,14 +1556,14 @@ F12
 Esc
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  — клавиша выхода;
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1566,11 +1571,11 @@ Esc
 Влево
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1578,11 +1583,11 @@ Esc
 Вправо
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1590,11 +1595,11 @@ Esc
 Вверх
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1602,7 +1607,7 @@ Esc
 Вниз
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 : стрелки влево, вправо, вверх и вниз соответственно;
@@ -1611,17 +1616,17 @@ Esc
 \begin_layout Itemize
 
 \family sans
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Insert
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1629,11 +1634,11 @@ Insert
 Delete
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1641,11 +1646,11 @@ Delete
 Home
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1653,11 +1658,11 @@ Home
 End
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1665,11 +1670,11 @@ End
 PageUp
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1677,13 +1682,13 @@ PageUp
 PageDown
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 : эти 6 клавиш на большинстве PC-клавиатур расположены выше клавиш управления
  курсором.
  На некоторых клавиатурах 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1691,11 +1696,11 @@ PageDown
 PageUp
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  и 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1703,11 +1708,11 @@ PageUp
 PageDown
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  называются 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1715,11 +1720,11 @@ PageDown
 Prior
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  и 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1727,7 +1732,7 @@ Prior
 Next
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ;
@@ -1748,19 +1753,19 @@ Enter
 Return
 \family default
  обозначена как 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Return
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , на других как 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Enter
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , прочие имеют обе клавиши.
@@ -1779,7 +1784,7 @@ Enter
 
 \begin_layout Standard
 Время от времени вы будете видеть что-то вроде 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 (Смотрите 
@@ -1795,12 +1800,12 @@ Enter
 \end_inset
 
 )
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  Мы поместили описание всех возможных комбинаций клавиш по умолчанию в 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1808,34 +1813,34 @@ Enter
 Дополнительные возможности
 \emph default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , так что ищите их там.
  Обратите внимание, что в сообществе пользователей \SpecialChar LyX
  используются две различные
  клавиатурные раскладки: установленного по умолчанию 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 CUA
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 -стиля, который близок пришедшим из мира PC, и 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 emacs
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 -стиля, который общепринят среди тех, кто 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 вырос
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  на Unix системах и использует редактор Emacs.
@@ -1917,13 +1922,13 @@ status collapsed
 Самоучитель
 \emph default
 , начиная с раздела 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 \SpecialChar LyX
  для пользователей \SpecialChar LaTeX
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -2216,11 +2221,11 @@ config.log
 
 \begin_layout Standard
 Если вы можете 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 свалить
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  \SpecialChar LyX
@@ -2230,7 +2235,7 @@ config.log
  но при установке она удаляется.
  Итак, запустите \SpecialChar LyX
  из gdb набрав, например, 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -2240,11 +2245,11 @@ gdb /users/steve/lyx-1.6.x/src/lyx
 \family default
 \size default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  и затем 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -2254,22 +2259,22 @@ run
 \family default
 \size default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Завалите
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  \SpecialChar LyX
  и вернитесь в gdb.
  Используйте 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -2279,7 +2284,7 @@ bt
 \family default
 \size default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  для отслеживания и и включите вывод в сообщение об ошибке.
@@ -2288,7 +2293,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Для полноты картины используйте команды 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -2296,11 +2301,11 @@ status collapsed
 info locals
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  и 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -2308,7 +2313,7 @@ info locals
 up
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , они печатают значения локальных переменных на нескольких уровня стека.
@@ -2452,6 +2457,7 @@ DocStyle.lyx
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 

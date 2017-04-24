@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,6 +21,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -72,7 +74,8 @@
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -104,6 +107,7 @@ Merci d'envoyer vos commentaires et corrections à la liste de diffusion
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -153,6 +157,7 @@ Chrétien
 LatexCommand href
 target "lyx-fr@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -244,11 +249,11 @@ Ce document est destiné à tous ceux qui n'ont jamais entendu parler de \Specia
 \begin_layout Standard
 Vous en arrivez peut-être à lire ce document après avoir tenté vainement
  de mettre deux espaces après un 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 .
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ou trois lignes vides entre deux paragraphes.
@@ -382,11 +387,11 @@ status collapsed
 
 \begin_layout Plain Layout
 ou, d'un point de vue plus optimiste, des 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
  fonctionnalités 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -589,11 +594,11 @@ exemple_brut.lyx
 , nous vous
  suggérons de les mettre en pratique en corrigeant ce fichier.
  Il contient également de 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 subtiles
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  indications
@@ -602,11 +607,11 @@ status collapsed
 
 \begin_layout Plain Layout
 Elles se situent dans les 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Notes
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  jaunes.
@@ -1078,11 +1083,11 @@ il n'y a pas
 \begin_layout Standard
 Les traitements de texte sont en général basés sur le concept du WYSIWYG
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 What You See Is What You Get
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1098,7 +1103,7 @@ NdT : Vous voyez ce que vous obtiendrez.
 .
  De son côté, \SpecialChar LyX
  se fonde sur le principe de 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 What You See Is What You 
@@ -1106,7 +1111,7 @@ What You See Is What You
 Mean
 \emph default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1210,11 +1215,11 @@ environnements
 
 \begin_layout Standard
 Les environnements sont des pièces maîtresses de la philosophie 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 What You See Is What You Mean
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  de \SpecialChar LyX
@@ -1259,11 +1264,11 @@ Fichier
  et indique dans quel environnement vous écrivez actuellement.
  Quand vous étiez en train de saisir votre premier document, elle indiquait
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Standard
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , qui est l'environnement implicite pour le texte.
@@ -1316,11 +1321,11 @@ Section*
 , dont nous parlerons plus bas.
  \SpecialChar LyX
  numérote la section en 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 1
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  et utilise une grosse police pour l'en-tête (le titre de la section).
@@ -1334,19 +1339,19 @@ Entrée
 Environnement
 \family default
  est repassé de 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Section
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  à 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Standard
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -1381,11 +1386,11 @@ Section
  dans le menu déroulant d'Environnement.
  \SpecialChar LyX
  affiche un 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  et attend la saisie d'un nouveau titre.
@@ -1401,12 +1406,12 @@ Autre sujet
 \begin_layout Standard
 Ça devient plus intéressant.
  Revenez à la fin de la première section (juste après 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 mon premier document \SpecialChar LyX
 .
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ), tapez de nouveau 
@@ -1424,11 +1429,11 @@ Environnement
 .
  \SpecialChar LyX
  inscrit un nouveau 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  et attend votre titre.
@@ -1438,11 +1443,11 @@ Environnement
 \family default
 .
  Le numéro de la section 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Autre Sujet
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , qui était le 2, a été automatiquement mis à jour et est devenu le 3 !
@@ -1491,11 +1496,11 @@ SousSection
  dans le menu déroulant d'Environnement.
  \SpecialChar LyX
  numérote la sous-section 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2.1
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , et utilise pour la typographie une police plus grosse que pour le texte
@@ -1507,11 +1512,11 @@ SousSection.
 \family default
  Comme vous pouviez vous en douter, \SpecialChar LyX
  la numérote en 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2.2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -1524,19 +1529,19 @@ SousSection.
 \end_inset
 
 2 deviendra la 3, et les sous-sections deviendront les 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 3.1
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  et 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 3.2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -1630,21 +1635,21 @@ SousSection
 SousSousSection
 \family default
  ont également un en-tête 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 étoilé
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  correspondant.
  Testez sur quelques-unes de vos sections et sous-sections l'effet sur la
  numérotation des autres en-têtes du passage en style 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 étoilé
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -1759,11 +1764,11 @@ arg   "layout Itemize"
 ).
  \SpecialChar LyX
  affiche une 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 puce
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  sur la ligne.
@@ -1919,11 +1924,11 @@ chariot :
 Entrée
 \family default
 .) Le 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 terme
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  est en caractères gras (
@@ -1931,11 +1936,11 @@ terme
 Description
 \family default
 ) ou séparé du reste du paragraphe par une 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 tabulation
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1956,11 +1961,11 @@ Liste
 \family default
 ).
  Pour que le 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 terme
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  comprenne plusieurs mots, séparez-les par des 
@@ -2168,11 +2173,11 @@ status collapsed
 \begin_layout Plain Layout
 Pour les utilisateurs \SpecialChar LaTeX
  : c'est l'équivalent des 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
  documentclass 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  de \SpecialChar LaTeX
@@ -2191,11 +2196,11 @@ Manuel
 d'apprentissage
 \emph default
 , par exemple, a été écrit en classe de document 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 livre
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (
@@ -2261,11 +2266,11 @@ La taille des polices, l'impression sur une ou deux colonnes, et les en-têtes
  de page différencient la typographie d'un journal de celle d'un autre.
  Comme l'on progresse dans l'ère de l'ordinateur, certains journaux acceptent
  maintenant des soumissions informatiques, en créant des 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 fichiers de style
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  \SpecialChar LaTeX
@@ -2407,11 +2412,11 @@ book
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 report
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  + couvertures
@@ -2577,11 +2582,11 @@ PDF
 Signature
 \family default
  présente par exemple le mot 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Signature :
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  en rouge placé devant le contenu réel de la signature.
@@ -2835,11 +2840,11 @@ Votre première étiquette
 
 \begin_layout Standard
 Allons à notre seconde section, dont le titre est 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 À propos de ce document
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -2903,11 +2908,11 @@ consultez la section, page.
 
 \begin_layout Standard
 Maintenant mise le curseur juste après le mot 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 section
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  et faites 
@@ -2945,37 +2950,37 @@ croisée
  apparaît.
  Elle présente une liste d'étiquettes auxquelles vous pouvez faire référence.
  Pour l'instant, il ne devrait y en avoir qu'une : 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sec:a-propos-document
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  D'abord, sélectionnez le menu déroulant étiqueté 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Format
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  et choisissez 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 <référence>
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  Sélectionnez alors 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sec:a-propos-document
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (elle peut l'être implicitement) et cliquez sur le bouton 
@@ -2983,11 +2988,11 @@ sec:a-propos-document
 Appliquer
 \family default
 : un marquer de référence apparaît, qui contient 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Réf : sec:a-propos-document
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -3006,11 +3011,11 @@ arg   "command-alternatives math-space ; space-insert protected"
 \end_inset
 
 ) entre le mot 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 section
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  et la référence.
@@ -3050,7 +3055,7 @@ arg   "paste"
 \family default
  Visualisez votre document en PDF pour constater que sur la dernière page,
  il est fait référence à la 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Section
@@ -3058,7 +3063,7 @@ Section
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -3150,11 +3155,11 @@ NdT: en français dans le texte.
 \end_inset
 
 3! Faites passer la section 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 À propos de ce document
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  en sous-section, et la référence croisée fera référence à la sous-section
@@ -3285,12 +3290,12 @@ page
 \family default
 \SpecialChar endofsentence
  Cliquez à la fin du mot 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 \SpecialChar LyX
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  dans votre document et appuyez sur le bouton 
@@ -3318,32 +3323,32 @@ composition des documents.
 
 \begin_layout Standard
 Cliquez maintenant sur le bouton marqué 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 bas
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  La boîte de note se referme, laissant la place au bouton indiquant l'endroit
  où sera placé le marqueur de la note lors de l'impression.
  Cela s'appelle 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 refermer
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  la note.
  Vous pouvez ré-ouvrir la note à tout moment – et la modifier si nécessaire
  – en cliquant de nouveau sur le bouton 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 bas
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -3434,19 +3439,19 @@ marge.
 
 \begin_layout Itemize
 la boîte à l'écran est marquée 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 marge
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  à la place de 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 bas
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ;
@@ -3516,7 +3521,7 @@ Bibliographie
 \family typewriter
 Le Manuel d'apprentissage de \SpecialChar LyX
 , par 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 L'Équipe de
@@ -3525,7 +3530,7 @@ L'Équipe de
 
 Documentation de \SpecialChar LyX
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -3537,7 +3542,7 @@ Documentation de \SpecialChar LyX
  En cliquant sur cette boîte, vous ouvrez une fenêtre 
 \family sans
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Entrée
@@ -3547,7 +3552,7 @@ Entrée
 bibliographique
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -3568,12 +3573,12 @@ Clé
 Clé
 \family default
  par 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 tutoriel\SpecialChar LyX
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -3608,12 +3613,12 @@ Disponibles
 ) énumère toutes les entrées de bibliographie, et ce champ vous permet de
  sélectionner les entrées que vous voulez citer.
  Choisissez 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 tutoriel\SpecialChar LyX
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (pour l'instant, c'est le seul élément de la bibliographie) et utilisez
@@ -3661,7 +3666,7 @@ après
 Étiquette
 \family default
  de la fenêtre 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -3671,17 +3676,17 @@ Entrée
 \end_inset
 
 bibliographique
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
 \family default
  (certains journaux utiliseront par exemple 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 [Smi95]
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  pour une publication de M.
@@ -3755,7 +3760,7 @@ Matières.
 
 \family default
  Les mots 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Table
@@ -3767,7 +3772,7 @@ des
 \end_inset
 
 Matières
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  apparaissent sur un bouton sur la première ligne du document.
@@ -3926,19 +3931,19 @@ c'est d'une grande simplicité.
 Pour l'instant, l'équation n'a pas très belle allure, que ce soit dans \SpecialChar LyX
 
  ou dans la sortie finale ; aucun espace ne sépare le signe 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 égal
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  des lettres qui l'entourent, et vous aimeriez avoir le 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  en exposant.
@@ -4000,19 +4005,19 @@ Faites tourner \SpecialChar LaTeX
  et jetez un œil sur la sortie.
  Remarquez que l'expression a été joliment composée, avec des espaces entre
  les lettres et le signe 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 égal
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , et avec le 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  en exposant.
@@ -4069,11 +4074,11 @@ Droite
 \family default
  après le signe égal.
  Tapez juste 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 1+
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -4158,19 +4163,19 @@ Et si vous changiez
  ? À nouveau, vous pouvez utiliser la souris pour vous placer au bon endroit.
  Néanmoins, vous pouvez également utiliser les flèches du clavier.
  Si le curseur est juste entre le 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 c
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  et le 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , la touche 
@@ -4178,20 +4183,20 @@ c
 Haut
 \family default
  déplacera le curseur au niveau de l'exposant, toujours avant le 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  Tapez 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 .5
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -4213,11 +4218,11 @@ Bas
 après
 \emph default
  celui-ci (vous pourrez alors saisir 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 +1
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ).
@@ -4234,7 +4239,7 @@ Palette Mathématique
 \family default
  (voir plus bas), mais il est beaucoup plus simple d'utiliser la touche
  chapeau 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -4242,7 +4247,7 @@ Palette Mathématique
 ^
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -4251,11 +4256,11 @@ status collapsed
 
 \begin_layout Plain Layout
 NdT: 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 caret
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  en anglais.
@@ -4291,15 +4296,15 @@ Esc
 
 \begin_layout Standard
 Écrire en indice est tout aussi facile – la touche 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 souligné
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -4307,7 +4312,7 @@ souligné
 _
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  déclenche ce mode.
@@ -4429,19 +4434,19 @@ Barre d'outils Math
 \family default
 ne sera plus affichée que quand le curseur se trouvera à l'intérieur d'une
  formule ; cet état est indiqué par le fait que l'entrée de menu 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Math
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  devient 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Math (auto)
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -4538,7 +4543,7 @@ Délimiteurs.
  Implicitement c'est une paire de parenthèses, mais vous pouvez choisir
  une paire de crochets, une accolade et une parenthèse, ou encore choisir
  le carré vide pour avoir quelque chose comme 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -4546,7 +4551,7 @@ Délimiteurs.
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (le délimiteur vide est représenté par un trait noir interrompu dans \SpecialChar LyX
@@ -4632,11 +4637,11 @@ Barre d'outils Math
  Comme vous devez vous y attendre, vous pouvez utiliser les flèches du clavier
  ou la souris pour vous déplacer dans la fraction.
  Cliquez sur le carré du haut et tapez 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 1
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -4645,11 +4650,11 @@ Barre d'outils Math
 Bas
 \family default
  et tapez 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -4679,11 +4684,11 @@ Mode \SpecialChar TeX
 \begin_layout Standard
 Comme les lettres en mode Math sont considérées comme des variables, si
  vous tapez 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sin
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  en mode Math \SpecialChar LyX
@@ -4702,29 +4707,29 @@ sin
 .
  Les trois lettres seront inscrites en italique, alors que ce que vous vouliez
  réellement était le mot 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sin
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  écrit en Romain.
  De plus, \SpecialChar LyX
  ne mettra pas d'espace entre le mot 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sin
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  et le 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 x
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (l'appui sur 
@@ -4733,7 +4738,7 @@ espace
 \family default
  entraîne juste la sortie de la formule).
  Alors comment obtenir 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -4741,11 +4746,11 @@ espace
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  au lieu de 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -4753,7 +4758,7 @@ espace
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ?
@@ -4771,11 +4776,11 @@ arg   "math-insert \\functions"
 barre d'outils math
 \family default
  puis sur 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sin
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  dans la liste de 
@@ -4784,11 +4789,11 @@ Fonctions
 \family default
  qui apparaît.
  Le mot 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sin
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  s'inscrit dans \SpecialChar LyX
@@ -4804,11 +4809,11 @@ Arrière
 \family default
 , il sera supprimé tout entier.
  Tapez maintenant 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 x
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , qui sera affiché en italiques bleus, comme vous vous y attendez dans une
@@ -4826,7 +4831,7 @@ Fonctions
  hyperboliques, les logarithmes, les limites et quelques autres encore.
  Ces fonctions peuvent avoir des indices ou exposants, indispensables pour
  écrire 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -4834,11 +4839,11 @@ Fonctions
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ou 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -4846,7 +4851,7 @@ Fonctions
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -5011,22 +5016,22 @@ Hors ligne
 Toutes les expressions écrites jusqu'à présent étaient insérées sur la ligne
  de texte qui les entourait.
  Elles sont connues sous le nom d'expressions 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 en ligne
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  Cela convient pour des expressions simples, de petite taille.
  Pour des expressions plus conséquentes, ou pour les faire ressortir du
  texte qui les accompagne, il faut les écrire 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 hors ligne
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -5111,19 +5116,19 @@ implicitement, la taille de police est plus grande pour certains symboles,
 
 \begin_layout Itemize
 les 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 indices
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  et 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 exposants
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  pour les limites et les sommes (pas pour les intégrales) sont écrits 
@@ -5342,19 +5347,19 @@ status collapsed
 
 \begin_layout Plain Layout
 NdT : Dans la version anglaise, il y a une distinction entre 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 tabular
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , le tableau lui-même, et 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 table
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , qui comprend le tableau, la légende, etc.
@@ -5658,13 +5663,13 @@ Dans une formule mathématique, le mode \SpecialChar TeX
  est géré de façon différente.
  Vous y passez en mode \SpecialChar TeX
  avec la contre-oblique 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
 \backslash
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -5683,7 +5688,7 @@ Espace
  que vous avez
  entrée, il la convertit en WYSIWYM.
  Ainsi, dans une formule, si vous tapez 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -5693,7 +5698,7 @@ Espace
 gamma
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  puis la barre 
@@ -5702,15 +5707,15 @@ Espace
 \family default
 , \SpecialChar LyX
  transformera le 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 gamma
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  rouge en 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -5718,7 +5723,7 @@ gamma
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  bleu.
@@ -5738,7 +5743,7 @@ mathématique
 
 \begin_layout Standard
 Un cas particulier : lorsque vous saisissez 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -5748,7 +5753,7 @@ Un cas particulier : lorsque vous saisissez
 {
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  dans une formule, il affichera alors l'accolade ouvrante 
@@ -5885,11 +5890,11 @@ Il faut bien comprendre que
 tex2lyx
 \family default
  ne peut convertir que des document dont la classe est 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 connue
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  de \SpecialChar LyX
@@ -6121,12 +6126,12 @@ Erreurs !
 
 \begin_layout Standard
 De temps en temps, lorsque vous 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 \SpecialChar LaTeX
 ez
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  un document, il y a des erreurs, des choses que \SpecialChar LyX
@@ -6136,7 +6141,7 @@ ez
  Quand ça arrive, \SpecialChar LyX
  vous présente les erreurs dans une boîte de dialogue
  (identifiée par 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -6145,7 +6150,7 @@ Erreurs \SpecialChar LaTeX
 
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ).
@@ -6244,6 +6249,7 @@ AtBeginDocument{}
 LatexCommand href
 name "Daniel Flipo"
 target "http://daniel.flipo.free.fr/frenchb"
+literal "false"
 
 \end_inset
 
@@ -6257,6 +6263,7 @@ target "http://daniel.flipo.free.fr/frenchb"
 LatexCommand href
 name "conventions typographiques"
 target "https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Conventions_typographiques"
+literal "false"
 
 \end_inset
 
@@ -6292,6 +6299,7 @@ Voyez la page
 LatexCommand href
 name "Œ"
 target "https://fr.wikipedia.org/wiki/%C5%92#Repr.C3.A9sentation_informatique_et_obtention"
+literal "false"
 
 \end_inset
 
@@ -6363,7 +6371,7 @@ Implicite
 
 \begin_layout Standard
 Les ponctuations hautes comme les quatre suivantes 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -6371,7 +6379,7 @@ Les ponctuations hautes comme les quatre suivantes
 : ; ! ?
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  doivent être précédées d'une espace fine insécable.
@@ -6401,18 +6409,18 @@ frenchb.pdf
 Les guillemets français sont les suivants : 
 \family sans
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
 \family default
  .
  Vous les obtiendrez avec la touche 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -6420,7 +6428,7 @@ Les guillemets français sont les suivants :
 "
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -6448,11 +6456,11 @@ Guillemets
  vous devez choisir 
 \family sans
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 texte
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 

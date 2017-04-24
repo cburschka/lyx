@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -50,6 +50,8 @@ bicaption
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -99,7 +101,8 @@ bicaption
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
-\quotes_language english
+\is_math_indent 0
+\quotes_style english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -485,6 +488,7 @@ caption
 \begin_inset CommandInset citation
 LatexCommand cite
 key "caption"
+literal "true"
 
 \end_inset
 
@@ -848,6 +852,7 @@ bicaption
 \begin_inset CommandInset citation
 LatexCommand cite
 key "bicaption"
+literal "true"
 
 \end_inset
 
@@ -1855,6 +1860,7 @@ welsh
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "bicaption"
+literal "true"
 
 \end_inset
 
@@ -1866,6 +1872,7 @@ Documentation of the \SpecialChar LaTeX
 LatexCommand href
 name "bicaption"
 target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/bicaption.pdf"
+literal "false"
 
 \end_inset
 
@@ -1876,6 +1883,7 @@ target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/bicaptio
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "caption"
+literal "true"
 
 \end_inset
 
@@ -1887,6 +1895,7 @@ Documentation of the \SpecialChar LaTeX
 LatexCommand href
 name "caption"
 target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/caption/caption-eng.pdf"
+literal "false"
 
 \end_inset
 

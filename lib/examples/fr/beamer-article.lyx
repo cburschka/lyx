@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,6 +21,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -67,7 +69,8 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -105,11 +108,11 @@ Présentation Beamer)
 .
  Il démontre avec quelle facilité il est possible de créer un rendu papier
  via le mode 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 article
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -122,11 +125,11 @@ En dehors de la classe de document, vous souhaiterez sans doute régler la
 \end_inset
 
 : par exemple, si vous avez réglé la bibliographie comme 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Natbib, auteur-année
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  dans le document fils, mettez la même chose ici.
@@ -139,7 +142,7 @@ setbeamertemplate{...}.
 \begin_layout Itemize
 Si vous voyez un message d'alerte au sujet de classes de texte différentes
  lors du rendu PDF, vous pouvez cocher sereinement 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
  Ne pas afficher cet avertissement à l'avenir
@@ -147,7 +150,7 @@ Si vous voyez un message d'alerte au sujet de classes de texte différentes
 \end_inset
 
 !
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .

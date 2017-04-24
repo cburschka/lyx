@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -51,6 +51,8 @@ logicalmkup
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -102,7 +104,8 @@ logicalmkup
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
@@ -133,6 +136,7 @@ Bruk epostlisten for \SpecialChar LyX
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -409,11 +413,11 @@ eksempel_txt.lyx
 \family default
 .
  Fila inneholder også 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 små
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  hint om hvordan du fikser ting.
@@ -423,11 +427,11 @@ status collapsed
 
 \begin_layout Plain Layout
 Hintene står i gule 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Merknader
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -799,25 +803,25 @@ faktisk ikke noen tabulatorposisjoner.
 
 \begin_layout Standard
 Mange tekstbehandlere er basert på WYSIWYG-prinsippet: 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 What You See Is What You Get
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , eller 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Det du ser, er det du får
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  \SpecialChar LyX
  er derimot basert på prinsippet 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
  What You See Is What You 
@@ -825,11 +829,11 @@ Det du ser, er det du får
 Mean
 \emph default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , eller 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Det du ser, er det du 
@@ -837,7 +841,7 @@ Det du ser, er det du
 mener
 \emph default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -920,11 +924,11 @@ miljøer.
 
 \begin_layout Standard
 Miljøer er en hoveddel av 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Det du ser er det du mener
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 -filosofien i \SpecialChar LyX
@@ -956,11 +960,11 @@ Miljø
 
  Den indikerer hva slags miljø du skriver i for øyeblikket.
  Når du skrev ditt første dokument stod det 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Standard
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , som er standardmiljøet for tekst.
@@ -1020,11 +1024,11 @@ Seksjon*
 , som vi ser på nedenfor.
  \SpecialChar LyX
  gir seksjonen nummer 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 1
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  og typesetter overskriften med større skrift.
@@ -1038,19 +1042,19 @@ Return
 Miljø
 \family default
 -boksen bytter fra 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Seksjon
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  tilbake til 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Standard
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -1083,18 +1087,18 @@ miljø-
 boksen igjen.
  \SpecialChar LyX
  skriver 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  og venter på at du skal skrive en overskrift.
  Skriv 
 \family typewriter
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Mer
@@ -1104,7 +1108,7 @@ Mer
 stoff
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , igjen vil du se at \SpecialChar LyX
@@ -1118,12 +1122,12 @@ Det blir bedre.
 \end_inset
 
 1 igjen (etter 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 mitt første \SpecialChar LyX
 -dokument.
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ) og trykk 
@@ -1141,11 +1145,11 @@ Miljø
 -boksen igjen.
  På nytt skriver \SpecialChar LyX
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  og venter på at du skal skrive en overskrift.
@@ -1159,11 +1163,11 @@ Om dette dokumentet
 \end_inset
 
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Mer stoff
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , som var seksjon
@@ -1223,11 +1227,11 @@ Miljø
 -boksen.
  \SpecialChar LyX
  gir underseksjonen nummer 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2.1
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , og typesetter den med en skrift som er større enn vanlig tekst men mindre
@@ -1238,11 +1242,11 @@ Underseksjon
 \family default
  også.
  Som du antagelig ventet, fikk den nummer 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2.2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -1259,19 +1263,19 @@ Underseksjon
 \end_inset
 
 3, og underseksjonene omnummereres til 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 3.1
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  og 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 3.2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -1318,11 +1322,11 @@ Seksjon*
  bruke samme skrifttype som en vanlig seksjon, men den vil ikke få
  nummer.
  Tilsvarende 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 stjerne
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 -former fins for 
@@ -1593,11 +1597,11 @@ Return
 Beskrivelse
 \family default
 ) eller separeres med en 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Tab
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1857,11 +1861,11 @@ Skriftstørrelser, en- eller tosidig utskrift og topptekster er bare noen
  støtter også dette.
  For eksempel støtter \SpecialChar LyX
  typesetting (og ekstra miljøer) for 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 American Mathematics Society
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ved hjelp av dokumentklassen 
@@ -1963,11 +1967,11 @@ article (AMS)
 
 \begin_layout Plain Layout
 layout & miljøer for 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 American Math Society
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1991,11 +1995,11 @@ report
 
 \begin_layout Plain Layout
 lenger enn 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 article
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , tosidig
@@ -2145,11 +2149,11 @@ Beskrivelse
 Signatur
 \family default
 -miljøet har ordet 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Signature:
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  i rødt før den egentlige signaturteksten.
@@ -2177,11 +2181,11 @@ En mal er bare en vanlig \SpecialChar LyX
  en ny mal.
  Når du heretter skriver brev, kan du spare tid ved å bruke den nye malen.
  Vi trenger ikke foreslå en 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 oppgave
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  her; bare skriv et brev til noen!
@@ -2275,11 +2279,11 @@ Sammendrag
 .
  Legg merke til hvordan tittelmaterialet presenteres når du skriver ut.
  Hvis du endrer dokumenttypen til 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Book
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , får du en egen tittelside, akkurat som førstesiden i denne innføringen.
@@ -2337,11 +2341,11 @@ Ditt første referansemerke
 
 \begin_layout Standard
 Gå til vår andre seksjon, hvis tittel er 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Om dette dokumentet
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -2395,11 +2399,11 @@ Hvis du vil vite mer om dette dokumentet, så se seksjon.
 
 \begin_layout Standard
 Så, med markøren plassert etter ordet 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 seksjon
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , velg 
@@ -2421,46 +2425,46 @@ arg   "dialog-show-new-inset ref"
  Kryssreferansedialogen dukker opp.
  Den viser en liste over referansemerker du kan referere til.
  For øyeblikket skulle det bare være en, 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sec:Om-dette-dokumentet
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  Først bruker du nedtrekkmenyen 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Format
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  og velger 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 <referansenr> på side <side>
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  Så velger du 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sec:Om-dette-dokumentet
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (om du er heldig, er det valgt på forhånd), og et merke dukker opp hvor
  det står 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 refnr på side:Om-dette-dokumentet
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (For å være helt korrekt, bruker du et 
@@ -2476,11 +2480,11 @@ mellomrom
 Ctrl+mellomrom
 \family default
 ) mellom ordet 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Seksjon
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  og referansen.) En annen måte å å referere, er å høyreklikke referansemerket
@@ -2507,7 +2511,7 @@ arg   "paste"
  Forhåndsvis dokumentet, og du vil se at \SpecialChar LaTeX
  har vært enda smartere.
  Det refereres til 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Seksjon
@@ -2515,7 +2519,7 @@ Seksjon
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , og avhengig av hvor mye tekst det er mellom starten på seksjon
@@ -2523,27 +2527,27 @@ Seksjon
 \end_inset
 
 2 og kryssreferansen, kan det stå 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 på denne siden
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 på den forrige siden
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , eller 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 på side n
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (hvor 
@@ -2592,19 +2596,19 @@ Vi fortalte deg at \SpecialChar LyX
 2.
  Oppdater forhåndsvisningen og se — seksjonsnummeret i kryssreferansen ble
  endret til 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 3
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ! Gjør seksjonen 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Om dette dokumentet
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  om til en underseksjon, og kryssreferansen endrer seg til underseksjon
@@ -2652,11 +2656,11 @@ status collapsed
 \begin_layout Plain Layout
 Forresten, å kopiere en kapitteloverkrift kan gi felimelding, fordi dokumentklas
 sen 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 article
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ikke har inndeling i kapitler.
@@ -2729,12 +2733,12 @@ Fotnote
 \family default
 .
  Klikk ved slutten av ordet 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 \SpecialChar LyX
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  i dokumentet ditt, og sett inn en fotnote.
@@ -2751,39 +2755,39 @@ Fotnote
 
 \begin_layout Standard
 Klikk på knappen merket 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 fot
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  Fotnoteboksen blir stengt, bare den lille 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 fot
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 -knappen blir igjen, og viser hvor fotnotemarkøren vil blir trykt.
  Dette kalles å 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 folde sammen
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  fotnoten.
  Den kan brettes ut igjen for å redigere mer når som helst, ved å klikke
  på 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 fot
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 -knappen igjen.
@@ -2852,19 +2856,19 @@ arg   "marginalnote-insert"
 
 \begin_layout Itemize
 knappen på skjermen har teksten 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 marg
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  i stedet for 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 fot
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -2923,7 +2927,7 @@ Bibliografi
 -miljøet.
  Hvert avsnitt du skriver nå, vil være en litteraturreferanse.
  Skriv 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -2933,7 +2937,7 @@ Bibliografi
 -teamet
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  som din første referanse.
@@ -2965,11 +2969,11 @@ Merke
 Nøkkel
 \family default
 -feltet til 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 lyxinnføring
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  for å gjøre det lettere å huske.
@@ -3002,11 +3006,11 @@ Litteraturreferanse
  Det venstre panelet viser all litteraturen, og der kan du velge hva du
  vil referere til.
  Velg 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 lyxinnføring
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (Akkurat nå er det den eneste litteraturen i bibliografien), trykk så på
@@ -3057,11 +3061,11 @@ Litteraturreferanse
 er i boka eller artikkelen) inni klammeparentesene etter referansen.
  Hvis du ønsker at referansene skal ha tekst i stedet for numre (noen journaler
  bruker 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 [Smi95]
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  for å referere til en artikkel av Smith i 1995), bruker du 
@@ -3122,11 +3126,11 @@ Innholdsfortegnelse
 \family default
 .
  Ordet 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Innholdsfortegnelse
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  dukker opp på en knapp på første linje i dokumentet.
@@ -3225,11 +3229,11 @@ Jeg liker Einsteins utsagn, E=mc^2, fordi det er så enkelt.
 Men dette ser ikke bra ut, hverken i \SpecialChar LyX
  eller på trykk; det er ikke mellomrom
  mellom bokstavene og likhetstegnet, og 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 -tallet burde stått med hevet skrift.
@@ -3292,11 +3296,11 @@ feil.
 \begin_layout Standard
 Om du ser på forhåndsvisningen, vil du se at formelen ble typesatt pent,
  med mellomrom rundt likhetstegnet, og tallet 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  hevet.
@@ -3317,11 +3321,11 @@ sqrt
  seende ut før du kjører \SpecialChar LaTeX
 -programmet, og du må kanskje bruke tid på å rette
  feil som 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 manglende krøllparenteser.
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  \SpecialChar LyX
@@ -3357,11 +3361,11 @@ Venstrepil
 Høyrepil
 \family default
  for plassere markøren ved siden av likhetstegnet, og skrive 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 1+
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -3420,19 +3424,19 @@ Hva om du ville endre
  ? Igjen, du kan bruke musen og klikke på rett sted.
  Men du kan også bruke piltastene.
  Hvis markøren er rett etter 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 c
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  men før 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , trykker du 
@@ -3440,20 +3444,20 @@ c
 Oppoverpila,
 \family default
  og markøren flyttes opp til eksponentnivået rett foran 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  Legg til 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 ,5
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -3475,11 +3479,11 @@ Nedoverpil
 etter 
 \emph default
 eksponenten (så du kan skrive 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 +1
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ).
@@ -3496,11 +3500,11 @@ Matteverktøylinja
 \family default
  (se under), men det er faktisk enklere å bare bruke cirkumfleks-tasten,
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 ^
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -3509,11 +3513,11 @@ status collapsed
 
 \begin_layout Plain Layout
 Hvis cirkumfleks er en 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 død tast
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  på tastaturet ditt, må du trykke cirkumfleks fulgt av mellomrom.
@@ -3539,11 +3543,11 @@ Esc
 
 \begin_layout Standard
 Å skrive en index er like enkelt; begynn med understrektasten 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 _
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -3644,11 +3648,11 @@ ylinjer.
 
 \family default
  Når du klikker der på 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Matte
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (
@@ -3668,11 +3672,11 @@ ylinjer.
 
 \family default
  Når du klikker omgjen på 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Matte
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  i denne menyen, vises 
@@ -3685,15 +3689,15 @@ verktøylinja
 \family default
  bare når amrkøren er i en formel; denne tilstanden indikeres ved at menyvalget
  skifter navn fra 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Matte
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  til 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Matte
@@ -3701,7 +3705,7 @@ Matte
 \end_inset
 
 (auto)
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -3746,11 +3750,11 @@ arg   "math-insert \\sqrt"
 
 \begin_layout Standard
 Å legge en 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 dekorasjon
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  på et tegn (
@@ -3794,7 +3798,7 @@ Parenteser og klammer
  Utvalget av skilletegn vises i en boks.
  Standardvalget er et par parenteser, men du kan velge et par klammer, en
  klamme og en parentes, eller (ingen) for å få slikt som 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -3802,7 +3806,7 @@ Parenteser og klammer
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (det tomme skilletegnet vises som en stiplet strek i \SpecialChar LyX
@@ -3882,11 +3886,11 @@ verktøylinja
  Som ventet, kan du bruke piltastene eller musa for å flytte mellom teller
  og nevner.
  Klikk øverst og skriv 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 1
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -3895,11 +3899,11 @@ verktøylinja
 Nedpil
 \family default
  og skriv 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -3925,11 +3929,11 @@ Funksjoner: lim, log, sin og andre
 
 \begin_layout Standard
 Bokstaver i mattemodus antas å være variabler, så hvis du skriver 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sin
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , tror \SpecialChar LyX
@@ -3948,29 +3952,29 @@ sin
 .
  De tre bokstavene skrives med kursiv, mens det du egentlig ville ha var
  ordet 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sin
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  med stående bokstaver.
  Og dessuten vil ikke \SpecialChar LyX
  lage mellomrom mellom ordet 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sin
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  og 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 x
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (å trykke 
@@ -3979,7 +3983,7 @@ Mellomrom
 \family default
  avslutter formelen).
  Så hvordan får du 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -3987,11 +3991,11 @@ Mellomrom
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  i stedet for 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -3999,7 +4003,7 @@ Mellomrom
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ?
@@ -4021,20 +4025,20 @@ Matte
 verktøylinja
 \family default
 , og deretter på 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sin
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  i funksjonslista som spretter opp.
  Ordet 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sin
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  vises med svart i \SpecialChar LyX
@@ -4045,11 +4049,11 @@ Rettetasten
 \family default
 , fjerner den hele ordet.
  Skriv nå 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 (x)
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , som vil vises med blått og kursiv, slik formler pleier å være.
@@ -4060,7 +4064,7 @@ Rettetasten
 Funksjonslista har andre trigonometriske funksjoner og deres inverse, hyperbolsk
 e funksjoner, logaritmer, grenseverdier og mye annet.
  Hevet og senket skrift kan brukes i etterkant for å lage slikt som 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -4068,11 +4072,11 @@ e funksjoner, logaritmer, grenseverdier og mye annet.
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  eller 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -4080,7 +4084,7 @@ e funksjoner, logaritmer, grenseverdier og mye annet.
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -4212,11 +4216,11 @@ Fremhevet formel
 \begin_layout Standard
 Uttrykkene vi har skrevet så langt, har vært på samme linje som teksten
  som kommer før og etter, også kjent som 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 formel i tekst
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -4745,7 +4749,7 @@ Mellomrom
  Så hvis du skriver 
 \family typewriter
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -4753,7 +4757,7 @@ Mellomrom
 gamma
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  i en formel og trykker 
@@ -4762,15 +4766,15 @@ Mellomrom
 \family default
 , vil \SpecialChar LyX
  endre det røde ordet 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 gamma
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  til en blå 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -4778,7 +4782,7 @@ gamma
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -4799,7 +4803,7 @@ verktøylinja
 Et spesialtilfelle, hvis du skriver 
 \family typewriter
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -4807,7 +4811,7 @@ Et spesialtilfelle, hvis du skriver
 {
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  i en formel, vil både startkrøllparentesen 
@@ -4838,11 +4842,11 @@ og
 usepackage{pakkenavn}
 \family default
  i 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 preamble
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (se Seksjon
@@ -4949,11 +4953,11 @@ Det er viktig å forstå at
 tex2lyx
 \family default
  bare kan oversette filer hvis dokumentklasse er 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 kjent
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  for \SpecialChar LyX

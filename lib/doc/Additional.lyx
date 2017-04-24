@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 534
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -28,7 +28,7 @@
 % extra space for tables
 \newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
 \end_preamble
-\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
 \begin_modules
 logicalmkup
@@ -53,6 +53,7 @@ shapepar
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -105,6 +106,7 @@ shapepar
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
+\is_math_indent 1
 \quotes_style english
 \dynamic_quotes 0
 \papercolumns 1

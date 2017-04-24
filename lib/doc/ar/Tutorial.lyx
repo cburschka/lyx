@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -24,6 +24,8 @@ logicalmkup
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format pdf4
 \output_sync 0
@@ -75,7 +77,8 @@ logicalmkup
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
@@ -104,6 +107,7 @@ status collapsed
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -3308,11 +3312,11 @@ arg   "tabular-feature delete-column"
  وضع العرض.
  وبالإضافة إلى ذلك، التعابير في وضع العرض هي فقط التي يمكن أن يوضع لها ملصقات
  أو ترقيمها (راجع دليل المستخدم)، ويجب أن تكون 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 معادلة متعددة الاسطر
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  في وضع العرض.

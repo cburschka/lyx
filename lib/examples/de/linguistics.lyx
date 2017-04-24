@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -51,6 +51,8 @@ linguistics
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -97,7 +99,8 @@ linguistics
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language german
+\is_math_indent 0
+\quotes_style german
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -125,6 +128,7 @@ Jürgen Spitzmüller
 LatexCommand href
 target "spitz@lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -211,6 +215,7 @@ covington.sty
 \begin_inset CommandInset citation
 LatexCommand cite
 key "covington"
+literal "true"
 
 \end_inset
 
@@ -238,6 +243,7 @@ enumitem.sty
 \begin_inset CommandInset citation
 LatexCommand cite
 key "enumitem"
+literal "true"
 
 \end_inset
 
@@ -271,6 +277,7 @@ csquotes.sty
 \begin_inset CommandInset citation
 LatexCommand cite
 key "csquotes"
+literal "true"
 
 \end_inset
 
@@ -304,6 +311,7 @@ float.sty
 \begin_inset CommandInset citation
 LatexCommand cite
 key "float"
+literal "true"
 
 \end_inset
 
@@ -333,6 +341,7 @@ forest.sty
 \begin_inset CommandInset citation
 LatexCommand cite
 key "forest"
+literal "true"
 
 \end_inset
 
@@ -1867,6 +1876,7 @@ Das Paket bietet viel mehr Möglichkeiten, wie bspw.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "forest"
+literal "true"
 
 \end_inset
 
@@ -1898,6 +1908,7 @@ tipa
 \begin_inset CommandInset citation
 LatexCommand cite
 key "tipa"
+literal "true"
 
 \end_inset
 
@@ -2012,6 +2023,7 @@ preview-latex
 \begin_inset CommandInset citation
 LatexCommand cite
 key "preview"
+literal "true"
 
 \end_inset
 
@@ -2207,6 +2219,7 @@ Linguist\SpecialChar LyX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "linguistlyx"
+literal "true"
 
 \end_inset
 
@@ -2218,6 +2231,7 @@ key "linguistlyx"
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "covington"
+literal "true"
 
 \end_inset
 
@@ -2239,6 +2253,7 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/covington/
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "csquotes"
+literal "true"
 
 \end_inset
 
@@ -2260,6 +2275,7 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/csquotes/
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "enumitem"
+literal "true"
 
 \end_inset
 
@@ -2281,6 +2297,7 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/enumitem/
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "float"
+literal "true"
 
 \end_inset
 
@@ -2302,6 +2319,7 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/float/
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "forest"
+literal "true"
 
 \end_inset
 
@@ -2323,6 +2341,7 @@ http://www.ctan.org/tex-archive/graphics/pgf/contrib/forest
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "linguistlyx"
+literal "true"
 
 \end_inset
 
@@ -2347,6 +2366,7 @@ http://wiki.lyx.org/LyX/LinguistLyX
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "preview"
+literal "true"
 
 \end_inset
 
@@ -2368,6 +2388,7 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/preview/
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "tipa"
+literal "true"
 
 \end_inset
 

@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -81,6 +81,8 @@ pdfform
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -133,7 +135,8 @@ pdfform
 \tocdepth 2
 \paragraph_separation skip
 \defskip medskip
-\quotes_language german
+\is_math_indent 0
+\quotes_style german
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -963,6 +966,7 @@ onclick={}
 \begin_inset CommandInset citation
 LatexCommand cite
 key "JavaScript"
+literal "true"
 
 \end_inset
 
@@ -1105,6 +1109,7 @@ status open
 LatexCommand href
 name "Informationen wie dieses Formular ausgefüllt wird"
 target "http://wiki.lyx.org"
+literal "false"
 
 \end_inset
 
@@ -1340,6 +1345,7 @@ hyperref
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hyperref"
+literal "true"
 
 \end_inset
 
@@ -1595,6 +1601,7 @@ pifont
 \begin_inset CommandInset citation
 LatexCommand cite
 key "pifont"
+literal "true"
 
 \end_inset
 
@@ -2098,6 +2105,7 @@ hyperref
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hyperref"
+literal "true"
 
 \end_inset
 
@@ -2706,6 +2714,7 @@ Danach fügen Sie den benötigten JavaScript-Code in den LaTeX-Vorspann ein
 \begin_inset CommandInset citation
 LatexCommand cite
 key "JavaScript"
+literal "true"
 
 \end_inset
 
@@ -3226,6 +3235,7 @@ Randfarbe für Felder bei Mauskontakt anzeigen
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "JavaScript"
+literal "true"
 
 \end_inset
 
@@ -3234,6 +3244,7 @@ key "JavaScript"
 LatexCommand href
 name "JavaScript Referenz"
 target "https://developer.mozilla.org/en/docs/Web/JavaScript/Reference"
+literal "false"
 
 \end_inset
 
@@ -3244,6 +3255,7 @@ target "https://developer.mozilla.org/en/docs/Web/JavaScript/Reference"
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hyperref"
+literal "true"
 
 \end_inset
 
@@ -3252,6 +3264,7 @@ key "hyperref"
 LatexCommand href
 name "Dokumentation"
 target "http://mirrors.ctan.org/macros/latex/contrib/hyperref/doc/manual.pdf"
+literal "false"
 
 \end_inset
 
@@ -3265,6 +3278,7 @@ hyperref
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "pifont"
+literal "true"
 
 \end_inset
 
@@ -3273,6 +3287,7 @@ key "pifont"
 LatexCommand href
 name "Dokumentation"
 target "http://mirrors.ctan.org/macros/latex/required/psnfss/psnfss2e.pdf"
+literal "false"
 
 \end_inset
 

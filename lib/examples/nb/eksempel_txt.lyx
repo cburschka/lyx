@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,6 +21,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -58,7 +60,8 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
@@ -225,7 +228,7 @@ hardkodes
 \end_layout
 
 \begin_layout Standard
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Typografi er til for å hjelpe leseren å forstå forfatterens idéer.
@@ -237,7 +240,7 @@ Typografi er til for å hjelpe leseren å forstå forfatterens idéer.
  ikke an forstå din prosa, må du indikere den logiske strukturen
  eksplisitt med spesielle kommandoer....
  Mens du skriver dokumentet ditt, bør du tenke på strukturen, ikke på utseendet.
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -267,20 +270,20 @@ Hint: Dette er et SITAT
  talt er et programmeringsspråk).
  \SpecialChar LyX
  er 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 hva du ser er hva du får
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  omtrent som andre tekstbehandlere , bortsett fra at \SpecialChar LyX
  er 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 hva du ser er hva du mener
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -343,11 +346,11 @@ status collapsed
 
 \begin_layout Plain Layout
 Hint: Disse KRYSSREFERANSENE burde ikke 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 hardkodes
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .

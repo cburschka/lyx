@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -175,6 +175,8 @@ graphicboxes
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -227,7 +229,8 @@ graphicboxes
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -262,6 +265,7 @@ LatexCommand href
 name "lyx-docs@lists.lyx.org"
 target "lyx-docs@lists.lyx.org?subject=EmbeddedObjects manual"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -9511,11 +9515,11 @@ Cuadros ! Multipágina ! Flotantes
 Podría haber problemas si un flotante aparece en la misma página donde comienza
  un cuadro multipágina.
  Para evitarlo, añade un 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 salto de página limpia
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (menú 
@@ -14491,6 +14495,7 @@ diagbox
 \begin_inset CommandInset citation
 LatexCommand cite
 key "diagbox"
+literal "true"
 
 \end_inset
 
@@ -15347,6 +15352,7 @@ booktabs
 \begin_inset CommandInset citation
 LatexCommand cite
 key "booktabs"
+literal "true"
 
 \end_inset
 
@@ -25095,6 +25101,7 @@ arydshln
 \begin_inset CommandInset citation
 LatexCommand cite
 key "arydshln"
+literal "true"
 
 \end_inset
 
@@ -25991,7 +25998,7 @@ newref
  (refstyle) en el preámbulo del documento.
  Por ejemplo, para redefinir todas las referencias a figuras (que tienen
  la etiqueta 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -25999,7 +26006,7 @@ newref
 fig
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ) se usa el comando
@@ -26027,6 +26034,7 @@ Para más información sobre este formato echa un vistazo a la documentación
 \begin_inset CommandInset citation
 LatexCommand cite
 key "prettyref,refstyle"
+literal "true"
 
 \end_inset
 
@@ -26147,11 +26155,11 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 fig:
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , por ejemplo, es la abreviatura en \SpecialChar LyX
@@ -26331,6 +26339,7 @@ hyperref
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hyperref"
+literal "true"
 
 \end_inset
 
@@ -26501,6 +26510,7 @@ hypcap
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hypcap"
+literal "true"
 
 \end_inset
 
@@ -27026,6 +27036,7 @@ Hay varias opciones para diseñar las secciones figura/cuadro creadas.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "endfloat"
+literal "true"
 
 \end_inset
 
@@ -27051,6 +27062,7 @@ Nota: endfloat
 \begin_inset CommandInset citation
 LatexCommand cite
 key "endfloat"
+literal "true"
 
 \end_inset
 
@@ -27101,6 +27113,7 @@ Más detalles sobre ubicación de flotantes en libros sobre \SpecialChar LaTeX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexcompanion,latexguide,latexbook"
+literal "true"
 
 \end_inset
 
@@ -28287,6 +28300,7 @@ caption
 \begin_inset CommandInset citation
 LatexCommand cite
 key "caption"
+literal "true"
 
 \end_inset
 
@@ -28409,6 +28423,7 @@ KOMA-Script
 \begin_inset CommandInset citation
 LatexCommand cite
 key "KOMA-Script"
+literal "true"
 
 \end_inset
 
@@ -29776,6 +29791,7 @@ sidecap
 \begin_inset CommandInset citation
 LatexCommand cite
 key "sidecap"
+literal "true"
 
 \end_inset
 
@@ -32338,6 +32354,7 @@ status collapsed
 \begin_inset CommandInset citation
 LatexCommand cite
 key "footmisc"
+literal "true"
 
 \end_inset
 
@@ -32350,6 +32367,7 @@ Para otras posibilidades de diseño de notas al pie mira en libros de \SpecialCh
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexcompanion,latexguide,latexbook"
+literal "true"
 
 \end_inset
 
@@ -32374,6 +32392,7 @@ status collapsed
 \begin_inset CommandInset citation
 LatexCommand cite
 key "KOMA-Script"
+literal "true"
 
 \end_inset
 
@@ -32993,6 +33012,7 @@ marginnote
 \begin_inset CommandInset citation
 LatexCommand cite
 key "marginnote"
+literal "true"
 
 \end_inset
 
@@ -33596,11 +33616,11 @@ Alto
 
 \begin_layout Description
 Profundidad Es la 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 altura
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  del texto plano.
@@ -38611,6 +38631,7 @@ lettrine
 \begin_inset CommandInset citation
 LatexCommand cite
 key "lettrine"
+literal "true"
 
 \end_inset
 
@@ -39160,6 +39181,7 @@ ajedrez Esta plantilla soporta diagramas posicionales de ajedrez hechos
 LatexCommand href
 name "XBoard"
 target "http://es.wikipedia.org/wiki/XBoard"
+literal "false"
 
 \end_inset
 
@@ -39176,6 +39198,7 @@ Dia Esta plantilla soporta diagramas creados con el programa
 LatexCommand href
 name "Dia"
 target "http://es.wikipedia.org/wiki/Dia_(programa)"
+literal "false"
 
 \end_inset
 
@@ -39201,6 +39224,7 @@ cálculo Esta plantilla permite insertar tablas/hojas de cálculo en los formato
 LatexCommand href
 name "Gnumeric"
 target "http://es.wikipedia.org/wiki/Gnumeric"
+literal "false"
 
 \end_inset
 
@@ -39211,6 +39235,7 @@ target "http://es.wikipedia.org/wiki/Gnumeric"
 LatexCommand href
 name "OpenDocument"
 target "http://es.wikipedia.org/wiki/OpenDocument"
+literal "false"
 
 \end_inset
 
@@ -39219,6 +39244,7 @@ target "http://es.wikipedia.org/wiki/OpenDocument"
 LatexCommand href
 name "Microsoft Office XML"
 target "http://es.wikipedia.org/wiki/Microsoft_Office_XML"
+literal "false"
 
 \end_inset
 
@@ -39227,6 +39253,7 @@ target "http://es.wikipedia.org/wiki/Microsoft_Office_XML"
 LatexCommand href
 name "Office Open XML"
 target "http://es.wikipedia.org/wiki/Office_Open_XML"
+literal "false"
 
 \end_inset
 
@@ -39253,9 +39280,14 @@ Día-Mes-Año.
 
 \emph default
  A continuación hay una fecha insertada como material externo: 
-\begin_inset External
-	template Date
-	filename .
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+today 
+\end_layout
 
 \end_inset
 
@@ -39327,6 +39359,7 @@ Lilypond Esta plantilla sirve para tipografiar notación musical con el programa
 LatexCommand href
 name "LilyPond"
 target "http://es.wikipedia.org/wiki/GNU_LilyPond"
+literal "false"
 
 \end_inset
 
@@ -39460,6 +39493,7 @@ pdfpages
 \begin_inset CommandInset citation
 LatexCommand cite
 key "pdfpages"
+literal "true"
 
 \end_inset
 
@@ -39618,6 +39652,7 @@ Xfig Esta plantilla soporta imágenes creadas con el programa
 LatexCommand href
 name "Xfig"
 target "http://en.wikipedia.org/wiki/Xfig"
+literal "false"
 
 \end_inset
 
@@ -40314,19 +40349,19 @@ Documento hijo
 .
  Puedes excluir o incluir hijos con doble clic sobre sus nombres en la lista;
  (esto solo funciona para documentos insertados mediante 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Anexar
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , no con 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Incorporar
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ).
@@ -40367,11 +40402,11 @@ Guía del usuario
  Habilitando o deshabilitando las ramas puedes decidir qué archivos incluidos
  aparecerán en la salida.
  Esto tiene la ventaja de que también funciona con hijos incluidos con 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Incorporar
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -41072,6 +41107,7 @@ listings
 \begin_inset CommandInset citation
 LatexCommand cite
 key "listings"
+literal "true"
 
 \end_inset
 
@@ -42021,6 +42057,7 @@ PSTricks
 \begin_inset CommandInset citation
 LatexCommand cite
 key "pstricks"
+literal "true"
 
 \end_inset
 
@@ -45849,6 +45886,7 @@ W_{g\,n}=\frac{W_{g\,\mathrm{mult}}+(1-n)\cdot(2\cdot\backslash\mbox{tabcolsep}+
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexcompanion"
+literal "true"
 
 \end_inset
 
@@ -45865,6 +45903,7 @@ The \SpecialChar LaTeX
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexguide"
+literal "true"
 
 \end_inset
 
@@ -45882,6 +45921,7 @@ A Guide to \SpecialChar LaTeX
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexbook"
+literal "true"
 
 \end_inset
 
@@ -45898,6 +45938,7 @@ Leslie Lamport:
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "arydshln"
+literal "true"
 
 \end_inset
 
@@ -45909,6 +45950,7 @@ Documentación del paquete \SpecialChar LaTeX
 LatexCommand href
 name "arydshln"
 target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/arydshln/arydshln.pdf"
+literal "false"
 
 \end_inset
 
@@ -45932,6 +45974,7 @@ status collapsed
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "booktabs"
+literal "true"
 
 \end_inset
 
@@ -45943,6 +45986,7 @@ Documentación del paquete \SpecialChar LaTeX
 LatexCommand href
 name "booktabs"
 target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/booktabs/booktabs.pdf"
+literal "false"
 
 \end_inset
 
@@ -45966,6 +46010,7 @@ status collapsed
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "caption"
+literal "true"
 
 \end_inset
 
@@ -45977,6 +46022,7 @@ Documentación del paquete \SpecialChar LaTeX
 LatexCommand href
 name "caption"
 target "http://mirrors.ctan.org/macros/latex/contrib/caption/caption-eng.pdf"
+literal "false"
 
 \end_inset
 
@@ -46000,6 +46046,7 @@ status collapsed
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "diagbox"
+literal "true"
 
 \end_inset
 
@@ -46011,6 +46058,7 @@ Documentación del paquete \SpecialChar LaTeX
 LatexCommand href
 name "diagbox"
 target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/diagbox/diagbox.pdf"
+literal "false"
 
 \end_inset
 
@@ -46034,6 +46082,7 @@ status collapsed
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "endfloat"
+literal "true"
 
 \end_inset
 
@@ -46045,6 +46094,7 @@ Documentación del paquete \SpecialChar LaTeX
 LatexCommand href
 name "endfloat"
 target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/endfloat/endfloat.pdf"
+literal "false"
 
 \end_inset
 
@@ -46068,6 +46118,7 @@ status collapsed
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "footmisc"
+literal "true"
 
 \end_inset
 
@@ -46079,6 +46130,7 @@ Documentación del paquete \SpecialChar LaTeX
 LatexCommand href
 name "footmisc"
 target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/footmisc/footmisc.pdf"
+literal "false"
 
 \end_inset
 
@@ -46102,6 +46154,7 @@ status collapsed
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hypcap"
+literal "true"
 
 \end_inset
 
@@ -46113,6 +46166,7 @@ Documentación del paquete \SpecialChar LaTeX
 LatexCommand href
 name "hypcap"
 target "http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/hypcap.pdf"
+literal "false"
 
 \end_inset
 
@@ -46136,6 +46190,7 @@ status collapsed
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hyperref"
+literal "true"
 
 \end_inset
 
@@ -46147,6 +46202,7 @@ Documentación del paquete \SpecialChar LaTeX
 LatexCommand href
 name "hyperref"
 target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/hyperref/hyperref.pdf"
+literal "false"
 
 \end_inset
 
@@ -46170,6 +46226,7 @@ status collapsed
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "KOMA-Script"
+literal "true"
 
 \end_inset
 
@@ -46181,6 +46238,7 @@ Documentación del paquete \SpecialChar LaTeX
 LatexCommand href
 name "KOMA-Script"
 target "http://mirror.ctan.org/macros/latex/contrib/koma-script/doc/scrguien.pdf"
+literal "false"
 
 \end_inset
 
@@ -46204,6 +46262,7 @@ status collapsed
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "lettrine"
+literal "true"
 
 \end_inset
 
@@ -46215,6 +46274,7 @@ Documentación del paquete \SpecialChar LaTeX
 LatexCommand href
 name "lettrine"
 target "http://mirrors.ctan.org/macros/latex/contrib/lettrine/doc/lettrine.pdf"
+literal "false"
 
 \end_inset
 
@@ -46225,6 +46285,7 @@ target "http://mirrors.ctan.org/macros/latex/contrib/lettrine/doc/lettrine.pdf"
 LatexCommand href
 name "ejemplo"
 target "http://mirrors.ctan.org/macros/latex/contrib/lettrine/doc/demo.pdf"
+literal "false"
 
 \end_inset
 
@@ -46246,6 +46307,7 @@ status collapsed
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "listings"
+literal "true"
 
 \end_inset
 
@@ -46257,6 +46319,7 @@ Documentación del paquete \SpecialChar LaTeX
 LatexCommand href
 name "listings"
 target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/listings/listings.pdf"
+literal "false"
 
 \end_inset
 
@@ -46280,6 +46343,7 @@ status collapsed
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "marginnote"
+literal "true"
 
 \end_inset
 
@@ -46291,6 +46355,7 @@ Documentación del paquete \SpecialChar LaTeX
 LatexCommand href
 name "marginnote"
 target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/marginnote/marginnote.pdf"
+literal "false"
 
 \end_inset
 
@@ -46314,6 +46379,7 @@ status collapsed
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "pdfpages"
+literal "true"
 
 \end_inset
 
@@ -46325,6 +46391,7 @@ Documentación del paquete \SpecialChar LaTeX
 LatexCommand href
 name "pdfpages"
 target "http://www.ctan.org/tex-archive/macros/latex/contrib/pdfpages/pdfpages.pdf"
+literal "false"
 
 \end_inset
 
@@ -46348,6 +46415,7 @@ status collapsed
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "prettyref"
+literal "true"
 
 \end_inset
 
@@ -46359,6 +46427,7 @@ Documentación del paquete \SpecialChar LaTeX
 LatexCommand href
 name "prettyref"
 target "http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf"
+literal "false"
 
 \end_inset
 
@@ -46382,6 +46451,7 @@ status collapsed
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "pstricks"
+literal "true"
 
 \end_inset
 
@@ -46393,6 +46463,7 @@ Página web del paquete \SpecialChar LaTeX
 LatexCommand href
 name "PSTricks"
 target "http://tug.org/PSTricks/"
+literal "false"
 
 \end_inset
 
@@ -46416,6 +46487,7 @@ status collapsed
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "refstyle"
+literal "true"
 
 \end_inset
 
@@ -46427,6 +46499,7 @@ Documentación del paquete \SpecialChar LaTeX
 LatexCommand href
 name "refstyle"
 target "http://www.ctan.org/tex-archive/macros/latex/contrib/refstyle/refstyle.pdf"
+literal "false"
 
 \end_inset
 
@@ -46450,6 +46523,7 @@ status collapsed
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "sidecap"
+literal "true"
 
 \end_inset
 
@@ -46461,6 +46535,7 @@ Documentación del paquete \SpecialChar LaTeX
 LatexCommand href
 name "sidecap"
 target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/sidecap/sidecap.pdf"
+literal "false"
 
 \end_inset
 
@@ -46484,6 +46559,7 @@ status collapsed
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "NewInLyX20"
+literal "true"
 
 \end_inset
 
@@ -46492,6 +46568,7 @@ key "NewInLyX20"
 LatexCommand href
 name "Página wiki"
 target "http://wiki.lyx.org/LyX/NewInLyX20"
+literal "false"
 
 \end_inset
 
@@ -46511,6 +46588,7 @@ target "http://wiki.lyx.org/LyX/NewInLyX20"
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
+literal "false"
 
 \end_inset
 

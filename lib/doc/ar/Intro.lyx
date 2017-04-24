@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -41,6 +41,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format pdf4
 \output_sync 0
@@ -92,7 +94,8 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -124,6 +127,7 @@ status collapsed
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -769,11 +773,11 @@ status open
 
 \lang arabic_arabi
  ليك: برنامج بصري, لتحرير النصوص يعتمد على مبدأ 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 ما تراه هو ما تريده
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ويستخدم لغة لتيك للتنضيد.
@@ -827,6 +831,7 @@ reference "sec:مساهمة"
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -837,6 +842,7 @@ type "mailto:"
 LatexCommand href
 target "lyx-users@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -2171,6 +2177,7 @@ http://www.lyx.org/trac/wiki/BugTrackerHome
 LatexCommand href
 target "lyx-devel@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -2248,6 +2255,7 @@ change log,
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -2304,6 +2312,7 @@ http://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -2327,6 +2336,7 @@ type "mailto:"
 LatexCommand href
 name "هنا"
 target "https://sourceforge.net/projects/ohodquizgame/files/Books/Scheherazade_font-2.100.zip/download"
+literal "false"
 
 \end_inset
 

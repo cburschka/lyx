@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -60,7 +60,7 @@
 %}
 %\@ifpackageloaded{babel}{\addto\extrasenglish{\refnamechanges}}{\refnamechanges}
 \end_preamble
-\options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
+\options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage
 \use_default_options true
 \begin_modules
 customHeadersFooters
@@ -80,6 +80,8 @@ customHeadersFooters
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -153,7 +155,8 @@ customHeadersFooters
 \tocdepth 2
 \paragraph_separation skip
 \defskip medskip
-\quotes_language english
+\is_math_indent 1
+\quotes_style english
 \papercolumns 1
 \papersides 2
 \paperpagestyle fancy
@@ -658,6 +661,7 @@ Usually the summary should not have page headers.
 
 \begin_layout Standard
 \begin_inset Branch Summary
+inverted 0
 status open
 
 \begin_layout Standard
@@ -775,6 +779,7 @@ Enable page headers and add the chapter to the header line.
 
 \begin_layout Standard
 \begin_inset Branch chapter-1
+inverted 0
 status open
 
 \begin_layout Standard
@@ -794,6 +799,7 @@ filename "chapter-1.lyx"
 
 \begin_layout Standard
 \begin_inset Branch chapter-2
+inverted 0
 status open
 
 \begin_layout Standard
@@ -882,6 +888,7 @@ Acknowledgments
 
 \begin_layout Standard
 \begin_inset Branch Acknowledgments
+inverted 0
 status open
 
 \begin_layout Standard
@@ -901,6 +908,7 @@ filename "Acknowledgments.lyx"
 
 \begin_layout Standard
 \begin_inset Branch Appendix
+inverted 0
 status open
 
 \begin_layout Standard

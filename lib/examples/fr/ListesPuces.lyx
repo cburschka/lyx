@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -24,6 +24,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -61,7 +63,8 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -150,11 +153,11 @@ chaque niveau peut avoir sa propre forme de puce
 \begin_layout Itemize
 \SpecialChar LyX
  affiche cependant toutes les puces comme des 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
  * 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 

@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -26,6 +26,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -63,7 +65,8 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\quotes_style english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -509,6 +512,7 @@ Text with citations
 \begin_inset CommandInset citation
 LatexCommand cite
 key "whole-collection"
+literal "true"
 
 \end_inset
 
@@ -516,6 +520,7 @@ key "whole-collection"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "techreport-full"
+literal "true"
 
 \end_inset
 
@@ -523,6 +528,7 @@ key "techreport-full"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "RefB"
+literal "true"
 
 \end_inset
 
@@ -530,6 +536,7 @@ key "RefB"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "RefJ"
+literal "true"
 
 \end_inset
 
@@ -930,6 +937,7 @@ or a plain bibliography:
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "RefJ"
+literal "true"
 
 \end_inset
 
@@ -940,6 +948,7 @@ Author, Article title, Journal, Volume, page numbers (year)
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "RefB"
+literal "true"
 
 \end_inset
 

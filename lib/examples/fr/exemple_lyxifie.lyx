@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,6 +21,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -58,7 +60,8 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
@@ -145,6 +148,7 @@ que, appelé \SpecialChar TeX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "lamport"
+literal "true"
 
 \end_inset
 
@@ -186,7 +190,7 @@ name "subsec:Pourquoi-LyX-est"
 , qui est pratiquement un langage de programmation.
  \SpecialChar LyX
  est en bien des points comparable à d'autres traitements de texte 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -194,12 +198,12 @@ name "subsec:Pourquoi-LyX-est"
 What you see is what you get
 \lang french
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (WYSIWYG), excepté que \SpecialChar LyX
  est plutôt 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -207,7 +211,7 @@ What you see is what you get
 What you see is what you mean
 \lang french
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (WYSIWYM).
@@ -390,12 +394,12 @@ Notes
 
 \begin_layout Standard
 Quelques notes à propos de la 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 \SpecialChar LyX
 ification
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  de ce fichier :
@@ -429,21 +433,21 @@ d'Apprentissage;
 
 \begin_layout Itemize
 je n'ai pas eu à taper le mot 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Références
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ci-dessous.
  \SpecialChar LyX
  le met automatiquement (ou le mot 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Bibliographie
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , en fonction de la classe du document) lorsque vous sélectionnez l
@@ -457,6 +461,7 @@ ie.
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "lamport"
+literal "true"
 
 \end_inset
 

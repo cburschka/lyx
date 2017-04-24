@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -26,6 +26,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics dvips
 \default_output_format default
 \output_sync 0
@@ -72,7 +74,8 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -129,11 +132,11 @@ height "7pt"
 On peut combiner \SpecialChar LyX
  et Foil\SpecialChar TeX
  en un puissant outil de préparation de 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 transparents
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ou diapos (foils).
@@ -266,19 +269,19 @@ ListeCroix (CrossList)
 \begin_layout Standard
 Ces deux listes ont été ajoutées pour les listes de type conseils / interdiction
 s, ou 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 d'accord
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  / 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 pas d'accord
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , assez fréquentes dans des transparents.
@@ -484,11 +487,11 @@ Pour mettre un deuxième Lemme juste après le premier, il faut les séparer
 \family typewriter
 \emph on
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 %
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -844,12 +847,12 @@ Restriction{}
 .
  La première sert à inclure un logo graphique dans vos diapos, qui est par
  défaut 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 -Typeset by Foil\SpecialChar TeX
 -
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -919,16 +922,17 @@ Il devrait y avoir de la documentation sur Foil\SpecialChar TeX
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "2"
+literal "true"
 
 \end_inset
 
 Jim Hafner, 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 The Foil\SpecialChar TeX
  Class Package
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
@@ -940,6 +944,7 @@ The Foil\SpecialChar TeX
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "2"
+literal "true"
 
 \end_inset
 

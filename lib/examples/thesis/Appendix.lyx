@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -60,7 +60,7 @@
 %}
 %\@ifpackageloaded{babel}{\addto\extrasenglish{\refnamechanges}}{\refnamechanges}
 \end_preamble
-\options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage,fleqn
+\options intoc,bibliography=totoc,index=totoc,BCOR10mm,captions=tableheading,titlepage
 \use_default_options true
 \master thesis.lyx
 \begin_modules
@@ -81,6 +81,8 @@ customHeadersFooters
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -136,7 +138,8 @@ customHeadersFooters
 \tocdepth 2
 \paragraph_separation skip
 \defskip medskip
-\quotes_language english
+\is_math_indent 1
+\quotes_style english
 \papercolumns 1
 \papersides 2
 \paperpagestyle fancy
@@ -316,6 +319,7 @@ bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla
 LatexCommand nomenclature
 symbol "$R_a$"
 description "arithmetic average roughness"
+literal "false"
 
 \end_inset
 
@@ -336,6 +340,7 @@ For nomenclature entries with indices one need to enclose the expression
 \begin_inset CommandInset citation
 LatexCommand cite
 key "ISO10780"
+literal "true"
 
 \end_inset
 
@@ -348,6 +353,7 @@ The next section
 
 \begin_layout Standard
 \begin_inset Branch NoChildDocument
+inverted 0
 status collapsed
 
 \begin_layout Standard

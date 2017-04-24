@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -40,6 +40,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics none
 \default_output_format pdf2
 \output_sync 0
@@ -91,7 +93,8 @@
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\quotes_style english
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
@@ -159,11 +162,11 @@ LatexCommand tableofcontents
 \begin_layout Standard
 Некоторые из вас, вероятно, обратились к этому документу после того как
  попытались вставить два пробела после 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 .
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  или 3 пустых строки между абзацами, и испытали серьёзное разочарование,
@@ -267,11 +270,11 @@ status collapsed
 
 \begin_layout Plain Layout
 или, более оптимистично, 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 особенности
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -334,11 +337,11 @@ Weiss
 \end_inset
 
 : 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Предположим, пользователь имеет коэффициент интеллекта на уровне картофелины
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -412,7 +415,7 @@ status collapsed
  Так что здесь мы только ознакомим вас с возможностями \SpecialChar LyX
 ; представьте себе,
  что в конце каждого раздела написано 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 смотрите 
@@ -420,7 +423,7 @@ status collapsed
 Руководство пользователя
 \emph default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -603,11 +606,11 @@ example_raw.lyx
 \family default
 .
  Также он содержит 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 утонченные
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  намёки на то, как их исправить
@@ -616,11 +619,11 @@ status collapsed
 
 \begin_layout Plain Layout
 Эти намёки размещены в жёлтых 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Заметках
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -719,12 +722,12 @@ examples/
 Наберите такое предложение: 
 \family typewriter
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Это мой первый \SpecialChar LyX
  документ!
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -895,11 +898,11 @@ unix
 возможность
 \emph default
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 неограниченной отмены
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , означающая, что вы можете отменить всё, что делали с начала текущего сеанса
@@ -1158,7 +1161,7 @@ Tab
 \begin_layout Standard
 Многие коммерческие текстовые процессоры построены на принципе WYSIWYG:
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1166,21 +1169,21 @@ Tab
 What You See Is What You Get
 \lang russian
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 То, что вы видите — это то, что вы получите
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ).
  \SpecialChar LyX
  же построен на принципе 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1191,15 +1194,15 @@ Mean
 \emph default
 \lang russian
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Вы видите то, что вы имели в виду
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ).
@@ -1292,11 +1295,11 @@ C-Пробел
 пробел
 \family default
 ) и показывается на экране как маленькая буква 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 u
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1327,7 +1330,7 @@ status collapsed
  указывает \SpecialChar LaTeX
  не вставлять между этих двух слов разрыв строки.
  Он часто используется для написания чего-то наподобие 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 смотрите Раздел
@@ -1335,23 +1338,23 @@ status collapsed
 \end_inset
 
 1
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , если вы хотите быть уверены, что 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Раздел
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  и 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 1
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  будут напечатаны на одной строке
@@ -1401,11 +1404,11 @@ status collapsed
 \begin_layout Standard
 Окружения — значительная часть философии \SpecialChar LyX
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Вы видите то, что вы имели в виду
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -1433,11 +1436,11 @@ status collapsed
 ).
  Оно отображает текущее используемое окружение, в котором вы пишете.
  Когда вы писали ваш первый документ, оно показывало 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Обычный
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , что является окружением по умолчанию для текста.
@@ -1448,11 +1451,11 @@ status collapsed
 Окружение
 \family default
 , которое открывается нажатием мышью на картинку со 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 стрелкой вниз
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  прямо справа от окна 
@@ -1470,11 +1473,11 @@ status collapsed
 Наберите слово 
 \family typewriter
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Введение
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1508,11 +1511,11 @@ status collapsed
 .
  \SpecialChar LyX
  пронумерует раздел номером 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 1
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  и установит большой шрифт для его заголовка.
@@ -1531,19 +1534,19 @@ Enter
 Окружение
 \family default
  меняется с 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Раздел
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  обратно на 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Обычный
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -1607,11 +1610,11 @@ Enter
 .
  \SpecialChar LyX
  напишет 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  и будет ожидать ввода заголовка.
@@ -1630,12 +1633,12 @@ Enter
 \end_inset
 
 1 (после текста 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 мой первый документ \SpecialChar LyX
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ), снова нажмите 
@@ -1653,33 +1656,33 @@ Enter
 .
  И опять \SpecialChar LyX
  напишет 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  и будет ожидать ввода заголовка.
  Наберите 
 \family typewriter
 фразу 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Об этом документе
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  Раздел 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Прочее
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , который был Разделом
@@ -1739,11 +1742,11 @@ Enter
 .
  \SpecialChar LyX
  пронумерует подраздел 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2.1
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , и оформит его шрифтом, который больше, чем обычный шрифт, но меньше шрифта
@@ -1755,11 +1758,11 @@ Enter
 .
  Как вы и ожидали, \SpecialChar LyX
  автоматически пронумерует раздел 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2.2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -1776,19 +1779,19 @@ Enter
 \end_inset
 
 3, а подразделы будут перенумерованы в 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 3.1
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  и 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 3.2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -1975,11 +1978,11 @@ Enter
 .
  \SpecialChar LyX
  нарисует 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 пульку
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (фактически, звёздочку, которая преобразуется в кружочек при печати) в
@@ -2096,11 +2099,11 @@ Enter
 Описание
 \family default
 ), либо 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Табуляцией
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -2366,11 +2369,11 @@ Book
  журнала от другого.
  Так как Компьютерный Век продолжает развиваться, журналы начали принимать
  документы в электронном виде, создавая 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 стилевые файлы
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  \SpecialChar LaTeX
@@ -2683,11 +2686,11 @@ letter.lyx
 Подпись
 \family default
  перед фактическим содержимым подписи содержит слово 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Signature:
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 , выведенное красным цветом.
@@ -2716,11 +2719,11 @@ Signature:
  Теперь, когда вам нужно написать письмо, вы можете использовать сохранённый
  шаблон письма.
  Тут мы не будем задавать вам 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 упражнение
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , просто напишите кому-либо письмо.
@@ -2862,11 +2865,11 @@ example_raw.lyx
 
 \begin_layout Standard
 Давайте отметим наш второй раздел, с заголовком 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Об этом документе
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -2910,11 +2913,11 @@ status collapsed
 
 \begin_layout Plain Layout
 Мы написали 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 разд:
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 , так как вы также можете создавать метки для математических уравнений,
@@ -2976,11 +2979,11 @@ dvi
 
 \begin_layout Standard
 Теперь поставьте курсор после слова 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Раздел
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  и выберите 
@@ -3004,7 +3007,7 @@ dvi
 .
  Оно покажет список доступных для выбора меток.
  На данный момент, в нем должна быть только одна метка 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 разд:о
@@ -3012,7 +3015,7 @@ dvi
 \end_inset
 
 документе
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -3034,11 +3037,11 @@ dvi
 \family default
 .
  Теперь поставьте курсор после слова 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 странице
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , и измените 
@@ -3067,11 +3070,11 @@ dvi
 пробел
 \family default
  между словом 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Раздел
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  и ссылкой.
@@ -3131,7 +3134,7 @@ D
 VI
 \family default
 , и вы увидите, что на последней странице мы делали ссылку на 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Раздел
@@ -3139,11 +3142,11 @@ VI
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  и 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Страницу
@@ -3151,7 +3154,7 @@ VI
 \end_inset
 
 1
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (либо на другую страницу, на которой появится заголовок Раздела
@@ -3176,19 +3179,19 @@ VI
 2.
  Теперь перезапустите \SpecialChar LaTeX
 , и — вуаля! — перекрёстная ссылка изменилась на 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 3
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ! Измените 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Об этом документе
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  на подраздел, и перекрёстная ссылка будет ссылаться на Раздел
@@ -3207,11 +3210,11 @@ VI
 \begin_layout Standard
 Если вы хотите ещё немного попрактиковаться с метками, попробуйте вставить
  метку, 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 разд:моя первая метка
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , в то место, где была ваша первая перекрёстная ссылка, и создайте ссылку
@@ -3315,12 +3318,12 @@ status collapsed
 \family default
 \SpecialChar endofsentence
  Нажмите мышью на конец слова 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 \SpecialChar LyX
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  где-то в вашем документе и нажмите кнопку 
@@ -3335,11 +3338,11 @@ status collapsed
  Ниже строки, в которой вы набираете, откроется строка сноски.
  В левом конце строки вы увидите написанное красным на сером фоне слово
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 сноска
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -3357,29 +3360,29 @@ status collapsed
 
 \begin_layout Standard
 Теперь нажмите на слове 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 сноска
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  Сноска исчезнет, останется только слово 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 сноска
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , подчёркнутое красной линией, оно показывает место, где будет напечатан
  маркер сноски в тексте; это называется 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 свёртыванием
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  сноски.
@@ -3503,19 +3506,19 @@ status collapsed
 
 \begin_layout Itemize
 экранный маркер называется 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 примечание на полях
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  вместо 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 сноска
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ;
@@ -3589,14 +3592,14 @@ status open
  Наберите вашу первую ссылку 
 \family typewriter
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Самоучитель по Lyx команды документирования \SpecialChar LyX
 
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -3625,11 +3628,11 @@ status open
 Ссылку
 \family default
  на 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 lyxtutorial
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -3693,11 +3696,11 @@ status collapsed
 
 .
  Выберите 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 lyxtutorial
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (сейчас это единственный элемент библиографии), затем, используя стрелку
@@ -3730,11 +3733,11 @@ lyxtutorial
  или главу в книге или статье, на которую ссылаются).
  Если вы хотите, чтобы ссылки в печатном документе были метками, а не числами
  (например, некоторые журналы хотели бы использовать 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 [Smi95]
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  для ссылок на работу, написанную Smith в 1995), то вам нужно использовать
@@ -3810,11 +3813,11 @@ status collapsed
 \family default
 .
  В прямоугольнике (называемом также вкладкой) появится слово 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Содержание
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  в первой строке вашего документа.
@@ -3851,11 +3854,11 @@ status collapsed
 
 \begin_layout Plain Layout
 Команда меню будет работать, даже если в вашем документе нет вкладки 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 содержание
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -3973,11 +3976,11 @@ dvi
 \family default
  — в ней нет пропусков между символами и знаком равенства, и вы хотели бы
  написать 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  в верхнем индексе.
@@ -4041,11 +4044,11 @@ dvi
 .
  Обратите внимание, что выражение красиво оформлено, с пробелами между символами
  и знаком равенства, и с 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  в верхнем индексе.
@@ -4068,11 +4071,11 @@ sqrt
  ваше выражение, пока не обработаете файл \SpecialChar LaTeX
 , и вы можете тратить время на
  поиск пропущенных скобок или других 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 ошибок
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -4118,11 +4121,11 @@ sqrt
 Вправо
 \family default
  для перемещения курсора за знак равенства, и просто набрать 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 1+
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -4200,19 +4203,19 @@ Backspace
 ? Снова, вы можете использовать мышь, чтобы установить курсор в нужное место.
  Однако, вы можете воспользоваться клавишами стрелок.
  Если курсор стоит сразу после 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 c
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , но перед 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , то нажатие 
@@ -4221,20 +4224,20 @@ c
 \family default
  приведёт к перемещению курсора вверх на верхний индекс, непосредственно
  перед 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
  Добавьте 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 .5
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -4252,11 +4255,11 @@ c
 после
 \emph default
  верхнего индекса (так что теперь вы можете набрать 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 +1
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ).
@@ -4296,19 +4299,19 @@ c
 \family default
  между единицей и знаком плюс, иначе вы выйдете из верхнего индекса.
  В местах, где эти действия не имеют смысла (скажем, между 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 m
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  и 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 c
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ), 
@@ -4377,7 +4380,7 @@ Esc
 \family default
  для выхода из математического редактора, и ещё раз для отступа после выражения.
  Таким образом вы сможете написать 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -4385,11 +4388,11 @@ Esc
 \end_inset
 
  — моя любимая формула
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  вместо 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -4397,7 +4400,7 @@ Esc
 \end_inset
 
 моя любимая формула
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -4419,11 +4422,11 @@ Esc
 \family default
  (см.
  ниже), но на самом деле проще нажать клавишу 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 ^
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -4445,11 +4448,11 @@ Esc
 \begin_layout Standard
 Создание нижнего индекса так же просто: начните набор с клавиши подчёркивания
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 _
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 .
@@ -4554,7 +4557,7 @@ example_raw.lyx
 
 \begin_layout Standard
 Если вы нажмёте на кнопку, помеченную 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -4562,7 +4565,7 @@ example_raw.lyx
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  — появится меню, в котором можно выбрать греческие буквы, они будут появляться
@@ -4609,7 +4612,7 @@ status collapsed
  верхний и нижний пределы сумм и интегралов.
  Последняя кнопка в каждом цвете весьма разнообразна.
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Нет ничего, что вы не смогли бы сделать\SpecialChar ldots
@@ -4618,7 +4621,7 @@ status collapsed
 \end_inset
 
 .
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -4639,7 +4642,7 @@ status collapsed
  верхний и нижний пределы сумм и интегралов.
  Последняя кнопка ужасно разнообразна.
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Вы не сможете ничего сделать из того, что невозможно сделать\SpecialChar ldots
@@ -4649,7 +4652,7 @@ status collapsed
 \end_inset
 
 .
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -4762,7 +4765,7 @@ status collapsed
  По умолчанию — это пара круглых скобок, но вы может выбрать пару фигурных
  скобок, фигурную и круглую скобку, или даже выбрать пустой квадрат, чтобы
  получить что-то вроде 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -4770,7 +4773,7 @@ status collapsed
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (пустой ограничитель отображается в \SpecialChar LyX
@@ -4852,11 +4855,11 @@ OK
  Как можно было бы и ожидать, для передвижения по дроби вы можете использовать
  клавиши стрелок или мышь.
  Нажмите на верхний квадрат и наберите 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 1
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -4865,11 +4868,11 @@ OK
 Вниз
 \family default
  и наберите 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -4899,11 +4902,11 @@ example_raw.lyx
 \begin_layout Standard
 Так как символы в математическом режиме рассматриваются как переменные,
  если в математическом режиме вы набираете 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sin
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , \SpecialChar LyX
@@ -4922,29 +4925,29 @@ sin
 .
  Эти три символа будут отображены наклонным шрифтом, а вы на самом деле
  хотели увидеть слово 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sin
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  в прямом шрифте.
  К тому же, \SpecialChar LyX
  не вставит пропуск между словом 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sin
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  и 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 x
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (нажатие 
@@ -4953,7 +4956,7 @@ x
 \family default
  просто выведет вас из математического режима).
  Как же получить 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -4961,11 +4964,11 @@ x
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  вместо 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -4973,7 +4976,7 @@ x
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ?
@@ -4981,11 +4984,11 @@ x
 
 \begin_layout Standard
 Нажмите на 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sin
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  в списке 
@@ -5002,11 +5005,11 @@ sin
 \family default
 .
  Слово 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sin
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  появится записанное чёрным цветом и прямым романским шрифтом.
@@ -5016,11 +5019,11 @@ Backspace
 \family default
  — будет удалено всё слово.
  Теперь наберите 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 x
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , и он появится в наклонном шрифте, как и положено в математическом режиме.
@@ -5042,7 +5045,7 @@ dvi
 кие функции, логарифмы и ещё несколько других.
  Эти функции могут содержать как верхний индекс, так и нижний индекс, что
  важно при наборе 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -5050,11 +5053,11 @@ dvi
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  или 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -5062,7 +5065,7 @@ dvi
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -6060,11 +6063,11 @@ name "sec:latexusers"
 \family default
  или любого другого символа, кроме латинских букв, цифр, знака подчёркивания,
  знака 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 ^
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , и круглых скобок.
@@ -6086,15 +6089,15 @@ gamma
 \family default
  \SpecialChar LyX
  заменит красный текст 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 gamma
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  на голубую 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -6102,7 +6105,7 @@ gamma
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -6545,11 +6548,11 @@ bib
  Когда это происходит, \SpecialChar LyX
  создаёт прямоугольник ошибки (прямоугольник с написанным
  внутри словом 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Ошибка
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ).

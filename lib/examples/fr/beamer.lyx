@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -25,6 +25,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -62,7 +64,8 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -210,11 +213,11 @@ peuvent être très bien structurées
 
 \begin_layout Itemize
 peuvent être affichées pas à pas (concept de 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 recouvrement
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 )
@@ -306,6 +309,7 @@ Beamer
 \begin_inset CommandInset citation
 LatexCommand cite
 key "beamer-ug"
+literal "true"
 
 \end_inset
 
@@ -509,11 +513,11 @@ Date
 \end_inset
 
 , vous pouvez déclarer des formes 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 courtes
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  via 
@@ -583,11 +587,11 @@ Diapositives/cadres
 
 \begin_layout Frame
 Les diapositives sont dénommées 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 cadres
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  en 
@@ -621,11 +625,11 @@ Cadre
 
 \begin_layout Itemize
 le titre du cadre doit être encapsulé dans un insert 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Titre du cadre
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , qui s’affiche automatiquement pour les nouveaux cadres ou qui peut être
@@ -681,6 +685,7 @@ les options de cadre (voir
 \begin_inset CommandInset citation
 LatexCommand cite
 key "beamer-ug"
+literal "true"
 
 \end_inset
 
@@ -757,11 +762,11 @@ ositives spécifiées, plusieurs fois et partout dans la présentation
 
 \begin_layout Frame
 Il suffit de donner au cadre voulu une étiquette via l'option de cadre 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 label
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (comme il est fait ici)
@@ -807,11 +812,11 @@ Spécifications de recouvrement
 \end_inset
 
  (voir ci-après le concept de 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 recouvrement
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 )
@@ -1090,11 +1095,11 @@ CadreFragile
 \end_inset
 
  doit être utilisé si le cadre contient des éléments 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 fragiles
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , par exemple un contenu verbatim comme un listing 
@@ -1103,19 +1108,19 @@ fragiles
 \end_deeper
 \begin_layout PlainFrame
 Si vous désirez un cadre simple fragile, passez l'option 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 plain
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  à un cadre fragile ou l'option 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 fragile
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  à un cadre simple
@@ -1171,19 +1176,19 @@ SousSection
 Ces sections sont affichées dans la table des matières, le menu latéral
  ou l'en-tête (en fonction du thème) et dans la sortie de type article (pour
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 article
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , voir ci-après la section sur les 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 modes
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 )
@@ -1239,12 +1244,12 @@ Beamer
 
 , les parties ne se comportent pas comme avec les autres classes de document:
  une partie est vue comme 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 une mini-présentation autonome, avec sa propre table des matières, ses propres
  menus de navigation, etc.
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -1253,6 +1258,7 @@ une mini-présentation autonome, avec sa propre table des matières, ses propres
 LatexCommand cite
 after "sec.~10.3"
 key "beamer-ug"
+literal "true"
 
 \end_inset
 
@@ -1596,51 +1602,51 @@ Beamer
  proposent des réglages de recouvrement.
  À la base, vous pouvez définir sur quelle(s) sous-diapositive(s) apparaîtra
  un contenu donné (
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2-4
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 3-
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 1,3
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  etc.), ou en quel mode d'exportation (
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 présentation
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 article
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , etc.)
@@ -1678,53 +1684,53 @@ status collapsed
 
 \begin_deeper
 \begin_layout Definition
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Action
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  est un concept plus général, qui n'inclut pas seulement ce que nous avons
  appelé 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 recouvrements
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sur quelles sous-diapo ceci doit-il être caché/recouvert/exhibé
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ), mais aussi des directives comme 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 afficher ceci dans la présentation, pas dans le tirage papier
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ou 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 afficher ceci seulement sur le second écran
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (c.-à-d.
  les 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 modes
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ).
@@ -1795,35 +1801,35 @@ Notez que \SpecialChar LyX
  ajoute ces signes en exportant, vous ne devez donc pas les ajouter
  vous-même.
  En d’autres termes, saisissez 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 1
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ou 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 +-
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  dans l'insert et non 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 <1>
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ou 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 [<+->]
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 !
@@ -1876,11 +1882,11 @@ Spécifications de recouvrement
 
 .
  Si vous les faites et saisissez 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 2
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , la citation n’apparaîtra que sur la (sous-)diapo 2:
@@ -1947,19 +1953,19 @@ Couvrir ou cacher?
 
 \begin_layout Frame
 La différence entre 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 couvert
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  et 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 caché
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  consiste dans le fait que le contenu caché n’est simplement pas là, alors
@@ -2059,11 +2065,11 @@ Beamer
 \end_inset
 
  propose plusieurs degrés de 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 couverture
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , qui peuvent être choisis via la commande 
@@ -2082,11 +2088,11 @@ setbeamercovered
  cadre isolé, comme ici).
  Implicitement, le contenu est complètement couvert.
  En mode 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 transparent
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , le texte couvert est grisé.
@@ -2158,19 +2164,19 @@ Spécifications de recouvrement/action
 \end_inset
 
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 implicites
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  et 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 normales
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -2185,19 +2191,19 @@ normales
 \begin_layout Itemize
 Pour certains environnements (comme les listes et les cadres), vous pouvez
  définir des 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 spécifications implicites
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  en plus des spécifications normales (dans le cas des listes: 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 spécifications de recouvrement {d'élément}
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  pour toute la liste ou pour un élément)
@@ -2215,11 +2221,11 @@ La syntaxe est celle d'un placement.
 \end_inset
 
 g., 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 +(1)-
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  découvrira tous les éléments de la liste un par un (avec un décalage initial
@@ -2308,19 +2314,19 @@ Spécifications de recouvrement/action
 \end_inset
 
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 implicites
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  et 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 normales
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -2402,19 +2408,19 @@ Spécifications de recouvrement/action
 \end_inset
 
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 implicites
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  et 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 normales
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -2634,11 +2640,11 @@ Seulement
 
  révèle le contenu (notez de nouveau comment le texte encadrant le paragraphe
  concerné 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 bouge
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  quand ce paragraphe devient visible).
@@ -2840,19 +2846,19 @@ visible
 \end_inset
 
  (ce qui est différent de simplement 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 découvrir
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  avec un réglage de couverture 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 transparent
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , comme utilisé localement sur le présente diapo)
@@ -3005,11 +3011,11 @@ Commandes sensibles au recouvrement
 
 \begin_layout Frame
 De nombreuses commandes 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 en ligne
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (qui se trouvent dans le menu 
@@ -3175,11 +3181,11 @@ Des environnements particulièrement adaptés aux présentations sont les suivan
 \begin_deeper
 \begin_layout Itemize
 divers 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 blocs
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -3221,19 +3227,19 @@ Les blocs
 \begin_layout Frame
 Les blocs peuvent contenir toutes sortes d’informations.
  Nous les avons utilisés jusqu'ici pour des 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 astuces
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  et des 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 indices
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -3293,11 +3299,11 @@ Bloc exemple
 
 \begin_layout ExampleBlock
 Un bloc pour les 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 exemples
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -3328,11 +3334,11 @@ Bloc alerte
 
 \begin_layout AlertBlock
 Et un bloc 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 alerte
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  pour les remarques importantes.
@@ -3658,11 +3664,11 @@ Colonne
  (au singulier), il vous faut spécifier la largeur à l'aide de la syntaxe
  \SpecialChar LaTeX
  (mais quelque chose comme 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 3.5cm
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  fonctionnera aussi)
@@ -3734,11 +3740,11 @@ Beamer
 \end_inset
 
 , un 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 mode
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  est une chemin spécifique vers un rendu.
@@ -3749,11 +3755,11 @@ mode
 \begin_deeper
 \begin_layout Enumerate
 Le mode 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 beamer
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  
@@ -3761,11 +3767,11 @@ beamer
 
 \begin_layout Enumerate
 Le mode 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 présentation
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -3773,11 +3779,11 @@ présentation
 
 \begin_layout Enumerate
 Le mode 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 article
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  
@@ -3797,11 +3803,11 @@ Beamer
 \end_inset
 
  est en mode 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 beamer
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -3840,20 +3846,20 @@ Changement de mode
 \begin_layout Frame
 Cependant, vous pouvez basculer des parties de document, des cadres, des
  en-têtes et tous les environnements sensibles à l'
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 action
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  dans un mode différent.
  Par exemple, nous avons basculé le cadre courant en mode 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 présentation
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -3868,11 +3874,11 @@ Qu'est-ce que cela signifie?
 \begin_layout Itemize
 Cela veut dire qu'il ne sera visible que dans la présentation, pas dans
  l' 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 article
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  qui l'accompagne, si vous produisez un tel article (nous allons préciser
@@ -3914,11 +3920,11 @@ Changement de mode
 \begin_layout Frame
 Ce cadre ne sera pas visible dans la présentation, mais seulement dans l'article
 , puisqu'il est en mode 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 article
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -4177,19 +4183,19 @@ police grasse
 Vous pouvez aussi afficher des en-têtes de section ou des titres/sous-titres
  de cadre seulement dans la présentation ou l'article (comme nous le faisons
  ici pour les titres de la 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Table des matières
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  et des 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Références
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ).
@@ -4333,11 +4339,11 @@ Beamer
 
  fournit lui-même un certain nombre de thèmes d'apparence différente dans
  lesquels choisir (nous utilisons ici le thème 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Berkeley
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , ouvrir 
@@ -4363,6 +4369,7 @@ En plus de cet ensemble standard, vous pouvez trouver d'autres thèmes sur
 LatexCommand href
 name "CTAN"
 target "http://www.ctan.org"
+literal "false"
 
 \end_inset
 
@@ -4386,6 +4393,7 @@ Beamer
 \begin_inset CommandInset citation
 LatexCommand cite
 key "beamer-ug"
+literal "true"
 
 \end_inset
 
@@ -4439,6 +4447,7 @@ Beamer
 \begin_inset CommandInset citation
 LatexCommand cite
 key "beamer-ug"
+literal "true"
 
 \end_inset
 
@@ -4491,6 +4500,7 @@ Beamer
 \begin_inset CommandInset citation
 LatexCommand cite
 key "beamer-ug"
+literal "true"
 
 \end_inset
 
@@ -4523,11 +4533,11 @@ status collapsed
 
 \begin_layout Plain Layout
 Nous utilisons ci-après le style TitreCadre (et non pas l'insert 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Titre du cadre
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 )pour éviter la redondance du titre dans le mode article.
@@ -4574,6 +4584,7 @@ Références
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "beamer-ug"
+literal "true"
 
 \end_inset
 

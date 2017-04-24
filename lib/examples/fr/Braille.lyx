@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -40,6 +40,8 @@ braille
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -91,7 +93,8 @@ braille
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -118,11 +121,11 @@ Cette traduction met en évidence les limites du paquetage \SpecialChar LaTeX
  ce code est en français celui du préfixe numérique.
  Pour tous les caractères spécifiques au français, il faut utiliser une
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Boîte Braille
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -269,19 +272,19 @@ Note:
  Seules les caractères alphabétiques latins, les nombres, la ponctuation,
  les parenthèses, et les crochets peuvent être imprimés en Braille.
  Les caractères spéciaux comme 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 @
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , ou 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 $
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , les caractères accentués, ainsi que les sauts de ligne ne sont pas interprétés.
@@ -309,39 +312,39 @@ Note:
  Les noms propres \SpecialChar LyX
  et \SpecialChar LaTeX
 : 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 \SpecialChar LaTeX
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 \SpecialChar LaTeX2e
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 \SpecialChar TeX
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , et 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 \SpecialChar LyX
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  doivent être insérés en code \SpecialChar TeX
@@ -426,11 +429,11 @@ height "1pt"
 \begin_layout Standard
 Voici une revue des différents environnements Braille utilisant la phrase
  Braille  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Ceci est en Braille.
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -773,6 +776,7 @@ Pour en savoir plus sur la taille des cellules Braille, vous pouvez consulter
 LatexCommand href
 name "http://www.tiresias.org/research/reports/braille_cell.htm"
 target "http://www.tiresias.org/research/reports/braille_cell.htm"
+literal "false"
 
 \end_inset
 

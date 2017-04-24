@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -45,6 +45,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format pdf
 \output_sync 0
@@ -96,7 +98,8 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\quotes_style english
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -201,6 +204,7 @@ xypic
 \begin_inset CommandInset citation
 LatexCommand cite
 key "AUCTeX"
+literal "true"
 
 \end_inset
 
@@ -400,6 +404,7 @@ Xy
 \begin_inset CommandInset citation
 LatexCommand cite
 key "xypic manual"
+literal "true"
 
 \end_inset
 
@@ -426,6 +431,7 @@ preview
 \begin_inset CommandInset citation
 LatexCommand cite
 key "instant-preview"
+literal "true"
 
 \end_inset
 
@@ -433,6 +439,7 @@ key "instant-preview"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "xypic"
+literal "true"
 
 \end_inset
 
@@ -582,6 +589,7 @@ Xy
 \begin_inset CommandInset citation
 LatexCommand cite
 key "xypic manual"
+literal "true"
 
 \end_inset
 
@@ -3163,6 +3171,7 @@ Xy
 \begin_inset CommandInset citation
 LatexCommand cite
 key "xypic manual"
+literal "true"
 
 \end_inset
 
@@ -3171,6 +3180,7 @@ key "xypic manual"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lauda"
+literal "true"
 
 \end_inset
 
@@ -3208,6 +3218,7 @@ Xy
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Ouvaton"
+literal "true"
 
 \end_inset
 
@@ -3219,6 +3230,7 @@ key "Ouvaton"
 LatexCommand bibitem
 label "1"
 key "xypic manual"
+literal "true"
 
 \end_inset
 
@@ -3259,6 +3271,7 @@ xypic
 LatexCommand bibitem
 label "2"
 key "instant-preview"
+literal "true"
 
 \end_inset
 
@@ -3281,6 +3294,7 @@ http://www.gnu.org/software/auctex/preview-latex.html
 LatexCommand bibitem
 label "3"
 key "xypic"
+literal "true"
 
 \end_inset
 
@@ -3303,6 +3317,7 @@ http://mirrors.ctan.org/macros/generic/diagrams/xypic/doc/xyguide.pdf
 LatexCommand bibitem
 label "4"
 key "AUCTeX"
+literal "true"
 
 \end_inset
 
@@ -3325,6 +3340,7 @@ http://www.gnu.org/software/auctex/
 LatexCommand bibitem
 label "5"
 key "Lauda"
+literal "true"
 
 \end_inset
 
@@ -3372,6 +3388,7 @@ http://mirrors.ctan.org/macros/generic/diagrams/xypic/doc/xyguide.pdf
 LatexCommand bibitem
 label "6"
 key "Ouvaton"
+literal "true"
 
 \end_inset
 

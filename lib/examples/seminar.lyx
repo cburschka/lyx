@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -27,6 +27,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -73,7 +75,8 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\quotes_style english
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
@@ -136,6 +139,7 @@ The
 LatexCommand href
 name "seminar"
 target "http://www.ctan.org/pkg/seminar"
+literal "false"
 
 \end_inset
 
@@ -188,6 +192,7 @@ The seminar handbook
 LatexCommand href
 name "sem-user.pdf"
 target "https://www.ctan.org/tex-archive/macros/latex/contrib/seminar/doc/seminar-doc.pdf"
+literal "false"
 
 \end_inset
 
@@ -217,6 +222,7 @@ Seminar
 LatexCommand href
 name "PGF"
 target "http://ctan.org/pkg/pgf"
+literal "false"
 
 \end_inset
 
@@ -365,6 +371,7 @@ For more configuration options and commands see
 LatexCommand href
 name "sem-user.pdf"
 target "https://www.ctan.org/tex-archive/macros/latex/contrib/seminar/doc/seminar-doc.pdf"
+literal "false"
 
 \end_inset
 
@@ -516,6 +523,7 @@ See
 LatexCommand href
 name "sem-user.pdf"
 target "https://www.ctan.org/tex-archive/macros/latex/contrib/seminar/doc/seminar-doc.pdf"
+literal "false"
 
 \end_inset
 
@@ -561,6 +569,7 @@ seminar.cls
 LatexCommand href
 name "PGF"
 target "http://ctan.org/pkg/pgf"
+literal "false"
 
 \end_inset
 

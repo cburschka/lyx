@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 512
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -22,6 +22,7 @@
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -59,7 +60,8 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -134,6 +136,7 @@ Format de la Page
 LatexCommand href
 name "ici"
 target "http://download.gna.org/lettre_observatoire/release/20151201_v2.354/lettre.zip"
+literal "false"
 
 \end_inset
 

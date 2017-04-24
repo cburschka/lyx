@@ -1,5 +1,5 @@
-# gen_lfuns.py generated this file. For more info see http://www.lyx.org/
-\lyxformat 509
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -38,6 +38,7 @@ End
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype 0
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -79,7 +80,8 @@ End
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\quotes_style english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -215,6 +217,22 @@ Action Toggles the bold font (selection-wise) using boldsymbol in math.
 
 \begin_layout Description
 Syntax font-boldsymbol
+\end_layout
+
+\begin_layout Subsection*
+font-crossout
+\end_layout
+
+\begin_layout Description
+Action Toggles xout (cross-through) in the font (selection-wise).
+\end_layout
+
+\begin_layout Description
+Syntax font-crossout
+\end_layout
+
+\begin_layout Description
+Origin uwestoehr, 4 April 2017
 \end_layout
 
 \begin_layout Subsection*
@@ -1318,7 +1336,11 @@ Action Deletes one character in the backward direction (usually the "BackSpace" 
 \end_layout
 
 \begin_layout Description
-Syntax char-delete-backward
+Syntax char-delete-backward [force]
+\end_layout
+
+\begin_layout Description
+Params force: Delete big insets, do not only select them.
 \end_layout
 
 \begin_layout Subsection*
@@ -1330,7 +1352,11 @@ Action Deletes one character in the backward direction (usually the "Delete" key
 \end_layout
 
 \begin_layout Description
-Syntax char-delete-forward
+Syntax char-delete-forward [force]
+\end_layout
+
+\begin_layout Description
+Params force: Delete big insets, do not only select them.
 \end_layout
 
 \begin_layout Subsection*
@@ -2408,7 +2434,7 @@ Sample Remove all index insets:
 \begin_inset Newline newline
 \end_inset
 
-	           inset-forall Index char-delete-forward
+	           inset-forall Index char-delete-forward force
 \begin_inset Newline newline
 \end_inset
 
@@ -3562,6 +3588,10 @@ Action Repeat the given command.
 \end_layout
 
 \begin_layout Description
+Notion fails when the repeat count is greater than 10000.
+\end_layout
+
+\begin_layout Description
 Syntax repeat <COUNT> <LFUN-COMMAND>
 \end_layout
 
@@ -3814,7 +3844,7 @@ Syntax specialchar-insert <CHAR>
 \end_layout
 
 \begin_layout Description
-Params <CHAR>: hyphenation, ligature-break, slash, nobreakdash, dots, end-of-sentence, menu-separator, lyx, tex, latex, latex2e.
+Params <CHAR>: hyphenation, allowbreak, ligature-break, slash, 	   		   		   nobreakdash, dots, end-of-sentence, menu-separator, 					   lyx, tex, latex, latex2e.
 \end_layout
 
 \begin_layout Description
@@ -4194,7 +4224,11 @@ Action Deletes characters to the beginning of the word (usually the "C+BackSpace
 \end_layout
 
 \begin_layout Description
-Syntax word-delete-backward
+Syntax word-delete-backward [force]
+\end_layout
+
+\begin_layout Description
+Params force: Delete big insets, do not only select them.
 \end_layout
 
 \begin_layout Subsection*
@@ -4206,7 +4240,11 @@ Action Deletes characters to the end of the word (usually the "C+Delete" key).
 \end_layout
 
 \begin_layout Description
-Syntax word-delete-forward
+Syntax word-delete-forward [force]
+\end_layout
+
+\begin_layout Description
+Params force: Delete big insets, do not only select them.
 \end_layout
 
 \begin_layout Subsection*
@@ -5488,7 +5526,7 @@ Action Exports the current buffer (document) to the given format.
 \end_layout
 
 \begin_layout Description
-Syntax buffer-export <FORMAT> [<DEST>]
+Syntax buffer-export [<FORMAT>] [<DEST>]
 \end_layout
 
 \begin_layout Description
@@ -5496,7 +5534,11 @@ Params <FORMAT> is either "custom" or one of the formats which you can find in T
 \begin_inset Newline newline
 \end_inset
 
-In case of "custom" you will be asked for a format you want to start from and for the command that you want to apply to this format. Internally the control is then passed to LFUN_BUFFER_EXPORT_CUSTOM. 		<DEST>	If present, this argument provides the export destination 			filename. Its containing folder will also be the destination 			folder, where all the needed external files will be copied.
+In case of "custom" you will be asked for a format you want to start from and for the command that you want to apply to this format. Internally the control is then passed to LFUN_BUFFER_EXPORT_CUSTOM.
+\begin_inset Newline newline
+\end_inset
+
+If absent or "default", then the default output format of the document is used. 		<DEST>	If present, this argument provides the export destination 			filename. Its containing folder will also be the destination 			folder, where all the needed external files will be copied.
 \end_layout
 
 \begin_layout Description
@@ -5553,6 +5595,22 @@ Sample buffer-export-custom dvi dvips -f $$FName -o myfile.ps
 
 \begin_layout Description
 Origin leeming, 27 Mar 2004
+\end_layout
+
+\begin_layout Subsection*
+buffer-external-modification-clear
+\end_layout
+
+\begin_layout Description
+Action Clear the external modification flag on the current buffer.
+\end_layout
+
+\begin_layout Description
+Syntax buffer-external-modification-clear
+\end_layout
+
+\begin_layout Description
+Origin gm, 2 March 2017
 \end_layout
 
 \begin_layout Subsection*

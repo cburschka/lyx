@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -37,6 +37,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -83,7 +85,8 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
@@ -156,6 +159,7 @@ La classe
 LatexCommand href
 name "seminar"
 target "http://www.ctan.org/pkg/seminar"
+literal "false"
 
 \end_inset
 
@@ -209,6 +213,7 @@ Le manuel de seminar
 LatexCommand href
 name "sem-user.pdf"
 target "https://www.ctan.org/tex-archive/macros/latex/contrib/seminar/doc/seminar-doc.pdf"
+literal "false"
 
 \end_inset
 
@@ -238,18 +243,19 @@ Seminar
 LatexCommand href
 name "PGF"
 target "http://ctan.org/pkg/pgf"
+literal "false"
 
 \end_inset
 
 : la taille et l'orientation des transparents présente des problèmes suivant
  les formats de sortie et l'utilitaire d'affichage (voir le transparent
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 En cas de problèmes\SpecialChar ldots
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  et l'annexe ci-après).
@@ -257,11 +263,11 @@ En cas de problèmes\SpecialChar ldots
 
 \begin_layout Itemize
 Assurez-vous que les marges du document sont positionnées à 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Implicites
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -407,6 +413,7 @@ Pour plus d'options de configuration, voir
 LatexCommand href
 name "sem-user.pdf"
 target "https://www.ctan.org/tex-archive/macros/latex/contrib/seminar/doc/seminar-doc.pdf"
+literal "false"
 
 \end_inset
 
@@ -429,11 +436,11 @@ Seminar
 \family default
  définit des commandes pour créer un sommaire, car la table des matières
  n'affiche que les titres et sous-titres de section 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 normaux
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -587,6 +594,7 @@ Voir
 LatexCommand href
 name "sem-user.pdf"
 target "https://www.ctan.org/tex-archive/macros/latex/contrib/seminar/doc/seminar-doc.pdf"
+literal "false"
 
 \end_inset
 
@@ -601,7 +609,7 @@ En cas de problèmes
 
 \begin_layout Itemize
 Lyx-2.2.0 échoue avec l'erreur 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -609,7 +617,7 @@ Lyx-2.2.0 échoue avec l'erreur
 missing characters in font nullfont
 \lang french
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -640,6 +648,7 @@ seminar.cls
 LatexCommand href
 name "PGF"
 target "http://ctan.org/pkg/pgf"
+literal "false"
 
 \end_inset
 
@@ -652,11 +661,11 @@ target "http://ctan.org/pkg/pgf"
 Seminar 
 \family default
 positionne implicitement l'orientation à 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 paysage
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -720,11 +729,11 @@ LuaTeX effectue une mise à l'échelle d'un facteur 0,5 pour le format PDF.
 \begin_deeper
 \begin_layout Standard
 L'option 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 trim margins
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  de l'afficheur PDF (e.g.

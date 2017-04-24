@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -63,6 +63,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -115,7 +117,8 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\quotes_style english
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -233,6 +236,7 @@ preview
 \begin_inset CommandInset citation
 LatexCommand cite
 key "AUCTeX"
+literal "true"
 
 \end_inset
 
@@ -423,6 +427,7 @@ Xy
 \begin_inset CommandInset citation
 LatexCommand cite
 key "xypic manual"
+literal "true"
 
 \end_inset
 
@@ -451,6 +456,7 @@ preview
 \begin_inset CommandInset citation
 LatexCommand cite
 key "instant-preview"
+literal "true"
 
 \end_inset
 
@@ -459,6 +465,7 @@ key "instant-preview"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "xypic"
+literal "true"
 
 \end_inset
 
@@ -633,6 +640,7 @@ Xy
 \begin_inset CommandInset citation
 LatexCommand cite
 key "xypic manual"
+literal "true"
 
 \end_inset
 
@@ -2921,6 +2929,7 @@ Xy
 \begin_inset CommandInset citation
 LatexCommand cite
 key "xypic manual"
+literal "true"
 
 \end_inset
 
@@ -3585,6 +3594,7 @@ Xy
 \begin_inset CommandInset citation
 LatexCommand cite
 key "xypic manual"
+literal "true"
 
 \end_inset
 
@@ -3595,6 +3605,7 @@ key "xypic manual"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Lauda"
+literal "true"
 
 \end_inset
 
@@ -3657,6 +3668,7 @@ Instant preview
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "xypic manual"
+literal "true"
 
 \end_inset
 
@@ -3700,6 +3712,7 @@ https://www.ctan.org/tex-archive/macros/generic/diagrams/xypic/doc/xyguide.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "xypic reference"
+literal "true"
 
 \end_inset
 
@@ -3743,6 +3756,7 @@ https://www.ctan.org/tex-archive/macros/generic/diagrams/xypic/doc/xyrefer.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "xypic"
+literal "true"
 
 \end_inset
 
@@ -3781,6 +3795,7 @@ http://www.ctan.org/pkg/xypic
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "instant-preview"
+literal "true"
 
 \end_inset
 
@@ -3806,6 +3821,7 @@ http://www.gnu.org/software/auctex/preview-latex.html
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "AUCTeX"
+literal "true"
 
 \end_inset
 
@@ -3828,6 +3844,7 @@ http://www.gnu.org/software/auctex/
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Lauda"
+literal "true"
 
 \end_inset
 

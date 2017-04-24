@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -27,6 +27,8 @@ theorems-ams-extended
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -64,7 +66,8 @@ theorems-ams-extended
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\quotes_style english
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -541,6 +544,7 @@ Need some criteria
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "1"
+literal "true"
 
 \end_inset
 
@@ -555,6 +559,7 @@ Out of my head
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "2"
+literal "true"
 
 \end_inset
 
@@ -570,6 +575,7 @@ Instructions for preparation of papers and monographs: AMS-\SpecialChar LaTeX
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "3"
+literal "true"
 
 \end_inset
 

@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -29,6 +29,8 @@ braille
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -79,7 +81,8 @@ braille
 \tocdepth 3
 \paragraph_separation skip
 \defskip medskip
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -222,19 +225,19 @@ Nota:
  En Braille sólo se pueden imprimir letras latinas, números, puntuaciones,
  paréntesis y corchetes.
  Caracteres especiales como 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 @
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  o 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 $
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , caracteres acentuados y saltos de línea no están soportados.
@@ -261,39 +264,39 @@ Nota:
  Los nombres propios de \SpecialChar LyX
  y \SpecialChar LaTeX
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 \SpecialChar LaTeX
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 \SpecialChar LaTeX2e
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 \SpecialChar TeX
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  y 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 \SpecialChar LyX
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  deben insertarse en código \SpecialChar TeX
@@ -325,11 +328,11 @@ status collapsed
 
 \begin_layout Plain Layout
 El carácter 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 ¡
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  no está soportado (
@@ -397,11 +400,11 @@ height "1pt"
 
 Ahora echaremos un vistazo a los diferentes entornos Braille usando como
  ejemplo el texto 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Esto es Braille.
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -470,11 +473,11 @@ Esto es Braille.
 \end_inset
 
 El texto puede imprimirse reflejado para poder posteriormente 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 imprimir
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  Braille manualmente con una aguja u otro método adecuado:
@@ -736,6 +739,7 @@ Más información sobre las dimensiones de las celdas Braille en
 LatexCommand href
 name "http://www.tiresias.org/research/reports/braille_cell.htm"
 target "http://www.tiresias.org/research/reports/braille_cell.htm"
+literal "false"
 
 \end_inset
 

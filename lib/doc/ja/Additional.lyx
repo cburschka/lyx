@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -33,7 +33,7 @@
 
 \usepackage{t1enc}
 \end_preamble
-\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
 \begin_modules
 logicalmkup
@@ -97,6 +97,8 @@ End
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format pdf3
 \output_sync 0
@@ -149,7 +151,8 @@ End
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 1
+\quotes_style english
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
@@ -1672,6 +1675,7 @@ Input
 LatexCommand href
 name "CTAN"
 target "http://www.ctan.org/"
+literal "false"
 
 \end_inset
 
@@ -5719,6 +5723,7 @@ er
 LatexCommand href
 name "http://elyxer.nongnu.org/"
 target "http://elyxer.nongnu.org/"
+literal "false"
 
 \end_inset
 
@@ -5798,6 +5803,7 @@ status collapsed
 LatexCommand href
 name "オンラインでのアクセス"
 target "http://www.lyx.org/trac/browser/lyx-devel/trunk/development/HTML/HTML.notes"
+literal "false"
 
 \end_inset
 
@@ -5816,6 +5822,7 @@ development/HTML.notes
 LatexCommand href
 name "バグ追跡ページ"
 target "http://www.lyx.org/trac/query?status=reopened&status=assigned&status=new&max=0&component=xhtml+export&order=id&col=id&col=summary&col=reporter&col=keywords&keywords=%21%7Efixedintrunk&desc=1"
+literal "false"
 
 \end_inset
 
@@ -6022,6 +6029,7 @@ status collapsed
 LatexCommand href
 name "バグ 6894"
 target "http://www.lyx.org/trac/ticket/6894"
+literal "false"
 
 \end_inset
 
@@ -6076,6 +6084,7 @@ status collapsed
 LatexCommand href
 name "jsMath"
 target "http://www.math.union.edu/~dpvc/jsMath/"
+literal "false"
 
 \end_inset
 
@@ -8138,6 +8147,7 @@ SumatraPDFも，外部プログラムCMCDDEを通じて，DDEコマンドを使�
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.istri.fr/spip/zip/CMCDDE.zip"
+literal "false"
 
 \end_inset
 
@@ -17040,6 +17050,7 @@ chktex
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.ctan.org/tex-archive/help/Catalogue/entries/chktex.html"
+literal "false"
 
 \end_inset
 
@@ -18155,6 +18166,7 @@ status collapsed
 \begin_inset CommandInset href
 LatexCommand href
 target "http://svnbook.red-bean.com/"
+literal "false"
 
 \end_inset
 
@@ -20089,6 +20101,7 @@ SVNとWindows環境
 LatexCommand href
 name "CollabNet"
 target "http://www.collab.net/nonav/downloads/subversion/"
+literal "false"
 
 \end_inset
 
@@ -20097,6 +20110,7 @@ target "http://www.collab.net/nonav/downloads/subversion/"
 LatexCommand href
 name "TortoiseSVN"
 target "http://tortoisesvn.tigris.org/"
+literal "false"
 
 \end_inset
 
@@ -22347,6 +22361,7 @@ multicol
 \begin_inset CommandInset citation
 LatexCommand cite
 key "multicol"
+literal "true"
 
 \end_inset
 
@@ -24055,6 +24070,7 @@ rem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
 LatexCommand href
 name "Jpgfdraw"
 target "http://www.ctan.org/tex-archive/graphics/jpgfdraw"
+literal "false"
 
 \end_inset
 
@@ -24098,6 +24114,7 @@ status collapsed
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.dickimaw-books.com/apps/jpgfdraw/manual/shapepar.html"
+literal "false"
 
 \end_inset
 
@@ -24260,6 +24277,7 @@ shapepar
 \begin_inset CommandInset citation
 LatexCommand cite
 key "shapepar"
+literal "true"
 
 \end_inset
 
@@ -24270,6 +24288,7 @@ key "shapepar"
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "multicol"
+literal "true"
 
 \end_inset
 
@@ -24279,6 +24298,7 @@ key "multicol"
 LatexCommand href
 name "multicol"
 target "http://mirror.ctan.org/macros/latex/required/tools/multicol.pdf"
+literal "false"
 
 \end_inset
 
@@ -24289,6 +24309,7 @@ target "http://mirror.ctan.org/macros/latex/required/tools/multicol.pdf"
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "shapepar"
+literal "true"
 
 \end_inset
 
@@ -24298,6 +24319,7 @@ key "shapepar"
 LatexCommand href
 name "shapepar"
 target "http://mirrors.ctan.org/macros/latex/contrib/shapepar/shapepar.pdf"
+literal "false"
 
 \end_inset
 

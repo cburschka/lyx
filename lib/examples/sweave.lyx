@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -36,6 +36,8 @@ sweave
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -77,7 +79,8 @@ sweave
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\quotes_style english
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -165,6 +168,7 @@ LatexCommand href
 name "xie@yihui.name"
 target "xie@yihui.name"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -1508,6 +1512,7 @@ Sweave will use the filename of the Rnw file as the prefix string for the
 LatexCommand href
 name "#7551"
 target "http://www.lyx.org/trac/ticket/7551"
+literal "false"
 
 \end_inset
 

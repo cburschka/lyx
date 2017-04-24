@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 541
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -41,6 +41,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -92,7 +94,8 @@
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language french
+\is_math_indent 0
+\quotes_style swiss
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -139,6 +142,7 @@ Merci d'envoyer vos commentaires et corrections à la liste de diffusion
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -148,6 +152,7 @@ type "mailto:"
 LatexCommand href
 target "lyx-fr@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -262,11 +267,11 @@ Pour faire le choix d'utiliser \SpecialChar LyX
  limitations.
  Souligner, qui n'était rien d'autre que repasser sur le texte avec des
  caractères 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 _
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , est devenu un moyen de mettre du texte en valeur.
@@ -288,11 +293,11 @@ En d'autres termes, nous avons tous été habitués à nous soucier de l'emplace
  Mettre en évidence un texte se fait en changeant de police, ce qui revient
  à changer la roue de la machine à écrire.
  C'est la philosophie correspondant aux traitements de texte WYSIWYG : 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 What You See Is What You Get
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -301,11 +306,11 @@ status collapsed
 
 \begin_layout Plain Layout
 NdT : 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Vous voyez ce que vous obtenez.
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -315,11 +320,11 @@ Vous voyez ce que vous obtenez.
 
 .
  Malheureusement, ce paradigme devient souvent 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 What You See Is All You Get
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -328,11 +333,11 @@ status collapsed
 
 \begin_layout Plain Layout
 NdT : 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Vous n'obtenez que ce que vous voyez.
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -379,18 +384,18 @@ Pour être honnête, la plupart des versions récentes des suites bureautiques
 \begin_layout Standard
 Supposons que vous tapiez un rapport.
  Pour commencer, vous voulez une section appelée 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Introduction
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  Vous allez dans le menu de votre traitement de texte qui vous permet de
  changer la taille de police et vous choisissez une nouvelle taille.
  Puis vous passez en caractères gras.
  Ensuite, vous tapez : 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 1.
@@ -402,7 +407,7 @@ Introduction
 \end_inset
 
 Introduction
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -420,11 +425,11 @@ Avec \SpecialChar LyX
 Section
 \family default
 , et tapez 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Introduction
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -490,7 +495,7 @@ Ainsi, l'idée maîtresse avec \SpecialChar LyX
  est la suivante : dites ce que vous faites,
  et non pas comment le faire.
  À la place de 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 What You See Is What You Get
@@ -504,12 +509,12 @@ NdT : Vous voyez ce que vous obtenez.
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , le modèle de \SpecialChar LyX
  serait plutôt 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 What You See Is What You 
@@ -529,15 +534,15 @@ voulez dire.
 
 \emph default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ou 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 WYSIWYM
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  en abrégé.
@@ -750,7 +755,7 @@ status collapsed
 
 \begin_layout Plain Layout
 La source des informations de cette section est 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -759,7 +764,7 @@ A Guide to \SpecialChar LaTeX2e
 
 \emph default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , par Helmut Kopka et Patrick Daly, ouvrage inclus dans la bibliographie
@@ -793,11 +798,11 @@ Knuth
  prend une séquence de commandes typographiques, écrites dans un fichier
  ASCII, et les exécute.
  La plupart des 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 trucs
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  du métier d'imprimeur ont été modélisés par 
@@ -814,7 +819,7 @@ Knuth
 pdf
 \family default
  ou le format de fichier 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -827,11 +832,11 @@ status collapsed
 
 \begin_layout Plain Layout
 NdT : 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 indépendant du périphérique d'affichage
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -840,7 +845,7 @@ indépendant du périphérique d'affichage
 \end_inset
 
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , en abrégé 
@@ -1036,11 +1041,11 @@ Le développement de \SpecialChar LyX
  Comme pour l'ensemble de \SpecialChar LyX
 , les manuels sont l'œuvre de bénévoles qui ont
  un 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 vrai
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  travail, une famille, la vaisselle à laver, la litière du chat à changer,
@@ -1069,6 +1074,7 @@ n quelque chose vous embrouille, ne soit pas bien clair, ou carrément faux,
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -1080,6 +1086,7 @@ type "mailto:"
 LatexCommand href
 target "lyx-users@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -1089,6 +1096,7 @@ type "mailto:"
 LatexCommand href
 target "lyx-fr@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -1138,11 +1146,11 @@ reference "sec:Contrib"
  Si vous cliquez sur cet insert avec le bouton gauche de la souris, une
  fenêtre s'ouvre avec la liste de toutes les références croisées du document.
  Cette introduction n'en a que deux, la première est dénommée 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 sec:Contrib
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -1224,7 +1232,7 @@ Voici les conventions utilisées pour décrire les séquences de touches :
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1232,7 +1240,7 @@ Voici les conventions utilisées pour décrire les séquences de touches :
 Ctrl-
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  pour la touche 
@@ -1241,7 +1249,7 @@ Control;
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1249,7 +1257,7 @@ Control;
 Shift-
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  pour la touche 
@@ -1258,7 +1266,7 @@ Majuscule;
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1266,7 +1274,7 @@ Majuscule;
 Alt-
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  pour la touche 
@@ -1277,7 +1285,7 @@ Alt
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1285,12 +1293,12 @@ Alt
 F1
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  \SpecialChar ldots
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1298,14 +1306,14 @@ F1
 F12
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  sont les touches de fonctions;
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1313,7 +1321,7 @@ F12
 Esc
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  la touche 
@@ -1324,7 +1332,7 @@ Esc
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1332,11 +1340,11 @@ Esc
 Gauche
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 ,
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1344,11 +1352,11 @@ Gauche
 Droite
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1356,11 +1364,11 @@ Droite
 Haute
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1368,14 +1376,14 @@ Haute
 Basse
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  sont les flèches de déplacement du curseur;
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1383,11 +1391,11 @@ Basse
 Inser
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1395,11 +1403,11 @@ Inser
 Suppr
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1407,11 +1415,11 @@ Suppr
 Début
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ou 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1419,11 +1427,11 @@ Début
 Orig
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1431,11 +1439,11 @@ Orig
 Fin
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1443,11 +1451,11 @@ Fin
 PageUp
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ou 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1459,11 +1467,11 @@ Pg
 Préc
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1471,11 +1479,11 @@ Préc
 PageDown
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ou 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1487,13 +1495,13 @@ Pg
 Suiv
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  sont les 6 touches situées, sur la plupart des claviers de PC, au dessus
  des flèches de déplacement du curseur.
  
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1501,11 +1509,11 @@ Suiv
 PageUp
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  et 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1513,11 +1521,11 @@ PageUp
 PageDown
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  sont appelées 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1525,11 +1533,11 @@ PageDown
 Prior
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  et 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1537,7 +1545,7 @@ Prior
 Next
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  sur certains claviers, ou sérigraphiées de flèches vers le haut et vers
@@ -1547,23 +1555,23 @@ Next
 \begin_layout Itemize
 
 \family sans
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Return
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
 \family sans
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Enter
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1571,11 +1579,11 @@ Enter
  et 
 \family sans
 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Entrée
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -1586,7 +1594,7 @@ Entrée
 Return
 \family default
  est indifféremment sérigraphiée 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1594,11 +1602,11 @@ Return
 Return
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1606,11 +1614,11 @@ Return
 Enter
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1618,11 +1626,11 @@ Enter
 Entrée
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  ou 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 
@@ -1630,7 +1638,7 @@ Entrée
 Entr
 \family default
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  sur les différents claviers.
@@ -2249,13 +2257,13 @@ Si vous commencez avec \SpecialChar LyX
  par là.
  Si vous connaissez déjà \SpecialChar LaTeX
 , vous devriez lire au moins la section 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 \SpecialChar LyX
  pour les connaisseurs de \SpecialChar LaTeX
 
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  (et passer en revue le reste du document ne peut pas faire de tort).
@@ -2550,6 +2558,7 @@ http://www.lyx.org/trac/wiki/BugTrackerHome
 LatexCommand href
 target "lyx-devel@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -2598,6 +2607,7 @@ Le traceur de bogues et la liste de messagerie de développeurs sont anglophones
 LatexCommand href
 target "lyx-fr@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -2620,11 +2630,11 @@ Si vous avez fait des changements au code source de \SpecialChar LyX
  qu'ils devraient faire partie de la distribution, envoyez vos modifications
  sous la forme d'un fichier diff (au format unifié) à la liste des développeurs
  référencée plus haut, avec un 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 change log
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 , et une description de ce qu'ils font.
@@ -2656,6 +2666,7 @@ Si vous trouvez un problème dans la documentation, envoyez un message à
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -2763,6 +2774,7 @@ Contactez l'équipe de documentation à l'adresse suivante :
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
