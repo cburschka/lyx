@@ -285,7 +285,7 @@ if(UNIX OR MINGW)
 		  # see https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53631
 		  set(LYX_USE_STD_REGEX 0)
 	  else()
-		  set(LYX_USE_STD_REGEX 0)
+		  set(LYX_USE_STD_REGEX 1)
 	  endif()
 	endif()
 	set(LYX_GCC11_MODE "${CXX11_FLAG}")
