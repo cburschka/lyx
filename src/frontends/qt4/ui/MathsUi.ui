@@ -21,28 +21,109 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="1" colspan="2">
+   <item row="1" column="1">
     <widget class="QPushButton" name="allPackagesAutoPB">
      <property name="text">
       <string>Load A&amp;utomatically</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="3">
+   <item row="1" column="2">
     <widget class="QPushButton" name="allPackagesAlwaysPB">
      <property name="text">
       <string>Load Alwa&amp;ys</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="4" colspan="2">
+   <item row="1" column="3">
     <widget class="QPushButton" name="allPackagesNotPB">
      <property name="text">
       <string>Do &amp;Not Load</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2">
+   <item row="2" column="0">
+    <widget class="QCheckBox" name="MathIndentCB">
+     <property name="toolTip">
+      <string>Indent displayed formulas instead of centering</string>
+     </property>
+     <property name="text">
+      <string>Indent &amp;Formulas</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QComboBox" name="MathIndentCO">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip">
+      <string>Size of the indentation</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2" colspan="2">
+    <spacer name="horizontalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>234</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="MathIndentLE">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="toolTip">
+      <string/>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <widget class="lyx::frontend::LengthCombo" name="MathIndentLengthCO">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="toolTip">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="3">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>153</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="4" column="0">
     <widget class="QLabel" name="MathNumberingPosL">
      <property name="minimumSize">
       <size>
@@ -55,30 +136,36 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="2" colspan="2">
+   <item row="4" column="1">
     <widget class="QComboBox" name="MathNumberingPosCO">
      <property name="enabled">
       <bool>true</bool>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
      <property name="toolTip">
       <string>Size of the indentation</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="5">
+   <item row="4" column="2" colspan="2">
     <spacer name="horizontalSpacer_1">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>268</width>
-       <height>20</height>
+       <width>234</width>
+       <height>17</height>
       </size>
      </property>
     </spacer>
    </item>
-   <item row="0" column="0" colspan="6">
+   <item row="0" column="0" colspan="4">
     <widget class="QTableWidget" name="packagesTW">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -103,9 +190,33 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>lyx::frontend::LengthCombo</class>
+   <extends>QComboBox</extends>
+   <header>LengthCombo.h</header>
+  </customwidget>
+ </customwidgets>
  <includes>
   <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>MathIndentCB</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MathIndentCO</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>66</x>
+     <y>291</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>164</x>
+     <y>290</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
