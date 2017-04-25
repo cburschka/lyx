@@ -108,6 +108,8 @@ docstring InsetSpecialChar::toolTip(BufferView const &, int, int) const
 		case NOBREAKDASH:
 			message = from_ascii("Protected Hyphen (SHY)");
 			break;
+		default:
+			break;
 	}
 	return message;
 }
