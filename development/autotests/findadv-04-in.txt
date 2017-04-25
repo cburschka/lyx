@@ -12,7 +12,6 @@ KK: x^2\[Tab]
 KK: \Cm
 KK: x^2n\[Return]\[Return]
 KK: \Cs
-KK: \Ax
-KK: buffer-export latex\[Return]
+KK: \Axbuffer-export latex\[Return]
 Lang C
 TestEnd grep '^\$x\^{2n}\$$' test.tex

@@ -204,7 +204,7 @@ def lyx_dead():
     status = lyx_status(lyx_pid)
     return (status == "dead") or (status == "zombie")
 
-def sendKeystring(keystr, LYX_PID):
+def sendKeystringLocal(keystr, LYX_PID):
 
     # print "sending keystring "+keystr+"\n"
 
@@ -243,7 +243,41 @@ def sendKeystring(keystr, LYX_PID):
         xvpar.extend(["-wait_idle", lyx_pid])
     xvpar.extend(["-window", lyx_window_name, "-delay", actual_delay, "-text", keystr])
     
+    print("Sending \"" + keystr + "\"\n")
     subprocess.call(xvpar, stdout = FNULL, stderr = FNULL)
+
+Axreg = re.compile(r'^(.*)\\Ax([^\\]+)(.*)$')
+returnreg = re.compile(r'\\\[Return\](.*)$')
+
+def sendKeystring(line, LYX_PID):
+    global key_delay
+    saved_delay = key_delay
+    while True:
+        m = Axreg.match(line)
+        if m:
+            prefix = m.group(1)
+            if prefix != "":
+                sendKeystringLocal(prefix, LYX_PID)
+            content = m.group(2)
+            rest = m.group(3);
+            m2 = returnreg.match(rest)
+            sendKeystringLocal('\Ax', LYX_PID)
+            time.sleep(0.1)
+            if m2:
+                line = m2.group(1)
+                key_delay = "1"
+                sendKeystringLocal(content + '\[Return]', LYX_PID)
+                key_delay = saved_delay
+            else:
+                if content != "":
+                    sendKeystringLocal(content, LYX_PID)
+                key_delay = saved_delay
+                return
+        else:
+            if line != "":
+                sendKeystringLocal(line, LYX_PID)
+            key_delay = saved_delay
+            return
 
 def system_retry(num_retry, cmd):
     i = 0

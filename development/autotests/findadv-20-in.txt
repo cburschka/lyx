@@ -9,8 +9,7 @@ KK: \CF
 KK: a\[Tab]
 KK: \Cm\\frac 1\[Down]a\[Return]\[Return]\[Return]
 KK: \Cs
-KK: \Ax
-KK: buffer-export latex\[Return]
+KK: \Axbuffer-export latex\[Return]
 TestEnd
 Lang C
 Assert pcregrep -M '^\$\\frac\{1\}\{a\}\$ \$\\frac\{1\}\{a\}\$ a' test.tex
@@ -22,8 +21,7 @@ KK: \CF
 KK: a\[Tab]
 KK: \Cm\\frac 1\[Down]a\[Return]\[Return]\[Return]
 KK: \Cs
-KK: \Ax
-KK: buffer-export latex\[Return]
+KK: \Axbuffer-export latex\[Return]
 TestEnd
 Lang C
 Assert pcregrep -M '^\$\\frac\{1\}\{a\}\$ \$\\frac\{1\}\{a\}\$ \$a\$' test2.tex
