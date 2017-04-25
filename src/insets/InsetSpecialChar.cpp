@@ -108,7 +108,13 @@ docstring InsetSpecialChar::toolTip(BufferView const &, int, int) const
 		case NOBREAKDASH:
 			message = from_ascii("Protected Hyphen (SHY)");
 			break;
-		default:
+		case LDOTS:
+		case MENU_SEPARATOR:
+		case PHRASE_LYX:
+		case PHRASE_TEX:
+		case PHRASE_LATEX2E:
+		case PHRASE_LATEX:
+			// no tooltip for these ones.
 			break;
 	}
 	return message;
