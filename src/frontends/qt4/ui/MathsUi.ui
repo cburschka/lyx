@@ -125,6 +125,12 @@
    </item>
    <item row="4" column="0">
     <widget class="QLabel" name="MathNumberingPosL">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="minimumSize">
       <size>
        <width>115</width>
@@ -132,7 +138,7 @@
       </size>
      </property>
      <property name="text">
-      <string>Number formulas:</string>
+      <string>Formula numbering side:</string>
      </property>
     </widget>
    </item>
@@ -148,7 +154,7 @@
       </sizepolicy>
      </property>
      <property name="toolTip">
-      <string>Size of the indentation</string>
+      <string>Side where formulas are numbered</string>
      </property>
     </widget>
    </item>

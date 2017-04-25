@@ -1281,8 +1281,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		mathsModule->MathIndentLE));
 	// initialize the length validator
 	bc().addCheckedLineEdit(mathsModule->MathIndentLE);
-	mathsModule->MathNumberingPosCO->addItem(qt_("Before"));
-	mathsModule->MathNumberingPosCO->addItem(qt_("After"));
+	mathsModule->MathNumberingPosCO->addItem(qt_("Left"));
+	mathsModule->MathNumberingPosCO->addItem(qt_("Right"));
 	mathsModule->MathNumberingPosCO->setCurrentIndex(2);
 	
 
