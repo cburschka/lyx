@@ -2343,6 +2343,7 @@ dist_scripts_DATA += \
 	scripts/prefs2prefs.py \
 	scripts/prefs2prefs_lfuns.py \
 	scripts/prefs2prefs_prefs.py \
+	scripts/prefTest.pl.in \
 	scripts/tex_copy.py \
 	scripts/TeXFiles.py
 
