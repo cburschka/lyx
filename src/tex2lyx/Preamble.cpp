@@ -494,6 +494,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_font_tt_scale[1]        = "100";
 	//h_font_cjk
 	h_is_mathindent           = "0";
+	h_math_number_before      = "0";
 	h_graphics                = "default";
 	h_default_output_format   = "default";
 	h_html_be_strict          = "false";
@@ -1293,6 +1294,7 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 	os << "\\is_math_indent " << h_is_mathindent << "\n";
 	if (!h_mathindentation.empty())
 		os << "\\math_indentation " << h_mathindentation << "\n";
+	os << "\\math_number_before " << h_math_number_before << "\n";
 	os << "\\quotes_style " << h_quotes_style << "\n"
 	   << "\\dynamic_quotes " << h_dynamic_quotes << "\n"
 	   << "\\papercolumns " << h_papercolumns << "\n"
@@ -1687,6 +1689,13 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				h_is_mathindent = "1";
 				opts.erase(it);
 			}
+			// formula numbering side
+			if ((it = find(opts.begin(), opts.end(), "leqno"))
+				 != opts.end()) {
+				h_math_number_before = "1";
+				opts.erase(it);
+			}
+			
 			// paper orientation
 			if ((it = find(opts.begin(), opts.end(), "landscape")) != opts.end()) {
 				h_paperorientation = "landscape";

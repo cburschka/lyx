@@ -109,6 +109,10 @@ public:
 	/// Whether formulas are indented
 	bool is_math_indent;
 
+
+	/// number formulas before them
+	bool math_number_before;
+
 	/** Whether paragraphs are separated by using a indent like in
 	 *  articles or by using a little skip like in letters.
 	 */

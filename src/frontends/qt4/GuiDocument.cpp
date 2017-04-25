@@ -1279,6 +1279,12 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(mathsModule->allPackagesNotPB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
+	connect(mathsModule->MathNumberingPosCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+
+	mathsModule->MathNumberingPosCO->addItem(qt_("Before"));
+	mathsModule->MathNumberingPosCO->addItem(qt_("After"));
+	mathsModule->MathNumberingPosCO->setCurrentIndex(2);
 	
 
 	// latex class
@@ -2922,6 +2928,19 @@ void GuiDocument::applyView()
 		                                  textLayoutModule->MathIndentLengthCO));
 		bp_.setMathIndent(mathindent);
 	}
+	switch (mathsModule->MathNumberingPosCO->currentIndex()) {
+		case 0:
+			bp_.math_number_before = true;
+			break;
+		case 1:
+			bp_.math_number_before = false;
+			break;
+		default:
+			// this should never happen
+			bp_.math_number_before = false;
+			break;
+	}
+
 	// Page Layout
 	if (pageLayoutModule->pagestyleCO->currentIndex() == 0)
 		bp_.pagestyle = "default";
@@ -3403,6 +3422,10 @@ void GuiDocument::paramsToDialog()
 		textLayoutModule->MathIndentCO->setCurrentIndex(indent);
 		setMathIndent(indent);
 	}
+	if (bp_.math_number_before)
+		mathsModule->MathNumberingPosCO->setCurrentIndex(0);
+	else 
+		mathsModule->MathNumberingPosCO->setCurrentIndex(1);
 
 	map<string, string> const & packages = BufferParams::auto_packages();
 	for (map<string, string>::const_iterator it = packages.begin();

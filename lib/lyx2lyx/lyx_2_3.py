@@ -2122,6 +2122,7 @@ def revert_rotfloat(document):
 
     i = i + 1
 
+
 def convert_allowbreak(document):
     " Zero widths Space-inset -> \SpecialChar allowbreak. "
     body = "\n".join(document.body)
@@ -2131,6 +2132,7 @@ def convert_allowbreak(document):
                         "\\SpecialChar allowbreak\n")
     document.body = body.split("\n")
 
+
 def revert_allowbreak(document):
     " \SpecialChar allowbreak -> Zero widths Space-inset. "
     body = "\n".join(document.body)
@@ -2139,6 +2141,45 @@ def revert_allowbreak(document):
                         "\\length 0dd\n"
                         "\\end_inset\n\n")
     document.body = body.split("\n")
+
+
+def convert_mathnumberpos(document):
+    " add the \math_number_before tag "
+    # check if the document uses the class option "leqno"
+    k = find_token(document.header, "\\quotes_style", 0)
+    regexp = re.compile(r'^.*leqno.*')
+    i = find_re(document.header, regexp, 0)
+    if i != -1:
+        document.header.insert(k, "\\math_number_before 1")
+        # delete the found option
+        document.header[i] = document.header[i].replace(",leqno", "")
+        document.header[i] = document.header[i].replace(", leqno", "")
+        document.header[i] = document.header[i].replace("leqno,", "")
+        j = find_re(document.header, regexp, 0)
+        if i == j:
+            # then we have fleqn as the only option
+            del document.header[i]
+    else:
+        document.header.insert(k, "\\math_number_before 0")
+
+
+def revert_mathnumberpos(document):
+    " add the document class option leqno"
+    regexp = re.compile(r'(\\math_number_before 1)')
+    i = find_re(document.header, regexp, 0)
+    if i == -1:
+        regexp = re.compile(r'(\\math_number_before)')
+        j = find_re(document.header, regexp, 0)
+        del document.header[j]
+    else:
+        k = find_token(document.header, "\\options", 0)
+        if k != -1:
+    	    document.header[k] = document.header[k].replace("\\options", "\\options leqno,")
+    	    del document.header[i]
+        else:
+            l = find_token(document.header, "\\use_default_options", 0)
+            document.header.insert(l, "\\options leqno")
+            del document.header[i + 1]
 
 
 ##
@@ -2180,9 +2221,11 @@ convert = [
            [539, []],
            [540, []],
            [541, [convert_allowbreak]],
-           ]
+           [542, [convert_mathnumberpos]]
+          ]
 
 revert =  [
+           [541, [revert_mathnumberpos]],
            [540, [revert_allowbreak]],
            [539, [revert_rotfloat]],
            [538, [revert_baselineskip]],

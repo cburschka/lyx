@@ -385,6 +385,7 @@ BufferParams::BufferParams()
 	makeDocumentClass();
 	paragraph_separation = ParagraphIndentSeparation;
 	is_math_indent = false;
+	math_number_before = false;
 	quotes_style = InsetQuotesParams::EnglishQuotes;
 	dynamic_quotes = false;
 	fontsize = "default";
@@ -852,6 +853,8 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\math_indentation") {
 		lex.next();
 		pimpl_->mathindent = Length(lex.getString());
+	} else if (token == "\\math_number_before") {
+		lex >> math_number_before;
 	} else if (token == "\\quotes_style") {
 		string qstyle;
 		lex >> qstyle;
@@ -1352,6 +1355,7 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	os << "\n\\is_math_indent " << is_math_indent;
 	if (is_math_indent && !getMathIndent().empty())
 		os << "\n\\math_indentation " << getMathIndent().asString();
+	os << "\n\\math_number_before " << math_number_before;
 	os << "\n\\quotes_style "
 	   << string_quotes_style[quotes_style]
 	   << "\n\\dynamic_quotes " << dynamic_quotes
@@ -1635,6 +1639,9 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 
 	if (is_math_indent)
 		clsoptions << "fleqn,";
+
+	if (math_number_before)
+		clsoptions << "leqno,";
 
 	// language should be a parameter to \documentclass
 	if (language->babel() == "hebrew"
