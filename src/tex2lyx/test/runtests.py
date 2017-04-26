@@ -62,12 +62,12 @@ def main(argv):
     else:
         suffix = ""
     lyx = os.path.join(os.path.dirname(tex2lyx), "lyx" + suffix)
-    inputdir = os.path.dirname(argv[0])
+    inputdir = os.path.realpath(os.path.dirname(argv[0]))
     if len(argv) >= 4+skipcount:
-        outputdir = sys.argv[3+skipcount]
+        outputdir = os.path.realpath(sys.argv[3+skipcount])
     else:
 #        outputdir = inputdir
-        outputdir = os.path.join(os.path.dirname(tex2lyx), "test")
+        outputdir = os.path.realpath(os.path.join(os.path.dirname(tex2lyx), "test"))
 
     if len(argv) >= 5+skipcount:
         files = [sys.argv[4+skipcount]]
