@@ -241,43 +241,47 @@ def sendKeystringLocal(keystr, LYX_PID):
         xvpar.extend(["-xsendevent"])
     if xvkbd_hacked:
         xvpar.extend(["-wait_idle", lyx_pid])
-    xvpar.extend(["-window", lyx_window_name, "-delay", actual_delay, "-text", keystr])
-    
+    #xvpar.extend(["-window", lyx_window_name, "-delay", actual_delay, "-text", keystr])
+    xvpar.extend(["-delay", actual_delay, "-text", keystr])
+
     print("Sending \"" + keystr + "\"\n")
     subprocess.call(xvpar, stdout = FNULL, stderr = FNULL)
 
-Axreg = re.compile(r'^(.*)\\Ax([^\\]+)(.*)$')
+Axreg = re.compile(r'^(.*)\\Ax([^\\]*)(.*)$')
 returnreg = re.compile(r'\\\[Return\](.*)$')
 
+# recursive wrapper around sendKeystringLocal()
 def sendKeystring(line, LYX_PID):
     global key_delay
     saved_delay = key_delay
-    while True:
-        m = Axreg.match(line)
-        if m:
-            prefix = m.group(1)
-            if prefix != "":
-                sendKeystringLocal(prefix, LYX_PID)
-            content = m.group(2)
-            rest = m.group(3);
-            m2 = returnreg.match(rest)
-            sendKeystringLocal('\Ax', LYX_PID)
+    m = Axreg.match(line)
+    if m:
+        prefix = m.group(1)
+        content = m.group(2)
+        rest = m.group(3);
+        if prefix != "":
+            # since (.*) is greedy, check prefix for '\Ax' again
+            sendKeystring(prefix, LYX_PID)
+        sendKeystringLocal('\Ax', LYX_PID)
+        time.sleep(0.1)
+        m2 = returnreg.match(rest)
+        if m2:
+            line = m2.group(1)
+            key_delay = "1"
+            sendKeystringLocal(content + '\[Return]', LYX_PID)
+            key_delay = saved_delay
             time.sleep(0.1)
-            if m2:
-                line = m2.group(1)
-                key_delay = "1"
-                sendKeystringLocal(content + '\[Return]', LYX_PID)
-                key_delay = saved_delay
-            else:
-                if content != "":
-                    sendKeystringLocal(content, LYX_PID)
-                key_delay = saved_delay
-                return
-        else:
             if line != "":
                 sendKeystringLocal(line, LYX_PID)
-            key_delay = saved_delay
-            return
+        else:
+            if content != "":
+                sendKeystringLocal(content, LYX_PID)
+            if rest != "":
+                sendKeystringLocal(rest, LYX_PID)
+    else:
+        if line != "":
+            sendKeystringLocal(line, LYX_PID)
+
 
 def system_retry(num_retry, cmd):
     i = 0
@@ -295,7 +299,8 @@ def RaiseWindow():
     #intr_system("echo x-session-manager PID: $X_PID.")
     #intr_system("echo x-session-manager open files: `lsof -p $X_PID | grep ICE-unix | wc -l`")
     ####intr_system("wmctrl -l | ( grep '"+lyx_window_name+"' || ( killall lyx ; sleep 1 ; killall -9 lyx ))")
-    #intr_system("wmctrl -R '"+lyx_window_name+"' ;sleep 0.1")
+    print("lyx_window_name = " + lyx_window_name + "\n")
+    intr_system("wmctrl -R '"+lyx_window_name+"' ;sleep 0.1")
     system_retry(30, "wmctrl -i -a '"+lyx_window_name+"'")
 
 
@@ -428,7 +433,7 @@ while not failed:
             failed = True
         print('lyx_pid: ' + lyx_pid + '\n')
         print('lyx_win: ' + lyx_window_name + '\n')
-        sendKeystring("\C\[Home]", lyx_pid)
+        sendKeystringLocal("\C\[Home]", lyx_pid)
     elif c[0:5] == 'Sleep':
         print("Sleeping for " + c[6:] + " seconds\n")
         time.sleep(float(c[6:]))
@@ -471,11 +476,11 @@ while not failed:
         else:
             print("Forcing quit of lyx instance: " + str(lyx_pid) + "...\n")
             # \Ax Enter command line is sometimes blocked
-	    # \[Escape] works after this 
-	    sendKeystring("\Ax\[Escape]", lyx_pid)
+	    # \[Escape] works after this
+	    sendKeystringLocal("\Ax\[Escape]", lyx_pid)
 	    # now we should be outside any dialog
 	    # and so the function lyx-quit should work
-            sendKeystring("\Cq", lyx_pid)
+            sendKeystringLocal("\Cq", lyx_pid)
             time.sleep(0.5)
             if lyx_sleeping():
                 # probably waiting for Save/Discard/Abort, we select 'Discard'
