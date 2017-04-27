@@ -1,0 +1,38 @@
+# Test for searching with regular expressions
+# Test for #8381
+
+Lang sk_SK.utf8
+TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
+KK: \Apb
+KK: one\[Return]
+KK: two\[Return]
+KK: three\[Return]
+KK: \Ape
+KK: four\[Return]
+KK: five\[Return]
+KK: \Apl
+KK: l1 six\[Return]
+KK: l2 seven\[Return]
+KK: \Apd
+KK: op1 eight\[Return]
+KK: op2 nine\C\[Home]
+KK: \Cs
+KK: \CF
+# Uncheck ignore format
+KK: \At\Ai\Ah
+KK: \Ape
+KK: \Axregexp-mode\[Return][a-z]* \[Return]
+TestEnd
+Lang C
+Assert pcregrep -M 'Putting selection at cur= inset: .* idx: 0 par: 3 pos: 0\n with len: 4' lyx-log.txt
+
+Lang sk_SK.utf8
+TestBegin test.lyx -dbg find > lyx-log2.txt 2>&1
+KK: \CF
+# Uncheck ignore format
+KK: \At\Ai\Ah
+KK: \Apd
+KK: \Axregexp-mode\[Return][a-z]*\\s+[a-z]* \[Return]\[Return]
+TestEnd
+Lang C
+Assert pcregrep -M 'Putting selection at cur= inset: .* idx: 0 par: 7 pos: 3\n with len: 6' lyx-log2.txt
