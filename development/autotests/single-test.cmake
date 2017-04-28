@@ -56,25 +56,7 @@ if(NOT DISPLAY_VAR MATCHES "^[a-zA-Z\\.]*:[0-9]+\(\\.[0-9]+\)?$")
 endif()
 
 set(LYX_EXE "${BINDIR}/${LYX}")
-set(use_hacked $ENV{XVKBD_HACKED})
-if(NOT use_hacked)
-  if(use_hacked STREQUAL "")
-    # ENV{XVKBD_HACKED} probably not set, so the default should be
-    # to use the hacked
-    set(use_hacked "1")
-  else()
-    set(use_hacked "0")
-  endif()
-else()
-  set(use_hacked "1")
-endif()
 
-set(ENV{XVKBD_HACKED} ${use_hacked})
-if(use_hacked)
-  set(XVKBD_EXE "${BINDIR}/xvkbd")
-else()
-  set(XVKBD_EXE "/usr/bin/xvkbd")
-endif()
 set(ENV{QT_FRONTEND} ${FRONTEND})
 
 if(EXISTS "${LYX_TESTS_USERDIR}/session")
@@ -109,6 +91,7 @@ endif()
 if(EXISTS "${AUTOTEST_ROOT}/${_jj}.lyx")
   configure_file("${AUTOTEST_ROOT}/${_jj}.lyx" "${WORKDIR}/../${_jj}.lyx" COPYONLY)
 endif()
+
 execute_process(
   COMMAND python ${KEYTEST}
   RESULT_VARIABLE KEYTEST_RES)

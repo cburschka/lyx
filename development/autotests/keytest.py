@@ -207,7 +207,6 @@ def lyx_dead():
 def sendKeystringLocal(keystr, LYX_PID):
 
     # print "sending keystring "+keystr+"\n"
-
     if not re.match(".*\w.*", keystr):
         print('print .' + keystr + '.\n')
         keystr = 'a'
@@ -239,10 +238,7 @@ def sendKeystringLocal(keystr, LYX_PID):
         xvpar.extend(["-no-jump-pointer"])
     else:
         xvpar.extend(["-xsendevent"])
-    if xvkbd_hacked:
-        xvpar.extend(["-wait_idle", lyx_pid])
-    #xvpar.extend(["-window", lyx_window_name, "-delay", actual_delay, "-text", keystr])
-    xvpar.extend(["-delay", actual_delay, "-text", keystr])
+    xvpar.extend(["-window", lyx_window_name, "-delay", actual_delay, "-text", keystr])
 
     print("Sending \"" + keystr + "\"\n")
     subprocess.call(xvpar, stdout = FNULL, stderr = FNULL)
@@ -337,7 +333,6 @@ xvkbd_exe = os.environ.get('XVKBD_EXE')
 if xvkbd_exe is None:
     xvkbd_exe = "xvkbd"
 
-xvkbd_hacked = os.environ.get('XVKBD_HACKED') != None
 qt_frontend = os.environ.get('QT_FRONTEND')
 if qt_frontend is None:
     qt_frontend = 'QT4'
@@ -470,17 +465,17 @@ while not failed:
         print("result=" + str(result) + ", failed=" + str(failed))
     elif c[0:7] == 'TestEnd':
 #        time.sleep(0.5)
-        if not lyx_exists():
+        if lyx_dead():
             print("LyX instance not found because of crash or assert !\n")
             failed = True
         else:
             print("Forcing quit of lyx instance: " + str(lyx_pid) + "...\n")
             # \Ax Enter command line is sometimes blocked
 	    # \[Escape] works after this
-	    sendKeystringLocal("\Ax\[Escape]", lyx_pid)
+	    sendKeystring("\Ax\[Escape]", lyx_pid)
 	    # now we should be outside any dialog
 	    # and so the function lyx-quit should work
-            sendKeystringLocal("\Cq", lyx_pid)
+            sendKeystring("\Cq", lyx_pid)
             time.sleep(0.5)
             if lyx_sleeping():
                 # probably waiting for Save/Discard/Abort, we select 'Discard'

@@ -67,12 +67,18 @@ if(QT_USES_X11)
     message(STATUS "cmake build is therefore omitting keytests")
   endif()
 
+  find_program(XVKBD_EXE NAMES "xvkbd")
+  if (XVKBD_EXE MATCHES "NOTFOUND")
+    message(STATUS "Missing xvkbd, omitting keytests")
+    list(APPEND Missing "xvkbd")
+  endif()
+
   if(Missing OR NOT LYX_ENABLE_KEYTESTS)
     set(_runtest FALSE)
   else()
     project(keytest)
 
-    add_subdirectory(xvkbd)
+    #add_subdirectory(xvkbd)
 
     set(_runtest TRUE)
     set(KEYTEST "${CMAKE_CURRENT_SOURCE_DIR}/keytest.py")
@@ -101,6 +107,7 @@ if(QT_USES_X11)
         -DKEYTEST_INFILE=${_tf}
         -DBINDIR=$<TARGET_FILE_DIR:${_lyx}>
         -DLYX=${_lyx}
+	-DXVKBD_EXE=${XVKBD_EXE}
         -DWORKDIR=${CMAKE_CURRENT_BINARY_DIR}/${LYX_HOME}
         -DLYX_USERDIR_VER=${LYX_USERDIR_VER}
         -DKEYTEST_OUTFILE=${_t}-out.txt
