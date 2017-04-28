@@ -41,6 +41,7 @@ class FuncRequest;
 class FuncStatus;
 class Intl;
 class Inset;
+class Length;
 class PainterInfo;
 class ParIterator;
 class ParagraphMetrics;
@@ -104,6 +105,14 @@ public:
 
 	/// left margin
 	int leftMargin() const;
+
+	/// return the on-screen size of this length
+	/*
+	 *  This is a wrapper around Length::inPixels that uses the
+	 *  bufferview width as width and the EM value of the default
+	 *  document font.
+	 */
+	int inPixels(Length const & len) const;
 
 	/// \return true if the BufferView is at the top of the document.
 	bool isTopScreen() const;

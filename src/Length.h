@@ -97,9 +97,11 @@ public:
 	 *	FontMetrics::em() to get this value.
 	 */
 	int inPixels(int text_width, int em_width = 0) const;
+
 	/** return the on-screen size of this length
 	 *
-	 *  This version of the function uses the right EM definition.
+	 *  This version of the function uses the current inset width as
+	 *  width and the EM value of the current font.
 	 */
 	int inPixels(MetricsBase const &) const;
 	/// return the value in Big Postscript points.

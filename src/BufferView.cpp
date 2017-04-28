@@ -368,6 +368,13 @@ int BufferView::leftMargin() const
 }
 
 
+int BufferView::inPixels(Length const & len) const
+{
+	Font const font = buffer().params().getFont();
+	return len.inPixels(workWidth(), theFontMetrics(font).em());
+}
+
+
 bool BufferView::isTopScreen() const
 {
 	return 0 == d->scrollbarParameters_.min;

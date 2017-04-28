@@ -228,7 +228,7 @@ int VSpace::inPixels(BufferView const & bv) const
 		return 3 * default_height;
 
 	case LENGTH:
-		return len_.len().inPixels(bv.workWidth());
+		return bv.inPixels(len_.len());
 
 	default:
 		LATTEST(false);
