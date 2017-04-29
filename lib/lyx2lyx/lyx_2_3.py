@@ -1550,9 +1550,6 @@ command_insets = ["bibitem", "citation", "href", "index_print", "nomenclature"]
 def convert_literalparam(document):
     " Add param literal "
 
-    # These already had some sort of latexify method
-    latexified_insets = ["href", "index_print", "nomenclature"]
-
     for inset in command_insets:
         i = 0
         while True:
@@ -1566,7 +1563,8 @@ def convert_literalparam(document):
                 continue
             while i < j and document.body[i].strip() != '':
                 i += 1
-            if inset in latexified_insets:
+            # href is already fully latexified. Here we can switch off literal.
+            if inset == "href":
                 document.body.insert(i, "literal \"false\"")
             else:
                 document.body.insert(i, "literal \"true\"")
