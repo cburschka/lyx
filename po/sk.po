@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-04-22 09:08+0200\n"
-"PO-Revision-Date: 2017-04-24 16:04+0000\n"
+"POT-Creation-Date: 2017-04-28 15:33+0200\n"
+"PO-Revision-Date: 2017-04-28 13:42+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -5204,6 +5204,14 @@ msgstr "&Odsadzovaním:"
 #: src/frontends/qt4/ui/TextLayoutUi.ui:48
 msgid "Size of the indentation"
 msgstr "Veľkosť odsadzovania"
+
+#: src/frontends/qt4/ui/MathsUi.ui:141
+msgid "Formula numbering side:"
+msgstr "Bok číslovania vzorcov:"
+
+#: src/frontends/qt4/ui/MathsUi.ui:157
+msgid "Side where formulas are numbered"
+msgstr "Na ktorom boku sú vzorce číslované"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:116
 msgid "&Vertical space:"
@@ -32494,6 +32502,14 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#, fuzzy
+#~ msgid "Number formulas:"
+#~ msgstr "Číselné znaky"
+
+#, fuzzy
+#~ msgid "Before"
+#~ msgstr "Pred"
 
 #~ msgid "Don't use ligatures for en- and &em-dashes"
 #~ msgstr "Nepoužívať zliatky pre en a em čiarkovanie"
