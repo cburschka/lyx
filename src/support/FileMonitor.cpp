@@ -100,6 +100,8 @@ FileMonitorGuard::FileMonitorGuard(string const & filename,
                                    QFileSystemWatcher * qwatcher)
 	: filename_(filename), qwatcher_(qwatcher), exists_(true)
 {
+	if (filename.empty())
+		return;
 	QObject::connect(qwatcher, SIGNAL(fileChanged(QString const &)),
 	                 this, SLOT(notifyChange(QString const &)));
 	if (qwatcher_->files().contains(toqstr(filename)))
@@ -111,12 +113,15 @@ FileMonitorGuard::FileMonitorGuard(string const & filename,
 
 FileMonitorGuard::~FileMonitorGuard()
 {
-	qwatcher_->removePath(toqstr(filename_));
+	if (!filename_.empty())
+		qwatcher_->removePath(toqstr(filename_));
 }
 
 
 void FileMonitorGuard::refresh()
 {
+	if (filename_.empty())
+		return;
 	QString const qfilename = toqstr(filename_);
 	if(!qwatcher_->files().contains(qfilename)) {
 		bool exists = QFile(qfilename).exists();
