@@ -1,0 +1,735 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass[acmart]{Association for Computing Machinery (ACM) article}
+#  \DeclareCategory{Articles}
+#
+# Layout for typesetting publications of the Association for Computing Machinery.
+#
+# Author : John Perry <john.perry@usm.edu>
+#          Guillaume Munch-Maccagnoni <gm@lyx.org>
+
+Format 60
+
+Provides amscls 1
+Provides amsmath 1
+Provides amstext 1
+Provides binhex 1
+Provides caption 1
+Provides comment 1
+Provides cm-super 1
+Provides cmap 1
+Provides draftwatermark 1
+Provides environ 1
+Provides fancyhdr 1
+Provides float 1
+Provides fontaxes 1
+Provides geometry 1
+Provides graphics 1
+Provides hyperref 1
+Provides ifluatex 1
+Provides ifxetex 1
+Provides inconsolata 1
+Provides latex-tools 1
+Provides libertine 1
+Provides manyfoot 1
+Provides microtype 1
+Provides mmap 1
+Provides ms 1
+Provides mweights 1
+Provides natbib 1
+Provides nccfoots 1
+Provides newtx 1
+Provides oberdiek 1
+Provides pdftex-def 1
+Provides totpages 1
+Provides trimspaces 1
+Provides setspace 1
+Provides upquote 1
+Provides url 1
+Provides xcolor 1
+Provides xkeyval 1
+
+# Input general definitions
+Input stdclass.inc
+Input stdcounters.inc
+
+ClassOptions
+  FontSize		9|10|11|12
+  Other   "format=manuscript,authordraft"
+End
+
+Style Standard
+	Category              MainText
+	Margin                Static
+	LatexType             Paragraph
+	LatexName             dummy
+	ParIndent             MM
+	ParSkip               0.4
+	Align                 Block
+	AlignPossible         Block, Left, Right, Center
+	LabelType             No_Label
+	# FIXME This ought to be set dynamically.
+	HTMLStyle
+		div.standard {
+			margin-bottom: 2ex;
+		}
+	EndHTMLStyle
+End
+
+Style Author
+  Align   Left
+  InTitle 1
+End
+
+Style Thanks
+  Category  FrontMatter
+  InTitle 1
+  Align Left
+  AlignPossible Left
+  Font
+    Family Roman
+  EndFont
+  LabelFont
+    Color Blue
+    Shape Italic
+    Family Roman
+  EndFont
+  LabelType Static
+  LabelString "Thanks: "
+  LatexType command
+  LatexName thanks
+  Margin Dynamic
+End
+
+Style ACM_Journal
+  Align left
+  AlignPossible left
+  Category Preamble
+  InPreamble  1
+  LabelString "Journal's Short Name: "
+  LabelType Static
+  LabelFont
+    Color Blue
+    Shape Italic
+  EndFont
+  LatexName acmJournal
+  LatexType Command
+  Margin Dynamic
+End
+
+Style ACM_Conference
+  CopyStyle ACM_Journal
+  Argument 1
+    LabelString "Short name"
+    Mandatory 0
+  EndArgument
+  Argument 2
+    LabelString "Full name"
+    Mandatory 1
+  EndArgument
+  Argument 3
+    LabelString "Date"
+    Mandatory 1
+  EndArgument
+  Argument 4
+    LabelString "Venue"
+    Mandatory 1
+  EndArgument
+  LabelString "Conference Name: "
+  LatexName acmConference
+  Margin Dynamic
+End
+
+Style Title
+  Argument 1
+    LabelString "Short title"
+    Mandatory 0
+  EndArgument
+  Font
+    Size Largest
+  EndFont
+  DependsOn Abstract
+End
+
+Style Subtitle
+  Category  FrontMatter
+  Align Center
+  AlignPossible Center
+  InTitle 1
+  LatexType Command
+  LatexName subtitle
+  Font
+    Size Larger
+    Family Roman
+  EndFont
+End
+
+Style Email
+  Align Left
+  AlignPossible center
+  Category FrontMatter
+  Font
+    Family  Typewriter
+  EndFont
+  #InPreamble  1
+  InTitle 1
+  LabelString "Email address: "
+  LabelType Static
+  LabelFont
+    Color Blue
+    Shape Italic
+    Family Roman
+  EndFont
+  LatexType Command
+  LatexName email
+  Margin Dynamic
+End
+
+Style ORCID
+  CopyStyle Email
+  LabelString "ORCID: "
+  Font
+    Family Roman
+  EndFont
+  LabelFont
+    Color Blue
+    Shape Italic
+  EndFont
+  LatexName orcid
+End
+
+Style Affiliation
+  CopyStyle Email
+  Font
+    Family Roman
+  EndFont
+  LabelFont
+    Color Blue
+    Shape Italic
+  EndFont
+  LabelString "Affiliation: "
+  LatexName affiliation
+End
+
+Style Additional_Affiliation
+  CopyStyle Affiliation
+  LabelString "Additional Affiliation: "
+  LatexName additionalaffiliation
+End
+
+InsetLayout Flex:Position
+  LyxType custom
+  ContentAsLabel 1
+  Decoration Classic
+  LabelString "Position"
+  LatexName position
+  LatexType command
+End
+
+InsetLayout Flex:Institution
+  CopyStyle Flex:Position
+  LabelString "Institution"
+  LatexName institution
+  Spellcheck 0
+End
+
+InsetLayout Flex:Department
+  CopyStyle Flex:Position
+  LabelString "Department"
+  LatexName department
+  LatexType command
+  Spellcheck 0
+End
+
+InsetLayout Flex:Street_Address
+  CopyStyle Flex:Position
+  LabelString "Street Address"
+  LatexName streetaddress
+  LatexType command
+  Spellcheck 0
+End
+
+InsetLayout Flex:City
+  CopyStyle Flex:Position
+  LabelString "City"
+  LatexName city
+  LatexType command
+  Spellcheck 0
+End
+
+InsetLayout Flex:Country
+  CopyStyle Flex:Position
+  LabelString "Country"
+  LatexName country
+  LatexType command
+  Spellcheck 0
+End
+
+InsetLayout Flex:State
+  CopyStyle Flex:Position
+  LabelString "State"
+  LatexName state
+  LatexType command
+  Spellcheck 0
+End
+
+InsetLayout Flex:Postal_Code
+  CopyStyle Flex:Position
+  LabelString "Postal Code"
+  LatexName postcode
+  LatexType command
+  Spellcheck 0
+End
+
+Style TitleNote
+  CopyStyle Email
+  Font
+    Family Roman
+  EndFont
+  LabelFont
+    Family Roman
+    Color Blue
+    Shape Italic
+  EndFont
+  LabelString "Title Note: "
+  LatexName titlenote
+  TopSep 0.3
+  BottomSep 0.3
+End
+
+Style SubtitleNote
+  CopyStyle TitleNote
+  LabelString "Subtitle Note: "
+  LatexName subtitlenote
+End
+
+Style AuthorNote
+  CopyStyle TitleNote
+  LabelString "Author Note: "
+  LatexName authornote
+End
+
+Style ACM_Volume
+  CopyStyle ACM_Journal
+  LabelString "ACM Volume: "
+  LatexName acmVolume
+End
+
+Style ACM_Number
+  CopyStyle ACM_Journal
+  LabelString "ACM Number: "
+  LatexName acmNumber
+End
+
+Style ACM_Article
+  CopyStyle ACM_Journal
+  LabelString "ACM Article: "
+  LatexName acmArticle
+End
+
+Style ACM_Year
+  CopyStyle ACM_Journal
+  LabelString "ACM Year: "
+  LatexName acmYear
+End
+
+Style ACM_Month
+  CopyStyle ACM_Journal
+  LabelString "ACM Month: "
+  LatexName acmMonth
+End
+
+Style ACM_Art_Seq_Num
+  CopyStyle ACM_Journal
+  LabelString "Article Sequential Number: "
+  LatexName acmArticleSeq
+End
+
+Style ACM_Submission_ID
+  CopyStyle ACM_Journal
+  LabelString "ACM Submission ID: "
+  LatexName acmSubmissionID
+End
+
+Style ACM_Price
+  CopyStyle ACM_Journal
+  LabelString "ACM Price: "
+  LatexName acmPrice
+End
+
+Style ACM_ISBN
+  CopyStyle ACM_Journal
+  LabelString "ACM ISBN: "
+  LatexName acmISBN
+End
+
+Style ACM_DOI
+  CopyStyle ACM_Journal
+  LabelString "ACM DOI: "
+  LatexName acmDOI
+End
+
+Style ACM_Badge_R
+  CopyStyle ACM_Journal
+  LabelString "ACM Badge R: "
+  LatexName acmBadgeR
+End
+
+Style ACM_Badge_L
+  CopyStyle ACM_Journal
+  LabelString "ACM Badge L: "
+  LatexName acmBadgeL
+End
+
+Style Start_Page
+  CopyStyle ACM_Journal
+  LabelString "Start Page: "
+  LatexName startPage
+End
+
+Style Terms
+  CopyStyle TitleNote
+  LabelString "Terms: "
+  LatexName terms
+End
+
+Style Keywords
+  CopyStyle TitleNote
+  LabelString "Keywords: "
+  LatexName keywords
+End
+
+Style CCSXML
+  Category  FrontMatter
+  LatexName CCSXML
+  LatexType Environment
+  Font
+    Family Typewriter
+    Color blue
+    Shape Italic
+  EndFont
+  FreeSpacing 1
+  InTitle 1
+  LabelString "Computing Classification Scheme (XML): "
+  LabelType Centered
+  LabelFont
+    Family Roman
+  EndFont
+  NextNoIndent 1
+  NewLine false
+  ParbreakIsNewline true
+  PassThru  true
+End
+
+Style CCS_Description
+  CopyStyle TitleNote
+  Argument 1
+    LabelString "Significance"
+  EndArgument
+  LabelString "Computing Classification Scheme: "
+  LatexName ccsdesc
+  Font
+    Family Typewriter
+    Color Blue
+    Shape Italic
+  EndFont
+  LabelFont
+    Family Roman
+  EndFont
+  PassThru  1
+End
+
+Style Set_Copyright
+  CopyStyle ACM_Journal
+  LabelString "Set Copyright: "
+  LatexName setcopyright
+End
+
+Style Copyright_Year
+  CopyStyle ACM_Journal
+  LabelString "Copyright Year: "
+  LatexName copyrightyear
+End
+
+Style Teaser_Figure
+  Category  FrontMatter
+  Argument 1
+    LabelString "Teaser Figure"
+  EndArgument
+  LatexType Environment
+  LatexName teaserfigure
+End
+
+Style Received
+  CopyStyle ACM_Journal
+  Argument 1
+    LabelString "Stage"
+    Mandatory 0
+  EndArgument
+  LabelString "Received: "
+  LatexName received
+End
+
+Style Abstract
+  InTitle 1
+End
+
+Style ShortAuthors
+  Category  FrontMatter
+  Font
+    Family Roman
+  EndFont
+  LatexType command
+  InTitle 0
+  LabelType Static
+  LabelString "Short authors: "
+  Margin Dynamic
+  LabelFont
+    Family Roman
+    Color blue
+    Shape Italic
+  EndFont
+  Preamble
+    \newcommand{\redefineshortauthors}[1]{\renewcommand{\shortauthors}{#1}}
+  EndPreamble
+  LatexName redefineshortauthors
+End
+
+Float
+	Type                  table*
+	GuiName               "Two-column table"
+	Placement             tbp
+	Extension             lot
+	NumberWithin          none
+	Style                 plain
+	ListName              "List of Tables"
+	IsPredefined          true
+	UsesFloatPkg          false
+	ListCommand           listoftables
+	RefPrefix             tab
+End
+
+Float
+  Type                  figure*
+  GuiName               "Two-column figure"
+  Placement             tbp
+  Extension             lof
+  NumberWithin          none
+  Style                 plain
+  ListName              "List of Figures"
+  IsPredefined          true
+  UsesFloatPkg          false
+  ListCommand           listoffigures
+  RefPrefix             fig
+End
+
+Float
+  Type                  sidebar
+  GuiName               "Sidebar (sigchi-a only)"
+  NumberWithin          none
+  Style                 plain
+  IsPredefined          true
+  UsesFloatPkg          false
+  RefPrefix             sidebar
+End
+
+Float
+  Type                  marginfigure
+  GuiName               "Margin figure (sigchi-a only)"
+  NumberWithin          none
+  Style                 plain
+  IsPredefined          true
+  Extension             lof
+  ListName              "List of Figures"
+  ListCommand           listoffigures
+  UsesFloatPkg          false
+  RefPrefix             mgfig
+End
+
+Float
+  Type                  margintable
+  GuiName               "Margin table (sigchi-a only)"
+  NumberWithin          none
+  Style                 plain
+  IsPredefined          true
+  Extension             lof
+  ListName              "List of Tables"
+  ListCommand           listoftables
+  UsesFloatPkg          false
+  RefPrefix             mgtab
+End
+
+OutlinerName thm "Definitions & Theorems"
+
+Style Theorem
+	Category              Reasoning
+	Margin                First_Dynamic
+	LatexType             Environment
+	LatexName             theorem
+	NextNoIndent          1
+	ResetArgs             1
+	AddToToc              thm
+	IsTocCaption          1
+	Argument 1
+		LabelString    "Additional Theorem Text"
+		Tooltip        "Additional text appended to the theorem header"
+		IsTocCaption      1
+	EndArgument
+	LabelSep              xx
+	ParIndent             MMM
+	ParSkip               0.4
+	ItemSep               0.2
+	TopSep                0.7
+	BottomSep             0.7
+	ParSep                0.3
+	Align                 Block
+	AlignPossible         Left
+	LabelType             Static
+	LabelCounter          theorem
+	LabelString           "Theorem \thetheorem."
+	Font
+	  Shape               Italic
+	  Size                Normal
+	EndFont
+	LabelFont
+	  Shape               SmallCaps
+	EndFont
+End
+
+Style Corollary
+	CopyStyle             Theorem
+	DependsOn             Theorem
+	LatexName             corollary
+	LabelString           "Corollary \thetheorem."
+End
+
+Style Lemma
+	CopyStyle             Theorem
+	DependsOn             Theorem
+	LatexName             lemma
+	LabelString           "Lemma \thetheorem."
+End
+
+Style Proposition
+	CopyStyle             Theorem
+	DependsOn             Theorem
+	LatexName             proposition
+	LabelString           "Proposition \thetheorem."
+End
+
+Style Conjecture
+	CopyStyle             Theorem
+	DependsOn             Theorem
+	LatexName             conjecture
+	LabelString           "Conjecture \thetheorem."
+End
+
+Style Definition
+	CopyStyle             Theorem
+	DependsOn             Theorem
+	LatexName             definition
+	LabelString           "Definition \thetheorem."
+	Font
+	  Shape               Up
+	EndFont
+	LabelFont
+	  Shape  Italic
+	  Series  Medium
+	EndFont
+End
+
+Style Example
+	CopyStyle             Definition
+	LatexName             example
+	LabelString           "Example \thetheorem."
+End
+
+InsetLayout Flex:Print_Only
+  LyxType custom
+  Decoration Classic
+  Display true
+  InToc true
+  LatexName printonly
+  LatexType Environment
+  LabelString "Print version only"
+End
+
+InsetLayout Flex:Screen_Only
+  CopyStyle Flex:Print_Only
+  LatexName screenonly
+  LabelString "Screen version only"
+End
+
+InsetLayout Flex:Anonymous_Suppression
+  CopyStyle Flex:Print_Only
+  LatexName anonsuppress
+  LabelString "Non anonymous only"
+End
+
+Style Acknowledgments
+  Category  BackMatter
+  LatexName acks
+  LatexType   Environment
+  LabelString "Acknowledgments"
+  LabelType Above
+  TopSep                1.3
+  LabelBottomSep        0.7
+  Margin  Static
+  LabelFont
+    Series Bold
+    Size Large
+  EndFont
+End
+
+InsetLayout Flex:Grant_Sponsor
+  LyxType custom
+  ContentAsLabel 1
+  Decoration Conglomerate
+  LabelString "Grant Sponsor"
+  LatexName grantsponsor
+  LatexType command
+  Argument 1
+    LabelString "Sponsor ID"
+    Mandatory 1
+    AutoInsert 1
+  EndArgument
+  Argument 2
+    LabelString "Name"
+    Mandatory 1
+    AutoInsert 1
+    Requires 1
+  EndArgument
+  Argument 3
+    LabelString "URL"
+    Mandatory 1
+    AutoInsert 1
+    Font
+      Family  Typewriter
+    EndFont
+    Requires 2
+  EndArgument
+End
+
+InsetLayout Flex:Grant_Number
+  LyxType custom
+  ContentAsLabel 1
+  Decoration Conglomerate
+  LabelString "Grant Number"
+  LatexName grantnum
+  LatexType command
+  Argument 1
+    LabelString "URL"
+    Mandatory false
+    Font
+      Family  Typewriter
+    EndFont
+  EndArgument
+  Argument 2
+    LabelString "Sponsor ID"
+    Mandatory true
+    AutoInsert true
+  EndArgument
+End
+
+Input theorems-case.inc
+Input theorems-proof.inc
+Input theorems-refprefix.inc
