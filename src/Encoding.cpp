@@ -264,11 +264,15 @@ vector<char_type> Encoding::symbolsList() const
 	vector<char_type> symbols;
 	for (char_type c = 0; c < start_encodable_; ++c)
 		symbols.push_back(c);
-	//add all encodable characters
+	// add all encodable characters
 	copy(encodable_.begin(), encodable_.end(), back_inserter(symbols));
-	// now the ones from the unicodesymbols file
-	for (pair<char_type, CharInfo> const & elem : unicodesymbols)
-		symbols.push_back(elem.first);
+	// now the ones from the unicodesymbols file that are not already there
+	for (pair<char_type, CharInfo> const & elem : unicodesymbols) {
+		if (find(symbols.begin(), symbols.end(), elem.first) == symbols.end())
+			symbols.push_back(elem.first);
+	}
+	// finally, sort the vector
+	sort(symbols.begin(), symbols.end());
 	return symbols;
 }
 
