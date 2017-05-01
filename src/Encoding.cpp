@@ -264,11 +264,14 @@ vector<char_type> Encoding::symbolsList() const
 	// add those below start_encodable_
 	for (char_type c = 0; c < start_encodable_; ++c)
 		symbols.push_back(c);
-	// now the ones from the unicodesymbols file
+	// now the ones from the unicodesymbols file that are not already there
 	CharInfoMap::const_iterator const end = unicodesymbols.end();
 	CharInfoMap::const_iterator it = unicodesymbols.begin();
 	for (; it != end; ++it)
-		symbols.push_back(it->first);
+		if (find(symbols.begin(), symbols.end(), it->first) == symbols.end())
+			symbols.push_back(it->first);
+	// finally, sort the vector
+	sort(symbols.begin(), symbols.end());
 	return symbols;
 }
 
