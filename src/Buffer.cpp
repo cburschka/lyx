@@ -3949,6 +3949,7 @@ unique_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 			ots.texrow().newlines(2);
 			if (master)
 				runparams.is_child = true;
+			updateBuffer();
 			writeLaTeXSource(ots, string(), runparams, output);
 			texrow = ots.releaseTexRow();
 		}
