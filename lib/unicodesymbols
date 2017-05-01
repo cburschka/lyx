@@ -69,7 +69,7 @@
 0x00ad "\\-"                      "" "force=iso8859-13,notermination=text" "" "" # SOFT HYPHEN
 0x00ae "\\textregistered"         "textcomp" "" "\\circledR" "amssymb" # REGISTERED SIGN
 0x00af "\\textasciimacron"        "textcomp" "" # MACRON
-0x00b0 "\\textdegree"             "textcomp" "" "{^\\circ}" "" # DEGREE SIGN
+0x00b0 "\\textdegree"             "textcomp" "force=koi8-u" "{^\\circ}" "" # DEGREE SIGN
 0x00b1 "\\textpm"                 "textcomp" "force" "\\pm" "" # ± PLUS-MINUS SIGN
 0x00b2 "\\texttwosuperior"        "textcomp" "force" "{{}^2}" "" # ² SUPERSCRIPT TWO
 0x00b3 "\\textthreesuperior"      "textcomp" "force" "{{}^3}" "" # ³ SUPERSCRIPT THREE
