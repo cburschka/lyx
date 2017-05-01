@@ -3810,6 +3810,7 @@ auto_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 			otexstream ots(os, *texrow);
 			if (master)
 				runparams.is_child = true;
+			updateBuffer();
 			writeLaTeXSource(ots, string(), runparams, output);
 			texrow->finalize();
 		}
