@@ -335,24 +335,19 @@ void ViewSourceWidget::updateDefaultFormat(BufferView const & bv)
 	QSignalBlocker blocker(outputFormatCO);
 	outputFormatCO->clear();
 	outputFormatCO->addItem(qt_("Default"),
-				QVariant(QString("default")));
+	                        QVariant(QString("default")));
 
 	int index = 0;
-	vector<string> tmp = bv.buffer().params().backends();
-	vector<string>::const_iterator it = tmp.begin();
-	vector<string>::const_iterator en = tmp.end();
-	for (; it != en; ++it) {
-		string const format = *it;
-		Format const * fmt = theFormats().getFormat(format);
+	for (string const & fmt_name : bv.buffer().params().backends()) {
+		Format const * fmt = theFormats().getFormat(fmt_name);
 		if (!fmt) {
-			LYXERR0("Can't find format for backend " << format << "!");
+			LYXERR0("Can't find format for backend " << fmt_name << "!");
 			continue;
-		} 
-
+		}
 		QString const pretty = toqstr(translateIfPossible(fmt->prettyname()));
-		outputFormatCO->addItem(pretty, QVariant(toqstr(format)));
-		if (format == view_format_)
-		   index = outputFormatCO->count() -1;
+		outputFormatCO->addItem(pretty, QVariant(toqstr(fmt_name)));
+		if (fmt_name == view_format_)
+			index = outputFormatCO->count() - 1;
 	}
 	setViewFormat(index);
 }
@@ -369,6 +364,7 @@ void ViewSourceWidget::resizeEvent (QResizeEvent * event)
 	}
 	QWidget::resizeEvent(event);
 }
+
 
 void ViewSourceWidget::saveSession(QString const & session_key) const
 {
