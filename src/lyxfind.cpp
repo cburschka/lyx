@@ -1512,6 +1512,11 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 	DocIterator cur;
 	int match_len = 0;
 
+	// e.g., when invoking word-findadv from mini-buffer wither with
+	//       wrong options syntax or before ever opening advanced F&R pane
+	if (theBufferList().getBuffer(FileName(to_utf8(opt.find_buf_name))) == 0)
+		return false;
+
 	try {
 		MatchStringAdv matchAdv(bv->buffer(), opt);
 		int length = bv->cursor().selectionEnd().pos() - bv->cursor().selectionBegin().pos();
