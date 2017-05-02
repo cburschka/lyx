@@ -1,0 +1,10 @@
+# Test for searching with regular expressions
+# Crash in using function 'word-findadv'
+
+Lang C
+TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
+KK: abcd
+KK: \Axword-findadv a\[Return]
+TestEnd
+Lang C
+Assert ! pcregrep 'SIGSEGV signal caught' lyx-log.txt
