@@ -1341,7 +1341,7 @@ void latexParagraphs(Buffer const & buf,
 
 		if (layout.intitle) {
 			if (already_title) {
-				if (!gave_layout_warning) {
+				if (!gave_layout_warning && !runparams.dryrun) {
 					gave_layout_warning = true;
 					frontend::Alert::warning(_("Error in latexParagraphs"),
 							bformat(_("You are using at least one "

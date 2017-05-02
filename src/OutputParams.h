@@ -265,7 +265,7 @@ public:
 	bool isLastPar;
 
 
-	/** whether or not do actual file copying and image conversion
+	/** whether or not to do actual file copying and image conversion
 	 *  This mode will be used to preview the source code
 	 */
 	bool dryrun;
