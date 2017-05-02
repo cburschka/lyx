@@ -1282,7 +1282,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	// initialize the length validator
 	bc().addCheckedLineEdit(mathsModule->MathIndentLE);
 	mathsModule->MathNumberingPosCO->addItem(qt_("Left"));
-	mathsModule->MathNumberingPosCO->addItem(qt_("Right"));
+	mathsModule->MathNumberingPosCO->addItem(qt_("Default"));
 	mathsModule->MathNumberingPosCO->setCurrentIndex(2);
 	
 
