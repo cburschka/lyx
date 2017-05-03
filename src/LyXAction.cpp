@@ -4069,7 +4069,7 @@ void LyXAction::init()
  * \li Origin: Tommaso, Nov 15 2007
  * \endvar
  */
-		{ LFUN_WORD_FINDADV, "", ReadOnly | NoBuffer, Edit | Hidden },
+		{ LFUN_WORD_FINDADV, "", ReadOnly | NoBuffer, Hidden },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_FIND_BACKWARD
