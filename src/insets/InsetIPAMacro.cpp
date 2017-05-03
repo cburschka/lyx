@@ -543,13 +543,13 @@ int InsetIPAChar::plaintext(odocstringstream & os, OutputParams const &, size_t)
 int InsetIPAChar::docbook(odocstream & /*os*/, OutputParams const &) const
 {
 	switch (kind_) {
-	// FIXME
-	LYXERR0("IPA tone macros not yet implemented with DocBook!");
 	case TONE_FALLING:
 	case TONE_RISING:
 	case TONE_HIGH_RISING:
 	case TONE_LOW_RISING:
 	case TONE_HIGH_RISING_FALLING:
+		// FIXME
+		LYXERR0("IPA tone macros not yet implemented with DocBook!");
 		break;
 	}
 	return 0;
