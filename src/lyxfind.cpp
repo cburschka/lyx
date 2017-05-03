@@ -1425,7 +1425,9 @@ static void changeFirstCase(Buffer & buffer, TextCase first_case, TextCase other
 static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, MatchStringAdv & matchAdv)
 {
 	Cursor & cur = bv->cursor();
-	if (opt.repl_buf_name == docstring())
+	if (opt.repl_buf_name == docstring()
+	    || theBufferList().getBuffer(FileName(to_utf8(opt.repl_buf_name)), true) == 0
+	    || theBufferList().getBuffer(FileName(to_utf8(opt.find_buf_name)), true) == 0)
 		return;
 
 	DocIterator sel_beg = cur.selectionBegin();
@@ -1514,7 +1516,7 @@ bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt)
 
 	// e.g., when invoking word-findadv from mini-buffer wither with
 	//       wrong options syntax or before ever opening advanced F&R pane
-	if (theBufferList().getBuffer(FileName(to_utf8(opt.find_buf_name))) == 0)
+	if (theBufferList().getBuffer(FileName(to_utf8(opt.find_buf_name)), true) == 0)
 		return false;
 
 	try {
