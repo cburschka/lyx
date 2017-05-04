@@ -49,6 +49,9 @@ export/examples/listerrors_(pdf[245]).*
 # (Also fails with Xe/LuaTeX and TeX-fonts -- as expected, see ignoredTests)
 export/examples/ko/splash_(dvi||pdf[23]?)
 
+# iconv fails, if a nomenclature inset contains an uncodable character
+export/export/latex/iconv-error-nomenclature_pdf2
+
 # input encoding tests
 # --------------------
 # Please test and correct!
