@@ -947,7 +947,9 @@ string InsetGraphics::prepareHTMLFile(OutputParams const & runparams) const
 
 docstring InsetGraphics::xhtml(XHTMLStream & xs, OutputParams const & op) const
 {
-	string const output_file = prepareHTMLFile(op);
+	string const output_file;
+	if (!op.dryrun)
+		prepareHTMLFile(op);
 
 	if (output_file.empty()) {
 		LYXERR0("InsetGraphics::xhtml: Unable to prepare file `" 
