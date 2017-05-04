@@ -206,10 +206,9 @@ def lyx_dead():
 
 def sendKeystringLocal(keystr, LYX_PID):
 
-    # print "sending keystring "+keystr+"\n"
-    if not re.match(".*\w.*", keystr):
-        print('print .' + keystr + '.\n')
-        keystr = 'a'
+    #if not re.match(".*\w.*", keystr):
+    #    print('print .' + keystr)
+    #    keystr = 'a'
     before_secs = time.time()
     while lyx_exists() and not lyx_sleeping():
         time.sleep(0.02)
@@ -240,14 +239,15 @@ def sendKeystringLocal(keystr, LYX_PID):
         xvpar.extend(["-xsendevent"])
     xvpar.extend(["-window", lyx_window_name, "-delay", actual_delay, "-text", keystr])
 
-    print("Sending \"" + keystr + "\"\n")
+    print("Sending \"" + keystr + "\"")
     subprocess.call(xvpar, stdout = FNULL, stderr = FNULL)
 
 Axreg = re.compile(r'^(.*)\\Ax([^\\]*)(.*)$')
 returnreg = re.compile(r'\\\[Return\](.*)$')
 
 # recursive wrapper around sendKeystringLocal()
-def sendKeystring(line, LYX_PID):
+# handling \Ax-entries
+def sendKeystringAx(line, LYX_PID):
     global key_delay
     saved_delay = key_delay
     m = Axreg.match(line)
@@ -257,7 +257,7 @@ def sendKeystring(line, LYX_PID):
         rest = m.group(3);
         if prefix != "":
             # since (.*) is greedy, check prefix for '\Ax' again
-            sendKeystring(prefix, LYX_PID)
+            sendKeystringAx(prefix, LYX_PID)
         sendKeystringLocal('\Ax', LYX_PID)
         time.sleep(0.1)
         m2 = returnreg.match(rest)
@@ -278,6 +278,21 @@ def sendKeystring(line, LYX_PID):
         if line != "":
             sendKeystringLocal(line, LYX_PID)
 
+controlkeyreg = re.compile(r'^(.*\\\[[A-Z][a-z]+\])(.*\\\[[A-Z][a-z]+\])(.*)$')
+# Make sure, only one of \[Return], \[Tab], \[Down], \[Home] etc are in one sent line
+# e.g. split the input line on each keysym
+def sendKeystringRT(line, LYX_PID):
+    m = controlkeyreg.match(line)
+    if m:
+        first = m.group(1)
+        second = m.group(2)
+        third = m.group(3)
+        sendKeystringRT(first, LYX_PID)
+        sendKeystringRT(second, LYX_PID)
+        if third != "":
+            sendKeystringRT(third, LYX_PID)
+    else:
+        sendKeystringAx(line, LYX_PID)
 
 def system_retry(num_retry, cmd):
     i = 0
@@ -378,7 +393,7 @@ outfile = open(outfilename, 'w')
 if not lyx_pid is None:
     RaiseWindow()
     # Next command is language dependent
-    #sendKeystring("\Afn", lyx_pid)
+    #sendKeystringRT("\Afn", lyx_pid)
 
 write_commands = True
 failed = False
@@ -409,24 +424,29 @@ while not failed:
         else:
             intr_system(lyx_exe + " -userdir " + lyx_userdir + " " + c[9:] + "&")
         count = 5
+        old_lyx_pid = "-7"
+        old_lyx_window_name = "not set"
+        print("Waiting for LyX to show up . . .")
         while count > 0:
             lyx_pid=os.popen("pidof " + lyx).read().rstrip()
-            print('lyx_pid=' + lyx_pid, '\n')
+            if lyx_pid != old_lyx_pid:
+                print('lyx_pid=' + lyx_pid)
+                old_lyx_pid = lyx_pid
             if lyx_pid != "":
                 lyx_window_name=os.popen("wmctrl -l -p | grep ' " + str(lyx_pid) +  " ' | cut -d ' ' -f 1").read().rstrip()
-                print('lyx_win=' + lyx_window_name, '\n')
+                if old_lyx_window_name != lyx_window_name:
+                    print('lyx_win=' + lyx_window_name, '\n')
+                    old_lyx_window_name = lyx_window_name
                 if lyx_window_name != "":
                     break
             else:
                 count = count - 1
-            print('lyx_win: ' + lyx_window_name + '\n')
-            print("Waiting for LyX to show up . . .")
             time.sleep(1)
         if count <= 0:
             print('Timeout: could not start ' + lyx_exe, '\n')
             sys.stdout.flush()
             failed = True
-        print('lyx_pid: ' + lyx_pid + '\n')
+        print('lyx_pid: ' + lyx_pid)
         print('lyx_win: ' + lyx_window_name + '\n')
         sendKeystringLocal("\C\[Home]", lyx_pid)
     elif c[0:5] == 'Sleep':
@@ -444,7 +464,7 @@ while not failed:
         RaiseWindow()
     elif c[0:4] == 'KK: ':
         if lyx_exists():
-            sendKeystring(c[4:], lyx_pid)
+            sendKeystringRT(c[4:], lyx_pid)
         else:
             ##intr_system('killall lyx; sleep 2 ; killall -9 lyx')
             if lyx_pid is None:
@@ -457,7 +477,7 @@ while not failed:
         print('Setting DELAY to ' + key_delay + '.\n')
     elif c == 'Loop':
         RaiseWindow()
-        sendKeystring(ResetCommand, lyx_pid)
+        sendKeystringRT(ResetCommand, lyx_pid)
     elif c[0:6] == 'Assert':
         cmd = c[7:].rstrip()
         result = intr_system(cmd)
@@ -469,17 +489,17 @@ while not failed:
             print("LyX instance not found because of crash or assert !\n")
             failed = True
         else:
-            print("Forcing quit of lyx instance: " + str(lyx_pid) + "...\n")
+            print("    ------------    Forcing quit of lyx instance: " + str(lyx_pid) + "    ------------")
             # \Ax Enter command line is sometimes blocked
 	    # \[Escape] works after this
-	    sendKeystring("\Ax\[Escape]", lyx_pid)
+	    sendKeystringAx("\Ax\[Escape]", lyx_pid)
 	    # now we should be outside any dialog
 	    # and so the function lyx-quit should work
-            sendKeystring("\Cq", lyx_pid)
+            sendKeystringLocal("\Cq", lyx_pid)
             time.sleep(0.5)
             if lyx_sleeping():
                 # probably waiting for Save/Discard/Abort, we select 'Discard'
-                sendKeystring("\[Tab]\[Return]", lyx_pid)
+                sendKeystringRT("\[Tab]\[Return]", lyx_pid)
                 lcount = 0
             else:
                 lcount = 1
