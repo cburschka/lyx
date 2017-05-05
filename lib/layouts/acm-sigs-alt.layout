@@ -1,8 +1,11 @@
 #% Do not delete the line below; configure depends on this
-#  \DeclareLaTeXClass[sig-alternate]{ACM SIGS ('Alternate' Style)}
+#  \DeclareLaTeXClass[sig-alternate]{ACM SIGS ('Alternate' Style, obsolete)}
 #  \DeclareCategory{Articles}
 #
 # LyX layout for ACM SIGS tighter "Alternate" style
+#
+# NOTE: As from Spring 2017, the class will not be usable to submit
+# a publication to ACM, it is OBSOLETE. Use acmart instead.
 #
 # Author: Gioele Barabucci
 
