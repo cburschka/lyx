@@ -1,7 +1,8 @@
 #\DeclareLyXModule[algorithm2e.sty]{Algorithm2e}
 #DescriptionBegin
 # Use the algorithm2e package for algorithm floats rather
-# than LyX's home-brewed algorithm floats.
+# than LyX's home-brewed algorithm floats. Use the Algorithm
+# style to enter and indent the algorithm.
 #DescriptionEnd
 #
 #Author: Jürgen Spitzmüller
@@ -26,3 +27,14 @@ Float
 	RefPrefix             alg
 End
 
+Style Algorithm
+  Category              List
+  Margin                Static
+  LatexType             Environment
+  NextNoIndent          1
+  ParbreakIsNewline     1
+  ToggleIndent          Never
+  KeepEmpty             1
+  LeftMargin            MM
+  Align                 Left
+End

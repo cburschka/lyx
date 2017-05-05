@@ -258,8 +258,10 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 		data.leftindent_open = true;
 	}
 
-	if (style.isEnvironment()) {
+	if (style.isEnvironment())
 		state->nest_level_ += 1;
+
+	if (style.isEnvironment() && !style.latexname().empty()) {
 		os << "\\begin{" << from_ascii(style.latexname()) << '}';
 		if (!style.latexargs().empty()) {
 			OutputParams rp = runparams;
@@ -324,7 +326,9 @@ static void finishEnvironment(otexstream & os, OutputParams const & runparams,
 			}
 		}
 		state->nest_level_ -= 1;
-		os << "\\end{" << from_ascii(data.style->latexname()) << "}\n";
+		string const & name = data.style->latexname();
+		if (!name.empty())
+			os << "\\end{" << from_ascii(name) << "}\n";
 		state->prev_env_language_ = data.par_language;
 		if (runparams.encoding != data.prev_encoding) {
 			runparams.encoding = data.prev_encoding;
