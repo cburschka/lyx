@@ -1358,7 +1358,7 @@ void latexParagraphs(Buffer const & buf,
 							<< "}\n";
 				}
 			}
-		} else if (was_title && !already_title) {
+		} else if (was_title && !already_title && !layout.inpreamble) {
 			if (tclass.titletype() == TITLE_ENVIRONMENT) {
 				os << "\\end{" << from_ascii(tclass.titlename())
 						<< "}\n";
