@@ -35,6 +35,17 @@
   dialog (see their description below). These also allow for disabling
   'needauth' converters altogether, if desired (default behavior).
 
+* LyX now supports insertion and automated conversion of Gnuplot scripts,
+  recognized by their typical extension ".gp" or ".gnuplot". These can
+  directly be inserted in a LyX document using the "Insert->Graphics..."
+  dialog, then selecting the Gnuplot script. LyX automatically adds a
+  proper "set terminal ..." and "set output ..." line to convert the
+  file to the needed output format (e.g., .eps, .pdf), depending on
+  whether the document is being previewed on screen or compiled as PDF
+  or other formats. Terminal options cannot be fine-tuned at the moment,
+  but that's a capability that may come soon, also according to the
+  received feedback from users.
+
 
 !!!The following pref variables were added in 2.3:
 
