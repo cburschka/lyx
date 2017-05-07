@@ -162,7 +162,7 @@ def lyx_exists():
 
 # Interruptible os.system()
 def intr_system(cmd, ignore_err = False):
-    print("Executing " + cmd + "\n")
+    print("Executing " + cmd)
     ret = os.system(cmd)
     if os.WIFSIGNALED(ret):
         raise KeyboardInterrupt
@@ -278,6 +278,19 @@ def sendKeystringAx(line, LYX_PID):
         if line != "":
             sendKeystringLocal(line, LYX_PID)
 
+specialkeyreg = re.compile(r'(.+)(\\[AC][a-zA-Z].*)$')
+# Split line at start of each \[AC][a-zA-Z]
+
+def sendKeystringAC(line, LYX_PID):
+    m = specialkeyreg.match(line)
+    if m:
+        first = m.group(1)
+        second = m.group(2)
+        sendKeystringAC(first, LYX_PID)
+        sendKeystringAC(second, LYX_PID)
+    else:
+        sendKeystringAx(line, LYX_PID)
+
 controlkeyreg = re.compile(r'^(.*\\\[[A-Z][a-z]+\])(.*\\\[[A-Z][a-z]+\])(.*)$')
 # Make sure, only one of \[Return], \[Tab], \[Down], \[Home] etc are in one sent line
 # e.g. split the input line on each keysym
@@ -292,7 +305,7 @@ def sendKeystringRT(line, LYX_PID):
         if third != "":
             sendKeystringRT(third, LYX_PID)
     else:
-        sendKeystringAx(line, LYX_PID)
+        sendKeystringAC(line, LYX_PID)
 
 def system_retry(num_retry, cmd):
     i = 0
@@ -358,7 +371,7 @@ if locale_dir is None:
 
 def_delay = os.environ.get('XVKBD_DELAY')
 if def_delay is None:
-    def_delay = '100'
+    def_delay = '5'
 
 file_new_command = os.environ.get('FILE_NEW_COMMAND')
 if file_new_command is None:
@@ -447,10 +460,10 @@ while not failed:
             sys.stdout.flush()
             failed = True
         print('lyx_pid: ' + lyx_pid)
-        print('lyx_win: ' + lyx_window_name + '\n')
+        print('lyx_win: ' + lyx_window_name)
         sendKeystringLocal("\C\[Home]", lyx_pid)
     elif c[0:5] == 'Sleep':
-        print("Sleeping for " + c[6:] + " seconds\n")
+        print("Sleeping for " + c[6:] + " seconds")
         time.sleep(float(c[6:]))
     elif c[0:4] == 'Exec':
         cmd = c[5:].rstrip()
@@ -474,7 +487,7 @@ while not failed:
             os._exit(1)
     elif c[0:4] == 'KD: ':
         key_delay = c[4:].rstrip('\n')
-        print('Setting DELAY to ' + key_delay + '.\n')
+        print('Setting DELAY to ' + key_delay)
     elif c == 'Loop':
         RaiseWindow()
         sendKeystringRT(ResetCommand, lyx_pid)
@@ -510,13 +523,16 @@ while not failed:
                     intr_system("kill -9 " + str(lyx_pid), True);
                 time.sleep(0.5)
         cmd = c[8:].rstrip()
-        print("Executing " + cmd)
-        result = intr_system(cmd)
-        failed = failed or (result != 0)
-        print("result=" + str(result) + ", failed=" + str(failed))
+	if cmd != "":
+            print("Executing " + cmd)
+            result = intr_system(cmd)
+            failed = failed or (result != 0)
+            print("result=" + str(result) + ", failed=" + str(failed))
+        else:
+            print("failed=" + str(failed))
     elif c[0:4] == 'Lang':
         lang = c[5:].rstrip()
-        print("Setting LANG=" + lang + "\n")
+        print("Setting LANG=" + lang)
         os.environ['LANG'] = lang
         os.environ['LC_ALL'] = lang
 # If it doesn't exist, create a link <locale_dir>/<country-code>/LC_MESSAGES/lyx<version-suffix>.mo
@@ -528,7 +544,7 @@ while not failed:
         else:
             ccode = lang
 
-        print("Setting LANGUAGE=" + ccode + "\n")
+        print("Setting LANGUAGE=" + ccode)
         os.environ['LANGUAGE'] = ccode
 
         idx = lang.find("_")
