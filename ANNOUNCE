@@ -1,30 +1,20 @@
-Public release of LyX version 2.2.2
+Public release of LyX version 2.2.3
 ===================================
 
-We are proud to announce the release of LyX 2.2.2. This is the second
+We are proud to announce the release of LyX 2.2.3. This is the second
 maintenance release in the 2.2.x series. 
 
-You can download LyX 2.2.2 from http://www.lyx.org/Download/.
+You can download LyX 2.2.3 from http://www.lyx.org/Download/.
 
 LyX is a document processor that encourages an approach to writing based 
 on the structure of your documents and not simply their appearance. It is
 released under a Free and Open Source Software license.
 
-LyX 2.2.2 is the result of on-going efforts to make our stable version more 
+LyX 2.2.3 is the result of on-going efforts to make our stable version more 
 reliable and more stable. We have fixed a number of bugs and made a number 
-of improvements. Most of these are relatively minor, but we nonetheless
-encourage all users of 2.2.1 to upgrade to this version.
+of improvements. Most of these are relatively minor in themsevles, but the combined result of fixing them all has led to significant improvements. We encourage all users of 2.2.2 to upgrade to this version.
 
-Perhaps the most important bug we fixed affected use of covington.sty with
-2.2.1. This will only have affected users of the Linguistics module.
-
-One new feature is the use of the "scaling" option when exporting images
-for XHTML. This does not work the same way as with LaTeX export. What it
-does is add something like "width: 50%" to the style attribute. This will
-ordinarily be interpreted by the browser as a percentage relative to the
-current element.
-
-If you think you have found a bug in LyX 2.2.2, please open a bug report at
+If you think you have found a bug in LyX 2.2.3, please open a bug report at
 http://www.lyx.org/trac/wiki/BugTrackerHome. If you're not sure whether it
 really is a bug, you can e-mail the LyX developers' mailing list (lyx-devel 
 <at> lists.lyx.org) and ask. 
@@ -34,7 +24,7 @@ documentation that comes with LyX and the LyX wiki, which lives at
 http://wiki.lyx.org/. If you can't find the answer there, e-mail the LyX 
 users' list (lyx-users <at> lists.lyx.org).
 
-We hope you enjoy using LyX 2.2.2.
+We hope you enjoy using LyX 2.2.3.
 
 The LyX team.
 http://www.lyx.org
@@ -48,36 +38,71 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- .xlsx is now a suggested extension in the spreadsheet external template.
+- Allow use of verbatim and quotation environments with IOP articles
+  (bug 10505).
 
-- Improve systemlyxdir handling.
+- Search for input files relative to local layout files, when those 
+  are provided and relative paths are used.
 
 
 * USER INTERFACE
 
-- When changing zoom level, show current value in status bar (bug
-  10212).
+- The title bar is now set according to platform UI. Read-only and
+  version control are shown by indicators in the status bar.
 
-- Names containing @ are now recognised by the syntax highlighter in the
-  preamble.
+- The toolbar context menu and the View>Toobars menus are now
+  identical. Both allow to change icon size and to enable individual
+  toolbars.
 
-- Replace Insert>Caption submenu by a normal entry when there is only one
-  caption type.
+- The citation dialog has been redesigned, following user suggestions.
+
+- Remember citation style settings both within and between sessions
+  (bug 10256).
+
+- Improve cross-references dialog design.
+
+- Implement wrap-around in change tracking's next-change function (bug 10388).
+
+- The Math Delimiters dialog now has a "Swap & Reverse" button (bug 10457).
+
+- Document Settings > "Output" has been renamed to "Formats" now that it
+  also contains the option "Save transient properties".
+
+- The title of the source pane now reflects the format being previewed,
+  e.g. "LaTeX (pdflatex) Preview".
+
+- Improve information preview of bibliographic references (e.g. in the
+  Citation dialog), particularly for bibtex databases that use biblatex
+  features.
+
+- When using Return in an empty paragraph and the depth is reduced,
+  the layout of the paragraph is now changed accordingly.
+
+- Issue an error message if incompatible languages (in terms of language
+  package requirements) are used (bug 10456).
+
+- Improve display speed, especially when compiled against Qt 4.x.
+
+- Polish the BibTeX add dialog (bug 9795).
+
+- Fix regression that was not allowing inserting more than three consecutive
+  dashes without jumping through hoops.
 
 
 * DOCUMENTATION AND LOCALIZATION
 
-- Updated Brazilian, French, German, Italian and Slovak user interface localization.
+- New Arabic translation of the Intro and Tutorial manuals and the Shortcuts
+  documentation file
 
-- Updated French Customizaion, Math, Tutorial and UserGuide manuals.
+- Updated translation of the French EmbeddedObjects and UserGuide manuals
 
-- Update beamer manual with regard to the new Separator usage.
+- Updated Arabic, Brazilian, Chinese, German, Italian, Slovakian, Swedish,
+  Ukrainian and French user interface localization.
 
 
 * BUILD/INSTALLATION
 
-- If available, use qtchooser to select correct Qt tools when configuring.
-
+- Correctly determine whether the X11 backend is used by Qt 5.8.
 
 
 ** Bug fixes:
@@ -85,99 +110,166 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- We no longer attempt to convert images for which we cannot find an
-  input format.
+- Fix nested language handling with polyglossia (bug 9633).
 
-- Fixed fen2ascii script.
+- Fix usage of multiple varieties of the same polyglossia language.
 
-- Fixed preview of external material with plaintext and DocBook.
+- Fix LaTeX output of fixed-width cells with decimal separator (bug 9568).
 
-- Fixed substitution for $$Contents in external templates.
+- Fix strike out of deleted display math with track-changes and pdf
+  output (bug 9678).
 
-- Fixed usage of new module "Title and Preamble Hacks" (bug 10320).
+- Do not hardcode required packages for Note inset.
 
-- Fix error with older versions of the covington package in the
-  Linguistics module (bug 10340).
+- Make *-lyxformat-* backup files use .lyx~ extension.
 
-- Fix LaTeX error with recent LuaTeX versions when using landscape.
+- Quote filenames used for forward-search with SumatraPDF (bug 10342).
 
-- Fix data loss with [ in first cell of aligned environment (bug 10361).
+- The '|' special character in index insets must no longer be inserted via
+  TeX-mode.
+
+- Fix preview of language switching commands for single paragraphs in some
+  corner cases.
+
+- Show symbol name and description in plaintext export of nomenclature
+  entries (bug 10459).
+
+- Correct encoding for Baltic languages like Lithuanian (bug 10474).
+
+- Fix some quote inset bugs (bug 10451):
+  # Adjoining closing Single + double quote becomes double + single quote
+    (for English, Swedish and German).
+  # French double quotes are converted to << >> in the LaTeX file and to
+    double inverted question/interrogation marks in the output, if the font
+    encoding is set to [None] or OT1 but the global default is T1.
+  # Quote type ignored for LyXHTML: always "English" quotes used.
+
+- Output correct identifier for DocBook XML.
+
+- Correctly escape hyperlinks for DocBook output.
+
+- Fix mathtools, amsmath and amssymb not loading automatically for some
+  symbols (bug 10467)
+
+- Protect citation arguments (pre and post text) which contain brackets
+  (part of bug 2751).
+
+- Handle backslash in label and ref insets (bug 4595).
+
+- Output Preamble code of InPreamble styles before the styles themselves
+  (bug 10215).
+
+- Fix CopyRightYear with ACMSiggraph 0.9.3.
+
+- Use \providecommand for logical markup macros. This fixes a LaTeX error
+  with strong and fontenc.
+
+- Fix problem with deleted paragraph breaks when changes are shown in
+  output (bug 10579).
+
+- Allow for empty .lyx files to be opened (bug 9198).
 
 
 * LYX2LYX
 
-- Fix hang with some IEEEtran documents (bug 10307).
-
-- Fix export of compressed files to previous versions that were not
-  recognised on windows (bug 10273).
+- Do not convert "--" to "\twohyphens" in formula macros.
 
 
 * USER INTERFACE
 
-- Avoid crashing in release mode if we stumble across an unrealized font.
+- Fix wrap-around on (simple) replace and in the spellchecker (bug 10378).
 
-- Correctly return exit code from spawned processes on Windows (bug 10327).
+- Fix logic of OK/Apply buttons in cross-references dialog (bug 10376).
 
-- Fix display of citations with two authors.
+- Fix display of Examples and Sub-Examples labels in linguistics module.
 
-- Fix display of multi-author citations when the GUI language is not English.
+- LyX keyboard shortcuts now take precedence over Qt accelerators. In
+  particular, under KDE, the automatic accelerator reassignment no longer
+  steals keys from LyX shortcuts (but can still leave some accelerators
+  inoperable). (bug 10261, see http://www.lyx.org/trac/ticket/10261#comment:16
+  for a workaround to KDE's bug.)
 
-- Fix bug where change tracking marks are lost under math insets (bug
-  10265).
+- Do not issue an error on missing characters in 'nullfont' (bug 10394).
 
-- Fix display glitch when switching to Description layout with an inset
-  at the beginning of the paragraph (bug 10163)
+- Fix on-screen display of font changes for text-in-math, so that now
+  $\textbf{\textsc{a}}$ is also boldened on screen other than in output.
 
-- Fix display of label font for argument insets.
+- When selecting special logos, set their color correctly.
 
-- Keep leading whitespace when converting local layout.
+- Fix display of Arabic text when compiling with Qt5 (bug 10436).
 
-- Correct default font of beamer article layouts (bug 9977).
+- Fix selection painting in right-to-left texts (bug 10424).
 
-- Remove extra whitespace around Preview and IPA insets (bug 10304).
+- Fix cursor movement when the document contains high-plane Unicode
+  characters (bug 10443).
 
-- Let M-x give focus to minibuffer when it is already open.
+- Fix wrong on-screen text layout where a word would be alone on a
+  line.
 
-- When doing a selection with Shift-click, make sure that the selection anchor
-  is correct.
+- Fix wrong on-screen flushing of a row that was cut after an hyphen.
 
-- Avoid to overwrite end-of-proof character with text on screen (bug
-  10344).
+- Fix crash when the document contains Unicode line-breaking characters.
 
-- Use proper dialog titles in InsetParams-derived dialogs (bug 10329).
+- Fix assertion when selecting muticolumn in math (bug 10486).
 
-- Fix "scroll here" feature of scrollbar (bug 10311).
+- Allow using colors supported by xcolor inside mathed (bug 10417).
 
-- Fix the minimum size of the citation dialog on first time (bug 10019).
+- Change description of "frame of button" color to "button frame" (bug
+  10135).
 
-- When Enter does nothing (empty paragraph), do not record undo (bug 10089).
+- Fix height of cursor inside insets (bug 10478).
 
-- Remove duplicate context menu item for Argument insets (bug 10368).
+- Fix bad painting of collapsable insets sub-label when selecting (bug 10475).
 
-- Fix display of vertical lines inside math matrices (bug 10363).
+- Always prefer breaking lines at word boundaries even for very long words.
+  This fixes line breaking issues most noticeably in languages where spaces
+  are rare such as Chinese (bug 10299).
+
+- Do not use the clipboard stack when transforming selection into an
+  inset (bug 6570).
+
+- Fix display and output of math macros with optional arguments appearing
+  in the optional argument of another macro.
+
+- Do not prematurely cut selected text when inserting a Hyperref (bug 10306).
+
+- Consider the argument of the hyperref-insert function even if there is a
+  selection.
+
+- Fix size of Section* headings in amsart.
+
+- Fix possible crash with Save As... when online spell-checking is active.
+
+- Correctly enable/disable citation dialog widgets on initialization.
+
+- Correct width of the navigating window in the document settings and
+  preferences dialogs in non-English localizations.
+
+- Fix display of some text-mode accents in the citation preview (bug 9340).
+
+- Fix font display in preview insets (bug 9732).
 
 
-* LYXHTML
+* INTERNALS
 
-- Enable export of external material (bug 8693).
+- Squash annoying warning from Qt when attempting to delete a non-existent
+  file.
 
-- Fix problem with output of branches (bug 8022).
 
-- Fix output of table borders (bug 10154).
+* DOCUMENTATION AND LOCALIZATION
 
-- Fix display of several math symbols (bug 8844).
+- Fix compilation of the Fexynman diagram example file.
 
-- Use scaling factor for export of images (bug 8742).
+- Added some comments to User Guide section 6.1 about defining formatted
+  references (bug 10545).
 
-- Fix display of listings (bug 8362).
+- Fix translation of Fixme module description (bug 10058).
 
-- Fix output of floats, etc, inside environments (bug 9094).
 
-- Simplify XHTML output for floats, etc (bug 8605).
+* BUILD/INSTALLATION
 
-- Add "dir='auto'" to body tag, which should help a lot with export of
-  RTL languages (bug 8279, partly).
+- Update boost source to 1.62.
 
-- Fix display of cases and matrices (bugs 8753, 8755).
+- Fix compiler warnings from clang 3.9 and gcc 6.
 
-- Fixed output of logos to the TOC.
+- Fix compilation with Qt 5.8.
