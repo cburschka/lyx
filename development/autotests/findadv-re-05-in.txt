@@ -9,10 +9,10 @@
 # ask if the cursor started at the beginning of the buffer).
 
 Lang it_IT.utf8
-TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
+TestBegin test.lyx -dbg find > findadv-re-05.loga.txt 2>&1
 KK: \Cm\\frac 1-x\[Down]1+x^2 \C\[Home]
 KK: \CF
 KK: \Cm\\frac \Axregexp-mode\[Return].* \[Down]1+x^2 \[Return]
 TestEnd
 Lang C
-Assert pcregrep 'raggiunta la fine cercando in avanti' lyx-log.txt
+Assert pcregrep 'raggiunta la fine cercando in avanti' findadv-re-05.loga.txt

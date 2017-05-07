@@ -2,9 +2,9 @@
 # 
 
 Lang C
-TestBegin test.lyx > lyx-log.txt 2>&1
+TestBegin test.lyx > bug-math-undo.loga.txt 2>&1
 KK: \Amm\\frac \\sqrt \Cz
 KK: \[Return]
 TestEnd
 Lang C
-Assert ! pcregrep -M 'SIGSEGV' lyx-log.txt
+Assert ! pcregrep -M 'SIGSEGV' bug-math-undo.loga.txt

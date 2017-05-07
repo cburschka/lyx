@@ -1,6 +1,6 @@
 #
 Lang it_IT.utf8
-TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
+TestBegin test.lyx -dbg find > findadv-03.loga.txt 2>&1
 KK: \Cm
 KK: x^2 -x^2\C\[Home]
 KK: \Cs
@@ -8,9 +8,9 @@ KK: \CF
 KK: \Cm
 KK: x^2\[Return]
 Lang C
-TestEnd pcregrep -M "Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 0" lyx-log.txt
+TestEnd pcregrep -M "Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 0" findadv-03.loga.txt
 Lang it_IT.utf8
-TestBegin test2.lyx -dbg find > lyx-log2.txt 2>&1
+TestBegin test2.lyx -dbg find > findadv-03.logb.txt 2>&1
 KK: \Cm
 KK: x^2 -x^2\C\[Home]
 KK: \Cs
@@ -19,4 +19,4 @@ KK: \Cm
 KK: x^2\[Return]\[Return]
 TestEnd
 Lang C
-Assert pcregrep -M "Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 2" lyx-log2.txt
+Assert pcregrep -M "Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 2" findadv-03.logb.txt

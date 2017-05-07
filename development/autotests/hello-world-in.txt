@@ -55,7 +55,7 @@
 # LaTeX, and verifies that the typed characters are indeed present in the
 # exported document.
 #
-TestBegin test.lyx -dbg key > lyx-log.txt 2>&1
+TestBegin test.lyx -dbg key > hello-world.loga.txt 2>&1
 KK: Hello World
 KK: \Cs
 KK: \Axbuffer-export latex\[Return]

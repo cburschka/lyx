@@ -1,41 +1,41 @@
 # Finding special latex/regexp chars: (
 #
 Lang it_IT.utf8
-TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
+TestBegin test.lyx -dbg find > findadv-re-01.loga.txt 2>&1
 KK: \\()[]{}%^#@?*.\C\[Home]
 KK: \Cs
 KK: \CF
 KK: \Axregexp-mode\[Return]\\(\[Return]
 TestEnd
 Lang C
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 1\n with len: 1' lyx-log.txt
+Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 1\n with len: 1' findadv-re-01.loga.txt
 #
 Lang sk_SK.utf8
-TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
+TestBegin test.lyx -dbg find > findadv-re-01.logb.txt 2>&1
 KK: \CF
 # Uncheck ignore format
 KK: \At\Ai\Ah
 KK: \Axregexp-mode\[Return]\\(\[Return]
 TestEnd
 Lang C
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 1\n with len: 1' lyx-log.txt
+Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 1\n with len: 1' findadv-re-01.logb.txt
 
 # Finding special latex/regexp chars: [
 #
 Lang it_IT.utf8
-TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
+TestBegin test.lyx -dbg find > findadv-re-01.logc.txt 2>&1
 KK: \CF
 KK: \Axregexp-mode\[Return]\\[\[Return]
 TestEnd
 Lang C
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 3\n with len: 1' lyx-log.txt
+Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 3\n with len: 1' findadv-re-01.logc.txt
 #
 Lang sk_SK.utf8
-TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
+TestBegin test.lyx -dbg find > findadv-re-01.logd.txt 2>&1
 KK: \CF
 # Uncheck ignore format
 KK: \At\Ai\Ah
 KK: \Axregexp-mode\[Return]\\[\[Return]
 TestEnd
 Lang C
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 3\n with len: 1' lyx-log.txt
+Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 3\n with len: 1' findadv-re-01.logd.txt

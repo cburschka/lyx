@@ -1,7 +1,7 @@
 # Finding displayed maths with ignore-format on&off (might affect #7596)
 #
 Lang sk_SK.utf8
-TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
+TestBegin test.lyx -dbg find > findadv-14.loga.txt 2>&1
 KK: \Axmath-display\[Return]
 KK: x^2 +x^2\C\[Home]
 KK: \Cs
@@ -12,10 +12,10 @@ KK: \Axmath-display\[Return]
 KK: x^2\[Return]
 TestEnd
 Lang C
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 0\n with len: 1' lyx-log.txt
+Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 0\n with len: 1' findadv-14.loga.txt
 
 Lang sk_SK.utf8
-TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
+TestBegin test.lyx -dbg find > findadv-14.logb.txt 2>&1
 KK: \CF
 # Uncheck ignore format
 KK: \At\Ai\Ah
@@ -23,22 +23,22 @@ KK: \Axmath-display\[Return]
 KK: x^2\[Return]\[Return]
 TestEnd
 Lang C
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 2\n with len: 1' lyx-log.txt
+Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 2\n with len: 1' findadv-14.logb.txt
 
 Lang it_IT.utf8
-TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
+TestBegin test.lyx -dbg find > findadv-14.logc.txt 2>&1
 KK: \CF
 KK: \Axmath-display\[Return]
 KK: x^2\[Return]
 TestEnd
 Lang C
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 0\n with len: 1' lyx-log.txt
+Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 0\n with len: 1' findadv-14.logc.txt
 
 Lang it_IT.utf8
-TestBegin test.lyx -dbg find > lyx-log.txt 2>&1
+TestBegin test.lyx -dbg find > findadv-14.logd.txt 2>&1
 KK: \CF
 KK: \Axmath-display\[Return]
 KK: x^2\[Return]\[Return]
 TestEnd
 Lang C
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 2\n with len: 1' lyx-log.txt
+Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 2\n with len: 1' findadv-14.logd.txt

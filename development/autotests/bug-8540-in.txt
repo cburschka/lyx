@@ -2,8 +2,8 @@
 #
 Lang en_US.utf8
 
-TestBegin > lyx-log.txt 2>&1
+TestBegin > bug-8540.loga.txt 2>&1
 KK: \Axlyxrc-apply \\spellchecker enchant\[Return]
 KK: \Axlyxrc-apply \\spellchecker enchant\[Return]
 TestEnd
-Assert ! pcregrep -M 'SIGSEGV' lyx-log.txt
+Assert ! pcregrep -M 'SIGSEGV' bug-8540.loga.txt
