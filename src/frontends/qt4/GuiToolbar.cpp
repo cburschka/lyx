@@ -415,19 +415,17 @@ void GuiToolbar::movable(bool silent)
 	// toggle movability
 	setMovable(!isMovable());
 
-	// manual repaint avoids bug in qt that the drag handle is not removed
+	// manual update avoids bug in qt that the drag handle is not removed
 	// properly, e.g. in Windows
-	if (isVisible())
-		repaint();
+	Q_EMIT update();
 
 	// silence for toggling of many toolbars for performance
 	if (!silent) {
 		docstring state;
-		if (isMovable()) {
+		if (isMovable())
 			state = _("movable");
-		} else {
+		else
 			state = _("immovable");
-		}
 		owner_.message(bformat(_("Toolbar \"%1$s\" state set to %2$s"),
 			qstring_to_ucs4(windowTitle()), state));
 	}

@@ -673,7 +673,7 @@ Menuset
 	Menu "context-toolbars"
 		Toolbars
 		Separator
-		Item "Lock All Toolbars|L" "toolbar-movable *"
+		Item "Lock Toolbars|L" "toolbar-movable *"
 		Separator
 		Item "Small-sized Icons" "icon-size small"
 		Item "Normal-sized Icons" "icon-size normal"

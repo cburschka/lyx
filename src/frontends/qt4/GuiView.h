@@ -210,9 +210,6 @@ public:
 	/// Current ratio between physical pixels and device-independent pixels
 	double pixelRatio() const;
 
-	// movability flag of all toolbars
-	bool toolbarsMovable;
-
 Q_SIGNALS:
 	void closing(int);
 	void triggerShowDialog(QString const & qname, QString const & qdata, Inset * inset);
@@ -468,6 +465,8 @@ private:
 	/// Minimum zoom percentage
 	static int const zoom_min_ = 10;
 
+	// movability flag of all toolbars
+	bool toolbarsMovable_;
 };
 
 } // namespace frontend

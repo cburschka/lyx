@@ -814,11 +814,11 @@ GuiToolbar * GuiView::toolbar(string const & name)
 
 void GuiView::updateLockToolbars()
 {
-	toolbarsMovable = false;
+	toolbarsMovable_ = false;
 	for (ToolbarInfo const & info : guiApp->toolbars()) {
 		GuiToolbar * tb = toolbar(info.name);
 		if (tb && tb->isMovable())
-			toolbarsMovable = true;
+			toolbarsMovable_ = true;
 	}
 }
 
@@ -1914,12 +1914,12 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_TOOLBAR_MOVABLE: {
 		string const name = cmd.getArg(0);
 		// use negation since locked == !movable
-		if (name == "*") {
+		if (name == "*")
 			// toolbar name * locks all toolbars
-			flag.setOnOff(!toolbarsMovable);
-		} else if (GuiToolbar * t = toolbar(name)) {
+			flag.setOnOff(!toolbarsMovable_);
+		else if (GuiToolbar * t = toolbar(name))
 			flag.setOnOff(!(t->isMovable()));
-		} else {
+		else {
 			enable = false;
 			docstring const msg =
 				bformat(_("Unknown toolbar \"%1$s\""), from_utf8(name));
@@ -3852,22 +3852,19 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			string const name = cmd.getArg(0);
 			if (name == "*") {
 				// toggle (all) toolbars movablility
-				toolbarsMovable = !toolbarsMovable;
-				Toolbars::Infos::iterator cit = guiApp->toolbars().begin();
-				Toolbars::Infos::iterator end = guiApp->toolbars().end();
-				for (; cit != end; ++cit) {
-					GuiToolbar * tb = toolbar(cit->name);
-					if (tb && tb->isMovable() != toolbarsMovable) {
-						// toggle toolbar movablity if it does not fit lock (all) toolbars positions state
-						// silent = true, since status bar notifications are slow
+				toolbarsMovable_ = !toolbarsMovable_;
+				for (ToolbarInfo const & ti : guiApp->toolbars()) {
+					GuiToolbar * tb = toolbar(ti.name);
+					if (tb && tb->isMovable() != toolbarsMovable_)
+						// toggle toolbar movablity if it does not fit lock
+						// (all) toolbars positions state silent = true, since
+						// status bar notifications are slow
 						tb->movable(true);
-					}
 				}
-				if (toolbarsMovable) {
-					dr.setMessage(_("All toolbars unlocked."));
-				} else {
-					dr.setMessage(_("All toolbars locked."));
-				}
+				if (toolbarsMovable_)
+					dr.setMessage(_("Toolbars unlocked."));
+				else
+					dr.setMessage(_("Toolbars locked."));
 			} else if (GuiToolbar * t = toolbar(name)) {
 				// toggle current toolbar movablity
 				t->movable();
