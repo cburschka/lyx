@@ -1268,7 +1268,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(mathsModule->MathIndentCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(mathsModule->MathIndentCO, SIGNAL(activated(int)),
-		this, SLOT(setMathIndent(int)));
+		this, SLOT(EnableMathIndent(int)));
 	connect(mathsModule->MathIndentLE, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(mathsModule->MathIndentLengthCO, SIGNAL(activated(int)),
@@ -1630,7 +1630,7 @@ void GuiDocument::allowMathIndent() {
 	isValid();
 }
 
-void GuiDocument::setMathIndent(int item)
+void GuiDocument::EnableMathIndent(int item)
 {
 	bool const enable = (item == 1);
 	mathsModule->MathIndentLE->setEnabled(enable);
@@ -2920,14 +2920,9 @@ void GuiDocument::applyView()
 		if (rb->isChecked())
 			bp_.use_package(it->first, BufferParams::package_off);
 	}
-	bp_.is_math_indent = mathsModule->MathIndentCB->isChecked();
 	// if math is indented
+	bp_.is_math_indent = mathsModule->MathIndentCB->isChecked();
 	if (bp_.is_math_indent) {
-		Length mathindent(widgetsToLength(mathsModule->MathIndentLE,
-		                                  mathsModule->MathIndentLengthCO));
-		bp_.setMathIndent(mathindent);
-	}
-	if (mathsModule->MathIndentCB->isChecked()) {
 		// if formulas are indented
 		switch (mathsModule->MathIndentCO->currentIndex()) {
 		case 0:
@@ -3407,8 +3402,8 @@ void GuiDocument::paramsToDialog()
 	updateModuleInfo();
 
 	// math
+	mathsModule->MathIndentCB->setChecked(bp_.is_math_indent);
 	if (bp_.is_math_indent) {
-		mathsModule->MathIndentCB->setChecked(bp_.is_math_indent);
 		Length const mathindent = bp_.getMathIndent();
 		int indent = 0;
 		if (!mathindent.empty()) {
@@ -3418,7 +3413,7 @@ void GuiDocument::paramsToDialog()
 			indent = 1;
 		}
 		mathsModule->MathIndentCO->setCurrentIndex(indent);
-		setMathIndent(indent);
+		EnableMathIndent(indent);
 	}
 	if (bp_.math_number_before)
 		mathsModule->MathNumberingPosCO->setCurrentIndex(0);
@@ -4091,7 +4086,7 @@ bool GuiDocument::isValid()
 			!textLayoutModule->indentLE->text().isEmpty()
 		) &&
 		(
-			// if we're asking for indentation
+			// if we're asking for math indentation
 			!mathsModule->MathIndentCB->isChecked() ||
 			// then either we haven't chosen custom
 			mathsModule->MathIndentCO->currentIndex() != 1 ||
