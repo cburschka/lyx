@@ -76,7 +76,7 @@
 \begin_body
 
 \begin_layout Title
-LyX Gnuplot scripting example
+LyX gnuplot scripting example
 \end_layout
 
 \begin_layout Standard
@@ -89,10 +89,9 @@ This is a sample LyX file showing a Graphics inset including a simple gnuplot
 This can be inserted using the menu 
 \family sans
 Insert\SpecialChar menuseparator
-Graphics...
-
+Graphics
 \family default
- then choosing a GNUPLOT script with either 
+ then choosing a gnuplot script with either 
 \family typewriter
 .gp
 \family default
@@ -106,7 +105,7 @@ Graphics...
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename example_gnuplot.gp
+	filename gnuplot-example.gp
 
 \end_inset
 
@@ -126,7 +125,7 @@ you have on-screen graphics display disabled; this can be checked/enabled
  with menu 
 \family sans
 Tools\SpecialChar menuseparator
-Preferences...,
+Preferences,
 \family default
  pane 
 \family sans
@@ -134,7 +133,7 @@ Look & feel\SpecialChar menuseparator
 Display,
 \family default
  then ensuring that the option 
-\family typewriter
+\family sans
 Display graphics
 \family default
  is enabled
@@ -145,22 +144,19 @@ you have
 \family typewriter
 needauth
 \family default
- converters completely disabled/forbidden (Gnuplot is among this type of
+ converters completely disabled/forbidden (gnuplot is among this type of
  converters, more information is available at 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://www.lyx.org/trac/ticket/10481
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org/trac/ticket/10481"
+literal "false"
 
 \end_inset
 
 ); these can be re-enabled from the menu 
 \family sans
 Tools\SpecialChar menuseparator
-Preferences...,
+Preferences,
 \family default
  pane 
 \family sans
@@ -196,13 +192,12 @@ Run
 
 \begin_layout Enumerate
 if none of the above worked, please contact us on the 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-mailto://lyx-devel@lyx.org
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "lyx-devel@lyx.org"
+target "lyx-devel@lyx.org"
+type "mailto:"
+literal "false"
 
 \end_inset
 

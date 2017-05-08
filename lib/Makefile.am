@@ -327,6 +327,8 @@ dist_examples_DATA = \
 	examples/example_lyxified.lyx \
 	examples/example_raw.lyx \
 	examples/FeynmanDiagrams.lyx \
+	examples/gnuplot.lyx \
+	examples/gnuplot-example.gp \
 	examples/H-P-statements.lyx \
 	examples/iecc05.fen \
 	examples/iecc07.fen \
