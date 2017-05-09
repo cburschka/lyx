@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-04-28 15:33+0200\n"
-"PO-Revision-Date: 2017-04-28 13:42+0000\n"
+"POT-Creation-Date: 2017-05-09 17:30+0200\n"
+"PO-Revision-Date: 2017-05-09 15:47+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -4284,9 +4284,9 @@ msgstr "S&trojopisné:"
 msgid "R&oman:"
 msgstr "&Serifové:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:169
-msgid "&Zoom %:"
-msgstr "&Lupa %:"
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:209
+msgid "Default &zoom %:"
+msgstr "Štandardná &lupa %:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:206
 msgid "Font Sizes"
@@ -17757,6 +17757,10 @@ msgstr "Vybrať Sekciu"
 msgid "Wrap by Preview|y"
 msgstr "Obtekať pri Náhľade"
 
+#: lib/ui/stdcontext.inc:676 lib/ui/stdmenus.inc:356
+msgid "Lock Toolbars|L"
+msgstr "Blokuj Lišty nástrojov"
+
 #: lib/ui/stdcontext.inc:668 lib/ui/stdmenus.inc:354
 msgid "Small-sized Icons"
 msgstr "Malé Ikony"
@@ -18908,6 +18912,10 @@ msgstr "Prepnúť lištu nástrojov pre matematiku"
 #: lib/ui/stdtoolbars.inc:97
 msgid "Toggle table toolbar"
 msgstr "Prepnúť lištu nástrojov pre tabuľku"
+
+#: lib/ui/stdtoolbars.inc:98
+msgid "Toggle review toolbar"
+msgstr "Prepnúť lištu nástrojov pre náhľad"
 
 #: lib/ui/stdtoolbars.inc:100
 msgid "View/Update"
@@ -24140,6 +24148,14 @@ msgstr "Rozšírený WMF"
 #: lib/configure.py:847
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
+
+#: lib/configure.py:1050
+msgid "gnuplot"
+msgstr "gnuplot"
+
+#: lib/configure.py:1050
+msgid "gnuplot|Gnuplot"
+msgstr "gnuplot|Gnuplot"
 
 #: lib/configure.py:1082
 msgid "LyX Archive (zip)"
@@ -30015,6 +30031,14 @@ msgstr "vypnuté"
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr "Stav lišty nástrojov \"%1$s\" nastavený na %2$s"
 
+#: src/frontends/qt4/GuiToolbar.cpp:426
+msgid "movable"
+msgstr "pohyblivá"
+
+#: src/frontends/qt4/GuiToolbar.cpp:428
+msgid "immovable"
+msgstr "pevná"
+
 #: src/frontends/qt4/GuiVSpace.h:40
 msgid "Vertical Space Settings"
 msgstr "Nastavenia Vertikálnej Medzery"
@@ -30463,6 +30487,14 @@ msgstr "Ukladám všetky dokumenty…"
 #: src/frontends/qt4/GuiView.cpp:3741
 msgid "All documents saved."
 msgstr "Všetky dokumenty uložené."
+
+#: src/frontends/qt4/GuiView.cpp:3865
+msgid "Toolbars unlocked."
+msgstr "Lišty nástrojov neblokované."
+
+#: src/frontends/qt4/GuiView.cpp:3867
+msgid "Toolbars locked."
+msgstr "Lišty nástrojov blokované."
 
 #: src/frontends/qt4/GuiView.cpp:3784
 #, c-format
@@ -32503,11 +32535,12 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
-#, fuzzy
+#~ msgid "&Zoom %:"
+#~ msgstr "&Lupa %:"
+
 #~ msgid "Number formulas:"
 #~ msgstr "Číselné znaky"
 
-#, fuzzy
 #~ msgid "Before"
 #~ msgstr "Pred"
 
