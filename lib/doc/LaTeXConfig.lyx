@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 542
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -61,6 +61,7 @@
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
+\math_number_before 0
 \quotes_style english
 \dynamic_quotes 0
 \papercolumns 1
@@ -2381,6 +2382,34 @@ http://journals.aas.org/authors/aastex/aastex.html
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection
+acmart
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "textclass"
+arg   "acmart"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+/macros/latex/contrib/acmart
+\family default
+ 
+\end_layout
+
+\begin_layout Description
+Notes: This package provides a class for typesetting publications of the
+ Association for Computing Machinery.
+ 
 \end_layout
 
 \begin_layout Subsection

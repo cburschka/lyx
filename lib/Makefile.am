@@ -2094,6 +2094,7 @@ dist_layouts_DATA =\
 	layouts/acm-sigs.layout \
 	layouts/acm-sigs-alt.layout \
 	layouts/acm-sigs.inc \
+	layouts/acmart.layout \
 	layouts/acmsiggraph.layout \
 	layouts/acmsiggraph-0-92.layout \
 	layouts/AEA.layout \
