@@ -865,7 +865,7 @@ bool LyX::init()
 #endif
 
 	lyxrc.tempdir_path = package().temp_dir().absFileName();
-	lyxrc.document_path = ".";
+	lyxrc.document_path = package().document_dir().absFileName();
 
 	if (lyxrc.example_path.empty()) {
 		lyxrc.example_path = addPath(package().system_support().absFileName(),
