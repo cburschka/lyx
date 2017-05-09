@@ -4228,13 +4228,7 @@ msgstr ""
 "Sitzungen unterschiedlich sein). Eine Ausnahme ist der \"TEXINPUTS-Präfix\"-"
 "Pfad: Hier ist das Arbeitsverzeichnis das Verzeichnis, in dem das aktuelle "
 "Dokument gespeichert ist. Das Pfadkürzel \".\" (ohne die Anführungszeichen) "
-"verweist direkt auf das Arbeitsverzeichnis.Relative and absolute paths are "
-"allowed. Relative paths will be expanded with respect to the working "
-"directory (WD). For all paths except the \"TEXINPUTS prefix\" the WD is the "
-"directory from which you start LyX, and thus could change for each LyX "
-"session. For the \"TEXINPUTS prefix\" path the WD is the directory "
-"containing the document. The path \".\" (without quotes) is a common example "
-"of a relative path and refers to the WD."
+"verweist direkt auf das Arbeitsverzeichnis.
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:35
 msgid "&PATH prefix:"
