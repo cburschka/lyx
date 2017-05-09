@@ -431,7 +431,6 @@ enum FuncCode
 	LFUN_SECTION_SELECT,            // vfr, 20090503
 	LFUN_FONT_UNDERLINE,
 	LFUN_FONT_STRIKEOUT,
-	LFUN_FONT_CROSSOUT,             // uwestoehr 20170404
 	LFUN_FONT_UNDERUNDERLINE,
 	// 335
 	LFUN_FONT_UNDERWAVE,
@@ -473,6 +472,7 @@ enum FuncCode
 	LFUN_BUFFER_EXTERNAL_MODIFICATION_CLEAR,// gm, 20170302
 	LFUN_BUFFER_ZOOM,               // daniel, 20161028
 	LFUN_TOOLBAR_MOVABLE,           // daniel, 20160712
+	LFUN_FONT_CROSSOUT,             // uwestoehr 20170404
 	LFUN_LASTACTION                 // end of the table
 };
 
