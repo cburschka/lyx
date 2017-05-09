@@ -1738,11 +1738,23 @@ bool Cursor::mathForward(bool word)
 	LASSERT(inMathed(), return false);
 	if (pos() < lastpos()) {
 		if (word) {
-			// word: skip a group of insets with same math class
+			// word: skip a group of insets of the form X*(B*|R*|P*) (greedy
+			// match) where X is any math class, B is mathbin, R is mathrel, and
+			// P is mathpunct. Make sure that the following remains true:
+			//   mathForward(true); mathBackward(true); mathForward(true)
+			// is the same as mathForward(true) and
+			//   mathBackward(true); mathForward(true); mathBackward(true)
+			// is the same as mathBackward(true).
 			MathClass mc = nextMath().mathClass();
 			do
 				posForward();
 			while (pos() < lastpos() && mc == nextMath().mathClass());
+			if (pos() < lastpos() &&
+			    ((mc = nextMath().mathClass()) == MC_BIN ||
+			     mc == MC_REL || mc == MC_PUNCT))
+				do
+					posForward();
+				while (pos() < lastpos() && mc == nextMath().mathClass());
 		} else if (openable(nextAtom())) {
 			// single step: try to enter the next inset
 			pushBackward(nextMath());
@@ -1767,11 +1779,17 @@ bool Cursor::mathBackward(bool word)
 	LASSERT(inMathed(), return false);
 	if (pos() > 0) {
 		if (word) {
-			// word: skip a group of insets with same math class
+			// word: skip a group of insets. See the comment in mathForward.
 			MathClass mc = prevMath().mathClass();
 			do
 				posBackward();
 			while (pos() > 0 && mc == prevMath().mathClass());
+			if (pos() > 0 && (mc == MC_BIN || mc == MC_REL || mc == MC_PUNCT)) {
+				mc = prevMath().mathClass();
+				do
+					posBackward();
+				while (pos() > 0 && mc == prevMath().mathClass());
+			}
 		} else if (openable(prevAtom())) {
 			// single step: try to enter the preceding inset
 			posBackward();
