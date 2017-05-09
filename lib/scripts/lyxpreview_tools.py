@@ -15,7 +15,7 @@
 
 # Requires python 2.4 or later (subprocess module).
 
-import os, re, string, subprocess, sys, tempfile
+import os, re, subprocess, sys, tempfile
 
 
 # Control the output to stdout
@@ -76,9 +76,9 @@ def make_texcolor(hexcolor, graphics):
     if not hexcolor_re.match(hexcolor):
         error("Cannot convert color '%s'" % hexcolor)
 
-    red   = float(string.atoi(hexcolor[0:2], 16)) / 255.0
-    green = float(string.atoi(hexcolor[2:4], 16)) / 255.0
-    blue  = float(string.atoi(hexcolor[4:6], 16)) / 255.0
+    red   = float(int(hexcolor[0:2], 16)) / 255.0
+    green = float(int(hexcolor[2:4], 16)) / 255.0
+    blue  = float(int(hexcolor[4:6], 16)) / 255.0
 
     if graphics:
         return "%f,%f,%f" % (red, green, blue)
@@ -110,7 +110,7 @@ def find_exe(candidates):
 def find_exe_or_terminate(candidates):
     exe = find_exe(candidates)
     if exe == None:
-        error("Unable to find executable from '%s'" % string.join(candidates))
+        error("Unable to find executable from '%s'" % " ".join(candidates))
 
     return exe
 
@@ -203,7 +203,7 @@ def get_version_info():
     if match == None:
         error("Unable to extract version info from 'sys.version'")
 
-    return string.atoi(match.group(1)), string.atoi(match.group(2))
+    return int(match.group(1)), int(match.group(2))
 
 
 def copyfileobj(fsrc, fdst, rewind=0, length=16*1024):

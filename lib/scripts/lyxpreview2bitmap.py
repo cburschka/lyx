@@ -75,7 +75,9 @@
 # Moreover dvipng can't work with PDF files, so, if the CONVERTER
 # paramter is pdflatex we have to fallback to legacy route (step 2).
 
-import getopt, glob, os, re, shutil, string, sys
+from __future__ import print_function
+
+import getopt, glob, os, re, shutil, sys
 
 from legacy_lyxpreview2ppm import extract_resolution, legacy_conversion_step1
 
@@ -134,8 +136,8 @@ def extract_metrics_info(dvipng_stdout):
         success = 1
 
         # Calculate the 'ascent fraction'.
-        descent = string.atof(match.group(1))
-        ascent  = string.atof(match.group(2))
+        descent = float(match.group(1))
+        ascent  = float(match.group(2))
 
         frac = 0.5
         if ascent < 0:
@@ -159,25 +161,25 @@ def extract_metrics_info(dvipng_stdout):
 
 
 def fix_latex_file(latex_file, pdf_output):
-    def_re = re.compile(r"(\\newcommandx|\\global\\long\\def)(\\[a-zA-Z]+)")
+    def_re = re.compile(rb"(\\newcommandx|\\global\\long\\def)(\\[a-zA-Z]+)")
 
     tmp = mkstemp()
 
     changed = False
     macros = []
-    for line in open(latex_file, 'r').readlines():
-        if not pdf_output and line.startswith("\\documentclass"):
+    for line in open(latex_file, 'rb').readlines():
+        if not pdf_output and line.startswith(b"\\documentclass"):
             changed = True
-            line += "\\PassOptionsToPackage{draft}{microtype}\n"
+            line += b"\\PassOptionsToPackage{draft}{microtype}\n"
         else:
             match = def_re.match(line)
             if match != None:
                 macroname = match.group(2)
                 if macroname in macros:
                     definecmd = match.group(1)
-                    if definecmd == "\\newcommandx":
+                    if definecmd == b"\\newcommandx":
                         changed = True
-                        line = line.replace(definecmd, "\\renewcommandx")
+                        line = line.replace(definecmd, b"\\renewcommandx")
                 else:
                     macros.append(macroname)
         tmp.write(line)
@@ -215,7 +217,7 @@ def find_ps_pages(dvi_file):
         error("No DVI output.")
 
     # Check for PostScript specials in the dvi, badly supported by dvipng,
-    # and inclusion of PDF/PNG/JPG files. 
+    # and inclusion of PDF/PNG/JPG files.
     # This is required for correct rendering of PSTricks and TikZ
     dv2dt = find_exe_or_terminate(["dv2dt"])
     dv2dt_call = '%s "%s"' % (dv2dt, dvi_file)
@@ -324,13 +326,13 @@ def main(argv):
         (opts, args) = getopt.gnu_getopt(argv[1:], "dhv", ["bibtex=", "bg=",
             "debug", "dpi=", "fg=", "help", "latex=", "lilypond",
             "lilypond-book=", "png", "ppm", "verbose"])
-    except getopt.GetoptError, err:
+    except getopt.GetoptError as err:
         error("%s\n%s" % (err, usage(script_name)))
 
     opts.reverse()
     for opt, val in opts:
         if opt in ("-h", "--help"):
-            print usage(script_name)
+            print(usage(script_name))
             sys.exit(0)
         elif opt == "--bibtex":
             bibtex = [val]
@@ -341,7 +343,7 @@ def main(argv):
             lyxpreview_tools.debug = True
         elif opt == "--dpi":
             try:
-                dpi = string.atoi(val)
+                dpi = int(val)
             except:
                 error("Cannot convert %s to an integer value" % val)
         elif opt == "--fg":

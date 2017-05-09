@@ -79,7 +79,7 @@
 # If possible, the script will use pdftocairo instead of gs,
 # as it's much faster and gives better results.
 
-import glob, os, pipes, re, string, sys
+import glob, os, pipes, re, sys
 
 from lyxpreview_tools import check_latex_log, copyfileobj, error, filter_pages,\
      find_exe, find_exe_or_terminate, join_metrics_and_rename, latex_commands, \
@@ -118,8 +118,8 @@ def legacy_extract_metrics_info(log_file):
                 error("Unexpected data in %s\n%s" % (log_file, line))
 
             if snippet:
-                ascent  = string.atof(match.group(2))
-                descent = string.atof(match.group(3))
+                ascent  = float(match.group(2))
+                descent = float(match.group(3))
 
                 frac = 0.5
                 if ascent == 0 and descent == 0:
@@ -139,8 +139,8 @@ def legacy_extract_metrics_info(log_file):
                 results.append((int(match.group(1)), frac))
 
             else:
-                tp_descent = string.atof(match.group(2))
-                tp_ascent  = string.atof(match.group(4))
+                tp_descent = float(match.group(2))
+                tp_ascent  = float(match.group(4))
 
     except:
         # Unable to open the file, but do nothing here because
@@ -177,7 +177,7 @@ def extract_resolution(log_file, dpi):
                     match = extract_decimal_re.search(line)
                     if match == None:
                         error("Unable to parse: %s" % line)
-                    fontsize = string.atof(match.group(1))
+                    fontsize = float(match.group(1))
                     found_fontsize = 1
                     continue
 
@@ -187,7 +187,7 @@ def extract_resolution(log_file, dpi):
                     match = extract_integer_re.search(line)
                     if match == None:
                         error("Unable to parse: %s" % line)
-                    magnification = string.atof(match.group(1))
+                    magnification = float(match.group(1))
                     found_magnification = 1
                     continue
 
@@ -275,7 +275,7 @@ def legacy_conversion(argv, skipMetrics = False):
     if len(dir) != 0:
         os.chdir(dir)
 
-    dpi = string.atoi(argv[2])
+    dpi = int(argv[2])
 
     output_format = argv[3]
 
