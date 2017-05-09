@@ -4,7 +4,7 @@
 # 
 
 Lang C
-TestBegin -dbg files test.lyx > bug-export-latex.loga.txt 2>&1
+TestBegin -dbg key,files test.lyx > bug-export-latex.loga.txt 2>&1
 KK: \Axinfo-insert icon math-mode\[Return]
 KK: \Axbuffer-export luatex\[Return]
 KK: \[Tab]\[Return]

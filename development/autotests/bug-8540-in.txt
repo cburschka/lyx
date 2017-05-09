@@ -2,7 +2,7 @@
 #
 Lang en_US.utf8
 
-TestBegin > bug-8540.loga.txt 2>&1
+TestBegin -dbg key > bug-8540.loga.txt 2>&1
 KK: \Axlyxrc-apply \\spellchecker enchant\[Return]
 KK: \Axlyxrc-apply \\spellchecker enchant\[Return]
 TestEnd

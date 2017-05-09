@@ -2,7 +2,7 @@
 # Test for #8381
 
 Lang sk_SK.utf8
-TestBegin test.lyx -dbg find > findadv-21.loga.txt 2>&1
+TestBegin test.lyx -dbg key,find > findadv-21.loga.txt 2>&1
 KK: \Apb
 KK: one\[Return]
 KK: two\[Return]
@@ -27,7 +27,7 @@ Lang C
 Assert pcregrep -M 'Putting selection at cur= inset: .* idx: 0 par: 3 pos: 0\n with len: 4' findadv-21.loga.txt
 
 Lang sk_SK.utf8
-TestBegin test.lyx -dbg find > findadv-21.logb.txt 2>&1
+TestBegin test.lyx -dbg key,find > findadv-21.logb.txt 2>&1
 KK: \CF
 # Uncheck ignore format
 KK: \At\Ai\Ah

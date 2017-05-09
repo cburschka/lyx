@@ -4,7 +4,7 @@
 # is cleared after the next test starts.
 
 Lang en_US.utf8
-TestBegin test.lyx > bug-8482.loga.txt 2>&1
+TestBegin -dbg key test.lyx > bug-8482.loga.txt 2>&1
 KK: \Cm
 KK: \Ai
 TestEnd

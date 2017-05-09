@@ -1,4 +1,4 @@
 Lang en_US.utf8
-TestBegin test.lyx > first-time.loga.txt 2>&1
+TestBegin -dbg key test.lyx > first-time.loga.txt 2>&1
 KK: \[Left]\[Return]
 TestEnd

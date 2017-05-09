@@ -1,7 +1,7 @@
 # Searching for regexp with e.g. \[Backspace]\[Backspace]s finds blanks
 
 Lang it_IT.utf8
-TestBegin test.lyx -dbg find > findadv-18.loga.txt 2>&1
+TestBegin test.lyx -dbg key,find > findadv-18.loga.txt 2>&1
 KK: a b c\C\[Home]
 KK: \Cs
 KK: \CF

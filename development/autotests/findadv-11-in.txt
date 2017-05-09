@@ -1,7 +1,7 @@
 # Inspired by #7363.
 #
 Lang it_IT.utf8
-TestBegin test.lyx -dbg find > findadv-11.loga.txt 2>&1
+TestBegin test.lyx -dbg key,find > findadv-11.loga.txt 2>&1
 KK: \Cm
 KK: x_v \C\[Home]
 KK: \Cs
@@ -13,7 +13,7 @@ Lang C
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 0\n.*idx: 1 par: 0 pos: 0\n with len: 1' findadv-11.loga.txt
 
 Lang sk_SK.utf8
-TestBegin test.lyx -dbg find > findadv-11.logb.txt 2>&1
+TestBegin test.lyx -dbg key,find > findadv-11.logb.txt 2>&1
 KK: \C\[Home]
 KK: \CF
 # Uncheck ignore format

@@ -1,7 +1,7 @@
 # Finding special latex/regexp chars: \
 #
 Lang it_IT.utf8
-TestBegin test.lyx -dbg find > findadv-re-02.loga.txt 2>&1
+TestBegin test.lyx -dbg key,find > findadv-re-02.loga.txt 2>&1
 KK: \\()[]{}%^#@?*.\C\[Home]
 KK: \Cs
 KK: \CF
@@ -11,7 +11,7 @@ Lang C
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n with len: 1' findadv-re-02.loga.txt
 #
 Lang sk_SK.utf8
-TestBegin test.lyx -dbg find > findadv-re-02.logb.txt 2>&1
+TestBegin test.lyx -dbg key,find > findadv-re-02.logb.txt 2>&1
 KK: \CF
 # Uncheck ignore format
 KK: \At\Ai\Ah
@@ -23,7 +23,7 @@ Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n with len: 1' f
 # Finding special latex/regexp chars: %
 #
 Lang it_IT.utf8
-TestBegin test.lyx -dbg find > findadv-re-02.logc.txt 2>&1
+TestBegin test.lyx -dbg key,find > findadv-re-02.logc.txt 2>&1
 KK: \CF
 KK: \Axregexp-mode\[Return]%\[Return]
 TestEnd
@@ -31,7 +31,7 @@ Lang C
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 7\n with len: 1' findadv-re-02.logc.txt
 #
 Lang sk_SK.utf8
-TestBegin test.lyx -dbg find > findadv-re-02.logd.txt 2>&1
+TestBegin test.lyx -dbg key,find > findadv-re-02.logd.txt 2>&1
 KK: \CF
 # Uncheck ignore format
 KK: \At\Ai\Ah
@@ -43,7 +43,7 @@ Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 7\n with len: 1' f
 # Finding special latex/regexp chars: ^
 #
 Lang it_IT.utf8
-TestBegin test.lyx -dbg find > findadv-re-02.loge.txt 2>&1
+TestBegin test.lyx -dbg key,find > findadv-re-02.loge.txt 2>&1
 KK: \CF
 KK: \Axregexp-mode\[Return]\\^\[Return]
 TestEnd
@@ -51,7 +51,7 @@ Lang C
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 8\n with len: 1' findadv-re-02.loge.txt
 #
 Lang sk_SK.utf8
-TestBegin test.lyx -dbg find > findadv-re-02.logf.txt 2>&1
+TestBegin test.lyx -dbg key,find > findadv-re-02.logf.txt 2>&1
 KK: \CF
 # Uncheck ignore format
 KK: \At\Ai\Ah

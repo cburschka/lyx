@@ -2,7 +2,7 @@
 # when ignoring format
 
 Lang sk_SK.utf8
-TestBegin test.lyx -dbg find > findadv-logo.loga.txt 2>&1
+TestBegin test.lyx -dbg key,find > findadv-logo.loga.txt 2>&1
 KK: This should be a LaTeX logo: 
 KK: \Axspecialchar-insert lyx\[Return]\[Return]
 KK: for a WYSIWYG LaTeX editor.\C\[Home]

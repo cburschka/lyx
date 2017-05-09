@@ -1,8 +1,8 @@
 Lang en_US.utf8
-TestBegin ../bug-8684.lyx > bug-8684.loga.txt 2>&1
+TestBegin -dbg key ../bug-8684.lyx > bug-8684.loga.txt 2>&1
 KK: \Axcommand-sequence change-next; change-reject; change-next\[Return]
 TestEnd
 
-TestBegin ../bug-8684.lyx > bug-8684.logb.txt 2>&1
+TestBegin -dbg key ../bug-8684.lyx > bug-8684.logb.txt 2>&1
 KK: \Axcommand-sequence char-forward; change-next\[Return]
 TestEnd

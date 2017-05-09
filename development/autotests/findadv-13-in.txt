@@ -1,7 +1,7 @@
 # Finding footnotes
 #
 Lang it_IT.utf8
-TestBegin test.lyx -dbg find > findadv-13.loga.txt 2>&1
+TestBegin test.lyx -dbg key,find > findadv-13.loga.txt 2>&1
 KK: \Axfootnote-insert\[Return]
 # Work around a little UI bug/non-determinism in cursor position after LFUN
 KK: \C\[Home]\[Right]

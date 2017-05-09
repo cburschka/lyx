@@ -1,7 +1,7 @@
 # Test for searching with regular expressions
 
 Lang sk_SK.utf8
-TestBegin test.lyx -dbg find > findadv-09.loga.txt 2>&1
+TestBegin test.lyx -dbg key,find > findadv-09.loga.txt 2>&1
 KK: \Apb
 KK: one\[Return]two\[Return]three\C\[Home]\Cs
 KK: \CF
@@ -14,7 +14,7 @@ Lang C
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n with len: 3' findadv-09.loga.txt
 
 Lang sk_SK.utf8
-TestBegin test.lyx -dbg find > findadv-09.logb.txt 2>&1
+TestBegin test.lyx -dbg key,find > findadv-09.logb.txt 2>&1
 KK: \CF
 # Uncheck ignore format
 KK: \At\Ai\Ah

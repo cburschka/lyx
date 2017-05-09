@@ -1,7 +1,7 @@
 # Basic test on refactoring of mathematics notation
 #
 Lang it_IT.utf8
-TestBegin test.lyx -dbg find > findadv-02.loga.txt 2>&1
+TestBegin test.lyx -dbg key,find > findadv-02.loga.txt 2>&1
 KK: \Cm
 KK: x^(a) +\\frac 1+x^(a) \[Down]1-x^(a)  \C\[Home]
 KK: \CF

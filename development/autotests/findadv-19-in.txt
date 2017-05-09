@@ -1,7 +1,7 @@
 # Check that searching for regexp "([a-z]+)\s\1" finds duplicate words.
 
 Lang it_IT.utf8
-TestBegin test.lyx -dbg find > findadv-19.loga.txt 2>&1
+TestBegin test.lyx -dbg key,find > findadv-19.loga.txt 2>&1
 KK: Hello world world!\C\[Home]
 KK: \Cs
 KK: \CF

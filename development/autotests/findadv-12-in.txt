@@ -3,7 +3,7 @@
 # (#7442)
 #
 Lang it_IT.utf8
-TestBegin test.lyx -dbg find > findadv-12.loga.txt 2>&1
+TestBegin test.lyx -dbg key,find > findadv-12.loga.txt 2>&1
 KK: a\C\[Home]
 KK: \CF
 KK: a\[Tab]

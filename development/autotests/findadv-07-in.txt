@@ -1,7 +1,7 @@
 # Basic test for searching with par-style awareness
 
 Lang sk_SK.utf8
-TestBegin test.lyx -dbg find > findadv-07.loga.txt 2>&1
+TestBegin test.lyx -dbg key,find > findadv-07.loga.txt 2>&1
 KK: foo bar\[Return]
 #select itemized
 KK: \Apb
@@ -19,7 +19,7 @@ Lang C
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 1 pos: 0\n with len: 3' findadv-07.loga.txt
 #
 Lang sk_SK.utf8
-TestBegin test.lyx -dbg find > findadv-07.logb.txt 2>&1
+TestBegin test.lyx -dbg key,find > findadv-07.logb.txt 2>&1
 KK: \C\[Home]
 KK: \CF
 # Uncheck ignore format
