@@ -22,6 +22,7 @@ print('Beginning keytest.py')
 FNULL = open('/dev/null', 'w')
 
 key_delay = ''
+controlkey_delay = 0.30
 
 class CommandSource:
 
@@ -234,7 +235,7 @@ def sendKeystringLocal(keystr, LYX_PID):
         actual_delay = def_delay
     xvpar = [xvkbd_exe]
     if qt_frontend == 'QT5':
-        xvpar.extend(["-no-jump-pointer"])
+        xvpar.extend(["-jump-pointer", "-no-back-pointer"])
     else:
         xvpar.extend(["-xsendevent"])
     xvpar.extend(["-window", lyx_window_name, "-delay", actual_delay, "-text", keystr])
@@ -243,7 +244,7 @@ def sendKeystringLocal(keystr, LYX_PID):
     subprocess.call(xvpar, stdout = FNULL, stderr = FNULL)
 
 Axreg = re.compile(r'^(.*)\\Ax([^\\]*)(.*)$')
-returnreg = re.compile(r'\\\[Return\](.*)$')
+returnreg = re.compile(r'(\\\[[A-Z][a-z]+\])(.*)$')
 
 # recursive wrapper around sendKeystringLocal()
 # handling \Ax-entries
@@ -262,11 +263,12 @@ def sendKeystringAx(line, LYX_PID):
         time.sleep(0.1)
         m2 = returnreg.match(rest)
         if m2:
-            line = m2.group(1)
+            line = m2.group(2)
+            ctrlk = m2.group(1)
             key_delay = "1"
-            sendKeystringLocal(content + '\[Return]', LYX_PID)
+            sendKeystringLocal(content + ctrlk, LYX_PID)
             key_delay = saved_delay
-            time.sleep(0.1)
+            time.sleep(controlkey_delay)
             if line != "":
                 sendKeystringLocal(line, LYX_PID)
         else:
@@ -301,7 +303,9 @@ def sendKeystringRT(line, LYX_PID):
         second = m.group(2)
         third = m.group(3)
         sendKeystringRT(first, LYX_PID)
+        time.sleep(controlkey_delay)
         sendKeystringRT(second, LYX_PID)
+        time.sleep(controlkey_delay)
         if third != "":
             sendKeystringRT(third, LYX_PID)
     else:
@@ -462,6 +466,7 @@ while not failed:
         print('lyx_pid: ' + lyx_pid)
         print('lyx_win: ' + lyx_window_name)
         sendKeystringLocal("\C\[Home]", lyx_pid)
+        time.sleep(controlkey_delay)
     elif c[0:5] == 'Sleep':
         print("Sleeping for " + c[6:] + " seconds")
         time.sleep(float(c[6:]))
@@ -504,10 +509,11 @@ while not failed:
         else:
             print("    ------------    Forcing quit of lyx instance: " + str(lyx_pid) + "    ------------")
             # \Ax Enter command line is sometimes blocked
-	    # \[Escape] works after this
-	    sendKeystringAx("\Ax\[Escape]", lyx_pid)
-	    # now we should be outside any dialog
-	    # and so the function lyx-quit should work
+            # \[Escape] works after this
+            sendKeystringAx("\Ax\[Escape]", lyx_pid)
+            time.sleep(controlkey_delay)
+            # now we should be outside any dialog
+            # and so the function lyx-quit should work
             sendKeystringLocal("\Cq", lyx_pid)
             time.sleep(0.5)
             if lyx_sleeping():
@@ -523,7 +529,7 @@ while not failed:
                     intr_system("kill -9 " + str(lyx_pid), True);
                 time.sleep(0.5)
         cmd = c[8:].rstrip()
-	if cmd != "":
+        if cmd != "":
             print("Executing " + cmd)
             result = intr_system(cmd)
             failed = failed or (result != 0)
