@@ -135,13 +135,13 @@ dist_frexamples_DATA = \
 	examples/fr/Braille.lyx \
 	examples/fr/exemple_brut.lyx \
 	examples/fr/exemple_lyxifie.lyx \
-	examples/fr/exemple-powerdot.lyx \
 	examples/fr/FeynmanDiagrams.lyx \
 	examples/fr/Foils.lyx \
 	examples/fr/linguistics.lyx \
 	examples/fr/ListesPuces.lyx \
 	examples/fr/MultilingualCaptions.lyx \
 	examples/fr/PDF-comment.lyx \
+	examples/fr/powerdot.lyx \
 	examples/fr/seminar.lyx \
 	examples/fr/simplecv.lyx \
 	examples/fr/splash.lyx \
@@ -347,7 +347,7 @@ dist_examples_DATA = \
 	examples/paralist.lyx \
 	examples/PDF-comment.lyx \
 	examples/PDF-form.lyx \
-	examples/powerdot-example.lyx \
+	examples/powerdot.lyx \
 	examples/recipebook.lyx \
 	examples/R-S-statements.lyx \
 	examples/script_form.lyx \

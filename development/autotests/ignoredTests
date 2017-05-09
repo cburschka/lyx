@@ -37,8 +37,8 @@ export/examples/(|de/|fr/)PDF-comment_pdf5_texF
 # Does not compile with pdflatex (see note in the document source).
 export/examples/instant_preview_(dvi3|pdf4)_systemF
 export/examples/instant_preview_pdf[25].*
-export/examples/(chessgame|chess-article|powerdot-example)_pdf[25].*
-export/examples/fr/exemple-powerdot_pdf[25].*
+export/examples/(chessgame|chess-article|powerdot)_pdf[25].*
+export/examples/fr/powerdot_pdf[25].*
 
 # requires jss.cls (not on CTAN)
 # "All documents need to be processed by pdflatex" [jss.pdf]
