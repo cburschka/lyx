@@ -110,7 +110,7 @@ private Q_SLOTS:
 	void setSkip(int);
 	void enableSkip(bool);
 	void allowMathIndent();
-	void EnableMathIndent(int);
+	void enableMathIndent(int);
 	void browseLayout();
 	void browseMaster();
 	void classChanged();

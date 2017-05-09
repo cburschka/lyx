@@ -1268,7 +1268,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(mathsModule->MathIndentCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 	connect(mathsModule->MathIndentCO, SIGNAL(activated(int)),
-		this, SLOT(EnableMathIndent(int)));
+		this, SLOT(enableMathIndent(int)));
 	connect(mathsModule->MathIndentLE, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(mathsModule->MathIndentLengthCO, SIGNAL(activated(int)),
@@ -1630,7 +1630,7 @@ void GuiDocument::allowMathIndent() {
 	isValid();
 }
 
-void GuiDocument::EnableMathIndent(int item)
+void GuiDocument::enableMathIndent(int item)
 {
 	bool const enable = (item == 1);
 	mathsModule->MathIndentLE->setEnabled(enable);
@@ -3413,7 +3413,7 @@ void GuiDocument::paramsToDialog()
 			indent = 1;
 		}
 		mathsModule->MathIndentCO->setCurrentIndex(indent);
-		EnableMathIndent(indent);
+		enableMathIndent(indent);
 	}
 	if (bp_.math_number_before)
 		mathsModule->MathNumberingPosCO->setCurrentIndex(0);
