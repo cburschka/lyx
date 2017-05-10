@@ -1021,7 +1021,7 @@ def checkConverterEntries():
     # The eps2->eps converter then fixes the bounding box by cropping.
     # Although unoconv can convert to png and pdf as well, do not define
     # odg->png and odg->pdf converters, since the bb would be too large as well.
-    checkProg('an OpenDocument -> EPS converter', ['libreoffice -headless -nologo -convert-to eps $$i', 'unoconv -f eps --stdout $$i > $$o'],
+    checkProg('an OpenDocument -> EPS converter', ['libreoffice --headless --nologo --convert-to eps $$i', 'unoconv -f eps --stdout $$i > $$o'],
         rc_entry = [ r'\converter odg        eps2       "%%"	""'])
     #
     checkProg('a SVG (compressed) -> SVG converter', ['gunzip -c $$i > $$o'],
