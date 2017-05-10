@@ -22,7 +22,6 @@ print('Beginning keytest.py')
 FNULL = open('/dev/null', 'w')
 
 key_delay = ''
-controlkey_delay = 0.30
 
 class CommandSource:
 
@@ -205,31 +204,33 @@ def lyx_dead():
     status = lyx_status(lyx_pid)
     return (status == "dead") or (status == "zombie")
 
-def sendKeystringLocal(keystr, LYX_PID):
-
-    #if not re.match(".*\w.*", keystr):
-    #    print('print .' + keystr)
-    #    keystr = 'a'
+def wait_until_lyx_sleeping():
     before_secs = time.time()
-    while lyx_exists() and not lyx_sleeping():
-        time.sleep(0.02)
-        sys.stdout.flush()
+    while True:
+        status = lyx_status(lyx_pid)
+        if status == "sleeping":
+            return
+        if (status == "dead") or (status == "zombie"):
+            print('Lyx is dead, exiting')
+            sys.stdout.flush()
+            os._exit(1)
         if time.time() - before_secs > 180:
             print('Killing due to freeze (KILL_FREEZE)')
 
             # Do profiling, but sysprof has no command line interface?
             # intr_system("killall -KILL lyx")
 
-            os._exit(1)
-    if not screenshot_out is None:
-        while lyx_exists() and not lyx_sleeping():
-            time.sleep(0.02)
             sys.stdout.flush()
+            os._exit(1)
+        time.sleep(0.02)
+
+def sendKeystringLocal(keystr, LYX_PID):
+    wait_until_lyx_sleeping()
+    if not screenshot_out is None:
         print('Making Screenshot: ' + screenshot_out + ' OF ' + infilename)
         time.sleep(0.2)
         intr_system('import -window root '+screenshot_out+str(x.count)+".png")
         time.sleep(0.1)
-    sys.stdout.flush()
     actual_delay = key_delay
     if actual_delay == '':
         actual_delay = def_delay
@@ -238,10 +239,11 @@ def sendKeystringLocal(keystr, LYX_PID):
         xvpar.extend(["-jump-pointer", "-no-back-pointer"])
     else:
         xvpar.extend(["-xsendevent"])
-    xvpar.extend(["-window", lyx_window_name, "-delay", actual_delay, "-text", keystr])
-
+    #xvpar.extend(["-window", lyx_window_name])
+    xvpar.extend(["-delay", actual_delay, "-text", keystr])
     print("Sending \"" + keystr + "\"")
     subprocess.call(xvpar, stdout = FNULL, stderr = FNULL)
+    sys.stdout.flush()
 
 Axreg = re.compile(r'^(.*)\\Ax([^\\]*)(.*)$')
 returnreg = re.compile(r'(\\\[[A-Z][a-z]+\])(.*)$')
@@ -280,8 +282,8 @@ def sendKeystringAx(line, LYX_PID):
         if line != "":
             sendKeystringLocal(line, LYX_PID)
 
-specialkeyreg = re.compile(r'(.+)(\\[AC][a-zA-Z].*)$')
-# Split line at start of each \[AC][a-zA-Z]
+specialkeyreg = re.compile(r'(.+)(\\[AC]([a-zA-Z]|\\\[[A-Z][a-z]+\]).*)$')
+# Split line at start of each meta or controll char
 
 def sendKeystringAC(line, LYX_PID):
     m = specialkeyreg.match(line)
@@ -368,6 +370,10 @@ if xvkbd_exe is None:
 qt_frontend = os.environ.get('QT_FRONTEND')
 if qt_frontend is None:
     qt_frontend = 'QT4'
+if qt_frontend == 'QT5':
+    controlkey_delay = 0.01
+else:
+    controlkey_delay = 0.4
 
 locale_dir = os.environ.get('LOCALE_DIR')
 if locale_dir is None:
@@ -375,7 +381,10 @@ if locale_dir is None:
 
 def_delay = os.environ.get('XVKBD_DELAY')
 if def_delay is None:
-    def_delay = '5'
+    if qt_frontend == 'QT5':
+        def_delay = '5'
+    else:
+        def_delay = '1'
 
 file_new_command = os.environ.get('FILE_NEW_COMMAND')
 if file_new_command is None:
@@ -414,13 +423,16 @@ if not lyx_pid is None:
 
 write_commands = True
 failed = False
+lineempty = re.compile(r'^\s*$')
 
 while not failed:
     #intr_system('echo -n LOADAVG:; cat /proc/loadavg')
     c = x.getCommand()
     if c is None:
         break
-    if c.strip() == "":
+
+    # Do not strip trailing spaces, only check for 'empty' lines
+    if lineempty.match(c):
         continue
     outfile.writelines(c + '\n')
     outfile.flush()
@@ -501,8 +513,24 @@ while not failed:
         result = intr_system(cmd)
         failed = failed or (result != 0)
         print("result=" + str(result) + ", failed=" + str(failed))
+    elif c[0:15] == 'TestEndWithKill':
+        cmd = c[16:].rstrip()
+        if lyx_dead():
+            print("LyX instance not found because of crash or assert !\n")
+            failed = True
+        else:
+            print("    ------------    Forcing kill of lyx instance: " + str(lyx_pid) + "    ------------")
+            while not lyx_dead():
+                intr_system("kill -9 " + str(lyx_pid), True);
+                time.sleep(0.5)
+            if cmd != "":
+                print("Executing " + cmd)
+                result = intr_system(cmd)
+                failed = failed or (result != 0)
+                print("result=" + str(result) + ", failed=" + str(failed))
+            else:
+                print("failed=" + str(failed))
     elif c[0:7] == 'TestEnd':
-#        time.sleep(0.5)
         if lyx_dead():
             print("LyX instance not found because of crash or assert !\n")
             failed = True

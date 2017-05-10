@@ -16,8 +16,12 @@
 #   A new LyX instance is spawned, with the command-line arguments
 #   specified in <args...>.
 #
+# TestEndWithKill <cmd...>
+#   Ends a test case, killing immidiately the LyX instance under test
+#   Behaviour is otherwise the same as in 'TestEnd' below
+#
 # TestEnd <cmd...>
-#   Ends a test case, killing the LyX instance under test, and
+#   Ends a test case, closing the LyX instance under test, and
 #   executing the <cmd...> commands into an os.system(). The exit status
 #   of the commands sequence determines success or failure of the test.
 #   This is equivalent to:

@@ -10,8 +10,8 @@ KK: \Cs
 KK: \CF
 # Uncheck ignore format (depends on IT language)
 KK: \At\Ai\Ah
-KK: \Axspecialchar-insert lyx\[Return]\Ai
-KK: \Axspecialchar-insert latex\[Return]\Ae
+KK: \Axspecialchar-insert lyx\[Return]\[Tab]
+KK: \Axspecialchar-insert latex\[Return]\Al\Ar\An
 TestEnd
 Lang C
 Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 29\n with len: 1' findadv-logo.loga.txt

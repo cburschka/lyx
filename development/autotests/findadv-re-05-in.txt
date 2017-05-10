@@ -12,7 +12,10 @@ Lang it_IT.utf8
 TestBegin test.lyx -dbg key,find > findadv-re-05.loga.txt 2>&1
 KK: \Cm\\frac 1-x\[Down]1+x^2 \C\[Home]
 KK: \CF
-KK: \Cm\\frac \Axregexp-mode\[Return].* \[Down]1+x^2 \[Return]
-TestEnd
+KK: \Cm\\frac \Axregexp-mode\[Return].* \[Down]1+x^2 \[Return]\[Return]
+# After the message about reaching the end of buffer, lyx
+# loses focus :(
+# so no more keys can be sent to lyx
+TestEndWithKill
 Lang C
 Assert pcregrep 'raggiunta la fine cercando in avanti' findadv-re-05.loga.txt
