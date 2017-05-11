@@ -201,7 +201,7 @@ def extract_resolution(log_file, dpi):
 
 
 def legacy_latex_file(latex_file, fg_color, bg_color):
-    use_preview_re = re.compile(r"\s*\\usepackage\[([^]]+)\]{preview}")
+    use_preview_re = re.compile(b"\\s*\\\\usepackage\\[([^]]+)\\]{preview}")
     fg_color_gr = make_texcolor(fg_color, True)
     bg_color_gr = make_texcolor(bg_color, True)
 
@@ -209,7 +209,7 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
 
     success = 0
     try:
-        f = open(latex_file, 'r')
+        f = open(latex_file, 'rb')
     except:
         # Unable to open the file, but do nothing here because
         # the calling function will act on the value of 'success'.
@@ -227,20 +227,20 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
         success = 1
         # Package order: color should be loaded before preview
         # Preview options: add the options lyx and tightpage
-        tmp.write(r"""
-\usepackage{color}
-\definecolor{fg}{rgb}{%s}
-\definecolor{bg}{rgb}{%s}
-\pagecolor{bg}
-\usepackage[%s,tightpage]{preview}
-\makeatletter
-\def\t@a{cmr}
-\if\f@family\t@a
-\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{\usepackage{ae,aecompl}}
-\fi
-\g@addto@macro\preview{\begingroup\color{bg}\special{ps::clippath fill}\color{fg}}
-\g@addto@macro\endpreview{\endgroup}
-\makeatother
+        tmp.write(b"""
+\\usepackage{color}
+\\definecolor{fg}{rgb}{%s}
+\\definecolor{bg}{rgb}{%s}
+\\pagecolor{bg}
+\\usepackage[%s,tightpage]{preview}
+\\makeatletter
+\\def\\t@a{cmr}
+\\if\\f@family\\t@a
+\\IfFileExists{lmodern.sty}{\\usepackage{lmodern}}{\\usepackage{ae,aecompl}}
+\\fi
+\\g@addto@macro\\preview{\\begingroup\\color{bg}\\special{ps::clippath fill}\\color{fg}}
+\\g@addto@macro\\endpreview{\\endgroup}
+\\makeatother
 """ % (fg_color_gr, bg_color_gr, match.group(1)))
 
     if success:

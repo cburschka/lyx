@@ -87,6 +87,7 @@ from lyxpreview_tools import bibtex_commands, check_latex_log, copyfileobj, \
      mkstemp, pdflatex_commands, progress, run_command, run_latex, run_tex, \
      warning, write_metrics_info
 
+PY2 = sys.version_info[0] == 2
 
 def usage(prog_name):
     msg = """
@@ -384,6 +385,11 @@ def main(argv):
         error('File "%s" not found.' % input_path)
     if len(dir) != 0:
         os.chdir(dir)
+
+    # For python > 2 convert strings to bytes
+    if not PY2:
+        fg_color = bytes(fg_color, 'ascii')
+        bg_color = bytes(bg_color, 'ascii')
 
     fg_color_dvipng = make_texcolor(fg_color, False)
     bg_color_dvipng = make_texcolor(bg_color, False)

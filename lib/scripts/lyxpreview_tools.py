@@ -72,7 +72,7 @@ def error(message):
 
 def make_texcolor(hexcolor, graphics):
     # Test that the input string contains 6 hexadecimal chars.
-    hexcolor_re = re.compile("^[0-9a-fA-F]{6}$")
+    hexcolor_re = re.compile(b"^[0-9a-fA-F]{6}$")
     if not hexcolor_re.match(hexcolor):
         error("Cannot convert color '%s'" % hexcolor)
 
@@ -81,9 +81,9 @@ def make_texcolor(hexcolor, graphics):
     blue  = float(int(hexcolor[4:6], 16)) / 255.0
 
     if graphics:
-        return "%f,%f,%f" % (red, green, blue)
+        return b"%f,%f,%f" % (red, green, blue)
     else:
-        return "rgb %f %f %f" % (red, green, blue)
+        return b"rgb %f %f %f" % (red, green, blue)
 
 
 def find_exe(candidates):
