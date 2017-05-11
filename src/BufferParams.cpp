@@ -385,7 +385,7 @@ BufferParams::BufferParams()
 	makeDocumentClass();
 	paragraph_separation = ParagraphIndentSeparation;
 	is_math_indent = false;
-	math_number_before = false;
+	math_number_before = "default";
 	quotes_style = InsetQuotesParams::EnglishQuotes;
 	dynamic_quotes = false;
 	fontsize = "default";
@@ -1640,8 +1640,12 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	if (is_math_indent)
 		clsoptions << "fleqn,";
 
-	if (math_number_before)
+	if (math_number_before == "true")
 		clsoptions << "leqno,";
+	else if (math_number_before == "false") {
+		clsoptions << "reqno,";
+		features.require("amsmath");
+	}
 
 	// language should be a parameter to \documentclass
 	if (language->babel() == "hebrew"

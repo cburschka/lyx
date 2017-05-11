@@ -1283,7 +1283,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 	bc().addCheckedLineEdit(mathsModule->MathIndentLE);
 	mathsModule->MathNumberingPosCO->addItem(qt_("Left"));
 	mathsModule->MathNumberingPosCO->addItem(qt_("Default"));
-	mathsModule->MathNumberingPosCO->setCurrentIndex(2);
+	mathsModule->MathNumberingPosCO->addItem(qt_("Right"));
+	mathsModule->MathNumberingPosCO->setCurrentIndex(1);
 	
 
 	// latex class
@@ -2942,14 +2943,17 @@ void GuiDocument::applyView()
 	}
 	switch (mathsModule->MathNumberingPosCO->currentIndex()) {
 		case 0:
-			bp_.math_number_before = true;
+			bp_.math_number_before = "true";
 			break;
 		case 1:
-			bp_.math_number_before = false;
+			bp_.math_number_before = "default";
+			break;
+		case 2:
+			bp_.math_number_before = "false";
 			break;
 		default:
 			// this should never happen
-			bp_.math_number_before = false;
+			bp_.math_number_before = "default";
 			break;
 	}
 
@@ -3415,10 +3419,12 @@ void GuiDocument::paramsToDialog()
 		mathsModule->MathIndentCO->setCurrentIndex(indent);
 		enableMathIndent(indent);
 	}
-	if (bp_.math_number_before)
+	if (bp_.math_number_before == "true")
 		mathsModule->MathNumberingPosCO->setCurrentIndex(0);
-	else 
+	else if (bp_.math_number_before == "default")
 		mathsModule->MathNumberingPosCO->setCurrentIndex(1);
+	else if (bp_.math_number_before == "false")
+		mathsModule->MathNumberingPosCO->setCurrentIndex(2);
 
 	map<string, string> const & packages = BufferParams::auto_packages();
 	for (map<string, string>::const_iterator it = packages.begin();

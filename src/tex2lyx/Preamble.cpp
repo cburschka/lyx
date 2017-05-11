@@ -494,7 +494,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_font_tt_scale[1]        = "100";
 	//h_font_cjk
 	h_is_mathindent           = "0";
-	h_math_number_before      = "0";
+	h_math_number_before      = "default";
 	h_graphics                = "default";
 	h_default_output_format   = "default";
 	h_html_be_strict          = "false";
@@ -1692,7 +1692,12 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			// formula numbering side
 			if ((it = find(opts.begin(), opts.end(), "leqno"))
 				 != opts.end()) {
-				h_math_number_before = "1";
+				h_math_number_before = "true";
+				opts.erase(it);
+			}
+			else if ((it = find(opts.begin(), opts.end(), "reqno"))
+				 != opts.end()) {
+				h_math_number_before = "false";
 				opts.erase(it);
 			}
 			
