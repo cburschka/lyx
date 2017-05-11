@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-05-09 17:30+0200\n"
-"PO-Revision-Date: 2017-05-09 15:47+0000\n"
+"POT-Creation-Date: 2017-05-11 22:43+0200\n"
+"PO-Revision-Date: 2017-05-11 22:35+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -6633,7 +6633,7 @@ msgstr "V Titule"
 
 #: lib/layouts/RJournal.layout:3
 msgid "R Journal"
-msgstr "R Denník"
+msgstr "R Žurnál"
 
 #: lib/layouts/RJournal.layout:4 lib/layouts/ctex-report.layout:4
 #: lib/layouts/extreport.layout:4 lib/layouts/jreport.layout:4
@@ -6917,6 +6917,16 @@ msgstr "E-mail"
 #: lib/layouts/aapaper.layout:3 lib/layouts/aapaper.layout:14
 msgid "Astronomy & Astrophysics (V. 4, Obsolete)"
 msgstr "Astronomy & Astrophysics (V. 4, zastaralé)"
+
+#: lib/layouts/aapaper.layout:4 lib/layouts/acm-sigs-alt.layout:4
+#: lib/layouts/acm-sigs.layout:4 lib/layouts/acmsiggraph-0-92.layout:4
+#: lib/layouts/acmsiggraph.layout:4 lib/layouts/elsart.layout:4
+#: lib/layouts/g-brief.layout:4 lib/layouts/latex8.layout:4
+#: lib/layouts/revtex.layout:4 lib/layouts/scrlettr.layout:4
+#: lib/layouts/sigplanconf.layout:4 lib/layouts/singlecol.layout:4
+#: lib/layouts/svglobal.layout:4
+msgid "Obsolete"
+msgstr "Zastaralé"
 
 #: lib/layouts/aapaper.layout:50 lib/layouts/apa.layout:357
 #: lib/layouts/apa6.layout:457 lib/layouts/beamer.layout:80
@@ -7306,16 +7316,8 @@ msgid "Latin"
 msgstr "Latinsky"
 
 #: lib/layouts/acm-sigs-alt.layout:3
-msgid "ACM SIGS ('Alternate' Style)"
-msgstr "ACM SIGS ('Alternate' štýl)"
-
-#: lib/layouts/acm-sigs.layout:3
-msgid "ACM SIG Proceedings (SP)"
-msgstr "ACM SIG rokovacie zväzky (SP)"
-
-#: lib/layouts/acmsiggraph-0-92.layout:3
-msgid "ACM SIGGGRAPH 0.92"
-msgstr "ACM SIGGRAPH 0.92"
+msgid "ACM SIGS ('Alternate' Style, obsolete)"
+msgstr "ACM SIGS ('Alternate' Štýl, zastaralé)"
 
 #: lib/layouts/acmsiggraph-0-92.layout:69 lib/layouts/acmsiggraph.layout:66
 msgid "TOG online ID"
@@ -7473,6 +7475,14 @@ msgstr "Krátke citovanie"
 msgid "Thanks"
 msgstr "Vďaka"
 
+#: lib/layouts/acmart.layout:97
+msgid "Thanks: "
+msgstr "Vďaka: "
+
+#: lib/layouts/acmart.layout:103
+msgid "ACM Journal"
+msgstr "ACM Žurnál"
+
 #: lib/layouts/acmsiggraph-0-92.layout:324 lib/layouts/acmsiggraph.layout:289
 #: lib/layouts/jss.layout:179 lib/layouts/jss.layout:181
 msgid "E-mail"
@@ -7489,6 +7499,22 @@ msgstr "E-mail"
 #: lib/layouts/sigplanconf.layout:227 lib/layouts/spie.layout:91
 msgid "Acknowledgments"
 msgstr "Poďakovania"
+
+#: lib/layouts/acmart.layout:683 lib/layouts/acmart.layout:687
+msgid "Grant Sponsor"
+msgstr "Priznať Sponzora"
+
+#: lib/layouts/acmart.layout:691 lib/layouts/acmart.layout:727
+msgid "Sponsor ID"
+msgstr "ID Sponzora"
+
+#: lib/layouts/acmart.layout:712 lib/layouts/acmart.layout:716
+msgid "Grant Number"
+msgstr "Číslo Priznania"
+
+#: lib/layouts/acmsiggraph-0-92.layout:3
+msgid "ACM SIGGGRAPH 0.92 (obsolete)"
+msgstr "ACM SIGGRAPH 0.92 (zastaralé)"
 
 #: lib/layouts/acmsiggraph.layout:3
 msgid "ACM SIGGRAPH (older than 0.91, obsolete)"
@@ -7807,9 +7833,167 @@ msgstr "ŠesťPríslušenstiev"
 msgid "Note"
 msgstr "Poznámka"
 
-#: lib/layouts/apa6.layout:274
+#: lib/layouts/acmart.layout:305 lib/layouts/apa6.layout:274
 msgid "AuthorNote"
-msgstr "PoznámkaAutor"
+msgstr "AuthorNote"
+
+#: lib/layouts/acmart.layout:307
+msgid "Author Note: "
+msgstr "Poznámka Autor: "
+
+#: lib/layouts/acmart.layout:311
+msgid "ACM Volume"
+msgstr "ACM Volume"
+
+#: lib/layouts/acmart.layout:313
+msgid "ACM Volume: "
+msgstr "ACM Diel: "
+
+#: lib/layouts/acmart.layout:317
+msgid "ACM Number"
+msgstr "ACM Number"
+
+#: lib/layouts/acmart.layout:319
+msgid "ACM Number: "
+msgstr "ACM-Číslo: "
+
+#: lib/layouts/acmart.layout:323
+msgid "ACM Article"
+msgstr "ACM Article"
+
+#: lib/layouts/acmart.layout:325
+msgid "ACM Article: "
+msgstr "ACM Článok: "
+
+#: lib/layouts/acmart.layout:329
+msgid "ACM Year"
+msgstr "ACM Year"
+
+#: lib/layouts/acmart.layout:331
+msgid "ACM Year: "
+msgstr "ACM Rok: "
+
+#: lib/layouts/acmart.layout:335
+msgid "ACM Month"
+msgstr "ACM Month"
+
+#: lib/layouts/acmart.layout:337
+msgid "ACM Month: "
+msgstr "ACM Mesiac: "
+
+#: lib/layouts/acmart.layout:341
+msgid "ACM Art Seq Num"
+msgstr "ACM Art Seq Num"
+
+#: lib/layouts/acmart.layout:343
+msgid "Article Sequential Number: "
+msgstr "Sekvenčné Číslo článku: "
+
+#: lib/layouts/acmart.layout:347
+msgid "ACM Submission ID"
+msgstr "ACM Submission ID"
+
+#: lib/layouts/acmart.layout:349
+msgid "ACM Submission ID: "
+msgstr "ACM Totožnosť Predloženia: "
+
+#: lib/layouts/acmart.layout:353
+msgid "ACM Price"
+msgstr "ACM Price"
+
+#: lib/layouts/acmart.layout:355
+msgid "ACM Price: "
+msgstr "ACM Cena: "
+
+#: lib/layouts/acmart.layout:359
+msgid "ACM ISBN"
+msgstr "ACM ISBN"
+
+# International Standard Book Number
+#: lib/layouts/acmart.layout:361
+msgid "ACM ISBN: "
+msgstr "ACM ISBN: "
+
+#: lib/layouts/acmart.layout:365
+msgid "ACM DOI"
+msgstr "ACM DOI"
+
+# Definition of Improvement
+#: lib/layouts/acmart.layout:367
+msgid "ACM DOI: "
+msgstr "ACM DOI: "
+
+#: lib/layouts/acmart.layout:371
+msgid "ACM Badge R"
+msgstr "ACM Badge R"
+
+#: lib/layouts/acmart.layout:373
+msgid "ACM Badge R: "
+msgstr "ACM Odznak R: "
+
+#: lib/layouts/acmart.layout:377
+msgid "ACM Badge L"
+msgstr "ACM Badge L"
+
+#: lib/layouts/acmart.layout:379
+msgid "ACM Badge L: "
+msgstr "ACM Odznak L: "
+
+#: lib/layouts/acmart.layout:383
+msgid "Start Page"
+msgstr "Start Page"
+
+#: lib/layouts/acmart.layout:385
+msgid "Start Page: "
+msgstr "Počiatočná Strana: "
+
+#: lib/layouts/acmart.layout:391
+msgid "Terms: "
+msgstr "Pojmy: "
+
+#: lib/layouts/acmart.layout:397
+msgid "Keywords: "
+msgstr "Heslá: "
+
+#: lib/layouts/acmart.layout:401
+msgid "CCSXML"
+msgstr "CCSXML"
+
+#: lib/layouts/acmart.layout:412
+msgid "Computing Classification Scheme (XML): "
+msgstr "Operačná Klasifikačná Schéma (XML): "
+
+#: lib/layouts/acmart.layout:423
+msgid "CCS Description"
+msgstr "CCS Description"
+
+#: lib/layouts/acmart.layout:426
+msgid "Significance"
+msgstr "Význam"
+
+#: lib/layouts/acmart.layout:428
+msgid "Computing Classification Scheme: "
+msgstr "Operačná Klasifikačná Schéma: "
+
+#: lib/layouts/acmart.layout:441
+msgid "Set Copyright"
+msgstr "Set Copyright"
+
+#: lib/layouts/acmart.layout:443
+msgid "Set Copyright: "
+msgstr "Nastaviť Autorské Práva: "
+
+#: lib/layouts/acmart.layout:447
+msgid "Copyright Year"
+msgstr "Copyright Year"
+
+#: lib/layouts/acmart.layout:449
+msgid "Copyright Year: "
+msgstr "Autorské Práva Rok: "
+
+#: lib/layouts/acmart.layout:453 lib/layouts/acmart.layout:456
+msgid "Teaser Figure"
+msgstr "Obrázok Hlavolamu"
 
 #: lib/layouts/apa6.layout:293
 msgid "Author Note:"
@@ -7817,12 +8001,64 @@ msgstr "Poznámka Autor:"
 
 #: lib/layouts/apa6.layout:307 lib/layouts/egs.layout:355
 msgid "Journal"
-msgstr "Denník"
+msgstr "Žurnál"
 
 #: lib/layouts/apa6.layout:308 lib/layouts/apa6.layout:316
 #: lib/layouts/apa6.layout:325 lib/layouts/apa6.layout:333
 msgid "Preamble"
 msgstr "Preambula"
+
+#: lib/layouts/acmart.layout:108
+msgid "Journal's Short Name: "
+msgstr "Skratka Žurnála: "
+
+#: lib/layouts/acmart.layout:119
+msgid "ACM Conference"
+msgstr "ACM Konferencia"
+
+#: lib/layouts/acmart.layout:126
+msgid "Full name"
+msgstr "Celé meno"
+
+#: lib/layouts/acmart.layout:134
+msgid "Venue"
+msgstr "Miesto"
+
+#: lib/layouts/acmart.layout:137
+msgid "Conference Name: "
+msgstr "Meno Konferencie: "
+
+#: lib/layouts/acmart.layout:144
+msgid "Short title"
+msgstr "Krátky titul"
+
+#: lib/layouts/acmart.layout:175
+msgid "Email address: "
+msgstr "E-mail adresa: "
+
+#: lib/layouts/acmart.layout:187
+msgid "ORCID"
+msgstr "ORCID"
+
+#: lib/layouts/acmart.layout:189
+msgid "ORCID: "
+msgstr "ORCID: "
+
+#: lib/layouts/acmart.layout:209
+msgid "Affiliation: "
+msgstr "Príslušenstvo: "
+
+#: lib/layouts/acmart.layout:213
+msgid "Additional Affiliation"
+msgstr "Prídavné Príslušenstvo"
+
+#: lib/layouts/acmart.layout:215
+msgid "Additional Affiliation: "
+msgstr "Prídavné Príslušenstvo: "
+
+#: lib/layouts/acmart.layout:219 lib/layouts/acmart.layout:223
+msgid "Position"
+msgstr "Postavenie"
 
 #: lib/layouts/apa6.layout:324
 msgid "CopNum"
@@ -8552,6 +8788,10 @@ msgstr "Tabuľka"
 msgid "List of Tables"
 msgstr "Zoznam Tabuliek"
 
+#: lib/layouts/acmart.layout:513
+msgid "Two-column figure"
+msgstr "Dvojstĺpcový obrázok"
+
 #: lib/layouts/beamer.layout:1567 lib/layouts/powerdot.layout:521
 #: lib/layouts/sciposter.layout:102 lib/layouts/stdfloats.inc:26
 msgid "Figure"
@@ -8562,6 +8802,18 @@ msgstr "Obrázok"
 #: lib/layouts/stdfloats.inc:31
 msgid "List of Figures"
 msgstr "Zoznam Obrázkov"
+
+#: lib/layouts/acmart.layout:527
+msgid "Sidebar (sigchi-a only)"
+msgstr "Bočný panel (len sigchi-a)"
+
+#: lib/layouts/acmart.layout:537
+msgid "Margin figure (sigchi-a only)"
+msgstr "Okrajový obrázok (len sigchi-a)"
+
+#: lib/layouts/acmart.layout:550
+msgid "Margin table (sigchi-a only)"
+msgstr "Okrajová tabuľka (len sigchi-a)"
 
 #: lib/layouts/beamerposter.layout:3
 msgid "Beamerposter"
@@ -9324,7 +9576,7 @@ msgstr "Príslušenstvo"
 
 #: lib/layouts/egs.layout:368
 msgid "Journal:"
-msgstr "Denník:"
+msgstr "Žurnál:"
 
 #: lib/layouts/egs.layout:377
 msgid "msnumber"
@@ -9348,6 +9600,26 @@ msgstr "1. autor priezvisko:"
 #: lib/layouts/aguplus.inc:111
 msgid "Received"
 msgstr "Obdržané"
+
+#: lib/layouts/acmart.layout:465
+msgid "Stage"
+msgstr "Fáza"
+
+#: lib/layouts/acmart.layout:468
+msgid "Received: "
+msgstr "Obdržané: "
+
+#: lib/layouts/acmart.layout:476
+msgid "ShortAuthors"
+msgstr "ShortAuthors"
+
+#: lib/layouts/acmart.layout:484
+msgid "Short authors: "
+msgstr "Skratka autorov: "
+
+#: lib/layouts/acmart.layout:499
+msgid "Two-column table"
+msgstr "Dvojstĺpcová tabuľka"
 
 #: lib/layouts/egs.layout:436 lib/layouts/agu_stdtitle.inc:202
 #: lib/layouts/aguplus.inc:115
@@ -10118,6 +10390,26 @@ msgstr "Mesto:"
 msgid "State"
 msgstr "Štát"
 
+#: lib/layouts/acmart.layout:275 lib/layouts/acmart.layout:277
+msgid "Postal Code"
+msgstr "Poštové Smerovacie Číslo"
+
+#: lib/layouts/acmart.layout:283
+msgid "TitleNote"
+msgstr "TitleNote"
+
+#: lib/layouts/acmart.layout:293
+msgid "Title Note: "
+msgstr "Poznámka Titul: "
+
+#: lib/layouts/acmart.layout:299
+msgid "SubtitleNote"
+msgstr "SubtitleNote"
+
+#: lib/layouts/acmart.layout:301
+msgid "Subtitle Note: "
+msgstr "Poznámka Podtitul: "
+
 #: lib/layouts/g-brief.layout:87
 msgid "State:"
 msgstr "Štát:"
@@ -10748,9 +11040,9 @@ msgstr "Číslo Klasifikácie Matematickej Oblasti:"
 msgid "submitto"
 msgstr "podať-do"
 
-#: lib/layouts/iopart.layout:241
+#: lib/layouts/iopart.layout:242
 msgid "submit to paper:"
-msgstr "podať do Journal:"
+msgstr "podať do spisu:"
 
 #: lib/layouts/iopart.layout:267
 msgid "Bibliography (plain)"
@@ -11648,6 +11940,14 @@ msgstr "PodTitul"
 msgid "Institution"
 msgstr "Inštitúcia"
 
+#: lib/layouts/acmart.layout:235 lib/layouts/acmart.layout:237
+msgid "Department"
+msgstr "Oddelenie"
+
+#: lib/layouts/acmart.layout:243 lib/layouts/acmart.layout:245
+msgid "Street Address"
+msgstr "Ulica"
+
 #: lib/layouts/powerdot.layout:3
 msgid "Powerdot"
 msgstr "Powerdot"
@@ -12258,8 +12558,8 @@ msgid "AMS subject classifications:"
 msgstr "Klasifikácie oblasti AMS:"
 
 #: lib/layouts/sigplanconf.layout:3
-msgid "ACM SIGPLAN"
-msgstr "ACM SIGPLAN"
+msgid "ACM SIGPLAN (Obsolete)"
+msgstr "ACM SIGPLAN (Zastaralé)"
 
 #: lib/layouts/sigplanconf.layout:82
 msgid "Name of the conference"
@@ -12327,11 +12627,11 @@ msgstr "Námet"
 
 #: lib/layouts/singlecol-new.layout:3
 msgid "Inderscience 9.5 x 6.5 Journals"
-msgstr "Inderscience časopisy (9.5 x 6.5)"
+msgstr "Inderscience 9.5 x 6.5 Časopisy"
 
 #: lib/layouts/singlecol.layout:3
-msgid "Inderscience Journals (Obsolete Version)"
-msgstr "Inderscience časopisy (zastaralá verzia)"
+msgid "Inderscience Journals (Obsolete)"
+msgstr "Inderscience Žurnály (Zastaralé)"
 
 #: lib/layouts/slides.layout:107
 msgid "New Slide:"
@@ -12645,6 +12945,15 @@ msgstr "Tezaurus nepodporovaný v súčasnom A&A:"
 #: lib/layouts/acm-sigs.inc:37
 msgid "General terms:"
 msgstr "Obecné pojmy:"
+
+#: lib/layouts/acm-sigs.layout:3
+msgid "ACM SIG Proceedings (SP, Obsolete)"
+msgstr "ACM SIG Rokovacie Zväzky (SP, Zastaralé)"
+
+# Združenie pre Výpočetné Stroje
+#: lib/layouts/acmart.layout:3
+msgid "Association for Computing Machinery (ACM) article"
+msgstr "Association for Computing Machinery (ACM) článok"
 
 #: lib/layouts/agu_stdclass.inc:35 lib/layouts/agu_stdclass.inc:37
 #: lib/layouts/db_stdcharstyles.inc:37 lib/layouts/db_stdcharstyles.inc:39
@@ -13485,6 +13794,30 @@ msgstr "Definícia \\thetheorem."
 msgid "Example \\thetheorem."
 msgstr "Príklad \\thetheorem."
 
+#: lib/layouts/acmart.layout:646
+msgid "Print Only"
+msgstr "Len Tlač"
+
+#: lib/layouts/acmart.layout:653
+msgid "Print version only"
+msgstr "Len tlač verzie"
+
+#: lib/layouts/acmart.layout:656
+msgid "Screen Only"
+msgstr "Len Obrazovka"
+
+#: lib/layouts/acmart.layout:659
+msgid "Screen version only"
+msgstr "Len verzia obrazovky"
+
+#: lib/layouts/acmart.layout:662
+msgid "Anonymous Suppression"
+msgstr "Anonymné Potlačenie"
+
+#: lib/layouts/acmart.layout:665
+msgid "Non anonymous only"
+msgstr "Len ne-anonymné"
+
 #: lib/layouts/theorems-ams.inc:210 lib/layouts/theorems.inc:210
 msgid "Problem \\thetheorem."
 msgstr "Problém \\thetheorem."
@@ -13622,13 +13955,15 @@ msgstr "Poznámka \\thenote."
 msgid "Algorithm2e"
 msgstr "Algorithm2e"
 
-#: lib/layouts/algorithm2e.module:6
+#: lib/layouts/algorithm2e.module:7
 msgid ""
 "Use the algorithm2e package for algorithm floats rather than LyX's home-"
-"brewed algorithm floats."
+"brewed algorithm floats. Use the Algorithm style to enter and indent the "
+"algorithm."
 msgstr ""
 "Použiť balík algorithm2e pre plávajúce algoritmy namiesto LyXovej samohonky "
-"plávajúcich algoritmov."
+"plávajúcich algoritmov. Použiť štýl 'Algorithm' na vklad a odsadenie "
+"algoritmu."
 
 #: lib/layouts/bicaption.module:2
 msgid "Multilingual Captions"
@@ -36755,3 +37090,25 @@ msgstr "Neznámy používateľ"
 #~ "Poskytuje vlastné vložky na vklad TODO prvkov do vášho dokumentu (používajúc "
 #~ "balík todonotes). Pre generáciu 'Zoznam TODOs' poskytuje tento modul štýl "
 #~ "odstavca."
+
+#~ msgid "ACM SIGS ('Alternate' Style)"
+#~ msgstr "ACM SIGS ('Alternate' štýl)"
+
+#~ msgid "ACM SIG Proceedings (SP)"
+#~ msgstr "ACM SIG rokovacie zväzky (SP)"
+
+#~ msgid "ACM SIGGGRAPH 0.92"
+#~ msgstr "ACM SIGGRAPH 0.92"
+
+#~ msgid "ACM SIGPLAN"
+#~ msgstr "ACM SIGPLAN"
+
+#~ msgid "Inderscience Journals (Obsolete Version)"
+#~ msgstr "Inderscience časopisy (zastaralá verzia)"
+
+#~ msgid ""
+#~ "Use the algorithm2e package for algorithm floats rather than LyX's home-"
+#~ "brewed algorithm floats."
+#~ msgstr ""
+#~ "Použiť balík algorithm2e pre plávajúce algoritmy namiesto LyXovej samohonky "
+#~ "plávajúcich algoritmov."
