@@ -163,7 +163,8 @@ def extract_metrics_info(dvipng_stdout):
 def fix_latex_file(latex_file, pdf_output):
     # python 2 does not allow to declare a string as raw byte so we double
     # the backslashes and remove the r preffix
-    def_re = re.compile(rb"(\\\\newcommandx|\\\\global\\\\long\\\\def)(\\\\[a-zA-Z]+)")
+    def_re = re.compile(b"(\\\\newcommandx|\\\\global\\\\long\\\\def)"
+                        b"(\\\\[a-zA-Z]+)")
 
     tmp = mkstemp()
 
