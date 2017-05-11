@@ -283,7 +283,7 @@ def find_ps_pages(dvi_file):
 
         # Use page ranges, as a list of pages could exceed command line
         # maximum length (especially under Win32)
-        for index in xrange(1, page_index + 1):
+        for index in range(1, page_index + 1):
             if (not index in ps_or_pdf_pages) and skip:
                 # We were skipping pages but current page shouldn't be skipped.
                 # Add this page to -pp, it could stay alone or become the
