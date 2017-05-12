@@ -2841,19 +2841,13 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			for (; pit <= lastpit; ++pit) {
 				if (pars_[pit].layout() != lay)
 					break;
-				InsetList::const_iterator it = pars_[pit].insetList().begin();
-				InsetList::const_iterator end = pars_[pit].insetList().end();
-				for (; it != end; ++it) {
-					if (it->inset->lyxCode() == ARG_CODE) {
-						InsetArgument const * ins =
-							static_cast<InsetArgument const *>(it->inset);
+				for (auto const & table : pars_[pit].insetList())
+					if (InsetArgument const * ins = table.inset->asInsetArgument())
 						if (ins->name() == arg) {
 							// we have this already
 							enable = false;
 							break;
 						}
-					}
-				}
 			}
 		} else
 			enable = false;

@@ -534,9 +534,7 @@ void latexArgInsets(Paragraph const & par, otexstream & os,
 	InsetList::const_iterator it = par.insetList().begin();
 	InsetList::const_iterator end = par.insetList().end();
 	for (; it != end; ++it) {
-		if (it->inset->lyxCode() == ARG_CODE) {
-			InsetArgument const * ins =
-				static_cast<InsetArgument const *>(it->inset);
+		if (InsetArgument const * ins = it->inset->asInsetArgument()) {
 			if (ins->name().empty())
 				LYXERR0("Error: Unnamed argument inset!");
 			else {
@@ -617,6 +615,7 @@ void latexArgInsets(ParagraphList const & pars, ParagraphList::const_iterator pi
 	}
 	getArgInsets(os, runparams, latexargs, ilist, required, prefix);
 }
+
 
 namespace {
 

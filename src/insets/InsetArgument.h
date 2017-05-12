@@ -29,6 +29,9 @@ public:
 	///
 	InsetArgument(Buffer *, std::string const &);
 
+	///
+	InsetArgument const * asInsetArgument() const { return this; }
+
 	/// Outputting the parameter of a LaTeX command
 	void latexArgument(otexstream & os, OutputParams const & runparams_in,
 	                   docstring const & ldelim, docstring const & rdelim,

@@ -22,7 +22,7 @@
 #include "Paragraph.h"
 #include "TextClass.h"
 
-#include "insets/InsetText.h"
+#include "insets/InsetArgument.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -181,18 +181,14 @@ bool TocBackend::updateItem(DocIterator const & dit_in)
 	// FIXME: This is supposed to accomplish the same as the body of
 	// InsetText::iterateForToc(), probably
 	Paragraph & par = toc_item->dit().paragraph();
-	InsetList::const_iterator it = par.insetList().begin();
-	InsetList::const_iterator end = par.insetList().end();
-	for (; it != end; ++it) {
-		Inset & inset = *it->inset;
-		if (inset.lyxCode() == ARG_CODE) {
+	for (auto const & table : par.insetList())
+		if (InsetArgument const * arg = table.inset->asInsetArgument()) {
 			tocstring = par.labelString();
 			if (!tocstring.empty())
 				tocstring += ' ';
-			inset.asInsetText()->text().forOutliner(tocstring,TOC_ENTRY_LENGTH);
+			arg->text().forOutliner(tocstring,TOC_ENTRY_LENGTH);
 			break;
 		}
-	}
 
 	int const toclevel = toc_item->dit().text()->
 		getTocLevel(toc_item->dit().pit());

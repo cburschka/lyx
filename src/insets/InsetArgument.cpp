@@ -225,19 +225,13 @@ bool InsetArgument::getStatus(Cursor & cur, FuncRequest const & cmd,
 			Layout::LaTeXArgMap::const_iterator const lait = args.find(type);
 			if (lait != args.end()) {
 				flag.setEnabled(true);
-				InsetList::const_iterator it = cur.paragraph().insetList().begin();
-				InsetList::const_iterator end = cur.paragraph().insetList().end();
-				for (; it != end; ++it) {
-					if (it->inset->lyxCode() == ARG_CODE) {
-						InsetArgument const * ins =
-							static_cast<InsetArgument const *>(it->inset);
+				for (auto const & table : cur.paragraph().insetList())
+					if (InsetArgument const * ins = table.inset->asInsetArgument())
 						if (ins->name() == type) {
 							// we have this already
 							flag.setEnabled(false);
 							return true;
 						}
-					}
-				}
 			} else
 				flag.setEnabled(false);
 			return true;

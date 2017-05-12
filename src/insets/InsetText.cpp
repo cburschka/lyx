@@ -371,22 +371,14 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 		Layout::LaTeXArgMap::const_iterator const lait = args.find(arg);
 		if (lait != args.end()) {
 			status.setEnabled(true);
-			ParagraphList::const_iterator pit = paragraphs().begin();
-			for (; pit != paragraphs().end(); ++pit) {
-				InsetList::const_iterator it = pit->insetList().begin();
-				InsetList::const_iterator end = pit->insetList().end();
-				for (; it != end; ++it) {
-					if (it->inset->lyxCode() == ARG_CODE) {
-						InsetArgument const * ins =
-							static_cast<InsetArgument const *>(it->inset);
+			for (Paragraph const & par : paragraphs())
+				for (auto const & table : par.insetList())
+					if (InsetArgument const * ins = table.inset->asInsetArgument())
 						if (ins->name() == arg) {
 							// we have this already
 							status.setEnabled(false);
 							return true;
 						}
-					}
-				}
-			}
 		} else
 			status.setEnabled(false);
 		return true;
@@ -876,16 +868,12 @@ void InsetText::iterateForToc(DocIterator const & cdit, bool output_active,
 		}
 
 		// if we find an optarg, we'll save it for use later.
-		InsetText const * arginset = 0;
-		InsetList::const_iterator it  = par.insetList().begin();
-		InsetList::const_iterator end = par.insetList().end();
-		for (; it != end; ++it) {
-			Inset & inset = *it->inset;
-			dit.pos() = it->pos;
-			//lyxerr << (void*)&inset << " code: " << inset.lyxCode() << std::endl;
-			inset.addToToc(dit, doing_output, utype, backend);
-			if (inset.lyxCode() == ARG_CODE)
-				arginset = inset.asInsetText();
+		InsetArgument const * arginset = nullptr;
+		for (auto const & table : par.insetList()) {
+			dit.pos() = table.pos;
+			table.inset->addToToc(dit, doing_output, utype, backend);
+			if (InsetArgument const * x = table.inset->asInsetArgument())
+				arginset = x;
 		}
 
 		// End custom AddToToc in paragraph layouts
