@@ -117,6 +117,9 @@ public:
 	LaTeXArgMap const & postcommandargs() const { return postcommandargs_; }
 	///
 	LaTeXArgMap const & itemargs() const { return itemargs_; }
+	/// Returns true is the layout has arguments. If false, then an
+	/// InsetArgument in this layout stands for the parent InsetText.
+	bool hasArgs() const;
 	/// Returns latexargs() + postcommandargs() + itemargs().
 	/// But note that it returns a *copy*, not a reference, so do not do
 	/// anything like:

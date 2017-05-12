@@ -63,13 +63,11 @@ void InsetArgument::read(Lexer & lex)
 
 void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 {
-	Layout::LaTeXArgMap args = it.paragraph().layout().args();
-	pass_thru_context_ = it.paragraph().layout().pass_thru;
-	bool const insetlayout = args.empty();
-	if (insetlayout) {
-		args = it.inset().getLayout().args();
-		pass_thru_context_ = it.inset().getLayout().isPassThru();
-	}
+	bool const insetlayout = !it.paragraph().layout().hasArgs();
+	Layout::LaTeXArgMap const args = insetlayout ?
+		it.inset().getLayout().args() : it.paragraph().layout().args();
+	pass_thru_context_ = insetlayout ?
+		it.inset().getLayout().isPassThru() : it.paragraph().layout().pass_thru;
 
 	// Handle pre 2.1 ArgInsets (lyx2lyx cannot classify them)
 	if (name_ == "999") {

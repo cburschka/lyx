@@ -1424,6 +1424,13 @@ void Layout::write(ostream & os) const
 }
 
 
+bool Layout::hasArgs() const
+{
+	return !latexargs_.empty() || !postcommandargs_.empty() ||
+		!itemargs_.empty();
+}
+
+
 Layout::LaTeXArgMap Layout::args() const
 {
 	LaTeXArgMap args = latexargs_;

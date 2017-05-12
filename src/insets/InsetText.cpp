@@ -653,6 +653,7 @@ docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & rp,
 	return docstring();
 }
 
+
 void InsetText::getArgs(otexstream & os, OutputParams const & runparams_in,
 			bool const post) const
 {
@@ -662,9 +663,11 @@ void InsetText::getArgs(otexstream & os, OutputParams const & runparams_in,
 	if (isPassThru())
 		runparams.pass_thru = true;
 	if (post)
-		latexArgInsets(paragraphs(), paragraphs().begin(), os, runparams, getLayout().postcommandargs(), "post:");
+		latexArgInsetsForParent(paragraphs(), os, runparams,
+		                        getLayout().postcommandargs(), "post:");
 	else
-		latexArgInsets(paragraphs(), paragraphs().begin(), os, runparams, getLayout().latexargs());
+		latexArgInsetsForParent(paragraphs(), os, runparams,
+		                        getLayout().latexargs());
 }
 
 

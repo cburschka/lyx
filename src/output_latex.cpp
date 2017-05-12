@@ -610,6 +610,24 @@ void latexArgInsets(ParagraphList const & pars,
 }
 
 
+void latexArgInsetsForParent(ParagraphList const & pars, otexstream & os,
+                             OutputParams const & runparams,
+                             Layout::LaTeXArgMap const & latexargs,
+                             string const & prefix)
+{
+	map<int, InsetArgument const *> ilist;
+	vector<string> required;
+
+	for (Paragraph const & par : pars) {
+		if (par.layout().hasArgs())
+			// The InsetArguments inside this paragraph refer to this paragraph
+			continue;
+		addArgInsets(par, prefix, latexargs, ilist, required);
+	}
+	getArgInsets(os, runparams, latexargs, ilist, required, prefix);
+}
+
+
 namespace {
 
 // output the proper paragraph start according to latextype.
