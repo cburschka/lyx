@@ -110,8 +110,9 @@ public:
 	bool is_math_indent;
 
 
-	/// number formulas before or not
-	std::string math_number_before;
+	enum  MathNumber { DEFAULT, LEFT, RIGHT };
+	/// number formulas on left/right/default
+	MathNumber math_number;
 
 	/** Whether paragraphs are separated by using a indent like in
 	 *  articles or by using a little skip like in letters.

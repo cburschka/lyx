@@ -385,7 +385,7 @@ BufferParams::BufferParams()
 	makeDocumentClass();
 	paragraph_separation = ParagraphIndentSeparation;
 	is_math_indent = false;
-	math_number_before = "default";
+	math_number = DEFAULT;
 	quotes_style = InsetQuotesParams::EnglishQuotes;
 	dynamic_quotes = false;
 	fontsize = "default";
@@ -854,7 +854,14 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex.next();
 		pimpl_->mathindent = Length(lex.getString());
 	} else if (token == "\\math_number_before") {
-		lex >> math_number_before;
+		string tmp;
+		lex >> tmp;
+		if (tmp == "true")
+			math_number = LEFT;
+		else if (tmp == "false")
+			math_number = RIGHT;
+		else
+			math_number = DEFAULT;
 	} else if (token == "\\quotes_style") {
 		string qstyle;
 		lex >> qstyle;
@@ -1355,7 +1362,17 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	os << "\n\\is_math_indent " << is_math_indent;
 	if (is_math_indent && !getMathIndent().empty())
 		os << "\n\\math_indentation " << getMathIndent().asString();
-	os << "\n\\math_number_before " << math_number_before;
+	os << "\n\\math_number_before ";
+	switch(math_number) {
+	case LEFT:
+		os << "true";
+		break;
+	case RIGHT:
+		os << "false";
+		break;
+	case DEFAULT:
+		os << "default";
+	}
 	os << "\n\\quotes_style "
 	   << string_quotes_style[quotes_style]
 	   << "\n\\dynamic_quotes " << dynamic_quotes
@@ -1640,11 +1657,16 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	if (is_math_indent)
 		clsoptions << "fleqn,";
 
-	if (math_number_before == "true")
+	switch(math_number) {
+	case LEFT:
 		clsoptions << "leqno,";
-	else if (math_number_before == "false") {
+		break;
+	case RIGHT:
 		clsoptions << "reqno,";
 		features.require("amsmath");
+		break;
+	case DEFAULT:
+		break;
 	}
 
 	// language should be a parameter to \documentclass

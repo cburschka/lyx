@@ -2943,17 +2943,17 @@ void GuiDocument::applyView()
 	}
 	switch (mathsModule->MathNumberingPosCO->currentIndex()) {
 		case 0:
-			bp_.math_number_before = "true";
+			bp_.math_number = BufferParams::LEFT;
 			break;
 		case 1:
-			bp_.math_number_before = "default";
+			bp_.math_number = BufferParams::DEFAULT;
 			break;
 		case 2:
-			bp_.math_number_before = "false";
+			bp_.math_number = BufferParams::RIGHT;
 			break;
 		default:
 			// this should never happen
-			bp_.math_number_before = "default";
+			bp_.math_number = BufferParams::DEFAULT;
 			break;
 	}
 
@@ -3419,12 +3419,16 @@ void GuiDocument::paramsToDialog()
 		mathsModule->MathIndentCO->setCurrentIndex(indent);
 		enableMathIndent(indent);
 	}
-	if (bp_.math_number_before == "true")
+	switch(bp_.math_number) {
+	case BufferParams::LEFT:
 		mathsModule->MathNumberingPosCO->setCurrentIndex(0);
-	else if (bp_.math_number_before == "default")
+		break;
+	case BufferParams::DEFAULT:
 		mathsModule->MathNumberingPosCO->setCurrentIndex(1);
-	else if (bp_.math_number_before == "false")
+		break;
+	case BufferParams::RIGHT:
 		mathsModule->MathNumberingPosCO->setCurrentIndex(2);
+	}
 
 	map<string, string> const & packages = BufferParams::auto_packages();
 	for (map<string, string>::const_iterator it = packages.begin();
