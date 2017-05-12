@@ -23,6 +23,9 @@ FNULL = open('/dev/null', 'w')
 
 key_delay = ''
 
+# Ignore status == "dead" if this is set. Used at the last commands after "\Cq"
+dead_expected = False
+
 class CommandSource:
 
     def __init__(self):
@@ -235,33 +238,38 @@ def lyx_status(pid):
             print('Retrying check for status')
         count += 1
         time.sleep(0.01)
-    if count > 0:
+    if count > 1:
         print('Retried to read status ' + str(count) + ' times')
+    #print('lys_status() returning ' + status)
     return status
 
 # Return true if LyX (identified via lyx_pid) is sleeping
-def lyx_sleeping():
-    return lyx_status(lyx_pid) == "sleeping"
+def lyx_sleeping(LYX_PID):
+    return lyx_status(LYX_PID) == "sleeping"
 
 # Return true if LyX (identified via lyx_pid) is zombie
-def lyx_zombie():
-    return lyx_status(lyx_pid) == "zombie"
+def lyx_zombie(LYX_PID):
+    return lyx_status(LYX_PID) == "zombie"
 
-def lyx_dead():
-    status = lyx_status(lyx_pid)
+def lyx_dead(LYX_PID):
+    status = lyx_status(LYX_PID)
     return (status == "dead") or (status == "zombie")
 
-def wait_until_lyx_sleeping():
+def wait_until_lyx_sleeping(LYX_PID):
     before_secs = time.time()
     while True:
-        status = lyx_status(lyx_pid)
+        status = lyx_status(LYX_PID)
         if status == "sleeping":
-            return
+            return True
         if (status == "dead") or (status == "zombie"):
-            print('Lyx is dead, exiting')
             printresstatus()
             sys.stdout.flush()
-            os._exit(1)
+            if dead_expected:
+                print('Lyx died while waiting for status == sleeping')
+                return False
+            else:
+                print('Lyx is dead, exiting')
+                os._exit(1)
         if time.time() - before_secs > 180:
             print('Killing due to freeze (KILL_FREEZE)')
 
@@ -271,9 +279,15 @@ def wait_until_lyx_sleeping():
             sys.stdout.flush()
             os._exit(1)
         time.sleep(0.02)
+    # Should be never reached
+    print('Wait for sleeping ends unexpectedly')
+    return False
 
 def sendKeystringLocal(keystr, LYX_PID):
-    wait_until_lyx_sleeping()
+    is_sleeping = wait_until_lyx_sleeping(LYX_PID)
+    if not is_sleeping:
+        print("Not sending \"" + keystr + "\"")
+        return
     if not screenshot_out is None:
         print('Making Screenshot: ' + screenshot_out + ' OF ' + infilename)
         time.sleep(0.2)
@@ -530,6 +544,7 @@ while not failed:
         else:
             print('lyx_pid: ' + lyx_pid)
             print('lyx_win: ' + lyx_window_name)
+            dead_expected = False
             sendKeystringLocal("\C\[Home]", lyx_pid)
             time.sleep(controlkey_delay)
     elif c[0:5] == 'Sleep':
@@ -568,14 +583,15 @@ while not failed:
         print("result=" + str(result) + ", failed=" + str(failed))
     elif c[0:15] == 'TestEndWithKill':
         cmd = c[16:].rstrip()
-        if lyx_dead():
+        if lyx_dead(lyx_pid):
             print("LyX instance not found because of crash or assert !\n")
             failed = True
         else:
             print("    ------------    Forcing kill of lyx instance: " + str(lyx_pid) + "    ------------")
             # This line below is there only to allow lyx to update its log-file
             sendKeystringLocal("\[Escape]", lyx_pid)
-            while not lyx_dead():
+            dead_expected = True
+            while not lyx_dead(lyx_pid):
                 intr_system("kill -9 " + str(lyx_pid), True);
                 time.sleep(0.5)
             if cmd != "":
@@ -587,7 +603,7 @@ while not failed:
                 print("failed=" + str(failed))
     elif c[0:7] == 'TestEnd':
         #lyx_other_window_name = None
-        if lyx_dead():
+        if lyx_dead(lyx_pid):
             print("LyX instance not found because of crash or assert !\n")
             failed = True
         else:
@@ -600,13 +616,20 @@ while not failed:
             # and so the function lyx-quit should work
             sendKeystringLocal("\Cq", lyx_pid)
             time.sleep(0.5)
-            if lyx_sleeping():
+            dead_expected = True
+            is_sleeping = wait_until_lyx_sleeping(lyx_pid)
+            if is_sleeping:
+                print('wait_until_lyx_sleeping() indicated "sleeping"')
+                # For a short time lyx-status is 'sleeping', even if it is nearly dead.
+                # Without the wait below, the \[Tab]-char is sent to nirvana
+                # causing a 'beep'
+                time.sleep(0.5)
                 # probably waiting for Save/Discard/Abort, we select 'Discard'
                 sendKeystringRT("\[Tab]\[Return]", lyx_pid)
                 lcount = 0
             else:
                 lcount = 1
-            while not lyx_dead():
+            while not lyx_dead(lyx_pid):
                 lcount = lcount + 1
                 if lcount > 20:
                     print("LyX still up, killing process and waiting for it to die...\n")
