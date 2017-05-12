@@ -525,41 +525,57 @@ void popPolyglossiaLang()
 }
 
 
+namespace {
+
+void addArgInsets(Paragraph const & par, string const & prefix,
+                 Layout::LaTeXArgMap const & latexargs,
+                 map<int, InsetArgument const *> & ilist,
+                 vector<string> & required)
+{
+	for (auto const & table : par.insetList()) {
+		InsetArgument const * arg = table.inset->asInsetArgument();
+		if (!arg)
+			continue;
+		if (arg->name().empty()) {
+			LYXERR0("Error: Unnamed argument inset!");
+			continue;
+		}
+		string const name = prefix.empty() ?
+			arg->name() : split(arg->name(), ':');
+		// why converting into an integer?
+		unsigned int const nr = convert<unsigned int>(name);
+		if (ilist.find(nr) == ilist.end())
+			ilist[nr] = arg;
+		Layout::LaTeXArgMap::const_iterator const lit =
+			latexargs.find(arg->name());
+		if (lit != latexargs.end()) {
+			Layout::latexarg const & larg = lit->second;
+			vector<string> req = getVectorFromString(larg.requires);
+			move(req.begin(), req.end(), back_inserter(required));
+		}
+	}
+}
+
+} // anon namespace
+
+
 void latexArgInsets(Paragraph const & par, otexstream & os,
-	OutputParams const & runparams, Layout::LaTeXArgMap const & latexargs, string const & prefix)
+                    OutputParams const & runparams,
+                    Layout::LaTeXArgMap const & latexargs,
+                    string const & prefix)
 {
 	map<int, InsetArgument const *> ilist;
 	vector<string> required;
-
-	InsetList::const_iterator it = par.insetList().begin();
-	InsetList::const_iterator end = par.insetList().end();
-	for (; it != end; ++it) {
-		if (InsetArgument const * ins = it->inset->asInsetArgument()) {
-			if (ins->name().empty())
-				LYXERR0("Error: Unnamed argument inset!");
-			else {
-				string const name = prefix.empty() ? ins->name() : split(ins->name(), ':');
-				unsigned int const nr = convert<unsigned int>(name);
-				ilist[nr] = ins;
-				Layout::LaTeXArgMap::const_iterator const lit =
-						latexargs.find(ins->name());
-				if (lit != latexargs.end()) {
-					Layout::latexarg const & arg = (*lit).second;
-					if (!arg.requires.empty()) {
-						vector<string> req = getVectorFromString(arg.requires);
-						required.insert(required.end(), req.begin(), req.end());
-					}
-				}
-			}
-		}
-	}
+	addArgInsets(par, prefix, latexargs, ilist, required);
 	getArgInsets(os, runparams, latexargs, ilist, required, prefix);
 }
 
 
-void latexArgInsets(ParagraphList const & pars, ParagraphList::const_iterator pit,
-	otexstream & os, OutputParams const & runparams, Layout::LaTeXArgMap const & latexargs,
-	string const & prefix)
+void latexArgInsets(ParagraphList const & pars,
+                    ParagraphList::const_iterator pit,
+                    otexstream & os, OutputParams const & runparams,
+                    Layout::LaTeXArgMap const & latexargs,
+                    string const & prefix)
 {
 	map<int, InsetArgument const *> ilist;
 	vector<string> required;
@@ -583,35 +599,12 @@ void latexArgInsets(ParagraphList const & pars, ParagraphList::const_iterator pi
 	ParagraphList::const_iterator spit = lyx::prev(pit, offset);
 
 	for (; spit != pars.end(); ++spit) {
-		if (spit->layout() != current_layout || spit->params().depth() < current_depth)
+		if (spit->layout() != current_layout ||
+		    spit->params().depth() < current_depth)
 			break;
 		if (spit->params().depth() > current_depth)
 			continue;
-		InsetList::const_iterator it = spit->insetList().begin();
-		InsetList::const_iterator end = spit->insetList().end();
-		for (; it != end; ++it) {
-			if (it->inset->lyxCode() == ARG_CODE) {
-				InsetArgument const * ins =
-					static_cast<InsetArgument const *>(it->inset);
-				if (ins->name().empty())
-					LYXERR0("Error: Unnamed argument inset!");
-				else {
-					string const name = prefix.empty() ? ins->name() : split(ins->name(), ':');
-					unsigned int const nr = convert<unsigned int>(name);
-					if (ilist.find(nr) == ilist.end())
-						ilist[nr] = ins;
-					Layout::LaTeXArgMap::const_iterator const lit =
-							latexargs.find(ins->name());
-					if (lit != latexargs.end()) {
-						Layout::latexarg const & arg = (*lit).second;
-						if (!arg.requires.empty()) {
-							vector<string> req = getVectorFromString(arg.requires);
-							required.insert(required.end(), req.begin(), req.end());
-						}
-					}
-				}
-			}
-		}
+		addArgInsets(*spit, prefix, latexargs, ilist, required);
 	}
 	getArgInsets(os, runparams, latexargs, ilist, required, prefix);
 }
