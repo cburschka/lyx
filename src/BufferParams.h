@@ -114,6 +114,10 @@ public:
 	/// number formulas on left/right/default
 	MathNumber math_number;
 
+	/// Convenience function for display: like math_number, but
+	/// DEFAULT is replaced by the best guess we have.
+	MathNumber getMathNumber() const;
+
 	/** Whether paragraphs are separated by using a indent like in
 	 *  articles or by using a little skip like in letters.
 	 */

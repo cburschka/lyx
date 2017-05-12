@@ -7,6 +7,9 @@
 # Including the maths stuff
 Format 63
 
+# By default AMS articles & books use leqno option (as SIAM journals).
+Provides leqno 1
+
 # the environments copied from the old amsart.layout are:
 # - Bibliography
 # - Title

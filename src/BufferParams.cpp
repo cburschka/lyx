@@ -667,6 +667,19 @@ void BufferParams::setDefSkip(VSpace const & vs)
 }
 
 
+BufferParams::MathNumber BufferParams::getMathNumber() const
+{
+	if (math_number != DEFAULT)
+		return math_number;
+	// FIXME: do not hardcode language here
+	else if (language->lang() == "arabic_arabi"
+	         || documentClass().provides("leqno"))
+		return LEFT;
+	else
+		return RIGHT;
+}
+
+
 string BufferParams::readToken(Lexer & lex, string const & token,
 	FileName const & filepath)
 {

@@ -558,13 +558,14 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 	}
 
 	if (numberedType()) {
-		Changer dummy = mi.base.changeFontSet("mathbf");
+		Changer dummy = mi.base.changeFontSet("mathrm");
 		int l = 0;
 		for (row_type row = 0; row < nrows(); ++row)
 			l = max(l, mathed_string_width(mi.base.font, nicelabel(row)));
 
 		if (l)
-			dim.wid += 30 + l;
+			// Value was hardcoded to 30 pixels
+			dim.wid += Length(0.3, Length::IN).inPixels(mi.base) + l;
 	}
 
 	// reserve some space for marker.
@@ -644,18 +645,36 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	Changer dummy2 = pi.base.font.changeStyle(display() ? LM_ST_DISPLAY
 	                                                    : LM_ST_TEXT);
 
-	InsetMathGrid::draw(pi, x + 1, y);
+	int xmath = x;
+	BufferParams::MathNumber const math_number = buffer().params().getMathNumber();
+	if (numberedType() && math_number == BufferParams::LEFT) {
+		Changer dummy = pi.base.changeFontSet("mathrm");
+		int l = 0;
+		for (row_type row = 0; row < nrows(); ++row)
+			l = max(l, mathed_string_width(pi.base.font, nicelabel(row)));
+
+		if (l)
+			// Value was hardcoded to 30 pixels
+			xmath += Length(0.3, Length::IN).inPixels(pi.base) + l;
+	}
+
+	InsetMathGrid::draw(pi, xmath + 1, y);
 	drawMarkers2(pi, x, y);
 
 	if (numberedType()) {
-		int const xx = x + colinfo_.back().offset_ + colinfo_.back().width_ + 20;
+		Changer dummy = pi.base.changeFontSet("mathrm");
 		for (row_type row = 0; row < nrows(); ++row) {
 			int const yy = y + rowinfo_[row].offset_;
-			Changer dummy = pi.base.changeFontSet("mathrm");
 			docstring const nl = nicelabel(row);
-			pi.draw(xx, yy, nl);
+			if (math_number == BufferParams::LEFT)
+				pi.draw(x, yy, nl);
+			else {
+				int l = mathed_string_width(pi.base.font, nl);
+				pi.draw(x + dim.wid - l, yy, nl);
+			}
 		}
 	}
+
 	// drawing change line
 	if (canPaintChange(*bv))
 		pi.change_.paintCue(pi, x + 1, y + 1 - dim.asc,
