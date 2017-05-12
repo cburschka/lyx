@@ -5323,8 +5323,10 @@ void Buffer::updateChangesPresent() const
 
 void Buffer::Impl::refreshFileMonitor()
 {
-	if (file_monitor_ && file_monitor_->filename() == filename.absFileName())
-		return file_monitor_->refresh();
+	if (file_monitor_ && file_monitor_->filename() == filename.absFileName()) {
+		file_monitor_->refresh();
+		return;
+	}
 
 	// The previous file monitor is invalid
 	// This also destroys the previous file monitor and all its connections

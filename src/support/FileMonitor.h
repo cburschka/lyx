@@ -176,7 +176,7 @@ public:
 	/// Make sure the good file is being monitored, after e.g. a move or a
 	/// deletion. See <https://bugreports.qt.io/browse/QTBUG-46483>. This is
 	/// called automatically.
-	void refresh() { return monitor_->refresh(); }
+	void refresh() { monitor_->refresh(); }
 
 Q_SIGNALS:
 	/// Connect to this to be notified when the file changes
