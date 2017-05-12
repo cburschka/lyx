@@ -79,11 +79,11 @@
 # If possible, the script will use pdftocairo instead of gs,
 # as it's much faster and gives better results.
 
-import glob, os, pipes, re, sys
+import glob, os, pipes, re, sys, tempfile
 
 from lyxpreview_tools import check_latex_log, copyfileobj, error, filter_pages,\
      find_exe, find_exe_or_terminate, join_metrics_and_rename, latex_commands, \
-     latex_file_re, make_texcolor, mkstemp, pdflatex_commands, progress, \
+     latex_file_re, make_texcolor, pdflatex_commands, progress, \
      run_command, run_latex, warning, write_metrics_info
 
 
@@ -205,7 +205,7 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
     fg_color_gr = make_texcolor(fg_color, True)
     bg_color_gr = make_texcolor(bg_color, True)
 
-    tmp = mkstemp()
+    tmp = tempfile.TemporaryFile()
 
     success = 0
     try:
@@ -255,7 +255,7 @@ def crop_files(pnmcrop, basename):
     t.append('%s -right' % pnmcrop, '--')
 
     for file in glob.glob("%s*.ppm" % basename):
-        tmp = mkstemp()
+        tmp = tempfile.TemporaryFile()
         new = t.open(file, "r")
         copyfileobj(new, tmp)
         if not new.close():

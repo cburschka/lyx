@@ -10,7 +10,7 @@
 #   Paul A. Rubin, rubin@msu.edu.
 
 # A repository of the following functions, used by the lyxpreview2xyz scripts.
-# copyfileobj, error, find_exe, find_exe_or_terminate, make_texcolor, mkstemp,
+# copyfileobj, error, find_exe, find_exe_or_terminate, make_texcolor,
 # progress, run_command, run_latex, warning
 
 # Requires python 2.4 or later (subprocess module).
@@ -196,16 +196,6 @@ def run_command(cmd, stderr2stdout = True):
         return run_command_popen(cmd, stderr2stdout)
 
 
-def get_version_info():
-    version_re = re.compile("([0-9])\.([0-9])")
-
-    match = version_re.match(sys.version)
-    if match == None:
-        error("Unable to extract version info from 'sys.version'")
-
-    return int(match.group(1)), int(match.group(2))
-
-
 def copyfileobj(fsrc, fdst, rewind=0, length=16*1024):
     """copy data from file-like object fsrc to file-like object fdst"""
     if rewind:
@@ -219,55 +209,12 @@ def copyfileobj(fsrc, fdst, rewind=0, length=16*1024):
         fdst.write(buf)
 
 
-class TempFile:
-    """clone of tempfile.TemporaryFile to use with python < 2.0."""
-    # Cache the unlinker so we don't get spurious errors at shutdown
-    # when the module-level "os" is None'd out.  Note that this must
-    # be referenced as self.unlink, because the name TempFile
-    # may also get None'd out before __del__ is called.
-    unlink = os.unlink
-
-    def __init__(self):
-        self.filename = tempfile.mktemp()
-        self.file = open(self.filename,"w+b")
-        self.close_called = 0
-
-    def close(self):
-        if not self.close_called:
-            self.close_called = 1
-            self.file.close()
-            self.unlink(self.filename)
-
-    def __del__(self):
-        self.close()
-
-    def read(self, size = -1):
-        return self.file.read(size)
-
-    def write(self, line):
-        return self.file.write(line)
-
-    def seek(self, offset):
-        return self.file.seek(offset)
-
-    def flush(self):
-        return self.file.flush()
-
-
-def mkstemp():
-    """create a secure temporary file and return its object-like file"""
-    major, minor = get_version_info()
-
-    if major >= 2 and minor >= 0:
-        return tempfile.TemporaryFile()
-    else:
-        return TempFile()
-
 def write_metrics_info(metrics_info, metrics_file):
     metrics = open(metrics_file, 'w')
     for metric in metrics_info:
         metrics.write("Snippet %s %f\n" % metric)
     metrics.close()
+
 
 # Reads a .tex files and create an identical file but only with
 # pages whose index is in pages_to_keep

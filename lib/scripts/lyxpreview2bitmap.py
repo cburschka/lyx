@@ -77,14 +77,14 @@
 
 from __future__ import print_function
 
-import getopt, glob, os, re, shutil, sys
+import getopt, glob, os, re, shutil, sys, tempfile
 
 from legacy_lyxpreview2ppm import extract_resolution, legacy_conversion_step1
 
 from lyxpreview_tools import bibtex_commands, check_latex_log, copyfileobj, \
      error, filter_pages, find_exe, find_exe_or_terminate, \
      join_metrics_and_rename, latex_commands, latex_file_re, make_texcolor, \
-     mkstemp, pdflatex_commands, progress, run_command, run_latex, run_tex, \
+     pdflatex_commands, progress, run_command, run_latex, run_tex, \
      warning, write_metrics_info
 
 PY2 = sys.version_info[0] == 2
@@ -167,7 +167,7 @@ def fix_latex_file(latex_file, pdf_output):
     def_re = re.compile(b"(\\\\newcommandx|\\\\global\\\\long\\\\def)"
                         b"(\\\\[a-zA-Z]+)")
 
-    tmp = mkstemp()
+    tmp = tempfile.TemporaryFile()
 
     changed = False
     macros = []
