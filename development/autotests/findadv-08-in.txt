@@ -19,8 +19,9 @@ KK: \C\[Home]\Axdialog-show findreplaceadv\[Return]
 KK: o
 KK: \Axregexp-mode\[Return]
 KK: [\\w]* a
-# select whole words
+# Without the slowing, lyx crashes
 KD: 100
+# select whole words
 KK: \Ac\Ac
 # search next
 KK: \Al

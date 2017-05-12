@@ -152,6 +152,23 @@ class CommandSourceFromFile(CommandSource):
         self.i = self.i + 1
         return line
 
+def get_proc_pid(proc_name):
+    pid=os.popen("pidof " + proc_name).read().rstrip()
+    return pid
+
+wlistreg = re.compile(r'^(0x[0-9a-f]{5,9})\s+[^\s]+\s+([0-9]+)\s.*$')
+def get_proc_win_id(pid, ignoreid):
+    nlist = os.popen("wmctrl -l -p").read()
+    wlist = nlist.split("\n")
+    for item in wlist:
+        m = wlistreg.match(item)
+        if m:
+            win_id = m.group(1)
+            win_pid = m.group(2)
+            if win_pid == pid:
+                if win_id != ignoreid:
+                    return win_id
+    return None
 
 def lyx_exists():
     if lyx_pid is None:
@@ -172,25 +189,37 @@ def intr_system(cmd, ignore_err = False):
 
 statreg = re.compile(r'^State:.*\(([a-z]+)\)')
 
+resstatus = []
+def printresstatus():
+    for line in resstatus:
+        line = line.rstrip()
+        print("    " + line.rstrip())
+    print('End of /proc-lines')
+
 def lyx_status(pid):
-  if lyx_pid is None:
-    return "dead"
-  fname = '/proc/' + pid + '/status'
-  try:
-    f = open(fname)
-    for line in f:
-      m = statreg.match(line)
-      if m:
-        status = m.group(1)
+    resstatus = []
+    if lyx_pid is None:
+        return "dead"
+    fname = '/proc/' + pid + '/status'
+    status = "dead"
+    try:
+        f = open(fname)
+        found = False
+        for line in f:
+            resstatus.extend([line])
+            m = statreg.match(line)
+            if m:
+                status = m.group(1)
+                found = True
         f.close()
         return status
-    f.close()
-  except IOError as e:
-     print("I/O error({0}): {1}".format(e.errno, e.strerror))
-     return "dead"
-  except:
-    print("Unexpected error:", sys.exc_info()[0])
-  return "dead"
+    except IOError as e:
+        print("I/O error({0}): {1}".format(e.errno, e.strerror))
+        return "dead"
+    except:
+        print("Unexpected error:", sys.exc_info()[0])
+        return "dead"
+    return status
 
 # Return true if LyX (identified via lyx_pid) is sleeping
 def lyx_sleeping():
@@ -212,6 +241,7 @@ def wait_until_lyx_sleeping():
             return
         if (status == "dead") or (status == "zombie"):
             print('Lyx is dead, exiting')
+            printresstatus()
             sys.stdout.flush()
             os._exit(1)
         if time.time() - before_secs > 180:
@@ -219,7 +249,7 @@ def wait_until_lyx_sleeping():
 
             # Do profiling, but sysprof has no command line interface?
             # intr_system("killall -KILL lyx")
-
+            printresstatus()
             sys.stdout.flush()
             os._exit(1)
         time.sleep(0.02)
@@ -239,7 +269,10 @@ def sendKeystringLocal(keystr, LYX_PID):
         xvpar.extend(["-jump-pointer", "-no-back-pointer"])
     else:
         xvpar.extend(["-xsendevent"])
-    #xvpar.extend(["-window", lyx_window_name])
+    if lyx_other_window_name is None:
+        xvpar.extend(["-window", lyx_window_name])
+    else:
+        xvpar.extend(["-window", lyx_other_window_name])
     xvpar.extend(["-delay", actual_delay, "-text", keystr])
     print("Sending \"" + keystr + "\"")
     subprocess.call(xvpar, stdout = FNULL, stderr = FNULL)
@@ -340,6 +373,7 @@ infilename = os.environ.get('KEYTEST_INFILE')
 outfilename = os.environ.get('KEYTEST_OUTFILE')
 max_drop = os.environ.get('MAX_DROP')
 lyx_window_name = os.environ.get('LYX_WINDOW_NAME')
+lyx_other_window_name = None
 screenshot_out = os.environ.get('SCREENSHOT_OUT')
 lyx_userdir = os.environ.get('LYX_USERDIR')
 
@@ -440,7 +474,7 @@ while not failed:
         print("Ignoring comment line: " + c)
     elif c[0:9] == 'TestBegin':
         print("\n")
-        lyx_pid=os.popen("pidof " + lyx).read()
+        lyx_pid=get_proc_pid(lyx)
         if lyx_pid != "":
             print("Found running instance(s) of LyX: " + lyx_pid + ": killing them all\n")
             intr_system("killall " + lyx, True)
@@ -454,19 +488,19 @@ while not failed:
             intr_system(lyx_exe + " -userdir " + lyx_userdir + " " + c[9:] + "&")
         count = 5
         old_lyx_pid = "-7"
-        old_lyx_window_name = "not set"
+        old_lyx_window_name = None
         print("Waiting for LyX to show up . . .")
         while count > 0:
-            lyx_pid=os.popen("pidof " + lyx).read().rstrip()
+            lyx_pid=get_proc_pid(lyx)
             if lyx_pid != old_lyx_pid:
                 print('lyx_pid=' + lyx_pid)
                 old_lyx_pid = lyx_pid
             if lyx_pid != "":
-                lyx_window_name=os.popen("wmctrl -l -p | grep ' " + str(lyx_pid) +  " ' | cut -d ' ' -f 1").read().rstrip()
-                if old_lyx_window_name != lyx_window_name:
-                    print('lyx_win=' + lyx_window_name, '\n')
-                    old_lyx_window_name = lyx_window_name
-                if lyx_window_name != "":
+                lyx_window_name=get_proc_win_id(lyx_pid, "")
+                if not lyx_window_name is None:
+                    if old_lyx_window_name != lyx_window_name:
+                        print('lyx_win=' + lyx_window_name, '\n')
+                        old_lyx_window_name = lyx_window_name
                     break
             else:
                 count = count - 1
@@ -475,10 +509,11 @@ while not failed:
             print('Timeout: could not start ' + lyx_exe, '\n')
             sys.stdout.flush()
             failed = True
-        print('lyx_pid: ' + lyx_pid)
-        print('lyx_win: ' + lyx_window_name)
-        sendKeystringLocal("\C\[Home]", lyx_pid)
-        time.sleep(controlkey_delay)
+        else:
+            print('lyx_pid: ' + lyx_pid)
+            print('lyx_win: ' + lyx_window_name)
+            sendKeystringLocal("\C\[Home]", lyx_pid)
+            time.sleep(controlkey_delay)
     elif c[0:5] == 'Sleep':
         print("Sleeping for " + c[6:] + " seconds")
         time.sleep(float(c[6:]))
@@ -520,6 +555,8 @@ while not failed:
             failed = True
         else:
             print("    ------------    Forcing kill of lyx instance: " + str(lyx_pid) + "    ------------")
+            # This line below is there only to allow lyx to update its log-file
+            sendKeystringLocal("\[Escape]", lyx_pid)
             while not lyx_dead():
                 intr_system("kill -9 " + str(lyx_pid), True);
                 time.sleep(0.5)
@@ -531,6 +568,7 @@ while not failed:
             else:
                 print("failed=" + str(failed))
     elif c[0:7] == 'TestEnd':
+        #lyx_other_window_name = None
         if lyx_dead():
             print("LyX instance not found because of crash or assert !\n")
             failed = True
