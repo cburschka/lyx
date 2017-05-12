@@ -167,11 +167,18 @@ public:
 	/// absolute path being tracked
 	std::string const & filename() { return monitor_->filename(); }
 	/// Creates a guard that blocks notifications. Copyable. Notifications from
-	/// this monitor are blocked as long as there are copies around.
+	/// this monitor are blocked as long as there are copies of the
+	/// FileMonitorBlocker around.
 	/// \param delay is the amount waited in ms after expiration of the guard
-	/// before reconnecting. This delay thing is to deal with asynchronous
-	/// notifications in a not so elegant fashion. But it can also be used to
-	/// slow down incoming events.
+	/// before reconnecting. It can be used to slow down incoming events
+	/// accordingly. A value of 0 is still made asynchronous, because of the
+	/// fundamentally asynchronous nature of QFileSystemWatcher. To catch one's
+	/// own file operations, a value of 0 for delay is sufficient with the
+	/// inotify backend (e.g. Linux); for OSX (kqueue), a value of 100ms is
+	/// unsufficient and more tests need to be done in combination with
+	/// flushing/syncing to disk in order to understand how to catch one's own
+	/// operations reliably. No feedback from Windows yet. See
+	/// <https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg200252.html>.
 	FileMonitorBlocker block(int delay = 0);
 	/// Make sure the good file is being monitored, after e.g. a move or a
 	/// deletion. See <https://bugreports.qt.io/browse/QTBUG-46483>. This is

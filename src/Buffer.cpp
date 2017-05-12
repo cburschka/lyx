@@ -386,7 +386,7 @@ public:
 	void fileExternallyModified(bool modified) const;
 
 	/// Block notifications of external modifications
-	FileMonitorBlocker blockFileMonitor() { return file_monitor_->block(10); }
+	FileMonitorBlocker blockFileMonitor() { return file_monitor_->block(); }
 
 private:
 	/// So we can force access via the accessors.
@@ -5341,8 +5341,16 @@ void Buffer::Impl::refreshFileMonitor()
 
 void Buffer::Impl::fileExternallyModified(bool modified) const
 {
-	if (modified)
+	if (modified) {
+		// prevent false positives, because FileMonitorBlocker is not enough on
+		// OSX.
+		if (filename.exists() && checksum_ == filename.checksum()) {
+			LYXERR(Debug::FILES, "External modification but "
+			       "checksum unchanged: " << filename);
+			return;
+		}
 		lyx_clean = bak_clean = false;
+	}
 	externally_modified_ = modified;
 	if (wa_)
 		wa_->updateTitles();
