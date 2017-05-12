@@ -196,9 +196,10 @@ def printresstatus():
         print("    " + line.rstrip())
     print('End of /proc-lines')
 
-def lyx_status(pid):
+def lyx_status_retry(pid):
     resstatus = []
     if lyx_pid is None:
+        print('Pid is None')
         return "dead"
     fname = '/proc/' + pid + '/status'
     status = "dead"
@@ -212,6 +213,8 @@ def lyx_status(pid):
                 status = m.group(1)
                 found = True
         f.close()
+        if not found:
+            return "retry"
         return status
     except IOError as e:
         print("I/O error({0}): {1}".format(e.errno, e.strerror))
@@ -219,6 +222,21 @@ def lyx_status(pid):
     except:
         print("Unexpected error:", sys.exc_info()[0])
         return "dead"
+    print('This should not happen')
+    return status
+
+def lyx_status(pid):
+    count = 0
+    while 1:
+        status = lyx_status_retry(pid)
+        if status != "retry":
+            break
+        if count == 0:
+            print('Retrying check for status')
+        count += 1
+        time.sleep(0.01)
+    if count > 0:
+        print('Retried to read status ' + str(count) + ' times')
     return status
 
 # Return true if LyX (identified via lyx_pid) is sleeping
@@ -480,13 +498,13 @@ while not failed:
             intr_system("killall " + lyx, True)
             time.sleep(0.5)
             intr_system("killall -KILL " + lyx, True)
-        time.sleep(0.2)
+            time.sleep(0.2)
         print("Starting LyX . . .")
         if lyx_userdir is None:
             intr_system(lyx_exe + c[9:] + "&")
         else:
             intr_system(lyx_exe + " -userdir " + lyx_userdir + " " + c[9:] + "&")
-        count = 5
+        count = 10
         old_lyx_pid = "-7"
         old_lyx_window_name = None
         print("Waiting for LyX to show up . . .")
@@ -504,7 +522,7 @@ while not failed:
                     break
             else:
                 count = count - 1
-            time.sleep(1)
+            time.sleep(0.5)
         if count <= 0:
             print('Timeout: could not start ' + lyx_exe, '\n')
             sys.stdout.flush()
