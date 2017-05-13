@@ -1179,7 +1179,7 @@ def main(argv):
     parser.add_argument("output_file", nargs='?', type=cmd_arg, default=None,
                         help="output file (default stdout)")
 
-    options = parser.parse_args()
+    options = parser.parse_args(argv)
 
     # Open files
     if options.input_file:
