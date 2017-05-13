@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 542
+\lyxformat 543
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -79,7 +79,7 @@ PackageOptions algorithm2e ruled
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
-\math_number_before 0
+\math_numbering_side default
 \quotes_style english
 \dynamic_quotes 0
 \papercolumns 1
@@ -447,7 +447,7 @@ This work is supported by...
 status open
 
 \begin_layout Plain Layout
-The default list of authors is too long for headers.
+When the default list of authors is too long for headers.
  The following must be placed after 
 \family typewriter
 
@@ -490,6 +490,31 @@ reference "alg:one"
 plural "false"
 caps "false"
 noprefix "false"
+
+\end_inset
+
+, Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:one"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, and Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:one"
 
 \end_inset
 
@@ -784,15 +809,14 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Sieve of Eratosthenes
-\end_layout
-
-\end_inset
-
-
 \begin_inset CommandInset label
 LatexCommand label
 name "alg:one"
+
+\end_inset
+
+Sieve of Eratosthenes.
+\end_layout
 
 \end_inset
 
@@ -805,21 +829,6 @@ name "alg:one"
 \end_layout
 
 \begin_layout Standard
-See Figure
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:one"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-.
 \begin_inset Float figure
 wide false
 sideways false
@@ -836,19 +845,164 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Figure.
-\end_layout
-
-\end_inset
-
-
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:one"
 
 \end_inset
 
- 
+Figure.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:one"
+
+\end_inset
+
+
+\emph on
+Booktabs
+\emph default
+ recommendations.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="2">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<row>
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Recommendation
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Caption
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Above (for tables only)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Horizontal rules
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Do not overuse
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Double rules
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Never
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Vertical rules
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Never, ever
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -862,19 +1016,6 @@ Conclusions
 
 \begin_layout Standard
 Conclusion.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Start of "Sample References" section
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
