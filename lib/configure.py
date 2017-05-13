@@ -888,6 +888,14 @@ def checkConverterEntries():
     # Only define a converter from pdf6 for graphics
     checkProg('a PDF to EPS converter', ['pdftops -eps -f 1 -l 1 $$i $$o'],
         rc_entry = [ r'\converter pdf6        eps        "%%"	""' ])
+    # Define a converter from pdf6 to png for Macs where pdftops is missing.
+    # The converter utility sips allows to force the dimensions of the resulting
+    # png image. The value of 800 pixel for the width is arbitrary and not
+    # related to the current screen resolution or width.
+    # There is no converter parameter for this information.
+    checkProg('a PDF to PNG converter',
+        ['sips --resampleWidth 800 --setProperty format png $$i --out $$o'],
+        rc_entry = [ r'\converter pdf6        png        "%%" ""' ])
     # Create one converter for a PDF produced using TeX fonts and one for a
     # PDF produced using non-TeX fonts. This does not produce non-unique
     # conversion paths, since a given document either uses TeX fonts or not.
