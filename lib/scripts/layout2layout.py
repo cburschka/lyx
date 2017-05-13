@@ -1172,14 +1172,14 @@ def main(argv):
 
     parser = argparse.ArgumentParser(**args)
 
-    parser.add_argument("-t", "--to", type=int, dest="format",
+    parser.add_argument("-t", "--to", type=int, dest="format", default= currentFormat,
                         help=("destination layout format, default %i (latest)") % currentFormat)
     parser.add_argument("input_file", nargs='?', type=cmd_arg, default=None,
                         help="input file (default stdin)")
     parser.add_argument("output_file", nargs='?', type=cmd_arg, default=None,
                         help="output file (default stdout)")
 
-    options = parser.parse_args(argv)
+    options = parser.parse_args(argv[1:])
 
     # Open files
     if options.input_file:
@@ -1192,19 +1192,14 @@ def main(argv):
     else:
         output = sys.stdout
 
-    if options.format:
-        end_format = options.format
-    else:
-        end_format = currentFormat
-
-    if end_format > currentFormat:
-        error("Format %i does not exist" % end_format);
+    if options.format > currentFormat:
+        error("Format %i does not exist" % options.format);
 
     # Do the real work
     lines = read(source)
     format = 1
-    while (format < end_format):
-        format = convert(lines, end_format)
+    while (format < options.format):
+        format = convert(lines, options.format)
     write(output, lines)
 
     # Close files
