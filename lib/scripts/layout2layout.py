@@ -49,7 +49,7 @@ currentFormat = 63
 # Rename I18NPreamble to BabelPreamble and add LangPreamble
 
 # Incremented to format 15, 28 May 2009 by lasgouttes
-# Add new tag OutputFormat; modules can be conditioned on feature 
+# Add new tag OutputFormat; modules can be conditioned on feature
 # "from->to".
 
 # Incremented to format 16, 5 June 2009 by rgh
@@ -338,7 +338,7 @@ def convert(lines, end_format):
     # Arguments
     re_OptArgs = re.compile(b'^(\\s*)OptionalArgs(\\s+)(\\d+)\\D*$', re.IGNORECASE)
     re_ReqArgs = re.compile(b'^(\\s*)RequiredArgs(\\s+)(\\d+)\\D*$', re.IGNORECASE)
-    
+
     # various changes associated with changing how chapters are handled
     re_LabelTypeIsCounter = re.compile(b'^(\\s*)LabelType(\\s*)Counter\\s*$', re.IGNORECASE)
     re_TopEnvironment = re.compile(b'^(\\s*)LabelType(\\s+)Top_Environment\\s*$', re.IGNORECASE)
@@ -416,7 +416,7 @@ def convert(lines, end_format):
                       lcat = ConvDict[lcat]
                   lines[i] = lpre + b"{" + lnam + b"}"
                   lines.insert(i+1, b"#  \\DeclareCategory{" + lcat + b"}")
-                  i += 1 
+                  i += 1
           i += 1
           continue
 
@@ -625,7 +625,7 @@ def convert(lines, end_format):
             lines[i] = b"InsetLayout Caption:Standard"
           i += 1
           continue
-        
+
         if format == 41:
             # nothing to do.
             i += 1
@@ -694,7 +694,7 @@ def convert(lines, end_format):
                 reqs = 0
             i += 1
             continue
-        
+
         if format == 39:
             # There is a conversion with format 40, but it is done within the
             # initial comment block and so is above.
@@ -726,7 +726,7 @@ def convert(lines, end_format):
               i += 1
               continue
             style = match.group(2)
-            
+
             if flexstyles.count(style):
               lines[i] = match.group(1) + b"\"Flex:" + style + b"\""
             i += 1
@@ -797,7 +797,7 @@ def convert(lines, end_format):
                   lines[i] = b"\tCopyStyle \"Flex:" + match.group(1) + b"\""
           i += 1
           continue
-        
+
         # Only new features
         if format >= 24 and format <= 27:
           i += 1
@@ -842,8 +842,8 @@ def convert(lines, end_format):
                 cmd = b"listoffigures"
               # else unknown, which is why we're doing this
             i += 1
-          continue              
-          
+          continue
+
         # This just involved new features, not any changes to old ones
         if format >= 14 and format <= 22:
           i += 1
