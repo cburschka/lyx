@@ -494,33 +494,8 @@ Style ShortAuthors
   LatexName redefineshortauthors
 End
 
-Float
-	Type                  table*
-	GuiName               "Two-column table"
-	Placement             tbp
-	Extension             lot
-	NumberWithin          none
-	Style                 plain
-	ListName              "List of Tables"
-	IsPredefined          true
-	UsesFloatPkg          false
-	ListCommand           listoftables
-	RefPrefix             tab
-End
 
-Float
-  Type                  figure*
-  GuiName               "Two-column figure"
-  Placement             tbp
-  Extension             lof
-  NumberWithin          none
-  Style                 plain
-  ListName              "List of Figures"
-  IsPredefined          true
-  UsesFloatPkg          false
-  ListCommand           listoffigures
-  RefPrefix             fig
-End
+OutlinerName sidebar    "Sidebar" #no AddToToc
 
 Float
   Type                  sidebar

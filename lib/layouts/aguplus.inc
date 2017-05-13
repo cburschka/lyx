@@ -179,6 +179,9 @@ Style Bibliography
 End
 
 
+OutlinerName plate        "Plates" #no AddToToc
+OutlinerName planotable  "Planotables" #no AddToToc
+
 Float
 	Type                  plate
 	GuiName               Plate

@@ -159,6 +159,8 @@ Style Keywords
 	TopSep			0.3
 End
 
+OutlinerName scheme "Schemes" #no AddToToc
+
 Float
 	Type			scheme
 	GuiName			Scheme
@@ -181,6 +183,8 @@ InsetLayout scheme
 	MultiPar		true
 End
 
+OutlinerName chart "Charts" #no AddToToc
+
 Float
 	Type			chart
 	GuiName			Chart
@@ -202,6 +206,8 @@ InsetLayout chart
 	EndFont
 	MultiPar		true
 End
+
+OutlinerName graph "Graphs[[mathematical]]" #no AddToToc
 
 Float
 	# We need the [[mathematical]] context, since graph in the sense of

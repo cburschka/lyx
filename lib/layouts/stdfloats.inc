@@ -6,9 +6,7 @@
 
 Format 63
 
-OutlinerName table        "Tables" #no AddToToc (built-in)
-OutlinerName figure       "Figures" #no AddToToc (built-in)
-OutlinerName algorithm    "Algorithms" #no AddToToc (built-in)
+Input stdfloatnames.inc
 
 Float
 	Type                  table

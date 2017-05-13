@@ -2252,6 +2252,7 @@ dist_layouts_DATA =\
 	layouts/stdcharstyles.inc \
 	layouts/stdcounters.inc \
 	layouts/stdcustom.inc \
+	layouts/stdfloatnames.inc \
 	layouts/stdfloats.inc \
 	layouts/stdinsets.inc \
 	layouts/stdlayouts.inc \
