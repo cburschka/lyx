@@ -1,0 +1,1011 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 542
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin /systemlyxdir/templates/
+\textclass acmart
+\begin_preamble
+% For algorithm2e
+\renewcommand{\algorithmcfname}{ALGORITHM}
+\SetAlFnt{\small}
+\SetAlCapFnt{\small}
+\SetAlCapNameFnt{\small}
+\SetAlCapHSkip{0pt}
+\IncMargin{-\parindent}
+\end_preamble
+\options format=acmsmall, review=false, screen=true
+\use_default_options false
+\begin_modules
+InStar
+algorithm2e
+\end_modules
+\maintain_unincluded_children false
+\begin_local_layout
+Format 60
+PackageOptions algorithm2e ruled
+\end_local_layout
+\language english
+\language_package auto
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_number_before 0
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout In Preamble
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Metadata information:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ACM Journal
+JACM
+\end_layout
+
+\begin_layout ACM Volume
+1
+\end_layout
+
+\begin_layout ACM Number
+1
+\end_layout
+
+\begin_layout ACM Article
+1
+\end_layout
+
+\begin_layout ACM Year
+2017
+\end_layout
+
+\begin_layout ACM Month
+1
+\end_layout
+
+\begin_layout Copyright Year
+2017
+\end_layout
+
+\begin_layout Set Copyright
+acmlicensed
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+acmcopyright,rightsretained,usgov,usgovmixed,cagov,cagovmixed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ACM DOI
+0000001.0000001
+\end_layout
+
+\begin_layout In Preamble
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Paper history:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Received
+January 2017
+\end_layout
+
+\begin_layout Received
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+revised
+\end_layout
+
+\end_inset
+
+January 2017
+\end_layout
+
+\begin_layout Received
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+accepted
+\end_layout
+
+\end_inset
+
+January 2017 
+\end_layout
+
+\begin_layout In Title
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Title portion.
+ Note the short title for running heads
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Short Title
+\end_layout
+
+\end_inset
+
+Example ACM Article
+\end_layout
+
+\begin_layout Author
+Author A.
+ Name
+\end_layout
+
+\begin_layout ORCID
+1234-5678-9012-3456
+\end_layout
+
+\begin_layout Affiliation
+\begin_inset Flex Institution
+status open
+
+\begin_layout Plain Layout
+Institution
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Street Address
+status open
+
+\begin_layout Plain Layout
+101 Street Address
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex City
+status open
+
+\begin_layout Plain Layout
+City
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex State
+status open
+
+\begin_layout Plain Layout
+ST
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Postal Code
+status open
+
+\begin_layout Plain Layout
+12345
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Country
+status open
+
+\begin_layout Plain Layout
+USA
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Author B.
+ Name
+\end_layout
+
+\begin_layout Author
+Author C.
+ Name
+\end_layout
+
+\begin_layout Affiliation
+\begin_inset Flex Institution
+status open
+
+\begin_layout Plain Layout
+Institution 2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Street Address
+status open
+
+\begin_layout Plain Layout
+101 Street Address
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex City
+status open
+
+\begin_layout Plain Layout
+City
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex State
+status open
+
+\begin_layout Plain Layout
+ST
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Postal Code
+status open
+
+\begin_layout Plain Layout
+12345
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Country
+status open
+
+\begin_layout Plain Layout
+USA
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+Abstract here.
+\end_layout
+
+\begin_layout In Title
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The code below should be generated by the tool at http://dl.acm.org/ccs.cfm:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout CCSXML
+
+<ccs2012>
+\end_layout
+
+\begin_layout CCSXML
+
+	<concept>
+\end_layout
+
+\begin_layout CCSXML
+
+		<concept_id>10003752.10003777.10003778</concept_id>
+\end_layout
+
+\begin_layout CCSXML
+
+		<concept_desc>Theory of computation~Complexity classes</concept_desc>
+\end_layout
+
+\begin_layout CCSXML
+
+		<concept_significance>500</concept_significance>
+\end_layout
+
+\begin_layout CCSXML
+
+	</concept>
+\end_layout
+
+\begin_layout CCSXML
+
+</ccs2012>
+\end_layout
+
+\begin_layout CCS Description
+
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+500
+\end_layout
+
+\end_inset
+
+Theory of computation~Complexity classes
+\end_layout
+
+\begin_layout Keywords
+Keyword 1, Keyword 2
+\end_layout
+
+\begin_layout Thanks
+This work is supported by...
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+The default list of authors is too long for headers.
+ The following must be placed after 
+\family typewriter
+
+\backslash
+maketitle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ShortAuthors
+A.
+ A.
+ Name et al.
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+Introduction
+\end_layout
+
+\begin_layout Section
+Section
+\end_layout
+
+\begin_layout Standard
+See Algorithm
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:one"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+placement t
+wide false
+sideways false
+status open
+
+\begin_layout Algorithm
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+SetAlgoNoLine
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+KwData{
+\end_layout
+
+\end_inset
+
+List 
+\begin_inset Formula $L$
+\end_inset
+
+ of all integers from 
+\begin_inset Formula $2$
+\end_inset
+
+ to 
+\begin_inset Formula $N$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+\noindent
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+KwResult{
+\end_layout
+
+\end_inset
+
+List 
+\begin_inset Formula $P$
+\end_inset
+
+ of prime numbers between 
+\begin_inset Formula $2$
+\end_inset
+
+ and 
+\begin_inset Formula $N$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+BlankLine
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+For{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $i=2$
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+KwTo
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $N$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+If{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $i$
+\end_inset
+
+ is not crossed-out in the list 
+\begin_inset Formula $L$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}{
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Algorithm
+Cross-out in the list 
+\begin_inset Formula $L$
+\end_inset
+
+ its multiples 
+\begin_inset Formula $ki$
+\end_inset
+
+ for all 
+\begin_inset Formula $k\geq2$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Algorithm
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Algorithm
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Return{
+\end_layout
+
+\end_inset
+
+The list 
+\begin_inset Formula $P$
+\end_inset
+
+ of integers in 
+\begin_inset Formula $L$
+\end_inset
+
+ that are not crossed-out.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sieve of Eratosthenes
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:one"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+See Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:one"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../doc/clipart/platypus.eps
+	width 4cm
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Figure.
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:one"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Conclusions
+\end_layout
+
+\begin_layout Standard
+Conclusion.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Start of "Sample References" section
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\start_of_appendix
+Appendix
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Print Only
+status open
+
+\begin_layout Plain Layout
+See the supplementary materials in the online version
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Screen Only
+status open
+
+\begin_layout Subsection
+Supplementary material 1
+\end_layout
+
+\begin_layout Plain Layout
+Material.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Acknowledgments
+The authors would like to thank...
+\end_layout
+
+\begin_layout Acknowledgments
+The work is supported by the 
+\begin_inset Flex Grant Sponsor
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Sponsor ID
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Sponsor Name
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+http://www.example.com
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ under Grant No.:
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Flex Grant Number
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Sponsor ID
+\end_layout
+
+\end_inset
+
+1234567
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Bibliography
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "references"
+options "ACM-Reference-Format"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

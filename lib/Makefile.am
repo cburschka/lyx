@@ -2356,9 +2356,7 @@ templatesdir = $(pkgdatadir)/templates
 dist_templates_DATA = \
 	templates/aa.lyx \
 	templates/aastex6.lyx \
-	templates/ACM-siggraph.lyx \
-	templates/ACM-sigplan.lyx \
-	templates/ACM-SIGS.lyx \
+	templates/acmart.lyx \
 	templates/AEA.lyx \
 	templates/AGUTeX.lyx \
 	templates/APA.lyx \
@@ -2375,8 +2373,6 @@ dist_templates_DATA = \
 	templates/fr_beamer-conference-ornate-20min.lyx \
 	templates/frletter.lyx \
 	templates/g-brief2.lyx \
-	templates/g-brief-de.lyx \
-	templates/g-brief-en.lyx \
 	templates/hollywood.lyx \
 	templates/IEEEtran-CompSoc.lyx \
 	templates/IEEEtran-Conference.lyx \
@@ -2403,6 +2399,14 @@ dist_templates_DATA = \
 	templates/revtex4.lyx \
 	templates/revtex4-1.lyx \
 	templates/slides.lyx
+
+obsoletetemplatesdir = $(pkgdatadir)/templates/obsolete
+dist_obsoletetemplates_DATA = \
+	templates/obsolete/ACM-siggraph.lyx \
+	templates/obsolete/ACM-sigplan.lyx \
+	templates/obsolete/ACM-SIGS.lyx \
+	templates/obsolete/g-brief-de.lyx \
+	templates/obsolete/g-brief-en.lyx
 
 springertemplatesdir = $(pkgdatadir)/templates/springer
 dist_springertemplates_DATA = \
