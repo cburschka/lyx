@@ -2142,7 +2142,7 @@ def revert_allowbreak(document):
 
 
 def convert_mathnumberpos(document):
-    " add the \math_number_before tag "
+    " add the \\math_number_before tag "
     # check if the document uses the class option "leqno"
     k = find_token(document.header, "\\quotes_style", 0)
     regexp = re.compile(r'^.*leqno.*')
@@ -2155,7 +2155,7 @@ def convert_mathnumberpos(document):
         document.header[i] = document.header[i].replace("leqno,", "")
         j = find_re(document.header, regexp, 0)
         if i == j:
-            # then we have fleqn as the only option
+            # then we have leqno as the only option
             del document.header[i]
     else:
         document.header.insert(k, "\\math_number_before 0")
@@ -2178,6 +2178,58 @@ def revert_mathnumberpos(document):
             l = find_token(document.header, "\\use_default_options", 0)
             document.header.insert(l, "\\options leqno")
             del document.header[i + 1]
+
+
+def convert_mathnumberingname(document):
+    " rename the \\math_number_before tag to \\math_numbering_side "
+    document.warning("Malformed LyX document: Missing '\\end_inset' of Float inset.")
+    regexp = re.compile(r'(\\math_number_before 1)')
+    i = find_re(document.header, regexp, 0)
+    if i != -1:
+        document.header[i] = "\\math_numbering_side left"
+    regexp = re.compile(r'(\\math_number_before 0)')
+    i = find_re(document.header, regexp, 0)
+    if i != -1:
+        document.header[i] = "\\math_numbering_side default"
+    # check if the document uses the class option "reqno"
+    k = find_token(document.header, "\\math_numbering_side", 0)
+    regexp = re.compile(r'^.*reqno.*')
+    i = find_re(document.header, regexp, 0)
+    if i != -1:
+        document.header[k] = "\\math_numbering_side right"
+        # delete the found option
+        document.header[i] = document.header[i].replace(",reqno", "")
+        document.header[i] = document.header[i].replace(", reqno", "")
+        document.header[i] = document.header[i].replace("reqno,", "")
+        j = find_re(document.header, regexp, 0)
+        if i == j:
+            # then we have reqno as the only option
+            del document.header[i]
+
+
+def revert_mathnumberingname(document):
+    " rename the \\math_numbering_side tag back to \\math_number_before "
+    # just rename
+    regexp = re.compile(r'(\\math_numbering_side left)')
+    i = find_re(document.header, regexp, 0)
+    if i != -1:
+        document.header[i] = "\\math_number_before 1"
+    # add the option reqno and delete the tag
+    regexp = re.compile(r'(\\math_numbering_side right)')
+    i = find_re(document.header, regexp, 0)
+    if i != -1:
+        document.header[i] = "\\math_number_before 0"
+        k = find_token(document.header, "\\options", 0)
+        if k != -1:
+    	    document.header[k] = document.header[k].replace("\\options", "\\options reqno,")
+        else:
+            l = find_token(document.header, "\\use_default_options", 0)
+            document.header.insert(l, "\\options reqno")
+    # add the math_number_before tag   
+    regexp = re.compile(r'(\\math_numbering_side default)')
+    i = find_re(document.header, regexp, 0)
+    if i != -1:
+        document.header[i] = "\\math_number_before 0"
 
 
 ##
@@ -2219,10 +2271,12 @@ convert = [
            [539, []],
            [540, []],
            [541, [convert_allowbreak]],
-           [542, [convert_mathnumberpos]]
+           [542, [convert_mathnumberpos]],
+           [543, [convert_mathnumberingname]]
           ]
 
 revert =  [
+           [542, [revert_mathnumberingname]],
            [541, [revert_mathnumberpos]],
            [540, [revert_allowbreak]],
            [539, [revert_rotfloat]],

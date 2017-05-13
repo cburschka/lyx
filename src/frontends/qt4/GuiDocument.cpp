@@ -2943,17 +2943,17 @@ void GuiDocument::applyView()
 	}
 	switch (mathsModule->MathNumberingPosCO->currentIndex()) {
 		case 0:
-			bp_.math_number = BufferParams::LEFT;
+			bp_.math_numbering_side = BufferParams::LEFT;
 			break;
 		case 1:
-			bp_.math_number = BufferParams::DEFAULT;
+			bp_.math_numbering_side = BufferParams::DEFAULT;
 			break;
 		case 2:
-			bp_.math_number = BufferParams::RIGHT;
+			bp_.math_numbering_side = BufferParams::RIGHT;
 			break;
 		default:
 			// this should never happen
-			bp_.math_number = BufferParams::DEFAULT;
+			bp_.math_numbering_side = BufferParams::DEFAULT;
 			break;
 	}
 
@@ -3419,7 +3419,7 @@ void GuiDocument::paramsToDialog()
 		mathsModule->MathIndentCO->setCurrentIndex(indent);
 		enableMathIndent(indent);
 	}
-	switch(bp_.math_number) {
+	switch(bp_.math_numbering_side) {
 	case BufferParams::LEFT:
 		mathsModule->MathNumberingPosCO->setCurrentIndex(0);
 		break;

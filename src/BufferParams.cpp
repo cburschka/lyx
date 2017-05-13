@@ -385,7 +385,7 @@ BufferParams::BufferParams()
 	makeDocumentClass();
 	paragraph_separation = ParagraphIndentSeparation;
 	is_math_indent = false;
-	math_number = DEFAULT;
+	math_numbering_side = DEFAULT;
 	quotes_style = InsetQuotesParams::EnglishQuotes;
 	dynamic_quotes = false;
 	fontsize = "default";
@@ -669,8 +669,8 @@ void BufferParams::setDefSkip(VSpace const & vs)
 
 BufferParams::MathNumber BufferParams::getMathNumber() const
 {
-	if (math_number != DEFAULT)
-		return math_number;
+	if (math_numbering_side != DEFAULT)
+		return math_numbering_side;
 	// FIXME: do not hardcode language here
 	else if (language->lang() == "arabic_arabi"
 	         || documentClass().provides("leqno"))
@@ -866,15 +866,15 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 	} else if (token == "\\math_indentation") {
 		lex.next();
 		pimpl_->mathindent = Length(lex.getString());
-	} else if (token == "\\math_number_before") {
+	} else if (token == "\\math_numbering_side") {
 		string tmp;
 		lex >> tmp;
-		if (tmp == "true")
-			math_number = LEFT;
-		else if (tmp == "false")
-			math_number = RIGHT;
+		if (tmp == "left")
+			math_numbering_side = LEFT;
+		else if (tmp == "right")
+			math_numbering_side = RIGHT;
 		else
-			math_number = DEFAULT;
+			math_numbering_side = DEFAULT;
 	} else if (token == "\\quotes_style") {
 		string qstyle;
 		lex >> qstyle;
@@ -1375,13 +1375,13 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	os << "\n\\is_math_indent " << is_math_indent;
 	if (is_math_indent && !getMathIndent().empty())
 		os << "\n\\math_indentation " << getMathIndent().asString();
-	os << "\n\\math_number_before ";
-	switch(math_number) {
+	os << "\n\\math_numbering_side ";
+	switch(math_numbering_side) {
 	case LEFT:
-		os << "true";
+		os << "left";
 		break;
 	case RIGHT:
-		os << "false";
+		os << "right";
 		break;
 	case DEFAULT:
 		os << "default";
@@ -1670,7 +1670,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	if (is_math_indent)
 		clsoptions << "fleqn,";
 
-	switch(math_number) {
+	switch(math_numbering_side) {
 	case LEFT:
 		clsoptions << "leqno,";
 		break;

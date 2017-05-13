@@ -6,29 +6,34 @@ changes happened in particular if possible. A good example would be
 2010-01-10 entry.
 
 -----------------------
+
+2017-05-13 Uwe Stöhr <uwestoehr@web.de>
+ 	* Format incremented to 543: rename buffer parameter
+	  math_number_before to math_numbering_side
+
 2017-04-25 Uwe Stöhr <uwestoehr@web.de>
- 	* Format incremented to 542: support for document class option "leqno"
- 	  New buffer parameter \math_number_before
+	* Format incremented to 542: support for document class option "leqno"
+	  New buffer parameter \math_number_before
 
 2017-04-19 Günter Milde <milde@lyx.org>
- 	* Format incremented to 541: changes \SpecialChar:
+	* Format incremented to 541: changes \SpecialChar:
 	  - new argument "allowbreak" to mark an optional line break
 	    without inserting a hyphen (= ZWSP). See #10585.
 
 2017-04-15 Uwe Stöhr <uwestoehr@web.de>
- 	* Format incremented to 540: support for rotated float placements
- 	  - no new LFUN or buffer parameters
+	* Format incremented to 540: support for rotated float placements
+	  - no new LFUN or buffer parameters
 
 2017-04-08 Uwe Stöhr <uwestoehr@web.de>
- 	* Format incremented to 539: support for \baselineskip.
- 	  - new length unit BLS
+	* Format incremented to 539: support for \baselineskip.
+	  - new length unit BLS
 
 2017-04-05 Uwe Stöhr <uwestoehr@web.de>
- 	* Format incremented to 538: support for document class option "fleqn"
- 	  and for length \mathindent.
- 	  New buffer parameters
- 	  - \is_math_indent
- 	  - \math_indentation
+	* Format incremented to 538: support for document class option "fleqn"
+	  and for length \mathindent.
+	  New buffer parameters
+	  - \is_math_indent
+	  - \math_indentation
 
 2017-04-04 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 537: support for \xout.
@@ -36,7 +41,7 @@ changes happened in particular if possible. A good example would be
 	  LFUN_FONT_CROSSOUT
 
 2017-04-04 Uwe Stöhr <uwestoehr@web.de>
- 	* Format incremented to 536: support for Noto fonts.
+	* Format incremented to 536: support for Noto fonts.
 	  - \usepackage[rm]{noto} > \font_roman "NotoSerif-TLF" "<nontexfont>"
 	  - \usepackage[sf]{noto} > \font_sans "NotoSans-TLF" "<nontexfont>"
 	  - \renewcommand{\ttdefault}{NotoMono-TLF} 

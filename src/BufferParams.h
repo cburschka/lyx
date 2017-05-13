@@ -112,7 +112,7 @@ public:
 
 	enum  MathNumber { DEFAULT, LEFT, RIGHT };
 	/// number formulas on left/right/default
-	MathNumber math_number;
+	MathNumber math_numbering_side;
 
 	/// Convenience function for display: like math_number, but
 	/// DEFAULT is replaced by the best guess we have.

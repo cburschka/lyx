@@ -154,7 +154,7 @@ private:
 	std::string h_font_cjk;
 	std::string h_use_microtype;
 	std::string h_is_mathindent;
-	std::string h_math_number_before;
+	std::string h_math_numbering_side;
 	std::string h_mathindentation;
 	std::string h_graphics;
 	std::string h_default_output_format;
