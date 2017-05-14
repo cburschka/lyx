@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 543
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -36,7 +36,7 @@
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
-\font_sc false
+\font_sc true
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
@@ -58,13 +58,13 @@
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 1
-\pdf_breaklinks false
+\pdf_breaklinks true
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
 \pdf_pdfusetitle false
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
-\papersize default
+\papersize a4paper
 \use_geometry false
 \use_package amsmath 0
 \use_package amssymb 0
@@ -94,7 +94,9 @@
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
@@ -250,7 +252,7 @@ Tutorial
 status collapsed
 
 \begin_layout Plain Layout
-anders gezegd , 
+anders gezegd, 
 \begin_inset Quotes eld
 \end_inset
 
@@ -621,7 +623,11 @@ wat je ziet is wat je bedoelt
 \begin_inset Quotes eld
 \end_inset
 
+
+\lang english
 what you see is what you mean
+\lang dutch
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -639,19 +645,6 @@ WYSIWYM
 \begin_layout Subsection
 Verschillen tussen \SpecialChar LyX
  en Tekstverwerkers
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-texorpdfstring{
-\end_layout
-
-\end_inset
-
-
 \begin_inset Foot
 status collapsed
 
@@ -668,29 +661,11 @@ Nee, we proberen hier niet een heilige oorlog over tekstverwerkers te starten
 \end_inset
 
 
-\begin_inset ERT
+\begin_inset Argument 1
 status collapsed
 
 \begin_layout Plain Layout
-
-}{}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\series bold
-\lang english
-
-\backslash
-texorpdfstring
-\series default
- is used to avoid that the footnote appears in the PDF-bookmark.
+Verschillen tussen en Tekstverwerkers
 \end_layout
 
 \end_inset
@@ -869,7 +844,11 @@ Een laatste, en meest belangrijk, verschil tussen \SpecialChar LyX
  Het \SpecialChar LyX
  Team weet dat we niet elke fout zullen vinden, noch zullen we proberen
  de fouten af te doen als programma-eigenschappen.
- ( It's not a bug, it's a feature!).
+ (
+\lang english
+It's not a bug, it's a feature!
+\lang dutch
+).
  Wanneer die fouten (oh, sorry\SpecialChar ldots
 
 \begin_inset Quotes erd
@@ -883,7 +862,7 @@ programma-eigenschappen
 ) de kop opsteken en \SpecialChar LyX
  doen crashen, zou je denken dat \SpecialChar LyX
  de laatste 3 pagina's
- van je creatieve onderneming mee de  verdoemenis in neemt.
+ van je creatieve onderneming mee de verdoemenis in neemt.
 \end_layout
 
 \begin_layout Standard
@@ -917,7 +896,7 @@ is
 
 \begin_layout Standard
 \SpecialChar LaTeX
- is een document-opmaak-systeem ontworpen door Leslie Lamport in 1985
+ is een document-opmaak-systeem ontworpen door Leslie Lamport in 1985.
 \begin_inset Foot
 status collapsed
 
@@ -946,7 +925,6 @@ Gebruikshandleiding
 
 \end_inset
 
-.
  Dit was weer gebaseerd op een opmaaktaal genaamd \SpecialChar TeX
 , door Donald Knuth geschreven
  in 1984.
@@ -988,7 +966,11 @@ apparaat onafhankelijke
 \begin_inset Quotes eld
 \end_inset
 
+
+\lang english
 device independent
+\lang dutch
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -1238,10 +1220,7 @@ Gebruikshandleiding
 \emph default
  van het 
 \family sans
-\bar under
-H
-\bar default
-elp
+Help
 \family default
  menu.
  Je zou de 
@@ -1250,7 +1229,7 @@ Tutorial
 \emph default
  ook nog kunnen laden (als je deze al niet op het scherm aan het lezen bent).
  Op deze manier kun je ze lezen terwijl je je eigen tekst aan het schrijven
- bent
+ bent.
 \begin_inset Foot
 status collapsed
 
@@ -1261,13 +1240,9 @@ Ze dienen tevens als goede voorbeelden van de vele mogelijkheden van \SpecialCha
 
 \end_inset
 
-.
  Merk op dat als je twee of meer documenten open hebt, je het menu 
 \family sans
-\bar under
-D
-\bar default
-ocuments
+Documents
 \family default
  kunt gebruiken om te wisselen.
  De 
@@ -1319,7 +1294,8 @@ dvi
 
 \begin_layout Standard
 Tenslotte hebben we een bestand gemaakt waarmee je je \SpecialChar LyX
--vaardigheden kunt
+-\SpecialChar softhyphen
+vaardigheden kunt
  oefenen.
  Het heet 
 \family typewriter
@@ -1332,7 +1308,7 @@ eden van \SpecialChar LyX
  Telkens als je een nieuwe functie van \SpecialChar LyX
  hebt geleerd, stellen we voor dat
  je de corresponderende delen van dit bestand corrigeert.
- Het bevat tevens subtiele aanwijzingen en tips hoe je te werk kunt gaan
+ Het bevat tevens subtiele aanwijzingen en tips hoe je te werk kunt gaan.
 \begin_inset Foot
 status collapsed
 
@@ -1351,7 +1327,6 @@ Notities
 
 \end_inset
 
-.
  Als je wilt spieken (of controleren of je het goed gedaan hebt), bestaat
  er ook een bestand 
 \family typewriter
@@ -1369,15 +1344,8 @@ examples/
 .
  Je kunt hier komen door eerst 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
-
-\bar under
-O
-\bar default
-pen
+File\SpecialChar menuseparator
+Open
 \family default
  te kiezen en dan op de knop 
 \family sans
@@ -1386,18 +1354,12 @@ Examples
  te drukken.
  Open het ruwe document, en gebruik 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
+File\SpecialChar menuseparator
 Save
 \family default
  
 \family sans
-\bar under
-A
-\bar default
-s
+As
 \family default
  om een werkkopie in je eigen map te bewaren.
  Bekijk, terwijl je de onderdelen van het document repareert, via de dvi
@@ -1430,15 +1392,8 @@ Schrijven, Bekijken, en Printen
 \begin_layout Itemize
 Open een nieuw bestand met 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
-
-\bar under
-N
-\bar default
-ew
+File\SpecialChar menuseparator
+New
 \end_layout
 
 \begin_layout Itemize
@@ -1465,34 +1420,20 @@ Toegegeven.
 \begin_layout Itemize
 Bewaar je document met 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
+File\SpecialChar menuseparator
 Save
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-A
-\bar default
-s\SpecialChar endofsentence
+As\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Itemize
 Met 
 \family sans
-\bar under
-V
-\bar default
-iew\SpecialChar menuseparator
-
-\bar under
-D
-\bar default
-VI
+View\SpecialChar menuseparator
+DVI
 \family default
  start je \SpecialChar LaTeX
  op om een 
@@ -1516,7 +1457,7 @@ dvi
 \family default
  bestanden te bekijken) opstarten.
  Hierdoor verschijnt er een nieuw scherm met daarin je document, zoals het
- er uit ziet als het zou worden geprint
+ er uit ziet als het zou worden geprint.
 \begin_inset Foot
 status collapsed
 
@@ -1528,20 +1469,9 @@ xdvi
  in de achtergrond te laten lopen.
  Op die manier kun je 
 \family sans
-\bar under
-V
-\bar default
-iew\SpecialChar menuseparator
-
-\bar under
-U
-\bar default
-pdate\SpecialChar menuseparator
-
-\bar under
-D
-\bar default
-VI
+View\SpecialChar menuseparator
+Update\SpecialChar menuseparator
+DVI
 \family default
  gebruiken, en hoef je alleen maar op het 
 \family typewriter
@@ -1553,21 +1483,14 @@ xdvi
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Itemize
 Print met 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
-
-\bar under
-P
-\bar default
-rint,
+File\SpecialChar menuseparator
+Print,
 \family default
  en druk op 
 \family sans
@@ -1625,39 +1548,18 @@ Tutorial
  en je zult zien dat de meeste eenvoudige opdrachten (b.v.
  
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
-E
-\bar under
-x
-\bar default
-it,
+File\SpecialChar menuseparator
+Exit,
 \family default
  
 \family sans
-\bar under
-E
-\bar default
-dit\SpecialChar menuseparator
-
-\bar under
-P
-\bar default
-aste,
+Edit\SpecialChar menuseparator
+Paste,
 \family default
  
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
-
-\bar under
-P
-\bar default
-rint
+File\SpecialChar menuseparator
+Print
 \family default
 ) de naam hebben die je zou verwachten, in het menu staan waarin je ze zou
  verwachten, en functioneren op een manier zoals je dat zou verwachten.
@@ -1682,28 +1584,14 @@ oneindig herstel
 , wat zoveel betekent dat je alles wat je hebt gedaan sinds het begin van
  je bewerkingen, kunt herstellen door herhaaldelijk op 
 \family sans
-\bar under
-E
-\bar default
-dit\SpecialChar menuseparator
-
-\bar under
-U
-\bar default
-ndo
+Edit\SpecialChar menuseparator
+Undo
 \family default
  te drukken.
  Als je te ver bent gegaan, kies je gewoon 
 \family sans
-\bar under
-E
-\bar default
-dit\SpecialChar menuseparator
-
-\bar under
-R
-\bar default
-edo
+Edit\SpecialChar menuseparator
+Redo
 \family default
  om de bewerking terug te krijgen.
 \end_layout
@@ -1722,39 +1610,18 @@ alles
 \begin_layout Description
 Knippen/Plakken/Kopiëren Met 
 \family sans
-\bar under
-E
-\bar default
-dit\SpecialChar menuseparator
-
-\bar under
-C
-\bar default
-ut
+Edit\SpecialChar menuseparator
+Cut
 \family default
 , 
 \family sans
-\bar under
-E
-\bar default
-dit\SpecialChar menuseparator
-
-\bar under
-P
-\bar default
-aste
+Edit\SpecialChar menuseparator
+Paste
 \family default
 , en 
 \family sans
-\bar under
-E
-\bar default
-dit\SpecialChar menuseparator
-C
-\bar under
-o
-\bar default
-py
+Edit\SpecialChar menuseparator
+Copy
 \family default
  kun je knippen, plakken en kopiëren.
  Je kunt ook automatisch geselecteerde tekst plakken met de 
@@ -1767,15 +1634,8 @@ middelste muisknop
 \begin_layout Description
 Zoeken/Vervangen Gebruik 
 \family sans
-\bar under
-E
-\bar default
-dit\SpecialChar menuseparator
-
-\bar under
-F
-\bar default
-ind
+Edit\SpecialChar menuseparator
+Find
 \begin_inset space ~
 \end_inset
 
@@ -1790,10 +1650,7 @@ Replace
  pijlknoppen.
  Gebruik de 
 \family sans
-\bar under
-R
-\bar default
-eplace
+Replace
 \family default
  knop om een gevonden woord te vervangen.
 \begin_inset Foot
@@ -1805,10 +1662,7 @@ Sluit het zoekscherm als je klaar bent.
  De meeste popup-schermen in \SpecialChar LyX
  — inclusief de 
 \family sans
-\bar under
-F
-\bar default
-ind
+Find
 \begin_inset space ~
 \end_inset
 
@@ -1838,15 +1692,8 @@ Layout
  geminimaliseerd als afgesloten.
  Daarentegen blokkeren andere popup-schermen zoals 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
-
-\bar under
-O
-\bar default
-pen,
+File\SpecialChar menuseparator
+Open,
 \family default
  de tekstinvoer in het hoofdscherm van \SpecialChar LyX
  totdat je het popup-scherm hebt
@@ -1874,10 +1721,7 @@ hoofdletter stijl
  zetten (gewoonlijk kleine hoofdletters, voor het gebruik van eigennamen),
  via de aan/uit (Engels: toggle) knoppen in het 
 \family sans
-\bar under
-L
-\bar default
-ayout
+Layout
 \family default
  menu.
 \end_layout
@@ -1955,10 +1799,15 @@ zijn
 
 \begin_layout Standard
 Veel commerciële tekstverwerkers zijn gebaseerd op het WYSIWYG principe:
+ 
 \begin_inset Quotes eld
 \end_inset
 
+
+\lang english
 What You See Is What You Get
+\lang dutch
+
 \begin_inset Quotes erd
 \end_inset
 
@@ -1968,10 +1817,13 @@ What You See Is What You Get
 \begin_inset Quotes eld
 \end_inset
 
+
+\lang english
 What You See Is What You 
 \emph on
 Mean
 \emph default
+\lang dutch
 
 \begin_inset Quotes erd
 \end_inset
@@ -2092,10 +1944,7 @@ Omgeving
  statusregel vind je links op de knoppenbalk (net onder het menu-onderdeel
  
 \family sans
-\bar under
-F
-\bar default
-ile
+File
 \family default
 ).
  Het laat zien in welke omgeving je momenteel schrijft.
@@ -2140,7 +1989,7 @@ Section
 \family sans
 Omgeving
 \family default
- menu
+ menu.
 \begin_inset Foot
 status collapsed
 
@@ -2155,7 +2004,6 @@ Je hoeft de regel niet vooraf te selecteren.
 
 \end_inset
 
-.
  \SpecialChar LyX
  nummert de sectie met een 
 \begin_inset Quotes eld
@@ -2197,7 +2045,7 @@ Standard
 \family sans
 Return
 \family default
- typt
+ typt.
 \begin_inset Foot
 status collapsed
 
@@ -2227,7 +2075,6 @@ Omgeving
 
 \end_inset
 
-.
  Typ nu de inleiding van het document:
 \end_layout
 
@@ -2335,7 +2182,10 @@ Standard
 
 \begin_layout LyX-Code
 Secties en subsecties worden hieronder beschreven.
- Beschrijving van Sectie
+\end_layout
+
+\begin_layout LyX-Code
+Beschrijving van Sectie
 \end_layout
 
 \begin_layout LyX-Code
@@ -2440,7 +2290,7 @@ Chapter
 Section
 \family default
  komt.
- Deze kun je echter alleen in bepaalde typen Tekstklassen gebruiken .
+ Deze kun je echter alleen in bepaalde typen Tekstklassen gebruiken.
  Zie hiervoor sectie 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2510,7 +2360,7 @@ Lijsten en Deel-lijsten
 status collapsed
 
 \begin_layout Plain Layout
-Ja , we leggen te veel nadruk op dit punt in de 
+Ja, we leggen te veel nadruk op dit punt in de 
 \emph on
 Tutorial
 \emph default
@@ -2967,7 +2817,7 @@ Jouw document wordt waarschijnlijk in de tekstklasse
 \family sans
 Article
 \family default
- geschreven
+ geschreven.
 \begin_inset Foot
 status collapsed
 
@@ -2983,27 +2833,16 @@ lyxrc
 
 \end_inset
 
-.
  Probeer het eens te veranderen naar andere tekstklassen om te kijken hoe
  het dan anders wordt opgemaakt.
  Dit doe je via het menu 
 \family sans
-\bar under
-C
-\bar default
-lass
+Class
 \family default
  dat je vindt in het popupvenster via 
 \family sans
-\bar under
-L
-\bar default
-ayout\SpecialChar menuseparator
-
-\bar under
-D
-\bar default
-ocument.
+Layout\SpecialChar menuseparator
+Document.
 
 \family default
  Als je je document verandert in de tekstklasse 
@@ -3067,13 +2906,6 @@ Hier is een zeer kort overzicht van sommige tekstklassen.
 Gebruikshandleiding
 \emph default
  voor details.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace 0.3cm
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3375,13 +3207,6 @@ veel extra omgevingen voor adressen, handtekeningen\SpecialChar ldots
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace 0.3cm
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Sjablonen: Een Brief Schrijven
 \end_layout
@@ -3399,22 +3224,12 @@ Letter
 \family default
  van het 
 \family sans
-\bar under
-C
-\bar default
-lass
+Class
 \family default
  menu, dat je vindt via het popupvenster 
 \family sans
-\bar under
-L
-\bar default
-ayout\SpecialChar menuseparator
-
-\bar under
-D
-\bar default
-ocument.
+Layout\SpecialChar menuseparator
+Document.
 
 \family default
  Alhoewel dit de meest voor de hand liggende manier is om een brief te schrijven
@@ -3434,10 +3249,7 @@ sjabloon
 \begin_layout Standard
 Open een nieuw bestand met 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
+File\SpecialChar menuseparator
 New
 \begin_inset space ~
 \end_inset
@@ -3446,11 +3258,7 @@ from
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-t
-\bar default
-emplate
+template
 \family default
 .
  Kies een bestandsnaam en selecteer 
@@ -3537,7 +3345,7 @@ oefening
 \begin_inset Quotes erd
 \end_inset
 
- voor te stellen; schrijf gewoon een brief aan iemand
+ voor te stellen; schrijf gewoon een brief aan iemand!
 \begin_inset Foot
 status collapsed
 
@@ -3565,7 +3373,7 @@ Environment
 
 \end_inset
 
-!
+
 \end_layout
 
 \begin_layout Standard
@@ -3686,15 +3494,8 @@ Over dit document
 , markeren.
  Klik op het einde van de regel van de sectietitel, en selecteer 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar menuseparator
-
-\bar under
-L
-\bar default
-abel
+Insert\SpecialChar menuseparator
+Label
 \family default
 .
  Een popupscherm vraagt je naar een sectienaam.
@@ -3763,11 +3564,11 @@ Zet de cursor ergens in sectie 2 van je document en typ:
 \end_layout
 
 \begin_layout LyX-Code
-als je meer over dit document wilt weten, zie dan sectie 
+als je meer over dit document wilt weten, 
 \begin_inset Newline newline
 \end_inset
 
-dat je vindt op pagina .
+zie dan sectie dat je vindt op pagina.
 \end_layout
 
 \begin_layout Standard
@@ -3781,15 +3582,8 @@ sectie
 
  en kies 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar menuseparator
-
-\bar under
-C
-\bar default
-ross-Reference
+Insert\SpecialChar menuseparator
+Cross-Reference
 \family default
 .
  Het 
@@ -3814,10 +3608,7 @@ sec:overdocument
  Selecteer dit (mogelijkerwijs is het reeds bij verstek geselecteerd) en
  klik op 
 \family sans
-\bar under
-I
-\bar default
-nsert
+Insert
 \begin_inset space ~
 \end_inset
 
@@ -3838,11 +3629,7 @@ Insert
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-P
-\bar default
-age
+Page
 \begin_inset space ~
 \end_inset
 
@@ -3898,20 +3685,9 @@ Go Back
  Je kunt hiervoor trouwens ook de toetscombinaties C-< en C-> gebruiken.
  Gebruik 
 \family sans
-\bar under
-V
-\bar default
-iew\SpecialChar menuseparator
-
-\bar under
-U
-\bar default
-pdate\SpecialChar menuseparator
-
-\bar under
-D
-\bar default
-VI
+View\SpecialChar menuseparator
+Update\SpecialChar menuseparator
+DVI
 \family default
 , en je zult zien dat we op de laatste pagina naar 
 \begin_inset Quotes eld
@@ -4001,7 +3777,7 @@ Als je zeker wilt weten dat de paginaverwijzingen ook voor grote documenten
 \emph on
 Gebruikshandleiding
 \emph default
- in je document
+ in je document.
 \begin_inset Foot
 status collapsed
 
@@ -4027,7 +3803,7 @@ reference "sec:tekstklassen"
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -4066,15 +3842,8 @@ De knop laat een pijl naar rode tekst zien welke net onder wat zwarte tekst
 
  of via 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar menuseparator
-
-\bar under
-F
-\bar default
-ootnote
+Insert\SpecialChar menuseparator
+Footnote
 \family default
 \SpecialChar endofsentence
  Klik aan het einde van het woordje 
@@ -4182,17 +3951,11 @@ Een voetnoot kan net als gewone tekst worden geknipt en geplakt.
  Probeer het maar! Het enige wat je hoeft te doen is het selecteren van
  de voetnootmarkering en deze te knippen en te plakken met 
 \family sans
-\bar under
-C
-\bar default
-ut
+Cut
 \family default
  en 
 \family sans
-\bar under
-P
-\bar default
-aste
+Paste
 \family default
 .
  Daarnaast kun je gewone tekst veranderen in een voetnoot door het te selecteren
@@ -4231,7 +3994,7 @@ Margin
 
 Note
 \family default
--knop
+-knop,
 \begin_inset Foot
 status collapsed
 
@@ -4251,17 +4014,10 @@ Footnote
 
 \end_inset
 
-, of via 
+ of via 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar menuseparator
-
-\bar under
-M
-\bar default
-argin
+Insert\SpecialChar menuseparator
+Margin
 \begin_inset space ~
 \end_inset
 
@@ -4392,15 +4148,8 @@ lyxtutorial
 Kies nu een plek in je document waar je een referentie wilt invoegen.
  Doe dit met 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar menuseparator
-C
-\bar under
-i
-\bar default
-tation
+Insert\SpecialChar menuseparator
+Citation
 \begin_inset space ~
 \end_inset
 
@@ -4418,7 +4167,7 @@ Citation
 \family sans
 Key
 \family default
-, en dit veld laat je kiezen welk item in de bibliografie je wilt citeren
+, en dit veld laat je kiezen welk item in de bibliografie je wilt citeren.
 \begin_inset Foot
 status collapsed
 
@@ -4433,7 +4182,6 @@ Key
 
 \end_inset
 
-.
  Gebruik makend van het menu met de pijl, rechts van het 
 \family sans
 Key
@@ -4456,10 +4204,7 @@ lyxtutorial
 \begin_layout Standard
 Hoe worden de andere velden gebruikt? Het 
 \family sans
-\bar under
-R
-\bar default
-emark
+Remark
 \family default
 -veld in 
 \family sans
@@ -4537,10 +4282,7 @@ en voor het sectienummer te komen.
 
  en kies 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar menuseparator
+Insert\SpecialChar menuseparator
 Lists
 \begin_inset space ~
 \end_inset
@@ -4549,11 +4291,7 @@ Lists
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-T
-\bar default
-OC\SpecialChar menuseparator
+TOC\SpecialChar menuseparator
 Table
 \begin_inset space ~
 \end_inset
@@ -4562,11 +4300,7 @@ of
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-C
-\bar default
-ontents
+Contents
 \family default
 .
  De woorden 
@@ -4612,15 +4346,8 @@ table of contents
 
  inzet te klikken, of via 
 \family sans
-\bar under
-E
-\bar default
-dit\SpecialChar menuseparator
-
-\bar under
-T
-\bar default
-able
+Edit\SpecialChar menuseparator
+Table
 \begin_inset space ~
 \end_inset
 
@@ -4628,7 +4355,7 @@ of
 \begin_inset space ~
 \end_inset
 
-Contents
+Contents.
 \begin_inset Foot
 status collapsed
 
@@ -4646,7 +4373,6 @@ table of contents
 
 \end_inset
 
-.
  Dit is een erg nuttig hulpmiddel.
  Je kunt het Table
 \begin_inset space ~
@@ -4733,7 +4459,7 @@ Math Panel
 \end_inset
 
  je in staat snel en gemakkelijk professioneel-uitziende vergelijkingen
- te produceren
+ te produceren.
 \begin_inset Foot
 status collapsed
 
@@ -4748,7 +4474,7 @@ correct
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Section
@@ -4761,7 +4487,11 @@ Typ ergens in je \SpecialChar LyX
 \end_layout
 
 \begin_layout LyX-Code
-Ik hou van wat Einstein zei, E=mc^2, omdat het zo eenvoudig is.
+Ik hou van wat Einstein zei, E=mc^2, 
+\begin_inset Newline newline
+\end_inset
+
+omdat het zo eenvoudig is.
 \end_layout
 
 \begin_layout Standard
@@ -4879,7 +4609,7 @@ bugs
  zorgt verder voor de professionele opmaak.
  In 99% van de gevallen hoef je verder niets meer te veranderen aan de fontgroot
 te of spatiëring.
- Hierdoor (we vallen in herhaling - sorry) kun je je concentreren op de
+ Hierdoor (we vallen in herhaling – sorry) kun je je concentreren op de
  inhoud van je wiskundige uitdrukkingen in de plaats van de opmaak ervan.
 \end_layout
 
@@ -4946,15 +4676,8 @@ Shift
 -toets) of met behulp van de muis.
  Zowel 
 \family sans
-\bar under
-E
-\bar default
-dit\SpecialChar menuseparator
-
-\bar under
-U
-\bar default
-ndo
+Edit\SpecialChar menuseparator
+Undo
 \family default
  als knippen en plakken werkt in de math modus.
  Voor één ding moet je opletten: als je je net buiten een Mathed uitdrukking
@@ -5103,7 +4826,7 @@ c
 \begin_inset Quotes erd
 \end_inset
 
-), zal dit geen gevolg hebben
+), zal dit geen gevolg hebben.
 \begin_inset Foot
 status collapsed
 
@@ -5134,7 +4857,7 @@ Gebruikshandleiding
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -5198,10 +4921,7 @@ Exponenten en Indices
 \begin_layout Standard
 Een exponent kan worden ingevoegd vanuit het 
 \family sans
-\bar under
-M
-\bar default
-ath
+Math
 \family default
  menu, maar het is echter eenvoudiger om een karet 
 \begin_inset Quotes eld
@@ -5275,10 +4995,7 @@ Math Panel
  Veel van deze functies kunnen worden verkregen door middel van het toetsenbord
  of het 
 \family sans
-\bar under
-M
-\bar default
-ath
+Math
 \family default
  menu.
  We gaan ons echter concentreren op het 
@@ -5343,11 +5060,15 @@ overige
 \begin_inset Quotes eld
 \end_inset
 
+
+\lang english
 Nothing you can do that can't be done\SpecialChar ldots
-All you need is 
+ All you need is 
 \begin_inset Formula $\heartsuit$
 \end_inset
 
+
+\lang dutch
 .
 \begin_inset Quotes erd
 \end_inset
@@ -5875,7 +5596,7 @@ reference "multi-lijn verg"
 
 \end_inset
 
-)moeten zelfs in de weergave modus geschreven worden.
+) moeten zelfs in de weergave modus geschreven worden.
 \end_layout
 
 \begin_layout Standard
@@ -6238,15 +5959,8 @@ Referentiehandleiding
  heeft WYSIWYG ondersteuning voor tabellen.
  Gebruik 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar menuseparator
-Ta
-\bar under
-b
-\bar default
-le
+Insert\SpecialChar menuseparator
+Table
 \family default
  om een tabel in te voegen.
  Klik met de 
@@ -6271,15 +5985,8 @@ Layout
  documenten.
  (Je raadt het al: 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar menuseparator
-Fi
-\bar under
-g
-\bar default
-ure
+Insert\SpecialChar menuseparator
+Figure
 \family default
 .
  Klik vervolgens op het figuur om het bestand te kiezen, het te roteren,
@@ -6327,15 +6034,8 @@ lyxrc
 .
  Kijk voor informatie hierover bij 
 \family sans
-\bar under
-H
-\bar default
-elp\SpecialChar menuseparator
-
-\bar under
-C
-\bar default
-ustomization
+Help\SpecialChar menuseparator
+Customization
 \family default
 .
 \end_layout
@@ -6357,15 +6057,8 @@ De menus van \SpecialChar LyX
  ondersteunen toetscombinaties.
  Dat betekent dat je een bestand kunt openen via 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
-
-\bar under
-O
-\bar default
-pen,
+File\SpecialChar menuseparator
+Open,
 \family default
  of door 
 \family sans
@@ -6380,15 +6073,8 @@ O
 aties voor enkele van de menus die vanuit het Engels zijn vertaald).
  Meer informatie vind je via 
 \family sans
-\bar under
-H
-\bar default
-elp\SpecialChar menuseparator
-
-\bar under
-C
-\bar default
-ustomization\SpecialChar endofsentence
+Help\SpecialChar menuseparator
+Customization\SpecialChar endofsentence
 
 \end_layout
 
@@ -6409,15 +6095,8 @@ reference "subsec:LaTeX-Documenten-Importeren"
 \begin_layout Itemize
 Controleer de spelling van je document met 
 \family sans
-\bar under
-E
-\bar default
-dit\SpecialChar menuseparator
-
-\bar under
-S
-\bar default
-pellchecker
+Edit\SpecialChar menuseparator
+Spellchecker
 \family default
 .
 \begin_inset Foot
@@ -6506,15 +6185,9 @@ Alles wat je in \SpecialChar TeX
  Je komt in de \SpecialChar TeX
 -modus via 
 \family sans
-\bar under
-L
-\bar default
-ayout\SpecialChar menuseparator
-Te
-\bar under
-X
+Layout\SpecialChar menuseparator
+TeX
 \family default
-\bar default
  
 \family sans
 Style
@@ -6652,20 +6325,9 @@ You can import a \SpecialChar LaTeX
  file into \SpecialChar LyX
  by using the 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
-
-\bar under
-I
-\bar default
-mport\SpecialChar menuseparator
-
-\bar under
-L
-\bar default
-a\SpecialChar TeX
+File\SpecialChar menuseparator
+Import\SpecialChar menuseparator
+La\SpecialChar TeX
 
 \family default
  command in \SpecialChar LyX
@@ -6736,15 +6398,8 @@ Mogelijk zou je een \SpecialChar LyX
 .
  Selecteer 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
-
-\bar under
-E
-\bar default
-xport\SpecialChar menuseparator
+File\SpecialChar menuseparator
+Export\SpecialChar menuseparator
 as
 \begin_inset space ~
 \end_inset
@@ -6782,15 +6437,8 @@ Document klasse
 \begin_layout Standard
 Het 
 \family sans
-\bar under
-L
-\bar default
-ayout\SpecialChar menuseparator
-
-\bar under
-D
-\bar default
-ocument
+Layout\SpecialChar menuseparator
+Document
 \family default
  popup regelt een groot deel van de vele opties die je in een 
 \family typewriter
@@ -6808,11 +6456,7 @@ documentclass
 \family default
  commando in de 
 \family sans
-E
-\bar under
-x
-\bar default
-tra
+Extra
 \begin_inset space ~
 \end_inset
 
@@ -6838,15 +6482,8 @@ Als je speciale codes in de preambule van een \SpecialChar LaTeX
  doen.
  Selecteer 
 \family sans
-\bar under
-L
-\bar default
-ayout\SpecialChar menuseparator
-
-\bar under
-L
-\bar default
-atex
+Layout\SpecialChar menuseparator
+Latex
 \begin_inset space ~
 \end_inset
 
@@ -6873,10 +6510,7 @@ Bib\SpecialChar TeX
  die je in meerdere bestanden kunt gebruiken.
  Selecteer 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar menuseparator
+Insert\SpecialChar menuseparator
 Lists
 \begin_inset space ~
 \end_inset
@@ -6885,16 +6519,8 @@ Lists
 \begin_inset space ~
 \end_inset
 
-
-\bar under
-T
-\bar default
-OC\SpecialChar menuseparator
-
-\bar under
-B
-\bar default
-ib\SpecialChar TeX
+TOC\SpecialChar menuseparator
+Bib\SpecialChar TeX
 
 \begin_inset space ~
 \end_inset
@@ -6931,7 +6557,7 @@ Database
 \backslash
 bibliography{}
 \family default
- commando zou typen
+ commando zou typen.
 \begin_inset Foot
 status collapsed
 
@@ -6943,7 +6569,6 @@ Net als in \SpecialChar LaTeX
 
 \end_inset
 
-.
  In het 
 \family sans
 Style
@@ -6961,15 +6586,8 @@ bibliographystyle{}
 Nadat je dit gedaan hebt kun je de citaten van elke bibliografie die je
  via 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar menuseparator
-C
-\bar under
-i
-\bar default
-tation
+Insert\SpecialChar menuseparator
+Citation
 \begin_inset space ~
 \end_inset
 
@@ -7018,22 +6636,11 @@ u
 \end_inset
 
 .
- In deze 
-\emph on
-Tutorial
-\emph default
- vind je er vele.
+ In deze Tutorial vind je er vele.
  Zie het 
 \family sans
-\bar under
-I
-\bar default
-nsert\SpecialChar menuseparator
-
-\bar under
-S
-\bar default
-pecial
+Insert\SpecialChar menuseparator
+Special
 \begin_inset space ~
 \end_inset
 

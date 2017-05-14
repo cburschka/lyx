@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 543
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -37,7 +37,7 @@
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
-\font_sc false
+\font_sc true
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
@@ -59,7 +59,7 @@
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 2
-\pdf_breaklinks false
+\pdf_breaklinks true
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
@@ -95,7 +95,9 @@
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -596,8 +598,11 @@ PageDown
 \begin_inset Quotes erd
 \end_inset
 
-: dit zijn de 6 toetsen die bij veel toetsenborden boven de cursortoetsen
- zitten.
+: dit zijn de 6
+\begin_inset space ~
+\end_inset
+
+toetsen die bij veel toetsenborden boven de cursortoetsen zitten.
  Op sommige toetsenborden heten de 
 \begin_inset Quotes eld
 \end_inset
@@ -1112,13 +1117,9 @@ Verander nooit iets in een handleiding zonder toestemming van het Documentatie
  has a bug tracking system, which you can find at
 \lang dutch
  
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.lyx.org/trac/wiki/BugTrackerHome
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org/trac/wiki/BugTrackerHome"
 
 \end_inset
 
@@ -1241,13 +1242,9 @@ nadat
  we via email contact met elkaar hebben gehad.
  Op de webpagina van het Documentatie Team, of via de archieven van de mailingli
 jsten op 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.lyx.org
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org"
 
 \end_inset
 
