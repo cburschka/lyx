@@ -264,7 +264,7 @@ bool FileName::renameTo(FileName const & name) const
 
 bool FileName::moveTo(FileName const & name) const
 {
-	LYXERR(Debug::FILES, "Moving " << name << " to " << *this);
+	LYXERR(Debug::FILES, "Moving " << *this << " to " << name);
 	QFile::remove(name.d->fi.absoluteFilePath());
 
 	bool success = QFile::rename(d->fi.absoluteFilePath(),
