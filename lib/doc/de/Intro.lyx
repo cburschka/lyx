@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 543
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -37,7 +37,7 @@
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
-\font_sc false
+\font_sc true
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
@@ -59,7 +59,7 @@
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 2
-\pdf_breaklinks false
+\pdf_breaklinks true
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
@@ -99,7 +99,9 @@
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style german
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -135,11 +137,7 @@ status open
 \begin_layout Plain Layout
 Deutsche Übersetzung: 
 \noun on
-Hartmut
-\noun default
- 
-\noun on
-Haase 
+Hartmut Haase 
 \noun default
 (
 \noun on
@@ -450,18 +448,21 @@ wie
 \begin_inset Quotes gld
 \end_inset
 
+
+\lang english
 What you see is what you 
 \emph on
 mean
 \emph default
- — Was man sieht, ist was man 
-\emph on
-meint
-\emph default
+\lang ngerman
 
 \begin_inset Quotes grd
 \end_inset
 
+ — Was man sieht, ist was man 
+\emph on
+meint
+\emph default
 .
  Dies ist ein sehr mächtiges Konzept, das das Schreiben von Texten stark
  vereinfacht.
@@ -698,11 +699,12 @@ Benutzerhandbuches
 \end_inset
 
  Es basiert auf der Textsatz-Sprache \SpecialChar TeX
-, die von 
+, die bereits Mitte der 70er Jahre
+ von 
 \noun on
-Donald Knuth 
+Donald Knuth
 \noun default
-Mitte der 70er Jahre entwickelt wurde.
+ entwickelt wurde.
  
 \begin_inset Quotes gld
 \end_inset
@@ -744,6 +746,8 @@ Knuth
 \begin_inset Quotes gld
 \end_inset
 
+
+\lang english
 device independent
 \begin_inset Quotes grd
 \end_inset
@@ -1036,7 +1040,8 @@ literal "false"
 
 .
  Falls Sie dringende Fragen haben, die in der Dokumentation offensichtlich
- nicht beantwortet werden, gibt es eine sehr aktive Mailing-Liste: 
+ nicht beantwortet werden, können sie sich an die sehr aktive Mailing-Liste
+ wenden: 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-users@lists.lyx.org"
@@ -1045,22 +1050,15 @@ literal "false"
 
 \end_inset
 
-.
+(englischsprachig).
  Außerdem könnten Sie bei 
-\family typewriter
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://wiki.lyx.org"
+literal "false"
 
 \end_inset
 
-
-\family default
  vorbeischauen.
 \end_layout
 
@@ -1144,9 +1142,9 @@ Strg+<
 
 
 \family sans
-Gehe zur
+Gehe zurück
 \family default
-ück
+
 \begin_inset Quotes grd
 \end_inset
 
@@ -2287,14 +2285,14 @@ Es mag sein, dass Sie beim Benutzen von \SpecialChar LyX
 \begin_layout Standard
 \SpecialChar LyX
  hat ein Web-basiertes Fehlermeldesystem, den \SpecialChar LyX
--Bug-Tracker 
-\begin_inset Flex URL
-status collapsed
+-Bug-Tracker
+\begin_inset Newline linebreak
+\end_inset
 
-\begin_layout Plain Layout
-
-http://www.lyx.org/trac/wiki/BugTrackerHome
-\end_layout
+ 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org/trac/wiki/BugTrackerHome"
 
 \end_inset
 
@@ -2315,13 +2313,9 @@ literal "false"
 .
  Archive der Liste erreichen Sie über die \SpecialChar LyX
 -Startseite 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.lyx.org
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org"
 
 \end_inset
 
@@ -2518,18 +2512,14 @@ Wie alle anderen Bereiche von \SpecialChar LyX
 
 \begin_layout Enumerate
 Besorgen Sie sich die neueste Version der \SpecialChar LyX
--Quellen von
+-Quellen von:
 \begin_inset Newline newline
 \end_inset
 
 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master"
 
 \end_inset
 
