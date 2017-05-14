@@ -256,6 +256,15 @@ export/templates/slides_.*_systemF
 export/templates/ja_beamer-conference-ornate-20min_(pdf2|pdf[45]).*
 export/templates/es_beamer-conference-ornate-20min_pdf4_texF
 
+# issues with listsof, reported to the maintainer
+# https://www.mail-archive.com/search?l=mid&q=of84gj%24l6b%241%40blaine.gmane.org
+# LyX gives the following terminal message:
+#
+#    TextClass.cpp (1385): The layout does not provide a list command for
+#      the float `sidebar'. LyX will not be able to produce a float list.
+#
+check_load/templates/acmart
+
 
 # ======================================================================
 Sublabel: attic
