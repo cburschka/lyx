@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-05-11 22:43+0200\n"
-"PO-Revision-Date: 2017-05-11 22:35+0000\n"
+"POT-Creation-Date: 2017-05-14 14:22+0200\n"
+"PO-Revision-Date: 2017-05-14 12:30+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -7254,6 +7254,10 @@ msgstr "Skratky"
 msgid "Abbreviations:"
 msgstr "Skratky:"
 
+#: lib/layouts/achemso.layout:162
+msgid "Schemes"
+msgstr "Náčrtky"
+
 #: lib/layouts/achemso.layout:164 lib/layouts/achemso.layout:176
 msgid "Scheme"
 msgstr "Náčrtok"
@@ -7262,6 +7266,10 @@ msgstr "Náčrtok"
 msgid "List of Schemes"
 msgstr "Zoznam Náčrtkov"
 
+#: lib/layouts/achemso.layout:186
+msgid "Charts"
+msgstr "Diagramy"
+
 #: lib/layouts/achemso.layout:186 lib/layouts/achemso.layout:198
 msgid "Chart"
 msgstr "Diagram"
@@ -7269,6 +7277,10 @@ msgstr "Diagram"
 #: lib/layouts/achemso.layout:192
 msgid "List of Charts"
 msgstr "Zoznam Diagramov"
+
+#: lib/layouts/achemso.layout:210
+msgid "Graphs[[mathematical]]"
+msgstr "Grafy"
 
 #: lib/layouts/achemso.layout:210 lib/layouts/achemso.layout:222
 msgid "Graph[[mathematical]]"
@@ -8788,10 +8800,6 @@ msgstr "Tabuľka"
 msgid "List of Tables"
 msgstr "Zoznam Tabuliek"
 
-#: lib/layouts/acmart.layout:513
-msgid "Two-column figure"
-msgstr "Dvojstĺpcový obrázok"
-
 #: lib/layouts/beamer.layout:1567 lib/layouts/powerdot.layout:521
 #: lib/layouts/sciposter.layout:102 lib/layouts/stdfloats.inc:26
 msgid "Figure"
@@ -9618,8 +9626,8 @@ msgid "Short authors: "
 msgstr "Skratka autorov: "
 
 #: lib/layouts/acmart.layout:499
-msgid "Two-column table"
-msgstr "Dvojstĺpcová tabuľka"
+msgid "Sidebar"
+msgstr "Bočný panel"
 
 #: lib/layouts/egs.layout:436 lib/layouts/agu_stdtitle.inc:202
 #: lib/layouts/aguplus.inc:115
@@ -12920,11 +12928,11 @@ msgstr "Celá Šírka"
 
 #: lib/layouts/tufte-book.layout:228
 msgid "MarginTable"
-msgstr "Okrajná tabuľka"
+msgstr "Krajná tabuľka"
 
 #: lib/layouts/tufte-book.layout:244
 msgid "MarginFigure"
-msgstr "OkrajnýObrázok"
+msgstr "KrajnýObrázok"
 
 #: lib/layouts/tufte-handout.layout:3
 msgid "Tufte Handout"
@@ -13257,6 +13265,14 @@ msgstr "TlačováPoznámka"
 msgid "Slug Comment:"
 msgstr "Tlačová Poznámka:"
 
+#: lib/layouts/aguplus.inc:182
+msgid "Plates"
+msgstr "Vyobrazenia"
+
+#: lib/layouts/aguplus.inc:183
+msgid "Planotables"
+msgstr "Plano-tabuľky"
+
 #: lib/layouts/aguplus.inc:184
 msgid "Plate"
 msgstr "Vyobrazenie"
@@ -13577,6 +13593,14 @@ msgstr "\\fnsymbol{thanks}"
 #: lib/layouts/stdfloats.inc:11
 msgid "Algorithms"
 msgstr "Algoritmy"
+
+#: lib/layouts/stdfloatnames.inc:8
+msgid "Margin Figures"
+msgstr "Krajné Obrázky"
+
+#: lib/layouts/stdfloatnames.inc:9
+msgid "Margin Tables"
+msgstr "Krajné tabuľky"
 
 #: lib/layouts/stdinsets.inc:12 src/insets/InsetMarginal.cpp:36
 msgid "margin"
@@ -32870,6 +32894,12 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "Two-column table"
+#~ msgstr "Dvojstĺpcová tabuľka"
+
+#~ msgid "Two-column figure"
+#~ msgstr "Dvojstĺpcový obrázok"
+
 #~ msgid "&Zoom %:"
 #~ msgstr "&Lupa %:"
 
@@ -37099,9 +37129,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "ACM SIGGGRAPH 0.92"
 #~ msgstr "ACM SIGGRAPH 0.92"
-
-#~ msgid "ACM SIGPLAN"
-#~ msgstr "ACM SIGPLAN"
 
 #~ msgid "Inderscience Journals (Obsolete Version)"
 #~ msgstr "Inderscience časopisy (zastaralá verzia)"
