@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 543
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -31,8 +31,8 @@
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\papersize default
-\use_geometry false
+\papersize a4paper
+\use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
 \use_package cancel 0
@@ -56,12 +56,16 @@
 \shortcut idx
 \color #008000
 \end_index
+\leftmargin 2.5cm
+\rightmargin 2.5cm
 \secnumdepth 3
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style swiss
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle empty
