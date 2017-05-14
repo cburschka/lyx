@@ -32,6 +32,7 @@ echo LYX_WINDOW_NAME=$LYX_WINDOW_NAME
 
 export MAX_LOOPS=1
 export LYX_EXE=${LYX_EXE:-../../src/lyx}
+export EXTRA_PATH=`pwd`
 
 if [ "$XVKBD_HACKED" != "" ]; then
     export XVKBD_EXE=${XVKBD_EXE:-./xvkbd/xvkbd};

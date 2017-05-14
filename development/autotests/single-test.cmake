@@ -70,6 +70,7 @@ if(EXISTS "${LYX_TESTS_USERDIR}/session")
   execute_process(COMMAND ${CMAKE_COMMAND} -E remove -f "${LYX_TESTS_USERDIR}/session")
 endif()
 # Environments needed by keytest.py
+set(ENV{EXTRA_PATH} "${AUTOTEST_ROOT}")
 set(ENV{PACKAGE} ${PACKAGE})
 set(ENV{LOCALE_DIR} ${LOCALE_DIR})
 set(ENV{LYX_LOCALEDIR} "${LOCALE_DIR}")

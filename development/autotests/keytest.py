@@ -413,6 +413,12 @@ max_loops = os.environ.get('MAX_LOOPS')
 if max_loops is None:
     max_loops = 3
 
+extra_path = os.environ.get('EXTRA_PATH')
+if not extra_path is None:
+  os.environ['PATH'] = extra_path + os.pathsep + os.environ['PATH']
+  print("Added " + extra_path + " to path")
+  print(os.environ['PATH'])
+
 PACKAGE = os.environ.get('PACKAGE')
 if not PACKAGE is None:
   print("PACKAGE = " + PACKAGE + "\n")
@@ -448,7 +454,7 @@ if locale_dir is None:
 def_delay = os.environ.get('XVKBD_DELAY')
 if def_delay is None:
     if qt_frontend == 'QT5':
-        def_delay = '5'
+        def_delay = '1'
     else:
         def_delay = '1'
 
