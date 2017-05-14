@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 543
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -64,7 +64,7 @@ End
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
-\font_sc false
+\font_sc true
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
@@ -86,7 +86,7 @@ End
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 2
-\pdf_breaklinks false
+\pdf_breaklinks true
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
@@ -122,7 +122,9 @@ End
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -3904,13 +3906,6 @@ status collapsed
 \noun off
 \color none
 重要な点をもう一度言わせてください．
-\family default
-\series default
-\shape default
-\size default
-\bar default
-\color inherit
-
 \end_layout
 
 \begin_layout Standard
@@ -4045,13 +4040,13 @@ name "sec:貢献"
 \begin_layout Standard
 \SpecialChar LyX
 にはバグ追跡システムがあり，
-\begin_inset Flex URL
-status collapsed
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Plain Layout
 
-http://www.lyx.org/trac/wiki/BugTrackerHome
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org/trac/wiki/BugTrackerHome"
 
 \end_inset
 
@@ -4071,20 +4066,12 @@ literal "false"
 \family default
 にメールを送ってください．このメーリングリストのアーカイブには，\SpecialChar LyX
 のメインウェブサイト
-\family typewriter
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.lyx.org/
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org"
 
 \end_inset
 
-
-\family default
 からリンクが張られています．
 \end_layout
 
@@ -4182,34 +4169,14 @@ literal "false"
 \end_inset
 
 
-\family default
-\series default
-\shape default
-\size default
-\emph default
-\bar default
-\noun default
-\color inherit
+\size normal
 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master"
 
 \end_inset
 
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
 
 \begin_inset Newline newline
 \end_inset

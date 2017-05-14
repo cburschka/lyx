@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 543
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -37,7 +37,7 @@
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
-\font_sc false
+\font_sc true
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
@@ -59,7 +59,7 @@
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 2
-\pdf_breaklinks false
+\pdf_breaklinks true
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
@@ -95,7 +95,9 @@
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -928,7 +930,7 @@ Some of you may have printed out the manuals.
  To open a footnote, which looks like this: 
 \begin_inset Graphics
 	filename clipart/footnote.png
-	scale 75
+	scale 95
 
 \end_inset
 
@@ -950,7 +952,7 @@ In the printed manuals, all cross-references appear as the actual numbers
  like the following: 
 \begin_inset Graphics
 	filename clipart/reference.png
-	scale 75
+	scale 95
 
 \end_inset
 
@@ -1266,7 +1268,11 @@ PageDown
 \begin_inset Quotes erd
 \end_inset
 
-: these are the 6 keys that appear above the cursor keys on many PC keyboards.
+: these are the 6
+\begin_inset space ~
+\end_inset
+
+keys that appear above the cursor keys on many PC keyboards.
  
 \begin_inset Quotes eld
 \end_inset
@@ -2143,21 +2149,17 @@ While using \SpecialChar LyX
 
 \begin_layout Standard
 \SpecialChar LyX
- has a bug tracking system, which you can find at 
-\family typewriter
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.lyx.org/trac/wiki/BugTrackerHome
-\end_layout
-
+ has a bug tracking system, which you can find at
+\begin_inset Newline newline
 \end_inset
 
 
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org/trac/wiki/BugTrackerHome"
+
+\end_inset
+
 .
  You should check the bug tracker before reporting any bugs, in case it
  has already been reported.
@@ -2175,20 +2177,12 @@ literal "false"
 .
  Archives of this list are linked from the main \SpecialChar LyX
  website, 
-\family typewriter
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.lyx.org/
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org"
 
 \end_inset
 
-
-\family default
 .
 \end_layout
 
@@ -2196,7 +2190,7 @@ http://www.lyx.org/
 A useful bug report will at a minimum include the version of \SpecialChar LyX
  you are having
  the problem with.
- Accurate, detailed descriptions are preferred - the more time developers
+ Accurate, detailed descriptions are preferred — the more time developers
  have to spend to pinpoint the source of a bug, the less time they have
  for other improvements.
  Mention the system and system version on which you are running \SpecialChar LyX
@@ -2276,17 +2270,13 @@ Get the latest \SpecialChar LyX
 \end_inset
 
 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master "
 
 \end_inset
 
- 
+
 \end_layout
 
 \begin_layout Enumerate

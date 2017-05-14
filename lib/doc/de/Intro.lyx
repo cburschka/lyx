@@ -1082,7 +1082,7 @@ inline
  Eine Fußnote sieht so aus: 
 \begin_inset Graphics
 	filename clipart/Fussnote.png
-	scale 75
+	scale 95
 
 \end_inset
 
@@ -1337,7 +1337,11 @@ Bild
 
 
 \family default
-: Das sind die 6 Tasten über den Cursor-Tasten.
+: Das sind die 6
+\begin_inset space ~
+\end_inset
+
+Tasten über den Cursor-Tasten.
 \end_layout
 
 \begin_layout Itemize
@@ -2364,7 +2368,7 @@ gdb
 
 
 \family typewriter
-gdb \SpecialChar ldots
+gdb\SpecialChar ldots
 /lyx
 \family default
 

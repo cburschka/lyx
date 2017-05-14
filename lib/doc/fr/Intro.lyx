@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 543
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -37,7 +37,7 @@
 \font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
-\font_sc false
+\font_sc true
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
@@ -59,7 +59,7 @@
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 2
-\pdf_breaklinks false
+\pdf_breaklinks true
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
@@ -95,7 +95,9 @@
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style swiss
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -1118,7 +1120,7 @@ Si certains d'entre vous ont imprimé les manuels, d'autres les lisent en
  Les notes de bas de page, qui ont l'aspect suivant: 
 \begin_inset Graphics
 	filename clipart/footnote.png
-	scale 75
+	scale 95
 
 \end_inset
 
@@ -1498,8 +1500,12 @@ Suiv
 \begin_inset Quotes crd
 \end_inset
 
- sont les 6 touches situées, sur la plupart des claviers de PC, au dessus
- des flèches de déplacement du curseur.
+ sont les 6
+\begin_inset space ~
+\end_inset
+
+touches situées, sur la plupart des claviers de PC, au dessus des flèches
+ de déplacement du curseur.
  
 \begin_inset Quotes cld
 \end_inset
@@ -2283,8 +2289,6 @@ de
 \end_inset
 
 l'utilisateur
-\shape default
-
 \end_layout
 
 \begin_deeper
@@ -2536,14 +2540,14 @@ Lors de votre utilisation de \SpecialChar LyX
 \SpecialChar LyX
  a un système de recensement de bogues, que vous trouverez sur le traceur
  de bogues de \SpecialChar LyX
- 
-\begin_inset Flex URL
-status collapsed
 
-\begin_layout Plain Layout
+\begin_inset Newline newline
+\end_inset
 
-http://www.lyx.org/trac/wiki/BugTrackerHome
-\end_layout
+
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org/trac/wiki/BugTrackerHome"
 
 \end_inset
 
@@ -2566,13 +2570,9 @@ literal "false"
  L'adresse des archives de cette liste est indiquée sur le site web principal
  de \SpecialChar LyX
 , 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.lyx.org/WebFr.Home
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org/WebFr.Home"
 
 \end_inset
 
@@ -2696,13 +2696,9 @@ Récupérez le code source de \SpecialChar LyX
 \end_inset
 
 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master"
 
 \end_inset
 
@@ -2801,13 +2797,12 @@ Pour participer à la traduction, le principe est le même que pour modifier
  la version originale anglophone.
  Il existe une liste de diffusion pour les traducteurs et les utilisateurs
  francophones, à l'adresse 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-lyx-fr@lists.lyx.org
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "lyx-fr@lists.lyx.org"
+target "lyx-fr@lists.lyx.org"
+type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -2815,13 +2810,12 @@ lyx-fr@lists.lyx.org
  Avant d'apporter une modification substantielle à un document, il faut
  envoyer un message à cette adresse.
  Pour s'inscrire sur cette liste, il faut envoyer un message vide à 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-lyx-fr-subscribe@lists.lyx.org
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "lyx-fr-subscribe@lists.lyx.org"
+target "lyx-fr-subscribe@lists.lyx.org"
+type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -2832,44 +2826,28 @@ lyx-fr-subscribe@lists.lyx.org
 D'autre part il faut prendre garde à ne modifier que la dernière version
  de la traduction.
  C'est toujours celle qui est sur le serveur Trac 
-\lang english
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.lyx.org/trac/browser/lyxgit/lib/doc/fr?rev=master
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org/trac/browser/lyxgit/lib/doc/fr?rev=master"
 
 \end_inset
 
-
-\lang french
 .
  On peut y accéder également en suivant les indications qui se trouvent
  sur le site des développeurs de \SpecialChar LyX
  
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.lyx.org/WebFr.Translation/
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.lyx.org/WebFr.Translation"
 
 \end_inset
 
 .
  Il y a aussi une site de référence pour les traductions en français, sur
  laquelle vous pouvez télécharger les fichiers les plus récents 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://lyxfr.free.fr/
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://lyxfr.free.fr"
 
 \end_inset
 

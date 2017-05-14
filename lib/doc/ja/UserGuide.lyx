@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 543
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -161,7 +161,9 @@ End
 \paragraph_separation skip
 \defskip medskip
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -15265,7 +15267,7 @@ arg   "footnote-insert"
 を使用して脚註を挿入すると，
 \begin_inset Graphics
 	filename clipart/footnote.png
-	scale 80
+	scale 95
 
 \end_inset
 
@@ -40667,6 +40669,7 @@ set_width "none"
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
+name "索引"
 literal "false"
 
 \end_inset

@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 543
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -146,7 +146,9 @@ logicalmkup
 \paragraph_separation skip
 \defskip medskip
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style swiss
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -19413,7 +19415,7 @@ pied
  qui ressemble à ceci : 
 \begin_inset Graphics
 	filename clipart/footnote.png
-	scale 80
+	scale 95
 
 \end_inset
 
@@ -49895,6 +49897,7 @@ set_width "auto"
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
+name "Index"
 literal "false"
 
 \end_inset
