@@ -35,6 +35,7 @@
 #include "support/PathChanger.h"
 #include "support/Systemcall.h"
 
+#include <QApplication>
 #include <QCheckBox>
 #include <QComboBox>
 #include <QLineEdit>
@@ -236,6 +237,18 @@ void focusAndHighlight(QAbstractItemView * w)
 	w->setFocus();
 	w->setCurrentIndex(w->currentIndex());
 	w->scrollTo(w->currentIndex());
+}
+
+
+void setMessageColour(list<QWidget *> highlighted, list<QWidget *> plain)
+{
+	QPalette pal = QApplication::palette();
+	QPalette newpal(pal.color(QPalette::Active, QPalette::HighlightedText),
+	                pal.color(QPalette::Active, QPalette::Highlight));
+	for (QWidget * w : highlighted)
+		w->setPalette(newpal);
+	for (QWidget * w : plain)
+		w->setPalette(pal);
 }
 
 

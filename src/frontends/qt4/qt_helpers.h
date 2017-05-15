@@ -83,6 +83,11 @@ void setValid(QWidget * widget, bool valid);
 // set focus and highlight the current item if there is no selection already
 void focusAndHighlight(QAbstractItemView * w);
 
+// Sets all widget in highlighted in highlighted colour, and their children in
+// plain in standard colours.
+void setMessageColour(std::list<QWidget *> highlighted,
+                      std::list<QWidget *> plain);
+
 /// Qt5 changed setSectionMode to setSectionResizeMode
 /// These wrappers work for Qt4 and Qt5
 void setSectionResizeMode(QHeaderView * view,

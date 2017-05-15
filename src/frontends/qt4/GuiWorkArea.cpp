@@ -2220,10 +2220,7 @@ GuiWorkAreaContainer::GuiWorkAreaContainer(GuiWorkArea * wa, QWidget * parent)
 	        this, SLOT(updateDisplay()));
 	connect(reloadPB, SIGNAL(clicked()), this, SLOT(reload()));
 	connect(ignorePB, SIGNAL(clicked()), this, SLOT(ignore()));
-	QPalette const & pal = notificationFrame->palette();
-	QPalette newpal(pal.color(QPalette::Active, QPalette::HighlightedText),
-	                pal.color(QPalette::Active, QPalette::Highlight));
-	notificationFrame->setPalette(newpal);
+	setMessageColour({notificationFrame}, {reloadPB, ignorePB});
 	updateDisplay();
 }
 
