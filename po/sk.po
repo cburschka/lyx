@@ -1,15 +1,15 @@
 # Slovak translation of LyX
 # Copyright (C) 2003, 2006
 # Zdenko Podobný <zdpo@mailbox.sk>
-# 
+#
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
 # Kornel Benko <kornel@lyx.org>, 2009-2017.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-05-14 18:18+0200\n"
-"PO-Revision-Date: 2017-05-14 12:30+0000\n"
+"POT-Creation-Date: 2017-05-15 07:19+0200\n"
+"PO-Revision-Date: 2017-05-15 05:54+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -7404,6 +7404,11 @@ msgstr "Obecné pojmy:"
 msgid "ACM SIG Proceedings (SP, Obsolete)"
 msgstr "ACM SIG Rokovacie Zväzky (SP, Zastaralé)"
 
+# Združenie pre Výpočetné Stroje
+#: lib/layouts/acmart.layout:3
+msgid "Association for Computing Machinery (ACM) article"
+msgstr "Association for Computing Machinery (ACM) článok"
+
 #: lib/layouts/acmsiggraph-0-92.layout:3
 msgid "ACM SIGGGRAPH 0.92 (obsolete)"
 msgstr "ACM SIGGRAPH 0.92 (zastaralé)"
@@ -7581,6 +7586,14 @@ msgstr "Krátke citovanie"
 msgid "Thanks"
 msgstr "Vďaka"
 
+#: lib/layouts/acmart.layout:98
+msgid "Thanks: "
+msgstr "Vďaka: "
+
+#: lib/layouts/acmart.layout:104
+msgid "ACM Journal"
+msgstr "ACM Žurnál"
+
 #: lib/layouts/acmsiggraph-0-92.layout:336
 #: lib/layouts/acmsiggraph.layout:292 lib/layouts/jss.layout:179
 #: lib/layouts/jss.layout:181
@@ -7599,6 +7612,18 @@ msgstr "E-mail"
 #: lib/layouts/spie.layout:91
 msgid "Acknowledgments"
 msgstr "Poďakovania"
+
+#: lib/layouts/acmart.layout:659 lib/layouts/acmart.layout:663
+msgid "Grant Sponsor"
+msgstr "Priznať Sponzora"
+
+#: lib/layouts/acmart.layout:667 lib/layouts/acmart.layout:703
+msgid "Sponsor ID"
+msgstr "ID Sponzora"
+
+#: lib/layouts/acmart.layout:688 lib/layouts/acmart.layout:692
+msgid "Grant Number"
+msgstr "Číslo Priznania"
 
 #: lib/layouts/acmsiggraph.layout:3
 msgid "ACM SIGGRAPH (older than 0.91, obsolete)"
@@ -7871,6 +7896,34 @@ msgstr "Meno:"
 msgid "Received"
 msgstr "Obdržané"
 
+#: lib/layouts/acmart.layout:466
+msgid "Stage"
+msgstr "Fáza"
+
+#: lib/layouts/acmart.layout:469
+msgid "Received: "
+msgstr "Obdržané: "
+
+#: lib/layouts/acmart.layout:477
+msgid "ShortAuthors"
+msgstr "ShortAuthors"
+
+#: lib/layouts/acmart.layout:485
+msgid "Short authors: "
+msgstr "Skratka autorov: "
+
+#: lib/layouts/acmart.layout:499
+msgid "Sidebar"
+msgstr "Bočný panel"
+
+#: lib/layouts/acmart.layout:503
+msgid "Sidebar (sigchi-a only)"
+msgstr "Bočný panel (len sigchi-a)"
+
+#: lib/layouts/acmart.layout:513
+msgid "Margin figure (sigchi-a only)"
+msgstr "Okrajový obrázok (len sigchi-a)"
+
 #: lib/layouts/agu_stdtitle.inc:202 lib/layouts/aguplus.inc:115
 #: lib/layouts/egs.layout:436
 msgid "Received:"
@@ -8033,6 +8086,26 @@ msgstr "Mesto"
 #: lib/layouts/g-brief.layout:88
 msgid "State"
 msgstr "Štát"
+
+#: lib/layouts/acmart.layout:276 lib/layouts/acmart.layout:278
+msgid "Postal Code"
+msgstr "Poštové Smerovacie Číslo"
+
+#: lib/layouts/acmart.layout:284
+msgid "TitleNote"
+msgstr "TitleNote"
+
+#: lib/layouts/acmart.layout:294
+msgid "Title Note: "
+msgstr "Poznámka Titul: "
+
+#: lib/layouts/acmart.layout:300
+msgid "SubtitleNote"
+msgstr "SubtitleNote"
+
+#: lib/layouts/acmart.layout:302
+msgid "Subtitle Note: "
+msgstr "Poznámka Podtitul: "
 
 #: lib/layouts/agu_stdtitle.inc:484 lib/layouts/agu_stdtitle.inc:486
 msgid "Postcode"
@@ -8475,6 +8548,164 @@ msgstr "Poznámka"
 msgid "AuthorNote"
 msgstr "AuthorNote"
 
+#: lib/layouts/acmart.layout:308
+msgid "Author Note: "
+msgstr "Poznámka Autor: "
+
+#: lib/layouts/acmart.layout:312
+msgid "ACM Volume"
+msgstr "ACM Volume"
+
+#: lib/layouts/acmart.layout:314
+msgid "ACM Volume: "
+msgstr "ACM Diel: "
+
+#: lib/layouts/acmart.layout:318
+msgid "ACM Number"
+msgstr "ACM Number"
+
+#: lib/layouts/acmart.layout:320
+msgid "ACM Number: "
+msgstr "ACM-Číslo: "
+
+#: lib/layouts/acmart.layout:324
+msgid "ACM Article"
+msgstr "ACM Article"
+
+#: lib/layouts/acmart.layout:326
+msgid "ACM Article: "
+msgstr "ACM Článok: "
+
+#: lib/layouts/acmart.layout:330
+msgid "ACM Year"
+msgstr "ACM Year"
+
+#: lib/layouts/acmart.layout:332
+msgid "ACM Year: "
+msgstr "ACM Rok: "
+
+#: lib/layouts/acmart.layout:336
+msgid "ACM Month"
+msgstr "ACM Month"
+
+#: lib/layouts/acmart.layout:338
+msgid "ACM Month: "
+msgstr "ACM Mesiac: "
+
+#: lib/layouts/acmart.layout:342
+msgid "ACM Art Seq Num"
+msgstr "ACM Art Seq Num"
+
+#: lib/layouts/acmart.layout:344
+msgid "Article Sequential Number: "
+msgstr "Sekvenčné Číslo článku: "
+
+#: lib/layouts/acmart.layout:348
+msgid "ACM Submission ID"
+msgstr "ACM Submission ID"
+
+#: lib/layouts/acmart.layout:350
+msgid "ACM Submission ID: "
+msgstr "ACM Totožnosť Predloženia: "
+
+#: lib/layouts/acmart.layout:354
+msgid "ACM Price"
+msgstr "ACM Price"
+
+#: lib/layouts/acmart.layout:356
+msgid "ACM Price: "
+msgstr "ACM Cena: "
+
+#: lib/layouts/acmart.layout:360
+msgid "ACM ISBN"
+msgstr "ACM ISBN"
+
+# International Standard Book Number
+#: lib/layouts/acmart.layout:362
+msgid "ACM ISBN: "
+msgstr "ACM ISBN: "
+
+#: lib/layouts/acmart.layout:366
+msgid "ACM DOI"
+msgstr "ACM DOI"
+
+# Definition of Improvement
+#: lib/layouts/acmart.layout:368
+msgid "ACM DOI: "
+msgstr "ACM DOI: "
+
+#: lib/layouts/acmart.layout:372
+msgid "ACM Badge R"
+msgstr "ACM Badge R"
+
+#: lib/layouts/acmart.layout:374
+msgid "ACM Badge R: "
+msgstr "ACM Odznak R: "
+
+#: lib/layouts/acmart.layout:378
+msgid "ACM Badge L"
+msgstr "ACM Badge L"
+
+#: lib/layouts/acmart.layout:380
+msgid "ACM Badge L: "
+msgstr "ACM Odznak L: "
+
+#: lib/layouts/acmart.layout:384
+msgid "Start Page"
+msgstr "Start Page"
+
+#: lib/layouts/acmart.layout:386
+msgid "Start Page: "
+msgstr "Počiatočná Strana: "
+
+#: lib/layouts/acmart.layout:392
+msgid "Terms: "
+msgstr "Pojmy: "
+
+#: lib/layouts/acmart.layout:398
+msgid "Keywords: "
+msgstr "Heslá: "
+
+#: lib/layouts/acmart.layout:402
+msgid "CCSXML"
+msgstr "CCSXML"
+
+#: lib/layouts/acmart.layout:413
+msgid "Computing Classification Scheme (XML): "
+msgstr "Operačná Klasifikačná Schéma (XML): "
+
+#: lib/layouts/acmart.layout:424
+msgid "CCS Description"
+msgstr "CCS Description"
+
+#: lib/layouts/acmart.layout:427
+msgid "Significance"
+msgstr "Význam"
+
+#: lib/layouts/acmart.layout:429
+msgid "Computing Classification Scheme: "
+msgstr "Operačná Klasifikačná Schéma: "
+
+#: lib/layouts/acmart.layout:442
+msgid "Set Copyright"
+msgstr "Set Copyright"
+
+#: lib/layouts/acmart.layout:444
+msgid "Set Copyright: "
+msgstr "Nastaviť Autorské Práva: "
+
+#: lib/layouts/acmart.layout:448
+msgid "Copyright Year"
+msgstr "Copyright Year"
+
+#: lib/layouts/acmart.layout:450
+msgid "Copyright Year: "
+msgstr "Autorské Práva Rok: "
+
+#: lib/layouts/acmart.layout:454 lib/layouts/acmart.layout:457
+msgid "Teaser Figure"
+msgstr "Obrázok Hlavolamu"
+
 #: lib/layouts/apa6.layout:293
 msgid "Author Note:"
 msgstr "Poznámka Autor:"
@@ -8487,6 +8718,58 @@ msgstr "Žurnál"
 #: lib/layouts/apa6.layout:325 lib/layouts/apa6.layout:333
 msgid "Preamble"
 msgstr "Preambula"
+
+#: lib/layouts/acmart.layout:109
+msgid "Journal's Short Name: "
+msgstr "Skratka Žurnála: "
+
+#: lib/layouts/acmart.layout:120
+msgid "ACM Conference"
+msgstr "ACM Konferencia"
+
+#: lib/layouts/acmart.layout:127
+msgid "Full name"
+msgstr "Celé meno"
+
+#: lib/layouts/acmart.layout:135
+msgid "Venue"
+msgstr "Miesto"
+
+#: lib/layouts/acmart.layout:138
+msgid "Conference Name: "
+msgstr "Meno Konferencie: "
+
+#: lib/layouts/acmart.layout:145
+msgid "Short title"
+msgstr "Krátky titul"
+
+#: lib/layouts/acmart.layout:176
+msgid "Email address: "
+msgstr "E-mail adresa: "
+
+#: lib/layouts/acmart.layout:188
+msgid "ORCID"
+msgstr "ORCID"
+
+#: lib/layouts/acmart.layout:190
+msgid "ORCID: "
+msgstr "ORCID: "
+
+#: lib/layouts/acmart.layout:210
+msgid "Affiliation: "
+msgstr "Príslušenstvo: "
+
+#: lib/layouts/acmart.layout:214
+msgid "Additional Affiliation"
+msgstr "Prídavné Príslušenstvo"
+
+#: lib/layouts/acmart.layout:216
+msgid "Additional Affiliation: "
+msgstr "Prídavné Príslušenstvo: "
+
+#: lib/layouts/acmart.layout:220 lib/layouts/acmart.layout:224
+msgid "Position"
+msgstr "Postavenie"
 
 #: lib/layouts/apa6.layout:324
 msgid "CopNum"
@@ -9210,6 +9493,10 @@ msgstr "Obrázok"
 #: lib/layouts/tufte-book.layout:252
 msgid "List of Figures"
 msgstr "Zoznam Obrázkov"
+
+#: lib/layouts/acmart.layout:526
+msgid "Margin table (sigchi-a only)"
+msgstr "Okrajová tabuľka (len sigchi-a)"
 
 #: lib/layouts/beamerposter.layout:3
 msgid "Beamerposter"
@@ -13276,6 +13563,14 @@ msgstr "PodTitul"
 msgid "Institution"
 msgstr "Inštitúcia"
 
+#: lib/layouts/acmart.layout:236 lib/layouts/acmart.layout:238
+msgid "Department"
+msgstr "Oddelenie"
+
+#: lib/layouts/acmart.layout:244 lib/layouts/acmart.layout:246
+msgid "Street Address"
+msgstr "Ulica"
+
 #: lib/layouts/paralist.module:2
 msgid "Paragraph Lists (paralist)"
 msgstr "Odstavcové Listiny (paralist)"
@@ -14798,6 +15093,18 @@ msgstr "Poznámka pri päte ##"
 msgid "\\fnsymbol{thanks}"
 msgstr "\\fnsymbol{thanks}"
 
+#: lib/layouts/stdfloatnames.inc:7
+msgid "Algorithms"
+msgstr "Algoritmy"
+
+#: lib/layouts/stdfloatnames.inc:8
+msgid "Margin Figures"
+msgstr "Krajné Obrázky"
+
+#: lib/layouts/stdfloatnames.inc:9
+msgid "Margin Tables"
+msgstr "Krajné tabuľky"
+
 #: lib/layouts/stdinsets.inc:11
 msgid "Marginal notes"
 msgstr "Poznámky na okraji (neočíslované)"
@@ -15800,6 +16107,30 @@ msgstr "Definícia \\thetheorem."
 #: lib/layouts/theorems-ams.inc:193 lib/layouts/theorems.inc:193
 msgid "Example \\thetheorem."
 msgstr "Príklad \\thetheorem."
+
+#: lib/layouts/acmart.layout:622
+msgid "Print Only"
+msgstr "Len Tlač"
+
+#: lib/layouts/acmart.layout:629
+msgid "Print version only"
+msgstr "Len tlač verzie"
+
+#: lib/layouts/acmart.layout:632
+msgid "Screen Only"
+msgstr "Len Obrazovka"
+
+#: lib/layouts/acmart.layout:635
+msgid "Screen version only"
+msgstr "Len verzia obrazovky"
+
+#: lib/layouts/acmart.layout:638
+msgid "Anonymous Suppression"
+msgstr "Anonymné Potlačenie"
+
+#: lib/layouts/acmart.layout:641
+msgid "Non anonymous only"
+msgstr "Len ne-anonymné"
 
 #: lib/layouts/theorems-ams.inc:210 lib/layouts/theorems.inc:210
 msgid "Problem \\thetheorem."
@@ -17273,9 +17604,9 @@ msgstr "Zobraz lištu nástrojov pre tabuľku"
 msgid "Use Computer Algebra System|m"
 msgstr "Použiť Systém Computer Algebra"
 
-#: lib/ui/stdcontext.inc:87 lib/ui/stdcontext.inc:105
+#: lib/ui/stdcontext.inc:87 lib/ui/stdcontext.inc:106
 msgid "Next Cross-Reference|N"
-msgstr "Ďalšia krížová referencia|r"
+msgstr "Ďalšia krížová referencia|o"
 
 #: lib/ui/stdcontext.inc:88
 msgid "Go to Label|G"
@@ -17307,24 +17638,27 @@ msgstr "Formátovaná Referencia|t"
 
 #: lib/ui/stdcontext.inc:96
 msgid "Textual Reference|x"
-msgstr "Textová Referencia"
+msgstr "Textová Referencia|x"
 
-#: lib/ui/stdcontext.inc:98 lib/ui/stdcontext.inc:110
-#: lib/ui/stdcontext.inc:120 lib/ui/stdcontext.inc:128
-#: lib/ui/stdcontext.inc:137 lib/ui/stdcontext.inc:148
-#: lib/ui/stdcontext.inc:155 lib/ui/stdcontext.inc:252
-#: lib/ui/stdcontext.inc:270 lib/ui/stdcontext.inc:297
-#: lib/ui/stdcontext.inc:402 lib/ui/stdcontext.inc:415
-#: lib/ui/stdcontext.inc:467 lib/ui/stdcontext.inc:492
-#: lib/ui/stdcontext.inc:516 lib/ui/stdcontext.inc:527
-#: lib/ui/stdcontext.inc:535 lib/ui/stdcontext.inc:545
-#: lib/ui/stdcontext.inc:553 lib/ui/stdcontext.inc:561
-#: lib/ui/stdcontext.inc:569 lib/ui/stdcontext.inc:582
-#: lib/ui/stdcontext.inc:592 lib/ui/stdcontext.inc:613
-#: lib/ui/stdcontext.inc:621 lib/ui/stdcontext.inc:667
-#: lib/ui/stdmenus.inc:547
+#: lib/ui/stdcontext.inc:97
+msgid "Label Only|L"
+msgstr "Len Heslo|L"
+
+#: lib/ui/stdcontext.inc:99 lib/ui/stdcontext.inc:111
+#: lib/ui/stdcontext.inc:121 lib/ui/stdcontext.inc:129
+#: lib/ui/stdcontext.inc:138 lib/ui/stdcontext.inc:149
+#: lib/ui/stdcontext.inc:156 lib/ui/stdcontext.inc:253
+#: lib/ui/stdcontext.inc:271 lib/ui/stdcontext.inc:298
+#: lib/ui/stdcontext.inc:403 lib/ui/stdcontext.inc:416
+#: lib/ui/stdcontext.inc:468 lib/ui/stdcontext.inc:493
+#: lib/ui/stdcontext.inc:517 lib/ui/stdcontext.inc:528
+#: lib/ui/stdcontext.inc:536 lib/ui/stdcontext.inc:546
+#: lib/ui/stdcontext.inc:554 lib/ui/stdcontext.inc:562
+#: lib/ui/stdcontext.inc:570 lib/ui/stdcontext.inc:583
+#: lib/ui/stdcontext.inc:593 lib/ui/stdcontext.inc:614
+#: lib/ui/stdcontext.inc:622 lib/ui/stdcontext.inc:668 lib/ui/stdmenus.inc:547
 msgid "Settings...|S"
-msgstr "Nastavenia…|a"
+msgstr "Nastavenia…|N"
 
 #: lib/ui/stdcontext.inc:106
 msgid "Go Back|G"
@@ -32787,255 +33121,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
-
-#~ msgid "Thanks: "
-#~ msgstr "Vďaka: "
-
-#~ msgid "ACM Journal"
-#~ msgstr "ACM Žurnál"
-
-#~ msgid "Grant Sponsor"
-#~ msgstr "Priznať Sponzora"
-
-#~ msgid "Sponsor ID"
-#~ msgstr "ID Sponzora"
-
-#~ msgid "Grant Number"
-#~ msgstr "Číslo Priznania"
-
-#~ msgid "Author Note: "
-#~ msgstr "Poznámka Autor: "
-
-#~ msgid "ACM Volume"
-#~ msgstr "ACM Volume"
-
-#~ msgid "ACM Volume: "
-#~ msgstr "ACM Diel: "
-
-#~ msgid "ACM Number"
-#~ msgstr "ACM Number"
-
-#~ msgid "ACM Number: "
-#~ msgstr "ACM-Číslo: "
-
-#~ msgid "ACM Article"
-#~ msgstr "ACM Article"
-
-#~ msgid "ACM Article: "
-#~ msgstr "ACM Článok: "
-
-#~ msgid "ACM Year"
-#~ msgstr "ACM Year"
-
-#~ msgid "ACM Year: "
-#~ msgstr "ACM Rok: "
-
-#~ msgid "ACM Month"
-#~ msgstr "ACM Month"
-
-#~ msgid "ACM Month: "
-#~ msgstr "ACM Mesiac: "
-
-#~ msgid "ACM Art Seq Num"
-#~ msgstr "ACM Art Seq Num"
-
-#~ msgid "Article Sequential Number: "
-#~ msgstr "Sekvenčné Číslo článku: "
-
-#~ msgid "ACM Submission ID"
-#~ msgstr "ACM Submission ID"
-
-#~ msgid "ACM Submission ID: "
-#~ msgstr "ACM Totožnosť Predloženia: "
-
-#~ msgid "ACM Price"
-#~ msgstr "ACM Price"
-
-#~ msgid "ACM Price: "
-#~ msgstr "ACM Cena: "
-
-#~ msgid "ACM ISBN"
-#~ msgstr "ACM ISBN"
-
-# International Standard Book Number
-#~ msgid "ACM ISBN: "
-#~ msgstr "ACM ISBN: "
-
-#~ msgid "ACM DOI"
-#~ msgstr "ACM DOI"
-
-# Definition of Improvement
-#~ msgid "ACM DOI: "
-#~ msgstr "ACM DOI: "
-
-#~ msgid "ACM Badge R"
-#~ msgstr "ACM Badge R"
-
-#~ msgid "ACM Badge R: "
-#~ msgstr "ACM Odznak R: "
-
-#~ msgid "ACM Badge L"
-#~ msgstr "ACM Badge L"
-
-#~ msgid "ACM Badge L: "
-#~ msgstr "ACM Odznak L: "
-
-#~ msgid "Start Page"
-#~ msgstr "Start Page"
-
-#~ msgid "Start Page: "
-#~ msgstr "Počiatočná Strana: "
-
-#~ msgid "Terms: "
-#~ msgstr "Pojmy: "
-
-#~ msgid "Keywords: "
-#~ msgstr "Heslá: "
-
-#~ msgid "CCSXML"
-#~ msgstr "CCSXML"
-
-#~ msgid "Computing Classification Scheme (XML): "
-#~ msgstr "Operačná Klasifikačná Schéma (XML): "
-
-#~ msgid "CCS Description"
-#~ msgstr "CCS Description"
-
-#~ msgid "Significance"
-#~ msgstr "Význam"
-
-#~ msgid "Computing Classification Scheme: "
-#~ msgstr "Operačná Klasifikačná Schéma: "
-
-#~ msgid "Set Copyright"
-#~ msgstr "Set Copyright"
-
-#~ msgid "Set Copyright: "
-#~ msgstr "Nastaviť Autorské Práva: "
-
-#~ msgid "Copyright Year"
-#~ msgstr "Copyright Year"
-
-#~ msgid "Copyright Year: "
-#~ msgstr "Autorské Práva Rok: "
-
-#~ msgid "Teaser Figure"
-#~ msgstr "Obrázok Hlavolamu"
-
-#~ msgid "Journal's Short Name: "
-#~ msgstr "Skratka Žurnála: "
-
-#~ msgid "ACM Conference"
-#~ msgstr "ACM Konferencia"
-
-#~ msgid "Full name"
-#~ msgstr "Celé meno"
-
-#~ msgid "Venue"
-#~ msgstr "Miesto"
-
-#~ msgid "Conference Name: "
-#~ msgstr "Meno Konferencie: "
-
-#~ msgid "Short title"
-#~ msgstr "Krátky titul"
-
-#~ msgid "Email address: "
-#~ msgstr "E-mail adresa: "
-
-#~ msgid "ORCID"
-#~ msgstr "ORCID"
-
-#~ msgid "ORCID: "
-#~ msgstr "ORCID: "
-
-#~ msgid "Affiliation: "
-#~ msgstr "Príslušenstvo: "
-
-#~ msgid "Additional Affiliation"
-#~ msgstr "Prídavné Príslušenstvo"
-
-#~ msgid "Additional Affiliation: "
-#~ msgstr "Prídavné Príslušenstvo: "
-
-#~ msgid "Position"
-#~ msgstr "Postavenie"
-
-#~ msgid "Sidebar (sigchi-a only)"
-#~ msgstr "Bočný panel (len sigchi-a)"
-
-#~ msgid "Margin figure (sigchi-a only)"
-#~ msgstr "Okrajový obrázok (len sigchi-a)"
-
-#~ msgid "Margin table (sigchi-a only)"
-#~ msgstr "Okrajová tabuľka (len sigchi-a)"
-
-#~ msgid "Stage"
-#~ msgstr "Fáza"
-
-#~ msgid "Received: "
-#~ msgstr "Obdržané: "
-
-#~ msgid "ShortAuthors"
-#~ msgstr "ShortAuthors"
-
-#~ msgid "Short authors: "
-#~ msgstr "Skratka autorov: "
-
-#~ msgid "Sidebar"
-#~ msgstr "Bočný panel"
-
-#~ msgid "Postal Code"
-#~ msgstr "Poštové Smerovacie Číslo"
-
-#~ msgid "TitleNote"
-#~ msgstr "TitleNote"
-
-#~ msgid "Title Note: "
-#~ msgstr "Poznámka Titul: "
-
-#~ msgid "SubtitleNote"
-#~ msgstr "SubtitleNote"
-
-#~ msgid "Subtitle Note: "
-#~ msgstr "Poznámka Podtitul: "
-
-#~ msgid "Department"
-#~ msgstr "Oddelenie"
-
-#~ msgid "Street Address"
-#~ msgstr "Ulica"
-
-# Združenie pre Výpočetné Stroje
-#~ msgid "Association for Computing Machinery (ACM) article"
-#~ msgstr "Association for Computing Machinery (ACM) článok"
-
-#~ msgid "Algorithms"
-#~ msgstr "Algoritmy"
-
-#~ msgid "Margin Figures"
-#~ msgstr "Krajné Obrázky"
-
-#~ msgid "Margin Tables"
-#~ msgstr "Krajné tabuľky"
-
-#~ msgid "Print Only"
-#~ msgstr "Len Tlač"
-
-#~ msgid "Print version only"
-#~ msgstr "Len tlač verzie"
-
-#~ msgid "Screen Only"
-#~ msgstr "Len Obrazovka"
-
-#~ msgid "Screen version only"
-#~ msgstr "Len verzia obrazovky"
-
-#~ msgid "Anonymous Suppression"
-#~ msgstr "Anonymné Potlačenie"
-
-#~ msgid "Non anonymous only"
-#~ msgstr "Len ne-anonymné"
 
 #~ msgid "Two-column table"
 #~ msgstr "Dvojstĺpcová tabuľka"
