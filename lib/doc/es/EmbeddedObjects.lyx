@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 543
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -230,7 +230,9 @@ graphicboxes
 \paragraph_separation skip
 \defskip medskip
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style swiss
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -652,7 +654,7 @@ Figuras ! Agrupación de ajustes
 \end_layout
 
 \begin_layout Standard
-Esto es un ejemplo de imagen en formato EPS
+Esto es un ejemplo de imagen en formato PDF
 \begin_inset Foot
 status collapsed
 
@@ -679,8 +681,7 @@ reference "sec:Formatos-de-imagen"
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../clipart/mobius.eps
-	scale 70
+	filename ../clipart/2D-intensity-plot.pdf
 	clip
 	rotateOrigin center
 
@@ -696,8 +697,7 @@ Esta es la misma imagen pero en modo borrador:
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../clipart/mobius.eps
-	scale 70
+	filename ../clipart/2D-intensity-plot.pdf
 	draft
 	rotateOrigin center
 
@@ -777,7 +777,7 @@ Figura
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:kill-plat"
+reference "fig:A-star-structure"
 
 \end_inset
 
@@ -788,7 +788,7 @@ reference "fig:kill-plat"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:escher"
+reference "fig:A-3D-object"
 
 \end_inset
 
@@ -816,7 +816,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../clipart/platypus.eps
+	filename ../clipart/Star-structure.pdf
 	width 50col%
 	rotateOrigin center
 
@@ -831,11 +831,13 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:kill-plat"
+name "fig:A-star-structure"
 
 \end_inset
 
-Un ornitorrinco muy distorsionado en un flotante.
+
+\lang english
+A star structure in a float.
 \end_layout
 
 \end_inset
@@ -860,12 +862,13 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:escher"
+name "fig:A-3D-object"
 
 \end_inset
 
-M.C.
- Escher en ácido.
+
+\lang english
+A 3D object.
 \end_layout
 
 \end_inset
@@ -876,7 +879,7 @@ M.C.
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../clipart/escher-lsd.eps
+	filename ../clipart/3D-structure-distort.pdf
 	scale 80
 	rotateOrigin center
 
@@ -907,14 +910,14 @@ Las figuras
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:kill-plat"
+reference "fig:A-star-structure"
 
 \end_inset
 
  y 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:escher"
+reference "fig:A-3D-object"
 
 \end_inset
 
@@ -995,7 +998,7 @@ reference "fig:Dos-imágenes-distorsionadas"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Estructura-indefinible"
+reference "fig:Pink-object"
 
 \end_inset
 
@@ -1006,7 +1009,7 @@ reference "fig:Estructura-indefinible"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Ornitorrinco"
+reference "fig:A-star"
 
 \end_inset
 
@@ -1027,7 +1030,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -1035,11 +1038,13 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Estructura-indefinible"
+name "fig:Pink-object"
 
 \end_inset
 
-Estructura indefinible
+
+\lang english
+Pink object.
 \end_layout
 
 \end_inset
@@ -1049,7 +1054,7 @@ Estructura indefinible
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/escher-lsd.eps
+	filename ../clipart/3D-structure-distort.pdf
 	width 45col%
 	groupId distorsionadas
 
@@ -1068,7 +1073,7 @@ Estructura indefinible
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -1076,11 +1081,13 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Ornitorrinco"
+name "fig:A-star"
 
 \end_inset
 
-Ornitorrinco
+
+\lang english
+A star.
 \end_layout
 
 \end_inset
@@ -1090,7 +1097,7 @@ Ornitorrinco
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/platypus.eps
+	filename ../clipart/Star-structure.pdf
 	width 45col%
 	groupId distorsionadas
 
@@ -26039,6 +26046,70 @@ literal "true"
 \end_inset
 
 .
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+The options 
+\family sans
+Plural
+\family default
+ and 
+\family sans
+Capitalized
+\family default
+ are only available if you use the \SpecialChar LaTeX
+-package 
+\series bold
+refstyle
+\series default
+.
+ 
+\family sans
+Plural
+\family default
+ adds an 
+\emph on
+s
+\emph default
+ to the name, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+imagens
+\begin_inset Quotes erd
+\end_inset
+
+ and is therefore not useful for Spanish documents; 
+\family sans
+Capitalized
+\family default
+ outputs the name capitalized, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+Imagen
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -26050,6 +26121,53 @@ textual: imprime la leyenda de la referencia:
 \begin_inset CommandInset ref
 LatexCommand nameref
 reference "fig:Dos-imágenes-distorsionadas"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Label
+\begin_inset space ~
+\end_inset
+
+only: prints only the \SpecialChar LaTeX
+ label for the reference: 
+\lang spanish
+
+\begin_inset CommandInset ref
+LatexCommand labelonly
+reference "fig:Dos-imágenes-distorsionadas"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\lang english
+
+\begin_inset Newline newline
+\end_inset
+
+This allows to use the label for commands in \SpecialChar TeX
+ code.
+ With the option 
+\family sans
+No Prefix
+\family default
+ one can omit the prefix of the label name: 
+\lang spanish
+
+\begin_inset CommandInset ref
+LatexCommand labelonly
+reference "fig:Dos-imágenes-distorsionadas"
+plural "false"
+caps "false"
+noprefix "true"
 
 \end_inset
 
@@ -39285,6 +39403,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 today 
 \end_layout
@@ -46588,6 +46707,7 @@ literal "false"
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
+name "Índice"
 literal "false"
 
 \end_inset

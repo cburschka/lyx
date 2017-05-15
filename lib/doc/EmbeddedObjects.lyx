@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 543
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -226,6 +226,7 @@ graphicboxes
 \paragraph_separation skip
 \defskip medskip
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style english
 \dynamic_quotes 0
 \papercolumns 1
@@ -237,7 +238,6 @@ graphicboxes
 \html_css_as_file 0
 \html_be_strict false
 \author 227574939 "Kyttj"
-\author 424524441 "rgheck"
 \author 2047637253 "Guillaume Munch"
 \end_header
 
@@ -632,7 +632,7 @@ Figures ! Settings grouping
 \end_layout
 
 \begin_layout Standard
-This is an example image in EPS format
+This is an example image in PDF format
 \begin_inset Foot
 status collapsed
 
@@ -659,8 +659,7 @@ reference "sec:Image-Formats"
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename clipart/mobius.eps
-	scale 70
+	filename clipart/2D-intensity-plot.pdf
 	scaleBeforeRotation
 	rotateOrigin center
 
@@ -676,8 +675,7 @@ This is the same image like the one above but in draft mode:
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename clipart/mobius.eps
-	scale 70
+	filename clipart/2D-intensity-plot.pdf
 	draft
 	scaleBeforeRotation
 	rotateOrigin center
@@ -773,7 +771,7 @@ Figure
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:kill-plat"
+reference "fig:A-star-structure"
 
 \end_inset
 
@@ -784,7 +782,7 @@ reference "fig:kill-plat"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:escher"
+reference "fig:A-3D-object"
 
 \end_inset
 
@@ -812,7 +810,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename clipart/platypus.eps
+	filename clipart/Star-structure.pdf
 	width 50col%
 	scaleBeforeRotation
 	rotateOrigin center
@@ -828,11 +826,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:kill-plat"
+name "fig:A-star-structure"
 
 \end_inset
 
-A severely distorted platypus in a float.
+A star structure in a float.
 \end_layout
 
 \end_inset
@@ -857,12 +855,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:escher"
+name "fig:A-3D-object"
 
 \end_inset
 
-M.C.
- Escher on acid.
+A 3D object.
 \end_layout
 
 \end_inset
@@ -873,7 +870,7 @@ M.C.
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename clipart/escher-lsd.eps
+	filename clipart/3D-structure-distort.pdf
 	scale 80
 	scaleBeforeRotation
 	rotateOrigin center
@@ -905,14 +902,14 @@ Figure
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:kill-plat"
+reference "fig:A-star-structure"
 
 \end_inset
 
  and 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:escher"
+reference "fig:A-3D-object"
 
 \end_inset
 
@@ -1008,14 +1005,14 @@ reference "fig:Two-distorted-images"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Undefinable-structure"
+reference "fig:Pink-object"
 
 \end_inset
 
  and 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:A-Platypus"
+reference "fig:A-star"
 
 \end_inset
 
@@ -1044,11 +1041,11 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Undefinable-structure"
+name "fig:Pink-object"
 
 \end_inset
 
-Undefinable structure.
+Pink object.
 \end_layout
 
 \end_inset
@@ -1058,7 +1055,7 @@ Undefinable structure.
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename clipart/escher-lsd.eps
+	filename clipart/3D-structure-distort.pdf
 	width 45col%
 	scaleBeforeRotation
 	groupId distorted
@@ -1086,11 +1083,11 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:A-Platypus"
+name "fig:A-star"
 
 \end_inset
 
-A Platypus.
+A star.
 \end_layout
 
 \end_inset
@@ -1100,7 +1097,7 @@ A Platypus.
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename clipart/platypus.eps
+	filename clipart/Star-structure.pdf
 	width 45col%
 	scaleBeforeRotation
 	groupId distorted
@@ -26261,7 +26258,7 @@ newref
 \series default
  (refstyle) to the preamble of the document.
  For example redefining all references to figures (which have the label
- shortcut 
+ prefix 
 \begin_inset Quotes eld
 \end_inset
 
@@ -26299,20 +26296,85 @@ literal "true"
 \end_inset
 
 .
-\change_inserted 424524441 1483414725
-
 \begin_inset Newline newline
 \end_inset
 
-The `Plural' and `Capitalized' options will be available with formatted
- references only if you are using the 
+The options 
+\family sans
+Plural
+\family default
+ and 
+\family sans
+Capitalized
+\family default
+ are only available if you use the \SpecialChar LaTeX
+-package 
 \series bold
 refstyle
 \series default
- package.
- See its documentation, again, for more information.
-\change_unchanged
+.
+ 
+\family sans
+Plural
+\family default
+ adds an 
+\emph on
+s
+\emph default
+ to the name, e.
+\begin_inset space \thinspace{}
+\end_inset
 
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+figures
+\begin_inset Quotes erd
+\end_inset
+
+; 
+\family sans
+Capitalized
+\family default
+ outputs the name capitalized, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+Figure
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Both options can be combined to get e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+Figures
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -26328,49 +26390,44 @@ reference "fig:Two-distorted-images"
 \end_inset
 
 
-\change_inserted 424524441 1483414735
-
 \end_layout
 
 \begin_layout Description
-
-\change_inserted 424524441 1483817911
 Label
 \begin_inset space ~
 \end_inset
 
 only: prints only the \SpecialChar LaTeX
- label for the reference.
- This allows for customization, using ERT, if you want to issue a command
- that LyX does not support.
- If you are using 
-\series bold
-refstyle
-\series default
-, then you may want to use the 
-\begin_inset Quotes eld
+ label for the reference: 
+\begin_inset CommandInset ref
+LatexCommand labelonly
+reference "fig:Two-distorted-images"
+plural "false"
+caps "false"
+noprefix "false"
+
 \end_inset
 
-No prefix
-\begin_inset Quotes erd
+
+\begin_inset Newline newline
 \end_inset
 
- option, which will output only the part of the reference following the
- 
-\begin_inset Quotes eld
+This allows to use the label for commands in \SpecialChar TeX
+ code.
+ With the option 
+\family sans
+No Prefix
+\family default
+ one can omit the prefix of the label name: 
+\begin_inset CommandInset ref
+LatexCommand labelonly
+reference "fig:Two-distorted-images"
+plural "false"
+caps "false"
+noprefix "true"
+
 \end_inset
 
-:
-\begin_inset Quotes erd
-\end_inset
-
- separator.
- This is the form needed for, e.g., 
-\series bold
-refstyle
-\series default
-'s range commands.
-\change_unchanged
 
 \end_layout
 

@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 543
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -232,7 +232,9 @@ graphicboxes
 \paragraph_separation skip
 \defskip medskip
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style swiss
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -716,7 +718,7 @@ La liste des groupes n'apparaît que si au moins un groupe a été défini (N.d.
 \end_layout
 
 \begin_layout Standard
-Voici un exemple d'image au format EPS
+Voici un exemple d'image au format PDF
 \begin_inset Foot
 status collapsed
 
@@ -744,8 +746,7 @@ nt:
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../clipart/mobius.eps
-	scale 70
+	filename ../clipart/2D-intensity-plot.pdf
 	scaleBeforeRotation
 	rotateOrigin center
 
@@ -761,8 +762,7 @@ Et voici la même image mais en mode brouillon:
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../clipart/mobius.eps
-	scale 70
+	filename ../clipart/2D-intensity-plot.pdf
 	draft
 	scaleBeforeRotation
 	rotateOrigin center
@@ -856,7 +856,7 @@ Figure
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:kill-plat"
+reference "fig:A-star-structure"
 
 \end_inset
 
@@ -867,7 +867,7 @@ reference "fig:kill-plat"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:escher"
+reference "fig:A-3D-object"
 
 \end_inset
 
@@ -896,7 +896,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../clipart/platypus.eps
+	filename ../clipart/Star-structure.pdf
 	width 50col%
 	scaleBeforeRotation
 	rotateOrigin center
@@ -912,11 +912,13 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:kill-plat"
+name "fig:A-star-structure"
 
 \end_inset
 
-Un ornithorynque sévèrement déformé dans un flottant de figure.
+
+\lang english
+A star structure in a float.
 \end_layout
 
 \end_inset
@@ -941,12 +943,13 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:escher"
+name "fig:A-3D-object"
 
 \end_inset
 
-M.C.
- Escher sous LSD.
+
+\lang english
+A 3D object.
 \end_layout
 
 \end_inset
@@ -957,7 +960,7 @@ M.C.
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../clipart/escher-lsd.eps
+	filename ../clipart/3D-structure-distort.pdf
 	scale 80
 	scaleBeforeRotation
 	rotateOrigin center
@@ -989,14 +992,14 @@ Les figure
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:kill-plat"
+reference "fig:A-star-structure"
 
 \end_inset
 
  et 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:escher"
+reference "fig:A-3D-object"
 
 \end_inset
 
@@ -1092,14 +1095,14 @@ reference "fig:Deux-images-déformées"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Structure-indéfinissable"
+reference "fig:Pink-object"
 
 \end_inset
 
  et 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Un-ornithorynque"
+reference "fig:A-star"
 
 \end_inset
 
@@ -1128,11 +1131,13 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Structure-indéfinissable"
+name "fig:Pink-object"
 
 \end_inset
 
-Structure indéfinissable
+
+\lang english
+Pink object.
 \end_layout
 
 \end_inset
@@ -1142,7 +1147,7 @@ Structure indéfinissable
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/escher-lsd.eps
+	filename ../clipart/3D-structure-distort.pdf
 	width 45col%
 	scaleBeforeRotation
 	groupId Déformés
@@ -1170,11 +1175,13 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Un-ornithorynque"
+name "fig:A-star"
 
 \end_inset
 
-Un ornithorynque
+
+\lang english
+A star.
 \end_layout
 
 \end_inset
@@ -1184,7 +1191,7 @@ Un ornithorynque
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/platypus.eps
+	filename ../clipart/Star-structure.pdf
 	width 45col%
 	scaleBeforeRotation
 	groupId Déformés
@@ -26721,6 +26728,70 @@ literal "true"
 \end_inset
 
 .
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+The options 
+\family sans
+Plural
+\family default
+ and 
+\family sans
+Capitalized
+\family default
+ are only available if you use the \SpecialChar LaTeX
+-package 
+\series bold
+refstyle
+\series default
+.
+ 
+\family sans
+Plural
+\family default
+ adds an 
+\emph on
+s
+\emph default
+ to the name, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+tableaus
+\begin_inset Quotes erd
+\end_inset
+
+ and is therefore not useful for French documents; 
+\family sans
+Capitalized
+\family default
+ outputs the name capitalized, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset Quotes eld
+\end_inset
+
+Tableau
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -26736,6 +26807,53 @@ textuelle: affiche la légende de la référence
 \begin_inset CommandInset ref
 LatexCommand nameref
 reference "fig:Deux-images-déformées"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Label
+\begin_inset space ~
+\end_inset
+
+only: prints only the \SpecialChar LaTeX
+ label for the reference: 
+\lang french
+
+\begin_inset CommandInset ref
+LatexCommand labelonly
+reference "fig:Deux-images-déformées"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\lang english
+
+\begin_inset Newline newline
+\end_inset
+
+This allows to use the label for commands in \SpecialChar TeX
+ code.
+ With the option 
+\family sans
+No Prefix
+\family default
+ one can omit the prefix of the label name: 
+\lang french
+
+\begin_inset CommandInset ref
+LatexCommand labelonly
+reference "fig:Deux-images-déformées"
+plural "false"
+caps "false"
+noprefix "true"
 
 \end_inset
 
@@ -40253,6 +40371,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 today 
 \end_layout
@@ -47985,6 +48104,7 @@ literal "false"
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
+name "Index"
 literal "false"
 
 \end_inset

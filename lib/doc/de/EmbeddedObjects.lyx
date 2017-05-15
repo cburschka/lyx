@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 543
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -218,7 +218,7 @@ graphicboxes
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 0
+\use_refstyle 1
 \notefontcolor #0000ff
 \index Stichwortverzeichnis
 \shortcut idx
@@ -229,7 +229,9 @@ graphicboxes
 \paragraph_separation skip
 \defskip medskip
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style german
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -637,7 +639,7 @@ die Bildgröße für eine Reihe von Bildern ändern, ohne dies bei jedem einzeln
 \end_layout
 
 \begin_layout Standard
-Hier ist eine zentrierte EPS-Abbildung
+Hier ist eine zentrierte PDF-Abbildung
 \begin_inset Foot
 status collapsed
 
@@ -664,8 +666,7 @@ reference "abs:Bildformate"
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../clipart/mobius.eps
-	scale 70
+	filename ../clipart/2D-intensity-plot.pdf
 	scaleBeforeRotation
 	rotateOrigin center
 
@@ -682,8 +683,7 @@ Hier ist dieselbe Abbildung, aber im Entwurfsmodus gedruckt:
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../clipart/mobius.eps
-	scale 70
+	filename ../clipart/2D-intensity-plot.pdf
 	draft
 	scaleBeforeRotation
 	rotateOrigin center
@@ -774,7 +774,7 @@ Nr:
  können Sie dann eine Abbildung wie 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "abb:kill-plat"
+reference "fig:Stern-in-einem"
 
 \end_inset
 
@@ -785,7 +785,7 @@ reference "abb:kill-plat"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "abb:escher"
+reference "fig:Ein-3D-Objekt"
 
 \end_inset
 
@@ -813,7 +813,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../clipart/platypus.eps
+	filename ../clipart/Star-structure.pdf
 	width 50col%
 	scaleBeforeRotation
 	rotateOrigin center
@@ -829,11 +829,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "abb:kill-plat"
+name "fig:Stern-in-einem"
 
 \end_inset
 
-Platypus in einem Gleitobjekt
+Stern in einem Gleitobjekt.
 \end_layout
 
 \end_inset
@@ -858,12 +858,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "abb:escher"
+name "fig:Ein-3D-Objekt"
 
 \end_inset
 
-M.C.
- Escher
+Ein 3D-Objekt.
 \end_layout
 
 \end_inset
@@ -874,7 +873,7 @@ M.C.
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../clipart/escher-lsd.eps
+	filename ../clipart/3D-structure-distort.pdf
 	scale 80
 	scaleBeforeRotation
 	rotateOrigin center
@@ -906,14 +905,14 @@ Abbildung
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "abb:kill-plat"
+reference "fig:Stern-in-einem"
 
 \end_inset
 
  und 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "abb:escher"
+reference "fig:Ein-3D-Objekt"
 
 \end_inset
 
@@ -988,7 +987,7 @@ Normalerweise wird eine Gleitabbildung nur aus einem Bild bestehen, aber
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "abb:Zwei-Teilabbildungen"
+reference "fig:Zwei-Teilabbildungen"
 
 \end_inset
 
@@ -1002,14 +1001,14 @@ reference "abb:Zwei-Teilabbildungen"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "abb:Undefinierbar"
+reference "fig:Pinkes-Objekt"
 
 \end_inset
 
  und 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "abb:Ein-Schnabeltier"
+reference "fig:Ein-Stern"
 
 \end_inset
 
@@ -1038,11 +1037,11 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "abb:Undefinierbar"
+name "fig:Pinkes-Objekt"
 
 \end_inset
 
-Undefinierbar
+Pinkes Objekt.
 \end_layout
 
 \end_inset
@@ -1052,8 +1051,8 @@ Undefinierbar
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/escher-lsd.eps
-	width 35col%
+	filename ../clipart/3D-structure-distort.pdf
+	width 45col%
 	scaleBeforeRotation
 	groupId Teilabbildung
 
@@ -1080,11 +1079,11 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "abb:Ein-Schnabeltier"
+name "fig:Ein-Stern"
 
 \end_inset
 
-Ein Schnabeltier
+Ein Stern.
 \end_layout
 
 \end_inset
@@ -1094,8 +1093,8 @@ Ein Schnabeltier
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/platypus.eps
-	width 35col%
+	filename ../clipart/Star-structure.pdf
+	width 45col%
 	scaleBeforeRotation
 	groupId Teilabbildung
 
@@ -1119,7 +1118,7 @@ Ein Schnabeltier
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "abb:Zwei-Teilabbildungen"
+name "fig:Zwei-Teilabbildungen"
 
 \end_inset
 
@@ -26212,7 +26211,7 @@ Es gibt sechs verschiedene Querverweisstile:
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "abb:Zwei-Teilabbildungen"
+reference "fig:Zwei-Teilabbildungen"
 
 \end_inset
 
@@ -26248,7 +26247,7 @@ reference "eq:Wgn"
 
 \begin_inset CommandInset ref
 LatexCommand pageref
-reference "abb:Zwei-Teilabbildungen"
+reference "fig:Zwei-Teilabbildungen"
 
 \end_inset
 
@@ -26275,7 +26274,7 @@ auf Seite
  und die Seitennummer: 
 \begin_inset CommandInset ref
 LatexCommand vpageref
-reference "abb:Zwei-Teilabbildungen"
+reference "fig:Zwei-Teilabbildungen"
 
 \end_inset
 
@@ -26306,7 +26305,7 @@ auf Seite
 , und die Seitennummer: 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "abb:Zwei-Teilabbildungen"
+reference "fig:Zwei-Teilabbildungen"
 
 \end_inset
 
@@ -26371,7 +26370,7 @@ status collapsed
 \begin_inset Newline newline
 \end_inset
 
-Sie können duch setzen der Option 
+Sie können durch setzen der Option 
 \family sans
 Verwende refstyle (nicht prettyref) für Querverweise
 \family default
@@ -26442,13 +26441,112 @@ literal "true"
 \end_inset
 
 .
+\begin_inset Newline newline
+\end_inset
+
+Die Optionen 
+\family sans
+Plural
+\family default
+ und 
+\family sans
+Großschreibung
+\family default
+ sind nur verfügbar, wenn Sie das \SpecialChar LaTeX
+-Paket 
+\series bold
+refstyle
+\series default
+ verwenden.
+ Beide Optionen sind für deutsche Text nicht nützlich, denn 
+\family sans
+Plural
+\family default
+ fügt ein 
+\emph on
+s
+\emph default
+ an den Namen an, z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Abbildungs
+\begin_inset Quotes grd
+\end_inset
+
+ und 
+\family sans
+Großschreibung
+\family default
+ gibt den Namen großgeschrieben aus, z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Abbildung
+\begin_inset Quotes grd
+\end_inset
+
+, was aber bereits die Voreinstellung ist.
 \end_layout
 
 \begin_layout Description
 Textverweis: druckt die Beschriftung oder den Namen der Referenz: 
 \begin_inset CommandInset ref
 LatexCommand nameref
-reference "abb:Zwei-Teilabbildungen"
+reference "fig:Zwei-Teilabbildungen"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+Nur
+\begin_inset space ~
+\end_inset
+
+Marke: gibt nur die \SpecialChar LaTeX
+-Marke der Referenz aus: 
+\begin_inset CommandInset ref
+LatexCommand labelonly
+reference "fig:Zwei-Teilabbildungen"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Damit kann man die Marke für Befehle im \SpecialChar TeX
+-Code verwenden.
+ Mit der Option 
+\family sans
+Ohne
+\begin_inset space ~
+\end_inset
+
+Präfix
+\family default
+ kann der Präfix des Markennamens weggelassen werden: 
+\begin_inset CommandInset ref
+LatexCommand labelonly
+reference "fig:Zwei-Teilabbildungen"
+plural "false"
+caps "false"
+noprefix "true"
 
 \end_inset
 
@@ -39659,6 +39757,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
+
 \backslash
 today 
 \end_layout
@@ -47243,6 +47342,7 @@ literal "false"
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
+name "Stichwortverzeichnis"
 literal "false"
 
 \end_inset

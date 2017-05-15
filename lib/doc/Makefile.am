@@ -28,6 +28,8 @@ dist_bibliodoc_DATA = \
 
 clipartdocdir = $(docdir)/clipart
 dist_clipartdoc_DATA = \
+	clipart/2D-intensity-plot.pdf \
+	clipart/3D-structure-distort.pdf \
 	clipart/Abstract.pdf \
 	clipart/BoxInsetDefault.png \
 	clipart/ChangesToolbar.png \
@@ -51,6 +53,7 @@ dist_clipartdoc_DATA = \
 	clipart/reference.png \
 	clipart/SpaceMarker.png \
 	clipart/StandardToolbar.png \
+	clipart/Star-structure.pdf \
 	clipart/SVG-Drawing.svg \
 	clipart/ToolbarEnvBox.png \
 	clipart/ViewToolbar.png \
