@@ -3781,15 +3781,21 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			if (!doc_buffer->isClean()) {
 				docstring const file =
 					makeDisplayPath(doc_buffer->absFileName(), 20);
-				docstring text = doc_buffer->notifiesExternalModification() ?
-					  _("Any changes will be lost. "
+				if (doc_buffer->notifiesExternalModification()) {
+					docstring text = _("The current version will be lost. "
 					    "Are you sure you want to load the version on disk "
-					    "of the document %1$s?")
-					: _("Any changes will be lost. "
+					    "of the document %1$s?");
+					ret = Alert::prompt(_("Reload saved document?"),
+					                    bformat(text, file), 1, 1,
+					                    _("&Reload"), _("&Cancel"));
+				} else {
+					docstring text = _("Any changes will be lost. "
 					    "Are you sure you want to revert to the saved version "
 					    "of the document %1$s?");
-				ret = Alert::prompt(_("Revert to file on disk?"),
-					bformat(text, file), 1, 1, _("&Revert"), _("&Cancel"));
+					ret = Alert::prompt(_("Revert to saved document?"),
+					                    bformat(text, file), 1, 1,
+					                    _("&Revert"), _("&Cancel"));
+				}
 			}
 
 			if (ret == 0) {
