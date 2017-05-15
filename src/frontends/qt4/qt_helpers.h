@@ -19,6 +19,8 @@
 #include "support/filetools.h"
 #include "qt_i18n.h"
 
+#include <list>
+
 #include <QHeaderView>
 
 class QComboBox;
