@@ -1146,11 +1146,12 @@ def revert_noprefix(document):
             i += 1
             continue
         k = find_token(document.body, "LatexCommand labelonly", i, j)
-        if k == -1:
-            i = j
-            continue
-        noprefix = get_bool_value(document.body, "noprefix", i, j)
+        noprefix = False
+        if k != -1:
+            noprefix = get_bool_value(document.body, "noprefix", i, j)
         if not noprefix:
+            # either it was not a labelonly command, or else noprefix was not set.
+            # in that case, we just delete the option.
             del_token(document.body, "noprefix", i, j)
             i = j
             continue
