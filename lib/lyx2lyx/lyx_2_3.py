@@ -2146,9 +2146,10 @@ def convert_mathnumberpos(document):
     " add the \\math_number_before tag "
     # check if the document uses the class option "leqno"
     k = find_token(document.header, "\\quotes_style", 0)
+    m = find_token(document.header, "\\options", 0)
     regexp = re.compile(r'^.*leqno.*')
     i = find_re(document.header, regexp, 0)
-    if i != -1:
+    if i != -1 and i == m:
         document.header.insert(k, "\\math_number_before 1")
         # delete the found option
         document.header[i] = document.header[i].replace(",leqno", "")
@@ -2193,9 +2194,10 @@ def convert_mathnumberingname(document):
         document.header[i] = "\\math_numbering_side default"
     # check if the document uses the class option "reqno"
     k = find_token(document.header, "\\math_numbering_side", 0)
+    m = find_token(document.header, "\\options", 0)
     regexp = re.compile(r'^.*reqno.*')
     i = find_re(document.header, regexp, 0)
-    if i != -1:
+    if i != -1 and i == m:
         document.header[k] = "\\math_numbering_side right"
         # delete the found option
         document.header[i] = document.header[i].replace(",reqno", "")
