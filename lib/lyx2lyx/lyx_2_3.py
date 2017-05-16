@@ -2183,7 +2183,6 @@ def revert_mathnumberpos(document):
 
 def convert_mathnumberingname(document):
     " rename the \\math_number_before tag to \\math_numbering_side "
-    document.warning("Malformed LyX document: Missing '\\end_inset' of Float inset.")
     regexp = re.compile(r'(\\math_number_before 1)')
     i = find_re(document.header, regexp, 0)
     if i != -1:
