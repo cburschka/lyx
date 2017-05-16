@@ -159,8 +159,6 @@ sub readPatterns($)
 sub processLogFile($)
 {
   my ($log) = @_;
-  my $prevl = "\n";
-
   my $found;
   my $errors = 1;
   my @savedlines = ();
@@ -181,6 +179,11 @@ sub processLogFile($)
       }
       #print "Searching for \"$pat\"\n";
       $found = 0;
+      my $prevlines = () = $pat =~ /\\n/g; # Number of lines in pattern
+      my @prevl = ();
+      for (my $i = 0; $i <= $prevlines; $i++) {
+	push(@prevl, "\n");
+      }
       my @lines = ();
       if ($readsavedlines) {
 	# Last regex not found
@@ -200,13 +203,20 @@ sub processLogFile($)
 	  $l = <FL>;
 	}
 	last if (! $l);
-	my $check = $prevl . $l;
-	$prevl = $l;
+	for (my $i = 0; $i < $prevlines; $i++) {
+	  $prevl[$i] = $prevl[$i+1];
+	}
+	$prevl[$prevlines] = $l;
+	my $check = join("", @prevl);
 	$line++;
 	if ($check =~ /$pat/) {
-	  print "$line:\tfound \"$pat\"\n";
+	  my $fline = $line - $prevlines;
+	  print "$fline:\tfound \"$pat\"\n";
 	  $found = 1;
-	  $prevl = "\n";	# Don't search this line again
+	  # Do not search in already found area
+	  for (my $i = 0; $i <= $prevlines; $i++) {
+	    $prevl[$i] = "\n";
+	  }
 	  if ($readsavedlines) {
 	    @savedlines = @lines;
 	  }
