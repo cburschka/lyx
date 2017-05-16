@@ -212,10 +212,9 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 
 	// For polyglossia, switch language outside of environment, if possible.
 	if (par_lang != prev_par_lang) {
-		if (langOpenedAtThisLevel(state) &&
+		if ((!use_polyglossia || langOpenedAtThisLevel(state)) &&
 		    !lang_end_command.empty() &&
 		    prev_par_lang != doc_lang &&
-		    atSameLastLangSwitchDepth(state) &&
 		    !prev_par_lang.empty()) {
 			os << from_ascii(subst(
 				lang_end_command,
@@ -813,7 +812,7 @@ void TeXOnePar(Buffer const & buf,
 			                  && priorpar->getDepth() <= par.getDepth())
 		                  || priorpar->getDepth() < par.getDepth())))
 	{
-		if (langOpenedAtThisLevel(state) &&
+		if ((!use_polyglossia || langOpenedAtThisLevel(state)) &&
 		    !lang_end_command.empty() &&
 		    prev_lang != outer_lang &&
 		    !prev_lang.empty() &&
@@ -1111,7 +1110,8 @@ void TeXOnePar(Buffer const & buf,
 					if (use_polyglossia)
 						pushPolyglossiaLang(current_lang, localswitch);
 				}
-			} else if (langOpenedAtThisLevel(state) &&
+			} else if ((!use_polyglossia ||
+				    langOpenedAtThisLevel(state)) &&
 				   !par_lang.empty()) {
 				// If we are in an environment, we have to
 				// close the "outer" language afterwards
