@@ -1,0 +1,205 @@
+# Finding special latex/regexp chars: \
+#
+Lang sk_SK.utf8
+TestBegin test.lyx -dbg key,find > findadv-combined.loga.txt 2>&1
+CO: searchStrings
+CP: Key (queried) [action=buffer-begin][Ctrl+Home]
+# String to be checked
+KK: \\()[]{}%^#@?*.\[Return]
+KK: \\()[]{}%^#@?*.\[Return]
+KK: \\()[]{}%^#@?*.\[Return]
+KK: \\()[]{}%^#@?*.\[Return]
+KK: \\()[]{}%^#@?*.\[Return]
+KK: \\()[]{}%^#@?*.\[Return]
+KK: \\()[]{}%^#@?*.\[Return]
+KK: \\()[]{}%^#@?*.\[Return]
+KK: \Cs
+
+#
+# First tests with ignore format set
+# The tests are not separated by \[Home] in order to
+# be found at possibly different inset
+#
+
+#
+KK: \[Escape]\C\[Home]
+CP: Key (queried) [action=buffer-begin][Ctrl+Home]
+CN: Searching for '@'
+KK: \CF
+KK: \[Delete]
+KK: \Axregexp-mode\[Return]\\@\[Return]
+KK: \[Escape]
+CP: Escaped : '\@'
+CR: [pP]utting selection at .*idx: 0 par: 0 pos: 10\n with len: 1
+#
+CN: Searching for '('
+KK: \CF
+KK: \[Delete]
+KK: \Axregexp-mode\[Return]\\(\[Return]
+KK: \[Escape]
+CP: Escaped : '\('
+CP: Putting selection at .*idx: 0 par: 1 pos: 1\n with len: 1
+#
+CN: Searching for ')'
+KK: \CF
+KK: \[Delete]
+KK: \Axregexp-mode\[Return]\\)\[Return]
+KK: \[Escape]
+CP: Escaped : '\)'
+CP: Putting selection at .*idx: 0 par: 1 pos: 2\n with len: 1
+#
+CN: Searching for '\\'
+KK: \CF
+KK: \[Delete]
+KK: \Axregexp-mode\[Return]\\\\\[Return]
+KK: \[Escape]
+CP: Escaping: '\backslash\backslash'
+CP: Putting selection at .*idx: 0 par: 2 pos: 0\n with len: 1
+#
+CN: Searching for '%'
+KK: \CF
+KK: \[Delete]
+KK: \Axregexp-mode\[Return]%\[Return]
+KK: \[Escape]
+CP: Escaped : '%'
+CP: Putting selection at .*idx: 0 par: 2 pos: 7\n with len: 1
+#
+CN: Searching for '^'
+KK: \CF
+KK: \[Delete]
+KK: \Axregexp-mode\[Return]\\^\[Return]
+KK: \[Escape]
+CP: Escaped : '\^'
+CP: Putting selection at .*idx: 0 par: 2 pos: 8\n with len: 1
+#
+CN: Searching for '['
+KK: \CF
+KK: \[Delete]
+KK: \Axregexp-mode\[Return]\\[\[Return]
+KK: \[Escape]
+CP: Escaped : '\['
+CP: Putting selection at .*idx: 0 par: 3 pos: 3\n with len: 1
+#
+CN: Searching for ']'
+KK: \CF
+KK: \[Delete]
+KK: \Axregexp-mode\[Return]\\]\[Return]
+KK: \[Escape]
+CP: Escaped : '\]'
+CP: Putting selection at .*idx: 0 par: 3 pos: 4\n with len: 1
+#
+CN: Searching for '{'
+KK: \CF
+KK: \[Delete]
+KK: \Axregexp-mode\[Return]\\{\[Return]
+KK: \[Escape]
+CP: Escaping: '\backslash\{'
+CP: Putting selection at .*idx: 0 par: 3 pos: 5\n with len: 1
+#
+CN: Searching for '}'
+KK: \CF
+KK: \[Delete]
+KK: \Axregexp-mode\[Return]\\}\[Return]
+KK: \[Escape]
+CP: Escaping: '\backslash\}'
+CP: Putting selection at .*idx: 0 par: 3 pos: 6\n with len: 1
+
+
+
+CN: ..
+CN: Now tests with unchecked ignore format
+CN: ..
+#
+KK: \CF
+# Uncheck ignore format
+KK: \At\Ai\Ah
+KK: \[Escape]\C\[Home]
+CP: Key (queried) [action=buffer-begin][Ctrl+Home]
+
+#
+CN: Searching for '['
+KK: \CF
+KK: \[Delete]
+KK: \Axregexp-mode\[Return]\\[\[Return]
+KK: \[Escape]
+CP: Escaped : '\['
+CP: Putting selection at .*idx: 0 par: 0 pos: 3\n with len: 1
+#
+CN: Searching for '('
+KK: \CF
+KK: \[Delete]
+KK: \Axregexp-mode\[Return]\\(\[Return]
+KK: \[Escape]
+CP: Escaped : '\('
+CP: Putting selection at .*idx: 0 par: 1 pos: 1\n with len: 1
+#
+CN: Searching for ')'
+KK: \CF
+KK: \[Delete]
+KK: \Axregexp-mode\[Return]\\)\[Return]
+KK: \[Escape]
+CP: Escaped : '\)'
+CP: Putting selection at .*idx: 0 par: 1 pos: 2\n with len: 1
+#
+CN: Searching for '\\'
+KK: \CF
+KK: \[Delete]
+KK: \Axregexp-mode\[Return]\\\\\[Return]
+KK: \[Escape]
+CP: Escaped : '\\'
+CP: Putting selection at .*idx: 0 par: 2 pos: 0\n with len: 1
+#
+CN: Searching for '%'
+KK: \CF
+KK: \[Delete]
+KK: \Axregexp-mode\[Return]%\[Return]
+KK: \[Escape]
+CP: Escaped : '%'
+CP: Putting selection at .*idx: 0 par: 2 pos: 7\n with len: 1
+#
+CN: Searching for '^'
+KK: \CF
+KK: \[Delete]
+# Uncheck ignore format
+KK: \Axregexp-mode\[Return]\\^\[Return]
+KK: \[Escape]
+CP: Escaped : '\^'
+CP: Putting selection at .*idx: 0 par: 2 pos: 8\n with len: 1
+#
+CN: Searching for '{'
+KK: \CF
+KK: \[Delete]
+KK: \Axregexp-mode\[Return]\\{\[Return]
+KK: \[Escape]
+CP: Escaping: '\backslash\{'
+CP: Putting selection at .*idx: 0 par: 3 pos: 5\n with len: 1
+#
+CN: Searching for '}'
+KK: \CF
+KK: \[Delete]
+KK: \Axregexp-mode\[Return]\\}\[Return]
+KK: \[Escape]
+CP: Escaping: '\backslash\}'
+CP: Putting selection at .*idx: 0 par: 3 pos: 6\n with len: 1
+#
+CN: Searching for ']'
+KK: \CF
+KK: \[Delete]
+KK: \Axregexp-mode\[Return]\\]\[Return]
+KK: \[Escape]
+CP: Escaped : '\]'
+CP: Putting selection at .*idx: 0 par: 4 pos: 4\n with len: 1
+#
+CN: Searching for '@'
+KK: \CF
+KK: \[Delete]
+KK: \Axregexp-mode\[Return]\\@\[Return]
+KK: \[Escape]
+CP: Escaped : '\@'
+CP: Putting selection at .*idx: 0 par: 4 pos: 10\n with len: 1
+
+#
+TestEnd
+CC: 
+Assert searchPatterns.pl log=findadv-combined.loga.txt patterns=searchStrings
+#/usr2/src/lyx/lyx-git/development/autotests/searchPatterns.pl

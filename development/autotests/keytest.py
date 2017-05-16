@@ -155,6 +155,55 @@ class CommandSourceFromFile(CommandSource):
         self.i = self.i + 1
         return line
 
+class ControlFile:
+
+    def __init__(self):
+        self.control = re.compile(r'^(C[ONPRC]):\s+(.*)$')
+        self.cntrname = None
+        self.cntrfile = None
+
+    def open(self, filename):
+        self.cntrname = filename
+        self.cntrfile = open(filename, 'w')
+
+    def close(self):
+        if not self.cntrfile is None:
+            self.cntrfile.close()
+            self.cntrfile = None
+            self.cntrname = None
+
+    def addline(self, pat):
+        self.cntrfile.writelines(pat + "\n")
+
+    def getfname(self):
+        return self.cntrname
+
+    def dispatch(self, c):
+        m = self.control.match(c)
+        if not m:
+            return False
+        command = m.group(1)
+        text = m.group(2)
+        if command == "CO":
+            self.open(text);
+        elif command == "CC":
+            self.close()
+        else:
+            if self.cntrfile is None:
+                print("Controlfile not initialized")
+            else:
+                if command == "CN":
+                    self.addline("Comment: " + text)
+                elif command == "CP":
+                    self.addline("Simple: " + text)
+                elif command == "CR":
+                    self.addline("Regex: " + text)
+                else:
+                    print("Error")
+                    _exit(1)
+        return True
+
+
 def get_proc_pid(proc_name):
     pid=os.popen("pidof " + proc_name).read().rstrip()
     return pid
@@ -496,7 +545,7 @@ if not lyx_pid is None:
 write_commands = True
 failed = False
 lineempty = re.compile(r'^\s*$')
-
+marked = ControlFile()
 while not failed:
     #intr_system('echo -n LOADAVG:; cat /proc/loadavg')
     c = x.getCommand()
@@ -508,6 +557,8 @@ while not failed:
         continue
     outfile.writelines(c + '\n')
     outfile.flush()
+    if marked.dispatch(c):
+        continue
     if c[0] == '#':
         print("Ignoring comment line: " + c)
     elif c[0:9] == 'TestBegin':
@@ -588,6 +639,7 @@ while not failed:
         failed = failed or (result != 0)
         print("result=" + str(result) + ", failed=" + str(failed))
     elif c[0:15] == 'TestEndWithKill':
+        marked.close()
         cmd = c[16:].rstrip()
         if lyx_dead(lyx_pid):
             print("LyX instance not found because of crash or assert !\n")
@@ -608,6 +660,7 @@ while not failed:
             else:
                 print("failed=" + str(failed))
     elif c[0:7] == 'TestEnd':
+        marked.close()
         #lyx_other_window_name = None
         if lyx_dead(lyx_pid):
             print("LyX instance not found because of crash or assert !\n")

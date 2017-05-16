@@ -14,8 +14,9 @@ use warnings;
 
 sub sexit($);			# Print synax and exit
 sub readPatterns($);		# Process patterns file
-sub processLogFile($);
-sub convertPattern($);		# escape some chars, (e.g. ']' ==> '\]')
+sub processLogFile($);		# 
+sub convertPattern($);		# check for regex, comment
+sub convertSimplePattern($);  # escape some chars, (e.g. ']' ==> '\]')
 
 my %options = (
   "log" => undef,
@@ -86,15 +87,42 @@ sub sexit($)
 
 sub convertPattern($)
 {
+  my ($pat) = @_;
+  if ($pat eq "") {
+    return("");
+  }
+  return $pat if ($pat =~ /^Comment:/);
+  if ($pat =~ s/^Regex:\s+//) {
+    # PassThrough variant
+    return($pat);
+  }
+  elsif ($pat =~ s/^Simple:\s+//) {
+    return convertSimplePattern($pat);
+  }
+  else {
+    # This should not happen.
+    return undef;
+  }
+}
+
+sub convertSimplePattern($)
+{
   # Convert all chars '[]()+'
   my ($pat) = @_;
   if ($pat eq "") {
     return("");
   }
-  if ($pat =~ /^(.*)([\[\]\(\)\+\^\{\}])(.*)$/) {
+  if ($pat =~ /^(.*)(\\n)(.*)$/) {
+    # do not convert '\n'
     my ($first, $found, $third) = ($1, $2, $3);
-    $first = &convertPattern($first);
-    $third = &convertPattern($third);
+    $first = &convertSimplePattern($first);
+    $third = &convertSimplePattern($third);
+    return("$first$found$third");
+  }
+  if ($pat =~ /^(.*)([\[\]\(\)\+\^\{\}\\])(.*)$/) {
+    my ($first, $found, $third) = ($1, $2, $3);
+    $first = &convertSimplePattern($first);
+    $third = &convertSimplePattern($third);
     return($first . "\\$found" . $third);
   }
   # Substitue white spaces
@@ -106,13 +134,25 @@ sub readPatterns($)
 {
   my ($patfile) = @_;
 
+  my $errors = 0;
   if (open(FP, $patfile)) {
+    my $line = 0;
     while (my $p = <FP>) {
+      $line++;
       chomp($p);
       $p = &convertPattern($p);
-      push(@patterns, $p);
+      if (defined($p)) {
+	push(@patterns, $p) if ($p ne "");
+      }
+      else {
+	print "Wrong entry in patterns-file at line $line\n";
+	$errors++;
+      }
     }
     close(FP);
+  }
+  if ($errors > 0) {
+    exit(1);
   }
 }
 
@@ -126,10 +166,19 @@ sub processLogFile($)
   my @savedlines = ();
   my $readsavedlines = 0;
   my $savedline;
+  my $comment = "";
   if (open(FL, $log)) {
     $errors = 0;
     my $line = 0;
     for my $pat (@patterns) {
+      if ($pat =~ /^Comment:\s*(.*)$/) {
+	$comment = $1;
+	$comment =~ s/\s+$//;
+	if ($comment ne "") {
+	  print "............ $comment ..........\n";
+	}
+	next;
+      }
       #print "Searching for \"$pat\"\n";
       $found = 0;
       my @lines = ();
