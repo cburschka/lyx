@@ -212,7 +212,8 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 
 	// For polyglossia, switch language outside of environment, if possible.
 	if (par_lang != prev_par_lang) {
-		if (!lang_end_command.empty() &&
+		if (langOpenedAtThisLevel(state) &&
+		    !lang_end_command.empty() &&
 		    prev_par_lang != doc_lang &&
 		    atSameLastLangSwitchDepth(state) &&
 		    !prev_par_lang.empty()) {
@@ -812,7 +813,8 @@ void TeXOnePar(Buffer const & buf,
 			                  && priorpar->getDepth() <= par.getDepth())
 		                  || priorpar->getDepth() < par.getDepth())))
 	{
-		if (!lang_end_command.empty() &&
+		if (langOpenedAtThisLevel(state) &&
+		    !lang_end_command.empty() &&
 		    prev_lang != outer_lang &&
 		    !prev_lang.empty() &&
 		    (!use_polyglossia || !style.isEnvironment()))
@@ -1109,8 +1111,10 @@ void TeXOnePar(Buffer const & buf,
 					if (use_polyglossia)
 						pushPolyglossiaLang(current_lang, localswitch);
 				}
-			} else if (!par_lang.empty()) {
-				// If we are in an environment, we have to close the "outer" language afterwards
+			} else if (langOpenedAtThisLevel(state) &&
+				   !par_lang.empty()) {
+				// If we are in an environment, we have to
+				// close the "outer" language afterwards
 				string const & pol_lang = openPolyglossiaLang(state);
 				if (!style.isEnvironment()
 				    || (close_lang_switch
