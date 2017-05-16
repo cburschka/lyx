@@ -26,6 +26,12 @@ key_delay = ''
 # Ignore status == "dead" if this is set. Used at the last commands after "\Cq"
 dead_expected = False
 
+def die(excode, text):
+    if text != "":
+        print(text)
+    sys.stdout.flush()
+    os._exit(excode)
+
 class CommandSource:
 
     def __init__(self):
@@ -64,7 +70,7 @@ class CommandSource:
         if self.count % 200 == 0:
             return 'RaiseLyx'
         elif self.count > self.count_max:
-            os._exit(0)
+            die(0, "")
         else:
             keystr = ''
             for k in range(1, 2):
@@ -143,7 +149,7 @@ class CommandSourceFromFile(CommandSource):
 
     def getCommand(self):
         if self.count >= self.max_count:
-            os._exit(0)
+            die(0, "")
         if self.i >= len(self.lines):
             self.loops = self.loops + 1
             if self.loops >= int(max_loops):
@@ -158,7 +164,7 @@ class CommandSourceFromFile(CommandSource):
 class ControlFile:
 
     def __init__(self):
-        self.control = re.compile(r'^(C[ONPRC]):\s+(.*)$')
+        self.control = re.compile(r'^(C[ONPRC]):\s*(.*)$')
         self.cntrname = None
         self.cntrfile = None
 
@@ -200,7 +206,7 @@ class ControlFile:
                     self.addline("Regex: " + text)
                 else:
                     print("Error")
-                    _exit(1)
+                    die(1,"208")
         return True
 
 
@@ -312,21 +318,16 @@ def wait_until_lyx_sleeping(LYX_PID):
             return True
         if (status == "dead") or (status == "zombie"):
             printresstatus()
-            sys.stdout.flush()
             if dead_expected:
                 print('Lyx died while waiting for status == sleeping')
                 return False
             else:
-                print('Lyx is dead, exiting')
-                os._exit(1)
+                die(1,"Lyx is dead, exiting")
         if time.time() - before_secs > 180:
-            print('Killing due to freeze (KILL_FREEZE)')
-
             # Do profiling, but sysprof has no command line interface?
             # intr_system("killall -KILL lyx")
             printresstatus()
-            sys.stdout.flush()
-            os._exit(1)
+            die(1,"Killing due to freeze (KILL_FREEZE)")
         time.sleep(0.02)
     # Should be never reached
     print('Wait for sleeping ends unexpectedly')
@@ -436,8 +437,7 @@ def system_retry(num_retry, cmd):
         time.sleep(1)
     if ( rtn != 0 ):
         print("Command Failed: "+cmd)
-        print(" EXITING!\n")
-        os._exit(1)
+        die(1," EXITING!")
 
 def RaiseWindow():
     #intr_system("echo x-session-manager PID: $X_PID.")
@@ -623,10 +623,9 @@ while not failed:
         else:
             ##intr_system('killall lyx; sleep 2 ; killall -9 lyx')
             if lyx_pid is None:
-              print('No path /proc/xxxx/status, exiting')
+              die(1, 'No path /proc/xxxx/status, exiting')
             else:
-              print('No path /proc/' + lyx_pid + '/status, exiting')
-            os._exit(1)
+              die(1, 'No path /proc/' + lyx_pid + '/status, exiting')
     elif c[0:4] == 'KD: ':
         key_delay = c[4:].rstrip('\n')
         print('Setting DELAY to ' + key_delay)
@@ -677,6 +676,7 @@ while not failed:
             time.sleep(0.5)
             dead_expected = True
             is_sleeping = wait_until_lyx_sleeping(lyx_pid)
+            print("Leaved wait TestEnd")
             if is_sleeping:
                 print('wait_until_lyx_sleeping() indicated "sleeping"')
                 # For a short time lyx-status is 'sleeping', even if it is nearly dead.
@@ -752,8 +752,6 @@ while not failed:
 
 print("Test case terminated: ")
 if failed:
-    print("FAIL\n")
-    os._exit(1)
+    die(1,"FAIL")
 else:
-    print("Ok\n")
-    os._exit(0)
+    die(0, "Ok")
