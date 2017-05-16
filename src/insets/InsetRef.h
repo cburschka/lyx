@@ -63,7 +63,7 @@ public:
 	int docbook(odocstream &, OutputParams const &) const;
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
-	/// 
+	///
 	void toString(odocstream &) const;
 	///
 	void forOutliner(docstring &, size_t const, bool const) const;
@@ -88,13 +88,6 @@ public:
 	static bool isCompatibleCommand(std::string const & s);
 	//@}
 
-	//FIXME: private
-	/// \name Private functions inherited from InsetCommand class
-	//@{
-	///
-	docstring screenLabel() const { return screen_label_; }
-	//@}
-
 protected:
 	///
 	InsetRef(InsetRef const &);
@@ -105,7 +98,13 @@ private:
 	///
 	Inset * clone() const { return new InsetRef(*this); }
 	//@}
-	
+
+	/// \name Private functions inherited from InsetCommand class
+	//@{
+	///
+	docstring screenLabel() const;
+	//@}
+
 	/// \return the label with things that need to be escaped escaped
 	docstring getEscapedLabel(OutputParams const &) const;
 	/// \return the command for a formatted reference to ref
@@ -117,6 +116,8 @@ private:
 
 	///
 	mutable docstring screen_label_;
+	///
+	mutable bool broken_;
 	///
 	mutable docstring tooltip_;
 };

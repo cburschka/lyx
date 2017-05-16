@@ -339,19 +339,27 @@ void InsetRef::updateBuffer(ParIterator const & it, UpdateType)
 			}
 		}
 	}
-	
+
 	if (!buffer().params().isLatex() && !getParam("name").empty()) {
 		label += "||";
 		label += getParam("name");
 	}
-	
+
 	unsigned int const maxLabelChars = 24;
 	if (label.size() > maxLabelChars) {
 		tooltip_ = label;
 		support::truncateWithEllipsis(label, maxLabelChars);
 	} else
 		tooltip_ = from_ascii("");
+
 	screen_label_ = label;
+	broken_ = false;
+}
+
+
+docstring InsetRef::screenLabel() const
+{
+	return (broken_ ? _("BROKEN: ") : docstring()) + screen_label_;
 }
 
 
@@ -364,9 +372,10 @@ void InsetRef::addToToc(DocIterator const & cpit, bool output_active,
 		return;
 
 	// It seems that this reference does not point to any valid label.
-	screen_label_ = _("BROKEN: ") + screen_label_;
+
+	broken_ = true;
 	shared_ptr<Toc> toc = backend.toc("label");
-	toc->push_back(TocItem(cpit, 0, screen_label_, output_active));
+	toc->push_back(TocItem(cpit, 0, screenLabel(), output_active));
 }
 
 
@@ -435,7 +444,7 @@ string const & InsetRef::getName(int type)
 
 docstring InsetRef::getTOCString() const 
 {
-	return tooltip_.empty() ? screen_label_ : tooltip_;
+	return tooltip_.empty() ? screenLabel() : tooltip_;
 }
 
 } // namespace lyx
