@@ -1167,6 +1167,9 @@ void InsetInclude::addToToc(DocIterator const & cpit, bool output_active,
 		if (!childbuffer)
 			return;
 
+		// Update the child's tocBackend. The outliner uses the master's, but
+		// the navigation menu uses the child's.
+		childbuffer->tocBackend().update(output_active, utype);
 		// Include Tocs from children
 		childbuffer->inset().addToToc(DocIterator(), output_active, utype,
 		                              backend);

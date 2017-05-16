@@ -4763,16 +4763,17 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 	ParIterator parit = cbuf.par_iterator_begin();
 	updateBuffer(parit, utype);
 
-	/// FIXME: Perf
-	/// Update the tocBackend for any buffer. The outliner uses the master's,
-	/// and the navigation menu uses the child's.
-	cbuf.tocBackend().update(true, utype);
-
 	if (master != this)
+		// If this document has siblings, then update the TocBackend later. The
+		// reason is to ensure that later siblings are up to date when e.g. the
+		// broken or not status of references is computed. The update is called
+		// in InsetInclude::addToToc.
 		return;
 
 	d->bibinfo_cache_valid_ = true;
 	d->cite_labels_valid_ = true;
+	/// FIXME: Perf
+	cbuf.tocBackend().update(true, utype);
 	if (scope == UpdateMaster)
 		cbuf.structureChanged();
 }
