@@ -2,7 +2,7 @@
 #
 Lang sk_SK.utf8
 TestBegin test.lyx -dbg key,find > findadv-combined.loga.txt 2>&1
-CO: searchStrings
+CO: findadv-combined.ctrl
 CP: Key (queried) [action=buffer-begin][Ctrl+Home]
 # String to be checked
 KK: \\()[]{}%^#@?*.\[Return]
@@ -201,5 +201,4 @@ CP: Putting selection at .*idx: 0 par: 4 pos: 10\n with len: 1
 #
 TestEnd
 CC: 
-Assert searchPatterns.pl log=findadv-combined.loga.txt patterns=searchStrings
-#/usr2/src/lyx/lyx-git/development/autotests/searchPatterns.pl
+Assert searchPatterns.pl log=findadv-combined.loga.txt patterns=findadv-combined.ctrl

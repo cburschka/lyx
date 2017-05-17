@@ -3,6 +3,8 @@
 #
 Lang sk_SK.utf8
 TestBegin test.lyx -dbg key,find > findadv-16.loga.txt 2>&1
+CO: findadv-16.ctrl
+CN: Part 1
 KK: \CM\Axmath-mutate gather\[Return]
 KK: x^2 +x^2\C\[Home]
 KK: \Cs
@@ -11,17 +13,17 @@ KK: \CF
 KK: \At\Ai\Ah
 KK: \CM\Axmath-mutate gather\[Return]
 KK: x^2\[Return]
-TestEnd
-Lang C
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 0\n with len: 1' findadv-16.loga.txt
+CP: Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 0\n with len: 1
 
-Lang sk_SK.utf8
-TestBegin test.lyx -dbg key,find > findadv-16.logb.txt 2>&1
+#
+CN: Part 2
+KK: \[Escape]\C\[Home]
 KK: \CF
-# Uncheck ignore format
-KK: \At\Ai\Ah
+KK: \[Delete]
 KK: \CM\Axmath-mutate gather\[Return]
 KK: x^2\[Return]\[Return]
 TestEnd
 Lang C
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 2\n with len: 1' findadv-16.logb.txt
+CP: Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 2\n with len: 1
+Assert searchPatterns.pl log=findadv-16.loga.txt patterns=findadv-16.ctrl
+

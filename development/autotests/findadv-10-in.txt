@@ -3,6 +3,8 @@
 
 Lang sk_SK.utf8
 TestBegin test.lyx -dbg key,find > findadv-10.loga.txt 2>&1
+CO: findadv-10.ctrl
+CN: Part 1
 KK: This is LyX,\[Return]
 KK: a WYSIWYG LaTeX editor.\C\[Home]
 KK: \Cs
@@ -10,16 +12,17 @@ KK: \CF
 # Uncheck ignore format (depends on IT language)
 KK: \At\Ai\Ah
 KK: LyX\[Return]
-TestEnd
-Lang C
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 8\n with len: 3' findadv-10.loga.txt
-
-Lang sk_SK.utf8
-TestBegin test.lyx -dbg key,find > findadv-10.logb.txt 2>&1
+CP: Putting selection at .*idx: 0 par: 0 pos: 8\n with len: 3
+#
+CN: Part 2
+CP: Key (queried) [action=buffer-begin][Ctrl+Home]
+KK: \[Escape]\C\[Home]
 KK: \CF
+KK: \[Delete]
 # Uncheck ignore format
-KK: \At\Ai\Ah
+#KK: \At\Ai\Ah
 KK: LaTeX\[Return]
+CP: Putting selection at .*idx: 0 par: 1 pos: 10\n with len: 5
 TestEnd
 Lang C
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 1 pos: 10\n with len: 5' findadv-10.logb.txt
+Assert searchPatterns.pl log=findadv-10.loga.txt patterns=findadv-10.ctrl

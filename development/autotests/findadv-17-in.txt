@@ -2,20 +2,22 @@
 #
 Lang it_IT.utf8
 TestBegin test.lyx -dbg key,find > findadv-17.loga.txt 2>&1
+CO: findadv-17.ctrl
+CN: Part 1
 KK: \Cm\\alpha\\beta\\alpha \C\[Home]
 KK: \Cs
 KK: \CF
 KK: \Cm\\beta\\alpha \[Return]
-TestEnd
-Lang C
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 1\n with len: 2' findadv-17.loga.txt
+CP: Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 1\n with len: 2
 
-Lang sk_SK.utf8
-TestBegin test.lyx -dbg key,find > findadv-17.logb.txt 2>&1
+#
+CN: Part 2
+KK: \[Escape]\C\[Home]
 KK: \CF
+KK: \[Delete]
 # Uncheck ignore format
 KK: \At\Ai\Ah
 KK: \Cm\\beta\\alpha \[Return]
+CP: Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 1\n with len: 2
 TestEnd
-Lang C
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 1\n with len: 2' findadv-17.logb.txt
+Assert searchPatterns.pl log=findadv-17.loga.txt patterns=findadv-17.ctrl

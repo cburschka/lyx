@@ -2,6 +2,9 @@
 
 Lang sk_SK.utf8
 TestBegin test.lyx -dbg key,find > findadv-08.loga.txt 2>&1
+CO: findadv-08.ctrl
+CN: Started findadv-08 1
+CP: Key (queried) [action=buffer-begin][Ctrl+Home]
 KK: Nel mezzo del cammin di nostra vita\[Return]
 KK: mi ritrovai per una selva oscura\C\[Home]
 KK: \Axbuffer-write\[Return]
@@ -9,13 +12,11 @@ KK: \Axdialog-show findreplaceadv\[Return]
 KK: o
 KK: \Axregexp-mode\[Return]
 KK: .* a\[Return]
-TestEnd
-Lang C
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 8\n with len: 8' findadv-08.loga.txt
-
-Lang sk_SK.utf8
-TestBegin test.lyx -dbg key,find > findadv-08.logb.txt 2>&1
-KK: \C\[Home]\Axdialog-show findreplaceadv\[Return]
+CP: Putting selection at .*idx: 0 par: 0 pos: 8\n with len: 8
+#
+CN: Started findadv-08 2
+KK: \[Escape]\C\[Home]\Axdialog-show findreplaceadv\[Return]
+KK: \[Delete]
 KK: o
 KK: \Axregexp-mode\[Return]
 KK: [\\w]* a
@@ -25,17 +26,19 @@ KD: 100
 KK: \Ac\Ac
 # search next
 KK: \Al
-TestEnd
-Lang C
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 1 pos: 26\n with len: 6' findadv-08.logb.txt
-
-Lang sk_SK.utf8
-TestBegin test.lyx -dbg key,find > findadv-08.logc.txt 2>&1
+KK: \[Escape]
+#KD: 1
+CP: Putting selection at .*idx: 0 par: 1 pos: 26\n with len: 6
+#
+CN: Started findadv-08 3
+KK: \[Escape]
 KK: \C\[Home]\Axdialog-show findreplaceadv\[Return]
+KK: \[Delete]
 KK: \Axregexp-mode\[Return]
-KK: .* \Ac\Ac
+KK: .* 
 KK: \Al\Al\Al
-#KK: \[Tab]\[Return]
+CP: Putting selection at .*idx: 0 par: 0 pos: 10\n with len: 3
 TestEnd
-Lang C
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 10\n with len: 3' findadv-08.logc.txt
+CC:
+Assert searchPatterns.pl log=findadv-08.loga.txt patterns=findadv-08.ctrl
+

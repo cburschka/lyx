@@ -4,24 +4,29 @@
 Lang it_IT.utf8
 
 TestBegin test.lyx -dbg key,find > findadv-20.loga.txt 2>&1
+CO: findadv-20.1.ctrl
+CN: Part 1
 KK: a a a\C\[Home]
 KK: \CF
 KK: a\[Tab]
 KK: \Cm\\frac 1\[Down]a\[Return]\[Return]\[Return]
 KK: \Cs
 KK: \Axbuffer-export latex\[Return]
+CR: \$\\frac\{1\}\{a\}\$ \$\\frac\{1\}\{a\}\$ a
 TestEnd
-Lang C
-Assert pcregrep -M '^\$\\frac\{1\}\{a\}\$ \$\\frac\{1\}\{a\}\$ a' test.tex
 
 Lang it_IT.utf8
 TestBegin test2.lyx -dbg key,find > findadv-20.logb.txt 2>&1
+CO: findadv-20.2.ctrl
+CN: Part 2
 KK: \Cma  \Cma  \Cma \C\[Home]
 KK: \CF
 KK: a\[Tab]
 KK: \Cm\\frac 1\[Down]a\[Return]\[Return]\[Return]
 KK: \Cs
 KK: \Axbuffer-export latex\[Return]
+CR: ^\$\\frac\{1\}\{a\}\$ \$\\frac\{1\}\{a\}\$ \$a\$
 TestEnd
 Lang C
-Assert pcregrep -M '^\$\\frac\{1\}\{a\}\$ \$\\frac\{1\}\{a\}\$ \$a\$' test2.tex
+Assert searchPatterns.pl log=test.tex patterns=findadv-20.1.ctrl
+Assert searchPatterns.pl log=test2.tex patterns=findadv-20.2.ctrl

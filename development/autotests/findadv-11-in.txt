@@ -2,20 +2,22 @@
 #
 Lang it_IT.utf8
 TestBegin test.lyx -dbg key,find > findadv-11.loga.txt 2>&1
+CO: findadv-11.ctrl
+CN: Part 1
 KK: \Cm
 KK: x_v \C\[Home]
 KK: \Cs
 KK: \CF
 KK: \Cm
 KK: v\[Return]
-TestEnd
-Lang C
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 0\n.*idx: 1 par: 0 pos: 0\n with len: 1' findadv-11.loga.txt
+CP: Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 0\n.*idx: 1 par: 0 pos: 0\n with len: 1
 
-Lang sk_SK.utf8
-TestBegin test.lyx -dbg key,find > findadv-11.logb.txt 2>&1
-KK: \C\[Home]
+#
+CN: Part 2
+CP: Key (queried) [action=buffer-begin][Ctrl+Home]
+KK: \[Escape]\C\[Home]
 KK: \CF
+KK: \[Delete]
 # Uncheck ignore format
 KK: \At\Ai\Ah
 KK: \Cm

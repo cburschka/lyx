@@ -2,6 +2,8 @@
 
 Lang sk_SK.utf8
 TestBegin test.lyx -dbg key,find > findadv-07.loga.txt 2>&1
+CO: findadv-07.ctrl
+CN: Part 1
 KK: foo bar\[Return]
 #select itemized
 KK: \Apb
@@ -14,18 +16,19 @@ KK: \Axdialog-show findreplaceadv\[Return]
 KK: \At\Ai\Ah
 KK: \Apb
 KK: foo\[Return]
-TestEnd
-Lang C
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 1 pos: 0\n with len: 3' findadv-07.loga.txt
+CP: Putting selection at .*idx: 0 par: 1 pos: 0\n with len: 3
 #
-Lang sk_SK.utf8
-TestBegin test.lyx -dbg key,find > findadv-07.logb.txt 2>&1
+CN: Part 2
+CP: Key (queried) [action=buffer-begin][Ctrl+Home]
+KK: \[Escape]\C\[Home]
 KK: \C\[Home]
 KK: \CF
+KK: \[Delete]
 # Uncheck ignore format
-KK: \At\Ai\Ah
+#KK: \At\Ai\Ah
 KK: \Apb
 KK: bar\[Return]
+CP: Putting selection at .*idx: 0 par: 1 pos: 4\n with len: 3
 TestEnd
 Lang C
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 1 pos: 4\n with len: 3' findadv-07.logb.txt
+Assert searchPatterns.pl log=findadv-07.loga.txt patterns=findadv-07.ctrl

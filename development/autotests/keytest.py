@@ -205,8 +205,7 @@ class ControlFile:
                 elif command == "CR":
                     self.addline("Regex: " + text)
                 else:
-                    print("Error")
-                    die(1,"208")
+                    die(1,"Error, Unrecognised Command '" + command + "'")
         return True
 
 
@@ -238,6 +237,8 @@ def lyx_exists():
 # Interruptible os.system()
 def intr_system(cmd, ignore_err = False):
     print("Executing " + cmd)
+    # Assure the output of cmd does not overhaul
+    sys.stdout.flush()
     ret = os.system(cmd)
     if os.WIFSIGNALED(ret):
         raise KeyboardInterrupt
@@ -676,7 +677,6 @@ while not failed:
             time.sleep(0.5)
             dead_expected = True
             is_sleeping = wait_until_lyx_sleeping(lyx_pid)
-            print("Leaved wait TestEnd")
             if is_sleeping:
                 print('wait_until_lyx_sleeping() indicated "sleeping"')
                 # For a short time lyx-status is 'sleeping', even if it is nearly dead.
