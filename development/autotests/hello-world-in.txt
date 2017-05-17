@@ -51,8 +51,9 @@
 # KD: n
 #   Changes the delay among typed charactes to n milliseconds.
 #
-# CO: <filename>
-#    Open control file for write. This file will contain the search and comment strings.
+# CO: [>>] <filename>
+#    Open control file for write (or append if preceeded with '>>').
+#    This file will contain the search and comment strings.
 #    Used only by the script 'searchPatterns.pl' at the end of test
 #
 # CN: <notice>

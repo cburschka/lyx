@@ -165,20 +165,38 @@ class ControlFile:
 
     def __init__(self):
         self.control = re.compile(r'^(C[ONPRC]):\s*(.*)$')
+        self.fileformat = re.compile(r'^((\>\>?)[,\s]\s*)?([^\s]+)\s*$')
         self.cntrname = None
         self.cntrfile = None
 
     def open(self, filename):
+        if not self.cntrfile is None:
+            self.cntrfile.close()
+            self.cntrfile = None
+            self.cntrname = None
+        m = self.fileformat.match(filename)
+        if m:
+            type = m.group(2)
+            filename = m.group(3)
+            if type == '>>':
+                append = True
+            else:
+                append = False
+        else:
+            append = False
         self.cntrname = filename
-        self.cntrfile = open(filename, 'w')
+        if append:
+            self.cntrfile = open(filename, 'a')
+        else:
+            self.cntrfile = open(filename, 'w')
 
     def close(self):
         if not self.cntrfile is None:
             self.cntrfile.close()
             self.cntrfile = None
             self.cntrname = None
-
-    def addline(self, pat):
+    # make the method below 'private'
+    def __addline(self, pat):
         self.cntrfile.writelines(pat + "\n")
 
     def getfname(self):
@@ -199,11 +217,11 @@ class ControlFile:
                 print("Controlfile not initialized")
             else:
                 if command == "CN":
-                    self.addline("Comment: " + text)
+                    self.__addline("Comment: " + text)
                 elif command == "CP":
-                    self.addline("Simple: " + text)
+                    self.__addline("Simple: " + text)
                 elif command == "CR":
-                    self.addline("Regex: " + text)
+                    self.__addline("Regex: " + text)
                 else:
                     die(1,"Error, Unrecognised Command '" + command + "'")
         return True
@@ -257,7 +275,7 @@ def printresstatus():
 
 def lyx_status_retry(pid):
     resstatus = []
-    if lyx_pid is None:
+    if pid is None:
         print('Pid is None')
         return "dead"
     fname = '/proc/' + pid + '/status'
@@ -667,9 +685,8 @@ while not failed:
             failed = True
         else:
             print("    ------------    Forcing quit of lyx instance: " + str(lyx_pid) + "    ------------")
-            # \Ax Enter command line is sometimes blocked
-            # \[Escape] works after this
-            sendKeystringAx("\Ax\[Escape]", lyx_pid)
+            # \[Escape]+ should work as RESET focus to main window
+            sendKeystringAx("\[Escape]\[Escape]\[Escape]\[Escape]", lyx_pid)
             time.sleep(controlkey_delay)
             # now we should be outside any dialog
             # and so the function lyx-quit should work
