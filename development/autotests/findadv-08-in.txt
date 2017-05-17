@@ -15,6 +15,7 @@ KK: .* a\[Return]
 CP: Putting selection at .*idx: 0 par: 0 pos: 8\n with len: 8
 #
 CN: Started findadv-08 2
+CP: Key (queried) [action=buffer-begin][Ctrl+Home]
 KK: \[Escape]\C\[Home]\Axdialog-show findreplaceadv\[Return]
 KK: \[Delete]
 KK: o
@@ -31,14 +32,17 @@ KK: \[Escape]
 CP: Putting selection at .*idx: 0 par: 1 pos: 26\n with len: 6
 #
 CN: Started findadv-08 3
+CP: Key (queried) [action=buffer-begin][Ctrl+Home]
 KK: \[Escape]
 KK: \C\[Home]\Axdialog-show findreplaceadv\[Return]
 KK: \[Delete]
 KK: \Axregexp-mode\[Return]
 KK: .* 
 KK: \Al\Al\Al
+CP: Putting selection at .*idx: 0 par: 0 pos: 0\n with len: 3
+CP: Putting selection at .*idx: 0 par: 0 pos: 4\n with len: 5
 CP: Putting selection at .*idx: 0 par: 0 pos: 10\n with len: 3
 TestEnd
-CC:
+Lang C
 Assert searchPatterns.pl log=findadv-08.loga.txt patterns=findadv-08.ctrl
 
