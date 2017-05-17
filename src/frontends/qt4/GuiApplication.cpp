@@ -188,6 +188,12 @@ frontend::Application * createApplication(int & argc, char * argv[])
 		}
 	}
 #endif
+
+#if defined(Q_OS_WIN) || defined(Q_CYGWIN_WIN)
+	// On Windows, allow bringing the LyX window to top
+	AllowSetForegroundWindow(ASFW_ANY);
+#endif
+
 	frontend::GuiApplication * guiApp = new frontend::GuiApplication(argc, argv);
 	// I'd rather do that in the constructor, but I do not think that
 	// the palette is accessible there.
