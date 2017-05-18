@@ -17,6 +17,7 @@ sub readPatterns($);		# Process patterns file
 sub processLogFile($);		# 
 sub convertPattern($);		# check for regex, comment
 sub convertSimplePattern($);  # escape some chars, (e.g. ']' ==> '\]')
+sub printInvalid($$);	      # display lines which should not match
 
 my %options = (
   "log" => undef,
@@ -92,12 +93,14 @@ sub convertPattern($)
     return("");
   }
   return $pat if ($pat =~ /^Comment:/);
-  if ($pat =~ s/^Regex:\s+//) {
+  if ($pat =~ s/^((Err)?Regex):\s+//) {
     # PassThrough variant
-    return($pat);
+    return($1 . ":" . $pat);
   }
-  elsif ($pat =~ s/^Simple:\s+//) {
-    return convertSimplePattern($pat);
+  elsif ($pat =~ s/^((Err)?Simple):\s+//) {
+    my $ermark = $2;
+    $ermark = "" if (!defined($ermark));
+    return $ermark . "Regex:" . &convertSimplePattern($pat);
   }
   else {
     # This should not happen.
@@ -168,6 +171,8 @@ sub processLogFile($)
   if (open(FL, $log)) {
     $errors = 0;
     my $line = 0;
+    my @ErrPatterns = ();
+    my $minprevlines = 0;
     for my $pat (@patterns) {
       if ($pat =~ /^Comment:\s*(.*)$/) {
 	$comment = $1;
@@ -177,9 +182,25 @@ sub processLogFile($)
 	}
 	next;
       }
+      if ($pat =~ /^(Err)?Regex:(.*)$/) {
+	my ($type, $regex) = ($1, $2);
+	next if ($regex eq "");
+	if (defined($type)) {
+	  # This regex should not apply until next 'found line'
+	  my $erlines = () = $regex =~ /\\n/g;
+	  $minprevlines = $erlines if ($erlines > $minprevlines);
+	  push(@ErrPatterns, $regex);
+	  next;
+	}
+	else {
+	  # This is the pattern which we are looking for
+	  $pat = $regex;
+	}
+      }
       #print "Searching for \"$pat\"\n";
       $found = 0;
       my $prevlines = () = $pat =~ /\\n/g; # Number of lines in pattern
+      $prevlines = $minprevlines if ($prevlines < $minprevlines);
       my @prevl = ();
       for (my $i = 0; $i <= $prevlines; $i++) {
 	push(@prevl, "\n");
@@ -210,6 +231,8 @@ sub processLogFile($)
 	my $check = join("", @prevl);
 	$line++;
 	if ($check =~ /$pat/) {
+	  @ErrPatterns = ();	# clean search for not wanted patterns
+	  $minprevlines = 0;
 	  my $fline = $line - $prevlines;
 	  print "$fline:\tfound \"$pat\"\n";
 	  $found = 1;
@@ -228,6 +251,18 @@ sub processLogFile($)
 	}
 	else {
 	  push(@savedlines, $l);
+	  # Check for not wanted patterns
+	  my $errindex = 0;
+	  for my $ep (@ErrPatterns) {
+	    if ($check =~ /$ep/) {
+	      $errors++;
+	      my $fline = $line - $prevlines;
+	      printInvalid($fline, $check);
+	      #splice(@ErrPatterns, $errindex, 1);
+	      last;
+	    }
+	    $errindex++;
+	  }
 	}
       }
       if (! $found) {
@@ -239,4 +274,14 @@ sub processLogFile($)
     close(FL);
   }
   return($errors);
+}
+
+sub printInvalid($$)
+{
+  my ($line, $check) = @_;
+  my @chk = split(/\n/, $check);
+  print("$line:\tInvalid match: " . shift(@chk) . "\n");
+  for my $l (@chk) {
+    print("\t\t\t$l\n");
+  }
 }

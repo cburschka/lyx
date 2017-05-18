@@ -164,7 +164,7 @@ class CommandSourceFromFile(CommandSource):
 class ControlFile:
 
     def __init__(self):
-        self.control = re.compile(r'^(C[ONPRC]):\s*(.*)$')
+        self.control = re.compile(r'^(C[ONPpRrC]):\s*(.*)$')
         self.fileformat = re.compile(r'^((\>\>?)[,\s]\s*)?([^\s]+)\s*$')
         self.cntrname = None
         self.cntrfile = None
@@ -220,8 +220,12 @@ class ControlFile:
                     self.__addline("Comment: " + text)
                 elif command == "CP":
                     self.__addline("Simple: " + text)
+                elif command == "Cp":
+                    self.__addline("ErrSimple: " + text)
                 elif command == "CR":
                     self.__addline("Regex: " + text)
+                elif command == "Cr":
+                    self.__addline("ErrRegex: " + text)
                 else:
                     die(1,"Error, Unrecognised Command '" + command + "'")
         return True
