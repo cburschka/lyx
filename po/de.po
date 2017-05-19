@@ -96,14 +96,14 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2017-05-14 18:18+0200\n"
-"PO-Revision-Date: 2017-05-15 02:37+0200\n"
-"Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
-"Language-Team: German <lyx-docs@lists.lyx.org>\n"
+"PO-Revision-Date: 2017-05-19 09:53+0100\n"
+"Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
+"Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.12\n"
+"X-Generator: Lokalize 2.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:33
@@ -112,7 +112,7 @@ msgstr "Version"
 
 #: src/frontends/qt4/ui/AboutUi.ui:51
 msgid "Version goes here"
-msgstr "Version kommt hierher"
+msgstr "Die Versionsnummer kommt hierher"
 
 #: src/frontends/qt4/ui/AboutUi.ui:68
 msgid "Credits"
@@ -6993,9 +6993,8 @@ msgid "List of Schemes"
 msgstr "Verzeichnis der Schemata"
 
 #: lib/layouts/achemso.layout:186
-#, fuzzy
 msgid "Charts"
-msgstr "Diagramm"
+msgstr "Diagramme"
 
 #: lib/layouts/achemso.layout:190
 msgid "Chart"
@@ -7006,9 +7005,8 @@ msgid "List of Charts"
 msgstr "Diagrammverzeichnis"
 
 #: lib/layouts/achemso.layout:210
-#, fuzzy
 msgid "Graphs[[mathematical]]"
-msgstr "Graph"
+msgstr "Graphen"
 
 #: lib/layouts/achemso.layout:216
 msgid "Graph[[mathematical]]"
@@ -7718,7 +7716,7 @@ msgstr "Preprint-Hinweis:"
 
 #: lib/layouts/aguplus.inc:182
 msgid "Plates"
-msgstr ""
+msgstr "Bildtafeln"
 
 #: lib/layouts/aguplus.inc:183
 msgid "Planotables"
@@ -7770,14 +7768,15 @@ msgid "Algorithm2e"
 msgstr "Algorithm2e"
 
 #: lib/layouts/algorithm2e.module:7
-#, fuzzy
 msgid ""
 "Use the algorithm2e package for algorithm floats rather than LyX's home-"
 "brewed algorithm floats. Use the Algorithm style to enter and indent the "
 "algorithm."
 msgstr ""
 "Verwendet das Paket 'algorithm2e' anstelle von LyX' hausgemachter Lösung für "
-"Algorithmus-Gleitumgebungen."
+"Algorithmus-Gleitumgebungen. Verwenden Sie den Absatzstil 'Algorithmus', um"
+" Algorithmen "
+"einzugeben und einzurücken."
 
 #: lib/layouts/algorithm2e.module:25 lib/layouts/revtex4-1.layout:267
 msgid "List of Algorithms"
@@ -15459,7 +15458,6 @@ msgid "TODO Notes"
 msgstr "TODO-Notizen"
 
 #: lib/layouts/todonotes.module:8
-#, fuzzy
 msgid ""
 "Provides custom insets to insert TODO items in your document (using the "
 "todonotes package). In order to generate a 'List of TODOs', the module "
@@ -15469,7 +15467,9 @@ msgstr ""
 "Stellt benutzerdefinierte Einfügungen zur Verfügung, mit denen Sie TODO- "
 "Notizen in Ihr Dokument einfügen können (benutzt das Paket 'todonotes'). Um "
 "eine 'Liste der TODO-Notizen' zu erzeugen, benutzen Sie den entsprechenden "
-"Absatzstil."
+"Absatzstil. Wenn Sie die Klassenoption 'final' eingeben, werden die"
+" TODO-Notizen "
+"nicht ausgegeben."
 
 #: lib/layouts/todonotes.module:14
 msgid "TODO"
@@ -17309,7 +17309,7 @@ msgstr "Sofortige Vorschau|V"
 
 #: lib/ui/stdcontext.inc:676
 msgid "Lock Toolbars|L"
-msgstr ""
+msgstr "Verankere die Werkzeugleisten|V"
 
 #: lib/ui/stdcontext.inc:678
 msgid "Small-sized Icons"
@@ -18466,9 +18466,8 @@ msgid "Toggle table toolbar"
 msgstr "Tabellen-Werkzeugleiste an/aus"
 
 #: lib/ui/stdtoolbars.inc:98
-#, fuzzy
 msgid "Toggle review toolbar"
-msgstr "Tabellen-Werkzeugleiste an/aus"
+msgstr "Überarbeitungs-Werkzeugleiste an/aus"
 
 #: lib/ui/stdtoolbars.inc:101
 msgid "View/Update"
@@ -29853,11 +29852,11 @@ msgstr "Status der Werkzeugleiste \"%1$s\" auf %2$s gesetzt"
 
 #: src/frontends/qt4/GuiToolbar.cpp:426
 msgid "movable"
-msgstr ""
+msgstr "beweglich"
 
 #: src/frontends/qt4/GuiToolbar.cpp:428
 msgid "immovable"
-msgstr ""
+msgstr "verankert"
 
 #: src/frontends/qt4/GuiVSpace.h:40
 msgid "Vertical Space Settings"
@@ -30317,12 +30316,11 @@ msgstr "Alle Dokumente wurden gespeichert"
 
 #: src/frontends/qt4/GuiView.cpp:3865
 msgid "Toolbars unlocked."
-msgstr ""
+msgstr "Werkzeugleisten nicht verankert."
 
 #: src/frontends/qt4/GuiView.cpp:3867
-#, fuzzy
 msgid "Toolbars locked."
-msgstr "Werkzeugleisten|W"
+msgstr "Werkzeugleisten verankert."
 
 #: src/frontends/qt4/GuiView.cpp:3880
 #, c-format
