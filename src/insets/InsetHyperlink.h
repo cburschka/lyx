@@ -32,6 +32,8 @@ public:
 	///
 	bool hasSettings() const { return true; }
 	///
+	bool inheritFont() const { return true; }
+	///
 	bool forceLTR() const { return true; }
 	///
 	bool isInToc() const { return true; }
