@@ -12,10 +12,10 @@
 use strict;
 use warnings;
 
-sub sexit($);			# Print synax and exit
-sub readPatterns($);		# Process patterns file
-sub processLogFile($);		# 
-sub convertPattern($);		# check for regex, comment
+sub sexit($);		      # Print synax and exit
+sub readPatterns($);	      # Process patterns file
+sub processLogFile($);	      #
+sub convertPattern($);	      # check for regex, comment
 sub convertSimplePattern($);  # escape some chars, (e.g. ']' ==> '\]')
 sub printInvalid($$);	      # display lines which should not match
 
@@ -199,6 +199,7 @@ sub processLogFile($)
       }
       #print "Searching for \"$pat\"\n";
       $found = 0;
+      my $invalidmessages = 0;
       my $prevlines = () = $pat =~ /\\n/g; # Number of lines in pattern
       $prevlines = $minprevlines if ($prevlines < $minprevlines);
       my @prevl = ();
@@ -231,8 +232,6 @@ sub processLogFile($)
 	my $check = join("", @prevl);
 	$line++;
 	if ($check =~ /$pat/) {
-	  @ErrPatterns = ();	# clean search for not wanted patterns
-	  $minprevlines = 0;
 	  my $fline = $line - $prevlines;
 	  print "$fline:\tfound \"$pat\"\n";
 	  $found = 1;
@@ -252,16 +251,15 @@ sub processLogFile($)
 	else {
 	  push(@savedlines, $l);
 	  # Check for not wanted patterns
-	  my $errindex = 0;
 	  for my $ep (@ErrPatterns) {
 	    if ($check =~ /$ep/) {
 	      $errors++;
-	      my $fline = $line - $prevlines;
-	      printInvalid($fline, $check);
-	      #splice(@ErrPatterns, $errindex, 1);
+	      if ($invalidmessages++ < 10) {
+		my $fline = $line - $prevlines;
+		&printInvalid($fline, $check);
+	      }
 	      last;
 	    }
-	    $errindex++;
 	  }
 	}
       }
@@ -270,6 +268,8 @@ sub processLogFile($)
 	print "\tNOT found \"$pat\" in remainder of file\n";
 	$readsavedlines = 1;
       }
+      @ErrPatterns = ();	# clean search for not wanted patterns
+      $minprevlines = 0;
     }
     close(FL);
   }
