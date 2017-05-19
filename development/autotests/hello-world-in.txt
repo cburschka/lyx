@@ -65,8 +65,15 @@
 #    will be escaped to create a suitable regex.
 #    The result will be applied on the lyx-log-file
 #
+# Cp: <pattern>
+#    It is an error if this pattern matches before the expected (either CP: or CR:)
+#    Expand pattern like in CP:
+#
 # CR: <regex pattern>
 #    Write a pattern to the control file. Pattern will be used directly (no conversion).
+#
+# Cr: <regex pattern>
+#    It is an error if this pattern matches before the expected (either CP: or CR:)
 #
 # CC:
 #    Close the control file. The file is also closed at 'TestEndWithKill' and 'TestEnd'
