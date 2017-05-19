@@ -384,7 +384,7 @@ def sendKeystringLocal(keystr, LYX_PID):
     sys.stdout.flush()
 
 Axreg = re.compile(r'^(.*)\\Ax([^\\]*)(.*)$')
-returnreg = re.compile(r'(\\\[[A-Z][a-z]+\])(.*)$')
+returnreg = re.compile(r'(\\\[[A-Z][a-z0-9]+\])(.*)$')
 
 # recursive wrapper around sendKeystringLocal()
 # handling \Ax-entries
@@ -420,7 +420,7 @@ def sendKeystringAx(line, LYX_PID):
         if line != "":
             sendKeystringLocal(line, LYX_PID)
 
-specialkeyreg = re.compile(r'(.+)(\\[AC]([a-zA-Z]|\\\[[A-Z][a-z]+\]).*)$')
+specialkeyreg = re.compile(r'(.+)(\\[AC]([a-zA-Z]|\\\[[A-Z][a-z0-9]+\]).*)$')
 # Split line at start of each meta or controll char
 
 def sendKeystringAC(line, LYX_PID):
@@ -433,7 +433,7 @@ def sendKeystringAC(line, LYX_PID):
     else:
         sendKeystringAx(line, LYX_PID)
 
-controlkeyreg = re.compile(r'^(.*\\\[[A-Z][a-z]+\])(.*\\\[[A-Z][a-z]+\])(.*)$')
+controlkeyreg = re.compile(r'^(.*\\\[[A-Z][a-z0-9]+\])(.*\\\[[A-Z][a-z0-9]+\])(.*)$')
 # Make sure, only one of \[Return], \[Tab], \[Down], \[Home] etc are in one sent line
 # e.g. split the input line on each keysym
 def sendKeystringRT(line, LYX_PID):
