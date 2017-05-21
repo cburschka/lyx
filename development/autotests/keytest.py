@@ -14,6 +14,9 @@ import os
 import re
 import sys
 import time
+import tempfile
+import shutil
+
 #from subprocess import call
 import subprocess
 
@@ -22,6 +25,7 @@ print('Beginning keytest.py')
 FNULL = open('/dev/null', 'w')
 
 key_delay = ''
+bindings = {}
 
 # Ignore status == "dead" if this is set. Used at the last commands after "\Cq"
 dead_expected = False
@@ -213,9 +217,7 @@ class ControlFile:
         elif command == "CC":
             self.close()
         else:
-            if self.cntrfile is None:
-                print("Controlfile not initialized")
-            else:
+            if not self.cntrfile is None:
                 if command == "CN":
                     self.__addline("Comment: " + text)
                 elif command == "CP":
@@ -453,10 +455,10 @@ def sendKeystringRT(line, LYX_PID):
 
 def system_retry(num_retry, cmd):
     i = 0
-    rtn = intr_system(cmd)
+    rtn = intr_system(cmd, True)
     while ( ( i < num_retry ) and ( rtn != 0) ):
         i = i + 1
-        rtn = intr_system(cmd)
+        rtn = intr_system(cmd, True)
         time.sleep(1)
     if ( rtn != 0 ):
         print("Command Failed: "+cmd)
@@ -470,6 +472,59 @@ def RaiseWindow():
     intr_system("wmctrl -R '"+lyx_window_name+"' ;sleep 0.1")
     system_retry(30, "wmctrl -i -a '"+lyx_window_name+"'")
 
+shortcut_entry = re.compile(r'^\s*"([^"]+)"\s*\"([^"]+)\"')
+def UseShortcut(c):
+    m = shortcut_entry.match(c)
+    if m:
+        sh = m.group(1)
+        fkt = m.group(2)
+        bindings[sh] = fkt
+    else:
+        die(1, "cad shortcut spec(" + c + ")")
+
+def PrepareShortcuts():
+    bind = re.compile(r'^\s*\\bind\s+"([^"]+)"')
+    if lyx_userdir_ver is None:
+        dir = lyx_userdir
+    else:
+        dir = lyx_userdir_ver
+    if not dir is None:
+        tmp = tempfile.NamedTemporaryFile(suffix='.bind', delete=False)
+        try:
+            old = open(dir + '/bind/user.bind', 'r')
+        except IOError as e:
+            old = None
+        if not old is None:
+            lines = old.read().split("\n")
+            old.close()
+            bindfound = False
+            for line in lines:
+                m = bind.match(line)
+                if m:
+                    bindfound = True
+                    val = m.group(1)
+                    if not bindings[val] is None:
+                        if bindings[val] != "":
+                            tmp.write("\\bind \"" + val + "\" \"" + bindings[val] + "\"\n")
+                            bindings[val] = ""
+                    else:
+                        tmp.write(line + '\n')
+                elif not bindfound:
+                    tmp.write(line + '\n')
+        else:
+            tmp.writelines(
+                '## This file is used for keytests only\n\n' +
+                'Format 4\n\n'
+            )
+        for val in bindings:
+            if not bindings[val] is None:
+                if  bindings[val] != "":
+                    tmp.write("\\bind \"" + val + "\" \"" + bindings[val] + "\"\n")
+                    bindings[val] = ""
+        tmp.close()
+        shutil.move(tmp.name, dir + '/bind/user.bind')
+    else:
+        print("User dir not specified")
 
 lyx_pid = os.environ.get('LYX_PID')
 print('lyx_pid: ' + str(lyx_pid) + '\n')
@@ -480,6 +535,7 @@ lyx_window_name = os.environ.get('LYX_WINDOW_NAME')
 lyx_other_window_name = None
 screenshot_out = os.environ.get('SCREENSHOT_OUT')
 lyx_userdir = os.environ.get('LYX_USERDIR')
+lyx_userdir_ver = os.environ.get('LYX_USERDIR_23x')
 
 max_loops = os.environ.get('MAX_LOOPS')
 if max_loops is None:
@@ -640,6 +696,11 @@ while not failed:
     elif c == 'RaiseLyx':
         print('Raising Lyx')
         RaiseWindow()
+    elif c == 'PrepareShortcuts':
+        print('Preparing usefull sortcuts for tests')
+        PrepareShortcuts()
+    elif c[0:12] == 'UseShortcut ':
+        UseShortcut(c[12:])
     elif c[0:4] == 'KK: ':
         if lyx_exists():
             sendKeystringRT(c[4:], lyx_pid)
@@ -657,7 +718,7 @@ while not failed:
         sendKeystringRT(ResetCommand, lyx_pid)
     elif c[0:6] == 'Assert':
         cmd = c[7:].rstrip()
-        result = intr_system(cmd)
+        result = intr_system(cmd, True)
         failed = failed or (result != 0)
         print("result=" + str(result) + ", failed=" + str(failed))
     elif c[0:15] == 'TestEndWithKill':
@@ -676,16 +737,16 @@ while not failed:
                 time.sleep(0.5)
             if cmd != "":
                 print("Executing " + cmd)
-                result = intr_system(cmd)
+                result = intr_system(cmd, True)
                 failed = failed or (result != 0)
                 print("result=" + str(result) + ", failed=" + str(failed))
             else:
                 print("failed=" + str(failed))
     elif c[0:7] == 'TestEnd':
-        marked.close()
-        #lyx_other_window_name = None
+         #lyx_other_window_name = None
         if lyx_dead(lyx_pid):
             print("LyX instance not found because of crash or assert !\n")
+            marked.close()
             failed = True
         else:
             print("    ------------    Forcing quit of lyx instance: " + str(lyx_pid) + "    ------------")
@@ -695,6 +756,8 @@ while not failed:
             # now we should be outside any dialog
             # and so the function lyx-quit should work
             sendKeystringLocal("\Cq", lyx_pid)
+            marked.dispatch('CP: action=lyx-quit')
+            marked.close()
             time.sleep(0.5)
             dead_expected = True
             is_sleeping = wait_until_lyx_sleeping(lyx_pid)
@@ -718,7 +781,7 @@ while not failed:
         cmd = c[8:].rstrip()
         if cmd != "":
             print("Executing " + cmd)
-            result = intr_system(cmd)
+            result = intr_system(cmd, True)
             failed = failed or (result != 0)
             print("result=" + str(result) + ", failed=" + str(failed))
         else:

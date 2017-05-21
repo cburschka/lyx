@@ -1,4 +1,7 @@
 # Finding special latex/regexp chars: \
+UseShortcut "C-F20" "regexp-mode"
+UseShortcut "C-F21" "command-sequence dialog-show findreplaceadv ; buffer-end ; buffer-begin-select ; char-delete-forward ;"
+PrepareShortcuts
 #
 Lang sk_SK.utf8
 TestBegin test.lyx -dbg key,find > findadv-combined.loga.txt 2>&1
@@ -24,83 +27,53 @@ KK: \Cs
 #
 KK: \[Escape]\C\[Home]
 CP: Key (queried) [action=buffer-begin][Ctrl+Home]
-CN: Searching for '@'
-KK: \CF
-KK: \[Delete]
-KK: \Axregexp-mode\[Return]\\@\[Return]
-KK: \[Escape]
+CN: Part 001
+KK: \C\[F21]\C\[F20]\\@\[Return]
 CP: Escaped : '\@'
 CR: [pP]utting selection at .*idx: 0 par: 0 pos: 10\n with len: 1
 #
-CN: Searching for '('
-KK: \CF
-KK: \[Delete]
-KK: \Axregexp-mode\[Return]\\(\[Return]
-KK: \[Escape]
+CN: Part 002
+KK: \C\[F21]\C\[F20]\\(\[Return]
 CP: Escaped : '\('
 CP: Putting selection at .*idx: 0 par: 1 pos: 1\n with len: 1
 #
-CN: Searching for ')'
-KK: \CF
-KK: \[Delete]
-KK: \Axregexp-mode\[Return]\\)\[Return]
-KK: \[Escape]
+CN: Part 003
+KK: \C\[F21]\C\[F20]\\)\[Return]
 CP: Escaped : '\)'
 CP: Putting selection at .*idx: 0 par: 1 pos: 2\n with len: 1
 #
-CN: Searching for '\\'
-KK: \CF
-KK: \[Delete]
-KK: \Axregexp-mode\[Return]\\\\\[Return]
-KK: \[Escape]
+CN: Part 004
+KK: \C\[F21]\C\[F20]\\\\\[Return]
 CP: Escaping: '\backslash\backslash'
 CP: Putting selection at .*idx: 0 par: 2 pos: 0\n with len: 1
 #
-CN: Searching for '%'
-KK: \CF
-KK: \[Delete]
-KK: \Axregexp-mode\[Return]%\[Return]
-KK: \[Escape]
+CN: Part 005
+KK: \C\[F21]\C\[F20]%\[Return]
 CP: Escaped : '%'
 CP: Putting selection at .*idx: 0 par: 2 pos: 7\n with len: 1
 #
-CN: Searching for '^'
-KK: \CF
-KK: \[Delete]
-KK: \Axregexp-mode\[Return]\\^\[Return]
-KK: \[Escape]
+CN: Part 006
+KK: \C\[F21]\C\[F20]\\^\[Return]
 CP: Escaped : '\^'
 CP: Putting selection at .*idx: 0 par: 2 pos: 8\n with len: 1
 #
-CN: Searching for '['
-KK: \CF
-KK: \[Delete]
-KK: \Axregexp-mode\[Return]\\[\[Return]
-KK: \[Escape]
+CN: Part 007
+KK: \C\[F21]\C\[F20]\\[\[Return]
 CP: Escaped : '\['
 CP: Putting selection at .*idx: 0 par: 3 pos: 3\n with len: 1
 #
-CN: Searching for ']'
-KK: \CF
-KK: \[Delete]
-KK: \Axregexp-mode\[Return]\\]\[Return]
-KK: \[Escape]
+CN: Part 008
+KK: \C\[F21]\C\[F20]\\]\[Return]
 CP: Escaped : '\]'
 CP: Putting selection at .*idx: 0 par: 3 pos: 4\n with len: 1
 #
-CN: Searching for '{'
-KK: \CF
-KK: \[Delete]
-KK: \Axregexp-mode\[Return]\\{\[Return]
-KK: \[Escape]
+CN: Part 009
+KK: \C\[F21]\C\[F20]\\{\[Return]
 CP: Escaping: '\backslash\{'
 CP: Putting selection at .*idx: 0 par: 3 pos: 5\n with len: 1
 #
-CN: Searching for '}'
-KK: \CF
-KK: \[Delete]
-KK: \Axregexp-mode\[Return]\\}\[Return]
-KK: \[Escape]
+CN: Part 010
+KK: \C\[F21]\C\[F20]\\}\[Return]
 CP: Escaping: '\backslash\}'
 CP: Putting selection at .*idx: 0 par: 3 pos: 6\n with len: 1
 
@@ -117,88 +90,57 @@ KK: \[Escape]\C\[Home]
 CP: Key (queried) [action=buffer-begin][Ctrl+Home]
 
 #
-CN: Searching for '['
-KK: \CF
-KK: \[Delete]
-KK: \Axregexp-mode\[Return]\\[\[Return]
-KK: \[Escape]
+CN: Part 101
+KK: \C\[F21]\C\[F20]\\[\[Return]
 CP: Escaped : '\['
 CP: Putting selection at .*idx: 0 par: 0 pos: 3\n with len: 1
 #
-CN: Searching for '('
-KK: \CF
-KK: \[Delete]
-KK: \Axregexp-mode\[Return]\\(\[Return]
-KK: \[Escape]
+CN: Part 102
+KK: \C\[F21]\C\[F20]\\(\[Return]
 CP: Escaped : '\('
 CP: Putting selection at .*idx: 0 par: 1 pos: 1\n with len: 1
 #
-CN: Searching for ')'
-KK: \CF
-KK: \[Delete]
-KK: \Axregexp-mode\[Return]\\)\[Return]
-KK: \[Escape]
+CN: Part 103
+KK: \C\[F21]\C\[F20]\\)\[Return]
 CP: Escaped : '\)'
 CP: Putting selection at .*idx: 0 par: 1 pos: 2\n with len: 1
 #
-CN: Searching for '\\'
-KK: \CF
-KK: \[Delete]
-KK: \Axregexp-mode\[Return]\\\\\[Return]
-KK: \[Escape]
+CN: Part 104
+KK: \C\[F21]\C\[F20]\\\\\[Return]
 CP: Escaped : '\\'
 CP: Putting selection at .*idx: 0 par: 2 pos: 0\n with len: 1
 #
-CN: Searching for '%'
-KK: \CF
-KK: \[Delete]
-KK: \Axregexp-mode\[Return]%\[Return]
-KK: \[Escape]
+CN: Part 105
+KK: \C\[F21]\C\[F20]%\[Return]
 CP: Escaped : '%'
 CP: Putting selection at .*idx: 0 par: 2 pos: 7\n with len: 1
 #
-CN: Searching for '^'
-KK: \CF
-KK: \[Delete]
-# Uncheck ignore format
-KK: \Axregexp-mode\[Return]\\^\[Return]
-KK: \[Escape]
+CN: Part 105
+KK: \C\[F21]\C\[F20]\\^\[Return]
 CP: Escaped : '\^'
 CP: Putting selection at .*idx: 0 par: 2 pos: 8\n with len: 1
 #
-CN: Searching for '{'
-KK: \CF
-KK: \[Delete]
-KK: \Axregexp-mode\[Return]\\{\[Return]
-KK: \[Escape]
+CN: Part 106
+KK: \C\[F21]\C\[F20]\\{\[Return]
 CP: Escaping: '\backslash\{'
 CP: Putting selection at .*idx: 0 par: 3 pos: 5\n with len: 1
 #
-CN: Searching for '}'
-KK: \CF
-KK: \[Delete]
-KK: \Axregexp-mode\[Return]\\}\[Return]
-KK: \[Escape]
+CN: Part 107
+KK: \C\[F21]\C\[F20]\\}\[Return]
 CP: Escaping: '\backslash\}'
 CP: Putting selection at .*idx: 0 par: 3 pos: 6\n with len: 1
 #
-CN: Searching for ']'
-KK: \CF
-KK: \[Delete]
-KK: \Axregexp-mode\[Return]\\]\[Return]
-KK: \[Escape]
+CN: Part 108
+KK: \C\[F21]\C\[F20]\\]\[Return]
 CP: Escaped : '\]'
 CP: Putting selection at .*idx: 0 par: 4 pos: 4\n with len: 1
 #
-CN: Searching for '@'
-KK: \CF
-KK: \[Delete]
-KK: \Axregexp-mode\[Return]\\@\[Return]
-KK: \[Escape]
+CN: Part 109
+KK: \C\[F21]\C\[F20]\\@\[Return]
 CP: Escaped : '\@'
 CP: Putting selection at .*idx: 0 par: 4 pos: 10\n with len: 1
 
 #
 TestEnd
-CC: 
+Lang C
 Assert searchPatterns.pl log=findadv-combined.loga.txt patterns=findadv-combined.ctrl
