@@ -37593,8 +37593,6 @@ reference "sec:画像ダイアログ"
 
 \begin_layout Description
 XFig このひな型は，
-\series bold
-
 \begin_inset CommandInset href
 LatexCommand href
 name "Xfig"
@@ -37603,9 +37601,87 @@ literal "false"
 
 \end_inset
 
-
-\series default
 プログラムで作成した画像をサポートします．
+\end_layout
+
+\begin_layout Description
+Inkscape 
+\lang english
+This experimental template supports vector graphics (SVG) images that contain
+ text written in \SpecialChar LaTeX
+.
+ It relies on the option 
+\family sans
+Omit text in PDF and create LaTeX file
+\family default
+ when saving a drawing as PDF with the program 
+\noun on
+Inkscape
+\noun default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Inkscape"
+literal "false"
+
+\end_inset
+
+.
+ This allows to include SVG documents in which \SpecialChar LaTeX
+ will typeset the text.
+ The benefit of such SVGs is a uniform text style throughout the whole document
+\begin_inset Newline newline
+\end_inset
+
+One can use \SpecialChar TeX
+ code commands like 
+\series bold
+
+\backslash
+Large
+\series default
+, 
+\series bold
+
+\backslash
+small
+\series default
+, etc.
+\begin_inset space \space{}
+\end_inset
+
+in the text of the SVG.
+ The size of the font will be taken from the settings of the \SpecialChar LyX
+ document.
+ Refer to 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Inkscape"
+literal "false"
+
+\end_inset
+
+ for more information and examples.
+\begin_inset Newline newline
+\end_inset
+
+Note that while the image text takes into account the surrounding font,
+ its preview in \SpecialChar LyX
+ does not.
+ Wrapping the external inset in a preview inset (menu 
+\family sans
+Insert\SpecialChar menuseparator
+Preview
+\family default
+) gives a better result.
+\begin_inset Newline newline
+\end_inset
+
+The template works very similarly to Xfig support.
+ \SpecialChar LyX
+ will extract the text in the image into a separate \SpecialChar TeX
+ file and creates a
+ PDF file for the rest.
 \end_layout
 
 \begin_layout Standard
@@ -44353,21 +44429,31 @@ status collapsed
 \labelwidthstring 参考文献
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "NewInLyX20"
+key "Inkscape"
 literal "true"
 
 \end_inset
 
 
-\family sans
-\SpecialChar LyX
- 2.0
-\family default
-の新機能に関する
+\lang english
+Documentation of the option 
 \begin_inset CommandInset href
 LatexCommand href
-name "Wikiページ"
-target "http://wiki.lyx.org/LyX/NewInLyX20"
+name "Omit text in PDF"
+target "http://tug.ctan.org/tex-archive/info/svg-inkscape/InkscapePDFLaTeX.pdf"
+literal "false"
+
+\end_inset
+
+ of the program
+\lang japanese
+ 
+\noun on
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Inkscape"
+target "https://inkscape.org/ja/"
 literal "false"
 
 \end_inset

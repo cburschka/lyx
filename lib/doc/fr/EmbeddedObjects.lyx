@@ -40866,8 +40866,6 @@ Figure
 \end_inset
 
 Xfig Ce modèle accepte les images créées avec le programme 
-\series bold
-
 \begin_inset CommandInset href
 LatexCommand href
 name "Xfig"
@@ -40876,9 +40874,96 @@ literal "false"
 
 \end_inset
 
-
-\series default
 .
+\end_layout
+
+\begin_layout Description
+Figure
+\begin_inset space ~
+\end_inset
+
+Inkscape 
+\lang english
+This experimental template supports vector graphics (SVG) images that contain
+ text written in \SpecialChar LaTeX
+.
+ It relies on the option
+\lang french
+ 
+\family sans
+Exclure le texte du fichier PDF, et créer un fichier LaTeX 
+\family default
+\lang english
+when saving a drawing as PDF with the program 
+\noun on
+Inkscape
+\noun default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Inkscape"
+literal "false"
+
+\end_inset
+
+.
+ This allows to include SVG documents in which \SpecialChar LaTeX
+ will typeset the text.
+ The benefit of such SVGs is a uniform text style throughout the whole document
+ and one can use \SpecialChar TeX
+ code commands in the text of the SVG.
+\begin_inset Newline newline
+\end_inset
+
+One can use \SpecialChar TeX
+ code commands like 
+\series bold
+
+\backslash
+Large
+\series default
+, 
+\series bold
+
+\backslash
+small
+\series default
+, etc.
+\begin_inset space \space{}
+\end_inset
+
+in the text of the SVG.
+ The size of the font will be taken from the settings of the \SpecialChar LyX
+ document.
+ Refer to 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Inkscape"
+literal "false"
+
+\end_inset
+
+ for more information and examples.
+\begin_inset Newline newline
+\end_inset
+
+Note that while the image text takes into account the surrounding font,
+ its preview in \SpecialChar LyX
+ does not.
+ Wrapping the external inset in a preview inset (menu 
+\family sans
+Insert\SpecialChar menuseparator
+Preview
+\family default
+) gives a better result.
+\begin_inset Newline newline
+\end_inset
+
+The template works very similarly to Xfig support.
+ \SpecialChar LyX
+ will extract the text in the image into a separate \SpecialChar TeX
+ file and creates a
+ PDF file for the rest.
 \end_layout
 
 \begin_layout Standard
@@ -47925,6 +48010,15 @@ Paquetages \SpecialChar LaTeX
 \end_inset
 
 
+\begin_inset CommandInset href
+LatexCommand href
+name "Exclure le texte du fichier PDF"
+target "http://tug.ctan.org/tex-archive/info/svg-inkscape/InkscapePDFLaTeX.pdf"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography
@@ -48074,26 +48168,40 @@ Paquetages \SpecialChar LaTeX
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "NewInLyX20"
+key "Inkscape"
 literal "true"
 
 \end_inset
 
-
+Documentation 
+\lang english
+of the option
+\lang french
+ 
 \begin_inset CommandInset href
 LatexCommand href
-name "Page Wiki"
-target "http://wiki.lyx.org/LyX/NewInLyX20"
+name "Omit text in PDF"
+target "http://tug.ctan.org/tex-archive/info/svg-inkscape/InkscapePDFLaTeX.pdf"
 literal "false"
 
 \end_inset
 
- au sujet des nouveautés de 
-\family sans
-\SpecialChar LyX
- 2.0
-\family default
-.
+ 
+\lang english
+of the program
+\lang french
+ 
+\noun on
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Inkscape"
+target "https://inkscape.org/fr/"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
