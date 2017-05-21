@@ -5,7 +5,6 @@
 # Licence details can be found in the file COPYING.
 #
 # author Asger Alstrup Nielsen
-# author Angus Leeming
 # author Johnathan Burchill
 #
 # Full author contact details are available in file CREDITS.
@@ -34,15 +33,11 @@ Template Inkscape
 	GuiName "Inkscape figure"
 	HelpText
 		An Inkscape figure.
-		This template should work flawlessly with Inkscape 0.48. 
-		For Inkscape 0.91, there is a (reported) bug in the 
-		LaTeX + PDF output which makes a workaround necessary, 
-		see Embedded Objects manual.
 		Note that using this template automatically uses the 
 		document text in the image (like with the Xfig template).
 	HelpTextEnd
 	InputFormat svg
-	FileFilter "*.svg"
+	FileFilter "*.{svg}"
 	AutomaticProduction true
 	Transform Rotate
 	Preview InstantPreview
@@ -52,8 +47,9 @@ Template Inkscape
 		Product "$$RotateFront\\input{$$AbsOrRelPathMaster$$Basename.pdf_tex}$$RotateBack"
 		UpdateFormat pdftex
 		UpdateResult "$$AbsPath$$Basename.pdf_tex"
-		Requirement "color"
+		Requirement "xcolor"
 		Requirement "graphicx"
+		Requirement "mathtools"
 		# Preamble WarnNotFound
 		# Preamble InputOrWarn
 		ReferencedFile pdflatex "$$AbsOrRelPathMaster$$Basename.pdf_tex"
@@ -64,8 +60,9 @@ Template Inkscape
 		Product "$$RotateFront\\input{$$AbsOrRelPathMaster$$Basename.eps_tex}$$RotateBack"
 		UpdateFormat pstex
 		UpdateResult "$$AbsPath$$Basename.eps_tex"
-		Requirement "color"
+		Requirement "xcolor"
 		Requirement "graphicx"
+		Requirement "mathtools"
 		# Preamble WarnNotFound
 		# Preamble InputOrWarn
 		ReferencedFile latex "$$AbsOrRelPathMaster$$Basename.eps_tex"
