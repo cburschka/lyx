@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 543
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -203,7 +203,9 @@
 \paragraph_separation skip
 \defskip medskip
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style swiss
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle plain
@@ -27855,18 +27857,20 @@ Centrado es el estándar predefinido
 \end_layout
 
 \begin_layout Description
-Sangrado para este estilo debe insertarse la opción de clase 
-\series bold
-fleqn
-\series default
- en el menú 
+Sangrado 
+\lang english
+this can be set using
+\lang spanish
+ el menú 
 \family sans
 Documento\SpecialChar menuseparator
 Configuración
 \family default
  bajo 
 \family sans
-Clase de documento
+Opciones para ecuaciones
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -27874,58 +27878,35 @@ Cuando se usa
 \series bold
 Sangrado
 \series default
-, éste se puede ajustar con la longitud 
-\series bold
-
-\backslash
-mathindent
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Comandos ! M ! 
-\backslash
-mathindent
-\end_layout
-
-\end_inset
-
-.
- Para 15
-\begin_inset space \thinspace{}
-\end_inset
-
-mm, por ejemplo, se inserta esta línea de comando en el preámbulo \SpecialChar LaTeX
-:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-setlength{
-\backslash
-mathindent}{15mm}
-\end_layout
-
-\begin_layout Standard
-Si no se especifica longitud se usa un valor predeterminado.
+, se puede ajustar con la longitud.
  
 \lang english
-The value depends on the used document class.
+The default value depends on the used document class.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Y dos estilos diferentes de numeración:
+Y dos estilos diferentes de numeración 
+\lang english
+that can be set
+\lang spanish
+ en el menú 
+\family sans
+Documento\SpecialChar menuseparator
+Configuración
+\family default
+ bajo 
+\family sans
+Opciones para ecuaciones
+\family default
+:
 \end_layout
 
 \begin_deeper
 \begin_layout Description
-Derecha es el estándar predefinido
+Derecha es el estándar 
+\lang english
+in most cases
 \end_layout
 
 \begin_layout Description
@@ -27944,19 +27925,6 @@ Clase de documento
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-
-\series bold
-fleqn
-\series default
- y 
-\series bold
-leqno
-\series default
- también se pueden usar juntos.
- En ese caso se insertan ambas opciones, separadas por una coma.
-\end_layout
-
 \begin_layout Standard
 Los estilos escogidos se aplican a todas las ecuaciones presentadas del
  documento.
@@ -38362,6 +38330,7 @@ literal "false"
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
+name "Índice"
 literal "false"
 
 \end_inset

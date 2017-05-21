@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 543
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -216,7 +216,9 @@
 \paragraph_separation skip
 \defskip medskip
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style german
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle plain
@@ -27382,20 +27384,16 @@ Zentriert ist der voreingestellte Standard
 \end_layout
 
 \begin_layout Description
-Eingerückt dazu muss im Menü 
+Eingerückt dies kann im Menü 
 \family sans
 Dokument\SpecialChar menuseparator
 Einstellungen
 \family default
  unter 
 \family sans
-Dokumentklasse
+Mathe-Optionen
 \family default
- die Option 
-\series bold
-fleqn
-\series default
- eingeben werden
+ eingestellt werden
 \end_layout
 
 \begin_layout Standard
@@ -27403,91 +27401,34 @@ Wird
 \series bold
 Eingerückt
 \series default
- verwendet, kann mit der Länge 
-\series bold
-
-\backslash
-mathindent
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Befehle ! M ! 
-\backslash
-mathindent
-\end_layout
-
-\end_inset
-
- die Einrückung eingestellt werden.
- Soll der Abstand 15
-\begin_inset space \thinspace{}
-\end_inset
-
-mm betragen, gibt man im \SpecialChar LaTeX
--Vorspann die Zeile
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-setlength{
-\backslash
-mathindent}{15mm}
-\end_layout
-
-\begin_layout Standard
-ein.
- Wenn keine Länge vorgegeben wird, wird ein voreingestellter Wert verwendet.
- Dieser hängt von der verwendeten Dokumentklasse ab.
+ verwendet, kann die Einrückung eingestellt werden.
+ Der Standard-Wert hängt von der verwendeten Dokumentklasse ab.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Und zwei verschiedene Nummerierungsstile:
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Rechts ist der voreingestellte Standard
-\end_layout
-
-\begin_layout Description
-Links dazu muss im Menü 
+Und zwei verschiedene Nummerierungsstile, die im Menü 
 \family sans
 Dokument\SpecialChar menuseparator
 Einstellungen
 \family default
  unter 
 \family sans
-Dokumentklasse
+Mathe-Optionen
 \family default
- die Option 
-\series bold
-leqno
-\series default
- eingeben werden
+ eingestellt werden können:
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Rechts ist in den meisten Fällen der Standard
+\end_layout
+
+\begin_layout Description
+Links
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-
-\series bold
-fleqn
-\series default
- und 
-\series bold
-leqno
-\series default
- können auch gemeinsam verwendet werden.
- Dazu werden beide Optionen, durch ein Komma getrennt, hintereinander geschriebe
-n.
-\end_layout
-
 \begin_layout Standard
 Die eingestellten Stile gelten für alle abgesetzten Formeln eines Dokuments.
  Möchte man jedoch in einem Dokument sowohl zentrierte als auch eingerückte
@@ -37873,6 +37814,7 @@ captions<Dokumentsprache>
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
+name "Stichwortverzeichnis"
 literal "false"
 
 \end_inset

@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 543
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -208,7 +208,9 @@
 \paragraph_separation skip
 \defskip medskip
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style swiss
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle plain
@@ -27633,26 +27635,18 @@ Centré est le standard prédéfini;
 \end_layout
 
 \begin_layout Description
-Indenté: pour ce style, l'option 
-\series bold
-fleqn
-\series default
- doit être insérée dans la fenêtre de dialogue 
+Indenté 
+\lang english
+this can be set using
+\lang french
+ la fenêtre de dialogue 
 \family sans
 Document\SpecialChar menuseparator
 Paramètres
 \family default
  dans la rubrique 
 \family sans
-Classe
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-Document.
+Options mode math.
 \end_layout
 
 \begin_layout Standard
@@ -27660,96 +27654,40 @@ Quand on utilise
 \series bold
 Indenté
 \series default
-, la profondeur de l'indentation peut être ajustée en modifiant la longueur
- 
-\series bold
-
-\backslash
-mathindent
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Commandes ! M ! 
-\backslash
-mathindent
-\end_layout
-
-\end_inset
-
-.
- Par exemple, pour une distance de 15
-\begin_inset space \thinspace{}
-\end_inset
-
-mm, on insère la ligne de commande suivante dans le préambule \SpecialChar LaTeX
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-setlength{
-\backslash
-mathindent}{15mm}
-\end_layout
-
-\begin_layout Standard
-Si on ne spécifie pas de distance, une valeur prédéfinie est utilisée.
- Cette valeur dépend de la clase de document utilisée.
+, la profondeur de l'indentation peut être ajustée.
+ La valeur prédéfinie dépend de la clase de document utilisée.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Et deux styles différents de numérotation:
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Droite est le standard prédéfini;
-\end_layout
-
-\begin_layout Description
-Gauche: pour ce style, l'option 
-\series bold
-leqno
-\series default
- doit être insérée dans la fenêtre de dialogue 
+Et deux styles différents de numérotation 
+\lang english
+that can be set
+\lang french
+ dans la fenêtre de dialogue 
 \family sans
 Document\SpecialChar menuseparator
 Paramètres
 \family default
  dans la rubrique 
 \family sans
-Classe
-\begin_inset space ~
-\end_inset
+Options mode math
+\family default
+:
+\end_layout
 
-de
-\begin_inset space ~
-\end_inset
+\begin_deeper
+\begin_layout Description
+Droite est le standard 
+\lang english
+in most cases
+\end_layout
 
-Document
+\begin_layout Description
+Gauche
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-
-\series bold
-fleqn
-\series default
- et 
-\series bold
-leqno
-\series default
- peuvent être utilisés ensemble.
- Dans ce cas les deux options sont insérées, séparées par une virgule.
-\end_layout
-
 \begin_layout Standard
 Les styles choisis sont utilisés par toutes les formules du document.
  Quand il faut créer à la fois des formules centrées et des formules alignées,

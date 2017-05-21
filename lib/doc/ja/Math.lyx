@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 543
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -243,7 +243,9 @@ End
 \paragraph_separation skip
 \defskip medskip
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle plain
@@ -27097,110 +27099,76 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-行頭下げ これを使うには，
+行頭下げ 
+\lang english
+this can be set using the menu 
 \family sans
+\lang japanese
 文書\SpecialChar menuseparator
 設定
 \family default
-メニューの
+\lang english
+ under 
 \family sans
-文書クラス
+Math
+\begin_inset space ~
+\end_inset
+
+Options.
 \family default
-において，
-\series bold
-fleqn
-\series default
-オプションを指定しておかなくてはなりません．
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-行頭下げ
-\series default
-を用いる場合には，行頭下げの大きさを
-\series bold
-
-\backslash
-mathindent
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-こまんど@コマンド ! M ! 
-\backslash
-mathindent
-\end_layout
-
-\end_inset
-
-の値で調整することができます．これを15
-\begin_inset space \thinspace{}
-\end_inset
-
-mmにするには，\SpecialChar LaTeX
-プリアンブルに以下のコマンドを入れておきます．
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-setlength{
-\backslash
-mathindent}{15mm}
+\lang japanese
+．
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-When no length is specified, a predefined value will be used.
+When 
+\series bold
+\lang japanese
+行頭下げ
+\series default
+\lang english
+ is used, the indentation can be adjusted.
  The value depends on the used document class.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-また，以下の二つの連番様式があります．
+また，以下の二つの連番様式があります
+\lang english
+that can be set in the menu 
+\family sans
+\lang japanese
+文書\SpecialChar menuseparator
+設定
+\family default
+\lang english
+ under 
+\family sans
+Math
+\begin_inset space ~
+\end_inset
+
+Options
+\family default
+:
 \end_layout
 
 \begin_deeper
 \begin_layout Description
-右 事前に定義された標準です．
+右 
+\lang english
+is in most cases the default
+\lang japanese
+．
 \end_layout
 
 \begin_layout Description
-左 これを使うには，
-\family sans
-文書\SpecialChar menuseparator
-設定
-\family default
-メニューの
-\family sans
-文書クラス
-\family default
-において，
-\series bold
-leqno
-\series default
-オプションを指定しておかなくてはなりません．
+左
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-
-\series bold
-fleqn
-\series default
-と
-\series bold
-leqno
-\series default
-は，いっしょに指定することができます．両方のオプションを同時に入れる場合には，コンマで区切って下さい．
-\end_layout
-
 \begin_layout Standard
 これで選択した様式は，文書中のすべての別行立て数式に用いられます．もし，中央揃えと行頭下げの両様式を同一文書中で用いたい場合には，
 \series bold
@@ -37141,6 +37109,7 @@ literal "false"
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
+name "索引"
 literal "false"
 
 \end_inset

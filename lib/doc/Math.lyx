@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 543
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -204,7 +204,9 @@
 \paragraph_separation skip
 \defskip medskip
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle plain
@@ -27544,26 +27546,22 @@ There are two different alignment styles:
 
 \begin_deeper
 \begin_layout Description
-Centered is the predefined standard
+Centered is the predefined standard.
 \end_layout
 
 \begin_layout Description
-Indented for this the option 
-\series bold
-fleqn
-\series default
- must be inserted in the menu 
+Indented this can be set using the menu 
 \family sans
 Document\SpecialChar menuseparator
 Settings
 \family default
  under 
 \family sans
-Document
+Math
 \begin_inset space ~
 \end_inset
 
-Class
+Options.
 \end_layout
 
 \begin_layout Standard
@@ -27571,91 +27569,38 @@ When
 \series bold
 Indented
 \series default
- is used, the indentation can be adjusted with the length 
-\series bold
-
-\backslash
-mathindent
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Commands ! M ! 
-\backslash
-mathindent
-\end_layout
-
-\end_inset
-
-.
- Should the distance be 15
-\begin_inset space \thinspace{}
-\end_inset
-
-mm, the following command line is inserted in the \SpecialChar LaTeX
--preamble
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-setlength{
-\backslash
-mathindent}{15mm}
-\end_layout
-
-\begin_layout Standard
-When no length is specified, a predefined value will be used.
- The value depends on the used document class.
+ is used, the indentation can be adjusted.
+ The default value depends on the used document class.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-And two different numbering styles:
-\end_layout
-
-\begin_deeper
-\begin_layout Description
-Right is the predefined standard
-\end_layout
-
-\begin_layout Description
-Left for this the option 
-\series bold
-leqno
-\series default
- must be inserted in the menu 
+And two different numbering styles that can be set in the menu 
 \family sans
 Document\SpecialChar menuseparator
 Settings
 \family default
  under 
 \family sans
-Document
+Math
 \begin_inset space ~
 \end_inset
 
-Class
+Options
+\family default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Right is in most cases the default.
+\end_layout
+
+\begin_layout Description
+Left
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-
-\series bold
-fleqn
-\series default
- and 
-\series bold
-leqno
-\series default
- can also be used together.
- In this case both options are inserted, separated by a comma.
-\end_layout
-
 \begin_layout Standard
 The chosen styles are used for all displayed formulas of the document.
  When both, centered and indented formulas should be created in a document,
@@ -37908,6 +37853,7 @@ literal "false"
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
+name "Index"
 literal "false"
 
 \end_inset
