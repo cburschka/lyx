@@ -503,7 +503,7 @@ def PrepareShortcuts():
                 if m:
                     bindfound = True
                     val = m.group(1)
-                    if not bindings[val] is None:
+                    if val in bindings:
                         if bindings[val] != "":
                             tmp.write("\\bind \"" + val + "\" \"" + bindings[val] + "\"\n")
                             bindings[val] = ""
