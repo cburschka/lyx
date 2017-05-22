@@ -1,5 +1,8 @@
 # Basic test for searching with regular expressions
-
+UseShortcut "C-F20" "regexp-mode"
+UseShortcut "C-F21" "command-sequence dialog-show findreplaceadv ; buffer-end ; buffer-begin-select ; char-delete-forward ;"
+PrepareShortcuts
+#
 Lang sk_SK.utf8
 TestBegin test.lyx -dbg key,find > findadv-08.loga.txt 2>&1
 CO: findadv-08.ctrl
@@ -8,39 +11,38 @@ CP: Key (queried) [action=buffer-begin][Ctrl+Home]
 KK: Nel mezzo del cammin di nostra vita\[Return]
 KK: mi ritrovai per una selva oscura\C\[Home]
 KK: \Axbuffer-write\[Return]
-KK: \Axdialog-show findreplaceadv\[Return]
+KK: \C\[F21]
 KK: o
-KK: \Axregexp-mode\[Return]
+KK: \C\[F20]
 KK: .* a\[Return]
 CP: Putting selection at .*idx: 0 par: 0 pos: 8\n with len: 8
 #
 CN: Started findadv-08 2
 CP: Key (queried) [action=buffer-begin][Ctrl+Home]
-KK: \[Escape]\C\[Home]\Axdialog-show findreplaceadv\[Return]
-KK: \[Delete]
+KK: \[Escape]\C\[Home]\C\[F21]
 KK: o
-KK: \Axregexp-mode\[Return]
+KK: \C\[F20]
 KK: [\\w]* a
-# Without the slowing, lyx crashes
-KD: 100
 # select whole words
-KK: \Ac\Ac
+KK: \Ae
 # search next
 KK: \Al
 KK: \[Escape]
 #KD: 1
+Cr: ^.*Putting
 CP: Putting selection at .*idx: 0 par: 1 pos: 26\n with len: 6
 #
 CN: Started findadv-08 3
 CP: Key (queried) [action=buffer-begin][Ctrl+Home]
-KK: \[Escape]
-KK: \C\[Home]\Axdialog-show findreplaceadv\[Return]
-KK: \[Delete]
-KK: \Axregexp-mode\[Return]
+KK: \[Escape]\C\[Home]\C\[F21]
+KK: \C\[F20]
 KK: .* 
 KK: \Al\Al\Al
+Cr: ^.*Putting
 CP: Putting selection at .*idx: 0 par: 0 pos: 0\n with len: 3
+Cr: ^.*Putting
 CP: Putting selection at .*idx: 0 par: 0 pos: 4\n with len: 5
+Cr: ^.*Putting
 CP: Putting selection at .*idx: 0 par: 0 pos: 10\n with len: 3
 TestEnd
 Lang C
