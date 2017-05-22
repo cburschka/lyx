@@ -25,7 +25,6 @@ print('Beginning keytest.py')
 FNULL = open('/dev/null', 'w')
 
 key_delay = ''
-bindings = {}
 
 # Ignore status == "dead" if this is set. Used at the last commands after "\Cq"
 dead_expected = False
@@ -472,59 +471,74 @@ def RaiseWindow():
     intr_system("wmctrl -R '"+lyx_window_name+"' ;sleep 0.1")
     system_retry(30, "wmctrl -i -a '"+lyx_window_name+"'")
 
-shortcut_entry = re.compile(r'^\s*"([^"]+)"\s*\"([^"]+)\"')
-def UseShortcut(c):
-    m = shortcut_entry.match(c)
-    if m:
-        sh = m.group(1)
-        fkt = m.group(2)
-        bindings[sh] = fkt
-    else:
-        die(1, "cad shortcut spec(" + c + ")")
+class Shortcuts:
 
-def PrepareShortcuts():
-    bind = re.compile(r'^\s*\\bind\s+"([^"]+)"')
-    if lyx_userdir_ver is None:
-        dir = lyx_userdir
-    else:
-        dir = lyx_userdir_ver
-    if not dir is None:
-        tmp = tempfile.NamedTemporaryFile(suffix='.bind', delete=False)
-        try:
-            old = open(dir + '/bind/user.bind', 'r')
-        except IOError as e:
-            old = None
-        if not old is None:
-            lines = old.read().split("\n")
-            old.close()
-            bindfound = False
-            for line in lines:
-                m = bind.match(line)
-                if m:
-                    bindfound = True
-                    val = m.group(1)
-                    if val in bindings:
-                        if bindings[val] != "":
-                            tmp.write("\\bind \"" + val + "\" \"" + bindings[val] + "\"\n")
-                            bindings[val] = ""
-                    else:
-                        tmp.write(line + '\n')
-                elif not bindfound:
-                    tmp.write(line + '\n')
+    def __init__(self):
+        self.shortcut_entry = re.compile(r'^\s*"([^"]+)"\s*\"([^"]+)\"')
+        self.bindings = {}
+        self.bind = re.compile(r'^\s*\\bind\s+"([^"]+)"')
+        if lyx_userdir_ver is None:
+            self.dir = lyx_userdir
         else:
-            tmp.writelines(
-                '## This file is used for keytests only\n\n' +
-                'Format 4\n\n'
-            )
-        for val in bindings:
-            if not bindings[val] is None:
-                if  bindings[val] != "":
-                    tmp.write("\\bind \"" + val + "\" \"" + bindings[val] + "\"\n")
-                    bindings[val] = ""
-        tmp.close()
-        shutil.move(tmp.name, dir + '/bind/user.bind')
-    else:
-        print("User dir not specified")
+            self.dir = lyx_userdir_ver
+
+    def __UseShortcut(self, c):
+        m = self.shortcut_entry.match(c)
+        if m:
+            sh = m.group(1)
+            fkt = m.group(2)
+            self.bindings[sh] = fkt
+        else:
+            die(1, "cad shortcut spec(" + c + ")")
+
+    def __PrepareShortcuts(self):
+        if not self.dir is None:
+            tmp = tempfile.NamedTemporaryFile(suffix='.bind', delete=False)
+            try:
+                old = open(self.dir + '/bind/user.bind', 'r')
+            except IOError as e:
+                old = None
+            if not old is None:
+                lines = old.read().split("\n")
+                old.close()
+                bindfound = False
+                for line in lines:
+                    m = self.bind.match(line)
+                    if m:
+                        bindfound = True
+                        val = m.group(1)
+                        if val in self.bindings:
+                            if self.bindings[val] != "":
+                                tmp.write("\\bind \"" + val + "\" \"" + self.bindings[val] + "\"\n")
+                                self.bindings[val] = ""
+                        else:
+                            tmp.write(line + '\n')
+                    elif not bindfound:
+                        tmp.write(line + '\n')
+            else:
+                tmp.writelines(
+                    '## This file is used for keytests only\n\n' +
+                    'Format 4\n\n'
+                )
+            for val in self.bindings:
+                if not self.bindings[val] is None:
+                    if  self.bindings[val] != "":
+                        tmp.write("\\bind \"" + val + "\" \"" + self.bindings[val] + "\"\n")
+                        self.bindings[val] = ""
+            tmp.close()
+            shutil.move(tmp.name, self.dir + '/bind/user.bind')
+        else:
+            print("User dir not specified")
+
+    def dispatch(self, c):
+        if c[0:12] == 'UseShortcut ':
+            self.__UseShortcut(c[12:])
+        elif c == 'PrepareShortcuts':
+            print('Preparing usefull sortcuts for tests')
+            self.__PrepareShortcuts()
+        else:
+            return False
+        return True
 
 lyx_pid = os.environ.get('LYX_PID')
 print('lyx_pid: ' + str(lyx_pid) + '\n')
@@ -625,6 +639,7 @@ write_commands = True
 failed = False
 lineempty = re.compile(r'^\s*$')
 marked = ControlFile()
+shortcuts = Shortcuts()
 while not failed:
     #intr_system('echo -n LOADAVG:; cat /proc/loadavg')
     c = x.getCommand()
@@ -637,6 +652,8 @@ while not failed:
     outfile.writelines(c + '\n')
     outfile.flush()
     if marked.dispatch(c):
+        continue
+    elif shortcuts.dispatch(c):
         continue
     if c[0] == '#':
         print("Ignoring comment line: " + c)
@@ -696,11 +713,6 @@ while not failed:
     elif c == 'RaiseLyx':
         print('Raising Lyx')
         RaiseWindow()
-    elif c == 'PrepareShortcuts':
-        print('Preparing usefull sortcuts for tests')
-        PrepareShortcuts()
-    elif c[0:12] == 'UseShortcut ':
-        UseShortcut(c[12:])
     elif c[0:4] == 'KK: ':
         if lyx_exists():
             sendKeystringRT(c[4:], lyx_pid)
@@ -834,7 +846,7 @@ while not failed:
         print("Unrecognised Command '" + c + "'\n")
         failed = True
 
-print("Test case terminated: ")
+print("Test case terminated: ", end = '')
 if failed:
     die(1,"FAIL")
 else:
