@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-05-15 07:19+0200\n"
-"PO-Revision-Date: 2017-05-15 05:54+0000\n"
+"POT-Creation-Date: 2017-05-22 00:50+0200\n"
+"PO-Revision-Date: 2017-05-22 16:25+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1576,7 +1576,7 @@ msgstr "Hľadať len celé slová"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:115
 msgid "W&hole words"
-msgstr "&Celé slová"
+msgstr "C&elé slová"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:131
 msgid "Replace and find next occurrence [Enter]"
@@ -1606,7 +1606,7 @@ msgstr "Nahradiť každý výskyt naraz"
 #: src/frontends/qt4/ui/SearchUi.ui:189
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:165
 msgid "Replace &All"
-msgstr "Nahradiť vš&etko"
+msgstr "Nahradiť Všet&ko"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:173
 msgid "S&ettings"
@@ -24108,22 +24108,15 @@ msgstr "Inkscape"
 msgid "Inkscape figure"
 msgstr "Inkscape obrázok"
 
-#: lib/xtemplates/inkscape.xtemplate:36
+#: lib/xtemplates/inkscape.xtemplate:35
 msgid ""
 "An Inkscape figure.\n"
-"This template should work flawlessly with Inkscape 0.48. \n"
-"For Inkscape 0.91, there is a (reported) bug in the \n"
-"LaTeX + PDF output which makes a workaround necessary, \n"
-"see Embedded Objects manual.\n"
 "Note that using this template automatically uses the \n"
 "document text in the image (like with the Xfig template).\n"
 msgstr ""
-"Obrázok inkscapu.\n"
-"Táto šablóna by mala pracovať bezchybne s inkscape 0.48. \n"
-"Pre inkscape 0.91 je (reportovaná) vada vo výstupoch pre LaTeX + PDF\n"
-"ktoré nútia robiť obchvaty, viď manuál Vložené Objekty.\n"
-"Všimnite si, že používaním tejto šablóny sa automaticky používa\n"
-"text dokumentu v obrázku (podobne ako s Xfig šablónou).\n"
+"Inkscape obrázok.\n"
+"Berte na vedomie, že táto šablóna automatický používa\n"
+"dokumentový text v obrázku (podobne ako v Xfig-šablóne).\n"
 
 #: lib/xtemplates/lilypond.xtemplate:15 lib/xtemplates/lilypond.xtemplate:21
 msgid "Lilypond typeset music"
@@ -31116,10 +31109,10 @@ msgstr "Všetky súbory (*)"
 #: src/frontends/qt4/GuiView.cpp:3785
 #, c-format
 msgid ""
-"Any changes will be lost. Are you sure you want to load the version on disk "
-"of the document %1$s?"
+"The current version will be lost. Are you sure you want to load the version "
+"on disk of the document %1$s?"
 msgstr ""
-"Všetky zmeny sa stratia. Naozaj sa chcete vrátiť ku uloženej verzii "
+"Bude to strata aktuálnej verzie. Naozaj sa chcete vrátiť ku uloženej verzii "
 "dokumentu %1$s?"
 
 #: src/frontends/qt4/GuiView.cpp:3788
@@ -31131,9 +31124,9 @@ msgstr ""
 "Všetky zmeny sa stratia. Naozaj sa chcete vrátiť k pôvodnej verzii dokumentu "
 "%1$s ?"
 
-#: src/frontends/qt4/GuiView.cpp:3791
-msgid "Revert to file on disk?"
-msgstr "Vrátiť sa k uloženému súboru?"
+#: src/frontends/qt4/GuiView.cpp:3795
+msgid "Revert to saved document?"
+msgstr "Vrátiť na uložený dokument?"
 
 #: src/frontends/qt4/GuiView.cpp:3817
 msgid "Saving all documents..."
@@ -33121,6 +33114,25 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid ""
+#~ "An Inkscape figure.\n"
+#~ "This template should work flawlessly with Inkscape 0.48. \n"
+#~ "For Inkscape 0.91, there is a (reported) bug in the \n"
+#~ "LaTeX + PDF output which makes a workaround necessary, \n"
+#~ "see Embedded Objects manual.\n"
+#~ "Note that using this template automatically uses the \n"
+#~ "document text in the image (like with the Xfig template).\n"
+#~ msgstr ""
+#~ "Obrázok inkscapu.\n"
+#~ "Táto šablóna by mala pracovať bezchybne s inkscape 0.48. \n"
+#~ "Pre inkscape 0.91 je (reportovaná) vada vo výstupoch pre LaTeX + PDF\n"
+#~ "ktoré nútia robiť obchvaty, viď manuál Vložené Objekty.\n"
+#~ "Všimnite si, že používaním tejto šablóny sa automaticky používa\n"
+#~ "text dokumentu v obrázku (podobne ako s Xfig šablónou).\n"
+
+#~ msgid "Revert to file on disk?"
+#~ msgstr "Vrátiť sa k uloženému súboru?"
 
 #~ msgid "Two-column table"
 #~ msgstr "Dvojstĺpcová tabuľka"
@@ -37370,3 +37382,10 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Použiť balík algorithm2e pre plávajúce algoritmy namiesto LyXovej "
 #~ "samohonky plávajúcich algoritmov."
+
+#~ msgid ""
+#~ "Any changes will be lost. Are you sure you want to load the version on disk "
+#~ "of the document %1$s?"
+#~ msgstr ""
+#~ "Všetky zmeny sa stratia. Naozaj sa chcete vrátiť ku uloženej verzii "
+#~ "dokumentu %1$s?"
