@@ -43,8 +43,6 @@ public:
 	///
 	bool hasSettings() const { return true; }
 	///
-	bool inheritFont() const { return true; }
-	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
 	void doDispatch(Cursor & cur, FuncRequest & cmd);

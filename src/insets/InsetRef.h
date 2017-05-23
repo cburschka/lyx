@@ -45,11 +45,9 @@ public:
 	docstring toolTip(BufferView const &, int, int) const
 		{ return tooltip_; }
 	///
-	docstring getTOCString() const;
+  docstring getTOCString() const;
 	///
 	bool hasSettings() const { return true; }
-	///
-	bool inheritFont() const { return true; }
 	///
 	InsetCode lyxCode() const { return REF_CODE; }
 	///

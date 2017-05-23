@@ -48,8 +48,6 @@ public:
 	///
 	bool hasSettings() const { return true; }
 	///
-	bool inheritFont() const { return true; }
-	///
 	InsetCode lyxCode() const { return BIBTEX_CODE; }
 	///
 	DisplayType display() const { return AlignCenter; }
