@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-04-16 19:31+0200\n"
-"PO-Revision-Date: 2017-04-16 19:13+0000\n"
+"POT-Creation-Date: 2017-05-23 16:37+0200\n"
+"PO-Revision-Date: 2017-05-23 15:22+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1416,7 +1416,7 @@ msgstr "Hľadať len celé slová"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:115
 msgid "W&hole words"
-msgstr "&Celé slová"
+msgstr "C&elé slová"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:131
 msgid "Replace and find next occurrence [Enter]"
@@ -1446,7 +1446,7 @@ msgstr "Nahradiť každý výskyt naraz"
 #: src/frontends/qt4/ui/SearchUi.ui:189
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:165
 msgid "Replace &All"
-msgstr "Nahradiť vš&etko"
+msgstr "Nahradiť Všet&ko"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:173
 msgid "S&ettings"
@@ -6336,7 +6336,7 @@ msgstr "V Titule"
 
 #: lib/layouts/RJournal.layout:3
 msgid "R Journal"
-msgstr "R Denník"
+msgstr "R Žurnál"
 
 #: lib/layouts/RJournal.layout:4 lib/layouts/ctex-report.layout:4
 #: lib/layouts/extreport.layout:4 lib/layouts/jreport.layout:4
@@ -8072,7 +8072,7 @@ msgstr "Poznámka"
 
 #: lib/layouts/apa6.layout:274
 msgid "AuthorNote"
-msgstr "PoznámkaAutor"
+msgstr "AuthorNote"
 
 #: lib/layouts/apa6.layout:293
 msgid "Author Note:"
@@ -8080,7 +8080,7 @@ msgstr "Poznámka Autor:"
 
 #: lib/layouts/apa6.layout:307 lib/layouts/egs.layout:355
 msgid "Journal"
-msgstr "Denník"
+msgstr "Žurnál"
 
 #: lib/layouts/apa6.layout:308 lib/layouts/apa6.layout:316
 #: lib/layouts/apa6.layout:325 lib/layouts/apa6.layout:333
@@ -9811,7 +9811,7 @@ msgstr "Príslušenstvo"
 
 #: lib/layouts/egs.layout:368
 msgid "Journal:"
-msgstr "Denník:"
+msgstr "Žurnál:"
 
 #: lib/layouts/egs.layout:377
 msgid "msnumber"
@@ -11676,7 +11676,7 @@ msgstr "podať-do"
 
 #: lib/layouts/iopart.layout:241
 msgid "submit to paper:"
-msgstr "podať do Journal:"
+msgstr "podať do spisu:"
 
 #: lib/layouts/iopart.layout:267
 msgid "Bibliography (plain)"
@@ -14284,7 +14284,7 @@ msgstr "Námet"
 
 #: lib/layouts/singlecol-new.layout:3
 msgid "Inderscience 9.5 x 6.5 Journals"
-msgstr "Inderscience časopisy (9.5 x 6.5)"
+msgstr "Inderscience 9.5 x 6.5 Časopisy"
 
 #: lib/layouts/singlecol.layout:3
 msgid "Inderscience Journals (Obsolete Version)"
@@ -15783,11 +15783,11 @@ msgstr "Celá Šírka"
 
 #: lib/layouts/tufte-book.layout:228
 msgid "MarginTable"
-msgstr "Okrajná tabuľka"
+msgstr "Krajná tabuľka"
 
 #: lib/layouts/tufte-book.layout:244
 msgid "MarginFigure"
-msgstr "OkrajnýObrázok"
+msgstr "KrajnýObrázok"
 
 #: lib/layouts/tufte-handout.layout:3
 msgid "Tufte Handout"
@@ -16781,7 +16781,7 @@ msgstr "Použiť Systém Computer Algebra"
 
 #: lib/ui/stdcontext.inc:87 lib/ui/stdcontext.inc:105
 msgid "Next Cross-Reference|N"
-msgstr "Ďalšia krížová referencia|r"
+msgstr "Ďalšia krížová referencia|o"
 
 #: lib/ui/stdcontext.inc:88
 msgid "Go to Label|G"
@@ -16813,23 +16813,23 @@ msgstr "Formátovaná Referencia|t"
 
 #: lib/ui/stdcontext.inc:96
 msgid "Textual Reference|x"
-msgstr "Textová Referencia"
+msgstr "Textová Referencia|x"
 
-#: lib/ui/stdcontext.inc:98 lib/ui/stdcontext.inc:110 lib/ui/stdcontext.inc:120
-#: lib/ui/stdcontext.inc:128 lib/ui/stdcontext.inc:137
-#: lib/ui/stdcontext.inc:148 lib/ui/stdcontext.inc:155
-#: lib/ui/stdcontext.inc:244 lib/ui/stdcontext.inc:262
-#: lib/ui/stdcontext.inc:289 lib/ui/stdcontext.inc:394
-#: lib/ui/stdcontext.inc:407 lib/ui/stdcontext.inc:459
-#: lib/ui/stdcontext.inc:484 lib/ui/stdcontext.inc:507
-#: lib/ui/stdcontext.inc:518 lib/ui/stdcontext.inc:526
-#: lib/ui/stdcontext.inc:536 lib/ui/stdcontext.inc:544
-#: lib/ui/stdcontext.inc:552 lib/ui/stdcontext.inc:560
-#: lib/ui/stdcontext.inc:573 lib/ui/stdcontext.inc:583
-#: lib/ui/stdcontext.inc:604 lib/ui/stdcontext.inc:612
-#: lib/ui/stdcontext.inc:658 lib/ui/stdmenus.inc:542
+#: lib/ui/stdcontext.inc:98 lib/ui/stdcontext.inc:110
+#: lib/ui/stdcontext.inc:120 lib/ui/stdcontext.inc:128
+#: lib/ui/stdcontext.inc:137 lib/ui/stdcontext.inc:148
+#: lib/ui/stdcontext.inc:155 lib/ui/stdcontext.inc:244
+#: lib/ui/stdcontext.inc:262 lib/ui/stdcontext.inc:289
+#: lib/ui/stdcontext.inc:394 lib/ui/stdcontext.inc:407
+#: lib/ui/stdcontext.inc:459 lib/ui/stdcontext.inc:484
+#: lib/ui/stdcontext.inc:507 lib/ui/stdcontext.inc:518
+#: lib/ui/stdcontext.inc:526 lib/ui/stdcontext.inc:536
+#: lib/ui/stdcontext.inc:544 lib/ui/stdcontext.inc:552
+#: lib/ui/stdcontext.inc:560 lib/ui/stdcontext.inc:573
+#: lib/ui/stdcontext.inc:583 lib/ui/stdcontext.inc:604
+#: lib/ui/stdcontext.inc:612 lib/ui/stdcontext.inc:658 lib/ui/stdmenus.inc:542
 msgid "Settings...|S"
-msgstr "Nastavenia…|a"
+msgstr "Nastavenia…|N"
 
 #: lib/ui/stdcontext.inc:106
 msgid "Go Back|G"
@@ -29952,7 +29952,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiView.cpp:3717
 msgid "Revert to saved document?"
-msgstr "Vrátiť sa k uloženej verzii?"
+msgstr "Vrátiť na uložený dokument?"
 
 #: src/frontends/qt4/GuiView.cpp:3743
 msgid "Saving all documents..."
