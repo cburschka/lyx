@@ -1,6 +1,8 @@
 # .lyx file is from http://www.lyx.org/trac/ticket/8370#comment:8
 #
 Lang en_US.utf8
+CO: bug-8370.ctrl
 TestBegin -dbg key ../bug-8370.lyx > bug-8370.loga.txt 2>&1
 KK: \Axcommand-sequence change-next; change-reject; change-next\[Return]
 TestEnd
+Assert searchPatterns.pl base=bug-8370

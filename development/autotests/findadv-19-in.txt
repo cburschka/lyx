@@ -1,11 +1,13 @@
 # Check that searching for regexp "([a-z]+)\s\1" finds duplicate words.
 
 Lang it_IT.utf8
+CO: findadv-19.ctrl
 TestBegin test.lyx -dbg key,find > findadv-19.loga.txt 2>&1
 KK: Hello world world!\C\[Home]
 KK: \Cs
 KK: \CF
 KK: \Axregexp-mode\[Return]([a-z]+)\\s\\1\[Return]
+CP: Putting selection at .*idx: 0 par: 0 pos: 6\n with len: 11
 TestEnd
 Lang C
-Assert pcregrep -M 'Putting selection at .*idx: 0 par: 0 pos: 6\n with len: 11' findadv-19.loga.txt
+Assert searchPatterns.pl base=findadv-19

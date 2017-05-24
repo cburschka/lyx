@@ -19,9 +19,11 @@ sub convertPattern($);	      # check for regex, comment
 sub convertSimplePattern($);  # escape some chars, (e.g. ']' ==> '\]')
 sub printInvalid($$);	      # display lines which should not match
 
+my ($logfile, $patternsfile, $basename, $newbase) = (undef, undef, undef);
 my %options = (
-  "log" => undef,
-  "patterns" => undef,
+  "log" => \$logfile,
+  "patterns" => \$patternsfile,
+  "base" => \$basename,
     );
 
 my @patterns = ();
@@ -33,11 +35,27 @@ for my $arg (@ARGV) {
   if ($arg =~ /^([^=]+)=(.+)$/) {
     my ($what, $val) = ($1, $2);
     if (exists($options{$what})) {
-      if (defined($options{$what})) {
-	print "Value for \"$what\" already defined\n";
-	&sexit(1);
+      if (defined(${$options{$what}})) {
+	print "Param \"$what\" already handled\n";
+	sexit(1);
       }
-      $options{$what} = $val;
+      ${$options{$what}} = $val;
+      if ($what ne "base") {
+	if ($what eq "log") {
+	  if ($logfile =~ /^(.+)\.log[a-z]?\.txt$/) {
+	    $newbase = $1;
+	  }
+	}
+	elsif ($what eq "patterns") {
+	  if ($patternsfile =~ /^(.+)\.ctrl$/) {
+	    $newbase = $1;
+	  }
+	}
+	else {
+	  print "Software error, unhandled param \"$what\"\n";
+	  &sexit(1);
+	}
+      }
     }
     else {
       print "Unknown param \"$what\"\n";
@@ -50,19 +68,37 @@ for my $arg (@ARGV) {
   }
 }
 
+$basename = $newbase if (! defined($basename));
+if (defined($basename)) {
+  for my $k (keys %options) {
+    next if ($k eq "base");
+    if (! defined(${$options{$k}})) {
+      if ($k eq "log") {
+	$logfile = $basename . ".loga.txt";
+      }
+      elsif ($k eq "patterns") {
+	$patternsfile = $basename . ".ctrl";
+      }
+    }
+  }
+}
 for my $k (keys %options) {
-  if (! defined($options{$k})) {
+  next if ($k eq "base");
+  if (! defined(${$options{$k}})) {
+    print "Param \"$k\" not defined\n";
     &sexit(1);
   }
-  if (! -r $options{$k}) {
-    print "File \"$options{$k}\" is not readable\n";
+  if (! -r ${$options{$k}}) {
+    print "File \"${$options{$k}}\" is not readable\n";
     &sexit(1);
   }
 }
 
 # Read patterns
-&readPatterns($options{"patterns"});
-if (&processLogFile($options{"log"}) > 0) {
+print "\nControlfile\t= $patternsfile\n";
+print "Log-file\t= $logfile\n\n";
+&readPatterns($patternsfile);
+if (&processLogFile($logfile) > 0) {
   print "Errors occured, exiting\n";
   exit(1);
 }
@@ -74,7 +110,9 @@ sub syntax()
   print "Syntax:\n";
   print " $0";
   for my $k (keys %options) {
-    print " $k=<filename>";
+    my $type = "filename";
+    $type = "basename" if ($k eq "base");
+    print " \[$k=<$type>\]";
   }
   print "\n";
 }

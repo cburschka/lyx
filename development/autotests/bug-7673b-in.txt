@@ -1,6 +1,8 @@
 # based on the steps to reproduce #7673 in the original report
 #
 Lang en_US.utf8
+CO: bug-7673b.ctrl
 TestBegin -dbg key > bug-7673b.loga.txt 2>&1
 KK: \Axcommand-sequence buffer-new; layout Itemize; self-insert a; paragraph-break; depth-increment; self-insert b; up; char-delete-backward; down\[Return]
 TestEnd
+Assert searchPatterns.pl base=bug-7673b

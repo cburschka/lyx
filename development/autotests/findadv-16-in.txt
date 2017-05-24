@@ -1,31 +1,36 @@
 # Verify matches in *-environments with ignore-format off
 # (gather environment comes in the *-form after mutate)
+UseShortcut "C-F24" "math-mutate gather"
+UseShortcut "C-F21" "command-sequence dialog-show findreplaceadv ; buffer-end ; buffer-begin-select ; char-delete-forward ;"
+PrepareShortcuts
 #
 Lang sk_SK.utf8
-TestBegin test.lyx -dbg key,find > findadv-16.loga.txt 2>&1
 CO: findadv-16.ctrl
+TestBegin test.lyx -dbg key,find > findadv-16.loga.txt 2>&1
 CN: Part 1
-KK: \CM\Axmath-mutate gather\[Return]
+KK: \CM\C\[F24]
 KK: x^2 +x^2\C\[Home]
 KK: \Cs
 KK: \CF
 # Uncheck ignore format
 KK: \At\Ai\Ah
-KK: \CM\Axmath-mutate gather\[Return]
+KK: \CM\C\[F24]
 KK: x^2\[Return]
+Cr: ^.*Putting
 CP: Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 0\n with len: 1
 
 #
 CN: Part 2
 KK: \[Escape]\C\[Home]
 CP: Key (queried) [action=buffer-begin][Ctrl+Home]
-KK: \CF
-KK: \[Delete]
-KK: \CM\Axmath-mutate gather\[Return]
+KK: \C\[F21]
+KK: \CM\C\[F24]
 KK: x^2\[Return]\[Return]
+Cr: ^.*Putting
 CP: Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 0\n with len: 1
+Cr: ^.*Putting
 CP: Putting selection at .*idx: 0 par: 0 pos: 0\n.*idx: 0 par: 0 pos: 2\n with len: 1
 TestEnd
 Lang C
-Assert searchPatterns.pl log=findadv-16.loga.txt patterns=findadv-16.ctrl
+Assert searchPatterns.pl base=findadv-16
 

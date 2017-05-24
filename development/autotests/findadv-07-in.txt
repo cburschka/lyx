@@ -1,8 +1,8 @@
 # Basic test for searching with par-style awareness
 
 Lang sk_SK.utf8
-TestBegin test.lyx -dbg key,find > findadv-07.loga.txt 2>&1
 CO: findadv-07.ctrl
+TestBegin test.lyx -dbg key,find > findadv-07.loga.txt 2>&1
 CN: Part 1
 KK: foo bar\[Return]
 #select itemized
@@ -30,4 +30,4 @@ KK: bar\[Return]
 CP: Putting selection at .*idx: 0 par: 1 pos: 4\n with len: 3
 TestEnd
 Lang C
-Assert searchPatterns.pl log=findadv-07.loga.txt patterns=findadv-07.ctrl
+Assert searchPatterns.pl base=findadv-07

@@ -1,6 +1,7 @@
 # Basic test on refactoring of mathematics notation
 #
 Lang it_IT.utf8
+CO: findadv-02.ctrl
 TestBegin test.lyx -dbg key,find > findadv-02.loga.txt 2>&1
 KK: \Cm
 KK: x^(a) +\\frac 1+x^(a) \[Down]1-x^(a)  \C\[Home]
@@ -10,5 +11,7 @@ KK: \Cmx_a
 KK: \[Return]\[Return]\[Return]
 KK: \Cs
 KK: \Axbuffer-export latex\[Return]
+CR: ^\$x_\{a\}\+\\frac\{1\+x_\{a\}\}\{1-x\^\{\(a\)\}\}\$$
+CC:
 Lang C
-TestEnd grep '^\$x_{a}+\\frac{1+x_{a}}{1-x\^{(a)}}\$' test.tex
+TestEnd searchPatterns.pl base=findadv-02 log=test.tex

@@ -2,9 +2,14 @@
 # Crash in using function 'word-findadv'
 
 Lang C
+CO: findadv-crash.ctrl
 TestBegin test.lyx -dbg key,find > findadv-crash.loga.txt 2>&1
 KK: abcd
 KK: \Axword-findadv a\[Return]
+CP: action=command-execute
+Cr: SIGSEGV signal caught
+CP: action=lyx-quit
 TestEnd
 Lang C
-Assert ! pcregrep 'SIGSEGV signal caught' findadv-crash.loga.txt
+Assert searchPatterns.pl log=findadv-crash.loga.txt patterns=findadv-crash.ctrl
+

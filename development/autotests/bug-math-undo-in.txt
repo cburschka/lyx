@@ -2,9 +2,10 @@
 # 
 
 Lang C
+CO: bug-math-undo.ctrl
 TestBegin -dbg key test.lyx > bug-math-undo.loga.txt 2>&1
 KK: \Amm\\frac \\sqrt \Cz
 KK: \[Return]
+Cp: SIGSEGV
 TestEnd
-Lang C
-Assert ! pcregrep -M 'SIGSEGV' bug-math-undo.loga.txt
+Assert searchPatterns.pl base=bug-math-undo

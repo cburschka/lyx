@@ -1,8 +1,10 @@
 # see http://www.lyx.org/trac/ticket/7673#comment:15
 #
 Lang en_US.utf8
+CO: bug-7673.ctrl
 TestBegin -dbg key ../bug-7673.lyx > bug-7673.loga.txt 2>&1
 # 'outline-in' was needed to reproduce the crash on some commits when bisecting
 KK: \Axcommand-sequence repeat 3 char-forward; outline-in; down; down\[Return]
+Cp: SIGSEGV
 TestEnd
-Assert ! pcregrep -M 'SIGSEGV' bug-7673.loga.txt
+Assert searchPatterns.pl base=bug-7673

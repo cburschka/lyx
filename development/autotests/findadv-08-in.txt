@@ -4,9 +4,10 @@ UseShortcut "C-F21" "command-sequence dialog-show findreplaceadv ; buffer-end ; 
 PrepareShortcuts
 #
 Lang sk_SK.utf8
-TestBegin test.lyx -dbg key,find > findadv-08.loga.txt 2>&1
 CO: findadv-08.ctrl
-CN: Started findadv-08 1
+TestBegin test.lyx -dbg key,find > findadv-08.loga.txt 2>&1
+CN: Part 1
+Cr: ^.*Putting
 CP: Key (queried) [action=buffer-begin][Ctrl+Home]
 KK: Nel mezzo del cammin di nostra vita\[Return]
 KK: mi ritrovai per una selva oscura\C\[Home]
@@ -17,27 +18,28 @@ KK: \C\[F20]
 KK: .* a\[Return]
 CP: Putting selection at .*idx: 0 par: 0 pos: 8\n with len: 8
 #
-CN: Started findadv-08 2
+CN: Started Part 2
 CP: Key (queried) [action=buffer-begin][Ctrl+Home]
 KK: \[Escape]\C\[Home]\C\[F21]
 KK: o
 KK: \C\[F20]
 KK: [\\w]* a
+KD: 100
 # select whole words
 KK: \Ae
 # search next
 KK: \Al
 KK: \[Escape]
-#KD: 1
+KD: 1
 Cr: ^.*Putting
 CP: Putting selection at .*idx: 0 par: 1 pos: 26\n with len: 6
 #
-CN: Started findadv-08 3
+CN: Part 3
 CP: Key (queried) [action=buffer-begin][Ctrl+Home]
 KK: \[Escape]\C\[Home]\C\[F21]
 KK: \C\[F20]
 KK: .* 
-KK: \Al\Al\Al
+KK: \[Return]\[Return]\[Return]
 Cr: ^.*Putting
 CP: Putting selection at .*idx: 0 par: 0 pos: 0\n with len: 3
 Cr: ^.*Putting
@@ -46,5 +48,5 @@ Cr: ^.*Putting
 CP: Putting selection at .*idx: 0 par: 0 pos: 10\n with len: 3
 TestEnd
 Lang C
-Assert searchPatterns.pl log=findadv-08.loga.txt patterns=findadv-08.ctrl
+Assert searchPatterns.pl base=findadv-08
 

@@ -3,12 +3,14 @@
 # (#7442)
 #
 Lang sk_SK.utf8
+CO: findadv-12.ctrl
 TestBegin test.lyx -dbg key,find > findadv-12.loga.txt 2>&1
 KK: a\C\[Home]
 KK: \Cs
 KK: \CF
 KK: a\[Tab]
 KK: \Cm\\bar a \Ar\Ar\An\An\[Left]
+Cr: against.*bar
 TestEnd
 Lang C
-Assert ! pcregrep -M 'against.*bar' findadv-12.loga.txt
+Assert searchPatterns.pl base=findadv-12

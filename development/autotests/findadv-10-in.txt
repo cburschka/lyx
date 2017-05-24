@@ -2,8 +2,8 @@
 # when ignoring format
 
 Lang sk_SK.utf8
-TestBegin test.lyx -dbg key,find > findadv-10.loga.txt 2>&1
 CO: findadv-10.ctrl
+TestBegin test.lyx -dbg key,find > findadv-10.loga.txt 2>&1
 CN: Part 1
 KK: This is LyX,\[Return]
 KK: a WYSIWYG LaTeX editor.\C\[Home]
@@ -25,4 +25,4 @@ KK: LaTeX\[Return]
 CP: Putting selection at .*idx: 0 par: 1 pos: 10\n with len: 5
 TestEnd
 Lang C
-Assert searchPatterns.pl log=findadv-10.loga.txt patterns=findadv-10.ctrl
+Assert searchPatterns.pl base=findadv-10

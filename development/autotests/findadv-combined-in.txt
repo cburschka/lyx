@@ -4,8 +4,8 @@ UseShortcut "C-F21" "command-sequence dialog-show findreplaceadv ; buffer-end ; 
 PrepareShortcuts
 #
 Lang sk_SK.utf8
-TestBegin test.lyx -dbg key,find > findadv-combined.loga.txt 2>&1
 CO: findadv-combined.ctrl
+TestBegin test.lyx -dbg key,find > findadv-combined.loga.txt 2>&1
 CP: Key (queried) [action=buffer-begin][Ctrl+Home]
 # String to be checked
 KK: \\()[]{}%^#@?*.\[Return]
@@ -143,4 +143,4 @@ CP: Putting selection at .*idx: 0 par: 4 pos: 10\n with len: 1
 #
 TestEnd
 Lang C
-Assert searchPatterns.pl log=findadv-combined.loga.txt patterns=findadv-combined.ctrl
+Assert searchPatterns.pl base=findadv-combined

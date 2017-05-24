@@ -1,6 +1,7 @@
 # Regression test for #7245
 #
 Lang it_IT.utf8
+CO: findadv-04.ctrl
 TestBegin test.lyx -dbg key,find > findadv-04.loga.txt 2>&1
 KK: \Cm
 KK: x^2  \[Return]
@@ -13,5 +14,7 @@ KK: \Cm
 KK: x^2n\[Return]\[Return]
 KK: \Cs
 KK: \Axbuffer-export latex\[Return]
+CR: ^\$x\^\{2n\}\$$
+CC:
 Lang C
-TestEnd grep '^\$x\^{2n}\$$' test.tex
+TestEnd searchPatterns.pl base=findadv-04 log=test.tex

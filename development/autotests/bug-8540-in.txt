@@ -2,8 +2,10 @@
 #
 Lang en_US.utf8
 
+CO: bug-8540.ctrl
 TestBegin -dbg key > bug-8540.loga.txt 2>&1
 KK: \Axlyxrc-apply \\spellchecker enchant\[Return]
 KK: \Axlyxrc-apply \\spellchecker enchant\[Return]
+Cp: SIGSEGV
 TestEnd
-Assert ! pcregrep -M 'SIGSEGV' bug-8540.loga.txt
+Assert searchPatterns.pl base=bug-8540

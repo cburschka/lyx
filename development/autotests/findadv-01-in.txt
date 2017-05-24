@@ -2,6 +2,7 @@
 # match should not consider the just replaced text (#4388)
 #
 Lang it_IT.utf8
+CO: findadv-01.ctrl
 TestBegin test.lyx -dbg key,find > findadv-01.loga.txt 2>&1
 KK: aaa\[Home]
 KK: \CF
@@ -9,5 +10,7 @@ KK: a\[Tab]
 KK: aba\[Return]\[Return]\[Return]
 KK: \Cs
 KK: \Axbuffer-export latex\[Return]
+CR: ^abaabaa$
 Lang C
-TestEnd grep "^abaabaa$" test.tex
+CC:
+TestEnd searchPatterns.pl base=findadv-01 log=test.tex

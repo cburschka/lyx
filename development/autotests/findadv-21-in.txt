@@ -2,6 +2,7 @@
 # Test for #8381
 
 Lang sk_SK.utf8
+CO: findadv-21.ctrl
 TestBegin test.lyx -dbg key,find > findadv-21.loga.txt 2>&1
 KK: \Apb
 KK: one\[Return]
@@ -21,18 +22,23 @@ KK: \CF
 # Uncheck ignore format
 KK: \At\Ai\Ah
 KK: \Ape
-KK: \Axregexp-mode\[Return][a-z]* \[Return]
-TestEnd
-Lang C
-Assert pcregrep -M 'Putting selection at cur= inset: .* idx: 0 par: 3 pos: 0\n with len: 4' findadv-21.loga.txt
+KK: \Axregexp-mode\[Return][a-z]* \[Return]\[Return]\[Return]\[Return]\[Return]
+Cr: ^.*Putting
+Cr: ^.*action=buffer-begin
+CP: Putting selection at cur= inset: .* idx: 0 par: 3 pos: 0\n with len: 4
 
-Lang sk_SK.utf8
-TestBegin test.lyx -dbg key,find > findadv-21.logb.txt 2>&1
-KK: \CF
+KK: \[Escape]\[Escape]\C\[Home]
+Cr: ^.*Putting
+CP: Key (queried) [action=buffer-begin][Ctrl+Home]
+
+KK: \CF\[Delete]
 # Uncheck ignore format
-KK: \At\Ai\Ah
-KK: \Apd
-KK: \Axregexp-mode\[Return][a-z]*\\s+[a-z]* \[Return]\[Return]
+#KK: \At\Ai\Ah
+KK: \Apl
+KK: \Axregexp-mode\[Return][a-z]2  \Axregexp-mode\[Return][a-z]*
+KK: \[Return]\[Return]\[Return]\[Return]\[Return]\[Return]
+Cr: ^.*Putting
+CP: Putting selection at cur= inset: .* idx: 0 par: 6 pos: 0\n with len: 8
 TestEnd
 Lang C
-Assert pcregrep -M 'Putting selection at cur= inset: .* idx: 0 par: 7 pos: 3\n with len: 6' findadv-21.logb.txt
+Assert searchPatterns.pl base=findadv-21
