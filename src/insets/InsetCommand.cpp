@@ -96,7 +96,8 @@ InsetCommand::~InsetCommand()
 
 void InsetCommand::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	button_.update(screenLabel(), editable() || clickable(*mi.base.bv, 0, 0));
+	button_.update(screenLabel(), editable() || clickable(*mi.base.bv, 0, 0),
+	               inheritFont());
 	button_.metrics(mi, dim);
 }
 

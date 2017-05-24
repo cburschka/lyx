@@ -623,7 +623,7 @@ void InsetExternal::setParams(InsetExternalParams const & p)
 			renderer_.reset(new RenderButton);
 			button_ptr = renderer_->asButton();
 		}
-		button_ptr->update(screenLabel(params_, buffer()), true);
+		button_ptr->update(screenLabel(params_, buffer()), true, false);
 		return;
 	}
 

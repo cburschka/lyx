@@ -40,7 +40,7 @@ void CommandInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (!set_label_) {
 		set_label_ = true;
-		button_.update(screenLabel(), true);
+		button_.update(screenLabel(), true, false);
 	}
 	button_.metrics(mi, dim);
 }
