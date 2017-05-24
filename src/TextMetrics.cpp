@@ -420,10 +420,21 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 				parPos.pos()++;
 		}
 
+		// If there is an end of paragraph marker, its size should be
+		// substracted to the available width. The logic here is
+		// almost the same as in breakRow, remember keep them in sync.
+		int eop = 0;
+		if (lyxrc.paragraph_markers && ii->pos + 1 == par.size()
+		    && size_type(pit + 1) < text_->paragraphs().size()) {
+			Font f(text_->layoutFont(pit));
+			// ¶ U+00B6 PILCROW SIGN
+			eop = theFontMetrics(f).width(char_type(0x00B6));
+		}
+
 		// do the metric calculation
 		Dimension dim;
 		int const w = max_width_ - leftMargin(max_width_, pit, ii->pos)
-			- right_margin;
+			- right_margin - eop;
 		Font const & font = ii->inset->inheritFont() ?
 			displayFont(pit, ii->pos) : bufferfont;
 		MacroContext mc(&buffer, parPos);
@@ -933,7 +944,8 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 	row.finalizeLast();
 	row.endpos(i);
 
-	// End of paragraph marker
+	// End of paragraph marker. The logic here is almost the
+	// same as in redoParagraph, remember keep them in sync.
 	ParagraphList const & pars = text_->paragraphs();
 	if (lyxrc.paragraph_markers && !need_new_row
 	    && i == end && size_type(row.pit() + 1) < pars.size()) {
