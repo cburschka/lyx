@@ -48,12 +48,14 @@ What's new
 
 - Remove duplicate entries from the Symbols dialog (bug 10644).
 
-- Always shows the float type in the float inset label (bug 10618).
+- Always show the float type in the float inset label (bug 10618).
 
 - Show correct color name for green in the status bar (bug 10656).
 
 - fixes to cursor positionning on mouse click for right-to-left text
   (bug 10569).
+
+- Fix metricsof full-width insets when paragraph endings are shown (bug #10537).
 
 
 * INTERNALS
