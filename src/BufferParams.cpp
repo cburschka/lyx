@@ -866,7 +866,11 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		lex >> is_math_indent;
 	} else if (token == "\\math_indentation") {
 		lex.next();
-		pimpl_->mathindent = Length(lex.getString());
+		string mathindent = lex.getString();
+		if (mathindent == "default")
+			pimpl_->mathindent = Length();
+		else
+			pimpl_->mathindent = Length(mathindent);
 	} else if (token == "\\math_numbering_side") {
 		string tmp;
 		lex >> tmp;
@@ -1377,8 +1381,9 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 	else
 		os << "\n\\defskip " << getDefSkip().asLyXCommand();
 	os << "\n\\is_math_indent " << is_math_indent;
-	if (is_math_indent && !getMathIndent().empty())
-		os << "\n\\math_indentation " << getMathIndent().asString();
+	if (is_math_indent)
+		os << "\n\\math_indentation "
+		   << (getMathIndent().empty() ? "default" : getMathIndent().asString());
 	os << "\n\\math_numbering_side ";
 	switch(math_numbering_side) {
 	case LEFT:
