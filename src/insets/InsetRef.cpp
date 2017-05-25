@@ -39,12 +39,12 @@ namespace lyx {
 
 
 InsetRef::InsetRef(Buffer * buf, InsetCommandParams const & p)
-	: InsetCommand(buf, p)
+	: InsetCommand(buf, p), broken_(false)
 {}
 
 
 InsetRef::InsetRef(InsetRef const & ir)
-	: InsetCommand(ir)
+	: InsetCommand(ir), broken_(false)
 {}
 
 
