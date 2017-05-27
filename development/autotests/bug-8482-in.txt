@@ -4,7 +4,10 @@
 # is cleared after the next test starts.
 
 Lang en_US.utf8
+CO: bug-8482.ctrl
 TestBegin -dbg key test.lyx > bug-8482.loga.txt 2>&1
 KK: \Cm
+CP: Key (queried) [action=math-mode][Ctrl+M]
 KK: \Ai
 TestEnd
+Assert searchPatterns.pl base=bug-8482

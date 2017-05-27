@@ -24,13 +24,13 @@ KK: \[Escape]\C\[Home]\C\[F21]
 KK: o
 KK: \C\[F20]
 KK: [\\w]* a
-KD: 100
+#KD: 100
 # select whole words
 KK: \Ae
 # search next
 KK: \Al
 KK: \[Escape]
-KD: 1
+#KD: 1
 Cr: ^.*Putting
 CP: Putting selection at .*idx: 0 par: 1 pos: 26\n with len: 6
 #

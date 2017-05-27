@@ -384,73 +384,76 @@ def sendKeystringLocal(keystr, LYX_PID):
     subprocess.call(xvpar, stdout = FNULL, stderr = FNULL)
     sys.stdout.flush()
 
-Axreg = re.compile(r'^(.*)\\Ax([^\\]*)(.*)$')
-returnreg = re.compile(r'(\\\[[A-Z][a-z0-9]+\])(.*)$')
-
-# recursive wrapper around sendKeystringLocal()
-# handling \Ax-entries
-def sendKeystringAx(line, LYX_PID):
-    global key_delay
-    saved_delay = key_delay
-    m = Axreg.match(line)
+def extractmultiple(line, regex):
+    #print("extractmultiple " + line)
+    res = ["", ""]
+    m = regex.match(line)
     if m:
-        prefix = m.group(1)
-        content = m.group(2)
-        rest = m.group(3);
-        if prefix != "":
-            # since (.*) is greedy, check prefix for '\Ax' again
-            sendKeystringAx(prefix, LYX_PID)
-        sendKeystringLocal('\Ax', LYX_PID)
-        time.sleep(0.1)
-        m2 = returnreg.match(rest)
-        if m2:
-            line = m2.group(2)
-            ctrlk = m2.group(1)
-            key_delay = "1"
-            sendKeystringLocal(content + ctrlk, LYX_PID)
-            key_delay = saved_delay
-            time.sleep(controlkey_delay)
-            if line != "":
-                sendKeystringLocal(line, LYX_PID)
+        chr = m.group(1)
+        if m.group(2) == "":
+            res[0] = chr
+            res[1] = ""
         else:
-            if content != "":
-                sendKeystringLocal(content, LYX_PID)
-            if rest != "":
-                sendKeystringLocal(rest, LYX_PID)
+            norm = extractmultiple(m.group(2), regex)
+            res[0] = chr + norm[0]
+            res[1] = norm[1]
     else:
-        if line != "":
-            sendKeystringLocal(line, LYX_PID)
+        res[0] = ""
+        res[1] = line
+    return res
 
-specialkeyreg = re.compile(r'(.+)(\\[AC]([a-zA-Z]|\\\[[A-Z][a-z0-9]+\]).*)$')
-# Split line at start of each meta or controll char
+normal_re = re.compile(r'^([^\\]|\\\\)(.*)$')
+def extractnormal(line):
+    # collect non-special chars from start of line
+    return extractmultiple(line, normal_re)
 
-def sendKeystringAC(line, LYX_PID):
-    m = specialkeyreg.match(line)
+modifier_re = re.compile(r'^(\\[CAS])(.+)$')
+def extractmodifiers(line):
+    # collect modifiers like '\\A' at start of line
+    return extractmultiple(line, modifier_re)
+
+special_re = re.compile(r'^(\\\[[A-Z][a-z0-9]+\])(.*)$')
+def extractsingle(line):
+    # check for single key following a modifier
+    # either ascii like 'a'
+    # or special like '\[Return]'
+    res = [False, "", ""]
+    m = normal_re.match(line)
     if m:
-        first = m.group(1)
-        second = m.group(2)
-        sendKeystringAC(first, LYX_PID)
-        sendKeystringAC(second, LYX_PID)
+        res[0] = False
+        res[1] = m.group(1)
+        res[2] = m.group(2)
     else:
-        sendKeystringAx(line, LYX_PID)
+        m = special_re.match(line)
+        if m:
+            res[0] = True
+            res[1] = m.group(1)
+            res[2] = m.group(2)
+        else:
+            die(1, "Undecodable key for line \'" + line + "\"")
+    return res
 
-controlkeyreg = re.compile(r'^(.*\\\[[A-Z][a-z0-9]+\])(.*\\\[[A-Z][a-z0-9]+\])(.*)$')
-# Make sure, only one of \[Return], \[Tab], \[Down], \[Home] etc are in one sent line
-# e.g. split the input line on each keysym
-def sendKeystringRT(line, LYX_PID):
-    m = controlkeyreg.match(line)
-    if m:
-        first = m.group(1)
-        second = m.group(2)
-        third = m.group(3)
-        sendKeystringRT(first, LYX_PID)
+def sendKeystring(line, LYX_PID):
+    if line == "":
+        return
+    normalchars = extractnormal(line)
+    line = normalchars[1]
+    if normalchars[0] != "":
+        sendKeystringLocal(normalchars[0], LYX_PID)
+    if line == "":
+        return
+    modchars = extractmodifiers(line)
+    line = modchars[1]
+    if line == "":
+        die(1, "Missing modified key")
+    modifiedchar = extractsingle(line)
+    line = modifiedchar[2]
+    special = modchars[0] != "" or modifiedchar[0]
+    sendKeystringLocal(modchars[0] + modifiedchar[1], LYX_PID)
+    if special:
+        # give the os time to update the status info (in /proc)
         time.sleep(controlkey_delay)
-        sendKeystringRT(second, LYX_PID)
-        time.sleep(controlkey_delay)
-        if third != "":
-            sendKeystringRT(third, LYX_PID)
-    else:
-        sendKeystringAC(line, LYX_PID)
+    sendKeystring(line, LYX_PID)
 
 def system_retry(num_retry, cmd):
     i = 0
@@ -633,7 +636,7 @@ outfile = open(outfilename, 'w')
 if not lyx_pid is None:
     RaiseWindow()
     # Next command is language dependent
-    #sendKeystringRT("\Afn", lyx_pid)
+    #sendKeystring("\Afn", lyx_pid)
 
 write_commands = True
 failed = False
@@ -698,8 +701,7 @@ while not failed:
             print('lyx_pid: ' + lyx_pid)
             print('lyx_win: ' + lyx_window_name)
             dead_expected = False
-            sendKeystringLocal("\C\[Home]", lyx_pid)
-            time.sleep(controlkey_delay)
+            sendKeystring("\C\[Home]", lyx_pid)
     elif c[0:5] == 'Sleep':
         print("Sleeping for " + c[6:] + " seconds")
         time.sleep(float(c[6:]))
@@ -715,7 +717,7 @@ while not failed:
         RaiseWindow()
     elif c[0:4] == 'KK: ':
         if lyx_exists():
-            sendKeystringRT(c[4:], lyx_pid)
+            sendKeystring(c[4:], lyx_pid)
         else:
             ##intr_system('killall lyx; sleep 2 ; killall -9 lyx')
             if lyx_pid is None:
@@ -727,7 +729,7 @@ while not failed:
         print('Setting DELAY to ' + key_delay)
     elif c == 'Loop':
         RaiseWindow()
-        sendKeystringRT(ResetCommand, lyx_pid)
+        sendKeystring(ResetCommand, lyx_pid)
     elif c[0:6] == 'Assert':
         cmd = c[7:].rstrip()
         result = intr_system(cmd, True)
@@ -742,7 +744,7 @@ while not failed:
         else:
             print("    ------------    Forcing kill of lyx instance: " + str(lyx_pid) + "    ------------")
             # This line below is there only to allow lyx to update its log-file
-            sendKeystringLocal("\[Escape]", lyx_pid)
+            sendKeystring("\[Escape]", lyx_pid)
             dead_expected = True
             while not lyx_dead(lyx_pid):
                 intr_system("kill -9 " + str(lyx_pid), True);
@@ -763,11 +765,10 @@ while not failed:
         else:
             print("    ------------    Forcing quit of lyx instance: " + str(lyx_pid) + "    ------------")
             # \[Escape]+ should work as RESET focus to main window
-            sendKeystringAx("\[Escape]\[Escape]\[Escape]\[Escape]", lyx_pid)
-            time.sleep(controlkey_delay)
+            sendKeystring("\[Escape]\[Escape]\[Escape]\[Escape]", lyx_pid)
             # now we should be outside any dialog
             # and so the function lyx-quit should work
-            sendKeystringLocal("\Cq", lyx_pid)
+            sendKeystring("\Cq", lyx_pid)
             marked.dispatch('CP: action=lyx-quit')
             marked.close()
             time.sleep(0.5)
@@ -780,7 +781,7 @@ while not failed:
                 # causing a 'beep'
                 time.sleep(0.5)
                 # probably waiting for Save/Discard/Abort, we select 'Discard'
-                sendKeystringRT("\[Tab]\[Return]", lyx_pid)
+                sendKeystring("\[Tab]\[Return]", lyx_pid)
                 lcount = 0
             else:
                 lcount = 1
