@@ -1,0 +1,79 @@
+#
+# Minted External Template
+#
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+#
+# author Enrico Forestieri
+#
+# Full author contact details are available in file CREDITS.
+#
+# External templates expect to deal with commands of the form
+#   \command[options]{parameter}
+# while the \inputminted command has the form
+#   \inputminted[options]{language}{filename}
+#
+# In order to use the external templates machinery, the options of the
+# minted package are extended to be able to construct a proper \inputminted
+# command. This template defines an additional 'lang' option for minted, which
+# is then extracted from the options and passed as the second non-optional
+# parameter of \inputminted. This template works for minted version 2.1 or
+# higher. As it relies on the internals of minted, an update might break it.
+
+PreambleDef minted
+    \usepackage{minted}
+    \@namedef{minted@opt@cmd@lang}{latex}
+    \define@key{minted@opt@cmd}{lang}{\@namedef{minted@opt@cmd@lang}{#1}
+                                      \minted@configlang{#1}}
+    \DeclareRobustCommand\inputsource{\@ifnextchar[\@inputsrc{\@inputsrc[]}}
+    \def\@inputsrc[#1]#2{\inputminted[#1]{\minted@opt@cmd@lang}{#2}}
+PreambleDefEnd
+
+Template MintedSource
+    GuiName "Minted Source Code"
+    HelpText
+	Format source code using the 'minted' package.
+	This template works with minted version 2.1 or higher.
+	The source language is specified by the 'lang' option,
+	which must be inserted into the 'Option' field in the
+	'LaTeX and LyX options' tab.
+
+	Example options:
+	* linenos,fontsize=\footnotesize,lang=fortran
+	* bgcolor=yellow,baselinestretch=1.2,lang=c
+	* frame=lines,framesep=2\fboxsep,lang=python
+
+	If 'lang=xxx' is not given, 'lang=latex' is assumed by default.
+	Make sure to use the '-shell-escape' option for the latex backend.
+	Read the documentation of the minted package
+	for further options and details.
+    HelpTextEnd
+    InputFormat text
+    FileFilter "*"
+    AutomaticProduction true
+    Preview InstantPreview
+    Transform Extra
+    Format LaTeX
+	Preamble minted
+	TransformOption Extra ExtraOption
+	Option Arg "[$$Extra]"
+	Product "\\inputsource$$Arg{$$AbsPath$$Basename$$Extension}"
+	UpdateFormat text
+	UpdateResult "$$AbsPath$$Basename$$Extension"
+	ReferencedFile text "$$AbsPath$$Basename$$Extension"
+    FormatEnd
+    Format PDFLaTeX
+	Preamble minted
+	TransformOption Extra ExtraOption
+	Option Arg "[$$Extra]"
+	Product "\\inputsource$$Arg{$$AbsPath$$Basename$$Extension}"
+	UpdateFormat text
+	UpdateResult "$$AbsPath$$Basename$$Extension"
+	ReferencedFile text "$$AbsPath$$Basename$$Extension"
+    FormatEnd
+    Format Ascii
+	Product "$$Contents(\"$$AbsPath$$Basename$$Extension\")"
+	UpdateFormat text
+	UpdateResult "$$AbsPath$$Basename$$Extension"
+    FormatEnd
+TemplateEnd

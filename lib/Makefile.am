@@ -341,6 +341,7 @@ dist_examples_DATA = \
 	examples/listerrors.lyx \
 	examples/localization_test.lyx \
 	examples/longsheet.gnumeric \
+	examples/minted.lyx \
 	examples/modernCV.lyx \
 	examples/MultilingualCaptions.lyx \
 	examples/noweb2lyx.lyx \
@@ -2440,6 +2441,7 @@ dist_xtemplates_DATA = \
 	xtemplates/gnumeric.xtemplate \
 	xtemplates/inkscape.xtemplate \
 	xtemplates/lilypond.xtemplate \
+	xtemplates/minted.xtemplate \
 	xtemplates/pdfpages.xtemplate \
 	xtemplates/raster_image.xtemplate \
 	xtemplates/vector_graphics.xtemplate \
