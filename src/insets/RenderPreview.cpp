@@ -31,8 +31,6 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 
-#include "support/bind.h"
-
 using namespace std;
 using namespace lyx::support;
 
@@ -77,17 +75,9 @@ RenderPreview::RenderPreview(Inset const * inset)
 RenderPreview::RenderPreview(RenderPreview const & other,
 			     Inset const * inset)
 	: RenderBase(other),
-	  boost::signals2::trackable(),
 	  snippet_(other.snippet_),
 	  parent_(inset)
 {}
-
-
-RenderPreview::~RenderPreview()
-{
-	if (ploader_connection_.connected())
-		ploader_connection_.disconnect();
-}
 
 
 RenderBase * RenderPreview::clone(Inset const * inset) const
@@ -241,10 +231,12 @@ void RenderPreview::addPreview(docstring const & latex_snippet,
 	// If this is the first time of calling, connect to the
 	// PreviewLoader signal that'll inform us when the preview image
 	// is ready for loading.
-	if (!ploader_connection_.connected()) {
-		ploader_connection_ = ploader.connect(
-			bind(&RenderPreview::imageReady, this, _1));
-	}
+	if (!ploader_connection_.connected())
+		// This is a scoped connection.
+		ploader_connection_ =
+			ploader.connect([this](graphics::PreviewImage const & pi){
+				imageReady(pi);
+			});
 
 	ploader.add(snippet_);
 }
@@ -296,8 +288,7 @@ void RenderMonitoredPreview::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-boost::signals2::connection
-RenderMonitoredPreview::connect(ChangedSig::slot_type const & slot)
+signals2::connection RenderMonitoredPreview::connect(slot const & slot)
 {
 	return changed_.connect(slot);
 }

@@ -29,7 +29,6 @@
 #include "support/lassert.h"
 #include "support/unique_ptr.h"
 
-#include "support/bind.h"
 #include "support/TempFile.h"
 
 using namespace std;
@@ -39,7 +38,7 @@ namespace lyx {
 
 namespace graphics {
 
-class CacheItem::Impl : public boost::signals2::trackable {
+class CacheItem::Impl {
 public:
 
 	///
@@ -50,7 +49,7 @@ public:
 	/**
 	 *  If no file conversion is needed, then tryDisplayFormat() calls
 	 *  loadImage() directly.
-	 * \return true if a conversion is necessary and no error occurred. 
+	 * \return true if a conversion is necessary and no error occurred.
 	 */
 	bool tryDisplayFormat(FileName & filename, string & from);
 
@@ -120,10 +119,7 @@ public:
 	ImageStatus status_;
 
 	/// This signal is emitted when the image loading status changes.
-	boost::signals2::signal<void()> statusChanged;
-
-	/// The connection of the signal ConvProcess::finishedConversion,
-	boost::signals2::connection cc_;
+	signals2::signal<void()> statusChanged;
 
 	///
 	unique_ptr<Converter> converter_;
@@ -199,7 +195,7 @@ ImageStatus CacheItem::status() const
 }
 
 
-boost::signals2::connection CacheItem::connect(slot_type const & slot) const
+signals2::connection CacheItem::connect(slot_type const & slot) const
 {
 	return pimpl_->statusChanged.connect(slot);
 }
@@ -223,6 +219,7 @@ void CacheItem::Impl::startMonitor()
 	if (monitor_)
 		return;
 	monitor_ = FileSystemWatcher::activeMonitor(filename_);
+	// Disconnected at the same time as this is destroyed.
 	monitor_->connect([=](){ startLoading(); });
 }
 
@@ -254,9 +251,6 @@ void CacheItem::Impl::reset()
 
 	status_ = WaitingToLoad;
 
-	if (cc_.connected())
-		cc_.disconnect();
-
 	if (converter_)
 		converter_.reset();
 }
@@ -280,7 +274,6 @@ void CacheItem::Impl::imageConverted(bool success)
 	file_to_load_ = converter_ ? FileName(converter_->convertedFile())
 		                       : FileName();
 	converter_.reset();
-	cc_.disconnect();
 
 	success = !file_to_load_.empty() && file_to_load_.isReadableFile();
 
@@ -449,9 +442,13 @@ void CacheItem::Impl::convertToDisplayFormat()
 	// Connect a signal to this->imageConverted and pass this signal to
 	// the graphics converter so that we can load the modified file
 	// on completion of the conversion process.
-	converter_ = make_unique<Converter>(doc_file_, filename, to_file_base.absFileName(),
+	converter_ = make_unique<Converter>(doc_file_, filename,
+	                                    to_file_base.absFileName(),
 	                                    from, to_);
-	converter_->connect(bind(&Impl::imageConverted, this, _1));
+	// Connection is closed at the same time as *this is destroyed.
+	converter_->connect([this](bool success){
+			imageConverted(success);
+		});
 	converter_->startConversion();
 }
 

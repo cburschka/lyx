@@ -693,20 +693,6 @@ bool Converters::scanLog(Buffer const & buffer, string const & /*command*/,
 }
 
 
-namespace {
-
-class ShowMessage
-	: public boost::signals2::trackable {
-public:
-	ShowMessage(Buffer const & b) : buffer_(b) {}
-	void operator()(docstring const & msg) const { buffer_.message(msg); }
-private:
-	Buffer const & buffer_;
-};
-
-}
-
-
 bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 			  OutputParams const & runparams, ErrorList & errorList)
 {
@@ -719,8 +705,12 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 	            buffer.filePath(), buffer.layoutPos(),
 	            buffer.lastPreviewError());
 	TeXErrors terr;
-	ShowMessage show(buffer);
-	latex.message.connect(show);
+	// The connection closes itself at the end of the scope when latex is
+	// destroyed. One cannot close (and destroy) buffer while the converter is
+	// running.
+	latex.message.connect([&buffer](docstring const & msg){
+			buffer.message(msg);
+		});
 	int const result = latex.run(terr);
 
 	if (result & LaTeX::ERRORS)

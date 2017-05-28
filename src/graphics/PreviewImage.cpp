@@ -20,7 +20,6 @@
 
 #include "support/FileName.h"
 
-#include "support/bind.h"
 
 using namespace std;
 using namespace lyx::support;
@@ -28,7 +27,7 @@ using namespace lyx::support;
 namespace lyx {
 namespace graphics {
 
-class PreviewImage::Impl : public boost::signals2::trackable {
+class PreviewImage::Impl {
 public:
 	///
 	Impl(PreviewImage & p, PreviewLoader & l,
@@ -105,15 +104,14 @@ PreviewLoader & PreviewImage::previewLoader() const
 }
 
 
-PreviewImage::Impl::Impl(PreviewImage & p, PreviewLoader & l,
-			 string const & s,
-			 FileName const & bf,
-			 double af)
+PreviewImage::Impl::Impl(PreviewImage & p, PreviewLoader & l, string const & s,
+                         FileName const & bf, double af)
 	: parent_(p), ploader_(l), iloader_(l.buffer().fileName(), bf),
 	  snippet_(s), ascent_frac_(af)
 {
 	iloader_.setDisplayPixelRatio(l.displayPixelRatio());
-	iloader_.connect(bind(&Impl::statusChanged, this));
+	// This connection is destroyed at the same time as this.
+	iloader_.connect([this](){ statusChanged(); });
 }
 
 

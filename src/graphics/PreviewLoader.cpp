@@ -38,7 +38,6 @@
 #include "support/ForkedCalls.h"
 #include "support/lstrings.h"
 
-#include "support/bind.h"
 #include "support/TempFile.h"
 
 #include <atomic>
@@ -168,7 +167,7 @@ typedef InProgressProcesses::value_type InProgressProcess;
 namespace lyx {
 namespace graphics {
 
-class PreviewLoader::Impl : public boost::signals2::trackable {
+class PreviewLoader::Impl {
 public:
 	///
 	Impl(PreviewLoader & p, Buffer const & b);
@@ -189,7 +188,7 @@ public:
 	void refreshPreviews();
 
 	/// Emit this signal when an image is ready for display.
-	boost::signals2::signal<void(PreviewImage const &)> imageReady;
+	signals2::signal<void(PreviewImage const &)> imageReady;
 
 	Buffer const & buffer() const { return buffer_; }
 
@@ -240,6 +239,8 @@ private:
 
 	/// We don't own this
 	static lyx::Converter const * pconverter_;
+
+	signals2::scoped_connection connection_;
 };
 
 
@@ -297,7 +298,7 @@ void PreviewLoader::refreshPreviews()
 }
 
 
-boost::signals2::connection PreviewLoader::connect(slot_type const & slot) const
+signals2::connection PreviewLoader::connect(slot const & slot) const
 {
 	return pimpl_->imageReady.connect(slot);
 }
@@ -708,12 +709,12 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	   << " " << quoteName(latexfile.toFilesystemEncoding())
 	   << " --dpi " << font_scaling_factor_;
 
-	// FIXME XHTML 
+	// FIXME XHTML
 	// The colors should be customizable.
 	if (!buffer_.isExporting()) {
 		ColorCode const fg = PreviewLoader::foregroundColor();
 		ColorCode const bg = PreviewLoader::backgroundColor();
-		cs << " --fg " << theApp()->hexName(fg) 
+		cs << " --fg " << theApp()->hexName(fg)
 		   << " --bg " << theApp()->hexName(bg);
 	}
 
@@ -737,9 +738,11 @@ void PreviewLoader::Impl::startLoading(bool wait)
 	}
 
 	// Initiate the conversion from LaTeX to bitmap images files.
-	ForkedCall::SignalTypePtr
-		convert_ptr(new ForkedCall::SignalType);
-	convert_ptr->connect(bind(&Impl::finishedGenerating, this, _1, _2));
+	ForkedCall::sigPtr convert_ptr = make_shared<ForkedCall::sig>();
+	// This is a scoped connection
+	connection_ = convert_ptr->connect([this](pid_t pid, int retval){
+			finishedGenerating(pid, retval);
+		});
 
 	ForkedCall call(buffer_.filePath());
 	int ret = call.startScript(command, convert_ptr);

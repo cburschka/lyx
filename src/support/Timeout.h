@@ -12,7 +12,7 @@
 #ifndef TIMEOUT_H
 #define TIMEOUT_H
 
-#include <boost/signals2.hpp>
+#include "support/signals.h"
 
 
 namespace lyx {
@@ -40,7 +40,7 @@ public:
 	/// restart the timer
 	void restart();
 	/// signal emitted on timer expiry
-	boost::signals2::signal<void()> timeout;
+	signals2::signal<void()> timeout;
 	/// emit the signal
 	void emit();
 	/// set the timer type

@@ -17,14 +17,13 @@
 #define FILEMONITOR_H
 
 #include "support/FileName.h"
+#include "support/signals.h"
 
 #include <memory>
 
 #include <QFileSystemWatcher>
 #include <QObject>
 #include <QPointer>
-
-#include <boost/signals2.hpp>
 
 
 namespace lyx {
@@ -158,9 +157,10 @@ class FileMonitor : public QObject
 public:
 	FileMonitor(std::shared_ptr<FileMonitorGuard> monitor);
 
-	typedef boost::signals2::signal<void()> sig;
+	typedef signals2::signal<void()> sig;
+	typedef sig::slot_type slot;
 	/// Connect and you'll be informed when the file has changed.
-	boost::signals2::connection connect(sig::slot_type const &);
+	signals2::connection connect(slot const &);
 	/// disconnect all slots connected to the boost signal fileChanged_ or to
 	/// the qt signal fileChanged()
 	void disconnect();

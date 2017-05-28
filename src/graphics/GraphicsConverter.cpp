@@ -27,7 +27,6 @@
 #include "support/lstrings.h"
 #include "support/os.h"
 
-#include "support/bind.h"
 #include "support/TempFile.h"
 
 #include <sstream>
@@ -40,10 +39,12 @@ namespace lyx {
 
 namespace graphics {
 
-class Converter::Impl : public boost::signals2::trackable {
+class Converter::Impl {
 public:
 	///
-	Impl(FileName const &, FileName const &, string const &, string const &, string const &);
+	Impl(FileName const & doc_fname,
+	     FileName const & from_file, string const & to_file_base,
+	     string const & from_format, string const & to_format);
 
 	///
 	void startConversion();
@@ -58,9 +59,9 @@ public:
 	/** At the end of the conversion process inform the outside world
 	 *  by emitting a signal.
 	 */
-	typedef boost::signals2::signal<void(bool)> SignalType;
+	typedef signals2::signal<void(bool)> sig;
 	///
-	SignalType finishedConversion;
+	sig finishedConversion;
 
 	///
 	FileName const doc_fname_;
@@ -74,6 +75,8 @@ public:
 	bool valid_process_;
 	///
 	bool finished_;
+	///
+	Trackable tracker_;
 };
 
 
@@ -85,8 +88,8 @@ bool Converter::isReachable(string const & from_format_name,
 
 
 Converter::Converter(FileName const & doc_fname,
-		     FileName const & from_file, string const & to_file_base,
-		     string const & from_format, string const & to_format)
+                     FileName const & from_file, string const & to_file_base,
+                     string const & from_format, string const & to_format)
 	: pimpl_(new Impl(doc_fname, from_file, to_file_base, from_format, to_format))
 {}
 
@@ -103,7 +106,7 @@ void Converter::startConversion() const
 }
 
 
-boost::signals2::connection Converter::connect(slot_type const & slot) const
+signals2::connection Converter::connect(slot_type const & slot) const
 {
 	return pimpl_->finishedConversion.connect(slot);
 }
@@ -188,9 +191,10 @@ void Converter::Impl::startConversion()
 		return;
 	}
 
-	ForkedCall::SignalTypePtr ptr =
-		ForkedCallQueue::add(script_command_);
-	ptr->connect(bind(&Impl::converted, this, _1, _2));
+	ForkedCall::sigPtr ptr = ForkedCallQueue::add(script_command_);
+	ptr->connect(ForkedCall::slot([this](pid_t pid, int retval){
+				converted(pid, retval);
+			}).track_foreign(tracker_.p()));
 }
 
 

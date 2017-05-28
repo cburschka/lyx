@@ -30,7 +30,7 @@
 
 #include "GraphicsTypes.h"
 
-#include <boost/signals2.hpp>
+#include "support/signals.h"
 
 
 namespace lyx {
@@ -82,9 +82,9 @@ public:
 	/** Connect and you'll be informed when the loading status of the image
 	 *  changes.
 	 */
-	typedef boost::signals2::signal<void()>::slot_type slot_type;
+	typedef signals2::signal<void()>::slot_type slot_type;
 	///
-	boost::signals2::connection connect(slot_type const &) const;
+	signals2::connection connect(slot_type const &) const;
 
 private:
 	/// noncopyable

@@ -58,7 +58,7 @@ namespace {
 //
 /////////////////////////////////////////////////////////////////////
 
-class Murder : public boost::signals2::trackable {
+class Murder {
 public:
 	//
 	static void killItDead(int secs, pid_t pid)
@@ -83,7 +83,8 @@ private:
 	Murder(int secs, pid_t pid)
 		: timeout_(1000*secs, Timeout::ONETIME), pid_(pid)
 	{
-		timeout_.timeout.connect(lyx::bind(&Murder::kill, this));
+		// Connection is closed with this.
+		timeout_.timeout.connect([this](){ kill(); });
 		timeout_.start();
 	}
 
@@ -277,7 +278,7 @@ ForkedCall::ForkedCall(string const & path, string const & lpath)
 int ForkedCall::startScript(Starttype wait, string const & what)
 {
 	if (wait != Wait) {
-		retval_ = startScript(what, SignalTypePtr());
+		retval_ = startScript(what, sigPtr());
 		return retval_;
 	}
 
@@ -287,7 +288,7 @@ int ForkedCall::startScript(Starttype wait, string const & what)
 }
 
 
-int ForkedCall::startScript(string const & what, SignalTypePtr signal)
+int ForkedCall::startScript(string const & what, sigPtr signal)
 {
 	command_ = commandPrep(trim(what));
 	signal_  = signal;
@@ -435,13 +436,13 @@ int ForkedCall::generateChild()
 namespace ForkedCallQueue {
 
 /// A process in the queue
-typedef pair<string, ForkedCall::SignalTypePtr> Process;
+typedef pair<string, ForkedCall::sigPtr> Process;
 /** Add a process to the queue. Processes are forked sequentially
  *  only one is running at a time.
  *  Connect to the returned signal and you'll be informed when
  *  the process has ended.
  */
-ForkedCall::SignalTypePtr add(string const & process);
+ForkedCall::sigPtr add(string const & process);
 
 /// in-progress queue
 static queue<Process> callQueue_;
@@ -456,10 +457,10 @@ void stopCaller();
 ///
 void callback(pid_t, int);
 
-ForkedCall::SignalTypePtr add(string const & process)
+ForkedCall::sigPtr add(string const & process)
 {
-	ForkedCall::SignalTypePtr ptr;
-	ptr.reset(new ForkedCall::SignalType);
+	ForkedCall::sigPtr ptr;
+	ptr.reset(new ForkedCall::sig);
 	callQueue_.push(Process(process, ptr));
 	if (!running_)
 		startCaller();

@@ -21,10 +21,8 @@
 #include "support/docstring.h"
 #include "support/FileMonitor.h"
 #include "support/FileName.h"
+#include "support/signals.h"
 
-#include <boost/signals2.hpp>
-#include <boost/signals2/trackable.hpp>
-#include <boost/signals2/connection.hpp>
 
 namespace lyx {
 
@@ -40,7 +38,7 @@ class PreviewLoader;
 } // namespace graphics
 
 
-class RenderPreview : public RenderBase, public boost::signals2::trackable {
+class RenderPreview : public RenderBase {
 public:
 	/// Return true if preview is enabled in text (from LyXRC::preview)
 	static bool previewText();
@@ -49,7 +47,6 @@ public:
 
 	RenderPreview(Inset const *);
 	RenderPreview(RenderPreview const &, Inset const *);
-	~RenderPreview();
 	RenderBase * clone(Inset const *) const;
 
 	/// Compute the size of the object, returned in dim
@@ -104,7 +101,7 @@ private:
 	/** Store the connection to the preview loader so that we connect
 	 *  only once.
 	 */
-	boost::signals2::connection ploader_connection_;
+	signals2::scoped_connection ploader_connection_;
 
 	/// Inform the core that the inset has changed.
 	Inset const * parent_;
@@ -124,15 +121,17 @@ public:
 	void stopMonitoring() const;
 
 	/// Connect and you'll be informed when the file changes.
-	typedef boost::signals2::signal<void()> ChangedSig;
-	boost::signals2::connection connect(ChangedSig::slot_type const &);
+	/// Do not forget to track objects used by the slot.
+	typedef signals2::signal<void()> sig;
+	typedef sig::slot_type slot;
+	signals2::connection connect(slot const & slot);
 
 	/// equivalent to dynamic_cast
 	virtual RenderMonitoredPreview * asMonitoredPreview() { return this; }
 
 private:
 	/// This signal is emitted if the file is modified
-	ChangedSig changed_;
+	sig changed_;
 	///
 	mutable support::ActiveFileMonitorPtr monitor_;
 	///

@@ -176,8 +176,7 @@ void FileMonitor::reconnectToFileMonitorGuard()
 }
 
 
-boost::signals2::connection
-FileMonitor::connect(sig::slot_type const & slot)
+signals2::connection FileMonitor::connect(slot const & slot)
 {
 	return fileChanged_.connect(slot);
 }

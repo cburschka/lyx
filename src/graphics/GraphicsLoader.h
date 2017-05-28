@@ -26,7 +26,7 @@
 
 #include "GraphicsTypes.h"
 
-#include <boost/signals2.hpp>
+#include "support/signals.h"
 
 namespace lyx {
 
@@ -70,7 +70,7 @@ public:
 	 */
 	void startLoading() const;
 
-	/** Tries to reload the image. 
+	/** Tries to reload the image.
 	 */
 	void reload() const;
 
@@ -90,10 +90,10 @@ public:
 	/** Connect and you'll be informed when the loading status of the image
 	 *  changes.
 	 */
-	typedef boost::signals2::signal<void()> sig_type;
-	typedef sig_type::slot_type slot_type;
+	typedef signals2::signal<void()> sig;
+	typedef sig::slot_type slot;
 	///
-	boost::signals2::connection connect(slot_type const &) const;
+	signals2::connection connect(slot const &) const;
 
 	/** The loaded image with Pixmap set.
 	 *  If the Pixmap is not yet set (see status() for why...), returns 0.

@@ -107,16 +107,17 @@ void LoaderQueue::loadNext()
 
 
 LoaderQueue::LoaderQueue() : timer(s_millisecs_, Timeout::ONETIME),
-			     running_(false)
+                             running_(false)
 {
-	timer.timeout.connect(bind(&LoaderQueue::loadNext, this));
+	// Disconnected when this is destroyed
+	timer.timeout.connect([this](){ loadNext(); });
 }
 
 
 void LoaderQueue::startLoader()
 {
 	LYXERR(Debug::GRAPHICS, "LoaderQueue: waking up");
-	running_ = true ;
+	running_ = true;
 	timer.setTimeout(s_millisecs_);
 	timer.start();
 }
@@ -163,7 +164,7 @@ void LoaderQueue::touch(Cache::ItemPtr const & item)
 
 typedef std::shared_ptr<Image> ImagePtr;
 
-class Loader::Impl : public boost::signals2::trackable {
+class Loader::Impl {
 	friend class Loader;
 public:
 	///
@@ -192,9 +193,9 @@ public:
 	/// We modify a local copy of the image once it is loaded.
 	ImagePtr image_;
 	/// This signal is emitted when the image loading status changes.
-	boost::signals2::signal<void()> signal_;
-	/// The connection of the signal StatusChanged 	
-	boost::signals2::connection sc_;
+	signals2::signal<void()> signal_;
+	/// The connection of the signal statusChanged
+	signals2::scoped_connection connection_;
 
 	double displayPixelRatio() const
 	{
@@ -363,7 +364,7 @@ void Loader::setDisplayPixelRatio(double scale)
 }
 
 
-boost::signals2::connection Loader::connect(slot_type const & slot) const
+signals2::connection Loader::connect(slot const & slot) const
 {
 	return pimpl_->signal_.connect(slot);
 }
@@ -405,7 +406,7 @@ void Loader::Impl::resetFile(FileName const & file)
 		// signal needs to be disconnected.
 		try {
 			// This can in theory throw a BufferException
-			sc_.disconnect();
+			connection_.disconnect();
 		} catch (...) {
 			LYXERR(Debug::GRAPHICS, "Unable to disconnect signal.");
 		}
@@ -434,7 +435,8 @@ void Loader::Impl::resetFile(FileName const & file)
 	if (continue_monitoring && !cached_item_->monitoring())
 		cached_item_->startMonitoring();
 
-	sc_ = cached_item_->connect(bind(&Impl::statusChanged, this));
+	// This is a scoped connection
+	connection_ = cached_item_->connect([this](){ statusChanged(); });
 }
 
 

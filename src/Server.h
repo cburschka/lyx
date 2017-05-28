@@ -14,7 +14,7 @@
 #ifndef SERVER_H
 #define SERVER_H
 
-#include <boost/signals2/trackable.hpp>
+#include "support/signals.h"
 
 #include <vector>
 
@@ -30,7 +30,7 @@ namespace lyx {
 class Server;
 
 
-/** This class managed the pipes used for communicating with clients.
+/** This class manages the pipes used for communicating with clients.
  Usage: Initialize with pipe-filename-base, client class to receive
  messages, and callback-function that will be called with the messages.
  When you want to send, use "send()".
@@ -38,7 +38,7 @@ class Server;
  a clean string interface.
  */
 #ifndef _WIN32
-class LyXComm : public boost::signals2::trackable {
+class LyXComm {
 #else
 class LyXComm : public QObject {
 	Q_OBJECT
@@ -189,6 +189,9 @@ private:
 
 	/// Did we defer loading of files to another instance?
 	bool deferred_loading_;
+
+	/// Track object's liveness
+	support::Trackable tracker_;
 };
 
 

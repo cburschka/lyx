@@ -14,8 +14,8 @@
 #ifndef FORKEDCALLS_H
 #define FORKEDCALLS_H
 
+#include "support/signals.h"
 #include "support/strfwd.h"
-#include <boost/signals2.hpp>
 
 #ifdef HAVE_SYS_TYPES_H
 # include <sys/types.h>
@@ -44,7 +44,7 @@ public:
 	///
 	virtual std::shared_ptr<ForkedProcess> clone() const = 0;
 
-	/** A SignalType signal can be emitted once the forked process
+	/** A Signal signal can be emitted once the forked process
 	 *  has finished. It passes:
 	 *  the PID of the child and;
 	 *  the return value from the child.
@@ -53,7 +53,8 @@ public:
 	 *  we can return easily to C++ methods, rather than just globally
 	 *  accessible functions.
 	 */
-	typedef boost::signals2::signal<void(pid_t, int)> SignalType;
+	typedef signals2::signal<void(pid_t, int)> sig;
+	typedef sig::slot_type slot;
 
 	/** The signal is connected in the calling routine to the desired
 	 *  slot. We pass a shared_ptr rather than a reference to the signal
@@ -61,9 +62,10 @@ public:
 	 *  class (and hence the signal) to be destructed before the forked
 	 *  call is complete.
 	 *
-	 *  It doesn't matter if the slot disappears, SigC takes care of that.
+	 *  Use Slot::track or Signal::scoped_connection to ensure that the
+	 *  connection is closed before the slot expires.
 	 */
-	typedef std::shared_ptr<SignalType> SignalTypePtr;
+	typedef std::shared_ptr<sig> sigPtr;
 
 	/** Invoking the following methods makes sense only if the command
 	 *  is running asynchronously!
@@ -114,7 +116,7 @@ protected:
 	pid_t fork();
 
 	/// Callback function
-	SignalTypePtr signal_;
+	sigPtr signal_;
 
 	/// identifying command (for display in the GUI perhaps).
 	std::string command_;
@@ -136,7 +138,7 @@ private:
 };
 
 
-/** 
+/**
  * An instance of class ForkedCall represents a single child process.
  *
  * Class ForkedCall uses fork() and execvp() to lauch the child process.
@@ -175,7 +177,7 @@ public:
 	int startScript(Starttype, std::string const & what);
 
 	///
-	int startScript(std::string const & what, SignalTypePtr);
+	int startScript(std::string const & what, sigPtr ptr);
 
 private:
 	///
@@ -195,7 +197,7 @@ private:
 
 namespace ForkedCallQueue {
 
-ForkedCall::SignalTypePtr add(std::string const & process);
+ForkedCall::sigPtr add(std::string const & process);
 /// Query whether the queue is running a forked process now.
 bool running();
 

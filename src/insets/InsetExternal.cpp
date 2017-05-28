@@ -39,7 +39,6 @@
 
 #include "graphics/PreviewLoader.h"
 
-#include "support/bind.h"
 #include "support/convert.h"
 #include "support/debug.h"
 #include "support/ExceptionMessage.h"
@@ -428,7 +427,6 @@ InsetExternal::InsetExternal(Buffer * buf)
 // Mouse hover is not copied and remains empty
 InsetExternal::InsetExternal(InsetExternal const & other)
 	: Inset(other),
-	  boost::signals2::trackable(),
 	  params_(other.params_),
 	  renderer_(other.renderer_->clone(this))
 {}
@@ -635,6 +633,7 @@ void InsetExternal::setParams(InsetExternalParams const & p)
 	case PREVIEW_INSTANT: {
 		renderer_ = make_unique<RenderMonitoredPreview>(this);
 		RenderMonitoredPreview * preview_ptr = renderer_->asMonitoredPreview();
+		// This connection is closed at the same time as this is destroyed.
 		preview_ptr->connect([=]() { fileChanged(); });
 		add_preview_and_start_loading(*preview_ptr, *this, buffer());
 		break;

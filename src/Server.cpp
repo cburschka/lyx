@@ -55,8 +55,7 @@
 #include "support/lassert.h"
 #include "support/lstrings.h"
 #include "support/os.h"
-
-#include "support/bind.h"
+#include "support/signals.h"
 
 #include <iostream>
 
@@ -859,8 +858,12 @@ int LyXComm::startPipe(string const & file, bool write)
 	}
 
 	if (!write) {
-		theApp()->registerSocketCallback(fd,
-			bind(&LyXComm::read_ready, this));
+		// Make sure not to call read_ready after destruction.
+		weak_ptr<void> tracker = tracker_.p();
+		theApp()->registerSocketCallback(fd, [=](){
+				if (!tracker.expired())
+					read_ready();
+			});
 	}
 
 	return fd;

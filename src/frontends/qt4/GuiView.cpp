@@ -529,7 +529,8 @@ GuiView::GuiView(int id)
 
 	// Start autosave timer
 	if (lyxrc.autosave) {
-		d.autosave_timeout_.timeout.connect(bind(&GuiView::autoSave, this));
+		// The connection is closed when this is destroyed.
+		d.autosave_timeout_.timeout.connect([this](){ autoSave();});
 		d.autosave_timeout_.setTimeout(lyxrc.autosave * 1000);
 		d.autosave_timeout_.start();
 	}
