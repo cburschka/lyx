@@ -1134,7 +1134,7 @@ void TeXOnePar(Buffer const & buf,
 			// prevent unwanted whitespace
 			os << '%';
 		if (!os.afterParbreak() && !last_was_separator)
-			os << breakln;
+			os << '\n';
 	}
 
 	// if this is a CJK-paragraph and the next isn't, close CJK
