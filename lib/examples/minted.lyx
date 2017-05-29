@@ -110,8 +110,8 @@
 status open
 
 \begin_layout Plain Layout
-This example shows a possible use of the minted package for typesetting
- listings containing unicode characters.
+This example shows a possible use of the minted package (version 2.1 or later)
+ for typesetting listings containing unicode characters.
  For this reason, the default output format is 
 \family typewriter
 PDF (XeTeX)
@@ -178,7 +178,7 @@ titlename{lyxpak.py}
 status open
 
 \begin_layout Plain Layout
-This the title of the listing.
+This is the title of the listing appearing in the headers.
 \end_layout
 
 \end_inset
