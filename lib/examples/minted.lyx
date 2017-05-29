@@ -118,7 +118,7 @@ PDF (XeTeX)
 \family default
 .
  The listing is typeset using the DejaVu font.
- If this font is not installed on your system, you need choosing a different
+ If this font is not installed on your system, you need to choose a different
  one in Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
 Fonts.
@@ -141,7 +141,7 @@ Another required package is the
 \family typewriter
 eso-pic
 \family default
- latex package, so that you also need to install it.
+ latex package, so you also need to install it.
  It is used to draw a page frame around the listing.
 \end_layout
 
@@ -203,6 +203,17 @@ This is the title of the listing appearing in the headers.
 \begin_inset CommandInset label
 LatexCommand label
 name "lastpage"
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This label is needed to show the total number of pages in upper-right corner
+ of the PDF.
+\end_layout
 
 \end_inset
 
