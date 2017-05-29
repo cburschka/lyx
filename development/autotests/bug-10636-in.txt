@@ -14,6 +14,6 @@ CP: TextMetrics::editXY(cur
 CP: Key (queried) [action=up][Up]
 CP: TextMetrics::editXY(cur
 Cr: SIGSEGV signal caught
-TestEnd
+TestEndWithKill
 Assert searchPatterns.pl base=bug-10636
 
