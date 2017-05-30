@@ -235,6 +235,13 @@ void GuiCitation::on_restorePB_clicked()
 }
 
 
+void GuiCitation::on_literalCB_clicked()
+{
+	literal_ = literalCB->isChecked();
+	changed();
+}
+
+
 void GuiCitation::updateControls()
 {
 	BiblioInfo const & bi = bibInfo();
@@ -752,7 +759,13 @@ void GuiCitation::init()
 		documentBuffer().params().fullAuthorList());
 	textBeforeED->setText(toqstr(params_["before"]));
 	textAfterED->setText(toqstr(params_["after"]));
-	literalCB->setChecked(params_["literal"] == "true");
+
+	// if this is a new citation, we set the literal checkbox
+	// to its last set value.
+	if (cited_keys_.isEmpty())
+		literalCB->setChecked(literal_);
+	else
+		literalCB->setChecked(params_["literal"] == "true");
 
 	setPreTexts(getVectorFromString(params_["pretextlist"], from_ascii("\t")));
 	setPostTexts(getVectorFromString(params_["posttextlist"], from_ascii("\t")));
@@ -1043,6 +1056,8 @@ void GuiCitation::saveSession() const
 		sessionKey() + "/autofind", instant_->isChecked());
 	settings.setValue(
 		sessionKey() + "/citestyle", style_);
+	settings.setValue(
+		sessionKey() + "/literal", literal_);
 }
 
 
@@ -1054,6 +1069,7 @@ void GuiCitation::restoreSession()
 	casesense_->setChecked(settings.value(sessionKey() + "/casesensitive").toBool());
 	instant_->setChecked(settings.value(sessionKey() + "/autofind", true).toBool());
 	style_ = settings.value(sessionKey() + "/citestyle").toInt();
+	literal_ = settings.value(sessionKey() + "/literal", false).toBool();
 	updateFilterHint();
 }
 

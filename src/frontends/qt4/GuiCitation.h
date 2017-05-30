@@ -50,6 +50,7 @@ private Q_SLOTS:
 	void on_cancelPB_clicked();
 	void on_restorePB_clicked();
 	void on_applyPB_clicked();
+	void on_literalCB_clicked();
 	void filterPressed();
 	void filterChanged(const QString & text);
 	void on_fieldsCO_currentIndexChanged(int index);
@@ -180,6 +181,9 @@ private:
 
 	/// last used citation style
 	int style_;
+	/// last set value for literal
+	/// this is used only for new citations
+	bool literal_;
 	///
 	GuiSelectionManager * selectionManager;
 	/// available keys.
