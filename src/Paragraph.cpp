@@ -2489,6 +2489,8 @@ void Paragraph::latex(BufferParams const & bparams,
 		// close babel's font environment before opening CJK.
 		string const lang_end_command = runparams.use_polyglossia ?
 			"\\end{$$lang}" : lyxrc.language_command_end;
+		bool const using_begin_end = runparams.use_polyglossia ||
+						!lang_end_command.empty();
 		if (!running_lang.empty() &&
 		    current_font.language()->encoding()->package() == Encoding::CJK) {
 				string end_tag = subst(lang_end_command,
@@ -2496,8 +2498,8 @@ void Paragraph::latex(BufferParams const & bparams,
 							running_lang);
 				os << from_ascii(end_tag);
 				column += end_tag.length();
-				if (runparams.use_polyglossia)
-					popPolyglossiaLang();
+				if (using_begin_end)
+					popLanguageName();
 		}
 
 		// Switch file encoding if necessary (and allowed)

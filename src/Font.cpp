@@ -293,7 +293,7 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 			tmp += "{";
 			os << from_ascii(tmp);
 			count += tmp.length();
-			pushPolyglossiaLang(language()->polyglossia(), true);
+			pushLanguageName(language()->polyglossia(), true);
 		} else if (language()->encoding()->package() != Encoding::CJK) {
 			os << '{';
 			count += 1;
@@ -329,6 +329,8 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 				      "$$lang", language()->babel());
 			os << from_ascii(tmp);
 			count += tmp.length();
+			if (!lyxrc.language_command_end.empty())
+				pushLanguageName(language()->babel(), true);
 		} else if (language()->encoding()->package() != Encoding::CJK) {
 			os << '{';
 			count += 1;
@@ -564,8 +566,11 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 	    && language()->encoding()->package() != Encoding::CJK) {
 		os << '}';
 		++count;
-		if (runparams.use_polyglossia)
-			popPolyglossiaLang();
+		bool const using_begin_end =
+			runparams.use_polyglossia ||
+				!lyxrc.language_command_end.empty();
+		if (using_begin_end)
+			popLanguageName();
 	}
 
 	return count;
