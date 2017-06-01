@@ -13,6 +13,7 @@ my $userdir = "$bindir/Testing/.lyx";
 my %allowedKeys = (
   "use_converter_needauth_forbidden" => ["true", "false"],
   "use_converter_needauth" => ["true", "false"],
+  "allow_geometry_session" => ["false"],
     );
 
 chdir($bindir);
@@ -23,7 +24,7 @@ my %Subst = ();
 
 my $ctestparams = 0;
 my @ctestpars = ();
-for my $arg (@ARGV) {
+for my $arg ("allow_geometry_session=false", @ARGV) {
   if ($ctestparams) {
     push(@ctestpars, $arg);
   }
