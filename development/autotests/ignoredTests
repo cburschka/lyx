@@ -72,6 +72,10 @@ export/templates/DocBook_article_(dvi3|pdf[245]).*
 # Used only as include file for some tests
 .*/export/IncludeMissingEndTagDiv.*
 
+# acmart is new to lyx23
+export/templates/acmart_lyx(16|21|22)
+export/templates/acmart_(dvi3|pdf4|pdf5)_systemF
+export/templates/acmart_pdf
 
 # ============================================================
 Sublabel: obsolete
