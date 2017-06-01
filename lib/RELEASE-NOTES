@@ -160,3 +160,10 @@
   option in the LyX preferences;
   2) provides explicit consent to the use of the converter on the first
   compilation of the R-enhanced document.
+
+* LyX now gives a warning if a document mixes title and non-title layouts.
+  In some cases, this warning is harmless, but in other cases the document has
+  a serious problem even though the LaTeX command does not exit with error. For
+  example, create a document with a title layout, then a standard layout, and
+  then an author layout, and you will see in the PDF that the author is not
+  typeset as an author.
