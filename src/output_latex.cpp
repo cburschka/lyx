@@ -986,30 +986,13 @@ void TeXOnePar(Buffer const & buf,
 	os << from_utf8(everypar);
 	par.latex(bparams, outerfont, os, runparams, start_pos, end_pos);
 
-	// Make sure that \\par is done with the font of the last
-	// character if this has another size as the default.
-	// This is necessary because LaTeX (and LyX on the screen)
-	// calculates the space between the baselines according
-	// to this font. (Matthias)
-	//
-	// We must not change the font for the last paragraph
-	// of non-multipar insets, tabular cells or commands,
-	// since this produces unwanted whitespace.
-
 	Font const font = par.empty()
 		 ? par.getLayoutFont(bparams, outerfont)
 		 : par.getFont(bparams, par.size() - 1, outerfont);
 
 	bool const is_command = style.isCommand();
 
-	if (style.resfont.size() != font.fontInfo().size()
-	    && (nextpar || maintext
-	        || (text.inset().paragraphs().size() > 1
-	            && text.inset().lyxCode() != CELL_CODE))
-	    && !is_command) {
-		os << '{';
-		os << "\\" << from_ascii(font.latexSize()) << " \\par}";
-	} else if (is_command) {
+	if (is_command) {
 		os << '}';
 		if (!style.postcommandargs().empty())
 			latexArgInsets(par, os, runparams, style.postcommandargs(), "post:");

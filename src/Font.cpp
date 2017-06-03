@@ -462,6 +462,7 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 				  OutputParams const & runparams,
 				  Font const & base,
 				  Font const & next,
+				  bool & needPar,
 				  bool const & closeLanguage) const
 {
 	int count = 0;
@@ -506,6 +507,11 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 	if (f.size() != FONT_SIZE_INHERIT) {
 		// We only have to close if only size changed
 		if (!env) {
+			if (needPar) {
+				os << "\\par";
+				count += 4;
+				needPar = false;
+			}
 			os << '}';
 			++count;
 		}

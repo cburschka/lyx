@@ -52,6 +52,7 @@
 #include "insets/InsetBibitem.h"
 #include "insets/InsetLabel.h"
 #include "insets/InsetSpecialChar.h"
+#include "insets/InsetText.h"
 
 #include "mathed/InsetMathHull.h"
 
@@ -69,6 +70,15 @@
 
 using namespace std;
 using namespace lyx::support;
+
+// gcc < 4.8.0 and msvc < 2015 do not support C++11 thread_local
+#if defined(__GNUC__) && __GNUC__ == 4 && __GNUC_MINOR__ < 8
+#define THREAD_LOCAL_STATIC static __thread
+#elif defined(_MSC_VER) && (_MSC_VER < 1900)
+#define THREAD_LOCAL_STATIC static __declspec(thread)
+#else
+#define THREAD_LOCAL_STATIC thread_local static
+#endif
 
 namespace lyx {
 
@@ -1044,9 +1054,10 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 			os << '\n';
 		} else {
 			if (open_font) {
+				bool needPar = false;
 				column += running_font.latexWriteEndChanges(
 					os, bparams, runparams,
-					basefont, basefont);
+					basefont, basefont, needPar);
 				open_font = false;
 			}
 
@@ -1104,10 +1115,12 @@ void Paragraph::Private::latexInset(BufferParams const & bparams,
 	bool arabtex = basefont.language()->lang() == "arabic_arabtex"
 		|| running_font.language()->lang() == "arabic_arabtex";
 	if (open_font && !inset->inheritFont()) {
+		bool needPar = false;
 		bool closeLanguage = arabtex
 			|| basefont.isRightToLeft() == running_font.isRightToLeft();
 		unsigned int count = running_font.latexWriteEndChanges(os,
-			bparams, runparams, basefont, basefont, closeLanguage);
+					bparams, runparams, basefont, basefont,
+					needPar, closeLanguage);
 		column += count;
 		// if any font properties were closed, update the running_font,
 		// making sure, however, to leave the language as it was
@@ -2388,14 +2401,19 @@ void Paragraph::latex(BufferParams const & bparams,
 			column += d->startTeXParParams(bparams, os, runparams);
 	}
 
+	// Whether a \par can be issued for insets typeset inline with text.
+	// Yes if greater than 0. This has to be static.
+	THREAD_LOCAL_STATIC int parInline = 0;
+
 	for (pos_type i = 0; i < size(); ++i) {
 		// First char in paragraph or after label?
 		if (i == body_pos) {
 			if (body_pos > 0) {
 				if (open_font) {
+					bool needPar = false;
 					column += running_font.latexWriteEndChanges(
 						os, bparams, runparams,
-						basefont, basefont);
+						basefont, basefont, needPar);
 					open_font = false;
 				}
 				basefont = getLayoutFont(bparams, outerfont);
@@ -2448,8 +2466,10 @@ void Paragraph::latex(BufferParams const & bparams,
 
 		if (bparams.output_changes && runningChange != change) {
 			if (open_font) {
+				bool needPar = false;
 				column += running_font.latexWriteEndChanges(
-						os, bparams, runparams, basefont, basefont);
+						os, bparams, runparams,
+						basefont, basefont, needPar);
 				open_font = false;
 			}
 			basefont = getLayoutFont(bparams, outerfont);
@@ -2477,9 +2497,11 @@ void Paragraph::latex(BufferParams const & bparams,
 		    (current_font != running_font ||
 		     current_font.language() != running_font.language()))
 		{
+			bool needPar = false;
 			column += running_font.latexWriteEndChanges(
-					os, bparams, runparams, basefont,
-					(i == body_pos-1) ? basefont : current_font);
+				    os, bparams, runparams, basefont,
+				    (i == body_pos-1) ? basefont : current_font,
+				    needPar);
 			running_font = basefont;
 			open_font = false;
 		}
@@ -2595,9 +2617,40 @@ void Paragraph::latex(BufferParams const & bparams,
 		// and then split to handle the two modes separately.
 		if (c == META_INSET) {
 			if (i >= start_pos && (end_pos == -1 || i < end_pos)) {
+				// Greyedout notes and, in general, all insets
+				// with InsetLayout::isDisplay() == false,
+				// are typeset inline with the text. So, we
+				// can add a \par to the last paragraph of
+				// such insets only if nothing else follows.
+				bool incremented = false;
+				Inset const * inset = getInset(i);
+				InsetText const * textinset = inset
+							? inset->asInsetText()
+							: 0;
+				if (i + 1 == size() && textinset
+				    && !inset->getLayout().isDisplay()) {
+					ParagraphList const & pars =
+						textinset->text().paragraphs();
+					pit_type const pit = pars.size() - 1;
+					Font const last_font =
+						pit < 0 || pars[pit].empty()
+						? pars[pit].getLayoutFont(
+								bparams,
+								outerfont)
+						: pars[pit].getFont(bparams,
+							pars[pit].size() - 1,
+							outerfont);
+					if (last_font.fontInfo().size() !=
+					    basefont.fontInfo().size()) {
+						++parInline;
+						incremented = true;
+					}
+				}
 				d->latexInset(bparams, os, rp, running_font,
 						basefont, outerfont, open_font,
 						runningChange, style, i, column);
+				if (incremented)
+					--parInline;
 			}
 		} else if (i >= start_pos && (end_pos == -1 || i < end_pos)) {
 			try {
@@ -2631,22 +2684,62 @@ void Paragraph::latex(BufferParams const & bparams,
 
 	// If we have an open font definition, we have to close it
 	if (open_font) {
+		// Make sure that \\par is done with the font of the last
+		// character if this has another size as the default.
+		// This is necessary because LaTeX (and LyX on the screen)
+		// calculates the space between the baselines according
+		// to this font. (Matthias)
+		//
+		// We must not change the font for the last paragraph
+		// of non-multipar insets, tabular cells or commands,
+		// since this produces unwanted whitespace.
+
+		Font const font = empty()
+			? getLayoutFont(bparams, outerfont)
+			: getFont(bparams, size() - 1, outerfont);
+
+		InsetText const * textinset = inInset().asInsetText();
+
+		bool const maintext = textinset
+			? textinset->text().isMainText()
+			: false;
+
+		size_t const numpars = textinset
+			? textinset->text().paragraphs().size()
+			: 0;
+
+		bool needPar = false;
+
+		if (style.resfont.size() != font.fontInfo().size()
+		    && (!runparams.isLastPar || maintext
+			|| (numpars > 1 && d->ownerCode() != CELL_CODE
+			    && (inInset().getLayout().isDisplay()
+				|| parInline)))
+		    && !style.isCommand()) {
+			needPar = true;
+		}
 #ifdef FIXED_LANGUAGE_END_DETECTION
 		if (next_) {
 			running_font.latexWriteEndChanges(os, bparams,
 					runparams, basefont,
-					next_->getFont(bparams, 0, outerfont));
+					next_->getFont(bparams, 0, outerfont),
+						       needPar);
 		} else {
 			running_font.latexWriteEndChanges(os, bparams,
-					runparams, basefont, basefont);
+					runparams, basefont, basefont, needPar);
 		}
 #else
 //FIXME: For now we ALWAYS have to close the foreign font settings if they are
 //FIXME: there as we start another \selectlanguage with the next paragraph if
 //FIXME: we are in need of this. This should be fixed sometime (Jug)
 		running_font.latexWriteEndChanges(os, bparams, runparams,
-				basefont, basefont);
+				basefont, basefont, needPar);
 #endif
+		if (needPar) {
+			// The \par could not be inserted at the same nesting
+			// level of the font size change, so do it now.
+			os << "{\\" << font.latexSize() << "\\par}";
+		}
 	}
 
 	column += Changes::latexMarkChange(os, bparams, runningChange,

@@ -85,6 +85,7 @@ public:
 				 OutputParams const & runparams,
 				 Font const & base,
 				 Font const & next,
+				 bool & needPar,
 				 bool const & closeLanguage = true) const;
 
 
