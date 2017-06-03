@@ -363,6 +363,7 @@ dist_examples_DATA = \
 	examples/splash.lyx \
 	examples/spreadsheet.lyx \
 	examples/sweave.lyx \
+	examples/subequations.lyx \
 	examples/tufte-book.lyx \
 	examples/tufte-handout.lyx \
 	examples/varwidth-floats-side-by-side.lyx \
@@ -2265,6 +2266,7 @@ dist_layouts_DATA =\
 	layouts/stdstarsections.inc \
 	layouts/stdstruct.inc \
 	layouts/stdtitle.inc \
+	layouts/subequations.module \
 	layouts/svcommon.inc \
 	layouts/svglobal.layout \
 	layouts/svglobal3.layout \

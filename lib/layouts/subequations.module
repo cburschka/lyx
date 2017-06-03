@@ -1,0 +1,19 @@
+#\DeclareLyXModule{Subequations}
+#DescriptionBegin
+#Provide a straightforward way to segregate subequations in LyX. See the subequations.lyx example file.
+#DescriptionEnd
+
+# Author: Joel A. Kulesza (jkulesza@gmail.com)
+
+Format 48
+
+InsetLayout Flex:Subequations
+  LyxType               custom
+  Decoration            classic
+  LabelString           Subequations
+  LatexType             Environment
+  LatexName             subequations
+  MultiPar              true
+  Requires              amsmath
+End
+
