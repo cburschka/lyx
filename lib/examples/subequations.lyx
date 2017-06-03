@@ -84,11 +84,12 @@ The
 \family typewriter
 subequations
 \family default
- environment, provided by the 
+ environment is provided in LyX by the 
 \family typewriter
-amsmath
+subequations
 \family default
- package, is helpful to group logically-linked equations.
+ module (Document > Settings > Modules).
+ It is helpful to group logically-linked equations.
  For example, the one-speed one-dimensional integro-differential equation
  with 
 \begin_inset Formula $0\le x\le X$
