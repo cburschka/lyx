@@ -878,8 +878,8 @@ void Tabular::insertColumn(col_type const col, bool copy)
 		setBottomLine(i, bottomLine(j));
 		setTopLine(i, topLine(j));
 		setLeftLine(i, leftLine(j));
+		setRightLine(i, rightLine(j));
 		if (rightLine(i) && rightLine(j)) {
-			setRightLine(i, true);
 			setRightLine(j, false);
 		}
 		if (buffer().params().track_changes)
