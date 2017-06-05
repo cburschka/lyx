@@ -46,6 +46,9 @@ What's new
 
 * USER INTERFACE
 
+- Fix crash occurring in certain circumstances when previewing the source
+  of a single paragraph containing a language switch (bug 10636).
+
 - Remove duplicate entries from the Symbols dialog (bug 10644).
 
 - Always show the float type in the float inset label (bug 10618).
