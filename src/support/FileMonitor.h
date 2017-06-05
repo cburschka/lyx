@@ -108,18 +108,16 @@ public:
 	~FileMonitorGuard();
 	/// absolute path being tracked
 	std::string const & filename() { return filename_; }
-	/// if false, emit fileChanged() when we notice the existence of the file
-	void setExists(bool exists) { exists_ = exists; }
 
 public Q_SLOTS:
 	/// Make sure it is being monitored, after e.g. a deletion. See
 	/// <https://bugreports.qt.io/browse/QTBUG-46483>. This is called
 	/// automatically.
-	void refresh();
+	void refresh(bool emit = true);
 
 Q_SIGNALS:
 	/// Connect to this to be notified when the file changes
-	void fileChanged() const;
+	void fileChanged(bool exists) const;
 
 private Q_SLOTS:
 	/// Receive notifications from the QFileSystemWatcher
@@ -128,6 +126,7 @@ private Q_SLOTS:
 private:
 	std::string const filename_;
 	QFileSystemWatcher * qwatcher_;
+	/// for emitting fileChanged() when the file is created or deleted
 	bool exists_;
 };
 
@@ -157,7 +156,7 @@ class FileMonitor : public QObject
 public:
 	FileMonitor(std::shared_ptr<FileMonitorGuard> monitor);
 
-	typedef signals2::signal<void()> sig;
+	typedef signals2::signal<void(bool)> sig;
 	typedef sig::slot_type slot;
 	/// Connect and you'll be informed when the file has changed.
 	signals2::connection connect(slot const &);
@@ -177,7 +176,7 @@ public:
 	/// inotify backend (e.g. Linux); for OSX (kqueue), a value of 100ms is
 	/// unsufficient and more tests need to be done in combination with
 	/// flushing/syncing to disk in order to understand how to catch one's own
-	/// operations reliably. No feedback from Windows yet. See
+	/// operations reliably. No feedback about Windows. See
 	/// <https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg200252.html>.
 	FileMonitorBlocker block(int delay = 0);
 	/// Make sure the good file is being monitored, after e.g. a move or a
@@ -187,13 +186,13 @@ public:
 
 Q_SIGNALS:
 	/// Connect to this to be notified when the file changes
-	void fileChanged() const;
+	void fileChanged(bool exists) const;
 
 protected Q_SLOTS:
 	/// Receive notifications from the FileMonitorGuard
-	void changed();
+	void changed(bool exists);
 	///
-	void reconnectToFileMonitorGuard();
+	void connectToFileMonitorGuard();
 
 private:
 	/// boost signal

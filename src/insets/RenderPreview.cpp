@@ -304,7 +304,7 @@ void RenderMonitoredPreview::startMonitoring() const
 {
 	if (!monitoring()) {
 		monitor_ = FileSystemWatcher::activeMonitor(filename_);
-		monitor_->connect(changed_);
+		monitor_->connect([this](bool /* exists */){ changed_(); });
 	}
 }
 

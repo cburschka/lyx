@@ -220,7 +220,7 @@ void CacheItem::Impl::startMonitor()
 		return;
 	monitor_ = FileSystemWatcher::activeMonitor(filename_);
 	// Disconnected at the same time as this is destroyed.
-	monitor_->connect([=](){ startLoading(); });
+	monitor_->connect([=](bool /* exists */){ startLoading(); });
 }
 
 
