@@ -42,6 +42,9 @@ What's new
 - Fix wrong spacing in output when the font size is changed inside
   a center environment or a greyed out note (bugs 9598 and 10650).
 
+- Assure properly nested \begin{lang} and \end{lang} tags even when
+  no language package is selected (bug 10685).
+
 * LYX2LYX
 
 

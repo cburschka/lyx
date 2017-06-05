@@ -84,11 +84,12 @@ OutputState * getOutputState()
 }
 
 
-string const & openPolyglossiaLang(OutputState const * state)
+string const & openLanguageName(OutputState const * state)
 {
 	// Return a reference to the last active language opened with
-	// polyglossia. If none or when using babel, return a reference
-	// to an empty string.
+	// polyglossia or when using begin/end commands. If none or when
+	// using babel with only a begin command, return a reference to
+	// an empty string.
 
 	static string const empty;
 
@@ -101,8 +102,9 @@ string const & openPolyglossiaLang(OutputState const * state)
 bool atSameLastLangSwitchDepth(OutputState const * state)
 {
 	// Return true if the actual nest level is the same at which the
-	// language was switched when using polyglossia. Instead, return
-	// always true when using babel.
+	// language was switched when using polyglossia or begin/end
+	// commands. Instead, return always true when using babel with
+	// only a begin command.
 
 	return state->lang_switch_depth_.size() == 0
 			? true
@@ -112,7 +114,7 @@ bool atSameLastLangSwitchDepth(OutputState const * state)
 
 bool isLocalSwitch(OutputState const * state)
 {
-	// Return true if the language was opened by the \text<lang> command.
+	// Return true if the language was opened by a local command switch.
 
 	return state->lang_switch_depth_.size()
 		&& state->lang_switch_depth_.top() < 0;
@@ -208,10 +210,12 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 		"\\begin{$$lang}" : lyxrc.language_command_begin;
 	string const lang_end_command = use_polyglossia ?
 		"\\end{$$lang}" : lyxrc.language_command_end;
+	bool const using_begin_end = use_polyglossia ||
+					!lang_end_command.empty();
 
 	// For polyglossia, switch language outside of environment, if possible.
 	if (par_lang != prev_par_lang) {
-		if ((!use_polyglossia || langOpenedAtThisLevel(state)) &&
+		if ((!using_begin_end || langOpenedAtThisLevel(state)) &&
 		    !lang_end_command.empty() &&
 		    prev_par_lang != doc_lang &&
 		    !prev_par_lang.empty()) {
@@ -221,21 +225,21 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 				prev_par_lang))
 			  // the '%' is necessary to prevent unwanted whitespace
 			  << "%\n";
-			if (use_polyglossia)
-				popPolyglossiaLang();
+			if (using_begin_end)
+				popLanguageName();
 		}
 
 		// If no language was explicitly opened and we are using
-		// polyglossia, then the current polyglossia language is
-		// the document language.
-		string const & pol_lang = use_polyglossia
+		// polyglossia or begin/end commands, then the current
+		// language is the document language.
+		string const & cur_lang = using_begin_end
 					  && state->lang_switch_depth_.size()
-						  ? openPolyglossiaLang(state)
+						  ? openLanguageName(state)
 						  : doc_lang;
 
 		if ((lang_end_command.empty() ||
 		    par_lang != doc_lang ||
-		    par_lang != pol_lang) &&
+		    par_lang != cur_lang) &&
 		    !par_lang.empty()) {
 			    string bc = use_polyglossia ?
 					getPolyglossiaBegin(lang_begin_command, par_lang,
@@ -244,8 +248,8 @@ static TeXEnvironmentData prepareEnvironment(Buffer const & buf,
 			    os << bc;
 			    // the '%' is necessary to prevent unwanted whitespace
 			    os << "%\n";
-			    if (use_polyglossia)
-				    pushPolyglossiaLang(par_lang);
+			    if (using_begin_end)
+				    pushLanguageName(par_lang);
 		}
 	}
 
@@ -309,17 +313,20 @@ static void finishEnvironment(otexstream & os, OutputParams const & runparams,
 
 	if (data.style->isEnvironment()) {
 		os << breakln;
-		// Close any polyglossia language opened at this nest level
-		if (runparams.use_polyglossia) {
+		bool const using_begin_end =
+			runparams.use_polyglossia ||
+				!lyxrc.language_command_end.empty();
+		// Close any language opened at this nest level
+		if (using_begin_end) {
 			while (langOpenedAtThisLevel(state)) {
 				if (isLocalSwitch(state)) {
 					os << "}";
 				} else {
 					os << "\\end{"
-					   << openPolyglossiaLang(state)
+					   << openLanguageName(state)
 					   << "}%\n";
 				}
-				popPolyglossiaLang();
+				popLanguageName();
 			}
 		}
 		state->nest_level_ -= 1;
@@ -501,7 +508,7 @@ void getArgInsets(otexstream & os, OutputParams const & runparams, Layout::LaTeX
 } // namespace anon
 
 
-void pushPolyglossiaLang(string const & lang_name, bool localswitch)
+void pushLanguageName(string const & lang_name, bool localswitch)
 {
 	OutputState * state = getOutputState();
 
@@ -511,7 +518,7 @@ void pushPolyglossiaLang(string const & lang_name, bool localswitch)
 }
 
 
-void popPolyglossiaLang()
+void popLanguageName()
 {
 	OutputState * state = getOutputState();
 
@@ -779,10 +786,12 @@ void TeXOnePar(Buffer const & buf,
 		"\\end{$$lang}" : lyxrc.language_command_end;
 	// the '%' is necessary to prevent unwanted whitespace
 	string lang_command_termination = "%\n";
+	bool const using_begin_end = use_polyglossia ||
+					!lang_end_command.empty();
 
 	// In some insets (such as Arguments), we cannot use \selectlanguage
 	bool const localswitch = text.inset().forceLocalFontSwitch()
-			|| (use_polyglossia && text.inset().forcePlainLayout());
+			|| (using_begin_end && text.inset().forcePlainLayout());
 	if (localswitch) {
 		lang_begin_command = use_polyglossia ?
 			    "\\text$$lang$$opts{" : lyxrc.language_command_local;
@@ -797,18 +806,18 @@ void TeXOnePar(Buffer const & buf,
 			                  && priorpar->getDepth() <= par.getDepth())
 		                  || priorpar->getDepth() < par.getDepth())))
 	{
-		if ((!use_polyglossia || langOpenedAtThisLevel(state)) &&
+		if ((!using_begin_end || langOpenedAtThisLevel(state)) &&
 		    !lang_end_command.empty() &&
 		    prev_lang != outer_lang &&
 		    !prev_lang.empty() &&
-		    (!use_polyglossia || !style.isEnvironment()))
+		    (!using_begin_end || !style.isEnvironment()))
 		{
 			os << from_ascii(subst(lang_end_command,
 				"$$lang",
 				prev_lang))
 			   << lang_command_termination;
-			if (use_polyglossia)
-				popPolyglossiaLang();
+			if (using_begin_end)
+				popLanguageName();
 		}
 
 		// We need to open a new language if we couldn't close the previous
@@ -817,7 +826,7 @@ void TeXOnePar(Buffer const & buf,
 		// outer_language (which is currently in effect once the previous one
 		// is closed).
 		if ((lang_end_command.empty() || par_lang != outer_lang
-		     || (!use_polyglossia
+		     || (!using_begin_end
 			 || (style.isEnvironment() && par_lang != prev_lang)))
 			&& !par_lang.empty()) {
 			// If we're inside an inset, and that inset is within an \L or \R
@@ -825,7 +834,7 @@ void TeXOnePar(Buffer const & buf,
 			// language paragraph should appear within an \L or \R (in addition
 			// to, outside of, the normal language switch commands).
 			// This behavior is not correct for ArabTeX, though.
-			if (!use_polyglossia
+			if (!using_begin_end
 			    // not for ArabTeX
 				&& par_language->lang() != "arabic_arabtex"
 				&& outer_language->lang() != "arabic_arabtex"
@@ -858,15 +867,15 @@ void TeXOnePar(Buffer const & buf,
 			}
 			// With CJK, the CJK tag has to be closed first (see below)
 			if (runparams.encoding->package() != Encoding::CJK
-			    && par_lang != openPolyglossiaLang(state)
+			    && par_lang != openLanguageName(state)
 			    && !par_lang.empty()) {
 				string bc = use_polyglossia ?
 					  getPolyglossiaBegin(lang_begin_command, par_lang, par_language->polyglossiaOpts())
 					  : subst(lang_begin_command, "$$lang", par_lang);
 				os << bc;
 				os << lang_command_termination;
-				if (use_polyglossia)
-					pushPolyglossiaLang(par_lang, localswitch);
+				if (using_begin_end)
+					pushLanguageName(par_lang, localswitch);
 			}
 		}
 	}
@@ -918,15 +927,15 @@ void TeXOnePar(Buffer const & buf,
 				}
 				// With CJK, the CJK tag had to be closed first (see above)
 				if (runparams.encoding->package() == Encoding::CJK
-				    && par_lang != openPolyglossiaLang(state)
+				    && par_lang != openLanguageName(state)
 				    && !par_lang.empty()) {
 					os << from_ascii(subst(
 						lang_begin_command,
 						"$$lang",
 						par_lang))
 					<< lang_command_termination;
-					if (use_polyglossia)
-						pushPolyglossiaLang(par_lang, localswitch);
+					if (using_begin_end)
+						pushLanguageName(par_lang, localswitch);
 				}
 				runparams.encoding = encoding;
 			}
@@ -988,7 +997,7 @@ void TeXOnePar(Buffer const & buf,
 			     && nextpar->getDepth() == par.getDepth())
 		    || (atSameLastLangSwitchDepth(state) && nextpar
 			    && nextpar->getDepth() < par.getDepth()))
-			close_lang_switch = use_polyglossia;
+			close_lang_switch = using_begin_end;
 		if (nextpar && par.params().depth() < nextpar->params().depth())
 			pending_newline = true;
 		break;
@@ -998,9 +1007,9 @@ void TeXOnePar(Buffer const & buf,
 		if (nextpar
 		    && ((nextpar->layout() != par.layout()
 			   || nextpar->params().depth() != par.params().depth())
-			|| (!use_polyglossia || par_lang != nextpar_lang)))
+			|| (!using_begin_end || par_lang != nextpar_lang)))
 		{
-			close_lang_switch = use_polyglossia;
+			close_lang_switch = using_begin_end;
 			break;
 		}
 	}
@@ -1031,7 +1040,7 @@ void TeXOnePar(Buffer const & buf,
 	// Closing the language is needed for the last paragraph; it is also
 	// needed if we're within an \L or \R that we may have opened above (not
 	// necessarily in this paragraph) and are about to close.
-	bool closing_rtl_ltr_environment = !use_polyglossia
+	bool closing_rtl_ltr_environment = !using_begin_end
 		// not for ArabTeX
 		&& (par_language->lang() != "arabic_arabtex"
 		    && outer_language->lang() != "arabic_arabtex")
@@ -1044,7 +1053,7 @@ void TeXOnePar(Buffer const & buf,
 
 	if (closing_rtl_ltr_environment
 	    || ((runparams.isLastPar || close_lang_switch)
-	        && (par_lang != outer_lang || (use_polyglossia
+	        && (par_lang != outer_lang || (using_begin_end
 						&& style.isEnvironment()
 						&& par_lang != nextpar_lang)))) {
 		// Since \selectlanguage write the language to the aux file,
@@ -1067,7 +1076,7 @@ void TeXOnePar(Buffer const & buf,
 					? getPolyglossiaEnvName(current_language)
 					: current_language->babel();
 				if (!current_lang.empty()
-				    && current_lang != openPolyglossiaLang(state)) {
+				    && current_lang != openLanguageName(state)) {
 					string bc = use_polyglossia ?
 						    getPolyglossiaBegin(lang_begin_command, current_lang,
 									current_language->polyglossiaOpts())
@@ -1075,28 +1084,28 @@ void TeXOnePar(Buffer const & buf,
 					os << bc;
 					pending_newline = !localswitch;
 					unskip_newline = !localswitch;
-					if (use_polyglossia)
-						pushPolyglossiaLang(current_lang, localswitch);
+					if (using_begin_end)
+						pushLanguageName(current_lang, localswitch);
 				}
-			} else if ((!use_polyglossia ||
+			} else if ((!using_begin_end ||
 				    langOpenedAtThisLevel(state)) &&
 				   !par_lang.empty()) {
 				// If we are in an environment, we have to
 				// close the "outer" language afterwards
-				string const & pol_lang = openPolyglossiaLang(state);
+				string const & cur_lang = openLanguageName(state);
 				if (!style.isEnvironment()
 				    || (close_lang_switch
 					&& atSameLastLangSwitchDepth(state)
 					&& par_lang != outer_lang
-					&& (par_lang != pol_lang
-					    || (pol_lang != outer_lang
+					&& (par_lang != cur_lang
+					    || (cur_lang != outer_lang
 						&& nextpar
 						&& style != nextpar->layout())))
 				    || (atSameLastLangSwitchDepth(state)
 					&& state->lang_switch_depth_.size()
-					&& pol_lang != par_lang))
+					&& cur_lang != par_lang))
 				{
-					if (use_polyglossia && !localswitch)
+					if (using_begin_end && !localswitch)
 						os << breakln;
 					os << from_ascii(subst(
 						lang_end_command,
@@ -1104,8 +1113,8 @@ void TeXOnePar(Buffer const & buf,
 						par_lang));
 					pending_newline = !localswitch;
 					unskip_newline = !localswitch;
-					if (use_polyglossia)
-						popPolyglossiaLang();
+					if (using_begin_end)
+						popLanguageName();
 				}
 			}
 		}
@@ -1273,6 +1282,10 @@ void latexParagraphs(Buffer const & buf,
 		: bparams.language->babel();
 	string const lang_begin_command = runparams.use_polyglossia ?
 		"\\begin{$$lang}$$opts" : lyxrc.language_command_begin;
+	string const lang_end_command = runparams.use_polyglossia ?
+		"\\end{$$lang}" : lyxrc.language_command_end;
+	bool const using_begin_end = runparams.use_polyglossia ||
+					!lang_end_command.empty();
 
 	if (maintext && !lyxrc.language_auto_begin &&
 	    !mainlang.empty()) {
@@ -1283,8 +1296,8 @@ void latexParagraphs(Buffer const & buf,
 			  : subst(lang_begin_command, "$$lang", mainlang);
 		os << bc;
 		os << '\n';
-		if (runparams.use_polyglossia)
-			pushPolyglossiaLang(mainlang);
+		if (using_begin_end)
+			pushLanguageName(mainlang);
 	}
 
 	ParagraphList const & paragraphs = text.paragraphs();
@@ -1381,16 +1394,14 @@ void latexParagraphs(Buffer const & buf,
 
 	// if "auto end" is switched off, explicitly close the language at the end
 	// but only if the last par is in a babel or polyglossia language
-	string const lang_end_command = runparams.use_polyglossia ?
-		"\\end{$$lang}" : lyxrc.language_command_end;
 	if (maintext && !lyxrc.language_auto_end && !mainlang.empty() &&
 		paragraphs.at(lastpit).getParLanguage(bparams)->encoding()->package() != Encoding::CJK) {
 		os << from_utf8(subst(lang_end_command,
 					"$$lang",
 					mainlang))
 			<< '\n';
-		if (runparams.use_polyglossia)
-			popPolyglossiaLang();
+		if (using_begin_end)
+			popLanguageName();
 	}
 
 	// If the last paragraph is an environment, we'll have to close
@@ -1399,15 +1410,15 @@ void latexParagraphs(Buffer const & buf,
 		os << "\\end{CJK}\n";
 		state->open_encoding_ = none;
 	}
-	// Likewise for polyglossia
-	string const & pol_lang = openPolyglossiaLang(state);
-	if (maintext && !is_child && !pol_lang.empty()) {
+	// Likewise for polyglossia or when using begin/end commands
+	string const & cur_lang = openLanguageName(state);
+	if (maintext && !is_child && !cur_lang.empty()) {
 		os << from_utf8(subst(lang_end_command,
 					"$$lang",
-					pol_lang))
+					cur_lang))
 		   << '\n';
-		if (runparams.use_polyglossia)
-			popPolyglossiaLang();
+		if (using_begin_end)
+			popLanguageName();
 	}
 
 	// reset inherited encoding
