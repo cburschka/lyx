@@ -15,16 +15,16 @@
 #
 # In order to use the external templates machinery, the options of the
 # minted package are extended to be able to construct a proper \inputminted
-# command. This template defines an additional 'lang' option for minted, which
-# is then extracted from the options and passed as the second non-optional
+# command. This template defines an additional 'language' option for minted,
+# which is then extracted from the options and passed as the second non-optional
 # parameter of \inputminted. This template works for minted version 2.1 or
 # higher. As it relies on the internals of minted, an update might break it.
 
 PreambleDef minted
     \usepackage{minted}
     \@namedef{minted@opt@cmd@lang}{latex}
-    \define@key{minted@opt@cmd}{lang}{\@namedef{minted@opt@cmd@lang}{#1}
-                                      \minted@configlang{#1}}
+    \define@key{minted@opt@cmd}{language}{\@namedef{minted@opt@cmd@lang}{#1}
+                                          \minted@configlang{#1}}
     \DeclareRobustCommand\inputsource{\@ifnextchar[\@inputsrc{\@inputsrc[]}}
     \def\@inputsrc[#1]#2{\inputminted[#1]{\minted@opt@cmd@lang}{#2}}
 PreambleDefEnd
@@ -34,16 +34,16 @@ Template MintedSource
     HelpText
 	Format source code using the 'minted' package.
 	This template works with minted version 2.1 or higher.
-	The source language is specified by the 'lang' option,
+	The source language is specified by the 'language' option,
 	which must be inserted into the 'Option' field in the
 	'LaTeX and LyX options' tab.
 
 	Example options:
-	* linenos,fontsize=\footnotesize,lang=fortran
-	* bgcolor=yellow,baselinestretch=1.2,lang=c
-	* frame=lines,framesep=2\fboxsep,lang=python
+	* linenos,fontsize=\footnotesize,language=fortran
+	* bgcolor=yellow,baselinestretch=1.2,language=c
+	* frame=lines,framesep=2\fboxsep,language=python
 
-	If 'lang=xxx' is not given, 'lang=latex' is assumed by default.
+	If 'language=xxx' is not given, 'language=latex' is assumed by default.
 	Make sure to use the '-shell-escape' option for the latex backend.
 	Read the documentation of the minted package
 	for further options and details.

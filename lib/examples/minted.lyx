@@ -191,8 +191,8 @@ This is the title of the listing appearing in the headers.
 	template MintedSource
 	filename ../scripts/lyxpak.py
 	display false
-	extra LaTeX "fontsize=\tiny,baselinestretch=1.05,frame=leftline,framesep=10pt,breaklines,breakanywhere,lang=python"
-	extra PDFLaTeX "fontsize=\tiny,baselinestretch=1.05,frame=leftline,framesep=10pt,breaklines,breakanywhere,lang=python"
+	extra LaTeX "fontsize=\tiny,baselinestretch=1.05,frame=leftline,framesep=10pt,breaklines,breakanywhere,language=python"
+	extra PDFLaTeX "fontsize=\tiny,baselinestretch=1.05,frame=leftline,framesep=10pt,breaklines,breakanywhere,language=python"
 
 \end_inset
 
