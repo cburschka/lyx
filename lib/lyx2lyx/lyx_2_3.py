@@ -2234,6 +2234,18 @@ def revert_mathnumberingname(document):
         document.header[i] = "\\math_number_before 0"
 
 
+def convert_minted(document):
+    " add the \\use_minted tag "
+    document.header.insert(-1, "\\use_minted 0")
+
+
+def revert_minted(document):
+    " remove the \\use_minted tag "
+    i = find_token(document.header, "\\use_minted", 0)
+    if i != -1:
+        document.header.pop(i)
+
+
 ##
 # Conversion hub
 #
@@ -2274,10 +2286,12 @@ convert = [
            [540, []],
            [541, [convert_allowbreak]],
            [542, [convert_mathnumberpos]],
-           [543, [convert_mathnumberingname]]
+           [543, [convert_mathnumberingname]],
+           [544, [convert_minted]]
           ]
 
 revert =  [
+           [543, [revert_minted]],
            [542, [revert_mathnumberingname]],
            [541, [revert_mathnumberpos]],
            [540, [revert_allowbreak]],

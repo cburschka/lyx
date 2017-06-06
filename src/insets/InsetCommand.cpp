@@ -15,6 +15,7 @@
 
 #include "Buffer.h"
 #include "BufferEncodings.h"
+#include "BufferParams.h"
 #include "BufferView.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
@@ -43,12 +44,14 @@
 
 #include "support/debug.h"
 #include "support/gettext.h"
+#include "support/lstrings.h"
 
 #include "frontends/Application.h"
 
 #include <sstream>
 
 using namespace std;
+using namespace lyx::support;
 
 
 namespace lyx {
@@ -139,7 +142,11 @@ void InsetCommand::setParams(InsetCommandParams const & p)
 void InsetCommand::latex(otexstream & os, OutputParams const & runparams_in) const
 {
 	OutputParams runparams = runparams_in;
-	os << getCommand(runparams);
+	docstring command = getCommand(runparams);
+	if (buffer().params().use_minted
+	    && prefixIs(command, from_ascii("\\lstlistoflistings")))
+		command.erase(1, 3);
+	os << command;
 }
 
 

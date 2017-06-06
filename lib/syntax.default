@@ -142,6 +142,7 @@ $$
 \Large
 \LARGE
 \marginpar[]{}
+\mintinline[,]{}
 \multicolumn{}{}{}
 \newline
 \noindent
@@ -712,6 +713,8 @@ $$
 % LaTeX code that can be translated to LyX.
 \begin{environments}
 bibunit[]{translate}
+listing{} % minted.sty
+minted{} % minted.sty
 psmatrix[]{}
 subfigure[]{translate} % subcaption.sty
 subtable[]{translate} % subcaption.sty

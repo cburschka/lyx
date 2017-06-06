@@ -1,33 +1,33 @@
-<ui version="4.0" >
+<ui version="4.0">
  <class>ListingsSettingsUi</class>
- <widget class="QWidget" name="ListingsSettingsUi" >
-  <property name="geometry" >
+ <widget class="QWidget" name="ListingsSettingsUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
     <width>219</width>
-    <height>185</height>
+    <height>256</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
+  <layout class="QGridLayout">
+   <property name="margin">
     <number>9</number>
    </property>
-   <property name="spacing" >
+   <property name="spacing">
     <number>6</number>
    </property>
-   <item row="3" column="0" >
+   <item row="5" column="0">
     <spacer>
-     <property name="orientation" >
+     <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeType" >
+     <property name="sizeType">
       <enum>QSizePolicy::Expanding</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeHint" stdset="0">
       <size>
        <width>201</width>
        <height>21</height>
@@ -35,54 +35,60 @@
      </property>
     </spacer>
    </item>
-   <item row="1" column="0" >
-    <widget class="QTextEdit" name="listingsED" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>5</vsizetype>
+   <item row="1" column="0">
+    <widget class="QTextEdit" name="listingsED">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="toolTip" >
+     <property name="toolTip">
       <string>Input here the listings parameters</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="0" >
-    <widget class="QTextBrowser" name="listingsTB" >
-     <property name="sizePolicy" >
-      <sizepolicy>
-       <hsizetype>7</hsizetype>
-       <vsizetype>5</vsizetype>
+   <item row="0" column="0">
+    <widget class="QTextBrowser" name="listingsTB">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
-     <property name="acceptDrops" >
+     <property name="acceptDrops">
       <bool>false</bool>
      </property>
-     <property name="toolTip" >
+     <property name="toolTip">
       <string>Feedback window</string>
      </property>
-     <property name="frameShape" >
+     <property name="frameShape">
       <enum>QFrame::Box</enum>
      </property>
-     <property name="frameShadow" >
+     <property name="frameShadow">
       <enum>QFrame::Plain</enum>
      </property>
-     <property name="acceptRichText" >
+     <property name="acceptRichText">
       <bool>false</bool>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" >
-    <widget class="QCheckBox" name="bypassCB" >
-     <property name="toolTip" >
+   <item row="3" column="0">
+    <widget class="QCheckBox" name="mintedCB">
+     <property name="toolTip">
+      <string>Use the minted package instead of the listings one</string>
+     </property>
+     <property name="text">
+      <string>Use minted</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QCheckBox" name="bypassCB">
+     <property name="toolTip">
       <string>Check it to enter parameters that are not recognizable by LyX</string>
      </property>
-     <property name="text" >
+     <property name="text">
       <string>&amp;Bypass validation</string>
      </property>
     </widget>
@@ -90,7 +96,7 @@
   </layout>
  </widget>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>

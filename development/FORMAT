@@ -7,6 +7,11 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2017-06-06 Enrico Forestieri <forenr@lyx.org>
+	* Format incremented to 544: support for minted.
+	  The listings inset now supports also the minted package.
+	  - New buffer param \use_minted {true|false}
+
 2017-05-13 Uwe Stöhr <uwestoehr@web.de>
  	* Format incremented to 543: rename buffer parameter
 	  math_number_before to math_numbering_side

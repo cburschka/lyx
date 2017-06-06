@@ -15,6 +15,8 @@
 
 #include "qt_helpers.h"
 
+#include "Buffer.h"
+#include "BufferParams.h"
 #include "FuncRequest.h"
 
 #include "insets/InsetListings.h"
@@ -293,10 +295,20 @@ string GuiListings::construct_params()
 	string fontsize = font_sizes[qMax(0, fontsizeCO->currentIndex())];
 	string fontstyle = font_styles[qMax(0, fontstyleCO->currentIndex())];
 	string basicstyle;
-	if (fontsize != "default")
-		basicstyle = "\\" + fontsize;
-	if (fontstyle != "default")
-		basicstyle += "\\" + fontstyle;
+	string mintedsize;
+	bool const use_minted = buffer().params().use_minted;
+	if (fontsize != "default") {
+		if (use_minted)
+			mintedsize = "\\" + fontsize;
+		else
+			basicstyle = "\\" + fontsize;
+	}
+	if (fontstyle != "default") {
+		if (use_minted)
+			basicstyle = fontstyle.substr(0, 2);
+		else
+			basicstyle += "\\" + fontstyle;
+	}
 	bool breakline = breaklinesCB->isChecked();
 	bool space = spaceCB->isChecked();
 	int tabsize = tabsizeSB->value();
@@ -306,7 +318,13 @@ string GuiListings::construct_params()
 
 	// compose a string
 	InsetListingsParams par;
-	if (language != "no language" && !contains(extra, "language=")) {
+	par.setMinted(use_minted);
+	if (use_minted) {
+		if (language == "no language" && !contains(extra, "language="))
+			par.addParam("language", "TeX");
+		else
+			par.addParam("language", language);
+	} else if (language != "no language" && !contains(extra, "language=")) {
 		if (dialect.empty())
 			par.addParam("language", language);
 		else
@@ -319,7 +337,7 @@ string GuiListings::construct_params()
 		par.addParam("float", placement);
 	if (numberSide != "none")
 		par.addParam("numbers", numberSide);
-	if (numberfontsize != "default" && numberSide != "none")
+	if (numberfontsize != "default" && numberSide != "none" && !use_minted)
 		par.addParam("numberstyle", "\\" + numberfontsize);
 	if (!stepnumber.empty() && numberSide != "none")
 		par.addParam("stepnumber", stepnumber);
@@ -328,16 +346,18 @@ string GuiListings::construct_params()
 	if (!lastline.empty())
 		par.addParam("lastline", lastline);
 	if (!basicstyle.empty())
-		par.addParam("basicstyle", basicstyle);
+		par.addParam(use_minted ? "fontfamily" : "basicstyle", basicstyle);
+	if (!mintedsize.empty())
+		par.addParam("fontsize", mintedsize);
 	if (breakline)
 		par.addParam("breaklines", "true");
 	if (space)
 		par.addParam("showspaces", "true");
-	if (!spaceInString)
+	if (!spaceInString && !use_minted)
 		par.addParam("showstringspaces", "false");
 	if (tabsize != 8)
 		par.addParam("tabsize", convert<string>(tabsize));
-	if (extendedchars)
+	if (extendedchars && !use_minted)
 		par.addParam("extendedchars", "true");
 	par.addParams(extra);
 	return par.params();
@@ -419,6 +439,7 @@ void GuiListings::on_languageCO_currentIndexChanged(int index)
 
 void GuiListings::applyView()
 {
+	params_.setMinted(buffer().params().use_minted);
 	params_.setInline(inlineCB->isChecked());
 	params_.setParams(construct_params());
 }
@@ -435,6 +456,7 @@ static string plainParam(string const & par)
 
 void GuiListings::updateContents()
 {
+	bool const use_minted = buffer().params().use_minted;
 	// set default values
 	listingsTB->setPlainText(
 		qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
@@ -503,7 +525,7 @@ void GuiListings::updateContents()
 			if (in_gui)
 				*it = "";
 			languageCO->setEnabled(in_gui);
-			dialectCO->setEnabled(
+			dialectCO->setEnabled(!use_minted &&
 				in_gui && dialectCO->count() > 1);
 		} else if (prefixIs(*it, "float")) {
 			floatCB->setChecked(true);
@@ -571,6 +593,36 @@ void GuiListings::updateContents()
 				}
 				*it = "";
 			}
+		} else if (prefixIs(*it, "fontsize=")) {
+			string size;
+			for (int n = 0; font_sizes[n][0]; ++n) {
+				string const s = font_sizes[n];
+				if (contains(*it, "\\" + s)) {
+					size = "\\" + s;
+					break;
+				}
+			}
+			if (!size.empty()) {
+				int n = findToken(font_sizes, size.substr(1));
+				if (n >= 0)
+					fontsizeCO->setCurrentIndex(n);
+			}
+			*it = "";
+		} else if (prefixIs(*it, "fontfamily=")) {
+			string style;
+			for (int n = 0; font_styles[n][0]; ++n) {
+				string const s = font_styles[n];
+				if (contains(*it, "=" + s.substr(0,2))) {
+					style = "\\" + s;
+					break;
+				}
+			}
+			if (!style.empty()) {
+				int n = findToken(font_styles, style.substr(1));
+				if (n >= 0)
+					fontstyleCO->setCurrentIndex(n);
+			}
+			*it = "";
 		} else if (prefixIs(*it, "breaklines=")) {
 			breaklinesCB->setChecked(contains(*it, "true"));
 			*it = "";
@@ -590,11 +642,15 @@ void GuiListings::updateContents()
 	}
 
 	numberStepLE->setEnabled(numberSideCO->currentIndex() > 0);
-	numberFontSizeCO->setEnabled(numberSideCO->currentIndex() > 0);
+	numberFontSizeCO->setEnabled(numberSideCO->currentIndex() > 0
+				     && !use_minted);
+	spaceInStringCB->setEnabled(!use_minted);
+	extendedcharsCB->setEnabled(!use_minted);
 	// parameters that can be handled by widgets are cleared
 	// the rest is put to the extra edit box.
 	string extra = getStringFromVector(pars);
 	listingsED->setPlainText(toqstr(InsetListingsParams(extra).separatedParams()));
+	params_.setMinted(use_minted);
 }
 
 
@@ -614,6 +670,7 @@ bool GuiListings::initialiseParams(string const & data)
 void GuiListings::clearParams()
 {
 	params_.clear();
+	params_.setMinted(buffer().params().use_minted);
 }
 
 
@@ -627,6 +684,7 @@ void GuiListings::dispatchParams()
 void GuiListings::setParams(InsetListingsParams const & params)
 {
 	params_ = params;
+	params_.setMinted(buffer().params().use_minted);
 }
 
 

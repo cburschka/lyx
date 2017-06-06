@@ -55,6 +55,7 @@ namespace lyx {
 InsetListings::InsetListings(Buffer * buf, InsetListingsParams const & par)
 	: InsetCaptionable(buf,"listing")
 {
+	params_.setMinted(buffer().params().use_minted);
 	status_ = par.status();
 }
 
@@ -115,6 +116,32 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 	// NOTE: I use {} to quote text, which is an experimental feature
 	// of the listings package (see page 25 of the manual)
 	bool const isInline = params().isInline();
+	bool const use_minted = buffer().params().use_minted;
+	string minted_language;
+	string float_placement;
+	bool const isfloat = params().isFloat();
+	if (use_minted && (isfloat || contains(param_string, "language="))) {
+		// Get float placement and/or language of the code,
+		// then remove the relative options.
+		vector<string> opts =
+			getVectorFromString(param_string, ",", false);
+		for (int i = 0; i < opts.size(); ++i) {
+			if (prefixIs(opts[i], "float")) {
+				if (prefixIs(opts[i], "float="))
+					float_placement = opts[i].substr(6);
+				opts.erase(opts.begin() + i--);
+			}
+			else if (prefixIs(opts[i], "language=")) {
+				minted_language = opts[i].substr(9);
+				opts.erase(opts.begin() + i--);
+			}
+		}
+		param_string = getStringFromVector(opts, ",");
+	}
+	// Minted needs a language specification
+	if (minted_language.empty())
+		minted_language = "TeX";
+
 	// get the paragraphs. We can not output them directly to given odocstream
 	// because we can not yet determine the delimiter character of \lstinline
 	docstring code;
@@ -127,7 +154,7 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 	// The listings package cannot deal with multi-byte-encoded
 	// glyphs, except if full-unicode aware backends
 	// such as XeTeX or LuaTeX are used, and with pLaTeX.
-	bool const multibyte_possible =	runparams.isFullUnicode()
+	bool const multibyte_possible =	use_minted || runparams.isFullUnicode()
 	    || (buffer().params().encoding().package() == Encoding::japanese
 	        && runparams.encoding->package() == Encoding::japanese);
 
@@ -225,13 +252,40 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 			}
 		}
 		docstring const delim(1, delimiters[pos]);
-		os << "\\lstinline";
-		if (!param_string.empty())
-			os << "[" << from_utf8(param_string) << "]";
-		else if (pos >= delimiters.find('Q'))
-			// We need to terminate the command before the delimiter
-			os << " ";
+		if (use_minted) {
+			os << "\\mintinline";
+			if (!param_string.empty())
+				os << "[" << from_utf8(param_string) << "]";
+			os << "{" << minted_language << "}";
+		} else {
+			os << "\\lstinline";
+			if (!param_string.empty())
+				os << "[" << from_utf8(param_string) << "]";
+			else if (pos >= delimiters.find('Q'))
+				// We need to terminate the command before
+				// the delimiter
+				os << " ";
+		}
 		os << delim << code << delim;
+	} else if (use_minted) {
+		if (isfloat) {
+			os << breakln << "\\begin{listing}";
+			if (!float_placement.empty())
+				os << '[' << float_placement << "]";
+		}
+		os << breakln << "\\begin{minted}";
+		if (!param_string.empty())
+			os << "[" << param_string << "]";
+		os << "{" << minted_language << "}\n"
+		   << code << breakln << "\\end{minted}\n";
+		if (isfloat) {
+			OutputParams rp = runparams;
+			rp.moving_arg = true;
+			TexString caption = getCaption(rp);
+			if (!caption.str.empty())
+				os << "\\caption{" << move(caption) << "}\n";
+			os << "\\end{listing}\n";
+		}
 	} else {
 		OutputParams rp = runparams;
 		rp.moving_arg = true;
@@ -387,7 +441,10 @@ docstring const InsetListings::buttonLabel(BufferView const & bv) const
 
 void InsetListings::validate(LaTeXFeatures & features) const
 {
-	features.require("listings");
+	if (buffer().params().use_minted)
+		features.require("minted");
+	else
+		features.require("listings");
 	features.useInsetLayout(getLayout());
 	string param_string = params().params();
 	if (param_string.find("\\color") != string::npos)
@@ -420,7 +477,8 @@ TexString InsetListings::getCaption(OutputParams const & runparams) const
 	// the caption may contain \label{} but the listings
 	// package prefer caption={}, label={}
 	TexString cap = os.release();
-	if (!contains(cap.str, from_ascii("\\label{")))
+	if (buffer().params().use_minted
+	    || !contains(cap.str, from_ascii("\\label{")))
 		return cap;
 	// convert from
 	//     blah1\label{blah2} blah3

@@ -1461,6 +1461,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(change_adaptor()));
 	connect(listingsModule->bypassCB, SIGNAL(clicked()),
 		this, SLOT(setListingsMessage()));
+	connect(listingsModule->mintedCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
 	connect(listingsModule->listingsED, SIGNAL(textChanged()),
 		this, SLOT(setListingsMessage()));
 	listingsModule->listingsTB->setPlainText(
@@ -3070,6 +3072,7 @@ void GuiDocument::applyView()
 
 	// Listings
 	// text should have passed validation
+	bp_.use_minted  = listingsModule->mintedCB->isChecked();
 	bp_.listings_params =
 		InsetListingsParams(fromqstr(listingsModule->listingsED->toPlainText())).params();
 
@@ -3587,6 +3590,8 @@ void GuiDocument::paramsToDialog()
 	string lstparams =
 		InsetListingsParams(bp_.listings_params).separatedParams();
 	listingsModule->listingsED->setPlainText(toqstr(lstparams));
+	listingsModule->mintedCB->setChecked(bp_.use_minted);
+
 
 	// Fonts
 	// some languages only work with polyglossia/XeTeX

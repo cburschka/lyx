@@ -274,16 +274,21 @@ InsetLayout TOC:Listings
 	# We need the [[List of Listings]] context, since "Listings" is also
 	# the name of the inset and translated differently.
 	# "Listings[[List of Listings]]" is the name of the "List of listings"
-	# ("Listings" is the predefined english name) in listings.sty, so it
-	# must be used here as well.
+	# ("Listings" is the predefined english name) in listings.sty and
+	# minted.sty, so it must be used here as well.
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}}
+		\ifx\minted\undefined
+		\addto\captions$$lang{\renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}}\else
+		\addto\captions$$lang{\renewcommand{\listoflistingscaption}{_(Listings[[List of Listings]])}}\fi
 	EndBabelPreamble
-	# The command does not need to be defined in LangPreamble, since
-	# listings.sty does that already. However it needs to be redefined
-	# in order to be used for non-english single-language documents.
+	# Either commands do not need to be defined in LangPreamble, since
+	# listings.sty or minted.sty do that already. However they need to be
+	# redefined in order to be used for non-english single-language
+	# documents.
 	LangPreamble
-		\renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}
+		\ifx\minted\undefined
+		\renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}\else
+		\renewcommand{\listoflistingscaption}{_(Listings[[List of Listings]])}\fi
 	EndLangPreamble
 	FixedWidthPreambleEncoding true
   HTMLTag h2
@@ -298,13 +303,18 @@ End
 
 InsetLayout Include:Listings
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\lstlistingname}{_(Listing)}}
+		\ifx\minted\undefined
+		\addto\captions$$lang{\renewcommand{\lstlistingname}{_(Listing)}}\else
+		\addto\captions$$lang{\renewcommand{\listingscaption}{_(Listing)}}\fi
 	EndBabelPreamble
-	# The command does not need to be defined in LangPreamble, since
-	# listings.sty does that already. However it needs to be redefined
-	# in order to be used for non-english single-language documents.
+	# Either commands do not need to be defined in LangPreamble, since
+	# listings.sty or minted.sty do that already. However they need to be
+	# redefined in order to be used for non-english single-language
+	# documents.
 	LangPreamble
-		\renewcommand{\lstlistingname}{_(Listing)}
+		\ifx\minted\undefined
+		\renewcommand{\lstlistingname}{_(Listing)}\else
+		\renewcommand{\listingscaption}{_(Listing)}\fi
 	EndLangPreamble
 	FixedWidthPreambleEncoding true
 End

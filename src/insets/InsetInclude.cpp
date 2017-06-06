@@ -962,8 +962,12 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	features.useInsetLayout(getLayout());
 	if (isVerbatim(params()))
 		features.require("verbatim");
-	else if (isListings(params()))
-		features.require("listings");
+	else if (isListings(params())) {
+		if (buffer().params().use_minted)
+			features.require("minted");
+		else
+			features.require("listings");
+	}
 
 	// Here we must do the fun stuff...
 	// Load the file in the include if it needs

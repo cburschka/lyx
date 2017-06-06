@@ -106,8 +106,12 @@ void InsetTOC::validate(LaTeXFeatures & features) const
 {
 	InsetCommand::validate(features);
 	features.useInsetLayout(getLayout());
-	if (getCmdName() == "lstlistoflistings")
-		features.require("listings");
+	if (getCmdName() == "lstlistoflistings") {
+		if (buffer().params().use_minted)
+			features.require("minted");
+		else
+			features.require("listings");
+	}
 }
 
 

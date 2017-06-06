@@ -541,6 +541,8 @@ public:
 	std::string output_sync_macro;
 	/// use refstyle? or prettyref?
 	bool use_refstyle;
+	/// use minted? or listings?
+	bool use_minted;
 
 	/// Return true if language could be set to lang,
 	/// otherwise return false and do not change language

@@ -70,6 +70,12 @@ public:
 	///
 	void setInline(bool i) { inline_ = i; }
 
+	///
+	void setMinted(bool use_minted) { package_ = use_minted ? 1 : 0; }
+
+	///
+	static int package() { return package_; }
+
 	/// get value of option \c param
 	std::string getParamValue(std::string const & param) const;
 
@@ -80,6 +86,9 @@ public:
 	docstring validate() const;
 
 private:
+	/// listings or minted package (0 or 1, respectively)
+	static int package_;
+
 	/// inline or normal listings
 	bool inline_;
 

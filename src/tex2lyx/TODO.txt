@@ -151,6 +151,19 @@ Format LaTeX feature                        LyX feature
                                              btprint "bibbysection"
 534   Chapterbib support
       \usepackage{chapterbib}              \multibib child
+544   Minted support
+      Non-floating:                        InsetListings
+        \begin{minted}[opts]{language}
+        ...
+        \end{minted}
+      Floating:
+        \begin{listing}[placement]
+          \begin{minted}[opts]{language}
+          ...
+          \end{minted}
+        \end{listing}
+      Inline (where '?' is any char):
+        \mintinline[opts]{language}?...?
                                            
                                            
 
