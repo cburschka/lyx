@@ -221,10 +221,6 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 	int const xframe = x + TEXT_TO_INSET_OFFSET / 2;
 	bool change_drawn = false;
 	if (drawFrame_ || pi.full_repaint) {
-		if (pi.full_repaint)
-			pi.pain.fillRectangle(xframe, yframe, w, h,
-				pi.backgroundColor(this));
-
 		// Change color of the frame in tracked changes, like for tabulars.
 		// Only do so if the color is not custom. But do so even if RowPainter
 		// handles the strike-through already.
