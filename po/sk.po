@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-05-30 10:26+0200\n"
-"PO-Revision-Date: 2017-05-30 10:30+0000\n"
+"POT-Creation-Date: 2017-06-07 17:27+0200\n"
+"PO-Revision-Date: 2017-06-07 16:16+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2459,6 +2459,14 @@ msgstr "Vložte sem parametre výpisu"
 #: src/frontends/qt4/ui/ListingsUi.ui:477
 msgid "Feedback window"
 msgstr "Okno pre odozvu"
+
+#: src/frontends/qt4/ui/ListingsSettingsUi.ui:79
+msgid "Use the minted package instead of the listings one"
+msgstr "Použiť minted balík namiesto balíka listings"
+
+#: src/frontends/qt4/ui/ListingsSettingsUi.ui:82
+msgid "Use minted"
+msgstr "Použiť minted"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:301
 #: lib/layouts/stdinsets.inc:307 src/insets/InsetCaption.cpp:386
@@ -15186,6 +15194,19 @@ msgstr "Kapitola \\thechapter"
 msgid "Appendix \\thechapter"
 msgstr "Príloha \\thechapter"
 
+#: lib/layouts/subequations.module:2 lib/layouts/subequations.module:10
+#: lib/layouts/subequations.module:13
+msgid "Subequations"
+msgstr "Pod-rovnice"
+
+#: lib/layouts/subequations.module:5
+msgid ""
+"Provide a straightforward way to segregate subequations in LyX. See the "
+"subequations.lyx example file."
+msgstr ""
+"Umožniť priamy spôsob na oddelenie pod-rovníc v LyXe. Viď príkladný súbor "
+"subequations.lyx."
+
 #: lib/layouts/svcommon.inc:68
 msgid "Front Matter"
 msgstr "Vstupná Časť"
@@ -24146,28 +24167,28 @@ msgstr "Minted Zdrojový Text"
 msgid ""
 "Format source code using the 'minted' package.\n"
 "This template works with minted version 2.1 or higher.\n"
-"The source language is specified by the 'lang' option,\n"
+"The source language is specified by the 'language' option,\n"
 "which must be inserted into the 'Option' field in the\n"
 "'LaTeX and LyX options' tab.\n"
 "Example options:\n"
-"* linenos,fontsize=\footnotesize,lang=fortran\n"
-"* bgcolor=yellow,baselinestretch=1.2,lang=c\n"
-"* frame=lines,framesep=2\fboxsep,lang=python\n"
-"If 'lang=xxx' is not given, 'lang=latex' is assumed by default.\n"
+"* linenos,fontsize=\footnotesize,language=fortran\n"
+"* bgcolor=yellow,baselinestretch=1.2,language=c\n"
+"* frame=lines,framesep=2\fboxsep,language=python\n"
+"If 'language=xxx' is not given, 'language=latex' is assumed by default.\n"
 "Make sure to use the '-shell-escape' option for the latex backend.\n"
 "Read the documentation of the minted package\n"
 "for further options and details.\n"
 msgstr ""
 "Formátuje zdrojový text pomocou 'minted' balíka.\n"
 "Táto šablóna pracuje s minted verziou 2.1 alebo vyššou.\n"
-"Jazyk zdroja je daný voľbou 'lang',\n"
+"Jazyk zdroja je daný voľbou 'language',\n"
 "ktorá musí byť vložená do pola 'Možnosti' v paneli\n"
 "'LaTeX- a LyX- voľby'.\n"
 "Príkladné voľby:\n"
-"* linenos,fontsize=\footnotesize,lang=fortran\n"
-"* bgcolor=yellow,baselinestretch=1.2,lang=c\n"
-"* frame=lines,framesep=2\fboxsep,lang=python\n"
-"Keď  'lang=xxx' nie je dané, predpokladá sa 'lang=latex'.\n"
+"* linenos,fontsize=\\footnotesize,language=fortran\n"
+"* bgcolor=yellow,baselinestretch=1.2,language=c\n"
+"* frame=lines,framesep=2\\fboxsep,language=python\n"
+"Keď  'language=xxx' nie je dané, predpokladá sa 'language=latex'.\n"
 "Zaistite voľbu '-shell-escape' pre latex backend.\n"
 "Prečítajte si aj dokumentáciu balíka minted\n"
 "pre ďalšie voľby a detaily.\n"
@@ -32168,6 +32189,10 @@ msgstr ""
 "Použite \\footnotesize, \\small, \\itshape, \\ttfamily alebo niečo na ten "
 "spôsob"
 
+#: src/insets/InsetListingsParams.cpp:303
+msgid "none, leftline, topline, bottomline, lines, single"
+msgstr "none, leftline, topline, bottomline, lines, single"
+
 #: src/insets/InsetListingsParams.cpp:302
 msgid ""
 "none, leftline, topline, bottomline, lines, single, shadowbox or subset of "
@@ -32183,6 +32208,10 @@ msgid ""
 msgstr ""
 "Vložte štyri znaky (buď t = oblý alebo f = štvorcový) pre rožky vpravo hore, "
 "vpravo dole, vľavo dole a vľavo hore."
+
+#: src/insets/InsetListingsParams.cpp:311
+msgid "Previously defined color name as a string"
+msgstr "Skôr definované mená farieb ako reťazec"
 
 #: src/insets/InsetListingsParams.cpp:307
 msgid "Enter something like \\color{white}"
@@ -32215,6 +32244,85 @@ msgstr ""
 "Tento parameter by tu nemal byť zadaný. Použite prosím políčko popisku (v "
 "dialógu pre dokument potomka) alebo cez menu Vložiť -> Návestie (pri "
 "definícii výpisu zdrojového kódu)"
+
+#: src/insets/InsetListingsParams.cpp:662
+msgid "Number floats by chapter"
+msgstr "Číslovanie plávajúcich objektov podľa kapitoly"
+
+#: src/insets/InsetListingsParams.cpp:665
+msgid "Number floats by section"
+msgstr "Číslovanie plávajúcich objektov podľa sekcii"
+
+#: src/insets/InsetListingsParams.cpp:670
+msgid "default: _minted-<jobname>"
+msgstr "štandard: _minted-<jobname>"
+
+#: src/insets/InsetListingsParams.cpp:749
+msgid "Sets encoding expected by Pygments"
+msgstr "Nastaviť kódovanie očakávané od Pygments"
+
+#: src/insets/InsetListingsParams.cpp:756
+msgid "(auto | last | integer)"
+msgstr "(auto | posledné | číslo)"
+
+#: src/insets/InsetListingsParams.cpp:759
+msgid "A latex family such as tt, sf, rm"
+msgstr "Latex-rodina ako napr. tt, sf, rm"
+
+#: src/insets/InsetListingsParams.cpp:762
+msgid "A latex series such as m, b, c, bx, sb"
+msgstr "Latex-séria ako napr. m, b, c, bx, sb"
+
+#: src/insets/InsetListingsParams.cpp:765
+msgid "A latex name such as \\small"
+msgstr "Latex-meno ako napr. \\small"
+
+#: src/insets/InsetListingsParams.cpp:768
+msgid "A latex shape such as n, it, sl, sc"
+msgstr "Latex-tvar ako napr. n, it, sl, sc"
+
+#: src/insets/InsetListingsParams.cpp:787
+msgid "A range of lines such as {1,3-4}"
+msgstr "Rozsah riadkov ako napr. {1,3-4}"
+
+#: src/insets/InsetListingsParams.cpp:799
+msgid ""
+"This parameter should not be entered here. Please use the language combo box "
+"in the listings inset settings dialog, unless you need to enter a language "
+"not offered there."
+msgstr ""
+"Tento parameter by tu nemal byť zadaný. Použite prosím políčko jazyk v "
+"dialógu pre výpis zdrojového kódu, pokiaľ nepotrebujete vložiť jazyk ktorý "
+"tam nie je ponúknutý."
+
+#: src/insets/InsetListingsParams.cpp:822
+msgid "File encoding used by Pygments for highlighting"
+msgstr "Kódovanie súboru ktorý Pygments použije pre zdôraznenie"
+
+#: src/insets/InsetListingsParams.cpp:825
+msgid "Apply Python 3 highlighting"
+msgstr "Aplikuj Python 3 zdôraznenie"
+
+#: src/insets/InsetListingsParams.cpp:838
+msgid "A macro. Default: \textvisiblespace"
+msgstr "Makro Štandard: \textvisiblespace"
+
+#: src/insets/InsetListingsParams.cpp:842
+msgid "For PHP only"
+msgstr "Len pre PHP"
+
+#: src/insets/InsetListingsParams.cpp:845
+msgid "The style used by Pygments"
+msgstr "Štýl použitý v Pygments"
+
+#: src/insets/InsetListingsParams.cpp:858
+msgid "A macro to redefine visible tabs"
+msgstr "Makro pre redefinovanie viditeľných tabulátorov"
+
+#: src/insets/InsetListingsParams.cpp:865
+#: src/insets/InsetListingsParams.cpp:868
+msgid "Enables latex code in comments"
+msgstr "Povolí latex-kód v komentároch"
 
 #: src/insets/InsetListingsParams.cpp:638
 msgid "Invalid (empty) listing parameter name."
@@ -37427,3 +37535,32 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Všetky zmeny sa stratia. Naozaj sa chcete vrátiť ku uloženej verzii "
 #~ "dokumentu %1$s?"
+
+#~ msgid ""
+#~ "Format source code using the 'minted' package.\n"
+#~ "This template works with minted version 2.1 or higher.\n"
+#~ "The source language is specified by the 'lang' option,\n"
+#~ "which must be inserted into the 'Option' field in the\n"
+#~ "'LaTeX and LyX options' tab.\n"
+#~ "Example options:\n"
+#~ "* linenos,fontsize=\footnotesize,lang=fortran\n"
+#~ "* bgcolor=yellow,baselinestretch=1.2,lang=c\n"
+#~ "* frame=lines,framesep=2\fboxsep,lang=python\n"
+#~ "If 'lang=xxx' is not given, 'lang=latex' is assumed by default.\n"
+#~ "Make sure to use the '-shell-escape' option for the latex backend.\n"
+#~ "Read the documentation of the minted package\n"
+#~ "for further options and details.\n"
+#~ msgstr ""
+#~ "Formátuje zdrojový text pomocou 'minted' balíka.\n"
+#~ "Táto šablóna pracuje s minted verziou 2.1 alebo vyššou.\n"
+#~ "Jazyk zdroja je daný voľbou 'lang',\n"
+#~ "ktorá musí byť vložená do pola 'Možnosti' v paneli\n"
+#~ "'LaTeX- a LyX- voľby'.\n"
+#~ "Príkladné voľby:\n"
+#~ "* linenos,fontsize=\footnotesize,lang=fortran\n"
+#~ "* bgcolor=yellow,baselinestretch=1.2,lang=c\n"
+#~ "* frame=lines,framesep=2\fboxsep,lang=python\n"
+#~ "Keď  'lang=xxx' nie je dané, predpokladá sa 'lang=latex'.\n"
+#~ "Zaistite voľbu '-shell-escape' pre latex backend.\n"
+#~ "Prečítajte si aj dokumentáciu balíka minted\n"
+#~ "pre ďalšie voľby a detaily.\n"
