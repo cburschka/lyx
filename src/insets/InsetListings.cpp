@@ -125,7 +125,7 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 		// then remove the relative options.
 		vector<string> opts =
 			getVectorFromString(param_string, ",", false);
-		for (int i = 0; i < opts.size(); ++i) {
+		for (size_t i = 0; i < opts.size(); ++i) {
 			if (prefixIs(opts[i], "float")) {
 				if (prefixIs(opts[i], "float="))
 					float_placement = opts[i].substr(6);
