@@ -1,0 +1,298 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin /systemlyxdir/examples/
+\textclass article
+\begin_preamble
+\usepackage{xcolor}
+\definecolor{lgray}{rgb}{0.95, 0.95, 0.95}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\listings_params "breaklines=true"
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+This example shows how to typeset code listings in a document using the
+ minted latex package.
+\end_layout
+
+\begin_layout Plain Layout
+Other than the minted package, you also need the pygments python module.
+ See the minted documentation for directions on how to install it.
+ If you use a linux system, you can possibly install a suitable package
+ through your package manager.
+ Look for python packages named 
+\family typewriter
+python-pygments
+\family default
+ or similar.
+\end_layout
+
+\begin_layout Plain Layout
+Remember to add the -shell-escape option to the latex backend command in
+ the Preferences\SpecialChar menuseparator
+File Handling\SpecialChar menuseparator
+Converters.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A common example of a C program is shown in Listing
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lis:foo"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ using the default style, a light gray background, visible spaces, and numbered
+ lines.
+ The listing of some fortran code using the 
+\family typewriter
+bw
+\family default
+ style is instead shown in a non-floating listing below.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=C,float=t,numbers=left,showspaces=true,bgcolor=lgray"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+int main()
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+    printf(
+\begin_inset Quotes eld
+\end_inset
+
+Hello world!
+\backslash
+n
+\begin_inset Quotes erd
+\end_inset
+
+);
+\end_layout
+
+\begin_layout Plain Layout
+
+    return 0;
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+foo
+\begin_inset CommandInset label
+LatexCommand label
+name "lis:foo"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=Fortran,frame=lines,style=bw"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+* Compute machine precision
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+      implicit double precision (a-h,o-z)
+\end_layout
+
+\begin_layout Plain Layout
+
+      unit = 1.d0
+\end_layout
+
+\begin_layout Plain Layout
+
+    1 eps = unit
+\end_layout
+
+\begin_layout Plain Layout
+
+      unit = 0.5d0*unit
+\end_layout
+
+\begin_layout Plain Layout
+
+      u = 1.d0-unit
+\end_layout
+
+\begin_layout Plain Layout
+
+      if (u .lt.
+ 1.d0) go to 1
+\end_layout
+
+\begin_layout Plain Layout
+
+      write(*,'(1pg24.17)') eps
+\end_layout
+
+\begin_layout Plain Layout
+
+      stop
+\end_layout
+
+\begin_layout Plain Layout
+
+      end
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Here is an inline listing of some TeX code: 
+\begin_inset listings
+lstparams "language=TeX,fontfamily=tt"
+inline true
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+let
+\backslash
+thefun
+\backslash
+begin
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document

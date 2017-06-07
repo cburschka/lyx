@@ -342,6 +342,7 @@ dist_examples_DATA = \
 	examples/localization_test.lyx \
 	examples/longsheet.gnumeric \
 	examples/minted.lyx \
+	examples/minted-listings.lyx \
 	examples/modernCV.lyx \
 	examples/MultilingualCaptions.lyx \
 	examples/noweb2lyx.lyx \
