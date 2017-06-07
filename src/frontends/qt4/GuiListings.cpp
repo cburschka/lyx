@@ -433,7 +433,8 @@ void GuiListings::on_languageCO_currentIndexChanged(int index)
 		}
 	}
 	dialectCO->setCurrentIndex(default_dialect);
-	dialectCO->setEnabled(dialectCO->count() > 1);
+	dialectCO->setEnabled(dialectCO->count() > 1
+			      && !buffer().params().use_minted);
 }
 
 
