@@ -540,6 +540,8 @@ def external_l10n(input_files, output, base):
                 elif HelpTextSection.match(line):
                     (help_string,) = HelpTextSection.match(line).groups()
                     help_string = help_string.replace('"', '')
+                    help_string =  help_string.replace('\\', '_backsl_')
+                    help_string =  help_string.replace('_backsl_', '\\\\')
                     if help_string != "" and prev_help_string == '':
                         print(u'#: %s:%d\nmsgid ""\n"%s\\n"' % \
                             (relativePath(src, base), lineno+1, help_string), file=output)
@@ -547,6 +549,10 @@ def external_l10n(input_files, output, base):
                     elif help_string != "":
                         print(u'"%s\\n"' % help_string, file=output)
                     prev_help_string = help_string
+                else:
+                    # Empty line
+                    print(u'"\\n"', file=output)
+                    prev_help_string = 'xxxx'
             elif HelpTextStart.match(line):
                 inHelp = True
                 prev_help_string = ''
