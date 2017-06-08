@@ -100,6 +100,8 @@ public:
 	InsetMathGrid(Buffer * buf, col_type m, row_type n, char valign,
 		docstring const & halign);
 	///
+	marker_type marker(BufferView const *) const { return MARKER2; };
+	///
 	void metrics(MetricsInfo & mi, Dimension &) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
