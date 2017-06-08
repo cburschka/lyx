@@ -49,16 +49,8 @@ namespace {
 
 int markerMargin(MathRow::Element const & e)
 {
-	switch(e.marker) {
-	case InsetMath::MARKER:
-	case InsetMath::MARKER2:
-	case InsetMath::BOX_MARKER:
-		return 2;
-	case InsetMath::NO_MARKER:
-		return 0;
-	}
-	// should not happen
-	return 0;
+	return e.marker == InsetMath::MARKER
+		|| e.marker == InsetMath::MARKER2;
 }
 
 
@@ -100,7 +92,7 @@ void drawMarkers(PainterInfo const & pi, MathRow::Element const & e,
 	Dimension const dim = coords.getInsets().dim(e.inset);
 
 	// the marker is before/after the inset. Necessary space has been reserved already.
-	int const l = x + e.before - (markerMargin(e) > 0 ? 1 : 0);
+	int const l = x + e.before - markerMargin(e);
 	int const r = x + dim.width() - e.after;
 
 	if (e.marker == InsetMath::BOX_MARKER) {
