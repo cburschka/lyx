@@ -72,6 +72,15 @@ Inset::DisplayType InsetListings::display() const
 }
 
 
+docstring InsetListings::layoutName() const
+{
+	if (buffer().params().use_minted)
+		return from_ascii("MintedListings");
+	else
+		return from_ascii("Listings");
+}
+
+
 void InsetListings::write(ostream & os) const
 {
 	os << "listings" << "\n";

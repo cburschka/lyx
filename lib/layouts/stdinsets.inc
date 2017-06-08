@@ -274,21 +274,42 @@ InsetLayout TOC:Listings
 	# We need the [[List of Listings]] context, since "Listings" is also
 	# the name of the inset and translated differently.
 	# "Listings[[List of Listings]]" is the name of the "List of listings"
-	# ("Listings" is the predefined english name) in listings.sty and
-	# minted.sty, so it must be used here as well.
+	# ("Listings" is the predefined english name) in listings.sty, so it
+	# must be used here as well.
 	BabelPreamble
-		\ifx\minted\undefined
-		\addto\captions$$lang{\renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}}\else
-		\addto\captions$$lang{\renewcommand{\listoflistingscaption}{_(Listings[[List of Listings]])}}\fi
+		\addto\captions$$lang{\renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}}
 	EndBabelPreamble
-	# Either commands do not need to be defined in LangPreamble, since
-	# listings.sty or minted.sty do that already. However they need to be
-	# redefined in order to be used for non-english single-language
-	# documents.
+	# The command does not need to be defined in LangPreamble, since
+	# listings.sty does that already. However it needs to be redefined
+	# in order to be used for non-english single-language documents.
 	LangPreamble
-		\ifx\minted\undefined
-		\renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}\else
-		\renewcommand{\listoflistingscaption}{_(Listings[[List of Listings]])}\fi
+		\renewcommand{\lstlistlistingname}{_(Listings[[List of Listings]])}
+	EndLangPreamble
+	FixedWidthPreambleEncoding true
+  HTMLTag h2
+  HTMLStyle
+    div.lyxtoc-flat {
+      margin: 0em 0em 0em 1em;
+      font-size: large;
+      font-weight: normal;
+    }
+  EndHTMLStyle
+End
+
+InsetLayout TOC:MintedListings
+	# We need the [[List of Listings]] context, since "Listings" is also
+	# the name of the inset and translated differently.
+	# "Listings[[List of Listings]]" is the name of the "List of listings"
+	# ("Listings" is the predefined english name) in minted.sty so it
+	# must be used here as well.
+	BabelPreamble
+		\addto\captions$$lang{\renewcommand{\listoflistingscaption}{_(Listings[[List of Listings]])}}
+	EndBabelPreamble
+	# The command does not need to be defined in LangPreamble, since
+	# minted.sty does that already. However it needs to be redefined
+	# in order to be used for non-english single-language documents.
+	LangPreamble
+		\renewcommand{\listoflistingscaption}{_(Listings[[List of Listings]])}
 	EndLangPreamble
 	FixedWidthPreambleEncoding true
   HTMLTag h2
@@ -303,18 +324,13 @@ End
 
 InsetLayout Include:Listings
 	BabelPreamble
-		\ifx\minted\undefined
-		\addto\captions$$lang{\renewcommand{\lstlistingname}{_(Listing)}}\else
-		\addto\captions$$lang{\renewcommand{\listingscaption}{_(Listing)}}\fi
+		\addto\captions$$lang{\renewcommand{\lstlistingname}{_(Listing)}}
 	EndBabelPreamble
-	# Either commands do not need to be defined in LangPreamble, since
-	# listings.sty or minted.sty do that already. However they need to be
-	# redefined in order to be used for non-english single-language
-	# documents.
+	# The command does not need to be defined in LangPreamble, since
+	# listings.sty does that already. However it needs to be redefined
+	# in order to be used for non-english single-language documents.
 	LangPreamble
-		\ifx\minted\undefined
-		\renewcommand{\lstlistingname}{_(Listing)}\else
-		\renewcommand{\listingscaption}{_(Listing)}\fi
+		\renewcommand{\lstlistingname}{_(Listing)}
 	EndLangPreamble
 	FixedWidthPreambleEncoding true
 End
@@ -354,6 +370,20 @@ InsetLayout Listings
 			margin: 1ex;
 	}
 	EndHTMLStyle
+End
+
+InsetLayout MintedListings
+	CopyStyle Listings
+	BabelPreamble
+		\addto\captions$$lang{\renewcommand{\listingscaption}{_(Listing)}}
+	EndBabelPreamble
+	# The command does not need to be defined in LangPreamble, since
+	# minted.sty does that already. However it needs to be redefined
+	# in order to be used for non-english single-language documents.
+	LangPreamble
+		\renewcommand{\listingscaption}{_(Listing)}
+	EndLangPreamble
+	FixedWidthPreambleEncoding true
 End
 
 InsetLayout Branch

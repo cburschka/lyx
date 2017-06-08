@@ -96,8 +96,12 @@ void InsetTOC::doDispatch(Cursor & cur, FuncRequest & cmd) {
 
 docstring InsetTOC::layoutName() const
 {
-	if (getCmdName() == "lstlistoflistings")
-		return from_ascii("TOC:Listings");
+	if (getCmdName() == "lstlistoflistings") {
+		if (buffer().params().use_minted)
+			return from_ascii("TOC:MintedListings");
+		else
+			return from_ascii("TOC:Listings");
+	}
 	return from_ascii("TOC");
 }
 

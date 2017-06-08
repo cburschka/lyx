@@ -48,7 +48,7 @@ private:
 	/// lstinline is inlined, normal listing is displayed
 	DisplayType display() const;
 	///
-	docstring layoutName() const { return from_ascii("Listings"); }
+	docstring layoutName() const;
 	///
 	void write(std::ostream & os) const;
 	///
