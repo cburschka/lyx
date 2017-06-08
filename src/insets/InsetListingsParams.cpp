@@ -687,7 +687,7 @@ ParValidator::ParValidator()
 	all_params_[1]["autogobble"] =
 		ListingsParam("", true, TRUEFALSE, "", empty_hint);
 	all_params_[1]["baselinestretch"] =
-		ListingsParam("", false, LENGTH, "", empty_hint);
+		ListingsParam("", false, ALL, "", empty_hint);
 	all_params_[1]["breakafter"] =
 		ListingsParam("", false, ALL, "", empty_hint);
 	all_params_[1]["breakaftergroup"] =
@@ -792,14 +792,11 @@ ParValidator::ParValidator()
 		ListingsParam("", false, ONEOF,
 			"none\ntopline\nbottomline\nall", empty_hint);
 	all_params_[1]["language"] =
-		ListingsParam("", false, ONEOF,
-				allowed_languages, empty_hint);
-	all_params_[1]["language"] =
 		ListingsParam("", false, ALL, "", _(
-		"This parameter should not be entered here. Please "
-		"use the language combo box in the listings inset "
-		"settings dialog, unless you need to enter a language "
-		"not offered there."));
+		"Enter one of the supported languages. However, if you "
+		"are defining a listing inset, it is better using the  "
+		"language combo box, unless you need to enter a language not "
+		"offered there, otherwise the combo box will be disabled."));
 	all_params_[1]["lastline"] =
 		ListingsParam("", false, INTEGER, "", empty_hint);
 	all_params_[1]["linenos"] =

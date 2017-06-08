@@ -15,6 +15,7 @@
 #include "GuiInclude.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
 #include "FuncRequest.h"
 #include "LyXRC.h"
 
@@ -94,7 +95,9 @@ docstring GuiInclude::validate_listings_params()
 	if (typeCO->currentIndex() != 3 || bypassCB->isChecked())
 		return docstring();
 	string params = fromqstr(listingsED->toPlainText());
-	return InsetListingsParams(params).validate();
+	InsetListingsParams lstparams(params);
+	lstparams.setMinted(buffer().params().use_minted);
+	return lstparams.validate();
 }
 
 
@@ -176,7 +179,8 @@ void GuiInclude::paramsToDialog(InsetCommandParams const & params_)
 	if (cmdname != "include" &&
 	    cmdname != "verbatiminput" &&
 	    cmdname != "verbatiminput*" &&
-		cmdname != "lstinputlisting")
+	    cmdname != "lstinputlisting" &&
+	    cmdname != "inputminted")
 		cmdname = "input";
 
 	if (cmdname == "include") {
@@ -196,7 +200,7 @@ void GuiInclude::paramsToDialog(InsetCommandParams const & params_)
 		typeCO->setCurrentIndex(2);
 		visiblespaceCB->setEnabled(true);
 
-	} else if (cmdname == "lstinputlisting") {
+	} else if (cmdname == "lstinputlisting" || cmdname == "inputminted") {
 		typeCO->setCurrentIndex(3);
 		listingsGB->setEnabled(true);
 		listingsED->setEnabled(true);
@@ -241,7 +245,10 @@ void GuiInclude::applyView()
 	} else if (item == 1) {
 		params_.setCmdName("input");
 	} else if (item == 3) {
-		params_.setCmdName("lstinputlisting");
+		if (buffer().params().use_minted)
+			params_.setCmdName("inputminted");
+		else
+			params_.setCmdName("lstinputlisting");
 		// the parameter string should have passed validation
 		InsetListingsParams par(fromqstr(listingsED->toPlainText()));
 		string caption = fromqstr(captionLE->text());
