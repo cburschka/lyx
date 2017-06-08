@@ -1379,7 +1379,9 @@ Inset * TextMetrics::editXY(Cursor & cur, int x, int y,
 
 	// Try to descend recursively inside the inset.
 	Inset * edited = inset->editXY(cur, x, y);
-	if (edited == inset && cur.pos() == it->pos) {
+	// FIXME: it is not clear that the test on position is needed
+	// Remove it if/when semantics of editXY is clarified
+	if (cur.text() == text_ && cur.pos() == it->pos) {
 		// non-editable inset, set cursor after the inset if x is
 		// nearer to that position (bug 9628)
 		bool bound = false; // is modified by getPosNearX

@@ -179,7 +179,9 @@ public:
            that is completely visible
 	\param up whether we are going up or down (only used when
            assert_in_view is true
-	\retval inset is non-null if the cursor is positionned inside
+	\retval inset is null if the cursor is positioned over normal
+	       text in the current Text object. Otherwise it is the inset
+	       that the cursor points to, like for Inset::editXY.
 	*/
 	/// FIXME: cleanup to use BufferView::getCoveringInset() and
 	/// setCursorFromCoordinates() instead of checkInsetHit().

@@ -185,7 +185,11 @@ public:
 	/// cursor enters
 	virtual void edit(Cursor & cur, bool front, 
 		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
-	/// cursor enters
+	/// sets cursor recursively descending into nested editable insets
+	/**
+	\return the inset pointer if x,y is covering that inset
+	\param x,y are absolute screen coordinates.
+	*/
 	/// Note: this method must preserve the selection status. See:
 	/// https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg199001.html
 	virtual Inset * editXY(Cursor & cur, int x, int y);
