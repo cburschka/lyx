@@ -335,10 +335,11 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 			int w = 0;
 			int a = 0;
 			int d = 0;
+			Color const col = pi.full_repaint ? Color_none : pi.backgroundColor(this);
 			theFontMetrics(font).rectText(buttonLabel(bv), w, a, d);
 			int const ww = max(textdim.wid, w);
 			pi.pain.rectText(x + (ww - w) / 2, y + desc + a,
-			                 buttonLabel(bv), font, Color_none, Color_none);
+			                 buttonLabel(bv), font, col, Color_none);
 		}
 
 		int const y1 = y - textdim.asc + 3;
