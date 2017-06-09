@@ -427,8 +427,9 @@ bool InsetListings::getStatus(Cursor & cur, FuncRequest const & cmd,
 			return true;
 		case LFUN_CAPTION_INSERT: {
 			// the inset outputs at most one caption
-			if (params().isInline() || !params().isFloat()
-						|| getCaptionInset()) {
+			bool const use_minted = buffer().params().use_minted;
+			if (params().isInline() || getCaptionInset() ||
+			    (use_minted && !params().isFloat())) {
 				status.setEnabled(false);
 				return true;
 			}
