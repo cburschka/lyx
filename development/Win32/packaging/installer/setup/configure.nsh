@@ -198,7 +198,7 @@ Section -Configure
   ${endif}
   
   # if LilyPondPath was found
-  # We need to add these entris because python scripts can only be executed
+  # We need to add these entries because python scripts can only be executed
   # if the full path is given.
   ${if} $LilyPondPath != ""
    FileWrite $R1 '\format "lilypond-book" "lytex" "LilyPond book (LaTeX)" "" "" "auto" "document,menu=export" ""$\r$\n\
