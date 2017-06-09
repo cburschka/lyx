@@ -1,12 +1,11 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 543
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
 \origin /systemlyxdir/examples/
 \textclass article
 \begin_preamble
-\usemintedstyle{bw}
 \usepackage{xcolor}
 \definecolor{lgray}{rgb}{0.95, 0.95, 0.95}
 \usepackage{eso-pic}
@@ -77,6 +76,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_minted 1
 \index Index
 \shortcut idx
 \color #008000
@@ -187,12 +187,10 @@ This is the title of the listing appearing in the headers.
 \end_layout
 
 \begin_layout Standard
-\begin_inset External
-	template MintedSource
-	filename ../scripts/lyxpak.py
-	display false
-	extra LaTeX "fontsize=\tiny,baselinestretch=1.05,frame=leftline,framesep=10pt,breaklines,breakanywhere,language=python"
-	extra PDFLaTeX "fontsize=\tiny,baselinestretch=1.05,frame=leftline,framesep=10pt,breaklines,breakanywhere,language=python"
+\begin_inset CommandInset include
+LatexCommand inputminted
+filename "../scripts/lyxpak.py"
+lstparams "language=python,style=bw,fontsize={\\tiny},baselinestretch={1.05},frame=leftline,framesep=10pt,breaklines,breakanywhere"
 
 \end_inset
 
