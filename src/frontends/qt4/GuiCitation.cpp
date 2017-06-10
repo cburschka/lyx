@@ -188,7 +188,7 @@ void GuiCitation::closeEvent(QCloseEvent * e)
 void GuiCitation::applyView()
 {
 	int const choice = max(0, citationStyleCO->currentIndex());
-	style_ = citationStyleCO->currentData().toString();
+	style_ = citationStyleCO->itemData(citationStyleCO->currentIndex()).toString();
 	bool const full  = starredCB->isChecked();
 	bool const force = forceuppercaseCB->isChecked();
 
@@ -392,7 +392,8 @@ void GuiCitation::updateStyles(BiblioInfo const & bi)
 	citationStyleCO->blockSignals(true);
 
 	// save old style selection
-	QString const curdata = citationStyleCO->currentData().toString();
+	QString const curdata =
+		citationStyleCO->itemData(citationStyleCO->currentIndex()).toString();
 	QString const olddata = (curdata.isEmpty()) ? style_ : curdata;
 	citationStyleCO->clear();
 	BiblioInfo::CiteStringMap::const_iterator cit = sty.begin();
