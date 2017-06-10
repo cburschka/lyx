@@ -382,9 +382,6 @@ public:
 	/// Notify or clear of external modification
 	void fileExternallyModified(bool exists) const;
 
-	/// Block notifications of external modifications
-	FileMonitorBlocker blockFileMonitor() { return file_monitor_->block(); }
-
 	/// has been externally modified? Can be reset by the user.
 	mutable bool externally_modified_;
 
@@ -1379,7 +1376,6 @@ FileName Buffer::getBackupName() const {
 // Should probably be moved to somewhere else: BufferView? GuiView?
 bool Buffer::save() const
 {
-	FileMonitorBlocker block = d->blockFileMonitor();
 	docstring const file = makeDisplayPath(absFileName(), 20);
 	d->filename.refresh();
 
@@ -5338,8 +5334,7 @@ void Buffer::Impl::refreshFileMonitor()
 
 void Buffer::Impl::fileExternallyModified(bool const exists) const
 {
-	// prevent false positives, because FileMonitorBlocker is not enough on
-	// OSX.
+	// ignore notifications after our own saving operations
 	if (checksum_ == filename.checksum()) {
 		LYXERR(Debug::FILES, "External modification but "
 		       "checksum unchanged: " << filename);

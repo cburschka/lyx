@@ -202,42 +202,6 @@ void FileMonitor::changed(bool const exists)
 }
 
 
-FileMonitorBlocker FileMonitor::block(int delay)
-{
-	FileMonitorBlocker blocker = blocker_.lock();
-	if (!blocker)
-		blocker_ = blocker = make_shared<FileMonitorBlockerGuard>(this);
-	blocker->setDelay(delay);
-	return blocker;
-}
-
-
-FileMonitorBlockerGuard::FileMonitorBlockerGuard(FileMonitor * monitor)
-	: monitor_(monitor), delay_(0)
-{
-	QObject::disconnect(monitor->monitor_.get(), SIGNAL(fileChanged(bool)),
-	                    monitor, SLOT(changed(bool)));
-}
-
-
-void FileMonitorBlockerGuard::setDelay(int delay)
-{
-	delay_ = max(delay_, delay);
-}
-
-
-FileMonitorBlockerGuard::~FileMonitorBlockerGuard()
-{
-	if (!monitor_)
-		return;
-	// Even if delay_ is 0, the QTimer is necessary. Indeed, the notifications
-	// from QFileSystemWatcher that we meant to ignore are not going to be
-	// treated immediately, so we must yield to give us the opportunity to
-	// ignore them.
-	QTimer::singleShot(delay_, monitor_, SLOT(connectToFileMonitorGuard()));
-}
-
-
 ActiveFileMonitor::ActiveFileMonitor(std::shared_ptr<FileMonitorGuard> monitor,
                                      FileName const & filename, int interval)
 	: FileMonitor(monitor), filename_(filename), interval_(interval),

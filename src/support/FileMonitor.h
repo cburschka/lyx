@@ -60,12 +60,6 @@ typedef std::unique_ptr<ActiveFileMonitor> ActiveFileMonitorPtr;
 ///   monitor.connect(...);
 /// (stops watching the first)
 ///
-/// Block notifications for the duration of a scope:
-///   {
-///       FileMonitorBlocker block = monitor.block();
-///       ...
-///   }
-///
 /// Reset connections:
 ///   monitor.disconnect();
 ///   or the disconnect method of the connection object for the boost signal.
@@ -131,27 +125,10 @@ private:
 };
 
 
-class FileMonitorBlockerGuard : public QObject
-{
-	Q_OBJECT
-	QPointer<FileMonitor> monitor_;
-	int delay_;
-
-public:
-	FileMonitorBlockerGuard(FileMonitor * monitor);
-	~FileMonitorBlockerGuard();
-	void setDelay(int delay);
-};
-
-
-typedef std::shared_ptr<FileMonitorBlockerGuard> FileMonitorBlocker;
-
-
 /// Main class
 class FileMonitor : public QObject
 {
 	Q_OBJECT
-	friend class FileMonitorBlockerGuard;
 
 public:
 	FileMonitor(std::shared_ptr<FileMonitorGuard> monitor);
@@ -165,20 +142,6 @@ public:
 	void disconnect();
 	/// absolute path being tracked
 	std::string const & filename() { return monitor_->filename(); }
-	/// Creates a guard that blocks notifications. Copyable. Notifications from
-	/// this monitor are blocked as long as there are copies of the
-	/// FileMonitorBlocker around.
-	/// \param delay is the amount waited in ms after expiration of the guard
-	/// before reconnecting. It can be used to slow down incoming events
-	/// accordingly. A value of 0 is still made asynchronous, because of the
-	/// fundamentally asynchronous nature of QFileSystemWatcher. To catch one's
-	/// own file operations, a value of 0 for delay is sufficient with the
-	/// inotify backend (e.g. Linux); for OSX (kqueue), a value of 100ms is
-	/// unsufficient and more tests need to be done in combination with
-	/// flushing/syncing to disk in order to understand how to catch one's own
-	/// operations reliably. No feedback about Windows. See
-	/// <https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg200252.html>.
-	FileMonitorBlocker block(int delay = 0);
 	/// Make sure the good file is being monitored, after e.g. a move or a
 	/// deletion. See <https://bugreports.qt.io/browse/QTBUG-46483>. This is
 	/// called automatically.
@@ -199,8 +162,6 @@ private:
 	sig fileChanged_;
 	/// the unique watch for our file
 	std::shared_ptr<FileMonitorGuard> const monitor_;
-	///
-	std::weak_ptr<FileMonitorBlockerGuard> blocker_;
 };
 
 
