@@ -77,6 +77,7 @@ public:
 	void unregisterSocketCallback(int fd);
 	bool searchMenu(FuncRequest const & func, docstring_list & names) const;
 	void handleKeyFunc(FuncCode action);
+	bool unhide(Buffer * buf); //override
 	//@}
 
 	///

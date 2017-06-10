@@ -130,8 +130,10 @@ public:
 
 	///
 	void focusInEvent(QFocusEvent * e);
-	/// set a buffer to the current workarea.
-	void setBuffer(Buffer * b); ///< \c Buffer to set.
+	/// Add a Buffer to the View
+	/// \param b Buffer to set.
+	/// \param switch_to Whether to set it to the current workarea.
+	void setBuffer(Buffer * b, bool switch_to = true);
 
 	/// load a document into the current workarea.
 	Buffer * loadDocument(

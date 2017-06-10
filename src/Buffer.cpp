@@ -380,7 +380,7 @@ public:
 	void refreshFileMonitor();
 
 	/// Notify or clear of external modification
-	void fileExternallyModified(bool exists) const;
+	void fileExternallyModified(bool exists);
 
 	/// has been externally modified? Can be reset by the user.
 	mutable bool externally_modified_;
@@ -5332,7 +5332,7 @@ void Buffer::Impl::refreshFileMonitor()
 }
 
 
-void Buffer::Impl::fileExternallyModified(bool const exists) const
+void Buffer::Impl::fileExternallyModified(bool const exists)
 {
 	// ignore notifications after our own saving operations
 	if (checksum_ == filename.checksum()) {
@@ -5346,8 +5346,13 @@ void Buffer::Impl::fileExternallyModified(bool const exists) const
 	// location, then the externally modified warning will appear then.
 	if (exists)
 			externally_modified_ = true;
-	if (wa_)
+	// Update external modification notification.
+	// Dirty buffers must be visible at all times.
+	if (wa_ && wa_->unhide(owner_))
 		wa_->updateTitles();
+	else
+		// Unable to unhide the buffer (e.g. no GUI or not current View)
+		lyx_clean = true;
 }
 
 

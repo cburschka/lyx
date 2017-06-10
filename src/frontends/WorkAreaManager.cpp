@@ -13,6 +13,7 @@
 
 #include "WorkAreaManager.h"
 
+#include "Application.h"
 #include "WorkArea.h"
 
 
@@ -43,6 +44,14 @@ void WorkAreaManager::closeAll()
 	while (!work_areas_.empty())
 		// WorkArea is de-registering itself.
 		(*work_areas_.begin())->close();
+}
+
+
+bool WorkAreaManager::unhide(Buffer * buf)
+{
+	if (!work_areas_.empty())
+		return true;
+	return theApp()->unhide(buf);
 }
 
 

@@ -2410,6 +2410,15 @@ void GuiApplication::createView(QString const & geometry_arg, bool autoShow,
 }
 
 
+bool GuiApplication::unhide(Buffer * buf)
+{
+	if (!currentView())
+		return false;
+	currentView()->setBuffer(buf, false);
+	return true;
+}
+
+
 Clipboard & GuiApplication::clipboard()
 {
 	return d->clipboard_;

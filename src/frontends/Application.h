@@ -251,6 +251,8 @@ public:
 	/// A started long operation is still in progress ?
 	virtual bool longOperationStarted() = 0;
 
+	// Add a buffer to the current view, do not switch to it.
+	virtual bool unhide(Buffer * buf) = 0;
 };
 
 /// Return the list of loadable formats.

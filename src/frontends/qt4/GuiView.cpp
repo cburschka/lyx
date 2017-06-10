@@ -1587,7 +1587,7 @@ void GuiView::updateToolbars()
 }
 
 
-void GuiView::setBuffer(Buffer * newBuffer)
+void GuiView::setBuffer(Buffer * newBuffer, bool switch_to)
 {
 	LYXERR(Debug::DEBUG, "Setting buffer: " << newBuffer << endl);
 	LASSERT(newBuffer, return);
@@ -1610,7 +1610,8 @@ void GuiView::setBuffer(Buffer * newBuffer)
 	}
 	connectBuffer(*newBuffer);
 	connectBufferView(wa->bufferView());
-	setCurrentWorkArea(wa);
+	if (switch_to)
+		setCurrentWorkArea(wa);
 }
 
 
