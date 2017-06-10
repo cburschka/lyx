@@ -832,7 +832,7 @@ ParValidator::ParValidator()
 		ListingsParam("", true, TRUEFALSE, "", empty_hint);
 	all_params_[1]["space"] =
 		ListingsParam("", false, ALL, "", _(
-				"A macro. Default: \textvisiblespace"));
+				"A macro. Default: \\textvisiblespace"));
 	all_params_[1]["spacecolor"] =
 		ListingsParam("", false, ALL, "", color_hint_mint);
 	all_params_[1]["startinline"] =
