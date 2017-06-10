@@ -2444,7 +2444,6 @@ dist_xtemplates_DATA = \
 	xtemplates/gnumeric.xtemplate \
 	xtemplates/inkscape.xtemplate \
 	xtemplates/lilypond.xtemplate \
-	xtemplates/minted.xtemplate \
 	xtemplates/pdfpages.xtemplate \
 	xtemplates/raster_image.xtemplate \
 	xtemplates/vector_graphics.xtemplate \
