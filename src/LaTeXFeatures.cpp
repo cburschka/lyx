@@ -419,6 +419,17 @@ static docstring const rtloutputdblcol_def = from_ascii(
 	"}\n"
 	"\\@mparswitchtrue\n");
 
+static docstring const lyxmintcaption_def = from_ascii(
+	"\\long\\def\\lyxmintcaption[#1]#2{%\n"
+	"  \\ifx#1t\\vskip\\baselineskip\\fi%\n"
+	"  \\refstepcounter{listing}\\noindent%\n"
+	"  \\setbox\\@tempboxa\\hbox{\\listingscaption~\\thelisting: #2}%\n"
+	"  \\ifdim \\wd\\@tempboxa >\\linewidth%\n"
+	"  \\parbox[t]{\\linewidth}{\\unhbox\\@tempboxa}\\else%\n"
+	"  \\hbox to\\linewidth{\\hfil\\box\\@tempboxa\\hfil}\\fi%\n"
+	"  \\ifx#1b\\vskip\\baselineskip\\fi\n"
+	"}\n");
+
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -1490,6 +1501,9 @@ TexString LaTeXFeatures::getMacros() const
 
 	if (mustProvide("rtloutputdblcol"))
 		macros << rtloutputdblcol_def;
+
+	if (mustProvide("lyxmintcaption"))
+		macros << lyxmintcaption_def;
 
 	return macros.release();
 }

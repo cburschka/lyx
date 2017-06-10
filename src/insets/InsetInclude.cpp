@@ -602,8 +602,11 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		// Using listings, it is always possible to have a caption,
 		// even for non-floats. Using minted, only floats can have a
 		// caption. So, with minted we use the following strategy.
-		// If a caption or the float parameter are specified, we
-		// assume that the listing is floating. In this case, the
+		// If a caption was specified but the float parameter was not,
+		// we ourselves add a caption above the listing (because the
+		// listing comes from a file and might span several pages).
+		// Otherwise, if float was specified, the floating listing
+		// environment provided by minted is used. In either case, the
 		// label parameter is taken as the label by which the float
 		// can be referenced, otherwise it will have the meaning
 		// intended by minted. In this last case, the label will
@@ -620,7 +623,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		string caption;
 		string label;
 		string placement;
-		bool isfloat = false;
+		bool isfloat = lstparams.isFloat();
 		if (use_minted) {
 			// Get float placement, language, caption, and
 			// label, then remove the relative options.
@@ -628,7 +631,6 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 				getVectorFromString(parameters, ",", false);
 			for (size_t i = 0; i < opts.size(); ++i) {
 				if (prefixIs(opts[i], "float")) {
-					isfloat = true;
 					if (prefixIs(opts[i], "float="))
 						placement = opts[i].substr(6);
 					opts.erase(opts.begin() + i--);
@@ -636,7 +638,6 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 					language = opts[i].substr(9);
 					opts.erase(opts.begin() + i--);
 				} else if (prefixIs(opts[i], "caption=")) {
-					isfloat = true;
 					caption = opts[i].substr(8);
 					opts.erase(opts.begin() + i--);
 				} else if (prefixIs(opts[i], "label=")) {
@@ -645,7 +646,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 				}
 			}
 			if (!label.empty()) {
-				if (isfloat)
+				if (isfloat || !caption.empty())
 					label = trim(label, "{}");
 				else
 					opts.push_back("label=" + label);
@@ -659,6 +660,11 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 			if (!placement.empty())
 				os << '[' << placement << "]";
 			os << breakln;
+		} else if (use_minted && !caption.empty()) {
+			os << breakln << "\\lyxmintcaption[t]{" << caption;
+			if (!label.empty())
+				os << "\\label{" << label << "}";
+			os << "}\n";
 		}
 		os << (use_minted ? "\\inputminted" : "\\lstinputlisting");
 		if (!parameters.empty())
@@ -1029,9 +1035,13 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	if (isVerbatim(params()))
 		features.require("verbatim");
 	else if (isListings(params())) {
-		if (buffer().params().use_minted)
+		if (buffer().params().use_minted) {
 			features.require("minted");
-		else
+			string const opts = to_utf8(params()["lstparams"]);
+			InsetListingsParams lstpars(opts);
+			if (!lstpars.isFloat() && contains(opts, "caption="))
+				features.require("lyxmintcaption");
+		} else
 			features.require("listings");
 	}
 

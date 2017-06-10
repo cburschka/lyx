@@ -187,6 +187,9 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 		encoding_switched = true;
 	}
 
+	bool const captionfirst = !isfloat && par->isInset(0)
+				&& par->getInset(0)->lyxCode() == CAPTION_CODE;
+
 	while (par != end) {
 		pos_type siz = par->size();
 		bool captionline = false;
@@ -277,10 +280,16 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 		}
 		os << delim << code << delim;
 	} else if (use_minted) {
+		OutputParams rp = runparams;
+		rp.moving_arg = true;
+		TexString caption = getCaption(rp);
 		if (isfloat) {
 			os << breakln << "\\begin{listing}";
 			if (!float_placement.empty())
 				os << '[' << float_placement << "]";
+		} else if (captionfirst && !caption.str.empty()) {
+			os << breakln << "\\lyxmintcaption[t]{"
+			   << move(caption) << "}\n";
 		}
 		os << breakln << "\\begin{minted}";
 		if (!param_string.empty())
@@ -288,12 +297,12 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 		os << "{" << minted_language << "}\n"
 		   << code << breakln << "\\end{minted}\n";
 		if (isfloat) {
-			OutputParams rp = runparams;
-			rp.moving_arg = true;
-			TexString caption = getCaption(rp);
 			if (!caption.str.empty())
 				os << "\\caption{" << move(caption) << "}\n";
 			os << "\\end{listing}\n";
+		} else if (!captionfirst && !caption.str.empty()) {
+			os << breakln << "\\lyxmintcaption[b]{"
+			   << move(caption) << "}";
 		}
 	} else {
 		OutputParams rp = runparams;
@@ -427,9 +436,7 @@ bool InsetListings::getStatus(Cursor & cur, FuncRequest const & cmd,
 			return true;
 		case LFUN_CAPTION_INSERT: {
 			// the inset outputs at most one caption
-			bool const use_minted = buffer().params().use_minted;
-			if (params().isInline() || getCaptionInset() ||
-			    (use_minted && !params().isFloat())) {
+			if (params().isInline() || getCaptionInset()) {
 				status.setEnabled(false);
 				return true;
 			}
@@ -452,14 +459,18 @@ docstring const InsetListings::buttonLabel(BufferView const & bv) const
 
 void InsetListings::validate(LaTeXFeatures & features) const
 {
-	if (buffer().params().use_minted)
-		features.require("minted");
-	else
-		features.require("listings");
 	features.useInsetLayout(getLayout());
 	string param_string = params().params();
-	if (param_string.find("\\color") != string::npos)
-		features.require("color");
+	if (buffer().params().use_minted) {
+		features.require("minted");
+		OutputParams rp = features.runparams();
+		if (!params().isFloat() && !getCaption(rp).str.empty())
+			features.require("lyxmintcaption");
+	} else {
+		features.require("listings");
+		if (contains(param_string, "\\color"))
+			features.require("color");
+	}
 	InsetCaptionable::validate(features);
 }
 
