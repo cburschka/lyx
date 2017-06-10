@@ -423,6 +423,8 @@ static docstring const lyxmintcaption_def = from_ascii(
 	"\\long\\def\\lyxmintcaption[#1]#2{%\n"
 	"  \\ifx#1t\\vskip\\baselineskip\\fi%\n"
 	"  \\refstepcounter{listing}\\noindent%\n"
+	"  \\addcontentsline{lol}{listing}%\n"
+	"  {\\protect\\numberline{\\thelisting}{\\ignorespaces #2}}%\n"
 	"  \\setbox\\@tempboxa\\hbox{\\listingscaption~\\thelisting: #2}%\n"
 	"  \\ifdim \\wd\\@tempboxa >\\linewidth%\n"
 	"  \\parbox[t]{\\linewidth}{\\unhbox\\@tempboxa}\\else%\n"
