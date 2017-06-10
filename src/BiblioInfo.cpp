@@ -1367,21 +1367,21 @@ bool BiblioInfo::isBibtex(docstring const & key) const
 }
 
 
-vector<docstring> const BiblioInfo::getCiteStrings(
+BiblioInfo::CiteStringMap const BiblioInfo::getCiteStrings(
 	vector<docstring> const & keys, vector<CitationStyle> const & styles,
 	Buffer const & buf, CiteItem const & ci) const
 {
 	if (empty())
-		return vector<docstring>();
+		return vector<pair<docstring,docstring>>();
 
 	string style;
-	vector<docstring> vec(styles.size());
-	for (size_t i = 0; i != vec.size(); ++i) {
+	CiteStringMap csm(styles.size());
+	for (size_t i = 0; i != csm.size(); ++i) {
 		style = styles[i].name;
-		vec[i] = getLabel(keys, buf, style, ci);
+		csm[i] = make_pair(from_ascii(style), getLabel(keys, buf, style, ci));
 	}
 
-	return vec;
+	return csm;
 }
 
 

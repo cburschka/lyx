@@ -92,7 +92,7 @@ static vector<lyx::docstring> to_docstring_vector(QStringList const & qlist)
 
 GuiCitation::GuiCitation(GuiView & lv)
 	: DialogView(lv, "citation", qt_("Citation")),
-	  style_(0), params_(insetCode("citation"))
+	  style_(QString()), params_(insetCode("citation"))
 {
 	setupUi(this);
 
@@ -188,7 +188,7 @@ void GuiCitation::closeEvent(QCloseEvent * e)
 void GuiCitation::applyView()
 {
 	int const choice = max(0, citationStyleCO->currentIndex());
-	style_ = choice;
+	style_ = citationStyleCO->currentData().toString();
 	bool const full  = starredCB->isChecked();
 	bool const force = forceuppercaseCB->isChecked();
 
@@ -258,7 +258,7 @@ void GuiCitation::updateControls(BiblioInfo const & bi)
 	QModelIndex idx = selectionManager->getSelectedIndex(1);
 	updateInfo(bi, idx);
 	int i = citationStyleCO->currentIndex();
-	if (i == -1)
+	if (i == -1 || i > int(citeStyles_.size()))
 		i = 0;
 	updateFormatting(citeStyles_[i]);
 	selectionManager->update();
@@ -379,9 +379,9 @@ void GuiCitation::updateStyles(BiblioInfo const & bi)
 	}
 
 	static const size_t max_length = 80;
-	QStringList sty = citationStyles(bi, max_length);
+	BiblioInfo::CiteStringMap sty = citationStyles(bi, max_length);
 
-	if (sty.isEmpty()) {
+	if (sty.empty()) {
 		// some error
 		citationStyleCO->setEnabled(false);
 		citationStyleLA->setEnabled(false);
@@ -391,16 +391,20 @@ void GuiCitation::updateStyles(BiblioInfo const & bi)
 
 	citationStyleCO->blockSignals(true);
 
-	// save old index
-	int const curindex = citationStyleCO->currentIndex();
-	int const oldIndex = (curindex < 0) ? style_ : curindex;
+	// save old style selection
+	QString const curdata = citationStyleCO->currentData().toString();
+	QString const olddata = (curdata.isEmpty()) ? style_ : curdata;
 	citationStyleCO->clear();
-	citationStyleCO->insertItems(0, sty);
+	BiblioInfo::CiteStringMap::const_iterator cit = sty.begin();
+	BiblioInfo::CiteStringMap::const_iterator end = sty.end();
+	for (int ii = 1; cit != end; ++cit, ++ii)
+		citationStyleCO->addItem(toqstr(cit->second), toqstr(cit->first));
 	citationStyleCO->setEnabled(true);
 	citationStyleLA->setEnabled(true);
-	// restore old index
-	if (oldIndex != -1 && oldIndex < citationStyleCO->count())
-		citationStyleCO->setCurrentIndex(oldIndex);
+	// restore old style selection
+	int const i = citationStyleCO->findData(olddata);
+	if (i != -1)
+		citationStyleCO->setCurrentIndex(i);
 
 	citationStyleCO->blockSignals(false);
 }
@@ -855,7 +859,7 @@ void GuiCitation::findKey(BiblioInfo const & bi,
 }
 
 
-QStringList GuiCitation::citationStyles(BiblioInfo const & bi, size_t max_size)
+BiblioInfo::CiteStringMap GuiCitation::citationStyles(BiblioInfo const & bi, size_t max_size)
 {
 	vector<docstring> const keys = to_docstring_vector(cited_keys_);
 	vector<CitationStyle> styles = citeStyles_;
@@ -891,8 +895,8 @@ QStringList GuiCitation::citationStyles(BiblioInfo const & bi, size_t max_size)
 	ci.isQualified = qualified;
 	ci.pretexts = pres;
 	ci.posttexts = posts;
-	vector<docstring> ret = bi.getCiteStrings(keys, styles, documentBuffer(), ci);
-	return to_qstring_list(ret);
+	BiblioInfo::CiteStringMap ret = bi.getCiteStrings(keys, styles, documentBuffer(), ci);
+	return ret;
 }
 
 
@@ -1068,7 +1072,7 @@ void GuiCitation::restoreSession()
 	regexp_->setChecked(settings.value(sessionKey() + "/regex").toBool());
 	casesense_->setChecked(settings.value(sessionKey() + "/casesensitive").toBool());
 	instant_->setChecked(settings.value(sessionKey() + "/autofind", true).toBool());
-	style_ = settings.value(sessionKey() + "/citestyle").toInt();
+	style_ = settings.value(sessionKey() + "/citestyle").toString();
 	literal_ = settings.value(sessionKey() + "/literal", false).toBool();
 	updateFilterHint();
 }

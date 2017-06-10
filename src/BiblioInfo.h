@@ -222,10 +222,16 @@ public:
 	/// Is this a reference from a bibtex database
 	/// or from a bibliography environment?
 	bool isBibtex(docstring const & key) const;
+	/// A vector holding a pair of lyx cite command and the respective
+	/// output for a given (list of) key(s).
+	typedef std::vector<std::pair<docstring,docstring>> CiteStringMap;
 	/// Translates the available citation styles into strings for a given
 	/// list of keys, using either numerical or author-year style depending
-	/// upon the active engine.
-	std::vector<docstring> const getCiteStrings(std::vector<docstring> const & keys,
+	/// upon the active engine. The function returns a CiteStringMap with the first
+	/// element being the lyx cite command, the second being the formatted
+	/// citation reference.
+	CiteStringMap const getCiteStrings(
+		std::vector<docstring> const & keys,
 		std::vector<CitationStyle> const & styles, Buffer const & buf,
 		CiteItem const & ci) const;
 	/// A list of BibTeX keys cited in the current document, sorted by

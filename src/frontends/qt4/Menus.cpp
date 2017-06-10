@@ -1592,14 +1592,14 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 	ci.isQualified = qualified;
 	ci.pretexts = pres;
 	ci.posttexts = posts;
-	vector<docstring> citeStrings =
+	BiblioInfo::CiteStringMap citeStrings =
 		buf->masterBibInfo().getCiteStrings(keys, citeStyleList, bv->buffer(), ci);
 
-	vector<docstring>::const_iterator cit = citeStrings.begin();
-	vector<docstring>::const_iterator end = citeStrings.end();
+	BiblioInfo::CiteStringMap::const_iterator cit = citeStrings.begin();
+	BiblioInfo::CiteStringMap::const_iterator end = citeStrings.end();
 
 	for (int ii = 1; cit != end; ++cit, ++ii) {
-		docstring label = *cit;
+		docstring label = cit->second;
 		CitationStyle cs = citeStyleList[ii - 1];
 		cs.forceUpperCase &= force;
 		cs.hasStarredVersion &= star;

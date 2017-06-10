@@ -21,6 +21,7 @@
 
 #include "insets/InsetCommandParams.h"
 
+#include "BiblioInfo.h"
 #include "Citation.h"
 
 #include <QAbstractListModel>
@@ -141,8 +142,9 @@ private:
 		bool reset = false //< whether to reset and search all keys
 		);
 
-	/// List of example cite strings
-	QStringList citationStyles(BiblioInfo const & bi, size_t max_size);
+	/// List of example cite strings and their correlating lyx name
+	BiblioInfo::CiteStringMap citationStyles(BiblioInfo const & bi,
+								size_t max_size);
 
 	/// Set the Params variable for the Controller.
 	void applyParams(int const choice, bool const full, bool const force,
@@ -180,7 +182,7 @@ private:
 	QAction * instant_;
 
 	/// last used citation style
-	int style_;
+	QString style_;
 	/// last set value for literal
 	/// this is used only for new citations
 	bool literal_;
