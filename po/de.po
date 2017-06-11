@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2017-06-11 13:59+0200\n"
-"PO-Revision-Date: 2017-05-20 13:34+0100\n"
+"PO-Revision-Date: 2017-06-11 16:40+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -2516,12 +2516,11 @@ msgstr "Feedback-Fenster"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:79
 msgid "Use the minted package instead of the listings one"
-msgstr ""
+msgstr "Verwende das Paket 'Minted' anstelle von 'Listings'."
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:82
-#, fuzzy
 msgid "Use &minted"
-msgstr "&Eingabekodierung verwenden"
+msgstr "Verwende &Minted"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:324
 #: lib/layouts/stdinsets.inc:330 lib/layouts/stdinsets.inc:375
@@ -15565,15 +15564,17 @@ msgstr "Anhang \\thechapter"
 
 #: lib/layouts/subequations.module:2 lib/layouts/subequations.module:10
 #: lib/layouts/subequations.module:13
-#, fuzzy
 msgid "Subequations"
-msgstr "Gleichungen"
+msgstr "Untergleichungen"
 
 #: lib/layouts/subequations.module:5
 msgid ""
 "Provide a straightforward way to segregate subequations in LyX. See the "
 "subequations.lyx example file."
 msgstr ""
+"Bietet eine elegante Möglichkeit, Untergleichungen zu erstellen. Bitte"
+" konsultieren "
+"Sie das Beispieldokument 'subequations.lyx' für weitere Informationen. "
 
 #: lib/layouts/svcommon.inc:68
 msgid "Front Matter"
@@ -24444,6 +24445,9 @@ msgid ""
 "Note that using this template automatically uses the \n"
 "document text in the image (like with the Xfig template).\n"
 msgstr ""
+"Eine Inkscape-Grafik.\n"
+"Dabei wird, wie bei XFig-Abbildungen, die Schriftart\n"
+"des Dokuments für die Grafik verwendet.\n"
 
 #: lib/xtemplates/lilypond.xtemplate:15 lib/xtemplates/lilypond.xtemplate:21
 msgid "Lilypond typeset music"
@@ -31481,7 +31485,7 @@ msgstr ""
 "Möchten Sie das Dokument speichern oder die Änderungen verwerfen?"
 
 #: src/frontends/qt4/GuiView.cpp:3012
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
 "\n"
@@ -31489,16 +31493,15 @@ msgid ""
 msgstr ""
 "Das Dokument %1$s wurde noch nicht gespeichert.\n"
 "\n"
-"Möchten Sie das Dokument speichern?"
+"Möchten Sie das Dokument speichern oder es endgültig verwerfen?"
 
 #: src/frontends/qt4/GuiView.cpp:3016 src/frontends/qt4/GuiView.cpp:3112
 msgid "Save changed document?"
 msgstr "Geändertes Dokument speichern?"
 
 #: src/frontends/qt4/GuiView.cpp:3016
-#, fuzzy
 msgid "Save document?"
-msgstr "Dokument speichern"
+msgstr "Dokument speichern?"
 
 #: src/frontends/qt4/GuiView.cpp:3018
 msgid "&Discard"
@@ -31685,7 +31688,7 @@ msgstr "Unterfenster schließen"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:2232
 msgid "<b>The file %1 changed on disk.</b>"
-msgstr ""
+msgstr "<b>Die Datei %1 wurde auf der Festplatte verändert.</b>"
 
 #: src/frontends/qt4/GuiWrap.cpp:32
 msgid "Wrap Float Settings"
@@ -32631,11 +32634,8 @@ msgstr ""
 "Ähnliches"
 
 #: src/insets/InsetListingsParams.cpp:303
-#, fuzzy
 msgid "none, leftline, topline, bottomline, lines, single"
-msgstr ""
-"none, leftline, topline, bottomline, lines, single, shadowbox oder eine "
-"Teilmenge von trblTRBL"
+msgstr "none, leftline, topline, bottomline, lines, single"
 
 #: src/insets/InsetListingsParams.cpp:305
 msgid ""
@@ -32655,7 +32655,7 @@ msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:311
 msgid "Previously defined color name as a string"
-msgstr ""
+msgstr "Zuvor definierter Farbname (als Zeichenkette)"
 
 #: src/insets/InsetListingsParams.cpp:313
 msgid "Enter something like \\color{white}"
@@ -32693,42 +32693,40 @@ msgstr ""
 "Menü Einfügen->Marke (falls Sie eine Listing-Einfügung definieren)"
 
 #: src/insets/InsetListingsParams.cpp:662
-#, fuzzy
 msgid "Number floats by chapter"
-msgstr "Nummer der Kategorie"
+msgstr "Nummeriere Gleitobjekte per Kapitel"
 
 #: src/insets/InsetListingsParams.cpp:665
-#, fuzzy
 msgid "Number floats by section"
-msgstr "Tabellen abschnittsweise nummerieren"
+msgstr "Nummeriere Gleitobjekte per Abschnitt"
 
 #: src/insets/InsetListingsParams.cpp:670
 msgid "default: _minted-<jobname>"
-msgstr ""
+msgstr "Standard: _minted-<Dateiname>"
 
 #: src/insets/InsetListingsParams.cpp:749
 msgid "Sets encoding expected by Pygments"
-msgstr ""
+msgstr "Legt die Kodierung fest, die Pygments erwartet"
 
 #: src/insets/InsetListingsParams.cpp:759
 msgid "A latex family such as tt, sf, rm"
-msgstr ""
+msgstr "Eine LaTeX-Schriftfamilie wie tt, sf, rm"
 
 #: src/insets/InsetListingsParams.cpp:762
 msgid "A latex series such as m, b, c, bx, sb"
-msgstr ""
+msgstr "Ein LaTeX-Schriftstärke wie m, b, c, bx, sb"
 
 #: src/insets/InsetListingsParams.cpp:765
 msgid "A latex name such as \\small"
-msgstr ""
+msgstr "Ein LaTeX-Größenbefehl wie \\small"
 
 #: src/insets/InsetListingsParams.cpp:768
 msgid "A latex shape such as n, it, sl, sc"
-msgstr ""
+msgstr "Ein LaTeX-Schriftschnitt wie n, it, sl, sc"
 
 #: src/insets/InsetListingsParams.cpp:787
 msgid "A range of lines such as {1,3-4}"
-msgstr ""
+msgstr "Ein Zeilenbereich wie z.B. {1,3-4}"
 
 #: src/insets/InsetListingsParams.cpp:796
 msgid ""
@@ -32736,35 +32734,40 @@ msgid ""
 "inset, it is better using the  language combo box, unless you need to enter "
 "a language not offered there, otherwise the combo box will be disabled."
 msgstr ""
+"Geben Sie eine der unterstützten Sprachen ein. Wenn Sie eine"
+" Listings-Einfügung verwenden, "
+"sollten Sie besser die Sprach-Auswahl direkt im Dialog vornehmen, es sei"
+" denn, Sie möchten eine "
+"Sprache verwenden, die dort nicht aufgeführt ist."
 
 #: src/insets/InsetListingsParams.cpp:819
 msgid "File encoding used by Pygments for highlighting"
-msgstr ""
+msgstr "Dateikodierung, die von Pygments für die Hervorhebung verwendet wird."
 
 #: src/insets/InsetListingsParams.cpp:822
 msgid "Apply Python 3 highlighting"
-msgstr ""
+msgstr "Wende Python3-Hervorhebung an"
 
 #: src/insets/InsetListingsParams.cpp:835
 msgid "A macro. Default: \\textvisiblespace"
-msgstr ""
+msgstr "Ein LaTeX-Befehl. Vorgabe: \\textvisiblespace"
 
 #: src/insets/InsetListingsParams.cpp:839
 msgid "For PHP only"
-msgstr ""
+msgstr "Nur für PHP"
 
 #: src/insets/InsetListingsParams.cpp:842
 msgid "The style used by Pygments"
-msgstr ""
+msgstr "Der Stil, der von Pygments verwendet wird."
 
 #: src/insets/InsetListingsParams.cpp:855
 msgid "A macro to redefine visible tabs"
-msgstr ""
+msgstr "Ein Befehl, um sichtbare Tabulatoren umzudefinieren"
 
 #: src/insets/InsetListingsParams.cpp:862
 #: src/insets/InsetListingsParams.cpp:865
 msgid "Enables latex code in comments"
-msgstr ""
+msgstr "Erlaubt LaTeX-Code in Kommentaren"
 
 #: src/insets/InsetListingsParams.cpp:879
 msgid "Invalid (empty) listing parameter name."
