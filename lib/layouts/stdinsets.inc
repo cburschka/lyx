@@ -297,21 +297,18 @@ InsetLayout TOC:Listings
 End
 
 InsetLayout TOC:MintedListings
-	# We need the [[List of Listings]] context, since "Listings" is also
-	# the name of the inset and translated differently.
-	# "Listings[[List of Listings]]" is the name of the "List of listings"
-	# ("Listings" is the predefined english name) in minted.sty so it
-	# must be used here as well.
+	# "List of Listings" is the name of the "List of listings"
+	# in minted.sty so it must be used here as well.
 	BabelPreamble
-		\addto\captions$$lang{\renewcommand{\listoflistingscaption}{_(Listings[[List of Listings]])}}
+		\addto\captions$$lang{\renewcommand{\listoflistingscaption}{_(List of Listings)}}
 	EndBabelPreamble
 	# The command does not need to be defined in LangPreamble, since
 	# minted.sty does that already. However it needs to be redefined
 	# in order to be used for non-english single-language documents.
 	LangPreamble
-		\renewcommand{\listoflistingscaption}{_(Listings[[List of Listings]])}
+		\renewcommand{\listoflistingscaption}{_(List of Listings)}
 	EndLangPreamble
-	FixedWidthPreambleEncoding true
+	FixedWidthPreambleEncoding false
   HTMLTag h2
   HTMLStyle
     div.lyxtoc-flat {
@@ -383,7 +380,7 @@ InsetLayout MintedListings
 	LangPreamble
 		\renewcommand{\listingscaption}{_(Listing)}
 	EndLangPreamble
-	FixedWidthPreambleEncoding true
+	FixedWidthPreambleEncoding false
 End
 
 InsetLayout Branch
