@@ -2979,11 +2979,17 @@ bool GuiView::saveBufferIfNeeded(Buffer & buf, bool hiding)
 	setBuffer(&buf);
 
 	docstring file;
+	bool exists;
 	// FIXME: Unicode?
-	if (buf.isUnnamed())
+	if (buf.isUnnamed()) {
 		file = from_utf8(buf.fileName().onlyFileName());
-	else
-		file = buf.fileName().displayName(30);
+		exists = false;
+	} else {
+		FileName filename = buf.fileName();
+		filename.refresh();
+		file = filename.displayName(30);
+		exists = filename.exists();
+	}
 
 	// Bring this window to top before asking questions.
 	raise();
@@ -2999,10 +3005,17 @@ bool GuiView::saveBufferIfNeeded(Buffer & buf, bool hiding)
 		if (ret == 1)
 			++ret;
 	} else {
-		docstring const text = bformat(_("The document %1$s has unsaved changes."
-			"\n\nDo you want to save the document or discard the changes?"), file);
-		ret = Alert::prompt(_("Save changed document?"),
-			text, 0, 2, _("&Save"), _("&Discard"), _("&Cancel"));
+		docstring const text = exists ?
+			bformat(_("The document %1$s has unsaved changes."
+			          "\n\nDo you want to save the document or "
+			          "discard the changes?"), file) :
+			bformat(_("The document %1$s has not been saved yet."
+			          "\n\nDo you want to save the document or "
+			          "discard it entirely?"), file);
+		docstring const title = exists ?
+			_("Save changed document?") : _("Save document?");
+		ret = Alert::prompt(title, text, 0, 2,
+		                    _("&Save"), _("&Discard"), _("&Cancel"));
 	}
 
 	switch (ret) {
