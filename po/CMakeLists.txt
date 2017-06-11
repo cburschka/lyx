@@ -88,14 +88,14 @@ SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.fmt.pot" GE
 SET_SOURCE_FILES_PROPERTIES("${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.pot" GENERATED)
 
 add_gettext_python(qt4 src/frontends/qt4/ui *.ui)
-add_gettext_python(layouts lib/layouts *.layout *.inc *.module)
+add_gettext_python(layouts lib layouts/*.layout layouts/*.inc layouts/*.module citeengines/*.citeengine)
 add_gettext_python(languages lib languages)
 add_gettext_python(latexfonts lib latexfonts)
 add_gettext_python(encodings lib encodings)
 add_gettext_python(ui lib/ui *.ui *.inc)
 add_gettext_python(external lib/xtemplates *.xtemplate)
 add_gettext_python(formats lib configure.py)
-add_gettext_python(layouttranslations lib/layouts *.layout *.inc *.module)
+add_gettext_python(layouttranslations lib layouts/*.layout layouts/*.inc layouts/*.module citeengines/*.citeengines)
 
 ADD_CUSTOM_COMMAND(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
