@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 543
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -216,6 +216,7 @@ graphicboxes
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \notefontcolor #0000ff
 \index Index
 \shortcut idx
@@ -232,11 +233,12 @@ graphicboxes
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author 5863344 "ef"
 \end_header
 
 \begin_body
@@ -40849,7 +40851,11 @@ Program Listing
 \family default
 .
  The \SpecialChar LaTeX
--package 
+-package
+\change_inserted 5863344 1497177967
+s
+\change_unchanged
+ 
 \series bold
 listings
 \series default
@@ -40864,8 +40870,54 @@ status collapsed
 
 \end_inset
 
- provides a powerful and flexible way to insert program source code into
- your document.
+ 
+\change_inserted 5863344 1497177997
+or 
+\series bold
+minted
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 5863344 1497178009
+\SpecialChar LaTeX
+-packages ! minted
+\end_layout
+
+\end_inset
+
+ 
+\change_unchanged
+provide
+\change_deleted 5863344 1497178016
+s
+\change_unchanged
+ a powerful and flexible way to insert program source code into your document.
+
+\change_inserted 5863344 1497178383
+ You can use either one in a document, but listings is used by default.
+ In order to use minted, you need to check the box 
+\begin_inset Quotes eld
+\end_inset
+
+Use minted
+\begin_inset Quotes erd
+\end_inset
+
+ in Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Listings.
+ However, note that minted requires additional software (the pygments python
+ module) and the 
+\family typewriter
+-shell-escape
+\family default
+ option for the latex backend, which allows arbitrary code execution.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -41000,6 +41052,67 @@ Float
 \family default
  option in this case as also non-float listings can have captions and be
  referenced.
+\change_inserted 5863344 1497179331
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 5863344 1497179333
+\begin_inset listings
+lstparams "language=Python"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 5863344 1497179333
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 5863344 1497179333
+\begin_inset CommandInset label
+LatexCommand label
+name "lst:Example-Listing"
+
+\end_inset
+
+Example Listing float
+\end_layout
+
+\end_inset
+
+# Example listing float
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 5863344 1497179333
+
+def func(param):
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 5863344 1497179333
+
+    'this is a python function'
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 5863344 1497179333
+
+    pass
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -41038,9 +41151,61 @@ List of Listings
 \family default
 .
  The list entries are the listing caption and the listing number.
+\change_inserted 5863344 1497179524
+
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted 5863344 1497179494
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 5863344 1497179551
+
+\series bold
+Note: 
+\series default
+The listings package places captions before the listing by default, while
+ the minted package places them after the listing by default if it is floating.
+ If the listing is not floating and minted is used, the place of the caption
+ is determined by the position it is inserted in the inset.
+ If it is inserted in the first line of the inset, the caption will be typeset
+ before the listing, otherwise it will be typeset after the listing.
+ If you use minted and would like to have captions before the listing even
+ when it is a float, you have to add the following lines to the preamble:
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863344 1497179494
+
+\backslash
+usepackage{float}
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted 5863344 1497179494
+
+\backslash
+floatstyle{plaintop}
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted 5863344 1497179361
 \begin_inset listings
 lstparams "language=Python"
 inline false
@@ -41053,7 +41218,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "lst:Example-Listing"
+name "lis:Example-Listing-old"
 
 \end_inset
 
@@ -41082,6 +41247,8 @@ def func(param):
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
@@ -41178,8 +41345,17 @@ You can furthermore specify a range of lines; only these will then appear
 \family sans
 Extended character table
 \family default
- should be used when you use national characters like the German umlauts
+ 
+\change_inserted 5863344 1497179749
+is only meaningful for the listings package and 
+\change_unchanged
+should be used when you use national characters like the German umlauts
  in the listing.
+
+\change_inserted 5863344 1497179779
+ It is not needed with minted.
+\change_unchanged
+
 \begin_inset Newline newline
 \end_inset
 
@@ -41571,10 +41747,28 @@ For more information about the
 \series bold
 listings
 \series default
- package, we refer to its documentation 
+ 
+\change_inserted 5863344 1497179948
+and 
+\series bold
+minted
+\series default
+ 
+\change_unchanged
+package
+\change_inserted 5863344 1497179951
+s
+\change_unchanged
+, we refer to 
+\change_deleted 5863344 1497179970
+its
+\change_inserted 5863344 1497179971
+their
+\change_unchanged
+ documentation 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "listings"
+key "listings,minted"
 literal "true"
 
 \end_inset
@@ -46922,6 +47116,50 @@ status collapsed
 
 \end_inset
 
+
+\change_inserted 5863344 1497180016
+
+\end_layout
+
+\begin_layout Bibliography
+
+\change_inserted 5863344 1497180069
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "minted"
+literal "false"
+
+\end_inset
+
+Documentation of the \SpecialChar LaTeX
+-package 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "minted"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/minted/minted.pdf"
+literal "false"
+
+\end_inset
+
+
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 5863344 1497180164
+\SpecialChar LaTeX
+-packages ! minted
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
