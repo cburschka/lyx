@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-06-11 11:30+0200\n"
+"POT-Creation-Date: 2017-06-11 13:59+0200\n"
 "PO-Revision-Date: 2011-06-21 20:54+0100\n"
 "Last-Translator: Zoran T. Filipović <zoran.filipovic@yahoo.com>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -2481,7 +2481,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:82
 #, fuzzy
-msgid "Use minted"
+msgid "Use &minted"
 msgstr "Koristi ulazno kod&iranje"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:324
@@ -33082,6 +33082,7 @@ msgid "Expect a number with an optional * before it"
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:427
+#: src/insets/InsetListingsParams.cpp:756
 msgid "auto, last or a number"
 msgstr ""
 
@@ -33117,10 +33118,6 @@ msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:749
 msgid "Sets encoding expected by Pygments"
-msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:756
-msgid "(auto | last | integer)"
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:759

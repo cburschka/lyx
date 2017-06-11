@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-06-11 11:30+0200\n"
+"POT-Creation-Date: 2017-06-11 13:59+0200\n"
 "PO-Revision-Date: 2016-02-15 09:44+0100\n"
 "Last-Translator: Ignacio García <ignacio.gmorales@gmail.com>\n"
 "Language-Team: Spanish <lyx-docs@lists.lyx.org>\n"
@@ -2426,7 +2426,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:82
 #, fuzzy
-msgid "Use minted"
+msgid "Use &minted"
 msgstr "Usar cod&ificación de entrada"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:324
@@ -32597,6 +32597,7 @@ msgid "Expect a number with an optional * before it"
 msgstr "Se espera un número con un * opcional antes"
 
 #: src/insets/InsetListingsParams.cpp:427
+#: src/insets/InsetListingsParams.cpp:756
 msgid "auto, last or a number"
 msgstr "auto, last o un número"
 
@@ -32639,11 +32640,6 @@ msgstr ""
 #: src/insets/InsetListingsParams.cpp:749
 msgid "Sets encoding expected by Pygments"
 msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:756
-#, fuzzy
-msgid "(auto | last | integer)"
-msgstr "auto, last o un número"
 
 #: src/insets/InsetListingsParams.cpp:759
 msgid "A latex family such as tt, sf, rm"
@@ -33640,6 +33636,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Usuario desconocido"
+
+#, fuzzy
+#~ msgid "(auto | last | integer)"
+#~ msgstr "auto, last o un número"
 
 #, fuzzy
 #~ msgid "Revert to file on disk?"

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-06-11 11:30+0200\n"
-"PO-Revision-Date: 2017-06-11 12:21+0200\n"
+"POT-Creation-Date: 2017-06-11 13:59+0200\n"
+"PO-Revision-Date: 2017-06-11 14:01+0200\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "Language: it\n"
@@ -2384,8 +2384,8 @@ msgid "Use the minted package instead of the listings one"
 msgstr "Usa il pacchetto minted invece che listings"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:82
-msgid "Use minted"
-msgstr "Usa minted"
+msgid "Use &minted"
+msgstr "Usa &minted"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:324
 #: lib/layouts/stdinsets.inc:330 lib/layouts/stdinsets.inc:375
@@ -32323,7 +32323,7 @@ msgstr "Inserire qualcosa tipo \\color{white}"
 msgid "Expect a number with an optional * before it"
 msgstr "È richiesto un numero con un opzionale * a prefisso"
 
-#: src/insets/InsetListingsParams.cpp:427
+#: src/insets/InsetListingsParams.cpp:427 src/insets/InsetListingsParams.cpp:756
 msgid "auto, last or a number"
 msgstr "auto, last oppure un numero"
 
@@ -32364,10 +32364,6 @@ msgstr "default: _minted-<jobname>"
 #: src/insets/InsetListingsParams.cpp:749
 msgid "Sets encoding expected by Pygments"
 msgstr "Imposta la codifica che Pygments si aspetta"
-
-#: src/insets/InsetListingsParams.cpp:756
-msgid "(auto | last | integer)"
-msgstr "auto, last oppure un numero"
 
 #: src/insets/InsetListingsParams.cpp:759
 msgid "A latex family such as tt, sf, rm"
@@ -33363,6 +33359,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Utente sconosciuto"
+
+#~ msgid "(auto | last | integer)"
+#~ msgstr "auto, last oppure un numero"
 
 #~ msgid "MintedSource"
 #~ msgstr "MintedSource"

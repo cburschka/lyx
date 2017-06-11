@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3.0dev\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-06-11 11:30+0200\n"
+"POT-Creation-Date: 2017-06-11 13:59+0200\n"
 "PO-Revision-Date: 2017-03-04 11:44+0900\n"
 "Last-Translator: Koji Yokota <yokota6@gmail.com>\n"
 "Language-Team: Japanese <lyx-docs@list.lyx.org>\n"
@@ -2398,8 +2398,9 @@ msgid "Use the minted package instead of the listings one"
 msgstr ""
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:82
-msgid "Use minted"
-msgstr ""
+#, fuzzy
+msgid "Use &minted"
+msgstr "分(&M)"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:324
 #: lib/layouts/stdinsets.inc:330 lib/layouts/stdinsets.inc:375
@@ -32331,6 +32332,7 @@ msgid "Expect a number with an optional * before it"
 msgstr "数字か数字の前に*を付したものでなくてはなりません"
 
 #: src/insets/InsetListingsParams.cpp:427
+#: src/insets/InsetListingsParams.cpp:756
 msgid "auto, last or a number"
 msgstr "auto，lastあるいは数字"
 
@@ -32373,11 +32375,6 @@ msgstr ""
 #: src/insets/InsetListingsParams.cpp:749
 msgid "Sets encoding expected by Pygments"
 msgstr ""
-
-#: src/insets/InsetListingsParams.cpp:756
-#, fuzzy
-msgid "(auto | last | integer)"
-msgstr "auto，lastあるいは数字"
 
 #: src/insets/InsetListingsParams.cpp:759
 msgid "A latex family such as tt, sf, rm"
@@ -33367,6 +33364,10 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "未知の"
+
+#, fuzzy
+#~ msgid "(auto | last | integer)"
+#~ msgstr "auto，lastあるいは数字"
 
 #~ msgid ""
 #~ "An Inkscape figure.\n"

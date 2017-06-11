@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-06-11 11:30+0200\n"
+"POT-Creation-Date: 2017-06-11 13:59+0200\n"
 "PO-Revision-Date: 2017-06-11 09:34+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
@@ -2414,7 +2414,8 @@ msgid "Use the minted package instead of the listings one"
 msgstr "Použiť minted balík namiesto balíka listings"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:82
-msgid "Use minted"
+#, fuzzy
+msgid "Use &minted"
 msgstr "Použiť minted"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:324
@@ -32293,6 +32294,7 @@ msgid "Expect a number with an optional * before it"
 msgstr "Očakávam číslo s voliteľným * pred ním"
 
 #: src/insets/InsetListingsParams.cpp:427
+#: src/insets/InsetListingsParams.cpp:756
 msgid "auto, last or a number"
 msgstr "auto, posledné alebo číslo"
 
@@ -32333,10 +32335,6 @@ msgstr "štandard: _minted-<jobname>"
 #: src/insets/InsetListingsParams.cpp:749
 msgid "Sets encoding expected by Pygments"
 msgstr "Nastaviť kódovanie očakávané od Pygments"
-
-#: src/insets/InsetListingsParams.cpp:756
-msgid "(auto | last | integer)"
-msgstr "(auto | posledné | číslo)"
 
 #: src/insets/InsetListingsParams.cpp:759
 msgid "A latex family such as tt, sf, rm"
@@ -33329,6 +33327,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "(auto | last | integer)"
+#~ msgstr "(auto | posledné | číslo)"
 
 #~ msgid "Minted Source Code"
 #~ msgstr "Minted Zdrojový Text"
