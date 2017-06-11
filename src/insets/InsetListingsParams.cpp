@@ -753,7 +753,7 @@ ParValidator::ParValidator()
 		ListingsParam("", false, INTEGER, "", empty_hint);
 	all_params_[1]["firstnumber"] =
 		ListingsParam("", false, ALL, "", _(
-					"(auto | last | integer)"));
+					"auto, last or a number"));
 	all_params_[1]["fontfamily"] =
 		ListingsParam("", false, ALL, "", _(
 				"A latex family such as tt, sf, rm"));
