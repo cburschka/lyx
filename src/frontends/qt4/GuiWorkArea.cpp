@@ -2229,7 +2229,7 @@ void GuiWorkAreaContainer::updateDisplay()
 {
 	Buffer const & buf = wa_->bufferView().buffer();
 	notificationFrame->setHidden(!buf.notifiesExternalModification());
-	QString const label = QString("<b>The file \"%1\" changed on disk.</b>")
+	QString const label = qt_("<b>The file %1 changed on disk.</b>")
 		.arg(toqstr(buf.fileName().displayName()));
 	externalModificationLabel->setText(label);
 }
