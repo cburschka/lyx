@@ -657,12 +657,6 @@ ParValidator::ParValidator()
 	// is to signal that this is a floating listing.
 	all_params_[1]["float"] =
 		ListingsParam("false", true, SUBSETOF, "*tbph", empty_hint);
-	all_params_[1]["chapter"] =
-		ListingsParam("", true, TRUEFALSE, "", _(
-					"Number floats by chapter"));
-	all_params_[1]["section"] =
-		ListingsParam("", true, TRUEFALSE, "", _(
-					"Number floats by section"));
 	all_params_[1]["cache"] =
 		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["cachedir"] =
@@ -685,25 +679,25 @@ ParValidator::ParValidator()
 	all_params_[1]["outputdir"] =
 		ListingsParam("", false, ALL, "", empty_hint);
 	all_params_[1]["autogobble"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["baselinestretch"] =
 		ListingsParam("", false, ALL, "", empty_hint);
 	all_params_[1]["breakafter"] =
 		ListingsParam("", false, ALL, "", empty_hint);
 	all_params_[1]["breakaftergroup"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["breakaftersymbolpre"] =
 		ListingsParam("", false, ALL, "", empty_hint);
 	all_params_[1]["breakaftersymbolpost"] =
 		ListingsParam("", false, ALL, "", empty_hint);
 	all_params_[1]["breakanywhere"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["breakanywheresymbolpre"] =
 		ListingsParam("", false, ALL, "", empty_hint);
 	all_params_[1]["breakanywheresymbolpost"] =
 		ListingsParam("", false, ALL, "", empty_hint);
 	all_params_[1]["breakautoindent"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["breakbefore"] =
 		ListingsParam("", false, ALL, "", empty_hint);
 	all_params_[1]["breakbeforegroup"] =
@@ -713,13 +707,13 @@ ParValidator::ParValidator()
 	all_params_[1]["breakbeforesymbolpost"] =
 		ListingsParam("", false, ALL, "", empty_hint);
 	all_params_[1]["breakbytoken"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["breakbytokenanywhere"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["breakindent"] =
 		ListingsParam("", false, LENGTH, "", empty_hint);
 	all_params_[1]["breaklines"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["breaksymbol"] =
 		ListingsParam("", false, ALL, "", empty_hint);
 	all_params_[1]["breaksymbolleft"] =
@@ -743,7 +737,7 @@ ParValidator::ParValidator()
 	all_params_[1]["codetagify"] =
 		ListingsParam("", false, ALL, "", empty_hint);
 	all_params_[1]["curlyquotes"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["encoding"] =
 		ListingsParam("", false, ALL, "", _(
 				"Sets encoding expected by Pygments"));
@@ -777,7 +771,7 @@ ParValidator::ParValidator()
 	all_params_[1]["framesep"] =
 		ListingsParam("", false, LENGTH, "", empty_hint);
 	all_params_[1]["funcnamehighlighting"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["gobble"] =
 		ListingsParam("", false, INTEGER, "", empty_hint);
 	all_params_[1]["highlightcolor"] =
@@ -800,56 +794,56 @@ ParValidator::ParValidator()
 	all_params_[1]["lastline"] =
 		ListingsParam("", false, INTEGER, "", empty_hint);
 	all_params_[1]["linenos"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["numberfirstline"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["numbers"] =
 		ListingsParam("", false, ONEOF,
 				"left\nright\nboth\nnone", empty_hint);
 	all_params_[1]["mathescape"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["numberblanklines"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["numbersep"] =
 		ListingsParam("", false, LENGTH, "", empty_hint);
 	all_params_[1]["obeytabs"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["outencoding"] =
 		ListingsParam("", false, ALL, "", _(
 		  "File encoding used by Pygments for highlighting"));
 	all_params_[1]["python3"] =
-		ListingsParam("", true, TRUEFALSE, "", _(
+		ListingsParam("", false, TRUEFALSE, "", _(
 					"Apply Python 3 highlighting"));
-	all_params_[1]["resetsmargins"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+	all_params_[1]["resetmargins"] =
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["rulecolor"] =
 		ListingsParam("", false, ALL, "", color_hint_mint);
 	all_params_[1]["samepage"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["showspaces"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["showtabs"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["space"] =
 		ListingsParam("", false, ALL, "", _(
 				"A macro. Default: \\textvisiblespace"));
 	all_params_[1]["spacecolor"] =
 		ListingsParam("", false, ALL, "", color_hint_mint);
 	all_params_[1]["startinline"] =
-		ListingsParam("", true, TRUEFALSE, "", _("For PHP only"));
+		ListingsParam("", false, TRUEFALSE, "", _("For PHP only"));
 	all_params_[1]["style"] =
 		ListingsParam("", false, ALL, "", _(
 					"The style used by Pygments"));
 	all_params_[1]["stepnumber"] =
 		ListingsParam("", false, INTEGER, "", empty_hint);
 	all_params_[1]["stepnumberfromfirst"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["stepnumberoffsetvalues"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["stripall"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["stripnl"] =
-		ListingsParam("", true, TRUEFALSE, "", empty_hint);
+		ListingsParam("", false, TRUEFALSE, "", empty_hint);
 	all_params_[1]["tab"] =
 		ListingsParam("", false, ALL, "", _(
 				"A macro to redefine visible tabs"));
@@ -858,10 +852,10 @@ ParValidator::ParValidator()
 	all_params_[1]["tabsize"] =
 		ListingsParam("", false, INTEGER, "", empty_hint);
 	all_params_[1]["texcl"] =
-		ListingsParam("", true, TRUEFALSE, "", _(
+		ListingsParam("", false, TRUEFALSE, "", _(
 				"Enables latex code in comments"));
 	all_params_[1]["texcomments"] =
-		ListingsParam("", true, TRUEFALSE, "", _(
+		ListingsParam("", false, TRUEFALSE, "", _(
 				"Enables latex code in comments"));
 	all_params_[1]["xleftmargin"] =
 		ListingsParam("", false, LENGTH, "", empty_hint);
