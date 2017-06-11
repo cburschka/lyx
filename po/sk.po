@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-06-11 13:59+0200\n"
-"PO-Revision-Date: 2017-06-11 09:34+0000\n"
+"POT-Creation-Date: 2017-06-11 14:48+0200\n"
+"PO-Revision-Date: 2017-06-11 12:49+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2414,7 +2414,6 @@ msgid "Use the minted package instead of the listings one"
 msgstr "Použiť minted balík namiesto balíka listings"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:82
-#, fuzzy
 msgid "Use &minted"
 msgstr "Použiť minted"
 
@@ -5103,7 +5102,7 @@ msgstr "Štýly pre biblatex-bibliografiu"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:190
 msgid "Biblatex citation styles"
-msgstr "Štýly pre biblatex-citáciu"
+msgstr "Štýly pre Biblatex-citáciu"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:214
 msgid "Toggles view of the file list"
@@ -5389,15 +5388,16 @@ msgid "Allow &floating"
 msgstr "U&možni plávajúce objekty"
 
 #: lib/citeengines/basic.citeengine:2
-#, fuzzy
 msgid "Basic (BibTeX)"
-msgstr "Arabsky (ArabTeX)"
+msgstr "Základné (BibTeX)"
 
 #: lib/citeengines/basic.citeengine:6
 msgid ""
 "The basic citation capabilities provided by BibTeX. Mainly simple numeric "
 "styles primarily suitable for science and maths."
 msgstr ""
+"Základné kapacity citácie poskytnuté BibTeXom. Hlavne jednoduché číselné "
+"štýly, najmä vhodné pre vedu a matematiku."
 
 #: lib/citeengines/basic.citeengine:51
 #: lib/citeengines/biblatex-natbib.citeengine:137
@@ -5416,23 +5416,22 @@ msgstr "Pridať len do bibliografie."
 #: lib/citeengines/basic.citeengine:53
 #: lib/citeengines/biblatex-natbib.citeengine:139
 #: lib/citeengines/biblatex.citeengine:130
-#: lib/citeengines/jurabib.citeengine:122 lib/citeengines/natbib.citeengine:120
-#, fuzzy
+#: lib/citeengines/jurabib.citeengine:122
+#: lib/citeengines/natbib.citeengine:120
 msgid "Key only."
-msgstr "Klúčové Body."
+msgstr "Len kľúč."
 
 #: lib/citeengines/basic.citeengine:54
 #: lib/citeengines/biblatex-natbib.citeengine:140
 #: lib/citeengines/biblatex.citeengine:131
-#: lib/citeengines/jurabib.citeengine:123 lib/citeengines/natbib.citeengine:121
-#, fuzzy
+#: lib/citeengines/jurabib.citeengine:123
+#: lib/citeengines/natbib.citeengine:121
 msgid "Key"
-msgstr "Kľúče"
+msgstr "Kľúč"
 
 #: lib/citeengines/biblatex-natbib.citeengine:2
-#, fuzzy
 msgid "Biblatex (natbib mode)"
-msgstr "Štýly pre biblatex-citáciu"
+msgstr "Biblatex (na spôsob natbib)"
 
 #: lib/citeengines/biblatex-natbib.citeengine:10
 msgid ""
@@ -5442,12 +5441,16 @@ msgid ""
 "than normal Biblatex. As with normal Biblatex, the use of 'biber' as "
 "Bibliography processor is advised."
 msgstr ""
+"Tento druh Biblatex-u emuluje príkazy pre Natbib citácie. Je preto vhodný "
+"prechod z Natbib (alebo riešenie pre Biblatex pred verziou LyX 2.3) na "
+"Biblatex. Spôsob natbib podporuje mierne odlišné a niekoľko viacej štýlov "
+"ako normálny Biblatex. Ako aj s normálnym Biblatex, doporučuje sa použiť "
+"'biber' ako procesor pre bibliografiu."
 
 #: lib/citeengines/biblatex-natbib.citeengine:142
 #: lib/citeengines/biblatex.citeengine:132
-#, fuzzy
 msgid "Footnote"
-msgstr "Poznámky pod čiarou"
+msgstr "Poznámka pod čiarou"
 
 #: lib/citeengines/biblatex-natbib.citeengine:143
 #: lib/citeengines/biblatex.citeengine:133
@@ -5462,36 +5465,35 @@ msgstr "zápis do bibliografie"
 
 #: lib/citeengines/biblatex-natbib.citeengine:145
 #: lib/citeengines/biblatex.citeengine:135
-#, fuzzy
 msgid "Full bibliography entry."
-msgstr "zápis do bibliografie"
+msgstr "Plný zápis bibliografie."
 
 #: lib/citeengines/biblatex-natbib.citeengine:146
 #: lib/citeengines/biblatex.citeengine:136
 msgid "Autocite"
-msgstr ""
+msgstr "Automaticky citovať"
 
 #: lib/citeengines/biblatex-natbib.citeengine:147
 #: lib/citeengines/biblatex.citeengine:137
-#, fuzzy
 msgid "Auto"
 msgstr "Automaticky"
 
 #: lib/citeengines/biblatex-natbib.citeengine:149
 #: lib/citeengines/biblatex.citeengine:141
 msgid "F&orce full title[[Possible substitute to All aut&hors]]"
-msgstr ""
+msgstr "Vnútiť plný titul"
 
 #: lib/citeengines/biblatex-natbib.citeengine:150
 #: lib/citeengines/biblatex.citeengine:142
 msgid "Use full title even if shorttitle exists"
-msgstr ""
+msgstr "Použiť plný titul aj keď krátky titul existuje"
 
 #: lib/citeengines/biblatex-natbib.citeengine:152
 #: lib/citeengines/biblatex.citeengine:144
-#: lib/citeengines/jurabib.citeengine:129 lib/citeengines/natbib.citeengine:123
+#: lib/citeengines/jurabib.citeengine:129
+#: lib/citeengines/natbib.citeengine:123
 msgid " et al."
-msgstr ""
+msgstr " a kol."
 
 #: lib/citeengines/biblatex-natbib.citeengine:153
 #: lib/citeengines/biblatex.citeengine:145
@@ -5513,9 +5515,8 @@ msgstr " a "
 
 #: lib/citeengines/biblatex-natbib.citeengine:299
 #: lib/citeengines/biblatex.citeengine:283
-#, fuzzy
 msgid "Super"
-msgstr "Horný index"
+msgstr "Super"
 
 #: lib/citeengines/biblatex-natbib.citeengine:300
 #: lib/citeengines/biblatex.citeengine:284 lib/ui/stdtoolbars.inc:180
@@ -5534,19 +5535,22 @@ msgid ""
 "many features that are not possible with BibTeX. The use of 'biber' as "
 "bibliography processor is advised."
 msgstr ""
+"Biblatex podporuje mnoho autor-rok a číselné štýly. Cieli hlavne na duchovné "
+"vedy. Je nesmierne prispôsobivý, plno lokalizovaný a poskytuje mnohé funkcie "
+"ktoré nie sú možné s BibTeX. Doporučuje sa použiť 'biber' ako procesor pre "
+"bibliografiu."
 
 #: lib/citeengines/biblatex.citeengine:139
 msgid "S&horten author list[[Possible substitute to All aut&hors]]"
-msgstr ""
+msgstr "Skrátiť súpis autorov"
 
 #: lib/citeengines/biblatex.citeengine:140
 msgid "Force a short author list (using et al.)"
-msgstr ""
+msgstr "Vnútiť krátky súpis autorov (použitím a kol.)"
 
 #: lib/citeengines/jurabib.citeengine:2
-#, fuzzy
 msgid "Jurabib (BibTeX)"
-msgstr "Arabsky (ArabTeX)"
+msgstr "Jurabib (BibTeX)"
 
 #: lib/citeengines/jurabib.citeengine:7
 msgid ""
@@ -5554,6 +5558,9 @@ msgid ""
 "studies and the Humanities. It includes localizations for English, German, "
 "French, Dutch, Spanish and Italian."
 msgstr ""
+"Jurabib podporuje množstvo autor-rok štýlov pre študentov práv a duchovných "
+"vied. Obsahuje lokalizácie pre angličtinu, nemčinu, francúzštinu, "
+"holandčinu, španielčina a taliančinu."
 
 #: lib/citeengines/jurabib.citeengine:125
 msgid "Bibliography entry."
@@ -5570,14 +5577,12 @@ msgstr "krátky titul"
 #: lib/citeengines/jurabib.citeengine:130
 #: lib/citeengines/jurabib.citeengine:131
 #: lib/citeengines/jurabib.citeengine:132
-#, fuzzy
 msgid "/"
-msgstr "_/"
+msgstr "/"
 
 #: lib/citeengines/natbib.citeengine:2
-#, fuzzy
 msgid "Natbib (BibTeX)"
-msgstr "Arabsky (ArabTeX)"
+msgstr "Natbib (BibTeX)"
 
 #: lib/citeengines/natbib.citeengine:8
 msgid ""
@@ -5586,6 +5591,10 @@ msgid ""
 "numerical citations, annotations, capitalization of the `van' part of author "
 "names, shortened and full author lists, and more."
 msgstr ""
+"Natbib podporuje množstvo autor-rok a číselných štýlov hlavne cielené na "
+"duchovné vedy. Dokáže automatické zoraďovanie a zlučovanie číselných "
+"citácií, anotácií, použije veľké prve písmená pre 'van' čiastky autorských "
+"mien, skrátené a plné súpisy autorov, a viac."
 
 #: lib/layouts/AEA.layout:3
 msgid "American Economic Association (AEA)"
