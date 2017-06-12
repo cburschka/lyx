@@ -525,7 +525,10 @@ void GuiExternal::updateTemplate()
 		external::TemplateManager::get();
 	external::Template const * const templ = etm.getTemplateByName(
 		fromqstr(externalCO->itemData(externalCO->currentIndex()).toString()));
-	externalTB->setPlainText(toqstr(translateIfPossible(templ->helpText)));
+	externalTB->setPlainText(toqstr(translateIfPossible(
+				templ ? templ->helpText : docstring())));
+	if (!templ)
+		return;
 
 	// Ascertain which (if any) transformations the template supports
 	// and disable tabs and Group Boxes hosting unsupported transforms.
