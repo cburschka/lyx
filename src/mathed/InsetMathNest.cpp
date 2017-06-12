@@ -735,20 +735,18 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_MOUSE_DOUBLE:
 	case LFUN_WORD_SELECT:
 		cur.pos() = 0;
-		cur.resetAnchor();
-		cur.selection(true);
+		cur.bv().mouseSetCursor(cur);
 		cur.pos() = cur.lastpos();
-		cur.bv().cursor() = cur;
+		cur.bv().mouseSetCursor(cur, true);
 		break;
 
 	case LFUN_MOUSE_TRIPLE:
 		cur.idx() = 0;
 		cur.pos() = 0;
-		cur.resetAnchor();
-		cur.selection(true);
+		cur.bv().mouseSetCursor(cur);
 		cur.idx() = cur.lastidx();
 		cur.pos() = cur.lastpos();
-		cur.bv().cursor() = cur;
+		cur.bv().mouseSetCursor(cur, true);
 		break;
 
 	case LFUN_LINE_BEGIN:
