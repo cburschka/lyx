@@ -69,7 +69,10 @@ What's new
 
 - Fix glacial performance with ancient Hebrew text on macOS.
 
-- Fix hole in selection for some zoom and justification values (bug 8883).
+- Fix hole in selection for some zoom and justification values (bug
+  8883).
+
+- Fix cursor state after double/triple click in mathed (bug #10686).
 
 - Fix potential crash when cursor enters an inset (bug 10691).
 
