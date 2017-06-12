@@ -500,9 +500,9 @@ InsetMath::marker_type MathMacro::marker(BufferView const * bv) const
 	case DISPLAY_NORMAL:
 		switch (lyxrc.macro_edit_style) {
 		case LyXRC::MACRO_EDIT_INLINE:
-			return MARKER;
+			return MARKER2;
 		case LyXRC::MACRO_EDIT_INLINE_BOX:
-			return d->editing_[bv] ? BOX_MARKER : NO_MARKER;
+			return d->editing_[bv] ? BOX_MARKER : MARKER2;
 		case LyXRC::MACRO_EDIT_LIST:
 			return MARKER2;
 		}

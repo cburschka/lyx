@@ -85,6 +85,7 @@ void afterMetricsMarkers(MetricsInfo const & , MathRow::Element & e,
 
 		if (namewid > dim.wid)
 			e.after += namewid - dim.wid;
+		++dim.asc;
 		dim.des += 3 + namedim.height();
 	}
 }
@@ -96,6 +97,11 @@ void drawMarkers(PainterInfo const & pi, MathRow::Element const & e,
 	if (e.marker == InsetMath::NO_MARKER)
 		return;
 
+	// The color
+	bool const highlight = e.inset->mouseHovered(pi.base.bv)
+	                       || e.inset->editing(pi.base.bv);
+	ColorCode const pen_color = highlight ? Color_mathframe : Color_mathcorners;
+
 	CoordCache const & coords = pi.base.bv->coordCache();
 	Dimension const dim = coords.getInsets().dim(e.inset);
 
@@ -103,6 +109,7 @@ void drawMarkers(PainterInfo const & pi, MathRow::Element const & e,
 	int const l = x + e.before - (markerMargin(e) > 0 ? 1 : 0);
 	int const r = x + dim.width() - e.after;
 
+	// Grey lower box
 	if (e.marker == InsetMath::BOX_MARKER) {
 		// draw header and rectangle around
 		FontInfo font;
@@ -113,28 +120,27 @@ void drawMarkers(PainterInfo const & pi, MathRow::Element const & e,
 		pi.pain.fillRectangle(l, y + dim.des - namedim.height() - 2,
 		                      dim.wid, namedim.height() + 2, Color_mathmacrobg);
 		pi.pain.text(l, y + dim.des - namedim.des - 1, e.inset->name(), font);
-		return;
 	}
 
-	// Now markers with corners
-	bool const highlight = e.inset->mouseHovered(pi.base.bv)
-	                       || e.inset->editing(pi.base.bv);
-	ColorCode const pen_color = highlight ? Color_mathframe : Color_mathcorners;
+	// Lower corners
+	if (e.marker == InsetMath::MARKER
+	    || e.marker == InsetMath::MARKER2) {
+		int const d = y + dim.descent();
+		pi.pain.line(l, d - 3, l, d, pen_color);
+		pi.pain.line(r, d - 3, r, d, pen_color);
+		pi.pain.line(l, d, l + 3, d, pen_color);
+		pi.pain.line(r - 3, d, r, d, pen_color);
+	}
 
-	int const d = y + dim.descent();
-	pi.pain.line(l, d - 3, l, d, pen_color);
-	pi.pain.line(r, d - 3, r, d, pen_color);
-	pi.pain.line(l, d, l + 3, d, pen_color);
-	pi.pain.line(r - 3, d, r, d, pen_color);
-
-	if (e.marker == InsetMath::MARKER)
-		return;
-
-	int const a = y - dim.ascent();
-	pi.pain.line(l, a + 3, l, a, pen_color);
-	pi.pain.line(r, a + 3, r, a, pen_color);
-	pi.pain.line(l, a, l + 3, a, pen_color);
-	pi.pain.line(r - 3, a, r, a, pen_color);
+	// Upper corners
+	if (e.marker == InsetMath::BOX_MARKER
+	    || e.marker == InsetMath::MARKER2) {
+		int const a = y - dim.ascent();
+		pi.pain.line(l, a + 3, l, a, pen_color);
+		pi.pain.line(r, a + 3, r, a, pen_color);
+		pi.pain.line(l, a, l + 3, a, pen_color);
+		pi.pain.line(r - 3, a, r, a, pen_color);
+	}
 }
 
 }
