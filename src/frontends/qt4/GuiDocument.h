@@ -92,6 +92,7 @@ private Q_SLOTS:
 	void change_adaptor();
 	void includeonlyClicked(QTreeWidgetItem * item, int);
 	void setListingsMessage();
+	void listingsPackageChanged(int);
 	void saveDefaultClicked();
 	void useDefaultsClicked();
 	void setLSpacing(int);

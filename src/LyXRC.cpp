@@ -59,7 +59,7 @@ namespace {
 
 // The format should also be updated in configure.py, and conversion code
 // should be added to prefs2prefs_prefs.py.
-static unsigned int const LYXRC_FILEFORMAT = 21; // spitz: jbibtex_alternatives
+static unsigned int const LYXRC_FILEFORMAT = 22; // ef: pygmentize_command
 
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
@@ -158,6 +158,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\print_landscape_flag", LyXRC::RC_PRINTLANDSCAPEFLAG },
 	{ "\\print_paper_dimension_flag", LyXRC::RC_PRINTPAPERDIMENSIONFLAG },
 	{ "\\print_paper_flag", LyXRC::RC_PRINTPAPERFLAG },
+	{ "\\pygmentize_command", LyXRC::RC_PYGMENTIZE_COMMAND },
 	{ "\\save_compressed", LyXRC::RC_SAVE_COMPRESSED },
 	{ "\\save_origin", LyXRC::RC_SAVE_ORIGIN },
 	{ "\\screen_dpi", LyXRC::RC_SCREEN_DPI },
@@ -241,6 +242,7 @@ void LyXRC::setDefaults()
 	fontenc = "default";
 	index_command = "makeindex -c -q";
 	nomencl_command = "makeindex -s nomencl.ist";
+	pygmentize_command = string();
 	dpi = 75;
 	// Because a screen is typically wider than a piece of paper:
 	zoom = 150;
@@ -542,6 +544,12 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 
 		case RC_PRINTPAPERFLAG:
 			lexrc >> print_paper_flag;
+			break;
+
+		case RC_PYGMENTIZE_COMMAND:
+			if (lexrc.next(true)) {
+				pygmentize_command = lexrc.getString();
+			}
 			break;
 
 		case RC_VIEWDVI_PAPEROPTION:
@@ -1498,6 +1506,13 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (ignore_system_lyxrc ||
 		    nomencl_command != system_lyxrc.nomencl_command) {
 			os << "\\nomencl_command \"" << escapeCommand(nomencl_command) << "\"\n";
+		}
+		if (tag != RC_LAST)
+			break;
+	case RC_PYGMENTIZE_COMMAND:
+		if (ignore_system_lyxrc ||
+		    pygmentize_command != system_lyxrc.pygmentize_command) {
+			os << "\\pygmentize_command \"" << escapeCommand(pygmentize_command) << "\"\n";
 		}
 		if (tag != RC_LAST)
 			break;
@@ -2809,6 +2824,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_JBIBTEX_ALTERNATIVES:
 	case LyXRC::RC_JINDEX_COMMAND:
 	case LyXRC::RC_NOMENCL_COMMAND:
+	case LyXRC::RC_PYGMENTIZE_COMMAND:
 	case LyXRC::RC_INPUT:
 	case LyXRC::RC_KBMAP:
 	case LyXRC::RC_KBMAP_PRIMARY:
@@ -3065,6 +3081,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 
 	case RC_NOMENCL_COMMAND:
 		str = _("Define the options of makeindex (cf. man makeindex) to be used for nomenclatures. This might differ from the index processing options.");
+		break;
+
+	case RC_PYGMENTIZE_COMMAND:
+		str = _("The command to run the python pygments syntax highlighter.");
 		break;
 
 	case RC_INPUT:

@@ -40897,17 +40897,10 @@ s
 \change_unchanged
  a powerful and flexible way to insert program source code into your document.
 
-\change_inserted 5863344 1497178383
+\change_inserted 5863344 1497280755
  You can use either one in a document, but listings is used by default.
- In order to use minted, you need to check the box 
-\begin_inset Quotes eld
-\end_inset
-
-Use minted
-\begin_inset Quotes erd
-\end_inset
-
- in Document\SpecialChar menuseparator
+ In order to use minted, you need to select it as the syntax highlighting
+ package in Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
 Listings.
  However, note that minted requires additional software (the pygments python

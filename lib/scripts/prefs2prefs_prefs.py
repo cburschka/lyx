@@ -90,6 +90,10 @@
 #   default now)
 #   No conversion necessary.
 
+# Incremented to format 22, by ef
+#   Add pygmentize_command for the python pygments syntax highlighter
+#   No conversion necessary.
+
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py.
 
@@ -387,5 +391,6 @@ conversions = [
 	[ 18, []],
 	[ 19, [remove_print_support]],
 	[ 20, []],
-	[ 21, []]
+	[ 21, []],
+	[ 22, []]
 ]

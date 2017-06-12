@@ -133,6 +133,7 @@ public:
 		RC_PRINTLANDSCAPEFLAG,
 		RC_PRINTPAPERDIMENSIONFLAG,
 		RC_PRINTPAPERFLAG,
+		RC_PYGMENTIZE_COMMAND,
 		RC_SAVE_COMPRESSED,
 		RC_SAVE_ORIGIN,
 		RC_SCREEN_DPI,
@@ -253,6 +254,8 @@ public:
 	std::string splitindex_command;
 	/// command to run makeindex incl. options for nomencl
 	std::string nomencl_command;
+	/// command to run the python pygments syntax highlighter
+	std::string pygmentize_command;
 	///
 	std::string document_path;
 	///

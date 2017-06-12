@@ -1203,6 +1203,8 @@ def checkOtherEntries():
         'splitindex.class'], rc_entry = [ r'\splitindex_command "%%"' ])
     checkProg('a nomenclature processor', ['makeindex'],
         rc_entry = [ r'\nomencl_command "makeindex -s nomencl.ist"' ])
+    checkProg('a python-pygments driver command', ['pygmentize'],
+        rc_entry = [ r'\pygmentize_command "%%"' ])
     ## FIXME: OCTAVE is not used anywhere
     # path, OCTAVE = checkProg('Octave', ['octave'])
     ## FIXME: MAPLE is not used anywhere
@@ -1756,7 +1758,7 @@ if __name__ == '__main__':
     lyx_check_config = True
     lyx_kpsewhich = True
     outfile = 'lyxrc.defaults'
-    lyxrc_fileformat = 21
+    lyxrc_fileformat = 22
     rc_entries = ''
     lyx_keep_temps = False
     version_suffix = ''

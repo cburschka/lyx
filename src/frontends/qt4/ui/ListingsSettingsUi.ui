@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>219</width>
-    <height>256</height>
+    <width>281</width>
+    <height>282</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -73,16 +73,6 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0">
-    <widget class="QCheckBox" name="mintedCB">
-     <property name="toolTip">
-      <string>Use the minted package instead of the listings one</string>
-     </property>
-     <property name="text">
-      <string>Use &amp;minted</string>
-     </property>
-    </widget>
-   </item>
    <item row="2" column="0">
     <widget class="QCheckBox" name="bypassCB">
      <property name="toolTip">
@@ -91,6 +81,41 @@
      <property name="text">
       <string>&amp;Bypass validation</string>
      </property>
+    </widget>
+   </item>
+   <item row="3" column="0" rowspan="2">
+    <widget class="QGroupBox" name="packageGB">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="packageLBL">
+        <property name="toolTip">
+         <string>Choose the LaTeX package for code syntax highlighting</string>
+        </property>
+        <property name="text">
+         <string>&amp;Syntax Highlighting Package:</string>
+        </property>
+        <property name="buddy">
+         <cstring>packageCO</cstring>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="packageCO"/>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>
