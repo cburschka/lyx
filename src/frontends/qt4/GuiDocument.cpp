@@ -1551,7 +1551,9 @@ QString GuiDocument::validateListingsParameters()
 	if (listingsModule->bypassCB->isChecked())
 		return QString();
 	string params = fromqstr(listingsModule->listingsED->toPlainText());
-	return toqstr(InsetListingsParams(params).validate());
+	InsetListingsParams lstparams(params);
+	lstparams.setMinted(listingsModule->mintedCB->isChecked());
+	return toqstr(lstparams.validate());
 }
 
 
