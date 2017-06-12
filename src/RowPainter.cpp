@@ -640,8 +640,9 @@ void RowPainter::paintSelection() const
 			double x2 = e.pos2x(to);
 			if (x1 > x2)
 				swap(x1, x2);
-			pi_.pain.fillRectangle(int(x + x1), y1, int(x2 - x1), y2 - y1,
-			                       Color_selection);
+			// the 3rd argument is written like that to avoid rounding issues
+			pi_.pain.fillRectangle(int(x + x1), y1, int(x2 + x) - int(x1 + x),
+			                       y2 - y1, Color_selection);
 		}
 		x += e.full_width();
 	}
