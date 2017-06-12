@@ -190,6 +190,8 @@ public:
 			MathMacroTemplate const & parent);
 
 	///
+	marker_type marker(BufferView const *) const;
+	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
@@ -212,6 +214,16 @@ DisplayLabelBox::DisplayLabelBox(Buffer * buf, MathAtom const & atom,
 Inset * DisplayLabelBox::clone() const
 {
 	return new DisplayLabelBox(*this);
+}
+
+
+InsetMath::marker_type DisplayLabelBox::marker(BufferView const * bv) const
+{
+	if (parent_.editing(bv)
+	    || !parent_.cell(parent_.displayIdx()).empty())
+		return MARKER;
+	else
+		return NO_MARKER;
 }
 
 
