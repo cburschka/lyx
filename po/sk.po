@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-06-11 14:48+0200\n"
-"PO-Revision-Date: 2017-06-11 12:49+0000\n"
+"POT-Creation-Date: 2017-06-12 21:49+0200\n"
+"PO-Revision-Date: 2017-06-13 09:15+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2409,13 +2409,13 @@ msgstr "Vložte sem parametre výpisu"
 msgid "Feedback window"
 msgstr "Okno pre odozvu"
 
-#: src/frontends/qt4/ui/ListingsSettingsUi.ui:79
-msgid "Use the minted package instead of the listings one"
-msgstr "Použiť minted balík namiesto balíka listings"
+#: src/frontends/qt4/ui/ListingsSettingsUi.ui:92
+msgid "Choose the LaTeX package for code syntax highlighting"
+msgstr "Vyberte LaTeX-balík na zdôraznenie syntaxu kódu"
 
-#: src/frontends/qt4/ui/ListingsSettingsUi.ui:82
-msgid "Use &minted"
-msgstr "Použiť minted"
+#: src/frontends/qt4/ui/ListingsSettingsUi.ui:95
+msgid "&Syntax Highlighting Package:"
+msgstr "Balík na Zdôraznenie &Syntaxu:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:324
 #: lib/layouts/stdinsets.inc:330 lib/layouts/stdinsets.inc:375
@@ -27212,6 +27212,11 @@ msgstr ""
 "Definujte voľby programu makeindex používané pre nomenklatúry. Môžu sa líšiť "
 "od volieb pre generáciu registru."
 
+#: src/LyXRC.cpp:3087
+msgid "The command to run the python pygments syntax highlighter."
+msgstr ""
+"Príkaz, ktorý python modul 'pygments' má spustiť na zdôraznenie syntaxu."
+
 #: src/LyXRC.cpp:3076
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
@@ -29377,6 +29382,32 @@ msgstr "Výstupné Formáty"
 #: src/frontends/qt4/GuiDocument.cpp:1493
 msgid "LaTeX Preamble"
 msgstr "Preambula LaTeX-u"
+
+#: src/frontends/qt4/GuiDocument.cpp:1598
+msgid "Pygments driver command not found!"
+msgstr "Nenašiel som príkaz pre ovládač 'pygments'!"
+
+#: src/frontends/qt4/GuiDocument.cpp:1599
+msgid ""
+"The driver command necessary to use the minted package\n"
+"(pygmentize) has not been found. Make sure you have\n"
+"the python-pygments module installed or, if the driver\n"
+"is named differently, to add the following line to the\n"
+"document preamble:\n"
+"\n"
+"\\AtBeginDocument{\\renewcommand{\\MintedPygmentize}{driver}}\n"
+"\n"
+"where 'driver' is name of the driver command."
+msgstr ""
+"Príkaz ovládača, potrebný na použite minted-balíka\n"
+"(pygmentize) nebol nájdený. Zaistite že máte\n"
+"python-pygments-modul nainštalovaný alebo, keď ovládač\n"
+"je ináč pomenovaný, pridajte nasledovný riadok\n"
+"do preambuly:\n"
+"\n"
+"\\AtBeginDocument{\\renewcommand{\\MintedPygmentize}{ovládač}}\n"
+"\n"
+"kde 'ovládač' je názov príkazu ovládača."
 
 #: src/frontends/qt4/GuiDocument.cpp:1744
 #: src/frontends/qt4/GuiDocument.cpp:1774
@@ -32329,14 +32360,6 @@ msgstr ""
 "dialógu pre dokument potomka) alebo cez menu Vložiť -> Návestie (pri "
 "definícii výpisu zdrojového kódu)"
 
-#: src/insets/InsetListingsParams.cpp:662
-msgid "Number floats by chapter"
-msgstr "Číslovanie plávajúcich objektov podľa kapitoly"
-
-#: src/insets/InsetListingsParams.cpp:665
-msgid "Number floats by section"
-msgstr "Číslovanie plávajúcich objektov podľa sekcii"
-
 #: src/insets/InsetListingsParams.cpp:670
 msgid "default: _minted-<jobname>"
 msgstr "štandard: _minted-<jobname>"
@@ -33336,6 +33359,18 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Use the minted package instead of the listings one"
+#~ msgstr "Použiť minted balík namiesto balíka listings"
+
+#~ msgid "Use &minted"
+#~ msgstr "Použiť minted"
+
+#~ msgid "Number floats by chapter"
+#~ msgstr "Číslovanie plávajúcich objektov podľa kapitoly"
+
+#~ msgid "Number floats by section"
+#~ msgstr "Číslovanie plávajúcich objektov podľa sekcii"
 
 #~ msgid "(auto | last | integer)"
 #~ msgstr "(auto | posledné | číslo)"
