@@ -96,9 +96,9 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2017-06-13 02:09+0200\n"
-"PO-Revision-Date: 2017-06-11 16:40+0100\n"
+"PO-Revision-Date: 2017-06-13 09:59+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
-"Language-Team: German <lyx-docs@lists.lyx.org>\n"
+"Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -2517,10 +2517,11 @@ msgstr "Feedback-Fenster"
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:92
 msgid "Choose the LaTeX package for code syntax highlighting"
 msgstr ""
+"Wählen Sie das LaTeX-Paket, das für die Code-Hervorhebung verwendet wird."
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:95
 msgid "&Syntax Highlighting Package:"
-msgstr ""
+msgstr "&Paket zur Code-Hervorhebung:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:324
 #: lib/layouts/stdinsets.inc:330 lib/layouts/stdinsets.inc:375
@@ -27465,7 +27466,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3087
 msgid "The command to run the python pygments syntax highlighter."
-msgstr ""
+msgstr "Der Befehl, der die Python-Pygments-Codehervorhebung durchführt."
 
 #: src/LyXRC.cpp:3096
 msgid ""
@@ -29710,7 +29711,7 @@ msgstr "LaTeX-Vorspann"
 
 #: src/frontends/qt4/GuiDocument.cpp:1598
 msgid "Pygments driver command not found!"
-msgstr ""
+msgstr "Pygments-Treiberbefehl nicht gefunden!"
 
 #: src/frontends/qt4/GuiDocument.cpp:1599
 msgid ""
@@ -29724,6 +29725,15 @@ msgid ""
 "\n"
 "where 'driver' is name of the driver command."
 msgstr ""
+"Der Treiber, der nötig ist, um das Minted-Paket zu verwenden\n"
+"(pygmentize) wurde nicht gefunden. Möglicherweise haben Sie\n"
+"das Modul ,python-pygments` nicht installiert. Falls der Treiber\n"
+"anders heißt, fügen Sie folgende Zeile zum Dokumentvorspann\n"
+"hinzu:\n"
+"\n"
+"\\AtBeginDocument{\\renewcommand{\\MintedPygmentize}{Treiber}}\n"
+"\n"
+"Ersetzen Sie dabei ,Treiber` durch den Namen des Treibers."
 
 #: src/frontends/qt4/GuiDocument.cpp:1775
 #: src/frontends/qt4/GuiDocument.cpp:1805
