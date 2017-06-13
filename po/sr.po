@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.6.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-06-11 13:59+0200\n"
+"POT-Creation-Date: 2017-06-13 02:09+0200\n"
 "PO-Revision-Date: 2011-06-21 20:54+0100\n"
 "Last-Translator: Zoran T. Filipović <zoran.filipovic@yahoo.com>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -52,7 +52,7 @@ msgstr "Tablica napomena"
 #: src/frontends/qt4/ui/ShowFileUi.ui:55 src/frontends/qt4/ui/SymbolsUi.ui:66
 #: src/frontends/qt4/ui/TexinfoUi.ui:77 src/frontends/qt4/ui/ThesaurusUi.ui:138
 #: src/frontends/qt4/ui/WrapUi.ui:173 src/frontends/qt4/GuiParagraph.cpp:163
-#: src/frontends/qt4/GuiView.cpp:2791
+#: src/frontends/qt4/GuiView.cpp:2793
 msgid "&Close"
 msgstr "&Zatvori"
 
@@ -561,7 +561,7 @@ msgstr "Rastezanje"
 
 #: src/frontends/qt4/ui/BoxUi.ui:265 src/frontends/qt4/ui/ListingsUi.ui:103
 #: src/frontends/qt4/ui/TabularUi.ui:391 src/frontends/qt4/ui/TabularUi.ui:1549
-#: src/frontends/qt4/ui/WrapUi.ui:209 src/frontends/qt4/GuiDocument.cpp:1284
+#: src/frontends/qt4/ui/WrapUi.ui:209 src/frontends/qt4/GuiDocument.cpp:1290
 #: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:845
 msgid "Left"
 msgstr "Levo"
@@ -575,7 +575,7 @@ msgstr "Centar"
 
 #: src/frontends/qt4/ui/BoxUi.ui:275 src/frontends/qt4/ui/ListingsUi.ui:108
 #: src/frontends/qt4/ui/TabularUi.ui:401 src/frontends/qt4/ui/TabularUi.ui:1566
-#: src/frontends/qt4/ui/WrapUi.ui:214 src/frontends/qt4/GuiDocument.cpp:1286
+#: src/frontends/qt4/ui/WrapUi.ui:214 src/frontends/qt4/GuiDocument.cpp:1292
 #: src/frontends/qt4/GuiParagraph.cpp:112 src/frontends/qt4/GuiTabular.cpp:847
 msgid "Right"
 msgstr "Desno"
@@ -703,7 +703,7 @@ msgid "Remove the selected branch"
 msgstr "Pomeri izabrani ogranak"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:136 src/frontends/qt4/ui/IndicesUi.ui:165
-#: src/Buffer.cpp:4573 src/Buffer.cpp:4586
+#: src/Buffer.cpp:4565 src/Buffer.cpp:4578
 msgid "&Remove"
 msgstr "&Ukloni"
 
@@ -741,18 +741,18 @@ msgstr ""
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:205
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
-#: src/frontends/qt4/ui/PrintindexUi.ui:108 src/Buffer.cpp:1407
-#: src/Buffer.cpp:4547 src/Buffer.cpp:4611 src/LyXVC.cpp:114 src/LyXVC.cpp:304
+#: src/frontends/qt4/ui/PrintindexUi.ui:108 src/Buffer.cpp:1399
+#: src/Buffer.cpp:4539 src/Buffer.cpp:4603 src/LyXVC.cpp:114 src/LyXVC.cpp:304
 #: src/buffer_funcs.cpp:78 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:247
-#: src/frontends/qt4/GuiDocument.cpp:2262 src/frontends/qt4/GuiParagraph.cpp:69
+#: src/frontends/qt4/GuiDocument.cpp:2293 src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/GuiPrefs.cpp:3287
-#: src/frontends/qt4/GuiView.cpp:2405 src/frontends/qt4/GuiView.cpp:2553
-#: src/frontends/qt4/GuiView.cpp:2577 src/frontends/qt4/GuiView.cpp:2591
-#: src/frontends/qt4/GuiView.cpp:2692 src/frontends/qt4/GuiView.cpp:2736
-#: src/frontends/qt4/GuiView.cpp:3004 src/frontends/qt4/GuiView.cpp:3018
-#: src/frontends/qt4/GuiView.cpp:3120 src/frontends/qt4/GuiView.cpp:3147
-#: src/frontends/qt4/GuiView.cpp:3803 src/frontends/qt4/GuiView.cpp:3810
+#: src/frontends/qt4/GuiView.cpp:2407 src/frontends/qt4/GuiView.cpp:2555
+#: src/frontends/qt4/GuiView.cpp:2579 src/frontends/qt4/GuiView.cpp:2593
+#: src/frontends/qt4/GuiView.cpp:2694 src/frontends/qt4/GuiView.cpp:2738
+#: src/frontends/qt4/GuiView.cpp:3006 src/frontends/qt4/GuiView.cpp:3020
+#: src/frontends/qt4/GuiView.cpp:3122 src/frontends/qt4/GuiView.cpp:3149
+#: src/frontends/qt4/GuiView.cpp:3805 src/frontends/qt4/GuiView.cpp:3812
 #: src/insets/InsetBibtex.cpp:160
 msgid "&Cancel"
 msgstr "&Poništi"
@@ -781,22 +781,22 @@ msgstr "Ve&ličina:"
 #: src/frontends/qt4/ui/TabularUi.ui:1223
 #: src/frontends/qt4/ui/TabularUi.ui:1271 lib/ui/stdtoolbars.inc:113
 #: src/Font.cpp:184 src/frontends/qt4/GuiDocument.cpp:118
-#: src/frontends/qt4/GuiDocument.cpp:734 src/frontends/qt4/GuiDocument.cpp:862
-#: src/frontends/qt4/GuiDocument.cpp:867 src/frontends/qt4/GuiDocument.cpp:908
-#: src/frontends/qt4/GuiDocument.cpp:919 src/frontends/qt4/GuiDocument.cpp:1078
-#: src/frontends/qt4/GuiDocument.cpp:1181
-#: src/frontends/qt4/GuiDocument.cpp:1278
-#: src/frontends/qt4/GuiDocument.cpp:1285
-#: src/frontends/qt4/GuiDocument.cpp:2018
-#: src/frontends/qt4/GuiDocument.cpp:2096
-#: src/frontends/qt4/GuiDocument.cpp:2097
-#: src/frontends/qt4/GuiDocument.cpp:2098
-#: src/frontends/qt4/GuiDocument.cpp:2118
-#: src/frontends/qt4/GuiDocument.cpp:2125
-#: src/frontends/qt4/GuiDocument.cpp:2132
-#: src/frontends/qt4/GuiDocument.cpp:2217
-#: src/frontends/qt4/GuiDocument.cpp:2745
-#: src/frontends/qt4/GuiDocument.cpp:4120 src/frontends/qt4/GuiExternal.cpp:77
+#: src/frontends/qt4/GuiDocument.cpp:740 src/frontends/qt4/GuiDocument.cpp:868
+#: src/frontends/qt4/GuiDocument.cpp:873 src/frontends/qt4/GuiDocument.cpp:914
+#: src/frontends/qt4/GuiDocument.cpp:925 src/frontends/qt4/GuiDocument.cpp:1084
+#: src/frontends/qt4/GuiDocument.cpp:1187
+#: src/frontends/qt4/GuiDocument.cpp:1284
+#: src/frontends/qt4/GuiDocument.cpp:1291
+#: src/frontends/qt4/GuiDocument.cpp:2049
+#: src/frontends/qt4/GuiDocument.cpp:2127
+#: src/frontends/qt4/GuiDocument.cpp:2128
+#: src/frontends/qt4/GuiDocument.cpp:2129
+#: src/frontends/qt4/GuiDocument.cpp:2149
+#: src/frontends/qt4/GuiDocument.cpp:2156
+#: src/frontends/qt4/GuiDocument.cpp:2163
+#: src/frontends/qt4/GuiDocument.cpp:2248
+#: src/frontends/qt4/GuiDocument.cpp:2776
+#: src/frontends/qt4/GuiDocument.cpp:4154 src/frontends/qt4/GuiExternal.cpp:77
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiIndices.cpp:58
 #: src/frontends/qt4/GuiListings.cpp:154 src/frontends/qt4/GuiListings.cpp:161
 #: src/frontends/qt4/GuiPrefs.cpp:2421 src/frontends/qt4/GuiPrefs.cpp:2534
@@ -930,7 +930,7 @@ msgstr "Serije fontova"
 #: lib/layouts/europasscv.layout:340 lib/layouts/europasscv.layout:373
 #: lib/layouts/europasscv.layout:380 lib/layouts/europecv.layout:246
 #: lib/layouts/europecv.layout:252 lib/layouts/moderncv.layout:467
-#: src/frontends/qt4/GuiDocument.cpp:1481 src/frontends/qt4/GuiPrefs.cpp:2376
+#: src/frontends/qt4/GuiDocument.cpp:1492 src/frontends/qt4/GuiPrefs.cpp:2376
 #: src/frontends/qt4/Menus.cpp:902
 msgid "Language"
 msgstr "Jezik"
@@ -1002,9 +1002,9 @@ msgstr "Primeni promene odmah"
 #: src/frontends/qt4/ui/ParagraphUi.ui:251 src/frontends/qt4/ui/PrefsUi.ui:80
 #: src/frontends/qt4/ui/RefUi.ui:362 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
-#: src/frontends/qt4/GuiDocument.cpp:2338
-#: src/frontends/qt4/GuiDocument.cpp:2618
-#: src/frontends/qt4/GuiDocument.cpp:4058
+#: src/frontends/qt4/GuiDocument.cpp:2369
+#: src/frontends/qt4/GuiDocument.cpp:2649
+#: src/frontends/qt4/GuiDocument.cpp:4092
 msgid "&Apply"
 msgstr "&Primeni"
 
@@ -1181,8 +1181,8 @@ msgid "Greyed-out notes:"
 msgstr ""
 
 #: src/frontends/qt4/ui/ColorUi.ui:118 src/frontends/qt4/ui/ColorUi.ui:256
-#: src/frontends/qt4/GuiDocument.cpp:1731
-#: src/frontends/qt4/GuiDocument.cpp:1761
+#: src/frontends/qt4/GuiDocument.cpp:1762
+#: src/frontends/qt4/GuiDocument.cpp:1792
 #, fuzzy
 msgid "&Change..."
 msgstr "Promeni:"
@@ -2136,13 +2136,13 @@ msgid "Listing Parameters"
 msgstr "Spisak Parametara"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:66
-#: src/frontends/qt4/ui/ListingsSettingsUi.ui:89
+#: src/frontends/qt4/ui/ListingsSettingsUi.ui:79
 #: src/frontends/qt4/ui/ListingsUi.ui:507
 msgid "Check it to enter parameters that are not recognizable by LyX"
 msgstr "Proverite da unesete parametre koji nisu prepoznatljivi LyX-u"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:69
-#: src/frontends/qt4/ui/ListingsSettingsUi.ui:92
+#: src/frontends/qt4/ui/ListingsSettingsUi.ui:82
 #: src/frontends/qt4/ui/ListingsUi.ui:510
 msgid "&Bypass validation"
 msgstr ""
@@ -2475,14 +2475,13 @@ msgstr "Spisak Parametara"
 msgid "Feedback window"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsSettingsUi.ui:79
-msgid "Use the minted package instead of the listings one"
+#: src/frontends/qt4/ui/ListingsSettingsUi.ui:92
+msgid "Choose the LaTeX package for code syntax highlighting"
 msgstr ""
 
-#: src/frontends/qt4/ui/ListingsSettingsUi.ui:82
-#, fuzzy
-msgid "Use &minted"
-msgstr "Koristi ulazno kod&iranje"
+#: src/frontends/qt4/ui/ListingsSettingsUi.ui:95
+msgid "&Syntax Highlighting Package:"
+msgstr ""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:324
 #: lib/layouts/stdinsets.inc:330 lib/layouts/stdinsets.inc:375
@@ -3053,7 +3052,7 @@ msgstr "Strane"
 
 #: src/frontends/qt4/ui/OutputUi.ui:216 lib/layouts/aapaper.layout:63
 #: lib/layouts/egs.layout:639 lib/languages:108
-#: src/frontends/qt4/GuiDocument.cpp:1341 src/frontends/qt4/GuiErrorList.cpp:51
+#: src/frontends/qt4/GuiDocument.cpp:1347 src/frontends/qt4/GuiErrorList.cpp:51
 #: src/frontends/qt4/GuiLog.cpp:245 src/frontends/qt4/GuiPrefs.cpp:724
 msgid "LaTeX"
 msgstr "LaTeX"
@@ -3206,7 +3205,7 @@ msgid "&Landscape"
 msgstr "&Široko"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:162
-#: src/frontends/qt4/GuiDocument.cpp:1479
+#: src/frontends/qt4/GuiDocument.cpp:1490
 msgid "Page Layout"
 msgstr "Forma strane"
 
@@ -3245,7 +3244,7 @@ msgid "Line &spacing"
 msgstr "Prored"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:121 src/Text.cpp:1928
-#: src/frontends/qt4/GuiDocument.cpp:741
+#: src/frontends/qt4/GuiDocument.cpp:747
 msgid "Single"
 msgstr "Jednostruki"
 
@@ -3254,7 +3253,7 @@ msgid "1.5"
 msgstr "1.5"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:131 src/Text.cpp:1934
-#: src/frontends/qt4/GuiDocument.cpp:745
+#: src/frontends/qt4/GuiDocument.cpp:751
 msgid "Double"
 msgstr "Dvostruki"
 
@@ -3263,11 +3262,11 @@ msgstr "Dvostruki"
 #: src/frontends/qt4/ui/TabularUi.ui:1209
 #: src/frontends/qt4/ui/TabularUi.ui:1228
 #: src/frontends/qt4/ui/TabularUi.ui:1276 src/frontends/qt4/ui/VSpaceUi.ui:107
-#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:735
-#: src/frontends/qt4/GuiDocument.cpp:739 src/frontends/qt4/GuiDocument.cpp:747
-#: src/frontends/qt4/GuiDocument.cpp:868 src/frontends/qt4/GuiDocument.cpp:920
-#: src/frontends/qt4/GuiDocument.cpp:1084
-#: src/frontends/qt4/GuiDocument.cpp:1279 src/frontends/qt4/GuiHSpace.cpp:56
+#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:741
+#: src/frontends/qt4/GuiDocument.cpp:745 src/frontends/qt4/GuiDocument.cpp:753
+#: src/frontends/qt4/GuiDocument.cpp:874 src/frontends/qt4/GuiDocument.cpp:926
+#: src/frontends/qt4/GuiDocument.cpp:1090
+#: src/frontends/qt4/GuiDocument.cpp:1285 src/frontends/qt4/GuiHSpace.cpp:56
 #: src/frontends/qt4/GuiHSpace.cpp:67 src/frontends/qt4/GuiPrefs.cpp:913
 #: src/frontends/qt4/GuiPrefs.cpp:941 src/frontends/qt4/GuiPrefs.cpp:968
 #: src/frontends/qt4/GuiPrefs.cpp:2275 src/frontends/qt4/GuiPrefs.cpp:2298
@@ -3685,7 +3684,7 @@ msgstr "Korekcija"
 msgid "Cursor &follows scrollbar"
 msgstr "Kursor &sledi scrollbar"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:46 src/LyXRC.cpp:2995
+#: src/frontends/qt4/ui/PrefEditUi.ui:46 src/LyXRC.cpp:3011
 msgid ""
 "Configure the width of the text cursor. Automatic zoom-controlled cursor "
 "width used when set to 0."
@@ -3950,21 +3949,21 @@ msgid "Language &package:"
 msgstr "Jezički pa&ket:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:56
-#: src/frontends/qt4/GuiDocument.cpp:1080
-#: src/frontends/qt4/GuiDocument.cpp:2139 src/frontends/qt4/GuiPrefs.cpp:912
+#: src/frontends/qt4/GuiDocument.cpp:1086
+#: src/frontends/qt4/GuiDocument.cpp:2170 src/frontends/qt4/GuiPrefs.cpp:912
 #: src/frontends/qt4/GuiPrefs.cpp:940
 #, fuzzy
 msgid "Automatic"
 msgstr "Automatska pomoć"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:61
-#: src/frontends/qt4/GuiDocument.cpp:1082
+#: src/frontends/qt4/GuiDocument.cpp:1088
 #, fuzzy
 msgid "Always Babel"
 msgstr "Uvek zamenjeno"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:71
-#: src/frontends/qt4/GuiDocument.cpp:1086
+#: src/frontends/qt4/GuiDocument.cpp:1092
 #, fuzzy
 msgid "None[[language package]]"
 msgstr "Jezički pa&ket:"
@@ -4182,7 +4181,7 @@ msgstr "Mat Opcije"
 msgid "Output &line length:"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefOutputUi.ui:186 src/LyXRC.cpp:2934
+#: src/frontends/qt4/ui/PrefOutputUi.ui:186 src/LyXRC.cpp:2950
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -4473,8 +4472,8 @@ msgstr ""
 msgid "&Maximum last files:"
 msgstr ""
 
-#: src/frontends/qt4/ui/PrefsUi.ui:70 src/frontends/qt4/GuiView.cpp:3004
-#: src/frontends/qt4/GuiView.cpp:3018 src/frontends/qt4/GuiView.cpp:3120
+#: src/frontends/qt4/ui/PrefsUi.ui:70 src/frontends/qt4/GuiView.cpp:3006
+#: src/frontends/qt4/GuiView.cpp:3020 src/frontends/qt4/GuiView.cpp:3122
 msgid "&Save"
 msgstr "&Sačuvaj"
 
@@ -5425,15 +5424,15 @@ msgstr ""
 msgid "DefSkip"
 msgstr "DefSkip"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:87 src/frontends/qt4/GuiDocument.cpp:736
+#: src/frontends/qt4/ui/VSpaceUi.ui:87 src/frontends/qt4/GuiDocument.cpp:742
 msgid "SmallSkip"
 msgstr "SmallSkip"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:92 src/frontends/qt4/GuiDocument.cpp:737
+#: src/frontends/qt4/ui/VSpaceUi.ui:92 src/frontends/qt4/GuiDocument.cpp:743
 msgid "MedSkip"
 msgstr "MedSkip"
 
-#: src/frontends/qt4/ui/VSpaceUi.ui:97 src/frontends/qt4/GuiDocument.cpp:738
+#: src/frontends/qt4/ui/VSpaceUi.ui:97 src/frontends/qt4/GuiDocument.cpp:744
 msgid "BigSkip"
 msgstr "BigSkip"
 
@@ -5482,8 +5481,8 @@ msgstr ""
 msgid "Body Only"
 msgstr "Samo"
 
-#: src/frontends/qt4/ui/WorkAreaUi.ui:82 src/frontends/qt4/GuiView.cpp:3147
-#: src/frontends/qt4/GuiView.cpp:3803
+#: src/frontends/qt4/ui/WorkAreaUi.ui:82 src/frontends/qt4/GuiView.cpp:3149
+#: src/frontends/qt4/GuiView.cpp:3805
 msgid "&Reload"
 msgstr "&Učitaj ponovo"
 
@@ -6350,7 +6349,7 @@ msgstr "Definicija"
 #: lib/layouts/theorems-without-preamble.inc:213
 #: lib/layouts/theorems-without-preamble.inc:216 lib/layouts/theorems.inc:190
 #: lib/layouts/theorems.inc:199 lib/layouts/theorems.inc:202
-#: src/frontends/qt4/GuiDocument.cpp:1120
+#: src/frontends/qt4/GuiDocument.cpp:1126
 msgid "Example"
 msgstr "Primer"
 
@@ -6884,7 +6883,7 @@ msgstr ""
 #: lib/layouts/siamltex.layout:326 lib/layouts/simplecv.layout:155
 #: lib/layouts/stdstruct.inc:54 lib/layouts/svcommon.inc:574
 #: lib/layouts/tufte-book.layout:258 lib/layouts/tufte-book.layout:260
-#: src/frontends/qt4/GuiDocument.cpp:1484
+#: src/frontends/qt4/GuiDocument.cpp:1495
 msgid "Bibliography"
 msgstr "Bibliografija"
 
@@ -6927,7 +6926,7 @@ msgstr ""
 #: lib/layouts/scrlettr.layout:116 lib/layouts/scrlttr2.layout:149
 #: lib/layouts/sigplanconf.layout:84 lib/layouts/sigplanconf.layout:161
 #: lib/layouts/tcolorbox.module:134 src/frontends/qt4/GuiIndices.cpp:52
-#: src/mathed/MathMacroTemplate.cpp:481
+#: src/mathed/MathMacroTemplate.cpp:493
 msgid "Name"
 msgstr "Ime"
 
@@ -7416,10 +7415,10 @@ msgstr ""
 msgid "And"
 msgstr "I"
 
-#: lib/layouts/aastex.layout:228 src/frontends/qt4/GuiDocument.cpp:2543
-#: src/frontends/qt4/GuiDocument.cpp:2555
-#: src/frontends/qt4/GuiDocument.cpp:2665
-#: src/frontends/qt4/GuiDocument.cpp:2684
+#: lib/layouts/aastex.layout:228 src/frontends/qt4/GuiDocument.cpp:2574
+#: src/frontends/qt4/GuiDocument.cpp:2586
+#: src/frontends/qt4/GuiDocument.cpp:2696
+#: src/frontends/qt4/GuiDocument.cpp:2715
 msgid "and"
 msgstr "i"
 
@@ -11870,9 +11869,9 @@ msgid "Fixme Error"
 msgstr "Greška u imenu dokumenta"
 
 #: lib/layouts/fixme.module:82 src/frontends/qt4/GuiCompare.cpp:198
-#: src/frontends/qt4/GuiDocument.cpp:2275
-#: src/frontends/qt4/GuiDocument.cpp:2349
-#: src/frontends/qt4/GuiDocument.cpp:4066
+#: src/frontends/qt4/GuiDocument.cpp:2306
+#: src/frontends/qt4/GuiDocument.cpp:2380
+#: src/frontends/qt4/GuiDocument.cpp:4100
 msgid "Error"
 msgstr "Greška"
 
@@ -15674,7 +15673,7 @@ msgstr ""
 msgid "Drop up"
 msgstr ""
 
-#: lib/layouts/shapepar.module:91 src/mathed/MathMacroTemplate.cpp:532
+#: lib/layouts/shapepar.module:91 src/mathed/MathMacroTemplate.cpp:544
 msgid "TeX"
 msgstr "TeX"
 
@@ -15985,7 +15984,7 @@ msgstr "Fusnota|F"
 msgid "Notes"
 msgstr "Napomena"
 
-#: lib/layouts/stdinsets.inc:14 src/frontends/qt4/GuiDocument.cpp:1491
+#: lib/layouts/stdinsets.inc:14 src/frontends/qt4/GuiDocument.cpp:1502
 msgid "Branches"
 msgstr "Ogranci "
 
@@ -16025,7 +16024,7 @@ msgstr "Spisak podešavanja"
 msgid "List of Listings"
 msgstr ""
 
-#: lib/layouts/stdinsets.inc:337 src/frontends/qt4/GuiDocument.cpp:1489
+#: lib/layouts/stdinsets.inc:337 src/frontends/qt4/GuiDocument.cpp:1500
 #, fuzzy
 msgid "Listings[[inset]]"
 msgstr "Spisak podešavanja"
@@ -20992,7 +20991,7 @@ msgid "Fractions"
 msgstr "Razlomci"
 
 #: lib/ui/stdtoolbars.inc:301 lib/ui/stdtoolbars.inc:406
-#: src/frontends/qt4/GuiDocument.cpp:1477
+#: src/frontends/qt4/GuiDocument.cpp:1488
 msgid "Fonts"
 msgstr "Font"
 
@@ -25533,7 +25532,7 @@ msgstr "XPM"
 msgid "Plain text (chess output)"
 msgstr "Plain tekst (chess izlaz)"
 
-#: lib/configure.py:634 src/frontends/qt4/GuiDocument.cpp:1341
+#: lib/configure.py:634 src/frontends/qt4/GuiDocument.cpp:1347
 #: src/frontends/qt4/GuiErrorList.cpp:45
 msgid "DocBook"
 msgstr "DocBook"
@@ -25827,8 +25826,8 @@ msgstr ""
 msgid "Table (CSV)"
 msgstr ""
 
-#: lib/configure.py:731 src/frontends/qt4/GuiView.cpp:1326
-#: src/mathed/MathMacroTemplate.cpp:537
+#: lib/configure.py:731 src/frontends/qt4/GuiView.cpp:1327
+#: src/mathed/MathMacroTemplate.cpp:549
 msgid "LyX"
 msgstr "LyX"
 
@@ -25948,58 +25947,58 @@ msgstr "Nema godine"
 msgid "Bibliography entry not found!"
 msgstr "Naslov bibliografije"
 
-#: src/Buffer.cpp:425
+#: src/Buffer.cpp:419
 msgid "Disk Error: "
 msgstr ""
 
-#: src/Buffer.cpp:426
+#: src/Buffer.cpp:420
 #, c-format
 msgid ""
 "LyX could not create the temporary directory '%1$s' (Disk is full maybe?)"
 msgstr ""
 "LyX ne može da napravi privremeni direktorijum '%1$s' (disk je možda pun?)"
 
-#: src/Buffer.cpp:555
+#: src/Buffer.cpp:548
 msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr ""
 
-#: src/Buffer.cpp:559 src/Buffer.cpp:1613
+#: src/Buffer.cpp:552 src/Buffer.cpp:1605
 #, fuzzy
 msgid "Save failed! Document is lost."
 msgstr "Sačuvaj kao podrazumevani dokument "
 
-#: src/Buffer.cpp:561
+#: src/Buffer.cpp:554
 msgid "Attempting to close changed document!"
 msgstr ""
 
-#: src/Buffer.cpp:570
+#: src/Buffer.cpp:563
 #, c-format
 msgid "Could not remove the temporary directory %1$s"
 msgstr "Nije moguće ukloniti privremeni direktorijum %1$s"
 
-#: src/Buffer.cpp:977 src/Text.cpp:551
+#: src/Buffer.cpp:970 src/Text.cpp:551
 #, c-format
 msgid "Unknown token: %1$s %2$s\n"
 msgstr ""
 
-#: src/Buffer.cpp:981 src/Buffer.cpp:987 src/Buffer.cpp:1009
+#: src/Buffer.cpp:974 src/Buffer.cpp:980 src/Buffer.cpp:1002
 msgid "Document header error"
 msgstr "Greška u zaglavlju dokumenta"
 
-#: src/Buffer.cpp:986
+#: src/Buffer.cpp:979
 msgid "\\begin_header is missing"
 msgstr "nedostaje \\begin_header "
 
-#: src/Buffer.cpp:1008
+#: src/Buffer.cpp:1001
 msgid "\\begin_document is missing"
 msgstr "nedostaje \\begin_document "
 
-#: src/Buffer.cpp:1020 src/Buffer.cpp:1026 src/Buffer.cpp:2878
-#: src/Buffer.cpp:2884
+#: src/Buffer.cpp:1013 src/Buffer.cpp:1019 src/Buffer.cpp:2870
+#: src/Buffer.cpp:2876
 msgid "Changes not shown in LaTeX output"
 msgstr "Promene se ne prikazuju u LaTeX izlazu"
 
-#: src/Buffer.cpp:1021 src/Buffer.cpp:2879
+#: src/Buffer.cpp:1014 src/Buffer.cpp:2871
 msgid ""
 "Changes will not be highlighted in LaTeX output, because neither dvipost nor "
 "xcolor/ulem are installed.\n"
@@ -26007,7 +26006,7 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:1027 src/Buffer.cpp:2885
+#: src/Buffer.cpp:1020 src/Buffer.cpp:2877
 msgid ""
 "Changes will not be highlighted in LaTeX output when using pdflatex, because "
 "xcolor and ulem are not installed.\n"
@@ -26015,119 +26014,119 @@ msgid ""
 "LaTeX preamble."
 msgstr ""
 
-#: src/Buffer.cpp:1065 src/BufferParams.cpp:455
+#: src/Buffer.cpp:1058 src/BufferParams.cpp:455
 #: src/frontends/qt4/GuiLog.cpp:256 src/insets/InsetIndex.cpp:455
 msgid "Index"
 msgstr "Indeks"
 
-#: src/Buffer.cpp:1168
+#: src/Buffer.cpp:1161
 #, fuzzy
 msgid "File Not Found"
 msgstr "Modul nije nađen"
 
-#: src/Buffer.cpp:1169
+#: src/Buffer.cpp:1162
 #, c-format
 msgid "Unable to open file `%1$s'."
 msgstr ""
 
-#: src/Buffer.cpp:1197 src/Buffer.cpp:1266
+#: src/Buffer.cpp:1190 src/Buffer.cpp:1259
 msgid "Document format failure"
 msgstr ""
 
-#: src/Buffer.cpp:1198
+#: src/Buffer.cpp:1191
 #, c-format
 msgid "%1$s ended unexpectedly, which means that it is probably corrupted."
 msgstr ""
 
-#: src/Buffer.cpp:1267
+#: src/Buffer.cpp:1260
 #, c-format
 msgid "%1$s is not a readable LyX document."
 msgstr "%1$s nije čitljiv LyX dokument."
 
-#: src/Buffer.cpp:1294
+#: src/Buffer.cpp:1287
 msgid "Conversion failed"
 msgstr "Propala konverzija"
 
-#: src/Buffer.cpp:1295
+#: src/Buffer.cpp:1288
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but a temporary file for converting "
 "it could not be created."
 msgstr ""
 
-#: src/Buffer.cpp:1305
+#: src/Buffer.cpp:1298
 msgid "Conversion script not found"
 msgstr ""
 
-#: src/Buffer.cpp:1306
+#: src/Buffer.cpp:1299
 #, c-format
 msgid ""
 "%1$s is from a different version of LyX, but the conversion script lyx2lyx "
 "could not be found."
 msgstr ""
 
-#: src/Buffer.cpp:1329 src/Buffer.cpp:1336
+#: src/Buffer.cpp:1322 src/Buffer.cpp:1329
 msgid "Conversion script failed"
 msgstr ""
 
-#: src/Buffer.cpp:1330
+#: src/Buffer.cpp:1323
 #, c-format
 msgid ""
 "%1$s is from an older version of LyX and the lyx2lyx script failed to "
 "convert it."
 msgstr ""
 
-#: src/Buffer.cpp:1337
+#: src/Buffer.cpp:1330
 #, c-format
 msgid ""
 "%1$s is from a newer version of LyX and the lyx2lyx script failed to convert "
 "it."
 msgstr ""
 
-#: src/Buffer.cpp:1394 src/Buffer.cpp:4557 src/Buffer.cpp:4620
+#: src/Buffer.cpp:1386 src/Buffer.cpp:4549 src/Buffer.cpp:4612
 #, fuzzy
 msgid "File is read-only"
 msgstr "Dokument je samo za čitanje"
 
-#: src/Buffer.cpp:1395
+#: src/Buffer.cpp:1387
 #, c-format
 msgid "The file %1$s cannot be written because it is marked as read-only."
 msgstr ""
 
-#: src/Buffer.cpp:1404
+#: src/Buffer.cpp:1396
 #, c-format
 msgid ""
 "Document %1$s has been externally modified. Are you sure you want to "
 "overwrite this file?"
 msgstr ""
 
-#: src/Buffer.cpp:1406
+#: src/Buffer.cpp:1398
 msgid "Overwrite modified file?"
 msgstr ""
 
-#: src/Buffer.cpp:1407 src/Exporter.cpp:50
-#: src/frontends/qt4/GuiClipboard.cpp:247 src/frontends/qt4/GuiView.cpp:2405
-#: src/frontends/qt4/GuiView.cpp:2590 src/frontends/qt4/GuiView.cpp:2692
+#: src/Buffer.cpp:1399 src/Exporter.cpp:50
+#: src/frontends/qt4/GuiClipboard.cpp:247 src/frontends/qt4/GuiView.cpp:2407
+#: src/frontends/qt4/GuiView.cpp:2592 src/frontends/qt4/GuiView.cpp:2694
 msgid "&Overwrite"
 msgstr ""
 
-#: src/Buffer.cpp:1469
+#: src/Buffer.cpp:1461
 msgid "Backup failure"
 msgstr ""
 
-#: src/Buffer.cpp:1470
+#: src/Buffer.cpp:1462
 #, c-format
 msgid ""
 "Cannot create backup file %1$s.\n"
 "Please check whether the directory exists and is writable."
 msgstr ""
 
-#: src/Buffer.cpp:1506 src/Buffer.cpp:1517
+#: src/Buffer.cpp:1498 src/Buffer.cpp:1509
 #, fuzzy
 msgid "Write failure"
 msgstr "chktex failure"
 
-#: src/Buffer.cpp:1507
+#: src/Buffer.cpp:1499
 #, c-format
 msgid ""
 "The file has successfully been saved as:\n"
@@ -26138,7 +26137,7 @@ msgid ""
 "  %3$s"
 msgstr ""
 
-#: src/Buffer.cpp:1518
+#: src/Buffer.cpp:1510
 #, c-format
 msgid ""
 "Cannot move saved file to:\n"
@@ -26147,74 +26146,74 @@ msgid ""
 "  %2$s."
 msgstr ""
 
-#: src/Buffer.cpp:1534
+#: src/Buffer.cpp:1526
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Čuvanje dokumenata %1$s..."
 
-#: src/Buffer.cpp:1549
+#: src/Buffer.cpp:1541
 msgid " could not write file!"
 msgstr "nije mogao da napiše datoteku!"
 
-#: src/Buffer.cpp:1557
+#: src/Buffer.cpp:1549
 msgid " done."
 msgstr "učinjeno."
 
-#: src/Buffer.cpp:1572
+#: src/Buffer.cpp:1564
 #, c-format
 msgid "LyX: Attempting to save document %1$s\n"
 msgstr "LyX: Pokušavam da sačuvam dokument %1$s\n"
 
-#: src/Buffer.cpp:1582 src/Buffer.cpp:1595 src/Buffer.cpp:1609
+#: src/Buffer.cpp:1574 src/Buffer.cpp:1587 src/Buffer.cpp:1601
 #, c-format
 msgid "Saved to %1$s. Phew.\n"
 msgstr ""
 
-#: src/Buffer.cpp:1585
+#: src/Buffer.cpp:1577
 msgid "Save failed! Trying again...\n"
 msgstr ""
 
-#: src/Buffer.cpp:1599
+#: src/Buffer.cpp:1591
 msgid "Save failed! Trying yet again...\n"
 msgstr ""
 
-#: src/Buffer.cpp:1704
+#: src/Buffer.cpp:1696
 msgid "Iconv software exception Detected"
 msgstr ""
 
-#: src/Buffer.cpp:1704
+#: src/Buffer.cpp:1696
 #, c-format
 msgid ""
 "Please verify that the support software for your encoding (%1$s) is properly "
 "installed"
 msgstr ""
 
-#: src/Buffer.cpp:1731
+#: src/Buffer.cpp:1723
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
 msgstr ""
 
-#: src/Buffer.cpp:1734
+#: src/Buffer.cpp:1726
 msgid ""
 "Some characters of your document are probably not representable in the "
 "chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
 
-#: src/Buffer.cpp:1741
+#: src/Buffer.cpp:1733
 msgid "iconv conversion failed"
 msgstr ""
 
-#: src/Buffer.cpp:1746
+#: src/Buffer.cpp:1738
 msgid "conversion failed"
 msgstr "propala konverzija"
 
-#: src/Buffer.cpp:1862
+#: src/Buffer.cpp:1854
 #, fuzzy
 msgid "Uncodable character in file path"
 msgstr "specijalni karakteri"
 
-#: src/Buffer.cpp:1864
+#: src/Buffer.cpp:1856
 #, c-format
 msgid ""
 "The path of your document\n"
@@ -26228,31 +26227,31 @@ msgid ""
 "(such as utf8) or change the file path name."
 msgstr ""
 
-#: src/Buffer.cpp:1931
+#: src/Buffer.cpp:1923
 #, c-format
 msgid "The languages %1$s are only supported by Babel."
 msgstr ""
 
-#: src/Buffer.cpp:1932
+#: src/Buffer.cpp:1924
 #, c-format
 msgid "The language %1$s is only supported by Babel."
 msgstr ""
 
-#: src/Buffer.cpp:1942
+#: src/Buffer.cpp:1934
 #, c-format
 msgid "The languages %1$s are only supported by Polyglossia."
 msgstr ""
 
-#: src/Buffer.cpp:1943
+#: src/Buffer.cpp:1935
 #, c-format
 msgid "The language %1$s is only supported by Polyglossia."
 msgstr ""
 
-#: src/Buffer.cpp:1949
+#: src/Buffer.cpp:1941
 msgid "Incompatible Languages!"
 msgstr ""
 
-#: src/Buffer.cpp:1951
+#: src/Buffer.cpp:1943
 #, c-format
 msgid ""
 "You cannot use the following languages together in one LaTeX document "
@@ -26260,156 +26259,156 @@ msgid ""
 "%1$s%2$s"
 msgstr ""
 
-#: src/Buffer.cpp:2261
+#: src/Buffer.cpp:2253
 msgid "Running chktex..."
 msgstr "Pokretanje chktex..."
 
-#: src/Buffer.cpp:2275
+#: src/Buffer.cpp:2267
 msgid "chktex failure"
 msgstr "chktex failure"
 
-#: src/Buffer.cpp:2276
+#: src/Buffer.cpp:2268
 msgid "Could not run chktex successfully."
 msgstr "Nije moguće uspešno pokrenuti chktek."
 
-#: src/Buffer.cpp:2570
+#: src/Buffer.cpp:2562
 #, c-format
 msgid "Don't know how to export to format: %1$s"
 msgstr ""
 
-#: src/Buffer.cpp:2676
+#: src/Buffer.cpp:2668
 #, fuzzy, c-format
 msgid "Error exporting to format: %1$s."
 msgstr "Greška prilikom konvertovanja u format za učitavanje"
 
-#: src/Buffer.cpp:2685
+#: src/Buffer.cpp:2677
 #, fuzzy
 msgid "Error generating literate programming code."
 msgstr "Greška prilikom generisanja pixmap-a"
 
-#: src/Buffer.cpp:2765
+#: src/Buffer.cpp:2757
 #, c-format
 msgid "Branch \"%1$s\" does not exist."
 msgstr ""
 
-#: src/Buffer.cpp:2800
+#: src/Buffer.cpp:2792
 #, c-format
 msgid "Branch \"%1$s\" already exists."
 msgstr ""
 
-#: src/Buffer.cpp:2857
+#: src/Buffer.cpp:2849
 #, fuzzy
 msgid "Error viewing the output file."
 msgstr "Greška prilikom konvertovanja u format za učitavanje"
 
-#: src/Buffer.cpp:3201 src/frontends/qt4/GuiView.cpp:2234
+#: src/Buffer.cpp:3193 src/frontends/qt4/GuiView.cpp:2236
 #: src/frontends/qt4/Validator.cpp:222 src/insets/ExternalSupport.cpp:386
 #: src/insets/InsetGraphics.cpp:613 src/insets/InsetInclude.cpp:551
 msgid "Invalid filename"
 msgstr ""
 
-#: src/Buffer.cpp:3202 src/insets/ExternalSupport.cpp:387
+#: src/Buffer.cpp:3194 src/insets/ExternalSupport.cpp:387
 #: src/insets/InsetGraphics.cpp:614 src/insets/InsetInclude.cpp:552
 msgid ""
 "The following filename will cause troubles when running the exported file "
 "through LaTeX: "
 msgstr ""
 
-#: src/Buffer.cpp:3207 src/insets/ExternalSupport.cpp:392
+#: src/Buffer.cpp:3199 src/insets/ExternalSupport.cpp:392
 #: src/insets/InsetGraphics.cpp:621 src/insets/InsetInclude.cpp:556
 msgid "Problematic filename for DVI"
 msgstr ""
 
-#: src/Buffer.cpp:3208 src/insets/ExternalSupport.cpp:393
+#: src/Buffer.cpp:3200 src/insets/ExternalSupport.cpp:393
 #: src/insets/InsetGraphics.cpp:622 src/insets/InsetInclude.cpp:557
 msgid ""
 "The following filename can cause troubles when running the exported file "
 "through LaTeX and opening the resulting DVI: "
 msgstr ""
 
-#: src/Buffer.cpp:3236 src/insets/InsetBibtex.cpp:342
+#: src/Buffer.cpp:3228 src/insets/InsetBibtex.cpp:342
 msgid "Export Warning!"
 msgstr ""
 
-#: src/Buffer.cpp:3237
+#: src/Buffer.cpp:3229
 msgid ""
 "There are spaces in the paths to your BibTeX databases.\n"
 "BibTeX will be unable to find them."
 msgstr ""
 
-#: src/Buffer.cpp:3865
+#: src/Buffer.cpp:3857
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr ""
 
-#: src/Buffer.cpp:3869
+#: src/Buffer.cpp:3861
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr ""
 
-#: src/Buffer.cpp:3921
+#: src/Buffer.cpp:3913
 msgid "Preview source code"
 msgstr ""
 
-#: src/Buffer.cpp:3923
+#: src/Buffer.cpp:3915
 #, fuzzy
 msgid "Preview preamble"
 msgstr "Pregled spreman"
 
-#: src/Buffer.cpp:3925
+#: src/Buffer.cpp:3917
 #, fuzzy
 msgid "Preview body"
 msgstr "Pregled spreman"
 
-#: src/Buffer.cpp:3940
+#: src/Buffer.cpp:3932
 msgid "Plain text does not have a preamble."
 msgstr ""
 
-#: src/Buffer.cpp:4045
+#: src/Buffer.cpp:4037
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatsko čuvanje %1$s"
 
-#: src/Buffer.cpp:4101
+#: src/Buffer.cpp:4093
 msgid "Autosave failed!"
 msgstr "Automatsko čuvanje je propalo!"
 
-#: src/Buffer.cpp:4162
+#: src/Buffer.cpp:4154
 msgid "Autosaving current document..."
 msgstr "Automatski čuvam tekući dokument..."
 
-#: src/Buffer.cpp:4287
+#: src/Buffer.cpp:4279
 msgid "Couldn't export file"
 msgstr ""
 
-#: src/Buffer.cpp:4288
+#: src/Buffer.cpp:4280
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr ""
 
-#: src/Buffer.cpp:4349 src/frontends/qt4/GuiView.cpp:2378
+#: src/Buffer.cpp:4341 src/frontends/qt4/GuiView.cpp:2380
 msgid "File name error"
 msgstr "Greška u imenu dokumenta"
 
-#: src/Buffer.cpp:4350
+#: src/Buffer.cpp:4342
 msgid "The directory path to the document cannot contain spaces."
 msgstr ""
 
-#: src/Buffer.cpp:4450 src/Buffer.cpp:4464 src/frontends/qt4/GuiView.cpp:662
+#: src/Buffer.cpp:4442 src/Buffer.cpp:4456 src/frontends/qt4/GuiView.cpp:663
 msgid "Document export cancelled."
 msgstr ""
 
-#: src/Buffer.cpp:4467
+#: src/Buffer.cpp:4459
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr ""
 
-#: src/Buffer.cpp:4474
+#: src/Buffer.cpp:4466
 #, c-format
 msgid "Document exported as %1$s"
 msgstr ""
 
-#: src/Buffer.cpp:4543
+#: src/Buffer.cpp:4535
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -26417,62 +26416,62 @@ msgid ""
 "Recover emergency save?"
 msgstr ""
 
-#: src/Buffer.cpp:4546
+#: src/Buffer.cpp:4538
 msgid "Load emergency save?"
 msgstr ""
 
-#: src/Buffer.cpp:4547
+#: src/Buffer.cpp:4539
 msgid "&Recover"
 msgstr "&Obnovi"
 
-#: src/Buffer.cpp:4547
+#: src/Buffer.cpp:4539
 msgid "&Load Original"
 msgstr "Učitaj Original"
 
-#: src/Buffer.cpp:4558
+#: src/Buffer.cpp:4550
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
 "marked read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:4565
+#: src/Buffer.cpp:4557
 msgid "Document was successfully recovered."
 msgstr "Dokument je uspešno obnovljen."
 
-#: src/Buffer.cpp:4567
+#: src/Buffer.cpp:4559
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument NIJE uspešno obnovljen."
 
-#: src/Buffer.cpp:4568
+#: src/Buffer.cpp:4560
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
 "(%1$s)"
 msgstr ""
 
-#: src/Buffer.cpp:4572 src/Buffer.cpp:4584
+#: src/Buffer.cpp:4564 src/Buffer.cpp:4576
 msgid "Delete emergency file?"
 msgstr ""
 
-#: src/Buffer.cpp:4573 src/Buffer.cpp:4586
+#: src/Buffer.cpp:4565 src/Buffer.cpp:4578
 #, fuzzy
 msgid "&Keep"
 msgstr "Zadrži"
 
-#: src/Buffer.cpp:4577
+#: src/Buffer.cpp:4569
 msgid "Emergency file deleted"
 msgstr ""
 
-#: src/Buffer.cpp:4578
+#: src/Buffer.cpp:4570
 msgid "Do not forget to save your file now!"
 msgstr "Ne zaboravite da datoteku sačuvate odmah!"
 
-#: src/Buffer.cpp:4585
+#: src/Buffer.cpp:4577
 msgid "Remove emergency file now?"
 msgstr ""
 
-#: src/Buffer.cpp:4608
+#: src/Buffer.cpp:4600
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -26480,35 +26479,35 @@ msgid ""
 "Load the backup instead?"
 msgstr ""
 
-#: src/Buffer.cpp:4610
+#: src/Buffer.cpp:4602
 msgid "Load backup?"
 msgstr ""
 
-#: src/Buffer.cpp:4611
+#: src/Buffer.cpp:4603
 msgid "&Load backup"
 msgstr ""
 
-#: src/Buffer.cpp:4611
+#: src/Buffer.cpp:4603
 msgid "Load &original"
 msgstr "Učitaj &original"
 
-#: src/Buffer.cpp:4621
+#: src/Buffer.cpp:4613
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
 "read-only. Please make sure to save the document as a different file."
 msgstr ""
 
-#: src/Buffer.cpp:4952 src/insets/InsetCaption.cpp:380
+#: src/Buffer.cpp:4944 src/insets/InsetCaption.cpp:380
 msgid "Senseless!!! "
 msgstr "Besmisleno!!!"
 
-#: src/Buffer.cpp:5174
+#: src/Buffer.cpp:5166
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s je ponovo učitan."
 
-#: src/Buffer.cpp:5177
+#: src/Buffer.cpp:5169
 #, fuzzy, c-format
 msgid "Could not reload document %1$s."
 msgstr "Ne mogu da ponovo učitam dokument %1$s"
@@ -26711,7 +26710,7 @@ msgid "This portion of the document is deleted."
 msgstr ""
 
 #: src/BufferView.cpp:1093 src/BufferView.cpp:2041
-#: src/frontends/qt4/GuiView.cpp:3686 src/frontends/qt4/GuiView.cpp:3764
+#: src/frontends/qt4/GuiView.cpp:3688 src/frontends/qt4/GuiView.cpp:3766
 msgid "Absolute filename expected."
 msgstr ""
 
@@ -27351,11 +27350,11 @@ msgstr ""
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr ""
 
-#: src/Converter.cpp:714
+#: src/Converter.cpp:700
 msgid "Running LaTeX..."
 msgstr "Pokrećem LaTeX..."
 
-#: src/Converter.cpp:736
+#: src/Converter.cpp:726
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
@@ -27364,11 +27363,11 @@ msgstr ""
 "LaTeX nije uspešno pokrenut. Pored toga, LyX nije mogao da pronađe LaTeX "
 "registar %1$s."
 
-#: src/Converter.cpp:739 src/Converter.cpp:746
+#: src/Converter.cpp:729 src/Converter.cpp:736
 msgid "LaTeX failed"
 msgstr "LaTeX nije uspeo"
 
-#: src/Converter.cpp:742
+#: src/Converter.cpp:732
 #, c-format
 msgid ""
 "The external program\n"
@@ -27377,11 +27376,11 @@ msgid ""
 "program's error (check the logs). "
 msgstr ""
 
-#: src/Converter.cpp:748
+#: src/Converter.cpp:738
 msgid "Output is empty"
 msgstr ""
 
-#: src/Converter.cpp:749
+#: src/Converter.cpp:739
 msgid "No output file was generated."
 msgstr ""
 
@@ -27473,17 +27472,17 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "Kopiranje %1$s na %2$s nije uspelo."
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:137
-#: src/frontends/qt4/GuiDocument.cpp:4120 src/frontends/qt4/GuiListings.cpp:161
+#: src/frontends/qt4/GuiDocument.cpp:4154 src/frontends/qt4/GuiListings.cpp:161
 msgid "Roman"
 msgstr "Roman"
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:138
-#: src/frontends/qt4/GuiDocument.cpp:4120 src/frontends/qt4/GuiListings.cpp:161
+#: src/frontends/qt4/GuiDocument.cpp:4154 src/frontends/qt4/GuiListings.cpp:161
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:139
-#: src/frontends/qt4/GuiDocument.cpp:4120 src/frontends/qt4/GuiListings.cpp:161
+#: src/frontends/qt4/GuiDocument.cpp:4154 src/frontends/qt4/GuiListings.cpp:161
 msgid "Typewriter"
 msgstr "Typewriter"
 
@@ -27577,7 +27576,7 @@ msgstr "Broj %1$s"
 msgid "Cannot view file"
 msgstr ""
 
-#: src/Format.cpp:669 src/Format.cpp:739 src/frontends/qt4/GuiView.cpp:3414
+#: src/Format.cpp:669 src/Format.cpp:739 src/frontends/qt4/GuiView.cpp:3416
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Dokument ne postoji: %1$s"
@@ -27944,156 +27943,156 @@ msgstr "Nedostaje tip datoteke [npr: latex, ps...] posle -import za promenu"
 msgid "Missing filename for --import"
 msgstr ""
 
-#: src/LyXRC.cpp:2926
+#: src/LyXRC.cpp:2942
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
 msgstr ""
 
-#: src/LyXRC.cpp:2930
+#: src/LyXRC.cpp:2946
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr ""
 
-#: src/LyXRC.cpp:2938
+#: src/LyXRC.cpp:2954
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
 msgstr ""
 
-#: src/LyXRC.cpp:2942
+#: src/LyXRC.cpp:2958
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
 msgstr ""
 
-#: src/LyXRC.cpp:2946
+#: src/LyXRC.cpp:2962
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 
-#: src/LyXRC.cpp:2953
+#: src/LyXRC.cpp:2969
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
 msgstr ""
 
-#: src/LyXRC.cpp:2957
+#: src/LyXRC.cpp:2973
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
 msgstr ""
 
-#: src/LyXRC.cpp:2961
+#: src/LyXRC.cpp:2977
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
 msgstr "Definišite opcije programa bibtex za PLaTeX (Japanski LaTeX)."
 
-#: src/LyXRC.cpp:2965
+#: src/LyXRC.cpp:2981
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
 msgstr ""
 
-#: src/LyXRC.cpp:2969
+#: src/LyXRC.cpp:2985
 msgid "Select to check whether the lastfiles still exist."
 msgstr ""
 
-#: src/LyXRC.cpp:2973
+#: src/LyXRC.cpp:2989
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
 msgstr ""
 
-#: src/LyXRC.cpp:2980
+#: src/LyXRC.cpp:2996
 msgid ""
 "Forbid use of external converters with 'needauth' option to prevent "
 "undesired effects."
 msgstr ""
 
-#: src/LyXRC.cpp:2984
+#: src/LyXRC.cpp:3000
 msgid ""
 "Ask user before calling external converters with 'needauth' option to "
 "prevent undesired effects."
 msgstr ""
 
-#: src/LyXRC.cpp:2991
+#: src/LyXRC.cpp:3007
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
 msgstr ""
 
-#: src/LyXRC.cpp:2999
+#: src/LyXRC.cpp:3015
 msgid ""
 "LyX normally doesn't allow the user to scroll further than the bottom of the "
 "document. Set to true if you prefer to scroll the bottom of the document to "
 "the top of the screen"
 msgstr ""
 
-#: src/LyXRC.cpp:3003
+#: src/LyXRC.cpp:3019
 msgid "Make Apple key act as Meta and Control key as Ctrl."
 msgstr ""
 
-#: src/LyXRC.cpp:3007
+#: src/LyXRC.cpp:3023
 #, fuzzy
 msgid "Use the Mac OS X conventions for cursor movement"
 msgstr "Koristite Mac OS X konvencije za kratko kretanje kursora"
 
-#: src/LyXRC.cpp:3011
+#: src/LyXRC.cpp:3027
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
 msgstr ""
 
-#: src/LyXRC.cpp:3016
+#: src/LyXRC.cpp:3032
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
 "E.g.\"%A, %e. %B %Y\"."
 msgstr ""
 
-#: src/LyXRC.cpp:3020
+#: src/LyXRC.cpp:3036
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
 "look in its global and local commands/ directories."
 msgstr ""
 
-#: src/LyXRC.cpp:3024
+#: src/LyXRC.cpp:3040
 msgid ""
 "The default format used with LFUN_BUFFER_[VIEW|UPDATE] with non-TeX fonts."
 msgstr ""
 
-#: src/LyXRC.cpp:3028
+#: src/LyXRC.cpp:3044
 msgid "The default format used with LFUN_BUFFER_[VIEW|UPDATE]."
 msgstr ""
 
-#: src/LyXRC.cpp:3032
+#: src/LyXRC.cpp:3048
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
 msgstr ""
 
-#: src/LyXRC.cpp:3036
+#: src/LyXRC.cpp:3052
 msgid "Select how LyX will display any graphics."
 msgstr "Izaberite kako će LyX prikazati sve grafike."
 
-#: src/LyXRC.cpp:3040
+#: src/LyXRC.cpp:3056
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
 msgstr ""
 
-#: src/LyXRC.cpp:3044
+#: src/LyXRC.cpp:3060
 msgid "Specify additional chars that can be part of a word."
 msgstr ""
 
-#: src/LyXRC.cpp:3048
+#: src/LyXRC.cpp:3064
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
 msgstr ""
 
-#: src/LyXRC.cpp:3052
+#: src/LyXRC.cpp:3068
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -28101,186 +28100,190 @@ msgstr ""
 "Kodirani font koji se koristi kod LaTeX fontenc paketa. T1 je preporučuje "
 "prilikom korišćenja ne-engleskog jezika."
 
-#: src/LyXRC.cpp:3059
+#: src/LyXRC.cpp:3075
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
 "\"makeindex.sh -m $$lang\"."
 msgstr ""
 
-#: src/LyXRC.cpp:3063
+#: src/LyXRC.cpp:3079
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
 msgstr "Definišite opcije programa index za PLaTeX (Japanski LaTeX)."
 
-#: src/LyXRC.cpp:3067
+#: src/LyXRC.cpp:3083
 msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
 msgstr ""
 
-#: src/LyXRC.cpp:3076
+#: src/LyXRC.cpp:3087
+msgid "The command to run the python pygments syntax highlighter."
+msgstr ""
+
+#: src/LyXRC.cpp:3096
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
 msgstr ""
 
-#: src/LyXRC.cpp:3080
+#: src/LyXRC.cpp:3100
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
 msgstr ""
 
-#: src/LyXRC.cpp:3084
+#: src/LyXRC.cpp:3104
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr ""
 
-#: src/LyXRC.cpp:3088
+#: src/LyXRC.cpp:3108
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
 "name of the second language."
 msgstr ""
 
-#: src/LyXRC.cpp:3092
+#: src/LyXRC.cpp:3112
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr ""
 
-#: src/LyXRC.cpp:3096
+#: src/LyXRC.cpp:3116
 msgid "The LaTeX command for local changing of the language."
 msgstr ""
 
-#: src/LyXRC.cpp:3100
+#: src/LyXRC.cpp:3120
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
 msgstr ""
 
-#: src/LyXRC.cpp:3104
+#: src/LyXRC.cpp:3124
 msgid ""
 "The LaTeX command for loading the language package. E.g. "
 "\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 
-#: src/LyXRC.cpp:3108
+#: src/LyXRC.cpp:3128
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
 msgstr ""
 
-#: src/LyXRC.cpp:3112
+#: src/LyXRC.cpp:3132
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr ""
 
-#: src/LyXRC.cpp:3116
+#: src/LyXRC.cpp:3136
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 
-#: src/LyXRC.cpp:3120
+#: src/LyXRC.cpp:3140
 msgid "De-select if you don't want LyX to create backup files."
 msgstr ""
 
-#: src/LyXRC.cpp:3124
+#: src/LyXRC.cpp:3144
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
 msgstr ""
 
-#: src/LyXRC.cpp:3128
+#: src/LyXRC.cpp:3148
 msgid "The scrolling speed of the mouse wheel."
 msgstr "Brzina pomeranja točkića miša."
 
-#: src/LyXRC.cpp:3132
+#: src/LyXRC.cpp:3152
 msgid "The completion popup delay."
 msgstr ""
 
-#: src/LyXRC.cpp:3136
+#: src/LyXRC.cpp:3156
 msgid "Select to display the completion popup in math mode."
 msgstr ""
 
-#: src/LyXRC.cpp:3140
+#: src/LyXRC.cpp:3160
 msgid "Select to display the completion popup in text mode."
 msgstr ""
 
-#: src/LyXRC.cpp:3144
+#: src/LyXRC.cpp:3164
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr ""
 
-#: src/LyXRC.cpp:3148
+#: src/LyXRC.cpp:3168
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
 msgstr ""
 
-#: src/LyXRC.cpp:3152
+#: src/LyXRC.cpp:3172
 msgid "The inline completion delay."
 msgstr ""
 
-#: src/LyXRC.cpp:3156
+#: src/LyXRC.cpp:3176
 msgid "Select to display the inline completion in math mode."
 msgstr ""
 
-#: src/LyXRC.cpp:3160
+#: src/LyXRC.cpp:3180
 msgid "Select to display the inline completion in text mode."
 msgstr ""
 
-#: src/LyXRC.cpp:3164
+#: src/LyXRC.cpp:3184
 msgid "Use \"...\" to shorten long completions."
 msgstr ""
 
-#: src/LyXRC.cpp:3168
+#: src/LyXRC.cpp:3188
 msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
 msgstr ""
 
-#: src/LyXRC.cpp:3172
+#: src/LyXRC.cpp:3192
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 
-#: src/LyXRC.cpp:3177
+#: src/LyXRC.cpp:3197
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable.\n"
 "Use the OS native format."
 msgstr ""
 
-#: src/LyXRC.cpp:3183
+#: src/LyXRC.cpp:3203
 msgid "Shows a typeset preview of things such as math"
 msgstr ""
 
-#: src/LyXRC.cpp:3187
+#: src/LyXRC.cpp:3207
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
 
-#: src/LyXRC.cpp:3191
+#: src/LyXRC.cpp:3211
 msgid "Scale the preview size to suit."
 msgstr ""
 
-#: src/LyXRC.cpp:3195
+#: src/LyXRC.cpp:3215
 msgid "The option to print out in landscape."
 msgstr "Opcija za štampanje u pejzažu."
 
-#: src/LyXRC.cpp:3199
+#: src/LyXRC.cpp:3219
 msgid "Option to specify the dimensions of the print paper."
 msgstr ""
 
-#: src/LyXRC.cpp:3203
+#: src/LyXRC.cpp:3223
 msgid "The option to specify paper type."
 msgstr ""
 
-#: src/LyXRC.cpp:3207
+#: src/LyXRC.cpp:3227
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 
-#: src/LyXRC.cpp:3211
+#: src/LyXRC.cpp:3231
 msgid ""
 "Specify whether, closing the last view of an open document, LyX should close "
 "the document (yes), hide it (no), or ask the user (ask)."
 msgstr ""
 
-#: src/LyXRC.cpp:3215
+#: src/LyXRC.cpp:3235
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -28288,87 +28291,87 @@ msgstr ""
 "DPI (tačaka po inču), na monitoru LyX auto-detektuje. Ako to nije u redu, "
 "zamenite postavku ovde."
 
-#: src/LyXRC.cpp:3221
+#: src/LyXRC.cpp:3241
 msgid "The screen fonts used to display the text while editing."
 msgstr ""
 
-#: src/LyXRC.cpp:3230
+#: src/LyXRC.cpp:3250
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
 "makes LyX use the nearest bitmap font size available, instead of scaling."
 msgstr ""
 
-#: src/LyXRC.cpp:3234
+#: src/LyXRC.cpp:3254
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 
-#: src/LyXRC.cpp:3239
+#: src/LyXRC.cpp:3259
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
 msgstr ""
 
-#: src/LyXRC.cpp:3243
+#: src/LyXRC.cpp:3263
 msgid "Allow session manager to save and restore windows geometry."
 msgstr ""
 
-#: src/LyXRC.cpp:3247
+#: src/LyXRC.cpp:3267
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
 msgstr ""
 
-#: src/LyXRC.cpp:3254
+#: src/LyXRC.cpp:3274
 msgid "De-select if you don't want the startup banner."
 msgstr ""
 
-#: src/LyXRC.cpp:3258
+#: src/LyXRC.cpp:3278
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
 msgstr ""
 
-#: src/LyXRC.cpp:3262
+#: src/LyXRC.cpp:3282
 msgid "This is the place where the files of the thesaurus library reside."
 msgstr ""
 
-#: src/LyXRC.cpp:3266
+#: src/LyXRC.cpp:3286
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
 msgstr ""
 
-#: src/LyXRC.cpp:3276
+#: src/LyXRC.cpp:3296
 msgid ""
 "Specify those directories which should be prepended to the TEXINPUTS "
 "environment variable.\n"
 "A '.' represents the current document directory. Use the OS native format."
 msgstr ""
 
-#: src/LyXRC.cpp:3283
+#: src/LyXRC.cpp:3303
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
 msgstr ""
 
-#: src/LyXRC.cpp:3293
+#: src/LyXRC.cpp:3313
 msgid ""
 "Enable use the system colors for some things like main window background and "
 "selection."
 msgstr ""
 
-#: src/LyXRC.cpp:3297
+#: src/LyXRC.cpp:3317
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr ""
 
-#: src/LyXRC.cpp:3301
+#: src/LyXRC.cpp:3321
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 
-#: src/LyXRC.cpp:3305
+#: src/LyXRC.cpp:3325
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 
@@ -28416,7 +28419,7 @@ msgstr "LyX VC: Regisar Poruka"
 msgid "(no log message)"
 msgstr "(bez poruke o registru)"
 
-#: src/LyXVC.cpp:246 src/frontends/qt4/GuiView.cpp:3272
+#: src/LyXVC.cpp:246 src/frontends/qt4/GuiView.cpp:3274
 msgid "LyX VC: Log Message"
 msgstr "LyX VC: Regisar Poruka"
 
@@ -28433,7 +28436,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr ""
 
-#: src/LyXVC.cpp:304 src/frontends/qt4/GuiView.cpp:3810
+#: src/LyXVC.cpp:304 src/frontends/qt4/GuiView.cpp:3812
 msgid "&Revert"
 msgstr ""
 
@@ -28510,7 +28513,7 @@ msgstr ", Dubina: %1$d"
 msgid ", Spacing: "
 msgstr ", Razmak: "
 
-#: src/Text.cpp:1931 src/frontends/qt4/GuiDocument.cpp:743
+#: src/Text.cpp:1931 src/frontends/qt4/GuiDocument.cpp:749
 msgid "OneHalf"
 msgstr "JednaPolovina"
 
@@ -28554,7 +28557,7 @@ msgstr ""
 msgid "No valid math formula"
 msgstr ""
 
-#: src/Text3.cpp:204 src/mathed/InsetMathNest.cpp:1033
+#: src/Text3.cpp:204 src/mathed/InsetMathNest.cpp:1031
 #, fuzzy
 msgid "Already in regular expression mode"
 msgstr "Regularni izraz"
@@ -28712,7 +28715,7 @@ msgstr "Citat"
 msgid "Labels and References"
 msgstr ""
 
-#: src/TocBackend.cpp:285 src/frontends/qt4/GuiDocument.cpp:1474
+#: src/TocBackend.cpp:285 src/frontends/qt4/GuiDocument.cpp:1485
 msgid "Child Documents"
 msgstr ""
 
@@ -28738,7 +28741,7 @@ msgstr "Unos nomenklature"
 #: src/VCBackend.cpp:926 src/VCBackend.cpp:985 src/VCBackend.cpp:1044
 #: src/VCBackend.cpp:1052 src/VCBackend.cpp:1352 src/VCBackend.cpp:1454
 #: src/VCBackend.cpp:1460 src/VCBackend.cpp:1483 src/VCBackend.cpp:1969
-#: src/frontends/qt4/GuiView.cpp:3190 src/frontends/qt4/GuiView.cpp:3234
+#: src/frontends/qt4/GuiView.cpp:3192 src/frontends/qt4/GuiView.cpp:3236
 msgid "Revision control error."
 msgstr "Revizija kontrole greške."
 
@@ -28950,7 +28953,7 @@ msgid ""
 "Do you want to abandon your changes and reload the version on disk?"
 msgstr ""
 
-#: src/buffer_funcs.cpp:77 src/frontends/qt4/GuiView.cpp:3801
+#: src/buffer_funcs.cpp:77 src/frontends/qt4/GuiView.cpp:3803
 msgid "Reload saved document?"
 msgstr "Ponovno učitavanje sačuvanog dokumenta?"
 
@@ -29348,11 +29351,11 @@ msgstr ""
 msgid "Unknown function."
 msgstr "Nepoznata funkcija."
 
-#: src/frontends/qt4/GuiApplication.cpp:2731
+#: src/frontends/qt4/GuiApplication.cpp:2740
 msgid "The current document was closed."
 msgstr "Trenutni dokument je zatvoren."
 
-#: src/frontends/qt4/GuiApplication.cpp:2741
+#: src/frontends/qt4/GuiApplication.cpp:2750
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -29360,23 +29363,23 @@ msgid ""
 "Exception: "
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:2745
-#: src/frontends/qt4/GuiApplication.cpp:2751
+#: src/frontends/qt4/GuiApplication.cpp:2754
+#: src/frontends/qt4/GuiApplication.cpp:2760
 msgid "Software exception Detected"
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:2749
+#: src/frontends/qt4/GuiApplication.cpp:2758
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
 msgstr ""
 
-#: src/frontends/qt4/GuiApplication.cpp:3041
-#: src/frontends/qt4/GuiApplication.cpp:3053
+#: src/frontends/qt4/GuiApplication.cpp:3050
+#: src/frontends/qt4/GuiApplication.cpp:3062
 msgid "Could not find UI definition file"
 msgstr "Nije moguće pronaći UI datoteku definicije"
 
-#: src/frontends/qt4/GuiApplication.cpp:3042
+#: src/frontends/qt4/GuiApplication.cpp:3051
 #, fuzzy, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -29386,11 +29389,11 @@ msgstr ""
 "LyX ne može da nađe podrazumevani UI dokument!\n"
 "Molimo Vas proverite vašu instalaciju."
 
-#: src/frontends/qt4/GuiApplication.cpp:3048
+#: src/frontends/qt4/GuiApplication.cpp:3057
 msgid "Could not find default UI file"
 msgstr "Ne mogu da pronađe podrazumevani UI dokument"
 
-#: src/frontends/qt4/GuiApplication.cpp:3049
+#: src/frontends/qt4/GuiApplication.cpp:3058
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -29398,7 +29401,7 @@ msgstr ""
 "LyX ne može da nađe podrazumevani UI dokument!\n"
 "Molimo Vas proverite vašu instalaciju."
 
-#: src/frontends/qt4/GuiApplication.cpp:3054
+#: src/frontends/qt4/GuiApplication.cpp:3063
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -29432,11 +29435,11 @@ msgstr "svih referenci"
 
 #: src/frontends/qt4/GuiBibtex.cpp:425 src/frontends/qt4/GuiBibtex.cpp:435
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
-#: src/frontends/qt4/GuiDocument.cpp:2313 src/frontends/qt4/GuiExternal.cpp:666
+#: src/frontends/qt4/GuiDocument.cpp:2344 src/frontends/qt4/GuiExternal.cpp:669
 #: src/frontends/qt4/GuiGraphics.cpp:793 src/frontends/qt4/GuiInclude.cpp:330
-#: src/frontends/qt4/GuiView.cpp:2149 src/frontends/qt4/GuiView.cpp:2206
-#: src/frontends/qt4/GuiView.cpp:2344 src/frontends/qt4/GuiView.cpp:2477
-#: src/frontends/qt4/GuiView.cpp:2517 src/frontends/qt4/GuiView.cpp:2635
+#: src/frontends/qt4/GuiView.cpp:2151 src/frontends/qt4/GuiView.cpp:2208
+#: src/frontends/qt4/GuiView.cpp:2346 src/frontends/qt4/GuiView.cpp:2479
+#: src/frontends/qt4/GuiView.cpp:2519 src/frontends/qt4/GuiView.cpp:2637
 msgid "Documents|#o#O"
 msgstr "Documenta|#o#O"
 
@@ -29520,8 +29523,8 @@ msgid "Filename Suffix"
 msgstr "Ime datoteke"
 
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
-#: src/frontends/qt4/GuiDocument.cpp:2710
-#: src/frontends/qt4/GuiDocument.cpp:3854
+#: src/frontends/qt4/GuiDocument.cpp:2741
+#: src/frontends/qt4/GuiDocument.cpp:3888
 #: src/frontends/qt4/GuiProgressView.cpp:144
 #: src/frontends/qt4/GuiProgressView.cpp:158
 #: src/frontends/qt4/GuiProgressView.cpp:179
@@ -29529,9 +29532,9 @@ msgid "Yes"
 msgstr "Da"
 
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
-#: src/frontends/qt4/GuiDocument.cpp:2709
-#: src/frontends/qt4/GuiDocument.cpp:3256
-#: src/frontends/qt4/GuiDocument.cpp:3853
+#: src/frontends/qt4/GuiDocument.cpp:2740
+#: src/frontends/qt4/GuiDocument.cpp:3288
+#: src/frontends/qt4/GuiDocument.cpp:3887
 #: src/frontends/qt4/GuiProgressView.cpp:110
 #: src/frontends/qt4/GuiProgressView.cpp:143
 #: src/frontends/qt4/GuiProgressView.cpp:179
@@ -29745,10 +29748,10 @@ msgstr "%1$s Dokument "
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Izaberite ime dokumenta da sačuvate ubačenu grafiku kao"
 
-#: src/frontends/qt4/GuiClipboard.cpp:215 src/frontends/qt4/GuiView.cpp:2220
-#: src/frontends/qt4/GuiView.cpp:2363 src/frontends/qt4/GuiView.cpp:2379
-#: src/frontends/qt4/GuiView.cpp:2391 src/frontends/qt4/GuiView.cpp:2408
-#: src/frontends/qt4/GuiView.cpp:2492 src/frontends/qt4/GuiView.cpp:3776
+#: src/frontends/qt4/GuiClipboard.cpp:215 src/frontends/qt4/GuiView.cpp:2222
+#: src/frontends/qt4/GuiView.cpp:2365 src/frontends/qt4/GuiView.cpp:2381
+#: src/frontends/qt4/GuiView.cpp:2393 src/frontends/qt4/GuiView.cpp:2410
+#: src/frontends/qt4/GuiView.cpp:2494 src/frontends/qt4/GuiView.cpp:3778
 msgid "Canceled."
 msgstr "Otkaži."
 
@@ -29778,9 +29781,9 @@ msgstr ""
 msgid "Select document"
 msgstr "Izaberite glavni dokument"
 
-#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:2153
-#: src/frontends/qt4/GuiView.cpp:2209 src/frontends/qt4/GuiView.cpp:2481
-#: src/frontends/qt4/GuiView.cpp:2525
+#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:2155
+#: src/frontends/qt4/GuiView.cpp:2211 src/frontends/qt4/GuiView.cpp:2483
+#: src/frontends/qt4/GuiView.cpp:2527
 msgid "LyX Documents (*.lyx)"
 msgstr "LyX dokumenta (*.lyx)"
 
@@ -29841,388 +29844,405 @@ msgstr ""
 msgid "Variable"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:216
+#: src/frontends/qt4/GuiDocument.cpp:222
 msgid "Module not found!"
 msgstr "Modul nije nađen!"
 
-#: src/frontends/qt4/GuiDocument.cpp:565
+#: src/frontends/qt4/GuiDocument.cpp:571
 msgid "Press button to check validity..."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:615
+#: src/frontends/qt4/GuiDocument.cpp:621
 msgid "Layout is valid!"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:616
+#: src/frontends/qt4/GuiDocument.cpp:622
 msgid "Layout is invalid!"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:628
+#: src/frontends/qt4/GuiDocument.cpp:634
 #, fuzzy
 msgid "Conversion to current format impossible!"
 msgstr "Konvertovanje u format za učitavanje..."
 
-#: src/frontends/qt4/GuiDocument.cpp:629
+#: src/frontends/qt4/GuiDocument.cpp:635
 #, fuzzy
 msgid "Conversion to current stable format impossible."
 msgstr "Konvertovanje u format za učitavanje..."
 
-#: src/frontends/qt4/GuiDocument.cpp:634
+#: src/frontends/qt4/GuiDocument.cpp:640
 #, fuzzy
 msgid "Convert to current format"
 msgstr "Konvertovanje u format za učitavanje..."
 
-#: src/frontends/qt4/GuiDocument.cpp:659
+#: src/frontends/qt4/GuiDocument.cpp:665
 msgid "Document Settings"
 msgstr "Podešavanja Dokumenta"
 
-#: src/frontends/qt4/GuiDocument.cpp:769 src/frontends/qt4/GuiInclude.cpp:49
+#: src/frontends/qt4/GuiDocument.cpp:775 src/frontends/qt4/GuiInclude.cpp:49
 #: src/frontends/qt4/Menus.cpp:1461
 msgid "Child Document"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:770
+#: src/frontends/qt4/GuiDocument.cpp:776
 #, fuzzy
 msgid "Include to Output"
 msgstr "datum (izlaz)"
 
-#: src/frontends/qt4/GuiDocument.cpp:863
+#: src/frontends/qt4/GuiDocument.cpp:869
 msgid "10"
 msgstr "10"
 
-#: src/frontends/qt4/GuiDocument.cpp:864
+#: src/frontends/qt4/GuiDocument.cpp:870
 msgid "11"
 msgstr "11"
 
-#: src/frontends/qt4/GuiDocument.cpp:865
+#: src/frontends/qt4/GuiDocument.cpp:871
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt4/GuiDocument.cpp:869
+#: src/frontends/qt4/GuiDocument.cpp:875
 msgid "None (no fontenc)"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:877
+#: src/frontends/qt4/GuiDocument.cpp:883
 msgid ""
 "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)\n"
 "You need to install the package \"fontspec\" to use this feature"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:909
+#: src/frontends/qt4/GuiDocument.cpp:915
 msgid "empty"
 msgstr "prazno"
 
-#: src/frontends/qt4/GuiDocument.cpp:910
+#: src/frontends/qt4/GuiDocument.cpp:916
 msgid "plain"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:911
+#: src/frontends/qt4/GuiDocument.cpp:917
 msgid "headings"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:912
+#: src/frontends/qt4/GuiDocument.cpp:918
 msgid "fancy"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:921
+#: src/frontends/qt4/GuiDocument.cpp:927
 msgid "US letter"
 msgstr "US pismo"
 
-#: src/frontends/qt4/GuiDocument.cpp:922
+#: src/frontends/qt4/GuiDocument.cpp:928
 msgid "US legal"
 msgstr "US pravni"
 
-#: src/frontends/qt4/GuiDocument.cpp:923
+#: src/frontends/qt4/GuiDocument.cpp:929
 msgid "US executive"
 msgstr "US izvršni"
 
-#: src/frontends/qt4/GuiDocument.cpp:924
+#: src/frontends/qt4/GuiDocument.cpp:930
 msgid "A0"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:925
+#: src/frontends/qt4/GuiDocument.cpp:931
 msgid "A1"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:926
+#: src/frontends/qt4/GuiDocument.cpp:932
 msgid "A2"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:927
+#: src/frontends/qt4/GuiDocument.cpp:933
 msgid "A3"
 msgstr "A3"
 
-#: src/frontends/qt4/GuiDocument.cpp:928
+#: src/frontends/qt4/GuiDocument.cpp:934
 msgid "A4"
 msgstr "A4"
 
-#: src/frontends/qt4/GuiDocument.cpp:929
+#: src/frontends/qt4/GuiDocument.cpp:935
 msgid "A5"
 msgstr "A5"
 
-#: src/frontends/qt4/GuiDocument.cpp:930
+#: src/frontends/qt4/GuiDocument.cpp:936
 msgid "A6"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:931
+#: src/frontends/qt4/GuiDocument.cpp:937
 msgid "B0"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:932
+#: src/frontends/qt4/GuiDocument.cpp:938
 msgid "B1"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:933
+#: src/frontends/qt4/GuiDocument.cpp:939
 msgid "B2"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:934
+#: src/frontends/qt4/GuiDocument.cpp:940
 msgid "B3"
 msgstr "B3"
 
-#: src/frontends/qt4/GuiDocument.cpp:935
+#: src/frontends/qt4/GuiDocument.cpp:941
 msgid "B4"
 msgstr "B4"
 
-#: src/frontends/qt4/GuiDocument.cpp:936
+#: src/frontends/qt4/GuiDocument.cpp:942
 msgid "B5"
 msgstr "B5"
 
-#: src/frontends/qt4/GuiDocument.cpp:937
+#: src/frontends/qt4/GuiDocument.cpp:943
 msgid "B6"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:938
+#: src/frontends/qt4/GuiDocument.cpp:944
 msgid "C0"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:939
+#: src/frontends/qt4/GuiDocument.cpp:945
 msgid "C1"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:940
+#: src/frontends/qt4/GuiDocument.cpp:946
 msgid "C2"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:941
+#: src/frontends/qt4/GuiDocument.cpp:947
 msgid "C3"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:942
+#: src/frontends/qt4/GuiDocument.cpp:948
 msgid "C4"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:943
+#: src/frontends/qt4/GuiDocument.cpp:949
 msgid "C5"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:944
+#: src/frontends/qt4/GuiDocument.cpp:950
 msgid "C6"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:945
+#: src/frontends/qt4/GuiDocument.cpp:951
 msgid "JIS B0"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:946
+#: src/frontends/qt4/GuiDocument.cpp:952
 msgid "JIS B1"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:947
+#: src/frontends/qt4/GuiDocument.cpp:953
 msgid "JIS B2"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:948
+#: src/frontends/qt4/GuiDocument.cpp:954
 msgid "JIS B3"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:949
+#: src/frontends/qt4/GuiDocument.cpp:955
 msgid "JIS B4"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:950
+#: src/frontends/qt4/GuiDocument.cpp:956
 msgid "JIS B5"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:951
+#: src/frontends/qt4/GuiDocument.cpp:957
 msgid "JIS B6"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1067
+#: src/frontends/qt4/GuiDocument.cpp:1073
 msgid "Language Default (no inputenc)"
 msgstr "Podrazumevani jezik (bez inputenc)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1121
+#: src/frontends/qt4/GuiDocument.cpp:1127
 msgid "Numbered"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1122
+#: src/frontends/qt4/GuiDocument.cpp:1128
 msgid "Appears in TOC"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1198
+#: src/frontends/qt4/GuiDocument.cpp:1204
 #, fuzzy
 msgid "Package"
 msgstr "paket"
 
-#: src/frontends/qt4/GuiDocument.cpp:1198
+#: src/frontends/qt4/GuiDocument.cpp:1204
 #, fuzzy
 msgid "Load automatically"
 msgstr "Automatska pomoć"
 
-#: src/frontends/qt4/GuiDocument.cpp:1199
+#: src/frontends/qt4/GuiDocument.cpp:1205
 msgid "Load always"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1199
+#: src/frontends/qt4/GuiDocument.cpp:1205
 #, fuzzy
 msgid "Do not load"
 msgstr "Dokument nije učitan "
 
-#: src/frontends/qt4/GuiDocument.cpp:1212
+#: src/frontends/qt4/GuiDocument.cpp:1218
 msgid "The AMS LaTeX packages are always used"
 msgstr "AMS LaTeX paket se uvek koristi"
 
-#: src/frontends/qt4/GuiDocument.cpp:1215
+#: src/frontends/qt4/GuiDocument.cpp:1221
 #, fuzzy, c-format
 msgid "The LaTeX package %1$s is always used"
 msgstr "LaTeX paket esint se uvek koristi"
 
-#: src/frontends/qt4/GuiDocument.cpp:1220
+#: src/frontends/qt4/GuiDocument.cpp:1226
 #, fuzzy
 msgid "The AMS LaTeX packages are never used"
 msgstr "AMS LaTeX paket se uvek koristi"
 
-#: src/frontends/qt4/GuiDocument.cpp:1223
+#: src/frontends/qt4/GuiDocument.cpp:1229
 #, fuzzy, c-format
 msgid "The LaTeX package %1$s is never used"
 msgstr "LaTeX paket esint se uvek koristi"
 
-#: src/frontends/qt4/GuiDocument.cpp:1339
-#: src/frontends/qt4/GuiDocument.cpp:2292
+#: src/frontends/qt4/GuiDocument.cpp:1345
+#: src/frontends/qt4/GuiDocument.cpp:2323
 #, fuzzy, c-format
 msgid "%1$s [Class '%2$s']"
 msgstr "%1$s i %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:1342
+#: src/frontends/qt4/GuiDocument.cpp:1348
 #, c-format
 msgid ""
 "Class not found by LyX. Please check if you have the matching %1$s class and "
 "all required packages (%2$s) installed."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1469
-#: src/frontends/qt4/GuiDocument.cpp:1569
+#: src/frontends/qt4/GuiDocument.cpp:1477
+#: src/frontends/qt4/GuiDocument.cpp:1584
 #, fuzzy
 msgid "Input listings parameters below. Enter ? for a list of parameters."
 msgstr "Ulazni unos parametara. Unesite ? za listu parametara."
 
-#: src/frontends/qt4/GuiDocument.cpp:1473
+#: src/frontends/qt4/GuiDocument.cpp:1484
 msgid "Document Class"
 msgstr "Klasa Dokumenta"
 
-#: src/frontends/qt4/GuiDocument.cpp:1475
+#: src/frontends/qt4/GuiDocument.cpp:1486
 msgid "Modules"
 msgstr "Moduli"
 
-#: src/frontends/qt4/GuiDocument.cpp:1476
+#: src/frontends/qt4/GuiDocument.cpp:1487
 #, fuzzy
 msgid "Local Layout"
 msgstr "&Lokalni izgled ..."
 
-#: src/frontends/qt4/GuiDocument.cpp:1478
+#: src/frontends/qt4/GuiDocument.cpp:1489
 msgid "Text Layout"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1480
+#: src/frontends/qt4/GuiDocument.cpp:1491
 msgid "Page Margins"
 msgstr "Margine Strane"
 
-#: src/frontends/qt4/GuiDocument.cpp:1482 src/frontends/qt4/GuiPrefs.cpp:1185
+#: src/frontends/qt4/GuiDocument.cpp:1493 src/frontends/qt4/GuiPrefs.cpp:1185
 msgid "Colors"
 msgstr "Boje"
 
-#: src/frontends/qt4/GuiDocument.cpp:1483
+#: src/frontends/qt4/GuiDocument.cpp:1494
 msgid "Numbering & TOC"
 msgstr "Brojevi & Sadržaj"
 
-#: src/frontends/qt4/GuiDocument.cpp:1485
+#: src/frontends/qt4/GuiDocument.cpp:1496
 #, fuzzy
 msgid "Indexes"
 msgstr "Indeks"
 
-#: src/frontends/qt4/GuiDocument.cpp:1486
+#: src/frontends/qt4/GuiDocument.cpp:1497
 msgid "PDF Properties"
 msgstr "PDF osobine"
 
-#: src/frontends/qt4/GuiDocument.cpp:1487
+#: src/frontends/qt4/GuiDocument.cpp:1498
 msgid "Math Options"
 msgstr "Mat Opcije"
 
-#: src/frontends/qt4/GuiDocument.cpp:1488
+#: src/frontends/qt4/GuiDocument.cpp:1499
 msgid "Float Placement"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1490
+#: src/frontends/qt4/GuiDocument.cpp:1501
 msgid "Bullets"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1492
+#: src/frontends/qt4/GuiDocument.cpp:1503
 msgid "Formats[[output]]"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1493
+#: src/frontends/qt4/GuiDocument.cpp:1504
 msgid "LaTeX Preamble"
 msgstr "LaTeX Preambula"
 
-#: src/frontends/qt4/GuiDocument.cpp:1744
-#: src/frontends/qt4/GuiDocument.cpp:1774
+#: src/frontends/qt4/GuiDocument.cpp:1598
+msgid "Pygments driver command not found!"
+msgstr ""
+
+#: src/frontends/qt4/GuiDocument.cpp:1599
+msgid ""
+"The driver command necessary to use the minted package\n"
+"(pygmentize) has not been found. Make sure you have\n"
+"the python-pygments module installed or, if the driver\n"
+"is named differently, to add the following line to the\n"
+"document preamble:\n"
+"\n"
+"\\AtBeginDocument{\\renewcommand{\\MintedPygmentize}{driver}}\n"
+"\n"
+"where 'driver' is name of the driver command."
+msgstr ""
+
+#: src/frontends/qt4/GuiDocument.cpp:1775
+#: src/frontends/qt4/GuiDocument.cpp:1805
 #, fuzzy
 msgid "&Default..."
 msgstr "Podrazumevano"
 
-#: src/frontends/qt4/GuiDocument.cpp:2074
-#: src/frontends/qt4/GuiDocument.cpp:3616
-#: src/frontends/qt4/GuiDocument.cpp:3625
-#: src/frontends/qt4/GuiDocument.cpp:3634
-#: src/frontends/qt4/GuiDocument.cpp:3643
+#: src/frontends/qt4/GuiDocument.cpp:2105
+#: src/frontends/qt4/GuiDocument.cpp:3650
+#: src/frontends/qt4/GuiDocument.cpp:3659
+#: src/frontends/qt4/GuiDocument.cpp:3668
+#: src/frontends/qt4/GuiDocument.cpp:3677
 msgid " (not installed)"
 msgstr " (nije istalisano)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2099
+#: src/frontends/qt4/GuiDocument.cpp:2130
 msgid "Non-TeX Fonts Default"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2101
+#: src/frontends/qt4/GuiDocument.cpp:2132
 #, fuzzy
 msgid " (not available)"
 msgstr "Modul nije dostupan"
 
-#: src/frontends/qt4/GuiDocument.cpp:2102
+#: src/frontends/qt4/GuiDocument.cpp:2133
 #, fuzzy
 msgid "Class Default (TeX Fonts)"
 msgstr "Koristi podrazumevane klase"
 
-#: src/frontends/qt4/GuiDocument.cpp:2140
-#: src/frontends/qt4/GuiDocument.cpp:2167
+#: src/frontends/qt4/GuiDocument.cpp:2171
+#: src/frontends/qt4/GuiDocument.cpp:2198
 #, fuzzy
 msgid "Class Default"
 msgstr "Koristi podrazumevane klase"
 
-#: src/frontends/qt4/GuiDocument.cpp:2244
+#: src/frontends/qt4/GuiDocument.cpp:2275
 msgid "Layouts|#o#O"
 msgstr "Layouts|#o#O"
 
-#: src/frontends/qt4/GuiDocument.cpp:2246
+#: src/frontends/qt4/GuiDocument.cpp:2277
 msgid "LyX Layout (*.layout)"
 msgstr "LyX Layout (*.layout)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2248
-#: src/frontends/qt4/GuiDocument.cpp:2257
+#: src/frontends/qt4/GuiDocument.cpp:2279
+#: src/frontends/qt4/GuiDocument.cpp:2288
 msgid "Local layout file"
 msgstr "Lokalni layout dokument "
 
-#: src/frontends/qt4/GuiDocument.cpp:2258
+#: src/frontends/qt4/GuiDocument.cpp:2289
 msgid ""
 "The layout file you have selected is a local layout\n"
 "file, not one in the system or user directory.\n"
@@ -30230,174 +30250,174 @@ msgid ""
 "move the layout file to a different directory."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2262
+#: src/frontends/qt4/GuiDocument.cpp:2293
 msgid "&Set Layout"
 msgstr "&Podesi Layout"
 
-#: src/frontends/qt4/GuiDocument.cpp:2276
+#: src/frontends/qt4/GuiDocument.cpp:2307
 msgid "Unable to read local layout file."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2293
+#: src/frontends/qt4/GuiDocument.cpp:2324
 #, fuzzy
 msgid "This is a local layout file."
 msgstr "Lokalni layout dokument "
 
-#: src/frontends/qt4/GuiDocument.cpp:2307
+#: src/frontends/qt4/GuiDocument.cpp:2338
 msgid "Select master document"
 msgstr "Izaberite glavni dokument"
 
-#: src/frontends/qt4/GuiDocument.cpp:2311
+#: src/frontends/qt4/GuiDocument.cpp:2342
 msgid "LyX Files (*.lyx)"
 msgstr "LyX datoteke (*.lyx)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2335
-#: src/frontends/qt4/GuiDocument.cpp:2615
-#: src/frontends/qt4/GuiDocument.cpp:4055
+#: src/frontends/qt4/GuiDocument.cpp:2366
+#: src/frontends/qt4/GuiDocument.cpp:2646
+#: src/frontends/qt4/GuiDocument.cpp:4089
 msgid "Unapplied changes"
 msgstr "Neprihvati promene "
 
-#: src/frontends/qt4/GuiDocument.cpp:2336
-#: src/frontends/qt4/GuiDocument.cpp:2616
-#: src/frontends/qt4/GuiDocument.cpp:4056
+#: src/frontends/qt4/GuiDocument.cpp:2367
+#: src/frontends/qt4/GuiDocument.cpp:2647
+#: src/frontends/qt4/GuiDocument.cpp:4090
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2338
-#: src/frontends/qt4/GuiDocument.cpp:2618
-#: src/frontends/qt4/GuiDocument.cpp:4058
+#: src/frontends/qt4/GuiDocument.cpp:2369
+#: src/frontends/qt4/GuiDocument.cpp:2649
+#: src/frontends/qt4/GuiDocument.cpp:4092
 msgid "&Dismiss"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2349
-#: src/frontends/qt4/GuiDocument.cpp:4066
+#: src/frontends/qt4/GuiDocument.cpp:2380
+#: src/frontends/qt4/GuiDocument.cpp:4100
 msgid "Unable to set document class."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2493
+#: src/frontends/qt4/GuiDocument.cpp:2524
 #, fuzzy
 msgid "Basic numerical"
 msgstr "&Podrazumevano (numeričko)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2496
+#: src/frontends/qt4/GuiDocument.cpp:2527
 msgid "Author-year"
 msgstr "Autor-godina"
 
-#: src/frontends/qt4/GuiDocument.cpp:2499
+#: src/frontends/qt4/GuiDocument.cpp:2530
 #, fuzzy
 msgid "Author-number"
 msgstr "Autor-godina"
 
-#: src/frontends/qt4/GuiDocument.cpp:2542
+#: src/frontends/qt4/GuiDocument.cpp:2573
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s i %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:2549
+#: src/frontends/qt4/GuiDocument.cpp:2580
 #, c-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:2554
+#: src/frontends/qt4/GuiDocument.cpp:2585
 #, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s, %2$s, i %3$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:2568
+#: src/frontends/qt4/GuiDocument.cpp:2599
 #, c-format
 msgid "%1$s (unavailable)"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2654
+#: src/frontends/qt4/GuiDocument.cpp:2685
 msgid "Module provided by document class."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2661
+#: src/frontends/qt4/GuiDocument.cpp:2692
 #, fuzzy, c-format
 msgid "Category: %1$s."
 msgstr "Ka&tegorija:"
 
-#: src/frontends/qt4/GuiDocument.cpp:2669
+#: src/frontends/qt4/GuiDocument.cpp:2700
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr "Zahtevani paket(i): %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2675
+#: src/frontends/qt4/GuiDocument.cpp:2706
 msgid "or"
 msgstr "ili"
 
-#: src/frontends/qt4/GuiDocument.cpp:2678
+#: src/frontends/qt4/GuiDocument.cpp:2709
 #, fuzzy, c-format
 msgid "Modules required: %1$s."
 msgstr "Zahtevani modul: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2687
+#: src/frontends/qt4/GuiDocument.cpp:2718
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:2693
+#: src/frontends/qt4/GuiDocument.cpp:2724
 msgid "WARNING: Some required packages are unavailable!"
 msgstr "UPOZORENJE: Neki potrebni paketi su neraspoloživi!"
 
-#: src/frontends/qt4/GuiDocument.cpp:3258
+#: src/frontends/qt4/GuiDocument.cpp:3290
 #, fuzzy
 msgid "per part"
 msgstr "Format papira"
 
-#: src/frontends/qt4/GuiDocument.cpp:3260
+#: src/frontends/qt4/GuiDocument.cpp:3292
 #, fuzzy
 msgid "per chapter"
 msgstr "Glava \\thechapter"
 
-#: src/frontends/qt4/GuiDocument.cpp:3262
+#: src/frontends/qt4/GuiDocument.cpp:3294
 #, fuzzy
 msgid "per section"
 msgstr "izbor"
 
-#: src/frontends/qt4/GuiDocument.cpp:3264
+#: src/frontends/qt4/GuiDocument.cpp:3296
 #, fuzzy
 msgid "per subsection"
 msgstr "\\Alph{subsection}."
 
-#: src/frontends/qt4/GuiDocument.cpp:3265
+#: src/frontends/qt4/GuiDocument.cpp:3297
 #, fuzzy
 msgid "per child document"
 msgstr "Novi dokument"
 
-#: src/frontends/qt4/GuiDocument.cpp:3550
+#: src/frontends/qt4/GuiDocument.cpp:3582
 msgid "[No options predefined]"
 msgstr "[Bez predefinisanih opcija]"
 
-#: src/frontends/qt4/GuiDocument.cpp:3773
+#: src/frontends/qt4/GuiDocument.cpp:3807
 msgid "C&ustomize Hyperref Options"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:3775
+#: src/frontends/qt4/GuiDocument.cpp:3809
 #, fuzzy
 msgid "&Use Hyperref Support"
 msgstr "&Koristi hyperref podršku"
 
-#: src/frontends/qt4/GuiDocument.cpp:4077
+#: src/frontends/qt4/GuiDocument.cpp:4111
 msgid "Can't set layout!"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:4078
+#: src/frontends/qt4/GuiDocument.cpp:4112
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:4174
+#: src/frontends/qt4/GuiDocument.cpp:4208
 msgid "Not Found"
 msgstr "Nije Nađeno"
 
-#: src/frontends/qt4/GuiDocument.cpp:4234
+#: src/frontends/qt4/GuiDocument.cpp:4268
 msgid "Assigned master does not include this file"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:4235
+#: src/frontends/qt4/GuiDocument.cpp:4269
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -30405,11 +30425,11 @@ msgid ""
 "feature."
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:4239
+#: src/frontends/qt4/GuiDocument.cpp:4273
 msgid "Could not load master"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:4240
+#: src/frontends/qt4/GuiDocument.cpp:4274
 #, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -30418,7 +30438,7 @@ msgstr ""
 "Glavni dokument '%1$s'\n"
 "ne može biti učitan."
 
-#: src/frontends/qt4/GuiDocument.cpp:4377
+#: src/frontends/qt4/GuiDocument.cpp:4411
 #, fuzzy
 msgid "(Module name: %1)"
 msgstr "Zahtevani modul: %1$s."
@@ -30481,7 +30501,7 @@ msgstr "Osnova desno"
 msgid "Scale%"
 msgstr ""
 
-#: src/frontends/qt4/GuiExternal.cpp:662
+#: src/frontends/qt4/GuiExternal.cpp:665
 msgid "Select external file"
 msgstr ""
 
@@ -31653,89 +31673,89 @@ msgstr "verzija"
 msgid "unknown version"
 msgstr "nepoznata verzija"
 
-#: src/frontends/qt4/GuiView.cpp:659
+#: src/frontends/qt4/GuiView.cpp:660
 #, c-format
 msgid "Successful export to format: %1$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:668
+#: src/frontends/qt4/GuiView.cpp:669
 #, c-format
 msgid "Error while exporting format: %1$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:671
+#: src/frontends/qt4/GuiView.cpp:672
 #, c-format
 msgid "Successful preview of format: %1$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:674
+#: src/frontends/qt4/GuiView.cpp:675
 #, c-format
 msgid "Error while previewing format: %1$s"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:992
+#: src/frontends/qt4/GuiView.cpp:993
 #, fuzzy
 msgid "Exit LyX"
 msgstr "&Izađi iz LyX-a"
 
-#: src/frontends/qt4/GuiView.cpp:993
+#: src/frontends/qt4/GuiView.cpp:994
 msgid "LyX could not be closed because documents are being processed by LyX."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1144
+#: src/frontends/qt4/GuiView.cpp:1145
 #, c-format
 msgid "%1$s (modified externally)"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:1258
+#: src/frontends/qt4/GuiView.cpp:1259
 msgid "Welcome to LyX!"
 msgstr "Dobrodošli u LyX!"
 
-#: src/frontends/qt4/GuiView.cpp:1743
+#: src/frontends/qt4/GuiView.cpp:1745
 #, fuzzy
 msgid "Automatic save done."
 msgstr "Automatsko ažuriranje "
 
-#: src/frontends/qt4/GuiView.cpp:1744
+#: src/frontends/qt4/GuiView.cpp:1746
 #, fuzzy
 msgid "Automatic save failed!"
 msgstr "Automatsko čuvanje je propalo!"
 
-#: src/frontends/qt4/GuiView.cpp:1800
+#: src/frontends/qt4/GuiView.cpp:1802
 msgid "Command not allowed without any document open"
 msgstr "Naredba nije dozvoljena bez otvaranja dokumenta"
 
-#: src/frontends/qt4/GuiView.cpp:1908 src/frontends/qt4/GuiView.cpp:1925
+#: src/frontends/qt4/GuiView.cpp:1910 src/frontends/qt4/GuiView.cpp:1927
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2040 src/frontends/qt4/GuiView.cpp:2053
+#: src/frontends/qt4/GuiView.cpp:2042 src/frontends/qt4/GuiView.cpp:2055
 msgid "Zoom level cannot be less than %1$d%."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2148
+#: src/frontends/qt4/GuiView.cpp:2150
 msgid "Select template file"
 msgstr "Izaberite šablonske datoteke"
 
-#: src/frontends/qt4/GuiView.cpp:2150 src/frontends/qt4/GuiView.cpp:2518
+#: src/frontends/qt4/GuiView.cpp:2152 src/frontends/qt4/GuiView.cpp:2520
 msgid "Templates|#T#t"
 msgstr "Šabloni|#T#t"
 
-#: src/frontends/qt4/GuiView.cpp:2177
+#: src/frontends/qt4/GuiView.cpp:2179
 msgid "Document not loaded."
 msgstr "Dokument nije učitan."
 
-#: src/frontends/qt4/GuiView.cpp:2205
+#: src/frontends/qt4/GuiView.cpp:2207
 msgid "Select document to open"
 msgstr "Izaberite dokumenta koji želite da otvorite"
 
-#: src/frontends/qt4/GuiView.cpp:2207 src/frontends/qt4/GuiView.cpp:2345
-#: src/frontends/qt4/GuiView.cpp:2478
+#: src/frontends/qt4/GuiView.cpp:2209 src/frontends/qt4/GuiView.cpp:2347
+#: src/frontends/qt4/GuiView.cpp:2480
 msgid "Examples|#E#e"
 msgstr "Primer|#E#e"
 
-#: src/frontends/qt4/GuiView.cpp:2235
+#: src/frontends/qt4/GuiView.cpp:2237
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -31743,48 +31763,48 @@ msgid ""
 "does not exist."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2252
+#: src/frontends/qt4/GuiView.cpp:2254
 #, c-format
 msgid "Opening document %1$s..."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2257
+#: src/frontends/qt4/GuiView.cpp:2259
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s je otvoren."
 
-#: src/frontends/qt4/GuiView.cpp:2260
+#: src/frontends/qt4/GuiView.cpp:2262
 msgid "Version control detected."
 msgstr "Kontrolna verzija je detektovana."
 
-#: src/frontends/qt4/GuiView.cpp:2262
+#: src/frontends/qt4/GuiView.cpp:2264
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Nemogu da otvorim dokument %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2292
+#: src/frontends/qt4/GuiView.cpp:2294
 msgid "Couldn't import file"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2293
+#: src/frontends/qt4/GuiView.cpp:2295
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2340
+#: src/frontends/qt4/GuiView.cpp:2342
 #, c-format
 msgid "Select %1$s file to import"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2375
+#: src/frontends/qt4/GuiView.cpp:2377
 #, c-format
 msgid ""
 "The file name '%1$s' is invalid!\n"
 "Aborting import."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2402 src/frontends/qt4/GuiView.cpp:2585
-#: src/frontends/qt4/GuiView.cpp:2687
+#: src/frontends/qt4/GuiView.cpp:2404 src/frontends/qt4/GuiView.cpp:2587
+#: src/frontends/qt4/GuiView.cpp:2689
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -31792,38 +31812,38 @@ msgid ""
 "Do you want to overwrite that document?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2404 src/frontends/qt4/GuiView.cpp:2589
-#: src/frontends/qt4/GuiView.cpp:2691
+#: src/frontends/qt4/GuiView.cpp:2406 src/frontends/qt4/GuiView.cpp:2591
+#: src/frontends/qt4/GuiView.cpp:2693
 msgid "Overwrite document?"
 msgstr "Upisati preko postojećeg dokumenta?"
 
-#: src/frontends/qt4/GuiView.cpp:2413
+#: src/frontends/qt4/GuiView.cpp:2415
 #, c-format
 msgid "Importing %1$s..."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2416
+#: src/frontends/qt4/GuiView.cpp:2418
 msgid "imported."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2418
+#: src/frontends/qt4/GuiView.cpp:2420
 msgid "file not imported!"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2443
+#: src/frontends/qt4/GuiView.cpp:2445
 #, fuzzy
 msgid "newfile"
 msgstr "Uključi dokument"
 
-#: src/frontends/qt4/GuiView.cpp:2476
+#: src/frontends/qt4/GuiView.cpp:2478
 msgid "Select LyX document to insert"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2516
+#: src/frontends/qt4/GuiView.cpp:2518
 msgid "Choose a filename to save document as"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2548
+#: src/frontends/qt4/GuiView.cpp:2550
 #, c-format
 msgid ""
 "The file\n"
@@ -31833,17 +31853,17 @@ msgid ""
 "Do you want to choose a new filename?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2552
+#: src/frontends/qt4/GuiView.cpp:2554
 msgid "Chosen File Already Open"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2553 src/frontends/qt4/GuiView.cpp:2575
-#: src/frontends/qt4/GuiView.cpp:2591 src/frontends/qt4/GuiView.cpp:2692
-#: src/frontends/qt4/GuiView.cpp:2736
+#: src/frontends/qt4/GuiView.cpp:2555 src/frontends/qt4/GuiView.cpp:2577
+#: src/frontends/qt4/GuiView.cpp:2593 src/frontends/qt4/GuiView.cpp:2694
+#: src/frontends/qt4/GuiView.cpp:2738
 msgid "&Rename"
 msgstr "&Promeni ime"
 
-#: src/frontends/qt4/GuiView.cpp:2568
+#: src/frontends/qt4/GuiView.cpp:2570
 #, c-format
 msgid ""
 "The document %1$s is already registered.\n"
@@ -31851,31 +31871,31 @@ msgid ""
 "Do you want to choose a new name?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2573
+#: src/frontends/qt4/GuiView.cpp:2575
 #, fuzzy
 msgid "Rename document?"
 msgstr "Sačuvaj novi dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:2573
+#: src/frontends/qt4/GuiView.cpp:2575
 #, fuzzy
 msgid "Copy document?"
 msgstr "Novi dokument"
 
-#: src/frontends/qt4/GuiView.cpp:2575
+#: src/frontends/qt4/GuiView.cpp:2577
 #, fuzzy
 msgid "&Copy"
 msgstr "Kopiraj "
 
-#: src/frontends/qt4/GuiView.cpp:2634
+#: src/frontends/qt4/GuiView.cpp:2636
 #, fuzzy
 msgid "Choose a filename to export the document as"
 msgstr "Izaberite ime dokumenta da sačuvate ubačenu grafiku kao"
 
-#: src/frontends/qt4/GuiView.cpp:2638
+#: src/frontends/qt4/GuiView.cpp:2640
 msgid "Guess from extension (*.*)"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2732
+#: src/frontends/qt4/GuiView.cpp:2734
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -31883,15 +31903,15 @@ msgid ""
 "Do you want to rename the document and try again?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2735
+#: src/frontends/qt4/GuiView.cpp:2737
 msgid "Rename and save?"
 msgstr "Promeni ime i sačuvaj?"
 
-#: src/frontends/qt4/GuiView.cpp:2736
+#: src/frontends/qt4/GuiView.cpp:2738
 msgid "&Retry"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2781
+#: src/frontends/qt4/GuiView.cpp:2783
 #, c-format
 msgid ""
 "Last view on document %1$s is being closed.\n"
@@ -31904,26 +31924,26 @@ msgid ""
 "  Tools->Preferences->Look&Feel->UserInterface\n"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:2790
+#: src/frontends/qt4/GuiView.cpp:2792
 #, fuzzy
 msgid "Close or hide document?"
 msgstr "Novi dokument"
 
-#: src/frontends/qt4/GuiView.cpp:2791
+#: src/frontends/qt4/GuiView.cpp:2793
 #, fuzzy
 msgid "&Hide"
 msgstr "Sakrij tab"
 
-#: src/frontends/qt4/GuiView.cpp:2881
+#: src/frontends/qt4/GuiView.cpp:2883
 #, fuzzy
 msgid "Close document"
 msgstr "Novi dokument"
 
-#: src/frontends/qt4/GuiView.cpp:2882
+#: src/frontends/qt4/GuiView.cpp:2884
 msgid "Document could not be closed because it is being processed by LyX."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3000 src/frontends/qt4/GuiView.cpp:3115
+#: src/frontends/qt4/GuiView.cpp:3002 src/frontends/qt4/GuiView.cpp:3117
 #, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -31931,11 +31951,11 @@ msgid ""
 "Do you want to save the document?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3003 src/frontends/qt4/GuiView.cpp:3118
+#: src/frontends/qt4/GuiView.cpp:3005 src/frontends/qt4/GuiView.cpp:3120
 msgid "Save new document?"
 msgstr "Sačuvaj novi dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:3009
+#: src/frontends/qt4/GuiView.cpp:3011
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -31943,7 +31963,7 @@ msgid ""
 "Do you want to save the document or discard the changes?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3012
+#: src/frontends/qt4/GuiView.cpp:3014
 #, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -31951,20 +31971,20 @@ msgid ""
 "Do you want to save the document or discard it entirely?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3016 src/frontends/qt4/GuiView.cpp:3112
+#: src/frontends/qt4/GuiView.cpp:3018 src/frontends/qt4/GuiView.cpp:3114
 msgid "Save changed document?"
 msgstr "Da li želite da sačuvate promenjen dokument?"
 
-#: src/frontends/qt4/GuiView.cpp:3016
+#: src/frontends/qt4/GuiView.cpp:3018
 #, fuzzy
 msgid "Save document?"
 msgstr "Sačuvaj dokument"
 
-#: src/frontends/qt4/GuiView.cpp:3018
+#: src/frontends/qt4/GuiView.cpp:3020
 msgid "&Discard"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3109
+#: src/frontends/qt4/GuiView.cpp:3111
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -31972,7 +31992,7 @@ msgid ""
 "Do you want to save the document?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3143
+#: src/frontends/qt4/GuiView.cpp:3145
 #, c-format
 msgid ""
 "Document \n"
@@ -31980,129 +32000,129 @@ msgid ""
 " has been externally modified. Reload now? Any local changes will be lost."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3146
+#: src/frontends/qt4/GuiView.cpp:3148
 msgid "Reload externally changed document?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3191
+#: src/frontends/qt4/GuiView.cpp:3193
 #, fuzzy
 msgid "Document could not be checked in."
 msgstr "Provera pravopisa ne može biti pokrenuta\n"
 
-#: src/frontends/qt4/GuiView.cpp:3235
+#: src/frontends/qt4/GuiView.cpp:3237
 msgid "Error when setting the locking property."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3281
+#: src/frontends/qt4/GuiView.cpp:3283
 msgid "Directory is not accessible."
 msgstr "Direktorijum nije dostupan."
 
-#: src/frontends/qt4/GuiView.cpp:3357
+#: src/frontends/qt4/GuiView.cpp:3359
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3421
+#: src/frontends/qt4/GuiView.cpp:3423
 #, c-format
 msgid "No buffer for file: %1$s."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3431
+#: src/frontends/qt4/GuiView.cpp:3433
 #, fuzzy
 msgid "Inverse Search Failed"
 msgstr "Polje za pretragu:"
 
-#: src/frontends/qt4/GuiView.cpp:3432
+#: src/frontends/qt4/GuiView.cpp:3434
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You may need to update the viewed document."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3505
+#: src/frontends/qt4/GuiView.cpp:3507
 #, fuzzy
 msgid "Export Error"
 msgstr "Izvezi|I"
 
-#: src/frontends/qt4/GuiView.cpp:3506
+#: src/frontends/qt4/GuiView.cpp:3508
 #, fuzzy
 msgid "Error cloning the Buffer."
 msgstr "Greška prilikom konvertovanja u format za učitavanje"
 
-#: src/frontends/qt4/GuiView.cpp:3630 src/frontends/qt4/GuiView.cpp:3650
+#: src/frontends/qt4/GuiView.cpp:3632 src/frontends/qt4/GuiView.cpp:3652
 msgid "Exporting ..."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3659
+#: src/frontends/qt4/GuiView.cpp:3661
 #, fuzzy
 msgid "Previewing ..."
 msgstr "Pregled učiavanja"
 
-#: src/frontends/qt4/GuiView.cpp:3693
+#: src/frontends/qt4/GuiView.cpp:3695
 msgid "Document not loaded"
 msgstr "Dokument nije učitan "
 
-#: src/frontends/qt4/GuiView.cpp:3770
+#: src/frontends/qt4/GuiView.cpp:3772
 msgid "Select file to insert"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3773
+#: src/frontends/qt4/GuiView.cpp:3775
 msgid "All Files (*)"
 msgstr "Sve datoteke (*)"
 
-#: src/frontends/qt4/GuiView.cpp:3798
+#: src/frontends/qt4/GuiView.cpp:3800
 #, c-format
 msgid ""
 "The current version will be lost. Are you sure you want to load the version "
 "on disk of the document %1$s?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3805
+#: src/frontends/qt4/GuiView.cpp:3807
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
 "version of the document %1$s?"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3808
+#: src/frontends/qt4/GuiView.cpp:3810
 #, fuzzy
 msgid "Revert to saved document?"
 msgstr "Ponovno učitavanje sačuvanog dokumenta?"
 
-#: src/frontends/qt4/GuiView.cpp:3836
+#: src/frontends/qt4/GuiView.cpp:3838
 msgid "Saving all documents..."
 msgstr "Sačuvaj sva dokumenta..."
 
-#: src/frontends/qt4/GuiView.cpp:3846
+#: src/frontends/qt4/GuiView.cpp:3848
 msgid "All documents saved."
 msgstr "Sva dokumenta su sačuvana"
 
-#: src/frontends/qt4/GuiView.cpp:3884
+#: src/frontends/qt4/GuiView.cpp:3886
 msgid "Toolbars unlocked."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3886
+#: src/frontends/qt4/GuiView.cpp:3888
 msgid "Toolbars locked."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3899
+#: src/frontends/qt4/GuiView.cpp:3901
 #, c-format
 msgid "Icon size set to %1$dx%2$d."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:3989
+#: src/frontends/qt4/GuiView.cpp:3991
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s nepoznata komanda!"
 
-#: src/frontends/qt4/GuiView.cpp:4093
+#: src/frontends/qt4/GuiView.cpp:4095
 msgid "Zoom level is now %1$d%"
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:4148
+#: src/frontends/qt4/GuiView.cpp:4150
 msgid "Please, preview the document first."
 msgstr ""
 
-#: src/frontends/qt4/GuiView.cpp:4164
+#: src/frontends/qt4/GuiView.cpp:4166
 #, fuzzy
 msgid "Couldn't proceed."
 msgstr "Ne mogu da kopiram dokument"
@@ -32117,27 +32137,27 @@ msgstr "LyX pregled"
 msgid "%1[[preview format name]] Preview"
 msgstr ""
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1573
+#: src/frontends/qt4/GuiWorkArea.cpp:1574
 msgid "Close File"
 msgstr "Zatvori Dokument"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2089
+#: src/frontends/qt4/GuiWorkArea.cpp:2090
 msgid "%1 (read only)"
 msgstr ""
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2093
+#: src/frontends/qt4/GuiWorkArea.cpp:2094
 msgid "%1 (modified externally)"
 msgstr ""
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2113
+#: src/frontends/qt4/GuiWorkArea.cpp:2114
 msgid "Hide tab"
 msgstr "Sakrij tab"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2115
+#: src/frontends/qt4/GuiWorkArea.cpp:2116
 msgid "Close tab"
 msgstr "Zatvori tab"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2232
+#: src/frontends/qt4/GuiWorkArea.cpp:2233
 msgid "<b>The file %1 changed on disk.</b>"
 msgstr ""
 
@@ -32676,7 +32696,7 @@ msgid ""
 "%2$s."
 msgstr ""
 
-#: src/insets/InsetExternal.cpp:404
+#: src/insets/InsetExternal.cpp:403
 #, c-format
 msgid "External template %1$s is not installed"
 msgstr ""
@@ -33082,7 +33102,7 @@ msgid "Expect a number with an optional * before it"
 msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:427
-#: src/insets/InsetListingsParams.cpp:756
+#: src/insets/InsetListingsParams.cpp:750
 msgid "auto, last or a number"
 msgstr ""
 
@@ -33102,105 +33122,95 @@ msgid ""
 "a listing inset)"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:662
-#, fuzzy
-msgid "Number floats by chapter"
-msgstr "Broj nivoa"
-
-#: src/insets/InsetListingsParams.cpp:665
-#, fuzzy
-msgid "Number floats by section"
-msgstr "Broj jednačine po odeljku "
-
-#: src/insets/InsetListingsParams.cpp:670
+#: src/insets/InsetListingsParams.cpp:664
 msgid "default: _minted-<jobname>"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:749
+#: src/insets/InsetListingsParams.cpp:743
 msgid "Sets encoding expected by Pygments"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:759
+#: src/insets/InsetListingsParams.cpp:753
 msgid "A latex family such as tt, sf, rm"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:762
+#: src/insets/InsetListingsParams.cpp:756
 msgid "A latex series such as m, b, c, bx, sb"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:765
+#: src/insets/InsetListingsParams.cpp:759
 msgid "A latex name such as \\small"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:768
+#: src/insets/InsetListingsParams.cpp:762
 msgid "A latex shape such as n, it, sl, sc"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:787
+#: src/insets/InsetListingsParams.cpp:781
 msgid "A range of lines such as {1,3-4}"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:796
+#: src/insets/InsetListingsParams.cpp:790
 msgid ""
 "Enter one of the supported languages. However, if you are defining a listing "
 "inset, it is better using the  language combo box, unless you need to enter "
 "a language not offered there, otherwise the combo box will be disabled."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:819
+#: src/insets/InsetListingsParams.cpp:813
 msgid "File encoding used by Pygments for highlighting"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:822
+#: src/insets/InsetListingsParams.cpp:816
 msgid "Apply Python 3 highlighting"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:835
+#: src/insets/InsetListingsParams.cpp:829
 msgid "A macro. Default: \\textvisiblespace"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:839
+#: src/insets/InsetListingsParams.cpp:833
 msgid "For PHP only"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:842
+#: src/insets/InsetListingsParams.cpp:836
 msgid "The style used by Pygments"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:855
+#: src/insets/InsetListingsParams.cpp:849
 msgid "A macro to redefine visible tabs"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:862
-#: src/insets/InsetListingsParams.cpp:865
+#: src/insets/InsetListingsParams.cpp:856
+#: src/insets/InsetListingsParams.cpp:859
 msgid "Enables latex code in comments"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:879
+#: src/insets/InsetListingsParams.cpp:873
 msgid "Invalid (empty) listing parameter name."
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:895
+#: src/insets/InsetListingsParams.cpp:889
 #, c-format
 msgid "Available listing parameters are %1$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:898
+#: src/insets/InsetListingsParams.cpp:892
 #, c-format
 msgid "Available listings parameters containing string \"%1$s\" are %2$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:909
+#: src/insets/InsetListingsParams.cpp:903
 #, c-format
 msgid "Parameter %1$s: "
 msgstr "Parametar %1$s: "
 
-#: src/insets/InsetListingsParams.cpp:922
+#: src/insets/InsetListingsParams.cpp:916
 #, c-format
 msgid "Unknown listing parameter name: %1$s"
 msgstr ""
 
-#: src/insets/InsetListingsParams.cpp:925
+#: src/insets/InsetListingsParams.cpp:919
 #, c-format
 msgid "Parameters starting with '%1$s': %2$s"
 msgstr "Parametri počinju sa '%1$s': %2$s"
@@ -33497,15 +33507,15 @@ msgstr "Greška prilikom generisanja pixmap-a"
 msgid "No image"
 msgstr "Nema slike"
 
-#: src/insets/RenderPreview.cpp:116
+#: src/insets/RenderPreview.cpp:106
 msgid "Preview loading"
 msgstr "Pregled učiavanja"
 
-#: src/insets/RenderPreview.cpp:119
+#: src/insets/RenderPreview.cpp:109
 msgid "Preview ready"
 msgstr "Pregled spreman"
 
-#: src/insets/RenderPreview.cpp:122
+#: src/insets/RenderPreview.cpp:112
 msgid "Preview failed"
 msgstr "Pregled nije uspeo"
 
@@ -33716,25 +33726,25 @@ msgstr "Ne mogu da promenim broj redova u '%1$s'"
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Ne mogu da promenim broj kolona u '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:715 src/mathed/InsetMathNest.cpp:1744
-#: src/mathed/InsetMathNest.cpp:1887
+#: src/mathed/InsetMathNest.cpp:715 src/mathed/InsetMathNest.cpp:1742
+#: src/mathed/InsetMathNest.cpp:1885
 msgid "Autocorrect Off ('!' to enter)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:1019
+#: src/mathed/InsetMathNest.cpp:1017
 msgid "create new math text environment ($...$)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:1022
+#: src/mathed/InsetMathNest.cpp:1020
 msgid "entered math text mode (textrm)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:1044
+#: src/mathed/InsetMathNest.cpp:1042
 #, fuzzy
 msgid "Regular expression editor mode"
 msgstr "Regularni izraz"
 
-#: src/mathed/InsetMathNest.cpp:1749 src/mathed/InsetMathNest.cpp:1889
+#: src/mathed/InsetMathNest.cpp:1747 src/mathed/InsetMathNest.cpp:1887
 msgid "Autocorrect On (<space> to exit)"
 msgstr ""
 
@@ -33765,20 +33775,20 @@ msgstr "Ne mogu da promenim broj kolona u '%1$s'"
 msgid "Macro: %1$s"
 msgstr " Makro: %1$s: "
 
-#: src/mathed/MathMacroTemplate.cpp:489
+#: src/mathed/MathMacroTemplate.cpp:501
 msgid "optional"
 msgstr ""
 
-#: src/mathed/MathMacroTemplate.cpp:1270
+#: src/mathed/MathMacroTemplate.cpp:1282
 msgid "math macro"
 msgstr "mat makro"
 
-#: src/mathed/MathMacroTemplate.cpp:1377
+#: src/mathed/MathMacroTemplate.cpp:1389
 #, fuzzy, c-format
 msgid "Math Macro: \\%1$s"
 msgstr "Matematički Makroi"
 
-#: src/mathed/MathMacroTemplate.cpp:1392
+#: src/mathed/MathMacroTemplate.cpp:1404
 #, c-format
 msgid "Invalid macro! \\%1$s"
 msgstr ""
@@ -34106,6 +34116,18 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Nepoznati korisnik"
+
+#, fuzzy
+#~ msgid "Use &minted"
+#~ msgstr "Koristi ulazno kod&iranje"
+
+#, fuzzy
+#~ msgid "Number floats by chapter"
+#~ msgstr "Broj nivoa"
+
+#, fuzzy
+#~ msgid "Number floats by section"
+#~ msgstr "Broj jednačine po odeljku "
 
 #~ msgid "Use BibTeX's default numerical styles"
 #~ msgstr "Koristi BibTeX's podrazumevane numeričke stilove "
