@@ -122,15 +122,12 @@ void drawMarkers(PainterInfo const & pi, MathRow::Element const & e,
 		pi.pain.text(l, y + dim.des - namedim.des - 1, e.inset->name(), font);
 	}
 
-	// Lower corners
-	if (e.marker == InsetMath::MARKER
-	    || e.marker == InsetMath::MARKER2) {
-		int const d = y + dim.descent();
-		pi.pain.line(l, d - 3, l, d, pen_color);
-		pi.pain.line(r, d - 3, r, d, pen_color);
-		pi.pain.line(l, d, l + 3, d, pen_color);
-		pi.pain.line(r - 3, d, r, d, pen_color);
-	}
+	// Lower corners in all cases
+	int const d = y + dim.descent();
+	pi.pain.line(l, d - 3, l, d, pen_color);
+	pi.pain.line(r, d - 3, r, d, pen_color);
+	pi.pain.line(l, d, l + 3, d, pen_color);
+	pi.pain.line(r - 3, d, r, d, pen_color);
 
 	// Upper corners
 	if (e.marker == InsetMath::BOX_MARKER
