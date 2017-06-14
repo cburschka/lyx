@@ -25,6 +25,8 @@ public:
 	///
 	InsetMathFracBase(Buffer * buf, idx_type ncells = 2);
 	///
+	marker_type marker(BufferView const *) const { return MARKER2; }
+	///
 	bool idxUpDown(Cursor &, bool up) const;
 	///
 	bool idxBackward(Cursor &) const { return false; }
@@ -124,8 +126,6 @@ public:
 	void normalize(NormalStream &) const;
 	/// Generalized fractions are of inner class (see The TeXbook, p.292)
 	MathClass mathClass() const { return MC_INNER; }
-	///
-	marker_type marker(BufferView const *) const { return MARKER2; }
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
