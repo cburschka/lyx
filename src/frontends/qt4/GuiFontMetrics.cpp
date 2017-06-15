@@ -16,10 +16,6 @@
 #include "qt_helpers.h"
 
 #include "Dimension.h"
-#include "Language.h"
-#include "LyXRC.h"
-
-#include "insets/Inset.h"
 
 #include "support/convert.h"
 #include "support/lassert.h"
@@ -448,19 +444,20 @@ bool GuiFontMetrics::breakAt(docstring & s, int & x, bool const rtl, bool const 
 void GuiFontMetrics::rectText(docstring const & str,
 	int & w, int & ascent, int & descent) const
 {
-	static int const d = Inset::TEXT_TO_INSET_OFFSET / 2;
+	// FIXME: let offset depend on font (this is Inset::TEXT_TO_OFFSET)
+	int const offset = 4;
 
-	w = width(str) + Inset::TEXT_TO_INSET_OFFSET;
-	ascent = metrics_.ascent() + d;
-	descent = metrics_.descent() + d;
+	w = width(str) + offset;
+	ascent = metrics_.ascent() + offset / 2;
+	descent = metrics_.descent() + offset / 2;
 }
 
 
-void GuiFontMetrics::buttonText(docstring const & str,
+void GuiFontMetrics::buttonText(docstring const & str, const int offset,
 	int & w, int & ascent, int & descent) const
 {
 	rectText(str, w, ascent, descent);
-	w += Inset::TEXT_TO_INSET_OFFSET;
+	w += offset;
 }
 
 

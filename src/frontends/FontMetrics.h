@@ -125,9 +125,10 @@ public:
 		int & descent) const = 0;
 	/**
 	 * fill in width,ascent,descent with the values for the
-	 * given string in the font for a button.
+	 * given string in the font for a button with given offset.
 	 */
 	virtual void buttonText(docstring const & str,
+		const int offset,
 		int & width,
 		int & ascent,
 		int & descent) const = 0;

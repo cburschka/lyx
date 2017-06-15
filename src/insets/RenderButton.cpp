@@ -45,13 +45,9 @@ void RenderButton::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontInfo font = inherit_font_ ? mi.base.font : sane_font;
 	font.decSize();
-	frontend::FontMetrics const & fm =
-		theFontMetrics(font);
+	frontend::FontMetrics const & fm = theFontMetrics(font);
 
-	if (editable_)
-		fm.buttonText(text_, dim.wid, dim.asc, dim.des);
-	else
-		fm.rectText(text_, dim.wid, dim.asc, dim.des);
+	fm.buttonText(text_, Inset::TEXT_TO_INSET_OFFSET, dim.wid, dim.asc, dim.des);
 
 	dim_ = dim;
 }
@@ -65,10 +61,13 @@ void RenderButton::draw(PainterInfo & pi, int x, int y) const
 	font.decSize();
 
 	if (editable_) {
-		pi.pain.buttonText(x, y, text_, font, renderState());
+		pi.pain.buttonText(x, y, text_, font,
+		                   renderState() ? Color_buttonhoverbg : Color_buttonbg,
+		                   Color_buttonframe, Inset::TEXT_TO_INSET_OFFSET);
 	} else {
-		pi.pain.rectText(x, y, text_, font,
-				 Color_commandbg, Color_commandframe);
+		pi.pain.buttonText(x, y, text_, font,
+		                   Color_commandbg, Color_commandframe,
+		                   Inset::TEXT_TO_INSET_OFFSET);
 	}
 }
 

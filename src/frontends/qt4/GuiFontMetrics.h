@@ -58,6 +58,7 @@ public:
 		int & ascent,
 		int & descent) const;
 	virtual void buttonText(docstring const & str,
+		const int offset,
 		int & width,
 		int & ascent,
 		int & descent) const;

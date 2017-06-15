@@ -148,7 +148,7 @@ Dimension InsetCollapsable::dimensionCollapsed(BufferView const & bv) const
 	FontInfo labelfont(getLabelfont());
 	labelfont.realize(sane_font);
 	theFontMetrics(labelfont).buttonText(
-		buttonLabel(bv), dim.wid, dim.asc, dim.des);
+		buttonLabel(bv), TEXT_TO_INSET_OFFSET, dim.wid, dim.asc, dim.des);
 	return dim;
 }
 
@@ -247,7 +247,8 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		labelfont.setColor(labelColor());
 		labelfont.realize(pi.base.font);
 		pi.pain.buttonText(x, y, buttonLabel(bv), labelfont,
-		                   view_[&bv].mouse_hover_);
+		                   view_[&bv].mouse_hover_ ? Color_buttonhoverbg : Color_buttonbg,
+		                   Color_buttonframe, TEXT_TO_INSET_OFFSET);
 		// Draw the change tracking cue on the label, unless RowPainter already
 		// takes care of it.
 		if (canPaintChange(bv))

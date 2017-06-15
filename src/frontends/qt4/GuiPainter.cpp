@@ -21,10 +21,7 @@
 #include "qt_helpers.h"
 
 #include "Font.h"
-#include "Language.h"
 #include "LyXRC.h"
-
-#include "insets/Inset.h"
 
 #include "support/debug.h"
 #include "support/lassert.h"
@@ -557,31 +554,10 @@ void GuiPainter::textDecoration(FontInfo const & f, int x, int y, int width)
 static int max(int a, int b) { return a > b ? a : b; }
 
 
-void GuiPainter::button(int x, int y, int w, int h, bool mouseHover)
-{
-	if (mouseHover)
-		fillRectangle(x, y, w, h, Color_buttonhoverbg);
-	else
-		fillRectangle(x, y, w, h, Color_buttonbg);
-	buttonFrame(x, y, w, h);
-}
-
-
-void GuiPainter::buttonFrame(int x, int y, int w, int h)
-{
-	line(x, y, x, y + h - 1, Color_buttonframe);
-	line(x - 1 + w, y, x - 1 + w, y + h - 1, Color_buttonframe);
-	line(x, y - 1, x - 1 + w, y - 1, Color_buttonframe);
-	line(x, y + h - 1, x - 1 + w, y + h - 1, Color_buttonframe);
-}
-
-
 void GuiPainter::rectText(int x, int y, docstring const & str,
 	FontInfo const & font, Color back, Color frame)
 {
-	int width;
-	int ascent;
-	int descent;
+	int width, ascent, descent;
 
 	FontMetrics const & fm = theFontMetrics(font);
 	fm.rectText(str, width, ascent, descent);
@@ -593,24 +569,25 @@ void GuiPainter::rectText(int x, int y, docstring const & str,
 	if (frame != Color_none)
 		rectangle(x, y - ascent, width, ascent + descent, frame);
 
+	// FIXME: let offset depend on font
 	text(x + 3, y, str, font);
 }
 
 
-void GuiPainter::buttonText(int x, int y, docstring const & str,
-	FontInfo const & font, bool mouseHover)
+void GuiPainter::buttonText(int x, int baseline, docstring const & s,
+	FontInfo const & font, Color back, Color frame, int offset)
 {
-	int width;
-	int ascent;
-	int descent;
+	int width, ascent, descent;
 
 	FontMetrics const & fm = theFontMetrics(font);
-	fm.buttonText(str, width, ascent, descent);
+	fm.buttonText(s, offset, width, ascent, descent);
 
-	static int const d = Inset::TEXT_TO_INSET_OFFSET / 2;
+	static int const d = offset / 2;
 
-	button(x + d, y - ascent, width - Inset::TEXT_TO_INSET_OFFSET, descent + ascent, mouseHover);
-	text(x + Inset::TEXT_TO_INSET_OFFSET, y, str, font);
+	fillRectangle(x + d + 1, baseline - ascent + 1, width - offset - 1,
+			      ascent + descent - 1, back);
+	rectangle(x + d, baseline - ascent, width - offset, ascent + descent, frame);
+	text(x + offset, baseline, s, font);
 }
 
 

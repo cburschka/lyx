@@ -123,9 +123,6 @@ public:
 	/// draw a pixel
 	virtual void point(int x, int y, Color) = 0;
 
-	/// draw a filled rectangle with the shape of a 3D button
-	virtual void button(int x, int y, int w, int h, bool mouseHover) = 0;
-
 	/// draw an image from the image cache
 	virtual void image(int x, int y, int w, int h,
 		graphics::Image const & image) = 0;
@@ -172,7 +169,7 @@ public:
 
 	/// draw a string and enclose it inside a button frame
 	virtual void buttonText(int x, int baseline, docstring const & s,
-		FontInfo const & font, bool mouseHover) = 0;
+		FontInfo const & font, Color back, Color frame, int offset) = 0;
 
 	/// draw a character of a preedit string for cjk support.
 	virtual int preeditText(int x, int y,

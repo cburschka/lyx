@@ -130,7 +130,7 @@ public:
 
 	/// draw a string and enclose it inside a button frame
 	virtual void buttonText(int x, int baseline, docstring const & s,
-		FontInfo const & font, bool mouseHover);
+		FontInfo const & font, Color back, Color frame, int offset);
 
 	/// start monochrome painting mode, i.e. map every color into [min,max]
 	virtual void enterMonochromeMode(Color const & min,
@@ -146,9 +146,6 @@ public:
 	 */
 	virtual void rectText(int x, int baseline, docstring const & str,
 		FontInfo const & font, Color back, Color frame);
-
-	/// draw a filled rectangle with the shape of a 3D button
-	virtual void button(int x, int y, int w, int h, bool mouseHover);
 
 	/// draw a character of a preedit string for cjk support.
 	virtual int preeditText(int x, int y,
@@ -176,9 +173,6 @@ private:
 	/// check the font, and if set, draw double underline
 	void doubleUnderline(FontInfo const & f,
 		int x, int y, int width);
-
-	/// draw a bevelled button border
-	void buttonFrame(int x, int y, int w, int h);
 
 	/// set pen parameters
 	void setQPainterPen(QColor const & col,
