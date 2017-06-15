@@ -1745,20 +1745,24 @@ bool Text::dissolveInset(Cursor & cur)
 	cur.recordUndoInset();
 	cur.setMark(false);
 	cur.selHandle(false);
-	// save position
+	// save position inside inset
 	pos_type spos = cur.pos();
 	pit_type spit = cur.pit();
 	ParagraphList plist;
 	if (cur.lastpit() != 0 || cur.lastpos() != 0)
 		plist = paragraphs();
 	cur.popBackward();
-	// store cursor offset
+	// update cursor offset
 	if (spit == 0)
 		spos += cur.pos();
 	spit += cur.pit();
-	Buffer & b = *cur.buffer();
-	cur.paragraph().eraseChar(cur.pos(), b.params().track_changes);
+	// remember position outside inset to delete inset later
+	// we do not do it now to avoid memory reuse issues (see #10667).
+	DocIterator inset_it = cur;
+	// jump over inset
+	++cur.pos();
 
+	Buffer & b = *cur.buffer();
 	if (!plist.empty()) {
 		// see bug 7319
 		// we clear the cache so that we won't get conflicts with labels
@@ -1783,6 +1787,9 @@ bool Text::dissolveInset(Cursor & cur)
 		cur.pit() = min(cur.lastpit(), spit);
 		cur.pos() = min(cur.lastpos(), spos);
 	}
+
+	// delete the inset now
+	inset_it.paragraph().eraseChar(inset_it.pos(), b.params().track_changes);
 
 	cur.forceBufferUpdate();
 
