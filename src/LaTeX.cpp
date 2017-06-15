@@ -797,7 +797,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				}
 			}
 
-			if (prefixIs(token, "! Incomplete \\ifx")) {
+			if (prefixIs(token, "! Incomplete \\if")) {
 				// bug 10666. At this point its not clear we finish with error.
 				wait_for_error = desc;
 				continue;
