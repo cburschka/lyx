@@ -785,7 +785,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 			if (contains(token, "LaTeX Error:"))
 				retval |= LATEX_ERROR;
 
-			if (prefixIs(token, "! File ended while scanning")){
+			if (prefixIs(token, "! File ended while scanning")) {
 				if (prefixIs(token, "! File ended while scanning use of \\Hy@setref@link.")){
 					// bug 7344. We must rerun LaTeX if hyperref has been toggled.
 					retval |= ERROR_RERUN;
@@ -795,6 +795,12 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 					wait_for_error = desc;
 					continue;
 				}
+			}
+
+			if (prefixIs(token, "! Incomplete \\ifx")) {
+				// bug 10666. At this point its not clear we finish with error.
+				wait_for_error = desc;
+				continue;
 			}
 
 			if (prefixIs(token, "! Paragraph ended before \\Hy@setref@link was complete.")){
@@ -808,6 +814,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				string errstr;
 				int count = 0;
 				errstr = wait_for_error;
+				wait_for_error.clear();
 				do {
 					if (!getline(ifs, tmp))
 						break;
@@ -923,6 +930,9 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 						 from_local8bit("Missing glyphs!"),
 						 from_local8bit(token),
 						 child_name);
+			} else if (!wait_for_error.empty()) {
+				// We collect information until we know we have an error.
+				wait_for_error += token + '\n';
 			}
 		}
 	}
