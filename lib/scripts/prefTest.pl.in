@@ -10,11 +10,18 @@ my $bindir = "@CMAKE_BINARY_DIR@";
 
 my $userdir = "$bindir/Testing/.lyx";
 
+sub createConvLine($);
+sub getConverters($);
+sub getConverter($);
+sub getNext($);
+
 my %allowedKeys = (
   "use_converter_needauth_forbidden" => ["true", "false"],
   "use_converter_needauth" => ["true", "false"],
   "allow_geometry_session" => ["false"],
     );
+
+my %Converter = ();
 
 chdir($bindir);
 
@@ -24,6 +31,9 @@ my %Subst = ();
 
 my $ctestparams = 0;
 my @ctestpars = ();
+
+&getConverters($userdir);
+
 for my $arg ("allow_geometry_session=false", @ARGV) {
   if ($ctestparams) {
     push(@ctestpars, $arg);
@@ -64,6 +74,21 @@ if (%Subst) { # Try to do something only if a substitute is requested
 	    $l = "\\$k $Subst{$k}->[0]\n";
 	    $Subst{$k}->[1] = 1;
 	  }
+	  elsif ($l =~ /^\\converter\s+(.*)$/) {
+	    my $entry = &getConverter($1);
+	    if (defined($entry)) {
+	      my $key = $entry->[0];
+	      if (defined($Converter{$key})) {
+		if (defined($Converter{$key}->[2])) {
+		  $l = "";
+		}
+		else {
+		  $Converter{$key}->[2] = 1;
+		  $l = &createConvLine($key);
+		}
+	      }
+	    }
+	  }
 	}
 	print FO $l;
       }
@@ -71,6 +96,13 @@ if (%Subst) { # Try to do something only if a substitute is requested
     for my $k (keys %Subst) {
       if ($Subst{$k}->[1] == 0) {
 	print FO "\\$k $Subst{$k}->[0]\n";
+      }
+    }
+    for my $key (keys %Converter) {
+      if (! defined($Converter{$key}->[2])) {
+	$Converter{$key}->[2] = 1;
+	my $l = &createConvLine($key);
+	print FO $l;
       }
     }
     rename("$userdir/preferences.tmp", "$userdir/preferences");
@@ -83,3 +115,67 @@ if (@ctestpars) {
 }
 
 exit($res);
+
+sub createConvLine($)
+{
+  my ($key) = @_;
+  my $l = "\\converter $key \"$Converter{$key}->[0]\" \"$Converter{$key}->[1]\"\n";
+  return($l);
+}
+
+sub getConverters($)
+{
+  my ($userdir) = @_;
+
+  if (open(FI, "$userdir/lyxrc.defaults")) {
+    while (my $l = <FI>) {
+      if ($l =~ s/^\s*\\converter\s+//) {
+	my $entry = &getConverter($l);
+	if (defined($entry)) {
+	  $Converter{$entry->[0]} = $entry->[1];
+	}
+      }
+    }
+  }
+}
+
+sub getConverter($)
+{
+  my ($l) = @_;
+  chomp($l);
+  my ($from, $to, $cmd, $par);
+  ($l, $from) = getNext($l);
+  return undef if ($from !~ /tex$/);
+  ($l, $to) = getNext($l);
+  return undef if ($to !~ /^(dvi|dvi3|pdf|pdf[23456])$/);
+  ($l, $cmd) = getNext($l);
+  if ($cmd !~ /\-shell-escape/) {
+    if ($cmd =~ /^(\S+)\s*(.*)$/) {
+      $cmd = "$1 -shell-escape $2";
+      $cmd =~ s/\s+$//;
+    }
+  }
+  ($l, $par) = getNext($l);
+  return undef if ($par !~ /^latex/);
+  my $key = "\"$from\" \"$to\"";
+  return([$key, [$cmd, $par]]);
+}
+
+sub getNext($)
+{
+  my ($l) = @_;
+  my $val = undef;
+
+  if ($l =~ /^\s*\"([^\"]*)\"\s*(.*)$/) {
+    $val = $1;
+    $l = $2;
+  }
+  elsif ($l =~ /^\s*(\S+)\s*(.*)$/) {
+    $val = $1;
+    $l = $2;
+  }
+  else {
+    exit(7);
+  }
+  return($l, $val);
+}

@@ -316,7 +316,7 @@ sub checkForLatexCommand($)
 	}
       }
       elsif ($stack[0]->{name} =~ /^CommandInset\s+include$/) {
-	if ($param =~ /^(verbatiminput\*?|lstinputlisting)$/) {
+	if ($param =~ /^(verbatiminput\*?|lstinputlisting|inputminted)$/) {
 	  my $rElem = newMatch("search" => '^filename\s+\"(.+)\"',
 				"filetype" => "copy_only",
 				"result" => ["filename \"", "", "\""]);
