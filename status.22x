@@ -47,6 +47,9 @@ What's new
 - Assure properly nested \begin{lang} and \end{lang} tags even when
   no language package is selected (bug 10685).
 
+- Catch "! Incomplete \if[x]" LaTeX error (bug 10666).
+
+
 * LYX2LYX
 
 
