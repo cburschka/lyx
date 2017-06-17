@@ -80,6 +80,7 @@ def main(argv):
                  'test-insets.tex', \
                  'test-insets-basic.tex', \
                  'test-memoir.tex', \
+                 'test-minted.tex', \
                  'test-modules.tex', \
                  'test-refstyle-theorems.tex', \
                  'test-scr.tex', \
