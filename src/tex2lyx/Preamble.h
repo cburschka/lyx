@@ -48,6 +48,8 @@ public:
 	std::string fontCJK() const { return h_font_cjk; }
 	///
 	void fontCJK(std::string const & f) { h_font_cjk_set = true; h_font_cjk = f; }
+	///
+	bool minted() const { return h_use_minted; }
 	/// The document language
 	std::string docLanguage() const { return h_language; }
 	/// The language of text which is not explicitly marked
@@ -216,6 +218,7 @@ private:
 	std::string h_use_default_options;
 	std::string h_use_hyperref;
 	bool h_use_refstyle;
+	bool h_use_minted;
 
 	/*!
 	 * Add package \p name with options \p options to used_packages.

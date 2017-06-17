@@ -321,6 +321,15 @@ char const * const known_tones[] = {"15", "51", "45", "12", "454", 0};
 // string to store the float type to be able to determine the type of subfloats
 string float_type = "";
 
+// string to store the float status of minted listings
+string minted_float = "";
+
+// whether a caption has been parsed for a floating minted listing
+bool minted_float_has_caption = false;
+
+// The caption for non-floating minted listings
+string minted_nonfloat_caption = "";
+
 
 /// splits "x=z, y=b" into a map and an ordered keyword vector
 void split_map(string const & s, map<string, string> & res, vector<string> & keys)
@@ -1312,12 +1321,22 @@ void parse_outer_box(Parser & p, ostream & os, unsigned flags, bool outer,
 }
 
 
-void parse_listings(Parser & p, ostream & os, Context & parent_context, bool in_line)
+void parse_listings(Parser & p, ostream & os, Context & parent_context,
+		    bool in_line, bool use_minted)
 {
 	parent_context.check_layout(os);
 	begin_inset(os, "listings\n");
-	if (p.hasOpt()) {
-		string arg = p.verbatimOption();
+	string arg = p.hasOpt() ? p.verbatimOption() : string();
+	if (use_minted) {
+		string const language = p.getArg('{', '}');
+		p.skip_spaces(true);
+		arg += string(arg.empty() ? "" : ",") + "language=" + language;
+		if (!minted_float.empty()) {
+			arg += string(arg.empty() ? "" : ",") + minted_float;
+			minted_nonfloat_caption.clear();
+		}
+	}
+	if (!arg.empty()) {
 		os << "lstparams " << '"' << arg << '"' << '\n';
 		if (arg.find("\\color") != string::npos)
 	                preamble.registerAutomaticallyLoadedPackage("color");
@@ -1329,6 +1348,19 @@ void parse_listings(Parser & p, ostream & os, Context & parent_context, bool in_
 	os << "status collapsed\n";
 	Context context(true, parent_context.textclass);
 	context.layout = &parent_context.textclass.plainLayout();
+	if (use_minted && prefixIs(minted_nonfloat_caption, "[t]")) {
+		minted_nonfloat_caption.erase(0,3);
+		os << "\n\\begin_layout Plain Layout\n";
+		begin_inset(os, "Caption Standard\n");
+		Context newcontext(true, context.textclass,
+				   context.layout, 0, context.font);
+		newcontext.check_layout(os);
+		os << minted_nonfloat_caption << "\n";
+		newcontext.check_end_layout(os);
+		end_inset(os);
+		os << "\n\\end_layout\n";
+		minted_nonfloat_caption.clear();
+	}
 	string s;
 	if (in_line) {
 		// set catcodes to verbatim early, just in case.
@@ -1337,10 +1369,41 @@ void parse_listings(Parser & p, ostream & os, Context & parent_context, bool in_
 		//FIXME: handler error condition
 		s = p.verbatimStuff(delim).second;
 //		context.new_paragraph(os);
-	} else
+	} else if (use_minted) {
+		s = p.verbatimEnvironment("minted");
+	} else {
 		s = p.verbatimEnvironment("lstlisting");
+	}
 	output_ert(os, s, context);
-	end_inset(os);
+	if (use_minted && prefixIs(minted_nonfloat_caption, "[b]")) {
+		minted_nonfloat_caption.erase(0,3);
+		os << "\n\\begin_layout Plain Layout\n";
+		begin_inset(os, "Caption Standard\n");
+		Context newcontext(true, context.textclass,
+				   context.layout, 0, context.font);
+		newcontext.check_layout(os);
+		os << minted_nonfloat_caption << "\n";
+		newcontext.check_end_layout(os);
+		end_inset(os);
+		os << "\n\\end_layout\n";
+		minted_nonfloat_caption.clear();
+	}
+	// Don't close the inset here for floating minted listings.
+	// It will be closed at the end of the listing environment.
+	if (!use_minted || minted_float.empty())
+		end_inset(os);
+	else {
+		eat_whitespace(p, os, parent_context, true);
+		Token t = p.get_token();
+		if (t.asInput() != "\\end") {
+			// If anything follows, collect it into a caption.
+			minted_float_has_caption = true;
+			os << "\n\\begin_layout Plain Layout\n"; // outer layout
+			begin_inset(os, "Caption Standard\n");
+			os << "\n\\begin_layout Plain Layout\n"; // inner layout
+		}
+		p.putback();
+	}
 }
 
 
@@ -1707,9 +1770,104 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		preamble.registerAutomaticallyLoadedPackage("framed");
 	}
 
-	else if (name == "lstlisting") {
+	else if (name == "listing") {
+		minted_float = "float";
 		eat_whitespace(p, os, parent_context, false);
-		parse_listings(p, os, parent_context, false);
+		string const opt = p.hasOpt() ? p.getArg('[', ']') : string();
+		if (!opt.empty())
+			minted_float += "=" + opt;
+		// If something precedes \begin{minted}, we output it at the end
+		// as a caption, in order to keep it inside the listings inset.
+		eat_whitespace(p, os, parent_context, true);
+		p.pushPosition();
+		Token const & t = p.get_token();
+		p.skip_spaces(true);
+		string const envname = p.next_token().cat() == catBegin
+						? p.getArg('{', '}') : string();
+		bool prologue = t.asInput() != "\\begin" || envname != "minted";
+		p.popPosition();
+		minted_float_has_caption = false;
+		string content = parse_text_snippet(p, FLAG_END, outer,
+		                                    parent_context);
+		size_t i = content.find("\\begin_inset listings");
+		bool minted_env = i != string::npos;
+		string caption;
+		if (prologue) {
+			caption = content.substr(0, i);
+			content.erase(0, i);
+		}
+		parent_context.check_layout(os);
+		if (minted_env && minted_float_has_caption) {
+			eat_whitespace(p, os, parent_context, true);
+			os << content << "\n";
+			if (!caption.empty())
+				os << caption << "\n";
+			os << "\n\\end_layout\n"; // close inner layout
+			end_inset(os);            // close caption inset
+			os << "\n\\end_layout\n"; // close outer layout
+		} else if (!caption.empty()) {
+			if (!minted_env) {
+				begin_inset(os, "listings\n");
+				os << "lstparams " << '"' << minted_float << '"' << '\n';
+				os << "inline false\n";
+				os << "status collapsed\n";
+			}
+			os << "\n\\begin_layout Plain Layout\n";
+			begin_inset(os, "Caption Standard\n");
+			Context newcontext(true, parent_context.textclass,
+			                   0, 0, parent_context.font);
+			newcontext.check_layout(os);
+			os << caption << "\n";
+			newcontext.check_end_layout(os);
+			end_inset(os);
+			os << "\n\\end_layout\n";
+		} else if (content.empty()) {
+			begin_inset(os, "listings\n");
+			os << "lstparams " << '"' << minted_float << '"' << '\n';
+			os << "inline false\n";
+			os << "status collapsed\n";
+		} else {
+			os << content << "\n";
+		}
+		end_inset(os); // close listings inset
+		parent_context.check_end_layout(os);
+		parent_context.new_paragraph(os);
+		p.skip_spaces();
+		minted_float.clear();
+		minted_float_has_caption = false;
+	}
+
+	else if (name == "lstlisting" || name == "minted") {
+		bool use_minted = name == "minted";
+		eat_whitespace(p, os, parent_context, false);
+		if (use_minted && minted_float.empty()) {
+			// look ahead for a bottom caption
+			p.pushPosition();
+			bool found_end_minted = false;
+			while (!found_end_minted && p.good()) {
+				Token const & t = p.get_token();
+				p.skip_spaces();
+				string const envname =
+					p.next_token().cat() == catBegin
+						? p.getArg('{', '}') : string();
+				found_end_minted = t.asInput() == "\\end"
+							&& envname == "minted";
+			}
+			eat_whitespace(p, os, parent_context, true);
+			Token const & t = p.get_token();
+			p.skip_spaces(true);
+			if (t.asInput() == "\\lyxmintcaption") {
+				string const pos = p.getArg('[', ']');
+				if (pos == "b") {
+					string const caption =
+						parse_text_snippet(p, FLAG_ITEM,
+							false, parent_context);
+					minted_nonfloat_caption = "[b]" + caption;
+				}
+			}
+			p.popPosition();
+		}
+		parse_listings(p, os, parent_context, false, use_minted);
 		p.skip_spaces();
 	}
 
@@ -2503,10 +2661,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		else if (p.isParagraph()) {
-			if (context.new_layout_allowed)
-				context.new_paragraph(os);
-			else
-				output_ert_inset(os, "\\par ", context);
+			// In minted floating listings we will collect
+			// everything into the caption, where multiple
+			// paragraphs are forbidden.
+			if (minted_float.empty()) {
+				if (context.new_layout_allowed)
+					context.new_paragraph(os);
+				else
+					output_ert_inset(os, "\\par ", context);
+			} else
+				os << ' ';
 			eat_whitespace(p, os, context, true);
 		}
 
@@ -3165,9 +3329,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			end_inset(os);
 		}
 
-		else if (t.cs() == "lstinline") {
+		else if (t.cs() == "lstinline" || t.cs() == "mintinline") {
+			bool const use_minted = t.cs() == "mintinline";
 			p.skip_spaces();
-			parse_listings(p, os, context, true);
+			parse_listings(p, os, context, true, use_minted);
 		}
 
 		else if (t.cs() == "ensuremath") {
@@ -3190,13 +3355,22 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				output_ert_inset(os, t.asInput(), context);
 		}
 
-		else if (t.cs() == "tableofcontents" || t.cs() == "lstlistoflistings") {
+		else if (t.cs() == "tableofcontents"
+				|| t.cs() == "lstlistoflistings"
+				|| t.cs() == "listoflistings") {
+			string name = t.cs();
+			if (preamble.minted() && name == "listoflistings")
+				name.insert(0, "lst");
 			context.check_layout(os);
-			begin_command_inset(os, "toc", t.cs());
+			begin_command_inset(os, "toc", name);
 			end_inset(os);
 			skip_spaces_braces(p);
-			if (t.cs() == "lstlistoflistings")
-				preamble.registerAutomaticallyLoadedPackage("listings");
+			if (name == "lstlistoflistings") {
+				if (preamble.minted())
+					preamble.registerAutomaticallyLoadedPackage("minted");
+				else
+					preamble.registerAutomaticallyLoadedPackage("listings");
+			}
 		}
 
 		else if (t.cs() == "listoffigures" || t.cs() == "listoftables") {
@@ -3717,6 +3891,20 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			   << convert_command_inset_arg(p.verbatim_item())
 			   << "\"\n";
 			end_inset(os);
+		}
+
+		else if (t.cs() == "lyxmintcaption") {
+			string const pos = p.getArg('[', ']');
+			if (pos == "t") {
+				string const caption =
+					parse_text_snippet(p, FLAG_ITEM, false,
+							   context);
+				minted_nonfloat_caption = "[t]" + caption;
+			} else {
+				// We already got the caption at the bottom,
+				// so simply skip it.
+				p.getArg('{', '}');
+			}
 		}
 
 		else if (t.cs() == "printindex" || t.cs() == "printsubindex") {
@@ -4613,14 +4801,19 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			docstring const name = newinsetlayout->name();
 			bool const caption = name.find(from_ascii("Caption:")) == 0;
 			if (caption) {
-				begin_inset(os, "Caption ");
-				os << to_utf8(name.substr(8)) << '\n';
+				// Already done for floating minted listings.
+				if (minted_float.empty()) {
+					begin_inset(os, "Caption ");
+					os << to_utf8(name.substr(8)) << '\n';
+				}
 			} else {
 				begin_inset(os, "Flex ");
 				os << to_utf8(name) << '\n'
 				   << "status collapsed\n";
 			}
-			if (newinsetlayout->isPassThru()) {
+			if (!minted_float.empty()) {
+				parse_text_snippet(p, os, FLAG_ITEM, false, context);
+			} else if (newinsetlayout->isPassThru()) {
 				// set catcodes to verbatim early, just in case.
 				p.setCatcodes(VERBATIM_CATCODES);
 				string delim = p.get_token().asInput();
@@ -4636,7 +4829,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				parse_text_in_inset(p, os, FLAG_ITEM, false, context, newinsetlayout);
 			if (caption)
 				p.skip_spaces();
-			end_inset(os);
+			// Minted caption insets are not closed here because
+			// we collect everything into the caption.
+			if (minted_float.empty())
+				end_inset(os);
 		}
 
 		else if (t.cs() == "includepdf") {

@@ -183,9 +183,10 @@ const char * const known_xetex_packages[] = {"arabxetex", "fixlatvian",
 const char * const known_lyx_packages[] = {"amsbsy", "amsmath", "amssymb",
 "amstext", "amsthm", "array", "babel", "booktabs", "calc", "CJK", "color",
 "float", "fontspec", "framed", "graphicx", "hhline", "ifthen", "longtable",
-"makeidx", "multirow", "nomencl", "pdfpages", "prettyref", "refstyle", "rotating",
-"rotfloat", "splitidx", "setspace", "subscript", "textcomp", "tipa", "tipx",
-"tone", "ulem", "url", "varioref", "verbatim", "wrapfig", "xcolor", "xunicode", 0};
+"makeidx", "minted", "multirow", "nomencl", "pdfpages", "prettyref", "refstyle",
+"rotating", "rotfloat", "splitidx", "setspace", "subscript", "textcomp", "tipa",
+"tipx", "tone", "ulem", "url", "varioref", "verbatim", "wrapfig", "xcolor",
+"xunicode", 0};
 
 // codes used to remove packages that are loaded automatically by LyX.
 // Syntax: package_beg_sep<name>package_mid_sep<package loading code>package_end_sep
@@ -554,6 +555,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_use_hyperref            = "false";
 	h_use_microtype	          = "false";
 	h_use_refstyle            = false;
+	h_use_minted              = false;
 	h_use_packages["amsmath"]    = "1";
 	h_use_packages["amssymb"]    = "0";
 	h_use_packages["cancel"]     = "0";
@@ -990,6 +992,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (is_known(name, known_lyx_packages) && options.empty()) {
 		if (name == "splitidx")
 			h_use_indices = "true";
+		if (name == "minted")
+			h_use_minted = "true";
 		if (name == "refstyle")
 			h_use_refstyle = true;
 		else if (name == "prettyref")
@@ -1261,7 +1265,8 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 	   << "\\paperorientation " << h_paperorientation << '\n'
 	   << "\\suppress_date " << h_suppress_date << '\n'
 	   << "\\justification " << h_justification << '\n'
-	   << "\\use_refstyle " << h_use_refstyle << '\n';
+	   << "\\use_refstyle " << h_use_refstyle << '\n'
+	   << "\\use_minted " << h_use_minted << '\n';
 	if (!h_fontcolor.empty())
 		os << "\\fontcolor " << h_fontcolor << '\n';
 	if (!h_notefontcolor.empty())
