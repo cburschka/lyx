@@ -96,10 +96,15 @@ void BufferList::release(Buffer * buf)
 	BufferStorage::iterator const it =
 		find(bstore.begin(), bstore.end(), buf);
 	if (it != bstore.end()) {
+		Buffer const * parent = buf ? buf->parent() : 0;
 		Buffer * tmp = (*it);
 		bstore.erase(it);
 		LASSERT(tmp, return);
 		delete tmp;
+		if (parent)
+			// If this was a child, update the parent's buffer
+			// to avoid crashes due to dangling pointers (bug 9979)
+			parent->updateBuffer();
 	}
 }
 
