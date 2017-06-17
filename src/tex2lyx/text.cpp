@@ -1326,7 +1326,7 @@ void parse_listings(Parser & p, ostream & os, Context & parent_context,
 {
 	parent_context.check_layout(os);
 	begin_inset(os, "listings\n");
-	string arg = p.hasOpt() ? p.verbatimOption() : string();
+	string arg = p.hasOpt() ? subst(p.verbatimOption(), "\n", "") : string();
 	if (use_minted) {
 		string const language = p.getArg('{', '}');
 		p.skip_spaces(true);
