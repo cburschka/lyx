@@ -18,6 +18,7 @@ set(_tex_tests test.ltx
                test-insets-basic.tex
                test-insets.tex
                test-memoir.tex
+	       test-minted.tex
                test-modules.tex
                test-refstyle-theorems.tex
                test-scr.tex

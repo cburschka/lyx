@@ -36,6 +36,7 @@ TEST_FILES = \
 	test/test-insets-basic.tex \
 	test/test.ltx \
 	test/test-memoir.tex \
+	test/test-minted.tex \
 	test/test-modules.tex \
 	test/test-refstyle-theorems.tex \
 	test/test-scr.tex \
@@ -57,6 +58,7 @@ TEST_RESULTS = \
 	test/test-insets-basic.lyx.lyx \
 	test/test.lyx.lyx \
 	test/test-memoir.lyx.lyx \
+	test/test-minted.lyx.lyx \
 	test/test-modules.lyx.lyx \
 	test/test-refstyle-theorems.lyx.lyx \
 	test/test-scr.lyx.lyx \

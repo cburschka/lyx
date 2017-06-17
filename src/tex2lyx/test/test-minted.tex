@@ -1,0 +1,94 @@
+%% Do not edit unless you really know what you are doing.
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{minted}
+
+\begin{document}
+
+\listoflistings
+
+\section{Minted Listings}
+
+Inline: \mintinline[style=bw]{C++}!int a=5;!\\
+Float (Listing~\ref{Example-Listing}):
+
+\begin{listing}[h]
+\begin{minted}{Python}
+# Example listing float
+def func(param):
+    'this is a python function'
+    pass
+\end{minted}
+\caption{Example Listing float}
+\label{Example-Listing}
+\end{listing}
+
+Here is an example listing with left line numbering, language ``Python''
+and ``Space~as~symbol'', range lines from 4 to end:
+
+\begin{minted}[firstline=4,numbers=left,showspaces=true]{Python}
+def func(param):
+    'this is a python function'
+    pass
+def func(param):
+    'This is a German word: Tschuess'
+    pass
+\end{minted}
+
+A floating one-liner with [h] placement and without caption:
+\begin{listing}[h]
+\begin{minted}[fontfamily=tt,fontsize={\large},bgcolor=lightgray]{ABAP}
+hello
+\end{minted}
+\end{listing}
+
+Another inline listing:
+\mintinline{TeX}!\begin{centering} hello!
+
+A non-floating listing with line frames and a top caption
+(Listing~\ref{hello-world}):
+\lyxmintcaption[t]{An example C program\label{hello-world}}
+\begin{minted}[numbers=left,frame=lines]{C}
+int main()
+{
+    printf("Hello world!\n");
+    return 0;
+}
+\end{minted}
+
+A non-floating listing with line frames and a bottom caption
+(Listing~\ref{func}):
+\begin{minted}[numbers=left,frame=lines]{Fortran}
+subroutine incr(i)
+  integer :: i
+  i = i + 1 
+  return 
+end subroutine function
+\end{minted}
+\lyxmintcaption[b]{\label{func}A Fortran subroutine}
+
+A framed floating listing with a caption and a label (Listing~\ref{python1}):
+\begin{listing}[h]
+    \begin{minted}[frame=single]{Python}
+def boring(args = None):
+    pass
+\end{minted}
+\caption{A Python function.}
+\label{python1}
+\end{listing}
+
+
+The same framed floating listing with a caption, a label and a stray math
+equation (Listing~\ref{python2}):
+\begin{listing}[h]
+$y=f(x)$
+\begin{minted}[frame=single]{Python}
+def boring(args = None):
+    pass
+\end{minted}
+\caption{The previous Python function.}
+\label{python2}
+\end{listing}
+
+\end{document}
