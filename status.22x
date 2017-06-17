@@ -71,6 +71,9 @@ What's new
 
 - Fix crash when closing master file with full view source open (bug 10560).
 
+- Fix crash when closing master document with dirty child while Document
+  Settings dialog is open (bug 9979).
+
 - Remove duplicate entries from the Symbols dialog (bug 10644).
 
 - Always show the float type in the float inset label (bug 10618).
