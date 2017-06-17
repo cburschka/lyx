@@ -3903,7 +3903,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			} else {
 				// We already got the caption at the bottom,
 				// so simply skip it.
-				p.getArg('{', '}');
+				parse_text_snippet(p, FLAG_ITEM, false, context);
 			}
 		}
 
