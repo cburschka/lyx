@@ -1004,11 +1004,17 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 
 	// In which paragraph do we have to set the cursor ?
 	Cursor & cur = d->buffer_view_->cursor();
-	// FIXME: we don't know howto handle math.
+	// FIXME: we don't know how to handle math.
 	Text * text = cur.text();
 	if (!text)
 		return;
 	TextMetrics const & tm = d->buffer_view_->textMetrics(text);
+
+	// Quit gracefully if there are no metrics, since otherwise next
+	// line would crash (bug #10324).
+	// This situation seems related to a (not yet understood) timing problem.
+	if (tm.empty())
+		return;
 
 	pair<pit_type, const ParagraphMetrics *> pp = up ? tm.first() : tm.last();
 	ParagraphMetrics const & pm = *pp.second;
