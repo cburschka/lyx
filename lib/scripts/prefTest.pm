@@ -13,6 +13,7 @@ sub getConverters($$$);
 sub getConverter($$);
 sub getNext($);
 sub writeConverters($$);
+sub createConvLine($$);
 
 sub getSubstitutes($$@)
 {
@@ -78,7 +79,7 @@ sub getConverter($$)
   ($l, $from) = getNext($l);
   return undef if ($from !~ /tex$/);
   ($l, $to) = getNext($l);
-  return undef if ($to !~ /^(dvi3?|pdf[23456]?)$/);
+  return undef if ($to !~ /^((dvi3?|pdf[23456]?)(log)?)$/);
   ($l, $cmd) = getNext($l);
   if ($add) {
     if ($cmd !~ /\-shell-escape/) {
@@ -165,8 +166,14 @@ sub applyChanges($$$$)
 	      }
 	      else {
 		$rConverter->{$key}->[2] = 1;
-		$l = &createConvLine($key);
+		$l = &createConvLine($key, $rConverter);
 	      }
+	    }
+	    else {
+	      # Converter defined only in preferences
+	      $rConverter->{$key} = $entry->[1];
+	      $rConverter->{$key}->[2] = 1;
+	      $l = &createConvLine($key, $rConverter);
 	    }
 	  }
 	}
