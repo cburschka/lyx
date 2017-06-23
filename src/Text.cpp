@@ -1783,20 +1783,20 @@ bool Text::dissolveInset(Cursor & cur)
 
 		pasteParagraphList(cur, plist, b.params().documentClassPtr(),
 				   b.errorList("Paste"));
-		// restore position
-		cur.pit() = min(cur.lastpit(), spit);
-		cur.pos() = min(cur.lastpos(), spos);
 	}
 
 	// delete the inset now
 	inset_it.paragraph().eraseChar(inset_it.pos(), b.params().track_changes);
 
-	cur.forceBufferUpdate();
-
+	// restore position
+	cur.pit() = min(cur.lastpit(), spit);
+	cur.pos() = min(cur.lastpos(), spos);
 	// Ensure the current language is set correctly (bug 6292)
 	cur.text()->setCursor(cur, cur.pit(), cur.pos());
 	cur.clearSelection();
 	cur.resetAnchor();
+	cur.forceBufferUpdate();
+
 	return true;
 }
 
