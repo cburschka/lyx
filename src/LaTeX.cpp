@@ -908,8 +908,16 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				|| contains(token, "no pages of output")) {
 				// No output file (e.g. the DVI or PDF) was created
 				retval |= NO_OUTPUT;
+			} else if (contains(token, "Error 256 (driver return code)")) {
+				// This is a xdvipdfmx driver error reported by XeTeX.
+				// We have to check whether an output PDF file was created.
+				FileName pdffile = file;
+				pdffile.changeExtension("pdf");
+				if (!pdffile.exists())
+					// No output PDF file was created (see #10076)
+					retval |= NO_OUTPUT;
 			} else if (contains(token, "That makes 100 errors")) {
-				// More than 100 errors were reprted
+				// More than 100 errors were reported
 				retval |= TOO_MANY_ERRORS;
 			} else if (prefixIs(token, "!pdfTeX error:")) {
 				// otherwise we dont catch e.g.:
