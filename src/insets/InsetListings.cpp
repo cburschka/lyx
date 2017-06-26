@@ -515,7 +515,11 @@ TexString InsetListings::getCaption(OutputParams const & runparams) const
 	// TexString validity: the substitution preserves the number of newlines.
 	// Moreover we assume that $2 does not contain newlines, so that the texrow
 	// information remains accurate.
-	cap.str = from_utf8(regex_replace(to_utf8(cap.str), reg, new_cap));
+	// Replace '\n' with an improbable character from Private Use Area-A
+	// and then return to '\n' after the regex replacement.
+	docstring const capstr = subst(cap.str, char_type('\n'), 0xffffd);
+	cap.str = subst(from_utf8(regex_replace(to_utf8(capstr), reg, new_cap)),
+			0xffffd, char_type('\n'));
 	return cap;
 }
 
