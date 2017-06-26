@@ -1050,8 +1050,8 @@ void InsetListingsParams::addParam(string const & key,
 	if (key.empty())
 		return;
 
-	string const value = (minted() && key == "language") ? languageonly(val)
-	                                                     : val;
+	string const value = (minted() && key == "language" && !val.empty())
+				? languageonly(val) : val;
 	// duplicate parameters!
 	string keyname = key;
 	if (!replace && hasParam(key))
