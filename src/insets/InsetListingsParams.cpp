@@ -269,6 +269,31 @@ char const * allowed_languages =
 	"[97]VRML\nXML\nXSLT";
 
 
+/// Return language allowed in the GUI without dialect and proper casing
+string const languageonly(string const & lang)
+{
+	string const locase = ascii_lowercase(trim(lang, "{}"));
+	string const all_languages = ascii_lowercase(allowed_languages) + "\n";
+	string language = (lang.at(0) == '[') ? locase + "\n"
+	                                      : string("]") + locase + "\n";
+	size_t i = all_languages.find(language);
+	if (i == string::npos && lang.at(0) != '[') {
+		language[0] = '\n';
+		i = all_languages.find(language);
+	}
+	if (i == string::npos)
+		return lang;
+	if (all_languages.at(i) == '[')
+		i = all_languages.find(']', i);
+	if (i == string::npos)
+		return lang;
+	size_t j = all_languages.find('\n', i + 1);
+	if (j == string::npos)
+		return lang;
+	return string(allowed_languages).substr(i + 1, j - i - 1);
+}
+
+
 /// ListingsParam Validator.
 /// This class is aimed to be a singleton which is instantiated in
 /// \c InsetListingsParams::addParam().
@@ -1020,11 +1045,13 @@ string InsetListingsParams::getValue(string const & key) const
 
 
 void InsetListingsParams::addParam(string const & key, 
-		string const & value, bool replace)
+		string const & val, bool replace)
 {
 	if (key.empty())
 		return;
 
+	string const value = (minted() && key == "language") ? languageonly(val)
+	                                                     : val;
 	// duplicate parameters!
 	string keyname = key;
 	if (!replace && hasParam(key))

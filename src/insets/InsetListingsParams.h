@@ -76,6 +76,9 @@ public:
 	///
 	static int package() { return package_; }
 
+	///
+	bool minted() { return package_ == 1; }
+
 	/// get value of option \c param
 	std::string getParamValue(std::string const & param) const;
 

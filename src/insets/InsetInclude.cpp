@@ -670,7 +670,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		if (!parameters.empty())
 			os << "[" << parameters << "]";
 		if (use_minted)
-			os << '{'  << language << '}';
+			os << '{'  << ascii_lowercase(language) << '}';
 		os << '{'  << incfile << '}';
 		if (use_minted && isfloat) {
 			if (!caption.empty())

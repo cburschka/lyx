@@ -268,7 +268,7 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 			os << "\\mintinline";
 			if (!param_string.empty())
 				os << "[" << from_utf8(param_string) << "]";
-			os << "{" << minted_language << "}";
+			os << "{" << ascii_lowercase(minted_language) << "}";
 		} else {
 			os << "\\lstinline";
 			if (!param_string.empty())
@@ -294,7 +294,7 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 		os << breakln << "\\begin{minted}";
 		if (!param_string.empty())
 			os << "[" << param_string << "]";
-		os << "{" << minted_language << "}\n"
+		os << "{" << ascii_lowercase(minted_language) << "}\n"
 		   << code << breakln << "\\end{minted}\n";
 		if (isfloat) {
 			if (!caption.str.empty())
