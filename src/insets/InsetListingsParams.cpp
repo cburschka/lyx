@@ -1050,7 +1050,8 @@ void InsetListingsParams::addParam(string const & key,
 	if (key.empty())
 		return;
 
-	string const value = (minted() && key == "language" && !val.empty())
+	bool const is_minted_language = minted() && key == "language";
+	string const value = (is_minted_language && !val.empty())
 				? languageonly(val) : val;
 	// duplicate parameters!
 	string keyname = key;
@@ -1076,7 +1077,7 @@ void InsetListingsParams::addParam(string const & key,
 				has_special_char = true;
 				break;
 			}
-		if (has_special_char)
+		if (has_special_char && !is_minted_language)
 			params_.push_back(make_pair(keyname, "{" + value + "}"));
 		else
 			params_.push_back(make_pair(keyname, value));
