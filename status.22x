@@ -49,6 +49,9 @@ What's new
 
 - Catch "! Incomplete \if[x]" LaTeX error (bug 10666).
 
+- Fix caption handling in listings insets when it is split into multiple
+  lines in the LaTeX output (bug 10705).
+
 
 * LYX2LYX
 
