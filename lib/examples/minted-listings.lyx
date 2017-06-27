@@ -93,7 +93,8 @@ This example shows how to typeset code listings in a document using the
 
 \begin_layout Plain Layout
 Other than the minted package, you also need the pygments python module.
- See the minted documentation for directions on how to install it.
+ See the minted documentation for directions on how to install it and what
+ you have to do for using it with LaTeX.
  If you use a linux system, you can possibly install a suitable package
  through your package manager.
  Look for python packages named 
@@ -101,13 +102,6 @@ Other than the minted package, you also need the pygments python module.
 python-pygments
 \family default
  or similar.
-\end_layout
-
-\begin_layout Plain Layout
-Remember to add the -shell-escape option to the latex backend command in
- the Preferences\SpecialChar menuseparator
-File Handling\SpecialChar menuseparator
-Converters.
 \end_layout
 
 \end_inset

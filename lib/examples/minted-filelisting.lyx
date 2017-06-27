@@ -126,7 +126,8 @@ Fonts.
 
 \begin_layout Plain Layout
 Other than the minted latex package, you also need the pygments python module.
- See the minted documentation for directions on how to install it.
+ See the minted documentation for directions on how to install it and what
+ you have to do for using it with LaTeX.
  If you use a linux system, you can possibly install a suitable package
  through your package manager.
  Look for python packages named 
@@ -143,14 +144,6 @@ eso-pic
 \family default
  latex package, so you also need to install it.
  It is used to draw a page frame around the listing.
-\end_layout
-
-\begin_layout Plain Layout
-Remember to add the -shell-escape option to the xelatex command in the Preferenc
-es\SpecialChar menuseparator
-File Handling\SpecialChar menuseparator
-Converters\SpecialChar menuseparator
-LaTeX(XeTeX)->PDF(XeTeX) converter.
 \end_layout
 
 \end_inset
