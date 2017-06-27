@@ -50,6 +50,7 @@ file(GLOB_RECURSE images_gif      ${IMAGES_DIR}/*.gif)
 file(GLOB_RECURSE images_svgz      ${IMAGES_DIR}/*.svgz)
 
 set(images ${images_png} ${images_gif} ${images_svgz})
+list(SORT images)
 
 file(REMOVE ${RESOURCE_NAME})
 if(EXISTS ${RESOURCE_NAME})
