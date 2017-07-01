@@ -536,6 +536,10 @@ End
 
 OutlinerName thm "Definitions & Theorems"
 
+Counter theorem
+	Within                section
+End
+
 Style Theorem
 	Category              Reasoning
 	Margin                First_Dynamic
