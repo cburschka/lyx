@@ -52,6 +52,9 @@ What's new
 - Fix caption handling in listings insets when it is split into multiple
   lines in the LaTeX output (bug 10705).
 
+- Do not let the natbibapa module overwrite what the class or other packages
+  add to the preamble.
+
 
 * LYX2LYX
 
