@@ -6,10 +6,12 @@
 #         that works with both the natbib and apacite
 #         packages.)
 #DescriptionEnd
+#
+# Author: Jacob Bishop <bishop.jacob@gmail.com>
 
 Format 63
 
-Preamble
+AddToPreamble
 \usepackage[natbibapa]{apacite}
 EndPreamble
 
