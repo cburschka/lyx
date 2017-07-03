@@ -60,7 +60,7 @@
 			NSLog(@"Cannot read file %@", fileName);
 			return NO;
 		}
-		
+
 		// Get linkback data which comes behind the pdf data.
 		// The pdf data length are the last 4 bytes.
 		UInt32 pdfLen = 0;
@@ -70,21 +70,21 @@
 			NSLog(@"Invalid file %@ for LinkBack", fileName);
 			return NO;
 		}
-			
-		NSData * linkBackData 
-		= [data subdataWithRange:NSMakeRange(pdfLen, [data length] - pdfLen - 4)]; 
+
+		NSData * linkBackData
+		= [data subdataWithRange:NSMakeRange(pdfLen, [data length] - pdfLen - 4)];
 		if (linkBackData == nil) {
 			NSLog(@"Invalid file %@ for LinkBack", fileName);
 			return NO;
 		}
-		
+
 		NSMutableDictionary * linkBackDataDict
 		= [NSUnarchiver unarchiveObjectWithData:linkBackData];
 		if (linkBackDataDict == nil) {
 			NSLog(@"LinkBack data in %@ corrupted", fileName);
 			return NO;
 		}
-		
+
 		// create the link to the LinkBack server
 		LinkBack * link = [LinkBack editLinkBackData:linkBackDataDict
 			sourceName:fileName delegate:self itemKey:fileName];
@@ -98,7 +98,7 @@
 		NSLog(@"LinkBack exception: %@", exception);
 		return NO;
 	}
-	
+
 	return YES;
 }
 
@@ -123,7 +123,7 @@
 			NSLog(@"No PDF or LinkBack data in pasteboard");
 			return;
 		}
-			
+
 		// get new linkback data
 		id linkBackDataDict = [pboard propertyListForType:LinkBackPboardType];
 		if (linkBackDataDict == nil) {
@@ -135,14 +135,14 @@
 			NSLog(@"Cannot archive LinkBack data");
 			return;
 		}
-		
+
 		// get pdf
 		NSData * pdfData = [pboard dataForType:NSPDFPboardType];
 		if (pdfData == nil) {
 			NSLog(@"Cannot get PDF data from pasteboard");
 			return;
 		}
-		
+
 		// update the file
 		NSString * fileName = [link itemKey];
 		NSFileHandle * file = [NSFileHandle fileHandleForUpdatingAtPath:fileName];
@@ -153,7 +153,7 @@
 		[file truncateFileAtOffset:0];
 		[file writeData:pdfData];
 		[file writeData:linkBackData];
-		
+
 		UInt32 pdfLen = NSSwapHostLongToBig([pdfData length]); // big endian
 		NSData * lenData = [NSData dataWithBytes:&pdfLen length:4];
 		[file writeData:lenData];
@@ -187,7 +187,7 @@ void getLinkBackData(void const * * buf, unsigned * len)
 	// get linkback data from pasteboard
 	NSPasteboard * pboard = [NSPasteboard generalPasteboard];
 	id linkBackData = [pboard propertyListForType:LinkBackPboardType];
-		
+
 	NSData * nsdata = [NSArchiver archivedDataWithRootObject:linkBackData];
 	if (nsdata == nil) {
 		*buf = 0;

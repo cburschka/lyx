@@ -66,7 +66,7 @@ static NSString * toLanguage(AppleSpeller speller, const char * lang)
 	NSString * lang_ = toString(lang);
 	if ([NSSpellChecker instancesRespondToSelector:@selector(availableLanguages)]) {
 		NSArray * languages = [speller->checker availableLanguages];
-		
+
 		for (NSString *element in languages) {
 			if (0 == [element caseInsensitiveCompare:lang_]) {
 				result = element;
@@ -94,7 +94,7 @@ SpellCheckResult AppleSpeller_check(AppleSpeller speller, const char * word, con
 	SpellCheckResult result = SPELL_CHECK_FAILED;
 	int start = 0;
 	int length = [word_ length];
-	
+
 	[speller->misspelled release];
 	speller->misspelled = nil;
 
@@ -201,7 +201,7 @@ void AppleSpeller_learn(AppleSpeller speller, const char * word)
 
 	if ([NSSpellChecker instancesRespondToSelector:@selector(learnWord:)])
 		[speller->checker learnWord:word_];
-	
+
 	[word_ release];
 	[pool release];
 #endif
@@ -216,7 +216,7 @@ void AppleSpeller_unlearn(AppleSpeller speller, const char * word)
 
 	if ([NSSpellChecker instancesRespondToSelector:@selector(unlearnWord:)])
 		[speller->checker unlearnWord:word_];
-	
+
 	[word_ release];
 	[pool release];
 #endif

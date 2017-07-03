@@ -156,7 +156,7 @@ SOURCEFILES = \
 	TocWidget.cpp \
 	Toolbars.cpp \
 	ToolTipFormatter.cpp \
-	Validator.cpp 
+	Validator.cpp
 
 NOMOCHEADER = \
 	ButtonController.h \
