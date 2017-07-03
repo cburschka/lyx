@@ -14,9 +14,9 @@ file(GLOB _lyxclient_headers ${TOP_SRC_DIR}/src/client/*.h)
 list(REMOVE_ITEM _lyxclient_headers "${TOP_SRC_DIR}/src/client/pch.h")
 list(REMOVE_ITEM _lyxclient_sources "${TOP_SRC_DIR}/src/client/lyxclient.cpp")
 
-include_directories(BEFORE 
-	"${TOP_SRC_DIR}/src/client" 
-	"${TOP_SRC_DIR}/3rdparty/boost" 
+include_directories(BEFORE
+	"${TOP_SRC_DIR}/src/client"
+	"${TOP_SRC_DIR}/3rdparty/boost"
 	${ZLIB_INCLUDE_DIR})
 
 add_executable(${_lyxclient} ${_lyxclient_sources} ${_lyxclient_headers})

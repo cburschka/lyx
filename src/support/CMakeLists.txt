@@ -21,7 +21,7 @@ file(GLOB support_headers ${TOP_SRC_DIR}/src/support/${LYX_HPP_FILES})
 file(GLOB support_linkback_sources ${TOP_SRC_DIR}/src/support/linkback/*.m*)
 file(GLOB support_linkback_headers ${TOP_SRC_DIR}/src/support/linkback/*.h)
 
-set_source_files_properties(${support_linkback_sources} 
+set_source_files_properties(${support_linkback_sources}
 	${TOP_SRC_DIR}/src/support/AppleSpeller.m
 	${TOP_SRC_DIR}/src/support/AppleScript.m
 		PROPERTIES COMPILE_FLAGS "-std=c99")

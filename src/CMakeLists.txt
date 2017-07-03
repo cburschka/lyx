@@ -170,7 +170,7 @@ endif()
 
 project_source_group("${GROUP_CODE}" lyx_sources lyx_headers)
 
-install(TARGETS ${_lyx} 
+install(TARGETS ${_lyx}
     BUNDLE DESTINATION . COMPONENT Runtime
     RUNTIME DESTINATION ${LYX_UTILITIES_INSTALL_PATH} COMPONENT Runtime)
 

@@ -75,7 +75,7 @@ Format LaTeX feature                        LyX feature
 459    beamer: \begin{frame},               \begin_layout Frame
        \begin{frame}[plain],                \begin_layout PlainFrame
        \begin{frame}[fragile]               \begin_layout FragileFrame
-466    Powerdot updates:                     
+466    Powerdot updates:
        \pause[]                              layout Pause
        \onslide{}{}                          InsetFlex, InsetArgument
        \onslide*{}{}                         InsetFlex, InsetArgument
@@ -151,8 +151,8 @@ Format LaTeX feature                        LyX feature
                                              btprint "bibbysection"
 534   Chapterbib support
       \usepackage{chapterbib}              \multibib child
-                                           
-                                           
+
+
 
 
 General
@@ -162,9 +162,9 @@ General
 
 * Store alias commands for characters in a file with
   "lib/unicodesymbols"-format, e.g.
-  
+
     0x200b "\\dots" "" "" "" # HORIZONTAL ELLIPSIS
     0x200b "\\ldots" "" "" "\\ldots" # HORIZONTAL ELLIPSIS
     0x200b "\\textellipsis" "" "" "" # HORIZONTAL ELLIPSIS
-  
+
   Look up LaTeX->Unicode conversion in the combined files.
