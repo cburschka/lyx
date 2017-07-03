@@ -28,10 +28,10 @@ namespace frontend {
 /**
  * A QAbstractListModel that associates an identifying string with
  * each item, as well as a display string. The display string is set
- * with setUIString; the identifying string, with setIDString. 
+ * with setUIString; the identifying string, with setIDString.
  *
  * This is intended to be used, for example, with GuiSelectionManager.
- * In that case, one needs to recover from selectedModel which items 
+ * In that case, one needs to recover from selectedModel which items
  * have been selected. One may not wish to do so using the string that
  * is there *displayed*, since, among other things, that string may be
  * translated. So the id can be used to identify the items in this case.
@@ -48,16 +48,16 @@ public:
 		{ return userData_.size(); }
 
 	///
-	virtual QVariant data(QModelIndex const & index, 
+	virtual QVariant data(QModelIndex const & index,
 	                      int role = Qt::DisplayRole) const;
 	///
 	bool insertRows(int row, int count, QModelIndex const & parent = QModelIndex());
 	///
 	bool removeRows(int row, int count, QModelIndex const & parent = QModelIndex());
-	/// 
+	///
 	void clear() { removeRows(0, rowCount()); }
 	///
-	virtual bool setData (QModelIndex const & index, 
+	virtual bool setData (QModelIndex const & index,
 			const QVariant & value, int role = Qt::EditRole );
 	///
 	virtual QMap<int, QVariant> itemData(QModelIndex const & index ) const;
@@ -65,10 +65,10 @@ public:
 	// New methods
 	//////////////////////////////////////////////////////////////////////
 	///
-	void insertRow(int const i, QString const & uiString, 
+	void insertRow(int const i, QString const & uiString,
 			std::string const & idString, QString const & ttString);
 	/// A convenience method, setting ttString to the same as uiString
-	void insertRow(int const i, QString const & uiString, 
+	void insertRow(int const i, QString const & uiString,
 			std::string const & idString);
 	/// \return the index of the (first) item with idString
 	/// \return -1 if not found
@@ -123,4 +123,4 @@ private:
 
 }
 }
-#endif //GUIIDLISTMODEL_H 
+#endif //GUIIDLISTMODEL_H

@@ -91,7 +91,7 @@ private:
 	Update::flags update_;
 	///
 	docstring message_;
-	/// 
+	///
 	bool need_buf_update_;
 	///
 	bool need_msg_update_;

@@ -82,7 +82,7 @@ public:
 	///
 	void toString(odocstream &) const;
 	///
-	bool isInToc() const { return true; }	
+	bool isInToc() const { return true; }
 	///
 	void forOutliner(docstring &, size_t const, bool const) const;
 	///

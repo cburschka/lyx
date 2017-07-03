@@ -47,7 +47,7 @@ public:
 
 	///
 	void showPopup();
-	
+
 	///
 	bool eventFilter(QObject * o, QEvent * e);
 	///

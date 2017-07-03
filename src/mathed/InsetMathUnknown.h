@@ -35,7 +35,7 @@ public:
 
 	///
 	docstring const & selection() const { return selection_; }
-	
+
 	/// identifies UnknownInsets
 	InsetMathUnknown const * asUnknownInset() const { return this; }
 	/// identifies UnknownInsets

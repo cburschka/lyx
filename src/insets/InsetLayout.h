@@ -85,12 +85,12 @@ public:
 	FontInfo labelfont() const { return labelfont_; }
 	///
 	ColorCode bgcolor() const { return bgcolor_; }
-	/// 
+	///
 	Layout::LaTeXArgMap const & latexargs() const { return latexargs_; }
 	///
 	Layout::LaTeXArgMap const & postcommandargs() const { return postcommandargs_; }
 	/// Returns latexargs() + postcommandargs().
-	/// But note that it returns a *copy*, not a reference, so do not do 
+	/// But note that it returns a *copy*, not a reference, so do not do
 	/// anything like:
 	///   Layout::LaTeXArgMap::iterator it = args().begin();
 	///   Layout::LaTeXArgMap::iterator en = args().end();
@@ -120,7 +120,7 @@ public:
 	std::string const & htmlattr() const;
 	/// Tag for individual paragraphs in the inset. Default is none.
 	std::string const & htmlinnertag() const { return htmlinnertag_; }
-	/// Attributes for that tag. Default (if a tag is provided) is: 
+	/// Attributes for that tag. Default (if a tag is provided) is:
 	/// class="name_inner".
 	std::string const & htmlinnerattr() const;
 	/// A label for this environment, possibly including a reference
@@ -132,7 +132,7 @@ public:
 	///
 	inline std::string htmllabeltag() const { return "span"; }
 	///
-	std::string htmllabelattr() const 
+	std::string htmllabelattr() const
 		{ return "class=\"" + defaultCSSClass() + "_label\""; }
 	/// CSS associated with this inset.
 	docstring htmlstyle() const;
@@ -263,7 +263,7 @@ private:
 	std::set<std::string> requires_;
 	///
 	bool multipar_;
-	/// 
+	///
 	bool custompars_;
 	///
 	bool forceplain_;

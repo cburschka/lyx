@@ -22,7 +22,7 @@ class Inset;
 
 namespace frontend {
 
-class GuiBufferViewDelegate 
+class GuiBufferViewDelegate
 {
 public:
 	virtual ~GuiBufferViewDelegate() {}

@@ -138,7 +138,7 @@ public:
 	//
 	void erase(std::string const & from, std::string const & to);
 	///
-	FormatList const 
+	FormatList const
 		getReachableTo(std::string const & target, bool clear_visited);
 	///
 	FormatList const

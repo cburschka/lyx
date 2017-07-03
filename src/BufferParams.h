@@ -161,7 +161,7 @@ public:
 			{ return removed_modules_; }
 	///
 	/// Add a module to the list of modules in use. This checks only that the
-	/// module is not already in the list, so use layoutModuleCanBeAdeed first 
+	/// module is not already in the list, so use layoutModuleCanBeAdeed first
 	/// if you want to check for compatibility.
 	/// \return true if module was successfully added.
 	bool addLayoutModule(std::string const & modName);

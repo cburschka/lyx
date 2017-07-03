@@ -27,7 +27,7 @@ namespace support {
 ///
 /// WarningException
 ///   Intended for unexpected situations that we do not expect
-///   to compromise further operation. It has the effect of 
+///   to compromise further operation. It has the effect of
 ///   aborting whatever operation in in process.
 ///
 /// BufferException
@@ -36,7 +36,7 @@ namespace support {
 ///   closed, in emergency style.
 ///
 /// ErrorException
-///   Intended for situations that indicate a global problem 
+///   Intended for situations that indicate a global problem
 ///   with the program. It will lead to an emergency shutdown.
 
 enum ExceptionType {

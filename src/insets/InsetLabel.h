@@ -19,7 +19,7 @@ namespace lyx {
 
 class Counter;
 
-class InsetLabel : public InsetCommand 
+class InsetLabel : public InsetCommand
 {
 public:
 	///
@@ -70,7 +70,7 @@ public:
 	///
 	static std::string defaultCommand() { return "label"; }
 	///
-	static bool isCompatibleCommand(std::string const & s) 
+	static bool isCompatibleCommand(std::string const & s)
 		{ return s == "label"; }
 	//@}
 
@@ -80,7 +80,7 @@ public:
 	///
 	docstring screenLabel() const;
 	//@}
-	
+
 private:
 	/// \name Private functions inherited from Inset class
 	//@{

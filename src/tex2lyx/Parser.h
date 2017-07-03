@@ -286,7 +286,7 @@ public:
 	 * found and the member \p second is the value. If \p
 	 * allow_linebreak is false, then the parsing is limited to one line
 	 */
-	Arg verbatimStuff(std::string const & end_string, 
+	Arg verbatimStuff(std::string const & end_string,
 			  bool allow_linebreak = true);
 	/*
 	 * \returns the contents of the environment \p name.

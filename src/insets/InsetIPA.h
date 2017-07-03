@@ -29,7 +29,7 @@ namespace graphics {
 
 /// An IPA inset with instant preview
 class InsetIPA : public InsetText {
-	
+
 public:
 	///
 	InsetIPA(Buffer *);
@@ -47,11 +47,11 @@ public:
 	bool neverIndent() const { return true; }
 
 	bool forceLocalFontSwitch() const { return true; }
-	
+
 	InsetCode lyxCode() const { return IPA_CODE; }
-	
+
 	docstring layoutName() const { return from_ascii("IPA"); }
-	
+
 	bool descendable(BufferView const & /*bv*/) const { return true; }
 
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
@@ -73,7 +73,7 @@ public:
 	void write(std::ostream & os) const;
 
 	void edit(Cursor & cur, bool front, EntryDirection entry_from);
-	
+
 	///
 	void latex(otexstream &, OutputParams const &) const;
 	///
@@ -85,7 +85,7 @@ public:
 	///
 	bool insetAllowed(InsetCode code) const;
 	//@}
-	
+
 protected:
 	/// Retrieves the preview state. Returns true if preview
 	/// is enabled and the preview image is availabled.

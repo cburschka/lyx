@@ -34,7 +34,7 @@ namespace lyx {
  * \class IndicesList
  *
  * A class containing a vector of all defined indices within a
- * document. It has methods for outputting a '|'-separated string 
+ * document. It has methods for outputting a '|'-separated string
  * of all elements, and for adding, removing and renaming elements.
  */
 
@@ -94,7 +94,7 @@ public:
 	Index * find(docstring const & name);
 	Index const * find(docstring const & name) const;
 
-	/** \returns the Index with the shortcut \c shortcut. 
+	/** \returns the Index with the shortcut \c shortcut.
 	 *  If not found, returns 0.
 	 */
 	Index * findShortcut(docstring const & shortcut);

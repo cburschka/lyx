@@ -50,7 +50,7 @@ private:
 	void dispatchParams() {}
 	///
 	void enableControls();
-	
+
 private:
 };
 

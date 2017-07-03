@@ -38,7 +38,7 @@ public:
 
 	/// add key=value to params_. key_=value will be used if key=value already exists
 	/// unless replace=true.
-	void addParam(std::string const & key, std::string const & value, 
+	void addParam(std::string const & key, std::string const & value,
 			bool replace = false);
 
 	/// add a few parameters
@@ -84,7 +84,7 @@ public:
 
 	///
 	void clear() { params_.clear(); }
-	
+
 	/// validate parameter, return an error message
 	docstring validate() const;
 

@@ -42,7 +42,7 @@ public:
 	void infoize(odocstream & os) const;
 	///
 	void normalize(NormalStream &) const;
-	// Don't need mathmlize or htmlize, as this is handled by 
+	// Don't need mathmlize or htmlize, as this is handled by
 	// InsetMathMatrix after being extracted in MathExtern.
 	// void mathmlize(MathStream &) const;
 	// void htmlize(HTMLStream &) const;

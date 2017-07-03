@@ -26,7 +26,7 @@
 namespace lyx {
 
 namespace support {
-	class FileName;	
+	class FileName;
 }
 
 /// Defines key maps and actions for key sequences
@@ -42,7 +42,7 @@ public:
 	};
 	enum BindReadType {
 		MissingOK,      //< It's OK if this file is missing.
-		Fallback,       //< If missing, fallback to default "cua". This should only 
+		Fallback,       //< If missing, fallback to default "cua". This should only
 		                //< be used when attempting to read the user-secified bind file.
 		Default         //< Report error and return.
 	};
@@ -65,7 +65,7 @@ public:
 		    unsigned int r = 0);
 
 
-	/// returns the function bound to this key sequence, or 
+	/// returns the function bound to this key sequence, or
 	/// FuncRequest::unknown if no binding exists for it.
 	/// @param r an internal recursion counter
 	// FIXME Surely there's a better way to do that?
@@ -74,7 +74,7 @@ public:
 	/// clear all bindings
 	void clear();
 
-	/** Parse a bind file. If a valid unbind_map is given, put \unbind 
+	/** Parse a bind file. If a valid unbind_map is given, put \unbind
 	 * bindings to a separate KeyMap. This is used in the Shortcut preference
 	 * dialog where main and user bind files are loaded separately so \unbind
 	 * in user.bind can not nullify \bind in the master bind file.
@@ -83,7 +83,7 @@ public:
 	 * @param unbind_map pointer to a KeyMap that holds \unbind bindings
 	 * @param rt how to respond if the file can't be found
 	 */
-	bool read(std::string const & bind_file, KeyMap * unbind_map = 0, 
+	bool read(std::string const & bind_file, KeyMap * unbind_map = 0,
 			BindReadType rt = Default);
 
 	/** write to a bind file.
@@ -126,7 +126,7 @@ public:
 		FuncRequest request;
 		KeySequence sequence;
 		KeyMap::ItemType tag;
-	}; 
+	};
 	typedef std::vector<Binding> BindingList;
 	/**
 	 * Return all lfun and their associated bindings.
@@ -185,7 +185,7 @@ private:
 	 */
 	Bindings findBindings(FuncRequest const & func,
 	                      KeySequence const & prefix) const;
-	
+
 	void listBindings(BindingList & list, KeySequence const & prefix,
 	                  ItemType tag) const;
 

@@ -151,7 +151,7 @@ public:
 
     ///
     typedef _Weight                     weight_type;
-        
+
     /// Second template parameter: The data type associated with each
     /// key. Stored in the B+ tree's leaves
     typedef _Data                       data_type;
@@ -1519,13 +1519,13 @@ public:
         return iterator(leaf, slot);
     }
 
-    /// Searches the B+ tree and returns an iterator to the first summed weight 
+    /// Searches the B+ tree and returns an iterator to the first summed weight
     /// less or equal to the parameter. If unsuccessful it returns end().
     iterator lower_summed_weight_bound(weight_type weight)
     {
         node *n = root;
         if (!n) return end();
-   
+
         while(!n->isleafnode()) {
             const inner_node *inner = static_cast<const inner_node*>(n);
             int slot = find_summed_weight_lower(inner, weight);
@@ -1567,7 +1567,7 @@ public:
         return const_iterator(leaf, slot);
     }
 
-    /// Searches the B+ tree and returns an iterator to the first summed weight 
+    /// Searches the B+ tree and returns an iterator to the first summed weight
     /// less or equal to the parameter. If unsuccessful it returns end().
     const_iterator lower_summed_weight_bound(weight_type weight) const
     {
@@ -1637,7 +1637,7 @@ public:
         return const_iterator(leaf, slot);
     }
 
-    /// Searches the B+ tree and returns an iterator to the first summed weight 
+    /// Searches the B+ tree and returns an iterator to the first summed weight
     /// greater than the parameter. If unsuccessful it returns end().
     iterator upper_summed_weight_bound(weight_type weight)
     {
@@ -1665,7 +1665,7 @@ public:
         return iterator(leaf, slot);
     }
 
-    /// Searches the B+ tree and returns an iterator to the first summed weight 
+    /// Searches the B+ tree and returns an iterator to the first summed weight
     /// greater than the parameter. If unsuccessful it returns end().
     const_iterator upper_summed_weight_bound(weight_type weight) const
     {

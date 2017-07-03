@@ -119,7 +119,7 @@ public:
 	bool isDirWritable() const;
 	/// \return list other files in the directory having optional extension 'ext'.
 	FileNameList dirList(std::string const & ext) const;
-	
+
 	/// copy a file
 	/// \return true when file/directory is writable (write test file)
 	/// \warning This methods has different semantics when system level
@@ -201,10 +201,10 @@ public:
 
 	/// change to a directory, return success
 	bool chdir() const;
-	
+
 	/// \param buffer_path if empty, uses `pwd`
 	docstring const relPath(std::string const & path) const;
-	
+
 	docstring const absoluteFilePath() const;
 
 private:
@@ -265,7 +265,7 @@ public:
 	std::string relFileName(std::string const & buffer_path = empty_string()) const;
 	/// \param buf_path if empty, uses `pwd`
 	std::string outputFileName(std::string const & buf_path = empty_string()) const;
-	
+
 	/** @returns a mangled representation of the absolute file name
 	 *  suitable for use in the temp dir when, for example, converting
 	 *  an image file to another format.
@@ -299,7 +299,7 @@ private:
 };
 
 
-/// \return true if these have the same absolute path name AND 
+/// \return true if these have the same absolute path name AND
 /// if save_abs_path_ has the same value in both cases.
 bool operator==(DocFileName const &, DocFileName const &);
 ///

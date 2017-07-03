@@ -68,7 +68,7 @@ public:
 	{
 		return first < s.first;
 	}
-	
+
 	inline bool operator==(FontSpan const & s) const
 	{
 		return first == s.first && last == s.last;
@@ -83,7 +83,7 @@ public:
 	{
 		return empty() ? 0 : last - first;
 	}
-	
+
 
 	inline FontSpan intersect(FontSpan const & f) const
 	{
@@ -100,7 +100,7 @@ public:
 			result.last = last;
 		return result;
 	}
-	
+
 	inline bool empty() const
 	{
 		return first > last;
@@ -468,7 +468,7 @@ public:
 		bool mw, ///<
 		pos_type pos, ///< start from here.
 		bool del = true) const;
-	
+
 	void locateWord(pos_type & from, pos_type & to,
 		word_location const loc) const;
 	///

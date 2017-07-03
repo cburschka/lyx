@@ -31,15 +31,15 @@ LATTEST(expr)
   This macro should be used when one just wants to test expr. If devel mode,
   this will lead to an assertion. In release mode, we will simply continue. So
   LATTEST should be used only if you know, in advance, that it will be safe to
-  continue with the usual program flow, but failure of expr still means that 
+  continue with the usual program flow, but failure of expr still means that
   there is something that needs to be fixed.
 
 LASSERT(expr, escape)
-  This macro should be used when a failure of expr is not compatible with 
+  This macro should be used when a failure of expr is not compatible with
   continuing the ordinary program flow, but is something from which we can
   recover. This might mean simply returning early from some routine; it might
   mean resetting some variables to values known to be sane; it might mean
-  taking some other corrective action. 
+  taking some other corrective action.
 
 LWARNIF(expr)
   This macro should be used when a failure of expr indicates that the current
@@ -56,7 +56,7 @@ LAPPERR(expr)
   This macro should be used if a failure of expr is incompatible with LyX
 	continuing to operate at all. In release mode, this issues an ErrorException,
   which typically results in an emergency shutdown.
-	
+
 ******************************************************************************/
 
 

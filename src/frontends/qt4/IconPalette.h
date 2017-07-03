@@ -65,7 +65,7 @@ private:
 	QGridLayout * layout_;
 	QList<QAction *> actions_;
 	bool tornoff_;
-	TearOff * tearoffwidget_; 
+	TearOff * tearoffwidget_;
 };
 
 

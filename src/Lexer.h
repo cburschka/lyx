@@ -27,7 +27,7 @@ namespace support { class FileName; }
 class PushPopHelper;
 
 /** A helper structure to describe a keyword for the Lexer.
-	Usually used bundled in C style arrays and passed to the 
+	Usually used bundled in C style arrays and passed to the
 	Lexer using a LexerKeywordTable object.
 */
 struct LexerKeyword
@@ -110,8 +110,8 @@ public:
 	/// returns a lex code
 	int lex();
 
-	/// Read the next string, as delimited by double quotes or 
-	/// whitespace. If esc is true, then we remember that some chars 
+	/// Read the next string, as delimited by double quotes or
+	/// whitespace. If esc is true, then we remember that some chars
 	/// might be escaped: \" at least.
 	bool next(bool esc = false);
 
@@ -120,7 +120,7 @@ public:
 	/// split a word if it contains a backslash.
 	bool nextToken();
 
-	/// Puts the rest of the line in the buffer, where it will 
+	/// Puts the rest of the line in the buffer, where it will
 	/// be available via getString() or getDocString().
 	bool eatLine();
 

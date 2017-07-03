@@ -52,7 +52,7 @@ private:
 	bool descendable(BufferView const &) const { return true; }
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
-	///	
+	///
 	void drawBackground(PainterInfo & pi, int x, int y) const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
@@ -77,14 +77,14 @@ private:
 	              size_t max_length = INT_MAX) const;
 	///
 	int docbook(odocstream & os, OutputParams const & runparams) const;
-	/// 
+	///
 	docstring xhtml(XHTMLStream & os, OutputParams const & runparams) const;
 	///
 	void setCustomLabel(docstring const & label);
 	///
 	void addToToc(DocIterator const & di, bool output_active, UpdateType utype,
 	              TocBackend & backend) const;
-	/// 
+	///
 	virtual bool forcePlainLayout(idx_type = 0) const { return true; }
 	/// Captions don't accept alignment, spacing, etc.
 	virtual bool allowParagraphCustomization(idx_type = 0) const { return false; }

@@ -52,7 +52,7 @@ public:
 	void activate();
 	/// Do a completion as far as it is unique, but at least one character.
 	void tab();
-	
+
 	/// Update the visibility of the popup and the inline completion.
 	/// This method might set the update flags of the cursor to request
 	/// a redraw.
@@ -66,7 +66,7 @@ public:
 	docstring longestUniqueCompletion() const;
 	///
 	bool uniqueCompletionAvailable() const;
-	
+
 public Q_SLOTS:
 	/// Show the popup.
 	void showPopup();
@@ -91,7 +91,7 @@ private Q_SLOTS:
 	void asyncHidePopup();
 	/// the asynchronous part of hideInline(cur)
 	void asyncHideInline();
-	
+
 private:
 	///
 	void setCurrentCompletion(QString const & s);

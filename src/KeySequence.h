@@ -66,7 +66,7 @@ public:
 		ForGui,		//< use platform specific translations and special characters
 		BindFile	//< the format used in lyx bind files
 	};
-	
+
 	/**
 	 * Return the current sequence as a string.
 	 * @param format output format

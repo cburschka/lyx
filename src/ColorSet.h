@@ -78,7 +78,7 @@ public:
 
 private:
 	///
-	void addColor(ColorCode c, std::string const & lyxname); 
+	void addColor(ColorCode c, std::string const & lyxname);
 	///
 	class Information {
 	public:

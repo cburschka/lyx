@@ -302,7 +302,7 @@ private:
 class MTag {
 public:
 	///
-	MTag(char const * const tag, std::string attr = "") 
+	MTag(char const * const tag, std::string attr = "")
 		: tag_(tag), attr_(attr) {}
 	///
 	char const * const tag_;

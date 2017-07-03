@@ -64,13 +64,13 @@ public:
 	bool osfDefault() const { return osfdefault_; }
 	/// Is this font available?
 	bool available(bool ot1, bool nomath);
-	/// Does this font provide an alternative without math? 
+	/// Does this font provide an alternative without math?
 	bool providesNoMath(bool ot1, bool complete);
 	/// Does this font provide Old Style Figures?
 	bool providesOSF(bool ot1, bool complete, bool nomath);
 	/// Does this font provide optional true SmallCaps?
 	bool providesSC(bool ot1, bool complete, bool nomath);
-	/** does this font provide OSF and Small Caps only via 
+	/** does this font provide OSF and Small Caps only via
 	 * a single, undifferentiated expert option?
 	 */
 	bool hasMonolithicExpertSet(bool ot1, bool complete, bool nomath);
@@ -89,7 +89,7 @@ public:
 	///
 	bool readFont(Lexer & lex);
 private:
-	/// Return the preferred available package 
+	/// Return the preferred available package
 	std::string const getAvailablePackage(bool dryrun);
 	/// Return the package options
 	std::string const getPackageOptions(bool ot1,
@@ -139,8 +139,8 @@ private:
 	///
 	bool switchdefault_;
 };
-  
-  
+
+
 /** The list of available LaTeX fonts
  */
 class LaTeXFonts {

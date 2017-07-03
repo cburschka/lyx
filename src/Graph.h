@@ -49,17 +49,17 @@ private:
 	///
 	bool bfs_init(int, bool clear_visited, std::queue<int> & Q);
 	/// these represent the arrows connecting the nodes of the graph.
-	/// this is the basic representation of the graph: as a bunch of 
+	/// this is the basic representation of the graph: as a bunch of
 	/// arrows.
 	struct Arrow {
 		///
-		Arrow(int f, int t, int i): 
+		Arrow(int f, int t, int i):
 			from(f), to(t), id(i) {}
 		/// the vertex at the tail of the arrow
 		int from;
 		/// the vertex at the head
 		int to;
-		/// an id for this arrow, e.g., for use in describing paths 
+		/// an id for this arrow, e.g., for use in describing paths
 		/// through the graph
 		int id;
 	};
@@ -87,7 +87,7 @@ private:
 	/// of Format, this is easy, since the Format objects already have ints
 	/// as identifiers.)
 	std::vector<Vertex> vertices_;
-	
+
 	/// a counter that we use to assign id's to the arrows
 	/// FIXME This technique assumes a correspondence between the
 	/// ids of the arrows and ids associated with Converters that

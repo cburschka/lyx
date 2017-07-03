@@ -47,7 +47,7 @@ enum KernelDocType
 /** \c Dialog collects the different parts of a Model-Controller-View
  *  split of a generic dialog together.
  */
-class Dialog 
+class Dialog
 {
 public:
 	/// \param lv is the access point for the dialog to the LyX kernel.

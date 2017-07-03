@@ -70,7 +70,7 @@ private:
 
 	/// open a listbox and show the contents of the list. When reversed
 	/// is true, the contents of the list is filled bottom-up.
-	void showList(std::vector<std::string> const & list, 
+	void showList(std::vector<std::string> const & list,
 		QPoint const & pos, bool reversed = false) const;
 
 	/// return the possible completions

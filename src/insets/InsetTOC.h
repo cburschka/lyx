@@ -70,7 +70,7 @@ private:
 	void makeTOCNoDepth(XHTMLStream & xs, Toc const & toc, const OutputParams & op) const;
 	///
 	void makeTOCEntry(XHTMLStream & xs, Paragraph const & par, OutputParams const & op) const;
-	
+
 	/// \name Private functions inherited from Inset class
 	//@{
 	///

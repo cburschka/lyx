@@ -30,7 +30,7 @@ public:
 	MathMacroTemplate(Buffer * buf);
 	///
 	MathMacroTemplate(Buffer * buf, docstring const & name, int nargs,
-		int optional, MacroType type, 
+		int optional, MacroType type,
 		std::vector<MathData> const & optionalValues = std::vector<MathData>(),
 		MathData const & def = MathData(),
 		MathData const & display = MathData());
@@ -79,10 +79,10 @@ public:
 	bool validMacro() const;
 	///
 	bool validName() const;
-	/// Remove everything from the name which makes it invalid 
+	/// Remove everything from the name which makes it invalid
 	/// and return true iff it is valid.
 	bool fixNameAndCheckIfValid();
-	
+
 	/// request "external features"
 	virtual void validate(LaTeXFeatures &) const;
 
@@ -116,7 +116,7 @@ protected:
 private:
 	friend class InsetLabelBox;
 	friend class DisplayLabelBox;
-	
+
 	///
 	virtual Inset * clone() const;
 
@@ -127,7 +127,7 @@ private:
 	void shiftArguments(size_t from, int by);
 	///
 	void insertParameter(Cursor & cur, DocIterator const & inset_pos,
-		int pos, bool greedy = false, bool addarg = true); 
+		int pos, bool greedy = false, bool addarg = true);
 	///
 	void removeParameter(Cursor & cur, DocIterator const & inset_pos,
 		int pos, bool greedy = false);
@@ -160,7 +160,7 @@ private:
 	mutable int argsInLook_;
 	///
 	int optionals_;
-	/// keeps the old optional default value when an 
+	/// keeps the old optional default value when an
 	/// optional argument is disabled
 	std::vector<MathData> optionalValues_;
 

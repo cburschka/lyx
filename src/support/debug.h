@@ -110,7 +110,7 @@ namespace Debug {
 
 	/// Return number of levels
 	int levelCount();
- 
+
 	/// A function to convert debug level string names numerical values
 	Type value(std::string const & val);
 
@@ -144,7 +144,7 @@ class LyXErr
 public:
 	LyXErr(): dt_(Debug::NONE), stream_(0), enabled_(true),
 	          second_stream_(0), second_enabled_(false) {}
-	
+
 	/// Disable the stream completely
 	void disable();
 	/// Enable the stream after a possible call of disable()
@@ -165,7 +165,7 @@ public:
 	/// Returns second stream
 	std::ostream & secondStream() { return *second_stream_; }
 	/// Sets second stream
-	void setSecondStream(std::ostream * os) 
+	void setSecondStream(std::ostream * os)
 		{ second_enabled_ = (second_stream_ = os); }
 	/// Is the second stream is enabled?
 	bool secondEnabled() { return second_enabled_; }

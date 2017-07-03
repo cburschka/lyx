@@ -22,7 +22,7 @@
 
 namespace lyx {
 
-/** 
+/**
  * The options that are used by the Comparison algorithm
  * and are set in the GuiCompare Dialog.
  */
@@ -32,7 +32,7 @@ public:
 	CompareOptions()
 		: settings_from_new(0)
 	{}
-	
+
 	/// Copy the settings from the new or old document
 	bool settings_from_new;
 };
@@ -89,14 +89,14 @@ public:
 private:
 	/// Starts the comparison algorithm
 	int doCompare();
-	
+
 	/// The new document's buffer
 	Buffer const * const new_buffer;
 	/// The old document's buffer
 	Buffer const * const old_buffer;
 	/// The buffer with the differences marked with track changes
 	Buffer * const dest_buffer;
-	
+
 	/// The options that are set in the GuiCompare dialog
 	CompareOptions options_;
 

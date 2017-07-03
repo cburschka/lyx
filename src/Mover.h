@@ -50,10 +50,10 @@ public:
 	 *  directory to the export location, since @c to and @c latex may
 	 *  not be equal in this case.
 	 *  \returns true if successful.
-	 *  NOTE: Although this routine simply calls do_copy() and 
+	 *  NOTE: Although this routine simply calls do_copy() and
 	 *  Mover::do_copy() does not itself make any use of the @c latex argument,
 	 *  SpecialisedMover overrides do_copy(), so SpecialisedMover::copy(), which
-	 *  is just Mover::copy(), calls SpecialisedMover::do_copy(), and the @c latex 
+	 *  is just Mover::copy(), calls SpecialisedMover::do_copy(), and the @c latex
 	 *  argument IS in that case used.
 	 */
 	bool
@@ -104,9 +104,9 @@ protected:
  *  For example, an Xfig .fig file can contain references to external
  *  picture files. If such a reference has a relative path, then the
  *  copied .fig file will require a transformation of the picture file
- *  reference if it is to be found by Xfig. 
+ *  reference if it is to be found by Xfig.
  *
- *  So, in this case, we need three arguments: 
+ *  So, in this case, we need three arguments:
  *  (i)   @c from  the location of the file to be moved
  *  (ii)  @c to    the location to which it should be moved
  *  (iii) @c latex the identifier that should be used in the sort of
@@ -125,9 +125,9 @@ public:
 	 *        $$i is a placeholder for the name of the file to be moved,
 	 *        $$o is a placeholder for the name of the file after moving,
 	 *        $$l is a placeholder for the latex argument, as explained above.
-	 *  $$o and $$l can only differ if the file is copied from the temporary 
-	 *  directory to the export location. If it is copied from the original 
-	 *  location to the temporary directory, they are the same, so $$l may be 
+	 *  $$o and $$l can only differ if the file is copied from the temporary
+	 *  directory to the export location. If it is copied from the original
+	 *  location to the temporary directory, they are the same, so $$l may be
 	 *  ignored in this case, as it is in the Mover baseclass.
 	 */
 	SpecialisedMover(std::string const & command)

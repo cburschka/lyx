@@ -59,7 +59,7 @@ initialisation should be done before the instanciation of this class.
    |
    GuiView-1 (one or more in case of split-view mode).
    |  |
-   |  <tab-widget-1-1> 
+   |  <tab-widget-1-1>
    |  |  |
    |  |  WorkArea-1-1-1 (M1-1 WorkAreas, M1-1 <= N)
    |  |  | |
@@ -73,7 +73,7 @@ initialisation should be done before the instanciation of this class.
    |  |  |   |
    |  |  |   Cursor
    |  |
-   |  <tab-widget-1-2> 
+   |  <tab-widget-1-2>
    |
    GuiView-2 (one or more in case of split-view mode).
    |  |

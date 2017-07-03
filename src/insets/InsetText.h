@@ -93,11 +93,11 @@ public:
 		WriteEverything = 7
 	};
 	///
-	docstring insetAsXHTML(XHTMLStream &, OutputParams const &, 
+	docstring insetAsXHTML(XHTMLStream &, OutputParams const &,
 	                       XHTMLOptions) const;
 	///
 	void validate(LaTeXFeatures & features) const;
-	
+
 	/// return the argument(s) only
 	void getArgs(otexstream & os, OutputParams const &, bool const post = false) const;
 
@@ -169,7 +169,7 @@ public:
 
 	/// Update the counters of this inset and of its contents
 	virtual void updateBuffer(ParIterator const &, UpdateType);
-	/// 
+	///
 	void setMacrocontextPositionRecursive(DocIterator const & pos);
 	///
 	void toString(odocstream &) const;
@@ -205,7 +205,7 @@ public:
 	/// \param prefix: a string that will preced the tooltip,
 	/// e.g., "Index: ".
 	/// \param len: length of the resulting string
-	/// NOTE This routine is kind of slow. It's fine to use it within the 
+	/// NOTE This routine is kind of slow. It's fine to use it within the
 	/// GUI, but definitely do not try to use it in updateBuffer or anything
 	/// of that sort. (Note: unnecessary internal copies have been removed
 	/// since the previous note. The efficiency would have to be assessed

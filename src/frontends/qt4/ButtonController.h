@@ -115,7 +115,7 @@ private:
 	/// noncopyable
 	ButtonController(ButtonController const &);
 	void operator=(ButtonController const &);
-	
+
 	/// pimpl
 	class Private;
 	Private * d;

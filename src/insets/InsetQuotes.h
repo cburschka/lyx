@@ -147,7 +147,7 @@ public:
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 
-	/// 
+	///
 	void toString(odocstream &) const;
 	///
 	void forOutliner(docstring &, size_t const maxlen, bool const) const;

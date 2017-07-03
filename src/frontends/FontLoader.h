@@ -32,7 +32,7 @@ public:
 	~FontLoader();
 
 	/// Update fonts after zoom, dpi, font names, or norm change
-	// (basically by deleting all cached values)	
+	// (basically by deleting all cached values)
 	void update();
 
 	/// Is the given font available ?

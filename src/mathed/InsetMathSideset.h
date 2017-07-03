@@ -107,9 +107,9 @@ private:
 	/// Italic correction as described in InsetMathScript.h
 	int nker(BufferView const * bv) const;
 	/// Whether there are two left scripts or one single cell
-	bool scriptl_; 
+	bool scriptl_;
 	/// Whether there are two right scripts or one single cell
-	bool scriptr_; 
+	bool scriptr_;
 };
 
 

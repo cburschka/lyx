@@ -265,22 +265,22 @@ private:
 	explicit DocIterator(Buffer * buf, Inset * inset);
 	/**
 	 * Normally, when the cursor is at position i, it is painted *before*
-	 * the character at position i. However, what if we want the cursor 
+	 * the character at position i. However, what if we want the cursor
 	 * painted *after* position i? That's what boundary_ is for: if
 	 * boundary_==true, the cursor is painted *after* position i-1, instead
 	 * of before position i.
 	 *
 	 * Note 1: Usually, after i-1 or before i are actually the same place!
-	 * However, this is not the case when i-1 and i are not painted 
+	 * However, this is not the case when i-1 and i are not painted
 	 * contiguously, and in these cases we sometimes do want to have control
 	 * over whether to paint before i or after i-1.
 	 * Some concrete examples of where this happens:
 	 * a. i-1 at the end of one row, i at the beginning of next row
 	 * b. in bidi text, at transitions between RTL and LTR or vice versa
 	 *
-	 * Note 2: Why i and i-1? Why, if boundary_==false means: *before* i, 
-	 * couldn't boundary_==true mean: *after* i? 
-	 * Well, the reason is this: cursor position is not used only for 
+	 * Note 2: Why i and i-1? Why, if boundary_==false means: *before* i,
+	 * couldn't boundary_==true mean: *after* i?
+	 * Well, the reason is this: cursor position is not used only for
 	 * painting the cursor, but it also affects other things, for example:
 	 * where the next insertion will be placed (it is inserted at the current
 	 * position, pushing anything at the current position and beyond forward).
@@ -324,21 +324,21 @@ bool operator<(DocIterator const & p, DocIterator const & q)
 }
 
 
-inline	
+inline
 bool operator>(DocIterator const & p, DocIterator const & q)
 {
 	return q < p;
 }
 
 
-inline	
+inline
 bool operator<=(DocIterator const & p, DocIterator const & q)
 {
 	return !(q < p);
 }
 
 
-inline	
+inline
 bool operator>=(DocIterator const & p, DocIterator const & q)
 {
 	return !(p < q);

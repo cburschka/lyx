@@ -106,7 +106,7 @@ public:
 	/// Check the directory of file and all parent directories
 	/// for the existence of repository-info like .git or .svn
 	static bool checkparentdirs(support::FileName const & file, std::string const & vcsdir);
-	
+
 protected:
 	/// parse information from the version file
 	virtual void scanMaster() = 0;
@@ -114,7 +114,7 @@ protected:
 	/// Prepare a version identifier suitable for RCS and CVS.
 	/// If needed converts last or relative number to the absolute revision.
 	bool makeRCSRevision(std::string const &version, std::string &revis) const;
-	
+
 	/// GUI container for doVCCommandCall
 	int doVCCommand(std::string const & cmd, support::FileName const & path, bool reportError = true);
 	/**
@@ -279,7 +279,7 @@ public:
 
 	virtual void getLog(support::FileName const &);
 
-	/// Check for messages in cvs output. 
+	/// Check for messages in cvs output.
 	/// Returns conflict line.
 	std::string scanLogFile(support::FileName const & f, std::string & status);
 
@@ -334,7 +334,7 @@ private:
 	static int doVCCommandCallWithOutput(std::string const & cmd,
 			support::FileName const & path,
 			support::FileName const & output);
-						
+
 	/// return the quoted pathname if Directory or filename if File
 	virtual std::string const getTarget(OperationMode opmode) const;
 	/// collect the diff of file or directory against repository

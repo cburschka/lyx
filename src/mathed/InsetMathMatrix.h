@@ -24,7 +24,7 @@ namespace lyx {
 class InsetMathMatrix : public InsetMathGrid {
 public:
 	///
-	explicit InsetMathMatrix(InsetMathGrid const &, 
+	explicit InsetMathMatrix(InsetMathGrid const &,
 			docstring const & left, docstring const & right);
 	/// identifies MatrixInsets
 	InsetMathMatrix const * asMatrixInset() const { return this; }

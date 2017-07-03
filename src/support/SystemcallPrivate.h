@@ -24,7 +24,7 @@ class Systemcall;
 
 /**
  * Outputs to the console terminal the line buffered standard output and
- * error of a spawned process when there is a controlling terminal and 
+ * error of a spawned process when there is a controlling terminal and
  * stdout/stderr have not been redirected.
  */
 class SystemcallPrivate : public QObject
@@ -47,14 +47,14 @@ public:
 	bool waitWhile(State, bool processEvents, int timeout = -1);
 	void startProcess(QString const & cmd, std::string const & path,
 	                  std::string const & lpath, bool detach);
-	
+
 	int exitCode();
 
 	QString errorMessage() const;
 	QString exitStatusMessage() const;
 
 	QProcess* releaseProcess();
-	
+
 	static void killProcess(QProcess * p);
 
 
@@ -93,7 +93,7 @@ private:
 
 	void waitAndProcessEvents();
 	void processEvents();
-	void killProcess();	
+	void killProcess();
 
 };
 

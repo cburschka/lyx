@@ -59,7 +59,7 @@ public:
 	mode_type currentMode() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
-	/// 
+	///
 	void drawBackground(PainterInfo & pi, int x, int y) const;
 	///
 	void draw(PainterInfo &, int x, int y) const;
@@ -143,7 +143,7 @@ public:
 	///
 	bool readQuiet(Lexer & lex);
 	///
-	int plaintext(odocstringstream &, OutputParams const &, 
+	int plaintext(odocstringstream &, OutputParams const &,
 	              size_t max_length = INT_MAX) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;
@@ -155,7 +155,7 @@ public:
 	void htmlize(HtmlStream &) const;
 	///
 	void mathAsLatex(WriteStream &) const;
-	/// 
+	///
 	void toString(odocstream &) const;
 	///
 	void forOutliner(docstring &, size_t const, bool const) const;
@@ -177,7 +177,7 @@ public:
 
 	///
 	static int displayMargin() { return 12; }
-	
+
 	/// Force inset into LTR environment if surroundings are RTL
 	virtual bool forceLTR() const { return true; }
 	///
@@ -217,7 +217,7 @@ private:
 	/// If so, we ignore LyXRC and wait for the image to be generated.
 	void preparePreview(DocIterator const & pos,
 	                    bool forexport = false) const;
-	/// like reloadPreview, but forces load 
+	/// like reloadPreview, but forces load
 	/// used by image export
 	void loadPreview(DocIterator const & pos) const;
 	///
@@ -288,7 +288,7 @@ public:
 	///
 	bool editable() const { return true; }
 	///
-	void edit(Cursor & cur, bool front, 
+	void edit(Cursor & cur, bool front,
 		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
 	///
 	Inset * editXY(Cursor & cur, int x, int y);

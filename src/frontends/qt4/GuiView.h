@@ -110,7 +110,7 @@ public:
 	/// display a message in the view
 	/// could be called from any thread
 	void message(docstring const &);
-	
+
 	bool getStatus(FuncRequest const & cmd, FuncStatus & flag);
 	/// dispatch command.
 	/// \return true if the \c FuncRequest has been dispatched.
@@ -173,7 +173,7 @@ public:
 
 	///
 	TocModels & tocModels();
-	
+
 	/// called on timeout
 	void autoSave();
 
@@ -191,7 +191,7 @@ public:
 	/// \return the \c Workarea at index \c index
 	GuiWorkArea * workArea(int index);
 
-	/// Add a \c WorkArea 
+	/// Add a \c WorkArea
 	/// \return the \c Workarea associated to \p  Buffer
 	/// \retval 0 if no \c WorkArea is found.
 	GuiWorkArea * addWorkArea(Buffer & buffer);
@@ -208,7 +208,7 @@ public:
 	GuiWorkArea const * currentMainWorkArea() const;
 	/// return the current document WorkArea (it may not have the focus).
 	GuiWorkArea * currentMainWorkArea();
-	
+
 	/// Current ratio between physical pixels and device-independent pixels
 	double pixelRatio() const;
 
@@ -304,7 +304,7 @@ public:
 	void hideAll() const;
 
 	/// Update all visible dialogs.
-	/** 
+	/**
 	 *  Check the status of all visible dialogs and disable or reenable
 	 *  them as appropriate.
 	 *
@@ -374,7 +374,7 @@ private:
 
 	///
 	enum RenameKind { LV_WRITE_AS, LV_VC_RENAME, LV_VC_COPY };
-	/// Save a buffer as a new file. 
+	/// Save a buffer as a new file.
 	/**
 	Write a buffer to a new file name and rename the buffer
     according to the new file name.
@@ -407,7 +407,7 @@ private:
 	/// closes the tabworkarea and all tabs. If we are in a close event,
 	/// all buffers will be closed, otherwise they will be hidden.
 	bool closeTabWorkArea(TabWorkArea * twa);
-	/// gives the user the possibility to save his work 
+	/// gives the user the possibility to save his work
 	/// or to discard the changes. If hiding is true, the
 	/// document will be reloaded.
 	bool saveBufferIfNeeded(Buffer & buf, bool hiding);

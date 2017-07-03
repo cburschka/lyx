@@ -60,7 +60,7 @@ public:
 	///
 	static std::string defaultCommand() { return "nomenclature"; }
 	///
-	static bool isCompatibleCommand(std::string const & s) 
+	static bool isCompatibleCommand(std::string const & s)
 		{ return s == "nomenclature"; }
 	//@}
 
@@ -93,7 +93,7 @@ public:
 	void validate(LaTeXFeatures & features) const;
 	///
 	int docbook(odocstream &, OutputParams const &) const;
-	/// 
+	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
 	InsetCode lyxCode() const;
@@ -114,7 +114,7 @@ public:
 	///
 	static std::string defaultCommand() { return "printnomenclature"; }
 	///
-	static bool isCompatibleCommand(std::string const & s) 
+	static bool isCompatibleCommand(std::string const & s)
 		{ return s == "printnomenclature"; }
 	//@}
 

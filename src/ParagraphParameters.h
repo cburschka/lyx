@@ -80,13 +80,13 @@ public:
 
 	/// read the parameters from a string
 	void read (std::string str, bool merge = true);
-	
+
 	/// read the parameters from a lex
 	void read(Lexer & lex, bool merge = true);
-	
-	/// 
+
+	///
 	void apply(ParagraphParameters const & params, Layout const & layout);
-	
+
 	// It would be nice to have a working version of this method, so that
 	// getStatus() could return information about what was possible.
 	// bool canApply(ParagraphParameters const & params, Layout const & layout)

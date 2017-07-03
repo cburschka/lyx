@@ -27,12 +27,12 @@ class Mutex
 public:
 	Mutex();
 	~Mutex();
-	
+
 	/// Scope based locking:
 	/// Usage:
 	/// >>> unlocked
-	/// { 
-	///     Mutex::Locker locker(a_Mutex_ptr);  
+	/// {
+	///     Mutex::Locker locker(a_Mutex_ptr);
 	///     >>> locked
 	/// }
 	/// >>> unlocked

@@ -241,7 +241,7 @@ docstring const rtrim(docstring const & a, char const * p = " ");
 std::string const ltrim(std::string const & a, char const * p = " ");
 docstring const ltrim(docstring const & a, char const * p = " ");
 
-/** Splits the string given in the first argument at the first occurence 
+/** Splits the string given in the first argument at the first occurence
     of the third argument, delim.
     What precedes delim is returned in the second argument, piece; this
     will be the whole of the string if no delimiter is found.
@@ -293,15 +293,15 @@ docstring const protectArgument(docstring & arg, char const l = '[',
 /// be displayed in worst-case scenarios.
 ///
 /// FIXME: apply those principles in the current code.
-/// 
+///
 bool truncateWithEllipsis(docstring & str, size_t const len);
 
 /// Word-wraps the provided docstring, returning a line-broken string
-/// of width no wider than width, with the string broken at spaces. 
-/// If the string cannot be broken appropriately, it returns something 
+/// of width no wider than width, with the string broken at spaces.
+/// If the string cannot be broken appropriately, it returns something
 /// with "..." at the end, again no wider than width.
 /// We assume here that str does not contain newlines.
-/// If indent is positive, then the first line is indented that many 
+/// If indent is positive, then the first line is indented that many
 /// spaces. If it is negative, then successive lines are indented, as
 /// if the first line were "outdented".
 ///

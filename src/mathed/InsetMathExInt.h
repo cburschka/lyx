@@ -26,7 +26,7 @@ namespace lyx {
 //   cell(1) is the stuff after the 'd'
 //   cell(2) is the lower bound
 //   cell(3) is the upper bound
-// for sums: 
+// for sums:
 //   cell(0) is the main body
 //   cell(1) is the index (e.g., i), if the lower bound is "i = ..."
 //      or the whole lower bound if not

@@ -35,7 +35,7 @@ namespace lyx {
 namespace support { class FileName; }
 
 class BufferParams;
- 
+
 namespace frontend {
 
 class LengthCombo;
@@ -50,11 +50,11 @@ Length widgetsToLength(QLineEdit const * input, QComboBox const * combo);
 // all the code to remove default_unit argument when equal to the
 // default.
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
-		     Length const & len, 
+		     Length const & len,
 		     Length::UNIT default_unit = Length::defaultUnit());
 /// method to set widgets from a string
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
-		     std::string const & len, 
+		     std::string const & len,
 		     Length::UNIT default_unit = Length::defaultUnit());
 /// method to set widgets from a docstring
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
@@ -123,18 +123,18 @@ support::FileName imageLibFileSearch(QString & dir, QString const & name,
 	relative to relpath.
 
 \param title: title for dialog
-	
+
 \param filters: *.ps, etc
 
 \param save: whether to save dialog info (current path, etc) for next use.
 
-The \param labelN and \param dirN arguments provide for extra buttons 
+The \param labelN and \param dirN arguments provide for extra buttons
 in the dialog (e.g., "Templates" and a path to that directory).
 
-The difference between the functions concerns when we think we have a 
-relative path. 
+The difference between the functions concerns when we think we have a
+relative path.
 
-In \c browseRelToParent, we return a relative path only if it IS NOT of 
+In \c browseRelToParent, we return a relative path only if it IS NOT of
 	the form "../../foo.txt".
 
 In \c browseRelToSub, we return a relative path only if it IS of the

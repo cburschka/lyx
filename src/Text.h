@@ -127,7 +127,7 @@ public:
 	/// truncates str to maxlenwith an ellipsis and replaces the characters '\n'
 	/// and '\t' with spaces
 	static void shortenForOutliner(docstring & str, size_t const maxlen);
-		
+
 	/// Appends a possibly abbreviated representation of our text to \param os,
 	/// where \param maxlen defines the maximum size of \param os. If \param
 	/// shorten is true, then os is shortened as above.
@@ -172,7 +172,7 @@ public:
 	void selectAll(Cursor & cur);
 	/// convenience function get the previous word or an empty string
 	docstring previousWord(CursorSlice const & sl) const;
-	
+
 	/// what type of change operation to make
 	enum ChangeOp {
 		ACCEPT,

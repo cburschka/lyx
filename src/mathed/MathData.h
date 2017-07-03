@@ -198,18 +198,18 @@ private:
 	///
 	void detachMacroParameters(DocIterator * dit, const size_type macroPos);
 	///
-	void attachMacroParameters(Cursor * cur, const size_type macroPos, 
+	void attachMacroParameters(Cursor * cur, const size_type macroPos,
 		const size_type macroNumArgs, const int macroOptionals,
 		const bool fromInitToNormalMode, const bool interactiveInit,
 		const size_t appetite);
 	///
-	void collectOptionalParameters(Cursor * cur, 
-		const size_type numOptionalParams, std::vector<MathData> & params, 
+	void collectOptionalParameters(Cursor * cur,
+		const size_type numOptionalParams, std::vector<MathData> & params,
 		size_t & pos, MathAtom & scriptToPutAround,
 		const pos_type macroPos, const int thisPos, const int thisSlice);
 	///
-	void collectParameters(Cursor * cur, 
-		const size_type numParams, std::vector<MathData> & params, 
+	void collectParameters(Cursor * cur,
+		const size_type numParams, std::vector<MathData> & params,
 		size_t & pos, MathAtom & scriptToPutAround,
 		const pos_type macroPos, const int thisPos, const int thisSlice,
 		const size_t appetite);

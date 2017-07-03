@@ -37,7 +37,7 @@ public:
 		MENU, // A menu entry
 		TOOLBAR, // A toolbar icon
 		KEYBOARD, // a keyboard binding
-		COMMANDBUFFER, 
+		COMMANDBUFFER,
 		LYXSERVER,
 		TOC
 	};
@@ -58,7 +58,7 @@ public:
 	/// for changing requests a bit
 	FuncRequest(FuncRequest const & cmd, docstring const & arg,
 		    Origin o = INTERNAL);
-	
+
 	/// access the whole argument
 	docstring const & argument() const { return argument_; }
 	///
@@ -75,7 +75,7 @@ public:
 	int y() const { return y_; }
 	///
 	void set_y(int y) { y_ = y; }
-	/// 
+	///
 	mouse_button::state button() const { return button_; }
 	///
 	KeyModifier modifier() { return modifier_; }
@@ -86,9 +86,9 @@ public:
 	/// eating all characters up to the end of the command line
 	std::string getLongArg(unsigned int i) const;
 
-	/// 
+	///
 	static FuncRequest const unknown;
-	/// 
+	///
 	static FuncRequest const noaction;
 private:
 	/// the action

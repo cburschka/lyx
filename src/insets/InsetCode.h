@@ -133,7 +133,7 @@ enum InsetCode {
 	///
 	MATH_CASES_CODE,
 	///
-	MATH_CHAR_CODE, 
+	MATH_CHAR_CODE,
 	///
 	MATH_COLOR_CODE,
 	///
@@ -225,7 +225,7 @@ enum InsetCode {
 	///
 	PREVIEW_CODE,
 	///
-	MATH_DIAGRAM_CODE, 
+	MATH_DIAGRAM_CODE,
 	///
 	SCRIPT_CODE,
 	///

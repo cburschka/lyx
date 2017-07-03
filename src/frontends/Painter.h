@@ -176,7 +176,7 @@ public:
 		char_type c, FontInfo const & f, preedit_style style) = 0;
 
 	/// start monochrome painting mode, i.e. map every color into [min,max]
-	virtual void enterMonochromeMode(Color const & min, 
+	virtual void enterMonochromeMode(Color const & min,
 		Color const & max) = 0;
 	/// leave monochrome painting mode
 	virtual void leaveMonochromeMode() = 0;

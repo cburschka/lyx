@@ -192,7 +192,7 @@ private:
 			  std::string const & = std::string());
 
 	///
-	bool runMakeIndexNomencl(support::FileName const &, 
+	bool runMakeIndexNomencl(support::FileName const &,
 				 std::string const &, std::string const &);
 
 	///
@@ -239,7 +239,7 @@ private:
 
 	///
 	OutputParams runparams;
-	
+
 	/// Do we use biber?
 	bool biber;
 

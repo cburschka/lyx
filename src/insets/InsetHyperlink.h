@@ -24,7 +24,7 @@ class InsetHyperlink : public InsetCommand
 public:
 	///
 	InsetHyperlink(Buffer * buf, InsetCommandParams const &);
-				
+
 	/// \name Public functions inherited from Inset class
 	//@{
 	///
@@ -59,14 +59,14 @@ public:
 	/// \name Static public methods obligated for InsetCommand derived classes
 	//@{
 	///
-	static bool isCompatibleCommand(std::string const & s) 
+	static bool isCompatibleCommand(std::string const & s)
 		{ return s == "href"; }
 	///
 	static std::string defaultCommand() { return "href"; }
 	///
 	static ParamInfo const & findInfo(std::string const &);
 	//@}
-	
+
 private:
 	/// \name Private functions inherited from Inset class
 	//@{

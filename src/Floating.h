@@ -107,13 +107,13 @@ private:
 	bool  allowswide_;
 	///
 	bool  allowssideways_;
-	/// 
+	///
 	mutable std::string html_tag_;
-	/// 
+	///
 	mutable std::string html_attrib_;
 	///
 	mutable std::string defaultcssclass_;
-	/// 
+	///
 	docstring html_style_;
 };
 

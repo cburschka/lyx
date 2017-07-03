@@ -148,7 +148,7 @@ public:
 	bool at_end() const;
 	/// are we at the start of this slice
 	bool at_begin() const;
-	
+
 private:
 
 	/// pointer to 'owning' inset. This is some kind of cache.

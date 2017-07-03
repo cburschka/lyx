@@ -108,13 +108,13 @@ public:
 	///
 	void draw(int x, int y, docstring const & str);
 	/// Determines the background color for the specified inset based on the
-	/// selection state, the background color inherited from the parent inset 
+	/// selection state, the background color inherited from the parent inset
 	/// and the inset's own background color.
 	/// \param sel whether to take the selection state into account
 	ColorCode backgroundColor(Inset const * inset, bool sel = true) const;
 
 	/// Determines the text color based on the intended color, the
-	/// change tracking state and the selection state. 
+	/// change tracking state and the selection state.
 	/// \param color what the color should be by default
 	Color textColor(Color const & color) const;
 

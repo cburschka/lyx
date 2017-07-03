@@ -20,9 +20,9 @@ namespace lyx {
 class LayoutFile;
 
 /**
-	Represents a list of modules, such as might be associated with 
+	Represents a list of modules, such as might be associated with
 	a particular document. Provides methods for adding modules, checking
-	if a module can be added, and, importantly, adapting the list to a 
+	if a module can be added, and, importantly, adapting the list to a
 	new DocumentClass.
 */
 class LayoutModuleList {
@@ -50,7 +50,7 @@ public:
 		{ return lml_.insert(pos, str); }
 	///
 	void push_back(std::string const & str) { lml_.push_back(str); }
-	/// 
+	///
 	size_t size() const { return lml_.size(); }
 	/// This is needed in GuiDocument. It seems better than an
 	/// implicit conversion.

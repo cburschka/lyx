@@ -130,7 +130,7 @@ public:
 	/// Represent any of the above packages
 	static int const any;
 	///
-	Encoding() : fixedwidth_(true), unsafe_(false), forced_(0), 
+	Encoding() : fixedwidth_(true), unsafe_(false), forced_(0),
 	             start_encodable_(0), package_(none), complete_(false) {}
 	///
 	Encoding(std::string const & n, std::string const & l,

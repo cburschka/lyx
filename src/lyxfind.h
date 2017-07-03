@@ -64,7 +64,7 @@ bool lyxfind(BufferView * bv, FuncRequest const & ev);
  * The string is encoded by \c replace2string.
  * \return whether we did anything
  */
-bool lyxreplace(BufferView * bv, 
+bool lyxreplace(BufferView * bv,
 		FuncRequest const &, bool has_deleted = false);
 
 /// find the next change in the buffer
@@ -125,7 +125,7 @@ std::istringstream & operator>>(std::istringstream & is, lyx::FindAndReplaceOpti
 
 /// Perform a FindAdv operation.
 bool findAdv(BufferView * bv, FindAndReplaceOptions const & opt);
-	
+
 /** Computes the simple-text or LaTeX export (depending on opt) of buf starting
  ** from cur and ending len positions after cur, if len is positive, or at the
  ** paragraph or innermost inset end if len is -1.

@@ -12,7 +12,7 @@
 #ifndef LYX_SUPPORT_APPLESCRIPT_H
 #define LYX_SUPPORT_APPLESCRIPT_H
 
-#ifdef __cplusplus 
+#ifdef __cplusplus
 extern "C" {
 #endif
     /// What is returned by applescript_execute_command
@@ -25,7 +25,7 @@ extern "C" {
 
     /// Sets up apple script support
     void setupApplescript();
-#ifdef __cplusplus 
+#ifdef __cplusplus
 }
 #endif
 

@@ -36,7 +36,7 @@ class ProgressViewWidget : public QWidget, public Ui::ProgressViewUi
 public:
 	ProgressViewWidget();
 private:
-	
+
 };
 
 class GuiProgressView : public DockView

@@ -106,7 +106,7 @@ public:
 	/// Is a given font fully resolved?
 	bool resolved() const;
 
-	/// The real color of the font. This can be the color that is 
+	/// The real color of the font. This can be the color that is
 	/// set for painting, the color of the font or a default color.
 	Color realColor() const;
 	/// Sets the color which is used during painting

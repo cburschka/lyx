@@ -67,8 +67,8 @@ class GuiToolbar : public QToolBar
 public:
 	///
 	GuiToolbar(ToolbarInfo const &, GuiView &);
-	
-	/// Reimplemented from QToolbar to detect whether the 
+
+	/// Reimplemented from QToolbar to detect whether the
 	/// toolbar is restored with MainWindow::restoreState().
 	void setVisible(bool visible);
 

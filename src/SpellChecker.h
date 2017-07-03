@@ -81,7 +81,7 @@ public:
 
 	/// how many valid dictionaries were found
 	virtual int numDictionaries() const = 0;
-	
+
 	/// if speller can spell check whole paragraph return true
 	virtual bool canCheckParagraph() const { return false; }
 

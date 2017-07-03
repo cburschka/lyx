@@ -69,7 +69,7 @@ public:
 		docstring const & defaultValue() const { return default_value_; }
 		///
 		bool operator==(ParamData const &) const;
-		/// 
+		///
 		bool operator!=(ParamData const & rhs) const
 			{ return !(*this == rhs); }
 	private:
@@ -102,7 +102,7 @@ public:
 	///
 	const_iterator const end() const { return info_.end(); }
 	/// \return true if name corresponds to a parameter of some sort.
-	/// \return false if the parameter does not exist at all of it it 
+	/// \return false if the parameter does not exist at all of it it
 	bool hasParam(std::string const & name) const;
 	///
 	ParamData const & operator[](std::string const & name) const;
@@ -142,7 +142,7 @@ public:
 	/// are cleared except those that exist also in the new command.
 	/// What matters here is the parameter name, not position.
 	void setCmdName(std::string const & n);
-	/// FIXME Would be better removed, but is used in BufferView.cpp in 
+	/// FIXME Would be better removed, but is used in BufferView.cpp in
 	/// ways that make removal hard.
 	docstring getFirstNonOptParam() const;
 	/// get parameter \p name
@@ -159,7 +159,7 @@ public:
 	void clear();
 	///
 	static bool isCompatibleCommand(InsetCode code, std::string const & s);
-	/// 
+	///
 	ParamInfo const & info() const { return info_; }
 	///
 	docstring prepareCommand(OutputParams const & runparams,

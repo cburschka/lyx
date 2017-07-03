@@ -77,7 +77,7 @@ public:
 	 * Creates a FuncRequest from a string of the form:
 	 *   lyx-function [argument]
 	 * where the argument is optional and "lyx-function" is in the form you'd
-	 * enter it in the mini-buffer. 
+	 * enter it in the mini-buffer.
 	 */
 	FuncRequest lookupFunc(std::string const & func_name) const;
 

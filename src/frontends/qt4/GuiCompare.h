@@ -33,7 +33,7 @@ public:
 	~GuiCompare();
 
 	void closeEvent(QCloseEvent *);
-		
+
 private Q_SLOTS:
 	///
 	void slotOK();
@@ -76,7 +76,7 @@ private:
 
 	/// enable or disable all controls and rename the Close/Cancel button
 	void enableControls(bool enable);
-	
+
 	/// browse for a file
 	QString browse(QString const & in_name) const;
 	/// retrieve the buffer from the specified filename

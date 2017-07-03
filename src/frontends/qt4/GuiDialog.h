@@ -22,7 +22,7 @@ namespace lyx {
 namespace frontend {
 
 /// Base class for historical LyX dialogs.
-/** 
+/**
   * \warning New dialogs should use the leaner classes \c DialogView or
   * \c DockView depending on the intent. Eventually, old dialogs should be
   * converted to \c DialogView too.
@@ -97,7 +97,7 @@ public:
 	 *  to close or not (no point refreshing the display for example).
 	 */
 	bool isClosing() const { return is_closing_; }
-	
+
 	///
 	bool needBufferOpen() const { return isBufferDependent(); }
 

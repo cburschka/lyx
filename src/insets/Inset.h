@@ -127,7 +127,7 @@ public:
 	/**
 	  * This is typically used after this inset is created interactively.
 	  * Intented purpose is to sanitize internal state with regard to current
-	  * Buffer. 
+	  * Buffer.
 	  **/
 	virtual void initView() {}
 	/// \return true if this inset is labeled.
@@ -183,7 +183,7 @@ public:
 		FuncStatus & status) const;
 
 	/// cursor enters
-	virtual void edit(Cursor & cur, bool front, 
+	virtual void edit(Cursor & cur, bool front,
 		EntryDirection entry_from = ENTRY_DIRECTION_IGNORE);
 	/// sets cursor recursively descending into nested editable insets
 	/**
@@ -279,16 +279,16 @@ public:
 	/// number of columns in gridlike structures
 	virtual size_t ncols() const { return 0; }
 	/// Is called when the cursor leaves this inset.
-	/// Returns true if cursor is now invalid, e.g. if former 
-	/// insets in higher cursor slices of \c old do not exist 
+	/// Returns true if cursor is now invalid, e.g. if former
+	/// insets in higher cursor slices of \c old do not exist
 	/// anymore.
 	/// \c old is the old cursor, the last slice points to this.
 	/// \c cur is the new cursor. Use the update flags to cause a redraw.
 	virtual bool notifyCursorLeaves(Cursor const & /*old*/, Cursor & /*cur*/)
 		{ return false; }
 	/// Is called when the cursor enters this inset.
-	/// Returns true if cursor is now invalid, e.g. if former 
-	/// insets in higher cursor slices of \c old do not exist 
+	/// Returns true if cursor is now invalid, e.g. if former
+	/// insets in higher cursor slices of \c old do not exist
 	/// anymore.
 	/// \c cur is the new cursor, some slice points to this. Use the update
 	/// flags to cause a redraw.
@@ -299,9 +299,9 @@ public:
 	virtual bool setMouseHover(BufferView const *, bool) const
 		{ return false; }
 	/// return true if this inset is hovered (under mouse)
-	/// This is by now only used by mathed to draw corners 
+	/// This is by now only used by mathed to draw corners
 	/// (Inset::drawMarkers() and Inset::drawMarkers2()).
-	/// Other insets do not have to redefine this function to 
+	/// Other insets do not have to redefine this function to
 	/// return the correct status of mouseHovered.
 	virtual bool mouseHovered(BufferView const *) const { return false; }
 
@@ -374,7 +374,7 @@ public:
 	/// Returns true if the inset supports inline completions at the
 	/// cursor position. In this case the completion might be stored
 	/// in the BufferView's inlineCompletion property.
-	virtual bool inlineCompletionSupported(Cursor const & /*cur*/) const 
+	virtual bool inlineCompletionSupported(Cursor const & /*cur*/) const
 		{ return false; }
 	/// Return true if the inline completion should be automatic.
 	virtual bool automaticInlineCompletion() const { return true; }
@@ -385,7 +385,7 @@ public:
 	/// Returns completion suggestions at cursor position. Return an
 	/// null pointer if no completion is a available or possible.
 	/// The caller is responsible to free the returned object!
-	virtual CompletionList const * createCompletionList(Cursor const &) const 
+	virtual CompletionList const * createCompletionList(Cursor const &) const
 		{ return 0; }
 	/// Returns the completion prefix to filter the suggestions for completion.
 	/// This is only called if completionList returned a non-null list.
@@ -394,16 +394,16 @@ public:
 	/// The completion does not contain the prefix. If finished is true, the
 	/// completion is final. If finished is false, completion might only be
 	/// a partial completion.
-	virtual bool insertCompletion(Cursor & /*cur*/, 
-		docstring const & /*completion*/, bool /*finished*/) 
+	virtual bool insertCompletion(Cursor & /*cur*/,
+		docstring const & /*completion*/, bool /*finished*/)
 		{ return false; }
 	/// Get the completion inset position and size
-	virtual void completionPosAndDim(Cursor const &, int & /*x*/, int & /*y*/, 
+	virtual void completionPosAndDim(Cursor const &, int & /*x*/, int & /*y*/,
 		Dimension & /*dim*/) const {}
 
 	/// returns true if the inset can hold an inset of given type
 	virtual bool insetAllowed(InsetCode) const { return false; }
-	/// should this inset use the empty layout by default rather than 
+	/// should this inset use the empty layout by default rather than
 	/// the standard layout? (default: only if that is forced.)
 	virtual bool usePlainLayout() const { return forcePlainLayout(); }
 	/// if this inset has paragraphs should they be forced to use the
@@ -429,7 +429,7 @@ public:
 	/// either plain text or Qt html, and formatToolTip will be called
 	/// on it before display in both cases.
 	virtual docstring toolTip(BufferView const & bv, int x, int y) const;
-	
+
 	/// \return Context menu identifier. This function determines
 	/// whose Inset's menu should be shown for the given position.
 	virtual std::string contextMenu(BufferView const & bv, int x, int y) const;

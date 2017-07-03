@@ -86,7 +86,7 @@ private:
 class TocModelSortProxyModel : public QSortFilterProxyModel
 {
 public:
-	TocModelSortProxyModel(QObject * w) 
+	TocModelSortProxyModel(QObject * w)
 		: QSortFilterProxyModel(w)
 	{}
 

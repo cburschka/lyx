@@ -34,7 +34,7 @@ public:
 	///
 	Counter();
 	///
-	Counter(docstring const & mc, docstring const & ls, 
+	Counter(docstring const & mc, docstring const & ls,
 		docstring const & lsa);
 	/// \return true on success
 	bool read(Lexer & lex);
@@ -54,7 +54,7 @@ public:
 	/// it. This is used when a counter is deleted.
 	/// \return whether we removed the master.
 	bool checkAndRemoveMaster(docstring const & cnt);
-	/// Returns a LaTeX-like string to format the counter. 
+	/// Returns a LaTeX-like string to format the counter.
 	/** This is similar to what one gets in LaTeX when using
 	 *  "\the<counter>". The \c in_appendix bool tells whether we
 	 *  want the version shown in an appendix.
@@ -63,8 +63,8 @@ public:
 	/// Similar, but used for formatted references in XHTML output.
 	/// E.g., for a section counter it might be "section \thesection"
 	docstring const & prettyFormat() const { return prettyformat_; }
-	
-	/// Returns a map of LaTeX-like strings to format the counter. 
+
+	/// Returns a map of LaTeX-like strings to format the counter.
 	/** For each language, the string is similar to what one gets
 	 *  in LaTeX when using "\the<counter>". The \c in_appendix
 	 *  bool tells whether we want the version shown in an
@@ -91,10 +91,10 @@ private:
 	docstring labelstringappendix_;
 	/// Similar, but used for formatted references in XHTML output
 	docstring prettyformat_;
-	/// Cache of the labelstring with \\the<counter> expressions expanded, 
+	/// Cache of the labelstring with \\the<counter> expressions expanded,
 	/// indexed by language
 	mutable StringMap flatlabelstring_;
-	/// Cache of the appendix labelstring with \\the<counter> expressions expanded, 
+	/// Cache of the appendix labelstring with \\the<counter> expressions expanded,
 	/// indexed by language
 	mutable StringMap flatlabelstringappendix_;
 };
@@ -109,7 +109,7 @@ public:
 	/// from the document class (e.g., which ones are defined).
 	/// Instead, call Counters::reset().
 	Counters();
-	/// Add new counter newc having masterc as its master, 
+	/// Add new counter newc having masterc as its master,
 	/// ls as its label, and lsa as its appendix label.
 	void newCounter(docstring const & newc,
 			docstring const & masterc,
@@ -118,7 +118,7 @@ public:
 	/// Checks whether the given counter exists.
 	bool hasCounter(docstring const & c) const;
 	/// reads the counter name
-	/// \param makeNew whether to make a new counter if one 
+	/// \param makeNew whether to make a new counter if one
 	///        doesn't already exist
 	/// \return true on success
 	bool read(Lexer & lex, docstring const & name, bool makenew);
@@ -160,7 +160,7 @@ public:
 	 */
 	docstring counterLabel(docstring const & format,
 			       std::string const & lang) const;
-	/// returns a formatted version of the counter, using the 
+	/// returns a formatted version of the counter, using the
 	/// format given by Counter::prettyFormat().
 	docstring prettyCounter(docstring const & cntr,
 			       std::string const & lang) const;
@@ -180,8 +180,8 @@ public:
 	bool isLongtable() const { return longtable_; }
 	/// Set the state variable indicating whether we are in a longtable.
 	void isLongtable(bool s) { longtable_ = s; }
-	
-	/// \name refstepcounter	
+
+	/// \name refstepcounter
 	// @{
 	/// The currently active counter, so far as references go.
 	/// We're trying to track \refstepcounter in LaTeX, more or less.
@@ -196,10 +196,10 @@ public:
 	void clearLastLayout() { layout_stack_.push_back(0); }
 	/// Call this when exiting things like footnotes.
 	void restoreLastLayout() { layout_stack_.pop_back(); }
-	/// 
+	///
 	void saveLastCounter()
 		{ counter_stack_.push_back(counter_stack_.back()); }
-	/// 
+	///
 	void restoreLastCounter() { counter_stack_.pop_back(); }
 	// @}
 private:

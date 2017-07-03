@@ -519,7 +519,7 @@ private:
 	// user_unbind_ holds \unbind bindings from user.bind
 	// When an item is inserted, it is added to user_bind_
 	// When an item from system_bind_ is deleted, it is added to user_unbind_
-	// When an item in user_bind_ or user_unbind_ is deleted, it is 
+	// When an item in user_bind_ or user_unbind_ is deleted, it is
 	//	deleted (unbind)
 	KeyMap system_bind_;
 	KeyMap user_bind_;

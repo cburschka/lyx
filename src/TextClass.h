@@ -451,7 +451,7 @@ public:
 	///
 	docstring const & htmlstyles() const { return htmlstyles_; }
 	/// Looks for the layout of "highest level", other than Part (or other
-	/// layouts with a negative toc number), for use in constructing TOCs and 
+	/// layouts with a negative toc number), for use in constructing TOCs and
 	/// similar information.
 	Layout const & getTOCLayout() const;
 	/// the paragraph style to use for TOCs, Bibliography, etc

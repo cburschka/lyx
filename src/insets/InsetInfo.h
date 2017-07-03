@@ -61,8 +61,8 @@ icon: argument is the name of the LFUN such as "paste". The syntax is the same
 
 buffer: argument can be one of "name", "path", "class". This inset output the
     filename, path, and textclass of this buffer.
-		
-lyxinfo: argument must (presently) be "version". This inset outputs information 
+
+lyxinfo: argument must (presently) be "version". This inset outputs information
 		about the version of LyX currently in use.
 
 There is currently no GUI, no menu entry for this inset. A user can define a

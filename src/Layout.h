@@ -132,7 +132,7 @@ public:
 	///
 	int requiredArgs() const;
 	///
-	docstring const & labelstring(bool in_appendix) const 
+	docstring const & labelstring(bool in_appendix) const
 	{ return in_appendix ? labelstring_appendix_ : labelstring_; }
 	///
 	docstring const & endlabelstring() const { return endlabelstring_; }
@@ -160,25 +160,25 @@ public:
 	std::string const & labeltag() const { return labeltag_; }
 	///
 	std::string const & itemtag() const { return itemtag_; }
-	/// 
+	///
 	std::string const & htmltag() const;
-	/// 
+	///
 	std::string const & htmlattr() const;
-	/// 
+	///
 	std::string const & htmlitemtag() const;
-	/// 
+	///
 	std::string const & htmlitemattr() const;
-	/// 
+	///
 	std::string const & htmllabeltag() const;
-	/// 
+	///
 	std::string const & htmllabelattr() const;
 	///
 	std::string defaultCSSClass() const;
 	///
 	bool htmllabelfirst() const { return htmllabelfirst_; }
-	/// 
+	///
 	docstring htmlstyle() const;
-	/// 
+	///
 	docstring const & htmlpreamble() const { return htmlpreamble_; }
 	///
 	bool htmltitle() const { return htmltitle_; }
@@ -218,7 +218,7 @@ public:
 	///
 	bool operator==(Layout const &) const;
 	///
-	bool operator!=(Layout const & rhs) const 
+	bool operator!=(Layout const & rhs) const
 		{ return !(*this == rhs); }
 
 	////////////////////////////////////////////////////////////////
@@ -356,7 +356,7 @@ private:
 	std::string defaultCSSItemClass() const { return defaultCSSClass() + "_item"; }
 	///
 	std::string defaultCSSLabelClass() const { return defaultCSSClass() + "_label"; }
-	
+
 	/// Name of the layout/paragraph environment
 	docstring name_;
 
@@ -401,13 +401,13 @@ private:
 	/// Internal tag to surround the item text in a list.
 	std::string itemtag_;
 	/// The interpretation of this tag varies depending upon the latextype.
-	/// In an environment, it is the tag enclosing all content for this set of 
-	/// paragraphs. So for quote, e.g,. it would be: blockquote. For itemize, 
+	/// In an environment, it is the tag enclosing all content for this set of
+	/// paragraphs. So for quote, e.g,. it would be: blockquote. For itemize,
 	/// it would be: ul. (You get the idea.)
 	///
 	/// For a command, it is the tag enclosing the content of the command.
 	/// So, for section, it might be: h2.
-	/// 
+	///
 	/// For the paragraph type, it is the tag that will enclose each paragraph.
 	///
 	/// Defaults to "div".
@@ -417,7 +417,7 @@ private:
 	mutable std::string htmlattr_;
 	/// Tag for individual paragraphs in an environment. In lists, this
 	/// would be something like "li". But it also needs to be set for
-	/// quotation, e.g., since the paragraphs in a quote need to be 
+	/// quotation, e.g., since the paragraphs in a quote need to be
 	/// in "p" tags. Default is "div".
 	/// Note that when I said "environment", I meant it: This has no
 	/// effect for LATEX_PARAGRAPH type layouts.
@@ -426,7 +426,7 @@ private:
 	mutable std::string htmlitemattr_;
 	/// Tag for labels, of whatever sort. One use for this is in setting
 	/// descriptions, in which case it would be: dt. Another use is to
-	/// customize the display of, say, the auto-generated label for 
+	/// customize the display of, say, the auto-generated label for
 	/// sections. Defaults to "span".
 	/// If set to "NONE", this suppresses the printing of the label.
 	mutable std::string htmllabeltag_;

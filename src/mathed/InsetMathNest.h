@@ -107,7 +107,7 @@ public:
 	///
 	bool setMouseHover(BufferView const * bv, bool mouse_hover) const;
 	///
-	bool mouseHovered(BufferView const * bv) const 
+	bool mouseHovered(BufferView const * bv) const
 		{ return mouse_hover_[bv]; }
 
 	///
@@ -193,7 +193,7 @@ protected:
 	bool lock_;
 	///
 	mutable std::map<BufferView const *, bool> mouse_hover_;
-};	
+};
 
 
 

@@ -42,30 +42,30 @@ private:
 };
 
 /// This class amounts to little more than a `strong typedef'.
-/// 
-/// A LayoutFile represents the layout information that is 
+///
+/// A LayoutFile represents the layout information that is
 /// contained in a *.layout file.
-/// 
-/// No document- (that is, Buffer-) specific information should 
-/// be placed in these objects. They are used as the basis for 
+///
+/// No document- (that is, Buffer-) specific information should
+/// be placed in these objects. They are used as the basis for
 /// constructing DocumentClass objects, which are what represent
-/// the layout information associated with a Buffer. (This is also 
+/// the layout information associated with a Buffer. (This is also
 /// a subclass of TextClass, implemented in TextClass.{h,cpp}.)
 /// Buffer-specific information should therefore be placed in a
 /// DocumentClass object.
-/// 
+///
 class LayoutFile : public TextClass {
 public:
 	/// check whether the TeX class is available
 	bool isTeXClassAvailable() const { return tex_class_avail_; }
 	///
-	LayoutModuleList const & defaultModules() const 
+	LayoutModuleList const & defaultModules() const
 			{ return default_modules_; }
 	///
- 	LayoutModuleList const & providedModules() const 
+ 	LayoutModuleList const & providedModules() const
  			{ return provided_modules_; }
 	///
- 	LayoutModuleList const & excludedModules() const 
+ 	LayoutModuleList const & excludedModules() const
  			{ return excluded_modules_; }
 private:
 	/// noncopyable

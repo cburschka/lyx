@@ -38,7 +38,7 @@ class CheckedWidget
 {
 public:
 	CheckedWidget(QLineEdit * input, QWidget * label = 0);
-	///	
+	///
 	bool check() const;
 
 private:

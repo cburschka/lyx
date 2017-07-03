@@ -108,7 +108,7 @@ protected:
 	//@{
 	/// Build the complete LaTeX command
 	/// \see InsetCommandParams::getCommand
-	docstring const getCommand(OutputParams const & rp) const 
+	docstring const getCommand(OutputParams const & rp) const
 		{ return p_.getCommand(rp); }
 	/// Return the command name
 	/// \see InsetCommandParams::getCmdName

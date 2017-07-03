@@ -59,7 +59,7 @@ private:
 	 * Add a new command definition.
 	 * @param name internal recursion level
 	 */
-	newCmdDefResult newCmdDef(std::string const & name, 
+	newCmdDefResult newCmdDef(std::string const & name,
 		                      std::string const & def);
 
 	///

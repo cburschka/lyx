@@ -66,7 +66,7 @@ class ButtonPolicy
 public:
 
 	// The various poicies
-	enum Policy { 
+	enum Policy {
 		/** Ok and Cancel buttons for dialogs with read-only operation.
 			Note: This scheme supports the relabelling of Cancel to Close and
 			vice versa.
@@ -273,7 +273,7 @@ private:
 	/// noncopyable
 	ButtonPolicy(ButtonPolicy const &);
 	void operator=(ButtonPolicy const &);
-	
+
 	/// pimpl
 	class Private;
 	Private * d;

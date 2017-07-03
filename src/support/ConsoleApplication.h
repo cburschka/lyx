@@ -24,7 +24,7 @@ class ConsoleApplicationPrivate;
 There should be only one instance of this class. No Qt object
 initialisation should be done before the instantiation of this class.
 This class could be moved to src/frontends/console in the future.
-This would make sense if more console app related code is created. 
+This would make sense if more console app related code is created.
 */
 class ConsoleApplication
 {

@@ -225,7 +225,7 @@ public:
 	//void maple(MapleStream &) const;
 	///
 	void mathmlize(MathStream &) const;
-	/// 
+	///
 	void htmlize(HtmlStream &) const;
 	///
 	void htmlize(HtmlStream &, std::string attrib) const;
@@ -267,7 +267,7 @@ protected:
 
 	// The following two functions are used in InsetMathHull and
 	// InsetMathSplit.
-	/// The value of a fixed col align for a certain hull type 
+	/// The value of a fixed col align for a certain hull type
 	static char colAlign(HullType type, col_type col);
 	/// The value of a fixed col spacing for a certain hull type
 	static int colSpace(HullType type, col_type col);

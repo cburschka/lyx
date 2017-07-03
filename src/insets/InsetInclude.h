@@ -159,15 +159,15 @@ private:
 	void setParams(InsetCommandParams const & params);
 	/// get the text displayed on the button
 	docstring screenLabel() const;
-	//@}	
-	
+	//@}
+
 	/// holds the entity name that defines the file location (SGML)
 	docstring const include_label;
 
 	/// The pointer never changes although *preview_'s contents may.
 	unique_ptr<RenderMonitoredPreview> const preview_;
 
-	/// 
+	///
 	mutable bool failedtoload_;
 	/// cache
 	mutable bool set_label_;
