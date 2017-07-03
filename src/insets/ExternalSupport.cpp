@@ -51,7 +51,7 @@ Template const * getTemplatePtr(InsetExternalParams const & params)
 
 void editExternal(InsetExternalParams const & params, Buffer const & buffer)
 {
-	theFormats().edit(buffer, params.filename, 
+	theFormats().edit(buffer, params.filename,
 		theFormats().getFormatFromFile(params.filename));
 }
 

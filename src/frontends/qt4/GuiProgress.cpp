@@ -53,7 +53,7 @@ GuiProgress::GuiProgress()
 	connect(this, SIGNAL(appendMessage(QString const &)), SLOT(doAppendMessage(QString const &)));
 	connect(this, SIGNAL(appendError(QString const &)), SLOT(doAppendError(QString const &)));
 	connect(this, SIGNAL(clearMessages()), SLOT(doClearMessages()));
-	
+
 	// Alert interface
 	connect(this, SIGNAL(warning(QString const &, QString const &)),
 		SLOT(doWarning(QString const &, QString const &)));

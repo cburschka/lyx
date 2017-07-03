@@ -71,7 +71,7 @@ GuiToolbar::GuiToolbar(ToolbarInfo const & tbinfo, GuiView & owner)
 void GuiToolbar::setVisible(bool visible)
 {
 	// This is a hack to find out which toolbars have been restored by
-	// MainWindow::restoreState and which toolbars should be initialized 
+	// MainWindow::restoreState and which toolbars should be initialized
 	// by us (i.e., new toolbars)
 	restored_ = true;
 	QToolBar::setVisible(visible);
@@ -91,7 +91,7 @@ void GuiToolbar::fill()
 	ToolbarInfo::item_iterator it = tbinfo_.items.begin();
 	ToolbarInfo::item_iterator end = tbinfo_.items.end();
 	for (; it != end; ++it)
-		add(*it);	
+		add(*it);
 	filled_ = true;
 }
 
@@ -368,7 +368,7 @@ void GuiToolbar::restoreSession()
 	if (visibility == error_val || visibility == 0) {
 		// This should not happen, but in case we use the defaults
 		LYXERR(Debug::GUI, "Session settings could not be found! Defaults are used instead.");
-		visibility = 
+		visibility =
 			guiApp->toolbars().defaultVisibility(fromqstr(objectName()));
 	}
 	setVisibility(visibility);

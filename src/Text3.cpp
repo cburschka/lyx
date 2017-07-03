@@ -452,7 +452,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 				DocumentClass const & tc = buf.params().documentClass();
 				DocumentClass::const_iterator lit = tc.begin();
 				DocumentClass::const_iterator len = tc.end();
-				int const newtoclevel = 
+				int const newtoclevel =
 					(mode == OutlineIn ? toclevel + 1 : toclevel - 1);
 				LabelType const oldlabeltype = start->layout().labeltype;
 
@@ -484,9 +484,9 @@ bool Text::isRTL(Paragraph const & par) const
 	return par.isRTL(buffer.params());
 }
 
-	
+
 namespace {
-		
+
 	Language const * getLanguage(Cursor const & cur, string const & lang) {
 		return lang.empty() ? cur.getFont().language() : languages.getLanguage(lang);
 	}
@@ -518,7 +518,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	cur.noScreenUpdate();
 
 	LBUFERR(this == cur.text());
-	
+
 	// NOTE: This should NOT be a reference. See commit 94a5481a.
 	CursorSlice const oldTopSlice = cur.top();
 	bool const oldBoundary = cur.boundary();

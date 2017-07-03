@@ -51,9 +51,9 @@ InsetRef::InsetRef(InsetRef const & ir)
 bool InsetRef::isCompatibleCommand(string const & s) {
 	//FIXME This is likely not the best way to handle this.
 	//But this stuff is hardcoded elsewhere already.
-	return s == "ref" 
+	return s == "ref"
 		|| s == "pageref"
-		|| s == "vref" 
+		|| s == "vref"
 		|| s == "vpageref"
 		|| s == "formatted"
 		|| s == "eqref"
@@ -90,23 +90,23 @@ void capitalize(docstring & s) {
 // the ref argument is the label name we are referencing.
 // we expect ref to be in the form: pfx:suffix.
 //
-// if it isn't, then we can't produce a formatted reference, 
+// if it isn't, then we can't produce a formatted reference,
 // so we return "\ref" and put ref into label.
 //
-// for refstyle, we return "\pfxcmd", and put suffix into 
+// for refstyle, we return "\pfxcmd", and put suffix into
 // label and pfx into prefix. this is because refstyle expects
 // the command: \pfxcmd{suffix}.
-// 
+//
 // for prettyref, we return "\prettyref" and put ref into label
 // and pfx into prefix. this is because prettyref uses the whole
 // label, thus: \prettyref{pfx:suffix}.
 //
-docstring InsetRef::getFormattedCmd(docstring const & ref, 
+docstring InsetRef::getFormattedCmd(docstring const & ref,
 	docstring & label, docstring & prefix, docstring const & caps) const
 {
 	static docstring const defcmd = from_ascii("\\ref");
 	static docstring const prtcmd = from_ascii("\\prettyref");
-	
+
 	label = split(ref, prefix, ':');
 
 	// we have to have xxx:xxxxx...
@@ -122,7 +122,7 @@ docstring InsetRef::getFormattedCmd(docstring const & ref,
 		label = ref;
 		return defcmd;
 	}
-	
+
 	if (!buffer().params().use_refstyle) {
 		// \prettyref uses the whole label
 		label = ref;
@@ -170,11 +170,11 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 		// "equation n". if one wants \eqref, one can get it by using a
 		// formatted label in this case.
 		os << '(' << from_ascii("\\ref{") << data << from_ascii("})");
-	} 
+	}
 	else if (cmd == "formatted") {
 		docstring label;
 		docstring prefix;
-		docstring const fcmd = 
+		docstring const fcmd =
 			getFormattedCmd(data, label, prefix, getParam("caps"));
 		os << fcmd;
 		if (buffer().params().use_refstyle && getParam("plural") == "true")
@@ -197,7 +197,7 @@ void InsetRef::latex(otexstream & os, OutputParams const & rp) const
 		}
 	}
 	else {
-		// We don't want to output p_["name"], since that is only used 
+		// We don't want to output p_["name"], since that is only used
 		// in docbook. So we construct new params, without it, and use that.
 		InsetCommandParams p(REF_CODE, cmd);
 		docstring const ref = getParam("reference");
@@ -279,7 +279,7 @@ docstring InsetRef::xhtml(XHTMLStream & xs, OutputParams const & op) const
 			// But the label might be referencing a section, yet not be
 			// in that section. So this is not trivial.
 			display_string = il->prettyCounter();
-	} else 
+	} else
 			display_string = ref;
 
 	// FIXME What we'd really like to do is to be able to output some
@@ -388,7 +388,7 @@ void InsetRef::validate(LaTeXFeatures & features) const
 		docstring const data = getEscapedLabel(features.runparams());
 		docstring label;
 		docstring prefix;
-		docstring const fcmd = 
+		docstring const fcmd =
 			getFormattedCmd(data, label, prefix, getParam("caps"));
 		if (buffer().params().use_refstyle) {
 			features.require("refstyle");
@@ -442,7 +442,7 @@ string const & InsetRef::getName(int type)
 }
 
 
-docstring InsetRef::getTOCString() const 
+docstring InsetRef::getTOCString() const
 {
 	return tooltip_.empty() ? screenLabel() : tooltip_;
 }

@@ -360,7 +360,7 @@ bool XHTMLStream::closeFontTags()
 #ifdef	XHTML_DEBUG
 	dumpTagStack("End Close Font Tags");
 #endif
-	
+
 	if (*curtag == parsep_tag)
 		return true;
 
@@ -407,7 +407,7 @@ void XHTMLStream::endDivision()
 #ifdef	XHTML_DEBUG
 		dumpTagStack("EndDivision");
 #endif
-		
+
 		return;
 	}
 
@@ -870,7 +870,7 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 		//
 		// But there is also a special case, and we first see whether we are in it.
 		// We do not want to open the paragraph tag if this paragraph contains
-		// only one item, and that item is "inline", i.e., not HTMLIsBlock (such 
+		// only one item, and that item is "inline", i.e., not HTMLIsBlock (such
 		// as a branch). On the other hand, if that single item has a font change
 		// applied to it, then we still do need to open the paragraph.
 		//
@@ -906,13 +906,13 @@ ParagraphList::const_iterator makeParagraphs(Buffer const & buf,
 			|| (!open_par && runparams.html_in_par && par == pbegin && nextpar != pend);
 
 		if (open_par) {
-			// We do not issue the paragraph id if we are doing 
+			// We do not issue the paragraph id if we are doing
 			// this for the TOC (or some similar purpose)
 			openParTag(xs, lay, par->params(),
 			           runparams.for_toc ? "" : par->magicLabel());
 		}
 
-		docstring const deferred = par->simpleLyXHTMLOnePar(buf, xs, 
+		docstring const deferred = par->simpleLyXHTMLOnePar(buf, xs,
 			runparams, text.outerFont(distance(begin, par)),
 			open_par, close_par);
 
@@ -1113,7 +1113,7 @@ void makeCommand(Buffer const & buf,
 		    documentClass().counters().step(style.counter, OutputUpdate);
 
 	bool const make_parid = !runparams.for_toc && runparams.html_make_pars;
-	
+
 	if (style.labeltype == LABEL_ABOVE)
 		xs << html::StartTag("div")
 		   << pbegin->params().labelString()

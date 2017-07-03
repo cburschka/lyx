@@ -28,7 +28,7 @@ bool Graph::bfs_init(int s, bool clear_visited, queue<int> & Q)
 {
 	if (s < 0)
 		return false;
-	
+
 	if (!Q.empty())
 		Q = queue<int>();
 

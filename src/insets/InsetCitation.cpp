@@ -460,7 +460,7 @@ void InsetCitation::addToToc(DocIterator const & cpit, bool output_active,
 							 UpdateType, TocBackend & backend) const
 {
 	// NOTE
-	// BiblioInfo::collectCitedEntries() uses the TOC to collect the citations 
+	// BiblioInfo::collectCitedEntries() uses the TOC to collect the citations
 	// from the document. It is used indirectly, via BiblioInfo::makeCitationLables,
 	// by both XHTML and plaintext output. So, if we change what goes into the TOC,
 	// then we will also need to change that routine.

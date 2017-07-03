@@ -35,7 +35,7 @@ using namespace std;
 namespace lyx {
 
 
-InsetIPA::InsetIPA(Buffer * buf) 
+InsetIPA::InsetIPA(Buffer * buf)
 	: InsetText(buf),
 	  preview_(new RenderPreview(this))
 {
@@ -44,7 +44,7 @@ InsetIPA::InsetIPA(Buffer * buf)
 }
 
 
-InsetIPA::~InsetIPA() 
+InsetIPA::~InsetIPA()
 {}
 
 
@@ -119,14 +119,14 @@ void InsetIPA::addPreview(DocIterator const & inset_pos,
 }
 
 
-void InsetIPA::preparePreview(DocIterator const & pos) const  
+void InsetIPA::preparePreview(DocIterator const & pos) const
 {
 	odocstringstream str;
 	otexstream os(str);
 	OutputParams runparams(&pos.buffer()->params().encoding());
 	latex(os, runparams);
 	docstring const snippet = str.str();
-	preview_->addPreview(snippet, *pos.buffer());  
+	preview_->addPreview(snippet, *pos.buffer());
 }
 
 

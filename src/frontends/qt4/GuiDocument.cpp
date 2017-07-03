@@ -1280,7 +1280,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(mathsModule->MathIndentLengthCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
 
-	
+
 	mathsModule->MathIndentCO->addItem(qt_("Default"));
 	mathsModule->MathIndentCO->addItem(qt_("Custom"));
 	mathsModule->MathIndentLE->setValidator(new LengthValidator(
@@ -1291,7 +1291,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	mathsModule->MathNumberingPosCO->addItem(qt_("Default"));
 	mathsModule->MathNumberingPosCO->addItem(qt_("Right"));
 	mathsModule->MathNumberingPosCO->setCurrentIndex(1);
-	
+
 
 	// latex class
 	latexModule = new UiWidget<Ui::LaTeXUi>(this);
@@ -3333,7 +3333,7 @@ void GuiDocument::paramsToDialog()
 	biblioChanged_ = false;
 
 	// indices
-	// We may be called when there is no Buffer, e.g., when 
+	// We may be called when there is no Buffer, e.g., when
 	// the last view has just been closed.
 	bool const isReadOnly = isBufferAvailable() ? buffer().isReadonly() : false;
 	indicesModule->update(bp_, isReadOnly);
@@ -3697,7 +3697,7 @@ void GuiDocument::paramsToDialog()
 			toqstr(bp_.fonts_cjk));
 	else
 		fontModule->cjkFontLE->setText(QString());
-	
+
 	fontModule->microtypeCB->setChecked(bp_.use_microtype);
 	fontModule->dashesCB->setChecked(bp_.use_dash_ligatures);
 

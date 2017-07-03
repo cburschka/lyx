@@ -762,7 +762,7 @@ docstring Lexer::getLongString(docstring const & endtoken)
 
 bool Lexer::getBool() const
 {
-	string const s = pimpl_->getString();	
+	string const s = pimpl_->getString();
 	if (s == "false" || s == "0") {
 		lastReadOk_ = true;
 		return false;
@@ -917,7 +917,7 @@ docstring Lexer::quoteString(docstring const & arg)
 {
 	docstring res;
 	res += '"';
-	res += subst(subst(arg, from_ascii("\\"), from_ascii("\\\\")), 
+	res += subst(subst(arg, from_ascii("\\"), from_ascii("\\\\")),
 		     from_ascii("\""), from_ascii("\\\""));
 	res += '"';
 	return res;
@@ -929,7 +929,7 @@ Lexer & Lexer::operator>>(char const * required)
 	string token;
 	*this >> token;
 	if (token != required) {
-		LYXERR0("Missing '" << required << "'-tag in " << pimpl_->context 
+		LYXERR0("Missing '" << required << "'-tag in " << pimpl_->context
 			<< ". Got " << token << " instead. Line: " << lineNumber());
 		pushToken(token);
 	}

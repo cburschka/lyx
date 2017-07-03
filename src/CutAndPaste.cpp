@@ -243,7 +243,7 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 
 	InsetIterator const i_end = inset_iterator_end(in);
 	for (InsetIterator it = inset_iterator_begin(in); it != i_end; ++it) {
-		// Even though this will also be done later, it has to be done here 
+		// Even though this will also be done later, it has to be done here
 		// since some inset might going to try to access
 		// the buffer() member.
 		it->setBuffer(const_cast<Buffer &>(buffer));
@@ -471,7 +471,7 @@ PitPosPair eraseSelectionHelper(BufferParams const & params,
 
 		// Separate handling of paragraph break:
 		if (merge && pit != endpit &&
-		    (pit + 1 != endpit 
+		    (pit + 1 != endpit
 		     || pars[pit].hasSameLayout(pars[endpit])
 		     || pars[endpit].size() == endpos)) {
 			if (pit + 1 == endpit)
@@ -536,7 +536,7 @@ Buffer * copyToTempBuffer(ParagraphList const & paragraphs, DocumentClassConstPt
 }
 
 
-void putClipboard(ParagraphList const & paragraphs, 
+void putClipboard(ParagraphList const & paragraphs,
 	DocumentClassConstPtr docclass, docstring const & plaintext)
 {
 	Buffer * buffer = copyToTempBuffer(paragraphs, docclass);
@@ -636,7 +636,7 @@ void copySelectionHelper(Buffer const & buf, Text const & text,
 		// latex_language. This is invalid for others, so we
 		// need to change it to the buffer language.
 		if (it->isPassThru())
-			it->changeLanguage(buf.params(), 
+			it->changeLanguage(buf.params(),
 					   latex_language, buf.language());
 	}
 
@@ -705,11 +705,11 @@ bool reduceSelectionToOneCell(Cursor & cur)
 	// the easy case: do nothing if only one cell is selected
 	if (i1.idx() == i2.idx())
 		return true;
-	
+
 	cur.top().pos() = 0;
 	cur.resetAnchor();
 	cur.top().pos() = cur.top().lastpos();
-	
+
 	return true;
 }
 
@@ -718,15 +718,15 @@ bool multipleCellsSelected(Cursor const & cur)
 {
 	if (!cur.selection() || !cur.inMathed())
 		return false;
-	
+
 	CursorSlice i1 = cur.selBegin();
 	CursorSlice i2 = cur.selEnd();
 	if (!i1.inset().asInsetMath())
 		return false;
-	
+
 	if (i1.idx() == i2.idx())
 		return false;
-	
+
 	return true;
 }
 
@@ -739,7 +739,7 @@ void switchBetweenClasses(DocumentClassConstPtr oldone,
 	LBUFERR(!in.paragraphs().empty());
 	if (oldone == newone)
 		return;
-	
+
 	DocumentClass const & oldtc = *oldone;
 	DocumentClass const & newtc = *newone;
 
@@ -782,7 +782,7 @@ void switchBetweenClasses(DocumentClassConstPtr oldone,
 				n == DocumentClass::plainInsetLayout().name();
 			if (!is_undefined)
 				continue;
-	
+
 			// The flex inset is undefined in newtc
 			docstring const oldname = from_utf8(oldtc.name());
 			docstring const newname = from_utf8(newtc.name());
@@ -988,7 +988,7 @@ void copySelectionToStack(Cursor const & cur, CutStack & cutstack)
 		// and sel_end cursor
 		copySelectionHelper(*cur.buffer(), *text,
 		                    cur.selBegin().pit(), cur.selEnd().pit(),
-		                    cur.selBegin().pos(), cur.selEnd().pos(), 
+		                    cur.selBegin().pos(), cur.selEnd().pos(),
 		                    cur.buffer()->params().documentClassPtr(),
 		                    cutstack);
 		// Reset the dirty_tabular_stack_ flag only when something
@@ -1048,7 +1048,7 @@ void saveSelection(Cursor const & cur)
 	// This function is called, not when a selection is formed, but when
 	// a selection is cleared. Therefore, multiple keyboard selection
 	// will not repeatively trigger this function (bug 3877).
-	if (cur.selection() 
+	if (cur.selection()
 	    && cur.selBegin() == cur.bv().cursor().selBegin()
 	    && cur.selEnd() == cur.bv().cursor().selEnd()) {
 		LYXERR(Debug::SELECTION, "saveSelection: '" << cur.selectionAsString(true) << "'");

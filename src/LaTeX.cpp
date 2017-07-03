@@ -348,7 +348,7 @@ int LaTeX::run(TeXErrors & terr)
 	} else {
 		LYXERR(Debug::DEPEND, "Dep. file has NOT changed");
 	}
-	
+
 	// 3
 	// rerun bibtex?
 	// Complex bibliography packages such as Biblatex require
@@ -451,7 +451,7 @@ bool LaTeX::runMakeIndex(string const & f, OutputParams const & runparams,
 {
 	string tmp = runparams.use_japanese ?
 		lyxrc.jindex_command : lyxrc.index_command;
-	
+
 	if (!runparams.index_command.empty())
 		tmp = runparams.index_command;
 

@@ -192,7 +192,7 @@ struct LyX::Impl {
 	Converters converters_;
 	/// The system converters after reading lyxrc.defaults.
 	Converters system_converters_;
-	
+
 	/// Global format information
 	Formats formats_;
 	/// The system formats after reading lyxrc.defaults.
@@ -512,7 +512,7 @@ int LyX::execWithoutGui(int & argc, char * argv[])
 	}
 
 	// Used to keep track of which buffers were explicitly loaded by user request.
-	// This is necessary because master and child document buffers are loaded, even 
+	// This is necessary because master and child document buffers are loaded, even
 	// if they were not named on the command line. We do not want to dispatch to
 	// those.
 	vector<Buffer *> command_line_buffers;

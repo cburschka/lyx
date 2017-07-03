@@ -195,7 +195,7 @@ void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
 
 	// This can happen when a layout has a left and right margin,
-	// and the view is made very narrow. We can't do better than 
+	// and the view is made very narrow. We can't do better than
 	// to draw it partly out of view (bug 5890).
 	if (mi.base.textwidth < 1)
 		mi.base.textwidth = 1;
@@ -315,7 +315,7 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_DISSOLVE: {
 		bool const main_inset = text_.isMainText();
-		bool const target_inset = cmd.argument().empty() 
+		bool const target_inset = cmd.argument().empty()
 			|| cmd.getArg(0) == insetName(lyxCode());
 		// cur.inset() is the tabular when this is a single cell (bug #9954)
 		bool const one_cell = cur.inset().nargs() == 1;
@@ -336,7 +336,7 @@ void InsetText::doDispatch(Cursor & cur, FuncRequest & cmd)
 	default:
 		text_.dispatch(cur, cmd);
 	}
-	
+
 	if (!cur.result().dispatched())
 		Inset::doDispatch(cur, cmd);
 }
@@ -348,7 +348,7 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 	switch (cmd.action()) {
 	case LFUN_INSET_DISSOLVE: {
 		bool const main_inset = text_.isMainText();
-		bool const target_inset = cmd.argument().empty() 
+		bool const target_inset = cmd.argument().empty()
 			|| cmd.getArg(0) == insetName(lyxCode());
 		// cur.inset() is the tabular when this is a single cell (bug #9954)
 		bool const one_cell = cur.inset().nargs() == 1;
@@ -390,7 +390,7 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 		bool ret = false;
 		if (cur.text() == &text_)
 			ret = text_.getStatus(cur, cmd, status);
-		
+
 		if (!ret)
 			ret = Inset::getStatus(cur, cmd, status);
 		return ret;
@@ -591,7 +591,7 @@ docstring InsetText::xhtml(XHTMLStream & xs, OutputParams const & runparams) con
 // One solution would be to make the footnote <span>, but the problem is
 // completely general, and so we'd have to make absolutely everything into
 // span. What I think will work is to check if we're about to write "div" and,
-// if so, try to close fonts, etc. 
+// if so, try to close fonts, etc.
 // There are probably limits to how well we can do here, though, and we will
 // have to rely upon users not putting footnotes inside noun-type insets.
 docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & rp,
@@ -602,7 +602,7 @@ docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & rp,
 	OutputParams runparams = rp;
 	runparams.par_begin = 0;
 	runparams.par_end = text().paragraphs().size();
-	
+
 	if (undefined()) {
 		xs.startDivision(false);
 		xhtmlParagraphs(text_, buffer(), xs, runparams);
@@ -620,7 +620,7 @@ docstring InsetText::insetAsXHTML(XHTMLStream & xs, OutputParams const & rp,
 		cntrs.step(il.counter(), OutputUpdate);
 		// FIXME: translate to paragraph language
 		if (!il.htmllabel().empty()) {
-			docstring const lbl = 
+			docstring const lbl =
 				cntrs.counterLabel(from_utf8(il.htmllabel()), bp.language->code());
 			// FIXME is this check necessary?
 			if (!lbl.empty()) {
@@ -943,7 +943,7 @@ bool InsetText::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
 	if (buffer().isClean())
 		return Inset::notifyCursorLeaves(old, cur);
-	
+
 	// find text inset in old cursor
 	Cursor insetCur = old;
 	int scriptSlice	= insetCur.find(this);
@@ -952,10 +952,10 @@ bool InsetText::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 	LASSERT(scriptSlice != -1, return true);
 	insetCur.cutOff(scriptSlice);
 	LASSERT(&insetCur.inset() == this, return true);
-	
+
 	// update the old paragraph's words
 	insetCur.paragraph().updateWords();
-	
+
 	return Inset::notifyCursorLeaves(old, cur);
 }
 
@@ -1015,7 +1015,7 @@ bool InsetText::insertCompletion(Cursor & cur, docstring const & s,
 }
 
 
-void InsetText::completionPosAndDim(Cursor const & cur, int & x, int & y, 
+void InsetText::completionPosAndDim(Cursor const & cur, int & x, int & y,
 	Dimension & dim) const
 {
 	TextMetrics const & tm = cur.bv().textMetrics(&text_);
@@ -1027,7 +1027,7 @@ string InsetText::contextMenu(BufferView const &, int, int) const
 {
 	string context_menu = contextMenuName();
 	if (context_menu != InsetText::contextMenuName())
-		context_menu += ";" + InsetText::contextMenuName(); 
+		context_menu += ";" + InsetText::contextMenuName();
 	return context_menu;
 }
 

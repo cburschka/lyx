@@ -219,7 +219,7 @@ void GuiTabular::enableWidgets() const
 	else if (!multicolumnCB->isChecked() && !multirowCB->isChecked()
 		&& hAlignCO->findData(toqstr("decimal")) == -1)
 		hAlignCO->addItem(qt_("At Decimal Separator"), toqstr("decimal"));
-	bool const dalign = 
+	bool const dalign =
 		hAlignCO->itemData(hAlignCO->currentIndex()).toString() == QString("decimal");
 	decimalPointED->setEnabled(dalign);
 	decimalLA->setEnabled(dalign);

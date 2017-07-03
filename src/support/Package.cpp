@@ -374,7 +374,7 @@ bool doesFileExist(FileName & result, string const & search_dir, string const & 
 bool lyxBinaryPath(FileName & lyx_binary, string const & search_dir, string const & ext)
 {
     lyx_binary = FileName();
-    if(false) {   
+    if(false) {
     } else if (doesFileExist(lyx_binary, search_dir, "lyx" + ext)) {
     } else if (doesFileExist(lyx_binary, search_dir, "LyX" + ext)) {
     } else if (doesFileExist(lyx_binary, search_dir, "lyx" + string(PROGRAM_SUFFIX) + ext)) {
@@ -397,9 +397,9 @@ FileName findLyxBinary(FileName const & abs_binary)
     else if (!abs_binary.extension().empty()) {
         ext = "." + abs_binary.extension();
     }
-    
+
     string binary_dir = onlyPath(abs_binary.absFileName());
-      
+
     FileName lyx_binary;
     if (lyxBinaryPath(lyx_binary, binary_dir, ext))
         return lyx_binary;
@@ -407,7 +407,7 @@ FileName findLyxBinary(FileName const & abs_binary)
     string search_dir = onlyPath(FileName(addPath(binary_dir, "/../")).absFileName());
     if (lyxBinaryPath(lyx_binary, search_dir, ext))
         return lyx_binary;
-    
+
     return FileName();
 }
 

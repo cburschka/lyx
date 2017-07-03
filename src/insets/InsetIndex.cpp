@@ -130,7 +130,7 @@ void InsetIndex::latex(otexstream & os, OutputParams const & runparams_in) const
 		// Don't do that if the user entered '@' himself, though.
 		if (contains(*it, '\\') && !contains(*it, '@')) {
 			// Plaintext might return nothing (e.g. for ERTs)
-			docstring const spart = 
+			docstring const spart =
 				(it2 < levels_plain.end() && !(*it2).empty())
 				? *it2 : *it;
 			// Now we need to validate that all characters in
@@ -179,7 +179,7 @@ int InsetIndex::docbook(odocstream & os, OutputParams const & runparams) const
 
 docstring InsetIndex::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
-	// we just print an anchor, taking the paragraph ID from 
+	// we just print an anchor, taking the paragraph ID from
 	// our own interior paragraph, which doesn't get printed
 	std::string const magic = paragraphs().front().magicLabel();
 	std::string const attr = "id='" + magic + "'";
@@ -550,7 +550,7 @@ bool InsetPrintIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 		} else
 			return InsetCommand::getStatus(cur, cmd, status);
 	}
-	
+
 	case LFUN_INSET_DIALOG_UPDATE: {
 		status.setEnabled(buffer().masterBuffer()->params().use_indices);
 		return true;
@@ -622,7 +622,7 @@ void parseItem(docstring & s, bool for_output)
 		s.erase(loc);
 }
 
-	
+
 void extractSubentries(docstring const & entry, docstring & main,
 		docstring & sub1, docstring & sub2)
 {
@@ -647,10 +647,10 @@ void extractSubentries(docstring const & entry, docstring & main,
 
 struct IndexEntry
 {
-	IndexEntry() 
+	IndexEntry()
 	{}
-	
-	IndexEntry(docstring const & s, DocIterator const & d) 
+
+	IndexEntry(docstring const & s, DocIterator const & d)
 			: dit(d)
 	{
 		extractSubentries(s, main, sub, subsub);
@@ -658,22 +658,22 @@ struct IndexEntry
 		parseItem(sub, false);
 		parseItem(subsub, false);
 	}
-	
+
 	bool equal(IndexEntry const & rhs) const
 	{
 		return main == rhs.main && sub == rhs.sub && subsub == rhs.subsub;
 	}
-	
+
 	bool same_sub(IndexEntry const & rhs) const
 	{
 		return main == rhs.main && sub == rhs.sub;
 	}
-	
+
 	bool same_main(IndexEntry const & rhs) const
 	{
 		return main == rhs.main;
 	}
-	
+
 	docstring main;
 	docstring sub;
 	docstring subsub;
@@ -705,7 +705,7 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 	// would need to be collected differently, say, during validation.
 	if (bp.use_indices && getParam("type") != from_ascii("idx"))
 		return docstring();
-	
+
 	shared_ptr<Toc const> toc = buffer().tocBackend().toc("index");
 	if (toc->empty())
 		return docstring();
@@ -736,7 +736,7 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 	XHTMLStream xs(ods);
 
 	xs << html::StartTag("div", tocattr);
-	xs << html::StartTag(lay.htmltag(), lay.htmlattr()) 
+	xs << html::StartTag(lay.htmltag(), lay.htmlattr())
 		 << translateIfPossible(from_ascii("Index"),
 	                          op.local_font->language()->lang())
 		 << html::EndTag(lay.htmltag());
@@ -774,7 +774,7 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 				// which means that it is the first sub-sub-entry within this
 				// sub-entry. In that case, we do not want to close anything.
 				if (level == 2 && !eit->same_sub(last)) {
-					// close sub-entry 
+					// close sub-entry
 					xs << html::EndTag("li") << html::CR();
 					// is this another sub-entry with the same main entry?
 					if (!eit->same_main(last)) {
@@ -802,7 +802,7 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 			OutputParams ours = op;
 			ours.for_toc = true;
 			par.simpleLyXHTMLOnePar(buffer(), entstream, ours, dummy);
-	
+
 			// these will contain XHTML versions of the main entry, etc
 			// remember that everything will already have been escaped,
 			// so we'll need to use NextRaw() during output.
@@ -813,13 +813,13 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 			parseItem(main, true);
 			parseItem(sub, true);
 			parseItem(subsub, true);
-	
+
 			if (level == 3) {
 				// another subsubentry
-				xs << html::StartTag("li", "class='subsubentry'") 
+				xs << html::StartTag("li", "class='subsubentry'")
 				   << XHTMLStream::ESCAPE_NONE << subsub;
 			} else if (level == 2) {
-				// there are two ways we can be here: 
+				// there are two ways we can be here:
 				// (i) we can actually be inside a sub-entry already and be about
 				//     to output the first sub-sub-entry. in this case, our sub
 				//     and the last sub will be the same.
@@ -830,18 +830,18 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 				// note that in this case, too, though, the sub-entry might already
 				// have a sub-sub-entry.
 				if (eit->sub != last.sub)
-					xs << html::StartTag("li", "class='subentry'") 
+					xs << html::StartTag("li", "class='subentry'")
 					   << XHTMLStream::ESCAPE_NONE << sub;
 				if (!subsub.empty()) {
 					// it's actually a subsubentry, so we need to start that list
 					xs << html::CR()
-					   << html::StartTag("ul", "class='subsubentry'") 
-					   << html::StartTag("li", "class='subsubentry'") 
+					   << html::StartTag("ul", "class='subsubentry'")
+					   << html::StartTag("li", "class='subsubentry'")
 					   << XHTMLStream::ESCAPE_NONE << subsub;
 					level = 3;
-				} 
+				}
 			} else {
-				// there are also two ways we can be here: 
+				// there are also two ways we can be here:
 				// (i) we can actually be inside an entry already and be about
 				//     to output the first sub-entry. in this case, our main
 				//     and the last main will be the same.
@@ -856,19 +856,19 @@ docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const
 				if (!sub.empty()) {
 					// there's a sub-entry, too
 					xs << html::CR()
-					   << html::StartTag("ul", "class='subentry'") 
-					   << html::StartTag("li", "class='subentry'") 
+					   << html::StartTag("ul", "class='subentry'")
+					   << html::StartTag("li", "class='subentry'")
 					   << XHTMLStream::ESCAPE_NONE << sub;
 					level = 2;
 					if (!subsub.empty()) {
 						// and a sub-sub-entry
 						xs << html::CR()
-						   << html::StartTag("ul", "class='subsubentry'") 
-						   << html::StartTag("li", "class='subsubentry'") 
+						   << html::StartTag("ul", "class='subsubentry'")
+						   << html::StartTag("li", "class='subsubentry'")
 						   << XHTMLStream::ESCAPE_NONE << subsub;
 						level = 3;
 					}
-				} 
+				}
 			}
 		}
 		// finally, then, we can output the index link itself

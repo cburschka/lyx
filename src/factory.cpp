@@ -283,30 +283,30 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 			case NO_CODE:
 				lyxerr << "No such inset '" << name << "'.";
 				return 0;
-			
+
 			case BIBITEM_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
 				return new InsetBibitem(buf, icp);
 			}
-			
+
 			case BIBTEX_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
 				return new InsetBibtex(buf, icp);
 			}
-			
+
 			case CITE_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
 				return new InsetCitation(buf, icp);
 			}
-			
+
 			case ERT_CODE: {
 				return new InsetERT(buf,
 					InsetERT::string2params(to_utf8(cmd.argument())));
 			}
-			
+
 			case EXTERNAL_CODE: {
 				InsetExternalParams iep;
 				InsetExternal::string2params(to_utf8(cmd.argument()), *buf, iep);
@@ -315,7 +315,7 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 				inset->setParams(iep);
 				return inset.release();
 			}
-			
+
 			case GRAPHICS_CODE: {
 				InsetGraphicsParams igp;
 				InsetGraphics::string2params(to_utf8(cmd.argument()), *buf, igp);
@@ -323,54 +323,54 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 				inset->setParams(igp);
 				return inset.release();
 			}
-			
+
 			case HYPERLINK_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
 				return new InsetHyperlink(buf, icp);
 			}
-			
+
 			case INCLUDE_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
 				return new InsetInclude(buf, icp);
 			}
-			
+
 			case INDEX_CODE: {
 				docstring arg = cmd.argument();
 				return new InsetIndex(buf, InsetIndexParams(arg));
 			}
-			
+
 			case INDEX_PRINT_CODE:  {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
 				return new InsetPrintIndex(buf, icp);
 			}
-			
+
 			case LABEL_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
 				return new InsetLabel(buf, icp);
 			}
-			
+
 			case LINE_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
 				return new InsetLine(buf, icp);
 			}
-				
+
 			case LISTINGS_CODE: {
 				InsetListingsParams par;
 				InsetListings::string2params(to_utf8(cmd.argument()), par);
 				return new InsetListings(buf, par);
 			}
-			
+
 			case NOMENCL_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
 				return new InsetNomencl(buf, icp);
 			}
-			
+
 			case REF_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
@@ -388,13 +388,13 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 				InsetSpace::string2params(to_utf8(cmd.argument()), isp);
 				return new InsetSpace(isp);
 			}
-			
+
 			case TOC_CODE: {
 				InsetCommandParams icp(code);
 				InsetCommand::string2params(to_utf8(cmd.argument()), icp);
 				return new InsetTOC(buf, icp);
 			}
-			
+
 			case VSPACE_CODE: {
 				VSpace vspace;
 				InsetVSpace::string2params(to_utf8(cmd.argument()), vspace);
@@ -403,12 +403,12 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 
 			case PREVIEW_CODE:
 				return new InsetPreview(buf);
-			
+
 			default:
 				lyxerr << "Inset '" << name << "' not permitted with LFUN_INSET_INSERT."
 						<< endl;
 				return 0;
-			
+
 			}
 		} //end LFUN_INSET_INSERT
 
@@ -521,7 +521,7 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 	lex >> tmptok;
 
 	// test the different insets
-	
+
 	// FIXME It would be better if we did not have this branch and could
 	// just do one massive switch for all insets. But at present, it's
 	// easier to do it this way, and we can't do the massive switch until
@@ -533,9 +533,9 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 		lex.next();
 		string const insetType = lex.getString();
 		lex.pushToken(insetType);
-		
+
 		InsetCode const code = insetCode(insetType);
-		
+
 		//FIXME If we do the one massive switch, we cannot do this here, since
 		//we do not know in advance that we're dealing with a command inset.
 		//Worst case, we could put it in each case below. Better, we could
@@ -550,7 +550,7 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 			case BIBTEX_CODE:
 				inset.reset(new InsetBibtex(buf, inscmd));
 				break;
-			case CITE_CODE: 
+			case CITE_CODE:
 				inset.reset(new InsetCitation(buf, inscmd));
 				break;
 			case HYPERLINK_CODE:

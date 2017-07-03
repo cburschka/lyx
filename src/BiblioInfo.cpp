@@ -503,8 +503,8 @@ docstring const BibTeXInfo::getAuthorOrEditorList(Buffer const * buf,
 }
 
 
-docstring const BibTeXInfo::getAuthorList(Buffer const * buf, 
-		docstring const & author, bool const full, bool const forceshort, 
+docstring const BibTeXInfo::getAuthorList(Buffer const * buf,
+		docstring const & author, bool const full, bool const forceshort,
 		bool const allnames, bool const beginning) const
 {
 	// Maxnames treshold depend on engine
@@ -760,7 +760,7 @@ docstring parseOptions(docstring const & format, string & optkey,
 
 /* FIXME
 Bug #9131 revealed an oddity in how we are generating citation information
-when more than one key is given. We end up building a longer and longer format 
+when more than one key is given. We end up building a longer and longer format
 string as we go, which we then have to re-parse, over and over and over again,
 rather than generating the information for the individual keys and then putting
 all of that together. We do that to deal with the way separators work, from what

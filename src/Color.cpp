@@ -90,7 +90,7 @@ RGBColor rgbFromHexName(string const & x11hexname)
 string const outputLaTeXColor(RGBColor const & color)
 {
 	// this routine returns a LaTeX readable color string in the form
-	// "red, green, blue" where the colors are a number in the range 0-1 
+	// "red, green, blue" where the colors are a number in the range 0-1
 	int red = color.r;
 	int green = color.g;
 	int blue = color.b;
@@ -152,7 +152,7 @@ RGBColor const RGBColorFromLaTeX(string const & color)
 }
 
 
-Color::Color(ColorCode base_color) : baseColor(base_color), 
+Color::Color(ColorCode base_color) : baseColor(base_color),
 	mergeColor(Color_ignore)
 {}
 
@@ -163,7 +163,7 @@ bool Color::operator==(Color const & color) const
 }
 
 
-bool Color::operator!=(Color const & color) const	
+bool Color::operator!=(Color const & color) const
 {
 	return baseColor != color.baseColor;
 }

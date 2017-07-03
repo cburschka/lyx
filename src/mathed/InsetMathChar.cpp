@@ -212,8 +212,8 @@ void InsetMathChar::octave(OctaveStream & os) const
 
 // We have a bit of a problem here. MathML wants to know whether the
 // character represents an "identifier" or an "operator", and we have
-// no general way of telling. So we shall guess: If it's alpha or 
-// mathalpha, then we'll treat it as an identifier, otherwise as an 
+// no general way of telling. So we shall guess: If it's alpha or
+// mathalpha, then we'll treat it as an identifier, otherwise as an
 // operator.
 // Worst case: We get bad spacing, or bad italics.
 void InsetMathChar::mathmlize(MathStream & ms) const
@@ -229,11 +229,11 @@ void InsetMathChar::mathmlize(MathStream & ms) const
 		}
 		default: break;
 	}
-	
+
 	if (ms.inText()) {
 		if (entity.empty())
 			ms.os().put(char_);
-		else 
+		else
 			ms << from_ascii(entity);
 		return;
 	}
@@ -241,13 +241,13 @@ void InsetMathChar::mathmlize(MathStream & ms) const
 	if (!entity.empty()) {
 		ms << "<mo>" << from_ascii(entity) << "</mo>";
 		return;
-	}		
+	}
 
-	char const * type = 
+	char const * type =
 		(isAlphaASCII(char_) || Encodings::isMathAlpha(char_))
 			? "mi" : "mo";
 	// we don't use MTag and ETag because we do not want the spacing
-	ms << "<" << type << ">" << char_type(char_) << "</" << type << ">";	
+	ms << "<" << type << ">" << char_type(char_) << "</" << type << ">";
 }
 
 
@@ -263,9 +263,9 @@ void InsetMathChar::htmlize(HtmlStream & ms) const
 		case ' ': entity = "&nbsp;"; break;
 		default: break;
 	}
-	
+
 	bool have_entity = !entity.empty();
-	
+
 	if (ms.inText()) {
 		if (have_entity)
 			ms << from_ascii(entity);
@@ -273,12 +273,12 @@ void InsetMathChar::htmlize(HtmlStream & ms) const
 			ms.os().put(char_);
 		return;
 	}
-	
+
 	if (have_entity) {
 		// an operator, so give some space
 		ms << ' ' << from_ascii(entity) << ' ';
 		return;
-	}		
+	}
 
 	if (isAlphaASCII(char_) || Encodings::isMathAlpha(char_))
 		// we don't use MTag and ETag because we do not want the spacing

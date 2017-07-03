@@ -196,7 +196,7 @@ void doWarning(docstring const & title0, docstring const & message,
 void warning(docstring const & title0, docstring const & message,
 	     bool const & askshowagain)
 {
-#ifdef EXPORT_in_THREAD	
+#ifdef EXPORT_in_THREAD
 	InGuiThread<void>().call(&doWarning,
 #else
 	doWarning(
@@ -246,7 +246,7 @@ void doError(docstring const & title0, docstring const & message, bool backtrace
 void error(docstring const & title0, docstring const & message, bool backtrace)
 {
 #ifdef EXPORT_in_THREAD
-	InGuiThread<void>().call(&doError, 
+	InGuiThread<void>().call(&doError,
 #else
 	doError(
 #endif

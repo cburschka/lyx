@@ -32,15 +32,15 @@ std::locale::id numpunct<lyx::char_type>::id;
 namespace std {
 // Implementation of numpunct<lyx::char_type> defined in numpunct_lyx_char_type.h
 typedef basic_string<lyx::char_type> string_type;
-	
+
 string_type numpunct<lyx::char_type>::truename() const
-{ 
-	return lyx::from_ascii(numpunct<char>::truename()); 
+{
+	return lyx::from_ascii(numpunct<char>::truename());
 }
-	
+
 string_type numpunct<lyx::char_type>::falsename() const
-{ 
-	return lyx::from_ascii(numpunct<char>::falsename()); 
+{
+	return lyx::from_ascii(numpunct<char>::falsename());
 }
 
 } // namespace std
@@ -281,7 +281,7 @@ private:
 				inbytesleft, to, outbytesleft);
 		if (converted == (size_t)(-1)) {
 			switch(errno) {
-			case 0: 
+			case 0:
 				// As strange as it may seem, this
 				// does happen on windows when parsing
 				// comments with accented chars in

@@ -499,7 +499,7 @@ void MathMacroTemplate::createLook(int args) const
 	if (optionals_ > 0) {
 		look_.push_back(MathAtom(
 			new InsetLabelBox(buffer_, _("optional"), *this, false)));
-		
+
 		MathData * optData = &look_[look_.size() - 1].nucleus()->cell(0);
 		for (; i < optionals_; ++i) {
 			// color it light grey, if it is to be removed when the cursor leaves
@@ -533,7 +533,7 @@ void MathMacroTemplate::createLook(int args) const
 			Color_mathbg, Color_mathmacronewarg,
 			MathAtom(new InsetMathBrace(arg)))));
 	}
-	
+
 	// :=
 	look_.push_back(MathAtom(new InsetMathChar(':')));
 	look_.push_back(MathAtom(new InsetMathChar('=')));
@@ -726,7 +726,7 @@ void MathMacroTemplate::changeArity(Cursor & cur,
 	// remove parameter which do not appear anymore in the definition
 	for (int i = numargs_; i > newNumArg; --i)
 		removeParameter(cur, inset_pos, numargs_ - 1, true);
-	
+
 	// add missing parameter
 	for (int i = numargs_; i < newNumArg; ++i)
 		insertParameter(cur, inset_pos, numargs_, true, false);
@@ -803,7 +803,7 @@ void fixMacroInstances(Cursor & cur, DocIterator const & inset_pos,
 	for (; dit; dit.forwardPos()) {
 		// left the outer hull?
 		if (!hull.empty() && dit.depth() == hull.depth()) {
-			// schedule reload of the preview if necessary 
+			// schedule reload of the preview if necessary
 			if (preview_reload_needed) {
 				preview_hulls.insert(hull);
 				preview_reload_needed = false;
@@ -1227,7 +1227,7 @@ int MathMacroTemplate::write(WriteStream & os, bool overwriteRedefinition) const
 			// We cannot use \newcommand directly because \global does not work with it.
 			os << "\\global\\long\\def\\" << name();
 			docstring param = from_ascii("#0");
-			for (int i = 1; i <= numargs_; ++i) { 
+			for (int i = 1; i <= numargs_; ++i) {
 				param[1] = '0' + i;
 				os << param;
 			}
@@ -1342,10 +1342,10 @@ bool MathMacroTemplate::fixNameAndCheckIfValid()
 	return !data.empty();
 }
 
-	
+
 void MathMacroTemplate::validate(LaTeXFeatures & features) const
 {
-	// we need global optional macro arguments. They are not available 
+	// we need global optional macro arguments. They are not available
 	// with \def, and \newcommand does not support global macros. So we
 	// are bound to xargs also for the single-optional-parameter case.
 	if (optionals_ > 0)

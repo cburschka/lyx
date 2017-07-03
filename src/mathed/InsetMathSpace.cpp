@@ -208,14 +208,14 @@ void InsetMathSpace::mathmlize(MathStream & ms) const
 		ss << si.width;
 		l = ss.str() + "px";
 	}
-	
+
 	ms << "<mspace";
 	if (!l.empty())
 		ms << " width=\"" << from_ascii(l) << "\"";
 	ms << " />";
 }
 
-	
+
 void InsetMathSpace::htmlize(HtmlStream & ms) const
 {
 	SpaceInfo const & si = space_info[space_];
@@ -246,7 +246,7 @@ void InsetMathSpace::htmlize(HtmlStream & ms) const
 	case InsetSpaceParams::CUSTOM:
 	case InsetSpaceParams::CUSTOM_PROTECTED: {
 		string l = length_.asHTMLString();
-		ms << MTag("span", "width='" + l + "'") 
+		ms << MTag("span", "width='" + l + "'")
 		   << from_ascii("&nbsp;") << ETag("span");
 		break;
 	}
@@ -259,7 +259,7 @@ void InsetMathSpace::htmlize(HtmlStream & ms) const
 	}
 }
 
-	
+
 void InsetMathSpace::normalize(NormalStream & os) const
 {
 	os << "[space " << int(space_) << "] ";

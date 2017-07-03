@@ -536,7 +536,7 @@ Buffer::~Buffer()
 		Impl::BufferPositionMap::iterator end = d->children_positions.end();
 		for (; it != end; ++it) {
 			Buffer * child = const_cast<Buffer *>(it->first);
-			if (theBufferList().isLoaded(child)) { 
+			if (theBufferList().isLoaded(child)) {
 			 if (theBufferList().isOthersChild(this, child))
 				 child->setParent(0);
 			 else
@@ -1934,7 +1934,7 @@ void Buffer::writeLaTeXSource(otexstream & os,
 					    support::bformat(_("The languages %1$s are only supported by Polyglossia."), langs)
 					  : support::bformat(_("The language %1$s is only supported by Polyglossia."), langs);
 				if (!blangs.empty())
-					plangs += "\n"; 
+					plangs += "\n";
 			}
 
 			frontend::Alert::warning(
@@ -5023,7 +5023,7 @@ void Buffer::updateBuffer(ParIterator & parit, UpdateType utype) const
 		// set the counter for this paragraph
 		d->setLabel(parit, utype);
 
-		// update change-tracking flag 
+		// update change-tracking flag
 		parit->addChangesToBuffer(*this);
 
 		// now the insets

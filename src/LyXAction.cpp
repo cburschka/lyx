@@ -52,7 +52,7 @@ namespace lyx {
  * The documentation below primarily describes the purpose and syntax
  * of the various LFUNs.
  *
- * The list is alphabetized. Try to keep it that way, and don't forget to add 
+ * The list is alphabetized. Try to keep it that way, and don't forget to add
  * doxygen commentary. This allows the file LFUNs.lyx to be auto-generated.
  * (If you should want to do that, see the gen_lfuns.py script, which is in
  * the development/tools/ directory.)
@@ -3543,7 +3543,7 @@ void LyXAction::init()
  * \li Action: Inserts various characters into the document.
  * \li Syntax: specialchar-insert <CHAR>
  * \li Params: <CHAR>: hyphenation, allowbreak, ligature-break, slash,
-   	   		   		   nobreakdash, dots, end-of-sentence, menu-separator, 
+   	   		   		   nobreakdash, dots, end-of-sentence, menu-separator,
  					   lyx, tex, latex, latex2e.
  * \li Origin: JSpitzm, 6 Dec 2007
  * \endvar

@@ -88,7 +88,7 @@ void InsetMathXArrow::normalize(NormalStream & os) const
 void InsetMathXArrow::mathmlize(MathStream & ms) const
 {
 	char const * arrow;
-	
+
 	if (name_ == "xleftarrow")
 		arrow = "&larr;";
 	else if (name_ == "xrightarrow")

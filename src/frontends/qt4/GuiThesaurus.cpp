@@ -101,7 +101,7 @@ void GuiThesaurus::checkStatus()
 	}
 	updateView();
 }
-	
+
 void GuiThesaurus::change_adaptor()
 {
 	changed();

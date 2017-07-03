@@ -125,7 +125,7 @@ InsetFloat::InsetFloat(Buffer * buf, string params_str)
 // Enforce equality of float type and caption type.
 void InsetFloat::setCaptionType(std::string const & type)
 {
-	InsetCaptionable::setCaptionType(type);	
+	InsetCaptionable::setCaptionType(type);
 	params_.type = captionType();
 	// check if the float type exists
 	if (buffer().params().documentClass().floats().typeExist(params_.type))
@@ -136,7 +136,7 @@ void InsetFloat::setCaptionType(std::string const & type)
 
 
 docstring InsetFloat::layoutName() const
-{ 
+{
 	return "Float:" + from_utf8(params_.type);
 }
 
@@ -203,7 +203,7 @@ bool InsetFloat::getStatus(Cursor & cur, FuncRequest const & cmd,
 			return true;
 		} else
 			return false;
-	
+
 	case LFUN_NEWLINE_INSERT:
 		if (params_.subfloat) {
 			flag.setEnabled(false);
@@ -301,7 +301,7 @@ docstring InsetFloat::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 	odocstringstream ods;
 	XHTMLStream newxs(ods);
 	newxs << html::StartTag(htmltype, attr);
-	InsetText::XHTMLOptions const opts = 
+	InsetText::XHTMLOptions const opts =
 		InsetText::WriteLabel | InsetText::WriteInnerTag;
 	docstring deferred = InsetText::insetAsXHTML(newxs, rp, opts);
 	newxs << html::EndTag(htmltype);
@@ -313,7 +313,7 @@ docstring InsetFloat::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 	} else {
 		// In this case, the whole thing is already being deferred, so
 		// we can write to the stream.
-		// Note that things will already have been escaped, so we do not 
+		// Note that things will already have been escaped, so we do not
 		// want to escape them again.
 		xs << XHTMLStream::ESCAPE_NONE << ods.str();
 	}
@@ -428,7 +428,7 @@ int InsetFloat::docbook(odocstream & os, OutputParams const & runparams) const
 
 bool InsetFloat::insetAllowed(InsetCode code) const
 {
-	// The case that code == FLOAT_CODE is handled in Text3.cpp, 
+	// The case that code == FLOAT_CODE is handled in Text3.cpp,
 	// because we need to know what type of float is meant.
 	switch(code) {
 	case WRAP_CODE:

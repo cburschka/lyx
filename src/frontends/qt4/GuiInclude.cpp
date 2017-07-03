@@ -153,7 +153,7 @@ void GuiInclude::typeChanged(int v)
 			listingsGB->setEnabled(false);
 			break;
 	}
-	//see this thread 
+	//see this thread
 	//  http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg118471.html
 	//for the reason this is here.
 	okPB->setDefault(true);
@@ -214,7 +214,7 @@ void GuiInclude::paramsToDialog(InsetCommandParams const & params_)
 				if (cap[0] == '{' && cap[cap.size() - 1] == '}') {
 					captionLE->setText(toqstr(cap.substr(1, cap.size() - 2)));
 					*it = "";
-				} 
+				}
 			} else if (prefixIs(*it, "label=")) {
 				string lbl = it->substr(6);
 				if (lbl[0] == '{' && lbl[lbl.size()-1] == '}') {

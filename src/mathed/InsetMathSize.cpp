@@ -66,12 +66,12 @@ void InsetMathSize::write(WriteStream & os) const
 
 
 // From the MathML documentation:
-//	MathML uses two attributes, displaystyle and scriptlevel, to control 
-//	orthogonal presentation features that TeX encodes into one "style" 
-//	attribute with values \displaystyle, \textstyle, \scriptstyle, and 
-//	\scriptscriptstyle. The corresponding values of displaystyle and scriptlevel 
-//	for those TeX styles would be "true" and "0", "false" and "0", "false" and "1", 
-//	and "false" and "2", respectively. 
+//	MathML uses two attributes, displaystyle and scriptlevel, to control
+//	orthogonal presentation features that TeX encodes into one "style"
+//	attribute with values \displaystyle, \textstyle, \scriptstyle, and
+//	\scriptscriptstyle. The corresponding values of displaystyle and scriptlevel
+//	for those TeX styles would be "true" and "0", "false" and "0", "false" and "1",
+//	and "false" and "2", respectively.
 void InsetMathSize::mathmlize(MathStream & ms) const
 {
 	string const & name = to_utf8(key_->name);

@@ -41,7 +41,7 @@ namespace lyx {
 
 LayoutFile::LayoutFile(string const & fn, string const & cln,
 		       string const & desc, string const & prereq,
-		       string const & category, bool texclassavail) 
+		       string const & category, bool texclassavail)
 {
 	name_ = onlyFileName(fn);
 	path_ = fn.rfind('/') == string::npos ? string() : onlyPath(fn);
@@ -63,7 +63,7 @@ LayoutFileList::~LayoutFileList()
 }
 
 
-LayoutFileList & LayoutFileList::get() 
+LayoutFileList & LayoutFileList::get()
 {
 	static LayoutFileList baseclasslist;
 	return baseclasslist;
@@ -129,23 +129,23 @@ bool LayoutFileList::read()
 			default:
 				string const fname = lex.getString();
 				LYXERR(Debug::TCLASS, "Fname: " << fname);
-				if (!lex.next()) 
+				if (!lex.next())
 					break;
 				string const clname = lex.getString();
 				LYXERR(Debug::TCLASS, "Clname: " << clname);
-				if (!lex.next()) 
+				if (!lex.next())
 					break;
 				string const desc = lex.getString();
 				LYXERR(Debug::TCLASS, "Desc: " << desc);
-				if (!lex.next()) 
+				if (!lex.next())
 					break;
 				bool avail = lex.getBool();
 				LYXERR(Debug::TCLASS, "Avail: " << avail);
-				if (!lex.next()) 
+				if (!lex.next())
 					break;
 				string const prereq = lex.getString();
 				LYXERR(Debug::TCLASS, "Prereq: " << prereq);
-				if (!lex.next()) 
+				if (!lex.next())
 					break;
 				string const category = lex.getString();
 				LYXERR(Debug::TCLASS, "Category: " << category);
@@ -190,7 +190,7 @@ void LayoutFileList::reset(LayoutFileIndex const & classname)
 	LATTEST(haveClass(classname));
 	// safe to continue, since we will make an empty LayoutFile
 	LayoutFile * tc = classmap_[classname];
-	LayoutFile * tmpl = 
+	LayoutFile * tmpl =
 		new LayoutFile(tc->name(), tc->latexname(), tc->description(),
 		               tc->prerequisites(), tc->category(),
 			       tc->isTeXClassAvailable());
@@ -201,7 +201,7 @@ void LayoutFileList::reset(LayoutFileIndex const & classname)
 
 namespace {
 
-string layoutpost =			
+string layoutpost =
 		"Columns      1\n"
 		"Sides        1\n"
 		"SecNumDepth  2\n"
@@ -218,7 +218,7 @@ string layoutpost =
 		"	AlignPossible         Block, Left, Right, Center\n"
 		"	LabelType             No_Label\n"
 		"End\n";
-	
+
 }
 
 
@@ -229,7 +229,7 @@ LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 	TempFile tempfile("basicXXXXXX.layout");
 	FileName const tempLayout = tempfile.name();
 	ofstream ofs(tempLayout.toFilesystemEncoding().c_str());
-	// This writes a very basic class, but it also attempts to include 
+	// This writes a very basic class, but it also attempts to include
 	// stdclass.inc. That would give us something moderately usable.
 	ofs << "# This layout is automatically generated\n"
 	       "# \\DeclareLaTeXClass{" << textclass << "}\n\n"
@@ -241,13 +241,13 @@ LayoutFileIndex LayoutFileList::addEmptyClass(string const & textclass)
 	// We do not know if a LaTeX class is available for this document, but setting
 	// the last parameter to true will suppress a warning message about missing
 	// tex class.
-	LayoutFile * tc = new LayoutFile(textclass, textclass, 
+	LayoutFile * tc = new LayoutFile(textclass, textclass,
 			"Unknown text class " + textclass, textclass + ".cls", "", true);
 
 	if (!tc->load(tempLayout.absFileName())) {
-		// The only way this happens is because the hardcoded layout file 
-		// above is wrong or stdclass.inc cannot be found. So try again 
-		// without stdclass.inc and without stdinsets.inc. 
+		// The only way this happens is because the hardcoded layout file
+		// above is wrong or stdclass.inc cannot be found. So try again
+		// without stdclass.inc and without stdinsets.inc.
 		ofstream ofs2(tempLayout.toFilesystemEncoding().c_str());
 		ofs2 << "# This layout is automatically generated\n"
 		        "# \\DeclareLaTeXClass{" << textclass << "}\n\n"
@@ -273,10 +273,10 @@ LayoutFileIndex  LayoutFileList::addLocalLayout(
 	// FIXME  There is a bug here: 4593
 	//
 	// only check for textclass.layout file, .cls can be anywhere in $TEXINPUTS
-	// NOTE: latex class name is defined in textclass.layout, which can be 
+	// NOTE: latex class name is defined in textclass.layout, which can be
 	// different from textclass
 	string fullName = addName(path, textclass + ".layout");
-	
+
 	FileName layout_file(fullName);
 	bool moved = false;
 

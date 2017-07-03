@@ -481,7 +481,7 @@ docstring KeyMap::printBindings(FuncRequest const & func,
 	Bindings bindings = findBindings(func);
 	if (bindings.empty())
 		return docstring();
-	
+
 	odocstringstream res;
 	Bindings::const_iterator cit = bindings.begin();
 	Bindings::const_iterator cit_end = bindings.end();
@@ -544,7 +544,7 @@ KeyMap::BindingList KeyMap::listBindings(bool unbound, KeyMap::ItemType tag) con
 				}
 			if (!has_action)
 				list.push_back(Binding(FuncRequest(action), KeySequence(0, 0), tag));
-		}	
+		}
 	}
 	return list;
 }

@@ -147,7 +147,7 @@ bool ParamInfo::operator==(ParamInfo const & rhs) const
 }
 
 
-ParamInfo::ParamData const & 
+ParamInfo::ParamData const &
 	ParamInfo::operator[](std::string const & name) const
 {
 	const_iterator it = begin();
@@ -195,7 +195,7 @@ std::string InsetCommandParams::insetType() const
 string InsetCommandParams::getDefaultCmd(InsetCode code)
 {
 	switch (code) {
-		case BIBITEM_CODE: 
+		case BIBITEM_CODE:
 			return InsetBibitem::defaultCommand();
 		case BIBTEX_CODE:
 			return InsetBibtex::defaultCommand();
@@ -232,7 +232,7 @@ string InsetCommandParams::getDefaultCmd(InsetCode code)
 bool InsetCommandParams::isCompatibleCommand(InsetCode code, string const & s)
 {
 	switch (code) {
-		case BIBITEM_CODE: 
+		case BIBITEM_CODE:
 			return InsetBibitem::isCompatibleCommand(s);
 		case BIBTEX_CODE:
 			return InsetBibtex::isCompatibleCommand(s);
@@ -269,7 +269,7 @@ bool InsetCommandParams::isCompatibleCommand(InsetCode code, string const & s)
 void InsetCommandParams::setCmdName(string const & name)
 {
 	if (!isCompatibleCommand(insetCode_, name)) {
-		LYXERR0("InsetCommand: Incompatible command name " << 
+		LYXERR0("InsetCommand: Incompatible command name " <<
 				name << ".");
 		throw ExceptionMessage(WarningException, _("InsetCommand Error: "),
 		                       _("Incompatible command name."));
@@ -304,7 +304,7 @@ void InsetCommandParams::Read(Lexer & lex, Buffer const * buffer)
 		if (param.ignore()) {
 			params_[param.name()] = param.defaultValue();
 		}
-	
+
 	string token;
 	while (lex.isOK()) {
 		lex.next();
@@ -520,7 +520,7 @@ docstring InsetCommandParams::getCommand(OutputParams const & runparams) const
 					noparam = false;
 			}
 			break;
-		} 
+		}
 		} //end switch
 	}
 	if (noparam)
@@ -533,8 +533,8 @@ docstring InsetCommandParams::getCommand(OutputParams const & runparams) const
 
 docstring InsetCommandParams::getFirstNonOptParam() const
 {
-	ParamInfo::const_iterator it = 
-		find_if(info_.begin(), info_.end(), 
+	ParamInfo::const_iterator it =
+		find_if(info_.begin(), info_.end(),
 			not1(mem_fun_ref(&ParamInfo::ParamData::isOptional)));
 	LASSERT(it != info_.end(), return docstring());
 	return (*this)[it->name()];

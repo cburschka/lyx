@@ -164,7 +164,7 @@ void InsetMathFBox::normalize(NormalStream & os) const
 
 
 void InsetMathFBox::mathmlize(MathStream & ms) const
-{	
+{
 	SetMode textmode(ms, true);
 	ms << MTag("mstyle", "class='fbox'")
 	   << cell(0)
@@ -301,7 +301,7 @@ void InsetMathMakebox::normalize(NormalStream & os) const
 
 void InsetMathMakebox::infoize(odocstream & os) const
 {
-	os << (framebox_ ? "Framebox" : "Makebox") 
+	os << (framebox_ ? "Framebox" : "Makebox")
 	   << " (width: " << cell(0)
 	   << " pos: " << cell(1) << ")";
 }
@@ -418,7 +418,7 @@ void InsetMathBoxed::validate(LaTeXFeatures & features) const
 		features.addCSSSnippet("mstyle.boxed { border: 1px solid black; }");
 	else if (features.runparams().math_flavor == OutputParams::MathAsHTML)
 		features.addCSSSnippet("span.boxed { border: 1px solid black; }");
-	
+
 	InsetMathNest::validate(features);
 }
 

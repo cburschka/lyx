@@ -42,7 +42,7 @@ QVariant GuiIdListModel::data(QModelIndex const & index, int role) const
 }
 
 
-bool GuiIdListModel::setData (QModelIndex const & index, 
+bool GuiIdListModel::setData (QModelIndex const & index,
 		const QVariant & value, int role)
 {
 	int const row = index.row();
@@ -70,7 +70,7 @@ bool GuiIdListModel::setData (QModelIndex const & index,
 }
 
 
-bool GuiIdListModel::insertRows(int row, int count, 
+bool GuiIdListModel::insertRows(int row, int count,
 		QModelIndex const & /*parent*/)
 {
 	if (!rowIsValid(row))
@@ -83,7 +83,7 @@ bool GuiIdListModel::insertRows(int row, int count,
 }
 
 
-bool GuiIdListModel::removeRows(int row, int count, 
+bool GuiIdListModel::removeRows(int row, int count,
 		QModelIndex const & /*parent*/)
 {
 	if (!rowIsValid(row) || row + count > int(userData_.size()) ||
@@ -93,20 +93,20 @@ bool GuiIdListModel::removeRows(int row, int count,
 		return true;
 	vector<OurData>::iterator it = userData_.begin() + row;
 	beginRemoveRows(QModelIndex(), row, row + count - 1);
-	userData_.erase(it, it + count);	
+	userData_.erase(it, it + count);
 	endRemoveRows();
 	return true;
 }
 
 
-void GuiIdListModel::insertRow(int const i, QString const & uiString, 
+void GuiIdListModel::insertRow(int const i, QString const & uiString,
 		std::string const & idString)
 {
 	insertRow(i, uiString, idString, uiString);
 }
 
 
-void GuiIdListModel::insertRow(int const i, QString const & uiString, 
+void GuiIdListModel::insertRow(int const i, QString const & uiString,
 	std::string const & idString, QString const & ttString)
 {
 	insertRows(i, 1);
@@ -127,7 +127,7 @@ QMap<int, QVariant> GuiIdListModel::itemData(QModelIndex const & index) const
 }
 
 
-int GuiIdListModel::findIDString(std::string const & idString) 
+int GuiIdListModel::findIDString(std::string const & idString)
 {
 	vector<OurData>::const_iterator it  = userData_.begin();
 	vector<OurData>::const_iterator end = userData_.end();

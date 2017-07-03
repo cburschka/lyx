@@ -236,7 +236,7 @@ Thesaurus::Meanings Thesaurus::lookup(WordLangTuple const & wl)
 		return meanings;
 
 	string const encoding = mythes->get_th_encoding();
-	
+
 	mentry * pmean;
 	string const text = to_iconv_encoding(support::lowercase(t), encoding);
 	int len = strlen(text.c_str());

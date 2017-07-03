@@ -113,7 +113,7 @@ struct SpellcheckerWidget::Private
 	SpellcheckerWidget * p;
 	///
 	DockView * dv_;
-	/// 
+	///
 	GuiView * gv_;
 	/// current word being checked and lang code
 	WordLangTuple word_;
@@ -321,7 +321,7 @@ void SpellcheckerWidget::Private::hide() const
 			// restore cursor position
 			bvcur.setCursor(start_);
 			bvcur.clearSelection();
-			bv->processUpdateFlags(Update::Force | Update::FitCursor);	
+			bv->processUpdateFlags(Update::Force | Update::FitCursor);
 		}
 	}
 }
@@ -333,7 +333,7 @@ void SpellcheckerWidget::Private::setSelection(
 	DocIterator end = to;
 
 	if (from.pit() != end.pit()) {
-		// there are multiple paragraphs in selection 
+		// there are multiple paragraphs in selection
 		Cursor & bvcur = bv->cursor();
 		bvcur.setCursor(from);
 		bvcur.clearSelection();
@@ -388,7 +388,7 @@ bool SpellcheckerWidget::initialiseParams(std::string const &)
 	BufferView * bv = d->gv_->documentBufferView();
 	if (bv == 0)
 		return false;
-	std::set<Language const *> languages = 
+	std::set<Language const *> languages =
 		bv->buffer().masterBuffer()->getLanguages();
 	if (!languages.empty())
 		d->setLanguage(*languages.begin());
@@ -457,7 +457,7 @@ void SpellcheckerWidget::on_replacePB_clicked()
 		return;
 	docstring const textfield = qstring_to_ucs4(d->ui.wordED->text());
 	docstring const replacement = qstring_to_ucs4(d->ui.replaceCO->currentText());
-	docstring const datastring = 
+	docstring const datastring =
 		replace2string(replacement, textfield,
 			true,   // case sensitive
 			true,   // match word
@@ -531,7 +531,7 @@ void SpellcheckerWidget::Private::check()
 		return;
 
 	fixPositionsIfBroken();
-	
+
 	SpellChecker * speller = theSpellChecker();
 	if (speller && !speller->hasDictionary(bv->buffer().language())) {
 		int dsize = speller->numDictionaries();
@@ -613,8 +613,8 @@ void GuiSpellchecker::updateView()
 }
 
 
-Dialog * createGuiSpellchecker(GuiView & lv) 
-{ 
+Dialog * createGuiSpellchecker(GuiView & lv)
+{
 	GuiSpellchecker * gui = new GuiSpellchecker(lv, Qt::RightDockWidgetArea);
 #ifdef Q_OS_MAC
 	gui->setFloating(true);

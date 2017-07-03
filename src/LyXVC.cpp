@@ -447,8 +447,8 @@ bool LyXVC::repoUpdateEnabled() const
 {
 	return vcs && vcs->repoUpdateEnabled();
 }
-	
-	
+
+
 bool LyXVC::prepareFileRevision(string const & rev, std::string & f)
 {
 	return vcs && vcs->prepareFileRevision(rev, f);

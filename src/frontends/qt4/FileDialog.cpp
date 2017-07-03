@@ -93,7 +93,7 @@ FileDialog::Result FileDialog::save(QString const & path,
 
 #ifdef USE_NATIVE_FILEDIALOG
 	QString const startsWith = makeAbsPath(suggested, path);
-	QString const name = 
+	QString const name =
 		QFileDialog::getSaveFileName(qApp->focusWidget(),
 		title_, startsWith, filters.join(";;"),
 		selectedFilter, QFileDialog::DontConfirmOverwrite);

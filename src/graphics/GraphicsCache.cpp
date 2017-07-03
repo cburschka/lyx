@@ -76,7 +76,7 @@ vector<string> const & Cache::loadableFormats() const
 
 	// The formats natively loadable.
 	vector<string> nformat = frontend::loadableImageFormats();
-	
+
 	vector<string>::const_iterator it = nformat.begin();
 	for (; it != nformat.end(); ++it) {
 		for (Formats::const_iterator fit = begin; fit != end; ++fit) {

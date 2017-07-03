@@ -536,12 +536,12 @@ void InsetMathFrac::mathmlize(MathStream & os) const
 		// FIXME This is not right, because we still output mi, etc,
 		// when we output the cell. So we need to prevent that somehow.
 		if (nargs() == 2)
-			os << cell(0) 
-			   << MTag("mstyle mathvariant='normal'") 
-			   << cell(1) 
+			os << cell(0)
+			   << MTag("mstyle mathvariant='normal'")
+			   << cell(1)
 			   << ETag("mstyle");
 		else
-			os << MTag("mstyle mathvariant='normal'") 
+			os << MTag("mstyle mathvariant='normal'")
 			   << cell(0)
 			   << ETag("mstyle");
 	}
@@ -586,12 +586,12 @@ void InsetMathFrac::htmlize(HtmlStream & os) const
 		// FIXME This is not right, because we still output i, etc,
 		// when we output the cell. So we need to prevent that somehow.
 		if (nargs() == 2)
-			os << cell(0) 
-			   << MTag("span") 
-			   << cell(1) 
+			os << cell(0)
+			   << MTag("span")
+			   << cell(1)
 			   << ETag("span");
 		else
-			os << MTag("span") 
+			os << MTag("span")
 			   << cell(0)
 			   << ETag("span");
 	}

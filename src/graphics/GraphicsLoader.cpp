@@ -305,7 +305,7 @@ void Loader::startLoading() const
 }
 
 
-void Loader::reload() const 
+void Loader::reload() const
 {
 	pimpl_->cached_item_->startLoading();
 }

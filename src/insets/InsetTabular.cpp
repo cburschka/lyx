@@ -3042,13 +3042,13 @@ docstring Tabular::xhtmlRow(XHTMLStream & xs, row_type row,
 			continue;
 
 		stringstream attr;
-		
+
 		Length const cwidth = column_info[c].p_width;
 		if (!cwidth.zero()) {
 			string const hwidth = cwidth.asHTMLString();
 			attr << "style =\"width: " << hwidth << ";\" ";
 		}
-		
+
 		attr << "align='";
 		switch (getAlignment(cell)) {
 		case LYX_ALIGN_LEFT:
@@ -4931,7 +4931,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 		if (&cur.inset() != this)
 			break;
 		string action = cmd.getArg(0);
-		string arg = cmd.getLongArg(1);	
+		string arg = cmd.getLongArg(1);
 		return getFeatureStatus(cur, action, arg, status);
 	}
 

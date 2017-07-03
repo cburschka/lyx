@@ -144,7 +144,7 @@ AspellChecker::Private::~Private()
 
 	LangPersonalWordList::const_iterator pdit = personal_.begin();
 	LangPersonalWordList::const_iterator pdet = personal_.end();
-	
+
 	for (; pdit != pdet; ++pdit) {
 		if ( 0 == pdit->second)
 			continue;
@@ -294,7 +294,7 @@ AspellSpeller * AspellChecker::Private::addSpeller(Language const * lang)
 		personal_[lang->lang()] = pd;
 		initSessionDictionary(m, pd);
 	}
-	
+
 	spellers_[lang->lang()] = m;
 	return m.e_speller ? to_aspell_speller(m.e_speller) : 0;
 }
@@ -352,7 +352,7 @@ string AspellChecker::Private::toAspellWord(docstring const & word) const
 
 
 SpellChecker::Result AspellChecker::Private::check(
-	AspellSpeller * m, WordLangTuple const & word) 
+	AspellSpeller * m, WordLangTuple const & word)
 	const
 {
 	SpellChecker::Result result = WORD_OK;
@@ -396,7 +396,7 @@ void AspellChecker::Private::remove(WordLangTuple const & word)
 	}
 }
 
-		
+
 void AspellChecker::Private::insert(WordLangTuple const & word)
 {
 	Spellers::iterator it = spellers_.find(word.lang()->lang());
@@ -431,7 +431,7 @@ AspellChecker::~AspellChecker()
 
 SpellChecker::Result AspellChecker::check(WordLangTuple const & word)
 {
-  
+
 	AspellSpeller * m = d->speller(word.lang());
 
 	if (!m)
@@ -529,8 +529,8 @@ int AspellChecker::numDictionaries() const
 {
 	return d->numDictionaries();
 }
-	
-	
+
+
 docstring const AspellChecker::error()
 {
 	Spellers::iterator it = d->spellers_.begin();

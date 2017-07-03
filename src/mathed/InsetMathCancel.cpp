@@ -144,12 +144,12 @@ void InsetMathCancel::mathmlize(MathStream & os) const
 	case cancel:
 		os << MTag("menclose", "notation='updiagonalstrike'")
 		   << cell(0)
-		   << ETag("menclose"); 
+		   << ETag("menclose");
 		break;
 	case bcancel:
 		os << MTag("menclose", "notation='downdiagonalstrike'")
 		   << cell(0)
-		   << ETag("menclose"); 
+		   << ETag("menclose");
 		break;
 	case xcancel:
 		os << MTag("menclose", "notation='updiagonalstrike'")

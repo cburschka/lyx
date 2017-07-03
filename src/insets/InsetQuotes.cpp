@@ -452,7 +452,7 @@ docstring InsetQuotesParams::getLaTeXQuote(char_type c, string const & op) const
 	default:
 		break;
 	}
-	
+
 	return from_ascii(res);
 }
 
@@ -525,7 +525,7 @@ docstring InsetQuotesParams::getHTMLQuote(char_type c) const
 	default:
 		break;
 	}
-	
+
 	return from_ascii(res);
 }
 
@@ -601,7 +601,7 @@ docstring const InsetQuotesParams::getShortGuiLabel(docstring const string)
 ///////////////////////////////////////////////////////////////////////
 
 InsetQuotes::InsetQuotes(Buffer * buf, string const & str)
-	: Inset(buf), 
+	: Inset(buf),
 	  style_(InsetQuotesParams::EnglishQuotes), side_(InsetQuotesParams::OpeningQuote),
 	  pass_thru_(false)
 {
@@ -674,7 +674,7 @@ void InsetQuotes::parseString(string const & s, bool const allow_wildcards)
 InsetQuotesParams::QuoteStyle InsetQuotes::getStyle(string const & s)
 {
 	InsetQuotesParams::QuoteStyle qs = InsetQuotesParams::EnglishQuotes;
-	
+
 	if (s == "english")
 		qs = InsetQuotesParams::EnglishQuotes;
 	else if (s == "swedish")
@@ -849,7 +849,7 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 			from_ascii("\\textquotedblplain") : from_ascii("\\textquotesingleplain");
 	}
 	else if (runparams.use_polyglossia) {
-		// For polyglossia, we directly output the respective unicode chars 
+		// For polyglossia, we directly output the respective unicode chars
 		// (spacing and kerning is then handled respectively)
 		qstr = docstring(1, quotechar);
 	}
@@ -915,7 +915,7 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 }
 
 
-int InsetQuotes::plaintext(odocstringstream & os, 
+int InsetQuotes::plaintext(odocstringstream & os,
         OutputParams const &, size_t) const
 {
 	docstring const str = displayString();

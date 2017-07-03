@@ -392,7 +392,7 @@ void Compare::run()
 		dest_buffer->params().authors().record(*it);
 
 	// We will need this later
-	DocumentClassConstPtr const olddc = 
+	DocumentClassConstPtr const olddc =
 		dest_buffer->params().documentClassPtr();
 	// We do not want to share the DocumentClass with the other Buffer.
 	// See bug #10295.

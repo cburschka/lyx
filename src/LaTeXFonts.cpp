@@ -373,7 +373,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 			error = true;
 			continue;
 
-		default: 
+		default:
 			break;
 		}
 		switch (static_cast<LaTeXFontTags>(le)) {

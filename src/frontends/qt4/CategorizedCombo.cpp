@@ -55,11 +55,11 @@ public:
 	///
 	QSize sizeHint(QStyleOptionViewItem const & opt,
 		QModelIndex const & index) const;
-	
+
 private:
 	///
 	void drawCategoryHeader(QPainter * painter, QStyleOptionViewItem const & opt,
-		QString const & category) const;	
+		QString const & category) const;
 	///
 	QString underlineFilter(QString const & s) const;
 	///
@@ -106,8 +106,8 @@ struct CategorizedCombo::Private
 	void countCategories();
 	///
 	CategorizedCombo * p;
-	
-	/** the layout model: 
+
+	/** the layout model:
 	 * 1st column: translated GUI name,
 	 * 2nd column: raw item name,
 	 * 3rd column: category,
@@ -162,7 +162,7 @@ void CCItemDelegate::paint(QPainter * painter, QStyleOptionViewItem const & opti
 		opt.state = state;
 
 		// draw category header
-		drawCategoryHeader(painter, opt, 
+		drawCategoryHeader(painter, opt,
 			categoryCC(*index.model(), index.row()));
 
 		// move rect down below header
@@ -317,14 +317,14 @@ void CategorizedCombo::Private::setFilter(QString const & s)
 	filter_ = s;
 	filterModel_->setFilterRegExp(charFilterRegExpCC(filter_));
 	countCategories();
-	
+
 	// restore old selection
 	if (lastSel_ != -1) {
 		QModelIndex i = filterModel_->mapFromSource(model_->index(lastSel_, 0));
 		if (i.isValid())
 			p->setCurrentIndex(i.row());
 	}
-	
+
 	// Workaround to resize to content size
 	// FIXME: There must be a better way. The QComboBox::AdjustToContents)
 	//        does not help.
@@ -339,7 +339,7 @@ void CategorizedCombo::Private::setFilter(QString const & s)
 		p->QComboBox::showPopup();
 		inShowPopup_ = false;
 	}
-	
+
 	p->view()->setUpdatesEnabled(enabled);
 }
 
@@ -356,7 +356,7 @@ CategorizedCombo::CategorizedCombo(QWidget * parent)
 	// for the filtering we have to intercept characters
 	view()->installEventFilter(this);
 	view()->setItemDelegateForColumn(0, d->CCItemDelegate_);
-	
+
 	updateCombo();
 }
 
@@ -373,7 +373,7 @@ void CategorizedCombo::Private::countCategories()
 	if (n == 0)
 		return;
 
-	QString prevCat = model_->index(0, 2).data().toString(); 
+	QString prevCat = model_->index(0, 2).data().toString();
 
 	// count categories
 	for (int i = 1; i < n; ++i) {
@@ -412,7 +412,7 @@ bool CategorizedCombo::eventFilter(QObject * o, QEvent * e)
 	bool modified = (ke->modifiers() == Qt::ControlModifier)
 		|| (ke->modifiers() == Qt::AltModifier)
 		|| (ke->modifiers() == Qt::MetaModifier);
-	
+
 	switch (ke->key()) {
 	case Qt::Key_Escape:
 		if (!modified && !d->filter_.isEmpty()) {
@@ -520,7 +520,7 @@ void CategorizedCombo::addItemSort(QString const & item, QString const & guiname
 	if (sortedByCat) {
 		// If sortCats == true, sort categories alphabetically, uncategorized at the end.
 		while (i < end && d->model_->item(i, 2)->text() != qcat
-		       && (!sortCats 
+		       && (!sortCats
 			   || (!uncategorized && d->model_->item(i, 2)->text().localeAwareCompare(qcat) < 0
 			       && d->model_->item(i, 2)->text() != qt_("Uncategorized"))
 			   || (uncategorized && d->model_->item(i, 2)->text() != qt_("Uncategorized"))))
@@ -571,7 +571,7 @@ void CategorizedCombo::reset()
 void CategorizedCombo::updateCombo()
 {
 	d->countCategories();
-	
+
 	// needed to recalculate size hint
 	hide();
 	setMinimumWidth(sizeHint().width());

@@ -342,7 +342,7 @@ void GuiBox::paramsToDialog(Inset const * inset)
 		&& halignCO->count() < 4)
 		halignCO->addItem(toqstr("Stretch"));
 	else if (inner_type != "makebox" && (type != "Boxed" && inner_type != "none"))
-		halignCO->removeItem(3); 
+		halignCO->removeItem(3);
 	// pagebreak is only allowed for Boxed without inner box
 	pagebreakCB->setEnabled(!ibox && type == "Boxed");
 

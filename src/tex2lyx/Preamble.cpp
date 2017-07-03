@@ -1705,7 +1705,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				h_math_numbering_side = "right";
 				opts.erase(it);
 			}
-			
+
 			// paper orientation
 			if ((it = find(opts.begin(), opts.end(), "landscape")) != opts.end()) {
 				h_paperorientation = "landscape";

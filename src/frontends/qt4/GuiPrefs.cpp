@@ -3534,7 +3534,7 @@ void GuiPreferences::dispatchParams()
 	theConverters().update(formats_);
 	theConverters().buildGraph();
 	theBufferList().invalidateConverterCache();
-	
+
 	theMovers() = movers_;
 
 	vector<string>::const_iterator it = colors_.begin();

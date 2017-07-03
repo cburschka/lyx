@@ -87,7 +87,7 @@ void InsetTOC::doDispatch(Cursor & cur, FuncRequest & cmd) {
 			cur.dispatched();
 		}
 		break;
-	
+
 	default:
 		InsetCommand::doDispatch(cur, cmd);
 	}
@@ -136,7 +136,7 @@ int InsetTOC::docbook(odocstream & os, OutputParams const &) const
 }
 
 
-void InsetTOC::makeTOCEntry(XHTMLStream & xs, 
+void InsetTOC::makeTOCEntry(XHTMLStream & xs,
 		Paragraph const & par, OutputParams const & op) const
 {
 	string const attr = "href='#" + par.magicLabel() + "' class='tocentry'";
@@ -156,7 +156,7 @@ void InsetTOC::makeTOCEntry(XHTMLStream & xs,
 }
 
 
-void InsetTOC::makeTOCWithDepth(XHTMLStream & xs, 
+void InsetTOC::makeTOCWithDepth(XHTMLStream & xs,
 		Toc const & toc, OutputParams const & op) const
 {
 	Toc::const_iterator it = toc.begin();
@@ -171,11 +171,11 @@ void InsetTOC::makeTOCWithDepth(XHTMLStream & xs,
 		// First, we need to manage increases and decreases of depth
 		// If there's no depth to deal with, we artifically set it to 1.
 		int const depth = it->depth();
-		
+
 		// Ignore stuff above the tocdepth
 		if (depth > buffer().params().tocdepth)
 			continue;
-		
+
 		if (depth > lastdepth) {
 			xs << html::CR();
 			// open as many tags as we need to open to get to this level
@@ -190,7 +190,7 @@ void InsetTOC::makeTOCWithDepth(XHTMLStream & xs,
 		else if (depth < lastdepth) {
 			// close as many as we have to close to get back to this level
 			// this includes closing the last tag at this level
-			for (int i = lastdepth; i >= depth; --i) 
+			for (int i = lastdepth; i >= depth; --i)
 				xs << html::EndTag("div") << html::CR();
 			// now open our tag
 			stringstream attr;
@@ -204,17 +204,17 @@ void InsetTOC::makeTOCWithDepth(XHTMLStream & xs,
 			attr << "class='lyxtoc-" << depth << "'";
 			xs << html::StartTag("div", attr.str()) << html::CR();
 		}
-		
+
 		// Now output TOC info for this entry
 		Paragraph const & par = it->dit().innerParagraph();
 		makeTOCEntry(xs, par, op);
 	}
-	for (int i = lastdepth; i > 0; --i) 
+	for (int i = lastdepth; i > 0; --i)
 		xs << html::EndTag("div") << html::CR();
 }
 
 
-void InsetTOC::makeTOCNoDepth(XHTMLStream & xs, 
+void InsetTOC::makeTOCNoDepth(XHTMLStream & xs,
 		Toc const & toc, const OutputParams & op) const
 {
 	Toc::const_iterator it = toc.begin();
@@ -229,7 +229,7 @@ void InsetTOC::makeTOCNoDepth(XHTMLStream & xs,
 
 		Paragraph const & par = it->dit().innerParagraph();
 		makeTOCEntry(xs, par, op);
-		
+
 		xs << html::EndTag("div");
 	}
 }

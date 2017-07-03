@@ -29,10 +29,10 @@ namespace lyx {
 
 // the previous document class may have loaded some modules that the
 // new one excludes, and the new class may provide, etc, some that
-// conflict with ones that were already loaded. So we need to go 
+// conflict with ones that were already loaded. So we need to go
 // through the list and fix everything. I suppose there are various
-// ways this could be done, but the following seems to work at the 
-// moment. (Thanks to Philippe Charpentier for helping work out all 
+// ways this could be done, but the following seems to work at the
+// moment. (Thanks to Philippe Charpentier for helping work out all
 // the bugs---rgh.)
 bool LayoutModuleList::adaptToBaseClass(LayoutFile const * const lay,
 		std::list<string> const & removedModules)
@@ -53,14 +53,14 @@ bool LayoutModuleList::adaptToBaseClass(LayoutFile const * const lay,
 }
 
 
-bool LayoutModuleList::moduleCanBeAdded(string const & modName, 
+bool LayoutModuleList::moduleCanBeAdded(string const & modName,
 		LayoutFile const * const lay) const
 {
 	// Is the module already present?
 	const_iterator it = begin();
 	const_iterator const en = end();
 	for (; it != en; ++it)
-		if (*it == modName) 
+		if (*it == modName)
 			return false;
 
 	LyXModule const * const lm = theModuleList[modName];
@@ -88,7 +88,7 @@ bool LayoutModuleList::moduleCanBeAdded(string const & modName,
 	vector<string>::const_iterator ren = reqs.end();
 	bool foundone = false;
 	for (; rit != ren; ++rit) {
-		if (find(mit, men, *rit) != men || 
+		if (find(mit, men, *rit) != men ||
 		    find(provmodstart, provmodend, *rit) != provmodend) {
 			foundone = true;
 			break;
@@ -147,7 +147,7 @@ void LayoutModuleList::addDefaultModules(LayoutFile const * const lay,
 		// make sure the user hasn't removed it
 		if (find(removedModules.begin(), removedModules.end(), modName) !=
 		    removedModules.end()) {
-			LYXERR(Debug::TCLASS, "Default module `" << modName << 
+			LYXERR(Debug::TCLASS, "Default module `" << modName <<
 					"' not added because removed by user.");
 			continue;
 		}
@@ -155,7 +155,7 @@ void LayoutModuleList::addDefaultModules(LayoutFile const * const lay,
 		if (!moduleCanBeAdded(modName, lay)) {
 			// FIXME This could be because it's already present, so we should
 			// probably return something indicating that.
-			LYXERR(Debug::TCLASS, "Default module `" << modName << 
+			LYXERR(Debug::TCLASS, "Default module `" << modName <<
 					"' could not be added.");
 			continue;
 		}
@@ -202,7 +202,7 @@ bool LayoutModuleList::removeBadModules(LayoutFile const * const lay)
 		bool excluded = false;
 		for (; !excluded && pit != pen; ++pit) {
 			if (!LyXModule::areCompatible(modname, *pit)) {
-				LYXERR0("Module " << modname << 
+				LYXERR0("Module " << modname <<
 						" dropped because it conflicts with provided module `" << *pit << "'.");
 				consistent = false;
 				excluded = true;
@@ -219,7 +219,7 @@ bool LayoutModuleList::removeBadModules(LayoutFile const * const lay)
 // Perform a consistency check on the set of modules. We need to make
 // sure that none of the modules exclude each other and that requires
 // are satisfied.
-bool LayoutModuleList::checkModuleConsistency(LayoutFile const * const lay) 
+bool LayoutModuleList::checkModuleConsistency(LayoutFile const * const lay)
 {
 	bool consistent = true;
 	LayoutModuleList oldModules = *this;
@@ -236,7 +236,7 @@ bool LayoutModuleList::checkModuleConsistency(LayoutFile const * const lay)
 		for (; !excluded && lit != len; ++lit) {
 			if (!LyXModule::areCompatible(modname, *lit)) {
 				consistent = false;
-				LYXERR0("Module " << modname << 
+				LYXERR0("Module " << modname <<
 						" dropped because it is excluded by prior module " << *lit);
 				excluded = true;
 			}
@@ -249,11 +249,11 @@ bool LayoutModuleList::checkModuleConsistency(LayoutFile const * const lay)
 		// satisfies our requirements
 		LyXModule const * const oldmod = theModuleList[modname];
 		if (!oldmod) {
-			LYXERR0("Default module " << modname << 
+			LYXERR0("Default module " << modname <<
 					" added although it is unavailable and can't check requirements.");
 			continue;
 		}
-			
+
 		vector<string> const & reqs = oldmod->getRequiredModules();
 		if (!reqs.empty()) {
 			// we now set excluded to true, meaning that we haven't
@@ -263,7 +263,7 @@ bool LayoutModuleList::checkModuleConsistency(LayoutFile const * const lay)
 			vector<string>::const_iterator const ren = reqs.end();
 			for (; rit != ren; ++rit) {
 				string const reqmod = *rit;
-				if (find(provmods.begin(), provmods.end(), reqmod) != 
+				if (find(provmods.begin(), provmods.end(), reqmod) !=
 						provmods.end()) {
 					excluded = false;
 					break;

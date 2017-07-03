@@ -295,7 +295,7 @@ void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 	// Ok, we have a selection.
 	Font newfont = font;
 
-	if (toggleall) {	
+	if (toggleall) {
 		// Toggling behaves as follows: We check the first character of the
 		// selection. If it's (say) got EMPH on, then we set to off; if off,
 		// then to on. With families and the like, we set it to INHERIT, if
@@ -303,30 +303,30 @@ void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 		CursorSlice const & sl = cur.selBegin();
 		Text const & text = *sl.text();
 		Paragraph const & par = text.getPar(sl.pit());
-	
+
 		// get font at the position
 		Font oldfont = par.getFont(cur.bv().buffer().params(), sl.pos(),
 			text.outerFont(sl.pit()));
 		FontInfo const & oldfi = oldfont.fontInfo();
-	
+
 		FontInfo & newfi = newfont.fontInfo();
-	
+
 		FontFamily newfam = newfi.family();
 		if (newfam !=	INHERIT_FAMILY && newfam != IGNORE_FAMILY &&
 				newfam == oldfi.family())
 			newfi.setFamily(INHERIT_FAMILY);
-		
+
 		FontSeries newser = newfi.series();
 		if (newser == BOLD_SERIES && oldfi.series() == BOLD_SERIES)
 			newfi.setSeries(INHERIT_SERIES);
-	
+
 		FontShape newshp = newfi.shape();
 		if (newshp != INHERIT_SHAPE && newshp != IGNORE_SHAPE &&
 				newshp == oldfi.shape())
 			newfi.setShape(INHERIT_SHAPE);
 
 		ColorCode newcol = newfi.color();
-		if (newcol != Color_none && newcol != Color_inherit 
+		if (newcol != Color_none && newcol != Color_inherit
 		    && newcol != Color_ignore && newcol == oldfi.color())
 			newfi.setColor(Color_none);
 
@@ -349,7 +349,7 @@ void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 			newfi.setNumber(oldfi.number() == FONT_OFF ? FONT_ON : FONT_OFF);
 	}
 
-	setFont(cur.bv(), cur.selectionBegin().top(), 
+	setFont(cur.bv(), cur.selectionBegin().top(),
 		cur.selectionEnd().top(), newfont);
 }
 
@@ -379,7 +379,7 @@ void Text::setFont(BufferView const & bv, CursorSlice const & begin,
 		Font f = tm.displayFont(pit, pos);
 		f.update(font, language);
 		setCharFont(pit, pos, f, tm.font_);
-		// font change may change language... 
+		// font change may change language...
 		// spell checker has to know that
 		pars_[pit].requestSpellCheck(pos);
 	}
@@ -451,7 +451,7 @@ docstring Text::getStringToIndex(Cursor const & cur)
 		cur.message(_("Cannot index more than one paragraph!"));
 	else
 		return tmpcur.selectionAsString(false);
-	
+
 	return docstring();
 }
 
@@ -610,7 +610,7 @@ bool Text::checkAndActivateInsetVisual(Cursor & cur, bool movingForward, bool mo
 		return false;
 	if (cur.selection() && cur.realAnchor().find(inset) == -1)
 		return false;
-	inset->edit(cur, movingForward, 
+	inset->edit(cur, movingForward,
 		movingLeft ? Inset::ENTRY_DIRECTION_RIGHT : Inset::ENTRY_DIRECTION_LEFT);
 	cur.setCurrentFont();
 	cur.boundary(false);
@@ -645,11 +645,11 @@ bool Text::cursorBackward(Cursor & cur)
 				!cur.paragraph().isSeparator(cur.pos() - 1)) {
 			return setCursor(cur, cur.pit(), cur.pos(), true, true);
 		}
-		
+
 		// go left and try to enter inset
 		if (checkAndActivateInset(cur, false))
 			return false;
-		
+
 		// normal character left
 		return setCursor(cur, cur.pit(), cur.pos() - 1, true, false);
 	}
@@ -675,7 +675,7 @@ bool Text::cursorVisLeft(Cursor & cur, bool skip_inset)
 		cur = temp_cur;
 		return false;
 	}
-	return setCursor(cur, temp_cur.pit(), temp_cur.pos(), 
+	return setCursor(cur, temp_cur.pit(), temp_cur.pos(),
 		true, temp_cur.boundary());
 }
 
@@ -710,7 +710,7 @@ bool Text::cursorForward(Cursor & cur)
 		if (cur.boundary() && !tm.isRTLBoundary(cur.pit(), cur.pos()))
 			return setCursor(cur, cur.pit(), cur.pos(), true, false);
 
-		// next position is left of boundary, 
+		// next position is left of boundary,
 		// but go to next line for special cases like space, newline, linesep
 #if 0
 		// some effectless debug code to see the values in the debugger
@@ -740,12 +740,12 @@ bool Text::cursorForward(Cursor & cur)
 				return setCursor(cur, cur.pit(), cur.pos() + 1, true, true);
 			}
 		}
-		
+
 		// in front of RTL boundary? Stay on this side of the boundary because:
 		//   ab|cDDEEFFghi -> abc|DDEEFFghi
 		if (tm.isRTLBoundary(cur.pit(), cur.pos() + 1))
 			return setCursor(cur, cur.pit(), cur.pos() + 1, true, true);
-		
+
 		// move right
 		return setCursor(cur, cur.pit(), cur.pos() + 1, true, false);
 	}
@@ -839,12 +839,12 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		if (&old.inset() == &cur[depth].inset())
 			break;
 
-	// Whether a common inset is found and whether the cursor is still in 
+	// Whether a common inset is found and whether the cursor is still in
 	// the same paragraph (possibly nested).
 	bool const same_par = depth < cur.depth() && old.pit() == cur[depth].pit();
-	bool const same_par_pos = depth == cur.depth() - 1 && same_par 
+	bool const same_par_pos = depth == cur.depth() - 1 && same_par
 		&& old.pos() == cur[depth].pos();
-	
+
 	// If the chars around the old cursor were spaces, delete one of them.
 	if (!same_par_pos) {
 		// Only if the cursor has really moved.
@@ -891,7 +891,7 @@ bool Text::deleteEmptyParagraphMechanism(Cursor & cur,
 		if (soa && old.pit() < pit_type(plist.size()))
 			plist[old.pit()].params().startOfAppendix(true);
 
-		// see #warning (FIXME?) above 
+		// see #warning (FIXME?) above
 		if (cur.depth() >= old.depth()) {
 			CursorSlice & curslice = cur[old.depth() - 1];
 			if (&curslice.inset() == &old.inset()

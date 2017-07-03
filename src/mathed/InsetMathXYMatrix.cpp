@@ -160,9 +160,9 @@ void InsetMathXYMatrix::mathmlize(MathStream &) const
 }
 
 
-void InsetMathXYMatrix::htmlize(HtmlStream &) const 
+void InsetMathXYMatrix::htmlize(HtmlStream &) const
 {
-	throw MathExportException(); 
+	throw MathExportException();
 }
 
 

@@ -128,11 +128,11 @@ GuiCommandBuffer::GuiCommandBuffer(GuiView * view)
 	top->setMargin(0);
 	setFocusProxy(edit_);
 
-	LastCommandsSection::LastCommands last_commands 
+	LastCommandsSection::LastCommands last_commands
 		= theSession().lastCommands().getcommands();
-	LastCommandsSection::LastCommands::const_iterator it 
+	LastCommandsSection::LastCommands::const_iterator it
 		= last_commands.begin();
-	LastCommandsSection::LastCommands::const_iterator end 
+	LastCommandsSection::LastCommands::const_iterator end
 		= last_commands.end();
 
 	upPB->setEnabled(it != end);
@@ -252,7 +252,7 @@ void GuiCommandBuffer::down()
 			   && history_pos_ != history_.end() - 1);
 	upPB->setEnabled(history_pos_ != history_.begin());
 }
-	
+
 
 void GuiCommandBuffer::hideParent()
 {

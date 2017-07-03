@@ -163,7 +163,7 @@ bool InsetNewpage::getStatus(Cursor & cur, FuncRequest const & cmd,
 			InsetNewpageParams params;
 			string2params(to_utf8(cmd.argument()), params);
 			status.setOnOff(params_.kind == params.kind);
-		} 
+		}
 		status.setEnabled(true);
 		return true;
 	default:

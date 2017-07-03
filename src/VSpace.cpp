@@ -183,7 +183,7 @@ docstring const VSpace::asGUIName() const
 }
 
 
-string VSpace::asHTMLLength() const 
+string VSpace::asHTMLLength() const
 {
 	string result;
 	switch (kind_) {

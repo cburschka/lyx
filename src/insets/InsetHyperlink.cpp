@@ -150,7 +150,7 @@ void InsetHyperlink::latex(otexstream & os,
 				(pos = url.find(chars_url[k], i)) != string::npos;
 				i = pos + 2)
 				url.replace(pos, 1, from_ascii("\\") + chars_url[k]);
-		
+
 		// add "http://" when the type is web (type = empty)
 		// and no "://" or "run:" is given
 		docstring type = getParam("type");
@@ -174,7 +174,7 @@ void InsetHyperlink::latex(otexstream & os,
 				name.replace(pos, 1, sim);
 		}
 	}
-	
+
 	if (runparams.moving_arg)
 		os << "\\protect";
 
@@ -213,7 +213,7 @@ int InsetHyperlink::docbook(odocstream & os, OutputParams const &) const
 
 docstring InsetHyperlink::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
-	docstring const & target = 
+	docstring const & target =
 		html::htmlize(getParam("target"), XHTMLStream::ESCAPE_AND);
 	docstring const & name   = getParam("name");
 	xs << html::StartTag("a", to_utf8("href=\"" + target + "\""));

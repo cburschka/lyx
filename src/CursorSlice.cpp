@@ -65,7 +65,7 @@ pos_type CursorSlice::lastpos() const
 	LBUFERR(inset_);
 	InsetMath const * math = inset_->asInsetMath();
 	bool paramless_macro = math && math->asMacro() && !math->asMacro()->nargs();
-	return math ? (paramless_macro ? 0 : cell().size()) 
+	return math ? (paramless_macro ? 0 : cell().size())
 		    : (text()->empty() ? 0 : paragraph().size());
 }
 

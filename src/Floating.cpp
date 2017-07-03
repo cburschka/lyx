@@ -58,7 +58,7 @@ string const & Floating::htmlTag() const
 
 
 string Floating::defaultCSSClass() const
-{ 
+{
 	if (!defaultcssclass_.empty())
 		return defaultcssclass_;
 	string d;

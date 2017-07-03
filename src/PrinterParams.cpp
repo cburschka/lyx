@@ -20,7 +20,7 @@
 
 namespace lyx {
 
-PrinterParams::PrinterParams() 
+PrinterParams::PrinterParams()
 {
 	target = PRINTER;
 	all_pages = true;

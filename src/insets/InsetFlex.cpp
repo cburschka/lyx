@@ -51,7 +51,7 @@ InsetLayout const & InsetFlex::getLayout() const
 		return DocumentClass::plainInsetLayout();
 
 	DocumentClass const & dc = buffer().params().documentClass();
-	docstring const dname = from_utf8(name_); 
+	docstring const dname = from_utf8(name_);
 	if (dc.hasInsetLayout(dname))
 		return dc.insetLayout(dname);
 	return dc.insetLayout(from_utf8("Flex:" + name_));
@@ -97,7 +97,7 @@ bool InsetFlex::getStatus(Cursor & cur, FuncRequest const & cmd,
 	case LFUN_INSET_DISSOLVE:
 		if (!cmd.argument().empty()) {
 			InsetLayout const & il = getLayout();
-			InsetLayout::InsetLyXType const type = 
+			InsetLayout::InsetLyXType const type =
 				translateLyXType(to_utf8(cmd.argument()));
 			if (il.lyxtype() == type) {
 				FuncRequest temp_cmd(LFUN_INSET_DISSOLVE);
@@ -118,9 +118,9 @@ void InsetFlex::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_DISSOLVE:
 		if (!cmd.argument().empty()) {
 			InsetLayout const & il = getLayout();
-			InsetLayout::InsetLyXType const type = 
+			InsetLayout::InsetLyXType const type =
 				translateLyXType(to_utf8(cmd.argument()));
-			
+
 			if (il.lyxtype() == type) {
 				FuncRequest temp_cmd(LFUN_INSET_DISSOLVE);
 				InsetCollapsable::doDispatch(cur, temp_cmd);
@@ -151,7 +151,7 @@ void InsetFlex::updateBuffer(ParIterator const & it, UpdateType utype)
 			cnts.theCounter(count, it.paragraph().getParLanguage(bp)->code());
 	}
 	setLabel(custom_label);
-	
+
 	bool const save_counter = have_counter && utype == OutputUpdate;
 	if (save_counter) {
 		// we assume the counter is local to this inset

@@ -216,7 +216,7 @@ char const * LyXErr::stripName(char const * n)
 
 // It seems not possible to instantiate operator template out of class body
 template<class T>
-LyXErr & toStream(LyXErr & l, T t)	
+LyXErr & toStream(LyXErr & l, T t)
 {
 	if (l.enabled()){
 		l.stream() << t;

@@ -354,7 +354,7 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 	if (!runparams.pass_thru && bits_.number() == FONT_ON
 	    && prev.fontInfo().number() != FONT_ON
 	    && (language()->lang() == "hebrew"
-		|| language()->lang() == "farsi" 
+		|| language()->lang() == "farsi"
 		|| language()->lang() == "arabic_arabi")) {
 		os << "{\\beginL ";
 		count += 9;

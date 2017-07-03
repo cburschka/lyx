@@ -201,7 +201,7 @@ Buffer * BufferList::next(Buffer const * buf) const
 
 	if (bstore.empty())
 		return 0;
-	BufferStorage::const_iterator it = 
+	BufferStorage::const_iterator it =
 			find(bstore.begin(), bstore.end(), buf);
 	LASSERT(it != bstore.end(), return 0);
 	++it;
@@ -217,7 +217,7 @@ Buffer * BufferList::previous(Buffer const * buf) const
 
 	if (bstore.empty())
 		return 0;
-	BufferStorage::const_iterator it = 
+	BufferStorage::const_iterator it =
 			find(bstore.begin(), bstore.end(), buf);
 	LASSERT(it != bstore.end(), return 0);
 
@@ -284,7 +284,7 @@ bool BufferList::isOthersChild(Buffer * parent, Buffer * child)
 	LASSERT(parent, return false);
 	LASSERT(child, return false);
 	LASSERT(parent->isChild(child), return false);
-	
+
 	// Does child document have a different parent?
 	Buffer const * parent_ = child->parent();
 	if (parent_ && parent_ != parent)

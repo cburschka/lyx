@@ -523,12 +523,12 @@ string getSizeCSS(FontSize const & s)
 	}
 	return "";
 }
-	
+
 } // namespace anonymous
 
 
 // FIXME This does not yet handle color
-docstring FontInfo::asCSS() const 
+docstring FontInfo::asCSS() const
 {
 	string retval;
 	string tmp = getFamilyCSS(family_);
@@ -541,7 +541,7 @@ docstring FontInfo::asCSS() const
 	tmp = getSizeCSS(size_);
 	if (!tmp.empty())
 		appendSep(retval, makeCSSTag("font-size", tmp));
-	return from_ascii(retval);	
+	return from_ascii(retval);
 }
 
 

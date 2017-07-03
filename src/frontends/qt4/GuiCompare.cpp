@@ -78,7 +78,7 @@ GuiCompare::~GuiCompare()
 
 void GuiCompare::closeEvent(QCloseEvent *)
 {
-	slotCancel();	
+	slotCancel();
 }
 
 
@@ -154,7 +154,7 @@ QString GuiCompare::browse(QString const & in_name) const
 	QString const title = qt_("Select document");
 
 	QStringList const & filters = fileFilters(qt_("LyX Documents (*.lyx)"));
-	
+
 	QString filename;
 	if (lyxview().documentBufferView()) {
 		QString path = bufferFilePath();
@@ -166,7 +166,7 @@ QString GuiCompare::browse(QString const & in_name) const
 			qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 		filename = makeAbsPath(rel_filename, path);
 	}
-	return filename;	
+	return filename;
 }
 
 
@@ -207,7 +207,7 @@ void GuiCompare::finished(bool aborted)
 		delete compare_;
 		compare_ = 0;
 	}
-	
+
 	if (aborted) {
 		if (dest_buffer_) {
 			dest_buffer_->markClean();

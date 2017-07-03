@@ -200,7 +200,7 @@ void RenderPreview::startLoading(Buffer const & buffer, bool forexport) const
 
 
 void RenderPreview::addPreview(docstring const & latex_snippet,
-                               Buffer const & buffer, 
+                               Buffer const & buffer,
                                bool ignore_lyxrc)
 {
 	if (lyxrc.preview == LyXRC::PREVIEW_OFF && !ignore_lyxrc)
@@ -213,7 +213,7 @@ void RenderPreview::addPreview(docstring const & latex_snippet,
 
 
 void RenderPreview::addPreview(docstring const & latex_snippet,
-                               graphics::PreviewLoader & ploader, 
+                               graphics::PreviewLoader & ploader,
                                bool ignore_lyxrc)
 {
 	if (lyxrc.preview == LyXRC::PREVIEW_OFF && !ignore_lyxrc)

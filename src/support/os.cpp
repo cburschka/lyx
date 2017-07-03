@@ -30,7 +30,7 @@
 // e.g., the author hash is always 32-bit.
 template<bool Condition> struct static_assert_helper;
 template <> struct static_assert_helper<true> {};
-enum { 
+enum {
 	dummy = sizeof(static_assert_helper<sizeof(int) == 4>)
 };
 

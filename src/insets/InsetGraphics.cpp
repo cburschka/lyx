@@ -226,7 +226,7 @@ void InsetGraphics::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// if the inset is part of a graphics group, all the
 		// other members should be updated too.
 		if (!params_.groupId.empty())
-			graphics::unifyGraphicsGroups(buffer(), 
+			graphics::unifyGraphicsGroups(buffer(),
 						      to_utf8(cmd.argument()));
 		break;
 	}
@@ -667,12 +667,12 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 			// The LaTeX compiler will not be able to determine
 			// the file format from the extension, so we must
 			// change it.
-			FileName const new_file = 
+			FileName const new_file =
 				FileName(changeExtension(temp_file.absFileName(), ext));
 			if (temp_file.moveTo(new_file)) {
 				temp_file = new_file;
 				output_file = changeExtension(output_file, ext);
-				source_file = 
+				source_file =
 					FileName(changeExtension(source_file.absFileName(), ext));
 			} else {
 				LYXERR(Debug::GRAPHICS, "Could not rename file `"
@@ -935,10 +935,10 @@ string InsetGraphics::prepareHTMLFile(OutputParams const & runparams) const
 
 	// FIXME (Abdel 12/08/06): Is there a need to show these errors?
 	ErrorList el;
-	bool const success = 
+	bool const success =
 		theConverters().convert(&buffer(), temp_file, to_file, params().filename,
 			from, to, el, Converters::try_default | Converters::try_cache);
-	if (!success)	
+	if (!success)
 		return string();
 	runparams.exportdata->addExternalFile("xhtml", to_file, output_to_file);
 	return output_to_file;
@@ -950,15 +950,15 @@ docstring InsetGraphics::xhtml(XHTMLStream & xs, OutputParams const & op) const
 	string const output_file = op.dryrun ? string() : prepareHTMLFile(op);
 
 	if (output_file.empty() && !op.dryrun) {
-		LYXERR0("InsetGraphics::xhtml: Unable to prepare file `" 
+		LYXERR0("InsetGraphics::xhtml: Unable to prepare file `"
 		        << params().filename << "' for output. File missing?");
-		string const attr = "src='" + params().filename.absFileName() 
+		string const attr = "src='" + params().filename.absFileName()
 		                    + "' alt='image: " + output_file + "'";
 		xs << html::CompTag("img", attr);
 		return docstring();
 	}
 
-	// FIXME XHTML 
+	// FIXME XHTML
 	// We aren't doing anything with the crop and rotate parameters, and it would
 	// really be better to do width and height conversion, rather than to output
 	// these parameters here.
@@ -980,7 +980,7 @@ docstring InsetGraphics::xhtml(XHTMLStream & xs, OutputParams const & op) const
 	if (!imgstyle.empty())
 		imgstyle = "style='" + imgstyle + "' ";
 
-	string const attr = imgstyle + "src='" + output_file + "' alt='image: " 
+	string const attr = imgstyle + "src='" + output_file + "' alt='image: "
 	                    + output_file + "'";
 	xs << html::CompTag("img", attr);
 	return docstring();

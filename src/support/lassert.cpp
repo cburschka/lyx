@@ -59,8 +59,8 @@ docstring formatHelper(docstring const & msg,
 {
 	docstring const d = _("Assertion %1$s violated in\nfile: %2$s, line: %3$s");
 	LYXERR0("ASSERTION " << expr << " VIOLATED IN " << file << ":" << line);
-	
-	return bformat(d, from_ascii(expr), from_ascii(file), 
+
+	return bformat(d, from_ascii(expr), from_ascii(file),
 		convert<docstring>(line)) + '\n' + msg;
 }
 
@@ -70,7 +70,7 @@ void doWarnIf(char const * expr, char const * file, long line)
 	docstring const d = _("It should be safe to continue, but you\nmay wish to save your work and restart LyX.");
 	// comment this out if not needed
 	doAssertWithCallstack(false);
-	throw ExceptionMessage(WarningException, _("Warning!"), 
+	throw ExceptionMessage(WarningException, _("Warning!"),
 		formatHelper(d, expr, file, line));
 }
 
@@ -101,13 +101,13 @@ docstring printCallStack()
 	return docstring();
 #else
 	const int depth = 200;
-	
+
 	// get void*'s for all entries on the stack
 	void* array[depth];
 	size_t size = backtrace(array, depth);
-	
+
 	char** messages = backtrace_symbols(array, size);
-	
+
 	docstring bt;
 	for (size_t i = 1; i < size && messages != NULL; i++) {
 		const std::string orig(messages[i]);

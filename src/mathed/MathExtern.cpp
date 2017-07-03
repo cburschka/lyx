@@ -115,7 +115,7 @@ bool extractScript(MathData & ar,
 // try to extract an "argument" to some function.
 // returns position behind the argument
 MathData::iterator extractArgument(MathData & ar,
-	MathData::iterator pos, MathData::iterator last, 
+	MathData::iterator pos, MathData::iterator last,
 	ExternalMath kind, bool function = false)
 {
 	// nothing to get here
@@ -211,7 +211,7 @@ void extractMatrices(MathData & ar)
 			continue;
 		if (!arr.front()->asGridInset())
 			continue;
-		ar[i] = MathAtom(new InsetMathMatrix(*(arr.front()->asGridInset()), 
+		ar[i] = MathAtom(new InsetMathMatrix(*(arr.front()->asGridInset()),
 		                 inset->left_, inset->right_));
 	}
 
@@ -602,7 +602,7 @@ void extractFunctions(MathData & ar, ExternalMath kind)
 		auto p = make_unique<InsetMathExFunc>(buf, name);
 
 		// jt points to the "argument". Get hold of this.
-		MathData::iterator st = 
+		MathData::iterator st =
 				extractArgument(p->cell(0), jt, ar.end(), kind, true);
 
 		// replace the function name by a real function inset

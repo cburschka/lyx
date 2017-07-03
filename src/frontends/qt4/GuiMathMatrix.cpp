@@ -131,7 +131,7 @@ void GuiMathMatrix::slotOK()
 	// a matrix without a decoration is an array,
 	// otherwise it is an AMS matrix
 	// decorated matrices cannot have a vertical alignment
-	
+
 	char const c = v_align_c[valignCO->currentIndex()];
 	QString const sh = halignED->text();
 	string const str = fromqstr(

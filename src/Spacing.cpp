@@ -90,7 +90,7 @@ void Spacing::writeFile(ostream & os, bool para) const
 
 namespace {
 
-string envName(Spacing::Space space, bool useSetSpace) 
+string envName(Spacing::Space space, bool useSetSpace)
 {
 	static char const * const env_names[]
 		= { "SingleSpace", "OnehalfSpace", "DoubleSpace", "Spacing", ""};
@@ -104,9 +104,9 @@ string envName(Spacing::Space space, bool useSetSpace)
 string const Spacing::writeEnvirBegin(bool useSetSpace) const
 {
 	string const name = envName(space, useSetSpace);
-	if (space == Other) 
+	if (space == Other)
 		return "\\begin{" + name + "}{" + getValueAsString() + '}';
-	else 
+	else
 		return name.empty() ? string() : "\\begin{" + name + '}';
 }
 
@@ -128,11 +128,11 @@ string const Spacing::writePreamble(bool useSetSpace) const
 		//return "\\singlespacing\n";
 		break;
 	case Onehalf:
-		preamble = useSetSpace ? "\\OnehalfSpacing\n" 
+		preamble = useSetSpace ? "\\OnehalfSpacing\n"
 			: "\\onehalfspacing\n";
 		break;
 	case Double:
-		preamble = useSetSpace ? "\\DoubleSpacing\n" 
+		preamble = useSetSpace ? "\\DoubleSpacing\n"
 			: "\\doublespacing\n";
 		break;
 	case Other:

@@ -842,7 +842,7 @@ void InsetMathHull::preparePreview(DocIterator const & pos,
 		endfont += '}';
 	}
 	if (lsize != "normalsize" && !prefixIs(lsize, "error"))
-		setfont += from_ascii("\\" + lsize + '\n'); 
+		setfont += from_ascii("\\" + lsize + '\n');
 
 	docstring setcnt;
 	if (forexport && haveNumbers()) {

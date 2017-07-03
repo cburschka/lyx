@@ -785,7 +785,7 @@ FormatList const Converters::intToFormat(vector<int> const & input)
 }
 
 
-FormatList const Converters::getReachableTo(string const & target, 
+FormatList const Converters::getReachableTo(string const & target,
 		bool const clear_visited)
 {
 	vector<int> const & reachablesto =
@@ -795,8 +795,8 @@ FormatList const Converters::getReachableTo(string const & target,
 }
 
 
-FormatList const Converters::getReachable(string const & from, 
-		bool const only_viewable, bool const clear_visited, 
+FormatList const Converters::getReachable(string const & from,
+		bool const only_viewable, bool const clear_visited,
 		set<string> const & excludes)
 {
 	set<int> excluded_numbers;

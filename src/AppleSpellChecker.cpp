@@ -31,13 +31,13 @@ struct AppleSpellChecker::Private
 	SpellChecker::Result toResult(SpellCheckResult status);
 	string toString(SpellCheckResult status);
 	int numDictionaries() const;
-	
+
 	/// the speller
 	AppleSpeller speller;
-	
+
 	/// language map
 	map<string, string> languageMap;
-	
+
 };
 
 
@@ -137,7 +137,7 @@ void AppleSpellChecker::suggest(WordLangTuple const & wl,
 {
 	suggestions.clear();
 	string const word_str = to_utf8(wl.word());
-	size_t num = AppleSpeller_makeSuggestion(d->speller, 
+	size_t num = AppleSpeller_makeSuggestion(d->speller,
 					word_str.c_str(), wl.lang()->code().c_str());
 	for (size_t i = 0; i < num; i++) {
 		char const * next = AppleSpeller_getSuggestion(d->speller, i);
@@ -181,7 +181,7 @@ int AppleSpellChecker::numDictionaries() const
 	return result;
 }
 
-	
+
 int AppleSpellChecker::numMisspelledWords() const
 {
 	return AppleSpeller_numMisspelledWords(d->speller);

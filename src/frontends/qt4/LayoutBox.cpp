@@ -53,7 +53,7 @@ using namespace lyx::support;
 namespace lyx {
 namespace frontend {
 
-	
+
 class LayoutItemDelegate : public QItemDelegate {
 public:
 	///
@@ -69,11 +69,11 @@ public:
 	///
 	QSize sizeHint(QStyleOptionViewItem const & opt,
 		QModelIndex const & index) const;
-	
+
 private:
 	///
 	void drawCategoryHeader(QPainter * painter, QStyleOptionViewItem const & opt,
-		QString const & category) const;	
+		QString const & category) const;
 	///
 	QString underlineFilter(QString const & s) const;
 	///
@@ -87,7 +87,7 @@ public:
 	GuiLayoutFilterModel(QObject * parent = 0)
 		: QSortFilterProxyModel(parent)
 	{}
-	
+
 	///
 	void triggerLayoutChange()
 	{
@@ -136,7 +136,7 @@ public:
 	DocumentClassConstPtr text_class_;
 	///
 	Inset const * inset_;
-	
+
 	/// the layout model: 1st column translated, 2nd column raw layout name
 	QStandardItemModel * model_;
 	/// the proxy model filtering \c model_
@@ -194,7 +194,7 @@ void LayoutItemDelegate::paint(QPainter * painter, QStyleOptionViewItem const & 
 			opt.state = state;
 
 			// draw category header
-			drawCategoryHeader(painter, opt, 
+			drawCategoryHeader(painter, opt,
 				category(*index.model(), index.row()));
 
 			// move rect down below header
@@ -240,7 +240,7 @@ QSize LayoutItemDelegate::sizeHint(QStyleOptionViewItem const & opt,
 								   QModelIndex const & index) const
 {
 	QSortFilterProxyModel const * model =
-		static_cast<QSortFilterProxyModel const *>(index.model());	
+		static_cast<QSortFilterProxyModel const *>(index.model());
 	QSize size = QItemDelegate::sizeHint(opt, index);
 
 	/// QComboBox uses the first row height to estimate the
@@ -258,7 +258,7 @@ QSize LayoutItemDelegate::sizeHint(QStyleOptionViewItem const & opt,
 		unsigned n = layout_->model()->rowCount();
 
 		// so the needed average height (rounded upwards) is:
-		size.setHeight((headerHeight(opt) * cats + itemHeight * n + n - 1) / n); 
+		size.setHeight((headerHeight(opt) * cats + itemHeight * n + n - 1) / n);
 		return size;
 	}
 
@@ -370,14 +370,14 @@ void LayoutBox::Private::setFilter(QString const & s)
 	filter_ = s;
 	filterModel_->setFilterRegExp(charFilterRegExp(filter_));
 	countCategories();
-	
+
 	// restore old selection
 	if (lastSel_ != -1) {
 		QModelIndex i = filterModel_->mapFromSource(model_->index(lastSel_, 0));
 		if (i.isValid())
 			p->setCurrentIndex(i.row());
 	}
-	
+
 	// Workaround to resize to content size
 	// FIXME: There must be a better way. The QComboBox::AdjustToContents)
 	//        does not help.
@@ -394,7 +394,7 @@ void LayoutBox::Private::setFilter(QString const & s)
 
 		// The item delegate hack is off again. So trigger a relayout of the popup.
 		filterModel_->triggerLayoutChange();
-		
+
 		if (!s.isEmpty())
 			owner_.message(bformat(_("Filtering layouts with \"%1$s\". "
 						 "Press ESC to remove filter."),
@@ -402,7 +402,7 @@ void LayoutBox::Private::setFilter(QString const & s)
 		else
 			owner_.message(_("Enter characters to filter the layout list."));
 	}
-	
+
 	p->view()->setUpdatesEnabled(enabled);
 }
 
@@ -420,7 +420,7 @@ LayoutBox::LayoutBox(GuiView & owner)
 	// for the filtering we have to intercept characters
 	view()->installEventFilter(this);
 	view()->setItemDelegateForColumn(0, d->layoutItemDelegate_);
-	
+
 	QObject::connect(this, SIGNAL(activated(int)),
 		this, SLOT(selected(int)));
 
@@ -441,7 +441,7 @@ void LayoutBox::Private::countCategories()
 		return;
 
 	// skip the "Standard" category
-	QString prevCat = model_->index(0, 2).data().toString(); 
+	QString prevCat = model_->index(0, 2).data().toString();
 
 	// count categories
 	for (int i = 0; i < n; ++i) {
@@ -468,10 +468,10 @@ void LayoutBox::showPopup()
 	d->inShowPopup_ = true;
 	QComboBox::showPopup();
 	d->inShowPopup_ = false;
-	
+
 	// The item delegate hack is off again. So trigger a relayout of the popup.
 	d->filterModel_->triggerLayoutChange();
-	
+
 	view()->setUpdatesEnabled(enabled);
 }
 
@@ -485,7 +485,7 @@ bool LayoutBox::eventFilter(QObject * o, QEvent * e)
 	bool modified = (ke->modifiers() == Qt::ControlModifier)
 		|| (ke->modifiers() == Qt::AltModifier)
 		|| (ke->modifiers() == Qt::MetaModifier);
-	
+
 	switch (ke->key()) {
 	case Qt::Key_Escape:
 		if (!modified && !d->filter_.isEmpty()) {
@@ -524,7 +524,7 @@ bool LayoutBox::eventFilter(QObject * o, QEvent * e)
 	return QComboBox::eventFilter(o, e);
 }
 
-	
+
 void LayoutBox::setIconSize(QSize size)
 {
 #ifdef Q_OS_MAC
@@ -605,7 +605,7 @@ void LayoutBox::addItemSort(docstring const & item, docstring const & category,
 	// skip the Standard layout
 	if (i == 0)
 		++i;
-	
+
 	// the simple unsorted case
 	if (!sorted) {
 		if (sortedByCat) {
@@ -622,7 +622,7 @@ void LayoutBox::addItemSort(docstring const & item, docstring const & category,
 	if (i < end) {
 		// find alphabetic position
 		while (i != end
-		       && d->model_->item(i, 0)->text().localeAwareCompare(titem) < 0 
+		       && d->model_->item(i, 0)->text().localeAwareCompare(titem) < 0
 		       && (!sortedByCat || d->model_->item(i, 2)->text() == qcat))
 			++i;
 	}
@@ -672,7 +672,7 @@ void LayoutBox::updateContents(bool reset)
 		// obsoleted layouts are skipped as well
 		if (!lit->obsoleted_by().empty())
 			continue;
-		addItemSort(name, lit->category(), lyxrc.sort_layouts, 
+		addItemSort(name, lit->category(), lyxrc.sort_layouts,
 				lyxrc.group_layouts, lit->isUnknown());
 	}
 

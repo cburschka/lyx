@@ -167,7 +167,7 @@ trivial_string<Char> trivial_string<Char>::substr(size_t pos, size_t n) const
 	if (pos > length())
 		throw out_of_range("trivial_string::substr");
 	if (n == _stdstring::npos)
-		n = length() - pos; 
+		n = length() - pos;
 	size_t const l = min(pos + n, length());
 	return trivial_string(c_str() + pos, l - pos);
 }
@@ -227,7 +227,7 @@ template bool operator==(trivial_string<char_type> const &,
 template <typename Char>
 bool operator==(trivial_string<Char> const & lhs, trivial_string<Char> const & rhs)
 {
-	return lhs.compare(rhs) == 0; 
+	return lhs.compare(rhs) == 0;
 }
 
 
@@ -236,7 +236,7 @@ template bool operator==(trivial_string<char_type> const &, char_type const *);
 template <typename Char>
 bool operator==(trivial_string<Char> const & lhs, Char const * rhs)
 {
-	return lhs.compare(trivial_string<Char>(rhs)) == 0; 
+	return lhs.compare(trivial_string<Char>(rhs)) == 0;
 }
 
 
@@ -245,7 +245,7 @@ template bool operator==(char_type const *, trivial_string<char_type> const &);
 template <typename Char>
 bool operator==(Char const * lhs, trivial_string<Char> const & rhs)
 {
-	return rhs.compare(trivial_string<Char>(lhs)) == 0; 
+	return rhs.compare(trivial_string<Char>(lhs)) == 0;
 }
 
 

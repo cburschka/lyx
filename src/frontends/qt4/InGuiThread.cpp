@@ -36,7 +36,7 @@ void IntoGuiThreadMover::callInGuiThread()
 		synchronousFunctionCall();
 	} else {
 		moveToThread(QApplication::instance()->thread());
-		connect(this, SIGNAL(triggerFunctionCall()), 
+		connect(this, SIGNAL(triggerFunctionCall()),
 		        this, SLOT(doFunctionCall()), Qt::QueuedConnection);
 		QMutexLocker lock(&sync_mutex_);
 		Q_EMIT triggerFunctionCall();

@@ -29,7 +29,7 @@
 namespace lyx {
 namespace frontend {
 
-TearOff::TearOff(QWidget * parent) 
+TearOff::TearOff(QWidget * parent)
 	: QWidget(parent)
 {
 	highlighted_ = false;
@@ -189,7 +189,7 @@ void IconPalette::showEvent(QShowEvent * /*event*/)
 
 	QRect r = rect();
 	r.moveTo(gpos.x() + hoffset, gpos.y() + voffset);
-	setGeometry(r);	
+	setGeometry(r);
 }
 
 

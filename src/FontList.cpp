@@ -69,7 +69,7 @@ void FontList::erase(pos_type pos)
 	iterator it = fontIterator(pos);
 	iterator beg = list_.begin();
 	if (it != list_.end() && it->pos() == pos
-		&& (pos == 0 
+		&& (pos == 0
 			|| (it != list_.begin() && prev(it, 1)->pos() == pos - 1))) {
 
 		// If it is a multi-character font
@@ -135,7 +135,7 @@ void FontList::set(pos_type pos, Font const & font)
 	size_t const i = distance(list_.begin(), it);
 
 	// Is position pos a beginning of a font block?
-	bool const begin = pos == 0 || !found 
+	bool const begin = pos == 0 || !found
 		|| (i > 0 && list_[i - 1].pos() == pos - 1);
 
 	// Is position pos at the end of a font block?

@@ -184,7 +184,7 @@ ostream & operator<<(ostream & os, AuthorList const & a)
 
 	for (; a_it != a_end; ++a_it) {
 		if (a_it->used() && a_it->valid())
-			os << "\\author " << *a_it << "\n";	
+			os << "\\author " << *a_it << "\n";
 	}
 	return os;
 }

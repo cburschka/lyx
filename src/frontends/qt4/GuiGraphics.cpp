@@ -113,7 +113,7 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	: GuiDialog(lv, "graphics", qt_("Graphics")), bbChanged(false)
 {
 	setupUi(this);
-	
+
 	//main buttons
 	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
@@ -155,7 +155,7 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	filename->setValidator(new PathValidator(true, filename));
 	setFocusProxy(filename);
 
-	QDoubleValidator * scaleValidator = 
+	QDoubleValidator * scaleValidator =
 		new DoubleAutoValidator(Scale, qt_(autostr));
 	scaleValidator->setBottom(0);
 	scaleValidator->setDecimals(256); //I guess that will do
@@ -255,12 +255,12 @@ void GuiGraphics::changeGroup(int /* index */)
 {
 	QString const new_group = groupCO->itemData(
 		groupCO->currentIndex()).toString();
-	
+
 	// check if the old group consisted only of this member
 	if (current_group_ != fromqstr(new_group)
 	    && graphics::countGroupMembers(buffer(), current_group_) == 1) {
 		if (!new_group.isEmpty()) {
-			if (Alert::prompt(_("Dissolve previous group?"), 
+			if (Alert::prompt(_("Dissolve previous group?"),
 				bformat(_("If you assign this graphic to group '%2$s',\n"
 					  "the previously assigned group '%1$s' will be dissolved,\n"
 					  "because this graphic was its only member.\n"
@@ -276,7 +276,7 @@ void GuiGraphics::changeGroup(int /* index */)
 				return;
 			}
 		} else {
-			if (Alert::prompt(_("Dissolve previous group?"), 
+			if (Alert::prompt(_("Dissolve previous group?"),
 			bformat(_("If you sign off this graphic from group '%1$s',\n"
 				  "the group will be dissolved,\n"
 				  "because this graphic was its only member.\n"
@@ -292,7 +292,7 @@ void GuiGraphics::changeGroup(int /* index */)
 			return;
 			}
 		}
-	} 
+	}
 
 	if (new_group.isEmpty()) {
 		changed();
@@ -305,7 +305,7 @@ void GuiGraphics::changeGroup(int /* index */)
 		changed();
 		return;
 	}
-	
+
 	// filename might have been changed
 	QString current_filename = filename->text();
 
@@ -314,7 +314,7 @@ void GuiGraphics::changeGroup(int /* index */)
 	InsetGraphics::string2params(grp, buffer(), params_);
 	paramsToDialog(params_);
 	groupCO->blockSignals(false);
-	
+
 	// reset filename
 	filename->setText(current_filename);
 
@@ -330,7 +330,7 @@ void GuiGraphics::on_newGroupPB_clicked()
 	if (newgroup.empty())
 		return;
 	if (groupCO->findData(toqstr(newgroup), Qt::MatchExactly) != -1) {
-		Alert::warning(_("Group already defined!"), 
+		Alert::warning(_("Group already defined!"),
 			bformat(_("A graphics group with the name '%1$s' already exists."),
 				newgroup));
 		return;
@@ -504,7 +504,7 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 	lbYunit->clear();
 	rtXunit->clear();
 	rtYunit->clear();
-	
+
 	for (size_t i = 0; i < bb_size; i++) {
 		lbXunit->addItem(qt_(bb_units_gui[i]),
 			toqstr(bb_units[i]));
@@ -515,7 +515,7 @@ void GuiGraphics::paramsToDialog(InsetGraphicsParams const & igp)
 		rtYunit->addItem(qt_(bb_units_gui[i]),
 			toqstr(bb_units[i]));
 	}
-	
+
 	// set the right default unit
 	Length::UNIT const defaultUnit = Length::defaultUnit();
 
@@ -788,7 +788,7 @@ QString GuiGraphics::browse(QString const & in_name) const
 		clipdir = addName(package().system_support().absFileName(), "clipart");
 
 	return browseRelToParent(in_name, bufferFilePath(),
-		title, fileFilters(QString()), false, 
+		title, fileFilters(QString()), false,
 		qt_("Clipart|#C#c"), toqstr(clipdir),
 		qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
 }

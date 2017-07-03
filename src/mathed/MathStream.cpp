@@ -295,7 +295,7 @@ void MathStream::defer(string const & s)
 
 
 docstring MathStream::deferred() const
-{ 
+{
 	return deferred_.str();
 }
 
@@ -385,7 +385,7 @@ void HtmlStream::defer(string const & s)
 
 
 docstring HtmlStream::deferred() const
-{ 
+{
 	return deferred_.str();
 }
 

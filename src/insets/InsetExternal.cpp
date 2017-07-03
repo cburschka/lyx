@@ -102,7 +102,7 @@ TempName & TempName::operator=(TempName const & other)
 			tempname_.removeFile();
 		support::TempFile f("lyxextXXXXXX.tmp");
 		f.setAutoRemove(false);
-		tempname_ = f.name(); 
+		tempname_ = f.name();
 	}
 	return *this;
 }
@@ -170,7 +170,7 @@ void InsetExternalParams::settemplate(string const & name)
 	clearIfNotFound(resizedata,   external::Resize, ids);
 	clearIfNotFound(rotationdata, external::Rotate, ids);
 
-	// 
+	//
 	preview_mode = et->preview_mode;
 }
 

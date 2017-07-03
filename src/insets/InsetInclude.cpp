@@ -265,24 +265,24 @@ void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 				InsetListingsParams new_params(to_utf8(p["lstparams"]));
 				docstring const new_label =
 					from_utf8(new_params.getParamValue("label"));
-				
+
 				if (new_label.empty()) {
 					delete label_;
 					label_ = 0;
 				} else {
 					docstring old_label;
-					if (label_) 
+					if (label_)
 						old_label = label_->getParam("name");
 					else {
 						label_ = createLabel(buffer_, new_label);
 						label_->setBuffer(buffer());
-					}					
+					}
 
 					if (new_label != old_label) {
 						label_->updateLabelAndRefs(new_label, &cur);
 						// the label might have been adapted (duplicate)
 						if (new_label != label_->getParam("name")) {
-							new_params.addParam("label", "{" + 
+							new_params.addParam("label", "{" +
 								to_utf8(label_->getParam("name")) + "}", true);
 							p["lstparams"] = from_utf8(new_params.params());
 						}
@@ -412,7 +412,7 @@ docstring InsetInclude::screenLabel() const
 
 Buffer * InsetInclude::getChildBuffer() const
 {
-	Buffer * childBuffer = loadIfNeeded(); 
+	Buffer * childBuffer = loadIfNeeded();
 
 	// FIXME RECURSIVE INCLUDE
 	// This isn't sufficient, as the inclusion could be downstream.
@@ -427,7 +427,7 @@ Buffer * InsetInclude::loadIfNeeded() const
 	// try to load the cloned child document again.
 	if (buffer().isClone())
 		return child_buffer_;
-	
+
 	// Don't try to load it again if we failed before.
 	if (failedtoload_ || isVerbatim(params()) || isListings(params()))
 		return 0;
@@ -898,20 +898,20 @@ docstring InsetInclude::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 		return docstring();
 
 	// are we generating only some paragraphs, or all of them?
-	bool const all_pars = !rp.dryrun || 
-			(rp.par_begin == 0 && 
+	bool const all_pars = !rp.dryrun ||
+			(rp.par_begin == 0 &&
 			 rp.par_end == (int)buffer().text().paragraphs().size());
-	
+
 	OutputParams op = rp;
 	if (all_pars) {
 		op.par_begin = 0;
 		op.par_end = 0;
 		ibuf->writeLyXHTMLSource(xs.os(), op, Buffer::IncludedFile);
 	} else
-		xs << XHTMLStream::ESCAPE_NONE 
-		   << "<!-- Included file: " 
-		   << from_utf8(included_file.absFileName()) 
-		   << XHTMLStream::ESCAPE_NONE 
+		xs << XHTMLStream::ESCAPE_NONE
+		   << "<!-- Included file: "
+		   << from_utf8(included_file.absFileName())
+		   << XHTMLStream::ESCAPE_NONE
 			 << " -->";
 	return docstring();
 }
@@ -1281,7 +1281,7 @@ void InsetInclude::updateCommand()
 	InsetListingsParams par(to_utf8(params()["lstparams"]));
 	par.addParam("label", "{" + to_utf8(new_label) + "}", true);
 	p["lstparams"] = from_utf8(par.params());
-	setParams(p);	
+	setParams(p);
 }
 
 

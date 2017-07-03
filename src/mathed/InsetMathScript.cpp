@@ -632,8 +632,8 @@ void InsetMathScript::mathmlize(MathStream & os) const
 		os << "<mrow />";
 
 	if (u && d)
-		os << MTag("mrow") << down() << ETag("mrow") 
-		   << MTag("mrow") << up() << ETag("mrow") 
+		os << MTag("mrow") << down() << ETag("mrow")
+		   << MTag("mrow") << up() << ETag("mrow")
 		   << ETag(l ? "munderover" : "msubsup");
 	else if (u)
 		os << MTag("mrow") << up() << ETag("mrow") << ETag(l ? "mover" : "msup");
@@ -781,7 +781,7 @@ bool InsetMathScript::getStatus(Cursor & cur, FuncRequest const & cmd,
 				flag.setOnOff(limits_ == -1);
 			else
 				flag.setOnOff(limits_ == 0);
-		} 
+		}
 		flag.setEnabled(true);
 		return true;
 	}

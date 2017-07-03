@@ -237,9 +237,9 @@ bool GuiLog::initialiseParams(string const & data)
 
 	logTypeCO->setEnabled(logtype == "latex");
 	logTypeCO->clear();
-	
+
 	FileName log(logfile);
-	
+
 	if (logtype == "latex") {
 		type_ = LatexLog;
 		logTypeCO->addItem(qt_("LaTeX"), toqstr(logtype));

@@ -105,14 +105,14 @@ void LaTeXHighlighter::highlightBlock(QString const & text)
 	// %comment
 	// Treat a line as a comment starting at a percent sign
 	// * that is the first character in a line
-	// * that is preceded by 
+	// * that is preceded by
 	// ** an even number of backslashes
 	// ** any character other than a backslash
-	QRegExp exprComment("(?:^|[^\\\\])(?:\\\\\\\\)*(%).*$"); 
+	QRegExp exprComment("(?:^|[^\\\\])(?:\\\\\\\\)*(%).*$");
 	exprComment.indexIn(text);
 	index = exprComment.pos(1);
 	while (index >= 0) {
-		int const length = exprComment.matchedLength() 
+		int const length = exprComment.matchedLength()
 				 - (index - exprComment.pos(0));
 		setFormat(index, length, commentFormat);
 		exprComment.indexIn(text, index + length);

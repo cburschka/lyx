@@ -56,7 +56,7 @@ void InsetNewlineParams::read(Lexer & lex)
 {
 	string token;
 	lex.setContext("InsetNewlineParams::read");
-	lex >> token;	
+	lex >> token;
 	if (token == "newline")
 		kind = InsetNewlineParams::NEWLINE;
 	else if (token == "linebreak")
@@ -245,7 +245,7 @@ void InsetNewline::draw(PainterInfo & pi, int x, int y) const
 		yp[0] = int(y - 0.875 * asc * 0.75);
 		yp[1] = int(y - 0.500 * asc * 0.75);
 		yp[2] = int(y - 0.125 * asc * 0.75);
-	
+
 		if (pi.ltr_pos) {
 			xp[0] = int(x + 2 * wid * 0.813);
 			xp[1] = int(x + 2 * wid);

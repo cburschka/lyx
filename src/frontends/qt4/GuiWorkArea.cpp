@@ -212,7 +212,7 @@ public:
 	int cursorWidth() const { return cursor_width_; }
 	void recomputeWidth() {
 		cursor_width_ = lyxrc.cursor_width
-			? lyxrc.cursor_width 
+			? lyxrc.cursor_width
 			: 1 + int((lyxrc.currentZoom + 50) / 200.0);
 	}
 
@@ -233,7 +233,7 @@ private:
 	QRect rect_;
 	/// x position (were the vertical line is drawn)
 	int x_;
-	
+
 	int cursor_width_;
 };
 
@@ -257,7 +257,7 @@ GuiWorkArea::Private::Private(GuiWorkArea * parent)
 
 
 GuiWorkArea::GuiWorkArea(QWidget * /* w */)
-: d(new Private(this)) 
+: d(new Private(this))
 {
 }
 
@@ -370,7 +370,7 @@ void GuiWorkArea::Private::setCursorShape(Qt::CursorShape shape)
 
 void GuiWorkArea::Private::updateCursorShape()
 {
-	setCursorShape(buffer_view_->clickableInset() 
+	setCursorShape(buffer_view_->clickableInset()
 		? Qt::PointingHandCursor : Qt::IBeamCursor);
 }
 
@@ -775,7 +775,7 @@ void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 		}
 		name = d->buffer_view_->contextMenu(pos.x(), pos.y());
 	}
-	
+
 	if (name.empty()) {
 		QAbstractScrollArea::contextMenuEvent(e);
 		return;
@@ -891,7 +891,7 @@ void GuiWorkArea::mouseMoveEvent(QMouseEvent * e)
 			// in the first place.
 			return;
 		}
-		
+
 		d->synthetic_mouse_event_.restart_timeout = true;
 		d->synthetic_mouse_event_.timeout.start();
 		// Fall through to handle this event...
@@ -976,7 +976,7 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 		if (up || down) {
 			int dist = up ? -e_y : e_y - wh;
 			time = max(min(200, 250000 / (dist * dist)), 1) ;
-			
+
 			if (time < 40) {
 				step = 80000 / (time * time);
 				time = 40;
@@ -1626,7 +1626,7 @@ void TabWorkArea::paintEvent(QPaintEvent * event)
 	if (tabBar()->isVisible()) {
 		QTabWidget::paintEvent(event);
 	} else {
-		// Prevent the selected tab to influence the 
+		// Prevent the selected tab to influence the
 		// painting of the frame of the tab widget.
 		// This is needed for gtk style in Qt.
 		QStylePainter p(this);

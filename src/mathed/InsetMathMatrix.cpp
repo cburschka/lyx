@@ -20,7 +20,7 @@ using namespace std;
 
 namespace lyx {
 
-InsetMathMatrix::InsetMathMatrix(InsetMathGrid const & p, 
+InsetMathMatrix::InsetMathMatrix(InsetMathGrid const & p,
 			docstring const & left, docstring const & right)
 	: InsetMathGrid(p), left_(left), right_(right)
 {}
@@ -95,7 +95,7 @@ void InsetMathMatrix::mathematica(MathematicaStream & os) const
 void InsetMathMatrix::mathmlize(MathStream & os) const
 {
 	os << "<mo form='prefix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>"
-	   << convertDelimToXMLEscape(left_) 
+	   << convertDelimToXMLEscape(left_)
 	   << "</mo>"
 	   << MTag("mtable");
 	for (row_type row = 0; row < nrows(); ++row) {
@@ -114,7 +114,7 @@ void InsetMathMatrix::mathmlize(MathStream & os) const
 	}
 	os << ETag("mtable");
 	os << "<mo form='postfix' fence='true' stretchy='true' symmetric='true' lspace='thinmathspace'>"
-	   << convertDelimToXMLEscape(right_) 
+	   << convertDelimToXMLEscape(right_)
 	   << "</mo>";
 }
 
@@ -125,11 +125,11 @@ void InsetMathMatrix::htmlize(HtmlStream & os) const
 
 	// we do not print the delimiters but instead try to hack them
 	string const rows = convert<string>(nrows());
-	string const lattrib = 
+	string const lattrib =
 			"class='ldelim' rowspan='" + rows + "'";
-	string const rattrib = 
+	string const rattrib =
 			"class='rdelim' rowspan='" + rows + "'";
-	
+
 	for (row_type row = 0; row < nrows(); ++row) {
 		os << MTag("tr") << '\n';
 		if (row == 0)

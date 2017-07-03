@@ -295,7 +295,7 @@ docstring GuiHSpace::dialogToParams() const
 			params.kind = keepCB->isChecked() ?
 				InsetSpaceParams::CUSTOM_PROTECTED : InsetSpaceParams::CUSTOM;
 			params.length = GlueLength(widgetsToLength(valueLE, unitCO));
-	} else if (item == "visible") 
+	} else if (item == "visible")
 		params.kind = InsetSpaceParams::VISIBLE;
 
 	return from_ascii(InsetSpace::params2string(params));

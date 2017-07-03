@@ -95,7 +95,7 @@ struct FileName::Private
 		fi.setCaching(fi.exists() ? true : false);
 	}
 	///
-	inline void refresh() 
+	inline void refresh()
 	{
 		fi.refresh();
 	}
@@ -545,7 +545,7 @@ unsigned long FileName::checksum() const
 	// FIXME: This code is not ready with Qt4.4.2,
 	// see http://www.lyx.org/trac/ticket/5293
 	// FIXME: should we check if the MapExtension extension is supported?
-	// see QAbstractFileEngine::supportsExtension() and 
+	// see QAbstractFileEngine::supportsExtension() and
 	// QAbstractFileEngine::MapExtension)
 	QFile qf(fi.filePath());
 	if (!qf.open(QIODevice::ReadOnly))
@@ -629,12 +629,12 @@ static bool rmdir(QFileInfo const & fi)
 			continue;
 		bool removed;
 		if (list.at(i).isDir()) {
-			LYXERR(Debug::FILES, "Removing dir " 
+			LYXERR(Debug::FILES, "Removing dir "
 				<< fromqstr(list.at(i).absoluteFilePath()));
 			removed = rmdir(list.at(i));
 		}
 		else {
-			LYXERR(Debug::FILES, "Removing file " 
+			LYXERR(Debug::FILES, "Removing file "
 				<< fromqstr(list.at(i).absoluteFilePath()));
 			removed = dir.remove(list.at(i).fileName());
 		}
@@ -643,7 +643,7 @@ static bool rmdir(QFileInfo const & fi)
 			LYXERR0("Could not delete "
 				<< fromqstr(list.at(i).absoluteFilePath()));
 		}
-	} 
+	}
 	QDir parent = fi.absolutePath();
 	success &= parent.rmdir(fi.fileName());
 	return success;
@@ -932,7 +932,7 @@ string DocFileName::mangledFileName(string const & dir) const
 	typedef map<string, string> MangledMap;
 	static MangledMap mangledNames;
 	static Mutex mangledMutex;
-	// this locks both access to mangledNames and counter below 
+	// this locks both access to mangledNames and counter below
 	Mutex::Locker lock(&mangledMutex);
 	MangledMap::const_iterator const it = mangledNames.find(absFileName());
 	if (it != mangledNames.end())

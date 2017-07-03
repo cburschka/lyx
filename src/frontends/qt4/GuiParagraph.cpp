@@ -353,7 +353,7 @@ bool GuiParagraph::haveMultiParSelection() const
 	return cur.selection() && cur.selBegin().pit() != cur.selEnd().pit();
 }
 
-	
+
 bool GuiParagraph::canIndent() const
 {
 	Layout const lay = bufferview()->cursor().innerParagraph().layout();

@@ -129,7 +129,7 @@ void LastOpenedSection::read(istream & is)
 				lof.file_name = file;
 				lastopened.push_back(lof);
 			} else {
-				LYXERR(Debug::INIT, 
+				LYXERR(Debug::INIT,
 					"LyX: Warning: Ignore last opened file: " << tmp);
 			}
 		} catch (...) {
@@ -337,7 +337,7 @@ LastCommandsSection::LastCommandsSection(unsigned int num) :
 	setNumberOfLastCommands(num);
 }
 
-	
+
 void LastCommandsSection::read(istream & is)
 {
 	string tmp;

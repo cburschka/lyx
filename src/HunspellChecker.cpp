@@ -86,7 +86,7 @@ struct HunspellChecker::Private
 	const string dictDirectory(void) const { return "dicts"; }
 	int maxLookupSelector(void) const { return 5; }
 	const string HunspellDictionaryName(Language const * lang) {
-		return lang->variety().empty() 
+		return lang->variety().empty()
 			? lang->code()
 			: lang->code() + "-" + lang->variety();
 	}

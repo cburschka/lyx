@@ -339,7 +339,7 @@ Token const Parser::get_token()
 		if (pos_ >= tokens_.size())
 			return dummy;
 	}
-	// cerr << "looking at token " << tokens_[pos_] 
+	// cerr << "looking at token " << tokens_[pos_]
 	//      << " pos: " << pos_ << '\n';
 	return tokens_[pos_++];
 }
@@ -662,7 +662,7 @@ Parser::Arg Parser::verbatimStuff(string const & end_string, bool const allow_li
 				return Arg(false, string());
 			}
 			if (match_index) {
-				oss << end_string.substr(0, match_index) 
+				oss << end_string.substr(0, match_index)
 				    << t.asInput();
 				match_index = 0;
 			} else

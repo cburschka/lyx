@@ -91,10 +91,10 @@ bool InsetVSpace::getStatus(Cursor & cur, FuncRequest const & cmd,
 				: "vspace 1" + string(stringFromUnit(Length::defaultUnit()));
 			InsetVSpace::string2params(arg, vspace);
 			status.setOnOff(vspace == space_);
-		} 
+		}
 		status.setEnabled(true);
 		return true;
-	
+
 	default:
 		return Inset::getStatus(cur, cmd, status);
 	}

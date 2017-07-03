@@ -162,7 +162,7 @@ InsetPrintNomencl::InsetPrintNomencl(Buffer * buf, InsetCommandParams const & p)
 
 ParamInfo const & InsetPrintNomencl::findInfo(string const & /* cmdName */)
 {
-	// The symbol width is set via nomencl's \nomlabelwidth in 
+	// The symbol width is set via nomencl's \nomlabelwidth in
 	// InsetPrintNomencl::latex and not as optional parameter of
 	// \printnomenclature
 	static ParamInfo param_info_;
@@ -214,26 +214,26 @@ docstring InsetPrintNomencl::xhtml(XHTMLStream &, OutputParams const & op) const
 		InsetCommand const * ic = inset->asInsetCommand();
 		if (!ic)
 			return docstring();
-		
+
 		// FIXME We need a link to the paragraph here, so we
 		// need some kind of struct.
 		docstring const symbol = ic->getParam("symbol");
 		docstring const desc = ic->getParam("description");
 		docstring const prefix = ic->getParam("prefix");
 		docstring const sortas = prefix.empty() ? symbol : prefix;
-		
+
 		entries[sortas] = NomenclEntry(symbol, desc, &par);
 	}
-	
+
 	if (entries.empty())
 		return docstring();
-	
+
 	// we'll use our own stream, because we are going to defer everything.
 	// that's how we deal with the fact that we're probably inside a standard
 	// paragraph, and we don't want to be.
 	odocstringstream ods;
 	XHTMLStream xs(ods);
-	
+
 	InsetLayout const & il = getLayout();
 	string const & tag = il.htmltag();
 	docstring toclabel = translateIfPossible(from_ascii("Nomenclature"),
@@ -241,12 +241,12 @@ docstring InsetPrintNomencl::xhtml(XHTMLStream &, OutputParams const & op) const
 
 	xs << html::StartTag("div", "class='nomencl'")
 	   << html::StartTag(tag, "class='nomencl'")
-		 << toclabel 
+		 << toclabel
 		 << html::EndTag(tag)
 	   << html::CR()
 	   << html::StartTag("dl")
 	   << html::CR();
-	
+
 	EntryMap::const_iterator eit = entries.begin();
 	EntryMap::const_iterator const een = entries.end();
 	for (; eit != een; ++eit) {

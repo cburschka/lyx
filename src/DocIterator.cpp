@@ -60,7 +60,7 @@ DocIterator::DocIterator(Buffer * buf, Inset * inset)
 
 DocIterator doc_iterator_begin(const Buffer * buf0, const Inset * inset0)
 {
-	Buffer * buf = const_cast<Buffer *>(buf0);	
+	Buffer * buf = const_cast<Buffer *>(buf0);
 	Inset * inset = const_cast<Inset *>(inset0);
 	DocIterator dit(buf, inset ? inset : &buf->inset());
 	dit.forwardPos();
@@ -70,7 +70,7 @@ DocIterator doc_iterator_begin(const Buffer * buf0, const Inset * inset0)
 
 DocIterator doc_iterator_end(const Buffer * buf0, const Inset * inset0)
 {
-	Buffer * buf = const_cast<Buffer *>(buf0);	
+	Buffer * buf = const_cast<Buffer *>(buf0);
 	Inset * inset = const_cast<Inset *>(inset0);
 	return DocIterator(buf, inset ? inset : &buf->inset());
 }
@@ -96,7 +96,7 @@ DocIterator DocIterator::clone(Buffer * buffer) const
 bool DocIterator::inRegexped() const
 {
 	InsetMath * im = inset().asInsetMath();
-	if (!im) 
+	if (!im)
 		return false;
 	InsetMathHull * hull = im->asHullInset();
 	return hull && hull->getType() == hullRegexp;
@@ -554,7 +554,7 @@ bool DocIterator::fixIfBroken()
 	if (empty())
 		return false;
 
-	// Go through the slice stack from the bottom. 
+	// Go through the slice stack from the bottom.
 	// Check that all coordinates (idx, pit, pos) are correct and
 	// that the inset is the one which is claimed to be there
 	Inset * inset = &slices_[0].inset();
@@ -653,7 +653,7 @@ int DocIterator::find(MathData const & cell) const
 }
 
 
-int DocIterator::find(Inset const * inset) const 
+int DocIterator::find(Inset const * inset) const
 {
 	for (size_t l = 0; l != slices_.size(); ++l) {
 		if (&slices_[l].inset() == inset)
@@ -676,13 +676,13 @@ void DocIterator::cutOff(int above)
 }
 
 
-void DocIterator::append(vector<CursorSlice> const & x) 
+void DocIterator::append(vector<CursorSlice> const & x)
 {
 	slices_.insert(slices_.end(), x.begin(), x.end());
 }
 
 
-void DocIterator::append(DocIterator::idx_type idx, pos_type pos) 
+void DocIterator::append(DocIterator::idx_type idx, pos_type pos)
 {
 	slices_.push_back(CursorSlice());
 	top().idx() = idx;

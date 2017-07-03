@@ -211,9 +211,9 @@ void GuiIndices::on_removePB_pressed()
 	if (selItem != 0)
 		sel_index = selItem->text(0);
 	if (!sel_index.isEmpty()) {
-		if (indiceslist_.find(qstring_to_ucs4(sel_index)) == 
+		if (indiceslist_.find(qstring_to_ucs4(sel_index)) ==
 		    indiceslist_.findShortcut(from_ascii("idx"))) {
-			Alert::error(_("Cannot remove standard index"), 
+			Alert::error(_("Cannot remove standard index"),
 			      _("The default index cannot be removed."));
 			      return;
 		}
@@ -240,7 +240,7 @@ void GuiIndices::on_renamePB_clicked()
 			newIndexLE->clear();
 			updateView();
 			if (!success)
-				Alert::error(_("Renaming failed"), 
+				Alert::error(_("Renaming failed"),
 				      _("The index could not be renamed. "
 					"Check if the new name already exists."));
 		}

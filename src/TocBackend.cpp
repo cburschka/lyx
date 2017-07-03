@@ -162,7 +162,7 @@ bool TocBackend::updateItem(DocIterator const & dit_in)
 		return false;
 
 	if (toc("tableofcontents")->empty()) {
-		// FIXME: should not happen, 
+		// FIXME: should not happen,
 		// a call to TocBackend::update() is missing somewhere
 		LYXERR0("TocBackend::updateItem called but the TOC is empty!");
 		return false;

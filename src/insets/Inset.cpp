@@ -202,7 +202,7 @@ Buffer & Inset::buffer()
 					<< " name: " << iname);
 		s << "LyX Code: " << lyxCode() << " name: " << from_ascii(iname);
 		LATTEST(false);
-		throw ExceptionMessage(BufferException, 
+		throw ExceptionMessage(BufferException,
 			from_ascii("Inset::buffer_ member not initialized!"), s.str());
 	}
 	return *buffer_;
@@ -223,7 +223,7 @@ bool Inset::isBufferLoaded() const
 
 bool Inset::isBufferValid() const
 {
-	return buffer_ 
+	return buffer_
 		&& (isBufferLoaded() || buffer_->isClone());
 }
 
@@ -234,7 +234,7 @@ docstring Inset::layoutName() const
 }
 
 
-bool Inset::isFreeSpacing() const 
+bool Inset::isFreeSpacing() const
 {
 	return getLayout().isFreeSpacing();
 }
@@ -298,14 +298,14 @@ InsetCode insetCode(string const & name)
 }
 
 
-string insetName(InsetCode c) 
+string insetName(InsetCode c)
 {
 	build_translator();
 	return insetnames[c].name;
 }
 
 
-docstring insetDisplayName(InsetCode c) 
+docstring insetDisplayName(InsetCode c)
 {
 	build_translator();
 	return insetnames[c].display_name;
@@ -316,7 +316,7 @@ void Inset::dispatch(Cursor & cur, FuncRequest & cmd)
 {
 	if (buffer_ == 0) {
 		lyxerr << "Unassigned buffer_ member in Inset::dispatch()" << std::endl;
-		lyxerr << "LyX Code: " << lyxCode() << " name: " 
+		lyxerr << "LyX Code: " << lyxCode() << " name: "
 		       << insetName(lyxCode()) << std::endl;
 	} else if (cur.buffer() != buffer_)
 		lyxerr << "cur.buffer() != buffer_ in Inset::dispatch()" << std::endl;
@@ -644,7 +644,7 @@ bool Inset::resetFontEdit() const
 }
 
 
-docstring Inset::completionPrefix(Cursor const &) const 
+docstring Inset::completionPrefix(Cursor const &) const
 {
 	return docstring();
 }

@@ -66,7 +66,7 @@ protected:
 		QStyleOptionViewItem opt = setOptions(index, option);
 		QVariant value = index.data(Qt::DisplayRole);
 		QPixmap pixmap = qvariant_cast<QPixmap>(value);
-		
+
 		// draw
 		painter->save();
 		drawBackground(painter, opt, index);
@@ -128,13 +128,13 @@ public:
 
 		if (role != Qt::DisplayRole && role != Qt::EditRole)
 		    return QVariant();
-		    
+
 		if (index.column() == 0)
 			return toqstr(list_->data(index.row()));
 
 		if (index.column() != 1)
 			return QVariant();
-	
+
 		// get icon from cache
 		QPixmap scaled;
 		QString const name = ":" + toqstr(list_->icon(index.row()));
@@ -145,7 +145,7 @@ public:
 			QPixmap p = QPixmap(name);
 			if (!p.isNull()) {
 				// scale it to 16x16 or smaller
-				scaled = p.scaled(min(16, p.width()), min(16, p.height()), 
+				scaled = p.scaled(min(16, p.width()), min(16, p.height()),
 					Qt::KeepAspectRatio, Qt::SmoothTransformation);
 			}
 			QPixmapCache::insert("completion" + name, scaled);
@@ -170,7 +170,7 @@ GuiCompleter::GuiCompleter(GuiWorkArea * gui, QObject * parent)
 	setCompletionMode(QCompleter::PopupCompletion);
 	setCaseSensitivity(Qt::CaseSensitive);
 	setWidget(gui_);
-	
+
 	// create the popup
 	QTreeView *listView = new QTreeView;
 	listView->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -181,10 +181,10 @@ GuiCompleter::GuiCompleter(GuiWorkArea * gui, QObject * parent)
 	listView->setIndentation(0);
 	listView->setUniformRowHeights(true);
 	setPopup(listView);
-	
+
 	itemDelegate_ = new CompleterItemDelegate(this);
 	popup()->setItemDelegate(itemDelegate_);
-	
+
 	// create timeout timers
 	popup_timer_.setSingleShot(true);
 	inline_timer_.setSingleShot(true);
@@ -219,7 +219,7 @@ bool GuiCompleter::eventFilter(QObject * watched, QEvent * e)
 		default: break;
 		}
 	}
-	
+
 	return QCompleter::eventFilter(watched, e);
 }
 
@@ -247,7 +247,7 @@ bool GuiCompleter::uniqueCompletionAvailable() const
 	if (n > 1 || n == 0)
 		return false;
 
-	// if there is exactly one, we have to check whether it is a 
+	// if there is exactly one, we have to check whether it is a
 	// real completion, i.e. longer than the current prefix.
 	if (completionPrefix() == currentCompletion())
 		return false;
@@ -263,7 +263,7 @@ bool GuiCompleter::completionAvailable() const
 
 	size_t n = popup()->model()->rowCount();
 
-	// if there is exactly one, we have to check whether it is a 
+	// if there is exactly one, we have to check whether it is a
 	// real completion, i.e. longer than the current prefix.
 	if (n == 1 && completionPrefix() == currentCompletion())
 	    return false;
@@ -338,9 +338,9 @@ void GuiCompleter::updateVisibility(bool start, bool keep)
 {
 	Cursor cur = gui_->bufferView().cursor();
 	cur.screenUpdateFlags(Update::None);
-	
+
 	updateVisibility(cur, start, keep);
-	
+
 	if (cur.result().screenUpdate())
 		gui_->bufferView().processUpdateFlags(cur.result().screenUpdate());
 }
@@ -352,12 +352,12 @@ void GuiCompleter::updatePrefix(Cursor const & cur)
 	QString newPrefix = toqstr(cur.inset().completionPrefix(cur));
 	if (newPrefix == completionPrefix())
 		return;
-	
+
 	// value which should be kept selected
 	QString old = currentCompletion();
 	if (old.length() == 0)
 		old = last_selection_;
-	
+
 	// update completer to new prefix
 	setCompletionPrefix(newPrefix);
 
@@ -367,7 +367,7 @@ void GuiCompleter::updatePrefix(Cursor const & cur)
 
 	// restore old selection
 	setCurrentCompletion(old);
-	
+
 	// if popup is not empty, the new selection will
 	// be our last valid one
 	QString const & s = currentCompletion();
@@ -389,11 +389,11 @@ void GuiCompleter::updateInline(Cursor const & cur, QString const & completion)
 {
 	if (!cur.inset().inlineCompletionSupported(cur))
 		return;
-	
+
 	// compute postfix
 	docstring prefix = cur.inset().completionPrefix(cur);
 	docstring postfix = qstring_to_ucs4(completion.mid(prefix.length()));
-	
+
 	// shorten it if necessary
 	if (lyxrc.completion_inline_dots != -1)
 		support::truncateWithEllipsis(postfix,
@@ -410,7 +410,7 @@ void GuiCompleter::updatePopup(Cursor const & cur)
 {
 	if (!cur.inset().completionSupported(cur))
 		return;
-	
+
 	popupVisible_ = true;
 
 	if (completionCount() == 0) {
@@ -436,14 +436,14 @@ void GuiCompleter::asyncUpdatePopup()
 	int x;
 	int y;
 	cur.inset().completionPosAndDim(cur, x, y, dim);
-	
+
 	// and calculate the rect of the popup
 	QRect rect;
 	if (popup()->layoutDirection() == Qt::RightToLeft)
 		rect = QRect(x + dim.width() - 200, y - dim.ascent() - 3, 200, dim.height() + 6);
 	else
 		rect = QRect(x, y - dim.ascent() - 3, 200, dim.height() + 6);
-	
+
 	// Resize the columns in the popup.
 	// This should really be in the constructor. But somehow the treeview
 	// has a bad memory about it and we have to tell him again and again.
@@ -452,7 +452,7 @@ void GuiCompleter::asyncUpdatePopup()
 	setSectionResizeMode(listView->header(), 0, QHeaderView::Stretch);
 	setSectionResizeMode(listView->header(), 1, QHeaderView::Fixed);
 	listView->header()->resizeSection(1, 22);
-	
+
 	// show/update popup
 	complete(rect);
 }
@@ -467,10 +467,10 @@ void GuiCompleter::updateAvailability()
 	Cursor const & cur = gui_->bufferView().cursor();
 	if (!popupPossible(cur) && !inlinePossible(cur))
 		return;
-	
+
 	updateModel(cur, false, false);
 }
-	
+
 
 void GuiCompleter::updateModel(Cursor const & cur, bool popupUpdate, bool inlineUpdate)
 {
@@ -509,7 +509,7 @@ void GuiCompleter::updateModel(Cursor const & cur, bool popupUpdate, bool inline
 
 	// restore old selection
 	setCurrentCompletion(old);
-	
+
 	// if popup is not empty, the new selection will
 	// be our last valid one
 	if (popupVisible() || inlineVisible()) {
@@ -530,7 +530,7 @@ void GuiCompleter::showPopup(Cursor const & cur)
 {
 	if (!popupPossible(cur))
 		return;
-	
+
 	updateModel(cur, true, inlineVisible());
 }
 
@@ -547,7 +547,7 @@ void GuiCompleter::showInline(Cursor const & cur)
 {
 	if (!inlinePossible(cur))
 		return;
-	
+
 	updateModel(cur, popupVisible(), true);
 }
 
@@ -556,10 +556,10 @@ void GuiCompleter::hideInline(Cursor const & cur)
 {
 	gui_->bufferView().setInlineCompletion(cur, DocIterator(cur.buffer()), docstring());
 	inlineVisible_ = false;
-	
+
 	if (inline_timer_.isActive())
 		inline_timer_.stop();
-	
+
 	// Trigger asynchronous part of hideInline. We might be
 	// in a dispatcher here and the setModel call might
 	// trigger focus events which is are not healthy here.
@@ -582,7 +582,7 @@ void GuiCompleter::showPopup()
 {
 	Cursor cur = gui_->bufferView().cursor();
 	cur.screenUpdateFlags(Update::None);
-	
+
 	showPopup(cur);
 
 	// redraw if needed
@@ -595,7 +595,7 @@ void GuiCompleter::showInline()
 {
 	Cursor cur = gui_->bufferView().cursor();
 	cur.screenUpdateFlags(Update::None);
-	
+
 	showInline(cur);
 
 	// redraw if needed
@@ -617,7 +617,7 @@ void GuiCompleter::hidePopup()
 	// yet up to date such that the coord cache has not all insets yet. The
 	// cursorPos methods would triggers asserts in the coord cache then.
 	QTimer::singleShot(0, this, SLOT(asyncHidePopup()));
-	
+
 	// mark that the asynchronous part will reset the model
 	if (!inlineVisible())
 		modelActive_ = false;
@@ -628,9 +628,9 @@ void GuiCompleter::hideInline()
 {
 	Cursor cur = gui_->bufferView().cursor();
 	cur.screenUpdateFlags(Update::None);
-	
+
 	hideInline(cur);
-	
+
 	// redraw if needed
 	if (cur.result().screenUpdate())
 		gui_->bufferView().processUpdateFlags(cur.result().screenUpdate());
@@ -651,13 +651,13 @@ void GuiCompleter::tab()
 	BufferView * bv = &gui_->bufferView();
 	Cursor cur = bv->cursor();
 	cur.screenUpdateFlags(Update::None);
-	
+
 	// check that inline completion is active
 	if (!inlineVisible() && !uniqueCompletionAvailable()) {
 		// try to activate the inline completion
 		if (cur.inset().inlineCompletionSupported(cur)) {
 			showInline();
-			
+
 			// show popup without delay because the completion was not unique
 			if (lyxrc.completion_popup_after_complete
 			    && !popupVisible()
@@ -671,10 +671,10 @@ void GuiCompleter::tab()
 			showPopup();
 			return;
 		}
-		
+
 		return;
 	}
-	
+
 	// Make undo possible
 	cur.beginUndoGroup();
 	cur.recordUndo();
@@ -685,7 +685,7 @@ void GuiCompleter::tab()
 	if (completion.size() <= prefix.size()) {
 		// finalize completion
 		cur.inset().insertCompletion(cur, docstring(), true);
-		
+
 		// hide popup and inline completion
 		hidePopup();
 		hideInline(cur);
@@ -726,7 +726,7 @@ QString GuiCompleter::currentCompletion() const
 	if (!popup()->selectionModel()->hasSelection())
 		return QString();
 
-	// Not sure if this is bug in Qt: currentIndex() always 
+	// Not sure if this is bug in Qt: currentIndex() always
 	// return the first element in the list.
 	QModelIndex idx = popup()->currentIndex();
 	return popup()->model()->data(idx, Qt::EditRole).toString();
@@ -734,7 +734,7 @@ QString GuiCompleter::currentCompletion() const
 
 
 void GuiCompleter::setCurrentCompletion(QString const & s)
-{	
+{
 	QAbstractItemModel const & model = *popup()->model();
 	size_t n = model.rowCount();
 	if (n == 0)
@@ -848,7 +848,7 @@ docstring GuiCompleter::longestUniqueCompletion() const
 				// get common prefix with the middle string
 				size_t mid = (r + i) / 2;
 				QString const & mids
-				= model.data(model.index(mid, 0), 
+				= model.data(model.index(mid, 0),
 					Qt::EditRole).toString();
 				size_t oldLen = s.length();
 				size_t len = commonPrefix(mids, s);
@@ -883,7 +883,7 @@ void GuiCompleter::popupActivated(const QString & completion)
 	cur.inset().insertCompletion(cur, postfix, true);
 	hidePopup();
 	hideInline(cur);
-	
+
 	if (cur.result().screenUpdate())
 		gui_->bufferView().processUpdateFlags(cur.result().screenUpdate());
 	cur.endUndoGroup();
@@ -897,10 +897,10 @@ void GuiCompleter::popupHighlighted(const QString & completion)
 
 	Cursor cur = gui_->bufferView().cursor();
 	cur.screenUpdateFlags(Update::None);
-	
+
 	if (inlineVisible())
 		updateInline(cur, completion);
-	
+
 	if (cur.result().screenUpdate())
 		gui_->bufferView().processUpdateFlags(cur.result().screenUpdate());
 }

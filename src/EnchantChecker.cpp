@@ -35,7 +35,7 @@ struct Speller {
 };
 
 typedef map<string, Speller> Spellers;
-  
+
 } // anon namespace
 
 struct EnchantChecker::Private
@@ -92,7 +92,7 @@ enchant::Dict * EnchantChecker::Private::speller(string const & lang)
 	Spellers::iterator it = spellers_.find(lang);
 	if (it != spellers_.end())
 		return it->second.speller;
-	
+
 	return addSpeller(lang);
 }
 
@@ -141,8 +141,8 @@ void EnchantChecker::insert(WordLangTuple const & word)
 		advanceChangeNumber();
 	}
 }
-	
-	
+
+
 void EnchantChecker::remove(WordLangTuple const & word)
 {
 	enchant::Dict * m = d->speller(word.lang()->code());
@@ -176,7 +176,7 @@ void EnchantChecker::suggest(WordLangTuple const & wl,
 
 	vector<string> suggs = m->suggest(utf8word);
 	vector<string>::const_iterator it = suggs.begin();
-	
+
 	for (; it != suggs.end(); ++it)
 		suggestions.push_back(from_utf8(*it));
 }
@@ -195,7 +195,7 @@ int EnchantChecker::numDictionaries() const
 {
 	return d->spellers_.size();
 }
-	
+
 
 docstring const EnchantChecker::error()
 {

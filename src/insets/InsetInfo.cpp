@@ -58,7 +58,7 @@ namespace {
 typedef Translator<InsetInfo::info_type, string> NameTranslator;
 
 NameTranslator const initTranslator()
-{	
+{
 	NameTranslator translator(InsetInfo::UNKNOWN_INFO, "unknown");
 
 	translator.addPair(InsetInfo::SHORTCUTS_INFO, "shortcuts");
@@ -90,8 +90,8 @@ NameTranslator const & nameTranslator()
 /////////////////////////////////////////////////////////////////////////
 
 
-	
-InsetInfo::InsetInfo(Buffer * buf, string const & name) 
+
+InsetInfo::InsetInfo(Buffer * buf, string const & name)
 	: InsetCollapsable(buf), type_(UNKNOWN_INFO), name_()
 {
 	setInfo(name);
@@ -140,7 +140,7 @@ void InsetInfo::read(Lexer & lex)
 			name_ = lex.getString();
 		} else if (token == "\\end_inset")
 			break;
-	}	
+	}
 	if (token != "\\end_inset") {
 		lex.printError("Missing \\end_inset at this point");
 		throw ExceptionMessage(WarningException,
@@ -153,7 +153,7 @@ void InsetInfo::read(Lexer & lex)
 
 void InsetInfo::write(ostream & os) const
 {
-	os << "Info\ntype  \"" << infoType() 
+	os << "Info\ntype  \"" << infoType()
 	   << "\"\narg   " << Lexer::quoteString(name_);
 }
 
@@ -284,7 +284,7 @@ void InsetInfo::setInfo(string const & name)
 
 void InsetInfo::error(string const & err)
 {
-	setText(bformat(_(err), from_utf8(name_)), 
+	setText(bformat(_(err), from_utf8(name_)),
 		Font(inherit_font, buffer().params().language), false);
 }
 
@@ -297,7 +297,7 @@ void InsetInfo::setText(docstring const & str)
 
 void InsetInfo::updateInfo()
 {
-	BufferParams const & bp = buffer().params();	
+	BufferParams const & bp = buffer().params();
 
 	switch (type_) {
 	case UNKNOWN_INFO:
@@ -343,7 +343,7 @@ void InsetInfo::updateInfo()
 		}
 		// remove leading comments and \\name and space
 		result = result.substr(loc + name_.size() + 2);
-		
+
 		// remove \n and ""
 		result = rtrim(result, "\n");
 		result = trim(result, "\"");
@@ -388,7 +388,7 @@ void InsetInfo::updateInfo()
 		//fu.fontInfo().setUnderbar(FONT_ON);
 		docstring_list::const_iterator beg = names.begin();
 		docstring_list::const_iterator end = names.end();
-		for (docstring_list::const_iterator it = beg ; 
+		for (docstring_list::const_iterator it = beg ;
 		     it != end ; ++it) {
 			// do not insert > for the top level menu item
 			if (it != beg)
@@ -400,7 +400,7 @@ void InsetInfo::updateInfo()
 			// that, we might as well use below
 			// Paragraph::insert on each string (JMarc)
 			for (size_type i = 0; i != it->length(); ++i)
-				par.insertChar(par.size(), (*it)[i], 
+				par.insertChar(par.size(), (*it)[i],
 					       f, Change(Change::UNCHANGED));
 		}
 		break;
@@ -463,7 +463,7 @@ void InsetInfo::updateInfo()
 			setText(from_utf8(bp.documentClass().name()));
 			break;
 		}
-		
+
 		// everything that follows is for version control.
 		// nothing that isn't version control should go below this line.
 		if (!buffer().lyxvc().inUse()) {

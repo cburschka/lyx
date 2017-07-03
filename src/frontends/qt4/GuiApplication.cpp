@@ -598,7 +598,7 @@ QPixmap getPixmap(QString const & path, QString const & name, QString const & ex
 	if (getPixmap(pixmap, fpath)) {
 		return pixmap;
 	}
-	
+
 	QStringList exts = ext.split(",");
 	fpath = ":/" + path + name + ".";
 	for (int i = 0; i < exts.size(); ++i) {

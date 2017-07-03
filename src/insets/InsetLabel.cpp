@@ -154,7 +154,7 @@ void InsetLabel::updateBuffer(ParIterator const & par, UpdateType utype)
 
 	if (utype == OutputUpdate) {
 		// save info on the active counter
-		Counters const & cnts = 
+		Counters const & cnts =
 			buffer().masterBuffer()->params().documentClass().counters();
 		active_counter_ = cnts.currentCounter();
 		Language const * lang = par->getParLanguage(buffer().params());
@@ -292,9 +292,9 @@ docstring InsetLabel::xhtml(XHTMLStream & xs, OutputParams const &) const
 {
 	// FIXME XHTML
 	// Unfortunately, the name attribute has been deprecated, so we have to use
-	// id here to get the document to validate as XHTML 1.1. This will cause a 
+	// id here to get the document to validate as XHTML 1.1. This will cause a
 	// problem with some browsers, though, I'm sure. (Guess which!) So we will
-	// have to figure out what to do about this later. 
+	// have to figure out what to do about this later.
 	docstring const attr = "id=\"" + html::cleanAttr(getParam("name")) + '"';
 	xs << html::CompTag("a", to_utf8(attr));
 	return docstring();

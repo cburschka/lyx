@@ -151,12 +151,12 @@ void CmdDef::release(string const & name)
 }
 
 
-CmdDef::newCmdDefResult CmdDef::newCmdDef(string const & name, 
+CmdDef::newCmdDefResult CmdDef::newCmdDef(string const & name,
 					  string const & def)
 {
 	string const name2 = trim(name);
 
-	if (name2.empty()) 
+	if (name2.empty())
 		return CmdDefNameEmpty;
 
 	if (cmdDefMap.find(name) != cmdDefMap.end())

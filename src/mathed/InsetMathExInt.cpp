@@ -165,12 +165,12 @@ void InsetMathExInt::htmlize(HtmlStream & os) const
 	InsetMathSymbol sym(symbol_);
 	bool const lower = !cell(2).empty();
 	bool const upper = !cell(3).empty();
-	
+
 	os << MTag("span", "class='integral'")
 	   << MTag("span", "class='intsym'");
 	sym.htmlize(os, false);
 	os << ETag("span");
-	
+
 	if (lower && upper) {
 		os << MTag("span", "class='limits'")
 		   << MTag("span") << cell(2) << ETag("span")

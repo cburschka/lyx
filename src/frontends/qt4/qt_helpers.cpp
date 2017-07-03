@@ -315,7 +315,7 @@ QStringList texFileList(QString const & filename)
 		return list;
 
 	// FIXME Unicode.
-	vector<docstring> doclist = 
+	vector<docstring> doclist =
 		getVectorFromString(file.fileContents("UTF-8"), from_ascii("\n"));
 
 	// Normalise paths like /foo//bar ==> /foo/bar
@@ -349,7 +349,7 @@ QString const externalLineEnding(docstring const & str)
 
 docstring const internalLineEnding(QString const & str)
 {
-	docstring const s = subst(qstring_to_ucs4(str), 
+	docstring const s = subst(qstring_to_ucs4(str),
 				  from_ascii("\r\n"), from_ascii("\n"));
 	return subst(s, '\r', '\n');
 }
@@ -548,7 +548,7 @@ FileFilterList::FileFilterList(docstring const & qt_style_filter)
 	string const filter = to_utf8(qt_style_filter)
 		+ (qt_style_filter.empty() ? string() : ";;")
 		+ to_utf8(_("All Files "))
-#if defined(_WIN32)		
+#if defined(_WIN32)
 		+ ("(*.*)");
 #else
 		+ ("(*)");

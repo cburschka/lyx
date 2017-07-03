@@ -301,7 +301,7 @@ QFont makeQFont(FontInfo const & f)
 		switch (f.family()) {
 		case ROMAN_FAMILY: {
 			QString family = makeFontName(toqstr(lyxrc.roman_font_name),
-				toqstr(lyxrc.roman_font_foundry)); 
+				toqstr(lyxrc.roman_font_foundry));
 			font.setFamily(family);
 #ifdef Q_OS_MAC
 #if QT_VERSION >= 0x040300 //&& QT_VERSION < 0x040800

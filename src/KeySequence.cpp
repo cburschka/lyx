@@ -159,7 +159,7 @@ docstring const KeySequence::print(outputFormat format) const
 				buf += "M-";
 			if (mod & ShiftModifier)
 				buf += "S-";
-		
+
 			buf += from_utf8(sequence[i].getSymbolName());
 			break;
 		}

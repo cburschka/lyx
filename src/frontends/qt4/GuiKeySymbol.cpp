@@ -623,7 +623,7 @@ void setKeySymbol(KeySymbol * sym, QKeyEvent const * ev)
 	LYXERR(Debug::KEY, "Getting key " << ev->key() << ", with text '"
 		<< ev->text() << "'");
 	// This is unsafe because ev->text() is the unicode representation of the
-	// key, not the name of the key. For example, Ctrl-x and Alt-x produce 
+	// key, not the name of the key. For example, Ctrl-x and Alt-x produce
 	// different texts.
 	sym->setText(qstring_to_ucs4(ev->text()));
 	LYXERR(Debug::KEY, "Setting key to " << sym->key() << ", "
@@ -714,7 +714,7 @@ docstring const KeySymbol::print(KeyModifier mod, bool forgui) const
 		str.replace(QChar(0x2325), qt_("Option-"));
 		str.replace(QChar(0x2318), qt_("Command-"));
 #else
-		str = seq.toString(QKeySequence::PortableText);	
+		str = seq.toString(QKeySequence::PortableText);
 #endif
 	}
 

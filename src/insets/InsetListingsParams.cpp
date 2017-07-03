@@ -102,7 +102,7 @@ docstring ListingsParam::validate(string const & par) const
 	bool unclosed = false;
 	string par2 = par;
 	// braces are allowed
-	if (prefixIs(par, "{") && suffixIs(par, "}") && !suffixIs(par, "\\}"))	
+	if (prefixIs(par, "{") && suffixIs(par, "}") && !suffixIs(par, "\\}"))
 		par2 = par.substr(1, par.size() - 2);
 
 	// check for unmatched braces
@@ -114,7 +114,7 @@ docstring ListingsParam::validate(string const & par) const
 			--braces;
 	}
 	unclosed = braces != 0;
-	
+
 	switch (type_) {
 
 	case ALL:
@@ -914,10 +914,10 @@ docstring ParValidator::validate(string const & name,
 					_("Available listing parameters are %1$s"), from_ascii(param_names));
 		else
 			return bformat(
-					_("Available listings parameters containing string \"%1$s\" are %2$s"), 
+					_("Available listings parameters containing string \"%1$s\" are %2$s"),
 						from_utf8(suffix), from_utf8(param_names));
 	}
- 
+
 	// locate name in parameter table
 	ListingsParams::const_iterator it = all_params_[p].find(name);
 	if (it != all_params_[p].end()) {
@@ -1044,7 +1044,7 @@ string InsetListingsParams::getValue(string const & key) const
 }
 
 
-void InsetListingsParams::addParam(string const & key, 
+void InsetListingsParams::addParam(string const & key,
 		string const & val, bool replace)
 {
 	if (key.empty())
@@ -1111,7 +1111,7 @@ void InsetListingsParams::addParams(string const & par)
 		} else if (par[i] == '{' && i > 0 && par[i-1] != '\\')
 			// don't count a brace in first position
 			++braces;
-		else if (par[i] == '}' && i != par.size() - 1 
+		else if (par[i] == '}' && i != par.size() - 1
 		         && (i == 0 || (i > 0 && par[i-1] != '\\')))
 			--braces;
 

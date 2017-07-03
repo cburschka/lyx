@@ -80,10 +80,10 @@ GuiBranches::GuiBranches(QWidget * parent)
 }
 
 
-bool GuiBranches::eventFilter(QObject * obj, QEvent * event) 
+bool GuiBranches::eventFilter(QObject * obj, QEvent * event)
 {
 	QEvent::Type etype = event->type();
-	if (etype == QEvent::KeyPress 
+	if (etype == QEvent::KeyPress
 		  && obj == newBranchLE
 		  && addBranchPB->isEnabled()) {
 		QKeyEvent * keyEvent = static_cast<QKeyEvent *>(event);
@@ -224,7 +224,7 @@ void GuiBranches::on_renamePB_pressed()
 			updateView();
 
 			if (!success)
-				Alert::error(_("Renaming failed"), 
+				Alert::error(_("Renaming failed"),
 				      _("The branch could not be renamed."));
 			else
 				// emit signal
@@ -352,7 +352,7 @@ void GuiBranches::addUnknown()
 {
 	QList<QListWidgetItem *> selItems =
 		undef_->branchesLW->selectedItems();
-	
+
 	QList<QListWidgetItem *>::const_iterator it = selItems.begin();
 	for (; it != selItems.end() ; ++it) {
 		QListWidgetItem const * new_branch = *it;

@@ -146,9 +146,9 @@ void GuiRef::enableView(bool enable)
 
 void GuiRef::enableBoxes()
 {
-	bool const isFormatted = 
+	bool const isFormatted =
 	    (InsetRef::getName(typeCO->currentIndex()) == "formatted");
-	bool const isLabelOnly = 
+	bool const isLabelOnly =
 	    (InsetRef::getName(typeCO->currentIndex()) == "labelonly");
 	bool const usingRefStyle = buffer().params().use_refstyle;
 	pluralCB->setEnabled(isFormatted && usingRefStyle);
@@ -170,7 +170,7 @@ void GuiRef::gotoClicked()
 	// to which we are going (or from which we are returning) is
 	// restored in the dialog. It's a bit of a hack, but it works,
 	// and no-one seems to have any better idea.
-	bool const toggled = 
+	bool const toggled =
 		last_reference_.isEmpty() || last_reference_.isNull();
 	if (toggled)
 		last_reference_ = referenceED->text();
@@ -353,11 +353,11 @@ void GuiRef::applyView()
 	params_.setCmdName(InsetRef::getName(typeCO->currentIndex()));
 	params_["reference"] = qstring_to_ucs4(last_reference_);
 	params_["name"] = qstring_to_ucs4(nameED->text());
-	params_["plural"] = pluralCB->isChecked() ? 
+	params_["plural"] = pluralCB->isChecked() ?
 	      from_ascii("true") : from_ascii("false");
-	params_["caps"] = capsCB->isChecked() ? 
+	params_["caps"] = capsCB->isChecked() ?
 	      from_ascii("true") : from_ascii("false");
-	params_["noprefix"] = noprefixCB->isChecked() ? 
+	params_["noprefix"] = noprefixCB->isChecked() ?
 	      from_ascii("true") : from_ascii("false");
 	restored_buffer_ = bufferCO->currentIndex();
 }

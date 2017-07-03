@@ -228,7 +228,7 @@ void InsetNote::latex(otexstream & os, OutputParams const & runparams_in) const
 		runparams.inComment = true;
 		// Ignore files that are exported inside a comment
 		runparams.exportdata.reset(new ExportData);
-	} 
+	}
 
 	// the space after the comment in 'a[comment] b' will be eaten by the
 	// comment environment since the space before b is ignored with the

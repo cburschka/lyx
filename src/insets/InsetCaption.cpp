@@ -53,7 +53,7 @@ namespace lyx {
 
 
 InsetCaption::InsetCaption(Buffer * buf, string const & type)
-    : InsetText(buf, InsetText::PlainLayout), 
+    : InsetText(buf, InsetText::PlainLayout),
       labelwidth_(0), is_subfloat_(false), type_(type)
 {
 	setDrawFrame(true);
@@ -322,7 +322,7 @@ void InsetCaption::getArgument(otexstream & os,
 
 	if (!il.leftdelim().empty())
 		os << il.leftdelim();
- 
+
 	OutputParams rp = runparams;
 	if (isPassThru())
 		rp.pass_thru = true;

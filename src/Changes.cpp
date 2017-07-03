@@ -142,7 +142,7 @@ void Changes::set(Change const & change, pos_type const start, pos_type const en
 {
 	if (change.type != Change::UNCHANGED) {
 		LYXERR(Debug::CHANGES, "setting change (type: " << change.type
-			<< ", author: " << change.author 
+			<< ", author: " << change.author
 			<< ", time: " << long(change.changetime)
 			<< ") in range (" << start << ", " << end << ")");
 	}
@@ -415,11 +415,11 @@ int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,
 	}
 	else if (change.type == Change::INSERTED)
 		macro_beg = from_ascii("\\lyxadded{");
-	
+
 	docstring str = getLaTeXMarkup(macro_beg,
 				       bparams.authors().get(change.author).name(),
 				       chgTime, runparams);
-	
+
 	// signature needed by \lyxsout to correctly strike out display math
 	if (change.type == Change::DELETED && runparams.inDisplayMath
 	    && (!LaTeXFeatures::isAvailable("dvipost")

@@ -186,11 +186,11 @@ Buffer * newUnnamedFile(FileName const & path, string const & prefix,
 	FileName filename;
 
 	do {
-		filename.set(path, 
+		filename.set(path,
 			prefix + convert<string>(++file_number[prefix]) + ".lyx");
 	}
 	while (theBufferList().exists(filename) || filename.isReadableFile());
-		
+
 	return newFile(filename.absFileName(), templatename, false);
 }
 

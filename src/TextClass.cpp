@@ -517,9 +517,9 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 				error = !readStyle(lexrc, lay);
 				break;
 			}
-			
+
 			bool const have_layout = hasLayout(name);
-			
+
 			// If the layout already exists, then we want to add it to
 			// the existing layout, as long as we are not in an ProvideStyle
 			// block.
@@ -1788,7 +1788,7 @@ Layout const & DocumentClass::getTOCLayout() const
 	for (; lit != len; ++lit) {
 		int const level = lit->toclevel;
 		// we don't want Part or unnumbered sections
-		if (level == Layout::NOT_IN_TOC || level < 0 
+		if (level == Layout::NOT_IN_TOC || level < 0
 		    || level >= minlevel || lit->counter.empty())
 			continue;
 		lay = &*lit;

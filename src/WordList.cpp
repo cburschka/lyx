@@ -75,7 +75,7 @@ docstring const & WordList::word(size_t idx) const
 {
 	Impl::Words::const_iterator it = d->words_.find_summed_weight(idx);
 	LASSERT(it != d->words_.end(), { static docstring dummy; return dummy; });
-	
+
 	// We use the key() method here, and not something like it->first
 	// because the btree only returns (iterator-) temporary value pairs.
 	// If we returned the first component of those here, we get an

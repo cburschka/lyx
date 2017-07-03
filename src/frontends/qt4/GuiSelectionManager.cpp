@@ -6,7 +6,7 @@
  * \author Richard Heck
  * \author Et Alia
  *
- * Some of the material in this file previously appeared in 
+ * Some of the material in this file previously appeared in
  * GuiCitationDialog.cpp.
  *
  * Full author contact details are available in file CREDITS.
@@ -108,12 +108,12 @@ QModelIndex GuiSelectionManager::getSelectedIndex(int const c) const
 	bool const have_avl = !avail.isEmpty();
 	bool const have_sel = !sel.isEmpty();
 
-	if (selectedFocused()) { 
+	if (selectedFocused()) {
 		if (have_sel)
 			return sel.front();
 		if (have_avl)
 			return avail.front();
-	} 
+	}
 	else { // available has focus
 		if (have_avl)
 			return avail.front();
@@ -127,7 +127,7 @@ QModelIndex GuiSelectionManager::getSelectedIndex(int const c) const
 void GuiSelectionManager::updateAddPB()
 {
 	int const arows = availableModel->rowCount();
-	QModelIndexList const availSels = 
+	QModelIndexList const availSels =
 		availableLV->selectionModel()->selectedIndexes();
 	addPB->setEnabled(arows > 0 &&
 		!availSels.isEmpty() &&
@@ -142,7 +142,7 @@ void GuiSelectionManager::updateDelPB()
 		deletePB->setEnabled(false);
 		return;
 	}
-	QModelIndexList const selSels = 
+	QModelIndexList const selSels =
 		selectedLV->selectionModel()->selectedIndexes();
 	int const sel_nr = selSels.empty() ? -1 : selSels.first().row();
 	deletePB->setEnabled(sel_nr >= 0);
@@ -156,7 +156,7 @@ void GuiSelectionManager::updateUpPB()
 		upPB->setEnabled(false);
 		return;
 	}
-	QModelIndexList const selSels = 
+	QModelIndexList const selSels =
 			selectedLV->selectionModel()->selectedIndexes();
 	int const sel_nr = selSels.empty() ? -1 : selSels.first().row();
 	upPB->setEnabled(sel_nr > 0);
@@ -170,7 +170,7 @@ void GuiSelectionManager::updateDownPB()
 		downPB->setEnabled(false);
 		return;
 	}
-	QModelIndexList const selSels = 
+	QModelIndexList const selSels =
 			selectedLV->selectionModel()->selectedIndexes();
 	int const sel_nr = selSels.empty() ? -1 : selSels.first().row();
 	downPB->setEnabled(sel_nr >= 0 && sel_nr < srows - 1);
@@ -182,7 +182,7 @@ bool GuiSelectionManager::isSelected(const QModelIndex & idx)
 	if (selectedModel->rowCount() == 0)
 		return false;
 	QVariant const & str = availableModel->data(idx, Qt::DisplayRole);
-	QModelIndexList qmil = 
+	QModelIndexList qmil =
 			selectedModel->match(selectedModel->index(0, main_sel_col_),
 			                     Qt::DisplayRole, str, 1,
 			                     Qt::MatchFlags(Qt::MatchExactly | Qt::MatchWrap));
@@ -193,7 +193,7 @@ bool GuiSelectionManager::isSelected(const QModelIndex & idx)
 void GuiSelectionManager::availableChanged(QItemSelection const & qis, QItemSelection const &)
 {
 	QModelIndexList il = qis.indexes();
-	if (il.empty())	
+	if (il.empty())
 		return;
 	availableChanged(il.front(), QModelIndex());
 }
@@ -212,7 +212,7 @@ void GuiSelectionManager::availableChanged(const QModelIndex & idx, const QModel
 void GuiSelectionManager::selectedChanged(QItemSelection const & qis, QItemSelection const &)
 {
 	QModelIndexList il = qis.indexes();
-	if (il.empty())	
+	if (il.empty())
 		return;
 	selectedChanged(il.front(), QModelIndex());
 }
@@ -234,7 +234,7 @@ void GuiSelectionManager::selectedEdited()
 }
 
 
-bool GuiSelectionManager::insertRowToSelected(int i, 
+bool GuiSelectionManager::insertRowToSelected(int i,
 		QMap<int, QVariant> const & itemData)
 {
 	if (i <= -1)
@@ -377,7 +377,7 @@ void GuiSelectionManager::availableLV_doubleClicked(const QModelIndex & idx)
 }
 
 
-bool GuiSelectionManager::eventFilter(QObject * obj, QEvent * event) 
+bool GuiSelectionManager::eventFilter(QObject * obj, QEvent * event)
 {
 	QEvent::Type etype = event->type();
 	if (obj == availableLV) {

@@ -129,7 +129,7 @@ int ForkedProcess::run(Starttype type)
 		if (pid_ == 0)
 			//we also do this in fork(), too, but maybe someone will try
 			//to bypass that
-			IAmAChild = true; 
+			IAmAChild = true;
 		return retval_;
 	}
 
@@ -403,12 +403,12 @@ int ForkedCall::generateChild()
 
 	pid_t cpid = -1;
 
-	STARTUPINFO startup; 
-	PROCESS_INFORMATION process; 
+	STARTUPINFO startup;
+	PROCESS_INFORMATION process;
 
 	memset(&startup, 0, sizeof(STARTUPINFO));
 	memset(&process, 0, sizeof(PROCESS_INFORMATION));
-    
+
 	startup.cb = sizeof(STARTUPINFO);
 
 	if (CreateProcess(0, (LPSTR)line.c_str(), 0, 0, FALSE,

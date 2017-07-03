@@ -91,7 +91,7 @@ void InsetFloatList::doDispatch(Cursor & cur, FuncRequest & cmd) {
 			cur.dispatched();
 		}
 		break;
-	
+
 	default:
 		InsetCommand::doDispatch(cur, cmd);
 	}
@@ -147,7 +147,7 @@ void InsetFloatList::latex(otexstream & os, OutputParams const &) const
 		} else {
 			if (!fl.listCommand().empty())
 				os << "\\" << from_ascii(fl.listCommand()) << "\n";
-			else 
+			else
 				os << "%% "
 				   << bformat(_("LyX cannot generate a list of %1$s"), getParam("type"))
 				   << "\n";
@@ -187,7 +187,7 @@ docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const & op) const {
 	// Other builtin floats should be handled here. But I'm not sure if that is
 	// even possible yet, since I'm not sure if we have a TOC for such things.
 	// If so, then they should define ListName, as non-builtin floats do, and
-	// then we can use that. 
+	// then we can use that.
 	// Really, all floats should define that.
 	if (cit->second.isPredefined()) {
 		// Only two different types allowed here:
@@ -216,7 +216,7 @@ docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const & op) const {
 
 	// we want to look like a chapter, section, or whatever.
 	// so we're going to look for the layout with the minimum toclevel
-	// number > 0---because we don't want Part. 
+	// number > 0---because we don't want Part.
 	// we'll take the first one, just because.
 	// FIXME This could be specified in the layout file.
 	DocumentClass const & dc = buffer().params().documentClass();
@@ -231,10 +231,10 @@ docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const & op) const {
 		lay = &*lit;
 		minlevel = level;
 	}
-	
+
 	string const tocclass = lay ? " " + lay->defaultCSSClass(): "";
 	string const tocattr = "class='tochead toc-" + toctype + tocclass + "'";
-	
+
 	// we'll use our own stream, because we are going to defer everything.
 	// that's how we deal with the fact that we're probably inside a standard
 	// paragraph, and we don't want to be.
@@ -245,9 +245,9 @@ docstring InsetFloatList::xhtml(XHTMLStream &, OutputParams const & op) const {
 	string const & tag = il.htmltag();
 	xs << html::StartTag("div", "class='toc toc-floats'");
 	xs << html::StartTag(tag, tocattr)
-		 << toclabel 
+		 << toclabel
 		 << html::EndTag(tag);
-	
+
 	Toc::const_iterator it = toc->begin();
 	Toc::const_iterator const en = toc->end();
 	for (; it != en; ++it) {
@@ -275,7 +275,7 @@ void InsetFloatList::validate(LaTeXFeatures & features) const
 
 
 docstring InsetFloatList::layoutName() const
-{ 
+{
 	return "FloatList:" + getParam("type");
 }
 

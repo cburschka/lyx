@@ -831,7 +831,7 @@ docstring InsetSpace::xhtml(XHTMLStream & xs, OutputParams const &) const
 void InsetSpace::validate(LaTeXFeatures & features) const
 {
 	if (params_.kind == InsetSpaceParams::NEGMEDIUM ||
-	    params_.kind == InsetSpaceParams::NEGTHICK) 
+	    params_.kind == InsetSpaceParams::NEGTHICK)
 		features.require("amsmath");
 }
 

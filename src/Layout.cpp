@@ -95,7 +95,7 @@ enum LayoutTags {
 	LT_HTMLITEM,
 	LT_HTMLITEMATTR,
 	LT_HTMLLABEL,
-	LT_HTMLLABELATTR, 
+	LT_HTMLLABELATTR,
 	LT_HTMLLABELFIRST,
 	LT_HTMLPREAMBLE,
 	LT_HTMLSTYLE,
@@ -283,7 +283,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 			error = true;
 			continue;
 
-		default: 
+		default:
 			break;
 		}
 		switch (static_cast<LayoutTags>(le)) {
@@ -328,7 +328,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 				if (obsoleted_by().empty())
 					obsoleted_by_ = style;
 			} else {
-				LYXERR0("Cannot replace with unknown style `" 
+				LYXERR0("Cannot replace with unknown style `"
 					<< style << '\'');
 
 				//lex.printError("Cannot replace with"
@@ -536,7 +536,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 		case LT_ALIGN:
 			readAlign(lex);
 			break;
-	
+
 		case LT_ALIGNPOSSIBLE:
 			readAlignPossible(lex);
 			break;
@@ -550,17 +550,17 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 			break;
 
 		case LT_ENDLABELSTRING:
-			lex >> endlabelstring_;	
+			lex >> endlabelstring_;
 			endlabelstring_ = trim(endlabelstring_);
 			break;
 
 		case LT_LABELSTRING_APPENDIX:
-			lex >> labelstring_appendix_;	
+			lex >> labelstring_appendix_;
 			labelstring_appendix_ = trim(labelstring_appendix_);
 			break;
 
 		case LT_LABELCOUNTER:
-			lex >> counter;	
+			lex >> counter;
 			counter = trim(counter);
 			break;
 
@@ -595,7 +595,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 			requires_.insert(req.begin(), req.end());
 			break;
 		}
-			
+
 		case LT_REFPREFIX: {
 			docstring arg;
 			lex >> arg;
@@ -609,7 +609,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 		case LT_HTMLTAG:
 			lex >> htmltag_;
 			break;
-	
+
 		case LT_HTMLATTR:
 			lex >> htmlattr_;
 			break;
@@ -617,23 +617,23 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 		case LT_HTMLITEM:
 			lex >> htmlitemtag_;
 			break;
-	
+
 		case LT_HTMLITEMATTR:
 			lex >> htmlitemattr_;
 			break;
-	
+
 		case LT_HTMLLABEL:
 			lex >> htmllabeltag_;
 			break;
 
-		case LT_HTMLLABELATTR: 
+		case LT_HTMLLABELATTR:
 			lex >> htmllabelattr_;
 			break;
 
 		case LT_HTMLLABELFIRST:
 			lex >> htmllabelfirst_;
 			break;
-			
+
 		case LT_HTMLSTYLE:
 			htmlstyle_ = lex.getLongString(from_ascii("EndHTMLStyle"));
 			break;
@@ -645,7 +645,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 		case LT_HTMLPREAMBLE:
 			htmlpreamble_ = lex.getLongString(from_ascii("EndPreamble"));
 			break;
-		
+
 		case LT_HTMLTITLE:
 			lex >> htmltitle_;
 			break;
@@ -1476,40 +1476,40 @@ int Layout::requiredArgs() const
 }
 
 
-string const & Layout::htmltag() const 
-{ 
+string const & Layout::htmltag() const
+{
 	if (htmltag_.empty())
 		htmltag_ =  "div";
 	return htmltag_;
 }
 
 
-string const & Layout::htmlattr() const 
-{ 
+string const & Layout::htmlattr() const
+{
 	if (htmlattr_.empty())
 		htmlattr_ = "class=\"" + defaultCSSClass() + "\"";
-	return htmlattr_; 
+	return htmlattr_;
 }
 
 
-string const & Layout::htmlitemtag() const 
-{ 
+string const & Layout::htmlitemtag() const
+{
 	if (htmlitemtag_.empty())
 		htmlitemtag_ = "div";
-	return htmlitemtag_; 
+	return htmlitemtag_;
 }
 
 
-string const & Layout::htmlitemattr() const 
-{ 
+string const & Layout::htmlitemattr() const
+{
 	if (htmlitemattr_.empty())
 		htmlitemattr_ = "class=\"" + defaultCSSItemClass() + "\"";
-	return htmlitemattr_; 
+	return htmlitemattr_;
 }
 
 
-string const & Layout::htmllabeltag() const 
-{ 
+string const & Layout::htmllabeltag() const
+{
 	if (htmllabeltag_.empty()) {
 		if (labeltype != LABEL_ABOVE &&
 		    labeltype != LABEL_CENTERED)
@@ -1517,15 +1517,15 @@ string const & Layout::htmllabeltag() const
 		else
 			htmllabeltag_ = "div";
 	}
-	return htmllabeltag_; 
+	return htmllabeltag_;
 }
 
 
-string const & Layout::htmllabelattr() const 
-{ 
+string const & Layout::htmllabelattr() const
+{
 	if (htmllabelattr_.empty())
 		htmllabelattr_ = "class=\"" + defaultCSSLabelClass() + "\"";
-	return htmllabelattr_; 
+	return htmllabelattr_;
 }
 
 
@@ -1533,7 +1533,7 @@ docstring Layout::htmlstyle() const
 {
 	if (!htmlstyle_.empty() && !htmlforcecss_)
 		return htmlstyle_;
-	if (htmldefaultstyle_.empty()) 
+	if (htmldefaultstyle_.empty())
 		makeDefaultCSS();
 	docstring retval = htmldefaultstyle_;
 	if (!htmlstyle_.empty())
@@ -1543,7 +1543,7 @@ docstring Layout::htmlstyle() const
 
 
 string Layout::defaultCSSClass() const
-{ 
+{
 	if (!defaultcssclass_.empty())
 		return defaultcssclass_;
 	docstring d;
@@ -1585,12 +1585,12 @@ void Layout::makeDefaultCSS() const
 {
 	// this never needs to be redone, since reloading layouts will
 	// wipe out what we did before.
-	if (!htmldefaultstyle_.empty()) 
+	if (!htmldefaultstyle_.empty())
 		return;
-	
+
 	// main font
 	htmldefaultstyle_ = font.asCSS();
-	
+
 	// bottom margins
 	string tmp;
 	if (topsep > 0)
@@ -1598,7 +1598,7 @@ void Layout::makeDefaultCSS() const
 	if (bottomsep > 0)
 		tmp += makeMarginValue("bottom", bottomsep);
 	if (!leftmargin.empty()) {
-		// we can't really do what LyX does with the margin, so 
+		// we can't really do what LyX does with the margin, so
 		// we'll just figure out how many characters it is
 		int const len = leftmargin.length();
 		tmp += makeMarginValue("left", len);
@@ -1607,7 +1607,7 @@ void Layout::makeDefaultCSS() const
 		int const len = rightmargin.length();
 		tmp += makeMarginValue("right", len);
 	}
-		
+
 	if (!tmp.empty()) {
 		if (!htmldefaultstyle_.empty())
 			htmldefaultstyle_ += from_ascii("\n");
@@ -1622,21 +1622,21 @@ void Layout::makeDefaultCSS() const
 
 	// wrap up what we have, if anything
 	if (!htmldefaultstyle_.empty())
-		htmldefaultstyle_ = 
+		htmldefaultstyle_ =
 			from_ascii(htmltag() + "." + defaultCSSClass() + " {\n") +
 			htmldefaultstyle_ + from_ascii("\n}\n");
-	
+
 	if (labeltype == LABEL_NO_LABEL || htmllabeltag() == "NONE")
 		return;
-	
+
 	docstring labelCSS;
-	
+
 	// label font
 	if (labelfont != font)
 		labelCSS = labelfont.asCSS() + from_ascii("\n");
 	if (labeltype == LABEL_CENTERED)
 		labelCSS += from_ascii("text-align: center;\n");
-	
+
 	if (!labelCSS.empty())
 		htmldefaultstyle_ +=
 			from_ascii(htmllabeltag() + "." + defaultCSSLabelClass() + " {\n") +

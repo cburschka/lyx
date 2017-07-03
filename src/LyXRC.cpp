@@ -2574,7 +2574,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 
 	case RC_FILEFORMAT:
 		// New/modified formats
-		for (Formats::const_iterator cit = theFormats().begin(); 
+		for (Formats::const_iterator cit = theFormats().begin();
 		     cit != theFormats().end(); ++cit) {
 			Format const * format =
 				theSystemFormats().getFormat(cit->name());
@@ -2610,7 +2610,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		}
 
 		// Look for deleted formats
-		for (Formats::const_iterator cit = theSystemFormats().begin(); 
+		for (Formats::const_iterator cit = theSystemFormats().begin();
 		     cit != theSystemFormats().end(); ++cit)
 			if (!theFormats().getFormat(cit->name()))
 				os << "\\format \"" << cit->name()

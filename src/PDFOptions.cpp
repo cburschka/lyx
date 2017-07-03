@@ -60,7 +60,7 @@ void PDFOptions::writeFile(ostream & os) const
 	os << "\\use_hyperref " << convert<string>(use_hyperref) << '\n';
 	if (!use_hyperref && empty())
 		return;
-	
+
 	if (!title.empty() )
 		os << "\\pdf_title " << Lexer::quoteString(title) << '\n';
 	if (!author.empty())
@@ -69,22 +69,22 @@ void PDFOptions::writeFile(ostream & os) const
 		os << "\\pdf_subject " << Lexer::quoteString(subject) << '\n';
 	if (!keywords.empty())
 		os << "\\pdf_keywords " << Lexer::quoteString(keywords) << '\n';
-	
-	
+
+
 	os << "\\pdf_bookmarks " << convert<string>(bookmarks) << '\n';
 	os << "\\pdf_bookmarksnumbered " << convert<string>(bookmarksnumbered) << '\n';
 	os << "\\pdf_bookmarksopen " << convert<string>(bookmarksopen) << '\n';
 	os << "\\pdf_bookmarksopenlevel " << bookmarksopenlevel << '\n';
-	
+
 	os << "\\pdf_breaklinks "  << convert<string>(breaklinks)  << '\n';
 	os << "\\pdf_pdfborder "   << convert<string>(pdfborder)   << '\n';
 	os << "\\pdf_colorlinks "  << convert<string>(colorlinks)  << '\n';
 	os << "\\pdf_backref "     << backref << '\n';
 	os << "\\pdf_pdfusetitle " << convert<string>(pdfusetitle) << '\n';
-	
+
 	if (!pagemode.empty())
 		os << "\\pdf_pagemode " << pagemode << '\n';
-	
+
 	if (!quoted_options.empty())
 		os << "\\pdf_quoted_options " << Lexer::quoteString(quoted_options) << '\n';
 }
@@ -96,7 +96,7 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 	// FIXME Unicode
 	string opt;
 	string hyperset;
-	
+
 	// since LyX uses unicode, also set the PDF strings to unicode strings with the
 	// hyperref option "unicode"
 	opt += "unicode=true,";
@@ -133,7 +133,7 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 		// LaTeX-errors when using non-latin characters
 		if (!title.empty())
 			hyperset += "pdftitle={" + title + "},";
-		if (!author.empty())			
+		if (!author.empty())
 			hyperset += "\n pdfauthor={" + author + "},";
 		if (!subject.empty())
 			hyperset += "\n pdfsubject={" + subject + "},";

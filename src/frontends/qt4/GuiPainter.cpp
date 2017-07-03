@@ -134,15 +134,15 @@ QColor GuiPainter::filterColor(QColor const & col)
 	// map into [min,max] interval
 	QColor const & min = monochrome_min_.top();
 	QColor const & max = monochrome_max_.top();
-			
+
 	qreal v = col.valueF();
 	v *= v; // make it a bit steeper (i.e. darker)
-		
+
 	qreal minr, ming, minb;
 	qreal maxr, maxg, maxb;
 	min.getRgbF(&minr, &ming, &minb);
 	max.getRgbF(&maxr, &maxg, &maxb);
-			
+
 	QColor c;
 	c.setRgbF(
 		v * (minr - maxr) + maxr,

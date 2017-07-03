@@ -100,7 +100,7 @@ void GuiWrap::applyView()
 	Length::UNIT overhangUnit = overhangUnitLC->currentLengthItem();
 	if (overhangED->text().isEmpty())
 		overhangUnit = Length::UNIT_NONE;
-	
+
 	params_.width = Length(width_value, widthUnit);
 
 	if (overhangCB->checkState() == Qt::Checked)

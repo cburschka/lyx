@@ -1553,7 +1553,7 @@ void BufferParams::validate(LaTeXFeatures & features) const
 
 	if (useNonTeXFonts && fontsMath() != "auto")
 		features.require("unicode-math");
-	
+
 	if (use_microtype)
 		features.require("microtype");
 
@@ -2578,7 +2578,7 @@ FormatList const & BufferParams::exportableFormats(bool only_viewable) const
 {
 	FormatList & cached = only_viewable ?
 			pimpl_->viewableFormatList : pimpl_->exportableFormatList;
-	bool & valid = only_viewable ? 
+	bool & valid = only_viewable ?
 			pimpl_->isViewCacheValid : pimpl_->isExportCacheValid;
 	if (valid)
 		return cached;
@@ -2593,7 +2593,7 @@ FormatList const & BufferParams::exportableFormats(bool only_viewable) const
 		theConverters().getReachable(backs[0], only_viewable, true, excludes);
 	for (vector<string>::const_iterator it = backs.begin() + 1;
 	     it != backs.end(); ++it) {
-		FormatList r = theConverters().getReachable(*it, only_viewable, 
+		FormatList r = theConverters().getReachable(*it, only_viewable,
 				false, excludes);
 		result.insert(result.end(), r.begin(), r.end());
 	}
@@ -3368,7 +3368,7 @@ string const BufferParams::loadFonts(LaTeXFeatures & features) const
 Encoding const & BufferParams::encoding() const
 {
 	// Main encoding for LaTeX output.
-	// 
+	//
 	// Exception: XeTeX with 8-bit TeX fonts requires ASCII (see #9740).
 	// As the "flavor" is only known once export started, this
 	// cannot be handled here. Instead, runparams.encoding is set
