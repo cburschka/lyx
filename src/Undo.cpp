@@ -643,6 +643,13 @@ void Undo::recordUndoFullBuffer(CursorData const & cur)
 
 /// UndoGroupHelper class stuff
 
+/** FIXME: handle restarted groups
+ * It may happen that the buffers are visited in order buffer1,
+ * buffer2, buffer1. In this case, we want to have only one undo group
+ * in buffer1. One solution is to replace buffer_ with a set<Buffer*>,
+ * but I am not sure yet how to do it. A use case is
+ * InsetLabel::updateReferences.
+ */
 void UndoGroupHelper::resetBuffer(Buffer * buf)
 {
 	if (buf == buffer_)

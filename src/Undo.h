@@ -135,7 +135,7 @@ private:
  */
 class UndoGroupHelper {
 public:
-	UndoGroupHelper(Buffer * buf) : buffer_(0)
+	UndoGroupHelper(Buffer * buf = 0) : buffer_(0)
 	{
 		resetBuffer(buf);
 	}
