@@ -109,11 +109,13 @@ void InsetLabel::updateLabelAndRefs(docstring const & new_label,
 void InsetLabel::updateReferences(docstring const & old_label,
 		docstring const & new_label)
 {
+	UndoGroupHelper ugh;
 	Buffer::References const & refs = buffer().references(old_label);
 	Buffer::References::const_iterator it = refs.begin();
 	Buffer::References::const_iterator end = refs.end();
 	for (; it != end; ++it) {
-		buffer().undo().recordUndo(CursorData(it->second));
+		ugh.resetBuffer(it->second.buffer());
+		it->second.buffer()->undo().recordUndo(CursorData(it->second));
 		if (it->first->lyxCode() == MATH_REF_CODE) {
 			InsetMathRef * mi = it->first->asInsetMath()->asRefInset();
 			mi->changeTarget(new_label);
