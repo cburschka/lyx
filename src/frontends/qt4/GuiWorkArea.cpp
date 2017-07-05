@@ -784,7 +784,7 @@ void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 	}
 	
 	if (name.empty()) {
-		QAbstractScrollArea::contextMenuEvent(e);
+		e->accept();
 		return;
 	}
 	// always show mnemonics when the keyboard is used to show the context menu
@@ -792,7 +792,7 @@ void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 	bool const keyboard = (e->reason() == QContextMenuEvent::Keyboard);
 	QMenu * menu = guiApp->menus().menu(toqstr(name), *d->lyx_view_, keyboard);
 	if (!menu) {
-		QAbstractScrollArea::contextMenuEvent(e);
+		e->accept();
 		return;
 	}
 	// Position the menu to the right.
