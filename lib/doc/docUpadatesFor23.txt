@@ -1,0 +1,100 @@
+Hereafter are the chnges in the docs for 2.3
+
+1----------- UserGuide.lyx
+
+* Section 3.9.3.2: Quote->Quotation marks
+                   edition of old sections
+		   new stuff
+
+* Section 3.9.5: capitalize logos
+
+* Section 6.1: item 'Formatted reference', additional stuff
+               item 'Label only', new stuff
+	       new note at end of section
+
+* Section 6.5: additional info about the use of databases
+
+* Section 6.5.1: add crossref to title
+                 pĥrase added to first paragraph
+		 paragraph added on natbib use
+
+* Section 6.5.2: remove BiBTeX in title
+                 change word in first paragraph
+		 add info about biblatex
+		 edit content as section 6.5.2.1 BibTeX
+		 add section 6.5.2.2 Biblatex
+                 add section 6.5.2.3 Processors
+		   from previous info
+		 add section 6.5.2.4 Customizing
+		 section 6.5.3 completely rewritten
+		 
+* Section 6.8: add info about inverted branches
+
+* Section B.12: edit info to add biblatex features
+
+* Section C.1.2.3: add info about tab closing
+
+* Bibliography: add entry about Biblatex
+
+
+2-----------  Additional.lyx
+
+* Section 3.1: introduce Biblatex
+
+* Section 3.1.1: introduce Biblatex
+
+* Section 3.1.2: rename title as 'Subdivided bibliographies'
+                 and introduce Biblatex
+
+* Section 3.1.3: rewrite almost completely
+
+3----------- Customization.lyx
+
+Section 2.1.2: new citeengines item
+               new xtemplates item
+
+Section 2.1.4: remove external_templates item
+
+Section 5.2.6: new section (Cite engine files)
+
+Section 5.3.3: new section (Cite engine file decalration)
+
+Section 5.3.4->5: new CiteEngine item
+                  new CiteFramework item
+	          new MaxCiteNames item
+	          new OutlinerName item
+
+Section 5.3.6->7: inside Argument item
+                      new AddToToc
+                      new PassThru
+                      new IsTocCaption
+                new IsTocCaption item
+	 	new ResumeCounter item
+		new StepMasterCounter item
+
+Section 5.3.9->10:  new AddToToc item
+                    edit InToc item
+		    new IsTocCaption item
+
+Section 5.3.12->13: new section (Citation engine description)
+
+Section 5.3.13->14: add CiteFormat item syntax
+                       add use instructions (2nd par.)
+		       new paragraph about special keys
+		       new paragraph about author lists
+		       word citation added (translatable text)
+		       phrase about cittengines (id.)
+		       
+
+Section 6.2: 3rd paragraph, introduce xtemplate files
+
+4----------- EmbeddedObjects.lyx
+
+Section 8: 1st paragraph add minted
+           4th paragraph add example listing
+           5th paragraph add note and remove previous example
+	   8th paragraph edited
+	   last paragrpah edited
+
+Biblography: add reference to minted package
+
