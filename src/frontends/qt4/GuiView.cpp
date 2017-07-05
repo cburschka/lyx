@@ -3440,8 +3440,7 @@ bool GuiView::goToFileRow(string const & argument)
 
 void GuiView::toolBarPopup(const QPoint & /*pos*/)
 {
-	QMenu * menu = new QMenu;
-	menu = guiApp->menus().menu(toqstr("context-toolbars"), * this);
+	QMenu * menu = guiApp->menus().menu(toqstr("context-toolbars"), * this);
 	menu->exec(QCursor::pos());
 }
 
