@@ -59,7 +59,7 @@
 #include "insets/InsetVSpace.h"
 #include "insets/InsetWrap.h"
 
-#include "mathed/MathMacroTemplate.h"
+#include "mathed/InsetMathMacroTemplate.h"
 #include "mathed/InsetMathHull.h"
 
 #include "frontends/alert.h"
@@ -606,7 +606,7 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 		} else if (tmptok == "External") {
 			inset.reset(new InsetExternal(buf));
 		} else if (tmptok == "FormulaMacro") {
-			inset.reset(new MathMacroTemplate(buf));
+			inset.reset(new InsetMathMacroTemplate(buf));
 		} else if (tmptok == "Formula") {
 			inset.reset(new InsetMathHull(buf));
 		} else if (tmptok == "Graphics") {

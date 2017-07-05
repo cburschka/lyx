@@ -17,7 +17,7 @@
 #include "InsetMathFont.h"
 #include "InsetMathScript.h"
 #include "MacroTable.h"
-#include "MathMacro.h"
+#include "InsetMathMacro.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 #include "MetricsInfo.h"
@@ -373,18 +373,18 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc,
 	// If we are editing a macro, we cannot update it immediately,
 	// otherwise wrong undo steps will be recorded (bug 6208).
 	InsetMath const * inmath = cur ? cur->inset().asInsetMath() : 0;
-	MathMacro const * inmacro = inmath ? inmath->asMacro() : 0;
+	InsetMathMacro const * inmacro = inmath ? inmath->asMacro() : 0;
 	docstring const edited_name = inmacro ? inmacro->name() : docstring();
 
 	// go over the array and look for macros
 	for (size_t i = 0; i < size(); ++i) {
-		MathMacro * macroInset = operator[](i).nucleus()->asMacro();
+		InsetMathMacro * macroInset = operator[](i).nucleus()->asMacro();
 		if (!macroInset || macroInset->macroName().empty()
 				|| macroInset->macroName()[0] == '^'
 				|| macroInset->macroName()[0] == '_'
 				|| (macroInset->name() == edited_name
 				    && macroInset->displayMode() ==
-						MathMacro::DISPLAY_UNFOLDED))
+						InsetMathMacro::DISPLAY_UNFOLDED))
 			continue;
 
 		// get macro
@@ -398,23 +398,23 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc,
 		}
 
 		// store old and compute new display mode
-		MathMacro::DisplayMode newDisplayMode;
-		MathMacro::DisplayMode oldDisplayMode = macroInset->displayMode();
+		InsetMathMacro::DisplayMode newDisplayMode;
+		InsetMathMacro::DisplayMode oldDisplayMode = macroInset->displayMode();
 		newDisplayMode = macroInset->computeDisplayMode();
 
 		// arity changed or other reason to detach?
-		if (oldDisplayMode == MathMacro::DISPLAY_NORMAL
+		if (oldDisplayMode == InsetMathMacro::DISPLAY_NORMAL
 		    && (macroInset->arity() != macroNumArgs
 			|| macroInset->optionals() != macroOptionals
-			|| newDisplayMode == MathMacro::DISPLAY_UNFOLDED))
+			|| newDisplayMode == InsetMathMacro::DISPLAY_UNFOLDED))
 			detachMacroParameters(cur, i);
 
 		// the macro could have been copied while resizing this
 		macroInset = operator[](i).nucleus()->asMacro();
 
 		// Cursor in \label?
-		if (newDisplayMode != MathMacro::DISPLAY_UNFOLDED
-		    && oldDisplayMode == MathMacro::DISPLAY_UNFOLDED) {
+		if (newDisplayMode != InsetMathMacro::DISPLAY_UNFOLDED
+		    && oldDisplayMode == InsetMathMacro::DISPLAY_UNFOLDED) {
 			// put cursor in front of macro
 			if (cur) {
 				int macroSlice = cur->find(macroInset);
@@ -428,19 +428,19 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc,
 		macroInset->setDisplayMode(newDisplayMode);
 
 		// arity changed?
-		if (newDisplayMode == MathMacro::DISPLAY_NORMAL
+		if (newDisplayMode == InsetMathMacro::DISPLAY_NORMAL
 		    && (macroInset->arity() != macroNumArgs
 			|| macroInset->optionals() != macroOptionals)) {
 			// is it a virgin macro which was never attached to parameters?
 			bool fromInitToNormalMode
-			= (oldDisplayMode == MathMacro::DISPLAY_INIT
-			   || oldDisplayMode == MathMacro::DISPLAY_INTERACTIVE_INIT)
-			  && newDisplayMode == MathMacro::DISPLAY_NORMAL;
+			= (oldDisplayMode == InsetMathMacro::DISPLAY_INIT
+			   || oldDisplayMode == InsetMathMacro::DISPLAY_INTERACTIVE_INIT)
+			  && newDisplayMode == InsetMathMacro::DISPLAY_NORMAL;
 
 			// if the macro was entered interactively (i.e. not by paste or during
 			// loading), it should not be greedy, but the cursor should
 			// automatically jump into the macro when behind
-			bool interactive = (oldDisplayMode == MathMacro::DISPLAY_INTERACTIVE_INIT);
+			bool interactive = (oldDisplayMode == InsetMathMacro::DISPLAY_INTERACTIVE_INIT);
 
 			// attach parameters
 			attachMacroParameters(cur, i, macroNumArgs, macroOptionals,
@@ -464,7 +464,7 @@ void MathData::updateMacros(Cursor * cur, MacroContext const & mc,
 
 void MathData::detachMacroParameters(DocIterator * cur, const size_type macroPos)
 {
-	MathMacro * macroInset = operator[](macroPos).nucleus()->asMacro();
+	InsetMathMacro * macroInset = operator[](macroPos).nucleus()->asMacro();
 	// We store this now, because the inset pointer will be invalidated in the scond loop below
 	size_t const optionals = macroInset->optionals();
 
@@ -595,7 +595,7 @@ void MathData::attachMacroParameters(Cursor * cur,
 	const int macroOptionals, const bool fromInitToNormalMode,
 	const bool interactiveInit, const size_t appetite)
 {
-	MathMacro * macroInset = operator[](macroPos).nucleus()->asMacro();
+	InsetMathMacro * macroInset = operator[](macroPos).nucleus()->asMacro();
 
 	// start at atom behind the macro again, maybe with some new arguments
 	// from the detach phase above, to add them back into the macro inset

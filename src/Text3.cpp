@@ -78,7 +78,7 @@
 #include "support/regex.h"
 
 #include "mathed/InsetMathHull.h"
-#include "mathed/MathMacroTemplate.h"
+#include "mathed/InsetMathMacroTemplate.h"
 
 #include <clocale>
 #include <sstream>
@@ -2044,7 +2044,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			// don't pass "on" as argument
 			// (it would appear literally in the first cell)
 			docstring sel = cur.selectionAsString(false);
-			MathMacroTemplate * macro = new MathMacroTemplate(cur.buffer());
+			InsetMathMacroTemplate * macro = new InsetMathMacroTemplate(cur.buffer());
 			// create a macro template if we see "\\newcommand" somewhere, and
 			// an ordinary formula otherwise
 			if (!sel.empty()
@@ -2080,7 +2080,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			MacroType type = MacroTypeNewcommand;
 			if (s2 == "def")
 				type = MacroTypeDef;
-			MathMacroTemplate * inset = new MathMacroTemplate(cur.buffer(),
+			InsetMathMacroTemplate * inset = new InsetMathMacroTemplate(cur.buffer(),
 				from_utf8(token(s, ' ', 0)), nargs, false, type);
 			inset->setBuffer(bv->buffer());
 			insertInset(cur, inset);

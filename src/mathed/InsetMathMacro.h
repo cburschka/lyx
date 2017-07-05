@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file MathMacro.h
+ * \file InsetMathMacro.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -22,20 +22,20 @@
 namespace lyx {
 
 /// This class contains the data for a macro.
-class MathMacro : public InsetMathNest {
+class InsetMathMacro : public InsetMathNest {
 public:
 	/// A macro can be built from an existing template
-	MathMacro(Buffer * buf, docstring const & name);
+	InsetMathMacro(Buffer * buf, docstring const & name);
 	///
-	MathMacro(MathMacro const &);
+	InsetMathMacro(InsetMathMacro const &);
 	///
-	MathMacro & operator=(MathMacro const &);
+	InsetMathMacro & operator=(InsetMathMacro const &);
 	///
-	~MathMacro();
+	~InsetMathMacro();
 	///
-	virtual MathMacro * asMacro() { return this; }
+	virtual InsetMathMacro * asMacro() { return this; }
 	///
-	virtual MathMacro const * asMacro() const { return this; }
+	virtual InsetMathMacro const * asMacro() const { return this; }
 	///
 	marker_type marker(BufferView const *) const;
 	/// If the macro is in normal edit mode, dissolve its contents in

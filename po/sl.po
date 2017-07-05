@@ -7074,7 +7074,7 @@ msgstr ""
 #: lib/layouts/pdfcomment.module:57 lib/layouts/scrlettr.layout:116
 #: lib/layouts/scrlttr2.layout:149 lib/layouts/sigplanconf.layout:84
 #: lib/layouts/sigplanconf.layout:161 lib/layouts/tcolorbox.module:134
-#: src/frontends/qt4/GuiIndices.cpp:52 src/mathed/MathMacroTemplate.cpp:481
+#: src/frontends/qt4/GuiIndices.cpp:52 src/mathed/InsetMathMacroTemplate.cpp:481
 msgid "Name"
 msgstr "Ime"
 
@@ -15900,7 +15900,7 @@ msgstr ""
 msgid "Drop up"
 msgstr ""
 
-#: lib/layouts/shapepar.module:91 src/mathed/MathMacroTemplate.cpp:532
+#: lib/layouts/shapepar.module:91 src/mathed/InsetMathMacroTemplate.cpp:532
 #, fuzzy
 msgid "TeX"
 msgstr "LaTeX"
@@ -26528,7 +26528,7 @@ msgid "Table (CSV)"
 msgstr "Tabela"
 
 #: lib/configure.py:731 src/frontends/qt4/GuiView.cpp:1326
-#: src/mathed/MathMacroTemplate.cpp:537
+#: src/mathed/InsetMathMacroTemplate.cpp:537
 msgid "LyX"
 msgstr "LyX"
 
@@ -34825,27 +34825,27 @@ msgstr "Pisava: "
 msgid "Can't change horizontal alignment in '%1$s'"
 msgstr "Vodoravna poravnava v stolpcu"
 
-#: src/mathed/MathMacro.cpp:1212 src/mathed/MathMacro.cpp:1218
+#: src/mathed/InsetMathMacro.cpp:1212 src/mathed/InsetMathMacro.cpp:1218
 #, fuzzy, c-format
 msgid "Macro: %1$s"
 msgstr " Makroukaz: %s: "
 
-#: src/mathed/MathMacroTemplate.cpp:489
+#: src/mathed/InsetMathMacroTemplate.cpp:489
 #, fuzzy
 msgid "optional"
 msgstr "&Vodoravno:"
 
-#: src/mathed/MathMacroTemplate.cpp:1270
+#: src/mathed/InsetMathMacroTemplate.cpp:1270
 #, fuzzy
 msgid "math macro"
 msgstr "ozadje matematike"
 
-#: src/mathed/MathMacroTemplate.cpp:1377
+#: src/mathed/InsetMathMacroTemplate.cpp:1377
 #, fuzzy, c-format
 msgid "Math Macro: \\%1$s"
 msgstr "ozadje matematike"
 
-#: src/mathed/MathMacroTemplate.cpp:1392
+#: src/mathed/InsetMathMacroTemplate.cpp:1392
 #, c-format
 msgid "Invalid macro! \\%1$s"
 msgstr ""

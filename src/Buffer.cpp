@@ -76,7 +76,7 @@
 
 #include "mathed/InsetMathHull.h"
 #include "mathed/MacroTable.h"
-#include "mathed/MathMacroTemplate.h"
+#include "mathed/InsetMathMacroTemplate.h"
 #include "mathed/MathSupport.h"
 
 #include "graphics/GraphicsCache.h"
@@ -3598,7 +3598,7 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 				continue;
 
 			// get macro data
-			MathMacroTemplate & macroTemplate =
+			InsetMathMacroTemplate & macroTemplate =
 				*iit->inset->asInsetMath()->asMacroTemplate();
 			MacroContext mc(owner_, it);
 			macroTemplate.updateToContext(mc);
@@ -3748,7 +3748,7 @@ void Buffer::listParentMacros(MacroSet & macros, LaTeXFeatures & features) const
 		if (data) {
 			macros.insert(data);
 
-			// we cannot access the original MathMacroTemplate anymore
+			// we cannot access the original InsetMathMacroTemplate anymore
 			// here to calls validate method. So we do its work here manually.
 			// FIXME: somehow make the template accessible here.
 			if (data->optionals() > 0)

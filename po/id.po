@@ -6863,7 +6863,7 @@ msgstr ""
 #: lib/layouts/scrlettr.layout:116 lib/layouts/scrlttr2.layout:149
 #: lib/layouts/sigplanconf.layout:84 lib/layouts/sigplanconf.layout:161
 #: lib/layouts/tcolorbox.module:134 src/frontends/qt4/GuiIndices.cpp:52
-#: src/mathed/MathMacroTemplate.cpp:493
+#: src/mathed/InsetMathMacroTemplate.cpp:493
 msgid "Name"
 msgstr "Nama"
 
@@ -15636,7 +15636,7 @@ msgstr "Bingkai bayangan"
 msgid "Drop up"
 msgstr ""
 
-#: lib/layouts/shapepar.module:91 src/mathed/MathMacroTemplate.cpp:544
+#: lib/layouts/shapepar.module:91 src/mathed/InsetMathMacroTemplate.cpp:544
 msgid "TeX"
 msgstr "TeX"
 
@@ -25583,7 +25583,7 @@ msgid "Table (CSV)"
 msgstr "Tabel (CSV)"
 
 #: lib/configure.py:731 src/frontends/qt4/GuiView.cpp:1327
-#: src/mathed/MathMacroTemplate.cpp:549
+#: src/mathed/InsetMathMacroTemplate.cpp:549
 msgid "LyX"
 msgstr "LyX"
 
@@ -33957,25 +33957,25 @@ msgstr "Tampilkan %1$s"
 msgid "Can't change horizontal alignment in '%1$s'"
 msgstr "Tidak bisa merubah perataan horisontal di  '%1$s'"
 
-#: src/mathed/MathMacro.cpp:1212 src/mathed/MathMacro.cpp:1218
+#: src/mathed/InsetMathMacro.cpp:1212 src/mathed/InsetMathMacro.cpp:1218
 #, fuzzy, c-format
 msgid "Macro: %1$s"
 msgstr " Makro: %1$s: "
 
-#: src/mathed/MathMacroTemplate.cpp:501
+#: src/mathed/InsetMathMacroTemplate.cpp:501
 msgid "optional"
 msgstr "tambahan"
 
-#: src/mathed/MathMacroTemplate.cpp:1282
+#: src/mathed/InsetMathMacroTemplate.cpp:1282
 msgid "math macro"
 msgstr "makro matematika"
 
-#: src/mathed/MathMacroTemplate.cpp:1389
+#: src/mathed/InsetMathMacroTemplate.cpp:1389
 #, fuzzy, c-format
 msgid "Math Macro: \\%1$s"
 msgstr "Makro Matematika"
 
-#: src/mathed/MathMacroTemplate.cpp:1404
+#: src/mathed/InsetMathMacroTemplate.cpp:1404
 #, c-format
 msgid "Invalid macro! \\%1$s"
 msgstr ""

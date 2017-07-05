@@ -38,12 +38,12 @@ using namespace std;
 namespace lyx {
 
 InsetMathRef::InsetMathRef(Buffer * buf)
-	: CommandInset(buf, from_ascii("ref"), false)
+	: InsetMathCommand(buf, from_ascii("ref"), false)
 {}
 
 
 InsetMathRef::InsetMathRef(Buffer * buf, docstring const & data)
-	: CommandInset(buf, data, false)
+	: InsetMathCommand(buf, data, false)
 {}
 
 
@@ -116,7 +116,7 @@ void InsetMathRef::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		CommandInset::doDispatch(cur, cmd);
+		InsetMathCommand::doDispatch(cur, cmd);
 		break;
 	}
 }
@@ -136,7 +136,7 @@ bool InsetMathRef::getStatus(Cursor & cur, FuncRequest const & cmd,
 		status.setEnabled(true);
 		return true;
 	default:
-		return CommandInset::getStatus(cur, cmd, status);
+		return InsetMathCommand::getStatus(cur, cmd, status);
 	}
 }
 

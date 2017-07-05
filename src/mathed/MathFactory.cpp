@@ -50,8 +50,8 @@
 #include "InsetMathXYMatrix.h"
 #include "InsetMathDiagram.h"
 #include "MacroTable.h"
-#include "MathMacro.h"
-#include "MathMacroArgument.h"
+#include "InsetMathMacro.h"
+#include "InsetMathMacroArgument.h"
 #include "MathParser.h"
 #include "MathStream.h"
 #include "MathSupport.h"
@@ -394,7 +394,7 @@ bool ensureMath(WriteStream & os, bool needs_mathmode, bool macro,
 		}
 		os.textMode(true);
 	} else if (macro && brace && !needs_mathmode && !textmode_macro) {
-		// This is a user defined macro, not a MathMacro, so we
+		// This is a user defined macro, not a InsetMathMacro, so we
 		// cannot be sure what mode is needed. We leave it in the
 		// same environment it was entered by closing either \lyxmathsym
 		// or \ensuremath, whichever was opened.
@@ -448,7 +448,7 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 	//lyxerr << "creating inset with name: '" << to_utf8(s) << '\'' << endl;
 	if ((s == "ce" || s == "cf") && buf
 	    && buf->params().use_package("mhchem") == BufferParams::package_off)
-		return MathAtom(new MathMacro(buf, s));
+		return MathAtom(new InsetMathMacro(buf, s));
 
 	latexkeys const * l = in_word_set(s);
 	if (l) {
@@ -490,10 +490,10 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 	}
 
 	if (s.size() == 2 && s[0] == '#' && s[1] >= '1' && s[1] <= '9')
-		return MathAtom(new MathMacroArgument(s[1] - '0'));
+		return MathAtom(new InsetMathMacroArgument(s[1] - '0'));
 	if (s.size() == 3 && s[0] == '\\' && s[1] == '#'
 			&& s[2] >= '1' && s[2] <= '9')
-		return MathAtom(new MathMacroArgument(s[2] - '0'));
+		return MathAtom(new InsetMathMacroArgument(s[2] - '0'));
 	if (s == "boxed")
 		return MathAtom(new InsetMathBoxed(buf));
 	if (s == "fbox")
@@ -671,7 +671,7 @@ MathAtom createInsetMath(docstring const & s, Buffer * buf)
 	if (s == "regexp")
 		return MathAtom(new InsetMathHull(buf, hullRegexp));
 
-	return MathAtom(new MathMacro(buf, s));
+	return MathAtom(new InsetMathMacro(buf, s));
 }
 
 

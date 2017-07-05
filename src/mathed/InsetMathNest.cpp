@@ -32,8 +32,8 @@
 #include "MathCompletionList.h"
 #include "MathData.h"
 #include "MathFactory.h"
-#include "MathMacro.h"
-#include "MathMacroArgument.h"
+#include "InsetMathMacro.h"
+#include "InsetMathMacroArgument.h"
 #include "MathParser.h"
 #include "MathStream.h"
 #include "MathSupport.h"
@@ -1206,7 +1206,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		bool fold = act == LFUN_MATH_MACRO_FOLD;
 		bool found = findMacroToFoldUnfold(it, fold);
 		if (found) {
-			MathMacro * macro = it.nextInset()->asInsetMath()->asMacro();
+			InsetMathMacro * macro = it.nextInset()->asInsetMath()->asMacro();
 			cur.recordUndoInset();
 			if (fold)
 				macro->fold(cur);
@@ -1302,7 +1302,7 @@ bool InsetMathNest::findMacroToFoldUnfold(Cursor & it, bool fold) const {
 		// go backward through the current cell
 		Inset * inset = it.nextInset();
 		while (inset && inset->asInsetMath()) {
-			MathMacro * macro = inset->asInsetMath()->asMacro();
+			InsetMathMacro * macro = inset->asInsetMath()->asMacro();
 			if (macro) {
 				// found the an macro to open/close?
 				if (macro->folded() != fold)
@@ -1637,7 +1637,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 			cur.backspace();
 			int n = c - '0';
 			if (n >= 1 && n <= 9)
-				cur.insert(new MathMacroArgument(n));
+				cur.insert(new InsetMathMacroArgument(n));
 			return true;
 		}
 

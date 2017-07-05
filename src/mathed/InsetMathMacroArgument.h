@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file MathMacroArgument.h
+ * \file InsetMathMacroArgument.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -44,10 +44,10 @@ protected:
 
 
 /// A macro argument.
-class MathMacroArgument : public InsetMathHash {
+class InsetMathMacroArgument : public InsetMathHash {
 public:
 	/// Assumes 0 < number <= 9
-	explicit MathMacroArgument(int number);
+	explicit InsetMathMacroArgument(int number);
 	///
 	int number() const { return number_; }
 	/// Assumes 0 < n <= 9

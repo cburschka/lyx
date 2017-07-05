@@ -25,7 +25,7 @@ namespace lyx {
 
 class Buffer;
 class MathData;
-class MathMacroTemplate;
+class InsetMathMacroTemplate;
 class Paragraph;
 class latexkeys;
 
@@ -43,7 +43,7 @@ public:
 	/// Create lazy MacroData which only queries the macro template when needed
 	MacroData(Buffer * buf, DocIterator const & pos);
 	/// Create non-lazy MacroData which directly queries the macro template
-	MacroData(Buffer * buf, MathMacroTemplate const & macro);
+	MacroData(Buffer * buf, InsetMathMacroTemplate const & macro);
 
 	///
 	docstring const & definition() const { updateData(); return definition_; }
@@ -106,7 +106,7 @@ public:
 
 private:
 	///
-	void queryData(MathMacroTemplate const & macro) const;
+	void queryData(InsetMathMacroTemplate const & macro) const;
 	///
 	void updateData() const;
 	///

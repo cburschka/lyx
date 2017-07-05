@@ -13,14 +13,14 @@
 #define REF_INSET_H
 
 
-#include "CommandInset.h"
+#include "InsetMathCommand.h"
 
 
 namespace lyx {
 class Buffer;
 
 // for \ref
-class InsetMathRef : public CommandInset {
+class InsetMathRef : public InsetMathCommand {
 public:
 	///
 	InsetMathRef(Buffer * buf);

@@ -38,7 +38,7 @@ class DocIterator;
 class LaTeXFeatures;
 class ReplaceData;
 class MacroContext;
-class MathMacro;
+class InsetMathMacro;
 class MetricsInfo;
 class PainterInfo;
 class ParIterator;

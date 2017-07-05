@@ -51,7 +51,7 @@ following hack as starting point to write some macros:
 #include "InsetMathEnv.h"
 #include "InsetMathFrac.h"
 #include "InsetMathKern.h"
-#include "MathMacro.h"
+#include "InsetMathMacro.h"
 #include "InsetMathPar.h"
 #include "InsetMathRef.h"
 #include "InsetMathRoot.h"
@@ -63,10 +63,10 @@ following hack as starting point to write some macros:
 #include "InsetMathStackrel.h"
 #include "InsetMathString.h"
 #include "InsetMathTabular.h"
-#include "MathMacroTemplate.h"
+#include "InsetMathMacroTemplate.h"
 #include "MathExtern.h"
 #include "MathFactory.h"
-#include "MathMacroArgument.h"
+#include "InsetMathMacroArgument.h"
 #include "MathSupport.h"
 
 #include "Buffer.h"
@@ -932,7 +932,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			Token const & n	= nextToken();
 			char_type c = n.character();
 			if (c && '0' < c && c <= '9') {
-				cell->push_back(MathAtom(new MathMacroArgument(c - '0')));
+				cell->push_back(MathAtom(new InsetMathMacroArgument(c - '0')));
 				getToken();
 			} else
 				cell->push_back(MathAtom(new InsetMathHash()));
@@ -1082,7 +1082,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			if (nextToken().cat() == catBegin)
 				parse(display, FLAG_ITEM, InsetMath::MATH_MODE);
 
-			cell->push_back(MathAtom(new MathMacroTemplate(buf,
+			cell->push_back(MathAtom(new InsetMathMacroTemplate(buf,
 				name, nargs, 0, MacroTypeDef,
 				vector<MathData>(), def, display)));
 
@@ -1130,7 +1130,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			if (nextToken().cat() == catBegin)
 				parse(display, FLAG_ITEM, InsetMath::MATH_MODE);
 
-			cell->push_back(MathAtom(new MathMacroTemplate(buf,
+			cell->push_back(MathAtom(new InsetMathMacroTemplate(buf,
 				name, nargs, optionals, MacroTypeNewcommand,
 				optionalValues, def, display)));
 
@@ -1251,7 +1251,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			if (nextToken().cat() == catBegin)
 				parse(display, FLAG_ITEM, InsetMath::MATH_MODE);
 
-			cell->push_back(MathAtom(new MathMacroTemplate(buf,
+			cell->push_back(MathAtom(new InsetMathMacroTemplate(buf,
 				name, nargs, optionals, MacroTypeNewcommandx,
 				optionalValues, def, display)));
 
@@ -1399,7 +1399,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				// parse the remaining contents into the "real" cell
 				parse(*cell, FLAG_ITEM, mode);
 			} else {
-				MathAtom at = MathAtom(new MathMacro(buf, t.cs()));
+				MathAtom at = MathAtom(new InsetMathMacro(buf, t.cs()));
 				cell->push_back(at);
 				cell->push_back(MathAtom(new InsetMathBrace(count)));
 			}
@@ -1787,7 +1787,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					break;
 			}
 			if (s.empty())
-				cell->push_back(MathAtom(new MathMacro(buf, t.cs())));
+				cell->push_back(MathAtom(new InsetMathMacro(buf, t.cs())));
 			else
 				cell->push_back(MathAtom(new InsetMathKern(s)));
 		}
@@ -1897,7 +1897,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			else {
 				// Since the Length class cannot use length variables
 				// we must not create an InsetMathSpace.
-				cell->push_back(MathAtom(new MathMacro(buf, name)));
+				cell->push_back(MathAtom(new InsetMathMacro(buf, name)));
 				MathData ar;
 				mathed_parse_cell(ar, '{' + arg + '}', mode_);
 				cell->append(ar);
@@ -1916,7 +1916,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 					parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 				} else {
 					docstring const arg = parse_verbatim_item();
-					cell->push_back(MathAtom(new MathMacro(buf, t.cs())));
+					cell->push_back(MathAtom(new InsetMathMacro(buf, t.cs())));
 					MathData ar;
 					mathed_parse_cell(ar, '[' + opt + ']', mode_);
 					cell->append(ar);
@@ -2098,7 +2098,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 				}
 				if (!is_unicode_symbol) {
 					MathAtom at = is_user_macro ?
-						MathAtom(new MathMacro(buf, t.cs()))
+						MathAtom(new InsetMathMacro(buf, t.cs()))
 						: createInsetMath(t.cs(), buf);
 					InsetMath::mode_type m = mode;
 					//if (m == InsetMath::UNDECIDED_MODE)

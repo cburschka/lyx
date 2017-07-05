@@ -6754,7 +6754,7 @@ msgstr "Voliteľná fotka do životopisu"
 #: lib/layouts/scrlettr.layout:116 lib/layouts/scrlttr2.layout:149
 #: lib/layouts/sigplanconf.layout:84 lib/layouts/sigplanconf.layout:161
 #: lib/layouts/tcolorbox.module:134 src/frontends/qt4/GuiIndices.cpp:52
-#: src/mathed/MathMacroTemplate.cpp:481
+#: src/mathed/InsetMathMacroTemplate.cpp:481
 msgid "Name"
 msgstr "Meno"
 
@@ -15015,7 +15015,7 @@ msgstr "Kvapka nadol"
 msgid "Drop up"
 msgstr "Kvapka nahor"
 
-#: lib/layouts/shapepar.module:91 src/mathed/MathMacroTemplate.cpp:532
+#: lib/layouts/shapepar.module:91 src/mathed/InsetMathMacroTemplate.cpp:532
 msgid "TeX"
 msgstr "TeX"
 
@@ -24722,7 +24722,7 @@ msgid "Table (CSV)"
 msgstr "Tabuľka (CSV)"
 
 #: lib/configure.py:731 src/frontends/qt4/GuiView.cpp:1326
-#: src/mathed/MathMacroTemplate.cpp:537
+#: src/mathed/InsetMathMacroTemplate.cpp:537
 msgid "LyX"
 msgstr "LyX"
 
@@ -32998,25 +32998,25 @@ msgstr "Veľkosť: %1$s"
 msgid "Can't change horizontal alignment in '%1$s'"
 msgstr "Nedá sa zmeniť horizontálna adjustácia v '%1$s'"
 
-#: src/mathed/MathMacro.cpp:1212 src/mathed/MathMacro.cpp:1218
+#: src/mathed/InsetMathMacro.cpp:1212 src/mathed/InsetMathMacro.cpp:1218
 #, c-format
 msgid "Macro: %1$s"
 msgstr "Makro: %1$s"
 
-#: src/mathed/MathMacroTemplate.cpp:489
+#: src/mathed/InsetMathMacroTemplate.cpp:489
 msgid "optional"
 msgstr "voliteľné"
 
-#: src/mathed/MathMacroTemplate.cpp:1270
+#: src/mathed/InsetMathMacroTemplate.cpp:1270
 msgid "math macro"
 msgstr "mat. makro"
 
-#: src/mathed/MathMacroTemplate.cpp:1377
+#: src/mathed/InsetMathMacroTemplate.cpp:1377
 #, c-format
 msgid "Math Macro: \\%1$s"
 msgstr "Mat. Makro: \\%1$s"
 
-#: src/mathed/MathMacroTemplate.cpp:1392
+#: src/mathed/InsetMathMacroTemplate.cpp:1392
 #, c-format
 msgid "Invalid macro! \\%1$s"
 msgstr "Neplatné makro! \\%1$s"

@@ -23,7 +23,7 @@
 #include "insets/Inset.h"
 
 #include "mathed/InsetMath.h"
-#include "mathed/MathMacro.h"
+#include "mathed/InsetMathMacro.h"
 
 #include "support/ExceptionMessage.h"
 #include "support/gettext.h"

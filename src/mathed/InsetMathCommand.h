@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file CommandInset.h
+ * \file InsetMathCommand.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -22,10 +22,10 @@ namespace lyx {
 
 
 /// Inset for things like \name[options]{contents}
-class CommandInset : public InsetMathNest {
+class InsetMathCommand : public InsetMathNest {
 public:
 	///
-	explicit CommandInset(Buffer * buf, docstring const & name,
+	explicit InsetMathCommand(Buffer * buf, docstring const & name,
 		bool needs_math_mode = true);
 	///
 	marker_type marker(BufferView const *) const { return NO_MARKER; }

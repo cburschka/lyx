@@ -87,8 +87,8 @@ class MathStream;
 class WriteStream;
 
 class MathData;
-class MathMacroTemplate;
-class MathMacro;
+class InsetMathMacroTemplate;
+class InsetMathMacro;
 class MathRow;
 class TextPainter;
 class TextMetricsInfo;
@@ -150,10 +150,10 @@ public:
 	virtual InsetMathGrid const     * asGridInset() const     { return 0; }
 	virtual InsetMathHull           * asHullInset()           { return 0; }
 	virtual InsetMathHull const     * asHullInset() const     { return 0; }
-	virtual MathMacro               * asMacro()               { return 0; }
-	virtual MathMacro const         * asMacro() const         { return 0; }
-	virtual MathMacroTemplate       * asMacroTemplate()       { return 0; }
-	virtual MathMacroTemplate const * asMacroTemplate() const { return 0; }
+	virtual InsetMathMacro               * asMacro()               { return 0; }
+	virtual InsetMathMacro const         * asMacro() const         { return 0; }
+	virtual InsetMathMacroTemplate       * asMacroTemplate()       { return 0; }
+	virtual InsetMathMacroTemplate const * asMacroTemplate() const { return 0; }
 	virtual InsetMathMatrix const   * asMatrixInset() const   { return 0; }
 	virtual InsetMathNest           * asNestInset()           { return 0; }
 	virtual InsetMathNest const     * asNestInset() const     { return 0; }

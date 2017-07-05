@@ -39,7 +39,7 @@
 
 #include "insets/InsetText.h"
 
-#include "mathed/MathMacroTemplate.h"
+#include "mathed/InsetMathMacroTemplate.h"
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"

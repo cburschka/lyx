@@ -1,5 +1,5 @@
 /**
- * \file CommandInset.cpp
+ * \file InsetMathCommand.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "CommandInset.h"
+#include "InsetMathCommand.h"
 #include "MathData.h"
 #include "MathStream.h"
 #include "DispatchResult.h"
@@ -22,7 +22,7 @@ using namespace std;
 namespace lyx {
 
 
-CommandInset::CommandInset(Buffer * buf, docstring const & name, bool needs_math_mode)
+InsetMathCommand::InsetMathCommand(Buffer * buf, docstring const & name, bool needs_math_mode)
 	: InsetMathNest(buf, 2), name_(name), needs_math_mode_(needs_math_mode),
 	  set_label_(false)
 {
@@ -30,13 +30,13 @@ CommandInset::CommandInset(Buffer * buf, docstring const & name, bool needs_math
 }
 
 
-Inset * CommandInset::clone() const
+Inset * InsetMathCommand::clone() const
 {
-	return new CommandInset(*this);
+	return new InsetMathCommand(*this);
 }
 
 
-void CommandInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathCommand::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (!set_label_) {
 		set_label_ = true;
@@ -46,20 +46,20 @@ void CommandInset::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-Inset * CommandInset::editXY(Cursor & cur, int /*x*/, int /*y*/)
+Inset * InsetMathCommand::editXY(Cursor & cur, int /*x*/, int /*y*/)
 {
 	edit(cur, true);
 	return this;
 }
 
 
-void CommandInset::draw(PainterInfo & pi, int x, int y) const
+void InsetMathCommand::draw(PainterInfo & pi, int x, int y) const
 {
 	button_.draw(pi, x, y);
 }
 
 
-void CommandInset::write(WriteStream & os) const
+void InsetMathCommand::write(WriteStream & os) const
 {
 	ModeSpecifier specifier(os, currentMode(), lockedMode(), asciiOnly());
 	MathEnsurer ensurer(os, needs_math_mode_);
@@ -70,7 +70,7 @@ void CommandInset::write(WriteStream & os) const
 }
 
 
-docstring const CommandInset::screenLabel() const
+docstring const InsetMathCommand::screenLabel() const
 {
 	return name_;
 }

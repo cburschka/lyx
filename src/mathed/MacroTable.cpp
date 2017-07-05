@@ -12,8 +12,8 @@
 
 #include "InsetMathSqrt.h"
 #include "MacroTable.h"
-#include "MathMacroTemplate.h"
-#include "MathMacroArgument.h"
+#include "InsetMathMacroTemplate.h"
+#include "InsetMathMacroArgument.h"
 #include "MathParser.h"
 #include "MathStream.h"
 #include "MathSupport.h"
@@ -55,7 +55,7 @@ MacroData::MacroData(Buffer * buf, DocIterator const & pos)
 }
 
 
-MacroData::MacroData(Buffer * buf, MathMacroTemplate const & macro)
+MacroData::MacroData(Buffer * buf, InsetMathMacroTemplate const & macro)
 	: buffer_(buf), queried_(false), numargs_(0), sym_(0), optionals_(0),
 	  lockCount_(0), redefinition_(false), type_(MacroTypeNewcommand)
 {
@@ -81,7 +81,7 @@ bool MacroData::expand(vector<MathData> const & args, MathData & to) const
 			continue;
 		//it.cell().erase(it.pos());
 		//it.cell().insert(it.pos(), it.nextInset()->asInsetMath()
-		size_t n = static_cast<MathMacroArgument*>(it.nextInset())->number();
+		size_t n = static_cast<InsetMathMacroArgument*>(it.nextInset())->number();
 		if (n <= args.size()) {
 			it.cell().erase(it.pos());
 			it.cell().insert(it.pos(), args[n - 1]);
@@ -147,7 +147,7 @@ void MacroData::unlock() const
 }
 
 
-void MacroData::queryData(MathMacroTemplate const & macro) const
+void MacroData::queryData(InsetMathMacroTemplate const & macro) const
 {
 	if (queried_)
 		return;
@@ -182,7 +182,7 @@ void MacroData::updateData() const
 	}
 
 	// query the data from the macro template
-	queryData(static_cast<MathMacroTemplate const &>(*inset));
+	queryData(static_cast<InsetMathMacroTemplate const &>(*inset));
 }
 
 
@@ -198,8 +198,8 @@ int MacroData::write(odocstream & os, bool overwriteRedefinition) const
 	}
 
 	// output template
-	MathMacroTemplate const & tmpl =
-		static_cast<MathMacroTemplate const &>(*inset);
+	InsetMathMacroTemplate const & tmpl =
+		static_cast<InsetMathMacroTemplate const &>(*inset);
 	otexrowstream ots(os);
 	WriteStream wi(ots, false, true, WriteStream::wsDefault);
 	return tmpl.write(wi, overwriteRedefinition);
@@ -244,7 +244,7 @@ MacroTable::iterator
 MacroTable::insert(Buffer * buf, docstring const & def)
 {
 	//lyxerr << "MacroTable::insert, def: " << to_utf8(def) << endl;
-	MathMacroTemplate mac(buf);
+	InsetMathMacroTemplate mac(buf);
 	mac.fromString(def);
 	MacroData data(buf, mac);
 	return insert(mac.name(), data);

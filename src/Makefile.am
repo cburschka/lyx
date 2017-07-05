@@ -393,7 +393,6 @@ liblyxgraphics_a_SOURCES = \
 noinst_LIBRARIES += liblyxmathed.a
 
 SOURCEFILESMATHED = \
-	mathed/CommandInset.cpp \
 	mathed/InsetMathAMSArray.cpp \
 	mathed/InsetMathArray.cpp \
 	mathed/InsetMathBig.cpp \
@@ -407,6 +406,7 @@ SOURCEFILESMATHED = \
 	mathed/InsetMathChar.cpp \
 	mathed/InsetMathClass.cpp \
 	mathed/InsetMathColor.cpp \
+	mathed/InsetMathCommand.cpp \
 	mathed/InsetMathComment.cpp \
 	mathed/InsetMathDecoration.cpp \
 	mathed/InsetMathDecoration.h \
@@ -425,6 +425,9 @@ SOURCEFILESMATHED = \
 	mathed/InsetMathKern.cpp \
 	mathed/InsetMathLefteqn.cpp \
 	mathed/InsetMathLim.cpp \
+	mathed/InsetMathMacro.cpp \
+	mathed/InsetMathMacroArgument.cpp \
+	mathed/InsetMathMacroTemplate.cpp \
 	mathed/InsetMathMatrix.cpp \
 	mathed/InsetMathNest.cpp \
 	mathed/InsetMathNumber.cpp \
@@ -457,9 +460,6 @@ SOURCEFILESMATHED = \
 	mathed/MathData.cpp \
 	mathed/MathExtern.cpp \
 	mathed/MathFactory.cpp \
-	mathed/MathMacro.cpp \
-	mathed/MathMacroArgument.cpp \
-	mathed/MathMacroTemplate.cpp \
 	mathed/MathParser.cpp \
 	mathed/MathRow.cpp \
 	mathed/MathStream.cpp \
@@ -467,7 +467,6 @@ SOURCEFILESMATHED = \
 	mathed/TextPainter.cpp
 
 HEADERFILESMATHED = \
-	mathed/CommandInset.h \
 	mathed/InsetMathAMSArray.h \
 	mathed/InsetMathArray.h \
 	mathed/InsetMathBig.h \
@@ -480,6 +479,7 @@ HEADERFILESMATHED = \
 	mathed/InsetMathChar.h \
 	mathed/InsetMathClass.h \
 	mathed/InsetMathColor.h \
+	mathed/InsetMathCommand.h \
 	mathed/InsetMathComment.h \
 	mathed/InsetMathDelim.h \
 	mathed/InsetMathDiff.h \
@@ -497,6 +497,9 @@ HEADERFILESMATHED = \
 	mathed/InsetMathKern.h \
 	mathed/InsetMathLefteqn.h \
 	mathed/InsetMathLim.h \
+	mathed/InsetMathMacro.h \
+	mathed/InsetMathMacroArgument.h \
+	mathed/InsetMathMacroTemplate.h \
 	mathed/InsetMathMatrix.h \
 	mathed/InsetMathNest.h \
 	mathed/InsetMathNumber.h \
@@ -529,10 +532,7 @@ HEADERFILESMATHED = \
 	mathed/MathCompletionList.h \
 	mathed/MathExtern.h \
 	mathed/MathFactory.h \
-	mathed/MathMacro.h \
-	mathed/MathMacroArgument.h \
 	mathed/MacroTable.h \
-	mathed/MathMacroTemplate.h \
 	mathed/MathParser.h \
 	mathed/MathParser_flags.h \
 	mathed/MathRow.h \

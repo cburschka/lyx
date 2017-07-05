@@ -1,5 +1,5 @@
 /**
- * \file MathMacroArgument.cpp
+ * \file InsetMathMacroArgument.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "MathMacroArgument.h"
+#include "InsetMathMacroArgument.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 
@@ -52,11 +52,11 @@ void InsetMathHash::normalize(NormalStream & os) const
 }
 
 
-MathMacroArgument::MathMacroArgument(int n)
+InsetMathMacroArgument::InsetMathMacroArgument(int n)
 	: number_(n)
 {
 	if (n < 1 || n > 9) {
-		LYXERR0("MathMacroArgument::MathMacroArgument: wrong Argument id: "
+		LYXERR0("InsetMathMacroArgument::InsetMathMacroArgument: wrong Argument id: "
 		        << n);
 		LASSERT(false, n = 1);
 	}
@@ -70,16 +70,16 @@ MathMacroArgument::MathMacroArgument(int n)
 }
 
 
-Inset * MathMacroArgument::clone() const
+Inset * InsetMathMacroArgument::clone() const
 {
-	return new MathMacroArgument(*this);
+	return new InsetMathMacroArgument(*this);
 }
 
 
-void MathMacroArgument::setNumber(int n)
+void InsetMathMacroArgument::setNumber(int n)
 {
 	if (n < 1 || n > 9) {
-		LYXERR0("MathMacroArgument::setNumber: wrong Argument id: " << n);
+		LYXERR0("InsetMathMacroArgument::setNumber: wrong Argument id: " << n);
 		LASSERT(false, return);
 	}
 
@@ -88,7 +88,7 @@ void MathMacroArgument::setNumber(int n)
 }
 
 
-void MathMacroArgument::normalize(NormalStream & os) const
+void InsetMathMacroArgument::normalize(NormalStream & os) const
 {
 	os << "[macroarg " << str_ << "] ";
 }

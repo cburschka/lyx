@@ -178,7 +178,7 @@ int ensureMode(WriteStream & os, InsetMath::mode_type mode, bool locked, bool as
  *
  * A local variable of this type can be used to either ensure math mode
  * or delay the writing of a pending brace when outputting LaTeX.
- * A LyX MathMacro is always assumed needing a math mode environment, while
+ * A LyX InsetMathMacro is always assumed needing a math mode environment, while
  * no assumption is made for macros defined through \newcommand or \def.
  *
  * Example 1:
@@ -208,7 +208,7 @@ int ensureMode(WriteStream & os, InsetMath::mode_type mode, bool locked, bool as
  * to be specified. Only the following 3 different cases are handled.
  *
  * When the needs_mathmode parameter is true the behavior is as in Example 1.
- * This is the case for a LyX MathMacro or a macro not tagged as textmode.
+ * This is the case for a LyX InsetMathMacro or a macro not tagged as textmode.
  *
  * When the needs_mathmode and textmode_macro parameters are both false the
  * macro is left in the same (text or math mode) environment it was entered.

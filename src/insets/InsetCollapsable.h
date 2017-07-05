@@ -178,7 +178,7 @@ private:
 		/// a substatus of the Open status, determined automatically in metrics
 		bool openinlined_;
 		/// the inset will automatically open when the cursor is inside. This is
-		/// dependent on the bufferview, compare with MathMacro::editing_.
+		/// dependent on the bufferview, compare with InsetMathMacro::editing_.
 		bool auto_open_;
 		/// changes color when mouse enters/leaves this inset
 		bool mouse_hover_;

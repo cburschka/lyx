@@ -1,5 +1,5 @@
 /**
- * \file MathMacro.cpp
+ * \file InsetMathMacro.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 
 #include <config.h>
 
-#include "MathMacro.h"
+#include "InsetMathMacro.h"
 
 #include "InsetMathChar.h"
 #include "MathCompletionList.h"
@@ -51,21 +51,21 @@ namespace lyx {
 
 
 /// A proxy for the macro values
-class ArgumentProxy : public InsetMath {
+class InsetArgumentProxy : public InsetMath {
 public:
 	///
-	ArgumentProxy(MathMacro * mathMacro, size_t idx)
+	InsetArgumentProxy(InsetMathMacro * mathMacro, size_t idx)
 		: mathMacro_(mathMacro), idx_(idx) {}
 	///
-	ArgumentProxy(MathMacro * mathMacro, size_t idx, docstring const & def)
+	InsetArgumentProxy(InsetMathMacro * mathMacro, size_t idx, docstring const & def)
 		: mathMacro_(mathMacro), idx_(idx)
 	{
 			asArray(def, def_);
 	}
 	///
-	void setOwner(MathMacro * mathMacro) { mathMacro_ = mathMacro; }
+	void setOwner(InsetMathMacro * mathMacro) { mathMacro_ = mathMacro; }
 	///
-	MathMacro const * owner() { return mathMacro_; }
+	InsetMathMacro const * owner() { return mathMacro_; }
 	///
 	marker_type marker(BufferView const *) const { return NO_MARKER; }
 	///
@@ -139,12 +139,12 @@ public:
 	}
 	///
 	void metrics(MetricsInfo &, Dimension &) const {
-		// This should never be invoked, since ArgumentProxy insets are linearized
+		// This should never be invoked, since InsetArgumentProxy insets are linearized
 		LATTEST(false);
 	}
 	///
 	void draw(PainterInfo &, int, int) const {
-		// This should never be invoked, since ArgumentProxy insets are linearized
+		// This should never be invoked, since InsetArgumentProxy insets are linearized
 		LATTEST(false);
 	}
 	///
@@ -153,7 +153,7 @@ public:
 		return displayCell(bv).kerning(bv);
 	}
 	// write(), normalize(), infoize() and infoize2() are not needed since
-	// MathMacro uses the definition and not the expanded cells.
+	// InsetMathMacro uses the definition and not the expanded cells.
 	///
 	void maple(MapleStream & ms) const { ms << mathMacro_->cell(idx_); }
 	///
@@ -180,10 +180,10 @@ private:
 	///
 	Inset * clone() const
 	{
-		return new ArgumentProxy(*this);
+		return new InsetArgumentProxy(*this);
 	}
 	///
-	MathMacro * mathMacro_;
+	InsetMathMacro * mathMacro_;
 	///
 	size_t idx_;
 	///
@@ -191,8 +191,8 @@ private:
 };
 
 
-/// Private implementation of MathMacro
-class MathMacro::Private {
+/// Private implementation of InsetMathMacro
+class InsetMathMacro::Private {
 public:
 	Private(Buffer * buf, docstring const & name)
 		: name_(name), displayMode_(DISPLAY_INIT),
@@ -205,10 +205,10 @@ public:
 	/// Update the pointers to our owner of all expanded macros.
 	/// This needs to be called every time a copy of the owner is created
 	/// (bug 9418).
-	void updateChildren(MathMacro * owner);
+	void updateChildren(InsetMathMacro * owner);
 	/// Recursively update the pointers of all expanded macros
 	/// appearing in the arguments of the current macro
-	void updateNestedChildren(MathMacro * owner, InsetMathNest * ni);
+	void updateNestedChildren(InsetMathMacro * owner, InsetMathNest * ni);
 	/// name of macro
 	docstring name_;
 	/// current display mode
@@ -244,10 +244,10 @@ public:
 };
 
 
-void MathMacro::Private::updateChildren(MathMacro * owner)
+void InsetMathMacro::Private::updateChildren(InsetMathMacro * owner)
 {
 	for (size_t i = 0; i < expanded_.size(); ++i) {
-		ArgumentProxy * p = dynamic_cast<ArgumentProxy *>(expanded_[i].nucleus());
+		InsetArgumentProxy * p = dynamic_cast<InsetArgumentProxy *>(expanded_[i].nucleus());
 		if (p)
 			p->setOwner(owner);
 
@@ -269,15 +269,15 @@ void MathMacro::Private::updateChildren(MathMacro * owner)
 }
 
 
-void MathMacro::Private::updateNestedChildren(MathMacro * owner, InsetMathNest * ni)
+void InsetMathMacro::Private::updateNestedChildren(InsetMathMacro * owner, InsetMathNest * ni)
 {
 	for (size_t i = 0; i < ni->nargs(); ++i) {
 		MathData & ar = ni->cell(i);
 		for (size_t j = 0; j < ar.size(); ++j) {
-			ArgumentProxy * ap = dynamic_cast
-				<ArgumentProxy *>(ar[j].nucleus());
+			InsetArgumentProxy * ap = dynamic_cast
+				<InsetArgumentProxy *>(ar[j].nucleus());
 			if (ap) {
-				MathMacro::Private * md = ap->owner()->d;
+				InsetMathMacro::Private * md = ap->owner()->d;
 				if (md->macro_)
 					md->macro_ = &md->macroBackup_;
 				ap->setOwner(owner);
@@ -290,12 +290,12 @@ void MathMacro::Private::updateNestedChildren(MathMacro * owner, InsetMathNest *
 }
 
 
-MathMacro::MathMacro(Buffer * buf, docstring const & name)
+InsetMathMacro::InsetMathMacro(Buffer * buf, docstring const & name)
 	: InsetMathNest(buf, 0), d(new Private(buf, name))
 {}
 
 
-MathMacro::MathMacro(MathMacro const & that)
+InsetMathMacro::InsetMathMacro(InsetMathMacro const & that)
 	: InsetMathNest(that), d(new Private(*that.d))
 {
 	setBuffer(*that.buffer_);
@@ -303,7 +303,7 @@ MathMacro::MathMacro(MathMacro const & that)
 }
 
 
-MathMacro & MathMacro::operator=(MathMacro const & that)
+InsetMathMacro & InsetMathMacro::operator=(InsetMathMacro const & that)
 {
 	if (&that == this)
 		return *this;
@@ -314,13 +314,13 @@ MathMacro & MathMacro::operator=(MathMacro const & that)
 }
 
 
-MathMacro::~MathMacro()
+InsetMathMacro::~InsetMathMacro()
 {
 	delete d;
 }
 
 
-bool MathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
+bool InsetMathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 {
 	// set edit mode for which we will have calculated row.
 	// This is the same as what is done in metrics().
@@ -330,7 +330,7 @@ bool MathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 	// - display mode different from normal
 	// - editing with parameter list
 	// - editing with box around macro
-	if (displayMode() != MathMacro::DISPLAY_NORMAL
+	if (displayMode() != InsetMathMacro::DISPLAY_NORMAL
 		|| (d->editing_[mi.base.bv] && lyxrc.macro_edit_style == LyXRC::MACRO_EDIT_LIST))
 		return InsetMath::addToMathRow(mrow, mi);
 
@@ -364,42 +364,42 @@ bool MathMacro::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 	return has_contents;
 }
 
-void MathMacro::beforeMetrics() const
+void InsetMathMacro::beforeMetrics() const
 {
 	d->macro_->lock();
 }
 
 
-void MathMacro::afterMetrics() const
+void InsetMathMacro::afterMetrics() const
 {
 	d->macro_->unlock();
 }
 
 
-void MathMacro::beforeDraw(PainterInfo const & pi) const
+void InsetMathMacro::beforeDraw(PainterInfo const & pi) const
 {
 	if (d->editing_[pi.base.bv])
 		pi.pain.enterMonochromeMode(Color_mathbg, Color_mathmacroblend);
 }
 
 
-void MathMacro::afterDraw(PainterInfo const & pi) const
+void InsetMathMacro::afterDraw(PainterInfo const & pi) const
 {
 	if (d->editing_[pi.base.bv])
 		pi.pain.leaveMonochromeMode();
 }
 
 
-Inset * MathMacro::clone() const
+Inset * InsetMathMacro::clone() const
 {
-	MathMacro * copy = new MathMacro(*this);
+	InsetMathMacro * copy = new InsetMathMacro(*this);
 	copy->d->needsUpdate_ = true;
 	//copy->d->expanded_.clear();
 	return copy;
 }
 
 
-void MathMacro::normalize(NormalStream & os) const
+void InsetMathMacro::normalize(NormalStream & os) const
 {
 	os << "[macro " << name();
 	for (size_t i = 0; i < nargs(); ++i)
@@ -408,19 +408,19 @@ void MathMacro::normalize(NormalStream & os) const
 }
 
 
-MathMacro::DisplayMode MathMacro::displayMode() const
+InsetMathMacro::DisplayMode InsetMathMacro::displayMode() const
 {
 	return d->displayMode_;
 }
 
 
-bool MathMacro::extraBraces() const
+bool InsetMathMacro::extraBraces() const
 {
 	return d->displayMode_ == DISPLAY_NORMAL && arity() > 0;
 }
 
 
-docstring MathMacro::name() const
+docstring InsetMathMacro::name() const
 {
 	if (d->displayMode_ == DISPLAY_UNFOLDED)
 		return asString(cell(0));
@@ -429,19 +429,19 @@ docstring MathMacro::name() const
 }
 
 
-docstring MathMacro::macroName() const
+docstring InsetMathMacro::macroName() const
 {
 	return d->name_;
 }
 
 
-int MathMacro::nesting() const
+int InsetMathMacro::nesting() const
 {
 	return d->nesting_;
 }
 
 
-void MathMacro::cursorPos(BufferView const & bv,
+void InsetMathMacro::cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x,	int & y) const
 {
 	// We may have 0 arguments, but InsetMathNest requires at least one.
@@ -450,7 +450,7 @@ void MathMacro::cursorPos(BufferView const & bv,
 }
 
 
-bool MathMacro::editMode(BufferView const * bv) const {
+bool InsetMathMacro::editMode(BufferView const * bv) const {
 	// find this in cursor trace
 	Cursor const & cur = bv->cursor();
 	for (size_t i = 0; i != cur.depth(); ++i)
@@ -460,7 +460,7 @@ bool MathMacro::editMode(BufferView const * bv) const {
 			for (; i != cur.depth(); ++i) {
 				InsetMath * im = cur[i].asInsetMath();
 				if (im) {
-					MathMacro const * macro = im->asMacro();
+					InsetMathMacro const * macro = im->asMacro();
 					if (macro && macro->displayMode() == DISPLAY_NORMAL)
 						return false;
 				}
@@ -474,19 +474,19 @@ bool MathMacro::editMode(BufferView const * bv) const {
 }
 
 
-MacroData const * MathMacro::macro() const
+MacroData const * InsetMathMacro::macro() const
 {
 	return d->macro_;
 }
 
 
-bool MathMacro::editMetrics(BufferView const * bv) const
+bool InsetMathMacro::editMetrics(BufferView const * bv) const
 {
 	return d->editing_[bv];
 }
 
 
-InsetMath::marker_type MathMacro::marker(BufferView const * bv) const
+InsetMath::marker_type InsetMathMacro::marker(BufferView const * bv) const
 {
 	if (nargs() == 0)
 		return NO_MARKER;
@@ -512,7 +512,7 @@ InsetMath::marker_type MathMacro::marker(BufferView const * bv) const
 }
 
 
-void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetMathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	/// The macro nesting can change display of insets. Change it locally.
 	Changer chg = make_change(mi.base.macro_nesting, d->nesting_);
@@ -578,7 +578,7 @@ void MathMacro::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-int MathMacro::kerning(BufferView const * bv) const {
+int InsetMathMacro::kerning(BufferView const * bv) const {
 	if (d->displayMode_ == DISPLAY_NORMAL && !d->editing_[bv])
 		return d->expanded_.kerning(bv);
 	else
@@ -586,7 +586,7 @@ int MathMacro::kerning(BufferView const * bv) const {
 }
 
 
-void MathMacro::updateMacro(MacroContext const & mc)
+void InsetMathMacro::updateMacro(MacroContext const & mc)
 {
 	if (validName()) {
 		d->macro_ = mc.get(name());
@@ -600,16 +600,16 @@ void MathMacro::updateMacro(MacroContext const & mc)
 }
 
 
-class MathMacro::UpdateLocker
+class InsetMathMacro::UpdateLocker
 {
 public:
-	explicit UpdateLocker(MathMacro & mm) : mac(mm)
+	explicit UpdateLocker(InsetMathMacro & mm) : mac(mm)
 	{
 		mac.d->isUpdating_ = true;
 	}
 	~UpdateLocker() { mac.d->isUpdating_ = false; }
 private:
-	MathMacro & mac;
+	InsetMathMacro & mac;
 };
 /** Avoid wrong usage of UpdateLocker.
     To avoid wrong usage:
@@ -620,7 +620,7 @@ private:
 // Tip gotten from Bobby Schmidt's column in C/C++ Users Journal
 
 
-void MathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
+void InsetMathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
 	UpdateType utype, int nesting)
 {
 	// block recursive calls (bug 8999)
@@ -652,17 +652,17 @@ void MathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
 	// create MathMacroArgumentValue objects pointing to the cells of the macro
 	vector<MathData> values(nargs());
 	for (size_t i = 0; i < nargs(); ++i) {
-		ArgumentProxy * proxy;
+		InsetArgumentProxy * proxy;
 		if (i < defaults.size())
-			proxy = new ArgumentProxy(this, i, defaults[i]);
+			proxy = new InsetArgumentProxy(this, i, defaults[i]);
 		else
-			proxy = new ArgumentProxy(this, i);
+			proxy = new InsetArgumentProxy(this, i);
 		values[i].insert(0, MathAtom(proxy));
 	}
 	// expanding macro with the values
 	// Only update the argument macros if anything was expanded, otherwise
 	// we would get an endless loop (bug 9140). UpdateLocker does not work
-	// in this case, since MacroData::expand() creates new MathMacro
+	// in this case, since MacroData::expand() creates new InsetMathMacro
 	// objects, so this would be a different recursion path than the one
 	// protected by UpdateLocker.
 	if (d->macro_->expand(values, d->expanded_)) {
@@ -676,7 +676,7 @@ void MathMacro::updateRepresentation(Cursor * cur, MacroContext const & mc,
 }
 
 
-void MathMacro::draw(PainterInfo & pi, int x, int y) const
+void InsetMathMacro::draw(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
 
@@ -753,7 +753,7 @@ void MathMacro::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathMacro::setDisplayMode(MathMacro::DisplayMode mode, int appetite)
+void InsetMathMacro::setDisplayMode(InsetMathMacro::DisplayMode mode, int appetite)
 {
 	if (d->displayMode_ != mode) {
 		// transfer name if changing from or to DISPLAY_UNFOLDED
@@ -777,7 +777,7 @@ void MathMacro::setDisplayMode(MathMacro::DisplayMode mode, int appetite)
 }
 
 
-MathMacro::DisplayMode MathMacro::computeDisplayMode() const
+InsetMathMacro::DisplayMode InsetMathMacro::computeDisplayMode() const
 {
 	if (d->nextFoldMode_ == true && d->macro_ && !d->macro_->locked())
 		return DISPLAY_NORMAL;
@@ -786,7 +786,7 @@ MathMacro::DisplayMode MathMacro::computeDisplayMode() const
 }
 
 
-bool MathMacro::validName() const
+bool InsetMathMacro::validName() const
 {
 	docstring n = name();
 
@@ -811,7 +811,7 @@ bool MathMacro::validName() const
 }
 
 
-size_t MathMacro::arity() const
+size_t InsetMathMacro::arity() const
 {
 	if (d->displayMode_ == DISPLAY_NORMAL )
 		return cells_.size();
@@ -820,26 +820,26 @@ size_t MathMacro::arity() const
 }
 
 
-size_t MathMacro::optionals() const
+size_t InsetMathMacro::optionals() const
 {
 	return d->optionals_;
 }
 
 
-void MathMacro::setOptionals(int n)
+void InsetMathMacro::setOptionals(int n)
 {
 	if (n <= int(nargs()))
 		d->optionals_ = n;
 }
 
 
-size_t MathMacro::appetite() const
+size_t InsetMathMacro::appetite() const
 {
 	return d->appetite_;
 }
 
 
-MathClass MathMacro::mathClass() const
+MathClass InsetMathMacro::mathClass() const
 {
 	// This can be just a heuristic, since it is only considered for display
 	// when the macro is not linearised. Therefore it affects:
@@ -859,7 +859,7 @@ MathClass MathMacro::mathClass() const
 }
 
 
-InsetMath::mode_type MathMacro::currentMode() const
+InsetMath::mode_type InsetMathMacro::currentMode() const
 {
 	// There is no way to guess the mode of user defined macros, so they are
 	// always assumed to be mathmode.  Only the global macros defined in
@@ -869,7 +869,7 @@ InsetMath::mode_type MathMacro::currentMode() const
 }
 
 
-InsetMath::mode_type MathMacro::modeToEnsure() const
+InsetMath::mode_type InsetMathMacro::modeToEnsure() const
 {
 	// User defined macros can be either text mode or math mode for output and
 	// display. There is no way to guess. For global macros defined in
@@ -882,7 +882,7 @@ InsetMath::mode_type MathMacro::modeToEnsure() const
 }
 
 
-MacroData const * MathMacro::macroBackup() const
+MacroData const * InsetMathMacro::macroBackup() const
 {
 	if (macro())
 		return &d->macroBackup_;
@@ -892,7 +892,7 @@ MacroData const * MathMacro::macroBackup() const
 }
 
 
-void MathMacro::validate(LaTeXFeatures & features) const
+void InsetMathMacro::validate(LaTeXFeatures & features) const
 {
 	// Immediately after a document is loaded, in some cases the MacroData
 	// of the global macros defined in the lib/symbols file may still not
@@ -921,14 +921,14 @@ void MathMacro::validate(LaTeXFeatures & features) const
 }
 
 
-void MathMacro::edit(Cursor & cur, bool front, EntryDirection entry_from)
+void InsetMathMacro::edit(Cursor & cur, bool front, EntryDirection entry_from)
 {
 	cur.screenUpdateFlags(Update::SinglePar);
 	InsetMathNest::edit(cur, front, entry_from);
 }
 
 
-Inset * MathMacro::editXY(Cursor & cur, int x, int y)
+Inset * InsetMathMacro::editXY(Cursor & cur, int x, int y)
 {
 	// We may have 0 arguments, but InsetMathNest requires at least one.
 	if (nargs() > 0) {
@@ -939,7 +939,7 @@ Inset * MathMacro::editXY(Cursor & cur, int x, int y)
 }
 
 
-void MathMacro::removeArgument(Inset::pos_type pos) {
+void InsetMathMacro::removeArgument(Inset::pos_type pos) {
 	if (d->displayMode_ == DISPLAY_NORMAL) {
 		LASSERT(size_t(pos) < cells_.size(), return);
 		cells_.erase(cells_.begin() + pos);
@@ -954,7 +954,7 @@ void MathMacro::removeArgument(Inset::pos_type pos) {
 }
 
 
-void MathMacro::insertArgument(Inset::pos_type pos) {
+void InsetMathMacro::insertArgument(Inset::pos_type pos) {
 	if (d->displayMode_ == DISPLAY_NORMAL) {
 		LASSERT(size_t(pos) <= cells_.size(), return);
 		cells_.insert(cells_.begin() + pos, MathData());
@@ -968,7 +968,7 @@ void MathMacro::insertArgument(Inset::pos_type pos) {
 }
 
 
-void MathMacro::detachArguments(vector<MathData> & args, bool strip)
+void InsetMathMacro::detachArguments(vector<MathData> & args, bool strip)
 {
 	LASSERT(d->displayMode_ == DISPLAY_NORMAL, return);
 	args = cells_;
@@ -989,7 +989,7 @@ void MathMacro::detachArguments(vector<MathData> & args, bool strip)
 }
 
 
-void MathMacro::attachArguments(vector<MathData> const & args, size_t arity, int optionals)
+void InsetMathMacro::attachArguments(vector<MathData> const & args, size_t arity, int optionals)
 {
 	LASSERT(d->displayMode_ == DISPLAY_NORMAL, return);
 	cells_ = args;
@@ -1002,21 +1002,21 @@ void MathMacro::attachArguments(vector<MathData> const & args, size_t arity, int
 }
 
 
-bool MathMacro::idxFirst(Cursor & cur) const
+bool InsetMathMacro::idxFirst(Cursor & cur) const
 {
 	cur.screenUpdateFlags(Update::SinglePar);
 	return InsetMathNest::idxFirst(cur);
 }
 
 
-bool MathMacro::idxLast(Cursor & cur) const
+bool InsetMathMacro::idxLast(Cursor & cur) const
 {
 	cur.screenUpdateFlags(Update::SinglePar);
 	return InsetMathNest::idxLast(cur);
 }
 
 
-bool MathMacro::notifyCursorLeaves(Cursor const & old, Cursor & cur)
+bool InsetMathMacro::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 {
 	if (d->displayMode_ == DISPLAY_UNFOLDED) {
 		docstring const & unfolded_name = name();
@@ -1043,7 +1043,7 @@ bool MathMacro::notifyCursorLeaves(Cursor const & old, Cursor & cur)
 }
 
 
-void MathMacro::fold(Cursor & cur)
+void InsetMathMacro::fold(Cursor & cur)
 {
 	if (!d->nextFoldMode_) {
 		d->nextFoldMode_ = true;
@@ -1052,7 +1052,7 @@ void MathMacro::fold(Cursor & cur)
 }
 
 
-void MathMacro::unfold(Cursor & cur)
+void InsetMathMacro::unfold(Cursor & cur)
 {
 	if (d->nextFoldMode_) {
 		d->nextFoldMode_ = false;
@@ -1061,13 +1061,13 @@ void MathMacro::unfold(Cursor & cur)
 }
 
 
-bool MathMacro::folded() const
+bool InsetMathMacro::folded() const
 {
 	return d->nextFoldMode_;
 }
 
 
-void MathMacro::write(WriteStream & os) const
+void InsetMathMacro::write(WriteStream & os) const
 {
 	mode_type mode = modeToEnsure();
 	bool textmode_macro = mode == TEXT_MODE;
@@ -1143,25 +1143,25 @@ void MathMacro::write(WriteStream & os) const
 }
 
 
-void MathMacro::maple(MapleStream & os) const
+void InsetMathMacro::maple(MapleStream & os) const
 {
 	lyx::maple(d->expanded_, os);
 }
 
 
-void MathMacro::maxima(MaximaStream & os) const
+void InsetMathMacro::maxima(MaximaStream & os) const
 {
 	lyx::maxima(d->expanded_, os);
 }
 
 
-void MathMacro::mathematica(MathematicaStream & os) const
+void InsetMathMacro::mathematica(MathematicaStream & os) const
 {
 	lyx::mathematica(d->expanded_, os);
 }
 
 
-void MathMacro::mathmlize(MathStream & os) const
+void InsetMathMacro::mathmlize(MathStream & os) const
 {
 	// macro_ is 0 if this is an unknown macro
 	LATTEST(d->macro_ || d->displayMode_ != DISPLAY_NORMAL);
@@ -1182,7 +1182,7 @@ void MathMacro::mathmlize(MathStream & os) const
 }
 
 
-void MathMacro::htmlize(HtmlStream & os) const
+void InsetMathMacro::htmlize(HtmlStream & os) const
 {
 	// macro_ is 0 if this is an unknown macro
 	LATTEST(d->macro_ || d->displayMode_ != DISPLAY_NORMAL);
@@ -1201,25 +1201,25 @@ void MathMacro::htmlize(HtmlStream & os) const
 }
 
 
-void MathMacro::octave(OctaveStream & os) const
+void InsetMathMacro::octave(OctaveStream & os) const
 {
 	lyx::octave(d->expanded_, os);
 }
 
 
-void MathMacro::infoize(odocstream & os) const
+void InsetMathMacro::infoize(odocstream & os) const
 {
 	os << bformat(_("Macro: %1$s"), name());
 }
 
 
-void MathMacro::infoize2(odocstream & os) const
+void InsetMathMacro::infoize2(odocstream & os) const
 {
 	os << bformat(_("Macro: %1$s"), name());
 }
 
 
-bool MathMacro::completionSupported(Cursor const & cur) const
+bool InsetMathMacro::completionSupported(Cursor const & cur) const
 {
 	if (displayMode() != DISPLAY_UNFOLDED)
 		return InsetMathNest::completionSupported(cur);
@@ -1230,7 +1230,7 @@ bool MathMacro::completionSupported(Cursor const & cur) const
 }
 
 
-bool MathMacro::inlineCompletionSupported(Cursor const & cur) const
+bool InsetMathMacro::inlineCompletionSupported(Cursor const & cur) const
 {
 	if (displayMode() != DISPLAY_UNFOLDED)
 		return InsetMathNest::inlineCompletionSupported(cur);
@@ -1241,7 +1241,7 @@ bool MathMacro::inlineCompletionSupported(Cursor const & cur) const
 }
 
 
-bool MathMacro::automaticInlineCompletion() const
+bool InsetMathMacro::automaticInlineCompletion() const
 {
 	if (displayMode() != DISPLAY_UNFOLDED)
 		return InsetMathNest::automaticInlineCompletion();
@@ -1250,7 +1250,7 @@ bool MathMacro::automaticInlineCompletion() const
 }
 
 
-bool MathMacro::automaticPopupCompletion() const
+bool InsetMathMacro::automaticPopupCompletion() const
 {
 	if (displayMode() != DISPLAY_UNFOLDED)
 		return InsetMathNest::automaticPopupCompletion();
@@ -1260,7 +1260,7 @@ bool MathMacro::automaticPopupCompletion() const
 
 
 CompletionList const *
-MathMacro::createCompletionList(Cursor const & cur) const
+InsetMathMacro::createCompletionList(Cursor const & cur) const
 {
 	if (displayMode() != DISPLAY_UNFOLDED)
 		return InsetMathNest::createCompletionList(cur);
@@ -1269,7 +1269,7 @@ MathMacro::createCompletionList(Cursor const & cur) const
 }
 
 
-docstring MathMacro::completionPrefix(Cursor const & cur) const
+docstring InsetMathMacro::completionPrefix(Cursor const & cur) const
 {
 	if (displayMode() != DISPLAY_UNFOLDED)
 		return InsetMathNest::completionPrefix(cur);
@@ -1281,7 +1281,7 @@ docstring MathMacro::completionPrefix(Cursor const & cur) const
 }
 
 
-bool MathMacro::insertCompletion(Cursor & cur, docstring const & s,
+bool InsetMathMacro::insertCompletion(Cursor & cur, docstring const & s,
 					bool finished)
 {
 	if (displayMode() != DISPLAY_UNFOLDED)
@@ -1307,7 +1307,7 @@ bool MathMacro::insertCompletion(Cursor & cur, docstring const & s,
 }
 
 
-void MathMacro::completionPosAndDim(Cursor const & cur, int & x, int & y,
+void InsetMathMacro::completionPosAndDim(Cursor const & cur, int & x, int & y,
 	Dimension & dim) const
 {
 	if (displayMode() != DISPLAY_UNFOLDED)

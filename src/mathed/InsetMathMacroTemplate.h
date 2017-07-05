@@ -24,12 +24,12 @@ class OutputParams;
 class XHTMLStream;
 
 /// This class contains the macro definition.
-class MathMacroTemplate : public InsetMathNest {
+class InsetMathMacroTemplate : public InsetMathNest {
 public:
 	///
-	MathMacroTemplate(Buffer * buf);
+	InsetMathMacroTemplate(Buffer * buf);
 	///
-	MathMacroTemplate(Buffer * buf, docstring const & name, int nargs,
+	InsetMathMacroTemplate(Buffer * buf, docstring const & name, int nargs,
 		int optional, MacroType type,
 		std::vector<MathData> const & optionalValues = std::vector<MathData>(),
 		MathData const & def = MathData(),
@@ -94,9 +94,9 @@ public:
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	/// identifies macro templates
-	MathMacroTemplate * asMacroTemplate() { return this; }
+	InsetMathMacroTemplate * asMacroTemplate() { return this; }
 	/// identifies macro templates
-	MathMacroTemplate const * asMacroTemplate() const { return this; }
+	InsetMathMacroTemplate const * asMacroTemplate() const { return this; }
 	///
 	InsetCode lyxCode() const { return MATHMACRO_CODE; }
 	///
@@ -115,7 +115,7 @@ protected:
 
 private:
 	friend class InsetLabelBox;
-	friend class DisplayLabelBox;
+	friend class InsetDisplayLabelBox;
 
 	///
 	virtual Inset * clone() const;
