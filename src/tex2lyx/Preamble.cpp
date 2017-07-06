@@ -992,9 +992,9 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (is_known(name, known_lyx_packages) && options.empty()) {
 		if (name == "splitidx")
 			h_use_indices = "true";
-		if (name == "minted")
-			h_use_minted = "true";
-		if (name == "refstyle")
+		else if (name == "minted")
+			h_use_minted = true;
+		else if (name == "refstyle")
 			h_use_refstyle = true;
 		else if (name == "prettyref")
 			h_use_refstyle = false;
