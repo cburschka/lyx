@@ -96,7 +96,7 @@ void BufferList::release(Buffer * buf)
 	BufferStorage::iterator const it =
 		find(bstore.begin(), bstore.end(), buf);
 	if (it != bstore.end()) {
-		Buffer const * parent = buf ? buf->parent() : 0;
+		Buffer const * parent = buf->parent();
 		Buffer * tmp = (*it);
 		bstore.erase(it);
 		LASSERT(tmp, return);
