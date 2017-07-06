@@ -137,14 +137,14 @@ DWORD WINAPI pipeServerWrapper(void * arg)
 
 
 LyXComm::LyXComm(string const & pip, Server * cli, ClientCallbackfct ccb)
-	: stopserver_(0), pipename_(pip), client_(cli), clientcb_(ccb)
+	: stopserver_(0),
+	  ready_(false), pipename_(pip), client_(cli), clientcb_(ccb),
+	  deferred_loading_(false)
 {
 	for (int i = 0; i < MAX_PIPES; ++i) {
 		event_[i] = 0;
 		pipe_[i].handle = INVALID_HANDLE_VALUE;
 	}
-	ready_ = false;
-	deferred_loading_ = false;
 	openConnection();
 }
 
@@ -730,10 +730,10 @@ void LyXComm::send(string const & msg)
 #else // defined (HAVE_MKFIFO)
 
 LyXComm::LyXComm(string const & pip, Server * cli, ClientCallbackfct ccb)
-	: pipename_(pip), client_(cli), clientcb_(ccb)
+	: infd_(-1), outfd_(-1),
+	  ready_(false), pipename_(pip), client_(cli), clientcb_(ccb),
+	  deferred_loading_(false)
 {
-	ready_ = false;
-	deferred_loading_ = false;
 	openConnection();
 }
 
