@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2017-06-13 02:09+0200\n"
-"PO-Revision-Date: 2017-03-26 21:32+0300\n"
+"PO-Revision-Date: 2017-07-05 20:34+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "Language: uk\n"
@@ -1728,9 +1728,8 @@ msgid "&Base size:"
 msgstr "&Базовий розмір:"
 
 #: src/frontends/qt4/ui/FontUi.ui:81
-#, fuzzy
 msgid "&LaTeX font encoding:"
-msgstr "Кодування шрифту LaTe&X:"
+msgstr "Кодування шри&фту LaTeX:"
 
 #: src/frontends/qt4/ui/FontUi.ui:96 src/frontends/qt4/ui/PrefLatexUi.ui:44
 msgid "Specify the font encoding (e.g., T1)."
@@ -2426,11 +2425,11 @@ msgstr "Вікно зворотної реакції"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:92
 msgid "Choose the LaTeX package for code syntax highlighting"
-msgstr ""
+msgstr "Виберіть пакунок LaTeX для підсвічування синтаксичних конструкцій коду"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:95
 msgid "&Syntax Highlighting Package:"
-msgstr ""
+msgstr "&Пакунок для підсвічування синтаксису:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:324
 #: lib/layouts/stdinsets.inc:330 lib/layouts/stdinsets.inc:375
@@ -2807,25 +2806,23 @@ msgstr "&Не завантажувати"
 
 #: src/frontends/qt4/ui/MathsUi.ui:48
 msgid "Indent displayed formulas instead of centering"
-msgstr ""
+msgstr "Додавати відступи для виключних формул замість центрування"
 
 #: src/frontends/qt4/ui/MathsUi.ui:51
-#, fuzzy
 msgid "Indent &Formulas"
-msgstr "Рядкова формула|ф"
+msgstr "Ві&дступи для формул"
 
 #: src/frontends/qt4/ui/MathsUi.ui:67 src/frontends/qt4/ui/TextLayoutUi.ui:48
 msgid "Size of the indentation"
 msgstr "Розміри відступу"
 
 #: src/frontends/qt4/ui/MathsUi.ui:141
-#, fuzzy
 msgid "Formula numbering side:"
-msgstr "Формати"
+msgstr "Бік нумерування формул:"
 
 #: src/frontends/qt4/ui/MathsUi.ui:157
 msgid "Side where formulas are numbered"
-msgstr ""
+msgstr "Бік, з якого слід розташовувати номер формули"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:60
 msgid "A&vailable:"
@@ -4244,9 +4241,8 @@ msgid "R&oman:"
 msgstr "П&рямий:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:209
-#, fuzzy
 msgid "Default &zoom %:"
-msgstr "Типовий формат"
+msgstr "Типовий &масштаб у %:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:246
 msgid "Font Sizes"
@@ -7203,7 +7199,7 @@ msgstr "Астрономія і астрофізика (версія 4, заст
 #: lib/layouts/sigplanconf.layout:4 lib/layouts/singlecol.layout:4
 #: lib/layouts/svglobal.layout:4
 msgid "Obsolete"
-msgstr ""
+msgstr "Застарілий"
 
 #: lib/layouts/aapaper.layout:50 lib/layouts/agu_stdlists.inc:13
 #: lib/layouts/apa.layout:357 lib/layouts/apa6.layout:457
@@ -7521,9 +7517,8 @@ msgid "Abbreviations:"
 msgstr "Скорочення:"
 
 #: lib/layouts/achemso.layout:162
-#, fuzzy
 msgid "Schemes"
-msgstr "Scheme"
+msgstr "Схеми"
 
 #: lib/layouts/achemso.layout:166 lib/layouts/achemso.layout:178
 msgid "Scheme"
@@ -7534,9 +7529,8 @@ msgid "List of Schemes"
 msgstr "Список схем"
 
 #: lib/layouts/achemso.layout:186
-#, fuzzy
 msgid "Charts"
-msgstr "Діаграма"
+msgstr "Діаграми"
 
 #: lib/layouts/achemso.layout:190 lib/layouts/achemso.layout:202
 msgid "Chart"
@@ -7547,9 +7541,8 @@ msgid "List of Charts"
 msgstr "Список діаграм"
 
 #: lib/layouts/achemso.layout:210
-#, fuzzy
 msgid "Graphs[[mathematical]]"
-msgstr "Графік"
+msgstr "Графи"
 
 #: lib/layouts/achemso.layout:216 lib/layouts/achemso.layout:228
 msgid "Graph[[mathematical]]"
@@ -7597,9 +7590,8 @@ msgid "Latin"
 msgstr "Латинська"
 
 #: lib/layouts/acm-sigs-alt.layout:3
-#, fuzzy
 msgid "ACM SIGS ('Alternate' Style, obsolete)"
-msgstr "ACM SIGS (стиль «Alternate»)"
+msgstr "ACM SIGS (стиль «Alternate», застарілий)"
 
 #: lib/layouts/acm-sigs.inc:31 lib/layouts/acmart.layout:390
 #: lib/layouts/sigplanconf.layout:180
@@ -7611,13 +7603,12 @@ msgid "General terms:"
 msgstr "Загальні терміни:"
 
 #: lib/layouts/acm-sigs.layout:3
-#, fuzzy
 msgid "ACM SIG Proceedings (SP, Obsolete)"
-msgstr "ACM SIG Proceedings (SP)"
+msgstr "ACM SIG Proceedings (SP, застарілий)"
 
 #: lib/layouts/acmart.layout:3
 msgid "Association for Computing Machinery (ACM) article"
-msgstr ""
+msgstr "Стаття Асоціації обчислювальної техніки (ACM)"
 
 #: lib/layouts/acmart.layout:84 lib/layouts/acmsiggraph-0-92.layout:332
 #: lib/layouts/acmsiggraph.layout:288 lib/layouts/amsdefs.inc:175
@@ -7627,14 +7618,12 @@ msgid "Thanks"
 msgstr "Подяки"
 
 #: lib/layouts/acmart.layout:98
-#, fuzzy
 msgid "Thanks: "
-msgstr "Подяки:"
+msgstr "Подяки: "
 
 #: lib/layouts/acmart.layout:104
-#, fuzzy
 msgid "ACM Journal"
-msgstr "Журнал R"
+msgstr "Журнал ACM"
 
 #: lib/layouts/acmart.layout:107 lib/layouts/apa6.layout:308
 #: lib/layouts/apa6.layout:316 lib/layouts/apa6.layout:325
@@ -7644,64 +7633,55 @@ msgstr "Вступ"
 
 #: lib/layouts/acmart.layout:109
 msgid "Journal's Short Name: "
-msgstr ""
+msgstr "Скорочена назва журналу: "
 
 #: lib/layouts/acmart.layout:120
-#, fuzzy
 msgid "ACM Conference"
-msgstr "Конференція"
+msgstr "Конференція ACM"
 
 #: lib/layouts/acmart.layout:127
-#, fuzzy
 msgid "Full name"
-msgstr "Fname"
+msgstr "Ім’я повністю"
 
 #: lib/layouts/acmart.layout:135
 msgid "Venue"
-msgstr ""
+msgstr "Місце"
 
 #: lib/layouts/acmart.layout:138
-#, fuzzy
 msgid "Conference Name: "
-msgstr "Назва конференції"
+msgstr "Назва конференції: "
 
 #: lib/layouts/acmart.layout:145
-#, fuzzy
 msgid "Short title"
-msgstr "Короткий заголовок:"
+msgstr "Короткий заголовок"
 
 #: lib/layouts/acmart.layout:176
-#, fuzzy
 msgid "Email address: "
-msgstr "Адреса ел. пошти:"
+msgstr "Адреса ел. пошти: "
 
 #: lib/layouts/acmart.layout:188
 msgid "ORCID"
-msgstr ""
+msgstr "ORCID"
 
 #: lib/layouts/acmart.layout:190
 msgid "ORCID: "
-msgstr ""
+msgstr "ORCID: "
 
 #: lib/layouts/acmart.layout:210
-#, fuzzy
 msgid "Affiliation: "
-msgstr "Місце роботи:"
+msgstr "Місце роботи: "
 
 #: lib/layouts/acmart.layout:214
-#, fuzzy
 msgid "Additional Affiliation"
 msgstr "Інше місце роботи"
 
 #: lib/layouts/acmart.layout:216
-#, fuzzy
 msgid "Additional Affiliation: "
-msgstr "Інше місце роботи"
+msgstr "Інше місце роботи: "
 
 #: lib/layouts/acmart.layout:220 lib/layouts/acmart.layout:224
-#, fuzzy
 msgid "Position"
-msgstr "Твердження"
+msgstr "Посада"
 
 #: lib/layouts/acmart.layout:229 lib/layouts/acmart.layout:231
 #: lib/layouts/paper.layout:163
@@ -7709,14 +7689,12 @@ msgid "Institution"
 msgstr "Інститут"
 
 #: lib/layouts/acmart.layout:236 lib/layouts/acmart.layout:238
-#, fuzzy
 msgid "Department"
-msgstr "За&міна:"
+msgstr "Відділ"
 
 #: lib/layouts/acmart.layout:244 lib/layouts/acmart.layout:246
-#, fuzzy
 msgid "Street Address"
-msgstr "Поточна адреса"
+msgstr "Вулиця і будинок"
 
 #: lib/layouts/acmart.layout:252 lib/layouts/acmart.layout:254
 #: lib/layouts/agu_stdtitle.inc:460 lib/layouts/agu_stdtitle.inc:462
@@ -7739,213 +7717,184 @@ msgid "State"
 msgstr "Стан"
 
 #: lib/layouts/acmart.layout:276 lib/layouts/acmart.layout:278
-#, fuzzy
 msgid "Postal Code"
-msgstr "PostalComment"
+msgstr "Поштовий код"
 
 #: lib/layouts/acmart.layout:284
-#, fuzzy
 msgid "TitleNote"
-msgstr "Пункт заголовка"
+msgstr "ПриміткаЩодоЗаголовка"
 
 #: lib/layouts/acmart.layout:294
-#, fuzzy
 msgid "Title Note: "
-msgstr "Пункт заголовка:"
+msgstr "Примітка щодо заголовка: "
 
 #: lib/layouts/acmart.layout:300
-#, fuzzy
 msgid "SubtitleNote"
-msgstr "Підзаголовок"
+msgstr "ПриміткаЩодоПідзаголовка"
 
 #: lib/layouts/acmart.layout:302
-#, fuzzy
 msgid "Subtitle Note: "
-msgstr "Підзаголовок"
+msgstr "Примітка щодо підзаголовка: "
 
 #: lib/layouts/acmart.layout:306 lib/layouts/apa6.layout:274
 msgid "AuthorNote"
 msgstr "ПриміткаАвтора"
 
 #: lib/layouts/acmart.layout:308
-#, fuzzy
 msgid "Author Note: "
-msgstr "Примітка щодо автора:"
+msgstr "Примітка щодо автора: "
 
 #: lib/layouts/acmart.layout:312
-#, fuzzy
 msgid "ACM Volume"
-msgstr "Гучність"
+msgstr "Том ACM"
 
 #: lib/layouts/acmart.layout:314
-#, fuzzy
 msgid "ACM Volume: "
-msgstr "Гучність"
+msgstr "Том ACM: "
 
 #: lib/layouts/acmart.layout:318
-#, fuzzy
 msgid "ACM Number"
-msgstr "Номер"
+msgstr "Номер ACM"
 
 #: lib/layouts/acmart.layout:320
-#, fuzzy
 msgid "ACM Number: "
-msgstr "Номер PACS:"
+msgstr "Номер ACM: "
 
 #: lib/layouts/acmart.layout:324
-#, fuzzy
 msgid "ACM Article"
-msgstr "Стаття"
+msgstr "Стаття ACM"
 
 #: lib/layouts/acmart.layout:326
-#, fuzzy
 msgid "ACM Article: "
-msgstr "Стаття"
+msgstr "Стаття ACM: "
 
 #: lib/layouts/acmart.layout:330
-#, fuzzy
 msgid "ACM Year"
-msgstr "Рік"
+msgstr "Рік ACM"
 
 #: lib/layouts/acmart.layout:332
 msgid "ACM Year: "
-msgstr ""
+msgstr "Рік ACM: "
 
 #: lib/layouts/acmart.layout:336
-#, fuzzy
 msgid "ACM Month"
-msgstr "Місяць"
+msgstr "Місяць ACM"
 
 #: lib/layouts/acmart.layout:338
-#, fuzzy
 msgid "ACM Month: "
-msgstr "Місяць"
+msgstr "Місяць ACM: "
 
 #: lib/layouts/acmart.layout:342
 msgid "ACM Art Seq Num"
-msgstr ""
+msgstr "Посл. ном. статті ACM"
 
 #: lib/layouts/acmart.layout:344
-#, fuzzy
 msgid "Article Sequential Number: "
-msgstr "Номер статті:"
+msgstr "Послідовний номер статті: "
 
 #: lib/layouts/acmart.layout:348
 msgid "ACM Submission ID"
-msgstr ""
+msgstr "Ід. подання ACM"
 
 #: lib/layouts/acmart.layout:350
 msgid "ACM Submission ID: "
-msgstr ""
+msgstr "Ід. подання ACM: "
 
 #: lib/layouts/acmart.layout:354
 msgid "ACM Price"
-msgstr ""
+msgstr "Ціна ACM"
 
 #: lib/layouts/acmart.layout:356
 msgid "ACM Price: "
-msgstr ""
+msgstr "Ціна ACM: "
 
 #: lib/layouts/acmart.layout:360
-#, fuzzy
 msgid "ACM ISBN"
-msgstr "ISBN"
+msgstr "ISBN ACM"
 
 #: lib/layouts/acmart.layout:362
-#, fuzzy
 msgid "ACM ISBN: "
-msgstr "ISBN:"
+msgstr "ISBN ACM: "
 
 #: lib/layouts/acmart.layout:366
 msgid "ACM DOI"
-msgstr ""
+msgstr "DOI ACM"
 
 #: lib/layouts/acmart.layout:368
 msgid "ACM DOI: "
-msgstr ""
+msgstr "DOI ACM: "
 
 #: lib/layouts/acmart.layout:372
 msgid "ACM Badge R"
-msgstr ""
+msgstr "Емблема ACM праворуч"
 
 #: lib/layouts/acmart.layout:374
 msgid "ACM Badge R: "
-msgstr ""
+msgstr "Емблема ACM праворуч: "
 
 #: lib/layouts/acmart.layout:378
 msgid "ACM Badge L"
-msgstr ""
+msgstr "Емблема ACM ліворуч"
 
 #: lib/layouts/acmart.layout:380
 msgid "ACM Badge L: "
-msgstr ""
+msgstr "Емблема ACM ліворуч: "
 
 #: lib/layouts/acmart.layout:384
-#, fuzzy
 msgid "Start Page"
-msgstr "Порожня сторінка"
+msgstr "Початкова сторінка"
 
 #: lib/layouts/acmart.layout:386
-#, fuzzy
 msgid "Start Page: "
-msgstr "Стор.: "
+msgstr "Початкова сторінка: "
 
 #: lib/layouts/acmart.layout:392
-#, fuzzy
 msgid "Terms: "
-msgstr "Терміни:"
+msgstr "Терміни: "
 
 #: lib/layouts/acmart.layout:398
-#, fuzzy
 msgid "Keywords: "
-msgstr "Ключові слова:"
+msgstr "Ключові слова: "
 
 #: lib/layouts/acmart.layout:402
 msgid "CCSXML"
-msgstr ""
+msgstr "CCSXML"
 
 #: lib/layouts/acmart.layout:413
 msgid "Computing Classification Scheme (XML): "
-msgstr ""
+msgstr "Схема класифікації обчислень (XML): "
 
 #: lib/layouts/acmart.layout:424
-#, fuzzy
 msgid "CCS Description"
-msgstr "Опис"
+msgstr "Опис схеми класифікації обчислень"
 
 #: lib/layouts/acmart.layout:427
 msgid "Significance"
-msgstr ""
+msgstr "Значущість"
 
 #: lib/layouts/acmart.layout:429
-#, fuzzy
 msgid "Computing Classification Scheme: "
-msgstr "CR Subject Classification"
+msgstr "Схема класифікації обчислень: "
 
 #: lib/layouts/acmart.layout:442
-#, fuzzy
 msgid "Set Copyright"
-msgstr "Встановити авторські права"
+msgstr "Встановлені авторські права"
 
 #: lib/layouts/acmart.layout:444
-#, fuzzy
 msgid "Set Copyright: "
-msgstr "Встановити авторські права"
+msgstr "Встановлені авторські права: "
 
 #: lib/layouts/acmart.layout:448
-#, fuzzy
 msgid "Copyright Year"
-msgstr "Рік авторського права"
+msgstr "Рік здачі до друку"
 
 #: lib/layouts/acmart.layout:450
-#, fuzzy
 msgid "Copyright Year: "
-msgstr "Рік авторського права:"
+msgstr "Рік авторського права: "
 
 #: lib/layouts/acmart.layout:454 lib/layouts/acmart.layout:457
-#, fuzzy
 msgid "Teaser Figure"
-msgstr "Зображення рекламки:"
+msgstr "Зображення рекламки"
 
 #: lib/layouts/acmart.layout:463 lib/layouts/agu_stdtitle.inc:199
 #: lib/layouts/aguplus.inc:111 lib/layouts/egs.layout:423
@@ -7956,36 +7905,31 @@ msgstr "Отримано"
 
 #: lib/layouts/acmart.layout:466
 msgid "Stage"
-msgstr ""
+msgstr "Етап"
 
 #: lib/layouts/acmart.layout:469
-#, fuzzy
 msgid "Received: "
-msgstr "Отримав:"
+msgstr "Отримано: "
 
 #: lib/layouts/acmart.layout:477
-#, fuzzy
 msgid "ShortAuthors"
-msgstr "Скорочений запис автора"
+msgstr "СкороченоАвтори"
 
 #: lib/layouts/acmart.layout:485
-#, fuzzy
 msgid "Short authors: "
-msgstr "Скорочений запис автора:"
+msgstr "Скорочений запис авторів: "
 
 #: lib/layouts/acmart.layout:499
-#, fuzzy
 msgid "Sidebar"
-msgstr "&Сторона:"
+msgstr "Бічна панель"
 
 #: lib/layouts/acmart.layout:503
 msgid "Sidebar (sigchi-a only)"
-msgstr ""
+msgstr "Бічна панель (лише sigchi-a)"
 
 #: lib/layouts/acmart.layout:513
-#, fuzzy
 msgid "Margin figure (sigchi-a only)"
-msgstr "Лише основний файл"
+msgstr "Рисунок на полях (лише sigchi-a)"
 
 #: lib/layouts/acmart.layout:518 lib/layouts/beamer.layout:1612
 #: lib/layouts/powerdot.layout:530 lib/layouts/sciposter.layout:109
@@ -7995,7 +7939,7 @@ msgstr "Список малюнків"
 
 #: lib/layouts/acmart.layout:526
 msgid "Margin table (sigchi-a only)"
-msgstr ""
+msgstr "Таблиця на полях (лише sigchi-a)"
 
 #: lib/layouts/acmart.layout:531 lib/layouts/beamer.layout:1599
 #: lib/layouts/powerdot.layout:513 lib/layouts/sciposter.layout:123
@@ -8064,32 +8008,28 @@ msgid "Example \\thetheorem."
 msgstr "Приклад \\thetheorem."
 
 #: lib/layouts/acmart.layout:622
-#, fuzzy
 msgid "Print Only"
-msgstr "На&друкувати"
+msgstr "Лише друкована"
 
 #: lib/layouts/acmart.layout:629
-#, fuzzy
 msgid "Print version only"
-msgstr "Куди друкувати"
+msgstr "Лише друкована версія"
 
 #: lib/layouts/acmart.layout:632
-#, fuzzy
 msgid "Screen Only"
-msgstr "Екранні шрифти"
+msgstr "Лише екранна"
 
 #: lib/layouts/acmart.layout:635
-#, fuzzy
 msgid "Screen version only"
-msgstr "Без керування версіями"
+msgstr "Лише екранна версія"
 
 #: lib/layouts/acmart.layout:638
 msgid "Anonymous Suppression"
-msgstr ""
+msgstr "Придушення анонімних"
 
 #: lib/layouts/acmart.layout:641
 msgid "Non anonymous only"
-msgstr ""
+msgstr "Лише неанонімні"
 
 #: lib/layouts/acmart.layout:644 lib/layouts/acmart.layout:648
 #: lib/layouts/acmsiggraph-0-92.layout:343
@@ -8106,21 +8046,19 @@ msgstr "Подяки"
 
 #: lib/layouts/acmart.layout:659 lib/layouts/acmart.layout:663
 msgid "Grant Sponsor"
-msgstr ""
+msgstr "Спонсор гранта"
 
 #: lib/layouts/acmart.layout:667 lib/layouts/acmart.layout:703
 msgid "Sponsor ID"
-msgstr ""
+msgstr "Ід. спонсора"
 
 #: lib/layouts/acmart.layout:688 lib/layouts/acmart.layout:692
-#, fuzzy
 msgid "Grant Number"
-msgstr "Кількість сторінок"
+msgstr "Номер гранта"
 
 #: lib/layouts/acmsiggraph-0-92.layout:3
-#, fuzzy
 msgid "ACM SIGGGRAPH 0.92 (obsolete)"
-msgstr "ACM SIGGGRAPH 0.92"
+msgstr "ACM SIGGGRAPH 0.92 (застарілий)"
 
 #: lib/layouts/acmsiggraph-0-92.layout:74 lib/layouts/acmsiggraph.layout:66
 msgid "TOG online ID"
@@ -8361,7 +8299,7 @@ msgstr "Посилання-номер"
 #: lib/layouts/agu_stdclass.inc:155 lib/layouts/agu_stdclass.inc:157
 #: lib/layouts/apa6.layout:332
 msgid "Volume"
-msgstr "Гучність"
+msgstr "Том"
 
 #: lib/layouts/agu_stdclass.inc:167 lib/layouts/agu_stdclass.inc:169
 msgid "Day"
@@ -8777,14 +8715,12 @@ msgid "Slug Comment:"
 msgstr "Коментар:"
 
 #: lib/layouts/aguplus.inc:182
-#, fuzzy
 msgid "Plates"
-msgstr "Plate"
+msgstr "Plate-и"
 
 #: lib/layouts/aguplus.inc:183
-#, fuzzy
 msgid "Planotables"
-msgstr "Planotable"
+msgstr "Planotable-и"
 
 #: lib/layouts/aguplus.inc:187
 msgid "Plate"
@@ -8834,14 +8770,14 @@ msgid "Algorithm2e"
 msgstr "Algorithm2e"
 
 #: lib/layouts/algorithm2e.module:7
-#, fuzzy
 msgid ""
 "Use the algorithm2e package for algorithm floats rather than LyX's home-"
 "brewed algorithm floats. Use the Algorithm style to enter and indent the "
 "algorithm."
 msgstr ""
 "Використовувати пакунок algorithm2e для вставок алгоритмів, замість власних "
-"вставок алгоритмів LyX."
+"вставок алгоритмів LyX. Скористайтеся стилем «Алгоритм» для введення і "
+"форматування алгоритму."
 
 #: lib/layouts/algorithm2e.module:25 lib/layouts/powerdot.layout:547
 #: lib/layouts/revtex4-1.layout:267 lib/layouts/stdfloats.inc:48
@@ -15216,9 +15152,8 @@ msgid "AMS subject classifications:"
 msgstr "AMS-класифікація тем:"
 
 #: lib/layouts/sigplanconf.layout:3
-#, fuzzy
 msgid "ACM SIGPLAN (Obsolete)"
-msgstr "ACM SIGPLAN"
+msgstr "ACM SIGPLAN (застарілий)"
 
 #: lib/layouts/sigplanconf.layout:85
 msgid "Name of the conference"
@@ -15285,7 +15220,6 @@ msgid "Inderscience 9.5 x 6.5 Journals"
 msgstr "Журнали 9,5⨯6,5 Inderscience"
 
 #: lib/layouts/singlecol.layout:3
-#, fuzzy
 msgid "Inderscience Journals (Obsolete)"
 msgstr "Журнали Inderscience (застаріла версія)"
 
@@ -15415,14 +15349,12 @@ msgid "Algorithms"
 msgstr "Алгоритми"
 
 #: lib/layouts/stdfloatnames.inc:8
-#, fuzzy
 msgid "Margin Figures"
-msgstr "MarginFigure"
+msgstr "Рисунки на полях"
 
 #: lib/layouts/stdfloatnames.inc:9
-#, fuzzy
 msgid "Margin Tables"
-msgstr "MarginTable"
+msgstr "Таблиці на полях"
 
 #: lib/layouts/stdinsets.inc:11
 msgid "Marginal notes"
@@ -15512,15 +15444,16 @@ msgstr "Додаток \\thechapter"
 
 #: lib/layouts/subequations.module:2 lib/layouts/subequations.module:10
 #: lib/layouts/subequations.module:13
-#, fuzzy
 msgid "Subequations"
-msgstr "Рівняння"
+msgstr "Підрівняння"
 
 #: lib/layouts/subequations.module:5
 msgid ""
 "Provide a straightforward way to segregate subequations in LyX. See the "
 "subequations.lyx example file."
 msgstr ""
+"Надає простий спосіб поділу рівнянь на під рівняння у LyX. Ознайомтеся із "
+"прикладом у файлі subequations.lyx."
 
 #: lib/layouts/svcommon.inc:68
 msgid "Front Matter"
@@ -16691,7 +16624,6 @@ msgid "TODO Notes"
 msgstr "Нотатки TODO"
 
 #: lib/layouts/todonotes.module:8
-#, fuzzy
 msgid ""
 "Provides custom insets to insert TODO items in your document (using the "
 "todonotes package). In order to generate a 'List of TODOs', the module "
@@ -16700,7 +16632,8 @@ msgid ""
 msgstr ""
 "Містить нетипові панелі для вставлення пунктів TODO до вашого документа (на "
 "основі пакунка todonotes). Для створення «Списку TODO», у модулі передбачено "
-"особливий тип абзацу."
+"особливий тип абзацу. Якщо передати як параметр класу документа «final», "
+"виведення нотаток щодо завдань TODO буде придушено."
 
 #: lib/layouts/todonotes.module:14 lib/layouts/todonotes.module:119
 msgid "TODO"
@@ -17351,9 +17284,8 @@ msgid "New Century Schoolbook"
 msgstr "New Century Schoolbook"
 
 #: lib/latexfonts:293 lib/latexfonts:301
-#, fuzzy
 msgid "Noto Serif"
-msgstr "Bera Serif"
+msgstr "Noto Serif"
 
 #: lib/latexfonts:307 lib/latexfonts:319 lib/latexfonts:326 lib/latexfonts:332
 #: lib/latexfonts:339
@@ -17450,7 +17382,7 @@ msgstr "Latin Modern Sans"
 
 #: lib/latexfonts:556
 msgid "Noto Sans"
-msgstr ""
+msgstr "Noto Sans"
 
 #: lib/latexfonts:563
 msgid "TeX Gyre Adventor"
@@ -17494,7 +17426,7 @@ msgstr "LuxiMono"
 
 #: lib/latexfonts:636
 msgid "Noto Mono"
-msgstr ""
+msgstr "Noto Mono"
 
 #: lib/latexfonts:643
 msgid "TeX Gyre Cursor"
@@ -17917,9 +17849,8 @@ msgid "Textual Reference|x"
 msgstr "Текстуальний відповідник|д"
 
 #: lib/ui/stdcontext.inc:97
-#, fuzzy
 msgid "Label Only|L"
-msgstr "Лише мітка"
+msgstr "Лише мітка|М"
 
 #: lib/ui/stdcontext.inc:99 lib/ui/stdcontext.inc:111 lib/ui/stdcontext.inc:121
 #: lib/ui/stdcontext.inc:129 lib/ui/stdcontext.inc:138
@@ -18556,9 +18487,8 @@ msgid "Wrap by Preview|y"
 msgstr "Обрізати за областю перегляду|я"
 
 #: lib/ui/stdcontext.inc:677 lib/ui/stdmenus.inc:356
-#, fuzzy
 msgid "Lock Toolbars|L"
-msgstr "Панелі інструментів|н"
+msgstr "Заблокувати панелі інструментів|а"
 
 #: lib/ui/stdcontext.inc:679 lib/ui/stdmenus.inc:358
 msgid "Small-sized Icons"
@@ -19337,9 +19267,8 @@ msgid "Ligature Break|k"
 msgstr "Розрив лігатури|у"
 
 #: lib/ui/stdmenus.inc:438
-#, fuzzy
 msgid "Optional Line Break|B"
-msgstr "Розрив рядка|Р"
+msgstr "Необов’язковий розрив рядка|е"
 
 #: lib/ui/stdmenus.inc:451
 msgid "Display Formula|D"
@@ -19714,9 +19643,8 @@ msgid "Toggle table toolbar"
 msgstr "Перемкнути панель інструментів таблиць"
 
 #: lib/ui/stdtoolbars.inc:98
-#, fuzzy
 msgid "Toggle review toolbar"
-msgstr "Перемкнути панель інструментів таблиць"
+msgstr "Увімкнути або вимкнути панель рецензування"
 
 #: lib/ui/stdtoolbars.inc:101
 msgid "View/Update"
@@ -24387,6 +24315,9 @@ msgid ""
 "Note that using this template automatically uses the \n"
 "document text in the image (like with the Xfig template).\n"
 msgstr ""
+"Рисунок Inkscape.\n"
+"Зауважте, що використання цього шаблона автоматично призводить до \n"
+"використання тексту документа у зображенні (як і у шаблоні Xfig).\n"
 
 #: lib/xtemplates/lilypond.xtemplate:15 lib/xtemplates/lilypond.xtemplate:21
 msgid "Lilypond typeset music"
@@ -24945,11 +24876,11 @@ msgstr "LyXBlogger"
 
 #: lib/configure.py:1058
 msgid "gnuplot"
-msgstr ""
+msgstr "gnuplot"
 
 #: lib/configure.py:1058
 msgid "gnuplot|Gnuplot"
-msgstr ""
+msgstr "gnuplot|Gnuplot"
 
 #: lib/configure.py:1130
 msgid "LyX Archive (zip)"
@@ -24994,9 +24925,8 @@ msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr "LyX намагається закрити документ, у який внесено незбережені зміни!\n"
 
 #: src/Buffer.cpp:552 src/Buffer.cpp:1605
-#, fuzzy
 msgid "Save failed! Document is lost."
-msgstr "Зберегти не вдалося! Тримайтеся, документ втрачено."
+msgstr "Не вдалося зберегти! Документ втрачено."
 
 #: src/Buffer.cpp:554
 msgid "Attempting to close changed document!"
@@ -26681,14 +26611,14 @@ msgid "Underline %1$s, "
 msgstr "Підкреслений %1$s, "
 
 #: src/Font.cpp:169
-#, fuzzy, c-format
+#, c-format
 msgid "Strike out %1$s, "
 msgstr "Перекреслений %1$s, "
 
 #: src/Font.cpp:172
-#, fuzzy, c-format
+#, c-format
 msgid "Cross out %1$s, "
-msgstr "Перекреслений %1$s, "
+msgstr "Викреслений %1$s, "
 
 #: src/Font.cpp:175
 #, c-format
@@ -27379,6 +27309,8 @@ msgstr ""
 #: src/LyXRC.cpp:3087
 msgid "The command to run the python pygments syntax highlighter."
 msgstr ""
+"Команда для запуску засобу підсвічування синтаксичних конструкцій pygments "
+"мовою python."
 
 #: src/LyXRC.cpp:3096
 msgid ""
@@ -28715,9 +28647,9 @@ msgstr ""
 "бути перевизначено"
 
 #: src/frontends/qt4/GuiApplication.cpp:1866
-#, fuzzy, c-format
+#, c-format
 msgid "Cannot iterate more than %1$d times"
-msgstr "Не можна вилучати стандартний покажчик"
+msgstr "Ітерації понад %1$d разів не передбачено"
 
 #: src/frontends/qt4/GuiApplication.cpp:1964
 #, c-format
@@ -29015,14 +28947,12 @@ msgid "Wavy underbar"
 msgstr "Хвиляста нижня риска"
 
 #: src/frontends/qt4/GuiCharacter.cpp:88
-#, fuzzy
 msgid "Strike out"
-msgstr "Перекреслений"
+msgstr "Перекреслити"
 
 #: src/frontends/qt4/GuiCharacter.cpp:89
-#, fuzzy
 msgid "Cross out"
-msgstr "CrossList"
+msgstr "Викреслити"
 
 #: src/frontends/qt4/GuiCharacter.cpp:180
 msgid "No color"
@@ -29572,7 +29502,7 @@ msgstr "Преамбула LaTeX"
 
 #: src/frontends/qt4/GuiDocument.cpp:1598
 msgid "Pygments driver command not found!"
-msgstr ""
+msgstr "Команду драйвера pygments не знайдено!"
 
 #: src/frontends/qt4/GuiDocument.cpp:1599
 msgid ""
@@ -29586,6 +29516,15 @@ msgid ""
 "\n"
 "where 'driver' is name of the driver command."
 msgstr ""
+"Не знайдено команди драйвера для використання потрібного\n"
+"пакунка (pygmentize). Переконайтеся, що у системі\n"
+"встановлено модуль python-pygments або, якщо драйвер\n"
+"має іншу назву, додайте такий рядок до преамбули\n"
+"документа:\n"
+"\n"
+"\\AtBeginDocument{\\renewcommand{\\MintedPygmentize}{драйвер}}\n"
+"\n"
+"де замість слова «драйвер» слід вказати команду драйвера."
 
 #: src/frontends/qt4/GuiDocument.cpp:1775
 #: src/frontends/qt4/GuiDocument.cpp:1805
@@ -31022,13 +30961,12 @@ msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr "Стан панелі інструментів \"%1$s\" встановлено у значення %2$s"
 
 #: src/frontends/qt4/GuiToolbar.cpp:426
-#, fuzzy
 msgid "movable"
-msgstr "Таблиця"
+msgstr "рухома"
 
 #: src/frontends/qt4/GuiToolbar.cpp:428
 msgid "immovable"
-msgstr ""
+msgstr "нерухома"
 
 #: src/frontends/qt4/GuiVSpace.h:40
 msgid "Vertical Space Settings"
@@ -31357,7 +31295,7 @@ msgstr ""
 "Зберегти документ чи відкинути ці зміни?"
 
 #: src/frontends/qt4/GuiView.cpp:3014
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
 "\n"
@@ -31365,16 +31303,15 @@ msgid ""
 msgstr ""
 "Документ %1$s ще не було збережено.\n"
 "\n"
-"Бажаєте зберегти документ?"
+"Бажаєте зберегти документ чи остаточно його відкинути?"
 
 #: src/frontends/qt4/GuiView.cpp:3018 src/frontends/qt4/GuiView.cpp:3114
 msgid "Save changed document?"
 msgstr "Зберегти змінений документ?"
 
 #: src/frontends/qt4/GuiView.cpp:3018
-#, fuzzy
 msgid "Save document?"
-msgstr "Зберегти документ"
+msgstr "Зберегти документ?"
 
 #: src/frontends/qt4/GuiView.cpp:3020
 msgid "&Discard"
@@ -31470,12 +31407,12 @@ msgid "All Files (*)"
 msgstr "Всі файли (*)"
 
 #: src/frontends/qt4/GuiView.cpp:3800
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The current version will be lost. Are you sure you want to load the version "
 "on disk of the document %1$s?"
 msgstr ""
-"Будь-які зміни буде втрачено. Дійсно бажаєте завантажити версію документа, "
+"Поточну версію буде втрачено. Дійсно бажаєте завантажити версію документа, "
 "яка зберігається на диску, %1$s?"
 
 #: src/frontends/qt4/GuiView.cpp:3807
@@ -31488,9 +31425,8 @@ msgstr ""
 "версії документа %1$s?"
 
 #: src/frontends/qt4/GuiView.cpp:3810
-#, fuzzy
 msgid "Revert to saved document?"
-msgstr "Перезавантажити збережений документ?"
+msgstr "Повернутися до збереженого документа?"
 
 #: src/frontends/qt4/GuiView.cpp:3838
 msgid "Saving all documents..."
@@ -31502,12 +31438,11 @@ msgstr "Всі документи збережено."
 
 #: src/frontends/qt4/GuiView.cpp:3886
 msgid "Toolbars unlocked."
-msgstr ""
+msgstr "Панелі інструментів розблоковано."
 
 #: src/frontends/qt4/GuiView.cpp:3888
-#, fuzzy
 msgid "Toolbars locked."
-msgstr "Панелі інструментів|н"
+msgstr "Панелі інструментів зафіксовано."
 
 #: src/frontends/qt4/GuiView.cpp:3901
 #, c-format
@@ -31562,7 +31497,7 @@ msgstr "Закрити вкладку"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:2233
 msgid "<b>The file %1 changed on disk.</b>"
-msgstr ""
+msgstr "<b>Вміст файла %1 змінено на диску.</b>"
 
 #: src/frontends/qt4/GuiWrap.cpp:32
 msgid "Wrap Float Settings"
@@ -32498,11 +32433,8 @@ msgstr ""
 "Використайте \\footnotesize, \\small, \\itshape, \\ttfamily або щось подібне"
 
 #: src/insets/InsetListingsParams.cpp:303
-#, fuzzy
 msgid "none, leftline, topline, bottomline, lines, single"
-msgstr ""
-"none, leftline, topline, bottomline, lines, single, shadowbox або підмножину "
-"з trblTRBL"
+msgstr "none, leftline, topline, bottomline, lines, single"
 
 #: src/insets/InsetListingsParams.cpp:305
 msgid ""
@@ -32523,7 +32455,7 @@ msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:311
 msgid "Previously defined color name as a string"
-msgstr ""
+msgstr "Раніше визначена назва кольору у форматі рядка"
 
 #: src/insets/InsetListingsParams.cpp:313
 msgid "Enter something like \\color{white}"
@@ -32562,31 +32494,31 @@ msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:664
 msgid "default: _minted-<jobname>"
-msgstr ""
+msgstr "типове значення: _minted-<назва_завдання>"
 
 #: src/insets/InsetListingsParams.cpp:743
 msgid "Sets encoding expected by Pygments"
-msgstr ""
+msgstr "Встановлює кодування для даних Pygments"
 
 #: src/insets/InsetListingsParams.cpp:753
 msgid "A latex family such as tt, sf, rm"
-msgstr ""
+msgstr "Гарнітура latex, наприклад tt, sf, rm"
 
 #: src/insets/InsetListingsParams.cpp:756
 msgid "A latex series such as m, b, c, bx, sb"
-msgstr ""
+msgstr "Серія latex, наприклад m, b, c, bx, sb"
 
 #: src/insets/InsetListingsParams.cpp:759
 msgid "A latex name such as \\small"
-msgstr ""
+msgstr "Назва у latex, наприклад \\small"
 
 #: src/insets/InsetListingsParams.cpp:762
 msgid "A latex shape such as n, it, sl, sc"
-msgstr ""
+msgstr "Форма у latex, наприклад n, it, sl, sc"
 
 #: src/insets/InsetListingsParams.cpp:781
 msgid "A range of lines such as {1,3-4}"
-msgstr ""
+msgstr "Діапазон рядків, наприклад {1,3-4}"
 
 #: src/insets/InsetListingsParams.cpp:790
 msgid ""
@@ -32594,35 +32526,40 @@ msgid ""
 "inset, it is better using the  language combo box, unless you need to enter "
 "a language not offered there, otherwise the combo box will be disabled."
 msgstr ""
+"Вкажіть одну з підтримуваних мов. Втім, якщо ви визначаєте вставку з кодом і "
+"запису мови немає у спадному списку, краще скористатися спадним списком "
+"вибору мов. Якщо мову буде вказано, програма автоматично вимкне спадний "
+"список вибору."
 
 #: src/insets/InsetListingsParams.cpp:813
 msgid "File encoding used by Pygments for highlighting"
 msgstr ""
+"Кодування даних файлів, яке використовуватиметься Pygments для підсвічування"
 
 #: src/insets/InsetListingsParams.cpp:816
 msgid "Apply Python 3 highlighting"
-msgstr ""
+msgstr "Застосувати підсвічування Python 3"
 
 #: src/insets/InsetListingsParams.cpp:829
 msgid "A macro. Default: \\textvisiblespace"
-msgstr ""
+msgstr "Макрос. Типове значення: \\textvisiblespace"
 
 #: src/insets/InsetListingsParams.cpp:833
 msgid "For PHP only"
-msgstr ""
+msgstr "Лише для PHP"
 
 #: src/insets/InsetListingsParams.cpp:836
 msgid "The style used by Pygments"
-msgstr ""
+msgstr "Стиль для Pygments"
 
 #: src/insets/InsetListingsParams.cpp:849
 msgid "A macro to redefine visible tabs"
-msgstr ""
+msgstr "Макрос для перевизначення видимих табуляцій"
 
 #: src/insets/InsetListingsParams.cpp:856
 #: src/insets/InsetListingsParams.cpp:859
 msgid "Enables latex code in comments"
-msgstr ""
+msgstr "Уможливлює код latex у коментарях"
 
 #: src/insets/InsetListingsParams.cpp:873
 msgid "Invalid (empty) listing parameter name."
@@ -33007,9 +32944,8 @@ msgid "Page Height %"
 msgstr "Висота сторінки %"
 
 #: src/lengthcommon.cpp:45
-#, fuzzy
 msgid "Line Distance %"
-msgstr "Ширина рядка %"
+msgstr "Відстань між рядками у %"
 
 #: src/lyxfind.cpp:128
 msgid "Search error"
