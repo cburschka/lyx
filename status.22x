@@ -95,6 +95,8 @@ What's new
 
 - Avoid a case of stuck cursor after entering an inset (bug 10630).
 
+- Don't swallow labels not entered through the toolbar in mathed (bug 10546).
+
 
 * INTERNALS
 
