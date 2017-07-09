@@ -417,6 +417,10 @@ def legacy_conversion_step3(latex_file, dpi, output_format, dvips_failed, skipMe
     pdftocairo = find_exe(["pdftocairo"])
     epstopdf   = find_exe(["epstopdf"])
     use_pdftocairo = pdftocairo != None and output_format == "png"
+    if use_pdftocairo and os.name == 'nt':
+        # On Windows, check for png support (see #10718)
+        conv_status, conv_stdout = run_command("%s --help" % pdftocairo)
+        use_pdftocairo = '-png' in conv_stdout
     if use_pdftocairo:
         conv = pdftocairo
     else:
