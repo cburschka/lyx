@@ -14,7 +14,7 @@ endif()
 #     Here we try to exclude files which we do not want to install
 # Depending on _what, installation on UNIX goes to
 # data -> ${LYX_DATA_SUBDIR}
-# font -> share/fonts/truetype/${_lyx}/
+# font -> share/${_lyx}/fonts/
 # bin -> bin
 # tex -> share/texmf/tex/latex/${_lyx}/
 macro(lyx_install _what _parent_src_dir _gl_dir _file_type)
