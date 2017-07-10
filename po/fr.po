@@ -322,19 +322,23 @@
 # ------------------------------------------------------------------
 # 9 juin 2017 : nouvelle mise à jour pour beta
 # ------------------------------------------------------------------
+# 10 juillet 2017 : nouvelle mise à jour pour beta
+#                   remplacment de « modèle » par « cadre »
+# 		  quand il s'agit d'objets externes
+# ------------------------------------------------------------------
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 2.2\n"
+"Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2017-06-13 02:09+0200\n"
-"PO-Revision-Date: 2017-06-09 09:38+0200\n"
+"PO-Revision-Date: 2017-07-10 11:06+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:33
 msgid "Version"
@@ -2745,11 +2749,11 @@ msgstr "Fenêtre d'information"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:92
 msgid "Choose the LaTeX package for code syntax highlighting"
-msgstr ""
+msgstr "Choisir le paquetage LateX pour l’accentuation de la syntaxe"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:95
 msgid "&Syntax Highlighting Package:"
-msgstr ""
+msgstr "&Paquetage d'accentuation de la syntaxe"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:324
 #: lib/layouts/stdinsets.inc:330 lib/layouts/stdinsets.inc:375
@@ -7955,7 +7959,7 @@ msgstr "ACM SIG Proceedings (SP, obsolète)"
 
 #: lib/layouts/acmart.layout:3
 msgid "Association for Computing Machinery (ACM) article"
-msgstr ""
+msgstr "Article Association for Computing Machinery (ACM)"
 
 #: lib/layouts/acmart.layout:84 lib/layouts/acmsiggraph-0-92.layout:332
 #: lib/layouts/acmsiggraph.layout:288 lib/layouts/amsdefs.inc:175
@@ -7965,14 +7969,12 @@ msgid "Thanks"
 msgstr "Remerciements"
 
 #: lib/layouts/acmart.layout:98
-#, fuzzy
 msgid "Thanks: "
 msgstr "Remerciements :"
 
 #: lib/layouts/acmart.layout:104
-#, fuzzy
 msgid "ACM Journal"
-msgstr "R Journal"
+msgstr "Revue ACM"
 
 #: lib/layouts/acmart.layout:107 lib/layouts/apa6.layout:308
 #: lib/layouts/apa6.layout:316 lib/layouts/apa6.layout:325
@@ -7982,64 +7984,55 @@ msgstr "Préambule"
 
 #: lib/layouts/acmart.layout:109
 msgid "Journal's Short Name: "
-msgstr ""
+msgstr "Nom court de la revue"
 
 #: lib/layouts/acmart.layout:120
-#, fuzzy
 msgid "ACM Conference"
-msgstr "Conférence"
+msgstr "Conférence ACM"
 
 #: lib/layouts/acmart.layout:127
-#, fuzzy
 msgid "Full name"
-msgstr "Prénom"
+msgstr "Nom complet"
 
 #: lib/layouts/acmart.layout:135
 msgid "Venue"
-msgstr ""
+msgstr "Lieu"
 
 #: lib/layouts/acmart.layout:138
-#, fuzzy
 msgid "Conference Name: "
-msgstr "Nom du symposium"
+msgstr "Nom du symposium :"
 
 #: lib/layouts/acmart.layout:145
-#, fuzzy
 msgid "Short title"
-msgstr "Titre court :"
+msgstr "Titre court"
 
 #: lib/layouts/acmart.layout:176
-#, fuzzy
 msgid "Email address: "
 msgstr "Adresse E-mail :"
 
 #: lib/layouts/acmart.layout:188
 msgid "ORCID"
-msgstr ""
+msgstr "ORCID"
 
 #: lib/layouts/acmart.layout:190
 msgid "ORCID: "
-msgstr ""
+msgstr "ORCID: "
 
 #: lib/layouts/acmart.layout:210
-#, fuzzy
 msgid "Affiliation: "
 msgstr "Affiliation :"
 
 #: lib/layouts/acmart.layout:214
-#, fuzzy
 msgid "Additional Affiliation"
 msgstr "Autre affiliation"
 
 #: lib/layouts/acmart.layout:216
-#, fuzzy
 msgid "Additional Affiliation: "
-msgstr "Autre affiliation"
+msgstr "Autre affiliation :"
 
 #: lib/layouts/acmart.layout:220 lib/layouts/acmart.layout:224
-#, fuzzy
 msgid "Position"
-msgstr "Proposition"
+msgstr "Position"
 
 #: lib/layouts/acmart.layout:229 lib/layouts/acmart.layout:231
 #: lib/layouts/paper.layout:163
@@ -8047,14 +8040,12 @@ msgid "Institution"
 msgstr "Institution"
 
 #: lib/layouts/acmart.layout:236 lib/layouts/acmart.layout:238
-#, fuzzy
 msgid "Department"
-msgstr "Rem&placement :"
+msgstr "Département"
 
 #: lib/layouts/acmart.layout:244 lib/layouts/acmart.layout:246
-#, fuzzy
 msgid "Street Address"
-msgstr "Adresse actuelle"
+msgstr "Adresse (rue)"
 
 #: lib/layouts/acmart.layout:252 lib/layouts/acmart.layout:254
 #: lib/layouts/agu_stdtitle.inc:460 lib/layouts/agu_stdtitle.inc:462
@@ -8077,29 +8068,24 @@ msgid "State"
 msgstr "État"
 
 #: lib/layouts/acmart.layout:276 lib/layouts/acmart.layout:278
-#, fuzzy
 msgid "Postal Code"
-msgstr "CommentairePostal"
+msgstr "Code postal"
 
 #: lib/layouts/acmart.layout:284
-#, fuzzy
 msgid "TitleNote"
-msgstr "TitreÉlément"
+msgstr "NoteTitre"
 
 #: lib/layouts/acmart.layout:294
-#, fuzzy
 msgid "Title Note: "
-msgstr "Titre Élément :"
+msgstr "Note de titre :"
 
 #: lib/layouts/acmart.layout:300
-#, fuzzy
 msgid "SubtitleNote"
-msgstr "SousTitre"
+msgstr "NoteSousTitre"
 
 #: lib/layouts/acmart.layout:302
-#, fuzzy
 msgid "Subtitle Note: "
-msgstr "SousTitre"
+msgstr "Note de sous titre :"
 
 #: lib/layouts/acmart.layout:306 lib/layouts/apa6.layout:274
 msgid "AuthorNote"
@@ -8111,179 +8097,156 @@ msgid "Author Note: "
 msgstr "Note d'auteur :"
 
 #: lib/layouts/acmart.layout:312
-#, fuzzy
 msgid "ACM Volume"
-msgstr "Volume"
+msgstr "Volume ACM"
 
 #: lib/layouts/acmart.layout:314
-#, fuzzy
 msgid "ACM Volume: "
-msgstr "Volume"
+msgstr "Volume ACM :"
 
 #: lib/layouts/acmart.layout:318
-#, fuzzy
 msgid "ACM Number"
-msgstr "Numéro"
+msgstr "Numéro ACM"
 
 #: lib/layouts/acmart.layout:320
-#, fuzzy
 msgid "ACM Number: "
-msgstr "Numéro PACS :"
+msgstr "Numéro ACM :"
 
 #: lib/layouts/acmart.layout:324
-#, fuzzy
 msgid "ACM Article"
-msgstr "Article"
+msgstr "Article ACM"
 
 #: lib/layouts/acmart.layout:326
-#, fuzzy
 msgid "ACM Article: "
-msgstr "Article"
+msgstr "Article ACM :"
 
 #: lib/layouts/acmart.layout:330
-#, fuzzy
 msgid "ACM Year"
-msgstr "Année"
+msgstr "Année ACM"
 
 #: lib/layouts/acmart.layout:332
 msgid "ACM Year: "
-msgstr ""
+msgstr "Année ACM :"
 
 #: lib/layouts/acmart.layout:336
-#, fuzzy
 msgid "ACM Month"
-msgstr "Mois"
+msgstr "Mois ACM"
 
 #: lib/layouts/acmart.layout:338
-#, fuzzy
 msgid "ACM Month: "
-msgstr "Mois"
+msgstr "Mois ACM :"
 
 #: lib/layouts/acmart.layout:342
 msgid "ACM Art Seq Num"
-msgstr ""
+msgstr "ACM Art Seq Num"
 
 #: lib/layouts/acmart.layout:344
-#, fuzzy
 msgid "Article Sequential Number: "
-msgstr "Article number:"
+msgstr "Numéro séquentiel d'article :"
 
 #: lib/layouts/acmart.layout:348
 msgid "ACM Submission ID"
-msgstr ""
+msgstr "ID soumission ACM"
 
 #: lib/layouts/acmart.layout:350
 msgid "ACM Submission ID: "
-msgstr ""
+msgstr "ID soumission ACM :"
 
 #: lib/layouts/acmart.layout:354
 msgid "ACM Price"
-msgstr ""
+msgstr "Prix ACM"
 
 #: lib/layouts/acmart.layout:356
 msgid "ACM Price: "
-msgstr ""
+msgstr "Prix ACM :"
 
 #: lib/layouts/acmart.layout:360
-#, fuzzy
 msgid "ACM ISBN"
-msgstr "ISBN"
+msgstr "ISBN ACM"
 
 #: lib/layouts/acmart.layout:362
-#, fuzzy
 msgid "ACM ISBN: "
-msgstr "ISBN :"
+msgstr "ACM ISBN :"
 
 #: lib/layouts/acmart.layout:366
 msgid "ACM DOI"
-msgstr ""
+msgstr "ACM DOI"
 
 #: lib/layouts/acmart.layout:368
 msgid "ACM DOI: "
-msgstr ""
+msgstr "ACM DOI: "
 
 #: lib/layouts/acmart.layout:372
 msgid "ACM Badge R"
-msgstr ""
+msgstr "ACM Badge R"
 
 #: lib/layouts/acmart.layout:374
 msgid "ACM Badge R: "
-msgstr ""
+msgstr "ACM Badge R: "
 
 #: lib/layouts/acmart.layout:378
 msgid "ACM Badge L"
-msgstr ""
+msgstr "ACM Badge L"
 
 #: lib/layouts/acmart.layout:380
 msgid "ACM Badge L: "
-msgstr ""
+msgstr "ACM Badge L: "
 
 #: lib/layouts/acmart.layout:384
-#, fuzzy
 msgid "Start Page"
-msgstr "Saut de page (vide le tampon)"
+msgstr "Page initiale"
 
 #: lib/layouts/acmart.layout:386
-#, fuzzy
 msgid "Start Page: "
-msgstr "Page : "
+msgstr "Page initiale : "
 
 #: lib/layouts/acmart.layout:392
-#, fuzzy
 msgid "Terms: "
 msgstr "Termes :"
 
 #: lib/layouts/acmart.layout:398
-#, fuzzy
 msgid "Keywords: "
 msgstr "Mots-clés :"
 
 #: lib/layouts/acmart.layout:402
 msgid "CCSXML"
-msgstr ""
+msgstr "CCSXML"
 
 #: lib/layouts/acmart.layout:413
 msgid "Computing Classification Scheme (XML): "
-msgstr ""
+msgstr "Schéma de classification (XML)"
 
 #: lib/layouts/acmart.layout:424
-#, fuzzy
 msgid "CCS Description"
-msgstr "Description"
+msgstr "Description CCS"
 
 #: lib/layouts/acmart.layout:427
 msgid "Significance"
-msgstr ""
+msgstr "Signification"
 
 #: lib/layouts/acmart.layout:429
-#, fuzzy
 msgid "Computing Classification Scheme: "
-msgstr "Classification de sujet CR"
+msgstr "Schéma de classification (CCS) :"
 
 #: lib/layouts/acmart.layout:442
-#, fuzzy
 msgid "Set Copyright"
 msgstr "Préciser le copyright"
 
 #: lib/layouts/acmart.layout:444
-#, fuzzy
 msgid "Set Copyright: "
-msgstr "Préciser le copyright"
+msgstr "Préciser le copyright :"
 
 #: lib/layouts/acmart.layout:448
-#, fuzzy
 msgid "Copyright Year"
-msgstr "AnnéeCopyright"
+msgstr "Année de copyright"
 
 #: lib/layouts/acmart.layout:450
-#, fuzzy
 msgid "Copyright Year: "
 msgstr "Année de copyright :"
 
 #: lib/layouts/acmart.layout:454 lib/layouts/acmart.layout:457
-#, fuzzy
 msgid "Teaser Figure"
-msgstr "Image Teaser :"
+msgstr "Image d'accroche :"
 
 #: lib/layouts/acmart.layout:463 lib/layouts/agu_stdtitle.inc:199
 #: lib/layouts/aguplus.inc:111 lib/layouts/egs.layout:423
@@ -8294,36 +8257,31 @@ msgstr "Reçu"
 
 #: lib/layouts/acmart.layout:466
 msgid "Stage"
-msgstr ""
+msgstr "Étape"
 
 #: lib/layouts/acmart.layout:469
-#, fuzzy
 msgid "Received: "
 msgstr "Reçu :"
 
 #: lib/layouts/acmart.layout:477
-#, fuzzy
 msgid "ShortAuthors"
-msgstr "Nom d'auteur court"
+msgstr "NomAuteursCourt"
 
 #: lib/layouts/acmart.layout:485
-#, fuzzy
 msgid "Short authors: "
-msgstr "Nom d'auteur court :"
+msgstr "Nom d'auteurs court :"
 
 #: lib/layouts/acmart.layout:499
-#, fuzzy
 msgid "Sidebar"
-msgstr "&Côté :"
+msgstr "Barre latérale"
 
 #: lib/layouts/acmart.layout:503
 msgid "Sidebar (sigchi-a only)"
-msgstr ""
+msgstr "Barre latérale (uniquement sigchi-a)"
 
 #: lib/layouts/acmart.layout:513
-#, fuzzy
 msgid "Margin figure (sigchi-a only)"
-msgstr "Fichier maître seulement"
+msgstr "Fi)gure en marge (uniquement sigchi-a)"
 
 #: lib/layouts/acmart.layout:518 lib/layouts/beamer.layout:1612
 #: lib/layouts/powerdot.layout:530 lib/layouts/sciposter.layout:109
@@ -8333,7 +8291,7 @@ msgstr "Liste des figures"
 
 #: lib/layouts/acmart.layout:526
 msgid "Margin table (sigchi-a only)"
-msgstr ""
+msgstr "Tableau en marge (uniquement sigchi-a)"
 
 #: lib/layouts/acmart.layout:531 lib/layouts/beamer.layout:1599
 #: lib/layouts/powerdot.layout:513 lib/layouts/sciposter.layout:123
@@ -8402,32 +8360,28 @@ msgid "Example \\thetheorem."
 msgstr "Exemple \\thetheorem."
 
 #: lib/layouts/acmart.layout:622
-#, fuzzy
 msgid "Print Only"
-msgstr "&Imprimer"
+msgstr "Uniquement impression"
 
 #: lib/layouts/acmart.layout:629
-#, fuzzy
 msgid "Print version only"
-msgstr "Destination"
+msgstr "Uniquement version d'impression"
 
 #: lib/layouts/acmart.layout:632
-#, fuzzy
 msgid "Screen Only"
-msgstr "Polices d'écran"
+msgstr "Uniquement écran"
 
 #: lib/layouts/acmart.layout:635
-#, fuzzy
 msgid "Screen version only"
-msgstr "Pas de contrôle de version"
+msgstr "Uniquement version écran"
 
 #: lib/layouts/acmart.layout:638
 msgid "Anonymous Suppression"
-msgstr ""
+msgstr "Suppression anonymat"
 
 #: lib/layouts/acmart.layout:641
 msgid "Non anonymous only"
-msgstr ""
+msgstr "Non anonyme uniquement"
 
 #: lib/layouts/acmart.layout:644 lib/layouts/acmart.layout:648
 #: lib/layouts/acmsiggraph-0-92.layout:343
@@ -8444,16 +8398,15 @@ msgstr "Remerciements"
 
 #: lib/layouts/acmart.layout:659 lib/layouts/acmart.layout:663
 msgid "Grant Sponsor"
-msgstr ""
+msgstr "Allocataire de la bourse"
 
 #: lib/layouts/acmart.layout:667 lib/layouts/acmart.layout:703
 msgid "Sponsor ID"
-msgstr ""
+msgstr "ID allocataire"
 
 #: lib/layouts/acmart.layout:688 lib/layouts/acmart.layout:692
-#, fuzzy
 msgid "Grant Number"
-msgstr "Numéro de page"
+msgstr "Numéro de bourse"
 
 #: lib/layouts/acmsiggraph-0-92.layout:3
 msgid "ACM SIGGGRAPH 0.92 (obsolete)"
@@ -15777,14 +15730,12 @@ msgid "Algorithms"
 msgstr "Algorithmes"
 
 #: lib/layouts/stdfloatnames.inc:8
-#, fuzzy
 msgid "Margin Figures"
-msgstr "Figure en marge"
+msgstr "Figures en marge"
 
 #: lib/layouts/stdfloatnames.inc:9
-#, fuzzy
 msgid "Margin Tables"
-msgstr "Tableau en marge"
+msgstr "Tableaux en marge"
 
 #: lib/layouts/stdinsets.inc:11
 msgid "Marginal notes"
@@ -15874,15 +15825,16 @@ msgstr "Annexe \\thechapter"
 
 #: lib/layouts/subequations.module:2 lib/layouts/subequations.module:10
 #: lib/layouts/subequations.module:13
-#, fuzzy
 msgid "Subequations"
-msgstr "Équations"
+msgstr "Sous-équations"
 
 #: lib/layouts/subequations.module:5
 msgid ""
 "Provide a straightforward way to segregate subequations in LyX. See the "
 "subequations.lyx example file."
 msgstr ""
+"Fournit une méthode simple pour déployer les sous-équations en LyX. Voir le "
+"fichier d'exemple subequations.lyx."
 
 #: lib/layouts/svcommon.inc:68
 msgid "Front Matter"
@@ -18288,9 +18240,8 @@ msgid "Textual Reference|x"
 msgstr "Référence textuelle|x"
 
 #: lib/ui/stdcontext.inc:97
-#, fuzzy
 msgid "Label Only|L"
-msgstr "Étiquette uniquement"
+msgstr "Étiquette uniquement|É"
 
 #: lib/ui/stdcontext.inc:99 lib/ui/stdcontext.inc:111 lib/ui/stdcontext.inc:121
 #: lib/ui/stdcontext.inc:129 lib/ui/stdcontext.inc:138
@@ -18930,7 +18881,7 @@ msgstr "Enrober par l'aperçu|p"
 
 #: lib/ui/stdcontext.inc:677 lib/ui/stdmenus.inc:356
 msgid "Lock Toolbars|L"
-msgstr "Verrouiller les barres d'outils|L"
+msgstr "Verrouiller les barres d'outils|V"
 
 #: lib/ui/stdcontext.inc:679 lib/ui/stdmenus.inc:358
 msgid "Small-sized Icons"
@@ -24699,12 +24650,12 @@ msgid ""
 "to install the skak package from CTAN.\n"
 msgstr ""
 "Un échiquier.\n"
-"Ce modèle utilise XBoard pour modifier les positions des pièces.\n"
+"Ce cadre utilise XBoard pour modifier les positions des pièces.\n"
 "Utilisez « File->Save Position » dans XBoard pour enregistrer\n"
 "la position que vous voulez afficher.\n"
 "Assurez vois de bien lui donner un suffixe en « .fen »\n"
 "et un nom qui soit relatif à l'endroit où se trouve le document LyX.\n"
-"Dans XBoard, utilisez « Edit->Edit Position » pour autoriser lamodification "
+"Dans XBoard, utilisez « Edit->Edit Position » pour autoriser la modification "
 "générale de l'échiquier.\n"
 "Vous pouvez aussi activer l'option « Option->Test Legality »,\n"
 "et rappelez-vous que vous pouvez cliquer sur les boutons du\n"
@@ -24762,6 +24713,9 @@ msgid ""
 "Note that using this template automatically uses the \n"
 "document text in the image (like with the Xfig template).\n"
 msgstr ""
+"Une figure Inkscape.\n"
+"Noter que l'utilisation automatique de ce cadre utilise le \n"
+"texte du document dans l'image (comme avec le cadre Xfig).\n"
 
 #: lib/xtemplates/lilypond.xtemplate:15 lib/xtemplates/lilypond.xtemplate:21
 msgid "Lilypond typeset music"
@@ -24830,7 +24784,7 @@ msgid ""
 "Use this template to include bitmap images of any kind.\n"
 msgstr ""
 "Un fichier graphique matriciel.\n"
-"Utiliser ce modèle pour inclure des images matricielles de n'importe quel "
+"Utiliser ce cadre pour inclure des images matricielles de n'importe quel "
 "type.\n"
 
 #: lib/xtemplates/vector_graphics.xtemplate:14
@@ -24853,7 +24807,7 @@ msgid ""
 "the figures, which is not possible with this general template.\n"
 msgstr ""
 "Un fichier graphique vectoriel.\n"
-"Utiliser ce modèle pour inclure des graphiques vectoriels de n'importe quel "
+"Utiliser ce cadre pour inclure des graphiques vectoriels de n'importe quel "
 "type.\n"
 "LyX essaiera de conserver le caractère vectoriel de l'image dans le résultat "
 "imprimable.\n"
@@ -27770,6 +27724,8 @@ msgstr ""
 #: src/LyXRC.cpp:3087
 msgid "The command to run the python pygments syntax highlighter."
 msgstr ""
+"La commande permettant d'exécuter l'accentuation de syntaxe via pygments "
+"(écrit en python)"
 
 #: src/LyXRC.cpp:3096
 msgid ""
@@ -29982,7 +29938,7 @@ msgstr "Préambule LaTeX"
 
 #: src/frontends/qt4/GuiDocument.cpp:1598
 msgid "Pygments driver command not found!"
-msgstr ""
+msgstr "Commande d'activation de pygments introuvable !"
 
 #: src/frontends/qt4/GuiDocument.cpp:1599
 msgid ""
@@ -29996,6 +29952,15 @@ msgid ""
 "\n"
 "where 'driver' is name of the driver command."
 msgstr ""
+"La commande requise pour utiliser le paquetage minted\n"
+"(pigmentize) n'a pas été trouvée. Vérifier que le module\n"
+" python-pygments est installé ou alors, si le pilote\n"
+"porte un nom différent, ajouter la ligne suivante au\\n\n"
+"préambule du document :\n"
+"\n"
+"\\AtBeginDocument{\\renewcommand{\\MintedPygmentize}{pilote}}\n"
+"\n"
+"où « pilote » est le nom du pilote."
 
 #: src/frontends/qt4/GuiDocument.cpp:1775
 #: src/frontends/qt4/GuiDocument.cpp:1805
@@ -31767,7 +31732,7 @@ msgstr ""
 "Voulez-vous enregistrer le document ou ignorer ces modifications ?"
 
 #: src/frontends/qt4/GuiView.cpp:3014
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
 "\n"
@@ -31775,16 +31740,15 @@ msgid ""
 msgstr ""
 "Le document %1$s n'a pas encore été enregistré.\n"
 "\n"
-"Voulez-vous enregistrer le document ?"
+"Voulez-vous enregistrer le document ou bien l'abandonner entièrement ?"
 
 #: src/frontends/qt4/GuiView.cpp:3018 src/frontends/qt4/GuiView.cpp:3114
 msgid "Save changed document?"
 msgstr "Enregistrer le document modifié ?"
 
 #: src/frontends/qt4/GuiView.cpp:3018
-#, fuzzy
 msgid "Save document?"
-msgstr "Enregistrer le document"
+msgstr "Enregistrer le document ?"
 
 #: src/frontends/qt4/GuiView.cpp:3020
 msgid "&Discard"
@@ -31880,13 +31844,13 @@ msgid "All Files (*)"
 msgstr "Tous les fichiers (*)"
 
 #: src/frontends/qt4/GuiView.cpp:3800
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The current version will be lost. Are you sure you want to load the version "
 "on disk of the document %1$s?"
 msgstr ""
-"Toutes les modifications seront perdues. Êtes-vous sûr de vouloir revenir à "
-"la dernière version enregistrée du document %1$s ?"
+"La version actuelle sera perdue. Êtes-vous sûr de vouloir revenir à la "
+"dernière version enregistrée du document %1$s ?"
 
 #: src/frontends/qt4/GuiView.cpp:3807
 #, c-format
@@ -31898,9 +31862,8 @@ msgstr ""
 "la dernière version enregistrée du document %1$s ?"
 
 #: src/frontends/qt4/GuiView.cpp:3810
-#, fuzzy
 msgid "Revert to saved document?"
-msgstr "Revenir à la sauvegarde ?"
+msgstr "Revenir à la sauvegarde du document ?"
 
 #: src/frontends/qt4/GuiView.cpp:3838
 msgid "Saving all documents..."
@@ -31971,7 +31934,7 @@ msgstr "Fermer l'onglet"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:2233
 msgid "<b>The file %1 changed on disk.</b>"
-msgstr ""
+msgstr "<b>Le fichier %1 a changé sur le disque.</b>"
 
 #: src/frontends/qt4/GuiWrap.cpp:32
 msgid "Wrap Float Settings"
@@ -32501,7 +32464,7 @@ msgstr ""
 #: src/insets/InsetExternal.cpp:403
 #, c-format
 msgid "External template %1$s is not installed"
-msgstr "Le modèle externe %1$s n'est pas installé"
+msgstr "Le cadre externe %1$s n'est pas installé"
 
 #: src/insets/InsetFloat.cpp:134
 #, c-format
@@ -32912,11 +32875,8 @@ msgstr ""
 "même genre"
 
 #: src/insets/InsetListingsParams.cpp:303
-#, fuzzy
 msgid "none, leftline, topline, bottomline, lines, single"
-msgstr ""
-"none, leftline, topline, bottomline, lines, single, shadowbox or subset of "
-"trblTRBL"
+msgstr "none, leftline, topline, bottomline, lines, single"
 
 #: src/insets/InsetListingsParams.cpp:305
 msgid ""
@@ -32937,7 +32897,7 @@ msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:311
 msgid "Previously defined color name as a string"
-msgstr ""
+msgstr "Le nom de la couleur a déjà été défini comme une chaîne de caractères"
 
 #: src/insets/InsetListingsParams.cpp:313
 msgid "Enter something like \\color{white}"
@@ -32976,31 +32936,31 @@ msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:664
 msgid "default: _minted-<jobname>"
-msgstr ""
+msgstr "implicitement : _minted-<nom_de_la_tâche>"
 
 #: src/insets/InsetListingsParams.cpp:743
 msgid "Sets encoding expected by Pygments"
-msgstr ""
+msgstr "Positionne l'encodage attendu par Pygments"
 
 #: src/insets/InsetListingsParams.cpp:753
 msgid "A latex family such as tt, sf, rm"
-msgstr ""
+msgstr "Une famille latex comme tt, sf, rm"
 
 #: src/insets/InsetListingsParams.cpp:756
 msgid "A latex series such as m, b, c, bx, sb"
-msgstr ""
+msgstr "Une série latex comme m, b, c, bx, sb"
 
 #: src/insets/InsetListingsParams.cpp:759
 msgid "A latex name such as \\small"
-msgstr ""
+msgstr "Une commande latex comme \\small"
 
 #: src/insets/InsetListingsParams.cpp:762
 msgid "A latex shape such as n, it, sl, sc"
-msgstr ""
+msgstr "Une forme latex comme n, it, sl, sc"
 
 #: src/insets/InsetListingsParams.cpp:781
 msgid "A range of lines such as {1,3-4}"
-msgstr ""
+msgstr "Une portée de lignes comme {1,3-4}"
 
 #: src/insets/InsetListingsParams.cpp:790
 msgid ""
@@ -33008,35 +32968,39 @@ msgid ""
 "inset, it is better using the  language combo box, unless you need to enter "
 "a language not offered there, otherwise the combo box will be disabled."
 msgstr ""
+"Saisir l'une des langues reconnues. Cependant, si vous définissez un insert "
+"de listing, il vaut mieux utiliser la fenêtre combinée pour le langues, sauf "
+"si vous avez besoin de saisir une langue qui n'y est pas proposée, sinon la "
+"fenêtre combinée sera désactivée."
 
 #: src/insets/InsetListingsParams.cpp:813
 msgid "File encoding used by Pygments for highlighting"
-msgstr ""
+msgstr "Encodage de fichier utilisé par Pygments pour l'accentuation"
 
 #: src/insets/InsetListingsParams.cpp:816
 msgid "Apply Python 3 highlighting"
-msgstr ""
+msgstr "Appliquer l'accentuation pour Python  3"
 
 #: src/insets/InsetListingsParams.cpp:829
 msgid "A macro. Default: \\textvisiblespace"
-msgstr ""
+msgstr "Une macro. implicitement : \\textvisiblespace"
 
 #: src/insets/InsetListingsParams.cpp:833
 msgid "For PHP only"
-msgstr ""
+msgstr "Uniquement pour PHP"
 
 #: src/insets/InsetListingsParams.cpp:836
 msgid "The style used by Pygments"
-msgstr ""
+msgstr "Le style utilisé par Pygments"
 
 #: src/insets/InsetListingsParams.cpp:849
 msgid "A macro to redefine visible tabs"
-msgstr ""
+msgstr "Une macro redéfinissant les tabulations visbles"
 
 #: src/insets/InsetListingsParams.cpp:856
 #: src/insets/InsetListingsParams.cpp:859
 msgid "Enables latex code in comments"
-msgstr ""
+msgstr "Active le code latex dans les commentaires"
 
 #: src/insets/InsetListingsParams.cpp:873
 msgid "Invalid (empty) listing parameter name."
@@ -33863,7 +33827,7 @@ msgstr "Suivi des modifications"
 
 #: src/support/debug.cpp:66
 msgid "External template/inset messages"
-msgstr "Messages des modèles/inserts externes"
+msgstr "Messages de cadre/insert externe"
 
 #: src/support/debug.cpp:67
 msgid "RowPainter profiling"
