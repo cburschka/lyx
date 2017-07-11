@@ -8,9 +8,6 @@
  *
  * Full author contact details are available in file CREDITS.
  *
- * A store of the paths to the various different directoies used
- * by LyX. These paths differ markedly from one OS to another,
- * following the local Windows, MacOS X or Posix conventions.
  */
 #ifndef LYX_MESSAGE_H
 #define LYX_MESSAGE_H
