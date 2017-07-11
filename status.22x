@@ -57,6 +57,9 @@ What's new
 - Do not let the natbibapa module overwrite what the class or other packages
   add to the preamble.
 
+- Assure the color package is loaded before polyglossia in preview snippets
+  This fixes preview image generation with polyglossia and bidi (bug 10716).
+
 
 * LYX2LYX
 
