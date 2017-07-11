@@ -908,11 +908,57 @@ void Text::insertStringAsParagraphs(Cursor & cur, docstring const & str,
 }
 
 
+namespace {
+
+bool canInsertChar(Cursor const & cur, char_type c)
+{
+	Paragraph const & par = cur.paragraph();
+	// If not in free spacing mode, check if there will be two blanks together or a blank at
+	// the beginning of a paragraph.
+	if (!par.isFreeSpacing() && isLineSeparatorChar(c)) {
+		if (cur.pos() == 0) {
+			cur.message(_(
+					"You cannot insert a space at the "
+					"beginning of a paragraph. Please read the Tutorial."));
+			return false;
+		}
+		// LASSERT: Is it safe to continue here?
+		LASSERT(cur.pos() > 0, /**/);
+		if ((par.isLineSeparator(cur.pos() - 1) || par.isNewline(cur.pos() - 1))
+				&& !par.isDeleted(cur.pos() - 1)) {
+			cur.message(_(
+					"You cannot type two spaces this way. "
+					"Please read the Tutorial."));
+			return false;
+		}
+	}
+
+	// Prevent to insert uncodable characters in verbatim and ERT
+	// (workaround for bug 9012)
+	// Don't do it for listings inset, since InsetListings::latex() tries
+	// to switch to a usable encoding which works in many cases (bug 9102).
+	if (par.isPassThru() && cur.inset().lyxCode() != LISTINGS_CODE &&
+	    cur.current_font.language()) {
+		Encoding const * e = cur.current_font.language()->encoding();
+		if (!e->encodable(c)) {
+			cur.message(_("Character is uncodable in verbatim paragraphs."));
+			return false;
+		}
+	}
+	return true;
+}
+
+}
+
+
 // insert a character, moves all the following breaks in the
 // same Paragraph one to the right and make a rebreak
 void Text::insertChar(Cursor & cur, char_type c)
 {
 	LBUFERR(this == cur.text());
+
+	if (!canInsertChar(cur,c))
+		return;
 
 	cur.recordUndo(INSERT_UNDO);
 
@@ -921,9 +967,6 @@ void Text::insertChar(Cursor & cur, char_type c)
 	Paragraph & par = cur.paragraph();
 	// try to remove this
 	pit_type const pit = cur.pit();
-
-	bool const freeSpacing = par.layout().free_spacing ||
-		par.isFreeSpacing();
 
 	if (lyxrc.auto_number) {
 		static docstring const number_operators = from_ascii("+-/*");
@@ -1004,45 +1047,6 @@ void Text::insertChar(Cursor & cur, char_type c)
 			Font space_font = tm.displayFont(cur.pit(), cur.pos() - 1);
 			space_font.setLanguage(lang);
 			par.setFont(cur.pos() - 1, space_font);
-		}
-	}
-
-	// Next check, if there will be two blanks together or a blank at
-	// the beginning of a paragraph.
-	// I decided to handle blanks like normal characters, the main
-	// difference are the special checks when calculating the row.fill
-	// (blank does not count at the end of a row) and the check here
-
-	// When the free-spacing option is set for the current layout,
-	// disable the double-space checking
-	if (!freeSpacing && isLineSeparatorChar(c)) {
-		if (cur.pos() == 0) {
-			cur.message(_(
-					"You cannot insert a space at the "
-					"beginning of a paragraph. Please read the Tutorial."));
-			return;
-		}
-		// LASSERT: Is it safe to continue here?
-		LASSERT(cur.pos() > 0, /**/);
-		if ((par.isLineSeparator(cur.pos() - 1) || par.isNewline(cur.pos() - 1))
-				&& !par.isDeleted(cur.pos() - 1)) {
-			cur.message(_(
-					"You cannot type two spaces this way. "
-					"Please read the Tutorial."));
-			return;
-		}
-	}
-
-	// Prevent to insert uncodable characters in verbatim and ERT
-	// (workaround for bug 9012)
-	// Don't do it for listings inset, since InsetListings::latex() tries
-	// to switch to a usable encoding which works in many cases (bug 9102).
-	if (cur.paragraph().isPassThru() && owner_->lyxCode() != LISTINGS_CODE &&
-	    cur.current_font.language()) {
-		Encoding const * e = cur.current_font.language()->encoding();
-		if (!e->encodable(c)) {
-			cur.message(_("Character is uncodable in verbatim paragraphs."));
-			return;
 		}
 	}
 
