@@ -201,6 +201,7 @@ def extract_resolution(log_file, dpi):
 
 
 def legacy_latex_file(latex_file, fg_color, bg_color):
+    use_polyglossia_re = re.compile(b"\\s*\\\\usepackage{polyglossia}")
     use_preview_re = re.compile(b"\\s*\\\\usepackage\\[([^]]+)\\]{preview}")
     fg_color_gr = make_texcolor(fg_color, True)
     bg_color_gr = make_texcolor(bg_color, True)
@@ -216,18 +217,36 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
         warning('Warning in legacy_latex_file! Unable to open "%s"' % latex_file)
         warning(repr(sys.exc_info()[0]) + ',' + repr(sys.exc_info()[1]))
 
+    polyglossia = False
     for line in f.readlines():
         if success:
             tmp.write(line)
             continue
         match = use_preview_re.match(line)
+        polymatch = use_polyglossia_re.match(line)
+        # Package order:
+        # * if polyglossia is used, we need to load color before that
+        #   (also, we do not have to load lmodern)
+        # * else, color should be loaded before preview
         if match == None:
-            tmp.write(line)
-            continue
+            if polymatch == None:
+                tmp.write(line)
+                continue
+            else:
+                tmp.write(b"""
+\\usepackage{color}
+\\definecolor{fg}{rgb}{%s}
+\\definecolor{bg}{rgb}{%s}
+\\pagecolor{bg}
+\\usepackage{polyglossia}
+""" % (fg_color_gr, bg_color_gr))
+                polyglossia = True
+                continue
         success = 1
-        # Package order: color should be loaded before preview
         # Preview options: add the options lyx and tightpage
-        tmp.write(b"""
+        previewopts = match.group(1)
+        if not polyglossia:
+            tmp.write(b"""
 \\usepackage{color}
 \\definecolor{fg}{rgb}{%s}
 \\definecolor{bg}{rgb}{%s}
@@ -241,8 +260,15 @@ def legacy_latex_file(latex_file, fg_color, bg_color):
 \\g@addto@macro\\preview{\\begingroup\\color{bg}\\special{ps::clippath fill}\\color{fg}}
 \\g@addto@macro\\endpreview{\\endgroup}
 \\makeatother
-""" % (fg_color_gr, bg_color_gr, match.group(1)))
-
+""" % (fg_color_gr, bg_color_gr, previewopts))
+        else:
+            tmp.write(b"""
+\\usepackage[%s,tightpage]{preview}
+\\makeatletter
+\\g@addto@macro\\preview{\\begingroup\\color{bg}\\special{ps::clippath fill}\\color{fg}}
+\\g@addto@macro\\endpreview{\\endgroup}
+\\makeatother
+""" % previewopts)
     if success:
         copyfileobj(tmp, open(latex_file,"wb"), 1)
 
