@@ -380,8 +380,12 @@ void LyX::prepareExit()
 	// Write the index file of the converter cache
 	ConverterCache::get().writeIndex();
 
-	// close buffers first
-	pimpl_->buffer_list_.closeAll();
+	// closing buffer may throw exceptions, but we ignore them since we
+	// are quitting.
+	try {
+		// close buffers first
+		pimpl_->buffer_list_.closeAll();
+	} catch (ExceptionMessage const &) {}
 
 	// register session changes and shutdown server and socket
 	if (use_gui) {
