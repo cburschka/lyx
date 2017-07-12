@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -97,6 +97,7 @@ shapepar
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \notefontcolor #0000ff
 \index Índice
 \shortcut idx
@@ -107,15 +108,19 @@ shapepar
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 1
+\math_indentation default
+\math_numbering_side default
 \quotes_style swiss
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author 34634807 "Jean-Pierre"
 \end_header
 
 \begin_body
@@ -126,7 +131,13 @@ Características adicionales de \SpecialChar LyX
 \end_layout
 
 \begin_layout Subtitle
-Version 2.2.x
+Version 2.
+\change_deleted 34634807 1499890754
+2
+\change_inserted 34634807 1499890754
+3
+\change_unchanged
+.x
 \end_layout
 
 \begin_layout Author
@@ -2571,16 +2582,37 @@ Herramientas suplementarias
 \begin_layout Section
 Personalizar bibliografías con Bib\SpecialChar TeX
 
+\change_inserted 34634807 1499889171
+
+\lang english
+ or Biblatex
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
 Los fundamentos del uso de Bib\SpecialChar TeX
+
+\change_inserted 34634807 1499889180
+
+\lang english
+ or 
+\family sans
+Biblatex
+\change_unchanged
+
+\family default
+\lang spanish
  se explican en la sección 
 \emph on
-Bases de datos bibliográficos (Bib\SpecialChar TeX
+Bases de datos bibliográficos
+\change_deleted 34634807 1499889185
+ (Bib\SpecialChar TeX
 )
 \emph default
- de la 
+ 
+\change_unchanged
+de la 
 \emph on
 Guía del Usuario
 \emph default
@@ -2632,7 +2664,35 @@ Knuth 1984a
 
 ).
  \SpecialChar LyX
- soporta dos paquetes que suministra este estilo, 
+ soporta
+\change_deleted 34634807 1499889201
+ dos 
+\change_inserted 34634807 1499889203
+three 
+\change_unchanged
+paquetes que suministra este estilo,
+\change_inserted 34634807 1499889217
+
+\lang english
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889217
+
+\lang english
+biblatex
+\end_layout
+
+\end_inset
+
+,
+\change_unchanged
+
+\lang spanish
+ 
 \family typewriter
 
 \begin_inset Flex Code
@@ -2665,7 +2725,27 @@ jurabib
 
 \family default
 .
- Ambos paquetes tienen sus pros y sus contras, que no podemos detallar aquí.
+ 
+\change_deleted 34634807 1499889233
+Ambos 
+\change_inserted 34634807 1499889230
+
+\lang english
+Each of these 
+\change_unchanged
+
+\lang spanish
+paquetes 
+\change_deleted 34634807 1499889259
+tienen
+\change_inserted 34634807 1499889291
+
+\lang english
+have
+\change_unchanged
+
+\lang spanish
+ sus pros y sus contras, que no podemos detallar aquí.
  Si solo necesitas un estilo sencillo autor-año (o numérico)
 \family typewriter
  
@@ -2692,8 +2772,18 @@ natbib
 
 \family default
 .
- Si necesitas características especiales como referencias con título breve,
- ibidem, etc., deberías considerar el nuevo paquete 
+ 
+\change_deleted 34634807 1499889335
+Si necesitas características especiales como referencias con título breve,
+ ibidem, etc.,
+\change_inserted 34634807 1499889342
+
+\lang english
+If you look for specific citation styles common in law studies
+\change_unchanged
+
+\lang spanish
+ deberías considerar el nuevo paquete 
 \family typewriter
 
 \begin_inset Flex Code
@@ -2710,10 +2800,45 @@ jurabib
 
 \family default
 .
+
+\change_inserted 34634807 1499889355
+
+\lang english
+ If you want to have full control over the formatting or look for advanced
+ features such as ibidem, footnote citations, full title citations, advanced
+ date formats (such as 400 BC) or full localization to other languages than
+ English, you should definitely consider 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889355
+
+\lang english
+biblatex
+\end_layout
+
+\end_inset
+
+, which exceeds all other packages in terms of features, but is also quite
+ heavy and more resource-hungry.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-El manejo de ambos paquetes es básicamente el mismo.
+El manejo de 
+\change_deleted 34634807 1499889371
+ambos
+\change_inserted 34634807 1499889368
+
+\lang english
+these
+\change_unchanged
+
+\lang spanish
+ paquetes es básicamente el mismo.
  Ve al submenú 
 \family sans
  
@@ -2747,14 +2872,73 @@ status collapsed
 
 \end_inset
 
- la opción
+ 
+\change_deleted 34634807 1499889397
+la opción
+\change_unchanged
+
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
 
+\change_inserted 34634807 1499889413
+
+\lang english
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889410
+
+\lang english
+Style Format
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889410
+
+\lang english
+Biblatex
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889410
+
+\lang english
+Biblatex (Natbib mode)
+\end_layout
+
+\end_inset
+
+,
 \family sans
+\lang spanish
+ 
+\change_unchanged
 Natbib
+\change_inserted 34634807 1499889418
+
+\family default
+\lang english
+(BibTeX)
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -2769,15 +2953,43 @@ status collapsed
 
 \family sans
 Jurabib
+\change_inserted 34634807 1499889432
+
+\family default
+\lang english
+ (BibTeX)
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
 
+\change_inserted 34634807 1499889446
+
 \family default
+\lang english
+ (see sec.
+\begin_inset space ~
+\end_inset
+
+6.5.3 in the User's Guide for more information on these choices)
+\change_unchanged
+
+\lang spanish
 .
- Con ambos paquetes dispondrás de algunas características extras en el diálogo
- y podrás elegir el estilo de las citas (
+ Con 
+\change_deleted 34634807 1499889452
+ambos
+\change_inserted 34634807 1499889458
+
+\lang english
+all these
+\change_unchanged
+
+\lang spanish
+ paquetes dispondrás de algunas características extras en el diálogo y podrás
+ elegir el estilo de las citas (
 \begin_inset Quotes cld
 \end_inset
 
@@ -2810,9 +3022,28 @@ Knuth, 1984
 \end_inset
 
  etc.).
- Ten en cuenta que los dos paquetes necesitan archivos de estilo específicamente
- diseñados (ambos incluyen el suyo propio, pero hay muchos otros archivos
- de estilo disponibles e incluso un programa interactivo
+ Ten en cuenta que los 
+\change_deleted 34634807 1499889480
+dos
+\change_inserted 34634807 1499889487
+
+\lang english
+either
+\change_unchanged
+
+\lang spanish
+ paquete
+\change_deleted 34634807 1499889496
+s
+\change_unchanged
+ necesitan archivos de estilo específicamente diseñados (
+\change_deleted 34634807 1499889523
+ambos
+\change_inserted 34634807 1499889526
+all
+\change_unchanged
+ incluyen el suyo propio, pero hay muchos otros archivos de estilo disponibles
+ e incluso un programa interactivo
 \begin_inset Foot
 status collapsed
 
@@ -2841,7 +3072,19 @@ natbib
 \end_layout
 
 \begin_layout Subsection
-Bibliografía por secciones
+
+\change_inserted 34634807 1499889539
+
+\lang english
+Subdivided
+\change_unchanged
+
+\lang spanish
+Bibliografía
+\change_deleted 34634807 1499889545
+ por secciones
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -3015,7 +3258,14 @@ status collapsed
 
 \begin_layout Plain Layout
 
+\change_inserted 34634807 1499889591
+
+\lang english
+Subdivided bibliography
+\change_deleted 34634807 1499889598
+
 \family sans
+\lang spanish
 Bibliografía
 \begin_inset space ~
 \end_inset
@@ -3025,6 +3275,8 @@ por
 \end_inset
 
 secciones
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -3142,6 +3394,180 @@ bibtopic
 \family default
  quita el título de la bibliografía, debes reañadirlo manualmente (como
  un capítulo* o sección*, por ejemplo).
+\change_inserted 34634807 1499889620
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 34634807 1499889623
+
+\lang english
+With 
+\family sans
+Biblatex
+\family default
+, the procedure is a bit different.
+ Since 
+\family typewriter
+bibtopic
+\family default
+ does not work with 
+\family sans
+Biblatex
+\family default
+, the aforementioned 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889623
+
+\lang english
+Subdivided bibliography
+\end_layout
+
+\end_inset
+
+ option is disabled if you use 
+\family sans
+Biblatex
+\family default
+.
+ However, 
+\family sans
+Biblatex
+\family default
+ provides its own means to generate subdivided bibliographies.
+ You can either add keywords to bibliography entries via the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889623
+
+\lang english
+keywords
+\end_layout
+
+\end_inset
+
+ entry option and then filter bibliography sections by keyword (by adding
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889623
+
+\lang english
+keyword=mykeyword
+\end_layout
+
+\end_inset
+
+ to the 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889623
+
+\lang english
+Options
+\end_layout
+
+\end_inset
+
+ field of the dialog that opens if you right-click on the 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889623
+
+\lang english
+Biblatex Generated Bibliography
+\end_layout
+
+\end_inset
+
+ button), or you can filter by entry types (such as 
+\emph on
+book
+\emph default
+ or 
+\emph on
+article
+\emph default
+) by entering e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889623
+
+\lang english
+type=book
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889623
+
+\lang english
+nottype=collection
+\end_layout
+
+\end_inset
+
+ to the mentioned 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889623
+
+\lang english
+Options
+\end_layout
+
+\end_inset
+
+ field, or you can create so-called 
+\begin_inset Quotes eld
+\end_inset
+
+Bibliography Categories
+\begin_inset Quotes erd
+\end_inset
+
+ to which you can assign individual entries.
+ Please refer to the Biblatex manual, section 
+\emph on
+Subdivided Bibliographies
+\emph default
+, for details.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -3158,8 +3584,33 @@ ej.
 \begin_inset space \space{}
 \end_inset
 
-una bibliografía para cada sección o capítulo del documento, pero el paquete
- 
+una bibliografía para cada 
+\change_inserted 34634807 1499889656
+
+\lang english
+part, chapter, 
+\change_unchanged
+
+\lang spanish
+sección o 
+\change_inserted 34634807 1499889671
+
+\lang english
+subsection
+\change_deleted 34634807 1499889674
+
+\lang spanish
+capítulo
+\change_inserted 34634807 1499889689
+
+\lang english
+ or child (sub-document)
+\change_unchanged
+
+\lang spanish
+ del documento,
+\change_deleted 34634807 1499889741
+ pero el paquete 
 \family typewriter
 
 \begin_inset Flex Code
@@ -3221,6 +3672,8 @@ bibunits
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted 34634807 1499889741
 En primer lugar, en
 \family sans
  
@@ -3391,6 +3844,510 @@ btUnits
 \end_inset
 
  no puede anidarse.
+
+\change_inserted 34634807 1499889771
+
+\lang english
+ are also supported by \SpecialChar LyX
+.
+ In order to enable it, go to 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Bibliography
+\end_layout
+
+\end_inset
+
+ and select the relevant unit (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., 
+\begin_inset Quotes eld
+\end_inset
+
+per section
+\begin_inset Quotes erd
+\end_inset
+
+) in the 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+Multiple Bibliographies
+\end_layout
+
+\end_inset
+
+ combo box.
+ Then add a Bib(la)\SpecialChar TeX
+ bibliography to each unit (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., section) of your document.
+ In the output, a separate bibliography, containing only the references
+ done in the current unit is generated.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 34634807 1499889771
+
+\lang english
+If you use Bib\SpecialChar TeX
+, either the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+chapterbib
+\end_layout
+
+\end_inset
+
+ of the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+bibtopic
+\end_layout
+
+\end_inset
+
+ package is used to create multiple bibliographies.
+ The former package is used if you select 
+\begin_inset Quotes eld
+\end_inset
+
+per child document
+\begin_inset Quotes erd
+\end_inset
+
+ and do 
+\emph on
+not
+\emph default
+ check 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+Sectioned Bibliography
+\end_layout
+
+\end_inset
+
+.
+ In all other cases, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+bibtopic
+\end_layout
+
+\end_inset
+
+ is used.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+An alternative approach, if you are willing to use some 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+\SpecialChar TeX
+ Code
+\end_layout
+
+\end_inset
+
+ (see section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Inserting-TeX-Code"
+
+\end_inset
+
+), is to use the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+bibunits
+\end_layout
+
+\end_inset
+
+ package.
+\end_layout
+
+\end_inset
+
+ If 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+bibtopic
+\end_layout
+
+\end_inset
+
+ is used, \SpecialChar LyX
+ encloses the specified units in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+bibtopic
+\end_layout
+
+\end_inset
+
+'s 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+
+\backslash
+begin{btUnit}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+
+\backslash
+end{btUnit}
+\end_layout
+
+\end_inset
+
+ in order to create the units.
+ Note that this approach has some limitations.
+ First, every citation reference has to be inside some 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+btUnit
+\end_layout
+
+\end_inset
+
+.
+ So citations outside a defined unit (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., before the first section if you use 
+\begin_inset Quotes eld
+\end_inset
+
+by section
+\begin_inset Quotes erd
+\end_inset
+
+) will appear as 
+\begin_inset Quotes eld
+\end_inset
+
+???
+\begin_inset Quotes erd
+\end_inset
+
+.
+ You can also create your own units by entering 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+
+\backslash
+begin{btUnit}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+
+\backslash
+end{btUnit}
+\end_layout
+
+\end_inset
+
+ as \SpecialChar TeX
+ code (for instance to work around the mentioned limitation).
+ Note, though, that 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+btUnit
+\end_layout
+
+\end_inset
+
+s cannot be nested.
+ A second limitation is that 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+bibtopic
+\end_layout
+
+\end_inset
+
+ always processes all references of a bibliography database, even if they
+ are not cited.
+ This can result in odd labels (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Miller 2014b
+\begin_inset Quotes erd
+\end_inset
+
+ if two works of this author from 2014 are in the database, even if only
+ one is cited).
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 34634807 1499889771
+
+\lang english
+If you use 
+\family sans
+Biblatex
+\family default
+, the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+refsection
+\end_layout
+
+\end_inset
+
+ option is used instead.
+ If you need specific units, you can start them with the \SpecialChar TeX
+ code 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+
+\backslash
+newrefsection
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+
+\backslash
+newrefsegment
+\end_layout
+
+\end_inset
+
+, respectively.
+ If you also want to control the end of the unit, use the environment 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+
+\backslash
+begin{refsection}
+\end_layout
+
+\end_inset
+
+ \SpecialChar ldots
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+
+\backslash
+end{refsection}
+\end_layout
+
+\end_inset
+
+ instead.
+ Note, though, that 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 34634807 1499889771
+
+\lang english
+refsection
+\end_layout
+
+\end_inset
+
+s cannot be nested.
+ In addition to the individual bibliography of the current unit, 
+\family sans
+Biblatex
+\family default
+ also provides an easy way to output all bibliographies, subsequently, at
+ one place (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., at the end of the document).
+ Select 
+\begin_inset Quotes eld
+\end_inset
+
+all reference units
+\begin_inset Quotes erd
+\end_inset
+
+ from the Content combo box of the Bib(la)TeX inset dialog in order to achieve
+ this.
+ Please refer to the 
+\family sans
+Biblatex
+\family default
+ manual for more information on this topic.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section

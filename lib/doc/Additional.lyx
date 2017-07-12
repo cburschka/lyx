@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -97,6 +97,7 @@ shapepar
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \notefontcolor #0000ff
 \index Index
 \shortcut idx
@@ -107,17 +108,18 @@ shapepar
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 1
+\math_indentation default
+\math_numbering_side default
 \quotes_style english
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -128,7 +130,7 @@ Additional \SpecialChar LyX
 \end_layout
 
 \begin_layout Subtitle
-Version 2.2.x
+Version 2.3.x
 \end_layout
 
 \begin_layout Author
@@ -2186,32 +2188,19 @@ Supplemental Tools
 
 \begin_layout Section
 Customizing Bibliographies with Bib\SpecialChar TeX
-
-\change_inserted -712698321 1485694846
  or Biblatex
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
 The most basic information about how to use Bib\SpecialChar TeX
- 
-\change_inserted -712698321 1485694851
-or 
+ or 
 \family sans
 Biblatex
 \family default
- 
-\change_unchanged
-with \SpecialChar LyX
+ with \SpecialChar LyX
  is contained in the section 
 \emph on
 Bibliography databases
-\change_deleted -712698321 1485694823
- (Bib\SpecialChar TeX
-)
-\change_unchanged
-
 \emph default
  of the 
 \emph on
@@ -2265,31 +2254,17 @@ Knuth 1984a
 
 ).
  \SpecialChar LyX
- supports 
-\change_deleted -712698321 1485694902
-two
-\change_inserted -712698321 1485694902
-three
-\change_unchanged
- packages that provide this style,
-\change_inserted -712698321 1485694917
- 
+ supports three packages that provide this style, 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1485694917
 biblatex
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-,
-\change_unchanged
- 
+, 
 \begin_inset Flex Code
 status collapsed
 
@@ -2299,11 +2274,7 @@ natbib
 
 \end_inset
 
-
-\change_inserted -712698321 1485696751
-,
-\change_unchanged
- and 
+, and 
 \begin_inset Flex Code
 status collapsed
 
@@ -2314,19 +2285,8 @@ jurabib
 \end_inset
 
 .
- 
-\change_deleted -712698321 1485695091
-Both
-\change_inserted -712698321 1485695093
-Each of these
-\change_unchanged
- packages ha
-\change_deleted -712698321 1485695095
-ve
-\change_inserted -712698321 1485695095
-s
-\change_unchanged
- their pros and cons, which cannot be listed in detail.
+ Each of these packages has their pros and cons, which cannot be listed
+ in detail.
  If you only want to have simple author-year (or author-numerical) style,
  or if you want to use one of the countless style files for 
 \begin_inset Flex Code
@@ -2349,13 +2309,8 @@ natbib
 \end_inset
 
  package is probably your choice.
- If you 
-\change_inserted -712698321 1485695152
-look for specific citation styles common in law studies
-\change_deleted -712698321 1485695162
-need special features like short title references, ibidem etc.
-\change_unchanged
-, you might consider the 
+ If you look for specific citation styles common in law studies, you might
+ consider the 
 \begin_inset Flex Code
 status collapsed
 
@@ -2366,8 +2321,6 @@ jurabib
 \end_inset
 
  package.
-
-\change_inserted -712698321 1485695432
  If you want to have full control over the formatting or look for advanced
  features such as ibidem, footnote citations, full title citations, advanced
  date formats (such as 400 BC) or full localization to other languages than
@@ -2376,8 +2329,6 @@ jurabib
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1485695328
 biblatex
 \end_layout
 
@@ -2385,18 +2336,10 @@ biblatex
 
 , which exceeds all other packages in terms of features, but is also quite
  heavy and more resource-hungry.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-The handling of 
-\change_deleted -712698321 1485695449
-both
-\change_inserted -712698321 1485695449
-these
-\change_unchanged
- packages in \SpecialChar LyX
+The handling of these packages in \SpecialChar LyX
  is basically the same.
  Go to 
 \begin_inset Flex Noun
@@ -2419,17 +2362,11 @@ Bibliography
 
 \end_inset
 
- 
-\change_deleted -712698321 1485695462
-the option
-\change_inserted -712698321 1485695559
-the 
+ the 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1485695499
 Style Format
 \end_layout
 
@@ -2440,8 +2377,6 @@ Style Format
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1485695527
 Biblatex
 \end_layout
 
@@ -2452,25 +2387,17 @@ Biblatex
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1485695554
 Biblatex (Natbib mode)
 \end_layout
 
 \end_inset
 
-,
-\change_unchanged
- 
+, 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-Natbib
-\change_inserted -712698321 1485695505
- (BibTeX)
-\change_unchanged
-
+Natbib (BibTeX)
 \end_layout
 
 \end_inset
@@ -2480,32 +2407,18 @@ Natbib
 status collapsed
 
 \begin_layout Plain Layout
-Jurabib
-\change_inserted -712698321 1485695511
- (BibTeX)
-\change_unchanged
-
+Jurabib (BibTeX)
 \end_layout
 
 \end_inset
 
-
-\change_inserted -712698321 1485695637
  (see sec.
 \begin_inset space ~
 \end_inset
 
-6.5.3 in the User's Guide for more information on these choices)
-\change_unchanged
-.
- With 
-\change_deleted -712698321 1485695643
-both
-\change_inserted -712698321 1485695645
-all these
-\change_unchanged
- packages, you will get some extra features in the citation dialog and you
- can select the style of the reference (
+6.5.3 in the User's Guide for more information on these choices).
+ With all these packages, you will get some extra features in the citation
+ dialog and you can select the style of the reference (
 \begin_inset Quotes eld
 \end_inset
 
@@ -2538,29 +2451,9 @@ Knuth, 1984
 \end_inset
 
  etc.).
- Note that 
-\change_deleted -712698321 1485695659
-both
-\change_inserted -712698321 1485695660
-either
-\change_unchanged
- package
-\change_deleted -712698321 1485695663
-s
-\change_unchanged
- need
-\change_inserted -712698321 1485695664
-s
-\change_unchanged
- specifically designed style files.
- They 
-\change_deleted -712698321 1485695676
-both
-\change_inserted -712698321 1485695676
-all
-\change_unchanged
- ship their own, but there are lots of additional style files, and there
- is even an interactive style file builder
+ Note that either package needs specifically designed style files.
+ They all ship their own, but there are lots of additional style files,
+ and there is even an interactive style file builder
 \begin_inset Foot
 status collapsed
 
@@ -2595,13 +2488,7 @@ natbib
 \end_layout
 
 \begin_layout Subsection
-S
-\change_deleted -712698321 1486199102
-ection
-\change_inserted -712698321 1486199104
-ubdivid
-\change_unchanged
-ed Bibliographies
+Subdivided Bibliographies
 \end_layout
 
 \begin_layout Standard
@@ -2650,13 +2537,7 @@ ftp://ctan.tug.org/tex-archive/macros/latex/contrib/bibtopic/
 
 \end_inset
 
- The advantage of this package (compared to other packages 
-\change_deleted -712698321 1485695727
-like
-\change_inserted -712698321 1485695729
-such as
-\change_unchanged
- 
+ The advantage of this package (compared to other packages such as 
 \family typewriter
 multibib
 \family default
@@ -2739,13 +2620,7 @@ Bibliography
 status collapsed
 
 \begin_layout Plain Layout
-S
-\change_deleted -712698321 1486199132
-ection
-\change_inserted -712698321 1486199136
-ubdivid
-\change_unchanged
-ed bibliography
+Subdivided bibliography
 \end_layout
 
 \end_inset
@@ -2842,13 +2717,9 @@ bibtopic
 
  removes the bibliography title, you have to manually re-add that, too (as
  a chapter* or section*, for instance).
-\change_inserted -712698321 1485695762
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1486200403
 With 
 \family sans
 Biblatex
@@ -2867,8 +2738,6 @@ Biblatex
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1486200382
 Subdivided bibliography
 \end_layout
 
@@ -2889,11 +2758,7 @@ Biblatex
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1485696318
 keywords
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -2904,11 +2769,7 @@ keywords
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1485696306
 keyword=mykeyword
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -2918,11 +2779,7 @@ keyword=mykeyword
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1485696431
 Options
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -2932,11 +2789,7 @@ Options
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1485696518
 Biblatex Generated Bibliography
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -2959,8 +2812,6 @@ g.
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1485696628
 type=book
 \end_layout
 
@@ -2971,8 +2822,6 @@ type=book
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1485696643
 nottype=collection
 \end_layout
 
@@ -2983,8 +2832,6 @@ nottype=collection
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1485696667
 Options
 \end_layout
 
@@ -3004,8 +2851,6 @@ Bibliography Categories
 Subdivided Bibliographies
 \emph default
 , for details.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
@@ -3021,48 +2866,17 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-a bibliography for each 
-\change_inserted -712698321 1486199441
-part, chapter, 
-\change_unchanged
-section
-\change_inserted -712698321 1486231742
-,
-\change_unchanged
- 
-\change_deleted -712698321 1486231742
-or 
-\change_inserted -712698321 1486199445
-subsection
-\change_deleted -712698321 1486199447
-chapter
-\change_unchanged
- 
-\change_inserted -712698321 1486231758
-or child (sub-document) 
-\change_unchanged
-of the document, are 
-\change_deleted -712698321 1486199458
-not 
-\change_inserted -712698321 1486200433
-also 
-\change_unchanged
-supported 
-\change_inserted -712698321 1486231617
-by \SpecialChar LyX
+a bibliography for each part, chapter, section, subsection or child (sub-documen
+t) of the document, are also supported by \SpecialChar LyX
 .
  In order to enable it, go to 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1486199572
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
 Bibliography
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3084,23 +2898,13 @@ per section
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1486199553
 Multiple Bibliographies
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
  combo box.
- 
-\change_deleted -712698321 1486199771
-by Bib\SpecialChar TeX
- itself.
- 
-\change_inserted -712698321 1486200569
-Then add a Bib(la)\SpecialChar TeX
+ Then add a Bib(la)\SpecialChar TeX
  bibliography to each unit (e.
 \begin_inset space \thinspace{}
 \end_inset
@@ -3111,34 +2915,18 @@ g., section) of your document.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1486199829
 If you use Bib\SpecialChar TeX
-, 
-\change_deleted -712698321 1486199835
-But 
-\change_inserted -712698321 1486231520
-either 
-\change_unchanged
-the
-\change_inserted -712698321 1486231576
- 
+, either the 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1486231576
 chapterbib
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
- of the
-\change_unchanged
- 
+ of the 
 \begin_inset Flex Code
 status collapsed
 
@@ -3148,15 +2936,7 @@ bibtopic
 
 \end_inset
 
- package
-\change_deleted -712698321 1486231584
-, which is used for the creation of sectioned bibliographies in \SpecialChar LyX
- (see the
- previous section),
-\change_unchanged
- 
-\change_inserted -712698321 1486231676
-is used to create multiple bibliographies.
+ package is used to create multiple bibliographies.
  The former package is used if you select 
 \begin_inset Quotes eld
 \end_inset
@@ -3174,11 +2954,7 @@ not
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1486231676
 Sectioned Bibliography
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3189,54 +2965,21 @@ Sectioned Bibliography
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1486231655
 bibtopic
 \end_layout
 
 \end_inset
 
  is used.
-\change_deleted -712698321 1486200505
-provides an easy way to solve this task, if you are willing to use some
- 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-\SpecialChar TeX
- Code
-\end_layout
-
-\end_inset
-
- (see section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Inserting-TeX-Code"
-
-\end_inset
-
-).
-\change_unchanged
-
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-An alternative approach
-\change_inserted -712698321 1486199215
-, if you are willing to use some 
+An alternative approach, if you are willing to use some 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1486199212
 \SpecialChar TeX
  Code
 \end_layout
@@ -3254,23 +2997,7 @@ reference "sec:Inserting-TeX-Code"
 
 \end_inset
 
-),
-\change_unchanged
- is to use the 
-\change_deleted -712698321 1486231820
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-chapterbib
-\end_layout
-
-\end_inset
-
- or 
-\change_unchanged
-
+), is to use the 
 \begin_inset Flex Code
 status collapsed
 
@@ -3280,69 +3007,16 @@ bibunits
 
 \end_inset
 
- package
-\change_deleted -712698321 1486231824
-, respectively
-\change_unchanged
-.
+ package.
 \end_layout
 
 \end_inset
 
-
-\change_inserted -712698321 1486231646
- 
-\change_deleted -712698321 1486202138
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted -712698321 1486202126
-First go to 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-Document\SpecialChar menuseparator
-Settings
-\end_layout
-
-\end_inset
-
- and under 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-Bibliography
-\end_layout
-
-\end_inset
-
- check 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-Sectioned bibliography
-\end_layout
-
-\end_inset
-
-.
- In the document, you have to enclose the sections, which shall contain
- their own bibliography (including the Bib\SpecialChar TeX
- bibliography itself), between
- 
-\change_inserted -712698321 1486231702
-If 
+ If 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1486231702
 bibtopic
 \end_layout
 
@@ -3354,16 +3028,12 @@ bibtopic
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1486201443
 bibtopic
 \end_layout
 
 \end_inset
 
 's 
-\change_unchanged
-
 \begin_inset Flex Code
 status collapsed
 
@@ -3387,20 +3057,9 @@ end{btUnit}
 
 \end_inset
 
-
-\change_inserted -712698321 1486231697
  in order to create the units.
- Note that this approach has
-\change_unchanged
- 
-\change_inserted -712698321 1486231697
-some limitations.
- 
-\change_deleted -712698321 1486200476
-(those commands have to be inserted as \SpecialChar TeX
- code).
- The bibliography will contain all references that have been cited in the
- current 
+ Note that this approach has some limitations.
+ First, every citation reference has to be inside some 
 \begin_inset Flex Code
 status collapsed
 
@@ -3411,28 +3070,7 @@ btUnit
 \end_inset
 
 .
- 
-\series bold
-Note:
-\series default
- If you are using this approach, then 
-\change_inserted -712698321 1486231697
-First, 
-\change_unchanged
-every citation reference has to be inside some 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-btUnit
-\end_layout
-
-\end_inset
-
-.
- 
-\change_inserted -712698321 1486231697
-So citations outside a defined unit (e.
+ So citations outside a defined unit (e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -3459,8 +3097,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1486200131
-
 \backslash
 begin{btUnit}
 \end_layout
@@ -3473,8 +3109,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1486200131
-
 \backslash
 end{btUnit}
 \end_layout
@@ -3483,11 +3117,7 @@ end{btUnit}
 
  as \SpecialChar TeX
  code (for instance to work around the mentioned limitation).
- Note, though, that
-\change_deleted -712698321 1486200476
-Also, the
-\change_unchanged
- 
+ Note, though, that 
 \begin_inset Flex Code
 status collapsed
 
@@ -3498,15 +3128,11 @@ btUnit
 \end_inset
 
 s cannot be nested.
-
-\change_inserted -712698321 1486231697
  A second limitation is that 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1486200199
 bibtopic
 \end_layout
 
@@ -3532,8 +3158,6 @@ Miller 2014b
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1486204109
 If you use 
 \family sans
 Biblatex
@@ -3543,11 +3167,7 @@ Biblatex
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1486202183
 refsection
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3560,12 +3180,8 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1485697716
-
 \backslash
 newrefsection
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3576,12 +3192,8 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1485697724
-
 \backslash
 newrefsegment
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3592,8 +3204,6 @@ newrefsegment
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1485697769
 
 \backslash
 begin{refsection}
@@ -3608,8 +3218,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1485697780
-
 \backslash
 end{refsection}
 \end_layout
@@ -3622,11 +3230,7 @@ end{refsection}
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1486201999
 refsection
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3657,8 +3261,6 @@ all reference units
 Biblatex
 \family default
  manual for more information on this topic.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section
