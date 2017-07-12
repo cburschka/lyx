@@ -433,7 +433,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 
 		// do the metric calculation
 		Dimension dim;
-		int const w = max_width_ - leftMargin(max_width_, pit, ii->pos)
+		int const w = max_width_ - leftMargin(pit, ii->pos)
 			- right_margin - eop;
 		Font const & font = ii->inset->inheritFont() ?
 			displayFont(pit, ii->pos) : bufferfont;
@@ -747,7 +747,7 @@ int TextMetrics::labelEnd(pit_type const pit) const
 	if (text_->getPar(pit).layout().margintype != MARGIN_MANUAL)
 		return 0;
 	// return the beginning of the body
-	return leftMargin(max_width_, pit);
+	return leftMargin(pit);
 }
 
 namespace {
@@ -822,7 +822,7 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 	bool need_new_row = false;
 
 	row.clear();
-	row.left_margin = leftMargin(max_width_, row.pit(), pos);
+	row.left_margin = leftMargin(row.pit(), pos);
 	row.right_margin = right_margin;
 	if (is_rtl)
 		swap(row.left_margin, row.right_margin);
@@ -963,7 +963,7 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 
 	// if the row is too large, try to cut at last separator. In case
 	// of success, reset indication that the row was broken abruptly.
-	int const next_width = max_width_ - leftMargin(max_width_, row.pit(), row.endpos())
+	int const next_width = max_width_ - leftMargin(row.pit(), row.endpos())
 		- rightMargin(row.pit());
 
 	row.shortenIfNeeded(body_pos, width, next_width);
@@ -1582,14 +1582,13 @@ bool TextMetrics::isFirstRow(Row const & row) const
 }
 
 
-int TextMetrics::leftMargin(int max_width, pit_type pit) const
+int TextMetrics::leftMargin(pit_type pit) const
 {
-	return leftMargin(max_width, pit, text_->paragraphs()[pit].size());
+	return leftMargin(pit, text_->paragraphs()[pit].size());
 }
 
 
-int TextMetrics::leftMargin(int max_width,
-		pit_type const pit, pos_type const pos) const
+int TextMetrics::leftMargin(pit_type const pit, pos_type const pos) const
 {
 	ParagraphList const & pars = text_->paragraphs();
 
@@ -1622,7 +1621,7 @@ int TextMetrics::leftMargin(int max_width,
 				int nestmargin = depth * nestMargin();
 				if (text_->isMainText())
 					nestmargin += changebarMargin();
-				l_margin = max(leftMargin(max_width, newpar), nestmargin);
+				l_margin = max(leftMargin(newpar), nestmargin);
 				// Remove the parindent that has been added
 				// if the paragraph was empty.
 				if (pars[newpar].empty() &&
@@ -1721,7 +1720,7 @@ int TextMetrics::leftMargin(int max_width,
 		ParagraphMetrics const & pm = par_metrics_[pit];
 		RowList::const_iterator rit = pm.rows().begin();
 		RowList::const_iterator end = pm.rows().end();
-		int minfill = max_width;
+		int minfill = max_width_;
 		for ( ; rit != end; ++rit)
 			if (rit->fill() < minfill)
 				minfill = rit->fill();
@@ -1729,13 +1728,13 @@ int TextMetrics::leftMargin(int max_width,
 		l_margin += minfill;
 #endif
 		// also wrong, but much shorter.
-		l_margin += max_width / 2;
+		l_margin += max_width_ / 2;
 		break;
 	}
 	}
 
 	if (!par.params().leftIndent().zero())
-		l_margin += par.params().leftIndent().inPixels(max_width, lfm.em());
+		l_margin += par.params().leftIndent().inPixels(max_width_, lfm.em());
 
 	LyXAlignment align = par.getAlign();
 
