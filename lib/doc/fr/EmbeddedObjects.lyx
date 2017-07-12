@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 543
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -222,6 +222,7 @@ graphicboxes
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \notefontcolor #0000ff
 \index Index
 \shortcut idx
@@ -916,9 +917,7 @@ name "fig:A-star-structure"
 
 \end_inset
 
-
-\lang english
-A star structure in a float.
+Une structure étoilée dans un flottant
 \end_layout
 
 \end_inset
@@ -941,15 +940,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:A-3D-object"
-
-\end_inset
-
-
-\lang english
-A 3D object.
+Un objet 3D
 \end_layout
 
 \end_inset
@@ -1116,10 +1107,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset space \hfill{}
-\end_inset
-
-
 \begin_inset Float figure
 wide false
 sideways false
@@ -1135,9 +1122,7 @@ name "fig:Pink-object"
 
 \end_inset
 
-
-\lang english
-Pink object.
+Objet rose
 \end_layout
 
 \end_inset
@@ -1179,9 +1164,7 @@ name "fig:A-star"
 
 \end_inset
 
-
-\lang english
-A star.
+Une étoile
 \end_layout
 
 \end_inset
@@ -26731,18 +26714,16 @@ literal "true"
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-The options 
+Les options 
 \family sans
 Plural
 \family default
- and 
+ et 
 \family sans
 Capitalized
 \family default
- are only available if you use the \SpecialChar LaTeX
--package 
+ ne sont disponibles que si vous utilisez le paquetage \SpecialChar LaTeX
+ 
 \series bold
 refstyle
 \series default
@@ -26751,11 +26732,7 @@ refstyle
 \family sans
 Plural
 \family default
- adds an 
-\emph on
-s
-\emph default
- to the name, e.
+ met le nom au pluriel, e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -26764,18 +26741,18 @@ g.
 \end_inset
 
 
-\begin_inset Quotes eld
+\begin_inset Quotes cld
 \end_inset
 
-tableaus
-\begin_inset Quotes erd
+tableaux
+\begin_inset Quotes crd
 \end_inset
 
- and is therefore not useful for French documents; 
+; 
 \family sans
 Capitalized
 \family default
- outputs the name capitalized, e.
+ met une capitale au nom, e.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -26784,11 +26761,11 @@ g.
 \end_inset
 
 
-\begin_inset Quotes eld
+\begin_inset Quotes cld
 \end_inset
 
 Tableau
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -26814,16 +26791,12 @@ reference "fig:Deux-images-déformées"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 Label
 \begin_inset space ~
 \end_inset
 
-only: prints only the \SpecialChar LaTeX
- label for the reference: 
-\lang french
-
+only: n'imprime que l'étiquette \SpecialChar LaTeX
+ comme reference: 
 \begin_inset CommandInset ref
 LatexCommand labelonly
 reference "fig:Deux-images-déformées"
@@ -26834,20 +26807,15 @@ noprefix "false"
 \end_inset
 
 
-\lang english
-
 \begin_inset Newline newline
 \end_inset
 
-This allows to use the label for commands in \SpecialChar TeX
- code.
- With the option 
+Ceci perlmet d'utiliser l'étiquette en code TeX.
+ L'option 
 \family sans
 No Prefix
 \family default
- one can omit the prefix of the label name: 
-\lang french
-
+ enelève le préfixe du nom de l'étiquette: 
 \begin_inset CommandInset ref
 LatexCommand labelonly
 reference "fig:Deux-images-déformées"
@@ -40338,8 +40306,8 @@ Modèles
 \end_layout
 
 \begin_layout Description
-Échiquier Ce modèle accepte les diagrammes de positions d'échec produits
- par le programme 
+Échiquier accepte les diagrammes de positions d'échec produits par le programme
+ 
 \series bold
 
 \begin_inset CommandInset href
@@ -40356,7 +40324,7 @@ literal "false"
 \end_layout
 
 \begin_layout Description
-Date Ce modèle insère la date sous la forme 
+Date insère la date sous la forme 
 \emph on
 Jour-Mois-Année
 \emph default
@@ -40427,7 +40395,7 @@ Diagramme
 \begin_inset space ~
 \end_inset
 
-Dia Ce modèle accepte les diagrammes créés avec le programme 
+Dia accepte les diagrammes créés avec le programme 
 \series bold
 
 \begin_inset CommandInset href
@@ -40444,8 +40412,8 @@ literal "false"
 \end_layout
 
 \begin_layout Description
-Tableur Avec ce modèle vous pouvez insérer des feuilles de calcul ou des
- tableaux dans le format de 
+Tableur permet d'insérer des feuilles de calcul ou des tableaux dans le
+ format de 
 \series bold
 
 \begin_inset CommandInset href
@@ -40524,8 +40492,8 @@ avec
 \begin_inset space ~
 \end_inset
 
-Lilypond Ce modèle est utilisé avec des partitions musicales mises en forme
- par le programme 
+Lilypond est utilisé avec des partitions musicales mises en forme par le
+ programme 
 \series bold
 
 \begin_inset CommandInset href
@@ -40553,7 +40521,7 @@ Pages
 \begin_inset space ~
 \end_inset
 
-PDF Ce modèle permet d'insérer des documents en PDF dans votre document.
+PDF permet d'insérer des documents en PDF dans votre document.
  Pour insérer certaines pages ou toutes les pages d'un PDF, utilisez l'option
  
 \emph on
@@ -40771,7 +40739,7 @@ Image
 \begin_inset space ~
 \end_inset
 
-tramée Ce modèle peut être utilisé pour les images matricielles (bitmap).
+tramée peut être utilisé pour les images matricielles (bitmap).
  Les images peuvent être traitées dans la fenêtre de dialogue 
 \family sans
 Objet
@@ -40817,7 +40785,7 @@ Graphiques
 \begin_inset space ~
 \end_inset
 
-vectoriels Ce modèle peut être utilisé pour les graphiques
+vectoriels peut être utilisé pour les graphiques
 \begin_inset space ~
 \end_inset
 
@@ -40865,7 +40833,7 @@ Figure
 \begin_inset space ~
 \end_inset
 
-Xfig Ce modèle accepte les images créées avec le programme 
+Xfig accepte les images créées avec le programme 
 \begin_inset CommandInset href
 LatexCommand href
 name "Xfig"
@@ -40882,19 +40850,14 @@ Figure
 \begin_inset space ~
 \end_inset
 
-Inkscape 
-\lang english
-This experimental template supports vector graphics (SVG) images that contain
- text written in \SpecialChar LaTeX
+Inkscape supporte (expérimentalement) les images graphiques vectorielles
+ SVG contenant du texte écrit en \SpecialChar LaTeX
 .
- It relies on the option
-\lang french
- 
+ Il repose sur l'option 
 \family sans
 Exclure le texte du fichier PDF, et créer un fichier LaTeX 
 \family default
-\lang english
-when saving a drawing as PDF with the program 
+lorsqu'on enregistre un dessin avec le programme 
 \noun on
 Inkscape
 \noun default
@@ -40907,16 +40870,16 @@ literal "false"
 \end_inset
 
 .
- This allows to include SVG documents in which \SpecialChar LaTeX
- will typeset the text.
- The benefit of such SVGs is a uniform text style throughout the whole document
- and one can use \SpecialChar TeX
- code commands in the text of the SVG.
+ Ceci permet d’inclure des documents SVG dans lesquels \SpecialChar LaTeX
+ assurera la typographie
+ du texte.
+ L'avantage de ces SVG est d'assurer l'uniformité du style dans le document,
+ et il est possible de saisir du code \SpecialChar TeX
+ dans le texte du SVG.
 \begin_inset Newline newline
 \end_inset
 
-One can use \SpecialChar TeX
- code commands like 
+Il est possible d'utiliser les commandes du code TeX comme 
 \series bold
 
 \backslash
@@ -40928,14 +40891,14 @@ Large
 \backslash
 small
 \series default
-, etc.
-\begin_inset space \space{}
+, etc.dans le texte du SVG.
+ La taille de la police sera celle des paramètres du document \SpecialChar LyX
+.
+ Voir
+\begin_inset space ~
 \end_inset
 
-in the text of the SVG.
- The size of the font will be taken from the settings of the \SpecialChar LyX
- document.
- Refer to 
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Inkscape"
@@ -40943,27 +40906,26 @@ literal "false"
 
 \end_inset
 
- for more information and examples.
+ pour plus d'information et des exemples.
 \begin_inset Newline newline
 \end_inset
 
-Note that while the image text takes into account the surrounding font,
- its preview in \SpecialChar LyX
- does not.
- Wrapping the external inset in a preview inset (menu 
+Noter que, si le texte dans l'image hérite de la police de l’environnement,
+ ce n'est pas le cas dans l'aperçu dans \SpecialChar LyX
+.
+ Encapsuler l'insert externe dans un insert d'aperçu (menu 
 \family sans
-Insert\SpecialChar menuseparator
-Preview
+Insérer\SpecialChar menuseparator
+Aperçu
 \family default
-) gives a better result.
+) donne un meilleur résultat.
 \begin_inset Newline newline
 \end_inset
 
-The template works very similarly to Xfig support.
+Le modèle fonctionne comme dans le cas d'un objet externe Xfig.
  \SpecialChar LyX
- will extract the text in the image into a separate \SpecialChar TeX
- file and creates a
- PDF file for the rest.
+ va extraire le texte de l'image dans un fichier séparé et créer un fichier
+ PDF pour le reste.
 \end_layout
 
 \begin_layout Standard
@@ -48173,24 +48135,16 @@ literal "true"
 
 \end_inset
 
-Documentation 
-\lang english
-of the option
-\lang french
- 
+Documentation de l'option 
 \begin_inset CommandInset href
 LatexCommand href
-name "Omit text in PDF"
+name "Exclure le texte du PDF"
 target "http://tug.ctan.org/tex-archive/info/svg-inkscape/InkscapePDFLaTeX.pdf"
 literal "false"
 
 \end_inset
 
- 
-\lang english
-of the program
-\lang french
- 
+ du programme 
 \noun on
 
 \begin_inset CommandInset href

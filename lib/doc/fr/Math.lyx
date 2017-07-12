@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 543
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -198,6 +198,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \notefontcolor #0000ff
 \index Index
 \shortcut idx
@@ -27635,11 +27636,7 @@ Centré est le standard prédéfini;
 \end_layout
 
 \begin_layout Description
-Indenté 
-\lang english
-this can be set using
-\lang french
- la fenêtre de dialogue 
+Indenté peut être sélectionné via la fenêtre de dialogue 
 \family sans
 Document\SpecialChar menuseparator
 Paramètres
@@ -27678,9 +27675,7 @@ Options mode math
 
 \begin_deeper
 \begin_layout Description
-Droite est le standard 
-\lang english
-in most cases
+Droite est le standard dans la plupart des cas;
 \end_layout
 
 \begin_layout Description
