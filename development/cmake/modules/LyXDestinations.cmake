@@ -80,10 +80,10 @@ function(get_tex_destination _result)
   if(WIN32)
     set(_dir "${LYX_DATA_SUBDIR}tex/")
   elseif(APPLE)
-    # "Contents/Resources/tex/" 
+    # "Contents/Resources/tex/"
     set(_dir "${LYX_DATA_SUBDIR}tex/")
   elseif(UNIX)
-    set(_dir "share/texmf/tex/latex/${_lyx}/")
+    set(_dir "${LYX_DATA_SUBDIR}tex/")
   else()
     message(FATAL_ERROR "Unhandled platform")
   endif()
