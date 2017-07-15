@@ -770,6 +770,18 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			cur.upDownInText(up, needsUpdate);
 			needsUpdate |= cur.beforeDispatchCursor().inMathed();
 		} else {
+			pos_type newpos = up ? 0 : cur.lastpos();
+			if (lyxrc.mac_like_cursor_movement && cur.pos() != newpos) {
+				needsUpdate |= cur.selHandle(select);
+				// we do not reset the targetx of the cursor
+				cur.pos() = newpos;
+				needsUpdate |= bv->checkDepm(cur, bv->cursor());
+				cur.updateTextTargetOffset();
+				if (needsUpdate)
+					cur.forceBufferUpdate();
+				break;
+			}
+
 			// if the cursor cannot be moved up or down do not remove
 			// the selection right now, but wait for the next dispatch.
 			if (select)
