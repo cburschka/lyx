@@ -61,7 +61,7 @@ public:
 	///
 	size_t pos2row(pos_type pos) const;
 
-	/// BufferView::redoParagraph updates this
+	/// TextMetrics::redoParagraph updates this
 	Dimension const & dim() const { return dim_; }
 	Dimension & dim() { return dim_; }
 	/// total height of paragraph
