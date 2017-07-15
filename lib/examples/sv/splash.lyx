@@ -203,11 +203,10 @@ http://www.lyx.org/
 \begin_layout Enumerate
 
 \series bold
-\lang english
-Note for Linux users:
+Användare av GNU/Linux bör notera:
 \series default
- Please check that the language packages for the \SpecialChar LaTeX
- distribution 
+ Vänligen kontrollera att språkpaketen för \SpecialChar LaTeX
+-distributionen 
 \family sans
 \SpecialChar TeX
 
@@ -216,45 +215,45 @@ Note for Linux users:
 
 Live
 \family default
- are installed.
- Otherwise you will get \SpecialChar LaTeX
- errors.
+ är installerade.
+ Annars kommer du att stöta på \SpecialChar LaTeX
+-fel.
 \begin_inset Newline newline
 \end_inset
 
-For example on the Linux distributions 
+I, till exempel, distributionerna 
 \family sans
 (K,X)Ubuntu
 \family default
- and 
+ och 
 \family sans
 Debian
 \family default
- the package name for the German language is 
-\begin_inset Quotes eld
+ är det svenska språket inkluderat i paketet 
+\begin_inset Quotes sld
 \end_inset
 
 
 \family typewriter
-texlive-lang-german
+texlive-lang-european
 \family default
 
-\begin_inset Quotes erd
+\begin_inset Quotes srd
 \end_inset
 
 .
 \begin_inset Newline newline
 \end_inset
 
-After the installation of the language packages you must use the \SpecialChar LyX
- menu 
+Efter installation av språkpaket måste du använda \SpecialChar LyX
+-menyn 
 \family sans
-Tools
+Verktyg
 \family default
 \SpecialChar menuseparator
 
 \family sans
-Reconfigure
+Omkonfigurera
 \family default
 .
 \end_layout
