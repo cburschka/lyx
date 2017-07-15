@@ -16,6 +16,11 @@
 
 #include "ColorCache.h"
 #include "FontLoader.h"
+#include "GuiApplication.h"
+#include "GuiCompleter.h"
+#include "GuiKeySymbol.h"
+#include "GuiPainter.h"
+#include "GuiView.h"
 #include "Menus.h"
 
 #include "Buffer.h"
@@ -26,11 +31,6 @@
 #include "Cursor.h"
 #include "Font.h"
 #include "FuncRequest.h"
-#include "GuiApplication.h"
-#include "GuiCompleter.h"
-#include "GuiKeySymbol.h"
-#include "GuiPainter.h"
-#include "GuiView.h"
 #include "KeySymbol.h"
 #include "Language.h"
 #include "LyX.h"
@@ -1289,9 +1289,8 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 		return;
 	}
 
-	GuiPainter pain(d->screen_, pixelRatio());
 	d->buffer_view_->updateMetrics();
-	d->buffer_view_->draw(pain);
+	d->updateScreen();
 	// FIXME: shall we use real_current_font here? (see #10478)
 	FontInfo font = d->buffer_view_->cursor().getFont().fontInfo();
 	FontMetrics const & fm = theFontMetrics(font);
@@ -1383,6 +1382,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 			ps = Painter::preedit_cursor;
 
 		// draw one character and update cur_x.
+		GuiPainter pain(d->screen_, pixelRatio());
 		cur_x += pain.preeditText(cur_x, cur_y, typed_char, font, ps);
 	}
 

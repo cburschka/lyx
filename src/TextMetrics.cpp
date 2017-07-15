@@ -1797,8 +1797,8 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		return;
 	size_t const nrows = pm.rows().size();
 
-	// Use fast lane when drawing is disabled.
-	if (!pi.pain.isDrawingEnabled()) {
+	// Use fast lane in nodraw stage.
+	if (pi.pain.isNull()) {
 		for (size_t i = 0; i != nrows; ++i) {
 
 			Row const & row = pm.rows()[i];
@@ -1850,17 +1850,11 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		if (i)
 			y += row.ascent();
 
-		RowPainter rp(pi, *text_, row, row_x, y);
-
 		// It is not needed to draw on screen if we are not inside.
 		bool const inside = (y + row.descent() >= 0
 			&& y - row.ascent() < ww);
-		pi.pain.setDrawingEnabled(inside);
 		if (!inside) {
-			// Paint only the insets to set inset cache correctly
-			// FIXME: remove paintOnlyInsets when we know that positions
-			// have already been set.
-			rp.paintOnlyInsets();
+			// Inset positions have already been set in nodraw stage.
 			y += row.descent();
 			continue;
 		}
@@ -1888,6 +1882,8 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		if (row_has_changed && pi.do_spellcheck && lyxrc.spellcheck_continuously) {
 			text_->getPar(pit).spellCheck();
 		}
+
+		RowPainter rp(pi, *text_, row, row_x, y);
 
 		// Don't paint the row if a full repaint has not been requested
 		// and if it has not changed.
@@ -1919,7 +1915,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 				<< " row_selection="	<< row.selection()
 				<< " full_repaint="	<< pi.full_repaint
 				<< " row_has_changed="	<< row_has_changed
-				<< " drawingEnabled=" << pi.pain.isDrawingEnabled());
+				<< " null painter=" << pi.pain.isNull());
 		}
 
 		// Backup full_repaint status and force full repaint
@@ -1947,8 +1943,6 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		// Restore full_repaint status.
 		pi.full_repaint = tmp;
 	}
-	// Re-enable screen drawing for future use of the painter.
-	pi.pain.setDrawingEnabled(true);
 
 	//LYXERR(Debug::PAINTING, ".");
 }

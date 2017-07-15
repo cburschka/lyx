@@ -70,6 +70,7 @@
 #include "frontends/Application.h"
 #include "frontends/Delegates.h"
 #include "frontends/FontMetrics.h"
+#include "frontends/NullPainter.h"
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"
 
@@ -2732,10 +2733,22 @@ void BufferView::updateMetrics()
 
 	d->update_strategy_ = FullScreenUpdate;
 
+	// Now update the positions of insets in the cache.
+	updatePosCache();
+
 	if (lyxerr.debugging(Debug::WORKAREA)) {
 		LYXERR(Debug::WORKAREA, "BufferView::updateMetrics");
 		d->coord_cache_.dump();
 	}
+}
+
+
+void BufferView::updatePosCache()
+{
+	// this is the "nodraw" drawing stage: only set the positions of the
+	// insets in metrics cache.
+	frontend::NullPainter np;
+	draw(np);
 }
 
 
@@ -2984,12 +2997,11 @@ void BufferView::checkCursorScrollOffset(PainterInfo & pi)
 		 * at this point.
 		 */
 		// Force the recomputation of inset positions
-		bool const drawing = pi.pain.isDrawingEnabled();
-		pi.pain.setDrawingEnabled(false);
+		frontend::NullPainter np;
+		PainterInfo(this, np);
 		// No need to care about vertical position.
 		RowPainter rp(pi, buffer().text(), row, -d->horiz_scroll_offset_, 0);
 		rp.paintText();
-		pi.pain.setDrawingEnabled(drawing);
 	}
 
 	// Current x position of the cursor in pixels
@@ -3053,12 +3065,13 @@ void BufferView::draw(frontend::Painter & pain)
 	switch (d->update_strategy_) {
 
 	case NoScreenUpdate:
-		// If no screen painting is actually needed, only some the different
-		// coordinates of insets and paragraphs needs to be updated.
+		// no screen painting is actually needed. In nodraw stage
+		// however, the different coordinates of insets and paragraphs
+		// needs to be updated.
 		LYXERR(Debug::PAINTING, "Strategy: NoScreenUpdate");
 		pi.full_repaint = true;
-		pi.pain.setDrawingEnabled(false);
-		tm.draw(pi, 0, y);
+		if (pain.isNull())
+			tm.draw(pi, 0, y);
 		break;
 
 	case SingleParUpdate:

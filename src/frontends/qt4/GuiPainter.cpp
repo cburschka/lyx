@@ -171,9 +171,6 @@ void GuiPainter::leaveMonochromeMode()
 
 void GuiPainter::point(int x, int y, Color col)
 {
-	if (!isDrawingEnabled())
-		return;
-
 	setQPainterPen(computeColor(col));
 	drawPoint(x, y);
 }
@@ -184,9 +181,6 @@ void GuiPainter::line(int x1, int y1, int x2, int y2,
 	line_style ls,
 	int lw)
 {
-	if (!isDrawingEnabled())
-		return;
-
 	setQPainterPen(computeColor(col), ls, lw);
 	bool const do_antialiasing = renderHints() & TextAntialiasing
 		&& x1 != x2 && y1 != y2 && ls != line_solid_aliased;
@@ -202,9 +196,6 @@ void GuiPainter::lines(int const * xp, int const * yp, int np,
 	line_style ls,
 	int lw)
 {
-	if (!isDrawingEnabled())
-		return;
-
 	// double the size if needed
 	// FIXME THREAD
 	static QVector<QPoint> points(32);
@@ -247,9 +238,6 @@ void GuiPainter::path(int const * xp, int const * yp,
 	line_style ls,
 	int lw)
 {
-	if (!isDrawingEnabled())
-		return;
-
 	QPainterPath bpath;
 	// This is the starting point, so its control points are meaningless
 	bpath.moveTo(xp[0], yp[0]);
@@ -278,9 +266,6 @@ void GuiPainter::rectangle(int x, int y, int w, int h,
 	line_style ls,
 	int lw)
 {
-	if (!isDrawingEnabled())
-		return;
-
 	setQPainterPen(computeColor(col), ls, lw);
 	drawRect(x, y, w, h);
 }
@@ -288,9 +273,6 @@ void GuiPainter::rectangle(int x, int y, int w, int h,
 
 void GuiPainter::fillRectangle(int x, int y, int w, int h, Color col)
 {
-	if (!isDrawingEnabled())
-		return;
-
 	fillRect(x, y, w, h, guiApp->colorCache().get(col));
 }
 
@@ -298,9 +280,6 @@ void GuiPainter::fillRectangle(int x, int y, int w, int h, Color col)
 void GuiPainter::arc(int x, int y, unsigned int w, unsigned int h,
 	int a1, int a2, Color col)
 {
-	if (!isDrawingEnabled())
-		return;
-
 	// LyX usings 1/64ths degree, Qt usings 1/16th
 	setQPainterPen(computeColor(col));
 	bool const do_antialiasing = renderHints() & TextAntialiasing;
@@ -316,9 +295,6 @@ void GuiPainter::image(int x, int y, int w, int h, graphics::Image const & i)
 		static_cast<graphics::GuiImage const &>(i);
 
 	fillRectangle(x, y, w, h, Color_graphicsbg);
-
-	if (!isDrawingEnabled())
-		return;
 
 	QImage const image = qlimage.image();
 	QRectF const drect = QRectF(x, y, w, h);
@@ -391,7 +367,7 @@ void GuiPainter::text(int x, int y, docstring const & s,
                       double const wordspacing, double const tw)
 {
 	//LYXERR0("text: x=" << x << ", s=" << s);
-	if (s.empty() || !isDrawingEnabled())
+	if (s.empty())
 		return;
 
 	/* Caution: The following ucs4 to QString conversions work for symbol fonts

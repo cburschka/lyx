@@ -576,7 +576,7 @@ void RowPainter::paintText()
 			paintStringAndSel(e);
 
 			// Paint the spelling marks if enabled.
-			if (lyxrc.spellcheck_continuously && pi_.do_spellcheck && pi_.pain.isDrawingEnabled())
+			if (lyxrc.spellcheck_continuously && pi_.do_spellcheck && !pi_.pain.isNull())
 				paintMisspelledMark(e);
 			break;
 
