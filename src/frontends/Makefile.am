@@ -17,6 +17,7 @@ liblyxfrontends_a_SOURCES = \
 	Delegates.h \
 	KeyModifier.h \
 	KeySymbol.h \
+	NullPainter.h \
 	Painter.h \
 	Clipboard.h \
 	Selection.h \

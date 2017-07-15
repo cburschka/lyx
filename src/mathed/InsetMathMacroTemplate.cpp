@@ -231,25 +231,17 @@ void InsetDisplayLabelBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	InsetLabelBox::metrics(mi, dim);
 	if (!parent_.editing(mi.base.bv)
-	    && parent_.cell(parent_.displayIdx()).empty()) {
-		dim.wid = 0;
-		dim.asc = 0;
-		dim.des = 0;
-	}
+	    && parent_.cell(parent_.displayIdx()).empty())
+		dim.clear();
 }
 
 
 void InsetDisplayLabelBox::draw(PainterInfo & pi, int x, int y) const
 {
 	if (parent_.editing(pi.base.bv)
-	    || !parent_.cell(parent_.displayIdx()).empty()) {
-		InsetLabelBox::draw(pi, x, y);
-	} else {
-		bool enabled = pi.pain.isDrawingEnabled();
-		pi.pain.setDrawingEnabled(false);
-		InsetLabelBox::draw(pi, x, y);
-		pi.pain.setDrawingEnabled(enabled);
-	}
+	    || !parent_.cell(parent_.displayIdx()).empty()
+		|| pi.pain.isNull())
+	    InsetLabelBox::draw(pi, x, y);
 }
 
 
