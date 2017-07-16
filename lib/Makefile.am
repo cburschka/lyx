@@ -562,8 +562,8 @@ dist_images_DATA1X = \
 	images/thesaurus-entry.svgz \
 	images/toolbar-toggle_math.svgz \
 	images/toolbar-toggle_math_panels.svgz \
-	images/toolbar-toggle_table.svgz \
 	images/toolbar-toggle_review.svgz \
+	images/toolbar-toggle_table.svgz \
 	images/undo.svgz \
 	images/unknown.svgz \
 	images/up.svgz \
@@ -1833,6 +1833,7 @@ dist_imagesoxygen_DATA1X = \
 	images/oxygen/thesaurus-entry.svgz \
 	images/oxygen/toolbar-toggle_math.svgz \
 	images/oxygen/toolbar-toggle_math_panels.svgz \
+	images/oxygen/toolbar-toggle_review.svgz \
 	images/oxygen/toolbar-toggle_table.svgz \
 	images/oxygen/undo.svgz \
 	images/oxygen/unknown.svgz \
@@ -2024,6 +2025,7 @@ dist_imagesclassic_DATA = \
 	images/classic/thesaurus-entry.png  \
 	images/classic/toolbar-toggle_math.png  \
 	images/classic/toolbar-toggle_math_panels.png  \
+	images/classic/toolbar-toggle_review.png \
 	images/classic/toolbar-toggle_table.png  \
 	images/classic/undo.png  \
 	images/classic/unknown.png  \
