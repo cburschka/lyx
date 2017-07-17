@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -55,6 +55,7 @@ knitr
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -68,16 +69,17 @@ knitr
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
-\author 2047637253 "Guillaume Munch"
 \end_header
 
 \begin_body
@@ -208,13 +210,9 @@ knitr
 \series default
 ; many of the examples have links to the \SpecialChar LyX
  source documents.
-\change_inserted 2047637253 1483899260
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2047637253 1483899275
 Since \SpecialChar LyX
  2.3, it is necessary to enable the use of 
 \emph on
@@ -231,8 +229,6 @@ Converters
 knitr
 \series default
 .
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -246,70 +242,21 @@ knitr
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 2047637253 1483899195
 \begin_inset Flex Chunk
 status open
 
 \begin_layout Plain Layout
 
-\change_inserted 2047637253 1483899204
-
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 2047637253 1483899200
 show-off
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 2047637253 1483899204
-
-rnorm(5)
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 2047637253 1483899204
-
-df=data.frame(y=rnorm(100), x=1:100)
-\end_layout
-
-\begin_layout Plain Layout
-
-\change_inserted 2047637253 1483899204
-
-summary(lm(y~x, data=df))
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 2047637253 1483899208
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<show-off>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -327,15 +274,8 @@ df=data.frame(y=rnorm(100), x=1:100)
 summary(lm(y~x, data=df))
 \end_layout
 
-\begin_layout Plain Layout
-
-@
-\end_layout
-
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
