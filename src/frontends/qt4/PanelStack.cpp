@@ -63,9 +63,9 @@ PanelStack::PanelStack(QWidget * parent)
 	list_->header()->setStretchLastSection(false);
 	list_->setMinimumSize(list_->viewport()->size());
 
-	connect(list_, SIGNAL(currentItemChanged(QTreeWidgetItem*,
-	                                         QTreeWidgetItem*)),
-		this, SLOT(switchPanel(QTreeWidgetItem *, QTreeWidgetItem*)));
+	connect(list_, SIGNAL(currentItemChanged(QTreeWidgetItem *,
+	                                         QTreeWidgetItem *)),
+		this, SLOT(switchPanel(QTreeWidgetItem *, QTreeWidgetItem *)));
 	connect(list_, SIGNAL(itemClicked (QTreeWidgetItem*, int)),
 		this, SLOT(itemSelected(QTreeWidgetItem *, int)));
 

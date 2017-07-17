@@ -167,19 +167,19 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	//clipping pane
 	connect(clip, SIGNAL(stateChanged(int)),
 		this, SLOT(change_adaptor()));
-	connect(lbY, SIGNAL(textChanged(const QString&)),
+	connect(lbY, SIGNAL(textChanged(const QString &)),
 		this, SLOT(changeBB()));
 	connect(lbYunit, SIGNAL(activated(int)),
 		this, SLOT(changeBB()));
-	connect(rtY, SIGNAL(textChanged(const QString&)),
+	connect(rtY, SIGNAL(textChanged(const QString &)),
 		this, SLOT(changeBB()));
 	connect(rtYunit, SIGNAL(activated(int)),
 		this, SLOT(changeBB()));
-	connect(lbX, SIGNAL(textChanged(const QString&)),
+	connect(lbX, SIGNAL(textChanged(const QString &)),
 		this, SLOT(changeBB()));
 	connect(lbXunit, SIGNAL(activated(int)),
 		this, SLOT(changeBB()));
-	connect(rtX, SIGNAL(textChanged(const QString&)),
+	connect(rtX, SIGNAL(textChanged(const QString &)),
 		this, SLOT(changeBB()));
 	connect(rtXunit, SIGNAL(activated(int)),
 		this, SLOT(changeBB()));
@@ -192,7 +192,7 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	rtY->setValidator(new QDoubleValidator(rtY));
 
 	//extra options pane
-	connect(latexoptions, SIGNAL(textChanged(const QString&)),
+	connect(latexoptions, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(draftCB, SIGNAL(stateChanged(int)),
 		this, SLOT(change_adaptor()));
@@ -204,7 +204,7 @@ GuiGraphics::GuiGraphics(GuiView & lv)
 	// is clicked, even right clicked (I think), not just whenever it is
 	// toggled.
 	connect(displayGB, SIGNAL(toggled(bool)), this, SLOT(change_adaptor()));
-	connect(displayscale, SIGNAL(textChanged(const QString&)),
+	connect(displayscale, SIGNAL(textChanged(const QString &)),
 		this, SLOT(change_adaptor()));
 	connect(groupCO, SIGNAL(currentIndexChanged(int)),
 		this, SLOT(changeGroup(int)));
