@@ -1,0 +1,54 @@
+#!/usr/bin/python
+
+# Copyright (C) 2010 Jose Aliste <jose.aliste@gmail.com>
+#               2011 Benjamin Kellermann <Benjamin.Kellermann@tu-dresden.de>
+#
+# Translated from Bash to Python by Juergen Spitzmueller <spitz@lyx.org> 2017.
+#
+# This program is free software; you can redistribute it and/or modify it under
+# the terms of the GNU General Public Licence as published by the Free Software
+# Foundation; either version 2 of the Licence, or (at your option) any later
+# version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE.  See the GNU General Public Licence for more 
+# details.
+#
+# You should have received a copy of the GNU General Public Licence along with
+# this program; if not, write to the Free Software Foundation, Inc., 51 Franklin
+# Street, Fifth Floor, Boston, MA  02110-1301, USA
+
+import sys, os.path
+from subprocess import Popen, call
+
+editor_cmd = "lyxclient -g %f %l"
+
+def print_usage():
+    print("Usage: evince_sync_lyx pdf_file")
+    sys.exit(1)
+
+if len(sys.argv) != 2:
+    print_usage()
+
+pdf_file = os.path.abspath(sys.argv[1])
+
+if not os.path.isfile(pdf_file):
+    print_usage()
+
+synctex_file, ext = os.path.splitext(pdf_file)
+
+synctex_file += ".synctex.gz"
+
+SyncTeX = False
+
+if os.path.isfile(synctex_file):
+    bsproc = Popen(["evince_backward_search", pdf_file, editor_cmd])
+    SyncTeX = True
+
+vproc = Popen(['evince', pdf_file])
+vproc.wait()
+
+if SyncTeX:
+    bsproc.terminate()
+

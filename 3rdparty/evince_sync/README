@@ -1,0 +1,49 @@
+===============================================
+FORWARD AND BACKWARD SEARCH WITH LYX AND EVINCE
+===============================================
+
+For the forward and backwards (reverse) search feature in general, please refer to
+Help > Additional Features, sec. 5.6 and 5.7 in LyX.
+
+
+SETUP
+=====
+
+* Install the files evince_sync_lyx, evince_forward_search and evince_backward_search
+  in your binary directory (e.g., ~/bin).
+
+* Assure all three files are executable.
+
+* In LyX, go to Tools > Preferences ... > File Handling > File Formats > Format, select
+  the appropriate output format [e.g., PDF (pdflatex)], set "Viewer" to "Custom" and
+  enter evince_sync_lyx as custom viewer (in the field right to the combo box).
+  Hit "Apply" and "Save".
+
+* Go to Tools > Preferences ... > Output > General and enter the following PDF command
+  to Forward Search: evince_forward_search "$$o" $$n "$$f"
+  Again, hit "Apply" and "Save".
+
+Forward and Backward search should work now (backward search from within evince is triggered
+by <Shift> + <Left Click>).
+
+
+HISTORY
+=======
+
+The scripts have been initially developed by Benjamin Kellermann (2011) as a derivation
+of gedit-synctex-plugin by José Aliste (https://github.com/jaliste/gedit-synctex-plugin,
+2010) and published on https://ubuntuforums.org/showthread.php?t=1716268.
+
+The work is based on a further derivation of this work for Sublime Text LaTeX Tools
+(https://github.com/SublimeText/LaTeXTools/tree/master/evince).
+
+Adaptations for the use with LyX have been done by Jürgen Spitzmüller <spitz@lyx.org>
+in 2017. 
+
+
+CONTACT
+=======
+
+Please send bug reports and suggestions (related to LyX-evince synchronization) to
+lyx-devel@lists.lyx.org. 
+Usage questions should be addressed at lyx-users@lists.lyx.org.
