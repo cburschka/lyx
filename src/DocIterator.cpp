@@ -562,9 +562,7 @@ bool DocIterator::fixIfBroken()
 	size_t n = slices_.size();
 	for (; i != n; ++i) {
 		CursorSlice & cs = slices_[i];
-		if (&cs.inset() != inset
-		    || (cs.inset().inMathed() ? ! cs.inset().isActive()
-		                              : ! cs.inset().editable())) {
+		if (&cs.inset() != inset || ! cs.inset().isActive()) {
 			// the whole slice is wrong, chop off this as well
 			--i;
 			LYXERR(Debug::DEBUG, "fixIfBroken(): inset changed");

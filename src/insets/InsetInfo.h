@@ -101,6 +101,8 @@ public:
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
 	///
+	bool isActive() const { return false; }
+	///
 	bool editable() const { return false; }
 	///
 	bool hasSettings() const { return true; }

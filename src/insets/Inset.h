@@ -342,18 +342,18 @@ public:
 							 size_t const maxlen = TOC_ENTRY_LENGTH,
 							 bool const shorten = true) const;
 
+	/// Can a cursor be put in there ?
+	/// Forced to false for insets that have hidden contents, like
+	/// InsetMathCommand and InsetInfo.
+	virtual bool isActive() const { return nargs() > 0; }
 	/// can the contents of the inset be edited on screen ?
-	// true for InsetCollapsables (not ButtonOnly) (not InsetInfo), InsetText
+	// equivalent to isActive except for closed InsetCollapsable
 	virtual bool editable() const;
 	/// has the Inset settings that can be modified in a dialog ?
 	virtual bool hasSettings() const;
 	/// can we go further down on mouse click?
-	// true for InsetCaption, InsetCollapsables (not ButtonOnly), InsetTabular
+	/// true for InsetCaption, InsetCollapsables (not ButtonOnly), InsetTabular
 	virtual bool descendable(BufferView const &) const { return false; }
-	/// is this an inset that can be moved into?
-	/// FIXME: merge with editable()
-	// true for InsetTabular & InsetText
-	virtual bool isActive() const { return nargs() > 0; }
 	/// can we click at the specified position ?
 	virtual bool clickable(BufferView const &, int, int) const { return false; }
 	/// Move one cell backwards
