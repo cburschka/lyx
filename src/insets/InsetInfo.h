@@ -100,8 +100,11 @@ public:
 	docstring layoutName() const;
 	///
 	Inset * editXY(Cursor & cur, int x, int y);
-	///
-	bool isActive() const { return false; }
+	/** FIXME: we would like to do that, but then InsetText::updateBuffer breaks
+	 * on info insets. Do we need to run this method on InsetInfo contents?
+	 * Having a InsetInfo that hides an InsetText is really annoying, actually.
+	 */
+	///bool isActive() const { return false; }
 	///
 	bool editable() const { return false; }
 	///
