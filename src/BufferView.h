@@ -46,6 +46,7 @@ class PainterInfo;
 class ParIterator;
 class ParagraphMetrics;
 class Point;
+class Row;
 class TexRow;
 class Text;
 class TextMetrics;
@@ -131,6 +132,9 @@ public:
 	/// return true if one shall move the screen to fit the cursor.
 	/// Only to be called with good y coordinates (after a bv::metrics)
 	bool needsFitCursor() const;
+
+	/// returns true if this row needs to be repainted (to erase caret)
+	bool needRepaint(Text const * text, Row const & row) const;
 
 	// Returns the amount of horizontal scrolling applied to the
 	// top-level row where the cursor lies
@@ -308,7 +312,7 @@ public:
 	void cursorPosAndHeight(Point & p, int & h) const;
 
 	///
-	void draw(frontend::Painter & pain);
+	void draw(frontend::Painter & pain, bool paint_caret);
 
 	/// get this view's keyboard map handler.
 	Intl & getIntl();
