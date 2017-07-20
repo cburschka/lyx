@@ -130,7 +130,7 @@ public:
 	bool selected;
 	/// Whether the spell checker is enabled for the parent
 	bool do_spellcheck;
-	///
+	/// True when it can be assumed that the screen has been cleared
 	bool full_repaint;
 	/// Current background color
 	ColorCode background_color;

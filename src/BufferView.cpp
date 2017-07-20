@@ -235,7 +235,7 @@ struct BufferView::Private
 		last_inset_(0), clickable_inset_(false),
 		mouse_position_cache_(),
 		bookmark_edit_position_(-1), gui_(0),
-		horiz_scroll_offset_(0)
+		horiz_scroll_offset_(0), repaint_caret_row_(false)
 	{
 		xsel_cache_.set = false;
 	}
@@ -312,6 +312,12 @@ struct BufferView::Private
 	/// a slice pointing to the start of the row where cursor was
 	/// at previous draw event
 	CursorSlice last_row_slice_;
+
+	/// a slice pointing to where the cursor has been drawn after the current
+	/// draw() call.
+	CursorSlice caret_slice_;
+	/// indicates whether the caret slice needs to be repainted in this draw() run.
+	bool repaint_caret_row_;
 };
 
 
@@ -2761,7 +2767,7 @@ void BufferView::updatePosCache()
 	// this is the "nodraw" drawing stage: only set the positions of the
 	// insets in metrics cache.
 	frontend::NullPainter np;
-	draw(np);
+	draw(np, false);
 }
 
 
@@ -2972,6 +2978,23 @@ void BufferView::setCurrentRowSlice(CursorSlice const & rowSlice)
 }
 
 
+namespace {
+
+bool sliceInRow(CursorSlice const & cs, Text const * text, Row const & row)
+{
+	return !cs.empty() && cs.text() == text && cs.pit() == row.pit()
+		&& row.pos() <= cs.pos() && cs.pos() <= row.endpos();
+}
+
+}
+
+
+bool BufferView::needRepaint(Text const * text, Row const & row) const
+{
+	return d->repaint_caret_row_ && sliceInRow(d->caret_slice_, text, row);
+}
+
+
 void BufferView::checkCursorScrollOffset(PainterInfo & pi)
 {
 	CursorSlice rowSlice = d->cursor_.bottom();
@@ -3060,7 +3083,7 @@ void BufferView::checkCursorScrollOffset(PainterInfo & pi)
 }
 
 
-void BufferView::draw(frontend::Painter & pain)
+void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 {
 	if (height_ == 0 || width_ == 0)
 		return;
@@ -3070,6 +3093,16 @@ void BufferView::draw(frontend::Painter & pain)
 	TextMetrics const & tm = d->text_metrics_[&text];
 	int const y = tm.first().second->position();
 	PainterInfo pi(this, pain);
+
+	CursorSlice const & bottomSlice = d->cursor_.bottom();
+	/**  A repaint of the previous cursor row is needed if
+	 * 1/ the caret will be painted and is is not the same than the
+	 *    already painted one;
+	 * 2/ the caret will not be painted, but there is already one on
+	 * screen.
+	 */
+	d->repaint_caret_row_ = (paint_caret && bottomSlice != d->caret_slice_)
+		|| (! paint_caret && !d->caret_slice_.empty());
 
 	// Check whether the row where the cursor lives needs to be scrolled.
 	// Update the drawing strategy if needed.
@@ -3082,9 +3115,14 @@ void BufferView::draw(frontend::Painter & pain)
 		// however, the different coordinates of insets and paragraphs
 		// needs to be updated.
 		LYXERR(Debug::PAINTING, "Strategy: NoScreenUpdate");
-		pi.full_repaint = true;
-		if (pain.isNull())
+		pi.full_repaint = false;
+		if (pain.isNull()) {
+			pi.full_repaint = true;
 			tm.draw(pi, 0, y);
+		} else if (d->repaint_caret_row_) {
+			pi.full_repaint = false;
+			tm.draw(pi, 0, y);
+		}
 		break;
 
 	case SingleParUpdate:
@@ -3147,6 +3185,12 @@ void BufferView::draw(frontend::Painter & pain)
 	}
 	LYXERR(Debug::PAINTING, "Found new anchor pit = " << d->anchor_pit_
 		<< "  anchor ypos = " << d->anchor_ypos_);
+
+	// Remember what has just been done for the next draw() step
+	if (paint_caret)
+		d->caret_slice_ = bottomSlice;
+	else
+		d->caret_slice_ = CursorSlice();
 }
 
 

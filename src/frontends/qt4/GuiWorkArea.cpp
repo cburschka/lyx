@@ -1170,9 +1170,10 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 	}
 
 	GuiPainter pain(viewport(), pixelRatio());
-	d->buffer_view_->draw(pain);
+	d->buffer_view_->draw(pain, d->cursor_visible_);
 
-	d->cursor_->draw(pain);
+	if (d->cursor_visible_)
+		d->cursor_->draw(pain);
 	ev->accept();
 }
 
