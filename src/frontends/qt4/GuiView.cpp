@@ -4354,13 +4354,13 @@ Buffer const * GuiView::updateInset(Inset const * inset)
 }
 
 
-void GuiView::restartCursor()
+void GuiView::restartCaret()
 {
 	/* When we move around, or type, it's nice to be able to see
-	 * the cursor immediately after the keypress.
+	 * the caret immediately after the keypress.
 	 */
 	if (d.current_work_area_)
-		d.current_work_area_->startBlinkingCursor();
+		d.current_work_area_->startBlinkingCaret();
 
 	// Take this occasion to update the other GUI elements.
 	updateDialogs();
@@ -4429,7 +4429,7 @@ void GuiView::resetDialogs()
 	// Now update controls with current buffer.
 	guiApp->setCurrentView(this);
 	restoreLayout();
-	restartCursor();
+	restartCaret();
 }
 
 

@@ -122,7 +122,6 @@
 #include <X11/Xatom.h>
 #include <X11/Xlib.h>
 #include <QX11Info>
-#undef CursorShape
 #undef None
 #elif defined(QPA_XCB)
 #include <xcb/xcb.h>
@@ -1435,7 +1434,7 @@ void GuiApplication::updateCurrentView(FuncRequest const & cmd, DispatchResult &
 		theSelection().haveSelection(bv->cursor().selection());
 
 		// update gui
-		current_view_->restartCursor();
+		current_view_->restartCaret();
 	}
 	if (dr.needMessageUpdate()) {
 		// Some messages may already be translated, so we cannot use _()
@@ -2151,7 +2150,7 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 		if (!keysym.isOK())
 			LYXERR(Debug::KEY, "Empty kbd action (probably composing)");
 		if (current_view_)
-			current_view_->restartCursor();
+			current_view_->restartCaret();
 		return;
 	}
 
@@ -2211,7 +2210,7 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 			if (!isPrintable(encoded_last_key)) {
 				LYXERR(Debug::KEY, "Non-printable character! Omitting.");
 				if (current_view_)
-					current_view_->restartCursor();
+					current_view_->restartCaret();
 				return;
 			}
 			// The following modifier check is not needed on Mac.
@@ -2233,7 +2232,7 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 			{
 				if (current_view_) {
 					current_view_->message(_("Unknown function."));
-					current_view_->restartCursor();
+					current_view_->restartCaret();
 				}
 				return;
 			}
@@ -2248,7 +2247,7 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 			LYXERR(Debug::KEY, "Unknown Action and not isText() -- giving up");
 			if (current_view_) {
 				current_view_->message(_("Unknown function."));
-				current_view_->restartCursor();
+				current_view_->restartCaret();
 			}
 			return;
 		}

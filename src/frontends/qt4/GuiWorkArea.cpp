@@ -22,6 +22,7 @@
 #include "GuiPainter.h"
 #include "GuiView.h"
 #include "Menus.h"
+#include "qt_helpers.h"
 
 #include "Buffer.h"
 #include "BufferList.h"
@@ -36,7 +37,6 @@
 #include "LyX.h"
 #include "LyXRC.h"
 #include "LyXVC.h"
-#include "qt_helpers.h"
 #include "Text.h"
 #include "TextMetrics.h"
 #include "version.h"
@@ -46,7 +46,6 @@
 
 #include "support/convert.h"
 #include "support/debug.h"
-#include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/TempFile.h"
 
@@ -68,7 +67,6 @@
 #include <QMenu>
 #include <QPainter>
 #include <QPalette>
-#include <QPixmapCache>
 #include <QScrollBar>
 #include <QStyleOption>
 #include <QStylePainter>
@@ -76,8 +74,6 @@
 #include <QToolButton>
 #include <QToolTip>
 #include <QMenuBar>
-
-#include "support/bind.h"
 
 #include <cmath>
 #include <iostream>
@@ -130,17 +126,15 @@ mouse_button::state q_motion_state(Qt::MouseButtons state)
 
 namespace frontend {
 
-class CursorWidget {
+class CaretWidget {
 public:
-	CursorWidget() : rtl_(false), l_shape_(false), completable_(false),
-		show_(false), x_(0), cursor_width_(0)
-	{
-		recomputeWidth();
-	}
+	CaretWidget() : rtl_(false), l_shape_(false), completable_(false),
+		x_(0), caret_width_(0)
+	{}
 
 	void draw(QPainter & painter)
 	{
-		if (!show_ || !rect_.isValid())
+		if (!rect_.isValid())
 			return;
 
 		int y = rect_.top();
@@ -149,7 +143,7 @@ public:
 		int bot = rect_.bottom();
 
 		// draw vertical line
-		painter.fillRect(x_, y, cursor_width_, rect_.height(), color_);
+		painter.fillRect(x_, y, caret_width_, rect_.height(), color_);
 
 		// draw RTL/LTR indication
 		painter.setPen(color_);
@@ -157,7 +151,7 @@ public:
 			if (rtl_)
 				painter.drawLine(x_, bot, x_ - l, bot);
 			else
-				painter.drawLine(x_, bot, x_ + cursor_width_ + r, bot);
+				painter.drawLine(x_, bot, x_ + caret_width_ + r, bot);
 		}
 
 		// draw completion triangle
@@ -168,8 +162,8 @@ public:
 				painter.drawLine(x_ - 1, m - d, x_ - 1 - d, m);
 				painter.drawLine(x_ - 1, m + d, x_ - 1 - d, m);
 			} else {
-				painter.drawLine(x_ + cursor_width_, m - d, x_ + cursor_width_ + d, m);
-				painter.drawLine(x_ + cursor_width_, m + d, x_ + cursor_width_ + d, m);
+				painter.drawLine(x_ + caret_width_, m - d, x_ + caret_width_ + d, m);
+				painter.drawLine(x_ + caret_width_, m + d, x_ + caret_width_ + d, m);
 			}
 		}
 	}
@@ -203,17 +197,12 @@ public:
 				r = max(r, TabIndicatorWidth);
 		}
 
-		// compute overall rectangle
-		rect_ = QRect(x - l, y, cursor_width_ + r + l, h);
-	}
-
-	void show(bool set_show = true) { show_ = set_show; }
-	void hide() { show_ = false; }
-	int cursorWidth() const { return cursor_width_; }
-	void recomputeWidth() {
-		cursor_width_ = lyxrc.cursor_width
+		caret_width_ = lyxrc.cursor_width
 			? lyxrc.cursor_width
 			: 1 + int((lyxrc.currentZoom + 50) / 200.0);
+
+		// compute overall rectangle
+		rect_ = QRect(x - l, y, caret_width_ + r + l, h);
 	}
 
 	QRect const & rect() { return rect_; }
@@ -226,15 +215,13 @@ private:
 	/// triangle to show that a completion is available
 	bool completable_;
 	///
-	bool show_;
-	///
 	QColor color_;
 	/// rectangle, possibly with l_shape and completion triangle
 	QRect rect_;
 	/// x position (were the vertical line is drawn)
 	int x_;
-
-	int cursor_width_;
+	/// the width of the vertical blinking bar
+	int caret_width_;
 };
 
 
@@ -247,12 +234,34 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 
 GuiWorkArea::Private::Private(GuiWorkArea * parent)
 : p(parent), buffer_view_(0), lyx_view_(0),
-  cursor_visible_(false), cursor_(0),
+  caret_(0), caret_visible_(false),
   need_resize_(false), schedule_redraw_(false), preedit_lines_(1),
   pixel_ratio_(1.0),
   completer_(new GuiCompleter(p, p)), dialog_mode_(false), shell_escape_(false),
   read_only_(false), clean_(true), externally_modified_(false)
 {
+	int const time = QApplication::cursorFlashTime() / 2;
+	if (time > 0) {
+		caret_timeout_.setInterval(time);
+		caret_timeout_.start();
+	} else {
+		// let's initialize this just to be safe
+		caret_timeout_.setInterval(500);
+	}
+}
+
+
+GuiWorkArea::Private::~Private()
+{
+	// If something is wrong with the buffer, we can ignore it safely
+	try {
+		buffer_view_->buffer().workAreaManager().remove(p);
+	} catch(...) {}
+	delete buffer_view_;
+	delete caret_;
+	// Completer has a QObject parent and is thus automatically destroyed.
+	// See #4758.
+	// delete completer_;
 }
 
 
@@ -287,23 +296,18 @@ double GuiWorkArea::pixelRatio() const
 void GuiWorkArea::init()
 {
 	// Setup the signals
-	connect(&d->cursor_timeout_, SIGNAL(timeout()),
-		this, SLOT(toggleCursor()));
+	connect(&d->caret_timeout_, SIGNAL(timeout()),
+		this, SLOT(toggleCaret()));
 
-	int const time = QApplication::cursorFlashTime() / 2;
-	if (time > 0) {
-		d->cursor_timeout_.setInterval(time);
-		d->cursor_timeout_.start();
-	} else {
-		// let's initialize this just to be safe
-		d->cursor_timeout_.setInterval(500);
-	}
+	// This connection is closed at the same time as this is destroyed.
+	d->synthetic_mouse_event_.timeout.timeout.connect([this](){
+			generateSyntheticMouseEvent();
+		});
 
 	// With Qt4.5 a mouse event will happen before the first paint event
 	// so make sure that the buffer view has an up to date metrics.
 	d->buffer_view_->resize(viewport()->width(), viewport()->height());
-	d->cursor_ = new frontend::CursorWidget();
-	d->cursor_->hide();
+	d->caret_ = new frontend::CaretWidget();
 
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setAcceptDrops(true);
@@ -312,20 +316,12 @@ void GuiWorkArea::init()
 	setFrameStyle(QFrame::NoFrame);
 	updateWindowTitle();
 
-	//viewport()->setAutoFillBackground(false);
-	// We don't need double-buffering nor SystemBackground on
-	// the viewport because we have our own backing pixmap.
-	//viewport()->setAttribute(Qt::WA_NoSystemBackground);
+	d->updateCursorShape();
+
+	// we paint our own background
 	viewport()->setAttribute(Qt::WA_OpaquePaintEvent);
 
 	setFocusPolicy(Qt::StrongFocus);
-
-	d->setCursorShape(Qt::IBeamCursor);
-
-	// This connection is closed at the same time as this is destroyed.
-	d->synthetic_mouse_event_.timeout.timeout.connect([this](){
-			generateSyntheticMouseEvent();
-		});
 
 	LYXERR(Debug::GUI, "viewport width: " << viewport()->width()
 		<< "  viewport height: " << viewport()->height());
@@ -333,42 +329,20 @@ void GuiWorkArea::init()
 	// Enables input methods for asian languages.
 	// Must be set when creating custom text editing widgets.
 	setAttribute(Qt::WA_InputMethodEnabled, true);
-
-	d->dialog_mode_ = false;
 }
 
 
 GuiWorkArea::~GuiWorkArea()
 {
-	// If something is wrong with the buffer, we can ignore it safely
-	try {
-		d->buffer_view_->buffer().workAreaManager().remove(this);
-	} catch(...) {}
-	delete d->buffer_view_;
-	delete d->cursor_;
-	// Completer has a QObject parent and is thus automatically destroyed.
-	// See #4758.
-	// delete completer_;
 	delete d;
-}
-
-
-Qt::CursorShape GuiWorkArea::cursorShape() const
-{
-	return viewport()->cursor().shape();
-}
-
-
-void GuiWorkArea::Private::setCursorShape(Qt::CursorShape shape)
-{
-	p->viewport()->setCursor(shape);
 }
 
 
 void GuiWorkArea::Private::updateCursorShape()
 {
-	setCursorShape(buffer_view_->clickableInset()
-		? Qt::PointingHandCursor : Qt::IBeamCursor);
+	bool const clickable = buffer_view_ && buffer_view_->clickableInset();
+	p->viewport()->setCursor(clickable ? Qt::PointingHandCursor
+	                                   : Qt::IBeamCursor);
 }
 
 
@@ -435,14 +409,14 @@ BufferView const & GuiWorkArea::bufferView() const
 }
 
 
-void GuiWorkArea::stopBlinkingCursor()
+void GuiWorkArea::stopBlinkingCaret()
 {
-	d->cursor_timeout_.stop();
-	d->hideCursor();
+	d->caret_timeout_.stop();
+	d->hideCaret();
 }
 
 
-void GuiWorkArea::startBlinkingCursor()
+void GuiWorkArea::startBlinkingCaret()
 {
 	// do not show the cursor if the view is busy
 	if (view().busy())
@@ -455,14 +429,23 @@ void GuiWorkArea::startBlinkingCursor()
 	if (!d->buffer_view_->cursorInView(p, h))
 		return;
 
-	d->showCursor();
+	d->showCaret();
 
 	//we're not supposed to cache this value.
 	int const time = QApplication::cursorFlashTime() / 2;
 	if (time <= 0)
 		return;
-	d->cursor_timeout_.setInterval(time);
-	d->cursor_timeout_.start();
+	d->caret_timeout_.setInterval(time);
+	d->caret_timeout_.start();
+}
+
+
+void GuiWorkArea::toggleCaret()
+{
+	if (d->caret_visible_)
+		d->hideCaret();
+	else
+		d->showCaret();
 }
 
 
@@ -484,9 +467,9 @@ void GuiWorkArea::redraw(bool update_metrics)
 
 	// update cursor position, because otherwise it has to wait until
 	// the blinking interval is over
-	if (d->cursor_visible_) {
-		d->hideCursor();
-		d->showCursor();
+	if (d->caret_visible_) {
+		d->hideCaret();
+		d->showCaret();
 	}
 
 	LYXERR(Debug::WORKAREA, "WorkArea::redraw screen");
@@ -524,9 +507,9 @@ void GuiWorkArea::processKeySym(KeySymbol const & key, KeyModifier mod)
 	}
 
 	// In order to avoid bad surprise in the middle of an operation,
-	// we better stop the blinking cursor...
-	// the cursor gets restarted in GuiView::restartCursor()
-	stopBlinkingCursor();
+	// we better stop the blinking caret...
+	// the cursor gets restarted in GuiView::restartCaret()
+	stopBlinkingCaret();
 	guiApp->processKeySym(key, mod);
 }
 
@@ -546,7 +529,7 @@ void GuiWorkArea::Private::dispatch(FuncRequest const & cmd)
 	// In order to avoid bad surprise in the middle of an operation, we better stop
 	// the blinking cursor.
 	if (notJustMovingTheMouse)
-		p->stopBlinkingCursor();
+		p->stopBlinkingCaret();
 
 	buffer_view_->mouseEventDispatch(cmd);
 
@@ -567,7 +550,7 @@ void GuiWorkArea::Private::dispatch(FuncRequest const & cmd)
 		lyx_view_->clearMessage();
 
 		// Show the cursor immediately after any operation
-		p->startBlinkingCursor();
+		p->startBlinkingCaret();
 	}
 
 	updateCursorShape();
@@ -578,16 +561,16 @@ void GuiWorkArea::Private::resizeBufferView()
 {
 	// WARNING: Please don't put any code that will trigger a repaint here!
 	// We are already inside a paint event.
-	p->stopBlinkingCursor();
+	p->stopBlinkingCaret();
 	// Warn our container (GuiView).
 	p->busy(true);
 
 	Point point;
 	int h = 0;
 	buffer_view_->cursorPosAndHeight(point, h);
-	bool const cursor_in_view = buffer_view_->cursorInView(point, h);
+	bool const caret_in_view = buffer_view_->cursorInView(point, h);
 	buffer_view_->resize(p->viewport()->width(), p->viewport()->height());
-	if (cursor_in_view)
+	if (caret_in_view)
 		buffer_view_->scrollToCursor();
 	p->viewport()->update();
 
@@ -603,19 +586,19 @@ void GuiWorkArea::Private::resizeBufferView()
 	// We might be resizing even if the focus is on another widget so we only
 	// restart the cursor if we have the focus.
 	if (p->hasFocus())
-		QTimer::singleShot(50, p, SLOT(startBlinkingCursor()));
+		QTimer::singleShot(50, p, SLOT(startBlinkingCaret()));
 }
 
 
-void GuiWorkArea::Private::showCursor()
+void GuiWorkArea::Private::showCaret()
 {
-	if (cursor_visible_)
+	if (caret_visible_)
 		return;
 
-	Point p;
+	Point point;
 	int h = 0;
-	buffer_view_->cursorPosAndHeight(p, h);
-	if (!buffer_view_->cursorInView(p, h))
+	buffer_view_->cursorPosAndHeight(point, h);
+	if (!buffer_view_->cursorInView(point, h))
 		return;
 
 	// RTL or not RTL
@@ -638,34 +621,39 @@ void GuiWorkArea::Private::showCursor()
 		&& completer_->completionAvailable()
 		&& !completer_->popupVisible()
 		&& !completer_->inlineVisible();
-	cursor_visible_ = true;
-	cursor_->recomputeWidth();
+	caret_visible_ = true;
 
 	//int cur_x = buffer_view_->getPos(cur).x_;
 	// We may have decided to slide the cursor row so that cursor
 	// is visible.
-	p.x_ -= buffer_view_->horizScrollOffset();
+	point.x_ -= buffer_view_->horizScrollOffset();
 
-	showCursor(p.x_, p.y_, h, l_shape, isrtl, completable);
+	caret_->update(point.x_, point.y_, h, l_shape, isrtl, completable);
+
+	if (schedule_redraw_) {
+		// This happens when a graphic conversion is finished. As we don't know
+		// the size of the new graphics, it's better the update everything.
+		// We can't use redraw() here because this would trigger a infinite
+		// recursive loop with showCaret().
+		buffer_view_->resize(p->viewport()->width(), p->viewport()->height());
+		p->viewport()->update();
+		updateScrollbar();
+		schedule_redraw_ = false;
+		return;
+	}
+
+	p->viewport()->update(caret_->rect());
 }
 
 
-void GuiWorkArea::Private::hideCursor()
+void GuiWorkArea::Private::hideCaret()
 {
-	if (!cursor_visible_)
+	if (!caret_visible_)
 		return;
 
-	cursor_visible_ = false;
-	removeCursor();
-}
-
-
-void GuiWorkArea::toggleCursor()
-{
-	if (d->cursor_visible_)
-		d->hideCursor();
-	else
-		d->showCursor();
+	caret_visible_ = false;
+	//if (!qApp->focusWidget())
+		p->viewport()->update(caret_->rect());
 }
 
 
@@ -688,7 +676,7 @@ void GuiWorkArea::Private::updateScrollbar()
 
 void GuiWorkArea::scrollTo(int value)
 {
-	stopBlinkingCursor();
+	stopBlinkingCaret();
 	d->buffer_view_->scrollDocView(value, true);
 
 	if (lyxrc.cursor_follows_scrollbar) {
@@ -697,7 +685,7 @@ void GuiWorkArea::scrollTo(int value)
 		d->lyx_view_->updateLayoutList();
 	}
 	// Show the cursor immediately after any operation.
-	startBlinkingCursor();
+	startBlinkingCaret();
 	// FIXME QT5
 #ifdef Q_WS_X11
 	QApplication::syncX();
@@ -803,7 +791,7 @@ void GuiWorkArea::focusInEvent(QFocusEvent * e)
 		d->lyx_view_->currentWorkArea()->bufferView().buffer().updateBuffer();
 	}
 
-	startBlinkingCursor();
+	startBlinkingCaret();
 	QAbstractScrollArea::focusInEvent(e);
 }
 
@@ -811,7 +799,7 @@ void GuiWorkArea::focusInEvent(QFocusEvent * e)
 void GuiWorkArea::focusOutEvent(QFocusEvent * e)
 {
 	LYXERR(Debug::DEBUG, "GuiWorkArea::focusOutEvent(): " << this << endl);
-	stopBlinkingCursor();
+	stopBlinkingCaret();
 	QAbstractScrollArea::focusOutEvent(e);
 }
 
@@ -1181,50 +1169,18 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 
 	if (d->needResize()) {
 		d->resizeBufferView();
-		if (d->cursor_visible_) {
-			d->hideCursor();
-			d->showCursor();
+		if (d->caret_visible_) {
+			d->hideCaret();
+			d->showCaret();
 		}
 	}
 
 	GuiPainter pain(viewport(), pixelRatio());
-	d->buffer_view_->draw(pain, d->cursor_visible_);
+	d->buffer_view_->draw(pain, d->caret_visible_);
 
-	if (d->cursor_visible_)
-		d->cursor_->draw(pain);
+	if (d->caret_visible_)
+		d->caret_->draw(pain);
 	ev->accept();
-}
-
-
-void GuiWorkArea::Private::showCursor(int x, int y, int h,
-	bool l_shape, bool rtl, bool completable)
-{
-	if (schedule_redraw_) {
-		// This happens when a graphic conversion is finished. As we don't know
-		// the size of the new graphics, it's better the update everything.
-		// We can't use redraw() here because this would trigger a infinite
-		// recursive loop with showCursor().
-		buffer_view_->resize(p->viewport()->width(), p->viewport()->height());
-		p->viewport()->update();
-		updateScrollbar();
-		schedule_redraw_ = false;
-		// Show the cursor immediately after the update.
-		hideCursor();
-		p->toggleCursor();
-		return;
-	}
-
-	cursor_->update(x, y, h, l_shape, rtl, completable);
-	cursor_->show();
-	p->viewport()->update(cursor_->rect());
-}
-
-
-void GuiWorkArea::Private::removeCursor()
-{
-	cursor_->hide();
-	//if (!qApp->focusWidget())
-		p->viewport()->update(cursor_->rect());
 }
 
 
@@ -1254,9 +1210,9 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 
 	// Hide the cursor during the kana-kanji transformation.
 	if (preedit_string.empty())
-		startBlinkingCursor();
+		startBlinkingCaret();
 	else
-		stopBlinkingCursor();
+		stopBlinkingCaret();
 
 	// last_width : for checking if last preedit string was/wasn't empty.
 	// FIXME THREAD && FIXME
@@ -1274,8 +1230,8 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	FontInfo font = d->buffer_view_->cursor().getFont().fontInfo();
 	FontMetrics const & fm = theFontMetrics(font);
 	int height = fm.maxHeight();
-	int cur_x = d->cursor_->rect().left();
-	int cur_y = d->cursor_->rect().bottom();
+	int cur_x = d->caret_->rect().left();
+	int cur_y = d->caret_->rect().bottom();
 
 	// redraw area of preedit string.
 	viewport()->update(0, cur_y - height, viewport()->width(),
@@ -1295,7 +1251,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	// get attributes of input method cursor.
 	// cursor_pos : cursor position in preedit string.
 	size_t cursor_pos = 0;
-	bool cursor_is_visible = false;
+	bool caret_is_visible = false;
 	for (int i = 0; i != att.size(); ++i) {
 		if (att.at(i).type == QInputMethodEvent::Cursor) {
 			cursor_pos = att.at(i).start;
@@ -1382,7 +1338,7 @@ QVariant GuiWorkArea::inputMethodQuery(Qt::InputMethodQuery query) const
 		// this is the CJK-specific composition window position and
 		// the context menu position when the menu key is pressed.
 		case Qt::ImMicroFocus:
-			cur_r = d->cursor_->rect();
+			cur_r = d->caret_->rect();
 			if (d->preedit_lines_ != 1)
 				cur_r.moveLeft(10);
 			cur_r.moveBottom(cur_r.bottom()
@@ -1509,7 +1465,7 @@ QSize EmbeddedWorkArea::sizeHint () const
 
 void EmbeddedWorkArea::disable()
 {
-	stopBlinkingCursor();
+	stopBlinkingCaret();
 	if (view().currentWorkArea() != this)
 		return;
 	// No problem if currentMainWorkArea() is 0 (setCurrentWorkArea()

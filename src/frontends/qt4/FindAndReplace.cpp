@@ -65,8 +65,8 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 	replace_work_area_->setFrameStyle(QFrame::StyledPanel);
 
 	// We don't want two cursors blinking.
-	find_work_area_->stopBlinkingCursor();
-	replace_work_area_->stopBlinkingCursor();
+	find_work_area_->stopBlinkingCaret();
+	replace_work_area_->stopBlinkingCaret();
 }
 
 
