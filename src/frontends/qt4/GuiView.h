@@ -116,7 +116,7 @@ public:
 	/// \return true if the \c FuncRequest has been dispatched.
 	void dispatch(FuncRequest const & cmd, DispatchResult & dr);
 
-	void restartCursor();
+	void restartCaret();
 	/// Update the completion popup and the inline completion state.
 	/// If \c start is true, then a new completion might be started.
 	/// If \c keep is true, an active completion will be kept active
