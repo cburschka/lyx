@@ -27,6 +27,7 @@ class Buffer;
 namespace frontend {
 
 class GuiCompleter;
+class GuiPainter;
 class GuiView;
 class GuiWorkArea;
 
@@ -94,6 +95,8 @@ struct GuiWorkArea::Private
 	/// Change the cursor when the mouse hovers over a clickable inset
 	void updateCursorShape();
 
+	void paintPreeditText(GuiPainter & pain);
+
 	bool needResize() const {
 		return need_resize_ || p->pixelRatio() != pixel_ratio_;
 	}
@@ -121,8 +124,14 @@ struct GuiWorkArea::Private
 	bool need_resize_;
 	///
 	bool schedule_redraw_;
-	///
+
+	/// the current preedit text of the input method
+	docstring preedit_string_;
+	/// Number of lines used by preedit text
 	int preedit_lines_;
+	/// the attributes of the preedit text
+	QList<QInputMethodEvent::Attribute> preedit_attr_;
+
 	/// Ratio between physical pixels and device-independent pixels
 	/// We save the last used value to detect changes of the
 	/// current pixel_ratio of the viewport.
