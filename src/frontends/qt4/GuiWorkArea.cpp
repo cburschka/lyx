@@ -39,6 +39,7 @@
 #include "LyXVC.h"
 #include "Text.h"
 #include "TextMetrics.h"
+#include "Undo.h"
 #include "version.h"
 
 #include "graphics/GraphicsImage.h"
@@ -1162,105 +1163,31 @@ void GuiWorkArea::resizeEvent(QResizeEvent * ev)
 }
 
 
-void GuiWorkArea::paintEvent(QPaintEvent * ev)
+void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 {
-	// LYXERR(Debug::PAINTING, "paintEvent begin: x: " << rc.x()
-	//	<< " y: " << rc.y() << " w: " << rc.width() << " h: " << rc.height());
-
-	if (d->needResize()) {
-		d->resizeBufferView();
-		if (d->caret_visible_) {
-			d->hideCaret();
-			d->showCaret();
-		}
-	}
-
-	GuiPainter pain(viewport(), pixelRatio());
-	d->buffer_view_->draw(pain, d->caret_visible_);
-
-	if (d->caret_visible_)
-		d->caret_->draw(pain);
-	ev->accept();
-}
-
-
-void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
-{
-//FIXME Broken Feature !!
-// I do not think that we are supposed to paint inside this event. Shall we
-// just let TextMetrics::breakRow add this to the relevant Row object?
-#if 0
-	QString const & commit_string = e->commitString();
-	docstring const & preedit_string
-		= qstring_to_ucs4(e->preeditString());
-
-	if (!commit_string.isEmpty()) {
-
-		LYXERR(Debug::KEY, "preeditString: " << e->preeditString()
-			<< " commitString: " << e->commitString());
-
-		int key = 0;
-
-		// FIXME Iwami 04/01/07: we should take care also of UTF16 surrogates here.
-		for (int i = 0; i != commit_string.size(); ++i) {
-			QKeyEvent ev(QEvent::KeyPress, key, Qt::NoModifier, commit_string[i]);
-			keyPressEvent(&ev);
-		}
-	}
-
-	// Hide the cursor during the kana-kanji transformation.
-	if (preedit_string.empty())
-		startBlinkingCaret();
-	else
-		stopBlinkingCaret();
-
-	// last_width : for checking if last preedit string was/wasn't empty.
-	// FIXME THREAD && FIXME
-	// We could have more than one work area, right?
-	static bool last_width = false;
-	if (!last_width && preedit_string.empty()) {
-		// if last_width is last length of preedit string.
-		e->accept();
+	if (preedit_string_.empty())
 		return;
-	}
 
-	d->buffer_view_->updateMetrics();
-	viewport()->update();
 	// FIXME: shall we use real_current_font here? (see #10478)
-	FontInfo font = d->buffer_view_->cursor().getFont().fontInfo();
+	FontInfo const font = buffer_view_->cursor().getFont().fontInfo();
 	FontMetrics const & fm = theFontMetrics(font);
-	int height = fm.maxHeight();
-	int cur_x = d->caret_->rect().left();
-	int cur_y = d->caret_->rect().bottom();
-
-	// redraw area of preedit string.
-	viewport()->update(0, cur_y - height, viewport()->width(),
-		(height + 1) * d->preedit_lines_);
-
-	if (preedit_string.empty()) {
-		last_width = false;
-		d->preedit_lines_ = 1;
-		e->accept();
-		return;
-	}
-	last_width = true;
-
-	// att : stores an IM attribute.
-	QList<QInputMethodEvent::Attribute> const & att = e->attributes();
+	int const height = fm.maxHeight();
+	int cur_x = caret_->rect().left();
+	int cur_y = caret_->rect().bottom();
 
 	// get attributes of input method cursor.
 	// cursor_pos : cursor position in preedit string.
 	size_t cursor_pos = 0;
-	bool caret_is_visible = false;
-	for (int i = 0; i != att.size(); ++i) {
-		if (att.at(i).type == QInputMethodEvent::Cursor) {
-			cursor_pos = att.at(i).start;
-			cursor_is_visible = att.at(i).length != 0;
+	bool cursor_is_visible = false;
+	for (auto const & attr : preedit_attr_) {
+		if (attr.type == QInputMethodEvent::Cursor) {
+			cursor_pos = attr.start;
+			cursor_is_visible = attr.length != 0;
 			break;
 		}
 	}
 
-	size_t preedit_length = preedit_string.length();
+	size_t const preedit_length = preedit_string_.length();
 
 	// get position of selection in input method.
 	// FIXME: isn't there a way to do this simplier?
@@ -1269,12 +1196,12 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	// rLength : selected string length in IM.
 	size_t rLength = 0;
 	if (cursor_pos < preedit_length) {
-		for (int i = 0; i != att.size(); ++i) {
-			if (att.at(i).type == QInputMethodEvent::TextFormat) {
-				if (att.at(i).start <= int(cursor_pos)
-					&& int(cursor_pos) < att.at(i).start + att.at(i).length) {
-						rStart = att.at(i).start;
-						rLength = att.at(i).length;
+		for (auto const & attr : preedit_attr_) {
+			if (attr.type == QInputMethodEvent::TextFormat) {
+				if (attr.start <= int(cursor_pos)
+					&& int(cursor_pos) < attr.start + attr.length) {
+						rStart = attr.start;
+						rLength = attr.length;
 						if (!cursor_is_visible)
 							cursor_pos += rLength;
 						break;
@@ -1287,20 +1214,20 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 		rLength = 0;
 	}
 
-	int const right_margin = d->buffer_view_->rightMargin();
+	int const right_margin = buffer_view_->rightMargin();
 	Painter::preedit_style ps;
 	// Most often there would be only one line:
-	d->preedit_lines_ = 1;
+	preedit_lines_ = 1;
 	for (size_t pos = 0; pos != preedit_length; ++pos) {
-		char_type const typed_char = preedit_string[pos];
+		char_type const typed_char = preedit_string_[pos];
 		// reset preedit string style
 		ps = Painter::preedit_default;
 
 		// if we reached the right extremity of the screen, go to next line.
-		if (cur_x + fm.width(typed_char) > viewport()->width() - right_margin) {
+		if (cur_x + fm.width(typed_char) > p->viewport()->width() - right_margin) {
 			cur_x = right_margin;
 			cur_y += height + 1;
-			++d->preedit_lines_;
+			++preedit_lines_;
 		}
 		// preedit strings are displayed with dashed underline
 		// and partial strings are displayed white on black indicating
@@ -1317,14 +1244,79 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 			ps = Painter::preedit_cursor;
 
 		// draw one character and update cur_x.
-		GuiPainter pain(d->screen_, pixelRatio());
 		cur_x += pain.preeditText(cur_x, cur_y, typed_char, font, ps);
 	}
+}
 
-	// update the preedit string screen area.
-	viewport()->update(0, cur_y - d->preedit_lines_*height, viewport()->width(),
+
+void GuiWorkArea::paintEvent(QPaintEvent * ev)
+{
+	// LYXERR(Debug::PAINTING, "paintEvent begin: x: " << rc.x()
+	//	<< " y: " << rc.y() << " w: " << rc.width() << " h: " << rc.height());
+
+	if (d->needResize()) {
+		d->resizeBufferView();
+		if (d->caret_visible_) {
+			d->hideCaret();
+			d->showCaret();
+		}
+	}
+
+	GuiPainter pain(viewport(), pixelRatio());
+	d->buffer_view_->draw(pain, d->caret_visible_);
+
+	// The preedit text, if needed
+	d->paintPreeditText(pain);
+
+	// and the caret
+	if (d->caret_visible_)
+		d->caret_->draw(pain);
+	ev->accept();
+}
+
+
+void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
+{
+	LYXERR(Debug::KEY, "preeditString: " << e->preeditString()
+		   << " commitString: " << e->commitString());
+
+	// insert the processed text in the document (handles undo)
+	if (!e->commitString().isEmpty()) {
+		d->buffer_view_->cursor().beginUndoGroup();
+		d->buffer_view_->cursor().insert(qstring_to_ucs4(e->commitString()));
+		d->buffer_view_->updateMetrics();
+		d->buffer_view_->cursor().endUndoGroup();
+		viewport()->update();
+	}
+
+	// Hide the cursor during the test transformation.
+	if (e->preeditString().isEmpty())
+		startBlinkingCaret();
+	else
+		stopBlinkingCaret();
+
+	if (d->preedit_string_.empty() && e->preeditString().isEmpty()) {
+		// Nothing to do
+		e->accept();
+		return;
+	}
+
+	// The preedit text and its attributes will be used in paintPreeditText
+	d->preedit_string_ = qstring_to_ucs4(e->preeditString());
+	d->preedit_attr_ = e->attributes();
+
+
+	// redraw area of preedit string.
+	int height = d->caret_->rect().height();
+	int cur_y = d->caret_->rect().bottom();
+	viewport()->update(0, cur_y - height, viewport()->width(),
 		(height + 1) * d->preedit_lines_);
-#endif
+
+	if (d->preedit_string_.empty()) {
+		d->preedit_lines_ = 1;
+		e->accept();
+		return;
+	}
 
 	// Don't forget to accept the event!
 	e->accept();
