@@ -45,7 +45,7 @@ string cmd2type(string const & cmd)
 		return "listing";
 	return cmd;
 }
-}
+} // namespace
 
 
 InsetTOC::InsetTOC(Buffer * buf, InsetCommandParams const & p)

@@ -85,7 +85,7 @@ PhantomTranslatorLoc const & phantomtranslator_loc()
 	return translator;
 }
 
-} // anon
+} // namespace
 
 
 InsetPhantomParams::InsetPhantomParams()

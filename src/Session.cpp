@@ -36,7 +36,7 @@ string const sec_toolbars = "[toolbars]";
 string const sec_lastcommands = "[last commands]";
 string const sec_authfiles = "[auth files]";
 
-} // anon namespace
+} // namespace
 
 
 namespace lyx {
@@ -480,4 +480,4 @@ void AuthFilesSection::write(ostream & os) const
 }
 
 
-}
+} // namespace lyx

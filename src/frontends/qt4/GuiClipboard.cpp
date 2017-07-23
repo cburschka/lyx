@@ -358,7 +358,7 @@ QString tidyHtml(QString input)
 	converter.setHtml(input);
 	return converter.toHtml("utf-8");
 }
-}
+} // namespace
 
 
 docstring const GuiClipboard::getAsText(TextType type) const

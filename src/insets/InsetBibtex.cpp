@@ -642,7 +642,7 @@ namespace {
 
 		return true;
 	}
-}
+} // namespace
 
 
 void InsetBibtex::collectBibKeys(InsetIterator const & /*di*/) const

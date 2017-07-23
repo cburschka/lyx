@@ -263,7 +263,7 @@ typedef map<string, GuiToolbar *> ToolbarMap;
 
 typedef shared_ptr<Dialog> DialogPtr;
 
-} // namespace anon
+} // namespace
 
 
 class GuiView::GuiViewPrivate
@@ -4358,7 +4358,7 @@ bool isValidName(string const & name)
 				cmpCStr(name.c_str())) != end_dialognames;
 }
 
-} // namespace anon
+} // namespace
 
 
 void GuiView::resetDialogs()

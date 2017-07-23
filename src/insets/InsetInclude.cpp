@@ -165,7 +165,7 @@ InsetLabel * createLabel(Buffer * buf, docstring const & label_str)
 	return new InsetLabel(buf, icp);
 }
 
-} // namespace anon
+} // namespace
 
 
 InsetInclude::InsetInclude(Buffer * buf, InsetCommandParams const & p)
@@ -1209,7 +1209,7 @@ void add_preview(RenderMonitoredPreview & renderer, InsetInclude const & inset,
 	}
 }
 
-} // namespace anon
+} // namespace
 
 
 void InsetInclude::addPreview(DocIterator const & /*inset_pos*/,

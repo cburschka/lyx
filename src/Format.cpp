@@ -102,7 +102,7 @@ private:
 };
 
 
-} //namespace anon
+} // namespace
 
 bool Format::formatSorter(Format const * lhs, Format const * rhs)
 {
@@ -397,7 +397,7 @@ string guessFormatFromContents(FileName const & fn)
 	return string();
 }
 
-}
+} // namespace
 
 
 string Formats::getFormatFromFile(FileName const & filename) const
@@ -857,7 +857,7 @@ FlavorTranslator const & flavorTranslator()
 	return translator;
 }
 
-}
+} // namespace
 
 
 std::string flavor2format(OutputParams::FLAVOR flavor)

@@ -63,7 +63,7 @@ typedef basic_istream<char, char_traits<char> > istream;
 typedef basic_ostream<char, char_traits<char> > ostream;
 typedef basic_ostringstream<char, char_traits<char>, allocator<char> > ostringstream;
 
-} // namepace std
+} // namespace std
 
 #endif
 

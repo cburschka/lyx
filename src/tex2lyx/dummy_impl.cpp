@@ -42,8 +42,8 @@ namespace Alert {
 	{
 		cerr << to_utf8(title) << "\n" << to_utf8(message) << endl;
 	}
-}
-}
+} // namespace Alert
+} // namespace frontend
 
 
 //
@@ -120,7 +120,7 @@ namespace frontend {
 class FontMetrics {
 	int em() const { return 0; };
 };
-}
+} // namespace frontend
 
 class FontInfo;
 
@@ -136,4 +136,4 @@ frontend::FontMetrics const & theFontMetrics(FontInfo const &) {
 void lyx_exit(int)
 {}
 
-}
+} // namespace lyx

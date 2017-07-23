@@ -48,7 +48,7 @@ template<class T, size_t N> struct _Unique_if<T[N]> {
 	typedef void _Known_bound;
 };
 
-} //anon namespace
+} // namespace
 
 template<class T, class... Args>
 typename _Unique_if<T>::_Single_object

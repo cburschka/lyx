@@ -231,8 +231,7 @@ string const parsecmd(string const & incmd, string & infile, string & outfile,
 	return trim(outcmd[0]);
 }
 
-} // namespace anon
-
+} // namespace
 
 
 int Systemcall::startscript(Starttype how, string const & what,
@@ -410,7 +409,7 @@ bool queryStopCommand(QString const & cmd)
 			1, 1, _("&Stop it"), _("Let it &run")) == 0;
 }
 
-}
+} // namespace
 
 
 bool SystemcallPrivate::waitWhile(State waitwhile, bool process_events, int timeout)

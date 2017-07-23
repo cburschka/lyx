@@ -42,7 +42,7 @@ private:
 	docstring name_;
 };
 
-}
+} // namespace
 
 
 Branch::Branch()

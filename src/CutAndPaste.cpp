@@ -659,9 +659,7 @@ void copySelectionHelper(Buffer const & buf, Text const & text,
 	cutstack.push(make_pair(copy_pars, dc));
 }
 
-} // namespace anon
-
-
+} // namespace
 
 
 namespace cap {
@@ -933,7 +931,7 @@ void cutSelectionHelper(Cursor & cur, CutStack & cuts, bool doclear, bool realcu
 	}
 }
 
-}
+} // namespace
 
 void cutSelection(Cursor & cur, bool doclear, bool realcut)
 {
@@ -1010,7 +1008,7 @@ void copySelectionToStack(Cursor const & cur, CutStack & cutstack)
 	}
 }
 
-}
+} // namespace
 
 
 void copySelectionToStack()

@@ -160,8 +160,7 @@ typedef map<pid_t, InProgress>  InProgressProcesses;
 
 typedef InProgressProcesses::value_type InProgressProcess;
 
-} // namespace anon
-
+} // namespace
 
 
 namespace lyx {
@@ -379,7 +378,7 @@ void InProgress::stop() const
 	}
 }
 
-} // namespace anon
+} // namespace
 
 
 namespace lyx {
@@ -507,7 +506,7 @@ private:
 	string const snippet_;
 };
 
-} // namespace anon
+} // namespace
 
 PreviewLoader::Status
 PreviewLoader::Impl::status(string const & latex_snippet) const
@@ -569,7 +568,7 @@ private:
 	string const & snippet_;
 };
 
-} // namespace anon
+} // namespace
 
 
 void PreviewLoader::Impl::remove(string const & latex_snippet)

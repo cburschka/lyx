@@ -329,7 +329,7 @@ Match match(string const & code, Language const & lang)
 	return NoMatch;
 }
 
-}
+} // namespace
 
 
 void Languages::readLayoutTranslations(support::FileName const & filename)

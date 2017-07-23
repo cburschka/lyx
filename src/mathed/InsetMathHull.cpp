@@ -151,7 +151,7 @@ namespace {
 	}
 
 
-} // end anon namespace
+} // namespace
 
 
 HullType hullType(docstring const & s)
@@ -280,7 +280,7 @@ void InsetMathHull::setBuffer(Buffer & buffer)
 namespace {
 	const char * counters_to_save[] = {"section", "chapter"};
 	unsigned int const numcnts = sizeof(counters_to_save)/sizeof(char *);
-}
+} // namespace
 
 
 void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype)
@@ -2020,7 +2020,7 @@ bool allowDisplayMath(Cursor const & cur)
 	return tmpcur.getStatus(cmd, status) && status.enabled();
 }
 
-}
+} // namespace
 
 
 bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,

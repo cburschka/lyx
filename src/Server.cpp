@@ -117,7 +117,7 @@ string errormsg(DWORD const error)
 	return message;
 }
 
-} // namespace anon
+} // namespace
 
 
 DWORD WINAPI pipeServerWrapper(void * arg)
@@ -997,7 +997,7 @@ struct Sleep : QThread
 	}
 };
 
-} // namespace anon
+} // namespace
 
 
 bool LyXComm::loadFilesInOtherInstance()

@@ -54,7 +54,7 @@ QPalette::ColorRole role(ColorCode col)
 	}
 }
 
-}
+} // namespace
 
 
 void ColorCache::init()

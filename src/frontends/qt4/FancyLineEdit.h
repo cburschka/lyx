@@ -107,7 +107,7 @@ private:
 	QString m_oldText;
 };
 
-}
-}
+} // namespace frontend
+} // namespace lyx
 
 #endif // FANCYLINEEDIT_H

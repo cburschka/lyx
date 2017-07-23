@@ -201,7 +201,7 @@ ForkedCall::sigPtr add(std::string const & process);
 /// Query whether the queue is running a forked process now.
 bool running();
 
-}
+} // namespace ForkedCallQueue
 
 
 /**

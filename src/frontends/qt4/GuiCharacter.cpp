@@ -193,7 +193,7 @@ void fillComboColor(QComboBox * combo, QList<T> const & list)
 	combo->addItem(qt_("Reset"), "inherit");
 }
 
-} // namespace anon
+} // namespace
 
 GuiCharacter::GuiCharacter(GuiView & lv)
 	: GuiDialog(lv, "character", qt_("Text Style")), font_(ignore_font, ignore_language),

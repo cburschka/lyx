@@ -328,7 +328,7 @@ void XHTMLStream::writeError(std::string const & s) const
 namespace {
 	// an illegal tag for internal use
 	static html::StartTag const parsep_tag("&LyX_parsep_tag&");
-}
+} // namespace
 
 
 bool XHTMLStream::closeFontTags()

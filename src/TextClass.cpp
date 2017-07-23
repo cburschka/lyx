@@ -133,7 +133,7 @@ string translateReadType(TextClass::ReadType rt)
 	return string();
 }
 
-} // namespace anon
+} // namespace
 
 
 // This string should not be translated here,
@@ -282,7 +282,7 @@ LexerKeyword textClassTags[] = {
 	{ "tocdepth",          TC_TOCDEPTH }
 };
 
-} //namespace anon
+} // namespace
 
 
 bool TextClass::convertLayoutFormat(support::FileName const & filename, ReadType rt)

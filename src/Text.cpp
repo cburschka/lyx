@@ -948,7 +948,7 @@ bool canInsertChar(Cursor const & cur, char_type c)
 	return true;
 }
 
-}
+} // namespace
 
 
 // insert a character, moves all the following breaks in the

@@ -164,6 +164,6 @@ void dirtyTabularStack(bool b);
 /// is the tabular paste stack newer than the ordinary one?
 bool tabularStackDirty();
 } // namespace cap
-} // namespce lyx
+} // namespace lyx
 
 #endif

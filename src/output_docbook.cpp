@@ -312,7 +312,7 @@ ParagraphList::const_iterator makeCommand(
 	return pend;
 }
 
-} // end anonym namespace
+} // namespace
 
 
 void docbookParagraphs(Text const & text,

@@ -48,7 +48,7 @@ char_type getNewline(iparserdocstream & is, char_type c)
 	return c;
 }
 
-}
+} // namespace
 
 //
 // Token

@@ -115,7 +115,7 @@ DocIterator bruteFind(Cursor const & c, int x, int y)
 }
 
 
-} // namespace anon
+} // namespace
 
 
 CursorData::CursorData()
@@ -758,7 +758,7 @@ bool findNonVirtual(Row const & row, Row::const_iterator & cit, bool onleft)
 	return cit != row.end() && !cit->isVirtual();
 }
 
-}
+} // namespace
 
 void Cursor::getSurroundingPos(pos_type & left_pos, pos_type & right_pos) const
 {
@@ -2054,7 +2054,7 @@ docstring parbreak(Cursor const * cur)
 	return os.str();
 }
 
-}
+} // namespace
 
 
 docstring Cursor::selectionAsString(bool with_label) const

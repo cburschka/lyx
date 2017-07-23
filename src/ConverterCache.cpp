@@ -76,7 +76,7 @@ public:
 	unsigned long checksum;
 };
 
-}
+} // namespace
 
 
 /** The cache contains one item per orig file and target format, so use a

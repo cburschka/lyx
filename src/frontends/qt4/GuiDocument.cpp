@@ -183,7 +183,7 @@ public:
 	}
 };
 
-}
+} // namespace
 
 namespace frontend {
 namespace {

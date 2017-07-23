@@ -36,7 +36,7 @@ using namespace std;
 namespace {
 	/// x spacing between the nucleus and the scripts
 	int const dx = 2;
-}
+} // namespace
 
 
 namespace lyx {

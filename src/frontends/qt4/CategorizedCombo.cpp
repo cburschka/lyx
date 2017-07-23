@@ -584,8 +584,8 @@ QString const & CategorizedCombo::filter() const
 	return d->filter_;
 }
 
-}  // namespace frontend
-}  // namespace lyx
+} // namespace frontend
+} // namespace lyx
 
 
 #include "moc_CategorizedCombo.cpp"

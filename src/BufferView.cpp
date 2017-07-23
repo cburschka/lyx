@@ -216,7 +216,7 @@ enum ScreenUpdateStrategy {
 	DecorationUpdate
 };
 
-} // anon namespace
+} // namespace
 
 
 /////////////////////////////////////////////////////////////////////

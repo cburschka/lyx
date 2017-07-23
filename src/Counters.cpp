@@ -482,7 +482,7 @@ docstring const fnsymbolCounter(int const n)
 	};
 }
 
-} // namespace anon
+} // namespace
 
 
 docstring Counters::labelItem(docstring const & ctr,

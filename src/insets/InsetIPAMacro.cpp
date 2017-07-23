@@ -94,7 +94,7 @@ IPACharTranslator const & ipachartranslator()
 	return chartranslator;
 }
 
-} // anon
+} // namespace
 
 
 InsetIPADecoParams::InsetIPADecoParams()

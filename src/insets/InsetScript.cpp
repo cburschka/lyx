@@ -81,7 +81,7 @@ ScriptTranslatorLoc const & scripttranslator_loc()
 	return translator;
 }
 
-} // anon
+} // namespace
 
 
 InsetScriptParams::InsetScriptParams()

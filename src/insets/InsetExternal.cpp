@@ -61,7 +61,7 @@ unsigned int const defaultLyxScale = 100;
 
 string defaultTemplateName;
 
-} // namespace anon
+} // namespace
 
 
 namespace lyx {
@@ -148,7 +148,7 @@ void clearIfNotFound(T & data, external::TransformID value,
 		data = T();
 }
 
-} // namespace anon
+} // namespace
 
 
 void InsetExternalParams::settemplate(string const & name)
@@ -414,8 +414,7 @@ docstring screenLabel(InsetExternalParams const & params,
 	return gui;
 }
 
-} // namespace anon
-
+} // namespace
 
 
 InsetExternal::InsetExternal(Buffer * buf)
@@ -553,7 +552,7 @@ graphics::Params get_grfx_params(InsetExternalParams const & eparams)
 	return gparams;
 }
 
-} // namespace anon
+} // namespace
 
 
 static bool isPreviewWanted(InsetExternalParams const & params)

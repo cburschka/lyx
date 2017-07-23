@@ -52,7 +52,7 @@ string const guiErrorType(string const & s)
 	return s;
 }
 
-} // namespace anon
+} // namespace
 
 namespace lyx {
 namespace frontend {

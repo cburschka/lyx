@@ -116,7 +116,7 @@ docstring const statusMessage(BufferView const * bv, string const & snippet)
 	return message;
 }
 
-} // namespace anon
+} // namespace
 
 
 graphics::PreviewImage const *

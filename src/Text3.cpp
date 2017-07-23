@@ -491,7 +491,7 @@ namespace {
 		return lang.empty() ? cur.getFont().language() : languages.getLanguage(lang);
 	}
 
-}
+} // namespace
 
 
 void Text::dispatch(Cursor & cur, FuncRequest & cmd)

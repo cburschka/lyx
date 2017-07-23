@@ -682,7 +682,7 @@ TexString getSnippets(std::list<TexString> const & list)
 	return snip.release();
 }
 
-} //anon namespace
+} // namespace
 
 
 void LaTeXFeatures::addPreambleSnippet(TexString ts, bool allow_dupes)
@@ -997,7 +997,7 @@ int const nb_bibliofeatures = sizeof(bibliofeatures) / sizeof(char const *);
 
 int const nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
 
-}
+} // namespace
 
 
 string const LaTeXFeatures::getColorOptions() const
@@ -1770,7 +1770,7 @@ docstring const i18npreamble(docstring const & templ, Language const * lang,
 	return from_utf8(preamble);
 }
 
-}
+} // namespace
 
 
 docstring const LaTeXFeatures::getTClassI18nPreamble(bool use_babel,

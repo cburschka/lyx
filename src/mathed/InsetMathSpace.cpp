@@ -75,7 +75,7 @@ SpaceInfo space_info[] = {
 int const nSpace = sizeof(space_info)/sizeof(SpaceInfo);
 int const defaultSpace = 4;
 
-} // anon namespace
+} // namespace
 
 InsetMathSpace::InsetMathSpace()
 	: space_(defaultSpace)

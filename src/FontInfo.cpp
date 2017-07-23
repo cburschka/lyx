@@ -524,7 +524,7 @@ string getSizeCSS(FontSize const & s)
 	return "";
 }
 
-} // namespace anonymous
+} // namespace
 
 
 // FIXME This does not yet handle color

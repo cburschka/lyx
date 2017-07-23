@@ -29,6 +29,6 @@ struct Revertible {
 typedef unique_ptr<Revertible> Changer;
 
 
-}
+} // namespace lyx
 
 #endif //LYX_CHANGER_H

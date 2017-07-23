@@ -273,7 +273,7 @@ template<> char
 ctype<lyx::char_type>::do_narrow(const lyx::char_type, char) const { return 0; }
 template<> const lyx::char_type *
 ctype<lyx::char_type>::do_narrow(const lyx::char_type *, const lyx::char_type *, char, char *) const { return 0; }
-}
+} // namespace std
 
 
 namespace lyx {
@@ -820,6 +820,6 @@ namespace {
 /// make sure that our facets get used
 static locale_initializer initializer;
 
-}
-}
+} // namespace
+} // namespace lyx
 #endif

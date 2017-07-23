@@ -140,7 +140,7 @@ void drawMarkers(PainterInfo const & pi, MathRow::Element const & e,
 	}
 }
 
-}
+} // namespace
 
 
 MathRow::MathRow(MetricsInfo & mi, MathData const * ar)

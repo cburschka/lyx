@@ -1578,7 +1578,7 @@ string makeMarginValue(char const * side, double d)
 	return os.str();
 }
 
-}
+} // namespace
 
 
 void Layout::makeDefaultCSS() const

@@ -41,7 +41,7 @@ void end_deeper(ostream & os)
 	os << "\n\\end_deeper";
 }
 
-}
+} // namespace
 
 
 bool operator==(TeXFont const & f1, TeXFont const & f2)

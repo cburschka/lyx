@@ -121,6 +121,6 @@ private:
 };
 
 
-}
-}
+} // namespace frontend
+} // namespace lyx
 #endif //GUIIDLISTMODEL_H

@@ -92,7 +92,7 @@ BoxTranslatorLoc const & boxtranslator_loc()
 	return translator;
 }
 
-} // namespace anon
+} // namespace
 
 
 /////////////////////////////////////////////////////////////////////////

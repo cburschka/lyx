@@ -1146,7 +1146,7 @@ void toggleFixedWidth(Cursor & cur, InsetTableCell * inset, bool fixedWidth)
 	cur.pop();
 }
 
-}
+} // namespace
 
 
 void Tabular::setColumnPWidth(Cursor & cur, idx_type cell,

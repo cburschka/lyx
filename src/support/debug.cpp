@@ -77,7 +77,7 @@ DebugErrorItem errorTags[] = {
 
 int const numErrorTags = sizeof(errorTags)/sizeof(errorTags[0]);
 
-} // namespace anon
+} // namespace
 
 
 int Debug::levelCount()

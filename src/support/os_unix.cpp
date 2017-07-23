@@ -43,7 +43,7 @@ namespace {
 int argc_ = 0;
 char ** argv_ = 0;
 
-} // namespace anon
+} // namespace
 
 void init(int argc, char ** argv[])
 {

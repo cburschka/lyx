@@ -20,7 +20,7 @@ namespace lyx
 	using std::placeholders::_2;
 	using std::bind;
 	using std::ref;
-}
+} // namespace
 
 
 #endif

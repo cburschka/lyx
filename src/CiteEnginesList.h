@@ -156,5 +156,5 @@ public:
 };
 
 extern CiteEnginesList theCiteEnginesList;
-}
+} // namespace lyx
 #endif

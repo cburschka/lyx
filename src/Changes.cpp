@@ -382,7 +382,7 @@ docstring getLaTeXMarkup(docstring const & macro, docstring const & author,
 	return ods.str();
 }
 
-} //namespace anon
+} // namespace
 
 
 int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,

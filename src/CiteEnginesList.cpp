@@ -148,7 +148,7 @@ CiteEngineTypeTranslator const & citeenginetypetranslator()
 	return translator;
 }
 
-} // namespace anon
+} // namespace
 
 
 string CiteEnginesList::getTypeAsString(CiteEngineType const & et) const

@@ -25,8 +25,8 @@ void warning(docstring const & title, docstring const & message, bool const &)
 	LYXERR0(title);
 	LYXERR0(message);
 }
-}
-}
+} // namespace Alert
+} // namespace frontend
 
 bool LaTeXFeatures::isAvailable(std::string const &)
 {
@@ -38,7 +38,7 @@ bool Formats::isZippedFile(support::FileName const &) const
 {
 	return false;
 }
-}
+} // namespace lyx
 
 
 using namespace lyx::support;

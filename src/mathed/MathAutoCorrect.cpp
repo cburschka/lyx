@@ -169,7 +169,7 @@ void initAutoCorrect()
 }
 
 
-} // namespace anon
+} // namespace
 
 
 bool math_autocorrect(MathAtom & at, char_type c)

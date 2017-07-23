@@ -58,7 +58,7 @@ docstring runMessage(unsigned int count)
 	return bformat(_("Waiting for LaTeX run number %1$d"), count);
 }
 
-} // anon namespace
+} // namespace
 
 /*
  * CLASS TEXERRORS
@@ -1132,7 +1132,7 @@ int iterateLine(string const & token, regex const & reg, string const & closing,
 	return result;
 }
 
-} // anon namespace
+} // namespace
 
 
 void LaTeX::deplog(DepTable & head)

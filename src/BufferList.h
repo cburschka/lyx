@@ -26,7 +26,7 @@ class OutputParams;
 namespace support {
 class FileName;
 class FileNameList;
-}
+} // namespace support
 
 /**
  * The class holds all all open buffers, and handles construction

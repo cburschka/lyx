@@ -41,7 +41,7 @@ uint qHash(lyx::docstring const & s)
 	                        s.size() * sizeof(lyx::docstring::value_type)));
 }
 
-}
+} // namespace std
 
 namespace lyx {
 namespace frontend {
@@ -84,7 +84,7 @@ inline QChar const ucs4_to_qchar(char_type const ucs4)
 	LATTEST(is_utf16(ucs4));
 	return QChar(static_cast<unsigned short>(ucs4));
 }
-} // anon namespace
+} // namespace
 
 
 GuiFontMetrics::GuiFontMetrics(QFont const & font)

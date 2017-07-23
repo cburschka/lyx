@@ -74,7 +74,7 @@ InsetLayout::InsetLaTeXType translateLaTeXType(std::string const & str)
 	return InsetLayout::ILT_ERROR;
 }
 
-} // namespace anon
+} // namespace
 
 
 bool InsetLayout::read(Lexer & lex, TextClass const & tclass)

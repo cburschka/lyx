@@ -2030,7 +2030,7 @@ string const l10n_shortcut(docstring const & prettyname, string const & shortcut
 	return split(l10n_format, '|');
 }
 
-} // namespace anon
+} // namespace
 
 
 void PrefFileformats::applyRC(LyXRC & rc) const
@@ -2262,7 +2262,7 @@ namespace {
 			}
 		}
 	}
-}
+} // namespace
 
 
 void PrefFileformats::updateViewers()

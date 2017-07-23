@@ -959,7 +959,7 @@ bool ParValidator::onoff(string const & name) const
 		return false;
 }
 
-} // namespace anon.
+} // namespace
 
 // define a global ParValidator
 ParValidator * par_validator = 0;

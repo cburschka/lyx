@@ -97,7 +97,7 @@ BOOL terminate_handler(DWORD event)
 	return FALSE;
 }
 
-} // namespace anon
+} // namespace
 
 void init(int argc, char ** argv[])
 {

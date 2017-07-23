@@ -155,7 +155,7 @@ namespace graphics {
 	void unifyGraphicsGroups(Buffer &, std::string const &);
 	InsetGraphics * getCurrentGraphicsInset(Cursor const &);
 
-}
+} // namespace graphics
 
 } // namespace lyx
 

@@ -87,7 +87,7 @@ namespace {
 /// Inset identifier (above 0x10ffff, for ucs-4)
 char_type const META_INSET = 0x200001;
 
-}
+} // namespace
 
 
 /////////////////////////////////////////////////////////////////////
@@ -1569,7 +1569,7 @@ void flushString(ostream & os, docstring & s)
 	s.erase();
 }
 
-}
+} // namespace
 
 
 void Paragraph::write(ostream & os, BufferParams const & bparams,
@@ -2200,7 +2200,7 @@ bool corrected_env(otexstream & os, string const & suffix, string const & env,
 	return true;
 }
 
-} // namespace anon
+} // namespace
 
 
 int Paragraph::Private::startTeXParParams(BufferParams const & bparams,
@@ -2928,7 +2928,7 @@ void doFontSwitch(vector<html::FontTag> & tagsToOpen,
 		flag = false;
 	}
 }
-}
+} // namespace
 
 
 docstring Paragraph::simpleLyXHTMLOnePar(Buffer const & buf,

@@ -347,7 +347,7 @@ bool isSpecialChar(docstring const & name)
 }
 
 
-} // namespace anon
+} // namespace
 
 MathWordList const & mathedWordList()
 {

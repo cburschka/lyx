@@ -323,7 +323,7 @@ bool inSystemDir(FileName const & document_dir, string & system_dir)
 	return false;
 }
 
-} // anon namespace
+} // namespace
 
 
 class BufferParams::Impl
@@ -1119,7 +1119,7 @@ namespace {
 			return "\"" + str + "\"";
 		return str;
 	}
-}
+} // namespace
 
 
 void BufferParams::writeFile(ostream & os, Buffer const * buf) const

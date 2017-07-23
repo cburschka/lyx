@@ -79,7 +79,7 @@ inline QChar const ucs4_to_qchar(char_type const ucs4)
 
 /// Maximum valid UCS4 code point
 char_type const ucs4_max = 0x10ffff;
-} // anon namespace
+} // namespace
 
 
 bool isLetterChar(char_type c)
@@ -233,7 +233,7 @@ Char ascii_tolower(Char c) {
 	return c;
 }
 
-}
+} // namespace
 
 
 int compare_ascii_no_case(string const & s, string const & s2)
@@ -494,7 +494,7 @@ template<typename Char> struct local_ascii_lowercase {
 	Char operator()(Char c) const { return ascii_tolower(c); }
 };
 
-} // end of anon namespace
+} // namespace
 
 
 docstring const lowercase(docstring const & a)
@@ -892,7 +892,7 @@ docstring const subst_string(docstring const & a,
 	return lstr;
 }
 
-}
+} // namespace
 
 
 string const subst(string const & a, char oldchar, char newchar)
@@ -1108,7 +1108,7 @@ docstring const doSplit(docstring const & a, docstring & piece, Char delim)
 	return tmp;
 }
 
-} // anon
+} // namespace
 
 
 string const split(string const & a, string & piece, char delim)
@@ -1259,7 +1259,7 @@ vector<docstring> wrapToVec(docstring const & str, int ind,
 	return retval;
 }
 
-}
+} // namespace
 
 
 docstring wrap(docstring const & str, int const ind, size_t const width)
@@ -1367,7 +1367,7 @@ template<typename String> const String
 	return str;
 }
 
-} // namespace anon
+} // namespace
 
 
 vector<string> const getVectorFromString(string const & str,

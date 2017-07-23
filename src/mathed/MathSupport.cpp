@@ -505,7 +505,7 @@ deco_struct const * search_deco(docstring const & name)
 }
 
 
-} // namespace anon
+} // namespace
 
 
 int mathed_font_em(FontInfo const & font)

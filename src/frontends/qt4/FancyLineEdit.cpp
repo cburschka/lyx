@@ -314,9 +314,9 @@ void IconButton::animateShow(bool visible)
     }
 }
 
-}
+} // namespace frontend
 
-}
+} // namespace lyx
 
 #endif // QT_VERSION >= 0x040600
 

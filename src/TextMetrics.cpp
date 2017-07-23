@@ -97,7 +97,7 @@ int numberOfHfills(Row const & row, ParagraphMetrics const & pm,
 }
 
 
-}
+} // namespace
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -806,7 +806,7 @@ private:
 	pos_type bodypos_;
 };
 
-} // anon namespace
+} // namespace
 
 /** This is the function where the hard work is done. The code here is
  * very sensitive to small changes :) Note that part of the

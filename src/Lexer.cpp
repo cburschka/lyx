@@ -148,7 +148,7 @@ public:
 	}
 };
 
-} // end of anon namespace
+} // namespace
 
 
 Lexer::Pimpl::Pimpl(LexerKeyword * tab, int num)

@@ -54,5 +54,5 @@ namespace std
 	// Fixed in VC11:
 	// http://connect.microsoft.com/VisualStudio/feedback/details/572376/msvc10-c-std-numpunct-has-a-hardcoded-dllimport-in-definition
 
-}
+} // namespace std
 #endif

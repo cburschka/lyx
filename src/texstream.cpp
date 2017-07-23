@@ -355,4 +355,4 @@ template otexstream & operator<< <unsigned long>(otexstream &, unsigned long);
 template otexstream & operator<< <unsigned long long>(otexstream &, unsigned long long);
 #endif
 
-}
+} // namespace lyx

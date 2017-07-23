@@ -36,7 +36,7 @@ struct Speller {
 
 typedef map<string, Speller> Spellers;
 
-} // anon namespace
+} // namespace
 
 struct EnchantChecker::Private
 {

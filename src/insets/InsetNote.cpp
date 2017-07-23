@@ -69,7 +69,7 @@ NoteTranslator const & notetranslator()
 }
 
 
-} // anon
+} // namespace
 
 
 InsetNoteParams::InsetNoteParams()

@@ -234,7 +234,7 @@ QFont symbolFont(QString const & family, bool * ok)
 	return font;
 }
 
-} // namespace anon
+} // namespace
 
 
 FontLoader::FontLoader()
@@ -370,7 +370,7 @@ QFont makeQFont(FontInfo const & f)
 	return font;
 }
 
-} // anon namespace
+} // namespace
 
 
 GuiFontInfo::GuiFontInfo(FontInfo const & f)

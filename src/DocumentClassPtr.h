@@ -19,6 +19,6 @@ class DocumentClass;
 
 typedef std::shared_ptr<DocumentClass> DocumentClassPtr;
 typedef std::shared_ptr<DocumentClass const> DocumentClassConstPtr;
-}
+} // namespace lyx
 
 #endif // DISPATCH_RESULT_H

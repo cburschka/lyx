@@ -78,7 +78,7 @@ RefChanger<X> make_change(X & ref, X const val)
 }
 
 
-}
+} // namespace lyx
 
 
 #endif //LYX_REFCHANGER_H

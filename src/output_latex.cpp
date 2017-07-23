@@ -510,7 +510,7 @@ void getArgInsets(otexstream & os, OutputParams const & runparams, Layout::LaTeX
 }
 
 
-} // namespace anon
+} // namespace
 
 
 void pushLanguageName(string const & lang_name, bool localswitch)
@@ -563,7 +563,7 @@ void addArgInsets(Paragraph const & par, string const & prefix,
 	}
 }
 
-} // anon namespace
+} // namespace
 
 
 void latexArgInsets(Paragraph const & par, otexstream & os,
@@ -666,7 +666,7 @@ void parStartCommand(Paragraph const & par, otexstream & os,
 	}
 }
 
-} // namespace anon
+} // namespace
 
 // FIXME: this should be anonymous
 void TeXOnePar(Buffer const & buf,

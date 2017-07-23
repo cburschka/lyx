@@ -193,7 +193,7 @@ iconv_convert(IconvProcessor & processor, InType const * buf, size_t buflen)
 	return vector<RetType>(tmp, tmp + bytes / sizeof(RetType));
 }
 
-} // anon namespace
+} // namespace
 
 
 IconvProcessor & utf8ToUcs4()
@@ -264,7 +264,7 @@ IconvProcessor & getProc(map<string, IconvProcessor> & processors,
 		return it->second;
 }
 
-} //anon namespace
+} // namespace
 
 
 vector<char>
@@ -313,7 +313,7 @@ map<string, IconvProcessor> & ucs4To8bitProcessors()
 	return *processors.localData();
 }
 
-}
+} // namespace
 
 vector<char>
 ucs4_to_eightbit(char_type const * ucs4str, size_t ls, string const & encoding)

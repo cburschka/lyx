@@ -79,7 +79,7 @@ protected:
 	}
 };
 
-} // end of anon
+} // namespace
 
 
 GuiCommandBuffer::GuiCommandBuffer(GuiView * view)
@@ -272,7 +272,7 @@ public:
 	bool operator()(string const & s) const { return prefixIs(s, p); }
 };
 
-} // end of anon namespace
+} // namespace
 
 
 string const GuiCommandBuffer::historyUp()

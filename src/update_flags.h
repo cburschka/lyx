@@ -40,7 +40,7 @@ inline flags operator&(flags const f, flags const g)
 	return static_cast<flags>(int(f) & int(g));
 }
 
-} // namespace
+} // namespace Update
 
 } // namespace lyx
 #endif

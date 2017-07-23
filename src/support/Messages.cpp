@@ -127,7 +127,7 @@ void cleanTranslation(docstring & trans)
 	}
 }
 
-} // lyx
+} // namespace lyx
 
 
 #ifdef ENABLE_NLS
@@ -167,7 +167,7 @@ string realCode(string code)
 	}
 	return string();
 }
-}
+} // namespace
 
 
 bool Messages::available(string const & c)
@@ -238,7 +238,7 @@ void StringTable::swapEnd()
 }
 
 
-} // namespace anon
+} // namespace
 
 bool Messages::readMoFile()
 {

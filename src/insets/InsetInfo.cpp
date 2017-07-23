@@ -81,7 +81,7 @@ NameTranslator const & nameTranslator()
 	return translator;
 }
 
-} // namespace anon
+} // namespace
 
 /////////////////////////////////////////////////////////////////////////
 //

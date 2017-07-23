@@ -516,7 +516,7 @@ void setOptionFactory(Template::Format & format, string const & transform,
 		transform_class_not_found(lyxerr, transformer_class);
 }
 
-} // namespace anon
+} // namespace
 
 
 void Template::Format::readFormat(Lexer & lex)

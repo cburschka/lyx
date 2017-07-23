@@ -37,7 +37,7 @@ To lexical_cast(From const & value, To const & defaultResult = To())
 	}
 }
 
-}
+} // namespace
 
 
 namespace lyx {

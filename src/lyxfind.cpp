@@ -303,7 +303,7 @@ pair<bool, int> replaceOne(BufferView * bv, docstring searchstr,
 	return make_pair(true, 1);
 }
 
-} // namespace anon
+} // namespace
 
 
 docstring const find2string(docstring const & search,
@@ -517,7 +517,7 @@ bool findChange(BufferView * bv, bool forward)
 	return selectChange(cur, forward);
 }
 
-}
+} // namespace
 
 bool findNextChange(BufferView * bv)
 {
@@ -1338,7 +1338,7 @@ int findBackwardsAdv(DocIterator & cur, MatchStringAdv & match)
 }
 
 
-} // anonym namespace
+} // namespace
 
 
 docstring stringifyFromForSearch(FindAndReplaceOptions const & opt,
@@ -1419,7 +1419,7 @@ static void changeFirstCase(Buffer & buffer, TextCase first_case, TextCase other
 	pit->changeCase(buffer.params(), pos_type(1), right, others_case);
 }
 
-} // anon namespace
+} // namespace
 
 ///
 static void findAdvReplace(BufferView * bv, FindAndReplaceOptions const & opt, MatchStringAdv & matchAdv)
@@ -1612,4 +1612,4 @@ istringstream & operator>>(istringstream & is, FindAndReplaceOptions & opt)
 	return is;
 }
 
-} // lyx namespace
+} // namespace lyx

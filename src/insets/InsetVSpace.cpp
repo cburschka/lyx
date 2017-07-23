@@ -46,7 +46,7 @@ namespace {
 
 int const ADD_TO_VSPACE_WIDTH = 5;
 
-} // namespace anon
+} // namespace
 
 
 InsetVSpace::InsetVSpace(VSpace const & space)

@@ -49,7 +49,7 @@ struct Speller {
 typedef std::map<std::string, Speller> Spellers;
 typedef map<std::string, PersonalWordList *> LangPersonalWordList;
 
-} // anon namespace
+} // namespace
 
 struct AspellChecker::Private
 {

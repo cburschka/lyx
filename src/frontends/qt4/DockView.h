@@ -61,7 +61,7 @@ protected Q_SLOTS:
 	void onBufferViewChanged() {} //override
 };
 
-} // frontend
-} // lyx
+} // namespace frontend
+} // namespace lyx
 
 #endif // DOCK_VIEW_H

@@ -690,7 +690,7 @@ bool operator<(IndexEntry const & lhs, IndexEntry const & rhs)
 	return (comp < 0);
 }
 
-} // anon namespace
+} // namespace
 
 
 docstring InsetPrintIndex::xhtml(XHTMLStream &, OutputParams const & op) const

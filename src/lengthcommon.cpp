@@ -204,7 +204,7 @@ LaTeXLength table[] = {
 };
 
 
-} // namespace anon
+} // namespace
 
 
 const char * stringFromUnit(int unit)

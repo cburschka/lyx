@@ -101,7 +101,7 @@ void splitArg(vector<string> & args, string const & str,
 	}
 }
 
-}
+} // namespace
 
 string FuncRequest::getArg(unsigned int i) const
 {

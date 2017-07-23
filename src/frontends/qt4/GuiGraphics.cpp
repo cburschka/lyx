@@ -77,7 +77,7 @@ size_t const rorigin_size = sizeof(rorigin_lyx_strs) / sizeof(char *);
 
 static string const autostr = N_("automatically");
 
-} // namespace anon
+} // namespace
 
 
 namespace lyx {

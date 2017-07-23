@@ -212,7 +212,7 @@ LexerKeyword lyxrcTags[] = {
 
 const int lyxrcCount = sizeof(lyxrcTags) / sizeof(lyxrcTags[0]);
 
-} // namespace anon
+} // namespace
 
 
 LyXRC::LyXRC()
@@ -377,7 +377,7 @@ void oldFontFormat(string & family, string & foundry)
 		foundry.erase();
 }
 
-} // namespace anon
+} // namespace
 
 
 bool LyXRC::read(FileName const & filename, bool check_format)
@@ -1287,7 +1287,7 @@ namespace {
 			     "\"", "\\\"");
 	}
 
-}
+} // namespace
 
 
 void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) const

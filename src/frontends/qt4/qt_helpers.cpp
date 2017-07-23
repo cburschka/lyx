@@ -91,7 +91,7 @@ double locstringToDouble(QString const & str)
 	return res;
 }
 
-} // namespace anon
+} // namespace
 
 
 namespace frontend {

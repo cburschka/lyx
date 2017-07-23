@@ -64,18 +64,18 @@ class WordLangTuple;
 namespace frontend {
 class GuiBufferDelegate;
 class WorkAreaManager;
-}
+} // namespace frontend
 
 namespace support {
 class DocFileName;
 class FileName;
 class FileNamePairList;
-}
+} // namespace support
 
 namespace graphics {
 class PreviewLoader;
 class Cache;
-}
+} // namespace graphics
 
 
 class Buffer;

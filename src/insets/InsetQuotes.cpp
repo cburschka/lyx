@@ -75,7 +75,7 @@ char const * const style_char = "esgpcaqbwfirjkx";
 char const * const side_char = "lr" ;
 char const * const level_char = "sd";
 
-} // namespace anon
+} // namespace
 
 
 /////////////////////////////////////////////////////////////////////

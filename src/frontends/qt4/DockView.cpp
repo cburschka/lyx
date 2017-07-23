@@ -48,7 +48,7 @@ void DockView::keyPressEvent(QKeyEvent * ev)
 }
 
 
-} // frontend
-} // lyx
+} // namespace frontend
+} // namespace lyx
 
 #include "moc_DockView.cpp"

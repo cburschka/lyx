@@ -165,7 +165,7 @@ void readInsetGraphics(Lexer & lex, Buffer const & buf, bool allowOrigin,
 	}
 }
 
-} // namespace anon
+} // namespace
 
 
 InsetGraphics::InsetGraphics(Buffer * buf)
@@ -559,7 +559,7 @@ string const stripExtensionIfPossible(string const & file, string const & to, bo
 	return latex_path(file, EXCLUDE_EXTENSION);
 }
 
-} // namespace anon
+} // namespace
 
 
 string InsetGraphics::prepareFile(OutputParams const & runparams) const

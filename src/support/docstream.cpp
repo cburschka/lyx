@@ -307,7 +307,7 @@ private:
 	string encoding_;
 };
 
-} // namespace anon
+} // namespace
 
 
 namespace lyx {
@@ -447,7 +447,7 @@ odocstream & operator<<(odocstream & os, char c)
 }
 #endif
 
-}
+} // namespace lyx
 
 
 #if ! defined(USE_WCHAR_T) && defined(__GNUC__)

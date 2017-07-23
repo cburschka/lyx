@@ -171,8 +171,7 @@ latexkeys const * slash_symbol()
 	return in_word_set(from_ascii("slash"));
 }
 
-} // anon namespace
-
+} // namespace
 
 
 void InsetMathFrac::metrics(MetricsInfo & mi, Dimension & dim) const

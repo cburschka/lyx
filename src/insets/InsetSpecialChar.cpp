@@ -84,7 +84,7 @@ int logoWidth(FontInfo const & font, InsetSpecialChar::Kind kind) {
 	return width;
 }
 
-}
+} // namespace
 
 docstring InsetSpecialChar::toolTip(BufferView const &, int, int) const
 {
@@ -248,7 +248,7 @@ void drawLogo(PainterInfo & pi, int & x, int const y, InsetSpecialChar::Kind kin
 	}
 }
 
-}
+} // namespace
 
 void InsetSpecialChar::draw(PainterInfo & pi, int x, int y) const
 {

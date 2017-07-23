@@ -1391,9 +1391,9 @@ namespace {
 		return res;
 	}
 
-}
+} // namespace
 
-} // anon namespace
+} // namespace
 
 void write(MathData const & dat, WriteStream & wi)
 {

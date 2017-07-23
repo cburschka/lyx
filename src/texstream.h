@@ -183,6 +183,6 @@ template <typename Type>
 otexstream & operator<<(otexstream & ots, Type value);
 
 
-}
+} // namespace lyx
 
 #endif

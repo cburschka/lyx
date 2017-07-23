@@ -99,7 +99,7 @@ string envName(Spacing::Space space, bool useSetSpace)
 	return useSetSpace ? name : support::ascii_lowercase(name);
 }
 
-}
+} // namespace
 
 string const Spacing::writeEnvirBegin(bool useSetSpace) const
 {

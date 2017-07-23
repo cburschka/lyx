@@ -213,4 +213,4 @@ bool GuiImage::scale(Params const & params)
 }
 
 } // namespace graphics
-} // lyx
+} // namespace lyx

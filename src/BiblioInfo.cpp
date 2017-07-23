@@ -476,7 +476,7 @@ docstring processRichtext(docstring const & str, bool richtext)
 	return ret;
 }
 
-} // anon namespace
+} // namespace
 
 
 //////////////////////////////////////////////////////////////////////
@@ -756,7 +756,7 @@ docstring parseOptions(docstring const & format, string & optkey,
 }
 
 
-} // anon namespace
+} // namespace
 
 /* FIXME
 Bug #9131 revealed an oddity in how we are generating citation information
@@ -1148,7 +1148,7 @@ public:
 	}
 };
 
-} // namespace anon
+} // namespace
 
 
 vector<docstring> const BiblioInfo::getXRefs(BibTeXInfo const & data, bool const nested) const
@@ -1409,7 +1409,7 @@ bool lSorter(BibTeXInfo const * lhs, BibTeXInfo const * rhs)
 		|| (lauth == rauth && lyear == ryear && ltitl < rtitl);
 }
 
-}
+} // namespace
 
 
 void BiblioInfo::collectCitedEntries(Buffer const & buf)

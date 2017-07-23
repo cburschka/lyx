@@ -312,7 +312,7 @@ bool addModule(string const & module)
 	return false;
 }
 
-}
+} // namespace
 
 
 bool checkModule(string const & name, bool command)

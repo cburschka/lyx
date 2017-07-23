@@ -95,7 +95,7 @@ private:
 	string const to_;
 };
 
-} // namespace anon
+} // namespace
 
 
 Converter::Converter(string const & f, string const & t,

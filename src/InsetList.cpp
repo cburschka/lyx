@@ -36,7 +36,7 @@ struct InsetTablePosLess
 	}
 };
 
-} // namespace anon
+} // namespace
 
 
 InsetList::InsetList(InsetList const & il) : list_(il.list_)

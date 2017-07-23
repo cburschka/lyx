@@ -155,5 +155,5 @@ public:
 };
 
 extern ModuleList theModuleList;
-}
+} // namespace lyx
 #endif

@@ -136,7 +136,7 @@ int const LYX_FORMAT = LYX_FORMAT_LYX;
 typedef map<string, bool> DepClean;
 typedef map<docstring, pair<InsetLabel const *, Buffer::References> > RefCache;
 
-} // namespace anon
+} // namespace
 
 
 // A storehouse for the cloned buffers.
@@ -4100,7 +4100,7 @@ int AutoSaveBuffer::generateChild()
 	return pid;
 }
 
-} // namespace anon
+} // namespace
 
 
 FileName Buffer::getEmergencyFileName() const

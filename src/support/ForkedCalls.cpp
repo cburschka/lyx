@@ -94,7 +94,7 @@ private:
 	pid_t pid_;
 };
 
-} // namespace anon
+} // namespace
 
 
 /////////////////////////////////////////////////////////////////////
@@ -513,8 +513,7 @@ bool running()
 	return running_;
 }
 
-} // namespace ForkedCallsQueue
-
+} // namespace ForkedCallQueue
 
 
 /////////////////////////////////////////////////////////////////////

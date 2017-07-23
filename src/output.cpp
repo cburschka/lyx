@@ -40,7 +40,7 @@ bool doOpenFileWrite(OFStream & ofs, FileName const & fname)
 	return false;
 }
 
-}
+} // namespace
 
 
 bool openFileWrite(ofstream & ofs, FileName const & fname)

@@ -150,7 +150,7 @@ void showFileError(string const & error)
 			   "Please check your installation."), from_utf8(error)));
 }
 
-} // namespace anon
+} // namespace
 
 /// The main application class private implementation.
 struct LyX::Impl {
@@ -775,7 +775,7 @@ namespace {
 			return std::string(line, nameLen);
 		}
 	}
-}
+} // namespace
 
 void cleanDuplicateEnvVars()
 {
@@ -1384,7 +1384,7 @@ int parse_force(string const & arg, string const &, string &)
 }
 
 
-} // namespace anon
+} // namespace
 
 
 void LyX::easyParse(int & argc, char * argv[])

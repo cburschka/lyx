@@ -46,7 +46,7 @@ namespace {
 
 typedef std::map<docstring, MyThes *> Thesauri;
 
-} // namespace anon
+} // namespace
 
 struct Thesaurus::Private
 {

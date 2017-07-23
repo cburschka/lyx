@@ -474,7 +474,7 @@ QString findImg(QString const & name)
 	return img_name;
 }
 
-} // namespace anon
+} // namespace
 
 
 QString themeIconName(QString const & action)
@@ -2657,7 +2657,7 @@ namespace {
 		const QFontInfo fi(font);
 		return fi.fixedPitch();
 	}
-}
+} // namespace
 
 
 QFont const GuiApplication::typewriterSystemFont()

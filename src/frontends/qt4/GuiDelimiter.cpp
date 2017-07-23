@@ -177,7 +177,7 @@ string getDelimiterName(QListWidgetItem const * lwi)
 }
 
 
-} // anon namespace
+} // namespace
 
 
 GuiDelimiter::GuiDelimiter(GuiView & lv)

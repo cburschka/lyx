@@ -59,7 +59,7 @@ MathAlphaSet mathalpha;
 /// The highest code point in UCS4 encoding (1<<20 + 1<<16)
 char_type const max_ucs4 = 0x110000;
 
-} // namespace anon
+} // namespace
 
 
 EncodingException::EncodingException(char_type c)

@@ -209,7 +209,7 @@ namespace {
 			buildTranslationMap(t);
 		return t;
 	}
-}
+} // namespace
 
 void InsetMathDecoration::mathmlize(MathStream & os) const
 {

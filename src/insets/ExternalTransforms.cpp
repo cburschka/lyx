@@ -78,7 +78,7 @@ namespace {
 typedef Translator<RotationData::OriginType, string> OriginTranslator;
 OriginTranslator const & originTranslator();
 
-} // namespace anon
+} // namespace
 
 
 void RotationData::origin(string const & o)
@@ -183,7 +183,7 @@ ostream & operator<<(ostream & os, RotationData::OriginType type)
 	return os;
 }
 
-} // namespace anon
+} // namespace
 
 
 string const RotationLatexCommand::front_impl() const
@@ -337,7 +337,7 @@ void extractIt(boost::any const & any_factory,
 		transformer = factory(data);
 }
 
-} // namespace anon
+} // namespace
 
 
 TransformCommand::ptr_type
@@ -426,7 +426,7 @@ OriginTranslator const & originTranslator()
 	return translator;
 }
 
-} // namespace anon
+} // namespace
 
 } // namespace external
 } // namespace lyx

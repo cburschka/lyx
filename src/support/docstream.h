@@ -114,6 +114,6 @@ SetEnc setEncoding(std::string const & encoding);
 odocstream & operator<<(odocstream & os, SetEnc e);
 idocstream & operator<<(idocstream & os, SetEnc e);
 
-}
+} // namespace lyx
 
 #endif

@@ -1890,7 +1890,7 @@ void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv)
 	}
 }
 
-} // namespace anon
+} // namespace
 
 
 /////////////////////////////////////////////////////////////////////

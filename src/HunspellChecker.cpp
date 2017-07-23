@@ -47,7 +47,7 @@ typedef map<std::string, PersonalWordList *> LangPersonalWordList;
 
 typedef vector<WordLangTuple> IgnoreList;
 
-} // anon namespace
+} // namespace
 
 
 struct HunspellChecker::Private

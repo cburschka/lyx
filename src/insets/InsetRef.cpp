@@ -84,7 +84,7 @@ void capitalize(docstring & s) {
 	s[0] = t;
 }
 
-}
+} // namespace
 
 
 // the ref argument is the label name we are referencing.

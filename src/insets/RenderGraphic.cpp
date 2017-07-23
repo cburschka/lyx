@@ -132,7 +132,7 @@ bool readyToDisplay(graphics::Loader const & loader)
 	return loader.image()->isDrawable();
 }
 
-} // namespace anon
+} // namespace
 
 
 void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const

@@ -28,7 +28,7 @@ class ios_base;
 template<typename CharT, typename Traits> class basic_streambuf;
 typedef basic_streambuf<char, char_traits<char> > streambuf;
 
-}
+} // namespace std
 #endif
 
 

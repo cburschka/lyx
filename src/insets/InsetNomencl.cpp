@@ -388,7 +388,7 @@ docstring nomenclWidest(Buffer const & buffer, OutputParams const & runparams)
 			<< "' in nomencl widest string!");
 	return latex_symb.first;
 }
-} // namespace anon
+} // namespace
 
 
 void InsetPrintNomencl::latex(otexstream & os, OutputParams const & runparams_in) const

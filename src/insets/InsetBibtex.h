@@ -21,7 +21,7 @@ class BiblioInfo;
 namespace support {
 	class FileName;
 	class FileNamePairList;
-}
+} // namespace support
 
 /** Used to insert BibTeX's information
   */

@@ -96,5 +96,5 @@ private:
 	///
 	std::list<std::string> lml_;
 };
-}
+} // namespace lyx
 #endif

@@ -104,6 +104,6 @@ string const python(bool reset)
 	return command;
 }
 
-}
-}
-}
+} // namespace os
+} // namespace support
+} // namespace lyx

@@ -408,6 +408,6 @@ private:
 /// Implemented in LyX.cpp.
 Session & theSession();
 
-} // lyx
+} // namespace lyx
 
 #endif

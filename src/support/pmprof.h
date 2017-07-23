@@ -154,7 +154,7 @@ void dump(long long sec, long long usec, unsigned long long count) {
 			  << std::endl;
 }
 
-}
+} // namespace
 
 
 /* Helper class for gathering data. Instantiate this as a static

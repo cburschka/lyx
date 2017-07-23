@@ -58,7 +58,7 @@ bool DebugSorter(DebugMap const & a, DebugMap const & b)
 {
 	return a.second < b.second;
 }
-}
+} // namespace
 
 
 GuiProgressView::GuiProgressView(GuiView & parent, Qt::DockWidgetArea area,

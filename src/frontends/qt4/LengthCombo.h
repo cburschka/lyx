@@ -56,7 +56,7 @@ Q_SIGNALS:
 };
 
 
-} // namesapce frontend
+} // namespace frontend
 } // namespace lyx
 
 #endif // LENGTHCOMBO_H

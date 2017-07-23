@@ -178,7 +178,7 @@ public:
 	}
 };
 
-}
+} // namespace
 
 
 MenuButton::MenuButton(GuiToolbar * bar, ToolbarItem const & item, bool const sticky)

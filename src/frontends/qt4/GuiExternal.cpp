@@ -80,7 +80,7 @@ char const * const origin_gui_strs[] = {
 	N_("Top right"), N_("Bottom right"), N_("Baseline right")
 };
 
-} // namespace anon
+} // namespace
 
 
 GuiExternal::GuiExternal(GuiView & lv)

@@ -94,7 +94,7 @@ char const * LaTeXSizeNames[NUM_SIZE + 4] =
 { "tiny", "scriptsize", "footnotesize", "small", "normalsize", "large",
   "Large", "LARGE", "huge", "Huge", "error8", "error9", "error10", "error11" };
 
-} // namespace anon
+} // namespace
 
 
 Font::Font(FontInfo bits, Language const * l)

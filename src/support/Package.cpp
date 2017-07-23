@@ -55,7 +55,7 @@ namespace {
 Package package_;
 bool initialised_ = false;
 
-} // namespace anon
+} // namespace
 
 
 void init_package(string const & command_line_arg0,
@@ -101,7 +101,7 @@ string const & with_version_suffix();
 
 string const fix_dir_name(string const & name);
 
-} // namespace anon
+} // namespace
 
 
 Package::Package(string const & command_line_arg0,
@@ -247,7 +247,7 @@ string const & with_version_suffix()
 	return program_suffix.empty() ? program_suffix : with_version_suffix;
 }
 
-} // namespace anon
+} // namespace
 
 
 FileName const & Package::top_srcdir()
@@ -799,7 +799,7 @@ string const relative_system_support_dir()
 	return result;
 }
 
-} // namespace anon
+} // namespace
 
 } // namespace support
 } // namespace lyx

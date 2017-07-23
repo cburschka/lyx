@@ -53,7 +53,7 @@ namespace lyx {
 	class FontMetrics {
 		int em() const { return 0; };
 	};
-	}
+	} // namespace frontend
 
 	class FontInfo;
 
@@ -61,4 +61,4 @@ namespace lyx {
 		static frontend::FontMetrics dummy;
 		return dummy;
 	}
-}
+} // namespace lyx

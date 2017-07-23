@@ -37,9 +37,9 @@ namespace regex_constants
 {
 using namespace LR_NS::regex_constants;
 using LR_NS::regex_constants::match_flag_type;
-}
+} // namespace regex_constants
 
-}
+} // namespace lyx
 
 #undef LR_NS
 
