@@ -205,7 +205,7 @@ public:
 	///
 	docstring selectionAsString(bool with_label) const;
 	///
-	docstring currentState() const;
+	docstring currentState(bool devel_mode) const;
 
 	/// auto-correct mode
 	bool autocorrect() const { return autocorrect_; }
@@ -300,7 +300,7 @@ public:
 	/// access to owning BufferView
 	BufferView & bv() const;
 	/// get some interesting description of top position
-	void info(odocstream & os) const;
+	void info(odocstream & os, bool devel_mode) const;
 	/// are we in math mode (2), text mode (1) or unsure (0)?
 	int currentMode();
 	/// reset cursor bottom to the beginning of the top inset

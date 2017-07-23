@@ -1396,6 +1396,19 @@ void LyXAction::init()
 
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_DEVEL_MODE_TOGGLE
+ * \li Action: toggle a mode where more information is given in UI
+ * \li Syntax: devel-mode-toggle
+ * \li Notion: in so called "devel" mode, the information given in the
+ *             status bar is more precise, and the help documents are
+ *             open in editing mode.
+ * \li Origin: lasgouttes, 23 Jul 2017
+ * \endvar
+ */
+		{ LFUN_DEVEL_MODE_TOGGLE, "devel-mode-toggle", NoBuffer, System },
+
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_DIALOG_DISCONNECT_INSET
  * \li Action: Closes opened connection to opened inset.
  * \li Notion: Connection is used for apply functions.

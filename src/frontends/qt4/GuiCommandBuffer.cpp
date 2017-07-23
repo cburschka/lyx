@@ -295,12 +295,6 @@ string const GuiCommandBuffer::historyDown()
 }
 
 
-docstring const GuiCommandBuffer::getCurrentState() const
-{
-	return view_->currentBufferView()->cursor().currentState();
-}
-
-
 vector<string> const
 GuiCommandBuffer::completions(string const & prefix, string & new_prefix)
 {

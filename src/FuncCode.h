@@ -473,6 +473,7 @@ enum FuncCode
 	LFUN_BUFFER_ZOOM,               // daniel, 20161028
 	LFUN_TOOLBAR_MOVABLE,           // daniel, 20160712
 	LFUN_FONT_CROSSOUT,             // uwestoehr 20170404
+	LFUN_DEVEL_MODE_TOGGLE,         // lasgouttes 20170723
 	LFUN_LASTACTION                 // end of the table
 };
 

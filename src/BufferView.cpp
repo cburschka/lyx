@@ -1391,7 +1391,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 
 	case LFUN_FONT_STATE:
-		dr.setMessage(cur.currentState());
+		dr.setMessage(cur.currentState(false));
 		break;
 
 	case LFUN_BOOKMARK_SAVE:

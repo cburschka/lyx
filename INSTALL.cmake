@@ -141,7 +141,6 @@ Build options
     -- LYX_ASPELL               = OFF    : Require aspell
     -- LYX_ENCHANT              = OFF    : Require Enchant
     -- LYX_HUNSPELL             = OFF    : Require Hunspell
-    -- LYX_DEVEL_VERSION        = OFF    : Build developer version
     -- LYX_RELEASE              = OFF    : Build release version, build debug when disabled
     -- LYX_PACKAGE_SUFFIX       = ON     : Use version suffix for packaging
     -- LYX_PCH                  = OFF    : Use precompiled headers

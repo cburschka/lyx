@@ -343,6 +343,8 @@ public:
 	void hideDialog(std::string const & name, Inset * inset);
 	///
 	void disconnectDialog(std::string const & name);
+	///
+	bool develMode() const { return devel_mode_; }
 
 private:
 	/// Saves the layout and geometry of the window
@@ -469,6 +471,9 @@ private:
 
 	// movability flag of all toolbars
 	bool toolbarsMovable_;
+
+	// developer mode
+	bool devel_mode_;
 };
 
 } // namespace frontend

@@ -33,7 +33,6 @@ AC_MSG_RESULT([$build_type])
 lyx_flags="$lyx_flags build=$build_type"
 case $build_type in
     development) lyx_devel_version=yes
-                 AC_DEFINE(DEVEL_VERSION, 1, [Define if you are building a development version of LyX])
 		 LYX_DATE="not released yet" ;;
     prerelease) lyx_prerelease=yes ;;
 esac

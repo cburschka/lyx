@@ -157,8 +157,8 @@ public:
 	/// read-write access to individual paragraph
 	Paragraph & getPar(pit_type pit) { return pars_[pit]; }
 	// Returns the current font and depth as a message.
-	/// FIXME: replace Cursor with DocIterator.
-	docstring currentState(Cursor const & cur) const;
+	// When \param devel_mode is true, add more precise information
+	docstring currentState(Cursor const & cur, bool devel_mode) const;
 
 	/** Find the word under \c from in the relative location
 	 *  defined by \c word_location.

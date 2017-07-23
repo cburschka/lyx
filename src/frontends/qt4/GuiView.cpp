@@ -508,7 +508,7 @@ QSet<Buffer const *> GuiView::GuiViewPrivate::busyBuffers;
 
 GuiView::GuiView(int id)
 	: d(*new GuiViewPrivate(this)), id_(id), closing_(false), busy_(0),
-	  command_execute_(false), minibuffer_focus_(false)
+	  command_execute_(false), minibuffer_focus_(false), devel_mode_(false)
 {
 	connect(this, SIGNAL(bufferViewChanged()),
 	        this, SLOT(onBufferViewChanged()));
@@ -715,6 +715,7 @@ void GuiView::saveLayout() const
 {
 	QSettings settings;
 	settings.setValue("zoom", lyxrc.currentZoom);
+	settings.setValue("devel_mode", devel_mode_);
 	settings.beginGroup("views");
 	settings.beginGroup(QString::number(id_));
 #if defined(Q_WS_X11) || defined(QPA_XCB)
@@ -746,6 +747,7 @@ bool GuiView::restoreLayout()
 	QSettings settings;
 	lyxrc.currentZoom = settings.value("zoom", lyxrc.zoom).toInt();
 	lyx::dispatch(FuncRequest(LFUN_BUFFER_ZOOM, convert<docstring>(lyxrc.currentZoom)));
+	devel_mode_ = settings.value("devel_mode", devel_mode_).toBool();
 	settings.beginGroup("views");
 	settings.beginGroup(QString::number(id_));
 	QString const icon_key = "icon_size";
@@ -1254,7 +1256,7 @@ void GuiView::showMessage()
 	if (msg.isEmpty()) {
 		BufferView const * bv = currentBufferView();
 		if (bv)
-			msg = toqstr(bv->cursor().currentState());
+			msg = toqstr(bv->cursor().currentState(devel_mode_));
 		else
 			msg = qt_("Welcome to LyX!");
 	}
@@ -1898,6 +1900,10 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_TAB_GROUP_CLOSE:
 		enable = d.tabWorkAreaCount() > 1;
+		break;
+
+	case LFUN_DEVEL_MODE_TOGGLE:
+		flag.setOnOff(devel_mode_);
 		break;
 
 	case LFUN_TOOLBAR_TOGGLE: {
@@ -3859,6 +3865,14 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 		case LFUN_BUFFER_CLOSE_ALL:
 			closeBufferAll();
+			break;
+
+		case LFUN_DEVEL_MODE_TOGGLE:
+			devel_mode_ = !devel_mode_;
+			if (devel_mode_)
+				dr.setMessage(_("Developer mode is now enabled."));
+			else
+				dr.setMessage(_("Developer mode is now disabled."));
 			break;
 
 		case LFUN_TOOLBAR_TOGGLE: {

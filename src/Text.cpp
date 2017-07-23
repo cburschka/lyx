@@ -1896,7 +1896,7 @@ bool Text::read(Lexer & lex,
 
 
 // Returns the current font and depth as a message.
-docstring Text::currentState(Cursor const & cur) const
+docstring Text::currentState(Cursor const & cur, bool devel_mode) const
 {
 	LBUFERR(this == cur.text());
 	Buffer & buf = *cur.buffer();
@@ -1953,22 +1953,22 @@ docstring Text::currentState(Cursor const & cur) const
 		}
 	}
 
-#ifdef DEVEL_VERSION
-	os << _(", Inset: ") << &cur.inset();
-	os << _(", Paragraph: ") << cur.pit();
-	os << _(", Id: ") << par.id();
-	os << _(", Position: ") << cur.pos();
-	// FIXME: Why is the check for par.size() needed?
-	// We are called with cur.pos() == par.size() quite often.
-	if (!par.empty() && cur.pos() < par.size()) {
-		// Force output of code point, not character
-		size_t const c = par.getChar(cur.pos());
-		os << _(", Char: 0x") << hex << c;
+	if (devel_mode) {
+		os << _(", Inset: ") << &cur.inset();
+		os << _(", Paragraph: ") << cur.pit();
+		os << _(", Id: ") << par.id();
+		os << _(", Position: ") << cur.pos();
+		// FIXME: Why is the check for par.size() needed?
+		// We are called with cur.pos() == par.size() quite often.
+		if (!par.empty() && cur.pos() < par.size()) {
+			// Force output of code point, not character
+			size_t const c = par.getChar(cur.pos());
+			os << _(", Char: 0x") << hex << c;
+		}
+		os << _(", Boundary: ") << cur.boundary();
+//		Row & row = cur.textRow();
+//		os << bformat(_(", Row b:%1$d e:%2$d"), row.pos(), row.endpos());
 	}
-	os << _(", Boundary: ") << cur.boundary();
-//	Row & row = cur.textRow();
-//	os << bformat(_(", Row b:%1$d e:%2$d"), row.pos(), row.endpos());
-#endif
 	return os.str();
 }
 

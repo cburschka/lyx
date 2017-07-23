@@ -2248,7 +2248,7 @@ void InsetMathHull::revealCodes(Cursor & cur) const
 	if (!cur.inMathed())
 		return;
 	odocstringstream os;
-	cur.info(os);
+	cur.info(os, false);
 	cur.message(os.str());
 /*
 	// write something to the minibuffer

@@ -197,20 +197,21 @@ void ViewSourceWidget::updateView(BufferView const * bv)
 	           masterPerspectiveCB->isChecked());
 	QString old = document_->toPlainText();
 	QString qcontent = toqstr(content);
-#ifdef DEVEL_VERSION
-	// output tex<->row correspondences in the source panel if the "-dbg latex"
-	// option is given.
-	if (texrow_ && lyx::lyxerr.debugging(Debug::LATEX)) {
-		QStringList list = qcontent.split(QChar('\n'));
-		docstring_list dlist;
-		for (QStringList::const_iterator it = list.begin(); it != list.end(); ++it)
-			dlist.push_back(from_utf8(fromqstr(*it)));
-		texrow_->prepend(dlist);
-		qcontent.clear();
-		for (docstring_list::iterator it = dlist.begin(); it != dlist.end(); ++it)
-			qcontent += toqstr(*it) + '\n';
+	if (guiApp->currentView()->develMode()) {
+		// output tex<->row correspondences in the source panel if the "-dbg latex"
+		// option is given.
+		if (texrow_ && lyx::lyxerr.debugging(Debug::LATEX)) {
+			QStringList list = qcontent.split(QChar('\n'));
+			docstring_list dlist;
+			for (QStringList::const_iterator it = list.begin(); it != list.end(); ++it)
+				dlist.push_back(from_utf8(fromqstr(*it)));
+			texrow_->prepend(dlist);
+			qcontent.clear();
+			for (docstring_list::iterator it = dlist.begin(); it != dlist.end(); ++it)
+				qcontent += toqstr(*it) + '\n';
+		}
 	}
-#endif
+
 	// prevent gotoCursor()
 	QSignalBlocker blocker(viewSourceTV);
 	bool const changed = setText(qcontent);

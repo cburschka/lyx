@@ -1057,7 +1057,7 @@ void Cursor::updateTextTargetOffset()
 }
 
 
-void Cursor::info(odocstream & os) const
+void Cursor::info(odocstream & os, bool devel_mode) const
 {
 	for (int i = 1, n = depth(); i < n; ++i) {
 		operator[](i).inset().infoize(os);
@@ -1069,6 +1069,14 @@ void Cursor::info(odocstream & os) const
 		if (inset)
 			prevInset()->infoize2(os);
 	}
+	if (devel_mode) {
+		InsetMath * math = inset().asInsetMath();
+		if (math)
+			os << _(", Inset: ") << math->id();
+		os << _(", Cell: ") << idx();
+		os << _(", Position: ") << pos();
+	}
+
 }
 
 
@@ -2106,23 +2114,16 @@ docstring Cursor::selectionAsString(bool with_label) const
 }
 
 
-docstring Cursor::currentState() const
+docstring Cursor::currentState(bool devel_mode) const
 {
 	if (inMathed()) {
 		odocstringstream os;
-		info(os);
-#ifdef DEVEL_VERSION
-		InsetMath * math = inset().asInsetMath();
-		if (math)
-			os << _(", Inset: ") << math->id();
-		os << _(", Cell: ") << idx();
-		os << _(", Position: ") << pos();
-#endif
+		info(os, devel_mode);
 		return os.str();
 	}
 
 	if (inTexted())
-		return text()->currentState(*this);
+		return text()->currentState(*this, devel_mode);
 
 	return docstring();
 }
