@@ -825,7 +825,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				} while (!contains(tmp, "(job aborted"));
 
 				terr.insertError(0,
-						 from_local8bit("Emergency stop"),
+						 from_ascii("Emergency stop"),
 						 from_local8bit(errstr),
 						 child_name);
 			}
@@ -924,7 +924,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				// !pdfTeX error: pdflatex (file feyn10): Font feyn10 at 600 not found
 				retval |= ERRORS;
 				terr.insertError(0,
-						 from_local8bit("pdfTeX Error"),
+						 from_ascii("pdfTeX Error"),
 						 from_local8bit(token),
 						 child_name);
 			} else if (!ignore_missing_glyphs
