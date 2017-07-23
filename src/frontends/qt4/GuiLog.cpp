@@ -307,6 +307,8 @@ void GuiLog::getContents(ostream & ss) const
 	// FIXME UNICODE
 	// Our caller interprets the file contents as UTF8, but is that
 	// correct?
+	// spitz: No it isn't (generally). The log file encoding depends on the TeX
+	// _output_ encoding (T1 etc.). We should account for that. See #10728.
 	if (in) {
 		ss << in.rdbuf();
 		success = ss.good();
