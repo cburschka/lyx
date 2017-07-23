@@ -2982,7 +2982,7 @@ bool BufferView::needRepaint(Text const * text, Row const & row) const
 }
 
 
-void BufferView::checkCursorScrollOffset(PainterInfo & pi)
+void BufferView::checkCursorScrollOffset()
 {
 	CursorSlice rowSlice = d->cursor_.bottom();
 	TextMetrics const & tm = textMetrics(rowSlice.text());
@@ -2998,34 +2998,6 @@ void BufferView::checkCursorScrollOffset(PainterInfo & pi)
 
 	// Set the row on which the cursor lives.
 	setCurrentRowSlice(rowSlice);
-
-	// If insets referred to by cursor are not all in the cache, the positions
-	// need to be recomputed.
-	if (!d->cursor_.inCoordCache()) {
-		/** FIXME: the code below adds an extraneous computation of
-		 * inset positions, and can therefore be bad for performance
-		 * (think for example about a very large tabular inset.
-		 * Redawing the row where it is means redrawing the whole
-		 * screen).
-		 *
-		 * The bug that this fixes is the following: assume that there
-		 * is a very large math inset. Upon entering the inset, when
-		 * pressing `End', the row is not scrolled and the cursor is
-		 * not visible. The extra row computation makes sure that the
-		 * inset positions are correctly computed and set in the
-		 * cache. This would not happen if we did not have two-stage
-		 * drawing.
-		 *
-		 * A proper fix would be to always have proper inset positions
-		 * at this point.
-		 */
-		// Force the recomputation of inset positions
-		frontend::NullPainter np;
-		PainterInfo(this, np);
-		// No need to care about vertical position.
-		RowPainter rp(pi, buffer().text(), row, -d->horiz_scroll_offset_, 0);
-		rp.paintText();
-	}
 
 	// Current x position of the cursor in pixels
 	int cur_x = getPos(d->cursor_).x_;
@@ -3093,7 +3065,7 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 
 	// Check whether the row where the cursor lives needs to be scrolled.
 	// Update the drawing strategy if needed.
-	checkCursorScrollOffset(pi);
+	checkCursorScrollOffset();
 
 	switch (d->update_strategy_) {
 

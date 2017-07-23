@@ -67,11 +67,6 @@ drawing from metrics.
 Other changes are only clean-ups.
 
 ** When a paragraph ends with a newline, compute correctly the height of the extra row.
-** Cleanup after complete metrics
-   Then the following can be done:
-   + remove hack in InsetMathNest::drawSelection
-   + remove Cursor::inCoordCache?
-
 ** Merging bv::updateMetrics and tm::metrics
 
 While the full metrics computation tries hard to limit the number of

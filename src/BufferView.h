@@ -42,7 +42,6 @@ class FuncStatus;
 class Intl;
 class Inset;
 class Length;
-class PainterInfo;
 class ParIterator;
 class ParagraphMetrics;
 class Point;
@@ -374,7 +373,7 @@ private:
 
 	// Check whether the row where the cursor lives needs to be scrolled.
 	// Update the drawing strategy if needed.
-	void checkCursorScrollOffset(PainterInfo & pi);
+	void checkCursorScrollOffset();
 
 	/// The minimal size of the document that is visible. Used
 	/// when it is allowed to scroll below the document.
