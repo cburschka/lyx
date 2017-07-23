@@ -15,17 +15,13 @@
 #include <config.h>
 
 #include "Buffer.h"
-#include "BufferParams.h"
 #include "BufferView.h"
 #include "CoordCache.h"
 #include "Cursor.h"
 #include "CutAndPaste.h"
 #include "DispatchResult.h"
-#include "Encoding.h"
-#include "Font.h"
 #include "FuncCode.h"
 #include "FuncRequest.h"
-#include "Language.h"
 #include "Layout.h"
 #include "LyXAction.h"
 #include "LyXRC.h"
@@ -118,27 +114,26 @@ DocIterator bruteFind(Cursor const & c, int x, int y)
 } // namespace
 
 
+//
+// CursorData
+//
+
+
 CursorData::CursorData()
-	: DocIterator(), anchor_(),
-	  selection_(false), mark_(false), word_selection_(false),
-	  current_font(inherit_font),
-	  autocorrect_(false), macromode_(false)
+	: DocIterator(), anchor_(), selection_(false), mark_(false),
+	  word_selection_(false), current_font(inherit_font), autocorrect_(false)
 {}
 
 
 CursorData::CursorData(Buffer * buffer)
-	: DocIterator(buffer), anchor_(),
-	  selection_(false), mark_(false), word_selection_(false),
-	  current_font(inherit_font),
-	  autocorrect_(false), macromode_(false)
+	: DocIterator(buffer), anchor_(), selection_(false), mark_(false),
+	  word_selection_(false), current_font(inherit_font), autocorrect_(false)
 {}
 
 
 CursorData::CursorData(DocIterator const & dit)
-	: DocIterator(dit), anchor_(),
-	  selection_(false), mark_(false), word_selection_(false),
-	  current_font(inherit_font),
-	  autocorrect_(false), macromode_(false)
+	: DocIterator(dit), anchor_(), selection_(false), mark_(false),
+	  word_selection_(false), current_font(inherit_font), autocorrect_(false)
 {}
 
 
@@ -172,16 +167,7 @@ LyXErr & operator<<(LyXErr & os, CursorData const & cur)
 }
 
 
-// be careful: this is called from the bv's constructor, too, so
-// bv functions are not yet available!
-Cursor::Cursor(BufferView & bv)
-	: CursorData(&bv.buffer()), bv_(&bv),
-	  x_target_(-1), textTargetOffset_(0),
-	  beforeDispatchPosX_(0), beforeDispatchPosY_(0)
-{}
-
-
-void Cursor::reset()
+void CursorData::reset()
 {
 	clear();
 	push_back(CursorSlice(buffer()->inset()));
@@ -189,19 +175,18 @@ void Cursor::reset()
 	anchor_.clear();
 	new_word_ = doc_iterator_begin(buffer());
 	new_word_.clear();
-	clearTargetX();
 	selection_ = false;
 	mark_ = false;
 }
 
 
-void Cursor::setCursor(DocIterator const & cur)
+void CursorData::setCursor(DocIterator const & cur)
 {
 	DocIterator::operator=(cur);
 }
 
 
-void Cursor::setCursorSelectionTo(DocIterator dit)
+void CursorData::setCursorSelectionTo(DocIterator dit)
 {
 	size_t i = 0;
 	// normalise dit
@@ -226,7 +211,7 @@ void Cursor::setCursorSelectionTo(DocIterator dit)
 }
 
 
-void Cursor::setCursorToAnchor()
+void CursorData::setCursorToAnchor()
 {
 	if (selection()) {
 		DocIterator normal = anchor_;
@@ -236,6 +221,464 @@ void Cursor::setCursorToAnchor()
 			++normal.pos();
 		setCursor(normal);
 	}
+}
+
+
+CursorSlice CursorData::normalAnchor() const
+{
+	if (!selection())
+		return top();
+	// LASSERT: There have been several bugs around this code, that seem
+	// to involve failures to reset the anchor. We can at least not crash
+	// in release mode by resetting it ourselves.
+	if (anchor_.depth() < depth()) {
+		LYXERR0("Cursor is deeper than anchor. PLEASE REPORT.\nCursor is"
+		        << *this);
+		const_cast<DocIterator &>(anchor_) = *this;
+	}
+
+	CursorSlice normal = anchor_[depth() - 1];
+	if (depth() < anchor_.depth() && top() <= normal) {
+		// anchor is behind cursor -> move anchor behind the inset
+		++normal.pos();
+	}
+	return normal;
+}
+
+
+void CursorData::setSelection()
+{
+	selection(true);
+	if (idx() == normalAnchor().idx() &&
+	    pit() == normalAnchor().pit() &&
+	    pos() == normalAnchor().pos())
+		selection(false);
+}
+
+
+void CursorData::setSelection(DocIterator const & where, int n)
+{
+	setCursor(where);
+	selection(true);
+	anchor_ = where;
+	pos() += n;
+}
+
+
+void CursorData::resetAnchor()
+{
+	anchor_ = *this;
+	checkNewWordPosition();
+}
+
+
+CursorSlice CursorData::selBegin() const
+{
+	if (!selection())
+		return top();
+	return normalAnchor() < top() ? normalAnchor() : top();
+}
+
+
+CursorSlice CursorData::selEnd() const
+{
+	if (!selection())
+		return top();
+	return normalAnchor() > top() ? normalAnchor() : top();
+}
+
+
+DocIterator CursorData::selectionBegin() const
+{
+	if (!selection())
+		return *this;
+
+	DocIterator di;
+	// FIXME: This is a work-around for the problem that
+	// CursorSlice doesn't keep track of the boundary.
+	if (normalAnchor() == top())
+		di = anchor_.boundary() > boundary() ? anchor_ : *this;
+	else
+		di = normalAnchor() < top() ? anchor_ : *this;
+	di.resize(depth());
+	return di;
+}
+
+
+DocIterator CursorData::selectionEnd() const
+{
+	if (!selection())
+		return *this;
+
+	DocIterator di;
+	// FIXME: This is a work-around for the problem that
+	// CursorSlice doesn't keep track of the boundary.
+	if (normalAnchor() == top())
+		di = anchor_.boundary() < boundary() ? anchor_ : *this;
+	else
+		di = normalAnchor() > top() ? anchor_ : *this;
+
+	if (di.depth() > depth()) {
+		di.resize(depth());
+		++di.pos();
+	}
+	return di;
+}
+
+
+namespace {
+
+docstring parbreak(CursorData const * cur)
+{
+	odocstringstream os;
+	os << '\n';
+	// only add blank line if we're not in a ParbreakIsNewline situation
+	if (!cur->inset().getLayout().parbreakIsNewline()
+	    && !cur->paragraph().layout().parbreak_is_newline)
+		os << '\n';
+	return os.str();
+}
+
+}
+
+
+docstring CursorData::selectionAsString(bool with_label) const
+{
+	if (!selection())
+		return docstring();
+
+	if (inMathed())
+		return cap::grabSelection(*this);
+
+	int const label = with_label
+		? AS_STR_LABEL | AS_STR_INSETS : AS_STR_INSETS;
+
+	idx_type const startidx = selBegin().idx();
+	idx_type const endidx = selEnd().idx();
+	if (startidx != endidx) {
+		// multicell selection
+		InsetTabular * table = inset().asInsetTabular();
+		LASSERT(table, return docstring());
+		return table->asString(startidx, endidx);
+	}
+
+	ParagraphList const & pars = text()->paragraphs();
+
+	pit_type const startpit = selBegin().pit();
+	pit_type const endpit = selEnd().pit();
+	size_t const startpos = selBegin().pos();
+	size_t const endpos = selEnd().pos();
+
+	if (startpit == endpit)
+		return pars[startpit].asString(startpos, endpos, label);
+
+	// First paragraph in selection
+	docstring result = pars[startpit].
+		asString(startpos, pars[startpit].size(), label)
+		+ parbreak(this);
+
+	// The paragraphs in between (if any)
+	for (pit_type pit = startpit + 1; pit != endpit; ++pit) {
+		Paragraph const & par = pars[pit];
+		result += par.asString(0, par.size(), label)
+			+ parbreak(this);
+	}
+
+	// Last paragraph in selection
+	result += pars[endpit].asString(0, endpos, label);
+
+	return result;
+}
+
+
+void CursorData::info(odocstream & os, bool devel_mode) const
+{
+	for (int i = 1, n = depth(); i < n; ++i) {
+		operator[](i).inset().infoize(os);
+		os << "  ";
+	}
+	if (pos() != 0) {
+		Inset const * inset = prevInset();
+		// prevInset() can return 0 in certain case.
+		if (inset)
+			prevInset()->infoize2(os);
+	}
+	if (devel_mode) {
+		InsetMath * math = inset().asInsetMath();
+		if (math)
+			os << _(", Inset: ") << math->id();
+		os << _(", Cell: ") << idx();
+		os << _(", Position: ") << pos();
+	}
+
+}
+
+docstring CursorData::currentState(bool devel_mode) const
+{
+	if (inMathed()) {
+		odocstringstream os;
+		info(os, devel_mode);
+		return os.str();
+	}
+
+	if (inTexted())
+		return text()->currentState(*this, devel_mode);
+
+	return docstring();
+}
+
+
+void CursorData::markNewWordPosition()
+{
+	if (lyxrc.spellcheck_continuously && inTexted() && new_word_.empty()) {
+		FontSpan nw = locateWord(WHOLE_WORD);
+		if (nw.size() == 1) {
+			LYXERR(Debug::DEBUG, "start new word: "
+				<< " par: " << pit()
+				<< " pos: " << nw.first);
+			new_word_ = *this;
+		}
+	}
+}
+
+
+void CursorData::clearNewWordPosition()
+{
+	if (!new_word_.empty()) {
+		LYXERR(Debug::DEBUG, "clear new word: "
+			<< " par: " << pit()
+			<< " pos: " << pos());
+		new_word_.resize(0);
+	}
+}
+
+
+void CursorData::checkNewWordPosition()
+{
+	if (!lyxrc.spellcheck_continuously || new_word_.empty())
+		return ;
+	if (!inTexted())
+		clearNewWordPosition();
+	else {
+		// forget the position of the current new word if
+		// 1) the paragraph changes or
+		// 2) the count of nested insets changes or
+		// 3) the cursor pos is out of paragraph bound
+		if (pit() != new_word_.pit() ||
+			depth() != new_word_.depth() ||
+			new_word_.pos() > new_word_.lastpos()) {
+			clearNewWordPosition();
+		} else if (new_word_.fixIfBroken())
+			// 4) or the remembered position was "broken"
+			clearNewWordPosition();
+		else {
+			FontSpan nw = locateWord(WHOLE_WORD);
+			if (!nw.empty()) {
+				FontSpan ow = new_word_.locateWord(WHOLE_WORD);
+				if (nw.intersect(ow).empty())
+					clearNewWordPosition();
+				else
+					LYXERR(Debug::DEBUG, "new word: "
+						   << " par: " << pit()
+						   << " pos: " << nw.first << ".." << nw.last);
+			} else {
+				clearNewWordPosition();
+			}
+		}
+	}
+}
+
+
+void CursorData::clearSelection()
+{
+	selection(false);
+	setWordSelection(false);
+	setMark(false);
+	resetAnchor();
+}
+
+
+bool CursorData::fixIfBroken()
+{
+	bool const broken_cursor = DocIterator::fixIfBroken();
+	bool const broken_anchor = anchor_.fixIfBroken();
+
+	if (broken_cursor || broken_anchor) {
+		clearNewWordPosition();
+		clearSelection();
+		return true;
+	}
+	return false;
+}
+
+
+void CursorData::sanitize()
+{
+	DocIterator::sanitize();
+	if (selection())
+		anchor_.sanitize();
+	else
+		resetAnchor();
+}
+
+
+bool CursorData::isInside(Inset const * p) const
+{
+	for (size_t i = 0; i != depth(); ++i)
+		if (&operator[](i).inset() == p)
+			return true;
+	return false;
+}
+
+
+void CursorData::leaveInset(Inset const & inset)
+{
+	for (size_t i = 0; i != depth(); ++i) {
+		if (&operator[](i).inset() == &inset) {
+			resize(i);
+			return;
+		}
+	}
+}
+
+
+bool CursorData::textUndo()
+{
+	if (!buffer()->undo().textUndo(*this))
+		return false;
+	sanitize();
+	return true;
+}
+
+
+bool CursorData::textRedo()
+{
+	if (!buffer()->undo().textRedo(*this))
+		return false;
+	sanitize();
+	return true;
+}
+
+
+void CursorData::finishUndo() const
+{
+	buffer()->undo().finishUndo();
+}
+
+
+void CursorData::beginUndoGroup() const
+{
+	buffer()->undo().beginUndoGroup(*this);
+}
+
+
+void CursorData::endUndoGroup() const
+{
+	buffer()->undo().endUndoGroup(*this);
+}
+
+
+void CursorData::recordUndo(pit_type from, pit_type to) const
+{
+	buffer()->undo().recordUndo(*this, from, to);
+}
+
+
+void CursorData::recordUndo(pit_type from) const
+{
+	buffer()->undo().recordUndo(*this, from, pit());
+}
+
+
+void CursorData::recordUndo(UndoKind kind) const
+{
+	buffer()->undo().recordUndo(*this, kind);
+}
+
+
+void CursorData::recordUndoInset(Inset const * in) const
+{
+	buffer()->undo().recordUndoInset(*this, in);
+}
+
+
+void CursorData::recordUndoFullBuffer() const
+{
+	buffer()->undo().recordUndoFullBuffer(*this);
+}
+
+
+void CursorData::recordUndoBufferParams() const
+{
+	buffer()->undo().recordUndoBufferParams(*this);
+}
+
+
+void CursorData::recordUndoSelection() const
+{
+	if (inMathed()) {
+		if (cap::multipleCellsSelected(*this))
+			recordUndoInset();
+		else
+			recordUndo();
+	} else {
+		buffer()->undo().recordUndo(*this,
+			selBegin().pit(), selEnd().pit());
+	}
+}
+
+
+int CursorData::currentMode()
+{
+	LASSERT(!empty(), return Inset::UNDECIDED_MODE);
+	for (int i = depth() - 1; i >= 0; --i) {
+		int res = operator[](i).inset().currentMode();
+		bool locked_mode = operator[](i).inset().lockedMode();
+		// Also return UNDECIDED_MODE when the mode is locked,
+		// as in this case it is treated the same as TEXT_MODE
+		if (res != Inset::UNDECIDED_MODE || locked_mode)
+			return res;
+	}
+	return Inset::TEXT_MODE;
+}
+
+
+bool CursorData::confirmDeletion(bool const before) const
+{
+	if (!selection()) {
+		if (Inset const * inset = before ? prevInset() : nextInset())
+			return inset->confirmDeletion();
+	} else {
+		DocIterator dit = selectionBegin();
+		CursorSlice const end = selectionEnd().top();
+		for (; dit.top() < end; dit.top().forwardPos())
+			if (Inset const * inset = dit.nextInset())
+				if (inset->confirmDeletion())
+					return true;
+	}
+	return false;
+}
+
+
+
+//
+// Cursor
+//
+
+
+// be careful: this is called from the bv's constructor, too, so
+// bv functions are not yet available!
+Cursor::Cursor(BufferView & bv)
+	: CursorData(&bv.buffer()), bv_(&bv),
+	  x_target_(-1), textTargetOffset_(0),
+	  beforeDispatchPosX_(0), beforeDispatchPosY_(0)
+{}
+
+
+void Cursor::reset()
+{
+	CursorData::reset();
+	clearTargetX();
 }
 
 
@@ -386,6 +829,19 @@ DispatchResult const & Cursor::result() const
 }
 
 
+void Cursor::message(docstring const & msg) const
+{
+	disp_.setMessage(msg);
+}
+
+
+void Cursor::errorMessage(docstring const & msg) const
+{
+	disp_.setMessage(msg);
+	disp_.setError(true);
+}
+
+
 BufferView & Cursor::bv() const
 {
 	LBUFERR(bv_);
@@ -439,21 +895,6 @@ bool Cursor::popForward()
 }
 
 
-int Cursor::currentMode()
-{
-	LASSERT(!empty(), return Inset::UNDECIDED_MODE);
-	for (int i = depth() - 1; i >= 0; --i) {
-		int res = operator[](i).inset().currentMode();
-		bool locked_mode = operator[](i).inset().lockedMode();
-		// Also return UNDECIDED_MODE when the mode is locked,
-		// as in this case it is treated the same as TEXT_MODE
-		if (res != Inset::UNDECIDED_MODE || locked_mode)
-			return res;
-	}
-	return Inset::TEXT_MODE;
-}
-
-
 void Cursor::getPos(int & x, int & y) const
 {
 	Point p = bv().getPos(*this);
@@ -467,74 +908,6 @@ Row const & Cursor::textRow() const
 	CursorSlice const & cs = innerTextSlice();
 	ParagraphMetrics const & pm = bv().parMetrics(cs.text(), cs.pit());
 	return pm.getRow(pos(), boundary());
-}
-
-
-void Cursor::resetAnchor()
-{
-	anchor_ = *this;
-	checkNewWordPosition();
-}
-
-
-void Cursor::markNewWordPosition()
-{
-	if (lyxrc.spellcheck_continuously && inTexted() && new_word_.empty()) {
-		FontSpan nw = locateWord(WHOLE_WORD);
-		if (nw.size() == 1) {
-			LYXERR(Debug::DEBUG, "start new word: "
-				<< " par: " << pit()
-				<< " pos: " << nw.first);
-			new_word_ = *this;
-		}
-	}
-}
-
-
-void Cursor::clearNewWordPosition()
-{
-	if (!new_word_.empty()) {
-		LYXERR(Debug::DEBUG, "clear new word: "
-			<< " par: " << pit()
-			<< " pos: " << pos());
-		new_word_.resize(0);
-	}
-}
-
-
-void Cursor::checkNewWordPosition()
-{
-	if (!lyxrc.spellcheck_continuously || new_word_.empty())
-		return ;
-	if (!inTexted())
-		clearNewWordPosition();
-	else {
-		// forget the position of the current new word if
-		// 1) the paragraph changes or
-		// 2) the count of nested insets changes or
-		// 3) the cursor pos is out of paragraph bound
-		if (pit() != new_word_.pit() ||
-			depth() != new_word_.depth() ||
-			new_word_.pos() > new_word_.lastpos()) {
-			clearNewWordPosition();
-		} else if (new_word_.fixIfBroken())
-			// 4) or the remembered position was "broken"
-			clearNewWordPosition();
-		else {
-			FontSpan nw = locateWord(WHOLE_WORD);
-			if (!nw.empty()) {
-				FontSpan ow = new_word_.locateWord(WHOLE_WORD);
-				if (nw.intersect(ow).empty())
-					clearNewWordPosition();
-				else
-					LYXERR(Debug::DEBUG, "new word: "
-						   << " par: " << pit()
-						   << " pos: " << nw.first << ".." << nw.last);
-			} else {
-				clearNewWordPosition();
-			}
-		}
-	}
 }
 
 
@@ -911,110 +1284,6 @@ bool Cursor::reverseDirectionNeeded() const
 }
 
 
-CursorSlice Cursor::normalAnchor() const
-{
-	if (!selection())
-		return top();
-	// LASSERT: There have been several bugs around this code, that seem
-	// to involve failures to reset the anchor. We can at least not crash
-	// in release mode by resetting it ourselves.
-	if (anchor_.depth() < depth()) {
-		LYXERR0("Cursor is deeper than anchor. PLEASE REPORT.\nCursor is"
-		        << *this);
-		const_cast<DocIterator &>(anchor_) = *this;
-	}
-
-	CursorSlice normal = anchor_[depth() - 1];
-	if (depth() < anchor_.depth() && top() <= normal) {
-		// anchor is behind cursor -> move anchor behind the inset
-		++normal.pos();
-	}
-	return normal;
-}
-
-
-CursorSlice Cursor::selBegin() const
-{
-	if (!selection())
-		return top();
-	return normalAnchor() < top() ? normalAnchor() : top();
-}
-
-
-CursorSlice Cursor::selEnd() const
-{
-	if (!selection())
-		return top();
-	return normalAnchor() > top() ? normalAnchor() : top();
-}
-
-
-DocIterator Cursor::selectionBegin() const
-{
-	if (!selection())
-		return *this;
-
-	DocIterator di;
-	// FIXME: This is a work-around for the problem that
-	// CursorSlice doesn't keep track of the boundary.
-	if (normalAnchor() == top())
-		di = anchor_.boundary() > boundary() ? anchor_ : *this;
-	else
-		di = normalAnchor() < top() ? anchor_ : *this;
-	di.resize(depth());
-	return di;
-}
-
-
-DocIterator Cursor::selectionEnd() const
-{
-	if (!selection())
-		return *this;
-
-	DocIterator di;
-	// FIXME: This is a work-around for the problem that
-	// CursorSlice doesn't keep track of the boundary.
-	if (normalAnchor() == top())
-		di = anchor_.boundary() < boundary() ? anchor_ : *this;
-	else
-		di = normalAnchor() > top() ? anchor_ : *this;
-
-	if (di.depth() > depth()) {
-		di.resize(depth());
-		++di.pos();
-	}
-	return di;
-}
-
-
-void Cursor::setSelection()
-{
-	selection(true);
-	if (idx() == normalAnchor().idx() &&
-	    pit() == normalAnchor().pit() &&
-	    pos() == normalAnchor().pos())
-		selection(false);
-}
-
-
-void Cursor::setSelection(DocIterator const & where, int n)
-{
-	setCursor(where);
-	selection(true);
-	anchor_ = where;
-	pos() += n;
-}
-
-
-void Cursor::clearSelection()
-{
-	selection(false);
-	setWordSelection(false);
-	setMark(false);
-	resetAnchor();
-}
-
-
 void Cursor::setTargetX(int x)
 {
 	x_target_ = x;
@@ -1044,29 +1313,6 @@ void Cursor::updateTextTargetOffset()
 }
 
 
-void Cursor::info(odocstream & os, bool devel_mode) const
-{
-	for (int i = 1, n = depth(); i < n; ++i) {
-		operator[](i).inset().infoize(os);
-		os << "  ";
-	}
-	if (pos() != 0) {
-		Inset const * inset = prevInset();
-		// prevInset() can return 0 in certain case.
-		if (inset)
-			prevInset()->infoize2(os);
-	}
-	if (devel_mode) {
-		InsetMath * math = inset().asInsetMath();
-		if (math)
-			os << _(", Inset: ") << math->id();
-		os << _(", Cell: ") << idx();
-		os << _(", Position: ") << pos();
-	}
-
-}
-
-
 bool Cursor::selHandle(bool sel)
 {
 	//lyxerr << "Cursor::selHandle" << endl;
@@ -1082,6 +1328,31 @@ bool Cursor::selHandle(bool sel)
 	selection(sel);
 	return true;
 }
+
+
+bool Cursor::atFirstOrLastRow(bool up)
+{
+	TextMetrics const & tm = bv_->textMetrics(text());
+	ParagraphMetrics const & pm = tm.parMetrics(pit());
+
+	int row;
+	if (pos() && boundary())
+		row = pm.pos2row(pos() - 1);
+	else
+		row = pm.pos2row(pos());
+
+	if (up) {
+		if (pit() == 0 && row == 0)
+			return true;
+	} else {
+		if (pit() + 1 >= int(text()->paragraphs().size()) &&
+			row + 1 >= int(pm.rows().size()))
+			return true;
+	}
+	return false;
+}
+
+
 } // namespace lyx
 
 
@@ -1105,26 +1376,6 @@ bool Cursor::selHandle(bool sel)
 
 namespace lyx {
 
-bool Cursor::isInside(Inset const * p) const
-{
-	for (size_t i = 0; i != depth(); ++i)
-		if (&operator[](i).inset() == p)
-			return true;
-	return false;
-}
-
-
-void Cursor::leaveInset(Inset const & inset)
-{
-	for (size_t i = 0; i != depth(); ++i) {
-		if (&operator[](i).inset() == &inset) {
-			resize(i);
-			return;
-		}
-	}
-}
-
-
 bool Cursor::openable(MathAtom const & t) const
 {
 	if (!t->isActive())
@@ -1146,27 +1397,7 @@ bool Cursor::openable(MathAtom const & t) const
 }
 
 
-void Cursor::setScreenPos(int x, int /*y*/)
-{
-	setTargetX(x);
-	//bruteFind(*this, x, y, 0, bv().workWidth(), 0, bv().workHeight());
-}
-
-
-
 void Cursor::plainErase()
-{
-	cell().erase(pos());
-}
-
-
-void Cursor::markInsert()
-{
-	insert(char_type(0));
-}
-
-
-void Cursor::markErase()
 {
 	cell().erase(pos());
 }
@@ -1179,13 +1410,6 @@ void Cursor::plainInsert(MathAtom const & t)
 	inset().setBuffer(bv_->buffer());
 	inset().initView();
 	checkBufferStructure();
-}
-
-
-void Cursor::insert(docstring const & str)
-{
-	for (char_type c : str)
-		insert(c);
 }
 
 
@@ -1202,12 +1426,10 @@ void Cursor::insert(char_type c)
 }
 
 
-void Cursor::insert(MathAtom const & t)
+void Cursor::insert(docstring const & str)
 {
-	//lyxerr << "Cursor::insert MathAtom '" << t << "'" << endl;
-	macroModeClose();
-	cap::selClearOrDel(*this);
-	plainInsert(t);
+	for (char_type c : str)
+		insert(c);
 }
 
 
@@ -1226,8 +1448,32 @@ void Cursor::insert(Inset * inset0)
 }
 
 
+void Cursor::insert(MathAtom const & t)
+{
+	LATTEST(inMathed());
+	//lyxerr << "Cursor::insert MathAtom '" << t << "'" << endl;
+	macroModeClose();
+	cap::selClearOrDel(*this);
+	plainInsert(t);
+}
+
+
+void Cursor::insert(MathData const & ar)
+{
+	LATTEST(inMathed());
+	macroModeClose();
+	if (selection())
+		cap::eraseSelection(*this);
+	cell().insert(pos(), ar);
+	pos() += ar.size();
+	// FIXME audit setBuffer calls
+	inset().setBuffer(bv_->buffer());
+}
+
+
 int Cursor::niceInsert(docstring const & t, Parse::flags f, bool enter)
 {
+	LATTEST(inMathed());
 	MathData ar(buffer());
 	asArray(t, ar, f);
 	if (ar.size() == 1 && (enter || selection()))
@@ -1240,6 +1486,7 @@ int Cursor::niceInsert(docstring const & t, Parse::flags f, bool enter)
 
 void Cursor::niceInsert(MathAtom const & t)
 {
+	LATTEST(inMathed());
 	macroModeClose();
 	docstring const safe = cap::grabAndEraseSelection(*this);
 	plainInsert(t);
@@ -1263,18 +1510,6 @@ void Cursor::niceInsert(MathAtom const & t)
 			posBackward();
 		}
 	}
-}
-
-
-void Cursor::insert(MathData const & ar)
-{
-	macroModeClose();
-	if (selection())
-		cap::eraseSelection(*this);
-	cell().insert(pos(), ar);
-	pos() += ar.size();
-	// FIXME audit setBuffer calls
-	inset().setBuffer(bv_->buffer());
 }
 
 
@@ -1401,6 +1636,43 @@ bool Cursor::down()
 }
 
 
+void Cursor::handleNest(MathAtom const & a, int c)
+{
+	//lyxerr << "Cursor::handleNest: " << c << endl;
+	MathAtom t = a;
+	asArray(cap::grabAndEraseSelection(*this), t.nucleus()->cell(c));
+	insert(t);
+	posBackward();
+	pushBackward(*nextInset());
+}
+
+
+int Cursor::targetX() const
+{
+	if (x_target() != -1)
+		return x_target();
+	int x = 0;
+	int y = 0;
+	getPos(x, y);
+	return x;
+}
+
+
+int Cursor::textTargetOffset() const
+{
+	return textTargetOffset_;
+}
+
+
+void Cursor::setTargetX()
+{
+	int x;
+	int y;
+	getPos(x, y);
+	setTargetX(x);
+}
+
+
 bool Cursor::macroModeClose()
 {
 	if (!inMacroMode())
@@ -1486,49 +1758,6 @@ bool Cursor::macroModeClose()
 }
 
 
-docstring Cursor::macroName()
-{
-	return inMacroMode() ? activeMacro()->name() : docstring();
-}
-
-
-void Cursor::handleNest(MathAtom const & a, int c)
-{
-	//lyxerr << "Cursor::handleNest: " << c << endl;
-	MathAtom t = a;
-	asArray(cap::grabAndEraseSelection(*this), t.nucleus()->cell(c));
-	insert(t);
-	posBackward();
-	pushBackward(*nextInset());
-}
-
-
-int Cursor::targetX() const
-{
-	if (x_target() != -1)
-		return x_target();
-	int x = 0;
-	int y = 0;
-	getPos(x, y);
-	return x;
-}
-
-
-int Cursor::textTargetOffset() const
-{
-	return textTargetOffset_;
-}
-
-
-void Cursor::setTargetX()
-{
-	int x;
-	int y;
-	getPos(x, y);
-	setTargetX(x);
-}
-
-
 bool Cursor::inMacroMode() const
 {
 	if (!inMathed())
@@ -1552,6 +1781,12 @@ InsetMathUnknown const * Cursor::activeMacro() const
 }
 
 
+docstring Cursor::macroName()
+{
+	return inMacroMode() ? activeMacro()->name() : docstring();
+}
+
+
 void Cursor::pullArg()
 {
 	// FIXME: Look here
@@ -1563,18 +1798,6 @@ void Cursor::pullArg()
 	} else {
 		//formula()->mutateToText();
 	}
-}
-
-
-void Cursor::touch()
-{
-	// FIXME: look here
-#if 0
-	DocIterator::const_iterator it = begin();
-	DocIterator::const_iterator et = end();
-	for ( ; it != et; ++it)
-		it->cell().touch();
-#endif
 }
 
 
@@ -1717,18 +1940,6 @@ bool Cursor::upDownInMath(bool up)
 }
 
 
-InsetMath & Cursor::nextMath()
-{
-	return *nextAtom().nucleus();
-}
-
-
-InsetMath & Cursor::prevMath()
-{
-	return *prevAtom().nucleus();
-}
-
-
 bool Cursor::mathForward(bool word)
 {
 	LASSERT(inMathed(), return false);
@@ -1802,29 +2013,6 @@ bool Cursor::mathBackward(bool word)
 	int s = depth() - 2;
 	if (s >= 0 && operator[](s).inset().asInsetMath())
 		return popBackward();
-	return false;
-}
-
-
-bool Cursor::atFirstOrLastRow(bool up)
-{
-	TextMetrics const & tm = bv_->textMetrics(text());
-	ParagraphMetrics const & pm = tm.parMetrics(pit());
-
-	int row;
-	if (pos() && boundary())
-		row = pm.pos2row(pos() - 1);
-	else
-		row = pm.pos2row(pos());
-
-	if (up) {
-		if (pit() == 0 && row == 0)
-			return true;
-	} else {
-		if (pit() + 1 >= int(text()->paragraphs().size()) &&
-				row + 1 >= int(pm.rows().size()))
-			return true;
-	}
 	return false;
 }
 
@@ -2026,121 +2214,6 @@ void Cursor::handleFont(string const & font)
 }
 
 
-void Cursor::message(docstring const & msg) const
-{
-	disp_.setMessage(msg);
-}
-
-
-void Cursor::errorMessage(docstring const & msg) const
-{
-	disp_.setMessage(msg);
-	disp_.setError(true);
-}
-
-
-namespace {
-
-docstring parbreak(Cursor const * cur)
-{
-	odocstringstream os;
-	os << '\n';
-	// only add blank line if we're not in a ParbreakIsNewline situation
-	if (!cur->inset().getLayout().parbreakIsNewline()
-	    && !cur->paragraph().layout().parbreak_is_newline)
-		os << '\n';
-	return os.str();
-}
-
-} // namespace
-
-
-docstring Cursor::selectionAsString(bool with_label) const
-{
-	if (!selection())
-		return docstring();
-
-	if (inMathed())
-		return cap::grabSelection(*this);
-
-	int const label = with_label
-		? AS_STR_LABEL | AS_STR_INSETS : AS_STR_INSETS;
-
-	idx_type const startidx = selBegin().idx();
-	idx_type const endidx = selEnd().idx();
-	if (startidx != endidx) {
-		// multicell selection
-		InsetTabular * table = inset().asInsetTabular();
-		LASSERT(table, return docstring());
-		return table->asString(startidx, endidx);
-	}
-
-	ParagraphList const & pars = text()->paragraphs();
-
-	pit_type const startpit = selBegin().pit();
-	pit_type const endpit = selEnd().pit();
-	size_t const startpos = selBegin().pos();
-	size_t const endpos = selEnd().pos();
-
-	if (startpit == endpit)
-		return pars[startpit].asString(startpos, endpos, label);
-
-	// First paragraph in selection
-	docstring result = pars[startpit].
-		asString(startpos, pars[startpit].size(), label)
-		+ parbreak(this);
-
-	// The paragraphs in between (if any)
-	for (pit_type pit = startpit + 1; pit != endpit; ++pit) {
-		Paragraph const & par = pars[pit];
-		result += par.asString(0, par.size(), label)
-			+ parbreak(this);
-	}
-
-	// Last paragraph in selection
-	result += pars[endpit].asString(0, endpos, label);
-
-	return result;
-}
-
-
-docstring Cursor::currentState(bool devel_mode) const
-{
-	if (inMathed()) {
-		odocstringstream os;
-		info(os, devel_mode);
-		return os.str();
-	}
-
-	if (inTexted())
-		return text()->currentState(*this, devel_mode);
-
-	return docstring();
-}
-
-
-docstring Cursor::getPossibleLabel() const
-{
-	return inMathed() ? from_ascii("eq:") : text()->getPossibleLabel(*this);
-}
-
-
-Encoding const * Cursor::getEncoding() const
-{
-	if (empty())
-		return 0;
-	BufferParams const & bp = bv().buffer().params();
-	if (bp.useNonTeXFonts)
-		return encodings.fromLyXName("utf8-plain");
-
-	CursorSlice const & sl = innerTextSlice();
-	Text const & text = *sl.text();
-	Font font = text.getPar(sl.pit()).getFont(bp, sl.pos(),
-	                                          text.outerFont(sl.pit()));
-	return font.language()->encoding();
-}
-
-
 void Cursor::undispatched() const
 {
 	disp_.dispatched(false);
@@ -2218,29 +2291,11 @@ Font Cursor::getFont() const
 }
 
 
-bool Cursor::fixIfBroken()
-{
-	bool const broken_cursor = DocIterator::fixIfBroken();
-	bool const broken_anchor = anchor_.fixIfBroken();
-
-	if (broken_cursor || broken_anchor) {
-		clearNewWordPosition();
-		clearSelection();
-		return true;
-	}
-	return false;
-}
-
-
 void Cursor::sanitize()
 {
-	setBuffer(&bv_->buffer());
-	DocIterator::sanitize();
+	setBuffer(buffer());
+	CursorData::sanitize();
 	new_word_.sanitize();
-	if (selection())
-		anchor_.sanitize();
-	else
-		resetAnchor();
 }
 
 
@@ -2327,92 +2382,6 @@ void Cursor::setCurrentFont()
 }
 
 
-bool Cursor::textUndo()
-{
-	if (!buffer()->undo().textUndo(*this))
-		return false;
-	sanitize();
-	return true;
-}
-
-
-bool Cursor::textRedo()
-{
-	if (!buffer()->undo().textRedo(*this))
-		return false;
-	sanitize();
-	return true;
-}
-
-
-void Cursor::finishUndo() const
-{
-	buffer()->undo().finishUndo();
-}
-
-
-void Cursor::beginUndoGroup() const
-{
-	buffer()->undo().beginUndoGroup(*this);
-}
-
-
-void Cursor::endUndoGroup() const
-{
-	buffer()->undo().endUndoGroup(*this);
-}
-
-
-void Cursor::recordUndo(pit_type from, pit_type to) const
-{
-	buffer()->undo().recordUndo(*this, from, to);
-}
-
-
-void Cursor::recordUndo(pit_type from) const
-{
-	buffer()->undo().recordUndo(*this, from, pit());
-}
-
-
-void Cursor::recordUndo(UndoKind kind) const
-{
-	buffer()->undo().recordUndo(*this, kind);
-}
-
-
-void Cursor::recordUndoInset(Inset const * in) const
-{
-	buffer()->undo().recordUndoInset(*this, in);
-}
-
-
-void Cursor::recordUndoFullBuffer() const
-{
-	buffer()->undo().recordUndoFullBuffer(*this);
-}
-
-
-void Cursor::recordUndoBufferParams() const
-{
-	buffer()->undo().recordUndoBufferParams(*this);
-}
-
-
-void Cursor::recordUndoSelection() const
-{
-	if (inMathed()) {
-		if (cap::multipleCellsSelected(*this))
-			recordUndoInset();
-		else
-			recordUndo();
-	} else {
-		buffer()->undo().recordUndo(*this,
-			selBegin().pit(), selEnd().pit());
-	}
-}
-
-
 void Cursor::checkBufferStructure()
 {
 	Buffer const * master = buffer()->masterBuffer();
@@ -2427,23 +2396,6 @@ void Cursor::checkBufferStructure()
 	// tracked_changes_present_.
 	if (inTexted() && paragraph().isChangeUpdateRequired())
 		disp_.forceChangesUpdate();
-}
-
-
-bool Cursor::confirmDeletion(bool const before) const
-{
-	if (!selection()) {
-		if (Inset const * inset = before ? prevInset() : nextInset())
-			return inset->confirmDeletion();
-	} else {
-		DocIterator dit = selectionBegin();
-		CursorSlice const end = selectionEnd().top();
-		for (; dit.top() < end; dit.top().forwardPos())
-			if (Inset const * inset = dit.nextInset())
-				if (inset->confirmDeletion())
-					return true;
-	}
-	return false;
 }
 
 

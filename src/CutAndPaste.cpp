@@ -690,7 +690,7 @@ docstring grabAndEraseSelection(Cursor & cur)
 }
 
 
-bool reduceSelectionToOneCell(Cursor & cur)
+bool reduceSelectionToOneCell(CursorData & cur)
 {
 	if (!cur.selection() || !cur.inMathed())
 		return false;
@@ -712,7 +712,7 @@ bool reduceSelectionToOneCell(Cursor & cur)
 }
 
 
-bool multipleCellsSelected(Cursor const & cur)
+bool multipleCellsSelected(CursorData const & cur)
 {
 	if (!cur.selection() || !cur.inMathed())
 		return false;
@@ -969,7 +969,7 @@ void copyInset(Cursor const & cur, Inset * inset, docstring const & plaintext)
 
 namespace {
 
-void copySelectionToStack(Cursor const & cur, CutStack & cutstack)
+void copySelectionToStack(CursorData const & cur, CutStack & cutstack)
 {
 	// this doesn't make sense, if there is no selection
 	if (!cur.selection())
@@ -1369,7 +1369,7 @@ void selClearOrDel(Cursor & cur)
 }
 
 
-docstring grabSelection(Cursor const & cur)
+docstring grabSelection(CursorData const & cur)
 {
 	if (!cur.selection())
 		return docstring();

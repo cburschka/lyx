@@ -127,7 +127,7 @@ void switchBetweenClasses(DocumentClassConstPtr c1,
 
 /// Get the current selection as a string. Does not change the selection.
 /// Does only work if the whole selection is in mathed.
-docstring grabSelection(Cursor const & cur);
+docstring grabSelection(CursorData const & cur);
 /// Erase the current selection.
 /// Does not handle undo. Does only work if the whole selection is in mathed.
 /// Calls saveSelection.
@@ -136,9 +136,9 @@ void eraseSelection(Cursor & cur);
 /// cells, the cursor is moved the end of the current cell and the anchor to the
 /// start. If the selection is inside only one cell, nothing is done. Return
 /// true if the selection now does not span multiple cells anymore.
-bool reduceSelectionToOneCell(Cursor & cur);
+bool reduceSelectionToOneCell(CursorData & cur);
 /// Returns true if multiple cells are selected in mathed.
-bool multipleCellsSelected(Cursor const & cur);
+bool multipleCellsSelected(CursorData const & cur);
 /// Erase the selection and return it as a string.
 /// Does not handle undo. Does only work if the whole selection is in mathed.
 docstring grabAndEraseSelection(Cursor & cur);

@@ -284,8 +284,6 @@ public:
 	///
 	virtual void mutateToText();
 	///
-	virtual void revealCodes(Cursor & cur) const;
-	///
 	bool editable() const { return true; }
 	///
 	void edit(Cursor & cur, bool front,

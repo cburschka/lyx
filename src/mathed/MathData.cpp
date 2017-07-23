@@ -212,11 +212,6 @@ bool MathData::contains(MathData const & ar) const
 }
 
 
-void MathData::touch() const
-{
-}
-
-
 bool MathData::addToMathRow(MathRow & mrow, MetricsInfo & mi) const
 {
 	bool has_contents = false;

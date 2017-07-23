@@ -24,6 +24,7 @@ class BufferParams;
 class BufferView;
 class CompletionList;
 class Cursor;
+class CursorData;
 class CursorSlice;
 class DocIterator;
 class ErrorList;
@@ -158,7 +159,7 @@ public:
 	Paragraph & getPar(pit_type pit) { return pars_[pit]; }
 	// Returns the current font and depth as a message.
 	// When \param devel_mode is true, add more precise information
-	docstring currentState(Cursor const & cur, bool devel_mode) const;
+	docstring currentState(CursorData const & cur, bool devel_mode) const;
 
 	/** Find the word under \c from in the relative location
 	 *  defined by \c word_location.
@@ -280,7 +281,7 @@ public:
 	double spacing(Paragraph const & par) const;
 	/// make a suggestion for a label
 	/// FIXME: replace Cursor with DocIterator.
-	docstring getPossibleLabel(Cursor const & cur) const;
+	docstring getPossibleLabel(DocIterator const & cur) const;
 	/// is this paragraph right-to-left?
 	bool isRTL(Paragraph const & par) const;
 

@@ -137,8 +137,6 @@ public:
 	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
 	/// redraw cell using cache metrics information
 	void drawT(TextPainter & pi, int x, int y) const;
-	/// mark cell for re-drawing
-	void touch() const;
 	/// approximate the math class of the data
 	MathClass mathClass() const;
 

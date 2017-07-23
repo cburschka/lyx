@@ -5011,7 +5011,7 @@ void Buffer::updateBuffer(ParIterator & parit, UpdateType utype) const
 			 * non-const. This would however be costly in
 			 * terms of code duplication.
 			 */
-			const_cast<Buffer *>(this)->undo().recordUndo(CursorData(parit));
+			CursorData(parit).recordUndo();
 			parit->params().depth(maxdepth);
 		}
 		maxdepth = parit->getMaxDepthAfter();

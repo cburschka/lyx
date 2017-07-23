@@ -896,7 +896,7 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		int y = 0;
 		istringstream is(to_utf8(cmd.argument()));
 		is >> x >> y;
-		cur.setScreenPos(x, y);
+		cur.setTargetX(x);
 		break;
 	}
 

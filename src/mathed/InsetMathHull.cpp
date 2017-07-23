@@ -2243,42 +2243,6 @@ void InsetMathHull::edit(Cursor & cur, bool front, EntryDirection entry_from)
 }
 
 
-void InsetMathHull::revealCodes(Cursor & cur) const
-{
-	if (!cur.inMathed())
-		return;
-	odocstringstream os;
-	cur.info(os, false);
-	cur.message(os.str());
-/*
-	// write something to the minibuffer
-	// translate to latex
-	cur.markInsert(bv);
-	ostringstream os;
-	write(os);
-	string str = os.str();
-	cur.markErase(bv);
-	string::size_type pos = 0;
-	string res;
-	for (string::iterator it = str.begin(); it != str.end(); ++it) {
-		if (*it == '\n')
-			res += ' ';
-		else if (*it == '\0') {
-			res += "  -X-  ";
-			pos = it - str.begin();
-		}
-		else
-			res += *it;
-	}
-	if (pos > 30)
-		res = res.substr(pos - 30);
-	if (res.size() > 60)
-		res = res.substr(0, 60);
-	cur.message(res);
-*/
-}
-
-
 /////////////////////////////////////////////////////////////////////
 
 

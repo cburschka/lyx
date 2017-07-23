@@ -20,12 +20,13 @@
 namespace lyx {
 
 class DocIterator;
+class Encoding;
+class FontSpan;
+class InsetIterator;
 class LyXErr;
 class MathAtom;
 class Paragraph;
 class Text;
-class InsetIterator;
-class FontSpan;
 
 DocIterator doc_iterator_begin(Buffer const * buf, Inset const * inset = 0);
 DocIterator doc_iterator_end(Buffer const * buf, Inset const * inset = 0);
@@ -149,6 +150,10 @@ public:
 	//
 	/// return the mathed cell this cursor is in
 	MathData & cell() const;
+	///
+	InsetMath & nextMath();
+	///
+	InsetMath & prevMath();
 	/// the mathatom left of the cursor
 	MathAtom & prevAtom() const;
 	/// the mathatom right of the cursor
@@ -257,6 +262,11 @@ public:
 	/// push one CursorSlice on top and set its index and position
 	void append(idx_type idx, pos_type pos);
 
+	///
+	docstring getPossibleLabel() const;
+
+	///
+	Encoding const * getEncoding() const;
 private:
 	friend class InsetIterator;
 	friend DocIterator doc_iterator_begin(Buffer const * buf, Inset const * inset);
