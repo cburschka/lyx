@@ -1711,13 +1711,19 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		}
 
 		else if (t.cs() == "newtheorem") {
+			bool star = false;
+			if (p.next_token().character() == '*') {
+				p.get_token();
+				star = true;
+			}
 			string const name = p.getArg('{', '}');
 			string const opt1 = p.getFullOpt();
 			string const opt2 = p.getFullOpt();
 			string const body = p.verbatim_item();
 			string const opt3 = p.getFullOpt();
+			string const cmd = star ? "\\newtheorem*" : "\\newtheorem";
 
-			string const complete = "\\newtheorem{" + name + '}' +
+			string const complete = cmd + "{" + name + '}' +
 				          opt1 + opt2 + '{' + body + '}' + opt3;
 
 			add_known_theorem(name, opt1, !opt2.empty(), from_utf8(complete));
