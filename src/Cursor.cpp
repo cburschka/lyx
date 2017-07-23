@@ -454,19 +454,6 @@ int Cursor::currentMode()
 }
 
 
-bool Cursor::inCoordCache() const
-{
-	// the root inset is not in cache, but we do not need it.
-	if (depth() == 1)
-		return true;
-	CoordCache::Insets const & icache = bv_->coordCache().getInsets();
-	for (size_t i = 1 ; i < depth() ; ++i)
-		if (!icache.has(&(*this)[i].inset()))
-			return false;
-	return true;
-}
-
-
 void Cursor::getPos(int & x, int & y) const
 {
 	Point p = bv().getPos(*this);

@@ -216,8 +216,6 @@ public:
 	/// are we entering a macro name?
 	bool & macromode() { return macromode_; }
 
-	/// returns true when all insets in cursor stack are in cache
-	bool inCoordCache() const;
 	/// returns x,y position
 	void getPos(int & x, int & y) const;
 	/// return logical positions between which the cursor is situated
