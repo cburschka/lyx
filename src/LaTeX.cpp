@@ -911,11 +911,18 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				// Warning about missing glyph in selected font
 				// may be dataloss (bug 9610)
 				// but can be ignored for 'nullfont' (bug 10394).
-				retval |= LATEX_ERROR;
-				terr.insertError(0,
-						 from_local8bit("Missing glyphs!"),
-						 from_local8bit(token),
-						 child_name);
+				// as well as for ZERO WIDTH NON-JOINER (0x200C) which is
+				// missing in many fonts and output for ligature break (bug 10727).
+				// Since this error only occurs with utf8 output, we can safely assume
+				// that the log file is utf8-encoded
+				docstring const utoken = from_utf8(token);
+				if (!contains(utoken, 0x200C)) {
+					retval |= LATEX_ERROR;
+					terr.insertError(0,
+							 from_ascii("Missing glyphs!"),
+							 utoken,
+							 child_name);
+				}
 			}
 		}
 	}

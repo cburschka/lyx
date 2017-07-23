@@ -49,6 +49,9 @@ What's new
 
 - Catch "! Incomplete \if[x]" LaTeX error (bug 10666).
 
+- Ignore LaTeX error on missing ZWNJ (ligature break) characters
+  (bug 10727).
+
 - Fix PDF output of clipped graphics with recent graphics package (bug 7910).
 
 - Catch xdvipdfmx driver error that breaks XeTeX compilation (bug 10076).
