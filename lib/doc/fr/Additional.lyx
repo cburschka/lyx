@@ -55,7 +55,7 @@ shapepar
 \use_microtype false
 \use_dash_ligatures false
 \graphics default
-\default_output_format pdf2
+\default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -1913,7 +1913,15 @@ s'il n'y a pas de fautes de frappe, vérifiez que vous avez utilisé les command
 
 \begin_layout Enumerate
 si vous avez un paquet de boîtes d'erreur entassées tout en haut du document
- ― et surtout si vous voyez 
+ 
+\change_deleted 34634807 1500883222
+―
+\change_unchanged
+ 
+\change_inserted 34634807 1500883172
+(
+\change_unchanged
+et surtout si vous voyez 
 \begin_inset Quotes cld
 \end_inset
 
@@ -1927,7 +1935,15 @@ begin{document}
 \begin_inset Quotes crd
 \end_inset
 
-, ça veut dire qu'il y a des erreurs dans le préambule.
+
+\change_inserted 34634807 1500883216
+),
+\change_deleted 34634807 1500883206
+, 
+\change_inserted 34634807 1500883613
+ 
+\change_unchanged
+ça veut dire qu'il y a des erreurs dans le préambule.
  Commencez par corriger votre préambule;
 \end_layout
 
@@ -10447,8 +10463,13 @@ théorème
 .
  Cependant, l'AMS recommande les environnements disponibles dans \SpecialChar LyX
 .
- Voici la liste des environnements ― ainsi que les environnements standard,
- comme 
+ Voici la liste des environnements 
+\change_deleted 34634807 1500883240
+― 
+\change_inserted 34634807 1500883240
+(
+\change_unchanged
+ainsi que les environnements standard, comme 
 \family sans
 
 \begin_inset Flex Noun
@@ -10525,8 +10546,14 @@ date
 \end_inset
 
 
+\change_deleted 34634807 1500883248
+
 \family default
- ― proposés par 
+ ― 
+\change_inserted 34634807 1500883249
+) 
+\change_unchanged
+proposés par 
 \begin_inset Flex Code
 status collapsed
 
@@ -21810,12 +21837,26 @@ Avant de vous lancer dans l'utilisation du contrôle de version sous \SpecialCha
  devrez connaître l'utilisation de RCS/CVS/SVN.
  Le support assuré dans \SpecialChar LyX
  a été réalisé pour des versions récentes des paquetages
- GNU RCS ou CVS/SVN ― il n'est pas garanti que cela fonctionne avec des
- versions plus anciennes.
+ GNU RCS ou CVS/SVN 
+\change_deleted 34634807 1500883260
+― 
+\change_inserted 34634807 1500883260
+(
+\change_unchanged
+il n'est pas garanti que cela fonctionne avec des versions plus anciennes
+\change_inserted 34634807 1500883273
+)
+\change_unchanged
+.
  En général, les messages de contrôle ne sont pas affichés après chaque
- opération ― vous pouvez les vérifier dans la console de lancement de \SpecialChar LyX
- si
- vous doutez.
+ opération 
+\change_inserted 34634807 1500883286
+:
+\change_deleted 34634807 1500883277
+― 
+\change_unchanged
+vous pouvez les vérifier dans la console de lancement de \SpecialChar LyX
+ si vous doutez.
 \end_layout
 
 \begin_layout Standard
