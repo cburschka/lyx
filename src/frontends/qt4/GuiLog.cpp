@@ -45,9 +45,9 @@ namespace frontend {
 // FIXME: These regexes are incomplete. It would be good if we could collect those used in LaTeX::scanLogFile
 //        and LaTeX::scanBlgFile and re-use them here!(spitz, 2013-05-27)
 // Information
-QRegExp exprInfo("^(Document Class:|LaTeX Font Info:|File:|Package:|Language:|Underfull|Overfull|.*> INFO - |\\(|\\\\).*$");
+QRegExp exprInfo("^(Document Class:|LaTeX Font Info:|File:|Package:|Language:|.*> INFO - |\\(|\\\\).*$");
 // Warnings
-QRegExp exprWarning("^(LaTeX Warning|LaTeX Font Warning|Package [\\w\\.]+ Warning|Class \\w+ Warning|Warning--|.*> WARN - ).*$");
+QRegExp exprWarning("^(LaTeX Warning|LaTeX Font Warning|Package [\\w\\.]+ Warning|Class \\w+ Warning|Warning--|Underfull|Overfull|.*> WARN - ).*$");
 // Errors
 QRegExp exprError("^(!|.*---line [0-9]+ of file|.*> FATAL - |.*> ERROR - |Missing character: There is no ).*$");
 
