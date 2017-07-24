@@ -111,7 +111,8 @@ struct GuiWorkArea::Private
 	void hideCursor();
 	/// show the cursor if it is not visible
 	void showCursor();
-	///
+	/// Set the range and value of the scrollbar and connect to its valueChanged
+	/// signal.
 	void updateScrollbar();
 	/// Change the cursor when the mouse hovers over a clickable inset
 	void updateCursorShape();

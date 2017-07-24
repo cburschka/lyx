@@ -325,10 +325,6 @@ void GuiWorkArea::init()
 			generateSyntheticMouseEvent();
 		});
 
-	// Initialize the vertical Scroll Bar
-	QObject::connect(verticalScrollBar(), SIGNAL(valueChanged(int)),
-		this, SLOT(scrollTo(int)));
-
 	LYXERR(Debug::GUI, "viewport width: " << viewport()->width()
 		<< "  viewport height: " << viewport()->height());
 
@@ -675,14 +671,18 @@ void GuiWorkArea::toggleCursor()
 
 void GuiWorkArea::Private::updateScrollbar()
 {
+	// Prevent setRange() and setSliderPosition from causing recursive calls via
+	// the signal valueChanged. (#10311)
+	QObject::disconnect(p->verticalScrollBar(), SIGNAL(valueChanged(int)),
+	                    p, SLOT(scrollTo(int)));
 	ScrollbarParameters const & scroll_ = buffer_view_->scrollbarParameters();
-	// Block signals to prevent setRange() and setSliderPosition from causing
-	// recursive calls via the signal valueChanged. (#10311)
-	QSignalBlocker blocker(p->verticalScrollBar());
 	p->verticalScrollBar()->setRange(scroll_.min, scroll_.max);
 	p->verticalScrollBar()->setPageStep(scroll_.page_step);
 	p->verticalScrollBar()->setSingleStep(scroll_.single_step);
 	p->verticalScrollBar()->setSliderPosition(0);
+	// Connect to the vertical scroll bar
+	QObject::connect(p->verticalScrollBar(), SIGNAL(valueChanged(int)),
+	                 p, SLOT(scrollTo(int)));
 }
 
 
