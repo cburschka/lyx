@@ -7487,7 +7487,11 @@ lyxpipe
 \begin_inset Newline newline
 \end_inset
 
-echo LYXCMD:revdvi:server-goto-file-row:%1 %2> 
+echo LYXCMD:revdvi:server-goto-file-row:
+\change_inserted -712698321 1500887411
+~
+\change_unchanged
+%1 %2> 
 \backslash
 
 \backslash
@@ -7558,7 +7562,23 @@ In order to use SumatraPDF for inverse search, enter
 status collapsed
 
 \begin_layout Plain Layout
-SumatraPDF -inverse-search "lyxeditor.bat %f %l"
+SumatraPDF -inverse-search 
+\change_inserted -712698321 1500887421
+"
+\change_unchanged
+"lyxeditor.bat 
+\change_inserted -712698321 1500887423
+"
+\change_unchanged
+%f
+\change_inserted -712698321 1500887424
+"
+\change_unchanged
+ %l
+\change_inserted -712698321 1500887426
+"
+\change_unchanged
+"
 \end_layout
 
 \end_inset
