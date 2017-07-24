@@ -7487,11 +7487,11 @@ lyxpipe
 \begin_inset Newline newline
 \end_inset
 
-echo LYXCMD:revdvi:server-goto-file-row:
-\change_inserted -712698321 1500887411
+echo LYXCMD:revdvi:server-goto-file-row:%
+\change_inserted -712698321 1500896526
 ~
 \change_unchanged
-%1 %2> 
+1 %2> 
 \backslash
 
 \backslash
