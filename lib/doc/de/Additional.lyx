@@ -114,12 +114,11 @@ shapepar
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author -712698321 "Jürgen Spitzmüller"
 \author 34634807 "Jean-Pierre"
 \end_header
 
@@ -5988,10 +5987,9 @@ Nomenklatur und Glossar
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There is at present no support for glossaries.
- Adding it would be fairly trivial, and welcome.
+Zurzeit werden Glossare in XHTML nicht unterstützt.
+ Die Integration dieser Funktion wäre relativ einfach, diesbezügliche Initiative
+n sind willkommen.
 \end_layout
 
 \begin_layout Chapter
@@ -6004,64 +6002,75 @@ Einführung
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The `\SpecialChar LyX
- server' allows other programs to talk to \SpecialChar LyX
-, invoke \SpecialChar LyX
- commands, and retrieve
- information about the \SpecialChar LyX
- internal state.
- This is only intended for advanced users, but they should find it useful.
- It is by writing to the \SpecialChar LyX
- server, for example, that bibliography managers,
- such as JabRef, are able to 
-\begin_inset Quotes eld
+Der \SpecialChar LyX
+-Server ermöglicht es anderen Programmen mit \SpecialChar LyX
+ zu kommunizieren, d.
+\begin_inset space \thinspace{}
 \end_inset
 
-push
-\begin_inset Quotes erd
-\end_inset
-
- citations to \SpecialChar LyX
-.
+h.
+ \SpecialChar LyX
+-Befehle auszuführen und Informationen über den internen Status von \SpecialChar LyX
+ abzurufen.
+ Diese Möglichkeit wird beispielsweise von Literaturverwaltungsprogrammen
+ wie 
+\family sans
+JabRef
+\family default
+ genutzt, um Literaturverweise in \SpecialChar LyX
+ einzufügen, oder etwa zur Vorwärts- und
+ Rückwärtssuche in PDF-Dokumenten (siehe dazu weiter unten).
+ Der \SpecialChar LyX
+-Server ist eher etwas für fortgeschrittene Anwender; für diese ist
+ die folgende detaillierte Dokumentation vor allem gedacht.
+ 
 \end_layout
 
 \begin_layout Section
+Den \SpecialChar LyX
+-Server starten
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:LyXServer-starten"
 
-\lang english
-Starting the \SpecialChar LyX
- Server
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The \SpecialChar LyX
- server works through the use of a pair of named pipes.
- These are usually located in 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-UserDir
-\end_layout
-
-\end_inset
-
-, (except on Windows, where 
+Der \SpecialChar LyX
+-Server verwendet ein Paar sog.
+ 
 \emph on
-local
+\lang english
+Named Pipes
 \emph default
- named pipes are special objects located in 
+\lang ngerman
+ (
+\emph on
+benannter Pipes
+\emph default
+) zur Prozesskommunikation.
+ Diese sind normalerweise im 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+Benutzerverzeichnis
+\end_layout
 
-\lang english
+\end_inset
+
+ zu finden (außer unter Windows, wo 
+\emph on
+lokale
+\emph default
+ benannte Pipes als spezielle Objekte in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 
@@ -6073,105 +6082,85 @@ pipe
 
 \end_inset
 
-) and have the names 
-\begin_inset Quotes eld
-\end_inset
-
-
+ zu finden sind).
+ Die Namen der Pipes sind 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 lyxpipe.in
 \end_layout
 
 \end_inset
 
-
-\begin_inset Quotes erd
-\end_inset
-
- and 
-\begin_inset Quotes eld
-\end_inset
-
-
+ und 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-lyxpipe.out
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- External programs write into 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-lyxpipe.in
-\end_layout
-
-\end_inset
-
- and read back data from 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
 lyxpipe.out
 \end_layout
 
 \end_inset
 
 .
- The stem of the pipe names can be defined in the 
-\begin_inset Flex Noun
+ Externe Programme schreiben nach 
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Tools\SpecialChar menuseparator
-Preferences
+lyxpipe.in
 \end_layout
 
 \end_inset
 
- dialog, for example 
+ (
+\emph on
+Eingabe-Pipe
+\emph default
+) und lesen von 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxpipe.out
+\end_layout
+
+\end_inset
+
+ (
+\emph on
+Ausgabe-Pipe
+\emph default
+).
+ Der Stamm der Pipe-Namen kann in 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show prefs"
+\end_inset
+
+
+\family sans
+\SpecialChar menuseparator
+Pfade\SpecialChar menuseparator
+LyX-Server-Weiterleitung
+\family default
+ geändert werden, beispielsweise in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+/home/myhome/lyxpipe
+\end_layout
+
+\end_inset
+
+ oder 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
-"/home/myhome/lyxpipe"
-\end_layout
-
-\end_inset
-
-, or 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-"
 \backslash
 
 \backslash
@@ -6179,20 +6168,27 @@ status collapsed
 \backslash
 pipe
 \backslash
-lyxpipe"
+lyxpipe
 \end_layout
 
 \end_inset
 
- on Windows (where any working path instead of lyxpipe can be used, for
- example 
+ unter Windows (wo statt 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+lyxpipe
+\end_layout
+
+\end_inset
+
+ auch ein beliebiger Pfad verwendet werden kann, etwa 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
-"
 \backslash
 
 \backslash
@@ -6204,113 +6200,89 @@ my
 \backslash
 lyx
 \backslash
-pipe"
+pipe
 \end_layout
 
 \end_inset
 
- would also work).
- You 
+).
+ Damit der Server gestartet werden kann, 
 \emph on
-must
+müssen
 \emph default
- configure this manually in order for the server to start.
+ Sie zunächst die Pipes manuell konfigurieren.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-\SpecialChar LyX
- will add the '
+Bei der Erstellung der Pipes hängt \SpecialChar LyX
+ die Endungen 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .in
 \end_layout
 
 \end_inset
 
-' and '
+ und 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .out
 \end_layout
 
 \end_inset
 
-' to create the pipes.
- If one of the pipes already exists, \SpecialChar LyX
- will assume that another \SpecialChar LyX
- process
- is already running and will not start the server.
- On POSIX (Unix like) systems, if for some other reason, an unused 
-\begin_inset Quotes eld
-\end_inset
+ an den konfigurierten Namensstamm an.
+ Wenn eine der Pipes bereits existiert, nimmt \SpecialChar LyX
+ an, dass bereits ein anderer
+ \SpecialChar LyX
+-Prozess läuft, und startet den Server nicht.
+ Auf Betriebssystemen, die dem POSIX-Standard folgen (UNIX und seine Derivate),
+ versucht \SpecialChar LyX
+, wenn es geschlossen wird, unbenutzte Pipes zu löschen.
+ Wenn dies aus irgend einem Grund nicht funktioniert (bspw.
+ nach einem Programmabsturz), müssen Sie die Pipes manuell löschen und \SpecialChar LyX
 
-stale
-\begin_inset Quotes erd
-\end_inset
-
- pipe is left in existence when \SpecialChar LyX
- closes, then \SpecialChar LyX
- will try to delete it.
- If this fails for some reason, you will need to delete the pipes manually
- and then restart \SpecialChar LyX
-.
- On Windows, pipes are deleted by the OS on program termination or crash,
- so 
-\begin_inset Quotes eld
-\end_inset
-
-stale
-\begin_inset Quotes erd
-\end_inset
-
- pipes should not be possible.
+ neu starten.
+ Unter Windows werden die Pipes immer vom Betriebssystem gelöscht, wenn
+ das entsprechende Programm geschlossen wird oder abstürzt.
+ Unbenutzte Pipes sollten dort also nicht vorkommen.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To have several \SpecialChar LyX
- processes with servers at the same time, you have to use
- different configurations, perhaps by using separate user directories, each
- with its own 
+Wenn Sie mehrere \SpecialChar LyX
+-Instanzen zur gleichen Zeit mit einem Server verwenden
+ wollen, müssen Sie verschiedene Konfigurationen verwenden, etwa indem Sie
+ unterschiedliche Benutzerverzeichnisse, jedes mit seiner eigenen 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 preferences
 \end_layout
 
 \end_inset
 
- file, for each process.
+-Datei, für jede Instanz anlegen.
 \end_layout
 
 \begin_layout Standard
-
+Wenn Sie ein Client-Programm entwickeln, mag es für Sie hilfreich sein,
+ Debugging-Informationen vom \SpecialChar LyX
+-Server zu erhalten.
+ Diese bekommen Sie, wenn Sie \SpecialChar LyX
+ mit folgender Option starten:
 \lang english
-If you are developing a client program, you might find it useful to enable
- debugging information from the \SpecialChar LyX
- server.
- Do this by starting \SpecialChar LyX
- as 
+ 
+\lang ngerman
+
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 lyx -dbg lyxserver
 \end_layout
 
@@ -6320,34 +6292,24 @@ lyx -dbg lyxserver
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can find a complete example client written in C++ in the source distribution
- as 
+In der Quelldistribution von \SpecialChar LyX
+ finden Sie einen kompletten, in C++ geschriebenen
+ Beispiel-Client unter 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 development/lyxserver/server_monitor.cpp
 \end_layout
 
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Another useful tool is command-line based client you will find in 
+ Einen kommandozeilenbasierten Client finden Sie unter 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 src/client/lyxclient
 \end_layout
 
@@ -6357,164 +6319,146 @@ src/client/lyxclient
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Normal communication
+Normale Kommunikation
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To issue a \SpecialChar LyX
- call, the client writes a line of ASCII text into the input
- pipe.
- This line has the following format:
-\end_layout
-
-\begin_layout Quote
-
-\lang english
-LYXCMD:
-\emph on
-clientname
-\emph default
-:
-\emph on
-function
-\emph default
-:
-\emph on
-argument
-\end_layout
-
-\begin_layout Description
-
-\lang english
-clientname is a name that the client can choose arbitrarily.
- Its only use is that \SpecialChar LyX
- will echo it if it sends an answer—so a client can
- dispatch results from different requesters.
-\end_layout
-
-\begin_layout Description
-
-\lang english
-function is the function you want \SpecialChar LyX
- to perform.
- It is the same as the commands you'd use in the minibuffer.
-\end_layout
-
-\begin_layout Description
-
-\lang english
-argument is an optional argument which is meaningful only to some functions
- (for instance, the 
-\begin_inset Quotes eld
-\end_inset
-
-self-insert
-\begin_inset Quotes erd
-\end_inset
-
- LFUN will insert the argument as text at the cursor position).
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-The answer from \SpecialChar LyX
- will arrive in the output pipe and be of the form
-\end_layout
-
-\begin_layout Quote
-
-\lang english
-INFO:
-\emph on
-clientname
-\emph default
-:
-\emph on
-function
-\emph default
-:
-\emph on
-data
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-where 
-\emph on
-clientname
-\emph default
- and 
-\emph on
-function
-\emph default
- are just echoed from the command request, while 
-\emph on
-data
-\emph default
- is more or less useful information filled according to how the command
- execution worked out.
- Some commands, such as 
-\begin_inset Quotes eld
-\end_inset
-
-font-state
-\begin_inset Quotes erd
-\end_inset
-
-, will return information about the internal state of \SpecialChar LyX
-, while other will
- return an empty data-response.
- This means that the command execution went fine.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-In case of errors, the response from \SpecialChar LyX
- will have this form
-\end_layout
-
-\begin_layout Quote
-
-\lang english
-ERROR:
-\emph on
-clientname
-\emph default
-:
-\emph on
-function
-\emph default
-:
-\emph on
-error message
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-where the 
-\emph on
-error message
-\emph default
- should contain an explanation of why the command failed.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Examples:
+Um einen \SpecialChar LyX
+-Aufruf auszuführen schreibt der Client eine Zeile ASCII-Text in
+ die Eingabe-Pipe.
+ Diese Zeile hat das folgende Format:
 \end_layout
 
 \begin_layout LyX-Code
+LYXCMD:
+\emph on
+Clientname
+\emph default
+:
+\emph on
+Funktion
+\emph default
+:
+\emph on
+Argument
+\end_layout
 
-\lang english
+\begin_layout Description
+Clientname ist ein Name, den der Client frei wählen kann.
+ Sein einziger Nutzen ist es, dass \SpecialChar LyX
+ ihn nennt, wenn es antwortet.
+ Dadurch kann ein Client Ergebnisse von verschiedenen Auftraggebern verarbeiten.
+\end_layout
+
+\begin_layout Description
+Funktion ist die Funktion, die \SpecialChar LyX
+ ausführen soll.
+ Dies sind dieselben Funktionen, die Sie auch im Minibuffer eingeben können
+ (siehe 
+\family sans
+Hilfe\SpecialChar menuseparator
+LyX-Funktionen
+\family default
+).
+\end_layout
+
+\begin_layout Description
+Argument ist ein optionales Argument, das nur für einige Funktionen sinnvoll
+ ist (die Funktion 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+self-insert
+\end_layout
+
+\end_inset
+
+ beispielsweise fügt den als Argument mitgegebenen Text an der Cursorposition
+ ein).
+\end_layout
+
+\begin_layout Standard
+Die Antwort von \SpecialChar LyX
+ wird in die Ausgabe-Pipe geschrieben und hat folgende Form
+\end_layout
+
+\begin_layout LyX-Code
+INFO:
+\emph on
+Clientname
+\emph default
+:
+\emph on
+Funktion
+\emph default
+:
+\emph on
+Daten
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Clientname
+\emph default
+ und 
+\emph on
+Funktion
+\emph default
+ werden dabei einfach vom Aufruf zitiert.
+ 
+\emph on
+Daten
+\emph default
+ umfasst ggf.
+ Informationen darüber, wie die Befehlsausführung vonstatten gegangen ist.
+ Bei manchen Befehlen, wie etwa 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+font-state
+\end_layout
+
+\end_inset
+
+, werden Informationen über den internen Status von \SpecialChar LyX
+ zurückgegeben, andere
+ geben einfach eine leere Daten-Antwort.
+ Dies bedeutet dann, dass alles gut gegangen ist.
+\end_layout
+
+\begin_layout Standard
+Im Fall von Fehlern hat die Antwort von \SpecialChar LyX
+ folgende Form:
+\end_layout
+
+\begin_layout LyX-Code
+ERROR:
+\emph on
+Clientname
+\emph default
+:
+\emph on
+Funktion
+\emph default
+:
+\emph on
+Fehlermeldung
+\end_layout
+
+\begin_layout Standard
+Die 
+\emph on
+Fehlermeldung
+\emph default
+ sollte dabei eine Erklärung enthalten, warum der Befehl nicht erfolgreich
+ ausgeführt wurde.
+ Beispiele hierfür:
+\end_layout
+
+\begin_layout LyX-Code
 echo "LYXCMD:test:beginning-of-buffer:" >~/.lyxpipe.in
 \begin_inset Newline newline
 \end_inset
@@ -6531,39 +6475,33 @@ echo $a
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Notification
+Benachrichtigung
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \SpecialChar LyX
- can notify clients of events going on asynchronously.
- Currently it will only do this if the user binds a key sequence with the
- function 
-\begin_inset Quotes eld
-\end_inset
-
-notify
-\begin_inset Quotes erd
-\end_inset
-
-.
- The format of the string \SpecialChar LyX
- sends is as follows:
-\end_layout
-
-\begin_layout Quote
-
-\lang english
+ kann Clients über Ereignisse, die asynchron ausgeführt werden, benachrichtigen.
+ Momentan ist das nur dann der Fall, wenn ein Anwender eine Tastatursequenz
+ mit der Funktion 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+notify
+\end_layout
 
-\lang english
+\end_inset
+
+ verbindet.
+ Das Format der Nachricht, die \SpecialChar LyX
+ sendet, ist:
+\end_layout
+
+\begin_layout LyX-Code
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 NOTIFY:
 \end_layout
 
@@ -6571,191 +6509,231 @@ NOTIFY:
 
 
 \emph on
-key-sequence
+Tastatursequenz
 \end_layout
 
 \begin_layout Standard
 
-\lang english
-where 
 \emph on
-key-sequence
+Tastatursequenz
 \emph default
- is the printed representation of the key sequence that was actually typed
- by the user.
+ ist die für die Ausgabe formatierte Form der Tastatursequenz die der Anwender
+ eingegeben hat.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This mechanism can be used to extend \SpecialChar LyX
-'s command set and implement macros.
- Bind some key sequence to 
-\begin_inset Quotes eld
-\end_inset
-
-notify
-\begin_inset Quotes erd
-\end_inset
-
-.
- Then start a client that listens on the output pipe, dispatches the command
- according to the sequence, and starts a function that may use \SpecialChar LyX
- calls and
- \SpecialChar LyX
- requests to issue a command or a series of commands to \SpecialChar LyX
-.
-\end_layout
-
-\begin_layout Section
-
-\lang english
-The simple \SpecialChar LyX
- Server Protocol
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\SpecialChar LyX
- implements a simple protocol that can be used for session management.
- All messages are of the form
-\end_layout
-
-\begin_layout Quote
-
-\lang english
-LYXSRV:
-\emph on
-clientname
-\emph default
-:
-\emph on
-protocol message
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-where 
-\emph on
-protocol message
-\emph default
- can be 
-\begin_inset Quotes eld
-\end_inset
-
-hello
-\begin_inset Quotes erd
-\end_inset
-
- or 
-\begin_inset Quotes eld
-\end_inset
-
-bye
-\begin_inset Quotes erd
-\end_inset
-
-.
- If 
-\begin_inset Quotes eld
-\end_inset
-
-hello
-\begin_inset Quotes erd
-\end_inset
-
- is received from a client, \SpecialChar LyX
- will report back to inform the client that
- it's listening to it's messages, while 
-\begin_inset Quotes eld
-\end_inset
-
-bye
-\begin_inset Quotes erd
-\end_inset
-
- sent from \SpecialChar LyX
- will inform clients that \SpecialChar LyX
- is closing.
-\end_layout
-
-\begin_layout Section
-DVI/PDF Rückwärtssuche
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Some DVI/PDF viewers
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-The following viewers offer the reverse PDF search feature: Okular on KDE/Linux,
- Qpdfview on Unix, Skim on Mac OSX and SumatraPDF on Windows.
-\end_layout
-
-\end_inset
-
- provide 
-\emph on
-reverse search
-\emph default
- facility (also called 
-\emph on
-inverse search
-\emph default
-).
- This means that you can tell \SpecialChar LyX
- to put the cursor to a specific line in the
- document by clicking at the respective position in the DVI/PDF output.
- To achieve this, the viewer must be able to communicate with \SpecialChar LyX
-.
- This is done via the \SpecialChar LyX
- server either by using the named pipe (
-\emph on
-lyxpipe
-\emph default
-), or the UNIX domain socket (
-\emph on
-lyxsocket
-\emph default
-) that \SpecialChar LyX
- creates in its temporary directory (this is the way the 
+Dieser Mechanismus kann verwendet werden, um \SpecialChar LyX
+' Befehlsmenge zu erweitern
+ und Makros zu implementieren: Verbinden Sie eine Tastatursequenz mit 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+notify
+\end_layout
+
+\end_inset
+
+, starten Sie einen Client, der der Ausgabe-Pipe lauscht, aufgrund der zurückgeg
+ebenen Sequenz einen Befehl ausführt und\SpecialChar breakableslash
+oder dann etwa seinerseits bestimmte
+ Befehle an den \SpecialChar LyX
+-Server schickt.
+\end_layout
+
+\begin_layout Section
+Das einfache \SpecialChar LyX
+-Server-Protokoll
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ implementiert ein einfaches Protokoll, das für das Sitzungsmanagement verwendet
+ werden kann.
+ Alle Nachrichten sind in der Form
+\end_layout
+
+\begin_layout LyX-Code
+LYXSRV:
+\emph on
+Clientname
+\emph default
+:
+\emph on
+Protokollnachricht
+\end_layout
+
+\begin_layout Standard
+Die 
+\emph on
+Protokollnachricht
+\emph default
+ kann etwa lauten 
+\begin_inset Quotes gld
+\end_inset
+
 
 \lang english
+hello
+\lang ngerman
+
+\begin_inset Quotes grd
+\end_inset
+
+ oder 
+\begin_inset Quotes gld
+\end_inset
+
+
+\lang english
+bye
+\lang ngerman
+
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Wenn ein Client die Nachricht 
+\begin_inset Quotes gld
+\end_inset
+
+hello
+\begin_inset Quotes grd
+\end_inset
+
+ empfängt, heißt das für den Client, das \SpecialChar LyX
+ bereit ist und die Nachrichten
+ des Clients hört, wohingegen 
+\begin_inset Quotes gld
+\end_inset
+
+bye
+\begin_inset Quotes grd
+\end_inset
+
+ den Client darüber informiert, dass \SpecialChar LyX
+ beendet wird.
+\end_layout
+
+\begin_layout Section
+DVI/PDF-Rückwärtssuche
+\end_layout
+
+\begin_layout Standard
+Einige DVI/PDF-Betrachter
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Die folgenden Programme bieten PDF-Rückwärtssuche: 
+\family sans
+Okular
+\family default
+ unter KDE/Linux, 
+\family sans
+Qpdfview
+\family default
+ unter Unix, 
+\family sans
+Skim
+\family default
+ unter Mac OSX und 
+\family sans
+SumatraPDF
+\family default
+ unter Windows.
+\end_layout
+
+\end_inset
+
+ bieten 
+\emph on
+Rückwärtssuche
+\emph default
+ (engl.
+ 
+\emph on
+\lang english
+reverse search
+\emph default
+\lang ngerman
+ oder 
+\emph on
+\lang english
+inverse search
+\emph default
+\lang ngerman
+).
+ Das heißt, dass Sie \SpecialChar LyX
+ anweisen können, zu einer bestimmten Stelle (im \SpecialChar LyX
+-Dolument)
+ zu springen, indem Sie die entsprechende Stelle in der PDF\SpecialChar breakableslash
+DVI-Ausgabe anklicken.
+ Hierfür muss der Betrachter in der Lage sein, mit \SpecialChar LyX
+ zu kommunizieren.
+ Das geschieht über den \SpecialChar LyX
+-Server, entweder über 
+\emph on
+\lang english
+Named Pipes
+\emph default
+\lang ngerman
+ (
+\emph on
+lyxpipe
+\emph default
+, siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:LyXServer-starten"
+
+\end_inset
+
+) oder den 
+\emph on
+\lang english
+UNIX Domain Socket
+\emph default
+\lang ngerman
+ (
+\emph on
+lyxsocket
+\emph default
+), den \SpecialChar LyX
+ im temporären Verzeichnis erstellt (über letzteren kommuniziert
+ das Programm 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 lyxclient
 \end_layout
 
 \end_inset
 
- program communicates with \SpecialChar LyX
+ mit \SpecialChar LyX
 ).
- In some cases, you need a helper script that mediates between the viewer
- and \SpecialChar LyX
-, in others, the viewer can communicate with \SpecialChar LyX
- directly.
- This depends on the selected viewer and on your operating system.
- The same applies to the way viewers need to be configured and the way the
- reverse search is actually performed.
- In what follows, we will thus describe how to setup reverse search for
- specific viewers.
- Before we turn to this, though, we will explain what needs to be done generally
- to enable reverse search in the DVI/PDF output.
+ In manchen Fällen benötigen Sie zusätzliche Hilfsskripte, um zwischen dem
+ Betrachter und \SpecialChar LyX
+ zu vermitteln, in anderen kommuniziert der Betrachter direkt
+ mit \SpecialChar LyX
+.
+ Das hängt vom ausgewählten Betrachter und von Ihrem Betriebssystem ab.
+ Auch die Konfiguration der Betrachter, die nötig ist, damit Sie \SpecialChar LyX
+ ansprechen
+ können, divergiert.
+ Im Folgenden beschreiben wir daher die Konfiguration spezifischer Betrachter.
+ Bevor wir das tun, werden wir aber noch einige generelle Informationen
+ dazu geben, was zu tun ist, um diese Funktionalität grundsätzlich nutzen
+ zu können.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Automatic setup
+Automatische Einrichtung
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:rev-search"
@@ -6766,163 +6744,10 @@ name "subsec:rev-search"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In most cases \SpecialChar LyX
- will do the work for you by enabling 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Document\SpecialChar menuseparator
-Output\SpecialChar menuseparator
-Synchronize with Output
-\end_layout
-
-\end_inset
-
-.
- In such a case \SpecialChar LyX
- will automatically insert the necessary Sync\SpecialChar TeX
- macro (for
- PDF) or load the srcltx package (for DVI) respectively.
- This option can be easily reached also on 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-View/Update
-\end_layout
-
-\end_inset
-
- Toolbar.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-If you need a different setting, you can select or input a custom macro
- from the drop down box just below 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Output\SpecialChar menuseparator
-Synchronize with Output
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Note that the method 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-
-\backslash
-synctex=1
-\end_layout
-
-\end_inset
-
- enables gzip compression.
- If your viewer does not support it, you should instead use 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-
-\backslash
-synctex=-1
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Please note that including the 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-srcltx
-\end_layout
-
-\end_inset
-
- package or 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-src-specials
-\end_layout
-
-\end_inset
-
- sometimes has an undesired impact on the typesetting.
- Thus, you should switch output synchronization off for the final typesetting
- if you use the 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-srcltx
-\end_layout
-
-\end_inset
-
- package or 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-src-specials
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-In case you need some more special settings that are not covered by the
- automatic settings, read the next section about how to set up output synchroniz
-ation manually.
- If the automatic setup suits your needs, you can readily jump to section
+In diesem und dem nächsten Abschnitt wird beschrieben, was Sie tun müssen,
+ damit ein Dokument überhaupt die Rückwärtssuche verwenden kann.
+ In den meisten Fällen genügt es hierzu (falls der Betrachter bereits konfigurie
+rt ist; siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -6933,144 +6758,237 @@ reference "subsec:configuring-viewers"
 
 \end_inset
 
-, where the necessary configuration steps in your viewer – needed both with
- the automatic and the manual setup – are described.
-\end_layout
+), wenn Sie den folgenden Knopf in der Werkzeugleiste drücken: 
+\begin_inset Info
+type  "icon"
+arg   "buffer-toggle-output-sync"
+\end_inset
 
-\begin_layout Subsection
-
-\lang english
-Manual setup
+.
+ Alternativ können Sie auch in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Formate
+\family default
+ die Option 
+\family sans
+Mit der Ausgabe synchronisieren
+\family default
+ wählen.
+ In beiden Fällen wird \SpecialChar LyX
+ automatisch den nötigen \SpecialChar LaTeX
+-Befehl für 
+\family sans
+SyncTeX
+\family default
+ (PDF-Ausgabe) einfügen oder aber das Paket 
+\family sans
+srcltx
+\family default
+ laden (für DVI-Ausgabe).
 \end_layout
 
 \begin_layout Standard
+Sollten Sie eine andere Ausgabe in der \SpecialChar LaTeX
+-Datei benötigen, können Sie unter
+ 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Formate
+\family default
+ bei der Option 
+\family sans
+Mit der Ausgabe synchronisieren
+\family default
+ Alternativen auswählen oder eingeben.
+\end_layout
 
-\lang english
-\SpecialChar LaTeX
- provides several different methods for reverse search.
- Some are built-in in the 
+\begin_layout Standard
+Beachten Sie bitte, dass die Methode 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
+\backslash
+synctex=1
+\end_layout
+
+\end_inset
+
+ Gzip-Komprimierung der bei der Ausgabe generierten 
+\family sans
+SyncTeX
+\family default
+-Hilfsdateien veranlasst.
+ Wenn ihr Betrachter dies nicht unterstützt, sollten Sie statt dessen 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+synctex=-1
+\end_layout
+
+\end_inset
+
+ verwenden.
+\end_layout
+
+\begin_layout Standard
+Beachten Sie außerdem, dass die Verwendung des Pakets 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+srcltx
+\end_layout
+
+\end_inset
+
+ bzw.
+ von sog.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+src-specials
+\end_layout
+
+\end_inset
+
+ (die das Paket in die DVI-Datei einfügt) manchmal unerwünschte Folgen auf
+ die Ausgabe hat.
+ Sie sollten also die Ausgabe-Synchronisierung für DVI für die letzte Fassung
+ Ihres Dokuments wieder ausschalten.
+\end_layout
+
+\begin_layout Standard
+Wenn Sie spezielle Einstellungen benötigen, die nicht von den automatischen
+ Voreinstellungen abgedeckt sind, lesen Sie bitte den folgenden Abschnitt
+ über die manuelle Konfiguration der Ausgabesynchronisation.
+ Wenn die automatischen Einstellungen für Sie funktionieren, können Sie
+ direkt zum Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:configuring-viewers"
+
+\end_inset
+
+ springen.
+ Dort werden die Konfigurationsschritte für den PDF/DVI-Betrachter beschrieben,
+ die Sie in jedem Fall ausführen müssen.
+\end_layout
+
+\begin_layout Subsection
+Manuelle Einrichtung
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LaTeX
+ bietet verschiedene Methoden für die Rückwärtssuche.
+ Einige sind inzwischen in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 latex/pdflatex
 \end_layout
 
 \end_inset
 
- program, some are provided by external packages.
- Your choice depends on whether your \SpecialChar LaTeX
- distribution already provides a given
- method (the built-in methods are rather new) and whether your viewer can
- cope with it.
- The available methods are described in the following.
+ selbst eingebaut, andere werden von externen Programmen angeboten.
+ Ihre Wahl wird davon abhängen, ob Ihre \SpecialChar LaTeX
+-Distribution bestimmte Methoden
+ schon anbietet (die eingebauten Methoden sind relativ neu) und ob Ihr Betrachte
+r damit zurechtkommt.
+ Im Folgenden werden die verfügbaren Methoden genauer beschrieben.
 \end_layout
 
 \begin_layout Subsubsection*
-
-\lang english
-Built-in DVI-search via src-specials (DVI only) 
+Eingebaute DVI-Rückwärtssuche mittels src-specials (nur DVI)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This method provides the DVI file with the necessary information for reverse
- search.
- It is available in \SpecialChar LaTeX
- since quite some time (any somewhat recent \SpecialChar LaTeX
- distribution
- should include it), and it works reliably.
- To enable it, change the 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
+Diese Methode versorgt die DVI-Datei mit allen nötigen Informationen für
+ die Rückwärtssuche.
+ Sie ist in \SpecialChar LaTeX
+ bereits seit einiger Zeit verfügbar (und jede einigermaßen
+ aktuelle \SpecialChar LaTeX
+-Distribution sollte sie anbieten).
+ Die Methode funktioniert recht zuverlässig.
+ Um sie zu aktivieren, ändern Sie den Konverter 
+\family sans
 LaTeX (plain)->DVI
-\end_layout
-
-\end_inset
-
- or 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
+\family default
+ bzw.
+ 
+\family sans
 LaTeX (plain)->DraftDVI
-\end_layout
-
+\family default
+ in 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show prefs"
 \end_inset
 
- converter in 
-\begin_inset Flex Noun
-status collapsed
 
-\begin_layout Plain Layout
-
-\lang english
-Preferences\SpecialChar menuseparator
-File Handling\SpecialChar menuseparator
-Converters
-\end_layout
-
-\end_inset
-
- to 
+\family sans
+\SpecialChar menuseparator
+Datei-Handhabung\SpecialChar menuseparator
+Konverter
+\family default
+ in 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 latex -src-specials $$i
 \end_layout
 
 \end_inset
 
 .
- If this doesn't work, check if your \SpecialChar TeX
- engine needs different options (the
- syntax might differ in some distributions).
+ Sollte das nicht zum gewünschten Erfolg führen, überprüfen Sie bitte, ob
+ Ihr \SpecialChar TeX
+-Programm andere Optionen benötigt (die Syntax differiert möglicherweise
+ in manchen Distributionen).
 \end_layout
 
 \begin_layout Subsubsection*
-
-\lang english
-External Packages (PDFSync and scrltx) 
+Externe Pakete (PDFSync und scrltx)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The packages 
-\emph on
+Die \SpecialChar LaTeX
+-Pakete 
+\family sans
 pdfsync
-\emph default
- and 
-\emph on
+\family default
+ und 
+\family sans
 scrltx
-\emph default
- provide reverse search facility for PDF output (via pdflatex) and DVI output,
- respectively.
- In order to enable it, load the packages in the \SpecialChar LyX
- preamble: 
+\family default
+ bieten Rückwärtssuchfunktionalität für die PDF-Ausgabe (via pdflatex) bzw.
+ für die DVI-Ausgabe.
+ Um die Funktionalität zu nutzen, laden Sie die Pakete wie folgt im \SpecialChar LyX
+-Vorspann:
+ 
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 usepackage{pdfsync}
@@ -7078,18 +6996,14 @@ usepackage{pdfsync}
 
 \end_inset
 
- for reverse PDF search,
+ für Rückwärts-PDF-Suche,
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 usepackage[active]{srcltx}
@@ -7097,19 +7011,16 @@ usepackage[active]{srcltx}
 
 \end_inset
 
- for reverse DVI search.
+ für Rückwärts-DVI-Suche.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you want to be able to perform both DVI and PDF reverse searches, you
- can also insert in the preamble the following lines
+Wenn Sie sowohl PDF- als auch DVI-Ausgaben erzeugen wollen und in beiden
+ Fällen Rückwärtssuche nutzen möchten, können Sie statt dessen folgendes
+ in den Vorspann einfügen (dies lädt je nach Ausgabe das richtige Paket):
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 
 \backslash
 usepackage{ifpdf}
@@ -7146,170 +7057,160 @@ fi
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This way, you can preview the file as either DVI or PDF (pdflatex) and the
- right package will be used.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Note that PDFSync might affect the output layout of your document.
- It is therefore advised to disable PDFsync for final documents.
+Bitte beachten Sie, dass 
+\family sans
+pdfsync
+\family default
+ das Layout der Ausgabe beeinträchtigen kann.
+ Es ist deshalb ratsam, das Paket für die endgültige Fassung des Dokuments
+ zu deaktivieren.
 \end_layout
 
 \begin_layout Subsubsection*
-
-\lang english
-Built-in reverse search via Sync\SpecialChar TeX
- (DVI and PDF) 
+Eingebaute Rückwärtssuche via Sync\SpecialChar TeX
+ (DVI und PDF)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Recent versions of 
+Neuere Versionen von 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 (pdf)latex
 \end_layout
 
 \end_inset
 
- have built-in support for both PDF and DVI reverse search.
- This so-called 
+ haben eingebauten Funktionalität für Rückwärtssuche sowohl in der PDF-
+ als auch in der DVI-Ausgabe.
+ Diese als 
 \emph on
 Sync\SpecialChar TeX
 
 \emph default
- facility is basically the result of the integration of the PDFSync package
- to the pdftex program and its merge with the 
+ bezeichnete Funktionalität ist das Ergebnis der Integration des 
+\family sans
+PDFSync
+\family default
+-Pakets in 
+\family sans
+pdftex
+\family default
+ und der Zusammenführung mit dem 
 \emph on
 scr-specials
 \emph default
- approach.
- You need at least \SpecialChar TeX
-Live 2008 or a recent Mik\SpecialChar TeX
- distribution in order to use
- it.
- Also note that only a few PDF viewers (Okular and Qpdfview on Unix, Skim
- on the Mac, SumatraPDF on Windows) already provide Sync\SpecialChar TeX
- support.
+-Ansatz.
+ Sie brauchen mindestens \SpecialChar TeX
+Live 2008 oder eine entsprechend aktuelle Mik\SpecialChar TeX
+-Distribut
+ion, um dies zu verwenden.
+ Beachten Sie auch, dass nur einige PDF-Betrachter (bspw.
+ 
+\family sans
+Okular
+\family default
+ und 
+\family sans
+Qpdfview
+\family default
+ unter Unix, 
+\family sans
+Skim
+\family default
+ auf dem Mac, 
+\family sans
+SumatraPDF
+\family default
+ unter Windows; siehe den folgenden Abschnitt) Sync\SpecialChar TeX
+ unterstützen.
 \end_layout
 
 \begin_layout Standard
+Um 
+\family sans
+Sync\SpecialChar TeX
 
-\lang english
-To enable Sync\SpecialChar TeX
- for DVI output, change the 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-LaTeX (plain) -> DVI
-\end_layout
-
+\family default
+ für die DVI-Ausgabe zu aktivieren, ändern Sie den Konverter 
+\family sans
+LaTeX (plain)->DVI
+\family default
+ bzw.
+ 
+\family sans
+LaTeX (plain)->DraftDVI
+\family default
+ unter 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show prefs"
 \end_inset
 
- or 
-\begin_inset Flex Noun
-status collapsed
 
-\begin_layout Plain Layout
-
+\family sans
+\SpecialChar menuseparator
+Datei-Handhabung\SpecialChar menuseparator
+Konverter
+\family default
+ in
 \lang english
-LaTeX (plain) -> DraftDVI
-\end_layout
+ 
+\lang ngerman
 
-\end_inset
-
- converter in 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Preferences\SpecialChar menuseparator
-File Handling\SpecialChar menuseparator
-Converters
-\end_layout
-
-\end_inset
-
- to 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 latex -synctex=1 $$i
 \end_layout
 
 \end_inset
 
-, and for PDF output, change the 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-LaTeX (pdflatex) -> PDF (pdflatex)
-\end_layout
-
-\end_inset
-
- or converter to 
+.
+ Für die PDF-Ausgabe ändern Sie den Konverter 
+\family sans
+LaTeX (pdflatex)->PDF (pdflatex)
+\family default
+ in 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 pdflatex -synctex=1 $$i
 \end_layout
 
 \end_inset
 
 .
- Check the documentation of your viewer whether the viewer needs to be configure
-d for the use with Sync\SpecialChar TeX
-.
+ Wenn Ihr Betrachter in den folgenden Beschreibungen nicht berücksichtigt
+ ist oder das gewünschte Ergebnis nicht eintritt, konsultieren Sie die Dokumenta
+tion Ihres Betrachters hinsichtlich der Frage, ob und wie der Betrachter
+ für die Verwendung von Sync\SpecialChar TeX
+ konfiguriert werden muss.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Not that the option 
+Beachten Sie, dass 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 -synctex=1
 \end_layout
 
 \end_inset
 
- enables gzip compression.
- If your viewer does not support it, you should instead use 
+ Gzip-Komprimierung der generierten Sync\SpecialChar TeX
+-Hilfsdateien veranlasst.
+ Sollte Ihr Betrachter dies nicht unterstützen, verwenden Sie statt dessen
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 -synctex=-1
 \end_layout
 
@@ -7324,9 +7225,7 @@ status collapsed
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Configuring and using specific viewers
+Spezifische Betrachter konfigurieren und verwenden
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:configuring-viewers"
@@ -7337,119 +7236,134 @@ name "subsec:configuring-viewers"
 \end_layout
 
 \begin_layout Subsubsection*
-
-\lang english
-Xdvi (all platforms)
+Xdvi (alle Plattformen)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you use 
+Wenn Sie 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 xdvi
 \end_layout
 
 \end_inset
 
-, you don't need to do anything else for performing a reverse DVI search,
- as \SpecialChar LyX
- already provides the necessary hooks for automatically using the 
+ verwenden, müssen Sie gar nichts Zusätzliches unternehmen, um die DVI-Rückwärts
+suche zu verwenden.
+ \SpecialChar LyX
+ verwendet in diesem Fall das Programm 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 lyxclient
 \end_layout
 
 \end_inset
 
- program.
- Just setup your document as described above (reverse search is triggered
- by Ctrl-click or Alt-click on Mac OSX, respectively).
+ (und damit den den 
+\emph on
+\lang english
+UNIX Domain Socket
+\emph default
+\lang ngerman
+); das sollte ohne Weiteres funktionieren.
+ Eine Rückwärtssuche wird in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+xdvi
+\end_layout
+
+\end_inset
+
+ durch 
+\family sans
+Strg-Klick
+\family default
+ (bzw.
+ 
+\family sans
+Alt-Klick
+\family default
+ auf dem Mac) initiiert.
 \end_layout
 
 \begin_layout Standard
-
+Sollten Sie jedoch, aus welchen Gründen auch immer, statt über den 
+\emph on
 \lang english
-However, if for whatever reason you want to use the named pipe instead of
- the socket for communicating with \SpecialChar LyX
-, simply change the DVI viewer in 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Preferences\SpecialChar menuseparator
-File Handling\SpecialChar menuseparator
-File formats
-\end_layout
-
-\end_inset
-
- to
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-On Mac OSX you have to use 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-DISPLAY=:0.0 xdvi -editor "lyxeditor.sh %f %l"
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
+UNIX Domain Socket
+\lang ngerman
  
+\emph default
+über 
+\emph on
+\lang english
+Named Pipes
+\emph default
+\lang ngerman
+ mit \SpecialChar LyX
+ kommunizieren wollen, ändern Sie einfach den DVI-Betrachter in 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show prefs"
+\end_inset
+
+
+\family sans
+\SpecialChar menuseparator
+Datei-Handhabung\SpecialChar menuseparator
+Dateiformate
+\family default
+ in 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 xdvi -editor "lyxeditor.sh %f %l"
 \end_layout
 
 \end_inset
 
-, where 
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Unter Mac OSX verwenden Sie bitte statt dessen 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+DISPLAY=:0.0 xdvi -editor "lyxeditor.sh %f %l"
+\end_layout
 
-\lang english
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ Der Name 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 lyxeditor.sh
 \end_layout
 
 \end_inset
 
- is a suitable script.
- For example, a minimal shell script is the following one:
+ bezeichnet ein passendes Skript, das Sie zur Verfügung stellen müssen.
+ Ein minimales Shell-Skript wäre das Folgende:
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 #!/bin/sh
 \begin_inset Newline newline
 \end_inset
@@ -7470,69 +7384,59 @@ read TMP < "${LYXPIPE}".out || exit
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-where 
+Die Angabe 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 /path/to/lyxpipe
 \end_layout
 
 \end_inset
 
- is the LyXServer pipe path specified in 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Preferences\SpecialChar menuseparator
-Paths
-\end_layout
-
+ muss dabei noch mit dem tatsächlichen Pfad, in dem sich die LyX-Serverpipe-Weit
+erleitung befindet, ersetzt werden (siehe 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show prefs"
 \end_inset
 
-.
+
+\family sans
+\SpecialChar menuseparator
+Pfade\SpecialChar menuseparator
+LyX-Server-Weiterleitung
+\family default
+).
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-In the 
+Im Ordner 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 development/tools
 \end_layout
 
 \end_inset
 
- folder of a source distribution you can find a 
+ der Quelldistribution finden Sie ein Skript namens 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 lyxeditor
 \end_layout
 
 \end_inset
 
- script which is able to locate the 
+, das in der Lage ist, die 
 \emph on
 lyxpipe
 \emph default
- based on your preferences.
+ auf der Grundlage Ihrer Einstellungen zu ermitteln.
 \end_layout
 
 \end_inset
@@ -7541,32 +7445,28 @@ lyxpipe
 \end_layout
 
 \begin_layout Subsubsection*
-
-\lang english
 MacDviX (Mac OSX)
 \end_layout
 
 \begin_layout Standard
+Ergänzen Sie die folgenden Zeilen am Ende von
+\begin_inset Newline newline
+\end_inset
 
-\lang english
-At the end of 
+
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 /Applications/MacDviX_Folder/calleditor.script
 \end_layout
 
 \end_inset
 
-, add the following lines:
+:
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 /Applications/LyX.app/Contents/MacOS/lyxeditor "$2" $1
 \begin_inset Newline newline
 \end_inset
@@ -7575,94 +7475,91 @@ exit 1
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Modify the lines accordingly if you install \SpecialChar LyX
- somewhere else than in the
- Applications folder.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Reverse search is triggered by Alt-click (OPTION-click).
-\end_layout
-
-\begin_layout Subsubsection*
-
-\lang english
-Skim (Mac OSX)
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Enter 
+Modifizieren Sie die Zeilen entsprechend, wenn Sie \SpecialChar LyX
+ nicht im Ordner 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-open -a Skim.app $$i
+Applications
 \end_layout
 
 \end_inset
 
- to the viewer setting in 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Preferences\SpecialChar menuseparator
-File Handling\SpecialChar menuseparator
-File formats\SpecialChar menuseparator
-PDF (pdflatex)
-\end_layout
-
-\end_inset
-
-, and then in 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Skim\SpecialChar menuseparator
-Preferences\SpecialChar menuseparator
-Sync
-\end_layout
-
-\end_inset
-
- select LyX.
+ installiert haben.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Reverse search is triggered by COMMAND-SHIFT-click
+Rückwärtssuche wird mit 
+\family sans
+Alt-Klick
+\family default
+ (OPTION-Klick) initiiert.
 \end_layout
 
 \begin_layout Subsubsection*
+Skim (Mac OSX)
+\end_layout
 
-\change_inserted -712698321 1500964792
+\begin_layout Standard
+Geben Sieals Betrachter-Einstellung in 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show prefs"
+\end_inset
 
-\lang english
+
+\family sans
+\SpecialChar menuseparator
+Datei-Handhabung\SpecialChar menuseparator
+Dateiformate\SpecialChar menuseparator
+PDF (pdflatex)
+\family default
+ das Folgende ein:
+\end_layout
+
+\begin_layout LyX-Code
+open -a Skim.app $$i
+\end_layout
+
+\begin_layout Standard
+Wählen Sie 
+\begin_inset Quotes gld
+\end_inset
+
+LyX
+\begin_inset Quotes grd
+\end_inset
+
+ in 
+\family sans
+Skim\SpecialChar menuseparator
+Einstellungen\SpecialChar ldots
+\SpecialChar menuseparator
+PDF-TeX Sync Unterstützung
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Rückwärtssuche wird mit 
+\family sans
+Cmd-Shift-Klick
+\family default
+ initiiert.
+\end_layout
+
+\begin_layout Subsubsection*
 Evince (GNOME)
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1500964792
-
-\lang english
-Reverse search with evince does not work out of the box, but it can be achieved
- by means of some third party helper scripts.
- Please refer to 
+Rückwärtssuche mit 
+\family sans
+Evince
+\family default
+ funktioniert nur mit Hilfe zusätzlicher Skripte.
+ Weitere Informationen finden Sie unter 
 \begin_inset CommandInset href
 LatexCommand href
 target "http://wiki.lyx.org/LyX/SyncTeX"
@@ -7670,254 +7567,201 @@ literal "false"
 
 \end_inset
 
- for details.
+.
 \end_layout
 
 \begin_layout Subsubsection*
-
-\lang english
 Okular (KDE)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Go to 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Settings\SpecialChar menuseparator
-Configure Okular\SpecialChar menuseparator
-Editor
-\end_layout
-
+Gehen Sie in 
+\family sans
+Okular
+\family default
+ zu Einstellungen\SpecialChar menuseparator
+Okular einrichten\SpecialChar menuseparator
+Editor, wählen Sie als Editor 
+\begin_inset Quotes gld
 \end_inset
 
-, select 
-\begin_inset Quotes eld
+LyX
+\begin_inset Quotes grd
 \end_inset
 
-Custom Text Editor
-\begin_inset Quotes erd
-\end_inset
-
- and add the command 
+.
+ Dies wählt den passenden Befehl aus (
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 lyxclient -g %f %l
 \end_layout
 
 \end_inset
 
-.
+).
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Reverse search is triggered by SHIFT-click.
+Rückwärtssuche wird mit 
+\family sans
+Shift-Klick
+\family default
+ initiiert.
 \end_layout
 
 \begin_layout Subsubsection*
-
-\lang english
 Qpdfview (Unix)
 \end_layout
 
 \begin_layout Standard
 
-\lang english
-Qpdfview supports Sync\SpecialChar TeX
- since version 0.3.5.
- Go to 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Edit\SpecialChar menuseparator
-Settings\SpecialChar ldots
+\family sans
+Qpdfview
+\family default
+ unterstützt Sync\SpecialChar TeX
+ seit Version 0.3.5.
+ Gehen Sie in 
+\family sans
+Qpdfview
+\family default
+ zu 
+\family sans
+Bearbeiten\SpecialChar menuseparator
+Einstellungen\SpecialChar ldots
 \SpecialChar menuseparator
-Behavior
-\end_layout
-
+Verhalten
+\family default
+, klicken Sie auf das Eingabefeld 
+\begin_inset Quotes gld
 \end_inset
 
-, click on the input field of the 
-\begin_inset Quotes eld
+Quelltexteditor
+\begin_inset Quotes grd
 \end_inset
 
-Source editor
-\begin_inset Quotes erd
-\end_inset
-
- item and add the command 
+ und geben Sie den Befehl 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 lyxclient -g %1 %2
 \end_layout
 
 \end_inset
 
-.
+ ein.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Reverse search is triggered by double-click.
+Rückwärtssuche wird mit Doppelklick initiiert.
 \end_layout
 
 \begin_layout Subsubsection*
-
-\lang english
 YAP (Windows)
 \end_layout
 
 \begin_layout Standard
+Starten Sie YAP, gehen Sie zu 
+\family sans
+Ansicht\SpecialChar menuseparator
+Optionen
+\family default
+ und wählen Sie den Reiter 
+\family sans
+DVI-Rückwärtssuche
+\family default
+.
+ Klicken Sie auf 
+\family sans
+Neu\SpecialChar ldots
 
-\lang english
-Launch yap, choose its 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-View\SpecialChar menuseparator
-Options
-\end_layout
-
-\end_inset
-
- menu and select the 
-\begin_inset Quotes eld
-\end_inset
-
-Inverse DVI Search
-\begin_inset Quotes erd
-\end_inset
-
- tab.
- Click on the 
-\begin_inset Quotes eld
-\end_inset
-
-New\SpecialChar ldots
-
-\begin_inset Quotes erd
-\end_inset
-
- button and, in the window that opens, enter 
-\begin_inset Quotes eld
+\family default
+ und geben Sie im Fenster, das sich dadurch öffnet, 
+\begin_inset Quotes gld
 \end_inset
 
 \SpecialChar LyX
- Editor
-\begin_inset Quotes erd
+
+\begin_inset Quotes grd
 \end_inset
 
- (or any other name you like) in the 
-\begin_inset Quotes eld
-\end_inset
-
+ (oder einen anderen Namen Ihrer Wahl) ins Feld 
+\family sans
 Name:
-\begin_inset Quotes erd
-\end_inset
-
- field.
- Now click on the button labeled 
-\begin_inset Quotes eld
+\family default
+ ein.
+ Dann klicken Sie auf den Knopf mit dem Text 
+\begin_inset Quotes gld
 \end_inset
 
 \SpecialChar ldots
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
- to open a file dialog and navigate to the directory containing the batch
- file 
+, um einen Dateidialog zu öffnen und zu dem Verzeichnis zu navigieren, in
+ dem die Batchdatei 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 lyxeditor.bat
 \end_layout
 
 \end_inset
 
- (see below).
- Select 
+ (s.
+\begin_inset space \thinspace{}
+\end_inset
+
+u.) liegt.
+ Wählen Sie 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 lyxeditor.bat
 \end_layout
 
 \end_inset
 
- and then specify the program arguments as 
+ und geben Sie als Argumente des Programms 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %f %l
 \end_layout
 
 \end_inset
 
-.
- The 
+ an.
+ Die Datei 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 lyxeditor.bat
 \end_layout
 
 \end_inset
 
- wrapper is used for communicating with \SpecialChar LyX
- through the 
+ wird zur Kommunikation mit \SpecialChar LyX
+ über die 
 \emph on
 lyxpipe
 \emph default
- and is as follows:
+ verwendet und hat folgenden Inhalt:
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 @echo off
 \begin_inset Newline newline
 \end_inset
 
-echo LYXCMD:revdvi:server-goto-file-row:%
-\change_inserted -712698321 1500964810
-~
-\change_unchanged
-1 %2> 
+echo LYXCMD:revdvi:server-goto-file-row:%~1 %2> 
 \backslash
 
 \backslash
@@ -7941,17 +7785,11 @@ lyxpipe.out
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Make sure that the \SpecialChar LyX
-Server pipe path you specified in \SpecialChar LyX
- is 
+Versichern Sie sich, dass der Pfad der LyX-Server-Weiterleitung 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 
@@ -7965,299 +7803,251 @@ lyxpipe
 
 \end_inset
 
-, otherwise change the 
+ lautet.
+ Falls nicht, ändern Sie 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 lyxeditor.bat
 \end_layout
 
 \end_inset
 
- wrapper accordingly.
+ entsprechend.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In yap, reverse search is triggered by double-click.
+Rückwärtssuche wird mit Doppelklick initiiert.
 \end_layout
 
 \begin_layout Subsubsection*
-
-\lang english
 SumatraPDF (Windows)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In order to use SumatraPDF for inverse search, enter 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-SumatraPDF -inverse-search "lyxeditor.bat 
-\change_inserted -712698321 1500964822
-"
-\change_unchanged
-%f
-\change_inserted -712698321 1500964823
-"
-\change_unchanged
- %l"
-\end_layout
-
+Um mit 
+\family sans
+SumatraPDF
+\family default
+ Rückwärtssuche zu verwenden, geben Sie als Betrachter in 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show prefs"
 \end_inset
 
- in the viewer setting in 
-\begin_inset Flex Noun
-status collapsed
 
-\begin_layout Plain Layout
-
-\lang english
-Preferences\SpecialChar menuseparator
-File Handling\SpecialChar menuseparator
-File formats\SpecialChar menuseparator
+\family sans
+\SpecialChar menuseparator
+Datei-Handhabung\SpecialChar menuseparator
+Dateiformate\SpecialChar menuseparator
 PDF (pdflatex)
+\family default
+ folgendes ein:
 \end_layout
 
-\end_inset
+\begin_layout LyX-Code
+SumatraPDF -inverse-search "lyxeditor.bat "%f" %l" 
+\end_layout
 
-, where 
+\begin_layout Standard
+Die Datei 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 lyxeditor.bat
 \end_layout
 
 \end_inset
 
- is the previous wrapper.
- If SumatraPDF.exe is not in your command PATH, use its full file name.
+ ist identisch mit der im vorherigen Abschnitt (YAP) erwähnten.
+ Sollte 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+SumatraPDF.exe
+\end_layout
+
+\end_inset
+
+ nicht in ihrem Befehlspfad liegen, verwenden Sie den vollen Dateipfad.
+ 
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Reverse search is triggered by double-click.
+Rückwärtssuche wird mit Doppelklick initiiert.
 \end_layout
 
 \begin_layout Subsubsection*
-
-\lang english
 YAP (Cygwin)
 \end_layout
 
 \begin_layout Standard
+Versichern Sie sich zunächst, dass YAP Ihr Standard-DVI-Betrachter in der
+ Windows-Umgebung ist.
+ Dann starten Sie diesen, gehen Sie zu 
+\family sans
+Ansicht\SpecialChar menuseparator
+Optionen
+\family default
+ und wählen Sie den Reiter 
+\family sans
+DVI-Rückwärtssuche
+\family default
+.
+ Klicken Sie auf 
+\family sans
+Neu\SpecialChar ldots
 
-\lang english
-First of all, make sure that yap is your default DVI viewer in the Windows
- environment, then launch it, choose its 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-View\SpecialChar menuseparator
-Options
-\end_layout
-
-\end_inset
-
- menu and select the 
-\begin_inset Quotes eld
-\end_inset
-
-Inverse DVI Search
-\begin_inset Quotes erd
-\end_inset
-
- tab.
- Click on the 
-\begin_inset Quotes eld
-\end_inset
-
-New\SpecialChar ldots
-
-\begin_inset Quotes erd
-\end_inset
-
- button and, in the window that opens, enter 
-\begin_inset Quotes eld
+\family default
+ und geben Sie im Fenster, das sich dadurch öffnet, 
+\begin_inset Quotes gld
 \end_inset
 
 \SpecialChar LyX
- Editor
-\begin_inset Quotes erd
+
+\begin_inset Quotes grd
 \end_inset
 
- (or any other name you like) in the 
-\begin_inset Quotes eld
-\end_inset
-
+ (oder einen anderen Namen Ihrer Wahl) ins Feld 
+\family sans
 Name:
-\begin_inset Quotes erd
-\end_inset
-
- field.
- Now click on the button labeled 
-\begin_inset Quotes eld
+\family default
+ ein.
+ Dann klicken Sie auf den Knopf mit dem Text 
+\begin_inset Quotes gld
 \end_inset
 
 \SpecialChar ldots
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
- to open a file dialog and navigate to the directory containing the 
+, um einen Dateidialog zu öffnen und zu dem Verzeichnis zu navigieren, in
+ dem die Binärdatei 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 lyxeditor.exe
 \end_layout
 
 \end_inset
 
- program (which is installed by default on Cygwin along with the \SpecialChar LyX
- executable).
- Select 
+ liegt (die unter Cygwin standardmäßig gemeinsam mit der \SpecialChar LyX
+-Binärdatei installiert
+ wird).
+ Wählen Sie 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 lyxeditor.exe
 \end_layout
 
 \end_inset
 
- and then specify the program arguments as 
+ und geben Sie als Argumente des Programms 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 -g %f %l
 \end_layout
 
 \end_inset
 
-.
- In this way, you will be using the 
+ an.
+ Dadurch wird der 
 \emph on
 lyxsocket
 \emph default
- for communicating with \SpecialChar LyX
-.
- If, for whatever reason, you want to use the 
+ für die Kommunikation mit \SpecialChar LyX
+ verwendet.
+ Wenn Sie lieber die 
 \emph on
 lyxpipe
 \emph default
-, omit the 
+ verwenden wollen, lassen Sie die Option 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 -g
 \end_layout
 
 \end_inset
 
- option and be sure to specify the \SpecialChar LyX
-Server pipe path in the \SpecialChar LyX
- preferences.
+ weg und versichern Sie sich, dass der Pfad der LyX-Server-Weiterleitung
+ in den \SpecialChar LyX
+-Einstellungen korrekt spezifiziert ist.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In yap, reverse search is triggered by double-click.
+Rückwärtssuche wird mit Doppelklick initiiert.
 \end_layout
 
 \begin_layout Subsubsection*
-
-\lang english
 SumatraPDF (Cygwin)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In order to use SumatraPDF for inverse search, enter 
+Um mit 
+\family sans
+SumatraPDF
+\family default
+ Rückwärtssuche zu verwenden, geben Sie 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 SumatraPDF.sh
 \end_layout
 
 \end_inset
 
- in the viewer setting in 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Preferences\SpecialChar menuseparator
-File Handling\SpecialChar menuseparator
-File formats\SpecialChar menuseparator
-PDF (pdflatex)
-\end_layout
-
+ als Betrachter in 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show prefs"
 \end_inset
 
-, where 
+
+\family sans
+\SpecialChar menuseparator
+Datei-Handhabung\SpecialChar menuseparator
+Dateiformate\SpecialChar menuseparator
+PDF (pdf\SpecialChar softhyphen
+latex)
+\family default
+ ein.
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 SumatraPDF.sh
 \end_layout
 
 \end_inset
 
- is the following script (to be placed in your command PATH, 
+ bezeichnet das folgende Skript, das Sie in Ihr Befehlsverzeichnis (am Besten
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 /usr/local/bin
 \end_layout
 
 \end_inset
 
- being the best choice):
+) ablegen sollten:
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 #!/bin/bash
 \begin_inset Newline newline
 \end_inset
@@ -8270,55 +8060,62 @@ SumatraPDF -inverse-search "lyxeditor -g %f %l" $(basename $1)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This wrapper script is needed because SumatraPDF is a native Windows application
- and does not understand the posix paths used by the Cygwin version of \SpecialChar LyX
-.
- If SumatraPDF.exe is not in your command PATH, use its full posix path in
- the script above.
- The 
+Dieses Skript wird benötigt, weil 
+\family sans
+SumatraPDF
+\family default
+ eine native Windowsanwendung ist und daher nicht mit den POSIX-Pfaden zurechtko
+mmt, die die Cygwin-Version von \SpecialChar LyX
+ verwendet.
+ Sollte 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+SumatraPDF.exe
+\end_layout
 
-\lang english
+\end_inset
+
+ nicht in ihrem Befehlspfad sein, verwenden Sie den vollen POSIX-Pfad im
+ obigen Skript.
+ Die Option 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 -g
 \end_layout
 
 \end_inset
 
- enables communication via the 
+ aktiviert Kommunikation über den 
 \emph on
 lyxsocket
 \emph default
 .
- Again, omit the 
+ Lassen Sie die Option 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 -g
 \end_layout
 
 \end_inset
 
- option if you want to use the 
+ weg, wenn Sie statt dessen lieber die 
 \emph on
 lyxpipe
 \emph default
-, and be sure to specify the \SpecialChar LyX
-Server pipe path in the \SpecialChar LyX
- preferences.
+ verwenden wollen.
+ Versichern Sie sich dann, dass der Pfad der LyX-Server-Weiterleitung in
+ den \SpecialChar LyX
+-Einstellungen korrekt spezifiziert ist.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Reverse search is triggered by double-click.
+Rückwärtssuche wird mit Doppelklick initiiert.
 \end_layout
 
 \begin_layout Section
@@ -8326,230 +8123,225 @@ Vorwärtssuche
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Forward search is, as the name implies, in a sense the 
-\begin_inset Quotes eld
+Wie der Name schon andeutet, ist Vorwärtssuche gewissermaßen das 
+\begin_inset Quotes gld
 \end_inset
 
-opposite
-\begin_inset Quotes erd
+Gegenteil
+\begin_inset Quotes grd
 \end_inset
 
- to reverse search.
- It allows you to let the viewer jump to a given position from within \SpecialChar LyX
-.
- If forward search is set up (as described in what follows), you can put
- the cursor anywhere in your \SpecialChar LyX
- document, and hit 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Navigate\SpecialChar menuseparator
-Forward search
-\end_layout
-
+ von Rückwärtssuche.
+ Die Funktion ermöglicht es Ihnen, den Betrachter von \SpecialChar LyX
+ aus an eine bestimmte
+ Stelle springen zu lassen.
+ Wenn Vorwärtssuche eingerichtet ist (wie im folgenden beschrieben), können
+ Sie Ihren Cursor irgendwo in Ihrem \SpecialChar LyX
+-Dokument platzieren, dann 
+\begin_inset Info
+type  "menu"
+arg   "forward-search"
 \end_inset
 
- (or select 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Forward search
-\end_layout
-
-\end_inset
-
- in the context menu via right mouse click), and then the viewer will jump
- to that position as well.
- This implies, of course, that your viewer supports this function.
+ im Menü wählen (oder einfach 
+\family sans
+Vorwärtssuche
+\family default
+ im Kontextmenü nach Rechtsklick), und schon wird der Betrachter zur entsprechen
+den Stelle im PDF/DVI springen.
+ Voraussetzung ist natürlich, dass der Betrachter diese Funktion auch unterstütz
+t.
 \end_layout
 
 \begin_layout Standard
+Um Vorwärtssuche zu ermöglichen, muss die DVI/PDF-Datei mit den entsprechenden
+ Informationen über die \SpecialChar TeX
+-Quellen versorgt werden.
+ Dies wird mit den Methoden, die im Abschnitt
+\begin_inset space ~
+\end_inset
 
-\lang english
-To make forward search possible, you first need to provide the generated
- output PDF/DVI file with additional information about the \SpecialChar TeX
- sources.
- This can be done via the methods described in the section 
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:rev-search"
 
 \end_inset
 
-.
+ beschrieben sind, erreicht.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Additionally, you need to configure \SpecialChar LyX
- for using your viewers in 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Werkzeuge\SpecialChar menuseparator
-Preferences\SpecialChar menuseparator
-Output\SpecialChar menuseparator
-General
-\end_layout
-
+Zusätzlich müssen Sie \SpecialChar LyX
+ für die Kommunikation mit dem Betrachter konfigurieren,
+ und zwar in 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show prefs"
 \end_inset
 
+
+\family sans
+\SpecialChar menuseparator
+Ausgabe\SpecialChar menuseparator
+Allgemein
+\family default
 .
- We provide a range of tested configurations for some viewers, which you
- can select from the drop down list.
- If none of these configurations suits you, you have to find out and enter
- a suitable configuration yourself.
- The definition syntax uses the following placeholders: 
+ Dort bieten wir eine Reihe von getesteten Konfigurationen für spezifische
+ Betrachter an, die Sie aus einer Auswahlliste wählen können.
+ Sollte keine davon Ihren Bedürfnissen entsprechen, müssen Sie selbst herausfind
+en, welche Sie dort eingeben müssen.
+ Die Definitionen verwenden die folgenden Platzhalter:
 \end_layout
 
 \begin_layout Itemize
 \noindent
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$n
 \end_layout
 
 \end_inset
 
-: row number
+: Zeilennummer
 \end_layout
 
 \begin_layout Itemize
 \noindent
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$t
 \end_layout
 
 \end_inset
 
-: name of the (temporary) exported .tex file (without path)
-\end_layout
-
-\begin_layout Itemize
-\noindent
-
-\lang english
+: Name der (temporären) exportierten 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+\noindent
+.tex
+\end_layout
 
-\lang english
+\end_inset
+
+-Datei (ohne Pfad)
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 $$f
 \end_layout
 
 \end_inset
 
-: name of the (temporary) exported .tex file (including path)
-\end_layout
-
-\begin_layout Itemize
-\noindent
-
-\lang english
+: Name der (temporären) exportierten 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+\noindent
+.tex
+\end_layout
 
-\lang english
+\end_inset
+
+-Datei (mit Pfad)
+\end_layout
+
+\begin_layout Itemize
+\noindent
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 $$o
 \end_layout
 
 \end_inset
 
-: name of the exported output file (either dvi or pdf, depending on which
- one exists in the temporary directory)
+: Name der exportierten Ausgabedatei (entweder DVI oder PDF, je nachdem,
+ welche im temporären Verzeichnis gefunden wird)
 \end_layout
 
 \begin_layout Standard
+Bitte beachten Sie, dass nur manche Betrachter aus dem Stand vollständige
+ und für \SpecialChar LyX
+ brauchbare Vorwärtssuche bieten, darunter 
+\family sans
+YAP
+\family default
+, 
+\family sans
+xdvi
+\family default
+, 
+\family sans
+Okular
+\family default
 
-\lang english
-Note that only some of the viewers provide full 
-\change_inserted -712698321 1500964855
-and usable 
-\change_unchanged
-forward search functionality
-\change_inserted -712698321 1500964887
- out of the box
-\change_unchanged
-, among them yap, xdvi, okular
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-You might want to set 
+Sie sollten hierfür auch 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-okular –unique
+okular -unique
 \end_layout
 
 \end_inset
 
  in 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Tools\SpecialChar menuseparator
-Preferences\SpecialChar menuseparator
-File Handling\SpecialChar menuseparator
-File
-\begin_inset space ~
+\begin_inset Info
+type  "menu"
+arg   "dialog-show prefs"
 \end_inset
 
-Formats
+
+\family sans
+\SpecialChar menuseparator
+Datei-Handhabung\SpecialChar menuseparator
+Dateiformate
+\family default
+ angeben.
 \end_layout
 
 \end_inset
 
+, 
+\family sans
+Qpdfview
+\family default
+ und 
+\family sans
+SumatraPDF
+\family default
 
-\end_layout
-
-\end_inset
-
-, qpdfview and Sumatra PDF
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
-SumatraPDF can also use DDE commands through the external program CMCDDE
- — downloadable from 
+\family sans
+SumatraPDF
+\family default
+ kann auch mit DDE-Kommandos über das externe Programm 
+\family sans
+CMCDDE
+\family default
+ umgehen, das Sie hier finden: 
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.istri.fr/spip/zip/CMCDDE.zip"
@@ -8557,27 +8349,27 @@ literal "false"
 
 \end_inset
 
-
+.
 \end_layout
 
 \end_inset
 
 .
- 
-\change_inserted -712698321 1500964878
-Others, such as evince
+ Andere, etwa 
+\family sans
+Evince
+\family default
+
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-\paragraph_spacing single
-
-\change_inserted -712698321 1500964878
-
-\lang english
-Forward search with evince can be achieved by means of third party helper
- scripts.
- Please refer to 
+Vorwärtssuche mit 
+\family sans
+Evince
+\family default
+ kann mithilfe zusätzlicher Hilfsskripte erreicht werden.
+ Bitte konsultieren Sie für Details 
 \begin_inset CommandInset href
 LatexCommand href
 target "http://wiki.lyx.org/LyX/SyncTeX"
@@ -8585,51 +8377,56 @@ literal "false"
 
 \end_inset
 
- for details.
+.
 \end_layout
 
 \end_inset
 
-, require some extra tools in order to use forward search.
- 
-\change_unchanged
-While many of the widespread PDF viewers (most notably Adobe Reader) do
- not support forward search at all, some other viewers – e.
+, benötigen zusätzliche Werkzeuge für Vorwärtssuche von \SpecialChar LyX
+ aus.
+ Während einige der verbreiteten PDF-Betrachter (v.
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
+a.
  
-\change_deleted -712698321 1500964902
-evince and 
-\change_unchanged
-xpdf – allow at least to reload the document and jump to a specific page
- of the file, so you can at least navigate 
-\begin_inset Quotes eld
+\family sans
+Adobe Reader
+\family default
+) überhaupt keine Vorwärtssuche bieten, können manche andere – bspw.
+ 
+\family sans
+xpdf
+\family default
+ – immerhin dazu gebracht werden, das Dokument neu zu laden und zu einer
+ bestimmten Seite zu springen; Sie können also wenigstens in die Nähe gelangen.
+ Diese zuletzt genannte Möglichkeit erfordert einen externen Aufruf von
+ 
+\family sans
+SyncTeX
+\family default
+ (die vorbereiteten Konfigurationen in 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show prefs"
 \end_inset
 
-near
-\begin_inset Quotes erd
-\end_inset
 
-.
- These latter functionality is provided by an external call of synctex (see
- the predefined example configurations).
+\family sans
+\SpecialChar menuseparator
+Ausgabe\SpecialChar menuseparator
+Allgemein
+\family default
+ enthalten diesen Aufruf).
  
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Forward search works both with DVI and PDF output.
+Vorwärtssuche funktioniert mit DVI- und PDF-Ausgabe.
  \SpecialChar LyX
- simply checks which preview format you have used before (i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e., which format is already there in the temporary directory) and chooses
- the appropriate configuration for the respective format.
- 
+ prüft einfach, welches Ausgabeformat Sie verwendet haben (also, welches
+ Format im temporären Verzeichnis vorfindlich ist) und wählt dann die passende
+ Konfiguration für das entsprechende Format.
 \end_layout
 
 \begin_layout Chapter
