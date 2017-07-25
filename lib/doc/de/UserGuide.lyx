@@ -8603,10 +8603,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8619,6 +8621,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8642,6 +8645,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -26777,7 +26781,7 @@ B.
 \family sans
 „fig
 \family default
-“ haben) umzuformatieren, verwendet man den Befehl
+“ haben) umzuformatieren, verwendet man im Fall von refstyle den Befehl
 \begin_inset Newline newline
 \end_inset
 
@@ -26789,12 +26793,58 @@ newref{fig}{refcmd={Bild auf Seite
 \backslash
 pageref{#1}}}
 \series default
+\lang english
 
 \begin_inset Newline newline
 \end_inset
 
-Für weitere Informationen über das Format, siehe die Dokumentation der Pakete,
+
+\lang ngerman
+Bitte beachten Sie, dass weder 
+\series bold
+prettyref
+\series default
+ noch 
+\series bold
+refstyle
+\series default
+ (noch \SpecialChar LyX
+ selbst) Formate für alle verfügbarren Typen von Verweisen vordefiniert.
+ Dies trifft insbesondere auf eine große Bandbreite verfügbarer mathematischer
  
+\begin_inset Quotes gls
+\end_inset
+
+Theorem
+\begin_inset Quotes grs
+\end_inset
+
+-Umgebungen zu.
+ Sollten Sie also formatierte Querverweise beispielsweise auf (mathematische)
+ Sätze machen wollen, müssen Sie das relevante Format selbst definieren.
+ Für 
+\series bold
+prettyref
+\series default
+ würde das bspw.
+ so aussehen:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+newrefformat{prop}{Satz 
+\backslash
+ref{#1}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+Für weitere Informationen zur Definition formatierter Querverweise konsultieren
+ Sie bitte die Dokumentation der Pakete, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "prettyref,refstyle"
@@ -26802,6 +26852,28 @@ literal "true"
 
 \end_inset
 
+.
+\begin_inset Newline newline
+\end_inset
+
+Die Optionen 
+\family sans
+Plural
+\family default
+ und 
+\family sans
+Großschreibung
+\family default
+ sind nur bei formatierten Querverweisen mit 
+\series bold
+refstyle
+\series default
+ aktiviert.
+ Für weitere Informationen konsultieren Sie bitte auch hier die Dokumentation
+ des Pakets 
+\emph on
+refstyle
+\emph default
 .
 \end_layout
 
@@ -26814,6 +26886,45 @@ reference "tab:Ein-Tabellen-Gleitobjekt"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Description
+Nur
+\begin_inset space ~
+\end_inset
+
+Marke: gibt nur den \SpecialChar LaTeX
+-Schlüssel für den Querverweis aus.
+ Das ist sinnvoll, wenn Sie über den \SpecialChar TeX
+-Modus einen Befehl für Querverweise
+ eingeben wollen, der von \SpecialChar LyX
+ nicht unterstützt wird.
+ Wenn Sie 
+\series bold
+refstyle
+\series default
+ verwenden, können Sie in diesem Fall zusätzlich 
+\family sans
+Ohne Präfix
+\family default
+ aktivieren, womit nur der Teil des Schlüssels, der nach dem Separator 
+\begin_inset Quotes gld
+\end_inset
+
+:
+\begin_inset Quotes grd
+\end_inset
+
+ kommt, ausgegeben wird.
+ Diese Form wird beispielsweise für 
+\series bold
+refstyles
+\series default
+ 
+\emph on
+Range-
+\emph default
+Kommandos (für Seitenbereiche) benötigt.
 \end_layout
 
 \begin_layout Standard
@@ -26919,6 +27030,73 @@ Eingebettete
 Objekte
 \emph default
  Handbuch beschrieben.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Bemerkung:
+\series default
+ Die Verwendung des \SpecialChar LaTeX
+-Pakets 
+\series bold
+refstyle
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-Paket ! refstyle
+\end_layout
+
+\end_inset
+
+ wird empfohlen, da 
+\series bold
+prettyref
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-Paket ! prettyref
+\end_layout
+
+\end_inset
+
+ nicht alle von \SpecialChar LyX
+ generierten Markenkürzel kennt
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Quotes gld
+\end_inset
+
+fig:
+\begin_inset Quotes grd
+\end_inset
+
+ zum Beispiel ist \SpecialChar LyX
+' Kürzel für Marken in Abbildungslegenden.
+\end_layout
+
+\end_inset
+
+ und keine Übersetzungen anbietet.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
