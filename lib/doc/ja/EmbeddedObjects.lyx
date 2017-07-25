@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 543
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -261,6 +261,7 @@ End
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \notefontcolor #0000ff
 \index 索引
 \shortcut idx
@@ -38395,7 +38396,57 @@ status collapsed
 
 \end_inset
 
+
+\lang english
+or
+\series bold
+\lang japanese
+minted
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+ぱっけーじ@\SpecialChar LaTeX
+パッケージ ! minted
+\end_layout
+
+\end_inset
+
 は，使用中の文書にプログラムソースコードを挿入する強力で柔軟な方法を提供します．
+\lang english
+One can only use one of these packages in a document.
+ 
+\series bold
+listings
+\series default
+ is used by default.
+ In order to use 
+\series bold
+minted
+\series default
+, you need to select it as the syntax highlighting package in the document
+ settings under 
+\family sans
+Listings
+\family default
+.
+ Note that 
+\series bold
+minted
+\series default
+ requires additional software (the 
+\family sans
+pygments
+\family default
+ python module) and the 
+\family typewriter
+-shell-escape
+\family default
+ option for the \SpecialChar LaTeX
+ backend.
 \end_layout
 
 \begin_layout Standard
@@ -38476,7 +38527,11 @@ h
 \family sans
 キャプション
 \family default
-メニューを使えば，プログラムリストにキャプションを付けることができます．プログラムリストは，フロート同様，リスト
+メニューを使えば
+\lang english
+that are not inline
+\lang japanese
+，プログラムリストにキャプションを付けることができます．プログラムリストは，フロート同様，リスト
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lst:ListFloat"
@@ -38530,6 +38585,59 @@ def func(param):
 \begin_layout Plain Layout
 
     pass
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+【註】
+\series default
+\lang english
+The 
+\series bold
+listings
+\series default
+ package places captions before the listing by default.
+\begin_inset Newline newline
+\end_inset
+
+The 
+\series bold
+minted
+\series default
+ package places them after the listing by default if it is floating.
+ If tit is not floating  caption will be typeset before the listing if it
+ is inserted to its first line, otherwise  it will be typeset after the
+ listing.
+ If you want to force the placement in avery case before the listing, you
+ have to add the following lines to the preamble:
+\lang japanese
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+usepackage{float}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+floatstyle{plaintop}
 \end_layout
 
 \end_inset
@@ -38619,7 +38727,15 @@ status open
 \end_layout
 
 \begin_layout Standard
-さらに行の範囲を指定することもでき，この場合にはこれらの行のみが出力に表示されます．プログラムリスト中でドイツ語のウムラウトのような国字を使用する場合には，
+さらに行の範囲を指定することもでき，この場合にはこれらの行のみが出力に表示されます．プログラムリスト中でドイツ語のウムラウトのような国字を使用する場合には
+\lang english
+is only meaningful for the 
+\series bold
+listings
+\series default
+ package and
+\lang japanese
+，
 \family sans
 拡張文字コード表を使う
 \family default
@@ -38962,10 +39078,16 @@ frac{1}{x^{2}}$
 \series bold
 listings
 \series default
+\lang english
+and 
+\series bold
+minted
+\series default
+\lang japanese
 パッケージについての詳しい情報については，取扱説明書
 \begin_inset CommandInset citation
 LatexCommand cite
-key "listings"
+key "listings,minted"
 literal "true"
 
 \end_inset
@@ -44190,6 +44312,44 @@ status collapsed
 \SpecialChar LaTeX
 ぱっけーじ@\SpecialChar LaTeX
 パッケージ ! listings
+\end_layout
+
+\end_inset
+
+の取扱説明書
+\end_layout
+
+\begin_layout Bibliography
+\labelwidthstring 参考文献
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "minted"
+literal "true"
+
+\end_inset
+
+\SpecialChar LaTeX
+パッケージ
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "minted"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/minted/minted.pdf"
+literal "false"
+
+\end_inset
+
+
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+ぱっけーじ@\SpecialChar LaTeX
+パッケージ ! minted
 \end_layout
 
 \end_inset

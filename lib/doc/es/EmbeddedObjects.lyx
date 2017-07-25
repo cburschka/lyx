@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 543
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -220,6 +220,7 @@ graphicboxes
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \notefontcolor #0000ff
 \index Índice
 \shortcut idx
@@ -40664,7 +40665,7 @@ de
 código.
  
 \family default
-El paquete \SpecialChar LaTeX
+Los paquetes \SpecialChar LaTeX
  
 \series bold
 listings
@@ -40680,8 +40681,55 @@ status collapsed
 
 \end_inset
 
+ y 
+\series bold
+minted
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-paquetes ! minted
+\end_layout
+
+\end_inset
+
  provee un mecanismo potente y flexible para insertar código fuente en tu
  documento.
+ 
+\lang english
+One can only use one of these packages in a document.
+ 
+\series bold
+listings
+\series default
+ is used by default.
+ In order to use 
+\series bold
+minted
+\series default
+, you need to select it as the syntax highlighting package in the document
+ settings under 
+\family sans
+Listings
+\family default
+.
+ Note that 
+\series bold
+minted
+\series default
+ requires additional software (the 
+\family sans
+pygments
+\family default
+ Python module) and the 
+\family typewriter
+-shell-escape
+\family default
+ option for the \SpecialChar LaTeX
+ backend.
 \end_layout
 
 \begin_layout Standard
@@ -40793,7 +40841,11 @@ Flotante
 \end_layout
 
 \begin_layout Standard
-Se puede añadir una leyenda a un listado de código con el menú 
+Se puede añadir una leyenda a listados de código 
+\lang english
+that are not inline
+\lang spanish
+ con el menú 
 \family sans
 Insertar\SpecialChar menuseparator
 Leyenda
@@ -40866,6 +40918,59 @@ def func(param):
 \begin_layout Plain Layout
 
     pass
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Nota: 
+\series default
+\lang english
+The 
+\series bold
+listings
+\series default
+ package places captions before the listing by default.
+\begin_inset Newline newline
+\end_inset
+
+The 
+\series bold
+minted
+\series default
+ package places them after the listing by default if it is floating.
+ If tit is not floating  caption will be typeset before the listing if it
+ is inserted to its first line, otherwise  it will be typeset after the
+ listing.
+ If you want to force the placement in avery case before the listing, you
+ have to add the following lines to the preamble
+\lang spanish
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+usepackage{float}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+floatstyle{plaintop}
 \end_layout
 
 \end_inset
@@ -40969,8 +41074,16 @@ tradicional
 
 mejorado
 \family default
- debería emplearse si se usan en el código caracteres nacionales como la
- diéresis alemana.
+ 
+\lang english
+is only meaningful for the 
+\series bold
+listings
+\series default
+ package
+\lang spanish
+ y debería emplearse si se usan en el código caracteres nacionales como
+ la diéresis alemana.
 \begin_inset Newline newline
 \end_inset
 
@@ -41288,9 +41401,13 @@ Para ver ahí una lista de las opciones disponibles, escribe una interrogación
 \end_layout
 
 \begin_layout Standard
-Para más información sobre el paquete 
+Para más información sobre los paquetes 
 \series bold
 listings
+\series default
+ y 
+\series bold
+minted
 \series default
 , consulta su documentación
 \begin_inset space ~
@@ -41299,7 +41416,7 @@ listings
 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "listings"
+key "listings,minted"
 literal "true"
 
 \end_inset
@@ -46525,6 +46642,42 @@ status collapsed
 \begin_layout Plain Layout
 \SpecialChar LaTeX
 -paquetes ! listings
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "minted"
+literal "true"
+
+\end_inset
+
+Documentación del paquete \SpecialChar LaTeX
+ 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "minted"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/minted/minted.pdf"
+literal "false"
+
+\end_inset
+
+
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-paquetes ! minted
 \end_layout
 
 \end_inset

@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 543
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -219,6 +219,7 @@ graphicboxes
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_minted 0
 \notefontcolor #0000ff
 \index Stichwortverzeichnis
 \shortcut idx
@@ -41099,8 +41100,8 @@ Pro\SpecialChar softhyphen
 grammlisting
 \family default
  verwenden.
- Das \SpecialChar LaTeX
--Paket 
+ Die \SpecialChar LaTeX
+-Pakete 
 \series bold
 listings
 \series default
@@ -41115,7 +41116,53 @@ status collapsed
 
 \end_inset
 
- kann Programm-Code auf vielfältige und flexible Weise in Ihr Dokument einfügen.
+ und 
+\series bold
+minted
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-Pakete ! minted
+\end_layout
+
+\end_inset
+
+ können Programm-Code auf vielfältige und flexible Weise in Ihr Dokument
+ einfügen.
+ Man kann nur eines der Pakete in einem Dokument verwenden.
+ 
+\series bold
+listings
+\series default
+ ist voreingestellt.
+ Um 
+\series bold
+minted
+\series default
+ zu benutzen, muss man es als Paket zur Code-Hervorhebung in den Dokumenteinstel
+lungen in der Rubrik 
+\family sans
+Programmlistings
+\family default
+ festlegen.
+ Dabei muss beachtet werden, dass 
+\series bold
+minted
+\series default
+ zusätzliche Software (das Python-Modul 
+\family sans
+pygments
+\family default
+) und die Option 
+\family typewriter
+-shell-escape
+\family default
+ für das \SpecialChar LaTeX
+-Backend benötigt.
 \end_layout
 
 \begin_layout Standard
@@ -41218,7 +41265,13 @@ h
 \end_layout
 
 \begin_layout Standard
-Sie können Listings mit Marken versehen, um auf Sie wie auf andere Gleitobjekte
+Mit dem Menü 
+\family sans
+Einfügen\SpecialChar menuseparator
+Legende
+\family default
+ kann man für das Listing eine Beschriftung hinzufügen.
+ Man kann Listings mit Marken versehen, um auf sie wie auf andere Gleitobjekte
  zu verweisen: Listing
 \begin_inset space ~
 \end_inset
@@ -41287,6 +41340,54 @@ def func(param):
 \begin_layout Plain Layout
 
     pass
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Bemerkung: 
+\series default
+Das Paket 
+\series bold
+listings
+\series default
+ setzt Beschriftungen standardmäßig vor das Listing.
+\begin_inset Newline newline
+\end_inset
+
+Das Paket 
+\series bold
+minted
+\series default
+ setzt sie standardmäßig vor das Listing, wenn es gleitend ist.
+ Ansonsten wird die Beschriftung vor das Listing gesetzt, wenn die Marke
+ in die erste Zeile eingefügt wurde, ansonsten hinter das Listing.
+ Um die Beschriftung in jedem Fall vor das Listing zu setzen, müssen diese
+ Zeilen zum \SpecialChar LaTeX
+-Vorspann hinzugefügt werden:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+usepackage{float}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+floatstyle{plaintop}
 \end_layout
 
 \end_inset
@@ -41394,7 +41495,12 @@ Erweiterte
 
 Zeichentabelle
 \family default
- sollte verwendet werden, wenn nationale Zeichen wie Umlaute benutzt werden.
+ ist nur für das Paket 
+\series bold
+listings
+\series default
+ relevant und sollte verwendet werden, wenn nationale Zeichen wie Umlaute
+ benutzt werden.
 \end_layout
 
 \begin_layout Standard
@@ -41791,14 +41897,18 @@ Listing
 \end_layout
 
 \begin_layout Standard
-Weitere Informationen über das 
+Weitere Informationen über die Pakete 
 \series bold
 listings
 \series default
--Paket finden Sie in 
+ und 
+\series bold
+minted
+\series default
+, siehe 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "listings"
+key "listings,minted"
 literal "true"
 
 \end_inset
@@ -47165,6 +47275,42 @@ status collapsed
 \begin_layout Plain Layout
 \SpecialChar LaTeX
 -Pakete ! listings
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "minted"
+literal "false"
+
+\end_inset
+
+Dokumentation des \SpecialChar LaTeX
+-Pakets 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "minted"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/minted/minted.pdf"
+literal "false"
+
+\end_inset
+
+
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-Pakete ! minted
 \end_layout
 
 \end_inset

@@ -41786,7 +41786,7 @@ Code
 Source
 \family default
 .
- Le paquetage \SpecialChar LaTeX
+ Les paquetages \SpecialChar LaTeX
  
 \series bold
 listings
@@ -41802,9 +41802,55 @@ Paquetages \SpecialChar LaTeX
 
 \end_inset
 
+ et 
+\series bold
+minted
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages \SpecialChar LaTeX
+ ! minted
+\end_layout
+
+\end_inset
+
  fournit un moyen puissant et flexible d'insérer des listings de code source
  dans votre document.
  
+\lang english
+One can only use one of these packages in a document.
+ 
+\series bold
+listings
+\series default
+ is used by default.
+ In order to use 
+\series bold
+minted
+\series default
+, you need to select it as the syntax highlighting package in the document
+ settings under 
+\family sans
+Listings
+\family default
+.
+ Note that 
+\series bold
+minted
+\series default
+ requires additional software (the 
+\family sans
+pygments
+\family default
+ python module) and the 
+\family typewriter
+-shell-escape
+\family default
+ option for the \SpecialChar LaTeX
+ backend.
 \end_layout
 
 \begin_layout Standard
@@ -41941,7 +41987,11 @@ Flottant
 \end_layout
 
 \begin_layout Standard
-Vous pouvez ajouter une légende à un listing avec le menu 
+Vous pouvez ajouter une légende à des listings 
+\lang english
+that are not inline
+\lang french
+ avec le menu 
 \family sans
 Insertion\SpecialChar menuseparator
 Légende
@@ -42017,6 +42067,59 @@ def func(param):
 \begin_layout Plain Layout
 
     pass
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note: 
+\series default
+\lang english
+The 
+\series bold
+listings
+\series default
+ package places captions before the listing by default.
+\begin_inset Newline newline
+\end_inset
+
+The 
+\series bold
+minted
+\series default
+ package places them after the listing by default if it is floating.
+ If tit is not floating  caption will be typeset before the listing if it
+ is inserted to its first line, otherwise  it will be typeset after the
+ listing.
+ If you want to force the placement in avery case before the listing, you
+ have to add the following lines to the preamble
+\lang french
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+usepackage{float}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+floatstyle{plaintop}
 \end_layout
 
 \end_inset
@@ -42127,8 +42230,16 @@ Caractères
 
 Étendue
 \family default
- quand vous employez des caractères spécifiques à une langue donnée comme
- les umlauts Allemands dans votre listing.
+ 
+\lang english
+is only meaningful for the 
+\series bold
+listings
+\series default
+ package
+\lang french
+ et vous devez le utiliser quand vous employez des caractères spécifiques
+ à une langue donnée comme les umlauts Allemands dans votre listing.
 \begin_inset Newline newline
 \end_inset
 
@@ -42555,14 +42666,18 @@ Listings
 \end_layout
 
 \begin_layout Standard
-Pour plus d'information sur le paquetage 
+Pour plus d'information sur les paquetages 
 \series bold
 listings
+\series default
+ et 
+\series bold
+minted
 \series default
 , nous vous renvoyons à sa documentation 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "listings"
+key "listings,minted"
 literal "true"
 
 \end_inset
@@ -47895,6 +48010,42 @@ status collapsed
 \begin_layout Plain Layout
 Paquetages \SpecialChar LaTeX
  ! listings
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "minted"
+literal "true"
+
+\end_inset
+
+Documentation du paquetage \SpecialChar LaTeX
+ 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "minted"
+target "ftp://tug.ctan.org/pub/tex-archive/macros/latex/contrib/minted/minted.pdf"
+literal "false"
+
+\end_inset
+
+
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages \SpecialChar LaTeX
+ ! minted
 \end_layout
 
 \end_inset
