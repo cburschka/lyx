@@ -2018,7 +2018,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 	if (!forceclass.empty())
 		h_textclass = forceclass;
 	tc.setName(h_textclass);
-	if (!tc.load()) {
+	if (!LayoutFileList::get().haveClass(h_textclass) || !tc.load()) {
 		cerr << "Error: Could not read layout file for textclass \"" << h_textclass << "\"." << endl;
 		exit(EXIT_FAILURE);
 	}
