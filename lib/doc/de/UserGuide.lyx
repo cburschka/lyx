@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 543
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -105,14 +105,14 @@ enumitem
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
-\use_package cancel 0
+\use_package cancel 1
 \use_package esint 1
 \use_package mathdots 1
-\use_package mathtools 0
+\use_package mathtools 1
 \use_package mhchem 1
-\use_package stackrel 0
-\use_package stmaryrd 0
-\use_package undertilde 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
 \cite_engine_type default
 \biblio_style plain
@@ -122,6 +122,7 @@ enumitem
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \notefontcolor #0000ff
 \branch Frage
 \selected 1
@@ -17368,9 +17369,8 @@ status collapsed
 \begin_layout Standard
 \SpecialChar LyX
  setzt Anführungszeichen normalerweise richtig.
- Insbesondere wird es unterschiedliche Anführungszeichen für den Beginn
- und das Ende des eingeschlossenen Textes benutzen.
- Zum Beispiel „Anfang Ende“.
+ Insbesondere werden unterschiedliche Anführungszeichen für den Beginn und
+ das Ende des eingeschlossenen Textes benutzt, zum Beispiel „Anfang Ende“.
  Das Tastaturzeichen 
 \family sans
 "
@@ -17379,7 +17379,7 @@ status collapsed
 \family sans
 Umschalt+2)
 \family default
- wird sie automatisch erzeugen.
+ erzeugt sie automatisch.
 \end_layout
 
 \begin_layout Standard
@@ -17415,77 +17415,858 @@ der
 Anführungszeichen
 \family default
  einstellen.
+ Beachten Sie aber, dass \SpecialChar LyX
+ für die ausgewählte Hauptsprache des Dokuments
+ jeweils einen sinnvollen Vorschlag macht.
+ Es stehen 14 Varianten zur Auswahl:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Äußere>> und <<innere>>:
+\noindent
+
+\family sans
+\begin_inset Quotes eld
+\end_inset
+
+Äußere
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+und
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes els
+\end_inset
+
+innere
+\begin_inset Quotes ers
+\end_inset
+
+
+\family default
+ Produziert 
+\begin_inset Quotes eld
+\end_inset
+
+diese äußeren
+\begin_inset Quotes erd
+\end_inset
+
+ und 
+\begin_inset Quotes els
+\end_inset
+
+diese inneren
+\begin_inset Quotes ers
+\end_inset
+
+ Anführungszeichen (bspw.
+ in den USA gebräuchlich)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Äußere>> und <<innere>>:
+
+\family sans
+\begin_inset Quotes sld
+\end_inset
+
+Äußere
+\begin_inset Quotes sld
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+und
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes sls
+\end_inset
+
+innere
+\begin_inset Quotes srs
+\end_inset
+
+
+\family default
+ Produziert 
+\begin_inset Quotes sld
+\end_inset
+
+diese äußeren
+\begin_inset Quotes sld
+\end_inset
+
+ und 
+\begin_inset Quotes sls
+\end_inset
+
+diese inneren
+\begin_inset Quotes srs
+\end_inset
+
+ Anführungszeichen (bspw.
+ in Schweden gebräuchlich)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Äußere>> und <<innere>>:
+
+\family sans
+\begin_inset Quotes gld
+\end_inset
+
+Äußere
+\begin_inset Quotes grd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+und
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes gls
+\end_inset
+
+innere
+\begin_inset Quotes grs
+\end_inset
+
+
+\family default
+ Produziert 
+\begin_inset Quotes gld
+\end_inset
+
+diese äußeren
+\begin_inset Quotes grd
+\end_inset
+
+ und 
+\begin_inset Quotes gls
+\end_inset
+
+diese inneren
+\begin_inset Quotes grs
+\end_inset
+
+ Anführungszeichen (bspw.
+ in Deutschland gebräuchlich)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Äußere>> und <<innere>>:
+
+\family sans
+\begin_inset Quotes pld
+\end_inset
+
+Äußere
+\begin_inset Quotes prd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+und
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes pls
+\end_inset
+
+innere
+\begin_inset Quotes prs
+\end_inset
+
+
+\family default
+ Produziert 
+\begin_inset Quotes pld
+\end_inset
+
+diese äußeren
+\begin_inset Quotes prd
+\end_inset
+
+ und 
+\begin_inset Quotes pls
+\end_inset
+
+diese inneren
+\begin_inset Quotes prs
+\end_inset
+
+ Anführungszeichen (bspw.
+ in Polen gebräuchlich)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Äußere>> und <<innere>>:
+
+\family sans
+\begin_inset Quotes cld
+\end_inset
+
+Äußere
+\begin_inset Quotes crd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+und
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes cls
+\end_inset
+
+innere
+\begin_inset Quotes crs
+\end_inset
+
+
+\family default
+ Produziert 
+\begin_inset Quotes cld
+\end_inset
+
+diese äußeren
+\begin_inset Quotes crd
+\end_inset
+
+ und 
+\begin_inset Quotes cls
+\end_inset
+
+diese inneren
+\begin_inset Quotes crs
+\end_inset
+
+ Anführungszeichen (bspw.
+ in der Schweiz gebräuchlich)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Äußere>> und <<innere>>:
+
+\family sans
+\begin_inset Quotes ald
+\end_inset
+
+Äußere
+\begin_inset Quotes ard
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+und
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes als
+\end_inset
+
+innere
+\begin_inset Quotes ars
+\end_inset
+
+
+\family default
+ Produziert 
+\begin_inset Quotes ald
+\end_inset
+
+diese äußeren
+\begin_inset Quotes ard
+\end_inset
+
+ und 
+\begin_inset Quotes als
+\end_inset
+
+diese inneren
+\begin_inset Quotes ars
+\end_inset
+
+ Anführungszeichen (bspw.
+ in Dänemark gebräuchlich)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Äußere>> und <<innere>>:
+
+\family sans
+\begin_inset Quotes qrd
+\end_inset
+
+Äußere
+\begin_inset Quotes qrd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+und
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes qls
+\end_inset
+
+innere
+\begin_inset Quotes qls
+\end_inset
+
+
+\family default
+ Produziert 
+\begin_inset Quotes qrd
+\end_inset
+
+diese äußeren
+\begin_inset Quotes qrd
+\end_inset
+
+ und 
+\begin_inset Quotes qls
+\end_inset
+
+diese inneren
+\begin_inset Quotes qls
+\end_inset
+
+ Anführungszeichen (so genannte 
+\emph on
+einfache
+\emph default
+ oder 
+\emph on
+nicht-typographische Anführungszeichen
+\emph default
+)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Äußere>> und <<innere>>:
+
+\family sans
+\begin_inset Quotes bld
+\end_inset
+
+Äußere
+\begin_inset Quotes brd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+und
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes bls
+\end_inset
+
+innere
+\begin_inset Quotes brs
+\end_inset
+
+
+\family default
+ Produziert 
+\begin_inset Quotes bld
+\end_inset
+
+diese äußeren
+\begin_inset Quotes brd
+\end_inset
+
+ und 
+\begin_inset Quotes bls
+\end_inset
+
+diese inneren
+\begin_inset Quotes brs
+\end_inset
+
+ Anführungszeichen (bspw.
+ in Großbritannien gebräuchlich)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Äußere>> und <<innere>>:
+
+\family sans
+\begin_inset Quotes fld
+\end_inset
+
+Äußere
+\begin_inset Quotes frd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+und
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes fls
+\end_inset
+
+innere
+\begin_inset Quotes frs
+\end_inset
+
+
+\family default
+ Produziert 
+\begin_inset Quotes fld
+\end_inset
+
+diese äußeren
+\begin_inset Quotes frd
+\end_inset
+
+ und 
+\begin_inset Quotes fls
+\end_inset
+
+diese inneren
+\begin_inset Quotes frs
+\end_inset
+
+ Anführungszeichen (bspw.
+ in Frankreich gebräuchlich)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Äußere>> und <<innere>>:
+
+\family sans
+\begin_inset Quotes ild
+\end_inset
+
+Äußere
+\begin_inset Quotes ird
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+und
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes ils
+\end_inset
+
+innere
+\begin_inset Quotes irs
+\end_inset
+
+
+\family default
+ Produziert 
+\begin_inset Quotes ild
+\end_inset
+
+diese äußeren
+\begin_inset Quotes ird
+\end_inset
+
+ und 
+\begin_inset Quotes ils
+\end_inset
+
+diese inneren
+\begin_inset Quotes irs
+\end_inset
+
+ Anführungszeichen (ein anderer in Frankreich gebräuchlicher Stil)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Vielleicht wundern Sie sich, warum man hier nicht einfach nur die äußeren
+ Anführungszeichen verwendet.
+ Der Grund ist, dass Sie dann nicht einfach zu einem anderen Stil wechseln
+ können (in dem sich die inneren Anführungszeichen von den äußeren unterscheiden
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Äußere>> und <<innere>>:
+
+\family sans
+\begin_inset Quotes rld
+\end_inset
+
+Äußere
+\begin_inset Quotes rrd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+und
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes rls
+\end_inset
+
+innere
+\begin_inset Quotes rrs
+\end_inset
+
+
+\family default
+ Produziert 
+\begin_inset Quotes rld
+\end_inset
+
+diese äußeren
+\begin_inset Quotes rrd
+\end_inset
+
+ und 
+\begin_inset Quotes rls
+\end_inset
+
+diese inneren
+\begin_inset Quotes rrs
+\end_inset
+
+ Anführungszeichen (bspw.
+ in Russland gebräuchlich)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Äußere>> und <<innere>>:
+
+\family sans
+\begin_inset Quotes wld
+\end_inset
+
+Äußere
+\begin_inset Quotes wrd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+und
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes wls
+\end_inset
+
+innere
+\begin_inset Quotes wrs
+\end_inset
+
+
+\family default
+ Produziert 
+\begin_inset Quotes wld
+\end_inset
+
+diese äußeren
+\begin_inset Quotes wrd
+\end_inset
+
+ und 
+\begin_inset Quotes wls
+\end_inset
+
+diese inneren
+\begin_inset Quotes wrs
+\end_inset
+
+ Anführungszeichen (ein weiterer in Schweden gebräuchlicher Stil)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Äußere>> und <<innere>>:
+\begin_inset Quotes jld
+\end_inset
+
+
+\family sans
+Äußere
+\family default
+
+\begin_inset Quotes jrd
+\end_inset
+
+
+\family sans
+
+\begin_inset space ~
+\end_inset
+
+und
+\begin_inset space ~
+\end_inset
+
+
+\family default
+
+\begin_inset Quotes jls
+\end_inset
+
+
+\family sans
+innere
+\family default
+
+\begin_inset Quotes jrs
+\end_inset
+
+ Produziert 
+\begin_inset Quotes jld
+\end_inset
+
+diese äußeren
+\begin_inset Quotes jrd
+\end_inset
+
+ und 
+\begin_inset Quotes jls
+\end_inset
+
+diese inneren
+\begin_inset Quotes jrs
+\end_inset
+
+ Anführungszeichen (bspw.
+ in Japan gebräuchlich)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Beachten Sie, dass diese Zeichen hier nur mit ähnlich aussehenden mathematischen
+ Symbolen emuliert werden, weil viele Kodierungen die entsprechenden japanischen
+ Zeichen nicht enthalten.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Äußere>> und <<innere>>:
+\begin_inset Quotes kld
+\end_inset
+
+
+\family sans
+Äußere
+\family default
+
+\begin_inset Quotes krd
+\end_inset
+
+
+\family sans
+
+\begin_inset space ~
+\end_inset
+
+und
+\begin_inset space ~
+\end_inset
+
+
+\family default
+
+\begin_inset Quotes kls
+\end_inset
+
+
+\family sans
+innere
+\family default
+
+\begin_inset Quotes krs
+\end_inset
+
+ Produziert 
+\begin_inset Quotes kld
+\end_inset
+
+diese äußeren
+\begin_inset Quotes krd
+\end_inset
+
+ und 
+\begin_inset Quotes kls
+\end_inset
+
+diese inneren
+\begin_inset Quotes krs
+\end_inset
+
+ Anführungszeichen (bspw.
+ in Nordkorea und China gebräuchlich)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Beachten Sie, dass diese Zeichen hier nur mit ähnlich aussehenden mathematischen
+ Symbolen emuliert werden, weil viele Kodierungen die entsprechenden Zeichen
+ nicht enthalten.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Innere Anführungszeichen
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+In vielen Schriftkulturen, so etwa auch in der deutschsprachigen, sind dies
+ einfache Anführungszeichen.
+ Wie aber die britischen und französischen Beispiele zeigen, ist dies nicht
+ notwendigermaßen der Fall (und spezifisch der britische Fall zeigt, dass
  
-\end_layout
+\begin_inset Quotes gld
+\end_inset
 
-\begin_layout Standard
-Über 
-\family sans
-Anführungszeichen
-\family default
- können Sie sechs verschiedene Anführungszeichen auswählen:
-\end_layout
+äußere
+\begin_inset Quotes grd
+\end_inset
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+ nicht zwingend 
+\begin_inset Quotes gld
+\end_inset
 
-\family sans
-“Text”
-\family default
- benutzt die Anführungszeichen: “doppelt”
-\end_layout
+doppelte
+\begin_inset Quotes grd
+\end_inset
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+ meint).
+ Daher sprechen wir lieber von 
+\begin_inset Quotes gls
+\end_inset
 
-\family sans
-”Text”
-\family default
- benutzt die Anführungszeichen: ”doppelt”
-\end_layout
+inneren
+\begin_inset Quotes grs
+\end_inset
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+ und 
+\begin_inset Quotes gld
+\end_inset
 
-\family sans
-„Text“
-\family default
- benutzt die Anführungszeichen: „doppelt“
-\end_layout
+äußeren Anführungszeichen
+\begin_inset Quotes grd
+\end_inset
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-„Text”
-\family default
- benutzt die Anführungszeichen: „doppelt”
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-«Text»
-\family default
- benutzt die Anführungszeichen: «doppelt»
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-»Text«
-\family default
- benutzt die Anführungszeichen: »doppelt«
-\end_layout
-
-\begin_layout Standard
-Um ein einfaches Anführungszeichens zu schreiben wollen, benutzen Sie 
-\family sans
-Alt+"
-\family default
 .
+\end_layout
+
+\end_inset
+
+ für eingebettete Zitate (und andere Aufgaben in manchen Sprachen, im Deutschen
+ etwa für 
+\begin_inset Quotes gls
+\end_inset
+
+Distanzierungsmarkierungen
+\begin_inset Quotes grs
+\end_inset
+
+) können mit Hilfe des Tastaturkürzels 
+\begin_inset Info
+type  "shortcut"
+arg   "quote-insert inner"
+\end_inset
+
+ oder über das Menü 
+\family sans
+Einfügen\SpecialChar menuseparator
+Sonderzeichen
+\family default
+ eingegeben werden.
+\end_layout
+
+\begin_layout Standard
+Standardmäßig sind die Anführungszeichen statisch.
+ Das heißt, ein Anführungszeichen behält den Stil, der eingestellt war,
+ als es eingefügt wurde, selbst wenn der dokumentweite Stil geändert wird.
+ Das erlaubt es Ihnen, Anführungszeichen verschiedenen Stils einzufügen.
+ Wenn Sie die Option 
+\family sans
+Dynamische Anführungszeichen
+\family default
+ in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Sprache
+\family default
+ aktivieren, werden hingegen spezielle Anführungszeichen eingefügt (im \SpecialChar LyX
+-Fenster
+ sind diese durch eine spezielle Farbe markiert).
+ Diese Anführungszeichen übernehmen automatisch immer den Hauptstil (inklusive
+ Änderungen desselben).
+ Diese Anführungszeichen machen es Ihnen leicht, den Stil in einem Schritt
+ zu ändern (bspw.
+ dann, wenn Ihr Verlag einen anderen Stil fordert).
+\end_layout
+
+\begin_layout Standard
+Einzelne Anführungszeichen können über ein Kontextmenü, das bei Rechtsklick
+ auf ein Anführungszeichen erscheint, leicht geändert werden (bspw.
+ hinsichtlich Stil, Ebene, Seite).
 \end_layout
 
 \begin_layout Subsection
