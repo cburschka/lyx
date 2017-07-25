@@ -3,7 +3,7 @@
 
 !!Interface changes
 
-* LyX now has "inverted" branch insets, which output their contents just in 
+* LyX now has "inverted" branch insets, which output their contents just in
   case a given branch is not "activated". This makes inclusion of alternate
   material in different versions easier.
 
@@ -72,6 +72,12 @@
 * lyx-activate
   Activates the LyX window. Useful in combination with reverse search.
 
+* devel-mode-toggle
+  Activate/deactivate the developer mode, which consists mainly in:
+  (1) more information shown in the status bar and (2) help file
+  opened in editable mode. This state used to be hardcoded at compile
+  time.
+
 
 !!!The following LyX functions have been changed in 2.3:
 
@@ -82,7 +88,7 @@
 
 * inset-modify
   This function now also applies to quote insets. It takes a three-character
-  string as an argument, refering (1.) to the style (e = ``english'',
+  string as an argument, referring (1.) to the style (e = ``english'',
   s = ''swedish'', g = ,,german``, p = ,,polish'', f = <<french>>, a = >>danish<<),
   (2.) to the side (l = left, r = right) and (3.) to the quotation level
   (s = single, d = double). So "eld" means "English left double quotation mark".
