@@ -73,6 +73,12 @@ What's new
 
 - Fix crash when closing master document with dirty child while Document
   Settings dialog is open (bug 9979).
+  
+- Fix random crash when dissolving inset (bug 10667).
+
+- Fix potential crash when cursor enters an inset (bug 10691).
+
+- Avoid crash when selecting long text (bug 10324).
 
 - Remove duplicate entries from the Symbols dialog (bug 10644).
 
@@ -93,17 +99,11 @@ What's new
 
 - Fix cursor state after double/triple click in mathed (bug #10686).
 
-- Fix potential crash when cursor enters an inset (bug 10691).
-
-- Fix random crash when dissolving inset (bug 10667).
-
-- Avoid crash when selecting long text (bug 10324).
-
 - Avoid a case of stuck cursor after entering an inset (bug 10630).
 
 - Don't swallow labels not entered through the toolbar in mathed (bug 10546).
 
-- Fix bad context menu on insets that do not have one (bug 10626).
+- Fix bad context menu on insets that do not have one (bug 10616).
 
 
 * INTERNALS
