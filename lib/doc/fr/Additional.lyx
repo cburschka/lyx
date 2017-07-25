@@ -121,6 +121,7 @@ shapepar
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -712698321 "Jürgen Spitzmüller"
 \author 34634807 "Jean-Pierre"
 \end_header
 
@@ -7284,6 +7285,32 @@ La recherche inversée est déclenchée par COMMAND-SHIFT-clic.
 \end_layout
 
 \begin_layout Subsubsection*
+
+\change_inserted -712698321 1500965008
+
+\lang english
+Evince (GNOME)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1500965008
+
+\lang english
+Reverse search with evince does not work out of the box, but it can be achieved
+ by means of some third party helper scripts.
+ Please refer to 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://wiki.lyx.org/LyX/SyncTeX"
+literal "false"
+
+\end_inset
+
+ for details.
+\end_layout
+
+\begin_layout Subsubsection*
 Okular (KDE)
 \end_layout
 
@@ -7508,7 +7535,7 @@ lyxpipe
 \begin_inset Newline newline
 \end_inset
 
-echo LYXCMD:revdvi:server-goto-file-row:%1 %2> 
+echo LYXCMD:revdvi:server-goto-file-row:%~1 %2> 
 \backslash
 
 \backslash
@@ -7585,7 +7612,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-SumatraPDF -inverse-search "lyxeditor.bat %f %l"
+SumatraPDF -inverse-search "lyxeditor.bat "%f" %l"
 \end_layout
 
 \end_inset
@@ -8160,9 +8187,45 @@ literal "false"
 
 \lang french
 .
- Alors que beaucoup des visionneuses PDF largement diffusées (parmi lesquelles
+ 
+\change_inserted -712698321 1500965121
+
+\lang english
+Others, such as evince
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\paragraph_spacing single
+
+\change_inserted -712698321 1500965121
+
+\lang english
+Forward search with evince can be achieved by means of third party helper
+ scripts.
+ Please refer to 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://wiki.lyx.org/LyX/SyncTeX"
+literal "false"
+
+\end_inset
+
+ for details.
+\end_layout
+
+\end_inset
+
+, require some extra tools in order to use forward search.
+ 
+\change_unchanged
+
+\lang french
+Alors que beaucoup des visionneuses PDF largement diffusées (parmi lesquelles
  on remarquera Adobe Reader) ne comprennent pas du tout la recherche directe,
  d'autre visionneuses, comme 
+\change_deleted -712698321 1500965103
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -8173,6 +8236,8 @@ evince
 \end_inset
 
  et 
+\change_unchanged
+
 \begin_inset Flex Noun
 status collapsed
 

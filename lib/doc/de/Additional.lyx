@@ -119,6 +119,7 @@ shapepar
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -712698321 "Jürgen Spitzmüller"
 \author 34634807 "Jean-Pierre"
 \end_header
 
@@ -7648,6 +7649,32 @@ Reverse search is triggered by COMMAND-SHIFT-click
 
 \begin_layout Subsubsection*
 
+\change_inserted -712698321 1500964792
+
+\lang english
+Evince (GNOME)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1500964792
+
+\lang english
+Reverse search with evince does not work out of the box, but it can be achieved
+ by means of some third party helper scripts.
+ Please refer to 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://wiki.lyx.org/LyX/SyncTeX"
+literal "false"
+
+\end_inset
+
+ for details.
+\end_layout
+
+\begin_layout Subsubsection*
+
 \lang english
 Okular (KDE)
 \end_layout
@@ -7886,7 +7913,11 @@ lyxpipe
 \begin_inset Newline newline
 \end_inset
 
-echo LYXCMD:revdvi:server-goto-file-row:%1 %2> 
+echo LYXCMD:revdvi:server-goto-file-row:%
+\change_inserted -712698321 1500964810
+~
+\change_unchanged
+1 %2> 
 \backslash
 
 \backslash
@@ -7971,7 +8002,15 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-SumatraPDF -inverse-search "lyxeditor.bat %f %l"
+SumatraPDF -inverse-search "lyxeditor.bat 
+\change_inserted -712698321 1500964822
+"
+\change_unchanged
+%f
+\change_inserted -712698321 1500964823
+"
+\change_unchanged
+ %l"
 \end_layout
 
 \end_inset
@@ -8451,8 +8490,15 @@ $$o
 \begin_layout Standard
 
 \lang english
-Note that only some of the viewers provide full forward search functionality,
- among them yap, xdvi, okular
+Note that only some of the viewers provide full 
+\change_inserted -712698321 1500964855
+and usable 
+\change_unchanged
+forward search functionality
+\change_inserted -712698321 1500964887
+ out of the box
+\change_unchanged
+, among them yap, xdvi, okular
 \begin_inset Foot
 status collapsed
 
@@ -8517,14 +8563,48 @@ literal "false"
 \end_inset
 
 .
- While many of the widespread PDF viewers (most notably Adobe Reader) do
+ 
+\change_inserted -712698321 1500964878
+Others, such as evince
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\paragraph_spacing single
+
+\change_inserted -712698321 1500964878
+
+\lang english
+Forward search with evince can be achieved by means of third party helper
+ scripts.
+ Please refer to 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://wiki.lyx.org/LyX/SyncTeX"
+literal "false"
+
+\end_inset
+
+ for details.
+\end_layout
+
+\end_inset
+
+, require some extra tools in order to use forward search.
+ 
+\change_unchanged
+While many of the widespread PDF viewers (most notably Adobe Reader) do
  not support forward search at all, some other viewers – e.
 \begin_inset space \thinspace{}
 \end_inset
 
 g.
- evince and xpdf – allow at least to reload the document and jump to a specific
- page of the file, so you can at least navigate 
+ 
+\change_deleted -712698321 1500964902
+evince and 
+\change_unchanged
+xpdf – allow at least to reload the document and jump to a specific page
+ of the file, so you can at least navigate 
 \begin_inset Quotes eld
 \end_inset
 

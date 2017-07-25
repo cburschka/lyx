@@ -165,6 +165,7 @@ End
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -712698321 "Jürgen Spitzmüller"
 \author 34634807 "Jean-Pierre"
 \end_header
 
@@ -8660,6 +8661,32 @@ Sync
 \end_layout
 
 \begin_layout Subsubsection*
+
+\change_inserted -712698321 1500965366
+
+\lang english
+Evince (GNOME)
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1500965366
+
+\lang english
+Reverse search with evince does not work out of the box, but it can be achieved
+ by means of some third party helper scripts.
+ Please refer to 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://wiki.lyx.org/LyX/SyncTeX"
+literal "false"
+
+\end_inset
+
+ for details.
+\end_layout
+
+\begin_layout Subsubsection*
 Okular (KDE)
 \end_layout
 
@@ -8801,7 +8828,7 @@ lyxpipe
 \begin_inset Newline newline
 \end_inset
 
-echo LYXCMD:revdvi:server-goto-file-row:%1 %2> 
+echo LYXCMD:revdvi:server-goto-file-row:%~1 %2> 
 \backslash
 
 \backslash
@@ -8885,15 +8912,7 @@ PDF (pdflatex)
 status collapsed
 
 \begin_layout Plain Layout
-SumatraPDF -inverse-search 
-\begin_inset Quotes eld
-\end_inset
-
-lyxeditor.bat %f %l
-\begin_inset Quotes erd
-\end_inset
-
-
+SumatraPDF -inverse-search "lyxeditor.bat "%f" %l"
 \end_layout
 
 \end_inset
@@ -9213,6 +9232,150 @@ $$o
 \end_layout
 
 \begin_layout Standard
+
+\change_inserted -712698321 1500965418
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1500965453
+
+\lang english
+[Revision 2017-07-25]
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1500965440
+
+\lang english
+Note that only some of the viewers provide full and usable forward search
+ functionality out of the box, among them yap, xdvi, okular
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1500965419
+
+\lang english
+You might want to set 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1500965419
+
+\lang english
+okular –unique
+\end_layout
+
+\end_inset
+
+ in 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1500965419
+
+\lang english
+Tools\SpecialChar menuseparator
+Preferences\SpecialChar menuseparator
+File Handling\SpecialChar menuseparator
+File
+\begin_inset space ~
+\end_inset
+
+Formats
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, qpdfview, and SumatraPDF
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1500965419
+
+\lang english
+SumatraPDF can also use DDE commands through the external program CMCDDE
+ — downloadable from 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://www.istri.fr/spip/zip/CMCDDE.zip"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+ Others, such as evince
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\paragraph_spacing single
+
+\change_inserted -712698321 1500965419
+
+\lang english
+Forward search with evince can be achieved by means of third party helper
+ scripts.
+ Please refer to 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://wiki.lyx.org/LyX/SyncTeX"
+literal "false"
+
+\end_inset
+
+ for details.
+\end_layout
+
+\end_inset
+
+, require some extra tools in order to use forward search.
+ While many of the widespread PDF viewers (most notably Adobe Reader) do
+ not support forward search at all, some other viewers – e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+  xpdf – allow at least to reload the document and jump to a specific page
+ of the file, so you can at least navigate 
+\begin_inset Quotes eld
+\end_inset
+
+near
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This latter functionality is provided by an external call of synctex (see
+ the predefined example configurations).
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 yap・xdvi・okular
 \begin_inset Foot
 status collapsed
