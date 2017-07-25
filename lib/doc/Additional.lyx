@@ -120,6 +120,7 @@ shapepar
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -6459,7 +6460,36 @@ name "subsec:rev-search"
 
 \begin_layout Standard
 In most cases \SpecialChar LyX
- will do the work for you by enabling the option 
+ will do the work for you by 
+\change_inserted -712698321 1500975045
+pressing the following button in the toolbar: 
+\begin_inset Info
+type  "icon"
+arg   "buffer-toggle-output-sync"
+\end_inset
+
+.
+ Alternatively, you can also enable the feature by checking 
+\family sans
+Synchronize with Output
+\family default
+ in 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1500975071
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Formats
+\end_layout
+
+\end_inset
+
+
+\change_deleted -712698321 1500974764
+enabling the option 
 \begin_inset Flex Noun
 status collapsed
 
@@ -6481,6 +6511,8 @@ Output
 
 \end_inset
 
+
+\change_unchanged
 .
  In such a case \SpecialChar LyX
  will automatically insert the necessary Sync\SpecialChar TeX
@@ -6857,8 +6889,15 @@ The generation of the required info can be forced by changing the converter
 
 \end_inset
 
- Also note that only a few PDF viewers (Okular and Qpdfview on Unix, Skim
- on the Mac, SumatraPDF on Windows) already provide Sync\SpecialChar TeX
+ Also note that only a few PDF viewers (
+\change_inserted -712698321 1500977288
+such as 
+\change_unchanged
+Okular and Qpdfview on Unix, Skim on the Mac, SumatraPDF on Windows
+\change_inserted -712698321 1500977299
+; see the next section for details
+\change_unchanged
+) already provide Sync\SpecialChar TeX
  support.
 \end_layout
 
@@ -6928,7 +6967,11 @@ TeX
 
 \end_inset
 
- or converter to 
+ 
+\change_deleted -712698321 1500977453
+or
+\change_unchanged
+ converter to 
 \begin_inset Flex Code
 status collapsed
 
@@ -6939,8 +6982,17 @@ pdflatex -synctex=1 $$i
 \end_inset
 
 .
- Check the documentation of your viewer whether the viewer needs to be configure
-d for the use with Sync\SpecialChar TeX
+ 
+\change_inserted -712698321 1500977740
+Should your viewer not be considered in the following description, or in
+ case of missing success, please 
+\change_deleted -712698321 1500977741
+C
+\change_inserted -712698321 1500977744
+c
+\change_unchanged
+heck the documentation of your viewer whether the viewer needs to be configured
+ for the use with Sync\SpecialChar TeX
 .
 \begin_inset Foot
 status collapsed
@@ -7295,15 +7347,38 @@ Editor
 
 \end_inset
 
-, select 
+
+\change_inserted -712698321 1500981642
+ and
+\change_deleted -712698321 1500981641
+,
+\change_unchanged
+ select 
+\change_deleted -712698321 1500981634
+
 \begin_inset Quotes eld
 \end_inset
 
 Custom Text Editor
+\change_inserted -712698321 1500981635
+LyX
+\change_unchanged
+
 \begin_inset Quotes erd
 \end_inset
 
- and add the command 
+ 
+\change_inserted -712698321 1500981659
+as editor.
+ This inserts the appropriate 
+\change_deleted -712698321 1500981663
+and add the 
+\change_unchanged
+command 
+\change_inserted -712698321 1500981665
+(
+\change_unchanged
+
 \begin_inset Flex Code
 status collapsed
 
@@ -7313,6 +7388,10 @@ lyxclient -g %f %l
 
 \end_inset
 
+
+\change_inserted -712698321 1500981668
+)
+\change_unchanged
 .
 \end_layout
 
@@ -7983,7 +8062,6 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-\paragraph_spacing single
 Forward search with evince can be achieved by means of third party helper
  scripts.
  Please refer to 
