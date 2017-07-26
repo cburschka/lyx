@@ -9036,7 +9036,7 @@ Sehen Sie sich dazu auch die Abbildungen im Beispiel an.
 \end_layout
 
 \begin_layout Subsection
-Das Schiedsrichter-Format
+Das Gutachter-Format
 \end_layout
 
 \begin_layout Standard
@@ -9047,7 +9047,7 @@ Um den Artikel einzureichen, muss er in einem speziellen, zweizeiligen Format
 \family typewriter
 referee
 \family default
- angegeben werden.
+ (Begutachtungsmodus) angegeben werden.
  Verwenden Sie hierzu im Menü 
 \family sans
 Dokument-Einstellungen\SpecialChar menuseparator
@@ -10317,30 +10317,58 @@ Panayotis Papasotiriou
 \end_layout
 
 \begin_layout Standard
-The ijmpc package is a set of macros that facilitates electronic manuscript
- submission to the 
+Das Paket 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ijmpc
+\end_layout
+
+\end_inset
+
+ ist eine Makrosammlung, die die Einreichung eines Manuskripts für das 
 \emph on
+\lang english
 International Journal of Modern Physics C
 \emph default
-.
- Similarly, the ijmpd package is for creating manuscripts to be submitted
- to the 
+\lang ngerman
+ erleichtert.
+ Das Paket 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ijmpd
+\end_layout
+
+\end_inset
+
+ hilft bei der Erstellung von Manuskripten für das 
 \emph on
+\lang english
 International Journal of Modern Physics D
 \emph default
+\lang ngerman
 .
- Both journals are published by World Scientific.
- The corresponding document classes are named 
+ Beide Zeitschriften werden von 
+\emph on
+\lang english
+World Scientific
+\emph default
+\lang ngerman
+ verlegt.
+ Die korrespondierenden Dokumentklassen heißen 
 \family typewriter
 ws-ijmpc.cls
 \family default
- and 
+ und 
 \family typewriter
 ws-ijmpd.cls
 \family default
-, respectively.
- These files, together with instructions for the authors, can be downloaded
- from the sites
+.
+ Alle Dateien können gemeinsam mit den Instruktionen für Autoren von den
+ folgenden Seiten heruntergeladen werden:
 \begin_inset Newline newline
 \end_inset
 
@@ -10355,7 +10383,7 @@ http://www.worldscinet.com/ijmpc/mkt/guidelines.shtml
 
 \end_inset
 
- and 
+ und
 \begin_inset Newline newline
 \end_inset
 
@@ -10374,52 +10402,13 @@ http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml
 \end_layout
 
 \begin_layout Standard
-Both packages are modified versions of the standard 
-\begin_inset Quotes gld
-\end_inset
-
-article
-\begin_inset Quotes grd
-\end_inset
-
- package, and they are almost (but not exactly) identical.
- Most of their features are supported by \SpecialChar LyX
-.
- I have used \SpecialChar LyX
- successfully to write articles submitted to both journals
- without any problem.
-\end_layout
-
-\begin_layout Standard
-Das ijmpd-Paket ist ein Makrosatz, der die elektronische Manuskript\SpecialChar softhyphen
-über\SpecialChar softhyphen
-sen\SpecialChar softhyphen
-dung
- an das International Journal of Modern Physics D, herausgegeben von World
- Scientific, erleichtert.
- Die Dokumentklasse ist 
-\family sans
-ws-ijmpd
-\family default
-.
- Es kann, zusammen mit Anweisungen des Autors, von 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml
-\end_layout
-
-\end_inset
-
- heruntergeladen werden.
- Das ijmpd-Paket ist eine modifizierte Version der article-Klasse.
- Die meisten Funktionen werden von \SpecialChar LyX
+Beide Pakete sind modifizierte Versionen der Standard-Artikel-Klasse, und
+ sie sind fast (aber nicht ganz) identisch.
+ Die meisten Features werden von \SpecialChar LyX
  unterstützt.
- Ich habe vor kurzem \SpecialChar LyX
- erfolgreich benutzt, um einen Artikel an das International
- Journal of Modern Physics D zu schicken.
+ Ich habe mit \SpecialChar LyX
+ Artikel für beide Zeitschriften geschrieben und erfolgreich
+ eingereicht.
 \end_layout
 
 \begin_layout Subsection
@@ -10427,241 +10416,253 @@ Einen Artikel schreiben
 \end_layout
 
 \begin_layout Standard
+Am einfachsten ist es, wenn Sie mit der zur Verfügung stehenden Vorlage
+ beginnen.
+ Gehen Sie zu 
+\begin_inset Info
+type  "menu"
+arg   "buffer-new-template"
+\end_inset
 
-\lang english
-As usual, the easiest way to write a paper is to start with a template.
- Click on 
-\family sans
-File\SpecialChar menuseparator
-New from
-\family default
- 
-\family sans
-Template
-\family default
-, then choose the 
+ und wählen Sie 
 \family typewriter
 ijmpc.lyx
 \family default
- or 
+ oder 
 \family typewriter
 ijmpd.lyx
 \family default
- template.
- This will give an (almost) empty document that includes the most common
- fields found in a manuscript.
- Simply overwrite the existing text (including the brackets, 
+.
+ Sie erhelten ein (fast) leeres Dokument mit den am häufigsten in Manuskripten
+ verwendeten Elementen.
+ Überschreiben Sie einfach den Text (inklusive der Klammern, 
 \family typewriter
 <>
 \family default
-) with your text.
- You should keep in mind the following remarks.
+) mit Ihrem Text.
+ Beachten Sie das Folgende:
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
 \SpecialChar LyX
- won't let you change the font size and the page style of the document,
- because such modifications are not allowed by both packages.
+ erlaubt es Ihnen nicht, Schriftgröße und Seitenstil des Dokuments zu verändern,
+ weil die beiden Klassen solche Modifikationen nicht zulassen.
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-The language of the document should not be changed.
- Before previewing your paper, be sure that the babel package is not used.
- To do this, click on 
+Die Sprache des Dokuments sollte nicht geändert werden.
+ Bevor Sie Ihr Dokument ausgeben, versichern Sie sich, dass das Paket 
 \family sans
-Tools\SpecialChar menuseparator
-Preferences
+Babel
 \family default
-, select the 
+ nicht geladen wird.
+ Hierfür gehen Sie 
 \family sans
-Lang Opts
+
+\begin_inset Info
+type  "menu"
+arg   "dialog-show document"
+\end_inset
+
+\SpecialChar menuseparator
+Sprache
 \family default
- tab, deselect the 
+ und wählen Sie unter 
 \family sans
-Use babel
+Sprachpaket
 \family default
- checkbox in the language settings, and click on 
-\family sans
-Apply
-\family default
- (or 
-\family sans
-Save
-\family default
-, if you wish to make this change permanent).
-\end_layout
-
-\begin_layout Enumerate
-
-\lang english
-The 
-\begin_inset Quotes eld
+ 
+\begin_inset Quotes gld
 \end_inset
 
-Keywords
-\begin_inset Quotes erd
-\end_inset
-
- style must be used to define keywords.
-\end_layout
-
-\begin_layout Enumerate
-
-\lang english
-The ijmpc package provides a style named 
-\begin_inset Quotes eld
-\end_inset
-
-Classification Codes
-\begin_inset Quotes erd
-\end_inset
-
-, which can be used to define classification codes, such as PACS numbers.
- Note that this facility is not supported by the ijmpd package.
-\end_layout
-
-\begin_layout Enumerate
-
-\lang english
-Several new environments are available: 
-\begin_inset Quotes eld
-\end_inset
-
-Definition
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Step
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Example
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Remark
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Notation
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Theorem
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Proof
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Corollary
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Lemma
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Proposition
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Prop
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Question
-\begin_inset Quotes erd
-\end_inset
-
-, 
-\begin_inset Quotes eld
-\end_inset
-
-Claim
-\begin_inset Quotes erd
-\end_inset
-
-, and 
-\begin_inset Quotes eld
-\end_inset
-
-Conjecture
-\begin_inset Quotes erd
+Keines
+\begin_inset Quotes grd
 \end_inset
 
 .
- Their use is more or less obvious.
- \SpecialChar LyX
- supports all these environments; it will use the proper label, text style,
- and numbering scheme for each of them.
 \end_layout
 
 \begin_layout Enumerate
+Die benutzerdefinierte Einfügung 
+\begin_inset Quotes gld
+\end_inset
 
-\lang english
-Both packages use basic citations; the natbib package should not be used.
+Schlagwörter
+\begin_inset Quotes grd
+\end_inset
+
+ muss verwendet werden, um Schlagwörter zu definieren.
+\end_layout
+
+\begin_layout Enumerate
+Die Klasse 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ijmpc
+\end_layout
+
+\end_inset
+
+ bietet einen Stil namens 
+\begin_inset Quotes gld
+\end_inset
+
+Klassifikationscodes
+\begin_inset Quotes grd
+\end_inset
+
+, der zur Definition solcher Codes (wie PACS-Nummern) verwendet werden kann.
+ Beachten Sie, dass 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ijmpd
+\end_layout
+
+\end_inset
+
+ diese Möglichkeit nicht bietet.
+\end_layout
+
+\begin_layout Enumerate
+Mehrere neue Umgebungen sind verfügbar: 
+\begin_inset Quotes gld
+\end_inset
+
+Definition
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+Schritt
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+Beispiel
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+Bemerkung
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+Notation
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+Theorem
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+Beweis
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+Korollar
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+Lemma
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+Satz
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+Eigenschaft
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+Frage
+\begin_inset Quotes grd
+\end_inset
+
+, 
+\begin_inset Quotes gld
+\end_inset
+
+Behauptung
+\begin_inset Quotes grd
+\end_inset
+
+ und 
+\begin_inset Quotes gld
+\end_inset
+
+Vermutung
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Ihr Gebrauch sollte offensichtlich sein.
+ \SpecialChar LyX
+ unterstützt all diese Umgebunden; angemessene Marken, Textstile und Nummerieru
+ngsschemata werden erzeugt.
+\end_layout
+
+\begin_layout Enumerate
+Beide Pakete verwenden schlichte (nummerische) Literaturverweise; 
+\family sans
+Natbib
+\family default
+ oder andere Pakete sollten nicht verwendet werden.
  In \SpecialChar LyX
-, citation references are shown as usual; in the output, citations are
- shown as superscripts.
- If you want to use a citation as normal text, you should use the 
+ werden Literaturverweise wie üblich angezeigt; in der Ausgabe erscheinen
+ sie hochgestellt.
+ Wenn Sie Literaturverweise als normalen Text ausgeben wollen, sollten Sie
+ den Befehl 
 \family typewriter
 refcite
 \family default
- command, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., 
+ verwenden, bspw.
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -10683,40 +10684,44 @@ refcite{key}
 \end_layout
 
 \begin_layout Enumerate
+Es gibt in beiden Klassen kein spezifisches 
+\begin_inset Quotes gld
+\end_inset
+
 
 \lang english
-There is no 
-\begin_inset Quotes eld
-\end_inset
-
 Acknowledgments
-\begin_inset Quotes erd
+\lang ngerman
+
+\begin_inset Quotes grd
 \end_inset
 
- section in both packages.
- To put acknowledgments, just use the 
-\begin_inset Quotes eld
+-Absatzformat.
+ Verwenden Sie einfach das Absatzformat 
+\begin_inset Quotes gld
 \end_inset
 
-Section*
-\begin_inset Quotes erd
+Abschnitt*
+\begin_inset Quotes grd
 \end_inset
 
- environment.
+.
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Appendices may be added to the paper, 
+Anhänge können an den Artikel angehängt werden, und zwar 
 \emph on
-after
+nach
 \emph default
- the Acknowledgments and 
+ den 
+\lang english
+Acknowledgments
+\lang ngerman
+ und 
 \shape italic
-before
+vor
 \shape default
- the References.
+ dem Literaturverzeichnis.
  \SpecialChar LyX
  provides a special environment, called 
 \begin_inset Quotes eld
@@ -10769,8 +10774,6 @@ must
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
 The ijmpc and the ijmpd packages use the 
 \family typewriter
 tbl
@@ -10855,11 +10858,12 @@ LaTeX
 status collapsed
 
 \begin_layout Plain Layout
-Actually you have the choice between \SpecialChar LaTeX
- (normal) and pdflatex.
- If you intend to use pdflatex to prepare the paper, you should use the
- pdflatex option so that included graphics are converted to PDF format,
- ready for use by pdflatex.
+Sie haben die Wahl zwischen \SpecialChar LaTeX
+ (normal) und \SpecialChar LaTeX
+ (pdflatex).
+ Wenn Sie vorhaben, pdflatex für die Erzeugung des Artikels zu verwenden,
+ sollten Sie die zweite Option wählen, da dort alle eingebundenen Grafiken
+ in ein für pdflatex angemessenes Format konvertiert werden.
 \end_layout
 
 \end_inset
@@ -10904,46 +10908,12 @@ Die geänderte
 .tex
 \family default
 -Datei muss gespeichert werden und von \SpecialChar LaTeX
- sooft wie nötig bearbeitet werden.
+ so oft wie nötig bearbeitet werden.
  Außerdem sollten Sie sich das resultierende 
 \family typewriter
 .dvi
 \family default
 -Dokument ansehen.
-\end_layout
-
-\begin_layout Subsection
-Use of \SpecialChar TeX
--Code
-\end_layout
-
-\begin_layout Standard
-The use of \SpecialChar TeX
--Code is reduced to two commands, which must be placed at the
- top of the document.
- If you started writing your paper by using the 
-\family typewriter
-ijmpc.lyx
-\family default
- or the 
-\family typewriter
-ijmpd.lyx
-\family default
- template, the \SpecialChar TeX
--Code needed is already in its place; you usually don't need
- to delete it.
- You may only modify the first \SpecialChar TeX
--Code to specify the information printed
- to the top of odd and even pages (authors' names and short paper's title,
- respectively).
- This \SpecialChar TeX
--Code must have the form 
-\family typewriter
-
-\backslash
-markboth{Authors' Names}{Short Paper's Title}
-\family default
-.
 \end_layout
 
 \begin_layout Section
