@@ -121,7 +121,7 @@ enumitem
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 0
+\use_refstyle 1
 \use_minted 0
 \notefontcolor #0000ff
 \branch Frage
@@ -26781,7 +26781,11 @@ B.
 \family sans
 „fig
 \family default
-“ haben) umzuformatieren, verwendet man im Fall von refstyle den Befehl
+“ haben) umzuformatieren, verwendet man im Fall von 
+\series bold
+refstyle
+\series default
+ den Befehl
 \begin_inset Newline newline
 \end_inset
 
@@ -26793,13 +26797,10 @@ newref{fig}{refcmd={Bild auf Seite
 \backslash
 pageref{#1}}}
 \series default
-\lang english
 
 \begin_inset Newline newline
 \end_inset
 
-
-\lang ngerman
 Bitte beachten Sie, dass weder 
 \series bold
 prettyref
@@ -26808,10 +26809,8 @@ prettyref
 \series bold
 refstyle
 \series default
- (noch \SpecialChar LyX
- selbst) Formate für alle verfügbarren Typen von Verweisen vordefiniert.
- Dies trifft insbesondere auf eine große Bandbreite verfügbarer mathematischer
- 
+ Formate für alle verfügbarren Typen von Verweisen vordefiniert.
+ Dies trifft insbesondere auf viele der verfügbaren mathematischer 
 \begin_inset Quotes gls
 \end_inset
 
@@ -26827,7 +26826,10 @@ Theorem
 prettyref
 \series default
  würde das bspw.
- so aussehen:
+\begin_inset space \space{}
+\end_inset
+
+so aussehen:
 \begin_inset Newline newline
 \end_inset
 
@@ -26869,12 +26871,6 @@ Großschreibung
 refstyle
 \series default
  aktiviert.
- Für weitere Informationen konsultieren Sie bitte auch hier die Dokumentation
- des Pakets 
-\emph on
-refstyle
-\emph default
-.
 \end_layout
 
 \begin_layout Description
@@ -26893,9 +26889,22 @@ Nur
 \begin_inset space ~
 \end_inset
 
-Marke: gibt nur den \SpecialChar LaTeX
--Schlüssel für den Querverweis aus.
- Das ist sinnvoll, wenn Sie über den \SpecialChar TeX
+Marke: gibt nur die \SpecialChar LaTeX
+-Marke für den Querverweis aus: 
+\begin_inset CommandInset ref
+LatexCommand labelonly
+reference "tab:Ein-Tabellen-Gleitobjekt"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Das ist sinnvoll, wenn Sie über den \SpecialChar TeX
 -Modus einen Befehl für Querverweise
  eingeben wollen, der von \SpecialChar LyX
  nicht unterstützt wird.
@@ -26903,9 +26912,13 @@ Marke: gibt nur den \SpecialChar LaTeX
 \series bold
 refstyle
 \series default
- verwenden, können Sie in diesem Fall zusätzlich 
+ verwenden, können Sie in diesem Fall zusätzlich die Option 
 \family sans
-Ohne Präfix
+Ohne
+\begin_inset space ~
+\end_inset
+
+Präfix
 \family default
  aktivieren, womit nur der Teil des Schlüssels, der nach dem Separator 
 \begin_inset Quotes gld
@@ -26918,9 +26931,9 @@ Ohne Präfix
  kommt, ausgegeben wird.
  Diese Form wird beispielsweise für 
 \series bold
-refstyles
+refstyle
 \series default
- 
+s 
 \emph on
 Range-
 \emph default
@@ -27030,73 +27043,6 @@ Eingebettete
 Objekte
 \emph default
  Handbuch beschrieben.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-Bemerkung:
-\series default
- Die Verwendung des \SpecialChar LaTeX
--Pakets 
-\series bold
-refstyle
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-\SpecialChar LaTeX
--Paket ! refstyle
-\end_layout
-
-\end_inset
-
- wird empfohlen, da 
-\series bold
-prettyref
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-\SpecialChar LaTeX
--Paket ! prettyref
-\end_layout
-
-\end_inset
-
- nicht alle von \SpecialChar LyX
- generierten Markenkürzel kennt
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Quotes gld
-\end_inset
-
-fig:
-\begin_inset Quotes grd
-\end_inset
-
- zum Beispiel ist \SpecialChar LyX
-' Kürzel für Marken in Abbildungslegenden.
-\end_layout
-
-\end_inset
-
- und keine Übersetzungen anbietet.
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section

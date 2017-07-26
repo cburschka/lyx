@@ -112,7 +112,7 @@ enumitem
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 0
+\use_refstyle 1
 \use_minted 0
 \notefontcolor #0000ff
 \branch Question
@@ -27314,7 +27314,7 @@ reference "subsec:Protected-Space"
 \end_layout
 
 \begin_layout Standard
-There are six formats of cross-references:
+There are eight formats of cross-references:
 \end_layout
 
 \begin_layout Description
@@ -27546,19 +27546,11 @@ fig
 \begin_inset Quotes erd
 \end_inset
 
-) can be done
-\change_inserted 424524441 1483414614
-, for 
+) can be done for 
 \series bold
 refstyle
 \series default
-,
-\change_unchanged
- with this command
-\change_inserted 424524441 1483414616
-:
-\change_unchanged
-
+ with this command:
 \begin_inset Newline newline
 \end_inset
 
@@ -27569,23 +27561,20 @@ refstyle
 newref{fig}{refcmd={Image on page 
 \backslash
 pageref{#1}}}
-\change_inserted 424524441 1484857490
-
 \series default
 
 \begin_inset Newline newline
 \end_inset
 
-Please note that neither 
+Note that neither 
 \series bold
 prettyref
 \series default
  nor 
 \series bold
-refstyle
+refstyle 
 \series default
- (nor \SpecialChar LyX
- itself) predefines reference formats for all available types.
+predefines reference formats for all available types.
  This is especially true for the wide variety of mathematical `theorem'
  environments.
  So if you want to make formatted references to, say, Propositions, then
@@ -27605,24 +27594,13 @@ prettyref
 newrefformat{prop}{Proposition 
 \backslash
 ref{#1}}
-\change_unchanged
-
 \series default
 
 \begin_inset Newline newline
 \end_inset
 
-For more information about 
-\change_inserted 424524441 1484843645
-defining formatted references
-\change_deleted 424524441 1484843647
-the format
-\change_unchanged
-, have a look at the package documentation
-\change_deleted 424524441 1484843659
-s,
-\change_unchanged
- 
+For more information about defining formatted references, have a look at
+ the package documentation 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "prettyref,refstyle"
@@ -27631,18 +27609,22 @@ literal "true"
 \end_inset
 
 .
-\change_inserted 424524441 1484843594
-
 \begin_inset Newline newline
 \end_inset
 
-The `Plural' and `Capitalized' options will be available with formatted
- references only if you are using the 
+The options 
+\family sans
+Plural
+\family default
+ and 
+\family sans
+Capitalized
+\family default
+ will be available with formatted references only if you are using the 
 \series bold
 refstyle
 \series default
  package.
- See its documentation, again, for more information.
 \end_layout
 
 \begin_layout Description
@@ -27658,33 +27640,41 @@ reference "fig:Two-distorted-images"
 \end_inset
 
 
-\change_inserted 424524441 1483414460
-
 \end_layout
 
 \begin_layout Description
-
-\change_inserted 424524441 1483817846
 Label
 \begin_inset space ~
 \end_inset
 
 only: prints only the \SpecialChar LaTeX
- label for the reference.
- This allows for customization, using ERT, if you want to issue a command
- that LyX does not support.
+ label for the reference: 
+\begin_inset CommandInset ref
+LatexCommand labelonly
+reference "fig:Two-distorted-images"
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+This allows for customization, using \SpecialChar TeX
+ Code, if you want to issue a command
+ that \SpecialChar LyX
+ does not support.
  If you are using 
 \series bold
 refstyle
 \series default
 , then you may want to use the 
-\begin_inset Quotes eld
+\family sans
+No
+\begin_inset space ~
 \end_inset
 
-No prefix
-\begin_inset Quotes erd
-\end_inset
-
+Prefix
+\family default
  option, which will output only the part of the reference following the
  
 \begin_inset Quotes eld
@@ -27695,18 +27685,20 @@ No prefix
 \end_inset
 
  separator.
- This is the form needed for, e.g., 
+ This is the form needed for e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
 \series bold
 refstyle
 \series default
-'s range commands.
-\change_deleted 424524441 1483414539
-
-\end_layout
-
-\begin_layout Standard
-The number and current page of the referenced document part in the output
- is automatically calculated by \SpecialChar LaTeX
+'s range commands.The number and current page of the referenced document
+ part in the output is automatically calculated by \SpecialChar LaTeX
 .
  The varieties are adjusted in the field 
 \family sans
@@ -27810,87 +27802,6 @@ Embedded
 Objects
 \emph default
  manual.
-\change_inserted 424524441 1483414754
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 424524441 1483414754
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\change_inserted 424524441 1483414754
-
-\series bold
-Note:
-\series default
- It is recommended to use the \SpecialChar LaTeX
--package 
-\series bold
-refstyle
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted 424524441 1483414754
-\SpecialChar LaTeX
--packages ! refstyle
-\end_layout
-
-\end_inset
-
- because 
-\series bold
-prettyref
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted 424524441 1483414754
-\SpecialChar LaTeX
--packages ! prettyref
-\end_layout
-
-\end_inset
-
- does not know all of \SpecialChar LyX
-'s possible label shortcuts
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted 424524441 1483414754
-\begin_inset Quotes eld
-\end_inset
-
-fig:
-\begin_inset Quotes erd
-\end_inset
-
- is for example \SpecialChar LyX
-'s shortcut for labels in figure captions.
-\end_layout
-
-\end_inset
-
- and is not internationalized.
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section

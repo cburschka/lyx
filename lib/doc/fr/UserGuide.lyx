@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 543
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -126,6 +126,7 @@ logicalmkup
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_minted 0
 \notefontcolor #0000ff
 \branch Question
 \selected 1
@@ -9029,12 +9030,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -9047,6 +9050,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9079,6 +9083,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -27801,7 +27806,7 @@ reference "subsec:Espace-Insécable"
 \end_layout
 
 \begin_layout Standard
-Il y six variétés de références croisées:
+Il y huit variétés de références croisées:
 \end_layout
 
 \begin_layout Description
@@ -28077,8 +28082,18 @@ newrefformat
 newref
 \series default
  (refstyle) au préambule du document.
- Par exemple, la directive suivante redéfinit toutes les commandes aux figures
- (qui sont marquées dans les étiquettes par 
+ Par exemple, avec 
+\begin_inset Flex Strong
+status collapsed
+
+\begin_layout Plain Layout
+refstyle
+\end_layout
+
+\end_inset
+
+ la directive suivante redéfinit toutes les commandes aux figures (qui sont
+ marquées dans les étiquettes par 
 \family sans
 
 \begin_inset Quotes cld
@@ -28106,8 +28121,51 @@ pageref{#1}}}
 \begin_inset Newline newline
 \end_inset
 
-Pour les détails sur la gestion des mises en forme, voyez la documentation
- des paquetages, 
+
+\lang english
+Note that neither 
+\series bold
+prettyref
+\series default
+ nor 
+\series bold
+refstyle 
+\series default
+predefines reference formats for all available types.
+ This is especially true for the wide variety of mathematical `theorem'
+ environments.
+ So if you want to make formatted references to, say, Propositions, then
+ you will need to define the relevant format yourself.
+ For 
+\series bold
+prettyref
+\series default
+, you might do so as follows:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+\lang french
+
+\backslash
+newrefformat{prop}{
+\lang english
+Proposition
+\lang french
+ 
+\backslash
+ref{#1}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+Pour les détails sur 
+\lang english
+defining formatted references
+\lang french
+, voyez la documentation des paquetages, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "prettyref,refstyle"
@@ -28119,8 +28177,28 @@ literal "true"
 \begin_inset Newline newline
 \end_inset
 
+
+\lang english
+The options 
+\family sans
+Plural
+\family default
+ and 
+\family sans
+Capitalized
+\family default
+ will be available with formatted references only if you are using the 
+\series bold
+refstyle
+\series default
+ package.
+\lang french
+
+\begin_inset Newline newline
+\end_inset
+
 Voici un exemple de référence mise ne forme utilisant 
-\begin_inset Flex Code
+\begin_inset Flex Strong
 status collapsed
 
 \begin_layout Plain Layout
@@ -28133,7 +28211,17 @@ refstyle
 \emph on
 Guide de l'utilisateur
 \emph default
-, prettyref provoquant des erreurs en français): dans la 
+, 
+\begin_inset Flex Strong
+status collapsed
+
+\begin_layout Plain Layout
+prettyref
+\end_layout
+
+\end_inset
+
+ provoquant des erreurs en français): dans la 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "sec:Citation"
@@ -28158,6 +28246,73 @@ reference "fig:Deux-images-déformées."
 \end_inset
 
 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Label
+\begin_inset space ~
+\end_inset
+
+only: prints only the \SpecialChar LaTeX
+ label for the reference: 
+\lang french
+
+\begin_inset CommandInset ref
+LatexCommand labelonly
+reference "fig:Deux-images-déformées."
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\lang english
+
+\begin_inset Newline newline
+\end_inset
+
+This allows for customization, using \SpecialChar TeX
+ Code, if you want to issue a command
+ that \SpecialChar LyX
+ does not support.
+ If you are using 
+\series bold
+refstyle
+\series default
+, then you may want to use the 
+\family sans
+No
+\begin_inset space ~
+\end_inset
+
+Prefix
+\family default
+ option, which will output only the part of the reference following the
+ 
+\begin_inset Quotes eld
+\end_inset
+
+:
+\begin_inset Quotes erd
+\end_inset
+
+ separator.
+ This is the form needed for e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\series bold
+refstyle
+\series default
+'s range commands.
 \end_layout
 
 \begin_layout Standard

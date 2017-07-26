@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 543
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -99,7 +99,7 @@ End
 \use_microtype false
 \use_dash_ligatures false
 \graphics default
-\default_output_format pdf3
+\default_output_format default
 \output_sync 0
 \bibtex_command bibtex
 \index_command default
@@ -140,7 +140,8 @@ End
 \paperorientation portrait
 \suppress_date false
 \justification false
-\use_refstyle 0
+\use_refstyle 1
+\use_minted 0
 \notefontcolor #0000ff
 \branch 質問
 \selected 1
@@ -7175,12 +7176,14 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 これは原文儘(verbatim)環境です．
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 この下の2行は空白行です．
 \end_layout
 
@@ -7193,6 +7196,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 右記の各文字を始め，ほぼすべての文字が使えます．例："%&$§#~'`
 \backslash
 }][{|
@@ -7215,6 +7219,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -22606,6 +22611,49 @@ pageref{#1}ページにある図}}}
 \begin_inset Newline newline
 \end_inset
 
+
+\lang english
+Note that neither 
+\series bold
+prettyref
+\series default
+ nor 
+\series bold
+refstyle 
+\series default
+predefines reference formats for all available types.
+ This is especially true for the wide variety of mathematical `theorem'
+ environments.
+ So if you want to make formatted references to, say, Propositions, then
+ you will need to define the relevant format yourself.
+ For 
+\series bold
+prettyref
+\series default
+, you might do so as follows:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+\lang japanese
+
+\backslash
+newrefformat{prop}{
+\lang english
+Proposition
+\lang japanese
+ 
+\backslash
+ref{#1}
+\lang english
+}
+\series default
+\lang japanese
+
+\begin_inset Newline newline
+\end_inset
+
 のようなコマンドを使うことができます．書式についての詳細は，パッケージ取扱説明書
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -22615,6 +22663,24 @@ literal "true"
 \end_inset
 
 をご覧ください．
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+The options 
+\family sans
+Plural
+\family default
+ and 
+\family sans
+Capitalized
+\family default
+ will be available with formatted references only if you are using the 
+\series bold
+refstyle
+\series default
+ package.
 \end_layout
 
 \begin_layout Description
@@ -22626,6 +22692,73 @@ reference "fig:歪められた二つの像"
 \end_inset
 
 のように参照のキャプションを印字します．
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Label
+\begin_inset space ~
+\end_inset
+
+only: prints only the \SpecialChar LaTeX
+ label for the reference: 
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand labelonly
+reference "fig:歪められた二つの像"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\lang english
+
+\begin_inset Newline newline
+\end_inset
+
+This allows for customization, using \SpecialChar TeX
+ Code, if you want to issue a command
+ that \SpecialChar LyX
+ does not support.
+ If you are using 
+\series bold
+refstyle
+\series default
+, then you may want to use the 
+\family sans
+No
+\begin_inset space ~
+\end_inset
+
+Prefix
+\family default
+ option, which will output only the part of the reference following the
+ 
+\begin_inset Quotes eld
+\end_inset
+
+:
+\begin_inset Quotes erd
+\end_inset
+
+ separator.
+ This is the form needed for e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\series bold
+refstyle
+\series default
+'s range commands.
 \end_layout
 
 \begin_layout Standard

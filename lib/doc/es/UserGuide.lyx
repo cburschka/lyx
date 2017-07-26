@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 543
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -112,7 +112,8 @@ enumitem
 \paperorientation portrait
 \suppress_date false
 \justification true
-\use_refstyle 0
+\use_refstyle 1
+\use_minted 0
 \notefontcolor #0000ff
 \branch Pregunta
 \selected 1
@@ -8558,12 +8559,14 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
+
 Esto es entorno Literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8576,6 +8579,7 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
+
 Casi todo está permitido en entorno Literal:"%&$§#~'`
 \backslash
 }][{|
@@ -8600,6 +8604,7 @@ con la diferencia de que los espacios aparecen en la salida como el carácter
 \end_layout
 
 \begin_layout Verbatim*
+
 Esto es entorno Literal*.
 \end_layout
 
@@ -26890,7 +26895,7 @@ reference "subsec:Espacio-protegido"
 \end_layout
 
 \begin_layout Standard
-Hay seis estilos de referencias cruzadas: 
+Hay ocho estilos de referencias cruzadas: 
 \end_layout
 
 \begin_layout Description
@@ -27179,7 +27184,11 @@ fig
 \begin_inset Quotes crd
 \end_inset
 
-), se usa el comando
+), con 
+\series bold
+refstyle
+\series default
+ se usa el comando
 \begin_inset Newline newline
 \end_inset
 
@@ -27195,8 +27204,51 @@ pageref{#1}}}
 \begin_inset Newline newline
 \end_inset
 
-Para más información sobre el formato echa un vistazo a las documentaciones
- de los paquetes, 
+
+\lang english
+Note that neither 
+\series bold
+prettyref
+\series default
+ nor 
+\series bold
+refstyle 
+\series default
+predefines reference formats for all available types.
+ This is especially true for the wide variety of mathematical `theorem'
+ environments.
+ So if you want to make formatted references to, say, Propositions, then
+ you will need to define the relevant format yourself.
+ For 
+\series bold
+prettyref
+\series default
+, you might do so as follows:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+\lang spanish
+
+\backslash
+newrefformat{prop}{
+\lang english
+Proposition
+\lang spanish
+ 
+\backslash
+ref{#1}}
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+Para más información sobre 
+\lang english
+defining formatted references
+\lang spanish
+ echa un vistazo a las documentaciones de los paquetes, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "prettyref,refstyle"
@@ -27205,6 +27257,24 @@ literal "true"
 \end_inset
 
 .
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+The options 
+\family sans
+Plural
+\family default
+ and 
+\family sans
+Capitalized
+\family default
+ will be available with formatted references only if you are using the 
+\series bold
+refstyle
+\series default
+ package.
 \end_layout
 
 \begin_layout Description
@@ -27220,6 +27290,73 @@ reference "fig:Dos-imágenes"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Label
+\begin_inset space ~
+\end_inset
+
+only: prints only the \SpecialChar LaTeX
+ label for the reference: 
+\lang spanish
+
+\begin_inset CommandInset ref
+LatexCommand labelonly
+reference "fig:Dos-imágenes"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+This allows for customization, using \SpecialChar TeX
+ Code, if you want to issue a command
+ that \SpecialChar LyX
+ does not support.
+ If you are using 
+\series bold
+refstyle
+\series default
+, then you may want to use the 
+\family sans
+No
+\begin_inset space ~
+\end_inset
+
+Prefix
+\family default
+ option, which will output only the part of the reference following the
+ 
+\begin_inset Quotes eld
+\end_inset
+
+:
+\begin_inset Quotes erd
+\end_inset
+
+ separator.
+ This is the form needed for e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+
+\series bold
+refstyle
+\series default
+'s range commands.
 \end_layout
 
 \begin_layout Standard
