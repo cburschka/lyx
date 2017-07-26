@@ -4871,8 +4871,12 @@ savelabelitemi}
 \SpecialChar LyX
  has long supported the export of documents to various web-friendly formats,
  such as HTML.
- Before verson 2.0, however, HTML export was always accomplished by the use
- of external converters.
+ Before vers
+\change_inserted -712698321 1501076595
+i
+\change_unchanged
+on 2.0, however, HTML export was always accomplished by the use of external
+ converters.
 \begin_inset Foot
 status collapsed
 
@@ -5113,7 +5117,11 @@ The file
 status collapsed
 
 \begin_layout Plain Layout
-development/HTML.notes
+development/
+\change_inserted -712698321 1501078933
+HTML/
+\change_unchanged
+HTML.notes
 \end_layout
 
 \end_inset
@@ -5372,6 +5380,8 @@ have to be on for images to be output, however.
 , so they are very accurate.
  The disadvantage, as mentioned earlier, is that these are bitmapped images,
  so they do not scale terribly well, and one cannot copy them, etc.
+
+\change_deleted -712698321 1501075981
  (As of this writing, there are also problems about equation numbering.
  See 
 \begin_inset CommandInset href
@@ -5383,6 +5393,8 @@ literal "false"
 \end_inset
 
 .)
+\change_unchanged
+
 \begin_inset Newline newline
 \end_inset
 
@@ -5401,7 +5413,13 @@ status collapsed
 \begin_layout Plain Layout
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
+
+\change_deleted -712698321 1501076136
 Output
+\change_inserted -712698321 1501076137
+Formats
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -5493,7 +5511,13 @@ status collapsed
 \begin_layout Plain Layout
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
+
+\change_deleted -712698321 1501076586
 Output
+\change_inserted -712698321 1501076587
+Formats
+\change_unchanged
+
 \end_layout
 
 \end_inset
