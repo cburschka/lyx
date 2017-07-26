@@ -8338,14 +8338,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8358,7 +8356,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8382,7 +8379,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -29063,7 +29059,7 @@ Inserting a citation reference works as described in section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:The-Bibliography-Environmentfg"
+reference "subsec:The-Bibliography-Environment"
 plural "false"
 caps "false"
 noprefix "false"
@@ -29584,7 +29580,7 @@ Natbib
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:The-Bibliography-Environmentfg"
+reference "subsec:The-Bibliography-Environment"
 
 \end_inset
 
