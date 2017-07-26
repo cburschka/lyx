@@ -23254,24 +23254,25 @@ name "sec:書誌情報"
 
 \begin_layout Standard
 \SpecialChar LyX
-文書で書誌情報を生成するには，二つの方法があります．次小節で説明するように文献データベース
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-「Bib\SpecialChar TeX
-データベース」として知られています．
-\end_layout
-
+文書で書誌情報を生成するには，二つの方法があります．次小節で説明するように文献データベースをインクルードするか
+\lang english
+the following section (but see also sec.
+\begin_inset space ~
 \end_inset
 
-をインクルードするか，第
+
+\lang japanese
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:書誌情報環境"
 
 \end_inset
 
+
+\lang english
+)
+\lang japanese
 節に説明されているように
 \family sans
 書誌情報
@@ -36742,6 +36743,9 @@ arg   "closetab"
 
 \family default
 )現れるようになります．無効の場合には，各文書タブごとに閉ボタンが付きます．
+\lang english
+Regardless of this option, one can always close a tab by middle-clicking
+ it in the tab bar.
 \end_layout
 
 \begin_layout Standard
@@ -39771,6 +39775,57 @@ status collapsed
 \begin_layout Plain Layout
 
 http://www.ctan.org/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Biblatex"
+literal "true"
+
+\end_inset
+
+\SpecialChar LaTeX
+パッケージ
+\series bold
+biblatex
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+latexはつけじ@\SpecialChar LaTeX
+パッケージ ! biblatex
+\end_layout
+
+\end_inset
+
+の
+\begin_inset CommandInset href
+LatexCommand href
+name "取扱説明書"
+target "http://www.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf"
+literal "false"
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf
 \end_layout
 
 \end_inset

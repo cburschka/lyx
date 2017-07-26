@@ -146,7 +146,6 @@ enumitem
 \html_css_as_file 0
 \html_be_strict true
 \author -712698321 "Jürgen Spitzmüller"
-\author 274215730 "scott"
 \author 424524441 "rgheck"
 \end_header
 
@@ -28270,41 +28269,8 @@ name "sec:Bibliography"
 
 \begin_layout Standard
 There are two ways of generating the bibliography in a \SpecialChar LyX
-
-\change_inserted -712698321 1483880152
- 
-\change_deleted -712698321 1483880151
--
-\change_unchanged
-document.
- You can include a bibliography database,
-\change_deleted -712698321 1483880276
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Known under the name 
-\begin_inset Quotes eld
-\end_inset
-
-Bib\SpecialChar TeX
- database
-\begin_inset Quotes erd
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
- which is explained in 
-\change_deleted -712698321 1483883190
-the next subsection
-\change_inserted -712698321 1483890955
-sec.
+ document.
+ You can include a bibliography database, which is explained in sec.
 \begin_inset space ~
 \end_inset
 
@@ -28318,28 +28284,12 @@ noprefix "false"
 
 \end_inset
 
-
-\change_unchanged
 , or you can insert the bibliography manually, using the paragraph environment
  
 \family sans
 Bibliography
 \family default
-, which 
-\change_deleted -712698321 1483883190
-wa
-\change_inserted -712698321 1483883190
-i
-\change_unchanged
-s described in 
-\change_inserted -712698321 1483883197
-the following 
-\change_unchanged
-section
-\change_inserted -712698321 1483890942
- (but see also sec.
-\change_unchanged
-
+, which is described in the following section (but see also sec.
 \begin_inset space ~
 \end_inset
 
@@ -28350,11 +28300,7 @@ reference "subsec:Biblio_environment"
 
 \end_inset
 
-
-\change_inserted -712698321 1483883212
-)
-\change_unchanged
-.
+).
  If you want anything other than the numerical citations that are used in
  this document, 
 \change_deleted -712698321 1483883190
@@ -28405,8 +28351,7 @@ Bibliography
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted -712698321 1483885645
+The Bibliography Environment
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:The-Bibliography-Environment"
@@ -28414,8 +28359,6 @@ name "subsec:The-Bibliography-Environment"
 \end_inset
 
 
-\change_unchanged
-The Bibliography Environment
 \end_layout
 
 \begin_layout Standard
@@ -29120,7 +29063,7 @@ Inserting a citation reference works as described in section
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:The-Bibliography-Environment"
+reference "subsec:The-Bibliography-Environmentfg"
 plural "false"
 caps "false"
 noprefix "false"
@@ -29641,7 +29584,7 @@ Natbib
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:The-Bibliography-Environment"
+reference "subsec:The-Bibliography-Environmentfg"
 
 \end_inset
 
@@ -46130,12 +46073,8 @@ arg   "closetab"
 \family default
 ) at the right side of the tab bar to close tabs.
  Otherwise every document tab has its own close button.
-
-\change_inserted 274215730 1469338548
- Regardless of this option, one may always close a tab by middle-clicking
+ Regardless of this option, one can always close a tab by middle-clicking
  it in the tab bar.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -49551,13 +49490,9 @@ http://www.ctan.org/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf
 \end_inset
 
 
-\change_inserted -712698321 1483884806
-
 \end_layout
 
 \begin_layout Bibliography
-
-\change_inserted -712698321 1483884882
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Biblatex"
@@ -49574,11 +49509,23 @@ literal "false"
 
 \end_inset
 
- of the 
-\family sans
-Biblatex
-\family default
- package:
+ of the \SpecialChar LaTeX
+-package 
+\series bold
+biblatex
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-packages ! biblatex
+\end_layout
+
+\end_inset
+
+:
 \begin_inset Newline newline
 \end_inset
 
@@ -49588,15 +49535,11 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1483884888
-
 http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 

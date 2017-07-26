@@ -28839,7 +28839,7 @@ options
 \begin_layout Section
 Annexes
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Annexes
@@ -28938,32 +28938,24 @@ name "sec:Bibliographie"
 \begin_layout Standard
 Il y a deux façons de créer une bibliographie dans un document \SpecialChar LyX
 .
- Vous pouvez utiliser une base de données bibliographique
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Connue sous le nom de base de données 
-\begin_inset Quotes cld
+ Vous pouvez utiliser une base de données bibliographique, ce qui est expliqué
+ dans la section
+\begin_inset space ~
 \end_inset
 
-Bib\SpecialChar TeX
 
-\begin_inset Quotes crd
-\end_inset
-
-.
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:L'environnement-Bibliographie"
 
 \end_inset
 
-, ce qui est expliqué dans la sous-section suivante, ou vous pouvez entrer
- la bibliographie à la main.
+, ou vous pouvez entrer la bibliographie à la main.
  Pour la seconde méthode, l'environnement de paragraphe 
 \family sans
 Bibliographie
 \family default
-, décrit section
+, décrit suivante (voir ausi section
 \begin_inset space ~
 \end_inset
 
@@ -28974,7 +28966,7 @@ reference "subsec:Environnement-biblio"
 
 \end_inset
 
-, sera utilisé.
+), sera utilisé.
  Si vous voulez avoir autre chose que les citations numériques que vous
  pouvez voir dans ce document, comme par exemple des citations auteur-année,
  vous devez utiliser une base de données bibliographique.
@@ -28982,6 +28974,13 @@ reference "subsec:Environnement-biblio"
 
 \begin_layout Subsection
 L'environnement Bibliographie
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:L'environnement-Bibliographie"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -45405,6 +45404,10 @@ arg   "closetab"
 \family default
 ) à la droite de la barre des onglets pour fermer ceux-ci.
  Sinon, chaque document a son propre bouton de fermeture.
+ 
+\lang english
+Regardless of this option, one can always close a tab by middle-clicking
+ it in the tab bar.
 \end_layout
 
 \begin_layout Standard
@@ -48841,8 +48844,6 @@ literal "false"
 \end_inset
 
 
-\lang english
-
 \begin_inset Flex URL
 status collapsed
 
@@ -49054,6 +49055,57 @@ status collapsed
 \begin_layout Plain Layout
 
 http://www.ctan.org/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Biblatex"
+literal "true"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "http://www.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf"
+literal "false"
+
+\end_inset
+
+ du paquetage \SpecialChar LaTeX
+ 
+\series bold
+biblatex
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages \SpecialChar LaTeX
+ ! biblatex
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf
 \end_layout
 
 \end_inset
