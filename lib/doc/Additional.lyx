@@ -12999,12 +12999,34 @@ ijmpd.lyx
 \begin_layout Enumerate
 The language of the document should not be changed.
  Before previewing your paper, be sure that the babel package is not used.
- To do this, click on 
+ To do this, click on
+\change_inserted -712698321 1501082726
+ 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show document"
+\end_inset
+
+
+\change_unchanged
+ 
+\change_deleted -712698321 1501082743
+
 \family sans
-Tools\SpecialChar menuseparator
+Tools
+\change_unchanged
+\SpecialChar menuseparator
+
+\change_deleted -712698321 1501082747
 Preferences
+\change_inserted -712698321 1501082748
+Language
+\change_unchanged
+
 \family default
-, select the 
+, 
+\change_deleted -712698321 1501082762
+select the 
 \family sans
 Lang Opts
 \family default
@@ -13020,7 +13042,23 @@ Apply
 \family sans
 Save
 \family default
-, if you wish to make this change permanent).
+, if you wish to make this change permanent)
+\change_inserted -712698321 1501082770
+and select 
+\begin_inset Quotes eld
+\end_inset
+
+None
+\begin_inset Quotes erd
+\end_inset
+
+ as 
+\family sans
+Language Package
+\change_unchanged
+
+\family default
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -13425,11 +13463,15 @@ The modified
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted -712698321 1501082212
 Use of \SpecialChar TeX
  code
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1501082212
 The use of \SpecialChar TeX
  code is reduced to two commands, which must be placed at the
  top of the document.
@@ -13456,6 +13498,8 @@ ijmpd.lyx
 markboth{Authors' Names}{Short Paper's Title}
 \family default
 .
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
