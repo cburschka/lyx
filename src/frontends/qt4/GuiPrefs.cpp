@@ -1684,8 +1684,6 @@ PrefConverters::PrefConverters(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(needauthForbiddenCB, SIGNAL(toggled(bool)),
 		this, SIGNAL(changed()));
-	connect(needauthCB, SIGNAL(toggled(bool)),
-		this, SIGNAL(changed()));
 
 	converterED->setValidator(new NoNewLineValidator(converterED));
 	converterFlagED->setValidator(new NoNewLineValidator(converterFlagED));
@@ -1871,6 +1869,21 @@ void PrefConverters::on_cacheCB_stateChanged(int state)
 void PrefConverters::on_needauthForbiddenCB_toggled(bool checked)
 {
 	needauthCB->setEnabled(!checked);
+}
+
+
+void PrefConverters::on_needauthCB_toggled(bool checked)
+{
+	if (checked)
+		return;
+
+	int ret = frontend::Alert::prompt(
+		_("SECURITY WARNING!"), _("Unchecking this option has the effect that potentially harmful converters would be run without asking your permission first. This is UNSAFE and NOT recommended, unless you know what you are doing. Are you sure you would like to proceed ? The recommended and safe answer is NO!"),
+		0, 0, _("&No"), _("&Yes"));
+	if (ret == 1)
+		changed();
+	else
+		needauthCB->setChecked(true);
 }
 
 
