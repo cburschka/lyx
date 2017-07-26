@@ -217,7 +217,7 @@ literal "false"
 \begin_inset Newline newline
 \end_inset
 
-Version 2.2.x
+Version 2.3.x
 \begin_inset Note Note
 status collapsed
 
@@ -31047,6 +31047,59 @@ Zweige
 \end_layout
 
 \begin_layout Standard
+Ab LyX 2.3.0 gibt es auch 
+\begin_inset Quotes gld
+\end_inset
+
+umgekehrte
+\begin_inset Quotes grd
+\end_inset
+
+ Zweig-Einfügungen, deren Inhalt gerade dann ausgegeben wird, wenn der Zweig
+ 
+\emph on
+nicht
+\emph default
+ aktiviert ist.
+ 
+\begin_inset Branch Frage
+inverted 1
+status open
+
+\begin_layout Standard
+Zum Beispiel wird dieser Text nur ausgegeben, wenn der Zweig 
+\begin_inset Quotes gld
+\end_inset
+
+Frage
+\begin_inset Quotes grd
+\end_inset
+
+ deaktiviert ist.
+ 
+\end_layout
+
+\end_inset
+
+Dadurch kann leicht alternativer Text für verschiedene Versionen eines Dokuments
+ eingegeben werden.
+ Um zu kontrollieren, ob eine spezifische Einfügung 
+\begin_inset Quotes gld
+\end_inset
+
+umgekehrt
+\begin_inset Quotes grd
+\end_inset
+
+ ist, klicken Sie mit der rechten Maustaste auf den Knopf der Einfügung
+ und wählen Sie 
+\family sans
+Einfügung umkehren
+\family default
+.
+\end_layout
+
+\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -44089,6 +44142,9 @@ arg   "closetab"
 \family default
 ) auf der rechten Seite der Reiterleiste um Registerkarten zu schließen.
  Ansonsten hat jede Registerkarte ihren eigenen Knopf zum Schließen.
+ Unabhängig davon, ob diese Option aktiviert ist oder nicht, lässt sich
+ eine Registerkarte jederzeit durch Klick mit der mittleren Maustaste auf
+ den Reiter schließen.
 \end_layout
 
 \begin_layout Standard
