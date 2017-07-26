@@ -10092,9 +10092,7 @@ Einstellungen\SpecialChar ldots
 Dokumentklasse\SpecialChar menuseparator
 Dokument\SpecialChar softhyphen
 klas\SpecialChar softhyphen
-se
-\family default
-?
+se?
 \end_layout
 
 \begin_layout Standard
@@ -10369,10 +10367,9 @@ ws-ijmpd.cls
 .
  Alle Dateien können gemeinsam mit den Instruktionen für Autoren von den
  folgenden Seiten heruntergeladen werden:
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
+\begin_layout Itemize
 \begin_inset Flex URL
 status collapsed
 
@@ -10383,11 +10380,10 @@ http://www.worldscinet.com/ijmpc/mkt/guidelines.shtml
 
 \end_inset
 
- und
-\begin_inset Newline newline
-\end_inset
+ 
+\end_layout
 
-
+\begin_layout Itemize
 \begin_inset Flex URL
 status collapsed
 
@@ -10398,7 +10394,7 @@ http://www.worldscinet.com/ijmpd/mkt/guidelines.shtml
 
 \end_inset
 
-.
+
 \end_layout
 
 \begin_layout Standard
@@ -10433,7 +10429,7 @@ ijmpc.lyx
 ijmpd.lyx
 \family default
 .
- Sie erhelten ein (fast) leeres Dokument mit den am häufigsten in Manuskripten
+ Sie erhalten ein (fast) leeres Dokument mit den am häufigsten in Manuskripten
  verwendeten Elementen.
  Überschreiben Sie einfach den Text (inklusive der Klammern, 
 \family typewriter
@@ -10483,7 +10479,7 @@ Keines
 \end_layout
 
 \begin_layout Enumerate
-Die benutzerdefinierte Einfügung 
+Um Schlagwörter zu definieren, muss die benutzerdefinierte Einfügung 
 \begin_inset Quotes gld
 \end_inset
 
@@ -10491,7 +10487,7 @@ Schlagwörter
 \begin_inset Quotes grd
 \end_inset
 
- muss verwendet werden, um Schlagwörter zu definieren.
+ verwendet werden.
 \end_layout
 
 \begin_layout Enumerate
@@ -10656,12 +10652,23 @@ Natbib
  In \SpecialChar LyX
  werden Literaturverweise wie üblich angezeigt; in der Ausgabe erscheinen
  sie hochgestellt.
- Wenn Sie Literaturverweise als normalen Text ausgeben wollen, sollten Sie
- den Befehl 
+ Wenn Sie Literaturverweise im Text formatiert (
+\begin_inset Quotes gld
+\end_inset
+
+ref.
+ 3
+\begin_inset Quotes grd
+\end_inset
+
+) ausgeben wollen, sollten Sie den Befehl 
 \family typewriter
+
+\backslash
 refcite
 \family default
- verwenden, bspw.
+ im \SpecialChar TeX
+-Modus verwenden, bspw.
  
 \begin_inset Quotes eld
 \end_inset
@@ -10709,7 +10716,7 @@ Abschnitt*
 \end_layout
 
 \begin_layout Enumerate
-Anhänge können an den Artikel angehängt werden, und zwar 
+Anhänge können dem Artikel beigefügt werden, und zwar 
 \emph on
 nach
 \emph default
@@ -10723,122 +10730,81 @@ vor
 \shape default
  dem Literaturverzeichnis.
  \SpecialChar LyX
- provides a special environment, called 
-\begin_inset Quotes eld
+ bietet ein spezielles Absatzformat namens 
+\begin_inset Quotes gld
 \end_inset
 
-Appendices Section
-\begin_inset Quotes erd
+Anhang
+\begin_inset Quotes grd
 \end_inset
 
- which marks the beginning of the appendices.
- This environment should be left blank; it just sends a \SpecialChar LaTeX
- command, but nothing
- is really printed.
+, mit dem man den Beginn des Anhangs markieren muss.
+ Dieses Absatzformat sollte leer gelassen werden; es übermittelt einfach
+ einen \SpecialChar LaTeX
+-Befehl, es wird aber kein Text ausgegeben.
  In \SpecialChar LyX
-, the word 
-\begin_inset Quotes eld
+ wird das Wort 
+\begin_inset Quotes gld
 \end_inset
 
-Appendix
-\begin_inset Quotes erd
+Anhang
+\begin_inset Quotes grd
 \end_inset
 
- is printed with blue letters, as a signal that all sections after that
- point are appendices.
- To write an appendix, use the 
-\begin_inset Quotes eld
-\end_inset
-
-Appendix
-\begin_inset Quotes erd
-\end_inset
-
- environment.
+ in blauen Buchstaben gedruckt, um zu signalisieren, dass alle Abschnitte,
+ die nachfolgen, Anhänge sind.
  \SpecialChar LyX
- will number each appendix with capital letters, as required by both journals.
- Note that 
-\begin_inset Quotes eld
-\end_inset
-
-Appendices Section
-\begin_inset Quotes erd
-\end_inset
-
- 
-\emph on
-must
-\emph default
- be present before the first appendix; if not, all appendices will be numbered
- as normal sections in the output.
+ nummeriert jeden Absatz mit Großbuchstaben, so wie es die Zeitschriften
+ verlangen.
 \end_layout
 
 \begin_layout Enumerate
-The ijmpc and the ijmpd packages use the 
-\family typewriter
-tbl
-\family default
- command to implement table captions.
- As a result, a table created by \SpecialChar LyX
- is printed correctly, but its caption
- is ignored.
- However, you can use some \SpecialChar TeX
--Code to overpass this problem, so that captions
- are printed as expected.
- To do so, create a float table as usual, remove the caption, and replace
- it with the \SpecialChar TeX
--Code 
+Die beiden Klassen nutzen den Befehl 
 \family typewriter
 
 \backslash
-tbl{
-\emph on
-your table caption
-\emph default
-}{
+tbl
 \family default
- (sic); you must also the \SpecialChar TeX
--Code 
+, um Tabellenlegenden zu formatieren.
+ Er wird über die benutzerdefinierte Einfügung 
+\begin_inset Quotes gld
+\end_inset
+
+Tabellenlegende
+\begin_inset Quotes grd
+\end_inset
+
+ eingefügt.
+ Unmittelbar danach (ohne Absatzumbruch) folgt die Tabelle, eingefasst von
+ 
+\family typewriter
+{
+\family default
+ und 
 \family typewriter
 }
 \family default
- immediately after the tabular material.
- Study the example table included in the template files to see how this
- trick is implemented.
- Alternatively, If you need table captions, you should implement the whole
- table float in a 
-\family typewriter
-.tex
-\family default
- file, then include this file to the \SpecialChar LyX
- document (
-\family sans
-Insert\SpecialChar menuseparator
-File\SpecialChar menuseparator
-Child
-\begin_inset space ~
-\end_inset
-
-Document
-\family default
-).
- Details on how to create a table float can be found in the files 
+ im \SpecialChar TeX
+-Modus.
+ Die Vorlage enthält ein Beispiel.
+ Mehr Informationen zu den spezifischen Tabellen-Gleitumgebungen der beiden
+ Klassen finden Sie in den Dateien 
 \family typewriter
 ws-ijmpc.tex
 \family default
- and 
+ und 
 \family typewriter
 ws-ijmpd.tex
 \family default
-, included in the corresponding packages.
+, die in den Paketen enthalten sind.
 \end_layout
 
 \begin_layout Subsection
-Einen Artikel zum Versenden vorbereiten
+Einen Artikel zur Einreichung vorbereiten
 \end_layout
 
 \begin_layout Standard
-Bevor Sie Ihren Artikel versenden, müssen Sie es als \SpecialChar LaTeX
+Bevor Sie Ihren Artikel einreichen, müssen Sie ihn als \SpecialChar LaTeX
 -Datei (
 \family sans
 Datei
@@ -10893,9 +10859,7 @@ makeatletter
 \family typewriter
 
 \backslash
-make\SpecialChar softhyphen
-at\SpecialChar softhyphen
-other
+makeatother
 \family default
 , mit Ausnahme derjenigen Einträge, die Sie selber in den \SpecialChar LaTeX
 -Vorspann eingefügt
@@ -10903,17 +10867,18 @@ other
 \end_layout
 
 \begin_layout Standard
-Die geänderte 
-\family typewriter
+Prüfen Sie, nachdem sie die 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 .tex
-\family default
--Datei muss gespeichert werden und von \SpecialChar LaTeX
- so oft wie nötig bearbeitet werden.
- Außerdem sollten Sie sich das resultierende 
-\family typewriter
-.dvi
-\family default
--Dokument ansehen.
+\end_layout
+
+\end_inset
+
+-Datei geändert und gespeichert haben, unbedingt das resultierende DVI-
+ oder PDF-Dokument.
 \end_layout
 
 \begin_layout Section
@@ -10941,15 +10906,27 @@ Panayotis Papasotiriou
 \end_layout
 
 \begin_layout Standard
-Das Kluwer-Paket ist ein Makrosatz der Kluwer Academic Publishers, der die
- elektronische Ma\SpecialChar softhyphen
-nu\SpecialChar softhyphen
-skript\SpecialChar softhyphen
-über\SpecialChar softhyphen
-sen\SpecialChar softhyphen
-dung an Zeitschriften erleichtert.
- Die bekanntesten sind Astrophysics und Space Science and Solar Physics,
- aber es gibt viele andere (eine vollständige Liste ist unter 
+Das Kluwer-Paket ist eine Makrosammlung der 
+\emph on
+\lang english
+Kluwer Academic Publishers
+\emph default
+\lang ngerman
+, der die elektronische Manuskripteinreichung an Zeitschriften dieses Verlags
+ erleichtert.
+ Die bekanntesten sind 
+\emph on
+\lang english
+Astrophysics
+\emph default
+\lang ngerman
+ und 
+\emph on
+\lang english
+Space Science and Solar Physics
+\emph default
+\lang ngerman
+, aber es gibt viele andere (eine vollständige Liste ist unter 
 \noun on
 
 \begin_inset Flex URL
@@ -10977,19 +10954,17 @@ http://www.wkap.nl/kaphtml.htm/STYLEFILES
 \end_inset
 
  heruntergeladen werden.
- Das Paket enthält ein vollständiges Benutzerhandbuch, das aber auch separat
- heruntergeladen werden kann.
+ Das Paket enthält ein umfassendes Benutzerhandbuch, das auch separat herunterge
+laden werden kann.
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
- unterstützt viele Funktionen des Paketes, aber nicht alles.
- Aber der benötigte \SpecialChar LaTeX
--Code reduziert sich auf einige 
-\emph on
-seltsame
-\emph default
- Paketbefehle (siehe Abschnitt 
+ unterstützt viele Funktionen des Paketes, aber nicht alle.
+ Die nicht unterstützen Befehle, für die man folglich \SpecialChar LaTeX
+-Code im \SpecialChar TeX
+-Modus eingeben
+ muss, sind aber eher exotischer Natur (siehe Abschnitt 
 \begin_inset CommandInset ref
 LatexCommand vref
 reference "Kluwer-Paket-Besonderheiten"
@@ -10998,8 +10973,13 @@ reference "Kluwer-Paket-Besonderheiten"
 
 ).
  Ich habe vor kurzem mit \SpecialChar LyX
- einen Artikel an Astrophysics and Space Science
- ohne Probleme verschickt.
+ einen Artikel für 
+\emph on
+\lang english
+Astrophysics and Space Science
+\emph default
+\lang ngerman
+ ohne Probleme geschrieben und eingereicht.
 \end_layout
 
 \begin_layout Subsection
@@ -11010,28 +10990,12 @@ Einen Artikelschreiben
 Der einfachste Weg, einen Artikel zu schreiben, ist mit einer Vorlagendatei
  anzufangen.
  Klicken Sie auf 
-\family sans
-Datei
-\family default
-\SpecialChar menuseparator
-
-\family sans
-Neu
-\begin_inset space ~
+\begin_inset Info
+type  "menu"
+arg   "buffer-new-template"
 \end_inset
 
-von
-\begin_inset space ~
-\end_inset
-
-Vorlage
-\family default
-\SpecialChar ldots
-
-\begin_inset space ~
-\end_inset
-
-und wählen die Datei 
+ und wählen die Datei 
 \family typewriter
 kluwer.lyx
 \family default
@@ -11048,13 +11012,7 @@ Einen Artikel zum Versenden vorbereiten
 \end_layout
 
 \begin_layout Standard
-Bevor Sie Ihren Artikel versenden, müssen Sie es wie beim AAS\SpecialChar TeX
--Paket wie
- folgt 
-\emph on
-nachbearbeiten
-\emph default
-:
+Bevor Sie Ihren Artikel versenden, müssen Sie ihn wie folgt nachbearbeiten:
 \end_layout
 
 \begin_layout Enumerate
@@ -11155,7 +11113,7 @@ Starten Sie einen \SpecialChar LaTeX
 \family typewriter
 .tex
 \family default
--Datei sooft wie nötig (meistens dreimal).
+-Datei so oft wie nötig (meistens dreimal).
 \end_layout
 
 \begin_layout Enumerate
@@ -11219,7 +11177,7 @@ end{article}
  auf.
  Obwohl man das in \SpecialChar LyX
  implementieren kann, habe ich es nicht getan, weil es
- hässlich aussieht und den Neuling verwirrt.
+ hässlich aussieht und Neulinge verwirrt.
  Deshalb müssen Sie sie als \SpecialChar TeX
 -Code eingeben.
 \end_layout
@@ -11258,19 +11216,6 @@ Entsprechend dem Benutzerhandbuch muss jeder Eintrag im Literaturverzeichnis
 \backslash
 protect
 \backslash
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
- 
-\end_layout
-
-\end_inset
-
 citeauthoryear{
 \family default
 \emph on
@@ -11293,9 +11238,10 @@ Die Vorlage
 \family typewriter
 kluwer.lyx
 \family default
- passt auf all diese Besonderheiten auf.
- Wenn Sie ein neues Papier mit dieser Vorlage beginnen, müssen Sie nichts
+ achtet auf all diese Besonderheiten.
+ Wenn Sie einen neues Artikel mit dieser Vorlage beginnen, müssen Sie nichts
  Besonderes machen.
+ Aber
 \end_layout
 
 \begin_layout Enumerate
@@ -11309,12 +11255,12 @@ Kopieren den Beispiel-Literatureintrag der Vorlage und ändern Sie ihn wie
 \end_layout
 
 \begin_layout Section
-Koma-Script
+KOMA-Script
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Dokumentklasse!Koma-Script
+Dokumentklasse!KOMA-Script
 \end_layout
 
 \end_inset
@@ -11333,46 +11279,52 @@ Bernd Rellermeyer
 \end_layout
 
 \begin_layout Standard
-Die \SpecialChar LyX
--Dokumentklassen 
+Die Dokumentklassen 
 \family sans
-article (koma-script)
+KOMA
+\emph on
+-
+\emph default
+Script-Aufsatz
 \emph on
 ,
 \family default
 \emph default
  
 \family sans
-report (koma-script)
+KOMA
+\emph on
+-
+\emph default
+Script-Bericht
 \emph on
 ,
 \family default
 \emph default
  
 \family sans
-book
-\family default
- 
-\family sans
-(koma-script)
+KOMA
+\emph on
+-
+\emph default
+Script-Buch
 \family default
  und 
 \family sans
-letter
+KOMA
+\emph on
+-
+\emph default
+Script-Brief
 \family default
- 
-\family sans
-(koma-script)
-\family default
- korrespondieren zu den \SpecialChar LaTeX
--Dokumentklassen 
+ korrespondieren mit den \SpecialChar LaTeX
+-Klassen 
 \family typewriter
 scrartcl.cls
 \family default
 , 
 \family typewriter
-scr\SpecialChar softhyphen
-reprt.cls
+scrreprt.cls
 \family default
 , 
 \family typewriter
@@ -11382,48 +11334,59 @@ scrbook.cls
 \family typewriter
 scrlettr.cls
 \family default
- der Koma-Script-Familie.
- Sie sind Ersetzungen der Stan\SpecialChar softhyphen
-dard-Dokumentklassen 
+ der KOMA-Script-Familie.
+ Sie ersetzen die Standard-Dokumentklassen 
 \family typewriter
 article.cls
 \family default
 , 
 \family typewriter
-re\SpecialChar softhyphen
-port.cls
+report.cls
 \family default
 , 
 \family typewriter
 book.cls
 \family default
- und 
+ sowie 
 \family typewriter
 letter.cls
 \family default
- und entsprechen in einigen Punkten besser den europäischen typographischen
- Konventionen.
+, bieten viele zusätzliche Möglichkeiten und entsprechen in einigen Punkten
+ besser den europäischen typographischen Konventionen.
 \end_layout
 
 \begin_layout Itemize
 Standard-Schriftgröße ist 11pt in 
 \family sans
-article (koma-script)
+KOMA
 \emph on
-,
-\family default
+-
 \emph default
- 
+Script-Aufsatz
+\family default
+, 
 \family sans
-report (koma-script)
+KOMA
+\emph on
+-
+\emph default
+Script-Bericht
 \family default
  und 
 \family sans
-book (koma-script)
+KOMA
+\emph on
+-
+\emph default
+Script-Buch
 \family default
  und 12pt in 
 \family sans
-letter (koma-script)
+KOMA
+\emph on
+-
+\emph default
+Script-Brief
 \family default
 .
 \end_layout
@@ -11435,7 +11398,11 @@ Beschreibung
 \family default
 -Umgebung und zahlreiche Elemente der Dokumentklasse 
 \family sans
-letter (koma-script)
+KOMA
+\emph on
+-
+\emph default
+Script-Brief
 \family default
  sind in einer fetten, serifenlosen Schrift gesetzt.
 \begin_inset Foot
@@ -11485,33 +11452,31 @@ Kapitel
 \end_inset
 
 \SpecialChar ldots
-.
  Ferner kann das Aussehen der Überschriften mit einer Reihe von Optionen
  modifiziert werden (in \SpecialChar LyX
  einzugeben im Feld 
 \family sans
-Weitere
+Benutzerdefinierte
 \begin_inset space ~
 \end_inset
 
 Optionen
 \family default
- (???) des Menüfensters 
+ des Menüfensters 
 \family sans
-Dokument-Einstellungen
-\family default
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar ldots
 \SpecialChar menuseparator
-(???)).
+Dokumentklasse\SpecialChar menuseparator
+Klassenoptionen
+\family default
+).
  Eine ausführliche deutsche Beschreibung dieser Optionen findet sich in
- der Koma-Script-Dokumentation 
+ der KOMA-Script-Dokumentation 
 \emph on
 scrguide
 \emph default
  (zum Beispiel 
-\begin_inset Newline newline
-\end_inset
-
-
 \begin_inset Flex URL
 status collapsed
 
@@ -11526,12 +11491,7 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-Hauptsächliches Mittel der Koma-Script-Dokumentklassen für die Satz\SpecialChar softhyphen
-spie\SpecialChar softhyphen
-gel\SpecialChar softhyphen
-ge\SpecialChar softhyphen
-stal\SpecialChar softhyphen
-
+Hauptsächliches Mittel der KOMA-Script-Dokumentklassen für die Satzspiegelgestal
 tung ist die Benutzung der Optionen 
 \family sans
 BCOR
@@ -11541,16 +11501,15 @@ BCOR
 DIV
 \family default
  (in \SpecialChar LyX
- ein\SpecialChar softhyphen
-zu\SpecialChar softhyphen
-ge\SpecialChar softhyphen
-ben im Feld 
+ einzugeben im Feld 
 \family sans
-Doku\SpecialChar softhyphen
-ment-Einstellungen\SpecialChar menuseparator
-
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar ldots
+\SpecialChar menuseparator
+Dokumentklasse\SpecialChar menuseparator
+Klassenoptionen
 \family default
-(???)).
+).
  Sie ermöglichen eine klarere Modifikation von Seitenrändern als die Optionen
  im Menüfenster 
 \family sans
@@ -11566,23 +11525,42 @@ tion
 \emph on
 scrguide
 \emph default
- (zum Beispiel /usr/share/ texmf/doc/latex/koma-script/scrguide.
- pdf).
+ (zum Beispiel 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+/usr/share/ texmf/doc/latex/koma-script/scrguide.
+ pdf
+\end_layout
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Itemize
 Die \SpecialChar LaTeX
--Dokumentklassen der Koma-Script-Familie definieren eine Reihe zusätzlicher
+-Dokumentklassen der KOMA-Script-Familie definieren eine Reihe zusätzlicher
  Befehle.
  Der für \SpecialChar LyX
  sinnvolle Teil davon ist in den \SpecialChar LyX
--Do\SpecialChar softhyphen
-ku\SpecialChar softhyphen
-men\SpecialChar softhyphen
-ten\SpecialChar softhyphen
-klas\SpecialChar softhyphen
-sen in entsprechenden
- Absatztypen umgesetzt.
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\begin_inset Quotes gld
+\end_inset
+
+=
+\end_layout
+
+\end_inset
+
+Dokumentklassen in entsprechenden Absatztypen umgesetzt.
 \end_layout
 
 \begin_layout Standard
@@ -11592,11 +11570,7 @@ ilie ist in der Koma-Script-Dokumentation
 \emph on
 scrguide
 \emph default
- (zum Beispiel
-\begin_inset Newline newline
-\end_inset
-
-
+ (zum Beispiel 
 \begin_inset Flex URL
 status collapsed
 
@@ -11623,34 +11597,51 @@ screnggu
 
  In den folgenden Abschnitten werden nur diejenigen Aspekte beschrieben,
  die für die \SpecialChar LyX
--Dokumen\SpecialChar softhyphen
-ten\SpecialChar softhyphen
-klassen relevant sind.
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\begin_inset Quotes gld
+\end_inset
+
+=
+\end_layout
+
+\end_inset
+
+Dokumentklassen relevant sind.
 \end_layout
 
 \begin_layout Subsection
-article, report und book
+KOMA-Script-Aufsatz, KOMA-Script-Bericht und KOMA-Script-Buch
 \end_layout
 
 \begin_layout Standard
 Die Dokumentklassen 
 \family sans
-article (koma-script)
+KOMA
 \emph on
-,
-\family default
+-
 \emph default
- 
+Script-Aufsatz
+\family default
+, 
 \family sans
-report (koma-script)
+KOMA
+\emph on
+-
+\emph default
+Script-Bericht
 \family default
  und 
 \family sans
-book
-\family default
- 
-\family sans
-(koma-script)
+KOMA
+\emph on
+-
+\emph default
+Script-Buch
 \family default
  sind in den Format-Dateien 
 \family typewriter
@@ -11662,14 +11653,11 @@ scrreprt.layout
 \family default
  und 
 \family typewriter
-scr\SpecialChar softhyphen
-book.layout
+scrbook.layout
 \family default
  implementiert.
  Sie enthalten sämtliche, teilweise modifizierten, Absatztypen der entsprechende
-n Stan\SpecialChar softhyphen
-dard-Doku\SpecialChar softhyphen
-mentenklassen 
+n Standard-Dokumentklassen 
 \family sans
 article
 \emph on
@@ -11705,7 +11693,7 @@ nicht
 \emph default
  Bestandteil von 
 \family sans
-letter (koma-script)
+KOMA-Script-Brief
 \family default
 .
 \end_layout
@@ -11759,7 +11747,7 @@ Kapitel
 \family default
  sind nicht in 
 \family sans
-article (koma-script)
+KOMA-Script-Aufsatz
 \family default
  enthalten.
 \end_layout
@@ -11804,7 +11792,7 @@ Addchap*
 \family default
  ist nicht in 
 \family sans
-article (koma-script)
+KOMA-Script-Aufsatz
 \family default
  enthalten.
 \begin_inset Foot
@@ -11813,11 +11801,11 @@ status collapsed
 \begin_layout Plain Layout
 Es gibt in 
 \family sans
-book (koma-script)
+KOMA-Script-Buch
 \family default
  und 
 \family sans
-report (koma-script)
+KOMA-Script-Bericht
 \family default
  auch eine Umgebung 
 \family typewriter
@@ -11930,7 +11918,7 @@ Spruch
 \family default
  ist nicht in 
 \family sans
-article (koma-script)
+KOMA-Script-Aufsatz
 \family default
  enthalten.
 \end_layout
@@ -12036,16 +12024,16 @@ Widmung
 \family default
  erzeugt in 
 \family sans
-report (koma-script)
+KOMA-Script-Bericht
 \family default
  und 
 \family sans
-book (koma-script)
+KOMA-Script-Buch
 \family default
  einen zentrierten Absatz auf einer eigenen Seite nach der Titelseite und
  in 
 \family sans
-article (koma-script)
+KOMA-Script-Aufsatz
 \family default
  einen zentrierten Absatz unterhalb des normalen Titels (
 \family sans
@@ -12101,16 +12089,16 @@ oben
 \family default
  erzeugt im zweiseitigen Druck in 
 \family sans
-report (koma-script)
+KOMA-Script-Bericht
 \family default
  und 
 \family sans
-book (koma-script)
+KOMA-Script-Buch
 \family default
  einen linksbündigen Absatz oben auf der Rückseite des Titelblatts oder
  hat im einseitigen Druck oder in 
 \family sans
-article (koma-script)
+KOMA-Script-Aufsatz
 \family default
  keinen Effekt.
 \end_layout
@@ -12126,16 +12114,16 @@ unten
 \family default
  erzeugt im zweiseitigen Druck in 
 \family sans
-report (koma-script)
+KOMA-Script-Bericht
 \family default
  und 
 \family sans
-book (koma-script)
+KOMA-Script-Buch
 \family default
  einen linksbündigen Absatz unten auf der Rückseite des Titelblatts oder
  hat im einseitigen Druck oder in 
 \family sans
-article (koma-script)
+KOMA-Script-Aufsatz
 \family default
  keinen Effekt.
 \end_layout
@@ -12156,18 +12144,18 @@ g.
 \begin_layout Standard
 Die Format-Dateien für die Dokumentklassen 
 \family sans
-article (koma-script)
+KOMA-Script-Aufsatz
 \emph on
 ,
 \family default
 \emph default
  
 \family sans
-report (koma-script)
+KOMA-Script-Bericht
 \family default
  und 
 \family sans
-book (koma-script)
+KOMA-Script-Buch
 \family default
  fügen die Datei 
 \family typewriter
@@ -12183,7 +12171,7 @@ crmacros.inc
 \end_layout
 
 \begin_layout Subsection
-letter (koma-script)
+KOMA-Script-Brief
 \begin_inset Index idx
 status collapsed
 
@@ -12199,7 +12187,7 @@ letter!koma-script
 \begin_layout Standard
 Die Dokumentklasse 
 \family sans
-letter (koma-script)
+KOMA-Script-Brief
 \family default
  ist in der Format-Datei 
 \family typewriter
@@ -12351,20 +12339,18 @@ t-Dokumentation
 \emph on
 scrguide
 \emph default
- (zum Beispiel /usr/share/texmf/doc/latex/koma-script/
-\begin_inset ERT
+ (zum Beispiel 
+\begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-
-\backslash
- 
+/usr/share/texmf/doc/latex/koma-script/scrguide.pdf
 \end_layout
 
 \end_inset
 
-scrguide.pdf).
+).
  Damit kann der Briefautor ein persönliches Brief\SpecialChar ligaturebreak
 format erzeugen.
 \end_layout
@@ -12380,13 +12366,7 @@ Opening
 \family default
  definieren den Beginn des Briefes und müssen in jedem Brief verwendet werden.
  Zu deren Hervorhebung sind sie in der \SpecialChar LyX
--Do\SpecialChar softhyphen
-ku\SpecialChar softhyphen
-men\SpecialChar softhyphen
-ten\SpecialChar softhyphen
-vor\SpecialChar softhyphen
-la\SpecialChar softhyphen
-ge durch die Buchstaben
+-Dokumentvorlage durch die Buchstaben
  
 \shape italic
 L
@@ -12849,7 +12829,11 @@ Anrede
 \end_layout
 
 \begin_layout Subsection
-Die neue Briefklasse: letter (koma-script v.2)
+Die neue Briefklasse: KOMA-Script-Brief (V.
+\begin_inset space ~
+\end_inset
+
+2)
 \begin_inset Index idx
 status collapsed
 
@@ -12869,7 +12853,7 @@ Jürgen Spitzmüller
 \end_layout
 
 \begin_layout Standard
-Seit Version 2.8 kommt Koma-Script mit einer neuen Briefklasse (
+Seit Version 2.8 kommt KOMA-Script mit einer neuen Briefklasse (
 \family typewriter
 scrlttr2
 \family default
@@ -13485,54 +13469,69 @@ In order to use the new layouts, you must remember to do the following for
 \end_layout
 
 \begin_layout Enumerate
+Bevor Sie Ihr Dokument ausgeben, versichern Sie sich, dass das Paket 
+\family sans
+Babel
+\family default
+ nicht geladen wird.
+ Hierfür gehen Sie 
+\family sans
 
-\emph on
-Turn off babel
-\emph default
-.
- This can be done in the 
-\family sans
-layout\SpecialChar menuseparator
-document
+\begin_inset Info
+type  "menu"
+arg   "dialog-show document"
+\end_inset
+
+\SpecialChar menuseparator
+Sprache
 \family default
- or 
+ und wählen Sie unter 
 \family sans
-document\SpecialChar menuseparator
-settings
+Sprachpaket
 \family default
- menu item.
- (AGU articles are always in English, right? So 
-\emph on
-don't
-\emph default
- choose a language.)
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Keines
+\begin_inset Quotes grd
+\end_inset
+
+ (AGU-Artikel sind alle auf Englisch geschrieben, nicht? Verwenden Sie also
+ keine andere Sprache.)
 \end_layout
 
 \begin_layout Enumerate
-Enter 
+Geben Sie 
 \family typewriter
 jgrga
 \family default
- into the document's 
+ in das Feld 
 \family sans
-Extra Options
+Benutzerdefinierte
+\begin_inset space ~
+\end_inset
+
+Optionen
 \family default
- field.
- (Yes, this is a bug.)
+ des Menüfensters 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar ldots
+\SpecialChar menuseparator
+Dokumentklasse\SpecialChar menuseparator
+Klassenoptionen
+\family default
+ ein (Ja, das ist ein Programmfehler.)
 \end_layout
 
 \begin_layout Enumerate
-Make sure you use the 
+Verwenden Sie unbedingt den Bib\SpecialChar TeX
+-Literaturverzeichnisstil 
 \family typewriter
 agu.bst
 \family default
- bibliography style, by entering 
-\family sans
-agu
-\family default
- into the second field of the Bib\SpecialChar TeX
- inset.
- None of the standard styles will do.
+.
 \end_layout
 
 \begin_layout Section
@@ -13664,10 +13663,7 @@ Einleitung
 
 \begin_layout Standard
 In diesem Abschnitt wird beschrieben, wie Sie mit \SpecialChar LyX
- Folien für Überkopf-Pro\SpecialChar softhyphen
-jek\SpecialChar softhyphen
-to\SpecialChar softhyphen
-r
+ Folien für Overhead-Projektor
 en erstellen können.
  Es gibt zwei verschiedene Dokumentklassen, mit denen Sie dies realisieren
  können: Die normale Klasse 
