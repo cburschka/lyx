@@ -8339,12 +8339,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8357,6 +8359,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8380,6 +8383,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -29596,6 +29600,10 @@ Customizing Bibliographies
 \emph on
 with Bib\SpecialChar TeX
 
+\change_inserted -712698321 1501054457
+ or Biblatex
+\change_unchanged
+
 \emph default
  of the 
 \emph on
@@ -30074,10 +30082,10 @@ literal "true"
 
 \begin_layout Standard
 
-\change_inserted -712698321 1484998090
+\change_inserted -712698321 1501054733
 All styles except for 
 \family sans
-Basic
+Basic (BibTeX)
 \family default
  also provide a means to add text that precedes the reference (such as 
 \begin_inset Quotes eld
