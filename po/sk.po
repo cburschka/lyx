@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-06-12 21:49+0200\n"
-"PO-Revision-Date: 2017-06-13 09:15+0000\n"
+"POT-Creation-Date: 2017-07-27 01:02+0200\n"
+"PO-Revision-Date: 2017-07-26 23:48+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -30223,6 +30223,22 @@ msgstr "Hunspell"
 msgid "Converters"
 msgstr "Konvertory"
 
+#: src/frontends/qt4/GuiPrefs.cpp:1881
+msgid "SECURITY WARNING!"
+msgstr "OCHRANNÉ VAROVANIE!"
+
+#: src/frontends/qt4/GuiPrefs.cpp:1881
+msgid ""
+"Unchecking this option has the effect that potentially harmful converters "
+"would be run without asking your permission first. This is UNSAFE and NOT "
+"recommended, unless you know what you are doing. Are you sure you would like "
+"to proceed ? The recommended and safe answer is NO!"
+msgstr ""
+"Ne-zaškrtnutie tejto voľby povolí spustiť aj potenciálne škodlivé konvertory "
+"bez požiadania vášho súhlasu. Toto je NEBEZPEČNÉ a sa nedoporučuje, pokiaľ "
+"neviete čo robíte. Ste si istý že chcete pokračovať? Doporučená a bezpečná "
+"odpoveď je NIE!"
+
 #: src/frontends/qt4/GuiPrefs.cpp:1988
 msgid "File Formats"
 msgstr "Formáty Súborov"
@@ -31306,6 +31322,14 @@ msgstr "Ukladám všetky dokumenty…"
 #: src/frontends/qt4/GuiView.cpp:3846
 msgid "All documents saved."
 msgstr "Všetky dokumenty uložené."
+
+#: src/frontends/qt4/GuiView.cpp:3873
+msgid "Developer mode is now enabled."
+msgstr "Spôsob hlásenia pre vývojárov je zapnutý."
+
+#: src/frontends/qt4/GuiView.cpp:3875
+msgid "Developer mode is now disabled."
+msgstr "Spôsob hlásenia pre vývojárov je vypnutý."
 
 #: src/frontends/qt4/GuiView.cpp:3884
 msgid "Toolbars unlocked."
