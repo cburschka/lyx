@@ -41139,7 +41139,10 @@ status collapsed
 listings
 \series default
  ist voreingestellt.
- Um 
+\end_layout
+
+\begin_layout Standard
+Um 
 \series bold
 minted
 \series default
@@ -41149,20 +41152,135 @@ lungen in der Rubrik
 Programmlistings
 \family default
  festlegen.
- Dabei muss beachtet werden, dass 
+ 
 \series bold
 minted
 \series default
- zusätzliche Software (das Python-Modul 
+ benötigt zusätzlich das Modul 
 \family sans
 pygments
 \family default
-) und die Option 
+ des Programms 
+\noun on
+Python
+\noun default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Unte
+\family sans
+r \SpecialChar LyX
+ f
+\family default
+ür Windows ist 
+\family sans
+pygments
+\family default
+ bereits installiert.
+\end_layout
+
+\end_inset
+
+ und die Option 
 \family typewriter
 -shell-escape
 \family default
- für das \SpecialChar LaTeX
--Backend benötigt.
+ für den \SpecialChar LaTeX
+-Prozessor.
+ Wenn Sie z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ Ihr Dokument als Format 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+ ansehen oder exportieren wollen, gehen Sie in die \SpecialChar LyX
+-Einstellungen und dort
+ zum Abschnitt 
+\family sans
+Datei-Handhanbung\SpecialChar menuseparator
+Konverter
+\family default
+.
+ gehen Sie dort auf den Eintrag 
+\family sans
+LaTeX
+\begin_inset space ~
+\end_inset
+
+(pdflatex) -> PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+ und schauen Sie in das Feld 
+\family sans
+Konverter
+\family default
+.
+ Dort sehen sie voreingestellt den Inhalt
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+pdflatex $$i
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+Ändern Sie ihn nun ab zu
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+pdflatex $$i -shell-escape
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+und drücken Sie den 
+\family sans
+Ändern
+\family default
+-Knopf und anschließend 
+\family sans
+Übernehmen
+\family default
+ oder 
+\family sans
+Speichern
+\family default
+.
+ Dasselbe kann für die Ausgabeformate 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(LuaTeX)
+\family default
+ und 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(XeTeX)
+\family default
+ gemacht werden.
 \end_layout
 
 \begin_layout Standard
@@ -41372,7 +41490,7 @@ minted
  Ansonsten wird die Beschriftung vor das Listing gesetzt, wenn die Marke
  in die erste Zeile eingefügt wurde, ansonsten hinter das Listing.
  Um die Beschriftung in jedem Fall vor das Listing zu setzen, müssen diese
- Zeilen zum \SpecialChar LaTeX
+ Zeilen als Letztes zum \SpecialChar LaTeX
 -Vorspann hinzugefügt werden:
 \begin_inset Newline newline
 \end_inset
@@ -41381,13 +41499,57 @@ minted
 \series bold
 
 \backslash
-usepackage{float}
+@ifundefined{newfloat}
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+{
+\backslash
+usepackage{float}}{}
 \begin_inset Newline newline
 \end_inset
 
 
 \backslash
 floatstyle{plaintop}
+\series default
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Das Paket 
+\series bold
+float
+\series default
+ wird automatisch von \SpecialChar LyX
+ geladen, wenn Sie spezielle dokumentweite Gleitobjektplat
+zierungen verwenden.
+ Der Befehl 
+\series bold
+
+\backslash
+@ifundefined
+\series default
+ vermeidet, dass es in diesem Fall doppelt geladen wird.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset

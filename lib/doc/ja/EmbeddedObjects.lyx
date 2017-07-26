@@ -38423,7 +38423,12 @@ One can only use one of these packages in a document.
 listings
 \series default
  is used by default.
- In order to use 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In order to use 
 \series bold
 minted
 \series default
@@ -38433,20 +38438,138 @@ minted
 Listings
 \family default
 .
- Note that 
+ 
 \series bold
 minted
 \series default
- requires additional software (the 
+ requires also additionally the module 
 \family sans
 pygments
 \family default
- python module) and the 
+ of the software 
+\noun on
+Python
+\noun default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Under \SpecialChar LyX
+ for Windows 
+\family sans
+pygments
+\family default
+ is already installed.
+\end_layout
+
+\end_inset
+
+ and the option 
 \family typewriter
 -shell-escape
 \family default
- option for the \SpecialChar LaTeX
- backend.
+ for the \SpecialChar LaTeX
+ processor.
+ If you want for example view or export your document as the format 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+, go to the \SpecialChar LyX
+ preferences and there to the section 
+\family sans
+File
+\begin_inset space ~
+\end_inset
+
+Handling\SpecialChar menuseparator
+Converters
+\family default
+.
+ There go to the entry 
+\family sans
+LaTeX
+\begin_inset space ~
+\end_inset
+
+(pdflatex) -> PDF
+\begin_inset space ~
+\end_inset
+
+(pdflatex)
+\family default
+ and look at the field 
+\family sans
+Converter
+\family default
+.
+ There you see by default the content
+\lang japanese
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+pdflatex $$i
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+Now change it to
+\lang japanese
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+pdflatex $$i -shell-escape
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+\lang english
+and press the 
+\family sans
+Modify
+\family default
+ button and subsequently 
+\family sans
+Apply
+\family default
+ or 
+\family sans
+Save
+\family default
+.
+ The same can be done for the output formats 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(LuaTeX)
+\family default
+ and 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+(XeTeX)
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -38593,8 +38716,6 @@ def func(param):
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Greyedout
 status open
 
@@ -38621,7 +38742,7 @@ minted
  is inserted to its first line, otherwise  it will be typeset after the
  listing.
  If you want to force the placement in avery case before the listing, you
- have to add the following lines to the preamble:
+ have to add the following lines as last thing to the preamble:
 \lang japanese
 
 \begin_inset Newline newline
@@ -38631,13 +38752,60 @@ minted
 \series bold
 
 \backslash
-usepackage{float}
+@ifundefined{newfloat}
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+{
+\backslash
+usepackage{float}}{}
 \begin_inset Newline newline
 \end_inset
 
 
 \backslash
 floatstyle{plaintop}
+\series default
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+The package 
+\series bold
+float
+\series default
+ will be loaded automatically by \SpecialChar LyX
+ when you use special document-wide float
+ placement settings 
+\lang japanese
+．これが二度読み込まれることを防ぐために，上記のコマンドでは
+\series bold
+
+\backslash
+@ifundefined
+\series default
+が使用されています．
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
