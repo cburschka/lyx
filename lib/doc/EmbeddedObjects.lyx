@@ -40891,6 +40891,22 @@ listings
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Please note that we do NOT want to encourage users to add -shell-escape
+ to converter definitions.
+ It works, but it is a huge security risk.
+ There is an active discussion about how to handle this.
+ Once that's been resolved, this can be updated appropriately.
+\end_layout
+
+\begin_layout Plain Layout
+=====
+\end_layout
+
+\begin_layout Plain Layout
 In order to use 
 \series bold
 minted
@@ -41024,6 +41040,11 @@ PDF
 (XeTeX)
 \family default
 .
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
