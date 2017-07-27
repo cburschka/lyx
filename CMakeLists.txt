@@ -8,6 +8,10 @@ cmake_minimum_required(VERSION 2.6.4)
 
 set(LYX_PROJECT LyX)
 
+# Instruct cmake to not use gnu extensions,
+# this prevents the mix of '-std=c++*' and '-std=gnu++*' flags
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 enable_testing()
 
 get_filename_component(lyx_dir_readme ${CMAKE_SOURCE_DIR}/README REALPATH) # Resolve symlinks
@@ -593,11 +597,11 @@ if(NOT MSVC)
 		set(LYX_CXX_FLAGS "${LYX_CXX_FLAGS} -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC")
 	endif()
 	set(CMAKE_CXX_FLAGS       "${LYX_CXX_FLAGS} -fno-strict-aliasing " CACHE TYPE STRING FORCE)
-	set(CMAKE_CXX_FLAGS_DEBUG "${LYX_CXX_FLAGS} -fno-strict-aliasing -O0 -g3 -D_DEBUG" CACHE TYPE STRING FORCE)
+	set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g3 -D_DEBUG" CACHE TYPE STRING FORCE)
 	if(MINGW)
-		set(CMAKE_CXX_FLAGS_RELEASE "${LYX_CXX_FLAGS} -O2 -DNDEBUG" CACHE TYPE STRING FORCE)
+		set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG" CACHE TYPE STRING FORCE)
 	else()
-		set(CMAKE_CXX_FLAGS_RELEASE "${LYX_CXX_FLAGS} -O3 -DNDEBUG" CACHE TYPE STRING FORCE)
+		set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG" CACHE TYPE STRING FORCE)
 	endif()
 endif()
 
