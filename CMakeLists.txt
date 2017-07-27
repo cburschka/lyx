@@ -794,36 +794,35 @@ else()
   add_subdirectory(3rdparty/zlib)
 endif()
 
-if(LYX_EXTERNAL_BOOST)
-	message(STATUS "Searching for boost")
-	if(NOT LYX_USE_STD_REGEX)
-		find_package(Boost COMPONENTS regex)
-	endif()
-	if(Boost_FOUND)
-		message(STATUS "Boost found")
-		message(STATUS "Boost-libs = ${Boost_LIBRARIES}")
-		set(Lyx_Boost_Libraries ${Boost_LIBRARIES})
-		if (LYX_STDLIB_DEBUG)
-			# Comment from 	Jean-Marc Lasgouttes:
-			# In general, system boost libraries are incompatible with
-			# the use of stdlib-debug in libstdc++. See ticket #9736 for
-			# details.
-			message(WARNING "Compiling LyX with stdlib-debug and system boost libraries may lead to crashes. Consider using '-DLYX_STDLIB_DEBUG=OFF' or using '-DLYX_EXTERNAL_BOOST=OFF'")
-		endif()
-	else()
-		message(FATAL_ERROR "Boost not found" ${Boost_ERROR_REASON})
-	endif()
+if(LYX_USE_STD_REGEX)
+  # Nothing to do
 else()
-	if(NOT LYX_USE_STD_REGEX)
-		set(Lyx_Boost_Libraries boost_regex)
-	endif()
-	add_definitions(-DBOOST_USER_CONFIG=<config.h>)
-	include_directories(${TOP_SRC_DIR}/3rdparty/boost)
-	add_subdirectory(3rdparty/boost "${TOP_BINARY_DIR}/3rdparty/boost")
+  # Using boost-regex
+  if(LYX_EXTERNAL_BOOST)
+    message(STATUS "Searching for external boost")
+    find_package(Boost COMPONENTS regex)
+    if(Boost_FOUND)
+      message(STATUS "Boost found")
+      message(STATUS "Boost-libs = ${Boost_LIBRARIES}")
+      set(Lyx_Boost_Libraries ${Boost_LIBRARIES})
+      if (LYX_STDLIB_DEBUG)
+	# Comment from 	Jean-Marc Lasgouttes:
+	# In general, system boost libraries are incompatible with
+	# the use of stdlib-debug in libstdc++. See ticket #9736 for
+	# details.
+	message(WARNING "Compiling LyX with stdlib-debug and system boost libraries may lead to crashes. Consider using '-DLYX_STDLIB_DEBUG=OFF' or using '-DLYX_EXTERNAL_BOOST=OFF'")
+      endif()
+    else()
+      message(FATAL_ERROR "Boost not found" ${Boost_ERROR_REASON})
+    endif()
+  else()
+    # Using included boost
+    set(Lyx_Boost_Libraries boost_regex)
+    add_definitions(-DBOOST_USER_CONFIG=<config.h>)
+    include_directories(${TOP_SRC_DIR}/3rdparty/boost)
+    add_subdirectory(3rdparty/boost "${TOP_BINARY_DIR}/3rdparty/boost")
+  endif()
 endif()
-
-
-
 
 if(WIN32)
 	if(LYX_CONSOLE)
@@ -839,7 +838,7 @@ if(WIN32)
 	else()
 		# -DPSAPI_VERSION=1 is not needed for mingw, since the mingw psapi.h
 		# does not use it and always declares the vista compatible API.
-		# If this ever changes then -DPSAPI_VERSION might be needed here as well. 
+		# If this ever changes then -DPSAPI_VERSION might be needed here as well.
 		add_definitions(-DWINVER=0x0500)
 	endif()
 endif()
