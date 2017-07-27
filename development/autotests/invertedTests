@@ -276,7 +276,7 @@ Sublabel: attic
 # They were replaced by .svgz, but, as this file is in the attic, we do not
 # convert to new lyx format. Plain latex and xetex create output (ignoring
 # missing files) while (pdf|lua)latex exits with != 0
-export/doc/attic/eu_UserGuide_pdf[25].*
+#export/doc/attic/eu_UserGuide_pdf[25].*
 
 # Files in the attic with non-default output
 # (i.e. could be ERT, package incompatiblity, ...)
