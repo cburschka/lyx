@@ -1701,11 +1701,18 @@ void PrefConverters::applyRC(LyXRC & rc) const
 }
 
 
+static void setCheckboxBlockSignals(QCheckBox *cb, bool checked) {
+	cb->blockSignals(true);
+	cb->setChecked(checked);
+	cb->blockSignals(false);
+}
+
+
 void PrefConverters::updateRC(LyXRC const & rc)
 {
 	cacheCB->setChecked(rc.use_converter_cache);
 	needauthForbiddenCB->setChecked(rc.use_converter_needauth_forbidden);
-	needauthCB->setChecked(rc.use_converter_needauth);
+	setCheckboxBlockSignals(needauthCB, rc.use_converter_needauth);
 	QString max_age;
 	doubleToWidget(maxAgeLE, (double(rc.converter_cache_maxage) / 86400.0), 'g', 6);
 	updateGui();
@@ -1874,8 +1881,10 @@ void PrefConverters::on_needauthForbiddenCB_toggled(bool checked)
 
 void PrefConverters::on_needauthCB_toggled(bool checked)
 {
-	if (checked)
+	if (checked) {
+		changed();
 		return;
+	}
 
 	int ret = frontend::Alert::prompt(
 		_("SECURITY WARNING!"), _("Unchecking this option has the effect that potentially harmful converters would be run without asking your permission first. This is UNSAFE and NOT recommended, unless you know what you are doing. Are you sure you would like to proceed ? The recommended and safe answer is NO!"),
@@ -1883,7 +1892,7 @@ void PrefConverters::on_needauthCB_toggled(bool checked)
 	if (ret == 1)
 		changed();
 	else
-		needauthCB->setChecked(true);
+		setCheckboxBlockSignals(needauthCB, true);
 }
 
 
