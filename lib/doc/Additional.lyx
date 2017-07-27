@@ -3349,7 +3349,13 @@ status collapsed
 
 \begin_layout Plain Layout
 Insert\SpecialChar menuseparator
-ChiId
+Chi
+\change_deleted -712698321 1501147443
+I
+\change_inserted -712698321 1501147443
+l
+\change_unchanged
+d
 \begin_inset space ~
 \end_inset
 
@@ -4649,7 +4655,7 @@ Select which bullet depth you want to change then select the bullet shape
 You can reset a bullet shape to the default simply by clicking your right
  mouse button on the appropriate bullet depth button.
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 If you 
@@ -4773,24 +4779,89 @@ labelitem
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -712698321 1501149643
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
+\change_deleted -712698321 1501149634
+
 [
+\change_unchanged
+
 \backslash
 (
 \backslash
 star
 \backslash
-)]
+)
+\change_deleted -712698321 1501149636
+]
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
+
+\change_inserted -712698321 1501149643
+
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501149643
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501149643
+
+
+\backslash
+(
+\backslash
+star
+\backslash
+)
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
  Specify each individual entry by starting each item with the bullet shape
- enclosed in square brackets and set as 
+ enclosed in 
+\change_deleted -712698321 1501149707
+square brackets
+\change_inserted -712698321 1501149740
+a 
+\begin_inset Quotes eld
+\end_inset
+
+Custom Item
+\begin_inset Quotes erd
+\end_inset
+
+ inset (available at 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Item
+\family default
+)
+\change_unchanged
+ and set as 
 \begin_inset Flex Noun
 status collapsed
 
@@ -4807,13 +4878,21 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
+
+\change_deleted -712698321 1501149692
 [
+\change_unchanged
+
 \backslash
 (
 \backslash
 star
 \backslash
-)]
+)
+\change_deleted -712698321 1501149693
+]
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -8388,12 +8467,70 @@ Footnote.
 thanks{}
 \family default
  in that case.
+\change_inserted -712698321 1501150851
+
 \end_layout
 
 \begin_layout Standard
-In addition to these topics, the macros use three additional \SpecialChar LaTeX
- commands that
- have no counterpart in \SpecialChar LyX
+
+\change_inserted -712698321 1501150892
+Under 
+\family sans
+Edit\SpecialChar menuseparator
+Text Style
+\family default
+, you'll find two insets which are relevant for the titling:
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1501150936
+
+\family sans
+Institute
+\family typewriter
+ 
+\family default
+to mark corresponding author\SpecialChar breakableslash
+institute pairs.
+ The institutes are numbered sequentially as they appear in the 
+\family sans
+Address
+\family default
+ field, so you have to put a marker to each author.
+\end_layout
+
+\begin_layout Itemize
+
+\change_inserted -712698321 1501150947
+
+\family sans
+Email
+\family default
+ to supply an email address for fast contact.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+In addition to these topics, the macros use
+\change_deleted -712698321 1501150958
+ three
+\change_inserted -712698321 1501150961
+ one
+\change_unchanged
+ additional \SpecialChar LaTeX
+ command
+\change_deleted -712698321 1501150963
+s
+\change_unchanged
+ that ha
+\change_deleted -712698321 1501150967
+ve
+\change_inserted -712698321 1501150967
+s
+\change_unchanged
+ no counterpart in \SpecialChar LyX
 :
 \end_layout
 
@@ -8410,6 +8547,8 @@ y.
 
 \begin_layout Itemize
 
+\change_deleted -712698321 1501150911
+
 \family typewriter
 
 \backslash
@@ -8425,18 +8564,27 @@ Address
 
 \begin_layout Itemize
 
+\change_deleted -712698321 1501150911
+
 \family typewriter
 
 \backslash
 email{address}
 \family default
  to supply an email address for fast contact.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-In all cases, the appropriate command has to be entered in \SpecialChar LyX
- and marked as
- \SpecialChar LaTeX
+
+\change_deleted -712698321 1501150972
+In all cases, t
+\change_inserted -712698321 1501150972
+T
+\change_unchanged
+he appropriate command has to be entered in \SpecialChar LyX
+ and marked as \SpecialChar LaTeX
  code.
  See the examples.
  
@@ -8451,17 +8599,26 @@ The abstract should immediately follow the header block.
  With version 5 the abstract environment was changed to a command, and there
  is now a resctriction to only one paragraph.
  In addition, it should contain an entry with the keywords.
- This is not yet implemented for \SpecialChar LyX
+ This is 
+\change_deleted -712698321 1501151111
+not yet implemented for \SpecialChar LyX
 , therefore you have to enter the \SpecialChar LaTeX
- command
- 
+ command 
 \family typewriter
 
 \backslash
 keywords{}
 \family default
  by hand and mark it as \SpecialChar LaTeX
- code.
+ code
+\change_inserted -712698321 1501151122
+done via the paragraph style 
+\family sans
+Keywords
+\change_unchanged
+
+\family default
+.
  Refer to the example paper.
 \end_layout
 
@@ -8573,18 +8730,26 @@ and
 
 \begin_layout Itemize
 
+\change_deleted -712698321 1501151229
+
 \family typewriter
 
 \backslash
 email
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize
+
+\change_deleted -712698321 1501151308
 
 \family typewriter
 
 \backslash
 appendix
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize
@@ -8597,6 +8762,8 @@ authorrunning
 
 \begin_layout Itemize
 
+\change_deleted -712698321 1501151231
+
 \family typewriter
 
 \backslash
@@ -8605,10 +8772,14 @@ inst{}
 
 \begin_layout Itemize
 
+\change_deleted -712698321 1501151231
+
 \family typewriter
 
 \backslash
 keywords{}
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize
@@ -8787,7 +8958,13 @@ For submission, the paper has to be formated in a special double-spacing
 referee
 \family default
  to the documentclass.
- This must be done using the extra class options field in the 
+ This must be done using the 
+\change_deleted -712698321 1501151486
+extra
+\change_inserted -712698321 1501151487
+custom
+\change_unchanged
+ class options field in the 
 \family sans
 Document\SpecialChar menuseparator
 Settings
@@ -8845,8 +9022,13 @@ AAS\SpecialChar TeX
  has proven to be an excellent tool for generating these documents, especially
  given its equation, citation, and figure handling capabilities.
  \SpecialChar LyX
- requires version 5.0 (or higher) of these macros; preferably 5.2, which
- is the version described here, or higher.
+ requires version 5.0 (or higher) of these macros; preferably 
+\change_deleted -712698321 1501152764
+5.2
+\change_inserted -712698321 1501152766
+6.0
+\change_unchanged
+, which is the version described here, or higher.
  Versions prior to 5.0 are intended for use with \SpecialChar LaTeX
 2.09 and are fundamentally
  incompatible with \SpecialChar LyX
@@ -8917,7 +9099,11 @@ Template
 \family default
 , enter the new file name, then choose the 
 \family typewriter
-aastex.lyx
+aastex
+\change_inserted -712698321 1501152130
+6
+\change_unchanged
+.lyx
 \family default
  template.
  This will show the most common fields found in a manuscript.
@@ -8929,7 +9115,9 @@ aastex.lyx
  Many of the AAS\SpecialChar TeX
  commands and environments can be implemented directly in
  \SpecialChar LyX
-, but some cannot: most noticeably 
+, but some cannot
+\change_deleted -712698321 1501152213
+: most noticeably 
 \family typewriter
 
 \backslash
@@ -8942,7 +9130,9 @@ altaffilmark
 altaffiltext
 \family default
 , which should stick out like a sore thumb if you actually just opened the
- template file.
+ template file
+\change_unchanged
+.
  For commands such as these, the \SpecialChar LaTeX
  code must be entered directly and marked
  as such.
@@ -8950,8 +9140,11 @@ altaffiltext
  code, or Evil Red Text.
  I tried to minimize the amount of \SpecialChar TeX
  code needed in an AAS\SpecialChar TeX
- document, but
- there is still a bit more required than any of us would like.
+ document
+\change_deleted -712698321 1501152220
+, but there is still a bit more required than any of us would like
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Subsection
@@ -9528,6 +9721,8 @@ Things not implemented, use \SpecialChar TeX
 
 \begin_layout Standard
 
+\change_deleted -712698321 1501152401
+
 \family typewriter
 
 \backslash
@@ -9540,6 +9735,8 @@ altaffilmark
 altaffiltext
 \family default
  (2.3), 
+\change_unchanged
+
 \family typewriter
 
 \backslash
@@ -11584,6 +11781,8 @@ Quotation
 
 \family sans
 Title
+\change_deleted -712698321 1501158884
+
 \end_layout
 
 \begin_layout Itemize
@@ -11624,14 +11823,22 @@ RightAddress
 
 \begin_layout Itemize
 
+\change_deleted -712698321 1501158888
+
 \family sans
 Caption
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize
 
+\change_deleted -712698321 1501158891
+
 \family sans
 Comment
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -12015,13 +12222,27 @@ Theorems, Lemmas, Proofs and more
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1501160146
 Due to a small bug in \SpecialChar LyX
- you can't have two of the same type of these environments
- directly following each other.
- They must be separated by something.
- If you try, you will just be extending the previous environment as if you
- had merged the two environments together.
- So, how do you get around this problem? The simplest option is to insert
+ y
+\change_inserted -712698321 1501160146
+Y
+\change_unchanged
+ou can't have two of the same type of these environments directly following
+ each other.
+ 
+\change_inserted -712698321 1501160182
+If you use a normal paragraph break, 
+\change_deleted -712698321 1501160188
+They must be separated by something.
+ If you try
+\change_unchanged
+, you will just be extending the previous environment as if you had merged
+ the two environments together.
+ 
+\change_deleted -712698321 1501160194
+So, how do you get around this problem? The simplest option is to insert
  some text between the two environments or add a 
 \family sans
 \SpecialChar LaTeX
@@ -12048,6 +12269,20 @@ Due to a small bug in \SpecialChar LyX
  distribution.
  Remember, this problem only occurs if you are trying to place two of the
  same type of theorem-like environments one directly after the other.
+
+\change_inserted -712698321 1501160255
+ Rather than that, you need to insert a so-called separator.
+ Please refer to the section entitled 
+\emph on
+Separate Nestings
+\emph default
+ in the 
+\emph on
+User's Guide
+\emph default
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -12755,9 +12990,13 @@ M-z p
 
 \family default
 Instructions to the speaker.
- The () are automatically inserted, but only the ( will show in \SpecialChar LyX
+ The () are automatically inserted
+\change_deleted -712698321 1501161286
+, but only the ( will show in \SpecialChar LyX
 .
- Both will be printed.
+ Both will be printed
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Itemize
@@ -13539,20 +13778,52 @@ Writing a paper
 \end_layout
 
 \begin_layout Standard
-The easiest way to write a paper is to start with the file 
+The easiest way to write a paper is to start with the 
+\change_deleted -712698321 1501162201
+file
+\change_inserted -712698321 1501162202
+template
+\change_unchanged
+ 
 \emph on
 IOP-article.lyx
 \emph default
- that is available in \SpecialChar LyX
-'s examples files folder.
- Open this file, save it under a new name, and start writing.
- The example file explains how to use the special text environments.
+ that is available 
+\change_deleted -712698321 1501162208
+in \SpecialChar LyX
+'s examples files folder
+\change_inserted -712698321 1501162222
+via 
+\family sans
+File\SpecialChar menuseparator
+New From Template\SpecialChar ldots
+
+\change_deleted -712698321 1501162219
+
+\family default
+.
+
+\change_unchanged
+ 
+\change_deleted -712698321 1501162234
+Open this file, save it under a new name, and start writing.
+
+\change_unchanged
+ The 
+\change_deleted -712698321 1501162238
+example file
+\change_inserted -712698321 1501162239
+template
+\change_unchanged
+ explains how to use the special text environments.
  Here are the most important advices:
 \end_layout
 
 \begin_layout Itemize
 To be able to compile your document to a PDF, PS, or DVI, ensure that the
- two options 
+ 
+\change_deleted -712698321 1501162254
+two options 
 \family sans
 Use AMS math package
 \family default
@@ -13560,7 +13831,17 @@ Use AMS math package
 \family sans
 Math Options
 \family default
- are not used!
+ are not used
+\change_inserted -712698321 1501162277
+no AMS packages are loaded in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Math Options
+\change_unchanged
+
+\family default
+!
 \end_layout
 
 \begin_layout Itemize
@@ -13668,7 +13949,11 @@ There is a general title environment
 \family sans
 Article
 \family default
- which is not directly supported by the \SpecialChar LyX
+ which is not directly supported by
+\change_deleted -712698321 1501162663
+ the
+\change_unchanged
+ \SpecialChar LyX
 .
  This can be used as \SpecialChar TeX
  code when your document doesn't fit into one of the
@@ -13708,7 +13993,7 @@ Solar Physics
 \emph default
 , but there are many others (see a complete list at 
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -14520,11 +14805,21 @@ at the beginning of a chapter.
  If you use the optional argument (
 \family sans
 Insert\SpecialChar menuseparator
+
+\change_deleted -712698321 1501163301
 Short
 \begin_inset space ~
 \end_inset
 
 Title
+\change_inserted -712698321 1501163306
+Dictum
+\begin_inset space ~
+\end_inset
+
+Author
+\change_unchanged
+
 \family default
 ), you can insert the dictum's author there.
  Dictum and author are separated by a line.
@@ -14784,6 +15079,26 @@ scrmacros.inc
 
 \begin_layout Subsection
 letter (koma-script)
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1501163945
+Note: This section discusses the obsolete 
+\family sans
+KOMA-Script-Letter (v.
+\begin_inset space ~
+\end_inset
+
+1)
+\family default
+, which is not even included anymore in recent KOMA releases.
+ Please refer to the next section for the current KOMA-Script-Letter class
+ (v.
+\begin_inset space ~
+\end_inset
+
+2)!
 \end_layout
 
 \begin_layout Standard
@@ -15081,7 +15396,7 @@ Subject
  are input types provided with a label to enter information, which will
  be processed by the document class.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 It could be seen as a matter of inconsequence, that the types 
@@ -15879,9 +16194,18 @@ style: The fancy page style is not supported, due to a command clash between
  name, which confuses \SpecialChar LaTeX
 ).
  Instead, Memoir comes with a number of its own page styles (see 
+\change_deleted -712698321 1501165256
+
 \family sans
 Layout\SpecialChar menuseparator
+
+\change_unchanged
 Document\SpecialChar menuseparator
+
+\change_inserted -712698321 1501165264
+Settings\SpecialChar menuseparator
+
+\change_unchanged
 Page
 \begin_inset space ~
 \end_inset
@@ -15933,9 +16257,24 @@ Title
  of contents from the header.
  You can define three variants of a title with this: one for the main text,
  one for the table of contents, and one for the headers.
- Simply insert two optional arguments if you need this feature, the first
+ 
+\change_deleted -712698321 1501165686
+Simply insert two optional arguments if you need this feature, the first
  one containing the short title for the Table of Contents, the second one
- containing an alternative short title for the headers.
+ containing an alternative short title for the headers
+\change_inserted -712698321 1501165708
+\SpecialChar LyX
+ makes these available in form of specific 
+\family sans
+Short Title
+\family default
+ variants in the 
+\family sans
+Insert
+\family default
+ menu
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Description
@@ -15972,10 +16311,24 @@ Article: With the class option
 article
 \emph default
  (to be inserted in 
+\change_deleted -712698321 1501165976
+
 \family sans
 Layout\SpecialChar menuseparator
+
+\change_unchanged
 Document\SpecialChar menuseparator
+
+\change_inserted -712698321 1501165986
+Settings\SpecialChar menuseparator
+Class Settings\SpecialChar menuseparator
+
+\change_deleted -712698321 1501165988
 Extra
+\change_inserted -712698321 1501165989
+Custom
+\change_unchanged
+
 \begin_inset space ~
 \end_inset
 
@@ -16109,9 +16462,14 @@ Our hero arrives in Troia; he loses some friends; he finds others
 Epigraph: An epigraph is a smart slogan or motto at the beginning of a chapter.
  The epigraph environment provides an elegant way of typesetting such a
  motto.
- The motto itself (text) and its author (source) are divided by a short
- line.
- Unfortunately, we have to fool \SpecialChar LyX
+ The motto itself (text) and its 
+\change_inserted -712698321 1501166968
+(optional) 
+\change_unchanged
+author (source) are divided by a short line.
+ 
+\change_deleted -712698321 1501166972
+Unfortunately, we have to fool \SpecialChar LyX
  a bit here again, since the environment
  needs two arguments (text and source).
  In this case, we have to use curly brackets (in \SpecialChar TeX
@@ -16126,7 +16484,19 @@ Epigraph: An epigraph is a smart slogan or motto at the beginning of a chapter.
 \family default
  
 \emph on
-<author of the slogan>.
+<author of the slogan>
+\change_inserted -712698321 1501166996
+
+\emph default
+The author (source) can be inserted via 
+\family sans
+Insert\SpecialChar menuseparator
+Epigraph Source
+\change_unchanged
+
+\family default
+\emph on
+.
 \end_layout
 
 \begin_layout Description
@@ -16671,10 +17041,14 @@ Address
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted -712698321 1501168252
 Drawbacks
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1501168252
 The main problem with this layout is that you can't use the optional arguments
  to layouts like Email and Title.
  (The problem is not unique to this layout; you can't use optional arguments
@@ -16722,6 +17096,8 @@ Note from JMarc:
 \end_inset
 
  
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -16917,11 +17293,15 @@ ejour2
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1501168901
 Limitations e.
 \begin_inset space \thinspace{}
 \end_inset
 
 g.: does not display the number for theorem-like layouts, just #.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -17399,8 +17779,12 @@ Caption
 
 \begin_layout Itemize
 
+\change_deleted -712698321 1501169265
+
 \family sans
 Comment
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
