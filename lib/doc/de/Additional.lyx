@@ -20610,7 +20610,16 @@ erzeugen
 \family default
  auswählen.
  Bei einem Dokument, das der Versionskontrolle unterliegt, wird hinter dem
- Dateinamen im Befehlseingabefenster der Eintrag ,,[RCS:<Version> <Name>]``
+ Dateinamen im Befehlseingabefenster der Eintrag 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[RCS:<Version> <Name>]
+\end_layout
+
+\end_inset
+
  angehängt.
 \end_layout
 
@@ -20655,7 +20664,7 @@ Wenn Sie mit dem Editieren des Textes fertig sind, müssen Sie die Änderungen
  die Datei wird entsperrt und als schreibgeschützt markiert.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 RCS-Befehl: 
 \family typewriter
 ci -q -u -m"<Beschreibung>" <Dateiname>
@@ -20688,7 +20697,7 @@ durch wird für Sie außerdem das Dokument als veränderbar markiert.
  In der Statuszeile wird angezeigt, dass Sie die Datei gesperrt haben.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 RCS-Befehl: 
 \family typewriter
 co -q -l <Dateiname>
@@ -20718,7 +20727,7 @@ Dadurch werden alle Änderungen, die Sie seit der letzten Übergabe an die
  wird.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 RCS-Befehl: 
 \family typewriter
 co -f -u<Version> <Dateiname>
@@ -20748,7 +20757,7 @@ Dadurch wird die letzte Übergabe an die Versionskontrolle rückgängig gemacht.
  aber die letzte Version wird aus der Masterdatei gelöscht.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 RCS-Befehl: 
 \family typewriter
 rcs -o<Version> <Dateiname>
@@ -20809,144 +20818,143 @@ reference "subsec:VCS-Revision-Information"
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-CVS commands in \SpecialChar LyX
+CVS-Befehle in \SpecialChar LyX
 
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-A subset of CVS operations is supported by \SpecialChar LyX
-.
- You can find the commands in the 
+Ein Teil der CVS-Operationen wird von \SpecialChar LyX
+ unterstützt.
+ Sie finden diese im Menü 
 \family sans
-File\SpecialChar menuseparator
-Version
-\begin_inset space ~
-\end_inset
-
-Control
+Datei\SpecialChar menuseparator
+Versionskontrolle
 \family default
- submenu.
- The version control system SVN is more powerful, so please use it instead
- of CVS if possible.
+.
+ Die Versionskontrolle über SVN ist allerdings mächtiger; verwenden Sie
+ also nach Möglichkeit diese.
 \end_layout
 
 \begin_layout Subsubsection
-
-\family sans
-\lang english
-General CVS usage
+Grundsätzliche Verwendung von CVS
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you start from scratch with CVS you have to create your repository and
- checkout the working copy with external tools.
- If you're using a client-server setup you may need to login before doing
- the first repository checkout.
+Wenn Sie das erste Mal CVS verwenden, müssen Sie zunächst ein Repositorium
+ anlegen und die Arbeitskopie mit externen Werkzeugen auschecken.
+ When Sie ein Client-Server-Setup verwenden, müssen Sie sich vor dem ersten
+ Auschecken möglicherweise anmelden.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If your documents are under revision control and others are using the same
- repository problems arise when different changes to the same document at
- the same location happen.
- Standard CVS repositories doesn't operate with a file locking mechanism.
- This may be surprising, but conflicts only occur if people disagree on
- the proper content of the same part of a document.
- So, if co-workers are used to communicate regularly, these conflicts occur
- rarely.
- If they don't communicate they have a fundamental problem anyway.
- Nevertheless some people like to work with so called 
-\begin_inset Quotes eld
+Wenn Ihr Dokument der Versionskontrolle unterliegt und auch Andere dasselbe
+ Repositorium verwenden, kann es zu Problemen kommen, wenn verschiedene
+ Änderungen am selben Ort des Dokuments vorgenommen werden.
+ Die Standard-CVS-Repositorien bieten keine Möglichkeit an, Dateien zu sperren.
+ Das mag überraschend sein, aber andererseits treten diese Probleme nur
+ auf, wenn sich mehrere Autoren nicht darüber einig sind, an welchen Teilen
+ jeweils eine Person arbeiten soll.
+ Wenn Sie mit Ihren Koautoren also regelmäßig kommunizieren, können Sie
+ diese Probleme verhindern.
+ Wenn Sie das nicht tun, haben Sie ohnehin ein Problem.
+ Trotzdem arbeiten manche Anwender lieber mit so genannten 
+\begin_inset Quotes gld
 \end_inset
 
+
+\lang english
 reserved checkouts
-\begin_inset Quotes erd
+\lang ngerman
+
+\begin_inset Quotes grd
 \end_inset
 
 .
- If they do so the working copy of all files is readonly when checked out
- first and the user starts editing after using a special command to make
- the working copy writable.
- When the changes are checked in the working copy returns to readonly state.
- With \SpecialChar LyX
- one has to edit the 
+ Dabei sind die Arbeitskopien aller Dateien beim ersten Auschecken nur lesbar,
+ und die Anwender müssen einen spezifischen Befehl ausführen, um einzelne
+ Dateien editierbar zu machen.
+ Nach dem Einpflegen wird die Arbeitskopie dann wieder nur lesbar.
+ Für \SpecialChar LyX
+ muss man hierfür die Datei 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .cvsrc
 \end_layout
 
 \end_inset
 
- file and add the line 
+ bearbeiten und die Zeile 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 cvs -r
 \end_layout
 
 \end_inset
 
- to work with reserved checkouts.
- The benefit is the possibility to see who is using a writable copy of some
- document.
- It's not guaranteed only one user makes a copy writable.
+ ergänzen, damit man mit 
+\begin_inset Quotes gld
+\end_inset
+
+
+\lang english
+reserved checkouts
+\lang ngerman
+
+\begin_inset Quotes grd
+\end_inset
+
+ arbeiten kann.
+ Der Vorteil dieses Prozederes ist, dass man sieht, wer eine editierbare
+ Arbeitskopie eines bestimmten Dokuments hat.
+ Es ist aber nicht garantiert, dass nur ein Anwender eine bestimmte Kopie
+ editierbar macht.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \SpecialChar LyX
- tries to guess if you're using reserved or non-reserved checkouts.
- If your working copy is readonly or it is writable and an additional copy
- of your document exists in the CVS/Base sub-directory a reserved otherwise
- a non-reserved checkout is assumed.
- When a reserved checkout is detected you have to use 
-\begin_inset Flex Noun
+ versucht zu erraten, ob Sie reservierte oder nicht-reservierte Checkouts
+ verwenden.
+ Wenn Ihre Arbeitskopie nur lesbar ist oder wenn eine weitere Kopie im Verzeichn
+is 
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Check Out
+CVS/Base
 \end_layout
 
 \end_inset
 
- to make your working copy writable if it's readonly.
- After doing so the 
-\begin_inset Flex Noun
-status collapsed
+ existiert, nimmt \SpecialChar LyX
+ an, dass das Checkout reserviert ist, ansonsten geht
+ es davon aus, dass Sie eine nicht reservierte Kopie verwenden.
+ Im ersteren Fall müssen Sie 
+\family sans
+Zur Bearbeitung auschecken
+\family default
+ wählen, um Ihre Kopie editierbar zu machen, falls Sie nur lesbar ist.
+ Danach ist der Befehl 
+\family sans
+Änderungen einchecken\SpecialChar ldots
 
-\begin_layout Plain Layout
-
-\lang english
-Check In
-\end_layout
-
+\family default
+ verfügbar, die Ihre Arbeitskopie wieder in den Zustand 
+\begin_inset Quotes gld
 \end_inset
 
- operation is possible and that makes your working copy readonly again after
- transferring your changes to the repository.
+nur lesbar
+\begin_inset Quotes grd
+\end_inset
+
+ versetzt, nachdem die Änderungen eingepflegt sind.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-More information about CVS can be found here 
+Weitere Informationen zu CVS finden Sie unter 
 \begin_inset Flex URL
 status collapsed
 
@@ -20957,7 +20965,7 @@ http://www.nongnu.org/cvs
 
 \end_inset
 
- and here 
+ sowie unter 
 \begin_inset Flex URL
 status collapsed
 
@@ -20972,172 +20980,131 @@ http://ximbiot.com/cvs
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Read 
+Konsultieren Sie auch 
 \family typewriter
 man cvs
 \family default
- to understand the sub-commands and the switches mentioned below.
+, um die Befehle und Optionen, die im Folgenden erwähnt werden, zu verstehen.
 \end_layout
 
 \begin_layout Subsubsection
-
-\family sans
-\lang english
-Register
+Registrieren
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If your document is not under revision control, this is the only item shown
- in the menu.
- And if it is under revision control, the 
+Wenn Ihr Dokument noch nicht der Versionskontrolle unterliegt, ist dies
+ der einzige Eintrag im Menü.
+ Falls es der Versionskontrolle unterliegt, ist der Eintrag 
 \family sans
-Register
+Registrieren
 \family default
- item is not visible.
- 
+ nicht sichtbar.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This command registers in CVS your document 
-\begin_inset Flex Strong
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-\lang english
-only
-\end_layout
-
-\end_inset
-
- in case you have already the documents directory under CVS control (in
- particular 
+Dieser Befehl registriert Ihr Dokument nur dann bei CVS, wenn Sie den Ordner
+ des Dokuments bereits unter CVS-Kontrolle haben (insbesondere muss die
+ Datei 
 \family typewriter
 CVS/Entries
 \family default
- file exists).
- This means you have to create or checkout the archive by yourself using
- external tools.
- (In case you forget that step \SpecialChar LyX
- registers the document with RCS.)
+ existieren).
+ Im andern Fall müssen Sie das CVS-Archiv manuell mit Hilfe externer Werkzeuge
+ erstellen oder auschecken.
+ (Falls Sie diesen Schritt vergessen, registriert \SpecialChar LyX
+ das Dokument bei RCS.)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Then you are asked interactively to supply an initial description of the
- document.
- Don't forget that registered file is not yet checked in.
+Bei der Registrierung werden Sie nach einer ersten Beschreibung des Dokuments
+ gefragt.
+ Noch ist aber das registrierte Dokument nicht eingecheckt.
 \end_layout
 
 \begin_layout Standard
+Der ausgeführte CVS-Befehl ist: 
+\end_layout
 
-\lang english
-CVS command that is run: 
+\begin_layout LyX-Code
+
 \family typewriter
-cvs -q add -m"<entered message>" "<file-name>"
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-The term 
-\family typewriter
-"<file-name>"
+cvs -q add -m"<
 \family default
- above and for all other CVS commands is an abbreviation for 
-\begin_inset Quotes eld
+Beschreibung
+\family typewriter
+>" "<Dateiname>"
+\end_layout
+
+\begin_layout Standard
+Der Ausdruck 
+\family typewriter
+"<Dateiname>"
+\family default
+ oben und im Folgenden ist ein Platzhalter, der bedeutet: 
+\begin_inset Quotes gld
 \end_inset
 
-change the current working directory to file location and use the file name
- without path component as argument
-\begin_inset Quotes erd
+ändere das aktuelle Arbeitsverzeichnis zu einer Dateiangabe und verwende
+ den Dateinamen ohne Pfadangabe als Argument
+\begin_inset Quotes grd
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Subsubsection
-
-\family sans
-\lang english
-Check In Changes
+Änderungen einchecken
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-When you are finished editing a file, you commit your changes.
- When you do this and you had changed the document, you are asked for a
- description of the changes.
- After that changes are written to the repository.
- In case you didn't change the document and a reserved checkout is detected
- the reservation made on 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Check Out
+Nachdem Sie ein Dokument bearbeitet haben, pflegen Sie Ihre Änderungen ein.
+ Wenn Sie dies tun, und sofern Sie das Dokument tatsächlich verändert haben,
+ werden Sie nach einer Beschreibung für die Änderungen gefragt.
+ Dann werden die Änderungen ins Repositorium geschrieben.
+ Wenn Sie das Dokument nicht verändert haben und falls ein reservierter
+ Checkout entdeckt wird, wird die Reservierung Rückgängig gemacht.
 \end_layout
 
-\end_inset
-
- is undone.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\lang english
-CVS
-\begin_inset space ~
-\end_inset
-
-command: 
+\begin_layout Itemize
+CVS-Befehl: 
 \begin_inset space ~
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
+\begin_deeper
+\begin_layout LyX-Code
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-cvs 
+cvs -q commit -m"<Beschreibung>" "<
 \family typewriter
--q commit -m"<description>" "<file-name>"
+Dateiname
+\family default
+>"
 \end_layout
 
 \end_inset
 
- or
-\begin_inset Newline newline
-\end_inset
+ 
+\end_layout
 
+\begin_layout Standard
+oder
+\end_layout
 
+\begin_layout LyX-Code
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-cvs -q unedit 
+cvs -q unedit "<
 \family typewriter
-"<file-name>"
+Dateiname
+\family default
+>"
 \end_layout
 
 \end_inset
@@ -21145,199 +21112,159 @@ cvs -q unedit
 
 \end_layout
 
+\end_deeper
 \begin_layout Subsubsection
-
-\family sans
-\lang english
-Check Out Changes
+Änderungen auschecken
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-When you are sharing a repository with others, you may have to incorporate
- their changes into your working copy.
+Wenn Sie ein Repositorium mit anderen teilen, müssen Sie deren Änderungen
+ in Ihre Arbeitskopie einpflegen.
 \end_layout
 
-\begin_layout Standard
-
-\lang english
-CVS command: 
+\begin_layout Itemize
+CVS-Befehl: 
 \family typewriter
-cvs -q update "<file-name>"
+cvs -q update "<Dateiname>"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If a readonly checkout is detected the working copy is made writable and
- reserved.
+Wenn eine nur lesbare Kopie entdeckt wird, wird sie editierbar gemacht und
+ reserviert.
 \end_layout
 
-\begin_layout Standard
-
-\lang english
-CVS command: 
+\begin_layout Itemize
+CVS-Befehl: 
 \family typewriter
-cvs -q edit "<file-name>"
+cvs -q edit "<Dateiname>"
 \end_layout
 
 \begin_layout Subsubsection
-
-\family sans
-\lang english
-Revert To Repository Version
+Zu Version aus dem Repositorium zurückkehren
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This will discard all changes made to the document since the last check
- in.
- You get a warning before changes are discarded.
- Firstly the file is deleted, secondly CVS update command is run.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-CVS command: 
-\family typewriter
-cvs -q update "<file-name>"
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-If a reserved checkout is detected and the working copy has no changes only
- the reservation is undone.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-CVS command: 
-\family typewriter
-cvs -q unedit "<file-name>"
-\end_layout
-
-\begin_layout Subsubsection
-
-\lang english
-Update of the local directory checkout from repository
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Once your documents gets more complex, containing sub-documents and pictures,
- including external 
+Dies wird alle lokalen Änderungen verwerfen.
+ Sie bekommen, bevor dies geschieht, eine Warnung angezeigt.
+ Zunächst wird die Datei gelöscht, dann wird der Befehl 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+CVS update
+\end_layout
 
-\lang english
+\end_inset
+
+ ausgeführt:
+\end_layout
+
+\begin_layout Itemize
+CVS-Befehl: 
+\family typewriter
+cvs -q update "<Dateiname>"
+\end_layout
+
+\begin_layout Standard
+Wenn eine reservierte Kopie entdeckt wird und es keine Änderungen gibt,
+ wird nur die Reservierung zurückgenommen:
+\end_layout
+
+\begin_layout Itemize
+CVS-Befehl: 
+\family typewriter
+cvs -q unedit "<Dateiname>"
+\end_layout
+
+\begin_layout Subsubsection
+Lokales Verzeichnis aus dem Repositorium aktualisieren
+\end_layout
+
+\begin_layout Standard
+Wenn Ihr Dokument komplexer wird und zum Beispiel Unterdokumente und Bilder
+ enthält, externe 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 .tex
 \end_layout
 
 \end_inset
 
- files and so on using version control becomes more complicated.
+-Dateien einbindet usw., wird auch die Versionskontrolle komplizierter.
  \SpecialChar LyX
- supports updating the whole tree in which resides the document.
- This become especially useful once you cooperate with people which neither
- have detailed knowledge about CVS usage nor they have ambition to commit
- additional material to the repository.
- You have to organize the files structure so that all external files are
- in the same directory or subdirectories of the document.
- It's good practice anyway to store multipart documents in an extra directory.
+ unterstützt die Aktualisierung des ganzen Verzeichnisses, indem sich das
+ Dokument befindet.
+ Das ist insbesondere dann hilfreich, wenn Sie mit Leuten kooperieren, die
+ weder spezifische CVS-Kenntnisse haben noch sich bemühen, zusätzliches
+ Material zum Repositorium hinzuzufügen.
+ Sie müssen die Dateistruktur dann so anlegen, dass alle externen Dateien
+ im gleichen Unterverzeichnis liegen wie das versionierte Dokument.
+ Es hat sich bewährt, Mehrfachdokument in einem eigenen Ordner zu speichern.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The 
+Der Befehl 
+\family sans
+Lokales Verzeichnis aus dem Repositorium aktualisieren
+\family default
+ aktualisiert das gesamte Verzeichnis.
+ Falls lokale Änderungen gefunden werden, werden die Anwender gewarnt, bevor
+ der Prozess ausgeführt wird.
+ Im Fall von Zusammenführungskonflikten werden beide Versionen der konfligierend
+en Dokumententeile im Dokument eingefügt.
+ Sie müssen dann das Ergebnis prüfen und korrigieren.
+ Die Konflikte sind markiert durch 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Update local directory from repository
-\end_layout
-
-\end_inset
-
- command updates the whole directory.
- If local changes are detected user is warned before update starts.
- In case of merge conflicts both versions of the conflicting document parts
- are placed in the final document.
- You have to review and correct the result of the merge.
- You'll find the conflicts enclosed in pairs of 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
 <<<<<<<
 \end_layout
 
 \end_inset
 
- and 
+ und 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 >>>>>>>
 \end_layout
 
 \end_inset
 
- separated by 
+ und getrennt durch 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 =======
 \end_layout
 
 \end_inset
 
 .
- The first part is your version as before the update operation with the
- document name prepended.
- The second one is the repository version with the version number after
- the sequence of 
+ Der erste Teil ist Ihre Version, wie Sie vor dem Zusammenführen war, mit
+ angehängtem Dateinamen.
+ Der zweite Teil ist die Version aus dem Repositorium, mit der Versionsnummer
+ nach einer Reihe von 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 >
 \end_layout
 
 \end_inset
 
- signs.
+-Zeichen.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\lang english
-CVS
-\begin_inset space ~
-\end_inset
-
-commands: 
+CVS-Befehle: 
 \begin_inset space ~
 \end_inset
 
@@ -21350,16 +21277,12 @@ commands:
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-cd $path; cvs diff 
-\family typewriter
-"."
+cd $path; cvs diff "."
 \end_layout
 
 \end_inset
 
- (Ask if changes are detected.)
+ (frage, wenn Änderungen entdeckt werden.)
 \begin_inset Newline newline
 \end_inset
 
@@ -21368,11 +21291,7 @@ cd $path; cvs diff
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-cd $path; cvs -q update 
-\family typewriter
-"."
+cd $path; cvs -q update "."
 \end_layout
 
 \end_inset
@@ -21381,74 +21300,55 @@ cd $path; cvs -q update
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-where 
+Dabei steht 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $path
 \end_layout
 
 \end_inset
 
- stands for the path to the document.
+ für den Pfad zum Dokument.
 \end_layout
 
 \begin_layout Subsubsection
-
-\family sans
-\lang english
-Show History
+Verlauf anzeigen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This shows the complete history of the CVS document.
- The output of 
+Das zeigt den kompletten Versionsverlauf der Dokuments.
+ Die Ausgabe des Befehls 
 \family typewriter
-cvs log "<file-name>"
+cvs log "<Dateiname>"
 \family default
- is shown in a browser.
+ wird angezeigt.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-SVN commands in \SpecialChar LyX
+SVN-Befehle in \SpecialChar LyX
 
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-SVN is now partially supported by \SpecialChar LyX
-.
- You can find the commands in the 
+SVN wird teilweise von \SpecialChar LyX
+ unterstützt.
+ Sie finden die unterstützten Befehle im Menü 
 \family sans
-File\SpecialChar menuseparator
-Version
-\begin_inset space ~
-\end_inset
-
-Control
+Datei\SpecialChar menuseparator
+Versionskontrolle
 \family default
- submenu.
- Please note that if you use password protected access to repository via
- ssh, you will be asked in terminal window.
+.
+ Bitte beachten Sie, dass Sie, falls Sie einen passwortgeschützten Zugang
+ über SSH verwenden, Sie in einem Terminalfenster nach diesem gefragt werden.
  \SpecialChar LyX
- was tested against SVN 1.5 and 1.6
+ wurde mit den Versionen 1.5 und 1.6 von SVN gestestet.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Most of the commands will work with 1.4 too, see 
+Die meisten Befehle funktionieren aber auch mit Version 1.4; siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:SVN-Repo-Update"
@@ -21464,100 +21364,88 @@ reference "subsec:SVN-Repo-Update"
 \end_layout
 
 \begin_layout Subsubsection
-
-\family sans
-\lang english
-Register
+Registrieren
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If your document is not under revision control, this is the only item shown
- in the menu.
- And if it is under revision control, the 
+Wenn Ihr Dokument noch nicht der Versionskontrolle unterliegt, ist dies
+ der einzige Eintrag im Menü.
+ Falls es der Versionskontrolle unterliegt, ist der Eintrag 
 \family sans
-Register
+Registrieren
 \family default
- item is not visible.
- 
+ nicht sichtbar.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This command registers in SVN your document ONLY in case you have already
- the documents directory under SVN control (in particular 
+Dieser Befehl registriert Ihr Dokument nur dann bei SVN, wenn Sie den Ordner
+ des Dokuments bereits unter SVN-Kontrolle haben (insbesondere muss die
+ Datei 
 \family typewriter
 .svn/entries
 \family default
- file exists).
- This means you have to checkout the archive by yourself.
- 
+ existieren).
+ Im andern Fall müssen Sie das SVN-Archiv manuell mit Hilfe externer Werkzeuge
+ erstellen oder auschecken.
+ (Falls Sie diesen Schritt vergessen, registriert \SpecialChar LyX
+ das Dokument bei RCS.)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Then you are asked interactively to supply an initial description of the
- document.
- Don't forget that registered file is not yet commited.
+Bei der Registrierung werden Sie nach einer ersten Beschreibung des Dokuments
+ gefragt.
+ Noch ist aber das registrierte Dokument nicht eingecheckt.
 \end_layout
 
 \begin_layout Standard
+Der ausgeführte SVN-Befehl ist: 
+\end_layout
 
-\lang english
-SVN command that is run: 
+\begin_layout LyX-Code
+
 \family typewriter
 svn add -q 
-\begin_inset Quotes eld
+\begin_inset Quotes qld
 \end_inset
 
-<file-name>
-\begin_inset Quotes erd
+<Dateiname>
+\begin_inset Quotes qld
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Read 
+Lesen Sie 
 \family typewriter
 man svn
 \family default
- to understand the switches.
- 
+, um die Befehle und Optionen, die im Folgenden erwähnt werden, zu verstehen.
 \end_layout
 
 \begin_layout Subsubsection
-
-\family sans
-\lang english
-Check In Changes
+Änderungen einchecken
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-When you are finished editing a file, you commit your changes.
- When you do this, you are asked for a description of the changes.
- After that changes are commited.
+Nachdem Sie ein Dokument bearbeitet haben, pflegen Sie Ihre Änderungen ein.
+ Wenn Sie dies tun, und sofern Sie das Dokument tatsächlich verändert haben,
+ werden Sie nach einer Beschreibung für die Änderungen gefragt.
+ Danach werden die Änderungen abgeschickt.
 \end_layout
 
-\begin_layout Standard
-
-\lang english
-SVN command:
+\begin_layout Itemize
+SVN-Befehl:
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
+Falls die Dateisperre nicht aktiviert ist.
+ Siehe Abschnitt
+\begin_inset space ~
+\end_inset
 
-\lang english
-In case locking is not enabled.
- See Section 
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:SVN-File-Locking"
@@ -21571,105 +21459,76 @@ reference "subsec:SVN-File-Locking"
 
  
 \family typewriter
-svn commit -q -m"<description>" <file-name>
+svn commit -q -m"<Beschreibung>" <Dateiname>
 \end_layout
 
 \begin_layout Subsubsection
-
-\family sans
-\lang english
-Check Out For Edit
+Zum Bearbeiten Änderungen auschecken
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Updates the changes of this file from the repository.
- Be sure you understand SVN merging and conflicts resolving before using
- this function, because all conflicts has to be resolved manually by you!
+Aktualisiert die Änderungen von Repositorium.
+ Versichern Sie sich, dass Sie wissen, wie SVN-Zusammenführung und \SpecialChar nobreakdash
+Konfliktlösun
+g funktioniert, bevor Sie diesen Befehl ausführen, denn alle Konflikte müssen
+ manuell von Ihnen gelöst werden!
 \end_layout
 
-\begin_layout Standard
-
-\lang english
-SVN command:
+\begin_layout Itemize
+SVN-Befehl:
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Ditto.
+Dito.
 \end_layout
 
 \end_inset
 
  
 \family typewriter
-svn update --non-interactive 
-\begin_inset Quotes eld
-\end_inset
-
-<file-name>
-\begin_inset Quotes erd
-\end_inset
-
-
+svn update --non-interactive "<Dateiname>"
 \end_layout
 
 \begin_layout Subsubsection
-
-\family sans
-\lang english
-Revert To Repository Version
+Zu Version aus dem Repositorium zurückkehren
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This will discard all changes made to the document since the last check
- in.
- You get a warning before changes are discarded.
- 
+Dies wird alle lokalen Änderungen verwerfen.
+ Sie bekommen, bevor dies geschieht, eine Warnung angezeigt.
 \end_layout
 
-\begin_layout Standard
-
-\lang english
-SVN command: 
+\begin_layout Itemize
+SVN-Befehl: 
 \family typewriter
-svn revert -q 
-\begin_inset Quotes eld
-\end_inset
-
-<file-name>
-\begin_inset Quotes erd
-\end_inset
-
-
+svn revert -q "<Dateiname>"
 \end_layout
 
 \begin_layout Subsubsection
+\begin_inset Argument 1
+status collapsed
 
-\lang english
+\begin_layout Plain Layout
+Aktualisierung des lokalen Verzeichnisses und Abrufen der Version vom Repositori
+um
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:SVN-Repo-Update"
 
 \end_inset
 
-Update of the local directory checkout from repository
+Lokales Verzeichnis aus dem Repositorium aktualisieren
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Note that this command will work only with subversion 
-\begin_inset Formula $\geqq1.5$
-\end_inset
-
-
+Beachten Sie, dass dies erst ab Version 1.5 von Subversion möglich ist.
 \end_layout
 
 \end_inset
@@ -21678,73 +21537,46 @@ Note that this command will work only with subversion
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-All the commands above have one shortcomming - they deal with the current
- document only.
- Once your document contains pictures, includes external 
+Alle bisher genannten Befehle haben eine Nachteil: Sie betreffen nur das
+ jeweils aktuelle Dokument.
+ Wenn Ihr Dokument komplexer wird und zum Beispiel Unterdokumente und Bilder
+ enthält, externe 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .tex
 \end_layout
 
 \end_inset
 
- files and so on administration becomes more complicated.
+-Dateien einbindet usw., wird auch die Versionskontrolle komplizierter.
  \SpecialChar LyX
- now supports updating the whole tree in which resides the document
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-One need to organize the files structure so that all external files are
- in the same directory or subdirectories of the document.
- 
-\end_layout
-
-\end_inset
-
-.
- This become especially useful once you cooperate with people which neither
- know about subversion management nor they have ambition to commit additional
- material to the repository.
- 
+ unterstützt die Aktualisierung des ganzen Verzeichnisses, indem sich das
+ Dokument befindet.
+ Das ist insbesondere dann hilfreich, wenn Sie mit Leuten kooperieren, die
+ weder spezifische SVN-Kenntnisse haben noch sich bemühen, zusätzliches
+ Material zum Repositorium hinzuzufügen.
+ Sie müssen die Dateistruktur dann so anlegen, dass alle externen Dateien
+ im gleichen Unterverzeichnis liegen wie das versionierte Dokument.
+ Es hat sich bewährt, Mehrfachdokument in einem eigenen Ordner zu speichern.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Update local directory from repository
-\end_layout
-
-\end_inset
-
- command updates the whole directory and in case of merge conflicts local
- version of the files are left, so no unintended data loss occurs.
- If local changes are detected user is warned before update starts.
+Der Befehl 
+\family sans
+Lokales Verzeichnis aus dem Repositorium aktualisieren
+\family default
+ aktualisiert das gesamte Verzeichnis.Im Fall von Zusammenführungskonflikten,
+ werden die lokalen Versionen der Dateien behalten, es kann also nicht zu
+ nicht-intendiertem Datenverlust kommen.
+ Falls lokale Änderungen gefunden werden, werden die Anwender gewarnt, bevor
+ der Prozess ausgeführt wird.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\lang english
-SVN
-\begin_inset space ~
-\end_inset
-
-commands: 
+SVN-Befehle: 
 \begin_inset space ~
 \end_inset
 
@@ -21757,14 +21589,12 @@ commands:
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 svn diff $path
 \end_layout
 
 \end_inset
 
- (Ask if changes are detected.)
+ (frage, wenn Änderungen entdeckt werden.)
 \begin_inset Newline newline
 \end_inset
 
@@ -21773,8 +21603,6 @@ svn diff $path
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 svn update –accept mine-full $path
 \end_layout
 
@@ -21784,53 +21612,34 @@ svn update –accept mine-full $path
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-where 
+Dabei steht 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $path
 \end_layout
 
 \end_inset
 
- stands for the path to the document.
+ für den Pfad zum Dokument.
 \end_layout
 
 \begin_layout Subsubsection
-
-\family sans
-\lang english
-Show History
+Verlauf anzeigen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This shows the complete history of the SVN document.
- The output of 
+Das zeigt den kompletten Versionsverlauf der Dokuments.
+ Die Ausgabe des Befehls 
 \family typewriter
-svn log 
-\begin_inset Quotes eld
-\end_inset
-
-<file-name>
-\begin_inset Quotes erd
-\end_inset
-
-
+svn log "<Dateiname>"
 \family default
- is shown in a browser.
+ wird angezeigt.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-File Locking
+Dateisperrung verwenden
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:SVN-File-Locking"
@@ -21841,137 +21650,143 @@ name "subsec:SVN-File-Locking"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The file exchange through various revision control systems brings the problem
- of merge conflicts in case two different users try to edit the same (parts
- of) document.
- When such a conflict happens it needs manual resolving and one reasonable
- alternative is to provide some kind of locking mechanism, which guarantees
- that only one user is allowed to edit file at the given time.
+Der Austausch von Dateien über Versionskontrollsysteme kann dazu führen,
+ dass es zu Zusammenführungskonflikten kommt, wenn zwei Autoren dasselbe
+ Dokument an derselben Stelle bearbeiten.
+ Wenn das passiert, sind manuelle Eingriffe nötig.
+ Eine sinnvolle Lösung, das zu verhindern, ist ein Sperrmechanismus, der
+ garantiert, dass jeweils nur eine Person zu einer bestimmten Zeit an einer
+ Datei arbeiten kann.
 \end_layout
 
 \begin_layout Standard
+SVN bietet zwei solcher Mechanismen, um exklusiven Zugang zu Dateien zu
+ bieten: Dateisperren und automatische Zuweisung von Schreibrechten (siehe
+ Abschnitt
+\begin_inset space ~
+\end_inset
 
-\lang english
-SVN has two such mechanisms to provide mutual exclusivity for file access
- - locks and automatic setting of write permissions (see sec.
- 
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Automatical-Locking-Property"
 
 \end_inset
 
-) based on 
+), die auf der SVN-Dateieigenschaft 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 svn:needs-lock
 \end_layout
 
 \end_inset
 
- file svn property
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-http://svnbook.red-bean.com/en/1.2/svn.advanced.locking.html
-\end_layout
-
-\end_inset
-
-.
- If this property is detected for a given document \SpecialChar LyX
- starts to use SVN locks
- for document editing automatically and the whole check-in/out mechanism
- switches to the same regimen as for RCS.
- This in particular means there are two different modes of file use in \SpecialChar LyX
-:
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-Unlocked state.
- The loaded file is in the read-only mode.
- For editing on needs to check-out.
- 
-\emph on
-Check-out
-\emph default
- consists of updating from the repository and gaining write lock.
- If the lock is not possible to obtain, we remain in unlocked state.
-\end_layout
-
-\begin_layout Itemize
-
-\lang english
-Locked state.
- The loaded file is in the 'normal' edit mode.
- No other user is allowed to edit the file.
- 
-\emph on
-Check-in
-\emph default
- consists of commiting changes and releasing write-lock.
- If no changes have been made to the document, no commit will be produced
+ beruhen.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://svnbook.red-bean.com/en/1.2/svn.advanced.locking.html"
 
-\lang english
-Don't be puzzled by the fact that you will be asked for commit message anyway.
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
- and only the write-lock will be released.
+ Wenn diese Eigenschaft für ein gegebenes Dokument entdeckt wird, beginnt
+ \SpecialChar LyX
+ automatisch SVN-Sperren für die Dokumentbearbeitung zu nutzen, womit der
+ ganze Eincheck-/Auscheck-Mechanismus ähnlich wird wie bei RCS.
+ Insbesondere heißt das, dass es dann zwei Dateimodi in \SpecialChar LyX
+ gibt:
+\end_layout
+
+\begin_layout Itemize
+Nicht gesperrt.
+ Das geladene Dokument ist im Modus 
+\begin_inset Quotes gld
+\end_inset
+
+schreibgeschützt
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Um es zu bearbeiten, muss es ausgescheckt werden.
+ 
+\emph on
+Auschecken
+\emph default
+ heißt: Aktualisieren vom Repositorium und Schreibschutz einschalten.
+ Wenn das letztere nicht gelingt, bleiben wir im nicht gesperrten Modus.
+\end_layout
+
+\begin_layout Itemize
+Gesperrt.
+ Das geladene Dokument ist im 
+\begin_inset Quotes gls
+\end_inset
+
+normalen
+\begin_inset Quotes grs
+\end_inset
+
+ Bearbeitungsmodus.
+ Kein anderer Anwender kann es bearbeiten.
+ 
+\emph on
+Einchecken 
+\emph default
+heißt: Änderungen abschicken und die Sperre lösen.
+ Wenn es keine Änderungen gibt, wird nichts abgeschickt
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Lassen Sie sich nicht dadurch verwirren, dass Sie trotzdem nach einer Änderungsb
+eschreibung gefragt werden.
+\end_layout
+
+\end_inset
+
+ und nur die Sperre wird gelöst.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-SVN commands:
+SVN-Befehle:
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\lang english
-Check-in:
+\labelwidthstring 00.00.0000.00
+Einchecken:
 \family typewriter
- svn commit -q -m"<description>" "<file-name>"
+ svn commit -q -m"<Beschreibung>" "<Dateiname>"
 \begin_inset Newline newline
 \end_inset
 
-svn unlock "<file-name>"
+svn unlock "<Dateiname>"
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\lang english
-Check-out: 
+\labelwidthstring 00.00.0000.00
+Auschechen: 
 \family typewriter
-svn update "<file-name>"
+svn update "<Dateiname>"
 \begin_inset Newline newline
 \end_inset
 
-svn lock "<file-name>"
+svn lock "<Dateiname>"
 \end_layout
 
 \begin_layout Subsubsection
 
 \family typewriter
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Automatical-Locking-Property"
@@ -21980,162 +21795,129 @@ name "subsec:Automatical-Locking-Property"
 
 
 \family default
-Automatic Locking Property
+Automatische Dateisperrung
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The above mentioned automatic setting of write permissions of the .lyx file
- can be set through
+Die oben genannte automatische Einrichtung der Schreibrechte der \SpecialChar LyX
+-Datei
+ kann über
 \family sans
- File\SpecialChar menuseparator
-Version
-\begin_inset space ~
-\end_inset
-
-Control\SpecialChar menuseparator
-Toggle locking property
+ Datei\SpecialChar menuseparator
+Versionskontrolle\SpecialChar menuseparator
+Dateisperrung verwenden
 \family default
-.
- This command is active only when the file is not locked on the svn server
- (i.e.
- you need to check-out before proceeding).
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\lang english
-SVN
-\begin_inset space ~
+ aktiviert werden.
+ Dieser Befehl ist nur aktiv, wenn die Datei nicht auf dem SVN-Server gesperrt
+ ist (d.
+\begin_inset space \thinspace{}
 \end_inset
 
-commands:
+h., Sie müssen vor der Ausführung auschecken).
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\lang english
-Set:
-\family typewriter
- svn propset svn:needs-lock ON "<file-name>"
+\labelwidthstring 00.00.0000.00
+SVN-Befehle:
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\lang english
-Unset: 
+\labelwidthstring 00.00.0000.00
+Einschalten:
 \family typewriter
-svn propdel svn:needs-lock "<file-name>"
+ svn propset svn:needs-lock ON "<Dateiname>"
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000.00
+Ausschalten: 
+\family typewriter
+svn propdel svn:needs-lock "<Dateiname>"
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:VCS-Revision-Information"
 
 \end_inset
 
-Revision Information in Documents
+Revisionsinformationen in Dokumenten
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are more possibilities how to activate revision information in our
- document.
+Es gibt viele Möglichkeiten, in Ihrem Dokument Revisionsinformationen anzuzeigen.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \SpecialChar LyX
- supports directly:
+ unterstützt direkt:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
-tree revision information (
+Verzeichnis-Revisionsinformation (
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 vcs-tree-revision
 \end_layout
 
 \end_inset
 
 ).
- The result is the output of the 
+ Das Ergebnis ist die Ausgabe des Befehls 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 svnversion
 \end_layout
 
 \end_inset
 
- command, the following table gives you an idea, how to read the results.
+; die folgende Tabelle erläutert, wie sie zu lesen ist:
 \end_layout
 
 \begin_layout Standard
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Output
+Ausgabe
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Meaning
+Bedeutung
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 4123:4168
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -22148,18 +21930,16 @@ mixed revision working copy
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 4168M
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -22172,18 +21952,16 @@ modified working copy
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 4123S
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -22196,18 +21974,16 @@ switched working copy
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 4123P
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -22220,18 +21996,16 @@ partial working copy, from a sparse checkout
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 4123:4168MS
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -22251,16 +22025,12 @@ mixed revision, modified, switched working copy
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-file revision information.
- The result comes from parsing the output of 
+Datei-Versionsinformation.
+ Das Ergebnis wird aus der Ausgabe des Befehls 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 svn
 \begin_inset space ~
 \end_inset
@@ -22278,21 +22048,17 @@ file.lyx
 
 \end_inset
 
-.
- Supported flags are:
+ extrahiert.
+ Unterstützt wird:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
-version number of the last commit (
+Versionsnummer des letzten Commits (
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 vcs-revision
 \end_layout
 
@@ -22302,15 +22068,11 @@ vcs-revision
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-author of the last commit (
+Autor des letzten Commits (
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 vcs-author
 \end_layout
 
@@ -22320,15 +22082,11 @@ vcs-author
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-date of the last commit (
+Datum des letzten Commits (
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 vcs-date
 \end_layout
 
@@ -22338,15 +22096,11 @@ vcs-date
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-time of the last commit (
+Uhrzeit des letzten Commits (
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 vcs-time
 \end_layout
 
@@ -22357,155 +22111,200 @@ vcs-time
 
 \end_deeper
 \begin_layout Standard
-
-\lang english
-You can obtain this info via InsetInfo (e.g.
+Sie können diese Informationen über die Info-Einfügung einbinden (bspw.
  
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 info-insert buffer vcs-date
 \end_layout
 
 \end_inset
 
 ).
- The information will be available only when you have the file stored under
- svn managment (i.e.
- the 
+ Die Information ist nur dann Verfügbar, wenn die Datei der SVN-Kontrolle
+ unterliegt (d.
+\begin_inset space \thinspace{}
+\end_inset
+
+h.
+ wenn das Verzeichnis 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .svn
 \end_layout
 
 \end_inset
 
- directory is available with your document).
+ mit Ihrem Dokument verfügbar ist).
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-
-\lang english
-Another—a hacking one—possibility is to use svn keywords
+Eine weitere (eher unsaubere) Möglichkeit ist die Verwendung von SVN-Schlagwörte
+rn.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
+\begin_inset CommandInset href
+LatexCommand href
+target "http://svnbook.red-bean.com/en/1.4/svn.advanced.props.special.keywords.html"
 
-\lang english
-http://svnbook.red-bean.com/en/1.4/svn.advanced.props.special.keywords.html
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
-.
- In short – you set file keywords property (e.g.
+ Kurz gesagt setzen Sie die Dateieigenschaft 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+keywords
+\end_layout
+
+\end_inset
+
+ (bspw.
  
 \family sans
 svn propset svn:keywords 'Rev' file.lyx
 \family default
-) and then paste keyword \SpecialChar TeX
- code
+) und fügen dann das Schlagwort als Marke im \SpecialChar TeX
+-Modus ein
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-This is an easy way how to ensure that \SpecialChar LyX
- won't break the line in the middle
- of keyword tag.
+So wird gewährleistet, dass \SpecialChar LyX
+ inmitten von Schlagwörtern keine Zeilenumbrüche
+ einfügt.
 \end_layout
 
 \end_inset
 
- tag in your document (e.g.
+ (z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
  
-\begin_inset ERT
-status open
+\begin_inset Flex Code
+status collapsed
 
 \begin_layout Plain Layout
-
 $Rev$
 \end_layout
 
 \end_inset
 
 ).
- This way svn client will automatically substitute revision number (e.g.
+ Der SVN-Client wird dies dann automatisch nach jeder Aktualisierung und
+ jeder Abschickung durch die Revisionsnummer ersetzen (bspw.
  
-\begin_inset ERT
-status open
+\begin_inset Flex Code
+status collapsed
 
 \begin_layout Plain Layout
-
 $Rev: 59 $
 \end_layout
 
 \end_inset
 
-) after each update and commit.
- There are more problems with this approach.
- Firstly, the '$' character is used in \SpecialChar TeX
- world for math equations, so any
- occurence of math formula 
+).
+ Diese Methode ist aber problematisch.
+ Zum einen wird das Zeichen 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+$
+\end_layout
+
+\end_inset
+
+ in \SpecialChar TeX
+ für mathematische Formeln verwendet.
+ Jede Formel 
 \begin_inset Formula $Rev$
 \end_inset
 
- become 
+ würde somit in Ihrem \SpecialChar LyX
+-Dokument zu 
 \begin_inset Formula $Rev:59$
 \end_inset
 
- in your \SpecialChar LyX
- document.
- Similarly for other keywords like Id, Date, Author, etc.
- Secondly svn output is dependent on your locales, so its very easy that
- svn would produce some problematic strings once Date is used.
- Thirdly you get the whole 'Rev: 59' string in your document instead of
- the plain number.
- Until subversion implements user's custom keywords it will be hard to use
- this approach reliably or let \SpecialChar LyX
- to support it directly.
+ werden.
+ Dasselbe würde mit anderen Schlagwörtern wie 
+\emph on
+\lang english
+Id
+\emph default
+, 
+\emph on
+Date
+\emph default
+, 
+\emph on
+Author
+\emph default
+\lang ngerman
+ etc.
+ passieren.
+ Zweitens hängt die Ausgabe von SVN von der Lokalisierung des Betriebssystems
+ ab, es kann also leicht passieren, dass SVN problematische Ausgaben produziert,
+ wenn das Datum im Spiel ist.
+ Drittens bekommen Sie in Ihrem Dokument die ganze Zeichenkette 
+\begin_inset Quotes gld
+\end_inset
+
+Rev: 59
+\begin_inset Quotes grd
+\end_inset
+
+ und nicht nur die Revisionsnummer selbst.
+ So lange SVN keine benutzerdefinierten Schlagwörter einführt, wird es also
+ schwer, diese Methode in \SpecialChar LyX
+ zuverlässig zu nutzen.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-SVN and Windows Environment
+SVN unter Windows
 \end_layout
 
 \begin_layout Quote
+Ich wage zu behaupten, dass Anwender, die mit den Kommandozeilenoperationen
+ nicht sehr schnell zurecht kommen, mit 
+\family sans
+TortoiseSVN
+\family default
+ gut beraten sind.
+ — P.
+\begin_inset space \thinspace{}
+\end_inset
 
-\lang english
-My inclination is to say that if the user cannot figure out the command
- line operations on their own fairly quickly, they would be well advised
- to use TortoiseSVN.
- —P.
- A.
- Rubin
+A.
+\begin_inset space ~
+\end_inset
+
+Rubin
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Preparation
+Vorbereitungen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In addition to installing \SpecialChar LyX
-, and having access to a Subversion repository,
- the user will need to install the Subversion client program.
- A Windows installer for the client program is available from 
+Zusätzlich zu \SpecialChar LyX
+ und zum Zugang zu einem Subversion-Repositorium werden Sie
+ zunächst das Subversion-Clientprogramm installieren müssen.
+ Einen Windows-Installer für dieses Programm finden Sie unter 
 \begin_inset CommandInset href
 LatexCommand href
 name "CollabNet"
@@ -22515,7 +22314,7 @@ literal "false"
 \end_inset
 
 .
- The user may also want to install 
+ Sie können zusätzlich auch 
 \begin_inset CommandInset href
 LatexCommand href
 name "TortoiseSVN"
@@ -22524,205 +22323,248 @@ literal "false"
 
 \end_inset
 
-, which integrates Subversion operations into the context (rightclick) menu
- of Windows Explorer.
- Operations done outside \SpecialChar LyX
- will typically be more convenient using the Explorer
- context menu.
- Note that TortoiseSVN is not a replacement for the client program, which
- is what \SpecialChar LyX
- itself will use.
+ installieren, das Subversion im Kontextmenü des Windows-Explorers zugänglich
+ macht.
+ Operationen, die Sie außerhalb von \SpecialChar LyX
+ vornehmen, sind dann etwas bequemer
+ auszuführen.
+ Beachten Sie, dass 
+\family sans
+TortoiseSVN
+\family default
+ kein Clientprogramm ersetzt, und ein solches ist für die Verwendung mit
+ \SpecialChar LyX
+ unbedingt nötig.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Bringing a document under Subversion control
+Ein Dokument unter Subversions Kontrolle bringen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Before a \SpecialChar LyX
- document can be brought under version control in Subversion, its
- parent directory needs to be under version control.
- If the document is being added to a project already in the repository,
- this is accomplished by checking the project out to the directory where
- the new document will be placed.
- If the project itself is not yet under version control (for instance, if
- this document starts a new project), the directory must be imported into
- the repository.
- This is done outside \SpecialChar LyX
+Bevor ein \SpecialChar LyX
+-Dokument in Subversions (Versions-)Kontrolle gebracht werden
+ kann, müssen zunächst seine übergeordneten Verzeichnisse der Versionskontrolle
+ unterworfen werden.
+ Wenn ein Dokument zu einem Projekt, das bereits unter Versionskontrolle
+ steht, hinzugefügt werden soll, erreicht man dies, indem man zunächst das
+ Projekt selbst auscheckt, und dann das Dokument in diesem Verzeichnis ablegt.
+ Ist das Projekt noch nicht unter Versionskontrolle (wenn etwa mit dem Dokument
+ eines neues Projekt gestartet wird), muss das Verzeichnis ins Repositorium
+ importiert werden.
+ Das macht man außerhalb von \SpecialChar LyX
 .
- Both import and checkout are easily accomplished from the Explorer context
- menu using TortoiseSVN, or alternatively can be done using the command
- line client at a DOS prompt.
- The procedure for importing the project using TortoiseSVN is described
- below, assuming an existing repository and a new project being started
- in 
-\family typewriter
-C:
-\backslash
-new project
+ Sowohl Import als auch Checkout sind mithilfe des Explorer-Kontextmenüs
+ von 
+\family sans
+TortoiseSVN
 \family default
-.
- For information on using the Subversion client program, run 
+ leicht zu bewerkstelligen, alternativ kann man aber natürlich immer auch
+ Kommandozeilenbefehle in einem DOS-Eingabefenster verwenden.
+ Die Importprozedur mittels Kontextmenü und 
+\family sans
+TortoiseSVN
+\family default
+ wird im Folgenden beschrieben.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Für Informationen zur Verwendung des Clientprogramms in der Kommandozeile
+ geben Sie im DOS-Eingabefenster 
 \family typewriter
 svn --help 
 \family default
-in a DOS shell.
+ein.
 \end_layout
 
-\begin_layout Enumerate
+\end_inset
 
-\lang english
-Locate 
+ Nehmen wir an, wir haben ein existierendes Repositorium und ein neues Projekt,
+ das in 
 \family typewriter
 C:
 \backslash
-new project 
+Neues Projekt
 \family default
-in Windows Explorer, right click it, and select 
+ liegt.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Gehen Sie im Windows Explorer zu 
+\family typewriter
+C:
+\backslash
+Neues Projekt
+\family default
+, klicken Sie mit der rechten Maustaste auf den Ordner und wählen Sie 
 \family sans
 TortoiseSVN\SpecialChar menuseparator
-Repo-browser
+Projektarchiv
 \family default
 .
- If necessary, adjust the URL for the repository, then click OK.
-\end_layout
-
-\begin_layout Enumerate
-
-\lang english
-Right click the level of the repository under which you want to place the
- new project folder (typically the top level) and click 
+ Falls nötig, passen Sie die URL des Repositoriums an, dann klicken Sie
+ 
 \family sans
-Create folder
+OK
 \family default
- Supply a name for the project folder and click OK.
- Add a message for the log file if desired, then click OK again.
- The new project folder should appear in the repository.
- Finally, click OK again to exit the repository browser.
+.
 \end_layout
 
 \begin_layout Enumerate
+Klicken Sie mit der rechten Maustaste auf die Ebene der Dateihierarchie,
+ in dem Sie den neuen Projektordner ablegen wollen (normalerweise ganz oben)
+ und wählen Sie 
+\family sans
+Ordner anlegen.
 
-\lang english
-Once again right click 
+\family default
+ Geben Sie einen Namen für den Projektordner an und klicken Sie 
+\family sans
+OK
+\family default
+.
+ Geben Sie eine Nachricht für das Protokoll ein, dann klicken Sie erneut
+ 
+\family sans
+OK
+\family default
+.
+ Der neue Projektordner sollte nun im Repositorium erscheinen.
+ Klicken Sie schließlich ein drittes Mal 
+\family sans
+OK
+\family default
+, um den Projektarchivbetrachter zu verlassen.
+\end_layout
+
+\begin_layout Enumerate
+Klicken Sie noch einmal mit der rechten Maustaste auf 
 \family typewriter
 C:
 \backslash
-new project
+Neues Projekt
 \family default
-, this time selecting SVN Checkout\SpecialChar ldots
- Select the URL of the project folder
- you just created in the repository, and set the checkout directory to 
+.
+ Dieses Mal wählen Sie 
+\family sans
+SVN Auschecken\SpecialChar ldots
+
+\family default
+ Wählen Sie die URL des Projektordners, den Sie gerade angelegt haben, und
+ setzen Sie den Auscheck-Ordner auf 
 \family typewriter
 C:
 \backslash
-new project.
+Neues Projekt.
 
 \family default
- Click OK.
- You will be warned about a non-empty folder; click OK to proceed.
- You should now have a 
+ Klicken Sie 
+\family sans
+OK
+\family default
+.
+ Sie werden wegen eines nicht leeren Ordners gewarnt; klicken Sie 
+\family sans
+OK
+\family default
+ um fortzufahren.
+ Sie sollten nun einen Ordner 
 \family typewriter
 .svn
 \family default
- directory under 
+ unter 
 \family typewriter
 C:
 \backslash
-new project.
+Neues Projekt
+\family default
+ vorfinden.
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Create or open your document in \SpecialChar LyX
- and click 
+Erstellen oder öffnen Sie Ihr Dokument in \SpecialChar LyX
+ und klicken Sie 
 \family sans
-File\SpecialChar menuseparator
-Version
-\begin_inset space ~
-\end_inset
+Datei\SpecialChar menuseparator
+Versionskontrolle\SpecialChar menuseparator
+Registrieren
+\family default
+.
 
-Control\SpecialChar menuseparator
-Register.
+\family sans
  
 \family default
-Add a log message and click OK to commit the document to version control.
+Geben Sie eine Protokollnachricht ein und klicken Sie 
+\family sans
+OK
+\family default
+, um das Dokument an die Versionskontrolle zu schicken.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-From this point onward, you should have full functionality in the 
+Von nun an sollten Sie im Menü 
 \family sans
-File\SpecialChar menuseparator
-Version
-\begin_inset space ~
-\end_inset
-
-Control
+Datei\SpecialChar menuseparator
+Versionskontrolle
 \family default
- menu.
- You also have the option of checking the document in and out, viewing its
- history, etc.
- using the TortoiseSVN context menu in Windows Explorer or the Subversion
- client program from a command prompt.
+ alle Funktionen sehen.
+ Sie haben auch die Möglichkeit, Ihr Dokument mittels des Explorer-Kontextmenüs
+ einzuchecken, zu aktualisieren, den Verlauf anzusehen usw.
+ Gleiches gilt für die Kommandozeile.
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-SSH tunnel used with SVN under Windows
+SSH-Tunnel mit SVN unter Windows
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Compared with Linux setting up svn client to communicate over ssh under
- Windows is a rather troublesome task.
- We will at least offer some hints how to setup the client side but prior
- knowledge about ssh and the Windows command line is needed, also be prepared
- for a great deal of frustration\SpecialChar ldots
+Verglichen mit Linux ist die Einrichtung eines SVN-Client zur sicheren Kommunika
+tion über SSH unter Windows ziemlich mühsam.
+ Wir geben hier wenigstens ein paar Hinweise, wie man den Client einrichtet.
+ Vorkenntnisse über SSH und die Kommandozeile unter Windows werden aber
+ vorausgesetzt.
+ Außerdem sollten Sie sich auf Frustration vorbereiten\SpecialChar ldots
 
 \end_layout
 
 \begin_layout Enumerate
+Besorgen Sie sich einen SVN-Client für Windows, wie im vorherigen Abschnitt
+ beschrieben.
+ Wenn es sich um eine Neuinstallation handelt, lassen Sie irgendeinen SVN-Befehl
+ laufen (z.
+\begin_inset space \thinspace{}
+\end_inset
 
-\lang english
-Get a svn client for windows, as described in the previous sections.
- When it is a fresh install run some svn command (e.g.
+B.
  
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 svn –version
 \end_layout
 
 \end_inset
 
-) to create config files, which you will need to change later on.
+), damit die Konfigurationsdateien angelegt werden, die Sie später ändern
+ müssen.
 \end_layout
 
 \begin_layout Enumerate
+Wählen Sie einen SSH-Client für Windows.
+ Es gibt mehrere zur Auswahl, wir nehmen hier einen von 
+\emph on
+Putty.
+\emph default
 
-\lang english
-Choose a ssh client for Windows.
- There are several possibilities, we will use the one from Putty tools
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -22737,43 +22579,54 @@ http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html
 \end_inset
 
 .
- You will need to set the connection up so that the client doesn't ask for
- any password from you.
- To keep things easy we will use only keys without any additional password
- protection etc.
+ Sie müssen die Verbindung so einrichten, dass der Client von Ihnen kein
+ Passwort abfragt.
+ Um die Dinge einfach zu halten, verwenden wir nur Schlüssel ohne zusätzlichen
+ Passwortschutz usw.
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-
-\lang english
-Generate keys by 
+Generieren Sie mit 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 puttygen
 \end_layout
 
 \end_inset
 
-.
- Save your private .ppk key file and put the public one on the server side.
- If the SVN server runs on Linux, note that the format of the public key
- is not compatible with Linux openssh and you will need to direcly copy-paste
- the key from the “
-\emph on
-Public key for pasting into OpenSSH authorized_keys file
-\emph default
-:” edit field into the server's 
+ Schlüssel.
+ Speichern Sie Ihren privaten 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+.ppk
+\end_layout
 
+\end_inset
+
+-Schlüssel und legen Sie den öffentlichen auf den Server.
+ Beachten Sie, wenn der SVN-Server auf Linux läuft, dass das Format des
+ öffentlichen Schlüssels nicht mit Linux' 
+\family sans
+OpenSSH
+\family default
+ kompatibel ist.
+ Sie müssen Ihn direkt von der Zeile “
+\emph on
 \lang english
+Public key for pasting into OpenSSH authorized_keys file
+\emph default
+:
+\lang ngerman
+” kopieren und in die Datei 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 ~/.ssh/authorized_keys
 \end_layout
 
@@ -22784,46 +22637,51 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 authorized_keys2
 \end_layout
 
 \end_inset
 
- file.
+ auf dem Server einfügen.
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Get the Putty's 
+Holen Sie sich 
+\emph on
+Puttys
+\emph default
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 plink
 \end_layout
 
 \end_inset
 
 .
- In the SVN config file
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Exact path depends on Windows version, usually somewhere around 
+ In der Datei 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+config
+\end_layout
 
-\lang english
+\end_inset
+
+ von SVN
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Der genaue Pfad hängt von der Windows-Version ab, normalerweise irgendwo
+ in der Nähe von 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 c:
 \backslash
 Documents and Settings
@@ -22844,8 +22702,6 @@ config
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AppData
 \backslash
 Roaming
@@ -22860,14 +22716,22 @@ Subversion
 
 \end_inset
 
-, section [tunnels], setup ssh command, e.g.
+, Abschnitt 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+[tunnels]
+\end_layout
+
+\end_inset
+
+, konfigurieren Sie den SSH-Befehl, bspw.
  
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ssh=c:/path/plink.exe -i c:/path/private_key.ppk
 \end_layout
 
@@ -22878,13 +22742,23 @@ ssh=c:/path/plink.exe -i c:/path/private_key.ppk
 status collapsed
 
 \begin_layout Plain Layout
+Es braucht normalerweise eine ganze Zeit, bis man den richtigen Befehl herausbek
+ommen hat.
+ Es hängt von vielen Umständen ab.
+ Sie sollten bspw.
+ keinen entfernten Server als Standard in Putty gespeichert haben, usw.
+ Wenn es schief geht, versuchen Sie zunächst einmal, eine Verbindung mit
+ 
+\begin_inset Flex Code
+status collapsed
 
-\lang english
-It will usually take a lot of time to get exact command right and it depends
- on many things.
- For example do not have some remote server saved as a default session in
- Putty etc.
- If things fail, try to connect via plink without SVN first.
+\begin_layout Plain Layout
+plink
+\end_layout
+
+\end_inset
+
+ ohne SVN herzustellen.
 \end_layout
 
 \end_inset
@@ -22894,13 +22768,7 @@ It will usually take a lot of time to get exact command right and it depends
 
 \end_deeper
 \begin_layout Enumerate
-
-\lang english
-Checkout the SVN archive, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
+Checken Sie das SVN-Archiv aus, bspw.
 \begin_inset Newline newline
 \end_inset
 
@@ -22909,8 +22777,6 @@ g.
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 svn co svn+ssh://user@server/repository_path
 \end_layout
 
@@ -22920,27 +22786,22 @@ svn co svn+ssh://user@server/repository_path
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-End-of-Line Conversions
+Konvertierung der Zeilenenden
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-When the collaborators are mixing Linux and Windows environments, \SpecialChar LyX
- will
- use different line endings inside the .lyx files.
- This is not a problem as far as \SpecialChar LyX
- functionality is concerned, but the commit
- diffs will be huge and merge-conflicts prone.
- Fortunately SVN itself knows
+Wenn die beteiligten Autoren teils unter Linux, teils unter Windows arbeiten,
+ verwendet \SpecialChar LyX
+ unterschiedliche Zeilenenden (CR/LF) in der \SpecialChar LyX
+-Datei.
+ Für die \SpecialChar LyX
+-Funktionalität ist das kein Problem, aber die Commit-Diffs werden
+ groß und das Zusammenführen fehleranfällig.
+ Zum Glück weiß SVN selbst
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Flex URL
 status collapsed
 
@@ -22956,33 +22817,29 @@ http://svnbook.red-bean.com/en/1.4/svn.advanced.props.file-portability.html
 
 \end_inset
 
- how to deal with CR/LF problems when switching .lyx files to the 
+, wie es mit dem Problem umgehen kann.
+ Voraussetzung ist, dass Sie die \SpecialChar LyX
+-Dateien in den Modus 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 native
 \end_layout
 
 \end_inset
 
- mode.
+ versetzen.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-For the lazy guys: 
+Für die Faulen unter Ihnen: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-svn propset svn:eol-style native FILE_NAME
+svn propset svn:eol-style native DATEINAME
 \end_layout
 
 \end_inset
@@ -22996,36 +22853,337 @@ svn propset svn:eol-style native FILE_NAME
 \end_layout
 
 \begin_layout Subsection
+GIT-Befehle in \SpecialChar LyX
 
-\lang english
-Further tuning
 \end_layout
 
 \begin_layout Standard
+\SpecialChar LyX
+ unterstützt einen minimalen Ausschnitt von GIT-Befehlen.
+ Sie finden die unterstützten Befehle im Menü 
+\family sans
+Datei\SpecialChar menuseparator
+Versionskontrolle
+\family default
+.
+ Bitte beachten Sie, dass Sie, falls Sie einen passwortgeschützten Zugang
+ über SSH verwenden, Sie in einem Terminalfenster nach diesem gefragt werden.
+ \SpecialChar LyX
+ wurde mit der Version 1.7 von GIT getestet.
+\begin_inset Foot
+status collapsed
 
-\lang english
-With the recent addition of the vc-command function \SpecialChar LyX
- power users are allowed
- to create their own commands for revision control.
+\begin_layout Plain Layout
+Windows-Anwender sollten beachten, dass 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+git
+\end_layout
+
+\end_inset
+
+ im Befehlspfad liegt.
+ Das kann in \SpecialChar LyX
+ über 
+\family sans
+Werkzeuge\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Pfade\SpecialChar menuseparator
+PATH-Präfix
+\family default
+ eingestellt werden.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
+Ein großer Unterschied von GIT zu den anderen unterstützten Versionskontrollsyst
+emen ist seine Distribuiertheit: Bei traditionellen Versionskontrollsystemen
+ gibt es nur einen zentralen Server, auf dem das Repositorium liegt.
+ Anwender schicken ihre Änderungen dort hin und beziehen von dort Änderungen
+ anderer Anwender.
+ Mit GIT schicken die Anwender Änderungen an lokale Repositorien.
+ Lokale Repositorien können dann mit einem oder mehreren entfernten synchronisie
+rt werden (mithilfe der GIT-Befehle 
+\begin_inset Flex Code
+status collapsed
 
-\lang english
-As an example you can see how two TortoiseSVN commands could be integrated
- directly:
+\begin_layout Plain Layout
+pull
+\end_layout
+
+\end_inset
+
+ und 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+push
+\end_layout
+
+\end_inset
+
+).
+ \SpecialChar LyX
+ interagiert in keiner Weise mit entfernten GIT-Repositorien.
+ Es arbeitet ausschließlich mit lokalen, und zwar ganz ähnlich, wie es mit
+ entfernten CVS- oder SVN-Repositorien arbeitet.
+ Wenn Sie entfernte GIT-Repositorien verwenden, müssen Sie also 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+pull
+\end_layout
+
+\end_inset
+
+ und 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+push
+\end_layout
+
+\end_inset
+
+ mit Ihrem GIT-Client ausführen.
+\end_layout
+
+\begin_layout Subsubsection
+Registrieren
+\end_layout
+
+\begin_layout Standard
+Wenn Ihr Dokument noch nicht der Versionskontrolle unterliegt, ist dies
+ der einzige Eintrag im Menü.
+ Falls es der Versionskontrolle unterliegt, ist der Eintrag 
+\family sans
+Registrieren
+\family default
+ nicht sichtbar.
+\end_layout
+
+\begin_layout Standard
+Dieser Befehl registriert Ihr Dokument nur dann bei GIT, wenn Sie den Ordner
+ des Dokuments bereits unter GIT-Kontrolle haben (insbesondere muss die
+ Datei 
+\family typewriter
+.git/index
+\family default
+ existieren).
+ Im andern Fall müssen Sie das GIT-Archiv manuell mit Hilfe externer Werkzeuge
+ erstellen oder auschecken.
+ (Falls Sie diesen Schritt vergessen, registriert \SpecialChar LyX
+ das Dokument bei RCS.)
+\end_layout
+
+\begin_layout Standard
+Bei der Registrierung werden Sie nach einer ersten Beschreibung des Dokuments
+ gefragt.
+ Noch ist aber das registrierte Dokument nicht eingecheckt.
+\end_layout
+
+\begin_layout Standard
+Der ausgeführte GIT-Befehl ist: 
+\end_layout
+
+\begin_layout LyX-Code
+
+\family typewriter
+git add 
+\begin_inset Quotes qld
+\end_inset
+
+<Dateiname>
+\begin_inset Quotes qld
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lesen Sie 
+\family typewriter
+man git
+\family default
+, um die Befehle und Optionen, die im Folgenden erwähnt werden, zu verstehen.
+\end_layout
+
+\begin_layout Subsubsection
+Änderungen einchecken
+\end_layout
+
+\begin_layout Standard
+Nachdem Sie ein Dokument bearbeitet haben, pflegen Sie Ihre Änderungen ein.
+ Wenn Sie dies tun, und sofern Sie das Dokument tatsächlich verändert haben,
+ werden Sie nach einer Beschreibung für die Änderungen gefragt.
+ Danach werden die Änderungen abgeschickt.
+\end_layout
+
+\begin_layout Itemize
+GIT-Befehl: 
+\family typewriter
+git commit -q -m"<description>" <Dateiname>
+\end_layout
+
+\begin_layout Subsubsection
+Zu Version aus dem Repositorium zurückkehren
+\end_layout
+
+\begin_layout Standard
+Dies wird alle lokalen Änderungen verwerfen.
+ Sie bekommen, bevor dies geschieht, eine Warnung angezeigt.
+\end_layout
+
+\begin_layout Itemize
+GIT-Befehl: 
+\family typewriter
+git checkout -q "<Dateiname>"
+\end_layout
+
+\begin_layout Subsubsection
+Umbenennen
+\end_layout
+
+\begin_layout Standard
+Dies benennt das aktuelle Dokument inklusive der Versionsgeschichte um.
+ Dafür ist ein sauberes Dokument (ohne Änderungen seit dem letzten Einpflegen)
+ nötig.
+ Sie werden nach einem Dateinamen und einer Beschreibung für die Umbenennung
+ gefragt.
+ Dann wird das Sokument sowohl lokal als auch im Repositorium umbenannt.
+ Sollten die übergeordneten Ordner des umbenannten und alten Dokuments differier
+en, werden alle relativen Pfade eingebunden und angepasst (wie in 
+\family sans
+Datei\SpecialChar menuseparator
+Speichern unter
+\family default
+\SpecialChar ldots
+).
+ Zum Schluss wird das Dokument mit neuem Namen neu geladen.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+GIT-Befehle: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+git mv "<Dateiname>" "<Neuer-Dateiname>"
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+git commit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Verlauf anzeigen
+\end_layout
+
+\begin_layout Standard
+Das zeigt den kompletten Versionsverlauf der Dokuments.
+ Die Ausgabe des Befehls
+\family typewriter
+ git log "<Dateiname>"
+\family default
+ wird angezeigt.
+\end_layout
+
+\begin_layout Subsubsection
+Versionsinformationen
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ unterstützt die GIT-Hash-Nummer des letzten Commits, Autorname, Datum und
+ Uhrzeit des letzten Commits.
+ Alles diese Informationen werden von 
+\family typewriter
+git log -n 1 --pretty=format:%H%n%an%n%ai
+\family default
+ extrahiert.
+ Informationen zutrVerzeichnisversion werden mittels 
+\family typewriter
+git describe --abbrev --dirty --long
+\family default
+ abgerufen.
+ Konsultieren Sie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:VCS-Revision-Information"
+
+\end_inset
+
+ für weitere Informationen.
+\end_layout
+
+\begin_layout Subsection
+Weitere Einstellungen
+\end_layout
+
+\begin_layout Standard
+Mit Hilfe der \SpecialChar LyX
+-Funktion 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+vc-command
+\end_layout
+
+\end_inset
+
+ können erfahrene \SpecialChar LyX
+-Anwender Ihre eigenen Befehle für die Versionskontrolle
+ einbinden.
+\end_layout
+
+\begin_layout Standard
+Als Beispiel zeigen wir hier, wie zwei 
+\family sans
+TortoiseSVN
+\family default
+-Befehle direkt unterstützt werden könnten:
 \end_layout
 
 \begin_layout Description
-
-\lang english
 Commit: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 vc-command DR "." "TortoiseProc /command:commit /path:$$p"
 \end_layout
 
@@ -23035,15 +23193,11 @@ vc-command DR "." "TortoiseProc /command:commit /path:$$p"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 Revert: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 vc-command DR "." "TortoiseProc /command:revert /path:$$p"
 \end_layout
 
@@ -23053,86 +23207,116 @@ vc-command DR "." "TortoiseProc /command:revert /path:$$p"
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Version control and Document comparison
+Versionskontrolle und Dokumentvergleich
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-One of the typical uses of version control is to inspect the changes between
- revisions, usually by creating 
+Eine typische Verwendung von Versionskontrolle ist die Untersuchung von
+ Änderungen zwischen Revisionen.
+ Das wird üblicherweise mit Hilfe von 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 diff
 \end_layout
 
 \end_inset
 
- dumps.
- While this is useful for plain text files, it is much less useful in the
- case of \SpecialChar LyX
- files, which have more complicated structure.
- Hence we provide binding to the Document comparison feature.
- They are two ways of calling this feature - either by direct call of 
+ gemacht.
+ Das ist sehr nützlich für reine Textdateien, bei den strukturell komplexeren
+ \SpecialChar LyX
+-Dateien ist die Ausgabe aber weniger hilfreich.
+ Daher bieten wir eine Schnittstelle zur Funktion 
+\family sans
+Dokumente vergleichen
+\family default
+.
+ Es gibt zwei Möglichkeiten, diese Funktion aufzurufen.
+ Zum einen durch einen direkten Aufruf der \SpecialChar LyX
+-Funktion 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-VC_COMPARE
+vc-compare
 \end_layout
 
 \end_inset
 
- \SpecialChar LyX
- function (for details see \SpecialChar LyX
- functions manual) or by icon/menu item 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Compare with older revision...
-\end_layout
-
+ (lesen Sie das Handbuch 
+\emph on
+\SpecialChar LyX
+-Funktionen
+\emph default
+ für weitere Informationen), oder mit Hilfe des Werkzeugleistenknopfs 
+\begin_inset Info
+type  "icon"
+arg   "vc-compare"
 \end_inset
 
-.
- One can either compare two chosen revisions of the document or he can simply
- compare the current version of edited text with older revisions (where
- '
+ bzw.
+ des Menüeintrags 
+\begin_inset Info
+type  "menu"
+arg   "vc-compare"
+\end_inset
+
+ Man kann entweder zwei ausgewählte Revisionen des Dokuments vergleichen
+ oder einfach die aktuelle Version des Dokuments mit einer älteren Revision
+ (die Revision 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 0
 \end_layout
 
 \end_inset
 
-' revisions back means comparison of the edited file with last commited
- revision).
+ bezeicinet dabei die aktuell editierte Version).
  
 \end_layout
 
 \begin_layout Standard
+Diese Möglichkeit besteht mit SVN und RCS.
+ Wegen des komplizierteren Versionsschemas von RCS gibt es dort allerdings
+ eine Einschränkung: Wenn die Revisionen im Fenster ausgewählt werden, bezeichne
+n die Zahlen immer die letzte Zahl in der RCS-Revisionsnummer, d.
+\begin_inset space \thinspace{}
+\end_inset
 
-\lang english
-This feature is supported for SVN and RCS though due to the more complicated
- versioning scheme of RCS there is a constraint – when addressing the revisions
- in dialog, numbers always point to the last number in RCS revision number,
- i.e.
- '35' in '1.2.35'.
+h.
+ 
+\begin_inset Quotes gls
+\end_inset
+
+35
+\begin_inset Quotes grs
+\end_inset
+
+ in 
+\begin_inset Quotes gls
+\end_inset
+
+1.2.35
+\begin_inset Quotes grs
+\end_inset
+
+.
+ Wir unterstützen momentan nicht die Auswahl von Revisionen mit GIT.
+ Man kann hier nur das gerade bearbeitete Dokument mit einer Version, die
+ X Schritte zurück liegt, vergleichen (X wird dabei angesprochen als 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+HEAD~X
+\end_layout
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Section
