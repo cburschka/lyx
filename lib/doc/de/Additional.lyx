@@ -20738,6 +20738,99 @@ co -f -u<Version> <Dateiname>
 \end_layout
 
 \begin_layout Subsubsection
+Kopieren
+\end_layout
+
+\begin_layout Standard
+Dies erzeugt eine Kopie des aktuellen Dokuments.
+ Da RCS von Haus aus keine Kopieraktionen unterstützt, wird die Versionsgeschich
+te nicht erhalten, und die Kopie wird als neue Datei hinzugefügt.
+ Dafür ist ein sauberes Dokument (ohne Änderungen seit dem letzten Einpflegen)
+ nötig.
+ Sie werden nach einem Dateinamen und einer Beschreibung für die Kopieraktion
+ gefragt.
+ Dann wird die Kopie sowohl sowohl lokal als auch im Repositorium erzeugt.
+ Sollten die übergeordneten Ordner der Kopie und des Originals differieren,
+ werden alle relativen Pfade eingebunden und angepasst (wie in 
+\family sans
+Datei\SpecialChar menuseparator
+Speichern unter
+\family default
+\SpecialChar ldots
+).
+ Zum Schluss wird die Kopie mit neuem Namen neu geladen.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+RCS-Befehle: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Kopiere 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Quotes qld
+\end_inset
+
+Dateiname
+\begin_inset Quotes qld
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ nach 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Quotes qld
+\end_inset
+
+<Neuer-Dateiname>
+\begin_inset Quotes qld
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ci -q -u -i 
+\begin_inset Quotes qld
+\end_inset
+
+<Neuer-Dateiname>
+\begin_inset Quotes qld
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
 Letzte Version widerrufen
 \family sans
 \series medium
@@ -21181,6 +21274,205 @@ cvs -q unedit "<Dateiname>"
 \end_layout
 
 \begin_layout Subsubsection
+Kopieren
+\end_layout
+
+\begin_layout Standard
+Dies erzeugt eine Kopie des aktuellen Dokuments.
+ Da CVS von Haus aus keine Kopieraktionen unterstützt, wird die Versionsgeschich
+te nicht erhalten, und die Kopie wird als neue Datei hinzugefügt.
+ Dafür ist ein sauberes Dokument (ohne Änderungen seit dem letzten Einpflegen)
+ nötig.
+ Sie werden nach einem Dateinamen und einer Beschreibung für die Kopieraktion
+ gefragt.
+ Dann wird die Kopie sowohl sowohl lokal als auch im Repositorium erzeugt.
+ Sollten die übergeordneten Ordner der Kopie und des Originals differieren,
+ werden alle relativen Pfade eingebunden und angepasst (wie in 
+\family sans
+Datei\SpecialChar menuseparator
+Speichern unter
+\family default
+\SpecialChar ldots
+).
+ Zum Schluss wird die Kopie mit neuem Namen neu geladen.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+CVS-Befehle: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Kopiere 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\family typewriter
+"
+\family default
+<Dateiname>
+\family typewriter
+"
+\end_layout
+
+\end_inset
+
+ nach 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\family typewriter
+"
+\family default
+<Neuer-Dateiname>
+\family typewriter
+"
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+cvs -q add 
+\family typewriter
+"
+\family default
+<Neuer-Dateiname>
+\family typewriter
+"
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Umbenennen
+\end_layout
+
+\begin_layout Standard
+Dies benennt das aktuelle Dokument um.
+ Da CVS von Haus aus keine Kopieraktionen unterstützt, wird die Versionsgeschich
+te nicht erhalten, und die Kopie wird als neue Datei hinzugefügt, und das
+ alte wird gelöscht.
+ Dafür ist ein sauberes Dokument (ohne Änderungen seit dem letzten Einpflegen)
+ nötig.
+ Sie werden nach einem Dateinamen und einer Beschreibung für die Umbenennung
+ gefragt.
+ Dann wird das Dokument sowohl lokal als auch im Repositorium umbenannt.
+ Sollten die übergeordneten Ordner des umbenannten und alten Dokuments differier
+en, werden alle relativen Pfade eingebunden und angepasst (wie in 
+\family sans
+Datei\SpecialChar menuseparator
+Speichern unter
+\family default
+\SpecialChar ldots
+).
+ Zum Schluss wird das Dokument mit neuem Namen neu geladen.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+CVS-Befehle: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Nenne 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\family typewriter
+"
+\family default
+<Dateiname>
+\family typewriter
+"
+\end_layout
+
+\end_inset
+
+ um in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\family typewriter
+"
+\family default
+<Neuer-Dateiname>
+\family typewriter
+"
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+cvs -q add 
+\family typewriter
+"
+\family default
+<Neuer-Dateiname>
+\family typewriter
+"
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+cvs -q remove 
+\family typewriter
+"
+\family default
+<Dateiname>
+\family typewriter
+"
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
 Lokales Verzeichnis aus dem Repositorium aktualisieren
 \end_layout
 
@@ -21328,6 +21620,29 @@ Das zeigt den kompletten Versionsverlauf der Dokuments.
 cvs log "<Dateiname>"
 \family default
  wird angezeigt.
+\end_layout
+
+\begin_layout Subsubsection
+Revisionsinformationen
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ unterstützt die CVS-Versionsnummer, Autorname, Datum und Uhrzeit des letzten
+ Commits.
+ Alle Informationen werden von 
+\family typewriter
+cvs log -r <file-name>
+\family default
+ extrahiert.
+ Bitte lesen Sie 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:VCS-Revision-Information"
+
+\end_inset
+
+ für weitere Informationen.
 \end_layout
 
 \begin_layout Subsection
@@ -21507,6 +21822,156 @@ Dies wird alle lokalen Änderungen verwerfen.
 SVN-Befehl: 
 \family typewriter
 svn revert -q "<Dateiname>"
+\end_layout
+
+\begin_layout Subsubsection
+Kopieren
+\end_layout
+
+\begin_layout Standard
+Dies erzeugt eine Kopie des aktuellen Dokuments inklusive der Versionsgeschichte.
+ Dafür ist ein sauberes Dokument (ohne Änderungen seit dem letzten Einpflegen)
+ nötig.
+ Sie werden nach einem Dateinamen und einer Beschreibung für die Kopieraktion
+ gefragt.
+ Dann wird die Kopie sowohl sowohl lokal als auch im Repositorium erzeugt.
+ Sollten die übergeordneten Ordner der Kopie und des Originals differieren,
+ werden alle relativen Pfade eingebunden und angepasst (wie in 
+\family sans
+Datei\SpecialChar menuseparator
+Speichern unter
+\family default
+\SpecialChar ldots
+).
+ Zum Schluss wird die Kopie mit neuem Namen neu geladen.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+SVN-Befehle: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+svn copy -q 
+\begin_inset Quotes qld
+\end_inset
+
+<Dateiname>
+\begin_inset Quotes qld
+\end_inset
+
+ 
+\begin_inset Quotes qld
+\end_inset
+
+<Neuer-Dateiname>
+\begin_inset Quotes qld
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+svn commit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Umbenennen
+\end_layout
+
+\begin_layout Standard
+Dies benennt das aktuelle Dokument inklusive der Versionsgeschichte um.
+ Dafür ist ein sauberes Dokument (ohne Änderungen seit dem letzten Einpflegen)
+ nötig.
+ Sie werden nach einem Dateinamen und einer Beschreibung für die Umbenennung
+ gefragt.
+ Dann wird das Dokument sowohl lokal als auch im Repositorium umbenannt.
+ Sollten die übergeordneten Ordner des umbenannten und alten Dokuments differier
+en, werden alle relativen Pfade eingebunden und angepasst (wie in 
+\family sans
+Datei\SpecialChar menuseparator
+Speichern unter
+\family default
+\SpecialChar ldots
+).
+ Zum Schluss wird das Dokument mit neuem Namen neu geladen.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+SVN-Befehle: 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+svn move -q 
+\begin_inset Quotes qld
+\end_inset
+
+<Dateiname>
+\begin_inset Quotes qld
+\end_inset
+
+ 
+\begin_inset Quotes qld
+\end_inset
+
+<Neuer-Dateiname>
+\begin_inset Quotes qld
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+svn commit
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -23063,7 +23528,7 @@ Dies benennt das aktuelle Dokument inklusive der Versionsgeschichte um.
  nötig.
  Sie werden nach einem Dateinamen und einer Beschreibung für die Umbenennung
  gefragt.
- Dann wird das Sokument sowohl lokal als auch im Repositorium umbenannt.
+ Dann wird das Dokument sowohl lokal als auch im Repositorium umbenannt.
  Sollten die übergeordneten Ordner des umbenannten und alten Dokuments differier
 en, werden alle relativen Pfade eingebunden und angepasst (wie in 
 \family sans
