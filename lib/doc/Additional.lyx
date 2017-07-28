@@ -21009,9 +21009,16 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-Also note that CVS support is not as good as subversion support so we advise
- using SVN instead.
- A good place to start learning Subversion is SVN Book
+Also note that CVS support is not as good as subversion support
+\change_inserted -712698321 1501253107
+,
+\change_unchanged
+ so we advise using SVN instead.
+ A good place to start learning Subversion is
+\change_inserted -712698321 1501253115
+ the
+\change_unchanged
+ SVN Book
 \begin_inset Foot
 status collapsed
 
@@ -21059,9 +21066,16 @@ Before you begin to use the version control features in \SpecialChar LyX
  assumes a recent version of the GNU RCS or CVS/SVN
  package — no guarantees are made for older versions.
  Most of the log messages are not currently displayed after operations —
- you can check them in the Messages pane if unsure.
- Regular users of version control will appreciate VC toolbar, which can
- be enabled via 
+ you can check them in the Messages pane if 
+\change_inserted -712698321 1501253142
+you are 
+\change_unchanged
+unsure.
+ Regular users of version control will appreciate 
+\change_inserted -712698321 1501253149
+the 
+\change_unchanged
+VC toolbar, which can be enabled via 
 \family sans
 View\SpecialChar menuseparator
 Toolbars\SpecialChar menuseparator
@@ -21075,9 +21089,42 @@ Control
 \end_layout
 
 \begin_layout Standard
-For introducing your own external commands consult vc-command in the manual
- of \SpecialChar LyX
- functions.
+For introducing your own external commands consult 
+\change_deleted -712698321 1501253161
+vc-command
+\change_inserted -712698321 1501253161
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501253161
+vc-command
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+ in the manual 
+\change_deleted -712698321 1501253168
+of 
+\change_unchanged
+
+\emph on
+\SpecialChar LyX
+ 
+\change_inserted -712698321 1501253174
+F
+\change_deleted -712698321 1501253173
+f
+\change_unchanged
+unctions
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -21166,7 +21213,17 @@ Edit
 \end_layout
 
 \begin_layout Standard
-RCS command that is run: 
+RCS command that is run:
+\change_inserted -712698321 1501253193
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_deleted -712698321 1501253193
+ 
+\change_unchanged
+
 \family typewriter
 ci -q -u -i -t-"<initial description>" <file-name>
 \end_layout
@@ -21194,7 +21251,7 @@ When you are finished editing a file, you check in your changes.
  file, the document is unlocked and set to Read-Only mode.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 RCS command: 
 \family typewriter
 ci -q -u -m"<description>" <file-name>
@@ -21214,7 +21271,7 @@ By doing this you lock the document so that only you can edit it.
  The status line is changed to reflect that you have locked the file.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 RCS command: 
 \family typewriter
 co -q -l <file-name>
@@ -21232,7 +21289,7 @@ This will discard all changes made to the document since the last check
  You get a warning before changes are discarded.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 RCS command: 
 \family typewriter
 co -f -u<version> <file-name>
@@ -21282,14 +21339,34 @@ status collapsed
 
 \begin_layout Plain Layout
 
+\change_deleted -712698321 1501253225
+
 \family typewriter
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501253225
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 <file-name>
+\change_deleted -712698321 1501253231
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501253231
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -21301,14 +21378,34 @@ status collapsed
 
 \begin_layout Plain Layout
 
+\change_deleted -712698321 1501253233
+
 \family typewriter
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501253233
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 <new-file-name>
+\change_deleted -712698321 1501253234
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501253235
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -21326,13 +21423,33 @@ status collapsed
 ci -q -u 
 \family typewriter
 -i 
+\change_deleted -712698321 1501253236
+
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501253236
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 <new-file-name>
+\change_deleted -712698321 1501253239
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501253239
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -21354,7 +21471,7 @@ This makes as if the last check in never happened.
  is removed from the master RCS file.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 RCS command: 
 \family typewriter
 rcs -o<version> <file-name>
@@ -21795,14 +21912,32 @@ status collapsed
 
 \begin_layout Plain Layout
 
+\change_deleted -712698321 1501254263
+
 \family typewriter
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501254263
+
+\lang ngerman
+"
+\change_unchanged
+
+\lang english
 <file-name>
+\change_deleted -712698321 1501254266
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501254266
+
+\lang ngerman
+"
+\change_unchanged
 
 \end_layout
 
@@ -21814,14 +21949,32 @@ status collapsed
 
 \begin_layout Plain Layout
 
+\change_deleted -712698321 1501254267
+
 \family typewriter
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501254267
+
+\lang ngerman
+"
+\change_unchanged
+
+\lang english
 <new-file-name>
+\change_deleted -712698321 1501254269
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501254269
+
+\lang ngerman
+"
+\change_unchanged
 
 \end_layout
 
@@ -21837,15 +21990,33 @@ status collapsed
 
 \begin_layout Plain Layout
 cvs -q add 
+\change_deleted -712698321 1501254271
+
 \family typewriter
 
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501254271
+
+\lang ngerman
+"
+\change_unchanged
+
+\lang english
 <new-file-name>
+\change_deleted -712698321 1501254272
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501254272
+
+\lang ngerman
+"
+\change_unchanged
 
 \end_layout
 
@@ -21899,14 +22070,32 @@ status collapsed
 
 \begin_layout Plain Layout
 
+\change_deleted -712698321 1501254274
+
 \family typewriter
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501254274
+
+\lang ngerman
+"
+\change_unchanged
+
+\lang english
 <file-name>
+\change_deleted -712698321 1501254277
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501254277
+
+\lang ngerman
+"
+\change_unchanged
 
 \end_layout
 
@@ -21918,14 +22107,32 @@ status collapsed
 
 \begin_layout Plain Layout
 
+\change_deleted -712698321 1501254278
+
 \family typewriter
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501254278
+
+\lang ngerman
+"
+\change_unchanged
+
+\lang english
 <new-file-name>
+\change_deleted -712698321 1501254279
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501254279
+
+\lang ngerman
+"
+\change_unchanged
 
 \end_layout
 
@@ -21941,15 +22148,33 @@ status collapsed
 
 \begin_layout Plain Layout
 cvs -q add 
+\change_deleted -712698321 1501254281
+
 \family typewriter
 
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501254281
+
+\lang ngerman
+"
+\change_unchanged
+
+\lang english
 <new-file-name>
+\change_deleted -712698321 1501254282
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501254282
+
+\lang ngerman
+"
+\change_unchanged
 
 \end_layout
 
@@ -21965,15 +22190,33 @@ status collapsed
 
 \begin_layout Plain Layout
 cvs -q remove 
+\change_deleted -712698321 1501254285
+
 \family typewriter
 
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501254285
+
+\lang ngerman
+"
+\change_unchanged
+
+\lang english
 <file-name>
+\change_deleted -712698321 1501254287
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501254287
+
+\lang ngerman
+"
+\change_unchanged
 
 \end_layout
 
@@ -22191,7 +22434,7 @@ Control
  \SpecialChar LyX
  was tested against SVN 1.5, 1.6, 1.7 and 1.8
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Most of the commands will work with 1.4 too, see 
@@ -22247,13 +22490,33 @@ Then you are asked interactively to supply an initial description of the
 SVN command that is run: 
 \family typewriter
 svn add -q 
+\change_deleted -712698321 1501253346
+
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501253346
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 <file-name>
+\change_deleted -712698321 1501253348
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501253348
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -22327,13 +22590,33 @@ Ditto.
  
 \family typewriter
 svn update --non-interactive 
+\change_deleted -712698321 1501253354
+
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501253354
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 <file-name>
+\change_deleted -712698321 1501253356
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501253356
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -22353,13 +22636,33 @@ This will discard all changes made to the document since the last check
 SVN command: 
 \family typewriter
 svn revert -q 
+\change_deleted -712698321 1501253358
+
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501253358
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 <file-name>
+\change_deleted -712698321 1501253360
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501253360
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -22405,23 +22708,63 @@ status collapsed
 
 \begin_layout Plain Layout
 svn copy -q 
+\change_deleted -712698321 1501253363
+
 \family typewriter
 
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501253363
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 <file-name>
+\change_deleted -712698321 1501253365
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501253365
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
  
+\change_deleted -712698321 1501253366
+
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501253366
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 <new-file-name>
+\change_deleted -712698321 1501253368
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501253368
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -22486,23 +22829,63 @@ status collapsed
 
 \begin_layout Plain Layout
 svn move -q 
+\change_deleted -712698321 1501253375
+
 \family typewriter
 
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501253375
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 <file-name>
+\change_deleted -712698321 1501253377
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501253377
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
  
+\change_deleted -712698321 1501253378
+
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501253378
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 <new-file-name>
+\change_deleted -712698321 1501253380
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501253380
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -22550,8 +22933,17 @@ Note that this command will work only with subversion
 \end_layout
 
 \begin_layout Standard
-All the commands above have one shortcomming - they deal with the current
- document only.
+All the commands above have one shortco
+\change_deleted -712698321 1501253385
+m
+\change_unchanged
+ming 
+\change_inserted -712698321 1501253389
+–
+\change_deleted -712698321 1501253389
+-
+\change_unchanged
+ they deal with the current document only.
  Once your document contains pictures, includes external 
 \begin_inset Flex Code
 status collapsed
@@ -22664,13 +23056,33 @@ This shows the complete history of the SVN document.
  The output of 
 \family typewriter
 svn log 
+\change_deleted -712698321 1501253404
+
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501253404
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 <file-name>
+\change_deleted -712698321 1501253406
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501253406
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 
 \family default
  is shown in a browser.
@@ -22698,7 +23110,13 @@ The file exchange through various revision control systems brings the problem
 
 \begin_layout Standard
 SVN has two such mechanisms to provide mutual exclusivity for file access
- - locks and automatic setting of write permissions (see sec.
+ 
+\change_inserted -712698321 1501253410
+–
+\change_deleted -712698321 1501253410
+-
+\change_unchanged
+ locks and automatic setting of write permissions (see sec.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -22718,10 +23136,31 @@ svn:needs-lock
 
  file svn property
 \begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_deleted -712698321 1501253418
+http://svnbook.red-bean.com/en/1.2/svn.advanced.locking.html
+\change_inserted -712698321 1501253418
+
+\begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
+
+\change_inserted -712698321 1501253418
+
 http://svnbook.red-bean.com/en/1.2/svn.advanced.locking.html
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -22749,7 +23188,27 @@ Check-out
 
 \begin_layout Itemize
 Locked state.
- The loaded file is in the 'normal' edit mode.
+ The loaded file is in the 
+\change_deleted -712698321 1501253433
+'
+\change_inserted -712698321 1501253433
+
+\begin_inset Quotes els
+\end_inset
+
+
+\change_unchanged
+normal
+\change_deleted -712698321 1501253435
+'
+\change_inserted -712698321 1501253435
+
+\begin_inset Quotes ers
+\end_inset
+
+
+\change_unchanged
+ edit mode.
  No other user is allowed to edit the file.
  
 \emph on
@@ -22819,7 +23278,25 @@ Version
 \end_inset
 
 Control\SpecialChar menuseparator
-Toggle locking property
+
+\change_deleted -712698321 1501244235
+Toggle
+\change_inserted -712698321 1501244235
+Use
+\change_unchanged
+ 
+\change_deleted -712698321 1501244236
+l
+\change_inserted -712698321 1501244237
+L
+\change_unchanged
+ocking 
+\change_inserted -712698321 1501244242
+P
+\change_deleted -712698321 1501244242
+p
+\change_unchanged
+roperty
 \family default
 .
  This command is active only when the file is not locked on the svn server
@@ -22901,22 +23378,26 @@ svnversion
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="2">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<column alignment="left" valignment="top">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 Output
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 Meaning
 \end_layout
 
@@ -22924,7 +23405,7 @@ Meaning
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -22933,7 +23414,7 @@ Meaning
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -22944,7 +23425,7 @@ mixed revision working copy
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -22953,7 +23434,7 @@ mixed revision working copy
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -22964,7 +23445,7 @@ modified working copy
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -22973,7 +23454,7 @@ modified working copy
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -22984,7 +23465,7 @@ switched working copy
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -22993,7 +23474,7 @@ switched working copy
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -23004,7 +23485,7 @@ partial working copy, from a sparse checkout
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -23013,7 +23494,7 @@ partial working copy, from a sparse checkout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -23177,6 +23658,8 @@ This is an easy way how to ensure that \SpecialChar LyX
 
  tag in your document (e.g.
  
+\change_deleted -712698321 1501253475
+
 \begin_inset ERT
 status open
 
@@ -23187,9 +23670,29 @@ $Rev$
 
 \end_inset
 
+
+\change_inserted -712698321 1501253480
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501253480
+$Rev$
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 ).
  This way svn client will automatically substitute revision number (e.g.
  
+\change_deleted -712698321 1501253467
+
 \begin_inset ERT
 status open
 
@@ -23200,6 +23703,24 @@ $Rev: 59 $
 
 \end_inset
 
+
+\change_inserted -712698321 1501253473
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501253473
+$Rev: 59 $
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 ) after each update and commit.
  There are more problems with this approach.
  Firstly, the '$' character is used in \SpecialChar TeX
@@ -23694,7 +24215,7 @@ Control
  \SpecialChar LyX
  was tested against GIT 1.7.
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Windows users please note that you need to ensure that git is on the path.
@@ -23799,20 +24320,44 @@ This command registers in GIT your document ONLY in case you have already
 \begin_layout Standard
 Then you are asked interactively to supply an initial description of the
  document.
- Don't forget that registered file is not yet commited.
+ Don't forget that registered file is not yet commi
+\change_inserted -712698321 1501253542
+t
+\change_unchanged
+ted.
 \end_layout
 
 \begin_layout Standard
 GIT command that is run: 
 \family typewriter
 git add 
+\change_deleted -712698321 1501253534
+
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501253534
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 <file-name>
+\change_deleted -712698321 1501253538
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501253538
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -23833,7 +24378,11 @@ Check In Changes
 \begin_layout Standard
 When you are finished editing a file, you commit your changes.
  When you do this, you are asked for a description of the changes.
- After that changes are commited.
+ After that changes are commit
+\change_inserted -712698321 1501253548
+t
+\change_unchanged
+ed.
 \end_layout
 
 \begin_layout Standard
@@ -23858,13 +24407,33 @@ This will discard all changes made to the document since the last check
 GIT command: 
 \family typewriter
 git checkout -q 
+\change_deleted -712698321 1501253553
+
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501253553
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 <file-name>
+\change_deleted -712698321 1501253555
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501253555
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -23910,23 +24479,63 @@ status collapsed
 
 \begin_layout Plain Layout
 git mv 
+\change_deleted -712698321 1501253559
+
 \family typewriter
 
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501253559
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 <file-name>
+\change_deleted -712698321 1501253561
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501253561
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
  
+\change_deleted -712698321 1501253562
+
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501253562
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 <new-file-name>
+\change_deleted -712698321 1501253564
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501253564
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 
 \end_layout
 
@@ -23960,13 +24569,33 @@ This shows the complete history of the GIT document.
  The output of 
 \family typewriter
 git log 
+\change_deleted -712698321 1501253567
+
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_inserted -712698321 1501253567
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 <file-name>
+\change_deleted -712698321 1501253569
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1501253569
+
+\begin_inset Quotes qld
+\end_inset
+
+
+\change_unchanged
 
 \family default
  is shown in a browser.
@@ -24005,9 +24634,29 @@ Further tuning
 \end_layout
 
 \begin_layout Standard
-With the recent addition of the vc-command function \SpecialChar LyX
- power users are allowed
- to create their own commands for revision control.
+With the recent addition of the 
+\change_deleted -712698321 1501253582
+vc-command
+\change_inserted -712698321 1501253582
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501253582
+vc-command
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+ function \SpecialChar LyX
+ power users are allowed to create their own commands for revision
+ control.
 \end_layout
 
 \begin_layout Standard
@@ -24064,19 +24713,59 @@ diff
  case of \SpecialChar LyX
  files, which have more a complicated structure.
  Hence we provide binding to the Document comparison feature.
- There are two ways of calling this feature - either by direct call of 
+ There are two ways of calling this feature 
+\change_inserted -712698321 1501253613
+–
+\change_deleted -712698321 1501253613
+-
+\change_unchanged
+ either by direct call of 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+
+\change_deleted -712698321 1501253619
 VC_COMPARE
+\change_inserted -712698321 1501253621
+vc-compare
+\change_unchanged
+
 \end_layout
 
 \end_inset
 
  \SpecialChar LyX
  function (for details see \SpecialChar LyX
- functions manual) or by icon/menu item 
+ functions manual) or by
+\change_inserted -712698321 1501253630
+ the toolbar
+\change_unchanged
+ icon
+\change_inserted -712698321 1501253655
+ 
+\begin_inset Info
+type  "icon"
+arg   "vc-compare"
+\end_inset
+
+
+\change_deleted -712698321 1501253665
+/
+\change_inserted -712698321 1501253675
+ or the 
+\change_unchanged
+menu item 
+\change_inserted -712698321 1501253679
+
+\begin_inset Info
+type  "menu"
+arg   "vc-compare"
+\end_inset
+
+
+\change_deleted -712698321 1501253689
+
 \begin_inset Flex Noun
 status collapsed
 
@@ -24086,6 +24775,10 @@ Compare with older revision...
 
 \end_inset
 
+
+\change_inserted -712698321 1501253693
+, respectively
+\change_unchanged
 .
  One can either compare two chosen revisions of the document or he can simply
  compare the current version of edited text with older revisions (where
@@ -24112,7 +24805,27 @@ This feature is supported for SVN and RCS though due to the more complicated
  '35' in '1.2.35'.
  We don't currently support GIT addressing of revisions, one can just compare
  edited document with its revision X steps backs, where X is addressed as
- HEAD~X.
+ 
+\change_deleted -712698321 1501253702
+HEAD~X
+\change_inserted -712698321 1501253702
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501253702
+HEAD~X
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Section
