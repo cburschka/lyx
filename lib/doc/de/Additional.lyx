@@ -24505,19 +24505,18 @@ Spezielle Features
 Bekanntlich kann man mit \SpecialChar LyX
  alles machen, was \SpecialChar LaTeX
  kann.
- Dennoch kann \SpecialChar LyX
+ Zwar kann \SpecialChar LyX
  nicht jedes \SpecialChar LaTeX
 -Feature direkt unterstützen, aber man kann immer
  \SpecialChar TeX
 -Code verwenden.
- Dieses Kapitel zeigt einiges spezielle Dinge, die man vielleicht verwenden
- möchte.
- Für andere spezielle Dinge, die man mit Abbildungen, Tabellen, Gleitumgebungen,
- Boxen und Notizen machen kann, siehe das 
+ Dieses Kapitel diskutiert ein paar spezifische Features.
+ Viele spezifische Sachen, die man mit Abbildungen, Tabellen, Gleitumgebungen,
+ Boxen und Notizen machen kann, sind darüber hinaus im Handbuch 
 \emph on
-EingebetteteObjekte
+Eingebettete Objekte
 \emph default
- Handbuch.
+ dokumentiert.
 \end_layout
 
 \begin_layout Section
@@ -24529,21 +24528,24 @@ Dieses Feature ist unabhängig von der Option
 \family sans
 Zweispaltiges Dokument
 \family default
- in den Dokumenteinstellungen unter 
+ in 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show document"
+\end_inset
+
+ unter 
 \family sans
 Textformat
 \family default
 .
- Möchte man 2
-\begin_inset space ~
-\end_inset
-
-Spalten für das gesamte Dokument haben, wird empfohlen, die Option 
+ Wenn Sie zwei Spalten für das gesamte Dokument brauchen, sollten Sie die
+ Option 
 \family sans
 Zweispaltiges Dokument
 \family default
- zu verwenden.
- Für alle anderen Fälle verwendet man dieses Feature.
+ dort aktivieren.
+ Für alle anderen Fälle beachten Sie das Folgende.
 \end_layout
 
 \begin_layout Standard
@@ -24557,23 +24559,30 @@ Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
 Module
 \family default
-) geladen sein und das \SpecialChar LaTeX
+) geladen sein.
+ Außerdem mussdas \SpecialChar LaTeX
 -Paket 
-\series bold
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 multicol
-\series default
+\end_layout
+
+\end_inset
+
  installiert sein.
 \end_layout
 
 \begin_layout Standard
-Fußnoten mit mehreren Spalten werden ans Ende der Seite gesetzt und nicht
- unter jede Spalte.
- Innerhalb der verschiedenen Spalten kann man alles verwenden, mit Ausnahme
- von Gleitumgebungen, bei denen man die Gleitumgebungs-Option 
+Fußnoten innerhalb von Spalten werden ans Ende der Seite gesetzt, nicht
+ unter die betreffende Spalte.
+ Innerhalb der Spalten können Sie alles verwenden, bei Gleitumgebungen müssen
+ Sie aber die Gleitumgebungs-Option 
 \family sans
 Spalten überspannen
 \family default
- verwenden muss.
+ aktivieren.
 \end_layout
 
 \begin_layout Subsection
@@ -24581,11 +24590,7 @@ Grundlagen
 \end_layout
 
 \begin_layout Standard
-Möchte man 2
-\begin_inset space ~
-\end_inset
-
-Spalten im Text haben, verwendet man das Menü 
+Möchte man zwei Spalten im Text haben, verwendet man das Menü 
 \family sans
 Einfügen\SpecialChar menuseparator
 Benutzer\SpecialChar softhyphen
@@ -24601,11 +24606,7 @@ Mehrere
 Spalten
 \family default
  an dem Punkt an dem die Spalten beginnen sollen.
- Der Text, der in 2
-\begin_inset space ~
-\end_inset
-
-Spalten gedruckt werden soll, schreibt man in diese Einfügung.
+ Den Text, der zweispaltig gedruckt werden soll, schreibt man in diese Einfügung.
 \end_layout
 
 \begin_layout Standard
@@ -24666,8 +24667,8 @@ ty which utterly submerged my mind.
 \end_layout
 
 \begin_layout Standard
-Um 3 oder mehr Spalten zu erhalten, setzt man den Cursor in die Mehrfachspalten-
-Einfügung und verwendet das Menü 
+Um drei oder mehr Spalten zu erhalten, setzt man den Cursor in die Mehrfachspalt
+en-Einfügung und verwendet das Menü 
 \family sans
 Einfügen\SpecialChar menuseparator
 Anzahl
@@ -24682,11 +24683,7 @@ Spalten
 \family default
 .
  Die Anzahl der gewünschten Spalten wird in diese Einfügung geschrieben
- (für 3
-\begin_inset space ~
-\end_inset
-
-Spalten schreibt man 
+ (für drei Spalten schreibt man naheliegenderweise 
 \begin_inset Quotes gld
 \end_inset
 
@@ -24698,11 +24695,7 @@ Spalten schreibt man
 \begin_inset Newline newline
 \end_inset
 
-Hier ist ein Beispiel mit 3
-\begin_inset space ~
-\end_inset
-
-Spalten:
+Hier ist ein Beispiel mit drei Spalten:
 \end_layout
 
 \begin_layout Standard
@@ -24751,12 +24744,8 @@ It can be imagined that my close intimacy with Sherlock Holmes had interested
 \end_layout
 
 \begin_layout Standard
-Sie können bis zu 10
-\begin_inset space ~
-\end_inset
-
-Spalten verwenden, aber das wird sicher nicht der Übersichtlichkeit zuträglich
- sein.
+Sie können bis zu zehn Spalten verwenden, aber das wird sicher nicht der
+ Übersichtlichkeit zuträglich sein.
 \end_layout
 
 \begin_layout Standard
@@ -24849,27 +24838,31 @@ The evidence of those who had played with him– Mr.
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsection
 Fortgeschrittene Beispiele
 \end_layout
 
 \begin_layout Standard
 Die Beispiele in diesem Abschnitt zeigen einige noch speziellere Features
  von Mehrfachspalten.
-\end_layout
+ Für darüber hinausgehende Features von Mehrfachspalten konsultieren Sie
+ bitte die 
+\begin_inset CommandInset href
+LatexCommand href
+name "Dokumentation"
+target "http://mirror.ctan.org/macros/latex/required/tools/multicol.pdf"
+literal "false"
 
-\begin_layout Standard
-Für weitere Features von Mehrfachspalten, siehe die Dokumentation des \SpecialChar LaTeX
--Pakets
- 
-\series bold
+\end_inset
+
+ des \SpecialChar LaTeX
+-Pakets 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 multicol
-\series default
-, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "multicol"
-literal "true"
+\end_layout
 
 \end_inset
 
@@ -24877,22 +24870,19 @@ literal "true"
 \end_layout
 
 \begin_layout Subsubsection
-Vorwort
+Vorspanntext
 \end_layout
 
 \begin_layout Standard
-Um ein Vorwort für mehrere Spalten hinzuzufügen, setzt man den Cursor in
- die Mehrfachspalten-Einfügung und verwendet das Menü 
+Um einen Vorspanntext zu mehreren Spalten hinzuzufügen, setzt man den Cursor
+ in die Mehrfachspalten-Einfügung und verwendet das Menü 
 \family sans
 Einfügen\SpecialChar menuseparator
 Vorwort
 \family default
 .
  Man schreibt den Text des Vorworts in diese Einfügung.
-\begin_inset Newline newline
-\end_inset
-
-Ein Beispiel mit einem Vorwort:
+ Hier ein Beispiel mit einem Vorspanntext:
 \end_layout
 
 \begin_layout Standard
@@ -24942,16 +24932,13 @@ On the evening of the crime, he returned from the club exactly at ten.
 \end_layout
 
 \begin_layout Standard
-Man kann auch einen Abschnittstitel als Vorwort verwenden indem man den
- Ab\SpecialChar softhyphen
-schnitts-Befehl als \SpecialChar TeX
+Man kann auch einen Abschnittstitel als Vorspann verwenden indem man den
+ Abschnitts-Befehl als \SpecialChar TeX
 -Code eingibt.
  Zum Beispiel erstellt der Befehl
 \end_layout
 
-\begin_layout Standard
-
-\series bold
+\begin_layout LyX-Code
 
 \backslash
 subsection{Unterabschnittstitel}
@@ -24959,7 +24946,7 @@ subsection{Unterabschnittstitel}
 
 \begin_layout Standard
 einen Unterabschnitt.
- In diesem Beispiel ist das Vorwort ein Unterabschnitt:
+ In diesem Beispiel ist der Vorspann ein Unterabschnitt:
 \end_layout
 
 \begin_layout Standard
@@ -24983,7 +24970,7 @@ subsubsection{
 
 \end_inset
 
-Dies ist ein Unterabschnittstitel als Vorwort
+Dies ist ein Unterabschnittstitel als Vorspann
 \begin_inset ERT
 status collapsed
 
@@ -25031,16 +25018,12 @@ A minute examination of the circumstances served only to make the case more
 
 \begin_layout Standard
 Wenn am Beginn der Mehrfachspalten weniger vertikaler Leerraum am unteren
- Seitenrand vorhanden sind, als für 6
-\begin_inset space ~
-\end_inset
-
-Textzeilen benötigt werden, wird ein Seitenumbruch vor den Mehrfachspalten
- eingefügt.
- Je nach Anzahl der Zeilen des Vorworts möchte man diesen Leerraum eventuell
+ Seitenrand vorhanden sind als für sechs Textzeilen benötigt werden, wird
+ ein Seitenumbruch vor den Mehrfachspalten eingefügt.
+ Je nach Anzahl der Zeilen des Vorspanns möchte man diesen Leerraum eventuell
  ändern.
  Dies wird erreicht, indem man den Cursor in die Mehrfachspalten-Einfügung
- hinter das Vorwort setzt (falls es ein gibt) und das Menü 
+ hinter das Vorwort setzt (falls es eines gibt) und das Menü 
 \family sans
 Einfügen\SpecialChar menuseparator
 Abstand
@@ -25064,37 +25047,44 @@ Seitenumbruch
 
 B.
  
-\begin_inset Quotes gld
-\end_inset
+\begin_inset Flex Code
+status collapsed
 
+\begin_layout Plain Layout
 5cm
-\begin_inset Quotes grd
+\end_layout
+
 \end_inset
 
 .
 \begin_inset Newline newline
 \end_inset
 
-In diesem Beispiel ist der Leerraum auf 7
-\begin_inset space ~
-\end_inset
+In diesem Beispiel ist der Leerraum auf sieben Textzeilen eingestellt, indem
+ 
+\begin_inset Flex Code
+status collapsed
 
-Textzeilen eingestellt, indem 
-\begin_inset Quotes gld
-\end_inset
-
+\begin_layout Plain Layout
 7
 \backslash
 baselineskip
-\begin_inset Quotes grd
+\end_layout
+
 \end_inset
 
  verwendet wurde (wobei der Befehl 
-\series bold
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 baselineskip
-\series default
+\end_layout
+
+\end_inset
+
  als \SpecialChar TeX
 -Code eingegeben werden muss):
 \end_layout
@@ -25155,20 +25145,24 @@ Leerraum
 \end_layout
 
 \begin_layout Standard
-Die Größe des Leerraums vor und nach Mehrfachspalten kann geändert werden
+Die Größe des Leerraums vor und nach Mehrfachspalten kann geändert werden,
  indem die Länge 
-\series bold
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 multicolsep
-\series default
+\end_layout
+
+\end_inset
+
  geändert wird.
  Zum Beispiel ändert der Befehl
 \end_layout
 
-\begin_layout Standard
-
-\series bold
+\begin_layout LyX-Code
 
 \backslash
 setlength{
@@ -25193,11 +25187,17 @@ pt.
 
 \begin_layout Standard
 Für dieses Beispiel wurde 
-\series bold
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 multicolsep
-\series default
+\end_layout
+
+\end_inset
+
  auf 2.5
 \begin_inset space \thinspace{}
 \end_inset
@@ -25264,13 +25264,19 @@ status open
 Achtung:
 \series default
  Der mit 
-\series bold
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 setlength
-\series default
+\end_layout
+
+\end_inset
+
  eingestellte Wert wird für alle folgenden Mehrfachspalten verwendet, solange
- bis der Wert erneut geändert wird.
+ der Wert nicht erneut geändert wird.
 \end_layout
 
 \end_inset
@@ -25318,15 +25324,21 @@ Spaltenumbrüche
 \end_layout
 
 \begin_layout Standard
-Ein Spaltenumbruch kann erzwungen werden, indem man den Befehl 
-\series bold
+Ein Spaltenumbruch kann erzwungen werden, indem man an die Stelle im Text,
+ an der die Spalte umbrochen werden soll, den Befehl 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 columnbreak{}
-\series default
+\end_layout
+
+\end_inset
+
  als \SpecialChar TeX
--Code an die Stelle im Text eingibt, an der die Spalte gebrochen werden
- soll.
+-Code eingibt.
  Man beachte, dass dies in den meisten Fällen zu Lücken im Text führt.
 \begin_inset Newline newline
 \end_inset
@@ -25464,11 +25476,17 @@ Spaltenabstand
 Die Breite der Spalten wird automatisch berechnet, aber man kann den Platz
  zwischen den Spalten verändern.
  Dies geschieht, indem man die Länge 
-\series bold
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 columnsep
-\series default
+\end_layout
+
+\end_inset
+
  ändert.
  Ihr voreingestellter Wert ist 10
 \begin_inset space \thinspace{}
@@ -25476,11 +25494,17 @@ columnsep
 
 pt.
  Hier ist ein Beispiel, bei dem 
-\series bold
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 columnsep
-\series default
+\end_layout
+
+\end_inset
+
  auf 3
 \begin_inset space \thinspace{}
 \end_inset
@@ -25571,11 +25595,17 @@ Vertikale Linien
 
 \begin_layout Standard
 Zwischen den Spalten befindet sich eine Linie mit der Breite der Länge 
-\series bold
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 columnseprule
-\series default
+\end_layout
+
+\end_inset
+
 .
  Ist die Breite 0
 \begin_inset space \thinspace{}
@@ -25723,19 +25753,23 @@ The Holy War
 
 \begin_layout Standard
 Die Linie kann gefärbt werden, indem man den Befehl 
-\series bold
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 columnseprulecolor
-\series default
+\end_layout
+
+\end_inset
+
  umdefiniert.
  Dies wird mit dem \SpecialChar TeX
 -Code-Befehl
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
-\series bold
+\begin_layout LyX-Code
 
 \backslash
 renewcommand{
@@ -25743,37 +25777,44 @@ renewcommand{
 columnseprulecolor}{
 \backslash
 color{red}}
-\series default
+\end_layout
 
-\begin_inset Newline newline
+\begin_layout Standard
+erreicht, der vor der Mehrfachspalten-Einfügung eingefügt wird.
+ Die Farbangabe 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+red
+\end_layout
+
 \end_inset
 
-erreicht, der vor der Mehrfachspalten-Einfügung eingefügt wird.
- 
-\series bold
-red
-\series default
  wird hierbei durch eine Farbe der Wahl ersetzt.
  Man kann alle vor- und selbstdefinierten Farben verwenden.
- Siehe das 
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Siehe das Handbuch 
 \emph on
-EingebetteteObjekte
+Eingebettete Objekte
 \emph default
--Handbuch, Abschnitt 
+, Abschnitt 
 \emph on
-Colored
-\begin_inset space ~
+Farbige Tabellen
+\emph default
+, für weitere Informationen über vor- und selbstdefinierte Farben.
+\end_layout
+
 \end_inset
 
-Tables
-\emph default
- für mehr Informationen über vor- und selbstdefinierte Farben.
- Um auf die voreingestellte Farbe zurück zu wechseln, gibt man den Befehl
-\begin_inset Newline newline
-\end_inset
+ Um auf die voreingestellte Farbe zurück zu wechseln, gibt man den folgenden
+ Befehl ein:
+\end_layout
 
-
-\series bold
+\begin_layout LyX-Code
 
 \backslash
 renewcommand{
@@ -25781,15 +25822,9 @@ renewcommand{
 columnseprulecolor}{
 \backslash
 normalcolor}
-\series default
+\end_layout
 
-\begin_inset Newline newline
-\end_inset
-
-ein.
-\begin_inset Newline newline
-\end_inset
-
+\begin_layout Standard
 Hier ist ein Beispiel mit einer hellblauen Linie und 1
 \begin_inset space \thinspace{}
 \end_inset
@@ -25972,13 +26007,6 @@ auf Voreinstellung zurücksetzen
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Ungewöhnliche Absatzformen
 \end_layout
@@ -25991,9 +26019,16 @@ Ungewöhnliche Absatzformen
  kann man die Absatzform beliebig verändern.
  Dies kann mit dem \SpecialChar LaTeX
 -Paket 
-\series bold
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
 shapepar
-\series default
+\end_layout
+
+\end_inset
+
  gemacht werden, das geladen wird, indem in den Dokumenteinstellungen das
  Modul 
 \family sans
@@ -26007,10 +26042,16 @@ Vordefinierte Formen
 \end_layout
 
 \begin_layout Standard
+Das Paket 
+\begin_inset Flex Code
+status collapsed
 
-\series bold
+\begin_layout Plain Layout
 shapepar
-\series default
+\end_layout
+
+\end_inset
+
  bietet die folgenden Formen an:
 \end_layout
 
@@ -26018,110 +26059,135 @@ shapepar
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="3">
 <features booktabs="true" islongtable="true" longtabularalignment="center">
-<column alignment="center" valignment="middle" width="16col%">
-<column alignment="center" valignment="middle" width="40col%">
-<column alignment="center" valignment="middle" width="35col%">
+<column alignment="left" valignment="middle" width="18col%">
+<column alignment="left" valignment="middle" width="38col%">
+<column alignment="left" valignment="middle" width="35col%">
 <row endhead="true">
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+\size small
 Name
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+\size small
 Beschreibung
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+\size small
 Anmerkung
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 CDBeschriftung
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Kreis mit rundem Loch (in der Größe einer CD/DVD)
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Kann nicht skaliert werden, daher Textmenge beachten
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Kreis
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Kreis
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Fragil, Berechnung kann fehlschlagen
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Diamant
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Rhomboid (symbolisiert einen 
 \begin_inset Quotes gld
 \end_inset
@@ -26135,255 +26201,307 @@ Diamanten
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 -
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Herz
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Herzform
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 -
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Sechseck
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Sechseck
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 -
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Mutter
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Schraubenmutter (Sechseck mit rundem Loch)
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 -
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Quadrat
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Quadrat
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 -
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Stern
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Fünfzackiger Stern
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 -
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Kerze
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Brennende Kerze
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 -
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Tropfen unten/oben
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Normaler/umgekehrter Regentropfen
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Fragil, Berechnung kann fehlschlagen
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 \SpecialChar TeX
 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Das \SpecialChar TeX
 -Logo
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 -
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Dreieck oben/unten/
 \begin_inset Newline newline
 \end_inset
@@ -26393,19 +26511,23 @@ links/rechts
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Dreiecke in verschiedenen Ausrichtungen
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 -
 \end_layout
 
@@ -26422,7 +26544,7 @@ Dreiecke in verschiedenen Ausrichtungen
 \begin_layout Standard
 Um eine Form für einen Absatz zu verwenden, wählt man sie einfach in \SpecialChar LyX
 ' Auswahlbo
-x für Umgebungen in der Werkzeugleiste aus.
+x für Absatzstile aus.
 \end_layout
 
 \begin_layout Standard
@@ -26473,7 +26595,7 @@ status open
 \series bold
 Achtung
 \series default
-: shapepar-Absätze können nicht über Seitenumbrüche hinweg laufen.
+: Shapepar-Absätze können nicht über Seitenumbrüche hinweg laufen.
 \end_layout
 
 \end_inset
@@ -26489,10 +26611,16 @@ Achtung
 \end_layout
 
 \begin_layout Standard
+Das Paket 
+\begin_inset Flex Code
+status collapsed
 
-\series bold
+\begin_layout Plain Layout
 shapepar
-\series default
+\end_layout
+
+\end_inset
+
  stellt sicher, dass die Form immer gewahrt bleibt, egal wie viel Text der
  Absatz hat.
  Daher ändert sich die Größe des Absatzes mit der Textmenge.
@@ -26539,6 +26667,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
 \end_layout
 
 \begin_layout Standard
+\noindent
 Die Form 
 \family sans
 CDBeschriftung
@@ -26546,14 +26675,15 @@ CDBeschriftung
  ist eine Ausnahme.
  Sie kann nicht skaliert werden, da sie auf eine CD/DVD passen muss.
  Daher ist die Textmenge, die in diese Form passt, limitiert.
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
+\begin_layout Standard
+\noindent
 Die 
 \family sans
-Tropfen
+Tropfen-
 \family default
- Formen und die Form 
+Formen und die Form 
 \family sans
 Kreis
 \family default
@@ -26578,15 +26708,8 @@ Arithmetic overflow
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Bei Formen mit Spitzen werden Sie vielleicht feststellen, dass \SpecialChar LaTeX
-s Silbentrennungs
+' Silbentrennungs
 mechanismus für Text in den Spitzen versagt.
  Es ist daher oft notwendig, Trennmöglichkeiten 
 \family sans
@@ -26597,13 +26720,6 @@ mechanismus für Text in den Spitzen versagt.
 -
 \family default
 ) in den entsprechenden Text einzufügen.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -26741,13 +26857,24 @@ TeX/LaTeX\SpecialChar menuseparator
 Shapepar
 \family default
  exportiert man die Form in Koordinaten.
- Im erscheinenden Dialog wählt man entweder die Außenlinie (outline) der
- Form für die Koordinaten oder die Linie selbst (path).
+ Im erscheinenden Dialog wählt man entweder die Außenlinie (
+\emph on
+\lang english
+outline
+\emph default
+\lang ngerman
+) der Form für die Koordinaten oder die Linie selbst (
+\emph on
+\lang english
+path
+\emph default
+\lang ngerman
+).
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Für weitere Informationen, siehe 
+Siehe 
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.dickimaw-books.com/apps/jpgfdraw/manual/shapepar.html"
@@ -26755,7 +26882,7 @@ literal "false"
 
 \end_inset
 
-
+ für weitere Informationen.
 \end_layout
 
 \end_inset
@@ -26767,29 +26894,46 @@ literal "false"
 Die Koordinaten werden in eine \SpecialChar TeX
 -Datei geschrieben.
  Um sie für ein \SpecialChar LyX
--Dokument zu verwenden
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\begin_inset Quotes gld
+\end_inset
+
+=
+\end_layout
+
+\end_inset
+
+Dokument zu verwenden,
 \end_layout
 
 \begin_layout Enumerate
 setzt man den Cursor vor das erste Zeichen des Absatzes (oder in einen neuen,
- leeren Absatz)
+ leeren Absatz),
 \end_layout
 
 \begin_layout Enumerate
-Man öffnet in \SpecialChar LyX
+und öffnet in \SpecialChar LyX
  das Menü 
 \family sans
 Einfügen\SpecialChar menuseparator
 Datei\SpecialChar menuseparator
 Unterdokument
 \family default
-, wählt die Datei aus und verwendet 
+.
+ Dort wählt man die Datei aus und verwendet 
 \family sans
 Input
 \family default
  als 
 \family sans
 Art der Einbindung
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -26865,6 +27009,7 @@ Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
 \end_layout
 
 \begin_layout Standard
+\noindent
 
 \series bold
 Ein Tipp:
@@ -26881,13 +27026,6 @@ Jpgfdraw
  importieren.
  Man braucht dann nur noch eine Linie oder einen Spline entlang der Außenlinie
  der Form zu zeichnen.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -26914,16 +27052,23 @@ Diese Befehle werden intern für alle hier beschriebenen Formen verwendet.
 
 \end_inset
 
- Für Informationen wie diese Stile benutzt werden und über weitere Anpassungsmög
-lichkeiten, siehe die Dokumentation des Pakets 
-\series bold
+ Für Informationen, wie diese Stile benutzt werden, und für weitere Anpassungsmö
+glichkeiten lesen Sie bitte die 
+\begin_inset CommandInset href
+LatexCommand href
+name "Dokumentation"
+target "http://mirrors.ctan.org/macros/latex/contrib/shapepar/shapepar.pdf"
+literal "false"
+
+\end_inset
+
+ des Pakets 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 shapepar
-\series default
-, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "shapepar"
-literal "true"
+\end_layout
 
 \end_inset
 
@@ -26935,48 +27080,6 @@ literal "true"
 LatexCommand printindex
 type "idx"
 name "Stichwortverzeichnis"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "multicol"
-literal "true"
-
-\end_inset
-
-Dokumentation des \SpecialChar LaTeX
--Pakets 
-\begin_inset CommandInset href
-LatexCommand href
-name "multicol"
-target "http://mirror.ctan.org/macros/latex/required/tools/multicol.pdf"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "shapepar"
-literal "true"
-
-\end_inset
-
-Dokumentation des \SpecialChar LaTeX
--Pakets 
-\begin_inset CommandInset href
-LatexCommand href
-name "shapepar"
-target "http://mirrors.ctan.org/macros/latex/contrib/shapepar/shapepar.pdf"
 literal "false"
 
 \end_inset
