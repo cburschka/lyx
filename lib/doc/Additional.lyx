@@ -25373,7 +25373,13 @@ Toolbar extensions
 \begin_layout Standard
 There are six new buttons that can be added to your \SpecialChar LyX
  toolbar.
- Five of these buttons are short cuts to layout styles: 
+ 
+\change_deleted -712698321 1501232976
+Five
+\change_inserted -712698321 1501232977
+Four
+\change_unchanged
+ of these buttons are short cuts to layout styles: 
 \family sans
 Standard
 \family default
@@ -25386,12 +25392,22 @@ Section
 \SpecialChar LaTeX
 
 \family default
-, 
+,
+\change_inserted -712698321 1501232982
+ and
+\change_unchanged
+ 
 \family sans
 \SpecialChar LyX
 -Code
 \family default
-, and 
+, 
+\change_deleted -712698321 1501232984
+and
+\change_inserted -712698321 1501232988
+one fpr the custom inset
+\change_unchanged
+ 
 \family sans
 Chunk
 \family default
@@ -25463,7 +25479,13 @@ Toolbar
 \end_layout
 
 \begin_layout LyX-Code
-  Icon "layout Chunk"
+  Icon "
+\change_deleted -712698321 1501232918
+layout
+\change_inserted -712698321 1501232921
+flex.insert
+\change_unchanged
+ Chunk"
 \end_layout
 
 \begin_layout LyX-Code
@@ -25629,9 +25651,25 @@ Modules
 \family default
 ) and must have the \SpecialChar LaTeX
 -package 
-\series bold
+\change_deleted -712698321 1501235255
 multicol
-\series default
+\change_inserted -712698321 1501235255
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501235255
+multicol
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
  installed.
 \end_layout
 
@@ -25916,12 +25954,42 @@ The examples in this section show some more special features of multiple
 \end_layout
 
 \begin_layout Standard
-For more features of multiple columns, have a look at the documentation
+For more features of multiple columns, have a look at the 
+\change_deleted -712698321 1501236578
+documentation
+\change_inserted -712698321 1501236578
+
+\begin_inset CommandInset href
+LatexCommand href
+name "documentation"
+target "http://mirror.ctan.org/macros/latex/required/tools/multicol.pdf"
+literal "false"
+
+\end_inset
+
+
+\change_unchanged
  of the \SpecialChar LaTeX
 -package 
-\series bold
+\change_deleted -712698321 1501235271
 multicol
-\series default
+\change_inserted -712698321 1501235271
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501235271
+multicol
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_deleted -712698321 1501236609
 , 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -25930,6 +25998,8 @@ literal "true"
 
 \end_inset
 
+
+\change_unchanged
 .
 \end_layout
 
@@ -26004,9 +26074,7 @@ You can also use a section heading as the preface if you use a section command
  For example the command
 \end_layout
 
-\begin_layout Standard
-
-\series bold
+\begin_layout LyX-Code
 
 \backslash
 subsection{subsection title}
@@ -26136,21 +26204,63 @@ In this example the space is set to 7
 \end_inset
 
 text lines by using 
+\change_deleted -712698321 1501235295
+
 \begin_inset Quotes eld
 \end_inset
 
 7
 \backslash
 baselineskip
+\change_inserted -712698321 1501235293
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501235293
+7
+\backslash
+baselineskip
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_deleted -712698321 1501235296
+
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_unchanged
  (where the command 
-\series bold
+\change_deleted -712698321 1501235285
 
 \backslash
 baselineskip
-\series default
+\change_inserted -712698321 1501235285
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501235285
+
+\backslash
+baselineskip
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
  needs to be inserted as \SpecialChar TeX
  code):
 \end_layout
@@ -26212,18 +26322,34 @@ Surrounding Space
 \begin_layout Standard
 The amount of space before and after multiple columns can be changed by
  changing the length 
-\series bold
+\change_deleted -712698321 1501235307
 
 \backslash
 multicolsep
-\series default
+\change_inserted -712698321 1501235307
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501235307
+
+\backslash
+multicolsep
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 .
  For example the command
 \end_layout
 
-\begin_layout Standard
-
-\series bold
+\begin_layout LyX-Code
 
 \backslash
 setlength{
@@ -26248,11 +26374,29 @@ pt.
 
 \begin_layout Standard
 For this example 
-\series bold
+\change_deleted -712698321 1501235314
 
 \backslash
 multicolsep
-\series default
+\change_inserted -712698321 1501235315
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501235315
+
+\backslash
+multicolsep
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
  was set to 2.5
 \begin_inset space \thinspace{}
 \end_inset
@@ -26318,10 +26462,32 @@ status open
 Note:
 \series default
  The values you set with 
+\change_inserted -712698321 1501235328
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501235333
+
+\backslash
+setlength
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_deleted -712698321 1501235331
+
 \series bold
 
 \backslash
 setlength
+\change_unchanged
+
 \series default
  will be used for all following multiple columns until you change them again.
 \end_layout
@@ -26372,11 +26538,29 @@ Column Breaks
 
 \begin_layout Standard
 A column break can be forced by inserting the command 
-\series bold
+\change_deleted -712698321 1501235399
 
 \backslash
 columnbreak{}
-\series default
+\change_inserted -712698321 1501235399
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501235399
+
+\backslash
+columnbreak{}
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
  as \SpecialChar TeX
  Code to that position in the text where the column should be broken.
  Note that this leads in most cases to whitespace in the text.
@@ -26509,11 +26693,29 @@ Column Separation
 The width of the columns is automatically calculated, but you can modify
  the space between the columns.
  This is done by changing the length 
-\series bold
+\change_deleted -712698321 1501235412
 
 \backslash
 columnsep
-\series default
+\change_inserted -712698321 1501235412
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501235412
+
+\backslash
+columnsep
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 .
  Its predefined value is 10
 \begin_inset space \thinspace{}
@@ -26521,11 +26723,29 @@ columnsep
 
 pt.
  Here is an example where 
-\series bold
+\change_deleted -712698321 1501235418
 
 \backslash
 columnsep
-\series default
+\change_inserted -712698321 1501235418
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501235418
+
+\backslash
+columnsep
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
  is set to 3
 \begin_inset space \thinspace{}
 \end_inset
@@ -26615,11 +26835,29 @@ Vertical Lines
 
 \begin_layout Standard
 Between the columns a rule with a width of the length 
-\series bold
+\change_deleted -712698321 1501235428
 
 \backslash
 columnseprule
-\series default
+\change_inserted -712698321 1501235428
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501235428
+
+\backslash
+columnseprule
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
  is placed.
  If this rule width is set to 0
 \begin_inset space \thinspace{}
@@ -26762,18 +27000,42 @@ The Holy War
 
 \begin_layout Standard
 The rule can be colored by redefining the command 
-\series bold
+\change_deleted -712698321 1501235439
 
 \backslash
 columnseprulecolor
-\series default
+\change_inserted -712698321 1501235439
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501235439
+
+\backslash
+columnseprulecolor
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 .
  This is done by inserting the command
+\change_deleted -712698321 1501235443
+
 \begin_inset Newline newline
 \end_inset
 
 
-\series bold
+\change_inserted -712698321 1501235444
+
+\end_layout
+
+\begin_layout LyX-Code
 
 \backslash
 renewcommand{
@@ -26781,17 +27043,39 @@ renewcommand{
 columnseprulecolor}{
 \backslash
 color{red}}
-\series default
+\change_deleted -712698321 1501235445
 
 \begin_inset Newline newline
 \end_inset
 
+
+\change_inserted -712698321 1501235446
+
+\end_layout
+
+\begin_layout Standard
 as \SpecialChar TeX
  Code before the multicolumn inset.
  Replace 
-\series bold
+\change_deleted -712698321 1501235460
 red
-\series default
+\change_inserted -712698321 1501235457
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501235462
+red
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
  in this command by a color of your choice.
  You can use all pre- and self-defined colors.
  See the 
@@ -26808,11 +27092,18 @@ Tables
 \emph default
  for more information about pre- and self-defined colors.
  To go back to the default color insert the command
+\change_inserted -712698321 1501235474
+
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_deleted -712698321 1501235472
 \begin_inset Newline newline
 \end_inset
 
 
-\series bold
+\change_unchanged
 
 \backslash
 renewcommand{
@@ -26820,11 +27111,18 @@ renewcommand{
 columnseprulecolor}{
 \backslash
 normalcolor}
-\series default
+\change_inserted -712698321 1501235475
 
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -712698321 1501235473
 \begin_inset Newline newline
 \end_inset
 
+
+\change_unchanged
 Here is the example with a cyan rule and 1
 \begin_inset space \thinspace{}
 \end_inset
@@ -27014,9 +27312,26 @@ Non-standard Paragraph Shapes
  can modify the paragraph shape to one of your choice.
  This can be done by using the \SpecialChar LaTeX
 -package 
-\series bold
+\change_deleted -712698321 1501236703
 shapepar
-\series default
+\change_inserted -712698321 1501236703
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+
+\change_inserted -712698321 1501236703
+shapepar
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
  which is loaded by using in the document settings the module 
 \family sans
 Custom paragraph shapes
@@ -27040,110 +27355,135 @@ shapepar
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="3">
 <features booktabs="true" islongtable="true" longtabularalignment="center">
-<column alignment="center" valignment="middle" width="16col%">
-<column alignment="center" valignment="middle" width="40col%">
-<column alignment="center" valignment="middle" width="35col%">
+<column alignment="left" valignment="middle" width="16col%">
+<column alignment="left" valignment="middle" width="40col%">
+<column alignment="left" valignment="middle" width="35col%">
 <row endhead="true">
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+\size small
 Name
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+\size small
 Description
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
+\size small
 Annotation
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 CDlabel
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Circle with circular hole (in the size of a CD/DVD)
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Cannot be scaled, take care there is not too much text
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Circle
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Circle
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Fragile, calculation might fail
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Diamond
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Rhomboid (symbolizing a 
 \begin_inset Quotes eld
 \end_inset
@@ -27157,255 +27497,307 @@ diamond
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 -
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Heart
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Heart-like shape
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 -
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Hexagon
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Hexagon
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 -
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Nut
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Nut for bolt (hexagon with circular hole)
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 -
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Square
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Square
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 -
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Star
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Five-point star
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 -
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Candle
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Burning candle
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 -
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Drop down/up
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Normal/reversed rain drop
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Fragile, calculation might fail
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 \SpecialChar TeX
 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 The \SpecialChar TeX
  logo
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 -
 \end_layout
 
 \end_inset
 </cell>
 </row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<row interlinespace="default">
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Triangle up/down/
 \begin_inset Newline newline
 \end_inset
@@ -27415,19 +27807,23 @@ left/right
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 Triangles in different orientations
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\size small
 -
 \end_layout
 
@@ -27512,9 +27908,31 @@ Note
 
 \begin_layout Standard
 
+\change_inserted -712698321 1501236716
+
 \series bold
-shapepar
+The package 
+\change_deleted -712698321 1501236722
+
 \series default
+shapepar
+\change_inserted -712698321 1501236723
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501236723
+shapepar
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
  takes care that the shape will always be preserved, no matter how much
  text is in the paragraph.
  Therefore the paragraph size changes with the amount of contained text.
@@ -27935,10 +28353,45 @@ These commands are internally used for all shapes described here.
 \end_inset
 
  For information how these styles are used and about further customization
- possibilities, have a look at the documentation of the package 
-\series bold
+ possibilities, have a look at the 
+\change_inserted -712698321 1501236534
+
+\lang ngerman
+
+\begin_inset CommandInset href
+LatexCommand href
+name "documentation"
+target "http://mirrors.ctan.org/macros/latex/contrib/shapepar/shapepar.pdf"
+literal "false"
+
+\end_inset
+
+
+\change_deleted -712698321 1501236537
+
+\lang english
+documentation
+\change_unchanged
+ of the package 
+\change_deleted -712698321 1501236618
 shapepar
-\series default
+\change_inserted -712698321 1501236618
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501236618
+shapepar
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_deleted -712698321 1501236618
 , 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -27947,10 +28400,16 @@ literal "true"
 
 \end_inset
 
+
+\change_unchanged
 .
+\change_deleted -712698321 1501236666
+
 \end_layout
 
 \begin_layout Bibliography
+
+\change_deleted -712698321 1501236522
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "multicol"
@@ -27972,6 +28431,8 @@ literal "false"
 \end_layout
 
 \begin_layout Bibliography
+
+\change_deleted -712698321 1501236522
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "shapepar"
@@ -27989,6 +28450,8 @@ literal "false"
 
 \end_inset
 
+
+\change_unchanged
 
 \end_layout
 
