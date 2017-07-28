@@ -26,6 +26,12 @@
 
 % extra space for tables
 \newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+
+% Improve line breaking
+\tolerance 1414
+\hbadness 1414
+\emergencystretch 1.5em
+\hfuzz 0.3pt
 \end_preamble
 \options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
@@ -1732,18 +1738,96 @@ hbox
 liebt
 \emph default
  es, dies zu melden.
- Es sind Warnungen über zu lange Zeilen, die über den rechten Rand ragen.
+ Es scheint mindestens eine solche Meldung für jedes Dokument zu erzeugen.
+ Das sind Warnungen über zu lange Zeilen, die über den rechten Rand ragen.
+ Das passiert, wenn \SpecialChar LaTeX
+ keine sinnvolle Möglichkeit finden, die Zeilen zu umbrechen
+ (häufig im Zusammenhang mit Schreibmaschinenschriften, da dort die automatische
+ Silbentrennung unterdrückt wird).
  Häufig sieht man es in der Druckausgabe nicht.
- Oder nur ein Buchstabe oder zwei ragen über den Rand hinaus.
- \SpecialChar LaTeX
- scheint mindestens eine solche Meldung für jedes Dokument zu erzeugen.
+ Manchmal aber ragen die Zeilen wirklich sehr deutlich in den Rand, und
+ das ist etwas, was Sie in der Druckfassung Ihres Dokuments ganz sicher
+ nicht haben wollen.
 \end_layout
 
 \begin_layout Standard
-Sie können diese Meldungen ignorieren, wenn Ihnen an den entsprechenden
- Stellen keine Probleme mit zu langen Zeilen auf\SpecialChar ligaturebreak
-fallen; sehen Sie sich einfach
- den Ausdruck genau an.
+Es gibt einige allgemeine Möglichkeiten, mit denen man versuchen kann, die
+ übervollen Zeilen zu minimieren.
+ Wenn Sie 
+\family sans
+Mikrotypographische Erweiterungen aktivieren
+\family default
+ in 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show document"
+\end_inset
+
+
+\family sans
+\SpecialChar menuseparator
+Schriften
+\family default
+ auswählen, sollte das Ergebnis schon deutlich besser sein.
+ Außerdem reduziert \SpecialChar LaTeX
+-Code wie der folgende im Vorspann die übervollen Zeilen
+ meistens drastisch (wir verwenden dies in diesem Dokument auch):
+\end_layout
+
+\begin_layout LyX-Code
+
+\backslash
+tolerance 1414
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+hbadness 1414
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+emergencystretch 1.5em
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+hfuzz 0.3pt
+\end_layout
+
+\begin_layout Standard
+Manchmal bleibt Ihnen aber nichts anderes übrig als den Text umzuschreiben,
+ damit der Zeilenumbruch gut wird.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Siehe für detaillierte Informationen 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.tex.ac.uk/FAQ-overfull.html
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+In jedem Fall sollten Sie die betreffenden Zeilen inspizieren, zumindest
+ bei der endgültigen Version des Dokuments.
+ Sie werden sehen, ob die Zeilen sichtbar zu lang sind.
 \begin_inset Foot
 status collapsed
 
@@ -2630,6 +2714,13 @@ Subdivided Bibliographies
 
 \begin_layout Subsection
 Mehrere Literaturverzeichnisse pro Dokument
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Mehrere-Literaturverzeichnisse"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3111,7 +3202,7 @@ Input
 Unformatiert
 \family default
 .
- Der Unterschied zwischen 
+ 
 \family sans
 Include
 \family default
@@ -3119,11 +3210,16 @@ Include
 \family sans
 Input
 \family default
- besteht unter anderem darin, dass Dateien, die über 
+ sind in vielerlei Hinsicht ähnlich, aber es gibt auch ein paar wichtige
+ Unterschiede:
+\end_layout
+
+\begin_layout Enumerate
+Dateien, die über 
 \family sans
 Include
 \family default
- eingebunden werden, auf einer neuen Seite gesetzt werden, während über
+ eingebunden werden, werden auf einer neuen Seite gesetzt, während über
  
 \family sans
 Input
@@ -3131,13 +3227,58 @@ Input
  eingebundene Dateien auf der aktuellen Seite gesetzt werden.
 \end_layout
 
+\begin_layout Enumerate
+Dateien, die über 
+\family sans
+Include
+\family default
+ eingebunden werden, können ihrerseits keine weiteren Dateien über 
+\family sans
+Include
+\family default
+ einbinden (Unter-Unterdokumente).
+ Bei über 
+\family sans
+Input
+\family default
+ eingebundenen Dateien ist ein unbegrenztes Einbinden möglich.
+\end_layout
+
+\begin_layout Enumerate
+Wenn Unterdokumente über 
+\family sans
+Include
+\family default
+ eingebunden wurden, ist es möglich, nur einzelne von Ihnen auszugeben,
+ wobei die Zähler (z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ Seitenzahlen) und Querverweise des Gesamtdokuments erhalten bleiben (bitte
+ lesen Sie den Abschnitt 
+\emph on
+Unterdokumente
+\emph default
+ um Handbuch 
+\emph on
+Eingebettete Objekte
+\emph default
+ für weitere Informationen) 
+\end_layout
+
 \begin_layout Standard
-Von \SpecialChar LyX
- wird das Hauptdokument vor dem Setzen des Textes in eine vollwertige
- \SpecialChar LaTeX
--Datei konvertiert, die eingebundenen Dateien jedoch nur in \SpecialChar LaTeX
--Dateien ohne
- jeglichen Vorspann.
+Daher empfiehlt es sich, Kapitel, die in Unterdokumente ausgelagert sind
+ mit 
+\family sans
+Include
+\family default
+ einzubinden.
+ 
+\family sans
+Input
+\family default
+ eignet sich hingegen für beliebige andere Dateieinbindungen.
 \end_layout
 
 \begin_layout Standard
@@ -3173,6 +3314,15 @@ kennzeichnen
 \family default
  können diese durch eine kleine Markierung ersetzt werden, die das Vorhandensein
  von Leerzeichen anzeigt.
+\end_layout
+
+\begin_layout Standard
+In jedem Fall wird das Hauptdokument von \SpecialChar LyX
+ vor dem Setzen des Textes in eine
+ vollwertige \SpecialChar LaTeX
+-Datei konvertiert, die eingebundenen Dateien jedoch nur in
+ \SpecialChar LaTeX
+-Dateien ohne jeglichen Vorspann.
 \end_layout
 
 \begin_layout Subsection
@@ -3212,53 +3362,101 @@ Literaturverzeichnisse in allen Unterdokumenten
 \end_layout
 
 \begin_layout Standard
-Kopieren Sie das Literaturverzeichnis mit allen Einträgen in alle Unterdokumente
-, und ändern Sie es um in einen Kommentar.
- Auf diese Weise findet \SpecialChar LyX
- die 
-\family typewriter
-.bib
-\family default
--Dateien, und Sie können die Verweise einfach einfügen, ohne das Literaturverzei
-chnis sichtbar zu machen.
+Wenn Sie mit Unterdokumenten arbeiten, möchten Sie wahrscheinlich eine Gesamtbib
+liographie am Ende des Hauptdokuments.
+ Vielleicht möchten Sie aber auch ein separates Literaturverzeichnis für
+ ein Unterdokument, das nur angezeigt wird, wenn das Unterdokument eigenständig
+ ausgegeben wird.
+ Im folgenden wird beschrieben, wie das möglich ist.
 \end_layout
 
 \begin_layout Standard
-Da das Literaturverzeichnis in einem Kommentar ist, wird \SpecialChar LaTeX
- es aber nicht
- benutzen, und die Verweise werden wie [?] anstatt [1] aussehen.
- Eine Lösung ist, das \SpecialChar LaTeX
--Paket 
-\family typewriter
-comment
+Für das Hauptdokument fügen Sie einfach eine 
+\family sans
+Bib(la)TeX-Literaturverzeichnis
 \family default
- zu benutzen, mit dem die Kommentare nur beim separaten Druck eingefügt
- werden.
- Fügen Sie im \SpecialChar LaTeX
--Vorspann jedes Unterdokuments folgendes ein:
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-usepackage{comment}
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-includecomment{comment}
+-Einfügung an die Stelle ein, an der das Literaturverzeichnis im Hauptdokument
+ erscheinen soll (Sie können diese Einfügung in die Hauptdatei selbst oder
+ in ein Unterdokument einfügen).
+ Wenn die Einfügung in der Hauptdatei ist, werden die Einträge der Datenbank
+ von allen Unterdokumenten importiert, sie sind also im Dialogfenster 
+\family sans
+Literaturverweis
+\family default
+ verfügbar.
 \end_layout
 
 \begin_layout Standard
-Siehe auch 
-\begin_inset Flex URL
-status collapsed
+Für unterdokumentspezifische Literaturverzeichnisse fügen Sie jeweils weitere
+ 
+\family sans
+Bib(la)TeX-Literaturverzeichnis
+\family default
+-Einfügungen an die Stelle ein, an der das Literaturverzeichnis erscheinen
+ soll, wenn das Unterdokument selbständig ausgegeben wird.
+ Der entscheidende Punkt ist nun aber, dass Sie die Einfügung in einen Zweig
+ einfügen (
+\family sans
+Einfügen\SpecialChar menuseparator
+Zweig\SpecialChar menuseparator
+Neuen Zweig einfügen
+\family default
+).
+ Nennen Sie diesen bspw.
+ 
+\begin_inset Quotes gld
+\end_inset
 
-\begin_layout Plain Layout
+Unterdokument
+\begin_inset Quotes grd
+\end_inset
 
-http://wiki.lyx.org/FAQ/Unsorted#toc31
+.
+ In den Unterdokumenten aktivieren Sie nun diesen Zweig (
+\begin_inset Info
+type  "menu"
+arg   "dialog-show document"
+\end_inset
+
+
+\family sans
+\SpecialChar menuseparator
+Zweige
+\family default
+), im Hauptdokument deaktivieren Sie ihn (
+\begin_inset Info
+type  "menu"
+arg   "dialog-show document"
+\end_inset
+
+
+\family sans
+\SpecialChar menuseparator
+Zweige
+\family default
+).
+ In der Folge wird das Literaturverzeichnis des Unterdokuments von der Hauptdate
+i ignoriert, vom Unterdokument aber ausgegeben.
 \end_layout
+
+\begin_layout Standard
+Wenn Sie auch 
+\emph on
+im Hauptdokument
+\emph default
+ mehrere Literaturverzeichnisse haben wollen (z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ eines pro Unterdokument), lesen Sie bitte oben Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Mehrere-Literaturverzeichnisse"
 
 \end_inset
 
@@ -14327,7 +14525,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\family typewriter
 \begin_inset Quotes gld
 \end_inset
 
@@ -20419,12 +20616,12 @@ erzeugen
 
 \begin_layout Standard
 Der aufgerufene RCS-Befehl ist 
-\family typewriter
-ci -q -u -i -t-"<erste Beschreibung>"
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
- <Dateiname>
+\begin_layout LyX-Code
+
+\family typewriter
+ci -q -u -i -t-"<erste Beschreibung>" <Dateiname>
 \end_layout
 
 \begin_layout Standard
@@ -20589,29 +20786,26 @@ man rlog
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Revision info
+Revisionsinformationen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \SpecialChar LyX
- supports RCS version number, author name, date and time of last commit.
- All those are extracted from 
+ unterstützt RCS-Versionsnummer, Autorname, Datum und Uhrzeit des letzten
+ Eincheckens.
+ Diese Informationen werden über 
 \family typewriter
-rlog -r <file-name>
+rlog -r <Dateiname>
 \family default
-.
- For other details see 
+ gewonnen.
+ Für Einzelheiten siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:VCS-Revision-Information"
 
 \end_inset
 
- for details.
+.
 \end_layout
 
 \begin_layout Subsection
@@ -22961,23 +23155,33 @@ von
 Edmar Wienskoski Jr.
 
 \noun default
- (edmar-w-jr@technologist.com), aktualisiert von 
+ (
+\begin_inset CommandInset href
+LatexCommand href
+target "edmar-w-jr@technologist.com"
+type "mailto:"
+literal "false"
+
+\end_inset
+
+),
+\begin_inset Newline newline
+\end_inset
+
+aktualisiert von 
 \noun on
-Kay\SpecialChar softhyphen
-van
+Kayvan
 \noun default
  
 \noun on
 Sylvan
 \noun default
  (
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-kayvan@sylvan.com
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "kayvan@sylvan.com"
+type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -22991,20 +23195,36 @@ Einleitung
 \begin_layout Standard
 Zweck dieses Teils der Dokumentation ist es, Ihnen zu zeigen, wie Sie \SpecialChar LyX
  verwenden
- können, um sogenanntes Literarische Programmierung zu betreiben.
+ können, um so genannte 
+\emph on
+Literarische Programmierung
+\emph default
+ zu betreiben.
  Dabei wird vorausgesetzt, dass Sie sich mit dieser Programmiertechnik bereits
  auskennen und wissen, was mit 
 \emph on
 verknoten
 \emph default
- (tangling) und 
+ (
+\emph on
+\lang english
+tangling
+\emph default
+\lang ngerman
+) und 
 \emph on
 weben
 \emph default
- (weaving) gemeint ist.
- Wenn das nicht der Fall ist, sollten Sie dieses Kapitel überspringen oder
- sich anhand der weiter unten angegebenen Links im Web schlau machen – es
- gibt sehr viel gute Literatur zu diesem Thema, die von der geschichtlichen
+ (
+\emph on
+\lang english
+weaving
+\emph default
+\lang ngerman
+) gemeint ist.
+ Wenn das nicht der Fall ist, sollten Sie diesen Abschnitt überspringen
+ oder sich anhand der weiter unten angegebenen Links im Web schlau machen
+ – es gibt sehr viel gute Literatur zu diesem Thema, die von der historischen
  Entwicklung bis zu den aktuellsten Hinweisen für Hilfsprogramme reicht.
 \end_layout
 
@@ -23017,45 +23237,51 @@ Außerdem wird angenommen, dass Sie sich mit \SpecialChar LyX
 \end_layout
 
 \begin_layout Subsection
-Was ist Literarische Programmierung?
+Was ist 
+\emph on
+Literarische Programmierung
+\emph default
+?
 \end_layout
 
 \begin_layout Standard
-Aus dem 
+Aus den FAQ zum Thema 
 \emph on
-Literarische Programmierung FAQ
+Literarische Programmierung
 \emph default
- : 
+: 
 \end_layout
 
-\begin_layout Quotation
-Literarische Programmierung ist die Kombination von Dokumentation und Quelltext
- in einer einzigen Datei, und zwar in einer Art und Weise, in der sie von
- Menschen einfach gelesen werden kann.
- Solche Dokumente sollten sogar Spaß beim Lesen machen, ja sogar zum Lesen
- einladen.
- Generell vereinen derartige 
+\begin_layout Quote
+Literarische Programmierung ist die Verbindung von Dokumentation und Quelltext
+ in einer Form, die von Menschen einfach gelesen werden kann.
+ Solche Dokumente sollen Spaß beim Lesen machen, ja sogar zum Lesen einladen.
+ Generell vereinen 
 \emph on
 literarische
 \emph default
  Programme Quellcode und Dokumentation in einer einzigen Datei.
- Die Hilfsprogramme lesen dann diese Dateien und erzeugen daraus entweder
- die lesbare Dokumentation oder aber den kompilierbaren Programmcode.
- Der besondere WEB-Stil der Literarische Programmierung wurde von 
+ Literarische Programmwerkzeuge lesen dann diese Datei und erzeugen daraus
+ entweder die lesbare Dokumentation oder aber den kompilierbaren Programmcode.
+ Der besondere WEB-Stil der Literarischen Programmierung wurde von 
 \noun on
 D.
- E.
+\begin_inset space \thinspace{}
+\end_inset
+
+E.
  Knuth
 \noun default
  während der Entwicklung von \SpecialChar TeX
- kreiert.
+ geschaffen.
 \end_layout
 
 \begin_layout Standard
-Eine andere Stelle sagt:
+An anderer Stelle heißt es:
 \end_layout
 
 \begin_layout Quotation
+\noindent
 
 \emph on
 Wie unterscheidet sich Literarische Programmierung von normaler Dokumentation?
@@ -23076,13 +23302,14 @@ Automatische Unterstützung von Textsuche
 \end_layout
 
 \begin_layout Itemize
-Gesetzte Dokumentation, insbesondere bei Diagrammen und Mathematik
+Typographisch gestaltete Dokumentation, insbesondere hinsichtlich Diagrammen
+ und Mathematik
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-Jetzt, nachdem hoffentlich Ihre Neugier geweckt ist, sehen wir uns die Literatur
- an.
+Jetzt, da hoffentlich Ihre Neugier geweckt ist, stellen wir Ihnen etwas
+ Literatur zum Thema vor.
 \end_layout
 
 \begin_layout Subsubsection
@@ -23092,17 +23319,18 @@ Literaturhinweise
 \begin_layout Standard
 Alle FAQs für die Literarische Programmierung finden Sie hier: 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
-http://www.xmarks.com/site/shelob.ce.ttu.edu/daves/faq.html
+http://www.literateprogramming.com/lpfaq.pdf
 \end_layout
 
 \end_inset
 
 .
- Dieses FAQ zählt 23 (dreiundzwanzig!) unterschiedliche Hilfsprogramme auf.
+ Diese FAQs zählen 23 (dreiundzwanzig!) unterschiedliche Hilfsprogramme
+ auf.
  Manche davon sind ganz speziell für eine bestimmte Programmiersprache ausgelegt
 , andere sind da flexibler.
  Für \SpecialChar LyX
@@ -23119,7 +23347,29 @@ Die Dokumentation kann wahlweise in \SpecialChar LaTeX
 \end_layout
 
 \begin_layout Itemize
-Es besitzt eine offene Struktur, das heißt es kann leicht um neue Filter
+
+\family typewriter
+NoWeb
+\family default
+ besitzt eine offene Struktur, das heißt, es kann leicht um neue Filter
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+Filter
+\emph default
+ sind Programme, die einen Datenstrom einlesen und einen veränderten Datenstrom
+ ausgeben.
+ So kann bspw.
+ aus einer WEB-Datei (mit literarischem Code) eine Datei nur mit C-Programmcode
+ oder \SpecialChar LaTeX
+-Code werden.
+\end_layout
+
+\end_inset
+
  erweitert werden, die eine benötigte Bearbeitungsfunktion hinzufügen.
 \end_layout
 
@@ -23129,11 +23379,19 @@ Es gibt bereits eine gute Auswahl an bestehenden Filtern (HTML ist einer
 \end_layout
 
 \begin_layout Itemize
-Es ist freie Software.
+
+\family typewriter
+NoWeb
+\family default
+ ist freie Software.
 \end_layout
 
 \begin_layout Standard
-Das NoWeb-Paket finden Sie auf 
+Das 
+\family typewriter
+NoWeb
+\family default
+-Internetseite finden Sie unter 
 \begin_inset Flex URL
 status collapsed
 
@@ -23145,45 +23403,22 @@ http://www.cs.virginia.edu/~nr/noweb
 \end_inset
 
 .
- Von dort aus erreichen Sie auch viele andere, hochinteressante Links und
- sogar ein paar Beispiele für Programme, die mit Literarischer Programmierung
- erstellt wurden.
+ Dort finden Sie auch viele interessante Links und sogar ein paar Beispiele
+ für Programme, die mit Literarischer Programmierung erstellt wurden.
 \end_layout
 
 \begin_layout Subsection
-\begin_inset Argument 1
-status collapsed
-
-\begin_layout Plain Layout
-und Literarische Programmierung
-\end_layout
-
-\end_inset
-
 \SpecialChar LyX
- und Literarische Programmierung
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\noun on
-HHa
-\noun default
-: Wahrscheinlich ist das Folgende nicht mehr aktuell, aber ich kenne NoWeb
- nicht.
-\end_layout
-
-\end_inset
-
-
+ und Literarische Programmierung mit Noweb
 \end_layout
 
 \begin_layout Standard
-Um mit NoWeb zusammenzuarbeiten, waren einige Änderungen in \SpecialChar LyX
- notwendig.
- Diese wurden aber in einer Weise durchgeführt, die nicht auf NoWeb beschränkt
- sind.
+Die \SpecialChar LyX
+-Unterstützung für Literarische Programmierung verwendet den Konverter-Mecha
+nismus von \SpecialChar LyX
+.
+ Die Unterstützung wurde so implementiert, dass sie nicht auf NoWeb beschränkt
+ ist.
  Das bedeutet, dass es relativ einfach möglich sein sollte, ein anderes
  Hilfsprogramm für Literarische Programmierung zu verwenden, indem Sie einfach
  Ihre \SpecialChar LyX
@@ -23191,47 +23426,65 @@ Um mit NoWeb zusammenzuarbeiten, waren einige Änderungen in \SpecialChar LyX
 \end_layout
 
 \begin_layout Subsubsection
-Erstellen von Dokumentation und Quellcode
+Erstellen von Dokumentation und Quellcode (
+\emph on
+\lang english
+weaving
+\emph default
+\lang ngerman
+ und 
+\emph on
+\lang english
+tangling
+\emph default
+\lang ngerman
+)
 \end_layout
 
 \begin_layout Paragraph
-
-\lang english
-Using the noweb module
+Das Modul noweb verwenden
 \end_layout
 
 \begin_layout Standard
+Wenn Sie 
+\begin_inset Flex Code
+status collapsed
 
-\lang english
-If you have installed Noweb and \SpecialChar LyX
- successfully, whenever you open a new document,
- after you have chosen its document class, use the Document->Settings menu
- to add the 
-\begin_inset Quotes eld
+\begin_layout Plain Layout
+NoWeb
+\end_layout
+
 \end_inset
 
-noweb
-\begin_inset Quotes erd
+ und \SpecialChar LyX
+ erfolgreich installiert haben, ist das erste, was Sie tun müssen,
+ folgendes: Wann immer Sie ein neues Dokument beginnen, wählen Sie, nachdem
+ Sie die Klasse ausgewählt haben, das Modul 
+\family sans
+Noweb
+\family default
+ in 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show document"
 \end_inset
 
- module.
- If Noweb is correctly installed, when you click on the 
-\begin_inset Quotes eld
+ aus.
+ Falls 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NoWeb
+\end_layout
+
 \end_inset
 
-Modules
-\begin_inset Quotes erd
-\end_inset
-
- link, you will see the 
-\begin_inset Quotes eld
-\end_inset
-
-noweb
-\begin_inset Quotes erd
-\end_inset
-
- module in the available list and you can add it to your document.
+ richtig installiert ist, sehen Sie, wenn Sie auf 
+\family sans
+Module
+\family default
+ gehen, dieses Modul in der Liste der verfügbaren Module.
 \end_layout
 
 \begin_layout Paragraph
@@ -23240,22 +23493,29 @@ Die Eingabe von Programmcode
 
 \begin_layout Standard
 In \SpecialChar LyX
- verwenden Sie zur Eingabe von Programmcode den Umgebungstyp 
-\begin_inset Flex Noun
+ verwenden Sie zur Eingabe von Programmcode die benutzerdefinierte Einfügung
+ 
+\family sans
+Stück.
+
+\family default
+ 
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-Chunk
+NoWeb
 \end_layout
 
 \end_inset
 
-
-\family sans
-.
-
-\family default
- NoWeb schließt Chunks so ein:
+ schließt Stücke (
+\emph on
+\lang english
+chunks
+\emph default
+\lang ngerman
+) so ein:
 \end_layout
 
 \begin_layout LyX-Code
@@ -23294,18 +23554,12 @@ Das Problem dabei ist, dass alles, was zwischen
  steht, wörtlich genommen werden muss, das heißt \SpecialChar LyX
  muss daran gehindert werden,
  die Eingabe in seiner Weise zu interpretieren und zu verändern.
- Aus diesem Grund gibt es den Umgebungstyp 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-Chunk
-\end_layout
-
-\end_inset
-
+ Aus diesem Grund gibt es eben die Einfügung
+\family sans
+ Stück
+\family default
 .
- Er verhält sich wie eine normale Absatzumgebung, bietet aber zusätzlich
+ Sie verhält sich wie eine normale Texteinfügung, bietet aber zusätzlich
  die Möglichkeit, Leerzeichen beliebig zu verwenden.
 \end_layout
 
@@ -23319,16 +23573,10 @@ Hinweis: Sie können auch NoWebs
 \end_inset
 
 -Konstrukt in Ihren 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-Chunk
-\end_layout
-
-\end_inset
-
--Absätzen benutzen, um Einträge zu NoWebs Querverweisen hinzuzufügen:
+\family sans
+Stück
+\family default
+-Einfügungen benutzen, um Einträge zu NoWebs Querverweisen hinzuzufügen:
 \end_layout
 
 \begin_layout LyX-Code
@@ -23380,7 +23628,7 @@ DVI
 \family default
  oder was immer Sie verwenden, wenn Sie normale Dokumente in der Vorschau
  betrachten wollen.
- Weiter ist keine besondere Aktion notwendig.
+ Weiter ist nichts notwendig.
 \end_layout
 
 \begin_layout Standard
@@ -23411,8 +23659,7 @@ preferences
 \family typewriter
 
 \backslash
-literate_exten\SpecialChar softhyphen
-sion
+literate_extension
 \family default
  (standardmäßig 
 \family typewriter
@@ -23430,17 +23677,11 @@ sion
 Der einzige Unterschied ist bislang der Dateiname, es ist also keinerlei
  Sonderbehandlung seitens \SpecialChar LyX
  notwendig.
- Der Umgebungstyp 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-Chunk
-\end_layout
-
-\end_inset
-
-, den Sie zum Formatieren des Programmcodes verwendet haben, sorgt für die
+ Die Einfügung 
+\family sans
+Stück
+\family default
+, die Sie zum Formatieren des Programmcodes verwendet haben, sorgt für die
  korrekte Behandlung.
 \end_layout
 
@@ -23455,11 +23696,7 @@ NoWeb benutzen, gefolgt von NoWeb
 \begin_inset Formula $\rightarrow$
 \end_inset
 
-La
-\family sans
-TeX
-\family default
-, um die \SpecialChar LaTeX
+LaTeX, um die \SpecialChar LaTeX
 -Datei zu erzeugen.
 \begin_inset Foot
 status collapsed
@@ -23512,12 +23749,10 @@ Wenn Sie den Menüpunkt
 \family sans
 Datei\SpecialChar menuseparator
 Programm
-\begin_inset space ~
+\begin_inset space \space{}
 \end_inset
 
-er\SpecialChar softhyphen
-stel\SpecialChar softhyphen
-len
+erstellen
 \family default
  auswählen, wird wie oben in Schritt 1 eine \SpecialChar LaTeX
 -Datei erzeugt.
@@ -23531,149 +23766,155 @@ NoWeb->Program
 \end_layout
 
 \begin_layout Enumerate
-Das Konvertierprogramm selber.
+Das Konverterprogramm selber.
  Dieses führt die Umwandlung von einem Format ins andere durch (in diesem
  Fall von NoWeb in das Programm-Pseudo-Format).
 \end_layout
 
 \begin_layout Enumerate
 Der Parser der Fehlerdatei.
- Dieses Programm schreibt die Fehlermeldungen in ein Format um, das Lyx
- verstehen kann.
+ Dieses Programm schreibt die Fehlermeldungen in ein Format um, das \SpecialChar LyX
+ verstehen
+ kann.
  Damit kann \SpecialChar LyX
  Fehlerkästchen an die richtigen Stellen in der Datei schreiben.
 \end_layout
 
 \begin_layout Standard
-Der erste Teil, der 
+Der erste Teil des Konverterbefehls, 
 \family sans
-Befehl
+Konverter
 \family default
-, sollte den Eintrag 
+, hat den Eintrag 
+\end_layout
+
+\begin_layout LyX-Code
+
 \family typewriter
 build-script
 \begin_inset space ~
 \end_inset
 
 $$i
-\family default
- bekommen.
- Das bedeutet hauptsächlich, dass \SpecialChar LyX
+\end_layout
+
+\begin_layout Standard
+Dies veranlasst, dass \SpecialChar LyX
  
 \family typewriter
 build-script
 \family default
  (ein Programm oder Skript) mit dem Namen der NoWeb-Datei aufruft (normalerweise
- eine Datei im tmp-Verzeichnis von \SpecialChar LyX
+ eine Datei im temporären Verzeichnis von \SpecialChar LyX
 ).
 \end_layout
 
 \begin_layout Standard
-Dies ist eine Implementierung von 
+Hier ist eine Implementierung von 
 \family sans
 build-script
 \family default
 , die Sie in einem Verzeichnis in Ihrem Pfad einfügen können:
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
+\begin_layout LyX-Code
 
 \family sans
 #!/bin/sh
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 
 \family sans
 #
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 
 \family sans
 notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 NOWEB_OUTPUT_DIR=$2 sh
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
+Der zweite Teil des Konverterbefehls bestimmt die 
+\family sans
+Zusatz-Flags
+\family default
+, die so aussehen:
 \end_layout
 
-\begin_layout Standard
-
-\lang english
-The next part of the converter setting is the 
-\begin_inset Quotes gld
-\end_inset
-
-Flags
-\begin_inset Quotes grd
-\end_inset
-
- which is to be set to
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Quotes gld
-\end_inset
-
+\begin_layout LyX-Code
 
 \family typewriter
 parselog=$$s/scripts/listerrors
-\family default
-
-\begin_inset Quotes grd
-\end_inset
-
-.
-\begin_inset Newline newline
-\end_inset
-
-This will run any errors that are generated by the 
-\begin_inset Quotes gld
-\end_inset
-
-build-script
-\begin_inset Quotes grd
-\end_inset
-
- process through the 
-\begin_inset Quotes gld
-\end_inset
-
-listerrors
-\begin_inset Quotes grd
-\end_inset
-
- program.
 \end_layout
 
 \begin_layout Standard
+Das veranlasst, dass alle vom 
+\begin_inset Flex Code
+status collapsed
 
-\lang english
-The build will normally take place in \SpecialChar LyX
-'s temporary directory, so the files
- produced by the conversion will be in that directory.
+\begin_layout Plain Layout
+build-script
+\end_layout
+
+\end_inset
+
+ zurückgegebenen Fehlermeldungen vom Programm 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+listerrors
+\end_layout
+
+\end_inset
+
+ verarbeitet werden.
+\end_layout
+
+\begin_layout Standard
+Die Konvertierung findet üblicherweise in \SpecialChar LyX
+' temporären Verzeichnis statt,
+ die erzeugten Dateien finden sich also dort.
  \SpecialChar LyX
- will copy out what it regards as the `main' file, but the 
+ kopiert die Datei, die es als 
+\begin_inset Quotes gls
+\end_inset
+
+Hauptdatei
+\begin_inset Quotes grs
+\end_inset
+
+ betrachtet, beim Export in das Arbeitsverzeichnis.
+ Da der Konverter 
 \family typewriter
 Noweb->Program
 \family default
- conversion may produce several files, and so most of these would then be
- deleted when \SpecialChar LyX
- was closed.
- This is why we pass in the NOWEB_OUTPUT_DIR environment variable so that
- the build-script chunk can place the generated files in that location.
+ aber möglicherweise weitere wichtige Dateien produziert, die bei der Beendigung
+ von \SpecialChar LyX
+ gelöscht werden würden, übergeben wir die Umgebungsvariable 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+NOWEB_OUTPUT_DIR
+\end_layout
+
+\end_inset
+
+.
+ Das 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+build-script
+\end_layout
+
+\end_inset
+
+ kann die Dateien dann an diesem Ort sichern.
 \end_layout
 
 \begin_layout Paragraph
@@ -23682,14 +23923,23 @@ Build-Befehle im Dokument
 
 \begin_layout Standard
 Das letzte Stück für die Integration von \SpecialChar LyX
- und NoWeb ist das Chunk 
+ und NoWeb ist das 
 \family typewriter
 build-script
 \family default
 .
- Im allgemeinen sollten die Befehle zum Erzeugen Ihres Programms in einen
- eigenen Chunk eingebettet sein.
- Das obige NoWeb-spezifische 
+ Die Befehle zum Erzeugen Ihres Programms müssen in einen eigenen 
+\family sans
+Stück
+\family default
+ (
+\emph on
+\lang english
+chunk
+\emph default
+\lang ngerman
+) eingebettet sein.
+ Das oben erwähnte NoWeb-spezifische 
 \family typewriter
 build-script
 \family default
@@ -23697,16 +23947,32 @@ build-script
 \family typewriter
 notangle
 \family default
--Befehl, um nach diesem Chunk, ge\SpecialChar softhyphen
-nannt 
+-Befehl, um nach diesem spezifischen 
+\family sans
+Stück
+\family default
+, da ebenfalls 
 \family typewriter
 build-script
 \family default
-, zu suchen und startet ein Shellskript.
+ genannt wird, zu suchen.
+ Dann wird der Inhalt dieses Stücks in 
+\emph on
+\lang english
+Bash
+\emph default
+\lang ngerman
+ verarbeitet.
 \end_layout
 
 \begin_layout Standard
-Solch ein Chunk sieht typischerweise so aus:
+Solch ein 
+\family typewriter
+build-script
+\family sans
+-Stück
+\family default
+ sieht typischerweise so aus:
 \end_layout
 
 \begin_layout LyX-Code
@@ -23757,16 +24023,16 @@ listerrors.lyx
 \family typewriter
 Literate.lyx
 \family default
- mit Beispielen, wie das 
-\family typewriter
-listerrors
-\family default
--Programm implementiert werden kann und all diese Teile zusammenwirken,
  oder 
 \family typewriter
 noweb2lyx.lyx
 \family default
  an.
+ Sie finden dort Beispiele, wie das 
+\family typewriter
+listerrors
+\family default
+-Programm implementiert werden kann und sehen, wie alle Teile zusammenwirken.
  Diese Dateien finden Sie unter 
 \family sans
 Datei
@@ -23782,10 +24048,10 @@ Datei
 Beispiele
 \family default
 .
- Interessanterweise zeigen diese drei Dateien die sprachunabhängige Unterstützun
-g von \SpecialChar LyX
- für Literarische Programmierung, denn sie wurden in Python, C und
- Perl geschrieben.
+ Diese drei Dateien illustrieren auch die sprachunabhängige Unterstützung
+ von \SpecialChar LyX
+ für Literarische Programmierung, denn sie wurden in drei verschiedenen
+ Sprachen (Python, C und Perl) geschrieben.
 \end_layout
 
 \begin_layout Subsubsection
@@ -23794,29 +24060,22 @@ g von \SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
+Die Unterstützung für Literarische Programmierung wird über 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show prefs"
+\end_inset
 
-\lang english
-All the Literate Programming support is configured by the 
+ im Abschnitt 
 \family sans
-Tools\SpecialChar menuseparator
-Preferences
+Datei-Handhabung
 \family default
- panel in the 
-\begin_inset Quotes eld
-\end_inset
-
-File Handling
-\begin_inset Quotes erd
-\end_inset
-
- tab.
- The important parts are:
+ konfiguriert.
+ Die wichtigsten Einstellungen sind:
 \end_layout
 
 \begin_layout Description
-
-\lang english
-the
+Das
 \begin_inset space ~
 \end_inset
 
@@ -23828,135 +24087,91 @@ NoWeb
 \begin_inset Quotes erd
 \end_inset
 
-
-\begin_inset space ~
-\end_inset
-
-format Set up via the File Formats tab, this is where the Noweb-specific
- pieces are set up.
- The 
+-Format wird in 
 \family sans
-GUI Name
+Dateiformate
 \family default
- is set to 
+ konfiguriert.
+ Der
+\family sans
+ Name
+\family default
+ lautet per Voreinstellung 
 \family typewriter
 NoWeb
 \family default
-, the file extension is set to 
+, die Dateiendung 
 \family typewriter
 .nw
 \family default
 .
- This tells \SpecialChar LyX
- to create a file with a 
+ Dadurch erzeugt \SpecialChar LyX
+ eine Datei mit Endung 
 \family typewriter
 .nw
 \family default
- extension in the first step of the conversion process.
+ im ersten Schritt des Konvertierungsprozesses.
 \end_layout
 
 \begin_layout Description
-
-\lang english
-the
+Das
 \begin_inset space ~
 \end_inset
 
 
-\family sans
-Program
-\family default
-
-\begin_inset space ~
+\begin_inset Quotes gld
 \end_inset
 
-format This is an empty format whose sole purpose is to be the endpoint
- of a conversion (which then allows us to set up a converter for it).
+Programm
+\begin_inset Quotes grd
+\end_inset
+
+-Format ist in der Voreinstellung leer.
+ Sein einziger Zweck ist es, als Ziel der Konvertierung zu dienen (wodurch
+ dann ein weiterer notwendiger Konverter definiert werden kann).
 \end_layout
 
 \begin_layout Description
-
-\family sans
-\lang english
-NoWeb
-\family default
-->
-\family sans
-\SpecialChar LaTeX
-
-\family default
- This converter performs the 
-\begin_inset Quotes eld
+NoWeb->\SpecialChar LaTeX
+ Dieser Konverter führt das 
+\begin_inset Quotes gld
 \end_inset
 
+
+\lang english
 weaving
-\begin_inset Quotes erd
+\lang ngerman
+
+\begin_inset Quotes grd
 \end_inset
 
- of the literate document.
- For Noweb, it is set to 
-\begin_inset Quotes eld
-\end_inset
-
-
+ der literarischen Dokuments aus.
+ Für Noweb ist die Voreinstellung 
 \family typewriter
 noweave -delay -index $$i > $$o
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-
 \end_layout
 
 \begin_layout Description
+NoWeb->Program Dieser Konverter führt das 
+\begin_inset Quotes gld
+\end_inset
 
-\family sans
+
 \lang english
-NoWeb
-\family default
-->
-\family sans
-Program
-\family default
- This performs the 
-\begin_inset Quotes eld
+tangling
+\lang ngerman
+
+\begin_inset Quotes grd
 \end_inset
 
-tangling step
-\begin_inset Quotes erd
-\end_inset
-
-.
- As stated above, the Converter is set to 
-\begin_inset Quotes eld
-\end_inset
-
-
+ durch.
+ Wie oben ausgeführt ist der Konverter wie folgt voreingestellt: 
 \family typewriter
 build-script $$i
 \family default
- $$r
-\begin_inset Quotes erd
-\end_inset
-
-, with Flags set to
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Quotes eld
-\end_inset
-
-
+ $$r, Zusatz-Flags: 
 \family typewriter
 parselog=$$s/scripts/listerrors
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Subsubsection
@@ -23965,20 +24180,12 @@ Erweiterungen zur Fehlersuche
 
 \begin_layout Standard
 In den \SpecialChar LyX
--Server wurde eine neue Funktion implementiert, und zwar 
-\begin_inset Quotes gld
-\end_inset
-
-
+-Server wurde eine neue Funktion implementiert: 
 \family typewriter
-server-goto- file-row
+server-goto-file-row
 \family default
-
-\begin_inset Quotes grd
-\end_inset
-
 .
- Sie kann insbesondere von 
+ Sie kann von 
 \family typewriter
 ddd
 \family default
@@ -23986,11 +24193,11 @@ ddd
 \family typewriter
 gdb
 \family default
- oder einem anderen Debugger aus verwendet werden.
+ oder einem anderen Debugger verwendet werden.
 \end_layout
 
 \begin_layout Standard
-Beim Debugging mit 
+Bei der Fehlersuche mit 
 \family typewriter
 ddd
 \family default
@@ -24031,7 +24238,11 @@ ddd
 \begin_inset Quotes gld
 \end_inset
 
+
+\lang english
 Edit Sources
+\lang ngerman
+
 \begin_inset Quotes grd
 \end_inset
 
@@ -24039,36 +24250,26 @@ Edit Sources
 \end_layout
 
 \begin_layout Standard
-Sie können die neue \SpecialChar LyX
--Server- und die -Funktion benutzen, wenn Sie 
+Sie können die genannte \SpecialChar LyX
+-Server-Funktion benutzen und 
 \begin_inset Quotes gld
 \end_inset
 
+
+\lang english
 Edit Sources
+\lang ngerman
+
 \begin_inset Quotes grd
 \end_inset
 
  folgenden Wert geben:
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
+\begin_layout LyX-Code
 
-
-\end_layout
-
-\begin_layout Standard
-
-\family sans
+\size footnotesize
 echo "LYXCMD:monitor:server-goto-file-row:@FILE@ @LINE@" >~/.lyxpipe.in
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -24085,68 +24286,33 @@ Umschalt+Strg+V
 \family typewriter
 ddd
 \family default
--Fenster) und 
+-Fenster); 
 \family typewriter
 ddd
 \family default
  sendet die entsprechenden Informationen über den Server an \SpecialChar LyX
 , und im \SpecialChar LyX
 -Fenster
- wird der Cursor auf dieselbe Zeile gesetzt, an der auch  gerade war.
- Kein mühsames Suchen nach der entsprechenden Stelle mehr.
+ wird der Cursor auf die entsprechende Zeile gesetzt.
+ Sie müssen nicht mehr mühsam nach der entsprechenden Stelle suchen.
 \end_layout
 
 \begin_layout Standard
 Um diese Fähigkeit benutzen zu können, müssen Sie allerdings den \SpecialChar LyX
 -Server
- aktiviert haben (ist standardmäßig deaktiviert).
- 
-\lang english
-You can enable it in 
-\family sans
-Preferences
-\family default
- (tabs 
-\family sans
-Inputs
-\family default
-, 
-\family sans
-Paths
-\family default
-) by entering in the 
-\family sans
-\SpecialChar LyX
-server pipe
-\family default
- a path like
-\begin_inset Newline newline
+ aktiviert haben (er ist standardmäßig deaktiviert).
+ Wie Sie das tun, lesen Sie in Abschnitt
+\begin_inset space ~
 \end_inset
 
 
-\begin_inset Quotes eld
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:LyXServer-starten"
+
 \end_inset
 
-
-\family typewriter
-/home/<your-home-directory>/.lyx/lyxpipe
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Read the \SpecialChar LyX
- server documentation in the 
-\emph on
-Customization Manual
-\emph default
- for further information.
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -24154,8 +24320,8 @@ Werkzeugleistenerweiterungen
 \end_layout
 
 \begin_layout Standard
-Es gibt sechs neue Einträge für die Werkzeugleiste, fünf davon sind für
- verschiedene Absatzumgebungen: 
+Es gibt sechs neue Einträge, die Sie in die Werkzeugleiste einfügen können,
+ vier davon sind für verschiedene Absatzumgebungen: 
 \family sans
 Standard
 \family default
@@ -24167,13 +24333,13 @@ Abschnitt
 \family sans
 LaTeX
 \family default
-, 
+, und 
 \family sans
 LyX-Code
 \family default
-, und 
+, einer für die benutzerdefinierte Einfügung 
 \family sans
-Chunk
+Stück
 \family default
 .
  Der sechste ist für den Menüpunkt 
@@ -24200,85 +24366,57 @@ DVI aktualisieren
 DVI anzeigen
 \family default
 .
- Das sieht in 
-\family typewriter
-preferences
-\family default
- dann so aus:
+ Das sieht dann so aus:
 \end_layout
 
 \begin_layout LyX-Code
-
-\backslash
-begin_toolbar
+Toolbar
 \end_layout
 
 \begin_layout LyX-Code
-
-\backslash
-layouts
+  Layouts
 \end_layout
 
 \begin_layout LyX-Code
-
-\backslash
-add layout Standard
+  Icon "layout Standard"
 \end_layout
 
 \begin_layout LyX-Code
-
-\backslash
-add layout Section
+  Icon "layout Section"
 \end_layout
 
 \begin_layout LyX-Code
-
-\backslash
-add layout \SpecialChar LaTeX
-
+  Icon "layout \SpecialChar LaTeX
+"
 \end_layout
 
 \begin_layout LyX-Code
-
-\backslash
-add layout \SpecialChar LyX
--Code
+  Icon "layout \SpecialChar LyX
+-Code"
 \end_layout
 
 \begin_layout LyX-Code
-
-\backslash
-add layout Chunk
+  Icon "flex-insert Chunk"
 \end_layout
 
 \begin_layout LyX-Code
-
-\backslash
-separator
+  Separator
 \end_layout
 
 \begin_layout LyX-Code
-
-\backslash
-add buffer-view
+  Icon "buffer-view"
 \end_layout
 
 \begin_layout LyX-Code
-
-\backslash
-add buffer-typeset
+  Icon "buffer-typeset"
 \end_layout
 
 \begin_layout LyX-Code
-
-\backslash
-add build-program
+  Icon "build-program"
 \end_layout
 
 \begin_layout LyX-Code
-
-\backslash
-separator
+  Separator
 \end_layout
 
 \begin_layout LyX-Code
@@ -24294,9 +24432,7 @@ separator
 \end_layout
 
 \begin_layout LyX-Code
-
-\backslash
-end_toolbar
+End
 \end_layout
 
 \begin_layout Subsubsection
@@ -24309,37 +24445,26 @@ Viele der von \SpecialChar LyX
 \family sans
 Werkzeuge\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
-Aussehen\SpecialChar menuseparator
-Far\SpecialChar softhyphen
-ben
+Aussehen und Handhabung\SpecialChar menuseparator
+Farben
 \family default
  den eigenen Wünschen angepasst werden.
- 
-\lang english
-One of the things that bothers people is the \SpecialChar LaTeX
- font color.
- The default color is red, since the chunks uses \SpecialChar LaTeX
- font, and there is a lot
- of chunks in literate documents, you may get tired of seeing everything
- in red.
- You can change it by going to the tabs 
-\family sans
-Look&Feel
-\family default
-, 
-\family sans
-Colors.
+ Manche Leute stört die Farbe des \SpecialChar LaTeX
+-Codes.
+ Die Voreinstellung ist Rot, und da die Stücke \SpecialChar LaTeX
+-Code-Schrift verwenden stört
+ sie das viele Rot vielleicht, wenn Sie viel literarische Stücke in Ihrem
+ Dokument haben.
+ In dem genannten Abschnitt können Sie die Farbe ändern.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The next thing is the visible presence of the newline character in the screen.
- You can choose the color of this particular character and make it blend
- in the background.
- I recommend you choosing a color that is close to the background but not
- equal, that way you still can see it is there, but it is not bothering
- you anymore.
+Ein weitere Punkt ist die visuelle Darstellung des Zeilenumbruchs auf dem
+ Bildschirm.
+ Sie können sie Farbe hierfür ändern und das Zeichen dadurch mehr in den
+ Hintergrund treten lassen.
+ Wir empfehlen eine Farbe, die nah an der Hintergrundfarbe ist, aber dennoch
+ sichtbar.
 \end_layout
 
 \begin_layout Subsection
@@ -24362,9 +24487,9 @@ knitr.lyx
 \emph default
  und im 
 \emph on
-Sweave
+Sweave-
 \emph default
- Handbuch (Menü 
+Handbuch (Menü 
 \family sans
 Hilfe\SpecialChar menuseparator
 Spezielle Handbücher
