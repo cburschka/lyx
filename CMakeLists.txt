@@ -795,7 +795,12 @@ else()
 endif()
 
 if(LYX_USE_STD_REGEX)
-  # Nothing to do
+  # Set only include path.
+  # Use internal boost, which is known to exist
+  # we don't need any libraries
+  set(Lyx_Boost_Libraries)
+  add_definitions(-DBOOST_USER_CONFIG=<config.h>)
+  include_directories(${TOP_SRC_DIR}/3rdparty/boost)
 else()
   # Using boost-regex
   if(LYX_EXTERNAL_BOOST)
