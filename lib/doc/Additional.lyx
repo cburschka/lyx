@@ -27,6 +27,12 @@
 
 % extra space for tables
 \newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
+
+% Improve line breaking
+\tolerance 1414
+\hbadness 1414
+\emergencystretch 1.5em
+\hfuzz 0.3pt
 \end_preamble
 \options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
@@ -1788,17 +1794,49 @@ hbox
 loves
 \emph default
  to spew these out.
- They are warnings about lines that were too long and run past the right
+ 
+\change_inserted -712698321 1501222056
+It seems to generate at least one of these messages for just about any document
+ you write.
+ 
+\change_unchanged
+They are warnings about lines that were too long and run past the right
  margin.
- Almost always, this is unnoticeable in the final output.
- (It can be just a point or two.) Or, only one or two characters extend past
- the margin.
- \SpecialChar LaTeX
+
+\change_inserted -712698321 1501222913
+ This happens if \SpecialChar LaTeX
+ does not find a reasonable way to break the lines (notoriously
+ often with typewriter font, since this does not allow for automatic break
+ points).
+
+\change_unchanged
+ 
+\change_deleted -712698321 1501221633
+Almost always
+\change_inserted -712698321 1501221635
+In many cases
+\change_unchanged
+, this is unnoticeable in the final output.
+ (It can be just a point or two.) 
+\change_deleted -712698321 1501221644
+Or, only one or two characters extend past the margin
+\change_inserted -712698321 1501222092
+Sometimes, however, the lines run rather visibly into the margin; something
+ you will not want to have in your final print
+\change_unchanged
+.
+ 
+\change_deleted -712698321 1501222038
+\SpecialChar LaTeX
  seems to generate at least one of these messages for just about any document
  you write.
+\change_unchanged
+
 \begin_inset Newline newline
 \end_inset
 
+
+\change_deleted -712698321 1501222960
 You can ignore these messages.
  Your eyes will tell you if there's a problem with something that's too
  wide; just look at the output.
@@ -1824,8 +1862,125 @@ Settings
 \end_inset
 
 
+\change_inserted -712698321 1501223436
+There are several global ways to try to minimize the overfull lines.
+ Clicking 
+\family sans
+Enable micro-typographic extensions
+\family default
+ in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Fonts
+\family default
+ might already improve things a lot.
+ Furthermore, \SpecialChar LaTeX
+ code such as the following in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Preamble
+\family default
+ usually reduces the overfull lines drastically (we use this in the preamble
+ of this document):
 \end_layout
 
+\begin_deeper
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1501223447
+
+\backslash
+tolerance 1414
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+hbadness 1414
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+emergencystretch 1.5em
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+hfuzz 0.3pt
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1501223436
+In some cases, however, you eventually have to rewrite the text to get the
+ line breaking right.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501223436
+For more information, see 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501223436
+
+http://www.tex.ac.uk/FAQ-overfull.html
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1501223436
+In any case, you should check the respective lines, at least for the final
+ version of your document.
+ Your eyes will tell you if there's a problem with something that's too
+ wide.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501223436
+You can also enable the `draft' option in 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1501223436
+Document\SpecialChar menuseparator
+Settings
+\end_layout
+
+\end_inset
+
+, and then \SpecialChar LaTeX
+ will draw a black box in the margin of lines that are overfull.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 \begin_inset Flex Code
 status collapsed
@@ -1843,10 +1998,24 @@ hbox
 \end_inset
 
 Not quite as common as its cousin.
+
+\change_inserted -712698321 1501223875
+ This happens again if
+\change_unchanged
  \SpecialChar LaTeX
- seems to like to print lines that are a bit too wide as opposed to ones
+ 
+\change_inserted -712698321 1501223913
+does not find a reasonable break point and consequently generates too loose
+ lines.
+ 
+\change_deleted -712698321 1501223919
+seems to like to print lines that are a bit too wide as opposed to ones
  that are a bit too narrow.
  We have no idea why.
+\change_inserted -712698321 1501223940
+As with the overfull lines, you should check if this is a visible problem.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize
