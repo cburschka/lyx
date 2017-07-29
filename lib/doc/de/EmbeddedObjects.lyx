@@ -41142,6 +41142,31 @@ listings
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ Es wird nicht empfohlen die Option 
+\family typewriter
+-shell-escape
+\family default
+ zu verwenden.
+ Sie funktioniert, ist aber ein großes Sicherheitsproblem.
+ Die \SpecialChar LyX
+-Entwickler diskutieren, wie damit umzugehen ist.
+ Diese Notiz kann erst geändert werden, bis eine Entscheidung getroffen
+ wurde.
+\end_layout
+
+\begin_layout Plain Layout
+=====
+\end_layout
+
+\begin_layout Plain Layout
 Um 
 \series bold
 minted
@@ -41281,6 +41306,11 @@ PDF
 (XeTeX)
 \family default
  gemacht werden.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
