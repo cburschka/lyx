@@ -16942,40 +16942,22 @@ Additional Features
 \end_layout
 
 \begin_layout Subsubsection
-Quot
-\change_deleted -712698321 1482667523
-es
-\change_inserted -712698321 1482669265
-ation Marks
-\change_unchanged
-
+Quotation Marks
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Typography ! Quot
-\change_deleted -712698321 1482669122
-es
-\change_inserted -712698321 1482669123
-ation marks
-\change_unchanged
-
+Typography ! Quotation marks
 \end_layout
 
 \end_inset
 
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
-Quot
-\change_deleted -712698321 1482669129
-es
-\change_inserted -712698321 1482669204
-ation marks
-\change_unchanged
- | see
+Quotation marks | see
 \begin_inset ERT
 status collapsed
 
@@ -17007,32 +16989,9 @@ status collapsed
 
 \begin_layout Standard
 \SpecialChar LyX
- usually sets quot
-\change_deleted -712698321 1482666231
-es
-\change_inserted -712698321 1482666233
-ation marks
-\change_unchanged
- correctly.
- Specifically, it will 
-\change_deleted -712698321 1482667043
-use
-\change_inserted -712698321 1482667044
-insert
-\change_unchanged
- an opening 
-\change_deleted -712698321 1482666244
-quote
-\change_inserted -712698321 1482666245
-mark
-\change_unchanged
- at the beginning of quoted text, and use a closing 
-\change_deleted -712698321 1482666248
-quote
-\change_inserted -712698321 1482666249
-mark
-\change_unchanged
- at the end.
+ usually sets quotation marks correctly.
+ Specifically, it will insert an opening mark at the beginning of quoted
+ text, and use a closing mark at the end.
  For example, 
 \begin_inset Quotes eld
 \end_inset
@@ -17054,15 +17013,7 @@ You can specify what character the
 \family sans
 "
 \family default
- key produces 
-\change_inserted -712698321 1482669340
-by 
-\change_unchanged
-using the sub
-\change_inserted -712698321 1482667059
--
-\change_unchanged
-menu 
+ key produces by using the submenu 
 \family sans
 Language
 \family default
@@ -17081,48 +17032,24 @@ Document ! Settings
 
 \end_inset
 
- dialog 
-\change_deleted -712698321 1482667133
-in the box
-\change_inserted -712698321 1482669342
-and switching the
-\change_unchanged
- 
+ dialog and switching the 
 \family sans
 Quote Style
-\change_inserted -712698321 1482667108
-
 \family default
  (note that \SpecialChar LyX
- makes a sensible proposal for the selected main language)
-\change_unchanged
-.
- There are 
-\change_deleted -712698321 1482666221
-six
-\change_inserted -712698321 1482756786
-14
-\change_unchanged
- choices:
+ makes a sensible proposal for the selected main language).
+ There are 14
+\begin_inset space ~
+\end_inset
+
+choices:
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 \noindent
 
-\change_deleted -712698321 1482666593
-
 \family sans
-\begin_inset Quotes eld
-\end_inset
-
-Text
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1482666647
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -17147,35 +17074,15 @@ inner
 \end_inset
 
 
-\change_unchanged
-
 \family default
- 
-\change_deleted -712698321 1482666593
-Use quotes like
-\change_inserted -712698321 1482665592
-Produces
-\change_unchanged
- 
+ Produces 
 \begin_inset Quotes eld
 \end_inset
 
-th
-\change_inserted -712698321 1482665595
-e
-\change_deleted -712698321 1482666593
-i
-\change_unchanged
-s
-\change_inserted -712698321 1482665605
-e outer
-\change_unchanged
-
+these outer
 \begin_inset Quotes erd
 \end_inset
 
-
-\change_inserted -712698321 1482665637
  and 
 \begin_inset Quotes els
 \end_inset
@@ -17189,26 +17096,12 @@ these inner
 \end_inset
 
 g., in the US)
-\change_unchanged
-
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
-\change_deleted -712698321 1482666660
-
 \family sans
-\begin_inset Quotes sld
-\end_inset
-
-Text
-\begin_inset Quotes srd
-\end_inset
-
-
-\change_inserted -712698321 1482666671
-
 \begin_inset Quotes sld
 \end_inset
 
@@ -17233,14 +17126,8 @@ inner
 \end_inset
 
 
-\change_unchanged
-
 \family default
- 
-\change_deleted -712698321 1482666660
-Use quotes like ”this”
-\change_inserted -712698321 1482665692
-Produces 
+ Produces 
 \begin_inset Quotes sld
 \end_inset
 
@@ -17261,26 +17148,12 @@ these inner
 \end_inset
 
 g., in Sweden)
-\change_unchanged
-
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
-\change_deleted -712698321 1482666683
-
 \family sans
-\begin_inset Quotes gld
-\end_inset
-
-Text
-\begin_inset Quotes grd
-\end_inset
-
-
-\change_inserted -712698321 1482666696
-
 \begin_inset Quotes gld
 \end_inset
 
@@ -17305,22 +17178,8 @@ inner
 \end_inset
 
 
-\change_unchanged
-
 \family default
- 
-\change_deleted -712698321 1482666683
-Use quotes like 
-\begin_inset Quotes gld
-\end_inset
-
-this
-\begin_inset Quotes grd
-\end_inset
-
-
-\change_inserted -712698321 1482665749
-Produces 
+ Produces 
 \begin_inset Quotes gld
 \end_inset
 
@@ -17341,26 +17200,12 @@ these inner
 \end_inset
 
 g., in Germany)
-\change_unchanged
-
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
-\change_deleted -712698321 1482666707
-
 \family sans
-\begin_inset Quotes pld
-\end_inset
-
-Text
-\begin_inset Quotes prd
-\end_inset
-
-
-\change_inserted -712698321 1482666716
-
 \begin_inset Quotes pld
 \end_inset
 
@@ -17385,22 +17230,8 @@ inner
 \end_inset
 
 
-\change_unchanged
-
 \family default
- 
-\change_deleted -712698321 1482666707
-Use quotes like 
-\begin_inset Quotes pld
-\end_inset
-
-this
-\begin_inset Quotes prd
-\end_inset
-
-
-\change_inserted -712698321 1482665786
-Produces 
+ Produces 
 \begin_inset Quotes pld
 \end_inset
 
@@ -17421,26 +17252,12 @@ these inner
 \end_inset
 
 g., in Poland)
-\change_unchanged
-
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
-\change_deleted -712698321 1482666725
-
 \family sans
-\begin_inset Quotes cld
-\end_inset
-
-Text
-\begin_inset Quotes crd
-\end_inset
-
-
-\change_inserted -712698321 1482666730
-
 \begin_inset Quotes cld
 \end_inset
 
@@ -17465,22 +17282,8 @@ inner
 \end_inset
 
 
-\change_unchanged
-
 \family default
- 
-\change_deleted -712698321 1482666725
-Use quotes like 
-\begin_inset Quotes cld
-\end_inset
-
-this
-\begin_inset Quotes crd
-\end_inset
-
-
-\change_inserted -712698321 1482665816
-Produces 
+ Produces 
 \begin_inset Quotes cld
 \end_inset
 
@@ -17501,26 +17304,12 @@ these inner
 \end_inset
 
 g., in Switzerland)
-\change_unchanged
-
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
-\change_deleted -712698321 1482666741
-
 \family sans
-\begin_inset Quotes ald
-\end_inset
-
-Text
-\begin_inset Quotes ard
-\end_inset
-
-
-\change_inserted -712698321 1482666747
-
 \begin_inset Quotes ald
 \end_inset
 
@@ -17545,22 +17334,8 @@ inner
 \end_inset
 
 
-\change_unchanged
-
 \family default
- 
-\change_deleted -712698321 1482666741
-Use quotes like 
-\begin_inset Quotes ald
-\end_inset
-
-this
-\begin_inset Quotes ard
-\end_inset
-
-
-\change_inserted -712698321 1482665851
-Produces 
+ Produces 
 \begin_inset Quotes ald
 \end_inset
 
@@ -17585,8 +17360,6 @@ g., in Denmark)
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
-
-\change_inserted -712698321 1482666768
 
 \family sans
 \begin_inset Quotes qrd
@@ -17635,8 +17408,6 @@ these inner
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
-
-\change_inserted -712698321 1482666784
 
 \family sans
 \begin_inset Quotes bld
@@ -17690,8 +17461,6 @@ g., in Great Britain)
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
-\change_inserted -712698321 1482666803
-
 \family sans
 \begin_inset Quotes fld
 \end_inset
@@ -17744,8 +17513,6 @@ g., in France)
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
-\change_inserted -712698321 1482668207
-
 \family sans
 \begin_inset Quotes ild
 \end_inset
@@ -17793,14 +17560,10 @@ these inner
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1482668407
 Maybe you wonder why one does not simply use only outer marks in this case,
  since these look identical to the inner marks.
  The answer is that you cannot easily switch to another style then (where
  the inner marks differ).
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -17810,8 +17573,6 @@ Maybe you wonder why one does not simply use only outer marks in this case,
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
-
-\change_inserted -712698321 1482666837
 
 \family sans
 \begin_inset Quotes rld
@@ -17865,8 +17626,6 @@ g., in Russia)
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
-\change_inserted -712698321 1482756796
-
 \family sans
 \begin_inset Quotes wld
 \end_inset
@@ -17914,8 +17673,6 @@ these inner
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
-
-\change_inserted -712698321 1482757086
 \begin_inset Quotes jld
 \end_inset
 
@@ -17976,12 +17733,8 @@ g., in Japan)
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1482757158
 Note that these characters are just emulated with similar-looking math symbols
  in many encodings that do not cover these glyphs.
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -17991,8 +17744,6 @@ Note that these characters are just emulated with similar-looking math symbols
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
-
-\change_inserted -712698321 1482757171
 \begin_inset Quotes kld
 \end_inset
 
@@ -18053,8 +17804,6 @@ g., in North Korea and China)
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1482757171
 Note that these characters are just emulated with similar-looking math symbols
  in many encodings that do not cover these glyphs.
 \end_layout
@@ -18062,28 +17811,14 @@ Note that these characters are just emulated with similar-looking math symbols
 \end_inset
 
 
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted -712698321 1482667281
-For single
-\change_inserted -712698321 1482667281
-Inner
-\change_unchanged
- quot
-\change_deleted -712698321 1482666272
-es
-\change_inserted -712698321 1482667398
-ation marks
+Inner quotation marks
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1482668512
 In many writing cultures, these are single quotation marks.
  But as the British and French styles show, this is not necessarily the
  case (and specifically the British style shows that 
@@ -18120,17 +17855,11 @@ outer
 \end_inset
 
  quotation marks.
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
- 
-\change_inserted -712698321 1482668702
-for quotations inside quotations (and other tasks in some languages, such
+ for quotations inside quotations (and other tasks in some languages, such
  as 
 \begin_inset Quotes els
 \end_inset
@@ -18139,35 +17868,21 @@ scare quotes
 \begin_inset Quotes ers
 \end_inset
 
-) 
-\change_deleted -712698321 1482667343
-you have to use
-\change_inserted -712698321 1482667350
-can be obtained by means of
-\change_unchanged
- the shortcut 
+) can be obtained by means of the shortcut 
 \begin_inset Info
 type  "shortcut"
 arg   "quote-insert inner"
 \end_inset
 
-
-\change_inserted -712698321 1482668731
  and via the 
 \family sans
 Insert\SpecialChar menuseparator
 Special Characters
 \family default
- menu
-\change_unchanged
-.
-\change_inserted -712698321 1482667602
-
+ menu.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1482668992
 By default, the quotation mark styles are persistent.
  That is to say, a quotation mark maintains the style that was current when
  it was inserted, even if the document-wide style changes.
@@ -18194,8 +17909,6 @@ g., if your publisher requests a different style).
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1482667904
 Individual quotation marks (i.
 \begin_inset space \thinspace{}
 \end_inset
@@ -18203,8 +17916,6 @@ Individual quotation marks (i.
 e., their level [inner, outer], side [opening, closing], and style) can be
  easily switched by a context menu that pops up if you right-click on a
  mark.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection

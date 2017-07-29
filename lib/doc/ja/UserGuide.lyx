@@ -14481,23 +14481,825 @@ status collapsed
 \family sans
 "
 \family default
-」鍵の振舞いを変更することができます．選択肢は次の 6つです．
+」鍵の振舞いを変更することができます
+\lang english
+(note that \SpecialChar LyX
+ makes a sensible proposal for the selected main language)
+\lang japanese
+．選択肢は次の 14つです．
 \end_layout
 
 \begin_layout Labeling
-\labelwidthstring 00.00.0000
+\labelwidthstring <<Outer>> and <<inner>>:
+\noindent
 
 \family sans
+\lang english
 \begin_inset Quotes eld
 \end_inset
 
-Text
+Outer
 \begin_inset Quotes erd
 \end_inset
 
 
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes els
+\end_inset
+
+inner
+\begin_inset Quotes ers
+\end_inset
+
+
 \family default
- 
+ Produces 
+\begin_inset Quotes eld
+\end_inset
+
+these outer
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes els
+\end_inset
+
+these inner
+\begin_inset Quotes ers
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in the US)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\family sans
+\lang english
+\begin_inset Quotes sld
+\end_inset
+
+Outer
+\begin_inset Quotes sld
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes sls
+\end_inset
+
+inner
+\begin_inset Quotes srs
+\end_inset
+
+
+\family default
+ Produces 
+\begin_inset Quotes sld
+\end_inset
+
+these outer
+\begin_inset Quotes sld
+\end_inset
+
+ and 
+\begin_inset Quotes sls
+\end_inset
+
+these inner
+\begin_inset Quotes srs
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in Sweden)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\family sans
+\lang english
+\begin_inset Quotes gld
+\end_inset
+
+Outer
+\begin_inset Quotes grd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes gls
+\end_inset
+
+inner
+\begin_inset Quotes grs
+\end_inset
+
+
+\family default
+ Produces 
+\begin_inset Quotes gld
+\end_inset
+
+these outer
+\begin_inset Quotes grd
+\end_inset
+
+ and 
+\begin_inset Quotes gls
+\end_inset
+
+these inner
+\begin_inset Quotes grs
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in Germany)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\family sans
+\lang english
+\begin_inset Quotes pld
+\end_inset
+
+Outer
+\begin_inset Quotes prd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes pls
+\end_inset
+
+inner
+\begin_inset Quotes prs
+\end_inset
+
+
+\family default
+ Produces 
+\begin_inset Quotes pld
+\end_inset
+
+these outer
+\begin_inset Quotes prd
+\end_inset
+
+ and 
+\begin_inset Quotes pls
+\end_inset
+
+these inner
+\begin_inset Quotes prs
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in Poland)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\family sans
+\lang english
+\begin_inset Quotes cld
+\end_inset
+
+Outer
+\begin_inset Quotes crd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes cls
+\end_inset
+
+inner
+\begin_inset Quotes crs
+\end_inset
+
+
+\family default
+ Produces 
+\begin_inset Quotes cld
+\end_inset
+
+these outer
+\begin_inset Quotes crd
+\end_inset
+
+ and 
+\begin_inset Quotes cls
+\end_inset
+
+these inner
+\begin_inset Quotes crs
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in Switzerland)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\family sans
+\lang english
+\begin_inset Quotes ald
+\end_inset
+
+Outer
+\begin_inset Quotes ard
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes als
+\end_inset
+
+inner
+\begin_inset Quotes ars
+\end_inset
+
+
+\family default
+ Produces 
+\begin_inset Quotes ald
+\end_inset
+
+these outer
+\begin_inset Quotes ard
+\end_inset
+
+ and 
+\begin_inset Quotes als
+\end_inset
+
+these inner
+\begin_inset Quotes ars
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in Denmark)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\family sans
+\lang english
+\begin_inset Quotes qrd
+\end_inset
+
+Outer
+\begin_inset Quotes qrd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes qls
+\end_inset
+
+inner
+\begin_inset Quotes qls
+\end_inset
+
+
+\family default
+ Produces 
+\begin_inset Quotes qrd
+\end_inset
+
+these outer
+\begin_inset Quotes qrd
+\end_inset
+
+ and 
+\begin_inset Quotes qls
+\end_inset
+
+these inner
+\begin_inset Quotes qls
+\end_inset
+
+ quotation marks (so-called plain or non-typographical quotation marks)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\family sans
+\lang english
+\begin_inset Quotes bld
+\end_inset
+
+Outer
+\begin_inset Quotes brd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes bls
+\end_inset
+
+inner
+\begin_inset Quotes brs
+\end_inset
+
+
+\family default
+ Produces 
+\begin_inset Quotes bld
+\end_inset
+
+these outer
+\begin_inset Quotes brd
+\end_inset
+
+ and 
+\begin_inset Quotes bls
+\end_inset
+
+these inner
+\begin_inset Quotes brs
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in Great Britain)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\family sans
+\lang english
+\begin_inset Quotes fld
+\end_inset
+
+Outer
+\begin_inset Quotes frd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes fls
+\end_inset
+
+inner
+\begin_inset Quotes frs
+\end_inset
+
+
+\family default
+ Produces 
+\begin_inset Quotes fld
+\end_inset
+
+these outer
+\begin_inset Quotes frd
+\end_inset
+
+ and 
+\begin_inset Quotes fls
+\end_inset
+
+these inner
+\begin_inset Quotes frs
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in France)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\family sans
+\lang english
+\begin_inset Quotes ild
+\end_inset
+
+Outer
+\begin_inset Quotes ird
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes ils
+\end_inset
+
+inner
+\begin_inset Quotes irs
+\end_inset
+
+
+\family default
+ Produces 
+\begin_inset Quotes ild
+\end_inset
+
+these outer
+\begin_inset Quotes ird
+\end_inset
+
+ and 
+\begin_inset Quotes ils
+\end_inset
+
+these inner
+\begin_inset Quotes irs
+\end_inset
+
+ quotation marks (another style common in France)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Maybe you wonder why one does not simply use only outer marks in this case,
+ since these look identical to the inner marks.
+ The answer is that you cannot easily switch to another style then (where
+ the inner marks differ).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\family sans
+\lang english
+\begin_inset Quotes rld
+\end_inset
+
+Outer
+\begin_inset Quotes rrd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes rls
+\end_inset
+
+inner
+\begin_inset Quotes rrs
+\end_inset
+
+
+\family default
+ Produces 
+\begin_inset Quotes rld
+\end_inset
+
+these outer
+\begin_inset Quotes rrd
+\end_inset
+
+ and 
+\begin_inset Quotes rls
+\end_inset
+
+these inner
+\begin_inset Quotes rrs
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in Russia)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\family sans
+\lang english
+\begin_inset Quotes wld
+\end_inset
+
+Outer
+\begin_inset Quotes wrd
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Quotes wls
+\end_inset
+
+inner
+\begin_inset Quotes wrs
+\end_inset
+
+
+\family default
+ Produces 
+\begin_inset Quotes wld
+\end_inset
+
+these outer
+\begin_inset Quotes wrd
+\end_inset
+
+ and 
+\begin_inset Quotes wls
+\end_inset
+
+these inner
+\begin_inset Quotes wrs
+\end_inset
+
+ quotation marks (another style common in Sweden)
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\lang english
+\begin_inset Quotes jld
+\end_inset
+
+
+\family sans
+Outer
+\family default
+
+\begin_inset Quotes jrd
+\end_inset
+
+
+\family sans
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\family default
+
+\begin_inset Quotes jls
+\end_inset
+
+
+\family sans
+inner
+\family default
+
+\begin_inset Quotes jrs
+\end_inset
+
+ Produces 
+\begin_inset Quotes jld
+\end_inset
+
+these outer
+\begin_inset Quotes jrd
+\end_inset
+
+ and 
+\begin_inset Quotes jls
+\end_inset
+
+these inner
+\begin_inset Quotes jrs
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in Japan)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Note that these characters are just emulated with similar-looking math symbols
+ in many encodings that do not cover these glyphs.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring <<Outer>> and <<inner>>:
+
+\lang english
+\begin_inset Quotes kld
+\end_inset
+
+
+\family sans
+Outer
+\family default
+
+\begin_inset Quotes krd
+\end_inset
+
+
+\family sans
+
+\begin_inset space ~
+\end_inset
+
+and
+\begin_inset space ~
+\end_inset
+
+
+\family default
+
+\begin_inset Quotes kls
+\end_inset
+
+
+\family sans
+inner
+\family default
+
+\begin_inset Quotes krs
+\end_inset
+
+ Produces 
+\begin_inset Quotes kld
+\end_inset
+
+these outer
+\begin_inset Quotes krd
+\end_inset
+
+ and 
+\begin_inset Quotes kls
+\end_inset
+
+these inner
+\begin_inset Quotes krs
+\end_inset
+
+ quotation marks (as common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in North Korea and China)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Note that these characters are just emulated with similar-looking math symbols
+ in many encodings that do not cover these glyphs.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Inner quotation marks
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+In many writing cultures, these are single quotation marks.
+ But as the British and French styles show, this is not necessarily the
+ case (and specifically the British style shows that 
+\begin_inset Quotes eld
+\end_inset
+
+outer
+\begin_inset Quotes erd
+\end_inset
+
+ does not necessarily mean 
 \begin_inset Quotes eld
 \end_inset
 
@@ -14505,201 +15307,89 @@ double
 \begin_inset Quotes erd
 \end_inset
 
-または 
+).
+ This is why we call them 
 \begin_inset Quotes els
 \end_inset
 
-single
+inner
 \begin_inset Quotes ers
 \end_inset
 
-という引用符を用います
+ as opposed to 
+\begin_inset Quotes eld
+\end_inset
+
+outer
+\begin_inset Quotes erd
+\end_inset
+
+ quotation marks.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-\begin_inset Quotes sld
 \end_inset
 
-Text
-\begin_inset Quotes srd
+ for quotations inside quotations (and other tasks in some languages, such
+ as 
+\begin_inset Quotes els
 \end_inset
 
-
-\family default
- 
-\begin_inset Quotes sld
-\end_inset
-
-this
-\begin_inset Quotes srd
-\end_inset
-
- または 'this
+scare quotes
 \begin_inset Quotes ers
 \end_inset
 
-という引用符を用います
-\end_layout
+) can be obtained by means of the shortcut 
+\begin_inset Info
+type  "shortcut"
+arg   "quote-insert inner"
+\end_inset
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
+ and via the 
 \family sans
-\begin_inset Quotes gld
-\end_inset
-
-Text
-\begin_inset Quotes grd
-\end_inset
-
-
+Insert\SpecialChar menuseparator
+Special Characters
 \family default
- 
-\begin_inset Quotes gld
-\end_inset
-
-this
-\begin_inset Quotes grd
-\end_inset
-
-または 
-\begin_inset Quotes gls
-\end_inset
-
-this
-\begin_inset Quotes grs
-\end_inset
-
-という引用符を用います
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-\begin_inset Quotes pld
-\end_inset
-
-Text
-\begin_inset Quotes prd
-\end_inset
-
-
-\family default
- 
-\begin_inset Quotes pld
-\end_inset
-
-this
-\begin_inset Quotes prd
-\end_inset
-
- または 
-\begin_inset Quotes pls
-\end_inset
-
-this
-\begin_inset Quotes prs
-\end_inset
-
-という引用符を用います
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-\begin_inset Quotes cld
-\end_inset
-
-Text
-\begin_inset Quotes crd
-\end_inset
-
-
-\family default
- 
-\begin_inset Quotes cld
-\end_inset
-
-this
-\begin_inset Quotes crd
-\end_inset
-
-または 
-\begin_inset Quotes cls
-\end_inset
-
-this
-\begin_inset Quotes crs
-\end_inset
-
-という引用符を用います
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family sans
-\begin_inset Quotes ald
-\end_inset
-
-Text
-\begin_inset Quotes ard
-\end_inset
-
-
-\family default
- 
-\begin_inset Quotes ald
-\end_inset
-
-this
-\begin_inset Quotes ard
-\end_inset
-
-または 
-\begin_inset Quotes als
-\end_inset
-
-this
-\begin_inset Quotes ars
-\end_inset
-
-という引用符を用います
+ menu.
 \end_layout
 
 \begin_layout Standard
-シングルクウォートを使うには，
-\begin_inset Flex Ruby
-status collapsed
 
-\begin_layout Plain Layout
-捷径
-\begin_inset Argument post:1
-status collapsed
+\lang english
+By default, the quotation mark styles are persistent.
+ That is to say, a quotation mark maintains the style that was current when
+ it was inserted, even if the document-wide style changes.
+ This allows you to enter marks of different style.
+ If you check the setting 
+\family sans
+Use dynamic quotation marks
+\family default
+ in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Language
+\family default
+, however, special quotation marks will be inserted (in the LyX window,
+ they appear in a special color).
+ These marks will automatically adapt to the main style (and its changes).
+ Such quotation marks make it easy to alter the quotation mark style in
+ one step (e.
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_layout Plain Layout
-ショートカット
+g., if your publisher requests a different style).
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+Individual quotation marks (i.
+\begin_inset space \thinspace{}
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Info
-type  "shortcut"
-arg   "quote-insert single"
-\end_inset
-
-を用いなくてはなりません．
+e., their level [inner, outer], side [opening, closing], and style) can be
+ easily switched by a context menu that pops up if you right-click on a
+ mark.
 \end_layout
 
 \begin_layout Subsection
