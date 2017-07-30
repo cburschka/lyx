@@ -9030,12 +9030,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -9048,6 +9050,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9080,6 +9083,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -32421,7 +32425,11 @@ inverted 0
 status open
 
 \begin_layout Standard
-Question: Qui a été le premier prix Nobel de physique ?
+
+\series bold
+Question:
+\series default
+ Qui a été le premier prix Nobel de physique ?
 \end_layout
 
 \end_inset
@@ -32435,7 +32443,11 @@ inverted 0
 status collapsed
 
 \begin_layout Standard
-Réponse: Wilhelm Conrad Röntgen
+
+\series bold
+Réponse:
+\series default
+ Wilhelm Conrad Röntgen
 \end_layout
 
 \end_inset
@@ -32520,6 +32532,59 @@ Examen-Question-Réponse
  si les deux branches sont actives.
  De cette façon, vous pouvez exporter différentes versions du document sans
  trop de peine.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+There are also inverted branch insets, whose content is output just in case
+ the branch is 
+\emph on
+not
+\emph default
+ activated.
+ This make it easy to add alternative text for different versions of a document.
+ To control whether a particular inset is inverted, right-click on the inset
+ button and choose 
+\family sans
+Invert
+\begin_inset space ~
+\end_inset
+
+Inset
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch Réponse
+inverted 1
+status open
+
+\begin_layout Standard
+
+\series bold
+\lang english
+No answer:
+\series default
+ Because the 
+\begin_inset Quotes eld
+\end_inset
+
+Answer
+\begin_inset Quotes erd
+\end_inset
+
+ branch is deactivated.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

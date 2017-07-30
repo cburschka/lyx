@@ -7176,12 +7176,14 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 これは原文儘(verbatim)環境です．
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 この下の2行は空白行です．
 \end_layout
 
@@ -7194,6 +7196,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 右記の各文字を始め，ほぼすべての文字が使えます．例："%&$§#~'`
 \backslash
 }][{|
@@ -7216,6 +7219,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -26261,7 +26265,11 @@ inverted 0
 status open
 
 \begin_layout Standard
-質問：最初のノーベル物理学賞受賞者は誰でしょう？
+
+\series bold
+質問：
+\series default
+最初のノーベル物理学賞受賞者は誰でしょう？
 \end_layout
 
 \end_inset
@@ -26275,7 +26283,11 @@ inverted 0
 status collapsed
 
 \begin_layout Standard
-解答：Wilhelm Conrad R
+
+\series bold
+解答：
+\series default
+Wilhelm Conrad R
 \begin_inset ERT
 status collapsed
 
@@ -26311,6 +26323,59 @@ ontgenです．
 ファイル名後置句」が有効な場合には，「質問」派生枝と「解答」派生枝がともに無効ならば，PDFに書き出したファイルは「Exam.pdf」となり，「質問」派生枝のみが
 有効ならば「Exam-質問.pdf」，「解答」派生枝のみが有効ならば，「Exam-解答.pdf」，両方が有効ならば，「Exam-質問-解答.pdf」となります．これに
 よって，あまり労力をかけずに，文書の違う版をたやすく書き出すことができます．
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+There are also inverted branch insets, whose content is output just in case
+ the branch is 
+\emph on
+not
+\emph default
+ activated.
+ This make it easy to add alternative text for different versions of a document.
+ To control whether a particular inset is inverted, right-click on the inset
+ button and choose 
+\family sans
+Invert
+\begin_inset space ~
+\end_inset
+
+Inset
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch 解答
+inverted 1
+status open
+
+\begin_layout Standard
+
+\series bold
+\lang english
+No answer:
+\series default
+ Because the 
+\begin_inset Quotes eld
+\end_inset
+
+Answer
+\begin_inset Quotes erd
+\end_inset
+
+ branch is deactivated.
+\end_layout
+
+\end_inset
+
+
 \begin_inset VSpace bigskip
 \end_inset
 

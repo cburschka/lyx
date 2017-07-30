@@ -8559,12 +8559,14 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
+
 Esto es entorno Literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8577,6 +8579,7 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
+
 Casi todo está permitido en entorno Literal:"%&$§#~'`
 \backslash
 }][{|
@@ -8601,6 +8604,7 @@ con la diferencia de que los espacios aparecen en la salida como el carácter
 \end_layout
 
 \begin_layout Verbatim*
+
 Esto es entorno Literal*.
 \end_layout
 
@@ -31259,7 +31263,11 @@ inverted 0
 status open
 
 \begin_layout Standard
-Pregunta: ¿Quién fue el primer Nobel de Física?
+
+\series bold
+Pregunta:
+\series default
+ ¿Quién fue el primer Nobel de Física?
 \end_layout
 
 \end_inset
@@ -31273,7 +31281,11 @@ inverted 0
 status collapsed
 
 \begin_layout Standard
-Respuesta: Wilhelm Conrad Röntgen
+
+\series bold
+Respuesta:
+\series default
+ Wilhelm Conrad Röntgen
 \end_layout
 
 \end_inset
@@ -31377,6 +31389,59 @@ Examen-Pregunta-Respuesta.pdf
  si ambas ramas están activas.
  Esto ayuda a exportar fácilmente diferentes versiones del documento sin
  mucha molestia.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+There are also inverted branch insets, whose content is output just in case
+ the branch is 
+\emph on
+not
+\emph default
+ activated.
+ This make it easy to add alternative text for different versions of a document.
+ To control whether a particular inset is inverted, right-click on the inset
+ button and choose 
+\family sans
+Invert
+\begin_inset space ~
+\end_inset
+
+Inset
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch Respuesta
+inverted 1
+status open
+
+\begin_layout Standard
+
+\series bold
+\lang english
+No answer:
+\series default
+ Because the 
+\begin_inset Quotes eld
+\end_inset
+
+Answer
+\begin_inset Quotes erd
+\end_inset
+
+ branch is deactivated.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

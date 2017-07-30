@@ -30946,7 +30946,11 @@ inverted 0
 status open
 
 \begin_layout Standard
-Frage: Wer war der erste Physik-Nobelpreis-Gewinner?
+
+\series bold
+Frage:
+\series default
+ Wer war der erste Physik-Nobelpreis-Gewinner?
 \end_layout
 
 \end_inset
@@ -30960,7 +30964,11 @@ inverted 0
 status collapsed
 
 \begin_layout Standard
-Antwort: Wilhelm Conrad Röntgen
+
+\series bold
+Antwort:
+\series default
+ Wilhelm Conrad Röntgen
 \end_layout
 
 \end_inset
@@ -30990,34 +30998,48 @@ Zweige
  aktiv waren.
  Dies hilft um verschiedene Versionen einer Datei zu exportieren ohne den
  Überblick zu verlieren.
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Ab LyX 2.3.0 gibt es auch 
-\begin_inset Quotes gld
-\end_inset
-
-umgekehrte
-\begin_inset Quotes grd
-\end_inset
-
- Zweig-Einfügungen, deren Inhalt gerade dann ausgegeben wird, wenn der Zweig
- 
+Es gibt auch umgekehrte Zweig-Einfügungen, deren Inhalt gerade dann ausgegeben
+ wird, wenn der Zweig 
 \emph on
 nicht
 \emph default
  aktiviert ist.
- 
-\begin_inset Branch Frage
+ Dadurch kann leicht alternativer Text für verschiedene Versionen eines
+ Dokuments eingegeben werden.
+ Um zu schauen, ob eine spezifische Einfügung umgekehrt ist, klicken Sie
+ mit der rechten Maustaste auf den Knopf der Einfügung und wählen 
+\family sans
+Einfügung
+\begin_inset space ~
+\end_inset
+
+umkehren
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch Antwort
 inverted 1
 status open
 
 \begin_layout Standard
-Zum Beispiel wird dieser Text nur ausgegeben, wenn der Zweig 
+
+\series bold
+Keine Antwort:
+\series default
+ Weil der Zweig 
 \begin_inset Quotes gld
 \end_inset
 
-Frage
+Antwort
 \begin_inset Quotes grd
 \end_inset
 
@@ -31027,25 +31049,7 @@ Frage
 
 \end_inset
 
-Dadurch kann leicht alternativer Text für verschiedene Versionen eines Dokuments
- eingegeben werden.
- Um zu kontrollieren, ob eine spezifische Einfügung 
-\begin_inset Quotes gld
-\end_inset
 
-umgekehrt
-\begin_inset Quotes grd
-\end_inset
-
- ist, klicken Sie mit der rechten Maustaste auf den Knopf der Einfügung
- und wählen Sie 
-\family sans
-Einfügung umkehren
-\family default
-.
-\end_layout
-
-\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -31053,7 +31057,7 @@ Einfügung umkehren
 \end_layout
 
 \begin_layout Standard
-Um konditionale Ausgaben zu erzeugen, wo keine Zweige angegeben werden können
+Um konditionale Ausgaben zu erzeugen, wo keine Zweige angegeben werden können,
  wie in Formeln, können spezielle \SpecialChar LaTeX
 -Definitionen für jeden Zweig angegeben
  werden.
@@ -31169,10 +31173,8 @@ inverted 0
 status collapsed
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 

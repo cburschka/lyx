@@ -146,7 +146,6 @@ enumitem
 \html_css_as_file 0
 \html_be_strict true
 \author -712698321 "Jürgen Spitzmüller"
-\author 424524441 "rgheck"
 \end_header
 
 \begin_body
@@ -8338,12 +8337,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8356,6 +8357,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8379,6 +8381,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -18086,13 +18089,7 @@ fest
 \begin_layout Subsection
 \SpecialChar LyX
  and \SpecialChar LaTeX
- 
-\change_deleted -712698321 1482669270
-l
-\change_inserted -712698321 1482669270
-L
-\change_unchanged
-ogos
+ Logos
 \begin_inset Index idx
 status collapsed
 
@@ -31848,7 +31845,11 @@ inverted 0
 status open
 
 \begin_layout Standard
-Question: Who was the first physics Nobel prize winner?
+
+\series bold
+Question:
+\series default
+ Who was the first physics Nobel prize winner?
 \end_layout
 
 \end_inset
@@ -31862,7 +31863,11 @@ inverted 0
 status collapsed
 
 \begin_layout Standard
-Answer: Wilhelm Conrad Röntgen
+
+\series bold
+Answer:
+\series default
+ Wilhelm Conrad Röntgen
 \end_layout
 
 \end_inset
@@ -31965,69 +31970,56 @@ Exam-Question-Answer.pdf
 
  if both branches were active.
  This helps you to export different versions of your document easily.
-\change_inserted 424524441 1468296009
+\begin_inset VSpace bigskip
+\end_inset
+
 
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 424524441 1468297080
-As of LyX 2.3.0, there are also 
-\begin_inset Quotes eld
-\end_inset
-
-inverted
-\begin_inset Quotes erd
-\end_inset
-
- branch insets, whose content is output just in case the branch is 
+There are also inverted branch insets, whose content is output just in case
+ the branch is 
 \emph on
 not
 \emph default
  activated.
- 
-\begin_inset Branch Question
+ This make it easy to add alternative text for different versions of a document.
+ To control whether a particular inset is inverted, right-click on the inset
+ button and choose 
+\family sans
+Invert
+\begin_inset space ~
+\end_inset
+
+Inset
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch Answer
 inverted 1
 status open
 
 \begin_layout Standard
 
-\change_inserted 424524441 1468296217
-For example, this material will only appear when the Question branch is
- deactivated.
-\change_unchanged
+\series bold
+No answer:
+\series default
+ Because the 
+\begin_inset Quotes eld
+\end_inset
 
+Answer
+\begin_inset Quotes erd
+\end_inset
+
+ branch is deactivated.
 \end_layout
 
 \end_inset
 
- This make it easy to add alternative text for different versions of a document.
- To control whether a particular inset is 
-\begin_inset Quotes eld
-\end_inset
 
-inverted
-\begin_inset Quotes erd
-\end_inset
-
-, right-click on the inset button and choose 
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_unchanged
-Invert Inset
-\change_inserted 424524441 1468297080
-
-\begin_inset Quotes erd
-\end_inset
-
-.
-\change_deleted 424524441 1468296150
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -32151,7 +32143,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
