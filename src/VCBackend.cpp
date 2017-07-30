@@ -430,7 +430,8 @@ string RCS::revisionInfo(LyXVC::RevisionInfo const info)
 			return rev_date_cache_;
 		case LyXVC::Time:
 			return rev_time_cache_;
-		default: ;
+		default:
+			break;
 	}
 
 	return string();
@@ -1102,7 +1103,8 @@ string CVS::revisionInfo(LyXVC::RevisionInfo const info)
 			return rev_date_cache_;
 		case LyXVC::Time:
 			return rev_time_cache_;
-		default: ;
+		default:
+			break;
 		}
 	}
 	return string();
@@ -1666,8 +1668,8 @@ string SVN::revisionInfo(LyXVC::RevisionInfo const info)
 			return rev_date_cache_;
 		case LyXVC::Time:
 			return rev_time_cache_;
-		default: ;
-
+		default:
+			break;
 	}
 
 	return string();
@@ -2135,8 +2137,8 @@ string GIT::revisionInfo(LyXVC::RevisionInfo const info)
 			return rev_date_cache_;
 		case LyXVC::Time:
 			return rev_time_cache_;
-		default: ;
-
+		default:
+			break;
 	}
 
 	return string();
