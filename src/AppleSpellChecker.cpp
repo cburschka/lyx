@@ -37,7 +37,6 @@ struct AppleSpellChecker::Private
 
 	/// language map
 	map<string, string> languageMap;
-
 };
 
 
@@ -107,7 +106,7 @@ void AppleSpellChecker::insert(WordLangTuple const & word)
 {
 	string const word_str = to_utf8(word.word());
 	AppleSpeller_learn(d->speller, word_str.c_str());
-	LYXERR(Debug::GUI, "learn word: \"" << word.word() << "\"") ;
+	LYXERR(Debug::GUI, "learn word: \"" << word.word() << "\"");
 	advanceChangeNumber();
 }
 
@@ -117,7 +116,7 @@ void AppleSpellChecker::remove(WordLangTuple const & word)
 {
 	string const word_str = to_utf8(word.word());
 	AppleSpeller_unlearn(d->speller, word_str.c_str());
-	LYXERR(Debug::GUI, "unlearn word: \"" << word.word() << "\"") ;
+	LYXERR(Debug::GUI, "unlearn word: \"" << word.word() << "\"");
 	advanceChangeNumber();
 }
 
@@ -127,7 +126,7 @@ void AppleSpellChecker::accept(WordLangTuple const & word)
 {
 	string const word_str = to_utf8(word.word());
 	AppleSpeller_ignore(d->speller, word_str.c_str());
-	LYXERR(Debug::GUI, "ignore word: \"" << word.word() << "\"") ;
+	LYXERR(Debug::GUI, "ignore word: \"" << word.word() << "\"");
 	advanceChangeNumber();
 }
 
@@ -155,15 +154,15 @@ bool AppleSpellChecker::hasDictionary(Language const * lang) const
 	if (result)
 		return result;
 
-	result = AppleSpeller_hasLanguage(d->speller,lang->code().c_str());
+	result = AppleSpeller_hasLanguage(d->speller, lang->code().c_str());
 	if (result) {
 		d->languageMap[lang->lang()] = lang->code();
 	} else {
-		result = AppleSpeller_hasLanguage(d->speller,lang->lang().c_str());
+		result = AppleSpeller_hasLanguage(d->speller, lang->lang().c_str());
 		if (result)
 			d->languageMap[lang->lang()] = lang->lang();
 	}
-	LYXERR(Debug::GUI, "has dictionary: " << lang->lang() << " = " << result) ;
+	LYXERR(Debug::GUI, "has dictionary: " << lang->lang() << " = " << result);
 	return result;
 }
 
