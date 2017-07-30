@@ -5,20 +5,20 @@
 # German Poo Caaman~o <gpoo@ubiobio.cl>, 2001.
 # Alfredo Braunstein <abraunst@ictp.trieste.it>, 2002, 2003.
 # Eulogio Serradilla <eulogio.sr@terra.es>, 2003, 2004, 2005, 2006, 2007.
-# Ignacio García <ignacio.gmorales@gmail.com>, 2008.
+# Ignacio García <ignacio.gmorales@gmail.com>, 2008 - 2017.
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 2.2\n"
+"Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2017-06-13 02:09+0200\n"
-"PO-Revision-Date: 2016-02-15 09:44+0100\n"
+"PO-Revision-Date: 2017-07-30 23:16+0200\n"
 "Last-Translator: Ignacio García <ignacio.gmorales@gmail.com>\n"
 "Language-Team: Spanish <lyx-docs@lists.lyx.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 2.0.3\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:33
 msgid "Version"
@@ -84,9 +84,8 @@ msgstr ""
 #: src/frontends/qt4/ui/BibitemUi.ui:88 src/frontends/qt4/ui/CitationUi.ui:368
 #: src/frontends/qt4/ui/HyperlinkUi.ui:80 src/frontends/qt4/ui/NomenclUi.ui:72
 #: src/frontends/qt4/ui/PrintindexUi.ui:74
-#, fuzzy
 msgid "Li&teral"
-msgstr "Literal"
+msgstr "Li&teral"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:26
 msgid "Citation Style"
@@ -105,9 +104,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/BiblioUi.ui:75
-#, fuzzy
 msgid "&Variant:"
-msgstr "Variación:"
+msgstr "&Variación:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:94
 msgid "Provides available cite style variants."
@@ -115,7 +113,6 @@ msgstr ""
 
 #: src/frontends/qt4/ui/BiblioUi.ui:118 src/frontends/qt4/GuiPrefs.cpp:826
 #: src/frontends/qt4/GuiPrefs.cpp:959
-#, fuzzy
 msgid "Opt&ions:"
 msgstr "Opc&iones:"
 
@@ -124,9 +121,8 @@ msgid "Here you can enter further options of the bibliography package"
 msgstr ""
 
 #: src/frontends/qt4/ui/BiblioUi.ui:154
-#, fuzzy
 msgid "Biblatex &citation style:"
-msgstr "E&stilo de cita:"
+msgstr "Biblatex &estilo de cita:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:164
 msgid "The style that determines the layout of the citations"
@@ -184,9 +180,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/BiblioUi.ui:294
-#, fuzzy
 msgid "&Reset"
-msgstr "Reiniciar"
+msgstr "&Reiniciar"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:305
 msgid "Select this if you want to split your bibliography into sections"
@@ -402,9 +397,8 @@ msgid "Add bibliography to &TOC"
 msgstr "Añadir bibliografía al I&G"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:231
-#, fuzzy
 msgid "O&ptions:"
-msgstr "O&pción:"
+msgstr "O&pciónes:"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:241
 msgid ""
@@ -640,9 +634,8 @@ msgid "Select your branch"
 msgstr "Seleccionar rama"
 
 #: src/frontends/qt4/ui/BranchUi.ui:37
-#, fuzzy
 msgid "Inverted"
-msgstr "Convertidores"
+msgstr "Invertido"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25
 msgid "&New:[[branch]]"
@@ -1005,9 +998,8 @@ msgid "Close"
 msgstr "Cerrar"
 
 #: src/frontends/qt4/ui/CitationUi.ui:27 src/frontends/qt4/ui/RefUi.ui:63
-#, fuzzy
 msgid "&Filter:"
-msgstr "Filtro:"
+msgstr "&Filtro:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:48
 msgid "Select the fields on which the filter applies"
@@ -1030,9 +1022,8 @@ msgid "Click for more filter options"
 msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:96
-#, fuzzy
 msgid "O&ptions"
-msgstr "Opciones"
+msgstr "O&pciones"
 
 #: src/frontends/qt4/ui/CitationUi.ui:116
 msgid "A&vailable Citations:"
@@ -1055,21 +1046,18 @@ msgid "Move the selected citation down (Ctrl-Down)"
 msgstr "Mover abajo la cita seleccionada (Ctrl-Abajo)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:229
-#, fuzzy
 msgid "Selected &Citations:"
 msgstr "Citas &seleccionadas:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:269
-#, fuzzy
 msgid "Formatting"
-msgstr "For&mato"
+msgstr "Formato"
 
 #: src/frontends/qt4/ui/CitationUi.ui:279
 msgid "Citation st&yle:"
 msgstr "E&stilo de cita:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:289 src/frontends/qt4/GuiCitation.cpp:298
-#, fuzzy
 msgid "Text befo&re:"
 msgstr "Tex&to delante:"
 
@@ -1106,7 +1094,6 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/CitationUi.ui:391
-#, fuzzy
 msgid "Force upcas&ing"
 msgstr "Forzar ma&yúsculas"
 
@@ -2349,9 +2336,8 @@ msgid "&Quote style:"
 msgstr "E&stilo de comillas:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:84
-#, fuzzy
 msgid "Language pa&ckage:"
-msgstr "Pa&quete de idiomas:"
+msgstr "Pa&quete de idioma:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:94
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:52
@@ -2371,14 +2357,12 @@ msgid "Encoding"
 msgstr "Codificación"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:147
-#, fuzzy
 msgid "Lan&guage default"
 msgstr "I&dioma predeterminado"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:170
-#, fuzzy
 msgid "Othe&r:"
-msgstr "&Otros:"
+msgstr "Ot&ros:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:190
 msgid ""
@@ -2849,14 +2833,12 @@ msgid "Nomenclature"
 msgstr "Nomenclatura"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:22
-#, fuzzy
 msgid "Sy&mbol:"
-msgstr "&Símbolo:"
+msgstr "Sí&mbolo:"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:39
-#, fuzzy
 msgid "Des&cription:"
-msgstr "Descripción:"
+msgstr "Des&cripción:"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:56
 msgid "Sort &as:"
@@ -3999,9 +3981,8 @@ msgstr ""
 "Indicador opcional del tamaño del papel (-paper) para algunos visores DVI"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:107
-#, fuzzy
 msgid "P&rocessor:"
-msgstr "Pr&ocesador:"
+msgstr "P&rocesador:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:130
 msgid "BibTeX command and options"
@@ -4013,9 +3994,8 @@ msgid "Processor for &Japanese:"
 msgstr "Procesador para &japonés:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:150
-#, fuzzy
 msgid "Options:"
-msgstr "Opc&iones:"
+msgstr "Opciones:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:160
 msgid "Specific BibTeX command and options for pLaTeX (Japanese)"
@@ -4039,7 +4019,6 @@ msgid "CheckTeX start options and flags"
 msgstr "Indicadores y opciones de inicio de CheckTeX"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:299
-#, fuzzy
 msgid "&CheckTeX command:"
 msgstr "Comando Chec&kTeX:"
 
@@ -4439,7 +4418,6 @@ msgstr ""
 "\"Personalizado\"."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:40
-#, fuzzy
 msgid "Avai&lable indexes:"
 msgstr "Ín&dices disponibles:"
 
@@ -4653,9 +4631,8 @@ msgid "Do not output part of label before \":\""
 msgstr "No mostrar el último pie"
 
 #: src/frontends/qt4/ui/RefUi.ui:412
-#, fuzzy
 msgid "No Prefix"
-msgstr "<Sin prefijo>"
+msgstr "Sin Prefijo"
 
 #: src/frontends/qt4/ui/SearchUi.ui:101
 msgid "Case &sensitive[[search]]"
@@ -5157,14 +5134,12 @@ msgid "BibTeX databases"
 msgstr "Base de datos BibTeX"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:185
-#, fuzzy
 msgid "Biblatex bibliography styles"
-msgstr "Estilo de bibliografía"
+msgstr "Estilo de Biblatex bibliografía"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:190
-#, fuzzy
 msgid "Biblatex citation styles"
-msgstr "Estilo de cita Natbib a usar"
+msgstr "Estilo de cita Biblatex"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:214
 msgid "Toggles view of the file list"
@@ -5485,9 +5460,8 @@ msgstr "Color de la etiqueta"
 #: lib/citeengines/biblatex-natbib.citeengine:140
 #: lib/citeengines/biblatex.citeengine:131
 #: lib/citeengines/jurabib.citeengine:123 lib/citeengines/natbib.citeengine:121
-#, fuzzy
 msgid "Key"
-msgstr "Claves"
+msgstr "Clave"
 
 #: lib/citeengines/biblatex-natbib.citeengine:2
 #, fuzzy
@@ -5505,9 +5479,8 @@ msgstr ""
 
 #: lib/citeengines/biblatex-natbib.citeengine:142
 #: lib/citeengines/biblatex.citeengine:132
-#, fuzzy
 msgid "Footnote"
-msgstr "Notas a pie de página"
+msgstr "Nota a pie"
 
 #: lib/citeengines/biblatex-natbib.citeengine:143
 #: lib/citeengines/biblatex.citeengine:133
@@ -5533,7 +5506,6 @@ msgstr ""
 
 #: lib/citeengines/biblatex-natbib.citeengine:147
 #: lib/citeengines/biblatex.citeengine:137
-#, fuzzy
 msgid "Auto"
 msgstr "Automático"
 
@@ -5585,9 +5557,8 @@ msgid "Superscript"
 msgstr "Superíndice"
 
 #: lib/citeengines/biblatex.citeengine:2 src/insets/InsetBibtex.cpp:155
-#, fuzzy
 msgid "Biblatex"
-msgstr "Lámina"
+msgstr "Biblatex"
 
 #: lib/citeengines/biblatex.citeengine:8
 msgid ""
@@ -5606,9 +5577,8 @@ msgid "Force a short author list (using et al.)"
 msgstr ""
 
 #: lib/citeengines/jurabib.citeengine:2
-#, fuzzy
 msgid "Jurabib (BibTeX)"
-msgstr "Árabe (ArabTeX)"
+msgstr "Jurabib (BibTeX)"
 
 #: lib/citeengines/jurabib.citeengine:7
 msgid ""
@@ -5632,14 +5602,12 @@ msgstr "título corto"
 #: lib/citeengines/jurabib.citeengine:130
 #: lib/citeengines/jurabib.citeengine:131
 #: lib/citeengines/jurabib.citeengine:132
-#, fuzzy
 msgid "/"
-msgstr "_/"
+msgstr "/"
 
 #: lib/citeengines/natbib.citeengine:2
-#, fuzzy
 msgid "Natbib (BibTeX)"
-msgstr "Árabe (ArabTeX)"
+msgstr "Natbib (BibTeX)"
 
 #: lib/citeengines/natbib.citeengine:8
 msgid ""
@@ -6872,14 +6840,12 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/InStar.module:16
-#, fuzzy
 msgid "In Preamble"
-msgstr "Preámbulo"
+msgstr "En Preámbulo"
 
 #: lib/layouts/InStar.module:23
-#, fuzzy
 msgid "In Title"
-msgstr "Título"
+msgstr "En Título"
 
 #: lib/layouts/RJournal.layout:3
 msgid "R Journal"
@@ -7248,9 +7214,8 @@ msgid "List"
 msgstr "Lista"
 
 #: lib/layouts/aastex.layout:3
-#, fuzzy
 msgid "American Astronomical Society (AASTeX v. 5)"
-msgstr "American Astronomical Society (AASTeX)"
+msgstr "American Astronomical Society (AASTeX v. 5)"
 
 #: lib/layouts/aastex.layout:159 lib/layouts/achemso.layout:102
 #: lib/layouts/acmart.layout:201 lib/layouts/agu_stdtitle.inc:128
@@ -7420,9 +7385,8 @@ msgid "Separate the dataset ID from text"
 msgstr "Separate the dataset ID from text"
 
 #: lib/layouts/aastex6.layout:3
-#, fuzzy
 msgid "American Astronomical Society (AASTeX v. 6)"
-msgstr "American Astronomical Society (AASTeX)"
+msgstr "American Astronomical Society (AASTeX v. 6)"
 
 #: lib/layouts/aastex6.layout:59
 msgid "Software"
@@ -7519,9 +7483,8 @@ msgid "Abbreviations:"
 msgstr "Abreviaciones:"
 
 #: lib/layouts/achemso.layout:162
-#, fuzzy
 msgid "Schemes"
-msgstr "Esquema"
+msgstr "Esquemas"
 
 #: lib/layouts/achemso.layout:166 lib/layouts/achemso.layout:178
 msgid "Scheme"
@@ -7532,9 +7495,8 @@ msgid "List of Schemes"
 msgstr "Índice de esquemas"
 
 #: lib/layouts/achemso.layout:186
-#, fuzzy
 msgid "Charts"
-msgstr "Diagrama"
+msgstr "Diagramas"
 
 #: lib/layouts/achemso.layout:190 lib/layouts/achemso.layout:202
 msgid "Chart"
@@ -7609,9 +7571,8 @@ msgid "General terms:"
 msgstr "Términos generales:"
 
 #: lib/layouts/acm-sigs.layout:3
-#, fuzzy
 msgid "ACM SIG Proceedings (SP, Obsolete)"
-msgstr "ACM SIG Proceedings (SP)"
+msgstr "ACM SIG Proceedings (SP, Obsoleto)"
 
 #: lib/layouts/acmart.layout:3
 msgid "Association for Computing Machinery (ACM) article"
@@ -7630,9 +7591,8 @@ msgid "Thanks: "
 msgstr "Agradecimientos:"
 
 #: lib/layouts/acmart.layout:104
-#, fuzzy
 msgid "ACM Journal"
-msgstr "R Journal"
+msgstr "ACM Journal"
 
 #: lib/layouts/acmart.layout:107 lib/layouts/apa6.layout:308
 #: lib/layouts/apa6.layout:316 lib/layouts/apa6.layout:325
@@ -7645,9 +7605,8 @@ msgid "Journal's Short Name: "
 msgstr ""
 
 #: lib/layouts/acmart.layout:120
-#, fuzzy
 msgid "ACM Conference"
-msgstr "Conferencia"
+msgstr "ACM Conferencia"
 
 #: lib/layouts/acmart.layout:127
 #, fuzzy
@@ -7771,9 +7730,8 @@ msgid "Author Note: "
 msgstr "Nota Autor:"
 
 #: lib/layouts/acmart.layout:312
-#, fuzzy
 msgid "ACM Volume"
-msgstr "Volumen"
+msgstr "ACM Volumen"
 
 #: lib/layouts/acmart.layout:314
 #, fuzzy
@@ -7781,9 +7739,8 @@ msgid "ACM Volume: "
 msgstr "Volumen"
 
 #: lib/layouts/acmart.layout:318
-#, fuzzy
 msgid "ACM Number"
-msgstr "Número"
+msgstr "ACM Número"
 
 #: lib/layouts/acmart.layout:320
 #, fuzzy
@@ -7791,9 +7748,8 @@ msgid "ACM Number: "
 msgstr "Número PACS:"
 
 #: lib/layouts/acmart.layout:324
-#, fuzzy
 msgid "ACM Article"
-msgstr "Artículo"
+msgstr "ACM Artículo"
 
 #: lib/layouts/acmart.layout:326
 #, fuzzy
@@ -7801,18 +7757,16 @@ msgid "ACM Article: "
 msgstr "Artículo"
 
 #: lib/layouts/acmart.layout:330
-#, fuzzy
 msgid "ACM Year"
-msgstr "Año"
+msgstr "ACM Año"
 
 #: lib/layouts/acmart.layout:332
 msgid "ACM Year: "
 msgstr ""
 
 #: lib/layouts/acmart.layout:336
-#, fuzzy
 msgid "ACM Month"
-msgstr "Mes"
+msgstr "ACM Mes"
 
 #: lib/layouts/acmart.layout:338
 #, fuzzy
@@ -7905,9 +7859,8 @@ msgid "Computing Classification Scheme (XML): "
 msgstr ""
 
 #: lib/layouts/acmart.layout:424
-#, fuzzy
 msgid "CCS Description"
-msgstr "Descripción"
+msgstr "CCS Descripción"
 
 #: lib/layouts/acmart.layout:427
 msgid "Significance"
@@ -7929,9 +7882,8 @@ msgid "Set Copyright: "
 msgstr "Copyright"
 
 #: lib/layouts/acmart.layout:448
-#, fuzzy
 msgid "Copyright Year"
-msgstr "AñoCopyright"
+msgstr "Año Copyright"
 
 #: lib/layouts/acmart.layout:450
 #, fuzzy
@@ -7939,7 +7891,6 @@ msgid "Copyright Year: "
 msgstr "Año Copyright:"
 
 #: lib/layouts/acmart.layout:454 lib/layouts/acmart.layout:457
-#, fuzzy
 msgid "Teaser Figure"
 msgstr "Imagen Teaser"
 
@@ -7960,9 +7911,8 @@ msgid "Received: "
 msgstr "Recibido:"
 
 #: lib/layouts/acmart.layout:477
-#, fuzzy
 msgid "ShortAuthors"
-msgstr "Autor corto"
+msgstr "AutorsCorto"
 
 #: lib/layouts/acmart.layout:485
 #, fuzzy
@@ -8115,9 +8065,8 @@ msgid "Grant Number"
 msgstr "Número de página"
 
 #: lib/layouts/acmsiggraph-0-92.layout:3
-#, fuzzy
 msgid "ACM SIGGGRAPH 0.92 (obsolete)"
-msgstr "ACM SIGGRAPH"
+msgstr "ACM SIGGGRAPH 0.92 (obsoleto)"
 
 #: lib/layouts/acmsiggraph-0-92.layout:74 lib/layouts/acmsiggraph.layout:66
 msgid "TOG online ID"
@@ -13134,19 +13083,16 @@ msgid "(\\arabic{examplei})"
 msgstr "\\arabic{enumi}."
 
 #: lib/layouts/linguistics.module:24
-#, fuzzy
 msgid "\\theexamplei (\\alph{subexample})"
-msgstr "Ejemplo  \\theexample"
+msgstr "\\theexamplei (\alph{subexample})"
 
 #: lib/layouts/linguistics.module:29
-#, fuzzy
 msgid "\\theexamplei (\\alph{subexamplei})"
-msgstr "Ejemplo  \\theexample"
+msgstr "\\theexamplei (\alph{subexamplei})"
 
 #: lib/layouts/linguistics.module:32 lib/layouts/linguistics.module:260
-#, fuzzy
 msgid "Tableaux"
-msgstr "Tableau"
+msgstr ""
 
 #: lib/layouts/linguistics.module:35
 msgid "Numbered Example (multiline)"
@@ -15230,9 +15176,8 @@ msgid "AMS subject classifications:"
 msgstr "Clasificaciones tema AMS:"
 
 #: lib/layouts/sigplanconf.layout:3
-#, fuzzy
 msgid "ACM SIGPLAN (Obsolete)"
-msgstr "ACM SIGPLAN"
+msgstr "ACM SIGPLAN (Obsoleto)"
 
 #: lib/layouts/sigplanconf.layout:85
 msgid "Name of the conference"
@@ -15299,9 +15244,8 @@ msgid "Inderscience 9.5 x 6.5 Journals"
 msgstr "Inderscience 9.5 x 6.5 Journals"
 
 #: lib/layouts/singlecol.layout:3
-#, fuzzy
 msgid "Inderscience Journals (Obsolete)"
-msgstr "Inderscience Journals (Obsolete Version)"
+msgstr "Inderscience Journals (Obsoleto)"
 
 #: lib/layouts/slides.layout:107
 msgid "New Slide:"
@@ -15425,19 +15369,16 @@ msgid "\\fnsymbol{thanks}"
 msgstr "\\fnsymbol{thanks}"
 
 #: lib/layouts/stdfloatnames.inc:7
-#, fuzzy
 msgid "Algorithms"
-msgstr "Algoritmo"
+msgstr "Algoritmos"
 
 #: lib/layouts/stdfloatnames.inc:8
-#, fuzzy
 msgid "Margin Figures"
-msgstr "Figura al margen"
+msgstr "Figuras al margen"
 
 #: lib/layouts/stdfloatnames.inc:9
-#, fuzzy
 msgid "Margin Tables"
-msgstr "Cuadro al margen"
+msgstr "Cuadros al margen"
 
 #: lib/layouts/stdinsets.inc:11
 msgid "Marginal notes"
@@ -16012,39 +15953,32 @@ msgstr ""
 "'en secciones'/ 'en capítulos', respectivamente."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:82
-#, fuzzy
 msgid "Theorem \\thechapter.\\thetheorem."
-msgstr "Teorema \\thetheorem."
+msgstr "Teorema \\thechapter.\\thetheorem."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:112
-#, fuzzy
 msgid "Corollary \\thechapter.\\thecorollary."
-msgstr "Corolario \\thecorollary."
+msgstr "Corolario \\thechapter.\\thecorollary."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:134
-#, fuzzy
 msgid "Lemma \\thechapter.\\thelemma."
-msgstr "Lema \\thelemma."
+msgstr "Lema \\thechapter.\\thelemma."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:156
-#, fuzzy
 msgid "Proposition \\thechapter.\\theproposition."
-msgstr "Proposición \\theproposition."
+msgstr "Proposición \\thechapter.\\theproposition."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:178
-#, fuzzy
 msgid "Conjecture \\thechapter.\\theconjecture."
-msgstr "Conjetura \\theconjecture."
+msgstr "Conjetura \\thechapter.\\theconjecture."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:200
-#, fuzzy
 msgid "Fact \\thechapter.\\thefact."
-msgstr "Hecho  \\thefact."
+msgstr "Hecho \\thechapter.\\thefact."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:222
-#, fuzzy
 msgid "Definition \\thechapter.\\thedefinition."
-msgstr "Definición \\thedefinition."
+msgstr "Definición \\thechapter.\\thedefinition."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:251
 #, fuzzy
@@ -16052,34 +15986,28 @@ msgid "Example \\thechapter.\\theexample."
 msgstr "Ejemplo  \\theexample"
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:274
-#, fuzzy
 msgid "Problem \\thechapter.\\theproblem."
-msgstr "Problema \\theproblem."
+msgstr "Problema \\thechapter.\\theproblem."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:297
-#, fuzzy
 msgid "Exercise \\thechapter.\\theexercise."
-msgstr "Ejercicio \\theexercise."
+msgstr "Ejercicio \\thechapter.\\theexercise."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:320
-#, fuzzy
 msgid "Solution \\thechapter.\\thesolution."
-msgstr "Solución \\thesolution."
+msgstr "Solución \\thechapter.\\thesolution."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:343
-#, fuzzy
 msgid "Remark \\thechapter.\\theremark."
-msgstr "Observación \\theremark."
+msgstr "Observación \\thechapter.\\theremark."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:373
-#, fuzzy
 msgid "Claim \\thechapter.\\theclaim."
-msgstr "Afirmación \\theclaim."
+msgstr "Afirmación \\thechapter.\\theclaim."
 
 #: lib/layouts/theorems-ams-chap-bytype.module:2
-#, fuzzy
 msgid "Theorems (AMS, Numbered by Type within Chapters)"
-msgstr "Teoremas (numerados por tipo en capítulos)"
+msgstr "Teoremas (AMS, numerados por tipo en capítulos)"
 
 #: lib/layouts/theorems-ams-chap-bytype.module:11
 #, fuzzy
@@ -16328,59 +16256,48 @@ msgstr ""
 "extendido que numera criterio 1, criterio 2, axioma 3, suposición 4, ...) "
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:69
-#, fuzzy
 msgid "Criterion \\thechapter.\\thecriterion."
-msgstr "Criterio \\thecriterion."
+msgstr "Criterio \\thechapter.\\thecriterion."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:108
-#, fuzzy
 msgid "Algorithm \\thechapter.\\thealgorithm."
-msgstr "Algoritmo \\thealgorithm."
+msgstr "Algoritmo \\thechapter.\\thealgorithm."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:147
-#, fuzzy
 msgid "Axiom \\thechapter.\\theaxiom."
-msgstr "Axioma \\theaxiom."
+msgstr "Axioma \\thechapter.\\theaxiom."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:186
-#, fuzzy
 msgid "Condition \\thechapter.\\thecondition."
-msgstr "Condición \\thecondition."
+msgstr "Condición \\thechapter.\\theaxiom."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:225
-#, fuzzy
 msgid "Note \\thechapter.\\thenote."
-msgstr "Nota \\thenote."
+msgstr "Nota \\thechapter.\\thenote."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:264
-#, fuzzy
 msgid "Notation \\thechapter.\\thenotation."
-msgstr "Anotación \\thenotation."
+msgstr "Anotación \\thechapter.\\thenotation."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:303
-#, fuzzy
 msgid "Summary \\thechapter.\\thesummary."
-msgstr "Resumen \\thesummary."
+msgstr "Resumen \\thechapter.\\thesummary."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:343
-#, fuzzy
 msgid "Acknowledgement \\thechapter.\\theacknowledgement."
-msgstr "Agradecimiento \\theacknowledgement."
+msgstr "Agradecimiento \\thechapter.\\theacknowledgement."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:382
-#, fuzzy
 msgid "Conclusion \\thechapter.\\theconclusion."
-msgstr "Conclusión \\theconclusion."
+msgstr "Conclusión \\thechapter.\\theconclusion."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:421
-#, fuzzy
 msgid "Assumption \\thechapter.\\theassumption."
-msgstr "Suposición \\theassumption."
+msgstr "Suposición \\thechapter.\\theassumption."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:460
-#, fuzzy
 msgid "Question \\thechapter.\\thequestion."
-msgstr "Pregunta \\thequestion."
+msgstr "Pregunta \\thechapter.\\thequestion."
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
@@ -16959,9 +16876,8 @@ msgid "Armenian"
 msgstr "Armenio"
 
 #: lib/languages:206
-#, fuzzy
 msgid "Asturian"
-msgstr "Austriaco"
+msgstr "Asturiano"
 
 #: lib/languages:214
 msgid "English (Australia)"
@@ -16992,9 +16908,8 @@ msgid "Belarusian"
 msgstr "Bieloruso"
 
 #: lib/languages:291
-#, fuzzy
 msgid "Bosnian"
-msgstr "Estonio"
+msgstr "Bosnio"
 
 #: lib/languages:299
 msgid "Portuguese (Brazil)"
@@ -17234,9 +17149,8 @@ msgid "Romanian"
 msgstr "Rumano"
 
 #: lib/languages:967
-#, fuzzy
 msgid "Romansh"
-msgstr "Romana"
+msgstr "Romanche"
 
 #: lib/languages:977
 msgid "Russian"
@@ -17399,9 +17313,8 @@ msgid "New Century Schoolbook"
 msgstr "New Century Schoolbook"
 
 #: lib/latexfonts:293 lib/latexfonts:301
-#, fuzzy
 msgid "Noto Serif"
-msgstr "Bera Serif"
+msgstr "Noto Serif"
 
 #: lib/latexfonts:307 lib/latexfonts:319 lib/latexfonts:326 lib/latexfonts:332
 #: lib/latexfonts:339
@@ -17553,9 +17466,8 @@ msgid "TX Typewriter"
 msgstr "TX Typewriter"
 
 #: lib/latexfonts:661
-#, fuzzy
 msgid "Crimson (New TX)"
-msgstr "Times Roman (New TX)"
+msgstr "Crimson (New TX)"
 
 #: lib/latexfonts:669
 msgid "Euler VM"
@@ -18611,27 +18523,22 @@ msgid "Lock Toolbars|L"
 msgstr "Barras de herramientas|B"
 
 #: lib/ui/stdcontext.inc:679 lib/ui/stdmenus.inc:358
-#, fuzzy
 msgid "Small-sized Icons"
 msgstr "Iconos pequeños"
 
 #: lib/ui/stdcontext.inc:680 lib/ui/stdmenus.inc:359
-#, fuzzy
 msgid "Normal-sized Icons"
 msgstr "Iconos normales"
 
 #: lib/ui/stdcontext.inc:681 lib/ui/stdmenus.inc:360
-#, fuzzy
 msgid "Big-sized Icons"
 msgstr "Iconos grandes"
 
 #: lib/ui/stdcontext.inc:682 lib/ui/stdmenus.inc:361
-#, fuzzy
 msgid "Huge-sized Icons"
 msgstr "Iconos enormes"
 
 #: lib/ui/stdcontext.inc:683 lib/ui/stdmenus.inc:362
-#, fuzzy
 msgid "Giant-sized Icons"
 msgstr "Iconos gigantes"
 
@@ -19428,9 +19335,8 @@ msgid "Nomenclature|N"
 msgstr "Nomenclatura|N"
 
 #: lib/ui/stdmenus.inc:486
-#, fuzzy
 msgid "Bib(la)TeX Bibliography...|B"
-msgstr "Bibliografía BibTeX...|B"
+msgstr "Bibliografía Bib(la)TeX...|B"
 
 #: lib/ui/stdmenus.inc:490
 msgid "LyX Document...|X"
@@ -20518,34 +20424,28 @@ msgid "Vertical phantom\t\\vphantom"
 msgstr "Fantasma vertical\t\\vphantom"
 
 #: lib/ui/stdtoolbars.inc:365
-#, fuzzy
 msgid "Smash\t\\smash"
-msgstr "Smash \\smash"
+msgstr "Smash\t\\smash"
 
 #: lib/ui/stdtoolbars.inc:366
-#, fuzzy
 msgid "Top smash\t\\smasht"
-msgstr "Smash arriba \\smasht"
+msgstr "Smash arriba\t\\smasht"
 
 #: lib/ui/stdtoolbars.inc:367
-#, fuzzy
 msgid "Bottom smash\t\\smashb"
-msgstr "Smash abajo \\smashb"
+msgstr "Smash abajo\t\\smashb"
 
 #: lib/ui/stdtoolbars.inc:368
-#, fuzzy
 msgid "Left overlap\t\\mathllap"
-msgstr "Superposición izquierda \\mathllap"
+msgstr "Superposición izquierda\t\\mathllap"
 
 #: lib/ui/stdtoolbars.inc:369
-#, fuzzy
 msgid "Center overlap\t\\mathclap"
-msgstr "Superposición central \\mathclap"
+msgstr "Superposición central\t\\mathclap"
 
 #: lib/ui/stdtoolbars.inc:370
-#, fuzzy
 msgid "Right overlap\t\\mathrlap"
-msgstr "Superposición derecha \\mathrlap"
+msgstr "Superposición derecha\t\\mathrlap"
 
 #: lib/ui/stdtoolbars.inc:373
 msgid "Roots"
@@ -24440,14 +24340,12 @@ msgstr ""
 "de archivos gnumeric y excel.\n"
 
 #: lib/xtemplates/inkscape.xtemplate:37
-#, fuzzy
 msgid "Inkscape"
-msgstr "Apai&sado"
+msgstr "Inkscape"
 
 #: lib/xtemplates/inkscape.xtemplate:38 lib/xtemplates/inkscape.xtemplate:43
-#, fuzzy
 msgid "Inkscape figure"
-msgstr "Insertar flotante de figura"
+msgstr "Figura Inkscape"
 
 #: lib/xtemplates/inkscape.xtemplate:40
 msgid ""
@@ -24601,9 +24499,8 @@ msgid "SVG"
 msgstr "SVG"
 
 #: lib/configure.py:608
-#, fuzzy
 msgid "SVG (compressed)"
-msgstr "Comprimido|o"
+msgstr "SVG (comprimido)"
 
 #: lib/configure.py:611
 msgid "BMP"
@@ -24759,9 +24656,8 @@ msgid "Excel spreadsheet"
 msgstr "Hoja de cálculo Excel"
 
 #: lib/configure.py:660
-#, fuzzy
 msgid "MS Excel Office Open XML"
-msgstr "MS Word Office Open XML"
+msgstr "MS Excel Office Open XML"
 
 #: lib/configure.py:661
 msgid "HTML Table (for spreadsheets)"
@@ -24958,9 +24854,8 @@ msgid "LyX 2.1.x"
 msgstr "LyX 2.1.x"
 
 #: lib/configure.py:738
-#, fuzzy
 msgid "LyX 2.2.x"
-msgstr "LyX 2.0.x"
+msgstr "LyX 2.2.x"
 
 #: lib/configure.py:739
 msgid "CJK LyX 1.4.x (big5)"
@@ -25060,9 +24955,8 @@ msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr "¡LyX ha intentado cerrar un documento que tenía cambios sin guardar!\n"
 
 #: src/Buffer.cpp:552 src/Buffer.cpp:1605
-#, fuzzy
 msgid "Save failed! Document is lost."
-msgstr "¡Guardar falló! Desastre. El documento se ha perdido."
+msgstr "¡Guardar falló! El documento se ha perdido."
 
 #: src/Buffer.cpp:554
 msgid "Attempting to close changed document!"
@@ -28555,9 +28449,8 @@ msgid "Advanced Find and Replace"
 msgstr "Encontrar y reemplazar avanzado"
 
 #: src/frontends/qt4/FloatPlacement.h:38
-#, fuzzy
 msgid "Float Settings"
-msgstr "Configuración del flotante...|i"
+msgstr "Configuración del flotante"
 
 #: src/frontends/qt4/GuiAbout.cpp:51
 msgid "ERROR: LyX wasn't able to find the CREDITS file\n"
@@ -29028,18 +28921,16 @@ msgid "Merge Changes"
 msgstr "Fusionar cambios"
 
 #: src/frontends/qt4/GuiChanges.cpp:73
-#, fuzzy
 msgid ""
 "Changed by %1\n"
 "\n"
 msgstr ""
-"Cambio por %1$s\n"
+"Cambio por %1\n"
 "\n"
 
 #: src/frontends/qt4/GuiChanges.cpp:78
-#, fuzzy
 msgid "Change made on %1\n"
-msgstr "Cambio realizado el %1$s\n"
+msgstr "Cambio realizado el %1\n"
 
 #: src/frontends/qt4/GuiCharacter.cpp:49 src/frontends/qt4/GuiCharacter.cpp:62
 #: src/frontends/qt4/GuiCharacter.cpp:83 src/frontends/qt4/GuiCharacter.cpp:125
@@ -30408,9 +30299,8 @@ msgid "Input Completion"
 msgstr "Autocompletar"
 
 #: src/frontends/qt4/GuiPrefs.cpp:785 src/frontends/qt4/GuiPrefs.cpp:935
-#, fuzzy
 msgid "C&ommand:"
-msgstr "&Comando:"
+msgstr "C&omando:"
 
 #: src/frontends/qt4/GuiPrefs.cpp:810 src/frontends/qt4/GuiPrefs.cpp:835
 #: src/frontends/qt4/GuiPrefs.cpp:963 src/frontends/qt4/GuiPrefs.cpp:990
@@ -31069,7 +30959,6 @@ msgid "Symbols"
 msgstr "Símbolos"
 
 #: src/frontends/qt4/GuiTabular.h:45
-#, fuzzy
 msgid "Tabular Settings"
 msgstr "Configuración de la tabla"
 
@@ -31861,9 +31750,9 @@ msgid "Start New Parent Environment (%1$s)"
 msgstr "Iniciar nuevo entorno padre (%1$s)"
 
 #: src/frontends/qt4/Menus.cpp:2197
-#, fuzzy, c-format
+#, c-format
 msgid "Export [%1$s]|E"
-msgstr "Exportar %1$s"
+msgstr "Exportar [%1$s]|E"
 
 #: src/frontends/qt4/Menus.cpp:2542
 msgid "No Action Defined!"
@@ -31960,12 +31849,12 @@ msgstr ""
 "se cambiará por %2$s."
 
 #: src/insets/InsetBibtex.cpp:156
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The %1$s[[BibTeX/Biblatex]] inset includes %2$s databases.\n"
 "If you proceed, all of them will be opened."
 msgstr ""
-"La bibliografía BibTeX insertada incluye %1$s bases de datos.\n"
+"La %1$s[[BibTeX/Biblatex]] insertada incluye %2$s bases de datos.\n"
 "Si prosigues se abrirán todos ellos."
 
 #: src/insets/InsetBibtex.cpp:159
@@ -32073,9 +31962,9 @@ msgid "non-active"
 msgstr "no activa"
 
 #: src/insets/InsetBranch.cpp:75 src/insets/InsetBranch.cpp:85
-#, fuzzy, c-format
+#, c-format
 msgid "master %1$s, child %2$s"
-msgstr "maestro: %1$s, hijo: %2$s"
+msgstr "maestro %1$s, hijo %2$s"
 
 #: src/insets/InsetBranch.cpp:89
 #, c-format
@@ -32344,13 +32233,13 @@ msgid "Module not found"
 msgstr "Módulo no encontrado"
 
 #: src/insets/InsetInclude.cpp:793 src/insets/InsetInclude.cpp:819
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
 " LaTeX export is probably incomplete."
 msgstr ""
 "El archivo incluido `%1$s' no se ha exportado correctamente.\n"
-"Atención: probablemente la exportación a LaTeX está incompleta."
+" Probablemente la exportación a LaTeX está incompleta."
 
 #: src/insets/InsetInclude.cpp:878
 msgid "Unsupported Inclusion"
@@ -32582,11 +32471,8 @@ msgid ""
 msgstr "Use \\footnotesize, \\small, \\itshape, \\ttfamily o algo parecido"
 
 #: src/insets/InsetListingsParams.cpp:303
-#, fuzzy
 msgid "none, leftline, topline, bottomline, lines, single"
-msgstr ""
-"none, leftline, topline, bottomline, lines, single, shadowbox o subset de "
-"trblTRBL"
+msgstr "none, leftline, topline, bottomline, lines, single"
 
 #: src/insets/InsetListingsParams.cpp:305
 msgid ""
@@ -32808,14 +32694,14 @@ msgid "%1$s[[quot. mark description]] (language default)"
 msgstr ""
 
 #: src/insets/InsetQuotes.cpp:590
-#, fuzzy, c-format
+#, c-format
 msgid "%1$stext"
-msgstr "texto"
+msgstr "%1$stexto"
 
 #: src/insets/InsetQuotes.cpp:592
-#, fuzzy, c-format
+#, c-format
 msgid "text%1$s"
-msgstr "texto"
+msgstr "texto%1$s"
 
 #: src/insets/InsetRef.cpp:362
 msgid "BROKEN: "
