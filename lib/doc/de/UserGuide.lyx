@@ -28906,7 +28906,10 @@ Biblatex
 \family default
 -Stile ermöglichen die Angabe von Text vor und nach jedem einzelnen Titel
  in Mehrfachverweisen (sog.
- 
+\begin_inset space \space{}
+\end_inset
+
+
 \begin_inset Quotes gld
 \end_inset
 
@@ -38114,20 +38117,6 @@ Fügt das aktuelle Datum ein.
  Das Format hängt vom Datumsformat der Sprache ab, die aktuell für die Benutzero
 berfläche von \SpecialChar LyX
  verwendet wird.
- \SpecialChar LyX
- bietet mehrere Möglichkeiten ein Datum einzufügen, die im Abschnitt 
-\emph on
-Externes Material
-\emph default
- des 
-\emph on
-Eingebettete
-\begin_inset space ~
-\end_inset
-
-Objekte
-\emph default
- Handbuchs erklärt und auch verglichen sind.
 \end_layout
 
 \begin_layout Subsection
