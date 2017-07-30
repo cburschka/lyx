@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 543
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -193,6 +193,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \notefontcolor #0000ff
 \index Índice
 \shortcut idx
@@ -26443,33 +26444,6 @@ aa
 
 \backslash
 AA
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-@
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-textrm{
-\backslash
-AA}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
