@@ -19,13 +19,17 @@
 #include "Encoding.h"
 #include "ErrorList.h"
 #include "Format.h"
+#include "InsetList.h"
 #include "Language.h"
 #include "LaTeX.h"
 #include "LyXRC.h"
 #include "Mover.h"
+#include "ParagraphList.h"
 #include "Session.h"
 
 #include "frontends/alert.h"
+
+#include "insets/InsetInclude.h"
 
 #include "support/debug.h"
 #include "support/FileNameList.h"
@@ -457,6 +461,40 @@ bool Converters::convert(Buffer const * buffer,
 			else
 				outfile = FileName(addName(package().temp_dir().absFileName(),
 						   "tmpfile.out"));
+		}
+
+		if (buffer && buffer->params().use_minted
+		    && lyxrc.pygmentize_command.empty() && conv.latex()) {
+			bool dowarn = false;
+			// Warn only if listings insets are actually used
+			for (Paragraph const & par : buffer->paragraphs()) {
+				InsetList const & insets = par.insetList();
+				pos_type lstpos = insets.find(LISTINGS_CODE, 0);
+				pos_type incpos = insets.find(INCLUDE_CODE, 0);
+				if (incpos >= 0) {
+					InsetInclude const * include =
+						static_cast<InsetInclude *>
+						        (insets.get(incpos));
+					if (include->params().getCmdName() !=
+					                        "inputminted") {
+						incpos = -1;
+					}
+				}
+				if (lstpos >= 0 || incpos >= 0) {
+					dowarn = true;
+					break;
+				}
+			}
+			if (dowarn) {
+				Alert::warning(_("Pygments driver command not found!"),
+				    _("The driver command necessary to use the minted package\n"
+				      "(pygmentize) has not been found. Make sure you have\n"
+				      "the python-pygments module installed or, if the driver\n"
+				      "is named differently, to add the following line to the\n"
+				      "document preamble:\n\n"
+				      "\\AtBeginDocument{\\renewcommand{\\MintedPygmentize}{driver}}\n\n"
+				      "where 'driver' is name of the driver command."));
+			}
 		}
 
 		if (!checkAuth(conv, buffer ? buffer->absFileName() : string()))

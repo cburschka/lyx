@@ -1469,7 +1469,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		this, SLOT(setListingsMessage()));
 	connect(listingsModule->packageCO, SIGNAL(activated(int)),
 		this, SLOT(change_adaptor()));
-	connect(listingsModule->packageCO, SIGNAL(currentIndexChanged(int)),
+	connect(listingsModule->packageCO, SIGNAL(activated(int)),
 		this, SLOT(listingsPackageChanged(int)));
 	connect(listingsModule->listingsED, SIGNAL(textChanged()),
 		this, SLOT(setListingsMessage()));
