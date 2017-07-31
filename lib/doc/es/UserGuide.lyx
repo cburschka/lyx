@@ -43272,6 +43272,21 @@ Aquí se elige el estilo de las citas bibliográficas usando los paquetes
  \SpecialChar LaTeX
  
 \series bold
+biblatex
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+, paquetes ! biblatex
+\end_layout
+
+\end_inset
+
+, 
+\series bold
 natbib
 \series default
 
@@ -43300,7 +43315,13 @@ status collapsed
 
 \end_inset
 
-, se pueden habilitar bibliografías subdivididas usando el paquete \SpecialChar LaTeX
+.
+ 
+\lang english
+If you use
+\lang spanish
+ Bib\SpecialChar TeX
+ se pueden habilitar bibliografías subdivididas usando el paquete \SpecialChar LaTeX
  
 \series bold
 bibtopic
@@ -43316,7 +43337,18 @@ status collapsed
 
 \end_inset
 
- y se puede seleccionar un 
+.
+ 
+\lang english
+If you use Biblatex, you can select the style files and specify further
+ options.
+ Finally
+\lang spanish
+ se puede seleccionar un 
+\lang english
+document-specific
+\lang spanish
+ 
 \family sans
 Procesador
 \family default

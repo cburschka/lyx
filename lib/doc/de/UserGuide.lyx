@@ -8603,12 +8603,10 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8621,7 +8619,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8645,7 +8642,6 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
-
 Dies ist Unformatiert*.
 \end_layout
 
@@ -42815,7 +42811,7 @@ natbib
 \series default
 
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
@@ -42840,13 +42836,9 @@ status collapsed
 \end_inset
 
  festlegen.
- Wenn Sie 
-\family sans
-Bib\SpecialChar TeX
-
-\family default
- verwenden, können Sie ein abschnittsspezifisches Literaturverzeichnis unter
- Verwendung des \SpecialChar LaTeX
+ Wenn Sie Bib\SpecialChar TeX
+ verwenden, können Sie ein abschnittsspezifisches Literaturverzeich
+nis unter Verwendung des \SpecialChar LaTeX
 -Pakets 
 \series bold
 bibtopic
@@ -42863,11 +42855,8 @@ status collapsed
 \end_inset
 
  aktivieren.
- Wenn Sie 
-\family sans
-Biblatex
-\family default
- verwenden, können Sie Stildateien auswählen und zusätzliche Optionen eingeben.
+ Wenn Sie Biblatex verwenden, können Sie Stildateien auswählen und zusätzliche
+ Optionen eingeben.
  Schließlich können Sie einen 
 \family sans
 Prozessor

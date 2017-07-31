@@ -8337,14 +8337,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8357,7 +8355,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8381,7 +8378,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -44300,14 +44296,8 @@ Bibliography
 \end_layout
 
 \begin_layout Standard
-Here you can specify if a 
-\change_inserted -712698321 1483887883
-specific 
-\change_unchanged
-citation style using the \SpecialChar LaTeX
- packages
-\change_inserted -712698321 1483887840
- 
+Here you can specify if a specific citation style using the \SpecialChar LaTeX
+ packages 
 \series bold
 biblatex
 \series default
@@ -44316,17 +44306,13 @@ biblatex
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1483887846
 \SpecialChar LaTeX
 -packages ! biblatex
 \end_layout
 
 \end_inset
 
-,
-\change_unchanged
- 
+, 
 \series bold
 natbib
 \series default
@@ -44357,14 +44343,8 @@ status collapsed
 \end_inset
 
  should be used.
- 
-\change_inserted -712698321 1483887869
-If you use Bib\SpecialChar TeX
-, y
-\change_deleted -712698321 1483887870
-Y
-\change_unchanged
-ou can enable a 
+ If you use Bib\SpecialChar TeX
+, you can enable a 
 \family sans
 Sectioned bibliography
 \family default
@@ -44384,33 +44364,15 @@ status collapsed
 
 \end_inset
 
-
-\change_inserted -712698321 1483887945
 .
  If you use Biblatex, you can select the style files and specify further
  options.
-
-\change_unchanged
- 
-\change_inserted -712698321 1483887949
-Finally,
-\change_deleted -712698321 1483887950
-and
-\change_unchanged
- you can select a
-\change_inserted -712698321 1483887962
- document-specific
-\change_unchanged
- 
+ Finally, you can select a document-specific 
 \family sans
 Processor
 \family default
  for the generation of the bibliography.
- For a further description 
-\change_inserted -712698321 1483887970
-of all this, 
-\change_unchanged
-see section
+ For a further description of these possibilities see section
 \begin_inset space ~
 \end_inset
 

@@ -36340,6 +36340,21 @@ reference "subsec:番号の付け方-深度"
 ここでは，\SpecialChar LaTeX
 パッケージ
 \series bold
+biblatex
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+latexはつけじ@\SpecialChar LaTeX
+パッケージ ! biblatex
+\end_layout
+
+\end_inset
+
+・
+\series bold
 natbib
 \series default
 
@@ -36368,7 +36383,16 @@ latexはつけじ@\SpecialChar LaTeX
 
 \end_inset
 
-を使用した引用様式を使うかどうかを指定することができます．\SpecialChar LaTeX
+を使用した引用様式を使うかどうかを指定することができます．
+\lang english
+If you use Bib\SpecialChar TeX
+, you can enable a 
+\family sans
+Sectioned bibliography
+\family default
+ using the
+\lang japanese
+\SpecialChar LaTeX
 パッケージ
 \series bold
 bibtopic
@@ -36384,11 +36408,17 @@ latexはつけじ@\SpecialChar LaTeX
 
 \end_inset
 
-を用いた
+．
+\lang english
+ If you use Biblatex, you can select the style files and specify further
+ options.
+ Finally, you can select a document-specific 
 \family sans
-区分した書誌情報
+Processor
 \family default
-を使うこともできるほか，書誌情報の生成に使う処理子を選択することもできます．詳しくは，第
+ for the generation of the bibliography
+\lang japanese
+詳しくは，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:書誌情報"

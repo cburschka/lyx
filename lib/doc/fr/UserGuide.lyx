@@ -44731,6 +44731,21 @@ Bibliographie
 Vous pouvez choisir un style de citation utilisant les paquetages \SpecialChar LaTeX
  
 \series bold
+biblatex
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages \SpecialChar LaTeX
+ ! biblatex
+\end_layout
+
+\end_inset
+
+, 
+\series bold
 natbib
 \series default
 
@@ -44760,8 +44775,13 @@ Paquetages \SpecialChar LaTeX
 \end_inset
 
 .
- Vous pouvez autoriser la création de bibliographies thématiques à l'aide
- du paquetage 
+ 
+\lang english
+If you use
+\lang french
+ Bib\SpecialChar TeX
+, vous pouvez autoriser la création de bibliographies thématiques à
+ l'aide du paquetage 
 \series bold
 bibtopic
 \series default
@@ -44776,7 +44796,18 @@ Paquetages \SpecialChar LaTeX
 
 \end_inset
 
- et vous pouvez sélectionner un 
+.
+ 
+\lang english
+If you use Biblatex, you can select the style files and specify further
+ options.
+ Finally
+\lang french
+ vous pouvez sélectionner un 
+\lang english
+document-specific
+\lang french
+ 
 \family sans
 Processeur
 \family default
