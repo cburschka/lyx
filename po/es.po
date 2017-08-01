@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2017-06-13 02:09+0200\n"
-"PO-Revision-Date: 2017-07-31 22:58+0200\n"
+"PO-Revision-Date: 2017-08-02 00:27+0200\n"
 "Last-Translator: Ignacio García <ignacio.gmorales@gmail.com>\n"
 "Language-Team: Spanish <lyx-docs@lists.lyx.org>\n"
 "Language: es\n"
@@ -7631,14 +7631,12 @@ msgid "Affiliation: "
 msgstr "Afiliación: "
 
 #: lib/layouts/acmart.layout:214
-#, fuzzy
 msgid "Additional Affiliation"
-msgstr "Afiliación alt."
+msgstr "Afiliación Adicional"
 
 #: lib/layouts/acmart.layout:216
-#, fuzzy
 msgid "Additional Affiliation: "
-msgstr "Afiliación alt."
+msgstr "Afiliación Adicional:"
 
 #: lib/layouts/acmart.layout:220 lib/layouts/acmart.layout:224
 #, fuzzy
@@ -7651,9 +7649,8 @@ msgid "Institution"
 msgstr "Institución"
 
 #: lib/layouts/acmart.layout:236 lib/layouts/acmart.layout:238
-#, fuzzy
 msgid "Department"
-msgstr "Reempla&zar con:"
+msgstr "Departamento"
 
 #: lib/layouts/acmart.layout:244 lib/layouts/acmart.layout:246
 #, fuzzy
@@ -7894,9 +7891,8 @@ msgid "Short authors: "
 msgstr "Autor corto:"
 
 #: lib/layouts/acmart.layout:499
-#, fuzzy
 msgid "Sidebar"
-msgstr "Ca&ra:"
+msgstr ""
 
 #: lib/layouts/acmart.layout:503
 msgid "Sidebar (sigchi-a only)"
@@ -10110,8 +10106,8 @@ msgid ""
 "Page Layout to 'fancy'!"
 msgstr ""
 "Añade entornos para definir líneas de encabezado y pie. NOTA: para usar este "
-"módulo hay que poner el  'Estilo de encabezado y pie elaborado' en el menú "
-"Documento > Configuración > Diseño de página"
+"módulo ¡hay que poner el  'Estilo de encabezado y pie elaborado' en el menú "
+"Documento > Configuración > Diseño de página!"
 
 #: lib/layouts/customHeadersFooters.module:12
 msgid "Header/Footer"
@@ -15952,9 +15948,8 @@ msgid "Definition \\thechapter.\\thedefinition."
 msgstr "Definición \\thechapter.\\thedefinition."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:251
-#, fuzzy
 msgid "Example \\thechapter.\\theexample."
-msgstr "Ejemplo  \\theexample"
+msgstr "Ejemplo \\thechapter.\\theexample."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:274
 msgid "Problem \\thechapter.\\theproblem."
@@ -19192,9 +19187,8 @@ msgid "Plain Quotation Mark|Q"
 msgstr "Marca Afiliación"
 
 #: lib/ui/stdmenus.inc:408
-#, fuzzy
 msgid "Inner Quotation Mark|n"
-msgstr "ángulo de rotación"
+msgstr ""
 
 #: lib/ui/stdmenus.inc:409
 msgid "Protected Hyphen|y"
@@ -25252,9 +25246,8 @@ msgid "The language %1$s is only supported by Polyglossia."
 msgstr ""
 
 #: src/Buffer.cpp:1941
-#, fuzzy
 msgid "Incompatible Languages!"
-msgstr "Nombre de comando incompatible."
+msgstr "¡Idiomas incompatible!"
 
 #: src/Buffer.cpp:1943
 #, c-format
@@ -26349,9 +26342,8 @@ msgid "&Run"
 msgstr ""
 
 #: src/Converter.cpp:319
-#, fuzzy
 msgid "&Always run for this document"
-msgstr "¿Cerrar u ocultar documento?"
+msgstr ""
 
 #: src/Converter.cpp:383 src/Converter.cpp:589 src/Converter.cpp:612
 #: src/Converter.cpp:655
@@ -28733,9 +28725,8 @@ msgstr ""
 "el archivo de Interfaz de usuario que se está utilizando."
 
 #: src/frontends/qt4/GuiBibitem.h:36
-#, fuzzy
 msgid "Bibliography Item Settings"
-msgstr "Configuración de entrada bibliográfica"
+msgstr "Configuración de la Entrada Bibliográfica"
 
 #: src/frontends/qt4/GuiBibtex.cpp:54
 msgid "BibTeX Bibliography"
@@ -29758,9 +29749,8 @@ msgid "(Module name: %1)"
 msgstr "Módulos requeridos: %1$s."
 
 #: src/frontends/qt4/GuiERT.h:33
-#, fuzzy
 msgid "TeX Mode Inset Settings"
-msgstr "Configuración del código TeX"
+msgstr "Configuración del Código TeX"
 
 #: src/frontends/qt4/GuiErrorList.cpp:47 src/frontends/qt4/GuiLog.cpp:260
 msgid "Literate"
@@ -29991,7 +29981,7 @@ msgstr "Configuración de espacio horizontal"
 
 #: src/frontends/qt4/GuiHyperlink.h:35
 msgid "Hyperlink Settings"
-msgstr ""
+msgstr "Configuración del Hiperenlace"
 
 #: src/frontends/qt4/GuiInclude.cpp:114 src/frontends/qt4/GuiInclude.cpp:176
 #: src/frontends/qt4/GuiListings.cpp:241 src/frontends/qt4/GuiListings.cpp:385
@@ -30075,9 +30065,8 @@ msgid "lyxinfo"
 msgstr "infolyx"
 
 #: src/frontends/qt4/GuiInfo.h:36
-#, fuzzy
 msgid "Info Inset Settings"
-msgstr "Configuración del índice"
+msgstr "Configuración del Índice"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:712
 msgid "Shift-"
@@ -30096,14 +30085,12 @@ msgid "Command-"
 msgstr "Comando-"
 
 #: src/frontends/qt4/GuiLabel.h:35
-#, fuzzy
 msgid "Label Settings"
-msgstr "Configuración de la tabla"
+msgstr "Configuración de la Etiqueta"
 
 #: src/frontends/qt4/GuiLine.h:34
-#, fuzzy
 msgid "Line Settings"
-msgstr "C&onfiguración principal"
+msgstr "Configuración de la Línea"
 
 #: src/frontends/qt4/GuiListings.cpp:62
 msgid "No language"
@@ -30123,7 +30110,7 @@ msgstr "Registro de LaTeX"
 
 #: src/frontends/qt4/GuiLog.cpp:250
 msgid "Biber"
-msgstr ""
+msgstr "Biber"
 
 #: src/frontends/qt4/GuiLog.cpp:263
 msgid "LyX2LyX"
@@ -30202,9 +30189,8 @@ msgid "Math Matrix"
 msgstr "Matriz matemática"
 
 #: src/frontends/qt4/GuiNomenclature.h:36
-#, fuzzy
 msgid "Nomenclature Settings"
-msgstr "Configuración de Nomenclatura"
+msgstr "Configuración de la Nomenclatura"
 
 #: src/frontends/qt4/GuiNote.cpp:26
 msgid "Note Settings"
@@ -30212,7 +30198,7 @@ msgstr "Configuración de nota"
 
 #: src/frontends/qt4/GuiParagraph.cpp:48
 msgid "Paragraph Settings"
-msgstr "Configuración del párrafo"
+msgstr "Configuración del Párrafo"
 
 #: src/frontends/qt4/GuiParagraph.cpp:80
 msgid ""
@@ -30231,7 +30217,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiPhantom.cpp:25
 msgid "Phantom Settings"
-msgstr "Configuración del fantasma"
+msgstr "Configuración del Fantasma"
 
 #: src/frontends/qt4/GuiPrefs.cpp:141
 msgid "System files|#S#s"
@@ -30247,7 +30233,7 @@ msgstr "Apariencia"
 
 #: src/frontends/qt4/GuiPrefs.cpp:253
 msgid "Language Settings"
-msgstr "Configuración de idioma"
+msgstr "Configuración de la Idioma"
 
 #: src/frontends/qt4/GuiPrefs.cpp:255
 msgid "File Handling"
@@ -30497,7 +30483,7 @@ msgstr "Ancho de la etiqueta más larga"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:37
 msgid "Index Settings"
-msgstr "Configuración del índice"
+msgstr "Configuración del Índice"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:70
 msgid "<All indexes>"
@@ -30923,7 +30909,7 @@ msgstr "Símbolos"
 
 #: src/frontends/qt4/GuiTabular.h:45
 msgid "Tabular Settings"
-msgstr "Configuración de la tabla"
+msgstr "Configuración de la Tabla"
 
 #: src/frontends/qt4/GuiTabularCreate.cpp:29
 msgid "Insert Table"
@@ -30965,7 +30951,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiVSpace.h:40
 msgid "Vertical Space Settings"
-msgstr "Configuración del espacio vertical"
+msgstr "Configuración del Espacio Vertical"
 
 #: src/frontends/qt4/GuiView.cpp:161
 msgid "version "
@@ -31498,7 +31484,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiWrap.cpp:32
 msgid "Wrap Float Settings"
-msgstr "Configuración de flotante envuelto"
+msgstr "Configuración del Flotante Envuelto"
 
 #: src/frontends/qt4/IconPalette.cpp:39
 msgid "Click to detach"
