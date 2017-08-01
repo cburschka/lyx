@@ -29636,7 +29636,30 @@ reference "subsec:Environnement-biblio"
 ), sera utilisé.
  Si vous voulez avoir autre chose que les citations numériques que vous
  pouvez voir dans ce document, comme par exemple des citations auteur-année,
- vous devez utiliser une base de données bibliographique.
+ 
+\lang english
+and if you have more than a handful of references
+\lang french
+, vous 
+\lang english
+should seriously consider
+\lang french
+ utiliser une base de données bibliographique.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In order to demonstrate the difference between these two approaches, we
+ use two bibliographies in this document, a 
+\family sans
+Bibliography
+\family default
+ environment and a database-generated bibliography.
+ As you can see, the bibliography that is created from a database lists
+ only the database entries that are referenced in the document.
+ In other words, the database approach relieves you, amongst other things,
+ from the burden to check which entries you have actually cited.
 \end_layout
 
 \begin_layout Subsection
@@ -29669,6 +29692,51 @@ Clé
 .
  La clé est le nom symbolique que vous allez utiliser pour faire référence
  à cette entrée bibliographique.
+ 
+\lang english
+Each entry needs to be given a unique key, which is one word consisting
+ of ASCII characters only.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+ASCII means 
+\begin_inset CommandInset href
+LatexCommand href
+name "this set"
+target "https://fr.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange#Table_des_128_caract.C3.A8res_ASCII"
+literal "false"
+
+\end_inset
+
+ of characters
+\lang french
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://fr.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange
+\backslash
+#Table_des_128_caract.C3.A8res_ASCII
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\lang french
  Par exemple, la seconde entrée de notre bibliographie est un livre sur
  \SpecialChar LaTeX
  et nous avons utilisé comme clé 
@@ -29754,6 +29822,97 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+You can also produce author-year or author-number citations, using the\SpecialChar LaTeX
+ package
+ 
+\series bold
+natbib
+\series default
+\lang french
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages \SpecialChar LaTeX
+ ! natbib
+\end_layout
+
+\end_inset
+
+
+\lang english
+.
+ In order to do so, the label needs to be given the form 
+\begin_inset Quotes eld
+\end_inset
+
+Author(Year)
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+Author A and Author B(Year)
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\emph on
+without
+\emph default
+ a blank between the author(s) and the opening parenthesis that delimits
+ the year.
+ Then, if you select 
+\family sans
+Natbib
+\begin_inset space ~
+\end_inset
+
+(BibTeX)
+\family default
+ in the document settings
+\lang french
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Document ! Paramètres
+\end_layout
+
+\end_inset
+
+
+\lang english
+ under 
+\family sans
+Bibliography\SpecialChar menuseparator
+Style
+\begin_inset space ~
+\end_inset
+
+format
+\family default
+ (see 
+\lang french
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Format-de-bibliographie"
+
+\end_inset
+
+
+\lang english
+), you can select between different author-year or author-number styles.
+\end_layout
+
+\begin_layout Standard
 Pour aligner toutes les entrées dans l'environnement bibliographique, vous
  pouvez régler une étiquette de longueur maximale via le menu 
 \family sans
@@ -29779,24 +29938,12 @@ Autres
 \end_layout
 
 \begin_layout Subsection
-Les bases de données bibliographiques (Bib\SpecialChar TeX
-)
+Les bases de données bibliographiques
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
 Bibliographie ! Bases de données
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Bibliographie ! Bib\SpecialChar TeX
-
 \end_layout
 
 \end_inset
@@ -29812,8 +29959,8 @@ name "subsec:Bases-de-Données-Biblio"
 \end_layout
 
 \begin_layout Standard
-Les base de données bibliographiques sont utiles quand vous utilisez la
- même bibliographie pour plusieurs documents
+Les base de données bibliographiques sont utiles quand vous utilisez les
+ mêmes références pour plusieurs documents
 \begin_inset Foot
 status collapsed
 
@@ -29887,7 +30034,80 @@ http://wiki.lyx.org/BibTeX/Programs
 
 vous trouverez une sélection de programmes pour gérer des bases de données
  Bib\SpecialChar TeX
-..
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\SpecialChar LyX
+ supports two different approaches to use bibliography databases in a document.
+ Bib\SpecialChar TeX
+ is the classic technique that has been the only way to use such databases
+ for a long time.
+ It is quite established and mature and there is a huge range of existing
+ styles available.
+ But it has its drawbacks, especially when it comes to more complex bibliographi
+c needs and support for specific languages and scripts.
+ Those are addressed by 
+\noun on
+Biblatex
+\noun default
+.
+ 
+\noun on
+Biblatex
+\noun default
+ reads the same database format than Bib\SpecialChar TeX
+ (although it has been significantly
+ extended beyond Bib\SpecialChar TeX
+'s scope)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Meaning: While 
+\noun on
+Biblatex
+\noun default
+ can handle any classic Bib\SpecialChar TeX
+ database, Bib\SpecialChar TeX
+ might conversely fail to correctly
+ handle databases that use specific 
+\noun on
+Biblatex
+\noun default
+ features.
+\end_layout
+
+\end_inset
+
+, but it uses a different framework to generate citations and references
+ from it.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Both approaches are described in turn.
+\end_layout
+
+\begin_layout Subsubsection
+Bib\SpecialChar TeX
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Bibliographie ! Bib\SpecialChar TeX
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -30131,6 +30351,13 @@ status collapsed
 \begin_layout Plain Layout
 Bibliographie ! Format
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Format-de-bibliographie"
 
 \end_inset
 
@@ -44799,8 +45026,11 @@ Paquetages \SpecialChar LaTeX
 .
  
 \lang english
-If you use Biblatex, you can select the style files and specify further
- options.
+If you use 
+\noun on
+Biblatex
+\noun default
+, you can select the style files and specify further options.
  Finally
 \lang french
  vous pouvez sélectionner un 
@@ -49853,6 +50083,57 @@ status collapsed
 \begin_layout Plain Layout
 
 http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "natbib"
+literal "true"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "http://mirrors.ctan.org/macros/latex/contrib/natbib/natbib.pdf"
+literal "false"
+
+\end_inset
+
+ du paquetage \SpecialChar LaTeX
+ 
+\series bold
+natbib
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages \SpecialChar LaTeX
+ ! natbib
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/latex/contrib/natbib/natbib.pdf
 \end_layout
 
 \end_inset

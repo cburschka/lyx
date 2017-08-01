@@ -8603,10 +8603,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8619,6 +8621,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8642,6 +8645,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -27665,6 +27669,37 @@ Schlüssel
  ist der symbolische Name, mit dem Sie auf diese Literaturangabe verweisen.
  Jeder Eintrag muss einen eindeutigen Schlüssel erhalten, der nur aus ASCII-Zeic
 hen bestehen darf.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+ASCII bedeutet 
+\begin_inset CommandInset href
+LatexCommand href
+name "diesen Satz"
+target "https://de.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange#ASCII-Tabelle"
+literal "false"
+
+\end_inset
+
+ an Zeichen: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://de.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange
+\backslash
+#ASCII-Tabelle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
  Nehmen wir zum Beispiel an, Ihre erste Literaturangabe wäre ein Buch über
  \SpecialChar LaTeX
 .
@@ -27752,10 +27787,22 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
-Mithilfe von 
-\family sans
-Natbib
-\family default
+Mithilfe des \SpecialChar LaTeX
+-Pakets 
+\series bold
+natbib
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-Paket ! natbib
+\end_layout
+
+\end_inset
+
  können Sie auch Autor-Jahr- oder Autor-Nummer-Verweise erzeugen.
  Dazu muss die Marke die Form 
 \begin_inset Quotes gld
@@ -27791,18 +27838,12 @@ and
  Wenn Sie dann 
 \family sans
 Natbib
-\family default
- in 
-\family sans
-
-\begin_inset Info
-type  "menu"
-arg   "dialog-show document"
+\begin_inset space ~
 \end_inset
 
-
+(BibTeX)
 \family default
-
+ in den Dokumenteinstellungen
 \begin_inset Index idx
 status collapsed
 
@@ -27817,11 +27858,7 @@ Dokument ! Einstellungen
 Literaturverzeichnis\SpecialChar menuseparator
 Stilformat
 \family default
- (siehe unten Abschnitt
-\begin_inset space ~
-\end_inset
-
-
+ (siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Zitierformat"
@@ -27945,49 +27982,48 @@ er Stile, auf die man zurückgreifen kann.
  Allerdings hat Bib\SpecialChar TeX
  auch Schwächen, vor allem dann, wenn Sie komplexere
  Anforderungen haben oder bestimmte Sprachen oder Schriften benötigen.
- Diese Schwächen versucht ein recht neuer und ambitionierter Ansatz zu beseitige
-n: 
-\family sans
+ Diese Schwächen versucht 
+\noun on
 Biblatex
-\family default
-.
+\noun default
+ zu beseitigen.
  
-\family sans
+\noun on
 Biblatex
-\family default
+\noun default
  kann dasselbe Datenbankformat wie Bib\SpecialChar TeX
  lesen (wenn dieses auch erheblich
  für 
-\family sans
+\noun on
 Biblatex
-\family default
- erweitert wurde
+\noun default
+ erweitert wurde)
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 Das heißt: Während 
-\family sans
+\noun on
 Biblatex
-\family default
+\noun default
  jede klasische Bib\SpecialChar TeX
 -Datenbank lesen kann, scheitert Bib\SpecialChar TeX
  umgekehrt beim Versuch,
  Datenbanken zu interpretieren, die spezifische Erweiterungen von 
-\family sans
+\noun on
 Biblatex
-\family default
+\noun default
  verwenden.
 \end_layout
 
 \end_inset
 
-), aber die Handhabung im Rahmen der Erstellung von Referenzen und Bibliographie
-n unterscheidet sich erheblich.
+, aber die Handhabung im Rahmen der Erstellung von Referenzen und Bibliographien
+ unterscheidet sich erheblich.
 \end_layout
 
 \begin_layout Standard
-Beide Methoden werden im folgenden vorgestellt.
+Beide Methoden werden im Folgenden vorgestellt.
 \end_layout
 
 \begin_layout Subsubsection
@@ -28111,7 +28147,7 @@ Ein Querverweis auf einen Datenbankeintrag erfolgt wie oben beschrieben.
 \begin_layout Subsubsection
 Biblatex
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Literaturverzeichnis ! Biblatex
@@ -28124,9 +28160,9 @@ Literaturverzeichnis ! Biblatex
 
 \begin_layout Standard
 Der Zugang zu einer Databank mittels 
-\family sans
+\noun on
 Biblatex
-\family default
+\noun default
  ist fast identisch wie der mittels Bib\SpecialChar TeX
 : wählen Sie 
 \family sans
@@ -28174,9 +28210,9 @@ Inhalt
 
 \begin_layout Standard
 
-\family sans
+\noun on
 Biblatex
-\family default
+\noun default
  verwendet zwei verschiedene Stildateien: eine Bibliographie-Stildatei (eine
  Textdatei mit der Endung 
 \family sans
@@ -28224,15 +28260,15 @@ Literaturverzeichnis
 Optionen
 \family default
 , das nur sichtbar ist, wenn Sie 
-\family sans
+\noun on
 Biblatex
-\family default
+\noun default
  verwenden) Optionen eingeben, die die Art und Weise verändern, in der das
  Literaturverzeichnis gedruckt wird (bspw., was die Überschrift betrifft).
  Diese Optionen sind ausführlich im Handbuch von 
-\family sans
+\noun on
 Biblatex
-\family default
+\noun default
  beschrieben 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -28318,9 +28354,9 @@ Literaturverzeichnis
 
 \begin_layout Description
 biber ist ein spezifischer moderner Prozessor, der exklusiv für 
-\family sans
+\noun on
 Biblatex
-\family default
+\noun default
  entwickelt wurde (er funktioniert nicht mit Bib\SpecialChar TeX
 !).
  
@@ -28329,14 +28365,17 @@ Biber
 \family default
  bietet volle Unterstützung von Unicode, unbegrenzten Speicher, und ermöglicht
  viele Besonderheiten von 
+\noun on
+Biblatex
 \family sans
-Biblatex.
+\noun default
+.
 
 \family default
  Wenn Sie 
-\family sans
+\noun on
 Biblatex
-\family default
+\noun default
  verwenden, empfehlen wir 
 \family sans
 biber
@@ -28354,9 +28393,9 @@ Bibtex
 \family default
  funktioniert mit allen Literaturpaketen, aber aufgrund des begrenzten Speichers
  ist die Chance groß, dass es selbst mit einer mittelgroßen 
-\family sans
+\noun on
 Biblatex
-\family default
+\noun default
 -Bibliographie an seine Grenzen stößt.
 \end_layout
 
@@ -28367,14 +28406,14 @@ bibtex8 erlaubt alle Zeichen, die in einer 8-Bit Kodierung kodiert werden
 bibtex
 \family default
 , funktioniert mit allen Literaturpaketen, aber mit komplexeren 
-\family sans
+\noun on
 Biblatex
-\family default
+\noun default
 -Bibliographien wird es an seine Grenzen stoßen.
  Außerdem sind nicht alle 
-\family sans
+\noun on
 Biblatex
-\family default
+\noun default
 -Features unterstützt.
 \end_layout
 
@@ -28426,10 +28465,9 @@ Literaturverzeichnis-Erzeugung
 biber
 \family default
  für 
-\family sans
-Bib\SpecialChar softhyphen
-latex
-\family default
+\noun on
+Biblatex
+\noun default
 , 
 \family sans
 bibtex
@@ -28608,9 +28646,9 @@ Bib\SpecialChar TeX
 
 \family default
  oder 
-\family sans
+\noun on
 Biblatex
-\family default
+\noun default
  (siehe Abschnitt
 \begin_inset space ~
 \end_inset
@@ -28629,24 +28667,28 @@ noprefix "false"
  Die folgenden Möglichkeiten stehen zur Auswahl:
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Description
 
 \family sans
-Schlicht (BibTeX)
+Schlicht
+\begin_inset space ~
+\end_inset
+
+(BibTeX)
 \family default
-: der normale 
+ der normale 
 \family sans
 BibTeX-
 \family default
 basierte Ansatz ohne zusätzliches Paket (einfache nummerische Verweise)
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Description
 
 \family sans
 Biblatex
 \family default
-: lädt das 
+ lädt das 
 \family sans
 Biblatex
 \family default
@@ -28671,12 +28713,16 @@ Optionen
  eingeben.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Description
 
 \family sans
-Biblatex (Natbib-Modus)
+Biblatex
+\begin_inset space ~
+\end_inset
+
+(Natbib-Modus)
 \family default
-: lädt das 
+ lädt das 
 \family sans
 Biblatex
 \family default
@@ -28711,12 +28757,16 @@ Biblatex
 -Stile unterstützen auch diese Variante.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Description
 
 \family sans
-Jurabib (BibTeX)
+Jurabib
+\begin_inset space ~
+\end_inset
+
+(BibTeX)
 \family default
-: lädt das Paket 
+ lädt das Paket 
 \family sans
 Jurabib
 \family default
@@ -28724,12 +28774,16 @@ Jurabib
  gebräuchlich sind.
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Description
 
 \family sans
-Natbib (BibTeX)
+Natbib
+\begin_inset space ~
+\end_inset
+
+(BibTeX)
 \family default
-: lädt das Paket 
+ lädt das Paket 
 \family sans
 Natbib
 \family default
@@ -42855,8 +42909,11 @@ status collapsed
 \end_inset
 
  aktivieren.
- Wenn Sie Biblatex verwenden, können Sie Stildateien auswählen und zusätzliche
- Optionen eingeben.
+ Wenn Sie 
+\noun on
+Biblatex
+\noun default
+ verwenden, können Sie Stildateien auswählen und zusätzliche Optionen eingeben.
  Schließlich können Sie einen 
 \family sans
 Prozessor
@@ -47177,6 +47234,57 @@ status collapsed
 \begin_layout Plain Layout
 
 http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "natbib"
+literal "true"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Dokumentation"
+target "http://mirrors.ctan.org/macros/latex/contrib/natbib/natbib.pdf"
+literal "false"
+
+\end_inset
+
+ des \SpecialChar LaTeX
+-Pakets 
+\series bold
+natbib
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-Paket ! natbib
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/latex/contrib/natbib/natbib.pdf
 \end_layout
 
 \end_inset

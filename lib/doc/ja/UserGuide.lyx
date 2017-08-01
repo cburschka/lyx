@@ -23971,6 +23971,21 @@ reference "subsec:書誌情報環境"
 タベースを使用しなくてはなりません．
 \end_layout
 
+\begin_layout Standard
+
+\lang english
+In order to demonstrate the difference between these two approaches, we
+ use two bibliographies in this document, a 
+\family sans
+Bibliography
+\family default
+ environment and a database-generated bibliography.
+ As you can see, the bibliography that is created from a database lists
+ only the database entries that are referenced in the document.
+ In other words, the database approach relieves you, amongst other things,
+ from the burden to check which entries you have actually cited.
+\end_layout
+
 \begin_layout Subsection
 書誌情報環境
 \end_layout
@@ -24008,9 +24023,53 @@ status collapsed
 \family sans
 ラベル
 \family default
-を入力することができるようになります． 鍵は，この文献項目を参照するのに使うシンボリック名です．例えば，この文書の書誌情報の二つめの項目は\SpecialChar LaTeX
-に関する書籍ですが，本
-文書ではこの書籍の鍵として，その題名を縮めた「latexcompanion」を使っています．
+を入力することができるようになります． 鍵は，この文献項目を参照するのに使うシンボリック名です．
+\lang english
+Each entry needs to be given a unique key, which is one word consisting
+ of ASCII characters only.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+ASCII means 
+\begin_inset CommandInset href
+LatexCommand href
+name "this set"
+target "https://ja.wikipedia.org/wiki/ASCII#ASCII.E5.8D.B0.E5.AD.97.E5.8F.AF.E8.83.BD.E6.96.87.E5.AD.97"
+literal "false"
+
+\end_inset
+
+ of characters:
+\lang japanese
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://ja.wikipedia.org/wiki/ASCII
+\backslash
+#ASCII.E5.8D.B0.E5.AD.97.E5.8F.AF.E8.83.BD.E6.96.87.E5.AD.97
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\lang japanese
+例えば，この文書の書誌情報の二つめの項目は\SpecialChar LaTeX
+に関する書籍ですが，本文書ではこの書籍の鍵として，その題名を縮めた「latexcompanion」を使っています．
 \end_layout
 
 \begin_layout Standard
@@ -24064,6 +24123,97 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+You can also produce author-year or author-number citations, using the\SpecialChar LaTeX
+ package
+ 
+\series bold
+natbib
+\series default
+\lang japanese
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+latexはつけじ@\SpecialChar LaTeX
+パッケージ ! natbib
+\end_layout
+
+\end_inset
+
+
+\lang english
+.
+ In order to do so, the label needs to be given the form 
+\begin_inset Quotes eld
+\end_inset
+
+Author(Year)
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+Author A and Author B(Year)
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\emph on
+without
+\emph default
+ a blank between the author(s) and the opening parenthesis that delimits
+ the year.
+ Then, if you select 
+\family sans
+Natbib
+\begin_inset space ~
+\end_inset
+
+(BibTeX)
+\family default
+ in the document settings
+\lang japanese
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ふんしよ@文書!せってい@——設定
+\end_layout
+
+\end_inset
+
+
+\lang english
+ under 
+\family sans
+Bibliography\SpecialChar menuseparator
+Style
+\begin_inset space ~
+\end_inset
+
+format
+\family default
+ (see 
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:書誌情報レイアウト"
+
+\end_inset
+
+
+\lang english
+), you can select between different author-year or author-number styles.
+\end_layout
+
+\begin_layout Standard
 書誌情報環境中の全項目を揃えるには，
 \family sans
 編集\SpecialChar menuseparator
@@ -24079,24 +24229,12 @@ arg   "layout-paragraph"
 \end_layout
 
 \begin_layout Subsection
-文献データベース(Bib\SpecialChar TeX
-)
+文献データベース
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
 しょじじょうほう@書誌情報!でーたべーす@データベース
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-しょしじょうほう@書誌情報!Bib\SpecialChar TeX
-
 \end_layout
 
 \end_inset
@@ -24173,6 +24311,79 @@ http://wiki.lyx.org/BibTeX/Programs
 \end_inset
 
 に，そのような文献データベース用のプログラムの一覧があります．
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\SpecialChar LyX
+ supports two different approaches to use bibliography databases in a document.
+ Bib\SpecialChar TeX
+ is the classic technique that has been the only way to use such databases
+ for a long time.
+ It is quite established and mature and there is a huge range of existing
+ styles available.
+ But it has its drawbacks, especially when it comes to more complex bibliographi
+c needs and support for specific languages and scripts.
+ Those are addressed by 
+\noun on
+Biblatex
+\noun default
+.
+ 
+\noun on
+Biblatex
+\noun default
+ reads the same database format than Bib\SpecialChar TeX
+ (although it has been significantly
+ extended beyond Bib\SpecialChar TeX
+'s scope)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Meaning: While 
+\noun on
+Biblatex
+\noun default
+ can handle any classic Bib\SpecialChar TeX
+ database, Bib\SpecialChar TeX
+ might conversely fail to correctly
+ handle databases that use specific 
+\noun on
+Biblatex
+\noun default
+ features.
+\end_layout
+
+\end_inset
+
+, but it uses a different framework to generate citations and references
+ from it.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Both approaches are described in turn.
+\end_layout
+
+\begin_layout Subsubsection
+Bib\SpecialChar TeX
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+しょしじょうほう@書誌情報!Bib\SpecialChar TeX
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -24342,6 +24553,13 @@ status collapsed
 \begin_layout Plain Layout
 しょじじょうほう@書誌情報!れいあうと@レイアウト
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:書誌情報レイアウト"
 
 \end_inset
 
@@ -36410,8 +36628,11 @@ latexはつけじ@\SpecialChar LaTeX
 
 ．
 \lang english
- If you use Biblatex, you can select the style files and specify further
- options.
+ If you use 
+\noun on
+Biblatex
+\noun default
+, you can select the style files and specify further options.
  Finally, you can select a document-specific 
 \family sans
 Processor
@@ -40598,6 +40819,57 @@ status collapsed
 \begin_layout Plain Layout
 
 http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "natbib"
+literal "true"
+
+\end_inset
+
+\SpecialChar LaTeX
+パッケージ
+\series bold
+natbib
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+latexはつけじ@\SpecialChar LaTeX
+パッケージ ! natbib
+\end_layout
+
+\end_inset
+
+の
+\begin_inset CommandInset href
+LatexCommand href
+name "取扱説明書"
+target "http://mirrors.ctan.org/macros/latex/contrib/natbib/natbib.pdf"
+literal "false"
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/latex/contrib/natbib/natbib.pdf
 \end_layout
 
 \end_inset
