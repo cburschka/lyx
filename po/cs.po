@@ -1139,7 +1139,6 @@ msgid "App&ly"
 msgstr "&Použít"
 
 #: src/frontends/qt4/ui/ColorUi.ui:27
-#, fuzzy
 msgid "Font Colors"
 msgstr "Barva písma"
 
@@ -1172,7 +1171,6 @@ msgid "&Change..."
 msgstr "&Změnit..."
 
 #: src/frontends/qt4/ui/ColorUi.ui:165
-#, fuzzy
 msgid "Background Colors"
 msgstr "Barvy pozadí"
 
@@ -1816,7 +1814,6 @@ msgid "Use a real small caps shape, if the font provides one"
 msgstr "Použít reálné kapitálky v případě, že jsou poskytovány fontem"
 
 #: src/frontends/qt4/ui/FontUi.ui:273
-#, fuzzy
 msgid "Use true s&mall caps"
 msgstr "&Kapitálky"
 
@@ -1825,7 +1822,6 @@ msgid "Use old style instead of lining figures"
 msgstr "Použít minuskové číslice namísto verzálkových"
 
 #: src/frontends/qt4/ui/FontUi.ui:283
-#, fuzzy
 msgid "Use &old style figures"
 msgstr "Použít &minuskové číslice (old style figures)"
 
@@ -1837,7 +1833,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:293
 msgid "Enable micr&o-typographic extensions"
-msgstr ""
+msgstr "Zap&nout mikrotypografické extenze"
 
 #: src/frontends/qt4/ui/FontUi.ui:300
 msgid ""
@@ -2198,7 +2194,6 @@ msgid ""
 msgstr "Zde lze nastavit alternativní generátor rejstříku a určit jeho volby."
 
 #: src/frontends/qt4/ui/IndicesUi.ui:22 src/frontends/qt4/ui/PrefLatexUi.ui:198
-#, fuzzy
 msgid "Index Generation"
 msgstr "Generování rejstříku"
 
@@ -2298,9 +2293,8 @@ msgid "New Inset"
 msgstr "Novou vložku"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:20
-#, fuzzy
 msgid "Document &Class"
-msgstr "Třída dokumentu"
+msgstr "Třída &dokumentu"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:45
 msgid "Click to select a local document class definition file"
@@ -2311,7 +2305,6 @@ msgid "&Local Layout..."
 msgstr "&Lokální rozvržení..."
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:58
-#, fuzzy
 msgid "Class Options"
 msgstr "Nastavení třídy"
 
@@ -2365,12 +2358,10 @@ msgid "&Use refstyle (not prettyref) for cross-references"
 msgstr "&Použít refstyle (ne prettyref) pro křížové odkazy"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:72
-#, fuzzy
 msgid "&Quote style:"
 msgstr "&Typ uvozovek:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:84
-#, fuzzy
 msgid "Language pa&ckage:"
 msgstr "Jazykový &balíček:"
 
@@ -2392,12 +2383,10 @@ msgid "Encoding"
 msgstr "Kódování"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:147
-#, fuzzy
 msgid "Lan&guage default"
 msgstr "&Standardní pro daný jazyk"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:170
-#, fuzzy
 msgid "Othe&r:"
 msgstr "&Jiný:"
 
@@ -2686,7 +2675,6 @@ msgid "Use the margin settings provided by the document class"
 msgstr "Použít nastavení okraje z třídy dokumentu"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:31
-#, fuzzy
 msgid "&Default margins"
 msgstr "&Standardní okraje"
 
@@ -2719,7 +2707,6 @@ msgid "&Foot skip:"
 msgstr "&Mezera patičky:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:180
-#, fuzzy
 msgid "&Column sep:"
 msgstr "&Vzdálenost sloupců:"
 
@@ -2937,14 +2924,12 @@ msgstr ""
 "Nastavit standardní výstupní formát (pro prohlížení a aktualizaci výstupu)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:64
-#, fuzzy
 msgid "De&fault output format:"
 msgstr "&Standarní výstupní formát:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:86
-#, fuzzy
 msgid "LyX Format"
-msgstr "&Formát:"
+msgstr "Formát Ly&X-u"
 
 #: src/frontends/qt4/ui/OutputUi.ui:98
 msgid ""
@@ -2956,7 +2941,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/OutputUi.ui:101
 msgid "Save &transient properties"
-msgstr ""
+msgstr "&Ukládat proměnlivá nastavení"
 
 #: src/frontends/qt4/ui/OutputUi.ui:111
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
@@ -2964,12 +2949,10 @@ msgstr ""
 "Umožnit zpětné/dopředné vyhledávání mezi editorem a výstupem (např. SyncTeX)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:114
-#, fuzzy
 msgid "S&ynchronize with output"
 msgstr "S&ynchronizovat s výstupem"
 
 #: src/frontends/qt4/ui/OutputUi.ui:131
-#, fuzzy
 msgid "C&ustom macro:"
 msgstr "&Vlastní makro:"
 
@@ -3109,7 +3092,6 @@ msgid "&Bookmarks"
 msgstr "&Záložky"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:293
-#, fuzzy
 msgid "G&enerate bookmarks (toc)"
 msgstr "Vytvořit zá&ložky (Obsah)"
 
@@ -3126,7 +3108,6 @@ msgid "Number of levels"
 msgstr "Rozbalit do zadané úrovně"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:388
-#, fuzzy
 msgid "Additional O&ptions"
 msgstr "&Doplňkové parametry pro LaTeX"
 
@@ -3735,7 +3716,6 @@ msgid "Vector &graphics format"
 msgstr "&Vektorový formát obrázku"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:97
-#, fuzzy
 msgid "S&hort name:"
 msgstr "&Zkratka:"
 
@@ -5179,9 +5159,8 @@ msgid "Show &path"
 msgstr "Zobraz &cestu"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:20
-#, fuzzy
 msgid "Paragraph Separation"
-msgstr "Paragraph Start"
+msgstr "Oddělení odstavců"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:35
 msgid "Indent consecutive paragraphs"
@@ -31866,7 +31845,7 @@ msgstr "Smazat vlastní slovník|S"
 
 #: src/frontends/qt4/Menus.cpp:901
 msgid "Language|L"
-msgstr "Jazyk|J"
+msgstr "Jazyk|k"
 
 #: src/frontends/qt4/Menus.cpp:903
 msgid "More Languages ...|M"
