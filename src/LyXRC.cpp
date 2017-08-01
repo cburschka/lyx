@@ -460,7 +460,7 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 				FileName const tmp =
 					libFileSearch(string(),
 						      lexrc.getString());
-				if (read(tmp, check_format)) {
+				if (!read(tmp, check_format)) {
 					lexrc.printError(
 					    "Error reading included file: " + tmp.absFileName());
 				}
