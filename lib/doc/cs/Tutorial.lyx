@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -85,6 +85,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -94,7 +95,9 @@
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style german
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
@@ -1161,7 +1164,7 @@ u (oba soubory
 Jedno varování: Protože je tento průvodce z pochopitelných důvod otevřen
  pouze pro čtení, spousta akcí typu vložení značky, změn stylů apod.
  vám nebude fungovat.
- Pro experimenty je lepší otevřít nové okno \SpecialChar LyX
+ Pro experimenty je lepší otevřít nový dokument \SpecialChar LyX
 u.
 \end_layout
 
@@ -1748,7 +1751,7 @@ Vlož
 \family default
  a 
 \family sans
-Tiskni
+Kontrola pravopisu
 \family default
 .
  Jestliže podržíte ukazovátko myši chvilku nad tlačítkem, objeví se žlutá
@@ -1974,15 +1977,12 @@ zvýrazňovat
 \end_inset
 
 .
+
+\family default
  \SpecialChar LyX
  čísluje oddíly od jedné a sází hlavičku oddílu (nadpis) větším písmem.
- (Pochopitelně, všechno bude vysazeno korektně i případě
-\family default
- 
-\family typewriter
-dvi
-\family default
- či tisku.) Nyní stiskněte tlačítko 
+ (Pochopitelně, všechno bude vysazeno korektně i v případě dvi či tisku.)
+ Nyní stiskněte tlačítko 
 \family sans
 Enter
 \family default
@@ -3789,7 +3789,7 @@ Někde ve vašem dokumentu napište:
 \end_layout
 
 \begin_layout LyX-Code
-Líbí se mi to Einsteinovo E=mc^2, protože je to jednoduché.
+Líbí se mi Einsteinovo E=mc^2, protože je to jednoduché.
  
 \end_layout
 
@@ -5249,7 +5249,7 @@ u.
 
 \begin_layout Subsection
 Režim \SpecialChar TeX
-  
+
 \end_layout
 
 \begin_layout Standard
@@ -5260,12 +5260,12 @@ u, a bude zobrazeno na
  Do režimu \SpecialChar TeX
  se dostanete pomocí nabídky 
 \family typewriter
-Vložit -> \SpecialChar TeX
--ový
+Vložit -> Kód
 \begin_inset space ~
 \end_inset
 
-kód
+\SpecialChar TeX
+-u
 \family default
  nebo kliknutím na tlačítko na liště.
 \end_layout

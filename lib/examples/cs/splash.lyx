@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -52,6 +52,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -61,7 +62,9 @@
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -207,65 +210,6 @@ http://www.lyx.org/
  grafickou výpravu do \SpecialChar LyX
 u (Graphical Tour) a najít spousty rad a triků v rámci
  wiki.
-\end_layout
-
-\begin_layout Enumerate
-
-\series bold
-\lang english
-Note for Linux users:
-\series default
- Please check that the language packages for the \SpecialChar LaTeX
- distribution 
-\family sans
-\SpecialChar TeX
-
-\begin_inset space ~
-\end_inset
-
-Live
-\family default
- are installed.
- Otherwise you will get \SpecialChar LaTeX
- errors.
-\begin_inset Newline newline
-\end_inset
-
-For example on the Linux distributions 
-\family sans
-(K,X)Ubuntu
-\family default
- and 
-\family sans
-Debian
-\family default
- the package name for the German language is 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
-texlive-lang-german
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
-\begin_inset Newline newline
-\end_inset
-
-After the installation of the language packages you must use the \SpecialChar LyX
- menu 
-\family sans
-Tools
-\family default
-\SpecialChar menuseparator
-
-\family sans
-Reconfigure
-\family default
-.
 \end_layout
 
 \end_body
