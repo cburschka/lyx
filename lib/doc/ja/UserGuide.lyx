@@ -24326,15 +24326,25 @@ http://wiki.lyx.org/BibTeX/Programs
  But it has its drawbacks, especially when it comes to more complex bibliographi
 c needs and support for specific languages and scripts.
  Those are addressed by 
-\noun on
-Biblatex
-\noun default
+\series bold
+biblatex
+\series default
 .
- 
-\noun on
-Biblatex
-\noun default
- reads the same database format than Bib\SpecialChar TeX
+\lang japanese
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+latexはつけじ@\SpecialChar LaTeX
+パッケージ ! biblatex
+\end_layout
+
+\end_inset
+
+
+\lang english
+ It reads the same database format than Bib\SpecialChar TeX
  (although it has been significantly
  extended beyond Bib\SpecialChar TeX
 's scope)
@@ -24366,8 +24376,56 @@ Biblatex
 
 \begin_layout Standard
 
+\lang ngerman
+To select if Bib\SpecialChar TeX
+ or 
+\series bold
 \lang english
-Both approaches are described in turn.
+biblatex
+\series default
+\lang ngerman
+ should be used, set in the document settings (menu
+\family sans
+\lang japanese
+文書\SpecialChar menuseparator
+設定
+\family default
+)
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ふんしよ@文書!せってい@——設定
+\end_layout
+
+\end_inset
+
+
+\lang ngerman
+under 
+\family sans
+\lang english
+Bibliography
+\family default
+\lang ngerman
+ the 
+\family sans
+\lang english
+Style
+\begin_inset space ~
+\end_inset
+
+format
+\family default
+\lang ngerman
+ to a Bib\SpecialChar TeX
+ or a 
+\family sans
+\lang english
+Biblatex
+\family default
+\lang ngerman
+ format.
 \end_layout
 
 \begin_layout Subsubsection
@@ -24391,7 +24449,7 @@ status collapsed
 \family sans
 挿入\SpecialChar menuseparator
 一覧／目次\SpecialChar menuseparator
-BibTeX書誌情報
+Bib(la)TeX書誌情報
 \family default
 メニューを使用します．灰色の枠が挿入されてウィンドウが表示されますので，そこで読み込む一つ以上のデータベースとスタイルファイルを指定します．
 \family sans
@@ -24438,10 +24496,177 @@ literal "false"
 \end_inset
 
 
+\lang english
+In this document we used the Bib\SpecialChar TeX
+ style 
+\family sans
+alphadin.bst
+\family default
+, which provides an alpha-numeric style in accordance with the German Standards
+ Institute (DIN).
 \end_layout
 
 \begin_layout Standard
 文献参照の挿入は，前節の説明したように機能します．
+\end_layout
+
+\begin_layout Subsubsection
+Biblatex
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+しょしじょうほう@書誌情報!Biblatex
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+latexはつけじ@\SpecialChar LaTeX
+パッケージ ! biblatex
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Accessing a database via 
+\series bold
+biblatex
+\series default
+ is almost identical to Bib\SpecialChar TeX
+: Use the menu 
+\family sans
+\lang japanese
+挿入\SpecialChar menuseparator
+一覧／目次\SpecialChar menuseparator
+Bib(la)TeX書誌情報
+\family default
+．
+\lang english
+ In contrary to Bib\SpecialChar TeX
+ you cannot select a 
+\family sans
+style
+\family default
+ file.
+ The other dialog options are the same as with
+\lang japanese
+Bib\SpecialChar TeX
+．
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+biblatex
+\series default
+ has two different style files: a bibliography style file (text file with
+ the file extension
+\lang japanese
+「
+\family sans
+.bbx
+\family default
+」
+\lang english
+) controls how the bibliography entries will look like and a citation style
+ file (text file with the file extension
+\lang japanese
+「
+\family sans
+.cbx
+\family default
+」
+\lang english
+) controls the look of the citation references in the text.
+ Usually such style files come in pairs and it makes sense to use matching
+ styles.
+ It is nevertheless possible to mix any citation style with any bibliography
+ style.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+biblatex
+\series default
+ styles are not set in the 
+\family sans
+Bib(la)TeX
+\begin_inset space ~
+\end_inset
+
+Bibliography
+\family default
+ dialog, but in the document settings.
+\lang japanese
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+ふんしよ@文書!せってい@——設定
+\end_layout
+
+\end_inset
+
+
+\lang english
+ However, in the dialog in the 
+\family sans
+Options
+\family default
+ field, which is only visible if you use 
+\series bold
+biblatex
+\series default
+, you can enter options that determine how the bibliography is printed (for
+ example how its heading will appear).
+ These options are deescribed in detail in the 
+\series bold
+biblatex
+\series default
+ manual, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Biblatex"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Inserting a citation reference works as described in section
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:文献データベース"
+
+\end_inset
+
+．
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Bibliography Processors
 \end_layout
 
 \begin_layout Standard
@@ -24469,7 +24694,18 @@ LaTeX
 \end_layout
 
 \begin_layout Description
-biber これは，完全なUnicodeサポートと，制限のないメモリを提供しますが，(例えば
+biber 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+latexはつけじ@\SpecialChar LaTeX
+パッケージ ! biber
+\end_layout
+
+\end_inset
+
+これは，完全なUnicodeサポートと，制限のないメモリを提供しますが，(例えば
 \series bold
 natbib
 \series default
@@ -24497,21 +24733,33 @@ bibtex
 \end_layout
 
 \begin_layout Standard
-Bib\SpecialChar TeX
-は，派生版を指定する部分の下にオプションを指定することで，制御することができます．オプションを書き加える前に，
-\family sans
-Bib\SpecialChar TeX
 
-\family default
-の取扱説明書
+\lang english
+Selected bibliography processors can be controlled with options that you
+ can add below the selection.
+ Before adding options, it is strongly recommended that you read the manual
+ of Bib\SpecialChar TeX
+ or 
+\series bold
+biber
+\series default
+, 
+\lang japanese
+
 \begin_inset CommandInset citation
 LatexCommand cite
-key "BibTeX"
+key "BibTeX,biber"
 literal "true"
 
 \end_inset
 
-を一読することを強くお勧めします．
+．
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Customizing
 \end_layout
 
 \begin_layout Standard
@@ -40829,7 +41077,7 @@ http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "natbib"
+key "biber"
 literal "true"
 
 \end_inset
@@ -40837,7 +41085,7 @@ literal "true"
 \SpecialChar LaTeX
 パッケージ
 \series bold
-natbib
+biber
 \series default
 
 \begin_inset Index idx
@@ -40845,7 +41093,7 @@ status collapsed
 
 \begin_layout Plain Layout
 latexはつけじ@\SpecialChar LaTeX
-パッケージ ! natbib
+パッケージ ! biber
 \end_layout
 
 \end_inset
@@ -40854,7 +41102,7 @@ latexはつけじ@\SpecialChar LaTeX
 \begin_inset CommandInset href
 LatexCommand href
 name "取扱説明書"
-target "http://mirrors.ctan.org/macros/latex/contrib/natbib/natbib.pdf"
+target "http://mirrors.ctan.org/biblio/biber/documentation/biber.pdf"
 literal "false"
 
 \end_inset
@@ -40869,7 +41117,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://mirrors.ctan.org/macros/latex/contrib/natbib/natbib.pdf
+http://mirrors.ctan.org/biblio/biber/documentation/biber.pdf
 \end_layout
 
 \end_inset

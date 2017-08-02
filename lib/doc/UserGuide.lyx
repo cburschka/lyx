@@ -28395,15 +28395,22 @@ http://wiki.lyx.org/BibTeX/Programs
  But it has its drawbacks, especially when it comes to more complex bibliographi
 c needs and support for specific languages and scripts.
  Those are addressed by 
-\noun on
-Biblatex
-\noun default
+\series bold
+biblatex
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+ packages ! biblatex
+\end_layout
+
+\end_inset
+
 .
- 
-\noun on
-Biblatex
-\noun default
- reads the same database format than Bib\SpecialChar TeX
+ It reads the same database format than Bib\SpecialChar TeX
  (although it has been significantly
  extended beyond Bib\SpecialChar TeX
 's scope)
@@ -28432,7 +28439,44 @@ Biblatex
 \end_layout
 
 \begin_layout Standard
-Both approaches are described in turn.
+To select if Bib\SpecialChar TeX
+ or 
+\series bold
+biblatex
+\series default
+ should be used, set in the document settings (menu 
+\family sans
+Document\SpecialChar menuseparator
+Settings
+\family default
+)
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Document ! Settings
+\end_layout
+
+\end_inset
+
+ under 
+\family sans
+Bibliography
+\family default
+ the 
+\family sans
+Style
+\begin_inset space ~
+\end_inset
+
+format
+\family default
+ to a Bib\SpecialChar TeX
+ or a 
+\family sans
+Biblatex
+\family default
+ format.
 \end_layout
 
 \begin_layout Subsubsection
@@ -28452,17 +28496,7 @@ Bibliography ! Bib\SpecialChar TeX
 \end_layout
 
 \begin_layout Standard
-To 
-\change_deleted -712698321 1483882678
-use
-\change_inserted -712698321 1483882681
-access
-\change_unchanged
- a database
-\change_inserted -712698321 1483882690
- via Bib\SpecialChar TeX
-
-\change_unchanged
+To access a database via Bib\SpecialChar TeX
 , use the menu 
 \family sans
 Insert\SpecialChar menuseparator
@@ -28471,26 +28505,18 @@ List
 /
 \family sans
 TOC\SpecialChar menuseparator
-Bib
-\change_inserted -712698321 1483882685
-(la)
-\change_unchanged
-TeX
+Bib(la)TeX
 \begin_inset space ~
 \end_inset
 
 Bibliography
 \family default
 .
- A gray box will be inserted and a window appears.
- In this window you can add one or more databases and select a 
-\change_inserted -712698321 1483882797
-Bib\SpecialChar TeX
+ A window will appear in which you can add one or more databases and select
+ a Bib\SpecialChar TeX
 
 \family sans
- 
-\change_unchanged
-style
+ style
 \family default
  file.
  The option 
@@ -28507,12 +28533,8 @@ Content
 \end_layout
 
 \begin_layout Standard
-The 
-\change_inserted -712698321 1483882781
-Bib\SpecialChar TeX
- 
-\change_unchanged
-style file is a text file with the file extension 
+The Bib\SpecialChar TeX
+ style file is a text file with the file extension 
 \begin_inset Quotes eld
 \end_inset
 
@@ -28552,36 +28574,37 @@ literal "false"
 
 \end_inset
 
-
-\change_inserted -712698321 1483883972
- In this document, we used the Bib\SpecialChar TeX
+ In this document we used the Bib\SpecialChar TeX
  style 
 \family sans
 alphadin.bst
 \family default
 , which provides an alpha-numeric style in accordance with the German Standards
  Institute (DIN).
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
 Inserting a citation reference works as described in the previous section.
-\change_inserted -712698321 1483883993
-
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted -712698321 1483883999
 Biblatex
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1483884003
 Bibliography ! Biblatex
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+ packages ! biblatex
 \end_layout
 
 \end_inset
@@ -28590,18 +28613,12 @@ Bibliography ! Biblatex
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1483884100
 Accessing a database via 
-\change_unchanged
-
-\noun on
-Biblatex
-\change_inserted -712698321 1483884100
-
-\noun default
+\series bold
+biblatex
+\series default
  is almost identical to Bib\SpecialChar TeX
-: use the menu 
+: Use the menu 
 \family sans
 Insert\SpecialChar menuseparator
 List
@@ -28616,36 +28633,22 @@ Bib(la)TeX
 Bibliography
 \family default
 .
- A gray box will be inserted and a window appears.
- In this window you can add one or more databases, but as opposed to Bib\SpecialChar TeX
-,
+ In contrary to Bib\SpecialChar TeX
  you cannot select a 
 \family sans
 style
 \family default
- file (we will explain later, why).
- As with Bib\SpecialChar TeX
-, the option 
-\family sans
-Add bibliography to TOC
-\family default
- adds a table of contents entry for the bibliography.
- In the 
-\family sans
-Content
-\family default
- drop box you can select whether to include all the entries in the database
- in the document or just the cited references.
+ file.
+ The other dialog options are the same as with Bib\SpecialChar TeX
+.
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted -712698321 1483884492
-
-\noun on
-Biblatex
-\noun default
- has two different style files: a bibliography style file (a text file with
+\series bold
+biblatex
+\series default
+ has two different style files: a bibliography style file (text file with
  the file extension 
 \begin_inset Quotes eld
 \end_inset
@@ -28658,8 +28661,8 @@ Biblatex
 \begin_inset Quotes erd
 \end_inset
 
-) controls how the bibliography entries will look like, and a citation style
- file (extension 
+) controls how the bibliography entries will look like and a citation style
+ file (text file with the file extension 
 \begin_inset Quotes eld
 \end_inset
 
@@ -28672,18 +28675,17 @@ Biblatex
 \end_inset
 
 ) controls the look of the citation references in the text.
- Usually, such style files come in pairs, and it makes most sense to use
- matching styles, but it is possible to mix any citation style with any
- bibliography style.
+ Usually such style files come in pairs and it makes sense to use matching
+ styles.
+ It is nevertheless possible to mix any citation style with any bibliography
+ style.
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted -712698321 1483891283
-
-\noun on
-Biblatex
-\noun default
+\series bold
+biblatex
+\series default
  styles are not set in the 
 \family sans
 Bib(la)TeX
@@ -28692,32 +28694,31 @@ Bib(la)TeX
 
 Bibliography
 \family default
- dialog, but in the 
-\family sans
-Document Settings
-\family default
- dialog (in 
-\family sans
-Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Bibliography
-\family default
-).
- However, in the former dialog (in the 
+ dialog, but in the document settings.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Document ! Settings
+\end_layout
+
+\end_inset
+
+ However, in the dialog in the 
 \family sans
 Options
 \family default
- field which is only visible if you use 
-\noun on
-Biblatex
-\noun default
-), you can enter options that change the way the bibliography is displayed
- (for instance concerning its heading).
- These options are detailed in the 
-\noun on
-Biblatex
-\noun default
- manual 
+ field, which is only visible if you use 
+\series bold
+biblatex
+\series default
+, you can enter options that determine how the bibliography is printed (for
+ example how its heading will appear).
+ These options are deescribed in detail in the 
+\series bold
+biblatex
+\series default
+ manual, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Biblatex"
@@ -28726,13 +28727,9 @@ literal "true"
 \end_inset
 
 .
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1483885667
 Inserting a citation reference works as described in section
 \begin_inset space ~
 \end_inset
@@ -28751,8 +28748,6 @@ noprefix "false"
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted -712698321 1483885726
 Bibliography Processors
 \end_layout
 
@@ -28841,20 +28836,35 @@ available by default
 
 \begin_layout Description
 biber 
+\change_inserted -712698321 1483886386
+a specific, modern processor
+\change_unchanged
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+ packages ! biber
+\end_layout
+
+\end_inset
+
+
 \change_inserted -712698321 1483886257
-a specific, modern processor developed exclusively for 
+ developed exclusively for 
 \noun on
 Biblatex
 \noun default
  (it does not work with Bib\SpecialChar TeX
 !).
  
-\family sans
-Biber
-\family default
- 
 \change_unchanged
-provides full Unicode support, unlimited memory
+
+\series bold
+biber
+\series default
+ provides full Unicode support, unlimited memory
 \change_deleted -712698321 1483886272
 , but does not work with other bibliography packages (e.
 \begin_inset space \thinspace{}
@@ -28875,9 +28885,13 @@ biblatex
 
 \series default
  and many specific features 
-\noun on
-Biblatex
-\noun default
+\change_unchanged
+
+\series bold
+biblatex
+\change_inserted -712698321 1483886347
+
+\series default
  makes use of
 \change_unchanged
 ; 
@@ -28886,9 +28900,13 @@ recommended for multilingual texts and for languages that don't use Latin
  letters
 \change_inserted -712698321 1483886386
 if you use the 
-\noun on
-Biblatex
-\noun default
+\change_unchanged
+
+\series bold
+biblatex
+\change_inserted -712698321 1483886386
+
+\series default
  approach, it is strongly recommended to use 
 \family sans
 biber
@@ -28934,13 +28952,21 @@ bibtex
 , works with all bibliography packages
 \change_inserted -712698321 1484330876
 , although more complex 
-\noun on
-Biblatex
-\noun default
+\change_unchanged
+
+\series bold
+biblatex
+\change_inserted -712698321 1484330876
+
+\series default
  bibliographies will exceed its limits, and not all 
-\noun on
-Biblatex
-\noun default
+\change_unchanged
+
+\series bold
+biblatex
+\change_inserted -712698321 1484330876
+
+\series default
  features are supported.
 \end_layout
 
@@ -28979,13 +29005,21 @@ LaTeX
 ), \SpecialChar LyX
  selects the most appropriate (available) processor for the current bibliogra
 phy approach (
-\family sans
+\change_unchanged
+
+\series bold
 biber
-\family default
+\change_inserted -712698321 1484331301
+
+\series default
  for 
-\noun on
-Biblatex
-\noun default
+\change_unchanged
+
+\series bold
+biblatex
+\change_inserted -712698321 1484331301
+
+\series default
 , 
 \family sans
 bibtex
@@ -29023,69 +29057,27 @@ LaTeX
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted -712698321 1483886683
-Bib\SpecialChar TeX
-
-\change_inserted -712698321 1484331419
-Selected bibliography processors
-\change_unchanged
- can be controlled with options that you can add below the 
-\change_deleted -712698321 1484331437
-specification of the variants
-\change_inserted -712698321 1484331439
-selection
-\change_unchanged
-.
+Selected bibliography processors can be controlled with options that you
+ can add below the selection.
  Before adding options, it is strongly recommended that you read the manual
- 
-\change_inserted -712698321 1483886810
-pages 
-\change_unchanged
-of 
-\change_deleted -712698321 1483886842
-
-\family sans
-Bib\SpecialChar TeX
-
-\change_inserted -712698321 1483886842
-bibtex
-\change_unchanged
-
-\family default
- 
-\change_deleted -712698321 1483886972
-
+ of Bib\SpecialChar TeX
+ or 
+\series bold
+biber
+\series default
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "BibTeX"
+key "BibTeX,biber"
 literal "true"
 
 \end_inset
 
-
-\change_inserted -712698321 1483886836
- or 
-\family sans
-bibtex8
-\family default
-, or the 
-\family sans
-biber
-\family default
- manual
-\change_unchanged
 .
-\change_inserted -712698321 1483887134
-
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted -712698321 1483887497
 Customizing
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -49165,7 +49157,7 @@ http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "natbib"
+key "biber"
 literal "true"
 
 \end_inset
@@ -49174,7 +49166,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentation"
-target "http://mirrors.ctan.org/macros/latex/contrib/natbib/natbib.pdf"
+target "http://mirrors.ctan.org/biblio/biber/documentation/biber.pdf"
 literal "false"
 
 \end_inset
@@ -49182,7 +49174,7 @@ literal "false"
  of the \SpecialChar LaTeX
  package 
 \series bold
-natbib
+biber
 \series default
 
 \begin_inset Index idx
@@ -49190,7 +49182,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
- packages ! natbib
+ packages ! biber
 \end_layout
 
 \end_inset
@@ -49205,7 +49197,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://mirrors.ctan.org/macros/latex/contrib/natbib/natbib.pdf
+http://mirrors.ctan.org/biblio/biber/documentation/biber.pdf
 \end_layout
 
 \end_inset

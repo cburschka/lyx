@@ -30050,15 +30050,25 @@ vous trouverez une sélection de programmes pour gérer des bases de données
  But it has its drawbacks, especially when it comes to more complex bibliographi
 c needs and support for specific languages and scripts.
  Those are addressed by 
-\noun on
-Biblatex
-\noun default
+\series bold
+biblatex
+\series default
 .
- 
-\noun on
-Biblatex
-\noun default
- reads the same database format than Bib\SpecialChar TeX
+\lang french
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages \SpecialChar LaTeX
+ ! biblatex
+\end_layout
+
+\end_inset
+
+
+\lang english
+ It reads the same database format than Bib\SpecialChar TeX
  (although it has been significantly
  extended beyond Bib\SpecialChar TeX
 's scope)
@@ -30090,8 +30100,57 @@ Biblatex
 
 \begin_layout Standard
 
+\lang ngerman
+To select if Bib\SpecialChar TeX
+ or 
+\series bold
 \lang english
-Both approaches are described in turn.
+biblatex
+\series default
+\lang ngerman
+ should be used, set in the document settings
+\lang french
+ (menu 
+\family sans
+Document\SpecialChar menuseparator
+Paramètres
+\family default
+)
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Document ! Paramètres
+\end_layout
+
+\end_inset
+
+ 
+\lang ngerman
+under 
+\family sans
+\lang english
+Bibliography
+\family default
+\lang ngerman
+ the 
+\family sans
+\lang english
+Style
+\begin_inset space ~
+\end_inset
+
+format
+\family default
+\lang ngerman
+ to a Bib\SpecialChar TeX
+ or a 
+\family sans
+\lang english
+Biblatex
+\family default
+\lang ngerman
+ format.
 \end_layout
 
 \begin_layout Subsubsection
@@ -30111,8 +30170,16 @@ Bibliographie ! Bib\SpecialChar TeX
 \end_layout
 
 \begin_layout Standard
-Pour utiliser une base de données dans votre document, utilisez le menu
- 
+Pour 
+\lang english
+access
+\lang french
+ une base de données 
+\lang english
+via
+\lang french
+ Bib\SpecialChar TeX
+, utilisez le menu 
 \family sans
 Insertion\SpecialChar menuseparator
 Listes
@@ -30132,12 +30199,12 @@ Bibliographie
 \begin_inset space ~
 \end_inset
 
-BibTeX
+Bib(la)TeX
 \family default
 .
- Une boîte grise sera insérée et une fenêtre de dialogue va s'ouvrir.
- Dans cette fenêtre vous pourrez ajouter une ou plusieurs bases de données
- et choisir un fichier de style.
+ Une fenêtre de dialogue va s'ouvrir dans cette fenêtre vous pourrez ajouter
+ une ou plusieurs bases de données et choisir un fichier de style Bib\SpecialChar TeX
+.
  L'option 
 \family sans
 Ajouter la bibliographie à la TdM
@@ -30152,12 +30219,13 @@ Contenu
 \end_layout
 
 \begin_layout Standard
-Le fichier de style est un fichier texte possédant une extension 
+Le fichier de style Bib\SpecialChar TeX
+ est un fichier texte possédant une extension 
 \begin_inset Quotes cld
 \end_inset
 
 
-\family typewriter
+\family sans
 .bst
 \family default
 
@@ -30194,10 +30262,216 @@ literal "false"
 \end_inset
 
 .
+ 
+\lang english
+In this document we used the Bib\SpecialChar TeX
+ style 
+\family sans
+alphadin.bst
+\family default
+, which provides an alpha-numeric style in accordance with the German Standards
+ Institute (DIN).
 \end_layout
 
 \begin_layout Standard
-Insérer une citation fonctionne exactement comme dans le cas précédent..
+Insérer une citation fonctionne comme dans le cas précédent.
+\end_layout
+
+\begin_layout Subsubsection
+Biblatex
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Bibliographie ! Biblatex
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages \SpecialChar LaTeX
+ ! biblatex
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Accessing a database via 
+\series bold
+biblatex
+\series default
+ is almost identical to
+\lang french
+ Bib\SpecialChar TeX
+: Utilisez le menu 
+\family sans
+Insertion\SpecialChar menuseparator
+Listes
+\begin_inset space ~
+\end_inset
+
+&
+\begin_inset space ~
+\end_inset
+
+TdM\SpecialChar menuseparator
+
+\begin_inset space ~
+\end_inset
+
+Bibliographie
+\begin_inset space ~
+\end_inset
+
+Bib(la)TeX
+\family default
+.
+ 
+\lang english
+In contrary to Bib\SpecialChar TeX
+ you cannot select a 
+\family sans
+style
+\family default
+ file.
+ The other dialog options are the same as with
+\lang french
+ Bib\SpecialChar TeX
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+biblatex
+\series default
+ has two different style files: a bibliography style file (text file with
+ the file extension 
+\family sans
+\lang french
+
+\begin_inset Quotes cld
+\end_inset
+
+.bbx
+\family default
+
+\begin_inset Quotes crd
+\end_inset
+
+
+\lang english
+) controls how the bibliography entries will look like and a citation style
+ file (text file with the file extension 
+\family sans
+\lang french
+
+\begin_inset Quotes cld
+\end_inset
+
+.cbx
+\family default
+
+\begin_inset Quotes crd
+\end_inset
+
+
+\lang english
+) controls the look of the citation references in the text.
+ Usually such style files come in pairs and it makes sense to use matching
+ styles.
+ It is nevertheless possible to mix any citation style with any bibliography
+ style.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\lang english
+biblatex
+\series default
+ styles are not set in the 
+\family sans
+\lang french
+Bibliographie
+\begin_inset space ~
+\end_inset
+
+Bib(la)TeX
+\family default
+\lang english
+ dialog, but in the document settings
+\lang french
+.
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Document ! Paramètres
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+However, in the dialog in the 
+\family sans
+Options
+\family default
+ field, which is only visible if you use 
+\series bold
+biblatex
+\series default
+, you can enter options that determine how the bibliography is printed (for
+ example how its heading will appear).
+ These options are deescribed in detail in the 
+\series bold
+biblatex
+\series default
+ manual, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Biblatex"
+literal "true"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Insérer une citation fonctionne comme 
+\lang english
+described in section
+\lang french
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Bases-de-Données-Biblio"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Bibliography Processors
 \end_layout
 
 \begin_layout Standard
@@ -30237,9 +30511,19 @@ BibTeX
 \end_layout
 
 \begin_layout Description
-biber fournit une fonctionnalité Unicode complète, une mémoire sans limite,
- mais ne fonctionne pas avec d'autres paquetages bibliographiques que le
- paquetage
+biber 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages \SpecialChar LaTeX
+ ! biber
+\end_layout
+
+\end_inset
+
+fournit une fonctionnalité Unicode complète, une mémoire sans limite, mais
+ ne fonctionne pas avec d'autres paquetages bibliographiques que le paquetage
 \begin_inset space ~
 \end_inset
 
@@ -30277,24 +30561,38 @@ bibtex
 \end_layout
 
 \begin_layout Standard
-Ce programme peut être contrôlé par un certain nombre d'options que vous
- pouvez ajouter sous la spécification des variantes.
- Avant d'ajouter des options, il est fortement recommandé de lire le manuel
- de 
-\family sans
-Bib\SpecialChar TeX
 
-\family default
- 
+\lang english
+Selected bibliography processors
+\lang french
+ peut être contrôlé par un certain nombre d'options que vous pouvez ajouter
+ sous la 
+\lang english
+selection
+\lang french
+.
+ Avant d'ajouter des options, il est fortement recommandé de lire le manuel
+ de Bib\SpecialChar TeX
+ ou 
+\series bold
+biber
+\series default
+, 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "BibTeX"
+key "BibTeX,biber"
 literal "true"
 
 \end_inset
 
 .
  
+\end_layout
+
+\begin_layout Subsubsection
+
+\lang english
+Customizing
 \end_layout
 
 \begin_layout Standard
@@ -50093,7 +50391,7 @@ http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "natbib"
+key "biber"
 literal "true"
 
 \end_inset
@@ -50102,7 +50400,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documentation"
-target "http://mirrors.ctan.org/macros/latex/contrib/natbib/natbib.pdf"
+target "http://mirrors.ctan.org/biblio/biber/documentation/biber.pdf"
 literal "false"
 
 \end_inset
@@ -50110,7 +50408,7 @@ literal "false"
  du paquetage \SpecialChar LaTeX
  
 \series bold
-natbib
+biber
 \series default
 
 \begin_inset Index idx
@@ -50118,7 +50416,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Paquetages \SpecialChar LaTeX
- ! natbib
+ ! biber
 \end_layout
 
 \end_inset
@@ -50133,7 +50431,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://mirrors.ctan.org/macros/latex/contrib/natbib/natbib.pdf
+http://mirrors.ctan.org/biblio/biber/documentation/biber.pdf
 \end_layout
 
 \end_inset

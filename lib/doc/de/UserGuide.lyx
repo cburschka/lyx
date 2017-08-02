@@ -27983,14 +27983,25 @@ er Stile, auf die man zurückgreifen kann.
  auch Schwächen, vor allem dann, wenn Sie komplexere
  Anforderungen haben oder bestimmte Sprachen oder Schriften benötigen.
  Diese Schwächen versucht 
-\noun on
-Biblatex
-\noun default
+\series bold
+biblatex
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-Paket ! biblatex
+\end_layout
+
+\end_inset
+
  zu beseitigen.
  
-\noun on
-Biblatex
-\noun default
+\series bold
+biblatex
+\series default
  kann dasselbe Datenbankformat wie Bib\SpecialChar TeX
  lesen (wenn dieses auch erheblich
  für 
@@ -28023,7 +28034,40 @@ Biblatex
 \end_layout
 
 \begin_layout Standard
-Beide Methoden werden im Folgenden vorgestellt.
+Um festzulegen, ob Bib\SpecialChar TeX
+ oder 
+\series bold
+biblatex
+\series default
+ verwendet werden soll, wird in den Dokumenteinstellungen (Menü 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen
+\family default
+)
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Dokument ! Einstellungen
+\end_layout
+
+\end_inset
+
+ unter 
+\family sans
+Literaturverzeichnis
+\family default
+ das 
+\family sans
+Stilformat
+\family default
+ auf ein Bib\SpecialChar TeX
+- oder ein 
+\family sans
+Biblatex
+\family default
+-Format gesetzt.
 \end_layout
 
 \begin_layout Subsubsection
@@ -28054,8 +28098,8 @@ Bib\SpecialChar TeX
 \end_layout
 
 \begin_layout Standard
-Um auf eine Datenbank mit zu Bib\SpecialChar TeX
- zuzugreifen, wählen Sie zunächst 
+Um auf eine Datenbank mit Bib\SpecialChar TeX
+ zuzugreifen, verwenden Sie das Menü 
 \family sans
 Einfügen\SpecialChar menuseparator
 Liste
@@ -28070,14 +28114,9 @@ Inhaltsverzeichnis\SpecialChar menuseparator
 Bib(la)TeX-Literaturverzeichnis
 \family default
 .
- Es werden eine kleine graue Box eingefügt und ein Fenster namens 
-\family sans
-Bib(la)TeX-Literaturverzeichnis
-\family default
- geöffnet.
- Sie können dort Datenbanken hinzufügen und auch wieder löschen.
- Außerdem können Sie eine Bib\SpecialChar TeX
--Stildatei auswählen.
+ Es wird ein Fenster geöffnet, indem Sie Datenbanken hinzufügen und eine
+ Bib\SpecialChar TeX
+-Stildatei auswählen können.
  Die Option 
 \family sans
 Literaturverzeichnis
@@ -28095,20 +28134,28 @@ Inhaltsverzeichnis
 \family sans
 Inhalt
 \family default
- können Sie festlegen, was gedruckt werden soll (alle Einträge der Datenbank
- oder nur die im Dokument zitierten).
+ können Sie festlegen, ob alle Einträge der Datenbank oder nur die im Dokument
+ zitierten, gedruckt werden sollen.
 \end_layout
 
 \begin_layout Standard
 Die Bib\SpecialChar TeX
 -Stildatei ist eine Textdatei mit der Endung 
-\family typewriter
+\begin_inset Quotes gld
+\end_inset
+
+
+\family sans
 .bst
 \family default
+
+\begin_inset Quotes grd
+\end_inset
+
 , die das Aussehen der Literatureinträge definiert.
  Ihre \SpecialChar LaTeX
--Distribution sollte mehrere anbieten, und viele Verleger liefern
- eigene Stildateien, so dass Sie sich um das Aussehen nicht kümmern müssen.
+-Distribution sollte mehrere anbieten und viele Verleger liefern eigene
+ Stildateien, so dass Sie sich um das Aussehen nicht kümmern müssen.
  Sie können auch eine eigene Stildatei erstellen, aber das ist etwas für
  Experten.
 \begin_inset Foot
@@ -28132,12 +28179,12 @@ literal "false"
 
 \end_inset
 
- In diesem Dokument verwenden wir den Bib\SpecialChar TeX
--Stil 
+ In diesem Dokument wird die Bib\SpecialChar TeX
+-Stildatei 
 \family sans
 alphadin.bst
 \family default
-, der einem alphanumerischen Stil nach DIN folgt.
+ verwendet, die einen alphanumerischen Stil nach DIN-Norm bietet.
 \end_layout
 
 \begin_layout Standard
@@ -28156,15 +28203,26 @@ Literaturverzeichnis ! Biblatex
 \end_inset
 
 
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-Paket ! biblatex
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 Der Zugang zu einer Databank mittels 
-\noun on
-Biblatex
-\noun default
+\series bold
+biblatex
+\series default
  ist fast identisch wie der mittels Bib\SpecialChar TeX
-: wählen Sie 
+: Wählen Sie 
 \family sans
 Einfügen\SpecialChar menuseparator
 Liste
@@ -28178,41 +28236,17 @@ Liste
 Inhaltsverzeichnis\SpecialChar menuseparator
 Bib(la)TeX-Literaturverzeichnis
 \family default
-, woraufhin das 
-\family sans
-Bib(la)TeX-Literaturverzeichnis
-\family default
--Fenster geöffnet wird.
- Sie können dort Datenbanken hinzufügen und auch wieder löschen, aber im
- Gegensatz zu BibTeX können Sie keine Stildatei auswählen (wir erklären
- später, warum nicht).
- Die Option 
-\family sans
-Literaturverzeichnis
-\begin_inset space \space{}
-\end_inset
-
-ins
-\begin_inset space \space{}
-\end_inset
-
-Inhaltsverzeichnis
-\family default
- fügt, wie bei BibTeX, einen Literaturverzeichniseintrag zum Inhaltsverzeichnis
- hinzu.
- Über 
-\family sans
-Inhalt
-\family default
- können Sie festlegen, was gedruckt werden soll (alle Einträge der Datenbank
- oder nur die im Dokument zitierten).
+.
+ Im Gegensatz zu BibTeX können Sie keine Stildatei auswählen.
+ Die anderen Dialogoptionen sind dieselben wie bei Bib\SpecialChar TeX
+.
 \end_layout
 
 \begin_layout Standard
 
-\noun on
-Biblatex
-\noun default
+\series bold
+biblatex
+\series default
  verwendet zwei verschiedene Stildateien: eine Bibliographie-Stildatei (eine
  Textdatei mit der Endung 
 \family sans
@@ -28232,10 +28266,10 @@ Biblatex
 
 \begin_layout Standard
 
-\family sans
-Biblatex-Stile
-\family default
- werden nicht im Dialog 
+\series bold
+biblatex
+\series default
+-Stile werden nicht im Dialog 
 \family sans
 Bib(la)TeX
 \begin_inset space ~
@@ -28243,33 +28277,36 @@ Bib(la)TeX
 
 Bibliography
 \family default
- festgelgt, sondern in den Dokumenteinstellungen (in 
-\family sans
+ festgelgt, sondern in den Dokumenteinstellungen.
+\begin_inset Index idx
+status collapsed
 
-\begin_inset Info
-type  "menu"
-arg   "dialog-show document"
+\begin_layout Plain Layout
+Dokument ! Einstellungen
+\end_layout
+
 \end_inset
 
-\SpecialChar menuseparator
-Literaturverzeichnis
-\family default
-).
- Im erstgenannten Dialog können Sie aber (im Feld 
+ Im Dialog können Sie aber im Feld 
 \family sans
 Optionen
 \family default
 , das nur sichtbar ist, wenn Sie 
-\noun on
-Biblatex
-\noun default
- verwenden) Optionen eingeben, die die Art und Weise verändern, in der das
- Literaturverzeichnis gedruckt wird (bspw., was die Überschrift betrifft).
+\series bold
+biblatex
+\series default
+ verwenden, Optionen eingeben, die festlegen, wie das Literaturverzeichnis
+ gedruckt wird (z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ wie dessen Überschrift aussieht).
  Diese Optionen sind ausführlich im Handbuch von 
-\noun on
-Biblatex
-\noun default
- beschrieben 
+\series bold
+biblatex
+\series default
+ beschrieben, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Biblatex"
@@ -28353,22 +28390,33 @@ Literaturverzeichnis
 \end_layout
 
 \begin_layout Description
-biber ist ein spezifischer moderner Prozessor, der exklusiv für 
-\noun on
-Biblatex
-\noun default
+biber ist ein spezifischer moderner Prozessor,
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-Paket ! biber
+\end_layout
+
+\end_inset
+
+ der exklusiv für 
+\series bold
+biblatex
+\series default
  entwickelt wurde (er funktioniert nicht mit Bib\SpecialChar TeX
 !).
  
-\family sans
-Biber
-\family default
+\series bold
+biber
+\series default
  bietet volle Unterstützung von Unicode, unbegrenzten Speicher, und ermöglicht
  viele Besonderheiten von 
-\noun on
-Biblatex
+\series bold
+biblatex
 \family sans
-\noun default
+\series default
 .
 
 \family default
@@ -28385,7 +28433,7 @@ biber
 
 \begin_layout Description
 bibtex ist der Standard; es erlaubt keine Sonderzeichen im Literaturverzeichnis,
- die nicht in einer 7-Bit Kodierung kodiert werden können, der Speicher
+ die nicht in einer 7-Bit-Kodierung kodiert werden können, der Speicher
  ist begrenzt.
  
 \family sans
@@ -28393,9 +28441,9 @@ Bibtex
 \family default
  funktioniert mit allen Literaturpaketen, aber aufgrund des begrenzten Speichers
  ist die Chance groß, dass es selbst mit einer mittelgroßen 
-\noun on
-Biblatex
-\noun default
+\series bold
+biblatex
+\series default
 -Bibliographie an seine Grenzen stößt.
 \end_layout
 
@@ -28406,14 +28454,14 @@ bibtex8 erlaubt alle Zeichen, die in einer 8-Bit Kodierung kodiert werden
 bibtex
 \family default
 , funktioniert mit allen Literaturpaketen, aber mit komplexeren 
-\noun on
-Biblatex
-\noun default
+\series bold
+biblatex
+\series default
 -Bibliographien wird es an seine Grenzen stoßen.
- Außerdem sind nicht alle 
-\noun on
-Biblatex
-\noun default
+ Außerdem werden nicht alle 
+\series bold
+biblatex
+\series default
 -Features unterstützt.
 \end_layout
 
@@ -28461,22 +28509,18 @@ Literaturverzeichnis-Erzeugung
 ) wählt \SpecialChar LyX
  den angemessensten (verfügbaren) Prozessor für die verwendeten
  Literaturverzeichnismethode (
-\family sans
+\series bold
 biber
-\family default
+\series default
  für 
-\noun on
-Biblatex
-\noun default
+\series bold
+biblatex
+\series default
 , 
 \family sans
 bibtex
 \family default
- für 
-\family sans
-Bib\SpecialChar TeX
-
-\family default
+ für Bib\SpecialChar TeX
 -basierte Literaturverzeichnisstile).
  Das sollte in den meisten Fällen die richtige Wahl sein.
 \end_layout
@@ -28510,20 +28554,20 @@ LaTeX
 \begin_layout Standard
 Der ausgewählte Prozessor kann durch Optionen gesteuert werden, die Sie
  unterhalb der Auswahl eingeben können.
- Bevor Sie Optionen verwenden, lesen Sie unbedingt das Handbuch von 
-\family sans
-Bib\SpecialChar TeX
+ Bevor Sie Optionen verwenden, lesen Sie unbedingt das Handbuch von Bib\SpecialChar TeX
 
-\family default
-, 
-\family sans
-bibtex8
-\family default
- bzw.
- 
-\family sans
+ oder 
+\series bold
 biber
-\family default
+\series default
+, 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "BibTeX,biber"
+literal "true"
+
+\end_inset
+
 .
 \end_layout
 
@@ -47244,7 +47288,7 @@ http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "natbib"
+key "biber"
 literal "true"
 
 \end_inset
@@ -47253,7 +47297,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Dokumentation"
-target "http://mirrors.ctan.org/macros/latex/contrib/natbib/natbib.pdf"
+target "http://mirrors.ctan.org/biblio/biber/documentation/biber.pdf"
 literal "false"
 
 \end_inset
@@ -47261,7 +47305,7 @@ literal "false"
  des \SpecialChar LaTeX
 -Pakets 
 \series bold
-natbib
+biber
 \series default
 
 \begin_inset Index idx
@@ -47269,7 +47313,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LaTeX
--Paket ! natbib
+-Paket ! biber
 \end_layout
 
 \end_inset
@@ -47284,7 +47328,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://mirrors.ctan.org/macros/latex/contrib/natbib/natbib.pdf
+http://mirrors.ctan.org/biblio/biber/documentation/biber.pdf
 \end_layout
 
 \end_inset
