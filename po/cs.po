@@ -1009,13 +1009,12 @@ msgid "Close"
 msgstr "Zavřít"
 
 #: src/frontends/qt4/ui/CitationUi.ui:27 src/frontends/qt4/ui/RefUi.ui:63
-#, fuzzy
 msgid "&Filter:"
-msgstr "Filtr:"
+msgstr "&Filtr:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:48
 msgid "Select the fields on which the filter applies"
-msgstr ""
+msgstr "Vybrat pole, která projdou filtrem"
 
 #: src/frontends/qt4/ui/CitationUi.ui:61 src/frontends/qt4/GuiCitation.cpp:420
 msgid "All fields"
@@ -1023,7 +1022,7 @@ msgstr "Všechna pole"
 
 #: src/frontends/qt4/ui/CitationUi.ui:75
 msgid "Select the entry types on which the filter applies"
-msgstr ""
+msgstr "Vybrat pole, na která je filtr aplikován"
 
 #: src/frontends/qt4/ui/CitationUi.ui:85 src/frontends/qt4/GuiCitation.cpp:435
 msgid "All entry types"
@@ -1031,12 +1030,11 @@ msgstr "Všechny typy záznamů"
 
 #: src/frontends/qt4/ui/CitationUi.ui:93
 msgid "Click for more filter options"
-msgstr ""
+msgstr "Více voleb filtru"
 
 #: src/frontends/qt4/ui/CitationUi.ui:96
-#, fuzzy
 msgid "O&ptions"
-msgstr "Volby"
+msgstr "V&olby"
 
 #: src/frontends/qt4/ui/CitationUi.ui:116
 msgid "A&vailable Citations:"
@@ -1059,12 +1057,10 @@ msgid "Move the selected citation down (Ctrl-Down)"
 msgstr "Přesun označené citace dolů (Ctrl+dolů)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:229
-#, fuzzy
 msgid "Selected &Citations:"
 msgstr "&Vybrané citace:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:269
-#, fuzzy
 msgid "Formatting"
 msgstr "Formátování"
 
@@ -1073,22 +1069,21 @@ msgid "Citation st&yle:"
 msgstr "St&yl Citace:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:289 src/frontends/qt4/GuiCitation.cpp:298
-#, fuzzy
 msgid "Text befo&re:"
 msgstr "Text &před:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:309
 msgid "Citation style to use, if different styles are provided"
-msgstr ""
+msgstr "Použitý styl citace (pakliže jsou dostupné odlišné styly)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:318 src/frontends/qt4/GuiCitation.cpp:302
 msgid ""
 "Text that precedes the reference (e.g., \"cf.\"), if the current citation "
 "style supports this."
 msgstr ""
+"Text předcházející referenci (např. \"cf.\"), pakliže je podporováno současným stylem"
 
 #: src/frontends/qt4/ui/CitationUi.ui:325 src/frontends/qt4/GuiCitation.cpp:304
-#, fuzzy
 msgid "&Text after:"
 msgstr "T&ext za:"
 
@@ -1097,21 +1092,23 @@ msgid ""
 "Text that follows the reference (e.g., pages), if the current citation style "
 "supports this."
 msgstr ""
+"Text následující referenci (např. stránky), pakliže je podporováno současným stylem"
 
 #: src/frontends/qt4/ui/CitationUi.ui:365
 msgid ""
 "Pass content of `Text before' and `Text after' fields literally to LaTeX. "
 "Check this if you want to enter LaTeX code."
 msgstr ""
+"Vložení doslovné verze `Text před' a `Text za' přímo do LaTeX-ového výstupu (určeno pro LaTeX-ový kód)"
 
 #: src/frontends/qt4/ui/CitationUi.ui:388
 msgid ""
 "Force upper case in names (\"Del Piero\", not \"del Piero\"), if the current "
 "citation style supports this."
 msgstr ""
+"Vynutit velké písmo ve jménech (\"Del Piero\", nikoliv \"del Piero\"), pakliže je podporováno současným stylem"
 
 #: src/frontends/qt4/ui/CitationUi.ui:391
-#, fuzzy
 msgid "Force upcas&ing"
 msgstr "&Vynutit velké písmo"
 
@@ -1120,11 +1117,11 @@ msgid ""
 "Always list all authors (rather than using \"et al.\"), if the current "
 "citation style supports this."
 msgstr ""
+"Pokaždé uvádět všechny autory (spíše než \"et al.\"), pakliže je podporováno současným stylem"
 
 #: src/frontends/qt4/ui/CitationUi.ui:401 src/frontends/qt4/GuiCitation.cpp:347
-#, fuzzy
 msgid "All aut&hors"
-msgstr "Authors"
+msgstr "Vš&ichni autoři"
 
 #: src/frontends/qt4/ui/CitationUi.ui:430 src/frontends/qt4/ui/DocumentUi.ui:44
 #: src/frontends/qt4/ui/GraphicsUi.ui:682
