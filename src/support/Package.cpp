@@ -302,8 +302,8 @@ bool isBuildDir(FileName const & abs_binary, string const & dir_location,
         return true;
     }
     //  cmake file, no Makefile in lib
-    FileName build_boost_dir = FileName(addPath(search_dir + "/3rdparty", "boost"));
-    if (!fileSearch(build_boost_dir.absFileName(), "cmake_install.cmake").empty()) {
+    FileName build_src_dir = FileName(addPath(search_dir, "src"));
+    if (!fileSearch(build_src_dir.absFileName(), "cmake_install.cmake").empty()) {
         return true;
     }
 
