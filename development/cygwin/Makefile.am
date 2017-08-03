@@ -16,8 +16,8 @@ dist_lyxdist_DATA = lyxprofile lyxrc.dist
 lyxeditor_SOURCES = lyxeditor.c
 lyxwin_SOURCES = lyxwin.c lyxwinres.rc
 
-lyxeditor_LDFLAGS=-mwindows -e _mainCRTStartup
-lyxwin_LDFLAGS=-mwindows -e _mainCRTStartup
+lyxeditor_LDFLAGS=-mwindows
+lyxwin_LDFLAGS=-mwindows
 
 CLEANFILES = lyxeditor.sh lyx_32x32.ico lyx_doc_32x32.ico
 
