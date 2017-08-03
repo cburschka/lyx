@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-07-27 01:02+0200\n"
-"PO-Revision-Date: 2017-07-26 23:48+0000\n"
+"POT-Creation-Date: 2017-07-30 10:20+0200\n"
+"PO-Revision-Date: 2017-07-30 11:39+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -468,7 +468,7 @@ msgstr "Vybrať aby rámik mohol prejsť aj na druhú stránku"
 
 #: src/frontends/qt4/ui/BoxUi.ui:112
 msgid "Allow &page breaks"
-msgstr "dovoľ zalomenie &strany"
+msgstr "Povoliť zalomenie &strán"
 
 #: src/frontends/qt4/ui/BoxUi.ui:129
 msgid "Height value"
@@ -2922,6 +2922,17 @@ msgid "Save &transient properties"
 msgstr "Ulož &prechodné vlastnosti"
 
 #: src/frontends/qt4/ui/OutputUi.ui:111
+msgid ""
+"Runs the LaTeX backend with the -shell-escape option (this setting is always "
+"applied immediately)"
+msgstr ""
+"Spúšťa LaTeX backend s voľbou -shell-escape (táto voľba sa použije okamžite)"
+
+#: src/frontends/qt4/ui/OutputUi.ui:114
+msgid "&Allow running external programs"
+msgstr "Po&voliť spúšťanie externých príkazov"
+
+#: src/frontends/qt4/ui/OutputUi.ui:111
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
 msgstr ""
 "Umožniť dopredu/zvratne hľadať medzi editorom a výstupom (napr., SyncTeX)"
@@ -3042,7 +3053,7 @@ msgstr "H&yperlinky"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:222
 msgid "Allows link text to break across lines."
-msgstr "Povoľ rozdeliť odkazy na viac riadkov."
+msgstr "Povoliť rozdeliť odkazy na viac riadkov."
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:225
 msgid "B&reak links over lines"
@@ -5385,7 +5396,7 @@ msgstr "Povoľuje premenlivé umiestnenie"
 
 #: src/frontends/qt4/ui/WrapUi.ui:283
 msgid "Allow &floating"
-msgstr "U&možni plávajúce objekty"
+msgstr "U&možniť plávajúce objekty"
 
 #: lib/citeengines/basic.citeengine:2
 msgid "Basic (BibTeX)"
@@ -26224,19 +26235,51 @@ msgstr "regulárny výraz: rám"
 msgid "ignore"
 msgstr "ignorovať"
 
-#: src/Converter.cpp:287
+#: src/Converter.cpp:290
+#, c-format
+msgid ""
+"<p>The following LaTeX backend has been configured to allow execution of "
+"external programs for any document:</p><center><p><tt>%1$s</tt></p></"
+"center><p>This is a dangerous configuration. Please, consider using the "
+"support offered by LyX for allowing this privilege only to documents that "
+"actually need it, instead.</p>"
+msgstr ""
+"<p>Nasledovný LaTeX backend bol konfigurovaný aby povolil spúšťanie "
+"externých príkazov pre každý dokument:</p><center><p><tt>%1$s</tt></p></"
+"center><p>Toto je nebezpečná konfigurácia. Namiesto toho prosím uvážte "
+"použiť podporu ponuky LyXa na povolenie oprávnenia len pre dokumenty ktoré "
+"to naozaj potrebujú.<p>"
+
+#: src/Converter.cpp:299
+msgid "Security Warning"
+msgstr "Ochranné Varovanie"
+
+#: src/Converter.cpp:312
+#, c-format
+msgid ""
+"<p>The following LaTeX backend has been requested to allow execution of "
+"external programs:</p><center><p><tt>%1$s</tt></p></center><p>The external "
+"programs can execute arbitrary commands on your system, including dangerous "
+"ones, if instructed to do so by a maliciously crafted LyX document.</p>"
+msgstr ""
+"<p>Nasledovný LaTeX backend bol konfigurovaný aby povolil spúšťanie "
+"externých príkazov:</p><center><p><tt>%1$s</tt></p></center><p>Externý "
+"príkaz je schopný spracovať ľubovoľné rozkazy na vašom systéme, vrátane aj "
+"nebezpečné, keď je napr. inštruovaný robiť to zlovoľne vyrobeným lyx "
+"dokumentom.</p> "
+
+#: src/Converter.cpp:319
 #, c-format
 msgid ""
 "<p>The requested operation requires the use of a converter from %2$s to %3$s:"
 "</p><blockquote><p><tt>%1$s</tt></p></blockquote><p>This external program "
 "can execute arbitrary commands on your system, including dangerous ones, if "
-"instructed to do so by a maliciously crafted .lyx document.</p>"
+"instructed to do so by a maliciously crafted LyX document.</p>"
 msgstr ""
-"<p>Žiadaná operácia použije konvertor </p><blockquote><p><tt>%1$s</tt></p></"
-"blockquote><p> z %2$s na %3$s. Toto je externý program normálne slúžiac ako "
-"obrázok/formát konvertor, ale je známe že je schopný vykonávať v mene "
-"užívateľa ľubovoľné akcie, vrátane nebezpečné ako napr. zmazanie súborov. "
-"Keď je napr. inštruovaný robiť to zlovoľne vyrobeným lyx dokumentom.</p> "
+"<p>Žiadaná operácia požaduje konvertor z %2$s na %3$s:</p><blockquote><p><tt>"
+"%1$s</tt></p></blockquote><p>Tento externý program je schopný vykonávať "
+"ľubovoľné akcie, vrátane nebezpečné keď je napr. inštruovaný robiť to "
+"zlovoľne vyrobeným lyx dokumentom.</p> "
 
 #: src/Converter.cpp:297
 msgid "An external converter is disabled for security reasons"
@@ -26254,9 +26297,22 @@ msgstr ""
 "&#x25b9; Obsluha Súborov</i> a zrušte <i>Bezpečnosť &#x25b9; Zakázať "
 "overovacie konvertory</i>.) "
 
+#: src/Converter.cpp:340
+msgid "A LaTeX backend requires your authorization"
+msgstr "LaTeX backend potrebuje vaše oprávnenie"
+
 #: src/Converter.cpp:308
 msgid "An external converter requires your authorization"
 msgstr "Spúšťanie externého konvertora potrebuje vaše oprávnenie"
+
+#: src/Converter.cpp:344
+msgid ""
+"<p>Should LaTeX backends be allowed to run external programs?</p><p><b>Allow "
+"them only if you trust the origin/sender of the LyX document!</b></p>"
+msgstr ""
+"<p>Chcete aby LaTeX backendy umožňovali spúšťať externé príkazy?</"
+"p><p><b>Povoľte len keď dôverujete pôvodu/odosielateľovi tohto LyX dokumentu!"
+"</b></p> "
 
 #: src/Converter.cpp:311
 msgid ""
@@ -26266,13 +26322,25 @@ msgstr ""
 "<p>Chcete tento konvertor spustiť?</p><p><b>Spustite len keď dôverujete "
 "pôvodu/odosielateľovi tohto LyX dokumentu!</b></p> "
 
+#: src/Converter.cpp:351
+msgid "Do &not allow"
+msgstr "&Nepovoliť"
+
 #: src/Converter.cpp:319 src/Converter.cpp:327
 msgid "Do &not run"
 msgstr "&Nespustiť"
 
+#: src/Converter.cpp:352
+msgid "A&llow"
+msgstr "Povoliť"
+
 #: src/Converter.cpp:319 src/Converter.cpp:327
 msgid "&Run"
 msgstr "&Spustiť"
+
+#: src/Converter.cpp:354
+msgid "&Always allow for this document"
+msgstr "&Vždy povoliť pre tento dokument"
 
 #: src/Converter.cpp:319
 msgid "&Always run for this document"
@@ -30874,6 +30942,14 @@ msgstr "verzia "
 msgid "unknown version"
 msgstr "neznáma verzia"
 
+#: src/frontends/qt4/GuiView.cpp:588
+msgid ""
+"WARNING: LaTeX is allowed to execute external commands for this document. "
+"Right click to change."
+msgstr ""
+"VAROVANIE: LaTeX má povolené spúšťať externé príkazy pre tento dokument. "
+"Kliknite pravým tlačidlom na zmenu."
+
 #: src/frontends/qt4/GuiView.cpp:659
 #, c-format
 msgid "Successful export to format: %1$s"
@@ -31360,6 +31436,10 @@ msgstr "Prehliadnite najprv dokument prosím."
 #: src/frontends/qt4/GuiView.cpp:4164
 msgid "Couldn't proceed."
 msgstr "Nemôžem postupovať."
+
+#: src/frontends/qt4/GuiView.h:491
+msgid "Disable Shell Escape"
+msgstr "Zakázať Shell Escape"
 
 #: src/frontends/qt4/GuiViewSource.cpp:402
 #: src/frontends/qt4/GuiViewSource.cpp:456
@@ -37694,3 +37774,15 @@ msgstr "Neznámy používateľ"
 #~ msgstr ""
 #~ "Všetky zmeny sa stratia. Naozaj sa chcete vrátiť ku uloženej verzii "
 #~ "dokumentu %1$s?"
+
+#~ msgid ""
+#~ "<p>The requested operation requires the use of a converter from %2$s to %3$s:"
+#~ "</p><blockquote><p><tt>%1$s</tt></p></blockquote><p>This external program "
+#~ "can execute arbitrary commands on your system, including dangerous ones, if "
+#~ "instructed to do so by a maliciously crafted .lyx document.</p>"
+#~ msgstr ""
+#~ "<p>Žiadaná operácia použije konvertor </p><blockquote><p><tt>%1$s</tt></p></"
+#~ "blockquote><p> z %2$s na %3$s. Toto je externý program normálne slúžiac ako "
+#~ "obrázok/formát konvertor, ale je známe že je schopný vykonávať v mene "
+#~ "užívateľa ľubovoľné akcie, vrátane nebezpečné ako napr. zmazanie súborov. "
+#~ "Keď je napr. inštruovaný robiť to zlovoľne vyrobeným lyx dokumentom.</p> "
