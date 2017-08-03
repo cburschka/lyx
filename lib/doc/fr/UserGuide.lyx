@@ -30477,18 +30477,26 @@ Bibliography Processors
 \begin_layout Standard
 Pour créer la bibliographie à partir de la base de donnée et des citations
  que vous avez insérées dans votre document, \SpecialChar LyX
- utilise le programme Bib\SpecialChar TeX
+ utilise 
+\lang english
+a bibliography processor, that is an external program that reads the database,
+ sorts the citations and processes the data in a way it can be included
+ in the document.
+ The classic program is called Bib\SpecialChar TeX
 .
- Vous pouvez choisir quelle variante du programme doit être utilisée pour
- le traitement, Ce programme peut être contrôlé par un certain nombre d'options
- que vous pouvez ajouter dans 
+ It has the advantage that it is very mature and widespread, but the disadvantag
+e that it has severe limitations, due to its age.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Meanwhile, some alternatives have been developed that address some of these
+ limitations.
+ LyX natively supports some of them and lets you select a custom processor.
+ You can do this on a general level in 
 \family sans
-Document\SpecialChar menuseparator
-Paramètres\SpecialChar menuseparator
-Bibliographie
-\family default
- ou dans 
-\family sans
+\lang french
 Outils\SpecialChar menuseparator
 Préférences\SpecialChar menuseparator
 Sorties
@@ -30498,20 +30506,25 @@ Sorties
 \family sans
 LaTeX
 \family default
- dans le champ 
+\lang english
+ or for individual documents in 
 \family sans
-Commande
-\begin_inset space ~
-\end_inset
-
-BibTeX
+\lang french
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
+Bibliographie
 \family default
+\lang english
 .
- Les variantes suivantes sont autorisées:
+ The following variants are available by default:
 \end_layout
 
 \begin_layout Description
 biber 
+\lang english
+a specific, modern processor
+\lang french
+
 \begin_inset Index idx
 status collapsed
 
@@ -30522,21 +30535,36 @@ Paquetages \SpecialChar LaTeX
 
 \end_inset
 
-fournit une fonctionnalité Unicode complète, une mémoire sans limite, mais
- ne fonctionne pas avec d'autres paquetages bibliographiques que le paquetage
-\begin_inset space ~
-\end_inset
 
-
+\lang english
+ developed exclusively for 
 \series bold
 biblatex
 \series default
- (comme par exemple 
+ (it does not work with
+\lang french
+ Bib\SpecialChar TeX
+!).
+ 
 \series bold
-natbib
+biber
 \series default
-); cette option est recommandée pour les textes multilingues et pour les
- langues qui n'utilisent pas l'alphabet latin;
+ fournit une fonctionnalité Unicode complète, une mémoire sans limite et
+ 
+\lang english
+many specific features 
+\series bold
+biblatex
+\series default
+ makes use of; if you use the 
+\series bold
+biblatex
+\series default
+ approach, it is strongly recommended to use 
+\series bold
+biber
+\series default
+.
 \end_layout
 
 \begin_layout Description
@@ -30546,18 +30574,35 @@ bibtex le standard, ne permet pas l'usage de caractères spéciaux dans les
 \end_inset
 
 bits, possède une mémoire limitée, fonctionne avec tous les paquetages bibliogra
-phiques sauf 
+phiques, 
+\lang english
+although it will probably fail with 
 \series bold
-biblatex;
+biblatex
+\series default
+ bibliographies due to the limited memory.
 \end_layout
 
 \begin_layout Description
-bibtex8 autorise tous les caractères encodables sur 8 bits, possède une
- mémoire plus grande que 
+bibtex8 autorise tous les caractères encodables sur 8 bits (
+\lang english
+but no Unicode support
+\lang french
+), possède une mémoire plus grande que 
 \family sans
 bibtex
 \family default
-, fonctionne avec tous les paquetages bibliographiques.
+, fonctionne avec tous les paquetages bibliographiques, 
+\lang english
+although more complex 
+\series bold
+biblatex
+\series default
+ bibliographies will exceed its limits, and not all 
+\series bold
+biblatex
+\series default
+ features are supported.
 \end_layout
 
 \begin_layout Standard
@@ -30596,49 +30641,25 @@ Customizing
 \end_layout
 
 \begin_layout Standard
-Quand vous activez l'option 
-\family sans
-Bibliographie
-\begin_inset space ~
-\end_inset
 
-en
-\begin_inset space ~
-\end_inset
-
-sections
-\family default
- dans le menu 
-\family sans
-Document\SpecialChar menuseparator
-Paramètres\SpecialChar menuseparator
-Bibliographie
-\family default
-, il est possible d'avoir des bibliographies multiples et par section.
- Ceci est expliqué avec d'autres particularités dans le manuel 
+\lang english
+\SpecialChar LyX
+ supports some specific tasks such as sectioned bibliographies and multiple
+ bibliographies.
+ These are explained in detail in section 
 \emph on
-Options avancées,
+Customizing Bibliographies
 \emph default
- section 
+ 
 \emph on
-Personnaliser les bibliographies avec Bib\SpecialChar TeX
-
+with Bib\SpecialChar TeX
+ or Biblatex
 \emph default
-.
-\end_layout
-
-\begin_layout Standard
-Nous avons utilisé deux bibliographies dans ce document pour montrer la
- différence entre les deux méthodes utilisées pour les créer.
- Comme vous pouvez le constater, la bibliographie qui a été créée à partir
- d'une base de données ne reprend que les entrées qui sont citées dans le
- corps du document.
- Nous avons utilisé le fichier de style 
-\family sans
-alphadin.bst
-\family default
- pour avoir dans notre bibliographie le système de clés de référence assez
- complexe utilisé en Allemagne.
+ of the 
+\emph on
+Additional Features
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Subsection

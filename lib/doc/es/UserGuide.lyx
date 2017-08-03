@@ -29536,33 +29536,50 @@ Bibliography Processors
 
 \begin_layout Standard
 Para generar la bibliografía a partir de una base de datos, \SpecialChar LyX
- utiliza el
- programa 
-\family sans
-Bib\SpecialChar TeX
-
-\family default
+ utiliza
+\lang english
+ a bibliography processor, that is an external program that reads the database,
+ sorts the citations and processes the data in a way it can be included
+ in the document.
+ The classic program is called Bib\SpecialChar TeX
 .
- Puedes elegir cual de sus variantes debería usar \SpecialChar LyX
- como procesador: en
+ It has the advantage that it is very mature and widespread, but the disadvantag
+e that it has severe limitations, due to its age.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Meanwhile, some alternatives have been developed that address some of these
+ limitations.
+ LyX natively supports some of them and lets you select a custom processor.
+ You can do this on a general level in 
 \family sans
- Documento\SpecialChar menuseparator
-Configuración\SpecialChar menuseparator
-Bibliografía
-\family default
- o en 
-\family sans
+\lang spanish
 Herramientas\SpecialChar menuseparator
 Preferencias\SpecialChar menuseparator
 Salidas\SpecialChar menuseparator
 LaTeX
 \family default
+\lang english
+ or for individual documents in 
+\family sans
+\lang spanish
+Documento\SpecialChar menuseparator
+Configuración\SpecialChar menuseparator
+Bibliografía
+\family default
+\lang english
 .
- Son posibles las siguientes variantes:
+ The following variants are available by default:
 \end_layout
 
 \begin_layout Description
 biber 
+\lang english
+a specific, modern processor
+\lang spanish
+
 \begin_inset Index idx
 status collapsed
 
@@ -29573,42 +29590,69 @@ status collapsed
 
 \end_inset
 
-provee soporte Unicode completo, memoria ilimitada, no funciona con otros
- paquetes de bibliografía (como p.
-\begin_inset space \thinspace{}
-\end_inset
 
-ej.
-\begin_inset space ~
-\end_inset
-
-
-\series bold
-natbib
-\series default
-), solo con el paquete 
+\lang english
+ developed exclusively for 
 \series bold
 biblatex
 \series default
-; recomendado para textos multilingües y para idiomas que no usen tipografías
- latinas
+ (it does not work with
+\lang spanish
+ Bib\SpecialChar TeX
+!).
+ 
+\series bold
+biber
+\series default
+ provee soporte Unicode completo, memoria ilimitada y 
+\lang english
+many specific features 
+\series bold
+biblatex
+\series default
+ makes use of; if you use the 
+\series bold
+biblatex
+\series default
+ approach, it is strongly recommended to use 
+\series bold
+biber
+\series default
+.
 \end_layout
 
 \begin_layout Description
 bibtex predeterminado; no permite en las entradas caracteres especiales
  que no se pueden codificar en 7 bits, memoria limitada, funciona con todos
- los paquetes de bibliografía, excepto 
+ los paquetes de bibliografía, 
+\lang english
+although it will probably fail with 
 \series bold
 biblatex
+\series default
+ bibliographies due to the limited memory.
 \end_layout
 
 \begin_layout Description
-bibtex8 permite todos los caracteres que se pueden codificar en 8 bits,
- memoria más amplia que 
+bibtex8 permite todos los caracteres que se pueden codificar en 8 bits (
+\lang english
+but no Unicode support
+\lang spanish
+), memoria más amplia que 
 \family sans
 bibtex
 \family default
-, funciona con todos los paquetes de bibliografía
+, funciona con todos los paquetes de bibliografía, 
+\lang english
+although more complex 
+\series bold
+biblatex
+\series default
+ bibliographies will exceed its limits, and not all 
+\series bold
+biblatex
+\series default
+ features are supported.
 \end_layout
 
 \begin_layout Standard
@@ -29645,39 +29689,25 @@ Customizing
 \end_layout
 
 \begin_layout Standard
-Si seleccionas la opción 
-\family sans
-Bibliografía por secciones
-\family default
- en 
-\family sans
-Documento\SpecialChar menuseparator
-Configuración\SpecialChar menuseparator
-Bibliografía
-\family default
-, es posible tener múltiples bibliografías ordenadas en secciones.
- Esto y otras características se explica con detalle en la sección 
-\emph on
-Personalizar bibliografías con Bib\SpecialChar TeX
 
+\lang english
+\SpecialChar LyX
+ supports some specific tasks such as sectioned bibliographies and multiple
+ bibliographies.
+ These are explained in detail in section 
+\emph on
+Customizing Bibliographies
 \emph default
- del manual 
-\emph on
-Características adicionales.
-\end_layout
-
-\begin_layout Standard
-En este documento hemos utilizado dos bibliografías para mostrar la diferencia
- entre las dos formas de crearlas.
- Como se ve, la bibliografía creada a partir de una base de datos contiene
- solo las entradas que son referidas en el documento.
- El estilo utilizado es 
-\family sans
-alphadin.bst
-\family default
-, que genera el complicado esquema alemán de claves de referencia de la
- bibliografía.
  
+\emph on
+with Bib\SpecialChar TeX
+ or Biblatex
+\emph default
+ of the 
+\emph on
+Additional Features
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Subsection

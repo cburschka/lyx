@@ -24670,31 +24670,51 @@ Bibliography Processors
 \end_layout
 
 \begin_layout Standard
-データベースから書誌情報を生成するのに，\SpecialChar LyX
-はBib\SpecialChar TeX
-というプログラムを使用します．
+
+\lang english
+To generate the bibliography from a database, \SpecialChar LyX
+ uses a bibliography processor,
+ that is an external program that reads the database, sorts the citations
+ and processes the data in a way it can be included in the document.
+ The classic program is called Bib\SpecialChar TeX
+.
+ It has the advantage that it is very mature and widespread, but the disadvantag
+e that it has severe limitations, due to its age.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Meanwhile, some alternatives have been developed that address some of these
+ limitations.
+ LyX natively supports some of them and lets you select a custom processor.
+ You can do this on a general level in
 \family sans
-文書\SpecialChar menuseparator
-設定\SpecialChar menuseparator
-書誌情報
-\family default
-か，
-\family sans
+\lang japanese
 ツール\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 出力\SpecialChar menuseparator
 LaTeX
 \family default
-で指定すれば，Bib\SpecialChar TeX
-派生版のどれを
+\lang english
+or for individual documents in
 \family sans
-処理子
+\lang japanese
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+書誌情報か
 \family default
-として用いるかを選ぶことができます．以下の派生版のいずれかを選ぶことができます．
+\lang english
+.
+ The following variants are available by default:
 \end_layout
 
 \begin_layout Description
 biber 
+\lang english
+a specific, modern processor
+\lang japanese
+
 \begin_inset Index idx
 status collapsed
 
@@ -24705,31 +24725,66 @@ latexはつけじ@\SpecialChar LaTeX
 
 \end_inset
 
-これは，完全なUnicodeサポートと，制限のないメモリを提供しますが，(例えば
-\series bold
-natbib
-\series default
-のような)他の書誌情報パッケージでは動作せず，
+
+\lang english
+ developed exclusively for 
 \series bold
 biblatex
 \series default
-パッケージでのみ動作します．多言語テキストやラテン文字を使用しない言語に推奨されます．
-\end_layout
-
-\begin_layout Description
-bibtex これが既定値です．7ビットでエンコードできない特殊文字を文献項目に使用することはできず，メモリに制限があり，
+ (it does not work with Bib\SpecialChar TeX
+!).
+ 
+\series bold
+biber
+\series default
+ provides full Unicode support, unlimited memory and many specific features
+ 
 \series bold
 biblatex
 \series default
-以外の全ての書誌情報パッケージで動作します．
+ makes use of; if you use the 
+\series bold
+biblatex
+\series default
+ approach, it is strongly recommended to use 
+\series bold
+biber
+\series default
+.
 \end_layout
 
 \begin_layout Description
-bibtex8 8ビットエンコーディングにエンコードできる全ての文字を使うことができます．
+bibtex 
+\lang english
+the standard; does not allow special characters in bibliography entries
+ that are not possible to encode in a 7-bit encoding, limited memory, works
+ with all bibliography packages, although it will probably fail with 
+\series bold
+biblatex
+\series default
+ bibliographies due to the limited memory.
+\end_layout
+
+\begin_layout Description
+bibtex8 8ビットエンコーディングにエンコードできる全ての文字を使うことができます
+\lang english
+ (but no Unicode support)
+\lang japanese
+．
 \family sans
 bibtex
 \family default
-よりも大きいメモリを使用することができ，全ての書誌情報パッケージで動作します．
+よりも大きいメモリを使用することができ，全ての書誌情報パッケージで動作します
+\lang english
+, although more complex 
+\series bold
+biblatex
+\series default
+ bibliographies will exceed its limits, and not all 
+\series bold
+biblatex
+\series default
+ features are supported.
 \end_layout
 
 \begin_layout Standard
@@ -24764,33 +24819,24 @@ Customizing
 
 \begin_layout Standard
 
-\family sans
-文書\SpecialChar menuseparator
-設定
-\family default
-ダイアログで
-\family sans
-区分した書誌情報
-\family default
-オプションを選択すると，節分けされた複数の書誌情報を入れることができます．この件と他のオプションに関しては，取扱説明書『
+\lang english
+\SpecialChar LyX
+ supports some specific tasks such as sectioned bibliographies and multiple
+ bibliographies.
+ These are explained in detail in section 
 \emph on
-高度な機能篇
+Customizing Bibliographies
 \emph default
-』の「
+ 
 \emph on
-Bib\SpecialChar TeX
-による書誌情報のカスタマイズ
+with Bib\SpecialChar TeX
+ or Biblatex
 \emph default
-」の節に詳述されています．
-\end_layout
-
-\begin_layout Standard
-本文書では，書誌情報を生成する二つの方法の違いを示すために，書誌情報が二つ使用してあります．ご覧いただいてわかるように，データベースから生成された書誌情報は，文
-書内で参照されたデータベース項目しか列挙していません．ここでは，書誌情報中でドイツ語の複雑な参照鍵を利用可能とするために
-\family sans
-alphadin.bst
-\family default
-というスタイルファイルを使用しています．
+ of the 
+\emph on
+Additional Features
+\emph default
+ manual.
 \end_layout
 
 \begin_layout Subsection

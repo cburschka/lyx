@@ -28753,93 +28753,38 @@ Bibliography Processors
 
 \begin_layout Standard
 To generate the bibliography from a database, \SpecialChar LyX
- uses
-\change_inserted -712698321 1483885808
- a bibliography processor, that is an external program that reads a database,
- sorts the citations and processes the data in a way it can be included
- in the document.
-
-\change_unchanged
- 
-\change_inserted -712698321 1483885822
-The classic 
-\change_deleted -712698321 1483885823
-the 
-\change_unchanged
-program 
-\change_inserted -712698321 1483885903
-is called 
-\family sans
-bibtex
-\family default
+ uses a bibliography processor,
+ that is an external program that reads the database, sorts the citations
+ and processes the data in a way it can be included in the document.
+ The classic program is called Bib\SpecialChar TeX
 .
- As the whole approach, it has the advantage that it is very mature and
- widespread, but the disadvantage that it has severe limitations, due to
- its age.
+ It has the advantage that it is very mature and widespread, but the disadvantag
+e that it has severe limitations, due to its age.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1483885977
-Meanwhile, some alternatives have been developed that address (some of)
- these limitations.
+Meanwhile, some alternatives have been developed that address some of these
+ limitations.
  LyX natively supports some of them and lets you select a custom processor.
-\change_deleted -712698321 1483885997
-Bib\SpecialChar TeX
-.
-
-\change_unchanged
- You can 
-\change_inserted -712698321 1483886029
-do this on a general level in 
+ You can do this on a general level in 
 \family sans
 Tools\SpecialChar menuseparator
 Preferences\SpecialChar menuseparator
 Output\SpecialChar menuseparator
 LaTeX
 \family default
-, or for individual documents 
-\change_deleted -712698321 1483886038
-choose which of its variants should be used by \SpecialChar LyX
- as the 
-\family sans
-Processor
-\family default
- either 
-\change_unchanged
-in 
+ or for individual documents in 
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
 Bibliography
-\change_deleted -712698321 1483886043
-
-\family default
- or in 
-\family sans
-Tools\SpecialChar menuseparator
-Preferences\SpecialChar menuseparator
-Output\SpecialChar menuseparator
-LaTeX
-\change_unchanged
-
 \family default
 .
- The following variants are 
-\change_deleted -712698321 1483886168
-possible
-\change_inserted -712698321 1483886173
-available by default
-\change_unchanged
-:
+ The following variants are available by default:
 \end_layout
 
 \begin_layout Description
-biber 
-\change_inserted -712698321 1483886386
-a specific, modern processor
-\change_unchanged
-
+biber a specific, modern processor
 \begin_inset Index idx
 status collapsed
 
@@ -28850,122 +28795,55 @@ status collapsed
 
 \end_inset
 
-
-\change_inserted -712698321 1483886257
  developed exclusively for 
-\noun on
-Biblatex
-\noun default
+\series bold
+biblatex
+\series default
  (it does not work with Bib\SpecialChar TeX
 !).
  
-\change_unchanged
-
 \series bold
 biber
 \series default
- provides full Unicode support, unlimited memory
-\change_deleted -712698321 1483886272
-, but does not work with other bibliography packages (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-
-\series bold
-natbib
-\series default
-), only with the package 
+ provides full Unicode support, unlimited memory and many specific features
+ 
 \series bold
 biblatex
-\change_inserted -712698321 1483886347
-
 \series default
- and many specific features 
-\change_unchanged
-
+ makes use of; if you use the 
 \series bold
 biblatex
-\change_inserted -712698321 1483886347
-
-\series default
- makes use of
-\change_unchanged
-; 
-\change_deleted -712698321 1483886353
-recommended for multilingual texts and for languages that don't use Latin
- letters
-\change_inserted -712698321 1483886386
-if you use the 
-\change_unchanged
-
-\series bold
-biblatex
-\change_inserted -712698321 1483886386
-
 \series default
  approach, it is strongly recommended to use 
-\family sans
+\series bold
 biber
-\family default
+\series default
 .
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
 bibtex the standard; does not allow special characters in bibliography entries
  that are not possible to encode in a 7-bit encoding, limited memory, works
- with all bibliography packages, 
-\change_deleted -712698321 1483886412
-except
-\change_inserted -712698321 1483886414
-although
-\change_unchanged
- 
-\change_inserted -712698321 1483886506
-it will probably fail with even moderately sized 
-\change_unchanged
-
-\noun on
-Biblatex
-\change_inserted -712698321 1483886524
-
-\noun default
- bibliographies, due to the limited memory.
-\change_unchanged
-
+ with all bibliography packages, although it will probably fail with 
+\series bold
+biblatex
+\series default
+ bibliographies due to the limited memory.
 \end_layout
 
 \begin_layout Description
 bibtex8 allows all characters that are possible to encode in an 8-bit encoding
-\change_inserted -712698321 1483886652
- (but no Unicode support)
-\change_unchanged
-, larger memory than 
+ (but no Unicode support), larger memory than 
 \family sans
 bibtex
 \family default
-, works with all bibliography packages
-\change_inserted -712698321 1484330876
-, although more complex 
-\change_unchanged
-
+, works with all bibliography packages, although more complex 
 \series bold
 biblatex
-\change_inserted -712698321 1484330876
-
 \series default
  bibliographies will exceed its limits, and not all 
-\change_unchanged
-
 \series bold
 biblatex
-\change_inserted -712698321 1484330876
-
 \series default
  features are supported.
 \end_layout
@@ -29081,74 +28959,23 @@ Customizing
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1483887548
 \SpecialChar LyX
  supports some specific tasks such as sectioned bibliographies and multiple
  bibliographies.
- 
-\change_deleted -712698321 1483887556
-When you select the option 
-\family sans
-Sectioned bibliography
-\family default
- in the 
-\family sans
-Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Bibliography
-\family default
- dialog, it is possible to have multiple and sectioned bibliographies.
- 
-\change_unchanged
-Th
-\change_deleted -712698321 1483887559
-i
-\change_inserted -712698321 1483887559
-e
-\change_unchanged
-s
-\change_inserted -712698321 1483887560
-e
-\change_unchanged
- 
-\change_deleted -712698321 1483887564
-and other options 
-\change_unchanged
-are explained in detail in section 
+ These are explained in detail in section 
 \emph on
 Customizing Bibliographies
 \emph default
  
 \emph on
 with Bib\SpecialChar TeX
-
-\change_inserted -712698321 1501054457
  or Biblatex
-\change_unchanged
-
 \emph default
  of the 
 \emph on
 Additional Features
 \emph default
  manual.
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted -712698321 1483882904
-We use two bibliographies in this document to show the difference between
- the two methods of creating them.
- As you can see, the bibliography that is created from a database lists
- only the database entries that are referenced in the document.
- We used the style file 
-\family sans
-alphadin.bst
-\family default
- to get the complicated German reference key scheme in the bibliography.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection

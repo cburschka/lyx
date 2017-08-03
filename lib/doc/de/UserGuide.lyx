@@ -28237,7 +28237,8 @@ Inhaltsverzeichnis\SpecialChar menuseparator
 Bib(la)TeX-Literaturverzeichnis
 \family default
 .
- Im Gegensatz zu BibTeX können Sie keine Stildatei auswählen.
+ Im Gegensatz zu Bib\SpecialChar TeX
+ können Sie keine Stildatei auswählen.
  Die anderen Dialogoptionen sind dieselben wie bei Bib\SpecialChar TeX
 .
 \end_layout
@@ -28249,14 +28250,30 @@ biblatex
 \series default
  verwendet zwei verschiedene Stildateien: eine Bibliographie-Stildatei (eine
  Textdatei mit der Endung 
+\begin_inset Quotes gld
+\end_inset
+
+
 \family sans
 .bbx
 \family default
+
+\begin_inset Quotes grd
+\end_inset
+
 ) bestimmt, wie die Literaturverzeichniseinträge aussehen, eine Zitierstildatei
  (Endung 
+\begin_inset Quotes gld
+\end_inset
+
+
 \family sans
 .cbx
 \family default
+
+\begin_inset Quotes grd
+\end_inset
+
 ) bestimmt die Form der Literaturverweise im Text.
  Üblicherweise kommen diese Dateien paarweise, und es ist zumeist sinnvoll,
  passende Stilpaare zu verwenden.
@@ -28343,46 +28360,33 @@ Literaturverzeichnis-Erzeugung
 Um ein Literaturverzeichnis aus einer Datenbank zu erstellen, verwendet
  \SpecialChar LyX
  einen Literaturverzeichnis-Prozessor.
- Das ist ein externes Programm, das eine Datenbank einliest, die Referenzen
+ Das ist ein externes Programm, das die Datenbank einliest, die Referenzen
  sortiert und die Daten in so verarbeitet, dass sie in das Dokument eingebunden
  werden können.
- Das klassische Programm dieser Art heißt 
-\family sans
-bibtex
-\family default
+ Das klassische Programm dieser Art heißt Bib\SpecialChar TeX
 .
- Wie der ganze Ansatz hat es den Vorteil, dass es sehr ausgereift und weit
- verbreitet ist, aber den Nachteil, dass es aufgrund des Alters große Einschränk
-ungen mit sich bringt.
+ Es hat den Vorteil, dass es sehr ausgereift und weit verbreitet ist, aber
+ den Nachteil, dass es aufgrund des Alters große Einschränkungen mit sich
+ bringt.
 \end_layout
 
 \begin_layout Standard
 Inzwischen wurden moderne Alternativen entwickelt, die einige der Einschränkunge
-n zu beheben versuchen.
+n versuchen zu beheben.
  \SpecialChar LyX
  unterstützt einige von ihnen, und Sie können zusätzlich auch eigene Prozessore
 n verwenden.
  Auf einer allgemeinen Ebene können Sie dies in 
 \family sans
-
-\begin_inset Info
-type  "menu"
-arg   "dialog-show prefs"
-\end_inset
-
-\SpecialChar menuseparator
+Werkzeuge\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
 Ausgabe\SpecialChar menuseparator
 LaTeX
 \family default
  konfigurieren, für einzelne Dokumente in 
 \family sans
-
-\begin_inset Info
-type  "menu"
-arg   "dialog-show document"
-\end_inset
-
-\SpecialChar menuseparator
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
 Literaturverzeichnis
 \family default
 .
@@ -28390,7 +28394,7 @@ Literaturverzeichnis
 \end_layout
 
 \begin_layout Description
-biber ist ein spezifischer moderner Prozessor,
+biber ist ein spezifischer, moderner Prozessor,
 \begin_inset Index idx
 status collapsed
 
@@ -28421,30 +28425,25 @@ biblatex
 
 \family default
  Wenn Sie 
-\noun on
-Biblatex
-\noun default
- verwenden, empfehlen wir 
-\family sans
+\series bold
+biblatex
+\series default
+ verwenden, wird 
+\series bold
 biber
-\family default
- dringend.
+\series default
+ dringend empfohlen.
 \end_layout
 
 \begin_layout Description
 bibtex ist der Standard; es erlaubt keine Sonderzeichen im Literaturverzeichnis,
  die nicht in einer 7-Bit-Kodierung kodiert werden können, der Speicher
- ist begrenzt.
- 
-\family sans
-Bibtex
-\family default
- funktioniert mit allen Literaturpaketen, aber aufgrund des begrenzten Speichers
- ist die Chance groß, dass es selbst mit einer mittelgroßen 
+ ist begrenzt, es funktioniert mit allen Literaturpaketen, obwohl es möglicherwe
+ise mit 
 \series bold
 biblatex
 \series default
--Bibliographie an seine Grenzen stößt.
+ aufgrund des beschränkten Speichers nicht funktioniert.
 \end_layout
 
 \begin_layout Description
@@ -28476,13 +28475,8 @@ Standard
 
  in 
 \family sans
-
-\begin_inset Info
-type  "menu"
-arg   "dialog-show document"
-\end_inset
-
-\SpecialChar menuseparator
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
 Literaturverzeichnis
 \family default
  sowie Prozessor 
@@ -28495,13 +28489,8 @@ Automatisch
 
  in 
 \family sans
-
-\begin_inset Info
-type  "menu"
-arg   "dialog-show prefs"
-\end_inset
-
-\SpecialChar menuseparator
+Werkzeuge\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
 Ausgabe\SpecialChar menuseparator
 LaTeX\SpecialChar menuseparator
 Literaturverzeichnis-Erzeugung
@@ -28538,13 +28527,8 @@ bibtex
 , die spezifisch für japanische Schrift entwickelt wurde.
  In 
 \family sans
-
-\begin_inset Info
-type  "menu"
-arg   "dialog-show prefs"
-\end_inset
-
-\SpecialChar menuseparator
+Werkzeuge\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
 Ausgabe\SpecialChar menuseparator
 LaTeX
 \family default
