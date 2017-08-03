@@ -193,8 +193,14 @@ public:
 	/// able to execute arbitrary code, tagged with the 'needauth' option,
 	/// authorization is: always denied if lyxrc.use_converter_needauth_forbidden
 	/// is enabled; always allowed if the lyxrc.use_converter_needauth
-	/// is disabled; user is prompted otherwise
-	bool checkAuth(Converter const & conv, std::string const & doc_fname);
+	/// is disabled; user is prompted otherwise.
+	/// However, if use_shell_escape is true and a LaTeX backend is
+	/// going to be executed, both lyxrc.use_converter_needauth and
+	/// lyxrc.use_converter_needauth_forbidden are ignored, because in
+	/// this case the backend has to be executed and LyX will add the
+	/// -shell-escape option, so that user consent is always needed.
+	bool checkAuth(Converter const & conv, std::string const & doc_fname,
+		       bool use_shell_escape = false);
 
 private:
 	///

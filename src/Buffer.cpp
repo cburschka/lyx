@@ -55,6 +55,7 @@
 #include "ParagraphParameters.h"
 #include "ParIterator.h"
 #include "PDFOptions.h"
+#include "Session.h"
 #include "SpellChecker.h"
 #include "sgml.h"
 #include "texstream.h"
@@ -979,6 +980,8 @@ int Buffer::readHeader(Lexer & lex)
 		docstring const s = _("\\begin_header is missing");
 		errorList.push_back(ErrorItem(_("Document header error"), s));
 	}
+
+	params().shell_escape = theSession().shellescapeFiles().find(absFileName());
 
 	params().makeDocumentClass();
 

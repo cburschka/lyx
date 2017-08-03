@@ -250,7 +250,7 @@ GuiWorkArea::Private::Private(GuiWorkArea * parent)
   cursor_visible_(false), cursor_(0),
   need_resize_(false), schedule_redraw_(false), preedit_lines_(1),
   pixel_ratio_(1.0),
-  completer_(new GuiCompleter(p, p)), dialog_mode_(false),
+  completer_(new GuiCompleter(p, p)), dialog_mode_(false), shell_escape_(false),
   read_only_(false), clean_(true), externally_modified_(false)
 {
 }
@@ -1401,11 +1401,13 @@ void GuiWorkArea::updateWindowTitle()
 {
 	Buffer const & buf = bufferView().buffer();
 	if (buf.fileName() != d->file_name_
+	    || buf.params().shell_escape != d->shell_escape_
 	    || buf.hasReadonlyFlag() != d->read_only_
 	    || buf.lyxvc().vcstatus() != d->vc_status_
 	    || buf.isClean() != d->clean_
 	    || buf.notifiesExternalModification() != d->externally_modified_) {
 		d->file_name_ = buf.fileName();
+		d->shell_escape_ = buf.params().shell_escape;
 		d->read_only_ = buf.hasReadonlyFlag();
 		d->vc_status_ = buf.lyxvc().vcstatus();
 		d->clean_ = buf.isClean();

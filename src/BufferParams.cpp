@@ -459,6 +459,7 @@ BufferParams::BufferParams()
 	html_css_as_file = false;
 	display_pixel_ratio = 1.0;
 
+	shell_escape = false;
 	output_sync = false;
 	use_refstyle = true;
 	use_minted = false;

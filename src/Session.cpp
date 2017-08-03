@@ -35,6 +35,7 @@ string const sec_session = "[session info]";
 string const sec_toolbars = "[toolbars]";
 string const sec_lastcommands = "[last commands]";
 string const sec_authfiles = "[auth files]";
+string const sec_shellescape = "[shell escape files]";
 
 } // namespace
 
@@ -422,6 +423,8 @@ void Session::readFile()
 			lastCommands().read(is);
 		else if (tmp == sec_authfiles)
 			authFiles().read(is);
+		else if (tmp == sec_shellescape)
+			shellescapeFiles().read(is);
 
 		else
 			LYXERR(Debug::INIT, "LyX: Warning: unknown Session section: " << tmp);
@@ -442,6 +445,7 @@ void Session::writeFile() const
 		lastCommands().write(os);
 		bookmarks().write(os);
 		authFiles().write(os);
+		shellescapeFiles().write(os);
 	} else
 		LYXERR(Debug::INIT, "LyX: Warning: unable to save Session: "
 		       << session_file);
@@ -477,6 +481,99 @@ void AuthFilesSection::write(ostream & os) const
 	os << '\n' << sec_authfiles << '\n';
 	copy(auth_files_.begin(), auth_files_.end(),
 	     ostream_iterator<std::string>(os, "\n"));
+}
+
+
+bool AuthFilesSection::find(string const & name) const
+{
+	if (auth_files_.find(name) != auth_files_.end())
+		return true;
+
+	return false;
+}
+
+
+void AuthFilesSection::insert(string const & name)
+{
+	auth_files_.insert(name);
+}
+
+
+void ShellEscapeSection::read(istream & is)
+{
+	string s;
+	do {
+		char c = is.peek();
+		if (c == '[')
+			break;
+		getline(is, s);
+		c = s[0];
+		if (c == 0 || c == '#' || c == ' ' || !FileName::isAbsolute(s))
+			continue;
+
+		// read shellescape files
+		FileName const file(s.substr(0, s.length() - 2));
+		if (file.exists() && !file.isDirectory())
+			shellescape_files_.insert(s);
+		else
+			LYXERR(Debug::INIT, "LyX: Warning: Ignore shellescape file: " << file);
+	} while (is.good());
+}
+
+
+void ShellEscapeSection::write(ostream & os) const
+{
+	os << '\n' << sec_shellescape << '\n';
+	copy(shellescape_files_.begin(), shellescape_files_.end(),
+	     ostream_iterator<std::string>(os, "\n"));
+}
+
+
+bool ShellEscapeSection::find(string const & name) const
+{
+	if (shellescape_files_.find(name + ",0") != shellescape_files_.end())
+		return true;
+
+	return findAuth(name);
+}
+
+
+bool ShellEscapeSection::findAuth(string const & name) const
+{
+	if (shellescape_files_.find(name + ",1") != shellescape_files_.end())
+		return true;
+
+	return false;
+}
+
+
+void ShellEscapeSection::insert(string const & name, bool auth)
+{
+	set<string>::iterator it;
+	string const name0 = name + ",0";
+	string const name1 = name + ",1";
+
+	if (auth) {
+		it = shellescape_files_.find(name0);
+		if (it != shellescape_files_.end())
+			shellescape_files_.erase(it);
+		shellescape_files_.insert(name1);
+	} else {
+		it = shellescape_files_.find(name1);
+		if (it != shellescape_files_.end())
+			shellescape_files_.erase(it);
+		shellescape_files_.insert(name0);
+	}
+}
+
+
+void ShellEscapeSection::remove(string const & name)
+{
+	set<string>::iterator it = shellescape_files_.find(name + ",0");
+	if (it == shellescape_files_.end())
+		it = shellescape_files_.find(name + ",1");
+	if (it != shellescape_files_.end())
+		shellescape_files_.erase(it);
 }
 
 

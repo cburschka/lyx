@@ -333,11 +333,44 @@ public:
 	void write(std::ostream & os) const;
 
 	///
-	std::set<std::string> & authFiles() { return auth_files_; }
+	bool find(std::string const & name) const;
+
+	///
+	void insert(std::string const & name);
 
 private:
 	/// set of document files authorized for external conversion
 	std::set<std::string> auth_files_;
+};
+
+
+class ShellEscapeSection : SessionSection
+{
+public:
+	///
+	explicit ShellEscapeSection() {};
+
+	///
+	void read(std::istream & is);
+
+	///
+	void write(std::ostream & os) const;
+
+	///
+	bool find(std::string const & name) const;
+
+	///
+	bool findAuth(std::string const & name) const;
+
+	///
+	void insert(std::string const & name, bool auth = false);
+
+	///
+	void remove(std::string const & name);
+
+private:
+	/// set of document files authorized for external conversion
+	std::set<std::string> shellescape_files_;
 };
 
 
@@ -373,6 +406,10 @@ public:
 	AuthFilesSection & authFiles() { return auth_files; }
 	///
 	AuthFilesSection const & authFiles() const { return auth_files; }
+	///
+	ShellEscapeSection & shellescapeFiles() { return shellescape_files; }
+	///
+	ShellEscapeSection const & shellescapeFiles() const { return shellescape_files; }
 
 private:
 	friend class LyX;
@@ -402,6 +439,8 @@ private:
 	LastCommandsSection last_commands;
 	///
 	AuthFilesSection auth_files;
+	///
+	ShellEscapeSection shellescape_files;
 };
 
 /// This is a singleton class. Get the instance.

@@ -90,6 +90,7 @@ public Q_SLOTS:
 private Q_SLOTS:
 	void updateNumbering();
 	void change_adaptor();
+	void shellescapeChanged();
 	void includeonlyClicked(QTreeWidgetItem * item, int);
 	void setListingsMessage();
 	void listingsPackageChanged(int);

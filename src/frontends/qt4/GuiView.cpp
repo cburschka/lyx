@@ -577,9 +577,25 @@ GuiView::GuiView(int id)
 		busylabel, SLOT(hide()));
 
 	QFontMetrics const fm(statusBar()->fontMetrics());
-	int const roheight = max(int(d.normalIconSize), fm.height());
-	QSize const rosize(roheight, roheight);
-	QPixmap readonly = QIcon(getPixmap("images/", "emblem-readonly", "svgz,png")).pixmap(rosize);
+	int const iconheight = max(int(d.normalIconSize), fm.height());
+	QSize const iconsize(iconheight, iconheight);
+
+	QPixmap shellescape = QIcon(getPixmap("images/", "emblem-shellescape", "svgz,png")).pixmap(iconsize);
+	shell_escape_ = new QLabel(statusBar());
+	shell_escape_->setPixmap(shellescape);
+	shell_escape_->setScaledContents(true);
+	shell_escape_->setAlignment(Qt::AlignCenter);
+	shell_escape_->setContextMenuPolicy(Qt::CustomContextMenu);
+	shell_escape_->setToolTip(qt_("WARNING: LaTeX is allowed to execute "
+	                              "external commands for this document. "
+	                              "Right click to change."));
+	SEMenu * menu = new SEMenu(this);
+	connect(shell_escape_, SIGNAL(customContextMenuRequested(QPoint)),
+		menu, SLOT(showMenu(QPoint)));
+	shell_escape_->hide();
+	statusBar()->addPermanentWidget(shell_escape_);
+
+	QPixmap readonly = QIcon(getPixmap("images/", "emblem-readonly", "svgz,png")).pixmap(iconsize);
 	read_only_ = new QLabel(statusBar());
 	read_only_->setPixmap(readonly);
 	read_only_->setScaledContents(true);
@@ -635,6 +651,17 @@ GuiView::GuiView(int id)
 GuiView::~GuiView()
 {
 	delete &d;
+}
+
+
+void GuiView::disableShellEscape()
+{
+	BufferView * bv = documentBufferView();
+	if (!bv)
+		return;
+	theSession().shellescapeFiles().remove(bv->buffer().absFileName());
+	bv->buffer().params().shell_escape = false;
+	bv->processUpdateFlags(Update::Force);
 }
 
 
@@ -1159,6 +1186,11 @@ void GuiView::updateWindowTitle(GuiWorkArea * wa)
 	setWindowFilePath(toqstr(buf.absFileName()));
 	// Tell Qt whether the current document is changed
 	setWindowModified(!buf.isClean());
+
+	if (buf.params().shell_escape)
+		shell_escape_->show();
+	else
+		shell_escape_->hide();
 
 	if (buf.hasReadonlyFlag())
 		read_only_->show();
@@ -4649,6 +4681,14 @@ Dialog * GuiView::build(string const & name)
 		return createGuiProgressView(*this);
 
 	return 0;
+}
+
+
+SEMenu::SEMenu(QWidget * parent)
+{
+	QAction * action = addAction(qt_("Disable Shell Escape"));
+	connect(action, SIGNAL(triggered()),
+		parent, SLOT(disableShellEscape()));
 }
 
 

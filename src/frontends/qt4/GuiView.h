@@ -20,12 +20,12 @@
 #include "support/strfwd.h"
 
 #include <QMainWindow>
+#include <QMenu>
 
 class QCloseEvent;
 class QDragEnterEvent;
 class QDropEvent;
 class QLabel;
-class QMenu;
 class QShowEvent;
 
 
@@ -226,6 +226,8 @@ public Q_SLOTS:
 	void clearMessage();
 	///
 	void updateWindowTitle(GuiWorkArea * wa);
+	///
+	void disableShellEscape();
 
 private Q_SLOTS:
 	///
@@ -461,6 +463,8 @@ private:
 	/// Request to give focus to minibuffer
 	bool minibuffer_focus_;
 
+	/// Statusbar widget that shows shell-escape status
+	QLabel * shell_escape_;
 	/// Statusbar widget that shows read-only status
 	QLabel * read_only_;
 	/// Statusbar widget that shows version control status
@@ -474,6 +478,17 @@ private:
 
 	// developer mode
 	bool devel_mode_;
+};
+
+
+class SEMenu : public QMenu
+{
+	Q_OBJECT
+public:
+	explicit SEMenu(QWidget * parent);
+
+public Q_SLOTS:
+	void showMenu(QPoint const &) { exec(QCursor::pos()); }
 };
 
 } // namespace frontend

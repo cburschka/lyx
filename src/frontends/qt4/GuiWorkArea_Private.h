@@ -192,6 +192,8 @@ struct GuiWorkArea::Private
 	///
 	support::FileName file_name_;
 	///
+	bool shell_escape_;
+	///
 	bool read_only_;
 	///
 	docstring vc_status_;

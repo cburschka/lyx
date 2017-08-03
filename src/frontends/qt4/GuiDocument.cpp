@@ -50,6 +50,7 @@
 #include "OutputParams.h"
 #include "PDFOptions.h"
 #include "qt_helpers.h"
+#include "Session.h"
 #include "Spacing.h"
 #include "TextClass.h"
 #include "Undo.h"
@@ -792,6 +793,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(outputModule->mathoutCB, SIGNAL(currentIndexChanged(int)),
 		this, SLOT(change_adaptor()));
 
+	connect(outputModule->shellescapeCB, SIGNAL(stateChanged(int)),
+		this, SLOT(shellescapeChanged()));
 	connect(outputModule->outputsyncCB, SIGNAL(clicked()),
 		this, SLOT(change_adaptor()));
 	connect(outputModule->synccustomCB, SIGNAL(editTextChanged(QString)),
@@ -1534,6 +1537,23 @@ void GuiDocument::change_adaptor()
 {
 	nonModuleChanged_ = true;
 	changed();
+}
+
+
+void GuiDocument::shellescapeChanged()
+{
+	// This is treated specially as the change is automatically applied
+	// and the document isn't marked as dirty. Visual feedback is given
+	// by the appearance/disappearance of a red icon in the status bar.
+	bp_.shell_escape = outputModule->shellescapeCB->isChecked();
+	if (!bp_.shell_escape)
+	    theSession().shellescapeFiles().remove(buffer().absFileName());
+	else if (!theSession().shellescapeFiles().find(buffer().absFileName()))
+	    theSession().shellescapeFiles().insert(buffer().absFileName());
+	Buffer & buf = const_cast<Buffer &>(buffer());
+	buf.params().shell_escape = bp_.shell_escape;
+	BufferView * bv = const_cast<BufferView *>(bufferview());
+	bv->processUpdateFlags(Update::Force);
 }
 
 
@@ -3115,6 +3135,8 @@ void GuiDocument::applyView()
 	bool const nontexfonts = fontModule->osFontsCB->isChecked();
 	bp_.useNonTeXFonts = nontexfonts;
 
+	bp_.shell_escape = outputModule->shellescapeCB->isChecked();
+
 	bp_.output_sync = outputModule->outputsyncCB->isChecked();
 
 	bp_.output_sync_macro = fromqstr(outputModule->synccustomCB->currentText());
@@ -3733,6 +3755,7 @@ void GuiDocument::paramsToDialog()
 		index = 0;
 	outputModule->defaultFormatCO->setCurrentIndex(index);
 
+	outputModule->shellescapeCB->setChecked(bp_.shell_escape);
 	outputModule->outputsyncCB->setChecked(bp_.output_sync);
 	outputModule->synccustomCB->setEditText(toqstr(bp_.output_sync_macro));
 
