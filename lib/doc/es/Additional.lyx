@@ -115,7 +115,7 @@ shapepar
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
@@ -131,13 +131,7 @@ Características adicionales de \SpecialChar LyX
 \end_layout
 
 \begin_layout Subtitle
-Version 2.
-\change_deleted 34634807 1499890754
-2
-\change_inserted 34634807 1499890754
-3
-\change_unchanged
-.x
+Version 2.3.x
 \end_layout
 
 \begin_layout Author
@@ -2067,81 +2061,30 @@ encanta
 \emph default
 vomitar esto.
 
-\change_deleted 34634807 1501320985
- 
-\change_inserted 34634807 1501320997
-
 \lang english
  It seems to generate at least one of these messages for just about any
  document you write.
 
 \lang spanish
+ Te avisa de líneas que son demasiado largas y sobrepasan el margen derecho.
  
-\change_unchanged
-Te avisa de líneas que son demasiado largas y sobrepasan el margen derecho.
- 
-\change_inserted 34634807 1501321013
-
 \lang english
 This happens if \SpecialChar LaTeX
  does not find a reasonable way to break the lines (notoriously
  often with typewriter font, since this does not allow for automatic break
  points).
- 
-\change_deleted 34634807 1501321024
-
-\lang spanish
-Casi siempre
-\change_inserted 34634807 1501321034
-
-\lang english
-In many cases,
-\change_unchanged
-
+ In many cases,
 \lang spanish
  será inapreciable en la salida (suele ser solo uno o dos puntos).
- 
-\change_deleted 34634807 1501321046
-O solo uno o dos caracteres sobrepasan el margen.
 
+\change_deleted 34634807 1501831912
+ 
 \change_unchanged
  
-\change_inserted 34634807 1501321054
-
 \lang english
 Sometimes, however, the lines run rather visibly into the margin; something
- you will not want to have in your final print.
-\change_deleted 34634807 1501321070
-
-\lang spanish
-\SpecialChar LaTeX
- parece generar al menos uno de estos mensajes en cada documento que procesa.
-\begin_inset Newline newline
-\end_inset
-
-Puedes ignorar estos estúpidos mensajes.
- Tus ojos verán si hay algún problema con algo excesivamente ancho; solo
- mira el documento de salida.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-También puedes activar la opción 'draft' en 
-\family sans
-Documento\SpecialChar menuseparator
-Configuración
-\family default
-, y entonces \SpecialChar LaTeX
- dibujará un marco negro en el margen de las líneas sobrecargadas.
-\end_layout
-
-\end_inset
-
-
-\change_inserted 34634807 1501321082
-
-\lang english
-There are several global ways to try to minimize the overfull lines.
+ you will not want to have in your final print.There are several global ways
+ to try to minimize the overfull lines.
  Clicking 
 \family sans
 Enable micro-typographic extensions
@@ -2166,8 +2109,6 @@ Preamble
 
 \begin_deeper
 \begin_layout LyX-Code
-
-\change_inserted 34634807 1501321082
 
 \lang english
 
@@ -2195,8 +2136,6 @@ hfuzz 0.3pt
 
 \begin_layout Standard
 
-\change_inserted 34634807 1501321082
-
 \lang english
 In some cases, however, you eventually have to rewrite the text to get the
  line breaking right.
@@ -2205,16 +2144,12 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1501321082
-
 \lang english
 For more information, see 
 \begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1501321082
 
 http://www.tex.ac.uk/FAQ-overfull.html
 \end_layout
@@ -2231,8 +2166,6 @@ http://www.tex.ac.uk/FAQ-overfull.html
 
 \begin_layout Standard
 
-\change_inserted 34634807 1501321082
-
 \lang english
 In any case, you should check the respective lines, at least for the final
  version of your document.
@@ -2243,16 +2176,12 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1501321082
-
 \lang english
 You can also enable the `draft' option in 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1501321082
 
 \lang english
 Document\SpecialChar menuseparator
@@ -2268,8 +2197,6 @@ Settings
 \end_inset
 
  
-\change_unchanged
-
 \end_layout
 
 \end_deeper
@@ -2297,21 +2224,11 @@ hbox
 
 No tan común como su primo.
  
-\change_deleted 34634807 1501321118
-Parece que a \SpecialChar LaTeX
- le encanta imprimir líneas que son un poco demasiado anchas
- como contrapartida a las que son un poco demasiado estrechas.
- No tenemos ni idea del porqué.
- 
-\change_inserted 34634807 1501321139
-
 \lang english
 This happens again if \SpecialChar LaTeX
  does not find a reasonable break point and consequently
  generates too loose lines.
  As with the overfull lines, you should check if this is a visible problem.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Itemize
@@ -2771,36 +2688,23 @@ Herramientas suplementarias
 \begin_layout Section
 Personalizar bibliografías con Bib\SpecialChar TeX
 
-\change_inserted 34634807 1499889171
-
 \lang english
  or Biblatex
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
 Los fundamentos del uso de Bib\SpecialChar TeX
 
-\change_inserted 34634807 1499889180
-
 \lang english
  or 
 \family sans
 Biblatex
-\change_unchanged
-
 \family default
 \lang spanish
  se explican en la sección 
 \emph on
 Bases de datos bibliográficos
-\change_deleted 34634807 1499889185
- (Bib\SpecialChar TeX
-)
 \emph default
- 
-\change_unchanged
 de la 
 \emph on
 Guía del Usuario
@@ -2853,23 +2757,13 @@ Knuth 1984a
 
 ).
  \SpecialChar LyX
- soporta
-\change_deleted 34634807 1499889201
- dos 
-\change_inserted 34634807 1499889203
-three 
-\change_unchanged
-paquetes que suministra este estilo,
-\change_inserted 34634807 1499889217
-
+ soportathree paquetes que suministra este estilo,
 \lang english
  
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499889217
 
 \lang english
 biblatex
@@ -2878,8 +2772,6 @@ biblatex
 \end_inset
 
 ,
-\change_unchanged
-
 \lang spanish
  
 \family typewriter
@@ -2915,24 +2807,12 @@ jurabib
 \family default
 .
  
-\change_deleted 34634807 1499889233
-Ambos 
-\change_inserted 34634807 1499889230
-
 \lang english
 Each of these 
-\change_unchanged
-
 \lang spanish
 paquetes 
-\change_deleted 34634807 1499889259
-tienen
-\change_inserted 34634807 1499889291
-
 \lang english
 have
-\change_unchanged
-
 \lang spanish
  sus pros y sus contras, que no podemos detallar aquí.
  Si solo necesitas un estilo sencillo autor-año (o numérico)
@@ -2962,15 +2842,8 @@ natbib
 \family default
 .
  
-\change_deleted 34634807 1499889335
-Si necesitas características especiales como referencias con título breve,
- ibidem, etc.,
-\change_inserted 34634807 1499889342
-
 \lang english
 If you look for specific citation styles common in law studies
-\change_unchanged
-
 \lang spanish
  deberías considerar el nuevo paquete 
 \family typewriter
@@ -2990,8 +2863,6 @@ jurabib
 \family default
 .
 
-\change_inserted 34634807 1499889355
-
 \lang english
  If you want to have full control over the formatting or look for advanced
  features such as ibidem, footnote citations, full title citations, advanced
@@ -3002,8 +2873,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499889355
-
 \lang english
 biblatex
 \end_layout
@@ -3012,23 +2881,19 @@ biblatex
 
 , which exceeds all other packages in terms of features, but is also quite
  heavy and more resource-hungry.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
 El manejo de 
-\change_deleted 34634807 1499889371
-ambos
-\change_inserted 34634807 1499889368
-
 \lang english
 these
-\change_unchanged
-
 \lang spanish
  paquetes es básicamente el mismo.
- Ve al submenú 
+ Ve al submenú
+\change_deleted 34634807 1501831912
+ 
+\change_unchanged
+
 \family sans
  
 \begin_inset Flex Noun
@@ -3062,24 +2927,16 @@ status collapsed
 \end_inset
 
  
-\change_deleted 34634807 1499889397
-la opción
-\change_unchanged
-
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499889413
 
 \lang english
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499889410
 
 \lang english
 Style Format
@@ -3093,8 +2950,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499889410
-
 \lang english
 Biblatex
 \end_layout
@@ -3107,8 +2962,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499889410
-
 \lang english
 Biblatex (Natbib mode)
 \end_layout
@@ -3118,16 +2971,10 @@ Biblatex (Natbib mode)
 ,
 \family sans
 \lang spanish
- 
-\change_unchanged
-Natbib
-\change_inserted 34634807 1499889418
-
+ Natbib
 \family default
 \lang english
 (BibTeX)
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3142,19 +2989,13 @@ status collapsed
 
 \family sans
 Jurabib
-\change_inserted 34634807 1499889432
-
 \family default
 \lang english
  (BibTeX)
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_inserted 34634807 1499889446
 
 \family default
 \lang english
@@ -3163,19 +3004,11 @@ Jurabib
 \end_inset
 
 6.5.3 in the User's Guide for more information on these choices)
-\change_unchanged
-
 \lang spanish
 .
  Con 
-\change_deleted 34634807 1499889452
-ambos
-\change_inserted 34634807 1499889458
-
 \lang english
 all these
-\change_unchanged
-
 \lang spanish
  paquetes dispondrás de algunas características extras en el diálogo y podrás
  elegir el estilo de las citas (
@@ -3212,27 +3045,12 @@ Knuth, 1984
 
  etc.).
  Ten en cuenta que los 
-\change_deleted 34634807 1499889480
-dos
-\change_inserted 34634807 1499889487
-
 \lang english
 either
-\change_unchanged
-
 \lang spanish
- paquete
-\change_deleted 34634807 1499889496
-s
-\change_unchanged
- necesitan archivos de estilo específicamente diseñados (
-\change_deleted 34634807 1499889523
-ambos
-\change_inserted 34634807 1499889526
-all
-\change_unchanged
- incluyen el suyo propio, pero hay muchos otros archivos de estilo disponibles
- e incluso un programa interactivo
+ paquete necesitan archivos de estilo específicamente diseñados (all incluyen
+ el suyo propio, pero hay muchos otros archivos de estilo disponibles e
+ incluso un programa interactivo
 \begin_inset Foot
 status collapsed
 
@@ -3262,18 +3080,10 @@ natbib
 
 \begin_layout Subsection
 
-\change_inserted 34634807 1499889539
-
 \lang english
 Subdivided
-\change_unchanged
-
 \lang spanish
 Bibliografía
-\change_deleted 34634807 1499889545
- por secciones
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -3447,25 +3257,8 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499889591
-
 \lang english
 Subdivided bibliography
-\change_deleted 34634807 1499889598
-
-\family sans
-\lang spanish
-Bibliografía
-\begin_inset space ~
-\end_inset
-
-por
-\begin_inset space ~
-\end_inset
-
-secciones
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -3583,13 +3376,9 @@ bibtopic
 \family default
  quita el título de la bibliografía, debes reañadirlo manualmente (como
  un capítulo* o sección*, por ejemplo).
-\change_inserted 34634807 1499889620
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 34634807 1499889623
 
 \lang english
 With 
@@ -3610,8 +3399,6 @@ Biblatex
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499889623
 
 \lang english
 Subdivided bibliography
@@ -3635,8 +3422,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499889623
-
 \lang english
 keywords
 \end_layout
@@ -3650,8 +3435,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499889623
-
 \lang english
 keyword=mykeyword
 \end_layout
@@ -3664,8 +3447,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499889623
-
 \lang english
 Options
 \end_layout
@@ -3677,8 +3458,6 @@ Options
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499889623
 
 \lang english
 Biblatex Generated Bibliography
@@ -3705,8 +3484,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499889623
-
 \lang english
 type=book
 \end_layout
@@ -3719,8 +3496,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499889623
-
 \lang english
 nottype=collection
 \end_layout
@@ -3732,8 +3507,6 @@ nottype=collection
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499889623
 
 \lang english
 Options
@@ -3755,14 +3528,10 @@ Bibliography Categories
 Subdivided Bibliographies
 \emph default
 , for details.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
 Bibliografías múltiples
-\change_inserted 34634807 1501321182
-
 \lang english
 
 \begin_inset CommandInset label
@@ -3771,8 +3540,6 @@ name "subsec:Multiple-Bibliographies"
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -3787,268 +3554,14 @@ ej.
 \end_inset
 
 una bibliografía para cada 
-\change_inserted 34634807 1499889656
-
 \lang english
 part, chapter, 
-\change_unchanged
-
 \lang spanish
 sección o 
-\change_inserted 34634807 1499889671
-
 \lang english
-subsection
-\change_deleted 34634807 1499889674
-
-\lang spanish
-capítulo
-\change_inserted 34634807 1499889689
-
-\lang english
- or child (sub-document)
-\change_unchanged
-
+subsection or child (sub-document)
 \lang spanish
  del documento,
-\change_deleted 34634807 1499889741
- pero el paquete 
-\family typewriter
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-bibtopic
-\end_layout
-
-\end_inset
-
-
-\family default
-, que sirve para crear bibliografías por secciones (véase la sección previa),
- provee una sencilla manera de hacer esta tarea si estás dispuesto a emplear
- un poco de 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-código \SpecialChar TeX
-
-\end_layout
-
-\end_inset
-
- (véase la sección
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Insertar-Código-TeX"
-
-\end_inset
-
-).
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Una vía alternativa es usar los paquetes 
-\family typewriter
-chapterbib
-\family default
- o 
-\family typewriter
-bibunits
-\family default
-, respectivamente.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 34634807 1499889741
-En primer lugar, en
-\family sans
- 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\family sans
-Documento\SpecialChar menuseparator
-
-\family default
-C
-\family sans
-onfiguración
-\end_layout
-
-\end_inset
-
-
-\family default
- selecciona en el panel
-\family sans
- 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\family sans
-Bibliografía
-\end_layout
-
-\end_inset
-
-
-\family default
- la opción 
-\family sans
-
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\family sans
-Bibliografía
-\begin_inset space ~
-\end_inset
-
-
-\family default
-por
-\family sans
-
-\begin_inset space ~
-\end_inset
-
-secciones
-\end_layout
-
-\end_inset
-
-
-\family default
-.
- En el documento, debes encerrar las secciones, que contendrán su propia
- bibliografía (incluyendo la propia referencia Bib\SpecialChar TeX
-), entre 
-\family typewriter
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-
-\backslash
-begin{btUnit}
-\end_layout
-
-\end_inset
-
-
-\family default
- y 
-\family typewriter
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-
-\backslash
-end{btUnit}
-\end_layout
-
-\end_inset
-
-
-\family default
- (estos comandos deben insertarse en 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-código \SpecialChar TeX
-
-\end_layout
-
-\end_inset
-
-).
- La bibliografía contendrá todas las referencias que han sido citadas en
- el actual 
-\family typewriter
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-btUnit
-\end_layout
-
-\end_inset
-
-
-\family default
-.
- 
-\series bold
-Nota
-\series default
-: Si empleas este camino, entonces 
-\emph on
-cada 
-\emph default
-referencia de cita debe estar dentro de alguna 
-\family typewriter
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\family typewriter
-btUnit
-\end_layout
-
-\end_inset
-
-
-\family default
-.
- Además, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-btUnits
-\end_layout
-
-\end_inset
-
- no puede anidarse.
-
-\change_inserted 34634807 1499889771
-
 \lang english
  are also supported by \SpecialChar LyX
 .
@@ -4057,8 +3570,6 @@ btUnits
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499889771
 
 \lang english
 Document\SpecialChar menuseparator
@@ -4086,8 +3597,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499889771
-
 \lang english
 Multiple Bibliographies
 \end_layout
@@ -4107,8 +3616,6 @@ g., section) of your document.
 
 \begin_layout Standard
 
-\change_inserted 34634807 1501321198
-
 \lang english
 If you use Bib\SpecialChar TeX
 , either the 
@@ -4116,8 +3623,6 @@ If you use Bib\SpecialChar TeX
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499889771
 
 \lang english
 chapterbib
@@ -4130,8 +3635,6 @@ chapterbib
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499889771
 
 \lang english
 bibtopic
@@ -4158,8 +3661,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499889771
-
 \lang english
 Sectioned Bibliography
 \end_layout
@@ -4173,8 +3674,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499889771
-
 \lang english
 bibtopic
 \end_layout
@@ -4187,16 +3686,12 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499889771
-
 \lang english
 An alternative approach, if you are willing to use some 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499889771
 
 \lang english
 \SpecialChar TeX
@@ -4222,8 +3717,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499889771
-
 \lang english
 bibunits
 \end_layout
@@ -4241,8 +3734,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499889771
-
 \lang english
 bibtopic
 \end_layout
@@ -4256,8 +3747,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499889771
-
 \lang english
 bibtopic
 \end_layout
@@ -4269,8 +3758,6 @@ bibtopic
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499889771
 
 \lang english
 
@@ -4285,8 +3772,6 @@ begin{btUnit}
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499889771
 
 \lang english
 
@@ -4303,8 +3788,6 @@ end{btUnit}
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499889771
 
 \lang english
 btUnit
@@ -4340,8 +3823,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499889771
-
 \lang english
 
 \backslash
@@ -4355,8 +3836,6 @@ begin{btUnit}
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499889771
 
 \lang english
 
@@ -4374,8 +3853,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499889771
-
 \lang english
 btUnit
 \end_layout
@@ -4388,8 +3865,6 @@ s cannot be nested.
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499889771
 
 \lang english
 bibtopic
@@ -4418,8 +3893,6 @@ Miller 2014b
 
 \begin_layout Standard
 
-\change_inserted 34634807 1499889771
-
 \lang english
 If you use 
 \family sans
@@ -4430,8 +3903,6 @@ Biblatex
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499889771
 
 \lang english
 refsection
@@ -4447,8 +3918,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499889771
-
 \lang english
 
 \backslash
@@ -4462,8 +3931,6 @@ newrefsection
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499889771
 
 \lang english
 
@@ -4480,8 +3947,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499889771
-
 \lang english
 
 \backslash
@@ -4497,8 +3962,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499889771
-
 \lang english
 
 \backslash
@@ -4513,8 +3976,6 @@ end{refsection}
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499889771
 
 \lang english
 refsection
@@ -4548,8 +4009,6 @@ all reference units
 Biblatex
 \family default
  manual for more information on this topic.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section
@@ -4691,13 +4150,7 @@ Literal
 \end_inset
 
 .
- 
-\change_deleted 34634807 1501321291
-La diferencia entre l
-\change_inserted 34634807 1501321293
-L
-\change_unchanged
-os métodos 
+ Los métodos 
 \begin_inset Quotes cld
 \end_inset
 
@@ -4714,44 +4167,13 @@ Incorporar
 \end_inset
 
  
-\change_deleted 34634807 1501321341
-solo es significativa para 
-\begin_inset Quotes cld
-\end_inset
-
-\SpecialChar LaTeX
-pertos
-\begin_inset Quotes crd
-\end_inset
-
-
-\change_inserted 34634807 1501321341
-
 \lang english
-a
-\change_deleted 34634807 1501321341
-
-\lang spanish
-,
-\change_inserted 34634807 1501321331
-
-\lang english
-re similar in many ways, but there are also some notable differences:
-\change_unchanged
-
+are similar in many ways, but there are also some notable differences:
 \lang spanish
  
-\change_deleted 34634807 1501321377
-pero en la práctica
-\change_inserted 34634807 1501321377
-
 \end_layout
 
 \begin_layout Enumerate
-
-\change_deleted 34634807 1501321377
- 
-\change_unchanged
 los archivos 
 \begin_inset Quotes cld
 \end_inset
@@ -4769,18 +4191,11 @@ incorporados
 \end_inset
 
  se imprimen en la página en la que estén insertados.
-\change_inserted 34634807 1501321414
-
 \end_layout
 
 \begin_layout Enumerate
 
-\change_deleted 34634807 1501321414
- 
-\change_inserted 34634807 1501321423
-
 \lang english
-
 \begin_inset Quotes eld
 \end_inset
 
@@ -4817,8 +4232,6 @@ input
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 34634807 1501321423
 
 \lang english
 \begin_inset Quotes eld
@@ -4858,8 +4271,6 @@ Objects
 
 \begin_layout Standard
 
-\change_inserted 34634807 1501321423
-
 \lang english
 Hence, 
 \begin_inset Quotes eld
@@ -4879,20 +4290,6 @@ input
 \end_inset
 
  is more suitable for arbitrary file inheritance.
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 34634807 1501321447
-Generalmente, el archivo maestro es convertido en un archivo \SpecialChar LaTeX
- completo antes
- de ser procesado, mientras que los archivos incluidos son convertidos a
- archivos \SpecialChar LaTeX
- que no tienen toda la información del preámbulo.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -4951,13 +4348,9 @@ salida
 
 \family default
 , se imprime una marca que señala sin ambigüedad la presencia de espacios.
-\change_inserted 34634807 1501321573
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 34634807 1501321570
 
 \lang english
 Generally, the master file is converted into a full \SpecialChar LaTeX
@@ -4965,8 +4358,6 @@ Generally, the master file is converted into a full \SpecialChar LaTeX
  while the included files are converted to \SpecialChar LaTeX
  files that do not have all the
  preamble information.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
@@ -5055,8 +4446,6 @@ Esta sección también requiere actualización.
 
 \begin_layout Standard
 
-\change_inserted 34634807 1501398237
-
 \lang english
 If you work with child documents, you might want to have only one main bibliogra
 phy at the end, but still be able to have a selected bibliography for the
@@ -5065,8 +4454,6 @@ phy at the end, but still be able to have a selected bibliography for the
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 34634807 1501398237
 
 \lang english
 For the main document, you just insert a bibliography inset at the place
@@ -5078,8 +4465,6 @@ For the main document, you just insert a bibliography inset at the place
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 34634807 1501398237
 
 \lang english
 For child-specific bibliographies, insert bibliography insets within the
@@ -5125,8 +4510,6 @@ Branches
 
 \begin_layout Standard
 
-\change_inserted 34634807 1501398237
-
 \lang english
 If you need multiple bibliographies (e.
 \begin_inset space \thinspace{}
@@ -5148,81 +4531,6 @@ reference "subsec:Multiple-Bibliographies"
 \end_inset
 
 .
-\change_deleted 34634807 1501398224
-
-\lang spanish
-Copia la lista de bibliografía con todas las entradas en todos los subdocumentos
- y transfórmalas en un comentario.
- De esta forma \SpecialChar LyX
- encontrará los archivos 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-.bib
-\end_layout
-
-\end_inset
-
- y puedes fácilmente insertar referencias sin hacer visible la lista de
- bibliografía.
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 34634807 1501398224
-Como la lista de bibliografía está en un comentario, \SpecialChar LaTeX
- no la usará y las
- referencias se mostrarán así: [?], en lugar de así : [1].
- Una solución es usar el paquete \SpecialChar LaTeX
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-comment
-\end_layout
-
-\end_inset
-
- que solo incluirá comentarios procesando los archivos separadamente.
- Para hacer esto, añade en el preámbulo \SpecialChar LaTeX
- de cada subdocumento lo siguiente:
-\end_layout
-
-\begin_layout LyX-Code
-
-\change_deleted 34634807 1501398224
-
-\backslash
-usepackage{comment}
-\end_layout
-
-\begin_layout LyX-Code
-
-\change_deleted 34634807 1501398224
-
-\backslash
-includecomment{comment}
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 34634807 1501398224
-Véase también 
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/FAQ/Unsorted#toc31
-\end_layout
-
-\end_inset
-
-.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section
@@ -6440,27 +5748,9 @@ labelitem
 
 \begin_layout Itemize
 
-\change_deleted 34634807 1501398283
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-[
-\backslash
-(
-\backslash
-star
-\backslash
-)]
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
+\change_deleted 34634807 1501831912
  
-\change_inserted 34634807 1501398292
+\change_unchanged
 
 \lang english
 
@@ -6469,15 +5759,11 @@ status open
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1501398292
-
 \lang english
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1501398292
 
 
 \backslash
@@ -6496,15 +5782,9 @@ star
 \end_inset
 
  
-\change_unchanged
-
 \lang spanish
 Especifica cada entrada individual empezando cada ítem con el símbolo escogido
  encerrado entre 
-\change_deleted 34634807 1501398328
-corchetes
-\change_inserted 34634807 1501398341
-
 \lang english
 a 
 \begin_inset Quotes eld
@@ -6520,8 +5800,6 @@ Insert\SpecialChar menuseparator
 Custom Item
 \family default
 )
-\change_unchanged
-
 \lang spanish
  y en 
 \begin_inset Flex Code
@@ -6541,20 +5819,12 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_deleted 34634807 1501398361
-[
-\change_unchanged
-
 \backslash
 (
 \backslash
 star
 \backslash
 )
-\change_deleted 34634807 1501398366
-]
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -6819,11 +6089,7 @@ El archivo
 status collapsed
 
 \begin_layout Plain Layout
-development/
-\change_inserted 34634807 1501398428
-HTML/
-\change_unchanged
-HTML.notes
+development/HTML/HTML.notes
 \end_layout
 
 \end_inset
@@ -7079,20 +6345,6 @@ No
  La desventaja, como ya hemos dicho, es que son imágenes mapa de bits, por
  lo que no se redimensionan nada bien y no se pueden copiar, etc.
  
-\change_deleted 34634807 1501398481
-(Además, en estos momentos hay problemas con la numeración de ecuaciones.
- Véase 
-\begin_inset CommandInset href
-LatexCommand href
-name "bug 6894"
-target "http://www.lyx.org/trac/ticket/6894"
-literal "false"
-
-\end_inset
-
-.)
-\change_unchanged
-
 \begin_inset Newline newline
 \end_inset
 
@@ -7112,13 +6364,7 @@ status collapsed
 \begin_layout Plain Layout
 Documento\SpecialChar menuseparator
 Configuración\SpecialChar menuseparator
-
-\change_deleted 34634807 1501398501
-Salidas
-\change_inserted 34634807 1501398505
 Formats
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -7214,13 +6460,7 @@ status collapsed
 \begin_layout Plain Layout
 Documento\SpecialChar menuseparator
 Configuración\SpecialChar menuseparator
-
-\change_deleted 34634807 1501398524
-Salidas
-\change_inserted 34634807 1501398526
 Formats
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -7494,8 +6734,6 @@ empuje
 \begin_layout Section
 Iniciar el servidor \SpecialChar LyX
 
-\change_inserted 34634807 1501398548
-
 \lang english
 
 \begin_inset CommandInset label
@@ -7504,8 +6742,6 @@ name "sec:Starting-the-Server"
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -8169,8 +7405,6 @@ name "subsec:Activación-automática"
 \begin_layout Standard
 En la mayoría de los casos \SpecialChar LyX
  funcionará 
-\change_inserted 34634807 1501398606
-
 \lang english
 pressing the following button in the toolbar: 
 \begin_inset Info
@@ -8189,8 +7423,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1501398606
-
 \lang english
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
@@ -8200,25 +7432,7 @@ Formats
 \end_inset
 
 
-\change_deleted 34634807 1501398617
-
 \lang spanish
-marcando la opción 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-Documento\SpecialChar menuseparator
-Configuración\SpecialChar menuseparator
-Salidas\SpecialChar menuseparator
-Sincronizar con salida
-\end_layout
-
-\end_inset
-
-.
- 
-\change_unchanged
 En estos casos \SpecialChar LyX
  insertará automáticamente la macro 
 \begin_inset Flex Code
@@ -8572,20 +7786,12 @@ src-specials
 Live 2008 o una distribución Mik\SpecialChar TeX
  reciente.
  Además, solo unos pocos visores PDF (
-\change_inserted 34634807 1501398669
-
 \lang english
 such as 
-\change_unchanged
-
 \lang spanish
 Okular y Qpdfview en Unix, Skim en Mac, SumatraPDF en Windows
-\change_inserted 34634807 1501398659
-
 \lang english
 ; see the next section for details
-\change_unchanged
-
 \lang spanish
 ) proporcionan por ahora soporte para Sync\SpecialChar TeX
 .
@@ -8658,19 +7864,11 @@ pdflatex -synctex=1 $$i
 
 .
  
-\change_inserted 34634807 1501398702
-
 \lang english
 Should your viewer not be considered in the following description, or in
  case of missing success, please 
-\change_deleted 34634807 1501398706
-
 \lang spanish
-C
-\change_inserted 34634807 1501398709
-c
-\change_unchanged
-onsulta en la documentación de tu visor si necesita ser configurado para
+consulta en la documentación de tu visor si necesita ser configurado para
  usarlo con Sync\SpecialChar TeX
 .
 \begin_inset Foot
@@ -8993,21 +8191,11 @@ Editor
 
 \end_inset
 
-, selecciona 
-\change_deleted 34634807 1501398764
-
-\begin_inset Quotes cld
-\end_inset
-
-Editor personalizado
-\begin_inset Quotes crd
-\end_inset
-
-
+, selecciona
+\change_deleted 34634807 1501831912
+ 
 \change_unchanged
  
-\change_inserted 34634807 1501398809
-
 \lang english
 yX
 \begin_inset Quotes erd
@@ -9017,16 +8205,11 @@ yX
  This inserts the appropriate
 \lang spanish
 .
-\change_deleted 34634807 1501398839
-y añade el 
-\change_inserted 34634807 1501398843
 
 \lang english
  This inserts the appropriate
 \lang spanish
- 
-\change_unchanged
-comando 
+ comando 
 \begin_inset Flex Code
 status collapsed
 
@@ -9848,13 +9031,9 @@ automágicamente
 thanks{}
 \family default
  en ese caso.
-\change_inserted 34634807 1501398904
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 34634807 1501398901
 
 \lang english
 Under 
@@ -9866,8 +9045,6 @@ Text Style
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted 34634807 1501398901
 
 \family sans
 \lang english
@@ -9886,40 +9063,20 @@ Address
 
 \begin_layout Itemize
 
-\change_inserted 34634807 1501398901
-
 \family sans
 \lang english
 Email
 \family default
  to supply an email address for fast contact.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-Además, las macros emplean 
-\change_deleted 34634807 1501398913
-tres
-\change_unchanged
+Además, las macros emplean
+\change_deleted 34634807 1501831912
  
-\change_inserted 34634807 1501398926
-one 
 \change_unchanged
-comando
-\change_deleted 34634807 1501398931
-s
-\change_unchanged
- \SpecialChar LaTeX
- adicional
-\change_deleted 34634807 1501398935
-es 
-\change_unchanged
-que no tien
-\change_deleted 34634807 1501398952
-en
-\change_unchanged
- contrapartida en \SpecialChar LyX
+ one comando \SpecialChar LaTeX
+ adicionalque no tien contrapartida en \SpecialChar LyX
 :
 \end_layout
 
@@ -9933,46 +9090,8 @@ and
  para separar nombres diferentes de más de un autor e instituto, respectivamente.
 \end_layout
 
-\begin_layout Itemize
-
-\change_deleted 34634807 1501398962
-
-\family typewriter
-
-\backslash
-inst{<nr>}
-\family default
- para señalar pares de autor/institución correspondientes.
- Las instituciones se numeran secuencialmente tal como aparecen en el campo
- 
-\family sans
-Dirección
-\family default
-, así que tienes que poner un marcador a cada autor.
-\end_layout
-
-\begin_layout Itemize
-
-\change_deleted 34634807 1501398962
-
-\family typewriter
-
-\backslash
-email{address}
-\family default
- para proporcionar un correo electrónico para contacto rápido.
-\change_unchanged
-
-\end_layout
-
 \begin_layout Standard
-
-\change_deleted 34634807 1501398970
-En todos los casos, e
-\change_inserted 34634807 1501398970
-E
-\change_unchanged
-l comando apropiado ha de introducirse en \SpecialChar LyX
+El comando apropiado ha de introducirse en \SpecialChar LyX
  marcado como código \SpecialChar LaTeX
 .
  Véanse los ejemplos.
@@ -9988,25 +9107,7 @@ El resumen debería ir a continuación del encabezado.
  Con la versión 5 el resumen cambió de entorno a comando, y ahora hay una
  restricción a un único párrafo.
  Además, debería contener una entrada con las claves.
- Esto 
-\change_deleted 34634807 1501399026
-no está aún implementado en \SpecialChar LyX
-, por tanto hay que introducir el comando \SpecialChar LaTeX
- 
-\family typewriter
-
-\backslash
-keywords{}
-\family default
- a mano en código \SpecialChar LaTeX
-
-\change_unchanged
-.
-
-\change_deleted 34634807 1501399040
- 
-\change_inserted 34634807 1501399046
-
+ Esto .
 \lang english
 done via the paragraph style 
 \family sans
@@ -10015,9 +9116,7 @@ Keywords
 .
 
 \lang spanish
- 
-\change_unchanged
-Véase el ejemplo.
+ Véase el ejemplo.
 \end_layout
 
 \begin_layout Subsection
@@ -10130,58 +9229,10 @@ and
 
 \begin_layout Itemize
 
-\change_deleted 34634807 1501399064
-
-\family typewriter
-
-\backslash
-email
-\change_unchanged
-
-\end_layout
-
-\begin_layout Itemize
-
-\change_deleted 34634807 1501399068
-
-\family typewriter
-
-\backslash
-appendix
-\change_unchanged
-
-\end_layout
-
-\begin_layout Itemize
-
 \family typewriter
 
 \backslash
 authorrunning
-\end_layout
-
-\begin_layout Itemize
-
-\change_deleted 34634807 1501399071
-
-\family typewriter
-
-\backslash
-inst{}
-\change_unchanged
-
-\end_layout
-
-\begin_layout Itemize
-
-\change_deleted 34634807 1501399074
-
-\family typewriter
-
-\backslash
-keywords{}
-\change_unchanged
-
 \end_layout
 
 \begin_layout Itemize
@@ -10351,43 +9402,6 @@ Antes de remitir el artículo a los editores hay que darle un formato especial
 referee
 \family default
  a la clase de documento
-\change_deleted 34634807 1501399151
-, simplemente introduciendo esa palabra en el campo 
-\family sans
-Opciones 
-\family default
-de la solapa 
-\family sans
-Configuración
-\family default
-
-\begin_inset space ~
-\end_inset
-
-
-\family sans
-de
-\family default
-
-\begin_inset space ~
-\end_inset
-
-
-\family sans
-clase
-\family default
-, submenú 
-\family sans
-Documento
-\family default
-\SpecialChar menuseparator
-
-\family sans
-Configuración
-\family default
-.
-\change_inserted 34634807 1501399157
-
 \lang english
 This must be done using the custom class options field in the 
 \family sans
@@ -10400,8 +9414,6 @@ Settings
 referee
 \family default
  there.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
@@ -10466,13 +9478,8 @@ Publications of the Astronomical Society of the Pacific
  ha demostrado ser una herramienta excelente para generar estos documentos,
  especialmente por su capacidad para el manejo de ecuaciones, citas y figuras.
  \SpecialChar LyX
- requiere la versión 5.0 (o superior) de estas macros; preferiblemente 
-\change_deleted 34634807 1501399187
-5.2
-\change_inserted 34634807 1501399188
-6.0
-\change_unchanged
-, que es la versión aquí explicada, o mayor.
+ requiere la versión 5.0 (o superior) de estas macros; preferiblemente 6.0,
+ que es la versión aquí explicada, o mayor.
  Las versiones anteriores a 5.0 están pensadas para usar con \SpecialChar LaTeX
 2.09 y son básicament
 e incompatibles con \SpecialChar LyX
@@ -10547,11 +9554,7 @@ plantilla
 \family default
 , introduce el nombre del nuevo archivo, y luego escoge el archivo 
 \family typewriter
-aastex
-\change_inserted 34634807 1501399206
-6
-\change_unchanged
-.lyx
+aastex6.lyx
 \family default
 .
  Este contempla los campos más habituales presentes en un manuscrito.
@@ -10564,23 +9567,7 @@ aastex
  Muchos de los comandos y entornos AAS\SpecialChar TeX
  se pueden implementar directamente
  en \SpecialChar LyX
-, pero algunos no
-\change_deleted 34634807 1501399245
-: los más destacables son 
-\family typewriter
-
-\backslash
-altaffilmark
-\family default
- y 
-\family typewriter
-
-\backslash
-altaffiltext
-\family default
-, que resaltarán como luciérnagas en la noche en la plantilla recién abierta
-\change_unchanged
-.
+, pero algunos no.
  Comandos como estos deben introducirse directamente en código \SpecialChar TeX
 , (antes
  conocido por ERT, 
@@ -10590,10 +9577,6 @@ Evil Red Text
 ).
  He intentado reducir la cantidad de código \SpecialChar TeX
  necesario en documentos AAS\SpecialChar TeX
-
-\change_deleted 34634807 1501399255
-, pero aún queda más del que quisiéramos
-\change_unchanged
 .
 \end_layout
 
@@ -11164,22 +10147,6 @@ Cosas no implementadas, código \SpecialChar TeX
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 34634807 1501399273
-
-\family typewriter
-
-\backslash
-altaffilmark
-\family default
- (2.3), 
-\family typewriter
-
-\backslash
-altaffiltext
-\family default
- (2.3), 
-\change_unchanged
 
 \family typewriter
 
@@ -13332,26 +12299,6 @@ Dirección
 Dirección derecha
 \end_layout
 
-\begin_layout Itemize
-
-\change_deleted 34634807 1501399314
-
-\family sans
-Encabezado
-\change_unchanged
-
-\end_layout
-
-\begin_layout Itemize
-
-\change_deleted 34634807 1501399316
-
-\family sans
-Comentario
-\change_unchanged
-
-\end_layout
-
 \end_inset
 
 
@@ -13745,52 +12692,15 @@ Teoremas, lemas, demostraciones y más
 \end_layout
 
 \begin_layout Standard
+No puedes poner seguidos dos de estos entornos del mismo tipo.
 
-\change_deleted 34634807 1501399342
-Debido a un pequeño fallo de \SpecialChar LyX
- n
-\change_inserted 34634807 1501399342
-N
-\change_unchanged
-o puedes poner seguidos dos de estos entornos del mismo tipo.
+\change_deleted 34634807 1501831912
  
-\change_deleted 34634807 1501399386
-Deben estar separados por algo.
- Si lo pruebas, observarás que el contenido del segundo entorno se añade
- al primero sin separación.
- ¿Cómo remediar este problema? Lo más sencillo es insertar algún texto entre
- los dos entornos, o añadir un entorno 
-\family sans
-\SpecialChar LaTeX
-
-\family default
- entre los dos con solo un 
-\begin_inset Quotes cld
-\end_inset
-
-
-\family typewriter
-%
-\family default
-
-\begin_inset Quotes crd
-\end_inset
-
- en él.
- Est forzará a \SpecialChar LyX
- a producir dos entornos separados y la salida será correcta.
- En el archivo de ejemplo suministrado con \SpecialChar LyX
- lo puedes ver.
- Recuerda, este problema solo sucede si intentas poner seguidos dos entornos
- de tipos como teorema.
-
-\change_inserted 34634807 1501399404
+\change_unchanged
 
 \lang english
  If you use a normal paragraph break, you will just be extending the previous
  environment as if you had merged the two environments together.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -14548,13 +13458,7 @@ M-z p
 
 \family default
 Instrucciones para el personaje portavoz.
- Los () se insertan automáticamente
-\change_deleted 34634807 1501399478
-, pero solo el ( se verá en \SpecialChar LyX
-.
- Se imprimirán los dos
-\change_unchanged
-.
+ Los () se insertan automáticamente.
 \end_layout
 
 \begin_layout Itemize
@@ -14801,42 +13705,13 @@ En
 \family default
 \SpecialChar menuseparator
 
-\change_deleted 34634807 1501399532
-
 \family sans
-Preferencias
-\change_inserted 34634807 1501399539
-
 \lang english
 Language
-\change_unchanged
-
 \lang spanish
  
 \family default
 selecciona
-\change_deleted 34634807 1501399532
- 
-\family sans
-Idioma 
-\family default
-y desmarca la opción 
-\family sans
-Usar babel
-\family default
-.
- Pulsa 
-\family sans
-Aplicar 
-\family default
-(o 
-\family sans
-Guardar
-\family default
- si deseas el cambio permanente).
- 
-\change_inserted 34634807 1501399554
-
 \lang english
  
 \begin_inset Quotes eld
@@ -14851,8 +13726,6 @@ None
 Language Package
 \family default
 .
-\change_unchanged
-
 \end_layout
 
 \begin_layout Enumerate
@@ -15282,45 +14155,6 @@ El archivo
  resultante.
 \end_layout
 
-\begin_layout Subsection
-
-\change_deleted 34634807 1501399568
-Uso de código \SpecialChar TeX
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 34634807 1501399568
-El uso de código \SpecialChar TeX
- se reduce a dos comandos, que deben colocarse al principio
- del documento.
- Si has empezado tu artículo a partir de una plantilla 
-\family typewriter
-ijmpc.lyx
-\family default
- o 
-\family typewriter
-ijmpd.lyx
-\family default
-, el código \SpecialChar TeX
- necesario ya está en su sitio; generalmente no necesitas borrarlo.
- Solo puedes modificar el primer código \SpecialChar TeX
- para especificar la información
- impresa en la parte superior de las páginas pares e impares (título corto
- del artículo y nombre del autor, respectivamente).
- Este código \SpecialChar TeX
- debe ser de la forma 
-\family typewriter
-
-\backslash
-markboth{Nombres de autores}{Título corto del artículo}
-\family default
-.
-\change_unchanged
-
-\end_layout
-
 \begin_layout Section
 iopart
 \end_layout
@@ -15371,50 +14205,26 @@ Escribir un documento
 
 \begin_layout Standard
 La forma más sencilla de escribir un documento es empezar con el 
-\change_deleted 34634807 1501399601
-archivo
-\change_inserted 34634807 1501399598
-
 \lang english
 template
-\change_unchanged
-
 \lang spanish
  
 \emph on
 IOP-article.lyx
 \emph default
 , disponible
-\change_deleted 34634807 1501399617
- en el directorio de ejemplos de \SpecialChar LyX
-
-\change_inserted 34634807 1501399624
-
 \lang english
 via 
 \family sans
 File\SpecialChar menuseparator
 New From Template\SpecialChar ldots
 
-\change_unchanged
-
 \family default
 \lang spanish
 .
-
-\change_deleted 34634807 1501399638
- Abre el archivo, guárdalo con otro nombre y comienza a escribir.
-
-\change_unchanged
  El 
-\change_deleted 34634807 1501399645
-archivo
-\change_inserted 34634807 1501399652
-
 \lang english
 template
-\change_unchanged
-
 \lang spanish
  de ejemplo explica cómo usar los entornos especiales de texto.
  Aquí están los consejos más importantes:
@@ -15422,18 +14232,6 @@ template
 
 \begin_layout Itemize
 Para poder compilar tu documento a PDF, PS o DVI, asegúrate de que
-\change_deleted 34634807 1501399672
- las dos opciones 
-\family sans
-Usar el paquete de ecuaciones AMS
-\family default
- de la configuración del documento, en el apartado 
-\family sans
-Ecuaciones
-\family default
-, ¡no están marcadas!
-\change_inserted 34634807 1501399687
-
 \lang english
  no AMS packages are loaded in 
 \family sans
@@ -15442,8 +14240,6 @@ Settings\SpecialChar menuseparator
 Math Options
 \family default
 !
-\change_unchanged
-
 \end_layout
 
 \begin_layout Itemize
@@ -16400,22 +15196,12 @@ Sentencia
 \family sans
 Insertar\SpecialChar menuseparator
 
-\change_deleted 34634807 1501399754
-Título
-\begin_inset space ~
-\end_inset
-
-breve
-\change_inserted 34634807 1501399751
-
 \lang english
 Dictum
 \begin_inset space ~
 \end_inset
 
 Author
-\change_unchanged
-
 \family default
 \lang spanish
 , puedes insertar aquí el nombre del autor de la sentencia.
@@ -16676,8 +15462,6 @@ letter (koma-script)
 
 \begin_layout Description
 \noindent
-
-\change_inserted 34634807 1501399775
 
 \lang english
 Note: This section discusses the obsolete 
@@ -17799,22 +16583,7 @@ fancyhdr
 ).
  En su lugar, Memoir dispone de un puñado de estilos de página propios (véase
  
-\change_deleted 34634807 1501399870
-
 \family sans
-Documento\SpecialChar menuseparator
-Configuración\SpecialChar menuseparator
-Diseño
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-página
-\change_inserted 34634807 1501399867
-
 \lang english
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
@@ -17823,8 +16592,6 @@ Page
 \end_inset
 
 Style
-\change_unchanged
-
 \family default
 \lang spanish
 ).
@@ -17877,13 +16644,6 @@ Memoir
 nto.
  Con esto puedes definir tres variantes de un título: una para el texto
  principal, otra para el índice general y otra para los encabezamientos.
-
-\change_deleted 34634807 1501399897
- Simplemente, inserta dos argumentos opcionales si necesitas esta característica
-, el primero contiene el título breve para el Índice General, el segundo
- contiene un título breve alternativo para los encabezamientos.
-
-\change_inserted 34634807 1501399905
  
 \lang english
 \SpecialChar LyX
@@ -17896,8 +16656,6 @@ Short Title
 Insert
 \family default
  menu.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -17967,15 +16725,11 @@ de
 
 documento\SpecialChar menuseparator
 
-\change_inserted 34634807 1501399942
-
 \lang english
 Custom
 \begin_inset space ~
 \end_inset
 
-
-\change_unchanged
 
 \lang spanish
 Opciones
@@ -18166,26 +16920,6 @@ Epígrafe: Un epígrafe es un texto breve o lema al principio de un capítulo.
  El entorno epígrafe lo presenta de manera elegante.
  El propio lema (texto) y su autor (origen) se separan con una línea corta.
  
-\change_deleted 34634807 1501399965
-Desafortunadamente, tenemos que marear un poco a \SpecialChar LyX
-, porque el entorno necesita
- dos argumentos (texto y origen).
- En este caso tenemos que usar llaves (}{, en modo \SpecialChar TeX
-) entre ambos argumentos:
- 
-\emph on
-<un elegante lema>
-\emph default
- 
-\family typewriter
-}{
-\family default
- 
-\emph on
-<autor del lema>.
-\change_inserted 34634807 1501399970
-
-\emph default
 \lang english
 The author (source) can be inserted via 
 \family sans
@@ -18194,8 +16928,6 @@ Epigraph Source
 \family default
 \emph on
 .
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -18811,81 +17543,6 @@ Dirección
  no compilará.
 \end_layout
 
-\begin_layout Subsection
-
-\change_deleted 34634807 1501399985
-Inconvenientes
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 34634807 1501399985
-El problema principal con este formato es que no puedes usar los argumentos
- opcionales en ciertos entornos como 
-\family sans
-CorreoE
-\family default
- y 
-\family sans
-Título
-\family default
-.
- (El problema no es exclusivo de este formato; tampoco puedes usar argumentos
- opcionales en los entornos de 
-\family sans
-Sección
-\family default
-).
- Esto significa que después de exportar el archivo a \SpecialChar LaTeX
- (a la larga deberás
- hacerlo para enviarlo al APS), tendrás que abrir el archivo 
-\family typewriter
-.tex
-\family default
- con un editor para añadir los argumentos opcionales que restan por poner,
- p.
-\begin_inset space \thinspace{}
-\end_inset
-
-ej.
-\begin_inset space ~
-\end_inset
-
-el título de los encabezamientos de página.
- Al no tener estos entornos, los comandos 
-\family typewriter
-
-\backslash
-altaffiliation
-\family default
- (y el equivalente 
-\family typewriter
-
-\backslash
-altaddress
-\family default
-) son inútiles, pues los entornos correspondientes no existen, y deberán
- añadirse a mano.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-Nota de JMarc:
-\emph default
- en realidad, \SpecialChar LyX
- 1.3.0 soporta algunos tipos de argumentos opcionales, pero
- este formato no ha sido actualizado todavía para beneficiarse de ello.
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
- 
-\end_layout
-
 \begin_layout Section
 Publicaciones de Springer (
 \family sans
@@ -19096,18 +17753,6 @@ ejour2
 \family default
  de \SpecialChar LaTeX
  modificado.
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 34634807 1501400001
-Limitaciones, p.
-\begin_inset space \thinspace{}
-\end_inset
-
-ej.: no muestra el número para formatos tipo teorema, solamente #.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section
@@ -19567,16 +18212,6 @@ Encabezado
 
 \family sans
 Código-\SpecialChar LyX
-
-\end_layout
-
-\begin_layout Itemize
-
-\change_deleted 34634807 1501400019
-
-\family sans
-Comentario
-\change_unchanged
 
 \end_layout
 
@@ -22662,11 +21297,7 @@ Introducción
 \begin_layout Standard
 Además, hay que tener en cuenta que el soporte de CVS no es tan bueno como
  el de subversion, por lo que recomendamos SVN.
- Para empezar con Subversion es conveniente consultar 
-\change_inserted 34634807 1501400056
-el 
-\change_unchanged
-SVN Book.
+ Para empezar con Subversion es conveniente consultar el SVN Book.
 \begin_inset Foot
 status collapsed
 
@@ -22822,15 +21453,9 @@ Comando
  
 \family default
 RCS ejecutado:
-\change_inserted 34634807 1501400142
-
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_deleted 34634807 1501400142
- 
-\change_unchanged
 
 \family typewriter
 ci -q -u -i -t-"<descripción inicial>" <nombre-archivo>
@@ -22956,44 +21581,21 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_deleted 34634807 1501400294
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 34634807 1501400290
-
 \family typewriter
 \lang english
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \family default
 \lang spanish
 <nombre-archivo>
-\change_inserted 34634807 1501400291
-
 \family typewriter
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_deleted 34634807 1501400297
-
-\family default
-\lang spanish
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
 
 \end_layout
 
@@ -23005,44 +21607,21 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_deleted 34634807 1501400314
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 34634807 1501400336
-
 \family typewriter
 \lang english
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \family default
 \lang spanish
 <nuevo-nombre-archivo>
-\change_inserted 34634807 1501400338
-
 \family typewriter
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_deleted 34634807 1501400319
-
-\family default
-\lang spanish
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
 
 \end_layout
 
@@ -23058,36 +21637,22 @@ status collapsed
 
 \begin_layout Plain Layout
 ci -q -u -i 
-\change_deleted 34634807 1501400322
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 34634807 1501400350
-
 \family typewriter
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \family default
 \lang spanish
 <nuevo-nombre-archivo>
-\change_inserted 34634807 1501400352
-
 \family typewriter
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \family default
 \lang spanish
@@ -23620,37 +22185,15 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_deleted 34634807 1501400395
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 34634807 1501400402
-
 \family typewriter
 \lang ngerman
 "
-\change_unchanged
-
 \family default
 \lang spanish
 <file-name>
-\change_inserted 34634807 1501400405
-
 \family typewriter
 \lang ngerman
 "
-\change_deleted 34634807 1501400425
-
-\family default
-\lang spanish
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -23661,37 +22204,15 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_deleted 34634807 1501400428
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 34634807 1501400406
-
 \family typewriter
 \lang ngerman
 "
-\change_unchanged
-
 \family default
 \lang spanish
 <new-file-name>
-\change_inserted 34634807 1501400409
-
 \family typewriter
 \lang ngerman
 "
-\change_deleted 34634807 1501400435
-
-\family default
-\lang spanish
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -23706,38 +22227,15 @@ status collapsed
 
 \begin_layout Plain Layout
 cvs -q add 
-\change_deleted 34634807 1501400443
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 34634807 1501400411
-
 \family typewriter
 \lang ngerman
 "
-\change_unchanged
-
 \family default
 \lang spanish
 <new-file-name>
-\change_inserted 34634807 1501400413
-
 \family typewriter
 \lang ngerman
 "
-\change_deleted 34634807 1501400439
-
-\family default
-\lang spanish
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -23789,37 +22287,15 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_deleted 34634807 1501400476
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 34634807 1501400454
-
 \family typewriter
 \lang ngerman
 "
-\change_unchanged
-
 \family default
 \lang spanish
 <file-name>
-\change_inserted 34634807 1501400456
-
 \family typewriter
 \lang ngerman
 "
-\change_deleted 34634807 1501400484
-
-\family default
-\lang spanish
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -23830,37 +22306,15 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_deleted 34634807 1501400488
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 34634807 1501400457
-
 \family typewriter
 \lang ngerman
 "
-\change_unchanged
-
 \family default
 \lang spanish
 <new-file-name>
-\change_inserted 34634807 1501400459
-
 \family typewriter
 \lang ngerman
 "
-\change_deleted 34634807 1501400491
-
-\family default
-\lang spanish
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -23875,38 +22329,15 @@ status collapsed
 
 \begin_layout Plain Layout
 cvs -q add 
-\change_inserted 34634807 1501400461
-
 \family typewriter
 \lang ngerman
 "
-\change_deleted 34634807 1501400468
-
 \family default
 \lang spanish
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_unchanged
 <new-file-name>
-\change_inserted 34634807 1501400462
-
 \family typewriter
 \lang ngerman
 "
-\change_deleted 34634807 1501400472
-
-\family default
-\lang spanish
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -23921,38 +22352,15 @@ status collapsed
 
 \begin_layout Plain Layout
 cvs -q remove 
-\change_deleted 34634807 1501400495
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 34634807 1501400466
-
 \family typewriter
 \lang ngerman
 "
-\change_unchanged
-
 \family default
 \lang spanish
 <file-name>
-\change_inserted 34634807 1501400464
-
 \family typewriter
 \lang ngerman
 "
-\change_deleted 34634807 1501400506
-
-\family default
-\lang spanish
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -24223,41 +22631,19 @@ Después se te pide interactivamente una descripción inicial del documento.
 El comando SVN que es ejecutado: 
 \family typewriter
 snv add -q 
-\change_deleted 34634807 1501400539
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 34634807 1501400528
-
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \lang spanish
 <file-name>
-\change_inserted 34634807 1501400532
-
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_deleted 34634807 1501400544
-
-\lang spanish
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
 
 \end_layout
 
@@ -24328,41 +22714,19 @@ status collapsed
  
 \family typewriter
 svn update --non-interactive 
-\change_deleted 34634807 1501400580
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 34634807 1501400572
-
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \lang spanish
 <file-name>
-\change_inserted 34634807 1501400574
-
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_deleted 34634807 1501400577
-
-\lang spanish
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
 
 \end_layout
 
@@ -24380,41 +22744,19 @@ Esto descartará todos los cambios hechos en el documento desde la última
 Comando SVN: 
 \family typewriter
 svn revert -q 
-\change_deleted 34634807 1501400601
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 34634807 1501400594
-
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \lang spanish
 <file-name>
-\change_inserted 34634807 1501400595
-
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_deleted 34634807 1501400598
-
-\lang spanish
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
 
 \end_layout
 
@@ -24459,85 +22801,42 @@ status collapsed
 
 \begin_layout Plain Layout
 svn copy -q 
-\change_deleted 34634807 1501400619
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 34634807 1501400612
-
 \family typewriter
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \family default
 \lang spanish
 <file-name>
-\change_inserted 34634807 1501400613
-
 \family typewriter
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_deleted 34634807 1501400624
 
 \family default
 \lang spanish
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
  
-\change_deleted 34634807 1501400627
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 34634807 1501400614
-
 \family typewriter
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \family default
 \lang spanish
 <new-file-name>
-\change_inserted 34634807 1501400616
-
 \family typewriter
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_deleted 34634807 1501400630
-
-\family default
-\lang spanish
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
 
 \end_layout
 
@@ -24601,85 +22900,42 @@ status collapsed
 
 \begin_layout Plain Layout
 svn move -q 
-\change_deleted 34634807 1501400650
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 34634807 1501400643
-
 \family typewriter
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \family default
 \lang spanish
 <file-name>
-\change_inserted 34634807 1501400644
-
 \family typewriter
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_deleted 34634807 1501400654
 
 \family default
 \lang spanish
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
  
-\change_deleted 34634807 1501400657
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 34634807 1501400645
-
 \family typewriter
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \family default
 \lang spanish
 <new-file-name>
-\change_inserted 34634807 1501400647
-
 \family typewriter
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_deleted 34634807 1501400661
-
-\family default
-\lang spanish
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
 
 \end_layout
 
@@ -24832,42 +23088,22 @@ Muestra el historial completo del documento SVN.
 
 \family typewriter
 svn log 
-\change_deleted 34634807 1501400692
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 34634807 1501400685
-
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \lang spanish
 <file-name>
-\change_inserted 34634807 1501400686
-
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
 
-\change_deleted 34634807 1501400690
-
 \family default
 \lang spanish
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
  se muestra en un buscador.
 \end_layout
 
@@ -24894,14 +23130,8 @@ El intercambio de archivos entre varios sistemas de control de revisiones
 \begin_layout Standard
 SVN dispone de dos de estos mecanismos que garantizan exclusividad recíproca
  en el acceso a archivos,
-\change_deleted 34634807 1501400728
- 
-\change_inserted 34634807 1501400730
-
 \lang english
  –
-\change_unchanged
-
 \lang spanish
 bloqueos y configuración automática de permisos de escritura (véase la sec.
 \begin_inset space ~
@@ -24965,25 +23195,13 @@ Reservar
 \begin_layout Itemize
 Estado bloqueado.
  El archivo cargado está en modo 
-\change_deleted 34634807 1501400753
-'
-\change_inserted 34634807 1501400753
-
 \begin_inset Quotes cld
 \end_inset
 
-
-\change_unchanged
 normal
-\change_deleted 34634807 1501400759
-'
-\change_inserted 34634807 1501400760
-
 \begin_inset Quotes crd
 \end_inset
 
-
-\change_unchanged
  de edición.
  Ningún otro usuario tiene permiso para editar el archivo.
  
@@ -25060,13 +23278,7 @@ status collapsed
 \begin_layout Plain Layout
 Archivo\SpecialChar menuseparator
 Control de versiones\SpecialChar menuseparator
-
-\change_deleted 34634807 1501400784
-Cambiar
-\change_inserted 34634807 1501400785
-Use
-\change_unchanged
- propiedad de bloqueo
+Use propiedad de bloqueo
 \end_layout
 
 \end_inset
@@ -25442,21 +23654,6 @@ Esta es una manera fácil de asegurar que \SpecialChar LyX
 
 ej.
  
-\change_deleted 34634807 1501400857
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-$Rev$
-\end_layout
-
-\end_inset
-
-
-\change_inserted 34634807 1501400874
-
 \lang english
 
 \begin_inset Flex Code
@@ -25464,16 +23661,12 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1501400874
-
 \lang english
 $Rev$
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \lang spanish
 ).
@@ -25484,21 +23677,6 @@ $Rev$
 
 ej.
  
-\change_deleted 34634807 1501400857
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-$Rev: 59 $
-\end_layout
-
-\end_inset
-
-
-\change_inserted 34634807 1501400853
-
 \lang english
 
 \begin_inset Flex Code
@@ -25506,16 +23684,12 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1501400853
-
 \lang english
 $Rev: 59 $
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \lang spanish
 ) tras cada actualización e ingreso.
@@ -26159,41 +24333,19 @@ Descartará los cambios hechos en el documento desde la última liberación.
 Comando GIT: 
 \family typewriter
 git checkout -q 
-\change_deleted 34634807 1501400905
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 34634807 1501400897
-
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \lang spanish
 <file-name>
-\change_inserted 34634807 1501400898
-
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_deleted 34634807 1501400900
-
-\lang spanish
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
 
 \end_layout
 
@@ -26238,85 +24390,42 @@ status collapsed
 
 \begin_layout Plain Layout
 git mv 
-\change_deleted 34634807 1501400921
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 34634807 1501400914
-
 \family typewriter
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \family default
 \lang spanish
 <file-name>
-\change_inserted 34634807 1501400915
-
 \family typewriter
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_deleted 34634807 1501400925
 
 \family default
 \lang spanish
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
  
-\change_deleted 34634807 1501400929
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 34634807 1501400916
-
 \family typewriter
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \family default
 \lang spanish
 <new-file-name>
-\change_inserted 34634807 1501400917
-
 \family typewriter
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_deleted 34634807 1501400933
-
-\family default
-\lang spanish
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
 
 \end_layout
 
@@ -26348,43 +24457,22 @@ Muestra el historial completo del documento GIT.
  La salida de 
 \family typewriter
 git log 
-\change_deleted 34634807 1501400947
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted 34634807 1501400940
-
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \lang spanish
 <file-name>
-\change_inserted 34634807 1501400941
-
 \lang english
 
 \begin_inset Quotes qld
 \end_inset
 
 
-\change_deleted 34634807 1501400943
-
-\lang spanish
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
-
 \family default
+\lang spanish
  se muestra en un buscador.
 \end_layout
 
@@ -26484,53 +24572,17 @@ diff
 , que tienen una estructura más complicada.
  Por tanto, proporcionamos caminos para la característica de comparar documentos.
  Hay dos maneras de iniciar esta función, una por llamada directa a 
-\change_deleted 34634807 1501400984
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-VC_COMPARE
-\end_layout
-
-\end_inset
-
-
-\change_inserted 34634807 1501400993
-
 \family typewriter
 \lang english
 vc-compare
-\change_unchanged
-
 \family default
 \lang spanish
  (véase el manual Funciones de \SpecialChar LyX
  para detalles) y otra con el
-\change_deleted 34634807 1501401034
- 
-\change_inserted 34634807 1501401034
-
 \lang english
  toolbar 
-\change_unchanged
-
 \lang spanish
 icono o menú 
-\change_deleted 34634807 1501401052
-
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-Comparar con revisión anterior...
-\end_layout
-
-\end_inset
-
-
-\change_inserted 34634807 1501401068
-
 \lang english
 
 \begin_inset Info
@@ -26538,8 +24590,6 @@ type  "menu"
 arg   "vc-compare"
 \end_inset
 
-
-\change_unchanged
 
 \lang spanish
 .
@@ -26565,8 +24615,6 @@ Esta característica está soportada por SVN y RCS, aunque debido al esquema
  de las revisiones en el diálogo, los números siempre apuntan al último
  número en el número de revisión de RCS, es decir, '35' en '1.2.35'.
 
-\change_inserted 34634807 1501401099
-
 \lang english
  We don't currently support GIT addressing of revisions, one can just compare
  edited document with its revision X steps backs, where X is addressed as
@@ -26576,8 +24624,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1501401099
-
 \lang english
 HEAD~X
 \end_layout
@@ -26585,8 +24631,6 @@ HEAD~X
 \end_inset
 
 .
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section
@@ -26810,16 +24854,12 @@ Puede generar la documentación en \SpecialChar LaTeX
 
 \begin_layout Itemize
 Es de estructura abierta, es decir, es sencillo introducir filtros nuevos
-\change_inserted 34634807 1501401167
-
 \lang english
 
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1501401167
 
 \emph on
 \lang english
@@ -26834,8 +24874,6 @@ are programs that read a given data stream and output a manipulated data
 
 \end_inset
 
-
-\change_unchanged
 
 \lang spanish
  y hacer procesamientos especiales según las necesidades.
@@ -26938,16 +24976,10 @@ Escribiendo código
 \begin_layout Standard
 \SpecialChar LyX
  proporciona el 
-\change_inserted 34634807 1501401226
-
 \lang english
 custom inset
 \lang spanish
  
-\change_deleted 34634807 1501401294
-entorno 
-\change_unchanged
-
 \lang english
 
 \begin_inset Flex Noun
@@ -27011,15 +25043,9 @@ Trozo
 \end_inset
 
 , que funciona como un 
-\change_inserted 34634807 1501401250
-
 \lang english
 text inset
-\change_deleted 34634807 1501401257
-
 \lang spanish
-párrafo
-\change_unchanged
  normal excepto que admite espacios con libertad.
 \end_layout
 
@@ -27150,14 +25176,8 @@ La única diferencia está en la extensión del archivo, no hace falta ninguna
  acción especial por parte de \SpecialChar LyX
 , puesto que has formateado el código con
  el 
-\change_deleted 34634807 1501401281
-entorno
-\change_inserted 34634807 1501401286
-
 \lang english
 inset
-\change_unchanged
-
 \lang spanish
  
 \begin_inset Flex Noun
@@ -27271,38 +25291,14 @@ La primera parte, que se especifica en el campo
 Convertidor
 \family default
 , debería contener
-\change_inserted 34634807 1501401378
-
 \end_layout
 
 \begin_layout LyX-Code
 
-\change_deleted 34634807 1501401373
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Quotes cld
-\end_inset
-
-
-\change_unchanged
-
 \family typewriter
 build-script $$i
-\change_deleted 34634807 1501401386
-
 \family default
-
-\begin_inset Quotes crd
-\end_inset
-
-.
-
-\change_unchanged
  
-\change_inserted 34634807 1501401389
-
 \end_layout
 
 \begin_layout Standard
@@ -27336,17 +25332,6 @@ build-script
  que puedes colocar en un directorio accesible para tu línea de comandos:
 \end_layout
 
-\begin_layout Standard
-
-\change_deleted 34634807 1501401403
-\begin_inset VSpace defskip
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
 \begin_layout LyX-Code
 
 \family sans
@@ -27366,17 +25351,6 @@ notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 NOWEB_OUTPUT_DIR=$2 sh
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 34634807 1501401424
-\begin_inset VSpace defskip
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
 La segunda parte de los ajustes del convertidor es el 
 \begin_inset Quotes cld
 \end_inset
@@ -27386,35 +25360,12 @@ indicador
 \end_inset
 
 , establecido en
-\change_inserted 34634807 1501401431
-
 \end_layout
 
 \begin_layout LyX-Code
 
-\change_deleted 34634807 1501401441
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_unchanged
-
 \family typewriter
 parselog=$$s/scripts/listerrors
-\change_deleted 34634807 1501401446
-
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
-\change_inserted 34634807 1501401447
-
 \end_layout
 
 \begin_layout Standard
@@ -27883,17 +25834,6 @@ Edit Sources
 :
 \end_layout
 
-\begin_layout Standard
-
-\change_deleted 34634807 1501401484
-\begin_inset VSpace defskip
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
 \begin_layout LyX-Code
 
 \family sans
@@ -27904,17 +25844,6 @@ LYXCMD
 \family sans
 \size default
 :monitor:server-goto-file-row:@FILE@ @LINE@" >~/.lyxpipe.in
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 34634807 1501401489
-\begin_inset VSpace defskip
-\end_inset
-
-
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -27952,48 +25881,9 @@ Sin embargo, ten en cuenta que debes habilitar el servidor \SpecialChar LyX
  para trabajar
  con él (por omisión está desactivado).
  
-\change_deleted 34634807 1501401536
-Se activa en 
-\family sans
-Preferencias
-\family default
-, (
-\family sans
-Rutas
-\family default
-), introduciendo en el campo 
-\family sans
-Tubería
-\begin_inset space ~
-\end_inset
-
-\SpecialChar LyX
-Server
-\family default
- una ruta como
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Quotes cld
-\end_inset
-
-
-\family typewriter
-/home/<directorio-personal>/.lyx/lyxpipe
-\family default
-
-\begin_inset Quotes crd
-\end_inset
-
-.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 34634807 1501401549
 
 \lang english
 Sec.
@@ -28008,16 +25898,7 @@ reference "sec:Starting-the-Server"
 \end_inset
 
  explains how to do that
-\change_deleted 34634807 1501401554
-
 \lang spanish
-Lee la documentación del servidor \SpecialChar LyX
- en el manual 
-\emph on
-Personalización
-\emph default
- para más información
-\change_unchanged
 .
 \end_layout
 
@@ -28029,13 +25910,7 @@ Ampliación de la barra de herramientas
 Hay seis botones nuevos que pueden añadirse a la barra de herramientas de
  \SpecialChar LyX
 .
- 
-\change_deleted 34634807 1501401562
-Cinco
-\change_inserted 34634807 1501401565
-Four
-\change_unchanged
- de ellos son atajos a los tipos de párrafo: 
+ Four de ellos son atajos a los tipos de párrafo: 
 \family sans
 Normal
 \family default
@@ -28049,23 +25924,13 @@ Sección
 
 \family default
 , 
-\change_inserted 34634807 1501401573
-
 \family sans
-y 
-\change_unchanged
-Código-\SpecialChar LyX
+y Código-\SpecialChar LyX
 
 \family default
 , 
-\change_deleted 34634807 1501401627
-y 
-\change_inserted 34634807 1501401641
-
 \lang english
 one fpr the custom inset 
-\change_unchanged
-
 \family sans
 \lang spanish
 Trozo
@@ -28146,18 +26011,10 @@ Toolbar
 
 \begin_layout LyX-Code
   Icon "
-\change_inserted 34634807 1501401660
-
 \lang english
 flex.insert
-\change_deleted 34634807 1501401665
-
 \lang spanish
-layout 
-\change_inserted 34634807 1501401666
- 
-\change_unchanged
-Chunk"
+ Chunk"
 \end_layout
 
 \begin_layout LyX-Code
@@ -29494,18 +27351,9 @@ columnseprulecolor
 \family default
 .
  Esto se consigue insertando el comando
-\change_inserted 34634807 1501445154
-
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_deleted 34634807 1501445154
-\begin_inset Newline newline
-\end_inset
-
-
-\change_unchanged
 
 \family typewriter
 
@@ -29515,18 +27363,9 @@ renewcommand{
 columnseprulecolor}{
 \backslash
 color{red}}
-\change_inserted 34634807 1501445202
-
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_deleted 34634807 1501445162
-\begin_inset Newline newline
-\end_inset
-
-
-\change_unchanged
 en código \SpecialChar TeX
  delante del recuadro columnas.
  Se puede poner el color deseado en lugar de red (rojo).
@@ -29545,18 +27384,9 @@ Cuadros coloreados
 \emph default
  para más información sobre colores.
  Para volver al color por omisión inserta el comando
-\change_inserted 34634807 1501445223
-
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_deleted 34634807 1501445223
-\begin_inset Newline newline
-\end_inset
-
-
-\change_unchanged
 
 \backslash
 renewcommand{
@@ -29564,18 +27394,9 @@ renewcommand{
 columnseprulecolor}{
 \backslash
 normalcolor}
-\change_inserted 34634807 1501445236
-
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_deleted 34634807 1501445236
-\begin_inset Newline newline
-\end_inset
-
-
-\change_unchanged
 Aquí hay un ejemplo con una línea en color cian y 1
 \begin_inset space \thinspace{}
 \end_inset
@@ -30299,11 +28120,7 @@ Nota
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 34634807 1501445297
 The package 
-\change_unchanged
-
 \family typewriter
 shapepar
 \family default
@@ -30739,15 +28556,7 @@ Estos comandos se usan internamente para todas las formas que se han descrito
 \end_inset
 
  Para información sobre el uso de estos entornos de estilo y más posibilidades
- de personalización echa un vistazo a la
-\change_deleted 34634807 1501445450
- 
-\change_inserted 34634807 1501445450
- 
-\change_deleted 34634807 1501445450
-documentación
-\change_inserted 34634807 1501445430
-
+ de personalización echa un vistazo a la 
 \begin_inset CommandInset href
 LatexCommand href
 name "documentación"
@@ -30756,73 +28565,11 @@ literal "false"
 
 \end_inset
 
-
-\change_unchanged
  del paquete 
 \family typewriter
 shapepar
-\change_deleted 34634807 1501445472
-
 \family default
-, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "shapepar"
-literal "true"
-
-\end_inset
-
-
-\change_unchanged
 .
-\end_layout
-
-\begin_layout Bibliography
-
-\change_deleted 34634807 1501445492
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "multicol"
-literal "true"
-
-\end_inset
-
-Documentación del paquete \SpecialChar LaTeX
- 
-\begin_inset CommandInset href
-LatexCommand href
-name "multicol"
-target "http://mirror.ctan.org/macros/latex/required/tools/multicol.pdf"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-
-\change_deleted 34634807 1501445492
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "shapepar"
-literal "true"
-
-\end_inset
-
-Documentación del paquete \SpecialChar LaTeX
- 
-\begin_inset CommandInset href
-LatexCommand href
-name "shapepar"
-target "http://mirrors.ctan.org/macros/latex/contrib/shapepar/shapepar.pdf"
-literal "false"
-
-\end_inset
-
-
-\change_unchanged
-
 \end_layout
 
 \end_body
