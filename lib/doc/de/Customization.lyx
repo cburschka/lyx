@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -103,6 +103,7 @@ logicalmkup
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \notefontcolor #0000ff
 \branch OutDated
 \selected 0
@@ -118,7 +119,10 @@ logicalmkup
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 1
+\math_indentation default
+\math_numbering_side default
 \quotes_style german
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
@@ -127,6 +131,7 @@ logicalmkup
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author 34634807 "Jean-Pierre"
 \end_header
 
 \begin_body
@@ -180,7 +185,7 @@ HHa
 \begin_inset Newline newline
 \end_inset
 
-Version 2.2.x
+Version 2.3.x
 \end_layout
 
 \begin_layout Standard
@@ -473,6 +478,47 @@ reference "cha:Internationales-LyX"
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+citeengines/
+\end_layout
+
+\end_inset
+
+ contains files with the extension 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+.citeengine
+\end_layout
+
+\end_inset
+
+ which define the diverse citation possibilities (natbib, biblatex etc.).
+ See 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Cite-Engine-Files"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for details.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
 \family typewriter
 \series medium
 clipart/
@@ -701,6 +747,45 @@ le von \SpecialChar LyX
  welchen Menüs sind, und wie die Werkzeugleiste zusammengesetzt ist.
 \end_layout
 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+xtemplates/
+\end_layout
+
+\end_inset
+
+ contains files with the extension 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+.xtemplate
+\end_layout
+
+\end_inset
+
+ which define the templates for the insertion of external material to a
+ \SpecialChar LyX
+ document; see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Including-External-Material"
+
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Subsection
 Dateien, die Sie nicht verändern sollten
 \end_layout
@@ -771,31 +856,6 @@ encodings
 \family default
  Die hier enthaltene Tabelle beschreibt, wie die unterschiedlichen Zeichenkodier
 ungen in Unicode dargestellt werden.
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-
-\family typewriter
-external_templates
-\family default
- Diese Datei enthält die Vorlagen für das Feature 
-\family sans
-Externes
-\begin_inset space \space{}
-\end_inset
-
-Material
-\family default
--Modul.
- Siehe dazu 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:Externes-Material-einfügen"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Labeling
@@ -5741,6 +5801,164 @@ Beachten Sie, das manuelle Konvertierungen keine eingefügten Dateien mit
  Diese müssen separat konvertiert werden.
 \end_layout
 
+\begin_layout Subsection
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Cite-Engine-Files"
+
+\end_inset
+
+Cite engine files
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+A specific form of layout files are the so-called 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+*.citeengine
+\end_layout
+
+\end_inset
+
+ files that are located in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+citeengines/
+\end_layout
+
+\end_inset
+
+ sub-directory.
+ Their purpose is to define the specifics of \SpecialChar LaTeX
+ packages aimed at bibliography
+ generation, such as 
+\family sans
+natbib
+\family default
+,
+\family sans
+ jurabib
+\family default
+ or 
+\family sans
+biblatex
+\family default
+, but also the way how normal Bib\SpecialChar TeX
+ citations (without additional packages)
+ are handled in \SpecialChar LyX
+ is defined in such a file.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+More specifically, it is defined which packages \SpecialChar LyX
+ needs to load, which citation
+ commands are available, how these are to be displayed in \SpecialChar LyX
+ (in the workarea,
+ the dialogs, the context menus) as well as in the XHTML and plain text
+ output.
+ Furthermore, the files specify available style variants (author-year, numerical
+, etc.) and their specifics.
+ The cite engine files are also used to generate the options that are available
+ in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar ldots
+\SpecialChar menuseparator
+Bibliography\SpecialChar menuseparator
+Style engine
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Even though a cite engine file is essentially a normal layout file that
+ could theoretically include any layout information, it usually primarily
+ includes some specific parameters such as 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+MaxCiteNames
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+CiteFramework
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+CiteEngine
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+CiteFormat
+\end_layout
+
+\end_inset
+
+ blocks.
+ The syntax of the latter two is described in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Citation-engine-description"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Citation-format-description"
+
+\end_inset
+
+, as well as in the files themselves.
+\end_layout
+
 \begin_layout Section
 Das Layout-Dateiformat
 \begin_inset CommandInset label
@@ -6452,6 +6670,135 @@ EinModul.module
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
+The CiteEngine file declaration
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+A cite engine file must begin with a line like the following:
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+#
+\backslash
+DeclareLyXCiteEngineModule[biblatex.sty]{Biblatex}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The mandatory argument, in curly brackets, is the name of the module, as
+ it should appear in 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Bibliography
+\end_layout
+
+\end_inset
+
+.
+ The argument in square brackets is optional: It declares any \SpecialChar LaTeX
+ packages
+ on which the cite engine depends.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The cite engine declaration should then be followed by lines like the following
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Preferably in English if the module should be published with \SpecialChar LyX
+.
+ This description will appear in the list of messages to be translated and
+ will be thus translated with the next interface update.
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+# DescriptionBegin
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+#   Biblatex supports many author-year and numerical styles.
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+#   It is mainly aimed at the Humanities.
+ It is highly
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+#   customizable, fully localized and provides many features
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+#   that are not possible with BibTeX.
+ The use of 'biber' as
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+#   bibliography processor is advised.
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+# DescriptionEnd
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The description is used in 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Bibliography
+\end_layout
+
+\end_inset
+
+ to provide the user with information about the cite engine.
+\end_layout
+
+\begin_layout Subsection
 Dateiformat
 \end_layout
 
@@ -6645,6 +6992,66 @@ EndPreamble
 
 \begin_layout Description
 
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+CiteEngine <engine>
+\end_layout
+
+\end_inset
+
+ Defines the possibilities for displaying citation references.
+ See 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Citation-engine-description"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for details.
+ Must end with 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+End
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Primarily used in cite engine files (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Cite-Engine-Files"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+
 \family typewriter
 \begin_inset Flex Code
 status collapsed
@@ -6686,6 +7093,77 @@ End
 \end_inset
 
  beendet werden.
+
+\lang english
+ Primarily used in cite engine files (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Cite-Engine-Files"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+CiteFramework
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+bibtex
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+biblatex
+\end_layout
+
+\end_inset
+
+] Determines whether 
+\family sans
+Biblatex
+\family default
+ or Bib\SpecialChar TeX
+ is used to generate a Bibliography.
+ Primarily used in cite engine files (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Cite-Engine-Files"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Description
@@ -7382,6 +7860,66 @@ MMMMM
 \end_inset
 
 .
+
+\lang english
+ (Note that this is not a `length', like 
+\begin_inset Quotes eld
+\end_inset
+
+2ex
+\begin_inset Quotes erd
+\end_inset
+
+.)
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+MaxCiteNames
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+integer
+\end_layout
+
+\end_inset
+
+] An integer that determines the maximal number of names displayed in an
+ author-year citation before the citation switches to 
+\begin_inset Quotes eld
+\end_inset
+
+FirstAuthor et al.
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Primarily used in cite engine files (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Cite-Engine-Files"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Description
@@ -8780,6 +9318,38 @@ Innerhalb des Blocks sind folgende Befehle erlaubt:
 \end_layout
 
 \begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+AddToToc
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+string
+\end_layout
+
+\end_inset
+
+=""] This paragraph will appear in the table of contents of the given type.
+ An empty string disables.
+ See also the OutlinerName and the IsTocCaption commands.
+ Default: disabled.
+\end_layout
+
+\begin_layout Description
 \begin_inset Flex Code
 status collapsed
 
@@ -9557,6 +10127,54 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+PassThru
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+inherited
+\emph default
+, true, false
+\end_layout
+
+\end_inset
+
+] Whether the contents of this argument should be output in raw form, meaning
+ without special translations that \SpecialChar LaTeX
+ would require.
+ By default, the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+PassThru
+\end_layout
+
+\end_inset
+
+ status is inherited by the inset or paragraph layout the argument belongs
+ to, true and false change the status for the given argument only.
+\end_layout
+
+\begin_layout Itemize
 \begin_inset Flex Code
 status collapsed
 
@@ -9588,6 +10206,54 @@ Defines individual characters that should be output in raw form, meaning
  arguments.
  That is, arguments do not inherit PassThruChars from their parent inset
  or layout.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+IsTocCaption
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+1
+\end_layout
+
+\end_inset
+
+] If this is set to 1, the argument will output its content in the corresponding
+ item in the table of contents.
+ See AddToToc.
 \end_layout
 
 \begin_layout Standard
@@ -10482,6 +11148,54 @@ TitleLatexName
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+IsTocCaption
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+1
+\end_layout
+
+\end_inset
+
+] If this is set to 1 and AddToToc is enabled, the paragraph adds a summary
+ of its contents in its item in the table of contents.
+ Otherwise, only the label, if it exists, appears.
 \end_layout
 
 \begin_layout Description
@@ -12985,6 +13699,73 @@ CopyStyle
 \end_layout
 
 \begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+ResumeCounter
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+1
+\end_layout
+
+\end_inset
+
+] Resumes a counter that is usually reset at each new sequence of layouts.
+ This is currently only useful when 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LabelType
+\end_layout
+
+\end_inset
+
+ is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Enumerate
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
 \begin_inset Flex Code
 status collapsed
 
@@ -13151,7 +13932,11 @@ other
 
 \end_inset
 
- angeben, müssen Sie  als 
+ angeben, müssen Sie
+\change_deleted 34634807 1501859525
+ 
+\change_unchanged
+ als 
 \emph on
 Wert
 \emph default
@@ -13219,6 +14004,74 @@ status collapsed
 \end_inset
 
 ] Erlaubt es, den Inhalt des Absatzes auf Rechtschreibung zu überprüfen.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+StepMasterCounter
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+1
+\end_layout
+
+\end_inset
+
+] Steps the master counter of a given counter at the beginning of a new
+ sequence of layouts.
+ This is currently only useful when 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LabelType
+\end_layout
+
+\end_inset
+
+ is 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Enumerate
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -15520,6 +16373,39 @@ InsetLayout
 \end_layout
 
 \begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+AddToToc
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+string
+\end_layout
+
+\end_inset
+
+=""] This inset will appear in the table of contents of the given type.
+ An empty string disables.
+ See also the OutlinerName and the IsTocCaption commands.
+ This is only implemented for Flex insets.
+ Default: disabled.
+\end_layout
+
+\begin_layout Description
 \begin_inset Flex Code
 status collapsed
 
@@ -16378,10 +17264,62 @@ status collapsed
 \end_inset
 
 ] Ob der Inhalt der Einfügung für die Zeichenketten des 'Gliederungs'-Fensters
- verwendet werden soll.
+ verwendet werden soll
+\lang english
+ for all table of contents, regardless of the AddToToc setting
+\lang ngerman
+.
  Zum Beispiel will man nicht, dass der Inhalt einer Fußzeile im Namen des
  Abschnitts im Inhaltsverzeichnis des Gliederungs-Fensters erscheint.
  Aber man will normalerweise, dass der Inhalt von Zeichenstilen erscheint.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+IsTocCaption
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+1
+\end_layout
+
+\end_inset
+
+] If this is set to 1 and AddToToc is enabled, the inset adds a summary
+ of its contents in its item in the table of contents.
+ Otherwise, only the label appears.
 \end_layout
 
 \begin_layout Description
@@ -16735,10 +17673,6 @@ LatexName
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Description
-
 \end_layout
 
 \begin_layout Standard
@@ -18766,6 +19700,685 @@ giant
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Citation-engine-description"
+
+\end_inset
+
+Citation engine description
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+CiteEngine
+\end_layout
+
+\end_inset
+
+ blocks, as used mainly in cite engine files (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Cite-Engine-Files"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), define the citation commands provided by a specific 
+\begin_inset Quotes eld
+\end_inset
+
+cite engine
+\begin_inset Quotes erd
+\end_inset
+
+.
+ A cite engine, in \SpecialChar LyX
+ terms, is way specific way to format citations, using
+ numbers, author names and/or years.
+ Currently, \SpecialChar LyX
+ supports three such engine types, namely:
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+default
+\end_layout
+
+\end_inset
+
+: the default Bib\SpecialChar TeX
+ way to format citations, a simple numeric style (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., 
+\begin_inset Quotes eld
+\end_inset
+
+[1]
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+authoryear
+\end_layout
+
+\end_inset
+
+: Harvard-styled citations using author names and publication year (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., 
+\begin_inset Quotes eld
+\end_inset
+
+Smith and Miller (2017b)
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+numerical
+\end_layout
+
+\end_inset
+
+: extended numerical citations that also allow for author or title next
+ to the number (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., 
+\begin_inset Quotes eld
+\end_inset
+
+Smith and Miller [1]
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+CiteEngine
+\end_layout
+
+\end_inset
+
+ blocks look like this:
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+CiteEngine default
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+ cite
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+ Citep*[][]
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+ citeyearpar[][]=parencite*
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+ ...
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+End
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The tag following 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+CiteEngine
+\end_layout
+
+\end_inset
+
+ denotes the engine.
+ The individual lines respectively define a cite command or cite command
+ paradigm supported by this engine.
+ The line can be as simple as a cite command that is used both to name the
+ respective \SpecialChar LyX
+ command and the \SpecialChar LaTeX
+ output or more complex in order to differentiate
+ things.
+ The full syntax is:
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+LyXName|alias$*<!_stardesc!_stardesctooltip>[][]=latexcmd
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LyXName
+\end_layout
+
+\end_inset
+
+: The name as used in the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+*.lyx
+\end_layout
+
+\end_inset
+
+ file.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+For portability reasons, we try to use the same name for same-formatted
+ commands in different cite packages (thus many names stem from natbib,
+ and thus we need to differentiate a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+latexcmd
+\end_layout
+
+\end_inset
+
+ sometimes, if the \SpecialChar LaTeX
+ command names differ).
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+alias
+\end_layout
+
+\end_inset
+
+: a (comma-separated) list of commands that fall back to the given 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LyXName
+\end_layout
+
+\end_inset
+
+ in the current engine.
+ This eases the switch of citation packages and engines.
+ The 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+alias
+\end_layout
+
+\end_inset
+
+ can be compared to 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+ObsoletedBy
+\end_layout
+
+\end_inset
+
+ in layout definitions.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+latexcmd
+\end_layout
+
+\end_inset
+
+: The actual \SpecialChar LaTeX
+ command that is output.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Alias
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+latexcmd
+\end_layout
+
+\end_inset
+
+ are optional.
+ If no 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+latexcmd
+\end_layout
+
+\end_inset
+
+ is given, the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+LyXName
+\end_layout
+
+\end_inset
+
+ will be output to \SpecialChar LaTeX
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Note further:
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Capitalization indicates that the command also has a capitalized form (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+Latexcmd
+\end_layout
+
+\end_inset
+
+ vs.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+latexcmd
+\end_layout
+
+\end_inset
+
+).
+ These usually enforce up-casing of name prefixes (
+\emph on
+von Goethe
+\emph default
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\emph on
+Von Goethe
+\emph default
+).
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Brackets 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+[]
+\end_layout
+
+\end_inset
+
+ indicate the number of optional arguments (there can be 0–2).
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+A star 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+*
+\end_layout
+
+\end_inset
+
+ indicates there is a starred version of the command (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+latexcmd*
+\end_layout
+
+\end_inset
+
+ vs.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+latexcmd
+\end_layout
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+By default, the starred version means: Output all authors even if it should
+ be shortened with 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+ due to the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+MaxCiteNames
+\end_layout
+
+\end_inset
+
+ threshold.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If the star has a different meaning for a given command, it can be specified
+ in angle brackets: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<!_stardesc!_stardesctooltip>
+\end_layout
+
+\end_inset
+
+.
+ Maximal two translatable macro keywords, marked by the prefix 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+!_
+\end_layout
+
+\end_inset
+
+, can be given.
+ The first points to the string that replaces the 
+\begin_inset Quotes eld
+\end_inset
+
+Full aut&hor list
+\begin_inset Quotes erd
+\end_inset
+
+ checkbox label in the citation dialog, the second one to an optional tool
+ tip for this checkbox.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Note that these two macros have to be defined in a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+CiteFormat
+\end_layout
+
+\end_inset
+
+ (see next section), dropping the 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+!
+\end_layout
+
+\end_inset
+
+ from the prefix, like this: 
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+_stardesc Sta&rred command label
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+_stardesctooltip Tooltip for the starred command checkbox.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\lang english
+A dollar sign 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$
+\end_layout
+
+\end_inset
+
+ indicates that this command features 
+\begin_inset Quotes eld
+\end_inset
+
+qualified citation lists
+\begin_inset Quotes erd
+\end_inset
+
+.
+ This is a 
+\family sans
+Biblatex
+\family default
+-specific feature for multi-reference citations where an individual pre-
+ and postnote can be given to each reference in the list.
+ Please refer to the 
+\family sans
+Biblatex
+\family default
+ manual for details.
+\end_layout
+
+\begin_layout Subsection
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Citation-format-description"
@@ -18818,7 +20431,43 @@ End
 \begin_layout Standard
 
 \lang english
-The individual lines define how the bibliographic information associated
+or
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+CiteFormat
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+ cite ...
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+ citet*[][] ...
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+End
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In the first case, t
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+he individual lines define how the bibliographic information associated
  with an article or book, respectively, is to be displayed, and such a definitio
 n can be given for any `entry type' that might be present in a Bib\SpecialChar TeX
  file.
@@ -18840,6 +20489,74 @@ stdciteformats.inc
 
 , which is included in most of \SpecialChar LyX
 's document classes.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In the second case, the lines define how a specific citation command (in
+ the example 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+cite
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+citet
+\end_layout
+
+\end_inset
+
+) is to be displayed on the citation inset label, in the citation dialog,
+ menu or XHTML output.
+ \SpecialChar LyX
+ defines such formats for the citation style variants it supports via 
+\family sans
+Document\SpecialChar menuseparator
+Setting\SpecialChar menuseparator
+Bibliography\SpecialChar ldots
+
+\family default
+ in specific 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+*.citeengine
+\end_layout
+
+\end_inset
+
+ files that are shipped with \SpecialChar LyX
+ (see 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Cite-Engine-Files"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
@@ -19046,6 +20763,801 @@ status collapsed
 \begin_layout Standard
 
 \lang english
+Next to the entry keys, there are some special keys that can be used for
+ these conditionals:
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+{%dialog%[[true]][[false]]}
+\end_layout
+
+\end_inset
+
+: process the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ part for dialogs and menus, the 
+\begin_inset Quotes eld
+\end_inset
+
+false
+\begin_inset Quotes erd
+\end_inset
+
+ part for other contexts (workarea, export)
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+{%export%[[true]][[false]]}
+\end_layout
+
+\end_inset
+
+: process the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ part for export and menus, the 
+\begin_inset Quotes eld
+\end_inset
+
+false
+\begin_inset Quotes erd
+\end_inset
+
+ part for other contexts (workarea, dialog)
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+{%next%[[true]]}
+\end_layout
+
+\end_inset
+
+: process the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ part if another item follows (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., in a citation with multiple keys)
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+{%second%[[true]][[false]]}
+\end_layout
+
+\end_inset
+
+: process the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ if this is the second of multiple items, else the 
+\begin_inset Quotes eld
+\end_inset
+
+false
+\begin_inset Quotes erd
+\end_inset
+
+ part
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+{%ifstar%[[true]][[false]]}
+\end_layout
+
+\end_inset
+
+: process the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ part for starred citation commands (such as 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+
+\backslash
+cite*
+\end_layout
+
+\end_inset
+
+), the false part for unstarred
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+{%ifentrytype:<type>%[[true]][[false]]}
+\end_layout
+
+\end_inset
+
+: process the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ if the current entry type matches 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<type>
+\end_layout
+
+\end_inset
+
+, else the false part (e.g., in a citation definition: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+{%ifentrytype:book%[[this is a book]][[this is no book]]}
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+{%ifmultiple:<authortype>%[[true]][[false]]}
+\end_layout
+
+\end_inset
+
+: process the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ if the current author type (author, editor etc.) has multiple authors, else
+ the false part (e.g., in a bibliography definition: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+{%ifmultiple:editor%[[eds.]][[ed.]]}
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+{%ifqualified%[[true]][[false]]}
+\end_layout
+
+\end_inset
+
+: process the 
+\begin_inset Quotes eld
+\end_inset
+
+true
+\begin_inset Quotes erd
+\end_inset
+
+ part if the current citation is a qualified citation list (a specific 
+\family sans
+Biblatex
+\family default
+ format for multi-reference citations), the false part if this is not the
+ case.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+We said that 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+%author%
+\end_layout
+
+\end_inset
+
+ prints the author key as it is recorded in the bibliography file.
+ This might not be what you want, since it will result in a string such
+ as 
+\begin_inset Quotes eld
+\end_inset
+
+Miller, Peter and Smith, Mary and White, Jane
+\begin_inset Quotes erd
+\end_inset
+
+ (since 
+\begin_inset Quotes eld
+\end_inset
+
+and
+\begin_inset Quotes erd
+\end_inset
+
+ is used by Bib\SpecialChar TeX
+ to delimit authors).
+ \SpecialChar LyX
+ therefore provides some methods to get properly formatted name lists (which
+ will also get translated).
+ The following keys are provided:
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+For name lists with pre- and surname, suitable for the main authors/editors
+ of a bibliography item.
+ The 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<nametype>
+\end_layout
+
+\end_inset
+
+ part denotes the kind of list that is requested (e.g.
+ 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<nametype:author>
+\end_layout
+
+\end_inset
+
+):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+%abbrvnames:<nametype>%
+\end_layout
+
+\end_inset
+
+: Provides a name list which is abbreviated (with 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+) when 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+MaxCiteNames
+\end_layout
+
+\end_inset
+
+ is reached.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+%fullnames:<nametype>%
+\end_layout
+
+\end_inset
+
+: Provides a full name list (never abbreviated with 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+%forceabbrvnames:<nametype>%
+\end_layout
+
+\end_inset
+
+: Provides a name list which is always abbreviated (with 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+) irrespective of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+MaxCiteNames
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Alternative name lists with pre- and surname, if the order of pre- and surname
+ inside the bibliography item differs (as in: 
+\begin_inset Quotes eld
+\end_inset
+
+Miller, John: Some text, in: Mary Smith, ed.: A volume
+\begin_inset Quotes erd
+\end_inset
+
+):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+%abbrvbynames:<nametype>%
+\end_layout
+
+\end_inset
+
+: Provides a name list which is abbreviated (with 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+) when 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+MaxCiteNames
+\end_layout
+
+\end_inset
+
+ is reached.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+%fullbynames:<nametype>%
+\end_layout
+
+\end_inset
+
+: Provides a full name list (never abbreviated with 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+%forceabbrvbynames:<nametype>%
+\end_layout
+
+\end_inset
+
+: Provides a name list which is always abbreviated (with 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+) irrespective of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+MaxCiteNames
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+And finally name lists which consist of family names only, as used in author-yea
+r citation labels.
+ these do not take a 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+<nametype>
+\end_layout
+
+\end_inset
+
+ part, but always return either an author list or, if this does not exist,
+ an editor list (as common in author-year labels):
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+%abbrvciteauthor%
+\end_layout
+
+\end_inset
+
+: Provides a name list which is abbreviated (with 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+) when 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+MaxCiteNames
+\end_layout
+
+\end_inset
+
+ is reached.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+%fullciteauthor%
+\end_layout
+
+\end_inset
+
+: Provides a full name list (never abbreviated with 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+%forceabbrvciteauthor%
+\end_layout
+
+\end_inset
+
+: Provides a name list which is always abbreviated (with 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+) irrespective of 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+MaxCiteNames
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\lang english
+The order of pre- and surname in the former two lists can be adjusted by
+ these macros:
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+!firstnameform %surname%, %prename%
+\end_layout
+
+\end_inset
+
+ (first author in lists of type 1)
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+!othernameform %surname%, %prename%
+\end_layout
+
+\end_inset
+
+ (other authors in lists of type 1)
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+!firstbynameform %prename% %surname%
+\end_layout
+
+\end_inset
+
+ (first author in lists of type 2)
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+!otherbynameform %prename% %surname%
+\end_layout
+
+\end_inset
+
+ (other authors in lists of type 2)
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This allows you to configure namings like 
+\begin_inset Quotes eld
+\end_inset
+
+Miller, Peter and Mary Smith: \SpecialChar ldots
+, in: John Doe and Pat Green, eds.:\SpecialChar ldots
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
 There is one other piece of syntax available in definitions, which looks
  like this: 
 \begin_inset Flex Code
@@ -19187,7 +21699,7 @@ _pptext pp.
 
 \lang english
 This defines a translatable piece of text, which allows relevant parts of
- the bibliography to be translated.
+ the bibliography or citation to be translated.
  It can be included in a definition by treating it as a key: 
 \begin_inset Flex Code
 status collapsed
@@ -19208,7 +21720,19 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-stdciteformats.inc
+stdciteformats.inc and the diverse 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+*.citeengine
+\end_layout
+
+\end_inset
+
+ files
 \end_layout
 
 \end_inset
@@ -21882,7 +24406,7 @@ Dieses Format wird durch die verwendete Dokumentenklasse festgelegt.
 \begin_layout Section
 
 \lang english
-The external template configuration file
+The external template configuration files
 \end_layout
 
 \begin_layout Standard
@@ -21924,29 +24448,39 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\family sans
 \lang english
-LyX
-\family default
-Dir/lib/external_templates
+*.xtemplate
 \end_layout
 
 \end_inset
 
- file.
- You can place your own version in 
+ files that are stored in the 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
 \lang english
-UserDir/external_templates
+LyXDir/lib/xtemplates/
 \end_layout
 
 \end_inset
 
-.
+ directory.
+ Each template is defined in a file of its own.
+ You can place your own templates in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+UserDir/xtemplates/
+\end_layout
+
+\end_inset
+
+ or copy existing templates to that directory in order to modify them.
 \end_layout
 
 \begin_layout Standard
