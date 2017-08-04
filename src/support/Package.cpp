@@ -193,7 +193,9 @@ void Package::set_temp_dir(FileName const & temp_dir) const
 FileName Package::messages_file(string const & c) const
 {
 	if (in_build_dir_) {
-		FileName res = FileName(lyx_dir().absFileName() + "/../po/" + c + ".gmo");
+		FileName res = FileName(lyx_dir().absFileName() + "/po/" + c + ".gmo");
+		if (!res.isReadableFile())
+			res = FileName(top_srcdir().absFileName() + "../po/" + c + ".gmo");
 		if (!res.isReadableFile())
 			res = FileName(top_srcdir().absFileName() + "/po/" + c + ".gmo");
 		return res;
