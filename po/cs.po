@@ -60,7 +60,7 @@ msgstr "Klíč bibliografie"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:25
 msgid "Ke&y:"
-msgstr ""
+msgstr "&Klíč:"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:35 src/frontends/qt4/ui/BibitemUi.ui:78
 msgid "The label as it appears in the document"
@@ -75,22 +75,21 @@ msgid ""
 "Pass content of the `Label' field literally to LaTeX. Check this if you want "
 "to enter LaTeX code."
 msgstr ""
+"Vložit obsah pole 'Značka' doslovně jako kód do zdroje LaTeX-u"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:88 src/frontends/qt4/ui/CitationUi.ui:368
 #: src/frontends/qt4/ui/HyperlinkUi.ui:80 src/frontends/qt4/ui/NomenclUi.ui:72
 #: src/frontends/qt4/ui/PrintindexUi.ui:74
-#, fuzzy
 msgid "Li&teral"
-msgstr "Literal"
+msgstr "&Doslovně"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:26
 msgid "Citation Style"
 msgstr "Styl citace"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:55
-#, fuzzy
 msgid "Sty&le format:"
-msgstr "Formát &datumu:"
+msgstr "Formát &stylu:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:65
 msgid ""
@@ -98,59 +97,55 @@ msgid ""
 "respectively provide support for specific citation and bibliography styles. "
 "Expand to get more information."
 msgstr ""
+"Výběr odlišných citačních nástrojů, které poskytují podporu specifickým citačním a bibliografickým stylům."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:75
-#, fuzzy
 msgid "&Variant:"
-msgstr "Variation:"
+msgstr "&Varianta:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:94
 msgid "Provides available cite style variants."
-msgstr ""
+msgstr "Možné citační varianty"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:118 src/frontends/qt4/GuiPrefs.cpp:826
 #: src/frontends/qt4/GuiPrefs.cpp:959
-#, fuzzy
 msgid "Opt&ions:"
-msgstr "&Možnosti:"
+msgstr "Vol&by:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:134
 msgid "Here you can enter further options of the bibliography package"
-msgstr ""
+msgstr "Zpřesňující volby bibliografického nástroje"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:154
-#, fuzzy
 msgid "Biblatex &citation style:"
-msgstr "St&yl Citace:"
+msgstr "St&yl citace Biblatex-u:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:164
 msgid "The style that determines the layout of the citations"
-msgstr ""
+msgstr "Styl určující úpravu citací"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:180 src/frontends/qt4/ui/BiblioUi.ui:241
 #: src/frontends/qt4/ui/BiblioUi.ui:291
-#, fuzzy
 msgid "Reset to the preset default"
-msgstr "Vrátit barvu na standardní"
+msgstr "Vrátit nastavení do základního stavu"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:183
-#, fuzzy
 msgid "Rese&t"
-msgstr "Vynulovat"
+msgstr "V&ynulovat"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:201
 msgid "Bibliography Style"
 msgstr "Styl bibliografie"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:215
-#, fuzzy
 msgid "Biblate&x bibliography style:"
-msgstr "Styl bibliografie"
+msgstr "Styl bibliografie Biblate&x-u:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:231
 msgid ""
 "The style that determines the layout of the biblatex-generated bibliography"
 msgstr ""
+"Styl určuje rozvržení genrované bibliografie"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:244 src/frontends/qt4/ui/ColorUi.ui:73
 #: src/frontends/qt4/ui/ColorUi.ui:134 src/frontends/qt4/ui/ColorUi.ui:211
@@ -160,57 +155,50 @@ msgstr "V&ynulovat"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:251
 msgid "Match biblatex bibliography with citation style"
-msgstr ""
+msgstr "Zpárovat bibliografii Biblatex-u s citačním stylem"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:254
-#, fuzzy
 msgid "&Match"
-msgstr "&Matematika:"
+msgstr "Zpá&rovat"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:265
-#, fuzzy
 msgid "Default BibTeX st&yle:"
-msgstr "S&tandarní styl:"
+msgstr "Zákla&dní styl BibTeX-u:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:281
 msgid ""
 "Here, you can define a BibTeX style that is suggested in the BibTeX dialog "
 "by default"
 msgstr ""
+"Základní styl BibTeX-u nabízený v dialogovém okně BibTeX-u"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:294
-#, fuzzy
 msgid "&Reset"
-msgstr "Vynulovat"
+msgstr "Vynu&lovat"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:305
 msgid "Select this if you want to split your bibliography into sections"
 msgstr "Vyberte tuto možnost, pokud chcete rozdělit bibliografii do sekcí"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:308
-#, fuzzy
 msgid "Subdivided bibli&ography"
 msgstr "&Bibliografie (sekce)"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:328
-#, fuzzy
 msgid "Rescan style files"
-msgstr "Vybrat soubor se stylem"
+msgstr "Znovunačíst soubory se stylem"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:331
-#, fuzzy
 msgid "Re&scan"
-msgstr "&Aktualizovat seznam"
+msgstr "Znov&unačíst"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:342
-#, fuzzy
 msgid "&Multiple bibliographies:"
-msgstr "&Bibliografie (sekce)"
+msgstr "Vícená&sobné bibliografie:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:358
-#, fuzzy
 msgid "Generate a bibliography per defined unit."
-msgstr "Není definována žádná bibliografie!"
+msgstr "Generovaní bibliografie pro každou část textu"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:376
 msgid ""
@@ -218,7 +206,6 @@ msgid ""
 msgstr "Zde lze definovat alternativní program a volby pro BibTeX."
 
 #: src/frontends/qt4/ui/BiblioUi.ui:379 src/frontends/qt4/ui/PrefLatexUi.ui:96
-#, fuzzy
 msgid "Bibliography Generation"
 msgstr "Generování bibliografie"
 
@@ -248,17 +235,16 @@ msgstr "LyX: Přidat databázi BibTex-u"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:31
 msgid "&Databases found by LaTeX:"
-msgstr ""
+msgstr "&Databáze nalezená LaTeX-em:"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:67
-#, fuzzy
 msgid "Rescan LaTeX's index for new databases and styles"
-msgstr "Nalézt nové databáze a styly"
+msgstr "Znovunačíst rejstřík LaTeX-u pro nové databáze a styly"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:70 src/frontends/qt4/ui/BibtexUi.ui:107
 #: src/frontends/qt4/ui/TexinfoUi.ui:122
 msgid "&Rescan"
-msgstr "&Aktualizovat seznam"
+msgstr "&Aktualizovat"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:81
 msgid ""
@@ -4506,33 +4492,30 @@ msgid "&Statusbar messages"
 msgstr "Zprávy ze &stavového řádku"
 
 #: src/frontends/qt4/ui/RefUi.ui:73
-#, fuzzy
 msgid "&In[[buffer]]:"
-msgstr "dokument"
+msgstr "&V:"
 
 #: src/frontends/qt4/ui/RefUi.ui:92
 msgid "Filter case-sensitively"
 msgstr "Rozlišovat velikost písmen při filtrování"
 
 #: src/frontends/qt4/ui/RefUi.ui:95
-#, fuzzy
 msgid "Case Sensiti&ve"
 msgstr "Velikost pís&men"
 
 #: src/frontends/qt4/ui/RefUi.ui:110
 msgid "The (sub-)document from which the available labels are displayed"
-msgstr ""
+msgstr "Zobrazené značky patřící vybranému dokumentu"
 
 #: src/frontends/qt4/ui/RefUi.ui:138
 msgid "So&rt:"
-msgstr ""
+msgstr "&Třídit:"
 
 #: src/frontends/qt4/ui/RefUi.ui:148
 msgid "Sorting of the list of available labels"
-msgstr ""
+msgstr "Třídit seznam dostupných značek"
 
 #: src/frontends/qt4/ui/RefUi.ui:155
-#, fuzzy
 msgid "Group the list of available labels by prefix (e.g. \"sec:\")"
 msgstr "Seskupit značky dle prefixu (např. \"sec:\")"
 
@@ -4541,37 +4524,32 @@ msgid "Grou&p"
 msgstr "&Seskupit"
 
 #: src/frontends/qt4/ui/RefUi.ui:180
-#, fuzzy
 msgid "Available &Labels:"
-msgstr "&Dostupné větve:"
+msgstr "&Dostupné značky:"
 
 #: src/frontends/qt4/ui/RefUi.ui:192
-#, fuzzy
 msgid "Sele&cted Label:"
-msgstr "&Vybrané:"
+msgstr "&Vybraná značka:"
 
 #: src/frontends/qt4/ui/RefUi.ui:205
 msgid "Select a label from the list above or enter a label manually"
-msgstr ""
+msgstr "Vyberte značku ze seznamu nebo značku napište"
 
 #: src/frontends/qt4/ui/RefUi.ui:218 src/frontends/qt4/GuiRef.cpp:389
-#, fuzzy
 msgid "Jump to the selected label"
-msgstr "Přeskoč na značku"
+msgstr "Přeskoč na vybranou značku"
 
 #: src/frontends/qt4/ui/RefUi.ui:221 src/frontends/qt4/GuiRef.cpp:388
 msgid "&Go to Label"
 msgstr "&Jdi na značku"
 
 #: src/frontends/qt4/ui/RefUi.ui:232
-#, fuzzy
 msgid "Reference For&mat:"
-msgstr "Reference:"
+msgstr "&Formát reference:"
 
 #: src/frontends/qt4/ui/RefUi.ui:251
-#, fuzzy
 msgid "Adjust the style of the cross-reference"
-msgstr "&Použít refstyle (ne prettyref) pro křížové odkazy"
+msgstr "Nastavit styl křížového odkazu"
 
 #: src/frontends/qt4/ui/RefUi.ui:255
 msgid "<reference>"
@@ -4602,9 +4580,8 @@ msgid "Textual reference"
 msgstr "Doslovná reference"
 
 #: src/frontends/qt4/ui/RefUi.ui:290
-#, fuzzy
 msgid "Label only"
-msgstr "Barva štítku"
+msgstr "Pouze značka"
 
 #: src/frontends/qt4/ui/RefUi.ui:323
 msgid "Update the label list"
@@ -4615,32 +4592,30 @@ msgid ""
 "Use plural form of formatted reference. (Works only for formatted "
 "references, and only if you are using refstyle.)"
 msgstr ""
+"Použít množné číslo. (Funguje pouze pro formátované reference za použití refstyle.)"
 
 #: src/frontends/qt4/ui/RefUi.ui:392
-#, fuzzy
 msgid "Plural"
-msgstr "natural"
+msgstr "Pl&urál"
 
 #: src/frontends/qt4/ui/RefUi.ui:399
 msgid ""
 "Use capitalized form of formatted reference. (Works only for formatted "
 "references, and only if you are using refstyle.)"
 msgstr ""
+"Použít velké písmeno. (Funguje pouze pro formátované reference za použití refstyle.)"
 
 #: src/frontends/qt4/ui/RefUi.ui:402
-#, fuzzy
 msgid "Capitalized"
-msgstr "První velké|k"
+msgstr "První v&elké"
 
 #: src/frontends/qt4/ui/RefUi.ui:409
-#, fuzzy
 msgid "Do not output part of label before \":\""
-msgstr "Negeneruj poslední patičku"
+msgstr "Negeneruj část značky před \":\""
 
 #: src/frontends/qt4/ui/RefUi.ui:412
-#, fuzzy
 msgid "No Prefix"
-msgstr "<Bez prefixu>"
+msgstr "Bez prefi&xu"
 
 #: src/frontends/qt4/ui/SearchUi.ui:101
 msgid "Case &sensitive[[search]]"
@@ -29968,29 +29943,24 @@ msgid "WARNING: Some required packages are unavailable!"
 msgstr "Upozornění: Některé vyžadované balíčky jsou nedostupné!"
 
 #: src/frontends/qt4/GuiDocument.cpp:3290
-#, fuzzy
 msgid "per part"
-msgstr "Formát stránky"
+msgstr "pro část"
 
 #: src/frontends/qt4/GuiDocument.cpp:3292
-#, fuzzy
 msgid "per chapter"
-msgstr "Kapitola \\thechapter"
+msgstr "pro kapitolu"
 
 #: src/frontends/qt4/GuiDocument.cpp:3294
-#, fuzzy
 msgid "per section"
-msgstr "mathsection"
+msgstr "pro sekci"
 
 #: src/frontends/qt4/GuiDocument.cpp:3296
-#, fuzzy
-msgid "per subsection"
-msgstr "\\Alph{subsection}."
+msgid "per subsekci"
+msgstr "pro subsekci"
 
 #: src/frontends/qt4/GuiDocument.cpp:3297
-#, fuzzy
-msgid "per child document"
-msgstr "Otvírání dokumentu potomka"
+msgid "per subchild dokument"
+msgstr "pro dokument potomka"
 
 #: src/frontends/qt4/GuiDocument.cpp:3582
 msgid "[No options predefined]"
