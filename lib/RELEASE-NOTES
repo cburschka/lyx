@@ -50,8 +50,8 @@
 !!!The following pref variables were added in 2.3:
 
 * \use_converter_needauth
-  when enabled, user is asked before calling any external converter with the
-  'needauth' option
+  when enabled, user is asked before calling any (possibly dangerous)
+  external converter with the 'needauth' option
 
 * \use_converter_needauth_forbidden
   when enabled, use of external converters with the 'needauth' option is
