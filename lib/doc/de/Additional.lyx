@@ -125,7 +125,6 @@ shapepar
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author 34634807 "Jean-Pierre"
 \end_header
 
 \begin_body
@@ -136,13 +135,7 @@ Erweiterte \SpecialChar LyX
 \end_layout
 
 \begin_layout Subtitle
-Version 2.
-\change_inserted 34634807 1499890698
-3
-\change_deleted 34634807 1499890696
-2
-\change_unchanged
-.x
+Version 2.3.x
 \end_layout
 
 \begin_layout Author
@@ -1322,20 +1315,7 @@ hoffset
 \backslash
 voffset
 \family default
-, für horizontale und vertikale Verschiebung (
-\emph on
-\lang english
-horizontal
-\emph default
-\lang ngerman
- bzw.
- 
-\emph on
-\lang english
-vertical offset
-\emph default
-\lang ngerman
-).
+, für horizontale und vertikale Verschiebung.
  Diese Variablen sind hilfreich, wenn die Papiergröße und die Seitengröße
  nicht übereinstimmen.
  Dann benutzt man 
@@ -5718,11 +5698,7 @@ Wenn Sie ein Client-Programm entwickeln, mag es für Sie hilfreich sein,
  Debugging-Informationen vom \SpecialChar LyX
 -Server zu erhalten.
  Diese bekommen Sie, wenn Sie \SpecialChar LyX
- mit folgender Option starten:
-\lang english
- 
-\lang ngerman
-
+ mit folgender Option starten: 
 \begin_inset Flex Code
 status collapsed
 
@@ -6598,11 +6574,7 @@ arg   "dialog-show prefs"
 Datei-Handhabung\SpecialChar menuseparator
 Konverter
 \family default
- in
-\lang english
- 
-\lang ngerman
-
+ in 
 \begin_inset Flex Code
 status collapsed
 

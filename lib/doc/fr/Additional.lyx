@@ -121,7 +121,6 @@ shapepar
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author 34634807 "Jean-Pierre"
 \end_header
 
 \begin_body
@@ -2246,10 +2245,6 @@ jurabib
 natbib
 \family default
  qui est réputé.
-
-\change_deleted 34634807 1501830814
- 
-\change_unchanged
  
 \lang english
 look for specific citation styles common in law studies
@@ -2281,11 +2276,7 @@ biblatex
 \end_layout
 
 \begin_layout Standard
-L'utilisation de ces
-\change_deleted 34634807 1501830814
- 
-\change_unchanged
- paquetages avec \SpecialChar LyX
+L'utilisation de ces paquetages avec \SpecialChar LyX
  est sensiblement la même.
  Allez dans le menu 
 \family sans
@@ -4655,12 +4646,7 @@ labelitem
 
 \begin_layout Itemize
 
-\change_deleted 34634807 1501830814
- 
-\change_unchanged
-
 \lang english
-
 \begin_inset Argument item:1
 status open
 
@@ -6378,10 +6364,6 @@ Synchroniser avec la sortie imprimable
 \family default
 \lang english
  in
-\change_deleted 34634807 1501830814
- 
-\change_unchanged
-
 \lang french
  
 \begin_inset Flex Noun
@@ -10394,11 +10376,8 @@ théorème
 .
  Cependant, l'AMS recommande les environnements disponibles dans \SpecialChar LyX
 .
- Voici la liste des environnements
-\change_deleted 34634807 1501830814
- 
-\change_unchanged
- ainsi que les environnements standard, comme 
+ Voici la liste des environnements ainsi que les environnements standard,
+ comme 
 \family sans
 
 \begin_inset Flex Noun
@@ -10474,10 +10453,6 @@ date
 
 \end_inset
 
-
-\change_deleted 34634807 1501830814
- 
-\change_unchanged
 
 \family default
  proposés par 
@@ -14574,11 +14549,7 @@ Diapo
 Heureusement il existe deux commandes \SpecialChar LaTeX
  qui vous permettent de sélectionner
  ce qu'il faut imprimer.
- Toutes deux
-\change_deleted 34634807 1501830814
- 
-\change_unchanged
- doivent être placées dans le préambule de votre document.
+ Toutes deux doivent être placées dans le préambule de votre document.
  La commande 
 \begin_inset Quotes cld
 \end_inset
@@ -21609,18 +21580,12 @@ Avant de vous lancer dans l'utilisation du contrôle de version sous \SpecialCha
  devrez connaître l'utilisation de RCS/CVS/SVN.
  Le support assuré dans \SpecialChar LyX
  a été réalisé pour des versions récentes des paquetages
- GNU RCS ou CVS/SVN
-\change_deleted 34634807 1501830814
- 
-\change_unchanged
- il n'est pas garanti que cela fonctionne avec des versions plus anciennes.
+ GNU RCS ou CVS/SVN il n'est pas garanti que cela fonctionne avec des versions
+ plus anciennes.
  En général, les messages de contrôle ne sont pas affichés après chaque
- opération
-\change_deleted 34634807 1501830814
- 
-\change_unchanged
- vous pouvez les vérifier dans la console de lancement de \SpecialChar LyX
- si vous doutez.
+ opération vous pouvez les vérifier dans la console de lancement de \SpecialChar LyX
+ si
+ vous doutez.
 
 \lang english
  Regular users of version control will appreciate the VC toolbar, which
@@ -26509,11 +26474,7 @@ et
 \SpecialChar LyX
 -Code
 \family default
-, pour l'insert paramétrable
-\change_deleted 34634807 1501830814
- 
-\change_unchanged
- 
+, pour l'insert paramétrable 
 \family sans
 \lang english
 Chunk
