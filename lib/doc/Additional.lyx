@@ -25987,8 +25987,6 @@ Edit Sources
 \end_layout
 
 \begin_layout LyX-Code
-
-\size footnotesize
 echo "LYXCMD:monitor:server-goto-file-row:@FILE@ @LINE@" >~/.lyxpipe.in
 \end_layout
 
@@ -28611,7 +28609,11 @@ status open
 \series bold
 Note
 \series default
-: shapepar paragraphs cannot run over a page break.
+: 
+\family sans
+shapepar
+\family default
+ paragraphs cannot run over a page break.
 \end_layout
 
 \end_inset
