@@ -167,16 +167,18 @@ class CommandSourceFromFile(CommandSource):
 class ControlFile:
 
     def __init__(self):
-        self.control = re.compile(r'^(C[ONPpRrC]):\s*(.*)$')
+        self.control = re.compile(r'^(C[ONPpRrC])([A-Za-z0-9]*):\s*(.*)$')
         self.fileformat = re.compile(r'^((\>\>?)[,\s]\s*)?([^\s]+)\s*$')
-        self.cntrname = None
-        self.cntrfile = None
+        self.cntrfile = dict()
+        # Map keytest marker to pattern-file-marker for searchPatterns.pl
+        self.convertSearchMark = { 'CN': 'Comment: ',
+                                   'CP': 'Simple: ', 'Cp': 'ErrSimple: ',
+                                   'CR': 'Regex: ',  'Cr': 'ErrRegex: '}
 
-    def open(self, filename):
-        if not self.cntrfile is None:
-            self.cntrfile.close()
-            self.cntrfile = None
-            self.cntrname = None
+    def __open(self, handle, filename):
+        if handle in self.cntrfile:
+            self.cntrfile[handle].close()
+            del self.cntrfile[handle]
         m = self.fileformat.match(filename)
         if m:
             type = m.group(2)
@@ -187,48 +189,48 @@ class ControlFile:
                 append = False
         else:
             append = False
-        self.cntrname = filename
         if append:
-            self.cntrfile = open(filename, 'a')
+            self.cntrfile[handle] = open(filename, 'a')
         else:
-            self.cntrfile = open(filename, 'w')
+            self.cntrfile[handle] = open(filename, 'w')
 
-    def close(self):
-        if not self.cntrfile is None:
-            self.cntrfile.close()
-            self.cntrfile = None
-            self.cntrname = None
+    def closeall(self):
+        handles = self.cntrfile.keys()
+        for handle in handles:
+            self.__close(handle)
+
+    def __close(self, handle):
+        if handle in self.cntrfile:
+            name = self.cntrfile[handle].name
+            self.cntrfile[handle].close()
+            del self.cntrfile[handle]
+            print("Closed ctrl " + handle + " (" + name + ")")
+
     # make the method below 'private'
-    def __addline(self, pat):
-        self.cntrfile.writelines(pat + "\n")
-
-    def getfname(self):
-        return self.cntrname
+    def __addline(self, handle, pat):
+        self.cntrfile[handle].writelines(pat + "\n")
 
     def dispatch(self, c):
         m = self.control.match(c)
         if not m:
             return False
         command = m.group(1)
-        text = m.group(2)
+        handle = m.group(2)
+        if handle is None:
+            handle = ""
+        text = m.group(3)
         if command == "CO":
-            self.open(text);
+            self.__open(handle, text);
         elif command == "CC":
-            self.close()
+            self.__close(handle)
         else:
-            if not self.cntrfile is None:
-                if command == "CN":
-                    self.__addline("Comment: " + text)
-                elif command == "CP":
-                    self.__addline("Simple: " + text)
-                elif command == "Cp":
-                    self.__addline("ErrSimple: " + text)
-                elif command == "CR":
-                    self.__addline("Regex: " + text)
-                elif command == "Cr":
-                    self.__addline("ErrRegex: " + text)
+            if handle in self.cntrfile:
+                if command in self.convertSearchMark:
+                    self.__addline(handle, self.convertSearchMark[command] + text)
                 else:
                     die(1,"Error, Unrecognised Command '" + command + "'")
+            elif handle != "":
+                die(1, "Ctrl-file " + handle + " not in use")
         return True
 
 
@@ -553,6 +555,8 @@ lyx_other_window_name = None
 screenshot_out = os.environ.get('SCREENSHOT_OUT')
 lyx_userdir = os.environ.get('LYX_USERDIR')
 lyx_userdir_ver = os.environ.get('LYX_USERDIR_23x')
+if lyx_userdir is None:
+    lyx_userdir = lyx_userdir_ver
 
 max_loops = os.environ.get('MAX_LOOPS')
 if max_loops is None:
@@ -588,7 +592,8 @@ qt_frontend = os.environ.get('QT_FRONTEND')
 if qt_frontend is None:
     qt_frontend = 'QT4'
 if qt_frontend == 'QT5':
-    controlkey_delay = 0.01
+    # Some tests sometimes failed with value 0.01 on Qt5.8
+    controlkey_delay = 0.02
 else:
     controlkey_delay = 0.4
 
@@ -736,7 +741,7 @@ while not failed:
         failed = failed or (result != 0)
         print("result=" + str(result) + ", failed=" + str(failed))
     elif c[0:15] == 'TestEndWithKill':
-        marked.close()
+        marked.closeall()
         cmd = c[16:].rstrip()
         if lyx_dead(lyx_pid):
             print("LyX instance not found because of crash or assert !\n")
@@ -760,7 +765,7 @@ while not failed:
          #lyx_other_window_name = None
         if lyx_dead(lyx_pid):
             print("LyX instance not found because of crash or assert !\n")
-            marked.close()
+            marked.closeall()
             failed = True
         else:
             print("    ------------    Forcing quit of lyx instance: " + str(lyx_pid) + "    ------------")
@@ -770,7 +775,7 @@ while not failed:
             # and so the function lyx-quit should work
             sendKeystring("\Cq", lyx_pid)
             marked.dispatch('CP: action=lyx-quit')
-            marked.close()
+            marked.dispatch('CC:')
             time.sleep(0.5)
             dead_expected = True
             is_sleeping = wait_until_lyx_sleeping(lyx_pid)
@@ -832,7 +837,7 @@ while not failed:
             print('Could not determine PACKAGE name needed for translations\n')
             failed = True
         else:
-          lyx_name = PACKAGE
+            lyx_name = PACKAGE
         intr_system("mkdir -p " + locale_dir + "/" + ccode + "/LC_MESSAGES")
         intr_system("rm -f " + locale_dir + "/" + ccode + "/LC_MESSAGES/" + lyx_name + ".mo")
         if PO_BUILD_DIR is None:
