@@ -23988,6 +23988,13 @@ Bibliography
 
 \begin_layout Subsection
 書誌情報環境
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:書誌情報環境-1"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -24790,6 +24797,80 @@ biblatex
 \begin_layout Standard
 
 \lang english
+By default (with the 
+\family sans
+Processor
+\family default
+ set in
+\family sans
+\lang japanese
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+書誌情報か
+\family default
+\lang english
+and with 
+\family sans
+Automatic
+\family default
+ as setting for the 
+\family sans
+Processor
+\family default
+ in
+\family sans
+\lang japanese
+ツール\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+出力\SpecialChar menuseparator
+LaTeX
+\family default
+\lang english
+), \SpecialChar LyX
+ selects an appropriate (available) processor for the current bibliography
+ approach (
+\series bold
+biber
+\series default
+ for 
+\series bold
+biblatex
+\series default
+, 
+\family sans
+bibtex
+\family default
+ for Bib\SpecialChar TeX
+-based bibliography styles).
+ This should suit most needs.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In Japanese documents, a specific processor is used.
+ By default this is pBib\SpecialChar TeX
+ (in \SpecialChar LyX
+ 
+\family sans
+pbibtex
+\family default
+), a Bib\SpecialChar TeX
+ variant specifically aimed at Japanese.
+ You can adjust it in
+\family sans
+\lang japanese
+ツール\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+出力\SpecialChar menuseparator
+LaTeX
+\family default
+．
+\end_layout
+
+\begin_layout Standard
+
+\lang english
 Selected bibliography processors can be controlled with options that you
  can add below the selection.
  Before adding options, it is strongly recommended that you read the manual
@@ -24861,10 +24942,56 @@ name "subsec:書誌情報レイアウト"
 \end_layout
 
 \begin_layout Standard
-引用参照ダイアログでは，特定の引用体裁を設定することができます．この機能を使うには，
+
+\lang english
+Many different citation formats are common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+numerical citation (as 
+\begin_inset Quotes eld
+\end_inset
+
+1
+\begin_inset Quotes erd
+\end_inset
+
+ like in this document), alpha-numerical citations (as 
+\begin_inset Quotes eld
+\end_inset
+
+Mil08
+\begin_inset Quotes erd
+\end_inset
+
+) or author-year citations (as 
+\begin_inset Quotes eld
+\end_inset
+
+Miller (2008a)
+\begin_inset Quotes erd
+\end_inset
+
+).
+ \SpecialChar LyX
+ supports these formats via specific citation packages and their style
+ files.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+By default a simple numeric citation style is used.
+ In
 \family sans
+\lang japanese
 文書\SpecialChar menuseparator
-設定
+設定\SpecialChar menuseparator
+書誌情報か
 \family default
 
 \begin_inset Index idx
@@ -24876,21 +25003,96 @@ status collapsed
 
 \end_inset
 
-ダイアログの
+
+\lang english
+you have a range of other options, depending on your preferred bibliography
+ approach.
+ With the 
 \family sans
-書誌情報
+Bibliography
 \family default
-の項にある
+ environment your only choice besides manual formatting of the bibliography
+ labels, is there to use 
 \family sans
 Natbib
+\begin_inset space ~
+\end_inset
+
+(BibTeX)
 \family default
-オプションを有効にしておかなくてはなりません．引用形式が設定されると既定値は上書きされます．引用形式全体を設定するには，前節の説明のようにBib\SpecialChar TeX
-スタイルファイル
-を使用してください．
+\series bold
+ 
+\series default
+as 
+\family sans
+Style
+\begin_inset space ~
+\end_inset
+
+format
+\family default
+ which gives you author-year and author-numerical citations (see above 
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:書誌情報環境-1"
+
+\end_inset
+
+
+\lang english
+ for details).
 \end_layout
 
 \begin_layout Standard
-また，引用参照ウィンドウでは，引用参照の前後につける文を設定することもできます．以下は，参照の直後に「第3章」という文を設定しています．
+
+\lang english
+With a bibliography database (see 
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:文献データベース"
+
+\end_inset
+
+
+\lang english
+) one has in contrary to the 
+\family sans
+Bibliography
+\family default
+ environment full access to the formatting styles.
+ These style formats are available:
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In the citation dialog you can also set text to appear after a citation
+ reference, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ page numbers, which will then be formatted according to the style's needs
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ with or without 
+\begin_inset Quotes eld
+\end_inset
+
+pp.
+\begin_inset Quotes erd
+\end_inset
+
+)
+\lang japanese
+．以下は，参照の直後に「第3章」という文を設定しています．
 \end_layout
 
 \begin_layout Standard
@@ -24904,6 +25106,27 @@ literal "true"
 \end_inset
 
 を参照してください．
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+All styles except for 
+\family sans
+Basic (BibTeX)
+\family default
+ also provide the feature to add text that precedes the reference (such
+ as 
+\begin_inset Quotes eld
+\end_inset
+
+cf.
+\begin_inset Quotes erd
+\end_inset
+
+).
+ This text is then also included in the parentheses, if the style requires
+ this.
 \end_layout
 
 \begin_layout Section

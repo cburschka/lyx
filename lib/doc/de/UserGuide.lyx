@@ -28465,29 +28465,25 @@ biblatex
 \end_layout
 
 \begin_layout Standard
-In der Standardeinstellung (mit Prozessor 
-\begin_inset Quotes gld
-\end_inset
-
-Standard
-\begin_inset Quotes grd
-\end_inset
-
- in 
+In der Standardeinstellung (mit dem in 
 \family sans
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
 Literaturverzeichnis
 \family default
- sowie Prozessor 
-\begin_inset Quotes gld
-\end_inset
-
+ eingestellten 
+\family sans
+Prozessor
+\family default
+ und der Einstellung 
+\family sans
 Automatisch
-\begin_inset Quotes grd
-\end_inset
-
- in 
+\family default
+ für 
+\family sans
+Prozessor
+\family default
+ in in 
 \family sans
 Werkzeuge\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
@@ -28496,7 +28492,7 @@ LaTeX\SpecialChar menuseparator
 Literaturverzeichnis-Erzeugung
 \family default
 ) wählt \SpecialChar LyX
- den angemessensten (verfügbaren) Prozessor für die verwendeten
+ einen angemessenen (verfügbaren) Prozessor für die verwendeten
  Literaturverzeichnismethode (
 \series bold
 biber
@@ -28516,15 +28512,15 @@ bibtex
 
 \begin_layout Standard
 In japanischen Dokumenten wird ein spezieller Prozessor verwendet.
- Normalerweise ist das 
+ Normalerweise ist das pBib\SpecialChar TeX
+ (in \SpecialChar LyX
+ 
 \family sans
 pbibtex
 \family default
-, eine Variante von 
-\family sans
-bibtex
-\family default
-, die spezifisch für japanische Schrift entwickelt wurde.
+), eine Variante von Bib\SpecialChar TeX
+, die spezifisch für japanische Schrift entwickelt
+ wurde.
  In 
 \family sans
 Werkzeuge\SpecialChar menuseparator
@@ -28599,12 +28595,19 @@ name "subsec:Zitierformat"
 \begin_layout Standard
 Es gibt viele verschiedene gebräuchliche Formen von Literaturverweisen,
  bspw.
- nummerische Verweise (wie Sie in diesem Dokument verwendet werden), alphanumeri
-sche Verweise (wie 
+ nummerische Verweise (wie 
 \begin_inset Quotes gld
 \end_inset
 
-Mil08
+1
+\begin_inset Quotes grd
+\end_inset
+
+, so wie in diesem Dokument), alphanumerische Verweise (wie 
+\begin_inset Quotes gld
+\end_inset
+
+Mai08
 \begin_inset Quotes grd
 \end_inset
 
@@ -28612,7 +28615,7 @@ Mil08
 \begin_inset Quotes gld
 \end_inset
 
-Miller 2008a
+Maier 2008a
 \begin_inset Quotes grd
 \end_inset
 
@@ -28626,31 +28629,41 @@ Standardmäßig wird ein einfacher nummerischer Stil (wie in diesem Dokument)
  verwendet.
  In 
 \family sans
-
-\begin_inset Info
-type  "menu"
-arg   "dialog-show document"
-\end_inset
-
-\SpecialChar menuseparator
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
 Literaturverzeichnis
 \family default
- finden Sie allerdings eine Bandbreite an Möglichkeiten vor, dies zu ändern
- und an Ihren bevorzugten Literaturverzeichnisstil anzupassen.
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Dokument ! Einstellungen
 \end_layout
 
-\begin_layout Standard
-Mit der 
+\end_inset
+
+ finden Sie allerdings eine Bandbreite an Möglichkeiten vor, dies zu ändern
+ und an Ihren bevorzugten Literaturverzeichnisstil anzupassen.
+ Mit der 
 \family sans
 Literaturverzeichnis
 \family default
--Umgebung ist Ihre einzige Alternative neben einer manuellen Formatierung
- von Literaturverzeichnismarken 
+-Umgebung ist Ihre einzige Alternative dabei, neben einer manuellen Formatierung
+ von Literaturverzeichnismarken, 
 \family sans
 Natbib
+\begin_inset space ~
+\end_inset
+
+(BibTeX)
 \family default
-, welches Ihnen Autor-Jahr- und Autor-Nummern-Verweise erlaubt (siehe oben
- Abschnitt
+ als 
+\family sans
+Stilformat
+\family default
+ zu verwenden, das Autor-Jahr- und Autor-Nummern-Verweise erlaubt (siehe
+ oben Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -28668,16 +28681,7 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-Alle anderen Optionen setzen eine Datenbankmethode voraus, entweder 
-\family sans
-Bib\SpecialChar TeX
-
-\family default
- oder 
-\noun on
-Biblatex
-\noun default
- (siehe Abschnitt
+Mit einer Literaturdatenbank (siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -28691,8 +28695,12 @@ noprefix "false"
 
 \end_inset
 
-).
- Die folgenden Möglichkeiten stehen zur Auswahl:
+) hat man im Vergleich zur 
+\family sans
+Literaturverzeichnis
+\family default
+-Umgebung die volle Kontrolle über die Formatierungsstile.
+ Folgenden Stilformate stehen zur Auswahl:
 \end_layout
 
 \begin_layout Description
@@ -28704,9 +28712,10 @@ Schlicht
 
 (BibTeX)
 \family default
- der normale 
+ der normale Bib\SpecialChar TeX
+
 \family sans
-BibTeX-
+-
 \family default
 basierte Ansatz ohne zusätzliches Paket (einfache nummerische Verweise)
 \end_layout
@@ -28716,11 +28725,11 @@ basierte Ansatz ohne zusätzliches Paket (einfache nummerische Verweise)
 \family sans
 Biblatex
 \family default
- lädt das 
-\family sans
-Biblatex
-\family default
--Paket und lässt Sie einen Stil in den Auswahllisten 
+ lädt das Paket 
+\series bold
+biblatex
+\series default
+ und lässt Sie einen Stil in den Auswahllisten 
 \family sans
 Biblatex-Zitierstil
 \family default
@@ -28730,11 +28739,11 @@ Biblatex-Bibliographiestil
 \family default
  unterhalb treffen.
  Viele verschiedene Stilvarianten werden unterstützt.
- Optionen für das 
-\family sans
-Biblatex
-\family default
--Paket können Sie in das Feld 
+ Optionen für das Paket 
+\series bold
+biblatex
+\series default
+ können Sie in das Feld 
 \family sans
 Optionen
 \family default
@@ -28750,11 +28759,11 @@ Biblatex
 
 (Natbib-Modus)
 \family default
- lädt das 
-\family sans
-Biblatex
-\family default
--Paket im 
+ lädt das Paket 
+\series bold
+biblatex
+\series default
+ im 
 \begin_inset Quotes gld
 \end_inset
 
@@ -28772,16 +28781,16 @@ Natbib
 Natbib
 \family default
  möglichst eng nachbilden möchten.
- Im Vergleich zum normalen 
+ Im Vergleich zu 
 \family sans
 Biblatex
 \family default
  umfasst diese Option ein paar zusätzliche Verweisstile.
  Die Stilauswahl und die Handhabung von Optionen sind identisch.
  Alle 
-\family sans
-Biblatex
-\family default
+\series bold
+biblatex
+\series default
 -Stile unterstützen auch diese Variante.
 \end_layout
 
@@ -28795,9 +28804,20 @@ Jurabib
 (BibTeX)
 \family default
  lädt das Paket 
-\family sans
-Jurabib
-\family default
+\series bold
+jurabib
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-Paket ! jurabib
+\end_layout
+
+\end_inset
+
 , das spezifische Autor-Jahr-Stile anbietet, die in den Rechtswissenschaften
  gebräuchlich sind.
 \end_layout
@@ -28812,9 +28832,20 @@ Natbib
 (BibTeX)
 \family default
  lädt das Paket 
-\family sans
-Natbib
-\family default
+\series bold
+natbib
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-Paket ! natbib
+\end_layout
+
+\end_inset
+
 , das Autor-Jahr-Stile vor allem für die Geisteswissenschaften unterstützt.
 \end_layout
 
@@ -28888,7 +28919,11 @@ van Beethoven
 \begin_inset space \thinspace{}
 \end_inset
 
-h., die Verwendung oder Nichtverwendung von 
+h.
+\begin_inset space \space{}
+\end_inset
+
+die Verwendung oder Nichtverwendung von 
 \begin_inset Quotes gld
 \end_inset
 
@@ -28983,11 +29018,7 @@ Text danach
 Biblatex
 \family default
 -Stile ermöglichen die Angabe von Text vor und nach jedem einzelnen Titel
- in Mehrfachverweisen (sog.
-\begin_inset space \space{}
-\end_inset
-
-
+ in Mehrfachverweisen (sogenannte 
 \begin_inset Quotes gld
 \end_inset
 

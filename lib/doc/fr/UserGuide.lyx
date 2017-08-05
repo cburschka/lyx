@@ -30608,6 +30608,90 @@ biblatex
 \begin_layout Standard
 
 \lang english
+By default (with the 
+\family sans
+Processor
+\family default
+ set in 
+\family sans
+\lang french
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
+Bibliographie
+\family default
+\lang english
+ and with 
+\family sans
+Automatic
+\family default
+ as setting for the 
+\family sans
+Processor
+\family default
+ in 
+\family sans
+T
+\lang french
+Outils\SpecialChar menuseparator
+Préférences\SpecialChar menuseparator
+Sorties
+\family default
+\SpecialChar menuseparator
+
+\family sans
+LaTeX
+\family default
+), \SpecialChar LyX
+ 
+\lang english
+selects an appropriate (available) processor for the current bibliography
+ approach (
+\series bold
+biber
+\series default
+ for 
+\series bold
+biblatex
+\series default
+, 
+\family sans
+bibtex
+\family default
+ for Bib\SpecialChar TeX
+-based bibliography styles).
+ This should suit most needs.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In Japanese documents, a specific processor is used.
+ By default this is pBib\SpecialChar TeX
+ (in \SpecialChar LyX
+ 
+\family sans
+pbibtex
+\family default
+), a Bib\SpecialChar TeX
+ variant specifically aimed at Japanese.
+ You can adjust it in 
+\family sans
+\lang french
+Outils\SpecialChar menuseparator
+Préférences\SpecialChar menuseparator
+Sorties
+\family default
+\SpecialChar menuseparator
+
+\family sans
+LaTeX
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
 Selected bibliography processors
 \lang french
  peut être contrôlé par un certain nombre d'options que vous pouvez ajouter
@@ -30684,16 +30768,56 @@ name "subsec:Format-de-bibliographie"
 \end_layout
 
 \begin_layout Standard
-Dans la boîte de dialogue de citation, vous pouvez choisir un format de
- citation spécial.
- Pour utiliser cette fonction, vous avez besoin d'activer l'option 
+
+\lang english
+Many different citation formats are common, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+\begin_inset space \space{}
+\end_inset
+
+numerical citation (as 
+\begin_inset Quotes eld
+\end_inset
+
+1
+\begin_inset Quotes erd
+\end_inset
+
+ like in this document), alpha-numerical citations (as 
+\begin_inset Quotes eld
+\end_inset
+
+Mil08
+\begin_inset Quotes erd
+\end_inset
+
+) or author-year citations (as 
+\begin_inset Quotes eld
+\end_inset
+
+Miller (2008a)
+\begin_inset Quotes erd
+\end_inset
+
+).
+ \SpecialChar LyX
+ supports these formats via specific citation packages and their style
+ files.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+By default a simple numeric citation style is used.
+ In 
 \family sans
-Natbib
-\family default
- dans la fenêtre de dialogue 
-\family sans
+\lang french
 Document\SpecialChar menuseparator
-Paramètres
+Paramètres\SpecialChar menuseparator
+Bibliographie
 \family default
 
 \begin_inset Index idx
@@ -30705,16 +30829,68 @@ Document ! Paramètres
 
 \end_inset
 
- dans la rubrique 
+
+\lang english
+ you have a range of other options, depending on your preferred bibliography
+ approach.
+ With the 
 \family sans
-Bibliographie
+Bibliography
 \family default
-.
- Donner un style de citation pour une référence donnée remplace le style
- appliqué implicitement.
- Pour le style appliqué à l'ensemble des citations de votre document, utilisez
- les fichiers de styles BiB\SpecialChar TeX
-, comme c'est expliqué dans la section précédente.
+ environment your only choice besides manual formatting of the bibliography
+ labels, is there to use 
+\family sans
+Natbib
+\begin_inset space ~
+\end_inset
+
+(BibTeX)
+\family default
+\series bold
+ 
+\series default
+as 
+\family sans
+Style
+\begin_inset space ~
+\end_inset
+
+format
+\family default
+ which gives you author-year and author-numerical citations (see above 
+\lang french
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:L'environnement-Bibliographie"
+
+\end_inset
+
+
+\lang english
+ for details).
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+With a bibliography database (see 
+\lang french
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Bases-de-Données-Biblio"
+
+\end_inset
+
+
+\lang english
+) one has in contrary to the 
+\family sans
+Bibliography
+\family default
+ environment full access to the formatting styles.
+ These style formats are available:
 \end_layout
 
 \begin_layout Standard
@@ -30746,8 +30922,31 @@ nat
 \end_layout
 
 \begin_layout Standard
-Vous pouvez aussi fournir, dans la fenêtre de citation, du texte qui apparaîtra
- avant ou après votre citation.
+
+\lang english
+In the citation dialog you can also set text to appear after a citation
+ reference, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ page numbers, which will then be formatted according to the style's needs
+ (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ with or without 
+\begin_inset Quotes eld
+\end_inset
+
+pp.
+\begin_inset Quotes erd
+\end_inset
+
+).
+
+\lang french
  Voici un exemple où nous fait que le texte 
 \begin_inset Quotes cld
 \end_inset
@@ -30774,6 +30973,27 @@ literal "true"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+All styles except for 
+\family sans
+Basic (BibTeX)
+\family default
+ also provide the feature to add text that precedes the reference (such
+ as 
+\begin_inset Quotes eld
+\end_inset
+
+cf.
+\begin_inset Quotes erd
+\end_inset
+
+).
+ This text is then also included in the parentheses, if the style requires
+ this.
 \end_layout
 
 \begin_layout Section
