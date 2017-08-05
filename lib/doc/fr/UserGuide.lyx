@@ -30535,9 +30535,9 @@ Paquetages \SpecialChar LaTeX
 
 \end_inset
 
-
+ 
 \lang english
- developed exclusively for 
+developed exclusively for 
 \series bold
 biblatex
 \series default
@@ -30812,9 +30812,10 @@ Miller (2008a)
 
 \lang english
 By default a simple numeric citation style is used.
- In 
-\family sans
+ In
 \lang french
+ 
+\family sans
 Document\SpecialChar menuseparator
 Paramètres\SpecialChar menuseparator
 Bibliographie
@@ -30829,9 +30830,9 @@ Document ! Paramètres
 
 \end_inset
 
-
+ 
 \lang english
- you have a range of other options, depending on your preferred bibliography
+you have a range of other options, depending on your preferred bibliography
  approach.
  With the 
 \family sans
@@ -30893,32 +30894,243 @@ Bibliography
  These style formats are available:
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
+\begin_layout Description
+
+\lang english
+Basic
+\begin_inset space ~
+\end_inset
+
+(BibTeX) the default Bib\SpecialChar TeX
+-based approached without any additional packages
+ (simple numeric citations).
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Biblatex loads the package
+\lang french
+ 
+\series bold
+biblatex
+\series default
+
+\begin_inset Index idx
+status collapsed
 
 \begin_layout Plain Layout
-
-\series bold
-Nota:
-\series default
- vous ne pouvez pas utiliser tous les styles bibliographiques énumérés dans
- la fenêtre.
- Si vous avez une erreur de compilation, changez de style.
- Les styles finissant par 
-\begin_inset Quotes cld
-\end_inset
-
-nat
-\begin_inset Quotes crd
-\end_inset
-
- sont sûrement compatibles.
+Paquetages \SpecialChar LaTeX
+ ! biblatex
 \end_layout
 
 \end_inset
 
+ 
+\lang english
+and lets you select a style in the dropdown boxes 
+\family sans
+Biblatex citation style
+\family default
+ and 
+\family sans
+Biblatex bibliography style
+\family default
+ below.
+ Options to the package 
+\series bold
+biblatex
+\series default
+ can be entered in the 
+\family sans
+Options
+\family default
+ field.
+\end_layout
 
+\begin_layout Description
+
+\lang english
+Biblatex
+\begin_inset space ~
+\end_inset
+
+(natbib
+\begin_inset space ~
+\end_inset
+
+mode) loads the package 
+\series bold
+biblatex
+\series default
+ with the natbib compatibility mode.
+ This is a specific variant for users who switch an existing document that
+ uses 
+\series bold
+natbib
+\series default
+ or want to emulate 
+\family sans
+the 
+\family default
+\series bold
+natbib
+\series default
+ behavior very closely.
+ Compared to normal 
+\family sans
+Biblatex
+\family default
+ this option has some additional styles.
+ All 
+\series bold
+biblatex
+\series default
+ styles are also supported by this variant.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Jurabib
+\begin_inset space ~
+\end_inset
+
+(BibTeX) loads the package
+\lang french
+ 
+\series bold
+jurabib
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages \SpecialChar LaTeX
+ ! jurabib
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+which provides author-year styles particularly suited for law studies.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+Natbib
+\begin_inset space ~
+\end_inset
+
+(BibTeX) loads the package
+\lang french
+ 
+\series bold
+natbib
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages \SpecialChar LaTeX
+ ! natbib
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+which provides citation styles particularly suited for the humanities.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The 
+\family sans
+Biblatex
+\family default
+ and 
+\family sans
+Natbib
+\family default
+ style formats provide the choice between author-year and author-numerical
+ citation styles.
+ You have to select one style in the dropdown box 
+\family sans
+Variant
+\family default
+.
+ Note that for the 
+\family sans
+Biblatex
+\family default
+ formats, this only affects the appearance in the \SpecialChar LyX
+ workarea.
+ Whether the output uses numerical, author-year or another format such as
+ alpha-numerical depends only on the selected 
+\family sans
+Biblatex citation style
+\family default
+.
+ However, when switching between Author-year and Author-number, a suitable
+ style is proposed.
+ With 
+\family sans
+Natbib
+\family default
+, on the other hand, the dialog selection will ultimately determine the
+ style.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+For any author-year and author-numerical selection, multiple style variants
+ are available in the 
+\family sans
+Citation
+\family default
+ dialog.
+ Some selections also provide further options like the option to uppercase
+ a name prefix such as 
+\begin_inset Quotes eld
+\end_inset
+
+van Beethoven
+\begin_inset Quotes erd
+\end_inset
+
+ (to 
+\begin_inset Quotes eld
+\end_inset
+
+Van Beethoven
+\begin_inset Quotes erd
+\end_inset
+
+) or to expand or reduce the number of displayed others (i.
+\begin_inset space \thinspace{}
+\end_inset
+
+e.
+\begin_inset space \space{}
+\end_inset
+
+use or don't use 
+\begin_inset Quotes eld
+\end_inset
+
+et al.
+\begin_inset Quotes erd
+\end_inset
+
+).
+ 
 \end_layout
 
 \begin_layout Standard
@@ -30994,6 +31206,90 @@ cf.
 ).
  This text is then also included in the parentheses, if the style requires
  this.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Note that these pre- and postnotes apply to the whole citation.
+ So if you refer to multiple references at once, the prenote will precede
+ the first citation in the list, the postnote will follow the last.
+ Some 
+\family sans
+Biblatex
+\family default
+ styles allow to add pre- and postnotes to any individual reference in a
+ multi-citation (so-called 
+\begin_inset Quotes eld
+\end_inset
+
+qualified citation lists
+\begin_inset Quotes erd
+\end_inset
+
+).
+ \SpecialChar LyX
+ supports this.
+ If you use such a style and if the current reference includes multiple
+ items the 
+\family sans
+Citation
+\family default
+ dialog will display three columns in the field 
+\family sans
+Selected Citations
+\family default
+: 
+\family sans
+Text
+\begin_inset space ~
+\end_inset
+
+before
+\family default
+, 
+\family sans
+Cite
+\begin_inset space ~
+\end_inset
+
+key
+\family default
+ and 
+\family sans
+Text
+\begin_inset space ~
+\end_inset
+
+after
+\family default
+.
+ If you double-click on an item's 
+\family sans
+Text
+\begin_inset space ~
+\end_inset
+
+before
+\family default
+ or 
+\family sans
+Text
+\begin_inset space ~
+\end_inset
+
+after
+\family default
+ field, you can add such individual pre- and postnotes.
+ In the 
+\family sans
+General text before
+\family default
+ and 
+\family sans
+General text after
+\family default
+ fields you can add pre- and postnotes that apply to the whole list.
 \end_layout
 
 \begin_layout Section

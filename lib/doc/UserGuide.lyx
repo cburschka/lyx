@@ -140,12 +140,11 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -29095,28 +29094,28 @@ Basic
 \begin_inset space ~
 \end_inset
 
-(BibTeX) 
-\change_inserted -712698321 1483888574
-the default
-\change_unchanged
- Bib\SpecialChar TeX
-
-\change_inserted -712698321 1483888574
--based approached without any additional packages (simple numeric citations)
+(BibTeX) the default Bib\SpecialChar TeX
+-based approached without any additional packages
+ (simple numeric citations).
 \end_layout
 
 \begin_layout Description
-Biblatex 
-\change_inserted -712698321 1483889266
-loads the package 
-\change_unchanged
-
+Biblatex loads the package 
 \series bold
 biblatex
 \series default
- 
-\change_inserted -712698321 1483889266
-and lets you select a style in the combo boxes 
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+ packages ! biblatex
+\end_layout
+
+\end_inset
+
+ and lets you select a style in the dropdown boxes 
 \family sans
 Biblatex citation style
 \family default
@@ -29125,14 +29124,9 @@ Biblatex citation style
 Biblatex bibliography style
 \family default
  below.
- Many different style variants are supported.
- Options to the package
-\change_unchanged
- 
+ Options to the package 
 \series bold
 biblatex
-\change_inserted -712698321 1483889266
-
 \series default
  can be entered in the 
 \family sans
@@ -29150,48 +29144,32 @@ Biblatex
 \begin_inset space ~
 \end_inset
 
-mode) 
-\change_inserted -712698321 1483889302
-loads the package
-\change_unchanged
- 
+mode) loads the package 
 \series bold
 biblatex
-\change_inserted -712698321 1483889302
-
 \series default
- with 
-\begin_inset Quotes eld
-\end_inset
-
-natbib compatibility mode
-\begin_inset Quotes erd
-\end_inset
-
- enabled.
- This is a specific variant that is aimed at users who switch an existing
- document that used 
+ with the natbib compatibility mode.
+ This is a specific variant for users who switch an existing document that
+ uses 
+\series bold
+natbib
+\series default
+ or want to emulate 
 \family sans
-Natbib
+the 
 \family default
- (see below) or want to emulate 
-\family sans
-Natbib
-\family default
+\series bold
+natbib
+\series default
  behavior very closely.
  Compared to normal 
 \family sans
 Biblatex
 \family default
-, this option has some additional styles.
- Style selection and option handling are identical.
+ this option has some additional styles.
  All 
-\change_unchanged
-
 \series bold
 biblatex
-\change_inserted -712698321 1483889302
-
 \series default
  styles are also supported by this variant.
 \end_layout
@@ -29201,11 +29179,7 @@ Jurabib
 \begin_inset space ~
 \end_inset
 
-(BibTeX) 
-\change_inserted -712698321 1483889321
-loads the package 
-\change_unchanged
-
+(BibTeX) loads the package 
 \series bold
 jurabib
 \series default
@@ -29220,9 +29194,7 @@ status collapsed
 
 \end_inset
 
- 
-\change_inserted -712698321 1483889321
-which provides author-year styles particularly suited for law studies.
+ which provides author-year styles particularly suited for law studies.
 \end_layout
 
 \begin_layout Description
@@ -29230,11 +29202,7 @@ Natbib
 \begin_inset space ~
 \end_inset
 
-(BibTeX) 
-\change_inserted -712698321 1483891582
-loads the package 
-\change_unchanged
-
+(BibTeX) loads the package 
 \series bold
 natbib
 \series default
@@ -29249,52 +29217,39 @@ status collapsed
 
 \end_inset
 
- 
-\change_inserted -712698321 1483891582
-which provides citation styles particularly suited for the Humanities.
-\change_unchanged
-
+ which provides citation styles particularly suited for the humanities.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1483891665
 The 
 \family sans
 Biblatex
 \family default
- variants and 
+ and 
 \family sans
 Natbib
 \family default
- furthermore provide the choice between author-year and author-numerical
+ style formats provide the choice between author-year and author-numerical
  citation styles.
- You have to select either of it in the dialog.
- Note that in the 
+ You have to select one style in the dropdown box 
+\family sans
+Variant
+\family default
+.
+ Note that for the 
 \family sans
 Biblatex
 \family default
- case, this only affects the appearance in the \SpecialChar LyX
+ formats, this only affects the appearance in the \SpecialChar LyX
  workarea.
  Whether the output uses numerical, author-year or another format such as
- alpha-numerical depends only on the selected style (however, when switching
- between 
-\begin_inset Quotes eld
-\end_inset
-
-author-year
-\begin_inset Quotes erd
-\end_inset
-
- and 
-\begin_inset Quotes eld
-\end_inset
-
-author-numerical
-\begin_inset Quotes erd
-\end_inset
-
-, a suitable style is proposed).
+ alpha-numerical depends only on the selected 
+\family sans
+Biblatex citation style
+\family default
+.
+ However, when switching between Author-year and Author-number, a suitable
+ style is proposed.
  With 
 \family sans
 Natbib
@@ -29304,23 +29259,13 @@ Natbib
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1483890338
 For any author-year and author-numerical selection, multiple style variants
- are available 
-\change_deleted -712698321 1483890143
-I
-\change_inserted -712698321 1483890144
-i
-\change_unchanged
-n the citation reference dialog
-\change_deleted -712698321 1483890163
- you can set a special citation format
-\change_unchanged
-.
-
-\change_inserted -712698321 1483891709
- Some selections also provide further options, such as the option to uppercase
+ are available in the 
+\family sans
+Citation
+\family default
+ dialog.
+ Some selections also provide further options like the option to uppercase
  a name prefix such as 
 \begin_inset Quotes eld
 \end_inset
@@ -29341,7 +29286,11 @@ Van Beethoven
 \begin_inset space \thinspace{}
 \end_inset
 
-e., use or don't use 
+e.
+\begin_inset space \space{}
+\end_inset
+
+use or don't use 
 \begin_inset Quotes eld
 \end_inset
 
@@ -29350,8 +29299,6 @@ et al.
 \end_inset
 
 ).
-
-\change_unchanged
  
 \end_layout
 
@@ -29425,18 +29372,15 @@ cf.
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1484998495
 Note that these pre- and postnotes apply to the whole citation.
- That is to say, if you refer to multiple references at one, the prenote
- will precede the first citation in the list, the postnote will follow the
- last.
+ So if you refer to multiple references at once, the prenote will precede
+ the first citation in the list, the postnote will follow the last.
  Some 
 \family sans
 Biblatex
 \family default
- styles allow for adding pre- and postnotes to any individual reference
- in a multi-citation (so-called 
+ styles allow to add pre- and postnotes to any individual reference in a
+ multi-citation (so-called 
 \begin_inset Quotes eld
 \end_inset
 
@@ -29447,76 +29391,66 @@ qualified citation lists
 ).
  \SpecialChar LyX
  supports this.
- If you use such a style, and if the current reference includes multiple
- items, the 
-\begin_inset Quotes eld
-\end_inset
-
+ If you use such a style and if the current reference includes multiple
+ items the 
+\family sans
+Citation
+\family default
+ dialog will display three columns in the field 
+\family sans
 Selected Citations
-\begin_inset Quotes erd
+\family default
+: 
+\family sans
+Text
+\begin_inset space ~
 \end_inset
 
- window will display three columns: 
-\begin_inset Quotes eld
-\end_inset
-
-Text before
-\begin_inset Quotes erd
-\end_inset
-
+before
+\family default
 , 
-\begin_inset Quotes eld
+\family sans
+Cite
+\begin_inset space ~
 \end_inset
 
-Cite key
-\begin_inset Quotes erd
+key
+\family default
+ and 
+\family sans
+Text
+\begin_inset space ~
 \end_inset
 
-, and 
-\begin_inset Quotes eld
-\end_inset
-
-Text after
-\begin_inset Quotes erd
-\end_inset
-
+after
+\family default
 .
  If you double-click on an item's 
-\begin_inset Quotes eld
+\family sans
+Text
+\begin_inset space ~
 \end_inset
 
-Text before
-\begin_inset Quotes erd
-\end_inset
-
+before
+\family default
  or 
-\begin_inset Quotes eld
+\family sans
+Text
+\begin_inset space ~
 \end_inset
 
-Text after
-\begin_inset Quotes erd
-\end_inset
-
+after
+\family default
  field, you can add such individual pre- and postnotes.
  In the 
-\begin_inset Quotes eld
-\end_inset
-
+\family sans
 General text before
-\begin_inset Quotes erd
-\end_inset
-
+\family default
  and 
-\begin_inset Quotes eld
-\end_inset
-
+\family sans
 General text after
-\begin_inset Quotes erd
-\end_inset
-
- input widgets, you can add pre- and postnotes that apply to the whole list.
-\change_unchanged
-
+\family default
+ fields you can add pre- and postnotes that apply to the whole list.
 \end_layout
 
 \begin_layout Section

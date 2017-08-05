@@ -28729,6 +28729,17 @@ Biblatex
 \series bold
 biblatex
 \series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-Paket ! biblatex
+\end_layout
+
+\end_inset
+
  und lässt Sie einen Stil in den Auswahllisten 
 \family sans
 Biblatex-Zitierstil
@@ -28738,7 +28749,6 @@ Biblatex-Zitierstil
 Biblatex-Bibliographiestil
 \family default
  unterhalb treffen.
- Viele verschiedene Stilvarianten werden unterstützt.
  Optionen für das Paket 
 \series bold
 biblatex
@@ -28772,21 +28782,21 @@ Natbib-Kompatibilitäts-Modus
 \end_inset
 
 .
- Dies ist eine spezifische Variante spezifisch für Anwender, die von 
-\family sans
-Natbib
-\family default
- (siehe unten) herkommen oder das Verhalten von 
-\family sans
-Natbib
-\family default
+ Dies ist eine spezifische Variante für Anwender, die ein existierendes
+ Dokument haben, das 
+\series bold
+natbib
+\series default
+ verwendet oder die das Verhalten von 
+\series bold
+natbib
+\series default
  möglichst eng nachbilden möchten.
  Im Vergleich zu 
 \family sans
 Biblatex
 \family default
  umfasst diese Option ein paar zusätzliche Verweisstile.
- Die Stilauswahl und die Handhabung von Optionen sind identisch.
  Alle 
 \series bold
 biblatex
@@ -28852,51 +28862,55 @@ status collapsed
 \begin_layout Standard
 Die 
 \family sans
-Biblatex
+Biblatex-
 \family default
--Varianten und 
+ und 
 \family sans
 Natbib
 \family default
- erlauben zusätzlich die Auswahl zwischen Autor-Jahr- und Autor-Nummern-Verweise
-n.
- Sie müssen einen davon im Dialog auswählen.
- Beachten Sie, dass dies im Fall von 
+-Stilformate erlauben die Auswahl zwischen Autor-Jahr- und Autor-Nummern-Zitiers
+tilen.
+ Sie müssen einen Stil in der Auswahlliste 
+\family sans
+Variante 
+\family default
+auswählen.
+ Beachten Sie, dass dies bei 
 \family sans
 Biblatex
 \family default
- nur die Darstellung im \SpecialChar LyX
+-Formaten nur die Darstellung im \SpecialChar LyX
 -Arbeitsbereich verändert.
  Ob die Ausgabe nummerische, Autor-Jahr oder ein anderes Format (etwa ein
- alphanumerisches) verwendet hängt hier ausschließlich vom verwendeten Stil
- ab (allerdings schlägt \SpecialChar LyX
+ alphanumerisches) verwendet, hängt ausschließlich vom verwendeten 
+\family sans
+Biblatex-Zitierstil
+\family default
+ ab.
+ Allerdings schlägt \SpecialChar LyX
  beim Wechsel zwischen 
-\begin_inset Quotes gld
-\end_inset
-
+\family sans
 Autor-Jahr
-\begin_inset Quotes grd
-\end_inset
-
+\family default
  und 
-\begin_inset Quotes gld
-\end_inset
-
+\family sans
 Autor-Nummer
-\begin_inset Quotes grd
-\end_inset
-
- einen jeweils passenden Stil vor).
- Mit 
+\family default
+ einen jeweils passenden Stil vor.
+ Bei 
 \family sans
 Natbib
 \family default
- wird die Auswahl hier hingegen den Stil fest vorgeben.
+ wird mit der Auswahl hingegen der Stil fest vorgeben.
 \end_layout
 
 \begin_layout Standard
-Im Literaturverweisfenster können Sie für jede Autor-Jahr- oder Autor-Nummer-Aus
-wahl zwischen mehreren Stilvarianten auswählen.
+Im 
+\family sans
+Literaturverweis
+\family default
+-Dialog können Sie für jede Autor-Jahr- oder Autor-Nummer-Auswahl zwischen
+ mehreren Stilvarianten auswählen.
  Manche Varianten bieten auch zusätzliche Optionen, etwa die Anfangsgroßschreibu
 ng eines Namenspräfixes, wenn der Verweis am Satzanfang steht (
 \begin_inset Quotes gld
@@ -29033,76 +29047,62 @@ qualified citation lists
 ).
  \SpecialChar LyX
  unterstützt dies.
- Wenn Sie einen solchen Stil verwenden, und wenn der aktuelle Verweis mehrere
- Titel enthält, hat das Fenster 
-\begin_inset Quotes gld
-\end_inset
-
+ Wenn Sie einen solchen Stil verwenden und wenn der aktuelle Verweis mehrere
+ Titel enthält zeigt der 
+\family sans
+Literaturverweis
+\family default
+-Dialog drei Spalten im Feld 
+\family sans
 Ausgewählte Verweise
-\begin_inset Quotes grd
+\family default
+ an: 
+\family sans
+Text
+\begin_inset space ~
 \end_inset
 
- drei Spalten: 
-\begin_inset Quotes gld
-\end_inset
-
-Text davor
-\begin_inset Quotes grd
-\end_inset
-
+davor
+\family default
 , 
-\begin_inset Quotes gld
-\end_inset
-
+\family sans
 Zitierschlüssel
-\begin_inset Quotes grd
-\end_inset
-
+\family default
  und 
-\begin_inset Quotes gld
+\family sans
+Text
+\begin_inset space ~
 \end_inset
 
-Text danach
-\begin_inset Quotes grd
-\end_inset
-
+danach
+\family default
 .
  Wenn Sie auf das Feld 
-\begin_inset Quotes gld
+\family sans
+Text
+\begin_inset space ~
 \end_inset
 
-Text davor
-\begin_inset Quotes grd
-\end_inset
-
+davor
+\family default
  oder 
-\begin_inset Quotes gld
+\family sans
+Text
+\begin_inset space ~
 \end_inset
 
-Text danach
-\begin_inset Quotes grd
-\end_inset
-
- eines Eintrags doppelklicken, können Sie solche individuellen Textzusätze
- eingeben.
- Die Felder 
-\begin_inset Quotes gld
-\end_inset
-
+danach
+\family default
+ eines Eintrags doppelklicken, können Sie individuellen Textzusätze eingeben.
+ In die Felder 
+\family sans
 Allgemeiner Text davor
-\begin_inset Quotes grd
-\end_inset
-
+\family default
  und 
-\begin_inset Quotes gld
-\end_inset
-
+\family sans
 Allgemeiner Text danach
-\begin_inset Quotes grd
-\end_inset
-
- können Sie weiterhin auch Text eingeben, der vor und nach der ganzen Liste
- steht.
+\family default
+ können Sie Text eingeben, der vor und nach der ganzen Liste steht.
 \end_layout
 
 \begin_layout Section
