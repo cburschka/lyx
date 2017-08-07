@@ -773,7 +773,6 @@ bool GuiView::restoreLayout()
 {
 	QSettings settings;
 	lyxrc.currentZoom = settings.value("zoom", lyxrc.zoom).toInt();
-	lyx::dispatch(FuncRequest(LFUN_BUFFER_ZOOM, convert<docstring>(lyxrc.currentZoom)));
 	devel_mode_ = settings.value("devel_mode", devel_mode_).toBool();
 	settings.beginGroup("views");
 	settings.beginGroup(QString::number(id_));
