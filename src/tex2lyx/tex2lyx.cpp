@@ -1060,7 +1060,9 @@ int TeX2LyXApp::run()
 		if (configFileNeedsUpdate("lyxrc.defaults") ||
 		    configFileNeedsUpdate("lyxmodules.lst") ||
 		    configFileNeedsUpdate("textclass.lst") ||
-		    configFileNeedsUpdate("packages.lst"))
+		    configFileNeedsUpdate("packages.lst") ||
+		    configFileNeedsUpdate("lyxciteengines.lst") ||
+		    configFileNeedsUpdate("xtemplates.lst"))
 			package().reconfigureUserLyXDir("");
 		fileUnlock(fd, lock_file.c_str());
 	} else
