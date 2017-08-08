@@ -160,13 +160,11 @@ End
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author -712698321 "Jürgen Spitzmüller"
-\author 34634807 "Jean-Pierre"
 \end_header
 
 \begin_body
@@ -3022,37 +3020,154 @@ hbox
 \bar no
 \noun off
 \color none
-この警告を吐き出します．これは，一行が長すぎて右余白にはみ出してしまったという警告ですが，ほとんどの場合，最終出力を見ても判別できないくらい(せいぜい1ポイント
-か2ポイント)です．あるいは1文字か2文字右余白に出ているくらいです．\SpecialChar LaTeX
-は，どんな文書を書いても，少なくとも一つはこのメッセージを出すようです．
+この警告を吐き出します．最終出力を見ても判別できないくらい(せいぜい1ポイントか2ポイント)です．あるいは1文字か2文字右余白に出ているくらいです．
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+\lang english
+\SpecialChar LaTeX
+ absolutely 
+\emph on
+loves
+\emph default
+ to spew these out.
+ It seems to generate at least one of these messages for just about any
+ document you write.
+ They are warnings about lines that were too long and run past the right
+ margin.
+ This happens if \SpecialChar LaTeX
+ does not find a reasonable way to break the lines (notoriously
+ often with typewriter font, since this does not allow for automatic break
+ points).
+ In many cases, this is unnoticeable in the final output.
+ (It can be just a point or two.) Sometimes, however, the lines run rather
+ visibly into the margin; something you will not want to have in your final
+ print.
+ 
 \begin_inset Newline newline
 \end_inset
 
-このメッセージは無視しても大丈夫です．何か行が長すぎるような問題があれば，目で見ればわかります．出力を目で確認してください
+There are several global ways to try to minimize the overfull lines.
+ Clicking 
+\family sans
+Enable micro-typographic extensions
+\family default
+ in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Fonts
+\family default
+ might already improve things a lot.
+ Furthermore, \SpecialChar LaTeX
+ code such as the following in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Preamble
+\family default
+ usually reduces the overfull lines drastically (we use this in the preamble
+ of this document):
+\end_layout
+
+\begin_deeper
+\begin_layout LyX-Code
+
+\lang english
+
+\backslash
+tolerance 1414
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+hbadness 1414
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+emergencystretch 1.5em
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+hfuzz 0.3pt
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In some cases, however, you eventually have to rewrite the text to get the
+ line breaking right.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-あるいは，
-\begin_inset Flex MenuItem
+
+\lang english
+For more information, see 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.tex.ac.uk/FAQ-overfull.html
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In any case, you should check the respective lines, at least for the final
+ version of your document.
+ Your eyes will tell you if there's a problem with something that's too
+ wide.
+\begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-文書\SpecialChar menuseparator
-設定
+
+\lang english
+You can also enable the `draft' option in 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Document\SpecialChar menuseparator
+Settings
 \end_layout
 
 \end_inset
 
-で「draft」オプションを指定する方法もあります．こうすると，\SpecialChar LaTeX
-は，overfullの発生した行の余白に黒い四角を描画します．
+, and then \SpecialChar LaTeX
+ will draw a black box in the margin of lines that are overfull.
 \end_layout
 
 \end_inset
 
-．
+ 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 
 \family typewriter
@@ -3074,16 +3189,13 @@ hbox
 \end_inset
 
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-これは上の警告と違ってあまり出てきません．なぜだかは分かりませんが，\SpecialChar LaTeX
-は1行を短めにする印字するよりは，長めにする方が好きなようです．
+\family default
+\lang english
+Not quite as common as its cousin.
+ This happens again if \SpecialChar LaTeX
+ does not find a reasonable break point and consequently
+ generates too loose lines.
+ As with the overfull lines, you should check if this is a visible problem.
 \end_layout
 
 \begin_layout Itemize
@@ -3688,12 +3800,8 @@ Pagebreak
 \begin_layout Section
 Bib\SpecialChar TeX
 に
-\change_inserted 34634807 1499889868
-
 \lang english
  or Biblatex
-\change_unchanged
-
 \lang japanese
 よる書誌情報のカスタマイズ
 \end_layout
@@ -3701,16 +3809,12 @@ Bib\SpecialChar TeX
 \begin_layout Standard
 Bib\SpecialChar TeX
 
-\change_inserted 34634807 1499889904
-
 \lang english
  or 
 \family sans
 Biblatex
 \family default
  
-\change_unchanged
-
 \lang japanese
 の基本的な使用法は，『
 \emph on
@@ -3719,11 +3823,6 @@ Biblatex
 』の「
 \emph on
 文献データベース
-\change_deleted 34634807 1499889896
-(Bib\SpecialChar TeX
-)
-\change_unchanged
-
 \emph default
 」の節に説明があります．以下の各小節では，\SpecialChar LyX
 でサポートされている書誌情報の特別な機能について説明することとします．
@@ -3736,152 +3835,9 @@ Biblatex
 \begin_layout Standard
 標準のBib\SpecialChar TeX
 
-\change_deleted 34634807 1499890024
-は，引用された著作を参照するのに，([12]のように)数字を使用します．しかし，多くの科学分野で，これとは異なる引用様式が用いられています．もっともよく見られる
-のは，著者-出版年様式(例：Knuth 1984a)です．\SpecialChar LyX
-は，この様式を提供する2つのパッケージ
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-natbib
-\end_layout
-
-\end_inset
-
-と
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-jurabib
-\end_layout
-
-\end_inset
-
-をサポートしています．これらのパッケージには，それぞれ長所短所がありますが，ここでは詳細に立ち入る紙幅がありません．単純な著者-出版年様式(あるいは著者-番号)
-様式が欲しい場合や，無数にある
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-natbib
-\end_layout
-
-\end_inset
-
-用スタイルファイルのうちどれかを使用したい場合には，定評のある
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-natbib
-\end_layout
-
-\end_inset
-
-パッケージがおそらくよい選択でしょう．短縮タイトルによる参照や
-\emph on
-ibid.
-\emph default
-など，特別な機能が必要な場合には，
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-jurabib
-\end_layout
-
-\end_inset
-
-パッケージの利用を考えるとよいかもしれません．
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 34634807 1499890024
-\SpecialChar LyX
-での両パッケージの取扱い方は，ほぼ同じです．
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-文書\SpecialChar menuseparator
-設定
-\end_layout
-
-\end_inset
-
-メニューを開き，
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-書誌情報
-\end_layout
-
-\end_inset
-
-項目から
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-Natbib
-\end_layout
-
-\end_inset
-
-オプションか
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-Jurabib
-\end_layout
-
-\end_inset
-
-オプションを選択してください．これらのパッケージによって，引用ダイアログに機能が追加され，参照の様式が選択できるようになります(「Knuth 1984」，「Kn
-uth (1984)」，「Knuth, 1984」，「1984」など)．両パッケージは，専用にデザインされたスタイルファイルを必要とすることに注意してください．
-両者ともそれ自身のスタイルファイルを同梱していますが，他にもたくさんの追加スタイルファイルがありますし，
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-natbib
-\end_layout
-
-\end_inset
-
-に至っては，対話的なスタイルファイルビルダーさえ存在します
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-ftp://ctan.tug.org/tex-archive/macros/latex/contrib/custom-bib/
-\end_layout
-
-\end_inset
-
-をご参照ください．
-\end_layout
-
-\end_inset
-
-．
-\change_inserted 34634807 1499890031
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted 34634807 1499890044
 
 \lang english
 Standard Bib\SpecialChar TeX
@@ -3927,8 +3883,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890044
-
 \lang english
 biblatex
 \end_layout
@@ -3941,8 +3895,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890044
-
 \lang english
 natbib
 \end_layout
@@ -3954,8 +3906,6 @@ natbib
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890044
 
 \lang english
 jurabib
@@ -3973,8 +3923,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890044
-
 \lang english
 natbib
 \end_layout
@@ -3986,8 +3934,6 @@ natbib
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890044
 
 \lang english
 natbib
@@ -4002,8 +3948,6 @@ natbib
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890044
 
 \lang english
 jurabib
@@ -4021,8 +3965,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890044
-
 \lang english
 biblatex
 \end_layout
@@ -4035,8 +3977,6 @@ biblatex
 
 \begin_layout Standard
 
-\change_inserted 34634807 1499890044
-
 \lang english
 The handling of these packages in \SpecialChar LyX
  is basically the same.
@@ -4045,8 +3985,6 @@ The handling of these packages in \SpecialChar LyX
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890044
 
 \lang english
 Document\SpecialChar menuseparator
@@ -4061,8 +3999,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890044
-
 \lang english
 Bibliography
 \end_layout
@@ -4074,8 +4010,6 @@ Bibliography
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890044
 
 \lang english
 Style Format
@@ -4089,8 +4023,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890044
-
 \lang english
 Biblatex
 \end_layout
@@ -4102,8 +4034,6 @@ Biblatex
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890044
 
 \lang english
 Biblatex (Natbib mode)
@@ -4117,8 +4047,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890044
-
 \lang english
 Natbib (BibTeX)
 \end_layout
@@ -4130,8 +4058,6 @@ Natbib (BibTeX)
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890044
 
 \lang english
 Jurabib (BibTeX)
@@ -4186,16 +4112,12 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890044
-
 \lang english
 See 
 \begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890044
 
 ftp://ctan.tug.org/tex-archive/macros/latex/contrib/custom-bib/
 \end_layout
@@ -4213,8 +4135,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890044
-
 \lang english
 natbib
 \end_layout
@@ -4222,18 +4142,12 @@ natbib
 \end_inset
 
 .
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
 節分けされた書誌情報
-\change_inserted 34634807 1499890054
-
 \lang english
 Subdivided Bibliographies
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -4343,8 +4257,6 @@ status collapsed
 \end_inset
 
 
-\change_inserted 34634807 1499890087
-
 \lang english
 
 \begin_inset Flex Noun
@@ -4352,16 +4264,12 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890087
-
 \lang english
 Subdivided bibliography
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \lang japanese
 をチェックしてください．すると，書誌情報の各節に一つずつ，複数の書誌情報を挿入することができます．上記の例では，Bib\SpecialChar TeX
@@ -4399,13 +4307,9 @@ bibtopic
 \end_inset
 
 は，書誌情報用の見出しを取り除いてしまいますので，手動でこれを追加しなくてはなりません(たとえば章*や節*などをお使いください)．
-\change_inserted 34634807 1499890105
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 34634807 1499890107
 
 \lang english
 With 
@@ -4426,8 +4330,6 @@ Biblatex
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890107
 
 \lang english
 Subdivided bibliography
@@ -4451,8 +4353,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890107
-
 \lang english
 keywords
 \end_layout
@@ -4466,8 +4366,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890107
-
 \lang english
 keyword=mykeyword
 \end_layout
@@ -4480,8 +4378,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890107
-
 \lang english
 Options
 \end_layout
@@ -4493,8 +4389,6 @@ Options
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890107
 
 \lang english
 Biblatex Generated Bibliography
@@ -4521,8 +4415,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890107
-
 \lang english
 type=book
 \end_layout
@@ -4535,8 +4427,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890107
-
 \lang english
 nottype=collection
 \end_layout
@@ -4548,8 +4438,6 @@ nottype=collection
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890107
 
 \lang english
 Options
@@ -4571,184 +4459,21 @@ Bibliography Categories
 Subdivided Bibliographies
 \emph default
 , for details.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
 
-\change_deleted 34634807 1499890126
-複数の書誌情報
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 34634807 1499890126
-文書の節ごとあるいは章ごとの書誌情報など，複数の書誌情報はBib\SpecialChar TeX
-自身ではサポートされていません．しかしながら，もし若干の
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-\SpecialChar TeX
-コード
-\end_layout
+\lang english
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Multiple-Bibliographies"
 
 \end_inset
 
-(第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:LaTeXコードを挿入する"
-
-\end_inset
-
-節を参照)を利用することを厭わなければ，\SpecialChar LyX
-で節分けされた書誌情報を作るのに使用されている(前節を参照)
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-bibtopic
-\end_layout
-
-\end_inset
-
-パッケージが，この課題を解決する簡単な方法を提供します
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-ほかに，
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-chapterbib
-\end_layout
-
-\end_inset
-
-や
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-bibunits
-\end_layout
-
-\end_inset
-
-パッケージを利用する方法もあります．
-\end_layout
-
-\end_inset
-
-．
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted 34634807 1499890126
-まず
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-文書\SpecialChar menuseparator
-設定
-\end_layout
-
-\end_inset
-
-に行って
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-書誌情報
-\end_layout
-
-\end_inset
-
-の下の
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-節分けされた書誌情報
-\end_layout
-
-\end_inset
-
-を有効にしてください．つぎに文書中において，書誌情報(Bib\SpecialChar TeX
-書誌情報本体を含む)の入った節を
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-begin{btUnit}
-\end_layout
-
-\end_inset
-
-と
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-end{btUnit}
-\end_layout
-
-\end_inset
-
-のあいだにはさまなくてはなりません(これらのコマンドは\SpecialChar TeX
-コードとして挿入する必要があります)．書誌情報には，現在位置の
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-btUnit
-\end_layout
-
-\end_inset
-
-において引用されたすべての参照が含まれることになります．
-\series bold
-(註)
-\series default
-この方法を用いる場合には，すべての参照はいずれかの
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-btUnit
-\end_layout
-
-\end_inset
-
-内部になくてはなりません．また，
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-btUnit
-\end_layout
-
-\end_inset
-
-は入れ子構造にすることができません．
-\change_inserted 34634807 1499890142
 
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 34634807 1499890144
 
 \lang english
 Multiple bibliographies, e.
@@ -4767,8 +4492,6 @@ t) of the document, are also supported by \SpecialChar LyX
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890144
 
 \lang english
 Document\SpecialChar menuseparator
@@ -4796,8 +4519,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890144
-
 \lang english
 Multiple Bibliographies
 \end_layout
@@ -4817,8 +4538,6 @@ g., section) of your document.
 
 \begin_layout Standard
 
-\change_inserted 34634807 1499890144
-
 \lang english
 If you use Bib\SpecialChar TeX
 , either the 
@@ -4826,8 +4545,6 @@ If you use Bib\SpecialChar TeX
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890144
 
 \lang english
 chapterbib
@@ -4840,8 +4557,6 @@ chapterbib
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890144
 
 \lang english
 bibtopic
@@ -4868,8 +4583,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890144
-
 \lang english
 Sectioned Bibliography
 \end_layout
@@ -4883,8 +4596,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890144
-
 \lang english
 bibtopic
 \end_layout
@@ -4897,16 +4608,12 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890144
-
 \lang english
 An alternative approach, if you are willing to use some 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890144
 
 \lang english
 \SpecialChar TeX
@@ -4932,8 +4639,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890144
-
 \lang english
 bibunits
 \end_layout
@@ -4951,8 +4656,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890144
-
 \lang english
 bibtopic
 \end_layout
@@ -4966,8 +4669,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890144
-
 \lang english
 bibtopic
 \end_layout
@@ -4979,8 +4680,6 @@ bibtopic
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890144
 
 \lang english
 
@@ -4995,8 +4694,6 @@ begin{btUnit}
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890144
 
 \lang english
 
@@ -5013,8 +4710,6 @@ end{btUnit}
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890144
 
 \lang english
 btUnit
@@ -5050,8 +4745,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890144
-
 \lang english
 
 \backslash
@@ -5065,8 +4758,6 @@ begin{btUnit}
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890144
 
 \lang english
 
@@ -5084,8 +4775,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890144
-
 \lang english
 btUnit
 \end_layout
@@ -5098,8 +4787,6 @@ s cannot be nested.
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890144
 
 \lang english
 bibtopic
@@ -5128,8 +4815,6 @@ Miller 2014b
 
 \begin_layout Standard
 
-\change_inserted 34634807 1499890144
-
 \lang english
 If you use 
 \family sans
@@ -5140,8 +4825,6 @@ Biblatex
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890144
 
 \lang english
 refsection
@@ -5157,8 +4840,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890144
-
 \lang english
 
 \backslash
@@ -5172,8 +4853,6 @@ newrefsection
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890144
 
 \lang english
 
@@ -5190,8 +4869,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890144
-
 \lang english
 
 \backslash
@@ -5207,8 +4884,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted 34634807 1499890144
-
 \lang english
 
 \backslash
@@ -5223,8 +4898,6 @@ end{refsection}
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted 34634807 1499890144
 
 \lang english
 refsection
@@ -5258,8 +4931,6 @@ all reference units
 Biblatex
 \family default
  manual for more information on this topic.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section
@@ -5334,16 +5005,146 @@ end{document}行
 \end_layout
 
 \begin_layout Standard
-ファイル選択ボックスは，いまや自明でしょう．インクルード方法には，「include」・「input」・「verbatim」の三つがあります．「include」と
-「input」の違いは，正確には\SpecialChar LaTeX
-の達人にしか意味のないものですが，ほとんどの人にとって意味のある違いといえば，「include」されたファイルは新規頁から組版さ
-れるのに対し，「input」されたファイルは現在のページから組版される点です．
+ファイル選択ボックスは，いまや自明でしょう．インクルード方法には，「include」・「input」・「verbatim」の三つがあります．
+\lang english
+The methods 
+\begin_inset Quotes eld
+\end_inset
+
+include
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+input
+\begin_inset Quotes erd
+\end_inset
+
+ are similar in many ways, but there are also some notable differences:
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Files that are 
+\begin_inset Quotes eld
+\end_inset
+
+included
+\begin_inset Quotes erd
+\end_inset
+
+ are typeset beginning on a new page, while files that are 
+\begin_inset Quotes eld
+\end_inset
+
+inputted
+\begin_inset Quotes erd
+\end_inset
+
+ are typeset starting on the current page.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+Included
+\begin_inset Quotes erd
+\end_inset
+
+ files cannot themselves 
+\begin_inset Quotes eld
+\end_inset
+
+include
+\begin_inset Quotes erd
+\end_inset
+
+ further files (
+\begin_inset Quotes eld
+\end_inset
+
+grandchilds
+\begin_inset Quotes erd
+\end_inset
+
+).
+ With 
+\begin_inset Quotes eld
+\end_inset
+
+input
+\begin_inset Quotes erd
+\end_inset
+
+, on the other hand, infinite sub-inputting is possible.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+\begin_inset Quotes eld
+\end_inset
+
+Include
+\begin_inset Quotes erd
+\end_inset
+
+ allow for the output of only selected 
+\begin_inset Quotes eld
+\end_inset
+
+included
+\begin_inset Quotes erd
+\end_inset
+
+ files, while maintaining the actual counters (pagination etc.) and references
+ (please refer to the section 
+\emph on
+Child
+\begin_inset space ~
+\end_inset
+
+Documents
+\emph default
+ of the 
+\emph on
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
+\emph default
+ manual for details).
 \end_layout
 
 \begin_layout Standard
-一般に，マスターファイルは，組版前に完全な\SpecialChar LaTeX
-ファイルに変換されますが，インクルードされるファイルは，プリアンブル情報をまったく持たない\SpecialChar LaTeX
-ファイルに変換されます．
+
+\lang english
+Hence, 
+\begin_inset Quotes eld
+\end_inset
+
+include
+\begin_inset Quotes erd
+\end_inset
+
+ is the preferred method for chapters that are outsourced to child documents,
+ while 
+\begin_inset Quotes eld
+\end_inset
+
+input
+\begin_inset Quotes erd
+\end_inset
+
+ is more suitable for arbitrary file inheritance.
 \end_layout
 
 \begin_layout Standard
@@ -5376,6 +5177,16 @@ status collapsed
 
 \family default
 チェックボックスを有効にすると，空白が存在することを明確にするために空白の印が出力されます．
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Generally, the master file is converted into a full \SpecialChar LaTeX
+ file before typesetting,
+ while the included files are converted to \SpecialChar LaTeX
+ files that do not have all the
+ preamble information.
 \end_layout
 
 \begin_layout Subsection
@@ -5421,80 +5232,92 @@ status open
 \end_layout
 
 \begin_layout Standard
-\begin_inset Box Shadowbox
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
 
-\begin_layout Plain Layout
-この節も更新が必要です．この点に関する内容がwikiにあるので，それをここにコピーすることも可か．
-\end_layout
-
-\end_inset
-
-
+\lang english
+If you work with child documents, you might want to have only one main bibliogra
+phy at the end, but still be able to have a selected bibliography for the
+ child if you output it on its own.
+ Here is how to achieve this.
 \end_layout
 
 \begin_layout Standard
-すべての子文書の全文献項目を含んだ書誌情報一覧をコピーし，それをコメントに変更してください．このようにすることで，\SpecialChar LyX
-は.bibファイルを見つけることができ，書誌情報
-一覧を見えるようにせずとも簡単に参照を挿入することができるようになります．
+
+\lang english
+For the main document, you just insert a bibliography inset at the place
+ where the main bibliography has to appear (within the master file or within
+ a child).
+ If the bibliography inset is in the master file, the references will be
+ inherited by all children, so they are available in the citation dialog
+ within each child.
 \end_layout
 
 \begin_layout Standard
-書誌情報一覧がコメントにあるために，\SpecialChar LaTeX
-はそれを使用しないので，参照は[1]のようには表示されないで[?]のように表示されます．ひとつの解決法として，コメントをイン
-クルードする\SpecialChar LaTeX
-パッケージの
-\begin_inset Flex Code
-status collapsed
 
-\begin_layout Plain Layout
-comment
-\end_layout
-
+\lang english
+For child-specific bibliographies, insert bibliography insets within the
+ child documents, at the place where the bibliography should appear when
+ the child is compiled separately.
+ However, the trick is to insert them into a branch (
+\family sans
+Insert\SpecialChar menuseparator
+Branch\SpecialChar menuseparator
+Insert New Branch...
+\family default
+), e.
+\begin_inset space \thinspace{}
 \end_inset
 
-を使用して，ファイルを別々に処理する方法があります．そのためには，すべての子文書のプリアンブルに以下を書き加えてください．
-\end_layout
+g.
+ called 
+\begin_inset Quotes eld
+\end_inset
 
-\begin_layout LyX-Code
+Childonly
+\begin_inset Quotes erd
+\end_inset
 
-\backslash
-usepackage{comment}
-\end_layout
-
-\begin_layout LyX-Code
-
-\backslash
-includecomment{comment}
+.
+ Within the children, activate the branch (
+\family sans
+Document\SpecialChar menuseparator
+Settings...\SpecialChar menuseparator
+Branches
+\family default
+).
+ Within the master, deactivate the branch (
+\family sans
+Document\SpecialChar menuseparator
+Settings...\SpecialChar menuseparator
+Branches
+\family default
+).
+ Now the child's bibliography will be ignored by the master, but considered
+ by the child.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex URL
-status collapsed
 
-\begin_layout Plain Layout
+\lang english
+If you need multiple bibliographies (e.
+\begin_inset space \thinspace{}
+\end_inset
 
-http://wiki.lyx.org/FAQ/Unsorted#toc31
-\end_layout
+g., one per child in the 
+\emph on
+main document
+\emph default
+), please refer to sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Multiple-Bibliographies"
 
 \end_inset
 
-も参照してください．
+.
 \end_layout
 
 \begin_layout Section
@@ -6460,7 +6283,7 @@ status collapsed
 \begin_layout Standard
 ブリット形は，適切な階層のブリットボタンをマウスで右クリックすれば，簡単に既定値に初期化することができます
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 もし
@@ -6588,23 +6411,55 @@ labelitem
 \end_layout
 
 \begin_layout Itemize
+
+\lang english
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+
+\lang english
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-[
+
 \backslash
 (
 \backslash
 star
 \backslash
-)]
+)
 \end_layout
 
 \end_inset
 
-各項目のブリットを指定するには，角括弧で囲んだブリット形を，行頭に
+
+\end_layout
+
+\end_inset
+
+
+\lang japanese
+各項目のブリットを指定するには，角括弧で囲んだブリット形を
+\lang english
+
+\begin_inset Quotes eld
+\end_inset
+
+Custom Item
+\begin_inset Quotes erd
+\end_inset
+
+ inset (available at 
+\family sans
+Insert\SpecialChar menuseparator
+Custom Item
+\family default
+) 
+\lang japanese
+，行頭に
 \begin_inset Flex Code
 status collapsed
 
@@ -6896,7 +6751,7 @@ er
 \begin_layout Standard
 この原稿執筆時点では，XHTML出力は開発途上であり，おそらく「実験的」機能として解されるべきでしょう
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \SpecialChar LyX
@@ -6914,7 +6769,11 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-development/HTML.notes
+development/
+\lang english
+HTML/
+\lang japanese
+HTML.notes
 \end_layout
 
 \end_inset
@@ -7126,16 +6985,7 @@ status collapsed
 
 ．この方法の利点は，画像が他ならぬ\SpecialChar LaTeX
 によって生成されているので，非常に正確であることです．欠点は，前述したとおり，画像がビットマップなので，伸縮が全くうまく行かな
-かったり，コピーが出来なかったりといったことがあります(執筆時点においては，数式の付番にも問題があります．
-\begin_inset CommandInset href
-LatexCommand href
-name "バグ 6894"
-target "http://www.lyx.org/trac/ticket/6894"
-literal "false"
-
-\end_inset
-
-を参照のこと．)．
+かったり，コピーが出来なかったりといったことがあります(執筆時点においては，
 \begin_inset Newline newline
 \end_inset
 
@@ -7146,7 +6996,9 @@ status collapsed
 \begin_layout Plain Layout
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
-出力
+
+\lang english
+Formats
 \end_layout
 
 \end_inset
@@ -7233,7 +7085,9 @@ status collapsed
 \begin_layout Plain Layout
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
-出力
+
+\lang english
+Formats
 \end_layout
 
 \end_inset
@@ -7442,6 +7296,15 @@ name "chap:LyXサーバー"
 \begin_layout Section
 \SpecialChar LyX
 サーバーを開始するには
+\lang english
+
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Starting-the-Server"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7959,32 +7822,40 @@ name "subsec:遡及検索"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Flex MenuItem
+
+\lang english
+n most cases \SpecialChar LyX
+ will do the work for you by pressing the following button
+ in the toolbar: 
+\begin_inset Info
+type  "icon"
+arg   "buffer-toggle-output-sync"
+\end_inset
+
+.
+ Alternatively, you can also enable the feature by checking 
+\family sans
+Synchronize with Output
+\family default
+ in 
+\begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-文書\SpecialChar menuseparator
-設定\SpecialChar menuseparator
-出力
+
+\lang english
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Formats
 \end_layout
 
 \end_inset
 
-メニューで
-\begin_inset Flex MenuItem
-status collapsed
 
-\begin_layout Plain Layout
-出力と同期
-\end_layout
-
-\end_inset
-
-オプションを有効にすれば，ほとんどの場合，\SpecialChar LyX
-がすべてをうまくこなしてくれます．その場合，\SpecialChar LyX
+\lang japanese
+その場合，\SpecialChar LyX
 は，自動的に，必要なSync\SpecialChar TeX
-マクロ(PDFの場合)や，srcltxパッケー
-ジ(DVIの場合)を挿入してくれます．このオプションは，
+マクロ(PDFの場合)や，srcltxパッケージ(DVIの場合)を挿入してくれます．このオプションは，
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -8297,7 +8168,11 @@ Sync\SpecialChar TeX
 Live 2008か最近のMik\SpecialChar TeX
 頒布版が必要です．また，既にSync\SpecialChar TeX
 サポートを提供しているPDFビューアは少ししかありません(UNIX上の
-OkularとQpdfview，Mac上のSkim，及びWindows上のSumatraPDF)．
+OkularとQpdfview，Mac上のSkim，及びWindows上のSumatraPDF
+\lang english
+; see the next section for details
+\lang japanese
+)．
 \end_layout
 
 \begin_layout Standard
@@ -8364,7 +8239,12 @@ pdflatex -synctex=1 $$i
 
 \end_inset
 
-に変更してください．また，ビューアをSync\SpecialChar TeX
+に変更してください．
+\lang english
+ Should your viewer not be considered in the following description, or in
+ case of missing success, please check
+\lang japanese
+また，ビューアをSync\SpecialChar TeX
 で使うのに設定を行う必要があるかどうか，お使いのビューアの取扱説明書をご確認ください．
 \begin_inset Foot
 status collapsed
@@ -8656,15 +8536,11 @@ Sync
 
 \begin_layout Subsubsection*
 
-\change_inserted -712698321 1500965366
-
 \lang english
 Evince (GNOME)
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1500965366
 
 \lang english
 Reverse search with evince does not work out of the box, but it can be achieved
@@ -8697,17 +8573,26 @@ Okularを設定\SpecialChar ldots
 
 \end_inset
 
-で「カスタムテキストエディタ」を選択し，コマンドに
+
+\lang english
+ and select LyX
+\begin_inset Quotes erd
+\end_inset
+
+ as editor.
+ This inserts the appropriate command (
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang english
 lyxclient -g %f %l
 \end_layout
 
 \end_inset
 
-を加えてください．
+).
 \end_layout
 
 \begin_layout Standard
@@ -9226,22 +9111,16 @@ $$o
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1500965418
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1500965453
 
 \lang english
 [Revision 2017-07-25]
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1500965440
 
 \lang english
 Note that only some of the viewers provide full and usable forward search
@@ -9251,16 +9130,12 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1500965419
-
 \lang english
 You might want to set 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1500965419
 
 \lang english
 okular –unique
@@ -9273,8 +9148,6 @@ okular –unique
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1500965419
 
 \lang english
 Tools\SpecialChar menuseparator
@@ -9300,8 +9173,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1500965419
-
 \lang english
 SumatraPDF can also use DDE commands through the external program CMCDDE
  — downloadable from 
@@ -9324,8 +9195,6 @@ status collapsed
 
 \begin_layout Plain Layout
 \paragraph_spacing single
-
-\change_inserted -712698321 1500965419
 
 \lang english
 Forward search with evince can be achieved by means of third party helper
@@ -9350,7 +9219,7 @@ literal "false"
 \end_inset
 
 g.
-  xpdf – allow at least to reload the document and jump to a specific page
+ xpdf – allow at least to reload the document and jump to a specific page
  of the file, so you can at least navigate 
 \begin_inset Quotes eld
 \end_inset
@@ -9362,14 +9231,10 @@ near
 .
  This latter functionality is provided by an external call of synctex (see
  the predefined example configurations).
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 yap・xdvi・okular
 \begin_inset Foot
 status collapsed
@@ -9633,6 +9498,43 @@ maketitle
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+Under 
+\family sans
+Edit\SpecialChar menuseparator
+Text Style
+\family default
+, you'll find two insets which are relevant for the titling:
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\lang english
+Institute
+\family typewriter
+ 
+\family default
+to mark corresponding author\SpecialChar breakableslash
+institute pairs.
+ The institutes are numbered sequentially as they appear in the 
+\family sans
+Address
+\family default
+ field, so you have to put a marker to each author.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+\lang english
+Email
+\family default
+ to supply an email address for fast contact.
+\end_layout
+
+\begin_layout Standard
 現住所の付記などのために，へッダ部に脚注を挿入したい場合には，
 \family sans
 挿入\SpecialChar menuseparator
@@ -9649,9 +9551,12 @@ thanks{}
 \end_layout
 
 \begin_layout Standard
-これらのトピックの他に，このマクロは，\SpecialChar LyX
-が対応していない，以下の3つの\SpecialChar LaTeX
-コマンドを使用します．
+
+\lang english
+In addition to these topics, the macros use one additional \SpecialChar LaTeX
+ command that
+ has no counterpart in \SpecialChar LyX
+:
 \end_layout
 
 \begin_layout Itemize
@@ -9660,30 +9565,6 @@ thanks{}
 
 \backslash
 and
-\end_layout
-
-\begin_layout Itemize
-著者と所属の対応付けをするための
-\family typewriter
-
-\backslash
-inst{<番号>}
-\family default
-．所属は，
-\family sans
-住所
-\family default
-フィールドに現れる順に番号が付けられるので，各著者に番号マーカーを置く必要があります．
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-
-\backslash
-email{アドレス}
-\family default
-は，至急連絡用に電子メールアドレスを付記します．
 \end_layout
 
 \begin_layout Standard
@@ -9709,16 +9590,15 @@ Dir/examples
 
 \begin_layout Standard
 概要は，へッダ部の直後に置きます．第5版から，概要は環境からコマンドに変更され，一段落に限るという制限が加えられました．さらに，ここにはキーワードを含む項目を入
-れなくてはなりません．これは，まだ\SpecialChar LyX
-では実装されていないため，\SpecialChar LaTeX
-コマンド
-\family typewriter
-
-\backslash
-keywords{}
+れなくてはなりません．
+\lang english
+This is done via the paragraph style 
+\family sans
+Keywords
 \family default
-を手動で入力し，\SpecialChar LaTeX
-コードとしてマークする必要があります．用例にある論文を参照してください．
+.
+\lang japanese
+用例にある論文を参照してください．
 \end_layout
 
 \begin_layout Subsection
@@ -9829,39 +9709,7 @@ and
 \family typewriter
 
 \backslash
-email
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-
-\backslash
-appendix
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-
-\backslash
 authorrunning
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-
-\backslash
-inst{}
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-
-\backslash
-keywords{}
 \end_layout
 
 \begin_layout Itemize
@@ -10051,6 +9899,9 @@ referee
 \family sans
 任意設定
 \family default
+\lang english
+custom class options
+\lang japanese
 クラスオプションフィールドを使って行うことができます．この欄に
 \family typewriter
 referee
@@ -10098,13 +9949,19 @@ AAS\SpecialChar TeX
 誌のLettersとSupplementを含む)・Astronomical Journal(天文学雑誌)・Publications of the
  Astronomical Society of the Pacific(太平洋天文学会誌)三誌への電子投稿を可能にするために，同学会が作成したマクロ集です．\SpecialChar LyX
 は
-，これらの文書を生成する上で，なかでも数式・引用・画像処理能力において，優れたツールであることが認識されています．\SpecialChar LyX
-は，同マクロ第5.0版以降を必要としており，でき
-ればここで説明されている第5.2版以降が望まれます．第5.0版未満の版は，\SpecialChar LaTeX
-2.09で使用するよう企図されているため，根本的に\SpecialChar LyX
+，これらの文書を生成する上で，なかでも数式・引用・画像処理能力において，優れたツールであることが認識されています．
+\lang english
+\SpecialChar LyX
+ requires version 5.0 (or higher) of these macros; preferably 6.0, which is
+ the version described here, or higher.
+ 
+\lang japanese
+\SpecialChar LyX
+は，同マクロ第5.0版以降を必要としており，できればここで説明されている第5.2版以降が望まれます．第5.0版未満の版は，\SpecialChar LaTeX
+2.09で使用するよう企図されているため，根本
+的に\SpecialChar LyX
 とは互換性がありません．AAS\SpecialChar TeX
-パッケージは
-，以下のAAS\SpecialChar TeX
+パッケージは，以下のAAS\SpecialChar TeX
 ウェブサイトからダウンロードできるでしょう．
 \end_layout
 
@@ -10168,26 +10025,14 @@ aastex.lyx
 を含む)を正しい情報で上書きしてください．AAS\SpecialChar TeX
 コマンド・AAS\SpecialChar TeX
 環境の多くは，\SpecialChar LyX
-中で直接実行することができますが，特に
-\family typewriter
-
-\backslash
-altaffilmark
-\family default
-や
-\family typewriter
-
-\backslash
-altaffiltext
-\family default
-のようにできないものもあります．この二つのコマンドは，ひな型ファイルを開いたとき，赤色に表示されているのですぐ目に入ることでしょう．このようなコマンドは，直接L
-a\SpecialChar TeX
+中で直接実行することができますがこの二つのコマンドは，ひな型ファイルを開いたとき，
+赤色に表示されているのですぐ目に入ることでしょう．このようなコマンドは，直接La\SpecialChar TeX
 コードを入力して，それを\SpecialChar TeX
-コードとしてマークしなければなりません．このようなコマンドは，\SpecialChar TeX
-コードあるいはEvil Red Text(邪悪な赤い文)と呼ばれます．A
-AS\SpecialChar TeX
+コードとしてマークしなければなりません．このようなコマン
+ドは，\SpecialChar TeX
+コードあるいはEvil Red Text(邪悪な赤い文)と呼ばれます．AAS\SpecialChar TeX
 文書に必要とされる \SpecialChar TeX
-コードを最小にするよう努力はしていますが，まだ望まれるほどにはなっていません．
+コードを最小にするよう努力はしていますが
 \end_layout
 
 \begin_layout Subsection
@@ -10716,18 +10561,6 @@ figcaption
 
 \begin_layout Standard
 
-\family typewriter
-
-\backslash
-altaffilmark
-\family default
-(2.3)・
-\family typewriter
-
-\backslash
-altaffiltext
-\family default
-(2.3)・
 \family typewriter
 
 \backslash
@@ -12612,18 +12445,6 @@ status open
 右寄せ住所
 \end_layout
 
-\begin_layout Itemize
-
-\family sans
-キャプション
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-コメント
-\end_layout
-
 \end_inset
 
 
@@ -12943,19 +12764,22 @@ dvips
 \end_layout
 
 \begin_layout Standard
-\SpecialChar LyX
-中の小さなバグによって，これらの環境の同じ型をお互いに直接続けて置くことはできません．これらは何かによって分離されなくてはなりません．仮に二つ続けて置いても，2
-つの環境をマージしたかのように，前の環境が延長されるだけです．この問題を回避するにはどうすればよいのでしょうか．最も簡単な方法は，二つの環境の間に何か文章を置く
-か，あるいは二つの間に「
-\family typewriter
-%
-\family default
-」だけから成る\SpecialChar LaTeX
-環境を置くことです．これによって，\SpecialChar LyX
-は2つの別々の環境を生成するように強制され，正しい\SpecialChar LaTeX
-出力を得ることができます．\SpecialChar LyX
-頒布版に含まれる用例ファイルに例があ
-ります．この問題は，二つの同じ定理型環境を立て続けに置こうとした場合にのみ発生することに注意してください．
+これらの環境の同じ型をお互いに直接続けて置くことはできません．
+\lang english
+ If you use a normal paragraph break,
+\lang japanese
+これらは何かによって分離されなくてはなりません．
+\lang english
+ Rather than that, you need to insert a so-called separator.
+ Please refer to the section entitled 
+\emph on
+Separate Nestings
+\emph default
+ in the 
+\emph on
+User's Guide
+\emph default
+.
 \end_layout
 
 \begin_layout Subsubsection
@@ -13562,8 +13386,7 @@ M-z p
 
 話者
 \family default
-への指示．自動的に括弧()が挿入されますが，\SpecialChar LyX
-上で表示されるのは，左括弧( のみです．印刷出力には右括弧も表示されます．
+への指示．自動的に括弧()が挿入されますが
 \end_layout
 
 \begin_layout Itemize
@@ -13761,27 +13584,34 @@ ijmpd.lyx
 
 \begin_layout Enumerate
 文書言語は変更してはいけません．論文をプレビューする前に，babelパッケージが使用されていないことを確認してください．これは，
+\lang english
+
+\begin_inset Info
+type  "menu"
+arg   "dialog-show document"
+\end_inset
+
+ 
 \family sans
-ツール\SpecialChar menuseparator
-設定
+\SpecialChar menuseparator
+Language
 \family default
-をクリックして，
+\lang japanese
+，
+\lang english
+and select 
+\begin_inset Quotes eld
+\end_inset
+
+None
+\begin_inset Quotes erd
+\end_inset
+
+ as 
 \family sans
-言語オプション
+Language Package
 \family default
-タブを選択し，言語設定で
-\family sans
-Babelを使う
-\family default
-チェックボックスを無効にしてから，
-\family sans
-適用
-\family default
-をクリックすれば，設定することができます(この変更を固定するなら
-\family sans
-保存
-\family default
-を押してください)．
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -13988,34 +13818,6 @@ makeatother
 文書も確認された方がよろしいでしょう．
 \end_layout
 
-\begin_layout Subsection
-\SpecialChar TeX
-コードの使用
-\end_layout
-
-\begin_layout Standard
-\SpecialChar TeX
-コードを使用するのは，2つのコマンドに限られ，これらは文書の最初に置かれなくてはなりません．論文をひな型
-\family typewriter
-ijmpc.lyx
-\family default
-または
-\family typewriter
-ijmpd.lyx
-\family default
-を使用して書き始めた場合には，これら必要な\SpecialChar TeX
-コードは，すでに書き込まれています．通常，これらを削除する必要はありません．2つのうち1番めの\SpecialChar TeX
-コードのみが，奇数ページ
-および偶数ページの上部に印字する情報(それぞれ著者名と論文の短縮タイトル)を指定するために，修正する必要があります．この\SpecialChar TeX
-コードは，
-\family typewriter
-
-\backslash
-markboth{著者名}{論文の短縮タイトル}
-\family default
-という形である必要があります．
-\end_layout
-
 \begin_layout Section
 iopart
 \end_layout
@@ -14054,24 +13856,35 @@ ftp://ftp.iop.org/pub/journals/latex2e
 
 \begin_layout Standard
 論文を書くもっとも簡単な方法は，\SpecialChar LyX
-の用例ファイルフォルダにある
+の用例ファイルフォ
+\lang english
+template
 \emph on
+\lang japanese
 IOP-article.lyx
 \emph default
-を土台にすることです．このファイルを開き，新しい名前で保存して，書き始めてください．この用例ファイルは，特定の環境の使用法についても説明しています．もっとも重要
-な助言として，以下の点にご注意ください．
+\lang english
+ that is available via 
+\family sans
+File\SpecialChar menuseparator
+New From Template\SpecialChar ldots
+
+\family default
+The template explains 
+\lang japanese
+この用例ファイルは，特定の環境の使用法についても説明しています．もっとも重要な助言として，以下の点にご注意ください．
 \end_layout
 
 \begin_layout Itemize
-文書がPDF・PS・DVIにコンパイルできるようにするためには，文書設定の
+文書がPDF・PS・DVIにコンパイルできるようにするためには，
+\lang english
+ ensure that the no AMS packages are loaded in 
 \family sans
-数式オプション
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Math Options
 \family default
-で，二つの
-\family sans
-AMS mathパッケージを使う
-\family default
-関連オプションが有効になっていないことを確認してください！
+!
 \end_layout
 
 \begin_layout Itemize
@@ -14866,8 +14679,15 @@ tablecaptionsabove
 ：これは，章頭などに警句を置くのに用いることができます．オプション引数(
 \family sans
 挿入\SpecialChar menuseparator
-短縮タイトル
+
+\lang english
+Dictum
+\begin_inset space ~
+\end_inset
+
+Author
 \family default
+\lang japanese
 )を用いれば，格言の作者を入れることができます．格言と作者の間は，線で区切られます．これを使用するためには，Koma-Script第2.8q版以上が必要です．
 \family sans
 格言(dictum)
@@ -15090,6 +14910,27 @@ crmacros.inc
 
 \begin_layout Subsection
 letter (koma-script)
+\end_layout
+
+\begin_layout Standard
+\noindent
+
+\lang english
+Note: This section discusses the obsolete 
+\family sans
+KOMA-Script-Letter (v.
+\begin_inset space ~
+\end_inset
+
+1)
+\family default
+, which is not even included anymore in recent KOMA releases.
+ Please refer to the next section for the current KOMA-Script-Letter class
+ (v.
+\begin_inset space ~
+\end_inset
+
+2)!
 \end_layout
 
 \begin_layout Standard
@@ -15949,13 +15790,19 @@ Memoirは，基本的に，標準bookクラスの全機能をサポートして�
 \begin_layout Description
 ページ様式: Memoirパッケージとfancyhdrパッケージとのコマンドの衝突のため(両パッケージは同じ名前のコマンドを定義しているため，\SpecialChar LaTeX
 が混乱させられます
-)，fancyページ様式は使用できません．その代わり，Memoirには，多くの独自のページ様式が付属してきます(
+)，fancyページ様式は使用できません．その代わり，Memoirには，多くの独自のページ様
 \family sans
-文書\SpecialChar menuseparator
-設定\SpecialChar menuseparator
-ページレイアウト
+\lang english
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Page
+\begin_inset space ~
+\end_inset
+
+Style
 \family default
-参照)．これらを章題ページに使用したい場合には，コマンド
+\lang japanese
+)．これらを章題ページに使用したい場合には，コマンド
 \family typewriter
 
 \backslash
@@ -15978,9 +15825,17 @@ chapterstyle{companion}
 挿入\SpecialChar menuseparator
 短縮タイトル
 \family default
-を使えば，これを指定することができます．一方，Memoirでは，第2の非必須引数を取ることができ，目次用のタイトルとヘッダ用のタイトルの指定を分離しています．こ
-れを使えば，本文用と目次用とヘッダ用のタイトルの3種類を指定することができます．この機能を使用したい場合には，2つの非必須引数を入力して，最初のものに目次用，次
-のものにヘッダ用短縮タイトルを入れてください．
+を使えば，これを指定することができます．一方，Memoirでは，第2の非必須引数を取ることができ，目次用のタイトルとヘッダ用のタイトルの指定を分離しています．
+\lang english
+ 
+\family sans
+Short Title
+\family default
+ variants in the 
+\family sans
+Insert
+\family default
+ menu.
 \end_layout
 
 \begin_layout Description
@@ -16006,10 +15861,17 @@ article
 \emph default
 を用いる(
 \family sans
-文書\SpecialChar menuseparator
-設定\SpecialChar menuseparator
-クラスオプション
+\lang english
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Class Settings\SpecialChar menuseparator
+Custom
+\begin_inset space ~
+\end_inset
+
+Options
 \family default
+\lang japanese
 で入力)と，article様式をエミュレートできます．すなわち，(脚注・図・表等の)カウンタは，章毎にリセットされず，次の章は頁を改めず(ただし，「本物の」ar
 ticleクラスとは違って，頁を改めることも可)，部はbookクラスと同様に，独立の頁を使用します．
 \end_layout
@@ -16081,19 +15943,17 @@ CTAN:/macros/latex/memoir/memman.pdf
 
 \begin_layout Description
 題辞: 題辞(epigraph)は章頭の，気の利いた標語やモットーです．題辞環境は，そのような標語を組む洗練された方法を提供します．標語本体(本文)とその著者(
-出典)は，短い線で区切られます．この環境には二つの引数(本文と出典)が必要なので，ここでも\SpecialChar LyX
-を少しだます必要があります．ここでは，2つの引数の間に，
-\emph on
-<標語>
-\family typewriter
-\emph default
-}{
+出典)は，短い線で区切られます．
+\lang english
+ The motto itself (text) and its (optional) author (source) are divided
+ by a short line.
+ The author (source) can be inserted via 
+\family sans
+Insert\SpecialChar menuseparator
+Epigraph Source
 \family default
 \emph on
-<標語の著者>
-\emph default
-のように，(\SpecialChar TeX
-モードで)波括弧を入れなくてはなりません．
+.
 \end_layout
 
 \begin_layout Description
@@ -16556,46 +16416,6 @@ author
 はコンパイルに失敗します．
 \end_layout
 
-\begin_layout Subsection
-問題点
-\end_layout
-
-\begin_layout Standard
-このレイアウトの主な問題点は，電子メールやタイトルのようなレイアウトに非必須引数を用いることができないことです(これはこのレイアウトだけの問題ではありません．例
-えば，節レイアウトも非必須引数を使用することができません)．これは，たとえばページヘッダにヘッダ用タイトルを設定したい場合などには，ファイルを\SpecialChar LaTeX
-ファイルに変換した
-後に(これは最終的にAPSに原稿を送る際には行わなくてはなりません)，テキストエディタを使って\SpecialChar LaTeX
-ファイルを編集し，非必須引数を書き加えなくてはならないということで
-す．これらのレイアウトがないと，
-\family typewriter
-
-\backslash
-altaffiliation
-\family default
-(またそれと同等な
-\family typewriter
-
-\backslash
-altaddress
-\family default
-)は使えませんので，対応するレイアウトは存在せず，手動で書き加える必要があります
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-JMarcからの註:
-\emph default
- 実は，\SpecialChar LyX
- 1.3.0 では非必須引数を一部サポートしているのですが，このレイアウトは，まだこの機能を使うようにはアップデートされていないのです．
-\end_layout
-
-\end_inset
-
-．
-\end_layout
-
 \begin_layout Section
 Springer学術誌(
 \family sans
@@ -16774,10 +16594,6 @@ ejour2.layout
 ejour2
 \family default
 よりは少なくなっているとは思いますが．
-\end_layout
-
-\begin_layout Standard
-制限事項：定理環境の環境の番号は表示されません．#が表示されるだけです．
 \end_layout
 
 \begin_layout Section
@@ -17149,12 +16965,6 @@ slides
 \family sans
 \SpecialChar LyX
 コード
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-コメント
 \end_layout
 
 \begin_layout Standard
@@ -19419,8 +19229,11 @@ Pavel Sanda
 \end_layout
 
 \begin_layout Standard
-また，CVSのサポートは，subversionのサポートほど良くないので，CVSよりもSVNを使うことをお勧めします．Subversionを学び始めるには，SV
-N Book
+また，CVSのサポートは，subversionのサポートほど良くないので，CVSよりもSVNを使うことをお勧めします．Subversionを学び始めるには，
+\lang english
+the 
+\lang japanese
+SVN Book
 \begin_inset Foot
 status collapsed
 
@@ -19519,11 +19332,11 @@ man rcsintro
 
 \begin_layout Standard
 実行されるRCSコマンドは：
+\end_layout
+
+\begin_layout LyX-Code
+
 \family typewriter
-
-\begin_inset Newline newline
-\end_inset
-
 ci -q -u -i -t-"<初期説明文>" <ファイル名>
 \end_layout
 
@@ -19546,7 +19359,7 @@ man ci
 変更がマスターRCSファイルに適用され，文書がアンロックされて読み込み専用モードになります．
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 RCSコマンド：
 \family typewriter
 ci -q -u -m"<説明文>" <ファイル名>
@@ -19563,7 +19376,7 @@ ci -q -u -m"<説明文>" <ファイル名>
 ックインします．あなたがファイルをロックしたことを反映して，ステータスラインが変わります．
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 RCSコマンド：
 \family typewriter
 co -q -l <ファイル名>
@@ -19579,7 +19392,7 @@ co -q -l <ファイル名>
 これは，最終チェックイン以降，文書に加えられた変更をすべて破棄します．変更が破棄される前に，警告が発せられます．
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 RCSコマンド：
 \family typewriter
 co -f -u<バージョン> <ファイル名>
@@ -19606,6 +19419,18 @@ co -f -u<バージョン> <ファイル名>
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 RCSコマンド：
+\lang english
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang japanese
+
 \begin_inset Flex Code
 status collapsed
 
@@ -19620,6 +19445,24 @@ status collapsed
 "新ファイル名"
 \family default
 にコピーする場合
+\lang english
+
+\begin_inset Newline newline
+\end_inset
+
+
+\lang japanese
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+ci -q -u -i "<新ファイル名>"
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -19628,7 +19471,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ci -q -u -i "<新ファイル名>"
+
 \end_layout
 
 \end_inset
@@ -19648,7 +19491,7 @@ ci -q -u -i "<新ファイル名>"
 されます．
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
 RCSコマンド：
 \family typewriter
 rcs -o<バージョン> <ファイル名>
@@ -19985,6 +19828,16 @@ cvs -q unedit "<ファイル名>"
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 CVSコマンド：
+\lang english
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -20009,6 +19862,12 @@ status collapsed
 \end_inset
 
 にコピーする場合
+\lang english
+
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -20045,6 +19904,16 @@ cvs -q add "<新ファイル名>"
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 CVSコマンド：
+\lang english
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -20069,6 +19938,16 @@ status collapsed
 \end_inset
 
 に変更する場合
+\lang english
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -20080,6 +19959,16 @@ status collapsed
 cvs -q add "<新ファイル名>"
 \end_layout
 
+\end_inset
+
+
+\lang english
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
 \end_inset
 
 
@@ -20337,11 +20226,20 @@ status collapsed
 
 \begin_layout Plain Layout
 svn add -q 
-\begin_inset Quotes eld
+\family typewriter
+\lang english
+
+\begin_inset Quotes qld
 \end_inset
 
+
+\family default
+\lang japanese
 <ファイル名>
-\begin_inset Quotes erd
+\family typewriter
+\lang english
+
+\begin_inset Quotes qld
 \end_inset
 
 
@@ -20398,22 +20296,27 @@ status collapsed
 
 \begin_layout Plain Layout
 svn commit -q -m
-\begin_inset Quotes erd
-\end_inset
-
+\family typewriter
+\lang english
+"
+\family default
+\lang japanese
 <入力した説明文>
-\begin_inset Quotes erd
-\end_inset
-
+\family typewriter
+\lang english
+"
+\family default
+\lang japanese
  
-\begin_inset Quotes eld
-\end_inset
-
+\family typewriter
+\lang english
+"
+\family default
+\lang japanese
 <ファイル名>
-\begin_inset Quotes erd
-\end_inset
-
-
+\family typewriter
+\lang english
+"
 \end_layout
 
 \end_inset
@@ -20447,11 +20350,20 @@ status collapsed
 
 \begin_layout Plain Layout
 svn update –non-interactive 
-\begin_inset Quotes eld
+\family typewriter
+\lang english
+
+\begin_inset Quotes qld
 \end_inset
 
+
+\family default
+\lang japanese
 <ファイル名>
-\begin_inset Quotes erd
+\family typewriter
+\lang english
+
+\begin_inset Quotes qld
 \end_inset
 
 
@@ -20477,11 +20389,20 @@ status collapsed
 
 \begin_layout Plain Layout
 svn revert -q 
-\begin_inset Quotes eld
+\family typewriter
+\lang english
+
+\begin_inset Quotes qld
 \end_inset
 
+
+\family default
+\lang japanese
 <ファイル名>
-\begin_inset Quotes erd
+\family typewriter
+\lang english
+
+\begin_inset Quotes qld
 \end_inset
 
 
@@ -20513,6 +20434,16 @@ svn revert -q
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 SVNコマンド：
+\lang english
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -20524,6 +20455,16 @@ status collapsed
 svn copy -q "<ファイル名>" "<新ファイル名>"
 \end_layout
 
+\end_inset
+
+
+\lang english
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
 \end_inset
 
 
@@ -20562,6 +20503,16 @@ svn commit
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 SVNコマンド：
+\lang english
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -20708,11 +20659,20 @@ status collapsed
 
 \begin_layout Plain Layout
 svn log 
-\begin_inset Quotes eld
+\family typewriter
+\lang english
+
+\begin_inset Quotes qld
 \end_inset
 
+
+\family default
+\lang japanese
 <ファイル名>
-\begin_inset Quotes erd
+\family typewriter
+\lang english
+
+\begin_inset Quotes qld
 \end_inset
 
 
@@ -20929,9 +20889,16 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-ファイル\SpecialChar menuseparator
-バージョン管理\SpecialChar menuseparator
-ロック特性を使用
+
+\family sans
+\lang english
+File\SpecialChar menuseparator
+Version
+\begin_inset space ~
+\end_inset
+
+Control\SpecialChar menuseparator
+Use Locking Property
 \end_layout
 
 \end_inset
@@ -21336,9 +21303,25 @@ $Rev: 59 $
 \end_inset
 
 になってしまいます．その他のId・Date・Authorなどといったキーワードも同様です．第二に，SVN出力は使用中のロケールに依存するので，Dateが用いられ
-ると，SVNは，問題を引き起こすような文字列を容易に生成してしまいます．第三に，文書中には，番号だけでなく「Rev:59」という文字列全体が表示されてしまいます
-．Subversionがユーザ定義のキーワードを実装するまでは，このアプローチを信頼性を持って使用したり，\SpecialChar LyX
-がこれを直接サポートすることは，難しそうです．
+ると，SVNは，問題を引き起こすような文字列を容易に生成してしまいます．第三に，文書中には，番号だけでなく
+\lang english
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+$Rev: 59 $
+\end_layout
+
+\end_inset
+
+
+\lang japanese
+という文字列全体が表示されてしまいます．Subversionがユーザ定義のキーワードを実装するまでは，このアプローチを信頼性を持って使用したり，\SpecialChar LyX
+がこれを直接サポ
+ートすることは，難しそうです．
 \end_layout
 
 \begin_layout Subsection
@@ -21993,11 +21976,20 @@ status collapsed
 
 \begin_layout Plain Layout
 git checkout -q 
-\begin_inset Quotes eld
+\family typewriter
+\lang english
+
+\begin_inset Quotes qld
 \end_inset
 
+
+\family default
+\lang japanese
 <ファイル名>
-\begin_inset Quotes erd
+\family typewriter
+\lang english
+
+\begin_inset Quotes qld
 \end_inset
 
 
@@ -22027,6 +22019,16 @@ git checkout -q
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 GITコマンド：
+\lang english
+ 
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
 \end_layout
 
 \begin_layout Labeling
@@ -22068,11 +22070,20 @@ status collapsed
 
 \begin_layout Plain Layout
 git log 
-\begin_inset Quotes eld
+\family typewriter
+\lang english
+
+\begin_inset Quotes qld
 \end_inset
 
+
+\family default
+\lang japanese
 <ファイル名>
-\begin_inset Quotes erd
+\family typewriter
+\lang english
+
+\begin_inset Quotes qld
 \end_inset
 
 
@@ -22172,7 +22183,9 @@ diff
 status collapsed
 
 \begin_layout Plain Layout
-VC_COMPARE
+
+\lang english
+vc-compare
 \end_layout
 
 \end_inset
@@ -22189,8 +22202,23 @@ status collapsed
 
 \end_inset
 
-メニューないしアイコンを使用する方法です．当該文書のうち，任意の2つの改訂版を比較することもできますし，編集中の現行版を古い改訂版と比較することもできます(この
-とき改訂版遡及数「
+メニューないしアイコンを使用する方法です
+\lang english
+or by the toolbar icon 
+\begin_inset Info
+type  "icon"
+arg   "vc-compare"
+\end_inset
+
+ or the menu item 
+\begin_inset Info
+type  "menu"
+arg   "vc-compare"
+\end_inset
+
+, respectively
+\lang japanese
+．当該文書のうち，任意の2つの改訂版を比較することもできますし，編集中の現行版を古い改訂版と比較することもできます(このとき改訂版遡及数「
 \begin_inset Flex MenuItem
 status collapsed
 
@@ -22205,8 +22233,23 @@ status collapsed
 
 \begin_layout Standard
 この機能は，SVNとRCSでサポートされていますが，RCSは，より複雑なバージョン付けスキームを持っているため，制約があります．ダイアログ中で改訂版を指定する際
-の数字は，つねにRCS改訂番号の最後の数を指し示します(例：「1.2.35」版のときには「35」)．現在のところ，改訂のGIT表記はサポートされておらず，HEAD~
-Xの形で表記されるXステップ前の改訂版を，編集中文書と比較することのみが可能です．
+の数字は，つねにRCS改訂番号の最後の数を指し示します(例：「1.2.35」版のときには「35」)．現在のところ，改訂のGIT表記はサポートされておらず，
+\lang english
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+HEAD~X
+\end_layout
+
+\end_inset
+
+.
+\lang japanese
+の形で表記されるXステップ前の改訂版を，編集中文書と比較することのみが可能です．
 \end_layout
 
 \begin_layout Section
@@ -22344,6 +22387,27 @@ Noweb
 
 \begin_layout Itemize
 開放的なアーキテクチャに持っているので，新しいフィルタをプラグインとして加えたり，自分が必要な特別な処理を実行することが容易である．
+\lang english
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+\lang english
+Filters 
+\emph default
+are programs that read a given data stream and output a manipulated data
+ stream.
+ That way, a WEB file (consisting of literate code) can be turned into a
+ file consisting only of C program code or \SpecialChar LaTeX
+ code.
+\end_layout
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -22416,6 +22480,10 @@ web」モジュールが表示され，文書に追加できるようになっ�
 \begin_layout Standard
 \SpecialChar LyX
 では，
+\lang english
+custom inset
+\lang japanese
+ 
 \begin_inset Flex Noun
 status collapsed
 
@@ -22461,7 +22529,11 @@ Chunk
 
 \end_inset
 
-によって取り扱われ，通常の段落のように見えますが，自由に空白を入れることができます．
+によって取り扱われ，
+\lang english
+text inset
+\lang japanese
+通常の段落のように見えますが，自由に空白を入れることができます．
 \end_layout
 
 \begin_layout Standard
@@ -22553,6 +22625,10 @@ Chunk
 
 \end_inset
 
+
+\lang english
+inset
+\lang japanese
 環境でコードを入力するのだけがポイントです．
 \end_layout
 
@@ -22629,25 +22705,15 @@ Noweb->Program
 
 \begin_layout Standard
 冒頭部，「変換子」設定は
-\begin_inset Newline newline
-\end_inset
+\end_layout
 
-
-\begin_inset Quotes eld
-\end_inset
-
+\begin_layout LyX-Code
 
 \family typewriter
 build-script $$i $$r
-\family default
+\end_layout
 
-\begin_inset Quotes erd
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
+\begin_layout Standard
 と指定します．これは基本的に，\SpecialChar LyX
 が
 \begin_inset Quotes erd
@@ -22671,55 +22737,35 @@ build-script
 以下に「build-script」の一例を書いておきます．パスが通っているディレクトリに置いて使います．
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
+\begin_layout LyX-Code
 
 \family sans
 #!/bin/sh
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 
 \family sans
 #
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 
 \family sans
 notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 NOWEB_OUTPUT_DIR=$2 sh
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
+変換子設定の次の部分は「フラグ」で，これは
 \end_layout
 
-\begin_layout Standard
-変換子設定の次の部分は「フラグ」で，これは
-\begin_inset Quotes erd
-\end_inset
-
+\begin_layout LyX-Code
 
 \family typewriter
 parselog=$$s/scripts/listerrors
-\family default
+\end_layout
 
-\begin_inset Quotes erd
-\end_inset
-
+\begin_layout Standard
 に設定されます．
 \begin_inset Newline newline
 \end_inset
@@ -22990,24 +23036,10 @@ status collapsed
 を次のように設定してください．
 \end_layout
 
-\begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
+\begin_layout LyX-Code
 
 \family sans
 echo "LYXCMD:monitor:server-goto-file-row:@FILE@ @LINE@" >~/.lyxpipe.in
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -23020,82 +23052,24 @@ echo "LYXCMD:monitor:server-goto-file-row:@FILE@ @LINE@" >~/.lyxpipe.in
 \begin_layout Standard
 この機能が動くには\SpecialChar LyX
 サーバが利用可能でなければなりません(既定では\SpecialChar LyX
-サーバーは使えないようになっています)．\SpecialChar LyX
-サーバを使えるようにするには，
-\family sans
-
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-
-\family sans
-設定
-\end_layout
-
-\end_inset
-
-
-\family default
-(
-\family sans
-
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-
-\family sans
-パス
-\end_layout
-
-\end_inset
-
-
-\family default
-タブ)の
-\family sans
-
-\begin_inset Flex MenuItem
-status collapsed
-
-\begin_layout Plain Layout
-
-\family sans
-\SpecialChar LyX
-サーバーパイプ
-\family default
-に
-\end_layout
-
-\end_inset
-
-
-\family default
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
-/home/<your-home-directory>/.lyx/lyxpipe
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- のようにパスを指定してください．
+サーバーは使えないようになっています)
 \end_layout
 
 \begin_layout Standard
-詳しくは第
+
+\lang english
+Sec.
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:LyXサーバー"
+reference "sec:Starting-the-Server"
 
 \end_inset
 
-章を読んでください．
+ explains how to do that.
 \end_layout
 
 \begin_layout Subsubsection
@@ -23118,10 +23092,32 @@ reference "chap:LyXサーバー"
 コード
 \family default
 ・
+\lang english
+Four of these buttons are short cuts to layout styles: 
+\family sans
+Standard
+\family default
+, 
+\family sans
+Section
+\family default
+, 
+\family sans
+\SpecialChar LaTeX
+
+\family default
+, and 
+\family sans
+\SpecialChar LyX
+-Code
+\family default
+, one for the custom inset 
 \family sans
 Chunk
 \family default
-環境用のボタンを用意しています．最後の一つはファイルメニュー項目の「Build Program」への
+.
+\lang japanese
+最後の一つはファイルメニュー項目の「Build Program」への
 \begin_inset Flex Ruby
 status collapsed
 
@@ -23218,7 +23214,11 @@ Toolbar
 \end_layout
 
 \begin_layout LyX-Code
-  Icon "layout Chunk"
+  Icon "
+\lang english
+flex.insert 
+\lang japanese
+Chunk"
 \end_layout
 
 \begin_layout LyX-Code
@@ -23360,9 +23360,9 @@ name "chap:Special-features"
 \begin_layout Standard
 文書中で多段組を行うには，\SpecialChar LaTeX
 パッケージ
-\series bold
+\family sans
 multicol
-\series default
+\family default
 
 \begin_inset Index idx
 status collapsed
@@ -23615,18 +23615,23 @@ The evidence of those who had played with him– Mr.
 
 \begin_layout Standard
 多段組機能についてさらに知りたい場合には，\SpecialChar LaTeX
-パッケージ
-\series bold
-multicol
-\series default
+
+\family sans
+パッケージmulticol
+\family default
 , 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "multicol"
-literal "true"
+\lang english
+
+\begin_inset CommandInset href
+LatexCommand href
+name "documentation"
+target "http://mirror.ctan.org/macros/latex/required/tools/multicol.pdf"
+literal "false"
 
 \end_inset
 
+
+\lang japanese
 の取扱説明書をご覧ください．
 \end_layout
 
@@ -23787,14 +23792,18 @@ A minute examination of the circumstances served only to make the case more
 \end_layout
 
 \begin_layout Standard
-以下の例では，「7
+以下の例では，「
+\family sans
+7
 \backslash
-baselineskip」を用いて，必要行数を7行に指定しています(コマンド
-\series bold
+baselineskip
+\family default
+」を用いて，必要行数を7行に指定しています(コマンド
+\family sans
 
 \backslash
 baselineskip
-\series default
+\family default
 は\SpecialChar TeX
 コードとして入力する必要があります)．
 \end_layout
@@ -23858,15 +23867,18 @@ On the evening of the crime, he returned from the club exactly at ten.
 \series bold
 
 \backslash
-multicolsep
+
+\family sans
 \series default
-を変えることで変更することができます．例えば，\SpecialChar TeX
+multicolsepを変えることで変更することができます
+\family default
+．例えば，\SpecialChar TeX
 コードで書かれたコマンド
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 
-\series bold
+\family sans
 
 \backslash
 setlength{
@@ -23891,9 +23903,12 @@ ptです．
 \series bold
 
 \backslash
-multicolsep
+
+\family sans
 \series default
-は2.5
+multicolsepは2
+\family default
+.5
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -23957,9 +23972,12 @@ status open
 \series bold
 【註】
 \backslash
-setlength
+
+\family sans
 \series default
-で指定した値は，再度変更されるまでは，以降のすべての多段組で使用されます．
+setlengthで指定した値は
+\family default
+，再度変更されるまでは，以降のすべての多段組で使用されます．
 \end_layout
 
 \end_inset
@@ -24014,8 +24032,11 @@ go back to the default
 \series bold
 
 \backslash
-columnbreak{}
+
+\family sans
 \series default
+columnbreak{}
+\family default
 を挿入すれば，強制的に行うことができます．ただし，多くの場合，文章中に空白が挿入されることに注意してください．
 \begin_inset Newline newline
 \end_inset
@@ -24147,9 +24168,12 @@ The Holy War
 \series bold
 
 \backslash
-columnsep
+
+\family sans
 \series default
-を変更することで実現できます．既定値は10
+columnsepを変更することで実現できます
+\family default
+．既定値は10
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -24157,9 +24181,12 @@ ptです．以下は
 \series bold
 
 \backslash
-columnsep
+
+\family sans
 \series default
-を3
+columnsepを3
+\family default
+
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -24253,9 +24280,12 @@ go back to the default
 \series bold
 
 \backslash
-columnseprule
+
+\family sans
 \series default
-の幅を持つ罫線が描かれます．罫線幅を0
+columnsepruleの幅を持つ罫線が描かれます
+\family default
+．罫線幅を0
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -24393,20 +24423,23 @@ The Holy War
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout LyX-Code
 罫線は，コマンド
 \series bold
 
 \backslash
-columnseprulecolor
+
+\family sans
 \series default
-を再定義すれば，着色することができます．これは，多段組差込枠の前に\SpecialChar TeX
+columnseprulecolorを再定義すれば
+\family default
+，着色することができます．これは，多段組差込枠の前に\SpecialChar TeX
 コードで以下のコマンドを挿入すれば，実現できます．
 \begin_inset Newline newline
 \end_inset
 
 
-\series bold
+\family sans
 
 \backslash
 renewcommand{
@@ -24414,16 +24447,16 @@ renewcommand{
 columnseprulecolor}{
 \backslash
 color{red}}
-\series default
+\family default
 
 \begin_inset Newline newline
 \end_inset
 
-このコマンド中の
-\series bold
-red
-\series default
-をお好みの色に変更してください．既定色とユーザー定義色の全てを使用することができます．既定色とユーザー定義色についての詳細な情報は，取扱説明書『
+
+\family sans
+このコマンド中のredをお好みの色に変更してください
+\family default
+．既定色とユーザー定義色の全てを使用することができます．既定色とユーザー定義色についての詳細な情報は，取扱説明書『
 \emph on
 埋込オブジェクト篇
 \emph default
@@ -24436,7 +24469,7 @@ red
 \end_inset
 
 
-\series bold
+\family sans
 
 \backslash
 renewcommand{
@@ -24444,7 +24477,7 @@ renewcommand{
 columnseprulecolor}{
 \backslash
 normalcolor}
-\series default
+\family default
 
 \begin_inset Newline newline
 \end_inset
@@ -24648,11 +24681,11 @@ go back to the default
 任意設定の段落形
 \family default
 モジュールを読み込んで，\SpecialChar LaTeX
-パッケージ
-\series bold
-shapepar
-\series default
-を使用させるようにすれば，実現できます．
+
+\family sans
+パッケージshapeparを使用させるようにすれば
+\family default
+，実現できます．
 \end_layout
 
 \begin_layout Subsection
@@ -25124,8 +25157,11 @@ status open
 
 \series bold
 【註】
+\family sans
 \series default
-shapepar段落は改頁にまたがることはできません．
+shapepar段落は改頁にまたがることはできません
+\family default
+．
 \end_layout
 
 \end_inset
@@ -25142,11 +25178,11 @@ shapepar段落は改頁にまたがることはできません．
 
 \begin_layout Standard
 
-\series bold
-shapepar
-\series default
-は，段落中にどれだけ文章が含まれようとも，常に形を維持しようとします．したがって，段落の大きさは，含まれている文章量によって変化しますので，段落の大きさがページ
-余白にはみ出してしまうことがあります．寸法が伸縮することを示すために，文章量を二倍にした例を見てみましょう．
+\family sans
+shapeparは
+\family default
+，段落中にどれだけ文章が含まれようとも，常に形を維持しようとします．したがって，段落の大きさは，含まれている文章量によって変化しますので，段落の大きさがページ余
+白にはみ出してしまうことがあります．寸法が伸縮することを示すために，文章量を二倍にした例を見てみましょう．
 \end_layout
 
 \begin_layout Standard
@@ -25532,60 +25568,24 @@ status collapsed
 \end_inset
 
 これらのスタイルがどのように使われていて，どのような設定ができるのかについての詳しい情報は，
-\series bold
-shapepar
-\series default
-パッケージの取扱説明書
-\begin_inset CommandInset citation
-LatexCommand cite
-key "shapepar"
-literal "true"
+\family sans
+shapeparパッケージの取扱説明書
+\family default
+\lang english
+ 
+\lang ngerman
 
-\end_inset
-
-をご覧ください．
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "multicol"
-literal "true"
-
-\end_inset
-
-\SpecialChar LaTeX
-パッケージ
 \begin_inset CommandInset href
 LatexCommand href
-name "multicol"
-target "http://mirror.ctan.org/macros/latex/required/tools/multicol.pdf"
-literal "false"
-
-\end_inset
-
-の取扱説明書
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "shapepar"
-literal "true"
-
-\end_inset
-
-\SpecialChar LaTeX
-パッケージ
-\begin_inset CommandInset href
-LatexCommand href
-name "shapepar"
+name "documentation"
 target "http://mirrors.ctan.org/macros/latex/contrib/shapepar/shapepar.pdf"
 literal "false"
 
 \end_inset
 
-の取扱説明書
+
+\lang japanese
+をご覧ください．
 \end_layout
 
 \end_body
