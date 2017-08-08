@@ -9,36 +9,44 @@
 # Full author contact details are available in file CREDITS
 
 # Usage:
-# ext_copy.py [-e ext1,ext2,...] <from file> <to file>
+# ext_copy.py [-d] [-e ext1,ext2,...] [-t target_ext] from_file to_file
 
 # This script is to be used as a "copier" script in the sense needed by
-# the converter definitions. Given a <from file> and <to file>, it will copy
-# all files in the directory in which from_file is found that have the 
-# extensions given in the -e argument, or all files in that directory if no 
+# the converter definitions. Given a from_file and to_file, it will copy
+# all files in the directory in which from_file is found that have the
+# extensions given in the -e argument, or all files in that directory if no
 # such argument is given. So, for example, we can do:
 #   python ext_copy.py -e png,html,css /path/from/file.html /path/to/file.html
-# and all html, png, and css files in /path/from/ will be copied to the 
+# and all html, png, and css files in /path/from/ will be copied to the
 # (possibly new) directory /path/to/file.html.LyXconv/.
 # The -t argument determines the extension added, the default being "LyXconv".
 # If just . is given, no extension is added.
+# If the -d option is given then the document directory /path/to/ will be used
+# to copy the files no subdirectory will be created/used.
 
 import getopt, os, shutil, sys
 from lyxpreview_tools import error
 
+
 def usage(prog_name):
-    return "Usage: %s [-e extensions] [-t target extension] <from file> <to file>" % prog_name
+    msg = "Usage: %s [-d] [-e extensions] [-t target extension] from_file to_file"
+    return  msg % prog_name
+
 
 def main(argv):
     progname = argv[0]
 
     exts = [] #list of extensions for which we're checking
+    use_doc_dir = False
     targext = "LyXconv" #extension for target directory
-    opts, args = getopt.getopt(sys.argv[1:], "e:t:")
+    opts, args = getopt.getopt(sys.argv[1:], "de:t:")
     for o, v in opts:
       if o == "-e":
         exts = v.split(',')
       if o == "-t":
         targext = v
+      if o == "-d":
+        use_doc_dir = True
 
     # input directory
     if len(args) != 2:
@@ -49,11 +57,14 @@ def main(argv):
     from_dir = os.path.dirname(abs_from_file)
 
     # output directory
-    to_dir = args[1]
-    if targext != '.':
-      to_dir += "." + targext
-    if not os.path.isabs(to_dir):
-      error("%s is not an absolute file name.\n%s" % to_dir, usage(progname))
+    if use_doc_dir:
+      to_dir = os.path.dirname(args[1])
+    else:
+      to_dir = args[1]
+      if targext != '.':
+        to_dir += "." + targext
+      if not os.path.isabs(to_dir):
+        error("%s is not an absolute file name.\n%s" % to_dir, usage(progname))
 
     if not copy_all(from_dir, to_dir, exts):
       # some kind of failure
