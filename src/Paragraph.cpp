@@ -1247,8 +1247,8 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		}
 		break;
 	case '\"':
-		os << "\\char34" << termcmd;
-		column += 9;
+		os << "\\textquotedbl" << termcmd;
+		column += 14;
 		break;
 
 	case '$': case '&':
@@ -1499,8 +1499,16 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 	}
 
 	// then the contents
+	BufferParams const bp = features.buffer().masterParams();
 	for (pos_type i = 0; i < int(text_.size()) ; ++i) {
-		BufferEncodings::validate(text_[i], features);
+		char_type c = text_[i];
+		if (c == 0x0022) {
+			if (features.runparams().isFullUnicode() && bp.useNonTeXFonts)
+				features.require("textquotedblp");
+			else if (bp.main_font_encoding() != "T1")
+				features.require("textquotedbl");
+		}
+		BufferEncodings::validate(c, features);
 	}
 }
 
