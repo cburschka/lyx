@@ -76,6 +76,9 @@ void doubleToWidget(QLineEdit * input, std::string const & value,
  */
 QString formatLocFPNumber(double d);
 
+/// Method to sort QStrings locale-aware (e.g. in combo widgets)
+bool SortLocaleAware(QString const & lhs, QString const & rhs);
+
 /// Method to sort colors by GUI name in combo widgets
 bool ColorSorter(ColorCode lhs, ColorCode rhs);
 

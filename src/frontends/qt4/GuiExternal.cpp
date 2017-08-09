@@ -202,10 +202,16 @@ GuiExternal::GuiExternal(GuiView & lv)
 	external::TemplateManager::Templates::const_iterator i1, i2;
 	i1 = external::TemplateManager::get().getTemplates().begin();
 	i2 = external::TemplateManager::get().getTemplates().end();
+	QMap<QString, QString> localizedTemplates;
 	for (; i1 != i2; ++i1)
-		externalCO->addItem(qt_(i1->second.guiName), toqstr(i1->second.lyxName));
-	// Sort alphabetically by(localized) GUI name
-	externalCO->model()->sort(0);
+		localizedTemplates.insert(qt_(i1->second.guiName), toqstr(i1->second.lyxName));
+	// Sort alphabetically by (localized) GUI name
+	QStringList keys = localizedTemplates.keys();
+	qSort(keys.begin(), keys.end(), SortLocaleAware);
+	for (QString & key : keys) {
+		QString const value = localizedTemplates[key];
+		externalCO->addItem(key, value);
+	}
 
 	// Fill the origins combo
 	for (size_t i = 0; i != sizeof(origins) / sizeof(origins[0]); ++i)

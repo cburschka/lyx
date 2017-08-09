@@ -214,6 +214,12 @@ QString formatLocFPNumber(double d)
 }
 
 
+bool SortLocaleAware(QString const & lhs, QString const & rhs)
+{
+	return QString::localeAwareCompare(lhs, rhs) < 0;
+}
+
+
 bool ColorSorter(ColorCode lhs, ColorCode rhs)
 {
 	return compare_no_case(lcolor.getGUIName(lhs), lcolor.getGUIName(rhs)) < 0;
