@@ -108,7 +108,7 @@
    <item row="1" column="0">
     <widget class="QCheckBox" name="shellescapeCB">
      <property name="toolTip">
-      <string>Runs the LaTeX backend with the -shell-escape option (this setting is always applied immediately)</string>
+      <string>Runs the LaTeX backend with the -shell-escape option (Warning: use only when really necessary)</string>
      </property>
      <property name="text">
       <string>&amp;Allow running external programs</string>

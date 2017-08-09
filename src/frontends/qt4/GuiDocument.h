@@ -86,6 +86,10 @@ public:
 
 public Q_SLOTS:
 	void onBufferViewChanged();//override
+	// OK button clicked
+	void slotOK();
+	// Apply button clicked
+	void slotApply();
 
 private Q_SLOTS:
 	void updateNumbering();
@@ -303,6 +307,10 @@ private:
 	bool biblioChanged_;
 	/// Track if a non-module document param changed
 	bool nonModuleChanged_;
+	/// Track if used modules changed
+	bool modulesChanged_;
+	/// Track if the shellescape param changed
+	bool shellescapeChanged_;
 };
 
 

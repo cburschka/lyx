@@ -664,7 +664,8 @@ void LocalLayout::validatePressed() {
 
 GuiDocument::GuiDocument(GuiView & lv)
 	: GuiDialog(lv, "document", qt_("Document Settings")),
-	  biblioChanged_(false), nonModuleChanged_(false)
+	  biblioChanged_(false), nonModuleChanged_(false),
+	  modulesChanged_(false), shellescapeChanged_(false)
 {
 	setupUi(this);
 
@@ -1542,18 +1543,30 @@ void GuiDocument::change_adaptor()
 
 void GuiDocument::shellescapeChanged()
 {
-	// This is treated specially as the change is automatically applied
-	// and the document isn't marked as dirty. Visual feedback is given
-	// by the appearance/disappearance of a red icon in the status bar.
-	bp_.shell_escape = outputModule->shellescapeCB->isChecked();
-	if (!bp_.shell_escape)
-	    theSession().shellescapeFiles().remove(buffer().absFileName());
-	else if (!theSession().shellescapeFiles().find(buffer().absFileName()))
-	    theSession().shellescapeFiles().insert(buffer().absFileName());
-	Buffer & buf = const_cast<Buffer &>(buffer());
-	buf.params().shell_escape = bp_.shell_escape;
-	BufferView * bv = const_cast<BufferView *>(bufferview());
-	bv->processUpdateFlags(Update::Force);
+	shellescapeChanged_ = true;
+	changed();
+}
+
+
+void GuiDocument::slotApply()
+{
+	bool only_shellescape_changed = !nonModuleChanged_ && !modulesChanged_;
+	bool wasclean = buffer().isClean();
+	GuiDialog::slotApply();
+	if (wasclean && only_shellescape_changed)
+		buffer().markClean();
+	modulesChanged_ = false;
+}
+
+
+void GuiDocument::slotOK()
+{
+	bool only_shellescape_changed = !nonModuleChanged_ && !modulesChanged_;
+	bool wasclean = buffer().isClean();
+	GuiDialog::slotOK();
+	if (wasclean && only_shellescape_changed)
+		buffer().markClean();
+	modulesChanged_ = false;
 }
 
 
@@ -2662,7 +2675,7 @@ void GuiDocument::modulesChanged()
 {
 	modulesToParams(bp_);
 
-	if (applyPB->isEnabled() && nonModuleChanged_) {
+	if (applyPB->isEnabled() && (nonModuleChanged_ || shellescapeChanged_)) {
 		int const ret = Alert::prompt(_("Unapplied changes"),
 				_("Some changes in the dialog were not yet applied.\n"
 				"If you do not apply now, they will be lost after this action."),
@@ -2671,6 +2684,7 @@ void GuiDocument::modulesChanged()
 			applyView();
 	}
 
+	modulesChanged_ = true;
 	bp_.makeDocumentClass();
 	paramsToDialog();
 	changed();
@@ -3136,6 +3150,12 @@ void GuiDocument::applyView()
 	bp_.useNonTeXFonts = nontexfonts;
 
 	bp_.shell_escape = outputModule->shellescapeCB->isChecked();
+	if (!bp_.shell_escape)
+	    theSession().shellescapeFiles().remove(buffer().absFileName());
+	else if (!theSession().shellescapeFiles().find(buffer().absFileName()))
+	    theSession().shellescapeFiles().insert(buffer().absFileName());
+	Buffer & buf = const_cast<Buffer &>(buffer());
+	buf.params().shell_escape = bp_.shell_escape;
 
 	bp_.output_sync = outputModule->outputsyncCB->isChecked();
 
@@ -3274,8 +3294,9 @@ void GuiDocument::applyView()
 	pdf.quoted_options = pdf.quoted_options_check(
 				fromqstr(pdfSupportModule->optionsLE->text()));
 
-	// reset tracker
+	// reset trackers
 	nonModuleChanged_ = false;
+	shellescapeChanged_ = false;
 }
 
 
@@ -3863,8 +3884,9 @@ void GuiDocument::paramsToDialog()
 	// clear changed branches cache
 	changedBranches_.clear();
 
-	// reset tracker
+	// reset trackers
 	nonModuleChanged_ = false;
+	shellescapeChanged_ = false;
 }
 
 
