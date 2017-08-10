@@ -1505,7 +1505,8 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 		if (c == 0x0022) {
 			if (features.runparams().isFullUnicode() && bp.useNonTeXFonts)
 				features.require("textquotedblp");
-			else if (bp.main_font_encoding() != "T1")
+			else if (bp.main_font_encoding() != "T1"
+				 || ((&owner_->getFontSettings(bp, i))->language()->internalFontEncoding()))
 				features.require("textquotedbl");
 		}
 		BufferEncodings::validate(c, features);

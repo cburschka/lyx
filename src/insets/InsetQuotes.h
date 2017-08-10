@@ -191,7 +191,7 @@ private:
 	InsetQuotesParams::QuoteLevel level_;
 	///
 	InsetQuotesParams::QuoteStyle global_style_;
-	///
+	/// Current font encoding
 	std::string fontenc_;
 	/// Code of the contextual language
 	std::string context_lang_;
@@ -199,6 +199,8 @@ private:
 	bool pass_thru_;
 	/// Do we use fontspec?
 	bool fontspec_;
+	/// Do we have an internal font encoding?
+	bool internal_fontenc_;
 	///
 	friend class InsetQuotesParams;
 

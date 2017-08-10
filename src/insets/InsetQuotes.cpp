@@ -603,7 +603,7 @@ docstring const InsetQuotesParams::getShortGuiLabel(docstring const string)
 InsetQuotes::InsetQuotes(Buffer * buf, string const & str)
 	: Inset(buf),
 	  style_(InsetQuotesParams::EnglishQuotes), side_(InsetQuotesParams::OpeningQuote),
-	  pass_thru_(false)
+	  pass_thru_(false), internal_fontenc_(false)
 {
 	if (buf) {
 		global_style_ = buf->masterBuffer()->params().quotes_style;
@@ -620,7 +620,7 @@ InsetQuotes::InsetQuotes(Buffer * buf, string const & str)
 
 InsetQuotes::InsetQuotes(Buffer * buf, char_type c, InsetQuotesParams::QuoteLevel level,
 			 string const & side, string const & style)
-	: Inset(buf), level_(level), pass_thru_(false), fontspec_(false)
+	: Inset(buf), level_(level), pass_thru_(false), fontspec_(false), internal_fontenc_(false)
 {
 	bool dynamic = false;
 	if (buf) {
@@ -976,6 +976,7 @@ void InsetQuotes::updateBuffer(ParIterator const & it, UpdateType /* utype*/)
 	BufferParams const & bp = buffer().masterBuffer()->params();
 	pass_thru_ = it.paragraph().isPassThru();
 	context_lang_ = it.paragraph().getFontSettings(bp, it.pos()).language()->code();
+	internal_fontenc_ = it.paragraph().getFontSettings(bp, it.pos()).language()->internalFontEncoding();
 	fontenc_ = bp.main_font_encoding();
 	global_style_ = bp.quotes_style;
 	fontspec_ = bp.useNonTeXFonts;
@@ -1032,7 +1033,7 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 	case 0x0022: {
 		if (features.runparams().isFullUnicode() && fontspec_)
 			features.require("textquotedblp");
-		else if (fontenc_ != "T1")
+		else if (fontenc_ != "T1" || internal_fontenc_)
 			features.require("textquotedbl");
 		break;
 	}
