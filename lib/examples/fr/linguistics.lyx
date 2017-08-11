@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -90,6 +90,7 @@ linguistics
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -99,7 +100,9 @@ linguistics
 \paragraph_separation indent
 \paragraph_indentation default
 \is_math_indent 0
-\quotes_style swiss
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -777,10 +780,12 @@ inline false
 status open
 
 \begin_layout Plain Layout
+
 % Éviter les sauts de page dans les gloses de deux lignes
 \end_layout
 
 \begin_layout Plain Layout
+
 
 \backslash
 AtBeginDocument{%
@@ -788,11 +793,13 @@ AtBeginDocument{%
 
 \begin_layout Plain Layout
 
+
 \backslash
 renewenvironment{linggloss}[2][]{%
 \end_layout
 
 \begin_layout Plain Layout
+
 
 \backslash
 def
@@ -804,6 +811,7 @@ glt #1}%
 
 \begin_layout Plain Layout
 
+
 \backslash
 begin{minipage}{.7
 \backslash
@@ -811,6 +819,7 @@ textwidth}
 \end_layout
 
 \begin_layout Plain Layout
+
 
 \backslash
 gll #2}{
@@ -823,6 +832,7 @@ end{minipage}}
 \end_layout
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -842,10 +852,12 @@ inline false
 status open
 
 \begin_layout Plain Layout
+
 % Éviter les sauts de page dans les gloses de trois lignes
 \end_layout
 
 \begin_layout Plain Layout
+
 
 \backslash
 AtBeginDocument{%
@@ -853,11 +865,13 @@ AtBeginDocument{%
 
 \begin_layout Plain Layout
 
+
 \backslash
 renewenvironment{lingglosss}[2][]{%
 \end_layout
 
 \begin_layout Plain Layout
+
 
 \backslash
 def
@@ -869,6 +883,7 @@ glt #1}%
 
 \begin_layout Plain Layout
 
+
 \backslash
 begin{minipage}{.7
 \backslash
@@ -876,6 +891,7 @@ textwidth}
 \end_layout
 
 \begin_layout Plain Layout
+
 
 \backslash
 glll #2}{
@@ -888,6 +904,7 @@ end{minipage}}
 \end_layout
 
 \begin_layout Plain Layout
+
 }
 \end_layout
 
@@ -977,14 +994,17 @@ inline false
 status open
 
 \begin_layout Plain Layout
+
 Fournit covington 1
 \end_layout
 
 \begin_layout Plain Layout
+
 AddToPreamble
 \end_layout
 
 \begin_layout Plain Layout
+
 		
 \backslash
 let
@@ -995,6 +1015,7 @@ relax
 \end_layout
 
 \begin_layout Plain Layout
+
 		
 \backslash
 let
@@ -1005,6 +1026,7 @@ relax
 \end_layout
 
 \begin_layout Plain Layout
+
 		
 \backslash
 let
@@ -1015,6 +1037,7 @@ relax
 \end_layout
 
 \begin_layout Plain Layout
+
 		
 \backslash
 let
@@ -1025,12 +1048,14 @@ relax
 \end_layout
 
 \begin_layout Plain Layout
+
 		
 \backslash
 usepackage{covington}
 \end_layout
 
 \begin_layout Plain Layout
+
 EndPreamble
 \end_layout
 
@@ -1451,11 +1476,13 @@ status open
 
 \begin_layout Plain Layout
 
+
 \backslash
 floatstyle{plaintop}
 \end_layout
 
 \begin_layout Plain Layout
+
 
 \backslash
 restylefloat{tableau}
@@ -1479,11 +1506,13 @@ status open
 
 \begin_layout Plain Layout
 
+
 \backslash
 floatstyle{komaabove}
 \end_layout
 
 \begin_layout Plain Layout
+
 
 \backslash
 restylefloat{tableau}
@@ -1607,6 +1636,7 @@ inline false
 status open
 
 \begin_layout Plain Layout
+
 
 \backslash
 renewcommand
@@ -1949,14 +1979,9 @@ literal "true"
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-If you use traditional \SpecialChar LaTeX
- or PDF\SpecialChar LaTeX
-, a prerequisite to use \SpecialChar LyX
-'s IPA support is
- the \SpecialChar LaTeX
- package 
+Si vous utilisez les traitements usuels \SpecialChar LaTeX
+ ou PDF\SpecialChar LaTeX
+, le paquetage 
 \emph on
 tipa
 \emph default
@@ -1968,64 +1993,64 @@ literal "true"
 
 \end_inset
 
-, which is automatically loaded by \SpecialChar LyX
- if you follow the procedure described
- below.
- If you use Xe\SpecialChar TeX
- or Lua\SpecialChar TeX
+ est un prérequis à l'utilisation des fonctionnalités IPA de LyX; ce paquetage
+ est chargé automatiquement par \SpecialChar LyX
+ si vous respectez la procédure ci-après.
+ Si vous utilisez Xe\SpecialChar TeX
+ ou Lua\SpecialChar TeX
  (i.
 \begin_inset space \thinspace{}
 \end_inset
 
-e., if you have clicked 
-\begin_inset Quotes eld
+e., si vous avez sélectionné 
+\begin_inset Quotes cld
 \end_inset
 
-Use non-\SpecialChar TeX
- fonts
-\begin_inset Quotes erd
+Utiliser des polices non-\SpecialChar TeX
+
+\begin_inset Quotes crd
 \end_inset
 
- in 
+ via 
 \family sans
 Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Fonts
+Paramètres\SpecialChar menuseparator
+Polices
 \family default
-), the package 
+), le paquetage 
 \emph on
 xunicode
 \emph default
- is loaded instead (since 
+ est chargé à la place (du fait que 
 \emph on
 tipa
 \emph default
- does not work in this context).
- The 
+ ne fonctionne pas dans ce contexte).
+ Le paquetage 
 \emph on
 xunicode
 \emph default
- package emulates the 
+ émule le résultat 
 \emph on
 tipa
 \emph default
- output, but is not perfect at that, so some things might not look as expected.
- Furthermore, you need to take care in this case to use a non-TeX font that
- includes the IPA glyphs (such as 
+, mais pas parfaitement, et certaines choses n'apparaîtront pas comme prévu.
+ De plus, il faut prendre soin de sélectionner une police non-TeX qui inclue
+ les glyphes IPA (comme 
 \emph on
 CMU Serif
 \emph default
- or 
+ ou 
 \emph on
 SIL Doulos
 \emph default
 ).
- You can also specify an extra font only for IPA by adding the following
- to 
+ Vous pouvez également spécifier une police supplémentaire uniquement pour
+ IPA en ajoutant ceci à 
 \family sans
 Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-LaTeX Preamble
+Paramètres\SpecialChar menuseparator
+Préambule LaTeX
 \family default
 :
 \end_layout
@@ -2076,14 +2101,12 @@ ipafont}
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
-Additionally, and independent from which of the above approaches you use,
- if you want to have instant preview, you should have the 
+Enfin, et indépendamment de l'approche utilisée, il faut que le paquetage
+ 
 \emph on
 preview-latex
 \emph default
- package 
+
 \begin_inset CommandInset citation
 LatexCommand cite
 key "preview"
@@ -2091,7 +2114,7 @@ literal "true"
 
 \end_inset
 
- installed.
+ soit installé pour avoir un aperçu sur le vif.
 \end_layout
 
 \end_inset
@@ -2169,7 +2192,6 @@ Notez que si vous souhaitez insérer des diacritiques, ils doivent être saisis
 \begin_inset IPA
 
 \begin_layout Standard
-
 [d̥]
 \end_layout
 
