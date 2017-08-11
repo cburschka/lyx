@@ -1,5 +1,5 @@
 #LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 541
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -101,6 +101,7 @@
 \suppress_date true
 \justification true
 \use_refstyle 0
+\use_minted 0
 \notefontcolor #0000ff
 \index Index
 \shortcut idx
@@ -111,7 +112,9 @@
 \paragraph_separation skip
 \defskip medskip
 \is_math_indent 0
+\math_numbering_side default
 \quotes_style swiss
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -826,27 +829,37 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- If you have an index list in your document and use one of the AMS theorem
- modules, you have to add the option 
+ si vous avez un index dans votre document et si vous utiliser un des modules
+ pour les théorèmes AMS, il vous faut ajouter l'option 
 \series bold
 noglobalbang
 \series default
- to the document class options in the document settings.
- This enables the usage of the '!' character in index entries (necessary
- for subentries) but might cause troubles with the align environments (which
- are described in section 
-\begin_inset Quotes eld
+ dans le champ des options de classe des paramètres du document.
+ Ceci autorise l'usage du caractère 
+\begin_inset Quotes cld
 \end_inset
 
-Align Environments
-\begin_inset Quotes erd
+!
+\begin_inset Quotes crd
 \end_inset
 
- of \SpecialChar LyX
-'s Math manual).
+ dans les entrées d'index (nécessaire pour saisir des sous-entrées) mais
+ peut créer des problèmes de conflit dans les environnements 
+\family sans
+align 
+\family default
+(décrits à la section 
+\begin_inset Quotes cld
+\end_inset
+
+Les environnements align
+\begin_inset Quotes crd
+\end_inset
+
+ du manuel Math de \SpecialChar LyX
+'s).
 \end_layout
 
 \end_inset
