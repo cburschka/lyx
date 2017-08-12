@@ -1212,6 +1212,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 
 		ins->setParams(inspar);
+		break;
 	}
 
 	case LFUN_SPACE_INSERT:
