@@ -295,6 +295,10 @@ Décembre 2015 : mise à jour pour LyX 2.2 (JPC)
 Juillet 2016 : nouvelle mise à jour pour 2.2, une note ajoutée (JPC)
 \end_layout
 
+\begin_layout Plain Layout
+Août 2017 : revue pour 2.3 (JPC)
+\end_layout
+
 \end_inset
 
 
@@ -14124,7 +14128,11 @@ Boîtes ! comme paragraphe
 
 \begin_layout Standard
 On peut créer une boîte qui peut contenir plusieurs lignes, voir des paragraphes
- entiers, c'est ce que l'on nomme une boîte de paragraphe (parbox en anglais).
+ entiers, c'est ce que l'on nomme une boîte de paragraphe (
+\emph on
+parbox
+\emph default
+ en anglais).
  On la crée avec le menu 
 \family sans
 Insertion\SpecialChar menuseparator
@@ -14275,8 +14283,12 @@ bas
 \begin_inset Quotes crd
 \end_inset
 
- (bottom) signifie que la boîte est alignée au sein du texte qui l'entoure,
- au niveau de sa dernière ligne.
+ (
+\emph on
+bottom
+\emph default
+) signifie que la boîte est alignée au sein du texte qui l'entoure, au niveau
+ de sa dernière ligne.
  Avec 
 \emph on
 t
@@ -20835,7 +20847,7 @@ Omega
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Quote
 \begin_inset VSpace medskip
 \end_inset
 
@@ -27623,7 +27635,7 @@ Quand on utilise
 Indenté
 \series default
 , la profondeur de l'indentation peut être ajustée.
- La valeur prédéfinie dépend de la clase de document utilisée.
+ La valeur prédéfinie dépend de la classe de document utilisée.
 \end_layout
 
 \end_deeper
@@ -27664,7 +27676,7 @@ Centré
 .
  Les formules indentées sont alors placées dans un environnement 
 \series bold
-falign, 
+flalign, 
 \series default
 voir
 \begin_inset space ~
@@ -27751,8 +27763,12 @@ reference "subsec:Environnement-eqnarray"
 \end_inset
 
 .
- L'environnement align est recommandé car il produit une sortie typographiquemen
-t correcte dans tous les cas.
+ L'environnement 
+\series bold
+align
+\series default
+ est recommandé car il produit une sortie typographiquement correcte dans
+ tous les cas.
 \end_layout
 
 \begin_layout Standard
@@ -32802,7 +32818,7 @@ status open
 \series bold
 Nota:
 \series default
- lLes noms des commandes personnalisées ne peuvent contenir que des lettres
+ les noms des commandes personnalisées ne peuvent contenir que des lettres
  latines.
 \end_layout
 
@@ -34690,8 +34706,11 @@ Raccourci clavier
 \begin_layout Standard
 Actuellement, il n'y a pas de raccourci clavier pour appeler les applications
  algébriques.
- On peut facilement attacher un raccourci à la fonction math-extern de \SpecialChar LyX
-
+ On peut facilement attacher un raccourci à la fonction 
+\series bold
+math-extern
+\series default
+ de \SpecialChar LyX
  (voir le manuel 
 \family sans
 \emph on
@@ -35012,7 +35031,7 @@ ifbraket
 status open
 
 \begin_layout Plain Layout
-Ce qui suit ne sera affiché que si le paquetage \SpecialChar LaTeX
+ce qui suit ne sera affiché que si le paquetage \SpecialChar LaTeX
  
 \series bold
 braket
@@ -35581,7 +35600,7 @@ ifcancel
 status open
 
 \begin_layout Plain Layout
-Ce qui suit ne sera affiché que si le paquetage \SpecialChar LaTeX
+ce qui suit ne sera affiché que si le paquetage \SpecialChar LaTeX
  
 \series bold
 cancel
@@ -35969,7 +35988,7 @@ else
 status open
 
 \begin_layout Plain Layout
-Ce qui suit sera affiché si la paquetage \SpecialChar LaTeX
+ce qui suit sera affiché si la paquetage \SpecialChar LaTeX
  
 \series bold
 cancel
@@ -36869,7 +36888,7 @@ ifupgreek
 status open
 
 \begin_layout Plain Layout
-Ce qui suit ne sera affiché que si le paquetage \SpecialChar LaTeX
+ce qui suit ne sera affiché que si le paquetage \SpecialChar LaTeX
  
 \series bold
 upgreek
@@ -36942,7 +36961,7 @@ else
 status open
 
 \begin_layout Plain Layout
-Ce qui suit sera affiché si la paquetage \SpecialChar LaTeX
+ce qui suit sera affiché si la paquetage \SpecialChar LaTeX
  
 \series bold
 upgreek
