@@ -411,6 +411,7 @@ SOURCEFILESMATHED = \
 	mathed/InsetMathDecoration.cpp \
 	mathed/InsetMathDecoration.h \
 	mathed/InsetMathDelim.cpp \
+	mathed/InsetMathDiagram.cpp \
 	mathed/InsetMathDiff.cpp \
 	mathed/InsetMathDots.cpp \
 	mathed/InsetMathEnsureMath.cpp \
@@ -452,7 +453,6 @@ SOURCEFILESMATHED = \
 	mathed/InsetMathUnknown.cpp \
 	mathed/InsetMathXArrow.cpp \
 	mathed/InsetMathXYMatrix.cpp \
-	mathed/InsetMathDiagram.cpp \
 	mathed/MacroTable.cpp \
 	mathed/MathAtom.cpp \
 	mathed/MathAutoCorrect.cpp \
