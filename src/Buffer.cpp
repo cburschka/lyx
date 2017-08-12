@@ -4912,10 +4912,8 @@ void Buffer::Impl::setLabel(ParIterator & it, UpdateType utype) const
 		switch (par.itemdepth) {
 		case 2:
 			enumcounter += 'i';
-			// fall through
 		case 1:
 			enumcounter += 'i';
-			// fall through
 		case 0:
 			enumcounter += 'i';
 			break;
