@@ -441,6 +441,7 @@ bool InsetListings::getStatus(Cursor & cur, FuncRequest const & cmd,
 				return true;
 			}
 		}
+		// fall through
 		default:
 			return InsetCaptionable::getStatus(cur, cmd, status);
 	}

@@ -3871,13 +3871,13 @@ void Paragraph::locateWord(pos_type & from, pos_type & to,
 			to = from;
 			return;
 		}
-		// no break here, we go to the next
+		// fall through
 
 	case WHOLE_WORD:
 		// If we are already at the beginning of a word, do nothing
 		if (!from || isWordSeparator(from - 1))
 			break;
-		// no break here, we go to the next
+		// fall through
 
 	case PREVIOUS_WORD:
 		// always move the cursor to the beginning of previous word
