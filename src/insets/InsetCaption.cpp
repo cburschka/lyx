@@ -209,6 +209,8 @@ void InsetCaption::doDispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		}
 	}
+	// no "changetype":
+	// fall through
 
 	default:
 		InsetText::doDispatch(cur, cmd);

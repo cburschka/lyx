@@ -2070,9 +2070,8 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			if (current_view_ == 0)
 				createView();
 		}
-		// fall through
 	}
-
+	// fall through
 	default:
 		// The LFUN must be for one of GuiView, BufferView, Buffer or Cursor;
 		// let's try that:
