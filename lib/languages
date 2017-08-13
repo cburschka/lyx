@@ -1191,17 +1191,13 @@ Language urdu
 	LangCode         ur_PK
 End
 
-# vietnam must be loaded locally with babel options,
-# not globally via class options, see
-# http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129417.html
 Language vietnamese
 	GuiName          "Vietnamese"
-	BabelName        vietnam
+	BabelName        vietnamese
 	PolyglossiaName  vietnamese
 	QuoteStyle       english
 	Encoding         utf8
 	LangCode         vi_VN
-	AsBabelOptions   true
 	Requires         vietnamese
 End
 
