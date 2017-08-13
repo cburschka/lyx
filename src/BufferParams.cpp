@@ -2251,8 +2251,7 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// called after babel, though.
 	if (use_babel && !features.isRequired("jurabib")
 	    && !features.isRequired("hyperref")
-		&& !features.isRequired("varioref")
-	    && !features.isRequired("vietnamese")
+	    && !features.isRequired("varioref")
 	    && !features.isRequired("japanese")) {
 		os << features.getBabelPresettings();
 		// FIXME UNICODE
