@@ -2050,13 +2050,12 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg144349.html
 	os << from_ascii(features.getColorOptions());
 
-	// If we use hyperref, jurabib, japanese, varioref or vietnamese,
+	// If we use hyperref, jurabib, japanese or varioref,
 	// we have to call babel before
 	if (use_babel
 	    && (features.isRequired("jurabib")
 		|| features.isRequired("hyperref")
 		|| features.isRequired("varioref")
-		|| features.isRequired("vietnamese")
 		|| features.isRequired("japanese"))) {
 			os << features.getBabelPresettings();
 			// FIXME UNICODE
