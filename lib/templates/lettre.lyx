@@ -31,7 +31,7 @@
 \paperfontsize 11
 \spacing single
 \use_hyperref false
-\papersize letterpaper
+\papersize default
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
@@ -132,6 +132,22 @@ Format de la Page
 ) donnent alors des tailles de page inexactes, il faut installer la version
  3.000 (TeXLive 03/08/2017) pour un fonctionnement correct si vous résidez
  dans un pays utilisant les normes US.
+\end_layout
+
+\begin_layout Plain Layout
+
+\series bold
+Attention
+\series default
+ : avec cette version de la classe, le nouveau nom du fichier 
+\family sans
+institut.ins
+\family default
+ indiquant les coordonnées de l'institution est 
+\family sans
+lettre-<institut>.cfg
+\family default
+, voir la documentation de la classe 3.000.
 \end_layout
 
 \end_inset
