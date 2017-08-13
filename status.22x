@@ -60,6 +60,10 @@ What's new
 - Assure the color package is loaded before polyglossia in preview snippets
   This fixes preview image generation with polyglossia and bidi (bug 10716).
 
+- Fix babel name of Vietnamese language. This requires now babel-vietnamese
+  (2013ff.) instead of vietnam.ldf that was shipped with vntex previously
+  (bug 10743).
+
 
 * LYX2LYX
 
