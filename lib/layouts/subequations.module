@@ -5,7 +5,7 @@
 
 # Author: Joel A. Kulesza (jkulesza@gmail.com)
 
-Format 48
+Format 63
 
 InsetLayout Flex:Subequations
   LyxType               custom
@@ -15,5 +15,6 @@ InsetLayout Flex:Subequations
   LatexName             subequations
   MultiPar              true
   Requires              amsmath
+  ResetsFont            true
 End
 
