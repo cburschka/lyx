@@ -18,8 +18,7 @@
 #   $TOC - final index.html that links all converted manuals
 #   $TMP - temporary folder where all the conversion is done
 
-#MAIN_DOCS=${MAIN_DOCS:-"Intro Tutorial UserGuide Math Additional Customization Shortcuts LFUNs"}
-MAIN_DOCS=${MAIN_DOCS:-"Math"}
+MAIN_DOCS=${MAIN_DOCS:-"Intro Tutorial UserGuide Math Additional Customization Shortcuts LFUNs"}
 LYX=${LYX:-${PWD}/src/lyx}
 OUT=${OUT:-$HOME/web/lyxdoc}
 TOC=${TOC:-lyxdoc/index.html}
