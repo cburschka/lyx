@@ -18,9 +18,9 @@
 #   $TOC - final index.html that links all converted manuals
 #   $TMP - temporary folder where all the conversion is done
 
-MAIN_DOCS=${MAIN_DOCS:-"Intro Tutorial UserGuide Math Additional Customization Shortcuts LFUNs"}
-
-LYX=${LYX:-$(abspath src/lyx)}
+#MAIN_DOCS=${MAIN_DOCS:-"Intro Tutorial UserGuide Math Additional Customization Shortcuts LFUNs"}
+MAIN_DOCS=${MAIN_DOCS:-"Math"}
+LYX=${LYX:-${PWD}/src/lyx}
 OUT=${OUT:-$HOME/web/lyxdoc}
 TOC=${TOC:-lyxdoc/index.html}
 TMP=${TMP:-$(mktemp -d)}
@@ -72,7 +72,7 @@ for m in $MAIN_DOCS; do
     echo "<tr><td>$m</td><td>" >> $TOC
     find . -name $m.lyx | while read f; do
 	if [ ! -f lyxdoc/${f%%.lyx}.html.LyXconv/$m.html ]; then
-	    pexec $LYX -E html lyxdoc/${f%%.lyx}.html $f;
+	    pexec $LYX -E xhtml lyxdoc/${f%%.lyx}.html $f;
 	else
 	    echo "Skipping already existing lyxdoc/${f%%.lyx}.html"
 	fi
@@ -81,7 +81,7 @@ for m in $MAIN_DOCS; do
 	else
 	    lang=en
 	fi
-	echo "<a href=\"${f%%.lyx}.html.LyXconv/$m.html\">[$lang]</a>" >> $TOC
+	echo "<a href=\"${f%%.lyx}.html\">[$lang]</a>" >> $TOC
     done
     echo "</td><td>" >> $TOC
     find . -name $m.lyx | while read f; do
