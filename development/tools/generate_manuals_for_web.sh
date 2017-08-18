@@ -22,12 +22,15 @@ MAIN_DOCS=${MAIN_DOCS:-"Intro Tutorial UserGuide Math Additional Customization S
 LYX=${LYX:-${PWD}/src/lyx}
 OUT=${OUT:-$HOME/web/lyxdoc}
 TOC=${TOC:-lyxdoc/index.html}
-TMP=${TMP:-$(mktemp -d)}
+TMP=${TMP:-$(mktemp -d --tmpdir lyx-docs-XXXX)}
+USERDIR=${USERDIR:-$(mktemp -d --tmpdir lyx-home-XXXX)}
 
 echo LYX=$LYX
 echo OUT=$OUT
 echo TOC=$TOC
 echo TMP=$TMP
+
+echo "Building docs: $MAIN_DOCS"
 
 mycpus=$(grep -c processor /proc/cpuinfo)
 function pexec {
@@ -70,22 +73,22 @@ EOF
 for m in $MAIN_DOCS; do
     echo "<tr><td>$m</td><td>" >> $TOC
     find . -name $m.lyx | while read f; do
-	if [ ! -f lyxdoc/${f%%.lyx}.html.LyXconv/$m.html ]; then
-	    pexec $LYX -E xhtml lyxdoc/${f%%.lyx}.html $f;
+	if [ ! -f lyxdoc/${f%%.lyx}.xhtml ]; then
+	    pexec $LYX -userdir $USERDIR -E xhtml lyxdoc/${f%%.lyx}.xhtml $f;
 	else
-	    echo "Skipping already existing lyxdoc/${f%%.lyx}.html"
+	    echo "Skipping already existing lyxdoc/${f%%.lyx}.xhtml"
 	fi
 	if echo $f | grep '/[a-zA-Z_]\+/' > /dev/null 2>&1; then
 	    lang=$(echo $f | sed -e 's#.*/\([a-zA-Z_]\+\)/.*#\1#')
 	else
 	    lang=en
 	fi
-	echo "<a href=\"${f%%.lyx}.html\">[$lang]</a>" >> $TOC
+	echo "<a href=\"${f%%.lyx}.xhtml\">[$lang]</a>" >> $TOC
     done
     echo "</td><td>" >> $TOC
     find . -name $m.lyx | while read f; do
 	if [ ! -f lyxdoc/${f%%.lyx}.pdf ]; then
-	    pexec $LYX -E pdf lyxdoc/${f%%.lyx}.pdf $f;
+	    pexec $LYX -userdir $USERDIR -E pdf lyxdoc/${f%%.lyx}.pdf $f;
 	else
 	    echo "Skipping already existing lyxdoc/${f%%.lyx}.pdf"
 	fi
