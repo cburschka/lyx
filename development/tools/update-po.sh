@@ -1,7 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 # A script to check whether there have been any string changes.
 # If it finds some, it commits the new po files and then updates
 # the stats.
+
+# We need bash because we use a select loop.
 
 # The script expects an environment variable FARM that will provide 
 # it with the location of the LyX www tree.
@@ -9,6 +11,7 @@
 DEBUG="";
 COMMIT="";
 
+# shellcheck disable=SC2086
 while getopts ":cdh" options $ARGS; do
   case $options in
     c)  COMMIT="TRUE";;
@@ -38,7 +41,7 @@ fi
 # Get us to the root of the tree we are in.
 MYDIR=${0%update-po.sh};
 if [ -n "$MYDIR" ]; then
-  if ! cd $MYDIR; then
+  if ! cd "$MYDIR"; then
     echo "Couldn't cd to $MYDIR!";
     exit 1;
   fi
@@ -57,7 +60,7 @@ fi
 
 # Are we in trunk or branch?
 TRUNK="TRUE";
-if ls status.* 2>/dev/null | grep -q status; then 
+if ls status.* 2>/dev/null; then 
   TRUNK="";
 fi
 
@@ -80,7 +83,7 @@ fi
 
 # make sure things are clean
 rm -f i18n.inc;
-svn revert $FARM/$I18NFILE;
+svn revert "$FARM/$I18NFILE";
 
 echo Running make i18n.inc...
 make i18n.inc  >/dev/null 2>&1;
@@ -88,21 +91,21 @@ if [ -n "$TRUNK" ]; then
   mv -f i18n.inc i18n_trunk.inc
 fi
 
-if diff -w -q $I18NFILE $FARM/$I18NFILE >/dev/null 2>&1; then
+if diff -w -q "$I18NFILE $FARM/$I18NFILE" >/dev/null 2>&1; then
   echo No string differences found.
-  git checkout *.po;
+  git checkout ./*.po;
   exit 0;
 fi
 
 # So there are differences.
 if [ -z "$COMMIT" ]; then
   echo "Differences found!";
-  diff -wu $FARM/$I18NFILE $I18NFILE | less;
-  git checkout *.po *.gmo;
+  diff -wu "$FARM/$I18NFILE $I18NFILE" | less;
+  git checkout ./*.po ./*.gmo;
   exit 0;
 fi
 
-$DEBUG git commit *.po *.gmo -m "Remerge strings.";
+$DEBUG git commit ./*.po ./*.gmo -m "Remerge strings.";
 COMMITS=$(git push -n 2>&1 | tail -n 1 | grep -v "Everything" | sed -e 's/^ *//' -e 's/ .*//');
 
 if [ -z "$COMMITS" ]; then
@@ -110,6 +113,8 @@ if [ -z "$COMMITS" ]; then
   exit 1;
 fi
 
+# there may be multiple commits here
+# shellcheck disable=SC2086
 git log $COMMITS;
 
 #Do we want to go ahead?
@@ -127,7 +132,7 @@ done
 
 echo
 
-if ! cd $FARM; then
+if ! cd "$FARM"; then
   echo "Unable to cd to $FARM!";
   exit 1;
 fi
@@ -137,8 +142,7 @@ echo Updating the www-user tree...
 svn up;
 
 echo Moving $I18NFILE...;
-mv $LYXROOT/po/$I18NFILE .;
+mv "$LYXROOT/po/$I18NFILE" .;
 
 echo Committing...;
 $DEBUG svn commit -m "* $I18NFILE: update stats" $I18NFILE;
-

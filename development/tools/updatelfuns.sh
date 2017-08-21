@@ -8,9 +8,9 @@ fi
 
 function do_convert {
 	for i in *; do 
-		if [ ! -f $i ]; then continue; fi
-		cp $i $i.old; 
-		python $lyxdir/lib/scripts/prefs2prefs.py -l <$i.old >$i; 
+		if [ ! -f "$i" ]; then continue; fi
+		cp "$i" "$i.old"; 
+		python "$lyxdir/lib/scripts/prefs2prefs.py" -l <"$i.old" >"$i"; 
 	done
 }
 
@@ -20,23 +20,23 @@ progloc=$0;
 pathto=${progloc%/*};
 # get us into development/tools
 if [ "$progloc" != "$pathto" ]; then
-	if ! cd $pathto; then
+	if ! cd "$pathto"; then
 	echo "Couldn't get to development/tools!";
 	exit 1;
 	fi
 fi
 
-curdir=`pwd`;
+curdir=$(pwd);
 lyxdir=${curdir%/development/tools*};
 
-if ! cd $lyxdir/lib/ui/; then
+if ! cd "$lyxdir/lib/ui/"; then
 	echo "Couldn't get to lib/ui!";
 	exit 1;
 fi
 
 do_convert;
 
-if ! cd $lyxdir/lib/bind/; then
+if ! cd "$lyxdir/lib/bind/"; then
 	echo "Couldn't get to lib/bind!";
 	exit 1;
 fi
@@ -45,8 +45,8 @@ do_convert;
 
 #now do the subdirectories
 for d in *; do 
-	if [ ! -d $d ]; then continue; fi
-	cd $d;
+	if [ ! -d "$d" ]; then continue; fi
+	pushd "$d";
 	do_convert;
-	cd ..;
+	popd;
 done

@@ -21,14 +21,14 @@ fi
 # Get us to the root of the tree we are in.
 MYDIR=${0%updatestats.sh};
 if [ -n "$MYDIR" ]; then
-  cd $MYDIR;
+  cd "$MYDIR";
 fi
 cd ../../;
 LYXROOT=$(pwd);
 
 # Are we in trunk or branch?
 TRUNK="TRUE";
-if ls status.* 2>/dev/null | grep -q status; then 
+if ls status.* 2>/dev/null; then 
   TRUNK="";
 fi
 
@@ -48,7 +48,7 @@ else
   I18NFILE=i18n.inc;
 fi
 
-if ! cd $FARM; then
+if ! cd "$FARM"; then
   echo "Unable to cd to $FARM!";
   exit 1;
 fi
@@ -62,7 +62,7 @@ echo Updating the www-user tree...
 svn up
 
 echo Copying $I18NFILE...;
-cp $LYXROOT/po/$I18NFILE .;
+cp "$LYXROOT/po/$I18NFILE" .;
 
 echo Committing...;
 if [ -z "$GIT" ]; then

@@ -5,6 +5,14 @@
 # It also includes several other tests, to make sure the packages
 # works as it should.
 
+# This has been checked with shellcheck. It complains about a lot
+# of missing quotes, but we know, e.g., that $VERSION will not have
+# spaces in it. RH chose not to fix that stuff.
+# 
+# That said, the variables $BASE and $SRCDIR will cause problems if
+# they have spaces in them, but RH did not fix that, either, since
+# he thinks spaces in directory names are just a bad idea.
+
 # A few variables need to be set, here at the top. 
 #
 # Where we will do our work
@@ -77,7 +85,7 @@ else
 fi
 
 LASTNUM=$(echo $VERSION | sed -e 's/.*\.//');
-LAST=$(($LASTNUM - 1));
+LAST=$((LASTNUM - 1));
 FIRST=$(echo $VERSION | sed -e 's/[0-9]*$//');
 ORIGINAL=${FIRST}0;
 LAST=$FIRST$LAST;
@@ -86,14 +94,14 @@ if [ ! -d "$BASE/lyx-patch/" ]; then
 	mkdir "$BASE/lyx-patch/" || exit 1;
 fi
 
-if [ ! -d $BASE/lyx-patch/lyx-$LAST ]; then 
+if [ ! -d "$BASE/lyx-patch/lyx-$LAST" ]; then 
   echo "Can't find directory for last version $LAST.";
   echo "See if you can fix this in $BASE/lyx-patch/.";
   echo "Try that, if you like, and then we'll continue.";
   echo "We'll try to download from the LyX site if that does not work.";
   read;
 
-  if [ ! -d $BASE/lyx-patch/lyx-$LAST ]; then 
+  if [ ! -d "$BASE/lyx-patch/lyx-$LAST" ]; then 
     echo "Will try to download from LyX site....";
     pushd $BASE/lyx-patch/;
     wget ftp://ftp.lyx.org/pub/lyx/stable/${FIRST}x/lyx-$LAST.tar.gz;
