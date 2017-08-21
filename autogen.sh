@@ -6,14 +6,14 @@ AUTOMAKE="automake --add-missing --force-missing --copy --foreign"
 AUTOCONF="autoconf"
 
 # Discover what version of automake we are using.
-automake_version=`$AUTOMAKE --version 2>/dev/null | head -n 1`
+automake_version=$($AUTOMAKE --version 2>/dev/null | head -n 1)
 
-test "$automake_version" != "" && {
+if "$automake_version" != ""; then
     echo "Using $automake_version"
-} || {
+else
     echo "LyX requires automake >= 1.14"
     exit 1
-}
+fi
 
 case $automake_version in
     *' '1.1[45]*)
@@ -26,14 +26,14 @@ case $automake_version in
 esac
 
 # Discover what version of autoconf we are using.
-autoversion=`$AUTOCONF --version 2>/dev/null | head -n 1`
+autoversion=$($AUTOCONF --version 2>/dev/null | head -n 1)
 
-test "$autoversion" != "" && {
+if "$autoversion" != ""; then
     echo "Using $autoversion"
-} || {
+else
     echo "LyX requires autoconf >= 2.65"
     exit 1
-}
+fi
 
 case $autoversion in
     *' '2.6[5-9])
