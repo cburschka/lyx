@@ -8,7 +8,7 @@ AUTOCONF="autoconf"
 # Discover what version of automake we are using.
 automake_version=$($AUTOMAKE --version 2>/dev/null | head -n 1)
 
-if "$automake_version" != ""; then
+if test "$automake_version" != ""; then
     echo "Using $automake_version"
 else
     echo "LyX requires automake >= 1.14"
@@ -28,7 +28,7 @@ esac
 # Discover what version of autoconf we are using.
 autoversion=$($AUTOCONF --version 2>/dev/null | head -n 1)
 
-if "$autoversion" != ""; then
+if test "$autoversion" != ""; then
     echo "Using $autoversion"
 else
     echo "LyX requires autoconf >= 2.65"
