@@ -738,7 +738,7 @@ docstring Lexer::getLongString(docstring const & endtoken)
 			break;
 
 		if (firstline) {
-			size_t i = tmpstr.find_first_not_of(char_type(' '));
+			size_t i = tmpstr.find_first_not_of(from_ascii(" \t"));
 			if (i != string::npos)
 				prefix = tmpstr.substr(0, i);
 			firstline = false;
@@ -747,10 +747,10 @@ docstring Lexer::getLongString(docstring const & endtoken)
 
 		// further lines in long strings may have the same
 		// whitespace prefix as the first line. Remove it.
-		if (prefix.length() && prefixIs(tmpstr, prefix))
-			tmpstr.erase(0, prefix.length() - 1);
+		if (!prefix.empty() && prefixIs(tmpstr, prefix))
+			tmpstr.erase(0, prefix.length());
 
-		str += ltrim(tmpstr, "\t") + '\n';
+		str += tmpstr + '\n';
 	}
 
 	if (!pimpl_->is)
