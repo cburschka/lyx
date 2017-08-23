@@ -60,6 +60,9 @@
   when enabled, use of external converters with the 'needauth' option is
   forbidden
 
+* \pygmentize_command
+  holds the name of the driver command used by the Pygments python module.
+
 
 !!!The following pref variables were changed in 2.3:
 
