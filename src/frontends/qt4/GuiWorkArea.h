@@ -109,7 +109,7 @@ private Q_SLOTS:
 	void scrollTo(int value);
 	/// timer to limit triple clicks
 	void doubleClickTimeout();
-	/// toggle the cursor's visibility
+	/// toggle the caret's visibility
 	void toggleCaret();
 	/// close this work area.
 	/// Slot for Buffer::closing signal.

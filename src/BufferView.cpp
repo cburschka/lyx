@@ -2905,7 +2905,7 @@ bool BufferView::paragraphVisible(DocIterator const & dit) const
 }
 
 
-void BufferView::cursorPosAndHeight(Point & p, int & h) const
+void BufferView::caretPosAndHeight(Point & p, int & h) const
 {
 	Cursor const & cur = cursor();
 	Font const font = cur.real_current_font;
