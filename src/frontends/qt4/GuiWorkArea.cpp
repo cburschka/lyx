@@ -198,6 +198,7 @@ public:
 				r = max(r, TabIndicatorWidth);
 		}
 
+		//FIXME: LyXRC::cursor_width should be caret_width
 		caret_width_ = lyxrc.cursor_width
 			? lyxrc.cursor_width
 			: 1 + int((lyxrc.currentZoom + 50) / 200.0);
@@ -209,7 +210,7 @@ public:
 	QRect const & rect() { return rect_; }
 
 private:
-	/// cursor is in RTL or LTR text
+	/// caret is in RTL or LTR text
 	bool rtl_;
 	/// indication for RTL or LTR
 	bool l_shape_;
@@ -425,7 +426,7 @@ void GuiWorkArea::startBlinkingCaret()
 
 	Point p;
 	int h = 0;
-	d->buffer_view_->cursorPosAndHeight(p, h);
+	d->buffer_view_->caretPosAndHeight(p, h);
 	// Don't start blinking if the cursor isn't on screen.
 	if (!d->buffer_view_->cursorInView(p, h))
 		return;
@@ -466,7 +467,7 @@ void GuiWorkArea::redraw(bool update_metrics)
 		d->buffer_view_->cursor().fixIfBroken();
 	}
 
-	// update cursor position, because otherwise it has to wait until
+	// update caret position, because otherwise it has to wait until
 	// the blinking interval is over
 	if (d->caret_visible_) {
 		d->hideCaret();
@@ -509,7 +510,7 @@ void GuiWorkArea::processKeySym(KeySymbol const & key, KeyModifier mod)
 
 	// In order to avoid bad surprise in the middle of an operation,
 	// we better stop the blinking caret...
-	// the cursor gets restarted in GuiView::restartCaret()
+	// the caret gets restarted in GuiView::restartCaret()
 	stopBlinkingCaret();
 	guiApp->processKeySym(key, mod);
 }
@@ -528,7 +529,7 @@ void GuiWorkArea::Private::dispatch(FuncRequest const & cmd)
 		cmd.action() != LFUN_MOUSE_MOTION || cmd.button() != mouse_button::none;
 
 	// In order to avoid bad surprise in the middle of an operation, we better stop
-	// the blinking cursor.
+	// the blinking caret.
 	if (notJustMovingTheMouse)
 		p->stopBlinkingCaret();
 
@@ -550,7 +551,7 @@ void GuiWorkArea::Private::dispatch(FuncRequest const & cmd)
 		// FIXME: let GuiView take care of those.
 		lyx_view_->clearMessage();
 
-		// Show the cursor immediately after any operation
+		// Show the caret immediately after any operation
 		p->startBlinkingCaret();
 	}
 
@@ -568,7 +569,7 @@ void GuiWorkArea::Private::resizeBufferView()
 
 	Point point;
 	int h = 0;
-	buffer_view_->cursorPosAndHeight(point, h);
+	buffer_view_->caretPosAndHeight(point, h);
 	bool const caret_in_view = buffer_view_->cursorInView(point, h);
 	buffer_view_->resize(p->viewport()->width(), p->viewport()->height());
 	if (caret_in_view)
@@ -583,9 +584,9 @@ void GuiWorkArea::Private::resizeBufferView()
 
 	need_resize_ = false;
 	p->busy(false);
-	// Eventually, restart the cursor after the resize event.
+	// Eventually, restart the caret after the resize event.
 	// We might be resizing even if the focus is on another widget so we only
-	// restart the cursor if we have the focus.
+	// restart the caret if we have the focus.
 	if (p->hasFocus())
 		QTimer::singleShot(50, p, SLOT(startBlinkingCaret()));
 }
@@ -598,7 +599,7 @@ void GuiWorkArea::Private::showCaret()
 
 	Point point;
 	int h = 0;
-	buffer_view_->cursorPosAndHeight(point, h);
+	buffer_view_->caretPosAndHeight(point, h);
 	if (!buffer_view_->cursorInView(point, h))
 		return;
 
@@ -616,7 +617,7 @@ void GuiWorkArea::Private::showCaret()
 	if (realfont.language() == latex_language)
 		l_shape = false;
 
-	// show cursor on screen
+	// show caret on screen
 	Cursor & cur = buffer_view_->cursor();
 	bool completable = cur.inset().showCompletionCursor()
 		&& completer_->completionAvailable()
@@ -625,7 +626,7 @@ void GuiWorkArea::Private::showCaret()
 	caret_visible_ = true;
 
 	//int cur_x = buffer_view_->getPos(cur).x_;
-	// We may have decided to slide the cursor row so that cursor
+	// We may have decided to slide the cursor row so that caret
 	// is visible.
 	point.x_ -= buffer_view_->horizScrollOffset();
 
@@ -685,7 +686,7 @@ void GuiWorkArea::scrollTo(int value)
 		// FIXME: let GuiView take care of those.
 		d->lyx_view_->updateLayoutList();
 	}
-	// Show the cursor immediately after any operation.
+	// Show the caret immediately after any operation.
 	startBlinkingCaret();
 	// FIXME QT5
 #ifdef Q_WS_X11
@@ -1289,7 +1290,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 		viewport()->update();
 	}
 
-	// Hide the cursor during the test transformation.
+	// Hide the caret during the test transformation.
 	if (e->preeditString().isEmpty())
 		startBlinkingCaret();
 	else
@@ -1335,7 +1336,7 @@ QVariant GuiWorkArea::inputMethodQuery(Qt::InputMethodQuery query) const
 				cur_r.moveLeft(10);
 			cur_r.moveBottom(cur_r.bottom()
 				+ cur_r.height() * (d->preedit_lines_ - 1));
-			// return lower right of cursor in LyX.
+			// return lower right of caret in LyX.
 			return cur_r;
 		default:
 			return QWidget::inputMethodQuery(query);

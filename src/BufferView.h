@@ -307,8 +307,8 @@ public:
 	bool paragraphVisible(DocIterator const & dit) const;
 	/// is the cursor currently visible in the view
 	bool cursorInView(Point const & p, int h) const;
-	/// get the position and height of the cursor
-	void cursorPosAndHeight(Point & p, int & h) const;
+	/// get the position and height of the caret
+	void caretPosAndHeight(Point & p, int & h) const;
 
 	///
 	void draw(frontend::Painter & pain, bool paint_caret);

@@ -85,9 +85,9 @@ struct GuiWorkArea::Private
 
 	///
 	void dispatch(FuncRequest const & cmd0);
-	/// hide the visible cursor, if it is visible
+	/// hide the visible caret, if it is visible
 	void hideCaret();
-	/// show the cursor if it is not visible
+	/// show the caret if it is not visible
 	void showCaret();
 	/// Set the range and value of the scrollbar and connect to its valueChanged
 	/// signal.
@@ -110,7 +110,7 @@ struct GuiWorkArea::Private
 
 	///
 	CaretWidget * caret_;
-	/// is the cursor currently displayed
+	/// is the caret currently displayed
 	bool caret_visible_;
 	///
 	QTimer caret_timeout_;
