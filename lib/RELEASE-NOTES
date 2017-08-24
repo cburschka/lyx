@@ -25,6 +25,13 @@
 
 !!Documents compilation process and images conversion
 
+* It is now possible to enable the -shell-escape option only for specific
+  documents, rather than having to enable it globally in preferences.
+  This is achieved by checking "Allow running external programs" in
+  Document->Settings->Formats. LyX will now check whether -shell-escape
+  has been added to a LaTeX converter and invites the user to remove it
+  in favor of the new mechanism when that LaTeX converter is used.
+
 * The converters definition syntax (LYX_HOME/lyxrc*) now supports a
   new option, 'needauth', to prevent completely automated execution of
   the converter, unless LyX acquired explicit consent by the
