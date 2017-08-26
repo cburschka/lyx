@@ -39742,7 +39742,7 @@ Inkscape-Grafik Diese experimentelle Vorlage unterstützt Vektorgrafiken
 \family sans
 Text in PDF weglassen und LaTeX Datei erstellen
 \family default
- wenn man eine Zeichnung als PDF mit dem programm 
+ wenn man eine Zeichnung als PDF mit dem Programm 
 \noun on
 Inkscape
 \noun default
@@ -39755,8 +39755,8 @@ literal "false"
 \end_inset
 
 .
- Dier ermöglicht es SVG-Dateien einzugügen, in denen \SpecialChar LaTeX
- den Text setzen wird.
+ Dies ermöglicht es, SVG-Dateien einzufügen, in denen \SpecialChar LaTeX
+ den Text setzt.
  Der Vorteil von solchen SVGs ist, dass man einen einheitlichen Textstil
  im ganzen Dokument erhält.
 \begin_inset Newline newline
@@ -39775,11 +39775,8 @@ Large
 \backslash
 small
 \series default
-, usw.
-\begin_inset space \space{}
-\end_inset
-
-im Text der SVGs verwenden.
+ usw.
+ im Text der SVGs verwenden.
  Die Schriftgröße wird von den Einstellungen des \SpecialChar LyX
 -Dokuments übernommen.
  Siehe 
@@ -39806,7 +39803,7 @@ Vorschau
 \begin_inset Newline newline
 \end_inset
 
-Die Vorlage funktioniert sehr ähnlich zur Unterstützung für Xfig.
+Die Vorlage funktioniert sehr ähnlich wie die Unterstützung für Xfig.
  \SpecialChar LyX
  extrahiert den Bildtext in eine separate \SpecialChar TeX
 -Datei und erzeugt eine PDF-Datei
