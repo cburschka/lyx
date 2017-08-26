@@ -44807,6 +44807,58 @@ bind „Tastaturkürzel“ „\SpecialChar LyX
 -Funktion“
 \end_layout
 
+\begin_layout Standard
+Beachten Sie hierbei aber, dass die Definition der Tastenkürzel eine spezielle
+ Syntax verlangt.
+ Das betrifft die Symbole für Modifizierungstasten (bspw.
+ 
+\family typewriter
+M
+\family default
+, 
+\family typewriter
+S
+\family default
+, 
+\family typewriter
+C
+\family default
+ für 
+\family sans
+Meta/Alt
+\family default
+, 
+\family sans
+Umschalt
+\family default
+, 
+\family sans
+Strg
+\family default
+) genauso wie die für andere Tasten.
+ Beachten Sie insbesondere, dass Sie keine nicht-alphanumerischen Zeichen
+ in den Definitionen verwenden können.
+ Statt dessen müssen Sie Befehle verwenden, die dem Xlib-Standard folgen
+ (bitte sehen Sie sich die vorhandenen 
+\family typewriter
+*.bind
+\family default
+-Dateien für Beispiele an).
+ Wenn Sie also etwa einen Befehl an die Tastenkombinationen 
+\family sans
+Alt+Umschalt+:
+\family default
+ binden wollten, müssten Sie diese so definieren: 
+\family typewriter
+M-S-colon
+\family default
+.
+ Wenn Sie die Tastenkombinationen im Einstellungs-Dialog bearbeiten, müssen
+ Sie sich um diese Spezifika nicht kümmern.
+ \SpecialChar LyX
+ übersetzt Ihre Tasteneingaben in die korrekte Syntax.
+\end_layout
+
 \begin_layout Subsection
 Tastatur / Maus
 \begin_inset CommandInset label

@@ -140,11 +140,12 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -8336,14 +8337,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8356,7 +8355,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8380,7 +8378,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -45997,7 +45994,7 @@ Key Bindings ! Editing
 \end_layout
 
 \begin_layout Standard
-To add new or modify existing keybindings to your own taste you can use
+To add new or modify existing key bindings to your own taste you can use
  the table in the dialog that lists all \SpecialChar LyX
  functions and the bound shortcuts.
  To find functions easily, they are grouped by categories and the dialog
@@ -46101,6 +46098,62 @@ key combination
 \begin_inset Quotes erd
 \end_inset
 
+
+\change_inserted -712698321 1503738349
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1503740883
+Note, though, that the key combination definition uses a specific syntax.
+ This applies to the designators of specific modifier keys (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., 
+\family typewriter
+M
+\family default
+, 
+\family typewriter
+S
+\family default
+, 
+\family typewriter
+C
+\family default
+ for 
+\family sans
+Meta/Alt
+\family default
+, 
+\family sans
+Shift
+\family default
+, 
+\family sans
+Ctrl
+\family default
+, respectively) as well as to the other keys.
+ Note particularly that you cannot use non-alphanumeric characters directly
+ in the definition of the key combination, but must use commands following
+ the Xlib standard instead (please refer to the existing bind files for
+ a model).
+ So if you wanted to bind a command to the key combination 
+\family sans
+Alt+Shift+:
+\family default
+, you needed to specify it as 
+\family typewriter
+M-S-colon
+\family default
+.
+ If you use the dialog to edit key bindings, you don't have to care for
+ these specifics.
+ \SpecialChar LyX
+ transforms your input to the correct syntax.
+\change_unchanged
 
 \end_layout
 
