@@ -2,9 +2,16 @@
 # -*- coding: utf-8 -*-
 
 # file svg2pstex.py
-#
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+
+# author Daniel Gloger
+# author Martin Vermeer
+
 # This script converts an SVG image to something that latex can process
 # into high quality PostScript.
+
+# Full author contact details are available in file CREDITS
 
 # Usage:
 #   python svg2pstex.py ${base}.fig ${base}.pstex
