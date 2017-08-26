@@ -2,7 +2,14 @@
 # -*- coding: utf-8 -*-
 
 # file svg2pdftex.py
-#
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+
+# author Daniel Gloger
+# author Martin Vermeer
+
+# Full author contact details are available in file CREDITS
+
 # This script converts an SVG image to something that pdflatex can process
 # into high quality PDF.
 
@@ -19,10 +26,7 @@
 #   the real pdf file will be overwritten by a tex file named file.pdf.
 #
 
-
-
 import os, sys, re
-
 
 def runCommand(cmd):
     ''' Utility function:
@@ -31,7 +35,6 @@ def runCommand(cmd):
     if os.system(cmd) != 0:
         print "Command '%s' fails." % cmd
         sys.exit(1)
-
 
 # We expect two args, the names of the input and output files.
 if len(sys.argv) != 3:
@@ -45,8 +48,6 @@ if not os.path.isfile(input):
 
 # Strip the extension from ${output}
 outbase = os.path.splitext(output)[0]
-
-
 
 # Inkscape 0.48 can output the image as a PDF file ${base}.pdf and place the text 
 # in a LaTeX file ${base}.pdf_tex, which is renamed to ${output}, for typesetting 
