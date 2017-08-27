@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-08-10 08:00+0200\n"
-"PO-Revision-Date: 2017-08-10 06:08+0000\n"
+"POT-Creation-Date: 2017-08-13 22:16+0200\n"
+"PO-Revision-Date: 2017-08-27 08:29+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -64,10 +64,6 @@ msgstr "&Zavrieť"
 msgid "The bibliography key"
 msgstr "Kľúč literatúry"
 
-#: src/frontends/qt4/ui/BibitemUi.ui:25
-msgid "Ke&y:"
-msgstr "&Kľúč:"
-
 #: src/frontends/qt4/ui/BibitemUi.ui:35 src/frontends/qt4/ui/BibitemUi.ui:78
 msgid "The label as it appears in the document"
 msgstr "Značka ako sa zobrazí v dokumente"
@@ -76,84 +72,57 @@ msgstr "Značka ako sa zobrazí v dokumente"
 msgid "&Label:"
 msgstr "Z&načka:"
 
-#: src/frontends/qt4/ui/BibitemUi.ui:85
-msgid ""
-"Pass content of the `Label' field literally to LaTeX. Check this if you want "
-"to enter LaTeX code."
-msgstr ""
-"Podaj obsah poľa `Značka' priamo pre LaTeX. Označte toto keď vkladáte LaTeX "
-"kód."
-
-#: src/frontends/qt4/ui/BibitemUi.ui:88 src/frontends/qt4/ui/CitationUi.ui:368
-#: src/frontends/qt4/ui/HyperlinkUi.ui:80 src/frontends/qt4/ui/NomenclUi.ui:72
-#: src/frontends/qt4/ui/PrintindexUi.ui:74
-msgid "Li&teral"
-msgstr "Doslovne"
+#: src/frontends/qt4/ui/BibitemUi.ui:67
+msgid "&Key:"
+msgstr "&Kľúč:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:26
 msgid "Citation Style"
 msgstr "Štýl citovania"
 
-#: src/frontends/qt4/ui/BiblioUi.ui:55
-msgid "Sty&le format:"
-msgstr "Štý&l formátu:"
+#: src/frontends/qt4/ui/BiblioUi.ui:28
+msgid "Use BibTeX's default numerical styles"
+msgstr "Použiť štandardné BibTeX numerické štýly"
 
-#: src/frontends/qt4/ui/BiblioUi.ui:65
+#: src/frontends/qt4/ui/BiblioUi.ui:31
+msgid "&Default (numerical)"
+msgstr "Štan&dard (numerický)"
+
+#: src/frontends/qt4/ui/BiblioUi.ui:38
 msgid ""
-"A selection of different style format approaches (such as natbib) that "
-"respectively provide support for specific citation and bibliography styles. "
-"Expand to get more information."
+"Use the natbib styles for natural sciences and arts. Set additional "
+"parameters in document class options."
 msgstr ""
-"Výber iných formátových metód (ako napr. natbib) ktoré poskytujú podporu "
-"špecifických citácií a bibliografických štýlov. Rozviňte keď chcete viac "
-"informácií."
+"Použiť štýl natbib pre prírodné a umelecké odbory. Zadajte prídavné "
+"parametre v možnostiach pre triedu dokumentu."
 
-#: src/frontends/qt4/ui/BiblioUi.ui:75
-msgid "&Variant:"
-msgstr "&Variácia:"
+#: src/frontends/qt4/ui/BiblioUi.ui:41
+msgid "&Natbib"
+msgstr "&Natbib"
 
-#: src/frontends/qt4/ui/BiblioUi.ui:94
-msgid "Provides available cite style variants."
-msgstr "Poskytuje dostupné varianty štýlov citovania."
+#: src/frontends/qt4/ui/BiblioUi.ui:59
+msgid "Natbib &style:"
+msgstr "Natbib š&týl:"
 
-#: src/frontends/qt4/ui/BiblioUi.ui:118 src/frontends/qt4/GuiPrefs.cpp:826
-#: src/frontends/qt4/GuiPrefs.cpp:959
-msgid "Opt&ions:"
-msgstr "Možno&sti:"
+#: src/frontends/qt4/ui/BiblioUi.ui:97
+msgid "Use the jurabib styles for law and humanities"
+msgstr "Použiť štýl jurabib pre právne a humanitné odbory"
 
-#: src/frontends/qt4/ui/BiblioUi.ui:134
-msgid "Here you can enter further options of the bibliography package"
-msgstr "Tu môžte vložiť ďalšie voľby balíka pre bibliografické záznamy"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:154
-msgid "Biblatex &citation style:"
-msgstr "Štýl &biblatex-citácie:"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:164
-msgid "The style that determines the layout of the citations"
-msgstr "Štýl ktorý určuje schému citácií"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:180 src/frontends/qt4/ui/BiblioUi.ui:241
-#: src/frontends/qt4/ui/BiblioUi.ui:291
-msgid "Reset to the preset default"
-msgstr "Návrat na predvolený štandard"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:183
-msgid "Rese&t"
-msgstr "Vyn&ulovať"
+#: src/frontends/qt4/ui/BiblioUi.ui:100
+msgid "&Jurabib"
+msgstr "&Jurabib"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:201
 msgid "Bibliography Style"
 msgstr "Štýl Bibliografie"
 
-#: src/frontends/qt4/ui/BiblioUi.ui:215
-msgid "Biblate&x bibliography style:"
-msgstr "Štýl biblate&x-bibliografie:"
+#: src/frontends/qt4/ui/BiblioUi.ui:121
+msgid "Default st&yle:"
+msgstr "Štandardný štý&l:"
 
-#: src/frontends/qt4/ui/BiblioUi.ui:231
-msgid ""
-"The style that determines the layout of the biblatex-generated bibliography"
-msgstr "Stýl ktorý určí schému generovanej biblatex-bibliografie"
+#: src/frontends/qt4/ui/BiblioUi.ui:131
+msgid "Define the default BibTeX style"
+msgstr "Vyberte štandardný BibTeX štýl"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:244 src/frontends/qt4/ui/ColorUi.ui:73
 #: src/frontends/qt4/ui/ColorUi.ui:134 src/frontends/qt4/ui/ColorUi.ui:211
@@ -161,52 +130,13 @@ msgstr "Stýl ktorý určí schému generovanej biblatex-bibliografie"
 msgid "R&eset"
 msgstr "Vy&nulovať"
 
-#: src/frontends/qt4/ui/BiblioUi.ui:251
-msgid "Match biblatex bibliography with citation style"
-msgstr "Prispôsob biblatex-bibliografiu ku štýlu citácie"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:254
-msgid "&Match"
-msgstr "Pr&ispôsobiť"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:265
-msgid "Default BibTeX st&yle:"
-msgstr "Štandardný BibTeX-štýl:"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:281
-msgid ""
-"Here, you can define a BibTeX style that is suggested in the BibTeX dialog "
-"by default"
-msgstr ""
-"Tu môžte definovať ktorý BibTeX-štýl bude v dialógu štandardne navrhnutý"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:294
-msgid "&Reset"
-msgstr "&Vynulovať"
-
 #: src/frontends/qt4/ui/BiblioUi.ui:305
 msgid "Select this if you want to split your bibliography into sections"
 msgstr "Vyberte túto možnosť keď chcete rozdeliť bibliografiu na sekcie"
 
-#: src/frontends/qt4/ui/BiblioUi.ui:308
-msgid "Subdivided bibli&ography"
-msgstr "Rozčlenená bibli&ografia"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:328
-msgid "Rescan style files"
-msgstr "Znovu prehľadať súbory so štýlom"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:331
-msgid "Re&scan"
-msgstr "Znovu prehľadať"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:342
-msgid "&Multiple bibliographies:"
-msgstr "Via&cnásobné bibliografie:"
-
-#: src/frontends/qt4/ui/BiblioUi.ui:358
-msgid "Generate a bibliography per defined unit."
-msgstr "Vytvoriť bibliografiu pre každý definovaný celok."
+#: src/frontends/qt4/ui/BiblioUi.ui:143
+msgid "S&ectioned bibliography"
+msgstr "&Bibliografia (sekcie)"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:376
 msgid ""
@@ -300,9 +230,9 @@ msgstr "Zrušiť"
 msgid "BibTeX database to use"
 msgstr "BibTeX databáza na použitie"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:32
-msgid "Da&tabases"
-msgstr "Databázy"
+#: src/frontends/qt4/ui/BibtexUi.ui:256
+msgid "Databa&ses"
+msgstr "&Databázy"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:48
 msgid "Add a BibTeX database file"
@@ -384,17 +314,6 @@ msgstr "Pridať literatúru do obsahu"
 #: src/frontends/qt4/ui/BibtexUi.ui:222
 msgid "Add bibliography to &TOC"
 msgstr "Pridať &literatúru do obsahu"
-
-#: src/frontends/qt4/ui/BibtexUi.ui:231
-msgid "O&ptions:"
-msgstr "&Možnosti:"
-
-#: src/frontends/qt4/ui/BibtexUi.ui:241
-msgid ""
-"Options to the biblatex bibliography command. See the biblatex manual for "
-"details."
-msgstr ""
-"Voľby pre príkaz na biblatex-bibliografie. Pre detaily viď biblatex manuál."
 
 #: src/frontends/qt4/ui/BibtexUi.ui:283 src/frontends/qt4/ui/CharacterUi.ui:357
 #: src/frontends/qt4/ui/CitationUi.ui:453
@@ -623,10 +542,6 @@ msgstr "&Dostupné vetvy:"
 #: src/frontends/qt4/ui/BranchUi.ui:30
 msgid "Select your branch"
 msgstr "Vyberte svoju vetvu"
-
-#: src/frontends/qt4/ui/BranchUi.ui:37
-msgid "Inverted"
-msgstr "Invertované"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25
 msgid "&New:[[branch]]"
@@ -1047,61 +962,21 @@ msgstr "Formátovanie"
 msgid "Citation st&yle:"
 msgstr "Štý&l citácie:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:289 src/frontends/qt4/GuiCitation.cpp:298
-msgid "Text befo&re:"
+#: src/frontends/qt4/ui/CitationUi.ui:293
+msgid "Text &before:"
 msgstr "&Text pred:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:309
 msgid "Citation style to use, if different styles are provided"
 msgstr "Použitý štýl citácie, v prípade keď je viacej prístupných štýlov"
 
-#: src/frontends/qt4/ui/CitationUi.ui:318 src/frontends/qt4/GuiCitation.cpp:302
-msgid ""
-"Text that precedes the reference (e.g., \"cf.\"), if the current citation "
-"style supports this."
-msgstr ""
-"Text predchádzajúci referencie (napr., \"por.\"), keď to aktuálny štýl "
-"citácie podporuje."
-
 #: src/frontends/qt4/ui/CitationUi.ui:325 src/frontends/qt4/GuiCitation.cpp:304
 msgid "&Text after:"
 msgstr "Te&xt za:"
 
-#: src/frontends/qt4/ui/CitationUi.ui:335 src/frontends/qt4/GuiCitation.cpp:308
-msgid ""
-"Text that follows the reference (e.g., pages), if the current citation style "
-"supports this."
-msgstr ""
-"Text nasledujúci referencie (napr., strany), keď to aktuálny štýl citácie "
-"podporuje."
-
-#: src/frontends/qt4/ui/CitationUi.ui:365
-msgid ""
-"Pass content of `Text before' and `Text after' fields literally to LaTeX. "
-"Check this if you want to enter LaTeX code."
-msgstr ""
-"Podaj obsah poľa `Text pred' a `Text za' priamo pre LaTeX. Označte toto keď "
-"vkladáte LaTeX kód."
-
-#: src/frontends/qt4/ui/CitationUi.ui:388
-msgid ""
-"Force upper case in names (\"Del Piero\", not \"del Piero\"), if the current "
-"citation style supports this."
-msgstr ""
-"Vynúti veľké prvé písmená v menách (\"Del Piero\", miesto \"del Piero\"), "
-"keď to aktuálny štýl citácie podporuje."
-
 #: src/frontends/qt4/ui/CitationUi.ui:391
 msgid "Force upcas&ing"
 msgstr "Vynútiť v&eľké písmo"
-
-#: src/frontends/qt4/ui/CitationUi.ui:398 src/frontends/qt4/GuiCitation.cpp:351
-msgid ""
-"Always list all authors (rather than using \"et al.\"), if the current "
-"citation style supports this."
-msgstr ""
-"Vynúti výpis všetkých autorov (miesto použitia \"a kol.\") keď to aktuálny "
-"štýl citácie podporuje. "
 
 #: src/frontends/qt4/ui/CitationUi.ui:401 src/frontends/qt4/GuiCitation.cpp:347
 msgid "All aut&hors"
@@ -1717,11 +1592,11 @@ msgstr ""
 "&Základná\n"
 "veľkosť:"
 
-#: src/frontends/qt4/ui/FontUi.ui:81
-msgid "&LaTeX font encoding:"
+#: src/frontends/qt4/ui/FontUi.ui:77
+msgid "LaTe&X font encoding:"
 msgstr ""
 "Kódovanie\n"
-"písma &LaTeX:"
+"písma LaTe&X:"
 
 #: src/frontends/qt4/ui/FontUi.ui:96 src/frontends/qt4/ui/PrefLatexUi.ui:44
 msgid "Specify the font encoding (e.g., T1)."
@@ -1802,30 +1677,6 @@ msgstr "Použiť číslice minuskové, nie verzálové"
 #: src/frontends/qt4/ui/FontUi.ui:283
 msgid "Use &old style figures"
 msgstr "Použiť min&uskové číslice (old style figures)"
-
-#: src/frontends/qt4/ui/FontUi.ui:290
-msgid ""
-"Activate extensions such as character protrusion and font expansion via the "
-"microtype package"
-msgstr ""
-"Aktivovať rozšírenia ako napr. vysunutie znakov a roztiahnutie fontu pomocou "
-"balíka microtype"
-
-#: src/frontends/qt4/ui/FontUi.ui:293
-msgid "Enable micr&o-typographic extensions"
-msgstr "Povoliť mikr&o-typografické rozšírenia"
-
-#: src/frontends/qt4/ui/FontUi.ui:300
-msgid ""
-"Use font ligatures -- and --- instead of \\textendash and \\textemdash for "
-"en- and em-dashes"
-msgstr ""
-"Použiť zliatky fontu pre '--' a '---' namiesto \\textendash a \\textemdash "
-"pre en a em čiarky"
-
-#: src/frontends/qt4/ui/FontUi.ui:303
-msgid "Output en- and &em-dashes as ligatures"
-msgstr "Výstup pre en a em čiarky ako zliatky"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
@@ -2042,14 +1893,6 @@ msgstr "Názov asociovaný s URL"
 msgid "&Name:"
 msgstr "&Meno:"
 
-#: src/frontends/qt4/ui/HyperlinkUi.ui:77
-msgid ""
-"Pass content of the `Name' field literally to LaTeX. Check this if you want "
-"to enter LaTeX code."
-msgstr ""
-"Podaj obsah poľa `Meno' priamo pre LaTeX. Označte toto keď vkladáte LaTeX "
-"kód."
-
 #: src/frontends/qt4/ui/HyperlinkUi.ui:106
 msgid "Specify the link target"
 msgstr "Nastaviť ciel odkazu"
@@ -2070,17 +1913,17 @@ msgstr "&Web"
 msgid "Link to an email address"
 msgstr "Odkaz na e-mailovú adresu"
 
-#: src/frontends/qt4/ui/HyperlinkUi.ui:146
-msgid "E&mail"
-msgstr "Ema&il"
+#: src/frontends/qt4/ui/HyperlinkUi.ui:90
+msgid "&Email"
+msgstr "&E-mail"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:153
 msgid "Link to a file"
 msgstr "Odkaz na súbor"
 
-#: src/frontends/qt4/ui/HyperlinkUi.ui:156
-msgid "Fi&le"
-msgstr "Súbo&r"
+#: src/frontends/qt4/ui/HyperlinkUi.ui:100
+msgid "&File"
+msgstr "&Súbor"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:36
 msgid "Listing Parameters"
@@ -2339,10 +2182,6 @@ msgstr "&Použiť refstyle (nie prettyref) pre krížové referencie"
 msgid "&Quote style:"
 msgstr "&Typ úvodzoviek:"
 
-#: src/frontends/qt4/ui/LanguageUi.ui:84
-msgid "Language pa&ckage:"
-msgstr "Jazykový balí&k:"
-
 #: src/frontends/qt4/ui/LanguageUi.ui:94
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:52
 msgid "Select which language package LyX should use"
@@ -2359,26 +2198,17 @@ msgstr ""
 msgid "Encoding"
 msgstr "Kódovanie"
 
-#: src/frontends/qt4/ui/LanguageUi.ui:147
-msgid "Lan&guage default"
+#: src/frontends/qt4/ui/LanguageUi.ui:81
+msgid "Language &default"
 msgstr "Štan&dardné pre daný jazyk"
 
-#: src/frontends/qt4/ui/LanguageUi.ui:170
-msgid "Othe&r:"
+#: src/frontends/qt4/ui/LanguageUi.ui:104
+msgid "&Other:"
 msgstr "&Iné:"
 
-#: src/frontends/qt4/ui/LanguageUi.ui:190
-msgid ""
-"Output quotation marks that automatically adapt to the style selected above. "
-"If this is not selected, the quotation marks will stick with the style they "
-"have been inserted with."
-msgstr ""
-"Vytvor úvodzovky ktoré sa automaticky prispôsobia ku vybranému štýlu. Bez "
-"výberu sa úvodzovky držia štýlu v akom boli vložené. "
-
-#: src/frontends/qt4/ui/LanguageUi.ui:193
-msgid "Use d&ynamic quotation marks"
-msgstr "Použiť d&ynamické úvodzovky"
+#: src/frontends/qt4/ui/LanguageUi.ui:126
+msgid "Language pac&kage:"
+msgstr "Jazykový balí&k:"
 
 #: src/frontends/qt4/ui/LineUi.ui:22
 msgid "Of&fset:"
@@ -2408,14 +2238,6 @@ msgstr "Vložte sem parametre výpisu"
 #: src/frontends/qt4/ui/ListingsUi.ui:477
 msgid "Feedback window"
 msgstr "Okno pre odozvu"
-
-#: src/frontends/qt4/ui/ListingsSettingsUi.ui:92
-msgid "Choose the LaTeX package for code syntax highlighting"
-msgstr "Vyberte LaTeX-balík na zdôraznenie syntaxu kódu"
-
-#: src/frontends/qt4/ui/ListingsSettingsUi.ui:95
-msgid "&Syntax Highlighting Package:"
-msgstr "Balík na Zdôraznenie &Syntaxu:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:324
 #: lib/layouts/stdinsets.inc:330 lib/layouts/stdinsets.inc:375
@@ -2791,25 +2613,9 @@ msgstr "Vžd&y Použiť"
 msgid "Do &Not Load"
 msgstr "&Nepoužívať"
 
-#: src/frontends/qt4/ui/MathsUi.ui:48
-msgid "Indent displayed formulas instead of centering"
-msgstr "Odsadiť exponované vzorce namiesto vystreďovania"
-
-#: src/frontends/qt4/ui/MathsUi.ui:51
-msgid "Indent &Formulas"
-msgstr "Odsadiť Vzorce"
-
 #: src/frontends/qt4/ui/MathsUi.ui:67 src/frontends/qt4/ui/TextLayoutUi.ui:48
 msgid "Size of the indentation"
 msgstr "Veľkosť odsadzovania"
-
-#: src/frontends/qt4/ui/MathsUi.ui:141
-msgid "Formula numbering side:"
-msgstr "Bok číslovania vzorcov:"
-
-#: src/frontends/qt4/ui/MathsUi.ui:157
-msgid "Side where formulas are numbered"
-msgstr "Na ktorom boku sú vzorce číslované"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:60
 msgid "A&vailable:"
@@ -2833,25 +2639,17 @@ msgstr "&Vybrané:"
 msgid "Nomenclature"
 msgstr "Nomenklatúra"
 
-#: src/frontends/qt4/ui/NomenclUi.ui:22
-msgid "Sy&mbol:"
-msgstr "&Symbol:"
-
-#: src/frontends/qt4/ui/NomenclUi.ui:39
-msgid "Des&cription:"
-msgstr "&Opis:"
-
 #: src/frontends/qt4/ui/NomenclUi.ui:56
 msgid "Sort &as:"
 msgstr "&Triediť ako:"
 
-#: src/frontends/qt4/ui/NomenclUi.ui:69
-msgid ""
-"Pass content of the `Symbol' and `Description' fields literally to LaTeX. "
-"Check this if you want to enter LaTeX code."
-msgstr ""
-"Podaj obsah poľa `Symbol' a `Opis' priamo pre LaTeX. Označte toto keď "
-"vkladáte LaTeX kód."
+#: src/frontends/qt4/ui/NomenclUi.ui:38
+msgid "&Description:"
+msgstr "O&pis:"
+
+#: src/frontends/qt4/ui/NomenclUi.ui:48
+msgid "&Symbol:"
+msgstr "&Symbol:"
 
 #: src/frontends/qt4/ui/NoteUi.ui:48 src/frontends/qt4/ui/PhantomUi.ui:48
 msgid "Type"
@@ -2907,31 +2705,21 @@ msgstr "LyX-Formát"
 
 #: src/frontends/qt4/ui/OutputUi.ui:98
 msgid ""
-"Save all parameters in the LyX file, including ones that are frequently "
-"switched or that are specific to the user (such as the output of the tracked "
-"changes, or the document directory path). Disabling this option plays nicer "
-"in collaborative settings and with version control systems."
+"Save all parameters in the LyX file, including ones that are\n"
+"frequently switched or that are specific to the user (such\n"
+"as the output of the tracked changes, or the document\n"
+"directory path). Disabling this option plays nicer in\n"
+"collaborative settings and with version control systems."
 msgstr ""
-"Uloží všetky parametre do LyX súboru, včetne aj také ktoré sa často "
-"prepínajú alebo sú zvláštne ohľadom na používateľa (také ako napr. výstup "
-"sledovaných zmien, alebo cesta adresára dokumentu). Vypnutie tejto voľby je "
-"vhodnejšie ako pre spoluprácu tak i pri používaniu správe verzií."
+"Uloží všetky parametre do LyX súboru, včetne aj také ktoré sa\n"
+"často prepínajú alebo sú zvláštne ohľadom na používateľa (také ako\n"
+"napr. výstup sledovaných zmien, alebo cesta adresára dokumentu).\n"
+"Vypnutie tejto voľby je vhodnejšie ako pre spoluprácu\n"
+"tak i pri používaniu správe verzií."
 
 #: src/frontends/qt4/ui/OutputUi.ui:101
 msgid "Save &transient properties"
 msgstr "Ulož &prechodné vlastnosti"
-
-#: src/frontends/qt4/ui/OutputUi.ui:111
-msgid ""
-"Runs the LaTeX backend with the -shell-escape option (Warning: use only when "
-"really necessary)"
-msgstr ""
-"Spúšťa LaTeX backend s voľbou -shell-escape (Varovanie: použiť len keď "
-"naozaj potrebné)"
-
-#: src/frontends/qt4/ui/OutputUi.ui:114
-msgid "&Allow running external programs"
-msgstr "Po&voliť spúšťanie externých príkazov"
 
 #: src/frontends/qt4/ui/OutputUi.ui:111
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
@@ -3422,32 +3210,6 @@ msgstr "Z&apnutá"
 msgid "Maximum a&ge (in days):"
 msgstr "Živo&tnosť (v dňoch):"
 
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:292
-msgid "Security"
-msgstr "Bezpečnosť"
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:312
-msgid "&Forbid use of needauth converters"
-msgstr "&Zakázať overujúce konvertory"
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:315
-msgid ""
-"When enabled, use of converters with the 'needauth' option is forbidden."
-msgstr ""
-"Keď aktívne, používanie konvertorov s 'needauth' voľbou je neprístupné."
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:322
-msgid "Use need&auth option"
-msgstr "Použi needa&uth voľbu"
-
-#: src/frontends/qt4/ui/PrefConvertersUi.ui:325
-msgid ""
-"When enabled, ask user before launching any external converter with the "
-"'needauth' option."
-msgstr ""
-"Keď aktívne, žiadaj o dovolenie pred každým spustením externého konvertora s "
-"'needauth' voľbou."
-
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:31
 msgid "Display &graphics"
 msgstr "Zobraziť &grafiku"
@@ -3529,10 +3291,11 @@ msgstr "minút"
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:145
 msgid ""
 "If this is checked, new documents will be saved in a compressed binary-"
-"format by default. Existing documents will still be saved in their current "
-"state (compressed or uncompressed)."
+"format by default.\n"
+"Existing documents will still be saved in their current state (compressed or "
+"uncompressed)."
 msgstr ""
-"Keď zaškrtnuté, nové dokumenty sa štandardne budú ukladať komprimované. "
+"Keď zaškrtnuté, nové dokumenty sa štandardne budú ukladať komprimované.\n"
 "Ukladanie existujúcich dokumentov zostáva v ich aktuánom stave (komprimované "
 "či nekomprimované)."
 
@@ -3543,11 +3306,12 @@ msgstr "Štandardne &ukladať nové dokumenty komprimované"
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
 msgid ""
 "If this is checked, the document directory path will be saved in the "
-"document. This allows moving the document elsewhere and still finding the "
-"included files."
+"document.\n"
+"This allows moving the document elsewhere and still finding the included "
+"files."
 msgstr ""
-"Keď zaškrtnuté, adresár dokumentu sa zapíše do dokumentu. Dovolí sa tým "
-"premiestniť dokument niekde inde a predsa nájsť vložené súbory."
+"Keď zaškrtnuté, adresár dokumentu sa zapíše do dokumentu.\n"
+"Dovolí sa tým premiestniť dokument niekde inde a predsa nájsť vložené súbory."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:158
 msgid "Save the &document directory path"
@@ -3563,11 +3327,12 @@ msgstr "&Otvoriť dokumenty v kartách"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:184
 msgid ""
-"Whether to open documents in an already running instance of LyX. (Set the "
-"LyXServer pipe path and restart LyX to enable this feature)"
+"Whether to open documents in an already running instance of LyX.\n"
+"(Set the LyXServer pipe path and restart LyX to enable this feature)"
 msgstr ""
-"Či otvoriť dokumenty v už spustenej inštancii LyX-a. (Nastaviť cestu k "
-"dátovodu pre LyXServer a reštartovať LyX umožní túto vlastnosť)"
+"Či otvoriť dokumenty v už spustenej inštancii LyX-a.\n"
+"(Nastaviť cestu k dátovodu pre LyXServer a reštartovať LyX umožní túto "
+"vlastnosť)"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:187
 msgid "Use s&ingle instance"
@@ -3981,10 +3746,6 @@ msgid "Optional paper size flag (-paper) for some DVI viewers"
 msgstr ""
 "Voliteľný indikátor veľkosti papiera (-paper) pre niektoré DVI prehliadače"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:107
-msgid "P&rocessor:"
-msgstr "Pro&cesor:"
-
 #: src/frontends/qt4/ui/PrefLatexUi.ui:130
 msgid "BibTeX command and options"
 msgstr "Príkaz a voľby pre BibTeX"
@@ -3994,13 +3755,13 @@ msgstr "Príkaz a voľby pre BibTeX"
 msgid "Processor for &Japanese:"
 msgstr "Generátor pre &Japončinu:"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:150
-msgid "Options:"
-msgstr "Možnosti:"
-
 #: src/frontends/qt4/ui/PrefLatexUi.ui:160
 msgid "Specific BibTeX command and options for pLaTeX (Japanese)"
 msgstr "BibTeX príkaz a voľby pre pLaTeX (Japonsky)"
+
+#: src/frontends/qt4/ui/PrefLatexUi.ui:173
+msgid "Pr&ocessor:"
+msgstr "&Generátor:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:232
 msgid "Index command and options (makeindex, xindy)"
@@ -4014,27 +3775,31 @@ msgstr "Špecifický register-príkaz a voľby pre pLaTeX (Japonsky)"
 msgid "Command and options for nomencl (usually makeindex)"
 msgstr "Príkaz a voľby pre nomenklatúru (bežne makeindex)"
 
+#: src/frontends/qt4/ui/PrefLatexUi.ui:265
+msgid "Chec&kTeX command:"
+msgstr "Príkaz Chec&kTeX:"
+
 #: src/frontends/qt4/ui/PrefLatexUi.ui:292
 msgid "CheckTeX start options and flags"
 msgstr "Začiatočné voľby a indikátory pre CheckTeX"
 
-#: src/frontends/qt4/ui/PrefLatexUi.ui:299
-msgid "&CheckTeX command:"
-msgstr "Príkaz Chec&kTeX:"
+#: src/frontends/qt4/ui/PrefLatexUi.ui:285
+msgid ""
+"Select whether LyX should output Windows or Cygwin style paths to LaTeX "
+"files.\n"
+"Change the default only if the TeX engine was not correctly detected at "
+"configure time.\n"
+"Warning: Your changes here will not be saved."
+msgstr ""
+"Vyberte, či by LyX mal písať cesty do LaTeX-súborov v štýle Windows alebo "
+"Cygwin.\n"
+"Zmeňte štandardné nastavenie len keď sa už nenašiel správny TeX počas "
+"konfigurácie.\n"
+"Varovanie: Tieto vaše zmeny nebudú uložené."
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:309
 msgid "&Nomenclature command:"
 msgstr "P&ríkaz nomenklatúry:"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:324
-msgid ""
-"Select whether LyX should output Windows or Cygwin style paths to LaTeX "
-"files. Change the default only if the TeX engine was not correctly detected "
-"at configure time. Warning: Your changes here will not be saved."
-msgstr ""
-"Vyberte, či by LyX mal písať cesty do LaTeX-súborov v štýle Windows alebo "
-"Cygwin. Zmeňte štandardné nastavenie len keď sa už nenašiel správny TeX "
-"počas konfigurácie. Varovanie: Tieto vaše zmeny nebudú uložené."
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:330
 msgid "&Use Windows-style paths in LaTeX files"
@@ -4123,45 +3888,13 @@ msgstr "Len hlavný súbor"
 msgid "All files"
 msgstr "Všetky súbory"
 
-#: src/frontends/qt4/ui/PrefPathsUi.ui:25
-msgid ""
-"Relative and absolute paths are allowed. Relative paths will be expanded "
-"with respect to the working directory (WD). For all paths except the "
-"\"TEXINPUTS prefix\" the WD is the directory from which you start LyX, and "
-"thus could change for each LyX session. For the \"TEXINPUTS prefix\" path "
-"the WD is the directory containing the document. The path \".\" (without "
-"quotes) is a common example of a relative path and refers to the WD."
-msgstr ""
-"Relatívne i absolútne cesty sú dovolené. Relatívne cesty sa rozvinú s "
-"ohľadom na pracovný adresár (PA). Pre každú cestu s výnimkou \"TEXINPUTS-"
-"prefix\" PA je adresár z ktorého bol LyX štartovaný, čiže sa môže meniť pri "
-"každom LyX-sedení. Pre \"TEXINPUTS prefix\" cestu, PA je adresár obsahujúci "
-"editovaný dokument. Cesta \".\" (bez úvodzoviek) je bežným príkladom "
-"relatívnej cesty ktorý referuje PA. "
-
 #: src/frontends/qt4/ui/PrefPathsUi.ui:35
 msgid "&PATH prefix:"
 msgstr "P&refix cesty:"
 
-#: src/frontends/qt4/ui/PrefPathsUi.ui:45
-msgid ""
-"Specify those directories which should be prepended to the PATH environment "
-"variable. Use the OS native format."
-msgstr ""
-"Určite adresári, ktoré by mali byť pridané do premennej PATH pred ostatnými "
-"adresármi. Použite miestny formát pre daný operačný systém."
-
 #: src/frontends/qt4/ui/PrefPathsUi.ui:52
 msgid "TEX&INPUTS prefix:"
 msgstr "Prefix pre TEX&INPUTS:"
-
-#: src/frontends/qt4/ui/PrefPathsUi.ui:62
-msgid ""
-"Specify those directories which should be prepended to the TEXINPUTS "
-"environment variable. Use the OS native format."
-msgstr ""
-"Určite adresári, ktoré by mali byť pridané do premennej TEXINPUTS. Použite "
-"miestny formát pre daný operačný systém."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:69
 #: src/frontends/qt4/ui/PrefPathsUi.ui:92
@@ -4218,9 +3951,9 @@ msgstr "S&trojopisné:"
 msgid "R&oman:"
 msgstr "&Serifové:"
 
-#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:209
-msgid "Default &zoom %:"
-msgstr "Štandardná &lupa %:"
+#: src/frontends/qt4/ui/PrefScreenFontsUi.ui:169
+msgid "&Zoom %:"
+msgstr "&Lupa %:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:246
 msgid "Font Sizes"
@@ -4346,11 +4079,11 @@ msgstr "Sada &ikon:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:84
 msgid ""
-"The icon set to use. Warning: normal size of icons may be wrong until you "
-"save the preferences and restart LyX."
+"The icon set to use. Warning: normal size of icons may be\n"
+"wrong until you save the preferences and restart LyX."
 msgstr ""
-"Sada ikon na použitie. Pozor: Normálny rozmer ikon môže byť nevhodný až kým "
-"sa neuložia nastavenia a reštartuje LyX."
+"Sada ikon na použitie. Pozor: Normálny rozmer ikon môže byť\n"
+"nevhodný až kým sa neuložia nastavenia a reštartuje LyX."
 
 #: src/frontends/qt4/ui/PrefUi.ui:108
 msgid "Use icons from system's &theme"
@@ -4406,10 +4139,6 @@ msgstr ""
 "Vlastná hodnota. &quot;Odsadzovanie Zoznamov&quot; je treba nastaviť na "
 "&quot;Vlastné&quot;."
 
-#: src/frontends/qt4/ui/PrintindexUi.ui:40
-msgid "Avai&lable indexes:"
-msgstr "&Dostupné registre:"
-
 #: src/frontends/qt4/ui/PrintindexUi.ui:50
 msgid "Select the index that shall be printed at this place of the document."
 msgstr ""
@@ -4424,12 +4153,9 @@ msgstr ""
 msgid "&Subindex"
 msgstr "&Pod-register"
 
-#: src/frontends/qt4/ui/PrintindexUi.ui:71
-msgid ""
-"Pass index names literally to LaTeX. Check this if you want to use LaTeX "
-"code in index names."
-msgstr ""
-"Podaj mená registrov priamo pre LaTeX. Označte toto keď vkladáte LaTeX kód."
+#: src/frontends/qt4/ui/PrintindexUi.ui:79
+msgid "A&vailable indexes:"
+msgstr "&Dostupné registre:"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90 src/frontends/qt4/GuiPrefs.cpp:254
 msgid "Output"
@@ -4575,45 +4301,9 @@ msgstr "Formátovaná referencia"
 msgid "Textual reference"
 msgstr "Textová referencia"
 
-#: src/frontends/qt4/ui/RefUi.ui:290
-msgid "Label only"
-msgstr "Len heslo"
-
 #: src/frontends/qt4/ui/RefUi.ui:323
 msgid "Update the label list"
 msgstr "Aktualizovať prehľad značiek"
-
-#: src/frontends/qt4/ui/RefUi.ui:389
-msgid ""
-"Use plural form of formatted reference. (Works only for formatted "
-"references, and only if you are using refstyle.)"
-msgstr ""
-"Použiť množné číslo formátovanej referencie. (Funguje len pri formátovaných "
-"referenciách, a len keď používate refstyle.)"
-
-#: src/frontends/qt4/ui/RefUi.ui:392
-msgid "Plural"
-msgstr "Plurál"
-
-#: src/frontends/qt4/ui/RefUi.ui:399
-msgid ""
-"Use capitalized form of formatted reference. (Works only for formatted "
-"references, and only if you are using refstyle.)"
-msgstr ""
-"Použiť veľké písmená pri formátovanej referencie. (Funguje len pri "
-"formátovaných referenciách, a len keď používate refstyle.)"
-
-#: src/frontends/qt4/ui/RefUi.ui:402
-msgid "Capitalized"
-msgstr "Veľké písmená"
-
-#: src/frontends/qt4/ui/RefUi.ui:409
-msgid "Do not output part of label before \":\""
-msgstr "Neukazovať časť hesla ktorá je pred \":\""
-
-#: src/frontends/qt4/ui/RefUi.ui:412
-msgid "No Prefix"
-msgstr "Bez Prefixu"
 
 #: src/frontends/qt4/ui/SearchUi.ui:101
 msgid "Case &sensitive[[search]]"
@@ -5108,14 +4798,6 @@ msgstr "BibTeX štýly"
 msgid "BibTeX databases"
 msgstr "BibTeX databázy"
 
-#: src/frontends/qt4/ui/TexinfoUi.ui:185
-msgid "Biblatex bibliography styles"
-msgstr "Štýly pre biblatex-bibliografiu"
-
-#: src/frontends/qt4/ui/TexinfoUi.ui:190
-msgid "Biblatex citation styles"
-msgstr "Štýly pre Biblatex-citáciu"
-
 #: src/frontends/qt4/ui/TexinfoUi.ui:214
 msgid "Toggles view of the file list"
 msgstr "Prepne zobrazenie prehľadu súborov"
@@ -5399,18 +5081,6 @@ msgstr "Povoľuje premenlivé umiestnenie"
 msgid "Allow &floating"
 msgstr "U&možniť plávajúce objekty"
 
-#: lib/citeengines/basic.citeengine:2
-msgid "Basic (BibTeX)"
-msgstr "Základné (BibTeX)"
-
-#: lib/citeengines/basic.citeengine:6
-msgid ""
-"The basic citation capabilities provided by BibTeX. Mainly simple numeric "
-"styles primarily suitable for science and maths."
-msgstr ""
-"Základné kapacity citácie poskytnuté BibTeXom. Hlavne jednoduché číselné "
-"štýly, najmä vhodné pre vedu a matematiku."
-
 #: lib/citeengines/basic.citeengine:51
 #: lib/citeengines/biblatex-natbib.citeengine:137
 #: lib/citeengines/biblatex.citeengine:128
@@ -5425,154 +5095,17 @@ msgstr "necitované"
 msgid "Add to bibliography only."
 msgstr "Pridať len do bibliografie."
 
-#: lib/citeengines/basic.citeengine:53
-#: lib/citeengines/biblatex-natbib.citeengine:139
-#: lib/citeengines/biblatex.citeengine:130
-#: lib/citeengines/jurabib.citeengine:122
-#: lib/citeengines/natbib.citeengine:120
-msgid "Key only."
-msgstr "Len kľúč."
-
-#: lib/citeengines/basic.citeengine:54
-#: lib/citeengines/biblatex-natbib.citeengine:140
-#: lib/citeengines/biblatex.citeengine:131
-#: lib/citeengines/jurabib.citeengine:123
-#: lib/citeengines/natbib.citeengine:121
-msgid "Key"
-msgstr "Kľúč"
-
-#: lib/citeengines/biblatex-natbib.citeengine:2
-msgid "Biblatex (natbib mode)"
-msgstr "Biblatex (na spôsob natbib)"
-
-#: lib/citeengines/biblatex-natbib.citeengine:10
-msgid ""
-"This Biblatex variety emulates the Natbib citation commands and thus is best "
-"suited for switching from Natbib (or the pre-LyX 2.3 Biblatex workaround) to "
-"Biblatex. The natbib mode supports slightly different and a few more styles "
-"than normal Biblatex. As with normal Biblatex, the use of 'biber' as "
-"Bibliography processor is advised."
-msgstr ""
-"Tento druh Biblatex-u emuluje príkazy pre Natbib citácie. Je preto vhodný "
-"prechod z Natbib (alebo riešenie pre Biblatex pred verziou LyX 2.3) na "
-"Biblatex. Spôsob natbib podporuje mierne odlišné a niekoľko viacej štýlov "
-"ako normálny Biblatex. Ako aj s normálnym Biblatex, doporučuje sa použiť "
-"'biber' ako procesor pre bibliografiu."
-
-#: lib/citeengines/biblatex-natbib.citeengine:142
-#: lib/citeengines/biblatex.citeengine:132
-msgid "Footnote"
-msgstr "Poznámka pod čiarou"
-
-#: lib/citeengines/biblatex-natbib.citeengine:143
-#: lib/citeengines/biblatex.citeengine:133
-msgid "Foot"
-msgstr "Päta"
-
 #: lib/citeengines/biblatex-natbib.citeengine:144
 #: lib/citeengines/biblatex.citeengine:134
 #: lib/citeengines/jurabib.citeengine:124
 msgid "bibliography entry"
 msgstr "zápis do bibliografie"
 
-#: lib/citeengines/biblatex-natbib.citeengine:145
-#: lib/citeengines/biblatex.citeengine:135
-msgid "Full bibliography entry."
-msgstr "Plný zápis bibliografie."
-
-#: lib/citeengines/biblatex-natbib.citeengine:146
-#: lib/citeengines/biblatex.citeengine:136
-msgid "Autocite"
-msgstr "Automaticky citovať"
-
-#: lib/citeengines/biblatex-natbib.citeengine:147
-#: lib/citeengines/biblatex.citeengine:137
-msgid "Auto"
-msgstr "Automaticky"
-
-#: lib/citeengines/biblatex-natbib.citeengine:149
-#: lib/citeengines/biblatex.citeengine:141
-msgid "F&orce full title[[Possible substitute to All aut&hors]]"
-msgstr "Vnútiť plný titul"
-
-#: lib/citeengines/biblatex-natbib.citeengine:150
-#: lib/citeengines/biblatex.citeengine:142
-msgid "Use full title even if shorttitle exists"
-msgstr "Použiť plný titul aj keď krátky titul existuje"
-
-#: lib/citeengines/biblatex-natbib.citeengine:152
-#: lib/citeengines/biblatex.citeengine:144
-#: lib/citeengines/jurabib.citeengine:129
-#: lib/citeengines/natbib.citeengine:123
-msgid " et al."
-msgstr " a kol."
-
-#: lib/citeengines/biblatex-natbib.citeengine:153
-#: lib/citeengines/biblatex.citeengine:145
-#: lib/citeengines/natbib.citeengine:124 lib/layouts/stdciteformats.inc:27
-msgid ", [[separate author names in citation, except for last name]]"
-msgstr ", "
-
-#: lib/citeengines/biblatex-natbib.citeengine:154
-#: lib/citeengines/biblatex.citeengine:146
-#: lib/citeengines/natbib.citeengine:125 lib/layouts/stdciteformats.inc:28
-msgid ", and [[separate name of last author in citation]]"
-msgstr ", a "
-
-#: lib/citeengines/biblatex-natbib.citeengine:155
-#: lib/citeengines/biblatex.citeengine:147
-#: lib/citeengines/natbib.citeengine:126 lib/layouts/stdciteformats.inc:29
-msgid " and [[separate two authors in citation]]"
-msgstr " a "
-
-#: lib/citeengines/biblatex-natbib.citeengine:299
-#: lib/citeengines/biblatex.citeengine:283
-msgid "Super"
-msgstr "Super"
-
 #: lib/citeengines/biblatex-natbib.citeengine:300
 #: lib/citeengines/biblatex.citeengine:284 lib/ui/stdtoolbars.inc:180
 #: src/insets/InsetScript.cpp:64
 msgid "Superscript"
 msgstr "Horný index"
-
-#: lib/citeengines/biblatex.citeengine:2 src/insets/InsetBibtex.cpp:155
-msgid "Biblatex"
-msgstr "Biblatex"
-
-#: lib/citeengines/biblatex.citeengine:8
-msgid ""
-"Biblatex supports many author-year and numerical styles. It is mainly aimed "
-"at the Humanities. It is highly customizable, fully localized and provides "
-"many features that are not possible with BibTeX. The use of 'biber' as "
-"bibliography processor is advised."
-msgstr ""
-"Biblatex podporuje mnoho autor-rok a číselné štýly. Cieli hlavne na duchovné "
-"vedy. Je nesmierne prispôsobivý, plno lokalizovaný a poskytuje mnohé funkcie "
-"ktoré nie sú možné s BibTeX. Doporučuje sa použiť 'biber' ako procesor pre "
-"bibliografiu."
-
-#: lib/citeengines/biblatex.citeengine:139
-msgid "S&horten author list[[Possible substitute to All aut&hors]]"
-msgstr "Skrátiť súpis autorov"
-
-#: lib/citeengines/biblatex.citeengine:140
-msgid "Force a short author list (using et al.)"
-msgstr "Vnútiť krátky súpis autorov (použitím a kol.)"
-
-#: lib/citeengines/jurabib.citeengine:2
-msgid "Jurabib (BibTeX)"
-msgstr "Jurabib (BibTeX)"
-
-#: lib/citeengines/jurabib.citeengine:7
-msgid ""
-"Jurabib supports a range of author-year styles primarily suitable for law "
-"studies and the Humanities. It includes localizations for English, German, "
-"French, Dutch, Spanish and Italian."
-msgstr ""
-"Jurabib podporuje množstvo autor-rok štýlov pre študentov práv a duchovných "
-"vied. Obsahuje lokalizácie pre angličtinu, nemčinu, francúzštinu, "
-"holandčinu, španielčina a taliančinu."
 
 #: lib/citeengines/jurabib.citeengine:125
 msgid "Bibliography entry."
@@ -5585,28 +5118,6 @@ msgstr "pred"
 #: lib/citeengines/jurabib.citeengine:127
 msgid "short title"
 msgstr "krátky titul"
-
-#: lib/citeengines/jurabib.citeengine:130
-#: lib/citeengines/jurabib.citeengine:131
-#: lib/citeengines/jurabib.citeengine:132
-msgid "/"
-msgstr "/"
-
-#: lib/citeengines/natbib.citeengine:2
-msgid "Natbib (BibTeX)"
-msgstr "Natbib (BibTeX)"
-
-#: lib/citeengines/natbib.citeengine:8
-msgid ""
-"Natbib supports a range of both author-year and numerical styles mainly "
-"aimed at the Humanities. It features automatic sorting and merging of "
-"numerical citations, annotations, capitalization of the `van' part of author "
-"names, shortened and full author lists, and more."
-msgstr ""
-"Natbib podporuje množstvo autor-rok a číselných štýlov hlavne cielené na "
-"duchovné vedy. Dokáže automatické zoraďovanie a zlučovanie číselných "
-"citácií, anotácií, použije veľké prve písmená pre 'van' čiastky autorských "
-"mien, skrátené a plné súpisy autorov, a viac."
 
 #: lib/layouts/AEA.layout:3
 msgid "American Economic Association (AEA)"
@@ -7155,16 +6666,6 @@ msgstr "Tezaurus nepodporovaný v súčasnom A&A:"
 msgid "Astronomy & Astrophysics (V. 4, Obsolete)"
 msgstr "Astronomy & Astrophysics (V. 4, zastaralé)"
 
-#: lib/layouts/aapaper.layout:4 lib/layouts/acm-sigs-alt.layout:4
-#: lib/layouts/acm-sigs.layout:4 lib/layouts/acmsiggraph-0-92.layout:4
-#: lib/layouts/acmsiggraph.layout:4 lib/layouts/elsart.layout:4
-#: lib/layouts/g-brief.layout:4 lib/layouts/latex8.layout:4
-#: lib/layouts/revtex.layout:4 lib/layouts/scrlettr.layout:4
-#: lib/layouts/sigplanconf.layout:4 lib/layouts/singlecol.layout:4
-#: lib/layouts/svglobal.layout:4
-msgid "Obsolete"
-msgstr "Zastaralé"
-
 #: lib/layouts/aapaper.layout:50 lib/layouts/agu_stdlists.inc:13
 #: lib/layouts/apa.layout:357 lib/layouts/apa6.layout:457
 #: lib/layouts/beamer.layout:80 lib/layouts/db_stdlists.inc:12
@@ -7478,10 +6979,6 @@ msgstr "Skratky"
 msgid "Abbreviations:"
 msgstr "Skratky:"
 
-#: lib/layouts/achemso.layout:162
-msgid "Schemes"
-msgstr "Náčrtky"
-
 #: lib/layouts/achemso.layout:166 lib/layouts/achemso.layout:178
 msgid "Scheme"
 msgstr "Náčrtok"
@@ -7490,10 +6987,6 @@ msgstr "Náčrtok"
 msgid "List of Schemes"
 msgstr "Zoznam Náčrtkov"
 
-#: lib/layouts/achemso.layout:186
-msgid "Charts"
-msgstr "Diagramy"
-
 #: lib/layouts/achemso.layout:190 lib/layouts/achemso.layout:202
 msgid "Chart"
 msgstr "Diagram"
@@ -7501,10 +6994,6 @@ msgstr "Diagram"
 #: lib/layouts/achemso.layout:196
 msgid "List of Charts"
 msgstr "Zoznam Diagramov"
-
-#: lib/layouts/achemso.layout:210
-msgid "Graphs[[mathematical]]"
-msgstr "Grafy"
 
 #: lib/layouts/achemso.layout:216 lib/layouts/achemso.layout:228
 msgid "Graph[[mathematical]]"
@@ -7552,8 +7041,8 @@ msgid "Latin"
 msgstr "Latinsky"
 
 #: lib/layouts/acm-sigs-alt.layout:3
-msgid "ACM SIGS ('Alternate' Style, obsolete)"
-msgstr "ACM SIGS ('Alternate' Štýl, zastaralé)"
+msgid "ACM SIGS ('Alternate' Style)"
+msgstr "ACM SIGS ('Alternate' štýl)"
 
 #: lib/layouts/acm-sigs.inc:31 lib/layouts/acmart.layout:390
 #: lib/layouts/sigplanconf.layout:180
@@ -7565,13 +7054,12 @@ msgid "General terms:"
 msgstr "Obecné pojmy:"
 
 #: lib/layouts/acm-sigs.layout:3
-msgid "ACM SIG Proceedings (SP, Obsolete)"
-msgstr "ACM SIG Rokovacie Zväzky (SP, Zastaralé)"
+msgid "ACM SIG Proceedings (SP)"
+msgstr "ACM SIG rokovacie zväzky (SP)"
 
-# Združenie pre Výpočetné Stroje
-#: lib/layouts/acmart.layout:3
-msgid "Association for Computing Machinery (ACM) article"
-msgstr "Association for Computing Machinery (ACM) článok"
+#: lib/layouts/acmsiggraph-0-92.layout:3
+msgid "ACM SIGGGRAPH 0.92"
+msgstr "ACM SIGGRAPH 0.92"
 
 #: lib/layouts/acmart.layout:84 lib/layouts/acmsiggraph-0-92.layout:332
 #: lib/layouts/acmsiggraph.layout:288 lib/layouts/amsdefs.inc:175
@@ -7580,84 +7068,16 @@ msgstr "Association for Computing Machinery (ACM) článok"
 msgid "Thanks"
 msgstr "Vďaka"
 
-#: lib/layouts/acmart.layout:98
-msgid "Thanks: "
-msgstr "Vďaka: "
-
-#: lib/layouts/acmart.layout:104
-msgid "ACM Journal"
-msgstr "ACM Žurnál"
-
 #: lib/layouts/acmart.layout:107 lib/layouts/apa6.layout:308
 #: lib/layouts/apa6.layout:316 lib/layouts/apa6.layout:325
 #: lib/layouts/apa6.layout:333
 msgid "Preamble"
 msgstr "Preambula"
 
-#: lib/layouts/acmart.layout:109
-msgid "Journal's Short Name: "
-msgstr "Skratka Žurnála: "
-
-#: lib/layouts/acmart.layout:120
-msgid "ACM Conference"
-msgstr "ACM Konferencia"
-
-#: lib/layouts/acmart.layout:127
-msgid "Full name"
-msgstr "Celé meno"
-
-#: lib/layouts/acmart.layout:135
-msgid "Venue"
-msgstr "Miesto"
-
-#: lib/layouts/acmart.layout:138
-msgid "Conference Name: "
-msgstr "Meno Konferencie: "
-
-#: lib/layouts/acmart.layout:145
-msgid "Short title"
-msgstr "Krátky titul"
-
-#: lib/layouts/acmart.layout:176
-msgid "Email address: "
-msgstr "E-mail adresa: "
-
-#: lib/layouts/acmart.layout:188
-msgid "ORCID"
-msgstr "ORCID"
-
-#: lib/layouts/acmart.layout:190
-msgid "ORCID: "
-msgstr "ORCID: "
-
-#: lib/layouts/acmart.layout:210
-msgid "Affiliation: "
-msgstr "Príslušenstvo: "
-
-#: lib/layouts/acmart.layout:214
-msgid "Additional Affiliation"
-msgstr "Prídavné Príslušenstvo"
-
-#: lib/layouts/acmart.layout:216
-msgid "Additional Affiliation: "
-msgstr "Prídavné Príslušenstvo: "
-
-#: lib/layouts/acmart.layout:220 lib/layouts/acmart.layout:224
-msgid "Position"
-msgstr "Postavenie"
-
 #: lib/layouts/acmart.layout:229 lib/layouts/acmart.layout:231
 #: lib/layouts/paper.layout:163
 msgid "Institution"
 msgstr "Inštitúcia"
-
-#: lib/layouts/acmart.layout:236 lib/layouts/acmart.layout:238
-msgid "Department"
-msgstr "Oddelenie"
-
-#: lib/layouts/acmart.layout:244 lib/layouts/acmart.layout:246
-msgid "Street Address"
-msgstr "Ulica"
 
 #: lib/layouts/acmart.layout:252 lib/layouts/acmart.layout:254
 #: lib/layouts/agu_stdtitle.inc:460 lib/layouts/agu_stdtitle.inc:462
@@ -7679,187 +7099,9 @@ msgstr "Krajina"
 msgid "State"
 msgstr "Štát"
 
-#: lib/layouts/acmart.layout:276 lib/layouts/acmart.layout:278
-msgid "Postal Code"
-msgstr "Poštové Smerovacie Číslo"
-
-#: lib/layouts/acmart.layout:284
-msgid "TitleNote"
-msgstr "TitleNote"
-
-#: lib/layouts/acmart.layout:294
-msgid "Title Note: "
-msgstr "Poznámka Titul: "
-
-#: lib/layouts/acmart.layout:300
-msgid "SubtitleNote"
-msgstr "SubtitleNote"
-
-#: lib/layouts/acmart.layout:302
-msgid "Subtitle Note: "
-msgstr "Poznámka Podtitul: "
-
 #: lib/layouts/acmart.layout:306 lib/layouts/apa6.layout:274
 msgid "AuthorNote"
 msgstr "AuthorNote"
-
-#: lib/layouts/acmart.layout:308
-msgid "Author Note: "
-msgstr "Poznámka Autor: "
-
-#: lib/layouts/acmart.layout:312
-msgid "ACM Volume"
-msgstr "ACM Volume"
-
-#: lib/layouts/acmart.layout:314
-msgid "ACM Volume: "
-msgstr "ACM Diel: "
-
-#: lib/layouts/acmart.layout:318
-msgid "ACM Number"
-msgstr "ACM Number"
-
-#: lib/layouts/acmart.layout:320
-msgid "ACM Number: "
-msgstr "ACM-Číslo: "
-
-#: lib/layouts/acmart.layout:324
-msgid "ACM Article"
-msgstr "ACM Article"
-
-#: lib/layouts/acmart.layout:326
-msgid "ACM Article: "
-msgstr "ACM Článok: "
-
-#: lib/layouts/acmart.layout:330
-msgid "ACM Year"
-msgstr "ACM Year"
-
-#: lib/layouts/acmart.layout:332
-msgid "ACM Year: "
-msgstr "ACM Rok: "
-
-#: lib/layouts/acmart.layout:336
-msgid "ACM Month"
-msgstr "ACM Month"
-
-#: lib/layouts/acmart.layout:338
-msgid "ACM Month: "
-msgstr "ACM Mesiac: "
-
-#: lib/layouts/acmart.layout:342
-msgid "ACM Art Seq Num"
-msgstr "ACM Art Seq Num"
-
-#: lib/layouts/acmart.layout:344
-msgid "Article Sequential Number: "
-msgstr "Sekvenčné Číslo článku: "
-
-#: lib/layouts/acmart.layout:348
-msgid "ACM Submission ID"
-msgstr "ACM Submission ID"
-
-#: lib/layouts/acmart.layout:350
-msgid "ACM Submission ID: "
-msgstr "ACM Totožnosť Predloženia: "
-
-#: lib/layouts/acmart.layout:354
-msgid "ACM Price"
-msgstr "ACM Price"
-
-#: lib/layouts/acmart.layout:356
-msgid "ACM Price: "
-msgstr "ACM Cena: "
-
-#: lib/layouts/acmart.layout:360
-msgid "ACM ISBN"
-msgstr "ACM ISBN"
-
-# International Standard Book Number
-#: lib/layouts/acmart.layout:362
-msgid "ACM ISBN: "
-msgstr "ACM ISBN: "
-
-#: lib/layouts/acmart.layout:366
-msgid "ACM DOI"
-msgstr "ACM DOI"
-
-# Definition of Improvement
-#: lib/layouts/acmart.layout:368
-msgid "ACM DOI: "
-msgstr "ACM DOI: "
-
-#: lib/layouts/acmart.layout:372
-msgid "ACM Badge R"
-msgstr "ACM Badge R"
-
-#: lib/layouts/acmart.layout:374
-msgid "ACM Badge R: "
-msgstr "ACM Odznak R: "
-
-#: lib/layouts/acmart.layout:378
-msgid "ACM Badge L"
-msgstr "ACM Badge L"
-
-#: lib/layouts/acmart.layout:380
-msgid "ACM Badge L: "
-msgstr "ACM Odznak L: "
-
-#: lib/layouts/acmart.layout:384
-msgid "Start Page"
-msgstr "Start Page"
-
-#: lib/layouts/acmart.layout:386
-msgid "Start Page: "
-msgstr "Počiatočná Strana: "
-
-#: lib/layouts/acmart.layout:392
-msgid "Terms: "
-msgstr "Pojmy: "
-
-#: lib/layouts/acmart.layout:398
-msgid "Keywords: "
-msgstr "Heslá: "
-
-#: lib/layouts/acmart.layout:402
-msgid "CCSXML"
-msgstr "CCSXML"
-
-#: lib/layouts/acmart.layout:413
-msgid "Computing Classification Scheme (XML): "
-msgstr "Operačná Klasifikačná Schéma (XML): "
-
-#: lib/layouts/acmart.layout:424
-msgid "CCS Description"
-msgstr "CCS Description"
-
-#: lib/layouts/acmart.layout:427
-msgid "Significance"
-msgstr "Význam"
-
-#: lib/layouts/acmart.layout:429
-msgid "Computing Classification Scheme: "
-msgstr "Operačná Klasifikačná Schéma: "
-
-#: lib/layouts/acmart.layout:442
-msgid "Set Copyright"
-msgstr "Set Copyright"
-
-#: lib/layouts/acmart.layout:444
-msgid "Set Copyright: "
-msgstr "Nastaviť Autorské Práva: "
-
-#: lib/layouts/acmart.layout:448
-msgid "Copyright Year"
-msgstr "Copyright Year"
-
-#: lib/layouts/acmart.layout:450
-msgid "Copyright Year: "
-msgstr "Autorské Práva Rok: "
-
-#: lib/layouts/acmart.layout:454 lib/layouts/acmart.layout:457
-msgid "Teaser Figure"
-msgstr "Obrázok Hlavolamu"
 
 #: lib/layouts/acmart.layout:463 lib/layouts/agu_stdtitle.inc:199
 #: lib/layouts/aguplus.inc:111 lib/layouts/egs.layout:423
@@ -7868,43 +7110,11 @@ msgstr "Obrázok Hlavolamu"
 msgid "Received"
 msgstr "Obdržané"
 
-#: lib/layouts/acmart.layout:466
-msgid "Stage"
-msgstr "Fáza"
-
-#: lib/layouts/acmart.layout:469
-msgid "Received: "
-msgstr "Obdržané: "
-
-#: lib/layouts/acmart.layout:477
-msgid "ShortAuthors"
-msgstr "ShortAuthors"
-
-#: lib/layouts/acmart.layout:485
-msgid "Short authors: "
-msgstr "Skratka autorov: "
-
-#: lib/layouts/acmart.layout:499
-msgid "Sidebar"
-msgstr "Bočný panel"
-
-#: lib/layouts/acmart.layout:503
-msgid "Sidebar (sigchi-a only)"
-msgstr "Bočný panel (len sigchi-a)"
-
-#: lib/layouts/acmart.layout:513
-msgid "Margin figure (sigchi-a only)"
-msgstr "Okrajový obrázok (len sigchi-a)"
-
 #: lib/layouts/acmart.layout:518 lib/layouts/beamer.layout:1612
 #: lib/layouts/powerdot.layout:530 lib/layouts/sciposter.layout:109
 #: lib/layouts/stdfloats.inc:33 lib/layouts/tufte-book.layout:252
 msgid "List of Figures"
 msgstr "Zoznam Obrázkov"
-
-#: lib/layouts/acmart.layout:526
-msgid "Margin table (sigchi-a only)"
-msgstr "Okrajová tabuľka (len sigchi-a)"
 
 #: lib/layouts/acmart.layout:531 lib/layouts/beamer.layout:1599
 #: lib/layouts/powerdot.layout:513 lib/layouts/sciposter.layout:123
@@ -7972,30 +7182,6 @@ msgstr "Definícia \\thetheorem."
 msgid "Example \\thetheorem."
 msgstr "Príklad \\thetheorem."
 
-#: lib/layouts/acmart.layout:622
-msgid "Print Only"
-msgstr "Len Tlač"
-
-#: lib/layouts/acmart.layout:629
-msgid "Print version only"
-msgstr "Len tlač verzie"
-
-#: lib/layouts/acmart.layout:632
-msgid "Screen Only"
-msgstr "Len Obrazovka"
-
-#: lib/layouts/acmart.layout:635
-msgid "Screen version only"
-msgstr "Len verzia obrazovky"
-
-#: lib/layouts/acmart.layout:638
-msgid "Anonymous Suppression"
-msgstr "Anonymné Potlačenie"
-
-#: lib/layouts/acmart.layout:641
-msgid "Non anonymous only"
-msgstr "Len ne-anonymné"
-
 #: lib/layouts/acmart.layout:644 lib/layouts/acmart.layout:648
 #: lib/layouts/acmsiggraph-0-92.layout:343
 #: lib/layouts/acmsiggraph-0-92.layout:350 lib/layouts/acmsiggraph.layout:299
@@ -8008,22 +7194,6 @@ msgstr "Len ne-anonymné"
 #: lib/layouts/sigplanconf.layout:230 lib/layouts/spie.layout:91
 msgid "Acknowledgments"
 msgstr "Poďakovania"
-
-#: lib/layouts/acmart.layout:659 lib/layouts/acmart.layout:663
-msgid "Grant Sponsor"
-msgstr "Priznať Sponzora"
-
-#: lib/layouts/acmart.layout:667 lib/layouts/acmart.layout:703
-msgid "Sponsor ID"
-msgstr "ID Sponzora"
-
-#: lib/layouts/acmart.layout:688 lib/layouts/acmart.layout:692
-msgid "Grant Number"
-msgstr "Číslo Priznania"
-
-#: lib/layouts/acmsiggraph-0-92.layout:3
-msgid "ACM SIGGGRAPH 0.92 (obsolete)"
-msgstr "ACM SIGGRAPH 0.92 (zastaralé)"
 
 #: lib/layouts/acmsiggraph-0-92.layout:74 lib/layouts/acmsiggraph.layout:66
 msgid "TOG online ID"
@@ -8679,14 +7849,6 @@ msgstr "TlačováPoznámka"
 msgid "Slug Comment:"
 msgstr "Tlačová Poznámka:"
 
-#: lib/layouts/aguplus.inc:182
-msgid "Plates"
-msgstr "Vyobrazenia"
-
-#: lib/layouts/aguplus.inc:183
-msgid "Planotables"
-msgstr "Plano-tabuľky"
-
 #: lib/layouts/aguplus.inc:187
 msgid "Plate"
 msgstr "Vyobrazenie"
@@ -8734,15 +7896,13 @@ msgstr "Poďakovania."
 msgid "Algorithm2e"
 msgstr "Algorithm2e"
 
-#: lib/layouts/algorithm2e.module:7
+#: lib/layouts/algorithm2e.module:6
 msgid ""
 "Use the algorithm2e package for algorithm floats rather than LyX's home-"
-"brewed algorithm floats. Use the Algorithm style to enter and indent the "
-"algorithm."
+"brewed algorithm floats."
 msgstr ""
 "Použiť balík algorithm2e pre plávajúce algoritmy namiesto LyXovej samohonky "
-"plávajúcich algoritmov. Použiť štýl 'Algorithm' na vklad a odsadenie "
-"algoritmu."
+"plávajúcich algoritmov."
 
 #: lib/layouts/algorithm2e.module:25 lib/layouts/powerdot.layout:547
 #: lib/layouts/revtex4-1.layout:267 lib/layouts/stdfloats.inc:48
@@ -9062,6 +8222,15 @@ msgstr "Článok (Štandardná Trieda)"
 #: lib/layouts/stdstarsections.inc:13 lib/layouts/svcommon.inc:245
 msgid "Part*"
 msgstr "Časť*"
+
+#: lib/layouts/basic.module:2
+msgid "Default (basic)"
+msgstr "Štd. (basic)"
+
+#: lib/layouts/basic.module:6 lib/layouts/jurabib.module:8
+#: lib/layouts/natbib.module:9
+msgid "Citation engine"
+msgstr "Správa citácie"
 
 #: lib/layouts/beamer.layout:3
 msgid "Beamer"
@@ -9930,14 +9099,14 @@ msgstr "Adresa vpravo"
 
 #: lib/layouts/changebars.module:2
 msgid "Change bars"
-msgstr "Pruhy zmien"
+msgstr "Značky zmien"
 
 #: lib/layouts/changebars.module:7
 msgid ""
 "Enables LyX to add vertical change bars in the margin of PDF output when "
 "change tracking is turned on and pdflatex output format is chosen."
 msgstr ""
-"Umožní LyX pridať vertikálne pruhy zmien na okraji PDF-výstupu. Treba na to "
+"Umožní LyX pridať vertikálne značky zmien na okraji PDF-výstupu. Treba na to "
 "zapnúť sledovanie zmien a zvoliť pdflatex ako výstupný formát."
 
 #: lib/layouts/chess.layout:3
@@ -12159,7 +11328,7 @@ msgstr "Banka Riadok F:"
 
 #: lib/layouts/graphicboxes.module:2
 msgid "GraphicBoxes"
-msgstr "GrafickéRámčeky"
+msgstr "Rámčeky: Grafické"
 
 #: lib/layouts/graphicboxes.module:5
 msgid "Boxes to scale and rotate its contents"
@@ -12820,6 +11989,10 @@ msgstr "Vstupný Kód"
 msgid "Code Output"
 msgstr "Výstupný Kód"
 
+#: lib/layouts/jurabib.module:2
+msgid "Jurabib"
+msgstr "Jurabib"
+
 #: lib/layouts/kluwer.layout:3
 msgid "Kluwer"
 msgstr "Kluwer"
@@ -13006,29 +12179,21 @@ msgstr ""
 "glosy, sémantické štýly znakov (markup), plávajúce tabuľky). Pozri na súbor "
 "linguistics.lyx v príkladoch."
 
-#: lib/layouts/linguistics.module:14
-msgid "(\\arabic{example})"
-msgstr "(\\arabic{example})"
+#: lib/layouts/linguistics.module:17 lib/layouts/linguistics.module:22
+msgid "Examples:"
+msgstr "Príklady:"
 
-#: lib/layouts/linguistics.module:19
-msgid "(\\arabic{examplei})"
-msgstr "(\\arabic{examplei})"
-
-#: lib/layouts/linguistics.module:24
-msgid "\\theexamplei (\\alph{subexample})"
-msgstr "\\theexamplei (\\alph{subexample})"
-
-#: lib/layouts/linguistics.module:29
-msgid "\\theexamplei (\\alph{subexamplei})"
-msgstr "\\theexamplei (\\alph{subexamplei})"
-
-#: lib/layouts/linguistics.module:32 lib/layouts/linguistics.module:260
-msgid "Tableaux"
-msgstr "Tablá"
+#: lib/layouts/linguistics.module:27 lib/layouts/linguistics.module:32
+msgid "Subexample:"
+msgstr "Podpríklad:"
 
 #: lib/layouts/linguistics.module:35
 msgid "Numbered Example (multiline)"
 msgstr "Číslovaný príklad (viacriadkový)"
+
+#: lib/layouts/linguistics.module:50
+msgid "Example:"
+msgstr "Príklad:"
 
 #: lib/layouts/linguistics.module:67
 msgid "Numbered Examples (consecutive)"
@@ -13703,6 +12868,10 @@ msgstr "Poľská Kniha (MW balík)"
 #: lib/layouts/mwrep.layout:3
 msgid "Polish Report (MW Bundle)"
 msgstr "Poľský referát (MW balík)"
+
+#: lib/layouts/natbib.module:2
+msgid "Natbib"
+msgstr "Natbib"
 
 #: lib/layouts/natbibapa.module:2
 msgid "Natbibapa"
@@ -14833,7 +14002,7 @@ msgstr "KOMA-Script referát"
 
 #: lib/layouts/sectionbox.module:2
 msgid "Section Boxes"
-msgstr "Sekciové Rámčeky"
+msgstr "Rámčeky: Sekciové"
 
 #: lib/layouts/sectionbox.module:6
 msgid ""
@@ -14948,10 +14117,6 @@ msgstr "Fólia na výšku:"
 #: lib/layouts/seminar.layout:120
 msgid "Slide*"
 msgstr "Fólia*"
-
-#: lib/layouts/seminar.layout:125
-msgid "List/TOC"
-msgstr "Listina/Obsah"
 
 #: lib/layouts/seminar.layout:135
 msgid "[List Of Slides]"
@@ -15096,8 +14261,8 @@ msgid "AMS subject classifications:"
 msgstr "Klasifikácie oblasti AMS:"
 
 #: lib/layouts/sigplanconf.layout:3
-msgid "ACM SIGPLAN (Obsolete)"
-msgstr "ACM SIGPLAN (Zastaralé)"
+msgid "ACM SIGPLAN"
+msgstr "ACM SIGPLAN"
 
 #: lib/layouts/sigplanconf.layout:85
 msgid "Name of the conference"
@@ -15164,8 +14329,8 @@ msgid "Inderscience 9.5 x 6.5 Journals"
 msgstr "Inderscience 9.5 x 6.5 Časopisy"
 
 #: lib/layouts/singlecol.layout:3
-msgid "Inderscience Journals (Obsolete)"
-msgstr "Inderscience Žurnály (Zastaralé)"
+msgid "Inderscience Journals (Obsolete Version)"
+msgstr "Inderscience časopisy (zastaralá verzia)"
 
 #: lib/layouts/slides.layout:107
 msgid "New Slide:"
@@ -15227,10 +14392,6 @@ msgstr "str."
 msgid "ed."
 msgstr "vyd."
 
-#: lib/layouts/stdciteformats.inc:22
-msgid "eds."
-msgstr "eds."
-
 #: lib/layouts/stdciteformats.inc:23
 msgid "vol."
 msgstr "diel"
@@ -15287,18 +14448,6 @@ msgstr "Poznámka pri päte ##"
 #: lib/layouts/stdcounters.inc:77
 msgid "\\fnsymbol{thanks}"
 msgstr "\\fnsymbol{thanks}"
-
-#: lib/layouts/stdfloatnames.inc:7
-msgid "Algorithms"
-msgstr "Algoritmy"
-
-#: lib/layouts/stdfloatnames.inc:8
-msgid "Margin Figures"
-msgstr "Krajné Obrázky"
-
-#: lib/layouts/stdfloatnames.inc:9
-msgid "Margin Tables"
-msgstr "Krajné tabuľky"
 
 #: lib/layouts/stdinsets.inc:11
 msgid "Marginal notes"
@@ -15385,19 +14534,6 @@ msgstr "Kapitola \\thechapter"
 #: lib/layouts/stdsections.inc:48
 msgid "Appendix \\thechapter"
 msgstr "Príloha \\thechapter"
-
-#: lib/layouts/subequations.module:2 lib/layouts/subequations.module:10
-#: lib/layouts/subequations.module:13
-msgid "Subequations"
-msgstr "Pod-rovnice"
-
-#: lib/layouts/subequations.module:5
-msgid ""
-"Provide a straightforward way to segregate subequations in LyX. See the "
-"subequations.lyx example file."
-msgstr ""
-"Umožniť priamy spôsob na oddelenie pod-rovníc v LyXe. Viď príkladný súbor "
-"subequations.lyx."
 
 #: lib/layouts/svcommon.inc:68
 msgid "Front Matter"
@@ -15694,7 +14830,7 @@ msgstr "Japonská Kniha (vertikálne písanie)"
 
 #: lib/layouts/tcolorbox.module:2
 msgid "Fancy Colored Boxes"
-msgstr "Pestro Zafarbené Rámiky"
+msgstr "Rámčeky: Pestro Zafarbené"
 
 #: lib/layouts/tcolorbox.module:6
 msgid ""
@@ -15718,7 +14854,7 @@ msgstr "Tu sa vložia voľby pre farebný rámik (viď tcolorbox manuál)"
 
 #: lib/layouts/tcolorbox.module:26
 msgid "Dynamic Color Box"
-msgstr "Dynamický Farebný Rámik"
+msgstr "Farebný Rámik: Dynamický"
 
 #: lib/layouts/tcolorbox.module:29
 msgid "Color Box (Dynamic)"
@@ -15734,7 +14870,7 @@ msgstr "Farebný Rámik (Prispôsobiť Obsah)"
 
 #: lib/layouts/tcolorbox.module:39 lib/layouts/tcolorbox.module:41
 msgid "Raster Color Box"
-msgstr "Rasterizovaný Farebný Rámik"
+msgstr "Farebný Rámik: Tabuľka"
 
 #: lib/layouts/tcolorbox.module:50
 msgid "Subtitle Options"
@@ -15746,7 +14882,7 @@ msgstr "Vložte sem voľby"
 
 #: lib/layouts/tcolorbox.module:56
 msgid "Color Box Separator"
-msgstr "Farebný Rámik Oddeľovač"
+msgstr "Farebný Rámik: Oddeľovač"
 
 #: lib/layouts/tcolorbox.module:57 lib/layouts/tcolorbox.module:91
 msgid "Color Boxes"
@@ -15758,11 +14894,11 @@ msgstr "-----"
 
 #: lib/layouts/tcolorbox.module:81
 msgid "Color Box Line"
-msgstr "Farebný Rámik Čiarka"
+msgstr "Farebný Rámik: Čiarka"
 
 #: lib/layouts/tcolorbox.module:90 lib/layouts/tcolorbox.module:105
 msgid "Color Box Setup"
-msgstr "Farebný Rámik Nastavenie"
+msgstr "Farebný Rámik: Nastavenie"
 
 #: lib/layouts/tcolorbox.module:118 lib/layouts/tcolorbox.module:121
 msgid "New Color Box Type"
@@ -15786,15 +14922,15 @@ msgstr "Argumenty"
 
 #: lib/layouts/tcolorbox.module:141
 msgid "Number of arguments (remove this inset if none!)"
-msgstr "Počet argumentov (keď žiadna, odstráňte túto vložku!)"
+msgstr "Počet argumentov (keď žiadny, odstráňte túto vložku!)"
 
 #: lib/layouts/tcolorbox.module:146
 msgid "Default Value"
 msgstr "Predvolená Hodnota"
 
-#: lib/layouts/tcolorbox.module:147
+#: lib/layouts/tcolorbox.module:146
 msgid "Default value for argument (keep empty!)"
-msgstr "Predvolená hodnota argumentu (držte prázdne!)"
+msgstr "Predvolená hodnota argumentu (nechajte prázdne!)"
 
 #: lib/layouts/tcolorbox.module:154 lib/layouts/tcolorbox.module:156
 msgid "Custom Color Box 1"
@@ -16563,17 +15699,15 @@ msgstr "Vlastnosť \\theproperty."
 msgid "TODO Notes"
 msgstr "TODO Poznámky"
 
-#: lib/layouts/todonotes.module:8
+#: lib/layouts/todonotes.module:7
 msgid ""
 "Provides custom insets to insert TODO items in your document (using the "
 "todonotes package). In order to generate a 'List of TODOs', the module "
-"provides a paragraph style. Passing 'final' as document class option "
-"suppresses the output of TODO notes."
+"provides a paragraph style."
 msgstr ""
 "Poskytuje vlastné vložky na vklad TODO prvkov do vášho dokumentu (používajúc "
 "balík todonotes). Pre generáciu 'Zoznam TODOs' poskytuje tento modul štýl "
-"odstavca. Nastaviť 'final' ako voľbu dokumentu potlačí výstup 'TODO' "
-"poznámok."
+"odstavca."
 
 #: lib/layouts/todonotes.module:14 lib/layouts/todonotes.module:119
 msgid "TODO"
@@ -16766,10 +15900,6 @@ msgstr "Albánsky"
 msgid "English (USA)"
 msgstr "Anglicky (USA)"
 
-#: lib/languages:147
-msgid "Amharic"
-msgstr "amharsky"
-
 #: lib/languages:156
 msgid "Greek (ancient)"
 msgstr "Grécky (antický)"
@@ -16785,10 +15915,6 @@ msgstr "Arabsky (Arabi)"
 #: lib/languages:197 src/frontends/qt4/GuiSymbols.cpp:62
 msgid "Armenian"
 msgstr "Arménsky"
-
-#: lib/languages:206
-msgid "Asturian"
-msgstr "Astúrsky"
 
 #: lib/languages:214
 msgid "English (Australia)"
@@ -16817,10 +15943,6 @@ msgstr "Baskitsky"
 #: lib/languages:281
 msgid "Belarusian"
 msgstr "Bielorusky"
-
-#: lib/languages:291
-msgid "Bosnian"
-msgstr "Bosňansky"
 
 #: lib/languages:299
 msgid "Portuguese (Brazil)"
@@ -16906,10 +16028,6 @@ msgstr "Fínsky"
 msgid "French"
 msgstr "Francúzsky"
 
-#: lib/languages:527
-msgid "Friulian"
-msgstr "Friulsky"
-
 #: lib/languages:537
 msgid "Galician"
 msgstr "Haličsky"
@@ -16983,10 +16101,6 @@ msgstr "Kanadsky"
 msgid "Kazakh"
 msgstr "Kazachsky"
 
-#: lib/languages:757
-msgid "Khmer"
-msgstr "Khmérsky"
-
 #: lib/languages:764
 msgid "Korean"
 msgstr "Kórejsky"
@@ -17015,10 +16129,6 @@ msgstr "Srbsky (Dolnolužicky)"
 msgid "Hungarian"
 msgstr "Maďarsky"
 
-#: lib/languages:845
-msgid "Macedonian"
-msgstr "Macedónsky"
-
 #: lib/languages:855
 msgid "Marathi"
 msgstr "Máráthčinsky"
@@ -17043,11 +16153,6 @@ msgstr "Nórsky (Nynorsk)"
 msgid "Occitan"
 msgstr "Okcitánčinsky"
 
-# Nenašiel som v slovníku, pravdepodobne 'Piemont' na severozápade Talianska.
-#: lib/languages:926
-msgid "Piedmontese"
-msgstr "Piemontsky"
-
 #: lib/languages:936
 msgid "Polish"
 msgstr "Poľsky"
@@ -17059,10 +16164,6 @@ msgstr "Portugalsky"
 #: lib/languages:957
 msgid "Romanian"
 msgstr "Rumunsky"
-
-#: lib/languages:967
-msgid "Romansh"
-msgstr "Rétorománsky"
 
 #: lib/languages:977
 msgid "Russian"
@@ -17108,10 +16209,6 @@ msgstr "Španielsky (Mexiko)"
 msgid "Swedish"
 msgstr "Švédsky"
 
-#: lib/languages:1096
-msgid "Syriac"
-msgstr "Syriac (stredoveká hebrejčina)"
-
 #: lib/languages:1105 src/frontends/qt4/GuiSymbols.cpp:70
 msgid "Tamil"
 msgstr "Tamilsky"
@@ -17144,10 +16241,6 @@ msgstr "Ukrajinsky"
 msgid "Upper Sorbian"
 msgstr "Srbsky (Hornolužicky)"
 
-#: lib/languages:1187
-msgid "Urdu"
-msgstr "Urdsky"
-
 #: lib/languages:1198
 msgid "Vietnamese"
 msgstr "Vietnamsky"
@@ -17179,14 +16272,6 @@ msgstr "Zapf Chancery"
 #: lib/latexfonts:122
 msgid "Bitstream Charter (PSNFSS)"
 msgstr "Bitstream Charter (PSNFSS)"
-
-#: lib/latexfonts:128
-msgid "Crimson (Cochineal)"
-msgstr "Crimson (Cochineal)"
-
-#: lib/latexfonts:136
-msgid "Crimson"
-msgstr "Crimson"
 
 #: lib/latexfonts:142
 msgid "Computer Modern Roman"
@@ -17223,10 +16308,6 @@ msgstr "Minion Pro"
 #: lib/latexfonts:287
 msgid "New Century Schoolbook"
 msgstr "New Century Schoolbook"
-
-#: lib/latexfonts:293 lib/latexfonts:301
-msgid "Noto Serif"
-msgstr "Noto Serif"
 
 #: lib/latexfonts:307 lib/latexfonts:319 lib/latexfonts:326 lib/latexfonts:332
 #: lib/latexfonts:339
@@ -17321,10 +16402,6 @@ msgstr "Kurier (Svetlý Zhustený)"
 msgid "Latin Modern Sans"
 msgstr "Latin Modern Sans"
 
-#: lib/latexfonts:556
-msgid "Noto Sans"
-msgstr "Noto Sans"
-
 #: lib/latexfonts:563
 msgid "TeX Gyre Adventor"
 msgstr "TeX Gyre Adventor"
@@ -17365,10 +16442,6 @@ msgstr "Latin Modern Typewriter"
 msgid "LuxiMono"
 msgstr "LuxiMono"
 
-#: lib/latexfonts:636
-msgid "Noto Mono"
-msgstr "Noto Mono"
-
 #: lib/latexfonts:643
 msgid "TeX Gyre Cursor"
 msgstr "TeX Gyre Cursor"
@@ -17376,11 +16449,6 @@ msgstr "TeX Gyre Cursor"
 #: lib/latexfonts:649
 msgid "TX Typewriter"
 msgstr "TX Typewriter"
-
-# Times Roman (New TX)
-#: lib/latexfonts:661
-msgid "Crimson (New TX)"
-msgstr "Crimson (New TX)"
 
 # euler virtual math fonts
 #: lib/latexfonts:669
@@ -17546,6 +16614,10 @@ msgstr "Cyrilika (KOI8-U)"
 #: lib/encodings:166
 msgid "Cyrillic (pt 154)"
 msgstr "Cyrilika (pt 154)"
+
+#: lib/encodings:141
+msgid "Cyrillic (pt 254)"
+msgstr "Cyrilika (pt 254)"
 
 #: lib/encodings:177
 msgid "Chinese (traditional) (Big5)"
@@ -17790,10 +16862,6 @@ msgstr "Formátovaná Referencia|t"
 #: lib/ui/stdcontext.inc:96
 msgid "Textual Reference|x"
 msgstr "Textová Referencia|x"
-
-#: lib/ui/stdcontext.inc:97
-msgid "Label Only|L"
-msgstr "Len Heslo|L"
 
 #: lib/ui/stdcontext.inc:99 lib/ui/stdcontext.inc:111 lib/ui/stdcontext.inc:121
 #: lib/ui/stdcontext.inc:129 lib/ui/stdcontext.inc:138
@@ -18386,10 +17454,6 @@ msgstr "Aktivovať vetvu v hlavnom dokumente|H"
 msgid "Deactivate Branch in Master|v"
 msgstr "Dezaktivovať vetvu v hlavnom dokumente|v"
 
-#: lib/ui/stdcontext.inc:505
-msgid "Invert Inset|I"
-msgstr "Invertovať Vložku|I"
-
 #: lib/ui/stdcontext.inc:506
 msgid "Add Unknown Branch|w"
 msgstr "Pridať Neznámu Vetvu"
@@ -18429,10 +17493,6 @@ msgstr "Vybrať Sekciu"
 #: lib/ui/stdcontext.inc:661
 msgid "Wrap by Preview|y"
 msgstr "Obtekať pri Náhľade"
-
-#: lib/ui/stdcontext.inc:677 lib/ui/stdmenus.inc:356
-msgid "Lock Toolbars|L"
-msgstr "Blokuj Lišty nástrojov"
 
 #: lib/ui/stdcontext.inc:679 lib/ui/stdmenus.inc:358
 msgid "Small-sized Icons"
@@ -18994,9 +18054,9 @@ msgstr "Zabaliť Matematické Makro"
 msgid "Outline Pane|u"
 msgstr "Osnova"
 
-#: lib/ui/stdmenus.inc:341
-msgid "Code Preview Pane|P"
-msgstr "Náhľady Kódu"
+#: lib/ui/stdmenus.inc:339
+msgid "Source Pane|S"
+msgstr "Zdrojový Text"
 
 #: lib/ui/stdmenus.inc:342
 msgid "Messages Pane|g"
@@ -19126,13 +18186,13 @@ msgstr "Vypustenie"
 msgid "End of Sentence|E"
 msgstr "Koniec vety|K"
 
-#: lib/ui/stdmenus.inc:407
-msgid "Plain Quotation Mark|Q"
-msgstr "Prosté Úvodzovky"
+#: lib/ui/stdmenus.inc:403
+msgid "Ordinary Quote|Q"
+msgstr "Dvojitá Úvodzovka|D"
 
-#: lib/ui/stdmenus.inc:408
-msgid "Inner Quotation Mark|n"
-msgstr "Vnútorná Úvodzovka"
+#: lib/ui/stdmenus.inc:404
+msgid "Single Quote|S"
+msgstr "Jednoduchá Úvodzovka|J"
 
 #: lib/ui/stdmenus.inc:409
 msgid "Protected Hyphen|y"
@@ -19210,10 +18270,6 @@ msgstr "Bod Rozdeľovania"
 msgid "Ligature Break|k"
 msgstr "Zlomiť zliatku (ligatúru)"
 
-#: lib/ui/stdmenus.inc:438
-msgid "Optional Line Break|B"
-msgstr "Voliteľný Zlom Riadku|Z"
-
 #: lib/ui/stdmenus.inc:451
 msgid "Display Formula|D"
 msgstr "Exponovaný vzorec"
@@ -19242,9 +18298,9 @@ msgstr "Zoznam Výpisov"
 msgid "Nomenclature|N"
 msgstr "Nomenklatúra"
 
-#: lib/ui/stdmenus.inc:486
-msgid "Bib(la)TeX Bibliography...|B"
-msgstr "Bib(la)TeX bibliografia…|B"
+#: lib/ui/stdmenus.inc:481
+msgid "BibTeX Bibliography...|B"
+msgstr "BibTeX bibliografia…|B"
 
 #: lib/ui/stdmenus.inc:490
 msgid "LyX Document...|X"
@@ -19585,10 +18641,6 @@ msgstr "Prepnúť lištu nástrojov pre matematiku"
 #: lib/ui/stdtoolbars.inc:97
 msgid "Toggle table toolbar"
 msgstr "Prepnúť lištu nástrojov pre tabuľku"
-
-#: lib/ui/stdtoolbars.inc:98
-msgid "Toggle review toolbar"
-msgstr "Prepnúť lištu nástrojov pre náhľad"
 
 #: lib/ui/stdtoolbars.inc:101
 msgid "View/Update"
@@ -20086,9 +19138,9 @@ msgstr "Matematické Panely"
 msgid "Math spacings"
 msgstr "Mat. rozstupy"
 
-#: lib/ui/stdtoolbars.inc:299
-msgid "Styles & classes"
-msgstr "Štýly & triedy"
+#: lib/ui/stdtoolbars.inc:298 lib/ui/stdtoolbars.inc:377
+msgid "Styles"
+msgstr "Štýly"
 
 #: lib/ui/stdtoolbars.inc:300 lib/ui/stdtoolbars.inc:389
 msgid "Fractions"
@@ -20328,29 +19380,29 @@ msgstr "Horizontálny fantóm\t\\hphantom"
 msgid "Vertical phantom\t\\vphantom"
 msgstr "Vertikálny fantóm\t\\vphantom"
 
+#: lib/ui/stdtoolbars.inc:364
+msgid "Smash \\smash"
+msgstr "Nulovať(výšku a hĺbku) \\smash"
+
 #: lib/ui/stdtoolbars.inc:365
-msgid "Smash\t\\smash"
-msgstr "Nulovať\t\\smash"
+msgid "Top smash \\smasht"
+msgstr "Nulovať nahor \\smasht"
 
 #: lib/ui/stdtoolbars.inc:366
-msgid "Top smash\t\\smasht"
-msgstr "Nulovať vršok\t\\smasht"
+msgid "Bottom smash \\smashb"
+msgstr "Nulovať nadol \\smashb"
 
 #: lib/ui/stdtoolbars.inc:367
-msgid "Bottom smash\t\\smashb"
-msgstr "Nulovať spodok\t\\smashb"
+msgid "Left overlap \\mathllap"
+msgstr "Prekrytie doľava \\mathllap"
 
 #: lib/ui/stdtoolbars.inc:368
-msgid "Left overlap\t\\mathllap"
-msgstr "Prekrytie doľava\t\\mathllap"
+msgid "Center overlap \\mathclap"
+msgstr "Prekrytie na stred \\mathclap"
 
 #: lib/ui/stdtoolbars.inc:369
-msgid "Center overlap\t\\mathclap"
-msgstr "Prekrytie na stred\t\\mathclap"
-
-#: lib/ui/stdtoolbars.inc:370
-msgid "Right overlap\t\\mathrlap"
-msgstr "Prekryte doprava\t\\mathrlap"
+msgid "Right overlap \\mathrlap"
+msgstr "Prekryte doprava \\mathrlap"
 
 #: lib/ui/stdtoolbars.inc:373
 msgid "Roots"
@@ -20363,10 +19415,6 @@ msgstr "Druhá odmocnina\t\\sqrt"
 #: lib/ui/stdtoolbars.inc:375
 msgid "Other root\t\\root"
 msgstr "Iná odmocnina\t\\root"
-
-#: lib/ui/stdtoolbars.inc:378
-msgid "Styles & Classes"
-msgstr "Štýly & Triedy"
 
 #: lib/ui/stdtoolbars.inc:379
 msgid "Display style\t\\displaystyle"
@@ -20383,22 +19431,6 @@ msgstr "Malý (script)\t\\scriptstyle"
 #: lib/ui/stdtoolbars.inc:382
 msgid "Scriptscript (smaller) style\t\\scriptscriptstyle"
 msgstr "Menší (scriptscript)\t\\scriptscriptstyle"
-
-#: lib/ui/stdtoolbars.inc:383
-msgid "Relation class\t\\mathrel"
-msgstr "Relácia\t\\mathrel"
-
-#: lib/ui/stdtoolbars.inc:384
-msgid "Binary operator class\t\\mathbin"
-msgstr "Binárny operátor\t\\mathbin"
-
-#: lib/ui/stdtoolbars.inc:385
-msgid "Large operator class\t\\mathop"
-msgstr "Veľký operátor\t\\mathop"
-
-#: lib/ui/stdtoolbars.inc:386
-msgid "Ordinary class\t\\mathord"
-msgstr "Bežná trieda \t\\mathord"
 
 #: lib/ui/stdtoolbars.inc:390
 msgid "Standard\t\\frac"
@@ -24244,24 +23276,6 @@ msgstr ""
 "Pre konverziu gnumeric alebo excel súborov\n"
 "je potrebný program gnumeric.\n"
 
-#: lib/xtemplates/inkscape.xtemplate:37
-msgid "Inkscape"
-msgstr "Inkscape"
-
-#: lib/xtemplates/inkscape.xtemplate:38 lib/xtemplates/inkscape.xtemplate:43
-msgid "Inkscape figure"
-msgstr "Inkscape obrázok"
-
-#: lib/xtemplates/inkscape.xtemplate:40
-msgid ""
-"An Inkscape figure.\n"
-"Note that using this template automatically uses the \n"
-"document text in the image (like with the Xfig template).\n"
-msgstr ""
-"Inkscape obrázok.\n"
-"Berte na vedomie, že táto šablóna automatický používa\n"
-"dokumentový text v obrázku (podobne ako v Xfig-šablóne).\n"
-
 #: lib/xtemplates/lilypond.xtemplate:15 lib/xtemplates/lilypond.xtemplate:21
 msgid "Lilypond typeset music"
 msgstr "Lilypond - sada nôt"
@@ -24313,6 +23327,14 @@ msgstr ""
 "vložia v originálnej veľkosti.\n"
 "Prečítajte si dokumentáciu balíka pdfpages\n"
 "pre ďalšie nastavenia a detaily.\n"
+
+#: lib/external_templates:458
+msgid ""
+"Today's date.\n"
+"Read 'info date' for more information.\n"
+msgstr ""
+"Dnešné dátum.\n"
+"Pre ďalšie informácie si prečítajte stránku manuálu ('info date').\n"
 
 #: lib/xtemplates/raster_image.xtemplate:14
 msgid "RasterImage"
@@ -24458,6 +23480,18 @@ msgstr "XPM"
 #: lib/configure.py:633
 msgid "Plain text (chess output)"
 msgstr "Prostý text (šachy)"
+
+#: lib/configure.py:606
+msgid "Plain text (image)"
+msgstr "Prostý text (obrázok)"
+
+#: lib/configure.py:607
+msgid "Plain text (Xfig output)"
+msgstr "Prostý text (Xfig výstup)"
+
+#: lib/configure.py:608
+msgid "date (output)"
+msgstr "dátum (výstup)"
 
 #: lib/configure.py:634 src/frontends/qt4/GuiDocument.cpp:1341
 #: src/frontends/qt4/GuiErrorList.cpp:45
@@ -24729,6 +23763,10 @@ msgstr "MS-Word Office-Open XML"
 msgid "MS Word Office Open XML|O"
 msgstr "MS-Word Office-Open XML|W"
 
+#: lib/configure.py:695
+msgid "date command"
+msgstr "príkaz pre dátum"
+
 #: lib/configure.py:729
 msgid "Table (CSV)"
 msgstr "Tabuľka (CSV)"
@@ -24762,10 +23800,6 @@ msgstr "LyX 2.0.x"
 msgid "LyX 2.1.x"
 msgstr "LyX 2.1.x"
 
-#: lib/configure.py:738
-msgid "LyX 2.2.x"
-msgstr "LyX 2.2.x"
-
 #: lib/configure.py:739
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
@@ -24782,25 +23816,17 @@ msgstr "CJK LyX 1.4.x (euc-kr)"
 msgid "LyX Preview"
 msgstr "Náhľad LyX"
 
-#: lib/configure.py:743
-msgid "pdf_tex"
-msgstr "pdf_tex"
-
-#: lib/configure.py:743
-msgid "pdf_tex|PDFTEX"
-msgstr "pdf_tex|PDFTEX"
+#: lib/configure.py:709
+msgid "PDFTEX"
+msgstr "PDFTEX"
 
 #: lib/configure.py:744
 msgid "Program"
 msgstr "Program"
 
-#: lib/configure.py:745
-msgid "ps_tex"
-msgstr "ps_tex"
-
-#: lib/configure.py:745
-msgid "ps_tex|PSTEX"
-msgstr "ps_tex|PSTEX"
+#: lib/configure.py:711
+msgid "PSTEX"
+msgstr "PSTEX"
 
 #: lib/configure.py:746 src/frontends/qt4/GuiClipboard.cpp:173
 msgid "Windows Metafile"
@@ -24813,14 +23839,6 @@ msgstr "Rozšírený WMF"
 #: lib/configure.py:863
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
-
-#: lib/configure.py:1058
-msgid "gnuplot"
-msgstr "gnuplot"
-
-#: lib/configure.py:1058
-msgid "gnuplot|Gnuplot"
-msgstr "gnuplot|Gnuplot"
 
 #: lib/configure.py:1130
 msgid "LyX Archive (zip)"
@@ -24861,10 +23879,6 @@ msgstr "LyX nemohol vytvoriť pomocný adresár '%1$s' (možné že je plný dis
 #: src/Buffer.cpp:555
 msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr "LyX sa pokúsil zavrieť dokument s neuloženými zmenami!\n"
-
-#: src/Buffer.cpp:559 src/Buffer.cpp:1613
-msgid "Save failed! Document is lost."
-msgstr "Uloženie zlyhalo! Dokument je stratený."
 
 #: src/Buffer.cpp:561
 msgid "Attempting to close changed document!"
@@ -25095,6 +24109,10 @@ msgstr "Uloženie zlyhalo! Skúšam ešte raz…\n"
 #: src/Buffer.cpp:1599
 msgid "Save failed! Trying yet again...\n"
 msgstr "Uloženie zlyhalo! Skúšam zatiaľ ešte raz…\n"
+
+#: src/Buffer.cpp:1586
+msgid "Save failed! Bummer. Document is lost."
+msgstr "Uloženie zlyhalo! Och. Dokument je stratený."
 
 #: src/Buffer.cpp:1704
 msgid "Iconv software exception Detected"
@@ -25666,10 +24684,6 @@ msgstr "Prevádzam dokument do novej triedy dokumentov…"
 msgid "Document is read-only"
 msgstr "Dokument je iba na čítanie"
 
-#: src/BufferView.cpp:1041
-msgid "Document has been modified externally"
-msgstr "Dokument bol externe upravený"
-
 #: src/BufferView.cpp:1050
 msgid "This portion of the document is deleted."
 msgstr "Táto časť dokumentu je vymazaná."
@@ -25850,10 +24864,14 @@ msgstr ""
 "Vyberte vhodné kódovanie dokumentu (napr. utf8)\n"
 "alebo zmeňte písanie mena autora."
 
-#: src/Chktex.cpp:59
+#: src/Chktex.cpp:62
 #, c-format
-msgid "ChkTeX warning id # %1$s"
-msgstr "Varovanie ChkTeXu id # %1$s"
+msgid "ChkTeX warning id # %1$d"
+msgstr "Varovanie ChkTeXu id # %1$d"
+
+#: src/Chktex.cpp:64
+msgid "ChkTeX warning id # "
+msgstr "Varovanie ChkTeXu id # "
 
 #: src/Color.cpp:203 src/insets/InsetBibtex.cpp:196
 #: src/insets/InsetBibtex.cpp:215
@@ -26236,117 +25254,6 @@ msgstr "regulárny výraz: rám"
 msgid "ignore"
 msgstr "ignorovať"
 
-#: src/Converter.cpp:290
-#, c-format
-msgid ""
-"<p>The following LaTeX backend has been configured to allow execution of "
-"external programs for any document:</p><center><p><tt>%1$s</tt></p></"
-"center><p>This is a dangerous configuration. Please, consider using the "
-"support offered by LyX for allowing this privilege only to documents that "
-"actually need it, instead.</p>"
-msgstr ""
-"<p>Nasledovný LaTeX backend bol konfigurovaný aby povolil spúšťanie "
-"externých príkazov pre každý dokument:</p><center><p><tt>%1$s</tt></p></"
-"center><p>Toto je nebezpečná konfigurácia. Namiesto toho prosím uvážte "
-"použiť podporu ponuky LyXa na povolenie oprávnenia len pre dokumenty ktoré "
-"to naozaj potrebujú.<p>"
-
-#: src/Converter.cpp:299
-msgid "Security Warning"
-msgstr "Ochranné Varovanie"
-
-#: src/Converter.cpp:312
-#, c-format
-msgid ""
-"<p>The following LaTeX backend has been requested to allow execution of "
-"external programs:</p><center><p><tt>%1$s</tt></p></center><p>The external "
-"programs can execute arbitrary commands on your system, including dangerous "
-"ones, if instructed to do so by a maliciously crafted LyX document.</p>"
-msgstr ""
-"<p>Nasledovný LaTeX backend bol konfigurovaný aby povolil spúšťanie "
-"externých príkazov:</p><center><p><tt>%1$s</tt></p></center><p>Externý "
-"príkaz je schopný spracovať ľubovoľné rozkazy na vašom systéme, vrátane aj "
-"nebezpečné, keď je napr. inštruovaný robiť to zlovoľne vyrobeným lyx "
-"dokumentom.</p> "
-
-#: src/Converter.cpp:319
-#, c-format
-msgid ""
-"<p>The requested operation requires the use of a converter from %2$s to %3$s:"
-"</p><blockquote><p><tt>%1$s</tt></p></blockquote><p>This external program "
-"can execute arbitrary commands on your system, including dangerous ones, if "
-"instructed to do so by a maliciously crafted LyX document.</p>"
-msgstr ""
-"<p>Žiadaná operácia požaduje konvertor z %2$s na %3$s:</p><blockquote><p><tt>"
-"%1$s</tt></p></blockquote><p>Tento externý program je schopný vykonávať "
-"ľubovoľné akcie, vrátane nebezpečné keď je napr. inštruovaný robiť to "
-"zlovoľne vyrobeným lyx dokumentom.</p> "
-
-#: src/Converter.cpp:297
-msgid "An external converter is disabled for security reasons"
-msgstr "Spúšťanie externého konvertora je z bezpečnostných dôvodov blokované"
-
-#: src/Converter.cpp:299
-msgid ""
-"<p><b>Your current preference settings forbid its execution.</b></p><p>(To "
-"change this setting, go to <i>Preferences &#x25b9; File Handling &#x25b9; "
-"Converters</i> and uncheck <i>Security &#x25b9; Forbid needauth converters</"
-"i>.)"
-msgstr ""
-"<p><b>Vaše súčasné nastavenie blokuje jeho vykonávanie.<b></p><p> (Keď "
-"chcete ich spúšťanie odblokovať, choďte na<i>Nástroje &#x25b9; Preferencie… "
-"&#x25b9; Obsluha Súborov</i> a zrušte <i>Bezpečnosť &#x25b9; Zakázať "
-"overovacie konvertory</i>.) "
-
-#: src/Converter.cpp:340
-msgid "A LaTeX backend requires your authorization"
-msgstr "LaTeX backend potrebuje vaše oprávnenie"
-
-#: src/Converter.cpp:308
-msgid "An external converter requires your authorization"
-msgstr "Spúšťanie externého konvertora potrebuje vaše oprávnenie"
-
-#: src/Converter.cpp:344
-msgid ""
-"<p>Should LaTeX backends be allowed to run external programs?</p><p><b>Allow "
-"them only if you trust the origin/sender of the LyX document!</b></p>"
-msgstr ""
-"<p>Chcete aby LaTeX backendy umožňovali spúšťať externé príkazy?</"
-"p><p><b>Povoľte len keď dôverujete pôvodu/odosielateľovi tohto LyX dokumentu!"
-"</b></p> "
-
-#: src/Converter.cpp:311
-msgid ""
-"<p>Would you like to run this converter?</p><p><b>Only run if you trust the "
-"origin/sender of the LyX document!</b></p>"
-msgstr ""
-"<p>Chcete tento konvertor spustiť?</p><p><b>Spustite len keď dôverujete "
-"pôvodu/odosielateľovi tohto LyX dokumentu!</b></p> "
-
-#: src/Converter.cpp:351
-msgid "Do &not allow"
-msgstr "&Nepovoliť"
-
-#: src/Converter.cpp:319 src/Converter.cpp:327
-msgid "Do &not run"
-msgstr "&Nespustiť"
-
-#: src/Converter.cpp:352
-msgid "A&llow"
-msgstr "Povoliť"
-
-#: src/Converter.cpp:319 src/Converter.cpp:327
-msgid "&Run"
-msgstr "&Spustiť"
-
-#: src/Converter.cpp:354
-msgid "&Always allow for this document"
-msgstr "&Vždy povoliť pre tento dokument"
-
-#: src/Converter.cpp:319
-msgid "&Always run for this document"
-msgstr "&Vždy spustiť pre tento dokument"
-
 #: src/Converter.cpp:383 src/Converter.cpp:589 src/Converter.cpp:612
 #: src/Converter.cpp:655
 msgid "Cannot convert file"
@@ -26593,15 +25500,10 @@ msgstr "Zvýrazniť %1$s, "
 msgid "Underline %1$s, "
 msgstr "Podčiarknuť %1$s, "
 
-#: src/Font.cpp:169
+#: src/Font.cpp:168
 #, c-format
-msgid "Strike out %1$s, "
+msgid "Strikeout %1$s, "
 msgstr "Preškrtnúť %1$s, "
-
-#: src/Font.cpp:172
-#, c-format
-msgid "Cross out %1$s, "
-msgstr "Šikmo začiarkovať %1$s, "
 
 #: src/Font.cpp:175
 #, c-format
@@ -26914,7 +25816,7 @@ msgstr "Zoznam podporovaných ladiacich indikátorov:"
 msgid "Setting debug level to %1$s"
 msgstr "Nastavenie úrovne ladenia na %1$s"
 
-#: src/LyX.cpp:1175
+#: src/LyX.cpp:1136
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -26933,8 +25835,7 @@ msgid ""
 "Name\n"
 "                  to see which parameter (which differs from the format "
 "name\n"
-"                  in the File->Export menu) should be passed. To export to\n"
-"                  the document's default output format, use 'default'.\n"
+"                  in the File->Export menu) should be passed.\n"
 "                  Note that the order of -e and -x switches matters.\n"
 "\t-E [--export-to] fmt filename\n"
 "                  where fmt is the export format of choice (see --export),\n"
@@ -26950,18 +25851,11 @@ msgid ""
 "export.\n"
 "                  Anything else is equivalent to `all', but is not "
 "consumed.\n"
-"\t--ignore-error-message which\n"
-"                  allows you to ignore specific LaTeX error messages.\n"
-"                  Do not use for final documents! Currently supported "
-"values:\n"
-"                  * missing_glyphs: Fontspec `missing glyphs' error.\n"
 "\t-n [--no-remote]\n"
 "                  open documents in a new instance\n"
 "\t-r [--remote]\n"
 "                  open documents in an already running instance\n"
 "                  (a working lyxpipe is needed)\n"
-"\t-v [--verbose]\n"
-"                  report on terminal about spawned commands.\n"
 "\t-batch    execute commands without launching GUI and exit.\n"
 "\t-version  summarize version and build info\n"
 "Check the LyX man page for more details."
@@ -26979,12 +25873,9 @@ msgstr ""
 "                  spustí lyx-príkaz príkaz.\n"
 "\t-e [--export] fmt\n"
 "                  kde fmt je vybraný exportný formát. Pozrite si\n"
-"                  Nástroje -> Preferencie… -> Obsluha súborov -> Formáty "
-"Súborov -> Skratka\n"
-"                  aby ste videli, ktoré parametre sú vhodné. Pre export do "
-"formátu\n"
-"                  ktorý je nastavený v dokumente ako štandard použite "
-"'default'.\n"
+"                  Nástroje->Preferencie…->Obsluha súborov->Formáty Súborov-"
+">Skratka\n"
+"                  aby ste videli, ktoré parametre sú vhodné.\\n\n"
 "                 (Líšia sa od mena formátu v menu Súbor->Exportovať).\n"
 "                  Všimnite si že poradie prepínačov -e a -x je významné.\n"
 "\t-E [--export-to] fmt názov\n"
@@ -26994,25 +25885,18 @@ msgstr ""
 "                  kde fmt je vybraný formát k importu\n"
 "                  a file.xxx je meno súboru určeného pre import.\n"
 "\t-f [--force-overwrite] čo\n"
-"                  kde \"čo\" je `all' alebo `main' alebo `none'.\n"
+"                  kde \"čo\" je alebo `all' alebo `main' alebo `none'.\n"
 "                  Keď `all', tak bude prepísaný každý súbor počas\n"
 "                    dávkového exportu.\n"
 "                  Keď `main' bude prepísaný len hlavný súbor.\n"
 "                  Keď `none' nebude nič prepísané.\n"
 "                  Všetko iné je rovnocenné k `all', len že nie je "
 "skonzumované.\n"
-"\t--ignore-error-message čo\n"
-"                  dovolí ignorovať špecifické LaTeX hlásenia.\n"
-"                  Nepoužívajte pre finálne dokumenty! Aktuálne podporované "
-"hodnoty:\n"
-"                  * missing_glyphs: Fontspec chyba `missing glyphs'.\n"
 "\t-n [--no-remote]\n"
 "                 otvorí dokumenty v novej inštancii\n"
 "\t-r [--remote]\n"
 "                  otvorí dokumenty v už spustenej inštancii\n"
 "                  (potrebujete pracujúci lyx-dátovod)\n"
-"\t-v [--verbose]\n"
-"                  hlási vytvorené príkazy na terminál.\n"
 "\t-batch    spusti príkazy bez GUI a skonč.\n"
 "\t-version  zhrnúť  verziu a prekladnú informáciu.\n"
 "Viac informácií nájdete v manuálovej stránke LyXu."
@@ -27143,22 +26027,6 @@ msgstr ""
 "Definujte ako spustiť chktex. Napr. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -"
 "n30 -n38\" Pozrite si dokumentáciu k ChkTeX."
 
-#: src/LyXRC.cpp:2980
-msgid ""
-"Forbid use of external converters with 'needauth' option to prevent "
-"undesired effects."
-msgstr ""
-"Blokovať externé konvertori s 'needauth' voľbou na zabránenie nežiadúcich "
-"efektov. "
-
-#: src/LyXRC.cpp:2984
-msgid ""
-"Ask user before calling external converters with 'needauth' option to "
-"prevent undesired effects."
-msgstr ""
-"Žiadať o povolenie pred spustením externého konvertora s 'needauth' voľbou "
-"na zabránenie nežiadúcich efektov."
-
 #: src/LyXRC.cpp:2991
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
@@ -27280,11 +26148,6 @@ msgid ""
 msgstr ""
 "Definujte voľby programu makeindex používané pre nomenklatúry. Môžu sa líšiť "
 "od volieb pre generáciu registru."
-
-#: src/LyXRC.cpp:3087
-msgid "The command to run the python pygments syntax highlighter."
-msgstr ""
-"Príkaz, ktorý python modul 'pygments' má spustiť na zdôraznenie syntaxu."
 
 #: src/LyXRC.cpp:3076
 msgid ""
@@ -27884,45 +26747,6 @@ msgstr "Balík nie je dostupný"
 msgid "Error reading module %1$s\n"
 msgstr "Chyba pri čítaní modulu %1$s\n"
 
-#: src/TextClass.cpp:1715
-#, c-format
-msgid ""
-"The cite engine %1$s has been requested by\n"
-"this document but has not been found in the list of\n"
-"available engines. If you recently installed it, you\n"
-"probably need to reconfigure LyX.\n"
-msgstr ""
-"V dokumente požadovaná obsluha citácií %1$s\n"
-"sa nenašla v listine dostupných obsluhou.\n"
-"Keď ste ju len nedávno inštalovali, treba\n"
-"vám asi LyX rekonfigurovať.\n"
-
-#: src/TextClass.cpp:1720
-msgid "Cite Engine not available"
-msgstr "Obsluha citácie nie je dostupná"
-
-#: src/TextClass.cpp:1726
-#, c-format
-msgid ""
-"The cite engine %1$s requires a package that is not\n"
-"available in your LaTeX installation, or a converter that\n"
-"you have not installed. LaTeX output may not be possible.\n"
-"Missing prerequisites:\n"
-"\t%2$s\n"
-"See section 3.1.2.3 (Modules) of the User's Guide for more information."
-msgstr ""
-"Obsluha citácie %1$s vyžaduje balík, ktorý je nedostupný vo vašej\n"
-"LaTeX-ovej inštalácii, alebo vyžaduje konvertor\n"
-"ktorý nemáte inštalovaný. Nezaistený výstup z LaTeX-a.\n"
-"Chýbajúce predpoklady:\n"
-"\t%2$s\n"
-"Pozri sekciu 3.1.2.3 (Moduly) Užívateľskej Príručky pre viac informácií."
-
-#: src/TextClass.cpp:1738
-#, c-format
-msgid "Error reading cite engine %1$s\n"
-msgstr "Chyba pri čítaní obsluhy citácie %1$s\n"
-
 #: src/TocBackend.cpp:260 src/insets/InsetIndex.cpp:281
 #: src/insets/InsetIndex.cpp:302
 msgid "unknown type!"
@@ -27964,6 +26788,10 @@ msgstr "Grafika"
 #: src/TocBackend.cpp:287
 msgid "Equations"
 msgstr "Rovnice"
+
+#: src/frontends/qt4/qt_helpers.cpp:617
+msgid "External material"
+msgstr "Externý materiál"
 
 #: src/TocBackend.cpp:288 src/frontends/qt4/GuiExternal.cpp:87
 msgid "External Material"
@@ -28606,11 +27434,6 @@ msgstr ""
 "Nepodarilo sa nastaviť farbu \"%1$s\" - alebo nie je definovaná alebo sa "
 "nedá predefinovať"
 
-#: src/frontends/qt4/GuiApplication.cpp:1866
-#, c-format
-msgid "Cannot iterate more than %1$d times"
-msgstr "Nemôžem iterovať viac ako %1$d krát"
-
 #: src/frontends/qt4/GuiApplication.cpp:1964
 #, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
@@ -28721,10 +27544,6 @@ msgstr ""
 "preto nájdené aj bez adresára. To je zvyčajne v bib/ adresáre v LaTeXovom "
 "texmf-strome. Na tomto mieste by mala ležať aj vaša vlastná databáza keď ju "
 "chcete použiť. "
-
-#: src/frontends/qt4/GuiBibtex.cpp:339 src/insets/InsetBibtex.cpp:237
-msgid "all reference units"
-msgstr "bibliografie pre každý referovaný celok"
 
 #: src/frontends/qt4/GuiBibtex.cpp:425 src/frontends/qt4/GuiBibtex.cpp:435
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
@@ -28906,12 +27725,8 @@ msgid "Wavy underbar"
 msgstr "Vlnovkou podčiarknuté"
 
 #: src/frontends/qt4/GuiCharacter.cpp:88
-msgid "Strike out"
+msgid "Strikeout"
 msgstr "Preškrtnuté"
-
-#: src/frontends/qt4/GuiCharacter.cpp:89
-msgid "Cross out"
-msgstr "Šikmo začiarkované"
 
 #: src/frontends/qt4/GuiCharacter.cpp:180
 msgid "No color"
@@ -28942,30 +27757,6 @@ msgstr "Roz&lišovať veľkosť písmen"
 msgid "Search as you &type"
 msgstr "V&yhľadávať pri zadávaní"
 
-#: src/frontends/qt4/GuiCitation.cpp:288
-msgid "General text befo&re:"
-msgstr "Všeobecný text pred:"
-
-#: src/frontends/qt4/GuiCitation.cpp:289 src/frontends/qt4/GuiCitation.cpp:293
-msgid "General &text after:"
-msgstr "Všeobecný text po:"
-
-#: src/frontends/qt4/GuiCitation.cpp:290
-msgid ""
-"Text that precedes the whole reference list. For text that precedes "
-"individual items, double-click on the respective entry above."
-msgstr ""
-"Text pred celou odkazovou listinou. Dvojité kliknutie na patričný záznam "
-"hore pridá text pred príslušnou položkou. "
-
-#: src/frontends/qt4/GuiCitation.cpp:294
-msgid ""
-"Text that follows the whole reference list. For text that follows individual "
-"items, double-click on the respective entry above."
-msgstr ""
-"Text za celou odkazovou listinou. Dvojité kliknutie na patričný záznam hore "
-"pridá text za príslušnou položkou. "
-
 #: src/frontends/qt4/GuiCitation.cpp:300
 msgid "Text that precedes the reference (e.g., \"cf.\")"
 msgstr "Text predchádzajúci referencie (napr., \"por.\")"
@@ -28973,6 +27764,11 @@ msgstr "Text predchádzajúci referencie (napr., \"por.\")"
 #: src/frontends/qt4/GuiCitation.cpp:306
 msgid "Text that follows the reference (e.g., pages)"
 msgstr "Text nasledujúci referencie (napr., strany)"
+
+#: src/frontends/qt4/ui/CitationUi.ui:382
+msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")"
+msgstr ""
+"Vynúti veľké prvé písmená v menách (\"Del Piero\", miesto \"del Piero\")"
 
 #: src/frontends/qt4/GuiCitation.cpp:349
 msgid "Always list all authors (rather than using \"et al.\")"
@@ -28999,18 +27795,6 @@ msgid ""
 "Enter string to filter the list of available citations and press <Enter>"
 msgstr ""
 "Zadajte reťazec na výber z listiny dostupných citácií a stlačte <Enter>"
-
-#: src/frontends/qt4/GuiCitation.cpp:642
-msgid "Text before"
-msgstr "Text pred"
-
-#: src/frontends/qt4/GuiCitation.cpp:643
-msgid "Cite key"
-msgstr "Heslo citácie"
-
-#: src/frontends/qt4/GuiCitation.cpp:644
-msgid "Text after"
-msgstr "Text za"
 
 #: src/frontends/qt4/GuiClipboard.cpp:174
 msgid "LinkBack PDF"
@@ -29134,6 +27918,14 @@ msgstr "Modul nenájdený!"
 msgid "Press button to check validity..."
 msgstr "Kliknite tlačidlo na kontrolu validity…"
 
+#: src/frontends/qt4/GuiDocument.cpp:579
+msgid "Conversion Failed!"
+msgstr "Konverzia zlyhala!"
+
+#: src/frontends/qt4/GuiDocument.cpp:580
+msgid "Failed to convert local layout to current format."
+msgstr "Konverzia lokálnej schémy na nový formát zlyhala."
+
 #: src/frontends/qt4/GuiDocument.cpp:615
 msgid "Layout is valid!"
 msgstr "Schéma je platná!"
@@ -29141,14 +27933,6 @@ msgstr "Schéma je platná!"
 #: src/frontends/qt4/GuiDocument.cpp:616
 msgid "Layout is invalid!"
 msgstr "Schéma je neplatná!"
-
-#: src/frontends/qt4/GuiDocument.cpp:628
-msgid "Conversion to current format impossible!"
-msgstr "Konvertovať na aktuálny formát je nemožné!"
-
-#: src/frontends/qt4/GuiDocument.cpp:629
-msgid "Conversion to current stable format impossible."
-msgstr "Konvertovať na aktuálny stabilný formát je nemožné."
 
 #: src/frontends/qt4/GuiDocument.cpp:634
 msgid "Convert to current format"
@@ -29333,6 +28117,30 @@ msgstr "JIS B6"
 msgid "Language Default (no inputenc)"
 msgstr "Štandardné pre daný jazyk (bez inputenc)"
 
+#: src/frontends/qt4/GuiDocument.cpp:1051
+msgid "``text''"
+msgstr "“text”"
+
+#: src/frontends/qt4/GuiDocument.cpp:1053
+msgid "''text''"
+msgstr "”text”"
+
+#: src/frontends/qt4/GuiDocument.cpp:1055
+msgid ",,text``"
+msgstr "„text“"
+
+#: src/frontends/qt4/GuiDocument.cpp:1057
+msgid ",,text''"
+msgstr "„text”"
+
+#: src/frontends/qt4/GuiDocument.cpp:1059
+msgid "<<text>>"
+msgstr "«text»"
+
+#: src/frontends/qt4/GuiDocument.cpp:1061
+msgid ">>text<<"
+msgstr "»text«"
+
 #: src/frontends/qt4/GuiDocument.cpp:1121
 msgid "Numbered"
 msgstr "Číslované"
@@ -29452,32 +28260,6 @@ msgstr "Výstupné Formáty"
 msgid "LaTeX Preamble"
 msgstr "Preambula LaTeX-u"
 
-#: src/frontends/qt4/GuiDocument.cpp:1598
-msgid "Pygments driver command not found!"
-msgstr "Nenašiel som príkaz pre ovládač 'pygments'!"
-
-#: src/frontends/qt4/GuiDocument.cpp:1599
-msgid ""
-"The driver command necessary to use the minted package\n"
-"(pygmentize) has not been found. Make sure you have\n"
-"the python-pygments module installed or, if the driver\n"
-"is named differently, to add the following line to the\n"
-"document preamble:\n"
-"\n"
-"\\AtBeginDocument{\\renewcommand{\\MintedPygmentize}{driver}}\n"
-"\n"
-"where 'driver' is name of the driver command."
-msgstr ""
-"Príkaz ovládača, potrebný na použite minted-balíka\n"
-"(pygmentize) nebol nájdený. Zaistite že máte\n"
-"python-pygments-modul nainštalovaný alebo, keď ovládač\n"
-"je ináč pomenovaný, pridajte nasledovný riadok\n"
-"do preambuly:\n"
-"\n"
-"\\AtBeginDocument{\\renewcommand{\\MintedPygmentize}{ovládač}}\n"
-"\n"
-"kde 'ovládač' je názov príkazu ovládača."
-
 #: src/frontends/qt4/GuiDocument.cpp:1744
 #: src/frontends/qt4/GuiDocument.cpp:1774
 msgid "&Default..."
@@ -29580,22 +28362,23 @@ msgstr "&Zamietnuť"
 msgid "Unable to set document class."
 msgstr "Nedá sa uložiť štandardné rozloženie triedy dokumentov."
 
-#: src/frontends/qt4/GuiDocument.cpp:2493
-msgid "Basic numerical"
-msgstr "Základný číselný"
-
 #: src/frontends/qt4/GuiDocument.cpp:2496
 msgid "Author-year"
 msgstr "Autor-rok"
 
-#: src/frontends/qt4/GuiDocument.cpp:2499
-msgid "Author-number"
-msgstr "Autor-číslo"
+#: src/frontends/qt4/GuiDocument.cpp:1144
+msgid "Numerical"
+msgstr "Číselný"
 
 #: src/frontends/qt4/GuiDocument.cpp:2542
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s a %2$s"
+
+#: src/BiblioInfo.cpp:320
+#, c-format
+msgid "%1$s et al."
+msgstr "%1$s et al."
 
 #: src/frontends/qt4/GuiDocument.cpp:2549
 #, c-format
@@ -29643,26 +28426,6 @@ msgstr "Vylúčené moduly: %1$s."
 #: src/frontends/qt4/GuiDocument.cpp:2693
 msgid "WARNING: Some required packages are unavailable!"
 msgstr "Upozornenie: Niektoré vyžadované balíky sú nedostupné!"
-
-#: src/frontends/qt4/GuiDocument.cpp:3258
-msgid "per part"
-msgstr "každú časť"
-
-#: src/frontends/qt4/GuiDocument.cpp:3260
-msgid "per chapter"
-msgstr "každú kapitolu"
-
-#: src/frontends/qt4/GuiDocument.cpp:3262
-msgid "per section"
-msgstr "každú sekciu"
-
-#: src/frontends/qt4/GuiDocument.cpp:3264
-msgid "per subsection"
-msgstr "každú podsekciu"
-
-#: src/frontends/qt4/GuiDocument.cpp:3265
-msgid "per child document"
-msgstr "každý podriadený dokument"
 
 #: src/frontends/qt4/GuiDocument.cpp:3550
 msgid "[No options predefined]"
@@ -29716,10 +28479,6 @@ msgstr ""
 "Hlavný dokument '%1$s'\n"
 "nie je možné nahrať."
 
-#: src/frontends/qt4/GuiDocument.cpp:4377
-msgid "(Module name: %1)"
-msgstr "(Názov modulu: %1)"
-
 #: src/frontends/qt4/GuiERT.h:33
 msgid "TeX Mode Inset Settings"
 msgstr "Nastavenia Módu TeX"
@@ -29727,6 +28486,10 @@ msgstr "Nastavenia Módu TeX"
 #: src/frontends/qt4/GuiErrorList.cpp:47 src/frontends/qt4/GuiLog.cpp:260
 msgid "Literate"
 msgstr "Literárne"
+
+#: src/frontends/qt4/GuiErrorList.cpp:48
+msgid "pLaTeX"
+msgstr "pLaTeX"
 
 #: src/frontends/qt4/GuiErrorList.cpp:61
 msgid "Error List"
@@ -30079,10 +28842,6 @@ msgstr "Žiadny dialekt"
 msgid "LaTeX Log"
 msgstr "LaTeX Protokol"
 
-#: src/frontends/qt4/GuiLog.cpp:250
-msgid "Biber"
-msgstr "Biber"
-
 #: src/frontends/qt4/GuiLog.cpp:263
 msgid "LyX2LyX"
 msgstr "LyX2LyX"
@@ -30218,10 +28977,6 @@ msgstr "Klávesnica/Myš"
 msgid "Input Completion"
 msgstr "Doplňovanie"
 
-#: src/frontends/qt4/GuiPrefs.cpp:785 src/frontends/qt4/GuiPrefs.cpp:935
-msgid "C&ommand:"
-msgstr "Príkaz:"
-
 #: src/frontends/qt4/GuiPrefs.cpp:810 src/frontends/qt4/GuiPrefs.cpp:835
 #: src/frontends/qt4/GuiPrefs.cpp:963 src/frontends/qt4/GuiPrefs.cpp:990
 msgid "Co&mmand:"
@@ -30291,22 +29046,6 @@ msgstr "Hunspell"
 #: src/frontends/qt4/GuiPrefs.cpp:1657
 msgid "Converters"
 msgstr "Konvertory"
-
-#: src/frontends/qt4/GuiPrefs.cpp:1881
-msgid "SECURITY WARNING!"
-msgstr "OCHRANNÉ VAROVANIE!"
-
-#: src/frontends/qt4/GuiPrefs.cpp:1881
-msgid ""
-"Unchecking this option has the effect that potentially harmful converters "
-"would be run without asking your permission first. This is UNSAFE and NOT "
-"recommended, unless you know what you are doing. Are you sure you would like "
-"to proceed ? The recommended and safe answer is NO!"
-msgstr ""
-"Ne-zaškrtnutie tejto voľby povolí spustiť aj potenciálne škodlivé konvertory "
-"bez požiadania vášho súhlasu. Toto je NEBEZPEČNÉ a sa nedoporučuje, pokiaľ "
-"neviete čo robíte. Ste si istý že chcete pokračovať? Doporučená a bezpečná "
-"odpoveď je NIE!"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1988
 msgid "File Formats"
@@ -30881,9 +29620,13 @@ msgstr "Dodatok, priv. oblasť A"
 msgid "Supplementary Private Use Area-B"
 msgstr "Dodatok, priv. oblasť B"
 
-#: src/frontends/qt4/GuiSymbols.cpp:245
-msgid "<p>LaTeX code: %1</p>"
-msgstr "<p>LaTeX kód: %1</p"
+#: src/frontends/qt4/GuiSymbols.cpp:221
+msgid "Character: "
+msgstr "Znak: "
+
+#: src/frontends/qt4/GuiSymbols.cpp:222
+msgid "Code Point: "
+msgstr "Kódový bod: "
 
 #: src/frontends/qt4/GuiSymbols.cpp:286
 msgid "Symbols"
@@ -30923,14 +29666,6 @@ msgstr "vypnuté"
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr "Stav lišty nástrojov \"%1$s\" nastavený na %2$s"
 
-#: src/frontends/qt4/GuiToolbar.cpp:426
-msgid "movable"
-msgstr "pohyblivá"
-
-#: src/frontends/qt4/GuiToolbar.cpp:428
-msgid "immovable"
-msgstr "pevná"
-
 #: src/frontends/qt4/GuiVSpace.h:40
 msgid "Vertical Space Settings"
 msgstr "Nastavenia Vertikálnej Medzery"
@@ -30942,14 +29677,6 @@ msgstr "verzia "
 #: src/frontends/qt4/GuiView.cpp:161
 msgid "unknown version"
 msgstr "neznáma verzia"
-
-#: src/frontends/qt4/GuiView.cpp:588
-msgid ""
-"WARNING: LaTeX is allowed to execute external commands for this document. "
-"Right click to change."
-msgstr ""
-"VAROVANIE: LaTeX má povolené spúšťať externé príkazy pre tento dokument. "
-"Kliknite pravým tlačidlom na zmenu."
 
 #: src/frontends/qt4/GuiView.cpp:659
 #, c-format
@@ -30979,11 +29706,6 @@ msgstr "Skončiť LyX"
 msgid "LyX could not be closed because documents are being processed by LyX."
 msgstr "Nemohol som zavrieť LyX, lebo LyX ešte spracováva dokumenty."
 
-#: src/frontends/qt4/GuiView.cpp:1144
-#, c-format
-msgid "%1$s (modified externally)"
-msgstr "%1$s (externe upravený)"
-
 #: src/frontends/qt4/GuiView.cpp:1258
 msgid "Welcome to LyX!"
 msgstr "Vitajte v LyXe!"
@@ -31005,9 +29727,9 @@ msgstr "Príkaz nie je povolený pokiaľ nie je otvorený aspoň jeden dokument"
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Neznáma lišta nástrojov \"%1$s\""
 
-#: src/frontends/qt4/GuiView.cpp:2040 src/frontends/qt4/GuiView.cpp:2053
-msgid "Zoom level cannot be less than %1$d%."
-msgstr "Stupeň lupy nesmie byť menší ako %1$d%."
+#: src/frontends/qt4/GuiView.cpp:1987
+msgid "Zoom level cannot be less than 10%."
+msgstr "Stupeň lupy nesmie byť menší ako 10%."
 
 #: src/frontends/qt4/GuiView.cpp:2148
 msgid "Select template file"
@@ -31260,24 +29982,9 @@ msgstr ""
 "\n"
 "Chcete dokument uložiť alebo zmeny zahodiť?"
 
-#: src/frontends/qt4/GuiView.cpp:3012
-#, c-format
-msgid ""
-"The document %1$s has not been saved yet.\n"
-"\n"
-"Do you want to save the document or discard it entirely?"
-msgstr ""
-"Dokument %1$s obsahuje neuložené zmeny.\n"
-"\n"
-"Chcete tento dokument uložiť alebo celkom zahodiť?"
-
 #: src/frontends/qt4/GuiView.cpp:3016 src/frontends/qt4/GuiView.cpp:3112
 msgid "Save changed document?"
 msgstr "Uložiť zmenený dokument?"
-
-#: src/frontends/qt4/GuiView.cpp:3016
-msgid "Save document?"
-msgstr "Uložiť dokument?"
 
 #: src/frontends/qt4/GuiView.cpp:3018
 msgid "&Discard"
@@ -31334,13 +30041,13 @@ msgstr "Žiadny zásobník pre súbor: %1$s."
 msgid "Inverse Search Failed"
 msgstr "Spiatočné Hľadanie Zlyhalo"
 
-#: src/frontends/qt4/GuiView.cpp:3432
+#: src/BufferView.cpp:2361
 msgid ""
 "Invalid position requested by inverse search.\n"
-"You may need to update the viewed document."
+"You need to update the viewed document."
 msgstr ""
 "Neplatná pozícia žiadaná spiatočným hľadaním.\n"
-"Možno je potrebné aktualizovať prehliadaný dokument."
+"Treba aktualizovať prehliadaný dokument."
 
 #: src/frontends/qt4/GuiView.cpp:3505
 msgid "Export Error"
@@ -31370,15 +30077,6 @@ msgstr "Vyberte súbor na vloženie"
 msgid "All Files (*)"
 msgstr "Všetky súbory (*)"
 
-#: src/frontends/qt4/GuiView.cpp:3798
-#, c-format
-msgid ""
-"The current version will be lost. Are you sure you want to load the version "
-"on disk of the document %1$s?"
-msgstr ""
-"Bude to strata aktuálnej verzie. Naozaj sa chcete vrátiť ku uloženej verzii "
-"dokumentu %1$s?"
-
 #: src/frontends/qt4/GuiView.cpp:3805
 #, c-format
 msgid ""
@@ -31399,22 +30097,6 @@ msgstr "Ukladám všetky dokumenty…"
 #: src/frontends/qt4/GuiView.cpp:3846
 msgid "All documents saved."
 msgstr "Všetky dokumenty uložené."
-
-#: src/frontends/qt4/GuiView.cpp:3873
-msgid "Developer mode is now enabled."
-msgstr "Spôsob hlásenia pre vývojárov je zapnutý."
-
-#: src/frontends/qt4/GuiView.cpp:3875
-msgid "Developer mode is now disabled."
-msgstr "Spôsob hlásenia pre vývojárov je vypnutý."
-
-#: src/frontends/qt4/GuiView.cpp:3884
-msgid "Toolbars unlocked."
-msgstr "Lišty nástrojov neblokované."
-
-#: src/frontends/qt4/GuiView.cpp:3886
-msgid "Toolbars locked."
-msgstr "Lišty nástrojov blokované."
 
 #: src/frontends/qt4/GuiView.cpp:3899
 #, c-format
@@ -31438,10 +30120,6 @@ msgstr "Prehliadnite najprv dokument prosím."
 msgid "Couldn't proceed."
 msgstr "Nemôžem postupovať."
 
-#: src/frontends/qt4/GuiView.h:491
-msgid "Disable Shell Escape"
-msgstr "Zakázať Shell Escape"
-
 #: src/frontends/qt4/GuiViewSource.cpp:402
 #: src/frontends/qt4/GuiViewSource.cpp:456
 msgid "Code Preview"
@@ -31459,10 +30137,6 @@ msgstr "Zavrieť Súbor"
 msgid "%1 (read only)"
 msgstr "%1 (iba pre čítanie)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2093
-msgid "%1 (modified externally)"
-msgstr "%1 (externe upravený)"
-
 #: src/frontends/qt4/GuiWorkArea.cpp:2113
 msgid "Hide tab"
 msgstr "Kartu skryť"
@@ -31470,10 +30144,6 @@ msgstr "Kartu skryť"
 #: src/frontends/qt4/GuiWorkArea.cpp:2115
 msgid "Close tab"
 msgstr "Kartu zavrieť"
-
-#: src/frontends/qt4/GuiWorkArea.cpp:2232
-msgid "<b>The file %1 changed on disk.</b>"
-msgstr "<b>Súbor %1 na disku je zmenený.</b>"
 
 #: src/frontends/qt4/GuiWrap.cpp:32
 msgid "Wrap Float Settings"
@@ -31618,60 +30288,10 @@ msgstr "Žiadna Citácia v Oblasti!"
 msgid "No citations selected!"
 msgstr "Žiadna citácia nie je vybraná!"
 
-#: src/frontends/qt4/Menus.cpp:1612
-msgid "All authors|h"
-msgstr "Každý autor"
-
-#: src/frontends/qt4/Menus.cpp:1643
-msgid "Force upper case|u"
-msgstr "Vynútiť veľké písmo"
-
 #: src/frontends/qt4/Menus.cpp:1713
 #, c-format
 msgid "Caption (%1$s)"
 msgstr "Popis (%1$s)"
-
-#: src/frontends/qt4/Menus.cpp:1738
-msgid "No Quote in Scope!"
-msgstr "Žiadne Úvodzovky v Oblasti!"
-
-#: src/frontends/qt4/Menus.cpp:1774 src/frontends/qt4/Menus.cpp:1778
-#: src/frontends/qt4/Menus.cpp:1782 src/frontends/qt4/Menus.cpp:1786
-#, c-format
-msgid "%1$s (dynamic)"
-msgstr "%1$s (dynamická)"
-
-#: src/frontends/qt4/Menus.cpp:1818
-#, c-format
-msgid "Use dynamic quotes (%1$s)|d"
-msgstr "Použiť dynamické úvodzovky (%1$s)|d"
-
-#: src/frontends/qt4/Menus.cpp:1824
-msgid "dynamic[[Quotes]]"
-msgstr "dynamické"
-
-#: src/frontends/qt4/Menus.cpp:1824 src/frontends/qt4/Menus.cpp:1834
-msgid "static[[Quotes]]"
-msgstr "nemenné"
-
-#: src/frontends/qt4/Menus.cpp:1826
-#, c-format
-msgid "Reset to document default (%1$s, %2$s)|o"
-msgstr "Vrátiť na štandard dokumentu (%1$s, %2$s)|o"
-
-#: src/frontends/qt4/Menus.cpp:1833
-#, c-format
-msgid "Reset to language default (%1$s, %2$s)|l"
-msgstr "Vrátiť na štandard jazyku (%1$s, %2$s)|j"
-
-#: src/frontends/qt4/Menus.cpp:1835
-#, c-format
-msgid "Reset to language default (%1$s)|l"
-msgstr "Vrátiť na štandard jazyku (%1$s)|j"
-
-#: src/frontends/qt4/Menus.cpp:1843
-msgid "Change Style|y"
-msgstr "Zmeniť Štýl"
 
 #: src/frontends/qt4/Menus.cpp:1878
 #, c-format
@@ -31682,11 +30302,6 @@ msgstr "Vytvoriť Nové Prostredie (%1$s)"
 #, c-format
 msgid "Start New Parent Environment (%1$s)"
 msgstr "Vytvoriť Nové Nadriadené Prostredie (%1$s)"
-
-#: src/frontends/qt4/Menus.cpp:2197
-#, c-format
-msgid "Export [%1$s]|E"
-msgstr "Exportovať [%1$s]|E"
 
 #: src/frontends/qt4/Menus.cpp:2542
 msgid "No Action Defined!"
@@ -31782,14 +30397,14 @@ msgstr ""
 "Kľúč %1$s už existuje,\n"
 "bude zmenený na %2$s."
 
-#: src/insets/InsetBibtex.cpp:156
+#: src/insets/InsetBibtex.cpp:148
 #, c-format
 msgid ""
-"The %1$s[[BibTeX/Biblatex]] inset includes %2$s databases.\n"
+"The BibTeX inset includes %1$s databases.\n"
 "If you proceed, all of them will be opened."
 msgstr ""
-"Vložka %1$s-u zahrňuje %2$s databázy.\n"
-"Keď budete pokračovať, bude každá otvorená."
+"Vložka BibTeX-u zahrňuje %1$s databázy.\n"
+"Keď budete pokračovať, budú všetky otvorené."
 
 #: src/insets/InsetBibtex.cpp:159
 msgid "Open Databases?"
@@ -31798,10 +30413,6 @@ msgstr "Otvoriť Databázy?"
 #: src/insets/InsetBibtex.cpp:160
 msgid "&Proceed"
 msgstr "&Pokračovať"
-
-#: src/insets/InsetBibtex.cpp:184
-msgid "Biblatex Generated Bibliography"
-msgstr "Zoznam bibliografických odkazov generovaný Biblatexom"
 
 #: src/insets/InsetBibtex.cpp:185
 msgid "BibTeX Generated Bibliography"
@@ -31822,20 +30433,6 @@ msgstr "Obsahuje:"
 #: src/insets/InsetBibtex.cpp:226 src/insets/InsetBibtex.cpp:244
 msgid "included in TOC"
 msgstr "zahrnuté do obsahu"
-
-#: src/insets/InsetBibtex.cpp:231
-msgid ""
-"Note: This bibliography is not output, since bibliographies in the master "
-"file are not allowed with the setting 'Multiple bibliographies per child "
-"document'"
-msgstr ""
-"Uvedomte si že táto bibliografia nebude vytvorená kvôli nastaveniu "
-"'Viacnásobné bibliografie' pre 'každý podriadený dokument' v hlavnom "
-"dokumente "
-
-#: src/insets/InsetBibtex.cpp:249
-msgid "Options: "
-msgstr "Možnosti: "
 
 #: src/insets/InsetBibtex.cpp:343
 msgid ""
@@ -31896,33 +30493,27 @@ msgstr "aktívna"
 msgid "non-active"
 msgstr "ne-aktívna"
 
-#: src/insets/InsetBranch.cpp:75 src/insets/InsetBranch.cpp:85
+#: src/insets/InsetBranch.cpp:75
 #, c-format
-msgid "master %1$s, child %2$s"
-msgstr "hlavný dokument %1$s, potomok %2$s"
+msgid "master: %1$s, child: %2$s"
+msgstr "hlavný dokument:%1$s, potomok: %2$s"
 
-#: src/insets/InsetBranch.cpp:89
+#: src/insets/InsetBranch.cpp:78
 #, c-format
-msgid ""
-"Branch Name: %1$s\n"
-"Branch Status: %2$s\n"
-"Inset Status: %3$s"
-msgstr ""
-"Názov Vetvy: %1$s\n"
-"Štatus Vetvy: %2$s\n"
-"Štatus Vložky: %3$s "
+msgid "Branch (%1$s): %2$s"
+msgstr "Vetva (%1$s): %2$s"
 
 #: src/insets/InsetBranch.cpp:120
 msgid "Branch: "
 msgstr "Vetva: "
 
-#: src/insets/InsetBranch.cpp:122
-msgid "Branch (child): "
-msgstr "Vetva (potomok): "
+#: src/insets/InsetBranch.cpp:109
+msgid "Branch (child only): "
+msgstr "Vetva (len potomok): "
 
-#: src/insets/InsetBranch.cpp:124
-msgid "Branch (master): "
-msgstr "Vetva (hlavný dokument): "
+#: src/insets/InsetBranch.cpp:111
+msgid "Branch (master only): "
+msgstr "Vetva (len hlavný dokument): "
 
 #: src/insets/InsetBranch.cpp:126
 msgid "Branch (undefined): "
@@ -31949,11 +30540,6 @@ msgstr "Pod-%1$s"
 #: src/insets/InsetCitation.cpp:241
 msgid "No bibliography defined!"
 msgstr "Žiadna bibliografia nie je definovaná!"
-
-#: src/insets/InsetCitation.cpp:262
-#, c-format
-msgid "+ %1$d more entries."
-msgstr "a ešte %1$d záznamov."
 
 #: src/insets/InsetCommand.cpp:156
 msgid "LaTeX Command: "
@@ -31986,6 +30572,17 @@ msgstr "Tu chýba \\end_inset: "
 #: src/insets/InsetCommandParams.cpp:450
 msgid "Uncodable characters"
 msgstr "Nekódovateľné znaky"
+
+#: src/BufferParams.cpp:1952
+#, c-format
+msgid ""
+"The following characters that are used in an index name are not\n"
+"representable in the current encoding and therefore have been omitted:\n"
+"%1$s."
+msgstr ""
+"Nasledujúce znaky použité v mene vložky sú nereprezentovateľné\n"
+"v aktuálnom kódovaní a boli vynechané:\n"
+"%1$s."
 
 #: src/insets/InsetCommandParams.cpp:451
 #, c-format
@@ -32062,6 +30659,17 @@ msgstr "Grafický súbor: %1$s"
 msgid "Hyperlink: "
 msgstr "Hyperlinka: "
 
+#: src/insets/InsetHyperlink.cpp:200
+#, c-format
+msgid ""
+"The following characters that are used in the href inset are not\n"
+"representable in the current encoding and therefore have been omitted:\n"
+"%1$s."
+msgstr ""
+"Nasledujúce znaky použité vo vložke href sú nereprezentovateľné\n"
+"v aktuálnom kódovaní a boli vynechané:\n"
+"%1$s."
+
 #: src/insets/InsetHyperlink.cpp:249
 msgid "www"
 msgstr "www"
@@ -32117,10 +30725,9 @@ msgstr ""
 "`%1$s'\n"
 "Skontrolujte, či daný súbor naozaj existuje."
 
-#: src/insets/InsetInclude.cpp:718 src/insets/InsetInclude.cpp:802
-#: src/insets/InsetInclude.cpp:827
-msgid "Error: "
-msgstr "Chyba: "
+#: src/insets/InsetInclude.cpp:641
+msgid "Missing included file"
+msgstr "Chýba zahrnutý súbor"
 
 #: src/insets/InsetInclude.cpp:727
 #, c-format
@@ -32137,21 +30744,6 @@ msgstr ""
 msgid "Different textclasses"
 msgstr "Rozdielne triedy (textclass)"
 
-#: src/insets/InsetInclude.cpp:739
-#, c-format
-msgid ""
-"Included file `%1$s'\n"
-"has use-non-TeX-fonts set to `%2$s'\n"
-"while parent file has use-non-TeX-fonts set to `%3$s'."
-msgstr ""
-"Zahrnutý súbor `%1$s'\n"
-"má nastavený nie-TeX-font `%2$s'\n"
-"zatiaľ čo nadriadený súbor má nie-TeX-font nastavený na `%3$s'."
-
-#: src/insets/InsetInclude.cpp:745
-msgid "Different use-non-TeX-fonts settings"
-msgstr "Odlišné nastavenie použitia nie-TeX-fontov"
-
 #: src/insets/InsetInclude.cpp:760
 #, c-format
 msgid ""
@@ -32167,14 +30759,18 @@ msgstr ""
 msgid "Module not found"
 msgstr "Modul nenájdený"
 
-#: src/insets/InsetInclude.cpp:793 src/insets/InsetInclude.cpp:819
+#: src/insets/InsetInclude.cpp:703 src/insets/InsetInclude.cpp:728
 #, c-format
 msgid ""
 "Included file `%1$s' was not exported correctly.\n"
-" LaTeX export is probably incomplete."
+"Warning: LaTeX export is probably incomplete."
 msgstr ""
 "Zahrnutý súbor `%1$s' nebol správne exportovaný.\n"
-" LaTeX-ov export asi nie je úplný."
+"Upozornenie: LaTeX-ov export asi nie je úplný."
+
+#: src/insets/InsetInclude.cpp:712 src/insets/InsetInclude.cpp:736
+msgid "Export failure"
+msgstr "Exportovanie zlyhalo"
 
 #: src/insets/InsetInclude.cpp:878
 msgid "Unsupported Inclusion"
@@ -32406,10 +31002,6 @@ msgstr ""
 "Použite \\footnotesize, \\small, \\itshape, \\ttfamily alebo niečo na ten "
 "spôsob"
 
-#: src/insets/InsetListingsParams.cpp:303
-msgid "none, leftline, topline, bottomline, lines, single"
-msgstr "none, leftline, topline, bottomline, lines, single"
-
 #: src/insets/InsetListingsParams.cpp:305
 msgid ""
 "none, leftline, topline, bottomline, lines, single, shadowbox or subset of "
@@ -32425,10 +31017,6 @@ msgid ""
 msgstr ""
 "Vložte štyri znaky (buď t = oblý alebo f = štvorcový) pre rožky vpravo hore, "
 "vpravo dole, vľavo dole a vľavo hore."
-
-#: src/insets/InsetListingsParams.cpp:311
-msgid "Previously defined color name as a string"
-msgstr "Skôr definované mená farieb ako reťazec"
 
 #: src/insets/InsetListingsParams.cpp:313
 msgid "Enter something like \\color{white}"
@@ -32464,73 +31052,6 @@ msgstr ""
 "Tento parameter by tu nemal byť zadaný. Použite prosím políčko popisku (v "
 "dialógu pre dokument potomka) alebo cez menu Vložiť -> Návestie (pri "
 "definícii výpisu zdrojového kódu)"
-
-#: src/insets/InsetListingsParams.cpp:670
-msgid "default: _minted-<jobname>"
-msgstr "štandard: _minted-<jobname>"
-
-#: src/insets/InsetListingsParams.cpp:749
-msgid "Sets encoding expected by Pygments"
-msgstr "Nastaviť kódovanie očakávané od Pygments"
-
-#: src/insets/InsetListingsParams.cpp:759
-msgid "A latex family such as tt, sf, rm"
-msgstr "Latex-rodina ako napr. tt, sf, rm"
-
-#: src/insets/InsetListingsParams.cpp:762
-msgid "A latex series such as m, b, c, bx, sb"
-msgstr "Latex-séria ako napr. m, b, c, bx, sb"
-
-#: src/insets/InsetListingsParams.cpp:765
-msgid "A latex name such as \\small"
-msgstr "Latex-meno ako napr. \\small"
-
-#: src/insets/InsetListingsParams.cpp:768
-msgid "A latex shape such as n, it, sl, sc"
-msgstr "Latex-tvar ako napr. n, it, sl, sc"
-
-#: src/insets/InsetListingsParams.cpp:787
-msgid "A range of lines such as {1,3-4}"
-msgstr "Rozsah riadkov ako napr. {1,3-4}"
-
-#: src/insets/InsetListingsParams.cpp:796
-msgid ""
-"Enter one of the supported languages. However, if you are defining a listing "
-"inset, it is better using the  language combo box, unless you need to enter "
-"a language not offered there, otherwise the combo box will be disabled."
-msgstr ""
-"Vložte jeden z podporovaných jazykov. Keď avšak definujete vložku výpisu, "
-"skúste najprv použiť rozbaľovacie pole pre tam ponúknuté jazyky. Vklad sem "
-"ináč zablokuje toto rozbaľovacie pole."
-
-#: src/insets/InsetListingsParams.cpp:819
-msgid "File encoding used by Pygments for highlighting"
-msgstr "Kódovanie súboru ktorý Pygments použije pre zdôraznenie"
-
-#: src/insets/InsetListingsParams.cpp:822
-msgid "Apply Python 3 highlighting"
-msgstr "Aplikuj Python 3 zdôraznenie"
-
-#: src/insets/InsetListingsParams.cpp:835
-msgid "A macro. Default: \\textvisiblespace"
-msgstr "Makro Štandard: \\textvisiblespace"
-
-#: src/insets/InsetListingsParams.cpp:839
-msgid "For PHP only"
-msgstr "Len pre PHP"
-
-#: src/insets/InsetListingsParams.cpp:842
-msgid "The style used by Pygments"
-msgstr "Štýl použitý v Pygments"
-
-#: src/insets/InsetListingsParams.cpp:855
-msgid "A macro to redefine visible tabs"
-msgstr "Makro pre redefinovanie viditeľných tabulátorov"
-
-#: src/insets/InsetListingsParams.cpp:862
-#: src/insets/InsetListingsParams.cpp:865
-msgid "Enables latex code in comments"
-msgstr "Povolí latex-kód v komentároch"
 
 #: src/insets/InsetListingsParams.cpp:879
 msgid "Invalid (empty) listing parameter name."
@@ -32621,26 +31142,6 @@ msgstr "hfantóm"
 msgid "vphantom"
 msgstr "vfantóm"
 
-#: src/insets/InsetQuotes.cpp:567
-#, c-format
-msgid "%1$souter%2$s and %3$sinner%4$s[[quotation marks]]"
-msgstr "%1$svonkajšie%2$s a %3$svnútorné%4$s"
-
-#: src/insets/InsetQuotes.cpp:577
-#, c-format
-msgid "%1$s[[quot. mark description]] (language default)"
-msgstr "%1$s (jazykový štandard)"
-
-#: src/insets/InsetQuotes.cpp:590
-#, c-format
-msgid "%1$stext"
-msgstr "%1$stext"
-
-#: src/insets/InsetQuotes.cpp:592
-#, c-format
-msgid "text%1$s"
-msgstr "text%1$s"
-
 #: src/insets/InsetRef.cpp:362
 msgid "BROKEN: "
 msgstr "NEPLATNÝ: "
@@ -32696,14 +31197,6 @@ msgstr "Referencia na Meno"
 #: src/insets/InsetRef.cpp:424
 msgid "NameRef: "
 msgstr "MenoRef: "
-
-#: src/insets/InsetRef.cpp:425
-msgid "Label Only"
-msgstr "Len Heslo"
-
-#: src/insets/InsetRef.cpp:425
-msgid "Label: "
-msgstr "Heslo: "
 
 #: src/insets/InsetScript.cpp:341
 msgid "subscript"
@@ -32910,10 +31403,6 @@ msgstr "Výška textu %"
 #: src/lengthcommon.cpp:45
 msgid "Page Height %"
 msgstr "Výška Stránky %"
-
-#: src/lengthcommon.cpp:45
-msgid "Line Distance %"
-msgstr "Odstup Riadku %"
 
 #: src/lyxfind.cpp:128
 msgid "Search error"
@@ -33550,9 +32039,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "Two-column figure"
 #~ msgstr "Dvojstĺpcový obrázok"
 
-#~ msgid "&Zoom %:"
-#~ msgstr "&Lupa %:"
-
 #~ msgid "Number formulas:"
 #~ msgstr "Číselné znaky"
 
@@ -33562,44 +32048,8 @@ msgstr "Neznámy používateľ"
 #~ msgid "Don't use ligatures for en- and &em-dashes"
 #~ msgstr "Nepoužívať zliatky pre en a em čiarkovanie"
 
-#~ msgid "Missing included file"
-#~ msgstr "Chýba zahrnutý súbor"
-
 #~ msgid "Included in TOC"
 #~ msgstr "Zahrnuté do obsahu"
-
-#~ msgid "Styles"
-#~ msgstr "Štýly"
-
-#~ msgid "&Key:"
-#~ msgstr "&Kľúč:"
-
-#~ msgid "&Email"
-#~ msgstr "&E-mail"
-
-#~ msgid "&File"
-#~ msgstr "&Súbor"
-
-#~ msgid "&Description:"
-#~ msgstr "O&pis:"
-
-#~ msgid ""
-#~ "The following characters that are used in an index name are not\n"
-#~ "representable in the current encoding and therefore have been omitted:\n"
-#~ "%1$s."
-#~ msgstr ""
-#~ "Nasledujúce znaky použité v mene vložky sú nereprezentovateľné\n"
-#~ "v aktuálnom kódovaní a boli vynechané:\n"
-#~ "%1$s."
-
-#~ msgid ""
-#~ "The following characters that are used in the href inset are not\n"
-#~ "representable in the current encoding and therefore have been omitted:\n"
-#~ "%1$s."
-#~ msgstr ""
-#~ "Nasledujúce znaky použité vo vložke href sú nereprezentovateľné\n"
-#~ "v aktuálnom kódovaní a boli vynechané:\n"
-#~ "%1$s."
 
 #~ msgid ""
 #~ "Provides 'FiXme' (marginal) annotations for document revision purposes. A "
@@ -33621,48 +32071,1613 @@ msgstr "Neznámy používateľ"
 #~ "vložte \\\\fxsetup{draft} do Dokument -> Preambula LaTeX-u. POZOR: pre "
 #~ "niektoré vlastnosti potrebujete balík 'FiXme' verziu 4 alebo vzostupnú."
 
-#~ msgid "External material"
-#~ msgstr "Externý materiál"
+#~ msgid "Ke&y:"
+#~ msgstr "&Kľúč:"
+
+#~ msgid ""
+#~ "Pass content of the `Label' field literally to LaTeX. Check this if you want "
+#~ "to enter LaTeX code."
+#~ msgstr ""
+#~ "Podaj obsah poľa `Značka' priamo pre LaTeX. Označte toto keď vkladáte LaTeX "
+#~ "kód."
+
+#~ msgid "Li&teral"
+#~ msgstr "Doslovne"
+
+#~ msgid "Sty&le format:"
+#~ msgstr "Štý&l formátu:"
+
+#~ msgid ""
+#~ "A selection of different style format approaches (such as natbib) that "
+#~ "respectively provide support for specific citation and bibliography styles. "
+#~ "Expand to get more information."
+#~ msgstr ""
+#~ "Výber iných formátových metód (ako napr. natbib) ktoré poskytujú podporu "
+#~ "špecifických citácií a bibliografických štýlov. Rozviňte keď chcete viac "
+#~ "informácií."
+
+#~ msgid "&Variant:"
+#~ msgstr "&Variácia:"
+
+#~ msgid "Provides available cite style variants."
+#~ msgstr "Poskytuje dostupné varianty štýlov citovania."
+
+#~ msgid "Opt&ions:"
+#~ msgstr "Možno&sti:"
+
+#~ msgid "Here you can enter further options of the bibliography package"
+#~ msgstr "Tu môžte vložiť ďalšie voľby balíka pre bibliografické záznamy"
+
+#~ msgid "Biblatex &citation style:"
+#~ msgstr "Štýl &biblatex-citácie:"
+
+#~ msgid "The style that determines the layout of the citations"
+#~ msgstr "Štýl ktorý určuje schému citácií"
+
+#~ msgid "Reset to the preset default"
+#~ msgstr "Návrat na predvolený štandard"
+
+#~ msgid "Rese&t"
+#~ msgstr "Vyn&ulovať"
+
+#~ msgid "Biblate&x bibliography style:"
+#~ msgstr "Štýl biblate&x-bibliografie:"
+
+#~ msgid ""
+#~ "The style that determines the layout of the biblatex-generated bibliography"
+#~ msgstr "Stýl ktorý určí schému generovanej biblatex-bibliografie"
+
+#~ msgid "Match biblatex bibliography with citation style"
+#~ msgstr "Prispôsob biblatex-bibliografiu ku štýlu citácie"
+
+#~ msgid "&Match"
+#~ msgstr "Pr&ispôsobiť"
+
+#~ msgid "Default BibTeX st&yle:"
+#~ msgstr "Štandardný BibTeX-štýl:"
+
+#~ msgid ""
+#~ "Here, you can define a BibTeX style that is suggested in the BibTeX dialog "
+#~ "by default"
+#~ msgstr ""
+#~ "Tu môžte definovať ktorý BibTeX-štýl bude v dialógu štandardne navrhnutý"
+
+#~ msgid "&Reset"
+#~ msgstr "&Vynulovať"
+
+#~ msgid "Subdivided bibli&ography"
+#~ msgstr "Rozčlenená bibli&ografia"
+
+#~ msgid "Rescan style files"
+#~ msgstr "Znovu prehľadať súbory so štýlom"
+
+#~ msgid "Re&scan"
+#~ msgstr "Znovu prehľadať"
+
+#~ msgid "&Multiple bibliographies:"
+#~ msgstr "Via&cnásobné bibliografie:"
+
+#~ msgid "Generate a bibliography per defined unit."
+#~ msgstr "Vytvoriť bibliografiu pre každý definovaný celok."
+
+#~ msgid "Da&tabases"
+#~ msgstr "Databázy"
+
+#~ msgid "O&ptions:"
+#~ msgstr "&Možnosti:"
+
+#~ msgid ""
+#~ "Options to the biblatex bibliography command. See the biblatex manual for "
+#~ "details."
+#~ msgstr ""
+#~ "Voľby pre príkaz na biblatex-bibliografie. Pre detaily viď biblatex manuál."
+
+#~ msgid "Inverted"
+#~ msgstr "Invertované"
+
+#~ msgid "Text befo&re:"
+#~ msgstr "&Text pred:"
+
+#~ msgid ""
+#~ "Text that precedes the reference (e.g., \"cf.\"), if the current citation "
+#~ "style supports this."
+#~ msgstr ""
+#~ "Text predchádzajúci referencie (napr., \"por.\"), keď to aktuálny štýl "
+#~ "citácie podporuje."
+
+#~ msgid ""
+#~ "Text that follows the reference (e.g., pages), if the current citation style "
+#~ "supports this."
+#~ msgstr ""
+#~ "Text nasledujúci referencie (napr., strany), keď to aktuálny štýl citácie "
+#~ "podporuje."
+
+#~ msgid ""
+#~ "Pass content of `Text before' and `Text after' fields literally to LaTeX. "
+#~ "Check this if you want to enter LaTeX code."
+#~ msgstr ""
+#~ "Podaj obsah poľa `Text pred' a `Text za' priamo pre LaTeX. Označte toto keď "
+#~ "vkladáte LaTeX kód."
+
+#~ msgid ""
+#~ "Force upper case in names (\"Del Piero\", not \"del Piero\"), if the current "
+#~ "citation style supports this."
+#~ msgstr ""
+#~ "Vynúti veľké prvé písmená v menách (\"Del Piero\", miesto \"del Piero\"), "
+#~ "keď to aktuálny štýl citácie podporuje."
+
+#~ msgid ""
+#~ "Always list all authors (rather than using \"et al.\"), if the current "
+#~ "citation style supports this."
+#~ msgstr ""
+#~ "Vynúti výpis všetkých autorov (miesto použitia \"a kol.\") keď to aktuálny "
+#~ "štýl citácie podporuje. "
+
+#~ msgid "&LaTeX font encoding:"
+#~ msgstr ""
+#~ "Kódovanie\n"
+#~ "písma &LaTeX:"
+
+#~ msgid ""
+#~ "Activate extensions such as character protrusion and font expansion via the "
+#~ "microtype package"
+#~ msgstr ""
+#~ "Aktivovať rozšírenia ako napr. vysunutie znakov a roztiahnutie fontu pomocou "
+#~ "balíka microtype"
+
+#~ msgid "Enable micr&o-typographic extensions"
+#~ msgstr "Povoliť mikr&o-typografické rozšírenia"
+
+#~ msgid ""
+#~ "Use font ligatures -- and --- instead of \\textendash and \\textemdash for "
+#~ "en- and em-dashes"
+#~ msgstr ""
+#~ "Použiť zliatky fontu pre '--' a '---' namiesto \\textendash a \\textemdash "
+#~ "pre en a em čiarky"
+
+#~ msgid "Output en- and &em-dashes as ligatures"
+#~ msgstr "Výstup pre en a em čiarky ako zliatky"
+
+#~ msgid ""
+#~ "Pass content of the `Name' field literally to LaTeX. Check this if you want "
+#~ "to enter LaTeX code."
+#~ msgstr ""
+#~ "Podaj obsah poľa `Meno' priamo pre LaTeX. Označte toto keď vkladáte LaTeX "
+#~ "kód."
+
+#~ msgid "E&mail"
+#~ msgstr "Ema&il"
+
+#~ msgid "Fi&le"
+#~ msgstr "Súbo&r"
+
+#~ msgid "Language pa&ckage:"
+#~ msgstr "Jazykový balí&k:"
+
+#~ msgid "Lan&guage default"
+#~ msgstr "Štan&dardné pre daný jazyk"
+
+#~ msgid "Othe&r:"
+#~ msgstr "&Iné:"
+
+#~ msgid ""
+#~ "Output quotation marks that automatically adapt to the style selected above. "
+#~ "If this is not selected, the quotation marks will stick with the style they "
+#~ "have been inserted with."
+#~ msgstr ""
+#~ "Vytvor úvodzovky ktoré sa automaticky prispôsobia ku vybranému štýlu. Bez "
+#~ "výberu sa úvodzovky držia štýlu v akom boli vložené. "
+
+#~ msgid "Use d&ynamic quotation marks"
+#~ msgstr "Použiť d&ynamické úvodzovky"
+
+#~ msgid "Choose the LaTeX package for code syntax highlighting"
+#~ msgstr "Vyberte LaTeX-balík na zdôraznenie syntaxu kódu"
+
+#~ msgid "&Syntax Highlighting Package:"
+#~ msgstr "Balík na Zdôraznenie &Syntaxu:"
+
+#~ msgid "Indent displayed formulas instead of centering"
+#~ msgstr "Odsadiť exponované vzorce namiesto vystreďovania"
+
+#~ msgid "Indent &Formulas"
+#~ msgstr "Odsadiť Vzorce"
+
+#~ msgid "Formula numbering side:"
+#~ msgstr "Bok číslovania vzorcov:"
+
+#~ msgid "Side where formulas are numbered"
+#~ msgstr "Na ktorom boku sú vzorce číslované"
+
+#~ msgid "Sy&mbol:"
+#~ msgstr "&Symbol:"
+
+#~ msgid "Des&cription:"
+#~ msgstr "&Opis:"
+
+#~ msgid ""
+#~ "Pass content of the `Symbol' and `Description' fields literally to LaTeX. "
+#~ "Check this if you want to enter LaTeX code."
+#~ msgstr ""
+#~ "Podaj obsah poľa `Symbol' a `Opis' priamo pre LaTeX. Označte toto keď "
+#~ "vkladáte LaTeX kód."
+
+#~ msgid ""
+#~ "Save all parameters in the LyX file, including ones that are frequently "
+#~ "switched or that are specific to the user (such as the output of the tracked "
+#~ "changes, or the document directory path). Disabling this option plays nicer "
+#~ "in collaborative settings and with version control systems."
+#~ msgstr ""
+#~ "Uloží všetky parametre do LyX súboru, včetne aj také ktoré sa často "
+#~ "prepínajú alebo sú zvláštne ohľadom na používateľa (také ako napr. výstup "
+#~ "sledovaných zmien, alebo cesta adresára dokumentu). Vypnutie tejto voľby je "
+#~ "vhodnejšie ako pre spoluprácu tak i pri používaniu správe verzií."
+
+#~ msgid ""
+#~ "Runs the LaTeX backend with the -shell-escape option (Warning: use only when "
+#~ "really necessary)"
+#~ msgstr ""
+#~ "Spúšťa LaTeX backend s voľbou -shell-escape (Varovanie: použiť len keď "
+#~ "naozaj potrebné)"
+
+#~ msgid "&Allow running external programs"
+#~ msgstr "Po&voliť spúšťanie externých príkazov"
+
+#~ msgid "Security"
+#~ msgstr "Bezpečnosť"
+
+#~ msgid "&Forbid use of needauth converters"
+#~ msgstr "&Zakázať overujúce konvertory"
+
+#~ msgid ""
+#~ "When enabled, use of converters with the 'needauth' option is forbidden."
+#~ msgstr ""
+#~ "Keď aktívne, používanie konvertorov s 'needauth' voľbou je neprístupné."
+
+#~ msgid "Use need&auth option"
+#~ msgstr "Použi needa&uth voľbu"
+
+#~ msgid ""
+#~ "When enabled, ask user before launching any external converter with the "
+#~ "'needauth' option."
+#~ msgstr ""
+#~ "Keď aktívne, žiadaj o dovolenie pred každým spustením externého konvertora s "
+#~ "'needauth' voľbou."
+
+#~ msgid ""
+#~ "If this is checked, new documents will be saved in a compressed binary-"
+#~ "format by default. Existing documents will still be saved in their current "
+#~ "state (compressed or uncompressed)."
+#~ msgstr ""
+#~ "Keď zaškrtnuté, nové dokumenty sa štandardne budú ukladať komprimované. "
+#~ "Ukladanie existujúcich dokumentov zostáva v ich aktuánom stave (komprimované "
+#~ "či nekomprimované)."
+
+#~ msgid ""
+#~ "If this is checked, the document directory path will be saved in the "
+#~ "document. This allows moving the document elsewhere and still finding the "
+#~ "included files."
+#~ msgstr ""
+#~ "Keď zaškrtnuté, adresár dokumentu sa zapíše do dokumentu. Dovolí sa tým "
+#~ "premiestniť dokument niekde inde a predsa nájsť vložené súbory."
+
+#~ msgid ""
+#~ "Whether to open documents in an already running instance of LyX. (Set the "
+#~ "LyXServer pipe path and restart LyX to enable this feature)"
+#~ msgstr ""
+#~ "Či otvoriť dokumenty v už spustenej inštancii LyX-a. (Nastaviť cestu k "
+#~ "dátovodu pre LyXServer a reštartovať LyX umožní túto vlastnosť)"
+
+#~ msgid "P&rocessor:"
+#~ msgstr "Pro&cesor:"
+
+#~ msgid "Options:"
+#~ msgstr "Možnosti:"
+
+#~ msgid "&CheckTeX command:"
+#~ msgstr "Príkaz Chec&kTeX:"
+
+#~ msgid ""
+#~ "Select whether LyX should output Windows or Cygwin style paths to LaTeX "
+#~ "files. Change the default only if the TeX engine was not correctly detected "
+#~ "at configure time. Warning: Your changes here will not be saved."
+#~ msgstr ""
+#~ "Vyberte, či by LyX mal písať cesty do LaTeX-súborov v štýle Windows alebo "
+#~ "Cygwin. Zmeňte štandardné nastavenie len keď sa už nenašiel správny TeX "
+#~ "počas konfigurácie. Varovanie: Tieto vaše zmeny nebudú uložené."
+
+#~ msgid ""
+#~ "Relative and absolute paths are allowed. Relative paths will be expanded "
+#~ "with respect to the working directory (WD). For all paths except the "
+#~ "\"TEXINPUTS prefix\" the WD is the directory from which you start LyX, and "
+#~ "thus could change for each LyX session. For the \"TEXINPUTS prefix\" path "
+#~ "the WD is the directory containing the document. The path \".\" (without "
+#~ "quotes) is a common example of a relative path and refers to the WD."
+#~ msgstr ""
+#~ "Relatívne i absolútne cesty sú dovolené. Relatívne cesty sa rozvinú s "
+#~ "ohľadom na pracovný adresár (PA). Pre každú cestu s výnimkou \"TEXINPUTS-"
+#~ "prefix\" PA je adresár z ktorého bol LyX štartovaný, čiže sa môže meniť pri "
+#~ "každom LyX-sedení. Pre \"TEXINPUTS prefix\" cestu, PA je adresár obsahujúci "
+#~ "editovaný dokument. Cesta \".\" (bez úvodzoviek) je bežným príkladom "
+#~ "relatívnej cesty ktorý referuje PA. "
+
+#~ msgid ""
+#~ "Specify those directories which should be prepended to the PATH environment "
+#~ "variable. Use the OS native format."
+#~ msgstr ""
+#~ "Určite adresári, ktoré by mali byť pridané do premennej PATH pred ostatnými "
+#~ "adresármi. Použite miestny formát pre daný operačný systém."
+
+#~ msgid ""
+#~ "Specify those directories which should be prepended to the TEXINPUTS "
+#~ "environment variable. Use the OS native format."
+#~ msgstr ""
+#~ "Určite adresári, ktoré by mali byť pridané do premennej TEXINPUTS. Použite "
+#~ "miestny formát pre daný operačný systém."
+
+#~ msgid "Default &zoom %:"
+#~ msgstr "Štandardná &lupa %:"
+
+#~ msgid ""
+#~ "The icon set to use. Warning: normal size of icons may be wrong until you "
+#~ "save the preferences and restart LyX."
+#~ msgstr ""
+#~ "Sada ikon na použitie. Pozor: Normálny rozmer ikon môže byť nevhodný až kým "
+#~ "sa neuložia nastavenia a reštartuje LyX."
+
+#~ msgid "Avai&lable indexes:"
+#~ msgstr "&Dostupné registre:"
+
+#~ msgid ""
+#~ "Pass index names literally to LaTeX. Check this if you want to use LaTeX "
+#~ "code in index names."
+#~ msgstr ""
+#~ "Podaj mená registrov priamo pre LaTeX. Označte toto keď vkladáte LaTeX kód."
+
+#~ msgid "Label only"
+#~ msgstr "Len heslo"
+
+#~ msgid ""
+#~ "Use plural form of formatted reference. (Works only for formatted "
+#~ "references, and only if you are using refstyle.)"
+#~ msgstr ""
+#~ "Použiť množné číslo formátovanej referencie. (Funguje len pri formátovaných "
+#~ "referenciách, a len keď používate refstyle.)"
+
+#~ msgid "Plural"
+#~ msgstr "Plurál"
+
+#~ msgid ""
+#~ "Use capitalized form of formatted reference. (Works only for formatted "
+#~ "references, and only if you are using refstyle.)"
+#~ msgstr ""
+#~ "Použiť veľké písmená pri formátovanej referencie. (Funguje len pri "
+#~ "formátovaných referenciách, a len keď používate refstyle.)"
+
+#~ msgid "Capitalized"
+#~ msgstr "Veľké písmená"
+
+#~ msgid "Do not output part of label before \":\""
+#~ msgstr "Neukazovať časť hesla ktorá je pred \":\""
+
+#~ msgid "No Prefix"
+#~ msgstr "Bez Prefixu"
+
+#~ msgid "Biblatex bibliography styles"
+#~ msgstr "Štýly pre biblatex-bibliografiu"
+
+#~ msgid "Biblatex citation styles"
+#~ msgstr "Štýly pre Biblatex-citáciu"
+
+#~ msgid "Basic (BibTeX)"
+#~ msgstr "Základné (BibTeX)"
+
+#~ msgid ""
+#~ "The basic citation capabilities provided by BibTeX. Mainly simple numeric "
+#~ "styles primarily suitable for science and maths."
+#~ msgstr ""
+#~ "Základné kapacity citácie poskytnuté BibTeXom. Hlavne jednoduché číselné "
+#~ "štýly, najmä vhodné pre vedu a matematiku."
+
+#~ msgid "Key only."
+#~ msgstr "Len kľúč."
+
+#~ msgid "Key"
+#~ msgstr "Kľúč"
+
+#~ msgid "Biblatex (natbib mode)"
+#~ msgstr "Biblatex (na spôsob natbib)"
+
+#~ msgid ""
+#~ "This Biblatex variety emulates the Natbib citation commands and thus is best "
+#~ "suited for switching from Natbib (or the pre-LyX 2.3 Biblatex workaround) to "
+#~ "Biblatex. The natbib mode supports slightly different and a few more styles "
+#~ "than normal Biblatex. As with normal Biblatex, the use of 'biber' as "
+#~ "Bibliography processor is advised."
+#~ msgstr ""
+#~ "Tento druh Biblatex-u emuluje príkazy pre Natbib citácie. Je preto vhodný "
+#~ "prechod z Natbib (alebo riešenie pre Biblatex pred verziou LyX 2.3) na "
+#~ "Biblatex. Spôsob natbib podporuje mierne odlišné a niekoľko viacej štýlov "
+#~ "ako normálny Biblatex. Ako aj s normálnym Biblatex, doporučuje sa použiť "
+#~ "'biber' ako procesor pre bibliografiu."
+
+#~ msgid "Footnote"
+#~ msgstr "Poznámka pod čiarou"
+
+#~ msgid "Full bibliography entry."
+#~ msgstr "Plný zápis bibliografie."
+
+#~ msgid "Autocite"
+#~ msgstr "Automaticky citovať"
+
+#~ msgid "Auto"
+#~ msgstr "Automaticky"
+
+#~ msgid "F&orce full title[[Possible substitute to All aut&hors]]"
+#~ msgstr "Vnútiť plný titul"
+
+#~ msgid "Use full title even if shorttitle exists"
+#~ msgstr "Použiť plný titul aj keď krátky titul existuje"
+
+#~ msgid " et al."
+#~ msgstr " a kol."
+
+#~ msgid ", [[separate author names in citation, except for last name]]"
+#~ msgstr ", "
+
+#~ msgid ", and [[separate name of last author in citation]]"
+#~ msgstr ", a "
+
+#~ msgid " and [[separate two authors in citation]]"
+#~ msgstr " a "
+
+#~ msgid "Super"
+#~ msgstr "Super"
+
+#~ msgid "Biblatex"
+#~ msgstr "Biblatex"
+
+#~ msgid ""
+#~ "Biblatex supports many author-year and numerical styles. It is mainly aimed "
+#~ "at the Humanities. It is highly customizable, fully localized and provides "
+#~ "many features that are not possible with BibTeX. The use of 'biber' as "
+#~ "bibliography processor is advised."
+#~ msgstr ""
+#~ "Biblatex podporuje mnoho autor-rok a číselné štýly. Cieli hlavne na duchovné "
+#~ "vedy. Je nesmierne prispôsobivý, plno lokalizovaný a poskytuje mnohé funkcie "
+#~ "ktoré nie sú možné s BibTeX. Doporučuje sa použiť 'biber' ako procesor pre "
+#~ "bibliografiu."
+
+#~ msgid "S&horten author list[[Possible substitute to All aut&hors]]"
+#~ msgstr "Skrátiť súpis autorov"
+
+#~ msgid "Force a short author list (using et al.)"
+#~ msgstr "Vnútiť krátky súpis autorov (použitím a kol.)"
+
+#~ msgid "Jurabib (BibTeX)"
+#~ msgstr "Jurabib (BibTeX)"
+
+#~ msgid ""
+#~ "Jurabib supports a range of author-year styles primarily suitable for law "
+#~ "studies and the Humanities. It includes localizations for English, German, "
+#~ "French, Dutch, Spanish and Italian."
+#~ msgstr ""
+#~ "Jurabib podporuje množstvo autor-rok štýlov pre študentov práv a duchovných "
+#~ "vied. Obsahuje lokalizácie pre angličtinu, nemčinu, francúzštinu, "
+#~ "holandčinu, španielčina a taliančinu."
+
+#~ msgid "/"
+#~ msgstr "/"
+
+#~ msgid "Natbib (BibTeX)"
+#~ msgstr "Natbib (BibTeX)"
+
+#~ msgid ""
+#~ "Natbib supports a range of both author-year and numerical styles mainly "
+#~ "aimed at the Humanities. It features automatic sorting and merging of "
+#~ "numerical citations, annotations, capitalization of the `van' part of author "
+#~ "names, shortened and full author lists, and more."
+#~ msgstr ""
+#~ "Natbib podporuje množstvo autor-rok a číselných štýlov hlavne cielené na "
+#~ "duchovné vedy. Dokáže automatické zoraďovanie a zlučovanie číselných "
+#~ "citácií, anotácií, použije veľké prve písmená pre 'van' čiastky autorských "
+#~ "mien, skrátené a plné súpisy autorov, a viac."
+
+#~ msgid "Obsolete"
+#~ msgstr "Zastaralé"
+
+#~ msgid "Schemes"
+#~ msgstr "Náčrtky"
+
+#~ msgid "Charts"
+#~ msgstr "Diagramy"
+
+#~ msgid "Graphs[[mathematical]]"
+#~ msgstr "Grafy"
+
+#~ msgid "ACM SIGS ('Alternate' Style, obsolete)"
+#~ msgstr "ACM SIGS ('Alternate' Štýl, zastaralé)"
+
+#~ msgid "ACM SIG Proceedings (SP, Obsolete)"
+#~ msgstr "ACM SIG Rokovacie Zväzky (SP, Zastaralé)"
+
+#~ msgid "Association for Computing Machinery (ACM) article"
+#~ msgstr "Association for Computing Machinery (ACM) článok"
+
+#~ msgid "Thanks: "
+#~ msgstr "Vďaka: "
+
+#~ msgid "ACM Journal"
+#~ msgstr "ACM Žurnál"
+
+#~ msgid "Journal's Short Name: "
+#~ msgstr "Skratka Žurnála: "
+
+#~ msgid "ACM Conference"
+#~ msgstr "ACM Konferencia"
+
+#~ msgid "Full name"
+#~ msgstr "Celé meno"
+
+#~ msgid "Venue"
+#~ msgstr "Miesto"
+
+#~ msgid "Conference Name: "
+#~ msgstr "Meno Konferencie: "
+
+#~ msgid "Short title"
+#~ msgstr "Krátky titul"
+
+#~ msgid "Email address: "
+#~ msgstr "E-mail adresa: "
+
+#~ msgid "ORCID"
+#~ msgstr "ORCID"
+
+#~ msgid "ORCID: "
+#~ msgstr "ORCID: "
+
+#~ msgid "Affiliation: "
+#~ msgstr "Príslušenstvo: "
+
+#~ msgid "Additional Affiliation"
+#~ msgstr "Prídavné Príslušenstvo"
+
+#~ msgid "Additional Affiliation: "
+#~ msgstr "Prídavné Príslušenstvo: "
+
+#~ msgid "Position"
+#~ msgstr "Postavenie"
+
+#~ msgid "Department"
+#~ msgstr "Oddelenie"
+
+#~ msgid "Street Address"
+#~ msgstr "Ulica"
+
+#~ msgid "Postal Code"
+#~ msgstr "Poštové Smerovacie Číslo"
+
+#~ msgid "TitleNote"
+#~ msgstr "TitleNote"
+
+#~ msgid "Title Note: "
+#~ msgstr "Poznámka Titul: "
+
+#~ msgid "SubtitleNote"
+#~ msgstr "SubtitleNote"
+
+#~ msgid "Subtitle Note: "
+#~ msgstr "Poznámka Podtitul: "
+
+#~ msgid "Author Note: "
+#~ msgstr "Poznámka Autor: "
+
+#~ msgid "ACM Volume"
+#~ msgstr "ACM Volume"
+
+#~ msgid "ACM Volume: "
+#~ msgstr "ACM Diel: "
+
+#~ msgid "ACM Number"
+#~ msgstr "ACM Number"
+
+#~ msgid "ACM Number: "
+#~ msgstr "ACM-Číslo: "
+
+#~ msgid "ACM Article"
+#~ msgstr "ACM Article"
+
+#~ msgid "ACM Article: "
+#~ msgstr "ACM Článok: "
+
+#~ msgid "ACM Year"
+#~ msgstr "ACM Year"
+
+#~ msgid "ACM Year: "
+#~ msgstr "ACM Rok: "
+
+#~ msgid "ACM Month"
+#~ msgstr "ACM Month"
+
+#~ msgid "ACM Month: "
+#~ msgstr "ACM Mesiac: "
+
+#~ msgid "ACM Art Seq Num"
+#~ msgstr "ACM Art Seq Num"
+
+#~ msgid "Article Sequential Number: "
+#~ msgstr "Sekvenčné Číslo článku: "
+
+#~ msgid "ACM Submission ID"
+#~ msgstr "ACM Submission ID"
+
+#~ msgid "ACM Submission ID: "
+#~ msgstr "ACM Totožnosť Predloženia: "
+
+#~ msgid "ACM Price"
+#~ msgstr "ACM Price"
+
+#~ msgid "ACM Price: "
+#~ msgstr "ACM Cena: "
+
+#~ msgid "ACM ISBN"
+#~ msgstr "ACM ISBN"
+
+#~ msgid "ACM ISBN: "
+#~ msgstr "ACM ISBN: "
+
+#~ msgid "ACM DOI"
+#~ msgstr "ACM DOI"
+
+#~ msgid "ACM DOI: "
+#~ msgstr "ACM DOI: "
+
+#~ msgid "ACM Badge R"
+#~ msgstr "ACM Badge R"
+
+#~ msgid "ACM Badge R: "
+#~ msgstr "ACM Odznak R: "
+
+#~ msgid "ACM Badge L"
+#~ msgstr "ACM Badge L"
+
+#~ msgid "ACM Badge L: "
+#~ msgstr "ACM Odznak L: "
+
+#~ msgid "Start Page"
+#~ msgstr "Start Page"
+
+#~ msgid "Start Page: "
+#~ msgstr "Počiatočná Strana: "
+
+#~ msgid "Terms: "
+#~ msgstr "Pojmy: "
+
+#~ msgid "Keywords: "
+#~ msgstr "Heslá: "
+
+#~ msgid "CCSXML"
+#~ msgstr "CCSXML"
+
+#~ msgid "Computing Classification Scheme (XML): "
+#~ msgstr "Operačná Klasifikačná Schéma (XML): "
+
+#~ msgid "CCS Description"
+#~ msgstr "CCS Description"
+
+#~ msgid "Significance"
+#~ msgstr "Význam"
+
+#~ msgid "Computing Classification Scheme: "
+#~ msgstr "Operačná Klasifikačná Schéma: "
+
+#~ msgid "Set Copyright"
+#~ msgstr "Set Copyright"
+
+#~ msgid "Set Copyright: "
+#~ msgstr "Nastaviť Autorské Práva: "
+
+#~ msgid "Copyright Year"
+#~ msgstr "Copyright Year"
+
+#~ msgid "Copyright Year: "
+#~ msgstr "Autorské Práva Rok: "
+
+#~ msgid "Teaser Figure"
+#~ msgstr "Obrázok Hlavolamu"
+
+#~ msgid "Stage"
+#~ msgstr "Fáza"
+
+#~ msgid "Received: "
+#~ msgstr "Obdržané: "
+
+#~ msgid "ShortAuthors"
+#~ msgstr "ShortAuthors"
+
+#~ msgid "Short authors: "
+#~ msgstr "Skratka autorov: "
+
+#~ msgid "Sidebar"
+#~ msgstr "Bočný panel"
+
+#~ msgid "Sidebar (sigchi-a only)"
+#~ msgstr "Bočný panel (len sigchi-a)"
+
+#~ msgid "Margin figure (sigchi-a only)"
+#~ msgstr "Okrajový obrázok (len sigchi-a)"
+
+#~ msgid "Margin table (sigchi-a only)"
+#~ msgstr "Okrajová tabuľka (len sigchi-a)"
+
+#~ msgid "Print Only"
+#~ msgstr "Len Tlač"
+
+#~ msgid "Print version only"
+#~ msgstr "Len tlač verzie"
+
+#~ msgid "Screen Only"
+#~ msgstr "Len Obrazovka"
+
+#~ msgid "Screen version only"
+#~ msgstr "Len verzia obrazovky"
+
+#~ msgid "Anonymous Suppression"
+#~ msgstr "Anonymné Potlačenie"
+
+#~ msgid "Non anonymous only"
+#~ msgstr "Len ne-anonymné"
+
+#~ msgid "Grant Sponsor"
+#~ msgstr "Priznať Sponzora"
+
+#~ msgid "Sponsor ID"
+#~ msgstr "ID Sponzora"
+
+#~ msgid "Grant Number"
+#~ msgstr "Číslo Priznania"
+
+#~ msgid "ACM SIGGGRAPH 0.92 (obsolete)"
+#~ msgstr "ACM SIGGRAPH 0.92 (zastaralé)"
+
+#~ msgid "Plates"
+#~ msgstr "Vyobrazenia"
+
+#~ msgid "Planotables"
+#~ msgstr "Plano-tabuľky"
+
+#~ msgid ""
+#~ "Use the algorithm2e package for algorithm floats rather than LyX's home-"
+#~ "brewed algorithm floats. Use the Algorithm style to enter and indent the "
+#~ "algorithm."
+#~ msgstr ""
+#~ "Použiť balík algorithm2e pre plávajúce algoritmy namiesto LyXovej samohonky "
+#~ "plávajúcich algoritmov. Použiť štýl 'Algorithm' na vklad a odsadenie "
+#~ "algoritmu."
+
+#~ msgid "(\\arabic{example})"
+#~ msgstr "(\\arabic{example})"
+
+#~ msgid "(\\arabic{examplei})"
+#~ msgstr "(\\arabic{examplei})"
+
+#~ msgid "\\theexamplei (\\alph{subexample})"
+#~ msgstr "\\theexamplei (\\alph{subexample})"
+
+#~ msgid "\\theexamplei (\\alph{subexamplei})"
+#~ msgstr "\\theexamplei (\\alph{subexamplei})"
+
+#~ msgid "Tableaux"
+#~ msgstr "Tablá"
+
+#~ msgid "List/TOC"
+#~ msgstr "Listina/Obsah"
+
+#~ msgid "ACM SIGPLAN (Obsolete)"
+#~ msgstr "ACM SIGPLAN (Zastaralé)"
+
+#~ msgid "Inderscience Journals (Obsolete)"
+#~ msgstr "Inderscience Žurnály (Zastaralé)"
+
+#~ msgid "eds."
+#~ msgstr "eds."
+
+#~ msgid "Algorithms"
+#~ msgstr "Algoritmy"
+
+#~ msgid "Margin Figures"
+#~ msgstr "Krajné Obrázky"
+
+#~ msgid "Margin Tables"
+#~ msgstr "Krajné tabuľky"
+
+#~ msgid "Subequations"
+#~ msgstr "Pod-rovnice"
+
+#~ msgid ""
+#~ "Provide a straightforward way to segregate subequations in LyX. See the "
+#~ "subequations.lyx example file."
+#~ msgstr ""
+#~ "Umožniť priamy spôsob na oddelenie pod-rovníc v LyXe. Viď príkladný súbor "
+#~ "subequations.lyx."
+
+#~ msgid ""
+#~ "Provides custom insets to insert TODO items in your document (using the "
+#~ "todonotes package). In order to generate a 'List of TODOs', the module "
+#~ "provides a paragraph style. Passing 'final' as document class option "
+#~ "suppresses the output of TODO notes."
+#~ msgstr ""
+#~ "Poskytuje vlastné vložky na vklad TODO prvkov do vášho dokumentu (používajúc "
+#~ "balík todonotes). Pre generáciu 'Zoznam TODOs' poskytuje tento modul štýl "
+#~ "odstavca. Nastaviť 'final' ako voľbu dokumentu potlačí výstup 'TODO' "
+#~ "poznámok."
+
+#~ msgid "Amharic"
+#~ msgstr "amharsky"
+
+#~ msgid "Asturian"
+#~ msgstr "Astúrsky"
+
+#~ msgid "Bosnian"
+#~ msgstr "Bosňansky"
+
+#~ msgid "Friulian"
+#~ msgstr "Friulsky"
+
+#~ msgid "Khmer"
+#~ msgstr "Khmérsky"
+
+#~ msgid "Macedonian"
+#~ msgstr "Macedónsky"
+
+#~ msgid "Piedmontese"
+#~ msgstr "Piemontsky"
+
+#~ msgid "Romansh"
+#~ msgstr "Rétorománsky"
+
+#~ msgid "Crimson (Cochineal)"
+#~ msgstr "Crimson (Cochineal)"
+
+#~ msgid "Crimson"
+#~ msgstr "Crimson"
+
+#~ msgid "Noto Serif"
+#~ msgstr "Noto Serif"
+
+#~ msgid "Noto Sans"
+#~ msgstr "Noto Sans"
+
+#~ msgid "Noto Mono"
+#~ msgstr "Noto Mono"
+
+#~ msgid "Crimson (New TX)"
+#~ msgstr "Crimson (New TX)"
+
+#~ msgid "Label Only|L"
+#~ msgstr "Len Heslo|L"
+
+#~ msgid "Invert Inset|I"
+#~ msgstr "Invertovať Vložku|I"
+
+#~ msgid "Lock Toolbars|L"
+#~ msgstr "Blokuj Lišty nástrojov"
+
+#~ msgid "Plain Quotation Mark|Q"
+#~ msgstr "Prosté Úvodzovky"
+
+#~ msgid "Inner Quotation Mark|n"
+#~ msgstr "Vnútorná Úvodzovka"
+
+#~ msgid "Optional Line Break|B"
+#~ msgstr "Voliteľný Zlom Riadku|Z"
+
+#~ msgid "Bib(la)TeX Bibliography...|B"
+#~ msgstr "Bib(la)TeX bibliografia…|B"
+
+#~ msgid "Toggle review toolbar"
+#~ msgstr "Prepnúť lištu nástrojov pre náhľad"
+
+#~ msgid "Styles & classes"
+#~ msgstr "Štýly & triedy"
+
+#~ msgid "Smash\t\\smash"
+#~ msgstr "Nulovať\t\\smash"
+
+#~ msgid "Top smash\t\\smasht"
+#~ msgstr "Nulovať vršok\t\\smasht"
+
+#~ msgid "Bottom smash\t\\smashb"
+#~ msgstr "Nulovať spodok\t\\smashb"
+
+#~ msgid "Left overlap\t\\mathllap"
+#~ msgstr "Prekrytie doľava\t\\mathllap"
+
+#~ msgid "Center overlap\t\\mathclap"
+#~ msgstr "Prekrytie na stred\t\\mathclap"
+
+#~ msgid "Right overlap\t\\mathrlap"
+#~ msgstr "Prekryte doprava\t\\mathrlap"
+
+#~ msgid "Styles & Classes"
+#~ msgstr "Štýly & Triedy"
+
+#~ msgid "Relation class\t\\mathrel"
+#~ msgstr "Relácia\t\\mathrel"
+
+#~ msgid "Binary operator class\t\\mathbin"
+#~ msgstr "Binárny operátor\t\\mathbin"
+
+#~ msgid "Large operator class\t\\mathop"
+#~ msgstr "Veľký operátor\t\\mathop"
+
+#~ msgid "Ordinary class\t\\mathord"
+#~ msgstr "Bežná trieda \t\\mathord"
+
+#~ msgid "Inkscape"
+#~ msgstr "Inkscape"
+
+#~ msgid "Inkscape figure"
+#~ msgstr "Inkscape obrázok"
+
+#~ msgid ""
+#~ "An Inkscape figure.\n"
+#~ "Note that using this template automatically uses the \n"
+#~ "document text in the image (like with the Xfig template).\n"
+#~ msgstr ""
+#~ "Inkscape obrázok.\n"
+#~ "Berte na vedomie, že táto šablóna automatický používa\n"
+#~ "dokumentový text v obrázku (podobne ako v Xfig-šablóne).\n"
+
+#~ msgid "LyX 2.2.x"
+#~ msgstr "LyX 2.2.x"
+
+#~ msgid "pdf_tex"
+#~ msgstr "pdf_tex"
+
+#~ msgid "pdf_tex|PDFTEX"
+#~ msgstr "pdf_tex|PDFTEX"
+
+#~ msgid "ps_tex"
+#~ msgstr "ps_tex"
+
+#~ msgid "ps_tex|PSTEX"
+#~ msgstr "ps_tex|PSTEX"
+
+#~ msgid "gnuplot"
+#~ msgstr "gnuplot"
+
+#~ msgid "gnuplot|Gnuplot"
+#~ msgstr "gnuplot|Gnuplot"
+
+#~ msgid "Save failed! Document is lost."
+#~ msgstr "Uloženie zlyhalo! Dokument je stratený."
+
+#~ msgid "Document has been modified externally"
+#~ msgstr "Dokument bol externe upravený"
+
+#~ msgid "ChkTeX warning id # %1$s"
+#~ msgstr "Varovanie ChkTeXu id # %1$s"
+
+#~ msgid ""
+#~ "<p>The following LaTeX backend has been configured to allow execution of "
+#~ "external programs for any document:</p><center><p><tt>%1$s</tt></p></"
+#~ "center><p>This is a dangerous configuration. Please, consider using the "
+#~ "support offered by LyX for allowing this privilege only to documents that "
+#~ "actually need it, instead.</p>"
+#~ msgstr ""
+#~ "<p>Nasledovný LaTeX backend bol konfigurovaný aby povolil spúšťanie "
+#~ "externých príkazov pre každý dokument:</p><center><p><tt>%1$s</tt></p></"
+#~ "center><p>Toto je nebezpečná konfigurácia. Namiesto toho prosím uvážte "
+#~ "použiť podporu ponuky LyXa na povolenie oprávnenia len pre dokumenty ktoré "
+#~ "to naozaj potrebujú.<p>"
+
+#~ msgid "Security Warning"
+#~ msgstr "Ochranné Varovanie"
+
+#~ msgid ""
+#~ "<p>The following LaTeX backend has been requested to allow execution of "
+#~ "external programs:</p><center><p><tt>%1$s</tt></p></center><p>The external "
+#~ "programs can execute arbitrary commands on your system, including dangerous "
+#~ "ones, if instructed to do so by a maliciously crafted LyX document.</p>"
+#~ msgstr ""
+#~ "<p>Nasledovný LaTeX backend bol konfigurovaný aby povolil spúšťanie "
+#~ "externých príkazov:</p><center><p><tt>%1$s</tt></p></center><p>Externý "
+#~ "príkaz je schopný spracovať ľubovoľné rozkazy na vašom systéme, vrátane aj "
+#~ "nebezpečné, keď je napr. inštruovaný robiť to zlovoľne vyrobeným lyx "
+#~ "dokumentom.</p> "
+
+#~ msgid ""
+#~ "<p>The requested operation requires the use of a converter from %2$s to %3$s:"
+#~ "</p><blockquote><p><tt>%1$s</tt></p></blockquote><p>This external program "
+#~ "can execute arbitrary commands on your system, including dangerous ones, if "
+#~ "instructed to do so by a maliciously crafted LyX document.</p>"
+#~ msgstr ""
+#~ "<p>Žiadaná operácia požaduje konvertor z %2$s na %3$s:</p><blockquote><p><tt>"
+#~ "%1$s</tt></p></blockquote><p>Tento externý program je schopný vykonávať "
+#~ "ľubovoľné akcie, vrátane nebezpečné keď je napr. inštruovaný robiť to "
+#~ "zlovoľne vyrobeným lyx dokumentom.</p> "
+
+#~ msgid "An external converter is disabled for security reasons"
+#~ msgstr "Spúšťanie externého konvertora je z bezpečnostných dôvodov blokované"
+
+#~ msgid ""
+#~ "<p><b>Your current preference settings forbid its execution.</b></p><p>(To "
+#~ "change this setting, go to <i>Preferences &#x25b9; File Handling &#x25b9; "
+#~ "Converters</i> and uncheck <i>Security &#x25b9; Forbid needauth converters</"
+#~ "i>.)"
+#~ msgstr ""
+#~ "<p><b>Vaše súčasné nastavenie blokuje jeho vykonávanie.<b></p><p> (Keď "
+#~ "chcete ich spúšťanie odblokovať, choďte na<i>Nástroje &#x25b9; Preferencie… "
+#~ "&#x25b9; Obsluha Súborov</i> a zrušte <i>Bezpečnosť &#x25b9; Zakázať "
+#~ "overovacie konvertory</i>.) "
+
+#~ msgid "A LaTeX backend requires your authorization"
+#~ msgstr "LaTeX backend potrebuje vaše oprávnenie"
+
+#~ msgid "An external converter requires your authorization"
+#~ msgstr "Spúšťanie externého konvertora potrebuje vaše oprávnenie"
+
+#~ msgid ""
+#~ "<p>Should LaTeX backends be allowed to run external programs?</p><p><b>Allow "
+#~ "them only if you trust the origin/sender of the LyX document!</b></p>"
+#~ msgstr ""
+#~ "<p>Chcete aby LaTeX backendy umožňovali spúšťať externé príkazy?</"
+#~ "p><p><b>Povoľte len keď dôverujete pôvodu/odosielateľovi tohto LyX dokumentu!"
+#~ "</b></p> "
+
+#~ msgid ""
+#~ "<p>Would you like to run this converter?</p><p><b>Only run if you trust the "
+#~ "origin/sender of the LyX document!</b></p>"
+#~ msgstr ""
+#~ "<p>Chcete tento konvertor spustiť?</p><p><b>Spustite len keď dôverujete "
+#~ "pôvodu/odosielateľovi tohto LyX dokumentu!</b></p> "
+
+#~ msgid "Do &not allow"
+#~ msgstr "&Nepovoliť"
+
+#~ msgid "Do &not run"
+#~ msgstr "&Nespustiť"
+
+#~ msgid "A&llow"
+#~ msgstr "Povoliť"
+
+#~ msgid "&Run"
+#~ msgstr "&Spustiť"
+
+#~ msgid "&Always allow for this document"
+#~ msgstr "&Vždy povoliť pre tento dokument"
+
+#~ msgid "&Always run for this document"
+#~ msgstr "&Vždy spustiť pre tento dokument"
+
+#~ msgid "Strike out %1$s, "
+#~ msgstr "Preškrtnúť %1$s, "
+
+#~ msgid "Cross out %1$s, "
+#~ msgstr "Šikmo začiarkovať %1$s, "
+
+#~ msgid ""
+#~ "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
+#~ "Command line switches (case sensitive):\n"
+#~ "\t-help              summarize LyX usage\n"
+#~ "\t-userdir dir       set user directory to dir\n"
+#~ "\t-sysdir dir        set system directory to dir\n"
+#~ "\t-geometry WxH+X+Y  set geometry of the main window\n"
+#~ "\t-dbg feature[,feature]...\n"
+#~ "                  select the features to debug.\n"
+#~ "                  Type `lyx -dbg' to see the list of features\n"
+#~ "\t-x [--execute] command\n"
+#~ "                  where command is a lyx command.\n"
+#~ "\t-e [--export] fmt\n"
+#~ "                  where fmt is the export format of choice. Look in\n"
+#~ "                  Tools->Preferences->File Handling->File Formats->Short "
+#~ "Name\n"
+#~ "                  to see which parameter (which differs from the format "
+#~ "name\n"
+#~ "                  in the File->Export menu) should be passed. To export to\n"
+#~ "                  the document's default output format, use 'default'.\n"
+#~ "                  Note that the order of -e and -x switches matters.\n"
+#~ "\t-E [--export-to] fmt filename\n"
+#~ "                  where fmt is the export format of choice (see --export),\n"
+#~ "                  and filename is the destination filename.\n"
+#~ "\t-i [--import] fmt file.xxx\n"
+#~ "                  where fmt is the import format of choice\n"
+#~ "                  and file.xxx is the file to be imported.\n"
+#~ "\t-f [--force-overwrite] what\n"
+#~ "                  where what is either `all', `main' or `none',\n"
+#~ "                  specifying whether all files, main file only, or no "
+#~ "files,\n"
+#~ "                  respectively, are to be overwritten during a batch "
+#~ "export.\n"
+#~ "                  Anything else is equivalent to `all', but is not "
+#~ "consumed.\n"
+#~ "\t--ignore-error-message which\n"
+#~ "                  allows you to ignore specific LaTeX error messages.\n"
+#~ "                  Do not use for final documents! Currently supported "
+#~ "values:\n"
+#~ "                  * missing_glyphs: Fontspec `missing glyphs' error.\n"
+#~ "\t-n [--no-remote]\n"
+#~ "                  open documents in a new instance\n"
+#~ "\t-r [--remote]\n"
+#~ "                  open documents in an already running instance\n"
+#~ "                  (a working lyxpipe is needed)\n"
+#~ "\t-v [--verbose]\n"
+#~ "                  report on terminal about spawned commands.\n"
+#~ "\t-batch    execute commands without launching GUI and exit.\n"
+#~ "\t-version  summarize version and build info\n"
+#~ "Check the LyX man page for more details."
+#~ msgstr ""
+#~ "Použitie: lyx [prepínače ] [ názov.lyx … ]\n"
+#~ "Prepínače (rozlišuje sa veľkosť písmen):\n"
+#~ "\t-help              sumarizuje použitie LyX\n"
+#~ "\t-userdir dir       nastaviť používateľský adresár na dir\n"
+#~ "\t-sysdir dir        nastaviť systémový adresár na dir\n"
+#~ "\t-geometry WxH+X+Y  nastaviť geometriu hlavného okna\n"
+#~ "\t-dbg časť[,časť]…\n"
+#~ "                  vyberie patričné časti na ladenie.\n"
+#~ "                  Príkaz `lyx -dbg' vypíše zoznam ladiacich častí\n"
+#~ "\t-x [--execute] príkaz\n"
+#~ "                  spustí lyx-príkaz príkaz.\n"
+#~ "\t-e [--export] fmt\n"
+#~ "                  kde fmt je vybraný exportný formát. Pozrite si\n"
+#~ "                  Nástroje -> Preferencie… -> Obsluha súborov -> Formáty "
+#~ "Súborov -> Skratka\n"
+#~ "                  aby ste videli, ktoré parametre sú vhodné. Pre export do "
+#~ "formátu\n"
+#~ "                  ktorý je nastavený v dokumente ako štandard použite "
+#~ "'default'.\n"
+#~ "                 (Líšia sa od mena formátu v menu Súbor->Exportovať).\n"
+#~ "                  Všimnite si že poradie prepínačov -e a -x je významné.\n"
+#~ "\t-E [--export-to] fmt názov\n"
+#~ "                  kde fmt je vybraný exportný formát (pozrite --export),\n"
+#~ "                  a názov je meno výsledného súboru.\n"
+#~ "\t-i [--import] fmt file.xxx\n"
+#~ "                  kde fmt je vybraný formát k importu\n"
+#~ "                  a file.xxx je meno súboru určeného pre import.\n"
+#~ "\t-f [--force-overwrite] čo\n"
+#~ "                  kde \"čo\" je `all' alebo `main' alebo `none'.\n"
+#~ "                  Keď `all', tak bude prepísaný každý súbor počas\n"
+#~ "                    dávkového exportu.\n"
+#~ "                  Keď `main' bude prepísaný len hlavný súbor.\n"
+#~ "                  Keď `none' nebude nič prepísané.\n"
+#~ "                  Všetko iné je rovnocenné k `all', len že nie je "
+#~ "skonzumované.\n"
+#~ "\t--ignore-error-message čo\n"
+#~ "                  dovolí ignorovať špecifické LaTeX hlásenia.\n"
+#~ "                  Nepoužívajte pre finálne dokumenty! Aktuálne podporované "
+#~ "hodnoty:\n"
+#~ "                  * missing_glyphs: Fontspec chyba `missing glyphs'.\n"
+#~ "\t-n [--no-remote]\n"
+#~ "                 otvorí dokumenty v novej inštancii\n"
+#~ "\t-r [--remote]\n"
+#~ "                  otvorí dokumenty v už spustenej inštancii\n"
+#~ "                  (potrebujete pracujúci lyx-dátovod)\n"
+#~ "\t-v [--verbose]\n"
+#~ "                  hlási vytvorené príkazy na terminál.\n"
+#~ "\t-batch    spusti príkazy bez GUI a skonč.\n"
+#~ "\t-version  zhrnúť  verziu a prekladnú informáciu.\n"
+#~ "Viac informácií nájdete v manuálovej stránke LyXu."
+
+#~ msgid ""
+#~ "Forbid use of external converters with 'needauth' option to prevent "
+#~ "undesired effects."
+#~ msgstr ""
+#~ "Blokovať externé konvertori s 'needauth' voľbou na zabránenie nežiadúcich "
+#~ "efektov. "
+
+#~ msgid ""
+#~ "Ask user before calling external converters with 'needauth' option to "
+#~ "prevent undesired effects."
+#~ msgstr ""
+#~ "Žiadať o povolenie pred spustením externého konvertora s 'needauth' voľbou "
+#~ "na zabránenie nežiadúcich efektov."
+
+#~ msgid "The command to run the python pygments syntax highlighter."
+#~ msgstr ""
+#~ "Príkaz, ktorý python modul 'pygments' má spustiť na zdôraznenie syntaxu."
+
+#~ msgid ""
+#~ "The cite engine %1$s has been requested by\n"
+#~ "this document but has not been found in the list of\n"
+#~ "available engines. If you recently installed it, you\n"
+#~ "probably need to reconfigure LyX.\n"
+#~ msgstr ""
+#~ "V dokumente požadovaná obsluha citácií %1$s\n"
+#~ "sa nenašla v listine dostupných obsluhou.\n"
+#~ "Keď ste ju len nedávno inštalovali, treba\n"
+#~ "vám asi LyX rekonfigurovať.\n"
+
+#~ msgid "Cite Engine not available"
+#~ msgstr "Obsluha citácie nie je dostupná"
+
+#~ msgid ""
+#~ "The cite engine %1$s requires a package that is not\n"
+#~ "available in your LaTeX installation, or a converter that\n"
+#~ "you have not installed. LaTeX output may not be possible.\n"
+#~ "Missing prerequisites:\n"
+#~ "\t%2$s\n"
+#~ "See section 3.1.2.3 (Modules) of the User's Guide for more information."
+#~ msgstr ""
+#~ "Obsluha citácie %1$s vyžaduje balík, ktorý je nedostupný vo vašej\n"
+#~ "LaTeX-ovej inštalácii, alebo vyžaduje konvertor\n"
+#~ "ktorý nemáte inštalovaný. Nezaistený výstup z LaTeX-a.\n"
+#~ "Chýbajúce predpoklady:\n"
+#~ "\t%2$s\n"
+#~ "Pozri sekciu 3.1.2.3 (Moduly) Užívateľskej Príručky pre viac informácií."
+
+#~ msgid "Error reading cite engine %1$s\n"
+#~ msgstr "Chyba pri čítaní obsluhy citácie %1$s\n"
+
+#~ msgid "Cannot iterate more than %1$d times"
+#~ msgstr "Nemôžem iterovať viac ako %1$d krát"
+
+#~ msgid "all reference units"
+#~ msgstr "bibliografie pre každý referovaný celok"
+
+#~ msgid "Strike out"
+#~ msgstr "Preškrtnuté"
+
+#~ msgid "Cross out"
+#~ msgstr "Šikmo začiarkované"
+
+#~ msgid "General text befo&re:"
+#~ msgstr "Všeobecný text pred:"
+
+#~ msgid "General &text after:"
+#~ msgstr "Všeobecný text po:"
+
+#~ msgid ""
+#~ "Text that precedes the whole reference list. For text that precedes "
+#~ "individual items, double-click on the respective entry above."
+#~ msgstr ""
+#~ "Text pred celou odkazovou listinou. Dvojité kliknutie na patričný záznam "
+#~ "hore pridá text pred príslušnou položkou. "
+
+#~ msgid ""
+#~ "Text that follows the whole reference list. For text that follows individual "
+#~ "items, double-click on the respective entry above."
+#~ msgstr ""
+#~ "Text za celou odkazovou listinou. Dvojité kliknutie na patričný záznam hore "
+#~ "pridá text za príslušnou položkou. "
+
+#~ msgid "Text before"
+#~ msgstr "Text pred"
+
+#~ msgid "Cite key"
+#~ msgstr "Heslo citácie"
+
+#~ msgid "Text after"
+#~ msgstr "Text za"
+
+#~ msgid "Conversion to current format impossible!"
+#~ msgstr "Konvertovať na aktuálny formát je nemožné!"
+
+#~ msgid "Conversion to current stable format impossible."
+#~ msgstr "Konvertovať na aktuálny stabilný formát je nemožné."
+
+#~ msgid "Pygments driver command not found!"
+#~ msgstr "Nenašiel som príkaz pre ovládač 'pygments'!"
+
+#~ msgid ""
+#~ "The driver command necessary to use the minted package\n"
+#~ "(pygmentize) has not been found. Make sure you have\n"
+#~ "the python-pygments module installed or, if the driver\n"
+#~ "is named differently, to add the following line to the\n"
+#~ "document preamble:\n"
+#~ "\n"
+#~ "\\AtBeginDocument{\\renewcommand{\\MintedPygmentize}{driver}}\n"
+#~ "\n"
+#~ "where 'driver' is name of the driver command."
+#~ msgstr ""
+#~ "Príkaz ovládača, potrebný na použite minted-balíka\n"
+#~ "(pygmentize) nebol nájdený. Zaistite že máte\n"
+#~ "python-pygments-modul nainštalovaný alebo, keď ovládač\n"
+#~ "je ináč pomenovaný, pridajte nasledovný riadok\n"
+#~ "do preambuly:\n"
+#~ "\n"
+#~ "\\AtBeginDocument{\\renewcommand{\\MintedPygmentize}{ovládač}}\n"
+#~ "\n"
+#~ "kde 'ovládač' je názov príkazu ovládača."
+
+#~ msgid "Basic numerical"
+#~ msgstr "Základný číselný"
+
+#~ msgid "Author-number"
+#~ msgstr "Autor-číslo"
+
+#~ msgid "per part"
+#~ msgstr "každú časť"
+
+#~ msgid "per chapter"
+#~ msgstr "každú kapitolu"
+
+#~ msgid "per section"
+#~ msgstr "každú sekciu"
+
+#~ msgid "per subsection"
+#~ msgstr "každú podsekciu"
+
+#~ msgid "per child document"
+#~ msgstr "každý podriadený dokument"
+
+#~ msgid "(Module name: %1)"
+#~ msgstr "(Názov modulu: %1)"
+
+#~ msgid "Biber"
+#~ msgstr "Biber"
+
+#~ msgid "C&ommand:"
+#~ msgstr "Príkaz:"
+
+#~ msgid "SECURITY WARNING!"
+#~ msgstr "OCHRANNÉ VAROVANIE!"
+
+#~ msgid ""
+#~ "Unchecking this option has the effect that potentially harmful converters "
+#~ "would be run without asking your permission first. This is UNSAFE and NOT "
+#~ "recommended, unless you know what you are doing. Are you sure you would like "
+#~ "to proceed ? The recommended and safe answer is NO!"
+#~ msgstr ""
+#~ "Ne-zaškrtnutie tejto voľby povolí spustiť aj potenciálne škodlivé konvertory "
+#~ "bez požiadania vášho súhlasu. Toto je NEBEZPEČNÉ a sa nedoporučuje, pokiaľ "
+#~ "neviete čo robíte. Ste si istý že chcete pokračovať? Doporučená a bezpečná "
+#~ "odpoveď je NIE!"
+
+#~ msgid "<p>LaTeX code: %1</p>"
+#~ msgstr "<p>LaTeX kód: %1</p"
+
+#~ msgid "movable"
+#~ msgstr "pohyblivá"
+
+#~ msgid "immovable"
+#~ msgstr "pevná"
+
+#~ msgid ""
+#~ "WARNING: LaTeX is allowed to execute external commands for this document. "
+#~ "Right click to change."
+#~ msgstr ""
+#~ "VAROVANIE: LaTeX má povolené spúšťať externé príkazy pre tento dokument. "
+#~ "Kliknite pravým tlačidlom na zmenu."
+
+#~ msgid "%1$s (modified externally)"
+#~ msgstr "%1$s (externe upravený)"
+
+#~ msgid "Zoom level cannot be less than %1$d%."
+#~ msgstr "Stupeň lupy nesmie byť menší ako %1$d%."
+
+#~ msgid ""
+#~ "The document %1$s has not been saved yet.\n"
+#~ "\n"
+#~ "Do you want to save the document or discard it entirely?"
+#~ msgstr ""
+#~ "Dokument %1$s obsahuje neuložené zmeny.\n"
+#~ "\n"
+#~ "Chcete tento dokument uložiť alebo celkom zahodiť?"
+
+#~ msgid "Save document?"
+#~ msgstr "Uložiť dokument?"
+
+#~ msgid ""
+#~ "Invalid position requested by inverse search.\n"
+#~ "You may need to update the viewed document."
+#~ msgstr ""
+#~ "Neplatná pozícia žiadaná spiatočným hľadaním.\n"
+#~ "Možno je potrebné aktualizovať prehliadaný dokument."
+
+#~ msgid ""
+#~ "The current version will be lost. Are you sure you want to load the version "
+#~ "on disk of the document %1$s?"
+#~ msgstr ""
+#~ "Bude to strata aktuálnej verzie. Naozaj sa chcete vrátiť ku uloženej verzii "
+#~ "dokumentu %1$s?"
+
+#~ msgid "Developer mode is now enabled."
+#~ msgstr "Spôsob hlásenia pre vývojárov je zapnutý."
+
+#~ msgid "Developer mode is now disabled."
+#~ msgstr "Spôsob hlásenia pre vývojárov je vypnutý."
+
+#~ msgid "Toolbars unlocked."
+#~ msgstr "Lišty nástrojov neblokované."
+
+#~ msgid "Toolbars locked."
+#~ msgstr "Lišty nástrojov blokované."
+
+#~ msgid "Disable Shell Escape"
+#~ msgstr "Zakázať Shell Escape"
+
+#~ msgid "%1 (modified externally)"
+#~ msgstr "%1 (externe upravený)"
+
+#~ msgid "<b>The file %1 changed on disk.</b>"
+#~ msgstr "<b>Súbor %1 na disku je zmenený.</b>"
+
+#~ msgid "All authors|h"
+#~ msgstr "Každý autor"
+
+#~ msgid "Force upper case|u"
+#~ msgstr "Vynútiť veľké písmo"
+
+#~ msgid "No Quote in Scope!"
+#~ msgstr "Žiadne Úvodzovky v Oblasti!"
+
+#~ msgid "%1$s (dynamic)"
+#~ msgstr "%1$s (dynamická)"
+
+#~ msgid "Use dynamic quotes (%1$s)|d"
+#~ msgstr "Použiť dynamické úvodzovky (%1$s)|d"
+
+#~ msgid "dynamic[[Quotes]]"
+#~ msgstr "dynamické"
+
+#~ msgid "static[[Quotes]]"
+#~ msgstr "nemenné"
+
+#~ msgid "Reset to document default (%1$s, %2$s)|o"
+#~ msgstr "Vrátiť na štandard dokumentu (%1$s, %2$s)|o"
+
+#~ msgid "Reset to language default (%1$s, %2$s)|l"
+#~ msgstr "Vrátiť na štandard jazyku (%1$s, %2$s)|j"
+
+#~ msgid "Reset to language default (%1$s)|l"
+#~ msgstr "Vrátiť na štandard jazyku (%1$s)|j"
+
+#~ msgid "Change Style|y"
+#~ msgstr "Zmeniť Štýl"
+
+#~ msgid "Export [%1$s]|E"
+#~ msgstr "Exportovať [%1$s]|E"
+
+#~ msgid ""
+#~ "The %1$s[[BibTeX/Biblatex]] inset includes %2$s databases.\n"
+#~ "If you proceed, all of them will be opened."
+#~ msgstr ""
+#~ "Vložka %1$s-u zahrňuje %2$s databázy.\n"
+#~ "Keď budete pokračovať, bude každá otvorená."
+
+#~ msgid "Biblatex Generated Bibliography"
+#~ msgstr "Zoznam bibliografických odkazov generovaný Biblatexom"
+
+#~ msgid ""
+#~ "Note: This bibliography is not output, since bibliographies in the master "
+#~ "file are not allowed with the setting 'Multiple bibliographies per child "
+#~ "document'"
+#~ msgstr ""
+#~ "Uvedomte si že táto bibliografia nebude vytvorená kvôli nastaveniu "
+#~ "'Viacnásobné bibliografie' pre 'každý podriadený dokument' v hlavnom "
+#~ "dokumente "
+
+#~ msgid "Options: "
+#~ msgstr "Možnosti: "
+
+#~ msgid "master %1$s, child %2$s"
+#~ msgstr "hlavný dokument %1$s, potomok %2$s"
+
+#~ msgid ""
+#~ "Branch Name: %1$s\n"
+#~ "Branch Status: %2$s\n"
+#~ "Inset Status: %3$s"
+#~ msgstr ""
+#~ "Názov Vetvy: %1$s\n"
+#~ "Štatus Vetvy: %2$s\n"
+#~ "Štatus Vložky: %3$s "
+
+#~ msgid "Branch (child): "
+#~ msgstr "Vetva (potomok): "
+
+#~ msgid "Branch (master): "
+#~ msgstr "Vetva (hlavný dokument): "
+
+#~ msgid "+ %1$d more entries."
+#~ msgstr "a ešte %1$d záznamov."
+
+#~ msgid "Error: "
+#~ msgstr "Chyba: "
+
+#~ msgid ""
+#~ "Included file `%1$s'\n"
+#~ "has use-non-TeX-fonts set to `%2$s'\n"
+#~ "while parent file has use-non-TeX-fonts set to `%3$s'."
+#~ msgstr ""
+#~ "Zahrnutý súbor `%1$s'\n"
+#~ "má nastavený nie-TeX-font `%2$s'\n"
+#~ "zatiaľ čo nadriadený súbor má nie-TeX-font nastavený na `%3$s'."
+
+#~ msgid "Different use-non-TeX-fonts settings"
+#~ msgstr "Odlišné nastavenie použitia nie-TeX-fontov"
+
+#~ msgid ""
+#~ "Included file `%1$s' was not exported correctly.\n"
+#~ " LaTeX export is probably incomplete."
+#~ msgstr ""
+#~ "Zahrnutý súbor `%1$s' nebol správne exportovaný.\n"
+#~ " LaTeX-ov export asi nie je úplný."
+
+#~ msgid "none, leftline, topline, bottomline, lines, single"
+#~ msgstr "none, leftline, topline, bottomline, lines, single"
+
+#~ msgid "Previously defined color name as a string"
+#~ msgstr "Skôr definované mená farieb ako reťazec"
+
+#~ msgid "default: _minted-<jobname>"
+#~ msgstr "štandard: _minted-<jobname>"
+
+#~ msgid "Sets encoding expected by Pygments"
+#~ msgstr "Nastaviť kódovanie očakávané od Pygments"
+
+#~ msgid "A latex family such as tt, sf, rm"
+#~ msgstr "Latex-rodina ako napr. tt, sf, rm"
+
+#~ msgid "A latex series such as m, b, c, bx, sb"
+#~ msgstr "Latex-séria ako napr. m, b, c, bx, sb"
+
+#~ msgid "A latex name such as \\small"
+#~ msgstr "Latex-meno ako napr. \\small"
+
+#~ msgid "A latex shape such as n, it, sl, sc"
+#~ msgstr "Latex-tvar ako napr. n, it, sl, sc"
+
+#~ msgid "A range of lines such as {1,3-4}"
+#~ msgstr "Rozsah riadkov ako napr. {1,3-4}"
+
+#~ msgid ""
+#~ "Enter one of the supported languages. However, if you are defining a listing "
+#~ "inset, it is better using the  language combo box, unless you need to enter "
+#~ "a language not offered there, otherwise the combo box will be disabled."
+#~ msgstr ""
+#~ "Vložte jeden z podporovaných jazykov. Keď avšak definujete vložku výpisu, "
+#~ "skúste najprv použiť rozbaľovacie pole pre tam ponúknuté jazyky. Vklad sem "
+#~ "ináč zablokuje toto rozbaľovacie pole."
+
+#~ msgid "File encoding used by Pygments for highlighting"
+#~ msgstr "Kódovanie súboru ktorý Pygments použije pre zdôraznenie"
+
+#~ msgid "Apply Python 3 highlighting"
+#~ msgstr "Aplikuj Python 3 zdôraznenie"
+
+#~ msgid "A macro. Default: \\textvisiblespace"
+#~ msgstr "Makro Štandard: \\textvisiblespace"
+
+#~ msgid "For PHP only"
+#~ msgstr "Len pre PHP"
+
+#~ msgid "The style used by Pygments"
+#~ msgstr "Štýl použitý v Pygments"
+
+#~ msgid "A macro to redefine visible tabs"
+#~ msgstr "Makro pre redefinovanie viditeľných tabulátorov"
+
+#~ msgid "Enables latex code in comments"
+#~ msgstr "Povolí latex-kód v komentároch"
+
+#~ msgid "%1$souter%2$s and %3$sinner%4$s[[quotation marks]]"
+#~ msgstr "%1$svonkajšie%2$s a %3$svnútorné%4$s"
+
+#~ msgid "%1$s[[quot. mark description]] (language default)"
+#~ msgstr "%1$s (jazykový štandard)"
+
+#~ msgid "%1$stext"
+#~ msgstr "%1$stext"
+
+#~ msgid "text%1$s"
+#~ msgstr "text%1$s"
+
+#~ msgid "Label Only"
+#~ msgstr "Len Heslo"
+
+#~ msgid "Label: "
+#~ msgstr "Heslo: "
+
+#~ msgid "Line Distance %"
+#~ msgstr "Odstup Riadku %"
 
 #~ msgid "Sty&le engine:"
 #~ msgstr "Obsluha Štý&lu:"
 
 #~ msgid "BibTex"
 #~ msgstr "BibTeX"
-
-#~ msgid "Pr&ocessor:"
-#~ msgstr "&Generátor:"
-
-#~ msgid "Use BibTeX's default numerical styles"
-#~ msgstr "Použiť štandardné BibTeX numerické štýly"
-
-#~ msgid "&Default (numerical)"
-#~ msgstr "Štan&dard (numerický)"
-
-#~ msgid ""
-#~ "Use the natbib styles for natural sciences and arts. Set additional "
-#~ "parameters in document class options."
-#~ msgstr ""
-#~ "Použiť štýl natbib pre prírodné a umelecké odbory. Zadajte prídavné "
-#~ "parametre v možnostiach pre triedu dokumentu."
-
-#~ msgid "Natbib &style:"
-#~ msgstr "Natbib š&týl:"
-
-#~ msgid "Use the jurabib styles for law and humanities"
-#~ msgstr "Použiť štýl jurabib pre právne a humanitné odbory"
-
-#~ msgid "Define the default BibTeX style"
-#~ msgstr "Vyberte štandardný BibTeX štýl"
-
-#~ msgid "Databa&ses"
-#~ msgstr "&Databázy"
-
-#~ msgid "Default (basic)"
-#~ msgstr "Štd. (basic)"
-
-#~ msgid "Citation engine"
-#~ msgstr "Správa citácie"
 
 #~ msgid "%1$stext (dynamic)"
 #~ msgstr "%1$stext (dynamická)"
@@ -33672,33 +33687,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "&Size:"
 #~ msgstr "&Veľkosť:"
-
-#~ msgid "Ordinary Quote|Q"
-#~ msgstr "Dvojitá Úvodzovka|D"
-
-#~ msgid "Single Quote|S"
-#~ msgstr "Jednoduchá Úvodzovka|J"
-
-#~ msgid "``text''"
-#~ msgstr "“text”"
-
-#~ msgid "''text''"
-#~ msgstr "”text”"
-
-#~ msgid ",,text``"
-#~ msgstr "„text“"
-
-#~ msgid ",,text''"
-#~ msgstr "„text”"
-
-#~ msgid "<<text>>"
-#~ msgstr "«text»"
-
-#~ msgid ">>text<<"
-#~ msgstr "»text«"
-
-#~ msgid "Cyrillic (pt 254)"
-#~ msgstr "Cyrilika (pt 254)"
 
 #~ msgid ""
 #~ "\n"
@@ -33714,17 +33702,14 @@ msgstr "Neznámy používateľ"
 #~ "ODPOVEDZTE SPUSTIŤ LEN KEĎ DÔVERUJETE PÔVODU/ODOSIELATEĽOVI TOHTO LYX "
 #~ "DOKUMENTU! "
 
-#~ msgid "Character: "
-#~ msgstr "Znak: "
-
-#~ msgid "Code Point: "
-#~ msgstr "Kódový bod: "
-
 #~ msgid "Potentially harmful external converters disabled"
 #~ msgstr "Potenciálne škodlivý externý konvertor je blokovaný"
 
 #~ msgid "frame of button"
 #~ msgstr "rám tlačidla"
+
+#~ msgid "Code Preview Pane|P"
+#~ msgstr "Náhľady Kódu"
 
 #~ msgid "Global Default"
 #~ msgstr "Globálny Štandard"
@@ -33749,18 +33734,6 @@ msgstr "Neznámy používateľ"
 #~ "Latin Modern je doporučený ako podobne vyzerajúci.\n"
 #~ "Kódovanie gréckych a cyrilských fontov je, keď požadované, pridané "
 #~ "automaticky. "
-
-#~ msgid "Example:"
-#~ msgstr "Príklad:"
-
-#~ msgid "Examples:"
-#~ msgstr "Príklady:"
-
-#~ msgid "Subexample:"
-#~ msgstr "Podpríklad:"
-
-#~ msgid "Source Pane|S"
-#~ msgstr "Zdrojový Text"
 
 #~ msgid "LaTeX Source"
 #~ msgstr "LaTeX Zdroj"
@@ -33866,23 +33839,11 @@ msgstr "Neznámy používateľ"
 #~ msgid " (read only)"
 #~ msgstr " (iba pre čítanie)"
 
-#~ msgid "Export failure"
-#~ msgstr "Exportovanie zlyhalo"
-
 #~ msgid "Format"
 #~ msgstr "Formát"
 
-#~ msgid "Conversion Failed!"
-#~ msgstr "Konverzia zlyhala!"
-
-#~ msgid "Failed to convert local layout to current format."
-#~ msgstr "Konverzia lokálnej schémy na nový formát zlyhala."
-
 #~ msgid "Branch, inverted (%1$s): %2$s"
 #~ msgstr "Vetva, invertovaná (%1$s): %2$s"
-
-#~ msgid "Branch (%1$s): %2$s"
-#~ msgstr "Vetva (%1$s): %2$s"
 
 #~ msgid ""
 #~ "Specify those directories which should be prepended to the TEXINPUTS "
@@ -33895,25 +33856,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Toggle Inversion|I"
 #~ msgstr "Prepnúť Inverziu|I"
-
-#~ msgid "Plain text (image)"
-#~ msgstr "Prostý text (obrázok)"
-
-#~ msgid "Plain text (Xfig output)"
-#~ msgstr "Prostý text (Xfig výstup)"
-
-#~ msgid ""
-#~ "Today's date.\n"
-#~ "Read 'info date' for more information.\n"
-#~ msgstr ""
-#~ "Dnešné dátum.\n"
-#~ "Pre ďalšie informácie si prečítajte stránku manuálu ('info date').\n"
-
-#~ msgid "date (output)"
-#~ msgstr "dátum (výstup)"
-
-#~ msgid "date command"
-#~ msgstr "príkaz pre dátum"
 
 #~ msgid "Undef: "
 #~ msgstr "Nie def: "
@@ -33941,6 +33883,9 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Keypoints"
 #~ msgstr "Klúčové body"
+
+#~ msgid "Key Points."
+#~ msgstr "Klúčové Body."
 
 #~ msgid "American Geophysical Union (AGUTeX) (older than 2015, obsolete)"
 #~ msgstr "American Geophysical Union (AGUTeX) (staršie ako 2015, zastaralé)"
@@ -34449,6 +34394,12 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Minimum word length for completion"
 #~ msgstr "Minimálna dĺžka slova pre doplňovanie"
+
+#~ msgid "Syriac"
+#~ msgstr "Syriac (stredoveká hebrejčina)"
+
+#~ msgid "Urdu"
+#~ msgstr "Urdsky"
 
 #~ msgid "LyX-1.3.x Documents (*.lyx13)"
 #~ msgstr "LyX-1.3.x dokumenty (*.lyx13)"
@@ -35573,6 +35524,9 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Flex:MenuChoice"
 #~ msgstr "Flex:MenuVýber"
+
+#~ msgid "Foot"
+#~ msgstr "Päta"
 
 #~ msgid "Note:Note"
 #~ msgstr "Poznámka:Poznámka"
@@ -37240,62 +37194,18 @@ msgstr "Neznámy používateľ"
 #~ "Výber nejakej chyby tu ukáže chybné hlásenie v spodnom paneli, a položí "
 #~ "kurzor na miesto v dokumente kde sa chyba stala."
 
+#~ msgid ""
+#~ "Change by %1$s\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Zmenil %1$s\n"
+#~ "\n"
+
+#~ msgid "Change made at %1$s\n"
+#~ msgstr "Zmena zrobená %1$s\n"
+
 #~ msgid "NameRef:"
 #~ msgstr "MenoRef:"
-
-#~ msgid "Branch (child only): "
-#~ msgstr "Vetva (len potomok): "
-
-#~ msgid "Branch (master only): "
-#~ msgstr "Vetva (len hlavný dokument): "
-
-#~ msgid ""
-#~ "If this is checked, new documents will be saved in a compressed binary-"
-#~ "format by default.\n"
-#~ "Existing documents will still be saved in their current state (compressed "
-#~ "or uncompressed)."
-#~ msgstr ""
-#~ "Keď zaškrtnuté, nové dokumenty sa štandardne budú ukladať komprimované.\n"
-#~ "Ukladanie existujúcich dokumentov zostáva v ich aktuánom stave "
-#~ "(komprimované či nekomprimované)."
-
-#~ msgid ""
-#~ "If this is checked, the document directory path will be saved in the "
-#~ "document.\n"
-#~ "This allows moving the document elsewhere and still finding the included "
-#~ "files."
-#~ msgstr ""
-#~ "Keď zaškrtnuté, adresár dokumentu sa zapíše do dokumentu.\n"
-#~ "Dovolí sa tým premiestniť dokument niekde inde a predsa nájsť vložené "
-#~ "súbory."
-
-#~ msgid ""
-#~ "Whether to open documents in an already running instance of LyX.\n"
-#~ "(Set the LyXServer pipe path and restart LyX to enable this feature)"
-#~ msgstr ""
-#~ "Či otvoriť dokumenty v už spustenej inštancii LyX-a.\n"
-#~ "(Nastaviť cestu k dátovodu pre LyXServer a reštartovať LyX umožní túto "
-#~ "vlastnosť)"
-
-#~ msgid ""
-#~ "Select whether LyX should output Windows or Cygwin style paths to LaTeX "
-#~ "files.\n"
-#~ "Change the default only if the TeX engine was not correctly detected at "
-#~ "configure time.\n"
-#~ "Warning: Your changes here will not be saved."
-#~ msgstr ""
-#~ "Vyberte, či by LyX mal písať cesty do LaTeX-súborov v štýle Windows alebo "
-#~ "Cygwin.\n"
-#~ "Zmeňte štandardné nastavenie len keď sa už nenašiel správny TeX počas "
-#~ "konfigurácie.\n"
-#~ "Varovanie: Tieto vaše zmeny nebudú uložené."
-
-#~ msgid ""
-#~ "The icon set to use. Warning: normal size of icons may be\n"
-#~ "wrong until you save the preferences and restart LyX."
-#~ msgstr ""
-#~ "Sada ikon na použitie. Pozor: Normálny rozmer ikon môže byť\n"
-#~ "nevhodný až kým sa neuložia nastavenia a reštartuje LyX."
 
 #~ msgid ""
 #~ "Provides two new styles: 1. An In Premable style that puts whatever is "
@@ -37314,101 +37224,6 @@ msgstr "Neznámy používateľ"
 #~ "materiáli. (Vložením do 'Štandardné rozloženie' signalizujete LyXu vložiť "
 #~ "\\maketitle do výstupu, čo by mohlo byť predčasné.)"
 
-#~ msgid "master: %1$s, child: %2$s"
-#~ msgstr "hlavný dokument:%1$s, potomok: %2$s"
-
-#~ msgid ""
-#~ "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
-#~ "Command line switches (case sensitive):\n"
-#~ "\t-help              summarize LyX usage\n"
-#~ "\t-userdir dir       set user directory to dir\n"
-#~ "\t-sysdir dir        set system directory to dir\n"
-#~ "\t-geometry WxH+X+Y  set geometry of the main window\n"
-#~ "\t-dbg feature[,feature]...\n"
-#~ "                  select the features to debug.\n"
-#~ "                  Type `lyx -dbg' to see the list of features\n"
-#~ "\t-x [--execute] command\n"
-#~ "                  where command is a lyx command.\n"
-#~ "\t-e [--export] fmt\n"
-#~ "                  where fmt is the export format of choice. Look in\n"
-#~ "                  Tools->Preferences->File Handling->File Formats->Short "
-#~ "Name\n"
-#~ "                  to see which parameter (which differs from the format "
-#~ "name\n"
-#~ "                  in the File->Export menu) should be passed.\n"
-#~ "                  Note that the order of -e and -x switches matters.\n"
-#~ "\t-E [--export-to] fmt filename\n"
-#~ "                  where fmt is the export format of choice (see --"
-#~ "export),\n"
-#~ "                  and filename is the destination filename.\n"
-#~ "\t-i [--import] fmt file.xxx\n"
-#~ "                  where fmt is the import format of choice\n"
-#~ "                  and file.xxx is the file to be imported.\n"
-#~ "\t-f [--force-overwrite] what\n"
-#~ "                  where what is either `all', `main' or `none',\n"
-#~ "                  specifying whether all files, main file only, or no "
-#~ "files,\n"
-#~ "                  respectively, are to be overwritten during a batch "
-#~ "export.\n"
-#~ "                  Anything else is equivalent to `all', but is not "
-#~ "consumed.\n"
-#~ "\t-n [--no-remote]\n"
-#~ "                  open documents in a new instance\n"
-#~ "\t-r [--remote]\n"
-#~ "                  open documents in an already running instance\n"
-#~ "                  (a working lyxpipe is needed)\n"
-#~ "\t-batch    execute commands without launching GUI and exit.\n"
-#~ "\t-version  summarize version and build info\n"
-#~ "Check the LyX man page for more details."
-#~ msgstr ""
-#~ "Použitie: lyx [prepínače ] [ názov.lyx … ]\n"
-#~ "Prepínače (rozlišuje sa veľkosť písmen):\n"
-#~ "\t-help              sumarizuje použitie LyX\n"
-#~ "\t-userdir dir       nastaviť používateľský adresár na dir\n"
-#~ "\t-sysdir dir        nastaviť systémový adresár na dir\n"
-#~ "\t-geometry WxH+X+Y  nastaviť geometriu hlavného okna\n"
-#~ "\t-dbg časť[,časť]…\n"
-#~ "                  vyberie patričné časti na ladenie.\n"
-#~ "                  Príkaz `lyx -dbg' vypíše zoznam ladiacich častí\n"
-#~ "\t-x [--execute] príkaz\n"
-#~ "                  spustí lyx-príkaz príkaz.\n"
-#~ "\t-e [--export] fmt\n"
-#~ "                  kde fmt je vybraný exportný formát. Pozrite si\n"
-#~ "                  Nástroje->Preferencie…->Obsluha súborov->Formáty "
-#~ "Súborov->Skratka\n"
-#~ "                  aby ste videli, ktoré parametre sú vhodné.\\n\n"
-#~ "                 (Líšia sa od mena formátu v menu Súbor->Exportovať).\n"
-#~ "                  Všimnite si že poradie prepínačov -e a -x je významné.\n"
-#~ "\t-E [--export-to] fmt názov\n"
-#~ "                  kde fmt je vybraný exportný formát (pozrite --export),\n"
-#~ "                  a názov je meno výsledného súboru.\n"
-#~ "\t-i [--import] fmt file.xxx\n"
-#~ "                  kde fmt je vybraný formát k importu\n"
-#~ "                  a file.xxx je meno súboru určeného pre import.\n"
-#~ "\t-f [--force-overwrite] čo\n"
-#~ "                  kde \"čo\" je alebo `all' alebo `main' alebo `none'.\n"
-#~ "                  Keď `all', tak bude prepísaný každý súbor počas\n"
-#~ "                    dávkového exportu.\n"
-#~ "                  Keď `main' bude prepísaný len hlavný súbor.\n"
-#~ "                  Keď `none' nebude nič prepísané.\n"
-#~ "                  Všetko iné je rovnocenné k `all', len že nie je "
-#~ "skonzumované.\n"
-#~ "\t-n [--no-remote]\n"
-#~ "                 otvorí dokumenty v novej inštancii\n"
-#~ "\t-r [--remote]\n"
-#~ "                  otvorí dokumenty v už spustenej inštancii\n"
-#~ "                  (potrebujete pracujúci lyx-dátovod)\n"
-#~ "\t-batch    spusti príkazy bez GUI a skonč.\n"
-#~ "\t-version  zhrnúť  verziu a prekladnú informáciu.\n"
-#~ "Viac informácií nájdete v manuálovej stránke LyXu."
-
-#~ msgid ""
-#~ "Included file `%1$s' was not exported correctly.\n"
-#~ "Warning: LaTeX export is probably incomplete."
-#~ msgstr ""
-#~ "Zahrnutý súbor `%1$s' nebol správne exportovaný.\n"
-#~ "Upozornenie: LaTeX-ov export asi nie je úplný."
-
 #~ msgid "S&elected Citations:"
 #~ msgstr "&Vybrané Citácie:"
 
@@ -37426,16 +37241,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Group labels by prefix (e.g. \"sec:\")"
 #~ msgstr "Zoskupiť značky podľa prefixu (napr. \"sec:\")"
-
-#~ msgid ""
-#~ "Invalid position requested by inverse search.\n"
-#~ "You need to update the viewed document."
-#~ msgstr ""
-#~ "Neplatná pozícia žiadaná spiatočným hľadaním.\n"
-#~ "Treba aktualizovať prehliadaný dokument."
-
-#~ msgid "Zoom level cannot be less than 10%."
-#~ msgstr "Stupeň lupy nesmie byť menší ako 10%."
 
 #~ msgid ""
 #~ "Apply hardening techniques when calling external converters to prevent "
@@ -37524,29 +37329,11 @@ msgstr "Neznámy používateľ"
 #~ "užívateľa ľubovoľné akcie, vrátane nebezpečné ako napr. zmazanie súborov. "
 #~ "Keď je napr. inštruovaný robiť to zlovoľne vyrobeným lyx dokumentom.</p> "
 
-#~ msgid "Language &default"
-#~ msgstr "Štan&dardné pre daný jazyk"
-
-#~ msgid "&Other:"
-#~ msgstr "&Iné:"
-
-#~ msgid "Language pac&kage:"
-#~ msgstr "Jazykový balí&k:"
-
 #~ msgid "text%1$s (dynamic)"
 #~ msgstr "text%1$s (dynamická)"
 
 #~ msgid "Enter BibTeX database name"
 #~ msgstr "Vložte názov BibTeX databázy"
-
-#~ msgid "Default st&yle:"
-#~ msgstr "Štandardný štý&l:"
-
-#~ msgid "S&ectioned bibliography"
-#~ msgstr "&Bibliografia (sekcie)"
-
-#~ msgid "BibTeX Bibliography...|B"
-#~ msgstr "BibTeX bibliografia…|B"
 
 #~ msgid ""
 #~ "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -37637,21 +37424,8 @@ msgstr "Neznámy používateľ"
 #~ "\t-version  zhrnúť  verziu a prekladnú informáciu.\n"
 #~ "Viac informácií nájdete v manuálovej stránke LyXu."
 
-#~ msgid "Numerical"
-#~ msgstr "Číselný"
-
-#~ msgid ""
-#~ "The BibTeX inset includes %1$s databases.\n"
-#~ "If you proceed, all of them will be opened."
-#~ msgstr ""
-#~ "Vložka BibTeX-u zahrňuje %1$s databázy.\n"
-#~ "Keď budete pokračovať, budú všetky otvorené."
-
 #~ msgid "Here you can enter further options of the biblatex package"
 #~ msgstr "Tu môžte vložiť ďalšie voľby balíka biblatex"
-
-#~ msgid "Chec&kTeX command:"
-#~ msgstr "Príkaz Chec&kTeX:"
 
 #~ msgid ""
 #~ "A selection of different style engines (such as natbib) that respectively "
@@ -37664,9 +37438,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "&Biblatex citation style:"
 #~ msgstr "Štýl &biblatex-citácie:"
 
-#~ msgid "Text &before:"
-#~ msgstr "&Text pred:"
-
 #~ msgid ""
 #~ "<p>Your current settings forbid its execution.</p><p>(To change this "
 #~ "setting, go to <i>Preferences &#x25b9; File Handling &#x25b9; Converters</"
@@ -37677,33 +37448,8 @@ msgstr "Neznámy používateľ"
 #~ "&#x25b9; Obsluha Súborov</i> a zrušte <i>Bezpečnosť &#x25b9; Zakázať "
 #~ "overovacie konvertory</i>.) "
 
-#~ msgid "A&vailable indexes:"
-#~ msgstr "&Dostupné registre:"
-
-#~ msgid "Smash \\smash"
-#~ msgstr "Nulovať(výšku a hĺbku) \\smash"
-
-#~ msgid "Top smash \\smasht"
-#~ msgstr "Nulovať nahor \\smasht"
-
-#~ msgid "Bottom smash \\smashb"
-#~ msgstr "Nulovať nadol \\smashb"
-
-#~ msgid "Left overlap \\mathllap"
-#~ msgstr "Prekrytie doľava \\mathllap"
-
-#~ msgid "Center overlap \\mathclap"
-#~ msgstr "Prekrytie na stred \\mathclap"
-
-#~ msgid "Right overlap \\mathrlap"
-#~ msgstr "Prekryte doprava \\mathrlap"
-
 #~ msgid "Secti&oned bibliography"
 #~ msgstr "Úseková bibliografia"
-
-#~ msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")"
-#~ msgstr ""
-#~ "Vynúti veľké prvé písmená v menách (\"Del Piero\", miesto \"del Piero\")"
 
 #~ msgid ""
 #~ "Text that follows the reference (e.g., pages), if the current style "
@@ -37731,43 +37477,6 @@ msgstr "Neznámy používateľ"
 #~ "dashes"
 #~ msgstr ""
 #~ "Použiť \\textendash a \\textemdash namiesto čiarkovania pre '---' a '--' "
-
-#~ msgid "Save failed! Bummer. Document is lost."
-#~ msgstr "Uloženie zlyhalo! Och. Dokument je stratený."
-
-#~ msgid "Strikeout %1$s, "
-#~ msgstr "Preškrtnúť %1$s, "
-
-#~ msgid "Strikeout"
-#~ msgstr "Preškrtnuté"
-
-#~ msgid ""
-#~ "Provides custom insets to insert TODO items in your document (using the "
-#~ "todonotes package). In order to generate a 'List of TODOs', the module "
-#~ "provides a paragraph style."
-#~ msgstr ""
-#~ "Poskytuje vlastné vložky na vklad TODO prvkov do vášho dokumentu "
-#~ "(používajúc balík todonotes). Pre generáciu 'Zoznam TODOs' poskytuje "
-#~ "tento modul štýl odstavca."
-
-#~ msgid "ACM SIGS ('Alternate' Style)"
-#~ msgstr "ACM SIGS ('Alternate' štýl)"
-
-#~ msgid "ACM SIG Proceedings (SP)"
-#~ msgstr "ACM SIG rokovacie zväzky (SP)"
-
-#~ msgid "ACM SIGGGRAPH 0.92"
-#~ msgstr "ACM SIGGRAPH 0.92"
-
-#~ msgid "Inderscience Journals (Obsolete Version)"
-#~ msgstr "Inderscience časopisy (zastaralá verzia)"
-
-#~ msgid ""
-#~ "Use the algorithm2e package for algorithm floats rather than LyX's home-"
-#~ "brewed algorithm floats."
-#~ msgstr ""
-#~ "Použiť balík algorithm2e pre plávajúce algoritmy namiesto LyXovej "
-#~ "samohonky plávajúcich algoritmov."
 
 #~ msgid ""
 #~ "Any changes will be lost. Are you sure you want to load the version on "
