@@ -40376,32 +40376,80 @@ Figure
 \begin_inset space ~
 \end_inset
 
-Inkscape supporte (expérimentalement) les images graphiques vectorielles
- SVG contenant du texte écrit en \SpecialChar LaTeX
+Inkscape supporte les images graphiques vectorielles SVG contenant du texte
+ écrit en \SpecialChar LaTeX
 .
- Il repose sur l'option 
-\family sans
-Exclure le texte du fichier PDF, et créer un fichier LaTeX 
-\family default
-lorsqu'on enregistre un dessin avec le programme 
-\noun on
-Inkscape
-\noun default
-, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Inkscape"
+ Il repose sur une fonctionnalité du programme 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Inkscape"
+target "https://inkscape.org/"
 literal "false"
 
 \end_inset
 
-.
- Ceci permet d’inclure des documents SVG dans lesquels \SpecialChar LaTeX
- assurera la typographie
- du texte.
- L'avantage de ces SVG est d'assurer l'uniformité du style dans le document,
- et il est possible de saisir du code \SpecialChar TeX
+
+\series default
+ qui crée un fichier PDF et un fichier \SpecialChar LaTeX
+ particulier à partir d'un fichier
+ SVG donné (depuis 
+\noun on
+Inkscape
+\noun default
+, la fonctionnalité est disponible via l'option 
+\family sans
+Exclure le texte du fichier PDF et créer un fichier LaTeX 
+\family default
+lorsqu'on enregistre un dessin en tant que PDF).
+ L'avantage de ces fichiers est d'assurer l'uniformité du style dans le
+ document, et il est possible de saisir du code \SpecialChar TeX
  dans le texte du SVG.
+\begin_inset Newline newline
+\end_inset
+
+Le modèle lit les fichiers SVG et utilise un convertisseur pour engendrer
+ les fichiers PDF et \SpecialChar LaTeX
+ (via
+\noun on
+ 
+\noun default
+Inkscape
+\noun on
+)
+\noun default
+ à la volée, vous n'avez donc pas à exporter ces fichiers vous-mêmes.
+ Si vous préférez cette dernière solution, et voulez utiliser les fichiers
+ donnés 
+\family typewriter
+*.pdf
+\family default
+ et 
+\family typewriter
+*.pdf_tex
+\family default
+ à la place, saisissez simplement le nom des fichiers via le menu 
+\family sans
+Insertion\SpecialChar menuseparator
+Fichier\SpecialChar menuseparator
+Sous-document
+\family default
+ (voir sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Sous-documents"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) plutôt que d'utiliser ce modèle.
 \begin_inset Newline newline
 \end_inset
 
@@ -40448,10 +40496,7 @@ Aperçu
 \begin_inset Newline newline
 \end_inset
 
-Le modèle fonctionne comme dans le cas d'un objet externe Xfig.
- \SpecialChar LyX
- va extraire le texte de l'image dans un fichier séparé et créer un fichier
- PDF pour le reste.
+
 \end_layout
 
 \begin_layout Description
@@ -41367,7 +41412,7 @@ Note:
 \begin_layout Standard
 Si vous ne voulez visualiser ou exporter que certains des sous-documents
  de votre document maître, que ce soit pour diminuer les temps de compilation
- ou parceque vous voulez distribuer des chapitres isolés d'un livre que
+ ou parce que vous voulez distribuer des chapitres isolés d'un livre que
  vous êtes en train d'écrire, vous pouvez exclure des sous-documents de
  la sortie en utilisant le menu 
 \family sans
