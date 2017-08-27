@@ -2934,11 +2934,11 @@ msgid ""
 "Runs the LaTeX backend with the -shell-escape option (Warning: use only when "
 "really necessary)"
 msgstr ""
+"Spoustí LaTeX s přepínačem -shell-escape (Pozor: použijte jen když nezbytně nutné)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:114
-#, fuzzy
 msgid "&Allow running external programs"
-msgstr "Chyba při běhu externích příkazů."
+msgstr "P&ovolit běh externích programů"
 
 #: src/frontends/qt4/ui/OutputUi.ui:121
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
@@ -8823,6 +8823,7 @@ msgid ""
 "brewed algorithm floats. Use the Algorithm style to enter and indent the "
 "algorithm."
 msgstr ""
+"Použít balíček algorithm2e pro plovoucí objekt algoritmu raději než standarní řešení LyX-u. Použijte styl Algoritmus pro vložení a indentaci algoritmu."
 
 #: lib/layouts/algorithm2e.module:25 lib/layouts/powerdot.layout:547
 #: lib/layouts/revtex4-1.layout:267 lib/layouts/stdfloats.inc:48
@@ -10015,15 +10016,15 @@ msgid "Right Address"
 msgstr "Adresa napravo"
 
 #: lib/layouts/changebars.module:2
-#, fuzzy
 msgid "Change bars"
-msgstr "značka revize"
+msgstr "Značky změn"
 
 #: lib/layouts/changebars.module:7
 msgid ""
 "Enables LyX to add vertical change bars in the margin of PDF output when "
 "change tracking is turned on and pdflatex output format is chosen."
 msgstr ""
+"Přidat vertikální značky revizních změn do okraje stránky PDF výstupu v případě zapnutých revizních změn a výstupního formátu pdflatex."
 
 #: lib/layouts/chess.layout:3
 msgid "Chess"
@@ -15974,155 +15975,134 @@ msgstr "Japanese Book (Vertical Writing)"
 
 #: lib/layouts/tcolorbox.module:2
 msgid "Fancy Colored Boxes"
-msgstr ""
+msgstr "Barevné rámečky"
 
 #: lib/layouts/tcolorbox.module:6
 msgid ""
 "Adds custom insets that support colored boxes via the tcolorbox package. See "
 "the tcolorbox documentation for details."
 msgstr ""
+"Přidá vložky pro barevné rámečky za použití balíčku tcolorbox. Dokumentace tamtéž."
 
 #: lib/layouts/tcolorbox.module:11 lib/layouts/tcolorbox.module:14
-#, fuzzy
 msgid "Color Box"
-msgstr "Barevně"
+msgstr "Barevný rámeček"
 
 #: lib/layouts/tcolorbox.module:19
-#, fuzzy
 msgid "Color Box Options"
-msgstr "Column Options"
+msgstr "Volby barevného rámečku"
 
 #: lib/layouts/tcolorbox.module:20
 msgid "Insert the color box options here (see tcolorbox manual)"
-msgstr ""
+msgstr "Zde vložte volby (viz manuál pro tcolorbox)"
 
 #: lib/layouts/tcolorbox.module:26
 msgid "Dynamic Color Box"
-msgstr ""
+msgstr "Dynamický barevný rámeček"
 
 #: lib/layouts/tcolorbox.module:29
 msgid "Color Box (Dynamic)"
-msgstr ""
+msgstr "Barevný rámeček (dynamický)"
 
 #: lib/layouts/tcolorbox.module:33
-#, fuzzy
 msgid "Fit Color Box"
-msgstr "Barva písma"
+msgstr "Barevný rámeček (uzpůsobit)"
 
 #: lib/layouts/tcolorbox.module:35
 msgid "Color Box (Fit Contents)"
-msgstr ""
+msgstr "Barevný rámeček (uzpůsobit obsahu)"
 
 #: lib/layouts/tcolorbox.module:39 lib/layouts/tcolorbox.module:41
-#, fuzzy
 msgid "Raster Color Box"
-msgstr "Barva písma"
+msgstr "Tabulka barevných rámečků"
 
 #: lib/layouts/tcolorbox.module:50
-#, fuzzy
 msgid "Subtitle Options"
-msgstr "Note Options"
+msgstr "Volby podtitulku"
 
 #: lib/layouts/tcolorbox.module:51
-#, fuzzy
 msgid "Insert the options here"
-msgstr "Nelze změnit počet sloupců v '%1$s'"
+msgstr "Zde vložte volby"
 
 #: lib/layouts/tcolorbox.module:56
-#, fuzzy
 msgid "Color Box Separator"
-msgstr "Separator"
+msgstr "Oddělovač barevného rámečeku"
 
 #: lib/layouts/tcolorbox.module:57 lib/layouts/tcolorbox.module:91
-#, fuzzy
 msgid "Color Boxes"
-msgstr "Barvy"
+msgstr "Barevné rámečky"
 
 #: lib/layouts/tcolorbox.module:70
 msgid "-----"
-msgstr ""
+msgstr "-----"
 
 #: lib/layouts/tcolorbox.module:81
-#, fuzzy
 msgid "Color Box Line"
-msgstr "&Barevné odkazy"
+msgstr "Čára barevného rámečku"
 
 #: lib/layouts/tcolorbox.module:90 lib/layouts/tcolorbox.module:105
 msgid "Color Box Setup"
-msgstr ""
+msgstr "Nastavení barevného rámečku"
 
 #: lib/layouts/tcolorbox.module:118 lib/layouts/tcolorbox.module:121
-#, fuzzy
 msgid "New Color Box Type"
-msgstr "Barvy"
+msgstr "Nový typ barevného rámečku"
 
 #: lib/layouts/tcolorbox.module:129
-#, fuzzy
 msgid "New Box Options"
-msgstr "Column Options"
+msgstr "Volby nového rámečku"
 
 #: lib/layouts/tcolorbox.module:130
-#, fuzzy
 msgid "Options for the new box type (optional)"
-msgstr "Volby iniciálky"
+msgstr "Volby pro nový typ barevného rámečku (nepovinné)"
 
 #: lib/layouts/tcolorbox.module:135
-#, fuzzy
 msgid "Name of the new box type"
-msgstr "Name of the language"
+msgstr "Jméno pro nový typ barevného rámečku"
 
 #: lib/layouts/tcolorbox.module:140
-#, fuzzy
 msgid "Arguments"
-msgstr "Argument"
+msgstr "Argumenty"
 
 #: lib/layouts/tcolorbox.module:141
 msgid "Number of arguments (remove this inset if none!)"
-msgstr ""
+msgstr "Počet argumentů (smažte tuto vložku pokud žádný!)"
 
 #: lib/layouts/tcolorbox.module:146
-#, fuzzy
 msgid "Default Value"
-msgstr "Default Text"
+msgstr "Standardní hodnota"
 
 #: lib/layouts/tcolorbox.module:147
 msgid "Default value for argument (keep empty!)"
-msgstr ""
+msgstr "Standardní hodnota argumentu (nechte prázdné!)"
 
 #: lib/layouts/tcolorbox.module:154 lib/layouts/tcolorbox.module:156
-#, fuzzy
 msgid "Custom Color Box 1"
-msgstr "Barva písma"
+msgstr "Vlastní barevný rámeček 1"
 
 #: lib/layouts/tcolorbox.module:159
-#, fuzzy
 msgid "More Color Box Options"
-msgstr "Column Options"
+msgstr "Další volby barevného rámečku"
 
 #: lib/layouts/tcolorbox.module:160
-#, fuzzy
 msgid "Insert more color box options here"
-msgstr "Nelze změnit počet sloupců v '%1$s'"
+msgstr "Zde vložte další volby barevného rámečku"
 
 #: lib/layouts/tcolorbox.module:165 lib/layouts/tcolorbox.module:167
-#, fuzzy
 msgid "Custom Color Box 2"
-msgstr "Barva písma"
+msgstr "Vlastní barevný rámeček 2"
 
 #: lib/layouts/tcolorbox.module:171 lib/layouts/tcolorbox.module:173
-#, fuzzy
 msgid "Custom Color Box 3"
-msgstr "Barva písma"
+msgstr "Vlastní barevný rámeček 3"
 
 #: lib/layouts/tcolorbox.module:177 lib/layouts/tcolorbox.module:179
-#, fuzzy
 msgid "Custom Color Box 4"
-msgstr "Barva písma"
+msgstr "Vlastní barevný rámeček 4"
 
 #: lib/layouts/tcolorbox.module:183 lib/layouts/tcolorbox.module:185
-#, fuzzy
 msgid "Custom Color Box 5"
-msgstr "Barva písma"
+msgstr "Vlastní barevný rámeček 5"
 
 #: lib/layouts/theorems-ams-bytype.inc:178 lib/layouts/theorems-bytype.inc:147
 #: lib/layouts/theorems-without-preamble.inc:170
