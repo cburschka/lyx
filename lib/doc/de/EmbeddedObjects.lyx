@@ -39735,30 +39735,80 @@ literal "false"
 \end_layout
 
 \begin_layout Description
-Inkscape-Grafik Diese experimentelle Vorlage unterstützt Vektorgrafiken
- (SVG), deren Text mit \SpecialChar LaTeX
- gesetzt wird.
- Es basiert auf der Option 
-\family sans
-Text in PDF weglassen und LaTeX Datei erstellen
-\family default
- wenn man eine Zeichnung als PDF mit dem Programm 
-\noun on
-Inkscape
-\noun default
- speichert, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Inkscape"
+Inkscape-Grafik Diese Vorlage unterstützt spezifische skalierbare Grafiken,
+ die aus skalierbaren Vektorgrafiken (SVG) generiert werden.
+ Das Besondere an ihnen ist, dass aller enthaltener Text durch Text ersetzt
+ wird, der mit \SpecialChar LaTeX
+ gesetzt wurde (und somit die aktuelle Schriftart des \SpecialChar LyX
+-Dokuments
+ verwendet).
+ Die Vorlage basiert auf einem Feature des Programms 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Inkscape"
+target "https://inkscape.org/"
 literal "false"
 
 \end_inset
 
-.
- Dies ermöglicht es, SVG-Dateien einzufügen, in denen \SpecialChar LaTeX
- den Text setzt.
- Der Vorteil von solchen SVGs ist, dass man einen einheitlichen Textstil
- im ganzen Dokument erhält.
+
+\series default
+, das aus einer gegebenen SVG-Datei spezielle PDF- und \SpecialChar LaTeX
+-Dateien generiert
+ (in Inkscape selbst ist dieses Feature über die Option 
+\family sans
+Text in PDF weglassen und LaTeX Datei erstellen
+\family default
+ verfügbar, wenn man eine Grafik als PDF speichert).
+ Der Vorteil von solchen Dateien ist es, dass man einen einheitlichen Textstil
+ im ganzen Dokument erzeugen kann.
+\begin_inset Newline newline
+\end_inset
+
+Die Vorlage liest SVG-Dateien ein und verwendet ein Konverterprogramm, um
+ daraus (jeweils aktuelle) PDF- und \SpecialChar LaTeX
+-Dateien zu erzeugen (das Konverterprogramm
+ verwendet hierfür Inkscape).
+ Somit müssen Sie diese Dateien nicht selbst exportieren und pflegen.
+ Wenn Sie dennoch lieber bereits vorhandene 
+\family typewriter
+*.pdf-
+\family default
+ und 
+\family typewriter
+*.pdf_tex
+\family default
+-Dateien verwenden möchten (oder müssen), binden Sie die entsprechende 
+\family typewriter
+*.pdf_tex
+\family default
+-Datei einfach über 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show-new-inset include"
+\end_inset
+
+ (mittel 
+\family typewriter
+Input
+\family default
+) ein (siehe Abschnitt.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "abs:Unterdokumente"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) statt die hier beschriebene Vorlage zu verwenden.
 \begin_inset Newline newline
 \end_inset
 
@@ -39791,23 +39841,15 @@ literal "false"
 \begin_inset Newline newline
 \end_inset
 
-Es ist zu beachten, dass der Bildtext die umgebende Schrift übernimmt, dies
- in der Vorschau in \SpecialChar LyX
- aber nicht geschieht.
+Beachten Sie, dass die ausgegebene Grafik die umgebende Schrift übernimmt,
+ dies in der Vorschau in \SpecialChar LyX
+ aber nicht angezeigt wird.
  Packt man die externe Einfügung in eine Vorschau-Einfügung (Menü 
 \family sans
 Einfügen\SpecialChar menuseparator
 Vorschau
 \family default
 ), erhält man ein besseres Ergebnis.
-\begin_inset Newline newline
-\end_inset
-
-Die Vorlage funktioniert sehr ähnlich wie die Unterstützung für Xfig.
- \SpecialChar LyX
- extrahiert den Bildtext in eine separate \SpecialChar TeX
--Datei und erzeugt eine PDF-Datei
- für den Rest.
 \end_layout
 
 \begin_layout Description
