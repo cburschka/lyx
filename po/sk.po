@@ -6,10 +6,10 @@
 # Kornel Benko <kornel@lyx.org>, 2009-2017.
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX-2.3\n"
+"Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-08-10 08:00+0200\n"
-"PO-Revision-Date: 2017-08-10 06:08+0000\n"
+"POT-Creation-Date: 2017-08-16 13:02+0200\n"
+"PO-Revision-Date: 2017-08-27 08:24+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2926,12 +2926,12 @@ msgid ""
 "Runs the LaTeX backend with the -shell-escape option (Warning: use only when "
 "really necessary)"
 msgstr ""
-"Spúšťa LaTeX backend s voľbou -shell-escape (Varovanie: použiť len keď "
-"naozaj potrebné)"
+"Spúšťa LaTeX backend s voľbou -shell-escape (Pozor: použiť len keď naozaj "
+"potrebné)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:114
 msgid "&Allow running external programs"
-msgstr "Po&voliť spúšťanie externých príkazov"
+msgstr "Po&voliť beh externých príkazov"
 
 #: src/frontends/qt4/ui/OutputUi.ui:111
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
@@ -9930,14 +9930,14 @@ msgstr "Adresa vpravo"
 
 #: lib/layouts/changebars.module:2
 msgid "Change bars"
-msgstr "Pruhy zmien"
+msgstr "Značky zmien"
 
 #: lib/layouts/changebars.module:7
 msgid ""
 "Enables LyX to add vertical change bars in the margin of PDF output when "
 "change tracking is turned on and pdflatex output format is chosen."
 msgstr ""
-"Umožní LyX pridať vertikálne pruhy zmien na okraji PDF-výstupu. Treba na to "
+"Umožní LyX pridať vertikálne značky zmien na okraji PDF-výstupu. Treba na to "
 "zapnúť sledovanie zmien a zvoliť pdflatex ako výstupný formát."
 
 #: lib/layouts/chess.layout:3
@@ -12159,7 +12159,7 @@ msgstr "Banka Riadok F:"
 
 #: lib/layouts/graphicboxes.module:2
 msgid "GraphicBoxes"
-msgstr "GrafickéRámčeky"
+msgstr "Rámčeky: Grafické"
 
 #: lib/layouts/graphicboxes.module:5
 msgid "Boxes to scale and rotate its contents"
@@ -14833,7 +14833,7 @@ msgstr "KOMA-Script referát"
 
 #: lib/layouts/sectionbox.module:2
 msgid "Section Boxes"
-msgstr "Sekciové Rámčeky"
+msgstr "Rámčeky: Sekciové"
 
 #: lib/layouts/sectionbox.module:6
 msgid ""
@@ -15694,7 +15694,7 @@ msgstr "Japonská Kniha (vertikálne písanie)"
 
 #: lib/layouts/tcolorbox.module:2
 msgid "Fancy Colored Boxes"
-msgstr "Pestro Zafarbené Rámiky"
+msgstr "Rámčeky: Pestro Zafarbené"
 
 #: lib/layouts/tcolorbox.module:6
 msgid ""
@@ -15718,7 +15718,7 @@ msgstr "Tu sa vložia voľby pre farebný rámik (viď tcolorbox manuál)"
 
 #: lib/layouts/tcolorbox.module:26
 msgid "Dynamic Color Box"
-msgstr "Dynamický Farebný Rámik"
+msgstr "Farebný Rámik: Dynamický"
 
 #: lib/layouts/tcolorbox.module:29
 msgid "Color Box (Dynamic)"
@@ -15734,7 +15734,7 @@ msgstr "Farebný Rámik (Prispôsobiť Obsah)"
 
 #: lib/layouts/tcolorbox.module:39 lib/layouts/tcolorbox.module:41
 msgid "Raster Color Box"
-msgstr "Rasterizovaný Farebný Rámik"
+msgstr "Farebný Rámik: Tabuľka"
 
 #: lib/layouts/tcolorbox.module:50
 msgid "Subtitle Options"
@@ -15746,7 +15746,7 @@ msgstr "Vložte sem voľby"
 
 #: lib/layouts/tcolorbox.module:56
 msgid "Color Box Separator"
-msgstr "Farebný Rámik Oddeľovač"
+msgstr "Farebný Rámik: Oddeľovač"
 
 #: lib/layouts/tcolorbox.module:57 lib/layouts/tcolorbox.module:91
 msgid "Color Boxes"
@@ -15758,11 +15758,11 @@ msgstr "-----"
 
 #: lib/layouts/tcolorbox.module:81
 msgid "Color Box Line"
-msgstr "Farebný Rámik Čiarka"
+msgstr "Farebný Rámik: Čiarka"
 
 #: lib/layouts/tcolorbox.module:90 lib/layouts/tcolorbox.module:105
 msgid "Color Box Setup"
-msgstr "Farebný Rámik Nastavenie"
+msgstr "Farebný Rámik: Nastavenie"
 
 #: lib/layouts/tcolorbox.module:118 lib/layouts/tcolorbox.module:121
 msgid "New Color Box Type"
@@ -15786,7 +15786,7 @@ msgstr "Argumenty"
 
 #: lib/layouts/tcolorbox.module:141
 msgid "Number of arguments (remove this inset if none!)"
-msgstr "Počet argumentov (keď žiadna, odstráňte túto vložku!)"
+msgstr "Počet argumentov (keď žiadny, odstráňte túto vložku!)"
 
 #: lib/layouts/tcolorbox.module:146
 msgid "Default Value"
@@ -15794,7 +15794,7 @@ msgstr "Predvolená Hodnota"
 
 #: lib/layouts/tcolorbox.module:147
 msgid "Default value for argument (keep empty!)"
-msgstr "Predvolená hodnota argumentu (držte prázdne!)"
+msgstr "Predvolená hodnota argumentu (nechajte prázdne!)"
 
 #: lib/layouts/tcolorbox.module:154 lib/layouts/tcolorbox.module:156
 msgid "Custom Color Box 1"
