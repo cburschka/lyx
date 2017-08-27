@@ -233,11 +233,12 @@ graphicboxes
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -39673,14 +39674,67 @@ Inkscape
 \begin_inset space ~
 \end_inset
 
-figure This experimental template supports vector graphics (SVG) images
- that contain text written in \SpecialChar LaTeX
+figure This 
+\change_deleted -712698321 1503821681
+experimental 
+\change_unchanged
+template supports
+\change_inserted -712698321 1503822606
+ specific scalable images derived from
+\change_unchanged
+ 
+\change_inserted -712698321 1503821702
+scalable 
+\change_unchanged
+vector graphics (SVG)
+\change_deleted -712698321 1503822531
+ images
+\change_inserted -712698321 1503822543
+, in which the contained text
+\change_unchanged
+ 
+\change_deleted -712698321 1503821741
+that contain text written in
+\change_inserted -712698321 1503821781
+is replaced by a version typeset by
+\change_unchanged
+ \SpecialChar LaTeX
+
+\change_inserted -712698321 1503821796
+ (and hence in the current document font)
+\change_unchanged
 .
- It relies on the option 
+ It relies on 
+\change_inserted -712698321 1503823562
+a feature of the program 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Inkscape"
+target "https://inkscape.org/"
+literal "false"
+
+\end_inset
+
+
+\series default
+ which creates a special PDF and \SpecialChar LaTeX
+ file from a given SVG file (in 
+\noun on
+Inkscape
+\noun default
+ itself, the feature is available via 
+\change_unchanged
+the option 
 \family sans
 Omit text in PDF and create LaTeX file
 \family default
- when saving a drawing as PDF with the program 
+ when saving a drawing as PDF
+\change_inserted -712698321 1503823315
+)
+\change_deleted -712698321 1503822441
+ with the program 
 \noun on
 Inkscape
 \noun default
@@ -39692,15 +39746,85 @@ literal "false"
 
 \end_inset
 
+
+\change_unchanged
 .
- This allows to include SVG documents in which \SpecialChar LaTeX
+ 
+\change_deleted -712698321 1503821818
+This allows to include SVG documents in which \SpecialChar LaTeX
  will typeset the text.
- The benefit of such SVGs is a uniform text style throughout the whole document.
+ 
+\change_unchanged
+The benefit of such 
+\change_deleted -712698321 1503822559
+SVG
+\change_inserted -712698321 1503823315
+file
+\change_unchanged
+s is a uniform text style throughout the whole document.
+\change_inserted -712698321 1503823315
+
 \begin_inset Newline newline
 \end_inset
 
-One can use \SpecialChar TeX
- code commands like 
+The external template reads SVG files and uses a converter program to generate
+ the respective PDF and \SpecialChar LaTeX
+ files (via
+\noun on
+ 
+\noun default
+Inkscape
+\noun on
+)
+\noun default
+ on the fly, so you don't have to export those files yourself.
+ If you prefer the latter and want use given 
+\family typewriter
+*.pdf
+\family default
+ and 
+\family typewriter
+*.pdf_tex
+\family default
+ files instead, simply input the respective 
+\family typewriter
+*.pdf_tex
+\family default
+ file via the 
+\family sans
+Child Documents
+\family default
+ dialog (see sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Child-Documents"
+
+\end_inset
+
+) rather than using this template.
+\change_unchanged
+
+\begin_inset Newline newline
+\end_inset
+
+
+\change_deleted -712698321 1503822044
+One
+\change_inserted -712698321 1503823315
+You
+\change_unchanged
+ can use \SpecialChar TeX
+ code commands 
+\change_deleted -712698321 1503822051
+like
+\change_inserted -712698321 1503823315
+such as
+\change_unchanged
+ 
 \series bold
 
 \backslash
@@ -39719,7 +39843,13 @@ small
 in the text of the SVG.
  The size of the font will be taken from the settings of the \SpecialChar LyX
  document.
- Refer to 
+ 
+\change_inserted -712698321 1503823315
+Please r
+\change_deleted -712698321 1503822079
+R
+\change_unchanged
+efer to 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Inkscape"
@@ -39740,6 +39870,8 @@ Insert\SpecialChar menuseparator
 Preview
 \family default
 ) gives a better result.
+\change_deleted -712698321 1503823118
+
 \begin_inset Newline newline
 \end_inset
 
@@ -39748,6 +39880,8 @@ The template works very similarly to Xfig support.
  will extract the text in the image into a separate \SpecialChar TeX
  file and creates a
  PDF file for the rest.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
