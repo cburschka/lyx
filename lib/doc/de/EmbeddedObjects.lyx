@@ -39755,22 +39755,22 @@ literal "false"
 
 
 \series default
-, das aus einer gegebenen SVG-Datei spezielle PDF- und \SpecialChar LaTeX
--Dateien generiert
- (in Inkscape selbst ist dieses Feature über die Option 
+, das aus einer gegebenen SVG-Datei spezielle PDF- oder EPS- und \SpecialChar LaTeX
+-Dateien
+ generiert (in Inkscape selbst ist dieses Feature über die Option 
 \family sans
 Text in PDF weglassen und LaTeX Datei erstellen
 \family default
- verfügbar, wenn man eine Grafik als PDF speichert).
+ verfügbar, wenn man eine Grafik als PDF oder EPS speichert).
  Der Vorteil von solchen Dateien ist es, dass man einen einheitlichen Textstil
  im ganzen Dokument erzeugen kann.
 \begin_inset Newline newline
 \end_inset
 
 Die Vorlage liest SVG-Dateien ein und verwendet ein Konverterprogramm, um
- daraus (jeweils aktuelle) PDF- und \SpecialChar LaTeX
--Dateien zu erzeugen (das Konverterprogramm
- verwendet hierfür Inkscape).
+ daraus (jeweils aktuelle) PDF- oder EPS- sowie \SpecialChar LaTeX
+-Dateien zu erzeugen (das
+ Konverterprogramm verwendet hierfür Inkscape).
  Somit müssen Sie diese Dateien nicht selbst exportieren und pflegen.
  Wenn Sie dennoch lieber bereits vorhandene 
 \family typewriter
@@ -39780,9 +39780,22 @@ Die Vorlage liest SVG-Dateien ein und verwendet ein Konverterprogramm, um
 \family typewriter
 *.pdf_tex
 \family default
+-Dateien bzw.
+ 
+\family typewriter
+*.eps-
+\family default
+ und 
+\family typewriter
+*.eps_tex
+\family default
 -Dateien verwenden möchten (oder müssen), binden Sie die entsprechende 
 \family typewriter
 *.pdf_tex
+\family default
+- oder 
+\family typewriter
+*.eps_tex
 \family default
 -Datei einfach über 
 \begin_inset Info
@@ -39790,7 +39803,7 @@ type  "menu"
 arg   "dialog-show-new-inset include"
 \end_inset
 
- (mittel 
+ (mittels 
 \family typewriter
 Input
 \family default
@@ -39838,18 +39851,6 @@ literal "false"
 \end_inset
 
  für mehr Informationen und Beispiele.
-\begin_inset Newline newline
-\end_inset
-
-Beachten Sie, dass die ausgegebene Grafik die umgebende Schrift übernimmt,
- dies in der Vorschau in \SpecialChar LyX
- aber nicht angezeigt wird.
- Packt man die externe Einfügung in eine Vorschau-Einfügung (Menü 
-\family sans
-Einfügen\SpecialChar menuseparator
-Vorschau
-\family default
-), erhält man ein besseres Ergebnis.
 \end_layout
 
 \begin_layout Description
