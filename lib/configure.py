@@ -970,10 +970,16 @@ def checkConverterEntries():
 \converter fig        ppm        "fig2dev -L ppm $$i $$o"	""
 \converter fig        svg        "fig2dev -L svg $$i $$o"	""
 \converter fig        png        "fig2dev -L png $$i $$o"	""
-\converter svg        pdftex     "python -tt $$s/scripts/svg2pdftex.py $$i $$o" ""
-\converter svg        pstex      "python -tt $$s/scripts/svg2pstex.py $$i $$o" ""
 \converter fig        pdftex     "python -tt $$s/scripts/fig2pdftex.py $$i $$o"	""
 \converter fig        pstex      "python -tt $$s/scripts/fig2pstex.py $$i $$o"	""''')
+    #
+    checkProg('a SVG -> PDFTeX converter', [inkscape_name],
+        rc_entry = [ r'\converter svg        pdftex     "python -tt $$s/scripts/svg2pdftex.py %% $$i $$o" ""'],
+        path = [inkscape_path])
+    #
+    checkProg('a SVG -> PSTeX converter', [inkscape_name],
+        rc_entry = [ r'\converter svg        pstex     "python -tt $$s/scripts/svg2pstex.py %% $$i $$o" ""'],
+        path = [inkscape_path])
     #
     checkProg('a TIFF -> PS converter', ['tiff2ps $$i > $$o'],
         rc_entry = [ r'\converter tiff       eps        "%%"	""'])

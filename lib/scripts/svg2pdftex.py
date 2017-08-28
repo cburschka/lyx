@@ -7,23 +7,24 @@
 
 # author Daniel Gloger
 # author Martin Vermeer
+# author Jürgen Spitzmüller
 
 # Full author contact details are available in file CREDITS
 
-# This script converts an SVG image to something that pdflatex can process
-# into high quality PDF.
+# This script converts an SVG image to two files that can be processed
+# with pdflatex into high quality PDF. It requires Inkscape.
 
 # Usage:
-#   python svg2pdftex.py ${base}.svg ${base}.pdft
+#   python svg2pdftex.py [inkscape_command] inputfile.svg outputfile.pdf_tex
 # This command generates
-#   ${base}.pdf  the converted pdf file
-#   ${base}.pdft a tex file that can be included in your latex document
-#       using '\input{${base}.pdft}'
+#   1. outputfile.pdf     -- the converted PDF file (text from SVG stripped)
+#   2. outputfile.pdf_tex -- a TeX file that can be included in your
+#                             LaTeX document using '\input{outputfile.pdf_text}'
 #
 # Note:
 #   Do not use this command as
-#     python svg2pdftex.py file.svg file.pdf
-#   the real pdf file will be overwritten by a tex file named file.pdf.
+#     python svg2pdftex.py [inkscape_command] inputfile.svg outputfile.pdf
+#   the real PDF file would be overwritten by a TeX file named outputfile.pdf.
 #
 
 import os, sys, re
@@ -36,23 +37,35 @@ def runCommand(cmd):
         print "Command '%s' fails." % cmd
         sys.exit(1)
 
-# We expect two args, the names of the input and output files.
-if len(sys.argv) != 3:
+InkscapeCmd = "inkscape"
+InputFile = ""
+OutputFile = ""
+
+# We expect two or three args: the names of the input and output files
+# and optionally the inkscape command (with path if needed).
+args = len(sys.argv)
+if args == 3:
+    # Two args: input and output file only
+    InputFile, OutputFile = sys.argv[1:]
+elif args == 4:
+    # Three args: first arg is inkscape command
+    InkscapeCmd, InputFile, OutputFile = sys.argv[1:]
+else:
+    # Invalid number of args. Exit with error.
     sys.exit(1)
 
-input, output = sys.argv[1:]
-
 # Fail silently if the file doesn't exist
-if not os.path.isfile(input):
+if not os.path.isfile(InputFile):
     sys.exit(0)
 
-# Strip the extension from ${output}
-outbase = os.path.splitext(output)[0]
+# Strip the extension from ${OutputFile}
+OutBase = os.path.splitext(OutputFile)[0]
 
-# Inkscape 0.48 can output the image as a PDF file ${base}.pdf and place the text 
-# in a LaTeX file ${base}.pdf_tex, which is renamed to ${output}, for typesetting 
-# by pdflatex itself. 
-runCommand('inkscape --file=%s --export-pdf=%s.pdf --export-latex' % (input, outbase))
+# Inkscape (as of 0.48) can output SVG images as a PDF file without text, ${OutBase}.pdf,
+# while outsourcing the text to a LaTeX file ${OutBase}.pdf_tex which includes and overlays
+# the PDF image and can be \input to LaTeX files. We rename the latter file to ${OutputFile}
+# (although this is probably the name it already has).
+runCommand('%s --file=%s --export-pdf=%s.pdf --export-latex' % (InkscapeCmd, InputFile, OutBase))
 
-os.rename('%s.pdf_tex' % outbase, output)
+os.rename('%s.pdf_tex' % OutBase, OutputFile)
 
