@@ -19,6 +19,7 @@
 
 #include "support/convert.h"
 #include "support/lassert.h"
+#include "support/lyxlib.h"
 
 #define DISABLE_PMPROF
 #include "support/pmprof.h"
@@ -199,7 +200,7 @@ int GuiFontMetrics::width(docstring const & s) const
 		tl.beginLayout();
 		QTextLine line = tl.createLine();
 		tl.endLayout();
-		w = int(line.naturalTextWidth());
+		w = iround(line.horizontalAdvance());
 	}
 	strwidth_cache_.insert(s, w, s.size() * sizeof(char_type));
 	return w;
@@ -386,7 +387,8 @@ GuiFontMetrics::breakAt_helper(docstring const & s, int const x,
 	line.setLineWidth(x);
 	tl.createLine();
 	tl.endLayout();
-	if ((force && line.textLength() == offset) || int(line.naturalTextWidth()) > x)
+	int const line_wid = iround(line.horizontalAdvance());
+	if ((force && line.textLength() == offset) || line_wid > x)
 		return {-1, -1};
 	/* Since QString is UTF-16 and docstring is UCS-4, the offsets may
 	 * not be the same when there are high-plan unicode characters
@@ -411,8 +413,7 @@ GuiFontMetrics::breakAt_helper(docstring const & s, int const x,
 		--len;
 	LASSERT(len > 0 || qlen == 0, /**/);
 #endif
-	// The -1 is here to account for the leading zerow_nbsp.
-	return {len, int(line.naturalTextWidth())};
+	return {len, line_wid};
 }
 
 
