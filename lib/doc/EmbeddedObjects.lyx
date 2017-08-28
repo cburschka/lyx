@@ -233,11 +233,12 @@ graphicboxes
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -39690,7 +39691,11 @@ literal "false"
 
 
 \series default
- which creates a special PDF and \SpecialChar LaTeX
+ which creates a special PDF 
+\change_inserted -712698321 1503901778
+or EPS 
+\change_unchanged
+and \SpecialChar LaTeX
  file from a given SVG file (in 
 \noun on
 Inkscape
@@ -39699,14 +39704,23 @@ Inkscape
 \family sans
 Omit text in PDF and create LaTeX file
 \family default
- when saving a drawing as PDF).
+ when saving a drawing as PDF
+\change_inserted -712698321 1503901833
+ or EPS
+\change_unchanged
+).
  The benefit of such files is a uniform text style throughout the whole
  document.
 \begin_inset Newline newline
 \end_inset
 
 The external template reads SVG files and uses a converter program to generate
- the respective PDF and \SpecialChar LaTeX
+ the respective PDF
+\change_inserted -712698321 1503901877
+\SpecialChar breakableslash
+EPS
+\change_unchanged
+ and \SpecialChar LaTeX
  files (via
 \noun on
  
@@ -39723,12 +39737,38 @@ Inkscape
  and 
 \family typewriter
 *.pdf_tex
+\change_inserted -712698321 1503901907
+
 \family default
- files instead, simply input the respective 
+ or
+\change_unchanged
+ 
+\change_inserted -712698321 1503901923
+
+\family typewriter
+*.eps
+\family default
+ and 
+\family typewriter
+*.eps_tex
+\family default
+ 
+\change_unchanged
+files instead, simply input the respective 
 \family typewriter
 *.pdf_tex
+\change_deleted -712698321 1503901941
+
 \family default
- file via the 
+ 
+\change_inserted -712698321 1503901945
+ or 
+\family typewriter
+*.eps_tex
+\family default
+ 
+\change_unchanged
+file via the 
 \family sans
 Child Documents
 \family default
@@ -39776,6 +39816,8 @@ literal "false"
 \end_inset
 
  for more information and examples.
+\change_deleted -712698321 1503902062
+
 \begin_inset Newline newline
 \end_inset
 
@@ -39788,6 +39830,8 @@ Insert\SpecialChar menuseparator
 Preview
 \family default
 ) gives a better result.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
