@@ -77,7 +77,7 @@ What's new
 
 - Fix crash when closing master document with dirty child while Document
   Settings dialog is open (bug 9979).
-  
+
 - Fix random crash when dissolving inset (bug 10667).
 
 - Fix potential crash when cursor enters an inset (bug 10691).
@@ -100,6 +100,8 @@ What's new
 
 - Fix hole in selection for some zoom and justification values (bug
   8883).
+
+- Fix some rare cases of bad on-screen line breaking (bug #10700).
 
 - Fix cursor state after double/triple click in mathed (bug #10686).
 

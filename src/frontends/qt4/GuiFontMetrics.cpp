@@ -23,6 +23,7 @@
 
 #include "support/convert.h"
 #include "support/lassert.h"
+#include "support/lyxlib.h"
 
 #include <QByteArray>
 
@@ -198,7 +199,11 @@ int GuiFontMetrics::width(docstring const & s) const
 		tl.beginLayout();
 		QTextLine line = tl.createLine();
 		tl.endLayout();
-		w = int(line.naturalTextWidth());
+#if QT_VERSION >= 0x040700
+		w = iround(line.horizontalAdvance());
+#else
+		w = iround(line.naturalTextWidth());
+#endif
 	}
 	strwidth_cache_.insert(s, w, s.size() * sizeof(char_type));
 	return w;
@@ -363,7 +368,12 @@ GuiFontMetrics::breakAt_helper(docstring const & s, int const x,
 	line.setLineWidth(x);
 	tl.createLine();
 	tl.endLayout();
-	if ((force && line.textLength() == offset) || int(line.naturalTextWidth()) > x)
+#if QT_VERSION >= 0x040700
+	int const line_wid = iround(line.horizontalAdvance());
+#else
+	int const line_wid = iround(line.naturalTextWidth());
+#endif
+	if ((force && line.textLength() == offset) || line_wid > x)
 		return make_pair(-1, -1);
 	/* Since QString is UTF-16 and docstring is UCS-4, the offsets may
 	 * not be the same when there are high-plan unicode characters
@@ -388,8 +398,7 @@ GuiFontMetrics::breakAt_helper(docstring const & s, int const x,
 		--len;
 	LASSERT(len > 0 || qlen == 0, /**/);
 #endif
-	// The -1 is here to account for the leading zerow_nbsp.
-	return make_pair(len, int(line.naturalTextWidth()));
+	return make_pair(len, line_wid);
 }
 
 
