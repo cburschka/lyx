@@ -963,6 +963,13 @@ unicodesymbols
 
 \begin_layout Section
 Das lokale Konfigurationsverzeichnis
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Das-lokale-Konfigurationsverz"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -4354,68 +4361,242 @@ In diesem Kapitel wird beschrieben, wie Sie beim Installieren neuer Layout-
 frischung, wie man neue Dokumentenklassen
  für \SpecialChar LaTeX
  korrekt installiert.
- Zunächst ein paar Definitionen:
 \end_layout
 
 \begin_layout Standard
-Eine 
-\emph on
-Dokumentenklasse
-\emph default
- ist eine \SpecialChar LaTeX
--Datei (normalerweise mit der Endung 
-\family typewriter
-.cls
-\family default
- oder 
-\family typewriter
-.sty
-\family default
-), die das Format einer speziellen Art von Dokument beschreibt, etwa Artikel,
- Brief usw., und auch alle dazu notwendigen Befehle definiert.
+Zunächst möchten wir noch einmal ein paar Worte darüber verlieren, wie \SpecialChar LyX
+
+ und \SpecialChar LaTeX
+ miteinander verbunden sind, da dies für das Folgende wichtig ist.
+ Wichtig zu wissen ist vor allem, dass \SpecialChar LyX
+ selbst im Grunde sehr wenig Konkretes
+ über \SpecialChar LaTeX
+ weiß.
+ Tatsächlich ist \SpecialChar LaTeX
+ aus der Sicht von \SpecialChar LyX
+ nur eines mehrerer 
+\begin_inset Quotes gld
+\end_inset
+
+Backend-Formate
+\begin_inset Quotes grd
+\end_inset
+
+ für die es eine Ausgabe erzeugen kann.
+ Andere solche Formate sind DocBook, einfacher Text und XHTML.
+ Nun ist \SpecialChar LaTeX
+ aber natürlich ein besonders wichtiges Format.
+ Der Punkt jedoch ist, dass sehr wenig der Informationen, die \SpecialChar LyX
+ über \SpecialChar LaTeX
+ hat,
+ im Programm selbst festgeschrieben sind.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Manche Befehle sind so komplex, dass sie in \SpecialChar LyX
+ festgeschrieben sind.
+ Aber die Entwickler betrachten dies allgemein schlechte Lösung.
+\end_layout
+
+\end_inset
+
+ Vielmehr bezieht es diese Informationen, selbst im Fall der Standardklassen
+ wie 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+article.cls
+\end_layout
+
+\end_inset
+
+, aus so genannten 
+\begin_inset Quotes gld
+\end_inset
+
+Layout-Dateien
+\begin_inset Quotes grd
+\end_inset
+
+.
+ Genauso wenig weiß \SpecialChar LyX
+ über DocBook oder XHTML.
+ Was es weiß, bezieht es aus Layout-Dateien.
 \end_layout
 
 \begin_layout Standard
-Eine 
-\emph on
-Layout-Datei
-\emph default
- ist eine \SpecialChar LyX
--Datei, die einer \SpecialChar LaTeX
--Dokumentenklasse ent\SpecialChar softhyphen
-spricht und \SpecialChar LyX
- mitteilt,
- wie die diversen Formatelemente am Bildschirm dar\SpecialChar softhyphen
-ge\SpecialChar softhyphen
-stellt werden sollen,
- damit der Eindruck möglichst gut dem späteren Druckbild entspricht.
- Genauer gesagt beschreibt eine Layoutdatei eine 
-\emph on
-Textklasse
-\emph default
-, das interne Konstrukt, welches \SpecialChar LyX
- verwendet, um den Text am Bildschirm darzustel
-len.
+Eine Layout-Datei können Sie sich als eine Art Übersetzungshandbuch vorstellen,
+ in dem für eine bestimmte Dokumentklasse festgelegt wird, wie \SpecialChar LyX
+-Konstrukte
+ – Absätze mit den entsprechenden Stilen, bestimmte Einfügungen usw.
+ – und \SpecialChar LaTeX
+- DocBook- oder XHTML-Konstrukte korrespondieren.
+ Fast alles, was \SpecialChar LyX
+ beispielsweise über die Standard-Artikelklasse von \SpecialChar LaTeX
+ (
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+article.cls
+\end_layout
+
+\end_inset
+
+) weiß, ist in der Layout-Datei 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+article.layout
+\end_layout
+
+\end_inset
+
+ und in verschiedenen anderen Dateien, die diese einbindet, festgeschrieben.
+ Daher sollten Sie, wenn Sie vorhaben, selbst eine Layout-Datei zu schreiben,
+ zuallererst die vorhandenen Layout-Dateien studieren.
+ Am Besten beginnen Sie mit der Datei 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+stdsections.inc
+\end_layout
+
+\end_inset
+
+, die in 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+article.layout
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+book.layout
+\end_layout
+
+\end_inset
+
+ und vielen anderen Layout-Dateien für Dokumentklassen eingebunden wird.
+ Dort werden die Abschnittsüberschriften und ähnliches definiert: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+stdsections.inc
+\end_layout
+
+\end_inset
+
+ informiert also \SpecialChar LyX
+ darüber, wie Absätze, die als Abschnitt, Unterabschnitt
+ usw.
+ markiert sind, in \SpecialChar LaTeX
+, DocBook und XHTML ausgegeben werden sollen.
+ Die Datei 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+article.layout
+\end_layout
+
+\end_inset
+
+ bindet im Grunde einfach nur verschiedene solcher 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+std*.inc
+\end_layout
+
+\end_inset
+
+-Dateien ein.
 \end_layout
 
 \begin_layout Standard
+Layout-Dateien definieren aber nicht nur die \SpecialChar LyX
+-\SpecialChar LaTeX
+-Korrespondenz, sondern sie
+ legen auch fest, wie die \SpecialChar LyX
+ in \SpecialChar LyX
+ selbst (auf dem Bildschirm) dargestellt werden.
+ Die Tatsache, dass Layout-Dateien diese beiden Aufgaben gleichzeitig haben,
+ führt häufig zu Verwirrung, denn die Aufgaben sind strikt getrennt.
+ Wenn Sie \SpecialChar LyX
+ sage, wie ein bestimmtes Konstrukt in \SpecialChar LaTeX
+ dargestellt werden soll,
+ haben Sie dem Programm noch nicht gesagt, wie das Konstrukt in \SpecialChar LyX
+ dargestellt
+ werden soll.
+ Umgekehrt weiß \SpecialChar LyX
+, wenn Sie festlegen, wie ein Konstrukt in \SpecialChar LyX
+ darzustellen
+ ist, damit nicht, wie es in \SpecialChar LaTeX
+ übersetzt werden muss (und erst recht nicht
+ \SpecialChar LaTeX
+, wie es darzustellen ist).
+ Das heißt, Sie müssen, wenn Sie ein neuen \SpecialChar LyX
+-Konstrukt definieren, immer
+ zwei verschiedene und getrennte Dinge tun: (1.) \SpecialChar LyX
+ instruieren, wie dieses
+ in \SpecialChar LaTeX
+ übersetzt werden soll und (2.) \SpecialChar LyX
+ instruieren, wie es das Konstrukt darstellen
+ soll.
+\end_layout
 
+\begin_layout Standard
+Analoges gilt natürlich für die anderen 
+\begin_inset Quotes gld
+\end_inset
+
+Backend-Formate
+\begin_inset Quotes grd
+\end_inset
+
+, die \SpecialChar LyX
+ unterstützt.
+ Allerdings ist XHTML in mancher Hinsicht eine Ausnahme, denn in diesem
+ Fall 
 \emph on
-Layout
+ist
 \emph default
- und 
-\emph on
-Textklasse
-\emph default
- sind somit in gewisser Weise äquivalent, aber es ist besser, die Datei
- als Layout zu bezeichnen und die interne Realisation im Speicher von \SpecialChar LyX
- als
- Textklasse.
- Eine Vorlage ist einfach ein \SpecialChar LyX
--Dokument, welches bereits einige vordefinierte
- Einträge für eine bestimmte Textklasse enthält.
- Derartige Vorlagen sind beispielsweise für Briefe oder Artikel für Zeitschrifte
-n sehr hilfreich.
+ \SpecialChar LyX
+ bis zu einem gewissen Grad in der Lage, aus den Informationen über die
+ Darstellung in \SpecialChar LyX
+ Informationen über die Ausgabe in einem Browser (über CSS)
+ abzuleiten.
+ Aber auch in diesem Fall bleibt die prinzipielle Trennung in Kraft und
+ sollte berücksichtigt werden.
+ Weitere Ausführungen dazu finden Sie in Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Tags-for-XHTML"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -4428,21 +4609,16 @@ Bei manchen \SpecialChar TeX
 -Installationen fehlt möglicherweise das eine oder andere Paket,
  das Sie gerne mit \SpecialChar LyX
  verwenden würden.
- Zum Beispiel wollen Sie Foil\SpecialChar TeX
- verwenden, ein Paket zur Erstellung von Dias
- und Folien für Overheadprojektoren.
+ Zum Beispiel wollen Sie vielleicht Foil\SpecialChar TeX
+ verwenden, ein Paket zur Erstellung
+ von Dias und Folien für Overheadprojektoren.
  Moderne \SpecialChar LaTeX
 -Distributionen wie \SpecialChar TeX
 Live (2008 oder neuer) oder MiK\SpecialChar TeX
  besitzen ein
- grafisches Programm um solche Pakete zu installieren.
- Z.
-\begin_inset space \thinspace{}
-\end_inset
-
-B.
- bei MiK\SpecialChar TeX
- starten Sie das Programm 
+ grafisches Programm, um solche Pakete zu installieren.
+ Bei MiK\SpecialChar TeX
+ etwa starten Sie das Programm 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4454,9 +4630,9 @@ Manager
 \begin_inset Quotes grd
 \end_inset
 
- um eine Liste mit den verfügbaren Paketen zu bekommen.
- Um eines davon zu installieren, rechts-klicken Sie oder benutzen den entspreche
-nden Werkzeugleistenknopf.
+, um eine Liste mit den verfügbaren Paketen zu bekommen.
+ Um eines davon zu installieren, rechtsklicken Sie oder benutzen den entsprechen
+den Werkzeugleistenknopf.
 \end_layout
 
 \begin_layout Standard
@@ -4500,24 +4676,22 @@ status collapsed
 
  enthält (was bei Foil\SpecialChar TeX
  der Fall ist), dann öffnen sie eine Kommandozeile
- wechseln in das Verzeichnis der Datei und führen den Befehl
-\begin_inset Newline newline
-\end_inset
+ wechseln in das Verzeichnis der Datei und führen den Befehl 
+\begin_inset Flex Code
+status collapsed
 
-
-\family sans
+\begin_layout Plain Layout
 latex foiltex.ins
-\family default
+\end_layout
 
-\begin_inset Newline newline
 \end_inset
 
-aus.
- Sie haben damit dass Paket entpackt und haben alle Dateien um es zu installiere
-n.
+ aus.
+ Sie haben damit dass Paket entpackt und haben alle Dateien, um es zu installier
+en.
  Die meisten \SpecialChar LaTeX
--Pakete sind nicht gepackt und man kann direkt mit der Installation
- beginnen:
+-Pakete sind nicht gepackt und man kann direkt mit dem nächsten
+ Schritt weitermachen.
 \end_layout
 
 \begin_layout Enumerate
@@ -4527,10 +4701,17 @@ Nun müssen Sie entscheiden, ob das Paket für alle Nutzer oder nur für Sie
 
 \begin_deeper
 \begin_layout Enumerate
-Bei *nix Systemen (Linux, OSX, etc.), wenn Sie das Paket für alle Nutzer
- installieren möchten, installieren Sie es in den lokalen \SpecialChar TeX
- Ordner; anderenfalls
- installieren Sie es in den eigenen 
+Bei *nix Systemen (Linux, OSX, etc.) installieren Sie, wenn Sie das Paket
+ für alle Nutzer installieren möchten, dieses in den 
+\begin_inset Quotes gld
+\end_inset
+
+lokalen
+\begin_inset Quotes grd
+\end_inset
+
+ \SpecialChar TeX
+ Ordner; anderenfalls installieren Sie es in den eigenen 
 \begin_inset Quotes gld
 \end_inset
 
@@ -4589,12 +4770,29 @@ TEXMFLOCAL
 \end_inset
 
  definiert; es ist üblicherweise der Pfad 
-\family sans
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
 /usr/local/share/texmf/
-\family default
- oder /usr/local/texlive/XXXX, wobei XXXX das Jahr der installierten \SpecialChar TeX
-Live-Distri
-bution ist.
+\end_layout
+
+\end_inset
+
+ oder 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+/usr/local/texlive/XXXX
+\end_layout
+
+\end_inset
+
+, wobei XXXX das Jahr der installierten \SpecialChar TeX
+Live-Distribution ist.
  Der Ort des Benutzer-\SpecialChar TeX
 -Ordners ist in der Variable 
 \begin_inset Flex Code
@@ -4607,18 +4805,32 @@ TEXMFHOME
 \end_inset
 
  definiert und ist üblicherweise der Pfad 
-\family sans
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
 $HOME/texmf/
-\family default
+\end_layout
+
+\end_inset
+
  oder 
-\family sans
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
 $HOME/.texliveXXXX
-\family default
+\end_layout
+
+\end_inset
+
 .
  (Wenn diese Variablen nicht vordefiniert sind, müssen Sie diese selbst
- definieren.) Sie brauchen wahrscheinlich Root-Rechte um in den lokalen \SpecialChar TeX
--Ordner
- zu schreiben, beim Benutzer-\SpecialChar TeX
+ definieren.) Sie brauchen wahrscheinlich Administrator-Rechte um in den
+ lokalen \SpecialChar TeX
+-Ordner zu schreiben, beim Benutzer-\SpecialChar TeX
 -Ordner ist die nicht nötig.
 \begin_inset Newline newline
 \end_inset
@@ -4632,19 +4844,18 @@ Allgemein empfiehlt es sich, Pakete in den Benutzer-\SpecialChar TeX
 \end_layout
 
 \begin_layout Enumerate
-Bei Windows, wenn Sie das Paket für alle Nutzer installieren möchten, gehen
- Sie in den Ordner, in dem \SpecialChar LaTeX
- installiert ist und wechseln dort in das Verzeichnis
- 
-\family sans
+Unter Windows gehen Sie, wenn Sie das Paket für alle Nutzer installieren
+ möchten, in den Ordner, in dem \SpecialChar LaTeX
+ installiert ist und wechseln dort in das
+ Verzeichnis 
+\family typewriter
 ~tex
 \backslash
 latex
 \family default
-.
- (Verwendet man MiK\SpecialChar TeX
+ (verwendet man MiK\SpecialChar TeX
 , wäre es standardmäßig der Ordner 
-\family sans
+\family typewriter
 ~:
 \backslash
 Programme
@@ -4655,25 +4866,23 @@ tex
 \backslash
 latex
 \family default
- .) Legen Sie dort einen neuen Ordner mit dem Namen 
-\begin_inset Quotes gld
-\end_inset
+).
+ Legen Sie dort einen neuen Ordner mit dem Namen 
+\begin_inset Flex Code
+status collapsed
 
+\begin_layout Plain Layout
 foiltex
-\begin_inset Quotes grd
+\end_layout
+
 \end_inset
 
- an und kopieren Sie alle Dateien das Pakets hinein.
+ an und kopieren Sie alle Dateien des Pakets hinein.
  Wenn das Paket nur für den aktuellen Benutzer verfügbar sein soll bzw.
  Sie keine Administrator-Rechte haben, tun Sie dasselbe, aber im lokalen
  \SpecialChar LaTeX
 -Ordner.
- Z.
-\begin_inset space \thinspace{}
-\end_inset
-
-B.
- bei MiK\SpecialChar TeX
+ Bei MiK\SpecialChar TeX
 
 \begin_inset space ~
 \end_inset
@@ -4772,12 +4981,12 @@ texhash
 
  aus.
  Wenn Sie das Paket für alle Nutzer installiert haben, brauchen sie dazu
- wahrscheinlich Root-Rechte.
+ wahrscheinlich Administrator-Rechte.
 \end_layout
 
 \begin_layout Enumerate
 Bei MiK\SpecialChar TeX
-, wenn Sie das Paket für alle Nutzer installiert haben, starten Sie
+ starten Sie, wenn Sie das Paket für alle Nutzer installiert haben,
  das Programm 
 \begin_inset Quotes gld
 \end_inset
@@ -4816,14 +5025,11 @@ Nun muss man \SpecialChar LyX
  noch mitteilen, dass es neue Pakete gibt.
  Verwenden Sie dazu in \SpecialChar LyX
  das Menü 
-\family sans
-Werkzeuge\SpecialChar menuseparator
-Neu
-\begin_inset space \space{}
+\begin_inset Info
+type  "menu"
+arg   "reconfigure"
 \end_inset
 
-konfigurieren
-\family default
  und starten \SpecialChar LyX
  danach neu.
 \end_layout
@@ -4835,11 +5041,7 @@ Nun ist das Paket installiert.
 status collapsed
 
 \begin_layout Plain Layout
-Slides
-\begin_inset space ~
-\end_inset
-
-(FoilTeX)
+FoilTeX
 \end_layout
 
 \end_inset
@@ -4850,7 +5052,15 @@ Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
 Dokumentklasse
 \family default
- verfügbar sein.
+ (unter 
+\begin_inset Quotes gld
+\end_inset
+
+Präsentationen
+\begin_inset Quotes grd
+\end_inset
+
+) verfügbar sein.
 \end_layout
 
 \begin_layout Standard
@@ -4861,15 +5071,7 @@ Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
 Dokumentklasse
 \family default
- gelistet ist, müssen Sie dafür selbst ein 
-\begin_inset Quotes gld
-\end_inset
-
-Layout
-\begin_inset Quotes grd
-\end_inset
-
- erstellen.
+ gelistet ist, müssen Sie dafür selbst eine Layout-Datei erstellen.
  Dies ist das Thema des nächsten Abschnitts.
 \end_layout
 
@@ -4878,66 +5080,62 @@ Layout-Dateitypen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This section describes the various sorts of \SpecialChar LyX
- files that contain layout informati
-on.
- These files describe various paragraph and character styles, determining
- how \SpecialChar LyX
- should display them and how they should be translated into \SpecialChar LaTeX
-, DocBook,
- XHTML, or whatever output format is being used.
- 
+Dieser Abschnitt beschreibt die verschiedenen Arten von \SpecialChar LyX
+-Dateien, die Layout-Inf
+ormationen enthalten können.
+ Dort werden verschiedene Absatz- und Zeichenstile definiert, es wird bestimmt,
+ wie \SpecialChar LyX
+diese darstellt und wie sie in \SpecialChar LaTeX
+, DocBook, XHTML oder sonstige Formate
+ exportiert werden sollen.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-We shall try to provide a thorough description of the process of writing
- layout files here.
- However, there are so many different types of documents supported even
- by just \SpecialChar LaTeX
- that we can't hope to cover every different possibility or problem
- you might encounter.
- The \SpecialChar LyX
- users' list is frequented by people with lots of experience with layout
- design who are willing to share what they've learned, so please feel free
- to ask questions there.
+Wir bieten Ihnen hier eine umfassende Dokumentation zum Verfassen von Layout-Dat
+eien.
+ Da es aber so viele verschiedene nur schon von \SpecialChar LaTeX
+ unterstütze Dokumenttypen
+ gibt, können wir nicht jedes Problem, vor dem Sie vielleicht stehen, behandeln.
+ Die \SpecialChar LyX
+-Benutzer-Mailingliste wird aber von vielen Leuten gelesen, die Erfahrung
+ mit dem Layout-Design haben und die Ihnen gerne helfen.
+ Zögern Sie also nicht, offene Fragen dort zu stellen.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-As you prepare to write a new layout, it is extremely helpful to look at
- the layouts distributed with \SpecialChar LyX
-.
- If you write a \SpecialChar LyX
- layout for a \SpecialChar LaTeX
- document class that might also be used by
- others, or write a module that might be useful to others, then you should
- consider posting your layout to the 
+Wenn Sie vor der Aufgabe stehen, eine neue Layout-Datei zu schreiben, ist
+ es zunächst einmal sehr hilfreich, die Layouts zu studieren, die \SpecialChar LyX
+ bereits
+ enthält.
+ Wenn Sie eine Layout-Datei für eine \SpecialChar LaTeX
+-Dokumentklasse geschrieben haben,
+ die auch von andern verwendet wird, sollten Sie überlegen, dieses Layout
+ auf der 
 \begin_inset CommandInset href
 LatexCommand href
-name "layout section on the LyX wiki"
+name "Seite ,Layouts` des LyX-Wiki"
 target "http://wiki.lyx.org/Layouts/Layouts"
 literal "false"
 
 \end_inset
 
- or even to the \SpecialChar LyX
- developers' list, so that it might be included in \SpecialChar LyX
- itself.
+ zu verlinken oder es vielleicht sogar an die \SpecialChar LyX
+-Entwicklerliste zu schicken,
+ damit es in \SpecialChar LyX
+ selbst aufgenommen wird.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
+Beachten Sie, dass \SpecialChar LyX
+ der 
+\emph on
 \lang english
-Note that \SpecialChar LyX
- is licensed under the General Public License, so any material
- that is contributed to \SpecialChar LyX
- must be similarly licensed.
+General Public License
+\emph default
+\lang ngerman
+ (GPL) unterliegt.
+ Ihr Beitrag müsste auch dieser Lizenz unterworfen werden.
 \end_layout
 
 \end_inset
@@ -4946,7 +5144,7 @@ Note that \SpecialChar LyX
 \end_layout
 
 \begin_layout Subsection
-Layout Module
+Layout-Module
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Layout-Module"
@@ -4957,190 +5155,164 @@ name "subsec:Layout-Module"
 \end_layout
 
 \begin_layout Standard
+Wir haben bislang immer von 
+\begin_inset Quotes gls
+\end_inset
 
-\lang english
-We have spoken to this point about `layout files'.
- But there are different sorts of files that contain layout information.
- Layout files, strictly so called, have the 
+Layout-Dateien
+\begin_inset Quotes grs
+\end_inset
+
+ gesprochen, tatsächlich gibt es aber unterschiedliche Arten von Dateien,
+ die Layout-Informationen enthalten.
+ Layout-Dateien im engeren Sinn haben die Endung 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .layout
 \end_layout
 
 \end_inset
 
- extension and provide \SpecialChar LyX
- with information about document classes.
- As of \SpecialChar LyX
- 1.6, however, layout information can also be contained in layout
- 
-\emph on
-modules
-\emph default
-, which have the 
+ und stellen \SpecialChar LyX
+ Information über Dokumentklassen zur Verfügung.
+ Seit \SpecialChar LyX
+ 1.6 gibt es jedoch auch so genannte Layout-Module, die zusätzliche
+ Layout-Informationen enthalten können.
+ Sie haben die Endung 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .module
 \end_layout
 
 \end_inset
 
- extension.
- Modules are to \SpecialChar LaTeX
- packages much as layouts are to \SpecialChar LaTeX
- classes, and some modules—such
- as the 
+.
+ Module verhalten sich, grob gesprochen, so zu \SpecialChar LaTeX
+-Paketen, wie sich Layout-Dateien
+ zu \SpecialChar LaTeX
+-Klassen verhalten, und manche Module – wie etwa das Modul 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 endnotes
 \end_layout
 
 \end_inset
 
- module—specifically provide support for one package.
- In a sense, layout modules are similar to included
+ – bieten spezifische Unterstützung für ein bestimmtes Paket.
+ In einiger Hinsicht sind Module ganz ähnlich wie die von Layout-Dateien
+ eingebundene, Dateien
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-These can have any extension, but by convention have the 
+Diese haben normalerweise die Endung 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .inc
 \end_layout
 
 \end_inset
 
- extension.
+.
 \end_layout
 
 \end_inset
 
- files—files like 
+ – bspw.
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 stdsections.inc
 \end_layout
 
 \end_inset
 
-—in that modules are not specific to a given document class but may be used
- with many different classes.
- The difference is that using an included file with 
+.
+ So sind sie nicht an eine bestimmte Dokumentklasse gebunden, sondern können
+ in verschiedenen Klassen genutzt werden.
+ Ein wichtiger Unterschied ist jedoch, dass die eingebundenen Dateien nur
+ genutzt werden können, wenn die Layout-Datei hierfür bearbeitet wird.
+ Module hingegen können einfach im Dialog 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show document"
+\end_inset
+
+ ausgewählt werden.
+\end_layout
+
+\begin_layout Standard
+Die Erstellung eines Moduls ist der einfachste Weg, um mit dem Verfassen
+ von Layouts zu beginnen, denn Module können sehr einfach sein und etwa
+ nur einen einzelnen Absatzstil oder eine benutzerdefinierte Einfügung definiere
+n.
+ Auf der anderen Seite können Module im Prinzip aber alles enthalten, was
+ auch Layout-Dateien enthalten.
+\end_layout
+
+\begin_layout Standard
+Nachdem Sie ein neues Modul geschrieben und dieses in den Ordner 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-article.cls
-\end_layout
-
-\end_inset
-
- requires editing that file.
- Modules, by contrast, are selected in the 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Document\SpecialChar menuseparator
-Settings
-\end_layout
-
-\end_inset
-
- dialog.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Building modules is the easiest way to get started with layout editing,
- since it can be as simple as adding a single new paragraph style or flex
- inset.
- But modules may, in principle, contain anything a layout file can contain.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-After creating a new module and copying it to the 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
 layouts/
 \end_layout
 
 \end_inset
 
- folder, you will need to reconfigure and then restart \SpecialChar LyX
- for the module to
- appear in the menu.
- However, changes you make to the module will be seen immediately, if you
- open 
-\begin_inset Flex Noun
+ in 
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Document\SpecialChar menuseparator
-Settings
+UserDir
 \end_layout
 
 \end_inset
 
-, highlight something, and then hit 
-\begin_inset Quotes eld
+ kopiert haben, müssen Sie \SpecialChar LyX
+ rekonfigurieren (
+\begin_inset Info
+type  "menu"
+arg   "reconfigure"
 \end_inset
 
-OK
-\begin_inset Quotes erd
+) und dann neu starten, damit das Modul in der Benutzeroberfläche zugänglich
+ wird.
+ Falls Sie existierende Module modifizieren, ist diese Prozedur nicht nötig:
+ Änderungen werden verfügbar, sobald Sie in 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show document"
 \end_inset
 
-.
+ irgend etwas ändern und OK drücken.
  
 \emph on
-It is strongly recommended that you save your work before doing this
+Wir raten aber dringend, dass Sie Ihre Dokumente sichern, bevor Sie dies
+ tun.
+ 
 \emph default
-.
- In fact, 
+Um sicherzugehen, 
 \emph on
-it is strongly recommended that you not attempt to edit modules while simultaneo
-usly working on actual documents
+sollten Sie lieber nicht an Dokumenten arbeiten, während Sie dort verwendete
+ Module edieren
 \emph default
 .
- Though of course the developers strive to keep \SpecialChar LyX
- stable in such situations,
- syntax errors and the like in your module file could cause strange behavior.
+ Obwohl die Entwickler natürlich alles tun, um \SpecialChar LyX
+ in solchen Situationen stabil
+ zu halten, können Fehler in Ihren Modulen manchmal ungewollte Effekte haben.
 \end_layout
 
 \begin_layout Subsubsection
@@ -5148,104 +5320,106 @@ Lokales Format
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Modules are to \SpecialChar LyX
- as packages are to \SpecialChar LaTeX
-.
- Sometimes, however, you find yourself wanting a specific inset or character
- style just for one document and writing a module that will also be available
- to other documents makes little sense.
- What you need is \SpecialChar LyX
-'s 
-\begin_inset Quotes eld
+Module sind für \SpecialChar LyX
+ das, was Pakete für \SpecialChar LaTeX
+ sind.
+ Manchmal braucht man jedoch möglicherweise eine spezifische Einfügung oder
+ einen Absatzstil nur für ein bestimmtes Dokument.
+ Hierfür extra ein Modul zu schreiben, ist mit Kanonen auf Spatzen geschossen.
+ Viel besser für solche Zwecke ist das, was wir 
+\begin_inset Quotes gld
 \end_inset
 
-Local Layout
-\begin_inset Quotes erd
+lokales Format
+\begin_inset Quotes grd
 \end_inset
 
-.
+ nennen.
 \end_layout
 
 \begin_layout Standard
+Sie finden dieses in 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show document"
+\end_inset
 
-\lang english
-You will find it under 
+ unter 
 \family sans
-Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Local Layout
+Lokales Format
 \family default
 .
- The large text box allows you to enter anything that you might enter in
- a layout file or module.
- You can think of a document's local layout, in fact, as a module that belongs
- just to it.
- So, in particular, you must enter a 
+ In das große Eingabefeld dort können Sie alles eingeben, was Sie in eine
+ Layout-Datei oder ein Modul eingeben können.
+ Das lokale Format eines Dokuments können Sie sich im Grunde als Modul vorstelle
+n, das nur dem entsprechenden Dokument zugänglich ist (alle Definitionen
+ werden direkt im Dokument gespeichert und können so auch leicht mit dem
+ Dokument weitergegeben werden).
+ Wie in Layout-Dateien und Modulen auch sollten Sie das 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Format
 \end_layout
 
 \end_inset
 
- tag.
- Any format is acceptable, but one would normally use the format current
- at the time.
- (In \SpecialChar LyX
- 2.2, the current layout format is 60.)
+ spezifizieren (s.
+\begin_inset space \thinspace{}
+\end_inset
+
+u.).
+ Dabei ist jedes (bekannte) Format möglich, sinnvollerweise sollten Sie
+ aber das jeweils aktuelle verwenden (das aktuelle Format in \SpecialChar LyX
+ 2.3 ist 63).
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-When you have entered something in the 
+Sobald Sie etwas in das Eingabefeld in 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Local Layout
+Lokales Format
 \end_layout
 
 \end_inset
 
- pane, \SpecialChar LyX
- will enable the 
-\begin_inset Quotes eld
+ eingegeben haben, aktiviert \SpecialChar LyX
+ den Knopf 
+\begin_inset Quotes gld
 \end_inset
 
-Validate
-\begin_inset Quotes erd
+Validieren
+\begin_inset Quotes grd
 \end_inset
 
- button at the bottom.
- Clicking this button will cause \SpecialChar LyX
- to determine whether what you have entered
- is valid layout information for the chosen format.
+ unter diesem Feld.
+ Wenn Sie darauf klicken (was Sie tun müssen, bevor Sie OK klicken können),
+ überprüft \SpecialChar LyX
+, ob das, was Sie eingegeben haben, im spezifizierten Format
+ auch korrekt ist.
  \SpecialChar LyX
- will report the result but, unfortunately, will not tell you what errors
- there might have been.
- These will be written to the terminal, however, if \SpecialChar LyX
- is started from a terminal.
- You will not be permitted to save your local layout until you have entered
- something valid.
+ meldet, ob dies der Fall ist, aber leider nicht, 
+\emph on
+was
+\emph default
+ gegebenenfalls falsch ist.
+ Wenn Sie \SpecialChar LyX
+ von einer Konsole gestartet haben, wird dies aber dort ausgegeben.
+ Solange es Fehler in der Definition gibt, können Sie Ihr lokales Format
+ nicht speichern.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The warnings at the end of the previous section apply here, too.
- Do not play with local layout while you are actually working, especially
- if you have not saved your document.
- That said, using local layout with a test document can be a very convenient
- way to try out layout ideas, or even to start developing a module.
+Die Warnungen, die wir am Ende des vorherigen Abschnitts ausgesprochen haben,
+ gelten auch hier: Spielen Sie nicht mit dem lokalen Format herum, während
+ Sie am Dokument arbeiten, besonders nicht, wenn Sie ungesicherte Änderungen
+ haben.
+ Wenn Sie dies beachten, kann das lokale Format (in einem Testdokument)
+ aber als sehr hilfreiche Methode dienen, um Layout-Ideen auszuprobieren
+ oder etwa Modulideen auszuprobieren.
 \end_layout
 
 \begin_layout Subsection
@@ -5263,104 +5437,116 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are two situations you are likely to encounter when wanting to support
- a new \SpecialChar LaTeX
- document class, involving style (
+Wenn Sie eine neue \SpecialChar LaTeX
+-Klasse unterstützen wollen, heißt das in der Regel,
+ dass Sie entweder einen \SpecialChar LaTeX
+-Stil (
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .sty
 \end_layout
 
 \end_inset
 
-) files and \SpecialChar LaTeX2e
- class (
+) oder eine \SpecialChar LaTeX2e
+-Klasse (
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .cls
 \end_layout
 
 \end_inset
 
-) .
- Supporting a style file is usually fairly easy.
- Supporting a new class file is a bit harder.
- We'll discuss the former in this section and the latter in the next.
- Similar remarks apply, of course, if you want to support a new DocBook
- DTD.
+) vorliegen haben, für den es ein \SpecialChar LyX
+-Layout zu schreiben gilt.
+ Ersteres ist normalerweise relativ einfach.
+ Letzteres ist zumeist etwas anspruchsvoller.
+ Wenn Sie eine neue DocBook-DTD unterstützen wollen, können Sie die Anmerkungen
+ teilweise übertragen.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The easier case is the one in which your new document class is provided
- as a style file that is to be used in conjunction with an already supported
- document class.
- For the sake of the example, we'll assume that the style file is called
- 
-\begin_inset Flex Noun
+Der einfachere Fall ist, wie gesagt, dass die Dokumentklasse, die Sie unterstütz
+en wollen, als Stildatei vorliegt, die ihrerseits auf eine bereits unterstützte
+ \SpecialChar LaTeX
+-Klasse aufsetzt.
+ Zur Illustration nehmen wir an, dass die Stildatei 
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 myclass.sty
 \end_layout
 
 \end_inset
 
- and that it is meant to be used with 
-\begin_inset Flex Noun
+ heißt und dass Sie zusammen mit der \SpecialChar LaTeX
+-Klasse 
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 report.cls
 \end_layout
 
 \end_inset
 
-, which is a standard class.
+, die eine Standardklasse ist, verwendet werden soll.
  
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Start by copying the existing class's layout file into your local directory:
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Of course, which directory is your local directory will vary by platform,
- and \SpecialChar LyX
- allows you to specify your local directory on startup, too, using
- the 
+Beginnen Sie damit, dass Sie eine Kopie der existierenden Layout-Datei 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
--userdir
+report.layout
 \end_layout
 
 \end_inset
 
- option.
+ in Ihrem lokalen Verzeichnis unter dem Namen der neuen Klasse, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+myclass.layout
+\end_layout
+
+\end_inset
+
+, ablegen:
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Mit dem lokalen Verzeichnis meinen wir das 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+UserDir
+\end_layout
+
+\end_inset
+
+, siehe oben Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Das-lokale-Konfigurationsverz"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -5373,45 +5559,37 @@ cp report.layout ~/.lyx/layouts/myclass.layout
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Then edit 
+Dann bearbeiten Sie 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 myclass.layout
 \end_layout
 
 \end_inset
 
- and change the line: 
+ und ändern die Zeile
 \end_layout
 
 \begin_layout LyX-Code
 
 \backslash
-DeclareLaTeXClass{report}
+DeclareLaTeXClass{Report (Standard Class)}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-to read
+in
 \end_layout
 
 \begin_layout LyX-Code
 
 \backslash
-DeclareLaTeXClass[report, myclass.sty]{report (myclass)}
+DeclareLaTeXClass[report, myclass.sty]{Report (My Class)}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Then add:
+Dann fügen Sie gegen Anfang der Datei ein:
 \end_layout
 
 \begin_layout LyX-Code
@@ -5429,112 +5607,90 @@ EndPreamble
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-near the top of the file.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Start \SpecialChar LyX
- and select 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Tools\SpecialChar menuseparator
-Reconfigure
-\end_layout
-
+Starten Sie \SpecialChar LyX
+ und wählen Sie 
+\begin_inset Info
+type  "menu"
+arg   "reconfigure"
 \end_inset
 
 .
- Then restart \SpecialChar LyX
- and try creating a new document.
- You should see "
+ Dann starten Sie \SpecialChar LyX
+ neu und beginnen ein neues Dokument.
+ Sie sollten nun 
+\begin_inset Quotes gld
+\end_inset
+
+
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-report (myclass)
+Report (My Class)
 \end_layout
 
 \end_inset
 
-" as a document class option in the 
-\begin_inset Flex Noun
-status collapsed
 
-\begin_layout Plain Layout
-
-\lang english
-Document\SpecialChar menuseparator
-Settings
-\end_layout
-
+\begin_inset Quotes grd
 \end_inset
 
- dialog.
- It is likely that some of the sectioning commands and such in your new
- class will work differently from how they worked in the base class—
+ in der Liste der auswählbaren Dokumentklassen in 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show document"
+\end_inset
+
+ finden.
+ Es ist wahrscheinlich, dass sich einige der Überschriftenbefehle und andere
+ Dinge in Ihrer neuen Klasse anders verhalten als in der Basisklasse (hier:
+ Report).
+ Sie können mit den vorhandenen Definitionen spielen, um dies anzupassen.
+ Die Layout-Informationen für Überschriften sind nicht in 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-report
+report.layout
 \end_layout
 
 \end_inset
 
- in this example—so you can fiddle around with the settings for the different
- sections if you wish.
- The layout information for sections is contained in 
+ selbst, sondern in 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 stdsections.inc
 \end_layout
 
 \end_inset
 
-, but you do not need to copy and change this file.
- Instead, you can simply add your changes to your layout file, after the
- line 
+ enthalten, aber Sie müssen deren Inhalt nicht kopieren, um die Definitionen
+ zu verändern.
+ Statt dessen können Sie Änderungen einfach in Ihrer neuen Layout-Datei
+ vornehmen, und zwar nach der Zeile 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Input stdclass.inc
 \end_layout
 
 \end_inset
 
-, which itself includes 
+, die ihrerseits 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 stdsections.inc
 \end_layout
 
 \end_inset
 
-.
- For example, you might add these lines:
+ einbindet.
+ Sie können zum Beispiel folgenden Zeilen einfügen:
 \end_layout
 
 \begin_layout LyX-Code
@@ -5558,55 +5714,52 @@ End
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-to change the font for chapter headings to sans-serif.
- This will override (or, in this case, add to) the existing declaration
- for the Chapter style.
+Dies ändert die Schrift, die in \SpecialChar LyX
+ zur Darstellung von Kapitelüberschriften
+ verwendet wird, in eine serifenlose.
+ Die bestehende Definition des Kapitelstils wird so überschrieben (bzw.
+ ergänzt).
  
 \end_layout
 
 \begin_layout Standard
+Ihr neues Paket stellt vielleicht auch neue Befehle oder Umgebungen bereit,
+ die nicht in der Basisklasse enthalten sind.
+ In diesem Fall können Sie diese zur Layout-Datei hinzufügen Abschnitt
+\begin_inset space ~
+\end_inset
 
-\lang english
-Your new package may also provide commands or environments not present in
- the base class.
- In this case, you will want to add these to the layout file.
- See 
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Das-Layout-Dateiformat"
 
 \end_inset
 
- for information on how to do so.
+ erläutert dies genauer.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If 
-\begin_inset Flex Noun
+Falls 
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 myclass.sty
 \end_layout
 
 \end_inset
 
- can be used with several different document classes, and even if it cannot,
- you might find it easiest just to write a module that you can load with
- the base class.
- The simplest possible such module would be:
+ mit verschiedenen Dokumentklassen verwendet werden kann, und vielleicht
+ auch falls nicht, ist es vielleicht noch einfacher, statt einer Layout-Datei
+ ein Modul zu schreiben.
+ Das einfachst mögliche Modul würde so aussehen:
 \end_layout
 
 \begin_layout LyX-Code
 #
 \backslash
-DeclareLyXModule{My Package} 
+DeclareLyXModule{My Class} 
 \end_layout
 
 \begin_layout LyX-Code
@@ -5614,7 +5767,7 @@ DeclareLyXModule{My Package}
 \end_layout
 
 \begin_layout LyX-Code
-#Support for mypkg.sty.
+#Support for myclass.sty.
 \end_layout
 
 \begin_layout LyX-Code
@@ -5626,7 +5779,7 @@ DeclareLyXModule{My Package}
 \end_layout
 
 \begin_layout LyX-Code
-Format 60
+Format 63
 \begin_inset Newline newline
 \end_inset
 
@@ -5648,18 +5801,20 @@ EndPreamble
 \end_layout
 
 \begin_layout Standard
+Komplexere Module modifizieren vielleicht die Definition vorhandener Konstrukte
+ oder ergänzen neue.
+ Auch dies wird in Abschnitt
+\begin_inset space ~
+\end_inset
 
-\lang english
-A more complex module might modify the behavior of some existing constructs
- or define some new ones.
- Again, see 
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Das-Layout-Dateiformat"
 
 \end_inset
 
- for discussion.
+ ausführlicher besprochen.
 \end_layout
 
 \begin_layout Subsection
@@ -5677,24 +5832,24 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are two possibilities here.
- One is that the class file is itself based upon an existing document class.
- For example, many thesis classes are based upon 
-\begin_inset Flex Noun
+Hier gibt es zwei Möglichkeiten.
+ Eine ist, dass die \SpecialChar LaTeX
+-Klasse selbst auf einer bestehenden anderen \SpecialChar LaTeX
+-Klasse
+ basiert.
+ Viele Klassen für Dissertationen basieren etwa auf 
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 book.cls
 \end_layout
 
 \end_inset
 
 .
- To see whether yours is, look for a line like
+ Um zu prüfen, ob das in Ihrem Fall so ist, schauen Sie in Ihrer Klasse,
+ ob es eine Zeile wie diese gibt:
 \end_layout
 
 \begin_layout LyX-Code
@@ -5704,69 +5859,58 @@ LoadClass{book}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-in the file.
- If so, then you may proceed largely as in the previous section, though
- the 
+Falls ja, können Sie im Großen und Ganzen wie im vorherigen Abschnitt beschriebe
+n vorgehen, mit Ausnahme der Zeile 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Declare\SpecialChar LaTeX
 Class
 \end_layout
 
 \end_inset
 
- line will be different.
- If your new class is 
+.
+ Falls Ihre neue Klasse 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 thesis
 \end_layout
 
 \end_inset
 
- and it is based upon 
+ heißt und auf 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 book
 \end_layout
 
 \end_inset
 
-, then the line should read:
+ basiert, sollte diese Zeile lauten:
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-And it will be easiest if you save the file to 
+Und am einfachsten ist es, wenn Sie die Layout-Datei 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 thesis.layout
 \end_layout
 
 \end_inset
 
-: \SpecialChar LyX
- assumes that the document class has the same name as the layout file.
+ nennen: \SpecialChar LyX
+ nimmt an, wenn nicht anders angegeben (siehe unten), dass die
+ Layout-Datei denselben Namen hat wie die \SpecialChar LaTeX
+-Klasse, die sie unterstützt.
  
 \end_layout
 
@@ -5778,28 +5922,18 @@ thesis.layout
 \begin_layout LyX-Code
 
 \backslash
-DeclareLaTeXClass[thesis,book]{thesis}
+DeclareLaTeXClass[thesis,book]{Thesis}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If, on the other hand, the new class is not based upon an existing class,
- you will probably have to 
-\begin_inset Quotes eld
-\end_inset
-
-roll your own
-\begin_inset Quotes erd
-\end_inset
-
- layout.
- We strongly suggest copying an existing layout file which uses a similar
- \SpecialChar LaTeX
- class and then modifying it, if you can do so.
- At least use an existing file as a starting point so you can find out what
- items you need to worry about.
- Again, the specifics are covered below.
+Die zweite Möglichkeit ist, dass die neue Klasse auf keiner anderen basiert.
+ Dann müssen Sie wohl ein komplett neues Layout erstellen.
+ Aber auch dann können Sie Bestandteile aus anderen Layouts übernehmen,
+ die sich (partiell) ähnlich verhalten und diese dann gegebenenfalls modifiziere
+n.
+ Zumindest sollten Sie eine existierende Layout-Datei als Startpunkt nehmen,
+ damit Sie sehen, um was Sie sich alles kümmern müssen.
+ Die Einzelheiten folgen unten.
 \end_layout
 
 \begin_layout Subsection
@@ -5814,37 +5948,32 @@ name "subsec:Vorlagen-erstellen"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Once you have written a layout file for a new document class, you might
- want to consider writing a 
+Sobald Sie eine Layout-Datei für eine neue Dokumentklasse geschrieben haben,
+ werden Sie vielleicht auch eine Vorlage dafür schreiben wollen.
+ Eine Vorlage ist eine Art Tutorium
 \emph on
-template
+ 
 \emph default
- for it, too.
- A template acts as a kind of tutorial for your layout, showing how it might
- be used, though containing dummy content.
- You can of course look at the various templates included with \SpecialChar LyX
- for ideas.
+für Ihr Layout, sie zeigt, wie diese verwendet wird (unter Verwendung von
+ Blindtext).
+ Schauen Sie sich einfach bestehende Vorlagen an, um zu sehen, wie man dies
+ gestalten kann.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Templates are created just like usual documents: using \SpecialChar LyX
-.
- The only difference is that usual documents contain all possible settings,
- including the font scheme and the paper size.
- Usually a user doesn't want a template to overwrite his preferred settings
- for such parameters.
- For that reason, the designer of a template should remove the corresponding
- commands like 
+Vorlagen sind im Grunde normale \SpecialChar LyX
+-Dokumente und werden auch so erstellt.
+ Der einzige Unterschied ist, dass normale \SpecialChar LyX
+-Dokumente alle möglichen Einstellung
+en enthalten, beispielsweise hinsichtlich Schriftarten und Seitengrößen.
+ Vorlagen enthalten diese oft nicht, um die Anwender nicht zu sehr einzuschränke
+n.
+ Daher werden bei Vorlagen die entsprechenden Befehle oft entfernt (wie
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 font_roman
@@ -5852,13 +5981,11 @@ font_roman
 
 \end_inset
 
- or 
+ oder 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 papersize
@@ -5866,128 +5993,97 @@ papersize
 
 \end_inset
 
- from the template \SpecialChar LyX
- file.
- This can be done with any simple text-editor, for example 
+).
+ Dies können Sie mit einem einfachen Text-Editor, etwa 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 vi
 \end_layout
 
 \end_inset
 
- or 
+ oder 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 notepad
 \end_layout
 
 \end_inset
 
-.
+, erledigen.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Put the edited template files you create in 
+Legen Sie die fertige Vorlage in 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 UserDir/templates/
 \end_layout
 
 \end_inset
 
-, copy the ones you use from the global template directory in 
+ ab, kopieren Sie ggf.
+ die, die Sie verwenden, von 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LyXDir/templates/
 \end_layout
 
 \end_inset
 
- to the same place, and redefine the template path in the 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Tools\SpecialChar menuseparator
-Preferences\SpecialChar menuseparator
-Paths
-\end_layout
-
+ in dasselbe Verzeichnis und ändern Sie den Pfad zu den Vorlagen in 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show prefs"
 \end_inset
 
- dialog.
+ unter 
+\family sans
+Pfade
+\family default
+.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Note, by the way, that there is a template which has a particular meaning:
-\begin_inset Newline newline
-\end_inset
-
-
+Beachten Sie übrigens, dass es eine Vorlage mit besonderer Funktion gibt:
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 defaults.lyx
 \end_layout
 
 \end_inset
 
 .
- This template is loaded every time you create a new document with 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-File\SpecialChar menuseparator
-New
-\end_layout
-
+ Diese wird jedes Mal geladen, wenn Sie mit 
+\begin_inset Info
+type  "menu"
+arg   "buffer-new"
 \end_inset
 
- in order to provide useful defaults.
- To create this template from inside \SpecialChar LyX
-, all you have to do is to open a document
- with the correct settings, and use the 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Save as Document Defaults
-\end_layout
-
+ ein neues Dokument erstellen, um sinnvolle Voreinstellungen vorzunehmen.
+ Um diese Vorlage zu verändern, müssen Sie nur ein Dokument mit den gewünschten
+ Einstellungen öffnen und in 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show document"
 \end_inset
 
- button.
+ den Knopf 
+\family sans
+Als Dokument-Voreinstellung speichern
+\family default
+ betätigen.
 \end_layout
 
 \begin_layout Subsection
@@ -6061,8 +6157,7 @@ python LyXDir/scripts/layout2layout.py myclass.old myclass.layout
 \begin_inset Newline newline
 \end_inset
 
-auf.
- Wobei 
+auf, wobei 
 \begin_inset Flex Code
 status collapsed
 
@@ -6083,101 +6178,87 @@ Beachten Sie, das manuelle Konvertierungen keine eingefügten Dateien mit
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Cite-Engine-Dateien"
 
 \end_inset
 
-Cite engine files
+Cite-Engine-Dateien
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-A specific form of layout files are the so-called 
+Cite-Engine-Dateien (Endung 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 *.citeengine
 \end_layout
 
 \end_inset
 
- files that are located in the 
+) stellen eine besondere Form von Layout-Dateien dar.
+ Sie finden diese im Unterordner 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 citeengines/
 \end_layout
 
 \end_inset
 
- sub-directory.
- Their purpose is to define the specifics of \SpecialChar LaTeX
- packages aimed at bibliography
- generation, such as 
+.
+ Sie dienen dazu, die Spezifika von \SpecialChar LaTeX
+-Paketen zu definieren, welche zur Erstellun
+g von Literaturverzeichnissen verwendet werden (etwa 
 \family sans
-natbib
+Natbib
 \family default
 ,
 \family sans
- jurabib
+ Jurabib
 \family default
- or 
+ oder 
 \family sans
-biblatex
+Biblatex
 \family default
-, but also the way how normal Bib\SpecialChar TeX
- citations (without additional packages)
- are handled in \SpecialChar LyX
- is defined in such a file.
+), legen aber auch fest, wie normale Bib\SpecialChar TeX
+-Literaturverweise (ohne zusätzliche
+ Pakete) in \SpecialChar LyX
+ dargestellt werden.
  
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-More specifically, it is defined which packages \SpecialChar LyX
- needs to load, which citation
- commands are available, how these are to be displayed in \SpecialChar LyX
- (in the workarea,
- the dialogs, the context menus) as well as in the XHTML and plain text
- output.
- Furthermore, the files specify available style variants (author-year, numerical
-, etc.) and their specifics.
- The cite engine files are also used to generate the options that are available
- in 
+Genauer wird dort spezifiziert, welche Pakete \SpecialChar LyX
+ laden muss, welche Befehle
+ für Literaturverweise verfügbar sind, wie diese in \SpecialChar LyX
+ dargestellt werden
+ (im Arbeitsbereich, den Dialogen oder im Kontextmenü) und wie sie in der
+ XHTML- und Textausgabe erscheinen.
+ Außerdem legen diese Dateien Stilvarianten (Autor-Jahr, Nummerisch etc.)
+ und deren Spezifika fest.
+ Die Cite-Engine-Dateien werden auch verwendet, um die Optionen zu bestimmten,
+ die in 
 \family sans
-Document\SpecialChar menuseparator
-Settings\SpecialChar ldots
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar ldots
 \SpecialChar menuseparator
-Bibliography\SpecialChar menuseparator
-Style engine
+Literaturverzeichnis
 \family default
-.
+ erscheinen.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Even though a cite engine file is essentially a normal layout file that
- could theoretically include any layout information, it usually primarily
- includes some specific parameters such as 
+Auch wenn eine Cite-Engine-Datei im Grunde eine normale Layout-Datei ist,
+ die theoretisch jede beliebige Layout-Information enthalten könnte, enthält
+ sie üblicherweise nur literaturspezifische Parameter wie 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 MaxCiteNames
 \end_layout
 
@@ -6188,8 +6269,6 @@ MaxCiteNames
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CiteFramework
 \end_layout
 
@@ -6200,27 +6279,27 @@ CiteFramework
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CiteEngine
 \end_layout
 
 \end_inset
 
- and 
+ und 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CiteFormat
 \end_layout
 
 \end_inset
 
- blocks.
- The syntax of the latter two is described in 
+-Blöcke.
+ Die Syntax der letzten beiden wird in Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Citation-engine-description"
@@ -6230,14 +6309,14 @@ noprefix "false"
 
 \end_inset
 
- and 
+ und 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Citation-format-description"
 
 \end_inset
 
-, as well as in the files themselves.
+ sowie auch in den Dateien selbst beschrieben.
 \end_layout
 
 \begin_layout Section
@@ -6421,12 +6500,16 @@ article
 \family typewriter
 article.cls
 \family default
- (Standard ist denselben Namen wie das Layout zu verwenden).
+ (Standard ist, denselben Namen wie das Layout zu verwenden).
  Die Zeichenkette 
 \begin_inset Quotes gld
 \end_inset
 
+
+\lang english
 Article (Standard Class)
+\lang ngerman
+
 \begin_inset Quotes grd
 \end_inset
 
@@ -6441,7 +6524,11 @@ Einstellungen
 \begin_inset Quotes gld
 \end_inset
 
+
+\lang english
 Articles
+\lang ngerman
+
 \begin_inset Quotes grd
 \end_inset
 
@@ -6450,7 +6537,7 @@ Articles
 Dokument\SpecialChar menuseparator
 Einstellungen
 \family default
- verwendet: Die Textklassen weden nach diesen Kategorien gruppiert (was
+ verwendet: Die Textklassen werden nach diesen Kategorien gruppiert (was
  üblicherweise Genres sind, typische Kategorien sind also 
 \begin_inset Quotes gld
 \end_inset
@@ -6517,21 +6604,28 @@ kategorisiert
 
 \begin_layout Standard
 Angenommen, Sie möchten Ihre eigene Textklasse schreiben, welche die \SpecialChar LaTeX
--Doku\SpecialChar softhyphen
-men\SpecialChar softhyphen
-ten
-klasse 
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+\begin_inset Quotes gld
+\end_inset
+
+=
+\end_layout
+
+\end_inset
+
+Dokumentklasse 
 \family typewriter
 article
 \family default
  benutzt, in der Sie aber das Aussehen der Kopfzeile verändert haben.
  Wenn Sie dann Ihre Textklasse in eine Datei namens 
 \family typewriter
-myarticle.
-\begin_inset Newline linebreak
-\end_inset
-
-layout
+myarticle.layout
 \family default
  schreiben, sollten die ersten beiden Zeilen der Datei etwa so aussehen:
 \end_layout
@@ -6547,18 +6641,7 @@ layout
 \size small
 #  
 \backslash
-DeclareLaTeXClass[article]{Article (with My Own Head
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"-
-\end_layout
-
-\end_inset
-
-ings)}
+DeclareLaTeXClass[article]{Article (with My Own Headings)}
 \end_layout
 
 \begin_layout LyX-Code
@@ -6592,7 +6675,10 @@ article.cls
 \family default
  verwendet und (im Popup-Menü) beschrieben wird mit: 
 \family sans
-Article (with My Own Headings)
+\lang english
+Article (with My Own Headings
+\lang ngerman
+)
 \family default
 .
  Falls Ihre Textklasse auch noch von weiteren Paketen abhängt, können Sie
@@ -6610,18 +6696,7 @@ Article (with My Own Headings)
 \size small
 #  
 \backslash
-DeclareLaTeXClass[article,foo.sty]{Article (with My Own Head
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-"-
-\end_layout
-
-\end_inset
-
-ings)}
+DeclareLaTeXClass[article,foo.sty]{Article (with My Own Headings)}
 \end_layout
 
 \begin_layout LyX-Code
@@ -6667,7 +6742,7 @@ Diesen Deklarationen kann außerdem ein optionaler Parameter zugefügt werden,
 \end_layout
 
 \begin_layout Standard
-Eine Layout-Deklaration hat demnach die Form
+Eine Layout-Deklaration hat demnach, noch einmal zusammengefasst, die Form
 \end_layout
 
 \begin_layout LyX-Code
@@ -6675,7 +6750,7 @@ Eine Layout-Deklaration hat demnach die Form
 \size small
 #  
 \backslash
-DeclareLaTeXClass[class,package.sty]{Layout-Beschreibung}
+DeclareLaTeXClass[Klasse,Paket.sty]{Layout-Beschreibung}
 \end_layout
 
 \begin_layout LyX-Code
@@ -6684,6 +6759,16 @@ DeclareLaTeXClass[class,package.sty]{Layout-Beschreibung}
 #  
 \backslash
 DeclareCategory{Kategorie}
+\end_layout
+
+\begin_layout Standard
+Die Klasse muss nur dann explizit genannt werden, wenn der Name der \SpecialChar LaTeX
+-Klasse
+ und der der \SpecialChar LyX
+-Layoutdatei divergieren, oder wenn Sie Pakete laden.
+ Wenn kein optionales Argument angegeben ist, nimmt \SpecialChar LyX
+ an, dass die Klasse
+ denselben Namen wie die Layout-Datei hat.
 \end_layout
 
 \begin_layout Standard
@@ -6718,6 +6803,104 @@ Einstellungen
  auswählbar sein.
 \end_layout
 
+\begin_layout Standard
+Ist das Layout einmal von \SpecialChar LyX
+ erkannt, können Sie Änderungen direkt auch ohne
+ Neustart sehen.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Das ist erst ab \SpecialChar LyX
+ 1.6 der Fall.
+ Vorher war die Bearbeitung von Layout-Dateien mühsam und zeitraubend, weil
+ man \SpecialChar LyX
+ ständig neu starten musste.
+\end_layout
+
+\end_inset
+
+ Sie können ein Neuladen des Layouts mithilfe der \SpecialChar LyX
+Funktion 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+layout-reload
+\end_layout
+
+\end_inset
+
+ erzwingen.
+ Für diese Funktion gibt es standardmäßig kein Tastenkürzel.
+ Sie können selbst eines definieren oder aber einfach die Funktion in den
+ 
+\emph on
+Minibuffer
+\emph default
+ eingeben.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Aber Achtung
+\emph default
+: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+layout-reload
+\end_layout
+
+\end_inset
+
+ ist ein komplexes Feature.
+ Wir ersuchen Sie dringend, Ihr Dokument zu speichern, bevor Sie die Funktion
+ verwenden.
+ Eigentlich sollten Sie keine Layout-Dateien bearbeiten, während Sie an
+ einem wichtigen Dokument arbeiten.
+ Verwenden Sie ein Textdokument.
+ Fehler in der Layout-Datei können üble Effekte haben.
+ Insbesondere können sie dazu führen, dass \SpecialChar LyX
+ das aktuelle Layout für ungültig
+ hält und in ein anderes wechselt.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Ganz schlimme Fehler können sogar dazu führen, dass \SpecialChar LyX
+ abstürzt, da manche
+ Fehler dazu führen, dass \SpecialChar LyX
+ 
+\emph on
+gar keine
+\emph default
+ Layout-Informationen mehr lesen kann.
+ Seien Sie also bitte vorsichtig.
+\end_layout
+
+\end_inset
+
+ Zwar tut das \SpecialChar LyX
+-Team alles, um \SpecialChar LyX
+ in solchen Situationen stabil zu halten,
+ aber Vorsicht ist bekanntlich die Mutter der Poerzellankiste.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Wo wir gerade beim Rat geben sind: Machen Sie regelmäßig Backups.
+ Und seien Sie nett zu Ihren Nachbarn.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Die Modul-Deklaration
 \end_layout
@@ -6739,23 +6922,17 @@ Module[endnotes.sty]{Endnotes}
 \begin_layout Standard
 Das benötigte Argument in geschweiften Klammern ist der Name des Moduls,
  wie es in 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
 Module
-\end_layout
-
-\end_inset
-
+\family default
  erscheinen soll.
  Das Argument in eckigen Klammern ist optional: Es deklariert alle \SpecialChar LaTeX
 -Pakete,
  die das Modul benötigt.
  Es ist außerdem möglich die Form 
-\begin_inset Flex Noun
+\begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
@@ -6806,17 +6983,17 @@ zu
 \end_layout
 
 \begin_layout Standard
-Die Modul-Deklaration sollte gefolgt werden von Zeilen zur Beschreibung
- wie den folgenden:
+Der Modul-Deklaration sollten Zeilen zur Beschreibung wie die folgenden
+ folgen:
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Vorzugsweise in Englisch wenn das Modul als Teil von \SpecialChar LyX
+Vorzugsweise in Englisch, wenn das Modul als Teil von \SpecialChar LyX
  veröffentlicht werden
  soll.
  Diese Beschreibung wird dann in \SpecialChar LyX
-s Liste der zu übersetzenden Zeichenketten
+' Liste der zu übersetzenden Zeichenketten
  erscheinen und übersetzt werden.
 \end_layout
 
@@ -6837,8 +7014,7 @@ s Liste der zu übersetzenden Zeichenketten
 \begin_layout LyX-Code
 #You will need to add  
 \backslash
-theendnotes in \SpecialChar TeX
- code where you 
+theendnotes in TeX code where you 
 \end_layout
 
 \begin_layout LyX-Code
@@ -6860,18 +7036,12 @@ theendnotes in \SpecialChar TeX
 
 \begin_layout Standard
 Die Beschreibung wird in 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
+\family sans
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
 Module
-\end_layout
-
-\end_inset
-
- verwendet um dem Nutzer zu beschreiben was das Modul macht.
+\family default
+ verwendet, um dem Nutzer zu erläutern, was das Modul macht.
  Die Zeile mit 
 \begin_inset Flex Code
 status collapsed
@@ -6895,7 +7065,7 @@ Excludes
 
  wird verwendet, um Module anzugeben, die mit diesem Modul nicht verwendet
  werden dürfen.
- Beide Zeilen sind optional und, wie gezeigt, müssen mehrere Module mit
+ Beide Zeilen sind optional und mehrere Module müssen , wie gezeigt, mit
  einem 
 \begin_inset Quotes gld
 \end_inset
@@ -6907,7 +7077,7 @@ Excludes
  getrennt werden.
  Beachten Sie dass die benötigten Module disjunktiv behandelt werden: 
 \emph on
-mindestens eins
+Mindestens eins
 \emph default
  der benötigten Module muss verwendet werden.
  Dementsprechend darf 
@@ -6951,132 +7121,91 @@ EinModul.module
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-The CiteEngine file declaration
+Die CiteEngine-Dateideklaration
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-A cite engine file must begin with a line like the following:
+Eine Cite-Engine-Datei muss mit einer Zeile wie dieser beginnen:
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 #
 \backslash
 DeclareLyXCiteEngineModule[biblatex.sty]{Biblatex}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The mandatory argument, in curly brackets, is the name of the module, as
- it should appear in 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Bibliography
-\end_layout
-
-\end_inset
-
-.
- The argument in square brackets is optional: It declares any \SpecialChar LaTeX
- packages
- on which the cite engine depends.
+Das benötigte Argument in geschweiften Klammern ist der Name des Zitierstils,
+ wie er in in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Literaturverzeichnis
+\family default
+ erscheinen soll.
+ Das Argument in eckigen Klammern ist optional: Es deklariert alle \SpecialChar LaTeX
+-Pakete,
+ die die Cite Engine benötigt.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The cite engine declaration should then be followed by lines like the following
+Der CiteEngine-Deklaration sollten Zeilen zur Beschreibung wie die folgenden
+ folgen:
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Preferably in English if the module should be published with \SpecialChar LyX
-.
- This description will appear in the list of messages to be translated and
- will be thus translated with the next interface update.
+Vorzugsweise in Englisch, wenn die Cite Engine als Teil von \SpecialChar LyX
+ veröffentlicht
+ werden soll.
+ Diese Beschreibung wird dann in \SpecialChar LyX
+' Liste der zu übersetzenden Zeichenketten
+ erscheinen und übersetzt werden.
 \end_layout
 
 \end_inset
 
-:
+
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 # DescriptionBegin
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 #   Biblatex supports many author-year and numerical styles.
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 #   It is mainly aimed at the Humanities.
  It is highly
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 #   customizable, fully localized and provides many features
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 #   that are not possible with BibTeX.
  The use of 'biber' as
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 #   bibliography processor is advised.
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 # DescriptionEnd
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The description is used in 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Bibliography
-\end_layout
-
-\end_inset
-
- to provide the user with information about the cite engine.
+Die Beschreibung wird in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Literaturverzeichnis
+\family default
+ verwendet, um dem Nutzer zu erläutern, was der Stil bietet.
 \end_layout
 
 \begin_layout Subsection
@@ -7272,21 +7401,21 @@ EndPreamble
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CiteEngine <engine>
 \end_layout
 
 \end_inset
 
- Defines the possibilities for displaying citation references.
- See 
+ Definiert die Möglichkeiten der Darstellung von Literaturverweisen.
+ Siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Citation-engine-description"
@@ -7296,9 +7425,9 @@ noprefix "false"
 
 \end_inset
 
- for details.
- Must end with 
-\begin_inset Quotes eld
+ für Details.
+ Muss mit 
+\begin_inset Quotes gld
 \end_inset
 
 
@@ -7306,19 +7435,21 @@ noprefix "false"
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 End
 \end_layout
 
 \end_inset
 
 
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
-.
- Primarily used in cite engine files (see 
+ enden.
+ Vor allem von Cite-Engine-Dateien verwendet (siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Cite-Engine-Dateien"
@@ -7390,14 +7521,10 @@ noprefix "false"
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CiteFramework
 \end_layout
 
@@ -7410,7 +7537,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 bibtex
 \end_layout
 
@@ -7421,20 +7547,22 @@ bibtex
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 biblatex
 \end_layout
 
 \end_inset
 
-] Determines whether 
+] Bestimmt, ob 
 \family sans
 Biblatex
 \family default
- or Bib\SpecialChar TeX
- is used to generate a Bibliography.
- Primarily used in cite engine files (see 
+ oder Bib\SpecialChar TeX
+ verwendet wird, um ein Literaturverzeichnis zu erzeug.
+ Vor allem von Cite-Engine-Dateien verwendet (siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Cite-Engine-Dateien"
@@ -8155,14 +8283,10 @@ MMMMM
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 MaxCiteNames
 \end_layout
 
@@ -8173,24 +8297,26 @@ MaxCiteNames
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 integer
 \end_layout
 
 \end_inset
 
-] An integer that determines the maximal number of names displayed in an
- author-year citation before the citation switches to 
-\begin_inset Quotes eld
+] Eine Ganzzahl, die festlegt, wie viele Autoren maximal in einem Autor-Jahr-Zit
+at angezeigt werden, bevor der Verweis zu 
+\begin_inset Quotes gld
 \end_inset
 
-FirstAuthor et al.
-\begin_inset Quotes erd
+Erstautor et al.
+\begin_inset Quotes grd
 \end_inset
 
-.
- Primarily used in cite engine files (see 
+ wechselt.
+ Vor allem von Cite-Engine-Dateien verwendet (siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Cite-Engine-Dateien"
@@ -9599,14 +9725,10 @@ Innerhalb des Blocks sind folgende Befehle erlaubt:
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AddToToc
 \end_layout
 
@@ -9617,17 +9739,36 @@ AddToToc
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 string
 \end_layout
 
 \end_inset
 
-=""] This paragraph will appear in the table of contents of the given type.
- An empty string disables.
- See also the OutlinerName and the IsTocCaption commands.
- Default: disabled.
+=""] Dieser Abschnitt erscheint im Inhaltsverzeichnis des spezifizierten
+ Typs.
+ Eine leere Zeichenkette deaktiviert die Anzeige dort.
+ Siehe auch 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+OutlinerName
+\end_layout
+
+\end_inset
+
+ und den Befehl 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+IsTocCaption
+\end_layout
+
+\end_inset
+
+.
+ Voreinstellung: deaktiviert.
 \end_layout
 
 \begin_layout Description
