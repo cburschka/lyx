@@ -6177,7 +6177,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \family sans
-\lang french
 $HOME/.texliveXXXX
 \end_layout
 
@@ -6477,11 +6476,7 @@ Now the package is installed.
 status collapsed
 
 \begin_layout Plain Layout
-Slides
-\begin_inset space ~
-\end_inset
-
-(FoilTex)
+FoilTex
 \end_layout
 
 \end_inset
@@ -6498,7 +6493,15 @@ Document Class
 
 \end_inset
 
-.
+ (in the 
+\begin_inset Quotes eld
+\end_inset
+
+Presentations
+\begin_inset Quotes erd
+\end_inset
+
+ category).
  
 \end_layout
 
@@ -6805,7 +6808,7 @@ Format
  Any format is acceptable, but one would normally use the format current
  at the time.
  (In \SpecialChar LyX
- 2.2, the current layout format is 60.)
+ 2.3, the current layout format is 63.)
 \end_layout
 
 \begin_layout Standard
@@ -6972,7 +6975,7 @@ myclass.layout
 \begin_layout LyX-Code
 
 \backslash
-DeclareLaTeXClass{report}
+DeclareLaTeXClass{Report (Standard Class)}
 \end_layout
 
 \begin_layout Standard
@@ -6982,7 +6985,7 @@ to read
 \begin_layout LyX-Code
 
 \backslash
-DeclareLaTeXClass[report, myclass.sty]{report (myclass)}
+DeclareLaTeXClass[report, myclass.sty]{Report (My Class)}
 \end_layout
 
 \begin_layout Standard
@@ -7028,7 +7031,7 @@ Reconfigure
 status collapsed
 
 \begin_layout Plain Layout
-report (myclass)
+Report (My Class)
 \end_layout
 
 \end_inset
@@ -7155,7 +7158,7 @@ myclass.sty
 \begin_layout LyX-Code
 #
 \backslash
-DeclareLyXModule{My Package} 
+DeclareLyXModule{My Class} 
 \end_layout
 
 \begin_layout LyX-Code
@@ -7163,7 +7166,7 @@ DeclareLyXModule{My Package}
 \end_layout
 
 \begin_layout LyX-Code
-#Support for mypkg.sty.
+#Support for myclass.sty.
 \end_layout
 
 \begin_layout LyX-Code
@@ -7175,7 +7178,7 @@ DeclareLyXModule{My Package}
 \end_layout
 
 \begin_layout LyX-Code
-Format 60
+Format 63
 \begin_inset Newline newline
 \end_inset
 
@@ -7189,7 +7192,7 @@ Preamble
 
     
 \backslash
-usepackage{mypkg}
+usepackage{myclass}
 \begin_inset Newline newline
 \end_inset
 
@@ -8244,7 +8247,6 @@ Reconfigure
 Once the layout file is installed, you can edit it and see your changes
  without having to reconfigure or to restart \SpecialChar LyX
 .
- 
 \begin_inset Foot
 status collapsed
 
@@ -8555,8 +8557,8 @@ DeclareLyXCiteEngineModule[biblatex.sty]{Biblatex}
 \end_layout
 
 \begin_layout Standard
-The mandatory argument, in curly brackets, is the name of the module, as
- it should appear in 
+The mandatory argument, in curly brackets, is the name of the cite style,
+ as it should appear in 
 \begin_inset Flex Noun
 status collapsed
 
