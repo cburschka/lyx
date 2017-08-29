@@ -39,10 +39,10 @@ What do I need to run LyX?
 How does the LyX version scheme work?
 
     LyX uses a contiguous numbering scheme for versions, where a
-    number "1.x.y" indicates a stable release '1.x', maintenance
-    release 'y'.  In other words, LyX 1.5.0 was the first stable
-    release in the 1.5-series of LyX. At the time of writing, the
-    latest maintenance release in the 1.5-series was LyX 1.5.2
+    number "2.x.y" indicates a stable release '2.x', maintenance
+    release 'y'.  In other words, LyX 2.2.0 was the first stable
+    release in the 2.2-series of LyX. At the time of writing, the
+    latest maintenance release in the 2.2-series was LyX 2.2.3.
 
     Please note that maintenance releases are designed primarily to
     fix bugs, and that the file format will _never_ change due to a
@@ -56,9 +56,9 @@ How does the LyX version scheme work?
     series. To summarize, there are three possible types of file names
     that are of interest to normal users:
 
-       lyx-1.5.0.tar.gz     -- stable release, first in the 1.5-series
-       lyx-1.5.5.tar.gz     -- fifth maintenance release of LyX 1.5
-       lyx-1.5.0rc1.tar.gz  -- potentially unstable release candidate
+       lyx-2.2.0.tar.gz     -- stable release, first in the 2.2-series
+       lyx-2.2.3.tar.gz     -- fifth maintenance release of LyX 2.2
+       lyx-2.3.0rc1.tar.gz  -- potentially unstable release candidate
 
     Note that the goal is not parallel development as for the linux
     kernel --the team is too small to afford that-- but rather to
@@ -71,10 +71,10 @@ How does the LyX version scheme work?
     If you get the source from Git, the version string will look like
     one of:
 
-       2.0.6dev     -- this is the stable branch on which maintenance
-               release 2.0.6 will eventually be tagged.
-       2.1.0dev     -- this is the main branch on which stable
-               release 2.1.0 will eventually be tagged.
+       2.2.4dev     -- this is the stable branch on which maintenance
+               release 2.2.4 will eventually be tagged.
+       2.3.0dev     -- this is the main branch on which stable
+               release 2.3.0 will eventually be tagged.
 
 What's new?
 
@@ -87,11 +87,11 @@ How do I upgrade from an earlier LyX version?
 What do I need to compile LyX from the source distribution?
 
     * A good C++ compiler.  Development is being done mainly with
-      gcc/g++, but some others work also. As of LyX 1.6.0, you need at
-      least gcc 3.2.x.
+      gcc/g++, but some others work also. As of LyX 2.2.0, you need at
+      least gcc 4.x.
 
-    * The Qt4 library, at least version 4.5.0. For all features
-      newer versions (e.g. Qt 4.8) are recommended.
+    * The Qt library, at least version 4.5.0. For all features
+      newer versions (e.g. Qt 5.6) are recommended.
 
     Read the file "INSTALL" for more information on compiling.
 
