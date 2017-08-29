@@ -16254,7 +16254,7 @@ g.
 \begin_inset space \space{}
 \end_inset
 
-from 2.0.x to 2.1.y) will introduce new translations or corrections.
+from 2.0.x to 2.1.0) will introduce new translations or corrections.
 \end_layout
 
 \begin_layout Subsection
@@ -20499,7 +20499,10 @@ or
 \emph default
  LabelFont
 \emph on
- or
+ 
+\family roman
+or
+\family default
 \emph default
  DefaultFont
 \end_layout
@@ -21151,7 +21154,7 @@ name "subsec:Citation-engine-description"
 
 \end_inset
 
-Citation engine description
+Cite engine description
 \end_layout
 
 \begin_layout Standard
@@ -21712,7 +21715,7 @@ name "subsec:Citation-format-description"
 
 \end_inset
 
-Citation format description
+Cite format description
 \end_layout
 
 \begin_layout Standard
@@ -22536,7 +22539,7 @@ MaxCiteNames
 \begin_layout Enumerate
 And finally name lists which consist of family names only, as used in author-yea
 r citation labels.
- these do not take a 
+ These do not take a 
 \begin_inset Flex Code
 status collapsed
 
