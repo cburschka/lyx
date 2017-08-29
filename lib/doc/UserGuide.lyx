@@ -140,12 +140,11 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -46099,13 +46098,9 @@ key combination
 \end_inset
 
 
-\change_inserted -712698321 1503738349
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1503740883
 Note, though, that the key combination definition uses a specific syntax.
  This applies to the designators of specific modifier keys (e.
 \begin_inset space \thinspace{}
@@ -46153,8 +46148,6 @@ M-S-colon
  these specifics.
  \SpecialChar LyX
  transforms your input to the correct syntax.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
