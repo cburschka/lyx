@@ -47911,6 +47911,64 @@ fonction-lyx
 
 \end_layout
 
+\begin_layout Standard
+Notez cependant que la définition des la combinaison de touches nécessite
+ une syntaxe spécifique pour la désignation de touches modificatrices particuliè
+res (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., 
+\family typewriter
+M
+\family default
+, 
+\family typewriter
+S
+\family default
+, 
+\family typewriter
+C
+\family default
+ pour 
+\family sans
+Meta/Alt
+\family default
+, 
+\family sans
+Shift/Maj,
+\family default
+ 
+\family sans
+Ctrl
+\family default
+, respectivement) ainsi que pour les autres touches.
+ Notez en particulier que vous ne pouvez pas utiliser directement dans la
+ combinaison de touches des caractères qui ne soient pas alphanumériques:
+ au contraire, vous devez utiliser des commandes du standard 
+\family sans
+Xlib
+\family default
+ (voyez les fichiers d'association 
+\emph on
+bind
+\emph default
+ existants pour un exemple).
+ Donc si vous souhaitez associer une commande à la combinaison 
+\family sans
+Alt+Maj+:
+\family default
+, il vous faut la spécifier sous la forme 
+\family typewriter
+M-S-colon
+\family default
+.
+ Si vous utilisez la fenêtre de dialogue pour modifier ou saisir les association
+s de touches, vous n'avez pas à vous inquiéter de ceci, \SpecialChar LyX
+ convertit votre
+ saisie dans le syntaxe correcte.
+\end_layout
+
 \begin_layout Subsection
 Clavier / Souris
 \begin_inset CommandInset label

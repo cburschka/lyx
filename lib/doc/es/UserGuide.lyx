@@ -186,7 +186,7 @@ literal "false"
 \begin_inset Newline newline
 \end_inset
 
-Versión 2.2.x
+Versión 2.3.x
 \end_layout
 
 \begin_layout Standard
@@ -46365,6 +46365,58 @@ key combination
 
 \series default
  
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Note, though, that the key combination definition uses a specific syntax.
+ This applies to the designators of specific modifier keys (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., 
+\family typewriter
+M
+\family default
+, 
+\family typewriter
+S
+\family default
+, 
+\family typewriter
+C
+\family default
+ for 
+\family sans
+Meta/Alt
+\family default
+, 
+\family sans
+Shift
+\family default
+, 
+\family sans
+Ctrl
+\family default
+, respectively) as well as to the other keys.
+ Note particularly that you cannot use non-alphanumeric characters directly
+ in the definition of the key combination, but must use commands following
+ the Xlib standard instead (please refer to the existing bind files for
+ a model).
+ So if you wanted to bind a command to the key combination 
+\family sans
+Alt+Shift+:
+\family default
+, you needed to specify it as 
+\family typewriter
+M-S-colon
+\family default
+.
+ If you use the dialog to edit key bindings, you don't have to care for
+ these specifics.
+ \SpecialChar LyX
+ transforms your input to the correct syntax.
 \end_layout
 
 \begin_layout Subsection
