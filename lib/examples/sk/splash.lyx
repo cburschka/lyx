@@ -1,4 +1,4 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
+#LyX 2.4 created this file. For more info see http://www.lyx.org/
 \lyxformat 544
 \begin_document
 \begin_header
@@ -52,6 +52,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -63,6 +64,7 @@
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style polish
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -71,7 +73,6 @@
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
-\use_minted 0
 \end_header
 
 \begin_body
@@ -215,11 +216,10 @@ http://www.lyx.org/
 \begin_layout Enumerate
 
 \series bold
-\lang english
-Note for Linux users:
+Upozornenie pre Linuxákov:
 \series default
- Please check that the language packages for the \SpecialChar LaTeX
- distribution 
+ Preverte si že máte nastavené jazykové balíčky pre vašu \SpecialChar LaTeX
+ distribúciu 
 \family sans
 \SpecialChar TeX
 
@@ -228,27 +228,27 @@ Note for Linux users:
 
 Live
 \family default
- are installed.
- Otherwise you will get \SpecialChar LaTeX
- errors.
+.
+ Ináč dostanete \SpecialChar LaTeX
+-ové chyby.
 \begin_inset Newline newline
 \end_inset
 
-For example on the Linux distributions 
+Napríklad pre Linux distribúciu
 \family sans
-(K,X)Ubuntu
+ (K,X)Ubuntu
 \family default
- and 
+ alebo 
 \family sans
 Debian
 \family default
- the package name for the German language is 
+ je meno pre balík slovenského jazyka 
 \begin_inset Quotes eld
 \end_inset
 
 
 \family typewriter
-texlive-lang-german
+texlive-lang-czechslovak
 \family default
 
 \begin_inset Quotes erd
@@ -258,15 +258,11 @@ texlive-lang-german
 \begin_inset Newline newline
 \end_inset
 
-After the installation of the language packages you must use the \SpecialChar LyX
- menu 
-\family sans
-Tools
-\family default
-\SpecialChar menuseparator
+Po inštalácii jazykových balíkov potrebujete spustiť \SpecialChar LyX
+-menu Nástroje\SpecialChar menuseparator
 
 \family sans
-Reconfigure
+Rekonfigurácia
 \family default
 .
 \end_layout
