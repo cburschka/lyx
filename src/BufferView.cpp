@@ -2658,6 +2658,7 @@ bool BufferView::singleParUpdate()
 		// the singlePar optimisation.
 		return false;
 
+	tm.updatePosCache(bottom_pit);
 	d->update_strategy_ = SingleParUpdate;
 
 	LYXERR(Debug::PAINTING, "\ny1: " << pm.position() - pm.ascent()
@@ -2711,6 +2712,7 @@ void BufferView::updateMetrics()
 		// in the first line.
 	}
 	anchor_pm.setPosition(d->anchor_ypos_);
+	tm.updatePosCache(d->anchor_pit_);
 
 	LYXERR(Debug::PAINTING, "metrics: "
 		<< " anchor pit = " << d->anchor_pit_
@@ -2726,6 +2728,7 @@ void BufferView::updateMetrics()
 		y1 -= pm.descent();
 		// Save the paragraph position in the cache.
 		pm.setPosition(y1);
+		tm.updatePosCache(pit1);
 		y1 -= pm.ascent();
 	}
 
@@ -2739,6 +2742,7 @@ void BufferView::updateMetrics()
 		y2 += pm.ascent();
 		// Save the paragraph position in the cache.
 		pm.setPosition(y2);
+		tm.updatePosCache(pit2);
 		y2 += pm.descent();
 	}
 

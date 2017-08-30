@@ -43,6 +43,7 @@
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
+#include "frontends/NullPainter.h"
 
 #include "support/debug.h"
 #include "support/lassert.h"
@@ -195,6 +196,14 @@ bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim, int min_width)
 	changed |= dim_ != old_dim;
 	dim = dim_;
 	return changed;
+}
+
+
+void TextMetrics::updatePosCache(pit_type pit) const
+{
+	frontend::NullPainter np;
+	PainterInfo pi(bv_, np);
+	drawParagraph(pi, pit, origin_.x_, par_metrics_[pit].position());
 }
 
 
@@ -1219,6 +1228,7 @@ void TextMetrics::newParMetricsDown()
 	redoParagraph(pit);
 	par_metrics_[pit].setPosition(last.second.position()
 		+ last.second.descent() + par_metrics_[pit].ascent());
+	updatePosCache(pit);
 }
 
 
@@ -1233,6 +1243,7 @@ void TextMetrics::newParMetricsUp()
 	redoParagraph(pit);
 	par_metrics_[pit].setPosition(first.second.position()
 		- first.second.ascent() - par_metrics_[pit].descent());
+	updatePosCache(pit);
 }
 
 // y is screen coordinate
