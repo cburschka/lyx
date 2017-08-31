@@ -7,7 +7,7 @@
 # Author : John Perry <john.perry@usm.edu>
 #          Guillaume Munch-Maccagnoni <gm@lyx.org>
 
-Format 63
+Format 64
 
 Provides amscls 1
 Provides amsmath 1
@@ -95,7 +95,7 @@ Style Thanks
     Family Roman
   EndFont
   LabelType Static
-  LabelString "Thanks: "
+  LabelString "Thanks:"
   LatexType command
   LatexName thanks
   Margin Dynamic
@@ -106,7 +106,7 @@ Style ACM_Journal
   AlignPossible left
   Category Preamble
   InPreamble  1
-  LabelString "Journal's Short Name: "
+  LabelString "Journal's Short Name:"
   LabelType Static
   LabelFont
     Color Blue
@@ -135,7 +135,7 @@ Style ACM_Conference
     LabelString "Venue"
     Mandatory 1
   EndArgument
-  LabelString "Conference Name: "
+  LabelString "Conference Name:"
   LatexName acmConference
   Margin Dynamic
 End
@@ -173,7 +173,7 @@ Style Email
   EndFont
   #InPreamble  1
   InTitle 1
-  LabelString "Email address: "
+  LabelString "Email address:"
   LabelType Static
   LabelFont
     Color Blue
@@ -187,7 +187,7 @@ End
 
 Style ORCID
   CopyStyle Email
-  LabelString "ORCID: "
+  LabelString "ORCID:"
   Font
     Family Roman
   EndFont
@@ -207,13 +207,13 @@ Style Affiliation
     Color Blue
     Shape Italic
   EndFont
-  LabelString "Affiliation: "
+  LabelString "Affiliation:"
   LatexName affiliation
 End
 
 Style Additional_Affiliation
   CopyStyle Affiliation
-  LabelString "Additional Affiliation: "
+  LabelString "Additional Affiliation:"
   LatexName additionalaffiliation
 End
 
@@ -291,7 +291,7 @@ Style TitleNote
     Color Blue
     Shape Italic
   EndFont
-  LabelString "Title Note: "
+  LabelString "Title Note:"
   LatexName titlenote
   TopSep 0.3
   BottomSep 0.3
@@ -299,103 +299,103 @@ End
 
 Style SubtitleNote
   CopyStyle TitleNote
-  LabelString "Subtitle Note: "
+  LabelString "Subtitle Note:"
   LatexName subtitlenote
 End
 
 Style AuthorNote
   CopyStyle TitleNote
-  LabelString "Author Note: "
+  LabelString "Author Note:"
   LatexName authornote
 End
 
 Style ACM_Volume
   CopyStyle ACM_Journal
-  LabelString "ACM Volume: "
+  LabelString "ACM Volume:"
   LatexName acmVolume
 End
 
 Style ACM_Number
   CopyStyle ACM_Journal
-  LabelString "ACM Number: "
+  LabelString "ACM Number:"
   LatexName acmNumber
 End
 
 Style ACM_Article
   CopyStyle ACM_Journal
-  LabelString "ACM Article: "
+  LabelString "ACM Article:"
   LatexName acmArticle
 End
 
 Style ACM_Year
   CopyStyle ACM_Journal
-  LabelString "ACM Year: "
+  LabelString "ACM Year:"
   LatexName acmYear
 End
 
 Style ACM_Month
   CopyStyle ACM_Journal
-  LabelString "ACM Month: "
+  LabelString "ACM Month:"
   LatexName acmMonth
 End
 
 Style ACM_Art_Seq_Num
   CopyStyle ACM_Journal
-  LabelString "Article Sequential Number: "
+  LabelString "Article Sequential Number:"
   LatexName acmArticleSeq
 End
 
 Style ACM_Submission_ID
   CopyStyle ACM_Journal
-  LabelString "ACM Submission ID: "
+  LabelString "ACM Submission ID:"
   LatexName acmSubmissionID
 End
 
 Style ACM_Price
   CopyStyle ACM_Journal
-  LabelString "ACM Price: "
+  LabelString "ACM Price:"
   LatexName acmPrice
 End
 
 Style ACM_ISBN
   CopyStyle ACM_Journal
-  LabelString "ACM ISBN: "
+  LabelString "ACM ISBN:"
   LatexName acmISBN
 End
 
 Style ACM_DOI
   CopyStyle ACM_Journal
-  LabelString "ACM DOI: "
+  LabelString "ACM DOI:"
   LatexName acmDOI
 End
 
 Style ACM_Badge_R
   CopyStyle ACM_Journal
-  LabelString "ACM Badge R: "
+  LabelString "ACM Badge R:"
   LatexName acmBadgeR
 End
 
 Style ACM_Badge_L
   CopyStyle ACM_Journal
-  LabelString "ACM Badge L: "
+  LabelString "ACM Badge L:"
   LatexName acmBadgeL
 End
 
 Style Start_Page
   CopyStyle ACM_Journal
-  LabelString "Start Page: "
+  LabelString "Start Page:"
   LatexName startPage
 End
 
 Style Terms
   CopyStyle TitleNote
-  LabelString "Terms: "
+  LabelString "Terms:"
   LatexName terms
 End
 
 Style Keywords
   CopyStyle TitleNote
-  LabelString "Keywords: "
+  LabelString "Keywords:"
   LatexName keywords
 End
 
@@ -410,7 +410,7 @@ Style CCSXML
   EndFont
   FreeSpacing 1
   InTitle 1
-  LabelString "Computing Classification Scheme (XML): "
+  LabelString "Computing Classification Scheme (XML):"
   LabelType Centered
   LabelFont
     Family Roman
@@ -426,7 +426,7 @@ Style CCS_Description
   Argument 1
     LabelString "Significance"
   EndArgument
-  LabelString "Computing Classification Scheme: "
+  LabelString "Computing Classification Scheme:"
   LatexName ccsdesc
   Font
     Family Typewriter
@@ -441,13 +441,13 @@ End
 
 Style Set_Copyright
   CopyStyle ACM_Journal
-  LabelString "Set Copyright: "
+  LabelString "Set Copyright:"
   LatexName setcopyright
 End
 
 Style Copyright_Year
   CopyStyle ACM_Journal
-  LabelString "Copyright Year: "
+  LabelString "Copyright Year:"
   LatexName copyrightyear
 End
 
@@ -466,7 +466,7 @@ Style Received
     LabelString "Stage"
     Mandatory 0
   EndArgument
-  LabelString "Received: "
+  LabelString "Received:"
   LatexName received
 End
 
@@ -482,7 +482,7 @@ Style ShortAuthors
   LatexType command
   InTitle 0
   LabelType Static
-  LabelString "Short authors: "
+  LabelString "Short authors:"
   Margin Dynamic
   LabelFont
     Family Roman

@@ -5,7 +5,7 @@
 # Created: 29-Aug-05 by Mael Hilléreau
 # Modified: 20-May-06 by Uwe Stöhr, 18-Mar-2013 Jürgen Spitzmüller
 
-Format 63
+Format 64
 
 Input stdcounters.inc
 Input stdinsets.inc
@@ -137,7 +137,7 @@ Style Slide
   Align         Center
   LabelType     Static
   LabelCounter  subsection
-  LabelString   "    "
+  LabelString   ""
   Argument 1
     LabelString   "Slide Option"
     Tooltip       "Optional arguments to the slide command (see powerdot manual)"

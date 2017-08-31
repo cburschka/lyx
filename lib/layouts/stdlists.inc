@@ -6,7 +6,7 @@
 # This include files contains various standard environments for lists.
 
 
-Format 63
+Format 64
 
 Input stdlyxlist.inc
 

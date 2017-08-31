@@ -1,7 +1,7 @@
 # Sets the order of the main theorem environments
 # Author: Richard Heck
 
-Format 63
+Format 64
 
 Style Theorem
 	CopyStyle	Theorem*

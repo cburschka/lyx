@@ -8,7 +8,7 @@
 #  Class and style files and templates are found at:
 #       http://wiki.lyx.org/Examples/Springer
 #
-Format 63
+Format 64
 
 Input svcommon.inc
 
@@ -34,7 +34,7 @@ NoStyle Acknowledgements
 Style Title*
 	CopyStyle	Title
 	LatexName	title*
-	LabelString	"Title*: "
+	LabelString	"Title*:"
 	LabelSep	"xxx"
 	LabelType	Static
 	Margin		First_Dynamic

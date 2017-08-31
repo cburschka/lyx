@@ -24,7 +24,7 @@
 
 
 # We need separate counters for each theorem-like style.
-Format 63
+Format 64
 Counter theorem
 End
 Counter corollary
