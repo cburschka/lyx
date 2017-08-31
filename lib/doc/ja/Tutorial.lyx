@@ -2,8 +2,8 @@
 \lyxformat 544
 \begin_document
 \begin_header
-\save_transient_properties true
-\origin /systemlyxdir/doc/ja/
+\save_transient_properties false
+\origin unavailable
 \textclass jsbook
 \use_default_options false
 \maintain_unincluded_children false
@@ -93,6 +93,7 @@ End
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index 索引
 \shortcut idx
 \color #008000
@@ -104,6 +105,7 @@ End
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -112,7 +114,6 @@ End
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
-\use_minted 0
 \end_header
 
 \begin_body
@@ -528,12 +529,9 @@ arg   "buffer-view"
 \begin_layout Standard
 
 \series bold
-\lang english
-A hint
-\lang japanese
-:
+【ヒント】
 \series default
- PDFビューアをバックグラウンドで起動したままにしておけば，時間を節約することができます．
+PDFビューアをバックグラウンドで起動したままにしておけば，時間を節約することができます．
 \family sans
 表示\SpecialChar menuseparator
 更新
@@ -545,11 +543,8 @@ arg   "buffer-update"
 \end_inset
 
 を押して，\SpecialChar LaTeX
-を走らせた後，単にPDFビューアのウインドウをクリックすれば（あるいは最小化を解除すれば）よいのです．
-\lang english
-Under Windows still use 
+を走らせた後，単にPDFビューアのウインドウをクリックすれば（あるいは最小化を解除すれば）よいのです．Windowsではまだ
 \family sans
-\lang japanese
 文書
 \family default
 \SpecialChar menuseparator
@@ -557,32 +552,22 @@ Under Windows still use
 \family sans
 表示
 \family default
-を選ぶか
-\lang english
-or
-\lang japanese
-
+か
 \begin_inset Info
 type  "icon"
 arg   "buffer-view"
 \end_inset
 
-
-\lang english
-respectively
-\lang japanese
-．
+を選ぶしかありません．
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
-Another hint:
+【ヒントその二】
 \series default
- In case you are using a high-resolution display, the LyX toolbar icons
- are quite small.
- To change their size, right-click into a toolbar.
+高解像度ディスプレイを使っている場合には，\SpecialChar LyX
+ツールバーアイコンは小さすぎるかもしれません．ツールバーを右クリックすれば，その大きさを変えられます．
 \end_layout
 
 \begin_layout Subsection
