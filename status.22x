@@ -103,6 +103,8 @@ What's new
 
 - Fix some rare cases of bad on-screen line breaking (bug #10700).
 
+- Fix bad justification before a displayed inset (bug 10699).
+
 - Fix cursor state after double/triple click in mathed (bug #10686).
 
 - Avoid a case of stuck cursor after entering an inset (bug 10630).
