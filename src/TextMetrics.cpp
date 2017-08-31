@@ -966,7 +966,8 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 	int const next_width = max_width_ - leftMargin(row.pit(), row.endpos())
 		- rightMargin(row.pit());
 
-	row.shortenIfNeeded(body_pos, width, next_width);
+	if (row.shortenIfNeeded(body_pos, width, next_width))
+		row.flushed(false);
 	row.right_boundary(!row.empty() && row.endpos() < end
 	                   && row.back().endpos == row.endpos());
 	// Last row in paragraph is flushed
