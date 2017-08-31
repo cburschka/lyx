@@ -2,8 +2,8 @@
 \lyxformat 544
 \begin_document
 \begin_header
-\save_transient_properties true
-\origin /systemlyxdir/doc/ja/
+\save_transient_properties false
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -99,7 +99,7 @@ End
 \use_microtype false
 \use_dash_ligatures false
 \graphics default
-\default_output_format default
+\default_output_format pdf3
 \output_sync 0
 \bibtex_command bibtex
 \index_command default
@@ -212,7 +212,7 @@ literal "false"
 \begin_inset Newline newline
 \end_inset
 
-第2.3.x版
+第2.2.x版
 \begin_inset Note Note
 status collapsed
 
@@ -1527,10 +1527,7 @@ Shift+Tab
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-By right-clicking on a section in the outliner you can select the whole
- section to copy, cut or delete it.
+文書構造面の節を右クリックすると，節全体をコピー・切り取り・削除するために選択することができます．
 \end_layout
 
 \begin_layout Subsection
@@ -6654,7 +6651,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../clipart/Abstract.pdf
+	filename /clipart/Abstract.pdf
 
 \end_inset
 
@@ -6749,7 +6746,7 @@ status collapsed
 
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:書誌情報環境"
+name "subsec:書誌情報"
 
 \end_inset
 
@@ -13707,7 +13704,7 @@ reference "sec:ファイル形式"
 節参照)し，文書設定で文書ごとに変更することもできます(第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:出力"
+reference "sec:形式"
 
 \end_inset
 
@@ -14481,12 +14478,8 @@ status collapsed
 \family sans
 "
 \family default
-」鍵の振舞いを変更することができます
-\lang english
-(note that \SpecialChar LyX
- makes a sensible proposal for the selected main language)
-\lang japanese
-．選択肢は次の 14つです．
+」鍵の振舞いを変更することができます（ただし，\SpecialChar LyX
+は選択されている主幹言語に適した提案をすることにご注意ください）．選択肢は次の14つです．
 \end_layout
 
 \begin_layout Labeling
@@ -14494,532 +14487,446 @@ status collapsed
 \noindent
 
 \family sans
-\lang english
 \begin_inset Quotes eld
 \end_inset
 
-Outer
+外側
 \begin_inset Quotes erd
 \end_inset
 
 
-\begin_inset space ~
-\end_inset
-
-and
-\begin_inset space ~
-\end_inset
-
+\family default
+および
+\family sans
 
 \begin_inset Quotes els
 \end_inset
 
-inner
+内側
 \begin_inset Quotes ers
 \end_inset
 
 
 \family default
- Produces 
+ 
 \begin_inset Quotes eld
 \end_inset
 
-these outer
+これが外側
 \begin_inset Quotes erd
 \end_inset
 
- and 
+および
 \begin_inset Quotes els
 \end_inset
 
-these inner
+これが内側
 \begin_inset Quotes ers
 \end_inset
 
- quotation marks (as common, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., in the US)
+という形の引用符を生成する（アメリカなどで一般的）
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes sld
 \end_inset
 
-Outer
+外側
 \begin_inset Quotes sld
 \end_inset
 
 
-\begin_inset space ~
-\end_inset
-
-and
-\begin_inset space ~
-\end_inset
-
+\family default
+および
+\family sans
 
 \begin_inset Quotes sls
 \end_inset
 
-inner
+内側
 \begin_inset Quotes srs
 \end_inset
 
 
 \family default
- Produces 
+ 
 \begin_inset Quotes sld
 \end_inset
 
-these outer
+これが外側
 \begin_inset Quotes sld
 \end_inset
 
- and 
+および
 \begin_inset Quotes sls
 \end_inset
 
-these inner
+これが内側
 \begin_inset Quotes srs
 \end_inset
 
- quotation marks (as common, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., in Sweden)
+という形の引用符を生成する（スウェーデンなどで一般的）
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes gld
 \end_inset
 
-Outer
+外側
 \begin_inset Quotes grd
 \end_inset
 
 
-\begin_inset space ~
-\end_inset
-
-and
-\begin_inset space ~
-\end_inset
-
+\family default
+および
+\family sans
 
 \begin_inset Quotes gls
 \end_inset
 
-inner
+内側
 \begin_inset Quotes grs
 \end_inset
 
 
 \family default
- Produces 
+ 
 \begin_inset Quotes gld
 \end_inset
 
-these outer
+これが外側
 \begin_inset Quotes grd
 \end_inset
 
- and 
+および
 \begin_inset Quotes gls
 \end_inset
 
-these inner
+これが内側
 \begin_inset Quotes grs
 \end_inset
 
- quotation marks (as common, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., in Germany)
+という形の引用符を生成する（ドイツなどで一般的）
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes pld
 \end_inset
 
-Outer
+外側
 \begin_inset Quotes prd
 \end_inset
 
 
-\begin_inset space ~
-\end_inset
-
-and
-\begin_inset space ~
-\end_inset
-
+\family default
+および
+\family sans
 
 \begin_inset Quotes pls
 \end_inset
 
-inner
+内側
 \begin_inset Quotes prs
 \end_inset
 
 
 \family default
- Produces 
+ 
 \begin_inset Quotes pld
 \end_inset
 
-these outer
+これが外側
 \begin_inset Quotes prd
 \end_inset
 
- and 
+および
 \begin_inset Quotes pls
 \end_inset
 
-these inner
+これが内側
 \begin_inset Quotes prs
 \end_inset
 
- quotation marks (as common, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., in Poland)
+という形の引用符を生成する （ポーランドなどで一般的）
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes cld
 \end_inset
 
-Outer
+外側
 \begin_inset Quotes crd
 \end_inset
 
 
-\begin_inset space ~
-\end_inset
-
-and
-\begin_inset space ~
-\end_inset
-
+\family default
+および
+\family sans
 
 \begin_inset Quotes cls
 \end_inset
 
-inner
+内側
 \begin_inset Quotes crs
 \end_inset
 
 
 \family default
- Produces 
+ 
 \begin_inset Quotes cld
 \end_inset
 
-these outer
+これが外側
 \begin_inset Quotes crd
 \end_inset
 
- and 
+および
 \begin_inset Quotes cls
 \end_inset
 
-these inner
+これが内側
 \begin_inset Quotes crs
 \end_inset
 
- quotation marks (as common, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., in Switzerland)
+という形の引用符を生成する（スイスなどで一般的）
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes ald
 \end_inset
 
-Outer
+外側
 \begin_inset Quotes ard
 \end_inset
 
 
-\begin_inset space ~
-\end_inset
-
-and
-\begin_inset space ~
-\end_inset
-
+\family default
+および
+\family sans
 
 \begin_inset Quotes als
 \end_inset
 
-inner
+内側
 \begin_inset Quotes ars
 \end_inset
 
 
 \family default
- Produces 
+ 
 \begin_inset Quotes ald
 \end_inset
 
-these outer
+これが外側
 \begin_inset Quotes ard
 \end_inset
 
- and 
+および
 \begin_inset Quotes als
 \end_inset
 
-these inner
+これが内側
 \begin_inset Quotes ars
 \end_inset
 
- quotation marks (as common, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., in Denmark)
+という形の引用符を生成する（デンマークなどで一般的）
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes qrd
 \end_inset
 
-Outer
+外側
 \begin_inset Quotes qrd
 \end_inset
 
 
-\begin_inset space ~
-\end_inset
-
-and
-\begin_inset space ~
-\end_inset
-
+\family default
+および
+\family sans
 
 \begin_inset Quotes qls
 \end_inset
 
-inner
+内側
 \begin_inset Quotes qls
 \end_inset
 
 
 \family default
- Produces 
+ 
 \begin_inset Quotes qrd
 \end_inset
 
-these outer
+これが外側
 \begin_inset Quotes qrd
 \end_inset
 
- and 
+および
 \begin_inset Quotes qls
 \end_inset
 
-these inner
+これが内側
 \begin_inset Quotes qls
 \end_inset
 
- quotation marks (so-called plain or non-typographical quotation marks)
+という形の引用符を生成する（いわゆる単純引用符・非タイポグラフィカル引用符）
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes bld
 \end_inset
 
-Outer
+外側
 \begin_inset Quotes brd
 \end_inset
 
 
-\begin_inset space ~
-\end_inset
-
-and
-\begin_inset space ~
-\end_inset
-
+\family default
+および
+\family sans
 
 \begin_inset Quotes bls
 \end_inset
 
-inner
+内側
 \begin_inset Quotes brs
 \end_inset
 
 
 \family default
- Produces 
+ 
 \begin_inset Quotes bld
 \end_inset
 
-these outer
+これが外側
 \begin_inset Quotes brd
 \end_inset
 
- and 
+および
 \begin_inset Quotes bls
 \end_inset
 
-these inner
+これが内側
 \begin_inset Quotes brs
 \end_inset
 
- quotation marks (as common, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., in Great Britain)
+という形の引用符を生成する（イギリスなどで一般的）
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes fld
 \end_inset
 
-Outer
+外側
 \begin_inset Quotes frd
 \end_inset
 
 
-\begin_inset space ~
-\end_inset
-
-and
-\begin_inset space ~
-\end_inset
-
+\family default
+および
+\family sans
 
 \begin_inset Quotes fls
 \end_inset
 
-inner
+内側
 \begin_inset Quotes frs
 \end_inset
 
 
 \family default
- Produces 
+ 
 \begin_inset Quotes fld
 \end_inset
 
-these outer
+これが外側
 \begin_inset Quotes frd
 \end_inset
 
- and 
+および
 \begin_inset Quotes fls
 \end_inset
 
-these inner
+これが内側
 \begin_inset Quotes frs
 \end_inset
 
- quotation marks (as common, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., in France)
+という形の引用符を生成する（フランスなどで一般的）
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes ild
 \end_inset
 
-Outer
+外側
 \begin_inset Quotes ird
 \end_inset
 
 
-\begin_inset space ~
-\end_inset
-
-and
-\begin_inset space ~
-\end_inset
-
+\family default
+および
+\family sans
 
 \begin_inset Quotes ils
 \end_inset
 
-inner
+内側
 \begin_inset Quotes irs
 \end_inset
 
 
 \family default
- Produces 
+ 
 \begin_inset Quotes ild
 \end_inset
 
-these outer
+これが外側
 \begin_inset Quotes ird
 \end_inset
 
- and 
+および
 \begin_inset Quotes ils
 \end_inset
 
-these inner
+これが内側
 \begin_inset Quotes irs
 \end_inset
 
- quotation marks (another style common in France)
+という形の引用符を生成する（フランスなどで一般的）
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Maybe you wonder why one does not simply use only outer marks in this case,
- since these look identical to the inner marks.
- The answer is that you cannot easily switch to another style then (where
- the inner marks differ).
+この場合は，外側と内側の引用符は同じなので，どうして外側引用符だけを使わないのかと思うかもしれませんが，そうすると別の（内側の引用符が異なる）様式に，簡単に切り
+替えることができなくなるからです．
 \end_layout
 
 \end_inset
@@ -15031,306 +14938,180 @@ Maybe you wonder why one does not simply use only outer marks in this case,
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes rld
 \end_inset
 
-Outer
+外側
 \begin_inset Quotes rrd
 \end_inset
 
 
-\begin_inset space ~
-\end_inset
-
-and
-\begin_inset space ~
-\end_inset
-
+\family default
+および
+\family sans
 
 \begin_inset Quotes rls
 \end_inset
 
-inner
+内側
 \begin_inset Quotes rrs
 \end_inset
 
 
 \family default
- Produces 
+ 
 \begin_inset Quotes rld
 \end_inset
 
-these outer
+これが外側
 \begin_inset Quotes rrd
 \end_inset
 
- and 
+および
 \begin_inset Quotes rls
 \end_inset
 
-these inner
+これが内側
 \begin_inset Quotes rrs
 \end_inset
 
- quotation marks (as common, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., in Russia)
+という形の引用符を生成する（ロシアなどで一般的）
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes wld
 \end_inset
 
-Outer
+外側
 \begin_inset Quotes wrd
 \end_inset
 
 
-\begin_inset space ~
-\end_inset
-
-and
-\begin_inset space ~
-\end_inset
-
+\family default
+および
+\family sans
 
 \begin_inset Quotes wls
 \end_inset
 
-inner
+内側
 \begin_inset Quotes wrs
 \end_inset
 
 
 \family default
- Produces 
+ 
 \begin_inset Quotes wld
 \end_inset
 
-these outer
+これが外側
 \begin_inset Quotes wrd
 \end_inset
 
- and 
+および
 \begin_inset Quotes wls
 \end_inset
 
-these inner
+これが内側
 \begin_inset Quotes wrs
 \end_inset
 
- quotation marks (another style common in Sweden)
+という形の引用符を生成する（スウェーデンなどで一般的）
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
-
-\lang english
 \begin_inset Quotes jld
 \end_inset
 
 
 \family sans
-Outer
+外側
 \family default
 
 \begin_inset Quotes jrd
 \end_inset
 
-
-\family sans
-
-\begin_inset space ~
-\end_inset
-
-and
-\begin_inset space ~
-\end_inset
-
-
-\family default
-
+および
 \begin_inset Quotes jls
 \end_inset
 
 
 \family sans
-inner
+内側
 \family default
 
 \begin_inset Quotes jrs
 \end_inset
 
- Produces 
+ 
 \begin_inset Quotes jld
 \end_inset
 
-these outer
+これが外側
 \begin_inset Quotes jrd
 \end_inset
 
- and 
+および
 \begin_inset Quotes jls
 \end_inset
 
-these inner
+これが内側
 \begin_inset Quotes jrs
 \end_inset
 
- quotation marks (as common, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., in Japan)
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Note that these characters are just emulated with similar-looking math symbols
- in many encodings that do not cover these glyphs.
-\end_layout
-
-\end_inset
-
-
+という形の引用符を生成する （日本などで一般的）
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
-
-\lang english
 \begin_inset Quotes kld
 \end_inset
 
 
 \family sans
-Outer
+外側
 \family default
 
 \begin_inset Quotes krd
 \end_inset
 
-
-\family sans
-
-\begin_inset space ~
-\end_inset
-
-and
-\begin_inset space ~
-\end_inset
-
-
-\family default
-
+および
 \begin_inset Quotes kls
 \end_inset
 
 
 \family sans
-inner
+内側
 \family default
 
 \begin_inset Quotes krs
 \end_inset
 
- Produces 
+ 
 \begin_inset Quotes kld
 \end_inset
 
-these outer
+これが外側
 \begin_inset Quotes krd
 \end_inset
 
- and 
+および
 \begin_inset Quotes kls
 \end_inset
 
-these inner
+これが内側
 \begin_inset Quotes krs
 \end_inset
 
- quotation marks (as common, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., in North Korea and China)
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-Note that these characters are just emulated with similar-looking math symbols
- in many encodings that do not cover these glyphs.
-\end_layout
-
-\end_inset
-
-
+という形の引用符を生成する（北朝鮮・中国などで一般的）
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Inner quotation marks
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-In many writing cultures, these are single quotation marks.
- But as the British and French styles show, this is not necessarily the
- case (and specifically the British style shows that 
-\begin_inset Quotes eld
-\end_inset
-
-outer
-\begin_inset Quotes erd
-\end_inset
-
- does not necessarily mean 
-\begin_inset Quotes eld
-\end_inset
-
-double
-\begin_inset Quotes erd
-\end_inset
-
-).
- This is why we call them 
-\begin_inset Quotes els
-\end_inset
-
-inner
-\begin_inset Quotes ers
-\end_inset
-
- as opposed to 
-\begin_inset Quotes eld
-\end_inset
-
-outer
-\begin_inset Quotes erd
-\end_inset
-
- quotation marks.
-\end_layout
-
-\end_inset
-
- for quotations inside quotations (and other tasks in some languages, such
- as 
+引用符の中の引用符（言語によっては注意喚起(
 \begin_inset Quotes els
 \end_inset
 
@@ -15338,58 +15119,101 @@ scare quotes
 \begin_inset Quotes ers
 \end_inset
 
-) can be obtained by means of the shortcut 
+)など他の役割を担うこともあります）として使われる内側引用符
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+多くの書き手文化において，内側引用符は一重引用符です．しかし，イギリスとフランスの様式が示すように，常にそうとは限りません（特に，イギリス様式では，
+\begin_inset Quotes eld
+\end_inset
+
+外側
+\begin_inset Quotes erd
+\end_inset
+
+は必ずしも
+\begin_inset Quotes eld
+\end_inset
+
+二重
+\begin_inset Quotes erd
+\end_inset
+
+ではありません）．このゆえに，私たちは，
+\begin_inset Quotes eld
+\end_inset
+
+外側
+\begin_inset Quotes erd
+\end_inset
+
+引用符と対になるものとして
+\begin_inset Quotes els
+\end_inset
+
+内側
+\begin_inset Quotes ers
+\end_inset
+
+引用符と呼ぶのです．
+\end_layout
+
+\end_inset
+
+ は，
+\begin_inset Flex Ruby
+status collapsed
+
+\begin_layout Plain Layout
+捷径
+\begin_inset Argument post:1
+status collapsed
+
+\begin_layout Plain Layout
+ショートカット
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset Info
 type  "shortcut"
 arg   "quote-insert inner"
 \end_inset
 
- and via the 
+あるいは
 \family sans
-Insert\SpecialChar menuseparator
-Special Characters
+挿入\SpecialChar menuseparator
+特殊文字
 \family default
- menu.
+メニューで入力することができます．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-By default, the quotation mark styles are persistent.
- That is to say, a quotation mark maintains the style that was current when
- it was inserted, even if the document-wide style changes.
- This allows you to enter marks of different style.
- If you check the setting 
+既定では，引用符の様式は永続的です．つまり，文書全体の様式に変更が加えられた後も，引用符は入力時の様式を維持します．これによって，異なる様式の引用符を入力するこ
+とが可能となるのです．
 \family sans
-Use dynamic quotation marks
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+言語
 \family default
- in 
+の
 \family sans
-Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Language
+動的引用符を使用する
 \family default
-, however, special quotation marks will be inserted (in the LyX window,
- they appear in a special color).
- These marks will automatically adapt to the main style (and its changes).
- Such quotation marks make it easy to alter the quotation mark style in
- one step (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., if your publisher requests a different style).
+設定にチェックを入れると，特殊な引用符が挿入されます（\SpecialChar LyX
+ウィンドウでは特別な色で表示されます）．これらの引用符は，（変更があっても）主幹様式に自動的に追従します．
+これらの引用符を使うと，引用符様式を一度に変更することが簡単になります（例えば，出版社が別の様式を要求する場合）．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Individual quotation marks (i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e., their level [inner, outer], side [opening, closing], and style) can be
- easily switched by a context menu that pops up if you right-click on a
- mark.
+それぞれの引用符（レベル［内側・外側］，側［開く側・閉じる側］，様式など）は，引用符を右クリックすると出てくる文脈メニューで簡単に切り替えることができます．
 \end_layout
 
 \begin_layout Subsection
@@ -16185,7 +16009,7 @@ LaTeXとLyXのオプション
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../clipart/mobius.eps
+	filename /clipart/mobius.eps
 	scale 70
 
 \end_inset
@@ -19521,7 +19345,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../clipart/platypus.eps
+	filename /clipart/platypus.eps
 	lyxscale 50
 	width 50col%
 	rotateOrigin center
@@ -19658,7 +19482,7 @@ name "fig:何かわからない"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/escher-lsd.eps
+	filename /clipart/escher-lsd.eps
 	width 45col%
 
 \end_inset
@@ -19698,7 +19522,7 @@ name "fig:カモノハシ"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/platypus.eps
+	filename /clipart/platypus.eps
 	lyxscale 60
 	width 45col%
 
@@ -20959,7 +20783,7 @@ status collapsed
 は，\SpecialChar LyX
 上では
 \begin_inset Graphics
-	filename ../clipart/SpaceMarker.png
+	filename /clipart/SpaceMarker.png
 
 \end_inset
 
@@ -23302,49 +23126,35 @@ pageref{#1}ページにある図}}}
 \end_inset
 
 
-\lang english
-Note that neither 
 \series bold
 prettyref
 \series default
- nor 
+も
 \series bold
-refstyle 
+refstyle
 \series default
-predefines reference formats for all available types.
- This is especially true for the wide variety of mathematical `theorem'
- environments.
- So if you want to make formatted references to, say, Propositions, then
- you will need to define the relevant format yourself.
- For 
+も全型に対する参照形式を事前に定義しているわけではないことに注意してください．特に，数学「定理」環境の多くに対してはそうです．したがって，例えば命題に対して整形
+された参照を行いたい場合には，関連した形式を自身で定義する必要があります．
 \series bold
 prettyref
 \series default
-, you might do so as follows:
+の場合には，
 \begin_inset Newline newline
 \end_inset
 
 
 \series bold
-\lang japanese
 
 \backslash
-newrefformat{prop}{
-\lang english
-Proposition
-\lang japanese
- 
+newrefformat{prop}{Proposition 
 \backslash
-ref{#1}
-\lang english
-}
+ref{#1}}
 \series default
-\lang japanese
 
 \begin_inset Newline newline
 \end_inset
 
-のようなコマンドを使うことができます．書式についての詳細は，パッケージ取扱説明書
+とすると良いでしょう．書式についての詳細は，パッケージ取扱説明書
 \begin_inset CommandInset citation
 LatexCommand cite
 key "prettyref,refstyle"
@@ -23356,21 +23166,19 @@ literal "true"
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-The options 
+整形された参照の
 \family sans
-Plural
+複数形
 \family default
- and 
+と
 \family sans
-Capitalized
+大文字化
 \family default
- will be available with formatted references only if you are using the 
+のオプションは，
 \series bold
 refstyle
 \series default
- package.
+パッケージを利用している時のみ使用できます．
 \end_layout
 
 \begin_layout Description
@@ -23385,16 +23193,7 @@ reference "fig:歪められた二つの像"
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Label
-\begin_inset space ~
-\end_inset
-
-only: prints only the \SpecialChar LaTeX
- label for the reference: 
-\lang japanese
-
+ラベルのみ 
 \begin_inset CommandInset ref
 LatexCommand labelonly
 reference "fig:歪められた二つの像"
@@ -23404,51 +23203,26 @@ noprefix "false"
 
 \end_inset
 
-
-\lang english
-
+のように参照先の\SpecialChar LaTeX
+ラベルのみを出力します．
 \begin_inset Newline newline
 \end_inset
 
-This allows for customization, using \SpecialChar TeX
- Code, if you want to issue a command
- that \SpecialChar LyX
- does not support.
- If you are using 
+これを使うと，\SpecialChar LyX
+がサポートしていないコマンドを\SpecialChar TeX
+コードで入力することによって，カスタマイズすることができます．
 \series bold
 refstyle
 \series default
-, then you may want to use the 
+を使用している時には，
 \family sans
-No
-\begin_inset space ~
-\end_inset
-
-Prefix
+接頭辞なし
 \family default
- option, which will output only the part of the reference following the
- 
-\begin_inset Quotes eld
-\end_inset
-
-:
-\begin_inset Quotes erd
-\end_inset
-
- separator.
- This is the form needed for e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-
+オプションを使用したいことが多いでしょう．これによって，参照の「:」区切りの後の部分だけが出力されるようになります．これは，例えば
 \series bold
 refstyle
 \series default
-'s range commands.
+の範囲コマンドで必要とされます．
 \end_layout
 
 \begin_layout Standard
@@ -23944,26 +23718,14 @@ name "sec:書誌情報"
 
 \begin_layout Standard
 \SpecialChar LyX
-文書で書誌情報を生成するには，二つの方法があります．次小節で説明するように文献データベースをインクルードするか
-\lang english
-the following section (but see also sec.
-\begin_inset space ~
-\end_inset
-
-
-\lang japanese
-
+文書で書誌情報を生成するには，二つの方法があります．次小節で説明するように文献データベースをインクルードするか次小節でに説明されているように（第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:書誌情報環境"
+reference "subsec:書誌情報"
 
 \end_inset
 
-
-\lang english
-)
-\lang japanese
-節に説明されているように
+節も参照のこと）
 \family sans
 書誌情報
 \family default
@@ -23972,25 +23734,19 @@ reference "subsec:書誌情報環境"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In order to demonstrate the difference between these two approaches, we
- use two bibliographies in this document, a 
+これらの2つのアプローチの違いを示すために，この文書では，
 \family sans
-Bibliography
+書誌情報
 \family default
- environment and a database-generated bibliography.
- As you can see, the bibliography that is created from a database lists
- only the database entries that are referenced in the document.
- In other words, the database approach relieves you, amongst other things,
- from the burden to check which entries you have actually cited.
+環境とデータベースが生成した書誌情報の，2つの書誌情報が使用されています．すぐにわかるように，データベースから生成された書誌情報では，文書中で参照されたデータベ
+ース項目のみが列挙されています．言い換えれば，データベースアプローチを採用すると，なかんずく実際に引用した項目を確かめるという重荷から解放されます．
 \end_layout
 
 \begin_layout Subsection
 書誌情報環境
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:書誌情報環境-1"
+name "subsec:書誌情報環境"
 
 \end_inset
 
@@ -24030,28 +23786,22 @@ status collapsed
 \family sans
 ラベル
 \family default
-を入力することができるようになります． 鍵は，この文献項目を参照するのに使うシンボリック名です．
-\lang english
-Each entry needs to be given a unique key, which is one word consisting
- of ASCII characters only.
+を入力することができるようになります． 鍵は，この文献項目を参照するのに使うシンボリック名です．各項目は重複のない鍵を与えられなくてはならず，ASCII文字のみ
+を含む一語でなくてはなりません
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
-
-\lang english
-ASCII means 
+ASCIIとは，
 \begin_inset CommandInset href
 LatexCommand href
-name "this set"
+name "この一群"
 target "https://ja.wikipedia.org/wiki/ASCII#ASCII.E5.8D.B0.E5.AD.97.E5.8F.AF.E8.83.BD.E6.96.87.E5.AD.97"
 literal "false"
 
 \end_inset
 
- of characters:
-\lang japanese
-
+の文字のことです．
 \begin_inset Newline newline
 \end_inset
 
@@ -24073,9 +23823,7 @@ https://ja.wikipedia.org/wiki/ASCII
 
 \end_inset
 
-
-\lang japanese
-例えば，この文書の書誌情報の二つめの項目は\SpecialChar LaTeX
+．例えば，この文書の書誌情報の二つめの項目は\SpecialChar LaTeX
 に関する書籍ですが，本文書ではこの書籍の鍵として，その題名を縮めた「latexcompanion」を使っています．
 \end_layout
 
@@ -24130,15 +23878,11 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can also produce author-year or author-number citations, using the\SpecialChar LaTeX
- package
- 
+また，\SpecialChar LaTeX
+パッケージの
 \series bold
 natbib
 \series default
-\lang japanese
 
 \begin_inset Index idx
 status collapsed
@@ -24150,42 +23894,12 @@ latexはつけじ@\SpecialChar LaTeX
 
 \end_inset
 
-
-\lang english
-.
- In order to do so, the label needs to be given the form 
-\begin_inset Quotes eld
-\end_inset
-
-Author(Year)
-\begin_inset Quotes erd
-\end_inset
-
- or 
-\begin_inset Quotes eld
-\end_inset
-
-Author A and Author B(Year)
-\begin_inset Quotes erd
-\end_inset
-
- 
+を使用して，著者-刊行年または著者-番号の形の引用を生成することもできます．そのためには，ラベルは「著者(刊行年)」または「著者A and 著者B(刊行年)」の
+形で，著者と刊行年を分離する開き括弧との間に空白を
 \emph on
-without
+入れずに
 \emph default
- a blank between the author(s) and the opening parenthesis that delimits
- the year.
- Then, if you select 
-\family sans
-Natbib
-\begin_inset space ~
-\end_inset
-
-(BibTeX)
-\family default
- in the document settings
-\lang japanese
-
+，与えられなくてはなりません．文書設定
 \begin_inset Index idx
 status collapsed
 
@@ -24195,29 +23909,27 @@ status collapsed
 
 \end_inset
 
-
-\lang english
- under 
+の
 \family sans
-Bibliography\SpecialChar menuseparator
-Style
-\begin_inset space ~
-\end_inset
-
-format
+書誌情報\SpecialChar menuseparator
+様式整形子
 \family default
- (see 
-\lang japanese
-
+で（
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:書誌情報レイアウト"
 
 \end_inset
 
+を参照）
+\family sans
+Natbib
+\begin_inset space ~
+\end_inset
 
-\lang english
-), you can select between different author-year or author-number styles.
+(BibTeX)
+\family default
+を選択すれば，著者-刊行年または著者-番号の様式を選択できます．
 \end_layout
 
 \begin_layout Standard
@@ -24321,23 +24033,14 @@ http://wiki.lyx.org/BibTeX/Programs
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \SpecialChar LyX
- supports two different approaches to use bibliography databases in a document.
- Bib\SpecialChar TeX
- is the classic technique that has been the only way to use such databases
- for a long time.
- It is quite established and mature and there is a huge range of existing
- styles available.
- But it has its drawbacks, especially when it comes to more complex bibliographi
-c needs and support for specific languages and scripts.
- Those are addressed by 
+は，文書中で書誌情報データベースを使用するのに，2種類のアプローチを使用できます．Bib\SpecialChar TeX
+は，そのようなデータベースを使うための唯一の方法として長く君臨した古典的
+な技術です．これは，確立され成熟し尽くしており，膨大な量の既存スタイルが利用可能です．しかしながら，特に複雑な書誌情報の必要がある場合や，特定の言語やスクリプト
+をサポートする上では，これにも欠陥があります．これらの問題には，
 \series bold
 biblatex
 \series default
-.
-\lang japanese
 
 \begin_inset Index idx
 status collapsed
@@ -24349,55 +24052,41 @@ latexはつけじ@\SpecialChar LaTeX
 
 \end_inset
 
-
-\lang english
- It reads the same database format than Bib\SpecialChar TeX
- (although it has been significantly
- extended beyond Bib\SpecialChar TeX
-'s scope)
+が取り組みを行っています．これは，Bib\SpecialChar TeX
+と同じデータベース形式を読みますが（とはいえBib\SpecialChar TeX
+の範囲よりも大きく拡張されています
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
-Meaning: While 
 \noun on
-Biblatex
+すなわち，Biblatex
 \noun default
- can handle any classic Bib\SpecialChar TeX
- database, Bib\SpecialChar TeX
- might conversely fail to correctly
- handle databases that use specific 
+は，古典的なBib\SpecialChar TeX
+データベースはどれでも取り扱えますが，Bib\SpecialChar TeX
+は逆に特定の
 \noun on
-Biblatex
-\noun default
- features.
+Biblatex機能を使用するデータベースを正しく取り扱うことはできません．
 \end_layout
 
 \end_inset
 
-, but it uses a different framework to generate citations and references
- from it.
+），引用とその参照を生成するのに，異なるフレームワークを使用しています．
 \end_layout
 
 \begin_layout Standard
-
-\lang ngerman
-To select if Bib\SpecialChar TeX
- or 
+Bib\SpecialChar TeX
+を使うか
 \series bold
-\lang english
 biblatex
 \series default
-\lang ngerman
- should be used, set in the document settings (menu
+を使うかを選択するためには，文書設定（メニュー
 \family sans
-\lang japanese
 文書\SpecialChar menuseparator
 設定
 \family default
-)
+）
 \begin_inset Index idx
 status collapsed
 
@@ -24407,32 +24096,20 @@ status collapsed
 
 \end_inset
 
-
-\lang ngerman
-under 
+にある
 \family sans
-\lang english
-Bibliography
+書誌情報
 \family default
-\lang ngerman
- the 
+の
 \family sans
-\lang english
-Style
-\begin_inset space ~
-\end_inset
-
-format
+様式整形子
 \family default
-\lang ngerman
- to a Bib\SpecialChar TeX
- or a 
+でBib\SpecialChar TeX
+形式か
 \family sans
-\lang english
 Biblatex
 \family default
-\lang ngerman
- format.
+形式に設定してください．
 \end_layout
 
 \begin_layout Subsubsection
@@ -24476,7 +24153,7 @@ Bib(la)TeX書誌情報
 \family default
 」のテキストファイルです．お使いの\SpecialChar LaTeX
 頒布版には複数のスタイルファイルが収められており，出版社の多くが特定のスタイルファイルを提供しているので，それを利用すれば，レ
-イアウトの心配をする必要はありません．もちろん，自作のスタイルファイルを作成することもできますが，それは熟練者向けの仕事です．
+イアウトの心配をする必要はありません．もちろん，自作のスタイルファイルを作成することもできますが，それは熟練者向けの仕事です
 \begin_inset Foot
 status collapsed
 
@@ -24502,15 +24179,12 @@ literal "false"
 
 \end_inset
 
-
-\lang english
-In this document we used the Bib\SpecialChar TeX
- style 
+．この文書では，Bib\SpecialChar TeX
+スタイルとして
 \family sans
 alphadin.bst
 \family default
-, which provides an alpha-numeric style in accordance with the German Standards
- Institute (DIN).
+をしています．これは，German Standards Institute (DIN)と整合的なアルファベット-数字様式を提供します．
 \end_layout
 
 \begin_layout Standard
@@ -24544,81 +24218,52 @@ latexはつけじ@\SpecialChar LaTeX
 
 \begin_layout Standard
 
-\lang english
-Accessing a database via 
 \series bold
 biblatex
 \series default
- is almost identical to Bib\SpecialChar TeX
-: Use the menu 
+を使ってデータベースにアクセスするのは，Bib\SpecialChar TeX
+の場合とほぼ同じです．
 \family sans
-\lang japanese
 挿入\SpecialChar menuseparator
 一覧／目次\SpecialChar menuseparator
 Bib(la)TeX書誌情報
 \family default
-．
-\lang english
- In contrary to Bib\SpecialChar TeX
- you cannot select a 
+メニューを使ってください．Bib\SpecialChar TeX
+とは違って，
 \family sans
-style
+様式
 \family default
- file.
- The other dialog options are the same as with
-\lang japanese
-Bib\SpecialChar TeX
-．
+ファイルを選択することはできませんが，他のダイアログオプションはBib\SpecialChar TeX
+と同じです．
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 biblatex
 \series default
- has two different style files: a bibliography style file (text file with
- the file extension
-\lang japanese
-「
+には2つの様式ファイルがあります．書誌情報様式ファイル（ファイル拡張子が「
 \family sans
 .bbx
 \family default
-」
-\lang english
-) controls how the bibliography entries will look like and a citation style
- file (text file with the file extension
-\lang japanese
-「
+」となっているテキストファイル）は，文献項目がどのように見えるかを制御し，引用様式ファイル（ファイル拡張子が「
 \family sans
 .cbx
 \family default
-」
-\lang english
-) controls the look of the citation references in the text.
- Usually such style files come in pairs and it makes sense to use matching
- styles.
- It is nevertheless possible to mix any citation style with any bibliography
- style.
+」となっているテキストファイル）は，本文中で文献参照がどのように見えるかを制御します．通常，これらの様式ファイルは対になって付いてきますので，対で使うのが自然で
+す．しかしながら，書誌情報様式と引用様式を適当に組み合わせることも可能です．
 \end_layout
 
 \begin_layout Standard
 
 \series bold
-\lang english
 biblatex
 \series default
- styles are not set in the 
+様式の設定は，
 \family sans
-Bib(la)TeX
-\begin_inset space ~
-\end_inset
-
-Bibliography
+Bib(la)TeX書誌情報
 \family default
- dialog, but in the document settings.
-\lang japanese
-
+ダイアログではなく，文書設定
 \begin_inset Index idx
 status collapsed
 
@@ -24628,23 +24273,20 @@ status collapsed
 
 \end_inset
 
-
-\lang english
- However, in the dialog in the 
+で行います．しかしながら，ダイアログ中，
+\series bold
+biblatex
+\series default
+を使用する時のみ可視になる
 \family sans
-Options
+オプション
 \family default
- field, which is only visible if you use 
+フィールドには，書誌情報がどのように出力されるかを決定づけるオプション（例えば，ヘディングがどのように現れるかなど）を入力することができます．これらのオプション
+は，
 \series bold
 biblatex
 \series default
-, you can enter options that determine how the bibliography is printed (for
- example how its heading will appear).
- These options are deescribed in detail in the 
-\series bold
-biblatex
-\series default
- manual, 
+説明書
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Biblatex"
@@ -24652,76 +24294,52 @@ literal "true"
 
 \end_inset
 
-.
+で詳細に述べられています．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Inserting a citation reference works as described in section
-\lang japanese
-
+文献参照の挿入については，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:文献データベース"
 
 \end_inset
 
-．
+節で述べられている通りに動作します．
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Bibliography Processors
+文献処理子
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To generate the bibliography from a database, \SpecialChar LyX
- uses a bibliography processor,
- that is an external program that reads the database, sorts the citations
- and processes the data in a way it can be included in the document.
- The classic program is called Bib\SpecialChar TeX
-.
- It has the advantage that it is very mature and widespread, but the disadvantag
-e that it has severe limitations, due to its age.
+データベースから書誌情報を生成するために，\SpecialChar LyX
+文献処理子を使用します．これは，データベースを読み，引用を整序し，文書に取り込めるような形にデータを処理するための外部
+プログラムです．古典的なプログラムはBib\SpecialChar TeX
+と呼ばれるものです．これには，非常に成熟し広く用いられているという利点がありますが，歴史が長いゆえの大きな制約があると
+いう欠点もあります．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Meanwhile, some alternatives have been developed that address some of these
- limitations.
- LyX natively supports some of them and lets you select a custom processor.
- You can do this on a general level in
+その一方，これらの制約に取り組んだ他のプログラムも開発されました．LyXは，それらの一部をネイティブにサポートしていますが，カスタマイズした処理子を選ぶこともで
+きます．これは，一般なレベルに対しては，
 \family sans
-\lang japanese
 ツール\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 出力\SpecialChar menuseparator
 LaTeX
 \family default
-\lang english
-or for individual documents in
+で指定できますし，個別の文書に対しては，
 \family sans
-\lang japanese
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
-書誌情報か
+書誌情報
 \family default
-\lang english
-.
- The following variants are available by default:
+から指定できます．既定では，下記の選択肢があります．
 \end_layout
 
 \begin_layout Description
 biber 
-\lang english
-a specific, modern processor
-\lang japanese
-
 \begin_inset Index idx
 status collapsed
 
@@ -24733,155 +24351,122 @@ latexはつけじ@\SpecialChar LaTeX
 \end_inset
 
 
-\lang english
- developed exclusively for 
 \series bold
 biblatex
 \series default
- (it does not work with Bib\SpecialChar TeX
-!).
- 
+専用に開発された専用の新型処理子です（Bib\SpecialChar TeX
+では動作しません！）．
 \series bold
 biber
 \series default
- provides full Unicode support, unlimited memory and many specific features
- 
+は，Unicodeを完全サポートし，メモリは無制限で，
 \series bold
 biblatex
 \series default
- makes use of; if you use the 
+が使用する多くの機能をサポートします．
 \series bold
 biblatex
 \series default
- approach, it is strongly recommended to use 
+アプローチを採用する場合には，
 \series bold
 biber
 \series default
-.
+を使用することを強くお勧めします．
 \end_layout
 
 \begin_layout Description
-bibtex 
-\lang english
-the standard; does not allow special characters in bibliography entries
- that are not possible to encode in a 7-bit encoding, limited memory, works
- with all bibliography packages, although it will probably fail with 
+bibtex ザ・スタンダードです．文献項目に，7ビットエンコーディングでエンコードできない文字は使用できません．使用可能なメモリは限られており，全ての書誌情報
+パッケージで動作しますが，
 \series bold
 biblatex
 \series default
- bibliographies due to the limited memory.
+書誌情報は，おそらくメモリ不足のために動作しません．
 \end_layout
 
 \begin_layout Description
-bibtex8 8ビットエンコーディングにエンコードできる全ての文字を使うことができます
-\lang english
- (but no Unicode support)
-\lang japanese
-．
+bibtex8 8ビットエンコーディングにエンコードできる全ての文字を使うことができます（ただしUnicodeはサポートしません）．
 \family sans
 bibtex
 \family default
-よりも大きいメモリを使用することができ，全ての書誌情報パッケージで動作します
-\lang english
-, although more complex 
+よりも大きいメモリを使用することができ，全ての書誌情報パッケージで動作しますが，複雑な
 \series bold
 biblatex
 \series default
- bibliographies will exceed its limits, and not all 
+書誌情報ではメモリ制限を超えてしまいますし，全ての
 \series bold
 biblatex
 \series default
- features are supported.
+機能がサポートされているわけではありません．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-By default (with the 
+既定では（
 \family sans
-Processor
-\family default
- set in
-\family sans
-\lang japanese
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
-書誌情報か
+書誌情報
 \family default
-\lang english
-and with 
+で
 \family sans
-Automatic
+処理子
 \family default
- as setting for the 
+が設定され，
 \family sans
-Processor
-\family default
- in
-\family sans
-\lang japanese
 ツール\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 出力\SpecialChar menuseparator
 LaTeX
 \family default
-\lang english
-), \SpecialChar LyX
- selects an appropriate (available) processor for the current bibliography
- approach (
-\series bold
-biber
-\series default
- for 
+で
+\family sans
+処理子
+\family default
+が
+\family sans
+自動
+\family default
+になっている），\SpecialChar LyX
+は現行の文献処理アプローチに最適（かつ利用可能）な処理子を選択します（
 \series bold
 biblatex
 \series default
-, 
+には
+\series bold
+biber
+\series default
+，Bib\SpecialChar TeX
+由来の文献様式には
 \family sans
 bibtex
 \family default
- for Bib\SpecialChar TeX
--based bibliography styles).
- This should suit most needs.
+）．これはほとんどの必要に叶います．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In Japanese documents, a specific processor is used.
- By default this is pBib\SpecialChar TeX
- (in \SpecialChar LyX
- 
+日本語文書では専用の処理子が用いられます．これは，既定では，日本語専用のBib\SpecialChar TeX
+派生であるpBib\SpecialChar TeX
+（\SpecialChar LyX
+では
 \family sans
 pbibtex
 \family default
-), a Bib\SpecialChar TeX
- variant specifically aimed at Japanese.
- You can adjust it in
+）になっています．これは，
 \family sans
-\lang japanese
 ツール\SpecialChar menuseparator
 設定\SpecialChar menuseparator
 出力\SpecialChar menuseparator
 LaTeX
 \family default
-．
+で変更できます．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Selected bibliography processors can be controlled with options that you
- can add below the selection.
- Before adding options, it is strongly recommended that you read the manual
- of Bib\SpecialChar TeX
- or 
+選択した文献処理子を制御するオプションは，選択メニュー下のオプション欄に書きます．オプションを設定する前に，Bib\SpecialChar TeX
+あるいは
 \series bold
 biber
 \series default
-, 
-\lang japanese
-
+の説明書
 \begin_inset CommandInset citation
 LatexCommand cite
 key "BibTeX,biber"
@@ -24889,35 +24474,25 @@ literal "true"
 
 \end_inset
 
-．
+に目を通すことを強くお勧めします．
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Customizing
+微調整
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \SpecialChar LyX
- supports some specific tasks such as sectioned bibliographies and multiple
- bibliographies.
- These are explained in detail in section 
+は，区分された書誌情報や複数の書誌情報などの処理もサポートします．これらは，取扱説明書『
 \emph on
-Customizing Bibliographies
+高度な機能篇
 \emph default
- 
+』の「
 \emph on
-with Bib\SpecialChar TeX
- or Biblatex
+Bib\SpecialChar TeX
+あるいはBiblatexによる書誌情報のカスタマイズ
 \emph default
- of the 
-\emph on
-Additional Features
-\emph default
- manual.
+」の節に詳述されています．
 \end_layout
 
 \begin_layout Subsection
@@ -24942,56 +24517,17 @@ name "subsec:書誌情報レイアウト"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Many different citation formats are common, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-numerical citation (as 
-\begin_inset Quotes eld
-\end_inset
-
-1
-\begin_inset Quotes erd
-\end_inset
-
- like in this document), alpha-numerical citations (as 
-\begin_inset Quotes eld
-\end_inset
-
-Mil08
-\begin_inset Quotes erd
-\end_inset
-
-) or author-year citations (as 
-\begin_inset Quotes eld
-\end_inset
-
-Miller (2008a)
-\begin_inset Quotes erd
-\end_inset
-
-).
- \SpecialChar LyX
- supports these formats via specific citation packages and their style
- files.
+文献引用には，多くの形式が並行して広く用いられています．数字での引用（この文書での「1」など），アルファベット・数字併用の引用（「Mil08」など）あるいは著者
+-刊行年の引用（「Miller (2008a)」など）など．\SpecialChar LyX
+は，これらの形式を，特定の引用パッケージとそれらの付随スタイルファイルを使ってサポートしています．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-By default a simple numeric citation style is used.
- In
+既定では，単純な数値での引用が用いられます．
 \family sans
-\lang japanese
 文書\SpecialChar menuseparator
 設定\SpecialChar menuseparator
-書誌情報か
+書誌情報
 \family default
 
 \begin_inset Index idx
@@ -25003,16 +24539,11 @@ status collapsed
 
 \end_inset
 
-
-\lang english
-you have a range of other options, depending on your preferred bibliography
- approach.
- With the 
+で，好みの文献引用アプローチに合った他の多くのオプションを選ぶことができます．
 \family sans
-Bibliography
+書誌情報
 \family default
- environment your only choice besides manual formatting of the bibliography
- labels, is there to use 
+環境では，文献ラベルを手動整形する以外には，様式整形子に
 \family sans
 Natbib
 \begin_inset space ~
@@ -25020,71 +24551,43 @@ Natbib
 
 (BibTeX)
 \family default
-\series bold
- 
-\series default
-as 
-\family sans
-Style
-\begin_inset space ~
-\end_inset
-
-format
-\family default
- which gives you author-year and author-numerical citations (see above 
-\lang japanese
-
+を使うしかありません．これを使うと，著者-刊行年と著者-数字の引用が行えます（詳細については上記
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:書誌情報環境-1"
+reference "subsec:書誌情報環境"
 
 \end_inset
 
-
-\lang english
- for details).
+節を参照）．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-With a bibliography database (see 
-\lang japanese
-
+書誌情報データベースを使うときには（
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:文献データベース"
 
 \end_inset
 
-
-\lang english
-) one has in contrary to the 
+節参照），
 \family sans
-Bibliography
+書誌情報
 \family default
- environment full access to the formatting styles.
- These style formats are available:
+環境とは違い，整形スタイルへのフルアクセスがなくてはなりません．以下のスタイル形式が利用可能です．
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Basic
+基本
 \begin_inset space ~
 \end_inset
 
-(BibTeX) the default Bib\SpecialChar TeX
--based approached without any additional packages
- (simple numeric citations).
+(BibTeX) 追加パッケージを必要としない，既定のBib\SpecialChar TeX
+アプローチ（単純な数値での引用）．
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Biblatex loads the package
+Biblatex これは
 \series bold
-\lang japanese
 biblatex
 \series default
 
@@ -25098,79 +24601,60 @@ latexはつけじ@\SpecialChar LaTeX
 
 \end_inset
 
-
-\lang english
-and lets you select a style in the dropdown boxes 
+パッケージを読み込んだ上で，下にある
 \family sans
-Biblatex citation style
+Biblatex引用様式
 \family default
- and 
+と 
 \family sans
-Biblatex bibliography style
+Biblatex書誌情報様式
 \family default
- below.
- Options to the package 
+ドロップダウンボックスで様式を選択することができるようになります．
 \series bold
 biblatex
 \series default
- can be entered in the 
+パッケージへのオプションは，
 \family sans
-Options
+オプション
 \family default
- field.
+フィールドに入力できます．
 \end_layout
 
 \begin_layout Description
-
-\lang english
 Biblatex
 \begin_inset space ~
 \end_inset
 
-(natbib
-\begin_inset space ~
-\end_inset
-
-mode) loads the package 
+(natbibモード) これは
 \series bold
 biblatex
 \series default
- with the natbib compatibility mode.
- This is a specific variant for users who switch an existing document that
- uses 
+パッケージをnatbib互換モードで読み込みます．これは，
 \series bold
 natbib
 \series default
- or want to emulate 
-\family sans
-the 
-\family default
+を使用した既存文書を移行したいユーザーや
 \series bold
 natbib
 \series default
- behavior very closely.
- Compared to normal 
+の挙動を非常によくエミュレートしたいユーザー向けの選択肢です．通常の
 \family sans
 Biblatex
 \family default
- this option has some additional styles.
- All 
+に比べると，このオプションには，追加の様式が若干あります．さらに，この選択肢では，
 \series bold
 biblatex
 \series default
- styles are also supported by this variant.
+の全ての様式がサポートされています．
 \end_layout
 
 \begin_layout Description
-
-\lang english
 Jurabib
 \begin_inset space ~
 \end_inset
 
-(BibTeX) loads the package
+(BibTeX) これは，
 \series bold
-\lang japanese
 jurabib
 \series default
 
@@ -25184,21 +24668,16 @@ latexはつけじ@\SpecialChar LaTeX
 
 \end_inset
 
-
-\lang english
-which provides author-year styles particularly suited for law studies.
+パッケージを読み込み，特に法学に適した著者-刊行年様式を提供します．
 \end_layout
 
 \begin_layout Description
-
-\lang english
 Natbib
 \begin_inset space ~
 \end_inset
 
-(BibTeX) loads the package
+(BibTeX) これは，
 \series bold
-\lang japanese
 natbib
 \series default
 
@@ -25212,123 +24691,50 @@ latexはつけじ@\SpecialChar LaTeX
 
 \end_inset
 
-
-\lang english
-which provides citation styles particularly suited for the humanities.
+パッケージを読み込み，特に人文科学に適した引用様式を提供します．
 \end_layout
 
 \begin_layout Standard
 
-\lang english
-The 
 \family sans
 Biblatex
 \family default
- and 
+様式と
 \family sans
 Natbib
 \family default
- style formats provide the choice between author-year and author-numerical
- citation styles.
- You have to select one style in the dropdown box 
+様式では，著者-刊行年引用様式と著者-数値引用様式が選択できます．
 \family sans
-Variant
+類型
 \family default
-.
- Note that for the 
+ドロップダウンボックスから一つを選択してください．
 \family sans
 Biblatex
 \family default
- formats, this only affects the appearance in the \SpecialChar LyX
- workarea.
- Whether the output uses numerical, author-year or another format such as
- alpha-numerical depends only on the selected 
+形式では，これは\SpecialChar LyX
+中での見栄えにしか影響しないことに注意してください．出力が数値になるか，著者-刊行年になるか，アルファベット＋数値のような他の形式になるかは，
 \family sans
-Biblatex citation style
+Biblatex引用様式
 \family default
-.
- However, when switching between Author-year and Author-number, a suitable
- style is proposed.
- With 
+での選択にのみ依存します．しかしながら，著者-刊行年と著者-数値の間を切り替える場合には，適切な様式が提案されます．一方，
 \family sans
 Natbib
 \family default
-, on the other hand, the dialog selection will ultimately determine the
- style.
+では，ダイアログでの選択が様式を最終的に決定します．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For any author-year and author-numerical selection, multiple style variants
- are available in the 
+著者-刊行年や著者-数値を選択した場合には，
 \family sans
-Citation
+文献引用
 \family default
- dialog.
- Some selections also provide further options like the option to uppercase
- a name prefix such as 
-\begin_inset Quotes eld
-\end_inset
-
-van Beethoven
-\begin_inset Quotes erd
-\end_inset
-
- (to 
-\begin_inset Quotes eld
-\end_inset
-
-Van Beethoven
-\begin_inset Quotes erd
-\end_inset
-
-) or to expand or reduce the number of displayed others (i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e.
-\begin_inset space \space{}
-\end_inset
-
-use or don't use 
-\begin_inset Quotes eld
-\end_inset
-
-et al.
-\begin_inset Quotes erd
-\end_inset
-
-).
- 
+ダイアログで複数の派生様式が使用できます．選択肢によっては，「van Beethoven」のような名前の前置語を大文字にするオプション（「Van
+ Beethoven」へ変える）や，表示する他の著者の数を増やしたり減らしたりするオプション（「et al.」を使用するか否かなど）が提供されます．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In the citation dialog you can also set text to appear after a citation
- reference, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
- page numbers, which will then be formatted according to the style's needs
- (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
- with or without 
-\begin_inset Quotes eld
-\end_inset
-
-pp.
-\begin_inset Quotes erd
-\end_inset
-
-)
-\lang japanese
-．以下は，参照の直後に「第3章」という文を設定しています．
+文献引用ダイアログでは，文献参照の後に表示する文章（ページ番号など）を設定し，様式の要請に応じて整形する（「pp.」を付けるか否かなど）ことができます．以下は，参
+照の直後に「第3章」という文を設定しています．
 \end_layout
 
 \begin_layout Standard
@@ -25346,107 +24752,50 @@ literal "true"
 
 \begin_layout Standard
 
-\lang english
-All styles except for 
 \family sans
-Basic (BibTeX)
+基本 (BibTeX)
 \family default
- also provide the feature to add text that precedes the reference (such
- as 
-\begin_inset Quotes eld
-\end_inset
-
-cf.
-\begin_inset Quotes erd
-\end_inset
-
-).
- This text is then also included in the parentheses, if the style requires
- this.
+以外の全ての様式は，参照の前に文字を置く機能を提供しています（「cf.」など）．様式が要請するならば，この文字も括弧に入れられます．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Note that these pre- and postnotes apply to the whole citation.
- So if you refer to multiple references at once, the prenote will precede
- the first citation in the list, the postnote will follow the last.
- Some 
+これらの前置文字列や後置文字列は，引用全体に対して適用されることに注意してください．つまり，一度に複数の文献を参照する場合，前置文字列は，リスト中の最初の引用の
+前に置かれ，後置文字列は最後の引用の後に来ます．
 \family sans
 Biblatex
 \family default
- styles allow to add pre- and postnotes to any individual reference in a
- multi-citation (so-called 
-\begin_inset Quotes eld
-\end_inset
-
-qualified citation lists
-\begin_inset Quotes erd
-\end_inset
-
-).
- \SpecialChar LyX
- supports this.
- If you use such a style and if the current reference includes multiple
- items the 
+様式のうちには，複数引用における個別参照それぞれに前置・後置文字列を置くことができるものもあります（いわゆる「qualified citation
+ lists」）．\SpecialChar LyX
+はこれをサポートしています．このような様式を使用している時に，現在の参照が複数の項目を含む場合，
 \family sans
-Citation
+文献引用
 \family default
- dialog will display three columns in the field 
+ダイアログには，
 \family sans
-Selected Citations
+選択された文献
 \family default
-: 
+フィールドに
 \family sans
-Text
-\begin_inset space ~
-\end_inset
-
-before
+前置文字列
 \family default
-, 
+・
 \family sans
-Cite
-\begin_inset space ~
-\end_inset
-
-key
+引用キー
 \family default
- and 
+・
 \family sans
-Text
-\begin_inset space ~
-\end_inset
-
-after
+後置文字列
 \family default
-.
- If you double-click on an item's 
+の3つのコラムが表示されます．項目の
 \family sans
-Text
-\begin_inset space ~
-\end_inset
-
-before
+前置文字列
 \family default
- or 
+もしくは
 \family sans
-Text
-\begin_inset space ~
-\end_inset
-
-after
+後置文字列
 \family default
- field, you can add such individual pre- and postnotes.
- In the 
-\family sans
-General text before
-\family default
- and 
-\family sans
-General text after
-\family default
- fields you can add pre- and postnotes that apply to the whole list.
+フィールドをダブルクリックすると，個別の前置・後置文字列を加えることができます．全体前置文字列と全体後置文字列フィールドでは，リスト全体に適用される前置・後置文
+字列を加えることができます．
 \end_layout
 
 \begin_layout Section
@@ -27385,25 +26734,16 @@ ontgenです．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are also inverted branch insets, whose content is output just in case
- the branch is 
+また，反転派生枝もあり，派生枝が有効化されてい
 \emph on
-not
+ない
 \emph default
- activated.
- This make it easy to add alternative text for different versions of a document.
- To control whether a particular inset is inverted, right-click on the inset
- button and choose 
+時に内容が出力されます．これによって，文書の異なるバージョンごとに別の文章を加えることが簡単にできるようになります．特定の差込枠が反転されているかどうかを制御す
+るには，差込枠ボタンを右クリックして，
 \family sans
-Invert
-\begin_inset space ~
-\end_inset
-
-Inset
+派生枝を反転
 \family default
-.
+を選択してください．
 \end_layout
 
 \begin_layout Standard
@@ -28465,9 +27805,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-通常，ヘッダとフッタは文頭で設定しますが，お望みならば，どこででも変更することができます．
-\lang english
-These environments can be selected in the environment pull-down box.
+通常，ヘッダとフッタは文頭で設定しますが，お望みならば，どこででも変更することができます．これらの環境は，環境プルダウンボックスから選択することができます．
 \end_layout
 
 \begin_layout Standard
@@ -30187,14 +29525,12 @@ enchant自体は，いろいろなバックエンドを設定できるラッパ�
 \family typewriter
 hunspell
 \family default
-のみ利用できます．
-\lang english
-\SpecialChar LyX
- on Mac
+のみ利用できます．Mac
 \begin_inset space ~
 \end_inset
 
-OS can also use Mac's own spellchecker and will use it by default.
+OS版の\SpecialChar LyX
+では，Mac自身のスペルチェッカーを使用することもでき，それが既定値になっています．
 \end_layout
 
 \begin_layout Description
@@ -30655,7 +29991,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename ../clipart/ChangesToolbar.png
+	filename /clipart/ChangesToolbar.png
 
 \end_inset
 
@@ -35108,7 +34444,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename ../clipart/ExtraToolbar.png
+	filename /clipart/ExtraToolbar.png
 	width 100col%
 
 \end_inset
@@ -35895,7 +35231,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename ../clipart/ViewToolbar.png
+	filename /clipart/ViewToolbar.png
 
 \end_inset
 
@@ -36875,7 +36211,11 @@ ASCII ASCII文字コード．通常の英語(7ビットASCII)しかカバーし�
 \end_layout
 
 \begin_layout Description
-ユニコード(CJK)(utf8)
+Unicode
+\begin_inset space ~
+\end_inset
+
+(CJK)(utf8)
 \series bold
  CJK
 \series default
@@ -36895,7 +36235,11 @@ latexはつけじ@\SpecialChar LaTeX
 \end_layout
 
 \begin_layout Description
-ユニコード(Xe\SpecialChar TeX
+Unicode
+\begin_inset space ~
+\end_inset
+
+(Xe\SpecialChar TeX
 )(utf8) Unicodeを直接使用する
 \family sans
 Xe\SpecialChar TeX
@@ -36919,7 +36263,11 @@ inputenc
 \end_layout
 
 \begin_layout Description
-ユニコード(UCS拡張版)(utf8x) 
+Unicode
+\begin_inset space ~
+\end_inset
+
+(UCS拡張版)(utf8x) 
 \series bold
 ucs
 \series default
@@ -36939,7 +36287,11 @@ latexはつけじ@\SpecialChar LaTeX
 \end_layout
 
 \begin_layout Description
-ユニコード(utf8) 
+Unicode
+\begin_inset space ~
+\end_inset
+
+(utf8) 
 \series bold
 inputenc
 \series default
@@ -37438,16 +36790,8 @@ latexはつけじ@\SpecialChar LaTeX
 
 \end_inset
 
-を使用した引用様式を使うかどうかを指定することができます．
-\lang english
-If you use Bib\SpecialChar TeX
-, you can enable a 
-\family sans
-Sectioned bibliography
-\family default
- using the
-\lang japanese
-\SpecialChar LaTeX
+を使用した引用様式を使うかどうかを指定することができます．Bib\SpecialChar TeX
+を使用している時には，\SpecialChar LaTeX
 パッケージ
 \series bold
 bibtopic
@@ -37463,20 +36807,19 @@ latexはつけじ@\SpecialChar LaTeX
 
 \end_inset
 
-．
-\lang english
- If you use 
+を使用した
+\family sans
+区分された書誌情報
+\family default
+を有効にすることができます．
 \noun on
 Biblatex
 \noun default
-, you can select the style files and specify further options.
- Finally, you can select a document-specific 
+を使用している時には，スタイルファイルを選択してオプションを指定することができます．最後に，文書ごとに書誌情報の生成に使用する
 \family sans
-Processor
+処理子
 \family default
- for the generation of the bibliography
-\lang japanese
-詳しくは，第
+を選択することができます．詳しくは，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:書誌情報"
@@ -37951,14 +37294,10 @@ reference "sec:派生枝"
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Formats
-\lang japanese
-
+形式
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:出力"
+name "sec:形式"
 
 \end_inset
 
@@ -38037,45 +37376,29 @@ XHTMLでの数式出力
 \end_layout
 
 \begin_layout Description
-
-\lang english
-LyX
-\begin_inset space ~
-\end_inset
-
-Format The option 
+LyX形式 
 \family sans
-Save transient properties
+一時特性を保存
 \family default
- controls whether document settings that are frequently switched or that
- are specific to the user are saved with the document.
- The properties that are affected by option are currently
+オプションは，頻繁に書き換えられる文書設定やユーザー個別の設定などを文書とともに保存するかどうかを制御するものです．オプションによって制御される特性は，現在のと
+ころ
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
-the activation of change tracking
+変更追跡の有効無効
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-the output of tracked changes
+追跡された変更の出力
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-the recording of the document directory path.
+文書ディレクトリパスの記録
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Disabling the option can prevent issues in collaborative work and/or when
- using a version control system (for instance unnecessary merge conflicts).
+です．このオプションを無効にしておくことで，協働作業やバージョン管理システムを使用している時に生じうる問題（例えば不必要なマージ衝突など）を回避できます．
 \end_layout
 
 \end_deeper
@@ -38572,10 +37895,8 @@ arg   "closetab"
 
 
 \family default
-)現れるようになります．無効の場合には，各文書タブごとに閉ボタンが付きます．
-\lang english
-Regardless of this option, one can always close a tab by middle-clicking
- it in the tab bar.
+)現れるようになります．無効の場合には，各文書タブごとに閉ボタンが付きます． このオプションに関わらず，タブバーをミドルクリックすることによって，いつでもタブを
+閉じることができます．
 \end_layout
 
 \begin_layout Standard
@@ -39338,10 +38659,6 @@ bind
 \end_inset
 
 のようになっています．
-\end_layout
-
-\begin_layout Standard
-
 \lang english
 Note, though, that the key combination definition uses a specific syntax.
  This applies to the designators of specific modifier keys (e.

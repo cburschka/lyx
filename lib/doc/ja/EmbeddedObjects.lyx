@@ -2,8 +2,8 @@
 \lyxformat 544
 \begin_document
 \begin_header
-\save_transient_properties true
-\origin /systemlyxdir/doc/ja/
+\save_transient_properties false
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 %% Added by the translator
@@ -219,7 +219,7 @@ End
 \use_microtype false
 \use_dash_ligatures false
 \graphics default
-\default_output_format default
+\default_output_format pdf3
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -343,7 +343,7 @@ status collapsed
 
 
 \family sans
-第2.3.x版
+第2.2.x版
 \end_layout
 
 \begin_layout Standard
@@ -651,7 +651,7 @@ reference "sec:画像形式"
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../clipart/2D-intensity-plot.pdf
+	filename /clipart/2D-intensity-plot.pdf
 	scaleBeforeRotation
 	rotateOrigin center
 
@@ -667,7 +667,7 @@ reference "sec:画像形式"
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../clipart/2D-intensity-plot.pdf
+	filename /clipart/2D-intensity-plot.pdf
 	draft
 	scaleBeforeRotation
 	rotateOrigin center
@@ -746,14 +746,14 @@ arg   "float-insert figure"
 メニューを用いると，「図 #」（#は実際には数字です）というラベルのキャプションを持ったフロートが挿入されます．画像は，図
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:A-star-structure"
+reference "fig:星形"
 
 \end_inset
 
 のようにキャプションの上に置くこともできますし，図
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:A-3D-object"
+reference "fig:3Dオブジェクト"
 
 \end_inset
 
@@ -776,7 +776,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../clipart/Star-structure.pdf
+	filename /clipart/Star-structure.pdf
 	width 50col%
 	scaleBeforeRotation
 	rotateOrigin center
@@ -792,13 +792,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:A-star-structure"
+name "fig:星形"
 
 \end_inset
 
-
-\lang english
-A star structure in a float.
+フロート中の星形
 \end_layout
 
 \end_inset
@@ -823,13 +821,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:A-3D-object"
+name "fig:3Dオブジェクト"
 
 \end_inset
 
-
-\lang english
-A 3D object.
+3Dオブジェクト
 \end_layout
 
 \end_inset
@@ -840,7 +836,7 @@ A 3D object.
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../clipart/3D-structure-distort.pdf
+	filename /clipart/3D-structure-distort.pdf
 	scale 80
 	scaleBeforeRotation
 	rotateOrigin center
@@ -868,14 +864,14 @@ status collapsed
 第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:A-star-structure"
+reference "fig:星形"
 
 \end_inset
 
 図と第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:A-3D-object"
+reference "fig:3Dオブジェクト"
 
 \end_inset
 
@@ -965,7 +961,7 @@ status open
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -977,9 +973,7 @@ name "fig:Pink-object"
 
 \end_inset
 
-
-\lang english
-Pink object.
+ももいろオブジェクト
 \end_layout
 
 \end_inset
@@ -989,7 +983,7 @@ Pink object.
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/3D-structure-distort.pdf
+	filename /clipart/3D-structure-distort.pdf
 	width 45col%
 	scaleBeforeRotation
 	groupId distorted
@@ -1021,9 +1015,7 @@ name "fig:A-star"
 
 \end_inset
 
-
-\lang english
-A star.
+ほし
 \end_layout
 
 \end_inset
@@ -1033,7 +1025,7 @@ A star.
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/Star-structure.pdf
+	filename /clipart/Star-structure.pdf
 	width 45col%
 	scaleBeforeRotation
 	groupId distorted
@@ -1062,7 +1054,7 @@ name "fig:歪められた二つの像"
 
 \end_inset
 
-歪められた二つの像．両画像とも，「歪曲」画像設定グループに属しています．
+二つの像．両画像とも「distorted」画像設定グループに属しています．
 \end_layout
 
 \end_inset
@@ -18178,7 +18170,7 @@ reference "tab:色付き罫線の表"
 
 \end_inset
 
-は，縦横罫線を色付けした例です．
+は，縦横罫線を着色した例です．
 \end_layout
 
 \begin_layout Standard
@@ -18352,12 +18344,9 @@ arrayrulewidth}{1.2pt}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To color only some of the table lines another strategy is necessary.
- To color all following horizontal lines, insert this command as \SpecialChar TeX
- code as
- last thing in the row that should be above the first colored line:
+一部の罫線のみを着色するには，別の攻略法が必要です．以後の横罫線を全て着色するには，下記のコマンドを，最初の着色罫線の直前に来る行の，行末の\SpecialChar TeX
+コードとして挿入して
+ください．
 \end_layout
 
 \begin_layout Standard
@@ -18373,10 +18362,7 @@ arrayrulecolor{blue}%
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To go back to black lines, add this command as first thing in the row that
- is above the black lines:
+黒色の罫線に戻るには，黒色罫線の直前に来る行の行頭に下記のコマンドを加えてください．
 \end_layout
 
 \begin_layout Standard
@@ -18388,22 +18374,14 @@ arrayrulecolor{black}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-With this one can color table lines like in Table
-\begin_inset space ~
-\end_inset
-
-
+このようにして，表
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-with-different-hor"
+reference "tab:着色水平罫線表"
 
 \end_inset
 
-.
- However, with this method it is not possible to color the line above the
- first row of a table.
+のように罫線に色をつけることができます．しかしながら，この方法では，表の最初の行の上の罫線は着色することはできません．
 \end_layout
 
 \begin_layout Standard
@@ -18416,15 +18394,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-with-different-hor"
+name "tab:着色水平罫線表"
 
 \end_inset
 
-Table with different horizontal line colors.
+異なる色の横罫線を持つ表
 \end_layout
 
 \end_inset
@@ -18919,23 +18895,15 @@ arrayrulecolor{blue}%
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-To change the color of vertical lines within a row, like in Table
-\begin_inset space ~
-\end_inset
-
-
+表
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-with-different-ver"
+reference "tab:別色縦罫線表"
 
 \end_inset
 
-, one needs to use multicolumns.
- At first one needs to remove all vertical lines that don't run along the
- whole column.
- Now one colors all lines using the command
+のように行内の縦罫線の色を変更するには，連結列を使う必要があります．まず始めに，列全体に渡らない縦罫線を全て削除します．それから，前例のように，全罫線を以下のコ
+マンドを使って着色します．
 \end_layout
 
 \begin_layout Standard
@@ -18951,12 +18919,8 @@ arrayrulecolor{blue}%
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-as above.
- Finally one inserts this command as \SpecialChar TeX
- code to every cell in the row where
- one needs a vertical line in a different color:
+最後に，縦罫線の色を変える必要のある行の全てのセルに\SpecialChar TeX
+コードで下記のコマンドを挿入します．
 \end_layout
 
 \begin_layout Standard
@@ -18976,18 +18940,13 @@ vline}}{
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This adds a vertical line to both sides of the cell.
- The left one will be green, the right one red.
- If no color change is necessary one can omit the 
+これで，セルの両側に縦罫線が追加され，左側の罫線は緑，右側の罫線は赤になります．色を変える必要がなければ，上記コマンド中，
 \series bold
 
 \backslash
 color
 \series default
- command in the above command.
- To get for example a black left line and a blue right line you can write:
+コマンドは要りません．黒の左罫線と青の右罫線を得るには，全罫線がすでに青に設定されていますので，
 \end_layout
 
 \begin_layout Standard
@@ -19003,27 +18962,23 @@ vline}c|}{
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-because the color blue was already set for all lines.
- The 
+と書きます．ここで，
 \series bold
 |
 \series default
- creates hereby the vertical line while 
-\series bold
-
-\backslash
-vline
-\series default
- does this when 
+は縦罫線を生成しますが，
 \series bold
 
 \backslash
 color
 \series default
- is used.
- To set vertical lines without changing any color use
+が使用されている時には，
+\series bold
+
+\backslash
+vline
+\series default
+が同じ働きをします．色を全く変えないで縦罫線を設定するには，
 \end_layout
 
 \begin_layout Standard
@@ -19035,15 +18990,12 @@ multicolumn{1}{|c|}{
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-After this command insert the cell content the normal way and end the cell
- with a closing brace 
+とします．このコマンドの後に，セルの内容を通常通り挿入し，\SpecialChar TeX
+コードで閉じ括弧
 \series bold
 }
 \series default
- in \SpecialChar TeX
- code.
+を入れてセルを終わります．
 \end_layout
 
 \begin_layout Standard
@@ -19056,15 +19008,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "tab:Table-with-different-ver"
+name "tab:別色縦罫線表"
 
 \end_inset
 
-Table with different vertical line colors in one row.
+一行中に異なる色の縦罫線を持つ表
 \end_layout
 
 \end_inset
@@ -25160,66 +25110,31 @@ literal "true"
 \end_inset
 
 
-\lang english
-The options 
 \family sans
-Plural
+複数形
 \family default
- and 
+と
 \family sans
-Capitalized
+大文字化
 \family default
- are only available if you use the \SpecialChar LaTeX
--package 
+のオプションは，\SpecialChar LaTeX
+パッケージ
 \series bold
 refstyle
 \series default
-.
- Both options are not useful for Japanese documents because 
+を使用している時のみ，利用可能になります．
 \family sans
-Plural
+複数形
 \family default
- adds an 
+は，例えば「images」のように単語に
 \emph on
 s
 \emph default
- to the name, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset Quotes eld
-\end_inset
-
-images
-\begin_inset Quotes erd
-\end_inset
-
- and 
+を付けるものであり，
 \family sans
-Capitalized
+大文字化
 \family default
- outputs the name capitalized, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-
-\begin_inset Quotes eld
-\end_inset
-
-Image
-\begin_inset Quotes erd
-\end_inset
-
-.
+は「Image」のように単語を大文字にするものですので，日本語文書には有用ではありません．
 \end_layout
 
 \begin_layout Description
@@ -25238,16 +25153,7 @@ reference "fig:歪められた二つの像"
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Label
-\begin_inset space ~
-\end_inset
-
-only: prints only the \SpecialChar LaTeX
- label for the reference: 
-\lang japanese
-
+ラベルのみ これは，
 \begin_inset CommandInset ref
 LatexCommand labelonly
 reference "fig:歪められた二つの像"
@@ -25257,21 +25163,17 @@ noprefix "false"
 
 \end_inset
 
-
-\lang english
-
+のように参照の\SpecialChar LaTeX
+ラベルのみ出力します．
 \begin_inset Newline newline
 \end_inset
 
-This allows to use the label for commands in \SpecialChar TeX
- code.
- With the option 
+これによって，ラベルを\SpecialChar TeX
+コード中でしようできるようになります．
 \family sans
-No Prefix
+接頭辞なし
 \family default
- one can omit the prefix of the label name: 
-\lang japanese
-
+オプションを使えば，ラベル名の接頭辞を
 \begin_inset CommandInset ref
 LatexCommand labelonly
 reference "fig:歪められた二つの像"
@@ -25281,7 +25183,7 @@ noprefix "true"
 
 \end_inset
 
-
+のように取り除くことができます．
 \end_layout
 
 \begin_layout Standard
@@ -26947,7 +26849,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../clipart/2D-intensity-plot.pdf
+	filename /clipart/2D-intensity-plot.pdf
 	width 100col%
 	scaleBeforeRotation
 
@@ -27002,7 +26904,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../clipart/Star-structure.pdf
+	filename /clipart/Star-structure.pdf
 	width 100col%
 	scaleBeforeRotation
 
@@ -27429,7 +27331,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../clipart/2D-intensity-plot.pdf
+	filename /clipart/2D-intensity-plot.pdf
 	scaleBeforeRotation
 
 \end_inset
@@ -28753,7 +28655,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/3D-structure-distort.pdf
+	filename /clipart/3D-structure-distort.pdf
 	scale 50
 	scaleBeforeRotation
 
@@ -29100,7 +29002,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/3D-structure-distort.pdf
+	filename /clipart/3D-structure-distort.pdf
 	scale 50
 	scaleBeforeRotation
 
@@ -29820,7 +29722,7 @@ arg   "footnote-insert"
 挿入\SpecialChar menuseparator
 脚註
 \family default
-メニューを使って挿入することができます．すると，脚註文を挿入したところに，
+メニューを使って挿入することができます．すると，脚註文を挿入したとこ
 \begin_inset Graphics
 	filename clipart/footnote.png
 	scale 95
@@ -30720,7 +30622,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/without_fntright.pdf
+	filename /clipart/without_fntright.pdf
 	width 100col%
 	scaleBeforeRotation
 
@@ -30787,7 +30689,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/with_fntright.pdf
+	filename /clipart/with_fntright.pdf
 	width 100col%
 	scaleBeforeRotation
 
@@ -30904,7 +30806,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/endnotes.pdf
+	filename /clipart/endnotes.pdf
 	width 100col%
 	scaleBeforeRotation
 
@@ -34638,7 +34540,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../clipart/platypus.eps
+	filename /clipart/platypus.eps
 	lyxscale 50
 	width 25col%
 
@@ -35343,7 +35245,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/platypus.eps
+	filename /clipart/platypus.eps
 	lyxscale 50
 	width 25col%
 
@@ -35545,7 +35447,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/mobius.eps
+	filename /clipart/mobius.eps
 	width 40col%
 	scaleBeforeRotation
 	rotateOrigin center
@@ -36438,7 +36340,7 @@ begin{window}[2,c,{
 
 
 \begin_inset Graphics
-	filename ../clipart/mobius.eps
+	filename /clipart/mobius.eps
 	lyxscale 60
 	width 40col%
 	scaleBeforeRotation
@@ -37200,7 +37102,7 @@ literal "false"
 \end_layout
 
 \begin_layout Description
-Gnumeric表計算表 このひな形では，
+Gnumeric表計算表 このひな型では，
 \series bold
 
 \begin_inset CommandInset href
@@ -37375,6 +37277,72 @@ Preview
 \end_layout
 
 \begin_layout Description
+この外部ひな型は，\SpecialChar LaTeX
+で書かれたテキストを含むベクトルグラフィック画像(SVG)をサポートします．ただし，
+\noun on
+Inkscape
+\noun default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Inkscape"
+literal "false"
+
+\end_inset
+
+プログラムで図をPDFとして保存する際に，
+\family sans
+Omit text in PDF and create LaTeX file
+\family default
+オプションを指定することが前提です．これによって，\SpecialChar LaTeX
+がテキストを組版できる形で，SVG画像をインクルードすることができます．このようなSVGを使う利点として，文書
+全体で文字様式を統一することができることが挙げられます．
+\begin_inset Newline newline
+\end_inset
+
+SVGのテキスト中では， 
+\series bold
+
+\backslash
+Large
+\series default
+や
+\series bold
+
+\backslash
+small
+\series default
+のような\SpecialChar TeX
+コードコマンドを使用することができます．フォントの大きさは，\SpecialChar LyX
+文書の設定から採用されます．詳しい情報と用例については
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Inkscape"
+literal "false"
+
+\end_inset
+
+を参照してください．
+\begin_inset Newline newline
+\end_inset
+
+このように画像テキストは，周囲のフォント設定を考慮に入れますが，\SpecialChar LyX
+中のプレビューではそうならないことに注意してください．外部差込枠をプレビュー差込枠の中に入れると
+（
+\family sans
+挿入\SpecialChar menuseparator
+プレビュー
+\family default
+メニュー），より良い結果が得られます．
+\begin_inset Newline newline
+\end_inset
+
+このひな型は，Xfigサポートと非常に似た動作をします．\SpecialChar LyX
+は画像中のテキストを独立した\SpecialChar TeX
+ファイルに抜き出し，残りをPDFファイルに生成します．
+\end_layout
+
+\begin_layout Description
 Lilypond組版楽譜 このひな型は，
 \series bold
 
@@ -37532,7 +37500,7 @@ setbeamertemplate{background canvas}{}
 
 
 \begin_inset Graphics
-	filename ../clipart/Abstract.pdf
+	filename /clipart/Abstract.pdf
 	rotateAngle -5
 	rotateOrigin leftBottom
 
@@ -37643,7 +37611,7 @@ reference "sec:画像ダイアログ"
 ダイアログを使って挿入される画像と同じように取り扱うことができます．右記は，ベクトル画像を挿入した例です．
 \begin_inset External
 	template VectorGraphics
-	filename ../clipart/SVG-Drawing.svg
+	filename /clipart/SVG-Drawing.svg
 	lyxscale 50
 	scale 33
 
@@ -37951,7 +37919,7 @@ textvisiblespace
 以下は，原文儘として挿入された子文書です． 
 \begin_inset CommandInset include
 LatexCommand verbatiminput
-filename "../DummyTextDocument.txt"
+filename "DummyTextDocument.txt"
 
 \end_inset
 
@@ -37966,7 +37934,7 @@ filename "../DummyTextDocument.txt"
 オプションを指定して，原文儘として挿入された子文書です． 
 \begin_inset CommandInset include
 LatexCommand verbatiminput*
-filename "../DummyTextDocument.txt"
+filename "DummyTextDocument.txt"
 
 \end_inset
 
@@ -38163,11 +38131,8 @@ status collapsed
 
 \end_inset
 
-
-\lang english
-or
+または
 \series bold
-\lang japanese
 minted
 \series default
 
@@ -38182,94 +38147,81 @@ status collapsed
 
 \end_inset
 
-は，使用中の文書にプログラムソースコードを挿入する強力で柔軟な方法を提供します．
-\lang english
-One can only use one of these packages in a document.
- 
+は，使用中の文書にプログラムソースコードを挿入する強力で柔軟な方法を提供します．一文書中では，これらのパッケージのうち一つしか使うことができません．既定値では，
 \series bold
 listings
 \series default
- is used by default.
+が用いられます．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+【註】
 \series default
- \SpecialChar LyX
- does NOT want to encourage users to add the 
+\SpecialChar LyX
+は，ユーザーが変換子の定義に
 \family typewriter
 -shell-escape
 \family default
- option to converter definitions.
- It works, but it is a huge security risk.
- There is an active discussion about how to handle this.
- Once that's been resolved, this can be updated appropriately.
+オプションを付けることを推奨したく
+\emph on
+ありません
+\emph default
+．これは動作しますが，莫大なセキュリティリスクを背負い込むことになります．これへの対処については，活発な議論が交わされています．これは，解決次第，適切にアップデ
+ートされる可能性があります．
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 =====
 \end_layout
 
 \begin_layout Plain Layout
 
-\lang english
-In order to use 
 \series bold
 minted
 \series default
-, you need to select it as the syntax highlighting package in the document
- settings under 
+を使うためには，文書設定の
 \family sans
-Listings
+プログラムリスト
 \family default
-.
- 
+で，文法ハイライト用パッケージとしてこれを選択する必要があります．さらに，
 \series bold
 minted
 \series default
- requires also additionally the module 
-\family sans
-pygments
-\family default
- of the software 
+は，追加的に
 \noun on
 Python
 \noun default
-
+ソフトウェアの
+\family sans
+pygments
+\family default
+モジュールを必要とし
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Under \SpecialChar LyX
- for Windows 
+Windows版\SpecialChar LyX
+では，
 \family sans
 pygments
 \family default
- is already installed.
+はすでに導入済みです．
 \end_layout
 
 \end_inset
 
- and the option 
+，\SpecialChar LaTeX
+処理子に
 \family typewriter
 -shell-escape
 \family default
- for the \SpecialChar LaTeX
- processor.
- If you want for example view or export your document as the format 
+オプションを付ける必要があります．例えば，文書を
 \family sans
 PDF
 \begin_inset space ~
@@ -38277,18 +38229,13 @@ PDF
 
 (pdflatex)
 \family default
-, go to the \SpecialChar LyX
- preferences and there to the section 
+形式で閲覧・書き出ししたい場合には，\SpecialChar LyX
+設定の
 \family sans
-File
-\begin_inset space ~
-\end_inset
-
-Handling\SpecialChar menuseparator
-Converters
+ファイル処理\SpecialChar menuseparator
+変換子
 \family default
-.
- There go to the entry 
+に行って，
 \family sans
 LaTeX
 \begin_inset space ~
@@ -38300,14 +38247,11 @@ LaTeX
 
 (pdflatex)
 \family default
- and look at the field 
+項目を開き，
 \family sans
-Converter
+変換子
 \family default
-.
- There you see by default the content
-\lang japanese
-
+フィールドを見ます．この内容は，既定では
 \begin_inset Newline newline
 \end_inset
 
@@ -38319,11 +38263,7 @@ pdflatex $$i
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-Now change it to
-\lang japanese
-
+となっているはずですが，これを
 \begin_inset Newline newline
 \end_inset
 
@@ -38335,21 +38275,19 @@ pdflatex $$i -shell-escape
 
 
 \series default
-\lang english
-and press the 
+に変更して，
 \family sans
-Modify
+修正
 \family default
- button and subsequently 
+ボタンを押し，引き続き
 \family sans
-Apply
+適用
 \family default
- or 
+か
 \family sans
-Save
+保存
 \family default
-.
- The same can be done for the output formats 
+を押してください．
 \family sans
 PDF
 \begin_inset space ~
@@ -38357,7 +38295,7 @@ PDF
 
 (LuaTeX)
 \family default
- and 
+や
 \family sans
 PDF
 \begin_inset space ~
@@ -38365,7 +38303,7 @@ PDF
 
 (XeTeX)
 \family default
-.
+の出力形式に対しても，同じことを行います．
 \end_layout
 
 \end_inset
@@ -38451,11 +38389,7 @@ h
 \family sans
 キャプション
 \family default
-メニューを使えば
-\lang english
-that are not inline
-\lang japanese
-，プログラムリストにキャプションを付けることができます．プログラムリストは，フロート同様，リスト
+メニューを使えば，行中でないプログラムリストには，キャプションを付けることができます．プログラムリストは，フロート同様，リスト
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "lst:ListFloat"
@@ -38523,29 +38457,18 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-【註】
+【註】listings
 \series default
-\lang english
-The 
-\series bold
-listings
-\series default
- package places captions before the listing by default.
+パッケージは，既定ではプログラムリストの前にキャプションを置きます．
 \begin_inset Newline newline
 \end_inset
 
-The 
+
 \series bold
 minted
 \series default
- package places them after the listing by default if it is floating.
- If tit is not floating  caption will be typeset before the listing if it
- is inserted to its first line, otherwise  it will be typeset after the
- listing.
- If you want to force the placement in avery case before the listing, you
- have to add the following lines as last thing to the preamble:
-\lang japanese
-
+パッケージは，フロートの場合，既定ではプログラムリストの後にキャプションを置きます．フロートでない場合には，キャプションは，一行目に入れられた場合にはプログラム
+リストの前に組版され，そうでなければリストの後に置かれます．常にプログラムリストの前に置くように強制するためには，プリアンブルの最後に下記の行を加えてください．
 \begin_inset Newline newline
 \end_inset
 
@@ -38585,17 +38508,12 @@ floatstyle{plaintop}
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-The package 
+文書全体を対象とするフロート配置設定を行うと，\SpecialChar LyX
+は自動的に
 \series bold
 float
 \series default
- will be loaded automatically by \SpecialChar LyX
- when you use special document-wide float
- placement settings 
-\lang japanese
-．これが二度読み込まれることを防ぐために，上記のコマンドでは
+パッケージを読み込みます．これが二度読み込まれることを防ぐために，上記のコマンドでは
 \series bold
 
 \backslash
@@ -38696,19 +38614,15 @@ status open
 \end_layout
 
 \begin_layout Standard
-さらに行の範囲を指定することもでき，この場合にはこれらの行のみが出力に表示されます．プログラムリスト中でドイツ語のウムラウトのような国字を使用する場合には
-\lang english
-is only meaningful for the 
-\series bold
-listings
-\series default
- package and
-\lang japanese
-，
+さらに行の範囲を指定することもでき，この場合にはこれらの行のみが出力に表示されます．
 \family sans
 拡張文字コード表を使う
 \family default
-オプションを使用しなくてはなりません．
+オプションは，
+\series bold
+listings
+\series default
+パッケージにのみ有効であり，プログラムリスト中でドイツ語のウムラウトのような国字を使用する場合に使用します．
 \begin_inset Newline newline
 \end_inset
 
@@ -39047,12 +38961,10 @@ frac{1}{x^{2}}$
 \series bold
 listings
 \series default
-\lang english
-and 
+及び
 \series bold
 minted
 \series default
-\lang japanese
 パッケージについての詳しい情報については，取扱説明書
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -44564,19 +44476,6 @@ literal "true"
 \end_inset
 
 
-\lang english
-Documentation of the option 
-\begin_inset CommandInset href
-LatexCommand href
-name "Omit text in PDF"
-target "http://tug.ctan.org/tex-archive/info/svg-inkscape/InkscapePDFLaTeX.pdf"
-literal "false"
-
-\end_inset
-
- of the program
-\lang japanese
- 
 \noun on
 
 \begin_inset CommandInset href
@@ -44587,7 +44486,18 @@ literal "false"
 
 \end_inset
 
+プログラムの
+\noun default
 
+\begin_inset CommandInset href
+LatexCommand href
+name "Omit text in PDF"
+target "http://tug.ctan.org/tex-archive/info/svg-inkscape/InkscapePDFLaTeX.pdf"
+literal "false"
+
+\end_inset
+
+オプションの取扱説明書
 \end_layout
 
 \begin_layout Standard

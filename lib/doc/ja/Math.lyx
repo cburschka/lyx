@@ -2,8 +2,8 @@
 \lyxformat 544
 \begin_document
 \begin_header
-\save_transient_properties true
-\origin /systemlyxdir/doc/ja/
+\save_transient_properties false
+\origin unavailable
 \textclass scrartcl
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -275,7 +275,7 @@ status collapsed
 コメントや誤りの修正などがございましたら，\SpecialChar LyX
 文書化メーリングリスト
 \family typewriter
-
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "lyx-docs@lists.lyx.org"
@@ -287,7 +287,7 @@ literal "false"
 
 
 \family default
-までお知らせください．
+ までお知らせください．
 \end_layout
 
 \end_inset
@@ -5898,7 +5898,7 @@ rangle
 \end_layout
 
 \begin_layout Subsubsection
-手動の括弧丈
+手動の括弧高
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:手動の括弧丈"
@@ -5910,7 +5910,7 @@ name "subsec:手動の括弧丈"
 status collapsed
 
 \begin_layout Plain Layout
-かっこたけ@括弧丈 ! しゅどう@手動
+かっこたけ@括弧高 ! しゅどう@手動
 \end_layout
 
 \end_inset
@@ -5968,7 +5968,7 @@ big
 \backslash
 Bigg
 \series default
-が最大の括弧丈になります．
+が最大の括弧高になります．
 \end_layout
 
 \begin_layout Standard
@@ -6052,7 +6052,7 @@ C
 \end_layout
 
 \begin_layout Standard
-以下は，すべての括弧丈の羅列です．
+以下は，すべての括弧高の羅列です．
 \end_layout
 
 \begin_layout Standard
@@ -6361,7 +6361,7 @@ bigr(
 \end_layout
 
 \begin_layout Subsubsection
-自動の括弧丈
+自動の括弧高
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:自動の括弧丈"
@@ -6373,7 +6373,7 @@ name "subsec:自動の括弧丈"
 status collapsed
 
 \begin_layout Plain Layout
-かっこたけ@括弧丈 ! じどう@自動
+かっこたけ@括弧高 ! じどう@自動
 \end_layout
 
 \end_inset
@@ -6436,7 +6436,7 @@ left
 \backslash
 right
 \series default
-の直後には，必要とする括弧を挿入しなくてはなりません．すると，括弧丈は出力時に自動的に計算されます．
+の直後には，必要とする括弧を挿入しなくてはなりません．すると，括弧高は出力時に自動的に計算されます．
 \end_layout
 
 \begin_layout Standard
@@ -6551,7 +6551,7 @@ Alt+M
 括弧
 \family default
 を使うこともできます．これを使うと，\SpecialChar LyX
-中で即座に実際の括弧丈を確認することができるという利点と，対応する右括弧も生成されるという利点があります．
+中で即座に実際の括弧高を確認することができるという利点と，対応する右括弧も生成されるという利点があります．
 \begin_inset Newline newline
 \end_inset
 
@@ -27071,69 +27071,43 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-行頭下げ 
-\lang english
-this can be set using the menu 
+行頭下げ これは
 \family sans
-\lang japanese
 文書\SpecialChar menuseparator
 設定
 \family default
-\lang english
- under 
+メニューの
 \family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Options.
+数式オプション
 \family default
-\lang japanese
-．
+で設定することができます．
 \end_layout
 
 \begin_layout Standard
 
-\lang english
-When 
 \series bold
-\lang japanese
-行頭下げ
+数式を字下げ
 \series default
-\lang english
- is used, the indentation can be adjusted.
- The value depends on the used document class.
+を指定すると下げ幅を指定することができます．既定値は使用している文書苦楽に依存して変わります．
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-また，以下の二つの連番様式があります
-\lang english
-that can be set in the menu 
+また，以下の二つの連番様式があり，
 \family sans
-\lang japanese
 文書\SpecialChar menuseparator
 設定
 \family default
-\lang english
- under 
+メニューの
 \family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Options
+数式オプション
 \family default
-:
+で設定することができます．
 \end_layout
 
 \begin_deeper
 \begin_layout Description
-右 
-\lang english
-is in most cases the default
-\lang japanese
-．
+右 これが多くの場合既定値です．
 \end_layout
 
 \begin_layout Description
@@ -29544,9 +29518,9 @@ reference "eq:c"
 \series bold
  
 \backslash
-begin{subequations}の直後にラベルを挿入して，それを参照してください．
+begin{subequations}
 \series default
-数式
+の直後にラベルを挿入して，それを参照してください．数式
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:以下は、二行めのみ付番を無効にしている多行数式の例です。"
@@ -29575,11 +29549,7 @@ begin{subequations}
 status collapsed
 
 \begin_layout Plain Layout
-
-\series bold
 数式様式に関しては，第
-\series default
-
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:数式様式"
@@ -29605,7 +29575,9 @@ mm空白にしてください．
 \series bold
 
 \backslash
-begin{subequations}の直後にTeXコードで下記のコマンドを挿入してください．
+begin{subequations}
+\series default
+の直後にTeXコードで下記のコマンドを挿入してください．
 \end_layout
 
 \begin_layout Standard
@@ -29623,22 +29595,18 @@ roman{equation}}
 \end_layout
 
 \begin_layout Standard
-
-\series bold
 ここで，
 \backslash
 theparentequationは親番号を生成し，
 \backslash
-roman{equation}は細目番号として小文字ローマ数字を生成します．番号付けの調整について，詳しくは
-\series default
-
+roman{equation}は細目番号として小文字ローマ数字を生成します．番号付けの調整について，詳しくは第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:ローマ数字や文字を使った付番"
 
 \end_inset
 
-を参照してください．
+節を参照してください．
 \end_layout
 
 \begin_layout Standard
@@ -33346,22 +33314,19 @@ Maxima
 \end_inset
 
 
-\lang english
-
 \begin_inset Note Greyedout
 status open
 
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+【註】
 \series default
- One needs to use proper delimiter insets 
+単純な「(」「)」文字ではなく，適切な区切り差込枠
 \begin_inset Formula $\left(\right)$
 \end_inset
 
- instead of simple '(' ')' characters.
+を使わなくてはなりません．
 \end_layout
 
 \end_inset

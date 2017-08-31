@@ -2,8 +2,8 @@
 \lyxformat 544
 \begin_document
 \begin_header
-\save_transient_properties true
-\origin /systemlyxdir/doc/ja/
+\save_transient_properties false
+\origin unavailable
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -615,43 +615,36 @@ $LANG_xxx.bind
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 citeengines/
 \end_layout
 
 \end_inset
 
- contains files with the extension 
+ このディレクトリには，幅広い文献引用力（natbib, biblatexなど）を定義する，拡張子が
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .citeengine
 \end_layout
 
 \end_inset
 
- which define the diverse citation possibilities (natbib, biblatex etc.).
- See 
+のファイルが置かれています．詳細については，第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Cite-Engine-Files"
+reference "subsec:引用エンジンファイル"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
- for details.
+節をご覧ください．
 \end_layout
 
 \begin_layout Labeling
@@ -900,41 +893,37 @@ status collapsed
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 xtemplates/
 \end_layout
 
 \end_inset
 
- contains files with the extension 
+ このディレクトリには，\SpecialChar LyX
+文書への外部素材の挿入のひな型を定義する，拡張子が
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .xtemplate
 \end_layout
 
 \end_inset
 
- which define the templates for the insertion of external material to a
- \SpecialChar LyX
- document; see 
+のファイルが置かれています．第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "chap:Including-External-Material"
+reference "chap:外部素材を取り込む"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
-.
+節参照．
 \end_layout
 
 \begin_layout Subsection
@@ -6663,161 +6652,132 @@ LyXDir
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:Cite-Engine-Files"
+name "subsec:引用エンジンファイル"
 
 \end_inset
 
-Cite engine files
+引用エンジンファイル
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-A specific form of layout files are the so-called 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-*.citeengine
-\end_layout
-
-\end_inset
-
- files that are located in the 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
 citeengines/
 \end_layout
 
 \end_inset
 
- sub-directory.
- Their purpose is to define the specifics of \SpecialChar LaTeX
- packages aimed at bibliography
- generation, such as 
-\family sans
-natbib
-\family default
-,
-\family sans
- jurabib
-\family default
- or 
-\family sans
-biblatex
-\family default
-, but also the way how normal Bib\SpecialChar TeX
- citations (without additional packages)
- are handled in \SpecialChar LyX
- is defined in such a file.
- 
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-More specifically, it is defined which packages \SpecialChar LyX
- needs to load, which citation
- commands are available, how these are to be displayed in \SpecialChar LyX
- (in the workarea,
- the dialogs, the context menus) as well as in the XHTML and plain text
- output.
- Furthermore, the files specify available style variants (author-year, numerical
-, etc.) and their specifics.
- The cite engine files are also used to generate the options that are available
- in 
-\family sans
-Document\SpecialChar menuseparator
-Settings\SpecialChar ldots
-\SpecialChar menuseparator
-Bibliography\SpecialChar menuseparator
-Style engine
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Even though a cite engine file is essentially a normal layout file that
- could theoretically include any layout information, it usually primarily
- includes some specific parameters such as 
+サブディレクトリ以下に収められている，いわゆる
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+*.citeengine
+\end_layout
 
-\lang english
+\end_inset
+
+ファイルは，レイアウトファイルの特殊形です．これらの目的は，
+\family sans
+natbib
+\family default
+・
+\family sans
+jurabib
+\family default
+・
+\family sans
+biblatex
+\family default
+など，書誌情報を生成する\SpecialChar LaTeX
+パッケージの詳細を定義することですが，通常の（追加パッケージのない）Bib\SpecialChar TeX
+引用が\SpecialChar LyX
+中でどのように取り扱われるかも，これらのファイルの中で定
+義されます．
+\end_layout
+
+\begin_layout Standard
+より具体的には，どのパッケージを\SpecialChar LyX
+が読み込む必要があるのか，どの引用コマンドが利用可能であるのか，これらが\SpecialChar LyX
+中（作業領域・ダイアログ・コンテクストメニュー）で，さら
+にはXHTMLや平文出力中でどのように表示されるのかを定義します．さらに，これらのファイルは，使用できる派生様式（著者-刊行年，数値など）とその子細を特定します
+．引用エンジンファイルは，
+\family sans
+文書\SpecialChar menuseparator
+設定\SpecialChar ldots
+\SpecialChar menuseparator
+書誌情報\SpecialChar menuseparator
+様式整形子
+\family default
+で利用できる選択肢を生成するのにも使用されます．
+\end_layout
+
+\begin_layout Standard
+引用エンジンファイルは，本質的に通常のレイアウトファイルであり，理論上どのようなレイアウト情報も内包することができますが，通常は
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 MaxCiteNames
 \end_layout
 
 \end_inset
 
-, 
+・
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CiteFramework
 \end_layout
 
 \end_inset
 
-, 
+・
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CiteEngine
 \end_layout
 
 \end_inset
 
- and 
+・
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CiteFormat
 \end_layout
 
 \end_inset
 
- blocks.
- The syntax of the latter two is described in 
+ブロックのような特定のパラメータをもっぱら含みます．この最後の2つの文法は，ファイル自身に加え，第 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Citation-engine-description"
+reference "subsec:引用エンジンの説明"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
- and 
+節と第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Citation-format-description"
+reference "subsec:引用書式指定"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
-, as well as in the files themselves.
+節に述べられています．
 \end_layout
 
 \begin_layout Section
@@ -7511,138 +7471,100 @@ somemodule.module
 
 \end_inset
 
-のこ
+に他なりません．
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-The CiteEngine file declaration
+引用エンジンファイルの宣言
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-A cite engine file must begin with a line like the following:
+引用エンジンファイルは，次のような行で始まらなくてはなりません．
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 #
 \backslash
 DeclareLyXCiteEngineModule[biblatex.sty]{Biblatex}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The mandatory argument, in curly brackets, is the name of the module, as
- it should appear in 
+波括弧内の必須引数はモジュール名で，
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Bibliography
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+書誌情報
 \end_layout
 
 \end_inset
 
-.
- The argument in square brackets is optional: It declares any \SpecialChar LaTeX
- packages
- on which the cite engine depends.
+にそのまま現れます．角括弧内の引数は非必須です．これは，引用エンジンが依存する\SpecialChar LaTeX
+パッケージを宣言します．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The cite engine declaration should then be followed by lines like the following
+引用エンジン宣言には，その後，以下のような行が続きます
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Preferably in English if the module should be published with \SpecialChar LyX
-.
- This description will appear in the list of messages to be translated and
- will be thus translated with the next interface update.
+\SpecialChar LyX
+とともに公表するモジュールの場合は，英語で書かれることが望まれます．この説明は，翻訳対象メッセージのリストに含まれますので，次回インタフェースの更新の際に翻訳さ
+れることになります．
 \end_layout
 
 \end_inset
 
-:
+．
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 # DescriptionBegin
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 #   Biblatex supports many author-year and numerical styles.
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 #   It is mainly aimed at the Humanities.
  It is highly
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 #   customizable, fully localized and provides many features
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 #   that are not possible with BibTeX.
  The use of 'biber' as
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 #   bibliography processor is advised.
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 # DescriptionEnd
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The description is used in 
+この説明は，
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Bibliography
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+書誌情報
 \end_layout
 
 \end_inset
 
- to provide the user with information about the cite engine.
-\lang japanese
-とです．
+の中で，ユーザーに引用エンジンに関する情報を提供するために使われます．
 \end_layout
 
 \begin_layout Subsection
@@ -7789,63 +7711,46 @@ EndPreamble
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-CiteEngine <engine>
+CiteEngine <エンジン>
 \end_layout
 
 \end_inset
 
- Defines the possibilities for displaying citation references.
- See 
+ 文献参照を表示する方法を定義します．詳細については，第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Citation-engine-description"
+reference "subsec:引用エンジンの説明"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
- for details.
- Must end with 
-\begin_inset Quotes eld
-\end_inset
-
-
+節をご覧ください．「
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 End
 \end_layout
 
 \end_inset
 
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- Primarily used in cite engine files (see 
+」で閉じる必要があります．主に引用エンジンファイルで使用されます（第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Cite-Engine-Files"
+reference "subsec:引用エンジンファイル"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
-).
+節参照）．
 \end_layout
 
 \begin_layout Description
@@ -7858,14 +7763,14 @@ CiteFormat
 
 \end_inset
 
- 書誌情報の表示に使う書式を定義します．詳細については，
+ 書誌情報の表示に使う書式を定義します．詳細については，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:引用書式指定"
 
 \end_inset
 
-をご覧ください．「
+節をご覧ください．「
 \begin_inset Flex Code
 status collapsed
 
@@ -7875,30 +7780,24 @@ End
 
 \end_inset
 
-」で閉じる必要があります．
-\lang english
- Primarily used in cite engine files (see 
+」で閉じる必要があります．主に引用エンジンファイルで使用されます（第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Cite-Engine-Files"
+reference "subsec:引用エンジンファイル"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
-).
+節参照）．
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CiteFramework
 \end_layout
 
@@ -7911,7 +7810,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 bibtex
 \end_layout
 
@@ -7922,30 +7820,27 @@ bibtex
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 biblatex
 \end_layout
 
 \end_inset
 
-] Determines whether 
+] 書誌情報を生成するのに，
 \family sans
 Biblatex
 \family default
- or Bib\SpecialChar TeX
- is used to generate a Bibliography.
- Primarily used in cite engine files (see 
+を用いるのかBib\SpecialChar TeX
+を用いるのかを特定します．主に引用エンジンファイルで使用されます（第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Cite-Engine-Files"
+reference "subsec:引用エンジンファイル"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
-).
+節参照）．
 \end_layout
 
 \begin_layout Description
@@ -7958,14 +7853,14 @@ ClassOptions
 
 \end_inset
 
- 文書クラスがサポートする様々な大域オプションを記します．説明は，
+ 文書クラスがサポートする様々な大域オプションを記します．説明は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:ClassOptions"
 
 \end_inset
 
-を参照してください．「
+節を参照してください．「
 \begin_inset Flex Code
 status collapsed
 
@@ -8062,14 +7957,14 @@ End
 \begin_inset Newline newline
 \end_inset
 
-カウンタについての詳細は，
+カウンタについての詳細は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:カウンタ"
 
 \end_inset
 
-を参照してください．
+節を参照してください．
 \end_layout
 
 \begin_layout Description
@@ -8082,14 +7977,14 @@ DefaultFont
 
 \end_inset
 
- 文書を表示するのに用いられる既定フォントを設定します．フォントの宣言の仕方については，
+ 文書を表示するのに用いられる既定フォントを設定します．フォントの宣言の仕方については，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:フォント指定"
 
 \end_inset
 
-を参照してください．「
+節を参照してください．「
 \begin_inset Flex Code
 status collapsed
 
@@ -8218,14 +8113,14 @@ theorems-sec
 \emph on
 使用してはいけません
 \emph default
-．モジュールは，他のモジュールを排除する独自の枠組みがあります（
+．モジュールは，他のモジュールを排除する独自の枠組みがあります（第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:レイアウトモジュール"
 
 \end_inset
 
-参照）．
+節参照）．
 \end_layout
 
 \begin_layout Description
@@ -8238,14 +8133,14 @@ Float
 
 \end_inset
 
- フロートを新規に定義します．詳細は，
+ フロートを新規に定義します．詳細は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:フロート"
 
 \end_inset
 
-を参照してください．「
+節を参照してください．「
 \begin_inset Flex Code
 status collapsed
 
@@ -8380,14 +8275,14 @@ End
 \begin_inset Newline newline
 \end_inset
 
-カウンタについての詳細は，
+カウンタについての詳細は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:カウンタ"
 
 \end_inset
 
-をご覧ください．
+節をご覧ください．
 \end_layout
 
 \begin_layout Description
@@ -8499,14 +8394,14 @@ End
 \begin_inset Newline newline
 \end_inset
 
-詳しい情報は，
+詳しい情報は，第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:任意設定差込枠"
 
 \end_inset
 
-をご覧ください．
+節をご覧ください．
 \end_layout
 
 \begin_layout Description
@@ -8543,14 +8438,10 @@ MMMMM
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 MaxCiteNames
 \end_layout
 
@@ -8561,34 +8452,22 @@ MaxCiteNames
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-integer
+整数
 \end_layout
 
 \end_inset
 
-] An integer that determines the maximal number of names displayed in an
- author-year citation before the citation switches to 
-\begin_inset Quotes eld
-\end_inset
-
-FirstAuthor et al.
-\begin_inset Quotes erd
-\end_inset
-
-.
- Primarily used in cite engine files (see 
+] 著者-刊行年引用で，引用が「第一著者 et al.」に切り替わる前に，表示される名前の最大数を定める整数．主に引用エンジンファイルで使用されます（第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Cite-Engine-Files"
+reference "subsec:引用エンジンファイル"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
-).
+節参照）．
 \end_layout
 
 \begin_layout Description
@@ -8661,14 +8540,10 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 OutlinerName
 \end_layout
 
@@ -8679,9 +8554,7 @@ OutlinerName
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-<type>
+<型>
 \end_layout
 
 \end_inset
@@ -8691,39 +8564,32 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-<string>
+<文字列>
 \end_layout
 
 \end_inset
 
-] Define a new table of contents with type 
+] 型が
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-<type>
+<型>
 \end_layout
 
 \end_inset
 
- and name 
+で名前が
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-<string>
+<文字列>
 \end_layout
 
 \end_inset
 
-.
- See also the AddToToc commands.
+の新しい一覧表を定義します．AddToTocコマンドもご覧ください．
 \end_layout
 
 \begin_layout Description
@@ -9831,14 +9697,10 @@ End
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AddToToc
 \end_layout
 
@@ -9849,17 +9711,13 @@ AddToToc
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-string
+文字列
 \end_layout
 
 \end_inset
 
-=""] This paragraph will appear in the table of contents of the given type.
- An empty string disables.
- See also the OutlinerName and the IsTocCaption commands.
- Default: disabled.
+=""] この段落は指定された型の一覧表に現れます．空の文字列を与えると無効になります．OutlinerNameコマンドとIsTocCaptionコマンドもご覧
+ください．既定値：無効．
 \end_layout
 
 \begin_layout Description
@@ -10539,14 +10397,10 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PassThru
 \end_layout
 
@@ -10559,7 +10413,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 inherited
 \emph default
 , true, false
@@ -10567,23 +10420,18 @@ inherited
 
 \end_inset
 
-] Whether the contents of this argument should be output in raw form, meaning
- without special translations that \SpecialChar LaTeX
- would require.
- By default, the 
+] この引数の内容が，\SpecialChar LaTeX
+が要求する特別な書き換えを行うことなく，原文のまま出力されるべきかどうかを指定します．既定値では，
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PassThru
 \end_layout
 
 \end_inset
 
- status is inherited by the inset or paragraph layout the argument belongs
- to, true and false change the status for the given argument only.
+の状態は，引数が属する差込枠または段落レイアウトに継承されます．trueまたはfalseは，この引数のみの状態を変更します．
 \end_layout
 
 \begin_layout Itemize
@@ -10616,14 +10464,10 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 IsTocCaption
 \end_layout
 
@@ -10636,7 +10480,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 0
 \end_layout
 
@@ -10651,16 +10494,12 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
 \end_inset
 
-] If this is set to 1, the argument will output its content in the corresponding
- item in the table of contents.
- See AddToToc.
+] これを1に設定すると，引数は，その内容を対応する一覧表の項目に出力します．AddToTocを参照．
 \end_layout
 
 \begin_layout Standard
@@ -11440,14 +11279,10 @@ TitleLatexName
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 IsTocCaption
 \end_layout
 
@@ -11460,7 +11295,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 0
 \end_layout
 
@@ -11475,16 +11309,13 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
 \end_inset
 
-] If this is set to 1 and AddToToc is enabled, the paragraph adds a summary
- of its contents in its item in the table of contents.
- Otherwise, only the label, if it exists, appears.
+] これを1に設定すると，AddToTocが有効になり，段落は，その内容の要約を一覧表の項目に表示します．0に設定すると，ラベルが存在すれば，それのみが表示され
+ます．
 \end_layout
 
 \begin_layout Description
@@ -11700,6 +11531,9 @@ status collapsed
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:カウンタ"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
@@ -13622,14 +13456,10 @@ CopyStyle
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ResumeCounter
 \end_layout
 
@@ -13642,7 +13472,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 0
 \end_layout
 
@@ -13653,39 +13482,32 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
 \end_inset
 
-] Resumes a counter that is usually reset at each new sequence of layouts.
- This is currently only useful when 
+] レイアウトの新しい一群で通常リセットされるカウンタを元に戻します．これは，
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelType
 \end_layout
 
 \end_inset
 
- is 
+が
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Enumerate
 \end_layout
 
 \end_inset
 
-.
+の時のみ有効です．
 \end_layout
 
 \begin_layout Description
@@ -13921,14 +13743,10 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 StepMasterCounter
 \end_layout
 
@@ -13941,7 +13759,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 0
 \end_layout
 
@@ -13952,40 +13769,32 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
 \end_inset
 
-] Steps the master counter of a given counter at the beginning of a new
- sequence of layouts.
- This is currently only useful when 
+] 新しいレイアウト群を開始する際に，このカウンタの親カウンタを進めるか否か．これは，現在のところ，
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelType
 \end_layout
 
 \end_inset
 
- is 
+が
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Enumerate
 \end_layout
 
 \end_inset
 
-.
+の時のみ有効です．
 \end_layout
 
 \begin_layout Description
@@ -13998,14 +13807,14 @@ TextFont
 
 \end_inset
 
- 本文に使うフォント．
+ 本文に使うフォント．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:フォント指定"
 
 \end_inset
 
-参照．
+節参照．
 \end_layout
 
 \begin_layout Description
@@ -15927,7 +15736,8 @@ Caption:Below
 status collapsed
 
 \begin_layout Plain Layout
-Caption:Bicaption
+Caption:\SpecialChar allowbreak
+Bicaption
 \end_layout
 
 \end_inset
@@ -15949,14 +15759,10 @@ InsetLayout
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AddToToc
 \end_layout
 
@@ -15967,18 +15773,13 @@ AddToToc
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-string
+文字列
 \end_layout
 
 \end_inset
 
-=""] This inset will appear in the table of contents of the given type.
- An empty string disables.
- See also the OutlinerName and the IsTocCaption commands.
- This is only implemented for Flex insets.
- Default: disabled.
+=""] この差込枠は，この型の一覧表に表示されます．空の文字列を入れると無効になります．OutlinerNameコマンドとIsTocCaptionコマンドも参
+照してください．これは，自由差込枠にのみ実装されています．既定値：無効．
 \end_layout
 
 \begin_layout Description
@@ -16001,11 +15802,7 @@ status collapsed
 
 \end_inset
 
-] 現在のレイアウトに関連付けられたコマンドまたは環境の引
-\end_layout
-
-\begin_layout Description
-数番号を定義します．定義は
+] 現在のレイアウトに関連付けられたコマンドまたは環境の引数番号を定義します．定義は
 \begin_inset Flex Code
 status collapsed
 
@@ -16015,14 +15812,14 @@ EndArgument
 
 \end_inset
 
-で閉じなくてはなりません．詳細は
+で閉じなくてはなりません．詳細は第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:段落様式"
 
 \end_inset
 
-参照．
+節参照．
 \end_layout
 
 \begin_layout Description
@@ -16035,14 +15832,14 @@ BabelPreamble
 
 \end_inset
 
- 言語コマンドを変更するプリアンブル．
+ 言語コマンドを変更するプリアンブル．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:段落様式の国際化"
 
 \end_inset
 
-参照．
+節参照．
 \end_layout
 
 \begin_layout Description
@@ -16065,14 +15862,14 @@ status collapsed
 
 \end_inset
 
-] 差込枠の背景色．使用できる色名一覧は
+] 差込枠の背景色．使用できる色名一覧は第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:色名"
 
 \end_inset
 
-参照．
+節参照．
 \end_layout
 
 \begin_layout Description
@@ -16124,14 +15921,14 @@ CopyStyle
 
 \end_inset
 
- [<型>] 段落様式と同様です．
+ [<型>] 段落様式と同様です．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:段落様式"
 
 \end_inset
 
-参照のこと．完全な型を指定する必要があることに注意してください．例:
+節参照のこと．完全な型を指定する必要があることに注意してください．例:
 \begin_inset Flex Code
 status collapsed
 
@@ -16378,14 +16175,14 @@ Font
 \emph on
 両方に
 \emph default
-使用されるフォントです．
+使用されるフォントです．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:フォント指定"
 
 \end_inset
 
-を参照．このフォントを定義すると自動的に
+節を参照．このフォントを定義すると自動的に
 \begin_inset Flex Code
 status collapsed
 
@@ -16516,7 +16313,7 @@ status collapsed
 
 \end_inset
 
-] babel使用時に，常にローカルフォント切替(
+] babel使用時に，常にローカルフォント切替（
 \begin_inset Flex Code
 status collapsed
 
@@ -16528,7 +16325,7 @@ foreignlanguage
 
 \end_inset
 
-)を使い，グローバル切替(
+）を使い，グローバル切替（
 \begin_inset Flex Code
 status collapsed
 
@@ -16540,7 +16337,7 @@ selectlanguage
 
 \end_inset
 
-など)は使わない．
+など）は使わない．
 \end_layout
 
 \begin_layout Description
@@ -16700,14 +16497,14 @@ status collapsed
 
 \end_inset
 
-] 段落様式と同様．
+] 段落様式と同様．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:段落様式"
 
 \end_inset
 
-参照．
+節参照．
 \end_layout
 
 \begin_layout Description
@@ -16720,14 +16517,14 @@ HTML*
 
 \end_inset
 
- これらは，XHTML出力で使用されます．
+ これらは，XHTML出力で使用されます．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:XHTML出力のタグ"
 
 \end_inset
 
-をご覧ください．
+節をご覧ください．
 \end_layout
 
 \begin_layout Description
@@ -16766,29 +16563,15 @@ status collapsed
 
 \end_inset
 
-] 
-\lang english
-Whether to include the contents of this inset in the strings generated for
- the `Outline' pane for all table of contents, regardless of the AddToToc
- setting.
- One would not, for example, want the content of a footnote in a section
- header to be included in the TOC displayed in the outline, but one would
- normally want the content of a character style displayed.
- Default is false: not to includ
-\lang japanese
-e「文書構造」ペイン用に出力される文字列に，この差込枠の内容を含めるかどうか．たとえば，節見出しの脚註の内容が，文書構造の目次に表示されることは望まないでしょう
-が，通常，文字様式の内容は表示されることを望むでしょう．既定値は偽，すなわち含めません．
+] AddToTocの設定に関わらず，「文書構造」面用に出力される文字列に，この差込枠の内容を含めるかどうか．たとえば，節見出しの脚註の内容が，文書構造の目次に
+表示されることは望まないでしょうが，通常，文字様式の内容は表示されることを望むでしょう．既定値は偽，すなわち含めません．
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 IsTocCaption
 \end_layout
 
@@ -16801,7 +16584,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 0
 \end_layout
 
@@ -16816,16 +16598,12 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
 \end_inset
 
-] If this is set to 1 and AddToToc is enabled, the inset adds a summary
- of its contents in its item in the table of contents.
- Otherwise, only the label appears.
+] AddToTocが有効なときに，これが1に設定されていると，差込枠の内容の要約が，目次項目に表示されます．0の場合は，ラベルのみが表示されます．
 \end_layout
 
 \begin_layout Description
@@ -16866,14 +16644,14 @@ status collapsed
 
 \end_inset
 
-] 段落様式と同様．
+] 段落様式と同様．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:段落様式"
 
 \end_inset
 
-参照．
+節参照．
 \end_layout
 
 \begin_layout Description
@@ -16952,14 +16730,14 @@ LangPreamble
 
 \end_inset
 
- 言語依存のプリアンブル．
+ 言語依存のプリアンブル．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:段落様式の国際化"
 
 \end_inset
 
-参照．
+節参照．
 \end_layout
 
 \begin_layout Description
@@ -17637,14 +17415,14 @@ status collapsed
 
 \end_inset
 
-] 段落様式と同様．
+] 段落様式と同様．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:段落様式"
 
 \end_inset
 
-参照．
+節参照．
 \end_layout
 
 \begin_layout Description
@@ -17685,14 +17463,14 @@ status collapsed
 
 \end_inset
 
-] 段落様式と同様．
+] 段落様式と同様．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:段落様式"
 
 \end_inset
 
-参照．
+節参照．
 \end_layout
 
 \begin_layout Description
@@ -17705,14 +17483,14 @@ Preamble
 
 \end_inset
 
- 段落様式と同様．
+ 段落様式と同様．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:段落様式"
 
 \end_inset
 
-参照．
+節参照．
 \end_layout
 
 \begin_layout Description
@@ -17758,14 +17536,14 @@ status collapsed
 
 \end_inset
 
-] 段落様式と同様．
+] 段落様式と同様．第
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:段落様式"
 
 \end_inset
 
-参照．
+節参照．
 \end_layout
 
 \begin_layout Description
@@ -19080,429 +18858,307 @@ giant
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:Citation-engine-description"
+name "subsec:引用エンジンの説明"
 
 \end_inset
 
-Citation engine description
+引用エンジンの説明
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-CiteEngine
-\end_layout
-
-\end_inset
-
- blocks, as used mainly in cite engine files (see 
+主に引用エンジンファイル（第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Cite-Engine-Files"
+reference "subsec:引用エンジンファイル"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
-), define the citation commands provided by a specific 
-\begin_inset Quotes eld
-\end_inset
-
-cite engine
-\begin_inset Quotes erd
-\end_inset
-
-.
- A cite engine, in \SpecialChar LyX
- terms, is way specific way to format citations, using
- numbers, author names and/or years.
- Currently, \SpecialChar LyX
- supports three such engine types, namely:
-\end_layout
-
-\begin_layout Enumerate
-
-\lang english
+節参照）で用いられる
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+CiteEngine
+\end_layout
 
-\lang english
+\end_inset
+
+ブロックは，特定の「引用エンジン」で提供される引用コマンドを定義します．\SpecialChar LyX
+の用語では，引用エンジンとは，番号や著者名，刊行年を使って，引用を整形する特定の方法のこ
+とを指します．\SpecialChar LyX
+は，3つのエンジンの型をサポートします．すなわち，
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 default
 \end_layout
 
 \end_inset
 
-: the default Bib\SpecialChar TeX
- way to format citations, a simple numeric style (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., 
-\begin_inset Quotes eld
-\end_inset
-
-[1]
-\begin_inset Quotes erd
-\end_inset
-
-)
+: 既定のBib\SpecialChar TeX
+流の引用方法である，単純な番号による様式（例：「[1]」）
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 authoryear
 \end_layout
 
 \end_inset
 
-: Harvard-styled citations using author names and publication year (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., 
-\begin_inset Quotes eld
-\end_inset
-
-Smith and Miller (2017b)
-\begin_inset Quotes erd
-\end_inset
-
-)
+: 著者名と刊行年を使ったHarvard様式の引用（例：「Smith and Miller (2017b)」）
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 numerical
 \end_layout
 
 \end_inset
 
-: extended numerical citations that also allow for author or title next
- to the number (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., 
-\begin_inset Quotes eld
-\end_inset
-
-Smith and Miller [1]
-\begin_inset Quotes erd
-\end_inset
-
-)
+: 番号に隣接して著者名やタイトルを付けることのできる拡張された番号引用（例：「Smith and Miller [1]」）
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CiteEngine
 \end_layout
 
 \end_inset
 
- blocks look like this:
+ブロックは以下のようになります．
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 CiteEngine default
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
  cite
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
  Citep*[][]
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
  citeyearpar[][]=parencite*
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
  ...
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 End
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The tag following 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CiteEngine
 \end_layout
 
 \end_inset
 
- denotes the engine.
- The individual lines respectively define a cite command or cite command
- paradigm supported by this engine.
- The line can be as simple as a cite command that is used both to name the
- respective \SpecialChar LyX
- command and the \SpecialChar LaTeX
- output or more complex in order to differentiate
- things.
- The full syntax is:
+に続くタグがエンジンを表します．各行は，このエンジンによってサポートされる引用コマンドや引用コマンドパラダイムを定義します．行は，\SpecialChar LyX
+コマンドと\SpecialChar LaTeX
+出力を命名するのに使
+われる引用コマンドのみを含むこともあれば，色々変えるために複雑なこともあります．完全な文法は
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 LyXName|alias$*<!_stardesc!_stardesctooltip>[][]=latexcmd
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Standard
+という形になっています．ここで
+\end_layout
 
-\lang english
+\begin_layout Itemize
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LyXName
 \end_layout
 
 \end_inset
 
-: The name as used in the 
+: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 *.lyx
 \end_layout
 
 \end_inset
 
- file.
+ファイルで使用される名前．
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
-\lang english
-For portability reasons, we try to use the same name for same-formatted
- commands in different cite packages (thus many names stem from natbib,
- and thus we need to differentiate a 
+可搬性のために，異なる引用パッケージ中の同じ形をしたコマンドには，同じ名前をつけるようにしています（したがって，多くの名前がnatbibから派生しており，\SpecialChar LaTeX
+コマン
+ド名が異なる場合には，しばしば
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 latexcmd
 \end_layout
 
 \end_inset
 
- sometimes, if the \SpecialChar LaTeX
- command names differ).
+を変える必要があります）．
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 alias
 \end_layout
 
 \end_inset
 
-: a (comma-separated) list of commands that fall back to the given 
+: このエンジンにおいて，与えられた
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LyXName
 \end_layout
 
 \end_inset
 
- in the current engine.
- This eases the switch of citation packages and engines.
- The 
+にフォールバックするコマンドの（コンマで区切られた）リスト．これによって，引用パッケージとエンジンを切り替えるのが楽になります．
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 alias
 \end_layout
 
 \end_inset
 
- can be compared to 
+はレイアウト定義中での
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ObsoletedBy
 \end_layout
 
 \end_inset
 
- in layout definitions.
+に相当するものと考えてよいでしょう．
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 latexcmd
 \end_layout
 
 \end_inset
 
-: The actual \SpecialChar LaTeX
- command that is output.
- 
+: 出力される実際の\SpecialChar LaTeX
+コマンド．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Alias
 \end_layout
 
 \end_inset
 
- and 
+と
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 latexcmd
 \end_layout
 
 \end_inset
 
- are optional.
- If no 
+は必須ではありません．
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 latexcmd
 \end_layout
 
 \end_inset
 
- is given, the 
+が与えられない時は，
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LyXName
 \end_layout
 
 \end_inset
 
- will be output to \SpecialChar LaTeX
-.
+が\SpecialChar LaTeX
+に出力されます．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Note further:
+さらに，下記の点に注意してください．
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Capitalization indicates that the command also has a capitalized form (
+大文字にするとコマンドも大文字化されたものになります（
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
+\backslash
+latexcmd
+\end_layout
+
+\end_inset
+
+が
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 
 \backslash
 Latexcmd
@@ -19510,23 +19166,7 @@ Latexcmd
 
 \end_inset
 
- vs.
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-
-\backslash
-latexcmd
-\end_layout
-
-\end_inset
-
-).
- These usually enforce up-casing of name prefixes (
+に）．これらは通常，名前の前置詞を大文字化するのを確実にします（
 \emph on
 von Goethe
 \emph default
@@ -19538,64 +19178,39 @@ von Goethe
 \emph on
 Von Goethe
 \emph default
-).
+）．
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Brackets 
+括弧
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 []
 \end_layout
 
 \end_inset
 
- indicate the number of optional arguments (there can be 0–2).
+は非必須引数の数を表します（0-2をとりえます）．
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-A star 
+星印
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 *
 \end_layout
 
 \end_inset
 
- indicates there is a starred version of the command (
+は星印付きコマンドを示します（
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-
-\backslash
-latexcmd*
-\end_layout
-
-\end_inset
-
- vs.
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
 
 \backslash
 latexcmd
@@ -19603,159 +19218,115 @@ latexcmd
 
 \end_inset
 
-).
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-
-\lang english
-By default, the starred version means: Output all authors even if it should
- be shortened with 
-\begin_inset Quotes eld
-\end_inset
-
-et al.
-\begin_inset Quotes erd
-\end_inset
-
- due to the 
+が
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
+\backslash
+latexcmd*
+\end_layout
+
+\end_inset
+
+に）．
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+既定では，星印付きバージョンは，
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 MaxCiteNames
 \end_layout
 
 \end_inset
 
- threshold.
+の閾値を超えたために「et al.」に省略されるべき時にも全ての著者を出力することを意味します．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If the star has a different meaning for a given command, it can be specified
- in angle brackets: 
+星印が，当該コマンドについては別の意味を持つ場合には，
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 <!_stardesc!_stardesctooltip>
 \end_layout
 
 \end_inset
 
-.
- Maximal two translatable macro keywords, marked by the prefix 
+のように三角括弧で指定することができます．前置詞
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 !_
 \end_layout
 
 \end_inset
 
-, can be given.
- The first points to the string that replaces the 
-\begin_inset Quotes eld
-\end_inset
-
-Full aut&hor list
-\begin_inset Quotes erd
-\end_inset
-
- checkbox label in the citation dialog, the second one to an optional tool
- tip for this checkbox.
- 
+で標識した，翻訳可能なキーワードを最大2つ与えることができます．最初のキーワードは，引用ダイアログ中の「Full aut&hor list」チェックボックスラベ
+ルを書き換える文字列を指し，二つ目のキーワードは，このチェックボックスに対する非必須のツールチップの文字列を指します．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Note that these two macros have to be defined in a 
+これらの2つのマクロは，下記のように，前置詞から
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-CiteFormat
-\end_layout
-
-\end_inset
-
- (see next section), dropping the 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
 !
 \end_layout
 
 \end_inset
 
- from the prefix, like this: 
+を落とした形で
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+CiteFormat
+\end_layout
+
+\end_inset
+
+（次節参照）で定義されなくてはなりません．
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 _stardesc Sta&rred command label
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 _stardesctooltip Tooltip for the starred command checkbox.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-
-\lang english
-A dollar sign 
+ドル記号
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $
 \end_layout
 
 \end_inset
 
- indicates that this command features 
-\begin_inset Quotes eld
-\end_inset
-
-qualified citation lists
-\begin_inset Quotes erd
-\end_inset
-
-.
- This is a 
+は，このコマンドが「qualified citation lists」を取り扱うことを示します．これは，リスト中の個別の引用に対して，前置文字列と後置文字列を置
+くことができる，
 \family sans
 Biblatex
 \family default
--specific feature for multi-reference citations where an individual pre-
- and postnote can be given to each reference in the list.
- Please refer to the 
+に特有の複数文献引用機能です．詳細については，
 \family sans
 Biblatex
 \family default
- manual for details.
+の取扱説明書をご覧ください．
 \end_layout
 
 \begin_layout Subsection
@@ -19800,45 +19371,29 @@ End
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-or
+あるいは
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 CiteFormat
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
  cite ...
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
  citet*[][] ...
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 End
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In the first case, the individual lines
-\end_layout
-
-\begin_layout Standard
-上記の各行は，それぞれarticleやbookに関連付けられた書誌情報をどのように表示するべきかを定義するものですが，このような定義は，Bib\SpecialChar TeX
-ファイル中に存在し
-うる「項目型」すべてについて与えることができます．特定の定義が与えられなければ，\SpecialChar LyX
+最初の例の各行は，それぞれarticleやbookに関連付けられた書誌情報をどのように表示するべきかを定義するものですが，このような定義は，Bib\SpecialChar TeX
+ファイル中に存
+在しうる「項目型」すべてについて与えることができます．特定の定義が与えられなければ，\SpecialChar LyX
 は，ソースコード中に定義されている既定書式を使用します．\SpecialChar LyX
 は，いくつかの書式を
 \begin_inset Flex Code
@@ -19851,20 +19406,15 @@ stdciteformats.inc
 \end_inset
 
 ファイルで事前定義しており，これはほとんどの\SpecialChar LyX
-
+文書クラスにインクルードされています．
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In the second case, the lines define how a specific citation command (in
- the example 
+2つ目の例では，各行は，特定の引用コマンド（この例では
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 cite
@@ -19872,13 +19422,11 @@ cite
 
 \end_inset
 
-, 
+及び
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 citet
@@ -19886,44 +19434,36 @@ citet
 
 \end_inset
 
-) is to be displayed on the citation inset label, in the citation dialog,
- menu or XHTML output.
- \SpecialChar LyX
- defines such formats for the citation style variants it supports via 
-\family sans
-Document\SpecialChar menuseparator
-Setting\SpecialChar menuseparator
-Bibliography\SpecialChar ldots
-
-\family default
- in specific 
+）が，引用差込枠ラベルや引用ダイアログ，メニュー，XHTML出力でどのように表示されるべきかを定義しています．\SpecialChar LyX
+は，\SpecialChar LyX
+に同梱されている個別の
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 *.citeengine
 \end_layout
 
 \end_inset
 
- files that are shipped with \SpecialChar LyX
- (see 
+ファイル中において，
+\family sans
+文書\SpecialChar menuseparator
+設定\SpecialChar menuseparator
+書誌情報\SpecialChar ldots
+
+\family default
+でサポートしている引用様式用に，そのような書式を定義しています（第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Cite-Engine-Files"
+reference "subsec:引用エンジンファイル"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
-).
-\end_layout
-
-\begin_layout Standard
-文書クラスにインクルードされています．
+節参照）．
 \end_layout
 
 \begin_layout Standard
@@ -19968,7 +19508,7 @@ misc %author%,
 \end_layout
 
 \begin_layout Standard
-もちろん，キーが存在するときのみ，キーを出力したい時があるはずです．このようなときには
+もちろん，キーが存在するときのみ，そのキーを出力したい時があるはずです．このようなときには
 \begin_inset Flex Code
 status collapsed
 
@@ -20058,177 +19598,80 @@ status collapsed
 
 \end_inset
 
-
+」の二重角括弧で囲まれています．これらすべてのあいだには，空白は入ってはなりません．
 \end_layout
 
 \begin_layout Standard
-」の二重角括弧で囲まれてい
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Next to the entry keys, there are some special keys that can be used for
- these conditionals:
+これらの条件文に使うことができるものには，項目キーの他に，以下の特殊キーがあります．
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-{%dialog%[[true]][[false]]}
+{%dialog%[[真]][[偽]]}
 \end_layout
 
 \end_inset
 
-: process the 
-\begin_inset Quotes eld
-\end_inset
-
-true
-\begin_inset Quotes erd
-\end_inset
-
- part for dialogs and menus, the 
-\begin_inset Quotes eld
-\end_inset
-
-false
-\begin_inset Quotes erd
-\end_inset
-
- part for other contexts (workarea, export)
+: ダイアログとメニューに対しては「真」の部分を処理し，他の文脈（作業領域や書き出し）には「偽」の部分を処理します
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-{%export%[[true]][[false]]}
+{%export%[[真]][[偽]]}
 \end_layout
 
 \end_inset
 
-: process the 
-\begin_inset Quotes eld
-\end_inset
-
-true
-\begin_inset Quotes erd
-\end_inset
-
- part for export and menus, the 
-\begin_inset Quotes eld
-\end_inset
-
-false
-\begin_inset Quotes erd
-\end_inset
-
- part for other contexts (workarea, dialog)
+: 書き出しとメニューに対しては「真」の部分を処理し，他の文脈（作業領域やダイアログ）には「偽」の部分を処理します
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-{%next%[[true]]}
+{%next%[[真]]}
 \end_layout
 
 \end_inset
 
-: process the 
-\begin_inset Quotes eld
-\end_inset
-
-true
-\begin_inset Quotes erd
-\end_inset
-
- part if another item follows (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., in a citation with multiple keys)
+: 他の項目が続く場合には「真」の部分を処理します（複数キーを持つ引用など）
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-{%second%[[true]][[false]]}
+{%second%[[真]][[偽]]}
 \end_layout
 
 \end_inset
 
-: process the 
-\begin_inset Quotes eld
-\end_inset
-
-true
-\begin_inset Quotes erd
-\end_inset
-
- if this is the second of multiple items, else the 
-\begin_inset Quotes eld
-\end_inset
-
-false
-\begin_inset Quotes erd
-\end_inset
-
- part
+: これが複数項目の2番目の場合には「真」の部分を処理し，それ以外の場合には「偽」の部分を処理します
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-{%ifstar%[[true]][[false]]}
+{%ifstar%[[真]][[偽]]}
 \end_layout
 
 \end_inset
 
-: process the 
-\begin_inset Quotes eld
-\end_inset
-
-true
-\begin_inset Quotes erd
-\end_inset
-
- part for starred citation commands (such as 
+: （
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 cite*
@@ -20236,630 +19679,386 @@ cite*
 
 \end_inset
 
-), the false part for unstarred
+など）星印付き引用コマンドの場合には「真」の部分を処理し，星印付きでない場合には「偽」の部分を処理します
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-{%ifentrytype:<type>%[[true]][[false]]}
+{%ifentrytype:<type>%[[真]][[偽]]}
 \end_layout
 
 \end_inset
 
-: process the 
-\begin_inset Quotes eld
-\end_inset
-
-true
-\begin_inset Quotes erd
-\end_inset
-
- if the current entry type matches 
+: 現行の項目が
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-<type>
+<型>
 \end_layout
 
 \end_inset
 
-, else the false part (e.g., in a citation definition: 
+に一致する場合には「真」の部分を処理し，それ以外の場合には「偽」の部分を処理します（例：引用定義において
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-{%ifentrytype:book%[[this is a book]][[this is no book]]}
+{%ifentrytype:book%[[これはbookです]][[これはbookではありません]]}
 \end_layout
 
 \end_inset
 
-)
+）
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-{%ifmultiple:<authortype>%[[true]][[false]]}
+{%ifmultiple:<authortype>%[[真]][[偽]]}
 \end_layout
 
 \end_inset
 
-: process the 
-\begin_inset Quotes eld
-\end_inset
-
-true
-\begin_inset Quotes erd
-\end_inset
-
- if the current author type (author, editor etc.) has multiple authors, else
- the false part (e.g., in a bibliography definition: 
+: 現行の項目が著者型（著者・編者など）が複数の著者を含む場合には「真」の部分を処理し，それ以外の場合には「偽」の部分を処理します（例：書誌情報定義において
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 {%ifmultiple:editor%[[eds.]][[ed.]]}
 \end_layout
 
 \end_inset
 
-)
+）
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-{%ifqualified%[[true]][[false]]}
+{%ifqualified%[[真]][[偽]]}
 \end_layout
 
 \end_inset
 
-: process the 
-\begin_inset Quotes eld
-\end_inset
-
-true
-\begin_inset Quotes erd
-\end_inset
-
- part if the current citation is a qualified citation list (a specific 
+: 現行の引用がqualified citation listである（複数文献引用に対する
 \family sans
 Biblatex
 \family default
- format for multi-reference citations), the false part if this is not the
- case.
+特有の形式）場合には「真」の部分を処理し，それ以外の場合には「偽」の部分を処理します
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-We said that 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %author%
 \end_layout
 
 \end_inset
 
- prints the author key as it is recorded in the bibliography file.
- This might not be what you want, since it will result in a string such
- as 
-\begin_inset Quotes eld
-\end_inset
-
-Miller, Peter and Smith, Mary and White, Jane
-\begin_inset Quotes erd
-\end_inset
-
- (since 
-\begin_inset Quotes eld
-\end_inset
-
-and
-\begin_inset Quotes erd
-\end_inset
-
- is used by Bib\SpecialChar TeX
- to delimit authors).
- \SpecialChar LyX
- therefore provides some methods to get properly formatted name lists (which
- will also get translated).
- The following keys are provided:
+は書誌情報ファイルに記録されている形のままの著者キーを出力すると述べました．これは「Miller, Peter and Smith, Mary
+ and White, Jane」のような文字列に終わることがあり（Bib\SpecialChar TeX
+では著者を区切るのに「and」が用いられるため），望ましい結果ではありません．したがっ
+て，\SpecialChar LyX
+は，正しく整形された名前のリスト（これも翻訳の対象となります）を得るための方法を提供しています．以下のキーが提供されています．
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-For name lists with pre- and surname, suitable for the main authors/editors
- of a bibliography item.
- The 
+書誌情報項目の主要著者・編者に適した，姓名付き名前リスト用．
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 <nametype>
 \end_layout
 
 \end_inset
 
- part denotes the kind of list that is requested (e.g.
- 
+部分は要請されているリスト型を表します（例：
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 <nametype:author>
 \end_layout
 
 \end_inset
 
-):
+）
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %abbrvnames:<nametype>%
 \end_layout
 
 \end_inset
 
-: Provides a name list which is abbreviated (with 
-\begin_inset Quotes eld
-\end_inset
-
-et al.
-\begin_inset Quotes erd
-\end_inset
-
-) when 
+: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 MaxCiteNames
 \end_layout
 
 \end_inset
 
- is reached.
+に達した場合に短縮される（「et al.」と共に供される）名前リストを提供します．
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %fullnames:<nametype>%
 \end_layout
 
 \end_inset
 
-: Provides a full name list (never abbreviated with 
-\begin_inset Quotes eld
-\end_inset
-
-et al.
-\begin_inset Quotes erd
-\end_inset
-
-).
+: 完全な名前リストを提供します（「et al.」を用いて短縮されることはありません）．
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %forceabbrvnames:<nametype>%
 \end_layout
 
 \end_inset
 
-: Provides a name list which is always abbreviated (with 
-\begin_inset Quotes eld
-\end_inset
-
-et al.
-\begin_inset Quotes erd
-\end_inset
-
-) irrespective of 
+: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 MaxCiteNames
 \end_layout
 
 \end_inset
 
-.
+に関わらず，常に短縮される（「et al.」と共に供される）名前リストを提供します．
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-
-\lang english
-Alternative name lists with pre- and surname, if the order of pre- and surname
- inside the bibliography item differs (as in: 
-\begin_inset Quotes eld
-\end_inset
-
-Miller, John: Some text, in: Mary Smith, ed.: A volume
-\begin_inset Quotes erd
-\end_inset
-
-):
+書誌情報項目中の姓名の順序が異なっている場合の，姓名付き名前リスト（例：「Miller, John: 何らかの文, in: Mary Smith,
+ ed.: A volume」
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %abbrvbynames:<nametype>%
 \end_layout
 
 \end_inset
 
-: Provides a name list which is abbreviated (with 
-\begin_inset Quotes eld
-\end_inset
-
-et al.
-\begin_inset Quotes erd
-\end_inset
-
-) when 
+: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 MaxCiteNames
 \end_layout
 
 \end_inset
 
- is reached.
+に達した場合に短縮される（「et al.」と共に供される）名前リストを提供します．
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %fullbynames:<nametype>%
 \end_layout
 
 \end_inset
 
-: Provides a full name list (never abbreviated with 
-\begin_inset Quotes eld
-\end_inset
-
-et al.
-\begin_inset Quotes erd
-\end_inset
-
-).
+: 完全な名前リストを提供します（「et al.」を用いて短縮されることはありません）．
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %forceabbrvbynames:<nametype>%
 \end_layout
 
 \end_inset
 
-: Provides a name list which is always abbreviated (with 
-\begin_inset Quotes eld
-\end_inset
-
-et al.
-\begin_inset Quotes erd
-\end_inset
-
-) irrespective of 
+: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 MaxCiteNames
 \end_layout
 
 \end_inset
 
-.
+に関わらず，常に短縮される（「et al.」と共に供される）名前リストを提供します．
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-
-\lang english
-And finally name lists which consist of family names only, as used in author-yea
-r citation labels.
- these do not take a 
+著者-発行年引用ラベルで用いられるような，姓のみを含む姓リスト．これらは
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 <nametype>
 \end_layout
 
 \end_inset
 
- part, but always return either an author list or, if this does not exist,
- an editor list (as common in author-year labels):
+部分を取りませんが，（著者-発行年ラベルで通例であるように）常に著者リストか，存在しない場合には編者リストを返します．
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %abbrvciteauthor%
 \end_layout
 
 \end_inset
 
-: Provides a name list which is abbreviated (with 
-\begin_inset Quotes eld
-\end_inset
-
-et al.
-\begin_inset Quotes erd
-\end_inset
-
-) when 
+: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 MaxCiteNames
 \end_layout
 
 \end_inset
 
- is reached.
+に達した場合に短縮される（「et al.」と共に供される）名前リストを提供します．
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %fullciteauthor%
 \end_layout
 
 \end_inset
 
-: Provides a full name list (never abbreviated with 
-\begin_inset Quotes eld
-\end_inset
-
-et al.
-\begin_inset Quotes erd
-\end_inset
-
-).
+: 完全な名前リストを提供します（「et al.」を用いて短縮されることはありません）．
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 %forceabbrvciteauthor%
 \end_layout
 
 \end_inset
 
-: Provides a name list which is always abbreviated (with 
-\begin_inset Quotes eld
-\end_inset
-
-et al.
-\begin_inset Quotes erd
-\end_inset
-
-) irrespective of 
+: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 MaxCiteNames
 \end_layout
 
 \end_inset
 
-.
+に関わらず，常に短縮される（「et al.」と共に供される）名前リストを提供します．
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-
-\lang english
-The order of pre- and surname in the former two lists can be adjusted by
- these macros:
+前二者の姓名の順序は，下記のマクロで変更することができます．
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 !firstnameform %surname%, %prename%
 \end_layout
 
 \end_inset
 
- (first author in lists of type 1)
+（1の場合の最初の著者）
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 !othernameform %surname%, %prename%
 \end_layout
 
 \end_inset
 
- (other authors in lists of type 1)
+（1の場合の他の著者）
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 !firstbynameform %prename% %surname%
 \end_layout
 
 \end_inset
 
- (first author in lists of type 2)
+（2の場合の最初の著者）
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 !otherbynameform %prename% %surname%
 \end_layout
 
 \end_inset
 
- (other authors in lists of type 2)
+（2の場合の他の著者）
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This allows you to configure namings like 
-\begin_inset Quotes eld
-\end_inset
-
-Miller, Peter and Mary Smith: \SpecialChar ldots
+これによって，名前を「Miller, Peter and Mary Smith: \SpecialChar ldots
 , in: John Doe and Pat Green, eds.:\SpecialChar ldots
-
-\begin_inset Quotes erd
-\end_inset
-
-.
-\lang japanese
-ます．これらすべてのあいだには，空白は入ってはなりません．
+」のように
+設定することができます．
 \end_layout
 
 \begin_layout Standard
@@ -20953,7 +20152,7 @@ status collapsed
 
 \begin_layout Standard
 のようなことはしないでください．\SpecialChar LyX
-は，無限ループに陥るようなことはありませんが，諦めるまでに長いループに入るかもしれません．
+は，無限ループに陥るようなことはありませんが，諦めるまでに時間のかかる長いループに入るかもしれません．
 \end_layout
 
 \begin_layout Standard
@@ -20964,16 +20163,8 @@ status collapsed
 _pptext pp.
 \end_layout
 
-\begin_layout LyX-Code
-
-\lang english
-This defines a translatable piece of text, which allows relevant parts of
- the bibliography or citation to be translated.
- 
-\end_layout
-
 \begin_layout Standard
-のようなものです．これは，文字列の翻訳可能な部分を定義するもので，書誌情報中の関連部分が翻訳されるようにすることができます．
+のようなものです．これは翻訳対象となるテキスト部分を定義し，これによって書誌情報や引用の対応する部分が翻訳されるようになります．
 \begin_inset Flex Code
 status collapsed
 
@@ -20989,25 +20180,21 @@ status collapsed
 
 \begin_layout Plain Layout
 stdciteformats.inc
-\lang english
- and the diverse 
+\end_layout
+
+\end_inset
+
+及び様々な
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 *.citeengine
 \end_layout
 
 \end_inset
 
- files
-\end_layout
-
-\end_inset
-
-中に事前定義されています．これは，上記で述べたような意味でのマクロではないことに注意してください．
+ファイル中に事前定義されています．これは，上記で述べたような意味でのマクロではないことに注意してください．
 \end_layout
 
 \begin_layout Standard
@@ -22924,46 +22111,6 @@ reference "sec:セキュリティに関する論点"
 \end_inset
 
 のセキュリティに関する議論を読んでおいてください．
-\lang english
-The external templates are defined in the 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-*.xtemplate
-\end_layout
-
-\end_inset
-
- files that are stored in the 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-LyXDir/lib/xtemplates/
-\end_layout
-
-\end_inset
-
- directory.
- Each template is defined in a file of its own.
- You can place your own templates in 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-UserDir/xtemplates/
-\end_layout
-
-\end_inset
-
- or copy existing templates to that directory in order to modify them.
 \end_layout
 
 \begin_layout Standard
@@ -22971,27 +22118,37 @@ UserDir/xtemplates/
 \end_layout
 
 \begin_layout Standard
-外用ひな型は，
+外用ひな型ファイルは，
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-LyXDir/lib/external_templates
+LyXDir/lib/xtemplates/
 \end_layout
 
 \end_inset
 
-ファイルで定義されています．自分用の版を
+ディレクトリ中にある
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-UserDir/external_templates
+*.xtemplate
 \end_layout
 
 \end_inset
 
-に置くこともできます．
+ファイルに定義されています．各ひな型は，そのファイル完結で定義されています．自分専用のひな型を
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+UserDir/xtemplates/
+\end_layout
+
+\end_inset
+
+に置くこともできますし，既存のひな型をそのデイレク取りにコピーして修正を加えることもできます．
 \end_layout
 
 \begin_layout Standard
