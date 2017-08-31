@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 63
+currentFormat = 64
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -212,6 +212,11 @@ currentFormat = 63
 # - New textclass tags CiteFramework, MaxCiteNames (for cite engines)
 # - Extended InsetCite syntax.
 
+# Incremented to format 64, 30 August 2017 by rgh
+# Strip leading and trailing spaces from LabelString,
+# LabelStringAppendix, and EndLabelString, and LabelCounter,
+# to conform to what we used to do.
+
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
 
@@ -345,6 +350,11 @@ def convert(lines, end_format):
     re_CenteredEnvironment = re.compile(b'^(\\s*)LabelType(\\s+)Centered_Top_Environment\\s*$', re.IGNORECASE)
     re_ChapterStyle = re.compile(b'^\\s*Style\\s+Chapter\\s*$', re.IGNORECASE)
     re_InsetLayout_CaptionLTNN = re.compile(b'^(\\s*InsetLayout\\s+)(Caption:LongTableNonumber)', re.IGNORECASE)
+    # for format 64
+    re_trimLabelString = re.compile(b'^(\\s*LabelString\s+)"\\s*(.*?)\\s*"\\s*$')
+    re_trimLabelStringAppendix  = re.compile(b'^(\\s*LabelStringAppendix\s+)"\\s*(.*?)\\s*"\\s*$')
+    re_trimEndLabelString = re.compile(b'^(\\s*EndLabelString\s+)"\\s*(.*?)\\s*"\\s*$')
+    re_trimLabelCounter = re.compile(b'^(\\s*LabelCounter\s+)"\\s*(.*?)\\s*"\\s*$')
 
 
     # counters for sectioning styles (hardcoded in 1.3)
@@ -454,6 +464,15 @@ def convert(lines, end_format):
             i += 1
             while i < len(lines) and not re_EndBabelPreamble.match(lines[i]):
                 i += 1
+            continue
+
+        if format == 63:
+            for r in (re_trimLabelString, re_trimLabelStringAppendix,\
+              re_trimEndLabelString, re_trimLabelCounter):
+                m = r.match(lines[i])
+                if m:
+                    lines[i] = m.group(1) + '"' + m.group(2) + '"'
+            i += 1
             continue
 
         if format >= 60 and format <= 62:

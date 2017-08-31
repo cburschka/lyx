@@ -545,23 +545,19 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 			// FIXME: this means LT_LABELSTRING_APPENDIX may only
 			// occur after LT_LABELSTRING
 			lex >> labelstring_;
-			labelstring_ = trim(labelstring_);
 			labelstring_appendix_ = labelstring_;
 			break;
 
 		case LT_ENDLABELSTRING:
 			lex >> endlabelstring_;
-			endlabelstring_ = trim(endlabelstring_);
 			break;
 
 		case LT_LABELSTRING_APPENDIX:
 			lex >> labelstring_appendix_;
-			labelstring_appendix_ = trim(labelstring_appendix_);
 			break;
 
 		case LT_LABELCOUNTER:
 			lex >> counter;
-			counter = trim(counter);
 			break;
 
 		case LT_PAR_GROUP:
