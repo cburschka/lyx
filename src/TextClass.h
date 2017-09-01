@@ -207,6 +207,8 @@ public:
 	OutputType outputType() const { return outputType_; }
 	/// Can be latex, docbook ... (the name of a format)
 	std::string outputFormat() const { return outputFormat_; }
+	/// Does this class redefine the output format?
+	bool hasOutputFormat() const { return has_output_format_; }
 	/// Return the non-localised names for the toc types.
 	std::map<std::string, docstring> const &
 	outlinerNames() const { return outliner_names_; }
@@ -313,6 +315,8 @@ protected:
 	OutputType outputType_;
 	/// Can be latex, docbook ... (the name of a format)
 	std::string outputFormat_;
+	/// Does this class redefine the output format?
+	bool has_output_format_;
 	/** Base font. The paragraph and layout fonts are resolved against
 	    this font. This has to be fully instantiated. Attributes
 	    FONT_INHERIT, FONT_IGNORE, and FONT_TOGGLE are

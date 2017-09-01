@@ -2621,8 +2621,16 @@ vector<string> BufferParams::backends() const
 			v.push_back("luatex");
 			v.push_back("dviluatex");
 		}
-	} else
-		v.push_back(buffmt);
+	} else {
+		string rbuffmt = buffmt;
+		// If we use an OutputFormat in Japanese docs,
+		// we need special format in order to get the path
+		// via pLaTeX (#8823)
+		if (documentClass().hasOutputFormat()
+		    && encoding().package() == Encoding::japanese)
+			rbuffmt += "-ja";
+		v.push_back(rbuffmt);
+	}
 
 	v.push_back("xhtml");
 	v.push_back("text");

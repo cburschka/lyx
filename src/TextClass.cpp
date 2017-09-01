@@ -152,7 +152,7 @@ TextClass::TextClass()
 	  opt_enginetype_("authoryear|numerical"), opt_fontsize_("10|11|12"),
 	  opt_pagestyle_("empty|plain|headings|fancy"), pagestyle_("default"),
 	  columns_(1), sides_(OneSide), secnumdepth_(3), tocdepth_(3),
-	  outputType_(LATEX), outputFormat_("latex"),
+	  outputType_(LATEX), outputFormat_("latex"), has_output_format_(false),
 	  defaultfont_(sane_font),
 	  titletype_(TITLE_COMMAND_AFTER), titlename_("maketitle"),
 	  min_toclevel_(0), max_toclevel_(0), maxcitenames_(2),
@@ -445,8 +445,10 @@ TextClass::ReturnValues TextClass::read(Lexer & lexrc, ReadType rt)
 			break;
 
 		case TC_OUTPUTFORMAT:
-			if (lexrc.next())
+			if (lexrc.next()) {
 				outputFormat_ = lexrc.getString();
+				has_output_format_ = true;
+			}
 			break;
 
 		case TC_OUTPUTTYPE:

@@ -449,7 +449,8 @@ bool Converters::convert(Buffer const * buffer,
 
 	if (buffer) {
 		runparams.use_japanese =
-			buffer->params().bufferFormat() == "latex"
+			(buffer->params().bufferFormat() == "latex"
+			 || suffixIs(buffer->params().bufferFormat(), "-ja"))
 			&& buffer->params().encoding().package() == Encoding::japanese;
 		runparams.use_indices = buffer->params().use_indices;
 		runparams.bibtex_command = buffer->params().bibtexCommand();
