@@ -7780,6 +7780,10 @@ msgstr "ACM ISBN"
 msgid "ACM ISBN: "
 msgstr "ACM ISBN: "
 
+#: lib/layouts/acmart.layout:364
+msgid "ISBN: "
+msgstr "ISBN: "
+
 #: lib/layouts/acmart.layout:366
 msgid "ACM DOI"
 msgstr "ACM DOI"
@@ -12746,7 +12750,7 @@ msgstr "American Geophysical Union (AGUPLUS JGR)"
 
 #: lib/layouts/jreport.layout:3
 msgid "Japanese Report (jreport)"
-msgstr "Japonský Referát (jreport)"
+msgstr "Japonský referát (jreport)"
 
 #: lib/layouts/jsarticle.layout:3
 msgid "Japanese Article (jsarticle)"
@@ -15626,8 +15630,8 @@ msgid "Title*"
 msgstr "Titul*"
 
 #: lib/layouts/svmult.layout:37
-msgid "Title*: "
-msgstr "Titul*: "
+msgid "Title*:"
+msgstr "Titul*:"
 
 #: lib/layouts/svmult.layout:66 lib/layouts/svmult.layout:151
 msgid "Contributors"
@@ -15686,11 +15690,11 @@ msgstr ""
 
 #: lib/layouts/tarticle.layout:3
 msgid "Japanese Article (Vertical Writing)"
-msgstr "Japonský Článok (vertikálne písanie)"
+msgstr "Japonský Článok (Vertikálne Písanie)"
 
 #: lib/layouts/tbook.layout:3
 msgid "Japanese Book (Vertical Writing)"
-msgstr "Japonská Kniha (vertikálne písanie)"
+msgstr "Japonská Kniha (Vertikálne Písanie)"
 
 #: lib/layouts/tcolorbox.module:2
 msgid "Fancy Colored Boxes"
@@ -16641,7 +16645,7 @@ msgstr "ChybiaciObrázok"
 
 #: lib/layouts/treport.layout:3
 msgid "Japanese Report (Vertical Writing)"
-msgstr "Japonský referát (vertikálne písanie)"
+msgstr "Japonský Referát (Vertikálne Písanie)"
 
 #: lib/layouts/tufte-book.layout:3
 msgid "Tufte Book"
@@ -33489,6 +33493,39 @@ msgstr "Neznámy používateľ"
 #~ msgid "Price: "
 #~ msgstr "Cena: "
 
+#~ msgid "Japanese Article (BXJS Class)"
+#~ msgstr "Japonský Článok (Trieda BXJS)"
+
+#~ msgid "Japanese Book (BXJS Class)"
+#~ msgstr "Japonská Kniha (Trieda BXJS)"
+
+#~ msgid "Japanese Report (BXJS Class)"
+#~ msgstr "Japonský Referát (Trieda BXJS)"
+
+#~ msgid "Japanese Slide (BXJS Class)"
+#~ msgstr "Japonská Fólia (Trieda BXJS)"
+
+#~ msgid "Japanese Article (Standard Class)"
+#~ msgstr "Japonský Článok (Štandardná Trieda)"
+
+#~ msgid "Japanese Book (Standard Class)"
+#~ msgstr "Japonská Kniha (Štandardná Trieda)"
+
+#~ msgid "Japanese Report (Standard Class)"
+#~ msgstr "Japonský Report (Štandardná trieda)"
+
+#~ msgid "Japanese Article (JS Class)"
+#~ msgstr "Japonský Článok (Trieda JS)"
+
+#~ msgid "Japanese Book (JS Class)"
+#~ msgstr "Japonská Kniha (Trieda JS)"
+
+#~ msgid "Japanese Article (Standard Class: Vertical Writing)"
+#~ msgstr "Japonský Článok (Štandardná Trieda: Vertikálne Písanie)"
+
+#~ msgid "Japanese Book (Standard Class: Vertical Writing)"
+#~ msgstr "Japonská Kniha (Štandardná Trieda: Vertikálne Písanie)"
+
 #~ msgid "Sweave (Japanese)"
 #~ msgstr "Sweave (japonský)"
 
@@ -37823,3 +37860,4 @@ msgstr "Neznámy používateľ"
 #~ "obrázok/formát konvertor, ale je známe že je schopný vykonávať v mene "
 #~ "užívateľa ľubovoľné akcie, vrátane nebezpečné ako napr. zmazanie súborov. "
 #~ "Keď je napr. inštruovaný robiť to zlovoľne vyrobeným lyx dokumentom.</p> "
+
