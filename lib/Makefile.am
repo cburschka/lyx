@@ -2128,6 +2128,10 @@ dist_layouts_DATA =\
 	layouts/book.layout \
 	layouts/braille.module \
 	layouts/broadway.layout \
+	layouts/bxjsarticle.layout \
+	layouts/bxjsbook.layout \
+	layouts/bxjsreport.layout \
+	layouts/bxjsslide.layout \
 	layouts/changebars.module \
 	layouts/chess.layout \
 	layouts/cl2emult.layout \

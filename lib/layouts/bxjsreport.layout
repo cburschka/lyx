@@ -1,0 +1,17 @@
+#% Do not delete the line below; configure depends on this
+#  \DeclareLaTeXClass{Japanese Report (BXJS Class)}
+#  \DeclareCategory{Reports}
+# Japanese BXJS report textclass is an extension of JS textclass 
+# to incorporate other TeX engines than (u)pLaTeX, e.g. XeLaTeX.
+# Author : Koji Yokota (yokota6@gmail.com)
+
+# This style provides japanese features 
+Format 63
+Provides japanese 1
+
+# Input general definitions
+Input report.layout
+
+ClassOptions
+	Other "autodetect-engine, dvi=dvipdfmx, ja=standard"
+End
