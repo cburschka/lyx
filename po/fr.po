@@ -329,12 +329,16 @@
 # 29 août 2017 : remplacement de « marques de citation » par
 #                « guillemets » conformément à la revue de la doc
 # ------------------------------------------------------------------
+# 1er septembre 2017 : suite modifs acmart.layout
+# ------------------------------------------------------------------
+# 2  septembre 2017 : nouvelle classes japonaise
+# -----------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-09-01 17:44+0200\n"
-"PO-Revision-Date: 2017-09-01 22:53+0200\n"
+"POT-Creation-Date: 2017-09-02 18:58+0200\n"
+"PO-Revision-Date: 2017-09-02 19:06+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -6022,25 +6026,26 @@ msgstr "American Economic Association (AEA)"
 #: lib/layouts/agutex.layout:4 lib/layouts/amsart.layout:4
 #: lib/layouts/apa.layout:4 lib/layouts/apa6.layout:4
 #: lib/layouts/arab-article.layout:4 lib/layouts/article-beamer.layout:4
-#: lib/layouts/article.layout:4 lib/layouts/chess.layout:4
-#: lib/layouts/cl2emult.layout:4 lib/layouts/ctex-article.layout:4
-#: lib/layouts/doublecol-new.layout:4 lib/layouts/dtk.layout:4
-#: lib/layouts/ectaart.layout:4 lib/layouts/egs.layout:4
-#: lib/layouts/elsarticle.layout:4 lib/layouts/entcs.layout:4
-#: lib/layouts/extarticle.layout:4 lib/layouts/heb-article.layout:4
-#: lib/layouts/ijmpc.layout:4 lib/layouts/ijmpd.layout:4
-#: lib/layouts/iopart.layout:4 lib/layouts/isprs.layout:4
-#: lib/layouts/iucr.layout:4 lib/layouts/jarticle.layout:4
-#: lib/layouts/jasatex.layout:4 lib/layouts/jgrga.layout:4
-#: lib/layouts/jsarticle.layout:4 lib/layouts/jss.layout:4
-#: lib/layouts/kluwer.layout:4 lib/layouts/llncs.layout:4
-#: lib/layouts/ltugboat.layout:4 lib/layouts/mwart.layout:4
-#: lib/layouts/paper.layout:4 lib/layouts/revtex4-1.layout:4
-#: lib/layouts/revtex4.layout:4 lib/layouts/scrartcl.layout:4
-#: lib/layouts/scrarticle-beamer.layout:4 lib/layouts/siamltex.layout:4
-#: lib/layouts/singlecol-new.layout:4 lib/layouts/spie.layout:4
-#: lib/layouts/svglobal3.layout:4 lib/layouts/svjog.layout:4
-#: lib/layouts/svprobth.layout:4 lib/layouts/tarticle.layout:4
+#: lib/layouts/article.layout:4 lib/layouts/bxjsarticle.layout:4
+#: lib/layouts/chess.layout:4 lib/layouts/cl2emult.layout:4
+#: lib/layouts/ctex-article.layout:4 lib/layouts/doublecol-new.layout:4
+#: lib/layouts/dtk.layout:4 lib/layouts/ectaart.layout:4
+#: lib/layouts/egs.layout:4 lib/layouts/elsarticle.layout:4
+#: lib/layouts/entcs.layout:4 lib/layouts/extarticle.layout:4
+#: lib/layouts/heb-article.layout:4 lib/layouts/ijmpc.layout:4
+#: lib/layouts/ijmpd.layout:4 lib/layouts/iopart.layout:4
+#: lib/layouts/isprs.layout:4 lib/layouts/iucr.layout:4
+#: lib/layouts/jarticle.layout:4 lib/layouts/jasatex.layout:4
+#: lib/layouts/jgrga.layout:4 lib/layouts/jsarticle.layout:4
+#: lib/layouts/jss.layout:4 lib/layouts/kluwer.layout:4
+#: lib/layouts/llncs.layout:4 lib/layouts/ltugboat.layout:4
+#: lib/layouts/mwart.layout:4 lib/layouts/paper.layout:4
+#: lib/layouts/revtex4-1.layout:4 lib/layouts/revtex4.layout:4
+#: lib/layouts/scrartcl.layout:4 lib/layouts/scrarticle-beamer.layout:4
+#: lib/layouts/siamltex.layout:4 lib/layouts/singlecol-new.layout:4
+#: lib/layouts/spie.layout:4 lib/layouts/svglobal3.layout:4
+#: lib/layouts/svjog.layout:4 lib/layouts/svprobth.layout:4
+#: lib/layouts/tarticle.layout:4
 msgid "Articles"
 msgstr "Articles"
 
@@ -7249,10 +7254,11 @@ msgstr "Dans le titre"
 msgid "R Journal"
 msgstr "R Journal"
 
-#: lib/layouts/RJournal.layout:4 lib/layouts/ctex-report.layout:4
-#: lib/layouts/extreport.layout:4 lib/layouts/jreport.layout:4
-#: lib/layouts/mwrep.layout:4 lib/layouts/report.layout:4
-#: lib/layouts/scrreprt.layout:4 lib/layouts/treport.layout:4
+#: lib/layouts/RJournal.layout:4 lib/layouts/bxjsreport.layout:4
+#: lib/layouts/ctex-report.layout:4 lib/layouts/extreport.layout:4
+#: lib/layouts/jreport.layout:4 lib/layouts/mwrep.layout:4
+#: lib/layouts/report.layout:4 lib/layouts/scrreprt.layout:4
+#: lib/layouts/treport.layout:4
 msgid "Reports"
 msgstr "Reports"
 
@@ -7850,7 +7856,7 @@ msgstr "Également affiliation"
 #: lib/layouts/achemso.layout:127 lib/layouts/europasscv.layout:116
 #: lib/layouts/europecv.layout:93 lib/layouts/lettre.layout:46
 #: lib/layouts/lettre.layout:348 lib/layouts/moderncv.layout:170
-#: lib/layouts/scrlttr2.layout:196 lib/configure.py:730
+#: lib/layouts/scrlttr2.layout:196 lib/configure.py:733
 msgid "Fax"
 msgstr "Fax"
 
@@ -9180,12 +9186,13 @@ msgid "American Mathematical Society (AMS) Book"
 msgstr "American Mathematical Society (AMS) Book"
 
 #: lib/layouts/amsbook.layout:4 lib/layouts/book.layout:4
-#: lib/layouts/ctex-book.layout:4 lib/layouts/extbook.layout:4
-#: lib/layouts/jbook.layout:4 lib/layouts/jsbook.layout:4
-#: lib/layouts/memoir.layout:4 lib/layouts/mwbk.layout:4
-#: lib/layouts/recipebook.layout:4 lib/layouts/scrbook.layout:4
-#: lib/layouts/svmono.layout:4 lib/layouts/svmult.layout:4
-#: lib/layouts/tbook.layout:4 lib/layouts/tufte-book.layout:4
+#: lib/layouts/bxjsbook.layout:4 lib/layouts/ctex-book.layout:4
+#: lib/layouts/extbook.layout:4 lib/layouts/jbook.layout:4
+#: lib/layouts/jsbook.layout:4 lib/layouts/memoir.layout:4
+#: lib/layouts/mwbk.layout:4 lib/layouts/recipebook.layout:4
+#: lib/layouts/scrbook.layout:4 lib/layouts/svmono.layout:4
+#: lib/layouts/svmult.layout:4 lib/layouts/tbook.layout:4
+#: lib/layouts/tufte-book.layout:4
 msgid "Books"
 msgstr "Livres"
 
@@ -9464,9 +9471,9 @@ msgstr "Partie*"
 msgid "Beamer"
 msgstr "Beamer"
 
-#: lib/layouts/beamer.layout:4 lib/layouts/foils.layout:4
-#: lib/layouts/powerdot.layout:4 lib/layouts/seminar.layout:4
-#: lib/layouts/slides.layout:4
+#: lib/layouts/beamer.layout:4 lib/layouts/bxjsslide.layout:4
+#: lib/layouts/foils.layout:4 lib/layouts/powerdot.layout:4
+#: lib/layouts/seminar.layout:4 lib/layouts/slides.layout:4
 msgid "Presentations"
 msgstr "Présentations"
 
@@ -10338,6 +10345,22 @@ msgstr "RIDEAU"
 #: lib/layouts/siamltex.layout:307
 msgid "Right Address"
 msgstr "Adresse_À_Droite"
+
+#: lib/layouts/bxjsarticle.layout:3
+msgid "Japanese Article (BXJS Class)"
+msgstr "Article japonais (classe BXJS)"
+
+#: lib/layouts/bxjsbook.layout:3
+msgid "Japanese Book (BXJS Class)"
+msgstr "Livre japonnais (classe BXJS)"
+
+#: lib/layouts/bxjsreport.layout:3
+msgid "Japanese Report (BXJS Class)"
+msgstr "Report japonais (classe BXJS"
+
+#: lib/layouts/bxjsslide.layout:3
+msgid "Japanese Slide (BXJS Class)"
+msgstr "Transparent japonais (classe BXJS)"
 
 #: lib/layouts/changebars.module:2
 msgid "Change bars"
@@ -13124,8 +13147,8 @@ msgid "Synopsis"
 msgstr "Synopsis"
 
 #: lib/layouts/jarticle.layout:3
-msgid "Japanese Article (jarticle)"
-msgstr "Article japonais(jarticle)"
+msgid "Japanese Article (Standard Class)"
+msgstr "Article japonais (classe standard)"
 
 #: lib/layouts/jasatex.layout:3
 msgid "Journal of the Acoustical Society of America (JASA)"
@@ -13160,24 +13183,24 @@ msgid "Online citation"
 msgstr "Citation en ligne"
 
 #: lib/layouts/jbook.layout:3
-msgid "Japanese Book (jbook)"
-msgstr "Livre japonnais (jbook)"
+msgid "Japanese Book (Standard Class)"
+msgstr "Livre japonais (classe standard)"
 
 #: lib/layouts/jgrga.layout:3
 msgid "American Geophysical Union (AGUPLUS JGR)"
 msgstr "American Geophysical Union (AGUPLUS JGR)"
 
 #: lib/layouts/jreport.layout:3
-msgid "Japanese Report (jreport)"
-msgstr "Report japonais (jreport)"
+msgid "Japanese Report (Standard Class)"
+msgstr "Rapport japonais (classe standard)"
 
 #: lib/layouts/jsarticle.layout:3
-msgid "Japanese Article (jsarticle)"
-msgstr "Article japonais (jsarticle)"
+msgid "Japanese Article (JS Class)"
+msgstr "Article japonais (JS Class)"
 
 #: lib/layouts/jsbook.layout:3
-msgid "Japanese Book (jsbook)"
-msgstr "Livre japonnais (jsbook)"
+msgid "Japanese Book (JS Class)"
+msgstr "Livre japonnais (JS Class)"
 
 #: lib/layouts/jss.layout:3
 msgid "Journal of Statistical Software (JSS) version 2"
@@ -13271,7 +13294,7 @@ msgstr "AuteurCourant"
 msgid "Running author:"
 msgstr "Auteur courant :"
 
-#: lib/layouts/knitr.module:2 lib/configure.py:642
+#: lib/layouts/knitr.module:2 lib/configure.py:643
 msgid "Rnw (knitr)"
 msgstr "Rnw (knitr)"
 
@@ -16129,12 +16152,12 @@ msgstr ""
 "»."
 
 #: lib/layouts/tarticle.layout:3
-msgid "Japanese Article (Vertical Writing)"
-msgstr "Article japonais (écriture verticale)"
+msgid "Japanese Article (Standard Class: Vertical Writing)"
+msgstr "Article japonais (classe standard : écriture verticale)"
 
 #: lib/layouts/tbook.layout:3
-msgid "Japanese Book (Vertical Writing)"
-msgstr "Book japonais  (écriture verticale)"
+msgid "Japanese Book (Standard Class: Vertical Writing)"
+msgstr "Livre japonais  (classe standard : écriture verticale)"
 
 #: lib/layouts/tcolorbox.module:2
 msgid "Fancy Colored Boxes"
@@ -24952,340 +24975,356 @@ msgid "NoWeb|N"
 msgstr "NoWeb|N"
 
 #: lib/configure.py:641
+msgid "Sweave (Japanese)"
+msgstr "Sweave (japonais)"
+
+#: lib/configure.py:641
+msgid "Sweave (Japanese)|S"
+msgstr "Sweave (japonais)|S"
+
+#: lib/configure.py:642
 msgid "R/S code"
 msgstr "R/S code"
 
-#: lib/configure.py:643
+#: lib/configure.py:644
+msgid "Rnw (knitr, Japanese)"
+msgstr "Rnw (knitr, japonais)"
+
+#: lib/configure.py:645
 msgid "LilyPond music"
 msgstr "Format musical LilyPond"
 
-#: lib/configure.py:644
+#: lib/configure.py:646
 msgid "LilyPond book (LaTeX)"
 msgstr "Livre LilyPond (LaTeX)"
 
-#: lib/configure.py:645
+#: lib/configure.py:647
+msgid "LilyPond book (pLaTeX)"
+msgstr "Livre LilyPond (pLaTeX)"
+
+#: lib/configure.py:648
 msgid "LaTeX (plain)"
 msgstr "LaTeX (standard)"
 
-#: lib/configure.py:645
+#: lib/configure.py:648
 msgid "LaTeX (plain)|L"
 msgstr "LaTeX (standard)|L"
 
-#: lib/configure.py:646
+#: lib/configure.py:649
 msgid "LaTeX (LuaTeX)"
 msgstr "LaTeX (LuaTeX)"
 
-#: lib/configure.py:647
+#: lib/configure.py:650
 msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
-#: lib/configure.py:648
+#: lib/configure.py:651
 msgid "LaTeX (XeTeX)"
 msgstr "LaTeX (XeTeX)"
 
-#: lib/configure.py:649
+#: lib/configure.py:652
 msgid "LaTeX (clipboard)"
 msgstr "LaTeX (presse-papier)"
 
-#: lib/configure.py:650
+#: lib/configure.py:653
 msgid "Plain text"
 msgstr "Texte brut"
 
-#: lib/configure.py:650
+#: lib/configure.py:653
 msgid "Plain text|a"
 msgstr "Texte brut|r"
 
-#: lib/configure.py:651
+#: lib/configure.py:654
 msgid "Plain text (pstotext)"
 msgstr "Texte brut (pstotext)"
 
-#: lib/configure.py:652
+#: lib/configure.py:655
 msgid "Plain text (ps2ascii)"
 msgstr "Texte brut (ps2ascii)"
 
-#: lib/configure.py:653
+#: lib/configure.py:656
 msgid "Plain text (catdvi)"
 msgstr "Texte brut (catdvi)"
 
-#: lib/configure.py:654
+#: lib/configure.py:657
 msgid "Plain Text, Join Lines"
 msgstr "Texte brut, lignes jointives"
 
-#: lib/configure.py:655
+#: lib/configure.py:658
 msgid "Info (Beamer)"
 msgstr "Info (Beamer)"
 
-#: lib/configure.py:658
+#: lib/configure.py:661
 msgid "Gnumeric spreadsheet"
 msgstr "Tableur Gnumeric"
 
-#: lib/configure.py:659
+#: lib/configure.py:662
 msgid "Excel spreadsheet"
 msgstr "Tableur Excel"
 
-#: lib/configure.py:660
+#: lib/configure.py:663
 msgid "MS Excel Office Open XML"
 msgstr "MS Excel Office Open XML"
 
-#: lib/configure.py:661
+#: lib/configure.py:664
 msgid "HTML Table (for spreadsheets)"
 msgstr "Tableau HTML (pour les feuilles de calcul)"
 
-#: lib/configure.py:662
+#: lib/configure.py:665
 msgid "OpenDocument spreadsheet"
 msgstr "Tableur OpenDocument"
 
-#: lib/configure.py:665
+#: lib/configure.py:668
 msgid "LyXHTML"
 msgstr "LyXHTML"
 
-#: lib/configure.py:665
+#: lib/configure.py:668
 msgid "LyXHTML|y"
 msgstr "LyXHTML|y"
 
-#: lib/configure.py:673 src/frontends/qt4/GuiLog.cpp:252
+#: lib/configure.py:676 src/frontends/qt4/GuiLog.cpp:252
 #: src/insets/InsetBibtex.cpp:155
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: lib/configure.py:681
+#: lib/configure.py:684
 msgid "EPS"
 msgstr "EPS"
 
-#: lib/configure.py:682
+#: lib/configure.py:685
 msgid "EPS (uncropped)"
 msgstr "EPS (non rogné)"
 
-#: lib/configure.py:683
+#: lib/configure.py:686
 msgid "EPS (cropped)"
 msgstr "EPS (rogné)"
 
-#: lib/configure.py:684
+#: lib/configure.py:687
 msgid "Postscript"
 msgstr "Postscript"
 
-#: lib/configure.py:684
+#: lib/configure.py:687
 msgid "Postscript|t"
 msgstr "Postscript|t"
 
-#: lib/configure.py:693
+#: lib/configure.py:696
 msgid "PDF (ps2pdf)"
 msgstr "PDF (ps2pdf)"
 
-#: lib/configure.py:693
+#: lib/configure.py:696
 msgid "PDF (ps2pdf)|P"
 msgstr "PDF (ps2pdf)|P"
 
-#: lib/configure.py:694
+#: lib/configure.py:697
 msgid "PDF (pdflatex)"
 msgstr "PDF (pdflatex)"
 
-#: lib/configure.py:694
+#: lib/configure.py:697
 msgid "PDF (pdflatex)|F"
 msgstr "PDF (pdflatex)|F"
 
-#: lib/configure.py:695
+#: lib/configure.py:698
 msgid "PDF (dvipdfm)"
 msgstr "PDF (dvipdfm)"
 
-#: lib/configure.py:695
+#: lib/configure.py:698
 msgid "PDF (dvipdfm)|m"
 msgstr "PDF (dvipdfm)|m"
 
-#: lib/configure.py:696
+#: lib/configure.py:699
 msgid "PDF (XeTeX)"
 msgstr "PDF (XeTeX)"
 
-#: lib/configure.py:696
+#: lib/configure.py:699
 msgid "PDF (XeTeX)|X"
 msgstr "PDF (XeTeX)|X"
 
-#: lib/configure.py:697
+#: lib/configure.py:700
 msgid "PDF (LuaTeX)"
 msgstr "PDF (LuaTeX)"
 
-#: lib/configure.py:697
+#: lib/configure.py:700
 msgid "PDF (LuaTeX)|u"
 msgstr "PDF (LuaTeX)|u"
 
-#: lib/configure.py:698
+#: lib/configure.py:701
 msgid "PDF (graphics)"
 msgstr "PDF (graphiques)"
 
-#: lib/configure.py:699
+#: lib/configure.py:702
 msgid "PDF (cropped)"
 msgstr "PDF (rogné)"
 
-#: lib/configure.py:700
+#: lib/configure.py:703
 msgid "PDF (lower resolution)"
 msgstr "PDF (résolution réduite)"
 
-#: lib/configure.py:705
+#: lib/configure.py:708
 msgid "DVI"
 msgstr "DVI"
 
-#: lib/configure.py:705
+#: lib/configure.py:708
 msgid "DVI|D"
 msgstr "DVI|D"
 
-#: lib/configure.py:706
+#: lib/configure.py:709
 msgid "DVI (LuaTeX)"
 msgstr "DVI (LuaTeX)"
 
-#: lib/configure.py:706
+#: lib/configure.py:709
 msgid "DVI (LuaTeX)|V"
 msgstr "DVI (LuaTeX)|V"
 
-#: lib/configure.py:709
+#: lib/configure.py:712
 msgid "DraftDVI"
 msgstr "BrouillonDVI"
 
-#: lib/configure.py:712 lib/configure.py:748
+#: lib/configure.py:715 lib/configure.py:751
 msgid "htm"
 msgstr "htm"
 
-#: lib/configure.py:712 lib/configure.py:748
+#: lib/configure.py:715 lib/configure.py:751
 msgid "htm|HTML"
 msgstr "htm|HTML"
 
-#: lib/configure.py:715
+#: lib/configure.py:718
 msgid "Noteedit"
 msgstr "Noteedit"
 
-#: lib/configure.py:718
+#: lib/configure.py:721
 msgid "OpenDocument (tex4ht)"
 msgstr "OpenDocument (tex4ht)"
 
-#: lib/configure.py:719
+#: lib/configure.py:722
 msgid "OpenDocument (eLyXer)"
 msgstr "OpenDocument (eLyXer)"
 
-#: lib/configure.py:720
+#: lib/configure.py:723
 msgid "OpenDocument (Pandoc)"
 msgstr "OpenDocument (pandoc)"
 
-#: lib/configure.py:721
+#: lib/configure.py:724
 msgid "OpenOffice.Org (sxw)"
 msgstr "OpenOffice.Org (sxw)"
 
-#: lib/configure.py:724
+#: lib/configure.py:727
 msgid "Rich Text Format"
 msgstr "Rich Text Format"
 
-#: lib/configure.py:725
+#: lib/configure.py:728
 msgid "MS Word"
 msgstr "MS Word"
 
-#: lib/configure.py:725
+#: lib/configure.py:728
 msgid "MS Word|W"
 msgstr "MS Word|W"
 
-#: lib/configure.py:726
+#: lib/configure.py:729
 msgid "MS Word Office Open XML"
 msgstr "MS Word Office Open XML"
 
-#: lib/configure.py:726
+#: lib/configure.py:729
 msgid "MS Word Office Open XML|O"
 msgstr "MS Word Office Open XML|O"
 
-#: lib/configure.py:729
+#: lib/configure.py:732
 msgid "Table (CSV)"
 msgstr "Tableau (CSV)"
 
-#: lib/configure.py:731 src/frontends/qt4/GuiView.cpp:1360
+#: lib/configure.py:734 src/frontends/qt4/GuiView.cpp:1360
 #: src/mathed/InsetMathMacroTemplate.cpp:549
 msgid "LyX"
 msgstr "LyX"
 
-#: lib/configure.py:732
+#: lib/configure.py:735
 msgid "LyX 1.3.x"
 msgstr "LyX 1.3.x"
 
-#: lib/configure.py:733
+#: lib/configure.py:736
 msgid "LyX 1.4.x"
 msgstr "LyX 1.4.x"
 
-#: lib/configure.py:734
+#: lib/configure.py:737
 msgid "LyX 1.5.x"
 msgstr "LyX 1.5.x"
 
-#: lib/configure.py:735
+#: lib/configure.py:738
 msgid "LyX 1.6.x"
 msgstr "LyX 1.6.x"
 
-#: lib/configure.py:736
+#: lib/configure.py:739
 msgid "LyX 2.0.x"
 msgstr "LyX 2.0.x"
 
-#: lib/configure.py:737
+#: lib/configure.py:740
 msgid "LyX 2.1.x"
 msgstr "LyX 2.1.x"
 
-#: lib/configure.py:738
+#: lib/configure.py:741
 msgid "LyX 2.2.x"
 msgstr "LyX 2.2.x"
 
-#: lib/configure.py:739
+#: lib/configure.py:742
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
 
-#: lib/configure.py:740
+#: lib/configure.py:743
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr "CJK LyX 1.4.x (euc-jp)"
 
-#: lib/configure.py:741
+#: lib/configure.py:744
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr "CJK LyX 1.4.x (euc-kr)"
 
-#: lib/configure.py:742
+#: lib/configure.py:745
 msgid "LyX Preview"
 msgstr "Aperçu"
 
-#: lib/configure.py:743
+#: lib/configure.py:746
 msgid "pdf_tex"
 msgstr "pdf_tex"
 
-#: lib/configure.py:743
+#: lib/configure.py:746
 msgid "pdf_tex|PDFTEX"
 msgstr "pdf_tex|PDFTEX"
 
-#: lib/configure.py:744
+#: lib/configure.py:747
 msgid "Program"
 msgstr "Listing de code source"
 
-#: lib/configure.py:745
+#: lib/configure.py:748
 msgid "ps_tex"
 msgstr "ps_tex"
 
-#: lib/configure.py:745
+#: lib/configure.py:748
 msgid "ps_tex|PSTEX"
 msgstr "ps_tex|PSTEX"
 
-#: lib/configure.py:746 src/frontends/qt4/GuiClipboard.cpp:173
+#: lib/configure.py:749 src/frontends/qt4/GuiClipboard.cpp:173
 msgid "Windows Metafile"
 msgstr "Métafichier Windows"
 
-#: lib/configure.py:747 src/frontends/qt4/GuiClipboard.cpp:172
+#: lib/configure.py:750 src/frontends/qt4/GuiClipboard.cpp:172
 msgid "Enhanced Metafile"
 msgstr "Métafichier amélioré"
 
-#: lib/configure.py:863
+#: lib/configure.py:870
 msgid "LyXBlogger"
 msgstr "LyxBlogger"
 
-#: lib/configure.py:1064
+#: lib/configure.py:1071
 msgid "gnuplot"
 msgstr "gnuplot"
 
-#: lib/configure.py:1064
+#: lib/configure.py:1071
 msgid "gnuplot|Gnuplot"
 msgstr "gnuplot|Gnuplot"
 
-#: lib/configure.py:1136
+#: lib/configure.py:1144
 msgid "LyX Archive (zip)"
 msgstr "Archive LyX (zip)"
 
-#: lib/configure.py:1139
+#: lib/configure.py:1147
 msgid "LyX Archive (tar.gz)"
 msgstr "Archive LyX (tar.gz)"
 
@@ -26125,7 +26164,7 @@ msgstr "Chargement de la classe impossible"
 msgid "Error reading internal layout information"
 msgstr "Erreur de lecture du format interne"
 
-#: src/BufferParams.cpp:2510 src/TextClass.cpp:1702 src/TextClass.cpp:1737
+#: src/BufferParams.cpp:2510 src/TextClass.cpp:1704 src/TextClass.cpp:1739
 msgid "Read Error"
 msgstr "Erreur de lecture"
 
@@ -26832,8 +26871,8 @@ msgstr "&Toujours autoriser pour ce document"
 msgid "&Always run for this document"
 msgstr "Toujours exécuter pour ce document"
 
-#: src/Converter.cpp:437 src/Converter.cpp:681 src/Converter.cpp:704
-#: src/Converter.cpp:747
+#: src/Converter.cpp:437 src/Converter.cpp:682 src/Converter.cpp:705
+#: src/Converter.cpp:748
 msgid "Cannot convert file"
 msgstr "Conversion du fichier impossible"
 
@@ -26847,11 +26886,11 @@ msgstr ""
 "du format %1$s vers le format %2$s.\n"
 "Définissez un convertisseur dans les préférences."
 
-#: src/Converter.cpp:539 src/frontends/qt4/GuiDocument.cpp:1631
+#: src/Converter.cpp:540 src/frontends/qt4/GuiDocument.cpp:1631
 msgid "Pygments driver command not found!"
 msgstr "Commande d'activation de pygments introuvable !"
 
-#: src/Converter.cpp:540 src/frontends/qt4/GuiDocument.cpp:1632
+#: src/Converter.cpp:541 src/frontends/qt4/GuiDocument.cpp:1632
 msgid ""
 "The driver command necessary to use the minted package\n"
 "(pygmentize) has not been found. Make sure you have\n"
@@ -26873,19 +26912,19 @@ msgstr ""
 "\n"
 "où « pilote » est le nom du pilote."
 
-#: src/Converter.cpp:629 src/Format.cpp:722 src/Format.cpp:793
+#: src/Converter.cpp:630 src/Format.cpp:722 src/Format.cpp:793
 msgid "Executing command: "
 msgstr "Exécution de la commande : "
 
-#: src/Converter.cpp:676
+#: src/Converter.cpp:677
 msgid "Build errors"
 msgstr "Erreurs de compilation"
 
-#: src/Converter.cpp:677
+#: src/Converter.cpp:678
 msgid "There were errors during the build process."
 msgstr "Il y a eu des erreurs pendant la compilation."
 
-#: src/Converter.cpp:682
+#: src/Converter.cpp:683
 #, c-format
 msgid ""
 "An error occurred while running:\n"
@@ -26894,26 +26933,26 @@ msgstr ""
 "Une erreur s'est produite lors de l'exécution :\n"
 "%1$s."
 
-#: src/Converter.cpp:705
+#: src/Converter.cpp:706
 #, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr "Impossible de déplacer un répertoire temporaire de %1$s à %2$s."
 
-#: src/Converter.cpp:749
+#: src/Converter.cpp:750
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Impossible de copier un fichier temporaire de %1$s vers %2$s."
 
-#: src/Converter.cpp:750
+#: src/Converter.cpp:751
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr "Impossible de déplacer un fichier temporaire de %1$s à %2$s."
 
-#: src/Converter.cpp:792
+#: src/Converter.cpp:793
 msgid "Running LaTeX..."
 msgstr "Exécution de LaTeX..."
 
-#: src/Converter.cpp:818
+#: src/Converter.cpp:819
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
@@ -26922,11 +26961,11 @@ msgstr ""
 "LaTeX ne s'est pas exécuté correctement. En plus, LyX n'a pas pu trouver le "
 "fichier journal LaTeX %1$s."
 
-#: src/Converter.cpp:821 src/Converter.cpp:828
+#: src/Converter.cpp:822 src/Converter.cpp:829
 msgid "LaTeX failed"
 msgstr "Échec de LaTeX"
 
-#: src/Converter.cpp:824
+#: src/Converter.cpp:825
 #, c-format
 msgid ""
 "The external program\n"
@@ -26939,11 +26978,11 @@ msgstr ""
 "s'est terminé avec une erreur. Il est recommandé de corriger l'origine de "
 "l'erreur du programme externe (vérifier les journaux)."
 
-#: src/Converter.cpp:830
+#: src/Converter.cpp:831
 msgid "Output is empty"
 msgstr "La sortie est vide"
 
-#: src/Converter.cpp:831
+#: src/Converter.cpp:832
 msgid "No output file was generated."
 msgstr "Aucun fichier imprimable créé."
 
@@ -28386,25 +28425,25 @@ msgstr "Style du paragraphe redéfini"
 msgid "Plain Layout"
 msgstr "Format ordinaire"
 
-#: src/TextClass.cpp:890
+#: src/TextClass.cpp:892
 msgid "Missing File"
 msgstr "Fichier manquant"
 
-#: src/TextClass.cpp:891
+#: src/TextClass.cpp:893
 msgid "Could not find stdinsets.inc! This may lead to data loss!"
 msgstr ""
 "Fichier stdinsets.inc introuvable. Ceci peut provoquer une perte de données !"
 
-#: src/TextClass.cpp:894
+#: src/TextClass.cpp:896
 msgid "Corrupt File"
 msgstr "Fichier corrompu"
 
-#: src/TextClass.cpp:895
+#: src/TextClass.cpp:897
 msgid "Could not read stdinsets.inc! This may lead to data loss!"
 msgstr ""
 "Fichier stdinsets.inc illisible ! Ceci peut provoquer une perte de données !"
 
-#: src/TextClass.cpp:1678
+#: src/TextClass.cpp:1680
 #, c-format
 msgid ""
 "The module %1$s has been requested by\n"
@@ -28417,11 +28456,11 @@ msgstr ""
 "Si vous l'avez installé récemment, vous devez probablement reconfigurer "
 "LyX.\n"
 
-#: src/TextClass.cpp:1683
+#: src/TextClass.cpp:1685
 msgid "Module not available"
 msgstr "Module non disponible"
 
-#: src/TextClass.cpp:1689
+#: src/TextClass.cpp:1691
 #, c-format
 msgid ""
 "The module %1$s requires a package that is not\n"
@@ -28439,16 +28478,16 @@ msgstr ""
 "Voir le paragraphe 3.1.2.3 (Modules)  du\n"
 "Guide de l'Utilisateur pour en savoir plus."
 
-#: src/TextClass.cpp:1696 src/TextClass.cpp:1731
+#: src/TextClass.cpp:1698 src/TextClass.cpp:1733
 msgid "Package not available"
 msgstr "Paquetage indisponible"
 
-#: src/TextClass.cpp:1701
+#: src/TextClass.cpp:1703
 #, c-format
 msgid "Error reading module %1$s\n"
 msgstr "Erreur de lecture du module %1$s\n"
 
-#: src/TextClass.cpp:1713
+#: src/TextClass.cpp:1715
 #, c-format
 msgid ""
 "The cite engine %1$s has been requested by\n"
@@ -28461,11 +28500,11 @@ msgstr ""
 "Si vous l'avez installé récemment, vous devez probablement reconfigurer "
 "LyX.\n"
 
-#: src/TextClass.cpp:1718
+#: src/TextClass.cpp:1720
 msgid "Cite Engine not available"
 msgstr "Moteur bibliographique non disponible"
 
-#: src/TextClass.cpp:1724
+#: src/TextClass.cpp:1726
 #, c-format
 msgid ""
 "The cite engine %1$s requires a package that is not\n"
@@ -28483,7 +28522,7 @@ msgstr ""
 "Voir le paragraphe 3.1.2.3 (Modules)  du Guide de l'Utilisateur pour en "
 "savoir plus."
 
-#: src/TextClass.cpp:1736
+#: src/TextClass.cpp:1738
 #, c-format
 msgid "Error reading cite engine %1$s\n"
 msgstr "Erreur de lecture du moteur bibliographique %1$s\n"
@@ -34044,6 +34083,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Utilisateur inconnu"
+
+#~ msgid "Japanese Book (jbook)"
+#~ msgstr "Livre japonnais (jbook)"
+
+#~ msgid "Japanese Article (jsarticle)"
+#~ msgstr "Article japonais (jsarticle)"
 
 #~ msgid "Caption: "
 #~ msgstr "Légende : "
