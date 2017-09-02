@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties false
-\origin unavailable
+\origin /systemlyxdir/doc/ja/
 \textclass scrbook
 \begin_preamble
 %% Added by the translator
@@ -37176,8 +37176,9 @@ literal "false"
 
 
 \series default
- which creates a special PDF and \SpecialChar LaTeX
- file from a given SVG file (in 
+ which creates a special PDF or EPS and \SpecialChar LaTeX
+ file from a given SVG file (in
+ 
 \noun on
 Inkscape
 \noun default
@@ -37185,14 +37186,15 @@ Inkscape
 \family sans
 Omit text in PDF and create LaTeX file
 \family default
- when saving a drawing as PDF).
+ when saving a drawing as PDF or EPS).
  The benefit of such files is a uniform text style throughout the whole
  document.
 \begin_inset Newline newline
 \end_inset
 
 The external template reads SVG files and uses a converter program to generate
- the respective PDF and \SpecialChar LaTeX
+ the respective PDF\SpecialChar breakableslash
+EPS and \SpecialChar LaTeX
  files (via
 \noun on
  
@@ -37210,9 +37212,21 @@ Inkscape
 \family typewriter
 *.pdf_tex
 \family default
+ or 
+\family typewriter
+*.eps
+\family default
+ and 
+\family typewriter
+*.eps_tex
+\family default
  files instead, simply input the respective 
 \family typewriter
 *.pdf_tex
+\family default
+ or 
+\family typewriter
+*.eps_tex
 \family default
  file via the 
 \family sans
@@ -37262,18 +37276,6 @@ literal "false"
 \end_inset
 
  for more information and examples.
-\begin_inset Newline newline
-\end_inset
-
-Note that while the image text takes into account the surrounding font,
- its preview in \SpecialChar LyX
- does not.
- Wrapping the external inset in a preview inset (menu 
-\family sans
-Insert\SpecialChar menuseparator
-Preview
-\family default
-) gives a better result.
 \end_layout
 
 \begin_layout Description

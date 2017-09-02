@@ -40392,9 +40392,9 @@ literal "false"
 
 
 \series default
- qui crée un fichier PDF et un fichier \SpecialChar LaTeX
- particulier à partir d'un fichier
- SVG donné (depuis 
+ qui crée un fichier PDF ou EPS et un fichier \SpecialChar LaTeX
+ particulier à partir d'un
+ fichier SVG donné (depuis 
 \noun on
 Inkscape
 \noun default
@@ -40402,7 +40402,7 @@ Inkscape
 \family sans
 Exclure le texte du fichier PDF et créer un fichier LaTeX 
 \family default
-lorsqu'on enregistre un dessin en tant que PDF).
+lorsqu'on enregistre un dessin en tant que PDF ou EPS).
  L'avantage de ces fichiers est d'assurer l'uniformité du style dans le
  document, et il est possible de saisir du code \SpecialChar TeX
  dans le texte du SVG.
@@ -40410,7 +40410,7 @@ lorsqu'on enregistre un dessin en tant que PDF).
 \end_inset
 
 Le modèle lit les fichiers SVG et utilise un convertisseur pour engendrer
- les fichiers PDF et \SpecialChar LaTeX
+ les fichiers PDF/EPS et \SpecialChar LaTeX
  (via
 \noun on
  
@@ -40429,7 +40429,23 @@ Inkscape
 \family typewriter
 *.pdf_tex
 \family default
- à la place, saisissez simplement le nom des fichiers via le menu 
+ ou 
+\family typewriter
+*.eps
+\family default
+ et 
+\family typewriter
+*.eps_tex
+\family default
+ à la place, saisissez simplement le nom des fichiers 
+\family typewriter
+*.pdf_tex
+\family default
+ ou 
+\family typewriter
+*.eps_tex 
+\family default
+via le menu 
 \family sans
 Insertion\SpecialChar menuseparator
 Fichier\SpecialChar menuseparator
@@ -40481,18 +40497,6 @@ literal "false"
 \end_inset
 
  pour plus d'information et des exemples.
-\begin_inset Newline newline
-\end_inset
-
-Noter que, si le texte dans l'image hérite de la police de l’environnement,
- ce n'est pas le cas dans l'aperçu dans \SpecialChar LyX
-.
- Encapsuler l'insert externe dans un insert d'aperçu (menu 
-\family sans
-Insérer\SpecialChar menuseparator
-Aperçu
-\family default
-) donne un meilleur résultat.
 \begin_inset Newline newline
 \end_inset
 
