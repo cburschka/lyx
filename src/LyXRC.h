@@ -295,9 +295,10 @@ public:
 	bool allow_geometry_session;
 	/// Scrolling speed of the mouse wheel
 	double mouse_wheel_speed;
-	/// Zoom factor for screen fonts
-	int zoom;
-	/// Current zoom factor for screen fonts
+	/// Default zoom factor for screen fonts
+	int defaultZoom;
+	/// Actual zoom factor for screen fonts
+	/// (default zoom plus buffer zoom factor)
 	int currentZoom;
 	/// Screen font sizes in points for each font size
 	std::string font_sizes[10];

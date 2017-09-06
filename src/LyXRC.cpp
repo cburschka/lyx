@@ -245,8 +245,8 @@ void LyXRC::setDefaults()
 	pygmentize_command = string();
 	dpi = 75;
 	// Because a screen is typically wider than a piece of paper:
-	zoom = 150;
-	currentZoom = zoom;
+	defaultZoom = 150;
+	currentZoom = defaultZoom;
 	allow_geometry_session = true;
 	// Default LaTeX font size:
 	font_sizes[FONT_SIZE_TINY] = "5.0";
@@ -624,9 +624,9 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 			break;
 
 		case RC_SCREEN_ZOOM:
-			lexrc >> zoom;
-			if (zoom < 10)
-				zoom = 10;
+			lexrc >> defaultZoom;
+			if (defaultZoom < 10)
+				defaultZoom = 10;
 			break;
 
 		case RC_GEOMETRY_SESSION:
@@ -1724,8 +1724,8 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		// fall through
 	case RC_SCREEN_ZOOM:
 		if (ignore_system_lyxrc ||
-		    zoom != system_lyxrc.zoom) {
-			os << "\\screen_zoom " << zoom << '\n';
+		    defaultZoom != system_lyxrc.defaultZoom) {
+			os << "\\screen_zoom " << defaultZoom << '\n';
 		}
 		if (tag != RC_LAST)
 			break;
