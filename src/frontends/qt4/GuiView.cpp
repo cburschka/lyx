@@ -741,7 +741,7 @@ void GuiView::autoSaveThreadFinished()
 void GuiView::saveLayout() const
 {
 	QSettings settings;
-	settings.setValue("zoom", lyxrc.currentZoom);
+	settings.setValue("zoom_ratio", zoom_ratio_);
 	settings.setValue("devel_mode", devel_mode_);
 	settings.beginGroup("views");
 	settings.beginGroup(QString::number(id_));
@@ -772,7 +772,12 @@ void GuiView::saveUISettings() const
 bool GuiView::restoreLayout()
 {
 	QSettings settings;
-	lyxrc.currentZoom = settings.value("zoom", lyxrc.zoom).toInt();
+	zoom_ratio_ = settings.value("zoom_ratio", 1.0).toDouble();
+	// Actual zoom value: default zoom + fractional offset
+	int zoom = lyxrc.defaultZoom * zoom_ratio_;
+	if (zoom < static_cast<int>(zoom_min_))
+		zoom = zoom_min_;
+	lyxrc.currentZoom = zoom;
 	devel_mode_ = settings.value("devel_mode", devel_mode_).toBool();
 	settings.beginGroup("views");
 	settings.beginGroup(QString::number(id_));
@@ -4114,30 +4119,31 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		case LFUN_BUFFER_ZOOM_IN:
 		case LFUN_BUFFER_ZOOM_OUT:
 		case LFUN_BUFFER_ZOOM: {
-			// use a signed temp to avoid overflow
-			int zoom = lyxrc.currentZoom;
 			if (cmd.argument().empty()) {
 				if (cmd.action() == LFUN_BUFFER_ZOOM)
-					zoom = lyxrc.zoom;
+					zoom_ratio_ = 1.0;
 				else if (cmd.action() == LFUN_BUFFER_ZOOM_IN)
-					zoom += 20;
+					zoom_ratio_ += 0.1;
 				else
-					zoom -= 20;
+					zoom_ratio_ -= 0.1;
 			} else {
 				if (cmd.action() == LFUN_BUFFER_ZOOM)
-					zoom = convert<int>(cmd.argument());
+					zoom_ratio_ = convert<int>(cmd.argument()) / double(lyxrc.defaultZoom);
 				else if (cmd.action() == LFUN_BUFFER_ZOOM_IN)
-					zoom += convert<int>(cmd.argument());
+					zoom_ratio_ += convert<int>(cmd.argument()) / 100.0;
 				else
-					zoom -= convert<int>(cmd.argument());
+					zoom_ratio_ -= convert<int>(cmd.argument()) / 100.0;
 			}
 
+			// Actual zoom value: default zoom + fractional extra value
+			int zoom = lyxrc.defaultZoom * zoom_ratio_;
 			if (zoom < static_cast<int>(zoom_min_))
 				zoom = zoom_min_;
 
 			lyxrc.currentZoom = zoom;
 
-			dr.setMessage(bformat(_("Zoom level is now %1$d%"), lyxrc.currentZoom));
+			dr.setMessage(bformat(_("Zoom level is now %1$d% (default value: %2$d%)"),
+					      lyxrc.currentZoom, lyxrc.defaultZoom));
 
 			// The global QPixmapCache is used in GuiPainter to cache text
 			// painting so we must reset it.

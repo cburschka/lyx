@@ -470,6 +470,9 @@ private:
 	/// Statusbar widget that shows version control status
 	QLabel * version_control_;
 
+	/// The rate from which the actual zoom value is calculated
+	/// from the default zoom pref
+	double zoom_ratio_ = 1.0;
 	/// Minimum zoom percentage
 	static int const zoom_min_ = 10;
 
