@@ -416,22 +416,26 @@ bool InsetCollapsable::clickable(BufferView const & bv, int x, int y) const
 
 docstring const InsetCollapsable::getNewLabel(docstring const & l) const
 {
-	docstring label;
+	odocstringstream label;
 	pos_type const max_length = 15;
 	pos_type const p_siz = paragraphs().begin()->size();
 	pos_type const n = min(max_length, p_siz);
 	pos_type i = 0;
 	pos_type j = 0;
 	for (; i < n && j < p_siz; ++j) {
-		if (paragraphs().begin()->isInset(j))
-			continue;
-		label += paragraphs().begin()->getChar(j);
+		if (paragraphs().begin()->isInset(j)) {
+			if (!paragraphs().begin()->getInset(j)->isChar())
+				continue;
+			paragraphs().begin()->getInset(j)->toString(label);
+		} else
+			label.put(paragraphs().begin()->getChar(j));
 		++i;
 	}
 	if (paragraphs().size() > 1 || (i > 0 && j < p_siz)) {
-		label += "...";
+		label << "...";
 	}
-	return label.empty() ? l : label;
+	docstring const lbl = label.str();
+	return lbl.empty() ? l : lbl;
 }
 
 
