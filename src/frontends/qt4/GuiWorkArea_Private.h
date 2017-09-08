@@ -92,10 +92,6 @@ struct GuiWorkArea::Private
 {
 	Private(GuiWorkArea *);
 
-	/// update the passed area.
-	void update(int x, int y, int w, int h);
-	///
-	void updateScreen();
 	///
 	void resizeBufferView();
 
@@ -123,33 +119,8 @@ struct GuiWorkArea::Private
 		return need_resize_ || p->pixelRatio() != pixel_ratio_;
 	}
 
-	void resetScreen()
-	{
-		delete screen_;
-		pixel_ratio_ = p->pixelRatio();
-		if (lyxrc.use_qimage) {
-			QImage *x =
-				new QImage(static_cast<int>(pixel_ratio_ * p->viewport()->width()),
-						   static_cast<int>(pixel_ratio_ * p->viewport()->height()),
-						   QImage::Format_ARGB32_Premultiplied);
-#if QT_VERSION >= 0x050000
-			x->setDevicePixelRatio(pixel_ratio_);
-#endif
-			screen_ = x;
-		} else {
-			QPixmap *x =
-				new QPixmap(static_cast<int>(pixel_ratio_ * p->viewport()->width()),
-							static_cast<int>(pixel_ratio_ * p->viewport()->height()));
-#if QT_VERSION >= 0x050000
-			x->setDevicePixelRatio(pixel_ratio_);
-#endif
-			screen_ = x;
-		}
-	}
 	///
 	GuiWorkArea * p;
-	///
-	QPaintDevice * screen_;
 	///
 	BufferView * buffer_view_;
 	///

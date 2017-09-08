@@ -246,7 +246,7 @@ SyntheticMouseEvent::SyntheticMouseEvent()
 
 
 GuiWorkArea::Private::Private(GuiWorkArea * parent)
-: p(parent), screen_(0), buffer_view_(0), lyx_view_(0),
+: p(parent), buffer_view_(0), lyx_view_(0),
   cursor_visible_(false), cursor_(0),
   need_resize_(false), schedule_redraw_(false), preedit_lines_(1),
   pixel_ratio_(1.0),
@@ -297,7 +297,6 @@ void GuiWorkArea::init()
 		d->cursor_timeout_.setInterval(500);
 	}
 
-	d->resetScreen();
 	// With Qt4.5 a mouse event will happen before the first paint event
 	// so make sure that the buffer view has an up to date metrics.
 	d->buffer_view_->resize(viewport()->width(), viewport()->height());
@@ -311,10 +310,11 @@ void GuiWorkArea::init()
 	setFrameStyle(QFrame::NoFrame);
 	updateWindowTitle();
 
-	viewport()->setAutoFillBackground(false);
+	//viewport()->setAutoFillBackground(false);
 	// We don't need double-buffering nor SystemBackground on
 	// the viewport because we have our own backing pixmap.
-	viewport()->setAttribute(Qt::WA_NoSystemBackground);
+	//viewport()->setAttribute(Qt::WA_NoSystemBackground);
+	viewport()->setAttribute(Qt::WA_OpaquePaintEvent);
 
 	setFocusPolicy(Qt::StrongFocus);
 
@@ -342,7 +342,6 @@ GuiWorkArea::~GuiWorkArea()
 	try {
 		d->buffer_view_->buffer().workAreaManager().remove(this);
 	} catch(...) {}
-	delete d->screen_;
 	delete d->buffer_view_;
 	delete d->cursor_;
 	// Completer has a QObject parent and is thus automatically destroyed.
@@ -489,8 +488,7 @@ void GuiWorkArea::redraw(bool update_metrics)
 	}
 
 	LYXERR(Debug::WORKAREA, "WorkArea::redraw screen");
-	d->updateScreen();
-	update(0, 0, viewport()->width(), viewport()->height());
+	viewport()->update();
 
 	/// \warning: scrollbar updating *must* be done after the BufferView is drawn
 	/// because \c BufferView::updateScrollbar() is called in \c BufferView::draw().
@@ -589,7 +587,7 @@ void GuiWorkArea::Private::resizeBufferView()
 	buffer_view_->resize(p->viewport()->width(), p->viewport()->height());
 	if (cursor_in_view)
 		buffer_view_->scrollToCursor();
-	updateScreen();
+	p->viewport()->update();
 
 	// Update scrollbars which might have changed due different
 	// BufferView dimension. This is especially important when the
@@ -1158,20 +1156,12 @@ void GuiWorkArea::resizeEvent(QResizeEvent * ev)
 }
 
 
-void GuiWorkArea::Private::update(int x, int y, int w, int h)
-{
-	p->viewport()->update(x, y, w, h);
-}
-
-
 void GuiWorkArea::paintEvent(QPaintEvent * ev)
 {
-	QRectF const rc = ev->rect();
 	// LYXERR(Debug::PAINTING, "paintEvent begin: x: " << rc.x()
 	//	<< " y: " << rc.y() << " w: " << rc.width() << " h: " << rc.height());
 
 	if (d->needResize()) {
-		d->resetScreen();
 		d->resizeBufferView();
 		if (d->cursor_visible_) {
 			d->hideCursor();
@@ -1179,26 +1169,11 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 		}
 	}
 
-	QPainter pain(viewport());
-	double const pr = pixelRatio();
-	QRectF const rcs = QRectF(rc.x() * pr, rc.y() * pr, rc.width() * pr, rc.height() * pr);
+	GuiPainter pain(viewport(), pixelRatio());
+	d->buffer_view_->draw(pain);
 
-	if (lyxrc.use_qimage) {
-		QImage const & image = static_cast<QImage const &>(*d->screen_);
-		pain.drawImage(rc, image, rcs);
-	} else {
-		QPixmap const & pixmap = static_cast<QPixmap const &>(*d->screen_);
-		pain.drawPixmap(rc, pixmap, rcs);
-	}
 	d->cursor_->draw(pain);
 	ev->accept();
-}
-
-
-void GuiWorkArea::Private::updateScreen()
-{
-	GuiPainter pain(screen_, p->pixelRatio());
-	buffer_view_->draw(pain);
 }
 
 
@@ -1211,9 +1186,8 @@ void GuiWorkArea::Private::showCursor(int x, int y, int h,
 		// We can't use redraw() here because this would trigger a infinite
 		// recursive loop with showCursor().
 		buffer_view_->resize(p->viewport()->width(), p->viewport()->height());
-		updateScreen();
+		p->viewport()->update();
 		updateScrollbar();
-		p->viewport()->update(QRect(0, 0, p->viewport()->width(), p->viewport()->height()));
 		schedule_redraw_ = false;
 		// Show the cursor immediately after the update.
 		hideCursor();
@@ -1237,6 +1211,10 @@ void GuiWorkArea::Private::removeCursor()
 
 void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 {
+//FIXME Broken Feature !!
+// I do not think that we are supposed to paint inside this event. Shall we
+// just let TextMetrics::breakRow add this to the relevant Row object?
+#if 0
 	QString const & commit_string = e->commitString();
 	docstring const & preedit_string
 		= qstring_to_ucs4(e->preeditString());
@@ -1272,7 +1250,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	}
 
 	d->buffer_view_->updateMetrics();
-	d->updateScreen();
+	viewport()->update();
 	// FIXME: shall we use real_current_font here? (see #10478)
 	FontInfo font = d->buffer_view_->cursor().getFont().fontInfo();
 	FontMetrics const & fm = theFontMetrics(font);
@@ -1281,7 +1259,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	int cur_y = d->cursor_->rect().bottom();
 
 	// redraw area of preedit string.
-	update(0, cur_y - height, viewport()->width(),
+	viewport()->update(0, cur_y - height, viewport()->width(),
 		(height + 1) * d->preedit_lines_);
 
 	if (preedit_string.empty()) {
@@ -1369,8 +1347,9 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 	}
 
 	// update the preedit string screen area.
-	update(0, cur_y - d->preedit_lines_*height, viewport()->width(),
+	viewport()->update(0, cur_y - d->preedit_lines_*height, viewport()->width(),
 		(height + 1) * d->preedit_lines_);
+#endif
 
 	// Don't forget to accept the event!
 	e->accept();
