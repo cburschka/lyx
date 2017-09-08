@@ -17,6 +17,17 @@ You can download LyX 2.3.0beta1 from ftp://ftp.lyx.org/pub/lyx/devel/.
 
 We appreciate your help in testing this pre-release!
 
+If a file from an earlier version of LyX is opened *and saved* with
+any version of 2.3.x, then the original file will automatically be
+backed up. The backup file will be found in the backup directory, if one
+is set under Tools> Preferences> Paths, or else in the same folder as
+the original file, if no backup directory is set. The filename of the
+backup file will be:
+    ORIGNAME-lyxformat-NUM.lyx~
+where NUM is the LyX format number of the original file. In the case of
+2.2.x file, this will be 508, but in the case of older files it will be
+different.
+
 The file lib/RELEASE-NOTES lists some known issues and problems compared
 to the current stable releases (LyX 2.2.x). We strongly recommend that
 packagers of LyX on various platforms and distributions read this file.
