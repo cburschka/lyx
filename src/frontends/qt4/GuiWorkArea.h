@@ -26,10 +26,6 @@ class QDropEvent;
 class QToolButton;
 class QWidget;
 
-#ifdef CursorShape
-#undef CursorShape
-#endif
-
 namespace lyx {
 
 class Buffer;
@@ -83,8 +79,6 @@ public:
 	///
 	GuiCompleter & completer();
 
-	Qt::CursorShape cursorShape() const;
-
 	/// Return the GuiView this workArea belongs to
 	GuiView const & view() const;
 	GuiView & view();
@@ -94,9 +88,9 @@ public:
 
 public Q_SLOTS:
 	///
-	void stopBlinkingCursor();
+	void stopBlinkingCaret();
 	///
-	void startBlinkingCursor();
+	void startBlinkingCaret();
 
 Q_SIGNALS:
 	///
@@ -115,8 +109,8 @@ private Q_SLOTS:
 	void scrollTo(int value);
 	/// timer to limit triple clicks
 	void doubleClickTimeout();
-	/// toggle the cursor's visibility
-	void toggleCursor();
+	/// toggle the caret's visibility
+	void toggleCaret();
 	/// close this work area.
 	/// Slot for Buffer::closing signal.
 	void close();

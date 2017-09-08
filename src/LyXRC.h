@@ -174,7 +174,6 @@ public:
 		RC_USE_SYSTEM_COLORS,
 		RC_USE_TOOLTIP,
 		RC_USE_PIXMAP_CACHE,
-		RC_USE_QIMAGE,
 		RC_USE_SYSTEM_THEME_ICONS,
 		RC_VIEWDVI_PAPEROPTION,
 		RC_VIEWER,
@@ -334,8 +333,6 @@ public:
 	bool use_system_colors;
 	/// Use pixmap cache?
 	bool use_pixmap_cache;
-	/// Use QImage backend?
-	bool use_qimage;
 	/// Spellchecker engine: aspell, hunspell, etc
 	std::string spellchecker;
 	/// Alternate language for spellchecker

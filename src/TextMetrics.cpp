@@ -43,6 +43,7 @@
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
+#include "frontends/NullPainter.h"
 
 #include "support/debug.h"
 #include "support/lassert.h"
@@ -195,6 +196,14 @@ bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim, int min_width)
 	changed |= dim_ != old_dim;
 	dim = dim_;
 	return changed;
+}
+
+
+void TextMetrics::updatePosCache(pit_type pit) const
+{
+	frontend::NullPainter np;
+	PainterInfo pi(bv_, np);
+	drawParagraph(pi, pit, origin_.x_, par_metrics_[pit].position());
 }
 
 
@@ -1220,6 +1229,7 @@ void TextMetrics::newParMetricsDown()
 	redoParagraph(pit);
 	par_metrics_[pit].setPosition(last.second.position()
 		+ last.second.descent() + par_metrics_[pit].ascent());
+	updatePosCache(pit);
 }
 
 
@@ -1234,6 +1244,7 @@ void TextMetrics::newParMetricsUp()
 	redoParagraph(pit);
 	par_metrics_[pit].setPosition(first.second.position()
 		- first.second.ascent() - par_metrics_[pit].descent());
+	updatePosCache(pit);
 }
 
 // y is screen coordinate
@@ -1803,8 +1814,8 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		return;
 	size_t const nrows = pm.rows().size();
 
-	// Use fast lane when drawing is disabled.
-	if (!pi.pain.isDrawingEnabled()) {
+	// Use fast lane in nodraw stage.
+	if (pi.pain.isNull()) {
 		for (size_t i = 0; i != nrows; ++i) {
 
 			Row const & row = pm.rows()[i];
@@ -1856,17 +1867,11 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		if (i)
 			y += row.ascent();
 
-		RowPainter rp(pi, *text_, row, row_x, y);
-
 		// It is not needed to draw on screen if we are not inside.
 		bool const inside = (y + row.descent() >= 0
 			&& y - row.ascent() < ww);
-		pi.pain.setDrawingEnabled(inside);
 		if (!inside) {
-			// Paint only the insets to set inset cache correctly
-			// FIXME: remove paintOnlyInsets when we know that positions
-			// have already been set.
-			rp.paintOnlyInsets();
+			// Inset positions have already been set in nodraw stage.
 			y += row.descent();
 			continue;
 		}
@@ -1888,12 +1893,15 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		// Row signature; has row changed since last paint?
 		row.setCrc(pm.computeRowSignature(row, *bv_));
 		bool row_has_changed = row.changed()
-			|| bv_->hadHorizScrollOffset(text_, pit, row.pos());
+			|| bv_->hadHorizScrollOffset(text_, pit, row.pos())
+			|| bv_->needRepaint(text_, row);
 
 		// Take this opportunity to spellcheck the row contents.
 		if (row_has_changed && pi.do_spellcheck && lyxrc.spellcheck_continuously) {
 			text_->getPar(pit).spellCheck();
 		}
+
+		RowPainter rp(pi, *text_, row, row_x, y);
 
 		// Don't paint the row if a full repaint has not been requested
 		// and if it has not changed.
@@ -1925,7 +1933,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 				<< " row_selection="	<< row.selection()
 				<< " full_repaint="	<< pi.full_repaint
 				<< " row_has_changed="	<< row_has_changed
-				<< " drawingEnabled=" << pi.pain.isDrawingEnabled());
+				<< " null painter=" << pi.pain.isNull());
 		}
 
 		// Backup full_repaint status and force full repaint
@@ -1953,8 +1961,6 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		// Restore full_repaint status.
 		pi.full_repaint = tmp;
 	}
-	// Re-enable screen drawing for future use of the painter.
-	pi.pain.setDrawingEnabled(true);
 
 	//LYXERR(Debug::PAINTING, ".");
 }

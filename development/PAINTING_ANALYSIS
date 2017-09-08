@@ -67,31 +67,6 @@ drawing from metrics.
 Other changes are only clean-ups.
 
 ** When a paragraph ends with a newline, compute correctly the height of the extra row.
-** Rewrite TextMetrics::editXY, checkInsetHit using row information (getPosNearX)?
-
-   The helper version should return a Row::Element instead of an InsetTable.
-
-** Set inset position during metrics phase
-
-In order to do that, a no-paint drawing will be initiated after every
-redoParagraph. This code path will need to be made as fast as possible.
-
-Effect: avoid depending on actual drawing having taken place. In turn,
-it will allow to do drawing on paint events, like any reasonable
-application would do.
-
-** Cleanup after complete metrics
-   Then the following can be done:
-   + remove hack in InsetMathNest::drawSelection
-   + remove painting when not inside in drawParagraph
-   + remove Cursor::inCoordCache?
-
-** Paint directly to screen
-
-Instead of using an intermediary pixmap. I have no idea of how
-difficult it will prove.
-One benefit will be that subpixel aliasing will work again (#9972)
-
 ** Merging bv::updateMetrics and tm::metrics
 
 While the full metrics computation tries hard to limit the number of
@@ -107,19 +82,19 @@ necessary to break the whole contents to know the width of the cell.
 
 * Description of current drawing mechanism
 
-** Two stage drawing
+** Three-stage drawing
 
-There are two parts to drawing the work area:
+There are three parts to drawing the work area:
 
  + the metrics phase computes the size of insets and breaks the
    paragraphs into rows. It stores the dimension of insets (both
    normal and math) in bv::coordCache.
 
- + the drawing phase draws the contents and caches the inset
-   positions. Since the caching of positions is useful in itself,
-   there is a provision for drawing "without" drawing when the only
-   thing we want is to cache inset positions
-   (Painter::setDrawingEnabled).
+ + the nodraw drawing phase paints the screen (see below) with a null
+   painter. The only useful effect is to store the inset positions.
+
+ + an update() signal is sent. This in turn will trigger a paint
+   event, and the actual screen painting will happen then.
 
 The machinery is controlled via bv::processUpdateFlags. This method is
 called at the end of bv::mouseEventDispatch and in
@@ -145,7 +120,7 @@ update flag is Update::None.
 ** Metrics computation
 
 This is triggered by bv::updateMetrics, which calls tm::redoParagraph for
-all visible paragraphs. Paragraphs above or below the screen (needed
+all visible paragraphs. Some Paragraphs above or below the screen (needed
 for page up/down) and computed as needed.
 
 tm::redoParagraph will call Inset::metrics for each inset. In the case
@@ -155,8 +130,9 @@ all the paragraphs of the inset.
 
 ** Drawing the work area.
 
-This is done in bv::draw. This method is triggered mainly by
-Buffer::changed, which draws all the work areas that show the given buffer.
+This is done in bv::draw. This method is triggered by a paint event,
+mainly called through Buffer::changed, which draws all the work areas
+that show the given buffer.
 
 Note that, When Buffer::changed is called outside of
 bv::processUpdateFlags, it is not clear whether the update strategy
@@ -186,3 +162,6 @@ The action depends on the update strategy:
 
  + SingleParUpdate: only tries to repaint current paragraph in a way
    that is not yet very clear to me.
+
+BufferView::draw can also be called with a null painter from
+BufferView::updateMetrics().

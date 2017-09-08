@@ -147,11 +147,8 @@ public:
 	                  Color other, size_type from, size_type to,
                       double wordspacing, double textwidth) = 0;
 
-	void setDrawingEnabled(bool drawing_enabled)
-	{ drawing_enabled_ = drawing_enabled; }
-
-	/// Indicate wether real screen drawing shall be done or not.
-	bool isDrawingEnabled() const { return drawing_enabled_; }
+	// Returns true if the painter does not actually paint.
+	virtual bool isNull() const = 0;
 
 	double pixelRatio() const { return pixel_ratio_; }
 

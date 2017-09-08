@@ -70,6 +70,7 @@
 #include "frontends/Application.h"
 #include "frontends/Delegates.h"
 #include "frontends/FontMetrics.h"
+#include "frontends/NullPainter.h"
 #include "frontends/Painter.h"
 #include "frontends/Selection.h"
 
@@ -234,7 +235,7 @@ struct BufferView::Private
 		last_inset_(0), clickable_inset_(false),
 		mouse_position_cache_(),
 		bookmark_edit_position_(-1), gui_(0),
-		horiz_scroll_offset_(0)
+		horiz_scroll_offset_(0), repaint_caret_row_(false)
 	{
 		xsel_cache_.set = false;
 	}
@@ -311,6 +312,12 @@ struct BufferView::Private
 	/// a slice pointing to the start of the row where cursor was
 	/// at previous draw event
 	CursorSlice last_row_slice_;
+
+	/// a slice pointing to where the cursor has been drawn after the current
+	/// draw() call.
+	CursorSlice caret_slice_;
+	/// indicates whether the caret slice needs to be repainted in this draw() run.
+	bool repaint_caret_row_;
 };
 
 
@@ -2651,6 +2658,7 @@ bool BufferView::singleParUpdate()
 		// the singlePar optimisation.
 		return false;
 
+	tm.updatePosCache(bottom_pit);
 	d->update_strategy_ = SingleParUpdate;
 
 	LYXERR(Debug::PAINTING, "\ny1: " << pm.position() - pm.ascent()
@@ -2704,6 +2712,7 @@ void BufferView::updateMetrics()
 		// in the first line.
 	}
 	anchor_pm.setPosition(d->anchor_ypos_);
+	tm.updatePosCache(d->anchor_pit_);
 
 	LYXERR(Debug::PAINTING, "metrics: "
 		<< " anchor pit = " << d->anchor_pit_
@@ -2719,6 +2728,7 @@ void BufferView::updateMetrics()
 		y1 -= pm.descent();
 		// Save the paragraph position in the cache.
 		pm.setPosition(y1);
+		tm.updatePosCache(pit1);
 		y1 -= pm.ascent();
 	}
 
@@ -2732,6 +2742,7 @@ void BufferView::updateMetrics()
 		y2 += pm.ascent();
 		// Save the paragraph position in the cache.
 		pm.setPosition(y2);
+		tm.updatePosCache(pit2);
 		y2 += pm.descent();
 	}
 
@@ -2745,10 +2756,22 @@ void BufferView::updateMetrics()
 
 	d->update_strategy_ = FullScreenUpdate;
 
+	// Now update the positions of insets in the cache.
+	updatePosCache();
+
 	if (lyxerr.debugging(Debug::WORKAREA)) {
 		LYXERR(Debug::WORKAREA, "BufferView::updateMetrics");
 		d->coord_cache_.dump();
 	}
+}
+
+
+void BufferView::updatePosCache()
+{
+	// this is the "nodraw" drawing stage: only set the positions of the
+	// insets in metrics cache.
+	frontend::NullPainter np;
+	draw(np, false);
 }
 
 
@@ -2886,7 +2909,7 @@ bool BufferView::paragraphVisible(DocIterator const & dit) const
 }
 
 
-void BufferView::cursorPosAndHeight(Point & p, int & h) const
+void BufferView::caretPosAndHeight(Point & p, int & h) const
 {
 	Cursor const & cur = cursor();
 	Font const font = cur.real_current_font;
@@ -2959,7 +2982,24 @@ void BufferView::setCurrentRowSlice(CursorSlice const & rowSlice)
 }
 
 
-void BufferView::checkCursorScrollOffset(PainterInfo & pi)
+namespace {
+
+bool sliceInRow(CursorSlice const & cs, Text const * text, Row const & row)
+{
+	return !cs.empty() && cs.text() == text && cs.pit() == row.pit()
+		&& row.pos() <= cs.pos() && cs.pos() <= row.endpos();
+}
+
+}
+
+
+bool BufferView::needRepaint(Text const * text, Row const & row) const
+{
+	return d->repaint_caret_row_ && sliceInRow(d->caret_slice_, text, row);
+}
+
+
+void BufferView::checkCursorScrollOffset()
 {
 	CursorSlice rowSlice = d->cursor_.bottom();
 	TextMetrics const & tm = textMetrics(rowSlice.text());
@@ -2975,35 +3015,6 @@ void BufferView::checkCursorScrollOffset(PainterInfo & pi)
 
 	// Set the row on which the cursor lives.
 	setCurrentRowSlice(rowSlice);
-
-	// If insets referred to by cursor are not all in the cache, the positions
-	// need to be recomputed.
-	if (!d->cursor_.inCoordCache()) {
-		/** FIXME: the code below adds an extraneous computation of
-		 * inset positions, and can therefore be bad for performance
-		 * (think for example about a very large tabular inset.
-		 * Redawing the row where it is means redrawing the whole
-		 * screen).
-		 *
-		 * The bug that this fixes is the following: assume that there
-		 * is a very large math inset. Upon entering the inset, when
-		 * pressing `End', the row is not scrolled and the cursor is
-		 * not visible. The extra row computation makes sure that the
-		 * inset positions are correctly computed and set in the
-		 * cache. This would not happen if we did not have two-stage
-		 * drawing.
-		 *
-		 * A proper fix would be to always have proper inset positions
-		 * at this point.
-		 */
-		// Force the recomputation of inset positions
-		bool const drawing = pi.pain.isDrawingEnabled();
-		pi.pain.setDrawingEnabled(false);
-		// No need to care about vertical position.
-		RowPainter rp(pi, buffer().text(), row, -d->horiz_scroll_offset_, 0);
-		rp.paintText();
-		pi.pain.setDrawingEnabled(drawing);
-	}
 
 	// Current x position of the cursor in pixels
 	int cur_x = getPos(d->cursor_).x_;
@@ -3048,7 +3059,7 @@ void BufferView::checkCursorScrollOffset(PainterInfo & pi)
 }
 
 
-void BufferView::draw(frontend::Painter & pain)
+void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 {
 	if (height_ == 0 || width_ == 0)
 		return;
@@ -3059,19 +3070,35 @@ void BufferView::draw(frontend::Painter & pain)
 	int const y = tm.first().second->position();
 	PainterInfo pi(this, pain);
 
+	CursorSlice const & bottomSlice = d->cursor_.bottom();
+	/**  A repaint of the previous cursor row is needed if
+	 * 1/ the caret will be painted and is is not the same than the
+	 *    already painted one;
+	 * 2/ the caret will not be painted, but there is already one on
+	 * screen.
+	 */
+	d->repaint_caret_row_ = (paint_caret && bottomSlice != d->caret_slice_)
+		|| (! paint_caret && !d->caret_slice_.empty());
+
 	// Check whether the row where the cursor lives needs to be scrolled.
 	// Update the drawing strategy if needed.
-	checkCursorScrollOffset(pi);
+	checkCursorScrollOffset();
 
 	switch (d->update_strategy_) {
 
 	case NoScreenUpdate:
-		// If no screen painting is actually needed, only some the different
-		// coordinates of insets and paragraphs needs to be updated.
+		// no screen painting is actually needed. In nodraw stage
+		// however, the different coordinates of insets and paragraphs
+		// needs to be updated.
 		LYXERR(Debug::PAINTING, "Strategy: NoScreenUpdate");
-		pi.full_repaint = true;
-		pi.pain.setDrawingEnabled(false);
-		tm.draw(pi, 0, y);
+		pi.full_repaint = false;
+		if (pain.isNull()) {
+			pi.full_repaint = true;
+			tm.draw(pi, 0, y);
+		} else if (d->repaint_caret_row_) {
+			pi.full_repaint = false;
+			tm.draw(pi, 0, y);
+		}
 		break;
 
 	case SingleParUpdate:
@@ -3134,6 +3161,12 @@ void BufferView::draw(frontend::Painter & pain)
 	}
 	LYXERR(Debug::PAINTING, "Found new anchor pit = " << d->anchor_pit_
 		<< "  anchor ypos = " << d->anchor_ypos_);
+
+	// Remember what has just been done for the next draw() step
+	if (paint_caret)
+		d->caret_slice_ = bottomSlice;
+	else
+		d->caret_slice_ = CursorSlice();
 }
 
 

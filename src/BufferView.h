@@ -42,10 +42,10 @@ class FuncStatus;
 class Intl;
 class Inset;
 class Length;
-class PainterInfo;
 class ParIterator;
 class ParagraphMetrics;
 class Point;
+class Row;
 class TexRow;
 class Text;
 class TextMetrics;
@@ -131,6 +131,9 @@ public:
 	/// return true if one shall move the screen to fit the cursor.
 	/// Only to be called with good y coordinates (after a bv::metrics)
 	bool needsFitCursor() const;
+
+	/// returns true if this row needs to be repainted (to erase caret)
+	bool needRepaint(Text const * text, Row const & row) const;
 
 	// Returns the amount of horizontal scrolling applied to the
 	// top-level row where the cursor lies
@@ -283,6 +286,10 @@ public:
 	/// update the internal \c ViewMetricsInfo.
 	void updateMetrics();
 
+	// this is the "nodraw" drawing stage: only set the positions of the
+	// insets in metrics cache.
+	void updatePosCache();
+
 	///
 	TextMetrics const & textMetrics(Text const * t) const;
 	TextMetrics & textMetrics(Text const * t);
@@ -300,12 +307,11 @@ public:
 	bool paragraphVisible(DocIterator const & dit) const;
 	/// is the cursor currently visible in the view
 	bool cursorInView(Point const & p, int h) const;
-	/// get the position and height of the cursor
-	void cursorPosAndHeight(Point & p, int & h) const;
-
+	/// get the position and height of the caret
+	void caretPosAndHeight(Point & p, int & h) const;
 
 	///
-	void draw(frontend::Painter & pain);
+	void draw(frontend::Painter & pain, bool paint_caret);
 
 	/// get this view's keyboard map handler.
 	Intl & getIntl();
@@ -367,7 +373,7 @@ private:
 
 	// Check whether the row where the cursor lives needs to be scrolled.
 	// Update the drawing strategy if needed.
-	void checkCursorScrollOffset(PainterInfo & pi);
+	void checkCursorScrollOffset();
 
 	/// The minimal size of the document that is visible. Used
 	/// when it is allowed to scroll below the document.
