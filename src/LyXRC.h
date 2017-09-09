@@ -70,6 +70,7 @@ public:
 		RC_DEFAULT_DECIMAL_POINT,
 		RC_DEFAULT_LENGTH_UNIT,
 		RC_DEFAULT_OTF_VIEW_FORMAT,
+		RC_DEFAULT_PLATEX_VIEW_FORMAT,
 		RC_DEFAULT_VIEW_FORMAT,
 		RC_DEFFILE,
 		RC_DIALOGS_ICONIFY_WITH_MAIN,
@@ -391,6 +392,8 @@ public:
 	std::string gui_language;
 	///
 	std::string default_otf_view_format;
+	///
+	std::string default_platex_view_format;
 	///
 	std::string default_view_format;
 	/// all available viewers

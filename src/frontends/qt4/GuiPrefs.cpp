@@ -2033,6 +2033,8 @@ PrefFileformats::PrefFileformats(GuiPreferences * form)
 		this, SIGNAL(changed()));
 	connect(defaultOTFFormatCB, SIGNAL(activated(QString)),
 		this, SIGNAL(changed()));
+	connect(defaultPlatexFormatCB, SIGNAL(activated(QString)),
+		this, SIGNAL(changed()));
 	connect(viewerCO, SIGNAL(activated(int)),
 		this, SIGNAL(changed()));
 	connect(editorCO, SIGNAL(activated(int)),
@@ -2063,6 +2065,9 @@ void PrefFileformats::applyRC(LyXRC & rc) const
 	QString const default_otf_format = defaultOTFFormatCB->itemData(
 		defaultOTFFormatCB->currentIndex()).toString();
 	rc.default_otf_view_format = fromqstr(default_otf_format);
+	QString const default_platex_format = defaultPlatexFormatCB->itemData(
+		defaultPlatexFormatCB->currentIndex()).toString();
+	rc.default_platex_view_format = fromqstr(default_platex_format);
 }
 
 
@@ -2079,6 +2084,9 @@ void PrefFileformats::updateRC(LyXRC const & rc)
 		pos = defaultOTFFormatCB->findData(toqstr(rc.default_otf_view_format));
 				defaultOTFFormatCB->setCurrentIndex(pos);
 		defaultOTFFormatCB->setCurrentIndex(pos);
+		pos = defaultPlatexFormatCB->findData(toqstr(rc.default_platex_view_format));
+				defaultPlatexFormatCB->setCurrentIndex(pos);
+		defaultPlatexFormatCB->setCurrentIndex(pos);
 	}
 }
 
@@ -2088,14 +2096,17 @@ void PrefFileformats::updateView()
 	QString const current = formatsCB->currentText();
 	QString const current_def = defaultFormatCB->currentText();
 	QString const current_def_otf = defaultOTFFormatCB->currentText();
+	QString const current_def_platex = defaultPlatexFormatCB->currentText();
 
 	// update comboboxes with formats
 	formatsCB->blockSignals(true);
 	defaultFormatCB->blockSignals(true);
 	defaultOTFFormatCB->blockSignals(true);
+	defaultPlatexFormatCB->blockSignals(true);
 	formatsCB->clear();
 	defaultFormatCB->clear();
 	defaultOTFFormatCB->clear();
+	defaultPlatexFormatCB->clear();
 	form_->formats().sort();
 	for (Format const & f : form_->formats()) {
 		QString const prettyname = toqstr(translateIfPossible(f.prettyname()));
@@ -2111,10 +2122,15 @@ void PrefFileformats::updateView()
 					QVariant(toqstr(f.name())));
 			defaultOTFFormatCB->addItem(prettyname,
 					QVariant(toqstr(f.name())));
-		} else if (form_->converters().isReachable("latex", f.name())
-			   || form_->converters().isReachable("pdflatex", f.name()))
-			defaultFormatCB->addItem(prettyname,
+		} else {
+			if (form_->converters().isReachable("latex", f.name())
+			    || form_->converters().isReachable("pdflatex", f.name()))
+				defaultFormatCB->addItem(prettyname,
 					QVariant(toqstr(f.name())));
+			if (form_->converters().isReachable("platex", f.name()))
+					defaultPlatexFormatCB->addItem(prettyname,
+						QVariant(toqstr(f.name())));
+		}
 	}
 
 	// restore selections
@@ -2125,9 +2141,12 @@ void PrefFileformats::updateView()
 	defaultFormatCB->setCurrentIndex(item < 0 ? 0 : item);
 	item = defaultOTFFormatCB->findText(current_def_otf, Qt::MatchExactly);
 	defaultOTFFormatCB->setCurrentIndex(item < 0 ? 0 : item);
+	item = defaultPlatexFormatCB->findText(current_def_platex, Qt::MatchExactly);
+	defaultPlatexFormatCB->setCurrentIndex(item < 0 ? 0 : item);
 	formatsCB->blockSignals(false);
 	defaultFormatCB->blockSignals(false);
 	defaultOTFFormatCB->blockSignals(false);
+	defaultPlatexFormatCB->blockSignals(false);
 }
 
 

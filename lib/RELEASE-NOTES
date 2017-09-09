@@ -70,6 +70,10 @@
 * \pygmentize_command
   holds the name of the driver command used by the Pygments python module.
 
+* \default_platex_view_format
+  Determine the default output format for Japanese documents that use the
+  pLaTeX backend [default: "pdf3" == "PDF (dvipdfm)"]
+
 
 !!!The following pref variables were changed in 2.3:
 
@@ -78,6 +82,10 @@
 
 
 !!!The following new LyX functions have been introduced in 2.3:
+
+* buffer-zoom
+  Zooms the screen fonts to a given value or resets to the default zoom
+  when no argument is given.
 
 * branch-invert
   Toggles inversion status of branch inset.
