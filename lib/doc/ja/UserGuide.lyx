@@ -3,7 +3,7 @@
 \begin_document
 \begin_header
 \save_transient_properties false
-\origin unavailable
+\origin /systemlyxdir/doc/ja/
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -212,7 +212,7 @@ literal "false"
 \begin_inset Newline newline
 \end_inset
 
-第2.2.x版
+第2.3.x版
 \begin_inset Note Note
 status collapsed
 
@@ -7173,14 +7173,12 @@ Space
 \end_layout
 
 \begin_layout Verbatim
-
 これは原文儘(verbatim)環境です．
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 この下の2行は空白行です．
 \end_layout
 
@@ -7193,7 +7191,6 @@ Space
 \end_layout
 
 \begin_layout Verbatim
-
 右記の各文字を始め，ほぼすべての文字が使えます．例："%&$§#~'`
 \backslash
 }][{|
@@ -7216,7 +7213,6 @@ Space
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -42107,7 +42103,7 @@ set_width "none"
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
-name "索引"
+name "Index"
 literal "false"
 
 \end_inset
