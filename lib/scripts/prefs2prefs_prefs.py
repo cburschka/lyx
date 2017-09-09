@@ -94,7 +94,12 @@
 #   Add pygmentize_command for the python pygments syntax highlighter
 #   No conversion necessary.
 
-# Incremented to format 23, by lasgouttes
+# Incremented to format 23, by spitz
+#   Add default_platex_view_format, a default output format for
+#   Japanese documents via pLaTeX.
+#   No conversion necessary.
+
+# Incremented to format 24, by lasgouttes
 #   Remove use_qimage preference
 
 # NOTE: The format should also be updated in LYXRC.cpp and
@@ -369,6 +374,15 @@ def remove_print_support(line):
 
 
 #################################
+# Conversions from LyX 2.2 to 2.3
+
+# Only format changes that don't require conversion
+
+# End conversions for LyX 2.2 to 2.3
+####################################
+
+
+#################################
 # Conversions from LyX 2.3 to 2.4
 
 def remove_use_qimage(line):
@@ -380,6 +394,9 @@ def remove_use_qimage(line):
 ####################################
 
 
+
+############################################################
+# Format-conversion map. Also add empty format changes here.
 
 conversions = [
 	[  1, [ # there were several conversions for format 1
@@ -410,5 +427,6 @@ conversions = [
 	[ 20, []],
 	[ 21, []],
 	[ 22, []],
-        [ 23, [remove_use_qimage]]
+	[ 23, []],
+	[ 24, [remove_use_qimage]]
 ]

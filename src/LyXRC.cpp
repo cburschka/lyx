@@ -59,7 +59,7 @@ namespace {
 
 // The format should also be updated in configure.py, and conversion code
 // should be added to prefs2prefs_prefs.py.
-static unsigned int const LYXRC_FILEFORMAT = 23; // lasgouttes: remove qimage
+static unsigned int const LYXRC_FILEFORMAT = 24; // lasgouttes: remove qimage
 
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
@@ -98,6 +98,7 @@ LexerKeyword lyxrcTags[] = {
 	{ "\\default_decimal_point", LyXRC::RC_DEFAULT_DECIMAL_POINT },
 	{ "\\default_length_unit", LyXRC::RC_DEFAULT_LENGTH_UNIT },
 	{ "\\default_otf_view_format", LyXRC::RC_DEFAULT_OTF_VIEW_FORMAT },
+	{ "\\default_platex_view_format", LyXRC::RC_DEFAULT_PLATEX_VIEW_FORMAT },
 	{ "\\default_view_format", LyXRC::RC_DEFAULT_VIEW_FORMAT },
 	{ "\\dialogs_iconify_with_main", LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN },
 	{ "\\display_graphics", LyXRC::RC_DISPLAY_GRAPHICS },
@@ -236,6 +237,7 @@ void LyXRC::setDefaults()
 	view_dvi_paper_option.erase();
 	default_view_format = "pdf2";
 	default_otf_view_format = "pdf4";
+	default_platex_view_format = "pdf3";
 	chktex_command = "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38";
 	bibtex_command = "automatic";
 	fontenc = "default";
@@ -1075,6 +1077,10 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 
 		case RC_DEFAULT_OTF_VIEW_FORMAT:
 			lexrc >> default_otf_view_format;
+			break;
+
+		case RC_DEFAULT_PLATEX_VIEW_FORMAT:
+			lexrc >> default_platex_view_format;
 			break;
 
 		case RC_DEFAULT_VIEW_FORMAT:
@@ -2772,6 +2778,15 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc, string const & name) c
 		if (tag != RC_LAST)
 			break;
 		// fall through
+	case RC_DEFAULT_PLATEX_VIEW_FORMAT:
+		if ((ignore_system_lyxrc ||
+		     default_platex_view_format != system_lyxrc.default_platex_view_format)
+		    && !default_platex_view_format.empty()) {
+			os << "\\default_platex_view_format " << default_platex_view_format << '\n';
+		}
+		if (tag != RC_LAST)
+			break;
+		// fall through
 	case RC_DEFAULT_VIEW_FORMAT:
 		if (ignore_system_lyxrc ||
 		    default_view_format != system_lyxrc.default_view_format) {
@@ -2898,6 +2913,7 @@ void actOnUpdatedPrefs(LyXRC const & lyxrc_orig, LyXRC const & lyxrc_new)
 	case LyXRC::RC_DATE_INSERT_FORMAT:
 	case LyXRC::RC_GUI_LANGUAGE:
 	case LyXRC::RC_DEFAULT_OTF_VIEW_FORMAT:
+	case LyXRC::RC_DEFAULT_PLATEX_VIEW_FORMAT:
 	case LyXRC::RC_DEFAULT_VIEW_FORMAT:
 	case LyXRC::RC_DEFFILE:
 	case LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN:

@@ -2695,14 +2695,15 @@ string BufferParams::getDefaultOutputFormat() const
 	if (!default_output_format.empty()
 	    && default_output_format != "default")
 		return default_output_format;
-	if (isDocBook()
-	    || encoding().package() == Encoding::japanese) {
+	if (isDocBook()) {
 		FormatList const & formats = exportableFormats(true);
 		if (formats.empty())
 			return string();
 		// return the first we find
 		return formats.front()->name();
 	}
+	if (encoding().package() == Encoding::japanese)
+		return lyxrc.default_platex_view_format;
 	if (useNonTeXFonts)
 		return lyxrc.default_otf_view_format;
 	return lyxrc.default_view_format;
