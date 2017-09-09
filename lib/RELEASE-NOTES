@@ -59,6 +59,16 @@
 
 !!!The following pref variables were added in 2.3:
 
+* \default_platex_view_format
+  Determine the default output format for Japanese documents that use the
+  pLaTeX backend [default: "pdf3" == "PDF (dvipdfm)"]
+
+* \jbibtex_alternatives
+  Alternative bibliography converters for Japanese.
+
+* \pygmentize_command
+  holds the name of the driver command used by the Pygments python module.
+
 * \use_converter_needauth
   when enabled, user is asked before calling any (possibly dangerous)
   external converter with the 'needauth' option
@@ -67,21 +77,20 @@
   when enabled, use of external converters with the 'needauth' option is
   forbidden
 
-* \pygmentize_command
-  holds the name of the driver command used by the Pygments python module.
-
-* \default_platex_view_format
-  Determine the default output format for Japanese documents that use the
-  pLaTeX backend [default: "pdf3" == "PDF (dvipdfm)"]
-
 
 !!!The following pref variables were changed in 2.3:
 
+* \bibtex_command
+  New (default) value "auto".
 
-!!!The following pref variables are obsoleted in 2.3:
+* \screen_zoom
+  This is now independent of the value set via buffer-zoom[-in|-out].
 
 
 !!!The following new LyX functions have been introduced in 2.3:
+
+* buffer-external-modification-clear
+  Clear the external modification flag on the current buffer
 
 * buffer-zoom
   Zooms the screen fonts to a given value or resets to the default zoom
@@ -90,22 +99,34 @@
 * branch-invert
   Toggles inversion status of branch inset.
 
-* lyx-activate
-  Activates the LyX window. Useful in combination with reverse search.
-
 * devel-mode-toggle
   Activate/deactivate the developer mode, which consists mainly in:
   (1) more information shown in the status bar and (2) help file
   opened in editable mode. This state used to be hardcoded at compile
   time.
 
+* font-crossout
+  Cross out characters.
+
+* icon-size [size in px]
+  Set the icon size in the toolbar
+
+* lyx-activate
+  Activates the LyX window. Useful in combination with reverse search.
+
+* toolbar-movable
+  Toggles movability of a given toolbar.
+
 
 !!!The following LyX functions have been changed in 2.3:
 
-* quote-insert
-  The function now has a second and third optional argument to specify
-  the side (left, right, auto) and quotation mark style (english, swedish,
-  german, polish, french, danish).
+* buffer-export
+  If no or "default" argument is given, the function now exports to the default
+  output format.
+
+* buffer-zoom-in, buffer-zoom-out
+  The Zoom value set by these is now relative to the default zoom value set in
+  preferences.
 
 * inset-modify
   This function now also applies to quote insets. It takes a three-character
@@ -126,14 +147,24 @@
   "inset-forall Quotes inset-modify changetype g.s"
    => change all quote insets to German single quotes, keeping left/right setting
 
+* paragraph-goto
+  The function has now two further optional arguments that determine end positions.
+  If specified, a selection is performed.
+
+* quote-insert
+  The function now has a second and third optional argument to specify
+  the side (left, right, auto) and quotation mark style (english, swedish,
+  german, polish, french, danish).
+
+* specialchar-insert
+  New option allowbreak that adds an invisible line break option,
+
 * word-delete-forward, word-delete-backward, char-delete-forward,
   char-delete-backward
   The pre-2.3 behavior of these functions is equivalent to the 2.3 behavior with
   the "force" option appended. The new default behavior (without "force") is
   to select big insets on the first call and delete them only on the second.
   This new behavior is consistent with how delete works in LyX's math editor.
-
-!!!The following LyX documents have been moved in 2.3:
 
 
 !!!The following new folders have been added to the LyX directory
@@ -151,9 +182,6 @@
   files that are now shipped as content of the xtemplates directory.
 
 
-!!!The following metadata files have been added to the tarball in 2.3:
-
-
 !!Changes with respect to external programs and libraries in 2.3:
 
 * Inkscape SVG with separate LaTeX + PDF output is experimentally supported.
@@ -162,6 +190,8 @@
 
 
 !!Known issues in version 2.3.0
+
+* See http://www.lyx.org/trac/wiki/BugTrackerHome.
 
 
 !!Caveats when upgrading from earlier versions to 2.3.x
