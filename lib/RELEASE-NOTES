@@ -1,189 +1,61 @@
-!Important Changes in LyX 2.3.0
+!Important Changes in LyX 2.4.0
 
 
 !!Interface changes
 
-* LyX now has "inverted" branch insets, which output their contents just in
-  case a given branch is not "activated". This makes inclusion of alternate
-  material in different versions easier.
 
-* When inserting a command or symbol in mathed, it is now automatically
-  wrapped in a real inset (either \text or \ensuremath) assuring the correct
-  mode, instead of being wrapped only in the output. The wrapping inset can
-  be safely dissolved, as it will be automatically inserted at export time
-  if needed, as usual.
-
-* LyX now outputs en- and em-dashes as -- and --- ligatures when exporting to
-  latex using TeX fonts, as done in version 2.1 and earlier. In version 2.2
-  they were instead output as the macros \textendash and \textemdash, causing
-  changed output with old documents and bugs. The 2.2 behavior can be restored
-  by don't allowing using dash ligatures in Document->Settings->Fonts.
-
-* The following UI translations were dropped, because the lack of translation
-  maintenance:  Russian, Danish, Greek, Serbian, Galician, Catalan, Romanian,
-  Dutch.
 
 !!Documents compilation process and images conversion
 
-* The converters definition syntax (LYX_HOME/lyxrc*) now supports a
-  new option, 'needauth', to prevent completely automated execution of
-  the converter, unless LyX acquired explicit consent by the
-  user. This is a new security feature, useful for converters that are
-  capable of executing arbitrary code, such as R scripts (used with
-  sweave/knitr), embedded within LyX documents. The user needs to
-  explicitly grant per-document permission on the first need for using
-  the converter on each document, unless he/she checks the "Don't ask
-  again for this document" checkbox in the permission dialog. The new
-  behavior can be fine-tuned from two new options in the preferences
-  dialog (see their description below). These also allow for disabling
-  'needauth' converters altogether, if desired (default behavior).
-
-* LyX now supports insertion and automated conversion of Gnuplot scripts,
-  recognized by their typical extension ".gp" or ".gnuplot". These can
-  directly be inserted in a LyX document using the "Insert->Graphics..."
-  dialog, then selecting the Gnuplot script. LyX automatically adds a
-  proper "set terminal ..." and "set output ..." line to convert the
-  file to the needed output format (e.g., .eps, .pdf), depending on
-  whether the document is being previewed on screen or compiled as PDF
-  or other formats. Terminal options cannot be fine-tuned at the moment,
-  but that's a capability that may come soon, also according to the
-  received feedback from users.
 
 
-!!!The following pref variables were added in 2.3:
-
-* \use_converter_needauth
-  when enabled, user is asked before calling any (possibly dangerous)
-  external converter with the 'needauth' option
-
-* \use_converter_needauth_forbidden
-  when enabled, use of external converters with the 'needauth' option is
-  forbidden
-
-* \pygmentize_command
-  holds the name of the driver command used by the Pygments python module.
-
-* \default_platex_view_format
-  Determine the default output format for Japanese documents that use the
-  pLaTeX backend [default: "pdf3" == "PDF (dvipdfm)"]
+!!!The following pref variables were added in 2.4:
 
 
-!!!The following pref variables were changed in 2.3:
+
+!!!The following pref variables were changed in 2.4:
 
 
-!!!The following pref variables are obsoleted in 2.3:
+
+!!!The following pref variables are obsoleted in 2.4:
+
+* \use_qimage
+  This is no longer necessary due to the rewrite of the painter.
 
 
-!!!The following new LyX functions have been introduced in 2.3:
-
-* buffer-zoom
-  Zooms the screen fonts to a given value or resets to the default zoom
-  when no argument is given.
-
-* branch-invert
-  Toggles inversion status of branch inset.
-
-* lyx-activate
-  Activates the LyX window. Useful in combination with reverse search.
-
-* devel-mode-toggle
-  Activate/deactivate the developer mode, which consists mainly in:
-  (1) more information shown in the status bar and (2) help file
-  opened in editable mode. This state used to be hardcoded at compile
-  time.
+!!!The following new LyX functions have been introduced in 2.4:
 
 
-!!!The following LyX functions have been changed in 2.3:
 
-* quote-insert
-  The function now has a second and third optional argument to specify
-  the side (left, right, auto) and quotation mark style (english, swedish,
-  german, polish, french, danish).
+!!!The following LyX functions have been changed in 2.4:
 
-* inset-modify
-  This function now also applies to quote insets. It takes a three-character
-  string as an argument, referring (1.) to the style (e = ``english'',
-  s = ''swedish'', g = ,,german``, p = ,,polish'', f = <<french>>, a = >>danish<<),
-  (2.) to the side (l = left, r = right) and (3.) to the quotation level
-  (s = single, d = double). So "eld" means "English left double quotation mark".
-  A dot in the string means: take the current value. So "inset-modify changetype e.."
-  will only change the style to English, while letting side and level as is,
-  "inset-modify changetype f.s" will change the style to French and the level to
-  single, leaving the side value.
 
-  This function is most useful when combined with inset-forall. E.g.,
-  "inset-forall Quotes inset-modify changetype f.."
-   => change all quote insets to French style, maintaining current side and level
-  "inset-forall Quotes inset-modify changetype ..s"
-   => change all quote insets to single quotes, keeping style and level
-  "inset-forall Quotes inset-modify changetype g.s"
-   => change all quote insets to German single quotes, keeping left/right setting
 
-* word-delete-forward, word-delete-backward, char-delete-forward,
-  char-delete-backward
-  The pre-2.3 behavior of these functions is equivalent to the 2.3 behavior with
-  the "force" option appended. The new default behavior (without "force") is
-  to select big insets on the first call and delete them only on the second.
-  This new behavior is consistent with how delete works in LyX's math editor.
+!!!The following LyX documents have been moved in 2.4:
 
-!!!The following LyX documents have been moved in 2.3:
 
 
 !!!The following new folders have been added to the LyX directory
 
-* citeengines: Contains the *.citeengine files that determine the citation
-  formatting and features.
-
-* xtemplates: Contains the *.xtemplate files that define the external templates
-  (previously in the external_templates file).
 
 
-!!!The following preferences files have been removed from the tarball in 2.3:
-
-* external_templates. This files has been split into multiple *.xtemplate
-  files that are now shipped as content of the xtemplates directory.
+!!!The following preferences files have been removed from the tarball in 2.4:
 
 
-!!!The following metadata files have been added to the tarball in 2.3:
+
+!!!The following metadata files have been added to the tarball in 2.4:
 
 
-!!Changes with respect to external programs and libraries in 2.3:
 
-* Inkscape SVG with separate LaTeX + PDF output is experimentally supported.
-
-* Add some editor/viewer applications to (re)configure checks.
+!!Changes with respect to external programs and libraries in 2.4:
 
 
-!!Known issues in version 2.3.0
+
+!!Known issues in version 2.4.0
+
+* See http://www.lyx.org/trac/wiki/BugTrackerHome
 
 
-!!Caveats when upgrading from earlier versions to 2.3.x
+!!Caveats when upgrading from earlier versions to 2.4.x
 
-* The external_templates file has been split into one file per template,
-  which are now located in lib/xtemplates/*.xtemplate. This makes it easier
-  to add new templates or modify existing ones. If you have modified
-  the external_templates file, you will have to move the modifications to
-  the respective *.xtemplate file manually.
 
-* If using TeX fonts and en- and em-dashes are output as font ligatures,
-  when exporting documents containing en- and em-dashes to the format of
-  LyX 2.0 or earlier, the following line has to be manually added to the
-  unicodesymbols file of that LyX version:<br>
-  0x200b "\\hspace{0pt}" "" "" "" "" # ZERO WIDTH SPACE<br>
-  This avoids "uncodable character" issues if the document is actually
-  loaded by that LyX version. LyX 2.1 and later versions already have the
-  necessary definition in their unicodesymbols file.
-
-* If trying to compile documents using R scripts and sweave/knitr, LyX
-  2.3.x would not allow for re-running the R scripts, unless the user:
-  1) explicitly disables the "Forbid use of needauth converters"
-  option in the LyX preferences;
-  2) provides explicit consent to the use of the converter on the first
-  compilation of the R-enhanced document.
-
-* LyX now gives a warning if a document mixes title and non-title layouts.
-  In some cases, this warning is harmless, but in other cases the document has
-  a serious problem even though the LaTeX command does not exit with error. For
-  example, create a document with a title layout, then a standard layout, and
-  then an author layout, and you will see in the PDF that the author is not
-  typeset as an author.
