@@ -338,7 +338,11 @@ void GuiBibtex::updateContents()
 	if (usingBiblatex() && !buffer().masterParams().multibib.empty())
 		btPrintCO->addItem(qt_("all reference units"), toqstr("bibbysection"));
 
-	btPrintCO->setCurrentIndex(btPrintCO->findData(toqstr(params_["btprint"])));
+	docstring btprint = params_["btprint"];
+	if (btprint.empty())
+		// default
+		btprint = from_ascii("btPrintCited");
+	btPrintCO->setCurrentIndex(btPrintCO->findData(toqstr(btprint)));
 
 	// Only useful for biblatex
 	biblatexOptsLA->setVisible(biblatex);
