@@ -7304,13 +7304,16 @@ Le convertisseur ne gère que les changements de syntaxe.
 \begin_layout Subsection
 
 \lang english
+Cite engine files
+\lang french
+
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Cite-Engine-Files"
 
 \end_inset
 
-Cite engine files
+
 \end_layout
 
 \begin_layout Standard
@@ -7377,8 +7380,7 @@ More specifically, it is defined which packages \SpecialChar LyX
  in 
 \family sans
 Document\SpecialChar menuseparator
-Settings\SpecialChar ldots
-\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Bibliography\SpecialChar menuseparator
 Style engine
 \family default
@@ -7439,7 +7441,9 @@ CiteFormat
 \end_inset
 
  blocks.
- The syntax of the latter two is described in 
+ The syntax of the latter two is described in
+\lang french
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Citation-engine-description"
@@ -7449,14 +7453,16 @@ noprefix "false"
 
 \end_inset
 
- and 
+ et 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Citation-format-description"
+reference "subsec:Description citation"
 
 \end_inset
 
-, as well as in the files themselves.
+,
+\lang english
+ as well as in the files themselves.
 \end_layout
 
 \begin_layout Section
@@ -11181,6 +11187,8 @@ PUBLIC
 \begin_inset Quotes erd
 \end_inset
 
+
+\lang french
 .
 \end_layout
 
@@ -11284,6 +11292,8 @@ End
 
 \end_inset
 
+
+\lang french
 
 \begin_inset Quotes crd
 \end_inset
@@ -23789,14 +23799,13 @@ Biblatex
 \end_layout
 
 \begin_layout Subsection
-Description d'une insertion de citation
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Description citation"
 
 \end_inset
 
-
+Description d'une insertion de citation
 \end_layout
 
 \begin_layout Standard

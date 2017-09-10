@@ -7261,8 +7261,7 @@ More specifically, it is defined which packages \SpecialChar LyX
  in 
 \family sans
 Document\SpecialChar menuseparator
-Settings\SpecialChar ldots
-\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Bibliography\SpecialChar menuseparator
 Style engine
 \family default
@@ -7323,7 +7322,9 @@ CiteFormat
 \end_inset
 
  blocks.
- The syntax of the latter two is described in 
+ The syntax of the latter two is described in
+\lang spanish
+ 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Citation-engine-description"
@@ -7333,14 +7334,16 @@ noprefix "false"
 
 \end_inset
 
- and 
+ y 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Citation-format-description"
+reference "subsec:Descripción-formato-cita"
 
 \end_inset
 
-, as well as in the files themselves.
+, 
+\lang english
+as well as in the files themselves.
 \end_layout
 
 \begin_layout Section
@@ -8221,7 +8224,7 @@ Bibliography
 \begin_layout Standard
 
 \lang english
-The cite engine declaration should then be followed by lines like the following
+The cite engine declaration should then be followed by lines like the following:
 \begin_inset Foot
 status collapsed
 
@@ -8236,7 +8239,7 @@ Preferably in English if the module should be published with \SpecialChar LyX
 
 \end_inset
 
-:
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -21665,14 +21668,13 @@ Biblatex
 \end_layout
 
 \begin_layout Subsection
-Descripción del formato de cita
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Descripción-formato-cita"
 
 \end_inset
 
-
+Descripción del formato de cita
 \end_layout
 
 \begin_layout Standard
