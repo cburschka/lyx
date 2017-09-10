@@ -124,11 +124,12 @@ logicalmkup
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -27583,9 +27584,46 @@ name "chap:Names-of-colors"
 \end_layout
 
 \begin_layout Standard
-The colors listed here are the standard colors and the those that you can
- adjust in the \SpecialChar LyX
+The colors listed 
+\change_deleted -712698321 1505048041
+here
+\change_inserted -712698321 1505048041
+below
+\change_unchanged
+ are the standard colors and 
+\change_deleted -712698321 1505048036
+the 
+\change_unchanged
+those that you can adjust in the \SpecialChar LyX
  preferences.
+\change_inserted -712698321 1505047917
+
+\end_layout
+
+\begin_layout Section
+
+\change_inserted -712698321 1505048046
+Color functions
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1505048063
+The following are no real colors, but rather act on color definitions:
+\change_unchanged
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1505049948
+ignore The color is ignored
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1505049948
+inherit The color is inherited
 \end_layout
 
 \begin_layout Description
@@ -27602,6 +27640,22 @@ none
 \noun off
 \color none
  No particular color – clear or default
+\change_inserted -712698321 1505049946
+
+\end_layout
+
+\begin_layout Section
+
+\change_inserted -712698321 1505048068
+Static colors
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1505048080
+These are fixed colors that cannot me customized:
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -27610,34 +27664,168 @@ black
 
 \begin_layout Description
 white
+\change_inserted -712698321 1505047780
+
 \end_layout
 
 \begin_layout Description
-red
-\end_layout
 
-\begin_layout Description
-green
-\end_layout
-
-\begin_layout Description
+\change_inserted -712698321 1505047787
 blue
 \end_layout
 
 \begin_layout Description
+
+\change_inserted -712698321 1505047791
+brown
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1505047799
 cyan
 \end_layout
 
 \begin_layout Description
+
+\change_inserted -712698321 1505047807
+darkgray
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1505047809
+gray
+\change_unchanged
+
+\end_layout
+
+\begin_layout Description
+
+\change_deleted -712698321 1505047820
+red
+\change_unchanged
+
+\end_layout
+
+\begin_layout Description
+green
+\change_inserted -712698321 1505047824
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1505047828
+lightgray
+\change_unchanged
+
+\end_layout
+
+\begin_layout Description
+
+\change_deleted -712698321 1505047798
+blue
+\end_layout
+
+\begin_layout Description
+
+\change_deleted -712698321 1505047798
+cyan
+\change_inserted -712698321 1505047834
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1505047835
+lime
+\change_unchanged
+
+\end_layout
+
+\begin_layout Description
 magenta
+\change_inserted -712698321 1505047840
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1505047846
+olive
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1505047850
+orange
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1505047861
+pink
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1505047863
+purple
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1505047867
+red
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1505047881
+teal
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1505047878
+violet
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
 yellow
+\change_inserted -712698321 1505047947
+
+\end_layout
+
+\begin_layout Section
+
+\change_inserted -712698321 1505048092
+Dynamic colors
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1505048589
+These are the colors allocated to specific elements in 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show prefs"
+\end_inset
+
+:
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
-added_space Added space marker color
+added_space Added space 
+\change_deleted -712698321 1505049692
+marker 
+\change_unchanged
+color
 \end_layout
 
 \begin_layout Description
@@ -27662,6 +27850,16 @@ branchlabel Label color for branches
 
 \begin_layout Description
 buttonbg Color used for button background
+\change_inserted -712698321 1505049724
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1505049724
+buttonframe Color for inset button frames
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -27669,7 +27867,11 @@ buttonhoverbg Color used for button background under focus
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -712698321 1505049722
 buttonframe Color for inset button frames
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -27694,14 +27896,30 @@ changedtextauthor4 Changed text color author 4
 
 \begin_layout Description
 changedtextauthor5 Changed text color author 5
+\change_inserted -712698321 1505049811
+
 \end_layout
 
 \begin_layout Description
-collapsable_inset_frame Collapsable insets framecolor
+
+\change_inserted -712698321 1505049811
+collapsable Collapsable insets text color
 \end_layout
 
 \begin_layout Description
+collapsable
+\change_deleted -712698321 1505049817
+_inset_
+\change_unchanged
+frame Collapsable insets framecolor
+\end_layout
+
+\begin_layout Description
+
+\change_deleted -712698321 1505049809
 collapsable_inset_text Collapsable insets text color
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -27714,14 +27932,30 @@ commandbg Background color for command insets
 
 \begin_layout Description
 commandframe Frame color for command insets
+\change_inserted -712698321 1505048865
+
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -712698321 1505049843
 comment color for comments
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
 commentbg Background color of comments
+\change_inserted -712698321 1505048888
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1505048891
+commentlabel Label color for comments
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -27751,6 +27985,16 @@ error Color of the \SpecialChar LaTeX
 
 \begin_layout Description
 footlabel Label color for footnotes
+\change_inserted -712698321 1505048777
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1505048785
+foreground Foreground color
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -27758,11 +28002,25 @@ graphicsbg Graphics inset background color
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -712698321 1505049909
 greyedout Label color for greyedout insets
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
 greyedoutbg Background color of greyedout inset
+\change_inserted -712698321 1505048914
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1505049907
+greyedoutlabel Label color for greyedout insets
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -27774,11 +28032,17 @@ indexlabel Label color for index insets
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -712698321 1505049940
 ignore The color is ignored
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -712698321 1505049940
 inherit The color is inherited
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -27896,6 +28160,16 @@ previewframe Preview frame color
 
 \begin_layout Description
 regexpframe Color for regexp frame
+\change_inserted -712698321 1505050082
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1505050082
+scroll Color that indicates when a row can be scrolled 
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description

@@ -37,6 +37,12 @@
   \renewcommand{\subsubsectionautorefname}{Kap.\negthinspace}%
  }
 }{}
+
+% Improve line breaking
+\tolerance 1414
+\hbadness 1414
+\emergencystretch 1.5em
+\hfuzz 0.3pt
 \end_preamble
 \options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
@@ -84,16 +90,16 @@ logicalmkup
 \pdf_quoted_options "linkcolor=black, citecolor=black, urlcolor=blue, filecolor=blue,  pdfpagelayout=OneColumn, pdfnewwindow=true, pdfstartview=XYZ, plainpages=false"
 \papersize default
 \use_geometry false
-\use_package amsmath 0
-\use_package amssymb 0
-\use_package cancel 0
-\use_package esint 0
-\use_package mathdots 0
-\use_package mathtools 0
-\use_package mhchem 0
-\use_package stackrel 0
-\use_package stmaryrd 0
-\use_package undertilde 0
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
 \cite_engine_type default
 \biblio_style plain
@@ -3740,6 +3746,8 @@ greek.kmap
 
 \begin_layout LyX-Code
 
+\size footnotesize
+
 \backslash
 kmod ; acute aeioyvhAEIOYVH 
 \backslash
@@ -4589,7 +4597,7 @@ ist
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Tags-for-XHTML"
+reference "sec:XHTML-Spezifikationen"
 plural "false"
 caps "false"
 noprefix "false"
@@ -7343,10 +7351,6 @@ status collapsed
 
  zulässig ist.
  Muss mit 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -7354,10 +7358,6 @@ status collapsed
 EndPreamble
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  beendet werden.
@@ -7380,10 +7380,6 @@ AddToPreamble
 \end_inset
 
 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -7391,10 +7387,6 @@ status collapsed
 EndPreamble
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  beendet werden.
@@ -7427,10 +7419,6 @@ noprefix "false"
 
  für Details.
  Muss mit 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -7440,11 +7428,7 @@ End
 
 \end_inset
 
-
-\begin_inset Quotes grd
-\end_inset
-
- enden.
+ beendet werden.
  Vor allem von Cite-Engine-Dateien verwendet (siehe Abschnitt
 \begin_inset space ~
 \end_inset
@@ -7487,10 +7471,6 @@ reference "subsec:Literaturverweisformat"
 
  für Details.
  Muss mit 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -7500,14 +7480,12 @@ End
 
 \end_inset
 
-
-\begin_inset Quotes grd
+ beendet werden.
+ Vor allem von Cite-Engine-Dateien verwendet (siehe Abschnitt
+\begin_inset space ~
 \end_inset
 
- beendet werden.
 
-\lang english
- Primarily used in cite engine files (see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Cite-Engine-Dateien"
@@ -7557,7 +7535,7 @@ biblatex
 Biblatex
 \family default
  oder Bib\SpecialChar TeX
- verwendet wird, um ein Literaturverzeichnis zu erzeug.
+ verwendet wird, um ein Literaturverzeichnis zu erzeugen.
  Vor allem von Cite-Engine-Dateien verwendet (siehe Abschnitt
 \begin_inset space ~
 \end_inset
@@ -7596,10 +7574,6 @@ reference "subsec:Der-Abschnitt-ClassOptions"
 
 .
  Muss mit 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -7607,10 +7581,6 @@ status collapsed
 End
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  beendet werden.
@@ -7655,14 +7625,9 @@ status collapsed
 ] Gibt an, ob die Textklasse standardmäßig ein- oder zweispaltig gesetzt
  wird.
  Kann im Menü 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-Dokument\SpecialChar menuseparator
-Einstellungen
-\end_layout
-
+\begin_inset Info
+type  "menu"
+arg   "dialog-show document"
 \end_inset
 
  geändert werden.
@@ -7743,10 +7708,6 @@ reference "subsec:Beschreibung-des-Zeichensatzes"
 
 .
  Muss mit 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -7754,10 +7715,6 @@ status collapsed
 EndFont
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  beendet werden.
@@ -7931,10 +7888,6 @@ reference "subsec:Gleitobjekte"
 
  für Details.
  Muss mit 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -7942,10 +7895,6 @@ status collapsed
 End
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  beendet werden.
@@ -8004,10 +7953,6 @@ AddToHTMLPreamble
 \end_inset
 
  wenn Sie Material zum Vorspann hinzufügen wollen.) Muss mit 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -8015,10 +7960,6 @@ status collapsed
 EndPreamble
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  beendet werden.
@@ -8102,10 +8043,6 @@ status collapsed
 ] Ändert die Eigenschaften des angegebenen Zählers.
  Wenn dieser nicht existiert, wird die Anweisung ignoriert.
  Muss mit 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -8113,10 +8050,6 @@ status collapsed
 End
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  beendet werden.
@@ -8198,10 +8131,6 @@ status collapsed
  Es kann auf eine vorhandene Einfügung angewendet werden oder eine neue,
  benutzerdefinierte, zum Beispiel einen neuen Zeichenstil.
  Muss mit 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -8209,10 +8138,6 @@ status collapsed
 End
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  beendet werden.
@@ -8251,10 +8176,6 @@ string
 
 ] ist ein String dessen Länge die Breite des linken Randes festlegt, zum
  Beispiel 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -8264,22 +8185,18 @@ MMMMM
 
 \end_inset
 
-
-\begin_inset Quotes grd
-\end_inset
-
 .
+ (Beachten Sie, dass hier keine Längenangabe wie 
+\begin_inset Flex Code
+status collapsed
 
-\lang english
- (Note that this is not a `length', like 
-\begin_inset Quotes eld
-\end_inset
-
+\begin_layout Plain Layout
 2ex
-\begin_inset Quotes erd
+\end_layout
+
 \end_inset
 
-.)
+ eingegeben wird.)
 \end_layout
 
 \begin_layout Description
@@ -8349,13 +8266,9 @@ status collapsed
 
 \end_inset
 
-] Ändert die Eigenschaften des angegebenen Paragraphstils.
+] Ändert die Eigenschaften des angegebenen Absatzstils.
  Wenn dieser nicht existiert, wird die Anweisung ignoriert.
  Muss mit 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -8363,10 +8276,6 @@ status collapsed
 End
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  beendet werden.
@@ -8442,10 +8351,7 @@ status collapsed
 \end_inset
 
 ] Löscht ein existierendes Layout bzw.
-\begin_inset space \space{}
-\end_inset
-
-Stil.
+ einen Stil.
 \end_layout
 
 \begin_layout Description
@@ -8495,16 +8401,12 @@ literate
 \begin_inset Quotes gld
 \end_inset
 
-literate
+Literate
 \begin_inset Quotes grd
 \end_inset
 
 -Dokuments definieren will.
  Das Format wird auf 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -8514,15 +8416,7 @@ docbook
 
 \end_inset
 
-
-\begin_inset Quotes grd
-\end_inset
-
  oder 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -8530,10 +8424,6 @@ status collapsed
 latex
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  zurückgesetzt wenn der entsprechende 
@@ -8628,10 +8518,6 @@ string
 
 ] Der zweite String gibt Optionen für das Paket im ersten String an.
  Zum Beispiel lädt 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -8639,10 +8525,6 @@ status collapsed
 PackageOptions natbib square
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  
@@ -8737,14 +8619,9 @@ headings
 
 ] Der Standard-Seitenstil.
  Kann im Menü 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-Dokument\SpecialChar menuseparator
-Einstellungen
-\end_layout
-
+\begin_inset Info
+type  "menu"
+arg   "dialog-show document"
 \end_inset
 
  geändert werden.
@@ -8794,10 +8671,6 @@ AddToPreamble
 \end_inset
 
  wenn Sie Material zum Vorspann hinzufügen wollen.) Muss mit 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -8805,10 +8678,6 @@ status collapsed
 EndPreamble
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  beendet werden.
@@ -9009,7 +8878,7 @@ status collapsed
 
 \end_inset
 
-] Erstellt einen neuen Paragraphstil, falls er noch nicht existiert.
+] Erstellt einen neuen Absatzstil, falls er noch nicht existiert.
  Existiert er bereits, wird 
 \begin_inset Flex Code
 status collapsed
@@ -9022,10 +8891,6 @@ ProvideStyle
 
  ignoriert.
  Muss mit 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -9033,10 +8898,6 @@ status collapsed
 End
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  beendet werden.
@@ -9120,12 +8981,8 @@ string
 
 \end_inset
 
-] ist ein String dessen Länge die Breite des rechten Randes festlegt, zum
- Beispiel 
-\begin_inset Quotes gld
-\end_inset
-
-
+] ist eine Zeichenkette, deren Länge die Breite des rechten Randes festlegt,
+ zum Beispiel 
 \begin_inset Flex Code
 status collapsed
 
@@ -9133,10 +8990,6 @@ status collapsed
 MMMMM
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
 .
@@ -9215,14 +9068,9 @@ status collapsed
 ] Gibt an, ob der Text standardmäßig für ein- oder für zweiseitigen Druck
  gesetzt wird.
  Kann im Dialog 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-Dokument\SpecialChar menuseparator
-Einstellungen
-\end_layout
-
+\begin_inset Info
+type  "menu"
+arg   "dialog-show document"
 \end_inset
 
  geändert werden.
@@ -9252,10 +9100,6 @@ status collapsed
  Wenn er bereits existiert, werden stattdessen einige seiner Parameter neu
  definiert.
  Muss mit 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -9263,10 +9107,6 @@ status collapsed
 End
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  beendet werden.
@@ -9369,11 +9209,7 @@ TitleLatexName
 
 \end_inset
 
- nach dem letzten Layout mit 
-\begin_inset Quotes gld
-\end_inset
-
-
+ nach dem letzten Absatzstil mit 
 \begin_inset Flex Code
 status collapsed
 
@@ -9385,10 +9221,6 @@ InTitle
 1
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  gesetzt werden soll.
@@ -9402,11 +9234,7 @@ Environment
 
 \end_inset
 
- ist für den Fall, dass alle Layouts mit 
-\begin_inset Quotes gld
-\end_inset
-
-
+ ist für den Fall, dass alle Absatzstile mit 
 \begin_inset Flex Code
 status collapsed
 
@@ -9418,10 +9246,6 @@ InTitle
 1
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  in die 
@@ -9658,10 +9482,6 @@ ClassOptions
 \end_inset
 
  muss mit 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -9669,10 +9489,6 @@ status collapsed
 End
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  beendet werden.
@@ -9690,19 +9506,19 @@ name "subsec:Einzelne-Absatz-Layouts"
 \end_layout
 
 \begin_layout Standard
-Eine Layoutbeschreibung für einen Absatz sieht wie folgt aus
+Eine Layoutbeschreibung für einen Absatz sieht wie folgt aus:
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Sie können mit diesem Ausdruck entweder ein neues Layout definieren oder
- aber ein bereits definiertes umdefinieren.
+Sie können mit diesem Ausdruck entweder einen neuen Absatzstil definieren
+ oder aber einen bereits definierten umdefinieren.
  
 \end_layout
 
 \end_inset
 
-:
+
 \end_layout
 
 \begin_layout LyX-Code
@@ -9853,7 +9669,8 @@ int
 \end_inset
 
 ] Definiert Argument Nummer <int> eines Befehls\SpecialChar breakableslash
-einer Umgebung, der/die im
+einer Umgebung, der\SpecialChar breakableslash
+die im
  aktuellen Stil definiert ist.
  Dies ist nützlich für Dinge wie Abschnittsüberschriften.
  Jedes Argument (optional oder erforderlich) eines Befehls oder einer Umgebung
@@ -9977,10 +9794,6 @@ e Zeichen an die Zeichenkette mit
 
 B.
  
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -9988,10 +9801,6 @@ status collapsed
 Kurztitel|K
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
 ).
@@ -10033,10 +9842,6 @@ status collapsed
 
 B.
  
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -10044,10 +9849,6 @@ status collapsed
 Kurztitel|K
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
 ).
@@ -10548,7 +10349,27 @@ PassThru
 \end_inset
 
  von der Einfügung oder dem Absatzstil, zu dem das Argument gehört, übernommen.
- Wenn true oder false angegeben ist, wird der Status für das Argument verändert.
+ Wenn 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+true
+\end_layout
+
+\end_inset
+
+ oder 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+false
+\end_layout
+
+\end_inset
+
+ angegeben ist, wird der Status für das Argument verändert.
 \end_layout
 
 \begin_layout Itemize
@@ -10566,7 +10387,7 @@ PassThruChars
 status collapsed
 
 \begin_layout Plain Layout
-string of characters
+Buchstabenkette
 \end_layout
 
 \end_inset
@@ -10876,7 +10697,7 @@ float
 \begin_inset Quotes gld
 \end_inset
 
-1,5
+1.5
 \begin_inset Quotes grd
 \end_inset
 
@@ -10912,12 +10733,10 @@ string
 \end_inset
 
 ] ist die Kategorie für diesen Stil.
- Sie wird benutzt, um zugehörige Stile in der Layout-Kombobox der Werkzeugleiste
- zu gruppieren.
- Jeder beliebige String kann benutzt werden, aber es ist sinnvoll vorhandene
- Ka\SpecialChar softhyphen
-te\SpecialChar softhyphen
-gorien zusammen mit Ihren eigenen Stilen zu benutzen.
+ Sie wird benutzt, um zugehörige Stile im Absatzstil-Auswahlfeld der Werkzeuglei
+ste zu gruppieren.
+ Jede beliebige Zeichenkette kann benutzt werden, aber es ist sinnvoll,
+ vorhandene Kategorien zu verwenden.
 \end_layout
 
 \begin_layout Description
@@ -11114,7 +10933,7 @@ Filled_Box
 
 \end_inset
 
- ist ein weißes oder schwarzes Quadrat, das für das Markieren eines Beweisendes
+ ist ein weißes oder schwarzes Quadrat, das für das Markieren eines Beweis-Endes
  geeignet ist.
  
 \begin_inset Flex Code
@@ -11254,10 +11073,29 @@ int=0
 
 ] Wird benutzt um neue Stile für stabile \SpecialChar LyX
 -Versionen zu konvertieren.
- Die erste stabile Version, die das unterstützt ist \SpecialChar LyX
+ Die erste stabile Version, die das unterstützt, ist \SpecialChar LyX
  2.1.0.
- Das Argument ist eine Nummer, die entweder 0, -1 oder irgend eine Zahl
- größer Null sein kann.
+ Das Argument ist eine Nummer, die entweder 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-1
+\end_layout
+
+\end_inset
+
+ oder irgend eine Zahl größer Null sein kann.
  Wenn 
 \begin_inset Flex Code
 status collapsed
@@ -11287,8 +11125,18 @@ ForceLocal
  ist kleiner als die Versionsnummer des bereits existierenden Stils der
  Dokumentklasse, wird der neue Stil ignoriert.
  Wenn die Versionsnummer größer ist, ersetzt der neue Stil den bestehenden.
- Der Wert -1 steht für eine unendliche Versionsnummer, das heißt der Stil
- wird immer benutzt.
+ Der Wert 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+-1
+\end_layout
+
+\end_inset
+
+ steht für eine unendliche Versionsnummer, das heißt der Stil wird immer
+ benutzt.
 \end_layout
 
 \begin_layout Description
@@ -11375,7 +11223,7 @@ HTML*
  Siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Tags-for-XHTML"
+reference "sec:XHTML-Spezifikationen"
 
 \end_inset
 
@@ -11633,8 +11481,18 @@ string="item"
 ] Der \SpecialChar LaTeX
 -Befehl, der ein Item in einer Liste definiert.
  Dieser Befehl muss ohne den Backslash am Anfang angegeben werden (die Voreinste
-llung ist ''item'', was in der \SpecialChar LaTeX
--Ausgabe 
+llung ist '
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+item
+\end_layout
+
+\end_inset
+
+', was in der \SpecialChar LaTeX
+-Ausgabe als 
 \begin_inset Flex Code
 status collapsed
 
@@ -11646,7 +11504,7 @@ item
 
 \end_inset
 
- zur Folge hat).
+ erscheint).
 \end_layout
 
 \begin_layout Description
@@ -12084,7 +11942,7 @@ string=""
 
 \end_inset
 
-] Der String, der für den 
+] Die Zeichenkette, die für den 
 \begin_inset Flex Code
 status collapsed
 
@@ -12115,7 +11973,7 @@ LabelCounter
 
 \end_inset
 
- gesetzt wurde, kann der String spezielle Formatierungsbefehle enthalten,
+ gesetzt wurde, kann die Zeichenkette spezielle Formatierungsbefehle enthalten,
  wie sie in 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -12123,8 +11981,7 @@ reference "subsec:Zähler"
 
 \end_inset
 
- be\SpecialChar softhyphen
-schrieben sind.
+ beschrieben sind.
 \end_layout
 
 \begin_layout Description
@@ -12256,7 +12113,7 @@ Static
 
 \end_inset
 
- bedeutet: die Marke ist was als 
+ bedeutet: die Marke ist, was als 
 \begin_inset Flex Code
 status collapsed
 
@@ -12267,15 +12124,7 @@ LabelString
 \end_inset
 
  definiert wurde.
- Die Marke wird 
-\begin_inset Quotes gld
-\end_inset
-
-inline
-\begin_inset Quotes grd
-\end_inset
-
- zu Beginn des Absatzes angezeigt.
+ Die Marke wird interlinear zu Beginn des Absatzes angezeigt.
  Wenn der 
 \begin_inset Flex Code
 status collapsed
@@ -12487,10 +12336,6 @@ LangPreamble
 
 -Deklaration für diesen Stil überschreibt.
  Muss mit 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -12498,10 +12343,6 @@ status collapsed
 EndLangPreamble
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  beendet werden.
@@ -12880,8 +12721,8 @@ Environment
 
 \end_inset
 
- aber fügt zusätzlich das notwendige Argument (die längste Marke) zum Begin-Befe
-hl der Bibliografie-Umgebung ein:
+ aber fügt zusätzlich das notwendige Argument (die längste Marke) zum Startbefeh
+l der Bibliografie-Umgebung ein:
 \begin_inset Newline newline
 \end_inset
 
@@ -13442,8 +13283,8 @@ status collapsed
 
 \end_inset
 
-] Gibt an, ob der nachfolgende Absatz einen linken Einzug haben darf oder
- nicht.
+] Gibt an, ob der nachfolgende Absatz einen Erstzeileneinzug haben darf
+ oder nicht.
  
 \begin_inset Flex Code
 status collapsed
@@ -13772,8 +13613,8 @@ float=0
 
 \end_inset
 
-] Der Benutzer kann in \SpecialChar LyX
- wählen ob Absätze durch 
+] Benutzer können in \SpecialChar LyX
+ wählen, ob Absätze durch 
 \family sans
 Einrückung
 \family default
@@ -13953,12 +13794,8 @@ ment}
 \end_inset
 
 ) eingefügt werden, wenn dieses Layout benutzt wird.
- Kann verwendet werden um Pakete zu laden, Makros zu definieren usw..
+ Kann verwendet werden um Pakete zu laden, Makros zu definieren usw.
  Muss mit 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -13966,10 +13803,6 @@ status collapsed
 EndPreamble
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  beendet werden.
@@ -13997,7 +13830,7 @@ string
 
 ] Der Präfix, der verwendet werden soll, wenn auf Marken dieses Absatzes
  verwiesen wird.
- Dies erlaubt die Verwendung von Formatierten Querverweisen.
+ Dies erlaubt die Verwendung von formatierten Querverweisen.
 \end_layout
 
 \begin_layout Description
@@ -14113,7 +13946,7 @@ CopyStyle
 
 \end_inset
 
- kopiert hat, aber nicht dessen (benötigten und optionalen) Argumente übernehmen
+ kopiert hat, aber nicht dessen (benötigte und optionale) Argumente übernehmen
  will.
 \end_layout
 
@@ -14443,8 +14276,8 @@ status collapsed
 
 \end_inset
 
-] Erhöht den Hauptzähler einers gegebenen Zählers am Anfang einer neuen
- Sequenz von Layouts.
+] Erhöht den Hauptzähler eines gegebenen Zählers am Anfang einer neuen Sequenz
+ von Layouts.
  Momentan ist das nur sinnvoll, wenn 
 \begin_inset Flex Code
 status collapsed
@@ -15123,10 +14956,22 @@ string
 =!htbpH] Erlaubte Platzierungsoptionen für den Gleitobjekttyp.
  Der Wert ist eine Zeichenkette aus Platzierungszeichen.
  Mögliche Zeichen sind: 
-\emph on
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 h
-\emph default
+\end_layout
+
+\end_inset
+
  (
+\emph on
+\lang english
+here
+\emph default
+\lang ngerman
+ = 
 \begin_inset Quotes gld
 \end_inset
 
@@ -15135,10 +14980,22 @@ hier wenn möglich
 \end_inset
 
 ), 
-\emph on
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 t
-\emph default
+\end_layout
+
+\end_inset
+
  (
+\emph on
+\lang english
+top
+\emph default
+\lang ngerman
+ = 
 \begin_inset Quotes gld
 \end_inset
 
@@ -15147,10 +15004,22 @@ oben auf Seite
 \end_inset
 
 ), 
-\emph on
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 b
-\emph default
+\end_layout
+
+\end_inset
+
  (
+\emph on
+\lang english
+bottom
+\emph default
+\lang ngerman
+ = 
 \begin_inset Quotes gld
 \end_inset
 
@@ -15159,10 +15028,22 @@ unten auf Seite
 \end_inset
 
 ), 
-\emph on
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 p
-\emph default
+\end_layout
+
+\end_inset
+
  (
+\emph on
+\lang english
+page
+\emph default
+\lang ngerman
+ = 
 \begin_inset Quotes gld
 \end_inset
 
@@ -15171,9 +15052,15 @@ auf Seite nur mit Gleitobjekten
 \end_inset
 
 ), 
-\emph on
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 H
-\emph default
+\end_layout
+
+\end_inset
+
  (
 \begin_inset Quotes gld
 \end_inset
@@ -15183,9 +15070,15 @@ hier, unbedingt
 \end_inset
 
 ) und 
-\emph on
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 !
-\emph default
+\end_layout
+
+\end_inset
+
  (
 \begin_inset Quotes gld
 \end_inset
@@ -15198,9 +15091,15 @@ ignoriere LaTeX-Regeln
  Die Reihenfolge der Zeichen in der Zeichenkette ist egal.
  Wenn keine Platzierungsoptionen erlaubt sind, verwendet man stattdessen
  die Zeichenkette 
-\emph on
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 none
-\emph default
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
@@ -15299,16 +15198,8 @@ status collapsed
 
 
 \emph default
-] Definiert ob das Gleitobjekt eine 
-\begin_inset Quotes gld
-\end_inset
-
-gesternte
-\begin_inset Quotes grd
-\end_inset
-
- Version hat, die in einem zweispaltigen Dokument die komplette Seitenbreite
- einnimmt.
+] Definiert ob das Gleitobjekt eine Sternversion hat, die in einem zweispaltigen
+ Dokument die komplette Seitenbreite einnimmt.
  Falls das nicht der Fall ist, setzt man es auf 
 \begin_inset Flex Code
 status collapsed
@@ -15348,17 +15239,9 @@ string
 
 \end_inset
 
-=
-\begin_inset Quotes erd
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-] Die Dateinamenserweiterung einer zusätzlichen Datei für das Abbildungsver\SpecialChar softhyphen
-zeich
-nis (oder andere).
+=""] Die Dateinamenserweiterung einer zusätzlichen Datei für das Abbildungsver\SpecialChar softhyphen
+ze
+ichnis (oder andere).
  \SpecialChar LaTeX
  schreibt die Beschriftungen in diese Datei.
 \end_layout
@@ -15383,15 +15266,8 @@ string
 
 \end_inset
 
-=
-\begin_inset Quotes erd
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-] Die Zeichenkette, die in den Menüs und für die Beschriftung benutzt wird.
+=""] Die Zeichenkette, die in den Menüs und für die Beschriftung benutzt
+ wird.
  Dies wird in die aktuelle Sprache übersetzt, wenn babel verwendet wird.
 \end_layout
 
@@ -15409,7 +15285,7 @@ HTML*
  Siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Tags-for-XHTML"
+reference "sec:XHTML-Spezifikationen"
 
 \end_inset
 
@@ -15522,18 +15398,20 @@ string
 
 \end_inset
 
-=
-\begin_inset Quotes erd
-\end_inset
+=""] Der Befehl der verwendet wird, um eine Liste der Gleitobjekte dieses
+ Typs zu generieren; das 
+\begin_inset Flex Code
+status collapsed
 
+\begin_layout Plain Layout
 
-\begin_inset Quotes erd
-\end_inset
-
-] Der Befehl der verwendet wird, um eine Liste der Gleitobjekte dieses Typs
- zu generieren; das `
 \backslash
-' muss weggelassen werden.
+
+\end_layout
+
+\end_inset
+
+ muss weggelassen werden.
  Der Befehl 
 \emph on
 muss
@@ -15602,15 +15480,7 @@ string
 
 \end_inset
 
-=
-\begin_inset Quotes erd
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-] Die Überschrift für das Gleitobjekt-Verzeichnis (z.
+=""] Die Überschrift für das Gleitobjekt-Verzeichnis (z.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -15651,15 +15521,7 @@ string
 
 \end_inset
 
-=
-\begin_inset Quotes erd
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-] Dieses optionale Argument bestimmt, ob Gleitobjekte dieser Klasse mit
+=""] Dieses optionale Argument bestimmt, ob Gleitobjekte dieser Klasse mit
  der Abschnittsnummer dieses Dokuments nummeriert werden.
  Wenn zum Beispiel 
 \begin_inset Flex Code
@@ -15672,10 +15534,6 @@ NumberWithin
 \end_inset
 
  auf 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -15683,10 +15541,6 @@ status collapsed
 chapter
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  gesetzt ist, werden die Gleitobjekte mit den Kapitelnummern nummeriert.
@@ -15712,15 +15566,7 @@ string
 
 \end_inset
 
-=
-\begin_inset Quotes erd
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-] Die Standardplatzierung für die Gleitobjektklasse.
+=""] Die Standardplatzierung für die Gleitobjektklasse.
 
 \family typewriter
  
@@ -15776,7 +15622,23 @@ h
 
 \end_inset
 
- für oben, unten, Seite und hier enthalten.
+ für 
+\emph on
+oben
+\emph default
+, 
+\emph on
+unten
+\emph default
+, 
+\emph on
+Seite
+\emph default
+ und 
+\emph on
+hier
+\emph default
+ enthalten.
 \begin_inset Foot
 status collapsed
 
@@ -15816,10 +15678,6 @@ H
  besonders ist und wegen der Implementierungsdetails nicht bei nicht-eingebauten
  Gleitobjekttypen benutzt werden kann.
  Wenn Sie die Platzierung nicht verstehen, benutzen Sie einfach 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -15827,10 +15685,6 @@ status collapsed
 tbp
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
 .
@@ -15856,10 +15710,10 @@ string
 
 \end_inset
 
-] Der Präfix, der verwendet werden soll, wenn auf Marken dieser Gleitobjekte
+] Das Präfix, das verwendet werden soll, wenn auf Marken dieser Gleitobjekte
  verwiesen wird.
  Dies erlaubt die Verwendung von Formatierten Querverweisen.
- Man kann den 
+ Man kann das 
 \begin_inset Flex Code
 status collapsed
 
@@ -15880,11 +15734,13 @@ string
 \end_inset
 
  auf 
-\begin_inset Quotes gld
-\end_inset
+\begin_inset Flex Code
+status collapsed
 
+\begin_layout Plain Layout
 OFF
-\begin_inset Quotes grd
+\end_layout
+
 \end_inset
 
  gesetzt wird.
@@ -15910,15 +15766,7 @@ string
 
 \end_inset
 
-=
-\begin_inset Quotes erd
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-] ist der Gleitobjektstil, wenn er mit 
+=""] ist der Gleitobjektstil, wenn er mit 
 \begin_inset Flex Code
 status collapsed
 
@@ -15953,15 +15801,7 @@ string
 
 \end_inset
 
-=
-\begin_inset Quotes erd
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-] ist der 
+=""] ist der 
 \begin_inset Quotes gld
 \end_inset
 
@@ -15974,7 +15814,15 @@ Typ
 \end_inset
 
 B.
- Programm oder Algorithmus.
+ 
+\emph on
+Programm
+\emph default
+ oder 
+\emph on
+Algorithmus
+\emph default
+.
  Nach dem entsprechenden 
 \begin_inset Flex Code
 status collapsed
@@ -16069,13 +15917,17 @@ float
 \begin_layout Description
 Anmerkung: Wenn ein Gleitobjekt vom Typ 
 \emph on
+\lang english
 type
 \emph default
+\lang ngerman
  definiert wurde, gibt es automatisch einen dazugehörigen Zähler namens
  
 \emph on
+\lang english
 type
 \emph default
+\lang ngerman
 .
 \end_layout
 
@@ -16135,7 +15987,7 @@ code
 \end_layout
 
 \begin_layout Itemize
-benutzerdefiniert (
+Benutzerdefiniert (
 \begin_inset Flex Code
 status collapsed
 
@@ -16145,16 +15997,10 @@ Custom
 
 \end_inset
 
-): diese können benutzt werden, um benutzer\SpecialChar softhyphen
-de\SpecialChar softhyphen
-fi\SpecialChar softhyphen
-nier\SpecialChar softhyphen
-te einklappbare Einfügungen
+): diese können benutzt werden, um benutzerdefinierte einklappbare Einfügungen
  zu definieren, ähnlich wie \SpecialChar TeX
--Code, Fuß\SpecialChar softhyphen
-no\SpecialChar softhyphen
-te usw.
- Ein naheliegendes Beispiel ist die Endnotiz, die im 
+-Code, Fußnote usw.
+ Ein Beispiel ist Endnote, die im 
 \begin_inset Flex Code
 status collapsed
 
@@ -16485,10 +16331,6 @@ status collapsed
 \end_inset
 
  in der Form 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -16496,10 +16338,6 @@ status collapsed
 Flex:<Name>
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  sein, wobei 
@@ -16547,10 +16385,6 @@ status collapsed
 \end_inset
 
  die Form 
-\begin_inset Quotes gld
-\end_inset
-
-
 \begin_inset Flex Code
 status collapsed
 
@@ -16558,10 +16392,6 @@ status collapsed
 Branch:<Name>
 \end_layout
 
-\end_inset
-
-
-\begin_inset Quotes grd
 \end_inset
 
  haben, wobei 
@@ -16757,7 +16587,8 @@ int
 
 \end_inset
 
-] Definiert die Argumentnummer eines Befehls/einer Umgebung, die im aktuellen
+] Definiert die Argumentnummer eines Befehls\SpecialChar breakableslash
+einer Umgebung, die im aktuellen
  Layout definiert ist.
  Die Definition muss mit 
 \begin_inset Flex Code
@@ -16953,7 +16784,8 @@ status collapsed
 
 \end_inset
 
-] zeigt an, ob der Benutzer den Absatzeinstellungen-Dialog benutzen darf.
+] zeigt an, ob der Benutzer in dieser Einfügung den Absatzeinstellungen-Dialog
+ benutzen darf.
 \end_layout
 
 \begin_layout Description
@@ -16997,7 +16829,7 @@ Conglomerate
 \end_inset
 
  sein.
- Es beschreibt den Rendering-Stil für den Einfügungsrahmen und die -knöpfe.
+ Es beschreibt den Darstellungsstil für den Einfügungsrahmen und die -knöpfe.
  Fußnoten benutzen im allgemeinen 
 \begin_inset Flex Code
 status collapsed
@@ -17337,8 +17169,8 @@ status collapsed
 
 \end_inset
 
-] Wenn babel verwendet wird; ob immer eine lokale Umschaltung der Sprache
- erfolgen soll (mittels 
+] Legt fest, ob, wenn Babel verwendet wird, in dieser Einfügung immer eine
+ lokale Umschaltung der Sprache erfolgen soll (mittels 
 \begin_inset Flex Code
 status collapsed
 
@@ -17350,7 +17182,7 @@ foreignlanguage
 
 \end_inset
 
-) und nie eine globale (mittels 
+), also nie eine globale (mittels 
 \begin_inset Flex Code
 status collapsed
 
@@ -17384,7 +17216,7 @@ ForceLTR
 \begin_inset Quotes grd
 \end_inset
 
- und führt zu einer links-nach-rechts-Ausgabe, zum Beispiel bei \SpecialChar TeX
+ und führt zu einer Links-nach-rechts-Ausgabe, zum Beispiel bei \SpecialChar TeX
 -Code oder
  URL.
  
@@ -17478,7 +17310,7 @@ status collapsed
 
 \end_inset
 
-] zeigt an, ob stattdessen 
+] erzwingt die Verwendung von 
 \begin_inset Flex Code
 status collapsed
 
@@ -17488,8 +17320,7 @@ PlainLayout
 
 \end_inset
 
- benutzt werden soll oder ob der Benutzer den Absatzstil der Einfügung ändern
- darf.
+, wobei der Benutzer den Absatzstil der Einfügung nicht ändern darf.
 \end_layout
 
 \begin_layout Description
@@ -17552,7 +17383,7 @@ HTML*
  Siehe 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Tags-for-XHTML"
+reference "sec:XHTML-Spezifikationen"
 
 \end_inset
 
@@ -17595,15 +17426,29 @@ status collapsed
 
 \end_inset
 
-] Ob der Inhalt der Einfügung für die Zeichenketten des 'Gliederungs'-Fensters
- verwendet werden soll
-\lang english
- for all table of contents, regardless of the AddToToc setting
-\lang ngerman
+] Legt fest, ob der Inhalt der Einfügung für die Einträge im Fenster 
+\begin_inset Quotes gld
+\end_inset
+
+Gliederung des Dokuments
+\begin_inset Quotes grd
+\end_inset
+
+ verwendet werden soll, und zwar für alle Inhaltsverzeichnisse, unabhängig
+ von der Einstellung 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AddToToc
+\end_layout
+
+\end_inset
+
 .
- Zum Beispiel will man nicht, dass der Inhalt einer Fußzeile im Namen des
- Abschnitts im Inhaltsverzeichnis des Gliederungs-Fensters erscheint.
- Aber man will normalerweise, dass der Inhalt von Zeichenstilen erscheint.
+ Zum Beispiel sollte der Inhalt einer Fußnote in einer Überschrift nicht
+ im Abschnittstitel im Inhaltsverzeichnis des Gliederungs-Fensters erscheinen,
+ sehr wohl aber der Inhalt bestimmter Zeichenstile.
 \end_layout
 
 \begin_layout Description
@@ -17642,7 +17487,17 @@ status collapsed
 
 \end_inset
 
-] Wenn dies auf 1 gesetzt ist und 
+] Wenn dies auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+ gesetzt ist und 
 \begin_inset Flex Code
 status collapsed
 
@@ -17756,20 +17611,9 @@ string
 
 \end_inset
 
-=
-\begin_inset Quotes erd
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-] wird auf dem Knopf und anderswo als Einfügungsmarke angezeigt.
+=""] wird auf dem Knopf der Einfügung und anderswo als Marke angezeigt.
  Einige Einfügungstypen (\SpecialChar TeX
--Code und Zweig) ändern diese Marke im Vo\SpecialChar softhyphen
-rü\SpecialChar softhyphen
-ber\SpecialChar softhyphen
-gehen.
+-Code und Zweig) ändern diese Marke temporär.
 \end_layout
 
 \begin_layout Description
@@ -17847,8 +17691,7 @@ LatexName
 
 \end_inset
 
-, einschließ\SpecialChar softhyphen
-lich möglicher Klammerpaare wie 
+, einschließlich möglicher Klammerpaare wie 
 \begin_inset Flex Code
 status collapsed
 
@@ -17870,7 +17713,7 @@ Argument
 
 \end_inset
 
- für anpassbare Parameters).
+ für anpassbare Parameter).
  Dieser wird nach allen anderen \SpecialChar LaTeX
 -
 \begin_inset Flex Code
@@ -18294,7 +18137,7 @@ status collapsed
 
 \end_inset
 
-] zeigt an, ob in dieser Einfügung mehrfache Absätze erlaubt sind.
+] zeigt an, ob in dieser Einfügung mehrere Absätze erlaubt sind.
  Dadurch wird 
 \begin_inset Flex Code
 status collapsed
@@ -18373,8 +18216,11 @@ status collapsed
 \emph on
 zerbrechliche
 \emph default
- Befehle in diesem Layout ge\SpecialChar softhyphen
-schützt (
+ 
+\emph on
+Befehle
+\emph default
+ in diesem Layout (mit 
 \begin_inset Flex Code
 status collapsed
 
@@ -18386,7 +18232,7 @@ protect
 
 \end_inset
 
-) werden sollen.
+) geschützt werden sollen.
  Es zeigt 
 \emph on
 nicht
@@ -18478,7 +18324,7 @@ InsetLayout
 
 \end_inset
 
- umzubenennen und dabei die Rückwärtskompatibilität zu erhalten.
+ umzubenennen und dabei Rückwärtskompatibilität zu gewähren.
 \end_layout
 
 \begin_layout Description
@@ -18613,9 +18459,9 @@ string
 
 \end_inset
 
-] Der Präfix, der verwendet werden soll, wenn auf Marken dieser Einfügung
+] Das Präfix, das verwendet werden soll, wenn auf Marken dieser Einfügung
  verwiesen wird.
- Dies erlaubt die Verwendung von Formatierten Querverweisen.
+ Dies erlaubt die Verwendung von formatierten Querverweisen.
 \end_layout
 
 \begin_layout Description
@@ -18746,8 +18592,8 @@ status collapsed
 
 \end_inset
 
-] Ob die Einfügung die Schrift der übergeordneten Umgebung verwenden soll
- oder ihre eigene.
+] Legt fest, ob die Einfügung die Schrift der übergeordneten Umgebung verwenden
+ soll oder eine eigene.
  Voreinstellung ist 
 \begin_inset Flex Code
 status collapsed
@@ -18948,11 +18794,13 @@ int=1
 
 ] Setzt den Startwert für einen Zähler, auf den er zurückgesetzt wird.
  Meist entspricht die Voreinstellung 
-\begin_inset Quotes gld
-\end_inset
+\begin_inset Flex Code
+status collapsed
 
+\begin_layout Plain Layout
 1
-\begin_inset Quotes grd
+\end_layout
+
 \end_inset
 
  bereits dem Gewünschten.
@@ -18978,15 +18826,7 @@ string
 
 \end_inset
 
-=
-\begin_inset Quotes erd
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-] definiert, wie der Zähler dargestellt wird.
+=""] definiert, wie der Zähler dargestellt wird.
  Hierdurch wird 
 \begin_inset Flex Code
 status collapsed
@@ -19116,7 +18956,7 @@ arabic
 
 \end_inset
 
- für arabische Ziffern: 1, 2, 3,\SpecialChar ldots
+ für arabische Ziffern: 1, 2, 3, \SpecialChar ldots
 ; 
 \begin_inset Flex Code
 status collapsed
@@ -19127,7 +18967,7 @@ alph
 
 \end_inset
 
- für Kleinbuchstaben: a, b, c,\SpecialChar ldots
+ für Kleinbuchstaben: a, b, c, \SpecialChar ldots
 ; 
 \begin_inset Flex Code
 status collapsed
@@ -19138,7 +18978,7 @@ Alph
 
 \end_inset
 
- für Großbuchstaben: A, B, C,\SpecialChar ldots
+ für Großbuchstaben: A, B, C, \SpecialChar ldots
 ; 
 \begin_inset Flex Code
 status collapsed
@@ -19149,7 +18989,7 @@ roman
 
 \end_inset
 
- für kleine römische Ziffern: i, ii, iii,\SpecialChar ldots
+ für kleine römische Ziffern: i, ii, iii, \SpecialChar ldots
 ; 
 \begin_inset Flex Code
 status collapsed
@@ -19160,7 +19000,8 @@ Roman
 
 \end_inset
 
- für große römische Ziffern: I, II, III.
+ für große römische Ziffern: I, II, III, \SpecialChar ldots
+
 \end_layout
 
 \begin_layout Standard
@@ -19244,15 +19085,7 @@ string
 
 \end_inset
 
-=
-\begin_inset Quotes erd
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-] ist dasselbe wie 
+=""] ist dasselbe wie 
 \begin_inset Flex Code
 status collapsed
 
@@ -19285,15 +19118,7 @@ string
 
 \end_inset
 
-=
-\begin_inset Quotes erd
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-] Ein Format, das für 
+=""] Ein Format, das für 
 \emph on
 formatierte Querverweise
 \emph default
@@ -19360,16 +19185,8 @@ string
 
 \end_inset
 
-=
-\begin_inset Quotes erd
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-] Wenn dies auf den Namen eines anderen Zählers gesetzt wird, wird der gegenwärt
-ige Zähler jedes Mal zurückgesetzt, wenn der andere erhöht wird.
+=""] Wenn dies auf den Namen eines anderen Zählers gesetzt wird, wird der
+ gegenwärtige Zähler jedes Mal zurückgesetzt, wenn der andere erhöht wird.
  Zum Beispiel wird 
 \begin_inset Flex Code
 status collapsed
@@ -21858,8 +21675,8 @@ Rich Text
 \end_inset
 
  (mit typografischen Auszeichnungen usw.) verwendet wird.
- Da wir keine HTMLTags ausgeben wollen, wenn wir reinen Text ausgeben, müssen
- diese Angaben in 
+ Da wir keine HTML-Tags ausgeben wollen, wenn wir reinen Text ausgeben,
+ müssen diese Angaben in 
 \begin_inset Flex Code
 status collapsed
 
@@ -22070,82 +21887,71 @@ stdciteformats.inc
 \begin_layout Section
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Tags-for-XHTML"
+name "sec:XHTML-Spezifikationen"
 
 \end_inset
 
-
-\lang english
-Tags for XHTML output
+Spezifikationen der XHTML-Ausgabe
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-As with \SpecialChar LaTeX
- or DocBook, the format of \SpecialChar LyX
-'s XHTML output is also controlled by
- layout information.
- In general, \SpecialChar LyX
- provides sensible defaults and, as mentioned earlier, it will
- even construct default CSS style rules from the other layout tags.
- For example, \SpecialChar LyX
- will attempt to use the information provided in the 
+Wie bei \SpecialChar LaTeX
+ oder DocBook wird auch das Format von \SpecialChar LyX
+' XHTML-Ausgabe durch Layout-Info
+rmationen kontrolliert.
+ Grundsätzlich bietet \SpecialChar LyX
+ sinnvolle Voreinstellungen und wie bereits erwähnt
+ generiert es sogar CSS-Stilregeln aus den anderen Layout-Angaben.
+ So nimmt \SpecialChar LyX
+ etwa die Information, die für einen Kapitelstil in der 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Font
 \end_layout
 
 \end_inset
 
- declaration for the Chapter style to write CSS that will appropriately
- format chapter headings.
+-Deklaration gegeben wird, um CSS zu erzeugen, die die Kapitelüberschriften
+ entsprechend formatiert.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In many cases, then, you may not have to do anything at all to get acceptable
- XHTML output for your own environments, custom insets, and so forth.
- But in some cases you will, and so \SpecialChar LyX
- provides a number of layout tags that
- can be used to customize the XHTML and CSS that are generated.
+In vielen Fällen müssen Sie also gar nichts tun, um eine akzeptable XHTML-Ausgab
+e für ihre eigenen Umgebungen, benutzerdefinierten Einfügungen usw.
+ zu bekommen.
+ Aber manchmal ist das vielleicht nötig, und daher bietet \SpecialChar LyX
+ eine Reihe von
+ Layout-Tags für die Anpassung der XHTML- und CSS-Ausgabe.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Note that there are two tags, 
+Es gibt zwei Marken, 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLPreamble
 \end_layout
 
 \end_inset
 
- and 
+ und 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AddToHTMLPreamble
 \end_layout
 
 \end_inset
 
- that may appear outside style and inset declarations.
- See 
-\lang ngerman
+, die außerhalb von Stil- und Einfügungsdeklarationen verwendet werden können.
+ Diese werden in Abschnitt
+\begin_inset space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -22153,368 +21959,399 @@ reference "subsec:Allgemeine-Parameter-für"
 
 \end_inset
 
-
-\lang english
- for details on these.
+ besprochen.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Paragraph styles
+Absatzstile
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The sort of XHTML \SpecialChar LyX
- outputs for a paragraph depends upon whether we are dealing
- with a normal paragraph, a command, or an environment, where this is itself
- determined by the contents of the corresponding 
+Die Art von XHTML, die \SpecialChar LyX
+ für einen jeweiligen Absatz ausgibt, hängt davon
+ ab, ob wir es mit einem normalen Absatz zu tun haben, mit einem Befehl
+ oder einer Umgebung, für die die entsprechende 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \SpecialChar LaTeX
 Type
 \end_layout
 
 \end_inset
 
- tag.
- 
+-Spezifikation die Ausgabe bestimmt.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For a command or normal paragraph, the output XHTML has the following form:
+Im Fall eines Befehls oder eines normalen Absatzes sieht die XHTML-Ausgabe
+ so aus:
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 <tag attr=
-\begin_inset Quotes erd
+\begin_inset Quotes qrd
 \end_inset
 
-value
-\begin_inset Quotes erd
+Wert
+\begin_inset Quotes qrd
 \end_inset
 
 >
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 <labeltag attr=
-\begin_inset Quotes erd
+\begin_inset Quotes qrd
 \end_inset
 
-value
-\begin_inset Quotes erd
+Wert
+\begin_inset Quotes qrd
 \end_inset
 
->Label</labeltag>
+>Marke</labeltag>
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
-Contents of the paragraph.
+Inhalt des Absatzes.
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 </tag>
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The label tags are of course omitted if the paragraph does not have a label.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-For an environment that is not some sort of list, the XHTML takes this form:
-\end_layout
-
-\begin_layout LyX-Code
-
-\lang english
-<tag attr=
-\begin_inset Quotes erd
-\end_inset
-
-value
-\begin_inset Quotes erd
-\end_inset
-
->
-\end_layout
-
-\begin_layout LyX-Code
-
-\lang english
-<itemtag attr=
-\begin_inset Quotes erd
-\end_inset
-
-value
-\begin_inset Quotes erd
-\end_inset
-
-><labeltag attr=
-\begin_inset Quotes erd
-\end_inset
-
-value
-\begin_inset Quotes erd
-\end_inset
-
->Environment Label</labeltag>First paragraph.</itemtag>
-\end_layout
-
-\begin_layout LyX-Code
-
-\lang english
-<itemtag>Second paragraph.</itemtag>
-\end_layout
-
-\begin_layout LyX-Code
-
-\lang english
-</tag>
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Note that the label is output only for the first paragraph, as it should
- be for a theorem, for example.
- 
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-For a list, we have one of these forms:
-\end_layout
-
-\begin_layout LyX-Code
-
-\lang english
-<tag attr=
-\begin_inset Quotes erd
-\end_inset
-
-value
-\begin_inset Quotes erd
-\end_inset
-
->
-\end_layout
-
-\begin_layout LyX-Code
-
-\lang english
-<itemtag attr=
-\begin_inset Quotes erd
-\end_inset
-
-value
-\begin_inset Quotes erd
-\end_inset
-
-><labeltag attr=
-\begin_inset Quotes erd
-\end_inset
-
-value
-\begin_inset Quotes erd
-\end_inset
-
->List Label</labeltag>First item.</itemtag>
-\end_layout
-
-\begin_layout LyX-Code
-
-\lang english
-<itemtag attr=
-\begin_inset Quotes erd
-\end_inset
-
-value
-\begin_inset Quotes erd
-\end_inset
-
-><labeltag attr=
-\begin_inset Quotes erd
-\end_inset
-
-value
-\begin_inset Quotes erd
-\end_inset
-
->List Label</labeltag>Second item.</itemtag>
-\end_layout
-
-\begin_layout LyX-Code
-
-\lang english
-</tag>
-\end_layout
-
-\begin_layout LyX-Code
-
-\end_layout
-
-\begin_layout LyX-Code
-
-\lang english
-<tag attr=
-\begin_inset Quotes erd
-\end_inset
-
-value
-\begin_inset Quotes erd
-\end_inset
-
->
-\end_layout
-
-\begin_layout LyX-Code
-
-\lang english
-<labeltag attr=
-\begin_inset Quotes erd
-\end_inset
-
-value
-\begin_inset Quotes erd
-\end_inset
-
->List Label</labeltag><itemtag attr=
-\begin_inset Quotes erd
-\end_inset
-
-value
-\begin_inset Quotes erd
-\end_inset
-
->First item.</itemtag>
-\end_layout
-
-\begin_layout LyX-Code
-
-\lang english
-<labeltag attr=
-\begin_inset Quotes erd
-\end_inset
-
-value
-\begin_inset Quotes erd
-\end_inset
-
->List Label</labeltag><itemtag attr=
-\begin_inset Quotes erd
-\end_inset
-
-value
-\begin_inset Quotes erd
-\end_inset
-
->Second item.</itemtag>
-\end_layout
-
-\begin_layout LyX-Code
-
-\lang english
-</tag>
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Note the different orders of 
+Die 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 labeltag
 \end_layout
 
 \end_inset
 
- and 
+s werden natürlich nur ausgegeben, wenn der Absatz auch eine Marke hat.
+\end_layout
+
+\begin_layout Standard
+Im Fall einer Umgebung, die 
+\emph on
+keine
+\emph default
+ Liste ist, sieht die XHTML-Ausgabe so aus:
+\end_layout
+
+\begin_layout LyX-Code
+<tag attr=
+\begin_inset Quotes qrd
+\end_inset
+
+Wert
+\begin_inset Quotes qrd
+\end_inset
+
+>
+\end_layout
+
+\begin_layout LyX-Code
+<itemtag attr=
+\begin_inset Quotes qrd
+\end_inset
+
+Wert
+\begin_inset Quotes qrd
+\end_inset
+
+><labeltag attr=
+\begin_inset Quotes qrd
+\end_inset
+
+Wert
+\begin_inset Quotes qrd
+\end_inset
+
+>Marke der Umgebung</labeltag>
+\begin_inset Newline newline
+\end_inset
+
+Erster Absatz.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+<itemtag>Zweiter Absatz.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+</tag>
+\end_layout
+
+\begin_layout Standard
+Beachten Sie, dass die Marke nur für den ersten Absatz ausgegeben wird,
+ wie es bspw.
+ für Theoreme auch sein sollte.
+ 
+\end_layout
+
+\begin_layout Standard
+Im Fall von Listen wird eine der folgenden Ausgabeformen generiert:
+\end_layout
+
+\begin_layout LyX-Code
+<tag attr=
+\begin_inset Quotes qrd
+\end_inset
+
+Wert
+\begin_inset Quotes qrd
+\end_inset
+
+>
+\end_layout
+
+\begin_layout LyX-Code
+<itemtag attr=
+\begin_inset Quotes qrd
+\end_inset
+
+Wert
+\begin_inset Quotes qrd
+\end_inset
+
+><labeltag attr=
+\begin_inset Quotes qrd
+\end_inset
+
+Wert
+\begin_inset Quotes qrd
+\end_inset
+
+>
+\begin_inset Newline newline
+\end_inset
+
+Listenmarke</labeltag>Erster Listeneintrag.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+<itemtag attr=
+\begin_inset Quotes qrd
+\end_inset
+
+Wert
+\begin_inset Quotes qrd
+\end_inset
+
+><labeltag attr=
+\begin_inset Quotes qrd
+\end_inset
+
+Wert
+\begin_inset Quotes qrd
+\end_inset
+
+>Listenmarke</labeltag>
+\begin_inset Newline newline
+\end_inset
+
+Zweiter Listeneintrag.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+</tag>
+\end_layout
+
+\begin_layout LyX-Code
+
+\end_layout
+
+\begin_layout LyX-Code
+<tag attr=
+\begin_inset Quotes qrd
+\end_inset
+
+Wert
+\begin_inset Quotes qrd
+\end_inset
+
+>
+\end_layout
+
+\begin_layout LyX-Code
+<labeltag attr=
+\begin_inset Quotes qrd
+\end_inset
+
+Wert
+\begin_inset Quotes qrd
+\end_inset
+
+>Listenmarke</labeltag><itemtag attr=
+\begin_inset Quotes qrd
+\end_inset
+
+Wert
+\begin_inset Quotes qrd
+\end_inset
+
+>
+\begin_inset Newline newline
+\end_inset
+
+Erster Listeneintrag.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+<labeltag attr=
+\begin_inset Quotes qrd
+\end_inset
+
+Wert
+\begin_inset Quotes qrd
+\end_inset
+
+>Listenmarke</labeltag><itemtag attr=
+\begin_inset Quotes qrd
+\end_inset
+
+Wert
+\begin_inset Quotes qrd
+\end_inset
+
+>
+\begin_inset Newline newline
+\end_inset
+
+Zweiter Listeneintrag.</itemtag>
+\end_layout
+
+\begin_layout LyX-Code
+</tag>
+\end_layout
+
+\begin_layout Standard
+Beachten Sie hierbei die unterschiedliche Reihenfolge von 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+labeltag
+\end_layout
 
-\lang english
+\end_inset
+
+ und 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 itemtag
 \end_layout
 
 \end_inset
 
 .
- Which order we get depends upon the setting of 
+ Welche Reihenfolge ausgegeben wird, hängt von der Einstellung von 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLLabelFirst
 \end_layout
 
 \end_inset
 
-: If 
+ ab: Wenn 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLLabelFirst
 \end_layout
 
 \end_inset
 
- is false (the default), you get the first of these, with the label within
- the item; if true, you get the second, with the label outside the item.
+ auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+false
+\end_layout
+
+\end_inset
+
+ gesetzt ist (das ist die Voreinstellung), bekommen Sie die erste Variante,
+ mit dem 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+labeltag
+\end_layout
+
+\end_inset
+
+ innerhalb des 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemtag
+\end_layout
+
+\end_inset
+
+; ist sie hingegen auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+true
+\end_layout
+
+\end_inset
+
+ gesetzt, bekommen Sie die zweite, mit dem 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+labeltag
+\end_layout
+
+\end_inset
+
+ außerhalb des 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemtag
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The specific tags and attributes output for each paragraph type can be controlle
-d by means of the layout tags we are about to describe.
- As mentioned earlier, however, \SpecialChar LyX
- uses sensible defaults for many of these,
- so you often may not need to do very much to get good XHTML output.
- Think of the available tags as there so you can tweak things to your liking.
+Die spezifischen Tags und Attribute, die für Absatztypen ausgegeben werden
+ können mithilfe der Absatzspezifikationen kontrolliert werden, die wir
+ im Folgenden beschreiben.
+ Wir erwähnt verwendet \SpecialChar LyX
+ für viele von diesen sinnvolle Voreinstellungen,
+ oftmals müssen Sie also für eine gute XHTML-Ausgabe wenig tun.
+ Die verfügbaren Spezifikationsmöglichkeiten sind also eher dazu da, Dinge
+ zu verändern, wo Sie dies für nötig halten.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLAttr
 \end_layout
 
@@ -22525,99 +22362,95 @@ HTMLAttr
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 string
 \end_layout
 
 \end_inset
 
-] Specifies attribute information to be output with the main tag.
- For example, 
-\begin_inset Quotes eld
-\end_inset
-
-
+] Legt die Attribute fest, die mit dem Haupt-Tag ausgegeben werden, bspw.
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+class=
+\begin_inset Quotes qrs
+\end_inset
 
-\lang english
-class=`mydiv'
-\end_layout
-
+meindiv
+\begin_inset Quotes qrs
 \end_inset
 
 
-\begin_inset Quotes erd
+\end_layout
+
 \end_inset
 
 .
- By default, \SpecialChar LyX
- will output 
-\begin_inset Quotes eld
-\end_inset
-
-
+ In der Voreinstellung gibt \SpecialChar LyX
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+class=
+\begin_inset Quotes qrs
+\end_inset
 
-\lang english
-class=`layoutname'
+layoutname
+\begin_inset Quotes qrs
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
-
-\begin_inset Quotes erd
-\end_inset
-
-, where 
+ aus, wobei 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 layoutname
 \end_layout
 
 \end_inset
 
- is the \SpecialChar LyX
- name of the layout, made lowercase, for example: chapter.
- This should 
-\emph on
-not
-\emph default
- contain any style information.
- Use 
+ der \SpecialChar LyX
+-Name des Absatzstils in Kleinbuchstaben ist, etwa 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+chapter
+\end_layout
 
-\lang english
+\end_inset
+
+.
+ Hier sollten Sie 
+\emph on
+keine
+\emph default
+ Stilinformationen übergeben.
+ Verwenden Sie dafür 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 HTMLStyle
 \end_layout
 
 \end_inset
 
- for that purpose.
+.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLForceCSS
 \end_layout
 
@@ -22630,7 +22463,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 0
 \end_layout
 
@@ -22645,49 +22477,40 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
 \end_inset
 
-] Whether to output the default CSS information \SpecialChar LyX
- generates for this layout,
- even if additional information is explicitly provided via 
+] Legt fest, ob die Standard-CSS-Information, die \SpecialChar LyX
+ für diesen Absatzstil
+ generiert, auch dann ausgegeben werden, wenn Informationen mittels 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLStyle
 \end_layout
 
 \end_inset
 
-.
- Setting this to 
+ explizit übergeben werden.
+ Wenn Sie dies auf 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
 \end_inset
 
- allows you to alter or augment the generated CSS, rather than to override
- it completely.
- Default is 
+ setzen, können Sie diese CSS modifizieren, statt sie komplett zu überschreiben.
+ Voreinstellung: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 0
 \end_layout
 
@@ -22697,14 +22520,10 @@ status collapsed
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLItem
 \end_layout
 
@@ -22715,34 +22534,28 @@ HTMLItem
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 string
 \end_layout
 
 \end_inset
 
-] The tag to be used for individual paragraphs of environments, replacing
- 
+] Dieser Tag wird für einzelne Absätze in Umgebungen verwendet.
+ Er ersetzt 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 itemtag
 \end_layout
 
 \end_inset
 
- in the examples above.
- Defaults to 
+ in den Beispielen oben.
+ Voreinstellung: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 div
 \end_layout
 
@@ -22752,14 +22565,10 @@ div
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLItemAttr
 \end_layout
 
@@ -22770,64 +22579,63 @@ HTMLItemAttr
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 string
 \end_layout
 
 \end_inset
 
-] Attributes for the item tag.
- Defaults to 
-\begin_inset Quotes eld
-\end_inset
-
-
+] Attribute für den 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-class=`layoutname_item'
+itemtag
 \end_layout
 
 \end_inset
 
-
-\begin_inset Quotes erd
+.
+\begin_inset Newline newline
 \end_inset
 
-.
- This should 
-\emph on
-not
-\emph default
- contain any style information.
- Use 
+Voreinstellung: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+class=
+\begin_inset Quotes qrs
+\end_inset
 
-\lang english
+layoutname_item'
+\end_layout
+
+\end_inset
+
+.
+ Hier sollten Sie 
+\emph on
+keine
+\emph default
+ Stilinformationen übergeben.
+ Verwenden Sie dafür 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 HTMLStyle
 \end_layout
 
 \end_inset
 
- for that purpose.
+.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLLabel
 \end_layout
 
@@ -22838,81 +22646,68 @@ HTMLLabel
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 string
 \end_layout
 
 \end_inset
 
-] The tag to be used for paragraph and item labels, replacing 
+] Dieser Tag wird für Absatz- und Listeneintrags-Marken verwendet.
+ Er ersetzt 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 labeltag
 \end_layout
 
 \end_inset
 
- in the examples above.
- Defaults to 
+ in den Beispielen oben.
+ Voreinstellung: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 span
 \end_layout
 
 \end_inset
 
-, unless 
+, sofern 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LabelType
 \end_layout
 
 \end_inset
 
- is either 
+ nicht entweder 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Top_Environment
 \end_layout
 
 \end_inset
 
- or 
+ oder 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Centered_Top_Environment
 \end_layout
 
 \end_inset
 
-, in which case it defaults to 
+ ist; die Voreinstellung in diesen Fällen ist 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 div
 \end_layout
 
@@ -22922,14 +22717,10 @@ div
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLLabelAttr
 \end_layout
 
@@ -22940,64 +22731,54 @@ HTMLLabelAttr
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 string
 \end_layout
 
 \end_inset
 
-] Attributes for the label tag.
- Defaults to 
-\begin_inset Quotes eld
-\end_inset
-
-
+] Attribute für den Marken-Tag.
+ Voreinstellung: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+class=
+\begin_inset Quotes qrs
+\end_inset
 
-\lang english
-class=`layoutname_label'
+layoutname_label
+\begin_inset Quotes qrs
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
-
-\begin_inset Quotes erd
-\end_inset
-
 .
- This should 
+ Hier sollten Sie 
 \emph on
-not
+keine
 \emph default
- contain any style information.
- Use 
+ Stilinformationen übergeben.
+ Verwenden Sie dafür 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLStyle
 \end_layout
 
 \end_inset
 
- for that purpose.
+.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLLabelFirst
 \end_layout
 
@@ -23010,7 +22791,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 0
 \end_layout
 
@@ -23025,23 +22805,42 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
 \end_inset
 
-] Meaningful only for list-like environments, this tag controls whether
- the label tag is output before or inside the item tag.
- This is used, for example, in the description environment, where we want
- `
+] Dies ist nur für listenähnliche Umgebungen relevant.
+ Die Spezifikation legt fest, ob der 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+labeltag
+\end_layout
 
-\lang english
+\end_inset
+
+ innerhalb oder außerhalb des 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemtag
+\end_layout
+
+\end_inset
+
+ ausgegeben wird.
+ Dies wird beispielsweise in der Umgebung 
+\emph on
+Beschreibung
+\emph default
+ verwendet, bei der wir folgende Ausgabe haben wollen: 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 <dt>\SpecialChar ldots
 </dt><dd>\SpecialChar ldots
 </dd>
@@ -23050,127 +22849,129 @@ status collapsed
 \end_inset
 
 .
- Default is 
+ Voreinstellung: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 0
 \end_layout
 
 \end_inset
 
-: The label tag is output inside the item tag.
-\end_layout
+, d.
+\begin_inset space \thinspace{}
+\end_inset
 
-\begin_layout Description
-
-\lang english
+h., der 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+labeltag
+\end_layout
 
-\lang english
+\end_inset
+
+ wird außerhalb des 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+itemtag
+\end_layout
+
+\end_inset
+
+ ausgegeben.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 HTMLPreamble
 \end_layout
 
 \end_inset
 
- Information to be output in the 
+ Informationen, die im Abschnitt 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 <head>
 \end_layout
 
 \end_inset
 
- section when this style is used.
- This might, for example, be used to include a 
+ ausgegeben werden, wenn dieser Absatzstil verwendet wird.
+ Dies könnte man etwa verwenden, um einen 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 <script>
 \end_layout
 
 \end_inset
 
- block defining an 
+-Block auszugeben, der eine 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 onclick
 \end_layout
 
 \end_inset
 
- handler.
+-Routine definiert.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLStyle
 \end_layout
 
 \end_inset
 
- CSS style information to be included when this style is used.
- Note that this will automatically be wrapped in a layout-generated 
+ CSS-Stilinformationen, die ausgegeben werden sollen, wenn dieser Absatzstil
+ verwendet wird.
+ Beachten Sie, dass dies automatisch in einen vom Absatzstil generierten
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 <style>
 \end_layout
 
 \end_inset
 
- block, so only the CSS itself need be included.
- Must end with 
+-Block eingefügt wird, Sie müssen also nur die CSS selbst festlegen.
+ Muss mit 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 EndHTMLStyle
 \end_layout
 
 \end_inset
 
-.
+ beendet werden.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLTag
 \end_layout
 
@@ -23181,33 +22982,28 @@ HTMLTag
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 string
 \end_layout
 
 \end_inset
 
-] The tag to be used for the main label, replacing 
+] Der Tag, der für die Hauptmarke verwendet wird.
+ In den obigen Beispielen 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 tag
 \end_layout
 
 \end_inset
 
- in the examples above.
- Defaults to 
+.
+ Voreinstellung: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 div
 \end_layout
 
@@ -23217,14 +23013,10 @@ div
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLTitle
 \end_layout
 
@@ -23237,7 +23029,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 0
 \end_layout
 
@@ -23252,197 +23043,201 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
 \end_inset
 
-] Marks this style as the one to be used to generate the 
+] Markiert diesen Stil als einen, der in der Titelei (
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 <title>
 \end_layout
 
 \end_inset
 
- tag for the XHTML file.
- By default, it is false.
- The 
+) der XHTML-Datei enthalten sein soll.
+ Voreinstellung: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+0
+\end_layout
 
-\lang english
+\end_inset
+
+.
+ Die Datei 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 stdtitle.inc
 \end_layout
 
 \end_inset
 
- file sets it to true for the 
+ aktiviert dies für den Absatzstil 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 title
 \end_layout
 
 \end_inset
 
- environment.
+.
  
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-InsetLayout XHTML
+InsetLayout und XHTML
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The XHTML output of insets can also be controlled by information in layout
- files.
+Auch die XHTML-Ausgabe von Einfügungen kann durch Layout-Dateien kontrolliert
+ werden.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-At present, this is true only for 
-\begin_inset Quotes eld
+Momentan gilt dies nur für 
+\begin_inset Quotes gld
 \end_inset
 
-text
-\begin_inset Quotes erd
+Text
+\begin_inset Quotes grd
 \end_inset
 
- insets (insets you can type into) and is not true for 
-\begin_inset Quotes eld
+-Einfügungen (Einfügungen, in die Sie Text eingeben können) und nicht für
+ 
+\begin_inset Quotes gld
 \end_inset
 
-command
-\begin_inset Quotes erd
+Befehls
+\begin_inset Quotes grd
 \end_inset
 
- insets (insets that are associated with dialog boxes).
+-Einfügungen (Einfügungen, die mit Dialogfenstern verbunden sind).
 \end_layout
 
 \end_inset
 
- Here, too, \SpecialChar LyX
- tries to provide sensible defaults, and it constructs default
- CSS style rules.
- But everything can be customized.
+ Auch hier versucht \SpecialChar LyX
+ sinnvolle Voreinstellungen anzubieten, und es generiert
+ Standard-CSS-Informationen.
+ Aber alles kann angepasst werden.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The XHTML \SpecialChar LyX
- outputs for an inset has the following form:
+Die XHTML-Ausgabe für Einfügungen hat folgende Form:
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 <tag attr=
-\begin_inset Quotes erd
+\begin_inset Quotes qrd
 \end_inset
 
-value
-\begin_inset Quotes erd
+Wert
+\begin_inset Quotes qrd
 \end_inset
 
 >
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
-<labeltag>Label</labeltag>
+<labeltag>Marke</labeltag>
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 <innertag attr=
-\begin_inset Quotes erd
+\begin_inset Quotes qrd
 \end_inset
 
-value
-\begin_inset Quotes erd
+Wert
+\begin_inset Quotes qrd
 \end_inset
 
->Contents of the inset.</innertag>
+>Inhalt der Einfügung.</innertag>
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 </tag>
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If the inset permits multiple paragraphs—that is, if 
+Wenn die Einfügung mehrere Absätze zulässt – das heißt, wenn 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 MultiPar
 \end_layout
 
 \end_inset
 
- is true—then the contents of the inset will itself be output as paragraphs
- formatted according to the styles used for those paragraphs (standard,
- quote, and the like).
- The label tag is of course omitted if the paragraph does not have a label
- and, at present, is always 
+ auf 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+true
+\end_layout
 
-\lang english
+\end_inset
+
+ eingestellt ist –, wird der Inhalt der Einfügung in Form von Absätzen ausgegebe
+n, die nach den Vorgaben für diese Absätze formatiert sind (Standard, Zitat
+ usw.).
+ Das 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+labeltag
+\end_layout
+
+\end_inset
+
+ wird natürlich nur ausgegeben, wenn die Einfügung eine Marke hat, und aktuell
+ ist sie stets 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 span
 \end_layout
 
 \end_inset
 
 .
- The inner tag is optional and, by default, does not appear.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-The specific tags and attributes output for each inset can be controlled
- by means of the following layout tags.
-\end_layout
-
-\begin_layout Description
-
-\lang english
+ Das 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+innertag
+\end_layout
 
-\lang english
+\end_inset
+
+ ist optional und wird in der Voreinstellung nicht ausgegeben.
+\end_layout
+
+\begin_layout Standard
+Die spezifischen Tags und Attribute, die für Einfügen ausgegeben werden
+ können mithilfe der folgenden Absatzspezifikationen kontrolliert werden.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 HTMLAttr
 \end_layout
 
@@ -23453,83 +23248,88 @@ HTMLAttr
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 string
 \end_layout
 
 \end_inset
 
-] Specifies attribute information to be output with the main tag.
- For example, 
-\begin_inset Quotes eld
-\end_inset
-
-
+] Legt die Attribute fest, die mit dem Haupt-Tag ausgegeben werden, beispielswei
+se 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+class=
+\begin_inset Quotes qrs
+\end_inset
 
-\lang english
-class=`myinset' onclick=`\SpecialChar ldots
-'
-\end_layout
+meininset
+\begin_inset Quotes qrs
+\end_inset
 
+ onclick=
+\begin_inset Quotes qrs
+\end_inset
+
+...
+\begin_inset Quotes qrs
 \end_inset
 
 
-\begin_inset Quotes erd
+\end_layout
+
 \end_inset
 
 .
- By default, \SpecialChar LyX
- will output 
-\begin_inset Quotes eld
-\end_inset
-
-
+ In der Voreinstellung gibt \SpecialChar LyX
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+class=
+\begin_inset Quotes qrs
+\end_inset
 
-\lang english
-class=`insetname'
+insetname
+\begin_inset Quotes qrs
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
-
-\begin_inset Quotes erd
-\end_inset
-
-, where 
+ aus, wobei 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 insetname
 \end_layout
 
 \end_inset
 
- is the \SpecialChar LyX
- name of the inset, made lowercase and with non-alphanumeric characters
- converted to underscores, for example: footnote.
-\end_layout
-
-\begin_layout Description
-
-\lang english
+ der \SpecialChar LyX
+-Name der Einfügung in Kleinbuchstaben ist, etwa 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+footnote
+\end_layout
 
-\lang english
+\end_inset
+
+.
+ Nicht-alphabetische Zeichen werden hierbei zu Unterstrichen umgewandelt.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 HTMLForceCSS
 \end_layout
 
@@ -23542,7 +23342,6 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 0
 \end_layout
 
@@ -23557,54 +23356,53 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
 \end_inset
 
-] Whether to output the default CSS information \SpecialChar LyX
- generates for this layout,
- even if additional information is explicitly provided via 
+] Legt fest, ob die Standard-CSS-Information, die \SpecialChar LyX
+ für diesen Absatzstil
+ generiert, auch dann ausgegeben werden, wenn Informationen mittels 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLStyle
 \end_layout
 
 \end_inset
 
-.
- Setting this to 
+ explizit übergeben werden.
+ Wenn Sie dies auf 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
 \end_inset
 
- allows you to alter or augment the generated CSS, rather than to override
- it completely.
- Default is 0.
-\end_layout
-
-\begin_layout Description
-
-\lang english
+ setzen, können Sie diese CSS modifizieren, statt sie komplett zu überschreiben.
+ Voreinstellung: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+0
+\end_layout
 
-\lang english
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 HTMLInnerAttr
 \end_layout
 
@@ -23615,46 +23413,38 @@ HTMLInnerAttr
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 string
 \end_layout
 
 \end_inset
 
-] Attributes for the inner tag.
- Defaults to 
-\begin_inset Quotes eld
-\end_inset
-
-
+] Attribute für den inneren Tag.
+ Voreinstellung: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+class=
+\begin_inset Quotes qrs
+\end_inset
 
-\lang english
-class=`insetname_inner'
-\end_layout
-
+insetname_inner
+\begin_inset Quotes qrs
 \end_inset
 
 
-\begin_inset Quotes erd
+\end_layout
+
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLInnerTag
 \end_layout
 
@@ -23665,38 +23455,30 @@ HTMLInnerTag
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 string
 \end_layout
 
 \end_inset
 
-] The inner tag, replacing 
+] Der innere Tag; ersetzt 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 innertag
 \end_layout
 
 \end_inset
 
- in the examples above.
- By default, there is none.
+ in den Beispielen oben.
+ Standardmäßig nicht ausgegeben.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLIsBlock
 \end_layout
 
@@ -23707,8 +23489,6 @@ HTMLIsBlock
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 0
 \end_layout
 
@@ -23725,27 +23505,32 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-\lang english
 1
 \end_layout
 
 \end_inset
 
-] Whether this inset represents a standalone block of text (such as a footnote)
- or instead represents material that is included in the surrounding text
- (such as a branch).
- Defaults to 1.
-\end_layout
-
-\begin_layout Description
-
-\lang english
+] Legt fest, ob diese Einfügung einen alleinstehenden Textblock repräsentiert
+ (wie etwa eine Fußnote) oder Text, der Teil des umgebenden Textes ist (etwa
+ ein Zweig).
+ Voreinstellung: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+1
+\end_layout
 
-\lang english
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 HTMLLabel
 \end_layout
 
@@ -23756,21 +23541,17 @@ HTMLLabel
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 string
 \end_layout
 
 \end_inset
 
-] A label for this inset, possibly including a reference to a counter.
- For example, for footnote, it might be: 
+] Eine Marke für diese Einfügung, möglicherweise mit einem Verweis aus einen
+ Zähler (für Fußnoten etwa 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 arabic{footnote}
@@ -23778,103 +23559,96 @@ arabic{footnote}
 
 \end_inset
 
-.
- This is optional, and there is no default.
+).
+ Diese Angabe ist optional, es gibt keine Voreinstellung.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLPreamble
 \end_layout
 
 \end_inset
 
- Information to be output in the 
+ Informationen, die im Abschnitt 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 <head>
 \end_layout
 
 \end_inset
 
- section when this style is used.
- This might, for example, be used to include a 
+ ausgegeben werden, wenn dieser Absatzstil verwendet wird.
+ Dies könnte man etwa verwenden, um einen 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 <script>
 \end_layout
 
 \end_inset
 
- block defining an 
+-Block auszugeben, der eine 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 onclick
 \end_layout
 
 \end_inset
 
- handler.
+-Routine definiert.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HTMLStyle
 \end_layout
 
 \end_inset
 
- CSS style information to be included when this style is used.
- Note that this will automatically be wrapped in a layout-generated 
+ CSS-Stilinformationen, die ausgegeben werden sollen, wenn diese Einfügung
+ verwendet wird.
+ Beachten Sie, dass dies automatisch in einen vom Absatzstil generierten
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 <style>
 \end_layout
 
 \end_inset
 
- block, so only the CSS itself need be included.
-\end_layout
-
-\begin_layout Description
-
-\lang english
+-Block eingefügt wird, Sie müssen also nur die CSS selbst festlegen.
+ Muss mit 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+EndHTMLStyle
+\end_layout
 
-\lang english
+\end_inset
+
+ beendet werden.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 HTMLTag
 \end_layout
 
@@ -23885,69 +23659,58 @@ HTMLTag
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 string
 \end_layout
 
 \end_inset
 
-] The tag to be used for the main label, replacing 
+] Der Tag, der für die Hauptmarke verwendet wird.
+ In den obigen Beispielen 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 tag
 \end_layout
 
 \end_inset
 
- in the examples above.
- The default depends upon the setting of 
+.
+ Voreinstellung: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-MultiPar
-\end_layout
-
-\end_inset
-
-: If 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-MultiPar
-\end_layout
-
-\end_inset
-
- is true, the default is 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
 div
 \end_layout
 
 \end_inset
 
-; if it is false, the default is 
+, wenn 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+MultiPar
+\end_layout
 
-\lang english
+\end_inset
+
+ auf 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+true
+\end_layout
+
+\end_inset
+
+ eingestellt ist, sonst 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 span
 \end_layout
 
@@ -23957,62 +23720,57 @@ span
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Float XHTML
+Gleitobjekte und XHTML
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The XHTML output for floats too can be controlled by layout information.
- The output has the following form:
+Auch die XHTML-Ausgabe für Gleitobjekte kann durch Layout-Dateien kontrolliert
+ werden.
+ Die Ausgabe hat folgende Form:
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 <tag attr=
-\begin_inset Quotes erd
+\begin_inset Quotes qrd
 \end_inset
 
-value
-\begin_inset Quotes erd
+Wert
+\begin_inset Quotes qrd
 \end_inset
 
 >
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
-Contents of the float.
+Inhalt des Gleitobjekts.
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 </tag>
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The caption, if there is one, is a separate inset and will be output as
- such.
- Its appearance can be controlled via the InsetLayout for caption insets.
- 
-\end_layout
-
-\begin_layout Description
-
-\lang english
+Die Legende ist, falls eine existiert, eine separate Einfügung und wird
+ als solche ausgegeben.
+ Seine Ausgabe wird somit durch 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+InsetLayout
+\end_layout
 
-\lang english
+\end_inset
+
+-Spezifikationen für Legenden-Einfügungen bestimmt.
+ 
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 HTMLAttr
 \end_layout
 
@@ -24023,73 +23781,74 @@ HTMLAttr
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 string
 \end_layout
 
 \end_inset
 
-] Specifies attribute information to be output with the main tag.
- For example, 
-\begin_inset Quotes eld
-\end_inset
-
-
+] Legt die Attribute fest, die mit dem Haupt-Tag ausgegeben werden, beispielswei
+se 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+class=
+\begin_inset Quotes qrs
+\end_inset
 
-\lang english
-class=`myfloat' onclick=`\SpecialChar ldots
-'
-\end_layout
+meingleitobjekt
+\begin_inset Quotes qrs
+\end_inset
 
+ onclick=
+\begin_inset Quotes qrs
+\end_inset
+
+...
+\begin_inset Quotes qrs
 \end_inset
 
 
-\begin_inset Quotes erd
+\end_layout
+
 \end_inset
 
 .
- By default, \SpecialChar LyX
- will output 
-\begin_inset Quotes eld
-\end_inset
-
-
+ In der Voreinstellung gibt \SpecialChar LyX
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+class=
+\begin_inset Quotes qrs
+\end_inset
 
-\lang english
-class=`float float-floattype'
+float float-floattype
+\begin_inset Quotes qrs
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
-
-\begin_inset Quotes erd
-\end_inset
-
-, where 
+ aus, wobei 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 floattype
 \end_layout
 
 \end_inset
 
- is \SpecialChar LyX
-'s name for this type of float, as determined by the float declaration
- (see 
-\lang ngerman
+ der \SpecialChar LyX
+-Name dieses Gleitobjekttyps ist, wie er in der Gleitobjekt-Definition
+ festgelegt ist (siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -24097,51 +23856,63 @@ reference "subsec:Gleitobjekte"
 
 \end_inset
 
-
-\lang english
-), though made lowercase and with non-alphanumeric characters converted
- to underscores, for example: float-table.
-\end_layout
-
-\begin_layout Description
-
-\lang english
+), allerdings in Kleinbuchstaben und mit nicht-alphabetischen Zeichen zu
+ Unterstrichen umgewandelt.
+ Beispielsweise 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+float-table
+\end_layout
 
-\lang english
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 HTMLStyle
 \end_layout
 
 \end_inset
 
- CSS style information to be included when this float is used.
- Note that this will automatically be wrapped in a layout-generated 
+ CSS-Stilinformationen, die ausgegeben werden sollen, wenn dieses Gleitobjekt
+ verwendet wird.
+ Beachten Sie, dass dies automatisch in einen vom Absatzstil generierten
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 <style>
 \end_layout
 
 \end_inset
 
- block, so only the CSS itself need be included.
-\end_layout
-
-\begin_layout Description
-
-\lang english
+-Block eingefügt wird, Sie müssen also nur die CSS selbst festlegen.
+ Muss mit 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+EndHTMLStyle
+\end_layout
 
-\lang english
+\end_inset
+
+ beendet werden.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 HTMLTag
 \end_layout
 
@@ -24152,73 +23923,56 @@ HTMLTag
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 string
 \end_layout
 
 \end_inset
 
-] The tag to be used for this float, replacing 
-\begin_inset Quotes eld
-\end_inset
-
-
+] Der Tag, der für die Hauptmarke verwendet wird.
+ In den obigen Beispielen 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 tag
 \end_layout
 
 \end_inset
 
-
-\begin_inset Quotes erd
-\end_inset
-
- in the example above.
- The default is 
+.
+ Voreinstellung: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 div
 \end_layout
 
 \end_inset
 
- and will rarely need changing.
+; dies sollten Sie nur in Ausnahmefällen ändern.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Bibliography formatting
+Formatierung des Literaturverzeichnisses
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The bibliography can be formatted using 
+Das Literaturverzeichnis kann mittels 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 CiteFormat
 \end_layout
 
 \end_inset
 
- blocks.
- See 
-\lang ngerman
+-Blöcken formatiert werden.
+ Siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -24226,42 +23980,32 @@ reference "subsec:Literaturverweisformat"
 
 \end_inset
 
-
-\lang english
- for the details.
+ für weitere Informationen.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-\SpecialChar LyX
--generated CSS
+Von \SpecialChar LyX
+ generierte CSS
 \end_layout
 
 \begin_layout Standard
+Wir haben oft genug erwähnt, dass \SpecialChar LyX
+ auf der Grundlage der Absatzstildeklarationen
+ Standard-CSS-Informationen sowohl für Einfügungen als auch für Absatzstile
+ erzeugt.
+ In diesem Abschnitt diskutieren wir kurz, welche Layout-Informationen \SpecialChar LyX
 
-\lang english
-We have several times mentioned that \SpecialChar LyX
- will generate default CSS style rules
- for both insets and paragraph styles, based upon the other layout information
- that is provided.
- In this section, we shall say a word about which layout information \SpecialChar LyX
- uses
- and how.
+ dabei verwendet, und wie dies geschieht.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-At present, \SpecialChar LyX
- auto-generates CSS only for font information, making use of
- the 
+Gegenwärtig erzeugt \SpecialChar LyX
+ CSS nur für Schriftinformationen.
+ Es greift dabei auf 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Family
 \end_layout
 
@@ -24272,8 +24016,6 @@ Family
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Series
 \end_layout
 
@@ -24284,39 +24026,35 @@ Series
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Shape
 \end_layout
 
 \end_inset
 
-, and 
+, und 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Size
 \end_layout
 
 \end_inset
 
- specified in the 
+ in der 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Font
 \end_layout
 
 \end_inset
 
- declaration (see 
-\lang ngerman
+-Deklaration zurück (siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -24325,66 +24063,42 @@ reference "subsec:Beschreibung-des-Zeichensatzes"
 \end_inset
 
 ).
-
-\lang english
- The translation is mostly straightforward and obvious.
- For example, 
-\begin_inset Quotes eld
-\end_inset
-
-
+ Die Übertragung ist zumeist ziemlich offensichtlich.
+ So wird aus 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Family Sans
 \end_layout
 
 \end_inset
 
-
-\begin_inset Quotes erd
-\end_inset
-
- becomes 
-\begin_inset Quotes eld
-\end_inset
-
-
+ im CSS 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 font-family: sans-serif;
 \end_layout
 
 \end_inset
 
-
-\begin_inset Quotes erd
-\end_inset
-
 .
- The correspondence of \SpecialChar LyX
- sizes and CSS sizes is a little less obvious but
- nonetheless intuitive.
- See the 
+ Das Verhältnis von \SpecialChar LyX
+-Schriftgrößen und CSS-Schriftgrößen ist etwas weniger
+ offensichtlich, aber trotzdem nachvollziehbar.
+ Schauen Sie sich bei Interesse die Funktion 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 getSizeCSS()
 \end_layout
 
 \end_inset
 
- function in 
+ in 
 \begin_inset Flex URL
 status collapsed
 
@@ -24395,7 +24109,7 @@ src/FontInfo.cpp
 
 \end_inset
 
- for the details.
+ an.
 \end_layout
 
 \begin_layout Chapter
@@ -24587,23 +24301,19 @@ ghostview
 \end_layout
 
 \begin_layout Section
-
-\lang english
-The external template configuration files
+Die Konfigurationsdateien für externe Vorlagen
 \end_layout
 
 \begin_layout Standard
+Es ist ziemlich einfach, eigene externe Vorlagen zu \SpecialChar LyX
+ hinzuzufügen.
+ Beachten Sie aber, dass dies, wenn es sorglos geschieht, ziemlich wahrscheinlic
+h ein Sicherheitsproblem mit sich bringt.
+ Bevor Sie dies also tun, raten wir Ihnen dringend, die Sicherheitshinweise
+ in Abschnitt
+\begin_inset space ~
+\end_inset
 
-\lang english
-It is relatively easy to add custom external template definitions to \SpecialChar LyX
-.
- However, be aware that doing this in a careless manner most probably 
-\emph on
-will
-\emph default
- introduce an easily exploitable security hole.
- So before you do this, please read the discussion about security in 
-\lang ngerman
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -24611,154 +24321,112 @@ reference "sec:Sicherheitshinweise"
 
 \end_inset
 
-.
+ zu lesen.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Having said that, we encourage you to submit any interesting templates that
- you create.
+Trotzdem ermutigen wir Sie, interessante Vorlagen an uns zu schicken.
  
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The external templates are defined in the 
+Die externen Vorlagen sind in Dateien mit der Endung 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 *.xtemplate
 \end_layout
 
 \end_inset
 
- files that are stored in the 
+ definiert, die im Verzeichnis 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 LyXDir/lib/xtemplates/
 \end_layout
 
 \end_inset
 
- directory.
- Each template is defined in a file of its own.
- You can place your own templates in 
+ zu finden sind.
+ Jede Vorlage ist in einer eigenen Datei definiert.
+ Ihre eigenen Vorlagen können Sie in 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 UserDir/xtemplates/
 \end_layout
 
 \end_inset
 
- or copy existing templates to that directory in order to modify them.
+ ablegen; Sie können auch existierende Vorlagen dorthin kopieren, um sie
+ zu modifizieren.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-A typical template looks like this:
+Eine typische Vorlage sieht so aus:
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 Template XFig
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 GuiName "XFig: $$AbsOrRelPathParent$$Basename"
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 HelpText
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 An XFig figure.
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 HelpTextEnd
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 InputFormat fig
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 FileFilter "*.fig"
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 AutomaticProduction true
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 Transform Rotate
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 Transform Resize
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 Format LaTeX
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 TransformCommand Rotate RotationLatexCommand
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 TransformCommand Resize ResizeLatexCommand
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 Product "$$RotateFront$$ResizeFront
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
          
 \backslash
 
@@ -24767,80 +24435,54 @@ input{$$AbsOrRelPathMaster$$Basename.pstex_t}
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
          $$ResizeBack$$RotateBack"
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 UpdateFormat pstex
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 UpdateResult "$$AbsPath$$Basename.pstex_t"
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 Requirement "graphicx"
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 ReferencedFile latex "$$AbsOrRelPathMaster$$Basename.pstex_t"
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 ReferencedFile latex "$$AbsPath$$Basename.eps"
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 ReferencedFile dvi "$$AbsPath$$Basename.eps"
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 FormatEnd
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 Format PDFLaTeX
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 TransformCommand Rotate RotationLatexCommand
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 TransformCommand Resize ResizeLatexCommand
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 Product "$$RotateFront$$ResizeFront
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
          
 \backslash
 
@@ -24849,56 +24491,38 @@ input{$$AbsOrRelPathMaster$$Basename.pdftex_t}
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
          $$ResizeBack$$RotateBack"
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 UpdateFormat pdftex
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 UpdateResult "$$AbsPath$$Basename.pdftex_t"
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 Requirement "graphicx"
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 ReferencedFile latex "$$AbsOrRelPathMaster$$Basename.pdftex_t"
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 ReferencedFile latex "$$AbsPath$$Basename.pdf"
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 FormatEnd
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 Format Ascii
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 Product "$$Contents(
 \backslash
 "$$AbsPath$$Basename.asc
@@ -24907,32 +24531,22 @@ Product "$$Contents(
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 UpdateFormat asciixfig
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 UpdateResult "$$AbsPath$$Basename.asc"
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 FormatEnd
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 Format DocBook
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 Product "<graphic fileref=
 \backslash
 "$$AbsOrRelPathMaster$$Basename.eps
@@ -24941,69 +24555,47 @@ Product "<graphic fileref=
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
          </graphic>"
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 UpdateFormat eps
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 UpdateResult "$$AbsPath$$Basename.eps"
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 ReferencedFile docbook "$$AbsPath$$Basename.eps"
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 ReferencedFile docbook-xml "$$AbsPath$$Basename.eps"
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 FormatEnd
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 Product "[XFig: $$FName]"
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 FormatEnd
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 TemplateEnd
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-As you can see, the template is enclosed in 
+Wie Sie sehen, ist die Vorlage in 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Template
 \end_layout
 
@@ -25015,22 +24607,18 @@ Template
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TemplateEnd
 \end_layout
 
 \end_inset
 
-.
- It contains a header specifying some general settings and, for each supported
- primary document file format, a section 
+ eingeschlossen.
+ Sie enthält einen Kopf, in dem generelle Einstellungen vorgenommen werden
+ und Abschnitte 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Format
 \end_layout
 
@@ -25042,31 +24630,23 @@ Format
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 FormatEnd
 \end_layout
 
 \end_inset
 
-.
+ für jedes unterstützte primäre Zielformat des Dokuments.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-The template header
+Der Vorlagenkopf
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 AutomaticProduction
 \begin_inset space ~
 \end_inset
@@ -25076,20 +24656,17 @@ true|false
 
 \end_inset
 
- Whether the file represented by the template must be generated by \SpecialChar LyX
-.
- This command must occur exactly once.
+ Legt fest, ob die Datei, die von der Vorlagen repräsentiert wird, von \SpecialChar LyX
+
+ erzeugt werden muss.
+ Diese Spezifikation darf nur einmal vorkommen.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 FileFilter
 \begin_inset space ~
 \end_inset
@@ -25099,65 +24676,47 @@ FileFilter
 
 \end_inset
 
- A glob pattern that is used in the file dialog to filter out the desired
- files.
- If there is more than one possible file extension (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-tgif has 
+ Ein Glob-Muster, das im Datei-Dialog verwendet wird, um die gewünschten
+ Dateien zu filtern.
+ Wenn es mehr als eine mögliche Dateiendung gibt (tgif etwa hat 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .obj
 \end_layout
 
 \end_inset
 
- and 
+ und 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .tgo
 \end_layout
 
 \end_inset
 
-), use something like 
+), verwenden Sie so etwas wie 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 "*.{obj,tgo}"
 \end_layout
 
 \end_inset
 
 .
- This command must occur exactly once.
+ Diese Spezifikation darf nur einmal vorkommen.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 GuiName
 \begin_inset space ~
 \end_inset
@@ -25167,19 +24726,15 @@ GuiName
 
 \end_inset
 
- The text that is displayed on the button.
- This command must occur exactly once.
+ Der Text, der auf dem Knopf der externen Einfügung angezeigt wird.
+ Diese Spezifikation darf nur einmal vorkommen.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 HelpText
 \begin_inset space ~
 \end_inset
@@ -25193,21 +24748,25 @@ HelpTextEnd
 
 \end_inset
 
- The help text that is used in the External dialog.
- Provide enough information to explain to the user just what the template
- can provide him with.
- This command must occur exactly once.
+ Der Hilfetext, der im Dialog 
+\begin_inset Quotes gld
+\end_inset
+
+externes Material
+\begin_inset Quotes grd
+\end_inset
+
+ angezeigt wird.
+ Geben Sie hier genügend Informationen, um den Benutzern zu verdeutlichen,
+ was die Vorlage bietet.
+ Diese Spezifikation darf nur einmal vorkommen.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 InputFormat
 \begin_inset space ~
 \end_inset
@@ -25217,10 +24776,12 @@ InputFormat
 
 \end_inset
 
- The file format of the original file.
- This must be the name of a format that is known to \SpecialChar LyX
- (see 
-\lang ngerman
+ Das Format der Quelldatei.
+ Das muss der Name eines Formats sein, das \SpecialChar LyX
+ kennt (siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -25229,44 +24790,28 @@ reference "sec:Formate"
 \end_inset
 
 ).
-
-\lang english
- Use 
-\begin_inset Quotes eld
-\end_inset
-
-
+ Verwenden Sie 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 *
 \end_layout
 
 \end_inset
 
-
-\begin_inset Quotes erd
-\end_inset
-
- if the template can handle original files of more than one format.
+, wenn die Vorlage Quelldateien von mehr als einem Format bearbeiten kann.
  \SpecialChar LyX
- will attempt to interrogate the file itself in order to deduce its format
- in this case.
- This command must occur exactly once.
+ wird dann versuchen, über die Datei selbst herauszufinden, um welches
+ Format es sich aktuell handelt.
+ Diese Spezifikation darf nur einmal vorkommen.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Template
 \begin_inset space ~
 \end_inset
@@ -25276,19 +24821,15 @@ Template
 
 \end_inset
 
- A unique name for the template.
- It must not contain substitution macros (see below).
+ Ein eindeutiger Name für die Vorlage.
+ Er darf keine Ersetzungsmakros (siehe unten) enthalten.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Transform
 \begin_inset space ~
 \end_inset
@@ -25298,76 +24839,68 @@ Rotate|Resize|Clip|Extra
 
 \end_inset
 
- This command specifies which transformations are supported by this template.
- It may occur zero or more times.
- This command enables the corresponding tabs in the external dialog.
- Each 
+ Diese Spezifikation legt fest, welche Transformationen von dieser Vorlage
+ unterstützt werden.
+ Es kann keinmal oder mehrmals vorkommen.
+ Dieser Befehl aktiviert die entsprechenden Reiter im Dialog 
+\emph on
+Externes Material
+\emph default
+.
+ Jede 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Transform
 \end_layout
 
 \end_inset
 
- command must have either a corresponding 
+-Spezifikation benötigt eine korrespondierende 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TransformCommand
 \end_layout
 
 \end_inset
 
- or a 
+- oder 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TransformOption
 \end_layout
 
 \end_inset
 
- command in the 
+-Spezifikation im 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Format
 \end_layout
 
 \end_inset
 
- section.
- Otherwise the transformation will not be supported by that format.
+-Abschnitt.
+ Falls dies nicht der Fall ist, wird die Transformation von diesem Format
+ nicht unterstützt.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-The Format section
+Der Format-Abschnitt
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Format
 \begin_inset space ~
 \end_inset
@@ -25377,67 +24910,59 @@ LaTeX|PDFLaTeX|PlainText|DocBook|XHTML
 
 \end_inset
 
- The primary document file format that this format definition is for.
- Not every template has a sensible representation in all document file formats.
- Please define nevertheless a 
+ Das primäre Dokument-Zielformat, für den diese Formatdefinition gedacht
+ ist.
+ Nicht jede Vorlage bietet sinnvolle Ausgaben in jedes Zielformat.
+ Definieren Sie aber bitte dennoch für alle Zielformat einen 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Format
 \end_layout
 
 \end_inset
 
- section for all templates.
- Use a dummy text when no representation is available.
- Then you can at least see a reference to the external material in the exported
- document.
+-Abschnitt.
+ Verwenden Sie einen Blindtext, wenn keine vernünftige Definition möglich
+ ist.
+ So können Sie im exportierten Dokument wenigstens einen Hinweis auf die
+ externe Vorlage sehen.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Option
 \begin_inset space ~
 \end_inset
 
-<name>
+<Name>
 \begin_inset space ~
 \end_inset
 
-<value>
+<Wert>
 \end_layout
 
 \end_inset
 
- This command defines an additional macro 
+ Diese Spezifikation definiert ein zusätzliches Makros 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-$$<name>
+$$<Name>
 \end_layout
 
 \end_inset
 
- for substitution in 
+ zur Ersetzung in 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Product
 \end_layout
 
@@ -25449,105 +24974,88 @@ Product
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-<value>
+<Wert>
 \end_layout
 
 \end_inset
 
- itself may contain substitution macros.
- The advantage over using 
+ selbst kann Ersetzungsmakros enthalten.
+ Der Vorteil gegenüber der Verwendung von 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-<value>
+<Wert>
 \end_layout
 
 \end_inset
 
- directly in 
+ direkt in 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Product
 \end_layout
 
 \end_inset
 
- is that the substituted value of 
+ ist, dass der ersetzte Wert von
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-$$<name>
+$$<Name>
 \end_layout
 
 \end_inset
 
- is sanitized so that it is a valid optional argument in the document format.
- This command may occur zero or more times.
+ validiert wird, so dass es ein gültiges optionales Argument im Dokumentformat
+ ist.
+ Diese Spezifikation kann keinmal oder mehrmals verwendet werden.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Product
 \begin_inset space ~
 \end_inset
 
-<text>
+<Text>
 \end_layout
 
 \end_inset
 
- The text that is inserted in the exported document.
- This is actually the most important command and can be quite complex.
- This command must occur exactly once.
+ Der Text, der in das exportierte Dokument eingefügt wird.
+ Das ist die wichtigste Spezifikation überhaupt, und sie kann sehr komplex
+ sein.
+ Diese Spezifikation darf nur einmal vorkommen.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Preamble
 \begin_inset space ~
 \end_inset
 
-<name>
+<Name>
 \end_layout
 
 \end_inset
 
- This command specifies a preamble snippet that will be included in the
- \SpecialChar LaTeX
- preamble.
- It has to be defined using 
+ spezifiziert einen Textbaustein für den \SpecialChar LaTeX
+-Vorspann.
+ Er muss mit 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PreambleDef
 \end_layout
 
@@ -25559,72 +25067,60 @@ PreambleDef
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PreambleDefEnd
 \end_layout
 
 \end_inset
 
-.
- This command may occur zero or more times.
+ definiert werden.
+ Diese Spezifikation kann keinmal oder mehrmals verwendet werden.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ReferencedFile
 \begin_inset space ~
 \end_inset
 
-<format>
+<Format>
 \begin_inset space ~
 \end_inset
 
-<filename>
+<Dateiname>
 \end_layout
 
 \end_inset
 
- This command denotes files that are created by the conversion process and
- are needed for a particular export format.
- If the filename is relative, it is interpreted relative to the master document.
- This command may be given zero or more times.
+ Diese Spezifikation benennt Dateien, die vom Konversionsprozess erzeugt
+ werden und die für ein bestimmtes Ausgabeformat benötigt werden.
+ Wenn der Dateiname relativ ist, wird er relativ zum Hauptdokument interpretiert.
+ Diese Spezifikation kann keinmal oder mehrmals verwendet werden.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Requirement
 \begin_inset space ~
 \end_inset
 
-<package>
+<Paket>
 \end_layout
 
 \end_inset
 
- The name of a required \SpecialChar LaTeX
- package.
- The package is included via 
+ Der Name eines benötigten \SpecialChar LaTeX
+-Pakets.
+ Dieses wird mittels 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 usepackage{}
@@ -25632,20 +25128,16 @@ usepackage{}
 
 \end_inset
 
- in the \SpecialChar LaTeX
- preamble.
- This command may occur zero or more times.
+ in den \SpecialChar LaTeX
+-Vorspann eingebunden.
+ Diese Spezifikation kann keinmal oder mehrmals verwendet werden.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TransformCommand
 \begin_inset space ~
 \end_inset
@@ -25659,20 +25151,17 @@ RotationLatexCommand
 
 \end_inset
 
- This command specifies that the built in \SpecialChar LaTeX
- command should be used for rotation.
- This command may occur once or not at all.
+ Diese Spezifikation legt fest, dass der eingebaute \SpecialChar LaTeX
+-Befehl für die Drehung
+ verwendet werden soll.
+ Diese Spezifikation kann keinmal oder einmal verwendet werden.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TransformCommand
 \begin_inset space ~
 \end_inset
@@ -25686,20 +25175,17 @@ ResizeLatexCommand
 
 \end_inset
 
- This command specifies that the built in \SpecialChar LaTeX
- command should be used for resizing.
- This command may occur once or not at all.
+ Diese Spezifikation legt fest, dass der eingebaute \SpecialChar LaTeX
+-Befehl für die Skalierung
+ verwendet werden soll.
+ Diese Spezifikation kann keinmal oder einmal verwendet werden.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TransformOption
 \begin_inset space ~
 \end_inset
@@ -25713,19 +25199,16 @@ RotationLatexOption
 
 \end_inset
 
- This command specifies that rotation is done via an optional argument.
- This command may occur once or not at all.
+ Diese Spezifikation legt fest, dass die Drehung über ein optionales Argument
+ erfolgt.
+ Diese Spezifikation kann keinmal oder einmal verwendet werden.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TransformOption
 \begin_inset space ~
 \end_inset
@@ -25739,19 +25222,16 @@ ResizeLatexOption
 
 \end_inset
 
- This command specifies that resizing is done via an optional argument.
- This command may occur once or not at all.
+ Diese Spezifikation legt fest, dass die Skalierung über ein optionales
+ Argument erfolgt.
+ Diese Spezifikation kann keinmal oder einmal verwendet werden.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TransformOption
 \begin_inset space ~
 \end_inset
@@ -25765,19 +25245,16 @@ ClipLatexOption
 
 \end_inset
 
- This command specifies that clipping is done via an optional argument.
- This command may occur once or not at all.
+ Diese Spezifikation legt fest, dass das Zuschneiden über ein optionales
+ Argument erfolgt.
+ Diese Spezifikation kann keinmal oder einmal verwendet werden.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TransformOption
 \begin_inset space ~
 \end_inset
@@ -25791,73 +25268,60 @@ ExtraLatexOption
 
 \end_inset
 
- This command specifies that an extra optional argument is used.
- This command may occur once or not at all.
+ Diese Spezifikation legt fest, dass ein zusätzliches optionales Argument
+ verwendet wird.
+ Diese Spezifikation kann keinmal oder einmal verwendet werden.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 UpdateFormat
 \begin_inset space ~
 \end_inset
 
-<format>
+<Format>
 \end_layout
 
 \end_inset
 
- The file format of the converted file.
- This must be the name of a format that is known to \SpecialChar LyX
- (see the 
-\begin_inset Flex Noun
-status collapsed
+ Das Dateiformat der konvertierten Datei.
+ Das muss der Name eines Formats sein, das \SpecialChar LyX
+ kennt (siehe Abschnitt
+\begin_inset space ~
+\end_inset
 
-\begin_layout Plain Layout
 
-\lang english
-Tools\SpecialChar menuseparator
-Preferences\SpecialChar menuseparator
-File Handling\SpecialChar menuseparator
-File Format
-\end_layout
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Formate"
 
 \end_inset
 
- dialog).
- This command must occur exactly once.
- If the resulting file format is PDF, you need to specify the format 
+).
+ Diese Spezifikation darf nur einmal vorkommen.
+ Soll das Ergebnis eine PDF-Datei sein, müssen Sie das Format 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 pdf6
 \end_layout
 
 \end_inset
 
-.
- This is the PDF format used for including graphics.
- The other defined PDF formats are for document export.
+ wählen.
+ Das ist das PDF-Format, das für eingebundene Grafiken verwendet wird.
+ Die anderen definierten PDF-Formate sind für die Dokumentausgabe gedacht.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 UpdateResult
 \begin_inset space ~
 \end_inset
@@ -25867,28 +25331,22 @@ UpdateResult
 
 \end_inset
 
- The file name of the converted file.
- The file name must be absolute.
- This command must occur exactly once.
+ Der Dateiname der konvertierten Datei.
+ Der Dateiname muss absolut sein.
+ Diese Spezifikation darf nur einmal vorkommen.
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Preamble definitions
+Vorspann-Definitionen
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The external template configuration file may contain additional preamble
- definitions enclosed by 
+Die Konfigurationsdatei für externe Vorlagen kann zusätzliche Vorspann-Definitio
+nen enthalten, die in 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PreambleDef
 \end_layout
 
@@ -25900,27 +25358,23 @@ PreambleDef
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 PreambleDefEnd
 \end_layout
 
 \end_inset
 
-.
- They can be used by the templates in the 
+ eingeschlossen sind.
+ Sie können von den Vorlagen im jeweiligen 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Format
 \end_layout
 
 \end_inset
 
- section.
+-Abschnitt verwendet werden.
 \end_layout
 
 \begin_layout Section
@@ -25931,109 +25385,87 @@ Der Ersetzungsmechanismus
 Wenn über die externe Einfügung ein externes Programm gestartet wird, geschieht
  dies anhand eines Befehls, der in der Vorlage festgelegt wurde.
  Ein solcher Befehl kann diverse Makros enthalten, die vor dem eigentlichen
- Aufruf ausgewertet werden.
+ Aufruf ausgewertet und ersetzt werden.
  Die Ausführung erfolgt dabei immer in demjenigen Verzeichnis, das auch
  das \SpecialChar LyX
 -Dokument enthält.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Also, whenever external material is to be displayed, the name will be produced
- by the substitution mechanism, and most other commands in the template
- definition support substitution as well.
+Außerdem wird der Name des externen Materials für die Ausgabe durch den
+ Ersetzungsmechanismus generiert; auch die meisten anderen Spezifikationen
+ in der Vorlage können den Ersetzungsmechanismus nutzen.
 \end_layout
 
 \begin_layout Standard
-Hier finden Sie eine Liste dieser Makros:
+Hier finden Sie eine Liste der Makros für die Ersetzung:
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$AbsOrRelPathMaster
 \end_layout
 
 \end_inset
 
- The file path, absolute or relative to the master \SpecialChar LyX
- document.
+ Der absolute oder relative Dateipfad zum \SpecialChar LyX
+-Hauptdokument.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$AbsOrRelPathParent
 \end_layout
 
 \end_inset
 
- The file path, absolute or relative to the \SpecialChar LyX
- document.
+ Der absolute oder relative Dateipfad zum \SpecialChar LyX
+-Dokument.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$AbsPath
 \end_layout
 
 \end_inset
 
- The absolute file path.
+ Der absolute Dateipfad.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$Basename
 \end_layout
 
 \end_inset
 
- The filename without path and without the extension.
+ Der Dateiname ohne Pfad und Endung.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$Contents(
-\begin_inset Quotes eld
+\begin_inset Quotes qld
 \end_inset
 
-filename.ext
-\begin_inset Quotes erd
+Dateiname.ext
+\begin_inset Quotes qld
 \end_inset
 
 )
@@ -26041,589 +25473,481 @@ filename.ext
 
 \end_inset
 
- This macro will expand to the contents of the file with the name 
+ Dieses Makro gibt den Inhalt der Datei mit dem Namen 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-filename.ext
+Dateiname.ext
 \end_layout
 
 \end_inset
 
-.
+ aus.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$Extension
 \end_layout
 
 \end_inset
 
- The file extension (including the dot).
+ Die Dateiendung (inklusive Punkt).
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$pngOrjpg
 \end_layout
 
 \end_inset
 
- This will be the string 
-\begin_inset Quotes eld
+ Die Zeichenkette 
+\begin_inset Quotes gld
 \end_inset
 
 jpg
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
- if the file is in JPEG format, otherwise it will be the string 
-\begin_inset Quotes eld
+, wenn die Datei das JPEG-Format hat, sonst 
+\begin_inset Quotes gld
 \end_inset
 
 png
-\begin_inset Quotes erd
+\begin_inset Quotes grd
 \end_inset
 
 .
- This is useful to avoid uneeded conversions for output formats that support
- both PNG and JPEG fomats.
- The predefined RasterImage template uses this macro for the pdf\SpecialChar TeX
- output
- format.
+ Das ist hilfreich, um unnötige Konversionen für solche Ausgabeformate zu
+ vermeiden, die sowohl PNG als auch JPEG unterstützen.
+ Die vordefinierte Rastergrafik-Vorlage verwendet dies für die Ausgabe in
+ das PDF\SpecialChar TeX
+-Format.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$FName
 \end_layout
 
 \end_inset
 
- The filename of the file specified in the external material dialog.
- This is either an absolute name, or it is relative to the \SpecialChar LyX
- document.
+ Der Name der Datei, die im Dialog 
+\emph on
+Externes Material
+\emph default
+ ausgewählt wurde.
+ Das ist entweder ein absoluter Dateiname oder ein zum \SpecialChar LyX
+-Dokument relativer.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$FPath
 \end_layout
 
 \end_inset
 
- The path part of 
+ Der Pfad-Teil von 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$FName
 \end_layout
 
 \end_inset
 
- (absolute name or relative to the \SpecialChar LyX
- document).
+ (absoluter Dateipfad oder ein zum \SpecialChar LyX
+-Dokument relativer).
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$RelPathMaster
 \end_layout
 
 \end_inset
 
- The file path, relative to the master \SpecialChar LyX
- document.
+ Der Dateipfad, relativ zum \SpecialChar LyX
+-Hauptdokument.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$RelPathParent
 \end_layout
 
 \end_inset
 
- The file path, relative to the \SpecialChar LyX
- document.
+ Der Dateipfad, relativ zum \SpecialChar LyX
+-Dokument.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$Sysdir
 \end_layout
 
 \end_inset
 
- This macro will expand to the absolute path of the system directory.
- This is typically used to point to the various helper scripts that are
- bundled with \SpecialChar LyX
-.
+ Der absolute Pfad zum Systemverzeichnis.
+ Das wird üblicherweise verwendet, um auf die Hilfsskripte zu verweisen,
+ die \SpecialChar LyX
+ selbst enthält.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$Tempname
 \end_layout
 
 \end_inset
 
- A name and full path to a temporary file which will be automatically deleted
- whenever the containing document is closed, or the external material insertion
- deleted.
+ Voller Dateiname (mit Pfad) im temporären Verzeichnis, das automatisch
+ gelöscht wird, wenn das entsprechende Dokument geschlossen oder das externe
+ Material entfernt wird.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-All path macros contain a trailing directory separator, so you can construct
- e.
+Alle Pfad-Makros enthalten einen angehängten Verzeichnis-Trenner, so dass
+ Sie z.
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
-\begin_inset space \space{}
-\end_inset
-
-the absolute filename with 
+B.
+ einen absoluten Dateipfad mittels 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$AbsPath$$Basename$$Extension
 \end_layout
 
 \end_inset
 
-.
+ generieren können.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The macros above are substituted in all commands unless otherwise noted.
- The command 
+Die obigen Makros werden in allen Spezifikationen ersetzt, sollte dies nicht
+ explizit anders vermerkt worden sein.
+ Die Spezifikation 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Product
 \end_layout
 
 \end_inset
 
- supports additionally the following substitutions if they are enabled by
- the 
+ unterstützt zusätzlich noch die folgenden Ersetzungen, sofern sie durch
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Transform
 \end_layout
 
 \end_inset
 
- and 
+ und 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 TransformCommand
 \end_layout
 
 \end_inset
 
- commands:
+ aktiviert wurden:
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$ResizeFront
 \end_layout
 
 \end_inset
 
- The front part of the resize command.
+ Der vordere Teil des Skalierungsbefehls.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$ResizeBack
 \end_layout
 
 \end_inset
 
- The back part of the resize command.
+ Der hintere Teil des Skalierungsbefehls.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$RotateFront
 \end_layout
 
 \end_inset
 
- The front part of the rotation command.
+ Der vordere Teil des Drehungsbefehls.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$RotateBack
 \end_layout
 
 \end_inset
 
- The back part of the rotation command.
+ Der hintere Teil des Drehungsbefehls.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The value string of the 
+Die Spezifikation 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Option
 \end_layout
 
 \end_inset
 
- command supports additionally the following substitutions if they are enabled
- by the 
+ unterstützt zusätzlich noch die folgenden Ersetzungen, sofern sie durch
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Transform
 \end_layout
 
 \end_inset
 
- and 
+ und 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-TransformOption
+TransformCommand
 \end_layout
 
 \end_inset
 
- commands:
+ aktiviert wurden:
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$Clip
 \end_layout
 
 \end_inset
 
- The clip option.
+ Die Option für das Zuschneiden.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$Extra
 \end_layout
 
 \end_inset
 
- The extra option.
+ Die zusätzliche Option.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$Resize
 \end_layout
 
 \end_inset
 
- The resize option.
+ Die Option für das Skalieren.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$Rotate
 \end_layout
 
 \end_inset
 
- The rotation option.
+ Die Option für die Drehung.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You may ask why there are so many path macros.
- There are mainly two reasons:
+Sie fragen sich vielleicht, warum es so viele Pfad-Makros gibt.
+ Vor allem gibt es dafür zwei Gründe:
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Relative and absolute file names should remain relative or absolute, respectivel
-y.
- Users may have reasons to prefer either form.
- Relative names are useful for portable documents that should work on different
- machines, for example.
- Absolute names may be required by some programs.
+Relative und absolute sollten jeweils relativ oder absolut bleiben, denn
+ die Anwender haben vermutlich Gründe, warum sie diese oder jene Form verwenden.
+ Relative Pfade sind bspw.
+ hilfreich für Dokumente, die weitergegeben werden und die auf verschiedenen
+ Geräten funktionieren sollten.
+ Absolute Pfade werden von manchen Programmen vorausgesetzt.
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
 \SpecialChar LaTeX
- treats relative file names differently than \SpecialChar LyX
- and other programs in nested
- included files.
- For \SpecialChar LyX
-, a relative file name is always relative to the document that contains
- the file name.
- For \SpecialChar LaTeX
-, it is always relative to the master document.
- These two definitions are identical if you have only one document, but
- differ if you have a master document that includes part documents.
- That means that relative filenames must be transformed when presented to
- \SpecialChar LaTeX
-.
- Fortunately \SpecialChar LyX
- does this automatically for you if you choose the right macros.
+ behandelt relative Dateinamen anders als \SpecialChar LyX
+ und andere Programme in eingebetteten
+ eingebundenen Dateien.
+ Für \SpecialChar LyX
+ ist ein relativer Dateiname immer relativ zum Dokument, das den Dateinamen
+ enthält.
+ Für \SpecialChar LaTeX
+ ist er immer relativ zum Hauptdokument.
+ Diese zwei Angaben sind identisch, wenn sie keine Unterdokumente haben,
+ aber sie unterscheiden sich, wenn Sie ein Hauptdokument mit Unterdokumenten
+ haben.
+ Das heißt, dass relative Dateinamen umgewandelt werden müssen, wenn Sie
+ für \SpecialChar LaTeX
+ aufbereitet werden.
+ Zum Glück macht \SpecialChar LyX
+ das automatisch für Sie, wenn Sie die richtigen Makros
+ verwenden.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-So which path macro should be used in new template definitions? The rule
- is not difficult:
+Welche Pfad-Makros sollten Sie also in neuen Vorlagen-Definitionen verwenden?
+ Die Regel ist nicht schwer:
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Use 
+Verwenden Sie 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$AbsPath
 \end_layout
 
 \end_inset
 
- if an absolute path is required.
+, wenn ein absoluter Pfad benötigt wird.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Use 
+Verwenden Sie 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$AbsOrRelPathMaster
 \end_layout
 
 \end_inset
 
- if the substituted string is some kind of \SpecialChar LaTeX
- input.
+, wenn die ersetzte Zeichenkette eine Form von if \SpecialChar LaTeX
+-Eingabe ist.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Else use 
+Sonst verwenden Sie 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 $$AbsOrRelPathParent
 \end_layout
 
 \end_inset
 
- in order to preserve the user's choice.
+, um die Präferenzen der Anwender zu erhalten.
 \end_layout
 
 \begin_layout Standard
+Es gibt Spezialfälle, bei denen diese Regel nicht funktioniert und bei denen
+ bspw.
+ relative Namen gebraucht werden, aber der Normalfall ist das nicht.
+ Ein Beispiel für einen solchen Ausnahmefall isz die Spezifikation
+\end_layout
 
-\lang english
-There are special cases where this rule does not work and e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-relative names are needed, but normally it will work just fine.
- One example for such a case is the command 
+\begin_layout Quote
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 ReferencedFile latex "$$AbsOrRelPathMaster$$Basename.pstex_t"
 \end_layout
 
 \end_inset
 
- in the XFig template above: We can't use the absolute name because the
- copier for 
+ 
+\end_layout
+
+\begin_layout Standard
+in der XFig-Vorlage oben.
+ Wir können hier keinen absoluten Namen verwenden, weil der Kopierer für
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 .pstex_t
 \end_layout
 
 \end_inset
 
- files needs the relative name in order to rewrite the file content.
+-Dateien relative Namen braucht, um den Dateiinhalt bearbeiten zu können.
 \end_layout
 
 \begin_layout Section
@@ -26638,114 +25962,108 @@ name "sec:Sicherheitshinweise"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The external material feature interfaces with a lot of external programs
- and does so automatically, so we have to consider the security implications
- of this.
- In particular, since you have the option of including your own filenames
- and/or parameter strings and those are expanded into a command, it seems
- that it would be possible to create a malicious document which executes
- arbitrary commands when a user views or prints the document.
- This is something we definitely want to avoid.
+Das Feature für externes Material interagiert viel mit externen Programmen,
+ und zwar automatisch.
+ Das bringt potentielle Sicherheitsprobleme mit sich, die zu beachten sind.
+ Da die Möglichkeit besteht, in den Vorlagen beliebige Dateinamen und\SpecialChar breakableslash
+oder
+ Parameter zu definieren, und da diese in Befehlsdeklarationen eingefügt
+ werden, ist es theoretisch möglich, bösartige Dokumente zu erzeugen, die
+ beliebige Befehle ausführen können, wenn jemand das Dokument exportiert
+ oder ansieht.
+ Das wollen wir definitiv verhindern.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-However, since the external program commands are specified in the template
- configuration file only, there are no security issues if \SpecialChar LyX
- is properly configure
-d with safe templates only.
- This is so because the external programs are invoked with the 
+Da nun aber die externen Programmbefehle ausschließlich in den Konfigurationsdat
+eien für die Vorlagen spezifiziert sind, gibt es keine Sicherheitsprobleme,
+ wenn \SpecialChar LyX
+ richtig konfiguriert wurde und nur sichere Vorlagen verwendet werden.
+ Denn externe Programme werden mit dem Systembefehl 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 execvp
 \end_layout
 
 \end_inset
 
--system call rather than the 
+ und nicht mit 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 system
 \end_layout
 
 \end_inset
 
- system-call, so it's not possible to execute arbitrary commands from the
- filename or parameter section via the shell.
+ aufgerufen.
+ Das verunmöglicht die Ausführung beliebiger Befehle über die Shell mithilfe
+ von Dateinamen oder \SpecialChar nobreakdash
+parametern.
 \end_layout
 
 \begin_layout Standard
-
+Das heißt aber auch, dass die Auswahl der Befehle, die Sie in den Vorlagendefini
+tionen verwenden können, beschränkt ist.
+ Insbesondere 
+\emph on
 \lang english
-This also implies that you are restricted in what command strings you can
- use in the external material templates.
- In particular, pipes and redirection are not readily available.
- This has to be so if \SpecialChar LyX
- should remain safe.
- If you want to use some of the shell features, you should write a safe
- script to do this in a controlled manner, and then invoke the script from
- the command string.
+Pipes
+\emph default
+\lang ngerman
+ und 
+\emph on
+Weiterleitungen
+\emph default
+ sind nicht ohne Weiteres verfügbar.
+ Das ist der Preis für die Sicherheit.
+ Wenn Sie Shell-Features verwenden wollen, sollten Sie ein sicheres Skript
+ schreiben, um dies in einer kontrollierten Art und Weise zu tun, und dann
+ dieses Skript über die Befehlsspezifikation aufrufen.
+\end_layout
+
+\begin_layout Standard
+Es ist zwar möglich eine Vorlage zu entwerfen, die direkt mit der Shell
+ interagiert, aber da dies bösartigen Anwendern erlauben würde, über clevere
+ Dateinamen und\SpecialChar breakableslash
+oder Parameter beliebige Befehle auszuführen, empfehlen wir
+ grundsätzlich, dass Sie sichere Skripte verwenden, die den Systembefehl
  
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-It is possible to design a template that interacts directly with the shell,
- but since this would allow a malicious user to execute arbitrary commands
- by writing clever filenames and/or parameters, we generally recommend that
- you only use safe scripts that work with the 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 execvp
 \end_layout
 
 \end_inset
 
- system call in a controlled manner.
- Of course, for use in a controlled environment, it can be tempting to just
- fall back to use ordinary shell scripts.
- If you do so, be aware that you 
-\emph on
-will
-\emph default
- provide an easily exploitable security hole in your system.
- Of course it stands to reason that such unsafe templates will never be
- included in the standard \SpecialChar LyX
- distribution, although we do encourage people
- to submit new templates in the open source tradition.
- But \SpecialChar LyX
- as shipped from the official distribution channels will never have
- unsafe templates.
+ in kontrollierter Form einsetzen.
+ Wir verstehen, dass es innerhalb kontrollierter Umgebungen verlockend sein
+ kann, einfach normale Shell-Skripte zu verwenden.
+ Aber seien Sie sich bewusst, dass Sie, wenn Sie dies tun, eine leicht ausnutzba
+re Sicherheitslücke in ihr System einfügen.
+ Natürlich werden solche unsicheren Vorlagen niemals in die \SpecialChar LyX
+-Distribution
+ aufgenommen, auch wenn wir immer dazu ermuntern, neue Vorlagen in der Open-Sour
+ce-Tradition beizusteuern.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Including external material provides a lot of power, and you have to be
- careful not to introduce security hazards with this power.
- A subtle error in a single line in an innocent looking script can open
- the door to huge security problems.
- So if you do not fully understand the issues, we recommend that you consult
- a knowledgeable security professional or the \SpecialChar LyX
- development team if you have
- any questions about whether a given template is safe or not.
- And do this before you use it in an uncontrolled environment.
+Die Einbindung von externem Material ist ein mächtiges Werkzeug, und Sie
+ müssen aufpassen, dass Sie diese Macht nicht unterschätzen und Sicherheitsprobl
+eme schaffen.
+ Ein subtiler Fehler in einer einzigen Zeile in einem unschuldig aussehenden
+ Skript kann die Tür für riesige Sicherheitsprobleme öffnen.
+ Wenn Sie also etwas nicht vollständig verstehen, empfehlen wir, dass Sie
+ einen Sicherheitsexperten oder das \SpecialChar LyX
+-Team konsultieren, sobald sie nicht
+ sicher sind, ob eine externe Vorlage sicher ist oder nicht.
+ Und tun Sie dies, bevor Sie die vorlage in einer unkontrollierten Umgebung
+ verwenden!
 \end_layout
 
 \begin_layout Chapter
@@ -27606,9 +26924,34 @@ name "chap:Namen-von-Farben"
 \end_layout
 
 \begin_layout Standard
-Die hier aufgelisteten Farben sind die Standardfarben und die, die man in
- den \SpecialChar LyX
--Voreinstellungen festlegen kann.
+Im Folgenden sind die Standardfarben und die Farben, die man in den \SpecialChar LyX
+-Voreinstell
+ungen festlegen kann, aufgelistet.
+\end_layout
+
+\begin_layout Section
+Farbfunktionen
+\end_layout
+
+\begin_layout Standard
+Das folgende sind keine echten Farben, sondern eher Funktionen, die Farbdefiniti
+onen betreffen.
+\end_layout
+
+\begin_layout Description
+
+\lang english
+ignore
+\lang ngerman
+ Die Farbe wird ignoriert
+\end_layout
+
+\begin_layout Description
+
+\lang english
+inherit
+\lang ngerman
+ Die Farbe wird vom Kontext geerbt
 \end_layout
 
 \begin_layout Description
@@ -27616,73 +26959,205 @@ Die hier aufgelisteten Farben sind die Standardfarben und die, die man in
 \lang english
 none
 \lang ngerman
- Keine spezielle Farbe – entfernt Farbe oder setzt Farbe auf Voreinstellung
+ Keine spezielle Farbe – setzt definierte Farben zurück.
+\end_layout
+
+\begin_layout Section
+Statische Farben
+\end_layout
+
+\begin_layout Standard
+Die folgenden Farben sind fest definiert und können nicht verändert werden:
 \end_layout
 
 \begin_layout Description
 
 \lang english
 black
+\lang ngerman
+ Schwarz
 \end_layout
 
 \begin_layout Description
 
 \lang english
 white
-\end_layout
-
-\begin_layout Description
-
-\lang english
-red
-\end_layout
-
-\begin_layout Description
-
-\lang english
-green
+\lang ngerman
+ Weiß
 \end_layout
 
 \begin_layout Description
 
 \lang english
 blue
+\lang ngerman
+ Blau
+\end_layout
+
+\begin_layout Description
+
+\lang english
+brown
+\lang ngerman
+ Braun
 \end_layout
 
 \begin_layout Description
 
 \lang english
 cyan
+\lang ngerman
+ Cyan
+\end_layout
+
+\begin_layout Description
+
+\lang english
+darkgray
+\lang ngerman
+ Dunkelgrau
+\end_layout
+
+\begin_layout Description
+
+\lang english
+gray
+\lang ngerman
+ Grau
+\end_layout
+
+\begin_layout Description
+
+\lang english
+green
+\lang ngerman
+ Grün
+\end_layout
+
+\begin_layout Description
+
+\lang english
+lightgray
+\lang ngerman
+ Hellgrau
+\end_layout
+
+\begin_layout Description
+
+\lang english
+lime
+\lang ngerman
+ Neongrün
 \end_layout
 
 \begin_layout Description
 
 \lang english
 magenta
+\lang ngerman
+ Magenta
+\end_layout
+
+\begin_layout Description
+
+\lang english
+olive
+\lang ngerman
+ Olivgrün
+\end_layout
+
+\begin_layout Description
+
+\lang english
+orange
+\lang ngerman
+ Orange
+\end_layout
+
+\begin_layout Description
+
+\lang english
+pink
+\lang ngerman
+ Pink
+\end_layout
+
+\begin_layout Description
+
+\lang english
+purple
+\lang ngerman
+ Purpur
+\end_layout
+
+\begin_layout Description
+
+\lang english
+red
+\lang ngerman
+ Rot
+\end_layout
+
+\begin_layout Description
+
+\lang english
+teal
+\lang ngerman
+ Blaugrün
+\end_layout
+
+\begin_layout Description
+
+\lang english
+violet
+\lang ngerman
+ Violett
 \end_layout
 
 \begin_layout Description
 
 \lang english
 yellow
+\lang ngerman
+ Gelb
+\end_layout
+
+\begin_layout Section
+Dynamische Farben
+\end_layout
+
+\begin_layout Standard
+Dies sind die Farben, die in 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show prefs"
+\end_inset
+
+ spezifischen Elementen zugeordnet werden:
 \end_layout
 
 \begin_layout Description
 
 \lang english
-added_space Added space marker color
+added_space
+\lang ngerman
+ Farbe der Markierung von eingefügten Leerzeichen (in der Änderungsmarkierung)
 \end_layout
 
 \begin_layout Description
 
 \lang english
-addedtext Added text color
+addedtext
+\lang ngerman
+ Farbe von eingefügtem Text (in der Änderungsmarkierung)
 \end_layout
 
 \begin_layout Description
 
 \lang english
-appendix Appendix marker color
+appendix
+\lang ngerman
+ Farbe der Anhangmarkierung
 \end_layout
 
 \begin_layout Description
@@ -27690,43 +27165,56 @@ appendix Appendix marker color
 \lang english
 background
 \lang ngerman
- Hintergrundfarbe
+ Generelle Farbe des Hintergrunds
 \end_layout
 
 \begin_layout Description
 
 \lang english
-bottomarea Bottom area color
+bottomarea
+\lang ngerman
+ Farbe des Bereichs nach dem Ende von \SpecialChar LyX
+-Dokumenten
 \end_layout
 
 \begin_layout Description
 
 \lang english
-branchlabel Label color for branches
+branchlabel
+\lang ngerman
+ Farbe der Marke von Zweigen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-buttonbg Color used for bottom background
+buttonbg
+\lang ngerman
+ Farbe des Hintergrund von (Einfügungs-)Knöpfen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-buttonhoverbg Color used for button background under focus
+buttonframe
+\lang ngerman
+ Farbe des Rahmens von (Einfügungs-)Knöpfen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-buttonframe Color for inset button frames
+buttonhoverbg
+\lang ngerman
+ Farbe des Hintergrund von (Einfügungs-)Knöpfen, wenn die Maus darüberfährt
 \end_layout
 
 \begin_layout Description
 
 \lang english
-changebar Changebar color
+changebar
+\lang ngerman
+ Farbe des Änderungsbalkens
 \end_layout
 
 \begin_layout Description
@@ -27792,43 +27280,57 @@ Autors
 \begin_layout Description
 
 \lang english
-collapsable_inset_frame Collapsable insets framecolor
+collapsable
+\lang ngerman
+ Textfarbe in einklappbaren Einfügungen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-collapsable_inset_text Collapsable insets text color
+collapsableframe
+\lang ngerman
+ Rahmenfarbe in einklappbaren Einfügungen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-command Text color for command insets
+command
+\lang ngerman
+ Textfarbe in Befehls-Einfügungen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-commandbg Background color for command insets
+commandbg
+\lang ngerman
+ Hintergrundfarbe in Befehls-Einfügungen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-commandframe Frame color for command insets
+commandframe
+\lang ngerman
+ Rahmenfarbe in Befehls-Einfügungen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-comment color for comments
+commentbg
+\lang ngerman
+ Hintergrundfarbe von Kommentaren
 \end_layout
 
 \begin_layout Description
 
 \lang english
-commentbg Background color of comments
+commentlabel
+\lang ngerman
+ Farbe der Marke von Kommentaren
 \end_layout
 
 \begin_layout Description
@@ -27836,261 +27338,345 @@ commentbg Background color of comments
 \lang english
 cursor
 \lang ngerman
- Cursorfarbe
+ Farbe des Cursors
 \end_layout
 
 \begin_layout Description
 
 \lang english
-deletedtext Deleted text color
+deletedtext
+\lang ngerman
+ Farbe von gelöschtem Text (im Änderungsmodus)
 \end_layout
 
 \begin_layout Description
 
 \lang english
-deletedtextmodifier Deleted text modifying color
+deletedtextmodifier
+\lang ngerman
+ Modifizierungsfarbe für gelöschten Text
 \end_layout
 
 \begin_layout Description
 
 \lang english
-depthbar Color for the depth bars in the margin
+depthbar
+\lang ngerman
+ Farbe der Einrückungsmarkierung am Rand
 \end_layout
 
 \begin_layout Description
 
 \lang english
-eolmarker End of line marker color
+eolmarker
+\lang ngerman
+ Farbe der Zeilenendemarkierung
 \end_layout
 
 \begin_layout Description
 
 \lang english
-error Color of the \SpecialChar LaTeX
- error box
+error
+\lang ngerman
+ Farbe der \SpecialChar LaTeX
+-Fehler-Box
 \end_layout
 
 \begin_layout Description
 
 \lang english
-footlabel Label color for footnotes
+footlabel
+\lang ngerman
+ Farbe der Marke für Fußnoten
 \end_layout
 
 \begin_layout Description
 
 \lang english
-graphicsbg Graphics inset background color
+foreground
+\lang ngerman
+ generelle Vordergrundfarbe
 \end_layout
 
 \begin_layout Description
 
 \lang english
-greyedout Label color for greyedout insets
+graphicsbg
+\lang ngerman
+ Hintergrundfarbe von Grafik-Einfügungen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-greyedoutbg Background color of greyedout inset
+greyedoutbg
+\lang ngerman
+ Hintergrundfarbe für Grauschrift-Einfügungen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-greyedouttext Color for greyedout inset text
+greyedoutlabel
+\lang ngerman
+ Farbe der Marke für Grauschrift-Einfügungen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-indexlabel Label color for index insets
+greyedouttext
+\lang ngerman
+ Textfarbe für Grauschrift-Einfügungen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-ignore The color is ignored
+indexlabel
+\lang ngerman
+ Farbe der Marke für Stichworteinfügungen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-inherit The color is inherited
+inlinecompletion
+\lang ngerman
+ Farbe der Wortvervollständigung
 \end_layout
 
 \begin_layout Description
 
 \lang english
-inlinecompletion Inline completion color
+insetbg
+\lang ngerman
+ Hintergrundfarbe von Einfügungen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-insetbg Inset marker background color
+insetframe
+\lang ngerman
+ Rahmenfarbe von Einfügungen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-insetframe Inset marker frame color
+language
+\lang ngerman
+ Farbe zur Markierung fremdsprachigen Texts,
 \end_layout
 
 \begin_layout Description
 
 \lang english
-language Color for marking foreign language words
+latex
+\lang ngerman
+ Textfarbe im \SpecialChar LaTeX
+-Modus
 \end_layout
 
 \begin_layout Description
 
 \lang english
-latex Text color in \SpecialChar LaTeX
- mode
+listingsbg
+\lang ngerman
+ Hintergrundfarbe von Programmlisting-Einfügungen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-listingsbg Background color of listings inset
+marginlabel
+\lang ngerman
+ Farbe der Marke von Randnotiz-Einfügungen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-marginlabel Label color for margin notes
+math
+\lang ngerman
+ Textfarbe von Mathe-Einfügungen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-math Math inset text color
+mathbg
+\lang ngerman
+ Hintergrundfarbe von Mathe-Einfügungen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathbg Math inset background color
+mathcorners
+\lang ngerman
+ Rahmenfarbe von Mathe-Einfügungen, die nicht ediert werden
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathcorners Math inset frame color not under focus
+mathframe
+\lang ngerman
+ Rahmenfarbe von Mathe-Einfügungen, die ediert werden
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathframe Math inset frame color under focus
+mathline
+\lang ngerman
+ Linienfarbe im Mathe-Modus
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathline Math line color
+mathmacrobg
+\lang ngerman
+ Hintergrundfarbe der Mathe-Makro-Einfügung
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathmacrobg Macro math inset background color
+mathmacroblend
+\lang ngerman
+ Ausgeblendete Farbe der Mathe-Makro-Einfügung
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathmacroblend Macro math blended color
+mathmacroframe
+\lang ngerman
+ Rahmenfarbe der Mathe-Makro-Einfügung
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathmacroframe Macro math frame color
+mathmacrohoverbg
+\lang ngerman
+ Hintergrundfarbe der Mathe-Makro-Einfügung, wenn die Maus darüberfährt
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathmacrohoverbg Macro math inset background color hovered
+mathmacrolabel
+\lang ngerman
+ Farbe der Marke der Mathe-Makro-Einfügung
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathmacrolabel Macro math label color
+mathmacronewarg
+\lang ngerman
+ Farbe für neue Parameter der Mathe-Makro-Definition
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathmacronewarg Macro template color for new parameters
+mathmacrooldarg
+\lang ngerman
+ Farbe für alte Parameter der Mathe-Makro-Definition
 \end_layout
 
 \begin_layout Description
 
 \lang english
-mathmacrooldarg Macro template color for old parameters
+newpage
+\lang ngerman
+ Farbe der Seitenumbruchsmarkierung (neue Seite)
 \end_layout
 
 \begin_layout Description
 
 \lang english
-newpage New page color
+nonunique_inlinecompletion
+\lang ngerman
+ Farbe der Wortvervollständigung (nicht-eindeutiger Teil)
 \end_layout
 
 \begin_layout Description
 
 \lang english
-nonunique_inlinecompletion Inline completion color for the non-unique part
+notebg
+\lang ngerman
+ Hintergrundfarbe von Notiz-Einfügungen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-notebg Background color of notes
+notelabel
+\lang ngerman
+ Farbe der Marke von Notiz-Einfügungen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-notelabel Label color for notes
+pagebreak
+\lang ngerman
+ Farbe der Seitenumbruchsmarkierung (Seitenumbruch) und von Zeilenumbrüchen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-pagebreak Page break/line break color
+paragraphmarker
+\lang ngerman
+ Farbe für die Absatzmarkierung
 \end_layout
 
 \begin_layout Description
 
 \lang english
-paragraphmarker Color used for the pilcrow sign to mark the end of a paragraph
+phantomtext
+\lang ngerman
+ Textfarbe für Phantom-Einfügungen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-phantomtext Text color for phantom insets
+preview
+\lang ngerman
+ Farbe für den Hintergrund der sofortigen Vorschau
 \end_layout
 
 \begin_layout Description
 
 \lang english
-preview The color used for previews
+previewframe
+\lang ngerman
+ Rahmenfarbe der sofortigen Vorschau
 \end_layout
 
 \begin_layout Description
 
 \lang english
-previewframe Preview frame color
+regexpframe
+\lang ngerman
+ Rahmenfarbe für die Einfügung für reguläre Ausdrücke
 \end_layout
 
 \begin_layout Description
 
 \lang english
-regexpframe Color for regexp frame
+scroll
+\lang ngerman
+ Farbe, die anzeigt, dass eine Tabellenspalte gescrollt werden kann
 \end_layout
 
 \begin_layout Description
@@ -28112,37 +27698,49 @@ selectiontext
 \begin_layout Description
 
 \lang english
-shadedbg Background color of shaded box
+shadedbg
+\lang ngerman
+ Hintergrundfarbe einer schattierten Box
 \end_layout
 
 \begin_layout Description
 
 \lang english
-special Special chars text color
+special
+\lang ngerman
+ Textfarbe von Sonderzeichen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-tabularline Table line color
+tabularline
+\lang ngerman
+ Farbe von Tabellenlinien
 \end_layout
 
 \begin_layout Description
 
 \lang english
-tabularonoffline Table line color
+tabularonoffline
+\lang ngerman
+ Farbe von Tabellenlinien
 \end_layout
 
 \begin_layout Description
 
 \lang english
-urllabel Label color for URL insets
+urllabel
+\lang ngerman
+ Farbe der Marke von URL-Einfügungen
 \end_layout
 
 \begin_layout Description
 
 \lang english
-urltext Color for URL inset text
+urltext
+\lang ngerman
+ Textfarbe in URL-Einfügungen
 \end_layout
 
 \end_body
