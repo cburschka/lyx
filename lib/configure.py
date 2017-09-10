@@ -1772,7 +1772,7 @@ if __name__ == '__main__':
     lyx_check_config = True
     lyx_kpsewhich = True
     outfile = 'lyxrc.defaults'
-    lyxrc_fileformat = 23
+    lyxrc_fileformat = 24
     rc_entries = ''
     lyx_keep_temps = False
     version_suffix = ''
