@@ -30853,12 +30853,52 @@ Les couleurs énumérées ci-après sont les couleurs standard et celles que
 .
 \end_layout
 
+\begin_layout Section
+
+\lang english
+Color functions
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The following are no real colors, but rather act on color definitions:
+\end_layout
+
+\begin_layout Description
+
+\lang english
+ignore
+\lang french
+ couleur ignorée
+\end_layout
+
+\begin_layout Description
+
+\lang english
+inherit
+\lang french
+ couleur héritée
+\end_layout
+
 \begin_layout Description
 
 \lang english
 none
 \lang french
  pas de couleur particulière – réinitialisation ou couleur implicite
+\end_layout
+
+\begin_layout Section
+
+\lang english
+Static colors
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+These are fixed colors that cannot me customized:
 \end_layout
 
 \begin_layout Description
@@ -30876,19 +30916,13 @@ white
 \begin_layout Description
 
 \lang english
-red
-\end_layout
-
-\begin_layout Description
-
-\lang english
-green
-\end_layout
-
-\begin_layout Description
-
-\lang english
 blue
+\end_layout
+
+\begin_layout Description
+
+\lang english
+brown
 \end_layout
 
 \begin_layout Description
@@ -30900,7 +30934,79 @@ cyan
 \begin_layout Description
 
 \lang english
+darkgray
+\end_layout
+
+\begin_layout Description
+
+\lang english
+gray
+\end_layout
+
+\begin_layout Description
+
+\lang english
+green
+\end_layout
+
+\begin_layout Description
+
+\lang english
+lightgray
+\end_layout
+
+\begin_layout Description
+
+\lang english
+lime
+\end_layout
+
+\begin_layout Description
+
+\lang english
 magenta
+\end_layout
+
+\begin_layout Description
+
+\lang english
+olive
+\end_layout
+
+\begin_layout Description
+
+\lang english
+orange
+\end_layout
+
+\begin_layout Description
+
+\lang english
+pink
+\end_layout
+
+\begin_layout Description
+
+\lang english
+purple
+\end_layout
+
+\begin_layout Description
+
+\lang english
+red
+\end_layout
+
+\begin_layout Description
+
+\lang english
+teal
+\end_layout
+
+\begin_layout Description
+
+\lang english
+violet
 \end_layout
 
 \begin_layout Description
@@ -30909,12 +31015,31 @@ magenta
 yellow
 \end_layout
 
+\begin_layout Section
+
+\lang english
+Dynamic colors
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+These are the colors allocated to specific elements in
+\lang french
+ 
+\family sans
+Outils\SpecialChar menuseparator
+Préférences
+\family default
+:
+\end_layout
+
 \begin_layout Description
 
 \lang english
 added_space
 \lang french
- marqueur d'espace ajoutée
+ espace ajoutée
 \end_layout
 
 \begin_layout Description
@@ -30968,17 +31093,17 @@ buttonbg
 \begin_layout Description
 
 \lang english
-buttonhoverbg
+buttonframe
 \lang french
- fond du bouton d'insert (pointé)
+ bordure de bouton d'insert
 \end_layout
 
 \begin_layout Description
 
 \lang english
-buttonframe
+buttonhoverbg
 \lang french
- bordure de bouton d'insert
+ fond du bouton d'insert (pointé)
 \end_layout
 
 \begin_layout Description
@@ -31032,17 +31157,17 @@ changedtextauthor5
 \begin_layout Description
 
 \lang english
-collapsable_inset_frame
+collapsabletext
 \lang french
- cadre d'insert repliable
+ texte d'insert repliable
 \end_layout
 
 \begin_layout Description
 
 \lang english
-collapsable_inset_text
+collapsableframe
 \lang french
- texte d'insert repliable
+ cadre d'insert repliable
 \end_layout
 
 \begin_layout Description
@@ -31072,17 +31197,17 @@ commandframe
 \begin_layout Description
 
 \lang english
-comment
+commentbg
 \lang french
- commentaire
+ fond de commentaire
 \end_layout
 
 \begin_layout Description
 
 \lang english
-commentbg
+commentlabel
 \lang french
- fond de commentaire
+ étiquette de commentaire
 \end_layout
 
 \begin_layout Description
@@ -31145,6 +31270,12 @@ footlabel
 \begin_layout Description
 
 \lang english
+foreground foreground color
+\end_layout
+
+\begin_layout Description
+
+\lang english
 graphicsbg
 \lang french
  fond graphique
@@ -31153,17 +31284,17 @@ graphicsbg
 \begin_layout Description
 
 \lang english
-greyedout 
+greyedoutbg
 \lang french
-étiquette d'insert grisé
+ fond d'insert grisé
 \end_layout
 
 \begin_layout Description
 
 \lang english
-greyedoutbg
+greyedoutlabel
 \lang french
- fond d'insert grisé
+ étiquette d'insert grisé
 \end_layout
 
 \begin_layout Description
@@ -31180,22 +31311,6 @@ greyedouttext
 indexlabel
 \lang french
  étiquette d'index
-\end_layout
-
-\begin_layout Description
-
-\lang english
-ignore
-\lang french
- couleur ignorée
-\end_layout
-
-\begin_layout Description
-
-\lang english
-inherit
-\lang french
- couleur héritée
 \end_layout
 
 \begin_layout Description
@@ -31429,6 +31544,12 @@ previewframe
 regexpframe
 \lang french
  cadre d'expression régulière
+\end_layout
+
+\begin_layout Description
+
+\lang english
+scroll color that indicates when a row can be scrolled
 \end_layout
 
 \begin_layout Description

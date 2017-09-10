@@ -24542,12 +24542,44 @@ name "chap:色名"
 設定で調整できるものです．
 \end_layout
 
+\begin_layout Section
+
+\lang english
+Color functions
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The following are no real colors, but rather act on color definitions:
+\end_layout
+
+\begin_layout Description
+ignore この色を無視します
+\end_layout
+
+\begin_layout Description
+inherit この色を継承します
+\end_layout
+
 \begin_layout Description
 none
 \series medium
  
 \series default
 特定の色ではありません – 透明か既定色です
+\end_layout
+
+\begin_layout Section
+
+\lang english
+Static colors
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+These are fixed colors that cannot me customized:
 \end_layout
 
 \begin_layout Description
@@ -24559,15 +24591,11 @@ white
 \end_layout
 
 \begin_layout Description
-red
-\end_layout
-
-\begin_layout Description
-green
-\end_layout
-
-\begin_layout Description
 blue
+\end_layout
+
+\begin_layout Description
+brown
 \end_layout
 
 \begin_layout Description
@@ -24575,11 +24603,84 @@ cyan
 \end_layout
 
 \begin_layout Description
+darkgray
+\end_layout
+
+\begin_layout Description
+gray
+\end_layout
+
+\begin_layout Description
+green
+\end_layout
+
+\begin_layout Description
+lightgray
+\end_layout
+
+\begin_layout Description
+lime
+\end_layout
+
+\begin_layout Description
 magenta
 \end_layout
 
 \begin_layout Description
+olive
+\end_layout
+
+\begin_layout Description
+orange
+\end_layout
+
+\begin_layout Description
+pink
+\end_layout
+
+\begin_layout Description
+purple
+\end_layout
+
+\begin_layout Description
+red
+\end_layout
+
+\begin_layout Description
+teal
+\end_layout
+
+\begin_layout Description
+violet
+\end_layout
+
+\begin_layout Description
 yellow
+\end_layout
+
+\begin_layout Section
+
+\lang english
+Dynamic colors
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+These are the colors allocated to specific elements in
+\lang japanese
+
+\begin_inset Flex MenuItem
+status collapsed
+
+\begin_layout Plain Layout
+ツール\SpecialChar menuseparator
+設定
+\end_layout
+
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Description
@@ -24611,11 +24712,11 @@ buttonbg ボタンの背景色
 \end_layout
 
 \begin_layout Description
-buttonhoverbg フォーカスを得ているボタンの背景色
+buttonframe 差込枠の縁色
 \end_layout
 
 \begin_layout Description
-buttonframe 差込枠の縁色
+buttonhoverbg フォーカスを得ているボタンの背景色
 \end_layout
 
 \begin_layout Description
@@ -24643,11 +24744,11 @@ changedtextauthor5 変更された文章:第5著者の色
 \end_layout
 
 \begin_layout Description
-collapsable_inset_frame 畳み込み可能枠の縁色
+collapsabletext 畳み込み可能枠の文字色
 \end_layout
 
 \begin_layout Description
-collapsable_inset_text 畳み込み可能枠の文字色
+collapsableframe 畳み込み可能枠の縁色
 \end_layout
 
 \begin_layout Description
@@ -24663,11 +24764,11 @@ commandframe コマンド差込枠の縁色
 \end_layout
 
 \begin_layout Description
-comment コメント色
+commentbg コメントの背景色
 \end_layout
 
 \begin_layout Description
-commentbg コメントの背景色
+commentlabel コメント色
 \end_layout
 
 \begin_layout Description
@@ -24700,15 +24801,21 @@ footlabel 脚註ラベル色
 \end_layout
 
 \begin_layout Description
+foreground 
+\lang english
+Foreground color
+\end_layout
+
+\begin_layout Description
 graphicsbg 画像差込枠の背景色
 \end_layout
 
 \begin_layout Description
-greyedout 淡色表示差込枠のラベル色
+greyedoutbg 淡色表示差込枠の背景色
 \end_layout
 
 \begin_layout Description
-greyedoutbg 淡色表示差込枠の背景色
+greyedoutlabel 淡色表示差込枠のラベル色
 \end_layout
 
 \begin_layout Description
@@ -24717,14 +24824,6 @@ greyedouttext 淡色表示差込枠の文字色
 
 \begin_layout Description
 indexlabel 索引差込枠のラベル色
-\end_layout
-
-\begin_layout Description
-ignore この色を無視します
-\end_layout
-
-\begin_layout Description
-inherit この色を継承します
 \end_layout
 
 \begin_layout Description
@@ -24842,6 +24941,12 @@ previewframe プレビュー縁色
 
 \begin_layout Description
 regexpframe 正規表現枠の色
+\end_layout
+
+\begin_layout Description
+scroll 
+\lang english
+Color that indicates when a row can be scrolled
 \end_layout
 
 \begin_layout Description
