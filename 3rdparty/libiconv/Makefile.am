@@ -15,18 +15,21 @@ EXTRA_DIST = \
 	1.15/lib/aliases_syshpux.gperf \
 	1.15/lib/aliases_sysosf1.gperf \
 	1.15/lib/aliases_syssolaris.gperf \
+	1.15/lib/config.h.in \
 	1.15/lib/encodings_aix.def \
 	1.15/lib/encodings.def \
 	1.15/lib/encodings_dos.def \
 	1.15/lib/encodings_extra.def \
 	1.15/lib/encodings_local.def \
 	1.15/lib/encodings_osf1.def \
+	1.15/lib/Makefile.in \
 	1.15/lib/translit.def \
 	1.15/libcharset/include/libcharset.h.in \
 	1.15/libcharset/include/localcharset.h.build.in \
 	1.15/libcharset/include/localcharset.h.in \
 	1.15/libcharset/lib/ChangeLog \
 	1.15/libcharset/lib/config.charset \
+	1.15/libcharset/lib/Makefile.in \
 	1.15/libcharset/lib/ref-add.sin \
 	1.15/libcharset/lib/ref-del.sin
 
@@ -113,6 +116,8 @@ liblyxiconv_a_SOURCES = \
 	1.15/lib/cp1257.h \
 	1.15/lib/cp1258.h \
 	1.15/lib/cp437.h \
+	1.15/lib/cp50221_0208_ext.h \
+	1.15/lib/cp50221_0212_ext.h \
 	1.15/lib/cp737.h \
 	1.15/lib/cp775.h \
 	1.15/lib/cp850.h \
@@ -180,6 +185,7 @@ liblyxiconv_a_SOURCES = \
 	1.15/lib/iso2022_jp2.h \
 	1.15/lib/iso2022_jp3.h \
 	1.15/lib/iso2022_jp.h \
+	1.15/lib/iso2022_jpms.h \
 	1.15/lib/iso2022_kr.h \
 	1.15/lib/iso646_cn.h \
 	1.15/lib/iso646_jp.h \
