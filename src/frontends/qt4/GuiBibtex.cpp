@@ -304,6 +304,11 @@ void GuiBibtex::updateContents()
 	bool bibtopic = usingBibtopic();
 	bool biblatex = usingBiblatex();
 
+	if (biblatex)
+		setTitle(qt_("Biblatex Bibliography"));
+	else
+		setTitle(qt_("BibTeX Bibliography"));
+
 	databaseLW->clear();
 
 	docstring bibs = params_["bibfiles"];
