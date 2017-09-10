@@ -27829,6 +27829,26 @@ Los colores listados son los colores estándar y los que se pueden modificar
 .
 \end_layout
 
+\begin_layout Section
+
+\lang english
+Color functions
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+The following are no real colors, but rather act on color definitions:
+\end_layout
+
+\begin_layout Description
+ignore El color es ignorado
+\end_layout
+
+\begin_layout Description
+inherit El color es heredado
+\end_layout
+
 \begin_layout Description
 none
 \family roman
@@ -27837,6 +27857,18 @@ none
 \family default
 \series default
 Ningún color en particular, transparente o ausente
+\end_layout
+
+\begin_layout Section
+
+\lang english
+Static colors
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+These are fixed colors that cannot me customized:
 \end_layout
 
 \begin_layout Description
@@ -27848,15 +27880,11 @@ white
 \end_layout
 
 \begin_layout Description
-red
-\end_layout
-
-\begin_layout Description
-green
-\end_layout
-
-\begin_layout Description
 blue
+\end_layout
+
+\begin_layout Description
+brown
 \end_layout
 
 \begin_layout Description
@@ -27864,15 +27892,88 @@ cyan
 \end_layout
 
 \begin_layout Description
+darkgray
+\end_layout
+
+\begin_layout Description
+gray
+\end_layout
+
+\begin_layout Description
+green
+\end_layout
+
+\begin_layout Description
+lightgray
+\end_layout
+
+\begin_layout Description
+lime
+\end_layout
+
+\begin_layout Description
 magenta
+\end_layout
+
+\begin_layout Description
+olive
+\end_layout
+
+\begin_layout Description
+orange
+\end_layout
+
+\begin_layout Description
+pink
+\end_layout
+
+\begin_layout Description
+purple
+\end_layout
+
+\begin_layout Description
+red
+\end_layout
+
+\begin_layout Description
+teal
+\end_layout
+
+\begin_layout Description
+violet
 \end_layout
 
 \begin_layout Description
 yellow
 \end_layout
 
+\begin_layout Section
+
+\lang english
+Dynamic colors
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+These are the colors allocated to specific elements in
+\lang spanish
+ 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+Herramientas\SpecialChar menuseparator
+Preferencias
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
 \begin_layout Description
-added_space Color marcador espacio añadido
+added_space Color espacio añadido
 \end_layout
 
 \begin_layout Description
@@ -27900,11 +28001,11 @@ buttonbg Color fondo de botón
 \end_layout
 
 \begin_layout Description
-buttonhoverbg Color fondo de botón en foco
+buttonframe Color para marcos de botones de recuadro
 \end_layout
 
 \begin_layout Description
-buttonframe Color para marcos de botones de recuadro
+buttonhoverbg Color fondo de botón en foco
 \end_layout
 
 \begin_layout Description
@@ -27932,11 +28033,11 @@ changedtextauthor5 Color autor 5 de texto cambiado
 \end_layout
 
 \begin_layout Description
-collapsable_inset_frame Color marco de recuadro plegable
+collapsabletext Color texto de recuadro plegable 
 \end_layout
 
 \begin_layout Description
-collapsable_inset_text Color texto de recuadro plegable 
+collapsableframe Color marco de recuadro plegable
 \end_layout
 
 \begin_layout Description
@@ -27952,11 +28053,11 @@ commandframe Color marco recuadros de comando
 \end_layout
 
 \begin_layout Description
-comment Color comentarios
+commentbg Color fondo de comentarios
 \end_layout
 
 \begin_layout Description
-commentbg Color fondo de comentarios
+commentlabel Color etiqueta de comentarios
 \end_layout
 
 \begin_layout Description
@@ -27989,15 +28090,21 @@ footlabel Color etiqueta de notas a pie de página
 \end_layout
 
 \begin_layout Description
+foreground 
+\lang english
+Foreground color
+\end_layout
+
+\begin_layout Description
 graphicsbg Color fondo de recuadros de inserción de gráficos
 \end_layout
 
 \begin_layout Description
-greyedout Color etiqueta de recuadros de notas grises
+greyedoutbg Color fondo de recuadros de notas grises
 \end_layout
 
 \begin_layout Description
-greyedoutbg Color fondo de recuadros de notas grises
+greyedoutlabel Color etiqueta de recuadros de notas grises
 \end_layout
 
 \begin_layout Description
@@ -28006,14 +28113,6 @@ greyedouttext Color texto de recuadros de notas grises
 
 \begin_layout Description
 indexlabel Color etiqueta de recuadros de índice
-\end_layout
-
-\begin_layout Description
-ignore El color es ignorado
-\end_layout
-
-\begin_layout Description
-inherit El color es heredado
 \end_layout
 
 \begin_layout Description
@@ -28131,6 +28230,12 @@ previewframe Color marco vista preliminar
 
 \begin_layout Description
 regexpframe Color marco regexp
+\end_layout
+
+\begin_layout Description
+
+\lang english
+scroll Color that indicates when a row can be scrolled
 \end_layout
 
 \begin_layout Description
