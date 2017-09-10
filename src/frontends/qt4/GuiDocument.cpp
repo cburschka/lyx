@@ -1185,6 +1185,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 		biblioModule->bibtexOptionsLE));
 	biblioModule->defaultBiblioCO->lineEdit()->setValidator(new NoNewLineValidator(
 		biblioModule->defaultBiblioCO->lineEdit()));
+	biblioModule->citePackageOptionsLE->setValidator(new NoNewLineValidator(
+		biblioModule->citePackageOptionsLE));
 
 	// NOTE: we do not provide "custom" here for security reasons!
 	biblioModule->bibtexCO->clear();
