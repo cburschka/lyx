@@ -27,13 +27,13 @@
 #   the real PDF file would be overwritten by a TeX file named outputfile.pdf.
 #
 
-import os, sys, re
+import os, sys, re, subprocess
 
 def runCommand(cmd):
     ''' Utility function:
         run a command, quit if fails
     '''
-    if os.system(cmd) != 0:
+    if subprocess.call(cmd) != 0:
         print "Command '%s' fails." % cmd
         sys.exit(1)
 
@@ -65,7 +65,7 @@ OutBase = os.path.splitext(OutputFile)[0]
 # while outsourcing the text to a LaTeX file ${OutBase}.pdf_tex which includes and overlays
 # the PDF image and can be \input to LaTeX files. We rename the latter file to ${OutputFile}
 # (although this is probably the name it already has).
-runCommand('%s --file=%s --export-pdf=%s.pdf --export-latex' % (InkscapeCmd, InputFile, OutBase))
+runCommand([InkscapeCmd, '--file=%s' % (InputFile), '--export-pdf=%s.pdf' % (OutBase), '--export-latex'])
 
 os.rename('%s.pdf_tex' % OutBase, OutputFile)
 

@@ -30,13 +30,13 @@
 # This script converts an SVG image to something that latex can process
 # into high quality PostScript.
 
-import os, sys
+import os, sys, re, subprocess
 
 def runCommand(cmd):
     ''' Utility function:
         run a command, quit if fails
     '''
-    if os.system(cmd) != 0:
+    if subprocess.call(cmd) != 0:
         print "Command '%s' fails." % cmd
         sys.exit(1)
 
@@ -68,6 +68,7 @@ OutBase = os.path.splitext(OutputFile)[0]
 # while outsourcing the text to a LaTeX file ${OutBase}.eps_tex which includes and overlays
 # the EPS image and can be \input to LaTeX files. We rename the latter file to ${OutputFile}
 # (although this is probably the name it already has).
-runCommand('%s --file=%s --export-eps=%s.eps --export-latex' % (InkscapeCmd, InputFile, OutBase))
+runCommand([InkscapeCmd, '--file=%s' % (InputFile), '--export-eps=%s.eps' % (OutBase), '--export-latex'])
+
 os.rename('%s.eps_tex' % OutBase, OutputFile)
 
