@@ -1996,7 +1996,8 @@ def revert_mathindent(document):
     i = find_re(document.header, regexp, 0)
     if i != -1:
         value = get_value(document.header, "\\math_indentation" , i).split()[0]
-        add_to_preamble(document, ["\\setlength{\\mathindent}{" + value + '}'])
+        if value != "default":
+            add_to_preamble(document, ["\\setlength{\\mathindent}{" + value + '}'])
         del document.header[i]
     # now set the document class option
     regexp = re.compile(r'(\\is_math_indent 1)')
