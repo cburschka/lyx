@@ -9,7 +9,7 @@ cmake_minimum_required ( VERSION 2.8 )
 set(CMAKE_MODULE_PATH .)
 include ( configure.cmake )
 
-set(LIBICONV_VERSION 1.14)
+set(LIBICONV_VERSION 1.15)
 
 set(SRCDIR ${LIBICONV_VERSION})
 
