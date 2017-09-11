@@ -649,8 +649,10 @@ void TextMetrics::computeRowMetrics(Row & row, int width) const
 			break;
 		case LYX_ALIGN_LEFT:
 			// a displayed inset that is flushed
-			if (Inset const * inset = par.getInset(row.pos()))
+			if (Inset const * inset = par.getInset(row.pos())) {
 				row.left_margin += inset->indent(*bv_);
+				row.dimension().wid += inset->indent(*bv_);
+			}
 			break;
 		case LYX_ALIGN_RIGHT:
 			if (Inset const * inset = par.getInset(row.pos())) {
