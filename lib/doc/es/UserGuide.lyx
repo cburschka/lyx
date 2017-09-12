@@ -13113,12 +13113,12 @@ Si se usan tipografías \SpecialChar TeX
 Predeterminado
 \family default
  y una lista de las tipografías disponibles en el sistema.
- La opción 
-\family sans
-Predeterminado
-\family default
- usa las tipografías estándar de \SpecialChar TeX
-, conocidas como 
+ 
+\lang english
+With LyX's default font encoding, this is a look-alike of
+\lang spanish
+ la tipografía estándar de \SpecialChar TeX
+, 
 \begin_inset Quotes cld
 \end_inset
 
@@ -13138,7 +13138,27 @@ Modern
 \family typewriter
 cm
 \family default
-) o 
+): 
+\lang english
+either
+\lang spanish
+ 
+\begin_inset Quotes cld
+\end_inset
+
+
+\family typewriter
+cm-super
+\family default
+
+\begin_inset Quotes crd
+\end_inset
+
+ 
+\lang english
+or the bitmap font
+\lang spanish
+ 
 \begin_inset Quotes cld
 \end_inset
 
@@ -13155,19 +13175,18 @@ European Computer Modern
 ec
 \family default
 ).
+ 
+\lang english
+However, some classes set different default fonts.
 \end_layout
 
 \begin_layout Standard
 Como 
 \family typewriter
-cm
-\family default
- y 
-\family typewriter
 ec
 \family default
- son tipografías mapa de bits, a menudo se ven pixeladas en la salida PDF,
- sobre todo si se lee con ampliación.
+ eres una tipografía mapa de bits, a menudo se va pixelada en la salida
+ PDF, sobre todo si se lee con ampliación.
 \begin_inset Foot
 status collapsed
 
@@ -13207,12 +13226,16 @@ Modern
 \family typewriter
 cm
 \family default
- como tipografía predeterminadas.En la mayoría de los casos tienen un aspecto
- semejante a 
+ como tipografía predeterminadas.
+ En la mayoría de los casos tienen un aspecto semejante a 
 \family typewriter
-cm
-\family default
+Computer
+\begin_inset space ~
+\end_inset
 
+Modern
+\family default
+,
 \begin_inset Foot
 status collapsed
 
@@ -13222,7 +13245,7 @@ Una diferencia es un interletraje mejorado.
 
 \end_inset
 
-, pero 
+ pero 
 \family sans
 Latin
 \begin_inset space ~
@@ -13239,158 +13262,6 @@ cm
 ec
 \family default
 .
-\end_layout
-
-\begin_layout Itemize
-Elegir la tipografía 
-\family sans
-AE
-\begin_inset space ~
-\end_inset
-
-(Almost
-\begin_inset space ~
-\end_inset
-
-European)
-\family default
- en el caso (raro) de que 
-\family sans
-Latin
-\begin_inset space ~
-\end_inset
-
-Modern
-\family default
- no esté disponible o no funcione, y se desee emular el aspecto de 
-\family typewriter
-cm
-\family default
-/
-\family typewriter
-ec
-\family default
-.
- 
-\family typewriter
-AE
-\family default
- se refiere a 
-\begin_inset Quotes cld
-\end_inset
-
-Almost European
-\begin_inset Quotes crd
-\end_inset
-
- y es una tipografía virtual.
- Virtual significa que 
-\begin_inset Quotes cld
-\end_inset
-
-roba
-\begin_inset Quotes crd
-\end_inset
-
- perfiles de otras tipografías.
- Esto tiene la desventaja de que algunos caracteres se pierden, como las
- comillas francesas, (
-\begin_inset Quotes eld
-\end_inset
-
-«
-\begin_inset Quotes erd
-\end_inset
-
- y 
-\begin_inset Quotes eld
-\end_inset
-
-»
-\begin_inset Quotes erd
-\end_inset
-
-)
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Este problema se soluciona cargando el paquete \SpecialChar LaTeX
- 
-\series bold
-aeguill
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-\SpecialChar LaTeX
-, paquetes ! aeguill
-\end_layout
-
-\end_inset
-
- en el preámbulo, con la línea
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-
-\backslash
-usepackage[ec]{aeguill}
-\end_layout
-
-\end_inset
-
-, y que los caracteres acentuados no se forman con 
-\emph on
-uno
-\emph default
- sino con 
-\emph on
-dos
-\emph default
- caracteres, el acento y la letra.
- Por esto no puedes buscar palabras con acentos en documentos creados con
- la tipografía 
-\family typewriter
-AE
-\family default
-.
- Por ejemplo.
- si buscas la palabra francesa 
-\begin_inset Quotes cld
-\end_inset
-
-brève
-\begin_inset Quotes crd
-\end_inset
-
- en un PDF, no obtienes ningún resultado, porque el visor PDF busca el carácter
- 
-\begin_inset Quotes cld
-\end_inset
-
-è
-\begin_inset Quotes crd
-\end_inset
-
- y no los caracteres 
-\begin_inset Quotes cld
-\end_inset
-
- e +
-\begin_inset space ~
-\end_inset
-
- ̀ 
-\begin_inset Quotes crd
-\end_inset
-
-.
- 
 \end_layout
 
 \begin_layout Itemize
@@ -16576,7 +16447,11 @@ En \SpecialChar LyX
 \begin_inset Quotes crd
 \end_inset
 
- dispone de cuatro longitudes, 
+ dispone de cuatro 
+\lang english
+variants
+\lang spanish
+, 
 \emph on
 guión
 \emph default
@@ -16603,6 +16478,25 @@ menos
 \end_layout
 
 \begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
 <features tabularvalignment="middle">
@@ -16695,10 +16589,61 @@ semirraya
 
 \begin_layout Plain Layout
 
+\lang english
+system key combination
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+On Mac and Linux, the en dash is entered with 
 \family sans
+Option-hyphen
+\family default
+ and the em dash with 
+\family sans
+Shift-Option-hyphen
+\family default
+ (
+\family sans
+Option
+\family default
+ is the Mac label for the right 
+\family sans
+Alt
+\family default
+ 
+\family sans
+/ AltGr 
+\family default
+key).
+ Alternatively, dashes can be inserted with 
+\family sans
+\lang spanish
 Insertar\SpecialChar menuseparator
 Carácter especial\SpecialChar menuseparator
 Símbolos
+\family default
+\lang english
+ or with the 
+\begin_inset Quotes eld
+\end_inset
+
+unicode-insert
+\begin_inset Quotes erd
+\end_inset
+
+ \SpecialChar LyX
+ function with the Unicode code as argument (2013 for the em dash and 2014
+ for the en dash).
+\end_layout
+
+\end_inset
+
+ 
+\lang spanish
+o «--» en texto
 \end_layout
 
 \end_inset
@@ -16728,10 +16673,10 @@ raya
 
 \begin_layout Plain Layout
 
-\family sans
-Insertar\SpecialChar menuseparator
-Carácter especial\SpecialChar menuseparator
-Símbolos
+\lang english
+system key combination
+\lang spanish
+ o «–-» en texto
 \end_layout
 
 \end_inset
@@ -16778,6 +16723,11 @@ menos
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
 \begin_inset VSpace defskip
 \end_inset
 
@@ -16785,33 +16735,8 @@ menos
 \end_layout
 
 \begin_layout Standard
-La semirraya y la raya se pueden generar también insertando el carácter
- «
-\family typewriter
--
-\family default
-» varias veces.
- En la salida se mostrarán los guiones con su longitud apropiada, pero no
- en \SpecialChar LyX
-.
- «-
-\begin_inset space \thinspace{}
-\end_inset
-
--» genera una semirraya y «-
-\begin_inset space \thinspace{}
-\end_inset
-
--
-\begin_inset space \thinspace{}
-\end_inset
-
--» una raya.
-\end_layout
-
-\begin_layout Standard
-Los tres tipos de guión son distintos del signo menos, que se usa en modo
- matemático y tiene su propia longitud.
+Los tipos de guión son distintos del signo menos, que se usa en modo matemático
+ y tiene su propia longitud.
  Aquí tenemos unos ejemplos de uso de 
 \begin_inset Quotes cld
 \end_inset
@@ -16840,7 +16765,11 @@ guión
 \end_layout
 
 \begin_layout Enumerate
-De A–Z
+De A–Z; paginas
+\begin_inset space ~
+\end_inset
+
+369–378
 \begin_inset space \hfill{}
 \end_inset
 
@@ -16877,6 +16806,21 @@ raya
 menos
 \emph default
 )
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+See also the 
+\begin_inset CommandInset href
+LatexCommand href
+name "Wikipedia entry on dashes"
+target "https://es.wikipedia.org/wiki/Raya_(puntuaci%C3%B3n)"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -16976,8 +16920,20 @@ A-b c
 
  y lo interpreta como posibilidad de ruptura, lo que en este caso quedaría
  feo.
- Para impedir que se parta esa secuencia de letras, puedes ponerla en un
- cuadro, tal como se describe en la sección 
+ Para impedir que se parta esa secuencia de letras, puedes 
+\lang english
+use a protected hyphen 
+\lang spanish
+(
+\family sans
+Insertar\SpecialChar menuseparator
+Formato\SpecialChar menuseparator
+
+\lang english
+Protected Hyphen
+\family default
+\lang spanish
+) o ponerla en un cuadro, tal como se describe en la sección 
 \emph on
 Evitar la partición de palabras
 \emph default

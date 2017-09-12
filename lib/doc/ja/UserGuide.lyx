@@ -6651,7 +6651,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename /clipart/Abstract.pdf
+	filename C:/clipart/Abstract.pdf
 
 \end_inset
 
@@ -7173,12 +7173,14 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 これは原文儘(verbatim)環境です．
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 この下の2行は空白行です．
 \end_layout
 
@@ -7191,6 +7193,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 右記の各文字を始め，ほぼすべての文字が使えます．例："%&$§#~'`
 \backslash
 }][{|
@@ -7213,6 +7216,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -11238,10 +11242,12 @@ reference "subsec:LaTeXフォントサポート"
 既定値
 \family default
 とお使いのシステムで利用可能なフォントの一覧が表示されます．
-\family sans
-既定値
-\family default
-は，「
+\lang english
+With LyX's default font encoding, this is a look-alike of the standard \SpecialChar TeX
+
+ font 
+\lang japanese
+「
 \family typewriter
 Computer
 \begin_inset space ~
@@ -11253,7 +11259,23 @@ Modern
 \family typewriter
 cm
 \family default
-)または「
+)
+\lang english
+: either 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+cm-super
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ or the bitmap font 
+\lang japanese
+「
 \family typewriter
 European Computer Modern
 \family default
@@ -11261,8 +11283,9 @@ European Computer Modern
 \family typewriter
 ec
 \family default
-)と呼ばれる \SpecialChar TeX
-の標準フォントを使います．
+)．
+\lang english
+However, some classes set different default fonts.
 \end_layout
 
 \begin_layout Standard
@@ -11348,99 +11371,6 @@ One difference is improved kerning．
 \end_inset
 
 
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-AE
-\begin_inset space ~
-\end_inset
-
-(Almost
-\begin_inset space ~
-\end_inset
-
-European)
-\family default
-を使用する方法．これは，
-\family sans
-Latin
-\begin_inset space ~
-\end_inset
-
-Modern
-\family default
-フォントが使用できないか，うまく動作しない(稀な)ケースにおいて，
-\family typewriter
-cm
-\family default
-や
-\family typewriter
-ec
-\family default
-の外見をエミュレートしたいときに選択してください．
-\family typewriter
-AE
-\family default
-は仮想フォントです．仮想というのは，これが他のフォントから
-\family typewriter
-cm
-\family default
-輪郭グリフを「拝借」してくるからです．これには，フランス語のギュメ(「«」や「»」)をはじめとするいくつかの文字が欠落していること
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-\SpecialChar LaTeX
-パッケージの
-\series bold
-aeguill
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-latexはつけじ@\SpecialChar LaTeX
-パッケージ ! aeguill
-\end_layout
-
-\end_inset
-
-をプリアンブル行で
-\end_layout
-
-\begin_layout Plain Layout
-
-\backslash
-usepackage[ec]{aeguill}
-\begin_inset Newline newline
-\end_inset
-
-として読み込むと，ギュメの問題は解消されます．
-\end_layout
-
-\end_inset
-
-や，アクセント付き文字が
-\emph on
-一つの
-\emph default
-グリフではなく，アクセントと文字との
-\emph on
-二
-\emph default
-文字から構築されるという欠点があります．したがって，
-\family typewriter
-AE
-\family default
-フォントを用いた文書では，アクセント付き文字を含む単語を検索することはできません．例えば，仮にPDFで「brève」という仏単語を検索したとしても，PDFビュー
-アは「è」というグリフを検索するのであって，「 e +
-\begin_inset space ~
-\end_inset
-
-` 」というグリフを検索するわけではないので，検索結果としては何も得られないでしょう．
 \end_layout
 
 \begin_layout Itemize
@@ -13801,6 +13731,25 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
 <features tabularvalignment="middle">
@@ -13893,12 +13842,68 @@ status collapsed
 
 \begin_layout Plain Layout
 
+\lang english
+system key combination
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+On Mac and Linux, the en dash is entered with 
 \family sans
+Option-hyphen
+\family default
+ and the em dash with 
+\family sans
+Shift-Option-hyphen
+\family default
+ (
+\family sans
+Option
+\family default
+ is the Mac label for the right 
+\family sans
+Alt
+\family default
+ 
+\family sans
+/ AltGr 
+\family default
+key).
+ Alternatively, dashes can be inserted with
+\family sans
+\lang japanese
 挿入\SpecialChar menuseparator
 特殊文字\SpecialChar menuseparator
 記号
 \family default
 で挿入
+\lang english
+or with the 
+\begin_inset Quotes eld
+\end_inset
+
+unicode-insert
+\begin_inset Quotes erd
+\end_inset
+
+ \SpecialChar LyX
+ function with the Unicode code as argument (2013 for the em dash and 2014
+ for the en dash).
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+--
+\begin_inset Quotes erd
+\end_inset
+
+ in text
 \end_layout
 
 \end_inset
@@ -13928,12 +13933,16 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\family sans
-挿入\SpecialChar menuseparator
-特殊文字\SpecialChar menuseparator
-記号
-\family default
-で挿入
+\lang english
+system key combination or 
+\begin_inset Quotes eld
+\end_inset
+
+---
+\begin_inset Quotes erd
+\end_inset
+
+ in text
 \end_layout
 
 \end_inset
@@ -13980,6 +13989,11 @@ status collapsed
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
 \begin_inset VSpace defskip
 \end_inset
 
@@ -13987,29 +14001,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-「
-\family typewriter
--
-\family default
-」文字を続けて複数入力することによって，エヌ・ダッシュやエム・ダッシュを生成することもできます．これらは，最終的な出力では，自動的に適切な長さのダッシュとして出
-力されますが，\SpecialChar LyX
-の中ではそうなりません． 「-
-\begin_inset space \thinspace{}
-\end_inset
-
--」 でエヌ・ダッシュ， 「-
-\begin_inset space \thinspace{}
-\end_inset
-
--
-\begin_inset space \thinspace{}
-\end_inset
-
--」でエム・ダッシュが出力されます．
-\end_layout
-
-\begin_layout Standard
-これら3つのダッシュは，それ独自の長さを持つ，数式モードのマイナス記号とは異なります．「
+これらつのダッシュは，それ独自の長さを持つ，数式モードのマイナス記号とは異なります．「
 \family typewriter
 -
 \family default
@@ -14025,7 +14017,15 @@ line- and page-breaks
 \end_layout
 
 \begin_layout Enumerate
-From A–Z
+From A–Z;
+\lang english
+pages
+\begin_inset space ~
+\end_inset
+
+369–378
+\lang japanese
+
 \begin_inset space \hfill{}
 \end_inset
 
@@ -14049,6 +14049,21 @@ Oh — there's a dash.
 \end_inset
 
 (マイナス記号)
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+See also the 
+\begin_inset CommandInset href
+LatexCommand href
+name "Wikipedia entry on dashes"
+target "https://ja.wikipedia.org/wiki/%E3%83%80%E3%83%83%E3%82%B7%E3%83%A5_(%E8%A8%98%E5%8F%B7)"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -14151,15 +14166,31 @@ status collapsed
 
 の説明をしたいとしましょう．\SpecialChar LaTeX
 は，ハイフン「-」をハイフネートしても良い場所と判断します．しかし，この場所でハイフネートされると読みにくくなってしまいます．捷径が
-ハイフネートされることを防ぐためには，これをボックスの中に入れる方法があります．取扱説明書『
+ハイフネートされることを防ぐためには，これをボックスの中に入れる方法があります．
+\lang english
+To prevent the shortcut from being hyphenated, you can use a protected hyphen
+ (
+\family sans
+\lang japanese
+挿入\SpecialChar menuseparator
+整形\SpecialChar menuseparator
+
+\lang english
+Protected Hyphen
+\family default
+) or put it into a makebox as described in section 
 \emph on
-埋込オブジェクト篇
+Prevent Hyphenation
 \emph default
-』の「
+ of the 
 \emph on
-ハイフネーションの回避
+Embedded
+\begin_inset space ~
+\end_inset
+
+Objects
 \emph default
-」節をご覧ください．
+ manual.
 \end_layout
 
 \begin_layout Subsection
@@ -16005,7 +16036,7 @@ LaTeXとLyXのオプション
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename /clipart/mobius.eps
+	filename C:/clipart/mobius.eps
 	scale 70
 
 \end_inset
@@ -19341,7 +19372,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename /clipart/platypus.eps
+	filename C:/clipart/platypus.eps
 	lyxscale 50
 	width 50col%
 	rotateOrigin center
@@ -19478,7 +19509,7 @@ name "fig:何かわからない"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /clipart/escher-lsd.eps
+	filename C:/clipart/escher-lsd.eps
 	width 45col%
 
 \end_inset
@@ -19518,7 +19549,7 @@ name "fig:カモノハシ"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename /clipart/platypus.eps
+	filename C:/clipart/platypus.eps
 	lyxscale 60
 	width 45col%
 
@@ -20779,7 +20810,7 @@ status collapsed
 は，\SpecialChar LyX
 上では
 \begin_inset Graphics
-	filename /clipart/SpaceMarker.png
+	filename C:/clipart/SpaceMarker.png
 
 \end_inset
 
@@ -29987,7 +30018,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename /clipart/ChangesToolbar.png
+	filename C:/clipart/ChangesToolbar.png
 
 \end_inset
 
@@ -34440,7 +34471,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename /clipart/ExtraToolbar.png
+	filename C:/clipart/ExtraToolbar.png
 	width 100col%
 
 \end_inset
@@ -35227,7 +35258,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename /clipart/ViewToolbar.png
+	filename C:/clipart/ViewToolbar.png
 
 \end_inset
 
@@ -42103,7 +42134,7 @@ set_width "none"
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
-name "Index"
+name "索引"
 literal "false"
 
 \end_inset

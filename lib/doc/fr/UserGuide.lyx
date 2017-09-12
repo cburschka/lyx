@@ -233,7 +233,7 @@ Chrétien
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Informations de révision :
@@ -293,7 +293,7 @@ Enregistrement des propriétés temporaires
 \begin_inset Newline newline
 \end_inset
 
-Version 2.2.x
+Version 2.3.x
 \end_layout
 
 \begin_layout Standard
@@ -9692,9 +9692,9 @@ status open
 \series bold
 Nota :
 \series default
- Les figures et tableaux placés dans 
+ Les figures et tableaux placés dans des 
 \family sans
-des Flottants 
+Flottants 
 \family default
 ne sont pas concernés.
 \end_layout
@@ -13945,9 +13945,12 @@ Implicite
 Implicite
 \family default
  , la police pré-sélectionnée par la classe du document est utilisée.
- Dans la plupart des cas, ce sera la police \SpecialChar TeX
- standard, connue sous les noms
- de 
+ 
+\lang english
+With LyX's default font encoding this is a look-alike of
+\lang french
+ la police \SpecialChar TeX
+ standard 
 \begin_inset Quotes cld
 \end_inset
 
@@ -13963,7 +13966,27 @@ Computer Modern
 \family typewriter
 cm
 \family default
-) ou 
+):
+\lang english
+ either
+\lang french
+ 
+\begin_inset Quotes cld
+\end_inset
+
+
+\family typewriter
+cm-super
+\family default
+
+\begin_inset Quotes crd
+\end_inset
+
+ 
+\lang english
+or the bitmap font
+\lang french
+ 
 \begin_inset Quotes cld
 \end_inset
 
@@ -13979,19 +14002,20 @@ European Computer Modern
 \family typewriter
 ec
 \family default
-), mais certaines classes pré-sélectionnent des polices différentes.
+).
+ 
+\lang english
+However,
+\lang french
+ certaines classes pré-sélectionnent des polices différentes.
 \end_layout
 
 \begin_layout Standard
-Comme les polices 
-\family typewriter
-cm
-\family default
- et 
+Comme les police 
 \family typewriter
 ec
 \family default
- sont des polices matricielles, elles ont souvent un aspect 
+ est une police matricielles, elle a souvent un aspect 
 \begin_inset Quotes cld
 \end_inset
 
@@ -14093,158 +14117,6 @@ status collapsed
 En particulier, le crénage est meilleur.
 \end_layout
 
-\end_inset
-
-;
-\end_layout
-
-\begin_layout Itemize
-sélectionnez les polices 
-\family typewriter
-AE (Almost European)
-\family default
- dans le cas (rare) où 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Latin Modern
-\end_layout
-
-\end_inset
-
- n'est pas disponible ou ne fonctionne pas, si vous voulez toujours obtenir
- une apparence 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-cm/ec
-\end_layout
-
-\end_inset
-
-.
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-AE
-\end_layout
-
-\end_inset
-
- est une police virtuelle.
- Virtuelle signifie qu'elle 
-\begin_inset Quotes cld
-\end_inset
-
-emprunte
-\begin_inset Quotes crd
-\end_inset
-
- les contours des glyphes 
-\family typewriter
-cm
-\family default
- des autre polices.
- Le principal inconvénient est que certains caractères manquent à l'appel,
- comme les guillemets français (
-\begin_inset Quotes eld
-\end_inset
-
-«
-\begin_inset Quotes erd
-\end_inset
-
- et 
-\begin_inset Quotes eld
-\end_inset
-
-»
-\begin_inset Quotes erd
-\end_inset
-
-)
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-En chargeant le paquetage \SpecialChar LaTeX
- 
-\series bold
-aeguill
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Paquetages \SpecialChar LaTeX
- ! aeguill
-\end_layout
-
-\end_inset
-
- avec cette ligne dans le préambule du document
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-
-\backslash
-usepackage[ec]{aeguill}
-\begin_inset Newline newline
-\end_inset
-
-
-\series default
-le problème de guillemets devrait être résolu.
-\end_layout
-
-\end_inset
-
- et aussi que les caractères accentués ne sont pas constitués d'un seul
- glyphe, ils sont construits à partir de 
-\emph on
-deux 
-\emph default
-caractères, la lettre et l'accent.
- De ce fait, si vous faites une recherche dans un document utilisant des
- polices 
-\family typewriter
-AE
-\family default
-, vous ne pouvez pas chercher des caractères accentués: si vous cherchez
- le mot 
-\begin_inset Quotes cld
-\end_inset
-
-brève
-\begin_inset Quotes crd
-\end_inset
-
- dans le PDF, vous n'aurez aucun résultat, du fait que le programme va chercher
- le glyphe 
-\begin_inset Quotes cld
-\end_inset
-
-è 
-\begin_inset Quotes cld
-\end_inset
-
-et pas le groupement 
-\begin_inset Quotes cld
-\end_inset
-
-e +
-\begin_inset space ~
-\end_inset
-
- ̀
-\begin_inset Quotes crd
 \end_inset
 
 ;
@@ -17459,7 +17331,11 @@ Dans \SpecialChar LyX
 \begin_inset Quotes crd
 \end_inset
 
- existe dans trois longueurs, souvent appelées 
+ existe dans trois 
+\lang english
+variants
+\lang french
+, souvent appelées 
 \emph on
 trait d'union
 \emph default
@@ -17515,6 +17391,25 @@ dash
 \end_layout
 
 \begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
 <features tabularvalignment="middle">
@@ -17584,7 +17479,9 @@ d'union
 \begin_inset Quotes crd
 \end_inset
 
-
+ 
+\lang english
+in text
 \end_layout
 
 \end_inset
@@ -17614,7 +17511,38 @@ tiret
 
 \begin_layout Plain Layout
 
+\lang english
+system key combination
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+On Mac and Linux, the en dash is entered with 
 \family sans
+Option-hyphen
+\family default
+ and the em dash with 
+\family sans
+Shift-Option-hyphen
+\family default
+ (
+\family sans
+Option
+\family default
+ is the Mac label for the right 
+\family sans
+Alt
+\family default
+ 
+\family sans
+/ AltGr 
+\family default
+key).
+ Alternatively, dashes can be inserted with 
+\family sans
+\lang french
 Insertion\SpecialChar menuseparator
 Caractère
 \begin_inset space ~
@@ -17622,6 +17550,36 @@ Caractère
 
 spécial\SpecialChar menuseparator
 Symboles
+\family default
+\lang english
+ or with the 
+\begin_inset Quotes eld
+\end_inset
+
+unicode-insert
+\begin_inset Quotes erd
+\end_inset
+
+ \SpecialChar LyX
+ function with the Unicode code as argument (2013 for the em dash and 2014
+ for the en dash).
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+ou 
+\begin_inset Quotes cld
+\end_inset
+
+--
+\begin_inset Quotes crd
+\end_inset
+
+
+\lang english
+ in text
 \end_layout
 
 \end_inset
@@ -17651,14 +17609,20 @@ tiret long
 
 \begin_layout Plain Layout
 
-\family sans
-Insertion\SpecialChar menuseparator
-Caractère
-\begin_inset space ~
+\lang english
+system key combination
+\lang french
+ ou 
+\begin_inset Quotes cld
 \end_inset
 
-spécial\SpecialChar menuseparator
-Symboles
+---
+\begin_inset Quotes crd
+\end_inset
+
+
+\lang english
+ in text
 \end_layout
 
 \end_inset
@@ -17708,6 +17672,11 @@ signe moins
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
 \begin_inset VSpace defskip
 \end_inset
 
@@ -17715,53 +17684,8 @@ signe moins
 \end_layout
 
 \begin_layout Standard
-Vous pouvez aussi créer le tiret et le tiret long en utilisant le caractère
- 
-\begin_inset Quotes eld
-\end_inset
-
--
-\begin_inset Quotes erd
-\end_inset
-
- plusieurs fois de suite.
- \SpecialChar LyX
- les convertit automatiquement en un tiret de longueur appropriée dans
- le rendu final.
- 
-\begin_inset Quotes eld
-\end_inset
-
--
-\begin_inset space \thinspace{}
-\end_inset
-
-- 
-\begin_inset Quotes erd
-\end_inset
-
- engendre un tiret, 
-\begin_inset Quotes eld
-\end_inset
-
- -
-\begin_inset space \thinspace{}
-\end_inset
-
--
-\begin_inset space \thinspace{}
-\end_inset
-
-- 
-\begin_inset Quotes erd
-\end_inset
-
- un tiret long.
-\end_layout
-
-\begin_layout Standard
-Les trois types de tiret sont distincts du signe moins, qui apparaît en
- mode math et a une longueur différente.
+Les types de tiret sont distincts du signe moins, qui apparaît en mode math
+ et a une longueur différente.
  Voici quelques exemples d'emploi des tirets :
 \end_layout
 
@@ -17818,6 +17742,21 @@ tiret long
 signe moins
 \emph default
 )
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+See also the 
+\begin_inset CommandInset href
+LatexCommand href
+name "Wikipedia entry on dashes"
+target "https://fr.wikipedia.org/wiki/Tiret"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -17950,8 +17889,24 @@ A-b c
  \SpecialChar LaTeX
  considère le tiret comme une possibilité de césure, or une césure à cet
  endroit serait peu judicieuse.
- Pour empêcher le raccourci d'être coupé en deux, vous pouvez le mettre
- dans une boîte comme expliqué à la section 
+ Pour empêcher le raccourci d'être coupé en deux, vous pouvez 
+\lang english
+use a protected hyphen 
+\lang french
+(
+\family sans
+Insertion\SpecialChar menuseparator
+Typographie
+\begin_inset space ~
+\end_inset
+
+spéciale\SpecialChar menuseparator
+
+\lang english
+Protected Hyphen
+\family default
+\lang french
+) ou le mettre dans une boîte comme expliqué à la section 
 \emph on
 Empêcher la césure
 \emph default
@@ -18421,17 +18376,35 @@ guillemets
 \family typewriter
 "
 \family default
- (
-\lang english
-note that \SpecialChar LyX
- makes a sensible proposal for the selected main language
-\lang french
-).
+ (notez que \SpecialChar LyX
+ propse un choix raisonnable pour la principale langue sélectionnée).
  Il y a 14
 \begin_inset space ~
 \end_inset
 
-possibilités :
+possibilités
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Nous avons traduit ci-après 
+\emph on
+quotation mark
+\emph default
+ par 
+\begin_inset Quotes cld
+\end_inset
+
+guillemets
+\begin_inset Quotes crd
+\end_inset
+
+, même si ce n'en sont pas (NdT).
+\end_layout
+
+\end_inset
+
+ :
 \end_layout
 
 \begin_layout Labeling
@@ -18439,11 +18412,10 @@ possibilités :
 \noindent
 
 \family sans
-\lang english
 \begin_inset Quotes eld
 \end_inset
 
-Outer
+Extérieur
 \begin_inset Quotes erd
 \end_inset
 
@@ -18451,7 +18423,7 @@ Outer
 \begin_inset space ~
 \end_inset
 
-and
+et
 \begin_inset space ~
 \end_inset
 
@@ -18459,44 +18431,40 @@ and
 \begin_inset Quotes els
 \end_inset
 
-inner
+intérieur
 \begin_inset Quotes ers
 \end_inset
 
 
 \family default
- Produces 
+ produit les guillemets 
 \begin_inset Quotes eld
 \end_inset
 
-these outer
+extérieurs
 \begin_inset Quotes erd
 \end_inset
 
- and 
+ et 
 \begin_inset Quotes els
 \end_inset
 
-these inner
+intérieurs
 \begin_inset Quotes ers
 \end_inset
 
- quotation marks (as common, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., in the US)
+ (usuels e.g.
+ aux USA)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes sld
 \end_inset
 
-Outer
+Extérieur
 \begin_inset Quotes sld
 \end_inset
 
@@ -18504,7 +18472,7 @@ Outer
 \begin_inset space ~
 \end_inset
 
-and
+et
 \begin_inset space ~
 \end_inset
 
@@ -18512,44 +18480,44 @@ and
 \begin_inset Quotes sls
 \end_inset
 
-inner
+intérieur
 \begin_inset Quotes srs
 \end_inset
 
 
 \family default
- Produces 
+ produit les guillemets 
 \begin_inset Quotes sld
 \end_inset
 
-these outer
+extérieurs
 \begin_inset Quotes sld
 \end_inset
 
- and 
+ et 
 \begin_inset Quotes sls
 \end_inset
 
-these inner
+intérieurs
 \begin_inset Quotes srs
 \end_inset
 
- quotation marks (as common, e.
+  (usuels e.
 \begin_inset space \thinspace{}
 \end_inset
 
-g., in Sweden)
+g.
+ en Suède)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes gld
 \end_inset
 
-Outer
+Extérieur
 \begin_inset Quotes grd
 \end_inset
 
@@ -18557,7 +18525,7 @@ Outer
 \begin_inset space ~
 \end_inset
 
-and
+et
 \begin_inset space ~
 \end_inset
 
@@ -18565,44 +18533,44 @@ and
 \begin_inset Quotes gls
 \end_inset
 
-inner
+intérieur
 \begin_inset Quotes grs
 \end_inset
 
 
 \family default
- Produces 
+ produit les guillemets 
 \begin_inset Quotes gld
 \end_inset
 
-these outer
+extérieurs
 \begin_inset Quotes grd
 \end_inset
 
- and 
+ et 
 \begin_inset Quotes gls
 \end_inset
 
-these inner
+intérieurs
 \begin_inset Quotes grs
 \end_inset
 
- quotation marks (as common, e.
+  (usuels e.
 \begin_inset space \thinspace{}
 \end_inset
 
-g., in Germany)
+g.
+ en Allemagne)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes pld
 \end_inset
 
-Outer
+Extérieur
 \begin_inset Quotes prd
 \end_inset
 
@@ -18610,7 +18578,7 @@ Outer
 \begin_inset space ~
 \end_inset
 
-and
+et
 \begin_inset space ~
 \end_inset
 
@@ -18618,44 +18586,44 @@ and
 \begin_inset Quotes pls
 \end_inset
 
-inner
+intérieur
 \begin_inset Quotes prs
 \end_inset
 
 
 \family default
- Produces 
+ produit les guillemets 
 \begin_inset Quotes pld
 \end_inset
 
-these outer
+extérieurs
 \begin_inset Quotes prd
 \end_inset
 
- and 
+ et 
 \begin_inset Quotes pls
 \end_inset
 
-these inner
+intérieurs
 \begin_inset Quotes prs
 \end_inset
 
- quotation marks (as common, e.
+  (usuels e.
 \begin_inset space \thinspace{}
 \end_inset
 
-g., in Poland)
+g.
+ en Pologne)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes cld
 \end_inset
 
-Outer
+Extérieur
 \begin_inset Quotes crd
 \end_inset
 
@@ -18663,7 +18631,7 @@ Outer
 \begin_inset space ~
 \end_inset
 
-and
+et
 \begin_inset space ~
 \end_inset
 
@@ -18671,44 +18639,44 @@ and
 \begin_inset Quotes cls
 \end_inset
 
-inner
+intérieur
 \begin_inset Quotes crs
 \end_inset
 
 
 \family default
- Produces 
+ produit les guillemets 
 \begin_inset Quotes cld
 \end_inset
 
-these outer
+extérieurs
 \begin_inset Quotes crd
 \end_inset
 
- and 
+ et 
 \begin_inset Quotes cls
 \end_inset
 
-these inner
+intérieurs
 \begin_inset Quotes crs
 \end_inset
 
- quotation marks (as common, e.
+  (usuels e.
 \begin_inset space \thinspace{}
 \end_inset
 
-g., in Switzerland)
+g.
+ en Suisse)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes ald
 \end_inset
 
-Outer
+Extérieur
 \begin_inset Quotes ard
 \end_inset
 
@@ -18716,7 +18684,7 @@ Outer
 \begin_inset space ~
 \end_inset
 
-and
+et
 \begin_inset space ~
 \end_inset
 
@@ -18724,44 +18692,47 @@ and
 \begin_inset Quotes als
 \end_inset
 
-inner
+intérieur
 \begin_inset Quotes ars
 \end_inset
 
 
 \family default
- Produces 
+ produit les guillemets 
 \begin_inset Quotes ald
 \end_inset
 
-these outer
+extérieurs
 \begin_inset Quotes ard
 \end_inset
 
- and 
+ et 
 \begin_inset Quotes als
 \end_inset
 
-these inner
+intérieurs
 \begin_inset Quotes ars
 \end_inset
 
- quotation marks (as common, e.
+  (usuels e.
 \begin_inset space \thinspace{}
 \end_inset
 
-g., in Denmark)
+g.
+\begin_inset space ~
+\end_inset
+
+au Danemark)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes qrd
 \end_inset
 
-Outer
+Extérieur
 \begin_inset Quotes qrd
 \end_inset
 
@@ -18769,7 +18740,7 @@ Outer
 \begin_inset space ~
 \end_inset
 
-and
+et
 \begin_inset space ~
 \end_inset
 
@@ -18777,40 +18748,39 @@ and
 \begin_inset Quotes qls
 \end_inset
 
-inner
+intérieur
 \begin_inset Quotes qls
 \end_inset
 
 
 \family default
- Produces 
+ produit les guillemets 
 \begin_inset Quotes qrd
 \end_inset
 
-these outer
+extérieurs
 \begin_inset Quotes qrd
 \end_inset
 
- and 
+ et 
 \begin_inset Quotes qls
 \end_inset
 
-these inner
+intérieurs
 \begin_inset Quotes qls
 \end_inset
 
- quotation marks (so-called plain or non-typographical quotation marks)
+  (appelés guillemets ordinaires ou non-typographiques)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes bld
 \end_inset
 
-Outer
+Extérieur
 \begin_inset Quotes brd
 \end_inset
 
@@ -18818,7 +18788,7 @@ Outer
 \begin_inset space ~
 \end_inset
 
-and
+et
 \begin_inset space ~
 \end_inset
 
@@ -18826,44 +18796,44 @@ and
 \begin_inset Quotes bls
 \end_inset
 
-inner
+intérieur
 \begin_inset Quotes brs
 \end_inset
 
 
 \family default
- Produces 
+ produit les guillemets 
 \begin_inset Quotes bld
 \end_inset
 
-these outer
+extérieurs
 \begin_inset Quotes brd
 \end_inset
 
- and 
+ et 
 \begin_inset Quotes bls
 \end_inset
 
-these inner
+intérieurs
 \begin_inset Quotes brs
 \end_inset
 
- quotation marks (as common, e.
+  (usuels e.
 \begin_inset space \thinspace{}
 \end_inset
 
-g., in Great Britain)
+g.
+ en Grande Bretagne)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes fld
 \end_inset
 
-Outer
+Extérieur
 \begin_inset Quotes frd
 \end_inset
 
@@ -18871,7 +18841,7 @@ Outer
 \begin_inset space ~
 \end_inset
 
-and
+et
 \begin_inset space ~
 \end_inset
 
@@ -18879,44 +18849,44 @@ and
 \begin_inset Quotes fls
 \end_inset
 
-inner
+intérieur
 \begin_inset Quotes frs
 \end_inset
 
 
 \family default
- Produces 
+ produit les guillemets 
 \begin_inset Quotes fld
 \end_inset
 
-these outer
+extérieurs
 \begin_inset Quotes frd
 \end_inset
 
- and 
+ et 
 \begin_inset Quotes fls
 \end_inset
 
-these inner
+intérieurs
 \begin_inset Quotes frs
 \end_inset
 
- quotation marks (as common, e.
+  (usuels e.
 \begin_inset space \thinspace{}
 \end_inset
 
-g., in France)
+g.
+ en France)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes ild
 \end_inset
 
-Outer
+Extérieur
 \begin_inset Quotes ird
 \end_inset
 
@@ -18924,7 +18894,7 @@ Outer
 \begin_inset space ~
 \end_inset
 
-and
+et
 \begin_inset space ~
 \end_inset
 
@@ -18932,39 +18902,37 @@ and
 \begin_inset Quotes ils
 \end_inset
 
-inner
+intérieur
 \begin_inset Quotes irs
 \end_inset
 
 
 \family default
- Produces 
+ produit les guillemets 
 \begin_inset Quotes ild
 \end_inset
 
-these outer
+extérieurs
 \begin_inset Quotes ird
 \end_inset
 
- and 
+ et 
 \begin_inset Quotes ils
 \end_inset
 
-these inner
+intérieurs
 \begin_inset Quotes irs
 \end_inset
 
- quotation marks (another style common in France)
+  (autre typographie usuelle en France)
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Maybe you wonder why one does not simply use only outer marks in this case,
- since these look identical to the inner marks.
- The answer is that you cannot easily switch to another style then (where
- the inner marks differ).
+Vous vous demandez peut-être pourquoi ne pas utiliser simplement les guillemets
+ extérieurs partout dans ce cas puisqu'ils apparaissent semblables.
+ La réponse est que vous ne pourriez pas facilement basculer vers une autre
+ style (pour lequel les caractères intérieurs et extérieurs diffèrent).
 \end_layout
 
 \end_inset
@@ -18976,11 +18944,10 @@ Maybe you wonder why one does not simply use only outer marks in this case,
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes rld
 \end_inset
 
-Outer
+Extérieur
 \begin_inset Quotes rrd
 \end_inset
 
@@ -18988,7 +18955,7 @@ Outer
 \begin_inset space ~
 \end_inset
 
-and
+et
 \begin_inset space ~
 \end_inset
 
@@ -18996,44 +18963,43 @@ and
 \begin_inset Quotes rls
 \end_inset
 
-inner
+intérieur
 \begin_inset Quotes rrs
 \end_inset
 
 
 \family default
- Produces 
+ produit les guillemets 
 \begin_inset Quotes rld
 \end_inset
 
-these outer
+extérieurs
 \begin_inset Quotes rrd
 \end_inset
 
- and 
+ et 
 \begin_inset Quotes rls
 \end_inset
 
-these inner
+intérieurs
 \begin_inset Quotes rrs
 \end_inset
 
- quotation marks (as common, e.
+  (usuels, e.
 \begin_inset space \thinspace{}
 \end_inset
 
-g., in Russia)
+g.,en Russie)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
 
 \family sans
-\lang english
 \begin_inset Quotes wld
 \end_inset
 
-Outer
+Extérieur
 \begin_inset Quotes wrd
 \end_inset
 
@@ -19041,7 +19007,7 @@ Outer
 \begin_inset space ~
 \end_inset
 
-and
+et
 \begin_inset space ~
 \end_inset
 
@@ -19049,41 +19015,39 @@ and
 \begin_inset Quotes wls
 \end_inset
 
-inner
+intérieur
 \begin_inset Quotes wrs
 \end_inset
 
 
 \family default
- Produces 
+ produit les guillemets 
 \begin_inset Quotes wld
 \end_inset
 
-these outer
+extérieurs
 \begin_inset Quotes wrd
 \end_inset
 
- and 
+ et 
 \begin_inset Quotes wls
 \end_inset
 
-these inner
+intérieurs
 \begin_inset Quotes wrs
 \end_inset
 
- quotation marks (another style common in Sweden)
+  (autre typographie usuelle en Suède)
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
-
-\lang english
 \begin_inset Quotes jld
 \end_inset
 
 
 \family sans
-Outer
+Extérieur
 \family default
 
 \begin_inset Quotes jrd
@@ -19095,7 +19059,7 @@ Outer
 \begin_inset space ~
 \end_inset
 
-and
+et
 \begin_inset space ~
 \end_inset
 
@@ -19107,41 +19071,36 @@ and
 
 
 \family sans
-inner
+intérieur
 \family default
 
 \begin_inset Quotes jrs
 \end_inset
 
- Produces 
+ produit les guillemets 
 \begin_inset Quotes jld
 \end_inset
 
-these outer
+extérieurs
 \begin_inset Quotes jrd
 \end_inset
 
- and 
+ et 
 \begin_inset Quotes jls
 \end_inset
 
-these inner
+intérieurs
 \begin_inset Quotes jrs
 \end_inset
 
- quotation marks (as common, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., in Japan)
+  (usuels e.g.
+ au Japon)
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Note that these characters are just emulated with similar-looking math symbols
- in many encodings that do not cover these glyphs.
+Notez que ces caractères sont simplement imités par des symboles mathématiques
+ ressemblants pour de nombreux encodages qui ne connaissent pas ces glyphes.
 \end_layout
 
 \end_inset
@@ -19151,14 +19110,12 @@ Note that these characters are just emulated with similar-looking math symbols
 
 \begin_layout Labeling
 \labelwidthstring <<Outer>> and <<inner>>:
-
-\lang english
 \begin_inset Quotes kld
 \end_inset
 
 
 \family sans
-Outer
+Extérieur
 \family default
 
 \begin_inset Quotes krd
@@ -19170,7 +19127,7 @@ Outer
 \begin_inset space ~
 \end_inset
 
-and
+et
 \begin_inset space ~
 \end_inset
 
@@ -19182,41 +19139,40 @@ and
 
 
 \family sans
-inner
+intérieur
 \family default
 
 \begin_inset Quotes krs
 \end_inset
 
- Produces 
+ produit les guillemets 
 \begin_inset Quotes kld
 \end_inset
 
-these outer
+extérieurs
 \begin_inset Quotes krd
 \end_inset
 
- and 
+ et 
 \begin_inset Quotes kls
 \end_inset
 
-these inner
+intérieurs
 \begin_inset Quotes krs
 \end_inset
 
- quotation marks (as common, e.
+  (usuels e.
 \begin_inset space \thinspace{}
 \end_inset
 
-g., in North Korea and China)
+g.
+ en Corée du Nord et en Chine)
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Note that these characters are just emulated with similar-looking math symbols
- in many encodings that do not cover these glyphs.
+Notez que ces caractères sont simplement imités par des symboles mathématiques
+ ressemblants pour de nombreux encodages qui ne connaissent pas ces glyphes.
 \end_layout
 
 \end_inset
@@ -19225,118 +19181,105 @@ Note that these characters are just emulated with similar-looking math symbols
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Inner quotation marks
+Les guillemets intérieurs
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-In many writing cultures, these are single quotation marks.
- But as the British and French styles show, this is not necessarily the
- case (and specifically the British style shows that 
-\begin_inset Quotes eld
+Pour beaucoup de cultures typographiques, ceux-ci sont simplement des apostrophe
+s.
+ Mais comme le montrent les styles britannique et français, ce n'est pas
+ forcément le cas et particulièrement pour les britanniques, 
+\begin_inset Quotes cld
 \end_inset
 
-outer
-\begin_inset Quotes erd
+extérieur
+\begin_inset Quotes crd
 \end_inset
 
- does not necessarily mean 
-\begin_inset Quotes eld
+ ne signifie pas nécessairement 
+\begin_inset Quotes cld
 \end_inset
 
 double
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
 ).
- This is why we call them 
-\begin_inset Quotes els
+ C'est la raison pour laquelle nous les dénommons 
+\begin_inset Quotes cld
 \end_inset
 
-inner
-\begin_inset Quotes ers
+intérieurs
+\begin_inset Quotes crd
 \end_inset
 
- as opposed to 
-\begin_inset Quotes eld
+ par opposition aux guillemets 
+\begin_inset Quotes cld
 \end_inset
 
-outer
-\begin_inset Quotes erd
+extérieurs
+\begin_inset Quotes crd
 \end_inset
 
- quotation marks.
+.
 \end_layout
 
 \end_inset
 
- for quotations inside quotations (and other tasks in some languages, such
- as 
-\begin_inset Quotes els
+ pour des citations encloses dans des citations (et pour d'autre tâches
+ dans certaines langues, comme l'insertion de 
+\begin_inset Quotes cld
 \end_inset
 
-scare quotes
-\begin_inset Quotes ers
+guillemets ironiques
+\begin_inset Quotes crd
 \end_inset
 
-) can be obtained by means of the shortcut 
+ peuvent être saisis via le raccourci 
 \begin_inset Info
 type  "shortcut"
 arg   "quote-insert inner"
 \end_inset
 
- and via the 
+ et via le menu 
 \family sans
-\lang french
 Insertion\SpecialChar menuseparator
-Caractère spécial
-\family default
-\lang english
- menu.
+Caractère spécial.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-By default, the quotation mark styles are persistent.
- That is to say, a quotation mark maintains the style that was current when
- it was inserted, even if the document-wide style changes.
- This allows you to enter marks of different style.
- If you check the setting 
+Implicitement, les guillemets sont persistants, c'est-à-dire qu'un guillemet
+ garde le style qu'il avait lors de sa saisie, même si le style du document
+ change.
+ Ceci vous permet de saisir des guillemets dans des styles différents.
+ Si cependant vous cochez la case 
 \family sans
-Use dynamic quotation marks
+Utiliser des guillemets dynamiques
 \family default
- in 
+ dans 
 \family sans
 Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Language
+Paramètres\SpecialChar menuseparator
+Langue
 \family default
-, however, special quotation marks will be inserted (in the LyX window,
- they appear in a special color).
- These marks will automatically adapt to the main style (and its changes).
- Such quotation marks make it easy to alter the quotation mark style in
- one step (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., if your publisher requests a different style).
+, des guillemets spéciaux seront insérés (dans la fenêtre \SpecialChar LyX
+, ils sont colorés
+ différemment).
+ Ces guillemets s’adapteront automatiquement au style principal et à ses
+ modifications.
+ De tels guillemets facilitent le changement de style en une seule étape
+ (par exemple si votre éditeur requiert un style différent).
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Individual quotation marks (i.
+Les guillemets individuels (i.
 \begin_inset space \thinspace{}
 \end_inset
 
-e., their level [inner, outer], side [opening, closing], and style) can be
- easily switched by a context menu that pops up if you right-click on a
- mark.
+e., leur niveau [intérieur, extérieur], leur côté [ouvrant, fermant], et
+ leur style) peuvent être facilement modifiés via un menu contextuel qui
+ s'ouvre par un clic droit sur le guillemet.
 \end_layout
 
 \begin_layout Subsection
@@ -28780,7 +28723,7 @@ fig
 \series bold
 
 \backslash
-newref{fig}{refcmd={l'image on page 
+newref{fig}{refcmd={l'image page 
 \backslash
 pageref{#1}}}
 \series default
@@ -28788,26 +28731,26 @@ pageref{#1}}}
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-Note that neither 
+Notez bien que ni 
 \series bold
 prettyref
 \series default
- nor 
+ ni 
 \series bold
 refstyle 
 \series default
-predefines reference formats for all available types.
- This is especially true for the wide variety of mathematical `theorem'
- environments.
- So if you want to make formatted references to, say, Propositions, then
- you will need to define the relevant format yourself.
- For 
+ne définissent des formats de citation pour tous les types possibles.
+ Ceci est particulièrement vrai pour la longue liste d'environnements de
+ théorèmes mathématiques: si vous voulez insérer des références mises en
+ forme pour disons les Propositions, vous devrez alors définir le format
+ approprié vous-même.
+ Pour 
 \series bold
 prettyref
 \series default
-, you might do so as follows:
+, vous pourriez procéder ainsi;
+\lang english
+
 \begin_inset Newline newline
 \end_inset
 
@@ -28816,11 +28759,7 @@ prettyref
 \lang french
 
 \backslash
-newrefformat{prop}{
-\lang english
-Proposition
-\lang french
- 
+newrefformat{prop}{Proposition 
 \backslash
 ref{#1}}
 \series default
@@ -28828,11 +28767,8 @@ ref{#1}}
 \begin_inset Newline newline
 \end_inset
 
-Pour les détails sur 
-\lang english
-defining formatted references
-\lang french
-, voyez la documentation des paquetages, 
+Pour les détails sur la définition des références mises en forme, voyez
+ la documentation des paquetages, 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "prettyref,refstyle"
@@ -28844,27 +28780,23 @@ literal "true"
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-The options 
+Les options 
 \family sans
-Plural
+Pluriel
 \family default
- and 
+ et 
 \family sans
-Capitalized
+Majuscules
 \family default
- will be available with formatted references only if you are using the 
+ ne seront disponibles que si vous utilisez le paquetage 
 \series bold
 refstyle
 \series default
- package.
-\lang french
-
+.
 \begin_inset Newline newline
 \end_inset
 
-Voici un exemple de référence mise ne forme utilisant 
+Voici un exemple de référence mise en forme utilisant 
 \begin_inset Flex Strong
 status collapsed
 
@@ -28916,16 +28848,11 @@ reference "fig:Deux-images-déformées."
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Label
+Sans
 \begin_inset space ~
 \end_inset
 
-only: prints only the \SpecialChar LaTeX
- label for the reference: 
-\lang french
-
+préfixe: n'imprime que l'étiquette pour la référence: 
 \begin_inset CommandInset ref
 LatexCommand labelonly
 reference "fig:Deux-images-déformées."
@@ -28936,50 +28863,38 @@ noprefix "false"
 \end_inset
 
 
-\lang english
-
 \begin_inset Newline newline
 \end_inset
 
-This allows for customization, using \SpecialChar TeX
- Code, if you want to issue a command
- that \SpecialChar LyX
- does not support.
- If you are using 
+Ceci permet une personnalisation via le code \SpecialChar TeX
+, si vous souhaitez émettre
+ une commande inconnue de \SpecialChar LyX
+.
+ Si vous utilisez 
 \series bold
 refstyle
 \series default
-, then you may want to use the 
+, vous pourrez tirer profit de l'option 
 \family sans
-No
+Sans
 \begin_inset space ~
 \end_inset
 
-Prefix
+Préfixe
 \family default
- option, which will output only the part of the reference following the
- 
-\begin_inset Quotes eld
+, qui conduira à l’émission de la seule partie de l'étiquette qui suit le
+ séparateur 
+\begin_inset Quotes cld
 \end_inset
 
 :
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
- separator.
- This is the form needed for e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-
+.
+ Ceci est utile par exemple pour les commandes d'intervalle de 
 \series bold
-refstyle
-\series default
-'s range commands.
+refstyle.
 \end_layout
 
 \begin_layout Standard
@@ -33601,23 +33516,22 @@ Examen-Question-Réponse
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are also inverted branch insets, whose content is output just in case
- the branch is 
+Il existe aussi des inserts de branche inversée, dont le contenu est imprimé
+ uniquement si la branche n'est 
 \emph on
-not
+pas
 \emph default
- activated.
- This make it easy to add alternative text for different versions of a document.
- To control whether a particular inset is inverted, right-click on the inset
- button and choose 
+ active.
+ Ceci facilite la saisie de texte alternatif pour différentes versions d'un
+ document.
+ Pour sélectionner l'inversion d'un insert donné, faites un clic droit sur
+ le bouton d'insert et choisissez 
 \family sans
-Invert
+Inverser
 \begin_inset space ~
 \end_inset
 
-Inset
+l'insert
 \family default
 .
 \end_layout
@@ -33630,18 +33544,17 @@ status open
 \begin_layout Standard
 
 \series bold
-\lang english
-No answer:
+Pas de réponse:
 \series default
- Because the 
-\begin_inset Quotes eld
+ parce que la branche 
+\begin_inset Quotes cld
 \end_inset
 
-Answer
-\begin_inset Quotes erd
+Réponse
+\begin_inset Quotes crd
 \end_inset
 
- branch is deactivated.
+ est inversée.
 \end_layout
 
 \end_inset
@@ -45837,13 +45750,9 @@ Paquetages \SpecialChar LaTeX
 \end_inset
 
 .
- 
-\lang english
-If you use
-\lang french
- Bib\SpecialChar TeX
-, vous pouvez autoriser la création de bibliographies thématiques à
- l'aide du paquetage 
+ Si vous utilisez Bib\SpecialChar TeX
+, vous pouvez autoriser la création de bibliographies
+ thématiques à l'aide du paquetage 
 \series bold
 bibtopic
 \series default
@@ -45859,24 +45768,17 @@ Paquetages \SpecialChar LaTeX
 \end_inset
 
 .
- 
-\lang english
-If you use 
+ Si vous utilisez 
 \noun on
 Biblatex
 \noun default
-, you can select the style files and specify further options.
- Finally
-\lang french
- vous pouvez sélectionner un 
-\lang english
-document-specific
-\lang french
- 
+, vous pouvez sélectionner les fichiers de styles et spécifier d'autres
+ options.
+ Enfin vous pouvez sélectionner un 
 \family sans
 Processeur
 \family default
- pour engendrer la bibliographie.
+ associé au document pour engendrer la bibliographie.
  Pour plus d'information voir la section
 \begin_inset space ~
 \end_inset
@@ -47216,10 +47118,10 @@ arg   "closetab"
 \family default
 ) à la droite de la barre des onglets pour fermer ceux-ci.
  Sinon, chaque document a son propre bouton de fermeture.
- 
+ Indépendamment de cette option, il est toujours possible de fermer un onglet
+ par un clic central dans la barre d'onglets
 \lang english
-Regardless of this option, one can always close a tab by middle-clicking
- it in the tab bar.
+.
 \end_layout
 
 \begin_layout Standard
@@ -47244,7 +47146,7 @@ pour cette option, il vous faut redémarrer \SpecialChar LyX
 \begin_layout Standard
 Avec l'option 
 \family sans
-Fermeture du dernier affichagel
+Fermeture du dernier affichage
 \family default
  vous pouvez décider si un document est fermé ou caché quand son onglet
  est fermé.
