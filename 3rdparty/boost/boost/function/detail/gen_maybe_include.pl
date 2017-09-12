@@ -1,5 +1,4 @@
 #!/usr/bin/perl -w
-# -*- mode: perl; -*-
 #
 # Boost.Function library
 #

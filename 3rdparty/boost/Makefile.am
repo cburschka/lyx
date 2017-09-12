@@ -23,7 +23,7 @@ liblyxboost_a_SOURCES = \
 	libs/regex/src/instances.cpp \
 	libs/regex/src/cpp_regex_traits.cpp \
 	libs/regex/src/c_regex_traits.cpp \
-	libs/regex/src/wc_regex_traits.cpp 
+	libs/regex/src/wc_regex_traits.cpp
 
 else
 
