@@ -57,6 +57,7 @@ GuiBibtex::GuiBibtex(GuiView & lv)
 	setupUi(this);
 
 	QDialog::setModal(true);
+	setWindowModality(Qt::WindowModal);
 
 	connect(okPB, SIGNAL(clicked()),
 		this, SLOT(slotOK()));
