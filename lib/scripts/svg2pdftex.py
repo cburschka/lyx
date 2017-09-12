@@ -33,8 +33,9 @@ def runCommand(cmd):
     ''' Utility function:
         run a command, quit if fails
     '''
-    if subprocess.call(cmd) != 0:
-        print "Command '%s' fails." % cmd
+    res = subprocess.check_call(cmd)
+    if res != 0:
+        print "Command '%s' fails (exit code: %i)." % (res.cmd, res.returncode)
         sys.exit(1)
 
 InkscapeCmd = "inkscape"
@@ -65,7 +66,7 @@ OutBase = os.path.splitext(OutputFile)[0]
 # while outsourcing the text to a LaTeX file ${OutBase}.pdf_tex which includes and overlays
 # the PDF image and can be \input to LaTeX files. We rename the latter file to ${OutputFile}
 # (although this is probably the name it already has).
-runCommand([InkscapeCmd, '--file=%s' % (InputFile), '--export-pdf=%s.pdf' % (OutBase), '--export-latex'])
+runCommand([r'%s' % InkscapeCmd, '--file=%s' % InputFile, '--export-pdf=%s.pdf' % OutBase, '--export-latex'])
 
 os.rename('%s.pdf_tex' % OutBase, OutputFile)
 
