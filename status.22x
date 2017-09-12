@@ -119,6 +119,9 @@ What's new
 
 - Avoid a case of stuck cursor after entering an inset (bug 10630).
 
+- Fix problems with hidden "BibTeX Add" dialogs on MacOSX by using drawers
+  instead of modal subdialogs (bug 10662).
+
 - Don't swallow labels not entered through the toolbar in mathed (bug 10546).
 
 - Fix bad context menu on insets that do not have one (bug 10616).
