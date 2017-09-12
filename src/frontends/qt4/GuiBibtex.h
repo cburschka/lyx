@@ -31,6 +31,7 @@ public:
 	{
 		Ui::BibtexAddUi::setupUi(this);
 		QDialog::setModal(true);
+		setWindowModality(Qt::WindowModal);
 	}
 };
 
