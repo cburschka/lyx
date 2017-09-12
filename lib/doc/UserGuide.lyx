@@ -8337,14 +8337,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8357,7 +8355,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8381,7 +8378,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -12696,15 +12692,8 @@ status open
 \series bold
 Note:
 \series default
- In practice, some fonts might fail due to 
-\change_inserted -1402925745 1504687062
-a legacy (non Unicode) font encoding, 
-\change_unchanged
-bad metrics
-\change_inserted -1402925745 1504687069
-,
-\change_unchanged
- and other font deficiencies; so you might have to experiment.
+ In practice, some fonts might fail due to a legacy (non Unicode) font encoding,
+ bad metrics, and other font deficiencies; so you might have to experiment.
 \end_layout
 
 \end_inset
@@ -12856,20 +12845,9 @@ Default
 Default,
 \family default
  the font that is preset by the current document class is used.
- 
-\change_inserted -1402925745 1503765997
-With LyX's default font encoding
-\change_deleted -1402925745 1503766002
-In most cases
-\change_unchanged
-, this 
-\change_inserted -1402925745 1503766035
-is a lookalike of
-\change_deleted -1402925745 1503766038
-will be
-\change_unchanged
- the standard \SpecialChar TeX
- font, known as 
+ With LyX's default font encoding, this is a look-alike of the standard
+ \SpecialChar TeX
+ font 
 \begin_inset Quotes eld
 \end_inset
 
@@ -12889,23 +12867,19 @@ Modern
 \family typewriter
 cm
 \family default
-)
-\change_inserted -1402925745 1503766057
-: either 
+): either 
 \begin_inset Quotes eld
 \end_inset
 
-CM-Super
+
+\family typewriter
+cm-super
+\family default
+
 \begin_inset Quotes erd
 \end_inset
 
-
-\change_unchanged
- or 
-\change_inserted -1402925745 1503766067
-the bitmap font 
-\change_unchanged
-
+ or the bitmap font 
 \begin_inset Quotes eld
 \end_inset
 
@@ -12921,72 +12895,22 @@ European Computer Modern
 \family typewriter
 ec
 \family default
-)
-\change_inserted -1402925745 1503766075
-.
-\change_deleted -1402925745 1503766073
-,
-\change_unchanged
- 
-\change_deleted -1402925745 1503766086
-but
-\change_inserted -1402925745 1503766132
-However,
-\change_unchanged
- some classes 
-\change_deleted -1402925745 1503766097
-pre
-\change_unchanged
-set different default fonts.
+).
+ However, some classes set different default fonts.
 \end_layout
 
 \begin_layout Standard
 As 
-\change_deleted -1402925745 1503766148
-
-\family typewriter
-cm
-\family default
- and
-\change_unchanged
- 
 \family typewriter
 ec
 \family default
- 
-\change_inserted -1402925745 1503766179
-is 
-\change_unchanged
-a
-\change_deleted -1402925745 1503766171
-re
-\change_unchanged
- bitmap font
-\change_deleted -1402925745 1503766192
-s
-\change_unchanged
-, 
-\change_deleted -1402925745 1503766205
-they often
-\change_inserted -1402925745 1503766207
-it
-\change_unchanged
- look
-\change_inserted -1402925745 1503766208
-s
-\change_unchanged
- pixelated in PDF output, especially when you read the PDF in a zoomed size.
+ is a bitmap font, it looks pixelated in PDF output, especially when you
+ read the PDF in a zoomed size.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-This problem 
-\change_deleted -1402925745 1503766226
-does not appear
-\change_inserted -1402925745 1503766228
-is less severe
-\change_unchanged
- if you read PDFs in 
+This problem is less severe if you read PDFs in 
 \family typewriter
 Adobe
 \begin_inset space ~
@@ -13015,22 +12939,12 @@ Modern
 \family default
  fonts, which is the recommended choice if you want to keep the look of
  
-\change_inserted -1402925745 1503766401
-
 \family typewriter
-Computer
-\begin_inset space ~
-\end_inset
-
-Modern
-\change_deleted -1402925745 1503766382
 cm
 \family default
 /
 \family typewriter
 ec
-\change_unchanged
-
 \family default
 .
  
@@ -13070,165 +12984,6 @@ One difference is improved kerning.
 
 \end_inset
 
-
-\change_deleted -1402925745 1503766263
-
-\end_layout
-
-\begin_layout Itemize
-
-\change_deleted -1402925745 1503766263
-or select the 
-\family sans
-AE
-\begin_inset space ~
-\end_inset
-
-(Almost
-\begin_inset space ~
-\end_inset
-
-European)
-\family default
- fonts in (the rare) case that 
-\family sans
-Latin
-\begin_inset space ~
-\end_inset
-
-Modern
-\family default
- is not available to you or does not work, and you still want to emulate
- the look of 
-\family typewriter
-cm
-\family default
-/
-\family typewriter
-ec
-\family default
-.
- 
-\family typewriter
-AE
-\family default
- is a virtual font.
- Virtual means that it 
-\begin_inset Quotes eld
-\end_inset
-
-steals
-\begin_inset Quotes erd
-\end_inset
-
- outline 
-\family typewriter
-cm
-\family default
--glyphs from other fonts.
- This has the disadvantage that some characters are missing, like the French
- guillemets (
-\begin_inset Quotes eld
-\end_inset
-
-«
-\begin_inset Quotes erd
-\end_inset
-
- and 
-\begin_inset Quotes eld
-\end_inset
-
-»
-\begin_inset Quotes erd
-\end_inset
-
-)
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Loading the \SpecialChar LaTeX
--package 
-\series bold
-aeguill
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-\SpecialChar LaTeX
- packages ! aeguill
-\end_layout
-
-\end_inset
-
- with the document preamble line
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-
-\backslash
-usepackage[ec]{aeguill}
-\begin_inset Newline newline
-\end_inset
-
-
-\series default
-will fix the guillemet problem.
-\end_layout
-
-\end_inset
-
- and that accented characters are not 
-\emph on
-one
-\emph default
- glyph, but built of 
-\emph on
-two
-\emph default
- characters, the accent and the letter.
- Therefore you cannot search for words with accented characters in documents
- using the 
-\family typewriter
-AE
-\family default
- fonts.
- If you search for example for the French word 
-\begin_inset Quotes eld
-\end_inset
-
-rève
-\begin_inset Quotes erd
-\end_inset
-
- in a PDF, you will not get any result, because the PDF-viewer searches
- for the glyph 
-\begin_inset Quotes eld
-\end_inset
-
- è 
-\begin_inset Quotes erd
-\end_inset
-
- and not for the glyph 
-\begin_inset Quotes eld
-\end_inset
-
- e +
-\begin_inset space ~
-\end_inset
-
- ̀ 
-\begin_inset Quotes erd
-\end_inset
-
-.
-\change_unchanged
 
 \end_layout
 
@@ -16336,13 +16091,7 @@ In \SpecialChar LyX
 \begin_inset Quotes erd
 \end_inset
 
- character comes in four 
-\change_inserted -1402925745 1504705237
-variants
-\change_deleted -1402925745 1504687253
-lengths
-\change_unchanged
-: the 
+ character comes in four variants: the 
 \emph on
 hyphen
 \emph default
@@ -16366,235 +16115,6 @@ minus sign
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted -1402925745 1504705830
-\begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="3">
-<features tabularvalignment="middle">
-<column alignment="left" valignment="top" width="0pt">
-<column alignment="left" valignment="top">
-<column alignment="left" valignment="top">
-<row interlinespace="3mm">
-<cell alignment="left" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-name
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-output
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-inserted with
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row interlinespace="3mm">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-hyphen
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
--
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- in text
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row interlinespace="3mm">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-en dash
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-–
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted -1402925745 1504246984
-system-wide key combination or 
-\begin_inset Quotes eld
-\end_inset
-
---
-\begin_inset Quotes erd
-\end_inset
-
- in tex
-\family sans
-t
-\change_deleted -1402925745 1503767710
-Insert\SpecialChar menuseparator
-Special
-\begin_inset space ~
-\end_inset
-
-Character\SpecialChar menuseparator
-Symbols
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row interlinespace="3mm">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-em dash
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-—
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\change_inserted -1402925745 1504246993
-system-wide key combination or 
-\begin_inset Quotes eld
-\end_inset
-
----
-\begin_inset Quotes erd
-\end_inset
-
- in tex
-\family sans
-t
-\change_deleted -1402925745 1503767719
-Insert\SpecialChar menuseparator
-Special
-\begin_inset space ~
-\end_inset
-
-Character\SpecialChar menuseparator
-Symbols
-\change_unchanged
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-minus sign
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Formula $-$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
--
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- in math mode
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\change_inserted -1402925745 1504705830
-
 \begin_inset Box Frameless
 position "t"
 hor_pos "c"
@@ -16614,8 +16134,6 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -1402925745 1504705830
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
 <features tabularvalignment="middle">
@@ -16627,8 +16145,6 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted -1402925745 1504705830
 name
 \end_layout
 
@@ -16638,8 +16154,6 @@ name
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted -1402925745 1504705830
 output
 \end_layout
 
@@ -16649,8 +16163,6 @@ output
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted -1402925745 1504705830
 inserted with
 \end_layout
 
@@ -16662,8 +16174,6 @@ inserted with
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted -1402925745 1504705830
 hyphen
 \end_layout
 
@@ -16673,8 +16183,6 @@ hyphen
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted -1402925745 1504705830
 -
 \end_layout
 
@@ -16684,8 +16192,6 @@ hyphen
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted -1402925745 1504705830
 \begin_inset Quotes eld
 \end_inset
 
@@ -16708,8 +16214,6 @@ hyphen
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted -1402925745 1504705830
 en dash
 \end_layout
 
@@ -16719,8 +16223,6 @@ en dash
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted -1402925745 1504705830
 –
 \end_layout
 
@@ -16730,15 +16232,11 @@ en dash
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted -1402925745 1504707530
 system key combination
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -1402925745 1504706094
 On Mac and Linux, the en dash is entered with 
 \family sans
 Option-hyphen
@@ -16779,26 +16277,8 @@ unicode-insert
 \end_inset
 
  \SpecialChar LyX
- function with the Unicode code point as argument (2013 for the em dash
- and 2014 for the en dash).
- The function can also be bound to a key combination in Tools
-\family sans
-\SpecialChar menuseparator
-
-\family default
-Preferences
-\family sans
-\SpecialChar menuseparator
-
-\family default
-Editing
-\family sans
-\SpecialChar menuseparator
-
-\family default
-Shortcuts.
-\change_unchanged
-
+ function with the Unicode code as argument (2013 for the em dash and 2014
+ for the en dash).
 \end_layout
 
 \end_inset
@@ -16811,11 +16291,7 @@ Shortcuts.
 \begin_inset Quotes erd
 \end_inset
 
- in tex
-\family sans
-t
-\change_unchanged
-
+ in text
 \end_layout
 
 \end_inset
@@ -16826,8 +16302,6 @@ t
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted -1402925745 1504705830
 em dash
 \end_layout
 
@@ -16837,8 +16311,6 @@ em dash
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted -1402925745 1504705830
 —
 \end_layout
 
@@ -16848,8 +16320,6 @@ em dash
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted -1402925745 1504707540
 system key combination or 
 \begin_inset Quotes eld
 \end_inset
@@ -16858,9 +16328,7 @@ system key combination or
 \begin_inset Quotes erd
 \end_inset
 
- in tex
-\family sans
-t
+ in text
 \end_layout
 
 \end_inset
@@ -16871,8 +16339,6 @@ t
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted -1402925745 1504705830
 minus sign
 \end_layout
 
@@ -16882,8 +16348,6 @@ minus sign
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted -1402925745 1504705830
 \begin_inset Formula $-$
 \end_inset
 
@@ -16896,8 +16360,6 @@ minus sign
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\change_inserted -1402925745 1504705830
 \begin_inset Quotes eld
 \end_inset
 
@@ -16920,14 +16382,10 @@ minus sign
 \end_inset
 
 
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \begin_inset VSpace defskip
 \end_inset
@@ -16936,68 +16394,8 @@ minus sign
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted -1402925745 1503767103
-You can alternatively generate the en and em dash by inserting the 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
--
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- character multiple times in a row.
- They will automatically be converted to the appropriate length dash in
- the final output, but not in \SpecialChar LyX
-.
- 
-\begin_inset Quotes eld
-\end_inset
-
--
-\begin_inset space \thinspace{}
-\end_inset
-
--
-\begin_inset Quotes erd
-\end_inset
-
- gives a en dash, 
-\begin_inset Quotes eld
-\end_inset
-
--
-\begin_inset space \thinspace{}
-\end_inset
-
--
-\begin_inset space \thinspace{}
-\end_inset
-
--
-\begin_inset Quotes erd
-\end_inset
-
- a em dash.
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted -1402925745 1504539178
-The 
-\change_inserted -1402925745 1504539175
-Hyphen and dashes
-\change_deleted -1402925745 1504539069
-three dash types
-\change_unchanged
- are distinct from the minus sign, which appears in math mode and has a
- length of its own.
+Hyphen and dashes are distinct from the minus sign, which appears in math
+ mode and has a length of its own.
  Here are some examples:
 \end_layout
 
@@ -17014,11 +16412,11 @@ hyphen
 \end_layout
 
 \begin_layout Enumerate
-From A–Z
-\change_inserted -1402925745 1503767510
-; pages 369–378
-\change_unchanged
+From A–Z; pages
+\begin_inset space ~
+\end_inset
 
+369–378
 \begin_inset space \hfill{}
 \end_inset
 
@@ -17027,13 +16425,9 @@ From A–Z
 en dash
 \emph default
 )
-\change_inserted -1402925745 1504682326
-
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted -1402925745 1504708446
 Dashes indicate interruptions, performing a function related to – but subtly
  different from – parentheses.
 \begin_inset space \hfill{}
@@ -17044,25 +16438,11 @@ Dashes indicate interruptions, performing a function related to – but subtly
 en dash
 \emph default
 )
-\change_unchanged
-
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
-\change_inserted -1402925745 1504708469
-The em dash is used without spaces: 
-\change_unchanged
-Oh
-\change_deleted -1402925745 1504708486
- 
-\change_unchanged
-—
-\change_deleted -1402925745 1504708486
- 
-\change_unchanged
-there's a dash.
+The em dash is used without spaces: Oh—there's a dash.
 \begin_inset space \hfill{}
 \end_inset
 
@@ -17071,8 +16451,6 @@ there's a dash.
 em dash
 \emph default
 )
-\change_inserted -1402925745 1504679045
-
 \end_layout
 
 \end_deeper
@@ -17089,13 +16467,9 @@ em dash
 minus sign
 \emph default
 )
-\change_inserted -1402925745 1503937275
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -1402925745 1504710179
 See also the 
 \begin_inset CommandInset href
 LatexCommand href
@@ -17106,6 +16480,8 @@ literal "false"
 \end_inset
 
 .
+\change_inserted -1402925745 1504710179
+
 \end_layout
 
 \begin_layout Subsubsection
@@ -17656,17 +17032,14 @@ A-b c
 
  as a hyphenation possibility.
  Hyphenating at this point would look ugly.
- To prevent the shortcut from being hyphenated, you can
-\change_inserted -1402925745 1504001674
- use a protected hyphen (
+ To prevent the shortcut from being hyphenated, you can use a protected
+ hyphen (
 \family sans
 Insert\SpecialChar menuseparator
 Formatting\SpecialChar menuseparator
 Protected Hyphen
 \family default
-) or
-\change_unchanged
- put it into a makebox as described in section 
+) or put it into a makebox as described in section 
 \emph on
 Prevent Hyphenation
 \emph default

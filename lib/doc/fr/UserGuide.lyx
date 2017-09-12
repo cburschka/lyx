@@ -13945,9 +13945,12 @@ Implicite
 Implicite
 \family default
  , la police pré-sélectionnée par la classe du document est utilisée.
- Dans la plupart des cas, ce sera la police \SpecialChar TeX
- standard, connue sous les noms
- de 
+ 
+\lang english
+With LyX's default font encoding this is a look-alike of
+\lang french
+ la police \SpecialChar TeX
+ standard 
 \begin_inset Quotes cld
 \end_inset
 
@@ -13963,7 +13966,27 @@ Computer Modern
 \family typewriter
 cm
 \family default
-) ou 
+):
+\lang english
+ either
+\lang french
+ 
+\begin_inset Quotes cld
+\end_inset
+
+
+\family typewriter
+cm-super
+\family default
+
+\begin_inset Quotes crd
+\end_inset
+
+ 
+\lang english
+or the bitmap font
+\lang french
+ 
 \begin_inset Quotes cld
 \end_inset
 
@@ -13979,19 +14002,20 @@ European Computer Modern
 \family typewriter
 ec
 \family default
-), mais certaines classes pré-sélectionnent des polices différentes.
+).
+ 
+\lang english
+However,
+\lang french
+ certaines classes pré-sélectionnent des polices différentes.
 \end_layout
 
 \begin_layout Standard
-Comme les polices 
-\family typewriter
-cm
-\family default
- et 
+Comme les police 
 \family typewriter
 ec
 \family default
- sont des polices matricielles, elles ont souvent un aspect 
+ est une police matricielles, elle a souvent un aspect 
 \begin_inset Quotes cld
 \end_inset
 
@@ -14093,158 +14117,6 @@ status collapsed
 En particulier, le crénage est meilleur.
 \end_layout
 
-\end_inset
-
-;
-\end_layout
-
-\begin_layout Itemize
-sélectionnez les polices 
-\family typewriter
-AE (Almost European)
-\family default
- dans le cas (rare) où 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-Latin Modern
-\end_layout
-
-\end_inset
-
- n'est pas disponible ou ne fonctionne pas, si vous voulez toujours obtenir
- une apparence 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-cm/ec
-\end_layout
-
-\end_inset
-
-.
- 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-AE
-\end_layout
-
-\end_inset
-
- est une police virtuelle.
- Virtuelle signifie qu'elle 
-\begin_inset Quotes cld
-\end_inset
-
-emprunte
-\begin_inset Quotes crd
-\end_inset
-
- les contours des glyphes 
-\family typewriter
-cm
-\family default
- des autre polices.
- Le principal inconvénient est que certains caractères manquent à l'appel,
- comme les guillemets français (
-\begin_inset Quotes eld
-\end_inset
-
-«
-\begin_inset Quotes erd
-\end_inset
-
- et 
-\begin_inset Quotes eld
-\end_inset
-
-»
-\begin_inset Quotes erd
-\end_inset
-
-)
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-En chargeant le paquetage \SpecialChar LaTeX
- 
-\series bold
-aeguill
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Paquetages \SpecialChar LaTeX
- ! aeguill
-\end_layout
-
-\end_inset
-
- avec cette ligne dans le préambule du document
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-
-\backslash
-usepackage[ec]{aeguill}
-\begin_inset Newline newline
-\end_inset
-
-
-\series default
-le problème de guillemets devrait être résolu.
-\end_layout
-
-\end_inset
-
- et aussi que les caractères accentués ne sont pas constitués d'un seul
- glyphe, ils sont construits à partir de 
-\emph on
-deux 
-\emph default
-caractères, la lettre et l'accent.
- De ce fait, si vous faites une recherche dans un document utilisant des
- polices 
-\family typewriter
-AE
-\family default
-, vous ne pouvez pas chercher des caractères accentués: si vous cherchez
- le mot 
-\begin_inset Quotes cld
-\end_inset
-
-brève
-\begin_inset Quotes crd
-\end_inset
-
- dans le PDF, vous n'aurez aucun résultat, du fait que le programme va chercher
- le glyphe 
-\begin_inset Quotes cld
-\end_inset
-
-è 
-\begin_inset Quotes cld
-\end_inset
-
-et pas le groupement 
-\begin_inset Quotes cld
-\end_inset
-
-e +
-\begin_inset space ~
-\end_inset
-
- ̀
-\begin_inset Quotes crd
 \end_inset
 
 ;
@@ -17459,7 +17331,11 @@ Dans \SpecialChar LyX
 \begin_inset Quotes crd
 \end_inset
 
- existe dans trois longueurs, souvent appelées 
+ existe dans trois 
+\lang english
+variants
+\lang french
+, souvent appelées 
 \emph on
 trait d'union
 \emph default
@@ -17515,6 +17391,25 @@ dash
 \end_layout
 
 \begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
 <features tabularvalignment="middle">
@@ -17584,7 +17479,9 @@ d'union
 \begin_inset Quotes crd
 \end_inset
 
-
+ 
+\lang english
+in text
 \end_layout
 
 \end_inset
@@ -17614,7 +17511,38 @@ tiret
 
 \begin_layout Plain Layout
 
+\lang english
+system key combination
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+On Mac and Linux, the en dash is entered with 
 \family sans
+Option-hyphen
+\family default
+ and the em dash with 
+\family sans
+Shift-Option-hyphen
+\family default
+ (
+\family sans
+Option
+\family default
+ is the Mac label for the right 
+\family sans
+Alt
+\family default
+ 
+\family sans
+/ AltGr 
+\family default
+key).
+ Alternatively, dashes can be inserted with 
+\family sans
+\lang french
 Insertion\SpecialChar menuseparator
 Caractère
 \begin_inset space ~
@@ -17622,6 +17550,36 @@ Caractère
 
 spécial\SpecialChar menuseparator
 Symboles
+\family default
+\lang english
+ or with the 
+\begin_inset Quotes eld
+\end_inset
+
+unicode-insert
+\begin_inset Quotes erd
+\end_inset
+
+ \SpecialChar LyX
+ function with the Unicode code as argument (2013 for the em dash and 2014
+ for the en dash).
+\end_layout
+
+\end_inset
+
+ 
+\lang french
+ou 
+\begin_inset Quotes cld
+\end_inset
+
+--
+\begin_inset Quotes crd
+\end_inset
+
+
+\lang english
+ in text
 \end_layout
 
 \end_inset
@@ -17651,14 +17609,20 @@ tiret long
 
 \begin_layout Plain Layout
 
-\family sans
-Insertion\SpecialChar menuseparator
-Caractère
-\begin_inset space ~
+\lang english
+system key combination
+\lang french
+ ou 
+\begin_inset Quotes cld
 \end_inset
 
-spécial\SpecialChar menuseparator
-Symboles
+---
+\begin_inset Quotes crd
+\end_inset
+
+
+\lang english
+ in text
 \end_layout
 
 \end_inset
@@ -17708,6 +17672,11 @@ signe moins
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
 \begin_inset VSpace defskip
 \end_inset
 
@@ -17715,53 +17684,8 @@ signe moins
 \end_layout
 
 \begin_layout Standard
-Vous pouvez aussi créer le tiret et le tiret long en utilisant le caractère
- 
-\begin_inset Quotes eld
-\end_inset
-
--
-\begin_inset Quotes erd
-\end_inset
-
- plusieurs fois de suite.
- \SpecialChar LyX
- les convertit automatiquement en un tiret de longueur appropriée dans
- le rendu final.
- 
-\begin_inset Quotes eld
-\end_inset
-
--
-\begin_inset space \thinspace{}
-\end_inset
-
-- 
-\begin_inset Quotes erd
-\end_inset
-
- engendre un tiret, 
-\begin_inset Quotes eld
-\end_inset
-
- -
-\begin_inset space \thinspace{}
-\end_inset
-
--
-\begin_inset space \thinspace{}
-\end_inset
-
-- 
-\begin_inset Quotes erd
-\end_inset
-
- un tiret long.
-\end_layout
-
-\begin_layout Standard
-Les trois types de tiret sont distincts du signe moins, qui apparaît en
- mode math et a une longueur différente.
+Les types de tiret sont distincts du signe moins, qui apparaît en mode math
+ et a une longueur différente.
  Voici quelques exemples d'emploi des tirets :
 \end_layout
 
@@ -17818,6 +17742,21 @@ tiret long
 signe moins
 \emph default
 )
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+See also the 
+\begin_inset CommandInset href
+LatexCommand href
+name "Wikipedia entry on dashes"
+target "https://fr.wikipedia.org/wiki/Tiret"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -17950,8 +17889,24 @@ A-b c
  \SpecialChar LaTeX
  considère le tiret comme une possibilité de césure, or une césure à cet
  endroit serait peu judicieuse.
- Pour empêcher le raccourci d'être coupé en deux, vous pouvez le mettre
- dans une boîte comme expliqué à la section 
+ Pour empêcher le raccourci d'être coupé en deux, vous pouvez 
+\lang english
+use a protected hyphen 
+\lang french
+(
+\family sans
+Insertion\SpecialChar menuseparator
+Typographie
+\begin_inset space ~
+\end_inset
+
+spéciale\SpecialChar menuseparator
+
+\lang english
+Protected Hyphen
+\family default
+\lang french
+) ou le mettre dans une boîte comme expliqué à la section 
 \emph on
 Empêcher la césure
 \emph default
