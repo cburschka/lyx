@@ -16824,6 +16824,331 @@ literal "false"
 \end_layout
 
 \begin_layout Subsection
+
+\lang english
+Dashes and line breaks
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Dashes-and-line-breaks"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Whether line breaks before or after dashes are allowed depends on the use
+ case and locale:
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+No line breaks are allowed in ranges of values like A–Z or 1975–1982.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+In English, lines may break after dashes used to set off parenthetical statement
+s.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+In French and Spanish, dashes around parenthetical statements are treated
+ similar to quote signs and line breaks are not allowed on the left side.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+When using spaced en dashes
+\begin_inset space ~
+\end_inset
+
+- common in British English
+\begin_inset space ~
+\end_inset
+
+- line breaks before the dash with protected spaces are not allowed.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+When using em dashes without spaces—\SpecialChar allowbreak
+common in American English—\SpecialChar allowbreak
+one can insert
+ optional line breaks with the menu 
+\family sans
+Insert\SpecialChar menuseparator
+Formatting\SpecialChar menuseparator
+Optional line break
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+For documents containing many em dashes, you may consider to select the
+ option
+\lang spanish
+ 
+\family sans
+Documento\SpecialChar menuseparator
+
+\lang english
+Settings\SpecialChar menuseparator
+Fonts\SpecialChar menuseparator
+Output en- and em-dashes as ligatures.
+ 
+\family default
+This forces the output of dashes as 
+\begin_inset Quotes cld
+\end_inset
+
+--
+\begin_inset Quotes crd
+\end_inset
+
+ and 
+\begin_inset Quotes cld
+\end_inset
+
+---
+\begin_inset Quotes crd
+\end_inset
+
+ when exporting to \SpecialChar LaTeX
+.
+ The \SpecialChar TeX
+ font ligature mechanism converts them to dash characters followed
+ by an optional line break.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Subtleties:
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+This results in optional line breaks after 
+\series bold
+all
+\series default
+ en and em dashes.
+ Incorrect line breaks must be prevented by wrapping in a makebox
+\lang spanish
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Véase sección 
+\emph on
+Evitar la partición de palabras
+\emph default
+ del manual 
+\emph on
+Objetos insertados
+\emph default
+.
+\end_layout
+
+\end_inset
+
+ 
+\lang english
+or preceding with 
+\series bold
+
+\backslash
+nobreakdash
+\series default
+ in \SpecialChar TeX
+ code:
+\end_layout
+
+\begin_deeper
+\begin_layout Quote
+
+\lang english
+Pages
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+369–378
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang french
+Les incises 
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 1
+width ""
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+
+\lang french
+–
+\begin_inset space ~
+\end_inset
+
+même
+\end_layout
+
+\end_inset
+
+ si tout le monde ne les aime pas
+\begin_inset space ~
+\end_inset
+
+– sont très utiles.
+\end_layout
+
+\end_deeper
+\begin_layout Quote
+En una frase 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+nobreakdash
+\end_layout
+
+\end_inset
+
+—un inciso con rayas— se escribe así.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+An incorrect line break is easily overlooked because
+\begin_inset space ~
+\end_inset
+
+– in contrast to an overfull line
+\begin_inset space ~
+\end_inset
+
+– it does not trigger a warning in the \SpecialChar LaTeX
+ log.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+The setting is ignored for documents using non-\SpecialChar TeX
+ fonts.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\lang english
+Xe\SpecialChar TeX
+ provides the 
+\series bold
+
+\backslash
+XeTeXdashbreakstate
+\series default
+ setting.
+ The default,
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+XeTeXdashbreakstate=1
+\series default
+ causes literal dashes to behave like ligature dashes.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\lang english
+Em dashes in 
+\family typewriter
+typewriter
+\family default
+ fonts become 
+\family typewriter
+–-
+\family default
+ or 
+\family typewriter
+---
+\family default
+ in the output.
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Hyphenation is suppressed in words adjacent to hyphens and ligature dashes.
+\end_layout
+
+\begin_layout Subsection
 División de palabras con guión
 \begin_inset Index idx
 status collapsed
