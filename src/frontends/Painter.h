@@ -49,7 +49,7 @@ namespace frontend {
  */
 class Painter {
 public:
-	Painter(double pixel_ratio) : drawing_enabled_(true), pixel_ratio_(pixel_ratio) {}
+	Painter(double pixel_ratio) : pixel_ratio_(pixel_ratio) {}
 
 	static const int thin_line;
 
@@ -180,8 +180,6 @@ public:
 	/// draws a wavy line that can be used for underlining.
 	virtual void wavyHorizontalLine(int x, int y, int width, ColorCode col) = 0;
 private:
-	///
-	bool drawing_enabled_;
 	/// Ratio between physical pixels and device-independent pixels
 	double pixel_ratio_;
 };
