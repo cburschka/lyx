@@ -64,7 +64,8 @@ done
 # echo "preferences file sets lyxpipe as ${LYXPIPE}"
 
 test -z "${LYXPIPE}" && {
-	ABS_SYSTEM_LYXDIR='/Applications/LyX.app/Contents/Resources'
+	ABS_SYSTEM_LYXDIR=$(dirname "$0")
+	ABS_SYSTEM_LYXDIR=$(dirname "${ABS_SYSTEM_LYXDIR}")"/Resources"
 	test -d "${ABS_SYSTEM_LYXDIR}" || {
 		echo "Failed to find ABS_SYSTEM_LYXDIR: ${ABS_SYSTEM_LYXDIR}" >&2
 		exit 1
