@@ -122,8 +122,6 @@ struct GuiWorkArea::Private
 
 	///
 	bool need_resize_;
-	///
-	bool schedule_redraw_;
 
 	/// the current preedit text of the input method
 	docstring preedit_string_;
