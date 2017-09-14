@@ -4345,7 +4345,7 @@ Buffer const * GuiView::updateInset(Inset const * inset)
 			continue;
 		Buffer const * buffer = &(wa->bufferView().buffer());
 		if (inset_buffer == buffer)
-			wa->scheduleRedraw();
+			wa->scheduleRedraw(true);
 	}
 	return inset_buffer;
 }

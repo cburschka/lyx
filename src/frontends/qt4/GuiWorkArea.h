@@ -59,13 +59,11 @@ public:
 	/// is GuiView in fullscreen mode?
 	bool isFullScreen() const;
 	///
-	void scheduleRedraw();
-	///
 	BufferView & bufferView();
 	///
 	BufferView const & bufferView() const;
 	///
-	void redraw(bool update_metrics);
+	void scheduleRedraw(bool update_metrics);
 
 	/// return true if the key is part of a shortcut
 	bool queryKeySym(KeySymbol const & key, KeyModifier mod) const;
