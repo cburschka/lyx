@@ -16978,7 +16978,7 @@ nobreakdash
 \end_layout
 
 \begin_deeper
-\begin_layout Quote
+\begin_layout Itemize
 
 \lang english
 Pages
@@ -17015,8 +17015,7 @@ status open
 
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
+\begin_layout Itemize
 
 \lang french
 Les incises 
@@ -17057,8 +17056,7 @@ même
 – sont très utiles.
 \end_layout
 
-\end_deeper
-\begin_layout Quote
+\begin_layout Itemize
 En una frase 
 \begin_inset ERT
 status collapsed
@@ -17146,6 +17144,102 @@ typewriter
 
 \lang english
 Hyphenation is suppressed in words adjacent to hyphens and ligature dashes.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In \SpecialChar LyX
+
+\begin_inset space ~
+\end_inset
+
+2.2 -- and --- were in \SpecialChar LyX
+
+\begin_inset space ~
+\end_inset
+
+2.3 output as -{}- and -{}-{}- to prevent ligation to dashes.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Up to \SpecialChar LyX
+
+\begin_inset space ~
+\end_inset
+
+2.1 -- and --- in \SpecialChar LyX
+ was output unchanged which led to different look in the
+ within \SpecialChar LyX
+, text export, HTML export and the PDF export.
+\end_layout
+
+\end_inset
+
+ Occurrences in older documents are converted to literal Unicode dashes.
+ This lead to problems like different line breaks.
+ Since \SpecialChar LyX
+
+\begin_inset space ~
+\end_inset
+
+2.3 there is the option 
+\family sans
+Output en- and em-dashes as ligatures
+\family default
+ in the menu 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Fonts.
+
+\family default
+ It is on by default but unselected when opening documents edited with \SpecialChar LyX
+
+\begin_inset space ~
+\end_inset
+
+2.2.
+\begin_inset Newline newline
+\end_inset
+
+Note the following side-effects of the \SpecialChar LyX
+ dash handling:
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+If you used literal em- and en dashes in pre-\SpecialChar LyX
+
+\begin_inset space ~
+\end_inset
+
+2.2 documents, you must manually unselect the option to ensure unchanged
+ behavior.
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Zero-width space (ZWSP) characters in older \SpecialChar LyX
+ documents that follow literal
+ em- and en-dashes are removed during the conversion to the format of \SpecialChar LyX
+
+\begin_inset space ~
+\end_inset
+
+2.3.
+ If you used them as optional line breaks after dashes, convert them to
+ space insets before opening your document with \SpecialChar LyX
+
+\begin_inset space ~
+\end_inset
+
+2.3 or the optional line breaks will be lost!
 \end_layout
 
 \begin_layout Subsection
@@ -39138,6 +39232,40 @@ reference "subsec:Ligaduras"
 \end_layout
 
 \begin_layout Description
+
+\lang english
+Optional
+\begin_inset space ~
+\end_inset
+
+Line
+\begin_inset space ~
+\end_inset
+
+Break Inserts a line break point (zero-width space character) that is invisible
+ in the output
+\lang spanish
+.
+ Véase la sección
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Dashes-and-line-breaks"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ 
+\lang english
+for a usage example.
+\end_layout
+
+\begin_layout Description
 Salto
 \begin_inset space ~
 \end_inset
@@ -39179,7 +39307,7 @@ línea
 
 justificada Fuerza un salto de línea de forma que la línea se expande hasta
  el margen, véase la sección
-\begin_inset space \thinspace{}
+\begin_inset space ~
 \end_inset
 
 
