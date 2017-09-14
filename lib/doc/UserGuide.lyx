@@ -140,12 +140,11 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author -1402925745 "Günter Milde"
 \end_header
 
 \begin_body
@@ -16617,7 +16616,7 @@ nobreakdash
 \end_layout
 
 \begin_deeper
-\begin_layout Quote
+\begin_layout Itemize
 Pages
 \begin_inset space ~
 \end_inset
@@ -16650,8 +16649,7 @@ status open
 
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
+\begin_layout Itemize
 
 \lang french
 Les incises 
@@ -16692,8 +16690,7 @@ même
 – sont très utiles.
 \end_layout
 
-\end_deeper
-\begin_layout Quote
+\begin_layout Itemize
 
 \lang spanish
 En una frase 
@@ -16773,32 +16770,20 @@ typewriter
 
 \begin_layout Enumerate
 Hyphenation is suppressed in words adjacent to hyphens and ligature dashes.
-\change_inserted -1402925745 1504003612
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -1402925745 1504709020
-Changes:
-\end_layout
-
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\SpecialChar LyX
-
-\change_inserted -1402925745 1504711065
+In \SpecialChar LyX
 
 \begin_inset space ~
 \end_inset
 
-2.2 -- and --- 
-\change_unchanged
-in LyX are o
-\change_inserted -1402925745 1504711065
-utput as -{}- and -{}-{}- to prevent ligation to dashes.
-\change_unchanged
+2.2 -- and --- were in \SpecialChar LyX
 
+\begin_inset space ~
+\end_inset
+
+2.3 output as -{}- and -{}-{}- to prevent ligation to dashes.
 \begin_inset Foot
 status collapsed
 
@@ -16816,111 +16801,65 @@ Up to \SpecialChar LyX
 
 \end_inset
 
- Occurrences 
-\change_inserted -1402925745 1504711065
-in older documents are converted to literal Unicode dashe
-\change_unchanged
-s.
-\change_inserted -1402925745 1504711065
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\change_inserted -1402925745 1504709468
-In some cases this leads to different line breaks.
-\end_layout
-
-\begin_layout Itemize
-
-\change_inserted -1402925745 1504710005
-It is no longer possible to differentiate dashes with/without optional line
- break using --- and -- vs.
- literal dashes.
- Either convert one sort t
-\change_unchanged
-o \SpecialChar TeX
- code 
-\change_inserted -1402925745 1504710005
-or insert optional line break characters.
-\change_unchanged
-
-\end_layout
-
-\end_deeper
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-\SpecialChar LyX
-
-\change_inserted -1402925745 1504710385
+ Occurrences in older documents are converted to literal Unicode dashes.
+ This lead to problems like different line breaks.
+ Since \SpecialChar LyX
 
 \begin_inset space ~
 \end_inset
 
-2.3 New
-\change_unchanged
- option 
-\change_inserted -1402925745 1504710385
-
+2.3 there is the option 
+\family sans
+Output en- and em-dashes as ligatures
+\family default
+ in the menu 
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
-Fonts\SpecialChar menuseparator
-Output en- and em-dashes as ligatures.
+Fonts.
 
 \family default
- It is on by default but unselected when opening documents edited with 
-\change_unchanged
-\SpecialChar LyX
+ It is on by default but unselected when opening documents edited with \SpecialChar LyX
 
 \begin_inset space ~
 \end_inset
 
-
-\change_inserted -1402925745 1504710385
 2.2.
- 
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_deeper
-\begin_layout Itemize
-
-\change_inserted -1402925745 1504712456
-If you used literal em- and en dashes in pre-2.2 documents, you must manually
- unselect it to ensure unchanged 
-\change_unchanged
-behavior
-\change_inserted -1402925745 1504712456
-.
+Note the following side-effects of the \SpecialChar LyX
+ dash handling:
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted -1402925745 1504712456
-ZWSP characters (u200b) following literal em- and en-dashes are deleted
- by lyx2lyx when converting to 2.3 format.
- If you used them as optional line breaks after dashes, convert them to
- space insets before opening your document with 
-\change_unchanged
-\SpecialChar LyX
+If you used literal em- and en dashes in pre-\SpecialChar LyX
 
 \begin_inset space ~
 \end_inset
 
+2.2 documents, you must manually unselect the option to ensure unchanged
+ behavior.
+\end_layout
 
-\change_inserted -1402925745 1504712456
+\begin_layout Itemize
+Zero-width space (ZWSP) characters in older \SpecialChar LyX
+ documents that follow literal
+ em- and en-dashes are removed during the conversion to the format of \SpecialChar LyX
+
+\begin_inset space ~
+\end_inset
+
+2.3.
+ If you used them as optional line breaks after dashes, convert them to
+ space insets before opening your document with \SpecialChar LyX
+
+\begin_inset space ~
+\end_inset
+
 2.3 or the optional line breaks will be lost!
 \end_layout
 
-\begin_layout Itemize
-
-\change_inserted -1402925745 1504709574
-As with all settings, the default for new documents can be configured via
- templates.
-\end_layout
-
-\end_deeper
 \begin_layout Subsection
 Hyphenation
 \begin_inset Index idx
@@ -38747,13 +38686,9 @@ reference "subsec:Ligatures"
 \end_inset
 
 .
-\change_inserted -1402925745 1503938048
-
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -1402925745 1503938353
 Optional
 \begin_inset space ~
 \end_inset
@@ -38762,7 +38697,8 @@ Line
 \begin_inset space ~
 \end_inset
 
-Break Inserts a line break point (ZWSP) that is invisible in the output.
+Break Inserts a line break point (zero-width space character) that is invisible
+ in the output.
  See section
 \begin_inset space ~
 \end_inset
@@ -38778,8 +38714,6 @@ noprefix "false"
 \end_inset
 
  for a usage example.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
