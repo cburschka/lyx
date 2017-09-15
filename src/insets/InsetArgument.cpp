@@ -68,6 +68,8 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 		it.inset().getLayout().args() : it.paragraph().layout().args();
 	pass_thru_context_ = insetlayout ?
 		it.inset().getLayout().isPassThru() : it.paragraph().layout().pass_thru;
+	// Record PassThru status in order to act on changes.
+	bool const former_pass_thru = pass_thru_;
 
 	// Handle pre 2.1 ArgInsets (lyx2lyx cannot classify them)
 	if (name_ == "999") {
@@ -139,6 +141,16 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 		labelstring_ = _("Unknown Argument");
 		tooltip_ = _("Argument not known in this Layout. Will be supressed in the output.");
 	}
+
+	if (former_pass_thru != pass_thru_) {
+		// PassThru status changed. We might need to update
+		// the language of the contents
+		Language const * l  = insetlayout
+			? it.inset().buffer().language()
+			: it.buffer()->language();
+		fixParagraphLanguage(l);
+	}
+
 	setButtonLabel();
 	InsetCollapsable::updateBuffer(it, utype);
 }
@@ -187,8 +199,13 @@ void InsetArgument::doDispatch(Cursor & cur, FuncRequest & cmd)
 		// forcing to latex_language in InsetText::dispatch(),
 		// since this does not play nicely with inherited pass_thru
 		// (see #8471).
-		if (pass_thru_ && !pass_thru_local_)
+		if (pass_thru_ && !pass_thru_local_) {
 			text().dispatch(cur, cmd);
+			// For the paste operations, check if we have
+			// non-latex_language, and if so, fix.
+			if (cmd.action() != LFUN_SELF_INSERT)
+				fixParagraphLanguage(buffer().params().language);
+		}
 		else
 			InsetCollapsable::doDispatch(cur, cmd);
 		break;
@@ -319,6 +336,15 @@ void InsetArgument::addToToc(DocIterator const & dit, bool output_active,
 	}
 	// Proceed with the rest of the inset.
 	InsetText::addToToc(dit, output_active, utype, backend);
+}
+
+
+void InsetArgument::fixParagraphLanguage(Language const * l)
+{
+	Font font(inherit_font, l);
+	if (pass_thru_)
+		font.setLanguage(latex_language);
+	paragraphs().front().resetFonts(font);
 }
 
 
