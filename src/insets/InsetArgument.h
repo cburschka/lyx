@@ -92,6 +92,8 @@ private:
 	///
 	docstring toolTip(BufferView const & bv, int, int) const;
 	///
+	void fixParagraphLanguage(Language const *);
+	///
 	std::string name_;
 	///
 	docstring labelstring_;
