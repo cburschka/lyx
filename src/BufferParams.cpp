@@ -2286,7 +2286,8 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	// (the rest is obsoleted by the new TU encoding).
 	// It needs to be loaded at least after amsmath, amssymb,
 	// esint and the other packages that provide special glyphs
-	if (features.mustProvide("tipa") && useNonTeXFonts) {
+	if (features.mustProvide("tipa") && useNonTeXFonts
+	    && !features.isProvided("xunicode")) {
 		// The package officially only supports XeTeX, but also works
 		// with LuaTeX. Thus we work around its XeTeX test.
 		if (features.runparams().flavor != OutputParams::XETEX) {
