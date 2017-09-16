@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-09-02 22:36+0200\n"
-"PO-Revision-Date: 2017-09-02 07:48+0000\n"
+"POT-Creation-Date: 2017-09-16 16:42+0200\n"
+"PO-Revision-Date: 2017-09-16 14:52+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2101,7 +2101,7 @@ msgstr "Odkaz na e-mailovú adresu"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:146
 msgid "E&mail"
-msgstr "Ema&il"
+msgstr "E-ma&il"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:153
 msgid "Link to a file"
@@ -2956,12 +2956,12 @@ msgid ""
 "Runs the LaTeX backend with the -shell-escape option (Warning: use only when "
 "really necessary)"
 msgstr ""
-"Spúšťa LaTeX backend s voľbou -shell-escape (Varovanie: použiť len keď "
-"naozaj potrebné)"
+"Spúšťa LaTeX backend s voľbou -shell-escape (Pozor: použiť len keď naozaj "
+"potrebné)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:114
 msgid "&Allow running external programs"
-msgstr "Po&voliť spúšťanie externých príkazov"
+msgstr "Po&voliť beh externých príkazov"
 
 #: src/frontends/qt4/ui/OutputUi.ui:121
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
@@ -3766,8 +3766,9 @@ msgid "Co&pier:"
 msgstr "Ko&pír. skript:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:202
-msgid "Specify the default output format when using (PDF)LaTeX"
-msgstr "Určite štandardný výstupný formát pre (PDF)LaTeX"
+msgid ""
+"Specification of the default output formats when using specific LaTeX variants"
+msgstr "Určite štandardný výstupný formát pre rozličné LaTeX-varianty"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:205
 msgid "Default Output Formats"
@@ -3777,9 +3778,9 @@ msgstr "Štandardné Výstupné Formáty"
 msgid "With &TeX fonts:"
 msgstr "Pre &TeX fonty:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:224
-msgid "The default output format for documents (except with non-TeX fonts)"
-msgstr "Štandardný výstupný formát pre dokumenty používajúce TeX fonty"
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:294
+msgid "&Japanese:"
+msgstr "Japonsky:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:244
 msgid "With n&on-TeX fonts:"
@@ -3788,6 +3789,18 @@ msgstr "Pre ni&e-TeX fonty:"
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:254
 msgid "The default output format for documents using non-TeX fonts"
 msgstr "Štandardný výstupný formát pre dokumenty používajúce nie-TeX fonty"
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:260
+msgid ""
+"This is the default output format for LyX documents, except for DocBook "
+"classes, documents that use non-TeX fonts and Japanese documents"
+msgstr ""
+"Štandardný výstupný formát pre LyX-dokumenty, až na DocBook triedy, dokumenty "
+"ktoré používajú TeX-fonty a japonské dokumenty"
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:267
+msgid "The default output format for Japanese documents (using pLaTeX)"
+msgstr "Štandardný výstupný formát pre japonské dokumenty (používajúce pLaTeX)"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -25136,7 +25149,7 @@ msgstr "Ukladám dokument %1$s…"
 
 #: src/Buffer.cpp:1544
 msgid " could not write file!"
-msgstr "Nemôžem písať do súbora!"
+msgstr " nemôžem písať do súbora!"
 
 #: src/Buffer.cpp:1552
 msgid " done."
@@ -27112,7 +27125,7 @@ msgstr ""
 
 #: src/LyX.cpp:1232 src/frontends/qt4/GuiAbout.cpp:244
 msgid "  Git commit hash "
-msgstr "Zapísaná git transformácia "
+msgstr "  Zapísaná git transformácia "
 
 #: src/LyX.cpp:1243 src/support/Package.cpp:647
 msgid "No system directory"
@@ -28817,6 +28830,10 @@ msgstr ""
 "preto nájdené aj bez adresára. To je zvyčajne v bib/ adresáre v LaTeXovom "
 "texmf-strome. Na tomto mieste by mala ležať aj vaša vlastná databáza keď ju "
 "chcete použiť. "
+
+#: src/frontends/qt4/GuiBibtex.cpp:309
+msgid "Biblatex Bibliography"
+msgstr "BibTeX Bibliografia"
 
 #: src/frontends/qt4/GuiBibtex.cpp:339 src/insets/InsetBibtex.cpp:237
 msgid "all reference units"
@@ -31499,9 +31516,9 @@ msgstr "Rozmer ikon stanovený na %1$dx%2$d."
 msgid "%1$s unknown command!"
 msgstr "%1$s neznámy príkaz!"
 
-#: src/frontends/qt4/GuiView.cpp:4140
-msgid "Zoom level is now %1$d%"
-msgstr "Stupeň lupy je teraz %1$d%"
+#: src/frontends/qt4/GuiView.cpp:4145
+msgid "Zoom level is now %1$d% (default value: %2$d%)"
+msgstr "Stupeň lupy je teraz %1$d% (štandardná hodnota: %2$d%)"
 
 #: src/frontends/qt4/GuiView.cpp:4195
 msgid "Please, preview the document first."
@@ -33553,17 +33570,11 @@ msgstr "Neznámy používateľ"
 #~ msgid "ACM Month:"
 #~ msgstr "ACM Mesiac:"
 
-#~ msgid "ACM ISBN:"
-#~ msgstr "ACM ISBN:"
-
 #~ msgid "Caption: "
 #~ msgstr "Popis: "
 
 #~ msgid "Author Note: "
 #~ msgstr "Poznámka Autor: "
-
-#~ msgid "    "
-#~ msgstr "    "
 
 #~ msgid "&Key:"
 #~ msgstr "&Kľúč:"
@@ -37929,3 +37940,12 @@ msgstr "Neznámy používateľ"
 #~ "vykonávať v mene užívateľa ľubovoľné akcie, vrátane nebezpečné ako napr. "
 #~ "zmazanie súborov. Keď je napr. inštruovaný robiť to zlovoľne vyrobeným "
 #~ "lyx dokumentom.</p> "
+
+#~ msgid "Specify the default output format when using (PDF)LaTeX"
+#~ msgstr "Určite štandardný výstupný formát pre (PDF)LaTeX"
+
+#~ msgid "The default output format for documents (except with non-TeX fonts)"
+#~ msgstr "Štandardný výstupný formát pre dokumenty používajúce TeX fonty"
+
+#~ msgid "Zoom level is now %1$d%"
+#~ msgstr "Stupeň lupy je teraz %1$d%"
