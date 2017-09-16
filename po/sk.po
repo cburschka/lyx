@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-08-16 13:02+0200\n"
-"PO-Revision-Date: 2017-08-27 08:24+0000\n"
+"POT-Creation-Date: 2017-09-16 08:57+0200\n"
+"PO-Revision-Date: 2017-09-16 07:26+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3735,8 +3735,10 @@ msgid "Co&pier:"
 msgstr "Ko&pír. skript:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:202
-msgid "Specify the default output format when using (PDF)LaTeX"
-msgstr "Určite štandardný výstupný formát pre (PDF)LaTeX"
+msgid ""
+"Specification of the default output formats when using specific LaTeX "
+"variants"
+msgstr "Určite štandardný výstupný formát pre rozličné LaTeX-varianty"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:205
 msgid "Default Output Formats"
@@ -3746,9 +3748,9 @@ msgstr "Štandardné Výstupné Formáty"
 msgid "With &TeX fonts:"
 msgstr "Pre &TeX fonty:"
 
-#: src/frontends/qt4/ui/PrefFileformatsUi.ui:224
-msgid "The default output format for documents (except with non-TeX fonts)"
-msgstr "Štandardný výstupný formát pre dokumenty používajúce TeX fonty"
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:294
+msgid "&Japanese:"
+msgstr "Japonsky:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:244
 msgid "With n&on-TeX fonts:"
@@ -3757,6 +3759,18 @@ msgstr "Pre ni&e-TeX fonty:"
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:254
 msgid "The default output format for documents using non-TeX fonts"
 msgstr "Štandardný výstupný formát pre dokumenty používajúce nie-TeX fonty"
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:260
+msgid ""
+"This is the default output format for LyX documents, except for DocBook "
+"classes, documents that use non-TeX fonts and Japanese documents"
+msgstr ""
+"Štandardný výstupný formát pre LyX-dokumenty, až na DocBook triedy, "
+"dokumenty ktoré používajú TeX-fonty a japonské dokumenty"
+
+#: src/frontends/qt4/ui/PrefFileformatsUi.ui:267
+msgid "The default output format for Japanese documents (using pLaTeX)"
+msgstr "Štandardný výstupný formát pre japonské dokumenty (používajúce pLaTeX)"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -6411,10 +6425,6 @@ msgstr "Súhrn"
 msgid "Caption"
 msgstr "Popis"
 
-#: lib/layouts/AEA.layout:306
-msgid "Caption: "
-msgstr "Popis: "
-
 #: lib/layouts/AEA.layout:311 lib/layouts/IEEEtran.layout:407
 #: lib/layouts/beamer.layout:1273 lib/layouts/elsart.layout:302
 #: lib/layouts/foils.layout:285 lib/layouts/heb-article.layout:107
@@ -7703,49 +7713,49 @@ msgstr "Poznámka Podtitul: "
 msgid "AuthorNote"
 msgstr "AuthorNote"
 
-#: lib/layouts/acmart.layout:308
-msgid "Author Note: "
-msgstr "Poznámka Autor: "
+#: lib/layouts/acmart.layout:310
+msgid "Note: "
+msgstr "Poznámka: "
 
 #: lib/layouts/acmart.layout:312
 msgid "ACM Volume"
 msgstr "ACM Volume"
 
-#: lib/layouts/acmart.layout:314
-msgid "ACM Volume: "
-msgstr "ACM Diel: "
+#: lib/layouts/acmart.layout:316
+msgid "Volume: "
+msgstr "Diel: "
 
 #: lib/layouts/acmart.layout:318
 msgid "ACM Number"
 msgstr "ACM Number"
 
-#: lib/layouts/acmart.layout:320
-msgid "ACM Number: "
-msgstr "ACM-Číslo: "
+#: lib/layouts/acmart.layout:322
+msgid "Number: "
+msgstr "Číslo: "
 
 #: lib/layouts/acmart.layout:324
 msgid "ACM Article"
 msgstr "ACM Article"
 
-#: lib/layouts/acmart.layout:326
-msgid "ACM Article: "
-msgstr "ACM Článok: "
+#: lib/layouts/acmart.layout:328
+msgid "Article: "
+msgstr "Článok: "
 
 #: lib/layouts/acmart.layout:330
 msgid "ACM Year"
 msgstr "ACM Year"
 
-#: lib/layouts/acmart.layout:332
-msgid "ACM Year: "
-msgstr "ACM Rok: "
+#: lib/layouts/acmart.layout:334
+msgid "Year: "
+msgstr "Rok: "
 
 #: lib/layouts/acmart.layout:336
 msgid "ACM Month"
 msgstr "ACM Month"
 
-#: lib/layouts/acmart.layout:338
-msgid "ACM Month: "
-msgstr "ACM Mesiac: "
+#: lib/layouts/acmart.layout:340
+msgid "Month: "
+msgstr "Mesiac: "
 
 #: lib/layouts/acmart.layout:342
 msgid "ACM Art Seq Num"
@@ -7759,26 +7769,21 @@ msgstr "Sekvenčné Číslo článku: "
 msgid "ACM Submission ID"
 msgstr "ACM Submission ID"
 
-#: lib/layouts/acmart.layout:350
-msgid "ACM Submission ID: "
-msgstr "ACM Totožnosť Predloženia: "
+#: lib/layouts/acmart.layout:352
+msgid "Submission ID: "
+msgstr "Totožnosť Predloženia: "
 
 #: lib/layouts/acmart.layout:354
 msgid "ACM Price"
 msgstr "ACM Price"
 
-#: lib/layouts/acmart.layout:356
-msgid "ACM Price: "
-msgstr "ACM Cena: "
+#: lib/layouts/acmart.layout:358
+msgid "Price: "
+msgstr "Cena: "
 
 #: lib/layouts/acmart.layout:360
 msgid "ACM ISBN"
 msgstr "ACM ISBN"
-
-# International Standard Book Number
-#: lib/layouts/acmart.layout:362
-msgid "ACM ISBN: "
-msgstr "ACM ISBN: "
 
 #: lib/layouts/acmart.layout:364
 msgid "ISBN: "
@@ -9931,6 +9936,22 @@ msgstr "OPONA"
 #: lib/layouts/siamltex.layout:307
 msgid "Right Address"
 msgstr "Adresa vpravo"
+
+#: lib/layouts/bxjsarticle.layout:3
+msgid "Japanese Article (BXJS Class)"
+msgstr "Japonský Článok (Trieda BXJS)"
+
+#: lib/layouts/bxjsbook.layout:3
+msgid "Japanese Book (BXJS Class)"
+msgstr "Japonská Kniha (Trieda BXJS)"
+
+#: lib/layouts/bxjsreport.layout:3
+msgid "Japanese Report (BXJS Class)"
+msgstr "Japonský Referát (Trieda BXJS)"
+
+#: lib/layouts/bxjsslide.layout:3
+msgid "Japanese Slide (BXJS Class)"
+msgstr "Japonská Fólia (Trieda BXJS)"
 
 #: lib/layouts/changebars.module:2
 msgid "Change bars"
@@ -12705,8 +12726,8 @@ msgid "Synopsis"
 msgstr "Prehľad"
 
 #: lib/layouts/jarticle.layout:3
-msgid "Japanese Article (jarticle)"
-msgstr "Japonský Článok (jarticle)"
+msgid "Japanese Article (Standard Class)"
+msgstr "Japonský Článok (Štandardná Trieda)"
 
 #: lib/layouts/jasatex.layout:3
 msgid "Journal of the Acoustical Society of America (JASA)"
@@ -12741,24 +12762,24 @@ msgid "Online citation"
 msgstr "Online citát"
 
 #: lib/layouts/jbook.layout:3
-msgid "Japanese Book (jbook)"
-msgstr "Japonská Kniha (jbook)"
+msgid "Japanese Book (Standard Class)"
+msgstr "Japonská Kniha (Štandardná Trieda)"
 
 #: lib/layouts/jgrga.layout:3
 msgid "American Geophysical Union (AGUPLUS JGR)"
 msgstr "American Geophysical Union (AGUPLUS JGR)"
 
 #: lib/layouts/jreport.layout:3
-msgid "Japanese Report (jreport)"
-msgstr "Japonský referát (jreport)"
+msgid "Japanese Report (Standard Class)"
+msgstr "Japonský Report (Štandardná trieda)"
 
 #: lib/layouts/jsarticle.layout:3
-msgid "Japanese Article (jsarticle)"
-msgstr "Japonský Článok (jsarticle)"
+msgid "Japanese Article (JS Class)"
+msgstr "Japonský Článok (Trieda JS)"
 
 #: lib/layouts/jsbook.layout:3
-msgid "Japanese Book (jsbook)"
-msgstr "Japonská Kniha (jsbook)"
+msgid "Japanese Book (JS Class)"
+msgstr "Japonská Kniha (Trieda JS)"
 
 #: lib/layouts/jss.layout:3
 msgid "Journal of Statistical Software (JSS) version 2"
@@ -14261,10 +14282,6 @@ msgstr "TitulnáFólia"
 msgid "Slides"
 msgstr "Fólie"
 
-#: lib/layouts/powerdot.layout:140
-msgid "    "
-msgstr "    "
-
 #: lib/layouts/powerdot.layout:142
 msgid "Slide Option"
 msgstr "Voľba Fólia"
@@ -15689,12 +15706,12 @@ msgstr ""
 "pri 'Tabuľka 2.1'."
 
 #: lib/layouts/tarticle.layout:3
-msgid "Japanese Article (Vertical Writing)"
-msgstr "Japonský Článok (Vertikálne Písanie)"
+msgid "Japanese Article (Standard Class: Vertical Writing)"
+msgstr "Japonský Článok (Štandardná Trieda: Vertikálne Písanie)"
 
 #: lib/layouts/tbook.layout:3
-msgid "Japanese Book (Vertical Writing)"
-msgstr "Japonská Kniha (Vertikálne Písanie)"
+msgid "Japanese Book (Standard Class: Vertical Writing)"
+msgstr "Japonská Kniha (Štandardná Trieda: Vertikálne Písanie)"
 
 #: lib/layouts/tcolorbox.module:2
 msgid "Fancy Colored Boxes"
@@ -24497,8 +24514,20 @@ msgid "NoWeb|N"
 msgstr "NoWeb"
 
 #: lib/configure.py:641
+msgid "Sweave (Japanese)"
+msgstr "Sweave (japonský)"
+
+#: lib/configure.py:641
+msgid "Sweave (Japanese)|S"
+msgstr "Sweave (japonský)|S"
+
+#: lib/configure.py:641
 msgid "R/S code"
 msgstr "R/S kód"
+
+#: lib/configure.py:644
+msgid "Rnw (knitr, Japanese)"
+msgstr "Rnw (knitr, japonský)"
 
 #: lib/configure.py:643
 msgid "LilyPond music"
@@ -24507,6 +24536,10 @@ msgstr "LilyPond nóty"
 #: lib/configure.py:644
 msgid "LilyPond book (LaTeX)"
 msgstr "LilyPond Kniha (LaTeX)"
+
+#: lib/configure.py:647
+msgid "LilyPond book (pLaTeX)"
+msgstr "LilyPond Kniha (pLaTeX)"
 
 #: lib/configure.py:645
 msgid "LaTeX (plain)"
@@ -25074,9 +25107,9 @@ msgstr ""
 msgid "Saving document %1$s..."
 msgstr "Ukladám dokument %1$s…"
 
-#: src/Buffer.cpp:1549
+#: src/Buffer.cpp:1544
 msgid " could not write file!"
-msgstr "Nemôžem písať do súbora!"
+msgstr " nemôžem písať do súbora!"
 
 #: src/Buffer.cpp:1557
 msgid " done."
@@ -27023,7 +27056,7 @@ msgstr ""
 
 #: src/LyX.cpp:1228 src/frontends/qt4/GuiAbout.cpp:244
 msgid "  Git commit hash "
-msgstr "Zapísaná git transformácia "
+msgstr "  Zapísaná git transformácia "
 
 #: src/LyX.cpp:1239 src/support/Package.cpp:645
 msgid "No system directory"
@@ -28725,6 +28758,10 @@ msgstr ""
 "preto nájdené aj bez adresára. To je zvyčajne v bib/ adresáre v LaTeXovom "
 "texmf-strome. Na tomto mieste by mala ležať aj vaša vlastná databáza keď ju "
 "chcete použiť. "
+
+#: src/frontends/qt4/GuiBibtex.cpp:309
+msgid "Biblatex Bibliography"
+msgstr "BibTeX Bibliografia"
 
 #: src/frontends/qt4/GuiBibtex.cpp:339 src/insets/InsetBibtex.cpp:237
 msgid "all reference units"
@@ -31430,9 +31467,9 @@ msgstr "Rozmer ikon stanovený na %1$dx%2$d."
 msgid "%1$s unknown command!"
 msgstr "%1$s neznámy príkaz!"
 
-#: src/frontends/qt4/GuiView.cpp:4093
-msgid "Zoom level is now %1$d%"
-msgstr "Stupeň lupy je teraz %1$d%"
+#: src/frontends/qt4/GuiView.cpp:4145
+msgid "Zoom level is now %1$d% (default value: %2$d%)"
+msgstr "Stupeň lupy je teraz %1$d% (štandardná hodnota: %2$d%)"
 
 #: src/frontends/qt4/GuiView.cpp:4148
 msgid "Please, preview the document first."
@@ -33469,75 +33506,6 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
-#~ msgid "Note: "
-#~ msgstr "Poznámka: "
-
-#~ msgid "Volume: "
-#~ msgstr "Diel: "
-
-#~ msgid "Number: "
-#~ msgstr "Číslo: "
-
-#~ msgid "Article: "
-#~ msgstr "Článok: "
-
-#~ msgid "Year: "
-#~ msgstr "Rok: "
-
-#~ msgid "Month: "
-#~ msgstr "Mesiac: "
-
-#~ msgid "Submission ID: "
-#~ msgstr "Totožnosť Predloženia: "
-
-#~ msgid "Price: "
-#~ msgstr "Cena: "
-
-#~ msgid "Japanese Article (BXJS Class)"
-#~ msgstr "Japonský Článok (Trieda BXJS)"
-
-#~ msgid "Japanese Book (BXJS Class)"
-#~ msgstr "Japonská Kniha (Trieda BXJS)"
-
-#~ msgid "Japanese Report (BXJS Class)"
-#~ msgstr "Japonský Referát (Trieda BXJS)"
-
-#~ msgid "Japanese Slide (BXJS Class)"
-#~ msgstr "Japonská Fólia (Trieda BXJS)"
-
-#~ msgid "Japanese Article (Standard Class)"
-#~ msgstr "Japonský Článok (Štandardná Trieda)"
-
-#~ msgid "Japanese Book (Standard Class)"
-#~ msgstr "Japonská Kniha (Štandardná Trieda)"
-
-#~ msgid "Japanese Report (Standard Class)"
-#~ msgstr "Japonský Report (Štandardná trieda)"
-
-#~ msgid "Japanese Article (JS Class)"
-#~ msgstr "Japonský Článok (Trieda JS)"
-
-#~ msgid "Japanese Book (JS Class)"
-#~ msgstr "Japonská Kniha (Trieda JS)"
-
-#~ msgid "Japanese Article (Standard Class: Vertical Writing)"
-#~ msgstr "Japonský Článok (Štandardná Trieda: Vertikálne Písanie)"
-
-#~ msgid "Japanese Book (Standard Class: Vertical Writing)"
-#~ msgstr "Japonská Kniha (Štandardná Trieda: Vertikálne Písanie)"
-
-#~ msgid "Sweave (Japanese)"
-#~ msgstr "Sweave (japonský)"
-
-#~ msgid "Sweave (Japanese)|S"
-#~ msgstr "Sweave (japonský)|S"
-
-#~ msgid "Rnw (knitr, Japanese)"
-#~ msgstr "Rnw (knitr, japonský)"
-
-#~ msgid "LilyPond book (pLaTeX)"
-#~ msgstr "LilyPond Kniha (pLaTeX)"
-
 #~ msgid "Use the minted package instead of the listings one"
 #~ msgstr "Použiť minted balík namiesto balíka listings"
 
@@ -34807,6 +34775,27 @@ msgstr "Neznámy používateľ"
 #~ msgid "Japanese (non-CJK) (utf8)"
 #~ msgstr "Japonsky (non-CJK) (utf8)"
 
+#~ msgid "Japanese Article (Vertical Writing)"
+#~ msgstr "Japonský Článok (Vertikálne Písanie)"
+
+#~ msgid "Japanese Article (jarticle)"
+#~ msgstr "Japonský Článok (jarticle)"
+
+#~ msgid "Japanese Article (jsarticle)"
+#~ msgstr "Japonský Článok (jsarticle)"
+
+#~ msgid "Japanese Book (Vertical Writing)"
+#~ msgstr "Japonská Kniha (Vertikálne Písanie)"
+
+#~ msgid "Japanese Book (jbook)"
+#~ msgstr "Japonská Kniha (jbook)"
+
+#~ msgid "Japanese Book (jsbook)"
+#~ msgstr "Japonská Kniha (jsbook)"
+
+#~ msgid "Japanese Report (jreport)"
+#~ msgstr "Japonský referát (jreport)"
+
 #~ msgid "AMS arrows"
 #~ msgstr "AMS šípky"
 
@@ -34833,6 +34822,9 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Caption Setup Options|S"
 #~ msgstr "Voľby pre nastavenie popisu"
+
+#~ msgid "Caption: "
+#~ msgstr "Popis: "
 
 #~ msgid "Options for the caption setup command (see bicaption manual)"
 #~ msgstr "Voľby pre príkaz na nastavenie popisu (viď bicaption manuál)"
@@ -35539,6 +35531,15 @@ msgstr "Neznámy používateľ"
 #~ "[[{%inštitúcia%[[, %inštitúcia%]]}]]}]]}{%rok%[[ (%rok%)]]}{%strany%[[, "
 #~ "%strany%]]}."
 
+#~ msgid "Specify the default output format when using (PDF)LaTeX"
+#~ msgstr "Určite štandardný výstupný formát pre (PDF)LaTeX"
+
+#~ msgid "The default output format for documents (except with non-TeX fonts)"
+#~ msgstr "Štandardný výstupný formát pre dokumenty používajúce TeX fonty"
+
+#~ msgid "Zoom level is now %1$d%"
+#~ msgstr "Stupeň lupy je teraz %1$d%"
+
 #~ msgid "Use the XeTeX processing engine"
 #~ msgstr "Použi XeTeX na spracovanie"
 
@@ -35712,6 +35713,18 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "A&vailable indices:"
 #~ msgstr "Dostupné indexy:"
+
+#~ msgid "ACM Article: "
+#~ msgstr "ACM Článok: "
+
+#~ msgid "ACM Month: "
+#~ msgstr "ACM Mesiac: "
+
+#~ msgid "ACM Number: "
+#~ msgstr "ACM-Číslo: "
+
+#~ msgid "ACM Price: "
+#~ msgstr "ACM Cena: "
 
 #~ msgid "&Horiz. Phantom"
 #~ msgstr "Horiz. Phantom"
@@ -36439,6 +36452,9 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Austrian"
 #~ msgstr "Rakúsky"
+
+#~ msgid "Author Note: "
+#~ msgstr "Poznámka Autor: "
 
 #~ msgid "British"
 #~ msgstr "Britsky"
@@ -37826,6 +37842,15 @@ msgstr "Neznámy používateľ"
 #~ msgid "ACM SIGS ('Alternate' Style)"
 #~ msgstr "ACM SIGS ('Alternate' štýl)"
 
+#~ msgid "ACM Submission ID: "
+#~ msgstr "ACM Totožnosť Predloženia: "
+
+#~ msgid "ACM Volume: "
+#~ msgstr "ACM Diel: "
+
+#~ msgid "ACM Year: "
+#~ msgstr "ACM Rok: "
+
 #~ msgid "ACM SIG Proceedings (SP)"
 #~ msgstr "ACM SIG rokovacie zväzky (SP)"
 
@@ -37860,4 +37885,3 @@ msgstr "Neznámy používateľ"
 #~ "obrázok/formát konvertor, ale je známe že je schopný vykonávať v mene "
 #~ "užívateľa ľubovoľné akcie, vrátane nebezpečné ako napr. zmazanie súborov. "
 #~ "Keď je napr. inštruovaný robiť to zlovoľne vyrobeným lyx dokumentom.</p> "
-
