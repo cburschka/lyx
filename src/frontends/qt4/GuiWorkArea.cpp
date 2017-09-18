@@ -238,7 +238,7 @@ GuiWorkArea::Private::Private(GuiWorkArea * parent)
 : p(parent), buffer_view_(0), lyx_view_(0),
   caret_(0), caret_visible_(false),
   need_resize_(false), preedit_lines_(1),
-  pixel_ratio_(1.0),
+  last_pixel_ratio_(1.0),
   completer_(new GuiCompleter(p, p)), dialog_mode_(false), shell_escape_(false),
   read_only_(false), clean_(true), externally_modified_(false)
 {
@@ -1243,13 +1243,15 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 	// LYXERR(Debug::PAINTING, "paintEvent begin: x: " << rc.x()
 	//	<< " y: " << rc.y() << " w: " << rc.width() << " h: " << rc.height());
 
-	if (d->needResize()) {
+	if (d->need_resize_ || pixelRatio() != d->last_pixel_ratio_) {
 		d->resizeBufferView();
 		if (d->caret_visible_) {
 			d->hideCaret();
 			d->showCaret();
 		}
 	}
+
+	d->last_pixel_ratio_ = pixelRatio();
 
 	GuiPainter pain(viewport(), pixelRatio());
 	d->buffer_view_->draw(pain, d->caret_visible_);
