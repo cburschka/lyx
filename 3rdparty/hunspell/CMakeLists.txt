@@ -21,8 +21,6 @@ set(SRCS
     ${SRCDIR}/hunspell/csutil.cxx
     ${SRCDIR}/hunspell/hashmgr.cxx
     ${SRCDIR}/hunspell/suggestmgr.cxx
-    ${SRCDIR}/hunspell/license.myspell
-    ${SRCDIR}/hunspell/license.hunspell
     ${SRCDIR}/hunspell/phonet.cxx
     ${SRCDIR}/hunspell/filemgr.cxx
     ${SRCDIR}/hunspell/hunzip.cxx
