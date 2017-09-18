@@ -93,17 +93,15 @@ AC_DEFUN([LYX_CHECK_SPELL_ENGINES],
 [
 	LYX_USE_INCLUDED_HUNSPELL
 	if test x$lyx_cv_with_included_hunspell = xyes ; then
-dnl the user wanted to use the included hunspell, so do not check for the other spell checkers
-		lyx_use_aspell=false
-		lyx_use_enchant=false
+dnl the user wanted to use the included hunspell, so do not check for external hunspell
 		lyx_use_hunspell=true
 		AC_DEFINE(USE_HUNSPELL, 1, [Define as 1 to use the hunspell library])
 		lyx_flags="$lyx_flags use-hunspell"
 	else
-		CHECK_WITH_ASPELL
-		CHECK_WITH_ENCHANT
 		CHECK_WITH_HUNSPELL
 	fi
+	CHECK_WITH_ASPELL
+	CHECK_WITH_ENCHANT
 
 	AM_CONDITIONAL(USE_ASPELL, $lyx_use_aspell)
 	AM_CONDITIONAL(USE_ENCHANT, $lyx_use_enchant)
