@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.8)
 
 project(hunspell)
 
-set(HUNSPELL_VERSION 1.3.3)
+set(HUNSPELL_VERSION 1.6.2)
 
 set(SRCDIR ${CMAKE_CURRENT_SOURCE_DIR}/${HUNSPELL_VERSION}/src)
 
@@ -19,7 +19,6 @@ set(SRCS
     ${SRCDIR}/hunspell/affentry.cxx
     ${SRCDIR}/hunspell/affixmgr.cxx
     ${SRCDIR}/hunspell/csutil.cxx
-    ${SRCDIR}/hunspell/dictmgr.cxx
     ${SRCDIR}/hunspell/hashmgr.cxx
     ${SRCDIR}/hunspell/suggestmgr.cxx
     ${SRCDIR}/hunspell/license.myspell
@@ -37,7 +36,6 @@ set(HEADERS
     ${SRCDIR}/hunspell/csutil.hxx
     ${SRCDIR}/hunspell/hunspell.hxx
     ${SRCDIR}/hunspell/atypes.hxx
-    ${SRCDIR}/hunspell/dictmgr.hxx
     ${SRCDIR}/hunspell/hunspell.h
     ${SRCDIR}/hunspell/suggestmgr.hxx
     ${SRCDIR}/hunspell/baseaffix.hxx
