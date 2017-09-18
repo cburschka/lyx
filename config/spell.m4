@@ -7,19 +7,19 @@ AC_DEFUN([CHECK_WITH_ASPELL],
 	test "$with_aspell" = "no" && lyx_use_aspell=false
 
 	if $lyx_use_aspell ; then
-	AC_CHECK_HEADERS(aspell.h,
-		[lyx_use_aspell=true; break;],
-		[lyx_use_aspell=false])
-	AC_CHECK_LIB(aspell, new_aspell_config, LIBS="-laspell $LIBS", lyx_use_aspell=false)
+		AC_CHECK_HEADERS(aspell.h,
+			[lyx_use_aspell=true; break;],
+			[lyx_use_aspell=false])
+		AC_CHECK_LIB(aspell, new_aspell_config, LIBS="-laspell $LIBS", lyx_use_aspell=false)
 
-	AC_MSG_CHECKING([whether to use aspell])
-	if $lyx_use_aspell ; then
-		AC_MSG_RESULT(yes)
-		AC_DEFINE(USE_ASPELL, 1, [Define as 1 to use the aspell library])
-		lyx_flags="$lyx_flags use-aspell"
-	else
-		AC_MSG_RESULT(no)
-	fi
+		AC_MSG_CHECKING([whether to use aspell])
+		if $lyx_use_aspell ; then
+			AC_MSG_RESULT(yes)
+			AC_DEFINE(USE_ASPELL, 1, [Define as 1 to use the aspell library])
+			lyx_flags="$lyx_flags use-aspell"
+		else
+			AC_MSG_RESULT(no)
+		fi
 	fi
 	])
 
@@ -31,16 +31,16 @@ AC_DEFUN([CHECK_WITH_ENCHANT],
 	test "$with_enchant" = "no" && lyx_use_enchant=false
 
 	if $lyx_use_enchant; then
-	PKG_CHECK_MODULES([ENCHANT], [enchant], [], [lyx_use_enchant=false])
-	AC_MSG_CHECKING([whether to use enchant])
-	if $lyx_use_enchant ; then
-	    AC_MSG_RESULT(yes)
-	    AC_DEFINE(USE_ENCHANT, 1, [Define as 1 to use the enchant library])
-	    lyx_flags="$lyx_flags use-enchant"
-	else
-	    AC_MSG_RESULT(no)
-	fi
-    fi
+		PKG_CHECK_MODULES([ENCHANT], [enchant], [], [lyx_use_enchant=false])
+		AC_MSG_CHECKING([whether to use enchant])
+		if $lyx_use_enchant ; then
+		    AC_MSG_RESULT(yes)
+		    AC_DEFINE(USE_ENCHANT, 1, [Define as 1 to use the enchant library])
+		    lyx_flags="$lyx_flags use-enchant"
+		else
+		    AC_MSG_RESULT(no)
+		fi
+    	fi
     ])
 
 # Macro to add for using hunspell spellchecker libraries!     -*- sh -*-
