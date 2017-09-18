@@ -97,6 +97,7 @@ dnl the user wanted to use the included hunspell, so do not check for the other 
 		lyx_use_aspell=false
 		lyx_use_enchant=false
 		lyx_use_hunspell=true
+		AC_DEFINE(USE_HUNSPELL, 1, [Define as 1 to use the hunspell library])
 		lyx_flags="$lyx_flags use-hunspell"
 	else
 		CHECK_WITH_ASPELL
