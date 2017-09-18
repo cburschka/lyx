@@ -52,10 +52,10 @@ GuiPainter::GuiPainter(QPaintDevice * device, double pixel_ratio)
 	: QPainter(device), Painter(pixel_ratio),
 	  use_pixmap_cache_(lyxrc.use_pixmap_cache && USE_PIXMAP_CACHE)
 {
-	// new QPainter has default QPen:
-	current_color_ = guiApp->colorCache().get(Color_black);
-	current_ls_ = line_solid;
-	current_lw_ = thin_line;
+	// set cache correctly
+	current_color_ = pen().color();
+	current_ls_ = pen().style() == Qt::DotLine ? line_onoffdash : line_solid;
+	current_lw_ = pen().width();
 }
 
 
