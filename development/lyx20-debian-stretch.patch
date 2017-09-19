@@ -1,0 +1,101 @@
+Author: Pavel Sanda <sanda@lyx.org>
+Date:   Thu Sep 14 18:24:59 2017 +0000
+
+    Recipy for 2.0 on debian 9 (stretch)
+    
+    Get older automake
+    apt-get install automake-1.11
+    update-alternatives --config automake
+    
+    Get older QT4
+    apt-get install qt4-default #smaller set might be enough
+    
+    In 2.0 branch:
+    cat lyx20-debian-stretch.patch|patch -p1
+    ./autogen.sh
+    ./configure --with-version-suffix  --enable-build-type=rel --prefix=/home/user/dir/ --with-qt4-dir=/usr/lib/x86_64-linux-gnu/qt4/  --without-included-boost
+    make
+
+diff --git a/src/frontends/qt4/GuiAlert.cpp b/src/frontends/qt4/GuiAlert.cpp
+index a7bb480094..6cad61b3d1 100644
+--- a/src/frontends/qt4/GuiAlert.cpp
++++ b/src/frontends/qt4/GuiAlert.cpp
+@@ -39,7 +39,7 @@
+ 
+ 
+ // sync with GuiView.cpp
+-#define EXPORT_in_THREAD 1
++//#define EXPORT_in_THREAD 1
+ 
+ 
+ using namespace std;
+diff --git a/src/frontends/qt4/GuiView.cpp b/src/frontends/qt4/GuiView.cpp
+index 2398899bb5..a4fcd43385 100644
+--- a/src/frontends/qt4/GuiView.cpp
++++ b/src/frontends/qt4/GuiView.cpp
+@@ -111,7 +111,7 @@
+ 
+ 
+ 
+-#define EXPORT_in_THREAD 1
++//#define EXPORT_in_THREAD 0
+ 
+ // QtConcurrent was introduced in Qt 4.4
+ #if (QT_VERSION >= 0x040400)
+diff --git a/src/insets/InsetGraphics.cpp b/src/insets/InsetGraphics.cpp
+index 8a752e4ce8..74fe9c3672 100644
+--- a/src/insets/InsetGraphics.cpp
++++ b/src/insets/InsetGraphics.cpp
+@@ -487,7 +487,7 @@ copyToDirIfNeeded(DocFileName const & file, string const & dir)
+ 	string const file_in = file.absFileName();
+ 	string const only_path = onlyPath(file_in);
+ 	if (rtrim(onlyPath(file_in) , "/") == rtrim(dir, "/"))
+-		return make_pair(IDENTICAL_PATHS, file_in);
++		return make_pair(IDENTICAL_PATHS, FileName(file_in));
+ 
+ 	string mangled = file.mangledFileName();
+ 	if (file.isZipped()) {
+diff --git a/src/mathed/MathExtern.cpp b/src/mathed/MathExtern.cpp
+index d59c572117..488e512963 100644
+--- a/src/mathed/MathExtern.cpp
++++ b/src/mathed/MathExtern.cpp
+@@ -1452,7 +1452,7 @@ bool extractNumber(MathData const & ar, int & i)
+ {
+ 	idocstringstream is(charSequence(ar.begin(), ar.end()));
+ 	is >> i;
+-	return is;
++	return !is.fail();
+ }
+ 
+ 
+@@ -1460,7 +1460,7 @@ bool extractNumber(MathData const & ar, double & d)
+ {
+ 	idocstringstream is(charSequence(ar.begin(), ar.end()));
+ 	is >> d;
+-	return is;
++	return !is.fail();
+ }
+ 
+ 
+diff --git a/src/support/strfwd.h b/src/support/strfwd.h
+index 069357ff9c..21bb9725b3 100644
+--- a/src/support/strfwd.h
++++ b/src/support/strfwd.h
+@@ -28,6 +28,9 @@ namespace lyx { typedef boost::uint32_t char_type; }
+ 
+ #endif
+ 
++#if 1
++#include <string>
++#else
+ 
+ namespace std {
+ 
+@@ -50,6 +53,7 @@ typedef basic_ostream<char, char_traits<char> > ostream;
+ 
+ } // namepace std
+ 
++#endif
+ 
+ namespace lyx {
+ 
