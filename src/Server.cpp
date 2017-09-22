@@ -1162,7 +1162,7 @@ void Server::callback(string const & msg)
 						<< client << " said goodbye");
 				} else {
 					LYXERR(Debug::LYXSERVER,
-						"Server: ignoring bye messge from unregistered client" << client);
+						"Server: ignoring bye message from unregistered client" << client);
 				}
 			} else {
 				LYXERR0("Server: Undefined server command " << cmd << '.');

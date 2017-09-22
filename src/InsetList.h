@@ -93,7 +93,7 @@ public:
 		pos_type startpos = 0 ///< start position for the search.
 		) const;
 
-	/// count occurences of of an \c Inset type.
+	/// count occurrences of an \c Inset type.
 	/// \return the number of found inset(s).
 	int count(
 		InsetCode code, ///< Code of inset type to count.

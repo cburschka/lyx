@@ -250,7 +250,7 @@ std::string const onlyPath(std::string const & fname);
 std::string const onlyFileName(std::string const & fname);
 
 /** Check and Replace Environmentvariables ${NAME} in Path.
-    Replaces all occurences of these, if they are found in the
+    Replaces all occurrences of these, if they are found in the
     environment.
     Variables are defined by Var := '${' [a-zA-Z_][a-zA-Z_0-9]* '}'
 */

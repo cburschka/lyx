@@ -135,7 +135,7 @@ public:
 	std::string contextMenu(BufferView const &, int, int) const;
 	///
 	std::string contextMenuName() const;
-	/// should paragraph indendation be ommitted in any case?
+	/// should paragraph indendation be omitted in any case?
 	bool neverIndent() const { return true; }
 
 private:
