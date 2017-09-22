@@ -934,7 +934,7 @@ int count_char(string const & str, char chr)
 }
 
 
-/// Count all occurences of char \a chr inside \a str
+/// Count all occurrences of char \a chr inside \a str
 int count_char(docstring const & str, docstring::value_type chr)
 {
 	int count = 0;

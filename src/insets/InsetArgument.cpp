@@ -139,7 +139,7 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 		}
 	} else {
 		labelstring_ = _("Unknown Argument");
-		tooltip_ = _("Argument not known in this Layout. Will be supressed in the output.");
+		tooltip_ = _("Argument not known in this Layout. Will be suppressed in the output.");
 	}
 
 	if (former_pass_thru != pass_thru_) {

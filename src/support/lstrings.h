@@ -196,13 +196,13 @@ std::string const subst(std::string const & a,
 docstring const subst(docstring const & a,
 		docstring const & oldstr, docstring const & newstr);
 
-/// Count all occurences of char \a chr inside \a str
+/// Count all occurrences of char \a chr inside \a str
 int count_char(std::string const & str, char chr);
 
-/// Count all occurences of char \a chr inside \a str
+/// Count all occurrences of char \a chr inside \a str
 int count_char(docstring const & str, docstring::value_type chr);
 
-/** Count all occurences of binary chars inside \a str.
+/** Count all occurrences of binary chars inside \a str.
     It is assumed that \a str is utf-8 encoded and that a binary char
     belongs to the unicode class names Zl, Zp, Cc, Cf, Cs, Co, or Cn
     (excluding white space characters such as '\t', '\n', '\v', '\f', '\r').

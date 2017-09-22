@@ -3962,7 +3962,7 @@ void GuiDocument::updateIncludeonlys()
 			all_unincluded = false;
 	}
 	// Both if all childs are included and if none is included
-	// is equal to "include all" (i.e., ommit \includeonly).
+	// is equal to "include all" (i.e., omit \includeonly).
 	// Thus, reset the GUI.
 	if (!has_unincluded || all_unincluded) {
 		masterChildModule->includeallRB->setChecked(true);

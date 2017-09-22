@@ -473,7 +473,7 @@ public:
 	virtual LyXAlignment contentAlignment() const { return LYX_ALIGN_NONE; }
 	/// should we break lines after this inset?
 	virtual bool isLineSeparator() const { return false; }
-	/// should paragraph indendation be ommitted in any case?
+	/// should paragraph indendation be omitted in any case?
 	virtual bool neverIndent() const { return false; }
 	/// dumps content to lyxerr
 	virtual void dump() const;
