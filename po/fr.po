@@ -326,19 +326,21 @@
 # ------------------------------------------------------------------
 # 1 avril 2017 : dernière mise à jour pour 2.2.3
 # ------------------------------------------------------------------
+# 22 septembre 2017 : résolution de conflits de raccourcis
+# ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2017-06-06 16:41-0400\n"
-"PO-Revision-Date: 2017-04-01 10:38+0200\n"
+"PO-Revision-Date: 2017-09-22 22:28+0200\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:33
 msgid "Version"
@@ -17541,11 +17543,11 @@ msgstr "Passage à la ligne (justifié)|j"
 
 #: lib/ui/stdcontext.inc:316
 msgid "Plain Separator|P"
-msgstr "Séparateur ordinaire|P"
+msgstr "Séparateur ordinaire|p"
 
 #: lib/ui/stdcontext.inc:317
 msgid "Paragraph Break|B"
-msgstr "Saut de paragraphe|U"
+msgstr "Saut de paragraphe|u"
 
 #: lib/ui/stdcontext.inc:326 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:80
 #: src/Text3.cpp:1358 src/mathed/InsetMathNest.cpp:618
