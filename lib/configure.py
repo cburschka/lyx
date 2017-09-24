@@ -494,7 +494,16 @@ def checkDTLtools():
 
 def checkInkscape():
     ''' Check whether Inkscape is available and return the full path (Windows only) '''
-    if os.name != 'nt':
+    ''' On Mac OS (darwin) a wrapper is used - therefore the version is checked '''
+    ''' The answer of the real inkscape is validated and a fake binary used if this fails '''
+    if sys.platform == 'darwin':
+        version_string = cmdOutput("inkscape --version")
+        match = re.match('^Inkscape', version_string)
+        if match:
+            return 'inkscape'
+        else:
+            return 'inkscape-binary'
+    elif os.name != 'nt':
         return 'inkscape'
     if sys.version_info[0] < 3:
         import _winreg as winreg
@@ -981,11 +990,11 @@ def checkConverterEntries():
 \converter fig        pstex      "python -tt $$s/scripts/fig2pstex.py $$i $$o"	""''')
     #
     checkProg('a SVG -> PDFTeX converter', [inkscape_name],
-        rc_entry = [ r'\converter svg        pdftex     "python -tt $$s/scripts/svg2pdftex.py %% $$i $$o" ""'],
+        rc_entry = [ r'\converter svg        pdftex     "python -tt $$s/scripts/svg2pdftex.py %% $$p$$i $$p$$o" ""'],
         path = [inkscape_path])
     #
     checkProg('a SVG -> PSTeX converter', [inkscape_name],
-        rc_entry = [ r'\converter svg        pstex     "python -tt $$s/scripts/svg2pstex.py %% $$i $$o" ""'],
+        rc_entry = [ r'\converter svg        pstex     "python -tt $$s/scripts/svg2pstex.py %% $$p$$i $$p$$o" ""'],
         path = [inkscape_path])
     #
     checkProg('a TIFF -> PS converter', ['tiff2ps $$i > $$o'],
@@ -997,16 +1006,16 @@ def checkConverterEntries():
 \converter tgif       png        "tgif -print -color -png -o $$d $$i"	""
 \converter tgif       pdf6       "tgif -print -color -pdf -stdout $$i > $$o"	""'''])
     #
-    checkProg('a WMF -> EPS converter', ['metafile2eps $$i $$o', 'wmf2eps -o $$o $$i', inkscape_name + ' --file=$$i --export-area-drawing --without-gui --export-eps=$$o'],
+    checkProg('a WMF -> EPS converter', ['metafile2eps $$i $$o', 'wmf2eps -o $$o $$i', inkscape_name + ' --file=$$p$$i --export-area-drawing --without-gui --export-eps=$$p$$o'],
         rc_entry = [ r'\converter wmf        eps        "%%"	""'])
     #
-    checkProg('an EMF -> EPS converter', ['metafile2eps $$i $$o', 'wmf2eps -o $$o $$i', inkscape_name + ' --file=$$i --export-area-drawing --without-gui --export-eps=$$o'],
+    checkProg('an EMF -> EPS converter', ['metafile2eps $$i $$o', 'wmf2eps -o $$o $$i', inkscape_name + ' --file=$$p$$i --export-area-drawing --without-gui --export-eps=$$p$$o'],
         rc_entry = [ r'\converter emf        eps        "%%"	""'])
     #
-    checkProg('a WMF -> PDF converter', [inkscape_name + ' --file=$$i --export-area-drawing --without-gui --export-pdf=$$o'],
+    checkProg('a WMF -> PDF converter', [inkscape_name + ' --file=$$p$$i --export-area-drawing --without-gui --export-pdf=$$p$$o'],
         rc_entry = [ r'\converter wmf        pdf6        "%%"	""'])
     #
-    checkProg('an EMF -> PDF converter', [inkscape_name + ' --file=$$i --export-area-drawing --without-gui --export-pdf=$$o'],
+    checkProg('an EMF -> PDF converter', [inkscape_name + ' --file=$$p$$i --export-area-drawing --without-gui --export-pdf=$$p$$o'],
         rc_entry = [ r'\converter emf        pdf6        "%%"	""'])
     # Only define a converter to pdf6 for graphics
     checkProg('an EPS -> PDF converter', ['epstopdf'],
@@ -1052,12 +1061,12 @@ def checkConverterEntries():
         rc_entry = [ r'\converter svg        svgz       "%%"	""'])
     # Only define a converter to pdf6 for graphics
     # Prefer rsvg-convert over inkscape since it is faster (see http://www.lyx.org/trac/ticket/9891)
-    checkProg('a SVG -> PDF converter', ['rsvg-convert -f pdf -o $$o $$i', inkscape_name + ' --file=$$i --export-area-drawing --without-gui --export-pdf=$$o'],
+    checkProg('a SVG -> PDF converter', ['rsvg-convert -f pdf -o $$o $$i', inkscape_name + ' --file=$$p$$i --export-area-drawing --without-gui --export-pdf=$$p$$o'],
         rc_entry = [ r'''\converter svg        pdf6       "%%"    ""
 \converter svgz       pdf6       "%%"    ""'''],
         path = ['', inkscape_path])
     #
-    checkProg('a SVG -> EPS converter', ['rsvg-convert -f ps -o $$o $$i', inkscape_name + ' --file=$$i --export-area-drawing --without-gui --export-eps=$$o'],
+    checkProg('a SVG -> EPS converter', ['rsvg-convert -f ps -o $$o $$i', inkscape_name + ' --file=$$p$$i --export-area-drawing --without-gui --export-eps=$$p$$o'],
         rc_entry = [ r'''\converter svg        eps        "%%"    ""
 \converter svgz       eps        "%%"    ""'''],
         path = ['', inkscape_path])
