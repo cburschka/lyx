@@ -1026,7 +1026,7 @@ int InsetMathHull::indent(BufferView const & bv) const
 {
 	// FIXME: set this in the textclass. This value is what the article class uses.
 	static Length default_indent(2.5, Length::EM);
-	if (buffer().params().is_math_indent) {
+	if (display() != Inline && buffer().params().is_math_indent) {
 		Length const & len = buffer().params().getMathIndent();
 		if (len.empty())
 			return bv.inPixels(default_indent);
