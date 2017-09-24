@@ -1,0 +1,15 @@
+#!/bin/bash
+unset DISPLAY
+# at first try the well known location
+RESDIR="/Applications/Inkscape.app/Contents/Resources"
+test -f "${RESDIR}"/bin/inkscape -a -x "${RESDIR}"/bin/inkscape && exec "${RESDIR}"/bin/inkscape --without-gui "$@"
+# this failed... so try PATH expansion to start the inkscape shell wrapper
+IFS=":" read -ra DIRLIST <<< "${PATH}"
+for BINDIR in "${DIRLIST[@]}" ; do
+	RESDIR=$(dirname "${BINDIR}")
+	test -f "${RESDIR}"/bin/inkscape -a -x "${RESDIR}"/bin/inkscape && exec "${RESDIR}"/bin/inkscape --without-gui "$@"
+done
+# report error and exit with failure status
+exec 1>&2
+echo Could not find Inkscape binary.
+exit 1
