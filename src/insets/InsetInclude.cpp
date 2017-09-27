@@ -436,7 +436,7 @@ Buffer * InsetInclude::loadIfNeeded() const
 	// Use cached Buffer if possible.
 	if (child_buffer_ != 0) {
 		if (theBufferList().isLoaded(child_buffer_)
-    		// additional sanity check: make sure the Buffer really is
+		    // additional sanity check: make sure the Buffer really is
 		    // associated with the file we want.
 		    && child_buffer_ == theBufferList().getBuffer(included_file))
 			return child_buffer_;
