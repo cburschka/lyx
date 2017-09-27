@@ -4149,7 +4149,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			// painting so we must reset it.
 			QPixmapCache::clear();
 			guiApp->fontLoader().update();
-			lyx::dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
+			dr.screenUpdate(Update::Force | Update::FitCursor);
 			break;
 		}
 

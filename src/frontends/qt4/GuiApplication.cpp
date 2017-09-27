@@ -1632,14 +1632,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_SCREEN_FONT_UPDATE: {
 		// handle the screen font changes.
 		d->font_loader_.update();
-		// Backup current_view_
-		GuiView * view = current_view_;
-		// Set current_view_ to zero to forbid GuiWorkArea::redraw()
-		// to skip the refresh.
-		current_view_ = 0;
-		theBufferList().changed(false);
-		// Restore current_view_
-		current_view_ = view;
+		dr.screenUpdate(Update::Force | Update::FitCursor);
 		break;
 	}
 
