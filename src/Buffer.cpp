@@ -538,10 +538,10 @@ Buffer::~Buffer()
 		for (; it != end; ++it) {
 			Buffer * child = const_cast<Buffer *>(it->first);
 			if (theBufferList().isLoaded(child)) {
-			 if (theBufferList().isOthersChild(this, child))
-				 child->setParent(0);
-			 else
-				theBufferList().release(child);
+				if (theBufferList().isOthersChild(this, child))
+					child->setParent(0);
+				else
+					theBufferList().release(child);
 			}
 		}
 
