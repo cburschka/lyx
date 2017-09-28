@@ -3720,8 +3720,12 @@ void Buffer::listMacroNames(MacroNameSet & macros) const
 	// loop over children
 	Impl::BufferPositionMap::iterator it = d->children_positions.begin();
 	Impl::BufferPositionMap::iterator end = d->children_positions.end();
-	for (; it != end; ++it)
-		it->first->listMacroNames(macros);
+	for (; it != end; ++it) {
+		Buffer * child = const_cast<Buffer *>(it->first);
+		// The buffer might have been closed (see #10766).
+		if (theBufferList().isLoaded(child))
+			child->listMacroNames(macros);
+	}
 
 	// call parent
 	Buffer const * const pbuf = d->parent();
