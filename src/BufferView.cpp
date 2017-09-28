@@ -2698,10 +2698,10 @@ void BufferView::updateMetrics()
 		// Complete buffer visible? Then it's easy.
 		if (scrollRange == 0)
 			d->anchor_ypos_ = anchor_pm.ascent();
-
-		// FIXME: Some clever handling needed to show
-		// the _first_ paragraph up to the top if the cursor is
-		// in the first line.
+		else {
+			// avoid empty space above the first row
+			d->anchor_ypos_ = min(d->anchor_ypos_, anchor_pm.ascent());
+		}
 	}
 	anchor_pm.setPosition(d->anchor_ypos_);
 
