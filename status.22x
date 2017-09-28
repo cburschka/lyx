@@ -78,6 +78,9 @@ What's new
 - Fix crash when closing master document with dirty child while Document
   Settings dialog is open (bug 9979).
 
+- Fix crash when closing master with children and grandchildren
+  (bug 10766).
+
 - Fix random crash when dissolving inset (bug 10667).
 
 - Fix potential crash when cursor enters an inset (bug 10691).
