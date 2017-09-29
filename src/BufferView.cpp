@@ -3057,15 +3057,15 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 	int const y = tm.first().second->position();
 	PainterInfo pi(this, pain);
 
-	CursorSlice const & bottomSlice = d->cursor_.bottom();
-	/**  A repaint of the previous cursor row is needed if
-	 * 1/ the caret will be painted and is is not the same than the
-	 *    already painted one;
-	 * 2/ the caret will not be painted, but there is already one on
-	 * screen.
+	/**  A repaint of the previous caret row is needed if there is
+	 *  caret painted on screen and either
+	 *   1/ a new caret has to be painted at a place different from
+	 *      the existing one;
+	 *   2/ there is no need for a caret anymore.
 	 */
-	d->repaint_caret_row_ = (paint_caret && bottomSlice != d->caret_slice_)
-		|| (! paint_caret && !d->caret_slice_.empty());
+	d->repaint_caret_row_ = !d->caret_slice_.empty() &&
+		((paint_caret && d->cursor_.top() != d->caret_slice_)
+		 || ! paint_caret);
 
 	// Check whether the row where the cursor lives needs to be scrolled.
 	// Update the drawing strategy if needed.
@@ -3151,7 +3151,7 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 
 	// Remember what has just been done for the next draw() step
 	if (paint_caret)
-		d->caret_slice_ = bottomSlice;
+		d->caret_slice_ = d->cursor_.top();
 	else
 		d->caret_slice_ = CursorSlice();
 }
