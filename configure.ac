@@ -395,6 +395,7 @@ AC_CONFIG_FILES([Makefile \
       src/Makefile \
       src/tex2lyx/Makefile \
       src/tex2lyx/tex2lyx.1:src/tex2lyx/tex2lyx.1in \
+      src/convert/Makefile \
       src/support/Makefile \
       src/frontends/Makefile \
       src/frontends/qt4/Makefile

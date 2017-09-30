@@ -622,7 +622,7 @@ framework_name() {
 	echo "Frameworks/${1}.framework"
 }
 
-LYX_FILE_LIST="lyx lyxclient tex2lyx"
+LYX_FILE_LIST="lyx lyxclient tex2lyx lyxconvert"
 BUNDLE_PATH="Contents/MacOS"
 LYX_BUNDLE_PATH="${LyxAppPrefix}/${BUNDLE_PATH}"
 build_lyx() {
@@ -704,7 +704,7 @@ build_lyx() {
 				mv "${LYX_BUNDLE_PATH}/${file}"\
 					"${LYX_BUNDLE_PATH}/${file}-${arch}" 
 			else
-				echo ERROR: Cannot build and install LyX for ${arch}.
+				echo ERROR: Cannot build and install ${file} for ${arch}.
 				exit 1
 			fi
 		done

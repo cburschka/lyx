@@ -11,7 +11,7 @@ if BUILD_CLIENT_SUBDIR
 CLIENT = client
 endif
 
-SUBDIRS = support frontends . $(CLIENT) tex2lyx
+SUBDIRS = support frontends . $(CLIENT) tex2lyx convert
 
 EXTRA_DIST = lyx_commit_hash.h.in \
 	CMakeLists.txt \
