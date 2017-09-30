@@ -1841,58 +1841,63 @@ def revert_chapterbib(document):
 
 
 def convert_dashligatures(document):
-    " Remove a zero-length space (U+200B) after en- and em-dashes. "
-
-    i = find_token(document.header, "\\use_microtype", 0)
-    if i != -1:
-        if document.initial_format > 474 and document.initial_format < 509:
-            # This was created by LyX 2.2
-            document.header[i+1:i+1] = ["\\use_dash_ligatures false"]
-        else:
-            # This was created by LyX 2.1 or earlier
-            document.header[i+1:i+1] = ["\\use_dash_ligatures true"]
-
-    i = 0
-    while i < len(document.body):
-        words = document.body[i].split()
-        # Skip some document parts where dashes are not converted
-        if len(words) > 1 and words[0] == "\\begin_inset" and \
-           words[1] in ["CommandInset", "ERT", "External", "Formula", \
-                        "FormulaMacro", "Graphics", "IPA", "listings"]:
-            j = find_end_of_inset(document.body, i)
-            if j == -1:
-                document.warning("Malformed LyX document: Can't find end of " \
-                                 + words[1] + " inset at line " + str(i))
-                i += 1
-            else:
-                i = j
-            continue
-        if len(words) > 0 and words[0] in ["\\leftindent", \
-                "\\paragraph_spacing", "\\align", "\\labelwidthstring"]:
-            i += 1
-            continue
-
-        start = 0
-        while True:
-            j = document.body[i].find(u"\u2013", start) # en-dash
-            k = document.body[i].find(u"\u2014", start) # em-dash
-            if j == -1 and k == -1:
-                break
-            if j == -1 or (k != -1 and k < j):
-                j = k
-            after = document.body[i][j+1:]
-            if after.startswith(u"\u200B"):
-                document.body[i] = document.body[i][:j+1] + after[1:]
-            else:
-                if len(after) == 0 and document.body[i+1].startswith(u"\u200B"):
-                    document.body[i+1] = document.body[i+1][1:]
-                    break
-            start = j+1
-        i += 1
-
+    "Set 'use_dash_ligatures' according to content."
+    use_dash_ligatures = None
+    # eventually remove preamble code from 2.3->2.2 conversion:
+    for i, line in enumerate(document.preamble):
+        if i > 1 and line == r'\renewcommand{\textemdash}{---}':
+            if (document.preamble[i-1] == r'\renewcommand{\textendash}{--}'
+                and document.preamble[i-2] == '% Added by lyx2lyx'):
+                del document.preamble[i-2:i+1]
+                use_dash_ligatures = True
+    if use_dash_ligatures is None:
+        # Look for dashes:
+        # (Documents by LyX 2.1 or older have "\twohyphens\n" or "\threehyphens\n"
+        # as interim representation for dash ligatures in 2.2.)
+        has_literal_dashes = False
+        has_ligature_dashes = False
+        j = 0
+        for i, line in enumerate(document.body):
+            # Skip some document parts where dashes are not converted
+            if (i < j) or line.startswith("\\labelwidthstring"):
+                continue
+            words = line.split()
+            if len(words) > 1 and words[0] == "\\begin_inset" and \
+            words[1] in ["CommandInset", "ERT", "External", "Formula",
+                         "FormulaMacro", "Graphics", "IPA", "listings"]:
+                j = find_end_of_inset(document.body, i)
+                if j == -1:
+                    document.warning("Malformed LyX document: "
+                        "Can't find end of %s inset at line %d" % (words[1],i))
+                continue
+            # literal dash followed by a word or no-break space:
+            if re.search(u"[\u2013\u2014]([\w\u00A0]|$)", line,
+                         flags=re.UNICODE):
+                has_literal_dashes = True
+            # ligature dash followed by word or no-break space on next line:
+            if re.search(ur"(\\twohyphens|\\threehyphens)", line,
+                            flags=re.UNICODE) and re.match(u"[\w\u00A0]",
+                            document.body[i+1], flags=re.UNICODE):
+                has_ligature_dashes = True
+        if has_literal_dashes and has_ligature_dashes:
+            # TODO: insert a warning note in the document?
+            document.warning('This document contained both literal and '
+                '"ligature" dashes.\n Line breaks may have changed. '
+                'See UserGuide chapter 3.9.1 for details.')
+        elif has_literal_dashes:
+            use_dash_ligatures = False
+        elif has_ligature_dashes:
+            use_dash_ligatures = True
+    # insert the setting if there is a preferred value
+    if use_dash_ligatures is not None:
+        i = find_token(document.header, "\\use_microtype", 0)
+        if i != -1:
+            document.header.insert(i+1, "\\use_dash_ligatures %s"
+                                % str(use_dash_ligatures).lower())
 
 def revert_dashligatures(document):
-    " Remove font ligature settings for en- and em-dashes. "
+    """Remove font ligature settings for en- and em-dashes.
+    Revert conversion of \twodashes or \threedashes to literal dashes."""
     i = find_token(document.header, "\\use_dash_ligatures", 0)
     if i == -1:
         return
@@ -1902,42 +1907,34 @@ def revert_dashligatures(document):
     i = find_token(document.header, "\\use_non_tex_fonts", 0)
     if i != -1:
         use_non_tex_fonts = get_bool_value(document.header, "\\use_non_tex_fonts", i)
-    if not use_dash_ligatures or use_non_tex_fonts:
+    if not use_dash_ligatures or document.backend != "latex":
         return
 
-    # Add a zero-length space (U+200B) after en- and em-dashes
-    i = 0
-    while i < len(document.body):
-        words = document.body[i].split()
+    j = 0
+    new_body = []
+    for i, line in enumerate(document.body):
         # Skip some document parts where dashes are not converted
+        if (i < j) or line.startswith("\\labelwidthstring"):
+            new_body.append(line)
+            continue
+        words = line.split()
         if len(words) > 1 and words[0] == "\\begin_inset" and \
-           words[1] in ["CommandInset", "ERT", "External", "Formula", \
+           words[1] in ["CommandInset", "ERT", "External", "Formula",
                         "FormulaMacro", "Graphics", "IPA", "listings"]:
             j = find_end_of_inset(document.body, i)
             if j == -1:
-                document.warning("Malformed LyX document: Can't find end of " \
+                document.warning("Malformed LyX document: Can't find end of "
                                  + words[1] + " inset at line " + str(i))
-                i += 1
-            else:
-                i = j
+            new_body.append(line)
             continue
-        if len(words) > 0 and words[0] in ["\\leftindent", \
-                "\\paragraph_spacing", "\\align", "\\labelwidthstring"]:
-            i += 1
-            continue
-
-        start = 0
-        while True:
-            j = document.body[i].find(u"\u2013", start) # en-dash
-            k = document.body[i].find(u"\u2014", start) # em-dash
-            if j == -1 and k == -1:
-                break
-            if j == -1 or (k != -1 and k < j):
-                j = k
-            after = document.body[i][j+1:]
-            document.body[i] = document.body[i][:j+1] + u"\u200B" + after
-            start = j+1
-        i += 1
+        line = line.replace(u'\u2013', '\\twohyphens\n')
+        line = line.replace(u'\u2014', '\\threehyphens\n')
+        lines = line.split('\n')
+        new_body.extend(line.split('\n'))
+    document.body = new_body
+    # redefine the dash LICRs to use ligature dashes:
+    add_to_preamble(document, [r'\renewcommand{\textendash}{--}',
+                               r'\renewcommand{\textemdash}{---}'])
 
 
 def revert_noto(document):
@@ -2228,7 +2225,7 @@ def revert_mathnumberingname(document):
         else:
             l = find_token(document.header, "\\use_default_options", 0)
             document.header.insert(l, "\\options reqno")
-    # add the math_number_before tag   
+    # add the math_number_before tag
     regexp = re.compile(r'(\\math_numbering_side default)')
     i = find_re(document.header, regexp, 0)
     if i != -1:
