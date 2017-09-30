@@ -14,10 +14,9 @@
   if needed, as usual.
 
 * The new setting
-  "Document->Settings->Fonts->Disallow line breaks after dashes" forces
-  output of en- and em-dashes as \textendash and \textemdash when exporting
-  to LaTeX. It is is "false" by default but "true" when opening documents
-  edited with LyX 2.2.
+  "Document->Settings->Fonts->Disallow line breaks after dashes"
+  turns off the conversion of em- and en-dash characters to --- and --
+  respectively for LaTeX export. It is is "false" by default.
   See chapter 3.9.1.1 "Dashes and Line Breaks" of the User Guide and
   "Caveats when upgrading from earlier versions to 2.3.x" below.
 
@@ -214,26 +213,14 @@
   the external_templates file, you will have to move the modifications to
   the respective *.xtemplate file manually.
 
-* By default, LyX 2.3 outputs en- and em-dashes after which a line break can
-  occur in the output. Sometimes, this results in undesired line breaks.
+* By default, LyX 2.3 outputs en- and em-dashes as -- and --- respectively,
+  so that a line break can occur in the output immediately after the dash.
+  Sometimes, this results in undesired line breaks or overfull lines due to
+  suppression of hyphenation in the word preceding the dash.
   Select "Document->Settings->Fonts->Disallow line breaks after dashes"
-  to keep the LyX 2.2 behaviour, where such line breaks have been generally
-  suppressed. See chapter 3.9.1.1, "Dashes and Line Breaks", of the User Guide
+  to keep the LyX 2.2 behaviour.
+  See chapter 3.9.1.1, "Dashes and Line Breaks", of the User Guide
   for details.
-
-* ZWSP characters (u200b) following literal em- and en-dashes are deleted by
-  lyx2lyx when converting to 2.3 format. If you used them as optional line
-  breaks after dashes, convert them to space insets before opening your
-  document with LyX 2.3 or the optional line breaks will be lost!
-
-* If using TeX fonts and en- and em-dashes are output in breakable form,
-  when exporting documents containing en- and em-dashes to the format of
-  LyX 2.0 or earlier, the following line has to be manually added to the
-  unicodesymbols file of that LyX version:<br>
-  0x200b "\\hspace{0pt}" "" "" "" "" # ZERO WIDTH SPACE<br>
-  This avoids "uncodable character" issues if the document is actually
-  loaded by that LyX version. LyX 2.1 and later versions already have the
-  necessary definition in their unicodesymbols file.
 
 * If trying to compile documents using R scripts and sweave/knitr, LyX
   2.3.x would not allow for re-running the R scripts, unless the user:

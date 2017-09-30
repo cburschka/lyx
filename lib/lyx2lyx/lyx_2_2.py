@@ -659,6 +659,12 @@ def convert_dashes(document):
 def revert_dashes(document):
     "convert \\twohyphens and \\threehyphens to -- and ---"
 
+    # eventually remove preamble code from 2.3->2.2 conversion:
+    for i, line in enumerate(document.preamble):
+        if i > 1 and line == r'\renewcommand{\textemdash}{---}':
+            if (document.preamble[i-1] == r'\renewcommand{\textendash}{--}'
+                and document.preamble[i-2] == '% Added by lyx2lyx'):
+                del document.preamble[i-2:i+1]
     i = 0
     while i < len(document.body):
         words = document.body[i].split()
