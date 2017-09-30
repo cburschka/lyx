@@ -13,7 +13,7 @@ endif
 
 
 SUBDIRS = autotests config development po 3rdparty src sourcedoc lib \
-	$(CLIENT) src/tex2lyx
+	$(CLIENT) src/tex2lyx src/convert
 
 
 EXTRA_DIST = ANNOUNCE INSTALL.autoconf RELEASE-NOTES UPGRADING \
