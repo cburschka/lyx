@@ -126,9 +126,6 @@ Sublabel: lyxbugs
 # LyX bugs with a Trac number.
 # ================================================
 
-#8823 documents requiring pre-processing fail with Japanese
-export/examples/ja/(knitr|lilypond|sweave)_(dvi|pdf3?)
-
 #10355 xmllint detects failures
 export/doc/attic/eu_UserGuide_xhtml
 export/doc/(es|ja)/UserGuide_xhtml
@@ -264,6 +261,20 @@ export/templates/es_beamer-conference-ornate-20min_pdf4_texF
 #      the float `sidebar'. LyX will not be able to produce a float list.
 #
 check_load/templates/acmart
+
+
+# ================================================
+Sublabel: externalissues
+# Export fails due to non-LaTeX external tool,
+# ================================================
+#
+# e.g. a bug or missing feature in ps2pdf
+
+# ps2pdf gives the following and exits with error:
+# Error: /invalidfileaccess in --file--
+# ps2pdf succeeds if the -dNOSAFER flag is used. For discussion, see:
+# https://www.mail-archive.com/search?l=mid&q=1506851183.3130.15.camel%40lyx.org
+export/examples/ja/lilypond_pdf
 
 
 # ======================================================================
