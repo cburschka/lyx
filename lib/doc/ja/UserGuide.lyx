@@ -13852,15 +13852,31 @@ status collapsed
 \lang english
 On Mac and Linux, the en dash is entered with 
 \family sans
-Option-hyphen
+Opt+
+\begin_inset Quotes eld
+\end_inset
+
+-
+\begin_inset Quotes erd
+\end_inset
+
+
 \family default
  and the em dash with 
 \family sans
-Shift-Option-hyphen
+Shift-Opt+
+\begin_inset Quotes erd
+\end_inset
+
+-
+\begin_inset Quotes erd
+\end_inset
+
+
 \family default
  (
 \family sans
-Option
+Opt
 \family default
  is the Mac label for the right 
 \family sans
@@ -13889,8 +13905,8 @@ unicode-insert
 \end_inset
 
  \SpecialChar LyX
- function with the Unicode code as argument (2013 for the em dash and 2014
- for the en dash).
+ function with the Unicode code point as argument (2013 for the em dash
+ and 2014 for the en dash).
 \end_layout
 
 \end_inset
@@ -14001,6 +14017,31 @@ system key combination or
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+Dashes can also be inserted with 
+\family sans
+Insert\SpecialChar menuseparator
+Special
+\begin_inset space ~
+\end_inset
+
+Character\SpecialChar menuseparator
+Symbols
+\family default
+ or the 
+\begin_inset Quotes eld
+\end_inset
+
+unicode-insert
+\begin_inset Quotes erd
+\end_inset
+
+ \SpecialChar LyX
+ function.
+\end_layout
+
+\begin_layout Standard
 これらつのダッシュは，それ独自の長さを持つ，数式モードのマイナス記号とは異なります．「
 \family typewriter
 -
@@ -14082,8 +14123,8 @@ name "subsec:Dashes-and-line-breaks"
 \begin_layout Standard
 
 \lang english
-Whether line breaks before or after dashes are allowed depends on the use
- case and locale:
+Whether line breaks around dashes are allowed depends on the use case and
+ locale:
 \end_layout
 
 \begin_layout Itemize
@@ -14095,15 +14136,15 @@ No line breaks are allowed in ranges of values like A–Z or 1975–1982.
 \begin_layout Itemize
 
 \lang english
-In English, lines may break after dashes used to set off parenthetical statement
-s.
+In English, dashes used to set off parenthetical statements should not start
+ a new line.
 \end_layout
 
 \begin_layout Itemize
 
 \lang english
 In French and Spanish, dashes around parenthetical statements are treated
- similar to quote signs and line breaks are not allowed on the left side.
+ similar to brackets: line breaks are not allowed on the inner side.
 \end_layout
 
 \begin_layout Standard
@@ -14117,7 +14158,7 @@ When using spaced en dashes
 \begin_inset space ~
 \end_inset
 
-- line breaks before the dash with protected spaces are not allowed.
+- line breaks before the dash can be prevented with protected spaces.
 \end_layout
 
 \begin_layout Standard
@@ -14173,7 +14214,7 @@ This forces the output of dashes as
 \begin_layout Standard
 
 \lang english
-Subtleties:
+Caution:
 \end_layout
 
 \begin_layout Enumerate
@@ -14215,7 +14256,8 @@ Objects
 nobreakdash
 \series default
  in \SpecialChar TeX
- code:
+ code.
+ Examples:
 \end_layout
 
 \begin_deeper
@@ -14337,10 +14379,10 @@ An incorrect line break is easily overlooked because
 \lang english
 The setting is ignored for documents using non-\SpecialChar TeX
  fonts.
-\end_layout
+\begin_inset Foot
+status collapsed
 
-\begin_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 
 \lang english
 Xe\SpecialChar TeX
@@ -14351,20 +14393,24 @@ Xe\SpecialChar TeX
 XeTeXdashbreakstate
 \series default
  setting.
- The default,
-\begin_inset Newline newline
-\end_inset
-
-
+ The default causes dashes to behave like ligature dashes.
+ The usual behaviour of literal dashes can be achieved by inserting 
+\family typewriter
 \series bold
 
 \backslash
-XeTeXdashbreakstate=1
+XeTeXdashbreakstate=0
+\family default
 \series default
- causes literal dashes to behave like ligature dashes.
+ into the \SpecialChar LaTeX
+ preamble.
 \end_layout
 
-\end_deeper
+\end_inset
+
+
+\end_layout
+
 \begin_layout Enumerate
 
 \lang english
@@ -14392,17 +14438,13 @@ Hyphenation is suppressed in words adjacent to hyphens and ligature dashes.
 \begin_layout Standard
 
 \lang english
-In \SpecialChar LyX
+Since \SpecialChar LyX
 
 \begin_inset space ~
 \end_inset
 
-2.2 -- and --- were in \SpecialChar LyX
-
-\begin_inset space ~
-\end_inset
-
-2.3 output as -{}- and -{}-{}- to prevent ligation to dashes.
+2.2, -- and --- are exported to LaTeX as -{}- and -{}-{}- to prevent ligation
+ to dashes.
 \begin_inset Foot
 status collapsed
 
@@ -14414,22 +14456,21 @@ Up to \SpecialChar LyX
 \begin_inset space ~
 \end_inset
 
-2.1 -- and --- in \SpecialChar LyX
- was output unchanged which led to different look in the
- within \SpecialChar LyX
-, text export, HTML export and the PDF export.
+2.1, -- and --- was output unchanged which led to different look in \SpecialChar LyX
+, text
+ export, HTML export and the PDF export.
 \end_layout
 
 \end_inset
 
  Occurrences in older documents are converted to literal Unicode dashes.
- This lead to problems like different line breaks.
- Since \SpecialChar LyX
+ This led to different line breaks in some documents.
+ \SpecialChar LyX
 
 \begin_inset space ~
 \end_inset
 
-2.3 there is the option 
+2.3 provides the option 
 \family sans
 Output en- and em-dashes as ligatures
 \family default
@@ -14449,8 +14490,8 @@ Fonts.
 \begin_inset Newline newline
 \end_inset
 
-Note the following side-effects of the \SpecialChar LyX
- dash handling:
+Note the following side-effects of the changes in \SpecialChar LyX
+'s dash handling:
 \end_layout
 
 \begin_layout Itemize
@@ -14461,8 +14502,24 @@ If you used literal em- and en dashes in pre-\SpecialChar LyX
 \begin_inset space ~
 \end_inset
 
-2.2 documents, you must manually unselect the option to ensure unchanged
- behavior.
+2.2 documents, you must manually unselect 
+\family sans
+Output en- and em-dashes as ligatures
+\family default
+ to ensure unchanged behavior.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+If you used both, literal and ligature dashes in pre-\SpecialChar LyX
+
+\begin_inset space ~
+\end_inset
+
+2.2 documents, you may need to enable or prevent individual line breaks as
+ shown above to restore the correct line breaking behaviour.
 \end_layout
 
 \begin_layout Itemize
@@ -14482,7 +14539,7 @@ Zero-width space (ZWSP) characters in older \SpecialChar LyX
 \begin_inset space ~
 \end_inset
 
-2.3 or the optional line breaks will be lost!
+2.3 or the optional line breaks will be lost.
 \end_layout
 
 \begin_layout Subsection
