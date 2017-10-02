@@ -469,14 +469,12 @@ void GuiWorkArea::scheduleRedraw(bool update_metrics)
 
 	// update caret position, because otherwise it has to wait until
 	// the blinking interval is over
-	if (d->caret_visible_) {
-		d->hideCaret();
-		d->showCaret();
-	}
+	d->updateCaretGeometry();
 
 	LYXERR(Debug::WORKAREA, "WorkArea::redraw screen");
 	viewport()->update();
 
+	/// FIXME: is this still true now that paintEvent does the actual painting?
 	/// \warning: scrollbar updating *must* be done after the BufferView is drawn
 	/// because \c BufferView::updateScrollbar() is called in \c BufferView::draw().
 	d->updateScrollbar();
@@ -574,7 +572,7 @@ void GuiWorkArea::Private::resizeBufferView()
 	buffer_view_->resize(p->viewport()->width(), p->viewport()->height());
 	if (caret_in_view)
 		buffer_view_->scrollToCursor();
-	p->viewport()->update();
+	updateCaretGeometry();
 
 	// Update scrollbars which might have changed due different
 	// BufferView dimension. This is especially important when the
@@ -592,11 +590,8 @@ void GuiWorkArea::Private::resizeBufferView()
 }
 
 
-void GuiWorkArea::Private::showCaret()
+void GuiWorkArea::Private::updateCaretGeometry()
 {
-	if (caret_visible_)
-		return;
-
 	Point point;
 	int h = 0;
 	buffer_view_->caretPosAndHeight(point, h);
@@ -631,7 +626,15 @@ void GuiWorkArea::Private::showCaret()
 	point.x_ -= buffer_view_->horizScrollOffset();
 
 	caret_->update(point.x_, point.y_, h, l_shape, isrtl, completable);
+}
 
+
+void GuiWorkArea::Private::showCaret()
+{
+	if (caret_visible_)
+		return;
+
+	updateCaretGeometry();
 	p->viewport()->update(caret_->rect());
 }
 
@@ -1243,13 +1246,8 @@ void GuiWorkArea::paintEvent(QPaintEvent * ev)
 	// LYXERR(Debug::PAINTING, "paintEvent begin: x: " << rc.x()
 	//	<< " y: " << rc.y() << " w: " << rc.width() << " h: " << rc.height());
 
-	if (d->need_resize_ || pixelRatio() != d->last_pixel_ratio_) {
+	if (d->need_resize_ || pixelRatio() != d->last_pixel_ratio_)
 		d->resizeBufferView();
-		if (d->caret_visible_) {
-			d->hideCaret();
-			d->showCaret();
-		}
-	}
 
 	d->last_pixel_ratio_ = pixelRatio();
 
