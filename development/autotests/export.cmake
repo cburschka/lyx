@@ -91,8 +91,8 @@ function(get_md5sum msource mresult mreserr)
 endfunction()
 
 set(ENV{${LYX_USERDIR_VER}} "${LYX_TESTS_USERDIR}")
-set(ENV{LANG} "en") # to get all error-messages in english
-set(ENV{LC_ALL} "C")
+set(ENV{LANG} "en_US.UTF-8") # to get all error-messages in english
+#set(ENV{LC_ALL} "C")
 if (extension MATCHES "\\.lyx$")
   include(${TOP_SRC_DIR}/development/autotests/CheckLoadErrors.cmake)
   get_md5sum(LYX_SOURCE source_md5sum _err)
