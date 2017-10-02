@@ -149,11 +149,12 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author -1402925745 "Günter Milde"
 \end_header
 
 \begin_body
@@ -11307,7 +11308,11 @@ reference "tab:Breite-der-verschiedenen"
 
 \end_inset
 
- listet die verschiedenen Breiten der Lerräume auf.
+ listet die verschiedenen Breiten der Le
+\change_inserted -1402925745 1506444504
+e
+\change_unchanged
+rräume auf.
 \end_layout
 
 \begin_layout Standard
@@ -12974,10 +12979,13 @@ PDF (LuaTeX)
 DVI (LuaTeX)
 \family default
  als Ausgabeformat verwenden.
- Das bedeutet daher auch, dass entweder Xe\SpecialChar TeX
+ Das bedeutet daher auch, dass
+\change_deleted -1402925745 1506439963
+ entweder
+\change_unchanged
+ Xe\SpecialChar TeX
  oder Lua\SpecialChar TeX
- installiert sein müssen
- (siehe Abschnitt
+ installiert sein müssen (siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -13069,7 +13077,11 @@ European Computer Modern
 \family typewriter
 ec
 \family default
-) bekannt ist.
+)
+\change_deleted -1402925745 1506440093
+ bekannt ist
+\change_unchanged
+.
  Einige spezielle Klassen verwenden jedoch eine andere Schrift als Standard.
 \end_layout
 
@@ -13424,8 +13436,14 @@ reference "subsec:LaTeX-Einstellungen"
  Normalerweise müssen Sie nichts ändern (und diese Einstellung auch nicht
  verstehen).
  Verwenden Sie daher 
+\change_inserted -1402925745 1506440326
+
 \family sans
+Standard
+\change_deleted -1402925745 1506440329
 Benutzerdefiniert
+\change_unchanged
+
 \family default
 , es sei denn, Sie haben Ihre Gründe.
 \end_layout
@@ -13439,7 +13457,13 @@ Mediävalziffern verwenden
 \family sans
 Echte Kapitälchen verwenden
 \family default
- aktiviert.
+ aktivier
+\change_deleted -1402925745 1506440350
+t
+\change_inserted -1402925745 1506440352
+bar
+\change_unchanged
+.
  Dies sind spezielle Features, die einige Schriften anbieten.
  Wenn Sie die Option 
 \family sans
@@ -16361,6 +16385,8 @@ Gedankenstriche
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -1402925745 1506614989
 In \SpecialChar LyX
  hat das '
 \family typewriter
@@ -16373,6 +16399,31 @@ Bindestrich, Gedankenstrich
 , 
 \emph on
 langer Gedankenstrich
+\change_inserted -1402925745 1506614991
+
+\emph default
+\SpecialChar LyX
+ unterscheidet  vier Varianten des 
+\begin_inset Quotes gld
+\end_inset
+
+
+\family typewriter
+-
+\family default
+
+\begin_inset Quotes grd
+\end_inset
+
+-Symbols: 
+\emph on
+Viertelgeviertstrich, Halbgeviertstrich
+\emph default
+, 
+\emph on
+Geviertstrich
+\change_unchanged
+
 \emph default
  und 
 \emph on
@@ -16425,7 +16476,13 @@ Name
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ausgabe
+Aus
+\change_deleted -1402925745 1506516283
+gabe
+\change_inserted -1402925745 1506615023
+sehen
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16434,7 +16491,13 @@ Ausgabe
 \begin_inset Text
 
 \begin_layout Plain Layout
-eingefügt mit
+
+\change_deleted -1402925745 1506616491
+e
+\change_inserted -1402925745 1506616493
+E
+\change_unchanged
+ingefügt mit
 \end_layout
 
 \end_inset
@@ -16445,7 +16508,13 @@ eingefügt mit
 \begin_inset Text
 
 \begin_layout Plain Layout
-Bindestrich
+
+\change_deleted -1402925745 1506517318
+Binde
+\change_inserted -1402925745 1506517321
+Viertelgeviert
+\change_unchanged
+strich
 \end_layout
 
 \end_inset
@@ -16463,7 +16532,11 @@ Bindestrich
 \begin_inset Text
 
 \begin_layout Plain Layout
-ein 
+
+\change_deleted -1402925745 1506516980
+ein
+\change_unchanged
+ 
 \begin_inset Quotes gld
 \end_inset
 
@@ -16476,6 +16549,10 @@ ein
 \end_inset
 
 
+\change_inserted -1402925745 1506517026
+ im Textmodus
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16486,7 +16563,13 @@ ein
 \begin_inset Text
 
 \begin_layout Plain Layout
-Gedankenstrich
+
+\change_deleted -1402925745 1506443129
+Gedanken
+\change_inserted -1402925745 1506443132
+Halbgeviert
+\change_unchanged
+strich
 \end_layout
 
 \end_inset
@@ -16504,6 +16587,18 @@ Gedankenstrich
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_inserted -1402925745 1506591529
+\begin_inset CommandInset href
+LatexCommand href
+name "Tastenkombination"
+target "https://de.wikipedia.org/wiki/Halbgeviertstrich#Eingabe_bei_Computersystemen_und_-programmen"
+literal "false"
+
+\end_inset
+
+
+\change_deleted -1402925745 1506591858
 Tastenkombination
 \begin_inset Foot
 status collapsed
@@ -16551,6 +16646,8 @@ unicode-insert
 
 \end_inset
 
+
+\change_unchanged
  oder 
 \begin_inset Quotes gld
 \end_inset
@@ -16559,7 +16656,17 @@ unicode-insert
 \begin_inset Quotes grd
 \end_inset
 
- in Text
+ i
+\change_inserted -1402925745 1506428047
+m
+\change_deleted -1402925745 1506428045
+n
+\change_unchanged
+ Text
+\change_inserted -1402925745 1506428051
+modus
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16570,7 +16677,13 @@ unicode-insert
 \begin_inset Text
 
 \begin_layout Plain Layout
-langer Gedankenstrich
+
+\change_deleted -1402925745 1506443148
+langer Gedanken
+\change_inserted -1402925745 1506443149
+Geviert
+\change_unchanged
+strich
 \end_layout
 
 \end_inset
@@ -16588,7 +16701,21 @@ langer Gedankenstrich
 \begin_inset Text
 
 \begin_layout Plain Layout
-Tastenkombination oder 
+
+\change_inserted -1402925745 1506591786
+\begin_inset CommandInset href
+LatexCommand href
+name "Tastenkombination"
+target "https://de.wikipedia.org/wiki/Geviertstrich#Darstellung_auf_Computersystemen"
+literal "false"
+
+\end_inset
+
+
+\change_deleted -1402925745 1506591729
+Tastenkombination
+\change_unchanged
+ oder 
 \begin_inset Quotes gld
 \end_inset
 
@@ -16596,7 +16723,17 @@ Tastenkombination oder
 \begin_inset Quotes grd
 \end_inset
 
- in Text
+ i
+\change_inserted -1402925745 1506428055
+m
+\change_deleted -1402925745 1506428053
+n
+\change_unchanged
+ Text
+\change_inserted -1402925745 1506428057
+modus
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -16628,7 +16765,11 @@ Minuszeichen
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\change_deleted -1402925745 1506516998
 ein 
+\change_unchanged
+
 \begin_inset Quotes gld
 \end_inset
 
@@ -16663,9 +16804,37 @@ ein
 \end_layout
 
 \begin_layout Standard
-Die Strichtypen unterscheiden sich vom Minuszeichen, das im Mathematikmodus
- erscheint und eine eigene Länge hat.
- Hier sind einige Beispiele für den Gebrauch von 
+
+\change_inserted -1402925745 1506591947
+Alternativ können die Symbole mit 
+\family sans
+Einfügen\SpecialChar menuseparator
+Sonderzeichen\SpecialChar menuseparator
+Symbole
+\family default
+ oder der LyX-Funktion 
+\begin_inset Quotes gld
+\end_inset
+
+unicode-insert
+\begin_inset Quotes grd
+\end_inset
+
+ eingefügt werden.
+\end_layout
+
+\begin_layout Standard
+Die 
+\change_deleted -1402925745 1506517202
+Strichtypen
+\change_inserted -1402925745 1506591946
+Textzeichen
+\change_unchanged
+ unterscheiden sich vom Minuszeichen, das im Mathematikmodus erscheint und
+ eine eigene Länge hat.
+ Hier sind einige Beispiele für den Gebrauch
+\change_deleted -1402925745 1506630587
+ von 
 \begin_inset Quotes gld
 \end_inset
 
@@ -16677,33 +16846,153 @@ Die Strichtypen unterscheiden sich vom Minuszeichen, das im Mathematikmodus
 \begin_inset Quotes eld
 \end_inset
 
+
+\change_unchanged
 :
 \end_layout
 
 \begin_layout Enumerate
-Zeilen- und Seitenumbrüche (
+
+\change_inserted -1402925745 1506590703
+i-Punkt (
 \emph on
 Bindestrich
 \emph default
 )
-\end_layout
-
-\begin_layout Enumerate
-Von A – Z; Seiten
-\begin_inset space ~
+\begin_inset Newline newline
 \end_inset
 
-369–378 (
+
+\change_unchanged
+Zeilen- und Seitenumbrüche (
+\change_deleted -1402925745 1506426886
+
 \emph on
-Gedankenstrich
+Binde
+\change_inserted -1402925745 1506426902
+Ergänzungs
+\change_unchanged
+strich
 \emph default
 )
 \end_layout
 
 \begin_layout Enumerate
-Oh — da ist ein 
+
+\change_deleted -1402925745 1506426941
+Von
+\change_inserted -1402925745 1506590948
+Punkte
+\change_unchanged
+ A
+\change_inserted -1402925745 1506427182
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\change_deleted -1402925745 1506426943
+ 
+\change_unchanged
+–
+\change_inserted -1402925745 1506427192
+
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\change_deleted -1402925745 1506426944
+ 
+\change_unchanged
+Z; Seiten
+\begin_inset space ~
+\end_inset
+
+369–378 (
+\change_deleted -1402925745 1506443043
+
 \emph on
-langer Gedankenstrich.
+Gedanken
+\change_inserted -1402925745 1506443310
+Bis-
+\change_unchanged
+strich
+\emph default
+)
+\change_inserted -1402925745 1506591013
+
+\begin_inset Newline newline
+\end_inset
+
+Autobahn München
+\begin_inset space ~
+\end_inset
+
+– Salzburg (
+\emph on
+Steckenstrich
+\emph default
+)
+\begin_inset Newline newline
+\end_inset
+
+Oh – da ist ein 
+\emph on
+Gedankenstrich.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Enumerate
+
+\change_deleted -1402925745 1506590753
+Oh — da ist ein
+\change_inserted -1402925745 1506615129
+
+\lang english
+Oh—there's an em-dash.
+
+\change_unchanged
+
+\lang ngerman
+ 
+\change_inserted -1402925745 1506615112
+(
+\change_unchanged
+
+\emph on
+langer Gedankenstrich
+\change_deleted -1402925745 1506590753
+.
+\change_inserted -1402925745 1506517643
+
+\emph default
+)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -1402925745 1506591206
+Der 
+\emph on
+lange Gedankenstrich 
+\emph default
+ist im Deutschen nur im Satz mit gebrochenen
+\emph on
+ 
+\emph default
+Schriften üblich und wird – anders als im Englischen – mit Abstand zum umgebende
+n Text gesetzt.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Enumerate
@@ -16731,10 +17020,14 @@ literal "false"
 \end_layout
 
 \begin_layout Subsection
-Bindestriche und Zeilenumbrüche
+Bindestriche
+\change_inserted -1402925745 1506515419
+, Gedankenstriche
+\change_unchanged
+ und Zeilenumbrüche
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:Bindestriche-und-Zeilenumbrüche"
+name "subsec:Gedankenstriche-und-Zeilenumbrüche"
 
 \end_inset
 
@@ -16742,26 +17035,90 @@ name "subsec:Bindestriche-und-Zeilenumbrüche"
 \end_layout
 
 \begin_layout Standard
-Ob Zeilenumbrüche vor oder nach Bindestriche erlaubt sind, hängt vom konkreten
- Fall und der Sprache ab:
-\end_layout
 
-\begin_layout Itemize
-Zeilenumbrüche sind nicht erlaubt in Bereichen von Werten wie A–Z oder 1975–1982.
-\end_layout
+\change_inserted -1402925745 1506630104
+Zum Zeilenumbruch nach Binde- und Ergänzungsstrichen siehe Abschnitt
+\begin_inset space ~
+\end_inset
 
-\begin_layout Itemize
-Im Englischen dürfen Zeilen nach Bindestrichen umgebrochen werden, um eingeschob
-ene Aussagen zu schreiben.
-\end_layout
 
-\begin_layout Itemize
-Im Französischen und Spanischen werden Bindestriche um eingeschobene Aussagen
- wie Anführungszeichen behandelt und Zeilenumbrüche sind nicht auf der linken
- Seite erlaubt.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Zusammengesetzte-Worte"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
+Ob Zeilenumbrüche vor oder nach 
+\change_deleted -1402925745 1506428470
+Binde
+\change_inserted -1402925745 1506428472
+Gedanken
+\change_unchanged
+striche
+\change_inserted -1402925745 1506428474
+n
+\change_unchanged
+ erlaubt sind, hängt vom konkreten Fall und der Sprache ab
+\change_inserted -1402925745 1506443420
+.
+ Im Deutschen gilt
+\change_unchanged
+:
+\end_layout
+
+\begin_layout Itemize
+Zeilenumbrüche sind nicht erlaubt 
+\change_deleted -1402925745 1506428380
+in Bereichen von Werten
+\change_inserted -1402925745 1506428385
+bei Intervallangaben
+\change_unchanged
+ wie 
+\change_deleted -1402925745 1506629428
+A–Z oder
+\change_unchanged
+ 1975–1982.
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -1402925745 1506428964
+Im Englischen dürfen Zeilen nach Bindestrichen umgebrochen werden, um eingeschob
+ene Aussagen zu schreiben.
+\change_inserted -1402925745 1506616656
+Prinzipiell ist ein Zeilenumbruch sowohl vor als auch nach einem Gedankenstrich
+ zulässig.
+ Ein einzelner Gedankenstrich sowie der Abschließende eines Gedankenstrichpaares
+ stehen jedoch aus Gründen der Lesbarkeit normalerweise nicht am Zeilenanfang.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Itemize
+Im Französischen und Spanischen werden 
+\change_deleted -1402925745 1506629501
+Bindestriche um eingeschobene Aussagen wie Anführungszeichen behandelt und
+ Zeilenumbrüche sind nicht auf der linken Seite erlaubt.
+
+\change_inserted -1402925745 1506629510
+ Gedankenstriche um eingeschobene Aussagen wie Klammern behandelt: Zeilenumbrüch
+e sind nur auf der äußeren Seite erlaubt.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_deleted -1402925745 1506615220
 Bei Bindestrichen mit Leerzeichen
 \begin_inset space ~
 \end_inset
@@ -16772,13 +17129,37 @@ Bei Bindestrichen mit Leerzeichen
 
 - sind Zeilenumbrüche vor dem Bindestrich mit geschütztem Leerzeichen nicht
  zulässig.
+\change_inserted -1402925745 1506630308
+Zeilenumbrüche vor abgesetzten Gedankenstrichen können mit einem geschütztem
+ Leerzeichen unterbunden werden.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-Bei Gedankenstrichen ohne Leerzeichen—\SpecialChar allowbreak
-was üblich ist in Amerikanisch Englisch—\SpecialChar allowbreak
-ka
-nn man optionale Zeilenumbrüche mit dem Menü 
+Bei 
+\change_inserted -1402925745 1506514786
+langen 
+\change_unchanged
+Gedankenstrichen ohne 
+\change_deleted -1402925745 1506447830
+Leerzeichen
+\change_inserted -1402925745 1506447844
+Abstand zum umgebenden Text
+\change_unchanged
+—\SpecialChar allowbreak
+
+\change_deleted -1402925745 1506428994
+was 
+\change_unchanged
+üblich 
+\change_deleted -1402925745 1506615273
+ist in Amerikanisch
+\change_inserted -1402925745 1506615275
+im amerikanischen
+\change_unchanged
+ Englisch—\SpecialChar allowbreak
+kann man optionale Zeilenumbrüche mit dem Menü 
 \family sans
 Einfügen\SpecialChar menuseparator
 Formatierung\SpecialChar menuseparator
@@ -16788,7 +17169,17 @@ Optionaler Zeilenumbruch
 \end_layout
 
 \begin_layout Standard
-In Dokumenten mit vielen Gedankenstrichen, kann man die Option 
+
+\change_deleted -1402925745 1506615338
+In Dokumenten mit vielen Gedankenstrichen,
+\change_inserted -1402925745 1506615427
+In englischsprachigen Dokumenten mit langen Gedankenstrichen
+\change_unchanged
+ kann man 
+\change_inserted -1402925745 1506615390
+alternativ 
+\change_unchanged
+die Option 
 \family sans
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
@@ -16797,7 +17188,9 @@ Halbgeviert und Geviertstriche als Ligaturen
  ausgeben 
 \family default
 verwenden.
- Dies gibt die Striche als 
+ 
+\change_deleted -1402925745 1506615338
+Dies gibt die Striche als 
 \begin_inset Quotes gld
 \end_inset
 
@@ -16815,21 +17208,68 @@ verwenden.
 
  aus, wenn man nach \SpecialChar LaTeX
  exportiert.
+
+\change_inserted -1402925745 1506615342
+ Die Striche werden dann als 
+\begin_inset Quotes gld
+\end_inset
+
+--
+\begin_inset Quotes grd
+\end_inset
+
+ und 
+\begin_inset Quotes gld
+\end_inset
+
+---
+\begin_inset Quotes grd
+\end_inset
+
+ in die \SpecialChar LaTeX
+ Quelldatei geschrieben.
+
+\change_unchanged
  Der \SpecialChar TeX
- Schrift-Ligaturmechanismus konvertiert sie zu Strichzeichen, auf die
- ein optionaler Zeilenumbruch folgt.
+
+\change_deleted -1402925745 1506615338
+ Schrift
+\change_unchanged
+-Ligaturmechanismus konvertiert sie zu 
+\change_deleted -1402925745 1506615338
+Strichzeichen
+\change_inserted -1402925745 1506630393
+(Halb-) Geviertstrichen
+\change_unchanged
+, auf die ein optionaler Zeilenumbruch folgt.
 \end_layout
 
 \begin_layout Standard
-Feinheiten:
+
+\change_deleted -1402925745 1506432841
+Feinheiten
+\change_inserted -1402925745 1506450193
+Vorsicht
+\change_unchanged
+:
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted -1402925745 1506615505
 Dies führt zu einem optionalen Zeilenumbruch nach 
 \emph on
 allen
 \emph default
  Binde- und Gedankenstrichen .
+\change_inserted -1402925745 1506615507
+Die Einstellung erlaubt Zeilenumbrüche nach 
+\emph on
+allen
+\emph default
+ Halbgeviert- und Geviertstrichen.
+
+\change_unchanged
  Inkorrekte Zeilenumbrüche müssen verhindert werden, indem man sie in eine
  Makebox packt
 \begin_inset Foot
@@ -16853,14 +17293,35 @@ Objekte
 
 \end_inset
 
- oder davor 
+ oder 
+\change_deleted -1402925745 1506615505
+davor
+\change_unchanged
+ 
 \series bold
 
 \backslash
 nobreakdash
 \series default
- als \SpecialChar TeX
--Code schreibt:
+ 
+\change_inserted -1402925745 1506517785
+(
+\change_unchanged
+als \SpecialChar TeX
+-Code
+\change_inserted -1402925745 1506517790
+)
+\change_unchanged
+ 
+\change_inserted -1402925745 1506517768
+davor
+\change_unchanged
+schreibt
+\change_inserted -1402925745 1506629725
+.
+ Beispiele
+\change_unchanged
+:
 \end_layout
 
 \begin_deeper
@@ -16966,18 +17427,76 @@ Ein inkorrekter Zeilenumbruch wird schnell übersehen, denn
 \begin_inset space ~
 \end_inset
 
-– führt dies zu keiner Warnung im \SpecialChar LaTeX
+– führt 
+\change_deleted -1402925745 1506541045
+dies
+\change_inserted -1402925745 1506541045
+er
+\change_unchanged
+ zu keiner Warnung im \SpecialChar LaTeX
 -Protokoll.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Diese Einstellung wird ignoriert in Dokumenten, die keine \SpecialChar TeX
--Schriften verwenden.
+
+\change_deleted -1402925745 1506450271
+Diese Einstellung wird ignoriert
+\change_unchanged
+ 
+\change_deleted -1402925745 1506615558
+in 
+\change_inserted -1402925745 1506615559
+In 
+\change_unchanged
+Dokumenten, die keine \SpecialChar TeX
+-Schriften verwenden
+\change_inserted -1402925745 1506450300
+, wird die Option ignoriert
+\change_unchanged
+.
+\change_inserted -1402925745 1506615723
+
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -1402925745 1506631269
+Xe\SpecialChar TeX
+ bietet die Einstellung 
+\series bold
+
+\backslash
+XeTeXdashbreakstate
+\series default
+.
+ Die Voreinstellung bewirkt, dass sich alle Halbgeviert- und Geviertstriche
+ sich wie Ligaturstriche verhalten.
+ Mit 
+\series bold
+
+\backslash
+XeTeXdashbreakstate=0
+\series default
+ im \SpecialChar LaTeX
+-Vorspann kann auf das Verhalten von normalen Halbgeviert- und Geviertstrich
+en umgestellt werden.
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
+
+\change_deleted -1402925745 1506615717
 Xe\SpecialChar TeX
  bietet die Einstellung 
 \series bold
@@ -16997,6 +17516,8 @@ XeTeXdashbreakstate
 XeTeXdashbreakstate=1
 \series default
  bewirkt, dass normale Striche als Ligaturstriche behandelt werden.
+\change_unchanged
+
 \end_layout
 
 \end_deeper
@@ -17017,11 +17538,35 @@ Schreibmaschinenschrift
 \end_layout
 
 \begin_layout Enumerate
+
+\change_deleted -1402925745 1506616072
 Zeilentrennung wird bei Wörtern verhindert, die neben Bindestrichen und
- Ligaturstrichen stehen.
+ Ligaturstrichen stehen
+\change_inserted -1402925745 1506616073
+Bei Wörtern, die an Ligatur-Gedankenstriche grenzen, erfolgt – wie bei zusammeng
+esetzten Wörtern mit Bindestrich – keine automatische Worttrennung (vgl.
+ Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Zusammengesetzte-Worte"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
+\change_unchanged
+.
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -1402925745 1506616191
 -- und --- wurden in \SpecialChar LyX
 
 \begin_inset space ~
@@ -17048,6 +17593,36 @@ Bis zu \SpecialChar LyX
 
  Striche in älteren Dokumenten werden zu normalen Unicode-Strichen konvertiert.
  Dies führte zu Problemen, wie verschiedenen Zeilenumbrüche.
+\change_inserted -1402925745 1506630747
+Seit \SpecialChar LyX
+-Version 2.2 werden beim LaTeX-Export -- und ---  als -{}- und -{}-{}-
+ ausgegeben um die Ligatur zu einem Halbgeviert- oder Geviertstrich zu verhinder
+n.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -1402925745 1506616138
+Bis zu \SpecialChar LyX
+
+\begin_inset space ~
+\end_inset
+
+2.1 wurde -- und --- in \SpecialChar LyX
+ unverändert ausgegeben, was zu unterschiedlichem
+ Aussehen in \SpecialChar LyX
+,  Text- und HTML-Export im Vergleich zu DVI-, PDF-, und Postscript
+-Export führte.
+\end_layout
+
+\end_inset
+
+ Vorkommen in älteren Dokumenten werden in die entsprechenden Unicode-Zeichen
+ konvertiert.
+ Dies führte in einigen Dokumenten zu  veränderten Zeilenumbrüchen.
+
+\change_unchanged
  Seit \SpecialChar LyX
 
 \begin_inset space ~
@@ -17055,7 +17630,11 @@ Bis zu \SpecialChar LyX
 
 2.3 gibt es die Option 
 \family sans
-Halbgeviert und Geviertstriche als Ligaturen ausgeben
+Halbgeviert
+\change_inserted -1402925745 1506444134
+-
+\change_unchanged
+ und Geviertstriche als Ligaturen ausgeben
 \family default
  im Menü 
 \family sans
@@ -17074,22 +17653,53 @@ Schriften
 \begin_inset Newline newline
 \end_inset
 
+
+\change_deleted -1402925745 1506616231
 Beachten Sie die folgenden Effekte von \SpecialChar LyX
 's Strich-Handhabung:
+\change_inserted -1402925745 1506630883
+Beachten Sie die folgenden Nebeneffekte der Änderungen:
+\change_unchanged
+
 \end_layout
 
 \begin_layout Itemize
-Falls Sie gewöhnliche Binde- und Gedankenstriche in Dokumenten älter als
- \SpecialChar LyX
+Falls Sie gewöhnliche 
+\change_deleted -1402925745 1506444186
+Binde- und
+\change_unchanged
+ Gedankenstriche in Dokumenten älter als \SpecialChar LyX
 
 \begin_inset space ~
 \end_inset
 
-2.2 haben, müssen Sie die Option manuell ausschalten um sicherzustellen,
- dass diese Striche nicht verändert werden.
+2.2 
+\change_inserted -1402925745 1506444170
+verwendet 
+\change_unchanged
+haben, müssen Sie die Option manuell ausschalten um sicherzustellen, dass
+ diese 
+\change_deleted -1402925745 1506616259
+Striche nicht verändert
+\change_inserted -1402925745 1506616260
+Dokumente  unverändert ausgegeben
+\change_unchanged
+ werden.
+\change_inserted -1402925745 1506596821
+
 \end_layout
 
 \begin_layout Itemize
+
+\change_inserted -1402925745 1506597038
+Falls Sie gewöhliche und Ligatur-Gedankenstriche in älteren Dokumenten parallel
+ verwendet haben, müssen möglicherweise einige Zeilenumbrüche individuell
+ erlaubt oder unterdrückt werden um das korrekte Verhalten wiederherzustellen.
+\end_layout
+
+\begin_layout Itemize
+
+\change_deleted -1402925745 1506616325
 Breitenlose Leerzeichen, die in älteren \SpecialChar LyX
 -Dokumenten auf normale Binde- und
  Gedankenstriche folgen, werden während der Konversion in das Format von
@@ -17100,14 +17710,38 @@ Breitenlose Leerzeichen, die in älteren \SpecialChar LyX
 
 2.3 entfernt.
  Wenn Sie diese als optionale Zeilenumbrüche nach Strichen verwendet haben,
- sollten Sie diese in Leerzeichen konvertieren, bevor Sie ihr Dokument mit
- \SpecialChar LyX
+ sollten Sie diese in Leerzeichen 
+\change_inserted -1402925745 1506616365
+Wenn Sie  in älteren \SpecialChar LyX
+-Dokumenten  breitenlose Leerzeichen (
+\emph on
+zero width spaces,
+\emph default
+ ZWSP) als optionale Zeilenumbrüche nach Gedankenstrichen verwendet haben,
+ sollten Sie diese in benutzerdefinierte Abstände 
+\change_unchanged
+konvertieren, bevor Sie ihr Dokument mit \SpecialChar LyX
 
 \begin_inset space ~
 \end_inset
 
 2.3 öffnen.
- Ansonsten werden die optionale Zeilenumbrüche verloren gehen!
+ Ansonsten werden die optionale
+\change_inserted -1402925745 1506447533
+n
+\change_unchanged
+ Zeilenumbrüche 
+\change_deleted -1402925745 1506631007
+verloren gehen!
+\change_inserted -1402925745 1506631013
+bei der Konversion in das Format von \SpecialChar LyX
+
+\begin_inset space ~
+\end_inset
+
+2.3 entfernt.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -37882,7 +38516,7 @@ Zeilenumbruch Fügt eine Trennmöglichkeit ein (breitenloses Leerzeichen),
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Bindestriche-und-Zeilenumbrüche"
+reference "subsec:Gedankenstriche-und-Zeilenumbrüche"
 
 \end_inset
 
