@@ -8603,12 +8603,10 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8621,7 +8619,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8645,7 +8642,6 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
-
 Dies ist Unformatiert*.
 \end_layout
 
@@ -11307,7 +11303,7 @@ reference "tab:Breite-der-verschiedenen"
 
 \end_inset
 
- listet die verschiedenen Breiten der Lerräume auf.
+ listet die verschiedenen Breiten der Leerräume auf.
 \end_layout
 
 \begin_layout Standard
@@ -12974,10 +12970,10 @@ PDF (LuaTeX)
 DVI (LuaTeX)
 \family default
  als Ausgabeformat verwenden.
- Das bedeutet daher auch, dass entweder Xe\SpecialChar TeX
+ Das bedeutet daher auch, dass Xe\SpecialChar TeX
  oder Lua\SpecialChar TeX
- installiert sein müssen
- (siehe Abschnitt
+ installiert sein müssen (siehe
+ Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -13069,7 +13065,7 @@ European Computer Modern
 \family typewriter
 ec
 \family default
-) bekannt ist.
+).
  Einige spezielle Klassen verwenden jedoch eine andere Schrift als Standard.
 \end_layout
 
@@ -13425,7 +13421,7 @@ reference "subsec:LaTeX-Einstellungen"
  verstehen).
  Verwenden Sie daher 
 \family sans
-Benutzerdefiniert
+Standard
 \family default
 , es sei denn, Sie haben Ihre Gründe.
 \end_layout
@@ -13439,7 +13435,7 @@ Mediävalziffern verwenden
 \family sans
 Echte Kapitälchen verwenden
 \family default
- aktiviert.
+ aktivierbar.
  Dies sind spezielle Features, die einige Schriften anbieten.
  Wenn Sie die Option 
 \family sans
@@ -16361,18 +16357,26 @@ Gedankenstriche
 \end_layout
 
 \begin_layout Standard
-In \SpecialChar LyX
- hat das '
+\SpecialChar LyX
+ unterscheidet vier Varianten des 
+\begin_inset Quotes gld
+\end_inset
+
+
 \family typewriter
 -
 \family default
-'-Zeichen vier Varianten: 
+
+\begin_inset Quotes grd
+\end_inset
+
+-Symbols: 
 \emph on
-Bindestrich, Gedankenstrich
+Viertelgeviertstrich, Halbgeviertstrich
 \emph default
 , 
 \emph on
-langer Gedankenstrich
+Geviertstrich
 \emph default
  und 
 \emph on
@@ -16425,7 +16429,7 @@ Name
 \begin_inset Text
 
 \begin_layout Plain Layout
-Ausgabe
+Aussehen
 \end_layout
 
 \end_inset
@@ -16434,7 +16438,7 @@ Ausgabe
 \begin_inset Text
 
 \begin_layout Plain Layout
-eingefügt mit
+Eingefügt mit
 \end_layout
 
 \end_inset
@@ -16445,7 +16449,7 @@ eingefügt mit
 \begin_inset Text
 
 \begin_layout Plain Layout
-Bindestrich
+Viertelgeviertstrich
 \end_layout
 
 \end_inset
@@ -16463,7 +16467,7 @@ Bindestrich
 \begin_inset Text
 
 \begin_layout Plain Layout
-ein 
+ 
 \begin_inset Quotes gld
 \end_inset
 
@@ -16475,7 +16479,7 @@ ein
 \begin_inset Quotes eld
 \end_inset
 
-
+ im Textmodus
 \end_layout
 
 \end_inset
@@ -16486,7 +16490,7 @@ ein
 \begin_inset Text
 
 \begin_layout Plain Layout
-Gedankenstrich
+Halbgeviertstrich
 \end_layout
 
 \end_inset
@@ -16504,50 +16508,11 @@ Gedankenstrich
 \begin_inset Text
 
 \begin_layout Plain Layout
-Tastenkombination
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Auf Mac und Linux wird der Gedankenstrich mit 
-\family sans
-Option-hyphen
-\family default
- und der langer Gedankenstrich mit 
-\family sans
-Umschalt-Option-hyphen
-\family default
- eingefügt.
- (
-\family sans
-Option
-\family default
- ist die Mac-Bezeichnung für die rechte 
-\family sans
-Alt
-\family default
- 
-\family sans
-/ AltGr
-\family default
--Taste).
- Alternativ können Gedankenstriche mit 
-\family sans
-Einfügen\SpecialChar menuseparator
-Sonderzeichen\SpecialChar menuseparator
-Symbole
-\family default
- oder mit der LyX-Funktion 
-\begin_inset Quotes gld
-\end_inset
-
-unicode-insert
-\begin_inset Quotes grd
-\end_inset
-
- mit dem Unicode code als Argument (2013 für den langen Gedankenstrich und
- 2014 für den Gedankenstrich) eingefügt werden.
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+name "Tastenkombination"
+target "https://de.wikipedia.org/wiki/Halbgeviertstrich#Eingabe_bei_Computersystemen_und_-programmen"
+literal "false"
 
 \end_inset
 
@@ -16559,7 +16524,7 @@ unicode-insert
 \begin_inset Quotes grd
 \end_inset
 
- in Text
+ im Textmodus
 \end_layout
 
 \end_inset
@@ -16570,7 +16535,7 @@ unicode-insert
 \begin_inset Text
 
 \begin_layout Plain Layout
-langer Gedankenstrich
+Geviertstrich
 \end_layout
 
 \end_inset
@@ -16588,7 +16553,15 @@ langer Gedankenstrich
 \begin_inset Text
 
 \begin_layout Plain Layout
-Tastenkombination oder 
+\begin_inset CommandInset href
+LatexCommand href
+name "Tastenkombination"
+target "https://de.wikipedia.org/wiki/Geviertstrich#Darstellung_auf_Computersystemen"
+literal "false"
+
+\end_inset
+
+ oder 
 \begin_inset Quotes gld
 \end_inset
 
@@ -16596,7 +16569,7 @@ Tastenkombination oder
 \begin_inset Quotes grd
 \end_inset
 
- in Text
+ im Textmodus
 \end_layout
 
 \end_inset
@@ -16628,7 +16601,6 @@ Minuszeichen
 \begin_inset Text
 
 \begin_layout Plain Layout
-ein 
 \begin_inset Quotes gld
 \end_inset
 
@@ -16663,47 +16635,113 @@ ein
 \end_layout
 
 \begin_layout Standard
-Die Strichtypen unterscheiden sich vom Minuszeichen, das im Mathematikmodus
- erscheint und eine eigene Länge hat.
- Hier sind einige Beispiele für den Gebrauch von 
+Alternativ können die Symbole mit 
+\family sans
+Einfügen\SpecialChar menuseparator
+Sonderzeichen\SpecialChar menuseparator
+Symbole
+\family default
+ oder der LyX-Funktion 
 \begin_inset Quotes gld
 \end_inset
 
-
-\family typewriter
--
-\family default
-
-\begin_inset Quotes eld
+unicode-insert
+\begin_inset Quotes grd
 \end_inset
 
-:
+ eingefügt werden.
+\end_layout
+
+\begin_layout Standard
+Die Textzeichen unterscheiden sich vom Minuszeichen, das im Mathematikmodus
+ erscheint und eine eigene Länge hat.
+ Hier sind einige Beispiele für den Gebrauch:
 \end_layout
 
 \begin_layout Enumerate
-Zeilen- und Seitenumbrüche (
+i-Punkt (
 \emph on
 Bindestrich
+\emph default
+)
+\begin_inset Newline newline
+\end_inset
+
+Zeilen- und Seitenumbrüche (
+\emph on
+Ergänzungsstrich
 \emph default
 )
 \end_layout
 
 \begin_layout Enumerate
-Von A – Z; Seiten
+Von A
+\begin_inset space \thinspace{}
+\end_inset
+
+–
+\begin_inset space \thinspace{}
+\end_inset
+
+Z; Seiten
 \begin_inset space ~
 \end_inset
 
 369–378 (
 \emph on
-Gedankenstrich
+Bis-strich
 \emph default
 )
+\begin_inset Newline newline
+\end_inset
+
+Autobahn München
+\begin_inset space ~
+\end_inset
+
+– Salzburg (
+\emph on
+Streckenstrich
+\emph default
+)
+\begin_inset Newline newline
+\end_inset
+
+Oh – da ist ein 
+\emph on
+Gedankenstrich.
 \end_layout
 
 \begin_layout Enumerate
-Oh — da ist ein 
+
+\lang english
+Oh—there's an em-dash.
+
+\lang ngerman
+ (
 \emph on
-langer Gedankenstrich.
+langer Gedankenstrich
+\emph default
+)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Der 
+\emph on
+lange Gedankenstrich 
+\emph default
+ist im Deutschen nur im Satz mit gebrochenen
+\emph on
+ 
+\emph default
+Schriften üblich und wird – anders als im Englischen – mit Abstand zum umgebende
+n Text gesetzt.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -16731,10 +16769,10 @@ literal "false"
 \end_layout
 
 \begin_layout Subsection
-Bindestriche und Zeilenumbrüche
+Bindestriche, Gedankenstriche und Zeilenumbrüche
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:Bindestriche-und-Zeilenumbrüche"
+name "subsec:Gedankenstriche-und-Zeilenumbrüche"
 
 \end_inset
 
@@ -16742,43 +16780,56 @@ name "subsec:Bindestriche-und-Zeilenumbrüche"
 \end_layout
 
 \begin_layout Standard
-Ob Zeilenumbrüche vor oder nach Bindestriche erlaubt sind, hängt vom konkreten
- Fall und der Sprache ab:
+Zum Zeilenumbruch nach Binde- und Ergänzungsstrichen siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Zusammengesetzte-Worte"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Ob Zeilenumbrüche vor oder nach Gedankenstrichen erlaubt sind, hängt vom
+ konkreten Fall und der Sprache ab.
+ Im Deutschen gilt:
 \end_layout
 
 \begin_layout Itemize
-Zeilenumbrüche sind nicht erlaubt in Bereichen von Werten wie A–Z oder 1975–1982.
+Zeilenumbrüche sind nicht erlaubt bei Intervallangaben wie 1975–1982.
 \end_layout
 
 \begin_layout Itemize
-Im Englischen dürfen Zeilen nach Bindestrichen umgebrochen werden, um eingeschob
-ene Aussagen zu schreiben.
+Prinzipiell ist ein Zeilenumbruch sowohl vor als auch nach einem Gedankenstrich
+ zulässig.
+ Ein einzelner Gedankenstrich sowie der Abschließende eines Gedankenstrichpaares
+ stehen jedoch aus Gründen der Lesbarkeit normalerweise nicht am Zeilenanfang.
 \end_layout
 
 \begin_layout Itemize
-Im Französischen und Spanischen werden Bindestriche um eingeschobene Aussagen
- wie Anführungszeichen behandelt und Zeilenumbrüche sind nicht auf der linken
+Im Französischen und Spanischen werden Gedankenstriche um eingeschobene
+ Aussagen wie Klammern behandelt: Zeilenumbrüche sind nur auf der äußeren
  Seite erlaubt.
 \end_layout
 
 \begin_layout Standard
-Bei Bindestrichen mit Leerzeichen
-\begin_inset space ~
-\end_inset
-
-- was üblich ist in Britisch Englisch
-\begin_inset space ~
-\end_inset
-
-- sind Zeilenumbrüche vor dem Bindestrich mit geschütztem Leerzeichen nicht
- zulässig.
+Zeilenumbrüche vor abgesetzten Gedankenstrichen können mit einem geschütztem
+ Leerzeichen unterbunden werden.
 \end_layout
 
 \begin_layout Standard
-Bei Gedankenstrichen ohne Leerzeichen—\SpecialChar allowbreak
-was üblich ist in Amerikanisch Englisch—\SpecialChar allowbreak
-ka
-nn man optionale Zeilenumbrüche mit dem Menü 
+Bei langen Gedankenstrichen ohne Abstand zum umgebenden Text—\SpecialChar allowbreak
+üblich im amerikani
+schen Englisch—\SpecialChar allowbreak
+kann man optionale Zeilenumbrüche mit dem Menü 
 \family sans
 Einfügen\SpecialChar menuseparator
 Formatierung\SpecialChar menuseparator
@@ -16788,7 +16839,8 @@ Optionaler Zeilenumbruch
 \end_layout
 
 \begin_layout Standard
-In Dokumenten mit vielen Gedankenstrichen, kann man die Option 
+In englischsprachigen Dokumenten mit langen Gedankenstrichen kann man alternativ
+ die Option 
 \family sans
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
@@ -16797,7 +16849,7 @@ Halbgeviert und Geviertstriche als Ligaturen
  ausgeben 
 \family default
 verwenden.
- Dies gibt die Striche als 
+ Die Striche werden dann als 
 \begin_inset Quotes gld
 \end_inset
 
@@ -16813,23 +16865,23 @@ verwenden.
 \begin_inset Quotes grd
 \end_inset
 
- aus, wenn man nach \SpecialChar LaTeX
- exportiert.
+ in die \SpecialChar LaTeX
+ Quelldatei geschrieben.
  Der \SpecialChar TeX
- Schrift-Ligaturmechanismus konvertiert sie zu Strichzeichen, auf die
- ein optionaler Zeilenumbruch folgt.
+-Ligaturmechanismus konvertiert sie zu (Halb-) Geviertstrichen, auf
+ die ein optionaler Zeilenumbruch folgt.
 \end_layout
 
 \begin_layout Standard
-Feinheiten:
+Vorsicht:
 \end_layout
 
 \begin_layout Enumerate
-Dies führt zu einem optionalen Zeilenumbruch nach 
+Die Einstellung erlaubt Zeilenumbrüche nach 
 \emph on
 allen
 \emph default
- Binde- und Gedankenstrichen .
+ Halbgeviert- und Geviertstrichen.
  Inkorrekte Zeilenumbrüche müssen verhindert werden, indem man sie in eine
  Makebox packt
 \begin_inset Foot
@@ -16853,14 +16905,15 @@ Objekte
 
 \end_inset
 
- oder davor 
+ oder 
 \series bold
 
 \backslash
 nobreakdash
 \series default
- als \SpecialChar TeX
--Code schreibt:
+ (als \SpecialChar TeX
+-Code) davor schreibt.
+ Beispiele:
 \end_layout
 
 \begin_deeper
@@ -16966,18 +17019,18 @@ Ein inkorrekter Zeilenumbruch wird schnell übersehen, denn
 \begin_inset space ~
 \end_inset
 
-– führt dies zu keiner Warnung im \SpecialChar LaTeX
+– führt er zu keiner Warnung im \SpecialChar LaTeX
 -Protokoll.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Diese Einstellung wird ignoriert in Dokumenten, die keine \SpecialChar TeX
--Schriften verwenden.
-\end_layout
+In Dokumenten, die keine \SpecialChar TeX
+-Schriften verwenden, wird die Option ignoriert.
+\begin_inset Foot
+status open
 
-\begin_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 Xe\SpecialChar TeX
  bietet die Einstellung 
 \series bold
@@ -16986,20 +17039,24 @@ Xe\SpecialChar TeX
 XeTeXdashbreakstate
 \series default
 .
- Die Voreinstellung 
-\begin_inset Newline newline
-\end_inset
-
-
+ Die Voreinstellung bewirkt, dass sich alle Halbgeviert- und Geviertstriche
+ sich wie Ligaturstriche verhalten.
+ Mit 
 \series bold
 
 \backslash
-XeTeXdashbreakstate=1
+XeTeXdashbreakstate=0
 \series default
- bewirkt, dass normale Striche als Ligaturstriche behandelt werden.
+ im \SpecialChar LaTeX
+-Vorspann kann auf das Verhalten von normalen Halbgeviert- und Geviertstrich
+en umgestellt werden.
 \end_layout
 
-\end_deeper
+\end_inset
+
+
+\end_layout
+
 \begin_layout Enumerate
 Gedankenstriche in 
 \family typewriter
@@ -17017,18 +17074,33 @@ Schreibmaschinenschrift
 \end_layout
 
 \begin_layout Enumerate
-Zeilentrennung wird bei Wörtern verhindert, die neben Bindestrichen und
- Ligaturstrichen stehen.
+Bei Wörtern, die an Ligatur-Gedankenstriche grenzen, erfolgt – wie bei zusammeng
+esetzten Wörtern mit Bindestrich – keine automatische Worttrennung (vgl.
+ Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "Zusammengesetzte-Worte"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
--- und --- wurden in \SpecialChar LyX
+Seit \SpecialChar LyX
 
 \begin_inset space ~
 \end_inset
 
-2.2 als -{}- und -{}-{}- ausgegeben um die Ligatur zu einem Bindestrich zu
- verhindern.
+2.2 werden beim LaTeX-Export -- und --- als -{}- und -{}-{}- ausgegeben um
+ die Ligatur zu einem Halbgeviert- oder Geviertstrich zu verhindern.
 \begin_inset Foot
 status collapsed
 
@@ -17040,14 +17112,16 @@ Bis zu \SpecialChar LyX
 
 2.1 wurde -- und --- in \SpecialChar LyX
  unverändert ausgegeben, was zu unterschiedlichem
- Aussehen innerhalb von \SpecialChar LyX
-, dem Text-, HTML- und PDF-Export führte.
+ Aussehen in \SpecialChar LyX
+, Text- und HTML-Export im Vergleich zu DVI-, PDF-, und Postscript-
+Export führte.
 \end_layout
 
 \end_inset
 
- Striche in älteren Dokumenten werden zu normalen Unicode-Strichen konvertiert.
- Dies führte zu Problemen, wie verschiedenen Zeilenumbrüche.
+ Vorkommen in älteren Dokumenten werden in die entsprechenden Unicode-Zeichen
+ konvertiert.
+ Dies führte in einigen Dokumenten zu veränderten Zeilenumbrüchen.
  Seit \SpecialChar LyX
 
 \begin_inset space ~
@@ -17055,7 +17129,7 @@ Bis zu \SpecialChar LyX
 
 2.3 gibt es die Option 
 \family sans
-Halbgeviert und Geviertstriche als Ligaturen ausgeben
+Halbgeviert- und Geviertstriche als Ligaturen ausgeben
 \family default
  im Menü 
 \family sans
@@ -17074,40 +17148,49 @@ Schriften
 \begin_inset Newline newline
 \end_inset
 
-Beachten Sie die folgenden Effekte von \SpecialChar LyX
-'s Strich-Handhabung:
+Beachten Sie die folgenden Nebeneffekte der Änderungen:
 \end_layout
 
 \begin_layout Itemize
-Falls Sie gewöhnliche Binde- und Gedankenstriche in Dokumenten älter als
- \SpecialChar LyX
+Falls Sie gewöhnliche Gedankenstriche in Dokumenten älter als \SpecialChar LyX
 
 \begin_inset space ~
 \end_inset
 
-2.2 haben, müssen Sie die Option manuell ausschalten um sicherzustellen,
- dass diese Striche nicht verändert werden.
+2.2 verwendet haben, müssen Sie die Option manuell ausschalten um sicherzustellen
+, dass diese Dokumente unverändert ausgegeben werden.
 \end_layout
 
 \begin_layout Itemize
-Breitenlose Leerzeichen, die in älteren \SpecialChar LyX
--Dokumenten auf normale Binde- und
- Gedankenstriche folgen, werden während der Konversion in das Format von
- \SpecialChar LyX
+Falls Sie gewöhnliche und Ligatur-Gedankenstriche in älteren Dokumenten
+ parallel verwendet haben, müssen möglicherweise einige Zeilenumbrüche individue
+ll erlaubt oder unterdrückt werden um das korrekte Verhalten wiederherzustellen.
+\end_layout
 
-\begin_inset space ~
-\end_inset
-
-2.3 entfernt.
- Wenn Sie diese als optionale Zeilenumbrüche nach Strichen verwendet haben,
- sollten Sie diese in Leerzeichen konvertieren, bevor Sie ihr Dokument mit
- \SpecialChar LyX
+\begin_layout Itemize
+Wenn Sie in älteren \SpecialChar LyX
+-Dokumenten breitenlose Leerzeichen (
+\emph on
+\lang english
+zero width spaces
+\lang ngerman
+,
+\emph default
+ ZWSP) als optionale Zeilenumbrüche nach Gedankenstrichen verwendet haben,
+ sollten Sie diese in benutzerdefinierte Abstände konvertieren, bevor Sie
+ ihr Dokument mit \SpecialChar LyX
 
 \begin_inset space ~
 \end_inset
 
 2.3 öffnen.
- Ansonsten werden die optionale Zeilenumbrüche verloren gehen!
+ Ansonsten werden die optionalen Zeilenumbrüche bei der Konversion in das
+ Format von \SpecialChar LyX
+
+\begin_inset space ~
+\end_inset
+
+2.3 entfernt.
 \end_layout
 
 \begin_layout Subsection
@@ -37882,7 +37965,7 @@ Zeilenumbruch Fügt eine Trennmöglichkeit ein (breitenloses Leerzeichen),
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Bindestriche-und-Zeilenumbrüche"
+reference "subsec:Gedankenstriche-und-Zeilenumbrüche"
 
 \end_inset
 
