@@ -127,8 +127,8 @@ public:
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	void setInfo(std::string const & info);
-	/// update info_ and text
-	void updateInfo();
+	///
+	void updateBuffer(ParIterator const & it, UpdateType utype);
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
@@ -147,6 +147,8 @@ private:
 	void setText(docstring const & str);
 	// make sure that the other version of setText is still available.
 	using InsetCollapsable::setText;
+	///
+	bool initialized_;
 	///
 	info_type type_;
 	///

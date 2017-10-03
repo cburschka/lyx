@@ -263,7 +263,6 @@ Inset * createInsetHelper(Buffer * buf, FuncRequest const & cmd)
 
 		case LFUN_INFO_INSERT: {
 			InsetInfo * inset = new InsetInfo(buf, to_utf8(cmd.argument()));
-			inset->updateInfo();
 			return inset;
 		}
 

@@ -92,7 +92,8 @@ NameTranslator const & nameTranslator()
 
 
 InsetInfo::InsetInfo(Buffer * buf, string const & name)
-	: InsetCollapsable(buf), type_(UNKNOWN_INFO), name_()
+	: InsetCollapsable(buf), initialized_(false), 
+	  type_(UNKNOWN_INFO), name_()
 {
 	setInfo(name);
 	status_ = Collapsed;
@@ -147,7 +148,6 @@ void InsetInfo::read(Lexer & lex)
 			_("Missing \\end_inset at this point."),
 			from_utf8(token));
 	}
-	updateInfo();
 }
 
 
@@ -247,6 +247,7 @@ void InsetInfo::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY:
 		cur.recordUndo();
 		setInfo(to_utf8(cmd.argument()));
+		initialized_ = false;
 		break;
 
 	case LFUN_INSET_COPY_AS: {
@@ -278,7 +279,6 @@ void InsetInfo::setInfo(string const & name)
 	string type;
 	name_ = trim(split(name, type, ' '));
 	type_ = nameTranslator().find(type);
-	updateInfo();
 }
 
 
@@ -295,16 +295,21 @@ void InsetInfo::setText(docstring const & str)
 }
 
 
-void InsetInfo::updateInfo()
-{
+void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 	BufferParams const & bp = buffer().params();
 
 	switch (type_) {
 	case UNKNOWN_INFO:
 		error("Unknown Info: %1$s");
+		initialized_ = false;
 		break;
 	case SHORTCUT_INFO:
 	case SHORTCUTS_INFO: {
+		// only need to do this once.
+		if (initialized_)
+			break;
+		// and we will not keep trying if we fail
+		initialized_ = true;
 		FuncRequest const func = lyxaction.lookupFunc(name_);
 		if (func.action() == LFUN_UNKNOWN_ACTION) {
 			error("Unknown action %1$s");
@@ -323,11 +328,15 @@ void InsetInfo::updateInfo()
 		break;
 	}
 	case LYXRC_INFO: {
+		// this information could actually change, if the preferences are changed,
+		// so we will recalculate each time through.
 		ostringstream oss;
 		if (name_.empty()) {
 			setText(_("undefined"));
 			break;
 		}
+		// FIXME this uses the serialization mechanism to get the info
+		// we want, which i guess works but is a bit strange.
 		lyxrc.write(oss, true, name_);
 		string result = oss.str();
 		if (result.size() < 2) {
@@ -351,20 +360,33 @@ void InsetInfo::updateInfo()
 		break;
 	}
 	case PACKAGE_INFO:
+		// only need to do this once.
+		if (initialized_)
+			break;
 		// check in packages.lst
 		setText(LaTeXFeatures::isAvailable(name_) ? _("yes") : _("no"));
+		initialized_ = true;
 		break;
 
 	case TEXTCLASS_INFO: {
+		// only need to do this once.
+		if (initialized_)
+			break;
 		// name_ is the class name
 		LayoutFileList const & list = LayoutFileList::get();
 		bool available = false;
 		if (list.haveClass(name_))
 			available = list[name_].isTeXClassAvailable();
 		setText(available ? _("yes") : _("no"));
+		initialized_ = true;
 		break;
 	}
 	case MENU_INFO: {
+		// only need to do this once.
+		if (initialized_)
+			break;
+		// and we will not keep trying if we fail
+		initialized_ = true;
 		docstring_list names;
 		FuncRequest const func = lyxaction.lookupFunc(name_);
 		if (func.action() == LFUN_UNKNOWN_ACTION) {
@@ -406,6 +428,11 @@ void InsetInfo::updateInfo()
 		break;
 	}
 	case ICON_INFO: {
+		// only need to do this once.
+		if (initialized_)
+			break;
+		// and we will not keep trying if we fail
+		initialized_ = true;
 		FuncRequest func = lyxaction.lookupFunc(name_);
 		docstring icon_name = frontend::Application::iconName(func, true);
 		// FIXME: We should use the icon directly instead of
@@ -451,6 +478,7 @@ void InsetInfo::updateInfo()
 		break;
 	}
 	case BUFFER_INFO: {
+		// this could all change, so we will recalculate each time
 		if (name_ == "name") {
 			setText(from_utf8(buffer().fileName().onlyFileName()));
 			break;
@@ -464,8 +492,12 @@ void InsetInfo::updateInfo()
 			break;
 		}
 
+		////////////////////////////////////////////////////////////////
 		// everything that follows is for version control.
 		// nothing that isn't version control should go below this line.
+		
+		// this information could change, in principle, so we will 
+		// recalculate each time through
 		if (!buffer().lyxvc().inUse()) {
 			setText(_("No version control"));
 			break;
@@ -489,10 +521,15 @@ void InsetInfo::updateInfo()
 		break;
 	}
 	case LYX_INFO:
+		// only need to do this once.
+		if (initialized_)
+			break;
 		if (name_ == "version")
 			setText(from_ascii(lyx_version));
+		initialized_ = true;
 		break;
 	}
+	InsetCollapsable::updateBuffer(it, utype);
 }
 
 
