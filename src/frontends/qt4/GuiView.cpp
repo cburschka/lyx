@@ -3057,6 +3057,7 @@ static bool ensureBufferClean(Buffer * buffer)
 
 bool GuiView::reloadBuffer(Buffer & buf)
 {
+	currentBufferView()->cursor().reset();
 	Buffer::ReadStatus status = buf.reload();
 	return status == Buffer::ReadSuccess;
 }
