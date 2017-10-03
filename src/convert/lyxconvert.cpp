@@ -8,7 +8,9 @@ g++ -std=gnu++11 $cflags lyxconvert.cpp -o lyxconvert $libs
 #include <QImage>
 #include <QFile>
 #include <QPainter>
+#if (QT_VERSION >= 0x050300)
 #include <QPdfWriter>
+#endif
 
 
 const char * basename(const char * name)
