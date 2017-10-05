@@ -1,8 +1,14 @@
-/*
-set cflags=`env PKG_CONFIG_PATH=/usr/local/qt5/lib/pkgconfig pkg-config --cflags Qt5Widgets`
-set libs=`env PKG_CONFIG_PATH=/usr/local/qt5/lib/pkgconfig pkg-config --libs --static Qt5Widgets`
-g++ -std=gnu++11 $cflags lyxconvert.cpp -o lyxconvert $libs
-*/
+/**
+ * \file lyxconvert.cpp
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Stephan Witt
+ * \author Enrico Forestieri
+ *
+ * Full author contact details are available in file CREDITS.
+ */
+
 #include <iostream>
 #include <QApplication>
 #include <QImage>
