@@ -87,11 +87,12 @@ sweave
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author 274215730 "scott"
 \end_header
 
 \begin_body
@@ -344,6 +345,7 @@ status open
 status open
 
 \begin_layout Plain Layout
+
 where-is-R-bin,eval=FALSE
 \end_layout
 
@@ -403,6 +405,7 @@ status open
 status open
 
 \begin_layout Plain Layout
+
 sweave-sty,eval=FALSE
 \end_layout
 
@@ -549,6 +552,7 @@ status open
 status open
 
 \begin_layout Plain Layout
+
 setup, keep.source=TRUE
 \end_layout
 
@@ -582,6 +586,7 @@ status open
 status open
 
 \begin_layout Plain Layout
+
 sweave-manual, eval=FALSE, keep.source=TRUE
 \end_layout
 
@@ -619,6 +624,7 @@ status open
 status open
 
 \begin_layout Plain Layout
+
 print-integers, keep.source=TRUE
 \end_layout
 
@@ -652,6 +658,7 @@ status open
 status open
 
 \begin_layout Plain Layout
+
 hide-results, results=hide
 \end_layout
 
@@ -689,6 +696,7 @@ status open
 status open
 
 \begin_layout Plain Layout
+
 calculator
 \end_layout
 
@@ -726,6 +734,7 @@ status open
 status open
 
 \begin_layout Plain Layout
+
 rnorm
 \end_layout
 
@@ -861,6 +870,7 @@ status open
 status open
 
 \begin_layout Plain Layout
+
 iris-summary
 \end_layout
 
@@ -915,6 +925,7 @@ status open
 status open
 
 \begin_layout Plain Layout
+
 xtable-demo,results=tex,echo=FALSE
 \end_layout
 
@@ -1037,6 +1048,7 @@ status open
 status open
 
 \begin_layout Plain Layout
+
 iris-pairs,fig=TRUE,width=4.5,height=4.5,eps=TRUE,pdf=TRUE
 \end_layout
 
@@ -1100,6 +1112,7 @@ status open
 status open
 
 \begin_layout Plain Layout
+
 iris-boxplots,fig=TRUE,width=7,height=2,keep.source=F,eps=T,pdf=T
 \end_layout
 
@@ -1585,7 +1598,15 @@ Resources
 \end_layout
 
 \begin_layout Standard
-The homepage of Sweave is at 
+The 
+\change_deleted 274215730 1507313073
+homepage 
+\change_inserted 274215730 1507313078
+user manual 
+\change_unchanged
+of Sweave is at 
+\change_deleted 274215730 1507313083
+
 \begin_inset Flex URL
 status collapsed
 
@@ -1596,6 +1617,25 @@ http://www.stat.uni-muenchen.de/~leisch/Sweave/
 
 \end_inset
 
+
+\change_inserted 274215730 1507313095
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted 274215730 1507313100
+
+https://stat.ethz.ch/R-manual/R-devel/library/utils/doc/Sweave.pdf
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
 .
  The CRAN task view on 
 \begin_inset Quotes eld
