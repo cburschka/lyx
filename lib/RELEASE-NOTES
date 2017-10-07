@@ -195,6 +195,9 @@
 
 * The included libiconv has been upgraded to version 1.15.
 
+* LyX now includes a Qt-based fallback-converter for Mac to compensate missing
+  ImageMagick convert utility.
+
 
 !!Known issues in version 2.3.0
 
