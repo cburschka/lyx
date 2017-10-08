@@ -84,7 +84,7 @@ public:
 	///
 	mode_type currentMode() const;
 
-	///
+	/// Assumes that macros are up-to-date
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream & os) const;
@@ -172,9 +172,6 @@ protected:
 	void attachArguments(std::vector<MathData> const & args, size_t arity, int optionals);
 
 private:
-	/// Math mode for output and display. UNDECIDED for user macros: they could
-	/// be either.
-	mode_type modeToEnsure() const;
 	/// This function is needed for now because of two shortfalls of the current
 	/// implementation: the macro() pointer is often dangling, in which case we
 	/// fall back to a backup copy, and the macro is not known at inset

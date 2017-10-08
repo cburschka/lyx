@@ -861,23 +861,15 @@ MathClass InsetMathMacro::mathClass() const
 
 InsetMath::mode_type InsetMathMacro::currentMode() const
 {
-	// There is no way to guess the mode of user defined macros, so they are
-	// always assumed to be mathmode.  Only the global macros defined in
-	// lib/symbols may be textmode.
-	mode_type mode = modeToEnsure();
-	return (mode == UNDECIDED_MODE) ? MATH_MODE : mode;
-}
-
-
-InsetMath::mode_type InsetMathMacro::modeToEnsure() const
-{
-	// User defined macros can be either text mode or math mode for output and
-	// display. There is no way to guess. For global macros defined in
-	// lib/symbols, we ensure textmode if flagged as such, otherwise we ensure
-	// math mode.
-	if (MacroData const * m = macroBackup())
-		if (m->symbol())
-			return (m->symbol()->extra == "textmode") ? TEXT_MODE : MATH_MODE;
+	// User defined macros are always assumed to be mathmode macros.
+	// Only the global macros defined in lib/symbols may be textmode.
+	if (MacroData const * m = macroBackup()) {
+		if (m->symbol() && m->symbol()->extra == "textmode")
+			return TEXT_MODE;
+		else
+			return MATH_MODE;
+	}
+	// Unknown macros are undecided.
 	return UNDECIDED_MODE;
 }
 
@@ -1069,10 +1061,8 @@ bool InsetMathMacro::folded() const
 
 void InsetMathMacro::write(WriteStream & os) const
 {
-	mode_type mode = modeToEnsure();
-	bool textmode_macro = mode == TEXT_MODE;
-	bool needs_mathmode = mode == MATH_MODE;
-	MathEnsurer ensurer(os, needs_mathmode, true, textmode_macro);
+	mode_type mode = currentMode();
+	MathEnsurer ensurer(os, mode == MATH_MODE, true, mode == TEXT_MODE);
 
 	// non-normal mode
 	if (d->displayMode_ != DISPLAY_NORMAL) {
