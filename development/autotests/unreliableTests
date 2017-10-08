@@ -58,6 +58,9 @@ Sublabel: varying_versions
 # (see https://www.gnu.org/software/libiconv/)
 export/export/latex/cp858_pdf2
 
+# Seminar export with LaTeX fails in latest TeXLive:
+export/examples/(|fr/)seminar_(dvi|pdf).*
+
 
 Sublabel: wrong_output
 ######################
@@ -66,8 +69,9 @@ Sublabel: wrong_output
 # These tests are actually not "unreliable" (different result for different
 # runs) but *invalid* (not measuring what they should measure).
 
-# seminar.sty uses Postscript specials or PGF
-# -> wrong output with DVI and PDF (ps2pdf) (de-placed landscape slides).
+# seminar.sty uses Postscript specials or PGF resulting in problems with slide
+# size and orientation depending on the output format and viewing application.
+# For details see Troubleshooting and the Appendix in examples/seminar.lyx.
 export/examples/(|fr/)seminar_(dvi|pdf).*
 
 # Babel-Spanish uses UTF-8 encoded "unicode" strings if it detects LuaTeX
