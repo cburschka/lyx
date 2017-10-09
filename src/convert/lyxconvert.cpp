@@ -7,6 +7,20 @@
  * \author Enrico Forestieri
  *
  * Full author contact details are available in file CREDITS.
+ *
+ * The code implements an utility program using the Qt-Framework
+ * to convert an image from a given format to another one.
+ * The image format of the files is either auto detected by Qt or
+ * may explicitely specified with command line arguments.
+ *
+ * Syntax:
+ * lyxconvert [-d] [-f infmt] [-t outfmt] inputfile outputfile
+ *  -d   turn on debug messages
+ *  -f   format of input file (from)
+ *  -t   format of output file (to)
+ *
+ * Example to convert a compressed SVG image to PNG:
+ * lyxconvert image.svgz image.png
  */
 
 #include <iostream>
