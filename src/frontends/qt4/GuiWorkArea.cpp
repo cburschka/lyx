@@ -431,12 +431,15 @@ void GuiWorkArea::startBlinkingCaret()
 
 	d->showCaret();
 
-	//we're not supposed to cache this value.
-	int const time = QApplication::cursorFlashTime() / 2;
-	if (time <= 0)
-		return;
-	d->caret_timeout_.setInterval(time);
-	d->caret_timeout_.start();
+	// Avoid blinking when debugging PAINTING, since it creates too much noise
+	if (!lyxerr.debugging(Debug::PAINTING)) {
+		// we are not supposed to cache this value.
+		int const time = QApplication::cursorFlashTime() / 2;
+		if (time <= 0)
+			return;
+		d->caret_timeout_.setInterval(time);
+		d->caret_timeout_.start();
+	}
 }
 
 

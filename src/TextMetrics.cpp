@@ -1928,10 +1928,10 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		// Instrumentation for testing row cache (see also
 		// 12 lines lower):
 		if (lyxerr.debugging(Debug::PAINTING)
-			&& (row.selection() || pi.full_repaint || row_has_changed)) {
-				string const foreword = text_->isMainText() ?
-					"main text redraw " : "inset text redraw: ";
-			LYXERR(Debug::PAINTING, foreword << "pit=" << pit << " row=" << i
+		    && (row.selection() || pi.full_repaint || row_has_changed)) {
+			string const foreword = text_->isMainText() ? "main text redraw "
+				: "inset text redraw: ";
+			LYXERR0(foreword << "pit=" << pit << " row=" << i
 				<< " row_selection="	<< row.selection()
 				<< " full_repaint="	<< pi.full_repaint
 				<< " row_has_changed="	<< row_has_changed
