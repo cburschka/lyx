@@ -1987,6 +1987,8 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 		bool bound = false;
 		top().pos() = tm.getPosNearX(real_next_row, xo, bound);
 		boundary(bound);
+		// When selection==false, this is done by TextMetrics::editXY
+		setCurrentFont();
 
 		updateNeeded |= bv().checkDepm(*this, old);
 	}

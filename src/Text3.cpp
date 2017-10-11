@@ -835,6 +835,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				break;
 		}
 		cur.pos() = cur.lastpos();
+		cur.boundary(false);
+		cur.setCurrentFont();
 
 		needsUpdate |= cur != old_cur;
 		break;
@@ -1713,6 +1715,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// reset the anchor.
 		bvcur.setCursor(cur);
 		bvcur.selection(true);
+		bvcur.setCurrentFont();
 		if (cur.top() == old) {
 			// We didn't move one iota, so no need to update the screen.
 			cur.screenUpdateFlags(Update::SinglePar | Update::FitCursor);
