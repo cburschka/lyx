@@ -4,8 +4,7 @@ AC_DEFUN([QT_TRY_LINK],
 	SAVE_LIBS="$LIBS"
 	LIBS="$LIBS $1"
 	AC_TRY_LINK([
-	#include <qglobal.h>
-	#include <qstring.h>
+	#include <QtCore/QString>
 		],
 	[
 	QString s("mangle_failure");
@@ -104,7 +103,7 @@ AC_DEFUN([QT_GET_VERSION],
 		cat > conftest.$ac_ext <<EOF
 #line __oline__ "configure"
 #include "confdefs.h"
-#include <qglobal.h>
+#include <QtCore/qglobal.h>
 "%%%"QT_VERSION_STR"%%%"
 EOF
 		lyx_cv_qtversion=`(eval "$ac_cpp conftest.$ac_ext") 2>&5 | \
@@ -193,7 +192,7 @@ AC_DEFUN([QT_DO_IT_ALL],
 	    [AC_MSG_RESULT(no)])
 	else
 	  AC_PREPROC_IFELSE([AC_LANG_SOURCE([
-	    [#include <qglobal.h>],
+	    [#include <QtCore/qglobal.h>],
 	    [#ifndef Q_WS_X11],
 	    [#error Fail],
 	    [#endif]])],
