@@ -882,7 +882,7 @@ void TeXOnePar(Buffer const & buf,
 			}
 			// With CJK, the CJK tag has to be closed first (see below)
 			if (runparams.encoding->package() != Encoding::CJK
-			    && par_lang != openLanguageName(state)
+			    && (par_lang != openLanguageName(state) || localswitch)
 			    && !par_lang.empty()) {
 				string bc = use_polyglossia ?
 					  getPolyglossiaBegin(lang_begin_command, par_lang, par_language->polyglossiaOpts())
