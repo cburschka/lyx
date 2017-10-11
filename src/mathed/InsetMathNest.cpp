@@ -2031,8 +2031,7 @@ bool InsetMathNest::insertCompletion(Cursor & cur, docstring const & s,
 #if 0
 		// FIXME: this creates duplicates in the completion popup
 		// which looks ugly. Moreover the changes the list lengths
-		// which seems to
-		confuse the popup as well.
+		// which seems to confuse the popup as well.
 		MathCompletionList::addToFavorites(inset->name());
 #endif
 		lyx::dispatch(FuncRequest(LFUN_SELF_INSERT, " "));
