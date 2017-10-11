@@ -228,7 +228,8 @@ enum ScreenUpdateStrategy {
 
 struct BufferView::Private
 {
-	Private(BufferView & bv) : update_strategy_(NoScreenUpdate),
+	Private(BufferView & bv) : update_strategy_(FullScreenUpdate),
+		update_flags_(Update::Force),
 		wh_(0), cursor_(bv),
 		anchor_pit_(0), anchor_ypos_(0),
 		inlineCompletionUniqueChars_(0),
@@ -244,6 +245,8 @@ struct BufferView::Private
 	ScrollbarParameters scrollbarParameters_;
 	///
 	ScreenUpdateStrategy update_strategy_;
+	///
+	Update::flags update_flags_;
 	///
 	CoordCache coord_cache_;
 
@@ -445,79 +448,85 @@ bool BufferView::needsFitCursor() const
 }
 
 
+namespace {
+
+// this is for debugging only.
+string flagsAsString(Update::flags flags)
+{
+	if (flags == Update::None)
+		return "None ";
+	return string((flags & Update::FitCursor) ? "FitCursor " : "")
+		+ ((flags & Update::Force) ? "Force " : "")
+		+ ((flags & Update::ForceDraw) ? "ForceDraw " : "")
+		+ ((flags & Update::SinglePar) ? "SinglePar " : "");
+}
+
+}
+
 void BufferView::processUpdateFlags(Update::flags flags)
 {
-	// This is close to a hot-path.
-	LYXERR(Debug::PAINTING, "BufferView::processUpdateFlags()"
-		<< "[fitcursor = " << (flags & Update::FitCursor)
-		<< ", forceupdate = " << (flags & Update::Force)
-		<< ", singlepar = " << (flags & Update::SinglePar)
-		<< "]  buffer: " << &buffer_);
-
-	// FIXME Does this really need doing here? It's done in updateBuffer, and
-	// if the Buffer doesn't need updating, then do the macros?
-	buffer_.updateMacros();
-
-	// Now do the first drawing step if needed. This consists on updating
-	// the CoordCache in updateMetrics().
-	// The second drawing step is done in WorkArea::redraw() if needed.
-	// FIXME: is this still true now that Buffer::changed() is used all over?
+	LYXERR(Debug::PAINTING, "BufferView::processUpdateFlags( "
+		   << flagsAsString(flags) << ")  buffer: " << &buffer_);
 
 	// Case when no explicit update is requested.
-	if (!flags) {
+	if (flags == Update::None)
+		return;
+
+	// SinglePar is ignored for now (this should probably change). We
+	// set it ourselves below, at the price of always rebreaking the
+	// paragraph at cursor. This can be expensive for large tables.
+	flags = flags & ~Update::SinglePar;
+
+	// First check whether the metrics and inset positions should be updated
+	if (flags & Update::Force) {
+		// This will update the CoordCache items and replace Force
+		// with ForceDraw in flags.
+		updateMetrics(flags);
+	}
+
+	// Then make sure that the screen contains the cursor if needed
+	if (flags & Update::FitCursor) {
+		if (needsFitCursor()) {
+			scrollToCursor(d->cursor_, false);
+			// Metrics have to be recomputed (maybe again)
+			updateMetrics(flags);
+		}
+		flags = flags & ~Update::FitCursor;
+	}
+
+	// Finally detect whether we can only repaint a single paragraph
+	if (!(flags & Update::ForceDraw)) {
+		if (singleParUpdate())
+			flags = flags | Update::SinglePar;
+		else
+			updateMetrics(flags);
+	}
+
+	// Add flags to the the update flags. These will be reset to None
+	// after the redraw is actually done
+	d->update_flags_ = d->update_flags_ | flags;
+	LYXERR(Debug::PAINTING, "Cumulative flags: " << flagsAsString(flags));
+
+	// Now compute the update strategy
+	// Possibly values in flag are None, Decoration, ForceDraw
+	LATTEST((d->update_flags_ & ~(Update::None | Update::SinglePar
+	                              | Update::Decoration | Update::ForceDraw)) == 0);
+
+	if (d->update_flags_ & Update::ForceDraw)
+		d->update_strategy_ = FullScreenUpdate;
+	else if (d->update_flags_ & Update::Decoration)
+		d->update_strategy_ = DecorationUpdate;
+	else if (d->update_flags_ & Update::SinglePar)
+		d->update_strategy_ = SingleParUpdate;
+	else {
 		// no need to redraw anything.
 		d->update_strategy_ = NoScreenUpdate;
-		return;
-	}
-
-	if (flags == Update::Decoration) {
-		d->update_strategy_ = DecorationUpdate;
-		buffer_.changed(false);
-		return;
-	}
-
-	if (flags == Update::FitCursor
-		|| flags == (Update::Decoration | Update::FitCursor)) {
-		// tell the frontend to update the screen if needed.
-		if (needsFitCursor()) {
-			showCursor();
-			return;
-		}
-		if (flags & Update::Decoration) {
-			d->update_strategy_ = DecorationUpdate;
-			buffer_.changed(false);
-			return;
-		}
-		// no screen update is needed in principle, but this
-		// could change if cursor row needs horizontal scrolling.
-		d->update_strategy_ = NoScreenUpdate;
-		buffer_.changed(false);
-		return;
-	}
-
-	bool const full_metrics = flags & Update::Force || !singleParUpdate();
-
-	if (full_metrics)
-		// We have to update the full screen metrics.
-		updateMetrics();
-
-	if (!(flags & Update::FitCursor)) {
-		// Nothing to do anymore. Trigger a redraw and return
-		buffer_.changed(false);
-		return;
-	}
-
-	// updateMetrics() does not update paragraph position
-	// This is done at draw() time. So we need a redraw!
-	buffer_.changed(false);
-
-	if (needsFitCursor()) {
-		// The cursor is off screen so ensure it is visible.
-		// refresh it:
-		showCursor();
 	}
 
 	updateHoveredInset();
+
+	// Trigger a redraw.
+	buffer_.changed(false);
 }
 
 
@@ -632,8 +641,7 @@ void BufferView::scrollDocView(int const value, bool update)
 	// If the offset is less than 2 screen height, prefer to scroll instead.
 	if (abs(value) <= 2 * height_) {
 		d->anchor_ypos_ -= value;
-		buffer_.changed(true);
-		updateHoveredInset();
+		processUpdateFlags(Update::Force);
 		return;
 	}
 
@@ -830,12 +838,7 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 		d->cursor_.setCurrentFont();
 		// Do not forget to reset the anchor (see #9912)
 		d->cursor_.resetAnchor();
-		// To center the screen on this new position we need the
-		// paragraph position which is computed at draw() time.
-		// So we need a redraw!
-		buffer_.changed(false);
-		if (needsFitCursor())
-			showCursor();
+		processUpdateFlags(Update::FitCursor);
 	}
 
 	return success;
@@ -877,19 +880,15 @@ void BufferView::showCursor()
 void BufferView::showCursor(DocIterator const & dit,
 	bool recenter, bool update)
 {
-	if (scrollToCursor(dit, recenter) && update) {
-		buffer_.changed(true);
-		updateHoveredInset();
-	}
+	if (scrollToCursor(dit, recenter) && update)
+		processUpdateFlags(Update::Force);
 }
 
 
 void BufferView::scrollToCursor()
 {
-	if (scrollToCursor(d->cursor_, false)) {
-		buffer_.changed(true);
-		updateHoveredInset();
-	}
+	if (scrollToCursor(d->cursor_, false))
+		processUpdateFlags(Update::Force);
 }
 
 
@@ -1715,8 +1714,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		bool const in_texted = cur.inTexted();
 		cur.setCursor(doc_iterator_begin(cur.buffer()));
 		cur.selHandle(false);
-		buffer_.changed(true);
-		updateHoveredInset();
+		// Force an immediate computation of metrics because we need it below
+		processUpdateFlags(Update::Force);
 
 		d->text_metrics_[&buffer_.text()].editXY(cur, p.x_, p.y_,
 			true, act == LFUN_SCREEN_UP);
@@ -1750,8 +1749,7 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			if (scroll_value)
 				scroll(scroll_step * scroll_value);
 		}
-		buffer_.changed(true);
-		updateHoveredInset();
+		dr.screenUpdate(Update::ForceDraw);
 		dr.forceBufferUpdate();
 		break;
 	}
@@ -2646,7 +2644,6 @@ bool BufferView::singleParUpdate()
 		return false;
 
 	tm.updatePosCache(bottom_pit);
-	d->update_strategy_ = SingleParUpdate;
 
 	LYXERR(Debug::PAINTING, "\ny1: " << pm.position() - pm.ascent()
 		<< " y2: " << pm.position() + pm.descent()
@@ -2657,6 +2654,13 @@ bool BufferView::singleParUpdate()
 
 
 void BufferView::updateMetrics()
+{
+	updateMetrics(d->update_flags_);
+	d->update_strategy_ = FullScreenUpdate;
+}
+
+
+void BufferView::updateMetrics(Update::flags & update_flags)
 {
 	if (height_ == 0 || width_ == 0)
 		return;
@@ -2741,7 +2745,8 @@ void BufferView::updateMetrics()
 		<< " pit1 = " << pit1
 		<< " pit2 = " << pit2);
 
-	d->update_strategy_ = FullScreenUpdate;
+	// metrics is done, full drawing is necessary now
+	update_flags = (update_flags & ~Update::Force) | Update::ForceDraw;
 
 	// Now update the positions of insets in the cache.
 	updatePosCache();
@@ -3050,8 +3055,8 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 {
 	if (height_ == 0 || width_ == 0)
 		return;
-	LYXERR(Debug::PAINTING, "\t\t*** START DRAWING ***");
-
+	LYXERR(Debug::PAINTING, (pain.isNull() ? "\t\t--- START NODRAW ---"
+	                         : "\t\t*** START DRAWING ***"));
 	Text & text = buffer_.text();
 	TextMetrics const & tm = d->text_metrics_[&text];
 	int const y = tm.first().second->position();
@@ -3130,7 +3135,8 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 		}
 		break;
 	}
-	LYXERR(Debug::PAINTING, "\n\t\t*** END DRAWING  ***");
+	LYXERR(Debug::PAINTING, (pain.isNull() ? "\t\t --- END NODRAW ---"
+	                        : "\t\t *** END DRAWING ***"));
 
 	// The scrollbar needs an update.
 	updateScrollbar();
@@ -3141,13 +3147,19 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 	for (pit_type pit = firstpm.first; pit <= lastpm.first; ++pit) {
 		ParagraphMetrics const & pm = tm.parMetrics(pit);
 		if (pm.position() + pm.descent() > 0) {
+			if (d->anchor_pit_ != pit
+			    || d->anchor_ypos_ != pm.position())
+				LYXERR(Debug::PAINTING, "Found new anchor pit = " << d->anchor_pit_
+				       << "  anchor ypos = " << d->anchor_ypos_);
 			d->anchor_pit_ = pit;
 			d->anchor_ypos_ = pm.position();
 			break;
 		}
 	}
-	LYXERR(Debug::PAINTING, "Found new anchor pit = " << d->anchor_pit_
-		<< "  anchor ypos = " << d->anchor_ypos_);
+	if (!pain.isNull()) {
+		// reset the update flags, everything has been done
+		d->update_flags_ = Update::None;
+	}
 
 	// Remember what has just been done for the next draw() step
 	if (paint_caret)
