@@ -120,11 +120,12 @@ public:
 	/// \return true if the BufferView is at the bottom of the document.
 	bool isBottomScreen() const;
 
-	/// perform pending metrics updates.
-	/** \c Update::FitCursor means first to do a FitCursor, and to
+	/// Add \p flags to current update flags and trigger an update.
+	/* If this method is invoked several times before the update
+	 * actually takes place, the effect is cumulative.
+	 * \c Update::FitCursor means first to do a FitCursor, and to
 	 * force an update if screen position changes.
 	 * \c Update::Force means to force an update in any case.
-	 * \retval true if a screen redraw is needed
 	 */
 	void processUpdateFlags(Update::flags flags);
 
@@ -367,6 +368,8 @@ private:
 	/// Update current paragraph metrics.
 	/// \return true if no further update is needed.
 	bool singleParUpdate();
+	/// do the work for the public updateMetrics()
+	void updateMetrics(Update::flags & update_flags);
 
 	// Set the row on which the cursor lives.
 	void setCurrentRowSlice(CursorSlice const & rowSlice);

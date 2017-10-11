@@ -60,12 +60,6 @@ cursor.
 
 * Clean-up of drawing code
 
-The goal is to make painting with drawing disable fast enough that it
-can be used after every metrics computation. Then we can separate real
-drawing from metrics.
-
-Other changes are only clean-ups.
-
 ** When a paragraph ends with a newline, compute correctly the height of the extra row.
 ** Merging bv::updateMetrics and tm::metrics
 
@@ -76,7 +70,7 @@ insets. We should re-use the bv::updateMetrics logic:
  + transfer all the logic of bv::updateMetrics to tm.
  + Main InsetText should not be special.
 
-The difficuly for a tall table cell for example, is that it may be
+The difficulty for a tall table cell for example, is that it may be
 necessary to break the whole contents to know the width of the cell.
 
 
@@ -113,11 +107,19 @@ DecorationUpdate). It triggers a recomputation of the metrics when either:
    existing metrics. Note that the Update::SinglePar flag is *never*
    taken into account.
 
+If a computation of metrics has taken place, Force is removed from the
+flags and ForceDraw is added instead.
+
+It is OK to call processUptateFlags several times before an update. In
+this case, the effects are cumulative.processUpdateFlags execute the
+metrics-related actions, but defers the actual drawing to the next
+paint event.
+
 The screen is drawn (with appropriate update strategy), except when
 update flag is Update::None.
 
 
-** Metrics computation
+** Metrics computation (and nodraw drawing phase)
 
 This is triggered by bv::updateMetrics, which calls tm::redoParagraph for
 all visible paragraphs. Some Paragraphs above or below the screen (needed
@@ -127,6 +129,9 @@ tm::redoParagraph will call Inset::metrics for each inset. In the case
 of text insets, this will invoke recursively tm::metrics, which redoes
 all the paragraphs of the inset.
 
+At the end of the function, bv::updatePosCache is called. It triggers
+a repaint of the document with a NullPainter (a painter that does
+nothing). This has the effect of caching all insets positions.
 
 ** Drawing the work area.
 
