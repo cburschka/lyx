@@ -114,7 +114,7 @@ private:
 	/// Get the status message, depends on the image loading status.
 	std::string statusMessage() const;
 	/// Create the options for the latex command.
-	std::string createLatexOptions() const;
+	std::string createLatexOptions(bool const ps) const;
 	/// Create length values for docbook export.
 	docstring toDocbookLength(Length const & len) const;
 	/// Create the atributes for docbook export.
