@@ -304,17 +304,19 @@ void InsetGraphics::read(Lexer & lex)
 }
 
 
-string InsetGraphics::createLatexOptions() const
+string InsetGraphics::createLatexOptions(bool const ps) const
 {
 	// Calculate the options part of the command, we must do it to a string
 	// stream since we might have a trailing comma that we would like to remove
 	// before writing it to the output stream.
 	ostringstream options;
-	if (!params().bbox.empty())
-		options << "bb=" << params().bbox.xl.asLatexString() << ' '
+	if (!params().bbox.empty()) {
+		string const key = ps ? "bb=" : "viewport=";
+		options << key << params().bbox.xl.asLatexString() << ' '
 		        << params().bbox.yb.asLatexString() << ' '
 		        << params().bbox.xr.asLatexString() << ' '
 		        << params().bbox.yt.asLatexString() << ',';
+	}
 	if (params().draft)
 	    options << "draft,";
 	if (params().clip)
@@ -765,7 +767,9 @@ void InsetGraphics::latex(otexstream & os,
 	before += "\\includegraphics";
 
 	// Write the options if there are any.
-	string const opts = createLatexOptions();
+	bool const ps = runparams.flavor == OutputParams::LATEX
+		|| runparams.flavor == OutputParams::DVILUATEX;
+	string const opts = createLatexOptions(ps);
 	LYXERR(Debug::GRAPHICS, "\tOpts = " << opts);
 
 	if (!opts.empty() && !message.empty())

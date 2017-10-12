@@ -49,6 +49,8 @@ What's new
 
 - Catch "! Incomplete \if[x]" LaTeX error (bug 10666).
 
+- Fix PDF output of clipped graphics with recent graphics package (bug 7910).
+
 - Catch xdvipdfmx driver error that breaks XeTeX compilation (bug 10076).
 
 - Fix caption handling in listings insets when it is split into multiple
