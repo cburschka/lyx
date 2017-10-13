@@ -21,15 +21,18 @@ from layout2layout import main as layout2layout
 def main(argv):
 
     toolsdir = os.path.dirname(argv[0])
-    layoutdir = os.path.join(toolsdir, '../../lib/layouts')
-    os.chdir(layoutdir)
-    for i in os.listdir("."):
-        (base, ext) = os.path.splitext(i)
-        if ext == ".old":
-            continue
-        args = ["layout2layout", i + ".old", i] 
-        shutil.copy(args[2], args[1])
-        layout2layout(args)
+    dirs = []
+    dirs.append(os.path.join(toolsdir, '../../lib/layouts'))
+    dirs.append(os.path.join(toolsdir, '../../lib/citeengines'))
+    for directory in dirs:
+        os.chdir(directory)
+        for i in os.listdir("."):
+            (base, ext) = os.path.splitext(i)
+            if ext == ".old":
+                continue
+            args = ["layout2layout", i + ".old", i] 
+            shutil.copy(args[2], args[1])
+            layout2layout(args)
 
     return 0
 
