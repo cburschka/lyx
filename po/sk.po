@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-09-16 08:57+0200\n"
-"PO-Revision-Date: 2017-09-16 07:26+0000\n"
+"POT-Creation-Date: 2017-10-13 13:26+0200\n"
+"PO-Revision-Date: 2017-10-13 14:49+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1892,9 +1892,21 @@ msgstr "U&hol (stupne):"
 msgid "File name of image"
 msgstr "Názov súbora s obrázkom"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:284
-msgid "&Clipping"
-msgstr "&Orezanie"
+#: src/frontends/qt4/ui/GraphicsUi.ui:313
+msgid "&Coordinates and Clipping"
+msgstr "&Koordináty a Orezanie"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:347
+msgid ""
+"Clip to the coordinates specified below (bounding box for DVI/PS output, "
+"viewport for PDF output)"
+msgstr ""
+"Orezať na dolu špecifikované koordináty (ohraničujúci rámik pre DVI/PS "
+"výstup, zobrazenie pre PDF výstup)"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:350
+msgid "Clip to c&oordinates"
+msgstr "&Orezať na koordináty"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:393
 #: src/frontends/qt4/ui/GraphicsUi.ui:400
@@ -1905,6 +1917,14 @@ msgstr "y:"
 #: src/frontends/qt4/ui/GraphicsUi.ui:414
 msgid "x:"
 msgstr "x:"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:482
+msgid ""
+"Read coordinates from the file (bounding box value in case of PostScript "
+"files, graphic dimensions in case of other file types)"
+msgstr ""
+"Načítať koordináty zo súboru (ohraničujúce hodnoty rámiku v prípade "
+"PostScript-súborov, grafické rozmery pre iné súborové typy)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:481
 #: src/frontends/qt4/ui/GraphicsUi.ui:488
@@ -1940,8 +1960,8 @@ msgstr ""
 msgid "Graphics Group"
 msgstr "Skupina obrázkov"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:627
-msgid "A&ssigned to group:"
+#: src/frontends/qt4/ui/GraphicsUi.ui:680
+msgid "Assigned &to group:"
 msgstr "&Priradené ku skupine:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:637
@@ -35531,6 +35551,9 @@ msgstr "Neznámy používateľ"
 #~ "[[{%inštitúcia%[[, %inštitúcia%]]}]]}]]}{%rok%[[ (%rok%)]]}{%strany%[[, "
 #~ "%strany%]]}."
 
+#~ msgid "A&ssigned to group:"
+#~ msgstr "&Priradené ku skupine:"
+
 #~ msgid "Specify the default output format when using (PDF)LaTeX"
 #~ msgstr "Určite štandardný výstupný formát pre (PDF)LaTeX"
 
@@ -36563,6 +36586,9 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "&Center"
 #~ msgstr "Na stred"
+
+#~ msgid "&Clipping"
+#~ msgstr "&Orezanie"
 
 #~ msgid "Toggle tabba&r"
 #~ msgstr "Vše&tko prepnúť"
