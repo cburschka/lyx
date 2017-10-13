@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-09-10 11:01+0200\n"
-"PO-Revision-Date: 2017-09-10 11:02+0100\n"
+"POT-Creation-Date: 2017-10-13 11:34+0200\n"
+"PO-Revision-Date: 2017-10-13 11:41+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -365,7 +365,7 @@ msgstr "Lokales Verzeichnis durchsuchen"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:112 src/frontends/qt4/ui/BibtexUi.ui:152
 #: src/frontends/qt4/ui/CompareUi.ui:50 src/frontends/qt4/ui/ExternalUi.ui:70
-#: src/frontends/qt4/ui/GraphicsUi.ui:58 src/frontends/qt4/ui/IncludeUi.ui:335
+#: src/frontends/qt4/ui/GraphicsUi.ui:75 src/frontends/qt4/ui/IncludeUi.ui:335
 #: src/frontends/qt4/ui/LaTeXUi.ui:161 src/frontends/qt4/ui/PrefInputUi.ui:111
 msgid "&Browse..."
 msgstr "&Durchsuchen..."
@@ -381,7 +381,7 @@ msgstr "&Hinzufügen"
 #: src/frontends/qt4/ui/ChangesUi.ui:91 src/frontends/qt4/ui/SendtoUi.ui:92
 #: src/frontends/qt4/ui/ShortcutUi.ui:65 src/buffer_funcs.cpp:129
 #: src/frontends/qt4/ButtonController.cpp:238
-#: src/frontends/qt4/GuiApplication.cpp:1813
+#: src/frontends/qt4/GuiApplication.cpp:1806
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "Abbrechen"
@@ -452,17 +452,17 @@ msgstr "Dieser Abschnitt des Literaturverzeichnisses enthält..."
 msgid "&Content:"
 msgstr "&Inhalt:"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:185 src/frontends/qt4/GuiBibtex.cpp:339
+#: src/frontends/qt4/ui/BibtexUi.ui:185 src/frontends/qt4/GuiBibtex.cpp:340
 #: src/insets/InsetBibtex.cpp:223 src/insets/InsetBibtex.cpp:241
 msgid "all cited references"
 msgstr "alle zitierten Literatureinträge"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:190 src/frontends/qt4/GuiBibtex.cpp:341
+#: src/frontends/qt4/ui/BibtexUi.ui:190 src/frontends/qt4/GuiBibtex.cpp:342
 #: src/insets/InsetBibtex.cpp:221
 msgid "all uncited references"
 msgstr "alle nicht zitierten Literatureinträge"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:195 src/frontends/qt4/GuiBibtex.cpp:342
+#: src/frontends/qt4/ui/BibtexUi.ui:195 src/frontends/qt4/GuiBibtex.cpp:343
 #: src/insets/InsetBibtex.cpp:219 src/insets/InsetBibtex.cpp:239
 msgid "all references"
 msgstr "alle Literatureinträge"
@@ -492,7 +492,7 @@ msgstr ""
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:183
 #: src/frontends/qt4/ui/CompareUi.ui:153 src/frontends/qt4/ui/DocumentUi.ui:67
 #: src/frontends/qt4/ui/ExternalUi.ui:600
-#: src/frontends/qt4/ui/GraphicsUi.ui:711 src/frontends/qt4/ui/IncludeUi.ui:237
+#: src/frontends/qt4/ui/GraphicsUi.ui:773 src/frontends/qt4/ui/IncludeUi.ui:237
 #: src/frontends/qt4/ui/IndexUi.ui:41 src/frontends/qt4/ui/InsetParamsUi.ui:118
 #: src/frontends/qt4/ui/ListingsUi.ui:539
 #: src/frontends/qt4/ui/MathMatrixUi.ui:263 src/frontends/qt4/ui/NoteUi.ui:38
@@ -771,7 +771,7 @@ msgid "Remove the selected branch"
 msgstr "Den ausgewählten Zweig entfernen"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:136 src/frontends/qt4/ui/IndicesUi.ui:165
-#: src/Buffer.cpp:4568 src/Buffer.cpp:4581
+#: src/Buffer.cpp:4572 src/Buffer.cpp:4585
 msgid "&Remove"
 msgstr "&Entfernen"
 
@@ -805,7 +805,7 @@ msgstr "A&lle hinzufügen"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:108 src/Buffer.cpp:1402
-#: src/Buffer.cpp:4542 src/Buffer.cpp:4606 src/LyXVC.cpp:114 src/LyXVC.cpp:304
+#: src/Buffer.cpp:4546 src/Buffer.cpp:4610 src/LyXVC.cpp:114 src/LyXVC.cpp:304
 #: src/buffer_funcs.cpp:78 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:247
 #: src/frontends/qt4/GuiDocument.cpp:2328 src/frontends/qt4/GuiParagraph.cpp:69
@@ -814,8 +814,8 @@ msgstr "A&lle hinzufügen"
 #: src/frontends/qt4/GuiView.cpp:2622 src/frontends/qt4/GuiView.cpp:2636
 #: src/frontends/qt4/GuiView.cpp:2737 src/frontends/qt4/GuiView.cpp:2781
 #: src/frontends/qt4/GuiView.cpp:3049 src/frontends/qt4/GuiView.cpp:3063
-#: src/frontends/qt4/GuiView.cpp:3165 src/frontends/qt4/GuiView.cpp:3192
-#: src/frontends/qt4/GuiView.cpp:3847 src/frontends/qt4/GuiView.cpp:3854
+#: src/frontends/qt4/GuiView.cpp:3165 src/frontends/qt4/GuiView.cpp:3193
+#: src/frontends/qt4/GuiView.cpp:3848 src/frontends/qt4/GuiView.cpp:3855
 #: src/insets/InsetBibtex.cpp:160
 msgid "&Cancel"
 msgstr "&Abbrechen"
@@ -1056,7 +1056,7 @@ msgstr "Änderungen &sofort übernehmen"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:367
 #: src/frontends/qt4/ui/DocumentUi.ui:77 src/frontends/qt4/ui/ExternalUi.ui:610
-#: src/frontends/qt4/ui/GraphicsUi.ui:732
+#: src/frontends/qt4/ui/GraphicsUi.ui:792
 #: src/frontends/qt4/ui/InsetParamsUi.ui:128
 #: src/frontends/qt4/ui/ListingsUi.ui:549
 #: src/frontends/qt4/ui/ParagraphUi.ui:251 src/frontends/qt4/ui/PrefsUi.ui:80
@@ -1069,7 +1069,7 @@ msgid "&Apply"
 msgstr "&Übernehmen"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:377
-#: src/frontends/qt4/ui/GraphicsUi.ui:753
+#: src/frontends/qt4/ui/GraphicsUi.ui:811
 #: src/frontends/qt4/ui/MathMatrixUi.ui:270 src/frontends/qt4/ui/NoteUi.ui:28
 #: src/frontends/qt4/ui/PhantomUi.ui:28
 #: src/frontends/qt4/ui/TabularCreateUi.ui:134
@@ -1203,7 +1203,7 @@ msgid "All aut&hors"
 msgstr "Alle A&utoren"
 
 #: src/frontends/qt4/ui/CitationUi.ui:430 src/frontends/qt4/ui/DocumentUi.ui:44
-#: src/frontends/qt4/ui/GraphicsUi.ui:682
+#: src/frontends/qt4/ui/GraphicsUi.ui:744
 #: src/frontends/qt4/ui/InsetParamsUi.ui:82
 #: src/frontends/qt4/ui/ParagraphUi.ui:218 src/frontends/qt4/ui/PrefsUi.ui:44
 #: src/frontends/qt4/ui/WrapUi.ui:121
@@ -1432,7 +1432,7 @@ msgstr "Date&i"
 msgid "Filename"
 msgstr "Dateiname"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:57 src/frontends/qt4/ui/GraphicsUi.ui:266
+#: src/frontends/qt4/ui/ExternalUi.ui:57 src/frontends/qt4/ui/GraphicsUi.ui:295
 #: src/frontends/qt4/ui/IncludeUi.ui:265
 msgid "&File:"
 msgstr "&Datei:"
@@ -1454,7 +1454,7 @@ msgid "Available templates"
 msgstr "Verfügbare Vorlagen"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:132
-#: src/frontends/qt4/ui/GraphicsUi.ui:448
+#: src/frontends/qt4/ui/GraphicsUi.ui:493
 msgid "LaTe&X and LyX options"
 msgstr "LaTe&X- und LyX-Optionen"
 
@@ -1484,8 +1484,8 @@ msgstr "In LyX &anzeigen"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:212
 #: src/frontends/qt4/ui/ExternalUi.ui:234
-#: src/frontends/qt4/ui/GraphicsUi.ui:549
-#: src/frontends/qt4/ui/GraphicsUi.ui:556
+#: src/frontends/qt4/ui/GraphicsUi.ui:595
+#: src/frontends/qt4/ui/GraphicsUi.ui:602
 msgid "Percentage to scale by in LyX"
 msgstr "Prozentangabe für die Skalierung in LyX"
 
@@ -1503,15 +1503,15 @@ msgstr "Drehen"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:328
 #: src/frontends/qt4/ui/ExternalUi.ui:358
-#: src/frontends/qt4/ui/GraphicsUi.ui:240
-#: src/frontends/qt4/ui/GraphicsUi.ui:247
+#: src/frontends/qt4/ui/GraphicsUi.ui:269
+#: src/frontends/qt4/ui/GraphicsUi.ui:276
 msgid "Angle to rotate image by"
 msgstr "Winkel, um den das Bild gedreht werden soll"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:338
 #: src/frontends/qt4/ui/ExternalUi.ui:351
-#: src/frontends/qt4/ui/GraphicsUi.ui:212
-#: src/frontends/qt4/ui/GraphicsUi.ui:219
+#: src/frontends/qt4/ui/GraphicsUi.ui:243
+#: src/frontends/qt4/ui/GraphicsUi.ui:250
 msgid "The origin of the rotation"
 msgstr "Der Ausgangspunkt für die Drehung"
 
@@ -1528,12 +1528,12 @@ msgid "Scale"
 msgstr "Größe"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:400
-#: src/frontends/qt4/ui/GraphicsUi.ui:131 src/frontends/qt4/GuiGraphics.cpp:483
+#: src/frontends/qt4/ui/GraphicsUi.ui:153 src/frontends/qt4/GuiGraphics.cpp:483
 msgid "Height of image in output"
 msgstr "Höhe des Bilds bei der Ausgabe"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:410 src/frontends/qt4/ui/GraphicsUi.ui:97
-#: src/frontends/qt4/GuiGraphics.cpp:482
+#: src/frontends/qt4/ui/ExternalUi.ui:410
+#: src/frontends/qt4/ui/GraphicsUi.ui:121 src/frontends/qt4/GuiGraphics.cpp:482
 msgid "Width of image in output"
 msgstr "Breite des Bilds bei der Ausgabe"
 
@@ -1542,7 +1542,7 @@ msgid "Maintain aspect ratio with largest dimension"
 msgstr "Seitenverhältnis bzgl. größerer Abmessung beibehalten"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:436
-#: src/frontends/qt4/ui/GraphicsUi.ui:177
+#: src/frontends/qt4/ui/GraphicsUi.ui:199
 msgid "&Maintain aspect ratio"
 msgstr "Seiten&verhältnis beibehalten"
 
@@ -1551,17 +1551,15 @@ msgid "Crop"
 msgstr "Zuschneiden"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:474
-#: src/frontends/qt4/ui/GraphicsUi.ui:309
 msgid "Clip to bounding box values"
 msgstr "Auf die Werte der Begrenzungsbox zuschneiden"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:477
-#: src/frontends/qt4/ui/GraphicsUi.ui:312
 msgid "Clip to &bounding box"
 msgstr "Auf &Begrenzungsbox zuschneiden"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:484
-#: src/frontends/qt4/ui/GraphicsUi.ui:345
+#: src/frontends/qt4/ui/GraphicsUi.ui:390
 msgid "&Left bottom:"
 msgstr "&Links unten:"
 
@@ -1570,17 +1568,16 @@ msgid "x"
 msgstr "x"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:504
-#: src/frontends/qt4/ui/GraphicsUi.ui:383
+#: src/frontends/qt4/ui/GraphicsUi.ui:428
 msgid "Right &top:"
 msgstr "&Rechts oben:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:514
-#: src/frontends/qt4/ui/GraphicsUi.ui:437
 msgid "Get bounding box from the (EPS) file"
 msgstr "Begrenzungsbox aus der (EPS-)Datei ermitteln"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:517
-#: src/frontends/qt4/ui/GraphicsUi.ui:440
+#: src/frontends/qt4/ui/GraphicsUi.ui:485
 msgid "&Get from File"
 msgstr "L&ese aus Datei"
 
@@ -1920,98 +1917,120 @@ msgstr ""
 msgid "Output en- and &em-dashes as ligatures"
 msgstr "&Halbgeviert- und Geviertstriche als Ligaturen ausgeben"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:43
+#: src/frontends/qt4/ui/GraphicsUi.ui:51
 msgid "&Graphics"
 msgstr "&Grafik"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:55
+#: src/frontends/qt4/ui/GraphicsUi.ui:72
 msgid "Select an image file"
 msgstr "Wählen Sie eine Bilddatei"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:65
+#: src/frontends/qt4/ui/GraphicsUi.ui:82
 msgid "Output Size"
 msgstr "Ausgabegröße"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:141
+#: src/frontends/qt4/ui/GraphicsUi.ui:163
 msgid "Sets height of graphic. Leave unchecked to set automatically."
 msgstr ""
 "Legt die Höhe der Grafik fest. Falls nicht ausgewählt, wird die Höhe "
 "automatisch bestimmt."
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:144 src/frontends/qt4/GuiGraphics.cpp:481
+#: src/frontends/qt4/ui/GraphicsUi.ui:166 src/frontends/qt4/GuiGraphics.cpp:481
 msgid "Set &height:"
 msgstr "&Höhe festlegen:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:151
+#: src/frontends/qt4/ui/GraphicsUi.ui:173
 msgid "&Scale graphics (%):"
 msgstr "Grafik &skalieren (%):"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:161
+#: src/frontends/qt4/ui/GraphicsUi.ui:183
 msgid "Sets width of graphic. Leave unchecked to set automatically."
 msgstr ""
 "Legt die Breite der Grafik fest. Falls nicht ausgewählt, wird die Breite "
 "automatisch bestimmt."
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:164 src/frontends/qt4/GuiGraphics.cpp:480
+#: src/frontends/qt4/ui/GraphicsUi.ui:186 src/frontends/qt4/GuiGraphics.cpp:480
 msgid "Set &width:"
 msgstr "&Breite festlegen:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:174
+#: src/frontends/qt4/ui/GraphicsUi.ui:196
 msgid "Scale image to maximum size not exceeding width and height"
 msgstr ""
 "Skaliert die Grafik auf die maximale Größe, die weder Höhe noch Breite "
 "überschreitet"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:187
+#: src/frontends/qt4/ui/GraphicsUi.ui:209
 msgid "Rotate Graphics"
 msgstr "Grafik drehen"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:202
+#: src/frontends/qt4/ui/GraphicsUi.ui:233
 msgid "Check to change the order of rotating and scaling"
 msgstr ""
 "Wählen Sie dies, um die Reihenfolge von Rotieren und Skalieren zu ändern"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:205
+#: src/frontends/qt4/ui/GraphicsUi.ui:236
 msgid "Ro&tate after scaling"
 msgstr "&Rotieren nach dem Skalieren"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:222
+#: src/frontends/qt4/ui/GraphicsUi.ui:253
 msgid "Or&igin:"
 msgstr "Dreh&punkt:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:250
+#: src/frontends/qt4/ui/GraphicsUi.ui:279
 msgid "A&ngle (degrees):"
 msgstr "&Winkel (Grad):"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:263
-#: src/frontends/qt4/ui/GraphicsUi.ui:276
+#: src/frontends/qt4/ui/GraphicsUi.ui:292
+#: src/frontends/qt4/ui/GraphicsUi.ui:305
 msgid "File name of image"
 msgstr "Dateiname des Bilds"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:284
-msgid "&Clipping"
-msgstr "&Ausschnitt"
+#: src/frontends/qt4/ui/GraphicsUi.ui:313
+msgid "&Coordinates and Clipping"
+msgstr "&Ausschnitt und Koordinaten"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:393
-#: src/frontends/qt4/ui/GraphicsUi.ui:400
+#: src/frontends/qt4/ui/GraphicsUi.ui:347
+msgid ""
+"Clip to the coordinates specified below (bounding box for DVI/PS output, "
+"viewport for PDF output)"
+msgstr ""
+"Auf die unten spezifizierten Koordinaten zuschneiden (BoundingBox im Fall von"
+" DVI/PS-Ausgabe, "
+"Viewport im Fall von PDF-Ausgabe)"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:350
+msgid "Clip to c&oordinates"
+msgstr "Auf &Koordinaten zuschneiden"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:438
+#: src/frontends/qt4/ui/GraphicsUi.ui:445
 msgid "y:"
 msgstr "y:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:407
-#: src/frontends/qt4/ui/GraphicsUi.ui:414
+#: src/frontends/qt4/ui/GraphicsUi.ui:452
+#: src/frontends/qt4/ui/GraphicsUi.ui:459
 msgid "x:"
 msgstr "x:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:481
-#: src/frontends/qt4/ui/GraphicsUi.ui:488
+#: src/frontends/qt4/ui/GraphicsUi.ui:482
+msgid ""
+"Read coordinates from the file (bounding box value in case of PostScript "
+"files, graphic dimensions in case of other file types)"
+msgstr ""
+"Lese die Koordinaten aus der Datei (BoundingBox-Wert im Fall von"
+" PostScript-Dateien, "
+"Größe der Grafik im Fall anderer Dateitypen)"
+
+#: src/frontends/qt4/ui/GraphicsUi.ui:520
+#: src/frontends/qt4/ui/GraphicsUi.ui:527
 msgid "Additional LaTeX options"
 msgstr "Zusätzliche LaTeX-Optionen"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:491
+#: src/frontends/qt4/ui/GraphicsUi.ui:530
 msgid "LaTeX &options:"
 msgstr "LaTeX-O&ptionen:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:517
+#: src/frontends/qt4/ui/GraphicsUi.ui:556
 msgid ""
 "Enable LyX to preview this graphics, if graphics previewing is not disabled "
 "at application level (see Preferences dialog)."
@@ -2019,43 +2038,43 @@ msgstr ""
 "Vorschau für diese Grafik aktivieren (hierzu muss die Grafikvorschau in den "
 "Systemeinstellungen von LyX global aktiviert sein)."
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:520
+#: src/frontends/qt4/ui/GraphicsUi.ui:559
 msgid "Sho&w in LyX"
 msgstr "In L&yX anzeigen"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:559
+#: src/frontends/qt4/ui/GraphicsUi.ui:605
 msgid "Sca&le on screen (%):"
 msgstr "&Skalierung auf Bildschirm (%):"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:585
+#: src/frontends/qt4/ui/GraphicsUi.ui:631
 msgid "Assign the graphic to a group of graphics that share the same settings"
 msgstr "Grafik eine Grafikgruppe, die dieselben Einstellungen teilt, zuordnen."
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:588
+#: src/frontends/qt4/ui/GraphicsUi.ui:634
 msgid "Graphics Group"
 msgstr "Grafikgruppe"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:627
-msgid "A&ssigned to group:"
+#: src/frontends/qt4/ui/GraphicsUi.ui:680
+msgid "Assigned &to group:"
 msgstr "&Mitglied in Gruppe:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:637
+#: src/frontends/qt4/ui/GraphicsUi.ui:690
 msgid "Click to define a new graphics group."
 msgstr "Klicken Sie hier, um eine neue Grafikgruppe zu definieren."
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:640
+#: src/frontends/qt4/ui/GraphicsUi.ui:693
 msgid "O&pen new group..."
 msgstr "&Neue Gruppe eröffnen..."
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:647
+#: src/frontends/qt4/ui/GraphicsUi.ui:700
 msgid "Select an existing group for the current graphics."
 msgstr "Eine existierende Gruppe für die vorliegende Grafik wählen."
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:660
+#: src/frontends/qt4/ui/GraphicsUi.ui:713
 msgid "Draft mode"
 msgstr "Entwurfsmodus"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:663
+#: src/frontends/qt4/ui/GraphicsUi.ui:716
 msgid "&Draft mode"
 msgstr "&Entwurfsmodus"
 
@@ -5523,8 +5542,8 @@ msgstr "Nur Vorspann"
 msgid "Body Only"
 msgstr "Nur Haupttext"
 
-#: src/frontends/qt4/ui/WorkAreaUi.ui:82 src/frontends/qt4/GuiView.cpp:3192
-#: src/frontends/qt4/GuiView.cpp:3847
+#: src/frontends/qt4/ui/WorkAreaUi.ui:82 src/frontends/qt4/GuiView.cpp:3193
+#: src/frontends/qt4/GuiView.cpp:3848
 msgid "&Reload"
 msgstr "Ne&u laden"
 
@@ -7627,7 +7646,7 @@ msgstr "Zusätzliche Zugehörigkeit"
 #: lib/layouts/achemso.layout:127 lib/layouts/europasscv.layout:116
 #: lib/layouts/europecv.layout:93 lib/layouts/lettre.layout:46
 #: lib/layouts/lettre.layout:348 lib/layouts/moderncv.layout:170
-#: lib/layouts/scrlttr2.layout:196 lib/configure.py:733
+#: lib/layouts/scrlttr2.layout:196 lib/configure.py:742
 msgid "Fax"
 msgstr "Fax"
 
@@ -13055,7 +13074,7 @@ msgstr "Kolumne Autor"
 msgid "Running author:"
 msgstr "Kolumne Autor:"
 
-#: lib/layouts/knitr.module:2 lib/configure.py:643
+#: lib/layouts/knitr.module:2 lib/configure.py:652
 msgid "Rnw (knitr)"
 msgstr "Rnw (knitr)"
 
@@ -15871,7 +15890,7 @@ msgstr "Für Herausgeber"
 msgid "Springer SV Jour/PTRF"
 msgstr "Springer SV Jour/PTRF"
 
-#: lib/layouts/sweave.module:2 lib/configure.py:640
+#: lib/layouts/sweave.module:2 lib/configure.py:649
 msgid "Sweave"
 msgstr "Sweave"
 
@@ -18297,17 +18316,17 @@ msgid "Paragraph Break|B"
 msgstr "Absatzumbruch|b"
 
 #: lib/ui/stdcontext.inc:335 lib/ui/stdmenus.inc:106 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1376 src/mathed/InsetMathNest.cpp:564
+#: src/Text3.cpp:1378 src/mathed/InsetMathNest.cpp:564
 msgid "Cut"
 msgstr "Ausschneiden"
 
 #: lib/ui/stdcontext.inc:336 lib/ui/stdmenus.inc:107 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1381 src/mathed/InsetMathNest.cpp:573
+#: src/Text3.cpp:1383 src/mathed/InsetMathNest.cpp:573
 msgid "Copy"
 msgstr "Kopieren"
 
 #: lib/ui/stdcontext.inc:337 lib/ui/stdmenus.inc:108 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1322 src/mathed/InsetMathGrid.cpp:1581
+#: src/Text3.cpp:1324 src/mathed/InsetMathGrid.cpp:1581
 #: src/mathed/InsetMathNest.cpp:543
 msgid "Paste"
 msgstr "Einfügen"
@@ -19723,7 +19742,7 @@ msgstr "PDF-Formulare|o"
 msgid "Hazard and Precautionary Statements|H"
 msgstr "H- und P-Sätze|H"
 
-#: lib/ui/stdmenus.inc:637 lib/configure.py:640
+#: lib/ui/stdmenus.inc:637 lib/configure.py:649
 msgid "Sweave|S"
 msgstr "Sweave|S"
 
@@ -24595,478 +24614,478 @@ msgstr "Xfig-Abbildung"
 msgid "An Xfig figure.\n"
 msgstr "Eine Xfig-Abbildung.\n"
 
-#: lib/configure.py:589
+#: lib/configure.py:598
 msgid "tgo"
 msgstr "tgo"
 
-#: lib/configure.py:589
+#: lib/configure.py:598
 msgid "tgo|Tgif"
 msgstr "tgo|Tgif"
 
-#: lib/configure.py:592
+#: lib/configure.py:601
 msgid "FIG"
 msgstr "FIG"
 
-#: lib/configure.py:595
+#: lib/configure.py:604
 msgid "DIA"
 msgstr "DIA"
 
-#: lib/configure.py:598
+#: lib/configure.py:607
 msgid "sxd"
 msgstr "sxd"
 
-#: lib/configure.py:598
+#: lib/configure.py:607
 msgid "sxd|OpenDocument"
 msgstr "sxd|OpenDocument"
 
-#: lib/configure.py:601
+#: lib/configure.py:610
 msgid "Grace"
 msgstr "Grace"
 
-#: lib/configure.py:604
+#: lib/configure.py:613
 msgid "FEN"
 msgstr "FEN"
 
-#: lib/configure.py:607
+#: lib/configure.py:616
 msgid "SVG"
 msgstr "SVG"
 
-#: lib/configure.py:608
+#: lib/configure.py:617
 msgid "SVG (compressed)"
 msgstr "SVG (komprimiert)"
 
-#: lib/configure.py:611
+#: lib/configure.py:620
 msgid "BMP"
 msgstr "BMP"
 
-#: lib/configure.py:612
+#: lib/configure.py:621
 msgid "GIF"
 msgstr "GIF"
 
-#: lib/configure.py:613
+#: lib/configure.py:622
 msgid "jpeg"
 msgstr "jpeg"
 
-#: lib/configure.py:613
+#: lib/configure.py:622
 msgid "jpeg|JPEG"
 msgstr "jpeg|JPEG"
 
-#: lib/configure.py:614
+#: lib/configure.py:623
 msgid "PBM"
 msgstr "PBM"
 
-#: lib/configure.py:615
+#: lib/configure.py:624
 msgid "PGM"
 msgstr "PGM"
 
-#: lib/configure.py:616 src/frontends/qt4/GuiClipboard.cpp:176
+#: lib/configure.py:625 src/frontends/qt4/GuiClipboard.cpp:176
 msgid "PNG"
 msgstr "PNG"
 
-#: lib/configure.py:617
+#: lib/configure.py:626
 msgid "PPM"
 msgstr "PPM"
 
-#: lib/configure.py:618
+#: lib/configure.py:627
 msgid "TIFF"
 msgstr "TIFF"
 
-#: lib/configure.py:619
+#: lib/configure.py:628
 msgid "XBM"
 msgstr "XBM"
 
-#: lib/configure.py:620
+#: lib/configure.py:629
 msgid "XPM"
 msgstr "XPM"
 
-#: lib/configure.py:633
+#: lib/configure.py:642
 msgid "Plain text (chess output)"
 msgstr "Einfacher Text (Schach)"
 
-#: lib/configure.py:634 src/frontends/qt4/GuiDocument.cpp:1353
+#: lib/configure.py:643 src/frontends/qt4/GuiDocument.cpp:1353
 #: src/frontends/qt4/GuiErrorList.cpp:45
 msgid "DocBook"
 msgstr "DocBook"
 
-#: lib/configure.py:634
+#: lib/configure.py:643
 msgid "DocBook|B"
 msgstr "DocBook|B"
 
-#: lib/configure.py:635
+#: lib/configure.py:644
 msgid "DocBook (XML)"
 msgstr "DocBook (XML)"
 
-#: lib/configure.py:636
+#: lib/configure.py:645
 msgid "Graphviz Dot"
 msgstr "Graphviz Dot"
 
-#: lib/configure.py:637
+#: lib/configure.py:646
 msgid "LaTeX (dviluatex)"
 msgstr "LaTeX (dviluatex)"
 
-#: lib/configure.py:638
+#: lib/configure.py:647
 msgid "LaTeX (pLaTeX)"
 msgstr "LaTeX (pLaTeX)"
 
-#: lib/configure.py:639
+#: lib/configure.py:648
 msgid "NoWeb"
 msgstr "NoWeb"
 
-#: lib/configure.py:639
+#: lib/configure.py:648
 msgid "NoWeb|N"
 msgstr "NoWeb|N"
 
-#: lib/configure.py:641
+#: lib/configure.py:650
 msgid "Sweave (Japanese)"
 msgstr "Sweave (Japanisch)"
 
-#: lib/configure.py:641
+#: lib/configure.py:650
 msgid "Sweave (Japanese)|S"
 msgstr "Sweave (Japanisch)|S"
 
-#: lib/configure.py:642
+#: lib/configure.py:651
 msgid "R/S code"
 msgstr "R/S-Code"
 
-#: lib/configure.py:644
+#: lib/configure.py:653
 msgid "Rnw (knitr, Japanese)"
 msgstr "Rnw (knitr, Japanisch)"
 
-#: lib/configure.py:645
+#: lib/configure.py:654
 msgid "LilyPond music"
 msgstr "LilyPond-Musik"
 
-#: lib/configure.py:646
+#: lib/configure.py:655
 msgid "LilyPond book (LaTeX)"
 msgstr "LilyPond-Buch (LaTeX)"
 
-#: lib/configure.py:647
+#: lib/configure.py:656
 msgid "LilyPond book (pLaTeX)"
 msgstr "LilyPond-Buch (pLaTeX)"
 
-#: lib/configure.py:648
+#: lib/configure.py:657
 msgid "LaTeX (plain)"
 msgstr "LaTeX (normal)"
 
-#: lib/configure.py:648
+#: lib/configure.py:657
 msgid "LaTeX (plain)|L"
 msgstr "LaTeX (normal)|L"
 
-#: lib/configure.py:649
+#: lib/configure.py:658
 msgid "LaTeX (LuaTeX)"
 msgstr "LaTeX (LuaTeX)"
 
-#: lib/configure.py:650
+#: lib/configure.py:659
 msgid "LaTeX (pdflatex)"
 msgstr "LaTeX (pdflatex)"
 
-#: lib/configure.py:651
+#: lib/configure.py:660
 msgid "LaTeX (XeTeX)"
 msgstr "LaTeX (XeTeX)"
 
-#: lib/configure.py:652
+#: lib/configure.py:661
 msgid "LaTeX (clipboard)"
 msgstr "LaTeX (Zwischenablage)"
 
-#: lib/configure.py:653
+#: lib/configure.py:662
 msgid "Plain text"
 msgstr "Einfacher Text"
 
-#: lib/configure.py:653
+#: lib/configure.py:662
 msgid "Plain text|a"
 msgstr "Einfacher Text|T"
 
-#: lib/configure.py:654
+#: lib/configure.py:663
 msgid "Plain text (pstotext)"
 msgstr "Einfacher Text (pstotext)"
 
-#: lib/configure.py:655
+#: lib/configure.py:664
 msgid "Plain text (ps2ascii)"
 msgstr "Einfacher Text (ps2ascii)"
 
-#: lib/configure.py:656
+#: lib/configure.py:665
 msgid "Plain text (catdvi)"
 msgstr "Einfacher Text (catdvi)"
 
-#: lib/configure.py:657
+#: lib/configure.py:666
 msgid "Plain Text, Join Lines"
 msgstr "Einfacher Text, Zeilen verbinden"
 
-#: lib/configure.py:658
+#: lib/configure.py:667
 msgid "Info (Beamer)"
 msgstr "Info (Beamer)"
 
-#: lib/configure.py:661
+#: lib/configure.py:670
 msgid "Gnumeric spreadsheet"
 msgstr "Gnumeric-Tabelle"
 
-#: lib/configure.py:662
+#: lib/configure.py:671
 msgid "Excel spreadsheet"
 msgstr "Excel-Tabelle"
 
-#: lib/configure.py:663
+#: lib/configure.py:672
 msgid "MS Excel Office Open XML"
 msgstr "MS-Excel Office-Open XML"
 
-#: lib/configure.py:664
+#: lib/configure.py:673
 msgid "HTML Table (for spreadsheets)"
 msgstr "HTML-Tabelle (für Tabellenkalkulation)"
 
-#: lib/configure.py:665
+#: lib/configure.py:674
 msgid "OpenDocument spreadsheet"
 msgstr "OpenDocument-Tabelle"
 
-#: lib/configure.py:668
+#: lib/configure.py:677
 msgid "LyXHTML"
 msgstr "LyX-HTML"
 
-#: lib/configure.py:668
+#: lib/configure.py:677
 msgid "LyXHTML|y"
 msgstr "LyXHTML|y"
 
-#: lib/configure.py:676 src/frontends/qt4/GuiLog.cpp:252
+#: lib/configure.py:685 src/frontends/qt4/GuiLog.cpp:252
 #: src/insets/InsetBibtex.cpp:155
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: lib/configure.py:684
+#: lib/configure.py:693
 msgid "EPS"
 msgstr "EPS"
 
-#: lib/configure.py:685
+#: lib/configure.py:694
 msgid "EPS (uncropped)"
 msgstr "EPS (unbeschnitten)"
 
-#: lib/configure.py:686
+#: lib/configure.py:695
 msgid "EPS (cropped)"
 msgstr "EPS (beschnitten)"
 
-#: lib/configure.py:687
+#: lib/configure.py:696
 msgid "Postscript"
 msgstr "Postscript"
 
-#: lib/configure.py:687
+#: lib/configure.py:696
 msgid "Postscript|t"
 msgstr "Postscript|c"
 
-#: lib/configure.py:696
+#: lib/configure.py:705
 msgid "PDF (ps2pdf)"
 msgstr "PDF (ps2pdf)"
 
-#: lib/configure.py:696
+#: lib/configure.py:705
 msgid "PDF (ps2pdf)|P"
 msgstr "PDF (ps2pdf)|P"
 
-#: lib/configure.py:697
+#: lib/configure.py:706
 msgid "PDF (pdflatex)"
 msgstr "PDF (pdflatex)"
 
-#: lib/configure.py:697
+#: lib/configure.py:706
 msgid "PDF (pdflatex)|F"
 msgstr "PDF (pdflatex)|F"
 
-#: lib/configure.py:698
+#: lib/configure.py:707
 msgid "PDF (dvipdfm)"
 msgstr "PDF (dvipdfm)"
 
-#: lib/configure.py:698
+#: lib/configure.py:707
 msgid "PDF (dvipdfm)|m"
 msgstr "PDF (dvipdfm)|m"
 
-#: lib/configure.py:699
+#: lib/configure.py:708
 msgid "PDF (XeTeX)"
 msgstr "PDF (XeTeX)"
 
-#: lib/configure.py:699
+#: lib/configure.py:708
 msgid "PDF (XeTeX)|X"
 msgstr "PDF (XeTeX)|X"
 
-#: lib/configure.py:700
+#: lib/configure.py:709
 msgid "PDF (LuaTeX)"
 msgstr "PDF (LuaTeX)"
 
-#: lib/configure.py:700
+#: lib/configure.py:709
 msgid "PDF (LuaTeX)|u"
 msgstr "PDF (LuaTeX)|u"
 
-#: lib/configure.py:701
+#: lib/configure.py:710
 msgid "PDF (graphics)"
 msgstr "PDF (Grafik)"
 
-#: lib/configure.py:702
+#: lib/configure.py:711
 msgid "PDF (cropped)"
 msgstr "PDF (beschnitten)"
 
-#: lib/configure.py:703
+#: lib/configure.py:712
 msgid "PDF (lower resolution)"
 msgstr "PDF (verringerte Auflösung)"
 
-#: lib/configure.py:708
+#: lib/configure.py:717
 msgid "DVI"
 msgstr "DVI"
 
-#: lib/configure.py:708
+#: lib/configure.py:717
 msgid "DVI|D"
 msgstr "DVI|D"
 
-#: lib/configure.py:709
+#: lib/configure.py:718
 msgid "DVI (LuaTeX)"
 msgstr "DVI (LuaTeX)"
 
-#: lib/configure.py:709
+#: lib/configure.py:718
 msgid "DVI (LuaTeX)|V"
 msgstr "DVI (LuaTeX)|V"
 
-#: lib/configure.py:712
+#: lib/configure.py:721
 msgid "DraftDVI"
 msgstr "DraftDVI"
 
-#: lib/configure.py:715 lib/configure.py:751
+#: lib/configure.py:724 lib/configure.py:760
 msgid "htm"
 msgstr "htm"
 
-#: lib/configure.py:715 lib/configure.py:751
+#: lib/configure.py:724 lib/configure.py:760
 msgid "htm|HTML"
 msgstr "htm|HTML"
 
-#: lib/configure.py:718
+#: lib/configure.py:727
 msgid "Noteedit"
 msgstr "Noteedit"
 
-#: lib/configure.py:721
+#: lib/configure.py:730
 msgid "OpenDocument (tex4ht)"
 msgstr "OpenDocument (tex4ht)"
 
-#: lib/configure.py:722
+#: lib/configure.py:731
 msgid "OpenDocument (eLyXer)"
 msgstr "OpenDocument (eLyXer)"
 
-#: lib/configure.py:723
+#: lib/configure.py:732
 msgid "OpenDocument (Pandoc)"
 msgstr "OpenDocument (Pandoc)"
 
-#: lib/configure.py:724
+#: lib/configure.py:733
 msgid "OpenOffice.Org (sxw)"
 msgstr "OpenOffice.org (sxw)"
 
-#: lib/configure.py:727
+#: lib/configure.py:736
 msgid "Rich Text Format"
 msgstr "Rich-Text-Format"
 
-#: lib/configure.py:728
+#: lib/configure.py:737
 msgid "MS Word"
 msgstr "MS Word"
 
-#: lib/configure.py:728
+#: lib/configure.py:737
 msgid "MS Word|W"
 msgstr "MS Word|W"
 
-#: lib/configure.py:729
+#: lib/configure.py:738
 msgid "MS Word Office Open XML"
 msgstr "MS-Word Office-Open XML"
 
-#: lib/configure.py:729
+#: lib/configure.py:738
 msgid "MS Word Office Open XML|O"
 msgstr "MS-Word Office-Open XML"
 
-#: lib/configure.py:732
+#: lib/configure.py:741
 msgid "Table (CSV)"
 msgstr "Tabelle (CSV)"
 
-#: lib/configure.py:734 src/frontends/qt4/GuiView.cpp:1365
+#: lib/configure.py:743 src/frontends/qt4/GuiView.cpp:1365
 #: src/mathed/InsetMathMacroTemplate.cpp:541
 msgid "LyX"
 msgstr "LyX"
 
-#: lib/configure.py:735
+#: lib/configure.py:744
 msgid "LyX 1.3.x"
 msgstr "LyX 1.3.x"
 
-#: lib/configure.py:736
+#: lib/configure.py:745
 msgid "LyX 1.4.x"
 msgstr "LyX 1.4.x"
 
-#: lib/configure.py:737
+#: lib/configure.py:746
 msgid "LyX 1.5.x"
 msgstr "LyX 1.5.x"
 
-#: lib/configure.py:738
+#: lib/configure.py:747
 msgid "LyX 1.6.x"
 msgstr "LyX 1.6.x"
 
-#: lib/configure.py:739
+#: lib/configure.py:748
 msgid "LyX 2.0.x"
 msgstr "LyX 2.0.x"
 
-#: lib/configure.py:740
+#: lib/configure.py:749
 msgid "LyX 2.1.x"
 msgstr "LyX 2.1.x"
 
-#: lib/configure.py:741
+#: lib/configure.py:750
 msgid "LyX 2.2.x"
 msgstr "LyX 2.2.x"
 
-#: lib/configure.py:742
+#: lib/configure.py:751
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK-LyX 1.4.x (big5)"
 
-#: lib/configure.py:743
+#: lib/configure.py:752
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr "CJK-LyX 1.4.x (euc-jp)"
 
-#: lib/configure.py:744
+#: lib/configure.py:753
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr "CJK-LyX 1.4.x (euc-kr)"
 
-#: lib/configure.py:745
+#: lib/configure.py:754
 msgid "LyX Preview"
 msgstr "LyX-Vorschau"
 
-#: lib/configure.py:746
+#: lib/configure.py:755
 msgid "pdf_tex"
 msgstr "pdf_tex"
 
-#: lib/configure.py:746
+#: lib/configure.py:755
 msgid "pdf_tex|PDFTEX"
 msgstr "pdf_tex|PDFTEX"
 
-#: lib/configure.py:747
+#: lib/configure.py:756
 msgid "Program"
 msgstr "Programm"
 
-#: lib/configure.py:748
+#: lib/configure.py:757
 msgid "ps_tex"
 msgstr "ps_tex"
 
-#: lib/configure.py:748
+#: lib/configure.py:757
 msgid "ps_tex|PSTEX"
 msgstr "ps_tex|PSTEX"
 
-#: lib/configure.py:749 src/frontends/qt4/GuiClipboard.cpp:173
+#: lib/configure.py:758 src/frontends/qt4/GuiClipboard.cpp:173
 msgid "Windows Metafile"
 msgstr "Windows Metafile"
 
-#: lib/configure.py:750 src/frontends/qt4/GuiClipboard.cpp:172
+#: lib/configure.py:759 src/frontends/qt4/GuiClipboard.cpp:172
 msgid "Enhanced Metafile"
 msgstr "Erweiterte Metadatei"
 
-#: lib/configure.py:870
+#: lib/configure.py:879
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
 
-#: lib/configure.py:1071
+#: lib/configure.py:1080
 msgid "gnuplot"
 msgstr "gnuplot"
 
-#: lib/configure.py:1071
+#: lib/configure.py:1080
 msgid "gnuplot|Gnuplot"
 msgstr "gnuplot|Gnuplot"
 
-#: lib/configure.py:1144
+#: lib/configure.py:1153
 msgid "LyX Archive (zip)"
 msgstr "LyX-Archiv (zip)"
 
-#: lib/configure.py:1147
+#: lib/configure.py:1156
 msgid "LyX Archive (tar.gz)"
 msgstr "LyX-Archiv (tar.gz)"
 
@@ -25242,7 +25261,7 @@ msgstr ""
 "%1$s stammt von einer neueren LyX-Version, aber das lyx2lyx-Skript konnte "
 "das Dokument nicht konvertieren."
 
-#: src/Buffer.cpp:1389 src/Buffer.cpp:4552 src/Buffer.cpp:4615
+#: src/Buffer.cpp:1389 src/Buffer.cpp:4556 src/Buffer.cpp:4619
 msgid "File is read-only"
 msgstr "Datei ist schreibgeschützt"
 
@@ -25492,12 +25511,12 @@ msgstr "Fehler bei der Ansicht der Ausgabedatei."
 
 #: src/Buffer.cpp:3196 src/frontends/qt4/GuiView.cpp:2279
 #: src/frontends/qt4/Validator.cpp:222 src/insets/ExternalSupport.cpp:386
-#: src/insets/InsetGraphics.cpp:613 src/insets/InsetInclude.cpp:551
+#: src/insets/InsetGraphics.cpp:615 src/insets/InsetInclude.cpp:551
 msgid "Invalid filename"
 msgstr "Ungültiger Dateiname"
 
 #: src/Buffer.cpp:3197 src/insets/ExternalSupport.cpp:387
-#: src/insets/InsetGraphics.cpp:614 src/insets/InsetInclude.cpp:552
+#: src/insets/InsetGraphics.cpp:616 src/insets/InsetInclude.cpp:552
 msgid ""
 "The following filename will cause troubles when running the exported file "
 "through LaTeX: "
@@ -25506,12 +25525,12 @@ msgstr ""
 "exportierten Datei ausgeführt wird: "
 
 #: src/Buffer.cpp:3202 src/insets/ExternalSupport.cpp:392
-#: src/insets/InsetGraphics.cpp:621 src/insets/InsetInclude.cpp:556
+#: src/insets/InsetGraphics.cpp:623 src/insets/InsetInclude.cpp:556
 msgid "Problematic filename for DVI"
 msgstr "Problematischer Dateiname für DVI"
 
 #: src/Buffer.cpp:3203 src/insets/ExternalSupport.cpp:393
-#: src/insets/InsetGraphics.cpp:622 src/insets/InsetInclude.cpp:557
+#: src/insets/InsetGraphics.cpp:624 src/insets/InsetInclude.cpp:557
 msgid ""
 "The following filename can cause troubles when running the exported file "
 "through LaTeX and opening the resulting DVI: "
@@ -25531,77 +25550,77 @@ msgstr ""
 "Die Pfade zu Ihren BibTeX-Datenbanken enthalten Leerzeichen.\n"
 "BiBTeX wird die Datenbanken nicht finden."
 
-#: src/Buffer.cpp:3860
+#: src/Buffer.cpp:3864
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Quellcode für Absatz %1$d vorschauen"
 
-#: src/Buffer.cpp:3864
+#: src/Buffer.cpp:3868
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Quellcode von Absatz %1$s bis %2$s vorschauen"
 
-#: src/Buffer.cpp:3916
+#: src/Buffer.cpp:3920
 msgid "Preview source code"
 msgstr "Quellcode vorschauen"
 
-#: src/Buffer.cpp:3918
+#: src/Buffer.cpp:3922
 msgid "Preview preamble"
 msgstr "Vorschau des Vorspanns"
 
-#: src/Buffer.cpp:3920
+#: src/Buffer.cpp:3924
 msgid "Preview body"
 msgstr "Vorschau des Haupttextes"
 
-#: src/Buffer.cpp:3935
+#: src/Buffer.cpp:3939
 msgid "Plain text does not have a preamble."
 msgstr "Einfacher Text hat keinen Vorspann."
 
-#: src/Buffer.cpp:4040
+#: src/Buffer.cpp:4044
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Automatische Speicherung von %1$s"
 
-#: src/Buffer.cpp:4096
+#: src/Buffer.cpp:4100
 msgid "Autosave failed!"
 msgstr "Die automatische Speicherung ist fehlgeschlagen!"
 
-#: src/Buffer.cpp:4157
+#: src/Buffer.cpp:4161
 msgid "Autosaving current document..."
 msgstr "Automatisches Speichern des aktuellen Dokuments..."
 
-#: src/Buffer.cpp:4282
+#: src/Buffer.cpp:4286
 msgid "Couldn't export file"
 msgstr "Die Datei konnte nicht exportiert werden"
 
-#: src/Buffer.cpp:4283
+#: src/Buffer.cpp:4287
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Keine Informationen vorhanden, um das Format %1$s zu exportieren."
 
-#: src/Buffer.cpp:4344 src/frontends/qt4/GuiView.cpp:2423
+#: src/Buffer.cpp:4348 src/frontends/qt4/GuiView.cpp:2423
 msgid "File name error"
 msgstr "Fehler im Dateinamen"
 
-#: src/Buffer.cpp:4345
+#: src/Buffer.cpp:4349
 msgid "The directory path to the document cannot contain spaces."
 msgstr "Der Verzeichnispfad zum Dokument darf keine Leerzeichen enthalten."
 
-#: src/Buffer.cpp:4445 src/Buffer.cpp:4459 src/frontends/qt4/GuiView.cpp:690
+#: src/Buffer.cpp:4449 src/Buffer.cpp:4463 src/frontends/qt4/GuiView.cpp:690
 msgid "Document export cancelled."
 msgstr "Der Export des Dokuments wurde abgebrochen."
 
-#: src/Buffer.cpp:4462
+#: src/Buffer.cpp:4466
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Dokument als %1$s in die Datei ,%2$s` exportiert"
 
-#: src/Buffer.cpp:4469
+#: src/Buffer.cpp:4473
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Dokument als %1$s exportiert"
 
-#: src/Buffer.cpp:4538
+#: src/Buffer.cpp:4542
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -25612,19 +25631,19 @@ msgstr ""
 "\n"
 "Soll die Notspeicherung wiederhergestellt werden?"
 
-#: src/Buffer.cpp:4541
+#: src/Buffer.cpp:4545
 msgid "Load emergency save?"
 msgstr "Notspeicherung laden?"
 
-#: src/Buffer.cpp:4542
+#: src/Buffer.cpp:4546
 msgid "&Recover"
 msgstr "&Wiederherstellen"
 
-#: src/Buffer.cpp:4542
+#: src/Buffer.cpp:4546
 msgid "&Load Original"
 msgstr "&Original laden"
 
-#: src/Buffer.cpp:4553
+#: src/Buffer.cpp:4557
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -25634,15 +25653,15 @@ msgstr ""
 "%1$s ist schreibgeschützt.\n"
 "Bitte speichern Sie die Datei unter einem neuen Namen."
 
-#: src/Buffer.cpp:4560
+#: src/Buffer.cpp:4564
 msgid "Document was successfully recovered."
 msgstr "Dokument wurde erfolgreich wiederhergestellt."
 
-#: src/Buffer.cpp:4562
+#: src/Buffer.cpp:4566
 msgid "Document was NOT successfully recovered."
 msgstr "Dokument wurde NICHT erfolgreich wiederhergestellt."
 
-#: src/Buffer.cpp:4563
+#: src/Buffer.cpp:4567
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -25652,27 +25671,27 @@ msgstr ""
 "%1$s\n"
 "jetzt löschen?"
 
-#: src/Buffer.cpp:4567 src/Buffer.cpp:4579
+#: src/Buffer.cpp:4571 src/Buffer.cpp:4583
 msgid "Delete emergency file?"
 msgstr "Notspeicherung löschen?"
 
-#: src/Buffer.cpp:4568 src/Buffer.cpp:4581
+#: src/Buffer.cpp:4572 src/Buffer.cpp:4585
 msgid "&Keep"
 msgstr "&Behalten"
 
-#: src/Buffer.cpp:4572
+#: src/Buffer.cpp:4576
 msgid "Emergency file deleted"
 msgstr "Notspeicherung gelöscht"
 
-#: src/Buffer.cpp:4573
+#: src/Buffer.cpp:4577
 msgid "Do not forget to save your file now!"
 msgstr "Vergessen Sie nicht, ihre Datei jetzt zu speichern!"
 
-#: src/Buffer.cpp:4580
+#: src/Buffer.cpp:4584
 msgid "Remove emergency file now?"
 msgstr "Notspeicherungsdatei jetzt löschen?"
 
-#: src/Buffer.cpp:4603
+#: src/Buffer.cpp:4607
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -25683,19 +25702,19 @@ msgstr ""
 "\n"
 "Stattdessen die Sicherung laden?"
 
-#: src/Buffer.cpp:4605
+#: src/Buffer.cpp:4609
 msgid "Load backup?"
 msgstr "Sicherung laden?"
 
-#: src/Buffer.cpp:4606
+#: src/Buffer.cpp:4610
 msgid "&Load backup"
 msgstr "&Sicherung laden"
 
-#: src/Buffer.cpp:4606
+#: src/Buffer.cpp:4610
 msgid "Load &original"
 msgstr "&Original laden"
 
-#: src/Buffer.cpp:4616
+#: src/Buffer.cpp:4620
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -25705,16 +25724,16 @@ msgstr ""
 "%1$s ist schreibgeschützt.\n"
 "Bitte speichern Sie die Datei unter einem neuen Namen."
 
-#: src/Buffer.cpp:4949 src/insets/InsetCaption.cpp:382
+#: src/Buffer.cpp:4953 src/insets/InsetCaption.cpp:382
 msgid "Senseless!!! "
 msgstr "Sinnlos!!! "
 
-#: src/Buffer.cpp:5171
+#: src/Buffer.cpp:5175
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Dokument %1$s neu geladen."
 
-#: src/Buffer.cpp:5174
+#: src/Buffer.cpp:5178
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Kann Dokument %1$s nicht neu laden."
@@ -25861,7 +25880,7 @@ msgstr ""
 "Wählen Sie eine passende Kodierung (bspw. utf8)\n"
 "oder ändern Sie den LaTeX-Code im Vorspann."
 
-#: src/BufferParams.cpp:2437
+#: src/BufferParams.cpp:2438
 #, c-format
 msgid ""
 "The layout file:\n"
@@ -25876,11 +25895,11 @@ msgstr ""
 "Formaten wird benutzt werden. LyX wird nicht in der Lage sein eine korrekte\n"
 "Ausgabe zu erzeugen."
 
-#: src/BufferParams.cpp:2443
+#: src/BufferParams.cpp:2444
 msgid "Document class not found"
 msgstr "Dokumentklasse nicht gefunden"
 
-#: src/BufferParams.cpp:2450
+#: src/BufferParams.cpp:2451
 #, c-format
 msgid ""
 "Due to some error in it, the layout file:\n"
@@ -25895,15 +25914,15 @@ msgstr ""
 "korrekte\n"
 "Ausgabe erzeugen können."
 
-#: src/BufferParams.cpp:2456 src/BufferView.cpp:1320 src/BufferView.cpp:1352
+#: src/BufferParams.cpp:2457 src/BufferView.cpp:1320 src/BufferView.cpp:1352
 msgid "Could not load class"
 msgstr "Konnte Klasse nicht laden"
 
-#: src/BufferParams.cpp:2509
+#: src/BufferParams.cpp:2510
 msgid "Error reading internal layout information"
 msgstr "Fehler beim Einlesen interner Format-Informationen"
 
-#: src/BufferParams.cpp:2510 src/TextClass.cpp:1704 src/TextClass.cpp:1739
+#: src/BufferParams.cpp:2511 src/TextClass.cpp:1704 src/TextClass.cpp:1739
 msgid "Read Error"
 msgstr "Lesefehler"
 
@@ -25932,7 +25951,7 @@ msgid "This portion of the document is deleted."
 msgstr "Dieser Teil des Dokuments wird gelöscht."
 
 #: src/BufferView.cpp:1100 src/BufferView.cpp:2048
-#: src/frontends/qt4/GuiView.cpp:3730 src/frontends/qt4/GuiView.cpp:3808
+#: src/frontends/qt4/GuiView.cpp:3731 src/frontends/qt4/GuiView.cpp:3809
 msgid "Absolute filename expected."
 msgstr "Ein absoluter Dateipfad wird erwartet."
 
@@ -26926,7 +26945,7 @@ msgstr "Nummer %1$s"
 msgid "Cannot view file"
 msgstr "Die Datei kann nicht betrachtet werden."
 
-#: src/Format.cpp:669 src/Format.cpp:739 src/frontends/qt4/GuiView.cpp:3459
+#: src/Format.cpp:669 src/Format.cpp:739 src/frontends/qt4/GuiView.cpp:3460
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "Die Datei existiert nicht: %1$s"
@@ -27986,7 +28005,7 @@ msgstr "LyX-VK: Protokollmeldung"
 msgid "(no log message)"
 msgstr "(keine Protokollmeldung)"
 
-#: src/LyXVC.cpp:246 src/frontends/qt4/GuiView.cpp:3317
+#: src/LyXVC.cpp:246 src/frontends/qt4/GuiView.cpp:3318
 msgid "LyX VC: Log Message"
 msgstr "LyX VK: Protokollmeldung"
 
@@ -28007,7 +28026,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Zur gespeicherten Version des Dokuments zurückkehren?"
 
-#: src/LyXVC.cpp:304 src/frontends/qt4/GuiView.cpp:3854
+#: src/LyXVC.cpp:304 src/frontends/qt4/GuiView.cpp:3855
 msgid "&Revert"
 msgstr "&Wiederherstellen"
 
@@ -28148,27 +28167,27 @@ msgstr "Bereits im Regexp-Modus"
 msgid "Regexp editor mode"
 msgstr "Regexp-Editor-Modus"
 
-#: src/Text3.cpp:1441
+#: src/Text3.cpp:1443
 msgid "Layout "
 msgstr "Format "
 
-#: src/Text3.cpp:1442
+#: src/Text3.cpp:1444
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/Text3.cpp:2074 src/frontends/qt4/GuiApplication.cpp:1714
+#: src/Text3.cpp:2077 src/frontends/qt4/GuiApplication.cpp:1707
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
-#: src/Text3.cpp:2226 src/Text3.cpp:2238
+#: src/Text3.cpp:2229 src/Text3.cpp:2241
 msgid "Character set"
 msgstr "Zeichensatz"
 
-#: src/Text3.cpp:2391
+#: src/Text3.cpp:2394
 msgid "Path to thesaurus directory not set!"
 msgstr "Pfad zum Thesaurus-Wörterbuch nicht festlegt!"
 
-#: src/Text3.cpp:2392
+#: src/Text3.cpp:2395
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -28180,7 +28199,7 @@ msgstr ""
 "Im Benutzerhandbuch, Abschnitt 6.15.11, finden Sie Hinweise,\n"
 "um den Thesaurus einzurichten."
 
-#: src/Text3.cpp:2459 src/Text3.cpp:2470
+#: src/Text3.cpp:2462 src/Text3.cpp:2473
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
@@ -28348,7 +28367,7 @@ msgstr "Nomenklatureinträge"
 #: src/VCBackend.cpp:927 src/VCBackend.cpp:986 src/VCBackend.cpp:1045
 #: src/VCBackend.cpp:1053 src/VCBackend.cpp:1354 src/VCBackend.cpp:1456
 #: src/VCBackend.cpp:1462 src/VCBackend.cpp:1485 src/VCBackend.cpp:1971
-#: src/frontends/qt4/GuiView.cpp:3235 src/frontends/qt4/GuiView.cpp:3279
+#: src/frontends/qt4/GuiView.cpp:3236 src/frontends/qt4/GuiView.cpp:3280
 msgid "Revision control error."
 msgstr "Fehler der Versionskontrolle."
 
@@ -28611,7 +28630,7 @@ msgstr ""
 "Möchten Sie die Änderungen verwerfen und zur gespeicherten Version "
 "zurückkehren?"
 
-#: src/buffer_funcs.cpp:77 src/frontends/qt4/GuiView.cpp:3845
+#: src/buffer_funcs.cpp:77 src/frontends/qt4/GuiView.cpp:3846
 msgid "Reload saved document?"
 msgstr "Gespeichertes Dokument neu laden?"
 
@@ -28973,51 +28992,51 @@ msgstr ""
 msgid "Exiting."
 msgstr "LyX wird beendet."
 
-#: src/frontends/qt4/GuiApplication.cpp:1726
+#: src/frontends/qt4/GuiApplication.cpp:1719
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Hilfe-Datei %1$s wird geöffnet..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1740
+#: src/frontends/qt4/GuiApplication.cpp:1733
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntax: set-color <lyx_name> <x11_name>"
 
-#: src/frontends/qt4/GuiApplication.cpp:1756
+#: src/frontends/qt4/GuiApplication.cpp:1749
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\" ist fehlgeschlagen -- die Farbe ist nicht definiert oder "
 "darf nicht umdefiniert werden."
 
-#: src/frontends/qt4/GuiApplication.cpp:1860
+#: src/frontends/qt4/GuiApplication.cpp:1853
 #, c-format
 msgid "Cannot iterate more than %1$d times"
 msgstr "Mehr als %1$d Wiederholungen sind nicht möglich."
 
-#: src/frontends/qt4/GuiApplication.cpp:1958
+#: src/frontends/qt4/GuiApplication.cpp:1951
 #, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
 msgstr "Der Befehl \"%1$s\" wurde auf %2$d Dateien (Pufferspeicher) angewandt"
 
-#: src/frontends/qt4/GuiApplication.cpp:2033
+#: src/frontends/qt4/GuiApplication.cpp:2026
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Dokument-Standardeinstellungen gespeichert in %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:2037
+#: src/frontends/qt4/GuiApplication.cpp:2030
 msgid "Unable to save document defaults"
 msgstr "Die Dokument-Standardeinstellungen können nicht gespeichert werden"
 
-#: src/frontends/qt4/GuiApplication.cpp:2241
-#: src/frontends/qt4/GuiApplication.cpp:2256
+#: src/frontends/qt4/GuiApplication.cpp:2234
+#: src/frontends/qt4/GuiApplication.cpp:2249
 msgid "Unknown function."
 msgstr "Unbekannte Funktion."
 
-#: src/frontends/qt4/GuiApplication.cpp:2734
+#: src/frontends/qt4/GuiApplication.cpp:2727
 msgid "The current document was closed."
 msgstr "Das aktuelle Dokument wurde geschlossen."
 
-#: src/frontends/qt4/GuiApplication.cpp:2744
+#: src/frontends/qt4/GuiApplication.cpp:2737
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -29029,12 +29048,12 @@ msgstr ""
 "\n"
 "Exception: "
 
-#: src/frontends/qt4/GuiApplication.cpp:2748
-#: src/frontends/qt4/GuiApplication.cpp:2754
+#: src/frontends/qt4/GuiApplication.cpp:2741
+#: src/frontends/qt4/GuiApplication.cpp:2747
 msgid "Software exception Detected"
 msgstr "Softwareausnahme erkannt"
 
-#: src/frontends/qt4/GuiApplication.cpp:2752
+#: src/frontends/qt4/GuiApplication.cpp:2745
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -29042,12 +29061,12 @@ msgstr ""
 "LyX hat einen ziemlich seltsamen Fehler entdeckt. Das Programm wird jetzt "
 "versuchen, alle ungespeicherten Dateien zu speichern, und dann beendet."
 
-#: src/frontends/qt4/GuiApplication.cpp:3044
-#: src/frontends/qt4/GuiApplication.cpp:3056
+#: src/frontends/qt4/GuiApplication.cpp:3037
+#: src/frontends/qt4/GuiApplication.cpp:3049
 msgid "Could not find UI definition file"
 msgstr "Die Benutzeroberflächen-Definitionsdatei konnte nicht gefunden werden"
 
-#: src/frontends/qt4/GuiApplication.cpp:3045
+#: src/frontends/qt4/GuiApplication.cpp:3038
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -29058,13 +29077,13 @@ msgstr ""
 "%1$s.\n"
 "Bitte überprüfen Sie Ihre Installation."
 
-#: src/frontends/qt4/GuiApplication.cpp:3051
+#: src/frontends/qt4/GuiApplication.cpp:3044
 msgid "Could not find default UI file"
 msgstr ""
 "Die Standard-Benutzeroberflächen-Definitionsdatei konnte nicht gefunden "
 "werden"
 
-#: src/frontends/qt4/GuiApplication.cpp:3052
+#: src/frontends/qt4/GuiApplication.cpp:3045
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -29073,7 +29092,7 @@ msgstr ""
 "für die Benutzeroberfläche!\n"
 "Bitte überprüfen Sie Ihre Installation."
 
-#: src/frontends/qt4/GuiApplication.cpp:3057
+#: src/frontends/qt4/GuiApplication.cpp:3050
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -29092,11 +29111,11 @@ msgstr ""
 msgid "Bibliography Item Settings"
 msgstr "Literatureintrag-Einstellungen"
 
-#: src/frontends/qt4/GuiBibtex.cpp:54 src/frontends/qt4/GuiBibtex.cpp:310
+#: src/frontends/qt4/GuiBibtex.cpp:54 src/frontends/qt4/GuiBibtex.cpp:311
 msgid "BibTeX Bibliography"
 msgstr "BibTeX-Literaturverzeichnis"
 
-#: src/frontends/qt4/GuiBibtex.cpp:113
+#: src/frontends/qt4/GuiBibtex.cpp:114
 msgid ""
 "This list consists of all databases that are indexed by LaTeX and thus are "
 "found without a file path. This is usually everything in the bib/ "
@@ -29109,15 +29128,15 @@ msgstr ""
 "Sie Ihre eigenen Datenbanken in verschiedenen Dokumenten verwenden wollen, "
 "ist dies der Ort, an dem Sie sie ablegen sollten."
 
-#: src/frontends/qt4/GuiBibtex.cpp:308
+#: src/frontends/qt4/GuiBibtex.cpp:309
 msgid "Biblatex Bibliography"
 msgstr "Biblatex-Literaturverzeichnis"
 
-#: src/frontends/qt4/GuiBibtex.cpp:344 src/insets/InsetBibtex.cpp:237
+#: src/frontends/qt4/GuiBibtex.cpp:345 src/insets/InsetBibtex.cpp:237
 msgid "all reference units"
 msgstr "alle Literaturverzeichnisse"
 
-#: src/frontends/qt4/GuiBibtex.cpp:434 src/frontends/qt4/GuiBibtex.cpp:444
+#: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
 #: src/frontends/qt4/GuiDocument.cpp:2379 src/frontends/qt4/GuiExternal.cpp:675
 #: src/frontends/qt4/GuiGraphics.cpp:793 src/frontends/qt4/GuiInclude.cpp:330
@@ -29127,19 +29146,19 @@ msgstr "alle Literaturverzeichnisse"
 msgid "Documents|#o#O"
 msgstr "Dokumente|#k"
 
-#: src/frontends/qt4/GuiBibtex.cpp:436
+#: src/frontends/qt4/GuiBibtex.cpp:437
 msgid "BibTeX Databases (*.bib)"
 msgstr "BibTeX-Datenbanken (*.bib)"
 
-#: src/frontends/qt4/GuiBibtex.cpp:438
+#: src/frontends/qt4/GuiBibtex.cpp:439
 msgid "Select a BibTeX database to add"
 msgstr "Wählen Sie eine hinzuzufügende BibTeX-Datenbank"
 
-#: src/frontends/qt4/GuiBibtex.cpp:446
+#: src/frontends/qt4/GuiBibtex.cpp:447
 msgid "BibTeX Styles (*.bst)"
 msgstr "BibTeX-Stile (*.bst)"
 
-#: src/frontends/qt4/GuiBibtex.cpp:448
+#: src/frontends/qt4/GuiBibtex.cpp:449
 msgid "Select a BibTeX style"
 msgstr "Wählen Sie einen BibTeX-Stil"
 
@@ -29433,7 +29452,7 @@ msgstr "Wählen Sie einen Dateinamen, um die eingefügte Grafik zu speichern als
 #: src/frontends/qt4/GuiClipboard.cpp:215 src/frontends/qt4/GuiView.cpp:2265
 #: src/frontends/qt4/GuiView.cpp:2408 src/frontends/qt4/GuiView.cpp:2424
 #: src/frontends/qt4/GuiView.cpp:2436 src/frontends/qt4/GuiView.cpp:2453
-#: src/frontends/qt4/GuiView.cpp:2537 src/frontends/qt4/GuiView.cpp:3820
+#: src/frontends/qt4/GuiView.cpp:2537 src/frontends/qt4/GuiView.cpp:3821
 msgid "Canceled."
 msgstr "Abgebrochen."
 
@@ -31693,7 +31712,7 @@ msgstr ""
 "\n"
 "Möchten Sie das Dokument speichern?"
 
-#: src/frontends/qt4/GuiView.cpp:3188
+#: src/frontends/qt4/GuiView.cpp:3189
 #, c-format
 msgid ""
 "Document \n"
@@ -31705,37 +31724,37 @@ msgstr ""
 "wurde extern verändert. Wollen Sie es erneut laden?\n"
 "Alle lokalen Veränderungen werden dann verworfen."
 
-#: src/frontends/qt4/GuiView.cpp:3191
+#: src/frontends/qt4/GuiView.cpp:3192
 msgid "Reload externally changed document?"
 msgstr "Extern geändertes Dokument neu laden?"
 
-#: src/frontends/qt4/GuiView.cpp:3236
+#: src/frontends/qt4/GuiView.cpp:3237
 msgid "Document could not be checked in."
 msgstr "Das Dokument konnte nicht eingecheckt werden."
 
-#: src/frontends/qt4/GuiView.cpp:3280
+#: src/frontends/qt4/GuiView.cpp:3281
 msgid "Error when setting the locking property."
 msgstr "Fehler beim Setzen der Dateisperrung."
 
-#: src/frontends/qt4/GuiView.cpp:3326
+#: src/frontends/qt4/GuiView.cpp:3327
 msgid "Directory is not accessible."
 msgstr "Das Verzeichnis ist nicht lesbar."
 
-#: src/frontends/qt4/GuiView.cpp:3402
+#: src/frontends/qt4/GuiView.cpp:3403
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Öffne Unterdokument %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:3466
+#: src/frontends/qt4/GuiView.cpp:3467
 #, c-format
 msgid "No buffer for file: %1$s."
 msgstr "Kein Pufferspeicher für Datei: %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:3476
+#: src/frontends/qt4/GuiView.cpp:3477
 msgid "Inverse Search Failed"
 msgstr "Rückwärtssuche gescheitert"
 
-#: src/frontends/qt4/GuiView.cpp:3477
+#: src/frontends/qt4/GuiView.cpp:3478
 msgid ""
 "Invalid position requested by inverse search.\n"
 "You may need to update the viewed document."
@@ -31743,35 +31762,35 @@ msgstr ""
 "Die Rückwärtssuche wollte eine ungültige Position anspringen.\n"
 "Bitte aktualisieren Sie das ausgegebene Dokument."
 
-#: src/frontends/qt4/GuiView.cpp:3549
+#: src/frontends/qt4/GuiView.cpp:3550
 msgid "Export Error"
 msgstr "Exportfehler"
 
-#: src/frontends/qt4/GuiView.cpp:3550
+#: src/frontends/qt4/GuiView.cpp:3551
 msgid "Error cloning the Buffer."
 msgstr "Fehler beim Klonen des Pufferspeichers."
 
-#: src/frontends/qt4/GuiView.cpp:3674 src/frontends/qt4/GuiView.cpp:3694
+#: src/frontends/qt4/GuiView.cpp:3675 src/frontends/qt4/GuiView.cpp:3695
 msgid "Exporting ..."
 msgstr "Exportiere ..."
 
-#: src/frontends/qt4/GuiView.cpp:3703
+#: src/frontends/qt4/GuiView.cpp:3704
 msgid "Previewing ..."
 msgstr "Generiere Vorschau ..."
 
-#: src/frontends/qt4/GuiView.cpp:3737
+#: src/frontends/qt4/GuiView.cpp:3738
 msgid "Document not loaded"
 msgstr "Dokument nicht geladen."
 
-#: src/frontends/qt4/GuiView.cpp:3814
+#: src/frontends/qt4/GuiView.cpp:3815
 msgid "Select file to insert"
 msgstr "Wählen Sie das einzufügende Dokument"
 
-#: src/frontends/qt4/GuiView.cpp:3817
+#: src/frontends/qt4/GuiView.cpp:3818
 msgid "All Files (*)"
 msgstr "Alle Dateien (*)"
 
-#: src/frontends/qt4/GuiView.cpp:3842
+#: src/frontends/qt4/GuiView.cpp:3843
 #, c-format
 msgid ""
 "The current version will be lost. Are you sure you want to load the version "
@@ -31781,7 +31800,7 @@ msgstr ""
 "dass Sie die auf der Festplatte gespeicherte Version des Dokuments %1$s "
 "laden möchten?"
 
-#: src/frontends/qt4/GuiView.cpp:3849
+#: src/frontends/qt4/GuiView.cpp:3850
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -31790,57 +31809,57 @@ msgstr ""
 "Alle Änderungen gehen verloren. Sind Sie sicher, dass Sie zur gespeicherten "
 "Version des Dokuments %1$s zurückkehren möchten?"
 
-#: src/frontends/qt4/GuiView.cpp:3852
+#: src/frontends/qt4/GuiView.cpp:3853
 msgid "Revert to saved document?"
 msgstr "Gespeichertes Dokument neu laden?"
 
-#: src/frontends/qt4/GuiView.cpp:3880
+#: src/frontends/qt4/GuiView.cpp:3881
 msgid "Saving all documents..."
 msgstr "Speichere alle Dokumente..."
 
-#: src/frontends/qt4/GuiView.cpp:3890
+#: src/frontends/qt4/GuiView.cpp:3891
 msgid "All documents saved."
 msgstr "Alle Dokumente wurden gespeichert"
 
-#: src/frontends/qt4/GuiView.cpp:3910
+#: src/frontends/qt4/GuiView.cpp:3911
 msgid "Developer mode is now enabled."
 msgstr "Der Entwicklermodus ist nun aktiviert."
 
-#: src/frontends/qt4/GuiView.cpp:3912
+#: src/frontends/qt4/GuiView.cpp:3913
 msgid "Developer mode is now disabled."
 msgstr "Der Entwicklermodus ist nun deaktiviert."
 
-#: src/frontends/qt4/GuiView.cpp:3936
+#: src/frontends/qt4/GuiView.cpp:3937
 msgid "Toolbars unlocked."
 msgstr "Werkzeugleisten nicht verankert."
 
-#: src/frontends/qt4/GuiView.cpp:3938
+#: src/frontends/qt4/GuiView.cpp:3939
 msgid "Toolbars locked."
 msgstr "Werkzeugleisten verankert."
 
-#: src/frontends/qt4/GuiView.cpp:3951
+#: src/frontends/qt4/GuiView.cpp:3952
 #, c-format
 msgid "Icon size set to %1$dx%2$d."
 msgstr "Eingestellte Symbolgröße: %1$dx%2$d."
 
-#: src/frontends/qt4/GuiView.cpp:4041
+#: src/frontends/qt4/GuiView.cpp:4042
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "LFUN_UI_TOGGLE %1$s unbekannter Befehl!"
 
-#: src/frontends/qt4/GuiView.cpp:4145
+#: src/frontends/qt4/GuiView.cpp:4146
 msgid "Zoom level is now %1$d% (default value: %2$d%)"
 msgstr "Aktueller Skalierungsfaktor: %1$d% (Standardwert: %2$d%)"
 
-#: src/frontends/qt4/GuiView.cpp:4201
+#: src/frontends/qt4/GuiView.cpp:4202
 msgid "Please, preview the document first."
 msgstr "Bitte geben Sie das Dokument zunächst aus."
 
-#: src/frontends/qt4/GuiView.cpp:4217
+#: src/frontends/qt4/GuiView.cpp:4218
 msgid "Couldn't proceed."
 msgstr "Konnte nicht fortfahren."
 
-#: src/frontends/qt4/GuiView.cpp:4695
+#: src/frontends/qt4/GuiView.cpp:4696
 msgid "Disable Shell Escape"
 msgstr "Erlaubnis zum Aufruf externer Programme widerrufen"
 
@@ -31853,27 +31872,27 @@ msgstr "Quelltext-Vorschau"
 msgid "%1[[preview format name]] Preview"
 msgstr "%1-Vorschau"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1511
+#: src/frontends/qt4/GuiWorkArea.cpp:1496
 msgid "Close File"
 msgstr "Datei schließen"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2027
+#: src/frontends/qt4/GuiWorkArea.cpp:2012
 msgid "%1 (read only)"
 msgstr "%1 (schreibgeschützt)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2031
+#: src/frontends/qt4/GuiWorkArea.cpp:2016
 msgid "%1 (modified externally)"
 msgstr "%1 (extern bearbeitet)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2051
+#: src/frontends/qt4/GuiWorkArea.cpp:2036
 msgid "Hide tab"
 msgstr "Unterfenster verstecken"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2053
+#: src/frontends/qt4/GuiWorkArea.cpp:2038
 msgid "Close tab"
 msgstr "Unterfenster schließen"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2170
+#: src/frontends/qt4/GuiWorkArea.cpp:2155
 msgid "<b>The file %1 changed on disk.</b>"
 msgstr "<b>Die Datei %1 wurde auf der Festplatte verändert.</b>"
 
@@ -32164,11 +32183,11 @@ msgstr "Horizontaler Abstand"
 msgid "Horizontal Math Space"
 msgstr "Horizontaler Mathe-Abstand"
 
-#: src/insets/InsetArgument.cpp:139
+#: src/insets/InsetArgument.cpp:141
 msgid "Unknown Argument"
 msgstr "Unbekanntes Argument"
 
-#: src/insets/InsetArgument.cpp:140
+#: src/insets/InsetArgument.cpp:142
 msgid "Argument not known in this Layout. Will be suppressed in the output."
 msgstr ""
 "Dieses Argument ist im gewählten Absatzstil unbekannt. Es wird in der "
@@ -32444,7 +32463,7 @@ msgstr "LyX kann keine Liste mit %1$s erzeugen"
 msgid "footnote"
 msgstr "Fußnote"
 
-#: src/insets/InsetGraphics.cpp:492 src/insets/InsetInclude.cpp:844
+#: src/insets/InsetGraphics.cpp:494 src/insets/InsetInclude.cpp:844
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -32455,12 +32474,12 @@ msgstr ""
 "%1$s\n"
 "konnte nicht in das temporäre Verzeichnis kopiert werden."
 
-#: src/insets/InsetGraphics.cpp:699 src/insets/InsetGraphics.cpp:925
+#: src/insets/InsetGraphics.cpp:701 src/insets/InsetGraphics.cpp:929
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "Es ist keine Konvertierung von %1$s notwendig"
 
-#: src/insets/InsetGraphics.cpp:803
+#: src/insets/InsetGraphics.cpp:807
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Grafikdatei: %1$s"
@@ -33891,6 +33910,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "&Clipping"
+#~ msgstr "&Ausschnitt"
 
 #~ msgid "Caption: "
 #~ msgstr "Legende: "
