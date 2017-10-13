@@ -471,7 +471,7 @@ def convert(lines, end_format):
               re_trimEndLabelString, re_trimLabelCounter):
                 m = r.match(lines[i])
                 if m:
-                    lines[i] = m.group(1) + '"' + m.group(2) + '"'
+                    lines[i] = m.group(1) + b'"' + m.group(2) + b'"'
             i += 1
             continue
 
