@@ -236,6 +236,8 @@ docstring constructName(docstring const & name, string const scheme)
 	static regex const reg2("(.*)(\\{%suffix%\\[\\[)([^\\]]+)(\\]\\]\\})(.*)");
 	static regex const reg3("(.*)(\\{%prefix%\\[\\[)([^\\]]+)(\\]\\]\\})(.*)");
 	smatch sub;
+	// Changing the first parameter of regex_match() may corrupt the
+	// second one. In this case we use the temporary string tmp.
 	if (regex_match(scheme, sub, reg1)) {
 		res = sub.str(1);
 		if (!prename.empty())
@@ -243,16 +245,16 @@ docstring constructName(docstring const & name, string const scheme)
 		res += sub.str(5);
 	}
 	if (regex_match(res, sub, reg2)) {
-		res = sub.str(1);
+		string tmp = sub.str(1);
 		if (!suffix.empty())
-			res += sub.str(3);
-		res += sub.str(5);
+			tmp += sub.str(3);
+		res = tmp + sub.str(5);
 	}
 	if (regex_match(res, sub, reg3)) {
-		res = sub.str(1);
+		string tmp = sub.str(1);
 		if (!prefix.empty())
-			res += sub.str(3);
-		res += sub.str(5);
+			tmp += sub.str(3);
+		res = tmp + sub.str(5);
 	}
 	docstring result = from_ascii(res);
 	result = subst(result, from_ascii("%prename%"), prename);
