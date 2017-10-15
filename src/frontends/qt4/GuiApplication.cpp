@@ -35,6 +35,7 @@
 #include "BufferView.h"
 #include "CmdDef.h"
 #include "Color.h"
+#include "Converter.h"
 #include "CutAndPaste.h"
 #include "ErrorList.h"
 #include "Font.h"
@@ -241,6 +242,17 @@ vector<string> loadableImageFormats()
 		// special case
 		if (ext == "jpeg")
 			ext = "jpg";
+		else if (lyxrc.use_converter_cache
+		         && (ext == "svg" || ext == "svgz")
+		         && theConverters().isReachable("svg", "png"))
+			// Qt only supports SVG 1.2 tiny. See #9778. We prefer
+			// displaying the SVG as in the output. However we
+			// require that the converter cache is enabled since
+			// this is expensive. We also require that an explicit
+			// svg->png converter is defined, since the default
+			// converter could produce bad quality as well.
+			// This assumes that png can always be loaded.
+			continue;
 		fmts.push_back(ext);
 	}
 
