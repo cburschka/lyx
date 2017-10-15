@@ -41,7 +41,7 @@ These typically need to be modified for each LyX release
 
 !define FILES_LYX "D:\LyXPackage2.3\LyX"
 !define FILES_DEPS "D:\LyXGit\Master\lyx-windows-deps-msvc2015"
-!define FILES_QT "C:\Qt\Qt5.6.2-MSVC-2015\5.6\msvc2015"
+!define FILES_QT "C:\Qt\Qt5.6.3\5.6.3\msvc2015"
 !define ClassFileDir "${FILES_LYX}\Resources\tex"
 !define DVIPostFileDir "${FILES_DEPS}\tex"
 
