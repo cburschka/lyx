@@ -34,7 +34,7 @@ set CALLED_FROM=%CD%
 
 REM Edit pathes here or set the environment variables on your system.
 set CMAKE_PATH="C:\Program Files\CMake\bin"
-set QT_PATH="C:\Qt\Qt5.6.2-MSVC-2015\5.6\msvc2015\bin"
+set QT_PATH="C:\Qt\Qt5.6.3\5.6.3\msvc2015\bin"
 set GNUWIN32_DIR="D:\LyXGit\Master\lyx-windows-deps-msvc2015"
 set LYX_SOURCE="D:\LyXGit\Master"
 set LYX_BUILD="D:\LyXGit\Master\compile-2015"

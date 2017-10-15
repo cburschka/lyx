@@ -57,9 +57,6 @@ Lists of files to include in the installer
 
 !macro FileListMSVC COMMAND DIRECTORY
 
-  # Files needed for MSVC 2010
-  ${FILE}msvcr100.dll"
-  ${FILE}msvcp100.dll"
   # Files needed for MSVC 2015
   ${FILE}concrt140.dll"
   ${FILE}msvcp140.dll"
