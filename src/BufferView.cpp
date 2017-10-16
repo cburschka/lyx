@@ -787,7 +787,7 @@ bool BufferView::moveToPosition(pit_type bottom_pit, pos_type bottom_pos,
 		if (!dit.atEnd()) {
 			dit.pos() = min(dit.paragraph().size(), top_pos);
 			// Some slices of the iterator may not be
-			// reachable (e.g. closed collapsable inset)
+			// reachable (e.g. closed collapsible inset)
 			// so the dociterator may need to be
 			// shortened. Otherwise, setCursor may crash
 			// lyx when the cursor can not be set to these

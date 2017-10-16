@@ -26,7 +26,7 @@ struct TexString;
 //
 /////////////////////////////////////////////////////////////////////////
 
-/// A captionable and collapsable text inset for program listings.
+/// A captionable and collapsible text inset for program listings.
 class InsetListings : public InsetCaptionable
 {
 public:
