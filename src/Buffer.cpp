@@ -172,7 +172,7 @@ public:
 	/** If we have branches that use the file suffix
 	    feature, return the file name with suffix appended.
 	*/
-	support::FileName exportFileName() const;
+	FileName exportFileName() const;
 
 	Buffer * owner_;
 
@@ -279,7 +279,7 @@ public:
 
 	/// A cache for the bibfiles (including bibfiles of loaded child
 	/// documents), needed for appropriate update of natbib labels.
-	mutable support::FileNamePairList bibfiles_cache_;
+	mutable FileNamePairList bibfiles_cache_;
 
 	// FIXME The caching mechanism could be improved. At present, we have a
 	// cache for each Buffer, that caches all the bibliography info for that
@@ -1855,7 +1855,7 @@ void Buffer::writeLaTeXSource(otexstream & os,
 			if (!uncodable_glyphs.empty()) {
 				frontend::Alert::warning(
 					_("Uncodable character in file path"),
-					support::bformat(
+					bformat(
 					  _("The path of your document\n"
 					    "(%1$s)\n"
 					    "contains glyphs that are unknown "
@@ -1874,7 +1874,7 @@ void Buffer::writeLaTeXSource(otexstream & os,
 					  inputpath, uncodable_glyphs));
 			} else {
 				string docdir =
-					support::latex_path(original_path);
+					latex_path(original_path);
 				if (contains(docdir, '#')) {
 					docdir = subst(docdir, "#", "\\#");
 					os << "\\catcode`\\#=11"
@@ -1923,8 +1923,8 @@ void Buffer::writeLaTeXSource(otexstream & os,
 					langs += _(*it);
 				}
 				blangs = bll.size() > 1 ?
-					    support::bformat(_("The languages %1$s are only supported by Babel."), langs)
-					  : support::bformat(_("The language %1$s is only supported by Babel."), langs);
+					    bformat(_("The languages %1$s are only supported by Babel."), langs)
+					  : bformat(_("The language %1$s is only supported by Babel."), langs);
 			}
 			if (!pll.empty()) {
 				docstring langs;
@@ -1934,15 +1934,15 @@ void Buffer::writeLaTeXSource(otexstream & os,
 					langs += _(*it);
 				}
 				plangs = pll.size() > 1 ?
-					    support::bformat(_("The languages %1$s are only supported by Polyglossia."), langs)
-					  : support::bformat(_("The language %1$s is only supported by Polyglossia."), langs);
+					    bformat(_("The languages %1$s are only supported by Polyglossia."), langs)
+					  : bformat(_("The language %1$s is only supported by Polyglossia."), langs);
 				if (!blangs.empty())
 					plangs += "\n";
 			}
 
 			frontend::Alert::warning(
 				_("Incompatible Languages!"),
-				support::bformat(
+				bformat(
 				  _("You cannot use the following languages "
 				    "together in one LaTeX document because "
 				    "they require conflicting language packages:\n"
@@ -2335,7 +2335,7 @@ void Buffer::updateBibfilesCache(UpdateScope scope) const
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
 		if (it->lyxCode() == BIBTEX_CODE) {
 			InsetBibtex const & inset = static_cast<InsetBibtex const &>(*it);
-			support::FileNamePairList const bibfiles = inset.getBibFiles();
+			FileNamePairList const bibfiles = inset.getBibFiles();
 			d->bibfiles_cache_.insert(d->bibfiles_cache_.end(),
 				bibfiles.begin(),
 				bibfiles.end());
@@ -2344,7 +2344,7 @@ void Buffer::updateBibfilesCache(UpdateScope scope) const
 			Buffer const * const incbuf = inset.getChildBuffer();
 			if (!incbuf)
 				continue;
-			support::FileNamePairList const & bibfiles =
+			FileNamePairList const & bibfiles =
 					incbuf->getBibfilesCache(UpdateChildOnly);
 			if (!bibfiles.empty()) {
 				d->bibfiles_cache_.insert(d->bibfiles_cache_.end(),
@@ -2382,7 +2382,7 @@ void Buffer::invalidateBibfileCache() const
 }
 
 
-support::FileNamePairList const & Buffer::getBibfilesCache(UpdateScope scope) const
+FileNamePairList const & Buffer::getBibfilesCache(UpdateScope scope) const
 {
 	// FIXME This is probably unnecessary, given where we call this.
 	// If this is a child document, use the master's cache instead.
@@ -4142,7 +4142,7 @@ void Buffer::removeAutosaveFile() const
 }
 
 
-void Buffer::moveAutosaveFile(support::FileName const & oldauto) const
+void Buffer::moveAutosaveFile(FileName const & oldauto) const
 {
 	FileName const newauto = getAutosaveFileName();
 	oldauto.refresh();
