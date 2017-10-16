@@ -3673,7 +3673,7 @@ InsetList const & Paragraph::insetList() const
 }
 
 
-void Paragraph::setBuffer(Buffer & b)
+void Paragraph::setInsetBuffers(Buffer & b)
 {
 	d->insetlist_.setBuffer(b);
 }

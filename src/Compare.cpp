@@ -736,7 +736,7 @@ bool Compare::Impl::diff(Buffer const * new_buf, Buffer const * old_buf,
 		diff_i(rp_new);
 
 	for (pit_type p = 0; p < (pit_type)dest_pars_->size(); ++p) {
-		(*dest_pars_)[p].setBuffer(const_cast<Buffer &>(*dest_buf));
+		(*dest_pars_)[p].setInsetBuffers(const_cast<Buffer &>(*dest_buf));
 		(*dest_pars_)[p].setInsetOwner(&dest_buf_->inset());
 	}
 

@@ -397,7 +397,7 @@ public:
 	///
 	InsetList const & insetList() const;
 	///
-	void setBuffer(Buffer &);
+	void setInsetBuffers(Buffer &);
 	///
 	void resetBuffer();
 

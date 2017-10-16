@@ -504,7 +504,7 @@ void Undo::Private::doTextUndoOrRedo(CursorData & cur, UndoElementStack & stack,
 		ParagraphList::iterator fend = fpit;
 		advance(fend, undo.pars->size());
 		for (; fpit != fend; ++fpit)
-			fpit->setBuffer(buffer_);
+			fpit->setInsetBuffers(buffer_);
 
 		delete undo.pars;
 		undo.pars = 0;

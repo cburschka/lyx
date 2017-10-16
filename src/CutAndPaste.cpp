@@ -422,7 +422,7 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 	// Set paragraph buffers. It's important to do this right away
 	// before something calls Inset::buffer() and causes a crash.
 	for (pit_type p = startpit; p <= pit; ++p)
-		pars[p].setBuffer(const_cast<Buffer &>(buffer));
+		pars[p].setInsetBuffers(const_cast<Buffer &>(buffer));
 
 	// Join (conditionally) last pasted paragraph with next one, i.e.,
 	// the tail of the spliced document paragraph
@@ -631,7 +631,7 @@ void copySelectionHelper(Buffer const & buf, Text const & text,
 		// do not have a proper buffer reference. It makes
 		// sense to add them temporarily, because the
 		// operations below depend on that (acceptChanges included).
-		it->setBuffer(const_cast<Buffer &>(buf));
+		it->setInsetBuffers(const_cast<Buffer &>(buf));
 		// PassThru paragraphs have the Language
 		// latex_language. This is invalid for others, so we
 		// need to change it to the buffer language.
@@ -827,7 +827,7 @@ vector<docstring> availableSelections(Buffer const * buf)
 		for (; pit != pend; ++pit) {
 			Paragraph par(*pit, 0, 46);
 			// adapt paragraph to current buffer.
-			par.setBuffer(const_cast<Buffer &>(*buf));
+			par.setInsetBuffers(const_cast<Buffer &>(*buf));
 			textSel += par.asString(AS_STR_INSETS);
 			if (textSel.size() > 45) {
 				support::truncateWithEllipsis(textSel,45);
