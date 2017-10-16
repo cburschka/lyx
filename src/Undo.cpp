@@ -497,6 +497,15 @@ void Undo::Private::doTextUndoOrRedo(CursorData & cur, UndoElementStack & stack,
 		for (; pit != end; ++pit)
 			pit->setInsetOwner(dit.realInset());
 		plist.insert(first, undo.pars->begin(), undo.pars->end());
+
+		// set the buffers for insets we created
+		ParagraphList::iterator fpit = plist.begin();
+		advance(fpit, undo.from);
+		ParagraphList::iterator fend = fpit;
+		advance(fend, undo.pars->size());
+		for (; fpit != fend; ++fpit)
+			fpit->setBuffer(buffer_);
+
 		delete undo.pars;
 		undo.pars = 0;
 	}
@@ -531,9 +540,6 @@ bool Undo::Private::textUndoOrRedo(CursorData & cur, bool isUndoOperation)
 	const size_t gid = stack.top().group_id;
 	while (!stack.empty() && stack.top().group_id == gid)
 		doTextUndoOrRedo(cur, stack, otherstack);
-
-	// Adapt the new material to current buffer.
-	buffer_.setBuffersForInsets(); // FIXME This shouldn't be here.
 	return true;
 }
 

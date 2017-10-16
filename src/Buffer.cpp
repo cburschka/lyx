@@ -4699,12 +4699,6 @@ void Buffer::bufferErrors(TeXErrors const & terr, ErrorList & errorList) const
 }
 
 
-void Buffer::setBuffersForInsets() const
-{
-	inset().setBuffer(const_cast<Buffer &>(*this));
-}
-
-
 void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 {
 	LBUFERR(!text().paragraphs().empty());
