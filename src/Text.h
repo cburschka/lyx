@@ -49,7 +49,7 @@ private:
 public:
 	/// \return true if there's no content at all.
 	/// \warning a non standard layout on an empty paragraph doesn't
-	// count as empty.
+	/// count as empty.
 	bool empty() const;
 	/// Access to owner InsetText.
 	InsetText const & inset() const;
