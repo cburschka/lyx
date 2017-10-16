@@ -13,6 +13,7 @@ from __future__ import print_function
 
 import sys
 import re
+import codecs
 
 Subst = {}  # map of desired substitutions
 prog = re.compile("")
@@ -33,8 +34,8 @@ def SubstituteDataInLine(line):
 
 
 def SubstituteDataInFile(InFile):
-    for line in open(InFile):
-        print(SubstituteDataInLine(line[:-1]))
+    for line in codecs.open(InFile, 'r', 'utf-8'):
+        print(SubstituteDataInLine(line[:-1]).encode("utf-8"))
 
 ##########################################
 
