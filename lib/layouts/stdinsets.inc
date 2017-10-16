@@ -4,7 +4,7 @@
 #
 # Detailed format description is available in the customization manual
 
-Format 64
+Format 65
 
 Provides stdinsets 1
 
@@ -498,7 +498,7 @@ End
 
 InsetLayout Float
 	LabelFont
-	  Color               collapsable
+	  Color               collapsible
 	  Size                Small
 	EndFont
 	MultiPar              true
@@ -516,7 +516,7 @@ OutlinerName figure       "Figures" #no AddToToc (built-in)
 
 InsetLayout Wrap
 	LabelFont
-	  Color               collapsable
+	  Color               collapsible
 	  Size                Small
 	EndFont
 	MultiPar              true
@@ -560,7 +560,7 @@ End
 InsetLayout Argument
 	LabelString           Argument
 	LabelFont
-	  Color               collapsable
+	  Color               collapsible
 	  Size                Small
 	EndFont
 	MultiPar              false
