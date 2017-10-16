@@ -18,7 +18,7 @@
 
 namespace lyx {
 
-/** A collapsable text inset for LaTeX insertions.
+/** A collapsible text inset for LaTeX insertions.
 
   To write full ert (including styles and other insets) in a given
   space.

@@ -1113,7 +1113,7 @@ def revert_wrapfig_options(document):
 
 
 def convert_latexcommand_index(document):
-    "Convert from LatexCommand form to collapsable form."
+    "Convert from LatexCommand form to collapsible form."
     i = 0
     r1 = re.compile('name "(.*)"')
     while True:
@@ -1145,7 +1145,7 @@ def convert_latexcommand_index(document):
 
 
 def revert_latexcommand_index(document):
-    "Revert from collapsable form to LatexCommand form."
+    "Revert from collapsible form to LatexCommand form."
     i = 0
     while True:
         i = find_token(document.body, "\\begin_inset Index", i)

@@ -448,7 +448,7 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 {
 	// This implements the standard way of handling the LaTeX
 	// output of a text inset, either a command or an
-	// environment. Standard collapsable insets should not
+	// environment. Standard collapsible insets should not
 	// redefine this, non-standard ones may call this.
 	InsetLayout const & il = getLayout();
 	if (il.forceOwnlines())

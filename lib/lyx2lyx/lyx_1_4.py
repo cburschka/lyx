@@ -889,7 +889,7 @@ def revert_box(document):
         i = i + 1
 
 
-def convert_collapsable(document):
+def convert_collapsible(document):
     " Convert collapsed insets. "
     i = 0
     while True:
@@ -924,7 +924,7 @@ def convert_collapsable(document):
         i = i + 1
 
 
-def revert_collapsable(document):
+def revert_collapsible(document):
     " Revert collapsed insets. "
     i = 0
     while True:
@@ -2474,7 +2474,7 @@ convert = [[222, [insert_tracking_changes, add_end_header, convert_amsmath]],
                   convert_table_valignment_middle, convert_breaks]],
            [226, [convert_note]],
            [227, [convert_box]],
-           [228, [convert_collapsable, convert_ert]],
+           [228, [convert_collapsible, convert_ert]],
            [229, [convert_minipage]],
            [230, [convert_jurabib]],
            [231, [convert_float]],
@@ -2512,7 +2512,7 @@ revert =  [[244, []],
            [230, [revert_float]],
            [229, [revert_jurabib]],
            [228, []],
-           [227, [revert_collapsable, revert_ert]],
+           [227, [revert_collapsible, revert_ert]],
            [226, [revert_box, revert_external_2]],
            [225, [revert_note]],
            [224, [rm_end_layout, begin_layout2layout, revert_end_document,

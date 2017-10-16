@@ -260,7 +260,7 @@ public:
 	/// access to full cursor.
 	Cursor const & cursor() const;
 	/// sets cursor.
-	/// This will also open all relevant collapsable insets.
+	/// This will also open all relevant collapsible insets.
 	void setCursor(DocIterator const &);
 	/// set the selection up to dit.
 	void setCursorSelectionTo(DocIterator const & dit);
