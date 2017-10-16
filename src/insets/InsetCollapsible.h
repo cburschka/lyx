@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file InsetCollapsable.h
+ * \file InsetCollapsible.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -11,8 +11,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef INSETCOLLAPSABLE_H
-#define INSETCOLLAPSABLE_H
+#ifndef INSETCOLLAPSIBLE_H
+#define INSETCOLLAPSIBLE_H
 
 #include "InsetText.h"
 
@@ -27,25 +27,25 @@ class InsetLayout;
 
 namespace frontend { class Painter; }
 
-/** A collapsable text inset
+/** A collapsible text inset
 
 */
-class InsetCollapsable : public InsetText {
+class InsetCollapsible : public InsetText {
 public:
 	///
-	InsetCollapsable(Buffer *, InsetText::UsePlain = InsetText::PlainLayout);
+	InsetCollapsible(Buffer *, InsetText::UsePlain = InsetText::PlainLayout);
 	///
-	InsetCollapsable(InsetCollapsable const & rhs);
+	InsetCollapsible(InsetCollapsible const & rhs);
 	///
-	virtual ~InsetCollapsable();
+	virtual ~InsetCollapsible();
 	///
-	InsetCollapsable * asInsetCollapsable() { return this; }
+	InsetCollapsible * asInsetCollapsible() { return this; }
 	///
-	InsetCollapsable const * asInsetCollapsable() const { return this; }
+	InsetCollapsible const * asInsetCollapsible() const { return this; }
 	///
 	docstring toolTip(BufferView const & bv, int x, int y) const;
 	///
-	docstring layoutName() const { return from_ascii("Collapsable"); }
+	docstring layoutName() const { return from_ascii("Collapsible"); }
 	///
 	void read(Lexer &);
 	///
@@ -142,7 +142,7 @@ public:
 	///
 	ColorCode labelColor() const { return getLayout().labelfont().color(); }
 	///
-	InsetCode lyxCode() const { return COLLAPSABLE_CODE; }
+	InsetCode lyxCode() const { return COLLAPSIBLE_CODE; }
 
 	///
 	virtual bool usePlainLayout() const { return true; }

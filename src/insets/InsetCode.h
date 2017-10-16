@@ -111,7 +111,7 @@ enum InsetCode {
 	///
 	INFO_CODE, // 45
 	///
-	COLLAPSABLE_CODE,
+	COLLAPSIBLE_CODE,
 	///
 	PHANTOM_CODE,
 	///

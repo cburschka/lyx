@@ -40,7 +40,7 @@ namespace lyx {
 
 
 InsetArgument::InsetArgument(Buffer * buf, string const & name)
-    : InsetCollapsable(buf), name_(name), labelstring_(docstring()),
+    : InsetCollapsible(buf), name_(name), labelstring_(docstring()),
       font_(inherit_font), labelfont_(inherit_font), decoration_(string()),
       pass_thru_context_(false), pass_thru_local_(false), pass_thru_(false),
       pass_thru_chars_(docstring())
@@ -50,14 +50,14 @@ InsetArgument::InsetArgument(Buffer * buf, string const & name)
 void InsetArgument::write(ostream & os) const
 {
 	os << "Argument " << name_ << "\n";
-	InsetCollapsable::write(os);
+	InsetCollapsible::write(os);
 }
 
 
 void InsetArgument::read(Lexer & lex)
 {
 	lex >> name_;
-	InsetCollapsable::read(lex);
+	InsetCollapsible::read(lex);
 }
 
 
@@ -152,7 +152,7 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 	}
 
 	setButtonLabel();
-	InsetCollapsable::updateBuffer(it, utype);
+	InsetCollapsible::updateBuffer(it, utype);
 }
 
 
@@ -207,11 +207,11 @@ void InsetArgument::doDispatch(Cursor & cur, FuncRequest & cmd)
 				fixParagraphLanguage(buffer().params().language);
 		}
 		else
-			InsetCollapsable::doDispatch(cur, cmd);
+			InsetCollapsible::doDispatch(cur, cmd);
 		break;
 
 	default:
-		InsetCollapsable::doDispatch(cur, cmd);
+		InsetCollapsible::doDispatch(cur, cmd);
 		break;
 	}
 }
@@ -251,11 +251,11 @@ bool InsetArgument::getStatus(Cursor & cur, FuncRequest const & cmd,
 				flag.setEnabled(false);
 			return true;
 		}
-		return InsetCollapsable::getStatus(cur, cmd, flag);
+		return InsetCollapsible::getStatus(cur, cmd, flag);
 	}
 
 	default:
-		return InsetCollapsable::getStatus(cur, cmd, flag);
+		return InsetCollapsible::getStatus(cur, cmd, flag);
 	}
 }
 
@@ -273,7 +273,7 @@ FontInfo InsetArgument::getFont() const
 {
 	if (font_ != inherit_font)
 		return font_;
-	return InsetCollapsable::getFont();
+	return InsetCollapsible::getFont();
 }
 
 
@@ -281,14 +281,14 @@ FontInfo InsetArgument::getLabelfont() const
 {
 	if (labelfont_ != inherit_font)
 		return labelfont_;
-	return InsetCollapsable::getLabelfont();
+	return InsetCollapsible::getLabelfont();
 }
 
 
 ColorCode InsetArgument::labelColor() const {
 	if (labelfont_.color() != Color_inherit)
 		return labelfont_.color();
-	return InsetCollapsable::labelColor();
+	return InsetCollapsible::labelColor();
 }
 
 

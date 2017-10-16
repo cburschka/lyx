@@ -116,7 +116,7 @@ void InsetPhantomParams::read(Lexer & lex)
 /////////////////////////////////////////////////////////////////////
 
 InsetPhantom::InsetPhantom(Buffer * buf, string const & label)
-	: InsetCollapsable(buf)
+	: InsetCollapsible(buf)
 {
 	setDrawFrame(false);
 	params_.type = phantomtranslator().find(label);
@@ -138,7 +138,7 @@ docstring InsetPhantom::layoutName() const
 void InsetPhantom::draw(PainterInfo & pi, int x, int y) const
 {
 	// draw the text
-	InsetCollapsable::draw(pi, x, y);
+	InsetCollapsible::draw(pi, x, y);
 
 	// draw the inset marker
 	drawMarkers(pi, x, y);
@@ -222,14 +222,14 @@ void InsetPhantom::draw(PainterInfo & pi, int x, int y) const
 void InsetPhantom::write(ostream & os) const
 {
 	params_.write(os);
-	InsetCollapsable::write(os);
+	InsetCollapsible::write(os);
 }
 
 
 void InsetPhantom::read(Lexer & lex)
 {
 	params_.read(lex);
-	InsetCollapsable::read(lex);
+	InsetCollapsible::read(lex);
 }
 
 
@@ -264,7 +264,7 @@ void InsetPhantom::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		InsetCollapsable::doDispatch(cur, cmd);
+		InsetCollapsible::doDispatch(cur, cmd);
 		break;
 	}
 }
@@ -289,7 +289,7 @@ bool InsetPhantom::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	default:
-		return InsetCollapsable::getStatus(cur, cmd, flag);
+		return InsetCollapsible::getStatus(cur, cmd, flag);
 	}
 }
 
@@ -320,7 +320,7 @@ void InsetPhantom::latex(otexstream & os, OutputParams const & runparams) const
 		os << "\\phantom{";
 		break;
 	}
-	InsetCollapsable::latex(os, runparams);
+	InsetCollapsible::latex(os, runparams);
 	os << "}";
 }
 
@@ -342,7 +342,7 @@ int InsetPhantom::plaintext(odocstringstream & os,
 		os << '[' << buffer().B_("phantom") << ":";
 		break;
 	}
-	InsetCollapsable::plaintext(os, runparams, max_length);
+	InsetCollapsible::plaintext(os, runparams, max_length);
 	os << "]";
 
 	return PLAINTEXT_NEWLINE;
@@ -361,7 +361,7 @@ int InsetPhantom::docbook(odocstream & os, OutputParams const & runparams) const
 		break;
 	}
 	os << "<" + cmdname + ">";
-	int const i = InsetCollapsable::docbook(os, runparams);
+	int const i = InsetCollapsible::docbook(os, runparams);
 	os << "</" + cmdname + ">";
 
 	return i;

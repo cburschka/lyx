@@ -15,16 +15,16 @@
 #ifndef INSET_CAPTIONABLE_H
 #define INSET_CAPTIONABLE_H
 
-#include "InsetCollapsable.h"
+#include "InsetCollapsible.h"
 
 
 namespace lyx {
 
-class InsetCaptionable : public InsetCollapsable
+class InsetCaptionable : public InsetCollapsible
 {
 public:
 	InsetCaptionable(Buffer * buffer, std::string const & type = "senseless")
-		: InsetCollapsable(buffer), caption_type_(type) {}
+		: InsetCollapsible(buffer), caption_type_(type) {}
 	///
 	std::string const & captionType() const { return caption_type_; }
 	///

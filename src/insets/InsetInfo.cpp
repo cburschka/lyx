@@ -92,7 +92,7 @@ NameTranslator const & nameTranslator()
 
 
 InsetInfo::InsetInfo(Buffer * buf, string const & name)
-	: InsetCollapsable(buf), type_(UNKNOWN_INFO), name_()
+	: InsetCollapsible(buf), type_(UNKNOWN_INFO), name_()
 {
 	setInfo(name);
 	status_ = Collapsed;
@@ -221,7 +221,7 @@ bool InsetInfo::getStatus(Cursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action()) {
 	case LFUN_INSET_SETTINGS:
-		return InsetCollapsable::getStatus(cur, cmd, flag);
+		return InsetCollapsible::getStatus(cur, cmd, flag);
 
 	case LFUN_INSET_DIALOG_UPDATE:
 	case LFUN_INSET_COPY_AS:
@@ -264,7 +264,7 @@ void InsetInfo::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	default:
-		InsetCollapsable::doDispatch(cur, cmd);
+		InsetCollapsible::doDispatch(cur, cmd);
 		break;
 	}
 }
@@ -498,8 +498,8 @@ void InsetInfo::updateInfo()
 
 string InsetInfo::contextMenu(BufferView const &, int, int) const
 {
-	//FIXME: We override the implementation of InsetCollapsable,
-	//because this inset is not a collapsable inset.
+	//FIXME: We override the implementation of InsetCollapsible,
+	//because this inset is not a collapsible inset.
 	return contextMenuName();
 }
 

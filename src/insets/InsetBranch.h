@@ -12,7 +12,7 @@
 #ifndef INSETBRANCH_H
 #define INSETBRANCH_H
 
-#include "InsetCollapsable.h"
+#include "InsetCollapsible.h"
 
 namespace lyx {
 
@@ -42,7 +42,7 @@ public:
 
 /// The Branch inset for alternative, conditional output.
 
-class InsetBranch : public InsetCollapsable
+class InsetBranch : public InsetCollapsible
 {
 public:
 	///

@@ -57,7 +57,7 @@ InsetCaption::InsetCaption(Buffer * buf, string const & type)
       labelwidth_(0), is_subfloat_(false), type_(type)
 {
 	setDrawFrame(true);
-	setFrameColor(Color_collapsableframe);
+	setFrameColor(Color_collapsibleframe);
 }
 
 

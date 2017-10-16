@@ -773,7 +773,7 @@ void switchBetweenClasses(DocumentClassConstPtr oldone,
 	for (InsetIterator it = inset_iterator_begin(in); it != i_end; ++it) {
 		InsetCode const code = it->lyxCode();
 		if (code == FLEX_CODE) {
-			// FIXME: Should we verify all InsetCollapsable?
+			// FIXME: Should we verify all InsetCollapsible?
 			docstring const layoutName = it->layoutName();
 			docstring const & n = newone->insetLayout(layoutName).name();
 			bool const is_undefined = n.empty() ||

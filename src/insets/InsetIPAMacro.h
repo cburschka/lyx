@@ -14,7 +14,7 @@
 
 
 #include "Inset.h"
-#include "InsetCollapsable.h"
+#include "InsetCollapsible.h"
 
 
 namespace lyx {
@@ -45,7 +45,7 @@ public:
 /////////////////////////////////////////////////////////////////////////
 
 /// Used to insert IPA decorations
-class InsetIPADeco : public InsetCollapsable
+class InsetIPADeco : public InsetCollapsible
 {
 public:
 	///

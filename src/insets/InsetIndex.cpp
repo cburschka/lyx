@@ -55,7 +55,7 @@ namespace lyx {
 
 
 InsetIndex::InsetIndex(Buffer * buf, InsetIndexParams const & params)
-	: InsetCollapsable(buf), params_(params)
+	: InsetCollapsible(buf), params_(params)
 {}
 
 
@@ -221,7 +221,7 @@ void InsetIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		InsetCollapsable::doDispatch(cur, cmd);
+		InsetCollapsible::doDispatch(cur, cmd);
 		break;
 	}
 }
@@ -243,7 +243,7 @@ bool InsetIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 				from_utf8(cmd.getArg(1)) == params_.index);
 			return true;
 		}
-		return InsetCollapsable::getStatus(cur, cmd, flag);
+		return InsetCollapsible::getStatus(cur, cmd, flag);
 
 	case LFUN_INSET_DIALOG_UPDATE: {
 		Buffer const & realbuffer = *buffer().masterBuffer();
@@ -252,7 +252,7 @@ bool InsetIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 	}
 
 	default:
-		return InsetCollapsable::getStatus(cur, cmd, flag);
+		return InsetCollapsible::getStatus(cur, cmd, flag);
 	}
 }
 
@@ -260,11 +260,11 @@ bool InsetIndex::getStatus(Cursor & cur, FuncRequest const & cmd,
 ColorCode InsetIndex::labelColor() const
 {
 	if (params_.index.empty() || params_.index == from_ascii("idx"))
-		return InsetCollapsable::labelColor();
+		return InsetCollapsible::labelColor();
 	// FIXME UNICODE
 	ColorCode c = lcolor.getFromLyXName(to_utf8(params_.index));
 	if (c == Color_none)
-		c = InsetCollapsable::labelColor();
+		c = InsetCollapsible::labelColor();
 	return c;
 }
 
@@ -315,14 +315,14 @@ void InsetIndex::write(ostream & os) const
 {
 	os << to_utf8(layoutName());
 	params_.write(os);
-	InsetCollapsable::write(os);
+	InsetCollapsible::write(os);
 }
 
 
 void InsetIndex::read(Lexer & lex)
 {
 	params_.read(lex);
-	InsetCollapsable::read(lex);
+	InsetCollapsible::read(lex);
 }
 
 
@@ -364,7 +364,7 @@ void InsetIndex::addToToc(DocIterator const & cpit, bool output_active,
 	TocBuilder & b = backend.builder(type);
 	b.pushItem(pit, str, output_active);
 	// Proceed with the rest of the inset.
-	InsetCollapsable::addToToc(cpit, output_active, utype, backend);
+	InsetCollapsible::addToToc(cpit, output_active, utype, backend);
 	b.pop();
 }
 
@@ -375,7 +375,7 @@ void InsetIndex::validate(LaTeXFeatures & features) const
 	    && !params_.index.empty()
 	    && params_.index != "idx")
 		features.require("splitidx");
-	InsetCollapsable::validate(features);
+	InsetCollapsible::validate(features);
 }
 
 

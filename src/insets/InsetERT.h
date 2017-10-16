@@ -13,7 +13,7 @@
 #ifndef INSETERT_H
 #define INSETERT_H
 
-#include "InsetCollapsable.h"
+#include "InsetCollapsible.h"
 
 
 namespace lyx {
@@ -29,7 +29,7 @@ namespace lyx {
 
 class Language;
 
-class InsetERT : public InsetCollapsable {
+class InsetERT : public InsetCollapsible {
 public:
 	///
 	InsetERT(Buffer *, CollapseStatus status = Open);

@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 64
+currentFormat = 65
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -216,6 +216,9 @@ currentFormat = 64
 # Strip leading and trailing spaces from LabelString,
 # LabelStringAppendix, and EndLabelString, and LabelCounter,
 # to conform to what we used to do.
+
+# Incremented to format 65, 16 October 2017 by spitz
+# Color collapsable -> collapsible
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
@@ -464,6 +467,17 @@ def convert(lines, end_format):
             i += 1
             while i < len(lines) and not re_EndBabelPreamble.match(lines[i]):
                 i += 1
+            continue
+
+        if format == 64:
+            match = re.compile(b'(\\s*Color\\s+)(\\w+)', re.IGNORECASE).match(lines[i])
+            if not match:
+                i += 1
+                continue
+            col  = match.group(2)
+            if col == "collapsable":
+                lines[i] = match.group(1) + "collapsible"
+            i += 1
             continue
 
         if format == 63:

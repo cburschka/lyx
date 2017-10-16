@@ -44,7 +44,7 @@ using namespace std;
 namespace lyx {
 
 InsetBranch::InsetBranch(Buffer * buf, InsetBranchParams const & params)
-	: InsetCollapsable(buf, InsetText::DefaultLayout), params_(params)
+	: InsetCollapsible(buf, InsetText::DefaultLayout), params_(params)
 {}
 
 
@@ -53,14 +53,14 @@ void InsetBranch::write(ostream & os) const
 	os << "Branch ";
 	params_.write(os);
 	os << '\n';
-	InsetCollapsable::write(os);
+	InsetCollapsible::write(os);
 }
 
 
 void InsetBranch::read(Lexer & lex)
 {
 	params_.read(lex);
-	InsetCollapsable::read(lex);
+	InsetCollapsible::read(lex);
 }
 
 
@@ -207,11 +207,11 @@ void InsetBranch::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (cmd.argument() == "assign")
 			setStatus(cur, isBranchSelected() ? Open : Collapsed);
 		else
-			InsetCollapsable::doDispatch(cur, cmd);
+			InsetCollapsible::doDispatch(cur, cmd);
 		break;
 
 	default:
-		InsetCollapsable::doDispatch(cur, cmd);
+		InsetCollapsible::doDispatch(cur, cmd);
 		break;
 	}
 }
@@ -259,11 +259,11 @@ bool InsetBranch::getStatus(Cursor & cur, FuncRequest const & cmd,
 		if (cmd.argument() == "assign")
 			flag.setEnabled(true);
 		else
-			return InsetCollapsable::getStatus(cur, cmd, flag);
+			return InsetCollapsible::getStatus(cur, cmd, flag);
 		break;
 
 	default:
-		return InsetCollapsable::getStatus(cur, cmd, flag);
+		return InsetCollapsible::getStatus(cur, cmd, flag);
 	}
 	return true;
 }
@@ -331,7 +331,7 @@ docstring InsetBranch::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 void InsetBranch::toString(odocstream & os) const
 {
 	if (producesOutput())
-		InsetCollapsable::toString(os);
+		InsetCollapsible::toString(os);
 }
 
 
@@ -339,14 +339,14 @@ void InsetBranch::forOutliner(docstring & os, size_t const maxlen,
 							  bool const shorten) const
 {
 	if (producesOutput())
-		InsetCollapsable::forOutliner(os, maxlen, shorten);
+		InsetCollapsible::forOutliner(os, maxlen, shorten);
 }
 
 
 void InsetBranch::validate(LaTeXFeatures & features) const
 {
 	if (producesOutput())
-		InsetCollapsable::validate(features);
+		InsetCollapsible::validate(features);
 }
 
 
@@ -388,7 +388,7 @@ void InsetBranch::string2params(string const & in, InsetBranchParams & params)
 void InsetBranch::updateBuffer(ParIterator const & it, UpdateType utype)
 {
 	setLabel(params_.branch + (params_.inverted ? " (-)" : ""));
-	InsetCollapsable::updateBuffer(it, utype);
+	InsetCollapsible::updateBuffer(it, utype);
 }
 
 

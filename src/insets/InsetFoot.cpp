@@ -69,7 +69,7 @@ void InsetFoot::updateBuffer(ParIterator const & it, UpdateType utype)
 	custom_label_ += ' ' + cnts.theCounter(count, lang->code());
 	setLabel(custom_label_);
 
-	InsetCollapsable::updateBuffer(it, utype);
+	InsetCollapsible::updateBuffer(it, utype);
 	if (utype == OutputUpdate)
 		cnts.restoreLastCounter();
 }
@@ -79,7 +79,7 @@ docstring InsetFoot::toolTip(BufferView const & bv, int x, int y) const
 {
 	if (isOpen(bv))
 		// this will give us something useful if there is no button
-		return InsetCollapsable::toolTip(bv, x, y);
+		return InsetCollapsible::toolTip(bv, x, y);
 	return toolTipText(custom_label_+ ": ");
 }
 

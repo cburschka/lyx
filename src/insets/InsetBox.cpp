@@ -102,7 +102,7 @@ BoxTranslatorLoc const & boxtranslator_loc()
 /////////////////////////////////////////////////////////////////////////
 
 InsetBox::InsetBox(Buffer * buffer, string const & label)
-	: InsetCollapsable(buffer), params_(label)
+	: InsetCollapsible(buffer), params_(label)
 {}
 
 
@@ -116,14 +116,14 @@ docstring InsetBox::layoutName() const
 void InsetBox::write(ostream & os) const
 {
 	params_.write(os);
-	InsetCollapsable::write(os);
+	InsetCollapsible::write(os);
 }
 
 
 void InsetBox::read(Lexer & lex)
 {
 	params_.read(lex);
-	InsetCollapsable::read(lex);
+	InsetCollapsible::read(lex);
 }
 
 
@@ -165,7 +165,7 @@ void InsetBox::setButtonLabel()
 	if (btype == Boxed)
 		setFrameColor(lcolor.getFromLaTeXName(params_.framecolor));
 	else
-		setFrameColor(Color_collapsableframe);
+		setFrameColor(Color_collapsibleframe);
 }
 
 
@@ -188,7 +188,7 @@ void InsetBox::metrics(MetricsInfo & m, Dimension & dim) const
 	int textwidth_backup = m.base.textwidth;
 	if (hasFixedWidth())
 		m.base.textwidth = params_.width.inPixels(m.base);
-	InsetCollapsable::metrics(m, dim);
+	InsetCollapsible::metrics(m, dim);
 	// retore textwidth.
 	m.base.textwidth = textwidth_backup;
 }
@@ -287,7 +287,7 @@ void InsetBox::doDispatch(Cursor & cur, FuncRequest & cmd)
 	}
 
 	default:
-		InsetCollapsable::doDispatch(cur, cmd);
+		InsetCollapsible::doDispatch(cur, cmd);
 		break;
 	}
 }
@@ -310,7 +310,7 @@ bool InsetBox::getStatus(Cursor & cur, FuncRequest const & cmd,
 			flag.setEnabled(true);
 			return true;
 		}
-		return InsetCollapsable::getStatus(cur, cmd, flag);
+		return InsetCollapsible::getStatus(cur, cmd, flag);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
@@ -318,7 +318,7 @@ bool InsetBox::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	default:
-		return InsetCollapsable::getStatus(cur, cmd, flag);
+		return InsetCollapsible::getStatus(cur, cmd, flag);
 	}
 }
 
@@ -730,7 +730,7 @@ void InsetBox::validate(LaTeXFeatures & features) const
 		features.require("framed");
 		break;
 	}
-	InsetCollapsable::validate(features);
+	InsetCollapsible::validate(features);
 }
 
 

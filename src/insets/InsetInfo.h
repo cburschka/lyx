@@ -12,7 +12,7 @@
 #ifndef INSET_INFO_H
 #define INSET_INFO_H
 
-#include "InsetCollapsable.h"
+#include "InsetCollapsible.h"
 
 namespace lyx {
 
@@ -77,7 +77,7 @@ the command buffer (view->Toolbar->Command Buffer).
 
 */
 
-class InsetInfo : public InsetCollapsable {
+class InsetInfo : public InsetCollapsible {
 public:
 	enum info_type {
 		UNKNOWN_INFO,   // Invalid type
@@ -146,7 +146,7 @@ private:
 	///
 	void setText(docstring const & str);
 	// make sure that the other version of setText is still available.
-	using InsetCollapsable::setText;
+	using InsetCollapsible::setText;
 	///
 	info_type type_;
 	///

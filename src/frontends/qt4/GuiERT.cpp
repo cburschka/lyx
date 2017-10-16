@@ -40,8 +40,8 @@ GuiERT::GuiERT(QWidget * parent) : InsetParamsWidget(parent)
 
 docstring GuiERT::dialogToParams() const
 {
-	InsetCollapsable::CollapseStatus const status = openRB->isChecked()
-		? InsetCollapsable::Open : InsetCollapsable::Collapsed;
+	InsetCollapsible::CollapseStatus const status = openRB->isChecked()
+		? InsetCollapsible::Open : InsetCollapsible::Collapsed;
 	return from_ascii(InsetERT::params2string(status));
 }
 
@@ -51,10 +51,10 @@ void GuiERT::paramsToDialog(Inset const * inset)
 	InsetERT const * ert = static_cast<InsetERT const *>(inset);
 	// FIXME: This dialog has absolutely no value...
 	BufferView const * bv = guiApp->currentView()->currentBufferView();
-	InsetCollapsable::CollapseStatus status = ert->status(*bv);
+	InsetCollapsible::CollapseStatus status = ert->status(*bv);
 	switch (status) {
-		case InsetCollapsable::Open: openRB->setChecked(true); break;
-		case InsetCollapsable::Collapsed: collapsedRB->setChecked(true); break;
+		case InsetCollapsible::Open: openRB->setChecked(true); break;
+		case InsetCollapsible::Collapsed: collapsedRB->setChecked(true); break;
 	}
 }
 

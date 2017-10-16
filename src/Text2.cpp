@@ -42,7 +42,7 @@
 #include "TextClass.h"
 #include "TextMetrics.h"
 
-#include "insets/InsetCollapsable.h"
+#include "insets/InsetCollapsible.h"
 
 #include "mathed/InsetMathHull.h"
 

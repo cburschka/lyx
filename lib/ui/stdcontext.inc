@@ -139,9 +139,9 @@ Menuset
 	End
 
 #
-# InsetCollapsable context menu
+# InsetCollapsible context menu
 #
-	Menu "context-collapsable"
+	Menu "context-collapsible"
 		OptItem "Open Inset|O" "inset-toggle open"
 		OptItem "Close Inset|C" "inset-toggle close"
 		Separator

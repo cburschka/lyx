@@ -969,13 +969,13 @@ ParValidator * par_validator = 0;
 int InsetListingsParams::package_ = 0;
 
 InsetListingsParams::InsetListingsParams()
-	: inline_(false), params_(), status_(InsetCollapsable::Open)
+	: inline_(false), params_(), status_(InsetCollapsible::Open)
 {
 }
 
 
 InsetListingsParams::InsetListingsParams(string const & par, bool in,
-		InsetCollapsable::CollapseStatus s)
+		InsetCollapsible::CollapseStatus s)
 	: inline_(in), params_(), status_(s)
 {
 	// this will activate parameter validation.
@@ -996,9 +996,9 @@ void InsetListingsParams::write(ostream & os) const
 void InsetListingsParams::read(Lexer & lex)
 {
 	lex >> inline_;
-	int s = InsetCollapsable::Collapsed;
+	int s = InsetCollapsible::Collapsed;
 	lex >> s;
-	status_ = static_cast<InsetCollapsable::CollapseStatus>(s);
+	status_ = static_cast<InsetCollapsible::CollapseStatus>(s);
 	string par;
 	lex >> par;
 	fromEncodedString(par);

@@ -14,7 +14,7 @@
 #ifndef INSETBOX_H
 #define INSETBOX_H
 
-#include "InsetCollapsable.h"
+#include "InsetCollapsible.h"
 #include "Length.h"
 
 
@@ -74,7 +74,7 @@ public:
 ///////////////////////////////////////////////////////////////////////
 
 
-class InsetBox : public InsetCollapsable
+class InsetBox : public InsetCollapsible
 {
 public:
 	///
@@ -143,7 +143,7 @@ public:
 	std::string contextMenuName() const;
 	//@}
 
-	/// \name Public functions inherited from InsetCollapsable class
+	/// \name Public functions inherited from InsetCollapsible class
 	//@{
 	///
 	void setButtonLabel();
