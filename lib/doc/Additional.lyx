@@ -23995,11 +23995,19 @@ puttygen
  Save your private .ppk key file and put the public one on the server side.
  If the SVN server runs on Linux, note that the format of the public key
  is not compatible with Linux openssh and you will need to direcly copy-paste
- the key from the “
+ the key from the 
+\begin_inset Quotes eld
+\end_inset
+
+
 \emph on
 Public key for pasting into OpenSSH authorized_keys file
 \emph default
-:” edit field into the server's 
+:
+\begin_inset Quotes erd
+\end_inset
+
+ edit field into the server's 
 \begin_inset Flex Code
 status collapsed
 
@@ -26537,6 +26545,7 @@ status open
 status open
 
 \begin_layout Plain Layout
+
 3
 \end_layout
 
