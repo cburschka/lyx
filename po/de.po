@@ -1994,9 +1994,8 @@ msgid ""
 "Clip to the coordinates specified below (bounding box for DVI/PS output, "
 "viewport for PDF output)"
 msgstr ""
-"Auf die unten spezifizierten Koordinaten zuschneiden (BoundingBox im Fall von"
-" DVI/PS-Ausgabe, "
-"Viewport im Fall von PDF-Ausgabe)"
+"Auf die unten spezifizierten Koordinaten zuschneiden (BoundingBox im Fall "
+"von DVI/PS-Ausgabe, Viewport im Fall von PDF-Ausgabe)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:350
 msgid "Clip to c&oordinates"
@@ -2017,9 +2016,8 @@ msgid ""
 "Read coordinates from the file (bounding box value in case of PostScript "
 "files, graphic dimensions in case of other file types)"
 msgstr ""
-"Lese die Koordinaten aus der Datei (BoundingBox-Wert im Fall von"
-" PostScript-Dateien, "
-"Größe der Grafik im Fall anderer Dateitypen)"
+"Lese die Koordinaten aus der Datei (BoundingBox-Wert im Fall von PostScript-"
+"Dateien, Größe der Grafik im Fall anderer Dateitypen)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:520
 #: src/frontends/qt4/ui/GraphicsUi.ui:527
@@ -26394,11 +26392,13 @@ msgid "math macro new parameter"
 msgstr "Mathe-Makro (neuer Parameter)"
 
 #: src/Color.cpp:272
-msgid "collapsable inset text"
+#, fuzzy
+msgid "collapsible inset text"
 msgstr "Einklappbare Einfügung (Text)"
 
 #: src/Color.cpp:273
-msgid "collapsable inset frame"
+#, fuzzy
+msgid "collapsible inset frame"
 msgstr "Einklappbare Einfügung (Rahmen)"
 
 #: src/Color.cpp:274
