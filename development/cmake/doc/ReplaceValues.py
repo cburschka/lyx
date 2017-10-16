@@ -35,7 +35,7 @@ def SubstituteDataInLine(line):
 
 def SubstituteDataInFile(InFile):
     for line in codecs.open(InFile, 'r', 'utf-8'):
-        print(SubstituteDataInLine(line[:-1]).encode("utf-8"))
+        print(SubstituteDataInLine(line[:-1]))
 
 ##########################################
 
