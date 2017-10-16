@@ -13,7 +13,7 @@
 #define INSETARGUMENT_H
 
 
-#include "InsetCollapsable.h"
+#include "InsetCollapsible.h"
 
 
 namespace lyx {
@@ -23,7 +23,7 @@ namespace lyx {
  * InsetArgument. Used to insert a short version of sectioning header etc.
  * automatically, or other optional LaTeX arguments
  */
-class InsetArgument : public InsetCollapsable
+class InsetArgument : public InsetCollapsible
 {
 public:
 	///
@@ -71,7 +71,7 @@ public:
 	///
 	bool resetFontEdit() const { return false; }
 	//@}
-	/// \name Public functions inherited from InsetCollapsable class
+	/// \name Public functions inherited from InsetCollapsible class
 	//@{
 	///
 	InsetLayout::InsetDecoration decoration() const;

@@ -12,7 +12,7 @@
 #ifndef INSETFOOTLIKE_H
 #define INSETFOOTLIKE_H
 
-#include "InsetCollapsable.h"
+#include "InsetCollapsible.h"
 
 
 namespace lyx {
@@ -20,7 +20,7 @@ namespace lyx {
 // To have this class is probably a bit overkill... (Lgb)
 
 // The footnote inset
-class InsetFootlike : public InsetCollapsable {
+class InsetFootlike : public InsetCollapsible {
 public:
 	///
 	InsetFootlike(Buffer *);

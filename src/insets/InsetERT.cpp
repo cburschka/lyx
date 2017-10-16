@@ -40,7 +40,7 @@ using namespace lyx::support;
 namespace lyx {
 
 InsetERT::InsetERT(Buffer * buf, CollapseStatus status)
-	: InsetCollapsable(buf)
+	: InsetCollapsible(buf)
 {
 	status_ = status;
 }
@@ -49,7 +49,7 @@ InsetERT::InsetERT(Buffer * buf, CollapseStatus status)
 void InsetERT::write(ostream & os) const
 {
 	os << "ERT" << "\n";
-	InsetCollapsable::write(os);
+	InsetCollapsible::write(os);
 }
 
 
@@ -117,7 +117,7 @@ void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		//fall-through
 	default:
-		InsetCollapsable::doDispatch(cur, cmd);
+		InsetCollapsible::doDispatch(cur, cmd);
 		break;
 	}
 
@@ -136,7 +136,7 @@ bool InsetERT::getStatus(Cursor & cur, FuncRequest const & cmd,
 		//fall through
 
 	default:
-		return InsetCollapsable::getStatus(cur, cmd, status);
+		return InsetCollapsible::getStatus(cur, cmd, status);
 	}
 }
 
@@ -150,7 +150,7 @@ docstring const InsetERT::buttonLabel(BufferView const & bv) const
 }
 
 
-InsetCollapsable::CollapseStatus InsetERT::string2params(string const & in)
+InsetCollapsible::CollapseStatus InsetERT::string2params(string const & in)
 {
 	if (in.empty())
 		return Collapsed;

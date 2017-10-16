@@ -1,5 +1,5 @@
 /**
- * \file InsetCollapsable.cpp
+ * \file InsetCollapsible.cpp
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -12,7 +12,7 @@
 
 #include <config.h>
 
-#include "InsetCollapsable.h"
+#include "InsetCollapsible.h"
 
 #include "Buffer.h"
 #include "BufferView.h"
@@ -41,24 +41,24 @@ using namespace std;
 
 namespace lyx {
 
-InsetCollapsable::InsetCollapsable(Buffer * buf, InsetText::UsePlain ltype)
+InsetCollapsible::InsetCollapsible(Buffer * buf, InsetText::UsePlain ltype)
 	: InsetText(buf, ltype), status_(Open)
 {
 	setDrawFrame(true);
-	setFrameColor(Color_collapsableframe);
+	setFrameColor(Color_collapsibleframe);
 }
 
 
 // The sole purpose of this copy constructor is to make sure
 // that the view_ map is not copied and remains empty.
-InsetCollapsable::InsetCollapsable(InsetCollapsable const & rhs)
+InsetCollapsible::InsetCollapsible(InsetCollapsible const & rhs)
 	: InsetText(rhs),
 	  status_(rhs.status_),
 	  labelstring_(rhs.labelstring_)
 {}
 
 
-InsetCollapsable::~InsetCollapsable()
+InsetCollapsible::~InsetCollapsible()
 {
 	map<BufferView const *, View>::iterator it = view_.begin();
 	map<BufferView const *, View>::iterator end = view_.end();
@@ -68,7 +68,7 @@ InsetCollapsable::~InsetCollapsable()
 }
 
 
-InsetCollapsable::CollapseStatus InsetCollapsable::status(BufferView const & bv) const
+InsetCollapsible::CollapseStatus InsetCollapsible::status(BufferView const & bv) const
 {
 	if (decoration() == InsetLayout::CONGLOMERATE)
 		return status_;
@@ -76,7 +76,7 @@ InsetCollapsable::CollapseStatus InsetCollapsable::status(BufferView const & bv)
 }
 
 
-InsetCollapsable::Geometry InsetCollapsable::geometry(BufferView const & bv) const
+InsetCollapsible::Geometry InsetCollapsible::geometry(BufferView const & bv) const
 {
 	switch (decoration()) {
 	case InsetLayout::CLASSIC:
@@ -100,7 +100,7 @@ InsetCollapsable::Geometry InsetCollapsable::geometry(BufferView const & bv) con
 }
 
 
-docstring InsetCollapsable::toolTip(BufferView const & bv, int x, int y) const
+docstring InsetCollapsible::toolTip(BufferView const & bv, int x, int y) const
 {
 	Dimension const dim = dimensionCollapsed(bv);
 	if (geometry(bv) == NoButton)
@@ -112,7 +112,7 @@ docstring InsetCollapsable::toolTip(BufferView const & bv, int x, int y) const
 }
 
 
-void InsetCollapsable::write(ostream & os) const
+void InsetCollapsible::write(ostream & os) const
 {
 	os << "status ";
 	switch (status_) {
@@ -128,9 +128,9 @@ void InsetCollapsable::write(ostream & os) const
 }
 
 
-void InsetCollapsable::read(Lexer & lex)
+void InsetCollapsible::read(Lexer & lex)
 {
-	lex.setContext("InsetCollapsable::read");
+	lex.setContext("InsetCollapsible::read");
 	string tmp_token;
 	status_ = Collapsed;
 	lex >> "status" >> tmp_token;
@@ -142,7 +142,7 @@ void InsetCollapsable::read(Lexer & lex)
 }
 
 
-Dimension InsetCollapsable::dimensionCollapsed(BufferView const & bv) const
+Dimension InsetCollapsible::dimensionCollapsed(BufferView const & bv) const
 {
 	Dimension dim;
 	FontInfo labelfont(getLabelfont());
@@ -153,7 +153,7 @@ Dimension InsetCollapsable::dimensionCollapsed(BufferView const & bv) const
 }
 
 
-void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
+void InsetCollapsible::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	view_[mi.base.bv].auto_open_ = mi.base.bv->cursor().isInside(this);
 
@@ -216,7 +216,7 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-bool InsetCollapsable::setMouseHover(BufferView const * bv, bool mouse_hover)
+bool InsetCollapsible::setMouseHover(BufferView const * bv, bool mouse_hover)
 	const
 {
 	view_[bv].mouse_hover_ = mouse_hover;
@@ -224,7 +224,7 @@ bool InsetCollapsable::setMouseHover(BufferView const * bv, bool mouse_hover)
 }
 
 
-void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
+void InsetCollapsible::draw(PainterInfo & pi, int x, int y) const
 {
 	BufferView const & bv = *pi.base.bv;
 
@@ -296,9 +296,9 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		{	// We will take care of the frame and the change tracking cue
 			// ourselves, below.
 			Changer dummy = make_change(pi.change_, Change());
-			const_cast<InsetCollapsable *>(this)->setDrawFrame(false);
+			const_cast<InsetCollapsible *>(this)->setDrawFrame(false);
 			InsetText::draw(pi, textx, texty);
-			const_cast<InsetCollapsable *>(this)->setDrawFrame(true);
+			const_cast<InsetCollapsible *>(this)->setDrawFrame(true);
 		}
 
 		int desc = textdim.descent();
@@ -361,7 +361,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void InsetCollapsable::cursorPos(BufferView const & bv,
+void InsetCollapsible::cursorPos(BufferView const & bv,
 		CursorSlice const & sl, bool boundary, int & x, int & y) const
 {
 	if (geometry(bv) == ButtonOnly)
@@ -390,7 +390,7 @@ void InsetCollapsable::cursorPos(BufferView const & bv,
 }
 
 
-bool InsetCollapsable::editable() const
+bool InsetCollapsible::editable() const
 {
 	switch (decoration()) {
 	case InsetLayout::CLASSIC:
@@ -402,19 +402,19 @@ bool InsetCollapsable::editable() const
 }
 
 
-bool InsetCollapsable::descendable(BufferView const & bv) const
+bool InsetCollapsible::descendable(BufferView const & bv) const
 {
 	return geometry(bv) != ButtonOnly;
 }
 
 
-bool InsetCollapsable::clickable(BufferView const & bv, int x, int y) const
+bool InsetCollapsible::clickable(BufferView const & bv, int x, int y) const
 {
 	return view_[&bv].button_dim_.contains(x, y);
 }
 
 
-docstring const InsetCollapsable::getNewLabel(docstring const & l) const
+docstring const InsetCollapsible::getNewLabel(docstring const & l) const
 {
 	odocstringstream label;
 	pos_type const max_length = 15;
@@ -439,17 +439,17 @@ docstring const InsetCollapsable::getNewLabel(docstring const & l) const
 }
 
 
-void InsetCollapsable::edit(Cursor & cur, bool front, EntryDirection entry_from)
+void InsetCollapsible::edit(Cursor & cur, bool front, EntryDirection entry_from)
 {
-	//lyxerr << "InsetCollapsable: edit left/right" << endl;
+	//lyxerr << "InsetCollapsible: edit left/right" << endl;
 	cur.push(*this);
 	InsetText::edit(cur, front, entry_from);
 }
 
 
-Inset * InsetCollapsable::editXY(Cursor & cur, int x, int y)
+Inset * InsetCollapsible::editXY(Cursor & cur, int x, int y)
 {
-	//lyxerr << "InsetCollapsable: edit xy" << endl;
+	//lyxerr << "InsetCollapsible: edit xy" << endl;
 	if (geometry(cur.bv()) == ButtonOnly
 	    || (view_[&cur.bv()].button_dim_.contains(x, y)
 	        && geometry(cur.bv()) != NoButton))
@@ -459,9 +459,9 @@ Inset * InsetCollapsable::editXY(Cursor & cur, int x, int y)
 }
 
 
-void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
+void InsetCollapsible::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
-	//lyxerr << "InsetCollapsable::doDispatch (begin): cmd: " << cmd
+	//lyxerr << "InsetCollapsible::doDispatch (begin): cmd: " << cmd
 	//	<< " cur: " << cur << " bvcur: " << cur.bv().cursor() << endl;
 
 	bool const hitButton = clickable(cur.bv(), cmd.x(), cmd.y());
@@ -553,7 +553,7 @@ void InsetCollapsable::doDispatch(Cursor & cur, FuncRequest & cmd)
 }
 
 
-bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
+bool InsetCollapsible::getStatus(Cursor & cur, FuncRequest const & cmd,
 		FuncStatus & flag) const
 {
 	switch (cmd.action()) {
@@ -575,13 +575,13 @@ bool InsetCollapsable::getStatus(Cursor & cur, FuncRequest const & cmd,
 }
 
 
-void InsetCollapsable::setLabel(docstring const & l)
+void InsetCollapsible::setLabel(docstring const & l)
 {
 	labelstring_ = l;
 }
 
 
-docstring InsetCollapsable::getLabel() const
+docstring InsetCollapsible::getLabel() const
 {
 	InsetLayout const & il = getLayout();
 	return labelstring_.empty() ?
@@ -589,7 +589,7 @@ docstring InsetCollapsable::getLabel() const
 }
 
 
-docstring const InsetCollapsable::buttonLabel(BufferView const & bv) const
+docstring const InsetCollapsible::buttonLabel(BufferView const & bv) const
 {
 	InsetLayout const & il = getLayout();
 	docstring const label = getLabel();
@@ -599,7 +599,7 @@ docstring const InsetCollapsable::buttonLabel(BufferView const & bv) const
 }
 
 
-void InsetCollapsable::setStatus(Cursor & cur, CollapseStatus status)
+void InsetCollapsible::setStatus(Cursor & cur, CollapseStatus status)
 {
 	status_ = status;
 	setButtonLabel();
@@ -608,14 +608,14 @@ void InsetCollapsable::setStatus(Cursor & cur, CollapseStatus status)
 }
 
 
-InsetLayout::InsetDecoration InsetCollapsable::decoration() const
+InsetLayout::InsetDecoration InsetCollapsible::decoration() const
 {
 	InsetLayout::InsetDecoration const dec = getLayout().decoration();
 	return dec == InsetLayout::DEFAULT ? InsetLayout::CLASSIC : dec;
 }
 
 
-string InsetCollapsable::contextMenu(BufferView const & bv, int x,
+string InsetCollapsible::contextMenu(BufferView const & bv, int x,
 	int y) const
 {
 	string context_menu = contextMenuName();
@@ -623,7 +623,7 @@ string InsetCollapsable::contextMenu(BufferView const & bv, int x,
 	if (decoration() == InsetLayout::CONGLOMERATE)
 		return context_menu + ";" + it_context_menu;
 
-	string const ic_context_menu = InsetCollapsable::contextMenuName();
+	string const ic_context_menu = InsetCollapsible::contextMenuName();
 	if (ic_context_menu != context_menu)
 		context_menu += ";" + ic_context_menu;
 
@@ -638,16 +638,16 @@ string InsetCollapsable::contextMenu(BufferView const & bv, int x,
 }
 
 
-string InsetCollapsable::contextMenuName() const
+string InsetCollapsible::contextMenuName() const
 {
 	if (decoration() == InsetLayout::CONGLOMERATE)
 		return "context-conglomerate";
 	else
-		return "context-collapsable";
+		return "context-collapsible";
 }
 
 
-bool InsetCollapsable::canPaintChange(BufferView const & bv) const
+bool InsetCollapsible::canPaintChange(BufferView const & bv) const
 {
 	// return false to let RowPainter draw the change tracking cue consistently
 	// with the surrounding text, when the inset is inline: for buttons, for
@@ -665,7 +665,7 @@ bool InsetCollapsable::canPaintChange(BufferView const & bv) const
 }
 
 
-void InsetCollapsable::addToToc(DocIterator const & cpit, bool output_active,
+void InsetCollapsible::addToToc(DocIterator const & cpit, bool output_active,
                                 UpdateType utype, TocBackend & backend) const
 {
 	bool doing_output = output_active && producesOutput();
@@ -674,7 +674,7 @@ void InsetCollapsable::addToToc(DocIterator const & cpit, bool output_active,
 		TocBuilder & b = backend.builder(layout.tocType());
 		// Cursor inside the inset
 		DocIterator pit = cpit;
-		pit.push_back(CursorSlice(const_cast<InsetCollapsable &>(*this)));
+		pit.push_back(CursorSlice(const_cast<InsetCollapsible &>(*this)));
 		docstring const label = getLabel();
 		b.pushItem(pit, label + (label.empty() ? "" : ": "), output_active);
 		// Proceed with the rest of the inset.

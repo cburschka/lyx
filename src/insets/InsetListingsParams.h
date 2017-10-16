@@ -25,7 +25,7 @@ public:
 
 	///
 	InsetListingsParams(std::string const &, bool in=false,
-		InsetCollapsable::CollapseStatus s = InsetCollapsable::Open);
+		InsetCollapsible::CollapseStatus s = InsetCollapsible::Open);
 
 	/// write parameters to an ostream
 	void write(std::ostream &) const;
@@ -65,7 +65,7 @@ public:
 	bool isFloat() const;
 
 	///
-	InsetCollapsable::CollapseStatus status() const { return status_; }
+	InsetCollapsible::CollapseStatus status() const { return status_; }
 
 	///
 	void setInline(bool i) { inline_ = i; }
@@ -105,8 +105,8 @@ private:
 	typedef std::vector<std::pair<std::string, std::string> > keyValuePair;
 	keyValuePair params_;
 
-	/// collapsable status
-	InsetCollapsable::CollapseStatus status_;
+	/// collapsible status
+	InsetCollapsible::CollapseStatus status_;
 };
 
 

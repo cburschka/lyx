@@ -125,7 +125,7 @@ void InsetIPADecoParams::read(Lexer & lex)
 /////////////////////////////////////////////////////////////////////
 
 InsetIPADeco::InsetIPADeco(Buffer * buf, string const & label)
-	: InsetCollapsable(buf)
+	: InsetCollapsible(buf)
 {
 	setDrawFrame(true);
 	setFrameColor(Color_insetframe);
@@ -179,7 +179,7 @@ void InsetIPADeco::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetIPADeco::draw(PainterInfo & pi, int x, int y) const
 {
 	// draw the text
-	InsetCollapsable::draw(pi, x, y);
+	InsetCollapsible::draw(pi, x, y);
 
 	// draw the inset marker
 	drawMarkers(pi, x, y);
@@ -223,14 +223,14 @@ void InsetIPADeco::draw(PainterInfo & pi, int x, int y) const
 void InsetIPADeco::write(ostream & os) const
 {
 	params_.write(os);
-	InsetCollapsable::write(os);
+	InsetCollapsible::write(os);
 }
 
 
 void InsetIPADeco::read(Lexer & lex)
 {
 	params_.read(lex);
-	InsetCollapsable::read(lex);
+	InsetCollapsible::read(lex);
 }
 
 
@@ -277,7 +277,7 @@ void InsetIPADeco::latex(otexstream & os, OutputParams const & runparams) const
 		os << "\\texttoptiebar{";
 	else if (params_.type == InsetIPADecoParams::Bottomtiebar)
 		os << "\\textbottomtiebar{";
-	InsetCollapsable::latex(os, runparams);
+	InsetCollapsible::latex(os, runparams);
 	os << "}";
 }
 
@@ -286,7 +286,7 @@ int InsetIPADeco::plaintext(odocstringstream & os,
 			    OutputParams const & runparams, size_t max_length) const
 {
 	odocstringstream ods;
-	int h = (int)(InsetCollapsable::plaintext(ods, runparams, max_length) / 2);
+	int h = (int)(InsetCollapsible::plaintext(ods, runparams, max_length) / 2);
 	docstring result = ods.str();
 	docstring const before = result.substr(0, h);
 	docstring const after = result.substr(h, result.size());
@@ -308,7 +308,7 @@ int InsetIPADeco::plaintext(odocstringstream & os,
 int InsetIPADeco::docbook(odocstream & os, OutputParams const & runparams) const
 {
 	// FIXME: Any docbook option here?
-	return InsetCollapsable::docbook(os, runparams);
+	return InsetCollapsible::docbook(os, runparams);
 }
 
 
@@ -317,7 +317,7 @@ docstring InsetIPADeco::xhtml(XHTMLStream & xs, OutputParams const & runparams) 
 	// FIXME: Like in plaintext, the combining characters "&#x361;" (toptiebar)
 	// or "&#x35c;" (bottomtiebar) would need to be inserted just in the mid
 	// of the text string. (How) can this be done with the xhtml stream?
-	return InsetCollapsable::xhtml(xs, runparams);
+	return InsetCollapsible::xhtml(xs, runparams);
 }
 
 

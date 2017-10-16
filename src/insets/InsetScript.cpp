@@ -235,7 +235,7 @@ bool InsetScript::insetAllowed(InsetCode code) const
 	case BOX_CODE:
 	case BRANCH_CODE:
 	case CAPTION_CODE:
-	case COLLAPSABLE_CODE:
+	case COLLAPSIBLE_CODE:
 	case FLOAT_CODE:
 	case FLOAT_LIST_CODE:
 	case FOOT_CODE:

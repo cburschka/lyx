@@ -155,10 +155,10 @@ enum ColorCode {
 	/// Math line color
 	Color_mathline,
 
-	/// Collapsable insets text
-	Color_collapsable,
-	/// Collapsable insets frame
-	Color_collapsableframe,
+	/// Collapsible insets text
+	Color_collapsible,
+	/// Collapsible insets frame
+	Color_collapsibleframe,
 
 	/// Inset marker background color
 	Color_insetbg,

@@ -13,7 +13,7 @@
 #define INSET_INDEX_H
 
 
-#include "InsetCollapsable.h"
+#include "InsetCollapsible.h"
 #include "InsetCommand.h"
 
 
@@ -35,7 +35,7 @@ public:
 
 /** Used to insert index labels
   */
-class InsetIndex : public InsetCollapsable {
+class InsetIndex : public InsetCollapsible {
 public:
 	///
 	InsetIndex(Buffer *, InsetIndexParams const &);

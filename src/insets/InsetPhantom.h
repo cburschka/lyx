@@ -12,7 +12,7 @@
 #ifndef INSET_PHANTOM_H
 #define INSET_PHANTOM_H
 
-#include "InsetCollapsable.h"
+#include "InsetCollapsible.h"
 
 
 namespace lyx {
@@ -43,7 +43,7 @@ public:
 /////////////////////////////////////////////////////////////////////////
 
 /// The phantom inset
-class InsetPhantom : public InsetCollapsable
+class InsetPhantom : public InsetCollapsible
 {
 public:
 	///

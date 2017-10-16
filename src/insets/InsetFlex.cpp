@@ -35,12 +35,12 @@ namespace lyx {
 
 
 InsetFlex::InsetFlex(Buffer * buf, string const & layoutName)
-	: InsetCollapsable(buf), name_(layoutName)
+	: InsetCollapsible(buf), name_(layoutName)
 {}
 
 
 InsetFlex::InsetFlex(InsetFlex const & in)
-	: InsetCollapsable(in), name_(in.name_)
+	: InsetCollapsible(in), name_(in.name_)
 {}
 
 
@@ -86,7 +86,7 @@ void InsetFlex::write(ostream & os) const
 		}
 	}
 	os << name << "\n";
-	InsetCollapsable::write(os);
+	InsetCollapsible::write(os);
 }
 
 
@@ -101,13 +101,13 @@ bool InsetFlex::getStatus(Cursor & cur, FuncRequest const & cmd,
 				translateLyXType(to_utf8(cmd.argument()));
 			if (il.lyxtype() == type) {
 				FuncRequest temp_cmd(LFUN_INSET_DISSOLVE);
-				return InsetCollapsable::getStatus(cur, temp_cmd, flag);
+				return InsetCollapsible::getStatus(cur, temp_cmd, flag);
 			} else
 				return false;
 		}
 		// fall-through
 	default:
-		return InsetCollapsable::getStatus(cur, cmd, flag);
+		return InsetCollapsible::getStatus(cur, cmd, flag);
 	}
 }
 
@@ -123,14 +123,14 @@ void InsetFlex::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 			if (il.lyxtype() == type) {
 				FuncRequest temp_cmd(LFUN_INSET_DISSOLVE);
-				InsetCollapsable::doDispatch(cur, temp_cmd);
+				InsetCollapsible::doDispatch(cur, temp_cmd);
 			} else
 				cur.undispatched();
 			break;
 		}
 		// fall-through
 	default:
-		InsetCollapsable::doDispatch(cur, cmd);
+		InsetCollapsible::doDispatch(cur, cmd);
 		break;
 	}
 }
@@ -159,7 +159,7 @@ void InsetFlex::updateBuffer(ParIterator const & it, UpdateType utype)
 		// need a layout flag
 		cnts.saveLastCounter();
 	}
-	InsetCollapsable::updateBuffer(it, utype);
+	InsetCollapsible::updateBuffer(it, utype);
 	if (save_counter)
 		cnts.restoreLastCounter();
 }

@@ -117,7 +117,7 @@ static void build_translator()
 	insetnames[MATH_MACROARG_CODE] = InsetName("mathmacroarg");
 	insetnames[LISTINGS_CODE] = InsetName("listings");
 	insetnames[INFO_CODE] = InsetName("info", _("Info"));
-	insetnames[COLLAPSABLE_CODE] = InsetName("collapsable");
+	insetnames[COLLAPSIBLE_CODE] = InsetName("collapsible");
 	insetnames[NEWPAGE_CODE] = InsetName("newpage");
 	insetnames[SCRIPT_CODE] = InsetName("script");
 	insetnames[CELL_CODE] = InsetName("tablecell");

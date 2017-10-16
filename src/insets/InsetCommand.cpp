@@ -349,7 +349,7 @@ bool decodeInsetParam(string const & name, string & data,
 		break;
 	}
 	case ERT_CODE: {
-		data = InsetERT::params2string(InsetCollapsable::Open);
+		data = InsetERT::params2string(InsetCollapsible::Open);
 		break;
 	}
 	case EXTERNAL_CODE: {

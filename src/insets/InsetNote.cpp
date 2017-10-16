@@ -100,7 +100,7 @@ void InsetNoteParams::read(Lexer & lex)
 /////////////////////////////////////////////////////////////////////
 
 InsetNote::InsetNote(Buffer * buf, string const & label)
-	: InsetCollapsable(buf)
+	: InsetCollapsible(buf)
 {
 	params_.type = notetranslator().find(label);
 }
@@ -127,14 +127,14 @@ Inset::DisplayType InsetNote::display() const
 void InsetNote::write(ostream & os) const
 {
 	params_.write(os);
-	InsetCollapsable::write(os);
+	InsetCollapsible::write(os);
 }
 
 
 void InsetNote::read(Lexer & lex)
 {
 	params_.read(lex);
-	InsetCollapsable::read(lex);
+	InsetCollapsible::read(lex);
 }
 
 
@@ -176,7 +176,7 @@ void InsetNote::doDispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		InsetCollapsable::doDispatch(cur, cmd);
+		InsetCollapsible::doDispatch(cur, cmd);
 		break;
 	}
 }
@@ -203,7 +203,7 @@ bool InsetNote::getStatus(Cursor & cur, FuncRequest const & cmd,
 		return true;
 
 	default:
-		return InsetCollapsable::getStatus(cur, cmd, flag);
+		return InsetCollapsible::getStatus(cur, cmd, flag);
 	}
 }
 
@@ -214,7 +214,7 @@ bool InsetNote::isMacroScope() const
 	if (params_.type == InsetNoteParams::Note)
 		return true;
 
-	return InsetCollapsable::isMacroScope();
+	return InsetCollapsible::isMacroScope();
 }
 
 
@@ -245,7 +245,7 @@ void InsetNote::latex(otexstream & os, OutputParams const & runparams_in) const
 	// insets whose InsetLayout Display tag is false. This is achieved
 	// by telling otexstream to protect an immediately following space
 	// and is done for both comment and greyedout insets.
-	InsetCollapsable::latex(os, runparams);
+	InsetCollapsible::latex(os, runparams);
 
 	runparams_in.encoding = runparams.encoding;
 }
@@ -300,7 +300,7 @@ docstring InsetNote::xhtml(XHTMLStream & xs, OutputParams const & rp) const
 	if (params_.type == InsetNoteParams::Note)
 		return docstring();
 
-	return InsetCollapsable::xhtml(xs, rp);
+	return InsetCollapsible::xhtml(xs, rp);
 }
 
 
@@ -311,13 +311,13 @@ void InsetNote::validate(LaTeXFeatures & features) const
 		if (features.runparams().flavor == OutputParams::HTML)
 			// we do output this but set display to "none" by default,
 			// but people might want to use it.
-			InsetCollapsable::validate(features);
+			InsetCollapsible::validate(features);
 		else
 			// Only do the requires
 			features.useInsetLayout(getLayout());
 		break;
 	case InsetNoteParams::Greyedout:
-		InsetCollapsable::validate(features);
+		InsetCollapsible::validate(features);
 		break;
 	case InsetNoteParams::Note:
 		break;

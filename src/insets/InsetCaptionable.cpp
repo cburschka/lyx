@@ -110,7 +110,7 @@ void InsetCaptionable::addToToc(DocIterator const & cpit, bool output_active,
 	TocBuilder & b = backend.builder(caption_type_);
 	b.pushItem(pit, str, output_active);
 	// Proceed with the rest of the inset.
-	InsetCollapsable::addToToc(cpit, output_active, utype, backend);
+	InsetCollapsible::addToToc(cpit, output_active, utype, backend);
 	b.pop();
 }
 
@@ -131,7 +131,7 @@ void InsetCaptionable::updateBuffer(ParIterator const & it, UpdateType utype)
 	// Tell captions what the current float is
 	cnts.current_float(caption_type_);
 	cnts.isSubfloat(subflt);
-	InsetCollapsable::updateBuffer(it, utype);
+	InsetCollapsible::updateBuffer(it, utype);
 	// Restore counters
 	cnts.current_float(saveflt);
 	if (utype == OutputUpdate)
@@ -142,7 +142,7 @@ void InsetCaptionable::updateBuffer(ParIterator const & it, UpdateType utype)
 
 bool InsetCaptionable::insetAllowed(InsetCode c) const
 {
-	return (c == CAPTION_CODE) || InsetCollapsable::insetAllowed(c);
+	return (c == CAPTION_CODE) || InsetCollapsible::insetAllowed(c);
 }
 
 

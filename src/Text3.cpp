@@ -53,7 +53,7 @@
 #include "frontends/Selection.h"
 
 #include "insets/InsetArgument.h"
-#include "insets/InsetCollapsable.h"
+#include "insets/InsetCollapsible.h"
 #include "insets/InsetCommand.h"
 #include "insets/InsetExternal.h"
 #include "insets/InsetFloat.h"
@@ -245,7 +245,7 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	if (!inset)
 		return false;
 
-	if (InsetCollapsable * ci = inset->asInsetCollapsable())
+	if (InsetCollapsible * ci = inset->asInsetCollapsible())
 		ci->setButtonLabel();
 
 	cur.recordUndo();

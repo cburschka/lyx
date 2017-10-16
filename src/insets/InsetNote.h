@@ -12,7 +12,7 @@
 #ifndef INSET_NOTE_H
 #define INSET_NOTE_H
 
-#include "InsetCollapsable.h"
+#include "InsetCollapsible.h"
 
 
 namespace lyx {
@@ -43,7 +43,7 @@ public:
 /////////////////////////////////////////////////////////////////////////
 
 /// The PostIt note inset, and other annotations
-class InsetNote : public InsetCollapsable
+class InsetNote : public InsetCollapsible
 {
 public:
 	///

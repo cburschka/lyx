@@ -13,14 +13,14 @@
 #ifndef INSETFLEX_H
 #define INSETFLEX_H
 
-#include "InsetCollapsable.h"
+#include "InsetCollapsible.h"
 
 namespace lyx {
 
 /** The Flex inset, e.g., CharStyle, Custom inset or XML short element
 
 */
-class InsetFlex : public InsetCollapsable {
+class InsetFlex : public InsetCollapsible {
 public:
 	///
 	InsetFlex(Buffer *, std::string const & layoutName);
