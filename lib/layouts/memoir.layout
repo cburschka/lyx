@@ -39,6 +39,12 @@ Style Standard
 	Align                 Block
 	AlignPossible         Block, Left, Right, Center
 	LabelType             No_Label
+	HTMLStyle
+		div.standard {
+			margin-bottom: 2ex;
+			text-align: left;
+		}
+	EndHTMLStyle
 End
 
 
