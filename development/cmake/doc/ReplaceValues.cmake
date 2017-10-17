@@ -9,10 +9,12 @@ foreach(_v LYX_USERDIR_VER LYX_DIR_VER REL_DIR SOURCE CREATED LYX_PYTHON_EXECUTA
   endif()
 endforeach()
 
+set(originstring "origin\ unavailable=origin\ /systemlyxdir/doc/${REL_DIR}")
+#message(STATUS "originstring=${originstring}")
 execute_process(COMMAND ${LYX_PYTHON_EXECUTABLE} "${TOP_CMAKE_PATH}/doc/ReplaceValues.py"
   "LYX_USERDIR_VER=${LYX_USERDIR_VER}"
   "LYX_DIR_VER=${LYX_DIR_VER}"
-  "\\origin\ unavailable=\\origin\ /systemlyxdir/doc/${REL_DIR}"
+  ${originstring}
   "${TOP_SRC_DIR}/lib/doc/${SOURCE}"
   OUTPUT_FILE "${CREATED}"
   RESULT_VARIABLE _err
