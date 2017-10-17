@@ -1114,23 +1114,13 @@ void makeCommand(Buffer const & buf,
 
 	bool const make_parid = !runparams.for_toc && runparams.html_make_pars;
 
-	if (style.labeltype == LABEL_ABOVE)
-		xs << html::StartTag("div")
-		   << pbegin->params().labelString()
-		   << html::EndTag("div");
-	else if (style.labeltype == LABEL_CENTERED)
-		xs << html::StartTag("div", "style = \"text-align: center;\"")
-		   << pbegin->params().labelString()
-		   << html::EndTag("div");
-
 	openParTag(xs, style, pbegin->params(),
 	           make_parid ? pbegin->magicLabel() : "");
 
 	// Label around sectioning number:
 	// FIXME Probably need to account for LABEL_MANUAL
-	if (style.labeltype != LABEL_NO_LABEL &&
-	    style.labeltype != LABEL_ABOVE &&
-	    style.labeltype != LABEL_CENTERED ) {
+	// FIXME Probably also need now to account for labels ABOVE and CENTERED.
+	if (style.labeltype != LABEL_NO_LABEL) {
 		openLabelTag(xs, style);
 		xs << pbegin->params().labelString();
 		closeLabelTag(xs, style);
