@@ -1506,13 +1506,8 @@ string const & Layout::htmlitemattr() const
 
 string const & Layout::htmllabeltag() const
 {
-	if (htmllabeltag_.empty()) {
-		if (labeltype != LABEL_ABOVE &&
-		    labeltype != LABEL_CENTERED)
+	if (htmllabeltag_.empty())
 			htmllabeltag_ = "span";
-		else
-			htmllabeltag_ = "div";
-	}
 	return htmllabeltag_;
 }
 
