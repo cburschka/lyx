@@ -228,8 +228,7 @@ enum ScreenUpdateStrategy {
 
 struct BufferView::Private
 {
-	Private(BufferView & bv) : update_strategy_(FullScreenUpdate),
-		update_flags_(Update::Force),
+	Private(BufferView & bv) : update_strategy_(NoScreenUpdate),
 		wh_(0), cursor_(bv),
 		anchor_pit_(0), anchor_ypos_(0),
 		inlineCompletionUniqueChars_(0),
@@ -245,8 +244,6 @@ struct BufferView::Private
 	ScrollbarParameters scrollbarParameters_;
 	///
 	ScreenUpdateStrategy update_strategy_;
-	///
-	Update::flags update_flags_;
 	///
 	CoordCache coord_cache_;
 
@@ -450,16 +447,16 @@ bool BufferView::needsFitCursor() const
 
 void BufferView::processUpdateFlags(Update::flags flags)
 {
-	// The update flags are reset to None after the redraw is actually done
-	d->update_flags_ = d->update_flags_ | flags;
-
 	// This is close to a hot-path.
-	LYXERR(Debug::PAINTING, "BufferView::processUpdateFlags( "
-			<< ((d->update_flags_ & Update::FitCursor) ? "fitcursor " : "")
-			<< ((d->update_flags_ & Update::Force) ? "forceupdate " : "")
-			<< ((d->update_flags_ & Update::ForceDraw) ? "forcedraw " : "")
-			<< ((d->update_flags_ & Update::SinglePar) ? "singlepar " : "")
-				 << ")  buffer: " << &buffer_);
+	LYXERR(Debug::PAINTING, "BufferView::processUpdateFlags()"
+		<< "[fitcursor = " << (flags & Update::FitCursor)
+		<< ", forceupdate = " << (flags & Update::Force)
+		<< ", singlepar = " << (flags & Update::SinglePar)
+		<< "]  buffer: " << &buffer_);
+
+	// FIXME Does this really need doing here? It's done in updateBuffer, and
+	// if the Buffer doesn't need updating, then do the macros?
+	buffer_.updateMacros();
 
 	// Now do the first drawing step if needed. This consists on updating
 	// the CoordCache in updateMetrics().
@@ -467,26 +464,26 @@ void BufferView::processUpdateFlags(Update::flags flags)
 	// FIXME: is this still true now that Buffer::changed() is used all over?
 
 	// Case when no explicit update is requested.
-	if (!d->update_flags_) {
+	if (!flags) {
 		// no need to redraw anything.
 		d->update_strategy_ = NoScreenUpdate;
 		return;
 	}
 
-	if (d->update_flags_ == Update::Decoration) {
+	if (flags == Update::Decoration) {
 		d->update_strategy_ = DecorationUpdate;
 		buffer_.changed(false);
 		return;
 	}
 
-	if (d->update_flags_ == Update::FitCursor
-	    || d->update_flags_ == (Update::Decoration | Update::FitCursor)) {
+	if (flags == Update::FitCursor
+		|| flags == (Update::Decoration | Update::FitCursor)) {
 		// tell the frontend to update the screen if needed.
 		if (needsFitCursor()) {
 			showCursor();
 			return;
 		}
-		if (d->update_flags_ & Update::Decoration) {
+		if (flags & Update::Decoration) {
 			d->update_strategy_ = DecorationUpdate;
 			buffer_.changed(false);
 			return;
@@ -498,20 +495,21 @@ void BufferView::processUpdateFlags(Update::flags flags)
 		return;
 	}
 
-	// We test against the flags parameter here to honor explicit metrics requests
 	bool const full_metrics = flags & Update::Force || !singleParUpdate();
 
 	if (full_metrics)
 		// We have to update the full screen metrics.
 		updateMetrics();
-	if (d->update_flags_ & Update::ForceDraw)
-		d->update_strategy_ = FullScreenUpdate;
 
-	if (!(d->update_flags_ & Update::FitCursor)) {
-		// Nothing to do anymore. Trigger a redraw and return.
+	if (!(flags & Update::FitCursor)) {
+		// Nothing to do anymore. Trigger a redraw and return
 		buffer_.changed(false);
 		return;
 	}
+
+	// updateMetrics() does not update paragraph position
+	// This is done at draw() time. So we need a redraw!
+	buffer_.changed(false);
 
 	if (needsFitCursor()) {
 		// The cursor is off screen so ensure it is visible.
@@ -520,9 +518,6 @@ void BufferView::processUpdateFlags(Update::flags flags)
 	}
 
 	updateHoveredInset();
-
-	// Trigger a redraw.
-	buffer_.changed(false);
 }
 
 
@@ -2746,8 +2741,7 @@ void BufferView::updateMetrics()
 		<< " pit1 = " << pit1
 		<< " pit2 = " << pit2);
 
-	// It is not necessary anymore to compute metrics, but a redraw is needed
-	d->update_flags_ = (d->update_flags_ & ~Update::Force) | Update::ForceDraw;
+	d->update_strategy_ = FullScreenUpdate;
 
 	// Now update the positions of insets in the cache.
 	updatePosCache();
@@ -3154,11 +3148,6 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 	}
 	LYXERR(Debug::PAINTING, "Found new anchor pit = " << d->anchor_pit_
 		<< "  anchor ypos = " << d->anchor_ypos_);
-
-	if (!pain.isNull()) {
-		// reset the update flags, everything has been done
-		d->update_flags_ = Update::None;
-	}
 
 	// Remember what has just been done for the next draw() step
 	if (paint_caret)

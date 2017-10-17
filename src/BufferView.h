@@ -120,12 +120,11 @@ public:
 	/// \return true if the BufferView is at the bottom of the document.
 	bool isBottomScreen() const;
 
-	/// Add \p flags to current updte flags and trigger an update.
-	/* If this method is invoked several times before the update
-	 * actually takes place, the effect is cumulative.
-	 * \c Update::FitCursor means first to do a FitCursor, and to
+	/// perform pending metrics updates.
+	/** \c Update::FitCursor means first to do a FitCursor, and to
 	 * force an update if screen position changes.
 	 * \c Update::Force means to force an update in any case.
+	 * \retval true if a screen redraw is needed
 	 */
 	void processUpdateFlags(Update::flags flags);
 

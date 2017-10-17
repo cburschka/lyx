@@ -21,16 +21,13 @@ namespace Update {
 		/// Recenter the screen around the cursor if is found outside the
 		/// visible area.
 		FitCursor = 1,
-		/// Force a full screen metrics update and a full draw.
+		/// Force a full screen metrics update.
 		Force = 2,
-		/// Force a full redraw (but no metrics computations)
-		ForceDraw = 4,
 		/// Try to rebreak only the current paragraph metrics.
-		/// (currently ignored!)
-		SinglePar = 8,
+		SinglePar = 4,
 		/// Only the inset decorations need to be redrawn, no text metrics
 		/// update is needed.
-		Decoration = 16
+		Decoration = 8
 	};
 
 inline flags operator|(flags const f, flags const g)
@@ -41,11 +38,6 @@ inline flags operator|(flags const f, flags const g)
 inline flags operator&(flags const f, flags const g)
 {
 	return static_cast<flags>(int(f) & int(g));
-}
-
-inline flags operator~(flags const f)
-{
-	return static_cast<flags>(~int(f));
 }
 
 } // namespace Update
