@@ -1317,7 +1317,8 @@ docstring wrapParas(docstring const & str, int const indent,
 namespace {
 
 template<typename String> vector<String> const
-getVectorFromStringT(String const & str, String const & delim, bool keepempty)
+getVectorFromStringT(String const & str, String const & delim,
+                     bool keepempty, bool trimit)
 {
 // Lars would like this code to go, but for now his replacement (below)
 // doesn't fullfil the same function. I have, therefore, reactivated the
@@ -1326,14 +1327,15 @@ getVectorFromStringT(String const & str, String const & delim, bool keepempty)
 	vector<String> vec;
 	if (str.empty())
 		return vec;
-	String keys = rtrim(str);
+	String keys = trimit ? rtrim(str) : str;
 	while (true) {
 		size_t const idx = keys.find(delim);
 		if (idx == String::npos) {
-			vec.push_back(ltrim(keys));
+			vec.push_back(trimit ? ltrim(keys) : keys);
 			break;
 		}
-		String const key = trim(keys.substr(0, idx));
+		String const key = trimit ?
+			trim(keys.substr(0, idx)) : keys.substr(0, idx);
 		if (!key.empty() || keepempty)
 			vec.push_back(key);
 		size_t const start = idx + delim.size();
@@ -1371,18 +1373,16 @@ template<typename String> const String
 
 
 vector<string> const getVectorFromString(string const & str,
-					 string const & delim,
-					 bool keepempty)
+        string const & delim, bool keepempty, bool trimit)
 {
-	return getVectorFromStringT<string>(str, delim, keepempty);
+	return getVectorFromStringT<string>(str, delim, keepempty, trimit);
 }
 
 
 vector<docstring> const getVectorFromString(docstring const & str,
-					    docstring const & delim,
-					    bool keepempty)
+        docstring const & delim, bool keepempty, bool trimit)
 {
-	return getVectorFromStringT<docstring>(str, delim, keepempty);
+	return getVectorFromStringT<docstring>(str, delim, keepempty, trimit);
 }
 
 

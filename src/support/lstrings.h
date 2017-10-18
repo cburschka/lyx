@@ -324,11 +324,14 @@ docstring wrapParas(docstring const & str, int const indent = 0,
 
 /// gives a vector of stringparts which have the delimiter delim
 /// If \p keepempty is true, empty strings will be pushed to the vector as well
+/// If \p trimit is true, leading and trailing whitespace will be trimmed from
+/// all values. Note that this can affect what counts as "empty".
 std::vector<std::string> const getVectorFromString(std::string const & str,
-					      std::string const & delim = std::string(","),
-					      bool keepempty = false);
+        std::string const & delim = std::string(","),
+        bool keepempty = false, bool trimit = true);
 std::vector<docstring> const getVectorFromString(docstring const & str,
-		docstring const & delim = from_ascii(","), bool keepempty = false);
+        docstring const & delim = from_ascii(","),
+        bool keepempty = false, bool trimit = true);
 
 /// the same vice versa
 std::string const getStringFromVector(std::vector<std::string> const & vec,
