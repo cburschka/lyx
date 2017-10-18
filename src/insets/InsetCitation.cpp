@@ -384,9 +384,12 @@ docstring InsetCitation::complexLabel(bool for_xhtml) const
 	buffer().params().documentClass().addCiteMacro("!textafter", to_utf8(after));
 	*/
 	docstring label;
-	vector<docstring> keys = getVectorFromString(key);
+	// we only really want the last 'false', to suppress trimming, but
+	// we need to give the other defaults, too, to set it.
+	vector<docstring> keys =
+		getVectorFromString(key, from_ascii(","), false, false);
 	CitationStyle cs = getCitationStyle(buffer().masterParams(),
-					    cite_type, buffer().masterParams().citeStyles());
+			cite_type, buffer().masterParams().citeStyles());
 	bool const qualified = cs.hasQualifiedList
 		&& (keys.size() > 1
 		    || !getParam("pretextlist").empty()
