@@ -384,10 +384,9 @@ bool GuiParagraph::hasLabelwidth() const
 }
 
 
-void GuiParagraph::saveSession() const
+void GuiParagraph::saveSession(QSettings & settings) const
 {
-	Dialog::saveSession();
-	QSettings settings;
+	Dialog::saveSession(settings);
 	settings.setValue(sessionKey() + "/autoapply", synchronizedViewCB->isChecked());
 }
 

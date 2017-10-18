@@ -39,7 +39,7 @@ public:
 	void enableView(bool enable);
 	bool isBufferDependent() const { return true; }
 	virtual FuncCode getLfun() const { return LFUN_PARAGRAPH_PARAMS_APPLY; }
-	void saveSession() const;
+	void saveSession(QSettings & settings) const;
 	void restoreSession();
 	//@}
 
