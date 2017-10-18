@@ -61,7 +61,7 @@ public:
 	void updateView() {}
 	bool wantInitialFocus() const { return false; }
 	void restoreSession();
-	void saveSession() const;
+	void saveSession(QSettings & settings) const;
 	///@}
 
 private Q_SLOTS:

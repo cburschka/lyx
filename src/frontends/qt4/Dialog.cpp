@@ -275,9 +275,8 @@ QString Dialog::sessionKey() const
 }
 
 
-void Dialog::saveSession() const
+void Dialog::saveSession(QSettings & settings) const
 {
-	QSettings settings;
 	settings.setValue(sessionKey() + "/geometry", asQWidget()->saveGeometry());
 }
 

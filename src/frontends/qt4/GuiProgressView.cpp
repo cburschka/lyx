@@ -232,10 +232,9 @@ void GuiProgressView::appendText(QString const & text)
 }
 
 
-void GuiProgressView::saveSession() const
+void GuiProgressView::saveSession(QSettings & settings) const
 {
-	Dialog::saveSession();
-	QSettings settings;
+	Dialog::saveSession(settings);
 	settings.setValue(
 		sessionKey() + "/autoclear", widget_->autoClearCB->isChecked());
 	settings.setValue(

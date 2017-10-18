@@ -20,6 +20,8 @@
 #include <QToolBar>
 #include <QToolButton>
 
+class QSettings;
+
 namespace lyx {
 
 class DocumentClass;
@@ -84,7 +86,7 @@ public:
 	 **/
 	QString sessionKey() const;
 	/// Save session settings.
-	void saveSession() const;
+	void saveSession(QSettings & settings) const;
 	/// Restore session settings.
 	void restoreSession();
 

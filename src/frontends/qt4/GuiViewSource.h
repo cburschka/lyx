@@ -47,7 +47,7 @@ public:
 	/// returns true if the string has changed
 	bool setText(QString const & qstr = QString());
 	///
-	void saveSession(QString const & session_key) const;
+	void saveSession(QSettings & settings, QString const & session_key) const;
 	///
 	void restoreSession(QString const & session_key);
 	///
@@ -112,7 +112,7 @@ public:
 	bool canApplyToReadOnly() const { return true; }
 	void updateView();
 	void enableView(bool enable);
-	void saveSession() const;
+	void saveSession(QSettings & settings) const;
 	void restoreSession();
 	bool wantInitialFocus() const { return false; }
 	///@}

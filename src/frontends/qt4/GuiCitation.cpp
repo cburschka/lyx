@@ -1049,10 +1049,9 @@ BiblioInfo const & GuiCitation::bibInfo() const
 }
 
 
-void GuiCitation::saveSession() const
+void GuiCitation::saveSession(QSettings & settings) const
 {
-	Dialog::saveSession();
-	QSettings settings;
+	Dialog::saveSession(settings);
 	settings.setValue(
 		sessionKey() + "/regex", regexp_->isChecked());
 	settings.setValue(

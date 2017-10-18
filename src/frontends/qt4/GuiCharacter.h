@@ -76,7 +76,7 @@ private:
 	void dispatchParams();
 	bool isBufferDependent() const { return true; }
 	FuncCode getLfun() const { return LFUN_TEXTSTYLE_UPDATE; }
-	void saveSession() const;
+	void saveSession(QSettings & settings) const;
 	void restoreSession();
 	//@}
 
