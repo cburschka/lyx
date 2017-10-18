@@ -260,8 +260,8 @@ CiteFormat authoryear
 
 	# "cf. Author A Year; Author B Year, p. xx"
 	cite %!textbefore%%!makecite%%!textafter%
-	# "cf. Author A (Year),[ and] Author B (Year), p. xx"
-	citet %!maketextcite%%!close%%!textafter%
+	# "cf. Author A (Year),[ and] Author B (Year, p. xx)"
+	citet %!maketextcite%%!textafter%%!close%
 	# "(cf. Author A Year; Author B Year, p. xx)"
 	citep %!open%%!textbefore%%!makecite%%!textafter%%!close%
 	# This prints year or title, if year is missing
