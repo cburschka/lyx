@@ -645,13 +645,13 @@ namespace {
 } // namespace
 
 
-void InsetBibtex::collectBibKeys(InsetIterator const & /*di*/) const
+void InsetBibtex::collectBibKeys(InsetIterator const & /*di*/, FileNameList & checkedFiles) const
 {
-	parseBibTeXFiles();
+	parseBibTeXFiles(checkedFiles);
 }
 
 
-void InsetBibtex::parseBibTeXFiles() const
+void InsetBibtex::parseBibTeXFiles(FileNameList & checkedFiles) const
 {
 	// This bibtex parser is a first step to parse bibtex files
 	// more precisely.
@@ -678,7 +678,14 @@ void InsetBibtex::parseBibTeXFiles() const
 	support::FileNamePairList::const_iterator it = files.begin();
 	support::FileNamePairList::const_iterator en = files.end();
 	for (; it != en; ++ it) {
-		ifdocstream ifs(it->second.toFilesystemEncoding().c_str(),
+		FileName const bibfile = it->second;
+		if (find(checkedFiles.begin(), checkedFiles.end(), bibfile) != checkedFiles.end())
+			// already checked this one. Skip.
+			continue;
+		else
+			// record that we check this.
+			checkedFiles.push_back(bibfile);
+		ifdocstream ifs(bibfile.toFilesystemEncoding().c_str(),
 			ios_base::in, buffer().masterParams().encoding().iconvName());
 
 		char_type ch;

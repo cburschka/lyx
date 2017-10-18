@@ -1072,7 +1072,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetInclude::collectBibKeys(InsetIterator const & /*di*/) const
+void InsetInclude::collectBibKeys(InsetIterator const & /*di*/, FileNameList & checkedFiles) const
 {
 	Buffer * child = loadIfNeeded();
 	if (!child)
@@ -1082,7 +1082,7 @@ void InsetInclude::collectBibKeys(InsetIterator const & /*di*/) const
 	// But it'll have to do for now.
 	if (child == &buffer())
 		return;
-	child->collectBibKeys();
+	child->collectBibKeys(checkedFiles);
 }
 
 

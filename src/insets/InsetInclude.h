@@ -92,7 +92,7 @@ public:
 	 *  \param keys the list of bibkeys in the child buffer.
 	 *  \param it not used here
 	 */
-	void collectBibKeys(InsetIterator const &) const;
+	void collectBibKeys(InsetIterator const &, support::FileNameList &) const;
 	///
 	bool hasSettings() const { return true; }
 	///

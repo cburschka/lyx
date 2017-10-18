@@ -2446,15 +2446,16 @@ void Buffer::reloadBibInfoCache() const
 		return;
 
 	d->bibinfo_.clear();
-	collectBibKeys();
+	FileNameList checkedFiles;
+	collectBibKeys(checkedFiles);
 	d->bibinfo_cache_valid_ = true;
 }
 
 
-void Buffer::collectBibKeys() const
+void Buffer::collectBibKeys(FileNameList & checkedFiles) const
 {
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it)
-		it->collectBibKeys(it);
+		it->collectBibKeys(it, checkedFiles);
 }
 
 
