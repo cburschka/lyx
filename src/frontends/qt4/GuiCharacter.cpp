@@ -455,10 +455,9 @@ void GuiCharacter::dispatchParams()
 }
 
 
-void GuiCharacter::saveSession() const
+void GuiCharacter::saveSession(QSettings & settings) const
 {
-	Dialog::saveSession();
-	QSettings settings;
+	Dialog::saveSession(settings);
 	settings.setValue(sessionKey() + "/toggleall", toggleallCB->isChecked());
 	settings.setValue(sessionKey() + "/autoapply", autoapplyCB->isChecked());
 }

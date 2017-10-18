@@ -371,9 +371,9 @@ void ViewSourceWidget::resizeEvent (QResizeEvent * event)
 	QWidget::resizeEvent(event);
 }
 
-void ViewSourceWidget::saveSession(QString const & session_key) const
+
+void ViewSourceWidget::saveSession(QSettings & settings, QString const & session_key) const
 {
-	QSettings settings;
 	settings.setValue(session_key + "/output", toqstr(view_format_));
 	settings.setValue(session_key + "/contents", contentsCO->currentIndex());
 	settings.setValue(session_key + "/autoupdate", autoUpdateCB->isChecked());
@@ -457,10 +457,10 @@ void GuiViewSource::updateTitle()
 }
 
 
-void GuiViewSource::saveSession() const
+void GuiViewSource::saveSession(QSettings & settings) const
 {
-	Dialog::saveSession();
-	widget_->saveSession(sessionKey());
+	Dialog::saveSession(settings);
+	widget_->saveSession(settings, sessionKey());
 }
 
 

@@ -726,14 +726,16 @@ void GuiView::saveLayout() const
 
 void GuiView::saveUISettings() const
 {
+	QSettings settings;
+
 	// Save the toolbar private states
 	ToolbarMap::iterator end = d.toolbars_.end();
 	for (ToolbarMap::iterator it = d.toolbars_.begin(); it != end; ++it)
-		it->second->saveSession();
+		it->second->saveSession(settings);
 	// Now take care of all other dialogs
 	map<string, DialogPtr>::const_iterator it = d.dialogs_.begin();
 	for (; it!= d.dialogs_.end(); ++it)
-		it->second->saveSession();
+		it->second->saveSession(settings);
 }
 
 

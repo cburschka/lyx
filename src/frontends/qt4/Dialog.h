@@ -20,6 +20,7 @@
 
 #include <QString>
 
+class QSettings;
 class QWidget;
 
 namespace lyx {
@@ -72,7 +73,7 @@ public:
 	 * This default implementation saves the geometry state.
 	 * Reimplement to save more settings.
 	 **/
-	virtual void saveSession() const;
+	virtual void saveSession(QSettings & settings) const;
 
 	/// Restore session settings.
 	/**

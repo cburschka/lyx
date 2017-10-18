@@ -353,9 +353,8 @@ QString GuiToolbar::sessionKey() const
 }
 
 
-void GuiToolbar::saveSession() const
+void GuiToolbar::saveSession(QSettings & settings) const
 {
-	QSettings settings;
 	settings.setValue(sessionKey() + "/visibility", visibility_);
 }
 
