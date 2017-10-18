@@ -57,7 +57,7 @@ public:
 	int plaintext(odocstringstream & ods, OutputParams const & op,
 	              size_t max_length = INT_MAX) const;
 	///
-	void collectBibKeys(InsetIterator const &) const;
+	void collectBibKeys(InsetIterator const &, support::FileNameList &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///
@@ -84,7 +84,7 @@ private:
 	///
 	void editDatabases() const;
 	///
-	void parseBibTeXFiles() const;
+	void parseBibTeXFiles(support::FileNameList &) const;
 	///
 	bool usingBiblatex() const;
 

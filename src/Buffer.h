@@ -17,6 +17,7 @@
 #include "support/unique_ptr.h"
 #include "support/strfwd.h"
 #include "support/types.h"
+#include "support/FileNameList.h"
 
 #include <map>
 #include <list>
@@ -520,7 +521,7 @@ public:
 	/// or just for it, if it isn't a child.
 	BiblioInfo const & masterBibInfo() const;
 	/// collect bibliography info from the various insets in this buffer.
-	void collectBibKeys() const;
+	void collectBibKeys(support::FileNameList &) const;
 	/// add some BiblioInfo to our cache
 	void addBiblioInfo(BiblioInfo const & bi) const;
 	/// add a single piece of bibliography info to our cache

@@ -285,7 +285,7 @@ docstring bibitemWidest(Buffer const & buffer, OutputParams const & runparams)
 }
 
 
-void InsetBibitem::collectBibKeys(InsetIterator const & it) const
+void InsetBibitem::collectBibKeys(InsetIterator const & it, FileNameList & /*checkedFiles*/) const
 {
 	docstring const key = getParam("key");
 	docstring const label = getParam("label");

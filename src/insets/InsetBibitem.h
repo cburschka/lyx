@@ -60,7 +60,7 @@ public:
 	///
 	docstring xhtml(XHTMLStream &, OutputParams const &) const;
 	///
-	void collectBibKeys(InsetIterator const &) const;
+	void collectBibKeys(InsetIterator const &, support::FileNameList &) const;
 	/// update the counter of this inset
 	void updateBuffer(ParIterator const &, UpdateType);
 	///@}

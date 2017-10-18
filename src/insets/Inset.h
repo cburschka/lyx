@@ -23,6 +23,7 @@
 
 #include "support/strfwd.h"
 #include "support/types.h"
+#include "support/FileNameList.h"
 
 #include <climits>
 
@@ -529,7 +530,7 @@ public:
 	                      UpdateType /* utype*/,
 	                      TocBackend & /* tocbackend */) const {}
 	/// Collect BibTeX information
-	virtual void collectBibKeys(InsetIterator const &) const {}
+	virtual void collectBibKeys(InsetIterator const &, support::FileNameList &) const {}
 	/// Update the counters of this inset and of its contents.
 	/// The boolean indicates whether we are preparing for output, e.g.,
 	/// of XHTML.
