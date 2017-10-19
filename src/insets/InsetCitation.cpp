@@ -425,8 +425,7 @@ docstring InsetCitation::basicLabel(bool for_xhtml) const
 	do {
 		// if there is no comma, then everything goes into key
 		// and keys will be empty.
-		keys = trim(split(keys, key, ','));
-		key = trim(key);
+		keys = split(keys, key, ',');
 		if (!label.empty())
 			label += ", ";
 		label += wrapCitation(key, key, for_xhtml);
