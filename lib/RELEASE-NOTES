@@ -212,10 +212,12 @@
   the external_templates file, you will have to move the modifications to
   the respective *.xtemplate file manually.
 
-* If you used literal em- and en-dashes in pre-2.2 documents,
-  you must manually unselect
-  "Document->Settings->Fonts->Output em- and en-dash as ligatures"
-  to ensure unchanged behaviour.
+* By default, LyX 2.3 forces output of all en and em dashes as -- and ---
+  when exporting to LaTeX. This can lead to incorrect line breaks, wrong
+  characters in typewriter fonts, and problems with some LaTeX packages.
+  Unselect "Document->Settings->Fonts->Output em- and en-dash as ligatures"
+  to keep the LyX 2.2 behaviour and avoid these problems. See chapter 3.9.1.1
+  "Dashes and line breaks" of the User Guide for details.
 
 * ZWSP characters (u200b) following literal em- and en-dashes are deleted by
   lyx2lyx when converting to 2.3 format. If you used them as optional line
