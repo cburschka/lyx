@@ -1451,9 +1451,10 @@ bool Cursor::macroModeClose()
 
 	MathWordList const & words = mathedWordList();
 	MathWordList::const_iterator it = words.find(name);
-	bool keep_mathmode = it != words.end() && (it->second.inset == "font"
-						|| it->second.inset == "oldfont"
-						|| it->second.inset == "mbox");
+	bool keep_mathmode = user_macro
+		|| (it != words.end() && (it->second.inset == "font"
+		                          || it->second.inset == "oldfont"
+		                          || it->second.inset == "mbox"));
 	bool ert_macro = !user_macro && it == words.end() && atomAsMacro;
 
 	if (in && in->currentMode() == Inset::TEXT_MODE
