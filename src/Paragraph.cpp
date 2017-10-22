@@ -2454,6 +2454,8 @@ void Paragraph::latex(BufferParams const & bparams,
 		runparams.wasDisplayMath = runparams.inDisplayMath;
 		runparams.inDisplayMath = false;
 		bool deleted_display_math = false;
+		Change const & change = runparams.inDeletedInset
+			? runparams.changeOfDeletedInset : lookupChange(i);
 
 		// Check whether a display math inset follows
 		if (d->text_[i] == META_INSET
@@ -2468,10 +2470,27 @@ void Paragraph::latex(BufferParams const & bparams,
 				// cannot set it here because it is a counter.
 				deleted_display_math = isDeleted(i);
 			}
+			if (bparams.output_changes && deleted_display_math
+			    && runningChange == change
+			    && change.type == Change::DELETED
+			    && !os.afterParbreak()) {
+				// A display math in the same paragraph follows.
+				// We have to close and then reopen \lyxdeleted,
+				// otherwise the math will be shifted up.
+				OutputParams rp = runparams;
+				if (open_font) {
+					bool needPar = false;
+					column += running_font.latexWriteEndChanges(
+						os, bparams, rp, basefont,
+						basefont, needPar);
+					open_font = false;
+				}
+				basefont = getLayoutFont(bparams, outerfont);
+				running_font = basefont;
+				column += Changes::latexMarkChange(os, bparams,
+					Change(Change::INSERTED), change, rp);
+			}
 		}
-
-		Change const & change = runparams.inDeletedInset
-			? runparams.changeOfDeletedInset : lookupChange(i);
 
 		if (bparams.output_changes && runningChange != change) {
 			if (open_font) {
@@ -2549,7 +2568,7 @@ void Paragraph::latex(BufferParams const & bparams,
 		char_type const c = d->text_[i];
 
 		// A display math inset inside an ulem command will be output
-		// as a box of width \columnwidth, so we have to either disable
+		// as a box of width \linewidth, so we have to either disable
 		// indentation if the inset starts a paragraph, or start a new
 		// line to accommodate such box. This has to be done before
 		// writing any font changing commands.

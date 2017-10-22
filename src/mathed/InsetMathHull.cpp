@@ -126,14 +126,14 @@ namespace {
 		if (os.strikeoutMath()) {
 			if (os.ulemCmd() == WriteStream::UNDERLINE)
 				os << "\\raisebox{-\\belowdisplayshortskip}{"
-				      "\\lyxmathsout{\\parbox[b]{\\columnwidth}{";
+				      "\\lyxmathsout{\\parbox[b]{\\linewidth}{";
 			else
-				os << "\\lyxmathsout{\\parbox{\\columnwidth}{";
+				os << "\\lyxmathsout{\\parbox{\\linewidth}{";
 		} else if (os.ulemCmd() == WriteStream::UNDERLINE)
 			os << "\\raisebox{-\\belowdisplayshortskip}{"
-			      "\\parbox[b]{\\columnwidth}{";
+			      "\\parbox[b]{\\linewidth}{";
 		else if (os.ulemCmd() == WriteStream::STRIKEOUT)
-			os << "\\parbox{\\columnwidth}{";
+			os << "\\parbox{\\linewidth}{";
 	}
 
 

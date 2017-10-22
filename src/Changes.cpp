@@ -394,11 +394,16 @@ int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,
 
 	int column = 0;
 
+	bool const dvipost = LaTeXFeatures::isAvailable("dvipost") &&
+			(runparams.flavor == OutputParams::LATEX
+			 || runparams.flavor == OutputParams::DVILUATEX);
+
 	if (oldChange.type != Change::UNCHANGED) {
 		// close \lyxadded or \lyxdeleted
 		os << '}';
 		column++;
-		if (oldChange.type == Change::DELETED && !runparams.wasDisplayMath)
+		if (oldChange.type == Change::DELETED
+		    && !runparams.wasDisplayMath && !dvipost)
 			--runparams.inulemcmd;
 	}
 
@@ -410,7 +415,7 @@ int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,
 	docstring macro_beg;
 	if (change.type == Change::DELETED) {
 		macro_beg = from_ascii("\\lyxdeleted{");
-		if (!runparams.inDisplayMath)
+		if (!runparams.inDisplayMath && !dvipost)
 			++runparams.inulemcmd;
 	}
 	else if (change.type == Change::INSERTED)
@@ -422,9 +427,7 @@ int Changes::latexMarkChange(otexstream & os, BufferParams const & bparams,
 
 	// signature needed by \lyxsout to correctly strike out display math
 	if (change.type == Change::DELETED && runparams.inDisplayMath
-	    && (!LaTeXFeatures::isAvailable("dvipost")
-		|| (runparams.flavor != OutputParams::LATEX
-		    && runparams.flavor != OutputParams::DVILUATEX))) {
+	    && !dvipost) {
 		if (os.afterParbreak())
 			str += from_ascii("\\\\\\noindent\n");
 		else
