@@ -423,6 +423,8 @@ docstring const InsetCollapsible::getNewLabel(docstring const & l) const
 	pos_type i = 0;
 	pos_type j = 0;
 	for (; i < n && j < p_siz; ++j) {
+		if (paragraphs().begin()->isDeleted(j))
+			continue;
 		if (paragraphs().begin()->isInset(j)) {
 			if (!paragraphs().begin()->getInset(j)->isChar())
 				continue;
