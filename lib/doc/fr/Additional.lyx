@@ -2762,11 +2762,9 @@ Subdivided Bibliographies
 
 \begin_layout Subsection
 Bibliographies multiples
-\lang english
-
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:Multiple-Bibliographies"
+name "subsec:Bibliographies-multiples"
 
 \end_inset
 
@@ -2922,12 +2920,16 @@ status collapsed
 \end_inset
 
 
+\lang french
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Inserting-TeX-Code"
+reference "sec:Insérer-du-code-LaTeX"
 
 \end_inset
 
+
+\lang english
 ), is to use the 
 \begin_inset Flex Code
 status collapsed
@@ -3610,7 +3612,7 @@ For child-specific bibliographies, insert bibliography insets within the
 \family sans
 Insert\SpecialChar menuseparator
 Branch\SpecialChar menuseparator
-Insert New Branch...
+Insert New Branch
 \family default
 ), e.
 \begin_inset space \thinspace{}
@@ -3629,14 +3631,14 @@ Childonly
  Within the children, activate the branch (
 \family sans
 Document\SpecialChar menuseparator
-Settings...\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Branches
 \family default
 ).
  Within the master, deactivate the branch (
 \family sans
 Document\SpecialChar menuseparator
-Settings...\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Branches
 \family default
 ).
@@ -3655,14 +3657,16 @@ g., one per child in the
 \emph on
 main document
 \emph default
-), please refer to sec.
+), please refer to sec
+\lang french
+.
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Multiple-Bibliographies"
+reference "subsec:Bibliographies-multiples"
 
 \end_inset
 
@@ -3686,7 +3690,8 @@ relier
  un fichier \SpecialChar LyX
  avec toutes les images (et d'autres fichiers dont il dépend,
  soit pour l'envoyer à un éditeur, soit pour le partager avec un co-auteur.
- Lyx-2.0 inclut un script Python (
+ \SpecialChar LyX
+ inclut un script Python (
 \begin_inset Flex Code
 status collapsed
 
@@ -5733,11 +5738,9 @@ pousser
 \begin_layout Section
 Démarrer le Serveur \SpecialChar LyX
 
-\lang english
-
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Starting-the-Server"
+name "sec:Démarrer-le-Serveur"
 
 \end_inset
 
@@ -26435,17 +26438,21 @@ Notez cependant qu'il vous faut activer cette fonction du serveur \SpecialChar L
  
 \lang english
 La section
+\lang french
+
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Starting-the-Server"
+reference "sec:Démarrer-le-Serveur"
 
 \end_inset
 
- explique comment procéder.
+ 
+\lang english
+explique comment procéder.
 \end_layout
 
 \begin_layout Subsubsection

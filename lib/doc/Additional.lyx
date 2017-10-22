@@ -121,13 +121,11 @@ shapepar
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author -712698321 "Jürgen Spitzmüller"
-\author 34634807 "Jean-Pierre"
 \end_header
 
 \begin_body
@@ -1795,75 +1793,22 @@ hbox
 loves
 \emph default
  to spew these out.
- 
-\change_inserted -712698321 1501222056
-It seems to generate at least one of these messages for just about any document
- you write.
- 
-\change_unchanged
-They are warnings about lines that were too long and run past the right
+ It seems to generate at least one of these messages for just about any
+ document you write.
+ They are warnings about lines that were too long and run past the right
  margin.
-
-\change_inserted -712698321 1501222913
  This happens if \SpecialChar LaTeX
  does not find a reasonable way to break the lines (notoriously
  often with typewriter font, since this does not allow for automatic break
  points).
-
-\change_unchanged
+ In many cases, this is unnoticeable in the final output.
+ (It can be just a point or two.) Sometimes, however, the lines run rather
+ visibly into the margin; something you will not want to have in your final
+ print.
  
-\change_deleted -712698321 1501221633
-Almost always
-\change_inserted -712698321 1501221635
-In many cases
-\change_unchanged
-, this is unnoticeable in the final output.
- (It can be just a point or two.) 
-\change_deleted -712698321 1501221644
-Or, only one or two characters extend past the margin
-\change_inserted -712698321 1501222092
-Sometimes, however, the lines run rather visibly into the margin; something
- you will not want to have in your final print
-\change_unchanged
-.
- 
-\change_deleted -712698321 1501222038
-\SpecialChar LaTeX
- seems to generate at least one of these messages for just about any document
- you write.
-\change_unchanged
-
 \begin_inset Newline newline
 \end_inset
 
-
-\change_deleted -712698321 1501222960
-You can ignore these messages.
- Your eyes will tell you if there's a problem with something that's too
- wide; just look at the output.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-You can also enable the `draft' option in 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-Document\SpecialChar menuseparator
-Settings
-\end_layout
-
-\end_inset
-
-, and then \SpecialChar LaTeX
- will draw a black box in the margin of lines that are overfull.
-\end_layout
-
-\end_inset
-
-
-\change_inserted -712698321 1501223436
 There are several global ways to try to minimize the overfull lines.
  Clicking 
 \family sans
@@ -1890,8 +1835,6 @@ Preamble
 \begin_deeper
 \begin_layout LyX-Code
 
-\change_inserted -712698321 1501223447
-
 \backslash
 tolerance 1414
 \begin_inset Newline newline
@@ -1915,23 +1858,17 @@ hfuzz 0.3pt
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1501223436
 In some cases, however, you eventually have to rewrite the text to get the
  line breaking right.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1501223436
 For more information, see 
 \begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1501223436
 
 http://www.tex.ac.uk/FAQ-overfull.html
 \end_layout
@@ -1947,8 +1884,6 @@ http://www.tex.ac.uk/FAQ-overfull.html
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1501223436
 In any case, you should check the respective lines, at least for the final
  version of your document.
  Your eyes will tell you if there's a problem with something that's too
@@ -1957,15 +1892,11 @@ In any case, you should check the respective lines, at least for the final
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1501223436
 You can also enable the `draft' option in 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1501223436
 Document\SpecialChar menuseparator
 Settings
 \end_layout
@@ -1999,24 +1930,10 @@ hbox
 \end_inset
 
 Not quite as common as its cousin.
-
-\change_inserted -712698321 1501223875
- This happens again if
-\change_unchanged
- \SpecialChar LaTeX
- 
-\change_inserted -712698321 1501223913
-does not find a reasonable break point and consequently generates too loose
- lines.
- 
-\change_deleted -712698321 1501223919
-seems to like to print lines that are a bit too wide as opposed to ones
- that are a bit too narrow.
- We have no idea why.
-\change_inserted -712698321 1501223940
-As with the overfull lines, you should check if this is a visible problem.
-\change_unchanged
-
+ This happens again if \SpecialChar LaTeX
+ does not find a reasonable break point and consequently
+ generates too loose lines.
+ As with the overfull lines, you should check if this is a visible problem.
 \end_layout
 
 \begin_layout Itemize
@@ -3026,16 +2943,12 @@ Subdivided Bibliographies
 
 \begin_layout Subsection
 Multiple Bibliographies
-\change_inserted -712698321 1501227893
-
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Multiple-Bibliographies"
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -3108,13 +3021,7 @@ chapterbib
 
 \end_inset
 
- o
-\change_deleted -712698321 1501067466
-f
-\change_inserted -712698321 1501067466
-r
-\change_unchanged
- the 
+ or the 
 \begin_inset Flex Code
 status collapsed
 
@@ -3530,13 +3437,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Insert\SpecialChar menuseparator
-Chi
-\change_deleted -712698321 1501147443
-I
-\change_inserted -712698321 1501147443
-l
-\change_unchanged
-d
+Child
 \begin_inset space ~
 \end_inset
 
@@ -3580,13 +3481,7 @@ verbatim
 \end_inset
 
 .
- The 
-\change_deleted -712698321 1501225702
-difference between
-\change_inserted -712698321 1501225703
-methods
-\change_unchanged
- 
+ The methods 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3602,22 +3497,11 @@ input
 \begin_inset Quotes erd
 \end_inset
 
- 
-\change_deleted -712698321 1501225710
-is really only meaningful to \SpecialChar LaTeX
-perts
-\change_inserted -712698321 1501225747
-are similar in many ways, but there are also some notable differences:
+ are similar in many ways, but there are also some notable differences:
 \end_layout
 
 \begin_layout Enumerate
-
-\change_deleted -712698321 1501225754
-, but the practical difference is that f
-\change_inserted -712698321 1501225754
-F
-\change_unchanged
-iles that are 
+Files that are 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3634,13 +3518,9 @@ inputted
 \end_inset
 
  are typeset starting on the current page.
-\change_inserted -712698321 1501225760
-
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted -712698321 1501225830
 \begin_inset Quotes eld
 \end_inset
 
@@ -3677,8 +3557,6 @@ input
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted -712698321 1501226017
 \begin_inset Quotes eld
 \end_inset
 
@@ -3712,13 +3590,9 @@ Embedded
 Objects
 \emph default
  manual for details).
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1501225947
 Hence, 
 \begin_inset Quotes eld
 \end_inset
@@ -3737,18 +3611,6 @@ input
 \end_inset
 
  is more suitable for arbitrary file inheritance.
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted -712698321 1501226562
-Generally, the master file is converted into a full \SpecialChar LaTeX
- file before typesetting,
- while the included files are converted to \SpecialChar LaTeX
- files that do not have all the
- preamble information.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -3807,20 +3669,14 @@ output
 
  checkbox typesets a mark to unambiguously define the presence of a space.
  
-\change_inserted -712698321 1501226563
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1501226564
 Generally, the master file is converted into a full \SpecialChar LaTeX
  file before typesetting,
  while the included files are converted to \SpecialChar LaTeX
  files that do not have all the
  preamble information.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsection
@@ -3880,41 +3736,6 @@ Bibliography Lists in all Subdocuments
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted -712698321 1501227275
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "100col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-This section also needs updating.
- There is now material about this on the wiki, and it could be copied here.
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted -712698321 1501226979
 If you work with child documents, you might want to have only one main bibliogra
 phy at the end, but still be able to have a selected bibliography for the
  child if you output it on its own.
@@ -3922,8 +3743,6 @@ phy at the end, but still be able to have a selected bibliography for the
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1501227105
 For the main document, you just insert a bibliography inset at the place
  where the main bibliography has to appear (within the master file or within
  a child).
@@ -3933,8 +3752,6 @@ For the main document, you just insert a bibliography inset at the place
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1501227910
 For child-specific bibliographies, insert bibliography insets within the
  child documents, at the place where the bibliography should appear when
  the child is compiled separately.
@@ -3977,8 +3794,6 @@ Branches
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1501228082
 If you need multiple bibliographies (e.
 \begin_inset space \thinspace{}
 \end_inset
@@ -3999,85 +3814,6 @@ reference "subsec:Multiple-Bibliographies"
 \end_inset
 
 .
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted -712698321 1501227257
-Copy the bibliography list with all entries to all subdocuments and transform
- them to a comment.
- This way \SpecialChar LyX
- will find the 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-.bib
-\end_layout
-
-\end_inset
-
--files and you can easily insert references without making the bibliography
- list visible.
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted -712698321 1501227257
-As the bibliography list is in a comment, \SpecialChar LaTeX
- won't use it and the references
- will look like this: [?], instead of like this: [1].
- One solution is to use the \SpecialChar LaTeX
--package 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-comment
-\end_layout
-
-\end_inset
-
- that will only include comments by processing the files separately.
- To do this, add in the \SpecialChar LaTeX
- preamble of every subdocument the following:
-\end_layout
-
-\begin_layout LyX-Code
-
-\change_deleted -712698321 1501227257
-
-\backslash
-usepackage{comment}
-\end_layout
-
-\begin_layout LyX-Code
-
-\change_deleted -712698321 1501227257
-
-\backslash
-includecomment{comment}
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted -712698321 1501227257
-See also 
-\begin_inset Flex URL
-status open
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/FAQ/Unsorted#toc31
-\end_layout
-
-\end_inset
-
-.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section
@@ -4098,7 +3834,7 @@ bundle
  file together with all the images (and other files) on which it depends,
  either for sending to a publisher or for sharing with a co-author.
  \SpecialChar LyX
- 2.0 includes a Python script (
+ includes a Python script (
 \begin_inset Flex Code
 status collapsed
 
@@ -5207,47 +4943,14 @@ labelitem
 \end_layout
 
 \begin_layout Itemize
-
-\change_deleted -712698321 1501149643
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-\change_deleted -712698321 1501149634
-
-[
-\change_unchanged
-
-\backslash
-(
-\backslash
-star
-\backslash
-)
-\change_deleted -712698321 1501149636
-]
-\change_unchanged
-
-\end_layout
-
-\end_inset
-
-
-\change_inserted -712698321 1501149643
-
 \begin_inset Argument item:1
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1501149643
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1501149643
 
 
 \backslash
@@ -5261,20 +4964,12 @@ star
 \end_inset
 
 
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
  Specify each individual entry by starting each item with the bullet shape
- enclosed in 
-\change_deleted -712698321 1501149707
-square brackets
-\change_inserted -712698321 1501149740
-a 
+ enclosed in a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5287,9 +4982,7 @@ Custom Item
 Insert\SpecialChar menuseparator
 Custom Item
 \family default
-)
-\change_unchanged
- and set as 
+) and set as 
 \begin_inset Flex Noun
 status collapsed
 
@@ -5307,20 +5000,12 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_deleted -712698321 1501149692
-[
-\change_unchanged
-
 \backslash
 (
 \backslash
 star
 \backslash
 )
-\change_deleted -712698321 1501149693
-]
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -5378,12 +5063,8 @@ savelabelitemi}
 \SpecialChar LyX
  has long supported the export of documents to various web-friendly formats,
  such as HTML.
- Before vers
-\change_inserted -712698321 1501076595
-i
-\change_unchanged
-on 2.0, however, HTML export was always accomplished by the use of external
- converters.
+ Before version 2.0, however, HTML export was always accomplished by the
+ use of external converters.
 \begin_inset Foot
 status collapsed
 
@@ -5624,11 +5305,7 @@ The file
 status collapsed
 
 \begin_layout Plain Layout
-development/
-\change_inserted -712698321 1501078933
-HTML/
-\change_unchanged
-HTML.notes
+development/HTML/HTML.notes
 \end_layout
 
 \end_inset
@@ -5887,21 +5564,6 @@ have to be on for images to be output, however.
 , so they are very accurate.
  The disadvantage, as mentioned earlier, is that these are bitmapped images,
  so they do not scale terribly well, and one cannot copy them, etc.
-
-\change_deleted -712698321 1501075981
- (As of this writing, there are also problems about equation numbering.
- See 
-\begin_inset CommandInset href
-LatexCommand href
-name "bug 6894"
-target "http://www.lyx.org/trac/ticket/6894"
-literal "false"
-
-\end_inset
-
-.)
-\change_unchanged
-
 \begin_inset Newline newline
 \end_inset
 
@@ -5920,13 +5582,7 @@ status collapsed
 \begin_layout Plain Layout
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
-
-\change_deleted -712698321 1501076136
-Output
-\change_inserted -712698321 1501076137
 Formats
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -6018,13 +5674,7 @@ status collapsed
 \begin_layout Plain Layout
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
-
-\change_deleted -712698321 1501076586
-Output
-\change_inserted -712698321 1501076587
 Formats
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -6302,16 +5952,12 @@ push
 \begin_layout Section
 Starting the \SpecialChar LyX
  Server
-\change_inserted -712698321 1501232552
-
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Starting-the-Server"
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -7008,9 +6654,8 @@ name "subsec:rev-search"
 
 \begin_layout Standard
 In most cases \SpecialChar LyX
- will do the work for you by 
-\change_inserted -712698321 1500975045
-pressing the following button in the toolbar: 
+ will do the work for you by pressing the following button
+ in the toolbar: 
 \begin_inset Info
 type  "icon"
 arg   "buffer-toggle-output-sync"
@@ -7026,8 +6671,6 @@ Synchronize with Output
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1500975071
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
 Formats
@@ -7035,32 +6678,6 @@ Formats
 
 \end_inset
 
-
-\change_deleted -712698321 1500974764
-enabling the option 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-Synchronize with Output
-\end_layout
-
-\end_inset
-
- in the menu 
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Output
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
 .
  In such a case \SpecialChar LyX
  will automatically insert the necessary Sync\SpecialChar TeX
@@ -7437,15 +7054,9 @@ The generation of the required info can be forced by changing the converter
 
 \end_inset
 
- Also note that only a few PDF viewers (
-\change_inserted -712698321 1500977288
-such as 
-\change_unchanged
-Okular and Qpdfview on Unix, Skim on the Mac, SumatraPDF on Windows
-\change_inserted -712698321 1500977299
-; see the next section for details
-\change_unchanged
-) already provide Sync\SpecialChar TeX
+ Also note that only a few PDF viewers (such as Okular and Qpdfview on Unix,
+ Skim on the Mac, SumatraPDF on Windows; see the next section for details)
+ already provide Sync\SpecialChar TeX
  support.
 \end_layout
 
@@ -7515,10 +7126,6 @@ TeX
 
 \end_inset
 
- 
-\change_deleted -712698321 1500977453
-or
-\change_unchanged
  converter to 
 \begin_inset Flex Code
 status collapsed
@@ -7530,17 +7137,9 @@ pdflatex -synctex=1 $$i
 \end_inset
 
 .
- 
-\change_inserted -712698321 1500977740
-Should your viewer not be considered in the following description, or in
- case of missing success, please 
-\change_deleted -712698321 1500977741
-C
-\change_inserted -712698321 1500977744
-c
-\change_unchanged
-heck the documentation of your viewer whether the viewer needs to be configured
- for the use with Sync\SpecialChar TeX
+ Should your viewer not be considered in the following description, or in
+ case of missing success, please check the documentation of your viewer
+ whether the viewer needs to be configured for the use with Sync\SpecialChar TeX
 .
 \begin_inset Foot
 status collapsed
@@ -7895,38 +7494,12 @@ Editor
 
 \end_inset
 
-
-\change_inserted -712698321 1500981642
- and
-\change_deleted -712698321 1500981641
-,
-\change_unchanged
- select 
-\change_deleted -712698321 1500981634
-
-\begin_inset Quotes eld
-\end_inset
-
-Custom Text Editor
-\change_inserted -712698321 1500981635
-LyX
-\change_unchanged
-
+ and select LyX
 \begin_inset Quotes erd
 \end_inset
 
- 
-\change_inserted -712698321 1500981659
-as editor.
- This inserts the appropriate 
-\change_deleted -712698321 1500981663
-and add the 
-\change_unchanged
-command 
-\change_inserted -712698321 1500981665
-(
-\change_unchanged
-
+ as editor.
+ This inserts the appropriate command (
 \begin_inset Flex Code
 status collapsed
 
@@ -7936,11 +7509,7 @@ lyxclient -g %f %l
 
 \end_inset
 
-
-\change_inserted -712698321 1500981668
-)
-\change_unchanged
-.
+).
 \end_layout
 
 \begin_layout Standard
@@ -8906,13 +8475,9 @@ Footnote.
 thanks{}
 \family default
  in that case.
-\change_inserted -712698321 1501150851
-
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1501150892
 Under 
 \family sans
 Edit\SpecialChar menuseparator
@@ -8922,8 +8487,6 @@ Text Style
 \end_layout
 
 \begin_layout Itemize
-
-\change_inserted -712698321 1501150936
 
 \family sans
 Institute
@@ -8941,35 +8504,16 @@ Address
 
 \begin_layout Itemize
 
-\change_inserted -712698321 1501150947
-
 \family sans
 Email
 \family default
  to supply an email address for fast contact.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
-In addition to these topics, the macros use
-\change_deleted -712698321 1501150958
- three
-\change_inserted -712698321 1501150961
- one
-\change_unchanged
- additional \SpecialChar LaTeX
- command
-\change_deleted -712698321 1501150963
-s
-\change_unchanged
- that ha
-\change_deleted -712698321 1501150967
-ve
-\change_inserted -712698321 1501150967
-s
-\change_unchanged
- no counterpart in \SpecialChar LyX
+In addition to these topics, the macros use one additional \SpecialChar LaTeX
+ command that
+ has no counterpart in \SpecialChar LyX
 :
 \end_layout
 
@@ -8984,45 +8528,8 @@ and
 y.
 \end_layout
 
-\begin_layout Itemize
-
-\change_deleted -712698321 1501150911
-
-\family typewriter
-
-\backslash
-inst{<nr>}
-\family default
-to mark corresponding author/institute pairs.
- The institutes are numbered sequentially as they appear in the 
-\family sans
-Address
-\family default
- field, so you have to put a marker to each author.
-\end_layout
-
-\begin_layout Itemize
-
-\change_deleted -712698321 1501150911
-
-\family typewriter
-
-\backslash
-email{address}
-\family default
- to supply an email address for fast contact.
-\change_unchanged
-
-\end_layout
-
 \begin_layout Standard
-
-\change_deleted -712698321 1501150972
-In all cases, t
-\change_inserted -712698321 1501150972
-T
-\change_unchanged
-he appropriate command has to be entered in \SpecialChar LyX
+The appropriate command has to be entered in \SpecialChar LyX
  and marked as \SpecialChar LaTeX
  code.
  See the examples.
@@ -9038,24 +8545,9 @@ The abstract should immediately follow the header block.
  With version 5 the abstract environment was changed to a command, and there
  is now a resctriction to only one paragraph.
  In addition, it should contain an entry with the keywords.
- This is 
-\change_deleted -712698321 1501151111
-not yet implemented for \SpecialChar LyX
-, therefore you have to enter the \SpecialChar LaTeX
- command 
-\family typewriter
-
-\backslash
-keywords{}
-\family default
- by hand and mark it as \SpecialChar LaTeX
- code
-\change_inserted -712698321 1501151122
-done via the paragraph style 
+ This is done via the paragraph style 
 \family sans
 Keywords
-\change_unchanged
-
 \family default
 .
  Refer to the example paper.
@@ -9169,56 +8661,10 @@ and
 
 \begin_layout Itemize
 
-\change_deleted -712698321 1501151229
-
-\family typewriter
-
-\backslash
-email
-\change_unchanged
-
-\end_layout
-
-\begin_layout Itemize
-
-\change_deleted -712698321 1501151308
-
-\family typewriter
-
-\backslash
-appendix
-\change_unchanged
-
-\end_layout
-
-\begin_layout Itemize
-
 \family typewriter
 
 \backslash
 authorrunning
-\end_layout
-
-\begin_layout Itemize
-
-\change_deleted -712698321 1501151231
-
-\family typewriter
-
-\backslash
-inst{}
-\end_layout
-
-\begin_layout Itemize
-
-\change_deleted -712698321 1501151231
-
-\family typewriter
-
-\backslash
-keywords{}
-\change_unchanged
-
 \end_layout
 
 \begin_layout Itemize
@@ -9397,13 +8843,7 @@ For submission, the paper has to be formated in a special double-spacing
 referee
 \family default
  to the documentclass.
- This must be done using the 
-\change_deleted -712698321 1501151486
-extra
-\change_inserted -712698321 1501151487
-custom
-\change_unchanged
- class options field in the 
+ This must be done using the custom class options field in the 
 \family sans
 Document\SpecialChar menuseparator
 Settings
@@ -9461,13 +8901,8 @@ AAS\SpecialChar TeX
  has proven to be an excellent tool for generating these documents, especially
  given its equation, citation, and figure handling capabilities.
  \SpecialChar LyX
- requires version 5.0 (or higher) of these macros; preferably 
-\change_deleted -712698321 1501152764
-5.2
-\change_inserted -712698321 1501152766
-6.0
-\change_unchanged
-, which is the version described here, or higher.
+ requires version 5.0 (or higher) of these macros; preferably 6.0, which
+ is the version described here, or higher.
  Versions prior to 5.0 are intended for use with \SpecialChar LaTeX
 2.09 and are fundamentally
  incompatible with \SpecialChar LyX
@@ -9538,11 +8973,7 @@ Template
 \family default
 , enter the new file name, then choose the 
 \family typewriter
-aastex
-\change_inserted -712698321 1501152130
-6
-\change_unchanged
-.lyx
+aastex6.lyx
 \family default
  template.
  This will show the most common fields found in a manuscript.
@@ -9554,24 +8985,7 @@ aastex
  Many of the AAS\SpecialChar TeX
  commands and environments can be implemented directly in
  \SpecialChar LyX
-, but some cannot
-\change_deleted -712698321 1501152213
-: most noticeably 
-\family typewriter
-
-\backslash
-altaffilmark
-\family default
- and 
-\family typewriter
-
-\backslash
-altaffiltext
-\family default
-, which should stick out like a sore thumb if you actually just opened the
- template file
-\change_unchanged
-.
+, but some cannot.
  For commands such as these, the \SpecialChar LaTeX
  code must be entered directly and marked
  as such.
@@ -9579,11 +8993,7 @@ altaffiltext
  code, or Evil Red Text.
  I tried to minimize the amount of \SpecialChar TeX
  code needed in an AAS\SpecialChar TeX
- document
-\change_deleted -712698321 1501152220
-, but there is still a bit more required than any of us would like
-\change_unchanged
-.
+ document.
 \end_layout
 
 \begin_layout Subsection
@@ -10159,22 +9569,6 @@ Things not implemented, use \SpecialChar TeX
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted -712698321 1501152401
-
-\family typewriter
-
-\backslash
-altaffilmark
-\family default
- (2.3), 
-\family typewriter
-
-\backslash
-altaffiltext
-\family default
- (2.3), 
-\change_unchanged
 
 \family typewriter
 
@@ -12219,15 +11613,7 @@ Quotation
 \begin_layout Itemize
 
 \family sans
-Title
-\change_deleted -712698321 1501158884
-
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Author
+TitleAuthor
 \end_layout
 
 \begin_layout Itemize
@@ -12258,26 +11644,6 @@ Address
 
 \family sans
 RightAddress
-\end_layout
-
-\begin_layout Itemize
-
-\change_deleted -712698321 1501158888
-
-\family sans
-Caption
-\change_unchanged
-
-\end_layout
-
-\begin_layout Itemize
-
-\change_deleted -712698321 1501158891
-
-\family sans
-Comment
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -12661,55 +12027,10 @@ Theorems, Lemmas, Proofs and more
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted -712698321 1501160146
-Due to a small bug in \SpecialChar LyX
- y
-\change_inserted -712698321 1501160146
-Y
-\change_unchanged
-ou can't have two of the same type of these environments directly following
+You can't have two of the same type of these environments directly following
  each other.
- 
-\change_inserted -712698321 1501160182
-If you use a normal paragraph break, 
-\change_deleted -712698321 1501160188
-They must be separated by something.
- If you try
-\change_unchanged
-, you will just be extending the previous environment as if you had merged
- the two environments together.
- 
-\change_deleted -712698321 1501160194
-So, how do you get around this problem? The simplest option is to insert
- some text between the two environments or add a 
-\family sans
-\SpecialChar LaTeX
-
-\family default
- environment between the two with just a 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
-%
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- in it.
- This will force \SpecialChar LyX
- to produce two separate environments and hence the correct
- \SpecialChar LaTeX
- output.
- An example is provided in the example file included with the \SpecialChar LyX
- distribution.
- Remember, this problem only occurs if you are trying to place two of the
- same type of theorem-like environments one directly after the other.
-
-\change_inserted -712698321 1501160255
+ If you use a normal paragraph break, , you will just be extending the previous
+ environment as if you had merged the two environments together.
  Rather than that, you need to insert a so-called separator.
  Please refer to the section entitled 
 \emph on
@@ -12720,8 +12041,6 @@ Separate Nestings
 User's Guide
 \emph default
 .
-\change_unchanged
-
 \end_layout
 
 \begin_layout Subsubsection
@@ -13429,13 +12748,7 @@ M-z p
 
 \family default
 Instructions to the speaker.
- The () are automatically inserted
-\change_deleted -712698321 1501161286
-, but only the ( will show in \SpecialChar LyX
-.
- Both will be printed
-\change_unchanged
-.
+ The () are automatically inserted.
 \end_layout
 
 \begin_layout Itemize
@@ -13677,52 +12990,18 @@ ijmpd.lyx
 \begin_layout Enumerate
 The language of the document should not be changed.
  Before previewing your paper, be sure that the babel package is not used.
- To do this, click on
-\change_inserted -712698321 1501082726
- 
+ To do this, click on 
 \begin_inset Info
 type  "menu"
 arg   "dialog-show document"
 \end_inset
 
-
-\change_unchanged
  
-\change_deleted -712698321 1501082743
-
 \family sans
-Tools
-\change_unchanged
 \SpecialChar menuseparator
-
-\change_deleted -712698321 1501082747
-Preferences
-\change_inserted -712698321 1501082748
 Language
-\change_unchanged
-
 \family default
-, 
-\change_deleted -712698321 1501082762
-select the 
-\family sans
-Lang Opts
-\family default
- tab, deselect the 
-\family sans
-Use babel
-\family default
- checkbox in the language settings, and click on 
-\family sans
-Apply
-\family default
- (or 
-\family sans
-Save
-\family default
-, if you wish to make this change permanent)
-\change_inserted -712698321 1501082770
-and select 
+, and select 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13733,8 +13012,6 @@ None
  as 
 \family sans
 Language Package
-\change_unchanged
-
 \family default
 .
 \end_layout
@@ -14140,46 +13417,6 @@ The modified
  document.
 \end_layout
 
-\begin_layout Subsection
-
-\change_deleted -712698321 1501082212
-Use of \SpecialChar TeX
- code
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted -712698321 1501082212
-The use of \SpecialChar TeX
- code is reduced to two commands, which must be placed at the
- top of the document.
- If you started writing your paper by using the 
-\family typewriter
-ijmpc.lyx
-\family default
- or the 
-\family typewriter
-ijmpd.lyx
-\family default
- template, the \SpecialChar TeX
- code needed is already in its place; you usually don't need
- to delete it.
- You may only modify the first \SpecialChar TeX
- code to specify the information printed
- to the top of odd and even pages (authors' names and short paper's title,
- respectively).
- This \SpecialChar TeX
- code must have the form 
-\family typewriter
-
-\backslash
-markboth{Authors' Names}{Short Paper's Title}
-\family default
-.
-\change_unchanged
-
-\end_layout
-
 \begin_layout Section
 iopart
 \end_layout
@@ -14217,68 +13454,26 @@ Writing a paper
 \end_layout
 
 \begin_layout Standard
-The easiest way to write a paper is to start with the 
-\change_deleted -712698321 1501162201
-file
-\change_inserted -712698321 1501162202
-template
-\change_unchanged
- 
+The easiest way to write a paper is to start with the template 
 \emph on
 IOP-article.lyx
 \emph default
- that is available 
-\change_deleted -712698321 1501162208
-in \SpecialChar LyX
-'s examples files folder
-\change_inserted -712698321 1501162222
-via 
+ that is available via 
 \family sans
 File\SpecialChar menuseparator
-New From Template\SpecialChar ldots
-
-\change_deleted -712698321 1501162219
-
+New From Template
 \family default
-.
-
-\change_unchanged
- 
-\change_deleted -712698321 1501162234
-Open this file, save it under a new name, and start writing.
-
-\change_unchanged
- The 
-\change_deleted -712698321 1501162238
-example file
-\change_inserted -712698321 1501162239
-template
-\change_unchanged
- explains how to use the special text environments.
+ The template explains how to use the special text environments.
  Here are the most important advices:
 \end_layout
 
 \begin_layout Itemize
 To be able to compile your document to a PDF, PS, or DVI, ensure that the
- 
-\change_deleted -712698321 1501162254
-two options 
-\family sans
-Use AMS math package
-\family default
- in the document settings under 
-\family sans
-Math Options
-\family default
- are not used
-\change_inserted -712698321 1501162277
-no AMS packages are loaded in 
+ no AMS packages are loaded in 
 \family sans
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
 Math Options
-\change_unchanged
-
 \family default
 !
 \end_layout
@@ -14388,11 +13583,7 @@ There is a general title environment
 \family sans
 Article
 \family default
- which is not directly supported by
-\change_deleted -712698321 1501162663
- the
-\change_unchanged
- \SpecialChar LyX
+ which is not directly supported by \SpecialChar LyX
 .
  This can be used as \SpecialChar TeX
  code when your document doesn't fit into one of the
@@ -15244,21 +14435,11 @@ at the beginning of a chapter.
  If you use the optional argument (
 \family sans
 Insert\SpecialChar menuseparator
-
-\change_deleted -712698321 1501163301
-Short
-\begin_inset space ~
-\end_inset
-
-Title
-\change_inserted -712698321 1501163306
 Dictum
 \begin_inset space ~
 \end_inset
 
 Author
-\change_unchanged
-
 \family default
 ), you can insert the dictum's author there.
  Dictum and author are separated by a line.
@@ -15521,8 +14702,6 @@ letter (koma-script)
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1501163945
 Note: This section discusses the obsolete 
 \family sans
 KOMA-Script-Letter (v.
@@ -16633,18 +15812,9 @@ style: The fancy page style is not supported, due to a command clash between
  name, which confuses \SpecialChar LaTeX
 ).
  Instead, Memoir comes with a number of its own page styles (see 
-\change_deleted -712698321 1501165256
-
 \family sans
-Layout\SpecialChar menuseparator
-
-\change_unchanged
 Document\SpecialChar menuseparator
-
-\change_inserted -712698321 1501165264
 Settings\SpecialChar menuseparator
-
-\change_unchanged
 Page
 \begin_inset space ~
 \end_inset
@@ -16696,13 +15866,7 @@ Title
  of contents from the header.
  You can define three variants of a title with this: one for the main text,
  one for the table of contents, and one for the headers.
- 
-\change_deleted -712698321 1501165686
-Simply insert two optional arguments if you need this feature, the first
- one containing the short title for the Table of Contents, the second one
- containing an alternative short title for the headers
-\change_inserted -712698321 1501165708
-\SpecialChar LyX
+ \SpecialChar LyX
  makes these available in form of specific 
 \family sans
 Short Title
@@ -16711,9 +15875,7 @@ Short Title
 \family sans
 Insert
 \family default
- menu
-\change_unchanged
-.
+ menu.
 \end_layout
 
 \begin_layout Description
@@ -16750,24 +15912,11 @@ Article: With the class option
 article
 \emph default
  (to be inserted in 
-\change_deleted -712698321 1501165976
-
 \family sans
-Layout\SpecialChar menuseparator
-
-\change_unchanged
 Document\SpecialChar menuseparator
-
-\change_inserted -712698321 1501165986
 Settings\SpecialChar menuseparator
 Class Settings\SpecialChar menuseparator
-
-\change_deleted -712698321 1501165988
-Extra
-\change_inserted -712698321 1501165989
 Custom
-\change_unchanged
-
 \begin_inset space ~
 \end_inset
 
@@ -16901,38 +16050,12 @@ Our hero arrives in Troia; he loses some friends; he finds others
 Epigraph: An epigraph is a smart slogan or motto at the beginning of a chapter.
  The epigraph environment provides an elegant way of typesetting such a
  motto.
- The motto itself (text) and its 
-\change_inserted -712698321 1501166968
-(optional) 
-\change_unchanged
-author (source) are divided by a short line.
- 
-\change_deleted -712698321 1501166972
-Unfortunately, we have to fool \SpecialChar LyX
- a bit here again, since the environment
- needs two arguments (text and source).
- In this case, we have to use curly brackets (in \SpecialChar TeX
- mode) between the two
- arguments: 
-\emph on
-<smart slogan>
-\emph default
- 
-\family typewriter
-}{
-\family default
- 
-\emph on
-<author of the slogan>
-\change_inserted -712698321 1501166996
-
-\emph default
-The author (source) can be inserted via 
+ The motto itself (text) and its (optional) author (source) are divided
+ by a short line.
+ The author (source) can be inserted via 
 \family sans
 Insert\SpecialChar menuseparator
 Epigraph Source
-\change_unchanged
-
 \family default
 \emph on
 .
@@ -17479,66 +16602,6 @@ Address
  won't compile.
 \end_layout
 
-\begin_layout Subsection
-
-\change_deleted -712698321 1501168252
-Drawbacks
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted -712698321 1501168252
-The main problem with this layout is that you can't use the optional arguments
- to layouts like Email and Title.
- (The problem is not unique to this layout; you can't use optional arguments
- to the Section layouts either.) This means that after you export that file
- to \SpecialChar LaTeX
- (which you'll need to do eventually to send it in to APS), you'll need
- to edit the \SpecialChar LaTeX
- file with a text editor to add the optional arguments to set,
- e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-the running title for the page headers.
- Lacking these layouts makes the 
-\family typewriter
-
-\backslash
-altaffiliation
-\family default
- (and the equivalent 
-\family typewriter
-
-\backslash
-altaddress
-\family default
-) useless, so the corresponding layouts don't exist, and will have to be
- added by hand.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-Note from JMarc:
-\emph default
- actually, \SpecialChar LyX
- 1.3.0 supports some forms of optional arguments, but this layout
- has not been updated yet to take advantage of it.
-\end_layout
-
-\end_inset
-
- 
-\change_unchanged
-
-\end_layout
-
 \begin_layout Section
 Springer Journals (
 \family sans
@@ -17729,18 +16792,6 @@ Probably.
 ejour2
 \family default
 .
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted -712698321 1501168901
-Limitations e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.: does not display the number for theorem-like layouts, just #.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Section
@@ -18214,16 +17265,6 @@ Caption
 \family sans
 \SpecialChar LyX
 -Code
-\end_layout
-
-\begin_layout Itemize
-
-\change_deleted -712698321 1501169265
-
-\family sans
-Comment
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -21010,16 +20051,9 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-Also note that CVS support is not as good as subversion support
-\change_inserted -712698321 1501253107
-,
-\change_unchanged
- so we advise using SVN instead.
- A good place to start learning Subversion is
-\change_inserted -712698321 1501253115
- the
-\change_unchanged
- SVN Book
+Also note that CVS support is not as good as subversion support, so we advise
+ using SVN instead.
+ A good place to start learning Subversion is the SVN Book
 \begin_inset Foot
 status collapsed
 
@@ -21067,16 +20101,9 @@ Before you begin to use the version control features in \SpecialChar LyX
  assumes a recent version of the GNU RCS or CVS/SVN
  package — no guarantees are made for older versions.
  Most of the log messages are not currently displayed after operations —
- you can check them in the Messages pane if 
-\change_inserted -712698321 1501253142
-you are 
-\change_unchanged
-unsure.
- Regular users of version control will appreciate 
-\change_inserted -712698321 1501253149
-the 
-\change_unchanged
-VC toolbar, which can be enabled via 
+ you can check them in the Messages pane if you are unsure.
+ Regular users of version control will appreciate the VC toolbar, which
+ can be enabled via 
 \family sans
 View\SpecialChar menuseparator
 Toolbars\SpecialChar menuseparator
@@ -21091,39 +20118,19 @@ Control
 
 \begin_layout Standard
 For introducing your own external commands consult 
-\change_deleted -712698321 1501253161
-vc-command
-\change_inserted -712698321 1501253161
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1501253161
 vc-command
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
  in the manual 
-\change_deleted -712698321 1501253168
-of 
-\change_unchanged
-
 \emph on
 \SpecialChar LyX
- 
-\change_inserted -712698321 1501253174
-F
-\change_deleted -712698321 1501253173
-f
-\change_unchanged
-unctions
+ Functions
 \emph default
 .
 \end_layout
@@ -21215,15 +20222,9 @@ Edit
 
 \begin_layout Standard
 RCS command that is run:
-\change_inserted -712698321 1501253193
-
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_deleted -712698321 1501253193
- 
-\change_unchanged
 
 \family typewriter
 ci -q -u -i -t-"<initial description>" <file-name>
@@ -21340,34 +20341,14 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_deleted -712698321 1501253225
-
 \family typewriter
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501253225
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 <file-name>
-\change_deleted -712698321 1501253231
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501253231
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -21379,34 +20360,14 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_deleted -712698321 1501253233
-
 \family typewriter
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501253233
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 <new-file-name>
-\change_deleted -712698321 1501253234
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501253235
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -21424,33 +20385,13 @@ status collapsed
 ci -q -u 
 \family typewriter
 -i 
-\change_deleted -712698321 1501253236
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501253236
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 <new-file-name>
-\change_deleted -712698321 1501253239
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501253239
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -21913,33 +20854,13 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_deleted -712698321 1501254263
-
 \family typewriter
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501254263
-
 \lang ngerman
 "
-\change_unchanged
-
 \lang english
 <file-name>
-\change_deleted -712698321 1501254266
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501254266
-
 \lang ngerman
 "
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -21950,33 +20871,13 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_deleted -712698321 1501254267
-
 \family typewriter
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501254267
-
 \lang ngerman
 "
-\change_unchanged
-
 \lang english
 <new-file-name>
-\change_deleted -712698321 1501254269
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501254269
-
 \lang ngerman
 "
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -21991,34 +20892,13 @@ status collapsed
 
 \begin_layout Plain Layout
 cvs -q add 
-\change_deleted -712698321 1501254271
-
 \family typewriter
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501254271
-
 \lang ngerman
 "
-\change_unchanged
-
 \lang english
 <new-file-name>
-\change_deleted -712698321 1501254272
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501254272
-
 \lang ngerman
 "
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -22071,33 +20951,13 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_deleted -712698321 1501254274
-
 \family typewriter
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501254274
-
 \lang ngerman
 "
-\change_unchanged
-
 \lang english
 <file-name>
-\change_deleted -712698321 1501254277
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501254277
-
 \lang ngerman
 "
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -22108,33 +20968,13 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_deleted -712698321 1501254278
-
 \family typewriter
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501254278
-
 \lang ngerman
 "
-\change_unchanged
-
 \lang english
 <new-file-name>
-\change_deleted -712698321 1501254279
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501254279
-
 \lang ngerman
 "
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -22149,34 +20989,13 @@ status collapsed
 
 \begin_layout Plain Layout
 cvs -q add 
-\change_deleted -712698321 1501254281
-
 \family typewriter
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501254281
-
 \lang ngerman
 "
-\change_unchanged
-
 \lang english
 <new-file-name>
-\change_deleted -712698321 1501254282
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501254282
-
 \lang ngerman
 "
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -22191,34 +21010,13 @@ status collapsed
 
 \begin_layout Plain Layout
 cvs -q remove 
-\change_deleted -712698321 1501254285
-
 \family typewriter
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501254285
-
 \lang ngerman
 "
-\change_unchanged
-
 \lang english
 <file-name>
-\change_deleted -712698321 1501254287
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501254287
-
 \lang ngerman
 "
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -22491,33 +21289,13 @@ Then you are asked interactively to supply an initial description of the
 SVN command that is run: 
 \family typewriter
 svn add -q 
-\change_deleted -712698321 1501253346
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501253346
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 <file-name>
-\change_deleted -712698321 1501253348
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501253348
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -22591,33 +21369,13 @@ Ditto.
  
 \family typewriter
 svn update --non-interactive 
-\change_deleted -712698321 1501253354
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501253354
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 <file-name>
-\change_deleted -712698321 1501253356
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501253356
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -22637,33 +21395,13 @@ This will discard all changes made to the document since the last check
 SVN command: 
 \family typewriter
 svn revert -q 
-\change_deleted -712698321 1501253358
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501253358
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 <file-name>
-\change_deleted -712698321 1501253360
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501253360
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -22709,63 +21447,23 @@ status collapsed
 
 \begin_layout Plain Layout
 svn copy -q 
-\change_deleted -712698321 1501253363
-
 \family typewriter
 
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501253363
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 <file-name>
-\change_deleted -712698321 1501253365
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501253365
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
  
-\change_deleted -712698321 1501253366
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501253366
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 <new-file-name>
-\change_deleted -712698321 1501253368
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501253368
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -22830,63 +21528,23 @@ status collapsed
 
 \begin_layout Plain Layout
 svn move -q 
-\change_deleted -712698321 1501253375
-
 \family typewriter
 
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501253375
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 <file-name>
-\change_deleted -712698321 1501253377
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501253377
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
  
-\change_deleted -712698321 1501253378
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501253378
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 <new-file-name>
-\change_deleted -712698321 1501253380
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501253380
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -22934,17 +21592,8 @@ Note that this command will work only with subversion
 \end_layout
 
 \begin_layout Standard
-All the commands above have one shortco
-\change_deleted -712698321 1501253385
-m
-\change_unchanged
-ming 
-\change_inserted -712698321 1501253389
-–
-\change_deleted -712698321 1501253389
--
-\change_unchanged
- they deal with the current document only.
+All the commands above have one shortcoming – they deal with the current
+ document only.
  Once your document contains pictures, includes external 
 \begin_inset Flex Code
 status collapsed
@@ -23057,33 +21706,13 @@ This shows the complete history of the SVN document.
  The output of 
 \family typewriter
 svn log 
-\change_deleted -712698321 1501253404
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501253404
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 <file-name>
-\change_deleted -712698321 1501253406
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501253406
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \family default
  is shown in a browser.
@@ -23111,13 +21740,7 @@ The file exchange through various revision control systems brings the problem
 
 \begin_layout Standard
 SVN has two such mechanisms to provide mutual exclusivity for file access
- 
-\change_inserted -712698321 1501253410
-–
-\change_deleted -712698321 1501253410
--
-\change_unchanged
- locks and automatic setting of write permissions (see sec.
+ – locks and automatic setting of write permissions (see sec.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -23140,27 +21763,16 @@ svn:needs-lock
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_deleted -712698321 1501253418
-http://svnbook.red-bean.com/en/1.2/svn.advanced.locking.html
-\change_inserted -712698321 1501253418
-
 \begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1501253418
-
 http://svnbook.red-bean.com/en/1.2/svn.advanced.locking.html
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -23190,25 +21802,13 @@ Check-out
 \begin_layout Itemize
 Locked state.
  The loaded file is in the 
-\change_deleted -712698321 1501253433
-'
-\change_inserted -712698321 1501253433
-
 \begin_inset Quotes els
 \end_inset
 
-
-\change_unchanged
 normal
-\change_deleted -712698321 1501253435
-'
-\change_inserted -712698321 1501253435
-
 \begin_inset Quotes ers
 \end_inset
 
-
-\change_unchanged
  edit mode.
  No other user is allowed to edit the file.
  
@@ -23279,25 +21879,7 @@ Version
 \end_inset
 
 Control\SpecialChar menuseparator
-
-\change_deleted -712698321 1501244235
-Toggle
-\change_inserted -712698321 1501244235
-Use
-\change_unchanged
- 
-\change_deleted -712698321 1501244236
-l
-\change_inserted -712698321 1501244237
-L
-\change_unchanged
-ocking 
-\change_inserted -712698321 1501244242
-P
-\change_deleted -712698321 1501244242
-p
-\change_unchanged
-roperty
+Use Locking Property
 \family default
 .
  This command is active only when the file is not locked on the svn server
@@ -23659,69 +22241,27 @@ This is an easy way how to ensure that \SpecialChar LyX
 
  tag in your document (e.g.
  
-\change_deleted -712698321 1501253475
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-$Rev$
-\end_layout
-
-\end_inset
-
-
-\change_inserted -712698321 1501253480
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1501253480
 $Rev$
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 ).
  This way svn client will automatically substitute revision number (e.g.
  
-\change_deleted -712698321 1501253467
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-$Rev: 59 $
-\end_layout
-
-\end_inset
-
-
-\change_inserted -712698321 1501253473
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1501253473
 $Rev: 59 $
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 ) after each update and commit.
  There are more problems with this approach.
  Firstly, the '$' character is used in \SpecialChar TeX
@@ -24329,44 +22869,20 @@ This command registers in GIT your document ONLY in case you have already
 \begin_layout Standard
 Then you are asked interactively to supply an initial description of the
  document.
- Don't forget that registered file is not yet commi
-\change_inserted -712698321 1501253542
-t
-\change_unchanged
-ted.
+ Don't forget that registered file is not yet committed.
 \end_layout
 
 \begin_layout Standard
 GIT command that is run: 
 \family typewriter
 git add 
-\change_deleted -712698321 1501253534
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501253534
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 <file-name>
-\change_deleted -712698321 1501253538
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501253538
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -24387,11 +22903,7 @@ Check In Changes
 \begin_layout Standard
 When you are finished editing a file, you commit your changes.
  When you do this, you are asked for a description of the changes.
- After that changes are commit
-\change_inserted -712698321 1501253548
-t
-\change_unchanged
-ed.
+ After that changes are committed.
 \end_layout
 
 \begin_layout Standard
@@ -24416,33 +22928,13 @@ This will discard all changes made to the document since the last check
 GIT command: 
 \family typewriter
 git checkout -q 
-\change_deleted -712698321 1501253553
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501253553
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 <file-name>
-\change_deleted -712698321 1501253555
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501253555
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -24488,63 +22980,23 @@ status collapsed
 
 \begin_layout Plain Layout
 git mv 
-\change_deleted -712698321 1501253559
-
 \family typewriter
 
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501253559
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 <file-name>
-\change_deleted -712698321 1501253561
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501253561
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
  
-\change_deleted -712698321 1501253562
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501253562
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 <new-file-name>
-\change_deleted -712698321 1501253564
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501253564
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \end_layout
 
@@ -24578,33 +23030,13 @@ This shows the complete history of the GIT document.
  The output of 
 \family typewriter
 git log 
-\change_deleted -712698321 1501253567
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_inserted -712698321 1501253567
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 <file-name>
-\change_deleted -712698321 1501253569
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_inserted -712698321 1501253569
-
 \begin_inset Quotes qld
 \end_inset
 
-
-\change_unchanged
 
 \family default
  is shown in a browser.
@@ -24644,25 +23076,15 @@ Further tuning
 
 \begin_layout Standard
 With the recent addition of the 
-\change_deleted -712698321 1501253582
-vc-command
-\change_inserted -712698321 1501253582
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1501253582
 vc-command
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
  function \SpecialChar LyX
  power users are allowed to create their own commands for revision
  control.
@@ -24722,73 +23144,31 @@ diff
  case of \SpecialChar LyX
  files, which have more a complicated structure.
  Hence we provide binding to the Document comparison feature.
- There are two ways of calling this feature 
-\change_inserted -712698321 1501253613
-–
-\change_deleted -712698321 1501253613
--
-\change_unchanged
- either by direct call of 
+ There are two ways of calling this feature – either by direct call of 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_deleted -712698321 1501253619
-VC_COMPARE
-\change_inserted -712698321 1501253621
 vc-compare
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
  \SpecialChar LyX
  function (for details see \SpecialChar LyX
- functions manual) or by
-\change_inserted -712698321 1501253630
- the toolbar
-\change_unchanged
- icon
-\change_inserted -712698321 1501253655
- 
+ functions manual) or by the toolbar icon 
 \begin_inset Info
 type  "icon"
 arg   "vc-compare"
 \end_inset
 
-
-\change_deleted -712698321 1501253665
-/
-\change_inserted -712698321 1501253675
- or the 
-\change_unchanged
-menu item 
-\change_inserted -712698321 1501253679
-
+ or the menu item 
 \begin_inset Info
 type  "menu"
 arg   "vc-compare"
 \end_inset
 
-
-\change_deleted -712698321 1501253689
-
-\begin_inset Flex Noun
-status collapsed
-
-\begin_layout Plain Layout
-Compare with older revision...
-\end_layout
-
-\end_inset
-
-
-\change_inserted -712698321 1501253693
-, respectively
-\change_unchanged
-.
+, respectively.
  One can either compare two chosen revisions of the document or he can simply
  compare the current version of edited text with older revisions (where
  '
@@ -24815,25 +23195,15 @@ This feature is supported for SVN and RCS though due to the more complicated
  We don't currently support GIT addressing of revisions, one can just compare
  edited document with its revision X steps backs, where X is addressed as
  
-\change_deleted -712698321 1501253702
-HEAD~X
-\change_inserted -712698321 1501253702
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1501253702
 HEAD~X
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 .
 \end_layout
 
@@ -25014,14 +23384,10 @@ e.
 \end_inset
 
 it is easy to plug in new filters
-\change_inserted -712698321 1501229014
-
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1501229136
 
 \emph on
 Filters 
@@ -25035,8 +23401,6 @@ are programs that read a given data stream and output a manipulated data
 
 \end_inset
 
-
-\change_unchanged
  and to perform special processing that you may need.
  
 \end_layout
@@ -25119,13 +23483,7 @@ If you have installed Noweb and \SpecialChar LyX
  successfully, whenever you open a new document,
  after you have chosen its document class, use the 
 \family sans
-Document
-\change_deleted -712698321 1501229457
-->
-\change_inserted -712698321 1501229457
-\SpecialChar menuseparator
-
-\change_unchanged
+Document\SpecialChar menuseparator
 Settings
 \family default
  menu to add the 
@@ -25162,13 +23520,7 @@ Typing code in
 
 \begin_layout Standard
 \SpecialChar LyX
- enables you to write code with a 
-\change_deleted -712698321 1501229783
-layout
-\change_inserted -712698321 1501229785
-custom inset
-\change_unchanged
- named 
+ enables you to write code with a custom inset named 
 \begin_inset Flex Noun
 status collapsed
 
@@ -25228,13 +23580,7 @@ Chunk
 
 \end_inset
 
-, that works like a normal 
-\change_deleted -712698321 1501229871
-paragraph
-\change_inserted -712698321 1501229873
-text inset
-\change_unchanged
- but has a free spacing capability.
+, that works like a normal text inset but has a free spacing capability.
 \end_layout
 
 \begin_layout Standard
@@ -25346,13 +23692,7 @@ Chunk
 
 \end_inset
 
- 
-\change_deleted -712698321 1501230025
-layout 
-\change_inserted -712698321 1501230027
-inset 
-\change_unchanged
-that, by itself, takes care of the business.
+ inset that, by itself, takes care of the business.
 \end_layout
 
 \begin_layout Enumerate
@@ -25466,39 +23806,14 @@ Converter
 \end_inset
 
  setting, should be set to
-\change_inserted -712698321 1501230220
-
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_deleted -712698321 1501230232
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_unchanged
 
 \family typewriter
 build-script $$i
 \family default
  $$r
-\change_deleted -712698321 1501230236
-
-\begin_inset Quotes erd
-\end_inset
-
-.
-\begin_inset Newline newline
-\end_inset
-
-
-\change_inserted -712698321 1501230224
-
 \end_layout
 
 \begin_layout Standard
@@ -25530,28 +23845,6 @@ build-script
  that you can place in a directory on your path:
 \end_layout
 
-\begin_layout Standard
-
-\change_deleted -712698321 1501230298
-\begin_inset VSpace defskip
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted -712698321 1501230296
-\begin_inset Newpage pagebreak
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
 \begin_layout LyX-Code
 
 \family sans
@@ -25571,17 +23864,6 @@ notangle -Rbuild-script $1 | env NOWEB_SOURCE=$1 NOWEB_OUTPUT_DIR=$2 sh
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted -712698321 1501230299
-\begin_inset VSpace defskip
-\end_inset
-
-
-\change_unchanged
-
-\end_layout
-
-\begin_layout Standard
 The next part of the converter setting is the 
 \begin_inset Quotes eld
 \end_inset
@@ -25591,39 +23873,12 @@ Flags
 \end_inset
 
  which is to be set to
-\change_inserted -712698321 1501230552
-
 \end_layout
 
 \begin_layout LyX-Code
 
-\change_deleted -712698321 1501230577
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Quotes eld
-\end_inset
-
-
-\change_unchanged
-
 \family typewriter
 parselog=$$s/scripts/listerrors
-\change_deleted -712698321 1501230575
-
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
-\begin_inset Newline newline
-\end_inset
-
-
-\change_inserted -712698321 1501230544
-
 \end_layout
 
 \begin_layout Standard
@@ -25983,30 +24238,8 @@ Edit Sources
  to:
 \end_layout
 
-\begin_layout Standard
-
-\change_deleted -712698321 1501232274
-\begin_inset VSpace defskip
-\end_inset
-
-
-\change_inserted -712698321 1501232276
-
-\end_layout
-
 \begin_layout LyX-Code
 echo "LYXCMD:monitor:server-goto-file-row:@FILE@ @LINE@" >~/.lyxpipe.in
-\end_layout
-
-\begin_layout Standard
-
-\change_deleted -712698321 1501232278
-\begin_inset VSpace defskip
-\end_inset
-
-
-\change_unchanged
-
 \end_layout
 
 \begin_layout Standard
@@ -26026,44 +24259,7 @@ With this, whenever you are using ddd and find a point in the program that
 Note however that you must enable the \SpecialChar LyX
  server to get this feature working
  (it is disabled by default).
- 
-\change_deleted -712698321 1501232597
-You can enable it in 
-\family sans
-Preferences
-\family default
- (tabs 
-\family sans
-Inputs
-\family default
-, 
-\family sans
-Paths
-\family default
-) by entering in the 
-\family sans
-\SpecialChar LyX
-server pipe
-\family default
- a path like 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
-/home/<your-home-directory>/.lyx/lyxpipe
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\change_inserted -712698321 1501232576
-Sec.
+ Sec.
 \begin_inset space ~
 \end_inset
 
@@ -26074,16 +24270,7 @@ reference "sec:Starting-the-Server"
 
 \end_inset
 
- explains how to do that
-\change_deleted -712698321 1501232579
-Read the \SpecialChar LyX
- server documentation in the 
-\emph on
-Customization Manual
-\emph default
- for further information
-\change_unchanged
-.
+ explains how to do that.
 \end_layout
 
 \begin_layout Subsubsection
@@ -26093,13 +24280,7 @@ Toolbar extensions
 \begin_layout Standard
 There are six new buttons that can be added to your \SpecialChar LyX
  toolbar.
- 
-\change_deleted -712698321 1501232976
-Five
-\change_inserted -712698321 1501232977
-Four
-\change_unchanged
- of these buttons are short cuts to layout styles: 
+ Four of these buttons are short cuts to layout styles: 
 \family sans
 Standard
 \family default
@@ -26112,28 +24293,12 @@ Section
 \SpecialChar LaTeX
 
 \family default
-,
-\change_inserted -712698321 1501232982
- and
-\change_unchanged
- 
+, and 
 \family sans
 \SpecialChar LyX
 -Code
 \family default
-, 
-\change_deleted -712698321 1501232984
-and
-\change_inserted -712698321 1501232988
-one f
-\change_inserted 34634807 1501446371
-o
-\change_deleted 34634807 1501446371
-p
-\change_inserted -712698321 1501232988
-r the custom inset
-\change_unchanged
- 
+, one for the custom inset 
 \family sans
 Chunk
 \family default
@@ -26205,13 +24370,7 @@ Toolbar
 \end_layout
 
 \begin_layout LyX-Code
-  Icon "
-\change_deleted -712698321 1501232918
-layout
-\change_inserted -712698321 1501232921
-flex.insert
-\change_unchanged
- Chunk"
+  Icon "flex.insert Chunk"
 \end_layout
 
 \begin_layout LyX-Code
@@ -26377,25 +24536,15 @@ Modules
 \family default
 ) and must have the \SpecialChar LaTeX
 -package 
-\change_deleted -712698321 1501235255
-multicol
-\change_inserted -712698321 1501235255
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1501235255
 multicol
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
  installed.
 \end_layout
 
@@ -26682,10 +24831,6 @@ The examples in this section show some more special features of multiple
 
 \begin_layout Standard
 For more features of multiple columns, have a look at the 
-\change_deleted -712698321 1501236578
-documentation
-\change_inserted -712698321 1501236578
-
 \begin_inset CommandInset href
 LatexCommand href
 name "documentation"
@@ -26694,39 +24839,17 @@ literal "false"
 
 \end_inset
 
-
-\change_unchanged
  of the \SpecialChar LaTeX
 -package 
-\change_deleted -712698321 1501235271
-multicol
-\change_inserted -712698321 1501235271
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1501235271
 multicol
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_deleted -712698321 1501236609
-, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "multicol"
-literal "true"
-
-\end_inset
-
-
-\change_unchanged
 .
 \end_layout
 
@@ -26931,63 +25054,29 @@ In this example the space is set to 7
 \end_inset
 
 text lines by using 
-\change_deleted -712698321 1501235295
-
-\begin_inset Quotes eld
-\end_inset
-
-7
-\backslash
-baselineskip
-\change_inserted -712698321 1501235293
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1501235293
 7
 \backslash
 baselineskip
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_deleted -712698321 1501235296
-
-\begin_inset Quotes erd
-\end_inset
-
-
-\change_unchanged
  (where the command 
-\change_deleted -712698321 1501235285
-
-\backslash
-baselineskip
-\change_inserted -712698321 1501235285
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1501235285
-
 \backslash
 baselineskip
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
  needs to be inserted as \SpecialChar TeX
  code):
 \end_layout
@@ -27049,29 +25138,17 @@ Surrounding Space
 \begin_layout Standard
 The amount of space before and after multiple columns can be changed by
  changing the length 
-\change_deleted -712698321 1501235307
-
-\backslash
-multicolsep
-\change_inserted -712698321 1501235307
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1501235307
-
 \backslash
 multicolsep
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 .
  For example the command
 \end_layout
@@ -27101,29 +25178,17 @@ pt.
 
 \begin_layout Standard
 For this example 
-\change_deleted -712698321 1501235314
-
-\backslash
-multicolsep
-\change_inserted -712698321 1501235315
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1501235315
-
 \backslash
 multicolsep
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
  was set to 2.5
 \begin_inset space \thinspace{}
 \end_inset
@@ -27189,33 +25254,17 @@ status open
 Note:
 \series default
  The values you set with 
-\change_inserted -712698321 1501235328
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1501235333
-
 \backslash
 setlength
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_deleted -712698321 1501235331
-
-\series bold
-
-\backslash
-setlength
-\change_unchanged
-
-\series default
  will be used for all following multiple columns until you change them again.
 \end_layout
 
@@ -27265,29 +25314,17 @@ Column Breaks
 
 \begin_layout Standard
 A column break can be forced by inserting the command 
-\change_deleted -712698321 1501235399
-
-\backslash
-columnbreak{}
-\change_inserted -712698321 1501235399
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1501235399
-
 \backslash
 columnbreak{}
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
  as \SpecialChar TeX
  Code to that position in the text where the column should be broken.
  Note that this leads in most cases to whitespace in the text.
@@ -27420,29 +25457,17 @@ Column Separation
 The width of the columns is automatically calculated, but you can modify
  the space between the columns.
  This is done by changing the length 
-\change_deleted -712698321 1501235412
-
-\backslash
-columnsep
-\change_inserted -712698321 1501235412
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1501235412
-
 \backslash
 columnsep
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 .
  Its predefined value is 10
 \begin_inset space \thinspace{}
@@ -27450,29 +25475,17 @@ columnsep
 
 pt.
  Here is an example where 
-\change_deleted -712698321 1501235418
-
-\backslash
-columnsep
-\change_inserted -712698321 1501235418
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1501235418
-
 \backslash
 columnsep
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
  is set to 3
 \begin_inset space \thinspace{}
 \end_inset
@@ -27562,29 +25575,17 @@ Vertical Lines
 
 \begin_layout Standard
 Between the columns a rule with a width of the length 
-\change_deleted -712698321 1501235428
-
-\backslash
-columnseprule
-\change_inserted -712698321 1501235428
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1501235428
-
 \backslash
 columnseprule
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
  is placed.
  If this rule width is set to 0
 \begin_inset space \thinspace{}
@@ -27727,39 +25728,19 @@ The Holy War
 
 \begin_layout Standard
 The rule can be colored by redefining the command 
-\change_deleted -712698321 1501235439
-
-\backslash
-columnseprulecolor
-\change_inserted -712698321 1501235439
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1501235439
-
 \backslash
 columnseprulecolor
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
 .
  This is done by inserting the command
-\change_deleted -712698321 1501235443
-
-\begin_inset Newline newline
-\end_inset
-
-
-\change_inserted -712698321 1501235444
-
 \end_layout
 
 \begin_layout LyX-Code
@@ -27770,39 +25751,21 @@ renewcommand{
 columnseprulecolor}{
 \backslash
 color{red}}
-\change_deleted -712698321 1501235445
-
-\begin_inset Newline newline
-\end_inset
-
-
-\change_inserted -712698321 1501235446
-
 \end_layout
 
 \begin_layout Standard
 as \SpecialChar TeX
  Code before the multicolumn inset.
  Replace 
-\change_deleted -712698321 1501235460
-red
-\change_inserted -712698321 1501235457
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1501235462
 red
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
  in this command by a color of your choice.
  You can use all pre- and self-defined colors.
  See the 
@@ -27819,18 +25782,9 @@ Tables
 \emph default
  for more information about pre- and self-defined colors.
  To go back to the default color insert the command
-\change_inserted -712698321 1501235474
-
 \end_layout
 
 \begin_layout LyX-Code
-
-\change_deleted -712698321 1501235472
-\begin_inset Newline newline
-\end_inset
-
-
-\change_unchanged
 
 \backslash
 renewcommand{
@@ -27838,18 +25792,9 @@ renewcommand{
 columnseprulecolor}{
 \backslash
 normalcolor}
-\change_inserted -712698321 1501235475
-
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted -712698321 1501235473
-\begin_inset Newline newline
-\end_inset
-
-
-\change_unchanged
 Here is the example with a cyan rule and 1
 \begin_inset space \thinspace{}
 \end_inset
@@ -28039,26 +25984,16 @@ Non-standard Paragraph Shapes
  can modify the paragraph shape to one of your choice.
  This can be done by using the \SpecialChar LaTeX
 -package 
-\change_deleted -712698321 1501236703
-shapepar
-\change_inserted -712698321 1501236703
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
 \noindent
-
-\change_inserted -712698321 1501236703
 shapepar
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
  which is loaded by using in the document settings the module 
 \family sans
 Custom paragraph shapes
@@ -28638,28 +26573,16 @@ shapepar
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted -712698321 1501236716
 The package 
-\change_deleted -712698321 1501236722
-shapepar
-\change_inserted -712698321 1501236723
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1501236723
 shapepar
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_unchanged
  takes care that the shape will always be preserved, no matter how much
  text is in the paragraph.
  Therefore the paragraph size changes with the amount of contained text.
@@ -29081,10 +27004,6 @@ These commands are internally used for all shapes described here.
 
  For information how these styles are used and about further customization
  possibilities, have a look at the 
-\change_inserted -712698321 1501236534
-
-\lang ngerman
-
 \begin_inset CommandInset href
 LatexCommand href
 name "documentation"
@@ -29093,93 +27012,17 @@ literal "false"
 
 \end_inset
 
-
-\change_deleted -712698321 1501236537
-
-\lang english
-documentation
-\change_unchanged
  of the package 
-\change_deleted -712698321 1501236618
-shapepar
-\change_inserted -712698321 1501236618
-
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1501236618
 shapepar
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
-
-\change_deleted -712698321 1501236618
-, 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "shapepar"
-literal "true"
-
-\end_inset
-
-
-\change_unchanged
 .
-\change_deleted -712698321 1501236666
-
-\end_layout
-
-\begin_layout Bibliography
-
-\change_deleted -712698321 1501236522
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "multicol"
-literal "true"
-
-\end_inset
-
-Documentation of the \SpecialChar LaTeX
--package 
-\begin_inset CommandInset href
-LatexCommand href
-name "multicol"
-target "http://mirror.ctan.org/macros/latex/required/tools/multicol.pdf"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-
-\change_deleted -712698321 1501236522
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "shapepar"
-literal "true"
-
-\end_inset
-
-Documentation of the \SpecialChar LaTeX
--package 
-\begin_inset CommandInset href
-LatexCommand href
-name "shapepar"
-target "http://mirrors.ctan.org/macros/latex/contrib/shapepar/shapepar.pdf"
-literal "false"
-
-\end_inset
-
-
-\change_unchanged
-
 \end_layout
 
 \end_body

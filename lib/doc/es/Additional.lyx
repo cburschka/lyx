@@ -3523,11 +3523,9 @@ Subdivided Bibliographies
 
 \begin_layout Subsection
 Bibliografías múltiples
-\lang english
-
 \begin_inset CommandInset label
 LatexCommand label
-name "subsec:Multiple-Bibliographies"
+name "subsec:Bibliografías-múltiples"
 
 \end_inset
 
@@ -3696,12 +3694,16 @@ status collapsed
 \end_inset
 
 
+\lang spanish
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Inserting-TeX-Code"
+reference "sec:Insertar-Código-TeX"
 
 \end_inset
 
+
+\lang english
 ), is to use the 
 \begin_inset Flex Code
 status collapsed
@@ -4510,14 +4512,16 @@ g., one per child in the
 \emph on
 main document
 \emph default
-), please refer to sec.
+), please refer to sec
+\lang spanish
+.
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "subsec:Multiple-Bibliographies"
+reference "subsec:Bibliografías-múltiples"
 
 \end_inset
 
@@ -4542,7 +4546,7 @@ empaquetar
  junto con las imágenes (y otros archivos) de los que depende,
  bien para enviarlo a un editor o para compartirlo con un co-autor.
  \SpecialChar LyX
- 2.0 incluye un guión en Python (
+ incluye un guión en Python (
 \begin_inset Flex Code
 status collapsed
 
@@ -6710,11 +6714,9 @@ empuje
 \begin_layout Section
 Iniciar el servidor \SpecialChar LyX
 
-\lang english
-
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Starting-the-Server"
+name "sec:Iniciar-el-servidor"
 
 \end_inset
 
@@ -9076,7 +9078,7 @@ El resumen debería ir a continuación del encabezado.
  Con la versión 5 el resumen cambió de entorno a comando, y ahora hay una
  restricción a un único párrafo.
  Además, debería contener una entrada con las claves.
- Esto .
+ Esto 
 \lang english
 done via the paragraph style 
 \family sans
@@ -14182,8 +14184,7 @@ IOP-article.lyx
 via 
 \family sans
 File\SpecialChar menuseparator
-New From Template\SpecialChar ldots
-
+New From Template
 \family default
 \lang spanish
 .
@@ -25851,18 +25852,22 @@ Sin embargo, ten en cuenta que debes habilitar el servidor \SpecialChar LyX
 \begin_layout Standard
 
 \lang english
-Sec.
+Sec
+\lang spanish
+.
 \begin_inset space ~
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Starting-the-Server"
+reference "sec:Iniciar-el-servidor"
 
 \end_inset
 
- explains how to do that
+ 
+\lang english
+explains how to do that
 \lang spanish
 .
 \end_layout
@@ -26286,7 +26291,6 @@ status open
 
 \begin_layout Plain Layout
 
-\lang english
 3
 \end_layout
 

@@ -2150,13 +2150,6 @@ Bib\SpecialChar TeX
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "Literaturverzeichnisse-mit-BibTeX"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -2380,13 +2373,6 @@ ftp://ctan.tug.org/tex-archive/macros/latex/contrib/custom-bib/
 
 \begin_layout Subsection
 Unterteilte Literaturverzeichnisse
-\begin_inset CommandInset label
-LatexCommand label
-name "Literaturverzeichnisse-unterteilt"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3502,7 +3488,7 @@ bündeln
 
 \begin_layout Standard
 \SpecialChar LyX
- 2.0 enthält ein Python-Skript (
+ enthält ein Python-Skript (
 \begin_inset Flex Code
 status collapsed
 
@@ -13544,11 +13530,7 @@ status collapsed
 \end_layout
 
 \begin_layout Section
-
-\lang english
-Institute of Physics
-\lang ngerman
- (IOP)
+iopart
 \end_layout
 
 \begin_layout Standard
@@ -25336,7 +25318,6 @@ status open
 
 \begin_layout Plain Layout
 
-\lang english
 3
 \end_layout
 
