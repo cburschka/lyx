@@ -4880,7 +4880,7 @@ noprefix "false"
 しばしばユーザーは，出版社に送ったり，共著者とやりとりするために，\SpecialChar LyX
 ファイルを，その依存する全画像（及び他のファイル）と「同梱」する必要に迫られることがあります．\SpecialChar LyX
 
- 2.0には，この過程を自動化するPythonスクリプト（
+には，この過程を自動化するPythonスクリプト（
 \begin_inset Flex Code
 status collapsed
 
@@ -6790,13 +6790,6 @@ status collapsed
 \begin_layout Chapter
 \SpecialChar LyX
 サーバー
-\begin_inset CommandInset label
-LatexCommand label
-name "chap:LyXサーバー"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -13216,8 +13209,7 @@ IOP-article.lyx
 文書がPDF・PS・DVIにコンパイルできるようにするためには，
 \family sans
 文書\SpecialChar menuseparator
-設定\SpecialChar ldots
-\SpecialChar menuseparator
+設定\SpecialChar menuseparator
 数式オプション
 \family default
 で，AMSパッケージが読み込まれていないことを確認してください！
