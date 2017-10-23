@@ -42,9 +42,10 @@ public:
 	};
 	/// Special handling on output
 	enum ParamHandling {
-		HANDLING_NONE,    /// no special handling
-		HANDLING_ESCAPE,  /// escape special characters
-		HANDLING_LATEXIFY /// transform special characters to LaTeX macros
+		HANDLING_NONE = 1,    /// no special handling
+		HANDLING_ESCAPE = 2,  /// escape special characters
+		HANDLING_LATEXIFY = 4, /// transform special characters to LaTeX macros
+		HANDLING_LTRIM = 8 /// trim blanks on the left
 	};
 	///
 	class ParamData {

@@ -112,7 +112,8 @@ ParamInfo const & InsetBibitem::findInfo(string const & /* cmdName */)
 		param_info_.add("label", ParamInfo::LATEX_OPTIONAL,
 				ParamInfo::HANDLING_LATEXIFY);
 		param_info_.add("key", ParamInfo::LATEX_REQUIRED,
-				ParamInfo::HANDLING_ESCAPE);
+				ParamInfo::ParamHandling(ParamInfo::HANDLING_ESCAPE
+							 | ParamInfo::HANDLING_LTRIM));
 		param_info_.add("literal", ParamInfo::LYX_INTERNAL);
 	}
 	return param_info_;
