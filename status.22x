@@ -136,6 +136,11 @@ What's new
 
 * DOCUMENTATION AND LOCALIZATION
 
+- Fix loading of math packages in many manuals (bug 10661).
+
+- Add note that the fixltx2e package (and so module) is obsolete as of
+  TeXLive 2015 (bug 9361).
+
 - Updated French user interface localization.
 
 * LYXHTML
