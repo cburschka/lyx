@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-10-13 11:34+0200\n"
-"PO-Revision-Date: 2017-10-13 14:49+0000\n"
+"POT-Creation-Date: 2017-10-23 10:30+0200\n"
+"PO-Revision-Date: 2017-10-23 12:37+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -11455,19 +11455,22 @@ msgstr ""
 msgid "Fix LaTeX"
 msgstr "Upraviť LaTeX"
 
-#: lib/layouts/fixltx2e.module:9
+#: lib/layouts/fixltx2e.module:11
 msgid ""
 "Loads the LaTeX package fixltx2e which contains some bug fixes for LaTeX. "
 "Those fixes are not part of the LaTeX kernel because of backward "
 "compatibility. If you use this module your typeset document may look "
 "different when you process it with future LaTeX versions, because fixltx2e "
-"may provide more bugfixes in future versions."
+"may provide more bugfixes in future versions. Note that the recent LaTeX "
+"kernel (2015/01/01) includes fixltx2e, so the fixltx2e module becomes "
+"obsolete as of TeXLive 2015."
 msgstr ""
 "Nahrá LaTeX-ov balík fixltx2e ktorý obsahuje pár korektúr pre LaTeX. Tieto "
 "korektúry nie sú časťou LaTeX-ovho jadra kvôli spätnej kompatibilite. "
 "Použitím tohto modulu môžu vaše vytlačené dokumenty vyzerať ináč pri "
 "spracovaní s budúcimi verziami LaTeX-u, lebo fixltx2e vtedy môže poskytovať "
-"aj viac korektúr."
+"aj viac korektúr. Berte na vedomie že nedávne LaTeX jadrá (2015/01/01) "
+"obsahujú fixltx2e, čiže od TeXLive 2015 je modul fixltx2e obsoletný."
 
 #: lib/layouts/fixme.module:2
 msgid "FiXme"
@@ -26171,12 +26174,10 @@ msgid "math macro new parameter"
 msgstr "mat. makro: nový parameter"
 
 #: src/Color.cpp:272
-#, fuzzy
 msgid "collapsible inset text"
 msgstr "zbaliteľná vložka: text"
 
 #: src/Color.cpp:273
-#, fuzzy
 msgid "collapsible inset frame"
 msgstr "zbaliteľná vložka: rám"
 
