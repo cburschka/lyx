@@ -432,12 +432,21 @@ docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 					     docstring const & command,
 					     ParamInfo::ParamHandling handling) const
 {
-	if (handling == ParamInfo::HANDLING_LATEXIFY)
+	docstring result;
+	bool ltrimmed = false;
+	// Trimming can be done on top of any of the other handlings
+	// We check this here since handling might be changed below.
+	if (handling & ParamInfo::HANDLING_LTRIM) {
+		// this is used if no other handling is done
+		result = command;
+		ltrimmed = true;
+	}
+	if (handling & ParamInfo::HANDLING_LATEXIFY)
 		if ((*this)["literal"] == "true")
 			handling = ParamInfo::HANDLING_NONE;
-	docstring result;
-	switch (handling) {
-	case ParamInfo::HANDLING_LATEXIFY: {
+
+	// LATEXIFY, ESCAPE and NONE are mutually exclusive
+	if (handling & ParamInfo::HANDLING_LATEXIFY) {
 		// First handle backslash
 		result = subst(command, from_ascii("\\"), from_ascii("\\textbackslash{}"));
 		// Then get LaTeX macros
@@ -476,17 +485,13 @@ docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 							result.replace(pos, 1, backslash + chars_escape[k] + term);
 				}
 		}
-		break;
 	}
-	case ParamInfo::HANDLING_ESCAPE:
+	else if (handling & ParamInfo::HANDLING_ESCAPE)
 		result = escape(command);
-		break;
-	case ParamInfo::HANDLING_NONE:
+	else if (handling & ParamInfo::HANDLING_NONE)
 		result = command;
-		break;
-	} // switch
 
-	return result;
+	return ltrimmed ? ltrim(result) : result;
 }
 
 
