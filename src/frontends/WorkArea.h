@@ -24,11 +24,9 @@ class KeySymbol;
 namespace frontend {
 
 /**
- * The work area class represents the widget that provides the
- * view onto a document. It is owned by the BufferView, and
- * is responsible for handing events back to its owning BufferView.
- * It works in concert with the BaseScreen class to update the
- * widget view of a document.
+ * The work area class represents the widget that provides the view
+ * onto a document. It owns the BufferView, and is responsible for
+ * handing events back to its BufferView.
  */
 class WorkArea
 {
