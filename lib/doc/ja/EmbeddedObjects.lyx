@@ -37929,7 +37929,7 @@ textvisiblespace
 以下は，原文儘として挿入された子文書です． 
 \begin_inset CommandInset include
 LatexCommand verbatiminput
-filename "DummyTextDocument.txt"
+filename "../DummyTextDocument.txt"
 
 \end_inset
 
@@ -37944,7 +37944,7 @@ filename "DummyTextDocument.txt"
 オプションを指定して，原文儘として挿入された子文書です． 
 \begin_inset CommandInset include
 LatexCommand verbatiminput*
-filename "DummyTextDocument.txt"
+filename "../DummyTextDocument.txt"
 
 \end_inset
 

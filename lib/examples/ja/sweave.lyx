@@ -67,6 +67,7 @@ sweave
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -82,6 +83,7 @@ sweave
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -90,7 +92,6 @@ sweave
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
-\use_minted 0
 \end_header
 
 \begin_body
@@ -1408,13 +1409,21 @@ reference "tab:xtable-demo"
 \end_layout
 
 \begin_layout Standard
-Sweaveのホームページは、
+
+\lang english
+The user manual of
+\lang japanese
+Sweave 
+\lang english
+is at
+\lang japanese
+
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-http://www.stat.uni-muenchen.de/~leisch/Sweave/
+https://stat.ethz.ch/R-manual/R-devel/library/utils/doc/Sweave.pdf
 \end_layout
 
 \end_inset
