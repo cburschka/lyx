@@ -6651,7 +6651,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/clipart/Abstract.pdf
+	filename ../clipart/Abstract.pdf
 
 \end_inset
 
@@ -7173,14 +7173,12 @@ Space
 \end_layout
 
 \begin_layout Verbatim
-
 これは原文儘(verbatim)環境です．
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 この下の2行は空白行です．
 \end_layout
 
@@ -7193,7 +7191,6 @@ Space
 \end_layout
 
 \begin_layout Verbatim
-
 右記の各文字を始め，ほぼすべての文字が使えます．例："%&$§#~'`
 \backslash
 }][{|
@@ -7216,7 +7213,6 @@ Space
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -15836,13 +15832,6 @@ Lyx@\SpecialChar LyX
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:LyXの固有名称"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -16512,7 +16501,7 @@ LaTeXとLyXのオプション
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename C:/clipart/mobius.eps
+	filename ../clipart/2D-intensity-plot.pdf
 	scale 70
 
 \end_inset
@@ -19797,7 +19786,7 @@ name "subsec:図フロート"
 図
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:カモノハシ-1"
+reference "fig:星形"
 
 \end_inset
 
@@ -19848,8 +19837,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename C:/clipart/platypus.eps
-	lyxscale 50
+	filename ../clipart/Star-structure.pdf
+	lyxscale 60
 	width 50col%
 	rotateOrigin center
 
@@ -19864,11 +19853,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:カモノハシ-1"
+name "fig:星形"
 
 \end_inset
 
-フロート中の激しく歪んだカモノハシ
+フロート中の星形
 \end_layout
 
 \end_inset
@@ -19985,7 +19974,8 @@ name "fig:何かわからない"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/clipart/escher-lsd.eps
+	filename ../clipart/3D-structure-distort.pdf
+	lyxscale 60
 	width 45col%
 
 \end_inset
@@ -20015,7 +20005,9 @@ name "fig:カモノハシ"
 
 \end_inset
 
-カモノハシ
+
+\lang english
+Star
 \end_layout
 
 \end_inset
@@ -20025,7 +20017,7 @@ name "fig:カモノハシ"
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename C:/clipart/platypus.eps
+	filename ../clipart/Star-structure.pdf
 	lyxscale 60
 	width 45col%
 
@@ -20053,7 +20045,9 @@ name "fig:歪められた二つの像"
 
 \end_inset
 
-歪められた二つの像
+
+\lang english
+Two images
 \end_layout
 
 \end_inset
@@ -21286,7 +21280,7 @@ status collapsed
 は，\SpecialChar LyX
 上では
 \begin_inset Graphics
-	filename C:/clipart/SpaceMarker.png
+	filename ../clipart/SpaceMarker.png
 
 \end_inset
 
@@ -30494,7 +30488,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename C:/clipart/ChangesToolbar.png
+	filename ../clipart/ChangesToolbar.png
 
 \end_inset
 
@@ -34977,7 +34971,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename C:/clipart/ExtraToolbar.png
+	filename ../clipart/ExtraToolbar.png
 	width 100col%
 
 \end_inset
@@ -35764,7 +35758,7 @@ status collapsed
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename C:/clipart/ViewToolbar.png
+	filename ../clipart/ViewToolbar.png
 
 \end_inset
 

@@ -18435,13 +18435,6 @@ status collapsed
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:LyX's-Proper-Names"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -19344,7 +19337,7 @@ The graphics dialog can be called at any time by clicking on an image.
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename clipart/mobius.eps
+	filename clipart/2D-intensity-plot.pdf
 	scale 70
 
 \end_inset
@@ -23140,7 +23133,7 @@ Figure
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Platypus-distorted"
+reference "fig:A-star-in"
 
 \end_inset
 
@@ -23193,13 +23186,13 @@ arg   "layout-paragraph"
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename clipart/platypus.eps
-	lyxscale 50
+	filename clipart/Star-structure.pdf
+	lyxscale 60
 	width 50col%
 
 \end_inset
@@ -23213,11 +23206,11 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Platypus-distorted"
+name "fig:A-star-in"
 
 \end_inset
 
-A severely distorted platypus in a float.
+A star in a float.
 \end_layout
 
 \end_inset
@@ -23313,7 +23306,7 @@ reference "subsec:List-of-Figures"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Two-distorted-images"
+reference "fig:Two-images"
 
 \end_inset
 
@@ -23333,7 +23326,7 @@ reference "fig:Undefinable"
  and 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Platypus"
+reference "fig:Star"
 
 \end_inset
 
@@ -23376,7 +23369,8 @@ Undefinable
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename clipart/escher-lsd.eps
+	filename clipart/3D-structure-distort.pdf
+	lyxscale 60
 	width 45col%
 
 \end_inset
@@ -23402,11 +23396,11 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Platypus"
+name "fig:Star"
 
 \end_inset
 
-Platypus
+Star
 \end_layout
 
 \end_inset
@@ -23416,7 +23410,7 @@ Platypus
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename clipart/platypus.eps
+	filename clipart/Star-structure.pdf
 	lyxscale 60
 	width 45col%
 
@@ -23440,11 +23434,11 @@ Platypus
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Two-distorted-images"
+name "fig:Two-images"
 
 \end_inset
 
-Two distorted images.
+Two images.
 \end_layout
 
 \end_inset
@@ -27358,7 +27352,7 @@ There are eight formats of cross-references:
 <reference>: prints the number, this is the default: 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Two-distorted-images"
+reference "fig:Two-images"
 
 \end_inset
 
@@ -27394,7 +27388,7 @@ reference "eq:tanhExp"
 
 \begin_inset CommandInset ref
 LatexCommand pageref
-reference "fig:Two-distorted-images"
+reference "fig:Two-images"
 
 \end_inset
 
@@ -27413,7 +27407,7 @@ page
 <page>: prints the text “on page” and the page number: 
 \begin_inset CommandInset ref
 LatexCommand vpageref
-reference "fig:Two-distorted-images"
+reference "fig:Two-images"
 
 \end_inset
 
@@ -27445,7 +27439,7 @@ page
 <page>: prints the number, the text “on page” and the page number: 
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "fig:Two-distorted-images"
+reference "fig:Two-images"
 
 \end_inset
 
@@ -27672,7 +27666,7 @@ Textual
 reference: prints the caption or the name of the reference: 
 \begin_inset CommandInset ref
 LatexCommand nameref
-reference "fig:Two-distorted-images"
+reference "fig:Two-images"
 
 \end_inset
 
@@ -27688,7 +27682,7 @@ only: prints only the \SpecialChar LaTeX
  label for the reference: 
 \begin_inset CommandInset ref
 LatexCommand labelonly
-reference "fig:Two-distorted-images"
+reference "fig:Two-images"
 
 \end_inset
 

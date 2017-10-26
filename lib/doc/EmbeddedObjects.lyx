@@ -770,7 +770,7 @@ Figure
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:A-star-structure"
+reference "fig:A-star-in"
 
 \end_inset
 
@@ -810,6 +810,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename clipart/Star-structure.pdf
+	lyxscale 60
 	width 50col%
 	scaleBeforeRotation
 	rotateOrigin center
@@ -825,11 +826,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:A-star-structure"
+name "fig:A-star-in"
 
 \end_inset
 
-A star structure in a float.
+A star in a float.
 \end_layout
 
 \end_inset
@@ -870,6 +871,7 @@ A 3D object.
 \align center
 \begin_inset Graphics
 	filename clipart/3D-structure-distort.pdf
+	lyxscale 60
 	scale 80
 	scaleBeforeRotation
 	rotateOrigin center
@@ -901,7 +903,7 @@ Figure
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:A-star-structure"
+reference "fig:A-star-in"
 
 \end_inset
 
@@ -20502,7 +20504,10 @@ Table
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "tab:Table-with-rotated-multi"
+reference "tab:Table-with-rotated"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 

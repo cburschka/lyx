@@ -775,7 +775,7 @@ Nr:
  können Sie dann eine Abbildung wie 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Stern-in-einem"
+reference "fig:Ein-Stern-in"
 
 \end_inset
 
@@ -815,6 +815,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename ../clipart/Star-structure.pdf
+	lyxscale 60
 	width 50col%
 	scaleBeforeRotation
 	rotateOrigin center
@@ -830,11 +831,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Stern-in-einem"
+name "fig:Ein-Stern-in"
 
 \end_inset
 
-Stern in einem Gleitobjekt.
+Ein Stern in einem Gleitobjekt.
 \end_layout
 
 \end_inset
@@ -875,6 +876,7 @@ Ein 3D-Objekt.
 \align center
 \begin_inset Graphics
 	filename ../clipart/3D-structure-distort.pdf
+	lyxscale 60
 	scale 80
 	scaleBeforeRotation
 	rotateOrigin center
@@ -906,7 +908,7 @@ Abbildung
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Stern-in-einem"
+reference "fig:Ein-Stern-in"
 
 \end_inset
 
@@ -39748,7 +39750,7 @@ Inkscape-Grafik Diese Vorlage unterstützt spezifische skalierbare Grafiken,
 \begin_inset CommandInset href
 LatexCommand href
 name "Inkscape"
-target "https://inkscape.org/"
+target "https://inkscape.org/de"
 literal "false"
 
 \end_inset

@@ -18825,13 +18825,6 @@ status collapsed
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:LyXs-Eigennamen"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -19593,7 +19586,7 @@ Der Grafikdialog kann jederzeit durch Klicken auf ein Bild geöffnet werden.
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../clipart/mobius.eps
+	filename ../clipart/2D-intensity-plot.pdf
 	scale 70
 
 \end_inset
@@ -23110,7 +23103,7 @@ Abbildung
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Ein-verzerrtes-Schnabeltier"
+reference "fig:Ein-Stern-in"
 
 \end_inset
 
@@ -23164,8 +23157,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../clipart/platypus.eps
-	lyxscale 50
+	filename ../clipart/Star-structure.pdf
+	lyxscale 60
 	width 50col%
 
 \end_inset
@@ -23179,11 +23172,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Ein-verzerrtes-Schnabeltier"
+name "fig:Ein-Stern-in"
 
 \end_inset
 
-Ein verzerrtes Schnabeltier in einem Gleitobjekt.
+Ein Stern in einem Gleitobjekt.
 \end_layout
 
 \end_inset
@@ -23265,7 +23258,7 @@ reference "sec:Verzeichnisse"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Zwei-verzerrte-Bilder"
+reference "fig:Zwei-Bilder"
 
 \end_inset
 
@@ -23285,7 +23278,7 @@ reference "fig:Undefinierbar"
  und 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Schnabeltier"
+reference "fig:Stern"
 
 \end_inset
 
@@ -23328,7 +23321,8 @@ Undefinierbar
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/escher-lsd.eps
+	filename ../clipart/3D-structure-distort.pdf
+	lyxscale 60
 	width 45col%
 
 \end_inset
@@ -23354,11 +23348,11 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Schnabeltier"
+name "fig:Stern"
 
 \end_inset
 
-Schnabeltier
+Stern
 \end_layout
 
 \end_inset
@@ -23368,7 +23362,7 @@ Schnabeltier
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/platypus.eps
+	filename ../clipart/Star-structure.pdf
 	lyxscale 60
 	width 45col%
 
@@ -23392,11 +23386,11 @@ Schnabeltier
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Zwei-verzerrte-Bilder"
+name "fig:Zwei-Bilder"
 
 \end_inset
 
-Zwei verzerrte Bilder.
+Zwei Bilder.
 \end_layout
 
 \end_inset
