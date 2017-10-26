@@ -255,8 +255,7 @@ sub interpretedCopy($$$$)
 	  else {
 	    if (! -e "$f") {
 	      # Non relative (e.g. with absolute path) file should exist
-	      print "File $f not found\n";
-	      diestack("");
+	      diestack("File \"$f\" not found, while parsing \"$source\"");
 	    }
 	  }
 	}
