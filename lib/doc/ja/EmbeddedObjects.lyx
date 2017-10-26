@@ -777,6 +777,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename ../clipart/Star-structure.pdf
+	lyxscale 60
 	width 50col%
 	scaleBeforeRotation
 	rotateOrigin center
@@ -837,6 +838,7 @@ name "fig:3Dオブジェクト"
 \align center
 \begin_inset Graphics
 	filename ../clipart/3D-structure-distort.pdf
+	lyxscale 60
 	scale 80
 	scaleBeforeRotation
 	rotateOrigin center
@@ -26945,7 +26947,7 @@ name "fig:右側のフロート"
 2つのフロートを横に並べるには，可変幅ミニページを使うと簡単にできます(第
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:可変幅ミニページ"
+reference "sec:ミニページ"
 
 \end_inset
 
@@ -37165,17 +37167,19 @@ Inkscape
  (and hence in the current document font).
  It relies on a feature of the program 
 \series bold
+\lang japanese
 
 \begin_inset CommandInset href
 LatexCommand href
 name "Inkscape"
-target "https://inkscape.org/"
+target "https://inkscape.org/ja"
 literal "false"
 
 \end_inset
 
 
 \series default
+\lang english
  which creates a special PDF or EPS and \SpecialChar LaTeX
  file from a given SVG file (in
  
@@ -37237,12 +37241,16 @@ Child Documents
 \end_inset
 
 
+\lang japanese
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Child-Documents"
+reference "sec:子文書"
 
 \end_inset
 
+
+\lang english
 ) rather than using this template.
 \begin_inset Newline newline
 \end_inset

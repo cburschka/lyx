@@ -8559,14 +8559,12 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
-
 Esto es entorno Literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8579,7 +8577,6 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
-
 Casi todo está permitido en entorno Literal:"%&$§#~'`
 \backslash
 }][{|
@@ -8604,7 +8601,6 @@ con la diferencia de que los espacios aparecen en la salida como el carácter
 \end_layout
 
 \begin_layout Verbatim*
-
 Esto es entorno Literal*.
 \end_layout
 
@@ -18867,13 +18863,6 @@ status collapsed
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:Logotipos-LyX"
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -19738,7 +19727,7 @@ Gráficos
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../clipart/mobius.eps
+	filename ../clipart/2D-intensity-plot.pdf
 	width 45col%
 
 \end_inset
@@ -23637,7 +23626,7 @@ La figura
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Ornitorrinco-distorsionado"
+reference "fig:Una-estrella-en"
 
 \end_inset
 
@@ -23691,8 +23680,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../clipart/platypus.eps
-	lyxscale 50
+	filename ../clipart/Star-structure.pdf
+	lyxscale 60
 	width 50col%
 	rotateOrigin center
 
@@ -23707,11 +23696,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Ornitorrinco-distorsionado"
+name "fig:Una-estrella-en"
 
 \end_inset
 
-Un ornitorrinco muy distorsionado en un flotante.
+Una estrella en un flotante.
 \end_layout
 
 \end_inset
@@ -23801,7 +23790,7 @@ reference "fig:Estructura-indefinible"
  y 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Ornitorrinco"
+reference "fig:Estrella"
 
 \end_inset
 
@@ -23844,7 +23833,8 @@ Estructura indefinible
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/escher-lsd.eps
+	filename ../clipart/3D-structure-distort.pdf
+	lyxscale 60
 	width 45col%
 
 \end_inset
@@ -23870,11 +23860,11 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Ornitorrinco"
+name "fig:Estrella"
 
 \end_inset
 
-Ornitorrinco
+Estrella
 \end_layout
 
 \end_inset
@@ -23884,7 +23874,7 @@ Ornitorrinco
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/platypus.eps
+	filename ../clipart/Star-structure.pdf
 	lyxscale 60
 	width 45col%
 
@@ -23912,7 +23902,7 @@ name "fig:Dos-imágenes"
 
 \end_inset
 
-Dos imágenes distorsionadas.
+Dos imágenes.
 \end_layout
 
 \end_inset

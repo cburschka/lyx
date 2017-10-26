@@ -778,7 +778,7 @@ Figura
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:A-star-structure"
+reference "fig:Una-estrella-en"
 
 \end_inset
 
@@ -818,6 +818,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename ../clipart/Star-structure.pdf
+	lyxscale 60
 	width 50col%
 	rotateOrigin center
 
@@ -832,13 +833,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:A-star-structure"
+name "fig:Una-estrella-en"
 
 \end_inset
 
-
-\lang english
-A star structure in a float.
+Una estrella en un flotante.
 \end_layout
 
 \end_inset
@@ -881,6 +880,7 @@ A 3D object.
 \align center
 \begin_inset Graphics
 	filename ../clipart/3D-structure-distort.pdf
+	lyxscale 60
 	scale 80
 	rotateOrigin center
 
@@ -911,7 +911,7 @@ Las figuras
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:A-star-structure"
+reference "fig:Una-estrella-en"
 
 \end_inset
 
@@ -39294,6 +39294,15 @@ literal "false"
 
 \series default
 .
+\begin_inset CommandInset href
+LatexCommand href
+name "Inkscape"
+target "https://inkscape.org/es/"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Description
@@ -39333,7 +39342,9 @@ Inkscape
  graphics (SVG), in which the contained text is replaced by a version typeset
  by \SpecialChar LaTeX
  (and hence in the current document font).
- It relies on a feature of the program 
+ It relies on a feature of the program
+\lang spanish
+ 
 \series bold
 
 \begin_inset CommandInset href
@@ -39346,9 +39357,10 @@ literal "false"
 
 
 \series default
- which creates a special PDF or EPS and \SpecialChar LaTeX
- file from a given SVG file (in
  
+\lang english
+which creates a special PDF or EPS and \SpecialChar LaTeX
+ file from a given SVG file (in 
 \noun on
 Inkscape
 \noun default
@@ -39407,12 +39419,16 @@ Child Documents
 \end_inset
 
 
+\lang spanish
+
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Child-Documents"
+reference "sec:Documento-Hijo"
 
 \end_inset
 
+
+\lang english
 ) rather than using this template.
 \begin_inset Newline newline
 \end_inset

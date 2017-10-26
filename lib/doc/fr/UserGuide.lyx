@@ -233,7 +233,7 @@ Chrétien
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Informations de révision :
@@ -9030,14 +9030,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -9050,7 +9048,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9083,7 +9080,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -19949,13 +19945,6 @@ links
 \begin_layout Subsection
 Les noms propres en \SpecialChar LyX
 
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:Noms-Propres"
-
-\end_inset
-
-
 \begin_inset Index idx
 status collapsed
 
@@ -20887,7 +20876,7 @@ La fenêtre de dialogue Graphique peut être rappelée à tout moment en cliquan
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename ../clipart/mobius.eps
+	filename ../clipart/2D-intensity-plot.pdf
 	scale 70
 	rotateOrigin center
 
@@ -24704,7 +24693,7 @@ La figure
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Ornithorinque"
+reference "fig:Une-etoile-dans"
 
 \end_inset
 
@@ -24758,7 +24747,8 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../clipart/platypus.eps
+	filename ../clipart/Star-structure.pdf
+	lyxscale 60
 	width 50col%
 	rotateOrigin center
 
@@ -24773,11 +24763,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Ornithorinque"
+name "fig:Une-etoile-dans"
 
 \end_inset
 
-Un ornithorynque sévèrement déformé dans un flottant de figure.
+Une étoile dans un flottant.
 \end_layout
 
 \end_inset
@@ -24879,7 +24869,7 @@ reference "subsec:Liste-des-figures,"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Deux-images-déformées."
+reference "fig:Deux-images."
 
 \end_inset
 
@@ -24900,7 +24890,7 @@ reference "fig:Structure-indéfinissable"
  et 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Ornithorynque"
+reference "fig:Etoile"
 
 \end_inset
 
@@ -24943,7 +24933,8 @@ Structure indéfinissable
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/escher-lsd.eps
+	filename ../clipart/3D-structure-distort.pdf
+	lyxscale 60
 	width 45col%
 
 \end_inset
@@ -24969,11 +24960,11 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Ornithorynque"
+name "fig:Etoile"
 
 \end_inset
 
-Ornithorynque
+Étoile
 \end_layout
 
 \end_inset
@@ -24983,7 +24974,7 @@ Ornithorynque
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../clipart/platypus.eps
+	filename ../clipart/Star-structure.pdf
 	lyxscale 60
 	width 45col%
 
@@ -25005,14 +24996,13 @@ Ornithorynque
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Deux images déformées.
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:Deux-images-déformées."
+name "fig:Deux-images."
 
 \end_inset
 
-
+Deux images.
 \end_layout
 
 \end_inset
@@ -28901,7 +28891,7 @@ Il y huit variétés de références croisées:
 <référence> affiche le numéro de l'élément, c'est le choix implicite:
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:Deux-images-déformées."
+reference "fig:Deux-images."
 
 \end_inset
 
@@ -28937,7 +28927,7 @@ reference "eq:tanhExp"
 
 \begin_inset CommandInset ref
 LatexCommand pageref
-reference "fig:Deux-images-déformées."
+reference "fig:Deux-images."
 
 \end_inset
 
@@ -28960,7 +28950,7 @@ page
  suivi du numéro de la page sur laquelle se trouve l'élément:
 \begin_inset CommandInset ref
 LatexCommand vpageref
-reference "fig:Deux-images-déformées."
+reference "fig:Deux-images."
 
 \end_inset
 
@@ -29029,7 +29019,7 @@ page
  et le numéro de la page:
 \begin_inset CommandInset ref
 LatexCommand vref
-reference "fig:Deux-images-déformées."
+reference "fig:Deux-images."
 
 \end_inset
 
@@ -29318,7 +29308,7 @@ textuelle affiche la contenu de la légende ou le nom de la référence, par
  exemple un titre de section: 
 \begin_inset CommandInset ref
 LatexCommand nameref
-reference "fig:Deux-images-déformées."
+reference "fig:Deux-images."
 
 \end_inset
 
@@ -29333,7 +29323,7 @@ Sans
 préfixe: n'imprime que l'étiquette pour la référence: 
 \begin_inset CommandInset ref
 LatexCommand labelonly
-reference "fig:Deux-images-déformées."
+reference "fig:Deux-images."
 plural "false"
 caps "false"
 noprefix "false"

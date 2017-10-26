@@ -857,7 +857,7 @@ Figure
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:A-star-structure"
+reference "fig:Une-etoile-dans"
 
 \end_inset
 
@@ -868,7 +868,10 @@ reference "fig:A-star-structure"
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:A-3D-object"
+reference "fig:Un-objet-3D"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
@@ -898,6 +901,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename ../clipart/Star-structure.pdf
+	lyxscale 60
 	width 50col%
 	scaleBeforeRotation
 	rotateOrigin center
@@ -913,11 +917,11 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:A-star-structure"
+name "fig:Une-etoile-dans"
 
 \end_inset
 
-Une structure étoilée dans un flottant
+Une étoile dans un flottant.
 \end_layout
 
 \end_inset
@@ -940,7 +944,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Un objet 3D
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Un-objet-3D"
+
+\end_inset
+
+Un objet 3D.
 \end_layout
 
 \end_inset
@@ -952,6 +962,7 @@ Un objet 3D
 \align center
 \begin_inset Graphics
 	filename ../clipart/3D-structure-distort.pdf
+	lyxscale 60
 	scale 80
 	scaleBeforeRotation
 	rotateOrigin center
@@ -983,14 +994,17 @@ Les figure
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:A-star-structure"
+reference "fig:Une-etoile-dans"
 
 \end_inset
 
  et 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:A-3D-object"
+reference "fig:Un-objet-3D"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
@@ -40385,7 +40399,7 @@ Inkscape supporte les images graphiques vectorielles SVG contenant du texte
 \begin_inset CommandInset href
 LatexCommand href
 name "Inkscape"
-target "https://inkscape.org/"
+target "https://inkscape.org/fr"
 literal "false"
 
 \end_inset
