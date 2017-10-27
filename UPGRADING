@@ -3,17 +3,23 @@ How do I upgrade my existing LyX system to version 2.3.x?
 
 * Upgrading from LyX 2.2.x:
 
-The format of preference and session files has changed. LyX 2.3.x is able to
-read old files but will save them in the new format.
-
-The format of layout files has changed but, as before, layout2layout.py will
-convert older versions to the new format automatically.
-
 The external_templates file has been split into one file per template,
 which are now located in lib/xtemplates/*.xtemplate. This makes it easier
 to add new templates or modify existing ones. If you have modified
 the external_templates file, you will have to move the modifications to
 the respective *.xtemplate file manually.
+
+By default, LyX 2.3 forces output of all en and em dashes as -- and ---
+when exporting to LaTeX. This can lead to incorrect line breaks, wrong
+characters in typewriter fonts, and problems with some LaTeX packages.
+Unselect "Document->Settings->Fonts->Output em- and en-dash as ligatures"
+to keep the LyX 2.2 behaviour and avoid these problems. See chapter 3.9.1.1
+"Dashes and line breaks" of the User Guide for details.
+
+ZWSP characters (u200b) following literal em- and en-dashes are deleted by
+lyx2lyx when converting to 2.3 format. If you used them as optional line
+breaks after dashes, convert them to space insets before opening your
+document with LyX 2.3 or the optional line breaks will be lost!
 
 If using TeX fonts and en- and em-dashes are output as font ligatures,
 when exporting documents containing en- and em-dashes to the format of
@@ -30,6 +36,13 @@ If trying to compile documents using R scripts and sweave/knitr, LyX
 option in the LyX preferences;
 2) provides explicit consent to the use of the converter on the first
 compilation of the R-enhanced document.
+
+LyX now gives a warning if a document mixes title and non-title layouts.
+In some cases, this warning is harmless, but in other cases the document has
+a serious problem even though the LaTeX command does not exit with error. For
+example, create a document with a title layout, then a standard layout, and
+then an author layout, and you will see in the PDF that the author is not
+typeset as an author.
 
 * Upgrading from LyX 2.1.x:
 
