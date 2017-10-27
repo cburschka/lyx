@@ -213,7 +213,10 @@ sub interpretedCopy($$$$)
 
   initLyxStack(\%font, $fontT, $inputEncoding);
 
+  my $fi_line_no = 0;
+  my @path_errors = ();
   while (my $l = <FI>) {
+    $fi_line_no += 1;
     $l =~ s/[\n\r]+$//;
     #chomp($l);
     my $rStatus = checkLyxLine($l);
@@ -255,7 +258,19 @@ sub interpretedCopy($$$$)
 	  else {
 	    if (! -e "$f") {
 	      # Non relative (e.g. with absolute path) file should exist
-	      diestack("File \"$f\" not found, while parsing \"$source\"");
+	      if ($rStatus->{"filetype"} eq "interpret") {
+		# filetype::interpret should be interpreted by lyx or latex and therefore emit error
+		# We prinnt a warning instead
+		print "WARNING: Interpreted file \"$f\" not found, at \"$source:$fi_line_no\"\n";
+	      }
+	      elsif ($rStatus->{"filetype"} eq "prefix_only") {
+		# filetype::prefix_only should be interpreted by latex
+		print "WARNING: Prefixed file \"$f\" not found, at \"$source:$fi_line_no\"\n";
+	      }
+	      else {
+		# Collect the path-error-messages
+		push(@path_errors, "File \"$f(" . $rStatus->{"filetype"} . ")\" not found, at \"$source:$fi_line_no\"");
+	      }
 	    }
 	  }
 	}
@@ -269,6 +284,12 @@ sub interpretedCopy($$$$)
   }
   close(FI);
   close(FO);
+  if (@path_errors > 0) {
+    for my $entry (@path_errors) {
+      print "ERROR: $entry\n";
+    }
+    diestack("Aborted because of path errors in \"$source\"");
+  }
 
   closeLyxStack();
   return($res);
