@@ -51,14 +51,14 @@ End
 \use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
-\use_package cancel 1
+\use_package cancel 0
 \use_package esint 1
-\use_package mathdots 1
-\use_package mathtools 1
+\use_package mathdots 0
+\use_package mathtools 0
 \use_package mhchem 1
-\use_package stackrel 1
-\use_package stmaryrd 1
-\use_package undertilde 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
 \cite_engine basic
 \cite_engine_type default
 \biblio_style plain
@@ -6064,7 +6064,7 @@ Syntax buffer-zoom [<ZOOM>]
 \end_layout
 
 \begin_layout Description
-Params <ZOOM>: The zoom in % points (neg. or pos.), the default is to reset to zoom savd in preferences.
+Params <ZOOM>: The target zoom value in %; the default is the default zoom as saved in preferences.
 \end_layout
 
 \begin_layout Description
@@ -6084,7 +6084,7 @@ Syntax buffer-zoom-in [<ZOOM>]
 \end_layout
 
 \begin_layout Description
-Params <ZOOM>: The zoom in % points (neg. or pos.), the default is 20.
+Params <ZOOM>: The zoom value addition in % (neg. or pos.); the default is 10% of the default zoom as saved in preferences.
 \end_layout
 
 \begin_layout Description
@@ -6104,7 +6104,7 @@ Syntax buffer-zoom-out [<ZOOM>]
 \end_layout
 
 \begin_layout Description
-Params <ZOOM>: The zoom in % points (neg. or pos.), the default is -20.
+Params <ZOOM>: The zoom value abstraction in % (neg. or pos.); the default is 10% of the default zoom as saved in preferences.
 \end_layout
 
 \begin_layout Description
