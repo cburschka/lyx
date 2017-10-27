@@ -651,7 +651,6 @@ def checkFormatEntries(dtl_tools):
 \Format r          R      "R/S code"              "" "" "%%"	"document,menu=export"	""
 \Format knitr      Rnw    "Rnw (knitr)"           "" "" "%%"	"document,menu=export"	""
 \Format knitr-ja   Rnw    "Rnw (knitr, Japanese)" "" "" "%%"	"document,menu=export"	""
-\Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"	"text/x-lilypond"
 \Format lilypond-book    lytex "LilyPond book (LaTeX)"   "" ""	"%%"	"document,menu=export"	""
 \Format lilypond-book-ja lytex "LilyPond book (pLaTeX)"   "" ""	"%%"	"document,menu=export"	""
 \Format latex      tex    "LaTeX (plain)"         L  ""	"%%"	"document,menu=export"	"text/x-tex"
@@ -665,6 +664,11 @@ def checkFormatEntries(dtl_tools):
 \Format text4      txt    "Plain text (catdvi)"   "" ""	"%%"	"document"	""
 \Format textparagraph txt "Plain Text, Join Lines" "" ""	"%%"	"document"	""
 \Format beamer.info pdf.info   "Info (Beamer)"         "" ""   "%%"    "document,menu=export"	""''' ])
+   #Lilypond files have special editors, but fall back to plain text editors
+    checkViewerEditor('a lilypond editor',
+        ['frescobaldi', 'xemacs', 'gvim', 'kedit', 'kwrite', 'kate',
+         'nedit', 'gedit', 'geany', 'leafpad', 'mousepad', 'xed', 'notepad'],
+        rc_entry = [r'''\Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"	"text/x-lilypond"''' ])
    #Spreadsheets using ssconvert from gnumeric
     checkViewer('gnumeric spreadsheet software', ['gnumeric'],
       rc_entry = [r'''\Format gnumeric gnumeric "Gnumeric spreadsheet" "" ""    "%%"   "document"	"application/x-gnumeric"
