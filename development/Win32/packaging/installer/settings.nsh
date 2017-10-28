@@ -51,7 +51,7 @@ These typically need to be modified for each LyX release
 !define MiKTeXRepo "ftp://ftp.fernuni-hagen.de/pub/mirrors/www.ctan.org/systems/win32/miktex/tm/packages/"
 
 !define MiKTeXDeliveredVersion "2.9"
-!define ImageMagickVersion "7.0.6"
+!define ImageMagickVersion "7.0.7"
  
 # definitions for the Complete installer
 !if ${SETUPTYPE} == BUNDLE
