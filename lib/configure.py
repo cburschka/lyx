@@ -592,6 +592,10 @@ def checkModule(module):
       return False
 
 
+texteditors = ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate',
+               'nedit', 'gedit', 'geany', 'leafpad', 'mousepad',
+               'xed', 'notepad', 'WinEdt', 'WinShell', 'PSPad']
+
 def checkFormatEntries(dtl_tools):
     ''' Check all formats (\Format entries) '''
     checkViewerEditor('a Tgif viewer and editor', ['tgif'],
@@ -636,9 +640,7 @@ def checkFormatEntries(dtl_tools):
         ['gimp-remote', 'gimp'], rc_entry = [imageformats])
     addToRC(imageformats % ((iv, ie)*10))
     #
-    checkViewerEditor('a text editor',
-        ['xemacs', 'gvim', 'kedit', 'kwrite', 'kate',
-         'nedit', 'gedit', 'geany', 'leafpad', 'mousepad', 'xed', 'notepad'],
+    checkViewerEditor('a text editor', texteditors,
         rc_entry = [r'''\Format asciichess asc    "Plain text (chess output)"  "" ""	"%%"	""	""
 \Format docbook    sgml    DocBook                B  ""	"%%"	"document,menu=export"	""
 \Format docbook-xml xml   "DocBook (XML)"         "" ""	"%%"	"document,menu=export"	"application/docbook+xml"
@@ -666,8 +668,7 @@ def checkFormatEntries(dtl_tools):
 \Format beamer.info pdf.info   "Info (Beamer)"         "" ""   "%%"    "document,menu=export"	""''' ])
    #Lilypond files have special editors, but fall back to plain text editors
     checkViewerEditor('a lilypond editor',
-        ['frescobaldi', 'xemacs', 'gvim', 'kedit', 'kwrite', 'kate',
-         'nedit', 'gedit', 'geany', 'leafpad', 'mousepad', 'xed', 'notepad'],
+        ['frescobaldi'] + texteditors,
         rc_entry = [r'''\Format lilypond   ly     "LilyPond music"        "" ""	"%%"	"vector"	"text/x-lilypond"''' ])
    #Spreadsheets using ssconvert from gnumeric
     checkViewer('gnumeric spreadsheet software', ['gnumeric'],
@@ -682,10 +683,8 @@ def checkFormatEntries(dtl_tools):
  #
     checkEditor('a BibTeX editor', ['jabref', 'JabRef',
         'pybliographic', 'bibdesk', 'gbib', 'kbib',
-        'kbibtex', 'sixpack', 'bibedit', 'tkbibtex'
-        'xemacs', 'gvim', 'kedit', 'kwrite', 'kate',
-        'jedit', 'TeXnicCenter', 'WinEdt', 'WinShell', 'PSPad',
-        'nedit', 'gedit', 'notepad', 'geany', 'leafpad', 'mousepad'],
+        'kbibtex', 'sixpack', 'bibedit', 'tkbibtex', 'TeXnicCenter'] +
+        texteditors,
         rc_entry = [r'''\Format bibtex bib    "BibTeX"         "" ""	"%%"	""	"text/x-bibtex"''' ])
     #
     #checkProg('a Postscript interpreter', ['gs'],
