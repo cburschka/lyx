@@ -9,7 +9,7 @@
 # Full author contact details are available in file CREDITS.
 
 from __future__ import print_function
-import glob, logging, os, re, shutil, subprocess, sys, stat
+import glob, logging, os, errno, re, shutil, subprocess, sys, stat
 
 # set up logging
 logging.basicConfig(level = logging.DEBUG,
@@ -52,8 +52,13 @@ def removeFiles(filenames):
         try:
             os.remove(file)
             logger.debug('Removing file %s' % file)
-        except:
-            logger.debug('Failed to remove file %s' % file)
+        except OSError as e:
+            if e.errno == errno.ENOENT: # no such file or directory
+                logger.debug('No need to remove file %s (it does not exists)' % file)
+            elif e.errno == errno.EISDIR: # is a directory
+                logger.debug('Failed to remove file %s (it is a directory)' % file)
+            else:
+                logger.debug('Failed to remove file %s' % file)
             pass
 
 
