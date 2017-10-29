@@ -1014,7 +1014,7 @@ def checkConverterEntries():
                % (inkscape_fileprefix, inkscape_fileprefix)],
         rc_entry = [ r'\converter wmf        eps        "%%"	""'])
     #
-    checkProg('an EMF -> EPS converter', ['metafile2eps $$i $$o', 'wmf2eps -o $$o $$i', inkscape_name + ' --file=%s$$i --export-area-drawing --without-gui --export-eps=%s$$o'
+    checkProg('an EMF -> EPS converter', ['metafile2eps $$i $$o', inkscape_name + ' --file=%s$$i --export-area-drawing --without-gui --export-eps=%s$$o'
                % (inkscape_fileprefix, inkscape_fileprefix)],
         rc_entry = [ r'\converter emf        eps        "%%"	""'])
     #
