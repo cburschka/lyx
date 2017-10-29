@@ -19,13 +19,12 @@ Subst = {}  # map of desired substitutions
 prog = re.compile("")
 
 def createProg():
-    matchingS = "\\b|\\b".join(Subst.keys())
-    pattern = "".join(["(.*)(\\b", matchingS, "\\b)(.*)"])
+    matchingS = u"\\b|\\b".join(Subst.keys())
+    pattern = u"".join(["(.*)(\\b", matchingS, "\\b)(.*)"])
     return re.compile(pattern)
 
 def SubstituteDataInLine(line):
-    result = line
-    m = prog.match(result)
+    m = prog.match(line)
     if m:
         return "".join([SubstituteDataInLine(m.group(1)),
                         Subst[m.group(2)],
@@ -34,25 +33,26 @@ def SubstituteDataInLine(line):
 
 
 def SubstituteDataInFile(InFile):
-    for line in codecs.open(InFile, 'r', 'utf-8'):
+    for line in codecs.open(InFile, 'r', 'UTF-8'):
         print(SubstituteDataInLine(line[:-1]))
 
 ##########################################
 
+# ensure standard output with UTF8 encoding:
+if sys.version_info < (3,0):
+    sys.stdout = codecs.getwriter('UTF-8')(sys.stdout)
+else:
+    sys.stdout = codecs.getwriter('UTF-8')(sys.stdout.buffer)
 
-args = sys.argv
-
-del args[0] # we don't need the name ot this script
-while len(args) > 0:
-    arg = args[0]
-    entry = args[0].split("=",1)
+for arg in sys.argv[1:]:         # skip first arg (name of this script)
+    if sys.version_info < (3,0):
+        # support non-ASCII characters in arguments
+        arg = arg.decode(sys.stdin.encoding or 'UTF-8')
+    entry = arg.split("=", 1)
     if len(entry) == 2:
-        key=entry[0]
-        val=entry[1]
+        key, val = entry
         if len(key) > 0:
             Subst[key] = val
     else:
         prog = createProg()
-        SubstituteDataInFile(args[0])
-    del args[0]
-
+        SubstituteDataInFile(arg)
