@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Lyx 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2017-10-13 11:34+0200\n"
-"PO-Revision-Date: 2013-03-26 01:09-0800\n"
+"PO-Revision-Date: 2017-10-30 01:09-0800\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
 "Language: cs\n"
@@ -831,7 +831,6 @@ msgid "Huger"
 msgstr "Obrovité"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:144
-#, fuzzy
 msgid "&Custom bullet:"
 msgstr "&Vlastní odrážka:"
 
@@ -1311,17 +1310,17 @@ msgstr "Zobraz úplný &log ..."
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:93
 msgid "Attempt to show the output even if there were compilation errors"
-msgstr ""
+msgstr "Pokus zobrazit výstup i v případě kompilační chyby"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:96
 msgid "Show Output &Anyway"
-msgstr ""
+msgstr "&Zobrazit výstup i tak"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:103
 msgid ""
 "Selecting an error will show the error message in the panel below and the "
 "cursor will jump to the location in the document where the error occurred."
-msgstr ""
+msgstr "Volba chyby zobrazí celou chybovou hlášku ve spodním panelu, kurzor v dokumentu bude nastaven na místo, kde chyba nastala."
 
 #: src/frontends/qt4/ui/ExternalUi.ui:35
 msgid "F&ile"
@@ -1712,14 +1711,12 @@ msgid "Select the default family for the document"
 msgstr "Nastavit standardní rodinu písma pro dokument"
 
 #: src/frontends/qt4/ui/FontUi.ui:49
-#, fuzzy
 msgid "&Base size:"
 msgstr ""
 "&Základní\n"
 "velikost:"
 
 #: src/frontends/qt4/ui/FontUi.ui:81
-#, fuzzy
 msgid "&LaTeX font encoding:"
 msgstr ""
 "Kódování\n"
@@ -1822,11 +1819,11 @@ msgstr "Zap&nout mikrotypografické extenze"
 msgid ""
 "Use font ligatures -- and --- instead of \\textendash and \\textemdash for "
 "en- and em-dashes"
-msgstr ""
+msgstr "Použití fontových ligatur --, --- namísto \\textendash and \\textemdash pro dlouhé pomlčky (en-, em-dash)"
 
 #: src/frontends/qt4/ui/FontUi.ui:303
 msgid "Output en- and &em-dashes as ligatures"
-msgstr ""
+msgstr "Ligatury pro dlouhé/čtverčíkové pomlčky"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:51
 msgid "&Graphics"
@@ -2433,11 +2430,11 @@ msgstr "Okno pro odezvu"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:92
 msgid "Choose the LaTeX package for code syntax highlighting"
-msgstr ""
+msgstr "LaTeX-ový balíček pro zvýrazňení &syntaxe"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:95
 msgid "&Syntax Highlighting Package:"
-msgstr ""
+msgstr "Balíček pro zvýrazňení &syntaxe:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:324
 #: lib/layouts/stdinsets.inc:330 lib/layouts/stdinsets.inc:375
@@ -2801,41 +2798,36 @@ msgid "All packages:"
 msgstr "Všechny balíčky:"
 
 #: src/frontends/qt4/ui/MathsUi.ui:27
-#, fuzzy
 msgid "Load A&utomatically"
 msgstr "Načíst &automaticky"
 
 #: src/frontends/qt4/ui/MathsUi.ui:34
-#, fuzzy
 msgid "Load Alwa&ys"
 msgstr "Načíst &vždy"
 
 #: src/frontends/qt4/ui/MathsUi.ui:41
-#, fuzzy
 msgid "Do &Not Load"
 msgstr "&Nenačítat"
 
 #: src/frontends/qt4/ui/MathsUi.ui:48
 msgid "Indent displayed formulas instead of centering"
-msgstr ""
+msgstr "Indentace celořádkových vzorců namísto centrování"
 
 #: src/frontends/qt4/ui/MathsUi.ui:51
-#, fuzzy
 msgid "Indent &Formulas"
-msgstr "Vzorec do řádky (inline)|V"
+msgstr "&Indentace vzorců"
 
 #: src/frontends/qt4/ui/MathsUi.ui:67 src/frontends/qt4/ui/TextLayoutUi.ui:48
 msgid "Size of the indentation"
 msgstr "Velikost indentace"
 
 #: src/frontends/qt4/ui/MathsUi.ui:141
-#, fuzzy
 msgid "Formula numbering side:"
-msgstr "Používaný formát"
+msgstr "Strana pro číslování vzorce:"
 
 #: src/frontends/qt4/ui/MathsUi.ui:157
 msgid "Side where formulas are numbered"
-msgstr ""
+msgstr "Strana pro číslování vzorce"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:60
 msgid "A&vailable:"
@@ -11179,7 +11171,7 @@ msgstr "\\thesection.\\arabic{equation}"
 
 #: lib/layouts/europasscv.layout:3
 msgid "Europass CV (2013)"
-msgstr ""
+msgstr "Europass CV (2013)"
 
 #: lib/layouts/europasscv.layout:4 lib/layouts/europecv.layout:4
 #: lib/layouts/moderncv.layout:4 lib/layouts/simplecv.layout:4
@@ -11191,9 +11183,8 @@ msgid "FooterName"
 msgstr "FooterName"
 
 #: lib/layouts/europasscv.layout:97
-#, fuzzy
 msgid "Name (footer):"
-msgstr "Poslední patička:"
+msgstr "Name (footer):"
 
 #: lib/layouts/europasscv.layout:111 lib/layouts/moderncv.layout:166
 msgid "Mobile:"
@@ -11214,21 +11205,19 @@ msgstr "Homepage:"
 
 #: lib/layouts/europasscv.layout:134
 msgid "InstantMessaging"
-msgstr ""
+msgstr "InstantMessaging"
 
 #: lib/layouts/europasscv.layout:137
-#, fuzzy
 msgid "Instant Messaging:"
-msgstr "&Okamžitý náhled (vzorce):"
+msgstr "Instant Messaging:"
 
 #: lib/layouts/europasscv.layout:141
-#, fuzzy
 msgid "IM Type:"
-msgstr "&Typ:"
+msgstr "IM Type:"
 
 #: lib/layouts/europasscv.layout:142
 msgid "IM Type (e.g., AOL Messenger)"
-msgstr ""
+msgstr "IM Type (e.g., AOL Messenger)"
 
 #: lib/layouts/europasscv.layout:146 lib/layouts/europecv.layout:59
 msgid "Birthday"
@@ -11301,9 +11290,8 @@ msgid "Item"
 msgstr "Item"
 
 #: lib/layouts/europasscv.layout:225 lib/layouts/europasscv.layout:261
-#, fuzzy
 msgid "Summary of the item, can also be the time span"
-msgstr "Summary of the item, can also be the time"
+msgstr "Summary of the item, can also be the time span"
 
 #: lib/layouts/europasscv.layout:231 lib/layouts/europecv.layout:175
 #: lib/layouts/moderncv.layout:388
@@ -11311,72 +11299,60 @@ msgid "Item:"
 msgstr "Item:"
 
 #: lib/layouts/europasscv.layout:248
-#, fuzzy
 msgid "ItemInset"
-msgstr "ItemList"
+msgstr "ItemInset"
 
 #: lib/layouts/europasscv.layout:263
 msgid "Subitems"
-msgstr ""
+msgstr "Subitems"
 
 #: lib/layouts/europasscv.layout:270
-#, fuzzy
 msgid "TitleItem"
-msgstr "Titlenotemark"
+msgstr "TitleItem"
 
 #: lib/layouts/europasscv.layout:274
-#, fuzzy
 msgid "Title item:"
-msgstr "Title:"
+msgstr "Title item:"
 
 #: lib/layouts/europasscv.layout:277
-#, fuzzy
 msgid "TitleLevel"
-msgstr "Titulek"
+msgstr "TitleLevel"
 
 #: lib/layouts/europasscv.layout:281
-#, fuzzy
 msgid "Title level:"
-msgstr "Title:"
+msgstr "Title level:"
 
 #: lib/layouts/europasscv.layout:285 lib/layouts/europasscv.layout:286
-#, fuzzy
 msgid "Text (right side)"
-msgstr "Nastavit linku napravo"
+msgstr "Text (right side)"
 
 #: lib/layouts/europasscv.layout:290
-#, fuzzy
 msgid "BlueItem"
-msgstr "BulletedItem"
+msgstr "BlueItem"
 
 #: lib/layouts/europasscv.layout:293
-#, fuzzy
 msgid "Blue item:"
-msgstr "Bulleted Item:"
+msgstr "Blue item:"
 
 #: lib/layouts/europasscv.layout:296
-#, fuzzy
 msgid "BlueItemInset"
-msgstr "Vlastní vložky"
+msgstr "BlueItemInset"
 
 #: lib/layouts/europasscv.layout:299
 msgid "Blue subitems"
-msgstr ""
+msgstr "Blue subitems"
 
 #: lib/layouts/europasscv.layout:306
-#, fuzzy
 msgid "BigItem"
-msgstr "Item"
+msgstr "BigItem"
 
 #: lib/layouts/europasscv.layout:309
-#, fuzzy
 msgid "Big Item:"
-msgstr "List Item:"
+msgstr "Big Item:"
 
 #: lib/layouts/europasscv.layout:312
-#, fuzzy
 msgid "EcvItemize"
-msgstr "Položka"
+msgstr "EcvItemize"
 
 #: lib/layouts/europasscv.layout:336 lib/layouts/europecv.layout:215
 msgid "MotherTongue"
@@ -11459,9 +11435,8 @@ msgid "End of CV"
 msgstr "End of CV"
 
 #: lib/layouts/europasscv.layout:442 lib/layouts/europasscv.layout:447
-#, fuzzy
 msgid "Highlight"
-msgstr "Highlights:"
+msgstr "Highlight"
 
 #: lib/layouts/europecv.layout:3
 msgid "Europe CV"
