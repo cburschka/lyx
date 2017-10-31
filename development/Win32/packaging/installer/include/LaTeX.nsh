@@ -277,11 +277,6 @@ Function ConfigureMiKTeX
    SetOutPath "$PathLaTeXLocal\tex\latex\lyx"
    CopyFiles /SILENT "$INSTDIR\Resources\tex\*.*" "$PathLaTeXLocal\tex\latex\lyx"
   ${endif}
-  # Hungarian support
-  # The following seems to be unnecesary since 2015, therefore it is commented
-  # this is a replacement therefore do this in every case
-  #SetOutPath "$PathLaTeXLocal\tex\generic\babel"
-  #File "${FILES_DVIPOST_PKG}\magyar.ldf"
   
   # install a Perl interpreter for splitindex and pdfcrop
   SetOutPath "$INSTDIR"
@@ -342,7 +337,18 @@ Function ConfigureMiKTeX
   NoAutoInstall:
   
   # update MiKTeX's package file list
-  ExecWait '$PathLaTeX\mpm.exe --update-fndb'
+  ${if} $MultiUser.Privileges != "Admin"
+  ${andif} $MultiUser.Privileges != "Power"
+   # call the non-admin version
+   nsExec::ExecToLog "$PathLaTeX\mpm.exe --update-fndb"
+  ${else}
+   ${if} $MiKTeXUser != "HKCU" # call the admin version
+    nsExec::ExecToLog "$PathLaTeX\mpm.exe --admin --update-fndb"
+   ${else}
+    nsExec::ExecToLog "$PathLaTeX\mpm.exe --update-fndb"
+   ${endif}
+  ${endif}
+  Pop $UpdateFNDBReturn # Return value
   
   # we must return to 32bit because LyX is a 32bit application
   SetRegView 32

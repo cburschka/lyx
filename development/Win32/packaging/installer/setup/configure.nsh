@@ -107,7 +107,10 @@ Section -Configure
    # .lyx20
    WriteRegStr SHCTX "Software\Classes\${APP_EXT}20" "" "${APP_REGNAME_DOC}"
    WriteRegStr SHCTX "Software\Classes\${APP_EXT}20" "Content Type" "${APP_MIME_TYPE}"
-   # .lyx21 don't set this, because this is designed to be opened with LyX 2.1.x
+   # .lyx21
+   WriteRegStr SHCTX "Software\Classes\${APP_EXT}21" "" "${APP_REGNAME_DOC}"
+   WriteRegStr SHCTX "Software\Classes\${APP_EXT}21" "Content Type" "${APP_MIME_TYPE}"
+   # .lyx22 don't set this, because this is designed to be opened with LyX 2.2.x
   
    # Refresh shell
    ${RefreshShellIcons}
@@ -157,7 +160,7 @@ Section -Configure
   Delete "$INSTDIR\Resources\lyxrc.dist"
   FileOpen $R1 "$INSTDIR\Resources\lyxrc.dist" w
   # set the format to the latest LyXRC format
-  FileWrite $R1 'Format 22$\r$\n'
+  FileWrite $R1 'Format 23$\r$\n'
   # set some general things
   FileWrite $R1 '\screen_zoom 120$\r$\n'
   ${if} "$PathPrefix" != ""
