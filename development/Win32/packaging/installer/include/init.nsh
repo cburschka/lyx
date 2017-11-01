@@ -62,13 +62,6 @@ Section "$(SecDesktopTitle)" SecDesktop
  StrCpy $CreateDesktopIcon "true"
 SectionEnd
 
-!if ${SETUPTYPE} == BUNDLE
- Section "$(SecInstJabRefTitle)" SecInstJabRef
-  AddSize ${SIZE_JABREF}
-  StrCpy $InstallJabRef "true"
- SectionEnd
-!endif
-
 # Expand the list of dictionaries by default as this was requested by several
 # users. For the thesaurus this is was not requested because this section
 # is by default empty.
@@ -593,9 +586,6 @@ SectionGroupEnd
 !insertmacro MUI_DESCRIPTION_TEXT ${SecCore} "$(SecCoreDescription)"
 !insertmacro MUI_DESCRIPTION_TEXT ${SecFileAssoc} "$(SecFileAssocDescription)"
 !insertmacro MUI_DESCRIPTION_TEXT ${SecDesktop} "$(SecDesktopDescription)"
-!if ${SETUPTYPE} == BUNDLE
- !insertmacro MUI_DESCRIPTION_TEXT ${SecInstJabRef} "$(SecInstJabRefDescription)"
-!endif
 !insertmacro MUI_DESCRIPTION_TEXT ${SecDictionaries} "$(SecDictionariesDescription)"
 !insertmacro MUI_DESCRIPTION_TEXT ${SecThesaurus} "$(SecThesaurusDescription)"
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
@@ -718,12 +708,12 @@ Function .onInit
  
   Call SearchExternal
   
-  !if ${SETUPTYPE} == BUNDLE
-   # don't let the installer sections appear when the programs are already installed
-   ${if} $PathBibTeXEditor != ""
-    SectionSetText 3 "" # hides the corresponding uninstaller section, ${SecInstJabRef}
-   ${endif}
-  !endif
+  #!if ${SETUPTYPE} == BUNDLE
+  # # don't let the installer sections appear when the programs are already installed
+  # ${if} $PathBibTeXEditor != ""
+  #  SectionSetText 3 "" # hides the corresponding uninstaller section, ${SecInstJabRef}
+  # ${endif}
+  #!endif
   
   # select sections of already installed spell-checker dictionaries, make them read-only
   # and set the necessary size to 0 bytes
@@ -1482,15 +1472,6 @@ Function un.onInit
    SectionSetText 2 "" # hides the corresponding uninstaller section
   ${endif}
   
-  # test if JabRef was installed together with LyX
-  ReadRegStr $0 SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef" "OnlyWithLyX"
-  ${if} $0 == "Yes${APP_SERIES_KEY}"
-   SectionSetText 3 "JabRef" # names the corersponding uninstaller section
-   StrCpy $JabRefInstalled "Yes"
-  ${else}
-   SectionSetText 3 "" # hides the corresponding uninstaller section
-  ${endif}
-
   # question message if the user really wants to uninstall LyX
   MessageBox MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2 "$(UnReallyRemoveLabel)" /SD IDYES IDYES +2 # continue if yes
   Abort

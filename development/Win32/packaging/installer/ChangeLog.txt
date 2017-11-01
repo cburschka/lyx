@@ -1,5 +1,7 @@
 ﻿Changelog for LyX-230-RC1:
 - installs LyX 2.3.0 RC1
+- fix bug that the BibTeX editor Jabref and the image editor Krita
+  were not detected as 64bit application
 - updated to Qt 5.6.3
 - updated to ImageMagick 7.0.7-8
 - updated to Ghostscript 9.22

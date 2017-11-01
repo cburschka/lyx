@@ -144,6 +144,9 @@ Function MissingPrograms
    StrCpy $ImageEditor "Photoshop"
   ${endif}
   # check for Krita
+  ${if} ${RunningX64}
+   SetRegView 64
+  ${endif}
   ReadRegStr $0 HKLM "SOFTWARE\Classes\Krita.Document\shell\open\command" ""
   ${if} $0 != ""
    StrCpy $0 "$0" -16 # delete '\krita.exe" "%1"'
@@ -155,11 +158,21 @@ Function MissingPrograms
    ${endif}
    StrCpy $ImageEditor "Krita"
   ${endif}
+  ${if} ${RunningX64}
+   SetRegView 32
+  ${endif}
 
   # test if and where the BibTeX-editor JabRef is installed
-  ReadRegStr $PathBibTeXEditor HKLM "Software\JabRef" "Path"
+  ${if} ${RunningX64}
+   SetRegView 64
+  ${endif}
+  ReadRegStr $PathBibTeXEditor HKLM "SOFTWARE\JabRef" "Path"
+  # if not installed as admin, check for user
   ${if} $PathBibTeXEditor == ""
    ReadRegStr $PathBibTeXEditor HKCU "Software\JabRef" "Path"
+  ${endif}
+  ${if} ${RunningX64}
+   SetRegView 32
   ${endif}
 
   ${ifnot} ${FileExists} "$PathBibTeXEditor\${BIN_BIBTEXEDITOR}"
