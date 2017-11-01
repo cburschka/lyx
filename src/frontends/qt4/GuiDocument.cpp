@@ -3624,6 +3624,7 @@ void GuiDocument::useClassDefaults()
 	}
 	bp_.useClassDefaults();
 	paramsToDialog();
+	changed();
 }
 
 
