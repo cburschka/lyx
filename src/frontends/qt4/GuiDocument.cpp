@@ -1210,7 +1210,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	headers << qt_("Package") << qt_("Load automatically")
 		<< qt_("Load always") << qt_("Do not load");
 	mathsModule->packagesTW->setHorizontalHeaderLabels(headers);
-	setSectionResizeMode(mathsModule->packagesTW->horizontalHeader(), QHeaderView::Stretch);
+	setSectionResizeMode(mathsModule->packagesTW->horizontalHeader(), QHeaderView::ResizeToContents);
 	map<string, string> const & packages = BufferParams::auto_packages();
 	mathsModule->packagesTW->setRowCount(packages.size());
 	int i = 0;
@@ -1249,6 +1249,11 @@ GuiDocument::GuiDocument(GuiView & lv)
 		mathsModule->packagesTW->setCellWidget(i, 1, autoRB);
 		mathsModule->packagesTW->setCellWidget(i, 2, alwaysRB);
 		mathsModule->packagesTW->setCellWidget(i, 3, neverRB);
+		//center the table contents
+		pack->setTextAlignment(Qt::AlignHCenter);
+		autoRB->setStyleSheet("margin-left:50%; margin-right:50%;");
+		alwaysRB->setStyleSheet("margin-left:50%; margin-right:50%;");
+		neverRB->setStyleSheet("margin-left:50%; margin-right:50%;");
 
 		connect(autoRB, SIGNAL(clicked()),
 		        this, SLOT(change_adaptor()));
