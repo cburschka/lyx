@@ -99,11 +99,11 @@
 #   Japanese documents via pLaTeX.
 #   No conversion necessary.
 
-# Incremented to format 24, by lasgouttes
-#   Remove use_qimage preference
-
-# Incremented to format 25, by spitz
+# Incremented to format 24, by spitz
 #   Rename collapsable to collapsible
+
+# Incremented to format 25, by lasgouttes
+#   Remove use_qimage preference
 
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py.
@@ -379,7 +379,8 @@ def remove_print_support(line):
 #################################
 # Conversions from LyX 2.2 to 2.3
 
-# Only format changes that don't require conversion
+def rename_collapsible(line):
+	return simple_renaming(line, "\\set_color \"collapsable", "\\set_color \"collapsible")
 
 # End conversions for LyX 2.2 to 2.3
 ####################################
@@ -392,9 +393,6 @@ def remove_use_qimage(line):
 	if not line.lower().startswith("\\use_qimage "):
 		return no_match
 	return (True, "")
-
-def rename_collapsible(line):
-	return simple_renaming(line, "\\set_color \"collapsable", "\\set_color \"collapsible")
 
 # End conversions for LyX 2.3 to 2.4
 ####################################
@@ -434,6 +432,6 @@ conversions = [
 	[ 21, []],
 	[ 22, []],
 	[ 23, []],
-	[ 24, [remove_use_qimage]],
-	[ 25, [rename_collapsible]]
+	[ 24, [rename_collapsible]],
+	[ 25, [remove_use_qimage]]
 ]
