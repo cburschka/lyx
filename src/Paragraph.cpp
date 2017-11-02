@@ -2542,6 +2542,7 @@ void Paragraph::latex(BufferParams const & bparams,
 		bool const using_begin_end = runparams.use_polyglossia ||
 						!lang_end_command.empty();
 		if (!running_lang.empty() &&
+		    (!using_begin_end || running_lang == openLanguageName()) &&
 		    current_font.language()->encoding()->package() == Encoding::CJK) {
 				string end_tag = subst(lang_end_command,
 							"$$lang",
