@@ -532,6 +532,14 @@ void popLanguageName()
 }
 
 
+string const & openLanguageName()
+{
+	OutputState * state = getOutputState();
+
+	return openLanguageName(state);
+}
+
+
 namespace {
 
 void addArgInsets(Paragraph const & par, string const & prefix,
