@@ -1,11 +1,20 @@
-﻿Changelog for LyX-230-beta1:
+﻿Changelog for LyX-230-RC1:
+- installs LyX 2.3.0 RC1
+- fix bug that the BibTeX editor Jabref and the image editor Krita
+  were not detected as 64bit application
+- updated to Qt 5.6.3
+- updated to ImageMagick 7.0.7-8
+- updated to Ghostscript 9.22
+- updated thesaurus for Ukrainian
+- updated spell checker dictionaries for English (GB, US) and Tibetan
+
+
+Changelog for LyX-230-beta1:
 - installs LyX 2.3.0 beta1
 - updated to MiKTeX 2.9 build 6361
-- updated to Qt 5.6.3
 - updated to ImageMagick 7.0.6-7
 - updated to Perl 5.24.2.1
 - updated to NSIS 3.0.2.1
-- updated to Ghostscript 9.22
 - updated thesaurus for Ukrainian
 - updated spell checker dictionaries for English (GB), Portuguese, Scottish and
   Ukrainian
