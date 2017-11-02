@@ -130,6 +130,7 @@ cmake/configCompiler.h.msvc \
 cmake/configFunctions.cmake \
 cmake/configIncludes.cmake \
 cmake/doc/CMakeLists.txt \
+cmake/doc/ReplaceValues.cmake \
 cmake/doc/ReplaceValues.pl \
 cmake/doc/ReplaceValues.py \
 cmake/lyx_date.h.cmake \
