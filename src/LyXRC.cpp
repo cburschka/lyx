@@ -59,7 +59,7 @@ namespace {
 
 // The format should also be updated in configure.py, and conversion code
 // should be added to prefs2prefs_prefs.py.
-static unsigned int const LYXRC_FILEFORMAT = 24; // lasgouttes: remove qimage
+static unsigned int const LYXRC_FILEFORMAT = 25; // spitz: rename collapsible
 
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {

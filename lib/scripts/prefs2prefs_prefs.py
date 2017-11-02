@@ -102,6 +102,9 @@
 # Incremented to format 24, by lasgouttes
 #   Remove use_qimage preference
 
+# Incremented to format 25, by spitz
+#   Rename collapsable to collapsible
+
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py.
 
@@ -390,6 +393,9 @@ def remove_use_qimage(line):
 		return no_match
 	return (True, "")
 
+def rename_collapsible(line):
+	return simple_renaming(line, "\\set_color \"collapsable", "\\set_color \"collapsible")
+
 # End conversions for LyX 2.3 to 2.4
 ####################################
 
@@ -428,5 +434,6 @@ conversions = [
 	[ 21, []],
 	[ 22, []],
 	[ 23, []],
-	[ 24, [remove_use_qimage]]
+	[ 24, [remove_use_qimage]],
+	[ 25, [rename_collapsible]]
 ]
