@@ -99,6 +99,9 @@
 #   Japanese documents via pLaTeX.
 #   No conversion necessary.
 
+# Incremented to format 24, by spitz
+#   Rename collapsable to collapsible
+
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py.
 
@@ -372,7 +375,8 @@ def remove_print_support(line):
 #################################
 # Conversions from LyX 2.2 to 2.3
 
-# Only format changes that don't require conversion
+def rename_collapsible(line):
+	return simple_renaming(line, "\\set_color \"collapsable", "\\set_color \"collapsible")
 
 # End conversions for LyX 2.2 to 2.3
 ####################################
@@ -410,5 +414,6 @@ conversions = [
 	[ 20, []],
 	[ 21, []],
 	[ 22, []],
-	[ 23, []]
+	[ 23, []],
+	[ 24, [rename_collapsible]]
 ]

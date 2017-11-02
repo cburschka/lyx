@@ -59,7 +59,7 @@ namespace {
 
 // The format should also be updated in configure.py, and conversion code
 // should be added to prefs2prefs_prefs.py.
-static unsigned int const LYXRC_FILEFORMAT = 23; // spitz: default_platex_view_format
+static unsigned int const LYXRC_FILEFORMAT = 24; // spitz: rename collapsible
 
 // when adding something to this array keep it sorted!
 LexerKeyword lyxrcTags[] = {
