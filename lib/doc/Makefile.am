@@ -220,6 +220,7 @@ dist_jadoc_DATA = \
 	ja/Customization.lyx \
 	ja/DummyDocument1.lyx \
 	ja/DummyDocument2.lyx \
+	ja/DummyTextDocument.txt \
 	ja/EmbeddedObjects.lyx \
 	ja/Formula-numbering.lyx \
 	ja/Intro.lyx \
