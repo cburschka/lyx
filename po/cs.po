@@ -247,22 +247,19 @@ msgstr "&Aktualizovat"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:81
 msgid ""
 "Here you can enter a local BibTeX database name or browse your directory."
-msgstr ""
+msgstr "Zadejte jméno lokální databáze BibTeX-u nebo zvolte procházení vaším adresářem"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:84
-#, fuzzy
 msgid "&Local databases:"
-msgstr "Databáze:"
+msgstr "&Lokální databáze:"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:102
-#, fuzzy
 msgid "Here you can enter a local BibTeX database name"
-msgstr "Vložit jméno BibTeX-ové databáze"
+msgstr "Vložte jméno lokální BibTeX-ové databáze"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:109
-#, fuzzy
 msgid "Browse your local directory"
-msgstr "Žádný uživatelský adresář"
+msgstr "Procházet lokální uživatelský adresář"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:112 src/frontends/qt4/ui/BibtexUi.ui:152
 #: src/frontends/qt4/ui/CompareUi.ui:50 src/frontends/qt4/ui/ExternalUi.ui:70
@@ -292,9 +289,8 @@ msgid "BibTeX database to use"
 msgstr "BibTeX-ová databáze k použití"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:32
-#, fuzzy
 msgid "Da&tabases"
-msgstr "Databáze:"
+msgstr "Da&tabáze:"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:48
 msgid "Add a BibTeX database file"
@@ -378,15 +374,14 @@ msgid "Add bibliography to &TOC"
 msgstr "Přidat bibliografii k O&bsahu"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:231
-#, fuzzy
 msgid "O&ptions:"
-msgstr "&Volba:"
+msgstr "&Volby:"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:241
 msgid ""
 "Options to the biblatex bibliography command. See the biblatex manual for "
 "details."
-msgstr ""
+msgstr "Volby pro příkaz biblatex-u. Viz manuál biblatex-u."
 
 #: src/frontends/qt4/ui/BibtexUi.ui:283 src/frontends/qt4/ui/CharacterUi.ui:357
 #: src/frontends/qt4/ui/CitationUi.ui:453
@@ -408,9 +403,8 @@ msgid "&OK"
 msgstr "&OK"
 
 #: src/frontends/qt4/ui/BoxUi.ui:23
-#, fuzzy
 msgid "Type and Size"
-msgstr "Velikost stránky"
+msgstr "Typ a velikost"
 
 #: src/frontends/qt4/ui/BoxUi.ui:32 src/frontends/qt4/ui/WrapUi.ui:103
 msgid "Width value"
@@ -432,9 +426,8 @@ msgid "Inner Bo&x:"
 msgstr "Vn&itřní rámeček:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:87
-#, fuzzy
 msgid "Inner box type"
-msgstr "Vložit rámeček"
+msgstr "Typ vnitřního rámečku"
 
 #: src/frontends/qt4/ui/BoxUi.ui:91 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:98 src/frontends/qt4/ui/TabularUi.ui:1199
@@ -566,57 +559,48 @@ msgid "Decoration"
 msgstr "Dekorace"
 
 #: src/frontends/qt4/ui/BoxUi.ui:308
-#, fuzzy
 msgid "Decoration box types"
-msgstr "Podporované typy rámečků"
+msgstr "Dekorované typy rámečků"
 
 #: src/frontends/qt4/ui/BoxUi.ui:318
-#, fuzzy
 msgid "Thickness value"
-msgstr "Thickness"
+msgstr "Hodnota tloušťky"
 
 #: src/frontends/qt4/ui/BoxUi.ui:325
-#, fuzzy
 msgid "&Line thickness:"
-msgstr "&Tloušťka:"
+msgstr "&Tloušťka čáry:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:338
-#, fuzzy
 msgid "Separation value"
-msgstr "úhel rotace"
+msgstr "Hodnota oddělení"
 
 #: src/frontends/qt4/ui/BoxUi.ui:345
-#, fuzzy
 msgid "Box s&eparation:"
-msgstr "&Dekorace:"
+msgstr "Odděl&ení rámečku:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:358
 msgid "&Decoration:"
 msgstr "&Dekorace:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:368
-#, fuzzy
 msgid "&Shadow size:"
-msgstr "&Velikost písma:"
+msgstr "&Velikost stínu:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:402
-#, fuzzy
 msgid "Size value"
-msgstr "Hodnota šířky"
+msgstr "Hodnota velikosti"
 
 #: src/frontends/qt4/ui/BoxUi.ui:412 src/frontends/qt4/GuiBranches.cpp:55
 msgid "Color"
 msgstr "Barevně"
 
 #: src/frontends/qt4/ui/BoxUi.ui:434
-#, fuzzy
 msgid "Back&ground:"
-msgstr "pozadí"
+msgstr "&Pozadí:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:444
-#, fuzzy
 msgid "&Frame:"
-msgstr "Frame"
+msgstr "&Rámeček:"
 
 #: src/frontends/qt4/ui/BranchUi.ui:20
 msgid "&Available branches:"
@@ -627,9 +611,8 @@ msgid "Select your branch"
 msgstr "Vyber svoji větev"
 
 #: src/frontends/qt4/ui/BranchUi.ui:37
-#, fuzzy
 msgid "Inverted"
-msgstr "Konvertory"
+msgstr "Invertovaná"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25
 msgid "&New:[[branch]]"
@@ -1246,11 +1229,11 @@ msgstr "Drže&t spárované"
 msgid ""
 "Swap left and right delimiter type (while reversing to the appropriate "
 "direction)"
-msgstr ""
+msgstr "Prohodit levý a pravý typ oddělovače (a obrátit směr)"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:265
 msgid "S&wap && Reverse"
-msgstr ""
+msgstr "&Prohodit && obrátit"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:112
 msgid "Reset to the default settings for the document class"
@@ -18615,9 +18598,8 @@ msgid "Deactivate Branch in Master|v"
 msgstr "Deaktivovat větev v hlavním dokumentu|v"
 
 #: lib/ui/stdcontext.inc:505
-#, fuzzy
 msgid "Invert Inset|I"
-msgstr "Vložit poznámku"
+msgstr "Invertovat vložku|I"
 
 #: lib/ui/stdcontext.inc:506
 msgid "Add Unknown Branch|w"
@@ -19450,9 +19432,8 @@ msgid "Ligature Break|k"
 msgstr "Rozbít slitek (ligaturu)|l"
 
 #: lib/ui/stdmenus.inc:438
-#, fuzzy
 msgid "Optional Line Break|B"
-msgstr "Zalomení řádku|k"
+msgstr "Volitelné zalomení řádku|t"
 
 #: lib/ui/stdmenus.inc:451
 msgid "Display Formula|D"
@@ -20335,12 +20316,11 @@ msgstr "Matematický panel"
 
 #: lib/ui/stdtoolbars.inc:298
 msgid "Math spacings"
-msgstr "Mat. mezery"
+msgstr "Matematické mezery"
 
 #: lib/ui/stdtoolbars.inc:299
-#, fuzzy
 msgid "Styles & classes"
-msgstr "Třídy LaTeX-u"
+msgstr "Styly a třídy"
 
 #: lib/ui/stdtoolbars.inc:300 lib/ui/stdtoolbars.inc:389
 msgid "Fractions"
@@ -20582,27 +20562,27 @@ msgstr "Vertikální fantóm\t\\vphantom"
 
 #: lib/ui/stdtoolbars.inc:365
 msgid "Smash\t\\smash"
-msgstr ""
+msgstr "Rozbít vertikálně\t\\smash"
 
 #: lib/ui/stdtoolbars.inc:366
 msgid "Top smash\t\\smasht"
-msgstr ""
+msgstr "Rozbít vertikálně nahoru\t\\smasht"
 
 #: lib/ui/stdtoolbars.inc:367
 msgid "Bottom smash\t\\smashb"
-msgstr ""
+msgstr "Rozbít vertikálně dolů\t\\smashb"
 
 #: lib/ui/stdtoolbars.inc:368
 msgid "Left overlap\t\\mathllap"
-msgstr ""
+msgstr "Rozbít vertikálně nalevo\t\\mathllap"
 
 #: lib/ui/stdtoolbars.inc:369
 msgid "Center overlap\t\\mathclap"
-msgstr ""
+msgstr "Rozbít do centra\t\\mathclap"
 
 #: lib/ui/stdtoolbars.inc:370
 msgid "Right overlap\t\\mathrlap"
-msgstr ""
+msgstr "Rozbít vertikálně napravo\t\\mathrlap"
 
 #: lib/ui/stdtoolbars.inc:373
 msgid "Roots"
@@ -20618,7 +20598,7 @@ msgstr "Jiná odmocnina\t\\root"
 
 #: lib/ui/stdtoolbars.inc:378
 msgid "Styles & Classes"
-msgstr ""
+msgstr "Styly a třídy"
 
 #: lib/ui/stdtoolbars.inc:379
 msgid "Display style\t\\displaystyle"
@@ -20638,19 +20618,19 @@ msgstr "Menší (scriptscript)\t\\scriptscriptstyle"
 
 #: lib/ui/stdtoolbars.inc:383
 msgid "Relation class\t\\mathrel"
-msgstr ""
+msgstr "Třída relace\t\\mathrel"
 
 #: lib/ui/stdtoolbars.inc:384
 msgid "Binary operator class\t\\mathbin"
-msgstr ""
+msgstr "Třída binárního operátoru\t\\mathbin"
 
 #: lib/ui/stdtoolbars.inc:385
 msgid "Large operator class\t\\mathop"
-msgstr ""
+msgstr "Třída velkého oprátoru\t\\mathop"
 
 #: lib/ui/stdtoolbars.inc:386
 msgid "Ordinary class\t\\mathord"
-msgstr ""
+msgstr "Bežná třída\t\\mathord"
 
 #: lib/ui/stdtoolbars.inc:390
 msgid "Standard\t\\frac"
