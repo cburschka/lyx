@@ -31,7 +31,9 @@ ${LangFileString} SecCoreDescription "LyX fitxategiak."
 #${LangFileString} SecAllUsersDescription "Instalatu LyX erabiltzaile guztientzako, edo soilik uneko erabiltzailearentzako."
 ${LangFileString} SecFileAssocDescription ".lyx luzapeneko fitxategiak LyX-ekin irekiko dira automatikoki."
 ${LangFileString} SecDesktopDescription "LyX ikonoa mahaigainean."
+${LangFileString} SecDictionaries "Hiztegia"
 ${LangFileString} SecDictionariesDescription "Zuzentzaile ortografikoen hiztegiak deskarga eta instala daitezke."
+${LangFileString} SecThesaurus "Thesaurus"
 ${LangFileString} SecThesaurusDescription "Thesaurus hiztegiak deskarga eta instala daitezke."
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX-banaketa'

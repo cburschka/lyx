@@ -25,7 +25,9 @@ ${LangFileString} SecCoreDescription "LyX-filerna."
 #${LangFileString} SecAllUsersDescription "Installera LyX för alla användare, eller enbart för den aktuella användaren."
 ${LangFileString} SecFileAssocDescription "Filer med ändelsen .lyx kommer att automatiskt öppnas i LyX."
 ${LangFileString} SecDesktopDescription "En LyX-ikon på skrivbordet."
+${LangFileString} SecDictionaries "Ordböcker"
 ${LangFileString} SecDictionariesDescription "Stavningskontrollens ordböcker som kan laddas ned och installeras."
+${LangFileString} SecThesaurus "Synonymordbok"
 ${LangFileString} SecThesaurusDescription "Synonymordböcker som kan laddas ned och installeras."
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX-distribution'

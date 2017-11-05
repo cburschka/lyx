@@ -25,7 +25,9 @@ ${LangFileString} SecCoreDescription "Els fitxers del LyX."
 #${LangFileString} SecAllUsersDescription "Instal·la el LyX per a tots els usuaris o només per a l'usuari actual."
 ${LangFileString} SecFileAssocDescription "Els fitxers amb extensió .lyx s'obriran automàticament amb el LyX."
 ${LangFileString} SecDesktopDescription "Una icona del LyX a l'escriptori."
+${LangFileString} SecDictionaries "Diccionaris"
 ${LangFileString} SecDictionariesDescription "Spell-checker dictionaries that can be downloaded and installed."
+${LangFileString} SecThesaurus "Tesaurus"
 ${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be downloaded and installed."
 
 ${LangFileString} EnterLaTeXHeader1 'Distribució LaTeX'

@@ -25,7 +25,9 @@ ${LangFileString} SecCoreDescription "Fişierele LyX."
 #${LangFileString} SecAllUsersDescription "Instalează LyX pentru toţi utilizatorii sau doar pentru utilizatorul curent."
 ${LangFileString} SecFileAssocDescription "Fişierele cu extensia .lyx vor fi deschise automat cu LyX."
 ${LangFileString} SecDesktopDescription "A iconiţă LyX pe desktop."
+${LangFileString} SecDictionaries "Dicționare"
 ${LangFileString} SecDictionariesDescription "Spell-checker dictionaries that can be downloaded and installed."
+${LangFileString} SecThesaurus "Tezaur"
 ${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be downloaded and installed."
 
 ${LangFileString} EnterLaTeXHeader1 'Distribuţia LaTeX'

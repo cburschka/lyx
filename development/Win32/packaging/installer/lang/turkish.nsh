@@ -25,7 +25,9 @@ ${LangFileString} SecCoreDescription "LyX dosyaları."
 #${LangFileString} SecAllUsersDescription "LyX tüm kullanıcılar için mi yoksa yalnızca bu kullanıcıya mı kurulacak."
 ${LangFileString} SecFileAssocDescription "Uzantısı .lyx olan dosyalar otomatik olarak LyX ile açılsın."
 ${LangFileString} SecDesktopDescription "Masaüstüne bir LyX ikonu koy."
+${LangFileString} SecDictionaries "Sözlükleri"
 ${LangFileString} SecDictionariesDescription "Spell-checker dictionaries that can be downloaded and installed."
+${LangFileString} SecThesaurus "Tesarus"
 ${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be downloaded and installed."
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX-dağıtımı'

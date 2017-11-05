@@ -25,7 +25,9 @@ ${LangFileString} SecCoreDescription "Soubory LyXu."
 #${LangFileString} SecAllUsersDescription "Instalovat LyX pro všechny uživatele nebo pouze pro současného uživatele."
 ${LangFileString} SecFileAssocDescription "Soubory s příponou .lyx se automaticky otevřou v LyXu."
 ${LangFileString} SecDesktopDescription "Ikonu LyXu na plochu."
+${LangFileString} SecDictionaries "Slovníky"
 ${LangFileString} SecDictionariesDescription "Spell-checker dictionaries that can be downloaded and installed."
+${LangFileString} SecThesaurus "Tezaurus"
 ${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be downloaded and installed."
 
 ${LangFileString} EnterLaTeXHeader1 'Distribuce LaTeXu'
