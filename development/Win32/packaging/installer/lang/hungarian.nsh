@@ -31,7 +31,9 @@ ${LangFileString} SecCoreDescription "A LyX futtatásához szükséges fájlok."
 #${LangFileString} SecAllUsersDescription "Minden felhasználónak telepítsem vagy csak az aktuálisnak?"
 ${LangFileString} SecFileAssocDescription "A .lyx kiterjesztéssel rendelkező fájlok megnyitása automatikusan a LyX-el történjen."
 ${LangFileString} SecDesktopDescription "LyX-ikon elhelyezése az Asztalon."
+${LangFileString} SecDictionaries "Szótárak"
 ${LangFileString} SecDictionariesDescription "Helyesírás-ellenőrző szótárak, amiket letölthet és telepíthet."
+${LangFileString} SecThesaurus "Tezaurusz"
 ${LangFileString} SecThesaurusDescription "Szinoníma-szótárak, amiket letölthet és telepíthet."
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX-disztribúció'

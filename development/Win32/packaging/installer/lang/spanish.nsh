@@ -31,7 +31,9 @@ ${LangFileString} SecDesktopTitle "Icono de escritorio"
 ${LangFileString} SecAllUsersDescription "Instalar LyX para todos los usuarios o sólo para el usuario actual."
 ${LangFileString} SecFileAssocDescription "Asociar la extensión .lyx con LyX."
 ${LangFileString} SecDesktopDescription "Crear un icono de LyX en el escritorio."
+${LangFileString} SecDictionaries "Diccionarios"
 ${LangFileString} SecDictionariesDescription "Diccionarios de revisión ortográfica que se pueden descargar e instalar."
+${LangFileString} SecThesaurus "Tesauro"
 ${LangFileString} SecThesaurusDescription "Diccionarios de sinónimos que se pueden descargar e instalar."
 
 ${LangFileString} EnterLaTeXHeader1 'Distribución LaTeX'

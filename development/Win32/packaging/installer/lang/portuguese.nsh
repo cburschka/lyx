@@ -25,8 +25,10 @@ ${LangFileString} SecCoreDescription "Os ficheiros LyX."
 #${LangFileString} SecAllUsersDescription "Instalar o LyX para todos os utilizadores ou apenas para o presente utilizador."
 ${LangFileString} SecFileAssocDescription "Os ficheiros com a extensão .lyx irão abrir automaticamente no LyX."
 ${LangFileString} SecDesktopDescription "Um icone do LyX no ambiente de trabalho."
+${LangFileString} SecDictionaries "Dicionários"
 ${LangFileString} SecDictionariesDescription "Dicionários do corretor ortográfico que podem ser descarregados e instalados."
-${LangFileString} SecThesaurusDescription "Dicionários de sinónimos (Thesaurus) que podem ser descarregados e instalados."
+${LangFileString} SecThesaurus "Tesauro"
+${LangFileString} SecThesaurusDescription "Dicionários de sinónimos (Tesauro) que podem ser descarregados e instalados."
 
 ${LangFileString} EnterLaTeXHeader1 'Distribuição de LaTeX'
 ${LangFileString} EnterLaTeXHeader2 'Escolher a distribuição de LaTeX que o LyX deverá usar.'

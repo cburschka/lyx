@@ -25,7 +25,9 @@ ${LangFileString} SecCoreDescription "Filerne til LyX."
 #${LangFileString} SecAllUsersDescription "Installer LyX til alle brugere, eller kun den aktuelle bruger."
 ${LangFileString} SecFileAssocDescription "Opret association mellem LyX og .lyx filer."
 ${LangFileString} SecDesktopDescription "Et LyX ikon på skrivebordet"
+${LangFileString} SecDictionaries "Ordbøger"
 ${LangFileString} SecDictionariesDescription "Spell-checker dictionaries that can be downloaded and installed."
+${LangFileString} SecThesaurus "Tesaurus"
 ${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be downloaded and installed."
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX-distribution'

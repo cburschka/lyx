@@ -31,7 +31,9 @@ ${LangFileString} SecCoreDescription "Berkas-berkas LyX."
 #${LangFileString} SecAllUsersDescription "Pasang LyX untuk semua pengguna atau hanya untuk pengguna ini saja."
 ${LangFileString} SecFileAssocDescription "Berkas dengan ekstensi .lyx akan otomatis dibuka menggunakan LyX."
 ${LangFileString} SecDesktopDescription "Ikon LyX muncul di desktop."
+${LangFileString} SecDictionaries "Kamus"
 ${LangFileString} SecDictionariesDescription "Kamus pemeriksa ejaan yang dapat diunduh dan dipasang."
+${LangFileString} SecThesaurus "Tesaurus"
 ${LangFileString} SecThesaurusDescription "Kamus padanan kata yang dapat diunduh dan dipasang."
 
 ${LangFileString} EnterLaTeXHeader1 'Distribusi LaTeX'

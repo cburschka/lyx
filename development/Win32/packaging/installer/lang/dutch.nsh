@@ -25,7 +25,9 @@ ${LangFileString} SecCoreDescription "De LyX bestanden."
 #${LangFileString} SecAllUsersDescription "Installeer LyX voor alle gebruikers of uitsluitend de huidige gebruiker?"
 ${LangFileString} SecFileAssocDescription "Associeer het LyX programma met de .lyx extensie."
 ${LangFileString} SecDesktopDescription "Een LyX pictogram op het Bureaublad."
+${LangFileString} SecDictionaries "Woordenboeken"
 ${LangFileString} SecDictionariesDescription "Spell-checker dictionaries that can be downloaded and installed."
+${LangFileString} SecThesaurus "Thesaurus"
 ${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be downloaded and installed."
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX software'

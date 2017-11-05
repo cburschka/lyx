@@ -31,7 +31,9 @@ ${LangFileString} SecCoreDescription "The LyX files."
 #${LangFileString} SecAllUsersDescription "Install LyX for all users or just the current user."
 ${LangFileString} SecFileAssocDescription "Files with a .lyx extension will automatically open in LyX."
 ${LangFileString} SecDesktopDescription "A LyX icon on the desktop."
+${LangFileString} SecDictionaries "Dictionaries"
 ${LangFileString} SecDictionariesDescription "Spell-checker dictionaries that can be downloaded and installed."
+${LangFileString} SecThesaurus "Thesaurus"
 ${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be downloaded and installed."
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX-distribution'

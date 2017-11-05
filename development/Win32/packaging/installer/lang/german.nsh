@@ -31,7 +31,9 @@ ${LangFileString} SecCoreDescription "Das Programm LyX."
 #${LangFileString} SecAllUsersDescription "LyX für alle Nutzer oder nur für den aktuellen Nutzer installieren."
 ${LangFileString} SecFileAssocDescription "Vernüpfung zwischen LyX und der .lyx Dateiendung."
 ${LangFileString} SecDesktopDescription "Verknüpfung zu LyX auf dem Desktop."
+${LangFileString} SecDictionaries "Wörterbücher"
 ${LangFileString} SecDictionariesDescription "Rechtschreibprüfung- Wörterbucher die heruntergeladen und installiert werden können."
+${LangFileString} SecThesaurus "Thesaurus"
 ${LangFileString} SecThesaurusDescription "Thesaurus- Wörterbucher die heruntergeladen und installiert werden können."
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX-Distribution'

@@ -31,7 +31,9 @@ ${LangFileString} SecCoreDescription "LyX-filene."
 #${LangFileString} SecAllUsersDescription "Installer LyX for alle brukere, eller kun for denne brukeren."
 ${LangFileString} SecFileAssocDescription "Filer med endelsen .lyx åpnes automatisk i LyX."
 ${LangFileString} SecDesktopDescription "Et LyX-ikon på skrivebordet."
+${LangFileString} SecDictionaries "Ordbøker"
 ${LangFileString} SecDictionariesDescription "Ordbøker til rettskrivningsprogram som kan lastes ned og installeres."
+${LangFileString} SecThesaurus "Tesaurus"
 ${LangFileString} SecThesaurusDescription "Synonymordbøker som kan lastes ned og installeres."
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX-distribusjon'

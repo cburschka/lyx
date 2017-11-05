@@ -25,7 +25,9 @@ ${LangFileString} SecCoreDescription "Pliki LyX$\'a."
 #${LangFileString} SecAllUsersDescription "Instalacja dla wszystkich użytkowników lub tylko dla bieżącego użytkownika."
 ${LangFileString} SecFileAssocDescription "Skojarzenie LyX-a z plikami o rozszerzeniu .lyx."
 ${LangFileString} SecDesktopDescription "Ikona LyX$\'a na pulpicie."
+${LangFileString} SecDictionaries "Słowniki"
 ${LangFileString} SecDictionariesDescription "Słowniki sprawdzania pisowni, które mogą zostać pobrane i zainstalowane."
+${LangFileString} SecThesaurus "Tezaurus"
 ${LangFileString} SecThesaurusDescription "Słowniki tezaurusa, które mogą zostać pobrane i zainstalowane."
 
 ${LangFileString} EnterLaTeXHeader1 'Dystrybucja LaTeX'
