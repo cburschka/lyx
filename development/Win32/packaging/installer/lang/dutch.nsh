@@ -1,4 +1,4 @@
-!insertmacro LANGFILE_EXT "Dutch"
+﻿!insertmacro LANGFILE_EXT "Dutch"
 
 ${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
 
@@ -6,23 +6,23 @@ ${LangFileString} TEXT_WELCOME "Dit installatie programma zal LyX op uw systeem 
 				$\r$\n\
 				$_CLICK"
 
-${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
+#${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Updating MiKTeX filename database..."
 ${LangFileString} TEXT_CONFIGURE_LYX "Configuring LyX ($LaTeXInstalled may download missing packages, this can take some time) ..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "Compiling Python scripts..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Create desktop shortcut"
 ${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, support and tips"
 
-${LangFileString} FileTypeTitle "LyX-Document"
+#${LangFileString} FileTypeTitle "LyX-Document"
 
-${LangFileString} SecInstJabRefTitle "JabRef"
-${LangFileString} SecAllUsersTitle "Installeer voor alle gebruikers?"
+#${LangFileString} SecInstJabRefTitle "JabRef"
+#${LangFileString} SecAllUsersTitle "Installeer voor alle gebruikers?"
 ${LangFileString} SecFileAssocTitle "Bestand associaties"
 ${LangFileString} SecDesktopTitle "Bureaublad pictogram"
 
 ${LangFileString} SecCoreDescription "De LyX bestanden."
-${LangFileString} SecInstJabRefDescription "Bibliography reference manager and editor for BibTeX files."
-${LangFileString} SecAllUsersDescription "Installeer LyX voor alle gebruikers of uitsluitend de huidige gebruiker?"
+#${LangFileString} SecInstJabRefDescription "Bibliography reference manager and editor for BibTeX files."
+#${LangFileString} SecAllUsersDescription "Installeer LyX voor alle gebruikers of uitsluitend de huidige gebruiker?"
 ${LangFileString} SecFileAssocDescription "Associeer het LyX programma met de .lyx extensie."
 ${LangFileString} SecDesktopDescription "Een LyX pictogram op het Bureaublad."
 ${LangFileString} SecDictionariesDescription "Spell-checker dictionaries that can be downloaded and installed."
@@ -56,25 +56,25 @@ ${LangFileString} LatexError1 'Er is geen LaTeX software gevonden!$\r$\n\
 ${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
 ${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
 
-${LangFileString} JabRefInfo 'Het installatie programma van $\"JabRef$\" wordt nu gestart.$\r$\n\
-				U kunt de standaard opties gebruiken.'
-${LangFileString} JabRefError 'Het programma $\"JabRef$\" kon niet worden geinstalleerd!$\r$\n\
-				De LyX installatie gaat desondanks verder.$\r$\n\
-				Probeer JabRef later te installeren.'
+#${LangFileString} JabRefInfo 'Het installatie programma van $\"JabRef$\" wordt nu gestart.$\r$\n\
+#				U kunt de standaard opties gebruiken.'
+#${LangFileString} JabRefError 'Het programma $\"JabRef$\" kon niet worden geinstalleerd!$\r$\n\
+#				De LyX installatie gaat desondanks verder.$\r$\n\
+#				Probeer JabRef later te installeren.'
 
-${LangFileString} LatexConfigInfo "De volgende configuratie van LyX zal enige tijd duren."
+#${LangFileString} LatexConfigInfo "De volgende configuratie van LyX zal enige tijd duren."
 
-${LangFileString} MiKTeXPathInfo "Opdat elke gebruiker zijn MiKTeX configuratie kan aanpassen$\r$\n\
-					is het noodzakelijk alle gebruikers schrijfpermissie te geven in MiKTeX's installatie map$\r$\n\
-					$MiKTeXPath $\r$\n\
-					en submappen."
+#${LangFileString} MiKTeXPathInfo "Opdat elke gebruiker zijn MiKTeX configuratie kan aanpassen$\r$\n\
+#					is het noodzakelijk alle gebruikers schrijfpermissie te geven in MiKTeX's installatie map$\r$\n\
+#					$MiKTeXPath $\r$\n\
+#					en submappen."
 ${LangFileString} MiKTeXInfo 'LyX gebruikt de LaTeX software $\"MiKTeX$\".$\r$\n\
 				Het is aanbevolen MiKTeX-updates te installeren via de $\"MiKTeX Update Wizard$\"$\r$\n\
 				voordat u LyX voor de eerste keer gebruikt.$\r$\n\
 				Wilt u controleren of er updates voor MiKTeX beschikbaar zijn?'
 
 ${LangFileString} ModifyingConfigureFailed "Mislukte poging om 'path_prefix' te registreren tijdens de configuratie"
-${LangFileString} RunConfigureFailed "Mislukte configuratie poging"
+#${LangFileString} RunConfigureFailed "Mislukte configuratie poging"
 ${LangFileString} NotAdmin "U heeft systeem-beheerrechten nodig om LyX te installeren!"
 ${LangFileString} InstallRunning "Het installatieprogramma is al gestart!"
 ${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} is reeds geinstalleerd!$\r$\n\
@@ -88,9 +88,9 @@ ${LangFileString} NewerInstalled "You are trying to install an older version of 
 ${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
 						MiKTeX was installed with administrator privileges but you are installing LyX without them."
 
-${LangFileString} FinishPageMessage "Gefeliciteerd! LyX is succesvol geinstalleerd.$\r$\n\
-					$\r$\n\
-					(De eerste keer dat u LyX start kan dit enige seconden duren.)"
+#${LangFileString} FinishPageMessage "Gefeliciteerd! LyX is succesvol geinstalleerd.$\r$\n\
+#					$\r$\n\
+#					(De eerste keer dat u LyX start kan dit enige seconden duren.)"
 ${LangFileString} FinishPageRun "Start LyX"
 
 ${LangFileString} UnNotInRegistryLabel "LyX is niet gevonden in het Windows register.$\r$\n\
@@ -101,9 +101,8 @@ ${LangFileString} UnReallyRemoveLabel "Weet u zeker dat u LyX en alle componente
 ${LangFileString} UnLyXPreferencesTitle 'LyX$\'s user preferences'
 
 ${LangFileString} SecUnMiKTeXDescription "Verwijder de LaTeX software MiKTeX."
-${LangFileString} SecUnJabRefDescription "Verwijder de bibliografie manager JabRef."
+#${LangFileString} SecUnJabRefDescription "Verwijder de bibliografie manager JabRef."
 ${LangFileString} SecUnPreferencesDescription 'Verwijder LyX$\'s configuratie map$\r$\n\
 						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
 						voor alle gebruikers.'
 ${LangFileString} SecUnProgramFilesDescription "Verwijder LyX en alle bijbehorende onderdelen."
-

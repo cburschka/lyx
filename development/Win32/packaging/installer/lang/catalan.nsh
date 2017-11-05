@@ -1,8 +1,8 @@
-!insertmacro LANGFILE_EXT "Catalan"
+ï»¿!insertmacro LANGFILE_EXT "Catalan"
 
 ${LangFileString} TEXT_INSTALL_CURRENTUSER "(Installed for Current User)"
 
-${LangFileString} TEXT_WELCOME "Aquest assistent us guiarà en la instal·lació del LyX.$\r$\n\
+${LangFileString} TEXT_WELCOME "Aquest assistent us guiarÃ  en la instalÂ·laciÃ³ del LyX.$\r$\n\
 				$\r$\n\
 				$_CLICK"
 
@@ -16,68 +16,68 @@ ${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, suppor
 ${LangFileString} FileTypeTitle "Document LyX"
 
 ${LangFileString} SecInstJabRefTitle "JabRef"
-${LangFileString} SecAllUsersTitle "Voleu instal·lar-ho per a tots els usuaris?"
-${LangFileString} SecFileAssocTitle "Associació de fitxers"
+${LangFileString} SecAllUsersTitle "Voleu instalÂ·lar-ho per a tots els usuaris?"
+${LangFileString} SecFileAssocTitle "AssociaciÃ³ de fitxers"
 ${LangFileString} SecDesktopTitle "Icona a l'escriptori"
 
 ${LangFileString} SecCoreDescription "Els fitxers del LyX."
-${LangFileString} SecInstJabRefDescription "Gestor i editor de referències bibliogràfiques per a fitxers BibTeX."
-${LangFileString} SecAllUsersDescription "Instal·la el LyX per a tots els usuaris o només per a l'usuari actual."
-${LangFileString} SecFileAssocDescription "Els fitxers amb extensió .lyx s'obriran automàticament amb el LyX."
+${LangFileString} SecInstJabRefDescription "Gestor i editor de referÃ¨ncies bibliogrÃ fiques per a fitxers BibTeX."
+${LangFileString} SecAllUsersDescription "InstalÂ·la el LyX per a tots els usuaris o nomÃ©s per a l'usuari actual."
+${LangFileString} SecFileAssocDescription "Els fitxers amb extensiÃ³ .lyx s'obriran automÃ ticament amb el LyX."
 ${LangFileString} SecDesktopDescription "Una icona del LyX a l'escriptori."
 ${LangFileString} SecDictionariesDescription "Spell-checker dictionaries that can be downloaded and installed."
 ${LangFileString} SecThesaurusDescription "Thesaurus dictionaries that can be downloaded and installed."
 
-${LangFileString} EnterLaTeXHeader1 'Distribució LaTeX'
-${LangFileString} EnterLaTeXHeader2 'Establiu la distribució LaTeX que ha de fer servir el LyX.'
-${LangFileString} EnterLaTeXFolder 'Opcionalment podeu establir aquí el camí al fitxer $\"latex.exe$\" i posteriorment establir la \
-					distribució LaTeX que el LyX ha de fer servir.\r\n\
-					Si no useu LaTeX, el LyX no podrà generar documents!\r\n\
+${LangFileString} EnterLaTeXHeader1 'DistribuciÃ³ LaTeX'
+${LangFileString} EnterLaTeXHeader2 'Establiu la distribuciÃ³ LaTeX que ha de fer servir el LyX.'
+${LangFileString} EnterLaTeXFolder 'Opcionalment podeu establir aquÃ­ el camÃ­ al fitxer $\"latex.exe$\" i posteriorment establir la \
+					distribuciÃ³ LaTeX que el LyX ha de fer servir.\r\n\
+					Si no useu LaTeX, el LyX no podrÃ  generar documents!\r\n\
 					\r\n\
-					L$\'instal·lador ha detectat la distribució LaTeX \
-					$\"$LaTeXName$\" al sistema, al camí que es mostra avall.'
-${LangFileString} EnterLaTeXFolderNone 'Indiqueu el camí al fitxer $\"latex.exe$\". Posteriorment establiu \
-					quina distribució LaTeX ha de fer servir el LyX.\r\n\
-					Si no useu LaTeX, el LyX no podrà generar documents!\r\n\
+					L$\'instalÂ·lador ha detectat la distribuciÃ³ LaTeX \
+					$\"$LaTeXName$\" al sistema, al camÃ­ que es mostra avall.'
+${LangFileString} EnterLaTeXFolderNone 'Indiqueu el camÃ­ al fitxer $\"latex.exe$\". Posteriorment establiu \
+					quina distribuciÃ³ LaTeX ha de fer servir el LyX.\r\n\
+					Si no useu LaTeX, el LyX no podrÃ  generar documents!\r\n\
 					\r\n\
-					L$\'instal·lador no ha trobat cap distribució LaTeX al sistema.'
-${LangFileString} PathName 'Camí al fitxer $\"latex.exe$\"'
+					L$\'instalÂ·lador no ha trobat cap distribuciÃ³ LaTeX al sistema.'
+${LangFileString} PathName 'CamÃ­ al fitxer $\"latex.exe$\"'
 ${LangFileString} DontUseLaTeX "No usis LaTeX"
-${LangFileString} InvalidLaTeXFolder 'El fitxer $\"latex.exe$\" no es troba al camí indicat.'
+${LangFileString} InvalidLaTeXFolder 'El fitxer $\"latex.exe$\" no es troba al camÃ­ indicat.'
 
-${LangFileString} LatexInfo 'Ara s$\'executarà l$\'instal·lador de la distribució LaTeX $\"MiKTeX$\".$\r$\n\
-				Per instal·lar el programa pitgeu el botó $\"Següent$\" a les finestres de l$\'instal·lador fins que la instal·lació comenci.$\r$\n\
+${LangFileString} LatexInfo 'Ara s$\'executarÃ  l$\'instalÂ·lador de la distribuciÃ³ LaTeX $\"MiKTeX$\".$\r$\n\
+				Per instalÂ·lar el programa pitgeu el botÃ³ $\"SegÃ¼ent$\" a les finestres de l$\'instalÂ·lador fins que la instalÂ·laciÃ³ comenci.$\r$\n\
 				$\r$\n\
-				Si us plau, useu les opcions predeterminades de l$\'instal·lador MiKTeX !!!'
-${LangFileString} LatexError1 'No s$\'ha trobat cap distribució LaTeX!$\r$\n\
-				No podeu usar el LyX sense cap distribució LaTeX, com ara $\"MiKTeX$\"!$\r$\n\
-				Es cancel·larà la instal·lació.'
+				Si us plau, useu les opcions predeterminades de l$\'instalÂ·lador MiKTeX !!!'
+${LangFileString} LatexError1 'No s$\'ha trobat cap distribuciÃ³ LaTeX!$\r$\n\
+				No podeu usar el LyX sense cap distribuciÃ³ LaTeX, com ara $\"MiKTeX$\"!$\r$\n\
+				Es cancelÂ·larÃ  la instalÂ·laciÃ³.'
 
 ${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
 ${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
 
-${LangFileString} JabRefInfo 'Ara s$\'executarà l$\'instal·lador del programa $\"JabRef$\".$\r$\n\
-				Podeu usar totes les opcions predeterminades de l$\'instal·lador del JabRef.'
-${LangFileString} JabRefError 'El programa $\"JabRef$\" no s$\'ha instal·lat correctament!$\r$\n\
-				L$\'instal·lador continuarà igualment.$\r$\n\
-				Intenteu instal·lar el JabRef altre cop més tard.'
+${LangFileString} JabRefInfo 'Ara s$\'executarÃ  l$\'instalÂ·lador del programa $\"JabRef$\".$\r$\n\
+				Podeu usar totes les opcions predeterminades de l$\'instalÂ·lador del JabRef.'
+${LangFileString} JabRefError 'El programa $\"JabRef$\" no s$\'ha instalÂ·lat correctament!$\r$\n\
+				L$\'instalÂ·lador continuarÃ  igualment.$\r$\n\
+				Intenteu instalÂ·lar el JabRef altre cop mÃ©s tard.'
 
-${LangFileString} LatexConfigInfo "La configuració següent del LyX pot trigar una mica."
+${LangFileString} LatexConfigInfo "La configuraciÃ³ segÃ¼ent del LyX pot trigar una mica."
 
 ${LangFileString} MiKTeXPathInfo "Per a que cada usuari pugui personalitzar el MiKTeX segons les seves necessitats\r$\n\
-					és necessari que la carpeta on es troba instal·lat el MiKTeK$\r$\n\
+					Ã©s necessari que la carpeta on es troba instalÂ·lat el MiKTeK$\r$\n\
 					$MiKTeXPath $\r$\n\
 					i a les seves subcarpetes tinguin permissos d'escriptura per a tots els usuaris."
-${LangFileString} MiKTeXInfo 'La distribució LaTeX $\"MiKTeX$\" conjuntament amb el LyX.$\r$\n\
-				És recomenable instal·lar les actualitzacions MiKTeX fent servir el programa $\"MiKTeX Update Wizard$\"$\r$\n\
+${LangFileString} MiKTeXInfo 'La distribuciÃ³ LaTeX $\"MiKTeX$\" conjuntament amb el LyX.$\r$\n\
+				Ã‰s recomenable instalÂ·lar les actualitzacions MiKTeX fent servir el programa $\"MiKTeX Update Wizard$\"$\r$\n\
 				abans d$\'executar el LyX per primer cop.$\r$\n\
 				Voleu comprobar ara si hi ha actualitzacions del MiKTeX?'
 
-${LangFileString} ModifyingConfigureFailed "No es pot establir 'path_prefix' durant el programa de configuració"
-${LangFileString} RunConfigureFailed "No es pot executar el programa de configuració"
-${LangFileString} NotAdmin "Necessiteu drets d'administrador per instal·lar el LyX!"
-${LangFileString} InstallRunning "L'instal·lador ja s'està executant!"
-${LangFileString} AlreadyInstalled "El LyX ${APP_SERIES_KEY2} ja es troba instal·lat!$\r$\n\
+${LangFileString} ModifyingConfigureFailed "No es pot establir 'path_prefix' durant el programa de configuraciÃ³"
+${LangFileString} RunConfigureFailed "No es pot executar el programa de configuraciÃ³"
+${LangFileString} NotAdmin "Necessiteu drets d'administrador per instalÂ·lar el LyX!"
+${LangFileString} InstallRunning "L'instalÂ·lador ja s'estÃ  executant!"
+${LangFileString} AlreadyInstalled "El LyX ${APP_SERIES_KEY2} ja es troba instalÂ·lat!$\r$\n\
 				Installing over existing installations is not recommended if the installed version$\r$\n\
 				is a test release or if you have problems with your existing LyX installation.$\r$\n\
 				In these cases better reinstall LyX.$\r$\n\
@@ -88,22 +88,21 @@ ${LangFileString} NewerInstalled "You are trying to install an older version of 
 ${LangFileString} MultipleIndexesNotAvailable "The support for using several indexes in a document will not be available because$\r$\n\
 						MiKTeX was installed with administrator privileges but you are installing LyX without them."
 
-${LangFileString} FinishPageMessage "Felicitats! Heu instal·lat correctament el LyX.$\r$\n\
+${LangFileString} FinishPageMessage "Felicitats! Heu instalÂ·lat correctament el LyX.$\r$\n\
 					$\r$\n\
-					(La primera execució del LyX pot trigar alguns segons.)"
+					(La primera execuciÃ³ del LyX pot trigar alguns segons.)"
 ${LangFileString} FinishPageRun "Executa el LyX"
 
 ${LangFileString} UnNotInRegistryLabel "No es possible trobar el LyX al registre.$\r$\n\
-					No se suprimiran les dreceres de l'escriptori i del menú inici."
+					No se suprimiran les dreceres de l'escriptori i del menÃº inici."
 ${LangFileString} UnInstallRunning "Primer heu de tancar el LyX!"
-${LangFileString} UnNotAdminLabel "Necessiteu drets d'administrador per desinstal·lar el LyX!"
+${LangFileString} UnNotAdminLabel "Necessiteu drets d'administrador per desinstalÂ·lar el LyX!"
 ${LangFileString} UnReallyRemoveLabel "Esteu segur de voler suprimir completament el LyX i tots els seus components?"
-${LangFileString} UnLyXPreferencesTitle 'Preferències d$\'usuari del LyX'
+${LangFileString} UnLyXPreferencesTitle 'PreferÃ¨ncies d$\'usuari del LyX'
 
-${LangFileString} SecUnMiKTeXDescription "Desintal·la la distribució de LaTeX MiKTeX."
-${LangFileString} SecUnJabRefDescription "Desinstal·la el gestor de bibliografia JabRef."
-${LangFileString} SecUnPreferencesDescription 'Suprimeix les carptes de configuració del LyX$\r$\n\
+${LangFileString} SecUnMiKTeXDescription "DesintalÂ·la la distribuciÃ³ de LaTeX MiKTeX."
+${LangFileString} SecUnJabRefDescription "DesinstalÂ·la el gestor de bibliografia JabRef."
+${LangFileString} SecUnPreferencesDescription 'Suprimeix les carptes de configuraciÃ³ del LyX$\r$\n\
 						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
 						de tots els usuaris.'
-${LangFileString} SecUnProgramFilesDescription "Desinstal·la el LyX i tots els seus components."
-
+${LangFileString} SecUnProgramFilesDescription "DesinstalÂ·la el LyX i tots els seus components."

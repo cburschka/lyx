@@ -1,5 +1,4 @@
-#-*-coding: windows-1250;-*-
-/*
+ï»¿/*
 LyX Installer Language File
 Language: Slovak
 Author: Kornel Benko
@@ -7,111 +6,110 @@ Author: Kornel Benko
 
 !insertmacro LANGFILE_EXT "Slovak"
 
-${LangFileString} TEXT_INSTALL_CURRENTUSER "(Inštalované pre súèasného uívate¾a)"
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(InÅ¡talovanÃ© pre sÃºÄasnÃ©ho uÅ¾Ã­vateÄ¾a)"
 
-${LangFileString} TEXT_WELCOME "Tento sprievodca Vám pomáha inštalova LyX.$\r$\n\
+${LangFileString} TEXT_WELCOME "Tento sprievodca VÃ¡m pomÃ¡ha inÅ¡talovaÅ¥ LyX.$\r$\n\
 				$\r$\n\
 				$_CLICK"
 
-#${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Aktualizácia MiKTeX-databázy súborovıch mien..."
-${LangFileString} TEXT_CONFIGURE_LYX "Konfigurácia LyXu ($LaTeXInstalled môe naèíta chıbajúce balíky, to môe trochu trva) ..."
-${LangFileString} TEXT_CONFIGURE_PYTHON "Kompilácia Python skriptov..."
+#${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "AktualizÃ¡cia MiKTeX-databÃ¡zy sÃºborovÃ½ch mien..."
+${LangFileString} TEXT_CONFIGURE_LYX "KonfigurÃ¡cia LyXu ($LaTeXInstalled mÃ´Å¾e naÄÃ­taÅ¥ chÃ½bajÃºce balÃ­ky, to mÃ´Å¾e trochu trvaÅ¥) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "KompilÃ¡cia Python skriptov..."
 
-${LangFileString} TEXT_FINISH_DESKTOP "Vytvori skratku pre pracovnú plochu"
-${LangFileString} TEXT_FINISH_WEBSITE "Navštívte lyx.org pre posledné novinky, podporu a tipy"
+${LangFileString} TEXT_FINISH_DESKTOP "VytvoriÅ¥ skratku pre pracovnÃº plochu"
+${LangFileString} TEXT_FINISH_WEBSITE "NavÅ¡tÃ­vte lyx.org pre poslednÃ© novinky, podporu a tipy"
 
-${LangFileString} FileTypeTitle "LyX dokument"
+#${LangFileString} FileTypeTitle "LyX dokument"
 
-${LangFileString} SecInstJabRefTitle "JabRef"
-${LangFileString} SecAllUsersTitle "Inštalova pre všetkıch uívate¾ov?"
-${LangFileString} SecFileAssocTitle "Asociácie súborov"
+#${LangFileString} SecInstJabRefTitle "JabRef"
+#${LangFileString} SecAllUsersTitle "InÅ¡talovaÅ¥ pre vÅ¡etkÃ½ch uÅ¾Ã­vateÄ¾ov?"
+${LangFileString} SecFileAssocTitle "AsociÃ¡cie sÃºborov"
 ${LangFileString} SecDesktopTitle "Ikona pracovnej plochy"
 
-${LangFileString} SecCoreDescription "Súbory LyXu."
-${LangFileString} SecInstJabRefDescription "Manaér pre bibliografické odkazy a editor pre BibTeX súbory."
-#${LangFileString} SecAllUsersDescription "Inštalova LyX pre všetkıch uívate¾ov alebo len pre súèasného uívate¾a."
-${LangFileString} SecFileAssocDescription "Súbory s rozšírením .lyx sa automaticky otvárajú v LyXe."
+${LangFileString} SecCoreDescription "SÃºbory LyXu."
+#${LangFileString} SecInstJabRefDescription "ManaÅ¾Ã©r pre bibliografickÃ© odkazy a editor pre BibTeX sÃºbory."
+#${LangFileString} SecAllUsersDescription "InÅ¡talovaÅ¥ LyX pre vÅ¡etkÃ½ch uÅ¾Ã­vateÄ¾ov alebo len pre sÃºÄasnÃ©ho uÅ¾Ã­vateÄ¾a."
+${LangFileString} SecFileAssocDescription "SÃºbory s rozÅ¡Ã­renÃ­m .lyx sa automaticky otvÃ¡rajÃº v LyXe."
 ${LangFileString} SecDesktopDescription "Ikona LyXa na pracovnej ploche."
-${LangFileString} SecDictionariesDescription "Slovníky pre kontrolu pravopisu ktoré mono naèíta a inštalova."
-${LangFileString} SecThesaurusDescription "Slovníky tezaura ktoré mono naèíta a inštalova."
+${LangFileString} SecDictionariesDescription "SlovnÃ­ky pre kontrolu pravopisu ktorÃ© moÅ¾no naÄÃ­taÅ¥ a inÅ¡talovaÅ¥."
+${LangFileString} SecThesaurusDescription "SlovnÃ­ky tezaura ktorÃ© moÅ¾no naÄÃ­taÅ¥ a inÅ¡talovaÅ¥."
 
-${LangFileString} EnterLaTeXHeader1 'LaTeX distribúcia'
-${LangFileString} EnterLaTeXHeader2 'Urèite LaTeX distribúciu, ktorú má LyX pouíva.'
-${LangFileString} EnterLaTeXFolder 'Tu môte nastavi cestu k $\"latex.exe$\" a tım nastavi \
-					LaTeX-distribúciu, ktorá by mala by pouívaná LyXom.\r\n\
-					Bez LaTeXu, LyX nedokáe produkova dokumenty!\r\n\
+${LangFileString} EnterLaTeXHeader1 'LaTeX distribÃºcia'
+${LangFileString} EnterLaTeXHeader2 'UrÄite LaTeX distribÃºciu, ktorÃº mÃ¡ LyX pouÅ¾Ã­vaÅ¥.'
+${LangFileString} EnterLaTeXFolder 'Tu mÃ´Å¾te nastaviÅ¥ cestu k $\"latex.exe$\" a tÃ½m nastaviÅ¥ \
+					LaTeX-distribÃºciu, ktorÃ¡ by mala byÅ¥ pouÅ¾Ã­vanÃ¡ LyXom.\r\n\
+					Bez LaTeXu, LyX nedokÃ¡Å¾e produkovaÅ¥ dokumenty!\r\n\
 					\r\n\
-					Inštalatér detegoval LaTeX-distribúciu \
-					$\"$LaTeXName$\" na vašom systéme. Dolu je zobrazená jeho cesta.'
-${LangFileString} EnterLaTeXFolderNone 'Nastavte dolu cestu k $\"latex.exe$\". Tım nastavíte, ktorá \
-					LaTeX-distribúcia má by pouívaná LyXom.\r\n\
-					Bez LaTeXu LyX nedokáe produkova dokumenty!\r\n\
+					InÅ¡talatÃ©r detegoval LaTeX-distribÃºciu \
+					$\"$LaTeXName$\" na vaÅ¡om systÃ©me. Dolu je zobrazenÃ¡ jeho cesta.'
+${LangFileString} EnterLaTeXFolderNone 'Nastavte dolu cestu k $\"latex.exe$\". TÃ½m nastavÃ­te, ktorÃ¡ \
+					LaTeX-distribÃºcia mÃ¡ byÅ¥ pouÅ¾Ã­vanÃ¡ LyXom.\r\n\
+					Bez LaTeXu LyX nedokÃ¡Å¾e produkovaÅ¥ dokumenty!\r\n\
 					\r\n\
-					Inštalatér nemohol nájs LaTeX-distribúciu na vašom systéme.'
-${LangFileString} PathName 'Cesta na súbor $\"latex.exe$\"'
-${LangFileString} DontUseLaTeX "Nepoui LaTeX"
-${LangFileString} InvalidLaTeXFolder 'Súbor $\"latex.exe$\" nie je na špecifikovanej ceste.'
+					InÅ¡talatÃ©r nemohol nÃ¡jsÅ¥ LaTeX-distribÃºciu na vaÅ¡om systÃ©me.'
+${LangFileString} PathName 'Cesta na sÃºbor $\"latex.exe$\"'
+${LangFileString} DontUseLaTeX "NepouÅ¾iÅ¥ LaTeX"
+${LangFileString} InvalidLaTeXFolder 'SÃºbor $\"latex.exe$\" nie je na Å¡pecifikovanej ceste.'
 
-${LangFileString} LatexInfo 'Teraz štartuje inštalatér LaTeX distribúcie $\"MiKTeX$\".$\r$\n\
-				Na inštalovanie programu tlaète $\"Next$\" v okne inštalátora a inštalácia zaène.$\r$\n\
+${LangFileString} LatexInfo 'Teraz Å¡tartuje inÅ¡talatÃ©r LaTeX distribÃºcie $\"MiKTeX$\".$\r$\n\
+				Na inÅ¡talovanie programu tlaÄte $\"Next$\" v okne inÅ¡talÃ¡tora aÅ¾ inÅ¡talÃ¡cia zaÄne.$\r$\n\
 				$\r$\n\
-				!!! Prosím pouite všetky štandardné monosti inštalatéra MiKTeX !!!'
+				!!! ProsÃ­m pouÅ¾ite vÅ¡etky Å¡tandardnÃ© moÅ¾nosti inÅ¡talatÃ©ra MiKTeX !!!'
 
-${LangFileString} LatexError1 'Nenašla sa iadna LaTeX-distribúcia!$\r$\n\
-				LyX sa nemôe uíva bez LaTeX distribúcie ako napríklad $\"MiKTeX$\"!$\r$\n\
-				Inštalácia sa preto zrušuje.'
+${LangFileString} LatexError1 'NenaÅ¡la sa Å¾iadna LaTeX-distribÃºcia!$\r$\n\
+				LyX sa nemÃ´Å¾e uÅ¾Ã­vaÅ¥ bez LaTeX distribÃºcie ako naprÃ­klad $\"MiKTeX$\"!$\r$\n\
+				InÅ¡talÃ¡cia sa preto zruÅ¡uje.'
 
-${LangFileString} HunspellFailed 'Naèítanie slovníka pre jazyk $\"$R3$\" zlyhalo.'
-${LangFileString} ThesaurusFailed 'Naèítanie tezaura pre jazyk $\"$R3$\" zlyhalo.'
+${LangFileString} HunspellFailed 'NaÄÃ­tanie slovnÃ­ka pre jazyk $\"$R3$\" zlyhalo.'
+${LangFileString} ThesaurusFailed 'NaÄÃ­tanie tezaura pre jazyk $\"$R3$\" zlyhalo.'
 
-${LangFileString} JabRefInfo 'Teraz sa štartuje inštalatér programu $\"JabRef$\".$\r$\n\
-				Môte poui všetky štandardné monosti inštalatéra JabRef.'
-${LangFileString} JabRefError 'Program $\"JabRef$\" nebol úspešne inštalovanı!$\r$\n\
-				Predsa inštalácia pokraèuje.$\r$\n\
-				Skúste inštalova JabRef neskôr ešte raz.'
+#${LangFileString} JabRefInfo 'Teraz sa Å¡tartuje inÅ¡talatÃ©r programu $\"JabRef$\".$\r$\n\
+#				MÃ´Å¾te pouÅ¾iÅ¥ vÅ¡etky Å¡tandardnÃ© moÅ¾nosti inÅ¡talatÃ©ra JabRef.'
+#${LangFileString} JabRefError 'Program $\"JabRef$\" nebol ÃºspeÅ¡ne inÅ¡talovanÃ½!$\r$\n\
+#				Predsa inÅ¡talÃ¡cia pokraÄuje.$\r$\n\
+#				SkÃºste inÅ¡talovaÅ¥ JabRef neskÃ´r eÅ¡te raz.'
 
-${LangFileString} LatexConfigInfo "Nasledujúca konfigurácia LyXu trochu potrvá."
+#${LangFileString} LatexConfigInfo "NasledujÃºca konfigurÃ¡cia LyXu trochu potrvÃ¡."
 
-${LangFileString} MiKTeXPathInfo "Aby kadı pouívate¾ bol neskôr schopnı pouíva MiKTeX pre svoje potreby$\r$\n\
-					je treba nastavi povolenia pre všetkıch pouívate¾ov do inštalaèného adresára MiKTeX $\r$\n\
-					$MiKTeXPath $\r$\n\
-					i podriadenıch adresárov."
-${LangFileString} MiKTeXInfo 'LaTeX-distribúcia $\"MiKTeX$\" sa bude pouíva spolu s LyXom.$\r$\n\
-				Doporuèuje sa inštalova dostupné MiKTeX aktualizácie pomocou programu $\"MiKTeX Update Wizard$\"$\r$\n\
-				pred prvım pouitím LyXu.$\r$\n\
-				Chcete teraz skontrolova MiKTeX aktualizácie?'
+#${LangFileString} MiKTeXPathInfo "Aby kaÅ¾dÃ½ pouÅ¾Ã­vateÄ¾ bol neskÃ´r schopnÃ½ pouÅ¾Ã­vaÅ¥ MiKTeX pre svoje potreby$\r$\n\
+#					je treba nastaviÅ¥ povolenia pre vÅ¡etkÃ½ch pouÅ¾Ã­vateÄ¾ov do inÅ¡talaÄnÃ©ho adresÃ¡ra MiKTeX $\r$\n\
+#					$MiKTeXPath $\r$\n\
+#					i podriadenÃ½ch adresÃ¡rov."
+${LangFileString} MiKTeXInfo 'LaTeX-distribÃºcia $\"MiKTeX$\" sa bude pouÅ¾Ã­vaÅ¥ spolu s LyXom.$\r$\n\
+				DoporuÄuje sa inÅ¡talovaÅ¥ dostupnÃ© MiKTeX aktualizÃ¡cie pomocou programu $\"MiKTeX Update Wizard$\"$\r$\n\
+				pred prvÃ½m pouÅ¾itÃ­m LyXu.$\r$\n\
+				Chcete teraz skontrolovaÅ¥ MiKTeX aktualizÃ¡cie?'
 
-${LangFileString} ModifyingConfigureFailed "Nedal sa nastavi 'path_prefix' v konfiguraènom skripte"
-#${LangFileString} RunConfigureFailed "Nedal sa spusti konfiguraènı skript"
-${LangFileString} NotAdmin "Pre inštaláciu LyXu potrebujete administrátorské práva!"
-${LangFileString} InstallRunning "Inštalaènı program u beí!"
-${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} je u inštalovanı!$\r$\n\
-				Inštalova ponad existujúce inštalácie sa nedoporuèuje keï inštalovaná verzia$\r$\n\
-				je testovné vydanie alebo keï máte problémy s existujúcou inštaláciou.$\r$\n\
-				V takıchto prípadoch je lepšie reinštalova LyX.$\r$\n\
-				Napriek tomu chcete inštalova LyX ponad existujúcu verziu?"
-${LangFileString} NewerInstalled "Pokúšate sa inštalova verziu LyXu ktorá je staršia ako tá ktorá je inštalovaná.$\r$\n\
-				  Keï to naozaj chcete, odinštalujte najprv existujúci LyX $OldVersionNumber."
+${LangFileString} ModifyingConfigureFailed "Nedal sa nastaviÅ¥ 'path_prefix' v konfiguraÄnom skripte"
+#${LangFileString} RunConfigureFailed "Nedal sa spustiÅ¥ konfiguraÄnÃ½ skript"
+${LangFileString} NotAdmin "Pre inÅ¡talÃ¡ciu LyXu potrebujete administrÃ¡torskÃ© prÃ¡va!"
+${LangFileString} InstallRunning "InÅ¡talaÄnÃ½ program uÅ¾ beÅ¾Ã­!"
+${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} je uÅ¾ inÅ¡talovanÃ½!$\r$\n\
+				InÅ¡talovaÅ¥ ponad existujÃºce inÅ¡talÃ¡cie sa nedoporuÄuje keÄ inÅ¡talovanÃ¡ verzia$\r$\n\
+				je testovnÃ© vydanie alebo keÄ mÃ¡te problÃ©my s existujÃºcou inÅ¡talÃ¡ciou.$\r$\n\
+				V takÃ½chto prÃ­padoch je lepÅ¡ie reinÅ¡talovaÅ¥ LyX.$\r$\n\
+				Napriek tomu chcete inÅ¡talovaÅ¥ LyX ponad existujÃºcu verziu?"
+${LangFileString} NewerInstalled "PokÃºÅ¡ate sa inÅ¡talovaÅ¥ verziu LyXu ktorÃ¡ je starÅ¡ia ako tÃ¡ ktorÃ¡ je inÅ¡talovanÃ¡.$\r$\n\
+				  KeÄ to naozaj chcete, odinÅ¡talujte najprv existujÃºci LyX $OldVersionNumber."
 
-${LangFileString} MultipleIndexesNotAvailable "Podpora pouívania viacerıch indexov v dokumente nebude dostupná, lebo\r$\n\
-						MiKTeX bol inštalovanı pod administrátorskımi právami a vy inštalujete LyX bez nich."
+${LangFileString} MultipleIndexesNotAvailable "Podpora pouÅ¾Ã­vania viacerÃ½ch indexov v dokumente nebude dostupnÃ¡, lebo\r$\n\
+						MiKTeX bol inÅ¡talovanÃ½ pod administrÃ¡torskÃ½mi prÃ¡vami a vy inÅ¡talujete LyX bez nich."
 
-${LangFileString} FinishPageMessage "Gratulácia! LyX bol úspešne inštalovanı.$\r$\n\
-					$\r$\n\
-					(Prvı LyX štart môe trva nieko¾ko sekúnd.)"
-${LangFileString} FinishPageRun "Spusti LyX"
+#${LangFileString} FinishPageMessage "GratulÃ¡cia! LyX bol ÃºspeÅ¡ne inÅ¡talovanÃ½.$\r$\n\
+#					$\r$\n\
+#					(PrvÃ½ LyX Å¡tart mÃ´Å¾e trvaÅ¥ niekoÄ¾ko sekÃºnd.)"
+${LangFileString} FinishPageRun "SpustiÅ¥ LyX"
 
-${LangFileString} UnNotInRegistryLabel "Nemôem nájs LyX v registre.$\r$\n\
-					Skratky na pracovnej ploche a v štartovacom Menu sa nedajú odstráni."
-${LangFileString} UnInstallRunning "Najprv treba zavrie LyX!"
-${LangFileString} UnNotAdminLabel "Pre odinštaláciu LyX potrebujete administrátorské práva!"
-${LangFileString} UnReallyRemoveLabel "Ste si istı, e chcete kompletne odinštalova LyX a všetky jeho súèiastky?"
-${LangFileString} UnLyXPreferencesTitle 'LyXove uívate¾ské nastavenia'
+${LangFileString} UnNotInRegistryLabel "NemÃ´Å¾em nÃ¡jsÅ¥ LyX v registre.$\r$\n\
+					Skratky na pracovnej ploche a v Å¡tartovacom Menu sa nedajÃº odstrÃ¡niÅ¥."
+${LangFileString} UnInstallRunning "Najprv treba zavrieÅ¥ LyX!"
+${LangFileString} UnNotAdminLabel "Pre odinÅ¡talÃ¡ciu LyX potrebujete administrÃ¡torskÃ© prÃ¡va!"
+${LangFileString} UnReallyRemoveLabel "Ste si istÃ½, Å¾e chcete kompletne odinÅ¡talovaÅ¥ LyX a vÅ¡etky jeho sÃºÄiastky?"
+${LangFileString} UnLyXPreferencesTitle 'LyXove uÅ¾Ã­vateÄ¾skÃ© nastavenia'
 
-${LangFileString} SecUnMiKTeXDescription "Odinštaluje LaTeX-distribúciu MiKTeX."
-${LangFileString} SecUnJabRefDescription "Odinštaluje manaéra bibliografie JabRef."
-${LangFileString} SecUnPreferencesDescription 'Odstráni konfiguraènı adresár LyXu $\r$\n\
+${LangFileString} SecUnMiKTeXDescription "OdinÅ¡taluje LaTeX-distribÃºciu MiKTeX."
+#${LangFileString} SecUnJabRefDescription "OdinÅ¡taluje manaÅ¾Ã©ra bibliografie JabRef."
+${LangFileString} SecUnPreferencesDescription 'OdstrÃ¡ni konfiguraÄnÃ½ adresÃ¡r LyXu $\r$\n\
 						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
-						pre všetkıch uívate¾ov (keï máte administrátorské práva).'
-${LangFileString} SecUnProgramFilesDescription "Odinštaluj LyX a všetky jeho súèiastky."
-
+						pre vÅ¡etkÃ½ch uÅ¾Ã­vateÄ¾ov (keÄ mÃ¡te administrÃ¡torskÃ© prÃ¡va).'
+${LangFileString} SecUnProgramFilesDescription "OdinÅ¡taluj LyX a vÅ¡etky jeho sÃºÄiastky."
