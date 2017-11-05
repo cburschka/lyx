@@ -1249,8 +1249,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		mathsModule->packagesTW->setCellWidget(i, 1, autoRB);
 		mathsModule->packagesTW->setCellWidget(i, 2, alwaysRB);
 		mathsModule->packagesTW->setCellWidget(i, 3, neverRB);
-		//center the table contents
-		pack->setTextAlignment(Qt::AlignHCenter);
+		//center the radio buttons
 		autoRB->setStyleSheet("margin-left:50%; margin-right:50%;");
 		alwaysRB->setStyleSheet("margin-left:50%; margin-right:50%;");
 		neverRB->setStyleSheet("margin-left:50%; margin-right:50%;");
