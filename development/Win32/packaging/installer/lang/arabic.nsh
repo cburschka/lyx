@@ -1,4 +1,4 @@
-/*
+๏ปฟ/*
 LyX Installer Language File
 Language: Arabic
 Author: Hatim Alahmady
@@ -6,108 +6,108 @@ Author: Hatim Alahmady
 
 !insertmacro LANGFILE_EXT "Arabic"
 
-${LangFileString} TEXT_INSTALL_CURRENTUSER "(สั฿ํศ แแใำสฮฯใ วแอวแํ)"
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(ุชุฑููุจ ููู…ุณุชุฎุฏู… ุงูุญุงูู)"
 
-${LangFileString} TEXT_WELCOME "ๅะว วแใำวฺฯ ำๆÝ ํัิฯ฿ ฮแวแ สั฿ํศ $(^NameDA), $\r$\n\
+${LangFileString} TEXT_WELCOME "ูุฐุง ุงูู…ุณุงุนุฏ ุณูู ูุฑุดุฏู ุฎูุงู ุชุฑููุจ $(^NameDA), $\r$\n\
 				$\r$\n\
 				$_CLICK"
 
-#${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "สอฯํห Þวฺฯษ ศํวไวส MiKTeX..."
-${LangFileString} TEXT_CONFIGURE_LYX "ึศุ แํ฿ ($LaTeXInstalled ัศใว ํไาแ วแอาใ วแใÝÞๆฯษ, ๆๅะว ำํำสÛัÞ ศฺึ วแๆÞส) ..."
-${LangFileString} TEXT_CONFIGURE_PYTHON "ศไวม ำ฿ัศสวส ศวํหๆไ..."
+#${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "ุชุญุฏูุซ ูุงุนุฏุฉ ุจูุงูุงุช MiKTeX..."
+${LangFileString} TEXT_CONFIGURE_LYX "ุถุจุท ููู ($LaTeXInstalled ุฑุจู…ุง ููุฒู ุงูุญุฒู… ุงูู…ูููุฏุฉ, ููุฐุง ุณูุณุชุบุฑู ุจุนุถ ุงูููุช) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "ุจูุงุก ุณูุฑุจุชุงุช ุจุงูุซูู..."
 
-${LangFileString} TEXT_FINISH_DESKTOP "ลไิวม วฮสีวั ำุอ วแใ฿สศ"
-${LangFileString} TEXT_FINISH_WEBSITE "าํวัษ lyx.org แใิวๅฯษ ยฮั วแวฮศวั, วแฯฺใ ๆวแรÝ฿วั"
+${LangFileString} TEXT_FINISH_DESKTOP "ุฅูุดุงุก ุงุฎุชุตุงุฑ ุณุทุญ ุงูู…ูุชุจ"
+${LangFileString} TEXT_FINISH_WEBSITE "ุฒูุงุฑุฉ lyx.org ูู…ุดุงูุฏุฉ ุขุฎุฑ ุงูุงุฎุจุงุฑ, ุงูุฏุนู… ูุงูุฃููุงุฑ"
 
-#${LangFileString} FileTypeTitle "ใำสไฯ - แํ฿"
+#${LangFileString} FileTypeTitle "ู…ุณุชูุฏ - ููู"
 
-${LangFileString} SecInstJabRefTitle "JabRef"
-#${LangFileString} SecAllUsersTitle "สั฿ํศ แ฿แ วแใำสฮฯใํไฟ"
-${LangFileString} SecFileAssocTitle "วÞสัวไ วแใแÝ"
-${LangFileString} SecDesktopTitle "ัใา ำุอ วแใ฿สศ"
+#${LangFileString} SecInstJabRefTitle "JabRef"
+#${LangFileString} SecAllUsersTitle "ุชุฑููุจ ููู ุงูู…ุณุชุฎุฏู…ููุ"
+${LangFileString} SecFileAssocTitle "ุงูุชุฑุงู ุงูู…ูู"
+${LangFileString} SecDesktopTitle "ุฑู…ุฒ ุณุทุญ ุงูู…ูุชุจ"
 
-${LangFileString} SecCoreDescription "ใแÝวส แํ฿."
-${LangFileString} SecInstJabRefDescription "ลฯวัษ หศส วแใัวฬฺ ๆใอัั ใแÝวส bibtex."
-#${LangFileString} SecAllUsersDescription "สั฿ํศ แํ฿ แๅะว วแใำสฮฯใ รใ แฬใํฺ วแใำสฮฯใํไ."
-${LangFileString} SecFileAssocDescription "วแใแÝวส ศแวอÞษ .lyx ำๆÝ สÝสอ สแÝวฦํว ศศัไวใฬ แํ฿."
-${LangFileString} SecDesktopDescription "ัใา แํใ ฺแ์ ำุอ วแใ฿สศ."
-${LangFileString} SecDictionariesDescription "Þๆวใํำ วแใฯÞÞ วแลใแวฦํ วแสํ ํใ฿ไ สไาํแๅว ๆสั฿ํศๅว."
-${LangFileString} SecThesaurusDescription "Þๆวใํำ วแใÝัฯวส วแสํ ํใ฿ไ สไาํแๅว ๆสั฿ํศๅว."
+${LangFileString} SecCoreDescription "ู…ููุงุช ููู."
+#${LangFileString} SecInstJabRefDescription "ุฅุฏุงุฑุฉ ุซุจุช ุงูู…ุฑุงุฌุน ูู…ุญุฑุฑ ู…ููุงุช bibtex."
+#${LangFileString} SecAllUsersDescription "ุชุฑููุจ ููู ููุฐุง ุงูู…ุณุชุฎุฏู… ุฃู… ูุฌู…ูุน ุงูู…ุณุชุฎุฏู…ูู."
+${LangFileString} SecFileAssocDescription "ุงูู…ููุงุช ุจูุงุญูุฉ .lyx ุณูู ุชูุชุญ ุชููุงุฆูุง ุจุจุฑูุงู…ุฌ ููู."
+${LangFileString} SecDesktopDescription "ุฑู…ุฒ ููู… ุนูู ุณุทุญ ุงูู…ูุชุจ."
+${LangFileString} SecDictionariesDescription "ููุงู…ูุณ ุงูู…ุฏูู ุงูุฅู…ูุงุฆู ุงูุชู ูู…ูู ุชูุฒูููุง ูุชุฑููุจูุง."
+${LangFileString} SecThesaurusDescription "ููุงู…ูุณ ุงูู…ูุฑุฏุงุช ุงูุชู ูู…ูู ุชูุฒูููุง ูุชุฑููุจูุง."
 
-${LangFileString} EnterLaTeXHeader1 'สๆาํฺษ - แสํ฿'
-${LangFileString} EnterLaTeXHeader2 'สฺํํไ สๆาํฺษ แสํ฿ วแสํ ํฬศ ฺแ์ แํ฿ วำสฮฯวใๅว.'
-${LangFileString} EnterLaTeXFolder 'สำสุํฺ ๅไว สฺํํไ ใำวั วแใแÝ $\"latex.exe$\" ๆศฺฯ ะแ฿ สฺํํไ \
-					สๆาํฺษ แสํ฿ วแสํ ํฬศ วำสฮฯวใๅว ใฺ แํ฿.\r\n\
-					ละว แใ สำสฮฯใ แสํ฿, แํ฿ แไ ํำสุํฺ วำสฮัวฬ วแใำสไฯวส!\r\n\
+${LangFileString} EnterLaTeXHeader1 'ุชูุฒูุนุฉ - ูุชูู'
+${LangFileString} EnterLaTeXHeader2 'ุชุนููู ุชูุฒูุนุฉ ูุชูู ุงูุชู ูุฌุจ ุนูู ููู ุงุณุชุฎุฏุงู…ูุง.'
+${LangFileString} EnterLaTeXFolder 'ุชุณุชุทูุน ููุง ุชุนููู ู…ุณุงุฑ ุงูู…ูู $\"latex.exe$\" ูุจุนุฏ ุฐูู ุชุนููู \
+					ุชูุฒูุนุฉ ูุชูู ุงูุชู ูุฌุจ ุงุณุชุฎุฏุงู…ูุง ู…ุน ููู.\r\n\
+					ุฅุฐุง ูู… ุชุณุชุฎุฏู… ูุชูู, ููู ูู ูุณุชุทูุน ุงุณุชุฎุฑุงุฌ ุงูู…ุณุชูุฏุงุช!\r\n\
 					\r\n\
-					ศัไวใฬ วแสั฿ํศ ํÝอี สๆาํฺษ แสํ฿ \
-					$\"$LaTeXName$\" Ýํ ไูวใ฿. ๆํฺัึ ใำวัๅว Ýํ วแวำÝแ.'
-${LangFileString} EnterLaTeXFolderNone 'ฺํไ Ýํ วแวำÝแ ใำวั วแใแÝ $\"latex.exe$\". ๆศฺฯ ะแ฿ ฺํไ \
-					สๆาํฺษ แสํ฿ วแสํ ำสำสฮฯใ ใฺ แํ฿.\r\n\
-					ละว แใ สำสฮฯใ แสํ฿, แํ฿ แไ ํำสุํฺ วำสฮัวฬ วแใำสไฯวส!\r\n\
+					ุจุฑูุงู…ุฌ ุงูุชุฑููุจ ููุญุต ุชูุฒูุนุฉ ูุชูู \
+					$\"$LaTeXName$\" ูู ูุธุงู…ู. ููุนุฑุถ ู…ุณุงุฑูุง ูู ุงูุงุณูู.'
+${LangFileString} EnterLaTeXFolderNone 'ุนูู ูู ุงูุงุณูู ู…ุณุงุฑ ุงูู…ูู $\"latex.exe$\". ูุจุนุฏ ุฐูู ุนูู \
+					ุชูุฒูุนุฉ ูุชูู ุงูุชู ุณุชุณุชุฎุฏู… ู…ุน ููู.\r\n\
+					ุฅุฐุง ูู… ุชุณุชุฎุฏู… ูุชูู, ููู ูู ูุณุชุทูุน ุงุณุชุฎุฑุงุฌ ุงูู…ุณุชูุฏุงุช!\r\n\
 					\r\n\
-					ศัไวใฬ วแสั฿ํศ แใ ํฺหั ฺแ์ สๆาํฺษ แสํ฿ Ýํ ไูวใ฿.'
-${LangFileString} PathName 'ใำวั วแใแÝ $\"latex.exe$\"'
-${LangFileString} DontUseLaTeX "แว สำสฮฬใ แสํ฿"
-${LangFileString} InvalidLaTeXFolder 'วแใแÝ $\"latex.exe$\" แํำ Ýํ วแใำวั วแใอฯฯ.'
+					ุจุฑูุงู…ุฌ ุงูุชุฑููุจ ูู… ูุนุซุฑ ุนูู ุชูุฒูุนุฉ ูุชูู ูู ูุธุงู…ู.'
+${LangFileString} PathName 'ู…ุณุงุฑ ุงูู…ูู $\"latex.exe$\"'
+${LangFileString} DontUseLaTeX "ูุง ุชุณุชุฎุฌู… ูุชูู"
+${LangFileString} InvalidLaTeXFolder 'ุงูู…ูู $\"latex.exe$\" ููุณ ูู ุงูู…ุณุงุฑ ุงูู…ุญุฏุฏ.'
 
-${LangFileString} LatexInfo 'ศัไวใฬ สั฿ํศ สๆาํฺษ แสํ฿ $\"MiKTeX$\" ำๆÝ ํศฯร วแยไ.$\r$\n\
-				Ýํ สั฿ํศ วแศัไวใฬ Ýึแว วไÞั าั $\"Next$\"  Ýํ ไวÝะษ วแสั฿ํศ ฺไฯใว สศฯร.$\r$\n\
+${LangFileString} LatexInfo 'ุจุฑูุงู…ุฌ ุชุฑููุจ ุชูุฒูุนุฉ ูุชูู $\"MiKTeX$\" ุณูู ูุจุฏุฃ ุงูุขู.$\r$\n\
+				ูู ุชุฑููุจ ุงูุจุฑูุงู…ุฌ ูุถูุง ุงููุฑ ุฒุฑ $\"Next$\"  ูู ูุงูุฐุฉ ุงูุชุฑููุจ ุนูุฏู…ุง ุชุจุฏุฃ.$\r$\n\
 				$\r$\n\
-				!!! Ýึแว ลฮสั ฿แ วแฮํวัวส วแวÝสัวึํษ Ýํ MiKTeX-installer !!!'
-${LangFileString} LatexError1 'แใ ํสใ วแฺหๆั ฺแ์ สๆาํฺษ แสํ฿!$\r$\n\
-				แว ํใ฿ไ วำสฮฯวใ แํ฿ ศฯๆไ ๆฬๆฯ สๆาํฺษ แสํ฿ ใหแ $\"MiKTeX$\"!$\r$\n\
-				ๆำๆÝ สแÛ์ ฺใแํษ วแสั฿ํศ.'
+				!!! ูุถูุง ุฅุฎุชุฑ ูู ุงูุฎูุงุฑุงุช ุงูุงูุชุฑุงุถูุฉ ูู MiKTeX-installer !!!'
+${LangFileString} LatexError1 'ูู… ูุชู… ุงูุนุซูุฑ ุนูู ุชูุฒูุนุฉ ูุชูู!$\r$\n\
+				ูุง ูู…ูู ุงุณุชุฎุฏุงู… ููู ุจุฏูู ูุฌูุฏ ุชูุฒูุนุฉ ูุชูู ู…ุซู $\"MiKTeX$\"!$\r$\n\
+				ูุณูู ุชูุบู ุนู…ููุฉ ุงูุชุฑููุจ.'
 
-${LangFileString} HunspellFailed 'Ýิแ สไาํแ Þวใๆำ วแแÛษ $\"$R3$\" .'
-${LangFileString} ThesaurusFailed 'Ýิแ สไาํแ Þวใๆำ ใÝัฯวส วแแÛษ $\"$R3$\" .'
+${LangFileString} HunspellFailed 'ูุดู ุชูุฒูู ูุงู…ูุณ ุงููุบุฉ $\"$R3$\" .'
+${LangFileString} ThesaurusFailed 'ูุดู ุชูุฒูู ูุงู…ูุณ ู…ูุฑุฏุงุช ุงููุบุฉ $\"$R3$\" .'
 
-${LangFileString} JabRefInfo 'ศัไวใฬ สั฿ํศ วแศัไวใฬ $\"JabRef$\" ำํศฯร.$\r$\n\
-				ํใ฿ไ฿ ลฮสํวั ฬใํฺ วแฮํวัวส วแวÝสัวึํษ Ýํ JabRef-installer.'
-${LangFileString} JabRefError 'วแศัไวใฬ $\"JabRef$\" แใ ํไฬอ สั฿ํศๅ!$\r$\n\
-				ลำสใัวั วแสั฿ํศ ฺแ์ รํ อวแ.$\r$\n\
-				อวๆแ สั฿ํศ JabRef แวอÞว.'
+#${LangFileString} JabRefInfo 'ุจุฑูุงู…ุฌ ุชุฑููุจ ุงูุจุฑูุงู…ุฌ $\"JabRef$\" ุณูุจุฏุฃ.$\r$\n\
+#				ูู…ููู ุฅุฎุชูุงุฑ ุฌู…ูุน ุงูุฎูุงุฑุงุช ุงูุงูุชุฑุงุถูุฉ ูู JabRef-installer.'
+#${LangFileString} JabRefError 'ุงูุจุฑูุงู…ุฌ $\"JabRef$\" ูู… ููุฌุญ ุชุฑููุจู!$\r$\n\
+#				ุฅุณุชู…ุฑุงุฑ ุงูุชุฑููุจ ุนูู ุฃู ุญุงู.$\r$\n\
+#				ุญุงูู ุชุฑููุจ JabRef ูุงุญูุง.'
 
-#${LangFileString} LatexConfigInfo "ึศุ แํ฿ ำํำสÛัÞ ๆÝส."
+#${LangFileString} LatexConfigInfo "ุถุจุท ููู ุณูุณุชุบุฑู ููุช."
 
-#${LangFileString} MiKTeXPathInfo "ใไ รฬแ สฮีํี MiKTeX แ฿แ ใำสฮฯใ ํฬศ$\r$\n\
-#					ํฬศ ลฺุวม ีแวอํษ วแ฿สวศษ แ฿แ วแใำสฮฯใํไ Ýํ ใฬแฯ สั฿ํศ MiKTeX$\'s  $\r$\n\
+#${LangFileString} MiKTeXPathInfo "ู…ู ุฃุฌู ุชุฎุตูุต MiKTeX ููู ู…ุณุชุฎุฏู… ูุฌุจ$\r$\n\
+#					ูุฌุจ ุฅุนุทุงุก ุตูุงุญูุฉ ุงููุชุงุจุฉ ููู ุงูู…ุณุชุฎุฏู…ูู ูู ู…ุฌูุฏ ุชุฑููุจ MiKTeX$\'s  $\r$\n\
 #					$MiKTeXPath $\r$\n\
-#					ๆวแใฬแฯวส วแÝัฺํษ."
-${LangFileString} MiKTeXInfo 'สๆาํฺษ แสํ฿ $\"MiKTeX$\" สๆาํฺษ แํ฿ ำๆÝ สำสฮฯใ รํึว ใฺ แํ฿.$\r$\n\
-				ํÝึแ สั฿ํศ สอฯํห ใวํ฿ สํ฿ำ ศวำสฮฯวใ $\"MiKTeX Update Wizard$\"$\r$\n\
-				Þศแ วำสฮฯวใ แํ฿ Ýํ รๆแ ใัษ.$\r$\n\
-				ๅแ สัÛศ ศÝอี MiKTeX updates?'
+#					ูุงูู…ุฌูุฏุงุช ุงููุฑุนูุฉ."
+${LangFileString} MiKTeXInfo 'ุชูุฒูุนุฉ ูุชูู $\"MiKTeX$\" ุชูุฒูุนุฉ ููู ุณูู ุชุณุชุฎุฏู… ุฃูุถุง ู…ุน ููู.$\r$\n\
+				ููุถู ุชุฑููุจ ุชุญุฏูุซ ู…ุงูู ุชููุณ ุจุงุณุชุฎุฏุงู… $\"MiKTeX Update Wizard$\"$\r$\n\
+				ูุจู ุงุณุชุฎุฏุงู… ููู ูู ุฃูู ู…ุฑุฉ.$\r$\n\
+				ูู ุชุฑุบุจ ุจูุญุต MiKTeX updates?'
 
-${LangFileString} ModifyingConfigureFailed "แใ สฺํไ 'path_prefix' Ýํ ำ฿ัํศส วแึศุ"
-#${LangFileString} RunConfigureFailed "แใ ํไÝะ ำ฿ัํศส วแึศุ"
-${LangFileString} InstallRunning "วแใั฿ศ ํฺใแ อวแํว!"
-${LangFileString} AlreadyInstalled "แํ฿ ${APP_SERIES_KEY2} สใ สั฿ํศๅ ศวแÝฺแ!$\r$\n\
-				วแสั฿ํศ ฺแ์ วแไำฮษ วแอวแํษ Ûํั ใÝึแ ละว ฿วไส วแไำฮษ วแอวแํษ$\r$\n\
-				สฬัํศํษ รๆ ศๅว ใิว฿แ.$\r$\n\
-				Ýํ ๅะๅ วแอวแษ ใไ วแรÝึแ ลฺวฯษ วแสั฿ํศ.$\r$\n\
-				ๅแ สัํฯ ศวแัÛใ ใไ ะแ฿ สั฿ํศ แํ฿ ฺแ์ วแไำฮษ วแอวแํษฟ"
-${LangFileString} NewerInstalled "สอวๆแ สั฿ํศ ไำฮษ แํ฿ รÞฯใ ใไ วแใๆฬๆฯษ อวแํว.$\r$\n\
-				  ละว ฿ไส สัํฯๅว ศวแสร฿ํฯ, ฺแํ฿ อะÝ วแไำฮษ วแอวแํษ $OldVersionNumber รๆแว."
+${LangFileString} ModifyingConfigureFailed "ูู… ุชุนูู 'path_prefix' ูู ุณูุฑูุจุช ุงูุถุจุท"
+#${LangFileString} RunConfigureFailed "ูู… ูููุฐ ุณูุฑูุจุช ุงูุถุจุท"
+${LangFileString} InstallRunning "ุงูู…ุฑูุจ ูุนู…ู ุญุงููุง!"
+${LangFileString} AlreadyInstalled "ููู ${APP_SERIES_KEY2} ุชู… ุชุฑููุจู ุจุงููุนู!$\r$\n\
+				ุงูุชุฑููุจ ุนูู ุงููุณุฎุฉ ุงูุญุงููุฉ ุบูุฑ ู…ูุถู ุฅุฐุง ูุงูุช ุงููุณุฎุฉ ุงูุญุงููุฉ$\r$\n\
+				ุชุฌุฑูุจูุฉ ุฃู ุจูุง ู…ุดุงูู.$\r$\n\
+				ูู ูุฐู ุงูุญุงูุฉ ู…ู ุงูุฃูุถู ุฅุนุงุฏุฉ ุงูุชุฑููุจ.$\r$\n\
+				ูู ุชุฑูุฏ ุจุงูุฑุบู… ู…ู ุฐูู ุชุฑููุจ ููู ุนูู ุงููุณุฎุฉ ุงูุญุงููุฉุ"
+${LangFileString} NewerInstalled "ุชุญุงูู ุชุฑููุจ ูุณุฎุฉ ููู ุฃูุฏู… ู…ู ุงูู…ูุฌูุฏุฉ ุญุงููุง.$\r$\n\
+				  ุฅุฐุง ููุช ุชุฑูุฏูุง ุจุงูุชุฃููุฏ, ุนููู ุญุฐู ุงููุณุฎุฉ ุงูุญุงููุฉ $OldVersionNumber ุฃููุง."
 
-${LangFileString} MultipleIndexesNotAvailable "ฯฺใ วแÝๅวัำ วแใสฺฯฯษ Ýํ วแใำสไฯ แไ ส฿ๆไ ใสๆÝัษ แรไ $\r$\n\
-						MiKTeX สใ สั฿ํศๅ ศีแวอํวส วแใฯํั ศํไใว แํ฿ สใ สั฿ํศๅ ศฯๆไๅว."
+${LangFileString} MultipleIndexesNotAvailable "ุฏุนู… ุงูููุงุฑุณ ุงูู…ุชุนุฏุฏุฉ ูู ุงูู…ุณุชูุฏ ูู ุชููู ู…ุชููุฑุฉ ูุฃู $\r$\n\
+						MiKTeX ุชู… ุชุฑููุจู ุจุตูุงุญูุงุช ุงูู…ุฏูุฑ ุจููู…ุง ููู ุชู… ุชุฑููุจู ุจุฏูููุง."
 
-#${LangFileString} FinishPageMessage "ใศัๆ฿! สใ สั฿ํศ แํ฿ ศไฬวอ.$\r$\n\
+#${LangFileString} FinishPageMessage "ู…ุจุฑูู! ุชู… ุชุฑููุจ ููู ุจูุฌุงุญ.$\r$\n\
 #					$\r$\n\
-#					(วแศฯม วแรๆแ แแํ฿ ัศใว ํำสÛัÞ หๆวไ.)"
-${LangFileString} FinishPageRun "ศฯม แํ฿"
+#					(ุงูุจุฏุก ุงูุฃูู ูููู ุฑุจู…ุง ูุณุชุบุฑู ุซูุงู.)"
+${LangFileString} FinishPageRun "ุจุฏุก ููู"
 
-${LangFileString} UnNotInRegistryLabel "แใ ํสใ วแฺหๆั ฺแ์ แํ฿ Ýํ ำฬแ วแไูวใ.$\r$\n\
-					ลฮสีวัวส ำุอ วแใ฿สศ ๆÞวฦใษ วแศฯม แใ ํสใ อะÝๅว."
-${LangFileString} UnInstallRunning "ํฬศ ลÛแวÞ แํ฿ รๆแว!"
-${LangFileString} UnNotAdminLabel "ํฬศ รไ ํ฿ๆไ แฯํ฿ ีแวอํวส วแใฯํั แ฿ํ สอะÝ แํ฿!"
-${LangFileString} UnReallyRemoveLabel "ๅแ สัÛศ ศลาวแษ แํ฿ ใฺ ฿แ ใ฿ๆไวสๅฟ"
-${LangFileString} UnLyXPreferencesTitle 'สÝึํแวส ใำสฮฯใ แํ฿'
+${LangFileString} UnNotInRegistryLabel "ูู… ูุชู… ุงูุนุซูุฑ ุนูู ููู ูู ุณุฌู ุงููุธุงู….$\r$\n\
+					ุฅุฎุชุตุงุฑุงุช ุณุทุญ ุงูู…ูุชุจ ููุงุฆู…ุฉ ุงูุจุฏุก ูู… ูุชู… ุญุฐููุง."
+${LangFileString} UnInstallRunning "ูุฌุจ ุฅุบูุงู ููู ุฃููุง!"
+${LangFileString} UnNotAdminLabel "ูุฌุจ ุฃู ูููู ูุฏูู ุตูุงุญูุงุช ุงูู…ุฏูุฑ ููู ุชุญุฐู ููู!"
+${LangFileString} UnReallyRemoveLabel "ูู ุชุฑุบุจ ุจุฅุฒุงูุฉ ููู ู…ุน ูู ู…ูููุงุชูุ"
+${LangFileString} UnLyXPreferencesTitle 'ุชูุถููุงุช ู…ุณุชุฎุฏู… ููู'
 
-${LangFileString} SecUnMiKTeXDescription "ลาวแษ สๆาํฺษ แสํ฿ MiKTeX."
-${LangFileString} SecUnJabRefDescription "ลาวแษ ใฯํั หศส วแใัวฬฺ JabRef."
-${LangFileString} SecUnPreferencesDescription 'อะÝ LyX$\'s ึศุ$\r$\n\
-						(ใฬแฯ $\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
-						แ฿ วๆ แ฿แ วแใำสฮฯใํไ (ละว ฿ไส วแใฯํั).'
-${LangFileString} SecUnProgramFilesDescription "ลาวแษ แํ฿ ใฺ ฿แ ใ฿ๆไวสๅ."
+${LangFileString} SecUnMiKTeXDescription "ุฅุฒุงูุฉ ุชูุฒูุนุฉ ูุชูู MiKTeX."
+#${LangFileString} SecUnJabRefDescription "ุฅุฒุงูุฉ ู…ุฏูุฑ ุซุจุช ุงูู…ุฑุงุฌุน JabRef."
+${LangFileString} SecUnPreferencesDescription 'ุญุฐู LyX$\'s ุถุจุท$\r$\n\
+						(ู…ุฌูุฏ $\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
+						ูู ุงู ููู ุงูู…ุณุชุฎุฏู…ูู (ุฅุฐุง ููุช ุงูู…ุฏูุฑ).'
+${LangFileString} SecUnProgramFilesDescription "ุฅุฒุงูุฉ ููู ู…ุน ูู ู…ูููุงุชู."
