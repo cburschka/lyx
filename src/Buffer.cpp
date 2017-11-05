@@ -504,10 +504,8 @@ Buffer::~Buffer()
 		// ourselves as a child.
 		d->clone_list_->erase(this);
 		// loop over children
-		Impl::BufferPositionMap::iterator it = d->children_positions.begin();
-		Impl::BufferPositionMap::iterator end = d->children_positions.end();
-		for (; it != end; ++it) {
-			Buffer * child = const_cast<Buffer *>(it->first);
+		for (auto const & p : d->children_positions) {
+			Buffer * child = const_cast<Buffer *>(p.first);
 				if (d->clone_list_->erase(child))
 					delete child;
 		}
@@ -533,10 +531,8 @@ Buffer::~Buffer()
 		d->position_to_children.clear();
 	} else {
 		// loop over children
-		Impl::BufferPositionMap::iterator it = d->children_positions.begin();
-		Impl::BufferPositionMap::iterator end = d->children_positions.end();
-		for (; it != end; ++it) {
-			Buffer * child = const_cast<Buffer *>(it->first);
+		for (auto const & p : d->children_positions) {
+			Buffer * child = const_cast<Buffer *>(p.first);
 			if (theBufferList().isLoaded(child)) {
 				if (theBufferList().isOthersChild(this, child))
 					child->setParent(0);
@@ -614,12 +610,10 @@ void Buffer::cloneWithChildren(BufferMap & bufmap, CloneList * clones) const
 	// math macro caches need to be rethought and simplified.
 	// I am not sure wether we should handle Buffer cloning here or in BufferList.
 	// Right now BufferList knows nothing about buffer clones.
-	Impl::PositionScopeBufferMap::iterator it = d->position_to_children.begin();
-	Impl::PositionScopeBufferMap::iterator end = d->position_to_children.end();
-	for (; it != end; ++it) {
-		DocIterator dit = it->first.clone(buffer_clone);
+	for (auto const & p : d->position_to_children) {
+		DocIterator dit = p.first.clone(buffer_clone);
 		dit.setBuffer(buffer_clone);
-		Buffer * child = const_cast<Buffer *>(it->second.buffer);
+		Buffer * child = const_cast<Buffer *>(p.second.buffer);
 
 		child->cloneWithChildren(bufmap, clones);
 		BufferMap::iterator const bit = bufmap.find(child);
@@ -712,10 +706,8 @@ BufferParams const & Buffer::masterParams() const
 
 	BufferParams & mparams = const_cast<Buffer *>(masterBuffer())->params();
 	// Copy child authors to the params. We need those pointers.
-	AuthorList const & child_authors = params().authors();
-	AuthorList::Authors::const_iterator it = child_authors.begin();
-	for (; it != child_authors.end(); ++it)
-		mparams.authors().record(*it);
+	for (Author const & a : params().authors())
+		mparams.authors().record(a);
 	return mparams;
 }
 
@@ -1071,10 +1063,8 @@ bool Buffer::readDocument(Lexer & lex)
 	// inform parent buffer about local macros
 	if (parent()) {
 		Buffer const * pbuf = parent();
-		UserMacroSet::const_iterator cit = usermacros.begin();
-		UserMacroSet::const_iterator end = usermacros.end();
-		for (; cit != end; ++cit)
-			pbuf->usermacros.insert(*cit);
+		for (auto const & m : usermacros)
+			pbuf->usermacros.insert(m);
 	}
 	usermacros.clear();
 	updateMacros();
@@ -1631,10 +1621,8 @@ bool Buffer::write(ostream & ofs) const
 
 	/// For each author, set 'used' to true if there is a change
 	/// by this author in the document; otherwise set it to 'false'.
-	AuthorList::Authors::const_iterator a_it = params().authors().begin();
-	AuthorList::Authors::const_iterator a_end = params().authors().end();
-	for (; a_it != a_end; ++a_it)
-		a_it->setUsed(false);
+	for (Author const & a : params().authors())
+		a.setUsed(false);
 
 	ParIterator const end = const_cast<Buffer *>(this)->par_iterator_end();
 	ParIterator it = const_cast<Buffer *>(this)->par_iterator_begin();
@@ -1917,10 +1905,10 @@ void Buffer::writeLaTeXSource(otexstream & os,
 			vector<string> pll = features.getPolyglossiaExclusiveLanguages();
 			if (!bll.empty()) {
 				docstring langs;
-				for (vector<string>::const_iterator it = bll.begin(); it != bll.end(); ++it) {
+				for (string const & sit : bll) {
 					if (!langs.empty())
 						langs += ", ";
-					langs += _(*it);
+					langs += _(sit);
 				}
 				blangs = bll.size() > 1 ?
 					    bformat(_("The languages %1$s are only supported by Babel."), langs)
@@ -1928,10 +1916,10 @@ void Buffer::writeLaTeXSource(otexstream & os,
 			}
 			if (!pll.empty()) {
 				docstring langs;
-				for (vector<string>::const_iterator it = pll.begin(); it != pll.end(); ++it) {
+				for (string const & pit : pll) {
 					if (!langs.empty())
 						langs += ", ";
-					langs += _(*it);
+					langs += _(pit);
 				}
 				plangs = pll.size() > 1 ?
 					    bformat(_("The languages %1$s are only supported by Polyglossia."), langs)
@@ -1971,10 +1959,8 @@ void Buffer::writeLaTeXSource(otexstream & os,
 		os.lastChar('\n');
 
 		// output the parent macros
-		MacroSet::iterator it = parentMacros.begin();
-		MacroSet::iterator end = parentMacros.end();
-		for (; it != end; ++it) {
-			int num_lines = (*it)->write(os.os(), true);
+		for (auto const & mac : parentMacros) {
+			int num_lines = mac->write(os.os(), true);
 			os.texrow().newlines(num_lines);
 		}
 
@@ -2313,11 +2299,9 @@ void Buffer::getLabelList(vector<docstring> & list) const
 
 	list.clear();
 	shared_ptr<Toc> toc = d->toc_backend.toc("label");
-	Toc::const_iterator toc_it = toc->begin();
-	Toc::const_iterator end = toc->end();
-	for (; toc_it != end; ++toc_it) {
-		if (toc_it->depth() == 0)
-			list.push_back(toc_it->str());
+	for (auto const & tocit : *toc) {
+		if (tocit.depth() == 0)
+			list.push_back(tocit.str());
 	}
 }
 
@@ -2784,9 +2768,7 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		vector<docstring> const branches =
 			getVectorFromString(branch_name, branch_list.separator());
 		docstring msg;
-		for (vector<docstring>::const_iterator it = branches.begin();
-		     it != branches.end(); ++it) {
-			branch_name = *it;
+		for (docstring const & branch_name : branches) {
 			Branch * branch = branch_list.find(branch_name);
 			if (branch) {
 				LYXERR0("Branch " << branch_name << " already exists.");
@@ -2946,10 +2928,8 @@ void Buffer::getLanguages(std::set<Language const *> & languages) const
 		it->getLanguages(languages);
 	// also children
 	ListOfBuffers clist = getDescendents();
-	ListOfBuffers::const_iterator cit = clist.begin();
-	ListOfBuffers::const_iterator const cen = clist.end();
-	for (; cit != cen; ++cit)
-		(*cit)->getLanguages(languages);
+	for (auto const & cit : clist)
+		cit->getLanguages(languages);
 }
 
 
@@ -3086,8 +3066,8 @@ void Buffer::markDirty()
 	DepClean::iterator it = d->dep_clean.begin();
 	DepClean::const_iterator const end = d->dep_clean.end();
 
-	for (; it != end; ++it)
-		it->second = false;
+	for (auto & depit : d->dep_clean)
+		depit.second = false;
 }
 
 
@@ -3169,10 +3149,8 @@ vector<docstring> const Buffer::prepareBibFilePaths(OutputParams const & runpara
 	// check for spaces in paths
 	bool found_space = false;
 
-	FileNamePairList::const_iterator it = bibfilelist.begin();
-	FileNamePairList::const_iterator en = bibfilelist.end();
-	for (; it != en; ++it) {
-		string utf8input = to_utf8(it->first);
+	for (auto const & bit : bibfilelist) {
+		string utf8input = to_utf8(bit.first);
 		string database =
 			prepareFileNameForLaTeX(utf8input, ".bib", runparams.nice);
 		FileName const try_in_file =
@@ -3334,10 +3312,8 @@ bool Buffer::hasChildren() const
 void Buffer::collectChildren(ListOfBuffers & clist, bool grand_children) const
 {
 	// loop over children
-	Impl::BufferPositionMap::iterator it = d->children_positions.begin();
-	Impl::BufferPositionMap::iterator end = d->children_positions.end();
-	for (; it != end; ++it) {
-		Buffer * child = const_cast<Buffer *>(it->first);
+	for (auto const & p : d->children_positions) {
+		Buffer * child = const_cast<Buffer *>(p.first);
 		// No duplicates
 		ListOfBuffers::const_iterator bit = find(clist.begin(), clist.end(), child);
 		if (bit != clist.end())
@@ -3534,17 +3510,15 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 	while (it.pit() <= lastpit) {
 		Paragraph & par = it.paragraph();
 
+		// FIXME Can this be done with the new-style iterators?
 		// iterate over the insets of the current paragraph
-		InsetList const & insets = par.insetList();
-		InsetList::const_iterator iit = insets.begin();
-		InsetList::const_iterator end = insets.end();
-		for (; iit != end; ++iit) {
-			it.pos() = iit->pos;
+		for (auto const & insit : par.insetList()) {
+			it.pos() = insit.pos;
 
 			// is it a nested text inset?
-			if (iit->inset->asInsetText()) {
+			if (insit.inset->asInsetText()) {
 				// Inset needs its own scope?
-				InsetText const * itext = iit->inset->asInsetText();
+				InsetText const * itext = insit.inset->asInsetText();
 				bool newScope = itext->isMacroScope();
 
 				// scope which ends just behind the inset
@@ -3552,14 +3526,14 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 				++insetScope.pos();
 
 				// collect macros in inset
-				it.push_back(CursorSlice(*iit->inset));
+				it.push_back(CursorSlice(*insit.inset));
 				updateMacros(it, newScope ? insetScope : scope);
 				it.pop_back();
 				continue;
 			}
 
-			if (iit->inset->asInsetTabular()) {
-				CursorSlice slice(*iit->inset);
+			if (insit.inset->asInsetTabular()) {
+				CursorSlice slice(*insit.inset);
 				size_t const numcells = slice.nargs();
 				for (; slice.idx() < numcells; slice.forwardIdx()) {
 					it.push_back(slice);
@@ -3570,10 +3544,10 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 			}
 
 			// is it an external file?
-			if (iit->inset->lyxCode() == INCLUDE_CODE) {
+			if (insit.inset->lyxCode() == INCLUDE_CODE) {
 				// get buffer of external file
 				InsetInclude const & inset =
-					static_cast<InsetInclude const &>(*iit->inset);
+					static_cast<InsetInclude const &>(*insit.inset);
 				macro_lock = true;
 				Buffer * child = inset.getChildBuffer();
 				macro_lock = false;
@@ -3591,19 +3565,19 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 				continue;
 			}
 
-			InsetMath * im = iit->inset->asInsetMath();
+			InsetMath * im = insit.inset->asInsetMath();
 			if (doing_export && im)  {
 				InsetMathHull * hull = im->asHullInset();
 				if (hull)
 					hull->recordLocation(it);
 			}
 
-			if (iit->inset->lyxCode() != MATHMACRO_CODE)
+			if (insit.inset->lyxCode() != MATHMACRO_CODE)
 				continue;
 
 			// get macro data
 			InsetMathMacroTemplate & macroTemplate =
-				*iit->inset->asInsetMath()->asMacroTemplate();
+				*insit.inset->asInsetMath()->asMacroTemplate();
 			MacroContext mc(owner_, it);
 			macroTemplate.updateToContext(mc);
 
@@ -3713,16 +3687,12 @@ void Buffer::listMacroNames(MacroNameSet & macros) const
 	d->macro_lock = true;
 
 	// loop over macro names
-	Impl::NamePositionScopeMacroMap::iterator nameIt = d->macros.begin();
-	Impl::NamePositionScopeMacroMap::iterator nameEnd = d->macros.end();
-	for (; nameIt != nameEnd; ++nameIt)
-		macros.insert(nameIt->first);
+	for (auto const & nameit : d->macros)
+		macros.insert(nameit.first);
 
 	// loop over children
-	Impl::BufferPositionMap::iterator it = d->children_positions.begin();
-	Impl::BufferPositionMap::iterator end = d->children_positions.end();
-	for (; it != end; ++it) {
-		Buffer * child = const_cast<Buffer *>(it->first);
+	for (auto const & p : d->children_positions) {
+		Buffer * child = const_cast<Buffer *>(p.first);
 		// The buffer might have been closed (see #10766).
 		if (theBufferList().isLoaded(child))
 			child->listMacroNames(macros);
@@ -3747,12 +3717,9 @@ void Buffer::listParentMacros(MacroSet & macros, LaTeXFeatures & features) const
 	pbuf->listMacroNames(names);
 
 	// resolve macros
-	MacroNameSet::iterator it = names.begin();
-	MacroNameSet::iterator end = names.end();
-	for (; it != end; ++it) {
+	for (auto const & mit : names) {
 		// defined?
-		MacroData const * data =
-		pbuf->getMacro(*it, *this, false);
+		MacroData const * data = pbuf->getMacro(mit, *this, false);
 		if (data) {
 			macros.insert(data);
 
@@ -3821,20 +3788,16 @@ void Buffer::changeRefsIfUnique(docstring const & from, docstring const & to)
 	reloadBibInfoCache();
 
 	// Check if the label 'from' appears more than once
-	BiblioInfo const & keys = masterBibInfo();
-	BiblioInfo::const_iterator bit  = keys.begin();
-	BiblioInfo::const_iterator bend = keys.end();
 	vector<docstring> labels;
-
-	for (; bit != bend; ++bit)
-		// FIXME UNICODE
-		labels.push_back(bit->first);
+	for (auto const & bibit : masterBibInfo())
+		labels.push_back(bibit.first);
 
 	if (count(labels.begin(), labels.end(), from) > 1)
 		return;
 
 	string const paramName = "key";
-	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
+	InsetIterator it = inset_iterator_begin(inset());
+	for (; it; ++it) {
 		if (it->lyxCode() != CITE_CODE)
 			continue;
 		InsetCommand * inset = it->asInsetCommand();
@@ -4185,10 +4148,8 @@ void Buffer::setExportStatus(bool e) const
 {
 	d->doing_export = e;
 	ListOfBuffers clist = getDescendents();
-	ListOfBuffers::const_iterator cit = clist.begin();
-	ListOfBuffers::const_iterator const cen = clist.end();
-	for (; cit != cen; ++cit)
-		(*cit)->d->doing_export = e;
+	for (auto const & bit : clist)
+		bit->d->doing_export = e;
 }
 
 
@@ -4272,11 +4233,10 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 		// Get shortest path to format
 		converters.buildGraph();
 		Graph::EdgePath path;
-		for (vector<string>::const_iterator it = backs.begin();
-		     it != backs.end(); ++it) {
-			Graph::EdgePath p = converters.getPath(*it, format);
+		for (string const & sit : backs) {
+			Graph::EdgePath p = converters.getPath(sit, format);
 			if (!p.empty() && (path.empty() || p.size() < path.size())) {
-				backend_format = *it;
+				backend_format = sit;
 				path = p;
 			}
 		}
@@ -4291,10 +4251,8 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 			return ExportNoPathToFormat;
 		}
 		runparams.flavor = converters.getFlavor(path, this);
-		Graph::EdgePath::const_iterator it = path.begin();
-		Graph::EdgePath::const_iterator en = path.end();
-		for (; it != en; ++it)
-			if (theConverters().get(*it).nice()) {
+		for (auto const & edge : path)
+			if (theConverters().get(edge).nice()) {
 				need_nice_file = true;
 				break;
 			}
@@ -4380,20 +4338,18 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 			errors(error_type);
 		// also to the children, in case of master-buffer-view
 		ListOfBuffers clist = getDescendents();
-		ListOfBuffers::const_iterator cit = clist.begin();
-		ListOfBuffers::const_iterator const cen = clist.end();
-		for (; cit != cen; ++cit) {
+		for (auto const & bit : clist) {
 			if (runparams.silent)
-				(*cit)->d->errorLists[error_type].clear();
+				bit->d->errorLists[error_type].clear();
 			else if (d->cloned_buffer_) {
 				// Enable reverse search by copying back the
 				// texrow object to the cloned buffer.
 				// FIXME: this is not thread safe.
-				(*cit)->d->cloned_buffer_->d->texrow = (*cit)->d->texrow;
-				(*cit)->d->cloned_buffer_->d->errorLists[error_type] =
-					(*cit)->d->errorLists[error_type];
+				bit->d->cloned_buffer_->d->texrow = bit->d->texrow;
+				bit->d->cloned_buffer_->d->errorLists[error_type] =
+					bit->d->errorLists[error_type];
 			} else
-				(*cit)->errors(error_type, true);
+				bit->errors(error_type, true);
 		}
 	}
 
@@ -4427,11 +4383,13 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 				 : force_overwrite == ALL_FILES;
 	CopyStatus status = use_force ? FORCE : SUCCESS;
 
-	vector<ExportedFile>::const_iterator it = files.begin();
-	vector<ExportedFile>::const_iterator const en = files.end();
-	for (; it != en && status != CANCEL; ++it) {
-		string const fmt = theFormats().getFormatFromFile(it->sourceName);
-		string fixedName = it->exportName;
+	for (ExportedFile const & exp : files) {
+		if (status == CANCEL) {
+			message(_("Document export cancelled."));
+			return ExportCancel;
+		}
+		string const fmt = theFormats().getFormatFromFile(exp.sourceName);
+		string fixedName = exp.exportName;
 		if (!runparams.export_folder.empty()) {
 			// Relative pathnames starting with ../ will be sanitized
 			// if exporting to a different folder
@@ -4440,16 +4398,12 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 		}
 		FileName fixedFileName = makeAbsPath(fixedName, dest);
 		fixedFileName.onlyPath().createPath();
-		status = copyFile(fmt, it->sourceName,
+		status = copyFile(fmt, exp.sourceName,
 			fixedFileName,
-			it->exportName, status == FORCE,
+			exp.exportName, status == FORCE,
 			runparams.export_folder.empty());
 	}
 
-	if (status == CANCEL) {
-		message(_("Document export cancelled."));
-		return ExportCancel;
-	}
 
 	if (tmp_result_file.exists()) {
 		// Finally copy the main file
@@ -5032,11 +4986,9 @@ void Buffer::updateBuffer(ParIterator & parit, UpdateType utype) const
 		parit->addChangesToBuffer(*this);
 
 		// now the insets
-		InsetList::const_iterator iit = parit->insetList().begin();
-		InsetList::const_iterator end = parit->insetList().end();
-		for (; iit != end; ++iit) {
-			parit.pos() = iit->pos;
-			iit->inset->updateBuffer(parit, utype);
+		for (auto const & insit : parit->insetList()) {
+			parit.pos() = insit.pos;
+			insit.inset->updateBuffer(parit, utype);
 		}
 	}
 }
@@ -5220,11 +5172,9 @@ bool Buffer::saveAs(FileName const & fn)
 
 void Buffer::checkChildBuffers()
 {
-	Impl::BufferPositionMap::iterator it = d->children_positions.begin();
-	Impl::BufferPositionMap::iterator const en = d->children_positions.end();
-	for (; it != en; ++it) {
-		DocIterator dit = it->second;
-		Buffer * cbuf = const_cast<Buffer *>(it->first);
+	for (auto const & bit : d->children_positions) {
+		DocIterator dit = bit.second;
+		Buffer * cbuf = const_cast<Buffer *>(bit.first);
 		if (!cbuf || !theBufferList().isLoaded(cbuf))
 			continue;
 		Inset * inset = dit.nextInset();
