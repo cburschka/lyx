@@ -1,7 +1,7 @@
-/*
+﻿/*
 LyX Installer Language File
 Language: English
-Author: Joost Verburg, Uwe St�hr
+Author: Joost Verburg, Uwe Stöhr
 */
 
 !insertmacro LANGFILE_EXT "English"
@@ -21,13 +21,13 @@ ${LangFileString} TEXT_FINISH_WEBSITE "Visit lyx.org for the latest news, suppor
 
 #${LangFileString} FileTypeTitle "LyX-Document"
 
-${LangFileString} SecInstJabRefTitle "JabRef"
+#${LangFileString} SecInstJabRefTitle "JabRef"
 #${LangFileString} SecAllUsersTitle "Install for all users?"
 ${LangFileString} SecFileAssocTitle "File associations"
 ${LangFileString} SecDesktopTitle "Desktop icon"
 
 ${LangFileString} SecCoreDescription "The LyX files."
-${LangFileString} SecInstJabRefDescription "Bibliography reference manager and editor for BibTeX files."
+#${LangFileString} SecInstJabRefDescription "Bibliography reference manager and editor for BibTeX files."
 #${LangFileString} SecAllUsersDescription "Install LyX for all users or just the current user."
 ${LangFileString} SecFileAssocDescription "Files with a .lyx extension will automatically open in LyX."
 ${LangFileString} SecDesktopDescription "A LyX icon on the desktop."
@@ -62,11 +62,11 @@ ${LangFileString} LatexError1 'No LaTeX-distribution could be found!$\r$\n\
 ${LangFileString} HunspellFailed 'Download of dictionary for language $\"$R3$\" failed.'
 ${LangFileString} ThesaurusFailed 'Download of thesaurus for language $\"$R3$\" failed.'
 
-${LangFileString} JabRefInfo 'Now the installer of the program $\"JabRef$\" will be launched.$\r$\n\
-				You can use all default options of the JabRef-installer.'
-${LangFileString} JabRefError 'The program $\"JabRef$\" could not successfully be installed!$\r$\n\
-				The installer will continue anyway.$\r$\n\
-				Try to install JabRef again later.'
+#${LangFileString} JabRefInfo 'Now the installer of the program $\"JabRef$\" will be launched.$\r$\n\
+#				You can use all default options of the JabRef-installer.'
+#${LangFileString} JabRefError 'The program $\"JabRef$\" could not successfully be installed!$\r$\n\
+#				The installer will continue anyway.$\r$\n\
+#				Try to install JabRef again later.'
 
 #${LangFileString} LatexConfigInfo "The following configuration of LyX will take a while."
 
@@ -106,9 +106,8 @@ ${LangFileString} UnReallyRemoveLabel "Are you sure you want to completely remov
 ${LangFileString} UnLyXPreferencesTitle 'LyX$\'s user preferences'
 
 ${LangFileString} SecUnMiKTeXDescription "Uninstalls the LaTeX-distribution MiKTeX."
-${LangFileString} SecUnJabRefDescription "Uninstalls the bibliography manager JabRef."
+#${LangFileString} SecUnJabRefDescription "Uninstalls the bibliography manager JabRef."
 ${LangFileString} SecUnPreferencesDescription 'Deletes LyX$\'s configuration$\r$\n\
 						(folder $\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
 						for you or for all users (if you are admin).'
 ${LangFileString} SecUnProgramFilesDescription "Uninstall LyX and all of its components."
-

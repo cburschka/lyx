@@ -1,4 +1,4 @@
-/*
+Ôªø/*
 
 LyX Installer Language File
 Language: Italian
@@ -14,104 +14,103 @@ ${LangFileString} TEXT_WELCOME "Verrete guidati nell'installazione di $(^NameDA)
 				$\r$\n\
 				$_CLICK"
 
-${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Aggiornamento dei file del database MiKTeX in corso..."
+#${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "Aggiornamento dei file del database MiKTeX in corso..."
 ${LangFileString} TEXT_CONFIGURE_LYX "Configurazione di LyX in corso ($LaTeXInstalled potrebbe installare i pacchetti mancanti, l'azione potrebbe richiedere qualche minuto) ..."
 ${LangFileString} TEXT_CONFIGURE_PYTHON "Compilazione degli script Python in corso..."
 
 ${LangFileString} TEXT_FINISH_DESKTOP "Crea icona sul desktop"
-${LangFileString} TEXT_FINISH_WEBSITE "Visitate lyx.org per ultime novit‡, aiuto e suggerimenti"
+${LangFileString} TEXT_FINISH_WEBSITE "Visitate lyx.org per ultime novit√†, aiuto e suggerimenti"
 
-${LangFileString} FileTypeTitle "Documento di LyX"
+#${LangFileString} FileTypeTitle "Documento di LyX"
 
-${LangFileString} SecInstJabRefTitle "JabRef"
-${LangFileString} SecAllUsersTitle "Installare per tutti gli utenti?"
+#${LangFileString} SecInstJabRefTitle "JabRef"
+#${LangFileString} SecAllUsersTitle "Installare per tutti gli utenti?"
 ${LangFileString} SecFileAssocTitle "Associazioni dei file"
 ${LangFileString} SecDesktopTitle "Icona sul Desktop"
 
 ${LangFileString} SecCoreDescription "I file di LyX."
-${LangFileString} SecInstJabRefDescription "Gestore dei riferimenti bibliografici ed editor per i files di BibTeX."
-${LangFileString} SecAllUsersDescription "Installazione LyX per tutti gli utenti o solo per l'utente attuale."
+#${LangFileString} SecInstJabRefDescription "Gestore dei riferimenti bibliografici ed editor per i files di BibTeX."
+#${LangFileString} SecAllUsersDescription "Installazione LyX per tutti gli utenti o solo per l'utente attuale."
 ${LangFileString} SecFileAssocDescription "Associa i files con estensione .lyx al programma LyX."
 ${LangFileString} SecDesktopDescription "Icona LyX sul desktop."
 ${LangFileString} SecDictionariesDescription "Dizionari per il controllo ortografico che possono essere scaricati e installati."
 ${LangFileString} SecThesaurusDescription "Dizionari dei sinonimi che possono essere scaricati e installati."
 
 ${LangFileString} EnterLaTeXHeader1 'Distribuzione di LaTeX'
-${LangFileString} EnterLaTeXHeader2 'Scegliere la distribuzione di LaTeX che LyX dovr‡ usare.'
+${LangFileString} EnterLaTeXHeader2 'Scegliere la distribuzione di LaTeX che LyX dovr√† usare.'
 ${LangFileString} EnterLaTeXFolder 'Puoi impostare qui il percorso del file $\"latex.exe$\" e impostare di conseguenza \
-					la distribuzione di LaTeX che LyX dovr‡ usare.\r\n\
-					Senza LaTeX, LyX non puÚ generare documenti!\r\n\
+					la distribuzione di LaTeX che LyX dovr√† usare.\r\n\
+					Senza LaTeX, LyX non pu√≤ generare documenti!\r\n\
 					\r\n\
 					Il programma di installazione ha rilevato la distribuzione di LaTeX \
-					$\"$LaTeXName$\" sul tuo sistema. Il suo percorso Ë riportato sotto.'
+					$\"$LaTeXName$\" sul tuo sistema. Il suo percorso √® riportato sotto.'
 ${LangFileString} EnterLaTeXFolderNone 'Imposta qui sotto il percorso del file $\"latex.exe$\". Con questo imposti quale \
-					distribuzione di LaTeX dovr‡ essere usata da LyX.\r\n\
-					Senza LaTeX, LyX non puÚ generare documenti!\r\n\
+					distribuzione di LaTeX dovr√† essere usata da LyX.\r\n\
+					Senza LaTeX, LyX non pu√≤ generare documenti!\r\n\
 					\r\n\
 					Il programma di installazione non ha trovato una distribuzione di LaTeX sul tuo sistema.'
 ${LangFileString} PathName 'Percorso del file $\"latex.exe$\"'
 ${LangFileString} DontUseLaTeX "Non usare LaTeX"
-${LangFileString} InvalidLaTeXFolder 'Il file $\"latex.exe$\" non Ë nel percorso indicato.'
+${LangFileString} InvalidLaTeXFolder 'Il file $\"latex.exe$\" non √® nel percorso indicato.'
 
-${LangFileString} LatexInfo 'Verr‡ adesso lanciato il programma di installazione della distribuzione di LateX $\"MiKTeX$\".$\r$\n\
+${LangFileString} LatexInfo 'Verr√† adesso lanciato il programma di installazione della distribuzione di LateX $\"MiKTeX$\".$\r$\n\
 				Per installare il programma premere $\"Next$\" nelle finestre di installazione fino all$\'avvio dell$\'installazione.$\r$\n\
 				$\r$\n\
 				!!! Lasciare le impostazioni di default suggerite dal programma di installazione di $\"MiKTeX$\" !!!'
 ${LangFileString} LatexError1 'Il programma non ha rilevato la presenza di alcuna distribuzione valida di LaTeX!$\r$\n\
-				LyX non puÚ funzionare senza una distribuzione LaTeX (ad es. $\"MiKTeX$\")!$\r$\n\
-				Il processo di installazione verr‡ quindi terminato.'
+				LyX non pu√≤ funzionare senza una distribuzione LaTeX (ad es. $\"MiKTeX$\")!$\r$\n\
+				Il processo di installazione verr√† quindi terminato.'
 
 ${LangFileString} HunspellFailed 'Lo scaricamento del dizionario per la lingua  $\"$R3$\" non e$\' andato a buon fine.'
 ${LangFileString} ThesaurusFailed 'Lo scaricamento dei sinonimi per la lingua $\"$R3$\" non e$\' andato a buon fine.'
 
-${LangFileString} JabRefInfo 'Verr‡ adesso lanciato il programma di installazione di $\"JabRef$\".$\r$\n\
-				Puoi usare tutte le opzioni predefinite per il programma di installazione di JabRef.'
-${LangFileString} JabRefError 'Il programma $\"JabRef$\" non Ë stato installato correttamente!$\r$\n\
-				L$\'installazione puÚ comunque proseguire.$\r$\n\
-				Si consiglia di tentare nuovamente l$\'installazione di JabRef al termine.'
+#${LangFileString} JabRefInfo 'Verr√† adesso lanciato il programma di installazione di $\"JabRef$\".$\r$\n\
+#				Puoi usare tutte le opzioni predefinite per il programma di installazione di JabRef.'
+#${LangFileString} JabRefError 'Il programma $\"JabRef$\" non √® stato installato correttamente!$\r$\n\
+#				L$\'installazione pu√≤ comunque proseguire.$\r$\n\
+#				Si consiglia di tentare nuovamente l$\'installazione di JabRef al termine.'
 
-${LangFileString} LatexConfigInfo "La seguente configurazione di LyX richieder‡ un po' di tempo."
+#${LangFileString} LatexConfigInfo "La seguente configurazione di LyX richieder√† un po' di tempo."
 
-${LangFileString} MiKTeXPathInfo "Per permettere a tutti gli utenti di personalizzare successivamente MiKTeX in base alle loro esigenze$\r$\n\
-					Ë necessario impostare i permessi di scrittura per tutti gli utenti alla cartella di installazione di MiKTeX$\r$\n\
-					$MiKTeXPath $\r$\n\
-					e alle sue sottocartelle."
-${LangFileString} MiKTeXInfo 'La distribuzione di LaTeX $\"MiKTeX$\" verr‡ usata insieme a LyX.$\r$\n\
+#${LangFileString} MiKTeXPathInfo "Per permettere a tutti gli utenti di personalizzare successivamente MiKTeX in base alle loro esigenze$\r$\n\
+#					√® necessario impostare i permessi di scrittura per tutti gli utenti alla cartella di installazione di MiKTeX$\r$\n\
+#					$MiKTeXPath $\r$\n\
+#					e alle sue sottocartelle."
+${LangFileString} MiKTeXInfo 'La distribuzione di LaTeX $\"MiKTeX$\" verr√† usata insieme a LyX.$\r$\n\
 				Si raccomanda di installare gli aggiornamenti disponibili per MiKTeX utilizzando il programma $\"MiKTeX Update Wizard$\"$\r$\n\
 				prima di usare LyX per la prima volta.$\r$\n\
 				Vuoi controllare ora la presenza di aggiornamenti per MiKTeX?'
 
 ${LangFileString} ModifyingConfigureFailed "Fallito tentativo di aggiornare 'path_prefix' nello script di configurazione"
-${LangFileString} RunConfigureFailed "Fallito tentativo di eseguire lo script di configurazione"
+#${LangFileString} RunConfigureFailed "Fallito tentativo di eseguire lo script di configurazione"
 ${LangFileString} NotAdmin "Occorrono i privilegi da amministratore per installare LyX!"
-${LangFileString} InstallRunning "Il programma di installazione Ë gi‡ in esecuzione!"
-${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} Ë gi‡ installato!$\r$\n\
-				Procedere con l'installazione su quella esistente non Ë raccomandabile se la versione version$\r$\n\
-				Ë una release di test o se avete problemi con la vostra installazione corrente di Lyx.$\r$\n\
-				In questi casi Ë preferibile installare nuovamente LyX.$\r$\n\
+${LangFileString} InstallRunning "Il programma di installazione √® gi√† in esecuzione!"
+${LangFileString} AlreadyInstalled "LyX ${APP_SERIES_KEY2} √® gi√† installato!$\r$\n\
+				Procedere con l'installazione su quella esistente non √® raccomandabile se la versione version$\r$\n\
+				√® una release di test o se avete problemi con la vostra installazione corrente di Lyx.$\r$\n\
+				In questi casi √® preferibile installare nuovamente LyX.$\r$\n\
 				Volete procedere comunque con l'installazione di LyX su quella esistente?"
 ${LangFileString} NewerInstalled "Si sta procedendo ad installare una versione di LyX precedente a quella in uso.$\r$\n\
-				  Se si vuole procedere, Ë necessario prima disinstallare la versione LyX $OldVersionNumber."
+				  Se si vuole procedere, √® necessario prima disinstallare la versione LyX $OldVersionNumber."
 
-${LangFileString} MultipleIndexesNotAvailable "Il supporto di pi˘ indici per documento non sar‡ disponibile perche'$\r$\n\
-						MiKTeX Ë stato installato con privilegi di amministratore, ma si sta procedendo a installare LyX senza questi privilegi."
+${LangFileString} MultipleIndexesNotAvailable "Il supporto di pi√π indici per documento non sar√† disponibile perche'$\r$\n\
+						MiKTeX √® stato installato con privilegi di amministratore, ma si sta procedendo a installare LyX senza questi privilegi."
 
-${LangFileString} FinishPageMessage "Congratulazioni! LyX Ë stato installato con successo.$\r$\n\
-					$\r$\n\
-					(Il primo avvio di LyX potrebbe richiedere qualche secondo in pi˘.)"
+#${LangFileString} FinishPageMessage "Congratulazioni! LyX √® stato installato con successo.$\r$\n\
+#					$\r$\n\
+#					(Il primo avvio di LyX potrebbe richiedere qualche secondo in pi√π.)"
 ${LangFileString} FinishPageRun "Lancia LyX"
 
 ${LangFileString} UnNotInRegistryLabel "Non riesco a trovare LyX nel registro.$\r$\n\
 					I collegamenti sul desktop e nel menu Start non saranno rimossi."
-${LangFileString} UnInstallRunning "» necessario chiudere LyX!"
+${LangFileString} UnInstallRunning "√à necessario chiudere LyX!"
 ${LangFileString} UnNotAdminLabel "Occorrono i privilegi da amministratore per rimuovere LyX!"
 ${LangFileString} UnReallyRemoveLabel "Siete sicuri di voler rimuovere completamente LyX e tutti i suoi componenti?"
 ${LangFileString} UnLyXPreferencesTitle 'Impostazioni personali di LyX'
 
 ${LangFileString} SecUnMiKTeXDescription 'Rimuove la distribuzione di LaTeX $\"MiKTeX$\".'
-${LangFileString} SecUnJabRefDescription "Rimuove il gestore della bibliografia JabRef."
+#${LangFileString} SecUnJabRefDescription "Rimuove il gestore della bibliografia JabRef."
 ${LangFileString} SecUnPreferencesDescription 'Elimina la cartella con la configurazione di LyX$\r$\n\
 						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
 						per tutti gli utenti.'
 ${LangFileString} SecUnProgramFilesDescription "Rimuove LyX e tutti i suoi componenti."
-

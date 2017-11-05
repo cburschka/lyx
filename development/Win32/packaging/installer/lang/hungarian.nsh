@@ -1,115 +1,114 @@
-/*
+ï»¿/*
 LyX Installer Language File
 Language: Hungarian
-Author: Szõke Sándor
+Author: SzÅ‘ke SÃ¡ndor
 */
 
 !insertmacro LANGFILE_EXT "Hungarian"
 
-${LangFileString} TEXT_INSTALL_CURRENTUSER "(Telepítve az aktuális felhasználónak)"
+${LangFileString} TEXT_INSTALL_CURRENTUSER "(TelepÃ­tve az aktuÃ¡lis felhasznÃ¡lÃ³nak)"
 
-${LangFileString} TEXT_WELCOME "A varázsló segítségével tudja telepíteni a LyX-et.$\r$\n\
+${LangFileString} TEXT_WELCOME "A varÃ¡zslÃ³ segÃ­tsÃ©gÃ©vel tudja telepÃ­teni a LyX-et.$\r$\n\
 				$\r$\n\
 				$_CLICK"
 
-${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "MiKTeX filenév adatbázis frissítése..."
-${LangFileString} TEXT_CONFIGURE_LYX "LyX beállítása ($LaTeXInstalled letöltheti a hiányzó csomagokat, ez eltarthat egy ideig) ..."
-${LangFileString} TEXT_CONFIGURE_PYTHON "Python parancsfájlok fordítása..."
+#${LangFileString} TEXT_CONFIGURE_MIKTEXFNDB "MiKTeX filenÃ©v adatbÃ¡zis frissÃ­tÃ©se..."
+${LangFileString} TEXT_CONFIGURE_LYX "LyX beÃ¡llÃ­tÃ¡sa ($LaTeXInstalled letÃ¶ltheti a hiÃ¡nyzÃ³ csomagokat, ez eltarthat egy ideig) ..."
+${LangFileString} TEXT_CONFIGURE_PYTHON "Python parancsfÃ¡jlok fordÃ­tÃ¡sa..."
 
-${LangFileString} TEXT_FINISH_DESKTOP "Indítóikon létrehozása Asztalon"
-${LangFileString} TEXT_FINISH_WEBSITE "Látogasson el a lyx.org oldalra az aktuális hírekért, támogatásért és tippekért"
+${LangFileString} TEXT_FINISH_DESKTOP "IndÃ­tÃ³ikon lÃ©trehozÃ¡sa Asztalon"
+${LangFileString} TEXT_FINISH_WEBSITE "LÃ¡togasson el a lyx.org oldalra az aktuÃ¡lis hÃ­rekÃ©rt, tÃ¡mogatÃ¡sÃ©rt Ã©s tippekÃ©rt"
 
-${LangFileString} FileTypeTitle "LyX-dokumentum"
+#${LangFileString} FileTypeTitle "LyX-dokumentum"
 
-${LangFileString} SecInstJabRefTitle "JabRef"
-${LangFileString} SecAllUsersTitle "Telepítés minden felhasználónak"
-${LangFileString} SecFileAssocTitle "Fájltársítások"
+#${LangFileString} SecInstJabRefTitle "JabRef"
+#${LangFileString} SecAllUsersTitle "TelepÃ­tÃ©s minden felhasznÃ¡lÃ³nak"
+${LangFileString} SecFileAssocTitle "FÃ¡jltÃ¡rsÃ­tÃ¡sok"
 ${LangFileString} SecDesktopTitle "Parancsikon Asztalra"
 
-${LangFileString} SecCoreDescription "A LyX futtatásához szükséges fájlok."
-${LangFileString} SecInstJabRefDescription "Irodalomjegyzék-hivatkozás szerkesztõ és kezelõ BibTeX fájlokhoz."
-${LangFileString} SecAllUsersDescription "Minden felhasználónak telepítsem vagy csak az aktuálisnak?"
-${LangFileString} SecFileAssocDescription "A .lyx kiterjesztéssel rendelkezõ fájlok megnyitása automatikusan a LyX-el történjen."
-${LangFileString} SecDesktopDescription "LyX-ikon elhelyezése az Asztalon."
-${LangFileString} SecDictionariesDescription "Helyesírás-ellenõrzõ szótárak, amiket letölthet és telepíthet."
-${LangFileString} SecThesaurusDescription "Szinoníma-szótárak, amiket letölthet és telepíthet."
+${LangFileString} SecCoreDescription "A LyX futtatÃ¡sÃ¡hoz szÃ¼ksÃ©ges fÃ¡jlok."
+#${LangFileString} SecInstJabRefDescription "IrodalomjegyzÃ©k-hivatkozÃ¡s szerkesztÅ‘ Ã©s kezelÅ‘ BibTeX fÃ¡jlokhoz."
+#${LangFileString} SecAllUsersDescription "Minden felhasznÃ¡lÃ³nak telepÃ­tsem vagy csak az aktuÃ¡lisnak?"
+${LangFileString} SecFileAssocDescription "A .lyx kiterjesztÃ©ssel rendelkezÅ‘ fÃ¡jlok megnyitÃ¡sa automatikusan a LyX-el tÃ¶rtÃ©njen."
+${LangFileString} SecDesktopDescription "LyX-ikon elhelyezÃ©se az Asztalon."
+${LangFileString} SecDictionariesDescription "HelyesÃ­rÃ¡s-ellenÅ‘rzÅ‘ szÃ³tÃ¡rak, amiket letÃ¶lthet Ã©s telepÃ­thet."
+${LangFileString} SecThesaurusDescription "SzinonÃ­ma-szÃ³tÃ¡rak, amiket letÃ¶lthet Ã©s telepÃ­thet."
 
-${LangFileString} EnterLaTeXHeader1 'LaTeX-disztribúció'
-${LangFileString} EnterLaTeXHeader2 'Adja meg a LaTeX-disztribúciót, amit a LyX-nek használnia kell.'
-${LangFileString} EnterLaTeXFolder 'Itt megadhatja az elérési útvonalat a $\"latex.exe$\" fájlhoz és ezzel meg is adja \
-					melyik LaTeX disztribúciót fogja használni a LyX.\r\n\
-					Amennyiben nem használ LaTeX-et, a LyX nem tud kimenetet készíteni!\r\n\
+${LangFileString} EnterLaTeXHeader1 'LaTeX-disztribÃºciÃ³'
+${LangFileString} EnterLaTeXHeader2 'Adja meg a LaTeX-disztribÃºciÃ³t, amit a LyX-nek hasznÃ¡lnia kell.'
+${LangFileString} EnterLaTeXFolder 'Itt megadhatja az elÃ©rÃ©si Ãºtvonalat a $\"latex.exe$\" fÃ¡jlhoz Ã©s ezzel meg is adja \
+					melyik LaTeX disztribÃºciÃ³t fogja hasznÃ¡lni a LyX.\r\n\
+					Amennyiben nem hasznÃ¡l LaTeX-et, a LyX nem tud kimenetet kÃ©szÃ­teni!\r\n\
 					\r\n\
-					A telepítõ megtalálta az ön számítógépén a \
-					$\"$LaTeXName$\" disztribúciót. Lent láthatja az elérési útvonalát.'
-${LangFileString} EnterLaTeXFolderNone 'Adja meg a használandó $\"latex.exe$\" fájl elérési útvonalát. Ezzel azt is megadja \
-					melyik LaTeX disztribúciót fogja használni a LyX.\r\n\
-					Amennyiben nem használ LaTeX-et, a LyX nem tud kimenetet készíteni!\r\n\
+					A telepÃ­tÅ‘ megtalÃ¡lta az Ã¶n szÃ¡mÃ­tÃ³gÃ©pÃ©n a \
+					$\"$LaTeXName$\" disztribÃºciÃ³t. Lent lÃ¡thatja az elÃ©rÃ©si ÃºtvonalÃ¡t.'
+${LangFileString} EnterLaTeXFolderNone 'Adja meg a hasznÃ¡landÃ³ $\"latex.exe$\" fÃ¡jl elÃ©rÃ©si ÃºtvonalÃ¡t. Ezzel azt is megadja \
+					melyik LaTeX disztribÃºciÃ³t fogja hasznÃ¡lni a LyX.\r\n\
+					Amennyiben nem hasznÃ¡l LaTeX-et, a LyX nem tud kimenetet kÃ©szÃ­teni!\r\n\
 					\r\n\
-					A telepítõ nem talált a számítógépén LaTeX disztribúciót!'
-${LangFileString} PathName 'A $\"latex.exe$\" fájl elérési útja'
-${LangFileString} DontUseLaTeX "Ne használja a LaTeX-et"
-${LangFileString} InvalidLaTeXFolder 'Nem találom a $\"latex.exe$\" fájlt, a megadott helyen.'
+					A telepÃ­tÅ‘ nem talÃ¡lt a szÃ¡mÃ­tÃ³gÃ©pÃ©n LaTeX disztribÃºciÃ³t!'
+${LangFileString} PathName 'A $\"latex.exe$\" fÃ¡jl elÃ©rÃ©si Ãºtja'
+${LangFileString} DontUseLaTeX "Ne hasznÃ¡lja a LaTeX-et"
+${LangFileString} InvalidLaTeXFolder 'Nem talÃ¡lom a $\"latex.exe$\" fÃ¡jlt, a megadott helyen.'
 
-${LangFileString} LatexInfo 'A $\"MiKteX$\" LaTeX-disztribúció telepítõjének indítása következik.$\r$\n\
-				A program telepítéséhez addig nyomkodja a $\"Következõ$\" gombot a telepítõ ablakában, amíg a telepítés el nem kezdõdik.$\r$\n\
+${LangFileString} LatexInfo 'A $\"MiKteX$\" LaTeX-disztribÃºciÃ³ telepÃ­tÅ‘jÃ©nek indÃ­tÃ¡sa kÃ¶vetkezik.$\r$\n\
+				A program telepÃ­tÃ©sÃ©hez addig nyomkodja a $\"KÃ¶vetkezÅ‘$\" gombot a telepÃ­tÅ‘ ablakÃ¡ban, amÃ­g a telepÃ­tÃ©s el nem kezdÅ‘dik.$\r$\n\
 				$\r$\n\
-				!!! Kérem használja a MikTeX-telepítõ alapértelmezett opcióit!!!'
-${LangFileString} LatexError1 'Nem találtam LaTeX-disztribúciót!$\r$\n\
-				A LyX nem használható egy LaTeX-disztibúció nélkül,(mint például a $\"MiKTeX$\")!$\r$\n\
-				Ezért a telepítés nem folytatható!'
+				!!! KÃ©rem hasznÃ¡lja a MikTeX-telepÃ­tÅ‘ alapÃ©rtelmezett opciÃ³it!!!'
+${LangFileString} LatexError1 'Nem talÃ¡ltam LaTeX-disztribÃºciÃ³t!$\r$\n\
+				A LyX nem hasznÃ¡lhatÃ³ egy LaTeX-disztibÃºciÃ³ nÃ©lkÃ¼l,(mint pÃ©ldÃ¡ul a $\"MiKTeX$\")!$\r$\n\
+				EzÃ©rt a telepÃ­tÃ©s nem folytathatÃ³!'
 
-${LangFileString} HunspellFailed 'Szótár letöltése a(z) $\"$R3$\" nyelvhez sikertelen.'
-${LangFileString} ThesaurusFailed 'Szinoníma szótár letöltése a(z) $\"$R3$\" nyelvhez sikertelen.'
+${LangFileString} HunspellFailed 'SzÃ³tÃ¡r letÃ¶ltÃ©se a(z) $\"$R3$\" nyelvhez sikertelen.'
+${LangFileString} ThesaurusFailed 'SzinonÃ­ma szÃ³tÃ¡r letÃ¶ltÃ©se a(z) $\"$R3$\" nyelvhez sikertelen.'
 
-${LangFileString} JabRefInfo 'A $\"JabRef$\" telepítõjének elindítása következik.$\r$\n\
-				Használhatja az alapértelmezett opciókat.'
-${LangFileString} JabRefError 'Nem tudom telepíteni a $\"JabRef$\" programot!$\r$\n\
-				Azonban a telepítés tovább fog folytatódni.$\r$\n\
-				Késõbb próbálja meg újra telepíteni a JabRef-et.'
+#${LangFileString} JabRefInfo 'A $\"JabRef$\" telepÃ­tÅ‘jÃ©nek elindÃ­tÃ¡sa kÃ¶vetkezik.$\r$\n\
+#				HasznÃ¡lhatja az alapÃ©rtelmezett opciÃ³kat.'
+#${LangFileString} JabRefError 'Nem tudom telepÃ­teni a $\"JabRef$\" programot!$\r$\n\
+#				Azonban a telepÃ­tÃ©s tovÃ¡bb fog folytatÃ³dni.$\r$\n\
+#				KÃ©sÅ‘bb prÃ³bÃ¡lja meg Ãºjra telepÃ­teni a JabRef-et.'
 
-${LangFileString} LatexConfigInfo "A LyX telepítés utáni beállítása hosszú idõt vehet igénybe."
+#${LangFileString} LatexConfigInfo "A LyX telepÃ­tÃ©s utÃ¡ni beÃ¡llÃ­tÃ¡sa hosszÃº idÅ‘t vehet igÃ©nybe."
 
-${LangFileString} MiKTeXPathInfo "Ahhoz, hogy a többi felhasználó is testre tudja használni a MiKTeX-et$\r$\n\
-					írás jogot kell adni minden felhasználó részére a MiKTeX alkönyvtárhoz.$\r$\n\
-					A $MiKTeXPath $\r$\n\
-					valamint alkönyvtáraihoz."
-${LangFileString} MiKTeXInfo 'A $\"MiKTeX$\" LaTeX-disztibúció lesz használva a LyX által.$\r$\n\
-				Javasolt telepíteni a MiKTeX frissítéseket a $\"MiKTeX Update Wizard$\" segítségével,$\r$\n\
-				a LyX elsõ indítása elõtt.$\r$\n\
-				Szeretné ellenõrizni a frissítéseket most?'
+#${LangFileString} MiKTeXPathInfo "Ahhoz, hogy a tÃ¶bbi felhasznÃ¡lÃ³ is testre tudja hasznÃ¡lni a MiKTeX-et$\r$\n\
+#					Ã­rÃ¡s jogot kell adni minden felhasznÃ¡lÃ³ rÃ©szÃ©re a MiKTeX alkÃ¶nyvtÃ¡rhoz.$\r$\n\
+#					A $MiKTeXPath $\r$\n\
+#					valamint alkÃ¶nyvtÃ¡raihoz."
+${LangFileString} MiKTeXInfo 'A $\"MiKTeX$\" LaTeX-disztibÃºciÃ³ lesz hasznÃ¡lva a LyX Ã¡ltal.$\r$\n\
+				Javasolt telepÃ­teni a MiKTeX frissÃ­tÃ©seket a $\"MiKTeX Update Wizard$\" segÃ­tsÃ©gÃ©vel,$\r$\n\
+				a LyX elsÅ‘ indÃ­tÃ¡sa elÅ‘tt.$\r$\n\
+				SzeretnÃ© ellenÅ‘rizni a frissÃ­tÃ©seket most?'
 
-${LangFileString} ModifyingConfigureFailed "Nem tudom beállítani a 'path_prefix'-et a configure parancsfájlban!"
-${LangFileString} RunConfigureFailed "Nem tudom végrehajtani a configure parancsfájlt!"
-${LangFileString} NotAdmin "A LyX telepítéséhez rendszergazdai jogok szükségesek!"
-${LangFileString} InstallRunning "A telepítõ már fut!"
-${LangFileString} AlreadyInstalled "A LyX ${APP_SERIES_KEY2} már teleptve van!$\r$\n\
+${LangFileString} ModifyingConfigureFailed "Nem tudom beÃ¡llÃ­tani a 'path_prefix'-et a configure parancsfÃ¡jlban!"
+#${LangFileString} RunConfigureFailed "Nem tudom vÃ©grehajtani a configure parancsfÃ¡jlt!"
+${LangFileString} NotAdmin "A LyX telepÃ­tÃ©sÃ©hez rendszergazdai jogok szÃ¼ksÃ©gesek!"
+${LangFileString} InstallRunning "A telepÃ­tÅ‘ mÃ¡r fut!"
+${LangFileString} AlreadyInstalled "A LyX ${APP_SERIES_KEY2} mÃ¡r teleptve van!$\r$\n\
 				Installing over existing installations is not recommended if the installed version$\r$\n\
 				is a test release or if you have problems with your existing LyX installation.$\r$\n\
 				In these cases better reinstall LyX.$\r$\n\
 				Dou you nevertheles want to install LyX over the existing version?"
-${LangFileString} NewerInstalled "A jelenleg telepítettnél régebbi LyX verziót próbál telepíteni.$\r$\n\
-				  Ha valóban ezt akarja, elõször el kell távolítania a meglévõ LyX $OldVersionNumber változatot."
+${LangFileString} NewerInstalled "A jelenleg telepÃ­tettnÃ©l rÃ©gebbi LyX verziÃ³t prÃ³bÃ¡l telepÃ­teni.$\r$\n\
+				  Ha valÃ³ban ezt akarja, elÅ‘szÃ¶r el kell tÃ¡volÃ­tania a meglÃ©vÅ‘ LyX $OldVersionNumber vÃ¡ltozatot."
 
-${LangFileString} MultipleIndexesNotAvailable "Bizonyos listák támogatása nem lesz elérhetõ a dokumentumokban,\r$\n\
-						mert a MiKTeX rendszergazda joggal lett telepítve, azonban a LyX-et ezen jog nélkül telepíti."
+${LangFileString} MultipleIndexesNotAvailable "Bizonyos listÃ¡k tÃ¡mogatÃ¡sa nem lesz elÃ©rhetÅ‘ a dokumentumokban,\r$\n\
+						mert a MiKTeX rendszergazda joggal lett telepÃ­tve, azonban a LyX-et ezen jog nÃ©lkÃ¼l telepÃ­ti."
 						
-${LangFileString} FinishPageMessage "Gratulálok! Sikeresen telepítette a LyX-et.$\r$\n\
-					$\r$\n\
-					(A program elsõ indítása egy kis idõt vehet igénybe...)"
-${LangFileString} FinishPageRun "LyX indítása"
+#${LangFileString} FinishPageMessage "GratulÃ¡lok! Sikeresen telepÃ­tette a LyX-et.$\r$\n\
+#					$\r$\n\
+#					(A program elsÅ‘ indÃ­tÃ¡sa egy kis idÅ‘t vehet igÃ©nybe...)"
+${LangFileString} FinishPageRun "LyX indÃ­tÃ¡sa"
 
-${LangFileString} UnNotInRegistryLabel "Nem találom a LyX-et a regisztriben.$\r$\n\
-					Az Asztalon és a Start Menüben található parancsikonok nem lesznek eltávolítva!."
-${LangFileString} UnInstallRunning "Elõször be kell zárnia a LyX-et!"
-${LangFileString} UnNotAdminLabel "A LyX eltávolításhoz rendszergazdai jogokkal kell rendelkeznie!"
-${LangFileString} UnReallyRemoveLabel "Biztosan abban, hogy el akarja távolítani a LyX-t, minden tartozékával együtt?"
-${LangFileString} UnLyXPreferencesTitle 'LyX felhasználói beállítások'
+${LangFileString} UnNotInRegistryLabel "Nem talÃ¡lom a LyX-et a regisztriben.$\r$\n\
+					Az Asztalon Ã©s a Start MenÃ¼ben talÃ¡lhatÃ³ parancsikonok nem lesznek eltÃ¡volÃ­tva!."
+${LangFileString} UnInstallRunning "ElÅ‘szÃ¶r be kell zÃ¡rnia a LyX-et!"
+${LangFileString} UnNotAdminLabel "A LyX eltÃ¡volÃ­tÃ¡shoz rendszergazdai jogokkal kell rendelkeznie!"
+${LangFileString} UnReallyRemoveLabel "Biztosan abban, hogy el akarja tÃ¡volÃ­tani a LyX-t, minden tartozÃ©kÃ¡val egyÃ¼tt?"
+${LangFileString} UnLyXPreferencesTitle 'LyX felhasznÃ¡lÃ³i beÃ¡llÃ­tÃ¡sok'
 
-${LangFileString} SecUnMiKTeXDescription "MikTeX LaTeX-disztibúció eltávolítása."
-${LangFileString} SecUnJabRefDescription "JabRef irodalomjegyzék kezelõ eltávolítása."
-${LangFileString} SecUnPreferencesDescription 'A  LyX beállítások mappa törlése$\r$\n\
+${LangFileString} SecUnMiKTeXDescription "MikTeX LaTeX-disztibÃºciÃ³ eltÃ¡volÃ­tÃ¡sa."
+#${LangFileString} SecUnJabRefDescription "JabRef irodalomjegyzÃ©k kezelÅ‘ eltÃ¡volÃ­tÃ¡sa."
+${LangFileString} SecUnPreferencesDescription 'A  LyX beÃ¡llÃ­tÃ¡sok mappa tÃ¶rlÃ©se$\r$\n\
 						$\"$AppPre\username\$AppSuff\${APP_DIR_USERDATA}$\"$\r$\n\
-						minden felhasználónál.'
-${LangFileString} SecUnProgramFilesDescription "A LyX és minden komponensének eltávolítása."
-
+						minden felhasznÃ¡lÃ³nÃ¡l.'
+${LangFileString} SecUnProgramFilesDescription "A LyX Ã©s minden komponensÃ©nek eltÃ¡volÃ­tÃ¡sa."
