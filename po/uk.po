@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2017-10-27 13:31-0400\n"
-"PO-Revision-Date: 2017-07-05 20:34+0300\n"
+"PO-Revision-Date: 2017-11-04 14:28+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.5\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 2.0\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:33
 msgid "Version"
@@ -2940,11 +2940,12 @@ msgid ""
 "Runs the LaTeX backend with the -shell-escape option (Warning: use only when "
 "really necessary)"
 msgstr ""
+"Запускає модуль LaTeX з параметром -shell-escape (увага: користуйтеся цією"
+" можливістю, лише якщо це справді потрібно)"
 
 #: src/frontends/qt4/ui/OutputUi.ui:114
-#, fuzzy
 msgid "&Allow running external programs"
-msgstr "Помилка під час спроби виконання зовнішніх команд."
+msgstr "&Дозволити запуск зовнішніх програм"
 
 #: src/frontends/qt4/ui/OutputUi.ui:121
 msgid "Enable forward/reverse search between editor and output (e.g., SyncTeX)"
@@ -3761,11 +3762,12 @@ msgid "Co&pier:"
 msgstr "&Копір:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:202
-#, fuzzy
 msgid ""
 "Specification of the default output formats when using specific LaTeX "
 "variants"
-msgstr "Вкажіть типовий формат виводу даних за використання (PDF)LaTeX"
+msgstr ""
+"Специфікація типових форматів виведення даних, якщо використовуються"
+" специфічні варіанти LaTeX"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:205
 msgid "Default Output Formats"
@@ -3776,18 +3778,17 @@ msgid "The default output format for documents using non-TeX fonts"
 msgstr "Типовий формат виведення документів-результатів з не-TeX шрифтами"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:260
-#, fuzzy
 msgid ""
 "This is the default output format for LyX documents, except for DocBook "
 "classes, documents that use non-TeX fonts and Japanese documents"
 msgstr ""
-"Типовий формат виведення документів-результатів (окрім документів з не-TeX "
-"шрифтами)"
+"Це типовий формат виведення даних для документів LyX, окрім класів DocBook,"
+" документів, які містять шрифти, які не є частиною TeX, та документів"
+" японською"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:267
-#, fuzzy
 msgid "The default output format for Japanese documents (using pLaTeX)"
-msgstr "Типовий формат виведення документів-результатів з не-TeX шрифтами"
+msgstr "Типовий формат виведення даних для документів японською (з pLaTeX)"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:274
 msgid "With n&on-TeX fonts:"
@@ -3798,9 +3799,8 @@ msgid "With &TeX fonts:"
 msgstr "Зі &шрифтами TeX:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:294
-#, fuzzy
 msgid "&Japanese:"
-msgstr "Японська"
+msgstr "&Японська:"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -7766,54 +7766,48 @@ msgid "AuthorNote"
 msgstr "ПриміткаАвтора"
 
 #: lib/layouts/acmart.layout:310
-#, fuzzy
 msgid "Note: "
-msgstr "Примітка:"
+msgstr "Примітка: "
 
 #: lib/layouts/acmart.layout:314
 msgid "ACM Volume"
 msgstr "Том ACM"
 
 #: lib/layouts/acmart.layout:316
-#, fuzzy
 msgid "Volume: "
-msgstr "Том"
+msgstr "Том: "
 
 #: lib/layouts/acmart.layout:320
 msgid "ACM Number"
 msgstr "Номер ACM"
 
 #: lib/layouts/acmart.layout:322
-#, fuzzy
 msgid "Number: "
-msgstr "Номер"
+msgstr "Номер: "
 
 #: lib/layouts/acmart.layout:326
 msgid "ACM Article"
 msgstr "Стаття ACM"
 
 #: lib/layouts/acmart.layout:328
-#, fuzzy
 msgid "Article: "
-msgstr "Стаття"
+msgstr "Стаття: "
 
 #: lib/layouts/acmart.layout:332
 msgid "ACM Year"
 msgstr "Рік ACM"
 
 #: lib/layouts/acmart.layout:334
-#, fuzzy
 msgid "Year: "
-msgstr "Рік"
+msgstr "Рік: "
 
 #: lib/layouts/acmart.layout:338
 msgid "ACM Month"
 msgstr "Місяць ACM"
 
 #: lib/layouts/acmart.layout:340
-#, fuzzy
 msgid "Month: "
-msgstr "Місяць"
+msgstr "Місяць: "
 
 #: lib/layouts/acmart.layout:344
 msgid "ACM Art Seq Num"
@@ -7828,27 +7822,24 @@ msgid "ACM Submission ID"
 msgstr "Ід. подання ACM"
 
 #: lib/layouts/acmart.layout:352
-#, fuzzy
 msgid "Submission ID: "
-msgstr "Ід. подання ACM: "
+msgstr "Ід. подання: "
 
 #: lib/layouts/acmart.layout:356
 msgid "ACM Price"
 msgstr "Ціна ACM"
 
 #: lib/layouts/acmart.layout:358
-#, fuzzy
 msgid "Price: "
-msgstr "Ціна ACM: "
+msgstr "Ціна: "
 
 #: lib/layouts/acmart.layout:362
 msgid "ACM ISBN"
 msgstr "ISBN ACM"
 
 #: lib/layouts/acmart.layout:364
-#, fuzzy
 msgid "ISBN: "
-msgstr "ISBN:"
+msgstr "ISBN: "
 
 #: lib/layouts/acmart.layout:368
 msgid "ACM DOI"
@@ -10002,24 +9993,20 @@ msgid "Right Address"
 msgstr "Адреса праворуч"
 
 #: lib/layouts/bxjsarticle.layout:3
-#, fuzzy
 msgid "Japanese Article (BXJS Class)"
-msgstr "Японська стаття (jarticle)"
+msgstr "Стаття японською (клас BXJS)"
 
 #: lib/layouts/bxjsbook.layout:3
-#, fuzzy
 msgid "Japanese Book (BXJS Class)"
-msgstr "Японська книга (jsbook)"
+msgstr "Книга японською (клас BXJS)"
 
 #: lib/layouts/bxjsreport.layout:3
-#, fuzzy
 msgid "Japanese Report (BXJS Class)"
-msgstr "Японський звіт (jreport)"
+msgstr "Звіт японською (клас BXJS)"
 
 #: lib/layouts/bxjsslide.layout:3
-#, fuzzy
 msgid "Japanese Slide (BXJS Class)"
-msgstr "Японське (pLaTeX) (JIS)"
+msgstr "Слайди японською (клас BXJS)"
 
 #: lib/layouts/changebars.module:2
 msgid "Change bars"
@@ -11511,7 +11498,6 @@ msgid "Fix LaTeX"
 msgstr "Виправлення LaTeX"
 
 #: lib/layouts/fixltx2e.module:10
-#, fuzzy
 msgid ""
 "Loads the LaTeX package fixltx2e which contains some bug fixes for LaTeX. "
 "Those fixes were not part of older LaTeX kernels because of backward "
@@ -11524,8 +11510,11 @@ msgstr ""
 "Завантажує пакунок LaTeX fixltx2e, у якому містяться деякі виправлення вад "
 "LaTeX. Ці виправлення не є частиною основного ядра LaTeX з міркувань "
 "зворотної сумісності. Якщо ви скористаєтеся цим модулем, вигляд вашого "
-"документа може змінитися під час обробки наступними версіями LaTeX, оскільки "
-"у наступних версіях можливі додаткові виправлення вад."
+"документа може змінитися під час обробки наступними версіями LaTeX, залежно"
+" від версії fixltx2e. Зауваження: у свіжих ядрах LaTeX (випущених після 1"
+" січня 2015 року) функціональні можливості fixltx2e включено до ядра, отже"
+" немає сенсу користуватися модулем fixltx2e, якщо ви користуєтеся сучасним"
+" дистрибутивом LaTeX."
 
 #: lib/layouts/fixme.module:2
 msgid "FiXme"
@@ -12805,9 +12794,8 @@ msgid "Synopsis"
 msgstr "Короткий опис"
 
 #: lib/layouts/jarticle.layout:3
-#, fuzzy
 msgid "Japanese Article (Standard Class)"
-msgstr "Стаття Beamer (стандартний клас)"
+msgstr "Стаття японською (стандартний клас)"
 
 #: lib/layouts/jasatex.layout:3
 msgid "Journal of the Acoustical Society of America (JASA)"
@@ -12842,28 +12830,24 @@ msgid "Online citation"
 msgstr "Інтерактивне цитування"
 
 #: lib/layouts/jbook.layout:3
-#, fuzzy
 msgid "Japanese Book (Standard Class)"
-msgstr "Книга (стандартний клас)"
+msgstr "Книга японською (стандартний клас)"
 
 #: lib/layouts/jgrga.layout:3
 msgid "American Geophysical Union (AGUPLUS JGR)"
 msgstr "American Geophysical Union (AGUPLUS JGR)"
 
 #: lib/layouts/jreport.layout:3
-#, fuzzy
 msgid "Japanese Report (Standard Class)"
-msgstr "Звіт (стандартний клас)"
+msgstr "Звіт японською (стандартний клас)"
 
 #: lib/layouts/jsarticle.layout:3
-#, fuzzy
 msgid "Japanese Article (JS Class)"
-msgstr "Японська стаття (jarticle)"
+msgstr "Стаття японською (клас JS)"
 
 #: lib/layouts/jsbook.layout:3
-#, fuzzy
 msgid "Japanese Book (JS Class)"
-msgstr "Японська книга (jsbook)"
+msgstr "Книга японською (клас JS)"
 
 #: lib/layouts/jss.layout:3
 msgid "Journal of Statistical Software (JSS) version 2"
@@ -15741,9 +15725,8 @@ msgid "Title*"
 msgstr "Заголовок*"
 
 #: lib/layouts/svmult.layout:37
-#, fuzzy
 msgid "Title*:"
-msgstr "Заголовок*: "
+msgstr "Заголовок*:"
 
 #: lib/layouts/svmult.layout:66 lib/layouts/svmult.layout:151
 msgid "Contributors"
@@ -15801,14 +15784,12 @@ msgstr ""
 "номер розділу. Приклад: (2.1)."
 
 #: lib/layouts/tarticle.layout:3
-#, fuzzy
 msgid "Japanese Article (Standard Class: Vertical Writing)"
-msgstr "Японська стаття (вертикальний запис)"
+msgstr "Стаття японською (стандартний клас: вертикальний запис)"
 
 #: lib/layouts/tbook.layout:3
-#, fuzzy
 msgid "Japanese Book (Standard Class: Vertical Writing)"
-msgstr "Японська книга (вертикальний запис)"
+msgstr "Книга японською (стандартний клас: вертикальний запис)"
 
 #: lib/layouts/tcolorbox.module:2
 msgid "Fancy Colored Boxes"
@@ -24615,32 +24596,28 @@ msgid "NoWeb|N"
 msgstr "NoWeb|N"
 
 #: lib/configure.py:650
-#, fuzzy
 msgid "Sweave (Japanese)"
-msgstr "Параметри Sweave"
+msgstr "Sweave (японською)"
 
 #: lib/configure.py:650
-#, fuzzy
 msgid "Sweave (Japanese)|S"
-msgstr "Підручник зі Sweave|S"
+msgstr "Sweave (японською)|S"
 
 #: lib/configure.py:651
 msgid "R/S code"
 msgstr "Код R/S"
 
 #: lib/configure.py:653
-#, fuzzy
 msgid "Rnw (knitr, Japanese)"
-msgstr "Rnw (knitr)"
+msgstr "Rnw (knitr, японською)"
 
 #: lib/configure.py:654
 msgid "LilyPond book (LaTeX)"
 msgstr "Книга LilyPond (LaTeX)"
 
 #: lib/configure.py:655
-#, fuzzy
 msgid "LilyPond book (pLaTeX)"
-msgstr "Книга LilyPond (LaTeX)"
+msgstr "Книга LilyPond (pLaTeX)"
 
 #: lib/configure.py:656
 msgid "LaTeX (plain)"
@@ -26400,27 +26377,33 @@ msgid ""
 "support offered by LyX for allowing this privilege only to documents that "
 "actually need it, instead.</p>"
 msgstr ""
+"<p>Вказаний нижче модуль LaTeX було налаштовано так, щоб він дозволяв"
+" виконання зовнішньої програми для будь-якого документа:</p><center><p><tt>"
+"%1$s</tt></p></"
+"center><p>Виконання зовнішніх програм пов'язано із небезпекою. Будь ласка,"
+" намагайтеся користуватися такими налаштуваннями у LyX лише для документів,"
+" які справді цього потребують.</p>"
 
 #: src/Converter.cpp:303
-#, fuzzy
 msgid "Security Warning"
-msgstr "Наступне п&опередження"
+msgstr "Попередження щодо небезпеки"
 
 #: src/Converter.cpp:316
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "<p>The following LaTeX backend has been requested to allow execution of "
 "external programs:</p><center><p><tt>%1$s</tt></p></center><p>The external "
 "programs can execute arbitrary commands on your system, including dangerous "
 "ones, if instructed to do so by a maliciously crafted LyX document.</p>"
 msgstr ""
-"<p>Потрібна вам дія вимагає використання засобу перетворення з %2$s на %3$s:"
-"</p><blockquote><p><tt>%1$s</tt></p></blockquote><p>Ця зовнішня програма "
-"може виконувати у вашій системі будь-які дії, зокрема небезпечні для даних, "
-"якщо у відповідному документі .lyx зловмисник визначить шкідливі команди.</p>"
+"<p>Вказаним нижче модулем LaTeX надіслано запит щодо дозволу на виконання"
+" зовнішньої програми:</p><center><p><tt>%1$s</tt></p></center><p>Зовнішні"
+" програми можуть виконувати у вашій системі довільні команди, зокрема"
+" небезпечні, якщо у спеціально створеному зловмисниками документі LyX"
+" містяться відповідні команди.</p>"
 
 #: src/Converter.cpp:323
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "<p>The requested operation requires the use of a converter from %2$s to %3$s:"
 "</p><blockquote><p><tt>%1$s</tt></p></blockquote><p>This external program "
@@ -26430,7 +26413,7 @@ msgstr ""
 "<p>Потрібна вам дія вимагає використання засобу перетворення з %2$s на %3$s:"
 "</p><blockquote><p><tt>%1$s</tt></p></blockquote><p>Ця зовнішня програма "
 "може виконувати у вашій системі будь-які дії, зокрема небезпечні для даних, "
-"якщо у відповідному документі .lyx зловмисник визначить шкідливі команди.</p>"
+"якщо у відповідному документі LyX зловмисник визначить шкідливі команди.</p>"
 
 #: src/Converter.cpp:333
 msgid "An external converter is disabled for security reasons"
@@ -26449,22 +26432,21 @@ msgstr ""
 "Заборонити перетворення needauth</i>.)"
 
 #: src/Converter.cpp:344
-#, fuzzy
 msgid "A LaTeX backend requires your authorization"
-msgstr "Зовнішній засіб перетворення потребує розпізнавання користувача"
+msgstr "Модуль LaTeX потребує вашого уповноваження"
 
 #: src/Converter.cpp:345
 msgid "An external converter requires your authorization"
 msgstr "Зовнішній засіб перетворення потребує розпізнавання користувача"
 
 #: src/Converter.cpp:348
-#, fuzzy
 msgid ""
 "<p>Should LaTeX backends be allowed to run external programs?</p><p><b>Allow "
 "them only if you trust the origin/sender of the LyX document!</b></p>"
 msgstr ""
-"<p>Хочете скористатися цим засобом перетворення?</p><p><b>Запускайте його, "
-"лише якщо ви довіряєте походженню або відправнику документа LyX!</b></p>"
+"<p>Чи слід дозволяти модулям LaTeX запускати зовнішні програми?</p><p><b"
+">Надавайте такий дозвіл, лише якщо ви повністю довіряєте походженню та"
+" відправнику документа LyX!</b></p>"
 
 #: src/Converter.cpp:351
 msgid ""
@@ -26475,27 +26457,24 @@ msgstr ""
 "лише якщо ви довіряєте походженню або відправнику документа LyX!</b></p>"
 
 #: src/Converter.cpp:355
-#, fuzzy
 msgid "Do &not allow"
-msgstr "Не завантажувати"
+msgstr "&Не дозволяти"
 
 #: src/Converter.cpp:355
 msgid "Do &not run"
 msgstr "&Не виконувати"
 
 #: src/Converter.cpp:356
-#, fuzzy
 msgid "A&llow"
-msgstr "жовтий"
+msgstr "&Дозволити"
 
 #: src/Converter.cpp:356
 msgid "&Run"
 msgstr "&Виконати"
 
 #: src/Converter.cpp:358
-#, fuzzy
 msgid "&Always allow for this document"
-msgstr "&Завжди виконувати для цього документа"
+msgstr "&Завжди дозволяти для цього документа"
 
 #: src/Converter.cpp:359
 msgid "&Always run for this document"
@@ -28929,9 +28908,8 @@ msgstr ""
 "базою даних, це саме те місце, де вам слід її зберігати."
 
 #: src/frontends/qt4/GuiBibtex.cpp:309
-#, fuzzy
 msgid "Biblatex Bibliography"
-msgstr "Бібліографія BibTeX"
+msgstr "Бібліографія Biblatex"
 
 #: src/frontends/qt4/GuiBibtex.cpp:345 src/insets/InsetBibtex.cpp:237
 msgid "all reference units"
@@ -30491,7 +30469,7 @@ msgstr "Перетворювачі"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1890
 msgid "SECURITY WARNING!"
-msgstr ""
+msgstr "ПОПЕРЕДЖЕННЯ ЩОДО НЕБЕЗПЕКИ!"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1890
 msgid ""
@@ -30500,6 +30478,11 @@ msgid ""
 "recommended, unless you know what you are doing. Are you sure you would like "
 "to proceed ? The recommended and safe answer is NO!"
 msgstr ""
+"Якщо ви знімете позначення з цього пункту, потенційно небезпечні програми"
+" запускатимуться без вашого дозволу. Запуск таких програм є НЕБЕЗПЕЧНИМ, ми"
+" НЕ РЕКОМЕНДУЄМО так робити, якщо ви не впевнені повністю щодо результатів"
+" роботи цих програм. Ви справді хочете продовжити роботу із вказаними вами"
+" налаштуваннями? Рекомендованою безпечною відповіддю є відповідь «НІ!»"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2010
 msgid "File Formats"
@@ -31141,6 +31124,8 @@ msgid ""
 "WARNING: LaTeX is allowed to execute external commands for this document. "
 "Right click to change."
 msgstr ""
+"УВАГА: LaTeX дозволено виконувати зовнішні команди у цьому документі."
+" Клацніть правою кнопкою миші, щоб скасувати цей дозвіл."
 
 #: src/frontends/qt4/GuiView.cpp:687
 #, c-format
@@ -31600,11 +31585,11 @@ msgstr "Всі документи збережено."
 
 #: src/frontends/qt4/GuiView.cpp:3913
 msgid "Developer mode is now enabled."
-msgstr ""
+msgstr "Тепер режим розробника увімкнено."
 
 #: src/frontends/qt4/GuiView.cpp:3915
 msgid "Developer mode is now disabled."
-msgstr ""
+msgstr "Тепер режим розробника вимкнено."
 
 #: src/frontends/qt4/GuiView.cpp:3939
 msgid "Toolbars unlocked."
@@ -31625,9 +31610,8 @@ msgid "%1$s unknown command!"
 msgstr "%1$s невідома команда!"
 
 #: src/frontends/qt4/GuiView.cpp:4148
-#, fuzzy
 msgid "Zoom level is now %1$d% (default value: %2$d%)"
-msgstr "Поточний масштаб — %1$d%"
+msgstr "Поточний масштаб — %1$d% (типове значення: %2$d%)"
 
 #: src/frontends/qt4/GuiView.cpp:4204
 msgid "Please, preview the document first."
@@ -31639,7 +31623,7 @@ msgstr "Не вдалося продовжити."
 
 #: src/frontends/qt4/GuiView.cpp:4698
 msgid "Disable Shell Escape"
-msgstr ""
+msgstr "Вимкнути екранування у командах оболонки"
 
 #: src/frontends/qt4/GuiViewSource.cpp:402
 #: src/frontends/qt4/GuiViewSource.cpp:456
