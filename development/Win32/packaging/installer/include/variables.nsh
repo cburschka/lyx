@@ -28,9 +28,6 @@ Var GnumericPath
 Var ImageEditor
 Var ImageEditorPath
 Var Is64bit
-!if ${SETUPTYPE} == BUNDLE
- Var InstallJabRef
-!endif
 Var JabRefInstalled
 Var LaTeXName
 Var LaTeXInstalled

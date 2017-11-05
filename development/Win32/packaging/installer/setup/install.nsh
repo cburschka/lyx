@@ -69,7 +69,7 @@ Section -ProgramFiles SecProgramFiles
   
   !if ${SETUPTYPE} == BUNDLE
    
-   # extract the Jabref and MiKTeX installer
+   # extract the MiKTeX installer
    File /r "${FILES_LYX}\external"
 
    # install MiKTeX if not already installed
@@ -129,52 +129,13 @@ Section -ProgramFiles SecProgramFiles
    StrCpy $GhostscriptPath "$INSTDIR\ghostscript\bin"
   ${endif}
   
-  !if ${SETUPTYPE} == BUNDLE
+  # install eLyXer
+  SetOutPath "$INSTDIR\Python\Lib"
+  !insertmacro FileListeLyXer File "${FILES_ELYXER}\"
    
-   # install JabRef if not already installed, the user selected it
-   # and if no BibTeX editor is installed
-   ${if} $PathBibTeXEditor == ""
-   ${andif} $InstallJabRef == "true"
-    # launch installer
-    MessageBox MB_OK|MB_ICONINFORMATION "$(JabRefInfo)" /SD IDOK
-    IfSilent 0 +2
-    ExecWait "$INSTDIR\${JabRefInstall} /S"
-    ExecWait "$INSTDIR\${JabRefInstall}"
-    # test if JabRef is now installed
-    StrCpy $PathBibTeXEditor ""
-    ${if} $MultiUser.Privileges == "Admin"
-     ${orif} $MultiUser.Privileges == "Power"
-     ReadRegStr $PathBibTeXEditor HKLM "Software\JabRef" "Path"
-    ${else}
-     ReadRegStr $PathBibTeXEditor HKCU "Software\JabRef" "Path"
-     ${ifnot} ${FileExists} "$PathBibTeXEditor\${BIN_BIBTEXEDITOR}"
-      StrCpy $PathBibTeXEditor ""
-     ${endif}
-    ${endif}
-    ${if} $PathBibTeXEditor == ""
-     MessageBox MB_OK|MB_ICONEXCLAMATION "$(JabRefError)" /SD IDOK
-    ${else}
-     # special entry that it was installed together with LyX
-     # so that we can later uninstall it together with LyX
-     ${if} $MultiUser.Privileges == "Admin"
-     ${orif} $MultiUser.Privileges == "Power"
-      WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
-      WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef" "UninstallString" "$PathBibTeXEditor\uninstall.exe"
-     ${else}
-      WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef" "OnlyWithLyX" "Yes${APP_SERIES_KEY}"
-      WriteRegStr HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef" "UninstallString" "$PathBibTeXEditor\uninstall.exe"
-     ${endif}
-    ${endif}
-   ${endif} # end if PathBibTeXEditor
-  !endif # end if BUNDLE
-  
-   # install eLyXer
-   SetOutPath "$INSTDIR\Python\Lib"
-   !insertmacro FileListeLyXer File "${FILES_ELYXER}\"
-   
-   # install unoconv
-   SetOutPath "$INSTDIR\Python\Lib"
-   !insertmacro FileListUnoConv File "${FILES_UNOCONV}\"
+  # install unoconv
+  SetOutPath "$INSTDIR\Python\Lib"
+  !insertmacro FileListUnoConv File "${FILES_UNOCONV}\"
 
   # install the LaTeX class files that are delivered with LyX to MiKTeX
   # and enable MiKTeX's automatic package installation

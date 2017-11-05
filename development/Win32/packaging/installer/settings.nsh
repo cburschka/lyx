@@ -51,11 +51,9 @@ These typically need to be modified for each LyX release
 !define MiKTeXRepo "ftp://ftp.fernuni-hagen.de/pub/mirrors/www.ctan.org/systems/win32/miktex/tm/packages/"
 
 !define MiKTeXDeliveredVersion "2.9"
-!define ImageMagickVersion "7.0.6"
+!define ImageMagickVersion "7.0.7"
  
 # definitions for the Complete installer
 !if ${SETUPTYPE} == BUNDLE
- !define JabRefInstall "external\JabRef_windows_3_8_2.exe"
- !define SIZE_JABREF 36831 # size in KB 
  !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.6361.exe"
 !endif

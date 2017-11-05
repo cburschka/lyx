@@ -94,7 +94,6 @@ Section "un.LyX" un.SecUnProgramFiles
   
   # delete info that programs were installed together with LyX
   DeleteRegValue SHCTX "SOFTWARE\MiKTeX.org\MiKTeX" "OnlyWithLyX"
-  DeleteRegValue SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef" "OnlyWithLyX"
   
   # for texindy the path to the perl.exe must unfortunately be in Windows' PATH variable
   # so we have to remove it now
@@ -132,33 +131,9 @@ Section "un.MiKTeX" un.SecUnMiKTeX
 SectionEnd
 
 #---------------------------------
-# JabRef
-Section "un.JabRef" un.SecUnJabRef
-
- ${if} $JabRefInstalled == "Yes" # only uninstall JabRef when it was installed together with LyX
-  ${If} $MultiUser.Privileges == "Admin"
-  ${OrIf} $MultiUser.Privileges == "Power"
-   ReadRegStr $1 HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef" "UninstallString"
-   IfSilent 0 +2
-   ExecWait "$1 /S" # run JabRef's uninstaller
-   ExecWait "$1" # run JabRef's uninstaller
-   DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef"
-  ${else}
-   ReadRegStr $1 HKCU "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef" "UninstallString"
-   IfSilent 0 +2
-   ExecWait "$1 /S" # run JabRef's uninstaller
-   ExecWait "$1" # run JabRef's uninstaller
-   DeleteRegKey SHCTX "Software\Microsoft\Windows\CurrentVersion\Uninstall\JabRef"
-  ${endif}
- ${endif}
-
-SectionEnd
-
-#---------------------------------
 # Section descriptions
 !insertmacro MUI_UNFUNCTION_DESCRIPTION_BEGIN
 !insertmacro MUI_DESCRIPTION_TEXT ${un.SecUnMiKTeX} "$(SecUnMiKTeXDescription)"
-!insertmacro MUI_DESCRIPTION_TEXT ${un.SecUnJabRef} "$(SecUnJabRefDescription)"
 !insertmacro MUI_DESCRIPTION_TEXT ${un.SecUnPreferences} "$(SecUnPreferencesDescription)"
 !insertmacro MUI_DESCRIPTION_TEXT ${un.SecUnProgramFiles} "$(SecUnProgramFilesDescription)"
 !insertmacro MUI_UNFUNCTION_DESCRIPTION_END
