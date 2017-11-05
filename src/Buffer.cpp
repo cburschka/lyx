@@ -289,8 +289,6 @@ public:
 	mutable BiblioInfo bibinfo_;
 	/// whether the bibinfo cache is valid
 	mutable bool bibinfo_cache_valid_;
-	/// whether the bibfile cache is valid
-	mutable bool bibfile_cache_valid_;
 	/// Cache of timestamps of .bib files
 	map<FileName, time_t> bibfile_status_;
 	/// Indicates whether the bibinfo has changed since the last time
@@ -343,10 +341,8 @@ public:
 		if (!cloned_buffer_ && parent_buffer && pb)
 			LYXERR0("Warning: a buffer should not have two parents!");
 		parent_buffer = pb;
-		if (!cloned_buffer_ && parent_buffer) {
-			parent_buffer->invalidateBibfileCache();
+		if (!cloned_buffer_ && parent_buffer)
 			parent_buffer->invalidateBibinfoCache();
-		}
 	}
 
 	/// If non zero, this buffer is a clone of existing buffer \p cloned_buffer_
@@ -432,7 +428,7 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	  file_fully_loaded(false), file_format(LYX_FORMAT), need_format_backup(false),
 	  ignore_parent(false),  toc_backend(owner), macro_lock(false),
 	  checksum_(0), wa_(0),  gui_(0), undo_(*owner), bibinfo_cache_valid_(false),
-	  bibfile_cache_valid_(false), cite_labels_valid_(false), preview_error_(false),
+	  cite_labels_valid_(false), preview_error_(false),
 	  inset(0), preview_loader_(0), cloned_buffer_(cloned_buffer),
 	  clone_list_(0), doing_export(false),
 	  tracked_changes_present_(0), externally_modified_(false), parent_buffer(0),
@@ -452,7 +448,6 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
 	bibfiles_cache_ = cloned_buffer_->d->bibfiles_cache_;
 	bibinfo_ = cloned_buffer_->d->bibinfo_;
 	bibinfo_cache_valid_ = cloned_buffer_->d->bibinfo_cache_valid_;
-	bibfile_cache_valid_ = cloned_buffer_->d->bibfile_cache_valid_;
 	bibfile_status_ = cloned_buffer_->d->bibfile_status_;
 	cite_labels_valid_ = cloned_buffer_->d->cite_labels_valid_;
 	unnamed = cloned_buffer_->d->unnamed;
@@ -1904,7 +1899,7 @@ void Buffer::writeLaTeXSource(otexstream & os,
 		// Biblatex bibliographies are loaded here
 		if (params().useBiblatex()) {
 			vector<docstring> const bibfiles =
-				prepareBibFilePaths(runparams, getBibfilesCache(), true);
+				prepareBibFilePaths(runparams, getBibfiles(), true);
 			for (docstring const & file: bibfiles)
 				os << "\\addbibresource{" << file << "}\n";
 		}
@@ -2322,47 +2317,11 @@ void Buffer::getLabelList(vector<docstring> & list) const
 }
 
 
-void Buffer::updateBibfilesCache(UpdateScope scope) const
-{
-	// FIXME This is probably unnecssary, given where we call this.
-	// If this is a child document, use the parent's cache instead.
-	if (parent() && scope != UpdateChildOnly) {
-		masterBuffer()->updateBibfilesCache();
-		return;
-	}
-
-	d->bibfiles_cache_.clear();
-	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
-		if (it->lyxCode() == BIBTEX_CODE) {
-			InsetBibtex const & inset = static_cast<InsetBibtex const &>(*it);
-			support::FileNamePairList const bibfiles = inset.getBibFiles();
-			d->bibfiles_cache_.insert(d->bibfiles_cache_.end(),
-				bibfiles.begin(),
-				bibfiles.end());
-		} else if (it->lyxCode() == INCLUDE_CODE) {
-			InsetInclude & inset = static_cast<InsetInclude &>(*it);
-			Buffer const * const incbuf = inset.getChildBuffer();
-			if (!incbuf)
-				continue;
-			support::FileNamePairList const & bibfiles =
-					incbuf->getBibfilesCache(UpdateChildOnly);
-			if (!bibfiles.empty()) {
-				d->bibfiles_cache_.insert(d->bibfiles_cache_.end(),
-					bibfiles.begin(),
-					bibfiles.end());
-			}
-		}
-	}
-	d->bibfile_cache_valid_ = true;
-	d->bibinfo_cache_valid_ = false;
-	d->cite_labels_valid_ = false;
-}
-
-
 void Buffer::invalidateBibinfoCache() const
 {
 	d->bibinfo_cache_valid_ = false;
 	d->cite_labels_valid_ = false;
+	removeBiblioTempFiles();
 	// also invalidate the cache for the parent buffer
 	Buffer const * const pbuf = d->parent();
 	if (pbuf)
@@ -2370,29 +2329,13 @@ void Buffer::invalidateBibinfoCache() const
 }
 
 
-void Buffer::invalidateBibfileCache() const
-{
-	d->bibfile_cache_valid_ = false;
-	d->bibinfo_cache_valid_ = false;
-	d->cite_labels_valid_ = false;
-	// also invalidate the cache for the parent buffer
-	Buffer const * const pbuf = d->parent();
-	if (pbuf)
-		pbuf->invalidateBibfileCache();
-}
-
-
-support::FileNamePairList const & Buffer::getBibfilesCache(UpdateScope scope) const
+FileNamePairList const & Buffer::getBibfiles(UpdateScope scope) const
 {
 	// FIXME This is probably unnecessary, given where we call this.
-	// If this is a child document, use the master's cache instead.
+	// If this is a child document, use the master instead.
 	Buffer const * const pbuf = masterBuffer();
 	if (pbuf != this && scope != UpdateChildOnly)
-		return pbuf->getBibfilesCache();
-
-	if (!d->bibfile_cache_valid_)
-		this->updateBibfilesCache(scope);
-
+		return pbuf->getBibfiles();
 	return d->bibfiles_cache_;
 }
 
@@ -2412,6 +2355,20 @@ BiblioInfo const & Buffer::bibInfo() const
 }
 
 
+void Buffer::registerBibfiles(FileNamePairList const & bf) const {
+	Buffer const * const tmp = masterBuffer();
+	if (tmp != this)
+		return tmp->registerBibfiles(bf);
+
+	for (auto const & p : bf) {
+		FileNamePairList::const_iterator tmp =
+			find(d->bibfiles_cache_.begin(), d->bibfiles_cache_.end(), p);
+		if (tmp == d->bibfiles_cache_.end())
+			d->bibfiles_cache_.push_back(p);
+	}
+}
+
+
 void Buffer::checkIfBibInfoCacheIsValid() const
 {
 	// use the master's cache
@@ -2421,8 +2378,13 @@ void Buffer::checkIfBibInfoCacheIsValid() const
 		return;
 	}
 
+	// if we already know the cache is invalid, no need to check
+	// the timestamps
+	if (!d->bibinfo_cache_valid_)
+		return;
+
 	// compare the cached timestamps with the actual ones.
-	FileNamePairList const & bibfiles_cache = getBibfilesCache();
+	FileNamePairList const & bibfiles_cache = getBibfiles();
 	FileNamePairList::const_iterator ei = bibfiles_cache.begin();
 	FileNamePairList::const_iterator en = bibfiles_cache.end();
 	for (; ei != en; ++ ei) {
@@ -4753,10 +4715,16 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 	Buffer const * const master = masterBuffer();
 	DocumentClass const & textclass = master->params().documentClass();
 
+	FileNamePairList old_bibfiles;
 	// do this only if we are the top-level Buffer
 	if (master == this) {
 		textclass.counters().reset(from_ascii("bibitem"));
 		reloadBibInfoCache();
+		// we will re-read this cache as we go through, but we need
+		// to know whether it's changed to know whether we need to
+		// update the bibinfo cache.
+		old_bibfiles = d->bibfiles_cache_;
+		d->bibfiles_cache_.clear();
 	}
 
 	// keep the buffers to be children in this set. If the call from the
@@ -4802,14 +4770,30 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 	ParIterator parit = cbuf.par_iterator_begin();
 	updateBuffer(parit, utype);
 
+	// If this document has siblings, then update the TocBackend later. The
+	// reason is to ensure that later siblings are up to date when e.g. the
+	// broken or not status of references is computed. The update is called
+	// in InsetInclude::addToToc.
 	if (master != this)
-		// If this document has siblings, then update the TocBackend later. The
-		// reason is to ensure that later siblings are up to date when e.g. the
-		// broken or not status of references is computed. The update is called
-		// in InsetInclude::addToToc.
 		return;
 
-	d->bibinfo_cache_valid_ = true;
+	// if the bibfiles changed, the cache of bibinfo is invalid
+	sort(d->bibfiles_cache_.begin(), d->bibfiles_cache_.end());
+	// the old one should already be sorted
+	if (old_bibfiles != d->bibfiles_cache_) {
+		invalidateBibinfoCache();
+		reloadBibInfoCache();
+		// We relied upon the bibinfo cache when recalculating labels. But that
+		// cache was invalid, although we didn't find that out until now. So we
+		// have to do it all again.
+		// That said, the only thing we really need to do is update the citation
+		// labels. Nothing else will have changed. So we could create a new 
+		// UpdateType that would signal that fact, if we needed to do so.
+		parit = cbuf.par_iterator_begin();
+		updateBuffer(parit, utype);
+	}
+	else
+		d->bibinfo_cache_valid_ = true;
 	d->cite_labels_valid_ = true;
 	/// FIXME: Perf
 	cbuf.tocBackend().update(true, utype);

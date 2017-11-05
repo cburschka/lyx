@@ -59,14 +59,6 @@ public:
 	 */
 	void updateBibfilesCache();
 
-	/** Return the cache with all bibfiles in use of the child buffer
-	 *  (including bibfiles of grandchild documents).
-	 *  Return an empty vector if the child doc is not loaded.
-	 *  \param buffer the Buffer containing this inset.
-	 */
-	support::FileNameList const &
-		getBibfilesCache() const;
-
 	///
 	void updateCommand();
 	///

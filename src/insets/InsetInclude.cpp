@@ -197,11 +197,6 @@ InsetInclude::InsetInclude(InsetInclude const & other)
 
 InsetInclude::~InsetInclude()
 {
-	if (isBufferLoaded())
-		/* We do not use buffer() because Coverity believes that this
-		 * may throw an exception. Actually this code path is not
-		 * taken when buffer_ == 0 */
-		buffer_->invalidateBibfileCache();
 	delete label_;
 }
 
@@ -354,8 +349,6 @@ void InsetInclude::setParams(InsetCommandParams const & p)
 
 	if (type(params()) == INPUT)
 		add_preview(*preview_, *this, buffer());
-
-	buffer().invalidateBibfileCache();
 }
 
 
