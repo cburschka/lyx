@@ -31,7 +31,9 @@ ${LangFileString} SecCoreDescription "LyXのファイル。"
 #${LangFileString} SecAllUsersDescription "LyXをすべてのユーザー用に導入するか、現在のユーザー向けだけに導入するか。"
 ${LangFileString} SecFileAssocDescription "拡張子が.lyxのファイルは自動的にLyXで開かれる。"
 ${LangFileString} SecDesktopDescription "デスクトップ上のLyXアイコン"
+${LangFileString} SecDictionaries "辞書"
 ${LangFileString} SecDictionariesDescription "ダウンロード及び導入が可能なスペルチェック用辞書"
+${LangFileString} SecThesaurus "シソーラス"
 ${LangFileString} SecThesaurusDescription "ダウンロード及び導入が可能な類義語辞典用辞書"
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX頒布版'

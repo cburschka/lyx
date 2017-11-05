@@ -31,7 +31,9 @@ ${LangFileString} SecCoreDescription "Súbory LyXu."
 #${LangFileString} SecAllUsersDescription "Inštalovať LyX pre všetkých užívateľov alebo len pre súčasného užívateľa."
 ${LangFileString} SecFileAssocDescription "Súbory s rozšírením .lyx sa automaticky otvárajú v LyXe."
 ${LangFileString} SecDesktopDescription "Ikona LyXa na pracovnej ploche."
+${LangFileString} SecDictionaries "Slovníky"
 ${LangFileString} SecDictionariesDescription "Slovníky pre kontrolu pravopisu ktoré možno načítať a inštalovať."
+${LangFileString} SecThesaurus "Tezaurus"
 ${LangFileString} SecThesaurusDescription "Slovníky tezaura ktoré možno načítať a inštalovať."
 
 ${LangFileString} EnterLaTeXHeader1 'LaTeX distribúcia'

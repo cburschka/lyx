@@ -31,7 +31,9 @@ ${LangFileString} SecCoreDescription "Файли LyX."
 #${LangFileString} SecAllUsersDescription "Визначає, чи слід встановити LyX для всіх користувачів, чи лише для поточного користувача."
 ${LangFileString} SecFileAssocDescription "Файли з суфіксом .lyx автоматично відкриватимуться за допомогою LyX."
 ${LangFileString} SecDesktopDescription "Піктограма LyX на стільниці."
+${LangFileString} SecDictionaries "Словники"
 ${LangFileString} SecDictionariesDescription "Словники для перевірки правопису, які можна отримати і встановити."
+${LangFileString} SecThesaurus "Тезаурус"
 ${LangFileString} SecThesaurusDescription "Словники синонімів, які можна отримати і встановити."
 
 ${LangFileString} EnterLaTeXHeader1 'Дистрибутив LaTeX'

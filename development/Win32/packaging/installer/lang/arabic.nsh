@@ -31,7 +31,9 @@ ${LangFileString} SecCoreDescription "ملفات ليك."
 #${LangFileString} SecAllUsersDescription "تركيب ليك لهذا المستخدم أم لجميع المستخدمين."
 ${LangFileString} SecFileAssocDescription "الملفات بلاحقة .lyx سوف تفتح تلفائيا ببرنامج ليك."
 ${LangFileString} SecDesktopDescription "رمز ليم على سطح المكتب."
+${LangFileString} SecDictionaries "قواميس"
 ${LangFileString} SecDictionariesDescription "قواميس المدقق الإملائي التي يمكن تنزيلها وتركيبها."
+${LangFileString} SecThesaurus "مكنز"
 ${LangFileString} SecThesaurusDescription "قواميس المفردات التي يمكن تنزيلها وتركيبها."
 
 ${LangFileString} EnterLaTeXHeader1 'توزيعة - لتيك'
