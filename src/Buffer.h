@@ -493,25 +493,13 @@ public:
 	*/
 	void validate(LaTeXFeatures &) const;
 
-	/// Reference information is cached in the Buffer, so we do not
+	/// Bibliography information is cached in the Buffer, so we do not
 	/// have to check or read things over and over.
-	///
-	/// There are two caches.
-	///
-	/// One is a cache of the BibTeX files from which reference info is
-	/// being gathered. This cache is PER BUFFER, and the cache for the
-	/// master essentially includes the cache for its children. This gets
-	/// invalidated when an InsetBibtex is created, deleted, or modified.
-	///
-	/// The other is a cache of the reference information itself. This
-	/// exists only in the master buffer, and when it needs to be updated,
+	/// The cache exists only in the master buffer. When it is updated,
 	/// the children add their information to the master's cache.
-
 	/// Calling this method invalidates the cache and so requires a
 	/// re-read.
 	void invalidateBibinfoCache() const;
-	/// This invalidates the cache of files we need to check.
-	void invalidateBibfileCache() const;
 	/// Updates the cached bibliography information, checking first to see
 	/// whether the cache is valid. If so, we do nothing. If not, then we
 	/// reload all the BibTeX info.
@@ -771,6 +759,8 @@ public:
 	void setChangesPresent(bool) const;
 	bool areChangesPresent() const;
 	void updateChangesPresent() const;
+	///
+	void registerBibfiles(support::FileNamePairList const & bf) const;
 
 private:
 	friend class MarkAsExporting;
@@ -787,13 +777,10 @@ private:
 	/// last time we loaded the cache. Note that this does NOT update the
 	/// cached information.
 	void checkIfBibInfoCacheIsValid() const;
-	/// Update the list of all bibfiles in use (including bibfiles
-	/// of loaded child documents).
-	void updateBibfilesCache(UpdateScope scope = UpdateMaster) const;
 	/// Return the list with all bibfiles in use (including bibfiles
 	/// of loaded child documents).
 	support::FileNamePairList const &
-		getBibfilesCache(UpdateScope scope = UpdateMaster) const;
+		getBibfiles(UpdateScope scope = UpdateMaster) const;
 	///
 	void collectChildren(ListOfBuffers & children, bool grand_children) const;
 
