@@ -1792,7 +1792,7 @@ msgstr "Použít &minuskové číslice (old style figures)"
 msgid ""
 "Activate extensions such as character protrusion and font expansion via the "
 "microtype package"
-msgstr ""
+msgstr "Aktivovat mikrotypografická rozšíření jako např. vysunutí interpunkce nebo úpravy šířky znaků"
 
 #: src/frontends/qt4/ui/FontUi.ui:293
 msgid "Enable micr&o-typographic extensions"
@@ -1830,7 +1830,6 @@ msgid "Set &height:"
 msgstr "&Výška:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:173
-#, fuzzy
 msgid "&Scale graphics (%):"
 msgstr "&Měřítko obrázku (%):"
 
@@ -1865,7 +1864,6 @@ msgid "Or&igin:"
 msgstr "Počá&tek:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:279
-#, fuzzy
 msgid "A&ngle (degrees):"
 msgstr "Ú&hel (stupně):"
 
@@ -1876,18 +1874,17 @@ msgstr "Jméno obrázku"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:313
 msgid "&Coordinates and Clipping"
-msgstr ""
+msgstr "Seříz&nutí a souřadnice"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:347
 msgid ""
 "Clip to the coordinates specified below (bounding box for DVI/PS output, "
 "viewport for PDF output)"
-msgstr ""
+msgstr "Seříznout podle souřadnic níže (ohraničující rámeček pro DVI/PS, zobrazení pro PDF"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:350
-#, fuzzy
 msgid "Clip to c&oordinates"
-msgstr "Seříznout podle hodnot ohraničujícího rámečku"
+msgstr "&Seříznout podle souřadnic"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:438
 #: src/frontends/qt4/ui/GraphicsUi.ui:445
@@ -1903,7 +1900,7 @@ msgstr "x:"
 msgid ""
 "Read coordinates from the file (bounding box value in case of PostScript "
 "files, graphic dimensions in case of other file types)"
-msgstr ""
+msgstr "Načíst souřadnice ze souboru (ohraničující rámeček pro PostScript, dimenze obrázku pro ostatní formáty)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:520
 #: src/frontends/qt4/ui/GraphicsUi.ui:527
@@ -1915,12 +1912,11 @@ msgid "LaTeX &options:"
 msgstr "Parametry pro LaTe&X:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:556
-#, fuzzy
 msgid ""
 "Enable LyX to preview this graphics, if graphics previewing is not disabled "
 "at application level (see Preferences dialog)."
 msgstr ""
-"Zapnout náhled tohoto obrázku. Pouze v případě že náhled obrázků nenívypnutý "
+"Zapnout náhled tohoto obrázku. Pouze v případě že náhled obrázků není vypnutý "
 "v Nastaveních."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:559
@@ -1928,7 +1924,6 @@ msgid "Sho&w in LyX"
 msgstr "&Zobrazit v LyX-u"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:605
-#, fuzzy
 msgid "Sca&le on screen (%):"
 msgstr "Měřítko na o&brazovce (%):"
 
@@ -1941,7 +1936,6 @@ msgid "Graphics Group"
 msgstr "Skupiny obrázků"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:680
-#, fuzzy
 msgid "Assigned &to group:"
 msgstr "&Přiřadit ke skupině:"
 
@@ -2047,7 +2041,7 @@ msgstr "J&méno:"
 msgid ""
 "Pass content of the `Name' field literally to LaTeX. Check this if you want "
 "to enter LaTeX code."
-msgstr ""
+msgstr "Předat LaTeX-u pole `Jméno' v doslovném znění. Vhodné pro případ přímého vkládaání LaTeX-ového kódu."
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:106
 msgid "Specify the link target"
@@ -2070,9 +2064,8 @@ msgid "Link to an email address"
 msgstr "Odkaz na e-mailovou adresu"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:146
-#, fuzzy
 msgid "E&mail"
-msgstr "Email"
+msgstr "&Email"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:153
 msgid "Link to a file"
@@ -2080,7 +2073,7 @@ msgstr "Odkaz na soubor"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:156
 msgid "Fi&le"
-msgstr ""
+msgstr "Sou&bor"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:36
 msgid "Listing Parameters"
@@ -2376,11 +2369,11 @@ msgid ""
 "Output quotation marks that automatically adapt to the style selected above. "
 "If this is not selected, the quotation marks will stick with the style they "
 "have been inserted with."
-msgstr ""
+msgstr "Uvozovky ve výstupu se automaticky přizpůsobí stylu výše. Pokud nepoužijete tuto volbu, uvozovky zůstanou ve stylu, ve kterém byly vloženy."
 
 #: src/frontends/qt4/ui/LanguageUi.ui:193
 msgid "Use d&ynamic quotation marks"
-msgstr ""
+msgstr "Použití d&ynamických uvozovek"
 
 #: src/frontends/qt4/ui/LineUi.ui:22
 msgid "Of&fset:"
@@ -2627,9 +2620,8 @@ msgid "&Update"
 msgstr "&Aktualizace"
 
 #: src/frontends/qt4/ui/LogUi.ui:111
-#, fuzzy
 msgid "&Open Containing Directory"
-msgstr "Pra&covní adresář:"
+msgstr "&Otevřít pracovní adresář:"
 
 #: src/frontends/qt4/ui/LogUi.ui:131
 msgid "&Go!"
@@ -2850,7 +2842,7 @@ msgstr "&Třídit jako:"
 msgid ""
 "Pass content of the `Symbol' and `Description' fields literally to LaTeX. "
 "Check this if you want to enter LaTeX code."
-msgstr ""
+msgstr "Předat pole `Symbol' and `Popis' LaTeX-u v doslovném znění. Vhodné pokud chcete vkládat LaTeX-ový kód."
 
 #: src/frontends/qt4/ui/NoteUi.ui:48 src/frontends/qt4/ui/PhantomUi.ui:48
 msgid "Type"
@@ -2911,7 +2903,7 @@ msgid ""
 "switched or that are specific to the user (such as the output of the tracked "
 "changes, or the document directory path). Disabling this option plays nicer "
 "in collaborative settings and with version control systems."
-msgstr ""
+msgstr "Uložit i nastavení, která se často mění a jsou specifická pro konkrétního uživatele (sledování změn, cesta k dokumentu, rozbalení vložek). Vypnutí této volby je vhodné pro výměnu mezi uživateli a při použití správy verzí."
 
 #: src/frontends/qt4/ui/OutputUi.ui:101
 msgid "Save &transient properties"
@@ -3348,11 +3340,11 @@ msgstr "&s - prodleva pro doplnění v menu"
 msgid ""
 "Words with less than the specified number of characters will not be "
 "completed."
-msgstr ""
+msgstr "Slova s menším počtem znaků nebudou doplňována."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:250
 msgid "Minimum characters for words that should be completed"
-msgstr ""
+msgstr "Minimum znaků ve slově potřebných pro funkci doplňování"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:275
 msgid ""
@@ -3414,41 +3406,37 @@ msgid "&Enabled"
 msgstr "&Zapnuto"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:274
-#, fuzzy
 msgid "Maximum a&ge (in days):"
 msgstr "Živo&tnost (ve dnech):"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:292
 msgid "Security"
-msgstr ""
+msgstr "Bezpečnost"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:312
 msgid "&Forbid use of needauth converters"
-msgstr ""
+msgstr "Zákaz použití kon&vertorů vyžadujících souhlas"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:315
 msgid ""
 "When enabled, use of converters with the 'needauth' option is forbidden."
-msgstr ""
+msgstr "Zákaz konvertorů vyžadujících explicitní souhlas s během"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:322
-#, fuzzy
 msgid "Use need&auth option"
-msgstr "CenteredCaption"
+msgstr "Používat &autorizaci"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:325
 msgid ""
 "When enabled, ask user before launching any external converter with the "
 "'needauth' option."
-msgstr ""
+msgstr "Dotaz na uživatele před během konvertoru vyžadujícího autorizační souhlas"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:31
-#, fuzzy
 msgid "Display &graphics"
 msgstr "&Zobrazit obrázky"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:51
-#, fuzzy
 msgid "Instant &preview:"
 msgstr "&Okamžitý náhled (vzorce):"
 
@@ -3466,7 +3454,6 @@ msgid "On"
 msgstr "Zapnuto"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:80
-#, fuzzy
 msgid "Preview si&ze:"
 msgstr "&Velikost náhledu:"
 
@@ -3483,7 +3470,6 @@ msgid "&Mark end of paragraphs"
 msgstr "Označit &konec odstavců"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:26
-#, fuzzy
 msgid "Session Handling"
 msgstr "Nastavení relace"
 
@@ -3508,7 +3494,6 @@ msgid "&Clear all session information"
 msgstr "Smazat veškerá nastavení &rozvrhu oken"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:85
-#, fuzzy
 msgid "Backup && Saving"
 msgstr "Zálohování a ukládání"
 
@@ -3529,10 +3514,9 @@ msgid ""
 "If this is checked, new documents will be saved in a compressed binary-"
 "format by default. Existing documents will still be saved in their current "
 "state (compressed or uncompressed)."
-msgstr ""
+msgstr "Nové dokumenty budou uloženy standardně v komprimovaném formátu. Existující dokumenty budou uloženy dle jejich předechozího nastavení."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
-#, fuzzy
 msgid "&Save new documents compressed by default"
 msgstr "Standardně &ukládat dokumenty komprimované"
 
@@ -3541,15 +3525,13 @@ msgid ""
 "If this is checked, the document directory path will be saved in the "
 "document. This allows moving the document elsewhere and still finding the "
 "included files."
-msgstr ""
+msgstr "Cesta k dokumentu bude uložena uvnitř dokumentu. Dovoluje zachování odkazů na soubory při přesunech dokumentu."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:158
-#, fuzzy
 msgid "Save the &document directory path"
-msgstr "Vybrat adresář pro dokumenty"
+msgstr "Ukládat &cestu k dokumentu"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:168
-#, fuzzy
 msgid "Windows && Work Area"
 msgstr "Okna a pracovní plocha"
 
@@ -3558,7 +3540,6 @@ msgid "Open documents in &tabs"
 msgstr "Otevírat dokumenty v &panelech"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:184
-#, fuzzy
 msgid ""
 "Whether to open documents in an already running instance of LyX. (Set the "
 "LyXServer pipe path and restart LyX to enable this feature)"
@@ -3730,11 +3711,10 @@ msgid "Co&pier:"
 msgstr "&Kopír.skript:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:202
-#, fuzzy
 msgid ""
 "Specification of the default output formats when using specific LaTeX "
 "variants"
-msgstr "Nastavit standardní výstupní formát při použití (PDF)LaTeX-u"
+msgstr "Nastavení standardního výstupního formátu při použití specifických variant LaTeX-u"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:205
 msgid "Default Output Formats"
@@ -3746,17 +3726,15 @@ msgstr ""
 "Standardní formát pro dokumenty používající fonty, jež nebyly určeny pro TeX"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:260
-#, fuzzy
 msgid ""
 "This is the default output format for LyX documents, except for DocBook "
 "classes, documents that use non-TeX fonts and Japanese documents"
-msgstr "Standardní výstupní formát pro dokumenty"
+msgstr "Standardní výstupní formát pro dokumenty LyX-u. Vyjímku tvoří třídy pro DocBook, japonštinu a dokumenty používající fonty nepodporovaní TeX-em."
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:267
-#, fuzzy
 msgid "The default output format for Japanese documents (using pLaTeX)"
 msgstr ""
-"Standardní formát pro dokumenty používající fonty, jež nebyly určeny pro TeX"
+"Standardní formát pro japonské dokumenty (pLaTeX)"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:274
 msgid "With n&on-TeX fonts:"
@@ -3767,9 +3745,8 @@ msgid "With &TeX fonts:"
 msgstr "Při použití fontů &TeX-u:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:294
-#, fuzzy
 msgid "&Japanese:"
-msgstr "Japonština"
+msgstr "&Japonština:"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -3833,14 +3810,13 @@ msgstr "1.0 je standardní rychlost. Vyšší hodnoty zrychlí, nižší zpomal�
 #: src/frontends/qt4/ui/PrefInputUi.ui:194
 msgid ""
 "If this is checked, the middle mouse button will paste the recent selection"
-msgstr ""
+msgstr "Prostřední tlačítko myši bude vkládat obsah výběru"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:197
 msgid "&Middle mouse button pasting"
-msgstr ""
+msgstr "&Vkládání prostředním tlačítkem myši"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:213
-#, fuzzy
 msgid "Scroll Wheel Zoom"
 msgstr "Lupa pomocí kolečka myši"
 
@@ -3906,7 +3882,6 @@ msgid "The LaTeX command that ends a switch to a foreign language"
 msgstr "Příkaz LaTeX-u, který ukončuje přepnutí změny jazyka."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:135
-#, fuzzy
 msgid "Default decimal &separator:"
 msgstr "Oddělovač &desetinné čárky:"
 
@@ -3957,7 +3932,6 @@ msgid "Mark &foreign languages"
 msgstr "Označit cizí &jazyk"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:217
-#, fuzzy
 msgid "Right-to-Left Language Support"
 msgstr "Podpora psaní zprava-doleva"
 
@@ -3993,7 +3967,6 @@ msgid "Optional paper size flag (-paper) for some DVI viewers"
 msgstr "Volitelný příznak velikosti (-paper) pro některé DVI prohlížeče"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:107
-#, fuzzy
 msgid "P&rocessor:"
 msgstr "&Generátor:"
 
@@ -4007,7 +3980,6 @@ msgid "Processor for &Japanese:"
 msgstr "Generátor pro &japonštinu:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:150
-#, fuzzy
 msgid "Options:"
 msgstr "&Možnosti:"
 
@@ -4032,7 +4004,6 @@ msgid "CheckTeX start options and flags"
 msgstr "Nastavení pro CheckTeX"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:299
-#, fuzzy
 msgid "&CheckTeX command:"
 msgstr "Příkaz Chec&kTex-u:"
 
@@ -4041,7 +4012,6 @@ msgid "&Nomenclature command:"
 msgstr "&Příkaz nomenklatury:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:324
-#, fuzzy
 msgid ""
 "Select whether LyX should output Windows or Cygwin style paths to LaTeX "
 "files. Change the default only if the TeX engine was not correctly detected "
@@ -4066,9 +4036,8 @@ msgid "R&eset class options when document class changes"
 msgstr "&Obnovit nastavení, když se změní třída dokumentu"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:20
-#, fuzzy
 msgid "Forward Search"
-msgstr "Dopředné hledání|h"
+msgstr "Dopředné hledání"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:40
 msgid "DV&I command:"
@@ -4079,9 +4048,8 @@ msgid "&PDF command:"
 msgstr "PD&F příkaz:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:107
-#, fuzzy
 msgid "Dvips Options"
-msgstr "Note Options"
+msgstr "Nastavení pro Dvips"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:123
 msgid "Paper t&ype:"
@@ -4096,9 +4064,8 @@ msgid "Lan&dscape:"
 msgstr "Na šíř&ku:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:162
-#, fuzzy
 msgid "Other Options"
-msgstr "Note Options"
+msgstr "Další možnosti"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:170
 msgid "Output &line length:"
@@ -4151,14 +4118,14 @@ msgid ""
 "thus could change for each LyX session. For the \"TEXINPUTS prefix\" path "
 "the WD is the directory containing the document. The path \".\" (without "
 "quotes) is a common example of a relative path and refers to the WD."
-msgstr ""
+msgstr "Relativní a absolutní cesty jsou povoleny. Relativní cesty budou doplněny vzhledem k pracovnímu adresáři. Pro všechny cesty (krom prefixu \"TEXINPUTS\") je pracovní adresář adresářem, ze kterého jste spustili LyX a může se tedy měnit pro každou relaci. V případě prefixu \"TEXINPUTS\" je pracovní adresář adresářem obsahujícím dokument. Cesta \".\" (bez uvozovek) je běžným příkladem relativní cesty a odkazuje k pracovnímu adresáři."
+
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:35
 msgid "&PATH prefix:"
 msgstr "P&refix cesty:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:45
-#, fuzzy
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
@@ -4172,12 +4139,11 @@ msgid "TEX&INPUTS prefix:"
 msgstr "P&refix TEXINPUTS:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:62
-#, fuzzy
 msgid ""
 "Specify those directories which should be prepended to the TEXINPUTS "
 "environment variable. Use the OS native format."
 msgstr ""
-"Určete adresáře, které by měly být přidány do proměnné prostředí PATH před "
+"Určete adresáře, které by měly být přidány do proměnné prostředí TEXINPUTS před "
 "ostatní adresáře.\n"
 "Použijte formát vlastní danému operačnímu systému."
 
@@ -4241,9 +4207,8 @@ msgstr ""
 "(Roman):"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:209
-#, fuzzy
 msgid "Default &zoom %:"
-msgstr "Standardní formát"
+msgstr "&Lupa %:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:246
 msgid "Font Sizes"
@@ -4369,7 +4334,6 @@ msgid "&Icon set:"
 msgstr "&Sada ikon:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:84
-#, fuzzy
 msgid ""
 "The icon set to use. Warning: normal size of icons may be wrong until you "
 "save the preferences and restart LyX."
@@ -4382,7 +4346,6 @@ msgid "Use icons from system's &theme"
 msgstr "Použít s&ystémové ikony"
 
 #: src/frontends/qt4/ui/PrefUi.ui:120
-#, fuzzy
 msgid "Context Help"
 msgstr "Kontextová nápověda"
 
@@ -4432,7 +4395,6 @@ msgstr ""
 "Vlastní hodnota. \"Odsazení seznamu\" musí být nastavené na \"Vlastní\"."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:40
-#, fuzzy
 msgid "Avai&lable indexes:"
 msgstr "Dostupné &rejstříky:"
 
@@ -4453,7 +4415,7 @@ msgstr "&Podrejstřík"
 msgid ""
 "Pass index names literally to LaTeX. Check this if you want to use LaTeX "
 "code in index names."
-msgstr ""
+msgstr "Předat LaTeX-u jména rejstříku doslovně. Použijte pokud chcete použít kód LaTeX-u v rejstříkových jménech."
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90 src/frontends/qt4/GuiPrefs.cpp:254
 msgid "Output"
@@ -4902,9 +4864,8 @@ msgid "Merge cells of different columns"
 msgstr "Sloučit buňky odlišných sloupců"
 
 #: src/frontends/qt4/ui/TabularUi.ui:553
-#, fuzzy
 msgid "Mu&lticolumn"
-msgstr "&Vícesloupcová"
+msgstr "&Více sloupců"
 
 #: src/frontends/qt4/ui/TabularUi.ui:560
 msgid "LaTe&X argument:"
