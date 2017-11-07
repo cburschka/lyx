@@ -1,4 +1,4 @@
-/*
+﻿/*
 
 Settings for LyX installer
 
@@ -30,9 +30,6 @@ These typically need to be modified for each LyX release
 !endif
 !ifndef BundleExeFile
   !define BundleExeFile "LyX-${APP_VERSION_MAJOR}${APP_VERSION_MINOR}${APP_VERSION_REVISION}${APP_VERSION_EMERGENCY}-Bundle-${APP_VERSION_BUILD}.exe"
-!endif
-!ifndef MinimalExeFile
-  !define /date MinimalExeFile "LyX-${APP_VERSION_MAJOR}${APP_VERSION_MINOR}svn-%Y%m%d-Installer-Minimal.exe"
 !endif
 
 #--------------------------------

@@ -9,11 +9,11 @@
 3. install the latest version 3.x of NSIS (http://nsis.sourceforge.net/Download)
 4. install the NSIS Large Strings build (http://nsis.sourceforge.net/Special_Builds)
    (extract the extension ZIP file in your NSIS installation folder and this way overwrite some files) 
-5. open the file FindProcDLL.zip (that is part of this bundle),
-   extract from it the file FindProc.dll to the folder \Plugins\x86-ansi of
+5. open the file FindProcDLL Unicode bin.zip (that is part of this bundle),
+   extract from it the file FindProc.dll to the folder \Plugins\x86-unicode of
    NSIS's installation folder
-6. open the file InetLoad.zip (that is part of this bundle),
-   extract from it the file InetLoad.dll to the folder \Plugins\x86-ansi of
+6. open the file Inetc.zip (that is part of this bundle),
+   extract from it the file INetC.dll to the folder \Plugins\x86-unicode of
    NSIS's installation folder
 7. right-click on the file lyx-standard.nsi and choose "Compile NSIS script"
    to compile the standard installer

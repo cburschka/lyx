@@ -81,7 +81,7 @@ Function DownloadHunspellDictionaries
     FileRead $R4 $Search # $Search is now the mirror
     StrCpy $Search $Search -2 # delete the linebreak characters at the end
     Push $R0
-    InetLoad::load /TIMEOUT=5000 "http://$Search.dl.sourceforge.net/project/lyxwininstaller/hunspell/$String" "$INSTDIR\Resources\dicts\$String" /END
+    inetc::get /TIMEOUT=5000 "http://$Search.dl.sourceforge.net/project/lyxwininstaller/hunspell/$String" "$INSTDIR\Resources\dicts\$String" /END
     Pop $R0
     ${if} $R0 == "OK"
      ${ExitFor}
@@ -127,7 +127,7 @@ Function DownloadThesaurusDictionaries
     FileRead $R4 $Search # $Search is now the mirror
     StrCpy $Search $Search -2 # delete the linebreak characters at the end
     Push $R0
-    InetLoad::load /TIMEOUT=5000 "http://$Search.dl.sourceforge.net/project/lyxwininstaller/thesaurus/$String" "$INSTDIR\Resources\thes\$String" /END
+    inetc::get /TIMEOUT=5000 "http://$Search.dl.sourceforge.net/project/lyxwininstaller/thesaurus/$String" "$INSTDIR\Resources\thes\$String" /END
     Pop $R0
     ${if} $R0 == "OK"
      ${ExitFor}
