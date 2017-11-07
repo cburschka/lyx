@@ -8,8 +8,11 @@ Compatible with NSIS 3.0
 # was not corrupted by the download.
 CRCCheck force
 #
-# Make the installer as small as possible.
+# Make the installer as small as possible
 SetCompressor /SOLID lzma
+
+# make it a Unicode installer
+Unicode true
 
 !ifndef SETUPTYPE
  !define SETUPTYPE STANDARD

@@ -1,4 +1,4 @@
-/*
+﻿/*
 init.nsh
 
 Initialization functions
@@ -65,19 +65,19 @@ SectionEnd
 # Expand the list of dictionaries by default as this was requested by several
 # users. For the thesaurus this is was not requested because this section
 # is by default empty.
-SectionGroup /e "Dictionaries" SecDictionaries
+SectionGroup /e "$(SecDictionaries)" SecDictionaries
 
 Section /o "Afrikaans" SecDAfrikaans
  StrCpy $DictCodes "af_ZA,$DictCodes"
  AddSize 1440
 SectionEnd
 
-Section /o "Arabic" SecDArabic
+Section /o "العربية" SecDArabic
  StrCpy $DictCodes "ar_DZ,$DictCodes"
  AddSize 2500
 SectionEnd
 
-Section /o "Armenian" SecDArmenian
+Section /o "հայերեն" SecDArmenian
  StrCpy $DictCodes "hy_AM,$DictCodes"
  AddSize 2000
 SectionEnd
@@ -92,7 +92,7 @@ Section /o "Bahasa Melayu" SecDMalayan
  AddSize 227
 SectionEnd
 
-Section /o "Belarusian" SecDBelarusian 
+Section /o "беларускі" SecDBelarusian 
  StrCpy $DictCodes "be_BY,$DictCodes"
  AddSize 1730
 SectionEnd
@@ -102,17 +102,17 @@ Section /o "Brezhoneg" SecDBreton
  AddSize 5510
 SectionEnd
 
-Section /o "Bulgarian" SecDBulgarian
+Section /o "български" SecDBulgarian
  StrCpy $DictCodes "bg_BG,$DictCodes"
  AddSize 985
 SectionEnd
 
-Section /o "Catal�" SecDCatalanian
+Section /o "Català" SecDCatalanian
  StrCpy $DictCodes "ca_ES,$DictCodes"
  AddSize 1210
 SectionEnd
 
-Section /o "Ce�tina" SecDCzech
+Section /o "Ceština" SecDCzech
  StrCpy $DictCodes "cs_CZ,$DictCodes"
  AddSize 2190
 SectionEnd
@@ -132,24 +132,24 @@ Section /o "Dansk" SecDDanish
  AddSize 2470
 SectionEnd
 
-Section /o "German (A)" SecDGermanAT
+Section /o "Deutsch (A)" SecDGermanAT
  StrCpy $DictCodes "de_AT,$DictCodes"
  AddSize 3620
 SectionEnd
 
-Section /o "German (CH)" SecDGermanCH
+Section /o "Deutsch (CH)" SecDGermanCH
  StrCpy $DictCodes "de_CH,$DictCodes"
  AddSize 3620
 SectionEnd
 
-Section "German (D)" SecDGermanD
+Section "Deutsch (D)" SecDGermanD
  # already installed by default
  SectionIn RO
  #StrCpy $DictCodes "de_DE,$DictCodes"
  AddSize 3620
 SectionEnd
 
-Section /o "Greek" SecDGreek
+Section /o "Ελληνικά" SecDGreek
  StrCpy $DictCodes "el_GR,$DictCodes"
  AddSize 6550
 SectionEnd
@@ -188,14 +188,14 @@ Section "English (US)" SecDEnglishUS
  AddSize 548
 SectionEnd
 
-Section "Espa�ol (ES)" SecDSpanishES
+Section "Español (ES)" SecDSpanishES
  # already installed by default
  SectionIn RO
  #StrCpy $DictCodes "es_ES,$DictCodes"
  AddSize 974
 SectionEnd
 
-Section "Espa�ol (MX)" SecDSpanishMX
+Section "Español (MX)" SecDSpanishMX
  # already installed by default
  SectionIn RO
  #StrCpy $DictCodes "es_MX,$DictCodes"
@@ -217,14 +217,14 @@ Section /o "Farsi" SecDFarsi
  AddSize 6710
 SectionEnd
 
-Section "Fran�ais" SecDFrench
+Section "Français" SecDFrench
  # already installed by default
  SectionIn RO
  #StrCpy $DictCodes "fr_FR,$DictCodes"
  AddSize 1200
 SectionEnd
 
-Section /o "Fran�ais (Canada)" SecDFrenchCanada
+Section /o "Français (Canada)" SecDFrenchCanada
  StrCpy $DictCodes "fr_CA,$DictCodes"
  AddSize 1390
 SectionEnd
@@ -234,7 +234,7 @@ Section /o "Gaeilge" SecDGaelic
  AddSize 1090
 SectionEnd
 
-Section /o "G�idhlig" SecDScottish
+Section /o "Gàidhlig" SecDScottish
  StrCpy $DictCodes "gd_GB,$DictCodes"
  AddSize 4161
 SectionEnd
@@ -244,7 +244,7 @@ Section /o "Galego" SecDGalician
  AddSize 3911
 SectionEnd
 
-Section /o "Hebrew" SecDHebrew
+Section /o "עִברִית" SecDHebrew
  StrCpy $DictCodes "he_IL,$DictCodes"
  AddSize 3120
 SectionEnd
@@ -259,7 +259,7 @@ Section /o "Magyar" SecDHungarian
  AddSize 3380
 SectionEnd
 
-Section /o "Hindi" SecDHindi
+Section /o "हिंदी" SecDHindi
  StrCpy $DictCodes "hi_IN,$DictCodes"
  AddSize 1900
 SectionEnd
@@ -269,7 +269,7 @@ Section /o "Interlingua" SecDInterlingua
  AddSize 613
 SectionEnd
 
-Section /o "�slenska" SecDIcelandic
+Section /o "Íslenska" SecDIcelandic
  StrCpy $DictCodes "is_IS,$DictCodes"
  AddSize 2320
 SectionEnd
@@ -279,12 +279,12 @@ Section /o "Italiano" SecDItalian
  AddSize 1380
 SectionEnd
 
-Section /o "Kazakh" SecDKazakh
+Section /o "Қазақша" SecDKazakh
  StrCpy $DictCodes "kk_KZ,$DictCodes"
  AddSize 2120
 SectionEnd
 
-Section /o "Korean" SecDKorean
+Section /o "한국어" SecDKorean
  StrCpy $DictCodes "ko_KR,$DictCodes"
  AddSize 16540
 SectionEnd
@@ -299,12 +299,12 @@ Section /o "Lietuviu" SecDLithuanian
  AddSize 1320
 SectionEnd
 
-Section /o "Latvie�u" SecDLatvian
+Section /o "Latviešu" SecDLatvian
  StrCpy $DictCodes "lv_LV,$DictCodes"
  AddSize 2243
 SectionEnd
 
-Section /o "Marathi" SecDMarathi
+Section /o "मराठी" SecDMarathi
  StrCpy $DictCodes "mr_IN,$DictCodes"
  AddSize 5290
 SectionEnd
@@ -314,7 +314,7 @@ Section /o "Nederlands" SecDDutch
  AddSize 1820
 SectionEnd
 
-Section /o "Norsk (Bokm�l)" SecDNorwegianNB
+Section /o "Norsk (Bokmål)" SecDNorwegianNB
  StrCpy $DictCodes "nb_NO,$DictCodes"
  AddSize 5291
 SectionEnd
@@ -334,32 +334,32 @@ Section /o "Polski" SecDPolish
  AddSize 4540
 SectionEnd
 
-Section /o "Portugu�s (BR)" SecDPortugueseBR
+Section /o "Português (BR)" SecDPortugueseBR
  StrCpy $DictCodes "pt_BR,$DictCodes"
  AddSize 5280
 SectionEnd
 
-Section /o "Portugu�s (PT)" SecDPortuguesePT
+Section /o "Português (PT)" SecDPortuguesePT
  StrCpy $DictCodes "pt_PT,$DictCodes"
  AddSize 1568
 SectionEnd
 
-Section /o "Rom�na" SecDRomanian
+Section /o "Româna" SecDRomanian
  StrCpy $DictCodes "ro_RO,$DictCodes"
  AddSize 2255
 SectionEnd
 
-Section /o "Russian" SecDRussian
+Section /o "Русский" SecDRussian
  StrCpy $DictCodes "ru_RU,$DictCodes"
  AddSize 1920
 SectionEnd
 
-Section /o "Serb�cina (Dolno)" SecDSorbianD
+Section /o "Serbšcina (Dolno)" SecDSorbianD
  StrCpy $DictCodes "dsb_DE,$DictCodes"
  AddSize 1035
 SectionEnd
 
-Section /o "Serb�cina (Horno)" SecDSorbianH
+Section /o "Serbšcina (Horno)" SecDSorbianH
  StrCpy $DictCodes "hsb_DE,$DictCodes"
  AddSize 740
 SectionEnd
@@ -369,17 +369,17 @@ Section /o "Shqipe" SecDAlbanian
  AddSize 2400
 SectionEnd
 
-Section /o "Sloven�cina" SecDSlovenian
+Section /o "Slovenšcina" SecDSlovenian
  StrCpy $DictCodes "sl_SI,$DictCodes"
  AddSize 2910
 SectionEnd
 
-Section /o "Slovensk�" SecDSlovakian
+Section /o "Slovenský" SecDSlovakian
  StrCpy $DictCodes "sk_SK,$DictCodes"
  AddSize 3310
 SectionEnd
 
-Section /o "Srpski (Cirilica)" SecDSerbianC
+Section /o "Српски (Ћирилица)" SecDSerbianC
  StrCpy $DictCodes "sr_RS,$DictCodes"
  AddSize 4401
 SectionEnd
@@ -394,17 +394,17 @@ Section /o "Svenska" SecDSwedish
  AddSize 2028
 SectionEnd
 
-Section /o "Tamil" SecDTamil
+Section /o "தமிழ்" SecDTamil
  StrCpy $DictCodes "ta_IN,$DictCodes"
  AddSize 5911
 SectionEnd
 
-Section /o "Telugu" SecDTelugu
+Section /o "తెలుగు" SecDTelugu
  StrCpy $DictCodes "te_IN,$DictCodes"
  AddSize 3400
 SectionEnd
  
-Section /o "Thai" SecDThai
+Section /o "ไทย" SecDThai
  StrCpy $DictCodes "th_TH,$DictCodes"
  AddSize 351
 SectionEnd
@@ -414,27 +414,27 @@ Section /o "Tibetan" SecDTibetan
  AddSize 7
 SectionEnd
 
-Section /o "T�rkmen�e" SecDTurkmen
+Section /o "Türkmençe" SecDTurkmen
  StrCpy $DictCodes "tk_TM,$DictCodes"
  AddSize 950
 SectionEnd
 
-Section /o "T�rk�e" SecDTurkish
+Section /o "Türkçe" SecDTurkish
  StrCpy $DictCodes "tr_TR,$DictCodes"
  AddSize 8870
 SectionEnd
 
-Section /o "Ukrainian" SecDUkrainian
+Section /o "Українська" SecDUkrainian
  StrCpy $DictCodes "uk_UA,$DictCodes"
  AddSize 5555
 SectionEnd
 
-Section /o "Urdu" SecDUrdu
+Section /o "اردو" SecDUrdu
  StrCpy $DictCodes "ur_PK,$DictCodes"
  AddSize 1401
 SectionEnd
 
-Section /o "Vietnamese" SecDVietnamese
+Section /o "Tiếng Việt" SecDVietnamese
  StrCpy $DictCodes "vi_VN,$DictCodes"
  AddSize 40
 SectionEnd
@@ -442,19 +442,19 @@ SectionEnd
 SectionGroupEnd
 
 
-SectionGroup "Thesaurus" SecThesaurus
+SectionGroup "$(SecThesaurus)" SecThesaurus
 
-Section /o "Bulgarian" SecTBulgarian
+Section /o "български" SecTBulgarian
  StrCpy $ThesCodes "bg_BG,$ThesCodes"
  AddSize 3020
 SectionEnd
 
-Section /o "Catal�" SecTCatalan
+Section /o "Català" SecTCatalan
  StrCpy $ThesCodes "ca_ES,$ThesCodes"
  AddSize 731
 SectionEnd
 
-Section /o "Ce�tina" SecTCzech
+Section /o "Ceština" SecTCzech
  StrCpy $ThesCodes "cs_CZ,$ThesCodes"
  AddSize 635
 SectionEnd
@@ -489,12 +489,12 @@ Section /o "English (US)" SecTEnglishUS
  AddSize 22095
 SectionEnd
 
-Section /o "Espa�ol" SecTSpanish
+Section /o "Español" SecTSpanish
  StrCpy $ThesCodes "es_ES,$ThesCodes"
  AddSize 2860
 SectionEnd
 
-Section /o "Fran�ais" SecTFrench
+Section /o "Français" SecTFrench
  StrCpy $ThesCodes "fr_FR,$ThesCodes"
  AddSize 5060
 SectionEnd
@@ -509,12 +509,12 @@ Section /o "Galego" SecTGalician
  AddSize 510
 SectionEnd
 
-Section /o "Greek" SecTGreek
+Section /o "Ελληνικά" SecTGreek
  StrCpy $ThesCodes "el_GR,$ThesCodes"
  AddSize 903
 SectionEnd
 
-Section /o "�slenska" SecTIcelandic
+Section /o "Íslenska" SecTIcelandic
  StrCpy $ThesCodes "is_IS,$ThesCodes"
  AddSize 63
 SectionEnd
@@ -529,7 +529,7 @@ Section /o "Magyar" SecTHungarian
  AddSize 632
 SectionEnd
 
-Section /o "Norsk (Bokm�l)" SecTNorwegianNB
+Section /o "Norsk (Bokmål)" SecTNorwegianNB
  StrCpy $ThesCodes "nb_NO,$ThesCodes"
  AddSize 2595
 SectionEnd
@@ -544,27 +544,27 @@ Section /o "Polski" SecTPolish
  AddSize 5580
 SectionEnd
 
-Section /o "Portugu�s" SecTPortuguese
+Section /o "Português" SecTPortuguese
  StrCpy $ThesCodes "pt_PT,$ThesCodes"
  AddSize 3950
 SectionEnd
 
-Section /o "Rom�na" SecTRomanian
+Section /o "Româna" SecTRomanian
  StrCpy $ThesCodes "ro_RO,$ThesCodes"
  AddSize 3650
 SectionEnd
 
-Section /o "Russian" SecTRussian
+Section /o "Русский" SecTRussian
  StrCpy $ThesCodes "ru_RU,$ThesCodes"
  AddSize 2080
 SectionEnd
 
-Section /o "Sloven�cina" SecTSlovenian
+Section /o "Slovenšcina" SecTSlovenian
  StrCpy $ThesCodes "sl_SI,$ThesCodes"
  AddSize 1110
 SectionEnd
 
-Section /o "Slovensk�" SecTSlovakian
+Section /o "Slovenský" SecTSlovakian
  StrCpy $ThesCodes "sk_SK,$ThesCodes"
  AddSize 930
 SectionEnd
@@ -574,7 +574,7 @@ Section /o "Svenska" SecTSwedish
  AddSize 720
 SectionEnd
 
-Section /o "Ukrainian" SecTUkrainian
+Section /o "Українська" SecTUkrainian
  StrCpy $ThesCodes "uk_UA,$ThesCodes"
  AddSize 1339
 SectionEnd
@@ -603,28 +603,37 @@ Function .onInit
     Quit
   ${endif}
   
+  # fixme
   # check that the installer is not currently running
-  System::Call 'kernel32::CreateMutexA(i 0, i 0, t "${BundleExeFile}.Instance") i .r1 ?e'
-  Pop $R0
-  ${if} $R0 != "0"
+  FindProcDLL::FindProc "${BundleExeFile}"
+  ${if} $R0 == "1"
    MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)" /SD IDOK
    Abort
   ${endif}
-  System::Call 'kernel32::CreateMutexA(i 0, i 0, t "${ExeFile}.Instance") i .r1 ?e'
-  Pop $R0
-  ${if} $R0 != "0"
-   MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)" /SD IDOK
-   Abort
-  ${endif}
-  
-  # FIXME: check that LyX is not currently running
-  #System::Call 'kernel32::CreateMutexA(i 0, i 0, t "LyX.exe.Instance") i .r1 ?e'
-  #Pop $R0
-  #MessageBox MB_OK "$R0"
-  #${if} $R0 != "0"
-  # MessageBox MB_OK|MB_ICONSTOP "$(LyXRunning)" 
+  FindProcDLL::FindProc "${ExeFile}"
+  #${if} $R0 == "1"
+  # MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)" /SD IDOK
   # Abort
   #${endif}
+  #System::Call 'kernel32::CreateMutexA(i 0, i 0, t "${BundleExeFile}.Instance") i .r1 ?e'
+  #Pop $R0
+  #${if} $R0 != "0"
+  # MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)" /SD IDOK
+  # Abort
+  #${endif}
+  #System::Call 'kernel32::CreateMutexA(i 0, i 0, t "${ExeFile}.Instance") i .r1 ?e'
+  #Pop $R0
+  #${if} $R0 != "0"
+  # MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)" /SD IDOK
+  # Abort
+  #${endif}
+  
+  # Check that LyX is not currently running
+  FindProcDLL::FindProc "lyx.exe"
+  ${if} $R0 == "1"
+   MessageBox MB_OK|MB_ICONSTOP "$(UnInstallRunning)" /SD IDOK
+   Abort
+  ${endif}
   
   # read the user and computer name
   ReadRegStr $ComputerName HKLM "System\CurrentControlSet\Control\ComputerName\ActiveComputerName" "ComputerName"
@@ -1477,4 +1486,3 @@ Function un.onInit
   Abort
 
 FunctionEnd
-
