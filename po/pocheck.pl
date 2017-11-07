@@ -12,6 +12,9 @@
 use strict;
 use warnings;
 use Getopt::Std;
+use Encode qw(encode decode);
+
+sub mylc($);
 
 my $usage = <<EOT;
 pocheck.pl [-acmpqst] po_file [po_file] ...
@@ -79,7 +82,7 @@ foreach my $pofilename ( @ARGV ) {
   my $warn = 0;
 
   my $i = 0;
-  my ($msgid, $msgstr, $more);
+  my ($msgid, $msgid_trans, $msgstr, $more);
 
   while ($i <= $noOfLines) {
     my $linenum = $i;
@@ -112,6 +115,7 @@ foreach my $pofilename ( @ARGV ) {
     next if ($msgid eq "" or $msgstr eq "");
 
     # discard [[...]] from the end of msgid, this is used only as hint to translation
+    $msgid_trans = $msgid;	# used for uniform translation
     $msgid =~ s/\[\[.*\]\]$//;
 
     # Check for matching %1$s, etc.
@@ -194,8 +198,8 @@ foreach my $pofilename ( @ARGV ) {
     # we now collect these translations in a hash.
     # this will allow us to check below if we have translated
     # anything more than one way.
-    my $msgid_clean  = lc($msgid);
-    my $msgstr_clean = lc($msgstr);
+    my $msgid_clean  = lc($msgid_trans);
+    my $msgstr_clean = mylc($msgstr);
 
     $msgid_clean  =~ s/(.*)\|.*?$/$1/;  # strip menu shortcuts
     $msgstr_clean =~ s/(.*)\|.*?$/$1/;
@@ -206,7 +210,7 @@ foreach my $pofilename ( @ARGV ) {
     # cleaned versions of ORIGINAL strings. the keys of the inner hash 
     # are the cleaned versions of their TRANSLATIONS. The value for the 
     # inner hash is an array of the orignal string and translation.
-    $trans{$msgid_clean}{$msgstr_clean} = [ $msgid, $msgstr, $linenum ];
+    $trans{$msgid_clean}{$msgstr_clean} = [ $msgid_trans, $msgstr, $linenum ];
   }
 
   if ($check_trans) {
@@ -247,3 +251,9 @@ foreach my $pofilename ( @ARGV ) {
 
 exit ($total_warn > 0);
 
+# Use lowercase also for non-ascii chars
+sub mylc($)
+{
+  my ($msg) = @_;
+  return(encode('utf-8',lc(decode('utf-8', $msg))));
+}
