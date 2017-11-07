@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-10-23 10:30+0200\n"
-"PO-Revision-Date: 2017-10-23 12:37+0000\n"
+"POT-Creation-Date: 2017-11-07 15:23+0100\n"
+"PO-Revision-Date: 2017-11-07 16:33+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -74,7 +74,7 @@ msgstr "Značka ako sa zobrazí v dokumente"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:38 src/frontends/qt4/ui/LabelUi.ui:36
 msgid "&Label:"
-msgstr "Z&načka:"
+msgstr "&Návestie:"
 
 #: src/frontends/qt4/ui/BibitemUi.ui:85
 msgid ""
@@ -1244,11 +1244,11 @@ msgstr "&Držať spárované"
 msgid ""
 "Swap left and right delimiter type (while reversing to the appropriate "
 "direction)"
-msgstr "Vymení ľavý a pravý typ oddeľovača (keď sa otáča na vhodný smer) "
+msgstr "Prehodí ľavý a pravý typ oddeľovača (keď sa obráti na vhodný smer) "
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:265
 msgid "S&wap && Reverse"
-msgstr "Vymeniť && Obrátiť"
+msgstr "&Prehodiť && Obrátiť"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:112
 msgid "Reset to the default settings for the document class"
@@ -1392,7 +1392,7 @@ msgstr "Percento zmeny zobrazenia v LyXe"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:215
 msgid "Sca&le on Screen (%):"
-msgstr "Mierka no o&brazovke (%):"
+msgstr "Mierka na O&brazovke (%):"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:271
 msgid "Si&ze and Rotation"
@@ -2596,7 +2596,7 @@ msgstr "Posledný riadok výpisu"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:444
 msgid "Ad&vanced"
-msgstr "Rozšírené v&oľby"
+msgstr "R&ozšírené"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:458
 msgid "More Parameters"
@@ -3340,7 +3340,7 @@ msgstr "Indikátor k&urzoru"
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:119
 #: lib/layouts/hollywood.layout:281 src/frontends/qt4/GuiPrefs.cpp:388
 msgid "General"
-msgstr "Všeobecne"
+msgstr "Všeobecné"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:142
 msgid ""
@@ -3476,7 +3476,7 @@ msgstr "&Okamžitý náhľad:"
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:62 src/Font.cpp:77
 #: src/frontends/qt4/GuiDocument.cpp:135
 msgid "Off"
-msgstr "Vypnutý"
+msgstr "Vypnuté"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:67
 msgid "No math"
@@ -4568,7 +4568,7 @@ msgstr "Skočiť na vybrané heslo"
 
 #: src/frontends/qt4/ui/RefUi.ui:221 src/frontends/qt4/GuiRef.cpp:388
 msgid "&Go to Label"
-msgstr "Pre&jsť na heslo"
+msgstr "Pre&jsť na Heslo"
 
 #: src/frontends/qt4/ui/RefUi.ui:232
 msgid "Reference For&mat:"
@@ -5215,7 +5215,7 @@ msgstr "Jazyk tezauru"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:39
 msgid "Index entry"
-msgstr "Heslo v registre"
+msgstr "Zápis v registre"
 
 #: src/frontends/qt4/ui/ThesaurusUi.ui:42
 msgid "&Keyword:"
@@ -5339,7 +5339,7 @@ msgstr "Veľká medzera(BigSkip)"
 # Výplň
 #: src/frontends/qt4/ui/VSpaceUi.ui:102
 msgid "VFill"
-msgstr "Variabilná medzera (VFill)"
+msgstr "Variabilná medzera"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:90
 msgid "F&ormat:"
@@ -7868,7 +7868,7 @@ msgstr "Operačná Klasifikačná Schéma: "
 
 #: lib/layouts/acmart.layout:444
 msgid "Set Copyright"
-msgstr "Set Copyright"
+msgstr "Nastaviť Autorské Práva"
 
 #: lib/layouts/acmart.layout:446
 msgid "Set Copyright: "
@@ -7876,7 +7876,7 @@ msgstr "Nastaviť Autorské Práva: "
 
 #: lib/layouts/acmart.layout:450
 msgid "Copyright Year"
-msgstr "Copyright Year"
+msgstr "Autorské Práva Rok"
 
 #: lib/layouts/acmart.layout:452
 msgid "Copyright Year: "
@@ -8052,11 +8052,11 @@ msgstr "ACM SIGGRAPH 0.92 (zastaralé)"
 
 #: lib/layouts/acmsiggraph-0-92.layout:74 lib/layouts/acmsiggraph.layout:66
 msgid "TOG online ID"
-msgstr "TOG online ID"
+msgstr "TOG Totožnosť online"
 
 #: lib/layouts/acmsiggraph-0-92.layout:85 lib/layouts/acmsiggraph.layout:77
 msgid "Online ID:"
-msgstr "Online ID:"
+msgstr "Totožnosť Online:"
 
 #: lib/layouts/acmsiggraph-0-92.layout:93 lib/layouts/acmsiggraph.layout:85
 msgid "TOG volume"
@@ -8670,7 +8670,7 @@ msgstr "Pravá Hlavička"
 #: lib/layouts/aguplus.inc:107 lib/layouts/customHeadersFooters.module:42
 #: lib/layouts/foils.layout:203
 msgid "Right Header:"
-msgstr "Pravá Hlavička:"
+msgstr "Hlavička Vpravo:"
 
 #: lib/layouts/aguplus.inc:135
 msgid "CCC"
@@ -9447,7 +9447,7 @@ msgstr "Šírka plochy pretlačenia (štandard: šírka textu)"
 
 #: lib/layouts/beamer.layout:755
 msgid "OverlayArea"
-msgstr "PlochaPrekrytia"
+msgstr "Plocha Prekrytia"
 
 #: lib/layouts/beamer.layout:765
 msgid "Overlayarea"
@@ -9568,7 +9568,7 @@ msgstr "Skratka inštitútu ktorá sa zjaví na boku/hlavičke"
 
 #: lib/layouts/beamer.layout:1017
 msgid "InstituteMark"
-msgstr "ZnakInštitútu"
+msgstr "Znak Inštitútu"
 
 #: lib/layouts/beamer.layout:1051
 msgid "Short Date|S"
@@ -9926,7 +9926,7 @@ msgstr "SCÉNA*"
 
 #: lib/layouts/broadway.layout:108 lib/layouts/broadway.layout:119
 msgid "AT RISE:"
-msgstr "AT RISE:"
+msgstr "PRI STÚPANÍ:"
 
 #: lib/layouts/broadway.layout:124 lib/layouts/hollywood.layout:145
 msgid "Speaker"
@@ -10919,7 +10919,7 @@ msgstr "Titul poznámky pod čiarou"
 
 #: lib/layouts/elsarticle.layout:133
 msgid "Footnote Label"
-msgstr "Návestie Poznámky pod čiarou"
+msgstr "Poznámka pod čiarou: Návestie"
 
 #: lib/layouts/elsarticle.layout:134
 msgid "Label you refer to in the title"
@@ -11455,21 +11455,21 @@ msgstr ""
 msgid "Fix LaTeX"
 msgstr "Upraviť LaTeX"
 
-#: lib/layouts/fixltx2e.module:11
+#: lib/layouts/fixltx2e.module:10
 msgid ""
 "Loads the LaTeX package fixltx2e which contains some bug fixes for LaTeX. "
-"Those fixes are not part of the LaTeX kernel because of backward "
+"Those fixes were not part of older LaTeX kernels because of backward "
 "compatibility. If you use this module your typeset document may look "
-"different when you process it with future LaTeX versions, because fixltx2e "
-"may provide more bugfixes in future versions. Note that the recent LaTeX "
-"kernel (2015/01/01) includes fixltx2e, so the fixltx2e module becomes "
-"obsolete as of TeXLive 2015."
+"different with different LaTeX versions, depending on the respective version "
+"of fixltx2e. NOTE: recent LaTeX kernels (as of 2015/01/01) include the "
+"functionality of fixltx2e, so the fixltx2e module becomes obsolete with "
+"newer LaTeX distributions."
 msgstr ""
 "Nahrá LaTeX-ov balík fixltx2e ktorý obsahuje pár korektúr pre LaTeX. Tieto "
-"korektúry nie sú časťou LaTeX-ovho jadra kvôli spätnej kompatibilite. "
-"Použitím tohto modulu môžu vaše vytlačené dokumenty vyzerať ináč pri "
-"spracovaní s budúcimi verziami LaTeX-u, lebo fixltx2e vtedy môže poskytovať "
-"aj viac korektúr. Berte na vedomie že nedávne LaTeX jadrá (2015/01/01) "
+"korektúry neboli časťou v starších jadrách LaTeX-u kvôli spätnej "
+"kompatibilite. Použitím tohto modulu môžu vaše vytlačené dokumenty vyzerať "
+"ináč pri spracovaní s rozličnými verziami LaTeX-u (závisí to na aktuálnej "
+"fixltx2e verzii). Berte na vedomie že nedávne LaTeX jadrá (2015/01/01) "
 "obsahujú fixltx2e, čiže od TeXLive 2015 je modul fixltx2e obsoletný."
 
 #: lib/layouts/fixme.module:2
@@ -11595,7 +11595,7 @@ msgstr "Fixme Poznámka (Multipar)"
 
 #: lib/layouts/fixme.module:141
 msgid "Fixme (Multipar)"
-msgstr "Fixme (Multipar)"
+msgstr "Fixme (Viac odstavcov)"
 
 #: lib/layouts/fixme.module:153 lib/layouts/fixme.module:195
 msgid "Fixme Summary"
@@ -14173,7 +14173,7 @@ msgstr "PDF (Spojovacie Nastavenie)"
 
 #: lib/layouts/pdfform.module:50
 msgid "PDF link setup"
-msgstr "PDF spojovacie nastavenie"
+msgstr "PDF (spojovacie nastavenie)"
 
 #: lib/layouts/pdfform.module:58 lib/layouts/pdfform.module:63
 msgid "TextField"
@@ -14651,7 +14651,7 @@ msgstr "Šírka Popisu"
 
 #: lib/layouts/sciposter.layout:81
 msgid "The caption width relative to the column (0 through 1)"
-msgstr "Šírka popisu pomerná ku stĺpcu (0 až 1)"
+msgstr "Pomer šírky popisu ku šírke stĺpca (0 <= pomer <= 1)"
 
 #: lib/layouts/scrartcl.layout:3
 msgid "KOMA-Script Article"
@@ -17875,7 +17875,7 @@ msgstr "Zavrieť vložku"
 #: lib/ui/stdcontext.inc:148 lib/ui/stdcontext.inc:154
 #: lib/ui/stdcontext.inc:170 lib/ui/stdcontext.inc:630
 msgid "Dissolve Inset|D"
-msgstr "Rozpustiť vložku do textu"
+msgstr "Rozpustiť Vložku"
 
 #: lib/ui/stdcontext.inc:153 lib/ui/stdcontext.inc:169
 msgid "Show Label|L"
@@ -18301,7 +18301,7 @@ msgstr "Desatinná"
 
 #: lib/ui/stdcontext.inc:444
 msgid "Multicolumn|u"
-msgstr "Viacstĺpcové"
+msgstr "Viac-stĺpcové"
 
 #: lib/ui/stdcontext.inc:445
 msgid "Multirow|w"
@@ -18649,7 +18649,7 @@ msgstr "Späť|S"
 
 #: lib/ui/stdmenus.inc:104
 msgid "Redo|R"
-msgstr "Opakovať|p"
+msgstr "Opäť|p"
 
 #: lib/ui/stdmenus.inc:110
 msgid "Paste Special"
@@ -18697,7 +18697,7 @@ msgstr "Zmenšiť hĺbku listiny|m"
 
 #: lib/ui/stdmenus.inc:138
 msgid "Dissolve Inset"
-msgstr "Rozpustiť vložku"
+msgstr "Rozpustiť Vložku"
 
 #: lib/ui/stdmenus.inc:139
 msgid "TeX Code Settings...|C"
@@ -18777,7 +18777,7 @@ msgstr "Vlepiť ako EMF"
 
 #: lib/ui/stdmenus.inc:166
 msgid "Plain Text|T"
-msgstr "Ako prostý text"
+msgstr "Prostý Text"
 
 #: lib/ui/stdmenus.inc:167
 msgid "Plain Text, Join Lines|J"
@@ -18817,7 +18817,7 @@ msgstr "Formálny Štýl|F"
 
 #: lib/ui/stdmenus.inc:199
 msgid "Multicolumn|M"
-msgstr "Viacstĺpcové"
+msgstr "Viac-stĺpcové"
 
 #: lib/ui/stdmenus.inc:200
 msgid "Multirow|u"
@@ -18853,7 +18853,7 @@ msgstr "Dole"
 
 #: lib/ui/stdmenus.inc:218
 msgid "Middle|M"
-msgstr "Na stred"
+msgstr "Stred"
 
 #: lib/ui/stdmenus.inc:221
 msgid "Add Row|A"
@@ -18889,15 +18889,15 @@ msgstr "Použiť Systém Computer Algebra"
 
 #: lib/ui/stdmenus.inc:250
 msgid "Add Line Above|A"
-msgstr "Pridať riadok ponad"
+msgstr "Pridať Líniu Nad"
 
 #: lib/ui/stdmenus.inc:252
 msgid "Delete Line Above|D"
-msgstr "Zmazať riadok nad"
+msgstr "Zmazať Líniu Nad"
 
 #: lib/ui/stdmenus.inc:253
 msgid "Delete Line Below|e"
-msgstr "Zmazať riadok pod"
+msgstr "Zmazať Líniu Pod"
 
 #: lib/ui/stdmenus.inc:265
 msgid "Transform First Non-Optional to Optional Argument"
@@ -19085,11 +19085,11 @@ msgstr "Plávajúci objekt|a"
 
 #: lib/ui/stdmenus.inc:376
 msgid "Note|N"
-msgstr "Poznámku|P"
+msgstr "Poznámka|P"
 
 #: lib/ui/stdmenus.inc:377
 msgid "Branch|B"
-msgstr "Vetvu|V"
+msgstr "Vetva|V"
 
 #: lib/ui/stdmenus.inc:378
 msgid "Custom Insets"
@@ -19105,15 +19105,15 @@ msgstr "Rámik"
 
 #: lib/ui/stdmenus.inc:383
 msgid "Citation...|C"
-msgstr "Citáciu…|C"
+msgstr "Citácia…|C"
 
 #: lib/ui/stdmenus.inc:384
 msgid "Cross-Reference...|R"
-msgstr "Krížovú referenciu…|r"
+msgstr "Krížová referencia…|r"
 
 #: lib/ui/stdmenus.inc:385
 msgid "Label...|L"
-msgstr "Referenčnú Značku…|Z"
+msgstr "Referenčná Značka…|Z"
 
 #: lib/ui/stdmenus.inc:388
 msgid "Nomenclature Entry...|y"
@@ -19121,11 +19121,11 @@ msgstr "Záznam nomenklatúry…|y"
 
 #: lib/ui/stdmenus.inc:390
 msgid "Table...|T"
-msgstr "Tabuľku…|T"
+msgstr "Tabuľka…|T"
 
 #: lib/ui/stdmenus.inc:391
 msgid "Graphics...|G"
-msgstr "Grafiku…|G"
+msgstr "Grafika…|G"
 
 #: lib/ui/stdmenus.inc:392
 msgid "URL|U"
@@ -19133,15 +19133,15 @@ msgstr "URL|U"
 
 #: lib/ui/stdmenus.inc:393
 msgid "Hyperlink...|k"
-msgstr "Hyperlinku…|k"
+msgstr "Hyperlinka…|k"
 
 #: lib/ui/stdmenus.inc:394
 msgid "Footnote|F"
-msgstr "Poznámku pod čiarou"
+msgstr "Poznámka pod čiarou"
 
 #: lib/ui/stdmenus.inc:395
 msgid "Marginal Note|M"
-msgstr "Okrajovú Poznámku|O"
+msgstr "Okrajová Poznámka|O"
 
 #: lib/ui/stdmenus.inc:397 src/insets/Inset.cpp:92
 msgid "TeX Code"
@@ -19389,7 +19389,7 @@ msgstr "Ďalšia krížová referencia|r"
 
 #: lib/ui/stdmenus.inc:568
 msgid "Go to Label|L"
-msgstr "Prejsť na Značku|j"
+msgstr "Prejsť na Heslo|j"
 
 #: lib/ui/stdmenus.inc:575
 msgid "Save Bookmark 1|S"
@@ -19789,7 +19789,7 @@ msgstr "Nastaviť hornú líniu"
 
 #: lib/ui/stdtoolbars.inc:154
 msgid "Set bottom line"
-msgstr "Nastaviť spodný riadok"
+msgstr "Nastaviť spodnú líniu"
 
 #: lib/ui/stdtoolbars.inc:155
 msgid "Set left line"
@@ -20851,7 +20851,7 @@ msgstr "cap"
 
 #: lib/ui/stdtoolbars.inc:519
 msgid "diamond"
-msgstr "diamond"
+msgstr "diamant"
 
 #: lib/ui/stdtoolbars.inc:520
 msgid "oplus"
@@ -21399,7 +21399,7 @@ msgstr "hbar"
 
 #: lib/ui/stdtoolbars.inc:669
 msgid "angle"
-msgstr "angle"
+msgstr "uhol"
 
 #: lib/ui/stdtoolbars.inc:670
 msgid "top"
@@ -24031,7 +24031,7 @@ msgstr "Menej zaokrúhlene"
 
 #: lib/ui/stdtoolbars.inc:1416
 msgid "Advanced"
-msgstr "Predložene"
+msgstr "Rozšírené"
 
 #: lib/ui/stdtoolbars.inc:1417
 msgid "Retracted"
@@ -25422,9 +25422,9 @@ msgstr "Nahrať núdzovú kópiu ?"
 msgid "&Recover"
 msgstr "&Obnoviť"
 
-#: src/Buffer.cpp:4546
+#: src/Buffer.cpp:4501
 msgid "&Load Original"
-msgstr "&Nahrať Originál"
+msgstr "&Nahrať Pôvodné"
 
 #: src/Buffer.cpp:4557
 #, c-format
@@ -25910,7 +25910,7 @@ msgstr ""
 #: src/Chktex.cpp:59
 #, c-format
 msgid "ChkTeX warning id # %1$s"
-msgstr "Varovanie ChkTeXu id # %1$s"
+msgstr "Varovné číslo ChkTeXu # %1$s"
 
 #: src/Color.cpp:203 src/insets/InsetBibtex.cpp:196
 #: src/insets/InsetBibtex.cpp:215
@@ -30058,7 +30058,7 @@ msgstr "Register sa nedal premenovať. Overte si, či nové meno už existuje."
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "unknown"
-msgstr "neznámy"
+msgstr "neznáme"
 
 #: src/frontends/qt4/GuiInfo.cpp:46
 msgid "shortcut"
@@ -30455,7 +30455,7 @@ msgstr "Systém a Rôzne"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3062 src/frontends/qt4/GuiPrefs.cpp:3123
 msgid "Res&tore"
-msgstr "Reš&taurovať"
+msgstr "O&bnoviť"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3290 src/frontends/qt4/GuiPrefs.cpp:3299
 #: src/frontends/qt4/GuiPrefs.cpp:3305 src/frontends/qt4/GuiPrefs.cpp:3368
@@ -31032,9 +31032,9 @@ msgstr "Úspešné prehliadnutie formátu: %1$s"
 msgid "Error while previewing format: %1$s"
 msgstr "Chyba pri prehliadaní formátu: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:1026
+#: src/frontends/qt4/GuiView.cpp:1028
 msgid "Exit LyX"
-msgstr "Skončiť LyX"
+msgstr "Ukončiť LyX"
 
 #: src/frontends/qt4/GuiView.cpp:1027
 msgid "LyX could not be closed because documents are being processed by LyX."
@@ -31205,11 +31205,11 @@ msgstr ""
 msgid "Chosen File Already Open"
 msgstr "Vybraný Súbor je Už Otvorený"
 
-#: src/frontends/qt4/GuiView.cpp:2598 src/frontends/qt4/GuiView.cpp:2620
-#: src/frontends/qt4/GuiView.cpp:2636 src/frontends/qt4/GuiView.cpp:2737
-#: src/frontends/qt4/GuiView.cpp:2781
+#: src/frontends/qt4/GuiView.cpp:2600 src/frontends/qt4/GuiView.cpp:2622
+#: src/frontends/qt4/GuiView.cpp:2638 src/frontends/qt4/GuiView.cpp:2739
+#: src/frontends/qt4/GuiView.cpp:2783
 msgid "&Rename"
-msgstr "&Premenuj"
+msgstr "&Premenovať"
 
 #: src/frontends/qt4/GuiView.cpp:2613
 #, c-format
@@ -32271,7 +32271,7 @@ msgstr ""
 
 #: src/insets/InsetIndex.cpp:274
 msgid "Index Entry"
-msgstr "Heslo Registra"
+msgstr "Zápis v Registre"
 
 #: src/insets/InsetIndex.cpp:460
 msgid "Unknown index type!"
@@ -32804,7 +32804,7 @@ msgstr "Variabilná Horizontálna Medzera(Bodky)"
 
 #: src/insets/InsetSpace.cpp:117
 msgid "Horizontal Fill (Rule)"
-msgstr "Variabilná Horizontálna Medzera(línia)"
+msgstr "Variabilná Horizontálna Medzera (línia)"
 
 #: src/insets/InsetSpace.cpp:120
 msgid "Horizontal Fill (Left Arrow)"
@@ -33362,7 +33362,7 @@ msgstr "Čítanie súborov s textovými triedami"
 
 #: src/support/debug.cpp:53
 msgid "Version control"
-msgstr "Kontrola verzií"
+msgstr "Správa verzií"
 
 #: src/support/debug.cpp:54
 msgid "External control interface"
@@ -37153,6 +37153,23 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Load alwa&ys"
 #~ msgstr "Vžd&y použiť"
+
+#~ msgid ""
+#~ "Loads the LaTeX package fixltx2e which contains some bug fixes for LaTeX. "
+#~ "Those fixes are not part of the LaTeX kernel because of backward "
+#~ "compatibility. If you use this module your typeset document may look "
+#~ "different when you process it with future LaTeX versions, because "
+#~ "fixltx2e may provide more bugfixes in future versions. Note that the "
+#~ "recent LaTeX kernel (2015/01/01) includes fixltx2e, so the fixltx2e "
+#~ "module becomes obsolete as of TeXLive 2015."
+#~ msgstr ""
+#~ "Nahrá LaTeX-ov balík fixltx2e ktorý obsahuje pár korektúr pre LaTeX. "
+#~ "Tieto korektúry nie sú časťou LaTeX-ovho jadra kvôli spätnej "
+#~ "kompatibilite. Použitím tohto modulu môžu vaše vytlačené dokumenty "
+#~ "vyzerať ináč pri spracovaní s budúcimi verziami LaTeX-u, lebo fixltx2e "
+#~ "vtedy môže poskytovať aj viac korektúr. Berte na vedomie že nedávne LaTeX "
+#~ "jadrá (2015/01/01) obsahujú fixltx2e, čiže od TeXLive 2015 je modul "
+#~ "fixltx2e obsoletný."
 
 #~ msgid "Do &not load"
 #~ msgstr "&Nepoužívať"
