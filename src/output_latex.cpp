@@ -527,6 +527,14 @@ void popLanguageName()
 }
 
 
+string const & openLanguageName()
+{
+	OutputState * state = getOutputState();
+
+	return openLanguageName(state);
+}
+
+
 void latexArgInsets(Paragraph const & par, otexstream & os,
 	OutputParams const & runparams, Layout::LaTeXArgMap const & latexargs, string const & prefix)
 {

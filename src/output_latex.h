@@ -39,6 +39,13 @@ void pushLanguageName(std::string const & lang, bool localswitch = false);
  */
 void popLanguageName();
 
+/** Return a reference to the last active language opened with
+    polyglossia or when using begin/end commands. If none or when
+    using babel with only a begin command, return a reference to
+    an empty string.
+ */
+std::string const & openLanguageName();
+
 /** Export optional and required arguments of the paragraph \p par.
     Non-existing required arguments are output empty: {}.
  */
