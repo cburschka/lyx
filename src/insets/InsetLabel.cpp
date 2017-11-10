@@ -214,6 +214,8 @@ bool InsetLabel::getStatus(Cursor & cur, FuncRequest const & cmd,
 			enabled = false;
 			break;
 		}
+		// no "changetype":
+		// fall through
 	default:
 		return InsetCommand::getStatus(cur, cmd, status);
 	}

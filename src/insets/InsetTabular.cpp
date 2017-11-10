@@ -4702,12 +4702,14 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 		// therefore allow always left but right and center only if there is no width
 		case Tabular::M_ALIGN_LEFT:
 			flag = false;
+			// fall through
 		case Tabular::ALIGN_LEFT:
 			status.setOnOff(tabular.getAlignment(cur.idx(), flag) == LYX_ALIGN_LEFT);
 			break;
 
 		case Tabular::M_ALIGN_RIGHT:
 			flag = false;
+			// fall through
 		case Tabular::ALIGN_RIGHT:
 			status.setEnabled(!(tabular.isMultiRow(cur.idx())
 				&& !tabular.getPWidth(cur.idx()).zero()));
@@ -4716,6 +4718,7 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 
 		case Tabular::M_ALIGN_CENTER:
 			flag = false;
+			// fall through
 		case Tabular::ALIGN_CENTER:
 			status.setEnabled(!(tabular.isMultiRow(cur.idx())
 				&& !tabular.getPWidth(cur.idx()).zero()));
@@ -4736,6 +4739,7 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 
 		case Tabular::M_VALIGN_TOP:
 			flag = false;
+			// fall through
 		case Tabular::VALIGN_TOP:
 			status.setEnabled(!tabular.getPWidth(cur.idx()).zero()
 				&& !tabular.isMultiRow(cur.idx()));
@@ -4745,6 +4749,7 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 
 		case Tabular::M_VALIGN_BOTTOM:
 			flag = false;
+			// fall through
 		case Tabular::VALIGN_BOTTOM:
 			status.setEnabled(!tabular.getPWidth(cur.idx()).zero()
 				&& !tabular.isMultiRow(cur.idx()));
@@ -4754,6 +4759,7 @@ bool InsetTabular::getFeatureStatus(Cursor & cur, string const & s,
 
 		case Tabular::M_VALIGN_MIDDLE:
 			flag = false;
+			// fall through
 		case Tabular::VALIGN_MIDDLE:
 			status.setEnabled(!tabular.getPWidth(cur.idx()).zero()
 				&& !tabular.isMultiRow(cur.idx()));
@@ -5032,7 +5038,7 @@ bool InsetTabular::getStatus(Cursor & cur, FuncRequest const & cmd,
 			status.setEnabled(false);
 			return true;
 		}
-		// Fall back
+		// fall through
 	case LFUN_NEWLINE_INSERT: {
 		if (tabular.getPWidth(cur.idx()).zero()) {
 			status.setEnabled(false);
@@ -5689,6 +5695,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 	case Tabular::M_VALIGN_BOTTOM:
 	case Tabular::M_VALIGN_MIDDLE:
 		flag = false;
+		// fall through
 	case Tabular::VALIGN_TOP:
 	case Tabular::VALIGN_BOTTOM:
 	case Tabular::VALIGN_MIDDLE:
@@ -5811,6 +5818,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 	case Tabular::SET_ALL_LINES:
 		setLines = true;
+		// fall through
 	case Tabular::UNSET_ALL_LINES:
 		for (row_type r = sel_row_start; r <= sel_row_end; ++r)
 			for (col_type c = sel_col_start; c <= sel_col_end; ++c) {
@@ -5935,6 +5943,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 	case Tabular::UNSET_LTFIRSTHEAD:
 		flag = false;
+		// fall through
 	case Tabular::SET_LTFIRSTHEAD:
 		tabular.getRowOfLTFirstHead(row, ltt);
 		checkLongtableSpecial(ltt, value, flag);
@@ -5943,6 +5952,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 	case Tabular::UNSET_LTHEAD:
 		flag = false;
+		// fall through
 	case Tabular::SET_LTHEAD:
 		tabular.getRowOfLTHead(row, ltt);
 		checkLongtableSpecial(ltt, value, flag);
@@ -5951,6 +5961,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 	case Tabular::UNSET_LTFOOT:
 		flag = false;
+		// fall through
 	case Tabular::SET_LTFOOT:
 		tabular.getRowOfLTFoot(row, ltt);
 		checkLongtableSpecial(ltt, value, flag);
@@ -5959,6 +5970,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 	case Tabular::UNSET_LTLASTFOOT:
 		flag = false;
+		// fall through
 	case Tabular::SET_LTLASTFOOT:
 		tabular.getRowOfLTLastFoot(row, ltt);
 		checkLongtableSpecial(ltt, value, flag);
@@ -5967,6 +5979,7 @@ void InsetTabular::tabularFeatures(Cursor & cur,
 
 	case Tabular::UNSET_LTNEWPAGE:
 		flag = false;
+		// fall through
 	case Tabular::SET_LTNEWPAGE:
 		tabular.setLTNewPage(row, flag);
 		break;

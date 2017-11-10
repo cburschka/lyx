@@ -207,6 +207,8 @@ bool InsetFloat::getStatus(Cursor & cur, FuncRequest const & cmd,
 			flag.setEnabled(false);
 			return true;
 		}
+		// no subfloat:
+		// fall through
 
 	default:
 		return InsetCaptionable::getStatus(cur, cmd, flag);

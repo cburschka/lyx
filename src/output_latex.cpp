@@ -1021,8 +1021,8 @@ void TeXOnePar(Buffer const & buf,
 			break;
 		}
 	}
-
-	// fall through possible
+	// possible
+	// fall through
 	default:
 		// we don't need it for the last paragraph!!!
 		if (nextpar)

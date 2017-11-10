@@ -2049,9 +2049,8 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			if (current_view_ == 0)
 				createView();
 		}
-		// fall through
 	}
-
+	// fall through
 	default:
 		// The LFUN must be for one of GuiView, BufferView, Buffer or Cursor;
 		// let's try that:
@@ -2694,7 +2693,8 @@ bool GuiApplication::notify(QObject * receiver, QEvent * event)
 #endif
 			// In release mode, try to exit gracefully.
 			this->exit(1);
-
+		// FIXME: GCC 7 thinks we can fall through here. Can we?
+		// fall through
 		case BufferException: {
 			if (!current_view_ || !current_view_->documentBufferView())
 				return false;

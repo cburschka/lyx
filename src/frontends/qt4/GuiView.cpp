@@ -1904,7 +1904,8 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_DIALOG_TOGGLE:
 		flag.setOnOff(isDialogVisible(cmd.getArg(0)));
-		// fall through to set "enable"
+		// to set "enable"
+		// fall through
 	case LFUN_DIALOG_SHOW: {
 		string const name = cmd.getArg(0);
 		if (!doc_buffer)
