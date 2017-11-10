@@ -3590,7 +3590,7 @@ void GuiPreferences::dispatchParams()
 		update_screen_font_ = false;
 	}
 
-        if (update_previews_) {
+	if (update_previews_) {
 		// resets flag in case second apply in same dialog
 		theBufferList().updatePreviews();
 		update_previews_ = false;
