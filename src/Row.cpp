@@ -164,7 +164,8 @@ Row::Row()
 	  begin_margin_sel(false), end_margin_sel(false),
 	  changed_(false), crc_(0),
 	  pit_(0), pos_(0), end_(0),
-	  right_boundary_(false), flushed_(false), rtl_(false)
+	  right_boundary_(false), flushed_(false), rtl_(false),
+	  changebar_(false)
 {}
 
 
@@ -371,6 +372,8 @@ void Row::finalizeLast()
 	if (elt.final)
 		return;
 	elt.final = true;
+	if (elt.change.changed())
+		changebar_ = true;
 
 	if (elt.type == STRING) {
 		dim_.wid -= elt.dim.wid;
