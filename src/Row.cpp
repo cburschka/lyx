@@ -162,18 +162,11 @@ Row::Row()
 	: separator(0), label_hfill(0), left_margin(0), right_margin(0),
 	  sel_beg(-1), sel_end(-1),
 	  begin_margin_sel(false), end_margin_sel(false),
-	  changed_(false), crc_(0),
+	  changed_(true),
 	  pit_(0), pos_(0), end_(0),
 	  right_boundary_(false), flushed_(false), rtl_(false),
 	  changebar_(false)
 {}
-
-
-void Row::setCrc(size_type crc) const
-{
-	changed_ = crc != crc_;
-	crc_ = crc;
-}
 
 
 bool Row::isMarginSelected(bool left_margin, DocIterator const & beg,
