@@ -1,4 +1,4 @@
-/*
+﻿/*
 
 Windows PDF view helper
 Author: Uwe Stöhr and Joost Verburg
@@ -9,6 +9,10 @@ The application will launch the default PDF viewer to display the PDF file,
 but works around the file locking problems of Adobe Reader and Acrobat.
 
 */
+
+# FIXME
+#Unicode true
+#doesn't work with the Uniode system.dll of NSIS 3.0.2 
 
 !include LogicLib.nsh
 !include FileFunc.nsh
