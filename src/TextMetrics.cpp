@@ -468,7 +468,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		row.pit(pit);
 		need_new_row = breakRow(row, right_margin);
 		setRowHeight(row);
-		row.setChanged(false);
+		row.changed(true);
 		if (row_index || row.endpos() < par.size()
 		    || (row.right_boundary() && par.inInset().lyxCode() != CELL_CODE)) {
 			/* If there is more than one row or the row has been
@@ -1888,8 +1888,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 				row.end_margin_sel = sel_end.pit() > pit;
 		}
 
-		// Row signature; has row changed since last paint?
-		row.setCrc(pm.computeRowSignature(row, *bv_));
+		// has row changed since last paint?
 		bool row_has_changed = row.changed()
 			|| bv_->hadHorizScrollOffset(text_, pit, row.pos())
 			|| bv_->needRepaint(text_, row);
@@ -1907,6 +1906,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 			// Paint only the insets if the text itself is
 			// unchanged.
 			rp.paintOnlyInsets();
+			row.changed(false);
 			y += row.descent();
 			continue;
 		}
@@ -1958,6 +1958,8 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 
 		// Restore full_repaint status.
 		pi.full_repaint = tmp;
+
+		row.changed(false);
 	}
 
 	//LYXERR(Debug::PAINTING, ".");

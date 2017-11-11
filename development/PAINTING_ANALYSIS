@@ -60,6 +60,42 @@ cursor.
 
 * Clean-up of drawing code
 
+** Make SinglePar update flag useful again. 
+
+The current code can be very expensive when moving cursor inside a
+huge table, for example. We should test the flag again, although this
+will probably lead to some glitches here and there.
+
+** Set Row::changed() in a finer way
+
+*** singleParUpdate
+
+When the height of the current paragraph changes, there is no need for
+a full screen update. Only the rows after the current one need to have
+their position recomputed.
+
+This is also true when scrolling (how to do that?)
+
+*** redoParagraph
+
+It should be possible to check whether the new row is the same as the
+old one and keep its changed() status in this case. This would reduce
+a lot the amount of stuff to redraw.
+
+** Put labels and friends in the Row as elements
+
+It should not be necessary to access the Paragraph object to draw.
+Adding the static elements to Row is a lot of work, but worth it IMO.
+
+** Create a unique row by paragraph and break it afterwards
+
+This should be a performance gain (only if paragraph breaking still
+shows as expensive after the rest is done)
+
+** do not add the vertical margin of main text to first/last row
+
+Would make code cleaner. Probably no so difficult.
+
 ** When a paragraph ends with a newline, compute correctly the height of the extra row.
 ** Merging bv::updateMetrics and tm::metrics
 

@@ -139,9 +139,7 @@ public:
 	///
 	bool changed() const { return changed_; }
 	///
-	void setChanged(bool c) { changed_ = c; }
-	///
-	void setCrc(size_type crc) const;
+	void changed(bool c) const { changed_ = c; }
 	/// Set the selection begin and end.
 	/**
 	  * This is const because we update the selection status only at draw()
@@ -315,8 +313,6 @@ private:
 
 	/// has the Row appearance changed since last drawing?
 	mutable bool changed_;
-	/// CRC of row contents.
-	mutable size_type crc_;
 	/// Index of the paragraph that contains this row
 	pit_type pit_;
 	/// first pos covered by this row
