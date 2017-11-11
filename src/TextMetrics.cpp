@@ -972,6 +972,10 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 		row.addVirtual(end, docstring(1, char_type(0x00B6)), f, Change());
 	}
 
+	// Is there a end-of-paragaph change?
+	if (i == end && par.lookupChange(end).changed() && !need_new_row)
+		row.needsChangeBar(true);
+
 	// if the row is too large, try to cut at last separator. In case
 	// of success, reset indication that the row was broken abruptly.
 	int const next_width = max_width_ - leftMargin(row.pit(), row.endpos())
@@ -1945,7 +1949,8 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		rp.paintSelection();
 		rp.paintAppendix();
 		rp.paintDepthBar();
-		rp.paintChangeBar();
+		if (row.needsChangeBar())
+			rp.paintChangeBar();
 		if (i == 0 && !row.isRTL())
 			rp.paintFirst();
 		if (i == nrows - 1 && row.isRTL())

@@ -247,18 +247,6 @@ void RowPainter::paintChange(Row::Element const & e) const
 
 void RowPainter::paintChangeBar() const
 {
-	pos_type const start = row_.pos();
-	pos_type end = row_.endpos();
-
-	if (par_.size() == end) {
-		// this is the last row of the paragraph;
-		// thus, we must also consider the imaginary end-of-par character
-		end++;
-	}
-
-	if (start == end || !par_.isChanged(start, end))
-		return;
-
 	int const height = tm_.isLastRow(row_)
 		? row_.ascent()
 		: row_.height();

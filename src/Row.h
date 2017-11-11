@@ -266,6 +266,11 @@ public:
 	void reverseRTL(bool rtl_par);
 	///
 	bool isRTL() const { return rtl_; }
+	///
+	bool needsChangeBar() const { return changebar_; }
+	///
+	void needsChangeBar(bool ncb) { changebar_ = ncb; }
+
 	/// Find row element that contains \c pos, and compute x offset.
 	const_iterator const findElement(pos_type pos, bool boundary, double & x) const;
 
@@ -326,6 +331,8 @@ private:
 	Dimension dim_;
 	/// true when this row lives in a right-to-left paragraph
 	bool rtl_;
+	/// true when a changebar should be drawn in the margin
+	bool changebar_;
 };
 
 
