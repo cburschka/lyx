@@ -524,12 +524,18 @@ bool InsetExternal::showInsetDialog(BufferView * bv) const
 
 void InsetExternal::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	if (!isRendererValid())
+		updatePreview();
+
 	renderer_->metrics(mi, dim);
 }
 
 
 void InsetExternal::draw(PainterInfo & pi, int x, int y) const
 {
+	if (!isRendererValid())
+		updatePreview();
+
 	if (renderer_->asButton())
 		renderer_->setRenderState(mouse_hover_[pi.base.bv]);
 	renderer_->draw(pi, x, y);
@@ -595,9 +601,22 @@ InsetExternalParams const & InsetExternal::params() const
 }
 
 
-void InsetExternal::updatePreview()
+bool InsetExternal::isPreviewed() const
 {
-	setParams(params_);
+	return (external::getTemplatePtr(params_) && !params_.filename.empty()
+		&& params_.display
+		&& lyxrc.display_graphics
+		&& params_.preview_mode != PREVIEW_OFF
+		&& (params_.preview_mode != PREVIEW_INSTANT
+		    || RenderPreview::previewText()));
+}
+
+
+bool InsetExternal::isRendererValid() const
+{
+	if (!renderer_->asButton())
+		return isPreviewed();
+	return !isPreviewed();
 }
 
 
@@ -609,12 +628,13 @@ void InsetExternal::setParams(InsetExternalParams const & p)
 	// will use this.
 	defaultTemplateName = params_.templatename();
 
-	if (!external::getTemplatePtr(params_) || params_.filename.empty()
-		|| !params_.display
-		|| !lyxrc.display_graphics
-		|| params_.preview_mode == PREVIEW_OFF
-		|| (params_.preview_mode == PREVIEW_INSTANT
-		    && !RenderPreview::previewText())) {
+	updatePreview();
+}
+
+
+void InsetExternal::updatePreview() const
+{
+	if (!isPreviewed()) {
 		RenderButton * button_ptr = renderer_->asButton();
 		if (!button_ptr) {
 			renderer_.reset(new RenderButton);
