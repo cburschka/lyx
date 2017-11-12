@@ -108,7 +108,7 @@ public:
 	///
 	void setParams(InsetExternalParams const &);
 	/// Update not loaded previews
-	void updatePreview();
+	void updatePreview() const;
 	/// \returns the number of rows (\n's) of generated code.
 	void latex(otexstream &, OutputParams const &) const;
 	///
@@ -163,11 +163,15 @@ private:
 	 *  and the preview should be regenerated.
 	 */
 	void fileChanged() const;
+	/// Is this inset using (instant or graphics) preview?
+	bool isPreviewed() const;
+	/// Do we have the right renderer (button, graphic or monitored preview)?
+	bool isRendererValid() const;
 
 	/// The current params
 	InsetExternalParams params_;
 	/// The thing that actually draws the image on LyX's screen.
-	unique_ptr<RenderBase> renderer_;
+	mutable unique_ptr<RenderBase> renderer_;
 	/// changes color of the button when mouse enters/leaves this inset
 	mutable std::map<BufferView const *, bool> mouse_hover_;
 };
