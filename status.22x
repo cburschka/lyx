@@ -100,6 +100,9 @@ What's new
 
 - Fix crash with undo and child documents (bug 10643).
 
+- Fix crash when changing preview preferences while previewable
+  external inset is open (bug 10785).
+
 - Remove duplicate entries from the Symbols dialog (bug 10644).
 
 - Always show the float type in the float inset label (bug 10618).
