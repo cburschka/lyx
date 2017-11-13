@@ -338,7 +338,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2017-10-13 11:34+0200\n"
-"PO-Revision-Date: 2017-09-02 19:06+0200\n"
+"PO-Revision-Date: 2017-11-13 11:48+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -2232,18 +2232,19 @@ msgstr "Nom du fichier image"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:313
 msgid "&Coordinates and Clipping"
-msgstr ""
+msgstr "&Coordonnées et rognage"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:347
 msgid ""
 "Clip to the coordinates specified below (bounding box for DVI/PS output, "
 "viewport for PDF output)"
 msgstr ""
+"Rogner selon les coordonnées indiquées ci-après (boîte d'encombrement pour "
+"la sortie DVI/PS, vue pour la sortie PDF)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:350
-#, fuzzy
 msgid "Clip to c&oordinates"
-msgstr "Rogner aux valeurs de la boîte de délimitation"
+msgstr "Rogner aux c&oordonnées"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:438
 #: src/frontends/qt4/ui/GraphicsUi.ui:445
@@ -2260,6 +2261,9 @@ msgid ""
 "Read coordinates from the file (bounding box value in case of PostScript "
 "files, graphic dimensions in case of other file types)"
 msgstr ""
+"Lire les coordonnées depuis le fichier (valeurs de la boîte d'encombrement "
+"pour les fichiers PostScript, dimensions graphiques pour les autres types de "
+"fichier)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:520
 #: src/frontends/qt4/ui/GraphicsUi.ui:527
@@ -2296,9 +2300,8 @@ msgid "Graphics Group"
 msgstr "Groupe de graphiques"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:680
-#, fuzzy
 msgid "Assigned &to group:"
-msgstr "A&ssocier au groupe :"
+msgstr "A&ssigner au groupe :"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:690
 msgid "Click to define a new graphics group."
@@ -4117,11 +4120,12 @@ msgid "Co&pier:"
 msgstr "&Copieur :"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:202
-#, fuzzy
 msgid ""
 "Specification of the default output formats when using specific LaTeX "
 "variants"
-msgstr "Spécifier le format implicite du résultat pour (PDF)LaTeX"
+msgstr ""
+"Spécifier les formats implicites du résultat pour des variantes de LaTeX "
+"spécifiques"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:205
 msgid "Default Output Formats"
@@ -4134,20 +4138,18 @@ msgstr ""
 "polices non-TeX"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:260
-#, fuzzy
 msgid ""
 "This is the default output format for LyX documents, except for DocBook "
 "classes, documents that use non-TeX fonts and Japanese documents"
 msgstr ""
-"Le format de sortie implicite pour les documents (sauf avec des polices non-"
-"TeX)"
+"Ceci est le format de sortie implicite pour les documents LyX, sauf pour les "
+"classes DocBook, les documents utilisant les polices non-TeX et les "
+"documents japonais"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:267
-#, fuzzy
 msgid "The default output format for Japanese documents (using pLaTeX)"
 msgstr ""
-"Spécifier le format implicite du résultat pour les documents utilisant les "
-"polices non-TeX"
+"Format implicite du résultat pour les documents japonais (utilisant pLaTeX)"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:274
 msgid "With n&on-TeX fonts:"
@@ -4158,9 +4160,8 @@ msgid "With &TeX fonts:"
 msgstr "Avec polices &TeX :"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:294
-#, fuzzy
 msgid "&Japanese:"
-msgstr "Japonnais"
+msgstr "&Japonais"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -26673,12 +26674,10 @@ msgid "math macro new parameter"
 msgstr "macro mathématique : nouveau paramètre"
 
 #: src/Color.cpp:272
-#, fuzzy
 msgid "collapsible inset text"
 msgstr "texte d'insert repliable"
 
 #: src/Color.cpp:273
-#, fuzzy
 msgid "collapsible inset frame"
 msgstr "cadre d'insert repliable"
 
@@ -29363,9 +29362,8 @@ msgstr ""
 "les ajouter."
 
 #: src/frontends/qt4/GuiBibtex.cpp:309
-#, fuzzy
 msgid "Biblatex Bibliography"
-msgstr "Bibliographie BibTeX"
+msgstr "Bibliographie Biblatex"
 
 #: src/frontends/qt4/GuiBibtex.cpp:345 src/insets/InsetBibtex.cpp:237
 msgid "all reference units"
@@ -32069,9 +32067,8 @@ msgid "%1$s unknown command!"
 msgstr "%1$s : commande inconnue !"
 
 #: src/frontends/qt4/GuiView.cpp:4146
-#, fuzzy
 msgid "Zoom level is now %1$d% (default value: %2$d%)"
-msgstr "Niveau de zoom actuel %1$d%"
+msgstr "Le niveau de zoom est maintenant de %1$d% (valeur implicite : %2$d%)"
 
 #: src/frontends/qt4/GuiView.cpp:4202
 msgid "Please, preview the document first."
