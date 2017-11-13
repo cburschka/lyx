@@ -340,7 +340,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2017-10-27 13:31-0400\n"
-"PO-Revision-Date: 2017-10-14 17:35+0200\n"
+"PO-Revision-Date: 2017-11-13 11:53+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -8573,13 +8573,13 @@ msgstr "CR-number"
 
 #: lib/layouts/acmsiggraph-0-92.layout:305 lib/layouts/acmsiggraph.layout:261
 msgid "Number of the category"
-msgstr "Number of the category"
+msgstr "Numéro de la catégorie"
 
 #: lib/layouts/acmsiggraph-0-92.layout:310
 #: lib/layouts/acmsiggraph-0-92.layout:311 lib/layouts/acmsiggraph.layout:266
 #: lib/layouts/acmsiggraph.layout:267
 msgid "Subcategory"
-msgstr "Subcategory"
+msgstr "Sous-catégorie"
 
 #: lib/layouts/acmsiggraph-0-92.layout:316 lib/layouts/acmsiggraph.layout:272
 msgid "Third-level"
@@ -11873,7 +11873,6 @@ msgid "Fix LaTeX"
 msgstr "Correction LaTeX"
 
 #: lib/layouts/fixltx2e.module:10
-#, fuzzy
 msgid ""
 "Loads the LaTeX package fixltx2e which contains some bug fixes for LaTeX. "
 "Those fixes were not part of older LaTeX kernels because of backward "
@@ -11887,7 +11886,9 @@ msgstr ""
 "d'erreurs LaTeX. Ces corrections ne figure pas dans le noyau LaTeX pour des "
 "raisons de rétro-compatibilité. Si vous utilisez ce module, votre document "
 "imprimé pourra se présenter différemment avec de futures versions de LaTeX, "
-"parce que fixltx2e pourra proposer de nouvelles corrections dans le futur."
+"en fonction des différentes versions de fixltx2e. Nota : les noyaux LaTeX "
+"récents (à partir du 01/01/2015) incluent la fonctionnalité de fixltx2e, le "
+"module devient donc obsolète avec les nouvelles distributions LaTeX."
 
 #: lib/layouts/fixme.module:2
 msgid "FiXme"
