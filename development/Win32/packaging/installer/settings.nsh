@@ -52,5 +52,5 @@ These typically need to be modified for each LyX release
  
 # definitions for the Complete installer
 !if ${SETUPTYPE} == BUNDLE
- !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.6361.exe"
+ !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.6520.exe"
 !endif
