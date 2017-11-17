@@ -1,0 +1,1768 @@
+commit 465cd79bcbab3e036cf86ab4682386c255a91eb6
+Author: Pavel Sanda <psanda@ucsd.edu>
+Date:   Thu Nov 16 09:33:29 2017 -0800
+
+    move initialization so older gcc still works
+
+diff --git a/src/frontends/qt4/GuiView.cpp b/src/frontends/qt4/GuiView.cpp
+index 68ef3b9..b76138b 100644
+--- a/src/frontends/qt4/GuiView.cpp
++++ b/src/frontends/qt4/GuiView.cpp
+@@ -508,7 +508,7 @@ QSet<Buffer const *> GuiView::GuiViewPrivate::busyBuffers;
+ 
+ GuiView::GuiView(int id)
+ 	: d(*new GuiViewPrivate(this)), id_(id), closing_(false), busy_(0),
+-	  command_execute_(false), minibuffer_focus_(false), devel_mode_(false)
++	  command_execute_(false), minibuffer_focus_(false), zoom_ratio_(1.0), devel_mode_(false)
+ {
+ 	connect(this, SIGNAL(bufferViewChanged()),
+ 	        this, SLOT(onBufferViewChanged()));
+diff --git a/src/frontends/qt4/GuiView.h b/src/frontends/qt4/GuiView.h
+index ecf4e44..ed80ca3 100644
+--- a/src/frontends/qt4/GuiView.h
++++ b/src/frontends/qt4/GuiView.h
+@@ -472,7 +472,7 @@ private:
+ 
+ 	/// The rate from which the actual zoom value is calculated
+ 	/// from the default zoom pref
+-	double zoom_ratio_ = 1.0;
++	double zoom_ratio_;
+ 	/// Minimum zoom percentage
+ 	static int const zoom_min_ = 10;
+ 
+
+commit de8c60ba2a3779b31a1d8526541a9583b076221c
+Author: Pavel Sanda <psanda@ucsd.edu>
+Date:   Thu Nov 16 09:15:07 2017 -0800
+
+    Revert b30161b59 (Remove FileMonitorBlocker which does not work reliably on all platforms)
+
+diff --git a/src/Buffer.cpp b/src/Buffer.cpp
+index 9ec20e0..6e37ee9 100644
+--- a/src/Buffer.cpp
++++ b/src/Buffer.cpp
+@@ -383,6 +383,9 @@ public:
+ 	/// Notify or clear of external modification
+ 	void fileExternallyModified(bool exists);
+ 
++	/// Block notifications of external modifications
++	FileMonitorBlocker blockFileMonitor() { return file_monitor_->block(); }
++
+ 	/// has been externally modified? Can be reset by the user.
+ 	mutable bool externally_modified_;
+ 
+@@ -1379,6 +1382,7 @@ FileName Buffer::getBackupName() const {
+ // Should probably be moved to somewhere else: BufferView? GuiView?
+ bool Buffer::save() const
+ {
++	FileMonitorBlocker block = d->blockFileMonitor();
+ 	docstring const file = makeDisplayPath(absFileName(), 20);
+ 	d->filename.refresh();
+ 
+@@ -5344,7 +5348,8 @@ void Buffer::Impl::refreshFileMonitor()
+ 
+ void Buffer::Impl::fileExternallyModified(bool const exists)
+ {
+-	// ignore notifications after our own saving operations
++	// prevent false positives, because FileMonitorBlocker is not enough on
++	// OSX.
+ 	if (checksum_ == filename.checksum()) {
+ 		LYXERR(Debug::FILES, "External modification but "
+ 		       "checksum unchanged: " << filename);
+diff --git a/src/support/FileMonitor.cpp b/src/support/FileMonitor.cpp
+index c703d2b..2a794f2 100644
+--- a/src/support/FileMonitor.cpp
++++ b/src/support/FileMonitor.cpp
+@@ -202,6 +202,42 @@ void FileMonitor::changed(bool const exists)
+ }
+ 
+ 
++FileMonitorBlocker FileMonitor::block(int delay)
++{
++	FileMonitorBlocker blocker = blocker_.lock();
++	if (!blocker)
++		blocker_ = blocker = make_shared<FileMonitorBlockerGuard>(this);
++	blocker->setDelay(delay);
++	return blocker;
++}
++
++
++FileMonitorBlockerGuard::FileMonitorBlockerGuard(FileMonitor * monitor)
++	: monitor_(monitor), delay_(0)
++{
++	QObject::disconnect(monitor->monitor_.get(), SIGNAL(fileChanged(bool)),
++	                    monitor, SLOT(changed(bool)));
++}
++
++
++void FileMonitorBlockerGuard::setDelay(int delay)
++{
++	delay_ = max(delay_, delay);
++}
++
++
++FileMonitorBlockerGuard::~FileMonitorBlockerGuard()
++{
++	if (!monitor_)
++		return;
++	// Even if delay_ is 0, the QTimer is necessary. Indeed, the notifications
++	// from QFileSystemWatcher that we meant to ignore are not going to be
++	// treated immediately, so we must yield to give us the opportunity to
++	// ignore them.
++	QTimer::singleShot(delay_, monitor_, SLOT(connectToFileMonitorGuard()));
++}
++
++
+ ActiveFileMonitor::ActiveFileMonitor(std::shared_ptr<FileMonitorGuard> monitor,
+                                      FileName const & filename, int interval)
+ 	: FileMonitor(monitor), filename_(filename), interval_(interval),
+diff --git a/src/support/FileMonitor.h b/src/support/FileMonitor.h
+index 14aa834..fdf2bca 100644
+--- a/src/support/FileMonitor.h
++++ b/src/support/FileMonitor.h
+@@ -60,6 +60,12 @@ typedef std::unique_ptr<ActiveFileMonitor> ActiveFileMonitorPtr;
+ ///   monitor.connect(...);
+ /// (stops watching the first)
+ ///
++/// Block notifications for the duration of a scope:
++///   {
++///       FileMonitorBlocker block = monitor.block();
++///       ...
++///   }
++///
+ /// Reset connections:
+ ///   monitor.disconnect();
+ ///   or the disconnect method of the connection object for the boost signal.
+@@ -125,10 +131,27 @@ private:
+ };
+ 
+ 
++class FileMonitorBlockerGuard : public QObject
++{
++	Q_OBJECT
++	QPointer<FileMonitor> monitor_;
++	int delay_;
++
++public:
++	FileMonitorBlockerGuard(FileMonitor * monitor);
++	~FileMonitorBlockerGuard();
++	void setDelay(int delay);
++};
++
++
++typedef std::shared_ptr<FileMonitorBlockerGuard> FileMonitorBlocker;
++
++
+ /// Main class
+ class FileMonitor : public QObject
+ {
+ 	Q_OBJECT
++	friend class FileMonitorBlockerGuard;
+ 
+ public:
+ 	FileMonitor(std::shared_ptr<FileMonitorGuard> monitor);
+@@ -142,6 +165,20 @@ public:
+ 	void disconnect();
+ 	/// absolute path being tracked
+ 	std::string const & filename() { return monitor_->filename(); }
++	/// Creates a guard that blocks notifications. Copyable. Notifications from
++	/// this monitor are blocked as long as there are copies of the
++	/// FileMonitorBlocker around.
++	/// \param delay is the amount waited in ms after expiration of the guard
++	/// before reconnecting. It can be used to slow down incoming events
++	/// accordingly. A value of 0 is still made asynchronous, because of the
++	/// fundamentally asynchronous nature of QFileSystemWatcher. To catch one's
++	/// own file operations, a value of 0 for delay is sufficient with the
++	/// inotify backend (e.g. Linux); for OSX (kqueue), a value of 100ms is
++	/// unsufficient and more tests need to be done in combination with
++	/// flushing/syncing to disk in order to understand how to catch one's own
++	/// operations reliably. No feedback about Windows. See
++	/// <https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg200252.html>.
++	FileMonitorBlocker block(int delay = 0);
+ 	/// Make sure the good file is being monitored, after e.g. a move or a
+ 	/// deletion. See <https://bugreports.qt.io/browse/QTBUG-46483>. This is
+ 	/// called automatically.
+@@ -162,6 +199,8 @@ private:
+ 	sig fileChanged_;
+ 	/// the unique watch for our file
+ 	std::shared_ptr<FileMonitorGuard> const monitor_;
++	///
++	std::weak_ptr<FileMonitorBlockerGuard> blocker_;
+ };
+ 
+ 
+
+commit ab4584d9a5747aad2c23cf7b26ee05a30de89bc9
+Author: Pavel Sanda <psanda@ucsd.edu>
+Date:   Thu Nov 16 09:22:11 2017 -0800
+
+    Revert b30161b591264f : If the external modification is a deletion, do not ask for reloading.
+
+diff --git a/src/Buffer.cpp b/src/Buffer.cpp
+index 6e37ee9..b83f872 100644
+--- a/src/Buffer.cpp
++++ b/src/Buffer.cpp
+@@ -380,15 +380,15 @@ public:
+ 	// Make sure the file monitor monitors the good file.
+ 	void refreshFileMonitor();
+ 
++	/// has it been notified of an external modification?
++	bool isExternallyModified() const { return externally_modified_; }
++
+ 	/// Notify or clear of external modification
+-	void fileExternallyModified(bool exists);
++	void fileExternallyModified(bool modified);
+ 
+ 	/// Block notifications of external modifications
+ 	FileMonitorBlocker blockFileMonitor() { return file_monitor_->block(); }
+ 
+-	/// has been externally modified? Can be reset by the user.
+-	mutable bool externally_modified_;
+-
+ private:
+ 	/// So we can force access via the accessors.
+ 	mutable Buffer const * parent_buffer;
+@@ -397,6 +397,9 @@ private:
+ 	int char_count_;
+ 	int blank_count_;
+ 
++	/// has been externally modified? Can be reset by the user.
++	mutable bool externally_modified_;
++
+ 	FileMonitorPtr file_monitor_;
+ };
+ 
+@@ -438,8 +441,9 @@ Buffer::Impl::Impl(Buffer * owner, FileName const & file, bool readonly_,
+ 	  bibfile_cache_valid_(false), cite_labels_valid_(false), preview_error_(false),
+ 	  inset(0), preview_loader_(0), cloned_buffer_(cloned_buffer),
+ 	  clone_list_(0), doing_export(false),
+-	  tracked_changes_present_(0), externally_modified_(false), parent_buffer(0),
+-	  word_count_(0), char_count_(0), blank_count_(0)
++	  tracked_changes_present_(0), parent_buffer(0),
++	  word_count_(0), char_count_(0), blank_count_(0),
++	  externally_modified_(false)
+ {
+ 	refreshFileMonitor();
+ 	if (!cloned_buffer_) {
+@@ -5338,29 +5342,26 @@ void Buffer::Impl::refreshFileMonitor()
+ 	// The previous file monitor is invalid
+ 	// This also destroys the previous file monitor and all its connections
+ 	file_monitor_ = FileSystemWatcher::monitor(filename);
++	fileExternallyModified(false);
+ 	// file_monitor_ will be destroyed with *this, so it is not going to call a
+ 	// destroyed object method.
+-	file_monitor_->connect([this](bool exists) {
+-			fileExternallyModified(exists);
+-		});
++	file_monitor_->connect([this](){ fileExternallyModified(true); });
+ }
+ 
+ 
+ void Buffer::Impl::fileExternallyModified(bool const exists)
+ {
+-	// prevent false positives, because FileMonitorBlocker is not enough on
+-	// OSX.
+-	if (checksum_ == filename.checksum()) {
++	if (modified) {
++		// prevent false positives, because FileMonitorBlocker is not enough on
++		// OSX.
++		if (filename.exists() && checksum_ == filename.checksum()) {
+ 		LYXERR(Debug::FILES, "External modification but "
+-		       "checksum unchanged: " << filename);
++			"checksum unchanged: " << filename);
+ 		return;
++		}
++		lyx_clean = bak_clean = false;
+ 	}
+-	lyx_clean = bak_clean = false;
+-	// If the file has been deleted, only mark the file as dirty since it is
+-	// pointless to prompt for reloading. If later a file is moved into this
+-	// location, then the externally modified warning will appear then.
+-	if (exists)
+-			externally_modified_ = true;
++	externally_modified_ = modified;
+ 	// Update external modification notification.
+ 	// Dirty buffers must be visible at all times.
+ 	if (wa_ && wa_->unhide(owner_))
+@@ -5373,15 +5374,13 @@ void Buffer::Impl::fileExternallyModified(bool const exists)
+ 
+ bool Buffer::notifiesExternalModification() const
+ {
+-	return d->externally_modified_;
++	return d->isExternallyModified();
+ }
+ 
+ 
+ void Buffer::clearExternalModification() const
+ {
+-	d->externally_modified_ = false;
+-	if (d->wa_)
+-		d->wa_->updateTitles();
++	d->fileExternallyModified(false);
+ }
+ 
+ 
+diff --git a/src/graphics/GraphicsCacheItem.cpp b/src/graphics/GraphicsCacheItem.cpp
+index f54ce80..576ad92 100644
+--- a/src/graphics/GraphicsCacheItem.cpp
++++ b/src/graphics/GraphicsCacheItem.cpp
+@@ -220,7 +220,7 @@ void CacheItem::Impl::startMonitor()
+ 		return;
+ 	monitor_ = FileSystemWatcher::activeMonitor(filename_);
+ 	// Disconnected at the same time as this is destroyed.
+-	monitor_->connect([=](bool /* exists */){ startLoading(); });
++	monitor_->connect([=](){ startLoading(); });
+ }
+ 
+ 
+diff --git a/src/insets/RenderPreview.cpp b/src/insets/RenderPreview.cpp
+index df0ac64..18882fc 100644
+--- a/src/insets/RenderPreview.cpp
++++ b/src/insets/RenderPreview.cpp
+@@ -304,7 +304,7 @@ void RenderMonitoredPreview::startMonitoring() const
+ {
+ 	if (!monitoring()) {
+ 		monitor_ = FileSystemWatcher::activeMonitor(filename_);
+-		monitor_->connect([this](bool /* exists */){ changed_(); });
++		monitor_->connect(changed_);
+ 	}
+ }
+ 
+diff --git a/src/support/FileMonitor.cpp b/src/support/FileMonitor.cpp
+index 2a794f2..f1fefb8 100644
+--- a/src/support/FileMonitor.cpp
++++ b/src/support/FileMonitor.cpp
+@@ -118,37 +118,31 @@ FileMonitorGuard::~FileMonitorGuard()
+ }
+ 
+ 
+-void FileMonitorGuard::refresh(bool const emit)
++void FileMonitorGuard::refresh()
+ {
+ 	if (filename_.empty())
+ 		return;
+ 	QString const qfilename = toqstr(filename_);
+-	if (!qwatcher_->files().contains(qfilename)) {
+-		bool const existed = exists_;
+-		exists_ = QFile(qfilename).exists();
++	if(!qwatcher_->files().contains(qfilename)) {
++		bool exists = QFile(qfilename).exists();
+ #if (QT_VERSION >= 0x050000)
+-		if (exists_ && !qwatcher_->addPath(qfilename))
++		if (!exists || !qwatcher_->addPath(qfilename))
+ #else
+ 		auto add_path = [&]() {
+ 			qwatcher_->addPath(qfilename);
+ 			return qwatcher_->files().contains(qfilename);
+ 		};
+-		if (exists_ && !add_path())
++		if (!exists || !add_path())
+ #endif
+ 		{
+-			LYXERR(Debug::FILES,
+-			       "Could not add path to QFileSystemWatcher: " << filename_);
+-			QTimer::singleShot(5000, this, SLOT(refresh()));
+-		} else {
+-			if (!exists_)
+-				// The standard way to overwrite a file is to delete it and
+-				// create a new file with the same name. Therefore if the file
+-				// has just been deleted, it is smart to check not too long
+-				// after whether it has been recreated.
+-			    QTimer::singleShot(existed ? 100 : 2000, this, SLOT(refresh()));
+-			if (existed != exists_ && emit)
+-				Q_EMIT fileChanged(exists_);
+-		}
++			if (exists)
++				LYXERR(Debug::FILES,
++				       "Could not add path to QFileSystemWatcher: "
++				       << filename_);
++			QTimer::singleShot(2000, this, SLOT(refresh()));
++		} else if (exists && !exists_)
++			Q_EMIT fileChanged();
++		setExists(exists);
+ 	}
+ }
+ 
+@@ -156,12 +150,11 @@ void FileMonitorGuard::refresh(bool const emit)
+ void FileMonitorGuard::notifyChange(QString const & path)
+ {
+ 	if (path == toqstr(filename_)) {
++		Q_EMIT fileChanged();
+ 		// If the file has been modified by delete-move, we are notified of the
+ 		// deletion but we no longer track the file. See
+ 		// <https://bugreports.qt.io/browse/QTBUG-46483> (not a bug).
+-		// Therefore we must refresh.
+-		refresh(false);
+-		Q_EMIT fileChanged(exists_);
++		refresh();
+ 	}
+ }
+ 
+@@ -169,15 +162,17 @@ void FileMonitorGuard::notifyChange(QString const & path)
+ FileMonitor::FileMonitor(std::shared_ptr<FileMonitorGuard> monitor)
+ 	: monitor_(monitor)
+ {
+-	connectToFileMonitorGuard();
++	QObject::connect(monitor_.get(), SIGNAL(fileChanged()),
++	                 this, SLOT(changed()));
+ 	refresh();
+ }
+ 
+ 
+-void FileMonitor::connectToFileMonitorGuard()
++void FileMonitor::reconnectToFileMonitorGuard()
+ {
+-	QObject::connect(monitor_.get(), SIGNAL(fileChanged(bool)),
+-	                 this, SLOT(changed(bool)));
++	monitor_->setExists(true);
++	QObject::connect(monitor_.get(), SIGNAL(fileChanged()),
++	                 this, SLOT(changed()));
+ }
+ 
+ 
+@@ -190,15 +185,15 @@ signals2::connection FileMonitor::connect(slot const & slot)
+ void FileMonitor::disconnect()
+ {
+ 	fileChanged_.disconnect_all_slots();
+-	QObject::disconnect(this, SIGNAL(fileChanged(bool)));
++	QObject::disconnect(this, SIGNAL(fileChanged()));
+ }
+ 
+ 
+-void FileMonitor::changed(bool const exists)
++void FileMonitor::changed()
+ {
+ 	// emit boost signal
+-	fileChanged_(exists);
+-	Q_EMIT fileChanged(exists);
++	fileChanged_();
++	Q_EMIT fileChanged();
+ }
+ 
+ 
+@@ -215,8 +210,8 @@ FileMonitorBlocker FileMonitor::block(int delay)
+ FileMonitorBlockerGuard::FileMonitorBlockerGuard(FileMonitor * monitor)
+ 	: monitor_(monitor), delay_(0)
+ {
+-	QObject::disconnect(monitor->monitor_.get(), SIGNAL(fileChanged(bool)),
+-	                    monitor, SLOT(changed(bool)));
++	QObject::disconnect(monitor->monitor_.get(), SIGNAL(fileChanged()),
++	                    monitor, SLOT(changed()));
+ }
+ 
+ 
+@@ -234,7 +229,7 @@ FileMonitorBlockerGuard::~FileMonitorBlockerGuard()
+ 	// from QFileSystemWatcher that we meant to ignore are not going to be
+ 	// treated immediately, so we must yield to give us the opportunity to
+ 	// ignore them.
+-	QTimer::singleShot(delay_, monitor_, SLOT(connectToFileMonitorGuard()));
++	QTimer::singleShot(delay_, monitor_, SLOT(reconnectToFileMonitorGuard()));
+ }
+ 
+ 
+@@ -243,9 +238,8 @@ ActiveFileMonitor::ActiveFileMonitor(std::shared_ptr<FileMonitorGuard> monitor,
+ 	: FileMonitor(monitor), filename_(filename), interval_(interval),
+ 	  timestamp_(0), checksum_(0), cooldown_(true)
+ {
+-	QObject::connect(this, SIGNAL(fileChanged(bool)), this, SLOT(setCooldown()));
++	QObject::connect(this, SIGNAL(fileChanged()), this, SLOT(setCooldown()));
+ 	QTimer::singleShot(interval_, this, SLOT(clearCooldown()));
+-	filename_.refresh();
+ 	if (!filename_.exists())
+ 		return;
+ 	timestamp_ = filename_.lastModified();
+@@ -260,9 +254,7 @@ void ActiveFileMonitor::checkModified()
+ 
+ 	cooldown_ = true;
+ 	bool changed = false;
+-	filename_.refresh();
+-	bool exists = filename_.exists();
+-	if (!exists) {
++	if (!filename_.exists()) {
+ 		changed = timestamp_ || checksum_;
+ 		timestamp_ = 0;
+ 		checksum_ = 0;
+@@ -280,7 +272,7 @@ void ActiveFileMonitor::checkModified()
+ 		}
+ 	}
+ 	if (changed)
+-		FileMonitor::changed(exists);
++		FileMonitor::changed();
+ 	QTimer::singleShot(interval_, this, SLOT(clearCooldown()));
+ }
+ 
+diff --git a/src/support/FileMonitor.h b/src/support/FileMonitor.h
+index fdf2bca..5e516bb 100644
+--- a/src/support/FileMonitor.h
++++ b/src/support/FileMonitor.h
+@@ -108,16 +108,18 @@ public:
+ 	~FileMonitorGuard();
+ 	/// absolute path being tracked
+ 	std::string const & filename() { return filename_; }
++	/// if false, emit fileChanged() when we notice the existence of the file
++	void setExists(bool exists) { exists_ = exists; }
+ 
+ public Q_SLOTS:
+ 	/// Make sure it is being monitored, after e.g. a deletion. See
+ 	/// <https://bugreports.qt.io/browse/QTBUG-46483>. This is called
+ 	/// automatically.
+-	void refresh(bool emit = true);
++	void refresh();
+ 
+ Q_SIGNALS:
+ 	/// Connect to this to be notified when the file changes
+-	void fileChanged(bool exists) const;
++	void fileChanged() const;
+ 
+ private Q_SLOTS:
+ 	/// Receive notifications from the QFileSystemWatcher
+@@ -126,7 +128,6 @@ private Q_SLOTS:
+ private:
+ 	std::string const filename_;
+ 	QFileSystemWatcher * qwatcher_;
+-	/// for emitting fileChanged() when the file is created or deleted
+ 	bool exists_;
+ };
+ 
+@@ -156,7 +157,7 @@ class FileMonitor : public QObject
+ public:
+ 	FileMonitor(std::shared_ptr<FileMonitorGuard> monitor);
+ 
+-	typedef signals2::signal<void(bool)> sig;
++	typedef signals2::signal<void()> sig;
+ 	typedef sig::slot_type slot;
+ 	/// Connect and you'll be informed when the file has changed.
+ 	signals2::connection connect(slot const &);
+@@ -176,7 +177,7 @@ public:
+ 	/// inotify backend (e.g. Linux); for OSX (kqueue), a value of 100ms is
+ 	/// unsufficient and more tests need to be done in combination with
+ 	/// flushing/syncing to disk in order to understand how to catch one's own
+-	/// operations reliably. No feedback about Windows. See
++	/// operations reliably. No feedback from Windows yet. See
+ 	/// <https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg200252.html>.
+ 	FileMonitorBlocker block(int delay = 0);
+ 	/// Make sure the good file is being monitored, after e.g. a move or a
+@@ -186,13 +187,13 @@ public:
+ 
+ Q_SIGNALS:
+ 	/// Connect to this to be notified when the file changes
+-	void fileChanged(bool exists) const;
++	void fileChanged() const;
+ 
+ protected Q_SLOTS:
+ 	/// Receive notifications from the FileMonitorGuard
+-	void changed(bool exists);
++	void changed();
+ 	///
+-	void connectToFileMonitorGuard();
++	void reconnectToFileMonitorGuard();
+ 
+ private:
+ 	/// boost signal
+
+commit f1c415f3b0ae9ddea5548742f5300e86e95480f2
+Author: Pavel Sanda <psanda@ucsd.edu>
+Date:   Thu Nov 16 09:24:31 2017 -0800
+
+    Revert 2058faaa3bd: Prevent false positives in external modifications
+
+diff --git a/src/Buffer.cpp b/src/Buffer.cpp
+index b83f872..48391f9 100644
+--- a/src/Buffer.cpp
++++ b/src/Buffer.cpp
+@@ -387,7 +387,7 @@ public:
+ 	void fileExternallyModified(bool modified);
+ 
+ 	/// Block notifications of external modifications
+-	FileMonitorBlocker blockFileMonitor() { return file_monitor_->block(); }
++	FileMonitorBlocker blockFileMonitor() { return file_monitor_->block(10); }
+ 
+ private:
+ 	/// So we can force access via the accessors.
+@@ -5351,16 +5351,8 @@ void Buffer::Impl::refreshFileMonitor()
+ 
+ void Buffer::Impl::fileExternallyModified(bool const exists)
+ {
+-	if (modified) {
+-		// prevent false positives, because FileMonitorBlocker is not enough on
+-		// OSX.
+-		if (filename.exists() && checksum_ == filename.checksum()) {
+-		LYXERR(Debug::FILES, "External modification but "
+-			"checksum unchanged: " << filename);
+-		return;
+-		}
++	if (modified) 
+ 		lyx_clean = bak_clean = false;
+-	}
+ 	externally_modified_ = modified;
+ 	// Update external modification notification.
+ 	// Dirty buffers must be visible at all times.
+diff --git a/src/support/FileMonitor.h b/src/support/FileMonitor.h
+index 5e516bb..49f12cb 100644
+--- a/src/support/FileMonitor.h
++++ b/src/support/FileMonitor.h
+@@ -167,18 +167,11 @@ public:
+ 	/// absolute path being tracked
+ 	std::string const & filename() { return monitor_->filename(); }
+ 	/// Creates a guard that blocks notifications. Copyable. Notifications from
+-	/// this monitor are blocked as long as there are copies of the
+-	/// FileMonitorBlocker around.
++	/// this monitor are blocked as long as there are copies around.
+ 	/// \param delay is the amount waited in ms after expiration of the guard
+-	/// before reconnecting. It can be used to slow down incoming events
+-	/// accordingly. A value of 0 is still made asynchronous, because of the
+-	/// fundamentally asynchronous nature of QFileSystemWatcher. To catch one's
+-	/// own file operations, a value of 0 for delay is sufficient with the
+-	/// inotify backend (e.g. Linux); for OSX (kqueue), a value of 100ms is
+-	/// unsufficient and more tests need to be done in combination with
+-	/// flushing/syncing to disk in order to understand how to catch one's own
+-	/// operations reliably. No feedback from Windows yet. See
+-	/// <https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg200252.html>.
++	/// before reconnecting. This delay thing is to deal with asynchronous
++	/// notifications in a not so elegant fashion. But it can also be used to
++	/// slow down incoming events.
+ 	FileMonitorBlocker block(int delay = 0);
+ 	/// Make sure the good file is being monitored, after e.g. a move or a
+ 	/// deletion. See <https://bugreports.qt.io/browse/QTBUG-46483>. This is
+
+commit 96a893b5564404f80a2fd42b7a559d3306babce2
+Author: Pavel Sanda <psanda@ucsd.edu>
+Date:   Thu Nov 16 09:25:19 2017 -0800
+
+    Revert db581113: roperly track the lifetime of signals2::slots (#8261)
+
+diff --git a/src/Converter.cpp b/src/Converter.cpp
+index 664a4bb..6e26ed2 100644
+--- a/src/Converter.cpp
++++ b/src/Converter.cpp
+@@ -786,6 +786,20 @@ bool Converters::scanLog(Buffer const & buffer, string const & /*command*/,
+ }
+ 
+ 
++namespace {
++
++class ShowMessage
++	: public boost::signals2::trackable {
++public:
++	ShowMessage(Buffer const & b) : buffer_(b) {}
++	void operator()(docstring const & msg) const { buffer_.message(msg); }
++private:
++	Buffer const & buffer_;
++};
++
++}
++
++
+ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
+ 			  OutputParams const & runparams, ErrorList & errorList)
+ {
+@@ -798,12 +812,8 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
+ 	            buffer.filePath(), buffer.layoutPos(),
+ 	            buffer.lastPreviewError());
+ 	TeXErrors terr;
+-	// The connection closes itself at the end of the scope when latex is
+-	// destroyed. One cannot close (and destroy) buffer while the converter is
+-	// running.
+-	latex.message.connect([&buffer](docstring const & msg){
+-			buffer.message(msg);
+-		});
++	ShowMessage show(buffer);
++	latex.message.connect(show);
+ 	int const result = latex.run(terr);
+ 
+ 	if (result & LaTeX::ERRORS)
+diff --git a/src/LaTeX.h b/src/LaTeX.h
+index 0b46c60..b2d6ac0 100644
+--- a/src/LaTeX.h
++++ b/src/LaTeX.h
+@@ -18,7 +18,8 @@
+ 
+ #include "support/docstring.h"
+ #include "support/FileName.h"
+-#include "support/signals.h"
++
++#include <boost/signals2.hpp>
+ 
+ #include <vector>
+ #include <set>
+@@ -147,7 +148,7 @@ public:
+ 	};
+ 
+ 	/// This signal emits an informative message
+-	signals2::signal<void(docstring)> message;
++	boost::signals2::signal<void(docstring)> message;
+ 
+ 
+ 	/**
+diff --git a/src/Server.cpp b/src/Server.cpp
+index 8953c78..debb8a9 100644
+--- a/src/Server.cpp
++++ b/src/Server.cpp
+@@ -55,7 +55,8 @@
+ #include "support/lassert.h"
+ #include "support/lstrings.h"
+ #include "support/os.h"
+-#include "support/signals.h"
++
++#include "support/bind.h"
+ 
+ #include <iostream>
+ 
+@@ -858,12 +859,8 @@ int LyXComm::startPipe(string const & file, bool write)
+ 	}
+ 
+ 	if (!write) {
+-		// Make sure not to call read_ready after destruction.
+-		weak_ptr<void> tracker = tracker_.p();
+-		theApp()->registerSocketCallback(fd, [=](){
+-				if (!tracker.expired())
+-					read_ready();
+-			});
++		theApp()->registerSocketCallback(fd,
++			bind(&LyXComm::read_ready, this));
+ 	}
+ 
+ 	return fd;
+diff --git a/src/Server.h b/src/Server.h
+index 40021da..1a46c89 100644
+--- a/src/Server.h
++++ b/src/Server.h
+@@ -14,7 +14,7 @@
+ #ifndef SERVER_H
+ #define SERVER_H
+ 
+-#include "support/signals.h"
++#include <boost/signals2/trackable.hpp>
+ 
+ #include <vector>
+ 
+@@ -30,7 +30,7 @@ namespace lyx {
+ class Server;
+ 
+ 
+-/** This class manages the pipes used for communicating with clients.
++/** This class managed the pipes used for communicating with clients.
+  Usage: Initialize with pipe-filename-base, client class to receive
+  messages, and callback-function that will be called with the messages.
+  When you want to send, use "send()".
+@@ -38,7 +38,7 @@ class Server;
+  a clean string interface.
+  */
+ #ifndef _WIN32
+-class LyXComm {
++class LyXComm : public boost::signals2::trackable {
+ #else
+ class LyXComm : public QObject {
+ 	Q_OBJECT
+@@ -189,9 +189,6 @@ private:
+ 
+ 	/// Did we defer loading of files to another instance?
+ 	bool deferred_loading_;
+-
+-	/// Track object's liveness
+-	support::Trackable tracker_;
+ };
+ 
+ 
+diff --git a/src/frontends/qt4/GuiView.cpp b/src/frontends/qt4/GuiView.cpp
+index c587460..68ef3b9 100644
+--- a/src/frontends/qt4/GuiView.cpp
++++ b/src/frontends/qt4/GuiView.cpp
+@@ -529,8 +529,7 @@ GuiView::GuiView(int id)
+ 
+ 	// Start autosave timer
+ 	if (lyxrc.autosave) {
+-		// The connection is closed when this is destroyed.
+-		d.autosave_timeout_.timeout.connect([this](){ autoSave();});
++		d.autosave_timeout_.timeout.connect(bind(&GuiView::autoSave, this));
+ 		d.autosave_timeout_.setTimeout(lyxrc.autosave * 1000);
+ 		d.autosave_timeout_.start();
+ 	}
+diff --git a/src/frontends/qt4/GuiWorkArea.cpp b/src/frontends/qt4/GuiWorkArea.cpp
+index fe7082d..d7c7b00 100644
+--- a/src/frontends/qt4/GuiWorkArea.cpp
++++ b/src/frontends/qt4/GuiWorkArea.cpp
+@@ -320,10 +320,9 @@ void GuiWorkArea::init()
+ 
+ 	d->setCursorShape(Qt::IBeamCursor);
+ 
+-	// This connection is closed at the same time as this is destroyed.
+-	d->synthetic_mouse_event_.timeout.timeout.connect([this](){
+-			generateSyntheticMouseEvent();
+-		});
++	d->synthetic_mouse_event_.timeout.timeout.connect(
++		bind(&GuiWorkArea::generateSyntheticMouseEvent,
++					this));
+ 
+ 	LYXERR(Debug::GUI, "viewport width: " << viewport()->width()
+ 		<< "  viewport height: " << viewport()->height());
+diff --git a/src/graphics/GraphicsCacheItem.cpp b/src/graphics/GraphicsCacheItem.cpp
+index 576ad92..306dcdb 100644
+--- a/src/graphics/GraphicsCacheItem.cpp
++++ b/src/graphics/GraphicsCacheItem.cpp
+@@ -29,6 +29,7 @@
+ #include "support/lassert.h"
+ #include "support/unique_ptr.h"
+ 
++#include "support/bind.h"
+ #include "support/TempFile.h"
+ 
+ using namespace std;
+@@ -38,7 +39,7 @@ namespace lyx {
+ 
+ namespace graphics {
+ 
+-class CacheItem::Impl {
++class CacheItem::Impl : public boost::signals2::trackable {
+ public:
+ 
+ 	///
+@@ -49,7 +50,7 @@ public:
+ 	/**
+ 	 *  If no file conversion is needed, then tryDisplayFormat() calls
+ 	 *  loadImage() directly.
+-	 * \return true if a conversion is necessary and no error occurred.
++	 * \return true if a conversion is necessary and no error occurred. 
+ 	 */
+ 	bool tryDisplayFormat(FileName & filename, string & from);
+ 
+@@ -119,7 +120,10 @@ public:
+ 	ImageStatus status_;
+ 
+ 	/// This signal is emitted when the image loading status changes.
+-	signals2::signal<void()> statusChanged;
++	boost::signals2::signal<void()> statusChanged;
++
++	/// The connection of the signal ConvProcess::finishedConversion,
++	boost::signals2::connection cc_;
+ 
+ 	///
+ 	unique_ptr<Converter> converter_;
+@@ -195,7 +199,7 @@ ImageStatus CacheItem::status() const
+ }
+ 
+ 
+-signals2::connection CacheItem::connect(slot_type const & slot) const
++boost::signals2::connection CacheItem::connect(slot_type const & slot) const
+ {
+ 	return pimpl_->statusChanged.connect(slot);
+ }
+@@ -219,7 +223,6 @@ void CacheItem::Impl::startMonitor()
+ 	if (monitor_)
+ 		return;
+ 	monitor_ = FileSystemWatcher::activeMonitor(filename_);
+-	// Disconnected at the same time as this is destroyed.
+ 	monitor_->connect([=](){ startLoading(); });
+ }
+ 
+@@ -251,6 +254,9 @@ void CacheItem::Impl::reset()
+ 
+ 	status_ = WaitingToLoad;
+ 
++	if (cc_.connected())
++		cc_.disconnect();
++
+ 	if (converter_)
+ 		converter_.reset();
+ }
+@@ -274,6 +280,7 @@ void CacheItem::Impl::imageConverted(bool success)
+ 	file_to_load_ = converter_ ? FileName(converter_->convertedFile())
+ 		                       : FileName();
+ 	converter_.reset();
++	cc_.disconnect();
+ 
+ 	success = !file_to_load_.empty() && file_to_load_.isReadableFile();
+ 
+@@ -442,13 +449,9 @@ void CacheItem::Impl::convertToDisplayFormat()
+ 	// Connect a signal to this->imageConverted and pass this signal to
+ 	// the graphics converter so that we can load the modified file
+ 	// on completion of the conversion process.
+-	converter_ = make_unique<Converter>(doc_file_, filename,
+-	                                    to_file_base.absFileName(),
++	converter_ = make_unique<Converter>(doc_file_, filename, to_file_base.absFileName(),
+ 	                                    from, to_);
+-	// Connection is closed at the same time as *this is destroyed.
+-	converter_->connect([this](bool success){
+-			imageConverted(success);
+-		});
++	converter_->connect(bind(&Impl::imageConverted, this, _1));
+ 	converter_->startConversion();
+ }
+ 
+diff --git a/src/graphics/GraphicsCacheItem.h b/src/graphics/GraphicsCacheItem.h
+index 6f7f968..9cee2b8 100644
+--- a/src/graphics/GraphicsCacheItem.h
++++ b/src/graphics/GraphicsCacheItem.h
+@@ -30,7 +30,7 @@
+ 
+ #include "GraphicsTypes.h"
+ 
+-#include "support/signals.h"
++#include <boost/signals2.hpp>
+ 
+ 
+ namespace lyx {
+@@ -82,9 +82,9 @@ public:
+ 	/** Connect and you'll be informed when the loading status of the image
+ 	 *  changes.
+ 	 */
+-	typedef signals2::signal<void()>::slot_type slot_type;
++	typedef boost::signals2::signal<void()>::slot_type slot_type;
+ 	///
+-	signals2::connection connect(slot_type const &) const;
++	boost::signals2::connection connect(slot_type const &) const;
+ 
+ private:
+ 	/// noncopyable
+diff --git a/src/graphics/GraphicsConverter.cpp b/src/graphics/GraphicsConverter.cpp
+index 598e108..63b6a44 100644
+--- a/src/graphics/GraphicsConverter.cpp
++++ b/src/graphics/GraphicsConverter.cpp
+@@ -27,6 +27,7 @@
+ #include "support/lstrings.h"
+ #include "support/os.h"
+ 
++#include "support/bind.h"
+ #include "support/TempFile.h"
+ 
+ #include <sstream>
+@@ -39,12 +40,10 @@ namespace lyx {
+ 
+ namespace graphics {
+ 
+-class Converter::Impl {
++class Converter::Impl : public boost::signals2::trackable {
+ public:
+ 	///
+-	Impl(FileName const & doc_fname,
+-	     FileName const & from_file, string const & to_file_base,
+-	     string const & from_format, string const & to_format);
++	Impl(FileName const &, FileName const &, string const &, string const &, string const &);
+ 
+ 	///
+ 	void startConversion();
+@@ -59,9 +58,9 @@ public:
+ 	/** At the end of the conversion process inform the outside world
+ 	 *  by emitting a signal.
+ 	 */
+-	typedef signals2::signal<void(bool)> sig;
++	typedef boost::signals2::signal<void(bool)> SignalType;
+ 	///
+-	sig finishedConversion;
++	SignalType finishedConversion;
+ 
+ 	///
+ 	FileName const doc_fname_;
+@@ -75,8 +74,6 @@ public:
+ 	bool valid_process_;
+ 	///
+ 	bool finished_;
+-	///
+-	Trackable tracker_;
+ };
+ 
+ 
+@@ -88,8 +85,8 @@ bool Converter::isReachable(string const & from_format_name,
+ 
+ 
+ Converter::Converter(FileName const & doc_fname,
+-                     FileName const & from_file, string const & to_file_base,
+-                     string const & from_format, string const & to_format)
++		     FileName const & from_file, string const & to_file_base,
++		     string const & from_format, string const & to_format)
+ 	: pimpl_(new Impl(doc_fname, from_file, to_file_base, from_format, to_format))
+ {}
+ 
+@@ -106,7 +103,7 @@ void Converter::startConversion() const
+ }
+ 
+ 
+-signals2::connection Converter::connect(slot_type const & slot) const
++boost::signals2::connection Converter::connect(slot_type const & slot) const
+ {
+ 	return pimpl_->finishedConversion.connect(slot);
+ }
+@@ -191,10 +188,9 @@ void Converter::Impl::startConversion()
+ 		return;
+ 	}
+ 
+-	ForkedCall::sigPtr ptr = ForkedCallQueue::add(script_command_);
+-	ptr->connect(ForkedCall::slot([this](pid_t pid, int retval){
+-				converted(pid, retval);
+-			}).track_foreign(tracker_.p()));
++	ForkedCall::SignalTypePtr ptr =
++		ForkedCallQueue::add(script_command_);
++	ptr->connect(bind(&Impl::converted, this, _1, _2));
+ }
+ 
+ 
+diff --git a/src/graphics/GraphicsConverter.h b/src/graphics/GraphicsConverter.h
+index c038029..d3d0b81 100644
+--- a/src/graphics/GraphicsConverter.h
++++ b/src/graphics/GraphicsConverter.h
+@@ -17,8 +17,7 @@
+ #ifndef GRAPHICSCONVERTER_H
+ #define GRAPHICSCONVERTER_H
+ 
+-#include "support/signals.h"
+-
++#include <boost/signals2.hpp>
+ 
+ namespace lyx {
+ 
+@@ -48,12 +47,11 @@ public:
+ 	/** Connect and you'll be informed when the conversion process has
+ 	 *  finished.
+ 	 *  If the conversion is successful, then the listener is passed \c true.
+-	 *  The connection is closed when this is destroyed.
+ 	 */
+-	typedef signals2::signal<void(bool)> sig_type;
++	typedef boost::signals2::signal<void(bool)> sig_type;
+ 	typedef sig_type::slot_type slot_type;
+ 	///
+-	signals2::connection connect(slot_type const &) const;
++	boost::signals2::connection connect(slot_type const &) const;
+ 
+ 	/** If the conversion is successful, this returns the name of the
+ 	 *  resulting file.
+diff --git a/src/graphics/GraphicsLoader.cpp b/src/graphics/GraphicsLoader.cpp
+index 683f092..3503aba 100644
+--- a/src/graphics/GraphicsLoader.cpp
++++ b/src/graphics/GraphicsLoader.cpp
+@@ -107,17 +107,16 @@ void LoaderQueue::loadNext()
+ 
+ 
+ LoaderQueue::LoaderQueue() : timer(s_millisecs_, Timeout::ONETIME),
+-                             running_(false)
++			     running_(false)
+ {
+-	// Disconnected when this is destroyed
+-	timer.timeout.connect([this](){ loadNext(); });
++	timer.timeout.connect(bind(&LoaderQueue::loadNext, this));
+ }
+ 
+ 
+ void LoaderQueue::startLoader()
+ {
+ 	LYXERR(Debug::GRAPHICS, "LoaderQueue: waking up");
+-	running_ = true;
++	running_ = true ;
+ 	timer.setTimeout(s_millisecs_);
+ 	timer.start();
+ }
+@@ -164,7 +163,7 @@ void LoaderQueue::touch(Cache::ItemPtr const & item)
+ 
+ typedef std::shared_ptr<Image> ImagePtr;
+ 
+-class Loader::Impl {
++class Loader::Impl : public boost::signals2::trackable {
+ 	friend class Loader;
+ public:
+ 	///
+@@ -193,9 +192,9 @@ public:
+ 	/// We modify a local copy of the image once it is loaded.
+ 	ImagePtr image_;
+ 	/// This signal is emitted when the image loading status changes.
+-	signals2::signal<void()> signal_;
+-	/// The connection of the signal statusChanged
+-	signals2::scoped_connection connection_;
++	boost::signals2::signal<void()> signal_;
++	/// The connection of the signal StatusChanged 	
++	boost::signals2::connection sc_;
+ 
+ 	double displayPixelRatio() const
+ 	{
+@@ -364,7 +363,7 @@ void Loader::setDisplayPixelRatio(double scale)
+ }
+ 
+ 
+-signals2::connection Loader::connect(slot const & slot) const
++boost::signals2::connection Loader::connect(slot_type const & slot) const
+ {
+ 	return pimpl_->signal_.connect(slot);
+ }
+@@ -406,7 +405,7 @@ void Loader::Impl::resetFile(FileName const & file)
+ 		// signal needs to be disconnected.
+ 		try {
+ 			// This can in theory throw a BufferException
+-			connection_.disconnect();
++			sc_.disconnect();
+ 		} catch (...) {
+ 			LYXERR(Debug::GRAPHICS, "Unable to disconnect signal.");
+ 		}
+@@ -435,8 +434,7 @@ void Loader::Impl::resetFile(FileName const & file)
+ 	if (continue_monitoring && !cached_item_->monitoring())
+ 		cached_item_->startMonitoring();
+ 
+-	// This is a scoped connection
+-	connection_ = cached_item_->connect([this](){ statusChanged(); });
++	sc_ = cached_item_->connect(bind(&Impl::statusChanged, this));
+ }
+ 
+ 
+diff --git a/src/graphics/GraphicsLoader.h b/src/graphics/GraphicsLoader.h
+index 0a299cb..62ea303 100644
+--- a/src/graphics/GraphicsLoader.h
++++ b/src/graphics/GraphicsLoader.h
+@@ -26,7 +26,7 @@
+ 
+ #include "GraphicsTypes.h"
+ 
+-#include "support/signals.h"
++#include <boost/signals2.hpp>
+ 
+ namespace lyx {
+ 
+@@ -70,7 +70,7 @@ public:
+ 	 */
+ 	void startLoading() const;
+ 
+-	/** Tries to reload the image.
++	/** Tries to reload the image. 
+ 	 */
+ 	void reload() const;
+ 
+@@ -90,10 +90,10 @@ public:
+ 	/** Connect and you'll be informed when the loading status of the image
+ 	 *  changes.
+ 	 */
+-	typedef signals2::signal<void()> sig;
+-	typedef sig::slot_type slot;
++	typedef boost::signals2::signal<void()> sig_type;
++	typedef sig_type::slot_type slot_type;
+ 	///
+-	signals2::connection connect(slot const &) const;
++	boost::signals2::connection connect(slot_type const &) const;
+ 
+ 	/** The loaded image with Pixmap set.
+ 	 *  If the Pixmap is not yet set (see status() for why...), returns 0.
+diff --git a/src/graphics/PreviewImage.cpp b/src/graphics/PreviewImage.cpp
+index b80bf94..da0f1e2 100644
+--- a/src/graphics/PreviewImage.cpp
++++ b/src/graphics/PreviewImage.cpp
+@@ -20,6 +20,7 @@
+ 
+ #include "support/FileName.h"
+ 
++#include "support/bind.h"
+ 
+ using namespace std;
+ using namespace lyx::support;
+@@ -27,7 +28,7 @@ using namespace lyx::support;
+ namespace lyx {
+ namespace graphics {
+ 
+-class PreviewImage::Impl {
++class PreviewImage::Impl : public boost::signals2::trackable {
+ public:
+ 	///
+ 	Impl(PreviewImage & p, PreviewLoader & l,
+@@ -104,14 +105,15 @@ PreviewLoader & PreviewImage::previewLoader() const
+ }
+ 
+ 
+-PreviewImage::Impl::Impl(PreviewImage & p, PreviewLoader & l, string const & s,
+-                         FileName const & bf, double af)
++PreviewImage::Impl::Impl(PreviewImage & p, PreviewLoader & l,
++			 string const & s,
++			 FileName const & bf,
++			 double af)
+ 	: parent_(p), ploader_(l), iloader_(l.buffer().fileName(), bf),
+ 	  snippet_(s), ascent_frac_(af)
+ {
+ 	iloader_.setDisplayPixelRatio(l.displayPixelRatio());
+-	// This connection is destroyed at the same time as this.
+-	iloader_.connect([this](){ statusChanged(); });
++	iloader_.connect(bind(&Impl::statusChanged, this));
+ }
+ 
+ 
+diff --git a/src/graphics/PreviewLoader.cpp b/src/graphics/PreviewLoader.cpp
+index 22b0f23..c6f4d06 100644
+--- a/src/graphics/PreviewLoader.cpp
++++ b/src/graphics/PreviewLoader.cpp
+@@ -38,6 +38,7 @@
+ #include "support/ForkedCalls.h"
+ #include "support/lstrings.h"
+ 
++#include "support/bind.h"
+ #include "support/TempFile.h"
+ 
+ #include <atomic>
+@@ -166,7 +167,7 @@ typedef InProgressProcesses::value_type InProgressProcess;
+ namespace lyx {
+ namespace graphics {
+ 
+-class PreviewLoader::Impl {
++class PreviewLoader::Impl : public boost::signals2::trackable {
+ public:
+ 	///
+ 	Impl(PreviewLoader & p, Buffer const & b);
+@@ -187,7 +188,7 @@ public:
+ 	void refreshPreviews();
+ 
+ 	/// Emit this signal when an image is ready for display.
+-	signals2::signal<void(PreviewImage const &)> imageReady;
++	boost::signals2::signal<void(PreviewImage const &)> imageReady;
+ 
+ 	Buffer const & buffer() const { return buffer_; }
+ 
+@@ -238,8 +239,6 @@ private:
+ 
+ 	/// We don't own this
+ 	static lyx::Converter const * pconverter_;
+-
+-	signals2::scoped_connection connection_;
+ };
+ 
+ 
+@@ -297,7 +296,7 @@ void PreviewLoader::refreshPreviews()
+ }
+ 
+ 
+-signals2::connection PreviewLoader::connect(slot const & slot) const
++boost::signals2::connection PreviewLoader::connect(slot_type const & slot) const
+ {
+ 	return pimpl_->imageReady.connect(slot);
+ }
+@@ -708,12 +707,12 @@ void PreviewLoader::Impl::startLoading(bool wait)
+ 	   << " " << quoteName(latexfile.toFilesystemEncoding())
+ 	   << " --dpi " << font_scaling_factor_;
+ 
+-	// FIXME XHTML
++	// FIXME XHTML 
+ 	// The colors should be customizable.
+ 	if (!buffer_.isExporting()) {
+ 		ColorCode const fg = PreviewLoader::foregroundColor();
+ 		ColorCode const bg = PreviewLoader::backgroundColor();
+-		cs << " --fg " << theApp()->hexName(fg)
++		cs << " --fg " << theApp()->hexName(fg) 
+ 		   << " --bg " << theApp()->hexName(bg);
+ 	}
+ 
+@@ -737,11 +736,9 @@ void PreviewLoader::Impl::startLoading(bool wait)
+ 	}
+ 
+ 	// Initiate the conversion from LaTeX to bitmap images files.
+-	ForkedCall::sigPtr convert_ptr = make_shared<ForkedCall::sig>();
+-	// This is a scoped connection
+-	connection_ = convert_ptr->connect([this](pid_t pid, int retval){
+-			finishedGenerating(pid, retval);
+-		});
++	ForkedCall::SignalTypePtr
++		convert_ptr(new ForkedCall::SignalType);
++	convert_ptr->connect(bind(&Impl::finishedGenerating, this, _1, _2));
+ 
+ 	ForkedCall call(buffer_.filePath());
+ 	int ret = call.startScript(command, convert_ptr);
+diff --git a/src/graphics/PreviewLoader.h b/src/graphics/PreviewLoader.h
+index ca22a9f..3239ffc 100644
+--- a/src/graphics/PreviewLoader.h
++++ b/src/graphics/PreviewLoader.h
+@@ -18,8 +18,7 @@
+ #ifndef PREVIEWLOADER_H
+ #define PREVIEWLOADER_H
+ 
+-#include "support/signals.h"
+-
++#include <boost/signals2.hpp>
+ #include <QObject>
+ 
+ #include "ColorCode.h"
+@@ -77,10 +76,10 @@ public:
+ 	 *  has been created and is ready for loading through
+ 	 *  lyx::graphics::PreviewImage::image().
+ 	 */
+-	typedef signals2::signal<void(PreviewImage const &)> sig;
+-	typedef sig::slot_type slot;
++	typedef boost::signals2::signal<void(PreviewImage const &)> sig_type;
++	typedef sig_type::slot_type slot_type;
+ 	///
+-	signals2::connection connect(slot const &) const;
++	boost::signals2::connection connect(slot_type const &) const;
+ 
+ 	/** When PreviewImage has finished loading the image file into memory,
+ 	 *  it tells the PreviewLoader to tell the outside world
+diff --git a/src/insets/InsetExternal.cpp b/src/insets/InsetExternal.cpp
+index 1f0f5f2..e1130bf 100644
+--- a/src/insets/InsetExternal.cpp
++++ b/src/insets/InsetExternal.cpp
+@@ -39,6 +39,7 @@
+ 
+ #include "graphics/PreviewLoader.h"
+ 
++#include "support/bind.h"
+ #include "support/convert.h"
+ #include "support/debug.h"
+ #include "support/ExceptionMessage.h"
+@@ -426,6 +427,7 @@ InsetExternal::InsetExternal(Buffer * buf)
+ // Mouse hover is not copied and remains empty
+ InsetExternal::InsetExternal(InsetExternal const & other)
+ 	: Inset(other),
++	  boost::signals2::trackable(),
+ 	  params_(other.params_),
+ 	  renderer_(other.renderer_->clone(this))
+ {}
+@@ -652,7 +654,6 @@ void InsetExternal::updatePreview() const
+ 	case PREVIEW_INSTANT: {
+ 		renderer_ = make_unique<RenderMonitoredPreview>(this);
+ 		RenderMonitoredPreview * preview_ptr = renderer_->asMonitoredPreview();
+-		// This connection is closed at the same time as this is destroyed.
+ 		preview_ptr->connect([=]() { fileChanged(); });
+ 		add_preview_and_start_loading(*preview_ptr, *this, buffer());
+ 		break;
+diff --git a/src/insets/InsetExternal.h b/src/insets/InsetExternal.h
+index 75b7f70..4a15be1 100644
+--- a/src/insets/InsetExternal.h
++++ b/src/insets/InsetExternal.h
+@@ -19,6 +19,8 @@
+ #include "support/FileName.h"
+ #include "support/unique_ptr.h"
+ 
++#include <boost/signals2/trackable.hpp>
++
+ 
+ namespace lyx {
+ 
+@@ -88,7 +90,7 @@ private:
+ class RenderBase;
+ 
+ ///
+-class InsetExternal : public Inset
++class InsetExternal : public Inset, public boost::signals2::trackable
+ {
+ 	// Disable assignment operator, since it is not used, and it is too
+ 	// complicated to implement it consistently with the copy constructor
+diff --git a/src/insets/RenderPreview.cpp b/src/insets/RenderPreview.cpp
+index 18882fc..948ddb9 100644
+--- a/src/insets/RenderPreview.cpp
++++ b/src/insets/RenderPreview.cpp
+@@ -31,6 +31,8 @@
+ #include "support/lassert.h"
+ #include "support/lstrings.h"
+ 
++#include "support/bind.h"
++
+ using namespace std;
+ using namespace lyx::support;
+ 
+@@ -75,11 +77,19 @@ RenderPreview::RenderPreview(Inset const * inset)
+ RenderPreview::RenderPreview(RenderPreview const & other,
+ 			     Inset const * inset)
+ 	: RenderBase(other),
++	  boost::signals2::trackable(),
+ 	  snippet_(other.snippet_),
+ 	  parent_(inset)
+ {}
+ 
+ 
++RenderPreview::~RenderPreview()
++{
++	if (ploader_connection_.connected())
++		ploader_connection_.disconnect();
++}
++
++
+ RenderBase * RenderPreview::clone(Inset const * inset) const
+ {
+ 	return new RenderPreview(*this, inset);
+@@ -231,12 +241,10 @@ void RenderPreview::addPreview(docstring const & latex_snippet,
+ 	// If this is the first time of calling, connect to the
+ 	// PreviewLoader signal that'll inform us when the preview image
+ 	// is ready for loading.
+-	if (!ploader_connection_.connected())
+-		// This is a scoped connection.
+-		ploader_connection_ =
+-			ploader.connect([this](graphics::PreviewImage const & pi){
+-				imageReady(pi);
+-			});
++	if (!ploader_connection_.connected()) {
++		ploader_connection_ = ploader.connect(
++			bind(&RenderPreview::imageReady, this, _1));
++	}
+ 
+ 	ploader.add(snippet_);
+ }
+@@ -288,7 +296,8 @@ void RenderMonitoredPreview::draw(PainterInfo & pi, int x, int y) const
+ }
+ 
+ 
+-signals2::connection RenderMonitoredPreview::connect(slot const & slot)
++boost::signals2::connection
++RenderMonitoredPreview::connect(ChangedSig::slot_type const & slot)
+ {
+ 	return changed_.connect(slot);
+ }
+diff --git a/src/insets/RenderPreview.h b/src/insets/RenderPreview.h
+index 2f83aff..42d944d 100644
+--- a/src/insets/RenderPreview.h
++++ b/src/insets/RenderPreview.h
+@@ -21,8 +21,10 @@
+ #include "support/docstring.h"
+ #include "support/FileMonitor.h"
+ #include "support/FileName.h"
+-#include "support/signals.h"
+ 
++#include <boost/signals2.hpp>
++#include <boost/signals2/trackable.hpp>
++#include <boost/signals2/connection.hpp>
+ 
+ namespace lyx {
+ 
+@@ -38,7 +40,7 @@ class PreviewLoader;
+ } // namespace graphics
+ 
+ 
+-class RenderPreview : public RenderBase {
++class RenderPreview : public RenderBase, public boost::signals2::trackable {
+ public:
+ 	/// Return true if preview is enabled in text (from LyXRC::preview)
+ 	static bool previewText();
+@@ -47,6 +49,7 @@ public:
+ 
+ 	RenderPreview(Inset const *);
+ 	RenderPreview(RenderPreview const &, Inset const *);
++	~RenderPreview();
+ 	RenderBase * clone(Inset const *) const;
+ 
+ 	/// Compute the size of the object, returned in dim
+@@ -101,7 +104,7 @@ private:
+ 	/** Store the connection to the preview loader so that we connect
+ 	 *  only once.
+ 	 */
+-	signals2::scoped_connection ploader_connection_;
++	boost::signals2::connection ploader_connection_;
+ 
+ 	/// Inform the core that the inset has changed.
+ 	Inset const * parent_;
+@@ -121,17 +124,15 @@ public:
+ 	void stopMonitoring() const;
+ 
+ 	/// Connect and you'll be informed when the file changes.
+-	/// Do not forget to track objects used by the slot.
+-	typedef signals2::signal<void()> sig;
+-	typedef sig::slot_type slot;
+-	signals2::connection connect(slot const & slot);
++	typedef boost::signals2::signal<void()> ChangedSig;
++	boost::signals2::connection connect(ChangedSig::slot_type const &);
+ 
+ 	/// equivalent to dynamic_cast
+ 	virtual RenderMonitoredPreview * asMonitoredPreview() { return this; }
+ 
+ private:
+ 	/// This signal is emitted if the file is modified
+-	sig changed_;
++	ChangedSig changed_;
+ 	///
+ 	mutable support::ActiveFileMonitorPtr monitor_;
+ 	///
+diff --git a/src/support/FileMonitor.cpp b/src/support/FileMonitor.cpp
+index f1fefb8..30a4170 100644
+--- a/src/support/FileMonitor.cpp
++++ b/src/support/FileMonitor.cpp
+@@ -176,7 +176,8 @@ void FileMonitor::reconnectToFileMonitorGuard()
+ }
+ 
+ 
+-signals2::connection FileMonitor::connect(slot const & slot)
++boost::signals2::connection
++FileMonitor::connect(sig::slot_type const & slot)
+ {
+ 	return fileChanged_.connect(slot);
+ }
+diff --git a/src/support/FileMonitor.h b/src/support/FileMonitor.h
+index 49f12cb..23302ed 100644
+--- a/src/support/FileMonitor.h
++++ b/src/support/FileMonitor.h
+@@ -17,7 +17,6 @@
+ #define FILEMONITOR_H
+ 
+ #include "support/FileName.h"
+-#include "support/signals.h"
+ 
+ #include <memory>
+ 
+@@ -25,6 +24,8 @@
+ #include <QObject>
+ #include <QPointer>
+ 
++#include <boost/signals2.hpp>
++
+ 
+ namespace lyx {
+ namespace support {
+@@ -157,10 +158,9 @@ class FileMonitor : public QObject
+ public:
+ 	FileMonitor(std::shared_ptr<FileMonitorGuard> monitor);
+ 
+-	typedef signals2::signal<void()> sig;
+-	typedef sig::slot_type slot;
++	typedef boost::signals2::signal<void()> sig;
+ 	/// Connect and you'll be informed when the file has changed.
+-	signals2::connection connect(slot const &);
++	boost::signals2::connection connect(sig::slot_type const &);
+ 	/// disconnect all slots connected to the boost signal fileChanged_ or to
+ 	/// the qt signal fileChanged()
+ 	void disconnect();
+diff --git a/src/support/ForkedCalls.cpp b/src/support/ForkedCalls.cpp
+index f81c1d2..93be6a4 100644
+--- a/src/support/ForkedCalls.cpp
++++ b/src/support/ForkedCalls.cpp
+@@ -58,7 +58,7 @@ namespace {
+ //
+ /////////////////////////////////////////////////////////////////////
+ 
+-class Murder {
++class Murder : public boost::signals2::trackable {
+ public:
+ 	//
+ 	static void killItDead(int secs, pid_t pid)
+@@ -83,8 +83,7 @@ private:
+ 	Murder(int secs, pid_t pid)
+ 		: timeout_(1000*secs, Timeout::ONETIME), pid_(pid)
+ 	{
+-		// Connection is closed with this.
+-		timeout_.timeout.connect([this](){ kill(); });
++		timeout_.timeout.connect(lyx::bind(&Murder::kill, this));
+ 		timeout_.start();
+ 	}
+ 
+@@ -278,7 +277,7 @@ ForkedCall::ForkedCall(string const & path, string const & lpath)
+ int ForkedCall::startScript(Starttype wait, string const & what)
+ {
+ 	if (wait != Wait) {
+-		retval_ = startScript(what, sigPtr());
++		retval_ = startScript(what, SignalTypePtr());
+ 		return retval_;
+ 	}
+ 
+@@ -288,7 +287,7 @@ int ForkedCall::startScript(Starttype wait, string const & what)
+ }
+ 
+ 
+-int ForkedCall::startScript(string const & what, sigPtr signal)
++int ForkedCall::startScript(string const & what, SignalTypePtr signal)
+ {
+ 	command_ = commandPrep(trim(what));
+ 	signal_  = signal;
+@@ -436,13 +435,13 @@ int ForkedCall::generateChild()
+ namespace ForkedCallQueue {
+ 
+ /// A process in the queue
+-typedef pair<string, ForkedCall::sigPtr> Process;
++typedef pair<string, ForkedCall::SignalTypePtr> Process;
+ /** Add a process to the queue. Processes are forked sequentially
+  *  only one is running at a time.
+  *  Connect to the returned signal and you'll be informed when
+  *  the process has ended.
+  */
+-ForkedCall::sigPtr add(string const & process);
++ForkedCall::SignalTypePtr add(string const & process);
+ 
+ /// in-progress queue
+ static queue<Process> callQueue_;
+@@ -457,10 +456,10 @@ void stopCaller();
+ ///
+ void callback(pid_t, int);
+ 
+-ForkedCall::sigPtr add(string const & process)
++ForkedCall::SignalTypePtr add(string const & process)
+ {
+-	ForkedCall::sigPtr ptr;
+-	ptr.reset(new ForkedCall::sig);
++	ForkedCall::SignalTypePtr ptr;
++	ptr.reset(new ForkedCall::SignalType);
+ 	callQueue_.push(Process(process, ptr));
+ 	if (!running_)
+ 		startCaller();
+diff --git a/src/support/ForkedCalls.h b/src/support/ForkedCalls.h
+index 8a4bf1d..eececc0 100644
+--- a/src/support/ForkedCalls.h
++++ b/src/support/ForkedCalls.h
+@@ -14,8 +14,8 @@
+ #ifndef FORKEDCALLS_H
+ #define FORKEDCALLS_H
+ 
+-#include "support/signals.h"
+ #include "support/strfwd.h"
++#include <boost/signals2.hpp>
+ 
+ #ifdef HAVE_SYS_TYPES_H
+ # include <sys/types.h>
+@@ -44,7 +44,7 @@ public:
+ 	///
+ 	virtual std::shared_ptr<ForkedProcess> clone() const = 0;
+ 
+-	/** A Signal signal can be emitted once the forked process
++	/** A SignalType signal can be emitted once the forked process
+ 	 *  has finished. It passes:
+ 	 *  the PID of the child and;
+ 	 *  the return value from the child.
+@@ -53,8 +53,7 @@ public:
+ 	 *  we can return easily to C++ methods, rather than just globally
+ 	 *  accessible functions.
+ 	 */
+-	typedef signals2::signal<void(pid_t, int)> sig;
+-	typedef sig::slot_type slot;
++	typedef boost::signals2::signal<void(pid_t, int)> SignalType;
+ 
+ 	/** The signal is connected in the calling routine to the desired
+ 	 *  slot. We pass a shared_ptr rather than a reference to the signal
+@@ -62,10 +61,9 @@ public:
+ 	 *  class (and hence the signal) to be destructed before the forked
+ 	 *  call is complete.
+ 	 *
+-	 *  Use Slot::track or Signal::scoped_connection to ensure that the
+-	 *  connection is closed before the slot expires.
++	 *  It doesn't matter if the slot disappears, SigC takes care of that.
+ 	 */
+-	typedef std::shared_ptr<sig> sigPtr;
++	typedef std::shared_ptr<SignalType> SignalTypePtr;
+ 
+ 	/** Invoking the following methods makes sense only if the command
+ 	 *  is running asynchronously!
+@@ -116,7 +114,7 @@ protected:
+ 	pid_t fork();
+ 
+ 	/// Callback function
+-	sigPtr signal_;
++	SignalTypePtr signal_;
+ 
+ 	/// identifying command (for display in the GUI perhaps).
+ 	std::string command_;
+@@ -138,7 +136,7 @@ private:
+ };
+ 
+ 
+-/**
++/** 
+  * An instance of class ForkedCall represents a single child process.
+  *
+  * Class ForkedCall uses fork() and execvp() to lauch the child process.
+@@ -177,7 +175,7 @@ public:
+ 	int startScript(Starttype, std::string const & what);
+ 
+ 	///
+-	int startScript(std::string const & what, sigPtr ptr);
++	int startScript(std::string const & what, SignalTypePtr);
+ 
+ private:
+ 	///
+@@ -197,7 +195,7 @@ private:
+ 
+ namespace ForkedCallQueue {
+ 
+-ForkedCall::sigPtr add(std::string const & process);
++ForkedCall::SignalTypePtr add(std::string const & process);
+ /// Query whether the queue is running a forked process now.
+ bool running();
+ 
+diff --git a/src/support/Makefile.am b/src/support/Makefile.am
+index d3c902c..9865d6f 100644
+--- a/src/support/Makefile.am
++++ b/src/support/Makefile.am
+@@ -93,7 +93,6 @@ liblyxsupport_a_SOURCES = \
+ 	qstring_helpers.h \
+ 	regex.h \
+ 	RefChanger.h \
+-	signals.h \
+ 	socktools.cpp \
+ 	socktools.h \
+ 	strfwd.h \
+diff --git a/src/support/Timeout.h b/src/support/Timeout.h
+index eef78db..042ed45 100644
+--- a/src/support/Timeout.h
++++ b/src/support/Timeout.h
+@@ -12,7 +12,7 @@
+ #ifndef TIMEOUT_H
+ #define TIMEOUT_H
+ 
+-#include "support/signals.h"
++#include <boost/signals2.hpp>
+ 
+ 
+ namespace lyx {
+@@ -40,7 +40,7 @@ public:
+ 	/// restart the timer
+ 	void restart();
+ 	/// signal emitted on timer expiry
+-	signals2::signal<void()> timeout;
++	boost::signals2::signal<void()> timeout;
+ 	/// emit the signal
+ 	void emit();
+ 	/// set the timer type
+diff --git a/src/support/signals.h b/src/support/signals.h
+deleted file mode 100644
+index 7d4d116..0000000
+--- a/src/support/signals.h
++++ /dev/null
+@@ -1,49 +0,0 @@
+-// -*- C++ -*-
+-/**
+- * \file signals.h
+- * This file is part of LyX, the document processor.
+- * Licence details can be found in the file COPYING.
+- *
+- * \author Guillaume Munch
+- *
+- * Full author contact details are available in file CREDITS.
+- */
+-
+-#ifndef LYX_SIGNALS_H
+-#define LYX_SIGNALS_H
+-
+-#include "boost/signals2.hpp"
+-
+-#include <memory>
+-
+-namespace lyx {
+-
+-namespace signals2 = ::boost::signals2;
+-
+-namespace support {
+-
+-/// A small utility to use with signals2::slot_type::track_foreign when the
+-/// parent object is not handled by a shared_ptr, or to track the lifetime of an
+-/// object. Using Trackable to track lifetimes is less thread-safe than tracking
+-/// their parents directly with a shared_ptr as recommended by signals2, but it
+-/// makes it easier for transitioning old code. (Essentially because Trackable
+-/// will not prevent the deletion of the parent by a concurrent thread.)
+-class Trackable {
+-public:
+-	Trackable() : p_(std::make_shared<int>(0)) {}
+-	Trackable(Trackable const &) : Trackable() {}
+-	Trackable(Trackable &&) : Trackable() {}
+-	Trackable & operator=(Trackable const &) { return *this; }
+-	Trackable & operator=(Trackable &&) { return *this; }
+-	// This weak pointer lets you know if the parent object has been destroyed
+-	std::weak_ptr<void> p() const { return p_; }
+-private:
+-	std::shared_ptr<void> const p_;
+-};
+-
+-} // namespace support
+-
+-} // namespace lyx
+-
+-
+-#endif
+
+commit c6b1ee490c9467230ba7033bd15feb4753832c4b
+Author: Pavel Sanda <psanda@ucsd.edu>
+Date:   Thu Nov 16 09:38:27 2017 -0800
+
+    one forgotten line in rejects
+
+diff --git a/src/Buffer.cpp b/src/Buffer.cpp
+index 48391f9..1945b71 100644
+--- a/src/Buffer.cpp
++++ b/src/Buffer.cpp
+@@ -5349,7 +5349,7 @@ void Buffer::Impl::refreshFileMonitor()
+ }
+ 
+ 
+-void Buffer::Impl::fileExternallyModified(bool const exists)
++void Buffer::Impl::fileExternallyModified(bool modified)
+ {
+ 	if (modified) 
+ 		lyx_clean = bak_clean = false;
