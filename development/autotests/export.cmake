@@ -56,6 +56,7 @@ if(format MATCHES "dvi|pdf")
   if(NOT "${ENCODING}" STREQUAL "default")
     # message(STATUS "ENCODING = ${ENCODING}")
   endif()
+  message(STATUS "Executing ${PERL_EXECUTABLE} \"${Perl_Script}\" \"${LYX_ROOT}/${file}.lyx\" \"${LYX_SOURCE}\" ${format} ${_ft} ${ENCODING} ${LanguageFile}")
   execute_process(COMMAND ${PERL_EXECUTABLE} "${Perl_Script}" "${LYX_ROOT}/${file}.lyx" "${LYX_SOURCE}" ${format} ${_ft} ${ENCODING} ${LanguageFile}
     RESULT_VARIABLE _err)
   string(COMPARE EQUAL  ${_err} 0 _erg)
