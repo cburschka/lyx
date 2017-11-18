@@ -11,14 +11,14 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2017-10-27 13:31-0400\n"
-"PO-Revision-Date: 2017-08-02 00:27+0200\n"
+"PO-Revision-Date: 2017-11-19 00:43+0100\n"
 "Last-Translator: Ignacio García <ignacio.gmorales@gmail.com>\n"
 "Language-Team: Spanish <lyx-docs@lists.lyx.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.4\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:33
 msgid "Version"
@@ -7190,7 +7190,7 @@ msgstr ""
 #: lib/layouts/egs.layout:179 lib/layouts/powerdot.layout:255
 #: lib/layouts/simplecv.layout:87 lib/layouts/stdlists.inc:13
 msgid "Itemize"
-msgstr "Enumeración*"
+msgstr ""
 
 #: lib/layouts/aapaper.layout:53 lib/layouts/agu_stdlists.inc:21
 #: lib/layouts/apa.layout:380 lib/layouts/apa6.layout:481
@@ -7662,7 +7662,7 @@ msgstr "Afiliación Adicional"
 
 #: lib/layouts/acmart.layout:218
 msgid "Additional Affiliation: "
-msgstr "Afiliación Adicional:"
+msgstr "Afiliación Adicional: "
 
 #: lib/layouts/acmart.layout:222 lib/layouts/acmart.layout:226
 #, fuzzy
@@ -7731,54 +7731,48 @@ msgid "AuthorNote"
 msgstr "NotaAutor"
 
 #: lib/layouts/acmart.layout:310
-#, fuzzy
 msgid "Note: "
-msgstr "Nota:"
+msgstr "Nota: "
 
 #: lib/layouts/acmart.layout:314
 msgid "ACM Volume"
 msgstr "ACM Volumen"
 
 #: lib/layouts/acmart.layout:316
-#, fuzzy
 msgid "Volume: "
-msgstr "Volumen"
+msgstr "Volumen: "
 
 #: lib/layouts/acmart.layout:320
 msgid "ACM Number"
 msgstr "ACM Número"
 
 #: lib/layouts/acmart.layout:322
-#, fuzzy
 msgid "Number: "
-msgstr "Número"
+msgstr "Número: "
 
 #: lib/layouts/acmart.layout:326
 msgid "ACM Article"
 msgstr "ACM Artículo"
 
 #: lib/layouts/acmart.layout:328
-#, fuzzy
 msgid "Article: "
-msgstr "Artículo"
+msgstr "Artículo: "
 
 #: lib/layouts/acmart.layout:332
 msgid "ACM Year"
 msgstr "ACM Año"
 
 #: lib/layouts/acmart.layout:334
-#, fuzzy
 msgid "Year: "
-msgstr "Año"
+msgstr "Año: "
 
 #: lib/layouts/acmart.layout:338
 msgid "ACM Month"
 msgstr "ACM Mes"
 
 #: lib/layouts/acmart.layout:340
-#, fuzzy
 msgid "Month: "
-msgstr "Mes"
+msgstr "Mes: "
 
 #: lib/layouts/acmart.layout:344
 msgid "ACM Art Seq Num"
@@ -7794,9 +7788,8 @@ msgid "ACM Submission ID"
 msgstr ""
 
 #: lib/layouts/acmart.layout:352
-#, fuzzy
 msgid "Submission ID: "
-msgstr "ID Publicación"
+msgstr "ID Publicación: "
 
 #: lib/layouts/acmart.layout:356
 msgid "ACM Price"
@@ -7811,9 +7804,8 @@ msgid "ACM ISBN"
 msgstr "ACM ISBN"
 
 #: lib/layouts/acmart.layout:364
-#, fuzzy
 msgid "ISBN: "
-msgstr "ISBN:"
+msgstr "ISBN: "
 
 #: lib/layouts/acmart.layout:368
 msgid "ACM DOI"
@@ -7920,9 +7912,8 @@ msgid "ShortAuthors"
 msgstr "AutorsCorto"
 
 #: lib/layouts/acmart.layout:487
-#, fuzzy
 msgid "Short authors: "
-msgstr "Autor corto:"
+msgstr "Autor corto: "
 
 #: lib/layouts/acmart.layout:501
 msgid "Sidebar"
@@ -11077,7 +11068,7 @@ msgstr ""
 #: lib/layouts/enumitem.module:58 lib/layouts/paralist.module:29
 #: lib/layouts/powerdot.layout:276
 msgid "Itemize Options"
-msgstr "Opciones de enumeración*"
+msgstr ""
 
 #: lib/layouts/enumitem.module:59 lib/layouts/enumitem.module:67
 #: lib/layouts/enumitem.module:75 lib/layouts/enumitem.module:112
@@ -11143,7 +11134,7 @@ msgstr "Móvil:"
 
 #: lib/layouts/europasscv.layout:112 lib/layouts/europecv.layout:83
 msgid "Mobile phone number"
-msgstr "Tfno. móvil "
+msgstr "Tfno. móvil"
 
 #: lib/layouts/europasscv.layout:128 lib/layouts/jasatex.layout:133
 #: lib/layouts/moderncv.layout:183
@@ -15494,9 +15485,8 @@ msgstr "Apéndice \\thechapter"
 
 #: lib/layouts/subequations.module:2 lib/layouts/subequations.module:10
 #: lib/layouts/subequations.module:13
-#, fuzzy
 msgid "Subequations"
-msgstr "Ecuaciones"
+msgstr "Subecuaciones"
 
 #: lib/layouts/subequations.module:5
 msgid ""
@@ -15731,9 +15721,8 @@ msgid "Title*"
 msgstr "Título*"
 
 #: lib/layouts/svmult.layout:37
-#, fuzzy
 msgid "Title*:"
-msgstr "Título*: "
+msgstr "Título*:"
 
 #: lib/layouts/svmult.layout:66 lib/layouts/svmult.layout:151
 msgid "Contributors"
@@ -18744,7 +18733,7 @@ msgstr "Encontrar y reemplazar (Rápido) ...|n"
 
 #: lib/ui/stdmenus.inc:116
 msgid "Find & Replace (Advanced)..."
-msgstr "Encontrar y reemplazar (Avanzado) ...|o"
+msgstr "Encontrar y reemplazar (Avanzado) ..."
 
 #: lib/ui/stdmenus.inc:121
 msgid "Text Style|S"
@@ -19753,7 +19742,7 @@ msgstr "Enumeración"
 
 #: lib/ui/stdtoolbars.inc:115
 msgid "Itemized list"
-msgstr "Enumeración*"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:118
 msgid "Increase depth"
@@ -29321,14 +29310,12 @@ msgid "Layout is invalid!"
 msgstr "¡El formato no es válido!"
 
 #: src/frontends/qt4/GuiDocument.cpp:635
-#, fuzzy
 msgid "Conversion to current format impossible!"
-msgstr "Convertir al formato actual"
+msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:636
-#, fuzzy
 msgid "Conversion to current stable format impossible."
-msgstr "Convertir al formato actual"
+msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:641
 msgid "Convert to current format"
@@ -29822,9 +29809,8 @@ msgid "per subsection"
 msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:3342
-#, fuzzy
 msgid "per child document"
-msgstr "Documento hijo"
+msgstr "para documento hijo"
 
 #: src/frontends/qt4/GuiDocument.cpp:3627
 msgid "[No options predefined]"
@@ -29880,9 +29866,8 @@ msgstr ""
 "no se ha podido cargar."
 
 #: src/frontends/qt4/GuiDocument.cpp:4458
-#, fuzzy
 msgid "(Module name: %1)"
-msgstr "Módulos requeridos: %1$s."
+msgstr ""
 
 #: src/frontends/qt4/GuiERT.h:33
 msgid "TeX Mode Inset Settings"
@@ -30659,9 +30644,8 @@ msgid "All available labels"
 msgstr "Plantillas disponibles"
 
 #: src/frontends/qt4/GuiRef.cpp:61
-#, fuzzy
 msgid "Enter string to filter the list of available labels"
-msgstr "Introducir caracteres para filtrar la lista de etiquetas."
+msgstr "Introducir caracteres para filtrar la lista de etiquetas"
 
 #: src/frontends/qt4/GuiRef.cpp:73
 #, fuzzy
@@ -32761,7 +32745,7 @@ msgstr "Descripción: "
 
 #: src/insets/InsetNomencl.cpp:92
 msgid "Sorting: "
-msgstr "Clasificación:"
+msgstr "Clasificación: "
 
 #: src/insets/InsetNote.cpp:266
 msgid "note"
