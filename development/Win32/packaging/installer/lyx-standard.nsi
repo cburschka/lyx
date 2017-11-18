@@ -9,10 +9,13 @@ Compatible with NSIS 3.0
 CRCCheck force
 #
 # Make the installer as small as possible
-SetCompressor /SOLID lzma
+#SetCompressor /SOLID lzma
 
 # make it a Unicode installer
 Unicode true
+
+# enable support for high DPI resolution
+ManifestDPIAware true
 
 !ifndef SETUPTYPE
  !define SETUPTYPE STANDARD
