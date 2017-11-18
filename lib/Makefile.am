@@ -180,7 +180,6 @@ dist_jaexamples_DATA = \
 	examples/ja/Braille.lyx \
 	examples/ja/FeynmanDiagrams.lyx \
 	examples/ja/MultilingualCaptions.lyx \
-	examples/ja/R-S-statements.lyx \
 	examples/ja/beamer.lyx \
 	examples/ja/knitr.lyx \
 	examples/ja/lilypond.lyx \
@@ -351,7 +350,6 @@ dist_examples_DATA = \
 	examples/PDF-form.lyx \
 	examples/powerdot.lyx \
 	examples/recipebook.lyx \
-	examples/R-S-statements.lyx \
 	examples/script_form.lyx \
 	examples/seminar.lyx \
 	examples/serial_letter1.lyx \
