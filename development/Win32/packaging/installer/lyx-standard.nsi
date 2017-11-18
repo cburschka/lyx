@@ -14,6 +14,9 @@ SetCompressor /SOLID lzma
 # make it a Unicode installer
 Unicode true
 
+# enable support for high DPI resolution
+ManifestDPIAware true
+
 !ifndef SETUPTYPE
  !define SETUPTYPE STANDARD
 !endif
