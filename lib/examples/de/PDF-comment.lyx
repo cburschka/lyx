@@ -84,6 +84,7 @@ pdfcomment
 \suppress_date true
 \justification true
 \use_refstyle 0
+\use_minted 0
 \notefontcolor #0000ff
 \index Index
 \shortcut idx
@@ -96,6 +97,7 @@ pdfcomment
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style german
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -104,7 +106,6 @@ pdfcomment
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
-\use_minted 0
 \end_header
 
 \begin_body
@@ -1642,6 +1643,7 @@ markup=Highlight
 status open
 
 \begin_layout Plain Layout
+
 MathePopup
 \end_layout
 
@@ -1840,6 +1842,7 @@ author={Oleg Testmann},icon=Check,color=lime
 status open
 
 \begin_layout Plain Layout
+
 Oleg
 \end_layout
 
@@ -1922,6 +1925,7 @@ Oleg sagte auch: Ich hasse es, mich zu wiederholen.
 status open
 
 \begin_layout Plain Layout
+
 Dolittle
 \end_layout
 
@@ -2080,6 +2084,7 @@ kann man einen Stil für Liste festlegen.
 status open
 
 \begin_layout Plain Layout
+
 MeinStil
 \end_layout
 

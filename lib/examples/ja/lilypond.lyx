@@ -67,6 +67,7 @@ lilypond
 \suppress_date true
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -82,6 +83,7 @@ lilypond
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -90,7 +92,6 @@ lilypond
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\use_minted 0
 \end_header
 
 \begin_body
@@ -242,6 +243,7 @@ status open
 status open
 
 \begin_layout Plain Layout
+
 staffsize=28
 \end_layout
 
@@ -365,6 +367,7 @@ status open
 status open
 
 \begin_layout Plain Layout
+
 staffsize=12
 \end_layout
 

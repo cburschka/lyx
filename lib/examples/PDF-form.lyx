@@ -126,6 +126,7 @@ pdfform
 \suppress_date true
 \justification true
 \use_refstyle 0
+\use_minted 0
 \notefontcolor #0000ff
 \index Index
 \shortcut idx
@@ -138,6 +139,7 @@ pdfform
 \is_math_indent 0
 \math_numbering_side default
 \quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -146,17 +148,16 @@ pdfform
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
-\use_minted 0
 \end_header
 
 \begin_body
 
 \begin_layout Begin PDF Form
-
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
+
 action=mailto:forms@lyx.test?subject=The submitted PDF form, method=post
 \end_layout
 
@@ -1448,7 +1449,6 @@ Here are some examples:
 \end_layout
 
 \begin_layout Text Field Style
-
 print, bordercolor=red, borderstyle=U, backgroundcolor=lightgray, color=lime,
  maxlen=10, align=2, charsize=16pt
 \begin_inset Note Note
@@ -1488,19 +1488,16 @@ I
 \end_layout
 
 \begin_layout Check Box Style
-
 print, borderstyle=S, checkboxsymbol=
 \backslash
 ding{55}
 \end_layout
 
 \begin_layout Combo Box Style
-
 print, bordercolor={0.33 0.66 0.33}, borderstyle=D
 \end_layout
 
 \begin_layout Popdown Box Style
-
 print, menulength=2
 \begin_inset Note Note
 status collapsed
@@ -1525,22 +1522,18 @@ hyperref
 \end_layout
 
 \begin_layout Radio Box Style
-
 print, borderstyle=I, radiosymbol=3
 \end_layout
 
 \begin_layout Push Button Style
-
 print, borderstyle=B, bordercolor=lime
 \end_layout
 
 \begin_layout Submit Button Style
-
 print, borderwidth=0, bordercolor=white
 \end_layout
 
 \begin_layout Reset Button Style
-
 print, bordercolor=lime
 \end_layout
 
@@ -2394,7 +2387,6 @@ Save form as
 \end_layout
 
 \begin_layout PDF Link Setup
-
 pdfborder={0 0 0}
 \begin_inset Note Note
 status open
@@ -2544,7 +2536,6 @@ pdfborder
 \end_layout
 
 \begin_layout PDF Link Setup
-
 pdfborder={0 0 4}
 \end_layout
 
@@ -2635,7 +2626,6 @@ menubordercolor
 \end_layout
 
 \begin_layout PDF Link Setup
-
 pdfborder={0 0 1}, menubordercolor={0.1 0.9 0.5}
 \end_layout
 
@@ -2701,7 +2691,6 @@ To change the background color use a colored box.
 \end_layout
 
 \begin_layout PDF Link Setup
-
 pdfborder={0 0 0}
 \end_layout
 
@@ -2759,7 +2748,6 @@ Save form as
 \end_layout
 
 \begin_layout PDF Link Setup
-
 pdfborder={0 0 1}, menubordercolor={1 0 0}
 \end_layout
 
@@ -3258,7 +3246,6 @@ fi
 \end_layout
 
 \begin_layout End PDF Form
-
 \begin_inset Note Note
 status open
 
