@@ -93,7 +93,10 @@ BrandingText " "
 
 VIProductVersion "${APP_VERSION_NUMBER}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductName" "${APP_NAME}"
+VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductVersion" "${APP_NAME} ${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_REVISION} ${APP_SETUPTYPE} installer"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "${APP_INFO}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "${APP_VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "${APP_COPYRIGHT}"
-
+VIAddVersionKey /LANG=${LANG_ENGLISH} "CompanyName" "LyX Team"
+# Fixme: LyX should register the name LyX as trademark
+VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalTrademarks" ""
