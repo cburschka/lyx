@@ -58,6 +58,11 @@ Configuration of LyX installer
 !define APP_WIKI "http://wiki.lyx.org"
 !define APP_WIKI_INFO "${APP_NAME} Wiki"
 !define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-${COPYRIGHT_YEAR} by the LyX Team"
+!if ${SETUPTYPE} == STANDARD
+  !define APP_SETUPTYPE "Standard"
+!else if ${SETUPTYPE} == BUNDLE
+  !define APP_SETUPTYPE "Bundle"
+!endif
 
 !define APP_RUN "bin\lyx.exe"
 !define BIN_LYX "lyx.exe"
@@ -80,14 +85,10 @@ Configuration of LyX installer
 # /DExeFile=/path/to/installer
 
 !if ${SETUPTYPE} == STANDARD
-
   !define SETUP_EXE ${ExeFile}
-
 !else if ${SETUPTYPE} == BUNDLE
-
   !define SETUP_EXE ${BundleExeFile}
   !define BUNDLESETUP_LATEX
-
 !endif
 
 !define SETUP_ICON "${FILES_ICONS}\lyx.ico"
