@@ -9,7 +9,7 @@ Compatible with NSIS 3.0
 CRCCheck force
 #
 # Make the installer as small as possible
-#SetCompressor /SOLID lzma
+SetCompressor /SOLID lzma
 
 # make it a Unicode installer
 Unicode true
