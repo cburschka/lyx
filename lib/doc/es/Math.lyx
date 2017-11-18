@@ -133,6 +133,9 @@
 \end_preamble
 \options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
+\begin_modules
+subequations
+\end_modules
 \maintain_unincluded_children false
 \language spanish
 \language_package babel
@@ -449,7 +452,7 @@ En el archivo
 \begin_inset CommandInset href
 LatexCommand href
 name "amsguide.pdf"
-target "ftp://ctan.tug.org/tex-archive/macros/amstex/doc/amsguide.pdf"
+target "http://mirrors.ctan.org/macros/amstex/doc/amsguide.pdf"
 literal "false"
 
 \end_inset
@@ -30254,24 +30257,61 @@ Numeración de ecuaciones ! subnumeración
 \end_layout
 
 \begin_layout Standard
-Con ayuda de los comandos 
-\series bold
 
-\backslash
-begin{subequations}
-\series default
- y 
-\series bold
+\lang english
+Formulas can be numbered as subequations.
+ To activate this feature, add
+\lang spanish
+ el módulo 
+\family sans
+Subecuaciones
+\family default
+ 
+\lang english
+to the document in
+\lang spanish
+ el menú
+\lang english
+ 
+\family sans
+\lang spanish
+Documento\SpecialChar menuseparator
+Configuración\SpecialChar menuseparator
+Módulos
+\family default
+.
+ 
+\lang english
+To insert subequations use
+\lang spanish
+ el menú 
+\family sans
+Insertar\SpecialChar menuseparator
+Recuadro
+\begin_inset space ~
+\end_inset
 
-\backslash
-end{subequations}
-\series default
- en modo \SpecialChar TeX
- se pueden subnumerar ecuaciones.
+personalizado\SpecialChar menuseparator
+Subecuaciones
+\family default
+.
 \end_layout
 
 \begin_layout Standard
-Ejemplo:
+
+\lang english
+The equations to be subnumbered are put into the
+\lang spanish
+ 
+\family sans
+Subecuaciones
+\family default
+ 
+\lang english
+environment
+\lang spanish
+.
+ Un ejemplo:
 \begin_inset Formula 
 \begin{equation}
 A=C-B
@@ -30280,23 +30320,14 @@ A=C-B
 \end_inset
 
 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{subequations}
-\end_layout
-
-\end_inset
-
-
 \begin_inset VSpace -5mm
 \end_inset
 
 
+\begin_inset Flex Subequations
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula 
 \begin{equation}
 B=C-A\label{eq:b}
@@ -30315,73 +30346,24 @@ C=A+B\label{eq:c}
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{subequations}
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-Para este ejemplo se ha hecho lo siguiente:
-\end_layout
-
-\begin_layout Enumerate
-se inserta la primera ecuación
-\end_layout
-
-\begin_layout Enumerate
-después de ella se inserta
-\series bold
-
-\begin_inset Newline newline
-\end_inset
-
-
-\backslash
-begin{subequations}
-\end_layout
-
-\begin_layout Enumerate
-se inserta la segunda ecuación
-\end_layout
-
-\begin_layout Enumerate
-se inserta la tercera ecuación
-\end_layout
-
-\begin_layout Enumerate
-se inserta 
-\series bold
-
-\backslash
-end{subequations}
-\series default
- tras la tercera ecuación
-\end_layout
-
-\begin_layout Standard
-Toda ecuación entre los comandos 
-\series bold
-
-\backslash
-begin
-\series default
- y 
-\series bold
-
-\backslash
-end
-\series default
+Toda ecuación 
+\lang english
+in the
+\lang spanish
+ 
+\family sans
+Subecuaciones
+\family default
+ 
+\lang english
+environment
+\lang spanish
  se subnumerará con a, b, c\SpecialChar ldots
  
 \lang english
@@ -30413,17 +30395,16 @@ reference "eq:c"
 .
  
 \lang english
-If you want to reference the subequations collectively, insert a label directly
- after
-\series bold
+If you want to reference the subequations collectively, insert a label as
+ first thing in the
 \lang spanish
  
-\backslash
-begin{subequations}
-\series default
+\family sans
+Subecuaciones
+\family default
  
 \lang english
-and reference it.
+environment.
  Formula
 \lang spanish
  
@@ -30439,22 +30420,27 @@ is an example.
 \end_layout
 
 \begin_layout Standard
-Al insertar los comandos en modo \SpecialChar TeX
- se crea un espacio entre las dos primeras
- ecuaciones.
+Al insertar 
+\lang english
+subequations vertical space is added before it
+\lang spanish
+.
  Para evitarlo se inserta ese espacio vertical de -5
 \begin_inset space \thinspace{}
 \end_inset
 
-mm detrás del comando 
-\series bold
+mm 
+\lang english
+right before the 
+\family sans
+\lang spanish
+Subecuaciones
+\family default
+\lang english
+ environment.
 
-\backslash
-begin{subequations}
-\series default
-.
-
 \series bold
+\lang spanish
  
 \series default
 Si se usa el estilo 
@@ -30489,14 +30475,17 @@ mm.
 
 \lang english
 To get another subnumber instead of small Latin letters, insert this command
- as TeX code after
+ as \SpecialChar TeX
+ code before the equations in the
 \lang spanish
  
-\series bold
-
-\backslash
-begin{subequations}
-\series default
+\family sans
+Subecuaciones
+\family default
+ 
+\lang english
+environment
+\lang spanish
 :
 \end_layout
 
@@ -30552,19 +30541,10 @@ Un ejemplo de ecuación multilínea en la que
 the numbering is customized
 \lang spanish
  y eliminado la numeración de la segunda línea:
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Subequations
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-begin{subequations}
-\end_layout
-
-\end_inset
-
-
 \begin_inset CommandInset label
 LatexCommand label
 name "eq:Un-ejemplo-de"
@@ -30601,6 +30581,317 @@ A & = & (B-Z)^{2}=(B-Z)(B-Z)\\
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Numeración con números romanos y letras
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Numeración-con-números"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Numeración de ecuaciones ! con números romanos
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Numeración de ecuaciones ! con letras
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Las ecuaciones también se pueden numerar con números romanos y letras latinas.
+ Por ejemplo, para numerar con romanos en minúscula,
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Como en español no se usan romanos en minúscula, el estilo 
+\series bold
+spanish
+\series default
+ del sistema 
+\series bold
+babel
+\series default
+ redefine 
+\series bold
+
+\backslash
+roman
+\series default
+ para que los dé en versalitas.
+ Véase 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "spanish"
+literal "true"
+
+\end_inset
+
+ (
+\emph on
+N.
+\begin_inset space \thinspace{}
+\end_inset
+
+del t
+\emph default
+).
+\end_layout
+
+\end_inset
+
+ se inserta el comando
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+roman{equation}}
+\end_layout
+
+\begin_layout Standard
+antes de la ecuación en modo \SpecialChar TeX
+.
+ 
+\series bold
+
+\backslash
+renewcommand
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Comandos ! R ! 
+\backslash
+renewcommand
+\end_layout
+
+\end_inset
+
+ redefine el comando predefinido 
+\series bold
+
+\backslash
+theequation
+\series default
+ como 
+\series bold
+
+\backslash
+roman{equation}
+\series default
+.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+El comando 
+\series bold
+
+\backslash
+renewcommand
+\series default
+ tiene el mismo esquema que el comando 
+\series bold
+
+\backslash
+newcommand
+\series default
+, descrito en 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:El-comando-newcommand"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+equation
+\series default
+ es el contador de ecuaciones.
+ Si se usa el comando 
+\series bold
+
+\backslash
+the
+\series default
+ como prefijo de un contador, el valor del contador sale en números arábigos.
+ Si una ecuación es numerada, \SpecialChar LaTeX
+ pone internamente el comando 
+\series bold
+
+\backslash
+theequation
+\series default
+ detrás de la ecuación.
+ 
+\series bold
+
+\backslash
+roman{equation}
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Comandos ! R ! 
+\backslash
+roman
+\end_layout
+
+\end_inset
+
+ pone el contador en romanos en minúscula.
+\end_layout
+
+\begin_layout Standard
+Todas las ecuaciones siguientes a 
+\series bold
+
+\backslash
+renew
+\series default
+c
+\series bold
+ommand
+\series default
+ se numerarán en romanos.
+ Para cambiar a números romanos en mayúscula se inserta de nuevo el comando,
+ cambiando 
+\series bold
+
+\backslash
+roman
+\series default
+ por 
+\series bold
+
+\backslash
+Roman
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Comandos ! R ! 
+\backslash
+roman@
+\backslash
+Roman
+\end_layout
+
+\end_inset
+
+.
+ Para 
+\begin_inset Quotes cld
+\end_inset
+
+numerar
+\begin_inset Quotes crd
+\end_inset
+
+ con minúsculas latinas hay el comando 
+\series bold
+
+\backslash
+alph
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Comandos ! A ! 
+\backslash
+alph
+\end_layout
+
+\end_inset
+
+, y para mayúsculas el comando 
+\series bold
+
+\backslash
+Alph
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Comandos ! A ! 
+\backslash
+alph@
+\backslash
+Alph
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color none
+Nota:
+\series default
+ Con letras latinas sólo se puede numerar hasta un máximo de 26
+\begin_inset space ~
+\end_inset
+
+ecuaciones.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status collapsed
 
@@ -30608,12 +30899,186 @@ status collapsed
 
 
 \backslash
-end{subequations}
+renewcommand{
+\backslash
+theequation}{
+\backslash
+roman{equation}}
 \end_layout
 
 \end_inset
 
 
+\begin_inset Formula 
+\begin{equation}
+A=\textrm{romanos en minúscula}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+Roman{equation}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+B=\textrm{romanos en mayúscula}\label{eq:Rom}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+alph{equation}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+C=\textrm{latinas en minúscula}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+Alph{equation}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+D=\textrm{latinas en mayúscula}\label{eq:Lat}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para volver a la numeración por omisión se inserta el comando:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+arabic{equation}}
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Comandos ! A ! 
+\backslash
+arabic
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+arabic{equation}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+E=\mbox{arábigos}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Como ves, las ecuaciones se numeran consecutivamente independientemente
+ del estilo de numeración.
+ Cuando la numeración haya de empezar con 
+\begin_inset Quotes cld
+\end_inset
+
+1
+\begin_inset Quotes crd
+\end_inset
+
+ al cambiar el estilo, hay que definir nuevos contadores de ecuación.
+ Una descripción sobre esto se encuentra en el archivo 
+\begin_inset CommandInset href
+LatexCommand href
+name "Formula-numbering.lyx"
+target "run:Formula-numbering.lyx"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -31301,499 +31766,6 @@ makeatother
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Numeración con números romanos y letras
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:Numeración-con-números"
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Numeración de ecuaciones ! con números romanos
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Numeración de ecuaciones ! con letras
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Las ecuaciones también se pueden numerar con números romanos y letras latinas.
- Por ejemplo, para numerar con romanos en minúscula,
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Como en español no se usan romanos en minúscula, el estilo 
-\series bold
-spanish
-\series default
- del sistema 
-\series bold
-babel
-\series default
- redefine 
-\series bold
-
-\backslash
-roman
-\series default
- para que los dé en versalitas.
- Véase 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "spanish"
-literal "true"
-
-\end_inset
-
- (
-\emph on
-N.
-\begin_inset space \thinspace{}
-\end_inset
-
-del t
-\emph default
-).
-\end_layout
-
-\end_inset
-
- se inserta el comando
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-renewcommand{
-\backslash
-theequation}{
-\backslash
-roman{equation}}
-\end_layout
-
-\begin_layout Standard
-antes de la ecuación en modo \SpecialChar TeX
-.
- 
-\series bold
-
-\backslash
-renewcommand
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Comandos ! R ! 
-\backslash
-renewcommand
-\end_layout
-
-\end_inset
-
- redefine el comando predefinido 
-\series bold
-
-\backslash
-theequation
-\series default
- como 
-\series bold
-
-\backslash
-roman{equation}
-\series default
-.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-El comando 
-\series bold
-
-\backslash
-renewcommand
-\series default
- tiene el mismo esquema que el comando 
-\series bold
-
-\backslash
-newcommand
-\series default
-, descrito en 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:El-comando-newcommand"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
- 
-\series bold
-equation
-\series default
- es el contador de ecuaciones.
- Si se usa el comando 
-\series bold
-
-\backslash
-the
-\series default
- como prefijo de un contador, el valor del contador sale en números arábigos.
- Si una ecuación es numerada, \SpecialChar LaTeX
- pone internamente el comando 
-\series bold
-
-\backslash
-theequation
-\series default
- detrás de la ecuación.
- 
-\series bold
-
-\backslash
-roman{equation}
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Comandos ! R ! 
-\backslash
-roman
-\end_layout
-
-\end_inset
-
- pone el contador en romanos en minúscula.
-\end_layout
-
-\begin_layout Standard
-Todas las ecuaciones siguientes a 
-\series bold
-
-\backslash
-renew
-\series default
-c
-\series bold
-ommand
-\series default
- se numerarán en romanos.
- Para cambiar a números romanos en mayúscula se inserta de nuevo el comando,
- cambiando 
-\series bold
-
-\backslash
-roman
-\series default
- por 
-\series bold
-
-\backslash
-Roman
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Comandos ! R ! 
-\backslash
-roman@
-\backslash
-Roman
-\end_layout
-
-\end_inset
-
-.
- Para 
-\begin_inset Quotes cld
-\end_inset
-
-numerar
-\begin_inset Quotes crd
-\end_inset
-
- con minúsculas latinas hay el comando 
-\series bold
-
-\backslash
-alph
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Comandos ! A ! 
-\backslash
-alph
-\end_layout
-
-\end_inset
-
-, y para mayúsculas el comando 
-\series bold
-
-\backslash
-Alph
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Comandos ! A ! 
-\backslash
-alph@
-\backslash
-Alph
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color none
-Nota:
-\series default
- Con letras latinas sólo se puede numerar hasta un máximo de 26
-\begin_inset space ~
-\end_inset
-
-ecuaciones.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-theequation}{
-\backslash
-roman{equation}}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{equation}
-A=\textrm{romanos en minúscula}
-\end{equation}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-theequation}{
-\backslash
-Roman{equation}}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{equation}
-B=\textrm{romanos en mayúscula}\label{eq:Rom}
-\end{equation}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-theequation}{
-\backslash
-alph{equation}}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{equation}
-C=\textrm{latinas en minúscula}
-\end{equation}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-theequation}{
-\backslash
-Alph{equation}}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{equation}
-D=\textrm{latinas en mayúscula}\label{eq:Lat}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Para volver a la numeración por omisión se inserta el comando:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-renewcommand{
-\backslash
-theequation}{
-\backslash
-arabic{equation}}
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Comandos ! A ! 
-\backslash
-arabic
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-theequation}{
-\backslash
-arabic{equation}}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{equation}
-E=\mbox{arábigos}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Como ves, las ecuaciones se numeran consecutivamente independientemente
- del estilo de numeración.
- Cuando la numeración haya de empezar con 
-\begin_inset Quotes cld
-\end_inset
-
-1
-\begin_inset Quotes crd
-\end_inset
-
- al cambiar el estilo, hay que definir nuevos contadores de ecuación.
- Una descripción sobre esto se encuentra en el archivo 
-\begin_inset CommandInset href
-LatexCommand href
-name "Formula-numbering.lyx"
-target "run:Formula-numbering.lyx"
-literal "false"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Section
@@ -32994,13 +32966,6 @@ Manuales
 específicos
 \family default
 , hay ejemplos de diagramas de este tipo.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -38041,8 +38006,9 @@ literal "true"
 
 
 \shape smallcaps
-Mittelbach, F.
- ; Goossens, M.
+F.
+ Mittelbach; M.
+ Goossens
 \shape default
 : 
 \shape italic

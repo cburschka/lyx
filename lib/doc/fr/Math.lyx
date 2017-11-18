@@ -138,6 +138,9 @@
 \end_preamble
 \options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
+\begin_modules
+subequations
+\end_modules
 \maintain_unincluded_children false
 \language french
 \language_package default
@@ -485,7 +488,7 @@ AmS
 
 pour des raisons de bon sens
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 On trouve une liste de toutes les commandes math-
@@ -511,7 +514,7 @@ dans le fichier
 \begin_inset CommandInset href
 LatexCommand href
 name "amsguide.pdf"
-target "ftp://ctan.tug.org/tex-archive/macros/amstex/doc/amsguide.pdf"
+target "http://mirrors.ctan.org/macros/amstex/doc/amsguide.pdf"
 literal "false"
 
 \end_inset
@@ -30246,25 +30249,61 @@ Numérotation des formules ! sous-numérotation
 \end_layout
 
 \begin_layout Standard
-Avec l'aide des commandes 
-\series bold
 
-\backslash
-begin{subequations}
-\series default
- et 
-\series bold
+\lang english
+Formulas can be numbered as subequations.
+ To activate this feature, add the module
+\lang french
+ 
+\family sans
+Sous-équations
+\family default
+ 
+\lang english
+to the document in
+\lang french
+ le menu
+\lang english
+ 
+\family sans
+\lang french
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
+Modules
+\family default
+.
+ 
+\lang english
+To insert subequations use
+\lang french
+ le menu 
+\family sans
+Insertion\SpecialChar menuseparator
+Inserts
+\begin_inset space ~
+\end_inset
 
-\backslash
-end{subequations}
-\series default
- on peut faire une sous-numérotation de formules.
- Les deux commandes doivent être insérées en mode \SpecialChar TeX
+personnalisables\SpecialChar menuseparator
+Sous-équations
+\family default
 .
 \end_layout
 
 \begin_layout Standard
-Un exemple:
+
+\lang english
+The equations to be subnumbered are put into the
+\lang french
+ 
+\family sans
+Sous-équations
+\family default
+ 
+\lang english
+environment
+\lang french
+.
+ Un exemple:
 \begin_inset Formula 
 \begin{equation}
 A=C-B
@@ -30273,23 +30312,14 @@ A=C-B
 \end_inset
 
 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-begin{subequations}
-\end_layout
-
-\end_inset
-
-
 \begin_inset VSpace -5mm
 \end_inset
 
 
+\begin_inset Flex Subequations
+status open
+
+\begin_layout Plain Layout
 \begin_inset Formula 
 \begin{equation}
 B=C-A\label{eq:b}
@@ -30308,75 +30338,24 @@ C=A+B\label{eq:c}
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{subequations}
-\end_layout
-
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-Pour créer cet exemple, on fait ce qui suit:
-\end_layout
-
-\begin_layout Enumerate
-on insère la première formule;
-\end_layout
-
-\begin_layout Enumerate
-après la première formule on insère 
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-
-\backslash
-begin{subequations}
-\series default
-;
-\end_layout
-
-\begin_layout Enumerate
-on insère la deuxième formule;
-\end_layout
-
-\begin_layout Enumerate
-on insère la troisième formule;
-\end_layout
-
-\begin_layout Enumerate
-on insère 
-\series bold
-
-\backslash
-end{subequations}
-\series default
- après la troisième formule.
-\end_layout
-
-\begin_layout Standard
-Chaque formule entre les commandes 
-\series bold
-
-\backslash
-begin
-\series default
- et 
-\series bold
-
-\backslash
-end
-\series default
+Chaque formule 
+\lang english
+in the
+\lang french
+ 
+\family sans
+Sous-équations
+\family default
+ 
+\lang english
+environment
+\lang french
  sera sous-numérotée avec a, b, c, \SpecialChar ldots
  dans la sortie imprimable.
  Pour les formules multi-lignes, chaque ligne sera numérotée.
@@ -30400,13 +30379,19 @@ reference "eq:c"
 
 .
  Si vous désirez une référence globale aux sous-numéros, insérez une étiquette
- immédiatement après
-\series bold
  
-\backslash
-begin{subequations}
-\series default
- et renvoyez à celle-ci.
+\lang english
+as first thing in the
+\lang french
+ 
+\family sans
+Sous-équations
+\family default
+ 
+\lang english
+environment
+\lang french
+.
  La formule
 \begin_inset space ~
 \end_inset
@@ -30422,20 +30407,28 @@ reference "eq:Voici-un-exemple"
 \end_layout
 
 \begin_layout Standard
-En insérant les commandes en mode \SpecialChar TeX
- entre les deux premières formules, on
- crée une espace.
+En insérant sous-équations 
+\lang english
+vertical space is added before it.
+
+\lang french
  Pour la supprimer, on insère une espace verticale négative de -5
 \begin_inset space \thinspace{}
 \end_inset
 
-mm après la commande 
-\series bold
+mm
+\lang english
+ right before the
+\lang french
+ 
+\family sans
+Sous-équations
+\family default
+ 
+\lang english
+environment.
 
-\backslash
-begin{subequations}
-\series default
-.
+\lang french
  Quand on utilise le style 
 \series bold
 Indenté
@@ -30470,12 +30463,19 @@ mm à la place.
 
 \begin_layout Standard
 Pour obtenir un chiffe latin minuscule plutôt que des lettres latines, insérer
- ce code TeX après 
-\series bold
-
-\backslash
-begin{subequations}
-\series default
+ ce code \SpecialChar TeX
+ 
+\lang english
+before the equations in the
+\lang french
+ 
+\family sans
+Sous-équations
+\family default
+ 
+\lang english
+environment
+\lang french
 :
 \end_layout
 
@@ -30520,19 +30520,10 @@ reference "subsec:Numérotation-avec-des"
 \begin_layout Standard
 Voici un exemple de formule multi-lignes où la numérotation est personnalisée
  et désactivée pour la deuxième ligne:
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Subequations
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-begin{subequations}
-\end_layout
-
-\end_inset
-
-
 \begin_inset CommandInset label
 LatexCommand label
 name "eq:Voici-un-exemple"
@@ -30569,22 +30560,11 @@ A & = & (B-Z)^{2}=(B-Z)(B-Z)\\
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{subequations}
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -30598,6 +30578,453 @@ La fenêtre \SpecialChar LyX
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsection
+Numérotation avec des chiffres romains ou des lettres
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Numérotation-avec-des"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Numérotation des formules ! avec des lettres
+\end_layout
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Numérotation des formules ! avec des chiffres romains
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+On peut aussi numéroter les formules avec des chiffres romains ou des lettres
+ latines.
+ Par exemple, pour numéroter avec des petits chiffres romains, on insère
+ la commande
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+roman{equation}}
+\end_layout
+
+\begin_layout Standard
+en mode \SpecialChar TeX
+ juste avant la formule.
+ 
+\series bold
+
+\backslash
+renewcommand
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Commandes ! R ! 
+\backslash
+renewcommand
+\end_layout
+
+\end_inset
+
+ redéfinit la commande prédéfinie 
+\series bold
+
+\backslash
+theequation
+\series default
+ en la commande 
+\series bold
+
+\backslash
+roman{equation}
+\series default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+La commande 
+\series bold
+
+\backslash
+renewcommand
+\series default
+ a la même syntaxe que la commande 
+\series bold
+
+\backslash
+newcommand
+\series default
+ qui est décrite dans 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Commandes-personnalisées"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+.
+ 
+\series bold
+equation
+\series default
+ est le compteur pour les formules.
+ Quand la commande 
+\series bold
+
+\backslash
+the
+\series default
+ est utilisée comme préfixe pour un compteur, la valeur du compteur est
+ écrite en utilisant des chiffres arabes.
+ Quand une formule est numérotée, \SpecialChar LaTeX
+ met en interne la commande 
+\series bold
+
+\backslash
+theequation
+\series default
+ après la formule.
+ 
+\series bold
+
+\backslash
+roman{equation}
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Commandes ! R ! 
+\backslash
+roman
+\end_layout
+
+\end_inset
+
+
+\series default
+ écrit la valeur du compteur en utilisant des petits chiffres romains.
+\end_layout
+
+\begin_layout Standard
+Toutes les formules qui suivent 
+\series bold
+
+\backslash
+renew
+\series default
+c
+\series bold
+ommand
+\series default
+ sont maintenant numérotées en chiffres romains.
+ Pour passer à une numérotation avec de gros chiffres romains, on insère
+ la même commande, mais avec 
+\series bold
+
+\backslash
+roman
+\series default
+ remplacé par 
+\series bold
+
+\backslash
+Roman
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Commandes ! R ! 
+\backslash
+roman@
+\backslash
+Roman
+\end_layout
+
+\end_inset
+
+.
+ Pour numéroter avec des lettres latines minuscules, on a la commande 
+\series bold
+
+\backslash
+alph
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Commandes ! A ! 
+\backslash
+alphe
+\end_layout
+
+\end_inset
+
+, pour les lettres majuscules, on a 
+\series bold
+
+\backslash
+Alph
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Commandes ! A ! 
+\backslash
+alph@
+\backslash
+Alph
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\color none
+Note:
+\series default
+ on peut numéroter au maximum 26
+\begin_inset space ~
+\end_inset
+
+formules avec des lettres latines dans un même document.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+roman{equation}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+A=\textrm{romains minuscules}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+Roman{equation}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+B=\textrm{romains majuscules}\label{eq:Rom}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+alph{equation}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+C=\textrm{latines minuscules}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+Alph{equation}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+D=\textrm{latines majuscules}\label{eq:Lat}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Pour revenir à la numérotation implicite, on insère la commande:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+arabic{equation}}
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Commandes ! A ! 
+\backslash
+arabic
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+theequation}{
+\backslash
+arabic{equation}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+E=\textrm{Arabes}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+Comme vous pouvez le voir, les numéros d'équation se suivent indépendamment
+ du style de numérotation.
+ Si l'on veut que la numérotation reparte à 
+\begin_inset Quotes cld
+\end_inset
+
+1
+\begin_inset Quotes crd
+\end_inset
+
+ quand on change de style de numérotation, on doit définir de nouveaux compteurs.
+ On trouvera une description de cette opération dans le fichier 
+\begin_inset CommandInset href
+LatexCommand href
+name "Formula-numbering.lyx"
+target "run:Formula-numbering.lyx"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -31271,453 +31698,6 @@ makeatother
 \end_inset
 
 
-\end_layout
-
-\begin_layout Subsection
-Numérotation avec des chiffres romains ou des lettres
-\begin_inset CommandInset label
-LatexCommand label
-name "subsec:Numérotation-avec-des"
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Numérotation des formules ! avec des lettres
-\end_layout
-
-\end_inset
-
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Numérotation des formules ! avec des chiffres romains
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-On peut aussi numéroter les formules avec des chiffres romains ou des lettres
- latines.
- Par exemple, pour numéroter avec des petits chiffres romains, on insère
- la commande
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-renewcommand{
-\backslash
-theequation}{
-\backslash
-roman{equation}}
-\end_layout
-
-\begin_layout Standard
-en mode \SpecialChar TeX
- juste avant la formule.
- 
-\series bold
-
-\backslash
-renewcommand
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Commandes ! R ! 
-\backslash
-renewcommand
-\end_layout
-
-\end_inset
-
- redéfinit la commande prédéfinie 
-\series bold
-
-\backslash
-theequation
-\series default
- en la commande 
-\series bold
-
-\backslash
-roman{equation}
-\series default
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-La commande 
-\series bold
-
-\backslash
-renewcommand
-\series default
- a la même syntaxe que la commande 
-\series bold
-
-\backslash
-newcommand
-\series default
- qui est décrite dans 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Commandes-personnalisées"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-.
- 
-\series bold
-equation
-\series default
- est le compteur pour les formules.
- Quand la commande 
-\series bold
-
-\backslash
-the
-\series default
- est utilisée comme préfixe pour un compteur, la valeur du compteur est
- écrite en utilisant des chiffres arabes.
- Quand une formule est numérotée, \SpecialChar LaTeX
- met en interne la commande 
-\series bold
-
-\backslash
-theequation
-\series default
- après la formule.
- 
-\series bold
-
-\backslash
-roman{equation}
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Commandes ! R ! 
-\backslash
-roman
-\end_layout
-
-\end_inset
-
-
-\series default
- écrit la valeur du compteur en utilisant des petits chiffres romains.
-\end_layout
-
-\begin_layout Standard
-Toutes les formules qui suivent 
-\series bold
-
-\backslash
-renew
-\series default
-c
-\series bold
-ommand
-\series default
- sont maintenant numérotées en chiffres romains.
- Pour passer à une numérotation avec de gros chiffres romains, on insère
- la même commande, mais avec 
-\series bold
-
-\backslash
-roman
-\series default
- remplacé par 
-\series bold
-
-\backslash
-Roman
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Commandes ! R ! 
-\backslash
-roman@
-\backslash
-Roman
-\end_layout
-
-\end_inset
-
-.
- Pour numéroter avec des lettres latines minuscules, on a la commande 
-\series bold
-
-\backslash
-alph
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Commandes ! A ! 
-\backslash
-alphe
-\end_layout
-
-\end_inset
-
-, pour les lettres majuscules, on a 
-\series bold
-
-\backslash
-Alph
-\series default
-
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Commandes ! A ! 
-\backslash
-alph@
-\backslash
-Alph
-\end_layout
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\series bold
-\color none
-Note:
-\series default
- on peut numéroter au maximum 26
-\begin_inset space ~
-\end_inset
-
-formules avec des lettres latines dans un même document.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-theequation}{
-\backslash
-roman{equation}}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-A=\textrm{romains minuscules}
-\end{equation}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-theequation}{
-\backslash
-Roman{equation}}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{equation}
-B=\textrm{romains majuscules}\label{eq:Rom}
-\end{equation}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-theequation}{
-\backslash
-alph{equation}}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{equation}
-C=\textrm{latines minuscules}
-\end{equation}
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-theequation}{
-\backslash
-Alph{equation}}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{equation}
-D=\textrm{latines majuscules}\label{eq:Lat}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Pour revenir à la numérotation implicite, on insère la commande:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-renewcommand{
-\backslash
-theequation}{
-\backslash
-arabic{equation}}
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Commandes ! A ! 
-\backslash
-arabic
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-theequation}{
-\backslash
-arabic{equation}}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{equation}
-E=\textrm{Arabes}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace medskip
-\end_inset
-
-Comme vous pouvez le voir, les numéros d'équation se suivent indépendamment
- du style de numérotation.
- Si l'on veut que la numérotation reparte à 
-\begin_inset Quotes cld
-\end_inset
-
-1
-\begin_inset Quotes crd
-\end_inset
-
- quand on change de style de numérotation, on doit définir de nouveaux compteurs.
- On trouvera une description de cette opération dans le fichier 
-\begin_inset CommandInset href
-LatexCommand href
-name "Formula-numbering.lyx"
-target "run:Formula-numbering.lyx"
-literal "false"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Section
@@ -35568,6 +35548,13 @@ Comme on peut le voir, la distance entre le numérateur et le dénominateur
  à la barre de fraction est à peu près trois fois l'épaisseur de la barre.
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Formules barrées
 \begin_inset Index idx
@@ -38140,8 +38127,9 @@ literal "true"
 
 
 \shape smallcaps
-Mittelbach, F.
- ; Goossens, M.
+F.
+ Mittelbach; M.
+ Goossens
 \shape default
 : 
 \shape italic

@@ -362,7 +362,6 @@ dist_examples_DATA = \
 	examples/splash.lyx \
 	examples/spreadsheet.lyx \
 	examples/sweave.lyx \
-	examples/subequations.lyx \
 	examples/tufte-book.lyx \
 	examples/tufte-handout.lyx \
 	examples/varwidth-floats-side-by-side.lyx \
