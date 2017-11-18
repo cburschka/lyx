@@ -101,7 +101,7 @@ Vítajte v \SpecialChar LyX
 \SpecialChar menuseparator
 
 \family default
-Uživateľská príručka.
+Užívateľská príručka.
 \end_layout
 
 \begin_layout Enumerate
@@ -110,10 +110,11 @@ Uživateľská príručka.
 \begin_inset Quotes eld
 \end_inset
 
-dokument procesor.
+dokument procesor
 \begin_inset Quotes erd
 \end_inset
 
+.
  Svojim návrhom je odlišný od bežného spracovávania textov — a to spôsobom,
  ktorý písanie dokumentov ľahko umožňuje.
  Ale je to len trochu iné, netreba sa znepokojovať.
@@ -134,9 +135,8 @@ Už sme spomenuli, že by bolo dobre čítať dokumentáciu?
 Výstup z \SpecialChar LyX
 -u vyzerá skvele! Vyberte 
 \family sans
-\lang english
-Document\SpecialChar menuseparator
-View
+Dokument\SpecialChar menuseparator
+Zobraziť
 \begin_inset space ~
 \end_inset
 
@@ -146,7 +146,6 @@ View
 
 (pdflatex)]
 \family default
-\lang slovak
  a presvedčte sa na vlastné oči.
 \end_layout
 
@@ -157,17 +156,17 @@ View
  A áno, \SpecialChar LyX
  dokáže importovať \SpecialChar LaTeX
 -súbory.
- Skúseným uživateľom \SpecialChar LaTeX
+ Skúseným užívateľom \SpecialChar LaTeX
 -u stačí zbežne prehliadnuť 
 \emph on
-Prúručku
+Príručku
 \emph default
 , potom si prečítať kapitolu 
 \begin_inset Quotes eld
 \end_inset
 
 \SpecialChar LyX
- pre uživateľov \SpecialChar LaTeX
+ pre užívateľov \SpecialChar LaTeX
 -u
 \begin_inset Quotes erd
 \end_inset
@@ -181,10 +180,10 @@ Prúručku
 
 \begin_layout Enumerate
 \SpecialChar LyX
- má mnoho možností pre ľudí ktorí píšu alebo čítajú neaglickým jazykom.
+ má mnoho možností pre ľudí ktorí píšu alebo čítajú neanglickým jazykom.
  Naviac, klávesové skratky, nástrojová lišta a mnohé iné vlastnosti sú vynikajúc
-o konfigurateľné.
- Pre detajly si pozrite na 
+o konfigurovateľné.
+ Pre detaily si pozrite na 
 \family sans
 Pomocník\SpecialChar menuseparator
 Prispôsobenie
@@ -210,17 +209,20 @@ http://www.lyx.org/
 -e, prihlásite sa do mailing list(ov) \SpecialChar LyX
 -u, môžte
  si užiť grafickú výpravu do \SpecialChar LyX
--u (Graphical Tour), a iné.
+-u (
+\lang british
+Graphical Tour
+\lang slovak
+), a iné.
 \end_layout
 
 \begin_layout Enumerate
 
 \series bold
-\lang english
-Note for Linux users:
+Upozornenie pre Linuxákov:
 \series default
- Please check that the language packages for the \SpecialChar LaTeX
- distribution 
+ Preverte si že máte nastavené jazykové balíčky pre vašu \SpecialChar LaTeX
+ distribúciu 
 \family sans
 \SpecialChar TeX
 
@@ -229,27 +231,27 @@ Note for Linux users:
 
 Live
 \family default
- are installed.
- Otherwise you will get \SpecialChar LaTeX
- errors.
+.
+ Ináč dostanete \SpecialChar LaTeX
+-ové chyby.
 \begin_inset Newline newline
 \end_inset
 
-For example on the Linux distributions 
+Napríklad pre Linux distribúciu
 \family sans
-(K,X)Ubuntu
+ (K,X)Ubuntu
 \family default
- and 
+ alebo 
 \family sans
 Debian
 \family default
- the package name for the German language is 
+ je meno pre balík slovenského jazyka 
 \begin_inset Quotes eld
 \end_inset
 
 
 \family typewriter
-texlive-lang-german
+texlive-lang-czechslovak
 \family default
 
 \begin_inset Quotes erd
@@ -259,15 +261,11 @@ texlive-lang-german
 \begin_inset Newline newline
 \end_inset
 
-After the installation of the language packages you must use the \SpecialChar LyX
- menu 
-\family sans
-Tools
-\family default
-\SpecialChar menuseparator
+Po inštalácii jazykových balíkov potrebujete spustiť \SpecialChar LyX
+-menu Nástroje\SpecialChar menuseparator
 
 \family sans
-Reconfigure
+Rekonfigurácia
 \family default
 .
 \end_layout
