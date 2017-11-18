@@ -1,4 +1,4 @@
-#LyX 2.4 created this file. For more info see http://www.lyx.org/
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 544
 \begin_document
 \begin_header
@@ -101,7 +101,7 @@ Vítajte v \SpecialChar LyX
 \SpecialChar menuseparator
 
 \family default
-Užívateľská príručka.
+Uživateľská príručka.
 \end_layout
 
 \begin_layout Enumerate
@@ -110,11 +110,10 @@ Užívateľská príručka.
 \begin_inset Quotes eld
 \end_inset
 
-dokument procesor
+dokument procesor.
 \begin_inset Quotes erd
 \end_inset
 
-.
  Svojim návrhom je odlišný od bežného spracovávania textov — a to spôsobom,
  ktorý písanie dokumentov ľahko umožňuje.
  Ale je to len trochu iné, netreba sa znepokojovať.
@@ -135,8 +134,9 @@ Už sme spomenuli, že by bolo dobre čítať dokumentáciu?
 Výstup z \SpecialChar LyX
 -u vyzerá skvele! Vyberte 
 \family sans
-Dokument\SpecialChar menuseparator
-Zobraziť
+\lang english
+Document\SpecialChar menuseparator
+View
 \begin_inset space ~
 \end_inset
 
@@ -146,6 +146,7 @@ Zobraziť
 
 (pdflatex)]
 \family default
+\lang slovak
  a presvedčte sa na vlastné oči.
 \end_layout
 
@@ -156,17 +157,17 @@ Zobraziť
  A áno, \SpecialChar LyX
  dokáže importovať \SpecialChar LaTeX
 -súbory.
- Skúseným užívateľom \SpecialChar LaTeX
+ Skúseným uživateľom \SpecialChar LaTeX
 -u stačí zbežne prehliadnuť 
 \emph on
-Príručku
+Prúručku
 \emph default
 , potom si prečítať kapitolu 
 \begin_inset Quotes eld
 \end_inset
 
 \SpecialChar LyX
- pre užívateľov \SpecialChar LaTeX
+ pre uživateľov \SpecialChar LaTeX
 -u
 \begin_inset Quotes erd
 \end_inset
@@ -180,10 +181,10 @@ Príručku
 
 \begin_layout Enumerate
 \SpecialChar LyX
- má mnoho možností pre ľudí ktorí píšu alebo čítajú neanglickým jazykom.
+ má mnoho možností pre ľudí ktorí píšu alebo čítajú neaglickým jazykom.
  Naviac, klávesové skratky, nástrojová lišta a mnohé iné vlastnosti sú vynikajúc
-o konfigurovateľné.
- Pre detaily si pozrite na 
+o konfigurateľné.
+ Pre detajly si pozrite na 
 \family sans
 Pomocník\SpecialChar menuseparator
 Prispôsobenie
@@ -209,20 +210,17 @@ http://www.lyx.org/
 -e, prihlásite sa do mailing list(ov) \SpecialChar LyX
 -u, môžte
  si užiť grafickú výpravu do \SpecialChar LyX
--u (
-\lang british
-Graphical Tour
-\lang slovak
-), a iné.
+-u (Graphical Tour), a iné.
 \end_layout
 
 \begin_layout Enumerate
 
 \series bold
-Upozornenie pre Linuxákov:
+\lang english
+Note for Linux users:
 \series default
- Preverte si že máte nastavené jazykové balíčky pre vašu \SpecialChar LaTeX
- distribúciu 
+ Please check that the language packages for the \SpecialChar LaTeX
+ distribution 
 \family sans
 \SpecialChar TeX
 
@@ -231,27 +229,27 @@ Upozornenie pre Linuxákov:
 
 Live
 \family default
-.
- Ináč dostanete \SpecialChar LaTeX
--ové chyby.
+ are installed.
+ Otherwise you will get \SpecialChar LaTeX
+ errors.
 \begin_inset Newline newline
 \end_inset
 
-Napríklad pre Linux distribúciu
+For example on the Linux distributions 
 \family sans
- (K,X)Ubuntu
+(K,X)Ubuntu
 \family default
- alebo 
+ and 
 \family sans
 Debian
 \family default
- je meno pre balík slovenského jazyka 
+ the package name for the German language is 
 \begin_inset Quotes eld
 \end_inset
 
 
 \family typewriter
-texlive-lang-czechslovak
+texlive-lang-german
 \family default
 
 \begin_inset Quotes erd
@@ -261,11 +259,15 @@ texlive-lang-czechslovak
 \begin_inset Newline newline
 \end_inset
 
-Po inštalácii jazykových balíkov potrebujete spustiť \SpecialChar LyX
--menu Nástroje\SpecialChar menuseparator
+After the installation of the language packages you must use the \SpecialChar LyX
+ menu 
+\family sans
+Tools
+\family default
+\SpecialChar menuseparator
 
 \family sans
-Rekonfigurácia
+Reconfigure
 \family default
 .
 \end_layout
