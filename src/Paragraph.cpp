@@ -1490,6 +1490,16 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 	for (; icit != iend; ++icit) {
 		if (icit->inset) {
 			features.inDeletedInset(owner_->isDeleted(icit->pos));
+			if (icit->inset->lyxCode() == FOOT_CODE) {
+				// FIXME: an item inset would make things much easier.
+				if ((layout_->latextype == LATEX_LIST_ENVIRONMENT
+				     || (layout_->latextype == LATEX_ITEM_ENVIRONMENT
+					 && layout_->margintype == MARGIN_FIRST_DYNAMIC))
+				    && (icit->pos < begin_of_body_
+					|| (icit->pos == begin_of_body_
+					    && (icit->pos == 0 || text_[icit->pos - 1] != ' '))))
+					features.saveNoteEnv("description");
+			}
 			icit->inset->validate(features);
 			features.inDeletedInset(false);
 			if (layout_->needprotect &&
