@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin /systemlyxdir/doc/attic/
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -39,7 +41,7 @@
 % extra space for tables
 \newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
 \end_preamble
-\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
 \begin_modules
 logicalmkup
@@ -68,16 +70,18 @@ End
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -121,6 +125,7 @@ End
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Indeks
 \shortcut idx
 \color #008000
@@ -129,7 +134,11 @@ End
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language german
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style german
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
@@ -143,11 +152,13 @@ End
 \begin_body
 
 \begin_layout Title
-LyX -- Zaawansowane możliwości
+\SpecialChar LyX
+ – Zaawansowane możliwości
 \end_layout
 
 \begin_layout Author
-by the LyX Team
+by the \SpecialChar LyX
+ Team
 \begin_inset Foot
 status collapsed
 
@@ -238,14 +249,18 @@ Podręcznik Użytkownika
 \end_layout
 
 \begin_layout Standard
-LyX Team ma długoterminowy cel tworzenia rozszerzeń LyX-a przez różne pliki
- konfiguracyjne.
- To oznacza, że jeśli chcesz obsługiwać pakiet LaTeX-a 
+\SpecialChar LyX
+ Team ma długoterminowy cel tworzenia rozszerzeń \SpecialChar LyX
+-a przez różne pliki konfigurac
+yjne.
+ To oznacza, że jeśli chcesz obsługiwać pakiet \SpecialChar LaTeX
+-a 
 \family sans
 Fizzwizzle
 \family default
 , to możesz utworzyć plik układu dla tego pakietu bez konieczności dokonywania
- samodzielnie zmian w LyX-ie.
+ samodzielnie zmian w \SpecialChar LyX
+-ie.
  Już przyczyniliśmy się do powstania kilku nowych funkcji tą drogą.
  Ten podręcznik, to jest miejsce, gdzie wszystko to udokumentowano.
 \end_layout
@@ -254,10 +269,14 @@ Fizzwizzle
 Ten podręcznik dokumentuje także kilka funkcji specjalnych, jak faksowanie,
  kontrola wersji, obsługa SGML-u, które wymagają dodatkowego oprogramowania
  do poprawnej pracy.
- Ostatni rozdział traktuje o narzędziach i sposobach LaTeX-a, które można
- zastosować do wykończenia Twoich dokumentów używając funkcji LaTeX-a.
- Poza tym LyX jest tylko edytorem WYSIWYM i będzie zawsze tylko interfejsem
- do pewnych funkcji LaTeX-a.
+ Ostatni rozdział traktuje o narzędziach i sposobach \SpecialChar LaTeX
+-a, które można zastosować
+ do wykończenia Twoich dokumentów używając funkcji \SpecialChar LaTeX
+-a.
+ Poza tym \SpecialChar LyX
+ jest tylko edytorem WYSIWYM i będzie zawsze tylko interfejsem
+ do pewnych funkcji \SpecialChar LaTeX
+-a.
  Oczywiście, z udokumentowanymi wszystkimi funkcjami.
 \end_layout
 
@@ -270,21 +289,24 @@ Jeśli nie przeczytałeś jeszcze wprowadzenia, to właśnie czytasz niewłaści
 \emph on
 Podręcznikiem Użytkownika
 \emph default
- i wszystkimi podstawowymi funkcjami LyX-a.
+ i wszystkimi podstawowymi funkcjami \SpecialChar LyX
+-a.
 \end_layout
 
 \begin_layout Standard
 Wiele rozdziałów w tym dokumencie jest niezależnymi artykułami napisanymi
  przez pojedyncze osoby i są one odpowiednio zaznaczone.
  Tymi osobami są generalnie ci, którzy napisali nowy plik układu (layout)
- dla nowej klasy dokumentu lub pakietu LaTeX-a, lub zaimplementowali jakąś
- funkcję.
+ dla nowej klasy dokumentu lub pakietu \SpecialChar LaTeX
+-a, lub zaimplementowali jakąś funkcję.
  Jeśli nie wspomniano o autorze w rozdziale lub sekcji to znaczy, że został
- napisany przez LyX Documentation Team.
+ napisany przez \SpecialChar LyX
+ Documentation Team.
 \end_layout
 
 \begin_layout Standard
-Pierwszy rozdział stanowi suplement do narzędzi edycyjnych LyX-a, nie ujętych
+Pierwszy rozdział stanowi suplement do narzędzi edycyjnych \SpecialChar LyX
+-a, nie ujętych
  w 
 \emph on
 Podręczniku Użytkownika
@@ -294,33 +316,53 @@ Podręczniku Użytkownika
 
 \begin_layout Standard
 Wszystkie rozdziały tego podręcznika są w różnym stopniu, ale jednak, opisują
- współpracę LyX-a i LaTeX-a, pierwszy rozdział opisuje wewnętrzną pracę
- LyX-a, jak prosto LyX tworzy kod LaTeX-a jeśli chcesz.
- To jest oczywiste dla wielu użytkowników LyX-a.
+ współpracę \SpecialChar LyX
+-a i \SpecialChar LaTeX
+-a, pierwszy rozdział opisuje wewnętrzną pracę \SpecialChar LyX
+-a, jak
+ prosto \SpecialChar LyX
+ tworzy kod \SpecialChar LaTeX
+-a jeśli chcesz.
+ To jest oczywiste dla wielu użytkowników \SpecialChar LyX
+-a.
 \end_layout
 
 \begin_layout Chapter
-LyX i LaTeX
+\SpecialChar LyX
+ i \SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Section
-Jak LyX używa LaTeX-a
+Jak \SpecialChar LyX
+ używa \SpecialChar LaTeX
+-a
 \end_layout
 
 \begin_layout Standard
-To jest rozdział dla TeX-ników i dla ciekawych LaTeX-a.
- Wyjaśnimy w nim jak pracują LyX i LaTeX tworząc wynikowe dokumenty do druku.
+To jest rozdział dla \SpecialChar TeX
+-ników i dla ciekawych \SpecialChar LaTeX
+-a.
+ Wyjaśnimy w nim jak pracują \SpecialChar LyX
+ i \SpecialChar LaTeX
+ tworząc wynikowe dokumenty do druku.
  Tylko w tym miejscu i tylko w tym podręczniku zakładamy Twoją znajomość
- LaTeX-a.
+ \SpecialChar LaTeX
+-a.
 \end_layout
 
 \begin_layout Standard
-Od jakiegoś czasu LyX-a nazywamy ,,WYSIWYM frontendem do LaTeX'', ale to
- nie jest dalej prawdą.
- Istnieją również inne frontendy do LaTeX-a.
- To są generalnie edytory potrafiące uruchomić LaTeX-a i zaznaczać błędy
- podczas edycji.
- Mimo że LyX 
+Od jakiegoś czasu \SpecialChar LyX
+-a nazywamy ,,WYSIWYM frontendem do \SpecialChar LaTeX
+'', ale to nie jest
+ dalej prawdą.
+ Istnieją również inne frontendy do \SpecialChar LaTeX
+-a.
+ To są generalnie edytory potrafiące uruchomić \SpecialChar LaTeX
+-a i zaznaczać błędy podczas
+ edycji.
+ Mimo że \SpecialChar LyX
+ 
 \emph on
 jest
 \emph default
@@ -328,26 +370,33 @@ jest
 \emph on
 potrafi
 \emph default
- uruchomić LaTeX-a, i również zaznaczać błędy, i także wiele, wiele więcej.
+ uruchomić \SpecialChar LaTeX
+-a, i również zaznaczać błędy, i także wiele, wiele więcej.
  Dzięki koncepcji WYSIWYM
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-What You See Is What You Mean -- dostajesz to o co Ci chodzi
+What You See Is What You Mean – dostajesz to o co Ci chodzi
 \end_layout
 
 \end_inset
 
-, nie musisz znać LaTeX-a aby efektywnie używać LyX-a.
- LyX posiada także kilka rozszerzeń do LaTeX-a
+, nie musisz znać \SpecialChar LaTeX
+-a aby efektywnie używać \SpecialChar LyX
+-a.
+ \SpecialChar LyX
+ posiada także kilka rozszerzeń do \SpecialChar LaTeX
+-a
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 The Team did this for parsing/coding reasons.
- The new macros allow LyX to more easily produce LaTeX code and ensure that
- the resulting code is correct.
+ The new macros allow \SpecialChar LyX
+ to more easily produce \SpecialChar LaTeX
+ code and ensure that the
+ resulting code is correct.
  Nothing that you, the user, need worry about.
 \end_layout
 
@@ -356,8 +405,9 @@ The Team did this for parsing/coding reasons.
 .
  Spróbuj kiedyś wybrać polecenie 
 \family sans
-Eksportuj\SpecialChar \menuseparator
- LaTeX
+Eksportuj\SpecialChar menuseparator
+ \SpecialChar LaTeX
+
 \family default
  z menu 
 \family sans
@@ -371,7 +421,8 @@ lik
 .tex
 \family default
 .
- Będziesz mógł zauważyć różne nowe makra zdefiniowane specjalnie przez LyX-a
+ Będziesz mógł zauważyć różne nowe makra zdefiniowane specjalnie przez \SpecialChar LyX
+-a
 \begin_inset Foot
 status collapsed
 
@@ -396,55 +447,59 @@ lyx.sty
 \end_layout
 
 \begin_layout Standard
-Mamy kilka poleceń, które automatycznie wywołują LaTeX-a.
+Mamy kilka poleceń, które automatycznie wywołują \SpecialChar LaTeX
+-a.
  Oto one:
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Podgląd\SpecialChar \menuseparator
+Podgląd\SpecialChar menuseparator
 DVI
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Podgląd\SpecialChar \menuseparator
+Podgląd\SpecialChar menuseparator
 PostScript/PDF
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Podgląd\SpecialChar \menuseparator
-Aktualizuj\SpecialChar \menuseparator
+Podgląd\SpecialChar menuseparator
+Aktualizuj\SpecialChar menuseparator
  DVI
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Podgląd\SpecialChar \menuseparator
-Aktualizuj\SpecialChar \menuseparator
+Podgląd\SpecialChar menuseparator
+Aktualizuj\SpecialChar menuseparator
 Postscript/PDF
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-Plik\SpecialChar \menuseparator
+Plik\SpecialChar menuseparator
 Drukuj
 \end_layout
 
 \begin_layout Standard
-Tylko te polecenia wywołują LaTeX-a jeśli dokument się zmienił od czasu
- ostatniego uruchomienia LaTeX-a 
+Tylko te polecenia wywołują \SpecialChar LaTeX
+-a jeśli dokument się zmienił od czasu ostatniego
+ uruchomienia \SpecialChar LaTeX
+-a 
 \end_layout
 
 \begin_layout Standard
-Podczas uruchomienia LaTeX-a podczas edycji pliku, LyX wykonuje następujące
- czynności:
+Podczas uruchomienia \SpecialChar LaTeX
+-a podczas edycji pliku, \SpecialChar LyX
+ wykonuje następujące czynności:
 \end_layout
 
 \begin_layout Enumerate
@@ -452,7 +507,8 @@ Konwertuje dokument
 \family typewriter
 .lyx
 \family default
- do LaTeX-a i zapisuje plik z rozszerzeniem 
+ do \SpecialChar LaTeX
+-a i zapisuje plik z rozszerzeniem 
 \family typewriter
 .tex
 \family default
@@ -460,7 +516,8 @@ Konwertuje dokument
 \end_layout
 
 \begin_layout Enumerate
-Uruchamia LaTeX-a z plikiem 
+Uruchamia \SpecialChar LaTeX
+-a z plikiem 
 \family typewriter
 .tex
 \family default
@@ -472,11 +529,13 @@ Jeśli są błędy , to zaznacza je w dokumencie.
 \end_layout
 
 \begin_layout Standard
-Jeśli uruchamiasz LaTeX-a poleceniem podglądu 
+Jeśli uruchamiasz \SpecialChar LaTeX
+-a poleceniem podglądu 
 \family sans
 DVI
 \family default
-, LyX uruchamia 
+, \SpecialChar LyX
+ uruchamia 
 \family typewriter
 xdvi
 \family default
@@ -496,7 +555,8 @@ D
 \bar default
 rukuj
 \family default
-, LyX wykonuje dwa kroki więcej:
+, \SpecialChar LyX
+ wykonuje dwa kroki więcej:
 \end_layout
 
 \begin_layout Itemize
@@ -505,6 +565,10 @@ Uruchamia
 dvips
 \family default
  do konwersji pliku Dvi do pliku postscriptowego:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -543,7 +607,8 @@ ghostview
 \end_layout
 
 \begin_layout Section
-,,Pomocy! LyX utworzył nieczytelny plik 
+,,Pomocy! \SpecialChar LyX
+ utworzył nieczytelny plik 
 \family typewriter
 .tex
 \family default
@@ -551,9 +616,11 @@ ghostview
 \end_layout
 
 \begin_layout Standard
-Użytkownicy LaTeX-a będą krzyczeć to przez całą noc, gdy deklaracje LyX-a
- są nie do wykorzystania --- oni po prostu nie czytali dokumentacji do LyX-a
- (RTFM!)
+Użytkownicy \SpecialChar LaTeX
+-a będą krzyczeć to przez całą noc, gdy deklaracje \SpecialChar LyX
+-a są nie
+ do wykorzystania — oni po prostu nie czytali dokumentacji do \SpecialChar LyX
+-a (RTFM!)
 \begin_inset Foot
 status open
 
@@ -562,8 +629,10 @@ Uwaga
 \noun on
 John Weiss
 \noun default
-: I know a certain faculty member who actually did complain to me that LyX
- doesn't generate LaTeX files.
+: I know a certain faculty member who actually did complain to me that \SpecialChar LyX
+
+ doesn't generate \SpecialChar LaTeX
+ files.
  Ain't it funny how, sometimes, faculty are the worst at reading instructions?
 \end_layout
 
@@ -574,11 +643,17 @@ John Weiss
 
 \begin_layout Standard
 Należy postawić sprawę jasno.
- LyX produkuje dwa rodzaje plików LaTeX-owych.
+ \SpecialChar LyX
+ produkuje dwa rodzaje plików \SpecialChar LaTeX
+-owych.
  Jedne są czytelne dla ludzi.
- Inne są czytelne dla LyX-a.
- Za każdym wywołaniem LaTeX-a przez LyX-a, tworzy on plik LaTeX-a, który
- może być łatwo skanowany w celu poszukiwania błędów.
+ Inne są czytelne dla \SpecialChar LyX
+-a.
+ Za każdym wywołaniem \SpecialChar LaTeX
+-a przez \SpecialChar LyX
+-a, tworzy on plik \SpecialChar LaTeX
+-a, który może być łatwo
+ skanowany w celu poszukiwania błędów.
  W rezultacie plik 
 \family typewriter
 .tex
@@ -591,8 +666,9 @@ Należy postawić sprawę jasno.
 \family default
  aby móc wysłać go koledze, to wybierz polecenie 
 \family sans
-Eksportuj\SpecialChar \menuseparator
- LaTeX
+Eksportuj\SpecialChar menuseparator
+ \SpecialChar LaTeX
+
 \family default
  z menu 
 \family sans
@@ -622,8 +698,9 @@ Jeśli chcesz plik
 \family default
  móc wysłać koledze, to wybierz polecenie 
 \family sans
-Eksportuj\SpecialChar \menuseparator
- LaTeX
+Eksportuj\SpecialChar menuseparator
+ \SpecialChar LaTeX
+
 \family default
  z menu 
 \family sans
@@ -643,7 +720,9 @@ lik
 \end_layout
 
 \begin_layout Section
-Importowanie plików LaTeX-a do LyX-a
+Importowanie plików \SpecialChar LaTeX
+-a do \SpecialChar LyX
+-a
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Importowanie-plików-LaTeX-a"
@@ -656,29 +735,33 @@ name "sec:Importowanie-plików-LaTeX-a"
 \begin_layout Standard
 
 \lang english
-You can import a LaTeX file into LyX by using the 
+You can import a \SpecialChar LaTeX
+ file into \SpecialChar LyX
+ by using the 
 \family sans
 \bar under
 F
 \bar default
-ile\SpecialChar \menuseparator
+ile\SpecialChar menuseparator
 
 \bar under
 I
 \bar default
-mport\SpecialChar \menuseparator
+mport\SpecialChar menuseparator
 
 \bar under
 L
 \bar default
-aTeX
+a\SpecialChar TeX
+
 \family default
- command in LyX.
+ command in \SpecialChar LyX
+.
  This will call a program named 
 \family typewriter
 tex2lyx
 \family default
----which will create a file 
+—which will create a file 
 \family typewriter
 foo.lyx
 \family default
@@ -686,7 +769,7 @@ foo.lyx
 \family typewriter
 foo.tex
 \family default
----and then open that file.
+—and then open that file.
 \end_layout
 
 \begin_layout Standard
@@ -695,8 +778,10 @@ foo.tex
 \lang english
 tex2lyx
 \family default
- will translate most legal LaTeX, but not everything.
- It will leave things it doesn't understand in TeX mode, so after translating
+ will translate most legal \SpecialChar LaTeX
+, but not everything.
+ It will leave things it doesn't understand in \SpecialChar TeX
+ mode, so after translating
  a file with 
 \family typewriter
 tex2lyx
@@ -707,7 +792,9 @@ tex2lyx
 \begin_layout Standard
 
 \lang english
-If you just want to put a piece of LaTeX code into a LyX file, see
+If you just want to put a piece of \SpecialChar LaTeX
+ code into a \SpecialChar LyX
+ file, see
 \lang polish
  sekcji 
 \begin_inset CommandInset ref
@@ -720,7 +807,9 @@ reference "sec:latexcodes"
 \end_layout
 
 \begin_layout Section
-Wstawianie poleceń LaTeX-a do dokumentów LyX-a
+Wstawianie poleceń \SpecialChar LaTeX
+-a do dokumentów \SpecialChar LyX
+-a
 \end_layout
 
 \begin_layout Standard
@@ -730,17 +819,23 @@ name "sec:latexcodes"
 
 \end_inset
 
- To jest raczej ważny punkt: możesz zawsze wstawić kod LaTeX-a do dowolnego
- dokumentu LyX-a.
- LyX po prostu nie może i prawdopodobnie nigdy nie będzie mógł wyświetlić
- wszystkich możliwych konstrukcji LaTeX.
- Jeśli potrzebujesz wstawić polecenie LaTeX-a do dokumentu LyX-a, to użyj
- wstawki ERT, którą możesz wstawić do dokumentu poleceniem 
+ To jest raczej ważny punkt: możesz zawsze wstawić kod \SpecialChar LaTeX
+-a do dowolnego dokumentu
+ \SpecialChar LyX
+-a.
+ \SpecialChar LyX
+ po prostu nie może i prawdopodobnie nigdy nie będzie mógł wyświetlić wszystkic
+h możliwych konstrukcji \SpecialChar LaTeX
+.
+ Jeśli potrzebujesz wstawić polecenie \SpecialChar LaTeX
+-a do dokumentu \SpecialChar LyX
+-a, to użyj wstawki
+ ERT, którą możesz wstawić do dokumentu poleceniem 
 \family sans
 \bar under
 W
 \bar default
-staw\SpecialChar \menuseparator
+staw\SpecialChar menuseparator
 
 \bar under
 T
@@ -763,13 +858,15 @@ inlined
 .
  Pierwsze dwie formy są podobne do innych rozwijalnych wstawek (takich jak
  np.
- wstawka przypisu) i są wygodne do zaznaczenia poleceń LaTeX-a.
+ wstawka przypisu) i są wygodne do zaznaczenia poleceń \SpecialChar LaTeX
+-a.
  Forma 
 \family sans
 inlined
 \family default
  wstawki wyświetla jej zawartość, co jest wygodne dla krótkich fragmentów
- kodu LaTeX-a.
+ kodu \SpecialChar LaTeX
+-a.
  
 \begin_inset ERT
 status collapsed
@@ -787,8 +884,9 @@ status collapsed
 \begin_layout Standard
 Możesz przełączać się pomiędzy tymi formami przez kliknięcie prawym klawiszem
  myszy na wstawce.
- Uwaga jeśli chcesz więcej niż jeden wiersz poleceń LaTeX-a, to nie możesz
- korzystać z trybu 
+ Uwaga jeśli chcesz więcej niż jeden wiersz poleceń \SpecialChar LaTeX
+-a, to nie możesz korzystać
+ z trybu 
 \family sans
 inlined
 \family default
@@ -796,7 +894,9 @@ inlined
 \end_layout
 
 \begin_layout Standard
-Tutaj jest przykład wstawienia poleceń LaTeX-a w dokumencie LyX-a.
+Tutaj jest przykład wstawienia poleceń \SpecialChar LaTeX
+-a w dokumencie \SpecialChar LyX
+-a.
  Oto kod:
 \end_layout
 
@@ -886,7 +986,8 @@ end{tabular}
 \begin_layout Standard
 Wstawka ERT zawierająca powyższy tekst jest umieszczona bezpośrednio po
  tym akapicie.
- Jeśli czytasz ten podręcznik w LyX-ie, to zobaczysz tylko przycisk z czerwonym
+ Jeśli czytasz ten podręcznik w \SpecialChar LyX
+-ie, to zobaczysz tylko przycisk z czerwonym
  tekstem.
  Czytając drukowaną wersję tego podręcznika zobaczysz rezultaty:
 \end_layout
@@ -990,12 +1091,13 @@ end{tabular}
 
 \begin_layout Standard
 Ponadto możesz utworzyć oddzielny plik zawierający skomplikowaną strukturę
- LaTeX-a i dołączyć go poleceniem 
+ \SpecialChar LaTeX
+-a i dołączyć go poleceniem 
 \family sans
 \bar under
 W
 \bar default
-staw\SpecialChar \menuseparator
+staw\SpecialChar menuseparator
 
 \bar under
 D
@@ -1019,7 +1121,7 @@ staw
 wiesz
 \emph default
 , że są poprawne.
- W innym wypadku będziesz miał sporo zajęcia z wyszukiwaniem błędów\SpecialChar \ldots{}
+ W innym wypadku będziesz miał sporo zajęcia z wyszukiwaniem błędów\SpecialChar ldots
 
 \end_layout
 
@@ -1028,7 +1130,9 @@ Kilka ostatnich uwag o wyróżnieniu:
 \end_layout
 
 \begin_layout Itemize
-Wewnątrz LyX-a, kod LaTeX-a pojawia się 
+Wewnątrz \SpecialChar LyX
+-a, kod \SpecialChar LaTeX
+-a pojawia się 
 \emph on
 na czerwono
 \emph default
@@ -1036,11 +1140,13 @@ na czerwono
 \end_layout
 
 \begin_layout Itemize
-LyX 
+\SpecialChar LyX
+ 
 \emph on
 nie
 \emph default
- sprawdza poprawności Twojego kodu LaTeX-owego,
+ sprawdza poprawności Twojego kodu \SpecialChar LaTeX
+-owego,
 \end_layout
 
 \begin_layout Itemize
@@ -1049,10 +1155,13 @@ Staraj się nie odkrywać koła na nowo.
 
 \begin_layout Standard
 Na koniec dwie uwagi.
- Po pierwsze, LyX posiada niewiele funkcji całkowicie wbudowanych ale będzie
+ Po pierwsze, \SpecialChar LyX
+ posiada niewiele funkcji całkowicie wbudowanych ale będzie
  więcej.
- Bądź pewien, sprawdzając podręcznik, że danej funkcji LyX nie posiada zanim
- zaczniesz kodować ją w LaTeX-u
+ Bądź pewien, sprawdzając podręcznik, że danej funkcji \SpecialChar LyX
+ nie posiada zanim
+ zaczniesz kodować ją w \SpecialChar LaTeX
+-u
 \begin_inset Foot
 status open
 
@@ -1063,49 +1172,60 @@ John Weiss
 \noun default
 -a: I seem to do this an awful lot.
  Sat down and merrily began coding something to print out labels, only to
- learn that there were already 2 different LaTeX packages to do this.
+ learn that there were already 2 different \SpecialChar LaTeX
+ packages to do this.
  Worse yet - I had them already!
 \end_layout
 
 \end_inset
 
 .
- Po drugie istnieje wiele pakietów LaTeX-a począwszy od składu etykiet czy
- kopert do ładnych wielostronicowych tabel.
+ Po drugie istnieje wiele pakietów \SpecialChar LaTeX
+-a począwszy od składu etykiet czy kopert
+ do ładnych wielostronicowych tabel.
  Przejrzyj archiwum CTAN aby poznać więcej szczegółów.
 \end_layout
 
 \begin_layout Standard
 Jeśli potrzebujesz zrobić trochę dzikich i ładnych rzeczy wewnątrz dokumentu,
- bądź pewien swoich konstrukcji korzystając z dobrej książki o LaTeX-u.
+ bądź pewien swoich konstrukcji korzystając z dobrej książki o \SpecialChar LaTeX
+-u.
  
 \end_layout
 
 \begin_layout Standard
-Pewna liczba poleceń LaTeX-a musi być umieszczona przed początkiem tekstu.
+Pewna liczba poleceń \SpecialChar LaTeX
+-a musi być umieszczona przed początkiem tekstu.
  Powinny one zostać umieszczone w preambule co opisano w następnej sekcji.
 \end_layout
 
 \begin_layout Section
-Preambuła LyX-a i LaTeX-a
+Preambuła \SpecialChar LyX
+-a i \SpecialChar LaTeX
+-a
 \end_layout
 
 \begin_layout Subsection
-O preambule LaTeX-a
+O preambule \SpecialChar LaTeX
+-a
 \end_layout
 
 \begin_layout Standard
-Jeśli już znasz LaTeX-a, to nie potrzebujesz tutaj wyjaśnienia do czego
- służy preambuła.
- Jeśli nie wiesz, to dajemy Ci kilka porad -- zalecamy abyś znów zapoznał
- się z książką o LaTeX-u aby poznać więcej informacji.
+Jeśli już znasz \SpecialChar LaTeX
+-a, to nie potrzebujesz tutaj wyjaśnienia do czego służy
+ preambuła.
+ Jeśli nie wiesz, to dajemy Ci kilka porad – zalecamy abyś znów zapoznał
+ się z książką o \SpecialChar LaTeX
+-u aby poznać więcej informacji.
  W innym przypadku powinieneś czytać poniższe sekcje, ponieważ w nich jest
- wyjaśnione co możesz zrobić i czego nie musisz zrobić w preambule LyX-owego
+ wyjaśnione co możesz zrobić i czego nie musisz zrobić w preambule \SpecialChar LyX
+-owego
  dokumentu.
 \end_layout
 
 \begin_layout Standard
-Preambuła LaTeX-a znajduje się na samym początku dokumentu 
+Preambuła \SpecialChar LaTeX
+-a znajduje się na samym początku dokumentu 
 \emph on
 przed
 \emph default
@@ -1115,25 +1235,33 @@ przed
 
 \begin_layout Itemize
 deklaracji klasy dokumentu.
- LyX już wykonuje to za Ciebie.
+ \SpecialChar LyX
+ już wykonuje to za Ciebie.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Jeśli jesteś LaTeX-nikiem i masz już trochę dopasowanych klas dokumentów,
- których chcesz używać, to zajrzyj do podręcznika 
+Jeśli jesteś \SpecialChar LaTeX
+-nikiem i masz już trochę dopasowanych klas dokumentów, których
+ chcesz używać, to zajrzyj do podręcznika 
 \emph on
 Konfiguracja
 \emph default
  aby dowiedzieć się jak wykonać do nich interfejs.
- Nie zapomnij wysłać swoich osiągnięć do LyX Team-u aby je włączyć do przyszłych
+ Nie zapomnij wysłać swoich osiągnięć do \SpecialChar LyX
+ Team-u aby je włączyć do przyszłych
  wersji!
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 deklaracji używanych pakietów.
- Pakiety LaTeX-a dostarczają specjalne polecenia, które są dostępne w dokumencie
+ Pakiety \SpecialChar LaTeX
+-a dostarczają specjalne polecenia, które są dostępne w dokumencie
  tylko jeśli zadeklarujemy pakiet w preambule.
  Na przykład, pakiet 
 \family typewriter
@@ -1145,7 +1273,8 @@ indentfirst
 
 \begin_layout Itemize
 ustawiania liczników, zmiennych, długości i szerokości.
- Istnieje kilka liczników LaTeX-a i zmiennych, które 
+ Istnieje kilka liczników \SpecialChar LaTeX
+-a i zmiennych, które 
 \emph on
 muszą
 \emph default
@@ -1170,8 +1299,8 @@ newcommand
 \backslash
 renewcommand
 \family default
-], głównie skrótów dla poleceń LaTeX-a, które występują często w tekście
- dokumentu.
+], głównie skrótów dla poleceń \SpecialChar LaTeX
+-a, które występują często w tekście dokumentu.
  Mimo to preambuła jest dobrym miejscem na deklaracje poleceń, które 
 \emph on
 mogą
@@ -1181,17 +1310,21 @@ mogą
 przed
 \emph default
  ich pierwszym użyciem w tekście].
- To może być użyteczne jeśli mamy wiele kodu LaTeX-a w dokumencie, który
- normalnie nie powinien się zdarzyć.
+ To może być użyteczne jeśli mamy wiele kodu \SpecialChar LaTeX
+-a w dokumencie, który normalnie
+ nie powinien się zdarzyć.
 \end_layout
 
 \begin_layout Standard
-LyX dodaje do preambuły własne definicje podczas tworzenia pliku 
+\SpecialChar LyX
+ dodaje do preambuły własne definicje podczas tworzenia pliku 
 \family typewriter
 .tex
 \family default
 .
- To czyni dokumenty LaTeX-a utworzone przez LyX-a przenośnymi.
+ To czyni dokumenty \SpecialChar LaTeX
+-a utworzone przez \SpecialChar LyX
+-a przenośnymi.
 \end_layout
 
 \begin_layout Subsection
@@ -1199,8 +1332,10 @@ Zmiana preambuły
 \end_layout
 
 \begin_layout Standard
-Polecenia, które dodaje LyX do preambuły są zafiksowane i nie możesz ich
- zmienić bez samodzielnego patchowania LyX-a.
+Polecenia, które dodaje \SpecialChar LyX
+ do preambuły są zafiksowane i nie możesz ich zmienić
+ bez samodzielnego patchowania \SpecialChar LyX
+-a.
  Możesz jednak dodać własne rzeczy do preambuły.
  Możesz to zrobić na dwa sposoby:
 \end_layout
@@ -1222,6 +1357,10 @@ ormatowanie
 \family default
 .
  Otworzy się wówczas okno, w którym możesz wpisać swoje polecenia.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1236,15 +1375,18 @@ Utwórz w swoim domyślnym szablonie dokumentu odpowiednie wpisy w preambule.
 \end_layout
 
 \begin_layout Standard
-LyX nie dodaje niczego do Twojej części preambuły.
+\SpecialChar LyX
+ nie dodaje niczego do Twojej części preambuły.
  Zanim dodasz deklaracje do preambuły powinieneś upewnić się, że nie jest
- już to wykonane przez LyX-a [czy pamiętasz co mówiliśmy o ponownym wynalezieniu
+ już to wykonane przez \SpecialChar LyX
+-a [czy pamiętasz co mówiliśmy o ponownym wynalezieniu
  koła?].
  Ponadto 
 \emph on
 dokonuj poprawnych wpisów w preambule
 \emph default
- -- LyX nie sprawdza jej poprawności.
+ – \SpecialChar LyX
+ nie sprawdza jej poprawności.
 \end_layout
 
 \begin_layout Subsection
@@ -1260,7 +1402,8 @@ Przykład #1: Przesunięcie strony
 \end_layout
 
 \begin_layout Standard
-Istnieją dwie zmienne LaTeX-a do sterowania pozycją strony: 
+Istnieją dwie zmienne \SpecialChar LaTeX
+-a do sterowania pozycją strony: 
 \family typewriter
 
 \backslash
@@ -1312,7 +1455,8 @@ voffset
 Niestety, niektóre sterowniki DVI wydają się zawsze przesuwać stronę.
  Nie mamy pomysłu dlaczego lub dlaczego Twój administrator nie poprawił
  tego.
- Jeśli używasz LyX-a w systemie, którego osobiście nie nadzorujesz, a którego
+ Jeśli używasz \SpecialChar LyX
+-a w systemie, którego osobiście nie nadzorujesz, a którego
  administrator to ,,doofus'', to polecenia 
 \family typewriter
 
@@ -1347,7 +1491,7 @@ voffset}{-0.5 in}
 \end_layout
 
 \begin_layout Standard
-\SpecialChar \ldots{}
+\SpecialChar ldots
  a Twoje marginesy będą teraz poprawne.
 \end_layout
 
@@ -1363,9 +1507,9 @@ Mówiąc etykiety mamy na myśli wydruk etykiet z adresami.
 labels.sty
 \family default
 .
- Twój system może nie mieć go domyślnie zainstalowanego -- zostawiamy Ci
+ Twój system może nie mieć go domyślnie zainstalowanego – zostawiamy Ci
  to do sprawdzenia.
- Pewnie będziesz chciał przeczytać dokumentację pakietu -- my nie zrobimy
+ Pewnie będziesz chciał przeczytać dokumentację pakietu – my nie zrobimy
  tego za Ciebie.
  Jednak poniższym przykładem podpowiadamy Ci jak z niego skorzystać.
 \end_layout
@@ -1424,7 +1568,8 @@ BottomBorder=2mm
 \begin_layout Standard
 Te ustawienia są odpowiednie dla arkusza etykiet Avery, nr #5360.
  Teraz jesteś gotów do wydruku etykiet, ale potrzeba jeszcze wstawić polecenia
- LaTeX umieszczając polecenia 
+ \SpecialChar LaTeX
+ umieszczając polecenia 
 \family typewriter
 
 \backslash
@@ -1445,7 +1590,8 @@ labels.sty
 \end_layout
 
 \begin_layout Standard
-Być może, że kiedyś, ktoś napisze plik układu LyX-a do obsługi tego pakietu
+Być może, że kiedyś, ktoś napisze plik układu \SpecialChar LyX
+-a do obsługi tego pakietu
  wprost.
  Być może to będziesz Ty.
 \end_layout
@@ -1471,7 +1617,7 @@ Uwaga od
 \noun on
  Johna Weiss'a
 \noun default
-: To było napisane przez Amerykanina -- przeze 
+: To było napisane przez Amerykanina – przeze 
 \emph on
 mnie
 \emph default
@@ -1548,8 +1694,9 @@ usepackage{indentfirst}
 \end_layout
 
 \begin_layout Standard
-Jeśli Twoja dystrybucja TeX-a nie jest podła, to będziesz miał ten pakiet
- zainstalowany i wszystkie akapity będą wcinane tak jak na to zasługują.
+Jeśli Twoja dystrybucja \SpecialChar TeX
+-a nie jest podła, to będziesz miał ten pakiet zainstalo
+wany i wszystkie akapity będą wcinane tak jak na to zasługują.
 \end_layout
 
 \begin_layout Subsubsection
@@ -1564,26 +1711,34 @@ Możesz także sprawdzić jaką preambułę posiada ten dokument, aby poznać ja
 \end_layout
 
 \begin_layout Section
-Błędy LyX-a i LaTeX-a
+Błędy \SpecialChar LyX
+-a i \SpecialChar LaTeX
+-a
 \end_layout
 
 \begin_layout Standard
-Gdy LyX wywołuje LaTeX-a, informuje go aby ignorował wszelkie błędy i przetwarza
-ł dalej.
- Można to wykorzystać do przejrzenia logu przebiegu LaTeX i wykonania post-morte
-m czynności.
- Jak wspomnieliśmy wcześniej, LyX tworzy dwa rodzaje plików 
+Gdy \SpecialChar LyX
+ wywołuje \SpecialChar LaTeX
+-a, informuje go aby ignorował wszelkie błędy i przetwarzał
+ dalej.
+ Można to wykorzystać do przejrzenia logu przebiegu \SpecialChar LaTeX
+ i wykonania post-mortem
+ czynności.
+ Jak wspomnieliśmy wcześniej, \SpecialChar LyX
+ tworzy dwa rodzaje plików 
 \family typewriter
 .tex
 \family default
 , jeden z nich jest używany do lokalizacji błędów w dokumencie.
- Jeśli pojawi się błąd, to LyX umieści prostokąt ze słowem ,,Błąd'' w odpowiedni
-m miejscu w dokumencie
+ Jeśli pojawi się błąd, to \SpecialChar LyX
+ umieści prostokąt ze słowem ,,Błąd'' w odpowiednim
+ miejscu w dokumencie
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-LyX okazjonalnie nie odgadnie miejsca, w którym zdarzył się błąd.
+\SpecialChar LyX
+ okazjonalnie nie odgadnie miejsca, w którym zdarzył się błąd.
  To się zdarza zwykle przy tabelach, rysunkach, matematyce i preambule.
 \end_layout
 
@@ -1606,8 +1761,9 @@ N
 awigacja
 \family default
 .
- Możesz ,,otwierać'' znaczniki błędów i podejrzeć komunikaty LaTeX-a przez
- kliknięcie na znaczniku.
+ Możesz ,,otwierać'' znaczniki błędów i podejrzeć komunikaty \SpecialChar LaTeX
+-a przez kliknięcie
+ na znaczniku.
 \end_layout
 
 \begin_layout Standard
@@ -1616,32 +1772,42 @@ Wiele osób lubi zobaczyć wprost cały log, który jest dostępny z menu
 \bar under
 P
 \bar default
-odgląd\SpecialChar \menuseparator
+odgląd\SpecialChar menuseparator
 
 \bar under
 K
 \bar default
-omunikaty LaTeX-a
+omunikaty \SpecialChar LaTeX
+-a
 \family default
 .
  Istniej kilka powszechnych komunikatów błędów i ostrzeżeń.
  Wyjaśnimy je tutaj.
- Powinieneś zajrzeć do dobrej książki o LaTeX-u dla zapoznania się z pełną
- listą.
+ Powinieneś zajrzeć do dobrej książki o \SpecialChar LaTeX
+-u dla zapoznania się z pełną listą.
 \end_layout
 
 \begin_layout Itemize
 
 \family typewriter
-LaTeX Warning:
+\SpecialChar LaTeX
+ Warning:
+\family default
+
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Komunikat zaczynające się tymi słowy jest komunikatem diagnostycznym LaTeX-a.
+Komunikat zaczynające się tymi słowy jest komunikatem diagnostycznym \SpecialChar LaTeX
+-a.
  Otrzymasz podobne ostrzeżenie gdy dodasz lub zmienisz odnośnik lub wpis
- bibliografii, wówczas LaTeX komunikuje Ci, że powinien zostać uruchomiony
- jeszcze raz.
+ bibliografii, wówczas \SpecialChar LaTeX
+ komunikuje Ci, że powinien zostać uruchomiony jeszcze
+ raz.
 \end_layout
 
 \begin_layout Standard
@@ -1652,14 +1818,23 @@ Ostrzeżenie można w większości zignorować.
 \begin_layout Itemize
 
 \family typewriter
-LaTeX Font Warning:
+\SpecialChar LaTeX
+ Font Warning:
+\family default
+
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Inny komunikat ostrzegawczy, tym razem o fontach, których LaTeX nie potrafił
+Inny komunikat ostrzegawczy, tym razem o fontach, których \SpecialChar LaTeX
+ nie potrafił
  znaleźć.
- Reszta komunikatu często informuje jakich fontów użył LaTeX w zastępstwie.
+ Reszta komunikatu często informuje jakich fontów użył \SpecialChar LaTeX
+ w zastępstwie.
 \end_layout
 
 \begin_layout Standard
@@ -1673,11 +1848,18 @@ Możesz go bezpiecznie zignorować.
 Overfull 
 \backslash
 hbox
+\family default
+
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-LaTeX absolutnie 
+\SpecialChar LaTeX
+ absolutnie 
 \emph on
 uwielbia
 \emph default
@@ -1686,8 +1868,9 @@ uwielbia
  margines.
  Prawie zawsze jest to niezauważalne na wydruku.
  Albo jeden lub dwa znaki przekraczają prawy margines.
- LaTeX zdaje się generować co najmniej jeden taki komunikat dla dowolnego
- dokumentu jaki napiszesz.
+ \SpecialChar LaTeX
+ zdaje się generować co najmniej jeden taki komunikat dla dowolnego dokumentu
+ jaki napiszesz.
 \end_layout
 
 \begin_layout Standard
@@ -1703,11 +1886,18 @@ Możesz ignorować te głupie komunikaty.
 Underfull 
 \backslash
 hbox
+\family default
+
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-LaTeX komunikuje nam, że zbyt małe wypełnienie wiersza zmusza go do wstawienia
+\SpecialChar LaTeX
+ komunikuje nam, że zbyt małe wypełnienie wiersza zmusza go do wstawienia
  zbyt dużych odstępów między wyrazami.
  
 \end_layout
@@ -1729,12 +1919,18 @@ vbox
 Underfull 
 \backslash
 vbox
+\family default
+
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Ostrzeżenie o kłopotach z łamaniem stron -- zbyt małych lub zbyt dużych
- odstępach pionowych.
+Ostrzeżenie o kłopotach z łamaniem stron – zbyt małych lub zbyt dużych odstępach
+ pionowych.
  Jeszcze raz spójrz na wynik przetwarzania.
  Zobaczysz na własne oczy jeśli coś będzie zbyt szerokie.
 \end_layout
@@ -1743,7 +1939,8 @@ Ostrzeżenie o kłopotach z łamaniem stron -- zbyt małych lub zbyt dużych
 \begin_layout Itemize
 
 \family typewriter
-LaTeX Error: File 
+\SpecialChar LaTeX
+ Error: File 
 \begin_inset Quotes els
 \end_inset
 
@@ -1752,6 +1949,12 @@ Xxxx
 \end_inset
 
  not found
+\family default
+
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1765,21 +1968,25 @@ Plik ,,Xxxx'' nie jest zainstalowany w systemie.
 \backslash
 usepackage{}
 \family default
-, to znaczy że brakuje jednego z pakietów, które próbuje załadować LyX.
+, to znaczy że brakuje jednego z pakietów, które próbuje załadować \SpecialChar LyX
+.
  Użyj polecenia 
 \family sans
 \bar under
 P
 \bar default
-omoc\SpecialChar \menuseparator
+omoc\SpecialChar menuseparator
 
 \bar under
 K
 \bar default
-onfiguracja LaTeX
+onfiguracja \SpecialChar LaTeX
+
 \family default
- aby zobaczyć listę pakietów znanych LyX-owi.
- Ten plik jest uaktualniany podczas każdej rekonfiguracji LyX-a (polecenie
+ aby zobaczyć listę pakietów znanych \SpecialChar LyX
+-owi.
+ Ten plik jest uaktualniany podczas każdej rekonfiguracji \SpecialChar LyX
+-a (polecenie
  
 \family sans
 \bar under
@@ -1787,7 +1994,7 @@ E
 \bar default
 dycja
 \bar under
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 R
 \bar default
 ekonfiguruj
@@ -1813,7 +2020,14 @@ usepackage{}
 \begin_layout Itemize
 
 \family typewriter
-LaTeX Error: Unknown option
+\SpecialChar LaTeX
+ Error: Unknown option
+\family default
+
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1827,11 +2041,18 @@ Błąd pojawia się gdy podano niezdefiniowaną (lub błędną) opcję użytego 
 
 \family typewriter
 Undefined control sequence
+\family default
+
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-Jeśli wstawiłeś polecenie LaTeX w dokumencie, ale popełniłeś np.
+Jeśli wstawiłeś polecenie \SpecialChar LaTeX
+ w dokumencie, ale popełniłeś np.
  błąd literowy, to otrzymasz taki właśnie komunikat błędu.
  Być może zapomniałeś załadować jakiś pakiet.
  W ogólnym przypadku, komunikat błędu zwykle oznacza, że użyłeś niezdefiniowaneg
@@ -1844,8 +2065,8 @@ Istnieją jeszcze inne komunikaty błędów i ostrzeżeń, a wiele z nich jest
  samoobjaśniających.
  Podane są częstymi komunikatami.
  Inne są naprawdę zaszyfrowane.
- To są aktualne komunikaty TeX-a i my na prawdę nie mamy klucza jak je odszyfrow
-ać.
+ To są aktualne komunikaty \SpecialChar TeX
+-a i my na prawdę nie mamy klucza jak je odszyfrować.
 \end_layout
 
 \begin_layout Standard
@@ -1853,7 +2074,8 @@ Oto ogólny tok postępowania jeśli zdarzy się błąd:
 \end_layout
 
 \begin_layout Enumerate
-Sprawdź poprawność poleceń LaTeX-a wstawionych w dokumencie.
+Sprawdź poprawność poleceń \SpecialChar LaTeX
+-a wstawionych w dokumencie.
 \end_layout
 
 \begin_layout Enumerate
@@ -1867,15 +2089,18 @@ Jeśli dostaniesz pęk znaczników błędów na samym początku dokumentu, to zn
 \end_layout
 
 \begin_layout Enumerate
-Jeśli nie dodałeś niczego do preambuły i nie wstawiłeś żadnych poleceń LaTeX-a
- do dokumentu, to najpierw sprawdź swoją dystrybucję LaTeX.
+Jeśli nie dodałeś niczego do preambuły i nie wstawiłeś żadnych poleceń \SpecialChar LaTeX
+-a
+ do dokumentu, to najpierw sprawdź swoją dystrybucję \SpecialChar LaTeX
+.
  Sprawdź brakujące pakiety i zainstaluj je.
 \end_layout
 
 \begin_layout Enumerate
 OK, nie brakuje pakietów.
- Czy nie użyłeś jakieś opcji dopasowującej w LyX-ie? Precyzując, czy nie
- użyłeś jej niewłaściwie, jak próba ręcznego wstawienia wielu 
+ Czy nie użyłeś jakieś opcji dopasowującej w \SpecialChar LyX
+-ie? Precyzując, czy nie użyłeś
+ jej niewłaściwie, jak próba ręcznego wstawienia wielu 
 \family sans
 Protected Blank
 \family default
@@ -1898,9 +2123,11 @@ OK, nie użyłeś żadnej opcji dopasowującej, postępujesz zgodnie z zasadami.
 \end_layout
 
 \begin_layout Enumerate
-Czy nie masz zbyt długich akapitów tekstu gdzie LaTeX nie może znaleźć miejsca
- na przełamanie wiersza? Domyślnie LaTeX jest dokładny w dodawaniu ekstra
- odstępów między wyrazami aby przełamać wiersz.
+Czy nie masz zbyt długich akapitów tekstu gdzie \SpecialChar LaTeX
+ nie może znaleźć miejsca
+ na przełamanie wiersza? Domyślnie \SpecialChar LaTeX
+ jest dokładny w dodawaniu ekstra odstępów
+ między wyrazami aby przełamać wiersz.
  Proponowane jest przerobienie akapitów aby usunąć ten problem.
  Jeśli to nie jest możliwe, możesz objąć swój tekst w 
 \family typewriter
@@ -1908,18 +2135,24 @@ Czy nie masz zbyt długich akapitów tekstu gdzie LaTeX nie może znaleźć miej
 \backslash
 sloppypar
 \family default
- aby obniżyć wymagania LaTeX-a przy łamaniu wierszy.
+ aby obniżyć wymagania \SpecialChar LaTeX
+-a przy łamaniu wierszy.
 \end_layout
 
 \begin_layout Enumerate
-Czy nie przesadziłeś z zagnieżdżaniem? LyX [aktualnie] nie sprawdza czy
- nie przekroczyłeś limitu zagnieżdżenia środowiska.
+Czy nie przesadziłeś z zagnieżdżaniem? \SpecialChar LyX
+ [aktualnie] nie sprawdza czy nie
+ przekroczyłeś limitu zagnieżdżenia środowiska.
  Jeśli zagnieździłeś środowiska aż do 17 poziomu, to może być problem.
 \end_layout
 
 \begin_layout Enumerate
 Nie otrzymałeś żadnych komunikatów błędów ale wynik źle wygląda.
  Jeśli masz tabelę lub rysunek szerszy lub dłuższy od strony, to powinieneś:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1942,7 +2175,8 @@ Jeśli to nie pomoże, to
 \emph on
 prawdopodobnie
 \emph default
- znalazłeś błąd w LyX-ie\SpecialChar \ldots{}
+ znalazłeś błąd w \SpecialChar LyX
+-ie\SpecialChar ldots
 
 \end_layout
 
@@ -1951,7 +2185,8 @@ Dodatkowe narzędzia składu dokumentu
 \end_layout
 
 \begin_layout Section
-Przygotowanie bibliografii za pomocą BibTeX-a
+Przygotowanie bibliografii za pomocą Bib\SpecialChar TeX
+-a
 \end_layout
 
 \begin_layout Standard
@@ -1971,12 +2206,14 @@ Ressler is to blame for all of Chapter 1 except where noted.
 \end_layout
 
 \begin_layout Standard
-STOP! jeśli wiesz czym jest BibTeX lub masz dobry pomysł na jego zastosowanie
+STOP! jeśli wiesz czym jest Bib\SpecialChar TeX
+ lub masz dobry pomysł na jego zastosowanie
  (np.
  ułożenie swojej własnej bazy bibliograficznej) nie idź, a biegnij do swojego
  egzemplarza drugiego wydania Lamporta 
 \emph on
-LaTeX: A Document Preparation System
+\SpecialChar LaTeX
+: A Document Preparation System
 \emph default
 , zwłaszcza 
 \emph on
@@ -1998,45 +2235,52 @@ BSTINPUTS
 \family typewriter
 TEXINPUTS
 \family default
-) oraz jeśli jesteś odpowiednio zdesperowany powinieneś utworzyć plik LaTeX-a
+) oraz jeśli jesteś odpowiednio zdesperowany powinieneś utworzyć plik \SpecialChar LaTeX
+-a
  ,,
 \family typewriter
 .tex
 \family default
-'' z bazą BibTeX-a.
+'' z bazą Bib\SpecialChar TeX
+-a.
 \end_layout
 
 \begin_layout Standard
-Dla tych, którzy nie znają BibTeX-a, jest to system do tworzenia wielkich
- baz Twoich często używanych odnośników do literatury.
+Dla tych, którzy nie znają Bib\SpecialChar TeX
+-a, jest to system do tworzenia wielkich baz
+ Twoich często używanych odnośników do literatury.
 \end_layout
 
 \begin_layout Standard
 Dla wszystkich przyszłych artykułów, zapisz tylko potrzebne pozycje literatury
  do wstawienia do bazy i oznacz odpowiednim kluczem każdy odnośnik.
  Nawet jeśli piszesz tylko kilka dokumentów z kilkoma odnośnikami w każdym,
- to warto poświęcić Twój czas na sprawdzenie BibTeX-a i zdecydować czy będzie
+ to warto poświęcić Twój czas na sprawdzenie Bib\SpecialChar TeX
+-a i zdecydować czy będzie
  użyteczny dla Ciebie.
 \end_layout
 
 \begin_layout Standard
-Aby używać BibTeX-a w LyX-ie należy najpierw zapoznać się 
+Aby używać Bib\SpecialChar TeX
+-a w \SpecialChar LyX
+-ie należy najpierw zapoznać się 
 \emph on
 Podręcznikiem Użytkownika
 \emph default
 , w którym opisano sposób wstawiania cytowań.
- Podstawowy mechanizm wstawiania odnośników BibTeX-a jest taki sam.
+ Podstawowy mechanizm wstawiania odnośników Bib\SpecialChar TeX
+-a jest taki sam.
  Umieść kursor na końcu dokumentu i wybierz 
 \family sans
 \bar under
 W
 \bar default
-staw\SpecialChar \menuseparator
+staw\SpecialChar menuseparator
 
 \bar under
 S
 \bar default
-pisy\SpecialChar \menuseparator
+pisy\SpecialChar menuseparator
 
 \bar under
 C
@@ -2069,7 +2313,8 @@ Danych podaj nazwę pliku
 \end_layout
 
 \begin_layout Description
-Styl podaj nazwę pliku stylu BibTeX-a BEZ rozszerzenia 
+Styl podaj nazwę pliku stylu Bib\SpecialChar TeX
+-a BEZ rozszerzenia 
 \family typewriter
 .bst
 \family default
@@ -2107,8 +2352,9 @@ plunsrt
 
 \end_inset
 
- (który powinien być dołączony do Twojej dystrybucji LaTeX-a, tak że nie
- musisz przejmować się utworzeniem go).
+ (który powinien być dołączony do Twojej dystrybucji \SpecialChar LaTeX
+-a, tak że nie musisz
+ przejmować się utworzeniem go).
 \end_layout
 
 \begin_layout Standard
@@ -2121,7 +2367,7 @@ Zakładamy, że dla każdego cytowania źródło znajduje się w pliku
 \bar under
 W
 \bar default
-staw\SpecialChar \menuseparator
+staw\SpecialChar menuseparator
 
 \bar under
 C
@@ -2134,15 +2380,18 @@ ytowanie
 \bar under
 P
 \bar default
-odgląd\SpecialChar \menuseparator
+odgląd\SpecialChar menuseparator
 
 \bar under
 D
 \bar default
 VI
 \family default
-, powinieneś zobaczyć że BibTeX i LaTeX są wywoływane gdy zachodzi potrzeba,
- włączając wielokrotne wywołanie LaTeX-a.
+, powinieneś zobaczyć że Bib\SpecialChar TeX
+ i \SpecialChar LaTeX
+ są wywoływane gdy zachodzi potrzeba, włączając
+ wielokrotne wywołanie \SpecialChar LaTeX
+-a.
 \end_layout
 
 \begin_layout Section
@@ -2152,7 +2401,8 @@ Tworzenie indeksu
 \begin_layout Standard
 Dobry indeks jest jedną z najtrudniejszych rzeczy do zrobienia w długim
  dokumencie.
- LyX pomaga wykonać rzeczy trochę prościej za pomocą interfejsu do programu
+ \SpecialChar LyX
+ pomaga wykonać rzeczy trochę prościej za pomocą interfejsu do programu
  
 \family typewriter
 makeindex
@@ -2187,12 +2437,12 @@ Najpierw przejdź na koniec swojego dokumentu i wybierz
 \bar under
 W
 \bar default
-staw\SpecialChar \menuseparator
+staw\SpecialChar menuseparator
 
 \bar under
 S
 \bar default
-pisy\SpecialChar \menuseparator
+pisy\SpecialChar menuseparator
 
 \bar under
 I
@@ -2206,7 +2456,7 @@ ndeks
 \bar under
 W
 \bar default
-staw\SpecialChar \menuseparator
+staw\SpecialChar menuseparator
 Wstaw poprzedzające słowo do indeksu
 \family default
 .
@@ -2215,11 +2465,11 @@ Wstaw poprzedzające słowo do indeksu
 \end_layout
 
 \begin_layout Standard
-Jeżeli chcesz dokładnie podać co ma pojawić się w indeksie -- na przykład
+Jeżeli chcesz dokładnie podać co ma pojawić się w indeksie – na przykład
  potrzebujesz mieć słowo ,,kot'' w indeksie, które będzie odnosiło się do
  słów w tekście ,,kot'' i ,,koty'' to po prostu wybierz polecenie 
 \family sans
-Wstaw\SpecialChar \menuseparator
+Wstaw\SpecialChar menuseparator
 Słowo do indeksu
 \family default
  i wpisz słowo ,,kot'' w oknie dialogowym.
@@ -2227,7 +2477,8 @@ Słowo do indeksu
 
 \begin_layout Standard
 I to wszystko.
- LyX automatycznie wywoła 
+ \SpecialChar LyX
+ automatycznie wywoła 
 \family typewriter
 makeindex
 \family default
@@ -2245,8 +2496,9 @@ Powinieneś zdawać sobie sprawę, że istnieją bardziej zaawansowane metody
 \family typewriter
 makeindex
 \family default
-: spójrz w dokumentację dołączoną do Twojej dystrybucji LaTeX-a i znajdź
- jak wykonać zagnieżdżone wpisy itp.
+: spójrz w dokumentację dołączoną do Twojej dystrybucji \SpecialChar LaTeX
+-a i znajdź jak
+ wykonać zagnieżdżone wpisy itp.
 \end_layout
 
 \begin_layout Section
@@ -2259,21 +2511,23 @@ Podstawy
 
 \begin_layout Standard
 Przy pracy z dużymi plikami zawierającymi wiele sekcji i rozdziałów, często
- jest wygodniej podzielić dokument na kilka plików lub być może masz ---
- perhaps you have something where a table may change from time to time,
- but the preceding text does not.
+ jest wygodniej podzielić dokument na kilka plików lub być może masz — perhaps
+ you have something where a table may change from time to time, but the
+ preceding text does not.
  W takim przypadku powinieneś na serio rozważyć użycie dokumentów wieloczęściowy
 ch.
  Na przykład prace naukowe często składają się z pięciu głównych części:
  wprowadzenia, obserwacji, wyników, dyskusji i podsumowania.
- Każda z tych części może być zapisana w oddzielnym pliku LyX-a, gdzie jeden
+ Każda z tych części może być zapisana w oddzielnym pliku \SpecialChar LyX
+-a, gdzie jeden
  plik będzie dokumentem głównym zawierającym tytuł, autorów, streszczenie,
  spis treści, itd.
  oraz pięć dołączonych plików dokumentów składowych (podrzędnych).
  Należy zwrócić uwagę, że każdy z plików podrzędnych włączanych do dokumentu
  głównego stanowi niezależny dokument, który może być formatowany i drukowany
  niezależnie.
- Można dołączać również pliki LaTeX-a, ale pliki te nie mogą posiadać własnej
+ Można dołączać również pliki \SpecialChar LaTeX
+-a, ale pliki te nie mogą posiadać własnej
  preambuły (wszystko przed 
 \family typewriter
 
@@ -2286,17 +2540,19 @@ begin{document}
 \backslash
 end{document}
 \family default
- musi być usunięte) gdyż w przeciwnym wypadku LaTeX zgłosi błąd podczas
- przetwarzania dokumentu głównego.
+ musi być usunięte) gdyż w przeciwnym wypadku \SpecialChar LaTeX
+ zgłosi błąd podczas przetwarzania
+ dokumentu głównego.
 \end_layout
 
 \begin_layout Standard
-LyX pozwala łatwo włączać pliki poleceniem z menu 
+\SpecialChar LyX
+ pozwala łatwo włączać pliki poleceniem z menu 
 \family sans
 \bar under
 W
 \bar default
-staw\SpecialChar \menuseparator
+staw\SpecialChar menuseparator
 D
 \bar under
 o
@@ -2312,16 +2568,18 @@ o
  Wybór pliku powinien być już jasny.
  W oknie mamy do wyboru trzy metody dołączania plików; ,,dołącz'', ,,wstaw''
  i ,,maszynopis''.
- Różnica pomiędzy ,,dołącz'' a ,,wstaw'' jest w pełni jasna tylko dla LaTeX-pert
-ów.
+ Różnica pomiędzy ,,dołącz'' a ,,wstaw'' jest w pełni jasna tylko dla \SpecialChar LaTeX
+-pertów.
  Praktycznie różnica polega na tym, że pliki ,,dołączane'' zaczynają się
  od nowej strony, a pliki ,,wstawiane'' od miejsca wstawienia.
 \end_layout
 
 \begin_layout Standard
-Generalnie, plik główny jest konwertowany do formatu LaTeX przed składaniem,
- podczas gdy dołączane pliki są konwertowane do formatu LaTeX, który nie
- zawiera preambuły.
+Generalnie, plik główny jest konwertowany do formatu \SpecialChar LaTeX
+ przed składaniem,
+ podczas gdy dołączane pliki są konwertowane do formatu \SpecialChar LaTeX
+, który nie zawiera
+ preambuły.
  Zaznaczenie pola Nie 
 \family sans
 formatuj
@@ -2333,7 +2591,8 @@ formatuj
 Dołączanie plików metodą ,,maszynopis'' pozwala na dołączanie ,,dosłowne''
  plików w środowisku verbatim z czcionką o stałej szerokości.
  Normalnie spacje w pliku są niewidzialne, dwie kolejne spacje są zachowywane,
- inaczej niż standardowo w LyX-ie.
+ inaczej niż standardowo w \SpecialChar LyX
+-ie.
  Przycisk 
 \family sans
 Zachowaj spacje
@@ -2356,7 +2615,7 @@ Jest możliwe ustawienie odnośników pomiędzy różnymi plikami.
 \bar under
 W
 \bar default
-staw \SpecialChar \menuseparator
+staw \SpecialChar menuseparator
 
 \bar under
 O
@@ -2382,7 +2641,8 @@ Algorytmy
 \begin_layout Standard
 
 \emph on
-(z konfiguracji LaTeX)
+(z konfiguracji \SpecialChar LaTeX
+)
 \end_layout
 
 \begin_layout Standard
@@ -2402,7 +2662,8 @@ Podrysunek
 \begin_layout Standard
 
 \emph on
-(z konfiguracji LaTeX)
+(z konfiguracji \SpecialChar LaTeX
+)
 \end_layout
 
 \begin_layout Standard
@@ -2410,7 +2671,8 @@ Pakiet
 \family sans
 subfigure
 \family default
- jest używany w LyX-ie podczas wyboru ,,Podrysunek'' w oknie Rysunek.
+ jest używany w \SpecialChar LyX
+-ie podczas wyboru ,,Podrysunek'' w oknie Rysunek.
  Kilka rysunków zaznaczonych w ten sposób może być upakowanych w jednej
  wstawce w indywidualnymi podpisami.
 \end_layout
@@ -2440,7 +2702,7 @@ pagina dolna
 \end_layout
 
 \begin_layout Standard
-Domyślny układ strony jest raczej nieskomplikowany -- plain; dla klasy artykuł
+Domyślny układ strony jest raczej nieskomplikowany – plain; dla klasy artykuł
  numery stron są wycentrowane u dołu strony.
  Ten dokument jest klasy książka (book) i jest trochę bardziej ozdobny,
  ale aby rzeczywiście postawić na wygląd potrzebujesz użyć stylu ,,fancy''
@@ -2449,14 +2711,16 @@ Domyślny układ strony jest raczej nieskomplikowany -- plain; dla klasy artyku�
 Podręczniku Użytkownika
 \emph default
 .
- Ta sekcja opisuje polecenia LaTeX-a, które trzeba wstawić w preambule lub
- w tekście aby otrzymać żądany efekt.
+ Ta sekcja opisuje polecenia \SpecialChar LaTeX
+-a, które trzeba wstawić w preambule lub w
+ tekście aby otrzymać żądany efekt.
 \end_layout
 
 \begin_layout Standard
 Nagłówek i stopka strony są podzielone na trzy pola określające lewą, środkową
  i prawą ich część.
- Poleceniami LaTeX-a do ustawiania tych pól w najprostszy sposób są 
+ Poleceniami \SpecialChar LaTeX
+-a do ustawiania tych pól w najprostszy sposób są 
 \family typewriter
 
 \backslash
@@ -2586,7 +2850,8 @@ thesection
 \backslash
 thepage
 \family default
- dają dostęp do liczników sekcji i stron LaTeX-a, i będą wydrukowane w bieżącej
+ dają dostęp do liczników sekcji i stron \SpecialChar LaTeX
+-a, i będą wydrukowane w bieżącej
  sekcji i numerze strony.
  Polecenie 
 \family typewriter
@@ -2644,7 +2909,8 @@ thispagestyle{fancy}
 \family default
 .
  Po prostu wstaw je w tekście na stronie, którą chcesz zmienić i zaznacz
- je jako kod TeX-a.
+ je jako kod \SpecialChar TeX
+-a.
  Strony tytułowe są oznaczone domyślnie jako plain, podczas gdy kolejne
  strony są w stylu fancy gdy używasz globalnego ustawienia fancy.
 \end_layout
@@ -2657,7 +2923,8 @@ Istnieje wiele złożonych poleceń, które będą wstawiały rzeczy w lewym gó
 fancyhdr
 \family default
 .
- Na przykład jeśli masz instalację teTeX-a zobacz 
+ Na przykład jeśli masz instalację te\SpecialChar TeX
+-a zobacz 
 \family typewriter
 /usr/share/texmf/doc/latex/fancyhdr/fancyhdr.dvi
 \family default
@@ -2699,11 +2966,13 @@ Ministrony
 \end_layout
 
 \begin_layout Standard
-LaTeX dostarcza mechanizmu do tworzenia strony wewnątrz strony, zwanych
- ministronami (minipages).
+\SpecialChar LaTeX
+ dostarcza mechanizmu do tworzenia strony wewnątrz strony, zwanych ministronami
+ (minipages).
  Wewnątrz ministrony są dostępne wszystkie zwykłe reguły wcinania, łamania
  wierszy itd.
- LyX także dostarcza tę możliwość.
+ \SpecialChar LyX
+ także dostarcza tę możliwość.
 \end_layout
 
 \begin_layout Standard
@@ -2713,7 +2982,7 @@ Ministrony posiadają własną wstawkę, aby wstawić ministronę wybierz polece
 \bar under
 W
 \bar default
-staw \SpecialChar \menuseparator
+staw \SpecialChar menuseparator
 
 \bar under
 M
@@ -2739,7 +3008,7 @@ Są dwie dalsze opcje ministron.
 \bar under
 W
 \bar default
-staw\SpecialChar \menuseparator
+staw\SpecialChar menuseparator
 
 \family default
  
@@ -2747,7 +3016,7 @@ staw\SpecialChar \menuseparator
 \bar under
 Z
 \bar default
-nak specjalny\SpecialChar \menuseparator
+nak specjalny\SpecialChar menuseparator
  HFill
 \family default
  do maksymalnego rozsunięcia ich, który wymuszi początek pierwszej ministrony
@@ -2767,6 +3036,11 @@ width "1.5in"
 special "none"
 height "1pt"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -2791,6 +3065,11 @@ width "1.5in"
 special "none"
 height "1pt"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -2833,6 +3112,11 @@ width "1.5in"
 special "none"
 height "1pt"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -2858,6 +3142,11 @@ width "1.5in"
 special "none"
 height "1pt"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
@@ -2917,7 +3206,7 @@ Często zadawanym pytaniem jest pytanie o możliwość ,,oblewania'' rysunków
 \end_layout
 
 \begin_layout Standard
-Obok znajduje się rysunek pętli Moebiusa -- powinieneś go już zobaczyć w
+Obok znajduje się rysunek pętli Moebiusa – powinieneś go już zobaczyć w
  
 \emph on
 Podręczniku Użytkownika
@@ -2928,7 +3217,7 @@ Podręczniku Użytkownika
 \bar under
 W
 \bar default
-staw\SpecialChar \menuseparator
+staw\SpecialChar menuseparator
 
 \family default
  
@@ -2936,7 +3225,7 @@ staw\SpecialChar \menuseparator
 \bar under
 W
 \bar default
-stawki\SpecialChar \menuseparator
+stawki\SpecialChar menuseparator
  Rysunek oblany
 \family default
 .
@@ -2948,7 +3237,8 @@ Uwaga: ten pakiet jest bardzo kruchy
 status collapsed
 
 \begin_layout Plain Layout
-Kruchy w sensie LaTeX-a.
+Kruchy w sensie \SpecialChar LaTeX
+-a.
  Przyp.
  tłum.
 \end_layout
@@ -2962,7 +3252,8 @@ Kruchy w sensie LaTeX-a.
 \end_layout
 
 \begin_layout Standard
-Miejmy nadzieję, że w przyszłości LyX będzie obsługiwał te funkcje natywnie.
+Miejmy nadzieję, że w przyszłości \SpecialChar LyX
+ będzie obsługiwał te funkcje natywnie.
 \end_layout
 
 \begin_layout Section
@@ -2978,7 +3269,7 @@ Standardowy układ tabel będzie odpowiedni w 99% wszystkich Twoich tabel,
 \bar under
 U
 \bar default
-kład\SpecialChar \menuseparator
+kład\SpecialChar menuseparator
 
 \family default
  
@@ -3001,8 +3292,10 @@ Wiersz
 \end_layout
 
 \begin_layout Standard
-Teraz krótkie wspomnienie o LaTeX-u: gdy ustawiamy tabelę w LaTeX-u to dla
- każdej kolumny deklarujemy typ wyrównania.
+Teraz krótkie wspomnienie o \SpecialChar LaTeX
+-u: gdy ustawiamy tabelę w \SpecialChar LaTeX
+-u to dla każdej
+ kolumny deklarujemy typ wyrównania.
  Dla przykładu możesz podać ,,
 \family typewriter
 l
@@ -3016,7 +3309,8 @@ c
 r
 \family default
 '' dla justowania do lewej, wyśrodkowania i wyrównania kolumny do prawej
- (co w LyX-ie objawia się trzema przyciskami 
+ (co w \SpecialChar LyX
+-ie objawia się trzema przyciskami 
 \family sans
 W lewo
 \family default
@@ -3033,7 +3327,8 @@ W prawo
 \family typewriter
 p
 \family default
-'', który deklaruje szerokość kolumny (w LyX-ie mamy pole 
+'', który deklaruje szerokość kolumny (w \SpecialChar LyX
+-ie mamy pole 
 \family sans
 Szerokość
 \family default
@@ -3043,7 +3338,8 @@ Szerokość
 |
 \family default
 '' (vertical bar), który raczej służy do tworzenia pionowych kresek ramek
- (w LyX-ie mamy do tego przyciski w polu 
+ (w \SpecialChar LyX
+-ie mamy do tego przyciski w polu 
 \family sans
 Ramka
 \family default
@@ -3077,7 +3373,7 @@ Tutaj znajduje się standardowa tabela:
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <row>
@@ -3158,7 +3454,8 @@ Quartz
 Zwróć uwagę, że poziome kreski wystają troszkę z obu strona poza tekst.
  Jeśli chcesz aby linie zaczynały i kończyły się równo z tekstem, to można
  wstawić pusty separator na końcu aby zwolnić trochę miejsca dodawanego
- domyślnie przez LaTeX-a.
+ domyślnie przez \SpecialChar LaTeX
+-a.
  Oto przykład:
 \end_layout
 
@@ -3173,7 +3470,7 @@ Zwróć uwagę, że poziome kreski wystają troszkę z obu strona poza tekst.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt" special="@{} l">
 <column alignment="left" valignment="top" width="0pt" special="l @{}">
 <row>
@@ -3310,7 +3607,7 @@ pi}$~} l
 .
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt" special="@{~$\sqrt{\pi}$~}l">
 <row>
@@ -3393,10 +3690,11 @@ Wyrównanie kolumny według cyfr znaczących
 
 \begin_layout Standard
 Proponujemy wyrównanie kolumny według cyfr znaczących.
- Standardowym trickiem LaTeX-a jest podzielenie liczby na dwie kolumny;
- w lewej -- przeznaczonej dla części całkowitej -- wyrównujemy do prawej
- strony, a w prawej -- przeznaczonej dla części ułamkowej -- wyrównujemy
- do lewej, natomiast separator kolumn ustawiamy jako pusty.
+ Standardowym trickiem \SpecialChar LaTeX
+-a jest podzielenie liczby na dwie kolumny; w lewej
+ – przeznaczonej dla części całkowitej – wyrównujemy do prawej strony, a
+ w prawej – przeznaczonej dla części ułamkowej – wyrównujemy do lewej, natomiast
+ separator kolumn ustawiamy jako pusty.
  Oto przykład:
 \end_layout
 
@@ -3411,7 +3709,7 @@ Proponujemy wyrównanie kolumny według cyfr znaczących.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="right" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt" special="@{} l">
@@ -3591,7 +3889,8 @@ Wartość
 \end_layout
 
 \begin_layout Standard
-Mimo że będzie to wyglądało trochę śmiesznie w LyX-ie, to na wydruku pojawią
+Mimo że będzie to wyglądało trochę śmiesznie w \SpecialChar LyX
+-ie, to na wydruku pojawią
  się dwukolumnowa tabela, w której prawa kolumna jest wyrównana według cyfr
  znaczących, a nagłówek jest wyśrodkowany.
 \end_layout
@@ -3660,7 +3959,8 @@ Alternatywnym rozwiązaniem wyrównania według cyfr znaczących w tabelach
 dcolumn
 \family default
 .
- Dodaj następujący tekst do preambuły LaTeX-a:
+ Dodaj następujący tekst do preambuły \SpecialChar LaTeX
+-a:
 \end_layout
 
 \begin_layout LyX-Code
@@ -3766,7 +4066,8 @@ Wprowadzenie
 \end_layout
 
 \begin_layout Standard
-LyX dostarcza 216 znaków dostępnych wprost z menu.
+\SpecialChar LyX
+ dostarcza 216 znaków dostępnych wprost z menu.
  Użycie tego menu daje Ci możliwość łatwego wyboru odpowiedniego znaku dla
  każdego poziomu zagnieżdżenia wyliczeń.
  Te ustawienia są globalne dla całego dokumentu i nie można ustawić różnych
@@ -3793,7 +4094,7 @@ Otwórz z menu
 \bar under
 U
 \bar default
-kład\SpecialChar \menuseparator
+kład\SpecialChar menuseparator
 
 \bar under
 D
@@ -3812,13 +4113,15 @@ W zakładce wyświetlona jest tabela znaków wyliczenia.
  sześciu zestawów znaków.
  Przyciski umieszczone w górnej części okna przeznaczone są do wyboru głębokości
  zagnieżdżenia wyliczenia.
- Tekst pod tabelą zestawu znaków wyświetla nazwę LaTeX-a aktualnie wybranego
+ Tekst pod tabelą zestawu znaków wyświetla nazwę \SpecialChar LaTeX
+-a aktualnie wybranego
  znaku.
  Można również w tym miejscu podać własne definicje znaku wyliczenia.
  Jeśli zmodyfikujesz domyślne ustawienia to będziesz potrzebował podać potrzebne
  pakiety w preambule.
  Znaki podzielone są na sześć zestawów ze względu na wymagane pakiety.
- Poniższa tabela przedstawia przypisanie zestawów do pakietów LaTeX-a.
+ Poniższa tabela przedstawia przypisanie zestawów do pakietów \SpecialChar LaTeX
+-a.
 \end_layout
 
 \begin_layout Standard
@@ -3832,7 +4135,7 @@ W zakładce wyświetlona jest tabela znaków wyliczenia.
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="7" columns="2">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <row>
@@ -3873,7 +4176,8 @@ Standard
 \begin_layout Plain Layout
 
 \family typewriter
-base LaTeX
+base \SpecialChar LaTeX
+
 \end_layout
 
 \end_inset
@@ -4014,10 +4318,13 @@ pifont.sty
 \end_layout
 
 \begin_layout Standard
-LyX nie zatrzyma Cię przed użyciem znaku z pakietu którego nie masz.
- Jeśli otrzymasz komunikat błędu LaTeX-a podczas próby podglądu lub wydruku
- będzie on oznaczał brak wymaganego pakietu.
- LyX nie będzie ograniczał użycia przy lokalnej edycji i eksporcie gdziekolwiek.
+\SpecialChar LyX
+ nie zatrzyma Cię przed użyciem znaku z pakietu którego nie masz.
+ Jeśli otrzymasz komunikat błędu \SpecialChar LaTeX
+-a podczas próby podglądu lub wydruku będzie
+ on oznaczał brak wymaganego pakietu.
+ \SpecialChar LyX
+ nie będzie ograniczał użycia przy lokalnej edycji i eksporcie gdziekolwiek.
 \end_layout
 
 \begin_layout Subsection
@@ -4026,7 +4333,8 @@ Jak użyć
 
 \begin_layout Standard
 Wybierz przycisk głębokości wyliczenia i następnie wybierz znak i wielkość.
- Zmiana nie będzie widoczna w LyX-ie, ale będzie widoczna w podglądzie dokumentu
+ Zmiana nie będzie widoczna w \SpecialChar LyX
+-ie, ale będzie widoczna w podglądzie dokumentu
  przy użyciu xdvi lub ghostview.
 \end_layout
 
@@ -4038,8 +4346,8 @@ Możesz przywrócić domyślny znak wyliczenia przez kliknięcie prawym klawisze
 \begin_layout Standard
 Jeśli rzeczywiście chcesz mieć wiele układów akapitów z różnymi zestawami
  znaków wyliczenia w każdym musisz wykonać trochę brudnej roboty.
- Okno wyboru znaku wyliczenia może pomóc w znalezieniu nazwy LaTeX-owej
- znaku.
+ Okno wyboru znaku wyliczenia może pomóc w znalezieniu nazwy \SpecialChar LaTeX
+-owej znaku.
  Aby zrobić własne akapity musisz mieś następującą opcję:
 \end_layout
 
@@ -4085,7 +4393,8 @@ sharp
 \end_layout
 
 \begin_layout Itemize
-Użyj polecenia LaTeX-a 
+Użyj polecenia \SpecialChar LaTeX
+-a 
 \family typewriter
 
 \backslash
@@ -4094,8 +4403,9 @@ renewcommand{}{}
  do specyfikacji nowego znaku wyliczenia dla zadanej głębokości zagnieżdżenia.
  To będzie także potrzebne do zapisu bieżącego znaku i jego późniejszego
  ponownego przywołania.
- W tym wyliczeniu zostały użyte następujące kody LaTeX-a do zmiany znaku
- wyliczenia w pierwszym poziomie.
+ W tym wyliczeniu zostały użyte następujące kody \SpecialChar LaTeX
+-a do zmiany znaku wyliczenia
+ w pierwszym poziomie.
 \begin_inset Newline newline
 \end_inset
 
@@ -4156,7 +4466,8 @@ star
 \end_inset
 
  Podaj dla każdego indywidualnego wiersza wyliczenia kod znaku zamknięty
- w nawiasy prostokątne i wpisane w trybie TeX.
+ w nawiasy prostokątne i wpisane w trybie \SpecialChar TeX
+.
  Na przykład ten wiersz zaczyna się znakiem
 \family typewriter
 [
@@ -4171,8 +4482,10 @@ star
 \end_layout
 
 \begin_layout Itemize
-Poczekaj na LyX 1.2.
- Następne stabilne wydanie LyX-a powinna mieć wbudowaną obsługę definiowania
+Poczekaj na \SpecialChar LyX
+ 1.2.
+ Następne stabilne wydanie \SpecialChar LyX
+-a powinna mieć wbudowaną obsługę definiowania
  dla każdego wyliczenia oddzielnego zestawu znaków.
 \end_layout
 
@@ -4269,7 +4582,7 @@ ftp://ftp.ams.org/pub/tex/amslatex/
 \end_layout
 
 \begin_layout Enumerate
-amsart -- standardowy format artykułu -- AMS article.
+amsart – standardowy format artykułu – AMS article.
  Wszystkie równania i wyrażenia są numerowane jako 
 \begin_inset Formula $(n.m)$
 \end_inset
@@ -4283,7 +4596,7 @@ amsart -- standardowy format artykułu -- AMS article.
 \end_layout
 
 \begin_layout Enumerate
-amsart-seq -- tutaj, twierdzenia, definicje itd.
+amsart-seq – tutaj, twierdzenia, definicje itd.
  są numerowane kolejno, bez odniesienia do numeru sekcji.
  Dostępne są również nienumerowane środowiska (ale nie wszystkie), do okazjonaln
 ego użycia.
@@ -4291,7 +4604,7 @@ ego użycia.
 \end_layout
 
 \begin_layout Enumerate
-amsbook - standardowy format książki -- AMS book (prawdziwe monografie).
+amsbook - standardowy format książki – AMS book (prawdziwe monografie).
  Numeracja jest podobna jak w układzie amsart, z wyjątkiem numeracji wszystkiego
  jako 
 \begin_inset Formula $(n,m,p)$
@@ -4306,13 +4619,14 @@ amsbook - standardowy format książki -- AMS book (prawdziwe monografie).
 \end_layout
 
 \begin_layout Standard
-Dowolne pliki LyX-a ams-* mogą być konwertowane do schematu przez prostą
- zmianę klasy dokumentu w menu 
+Dowolne pliki \SpecialChar LyX
+-a ams-* mogą być konwertowane do schematu przez prostą zmianę
+ klasy dokumentu w menu 
 \family sans
 \bar under
 U
 \bar default
-kład\SpecialChar \menuseparator
+kład\SpecialChar menuseparator
 
 \bar under
 D
@@ -4329,9 +4643,11 @@ Co daje ten szablon?
 \begin_layout Standard
 Te układy dostarczają długą listę środowisk.
  Najbardziej matematyczne pisma i książki będą korzystać w większości z
- tych środowisk, AMS-LaTeX-u sprzyja definiowaniu nieograniczonej liczby
- rozmaitych takich deklaracji.
- Jednak zalecane przez AMS środowiska są dostępne w LyX-ie.
+ tych środowisk, AMS-\SpecialChar LaTeX
+-u sprzyja definiowaniu nieograniczonej liczby rozmaitych
+ takich deklaracji.
+ Jednak zalecane przez AMS środowiska są dostępne w \SpecialChar LyX
+-ie.
  Oto lista nowych środowisk (nie wyliczamy typowych takich jak 
 \family sans
 sections, bibliography, title, author, date
@@ -4517,9 +4833,9 @@ Translator
 \end_layout
 
 \begin_layout Standard
-Ponadto, środowiska automatycznie włączają pakiety AMS-LaTeX i czcionki
- AMS, które muszą być dostępne w Twoim systemie, aby można było używać tych
- układów.
+Ponadto, środowiska automatycznie włączają pakiety AMS-\SpecialChar LaTeX
+ i czcionki AMS,
+ które muszą być dostępne w Twoim systemie, aby można było używać tych układów.
 \end_layout
 
 \begin_layout Section
@@ -4576,7 +4892,8 @@ Wprowadzenie
 \end_layout
 
 \begin_layout Standard
-W tej sekcji opisano jak można użyć LyX-a do pisania artykułów do pism naukowych
+W tej sekcji opisano jak można użyć \SpecialChar LyX
+-a do pisania artykułów do pism naukowych
  
 \emph on
 Astronomy and Astrophysics
@@ -4638,7 +4955,7 @@ Aby zacząć nowy dokument wybieramy z menu
 \bar under
 P
 \bar default
-lik\SpecialChar \menuseparator
+lik\SpecialChar menuseparator
 
 \family default
  
@@ -4653,7 +4970,7 @@ owy
 \bar under
 P
 \bar default
-lik\SpecialChar \menuseparator
+lik\SpecialChar menuseparator
  Nowy z
 \begin_inset space ~
 \end_inset
@@ -4670,7 +4987,8 @@ status open
 Zalecamy korzystanie z szablonu.
  Either create one yourself, or ask the local system administrator to suply
  a site-wide version.
- Przykładowy szablon jest częścią standardowej dystrybucji LyX-a.
+ Przykładowy szablon jest częścią standardowej dystrybucji \SpecialChar LyX
+-a.
 \end_layout
 
 \end_inset
@@ -4816,7 +5134,8 @@ Nie potrzeba wydawać polecenia
 \backslash
 maketitle
 \family default
-, jest to robione automatycznie przez LyX gdy nagłówek jest zakończony.
+, jest to robione automatycznie przez \SpecialChar LyX
+ gdy nagłówek jest zakończony.
  Although the order of the single header entries doesn't matter it is advised
  to keep the above sequence, just to get the best optics and meets the layout
  of the real document.
@@ -4830,7 +5149,7 @@ Jeśli chcesz umieścić przypis w nagłówku, np.
 \bar under
 W
 \bar default
-staw\SpecialChar \menuseparator
+staw\SpecialChar menuseparator
 
 \bar under
 P
@@ -4838,7 +5157,8 @@ P
 rzypis.
 
 \family default
- LyX w takim przypadku użyje automatycznie określenia 
+ \SpecialChar LyX
+ w takim przypadku użyje automatycznie określenia 
 \family typewriter
 
 \backslash
@@ -4848,8 +5168,10 @@ thanks{}
 \end_layout
 
 \begin_layout Standard
-In addition to these topics, Springer uses two additional LaTeX commands
- that have no counterpart in LyX:
+In addition to these topics, Springer uses two additional \SpecialChar LaTeX
+ commands that
+ have no counterpart in \SpecialChar LyX
+:
 \end_layout
 
 \begin_layout Itemize
@@ -4878,8 +5200,10 @@ Address
 \end_layout
 
 \begin_layout Standard
-In both cases, the appropriate command has to be entered in LyX an marked
- as LaTeX code.
+In both cases, the appropriate command has to be entered in \SpecialChar LyX
+ an marked as
+ \SpecialChar LaTeX
+ code.
  See the examples.
 \end_layout
 
@@ -4894,14 +5218,16 @@ Streszczenie powinno się znajdować bezpośrednio za nagłówkiem.
 \begin_layout Standard
 The only special thing about the abstract environment is that it should
  contain an entry with the keywords.
- This is not yet implemented for LyX, therefore you have to enter the LaTeX
+ This is not yet implemented for \SpecialChar LyX
+, therefore you have to enter the \SpecialChar LaTeX
  command
 \family typewriter
 
 \backslash
 keywords{}
 \family default
- by hand and mark it as LaTeX code.
+ by hand and mark it as \SpecialChar LaTeX
+ code.
  Zobacz przykładowy artykuł.
 \end_layout
 
@@ -4982,11 +5308,13 @@ Bibliography
 \begin_layout Itemize
 
 \family sans
-LaTeX
+\SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Subsection
-Polecenia nie obsługiwane przez LyX
+Polecenia nie obsługiwane przez \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
@@ -4994,7 +5322,8 @@ Kilka poleceń układu
 \family sans
 paper (A&A)
 \family default
- nie jest jeszcze obsługiwane w LyX-ie.
+ nie jest jeszcze obsługiwane w \SpecialChar LyX
+-ie.
  Kilka zostało już omówionych.
  Dla kompletności poniżej są one wszystkie wypisane:
 \end_layout
@@ -5057,15 +5386,17 @@ titlerunning{}
 
 \begin_layout Standard
 Jeśli chcesz użyć któregoś z tych poleceń, to musisz wpisać je sam.
- I nie zapomnij wpisywać je w trybie LaTeX-a!
+ I nie zapomnij wpisywać je w trybie \SpecialChar LaTeX
+-a!
 \end_layout
 
 \begin_layout Subsection
-Wstawki -- rysunki i tabele
+Wstawki – rysunki i tabele
 \end_layout
 
 \begin_layout Standard
-LyX obsługuje niezbędne środowiska wstawek 
+\SpecialChar LyX
+ obsługuje niezbędne środowiska wstawek 
 \family sans
 figure, figure*, table
 \family default
@@ -5085,7 +5416,7 @@ Podręcznika Użytkownika
 \bar under
 U
 \bar default
-kład\SpecialChar \menuseparator
+kład\SpecialChar menuseparator
 
 \bar under
 A
@@ -5104,12 +5435,12 @@ Utwórz szeroką wstawkę:
 \bar under
 W
 \bar default
-staw\SpecialChar \menuseparator
+staw\SpecialChar menuseparator
 
 \bar under
 W
 \bar default
-stawki\SpecialChar \menuseparator
+stawki\SpecialChar menuseparator
 
 \bar under
 R
@@ -5141,7 +5472,7 @@ Ustaw kursor za rysunkiem i wstaw odstęp poziomy:
 \bar under
 W
 \bar default
-staw\SpecialChar \menuseparator
+staw\SpecialChar menuseparator
 
 \family default
  
@@ -5151,7 +5482,7 @@ Z
 \bar default
 nak specjalny
 \bar under
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
  H
 \bar default
 Fill
@@ -5160,7 +5491,8 @@ Fill
 \end_layout
 
 \begin_layout Enumerate
-Przełącz się do trybu LaTeX: 
+Przełącz się do trybu \SpecialChar LaTeX
+: 
 \family sans
 M-c
 \begin_inset space ~
@@ -5184,8 +5516,9 @@ Nie zamykaj nawiasu!
 \end_layout
 
 \begin_layout Enumerate
-Ustaw kursor za podpisem, przełącz się do trybu LaTeX-a i wstaw brakujący
- nawias 
+Ustaw kursor za podpisem, przełącz się do trybu \SpecialChar LaTeX
+-a i wstaw brakujący nawias
+ 
 \family typewriter
 ,,}
 \family default
@@ -5245,15 +5578,20 @@ W folderze
 \family sans
 Examples
 \family default
- znajduje się plik przykładowy artykuł napisany w LyX-ie.
+ znajduje się plik przykładowy artykuł napisany w \SpecialChar LyX
+-ie.
  To jest przykład z oryginalnago pakietu makr Springera przetłumaczonego
- do LyX-a.
- Użyj go jako inspirację i porównanie oryginalnego kodu LaTeX-a z LyX-owym
- sposobem pisania.
+ do \SpecialChar LyX
+-a.
+ Użyj go jako inspirację i porównanie oryginalnego kodu \SpecialChar LaTeX
+-a z \SpecialChar LyX
+-owym sposobem
+ pisania.
 \end_layout
 
 \begin_layout Section
-AASTeX
+AAS\SpecialChar TeX
+
 \end_layout
 
 \begin_layout Standard
@@ -5267,7 +5605,8 @@ Wprowadzenie
 \end_layout
 
 \begin_layout Standard
-AASTeX jest zestawem makr wydanych przez American Astronomical Society dla
+AAS\SpecialChar TeX
+ jest zestawem makr wydanych przez American Astronomical Society dla
  ułatwienia wysyłania elektronicznych manuskryptów do trzech pism wydawanych
  przez Towarzystwo: 
 \emph on
@@ -5282,10 +5621,13 @@ Astronomical Journal
 Publications of the Astronomical Society of the Pacific
 \emph default
 .
- LyX wymaga co najmniej wersji 5.0 tych makr.
- Wersje starsze od 5.0 są przeznaczone dla LaTeX2.09 i są niekompatybilne
- z LyX-em.
- Pakiet AASTeX można pobrać z serwera ftp AAS
+ \SpecialChar LyX
+ wymaga co najmniej wersji 5.0 tych makr.
+ Wersje starsze od 5.0 są przeznaczone dla \SpecialChar LaTeX
+2.09 i są niekompatybilne z \SpecialChar LyX
+-em.
+ Pakiet AAS\SpecialChar TeX
+ można pobrać z serwera ftp AAS
 \end_layout
 
 \begin_layout Standard
@@ -5319,12 +5661,16 @@ ftp://ftp.aas.org/pubs
 
 \begin_layout Standard
 A complete user guide is contained in that package and you should familiarize
- yourself with it thoroughly before embarking on writing a paper in LyX.
- LyX will not reduce the need to figure out all the AASTeX commands, it
- will only reduce the drudgery of typing everything in.
- It is your responsibility to ensure that the final exported LaTeX document
- conforms completely to the requirements of the journal to which you are
- submitting your paper.
+ yourself with it thoroughly before embarking on writing a paper in \SpecialChar LyX
+.
+ \SpecialChar LyX
+ will not reduce the need to figure out all the AAS\SpecialChar TeX
+ commands, it will only
+ reduce the drudgery of typing everything in.
+ It is your responsibility to ensure that the final exported \SpecialChar LaTeX
+ document conforms
+ completely to the requirements of the journal to which you are submitting
+ your paper.
 \end_layout
 
 \begin_layout Subsection
@@ -5332,10 +5678,11 @@ Starting a New Paper
 \end_layout
 
 \begin_layout Standard
-I strongly suggest that you start with the AASTeX template file.
+I strongly suggest that you start with the AAS\SpecialChar TeX
+ template file.
  Click on
 \family sans
-File\SpecialChar \menuseparator
+File\SpecialChar menuseparator
 New from template
 \family default
 , enter the new file name, then choose the
@@ -5349,8 +5696,10 @@ aastex.lyx
 <>
 \family default
 ) with the correct information.
- Many of the AASTeX commands and environments can be implemented directly
- in LyX, but some cannot: most noticeably
+ Many of the AAS\SpecialChar TeX
+ commands and environments can be implemented directly in
+ \SpecialChar LyX
+, but some cannot: most noticeably
 \family typewriter
 
 \backslash
@@ -5364,11 +5713,13 @@ altaffiltext
 \family default
 , which should stick out like a sore thumb if you actually just opened the
  template file.
- For commands such as these, the LaTeX code must be entered directly and
- marked as such.
+ For commands such as these, the \SpecialChar LaTeX
+ code must be entered directly and marked
+ as such.
  Such commands are referred to as ERT, or Evil Red Text.
- I tried to minimize the amount of ERT needed in an AASTeX document, but
- there is still more required than any of us would like.
+ I tried to minimize the amount of ERT needed in an AAS\SpecialChar TeX
+ document, but there
+ is still more required than any of us would like.
 \end_layout
 
 \begin_layout Subsection
@@ -5389,10 +5740,11 @@ postprocessing
 \end_layout
 
 \begin_layout Enumerate
-Export your paper as a LaTeX file (
+Export your paper as a \SpecialChar LaTeX
+ file (
 \family sans
-File\SpecialChar \menuseparator
-Export\SpecialChar \menuseparator
+File\SpecialChar menuseparator
+Export\SpecialChar menuseparator
 as LateX
 \family default
 ).
@@ -5404,6 +5756,10 @@ Edit the resulting
 .tex
 \family default
  file with your favorite text editor
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -5452,12 +5808,14 @@ makeatletter
 \backslash
 makeatother
 \family default
- commands, except for any commands you specifically put into the LaTeX preamble
+ commands, except for any commands you specifically put into the \SpecialChar LaTeX
+ preamble
  (which should appear immediately after the
 \begin_inset Quotes eld
 \end_inset
 
-User specified LaTeX commands
+User specified \SpecialChar LaTeX
+ commands
 \begin_inset Quotes erd
 \end_inset
 
@@ -5509,7 +5867,8 @@ reference "cite"
 
 \end_deeper
 \begin_layout Enumerate
-Run the resulting file through LaTeX to make sure it still processes correctly.
+Run the resulting file through \SpecialChar LaTeX
+ to make sure it still processes correctly.
 \end_layout
 
 \begin_layout Enumerate
@@ -5526,15 +5885,17 @@ Comments On Specific Commands
 \end_layout
 
 \begin_layout Standard
-I will not describe the detailed usage of the individual AASTeX commands:
- the AASTeX User Guide (
+I will not describe the detailed usage of the individual AAS\SpecialChar TeX
+ commands: the
+ AAS\SpecialChar TeX
+ User Guide (
 \family typewriter
 aasguide.tex
 \family default
 ) gives a good description of each.
  Thus it's probably easiest for me to go down the list as found in the guide
  and offer comments where necessary.
- So let's begin \SpecialChar \ldots{}
+ So let's begin \SpecialChar ldots
 
 \end_layout
 
@@ -5737,7 +6098,7 @@ Extra Options
 \family default
  box in 
 \family sans
-Layout\SpecialChar \menuseparator
+Layout\SpecialChar menuseparator
 Document
 \family default
 .
@@ -5769,7 +6130,8 @@ The following items work, but require a little more discussion:
 
 \begin_layout Itemize
 These items are reserved for use by the journal editors, but you can put
- them into the LaTeX preamble if you feel compelled to do so: 
+ them into the \SpecialChar LaTeX
+ preamble if you feel compelled to do so: 
 \family typewriter
 
 \backslash
@@ -5803,8 +6165,9 @@ cpright
 \end_layout
 
 \begin_layout Itemize
-These items may be placed in the LaTeX preamble, and are included as blanks
- in the template file: 
+These items may be placed in the \SpecialChar LaTeX
+ preamble, and are included as blanks in
+ the template file: 
 \family typewriter
 
 \backslash
@@ -5832,7 +6195,7 @@ shortauthors
 \backslash
 email
 \family default
- (2.3) -- can only be used
+ (2.3) – can only be used
 \begin_inset Quotes eld
 \end_inset
 
@@ -5851,7 +6214,7 @@ standalone
 \backslash
 and
 \family default
- (2.3) -- will have extra {} after it.
+ (2.3) – will have extra {} after it.
  This should not cause an error.
 \end_layout
 
@@ -5862,7 +6225,7 @@ and
 \backslash
 notetoeditor
 \family default
- (2.6) -- can only be used
+ (2.6) – can only be used
 \begin_inset Quotes eld
 \end_inset
 
@@ -5881,8 +6244,8 @@ standalone
 \backslash
 placetable
 \family default
- (2.8) -- can't insert a cross-reference tag, you must type the tag name
- by hand
+ (2.8) – can't insert a cross-reference tag, you must type the tag name by
+ hand
 \end_layout
 
 \begin_layout Itemize
@@ -5892,7 +6255,7 @@ placetable
 \backslash
 placefigure
 \family default
- (2.8) -- same as for 
+ (2.8) – same as for 
 \family typewriter
 
 \backslash
@@ -5906,7 +6269,7 @@ placetable
 \backslash
 acknowledgements
 \family default
- (2.9) -- will have extra {} after it.
+ (2.9) – will have extra {} after it.
  This should not cause an error.
 \end_layout
 
@@ -5917,7 +6280,7 @@ acknowledgements
 \backslash
 appendix
 \family default
- (2.10) -- will have extra {} after it.
+ (2.10) – will have extra {} after it.
  This should not cause an error.
 \end_layout
 
@@ -5928,8 +6291,9 @@ appendix
 \backslash
 figcaption
 \family default
- (2.13.2) -- you will have to edit the optional argument by hand in the final
- LaTeX file.
+ (2.13.2) – you will have to edit the optional argument by hand in the final
+ \SpecialChar LaTeX
+ file.
 \end_layout
 
 \begin_layout Subsubsection
@@ -6027,7 +6391,8 @@ tableline
 \family default
  (2.14.4, insert it as the first element in the lefthand cell after where
  you want it.
- Don't use any of LyX's rules in the table), 
+ Don't use any of \SpecialChar LyX
+'s rules in the table), 
 \family typewriter
 
 \backslash
@@ -6099,17 +6464,18 @@ Things that cannot be implemented
 \end_layout
 
 \begin_layout Standard
-\SpecialChar \ldots{}
+\SpecialChar ldots
  at least in any meaningful sort of way, so I suggest ignoring them.
  They are the references environment (2.12.3), and the deluxetable environment
  (2.14).
  If you really, really need to use deluxetable, I suggest editing it in
  a separate file with a text editor, then using 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Include File
 \family default
- to include it in your LyX document.
+ to include it in your \SpecialChar LyX
+ document.
  See the
 \family typewriter
 aas_sample.lyx
@@ -6122,19 +6488,27 @@ FAQs, Tips, Tricks, and Other Ruminations
 \end_layout
 
 \begin_layout Subsubsection
-Getting LyX and AASTeX to cooperate
+Getting \SpecialChar LyX
+ and AAS\SpecialChar TeX
+ to cooperate
 \end_layout
 
 \begin_layout Standard
-It can be a bit tricky to get LyX to recognize a new layout and document
- class.
+It can be a bit tricky to get \SpecialChar LyX
+ to recognize a new layout and document class.
  When all else fails, do this:
 \end_layout
 
 \begin_layout Enumerate
-Make certain that LaTeX can find AASTeX.
- Copy sample.tex (and perhaps table.tex) from the AASTeX distribution into
- a directory completely unrelated to LaTeX or AASTeX and run LaTeX on
+Make certain that \SpecialChar LaTeX
+ can find AAS\SpecialChar TeX
+.
+ Copy sample.tex (and perhaps table.tex) from the AAS\SpecialChar TeX
+ distribution into a
+ directory completely unrelated to \SpecialChar LaTeX
+ or AAS\SpecialChar TeX
+ and run \SpecialChar LaTeX
+ on
 \family typewriter
 sample.tex
 \family default
@@ -6160,26 +6534,31 @@ aastex.layout
 \begin_layout Enumerate
 Rerun
 \family sans
-Options\SpecialChar \menuseparator
+Options\SpecialChar menuseparator
 Reconfigure
 \family default
- in LyX, then restart LyX.
+ in \SpecialChar LyX
+, then restart \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Enumerate
 Open a regular new file, not from a template.
- Does AASTeX appear in
+ Does AAS\SpecialChar TeX
+ appear in
 \family sans
-Layout\SpecialChar \menuseparator
-Document\SpecialChar \menuseparator
+Layout\SpecialChar menuseparator
+Document\SpecialChar menuseparator
 Class
 \family default
 ?
 \end_layout
 
 \begin_layout Standard
-If you get a warning from an existing AASTeX document about not being able
- to find the AASTeX layout or a message about
+If you get a warning from an existing AAS\SpecialChar TeX
+ document about not being able
+ to find the AAS\SpecialChar TeX
+ layout or a message about
 \begin_inset Quotes eld
 \end_inset
 
@@ -6191,15 +6570,18 @@ You should not mix title layouts with normal ones
 \end_layout
 
 \begin_layout Subsubsection
-LaTeX error processing a table
+\SpecialChar LaTeX
+ error processing a table
 \end_layout
 
 \begin_layout Standard
-LyX, by default, attempts to center the table caption/title.
- This seems to produce a bad interaction in AASTeX so you should click somewhere
+\SpecialChar LyX
+, by default, attempts to center the table caption/title.
+ This seems to produce a bad interaction in AAS\SpecialChar TeX
+ so you should click somewhere
  in the caption/title, then select
 \family sans
-Layout\SpecialChar \menuseparator
+Layout\SpecialChar menuseparator
 Paragraph
 \family default
 , then set the
@@ -6257,15 +6639,17 @@ citet
 \backslash
 citep
 \family default
- more automatic, but that would require changes to the LyX source code.
+ more automatic, but that would require changes to the \SpecialChar LyX
+ source code.
  For now you can do one of two things: a) enter all your citations using
  the built-in 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Citation Reference
 \family default
  mechanism; at least you can take advantage of the automatic insertions.
- Then edit the exported LaTeX file by hand changing the
+ Then edit the exported \SpecialChar LaTeX
+ file by hand changing the
 \family typewriter
 
 \backslash
@@ -6307,7 +6691,8 @@ e.g.
 citet{key}
 \family default
 .
- Neither choice is pleasant, but until LyX's citation mechanism understands
+ Neither choice is pleasant, but until \SpecialChar LyX
+'s citation mechanism understands
 \family typewriter
 natbib
 \family default
@@ -6331,8 +6716,8 @@ Włączanie plików EPS
 
 \begin_layout Standard
 With all due respect to Chris Biemesderfer and the others who have helped
- to write the AASTeX package, the figure handling mechanism smells really
- foul.
+ to write the AAS\SpecialChar TeX
+ package, the figure handling mechanism smells really foul.
  You can insert the
 \family typewriter
 
@@ -6343,21 +6728,27 @@ plotone
  commands as ERT into a Figure Float box, but I never have much luck getting
  the layout right.
  My advice would be to avoid all EPS inclusions in the manuscript you submit
- to the journal, but then use the standard LyX EPS file inclusion mechanism
+ to the journal, but then use the standard \SpecialChar LyX
+ EPS file inclusion mechanism
  when you want to make your nicer looking preprints.
- LyX will insert a
+ \SpecialChar LyX
+ will insert a
 \family typewriter
 
 \backslash
 usepackage{graphics}
 \family default
- command into the LaTeX preamble and handle the figures in the standard
- LaTeX2e way.
- Anyone who attempts to print your AASTeX 5.0 manuscript must have a LaTeX2e
- installation anyway, so why not take advantage of the infinitely better
- graphics handling mechanism? If they complain about LaTeX2e or the graphics
- package, point out that it appears in the second edition of Lamport (1994),
- so it was time to upgrade six years ago.
+ command into the \SpecialChar LaTeX
+ preamble and handle the figures in the standard \SpecialChar LaTeX2e
+ way.
+ Anyone who attempts to print your AAS\SpecialChar TeX
+ 5.0 manuscript must have a \SpecialChar LaTeX2e
+ installation
+ anyway, so why not take advantage of the infinitely better graphics handling
+ mechanism? If they complain about \SpecialChar LaTeX2e
+ or the graphics package, point out that
+ it appears in the second edition of Lamport (1994), so it was time to upgrade
+ six years ago.
 \end_layout
 
 \begin_layout Subsubsection
@@ -6367,7 +6758,8 @@ Things I could have done, but didn't
 \begin_layout Standard
 There are a few ,,pretty'' things I could have implemented, but chose not
  to.
- For instance, I saw no point in double-spacing the text in the LyX window,
+ For instance, I saw no point in double-spacing the text in the \SpecialChar LyX
+ window,
  even though it is double-spaced in the paper manuscript.
  Also, I chose not to make separate layouts for the preprint and preprint2
  styles.
@@ -6393,10 +6785,11 @@ Final Caveat
 \begin_layout Standard
 To mangle the infamous quote by Donald Knuth about a computer algorithm,
  ,,I have only proved this to be correct, I have not actually tried it''.
- I believe following the above procedures will produce an acceptable AASTeX
+ I believe following the above procedures will produce an acceptable AAS\SpecialChar TeX
+
  document, but as of this update (Jan 25, 2000), I have not yet submitted
  a paper using it.
- Hopefully in the next few months \SpecialChar \ldots{}
+ Hopefully in the next few months \SpecialChar ldots
 
 \end_layout
 
@@ -6448,9 +6841,11 @@ article
 \end_inset
 
  package.
- Most of its features are supported by LyX.
- I have recently used LyX successfully to write an article submitted to
- the 
+ Most of its features are supported by \SpecialChar LyX
+.
+ I have recently used \SpecialChar LyX
+ successfully to write an article submitted to the
+ 
 \emph on
 International Journal of Modern Physics D
 \emph default
@@ -6468,7 +6863,7 @@ As usual, the easiest way to write a paper is to start with a template.
 \bar under
 F
 \bar default
-ile\SpecialChar \menuseparator
+ile\SpecialChar menuseparator
 New from
 \family default
  
@@ -6494,7 +6889,8 @@ ijmpd.lyx
 \end_layout
 
 \begin_layout Enumerate
-LyX won't let you change the font size and the page style of the document,
+\SpecialChar LyX
+ won't let you change the font size and the page style of the document,
  because the ijmpd package does not allow such modifications.
 \end_layout
 
@@ -6507,7 +6903,7 @@ The ijmpd package requires that the language of the document should not
 \bar under
 E
 \bar default
-dit\SpecialChar \menuseparator
+dit\SpecialChar menuseparator
 
 \bar under
 P
@@ -6565,7 +6961,8 @@ Proof
 
 \begin_layout Enumerate
 Appendices may be added to the paper.
- LyX offers a special environment, called 
+ \SpecialChar LyX
+ offers a special environment, called 
 \begin_inset Quotes eld
 \end_inset
 
@@ -6578,20 +6975,23 @@ Appendix
 \end_layout
 
 \begin_layout Enumerate
-The ijmpd package implements table captions quite differently than LyX does.
- As a result, a table created by LyX is printed correctly, but its caption
+The ijmpd package implements table captions quite differently than \SpecialChar LyX
+ does.
+ As a result, a table created by \SpecialChar LyX
+ is printed correctly, but its caption
  is ignored.
  If you need table captions, you should implement the whole table float
  in a 
 \family typewriter
 .tex
 \family default
- file, then include this file to the LyX document (
+ file, then include this file to the \SpecialChar LyX
+ document (
 \family sans
 \bar under
 I
 \bar default
-nsert\SpecialChar \menuseparator
+nsert\SpecialChar menuseparator
 Inclu
 \bar under
 d
@@ -6612,18 +7012,19 @@ Preparing a paper for submission
 \end_layout
 
 \begin_layout Standard
-Before you submit your paper you must export the LyX document as a LaTeX
+Before you submit your paper you must export the \SpecialChar LyX
+ document as a \SpecialChar LaTeX
  file (
 \family sans
 \bar under
 F
 \bar default
-ile\SpecialChar \menuseparator
+ile\SpecialChar menuseparator
 
 \bar under
 E
 \bar default
-xport\SpecialChar \menuseparator
+xport\SpecialChar menuseparator
 
 \bar under
 L
@@ -6660,7 +7061,8 @@ makeatletter
 \backslash
 makeatother
 \family default
- commands, except for any commands you specifically put into the LaTeX preamble.
+ commands, except for any commands you specifically put into the \SpecialChar LaTeX
+ preamble.
 \end_layout
 
 \begin_layout Standard
@@ -6668,7 +7070,8 @@ The modified
 \family typewriter
 .tex
 \family default
- file should be saved and processed through LaTeX as many times as necessary.
+ file should be saved and processed through \SpecialChar LaTeX
+ as many times as necessary.
  You may also want to check the resulting 
 \family typewriter
 .dvi
@@ -6755,7 +7158,8 @@ http://www.wkap.nl/kaphtml.htm/STYLEFILES
 \end_layout
 
 \begin_layout Standard
-LyX obsługuje wiele cech pakietu ale nie wszystkie.
+\SpecialChar LyX
+ obsługuje wiele cech pakietu ale nie wszystkie.
  Mimo to wstawki ERT są potrzebne do redukcji ,,osobliwych'' poleceń pakietu
  (zobacz 
 \begin_inset CommandInset ref
@@ -6780,7 +7184,7 @@ Pisanie artykułów
 Najłatwiejszą drogą do napisania nowego artykułu jest skorzystanie z szablonu.
  Wybierz polecenie z menu 
 \family sans
-Plik\SpecialChar \menuseparator
+Plik\SpecialChar menuseparator
 Nowy z szablonu
 \family default
 , a następnie wybierz plik szablonu 
@@ -6803,18 +7207,20 @@ Przygotowanie artykułu do wysłania
 \end_layout
 
 \begin_layout Standard
-Podobnie jak przy pakiecie AASTeX przed wysyłką artykułu do wydawnictwa,
- artykuł należy przetworzyć, co opisano dalej w kolejnych krokach:
+Podobnie jak przy pakiecie AAS\SpecialChar TeX
+ przed wysyłką artykułu do wydawnictwa, artykuł
+ należy przetworzyć, co opisano dalej w kolejnych krokach:
 \end_layout
 
 \begin_layout Enumerate
-Wyeksportuj artykuł do pliku LaTeX.
+Wyeksportuj artykuł do pliku \SpecialChar LaTeX
+.
  Zrób to przez wybór polecenia z menu 
 \family sans
 \bar under
 P
 \bar default
-lik\SpecialChar \menuseparator
+lik\SpecialChar menuseparator
 
 \family default
  
@@ -6822,7 +7228,7 @@ lik\SpecialChar \menuseparator
 \bar under
 E
 \bar default
-ksportuj\SpecialChar \menuseparator
+ksportuj\SpecialChar menuseparator
 
 \family default
  
@@ -6830,7 +7236,8 @@ ksportuj\SpecialChar \menuseparator
 \bar under
 L
 \bar default
-aTeX
+a\SpecialChar TeX
+
 \family default
 .
  
@@ -6842,6 +7249,10 @@ Wyedytuj uzyskany plik
 .tex
 \family default
  w edytorze tekstowym dokonując następujących zmian:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -6885,7 +7296,8 @@ Przetwórz plik
 \family typewriter
 .tex
 \family default
- przez LaTeX tyle razy ile potrzeba (zwykle do trzech razy).
+ przez \SpecialChar LaTeX
+ tyle razy ile potrzeba (zwykle do trzech razy).
 \end_layout
 
 \begin_layout Enumerate
@@ -6917,7 +7329,8 @@ Pakiet Kluwer posiada następujące ,,osobliwości'':
 \end_layout
 
 \begin_layout Enumerate
-Jest możliwe pisanie wielu artykułów w tym samym pliku LaTeX-a
+Jest możliwe pisanie wielu artykułów w tym samym pliku \SpecialChar LaTeX
+-a
 \begin_inset Foot
 status open
 
@@ -6944,10 +7357,12 @@ begin{article}
 end{article}
 \family default
 .
- Mimo to można to zaimplementować w LyX-ie, ale ja nie dołączam tego, od
- czasu jak to wygląda brzydko i może peszyć nowych użytkowników.
- Dlatego Ty potrzebujesz wpisać te polecenia wprost jako kod LaTeX (jako
- wstawki ERT).
+ Mimo to można to zaimplementować w \SpecialChar LyX
+-ie, ale ja nie dołączam tego, od czasu
+ jak to wygląda brzydko i może peszyć nowych użytkowników.
+ Dlatego Ty potrzebujesz wpisać te polecenia wprost jako kod \SpecialChar LaTeX
+ (jako wstawki
+ ERT).
 \end_layout
 
 \begin_layout Enumerate
@@ -6958,7 +7373,8 @@ Informacje podane na początku artykułu (np.: title, subtitle, author, institut
 \end_inset
 
 środowisku ,,opening''.
- Tego nie zaimplementowano w LyX-ie, tak że Ty musisz umieścić title, subtitle
+ Tego nie zaimplementowano w \SpecialChar LyX
+-ie, tak że Ty musisz umieścić title, subtitle
  itd.
  pomiędzy dwoma wstawkami ERT (
 \family typewriter
@@ -7035,7 +7451,8 @@ Przegląd
 \end_layout
 
 \begin_layout Standard
-LyX-owe klasy dokumentu 
+\SpecialChar LyX
+-owe klasy dokumentu 
 \emph on
 article (koma-script)
 \emph default
@@ -7051,7 +7468,8 @@ book(koma-script)
 \emph on
 letter(koma-script)
 \emph default
- odpowiadają LaTeX-owym klasom odpowiednio 
+ odpowiadają \SpecialChar LaTeX
+-owym klasom odpowiednio 
 \family typewriter
 scrartcl.cls
 \family default
@@ -7121,7 +7539,8 @@ Istnieje duża różnica pomiędzy starymi półgrubymi czcionkami bezszeryfowym
  rodziny cm, a nowymi rodziny ec, szczególnie w wyglądzie tytulariów.
  Dla porównania półgruba czcionka bezszeryfowa rodziny ec wygląda na troszkę
  cieńszą.
- Pakiet LaTeX-a 
+ Pakiet \SpecialChar LaTeX
+-a 
 \family typewriter
 cmsd.sty
 \family default
@@ -7136,9 +7555,10 @@ Walter Schmidta
 
 .
  Numeracja tytułów rozdziałów jest zrobiona tak samo jak numeracja sekcji,
- czyli bez wiersza ,,Rozdział\SpecialChar \ldots{}
+ czyli bez wiersza ,,Rozdział\SpecialChar ldots
 ''.
- Ponadto wygląd tytulariów może być zmieniony za pomocą kilku opcji (w LyX-ie
+ Ponadto wygląd tytulariów może być zmieniony za pomocą kilku opcji (w \SpecialChar LyX
+-ie
  wprowadza się je w polach 
 \family sans
 Opcje Dodatkowe
@@ -7148,7 +7568,7 @@ Opcje Dodatkowe
 \bar under
 U
 \bar default
-kład\SpecialChar \menuseparator
+kład\SpecialChar menuseparator
 
 \bar under
 D
@@ -7168,7 +7588,8 @@ BCOR
 \family sans
 DIV
 \family default
- (w LyX-ie wprowadza się je w polach 
+ (w \SpecialChar LyX
+-ie wprowadza się je w polach 
 \family sans
 Opcje Dodatkowe
 \family default
@@ -7177,7 +7598,7 @@ Opcje Dodatkowe
 \bar under
 U
 \bar default
-kład\SpecialChar \menuseparator
+kład\SpecialChar menuseparator
 
 \bar under
 D
@@ -7191,7 +7612,7 @@ okument
 \bar under
 U
 \bar default
-kład\SpecialChar \menuseparator
+kład\SpecialChar menuseparator
 
 \bar under
 D
@@ -7202,21 +7623,24 @@ okument
 \end_layout
 
 \begin_layout Itemize
-Klasy LaTeX-owe rodziny Koma-Script definiują kilka dodatkowych poleceń.
- Część z nich, które mają sens w LyX-ie są zaimplementowane w odpowiednich
+Klasy \SpecialChar LaTeX
+-owe rodziny Koma-Script definiują kilka dodatkowych poleceń.
+ Część z nich, które mają sens w \SpecialChar LyX
+-ie są zaimplementowane w odpowiednich
  środowiskach.
 \end_layout
 
 \begin_layout Standard
-Szczegółowy opis (w języku niemieckim) LaTeX-owych klas dokumentu rodziny
- Koma-Script można znaleźć w dokumentacji Koma-Script 
+Szczegółowy opis (w języku niemieckim) \SpecialChar LaTeX
+-owych klas dokumentu rodziny Koma-Script
+ można znaleźć w dokumentacji Koma-Script 
 \emph on
 scrguide
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Istnieje angielskie tłumaczenie --
+Istnieje angielskie tłumaczenie –
 \emph on
 screnggu
 \emph default
@@ -7227,7 +7651,8 @@ screnggu
 
 
 \emph default
- Dalsze punkty opisują tylko te aspekty, które są związane z LyX-em.
+ Dalsze punkty opisują tylko te aspekty, które są związane z \SpecialChar LyX
+-em.
 \end_layout
 
 \begin_layout Subsection
@@ -7273,7 +7698,8 @@ report
 \emph on
 book
 \emph default
-, częściowo zmienione z wyłączeniem LyX-owego środowiska 
+, częściowo zmienione z wyłączeniem \SpecialChar LyX
+-owego środowiska 
 \family sans
 List
 \family default
@@ -7380,7 +7806,8 @@ Date
 status open
 
 \begin_layout Plain Layout
-Odpowiednie polecenia LaTeX muszą pojawić się przed poleceniem 
+Odpowiednie polecenia \SpecialChar LaTeX
+ muszą pojawić się przed poleceniem 
 \family typewriter
 
 \backslash
@@ -7611,7 +8038,8 @@ scrlettr.layout
 \emph on
 letter
 \emph default
-, częściowo zmienione z wyłączeniem LyX-owych środowisk 
+, częściowo zmienione z wyłączeniem \SpecialChar LyX
+-owych środowisk 
 \family sans
 List
 \family default
@@ -7621,7 +8049,8 @@ Comment
 \family default
  i 
 \family sans
-LyX
+\SpecialChar LyX
+
 \family default
 -
 \family sans
@@ -7635,7 +8064,8 @@ Labeling
  Ponadto zawiera, w odróżnieniu od standardowej klasy, standardowe środowiska
  
 \family sans
-LaTeX
+\SpecialChar LaTeX
+
 \family default
 , 
 \family sans
@@ -7671,17 +8101,20 @@ end{sloppypar}
 
 \begin_layout Standard
 Wygląd listu złożonego w tej klasie dokumentu może być sterowany za pomocą
- kilku poleceń LaTeX-a (w LyX-ie można je wprowadzić wybierając z menu 
+ kilku poleceń \SpecialChar LaTeX
+-a (w \SpecialChar LyX
+-ie można je wprowadzić wybierając z menu 
 \family sans
 \bar under
 U
 \bar default
-kład\SpecialChar \menuseparator
+kład\SpecialChar menuseparator
 
 \bar under
 P
 \bar default
-reambuła LaTeX
+reambuła \SpecialChar LaTeX
+
 \family default
 )
 \begin_inset Foot
@@ -7751,8 +8184,9 @@ thepage}}
 \end_inset
 
  Dzięki temu autor listu może utworzyć swój własny układ.
- Szczegółowy opis (w języku niemieckim) LaTeX-owych klas dokumentu rodziny
- Koma-Script można znaleźć w dokumentacji Koma-Script 
+ Szczegółowy opis (w języku niemieckim) \SpecialChar LaTeX
+-owych klas dokumentu rodziny Koma-Scrip
+t można znaleźć w dokumentacji Koma-Script 
 \emph on
 scrguide
 \emph default
@@ -8031,7 +8465,8 @@ Address
 \family sans
 Telephone
 \family default
-: numer telefonu nadawcy, pojawia się tylko, gdy jest włączona zmienna LaTeX
+: numer telefonu nadawcy, pojawia się tylko, gdy jest włączona zmienna \SpecialChar LaTeX
+
  
 \family typewriter
 
@@ -8163,7 +8598,8 @@ Date
 \family sans
 Place
 \family default
- nie jest składana, tylko ustawiana jest zmienna LaTeX
+ nie jest składana, tylko ustawiana jest zmienna \SpecialChar LaTeX
+
 \begin_inset ERT
 status collapsed
 
@@ -8233,8 +8669,9 @@ Problemy
 \end_layout
 
 \begin_layout Standard
-Przedstawienie WYSIWYG w LyX-ie dokumentów w klasie Koma-Script powoduje
- kilka problemów.
+Przedstawienie WYSIWYG w \SpecialChar LyX
+-ie dokumentów w klasie Koma-Script powoduje kilka
+ problemów.
 \end_layout
 
 \begin_layout Itemize
@@ -8243,7 +8680,8 @@ Numery rozdziałów środowisk
 Chapter
 \family default
  są wyświetlane w wierszu powyżej tytułu rozdziału.
- Taki przypadek jest spowodowany wewnętrznym przetwarzaniem przez LyX środowiska
+ Taki przypadek jest spowodowany wewnętrznym przetwarzaniem przez \SpecialChar LyX
+ środowiska
  
 \family sans
 Counter_Chapter
@@ -8260,8 +8698,10 @@ Addchap
 \family sans
 Addsec
 \family default
- są wstawione tylko do ,,prawdziwego'' LaTeX-owego spisu treści, a nie są
- wyświetlane LyX-owym spisie treści (
+ są wstawione tylko do ,,prawdziwego'' \SpecialChar LaTeX
+-owego spisu treści, a nie są wyświetlane
+ \SpecialChar LyX
+-owym spisie treści (
 \family sans
 \bar under
 N
@@ -8278,13 +8718,14 @@ letter
 \emph default
  wyświetlany jest jako odstęp, a nie wcięcie.
  To jest standardowe zachowanie, do tego nie potrzeba żadnego polecenia
- LaTeX-a.
+ \SpecialChar LaTeX
+-a.
  Ale w oknie 
 \family sans
 \bar under
 U
 \bar default
-kład\SpecialChar \menuseparator
+kład\SpecialChar menuseparator
 
 \bar under
 D
@@ -8306,7 +8747,8 @@ O
 \bar default
 dstęp
 \family default
- daje efekt po użyciu odpowiedniego polecenia LaTeX-a wstawionego do dokumentu
+ daje efekt po użyciu odpowiedniego polecenia \SpecialChar LaTeX
+-a wstawionego do dokumentu
  do wytworzenia odstępu.
 \end_layout
 
@@ -8341,7 +8783,8 @@ http://www.springer.de/author/tex/help-journals.html
 
 \end_inset
 
-, skąd powinieneś móc pobrać pliki klasy (tak, oczywiście teraz dla LaTeX2e!).
+, skąd powinieneś móc pobrać pliki klasy (tak, oczywiście teraz dla \SpecialChar LaTeX2e
+!).
  To jest modularny system: wspólne części dla wszystkich pism są zaimplementowan
 e w pliku 
 \family typewriter
@@ -8377,7 +8820,8 @@ svjog.layout
 \end_layout
 
 \begin_layout Standard
-Klasa dokumentu LyX-a była testowana tylko dla pisma 
+Klasa dokumentu \SpecialChar LyX
+-a była testowana tylko dla pisma 
 \emph on
 Journal of Geodesy
 \emph default
@@ -8390,15 +8834,20 @@ svjour
 \family typewriter
 svjog
 \family default
- są zawarte w standardowej dystrybucji LyX-a.
- Zainstaluj pobraną z serwera wydawnictwa Springer odpowiednią klasę LaTeX-ową
- w odpowiednim katalogu TeX-a, odśwież bazę pakietów TeX-a (w teTeX-u uruchom
- polecenie 
+ są zawarte w standardowej dystrybucji \SpecialChar LyX
+-a.
+ Zainstaluj pobraną z serwera wydawnictwa Springer odpowiednią klasę \SpecialChar LaTeX
+-ową
+ w odpowiednim katalogu \SpecialChar TeX
+-a, odśwież bazę pakietów \SpecialChar TeX
+-a (w te\SpecialChar TeX
+-u uruchom polecenie
+ 
 \family typewriter
 texhash
 \family default
-, jako root jeśli jest to niezbędne), zrekonfiguruj LyX-a i powinno już
- działać.
+, jako root jeśli jest to niezbędne), zrekonfiguruj \SpecialChar LyX
+-a i powinno już działać.
 \end_layout
 
 \begin_layout Subsection
@@ -8406,13 +8855,13 @@ Nowe style
 \end_layout
 
 \begin_layout Standard
-Duża liczba stylów typu theorem -- 
+Duża liczba stylów typu theorem – 
 \family sans
 Claim, Conjecture,
 \family default
  
 \family sans
-\SpecialChar \ldots{}
+\SpecialChar ldots
 Theorem
 \family default
 .
@@ -8421,7 +8870,8 @@ Theorem
 \begin_layout Standard
 
 \family sans
-Headnote, Dedication, Subtitle, Running_LaTeX_Title, Author_Running, Institute,
+Headnote, Dedication, Subtitle, Running_\SpecialChar LaTeX
+_Title, Author_Running, Institute,
  Mail, Offprints, Keywords, Acknowledgements, Acknowledgement
 \family default
 .
@@ -8441,7 +8891,7 @@ Journal of Geodesy
 \family typewriter
 svjog.layout
 \family default
- -- Martin Vermeer
+ – Martin Vermeer
 \end_layout
 
 \begin_layout Itemize
@@ -8453,11 +8903,11 @@ Probability Theory and Related Fields
 \family typewriter
 svprobth.layout
 \family default
- -- Jean-Marc Lasgouttes
+ – Jean-Marc Lasgouttes
 \end_layout
 
 \begin_layout Standard
-Dodaj własne -- to nie jest trudne!
+Dodaj własne – to nie jest trudne!
 \end_layout
 
 \begin_layout Subsection
@@ -8469,14 +8919,16 @@ Te pliki bazują częściowo na starszym pliku układu
 \family typewriter
 ejour2.layout
 \family default
-, który bazował na starym stylu LaTeX 2.09 z wydawnictwa Springer.
+, który bazował na starym stylu \SpecialChar LaTeX
+ 2.09 z wydawnictwa Springer.
  Wszystko to i układ 
 \family typewriter
 ejour2
 \family default
  teraz nie działa.
  Jean-Marc Lasgouttes bardzo pomógł mi znaleźć drogę implementacji układu
- w LyX-ie.
+ w \SpecialChar LyX
+-ie.
 \end_layout
 
 \begin_layout Subsection
@@ -8547,8 +8999,10 @@ Paragraph
 Paragraph*
 \family default
 .
- They are still called this in the LyX GUI, though their LaTeX equivalents
- in the AGU classes are 
+ They are still called this in the \SpecialChar LyX
+ GUI, though their \SpecialChar LaTeX
+ equivalents in the
+ AGU classes are 
 \family sans
 Subsubsubsection
 \family default
@@ -8639,7 +9093,7 @@ Journal of Geophysical Research
 \family typewriter
 jgrga.layout
 \family default
- -- Martin Vermeer
+ – Martin Vermeer
 \end_layout
 
 \begin_layout Standard
@@ -8720,7 +9174,8 @@ Slides [aka
 \noun on
 Sli
 \noun default
-TeX]
+\SpecialChar TeX
+]
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:slitex"
@@ -8741,7 +9196,8 @@ Wprowadzenie
 \end_layout
 
 \begin_layout Standard
-W tej sekcji opisujemy jak użyć LyX-a do przygotowania slajdów do rzutników.
+W tej sekcji opisujemy jak użyć \SpecialChar LyX
+-a do przygotowania slajdów do rzutników.
  Istnieją dwie klasy dokumentów, które można do tego celu zastosować: domyślnie
  
 \family sans
@@ -8751,7 +9207,8 @@ Slide
 \family sans
 Foil
 \family default
-TeX.
+\SpecialChar TeX
+.
  W tej sekcji opisano pierwszą z nich.
 \end_layout
 
@@ -8791,7 +9248,8 @@ tylko
 \begin_layout Standard
 Jeśli szukasz dokumentacji do 
 \family sans
-,,slides (FoilTeX)
+,,slides (Foil\SpecialChar TeX
+)
 \family default
 '', zajrzyj do sekcji
 \begin_inset space ~
@@ -8811,7 +9269,8 @@ foils
 \family default
  [
 \family sans
-,,slides (FoilTeX)
+,,slides (Foil\SpecialChar TeX
+)
 \family default
 ''] jest aktualnie trochę lepsza niż domyślnie klasa 
 \family sans
@@ -8822,7 +9281,7 @@ slides
 status collapsed
 
 \begin_layout Plain Layout
-\SpecialChar \ldots{}
+\SpecialChar ldots
  lub tak powtarzam za jej adwokatami.
  Nigdy jej nie używałem i nie wiem czy to jest prawda czy nie.
 \end_layout
@@ -8833,13 +9292,15 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Ta klasa jest ulepszeniem LaTeX2e starego pakietu
+Ta klasa jest ulepszeniem \SpecialChar LaTeX2e
+ starego pakietu
 \noun on
  Sli
 \noun default
-TeX package.
- Każda dystrybucja LaTeX2e zawiera tę klasę [którą, od teraz, będę nazywał
- 
+\SpecialChar TeX
+ package.
+ Każda dystrybucja \SpecialChar LaTeX2e
+ zawiera tę klasę [którą, od teraz, będę nazywał 
 \family sans
 ,,slides
 \family default
@@ -8922,6 +9383,10 @@ agestyle
 \family default
  zachowuje się troszkę inaczej dla tej klasy.
  Dostępne są nastepujące style:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -8983,6 +9448,10 @@ kowe
 Styl dokument
 \family default
 .
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -9021,7 +9490,7 @@ slides
 \bar under
 P
 \bar default
-lik\SpecialChar \menuseparator
+lik\SpecialChar menuseparator
 Nowy z
 \begin_inset space ~
 \end_inset
@@ -9116,7 +9585,8 @@ List
 \begin_layout Itemize
 
 \family sans
-LaTeX
+\SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Itemize
@@ -9146,7 +9616,8 @@ Caption
 \begin_layout Itemize
 
 \family sans
-LyX-Code
+\SpecialChar LyX
+-Code
 \end_layout
 
 \begin_layout Itemize
@@ -9223,16 +9694,19 @@ feature
 \begin_inset Quotes erd
 \end_inset
 
- in LyX.
- You see, LyX doesn't permit you to nest any other paragraph environment
- into an empty environment.
+ in \SpecialChar LyX
+.
+ You see, \SpecialChar LyX
+ doesn't permit you to nest any other paragraph environment into
+ an empty environment.
  Now, that's fine and dandy, but it means that you wouldn't be able to start
  a slide with anything except plain text.
  To deal with this, I've performed a little
 \begin_inset Quotes eld
 \end_inset
 
-LaTeX magic.
+\SpecialChar LaTeX
+ magic.
 \begin_inset Quotes erd
 \end_inset
 
@@ -9252,9 +9726,10 @@ name "sec:slideQuirk"
 
 \begin_layout Standard
 All five of the new paragraph environments are somewhat quirky due to inherent
- limitiations in the current version of LyX.
- As I just mentioned, LyX forbids environments that begin with another environme
-nt.
+ limitiations in the current version of \SpecialChar LyX
+.
+ As I just mentioned, \SpecialChar LyX
+ forbids environments that begin with another environment.
  To get around this, the 
 \family sans
 Slide
@@ -9334,8 +9809,8 @@ InvisibleText
 VisibleText
 \family default
 , is a rather long-ish label.
- The text following this label --- ordinarily the contents of the paragraph
- environment --- is utterly irrelevant for
+ The text following this label — ordinarily the contents of the paragraph
+ environment — is utterly irrelevant for
 \family sans
 Slide
 \family default
@@ -9356,7 +9831,8 @@ InvisibleText
 VisibleText
 \family default
 .
- LyX completely ignores it.
+ \SpecialChar LyX
+ completely ignores it.
  In fact, you can leave these five environments completely empty.
 \end_layout
 
@@ -9380,8 +9856,10 @@ Return
 
 \begin_layout Standard
 If, on the other hand, you don't want to enter in any descriptive text,
- you'll hit another LyX quirk.
- LyX, like nature, abhors a vacuum, and will not let you start a new paragraph
+ you'll hit another \SpecialChar LyX
+ quirk.
+ \SpecialChar LyX
+, like nature, abhors a vacuum, and will not let you start a new paragraph
  environment until you put something in the old one.
  So, do this:
 \end_layout
@@ -9451,7 +9929,8 @@ VisibleText
 \end_layout
 
 \begin_layout Standard
-Some future version of LyX will, hopefully, resolve this quirkiness\SpecialChar \ldots{}
+Some future version of \SpecialChar LyX
+ will, hopefully, resolve this quirkiness\SpecialChar ldots
 
 \end_layout
 
@@ -9488,7 +9967,8 @@ slides
 \emph on
 is
 \emph default
- the LyX philosophy.]
+ the \SpecialChar LyX
+ philosophy.]
 \end_layout
 
 \begin_layout Standard
@@ -9507,7 +9987,8 @@ reference "sec:slideQuirk"
 
 \end_inset
 
-] tells LyX to begin a new slide [duh].
+] tells \SpecialChar LyX
+ to begin a new slide [duh].
  The label for this environment/
 \begin_inset Quotes erd
 \end_inset
@@ -9538,7 +10019,8 @@ NewSlide:
 \end_layout
 
 \begin_layout Standard
-Slides are probably the only time you'll need to forcibly end pages in LyX.
+Slides are probably the only time you'll need to forcibly end pages in \SpecialChar LyX
+.
  In fact, you'll want to, once you finish entering the contents of one slide.
  If you've entered more text than can physically fit on a slide, the extra
  overflows onto a new slide.
@@ -9780,7 +10262,8 @@ Overlay
 Slide
 \family default
 .
- Indeed, the LyX 
+ Indeed, the \SpecialChar LyX
+ 
 \family sans
 slides
 \family default
@@ -10023,13 +10506,15 @@ Overlay
 \end_layout
 
 \begin_layout Standard
-There's one problem with the way I've designed the LyX
+There's one problem with the way I've designed the \SpecialChar LyX
+
 \family sans
 slides
 \family default
  class: you can't make text in the middle of a paragraph invisible, nor
  make text in the middle of an invisible paragraph visible again.
- To accomplish this feat, you'll need to use some inlined LaTeX codes.
+ To accomplish this feat, you'll need to use some inlined \SpecialChar LaTeX
+ codes.
 \begin_inset Foot
 status collapsed
 
@@ -10042,7 +10527,7 @@ The commands of interest are:
 \family typewriter
 {
 \backslash
-invisible \SpecialChar \ldots{}
+invisible \SpecialChar ldots
  }
 \end_layout
 
@@ -10051,13 +10536,14 @@ invisible \SpecialChar \ldots{}
 \family typewriter
 {
 \backslash
-visible \SpecialChar \ldots{}
+visible \SpecialChar ldots
  }
 \end_layout
 
 \begin_layout Plain Layout
-\SpecialChar \ldots{}
-and need to be marked as TeX.
+\SpecialChar ldots
+and need to be marked as \SpecialChar TeX
+.
  The text whose
 \begin_inset Quotes eld
 \end_inset
@@ -10079,8 +10565,8 @@ invisible
 visible
 \family default
  command].
- If you don't know how to mark text as TeX, see the apprpriate section of
- the
+ If you don't know how to mark text as \SpecialChar TeX
+, see the apprpriate section of the
 \emph on
 User's Guide
 \emph default
@@ -10129,7 +10615,8 @@ parent
 Slide
 \family default
 .
- Here, too, the LyX
+ Here, too, the \SpecialChar LyX
+
 \family sans
 slides
 \family default
@@ -10244,7 +10731,8 @@ Slide
 \family default
 .
  In the case of the latter, you might want to make use of time markers.
- Currently, the LyX
+ Currently, the \SpecialChar LyX
+
 \family sans
 slides
 \family default
@@ -10260,8 +10748,10 @@ native
 \noun on
 Sli
 \noun default
-TeX feature.
- So, you'll have to resort to using the LaTeX codes.
+\SpecialChar TeX
+ feature.
+ So, you'll have to resort to using the \SpecialChar LaTeX
+ codes.
 \end_layout
 
 \begin_layout Standard
@@ -10295,7 +10785,8 @@ reference "sec:slidesetup"
 Note
 \family default
  you generate.
- To set what appears in the time marker, you use the LaTeX commands
+ To set what appears in the time marker, you use the \SpecialChar LaTeX
+ commands
 \begin_inset Quotes eld
 \end_inset
 
@@ -10396,7 +10887,8 @@ Slide
 \end_layout
 
 \begin_layout Standard
-Luckily, there are two LaTeX commands that allow you to select what to print
+Luckily, there are two \SpecialChar LaTeX
+ commands that allow you to select what to print
  out.
  Both must be placed into the preamble of your document.
  The command
@@ -10541,7 +11033,8 @@ onlynotes{}
 \end_inset
 
  commands.
- See a good LaTeX book for details.
+ See a good \SpecialChar LaTeX
+ book for details.
 \end_layout
 
 \begin_layout Subsection
@@ -10565,7 +11058,7 @@ slides.lyx
 \bar under
 P
 \bar default
-lik\SpecialChar \menuseparator
+lik\SpecialChar menuseparator
 Nowy z
 \family default
  
@@ -10580,11 +11073,11 @@ zablonu
 \family sans
 Slide
 \family default
- -- 
+ – 
 \family sans
 Overlay
 \family default
- -- 
+ – 
 \family sans
 Note
 \family default
@@ -10646,15 +11139,21 @@ notes}
 \end_layout
 
 \begin_layout Standard
-I ostatnia rzecz: utworzyłem tę klasę LyX-a do obsługi klasy LaTeX2e ,,
+I ostatnia rzecz: utworzyłem tę klasę \SpecialChar LyX
+-a do obsługi klasy \SpecialChar LaTeX2e
+ ,,
 \noun on
 Sli
 \noun default
-TeX emulation'', one of the built-in LaTeX2e classes.
- Neither I nor the rest of the LyX Team endorse or oppose the use of this
- built-in slide class.
+\SpecialChar TeX
+ emulation'', one of the built-in \SpecialChar LaTeX2e
+ classes.
+ Neither I nor the rest of the \SpecialChar LyX
+ Team endorse or oppose the use of this built-in
+ slide class.
  It's here if you want it or need it.
- Istnieją inne klasy LaTeX2e do tworzenia prezentacji, takie jak: 
+ Istnieją inne klasy \SpecialChar LaTeX2e
+ do tworzenia prezentacji, takie jak: 
 \family sans
 Foils
 \family default
@@ -10673,8 +11172,10 @@ reference "sec:foiltex"
 \family typewriter
 seminar
 \family default
-'' [znajdujący się w wielu dystrybucjach TeX-a].
- Ten ostatni nie jest jeszcze obsługiwany przez LyX-a
+'' [znajdujący się w wielu dystrybucjach \SpecialChar TeX
+-a].
+ Ten ostatni nie jest jeszcze obsługiwany przez \SpecialChar LyX
+-a
 \begin_inset Foot
 status collapsed
 
@@ -10698,7 +11199,8 @@ Foils [aka
 Foil
 \family default
 \noun on
-TeX
+\SpecialChar TeX
+
 \noun default
 ]
 \begin_inset CommandInset label
@@ -10721,7 +11223,8 @@ Wprowadzenie
 \end_layout
 
 \begin_layout Standard
-W tej sekcji opisujemy jak użyć LyX-a do przygotowania slajdów do rzutników.
+W tej sekcji opisujemy jak użyć \SpecialChar LyX
+-a do przygotowania slajdów do rzutników.
  Istnieją dwie klasy dokumentów, które można do tego celu zastosować: domyślnie
  
 \family sans
@@ -10731,7 +11234,8 @@ Slide
 \family sans
 Foil
 \family default
-TeX.
+\SpecialChar TeX
+.
  W tej sekcji opisano tę drugą klasę.
 \end_layout
 
@@ -10756,7 +11260,8 @@ tylko
 \emph default
  klasę 
 \family sans
-,,slides (FoilTeX)
+,,slides (Foil\SpecialChar TeX
+)
 \family default
 ''.
 \end_layout
@@ -10791,7 +11296,8 @@ foils
 \family default
  [,,
 \family sans
-slides (FoilTeX)
+slides (Foil\SpecialChar TeX
+)
 \family default
 ''], to prawdopodobnie musisz użyć domyślnej klasy 
 \family sans
@@ -10807,11 +11313,13 @@ Klasa
 \family sans
 foils
 \family default
- jest zaprojektowana do użycia z wersją 2.1 LaTeX-owej klasy 
+ jest zaprojektowana do użycia z wersją 2.1 \SpecialChar LaTeX
+-owej klasy 
 \family sans
 foils.cls
 \family default
-, która jest teraz integralną częścią LaTeX2e.
+, która jest teraz integralną częścią \SpecialChar LaTeX2e
+.
 \end_layout
 
 \begin_layout Subsection
@@ -10821,7 +11329,8 @@ Zaczynamy
 \begin_layout Standard
 Oczywiście, aby użyć tej klasy dokumentu, potrzebujesz wybrać klasę 
 \family sans
-,,slides (FoilTeX)
+,,slides (Foil\SpecialChar TeX
+)
 \family default
 '' z listy 
 \family sans
@@ -10876,8 +11385,9 @@ bezszeryfowa
 \family sans
 Foil
 \family default
-TeX obsługuje formaty papieru A4 i Letter, a także specjalny rozmiar do
- pracy z 35mm slajdami.
+\SpecialChar TeX
+ obsługuje formaty papieru A4 i Letter, a także specjalny rozmiar do pracy
+ z 35mm slajdami.
  Nie obsługuje formatów: A5, B5, legal i executive.
 \end_layout
 
@@ -10903,7 +11413,8 @@ agestyle
 \family sans
 Foil
 \family default
-TeX dostarcza rozszerzone możliwości nagłówków i stopek włączają w to logo
+\SpecialChar TeX
+ dostarcza rozszerzone możliwości nagłówków i stopek włączają w to logo
  użytkownika.
  Zobacz sekcję
 \begin_inset space ~
@@ -10927,6 +11438,10 @@ zawsze
 \emph default
  logo jest wycentrowane u dołu strony (jeśli je zdefiniowano).
  Możliwe do wyboru style strony:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -10978,11 +11493,13 @@ fancyheadings
 \family sans
 Foil
 \family default
-TeX nie jest polecane przez autorów pakietu 
+\SpecialChar TeX
+ nie jest polecane przez autorów pakietu 
 \family sans
 Foil
 \family default
-TeX z powodu kilku możliwych rozjechań się układu strony.
+\SpecialChar TeX
+ z powodu kilku możliwych rozjechań się układu strony.
 \end_layout
 
 \end_deeper
@@ -11046,7 +11563,8 @@ status collapsed
 \begin_layout Plain Layout
 Przyp.
  tłum.
- Bez tej opcji możesz korzystać wprost z pdfLaTeX-a
+ Bez tej opcji możesz korzystać wprost z pdf\SpecialChar LaTeX
+-a
 \end_layout
 
 \end_inset
@@ -11056,7 +11574,8 @@ Przyp.
 \family sans
 Foil
 \family default
-TeX-owi aby użył jako sterownika programu dvips do obrotu tych stron, które
+\SpecialChar TeX
+-owi aby użył jako sterownika programu dvips do obrotu tych stron, które
  ustawiono jako poziome,
 \end_layout
 
@@ -11113,7 +11632,9 @@ foils
 \family sans
 Foil
 \family default
-TeX a także kilka dodanych przez LyX-a.
+\SpecialChar TeX
+ a także kilka dodanych przez \SpecialChar LyX
+-a.
  Poniżej podano standardowe środowiska występujące również w innych klasach:
 \end_layout
 
@@ -11166,13 +11687,15 @@ List
 \begin_layout Itemize
 
 \family sans
-LaTeX
+\SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-LyX-Code
+\SpecialChar LyX
+-Code
 \end_layout
 
 \begin_layout Itemize
@@ -11271,7 +11794,8 @@ Następne są główne środowiska niezależnie od środowisk strukturyzujących
 \family sans
 Foil
 \family default
-TeX dostarcza specyficznych poleceń rozpoczynających nową folię, są to:
+\SpecialChar TeX
+ dostarcza specyficznych poleceń rozpoczynających nową folię, są to:
 \end_layout
 
 \begin_layout Itemize
@@ -11287,7 +11811,8 @@ Rotatefoilhead
 \end_layout
 
 \begin_layout Standard
-LyX dostarcza także lekko zmodyfikowane wersje powyższych środowisk o nazwach:
+\SpecialChar LyX
+ dostarcza także lekko zmodyfikowane wersje powyższych środowisk o nazwach:
 \end_layout
 
 \begin_layout Itemize
@@ -11312,7 +11837,8 @@ Folie są często używane do prezentacji pomysłów lub nowych teorii i także
 \family sans
 Foil
 \family default
-TeX dostarcza szeroki wachlarz narzędzi do ich prezentacji:
+\SpecialChar TeX
+ dostarcza szeroki wachlarz narzędzi do ich prezentacji:
 \end_layout
 
 \begin_layout Standard
@@ -11415,7 +11941,8 @@ end{multicols}
 
 \begin_layout Standard
 Wersje z gwiazdką są środowiskami nienumerowanymi, a bez gwiazdki są numerowane.
- Są jeszcze dwa środowiska list dodane przez LyX i są to:
+ Są jeszcze dwa środowiska list dodane przez \SpecialChar LyX
+ i są to:
 \end_layout
 
 \begin_layout Itemize
@@ -11435,7 +11962,9 @@ Jest jeszcze kilka poleceń
 \family sans
 Foil
 \family default
-TeX-a, które nie są obsługiwane przez LyX.
+\SpecialChar TeX
+-a, które nie są obsługiwane przez \SpecialChar LyX
+.
  Wspomnimy o nich i ich przeznaczeniu w sekcji
 \begin_inset space ~
 \end_inset
@@ -11466,12 +11995,12 @@ Foils.lyx
 \bar under
 P
 \bar default
-lik\SpecialChar \menuseparator
+lik\SpecialChar menuseparator
 
 \bar under
 O
 \bar default
-twórz\SpecialChar \ldots{}
+twórz\SpecialChar ldots
 
 \family default
  i naciśnij przycisk 
@@ -11511,8 +12040,8 @@ foils
 \family sans
 Date
 \family default
-, to LaTeX w zastępstwie wstawi bieżącą datę (aktualizowaną przy każdym
- podglądzie).
+, to \SpecialChar LaTeX
+ w zastępstwie wstawi bieżącą datę (aktualizowaną przy każdym podglądzie).
 \end_layout
 
 \begin_layout Subsubsection
@@ -11569,7 +12098,8 @@ Theorems, Lemmas, Proofs i więcej
 \end_layout
 
 \begin_layout Standard
-Z powodu małego błędu w LyX-ie nie można umieścić dwóch środowisk tego samego
+Z powodu małego błędu w \SpecialChar LyX
+-ie nie można umieścić dwóch środowisk tego samego
  typu bezpośrednio jedno po drugim.
  Musza one być czymkolwiek rozdzielone.
  Jeśli spróbujesz , będziesz mógł rozciągnąć poprzednie środowisko, tak
@@ -11577,16 +12107,18 @@ Z powodu małego błędu w LyX-ie nie można umieścić dwóch środowisk tego s
  A jak rozwiązać ten problem? Najprostszym rozwiązaniem jest wstawienie
  tekstu pomiędzy dwa środowiska lub wstawienie wstawki 
 \family sans
-LaTeX
+\SpecialChar LaTeX
+
 \family default
  pomiędzy te środowiska zawierającej znak komentarza ,,
 \family typewriter
 %
 \family default
 ''.
- To wymusi na LyX-ie utworzenie dwóch oddzielnych środowisk i da poprawny
- wynik.
- Przykład jest zawarty w dostarczonym pliku w dystrybucji LyX-a.
+ To wymusi na \SpecialChar LyX
+-ie utworzenie dwóch oddzielnych środowisk i da poprawny wynik.
+ Przykład jest zawarty w dostarczonym pliku w dystrybucji \SpecialChar LyX
+-a.
  pamiętaj, problem pojawia się tylko jeśli próbujesz umieścić dwa środowiska
  takie jak Theorem bezpośrednio jedno za drugim.
 \end_layout
@@ -11653,8 +12185,9 @@ Rysunki i Tabele
 \family sans
 Foil
 \family default
-TeX redefiniuje wstawki tabel i rysunków tak, aby pojawiły się dokładnie
- w miejscu ich wystąpienia w tekście.
+\SpecialChar TeX
+ redefiniuje wstawki tabel i rysunków tak, aby pojawiły się dokładnie w
+ miejscu ich wystąpienia w tekście.
  W rzeczywistości zmiany pozycji wstawki są ignorowane.
 \end_layout
 
@@ -11725,7 +12258,8 @@ usepackage{graphics}
 
 \end_inset
 
- logo graficznego do folii, a domyślnie wpisuje ,,--Typeset by FoilTeX--''.
+ logo graficznego do folii, a domyślnie wpisuje ,,–Typeset by Foil\SpecialChar TeX
+–''.
  Drugie polecenie pozwala na wprowadzenie klasyfikacji dostępności, np.
  
 \family typewriter
@@ -11769,7 +12303,8 @@ Nieobsługiwane funkcje
 \family sans
 Foil
 \family default
-TeX-a
+\SpecialChar TeX
+-a
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:unsuppfoils"
@@ -11782,11 +12317,13 @@ name "sec:unsuppfoils"
 \begin_layout Standard
 Wszystkie polecenia wyjaśnione poniżej należy wstawiać w środowisku 
 \family sans
-LaTeX
+\SpecialChar LaTeX
+
 \family default
  lub jako 
 \family sans
-TeX
+\SpecialChar TeX
+
 \family default
  wewnątrz innych środowisk.
 \end_layout
@@ -12042,7 +12579,7 @@ wewnątrz
 \emph default
  środowiska listy, wtedy wszystkie odstępy pionowe pomiędzy elementami listy
  zostaną usunięte.
- Uwaga -- to jest polecenie, a nie długość i nie wymaga 
+ Uwaga – to jest polecenie, a nie długość i nie wymaga 
 \family typewriter
 
 \backslash
@@ -12456,7 +12993,8 @@ M-z p
 
 \family default
 Instrukcje dla mówcy.
- Nawiasy ,,()'' są wstawiane automatycznie i wyświetlane są tylko w LyX-ie,
+ Nawiasy ,,()'' są wstawiane automatycznie i wyświetlane są tylko w \SpecialChar LyX
+-ie,
  ale zawsze będa drukowane.
 \end_layout
 
@@ -12550,29 +13088,29 @@ M-z r
 \end_layout
 
 \begin_layout Itemize
-(O.S) --- off screen
+(O.S) — off screen
 \end_layout
 
 \begin_layout Itemize
-(V.0) --- voice over
+(V.0) — voice over
 \end_layout
 
 \begin_layout Itemize
 b.g.
- --- tło
+ — tło
 \end_layout
 
 \begin_layout Itemize
 C.U.
- --- close-up
+ — close-up
 \end_layout
 
 \begin_layout Itemize
-PAN --- przesunięcie kamery
+PAN — przesunięcie kamery
 \end_layout
 
 \begin_layout Itemize
-INSERT --- cut to close-up of
+INSERT — cut to close-up of
 \end_layout
 
 \begin_layout Section
@@ -12764,7 +13302,8 @@ M-z p
 
 \family default
 Instrukcje dla mówcy.
- Nawiasy ,,()'' są wstawiane automatycznie, ale wyświetlane są tylko w LyX-ie,
+ Nawiasy ,,()'' są wstawiane automatycznie, ale wyświetlane są tylko w \SpecialChar LyX
+-ie,
  ale zawsze będa drukowane.
  To środowisko jest używane tylko wewnątrz środowiska 
 \family sans
@@ -12840,7 +13379,8 @@ Hello there.
 \end_layout
 
 \begin_layout Section
-RevTeX4
+Rev\SpecialChar TeX
+4
 \end_layout
 
 \begin_layout Standard
@@ -12858,23 +13398,32 @@ Revtex
 
 4
 \family default
- współpracuje z klasą RevTeX 4.0 (wydanie 
+ współpracuje z klasą Rev\SpecialChar TeX
+ 4.0 (wydanie 
 \begin_inset Formula $\beta$
 \end_inset
 
  z maja 1999 roku) American Physical Society.
- LyX ma klasę dokumentu 
+ \SpecialChar LyX
+ ma klasę dokumentu 
 \family sans
 Revtex
 \family default
-, która współpracuje z RevTeX 3.1.
- Jednak wersja 3.1 jest generalnie przestarzała jako współpracująca z LaTeX2.09,
- co oznacza, że współpraca z LyX-em nie jest najlepsza., ponieważ LyX wymaga
- LaTeX2e.
- Since RevTeX 4.0 has been designed to work much more cleanly with LaTeX2e,
- LyX with 
+, która współpracuje z Rev\SpecialChar TeX
+ 3.1.
+ Jednak wersja 3.1 jest generalnie przestarzała jako współpracująca z \SpecialChar LaTeX
+2.09,
+ co oznacza, że współpraca z \SpecialChar LyX
+-em nie jest najlepsza., ponieważ \SpecialChar LyX
+ wymaga \SpecialChar LaTeX2e
+.
+ Since Rev\SpecialChar TeX
+ 4.0 has been designed to work much more cleanly with \SpecialChar LaTeX2e
+, \SpecialChar LyX
+ with 
 \family sans
-RevTeX
+Rev\SpecialChar TeX
+
 \begin_inset space ~
 \end_inset
 
@@ -12888,8 +13437,10 @@ These documents are supposed to be used in
 \emph on
 addition
 \emph default
- to the RevTeX 4.0 documents, so we don't describe any of the special RevTeX
- macros, and assume you'll know what to put in the preamble if necessary.
+ to the Rev\SpecialChar TeX
+ 4.0 documents, so we don't describe any of the special Rev\SpecialChar TeX
+ macros,
+ and assume you'll know what to put in the preamble if necessary.
 \end_layout
 
 \begin_layout Subsection
@@ -12897,9 +13448,11 @@ Instalacja
 \end_layout
 
 \begin_layout Standard
-All you need to do is install RevTeX 4, as described in the package's README
+All you need to do is install Rev\SpecialChar TeX
+ 4, as described in the package's README
  file.
- the package can be found atThe RevTeX 4 Web Site 
+ the package can be found atThe Rev\SpecialChar TeX
+ 4 Web Site 
 \begin_inset Flex URL
 status collapsed
 
@@ -12911,15 +13464,20 @@ http://publish.aps.org/revtex4/
 \end_inset
 
 .
- Install it somewhere that LaTeX can see it.
- Test it by trying to LaTeX a short RevTeX 4 document in some random directory
- (i.e., not the directory where you installed the class file.) Then, if you
- reconfigure LyX, it will find the class file and let you use the RevTeX4
- textclass.
+ Install it somewhere that \SpecialChar LaTeX
+ can see it.
+ Test it by trying to \SpecialChar LaTeX
+ a short Rev\SpecialChar TeX
+ 4 document in some random directory (i.e.,
+ not the directory where you installed the class file.) Then, if you reconfigure
+ \SpecialChar LyX
+, it will find the class file and let you use the Rev\SpecialChar TeX
+4 textclass.
 \end_layout
 
 \begin_layout Standard
-Probably the easiest way to get started is either to import a RevTeX 4 document
+Probably the easiest way to get started is either to import a Rev\SpecialChar TeX
+ 4 document
  using
 \family typewriter
  tex2lyx
@@ -12959,7 +13517,8 @@ tra Options
 Document Layout
 \family default
  popup, as usual.
- Remember that in RevTeX, at least one optional argument is required!
+ Remember that in Rev\SpecialChar TeX
+, at least one optional argument is required!
 \end_layout
 
 \begin_layout Standard
@@ -12982,7 +13541,8 @@ Układ
 \end_layout
 
 \begin_layout Standard
-The layouts basically correspond to the commands in RevTeX4.0.
+The layouts basically correspond to the commands in Rev\SpecialChar TeX
+4.0.
  For example, the Email layout corresponds to
 \family typewriter
 
@@ -12990,7 +13550,8 @@ The layouts basically correspond to the commands in RevTeX4.0.
 email{}
 \family default
 .
- Note that (at least as of RevTeX 4.0 Beta), the
+ Note that (at least as of Rev\SpecialChar TeX
+ 4.0 Beta), the
 \family sans
 Address
 \family default
@@ -13028,12 +13589,15 @@ Ważne uwagi
 \end_layout
 
 \begin_layout Standard
-There are a couple of important unique aspects of RevTeX 4 which might cause
- bugs that will be even more confusing in LyX.
+There are a couple of important unique aspects of Rev\SpecialChar TeX
+ 4 which might cause
+ bugs that will be even more confusing in \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
-In RevTeX, the
+In Rev\SpecialChar TeX
+, the
 \family typewriter
 
 \backslash
@@ -13050,7 +13614,8 @@ outside
 author
 \family default
  command.
- The LyX equivalent is that there is a separate Thanks layout.
+ The \SpecialChar LyX
+ equivalent is that there is a separate Thanks layout.
  Do
 \emph on
 not
@@ -13060,7 +13625,8 @@ not
 Author
 \family default
  layout, or weird things may happen.
- See the RevTeX 4 documentation for more details.
+ See the Rev\SpecialChar TeX
+ 4 documentation for more details.
 \end_layout
 
 \begin_layout Standard
@@ -13109,7 +13675,8 @@ Thanks
 \family sans
 Address
 \family default
-, the LaTeX won't compile.
+, the \SpecialChar LaTeX
+ won't compile.
 \end_layout
 
 \begin_layout Subsection
@@ -13119,11 +13686,14 @@ Drawbacks
 \begin_layout Standard
 The main problem with this layout is that you can't use the optional arguments
  to layouts like Email and Title.
- (The problem is not unique to this layout; in LyX 1.0, you can't use optional
+ (The problem is not unique to this layout; in \SpecialChar LyX
+ 1.0, you can't use optional
  arguments to the Section layouts.) This means that after you export that
- file to LaTeX (which you'll need to do eventually to send it in to APS),
- you'll need to edit the LaTeX file with a text editor to add the optional
- arguments to set, e.g., the running title for the page headers.
+ file to \SpecialChar LaTeX
+ (which you'll need to do eventually to send it in to APS), you'll
+ need to edit the \SpecialChar LaTeX
+ file with a text editor to add the optional arguments
+ to set, e.g., the running title for the page headers.
  Lacking these layouts makes the
 \family typewriter
 
@@ -13138,7 +13708,8 @@ altaddress
 \family default
 ) useless, so the corresponding layouts don't exist, and will have to be
  added by hand.
- This drawback will be fixed in LyX 1.2.
+ This drawback will be fixed in \SpecialChar LyX
+ 1.2.
 \end_layout
 
 \begin_layout Section
@@ -13203,6 +13774,10 @@ Nienumerowane tytularia ( z gwiazdką) są dopisywane do spisu treści.
 
 \begin_layout Itemize
 Dodatkowe style strony:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -13237,11 +13812,15 @@ outer paginacja w stopce od strony zewnętrznego marginesu
 \end_deeper
 \begin_layout Itemize
 Opcje 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Description
-rmheadings szeryfowe tytularia -- opcja domyślna
+rmheadings szeryfowe tytularia – opcja domyślna
 \end_layout
 
 \begin_layout Description
@@ -13249,7 +13828,7 @@ sfheadings bezszeryfowe tytularia
 \end_layout
 
 \begin_layout Description
-authortitle najpierw autor poniżej tytuł -- opcja domyślna
+authortitle najpierw autor poniżej tytuł – opcja domyślna
 \end_layout
 
 \begin_layout Description
@@ -13282,7 +13861,7 @@ Podręczniku Użytkownika
 \bar under
 P
 \bar default
-lik\SpecialChar \menuseparator
+lik\SpecialChar menuseparator
 
 \bar under
 I
@@ -13294,7 +13873,7 @@ mportuj
 \bar under
 P
 \bar default
-lik\SpecialChar \menuseparator
+lik\SpecialChar menuseparator
 E
 \bar under
 x
@@ -13309,14 +13888,16 @@ Import z innych formatów
 \end_layout
 
 \begin_layout Subsection
-LaTeX
+\SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Standard
 
 \lang english
-Translating from LaTeX into LyX is performed by a converter program called
- 
+Translating from \SpecialChar LaTeX
+ into \SpecialChar LyX
+ is performed by a converter program called 
 \family typewriter
 tex2lyx
 \family default
@@ -13325,7 +13906,9 @@ tex2lyx
 \lang polish
  Ponadto jest to samodzielny program, który może być wywoływany z wiersza
  poleceń.
- LyX wywołuje go automatycznie podczas importu pliku LaTeX-a.
+ \SpecialChar LyX
+ wywołuje go automatycznie podczas importu pliku \SpecialChar LaTeX
+-a.
  Zobacz sekcję
 \begin_inset space ~
 \end_inset
@@ -13347,7 +13930,8 @@ ASCII
 \begin_layout Standard
 Są dwie metody importu plików tekstowych ASCII.
  Import ,,jako wiersze'' zachowuje wszystkie końce wierszy z pliku ASCII
- do LyX-a, wówczas każdy wiersz jest oddzielnym akapitem.
+ do \SpecialChar LyX
+-a, wówczas każdy wiersz jest oddzielnym akapitem.
  Podczas importu ,,jako akapit'' kolejne wiersze łączone są w jeden akapit.
  Pusty wiersz traktowany jest jako separator akapitów.
 \end_layout
@@ -13359,7 +13943,7 @@ Noweb
 \begin_layout Standard
 
 \emph on
-[Editor's note: Needs to be written, obviously - any volunteers? --- mer]
+[Editor's note: Needs to be written, obviously - any volunteers? — mer]
 \end_layout
 
 \begin_layout Section
@@ -13367,13 +13951,16 @@ Eksport do innych formatów
 \end_layout
 
 \begin_layout Subsection
-LaTeX
+\SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Standard
-LyX tworzy dwa typy plików LaTeX-owych: pliki do normalnego przetwarzania
- (do podglądu DVI itp.), które nie są nigdy oglądane oraz pliki o formie
- czytelnej dla ludzi.
+\SpecialChar LyX
+ tworzy dwa typy plików \SpecialChar LaTeX
+-owych: pliki do normalnego przetwarzania (do podglądu
+ DVI itp.), które nie są nigdy oglądane oraz pliki o formie czytelnej dla
+ ludzi.
  Jedyną możliwą do ustawienia jest dyrektywa
 \family typewriter
 
@@ -13382,9 +13969,11 @@ ascii_linelen
 \family default
  określająca maksymalną długość wiersza pliku, domyślną wartością jest 75
  znaków.
- Plik wynikowy jest poprawnym plikiem LaTeX-a, lecz preambuła może wyglądać
- trochę przerażająco ponieważ zawiera kilka definicji używanych przez LyX-a,
- które nie wyglądają na utworzone przez człowieka.
+ Plik wynikowy jest poprawnym plikiem \SpecialChar LaTeX
+-a, lecz preambuła może wyglądać trochę
+ przerażająco ponieważ zawiera kilka definicji używanych przez \SpecialChar LyX
+-a, które
+ nie wyglądają na utworzone przez człowieka.
 \end_layout
 
 \begin_layout Subsection
@@ -13404,8 +13993,9 @@ ice
 \family sans
 I
 \family default
-ndependent -- ,,sprzętowo niezależne'') są tworzone podczas przetwarzania
- Twojego dokumentu przez LaTeX.
+ndependent – ,,sprzętowo niezależne'') są tworzone podczas przetwarzania
+ Twojego dokumentu przez \SpecialChar LaTeX
+.
  Nie ma żadnych opcji do ustawienia przez użytkownika.
 \end_layout
 
@@ -13469,13 +14059,16 @@ HTML
 \end_layout
 
 \begin_layout Standard
-Dokumenty LyX-a mogą być konwertowane do formatu hipertekstowego, zwykle
- najpierw dokonywana jest konwersja do LaTeX-a, który konwertuje do formatu
- HTML.
+Dokumenty \SpecialChar LyX
+-a mogą być konwertowane do formatu hipertekstowego, zwykle najpierw
+ dokonywana jest konwersja do \SpecialChar LaTeX
+-a, który konwertuje do formatu HTML.
 \end_layout
 
 \begin_layout Standard
-Aktualnie są dostępne dla LyX-a trzy konwertery LaTeX
+Aktualnie są dostępne dla \SpecialChar LyX
+-a trzy konwertery \SpecialChar LaTeX
+
 \begin_inset Formula $\rightarrow$
 \end_inset
 
@@ -13523,8 +14116,9 @@ by
 
 \begin_layout Standard
 Najszybszą drogą do tworzenia plików PDF (bez znaczników, linków itp.) w
- dowolnej wersji LyX-a jest zapisanie dokumentu w formacie PostScript, a
- następnie uruchomienie polecenia 
+ dowolnej wersji \SpecialChar LyX
+-a jest zapisanie dokumentu w formacie PostScript, a następnie
+ uruchomienie polecenia 
 \family typewriter
 ps2pdf
 \family default
@@ -13534,13 +14128,13 @@ ps2pdf
 \bar under
 P
 \bar default
-lik\SpecialChar \menuseparator
-Exportuj\SpecialChar \menuseparator
+lik\SpecialChar menuseparator
+Exportuj\SpecialChar menuseparator
 PDF
 \family default
 .
  Od wersji 1.1.6 jest to najlepsza droga do uzyskania porządnych plików PDF.
- Jest trochę kłopotów z czcionkami, na które powinieneś uważać -- zobacz
+ Jest trochę kłopotów z czcionkami, na które powinieneś uważać – zobacz
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:badfonts"
@@ -13551,11 +14145,13 @@ reference "sec:badfonts"
 \end_layout
 
 \begin_layout Subsubsection
-Użycie pdfLaTeX
+Użycie pdf\SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Standard
-Korzystając z pdfLaTeX potrzebujesz skonwertować swoje obrazki EPS do formatu
+Korzystając z pdf\SpecialChar LaTeX
+ potrzebujesz skonwertować swoje obrazki EPS do formatu
  PDF (zobacz
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -13564,8 +14160,9 @@ reference "sec:pdfeps"
 \end_inset
 
 ) i nie możesz używać pstricks.
- Z drugiej strony, korzystając z pdfLaTeX można wstawiać wprost rysunki
- w formatach JPEG lub PNG, używać czcionek TrueType i wiele innych.
+ Z drugiej strony, korzystając z pdf\SpecialChar LaTeX
+ można wstawiać wprost rysunki w formatach
+ JPEG lub PNG, używać czcionek TrueType i wiele innych.
 \end_layout
 
 \begin_layout Subsubsection
@@ -13583,15 +14180,18 @@ name "sec:badfonts"
 \begin_layout Standard
 Źródłem kłopotów są czcionki bitmapowe brzydko wyświetlane przez Acrobat
  Reader.
- Podczas tworzenia pliku PDF z pliku LyX-a potrzebujesz czcionek obwiedniowych
+ Podczas tworzenia pliku PDF z pliku \SpecialChar LyX
+-a potrzebujesz czcionek obwiedniowych
  zamiast bitmapowych (w rzeczywistości powinieneś także używać czcionek
  obwiedniowych w plikach postscriptowych).
 \end_layout
 
 \begin_layout Standard
-Ostatnie dystrybucje LaTeX-a posiadają standardowe czcionki CM (Computer
- Modern) PostScript Type 1.
- PdfLaTeX używa tych czcionek domyślnie.
+Ostatnie dystrybucje \SpecialChar LaTeX
+-a posiadają standardowe czcionki CM (Computer Modern)
+ PostScript Type 1.
+ Pdf\SpecialChar LaTeX
+ używa tych czcionek domyślnie.
  Dvips nie używa ich domyślnie, dla ich użycia należy dopisać do pliku 
 \family typewriter
 ~/.dvipsrc
@@ -13608,10 +14208,12 @@ p+ psfonts.amz
 \end_layout
 
 \begin_layout Standard
-Jeśli używane jest domyślne kodowanie LaTeX-a (OT1), to nie trzeba robić
- nic więcej.
- Ale jeśli używane jest kodowanie T1 to LaTeX używa nowych czcionek EC,
- dla których nie ma wersji Type1.
+Jeśli używane jest domyślne kodowanie \SpecialChar LaTeX
+-a (OT1), to nie trzeba robić nic
+ więcej.
+ Ale jeśli używane jest kodowanie T1 to \SpecialChar LaTeX
+ używa nowych czcionek EC, dla których
+ nie ma wersji Type1.
  Rozwiązaniem jest użycie pakietu ae, który emuluje kodowanie T1 używając
  czcionek CM.
  Należy wówczas w preambule dopisać 
@@ -13627,7 +14229,8 @@ usepackage{ae,aecompl}
 \end_layout
 
 \begin_layout Standard
-Uwaga: LyX używa domyślnie kodowania T1.
+Uwaga: \SpecialChar LyX
+ używa domyślnie kodowania T1.
  Jeśli chcesz stosować domyślne kodowanie (co nie jest zalecane chyba że
  piszesz tylko w języku angielskim), dodaj wiersz 
 \family typewriter
@@ -13694,7 +14297,8 @@ Podsumowując czcionki postscriptowe i Computer Modern dają dobre rezultaty
 \end_layout
 
 \begin_layout Subsubsection
-Jak mogę użyć pdfLaTeX z obrazkami w formacie EPS?
+Jak mogę użyć pdf\SpecialChar LaTeX
+ z obrazkami w formacie EPS?
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:pdfeps"
@@ -13705,8 +14309,8 @@ name "sec:pdfeps"
 \end_layout
 
 \begin_layout Standard
-PdfLaTeX nie obsługuje włączania plików EPS, ale obsługuje włączanie plików
- PDF.
+Pdf\SpecialChar LaTeX
+ nie obsługuje włączania plików EPS, ale obsługuje włączanie plików PDF.
  Jeśli masz dokumenty z włączonymi rysunkami EPS, np.
  plik 
 \family typewriter
@@ -13739,8 +14343,9 @@ foo
 \end_layout
 
 \begin_layout Standard
-Uwaga: W LyX 1.2.0 będzie możliwe wstawianie różnych rodzajów rysunków ze
- wszystkimi niezbędnymi transformacjami.
+Uwaga: W \SpecialChar LyX
+ 1.2.0 będzie możliwe wstawianie różnych rodzajów rysunków ze wszystkimi
+ niezbędnymi transformacjami.
  Częściowo funkcjonalne wstawianie istnieje w wersji 1.1.6, do użycia należy
  wpisać 
 \family typewriter
@@ -13804,7 +14409,8 @@ w preambule.
 \end_layout
 
 \begin_layout Subsubsection
-Czy jest możliwe zapisanie kodu przetwarzanego tylko przez pdfLaTeX-a?
+Czy jest możliwe zapisanie kodu przetwarzanego tylko przez pdf\SpecialChar LaTeX
+-a?
 \end_layout
 
 \begin_layout Standard
@@ -13934,7 +14540,8 @@ Eksport użytkownika jest możliwy jeśli masz dziwny format do którego chcesz
 custom_export_format
 \family default
 .
- LyX będzie automatycznie konwertował plik do tego miejsca, a wtedy zostanie
+ \SpecialChar LyX
+ będzie automatycznie konwertował plik do tego miejsca, a wtedy zostanie
  on przekazany do Twojego konwertera.
  Możliwymi wartościami są: 
 \family typewriter
@@ -13991,7 +14598,7 @@ lyxrc
 \bar under
 P
 \bar default
-lik\SpecialChar \menuseparator
+lik\SpecialChar menuseparator
 
 \family default
  
@@ -13999,7 +14606,7 @@ lik\SpecialChar \menuseparator
 \bar under
 E
 \bar default
-ksportuj\SpecialChar \menuseparator
+ksportuj\SpecialChar menuseparator
 
 \family default
  
@@ -14013,7 +14620,8 @@ ustom
 \end_layout
 
 \begin_layout Chapter
-Funkcje LyX-a wymagające zewnętrznych programów
+Funkcje \SpecialChar LyX
+-a wymagające zewnętrznych programów
 \end_layout
 
 \begin_layout Section
@@ -14027,15 +14635,18 @@ by
 \end_layout
 
 \begin_layout Subsection
-Wysyłanie faksów wprost z LyX-a
+Wysyłanie faksów wprost z \SpecialChar LyX
+-a
 \end_layout
 
 \begin_layout Standard
-Przede wszystkim musimy wspomnieć, że LyX potrafi wysyłać faksy pod warunkiem,
+Przede wszystkim musimy wspomnieć, że \SpecialChar LyX
+ potrafi wysyłać faksy pod warunkiem,
  że masz zainstalowane i działające oprogramowanie do wysyłania faksów (np.
- HylaFax, efax, mgetty+sendfax, \SpecialChar \ldots{}
+ HylaFax, efax, mgetty+sendfax, \SpecialChar ldots
 ).
- LyX pracuje tylko jako graficzny interfejs (front end) do tych programów!
+ \SpecialChar LyX
+ pracuje tylko jako graficzny interfejs (front end) do tych programów!
 \end_layout
 
 \begin_layout Standard
@@ -14055,10 +14666,16 @@ lyxrc
 \backslash
 fax_command:
 \family default
- Tutaj należy podać polecenie, które ma wywołać LyX aby wysłać faks.
+ Tutaj należy podać polecenie, które ma wywołać \SpecialChar LyX
+ aby wysłać faks.
  Polecenie powinno być zdolne przetworzyć plik PostScript, wytworzony przez
- LyX-a.
+ \SpecialChar LyX
+-a.
  Łańcuch polecenia może zawierać następujące zmienne:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -14120,7 +14737,8 @@ Przyjmujemy, że nazwałeś plik ,,
 \family typewriter
 newfile.lyx
 \family default
-'' i chciałbyś wysłać go wprost do faksu nie opuszczając LyX-a.
+'' i chciałbyś wysłać go wprost do faksu nie opuszczając \SpecialChar LyX
+-a.
  Masz zainstalowane oprogramowanie HylaFax i twoja zmienna środowiska 
 \family typewriter
 FAX_SERVER
@@ -14263,8 +14881,9 @@ zapisuje i czyta plik książki telefonicznej
 \backslash
 fax_program:
 \family default
- W tym miejscu podajesz program, który LyX wywoła jako zewnętrzny program
- do wysłania Twojego faksu (np.
+ W tym miejscu podajesz program, który \SpecialChar LyX
+ wywoła jako zewnętrzny program do
+ wysłania Twojego faksu (np.
  tkhylafax), zamiast wbudowanego formularza faksu.
  Dopuszczalna jest tylko zmienna 
 \family typewriter
@@ -14300,7 +14919,8 @@ tkhylafax <tempfile-path>/newfile.ps
 \end_layout
 
 \begin_layout Section
-Check TeX
+Check \SpecialChar TeX
+
 \end_layout
 
 \begin_layout Standard
@@ -14328,11 +14948,12 @@ eck
 \begin_inset space ~
 \end_inset
 
-TeX
+\SpecialChar TeX
+
 \family default
 .
- Ta funkcja LyX-a wymaga posiadania zainstalowanego zewnętrznego programu
- 
+ Ta funkcja \SpecialChar LyX
+-a wymaga posiadania zainstalowanego zewnętrznego programu 
 \family typewriter
 chktex
 \family default
@@ -14354,26 +14975,31 @@ http://www.ifi.uio.no/~jensthi/chktex/
 \begin_layout Standard
 Pakiet 
 \family sans
-ChkTeX
+Chk\SpecialChar TeX
+
 \family default
  jest programem napisanym przez sfrustrowanego
 \noun on
  Jens T.
  Berger Thielemann
 \noun default
-, ponieważ wiele konstrukcji LaTeX-a czasami jest nieintuicyjnych i łatwych
- do zapomnienia.
- Program przetwarzając Twój plik LaTeX-a sprawdza integralność pliku i zaznacza
+, ponieważ wiele konstrukcji \SpecialChar LaTeX
+-a czasami jest nieintuicyjnych i łatwych do
+ zapomnienia.
+ Program przetwarzając Twój plik \SpecialChar LaTeX
+-a sprawdza integralność pliku i zaznacza
  błędy.
  W języku technicznym jest to 
 \family typewriter
 Lint
 \family default
- dla LaTeX-a.
+ dla \SpecialChar LaTeX
+-a.
 \end_layout
 
 \begin_layout Standard
-Czy CheckTeX jest kontrolerem składni, którego użycie zapewni poprawne pliki
+Czy Check\SpecialChar TeX
+ jest kontrolerem składni, którego użycie zapewni poprawne pliki
  LateX-a? Odpowiedź jest prosta: Tak jak 
 \family typewriter
 Lint
@@ -14382,7 +15008,8 @@ Lint
  typowych błędów typograficznych.
  
 \family sans
-ChkTeX
+Chk\SpecialChar TeX
+
 \family default
  potrafi wykryć wiele podstawowych błędów, takich jak:
 \end_layout
@@ -14392,7 +15019,7 @@ Ellipsis detection:
 \begin_inset Newline newline
 \end_inset
 
-Use \SpecialChar \ldots{}
+Use \SpecialChar ldots
  instead of ...
 \end_layout
 
@@ -14484,10 +15111,11 @@ Use of ,,x'' instead of
 \end_layout
 
 \begin_layout Standard
-i inne \SpecialChar \ldots{}
+i inne \SpecialChar ldots
  To jest nieocenione narzędzie gdy ,,zakończyliśmy'' pracę nad dokumentem.
  Przed wydrukowaniem powinniśmy sprawdzić obligatoryjnie pisownię i uruchomić
- CheckTeX-a.
+ Check\SpecialChar TeX
+-a.
 \end_layout
 
 \begin_layout Subsection
@@ -14504,22 +15132,26 @@ checktex
 \bar under
 E
 \bar default
-dycja\SpecialChar \menuseparator
+dycja\SpecialChar menuseparator
  C
 \bar under
 h
 \bar default
-eck TeX
+eck \SpecialChar TeX
+
 \family default
 .
- To spowoduje utworzenie pliku LaTeX-a na podstawie Twojego dokumentu, sprawdzen
-ie go przez 
+ To spowoduje utworzenie pliku \SpecialChar LaTeX
+-a na podstawie Twojego dokumentu, sprawdzenie
+ go przez 
 \family sans
-CheckTeX
+Check\SpecialChar TeX
+
 \family default
  i wstawienie ,,okienek błędów'' do dokumentu z ostrzeżeniami 
 \family sans
-CheckTeX
+Check\SpecialChar TeX
+
 \family default
 , jeśli jakieś znalazł.
  Ostrzeżenia zostaną umieszczone blisko miejsca wystąpienia błędu, które
@@ -14528,7 +15160,7 @@ CheckTeX
 \bar under
 N
 \bar default
-awigacja\SpecialChar \menuseparator
+awigacja\SpecialChar menuseparator
  Błąd
 \family default
  lub za pomocą skótu klawiszowego 
@@ -14560,7 +15192,8 @@ C-o
  Remember that there is a hidden layer between the document on screen and
  the technical details in invoking 
 \family sans
-CheckTeX
+Check\SpecialChar TeX
+
 \family default
 , and this gap can make some warnings seem arcane or just right down plain
  silly.
@@ -14580,13 +15213,15 @@ Jak dopasować
 \begin_layout Standard
 Sometimes, you'll find that
 \family sans
-ChkTeX
+Chk\SpecialChar TeX
+
 \family default
  makes more noise than suits your mood.
  Then you can choose not to use it, wait until your mood changes, or try
  to customize 
 \family sans
-ChkTeX
+Chk\SpecialChar TeX
+
 \family default
  to get better along with you.
  Another choice in the most desperate situations is to use 
@@ -14594,7 +15229,7 @@ ChkTeX
 \bar under
 E
 \bar default
-dycja\SpecialChar \menuseparator
+dycja\SpecialChar menuseparator
 
 \family default
  
@@ -14610,7 +15245,8 @@ suń wszystkie okienka błędów
 \begin_layout Standard
 Mimo to 
 \family sans
-ChkTeX
+Chk\SpecialChar TeX
+
 \family default
  
 \emph on
@@ -14619,13 +15255,18 @@ jest
  bardzo konfigurowalny i extensible, nie powinieneś spodziewać się rozwiązania
  wszystkich problemów przez 
 \family sans
-ChkTeX
+Chk\SpecialChar TeX
+
 \family default
- w LyX-ie tą drogą.
- Since LyX has to generate a somewhat special LaTeX file to be able to match
- the line numbers from 
+ w \SpecialChar LyX
+-ie tą drogą.
+ Since \SpecialChar LyX
+ has to generate a somewhat special \SpecialChar LaTeX
+ file to be able to match the
+ line numbers from 
 \family sans
-ChkTeX
+Chk\SpecialChar TeX
+
 \family default
  output
 \begin_inset Foot
@@ -14638,12 +15279,13 @@ chktex
 \family default
  by using
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 View
 \begin_inset space ~
 \end_inset
 
-LaTeX
+\SpecialChar LaTeX
+
 \begin_inset space ~
 \end_inset
 
@@ -14665,7 +15307,8 @@ chktex
 \begin_layout Itemize
 Dopasuj polecenia wywołania 
 \family sans
-ChkTeX
+Chk\SpecialChar TeX
+
 \family default
  w swoim pliku 
 \family typewriter
@@ -14673,7 +15316,8 @@ lyxrc
 \family default
  lub w globalnym pliku konfiguracyjnym instalacji 
 \family sans
-ChkTeX
+Chk\SpecialChar TeX
+
 \family default
  (zwykle jest to plik 
 \family typewriter
@@ -14684,17 +15328,18 @@ ChkTeX
 \end_layout
 
 \begin_layout Itemize
-Wyeksportuj swoj dokument do LaTeX-a za pomocą polecenia 
+Wyeksportuj swoj dokument do \SpecialChar LaTeX
+-a za pomocą polecenia 
 \family sans
 \bar under
 P
 \bar default
-lik\SpecialChar \menuseparator
+lik\SpecialChar menuseparator
 
 \bar under
 E
 \bar default
-ksportuj\SpecialChar \menuseparator
+ksportuj\SpecialChar menuseparator
 
 \family default
  
@@ -14702,7 +15347,8 @@ ksportuj\SpecialChar \menuseparator
 \bar under
 L
 \bar default
-aTeX
+a\SpecialChar TeX
+
 \family default
  i uruchom 
 \family typewriter
@@ -14710,7 +15356,8 @@ chktex
 \family default
  ręcznie.
  Invoked in this way, it can be a hassle to find the corresponding place
- in the document inside LyX, but with a little patience, you should be able
+ in the document inside \SpecialChar LyX
+, but with a little patience, you should be able
  to do it.
 \end_layout
 
@@ -14746,7 +15393,8 @@ chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38
 
 \begin_layout Standard
 Notice that you should only use the options that enable and disable warnings,
- because LyX relies on some of the other command line parameters to be set
+ because \SpecialChar LyX
+ relies on some of the other command line parameters to be set
  in a specific way to have a chance to communicate with 
 \family typewriter
 chktex
@@ -14917,7 +15565,8 @@ No match found for ,,
 \begin_layout Enumerate
 
 \size small
-Math mode still on at end of LaTeX file.
+Math mode still on at end of \SpecialChar LaTeX
+ file.
 \end_layout
 
 \begin_layout Enumerate
@@ -15029,7 +15678,8 @@ You ought to remove spaces in front of punctuation.
 \begin_layout Enumerate
 
 \size small
-Could not execute LaTeX command.
+Could not execute \SpecialChar LaTeX
+ command.
 \end_layout
 
 \begin_layout Enumerate
@@ -15142,7 +15792,9 @@ You should put punctuation outside inner/inside display math mode.
 \begin_layout Enumerate
 
 \size small
-You ought to not use primitive TeX in LaTeX code.
+You ought to not use primitive \SpecialChar TeX
+ in \SpecialChar LaTeX
+ code.
 \end_layout
 
 \begin_layout Enumerate
@@ -15170,7 +15822,8 @@ You should remove spaces in front of ,,
 \end_layout
 
 \begin_layout Standard
-Mam nadzieję, że w następnych wersjach LyX-a dostarczymy bardziej kompletny
+Mam nadzieję, że w następnych wersjach \SpecialChar LyX
+-a dostarczymy bardziej kompletny
  interfejs dla tego narzędzia (i jego mniejszego kuzyna 
 \family typewriter
 lacheck
@@ -15181,7 +15834,8 @@ lacheck
 \end_layout
 
 \begin_layout Section
-Kontrola wersji (RCS) w LyX
+Kontrola wersji (RCS) w \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
@@ -15195,12 +15849,14 @@ Wprowadzenie
 \end_layout
 
 \begin_layout Standard
-Moi przyjaciele chcieli użyć LyX-a do projektu grupowego.
+Moi przyjaciele chcieli użyć \SpecialChar LyX
+-a do projektu grupowego.
  Gdy nie znaleźli obsługi kontroli wersji ani blokowania plików, porzucili
  ten pomysł.
  To na tyle mnie zirytowało, że postanowiłem zrobić obsługę dla RCS (z możliwośc
 ią obsługi CVS i/lub SCCS jako przyszłościowe ulepszenie).
- To już zostało zrobione i teraz LyX obsługuje najbardziej podstawowe polecenia
+ To już zostało zrobione i teraz \SpecialChar LyX
+ obsługuje najbardziej podstawowe polecenia
  RCS.
 \end_layout
 
@@ -15210,7 +15866,8 @@ Jeśli potrzebujesz zrobić coś bardziej wyszukanego to będziesz musiał zrobi
 \end_layout
 
 \begin_layout Standard
-Zanim zaczniesz używać kontroli wersji w LyX-ie powinieneś wpierw przeczytać
+Zanim zaczniesz używać kontroli wersji w \SpecialChar LyX
+-ie powinieneś wpierw przeczytać
  
 \emph on
 rcsintro
@@ -15226,22 +15883,25 @@ man rcsintro
 \end_layout
 
 \begin_layout Standard
-W LyX-ie dokonano implementacji dla ostatniej wersji pakietu GNU RCS --
- nie gwarantujemy wykonania dla starszych wersji.
+W \SpecialChar LyX
+-ie dokonano implementacji dla ostatniej wersji pakietu GNU RCS – nie
+ gwarantujemy wykonania dla starszych wersji.
 \end_layout
 
 \begin_layout Subsection
-Polecenia RCS w LyX
+Polecenia RCS w \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
-W dalszych sekcjach opisano polecenia RCS obsługiwane przez LyX-a.
+W dalszych sekcjach opisano polecenia RCS obsługiwane przez \SpecialChar LyX
+-a.
  Możesz je znaleźć w menu 
 \family sans
 \bar under
 P
 \bar default
-lik\SpecialChar \menuseparator
+lik\SpecialChar menuseparator
 
 \bar under
 K
@@ -15352,8 +16012,9 @@ Usuń ostatnio wprowadzone zmiany
 
 \begin_layout Standard
 Wynikiem polecenia jest jak gdyby ostatnia rewizja się nie zdarzyła.
- W dokumencie LyX-a nie są dokonywane żadne zmiany, ale ostatnia wersja
- jest usuwana z głównego pliku RCS.
+ W dokumencie \SpecialChar LyX
+-a nie są dokonywane żadne zmiany, ale ostatnia wersja jest
+ usuwana z głównego pliku RCS.
 \end_layout
 
 \begin_layout Standard
@@ -15400,8 +16061,9 @@ Wprowadzenie
 \end_layout
 
 \begin_layout Standard
-The main purpose of this documentation is to show you how to use LyX for
- literate programming.
+The main purpose of this documentation is to show you how to use \SpecialChar LyX
+ for literate
+ programming.
  Where it is assumed that you are familiar with this programming technique,
  and know what
 \begin_inset Quotes eld
@@ -15427,14 +16089,16 @@ weaving
 \end_layout
 
 \begin_layout Standard
-It is also assumed that you are familiar with LyX itself to a point that
- you are comfortable changing your
+It is also assumed that you are familiar with \SpecialChar LyX
+ itself to a point that you
+ are comfortable changing your
 \family typewriter
 lyxrc
 \family default
  file, and X resources file.
- If that is not the case please refer to other LyX documentation to cover
- your specific needs.
+ If that is not the case please refer to other \SpecialChar LyX
+ documentation to cover your
+ specific needs.
 \end_layout
 
 \begin_layout Subsection
@@ -15454,7 +16118,8 @@ Literate programming is the combination of documentation and source together
  Literate programming tools then parse the file to produce either readable
  documentation or compilable source.
  The WEB style of literate programming was created by D.E.
- Knuth during the development of his TeX typesetting software.
+ Knuth during the development of his \SpecialChar TeX
+ typesetting software.
 \end_layout
 
 \begin_layout Standard
@@ -15470,6 +16135,10 @@ How is literate programming different from verbose commenting?
 \begin_layout Quotation
 There are three distinguishing characteristics.
  In order of importance, they are:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -15552,11 +16221,13 @@ Starting from there you can reach many other interesting links and even
 \end_layout
 
 \begin_layout Subsection
-LyX and Literate Programming
+\SpecialChar LyX
+ and Literate Programming
 \end_layout
 
 \begin_layout Standard
-Some changes to LyX were required to enable it to interact with Noweb.
+Some changes to \SpecialChar LyX
+ were required to enable it to interact with Noweb.
  Those changes were rather simple, and were done in a
 \begin_inset Quotes eld
 \end_inset
@@ -15565,9 +16236,10 @@ Noweb independent
 \begin_inset Quotes erd
 \end_inset
 
- way, i.e., I expect that you will be able to use this new LyX feature with
- some other literate programming tool of your choice by just re-configuring
- your lyxrc file.
+ way, i.e., I expect that you will be able to use this new \SpecialChar LyX
+ feature with some
+ other literate programming tool of your choice by just re-configuring your
+ lyxrc file.
 \end_layout
 
 \begin_layout Subsubsection
@@ -15579,9 +16251,10 @@ Wybor klasy dokumentu
 \end_layout
 
 \begin_layout Standard
-If you have installed Noweb and LyX successfully, whenever you open a new
- document or try to change the document class of an existing one, you will
- find that there are three new document classes available:
+If you have installed Noweb and \SpecialChar LyX
+ successfully, whenever you open a new document
+ or try to change the document class of an existing one, you will find that
+ there are three new document classes available:
 \end_layout
 
 \begin_layout Itemize
@@ -15627,7 +16300,8 @@ Wpisywanie kodu
 \end_layout
 
 \begin_layout Standard
-LyX enables you to write code with a layout named
+\SpecialChar LyX
+ enables you to write code with a layout named
 \noun on
 Scrap
 \noun default
@@ -15687,11 +16361,15 @@ The problem is that whatever is written in between the << and the
 \family typewriter
 @
 \family default
- must be taken literally, i.e., LyX should be prevented from making any special
+ must be taken literally, i.e., \SpecialChar LyX
+ should be prevented from making any special
  interpretation of what has been written.
  For that reason, I defined a new layout named Scrap, that works like a
- LaTeX paragraph but has a free spacing capability.
- In other words, it is a combination of the LaTeX and the LyX-Code layouts.
+ \SpecialChar LaTeX
+ paragraph but has a free spacing capability.
+ In other words, it is a combination of the \SpecialChar LaTeX
+ and the \SpecialChar LyX
+-Code layouts.
 \end_layout
 
 \begin_layout Standard
@@ -15760,8 +16438,9 @@ improvements
 \end_inset
 
 e to enter a blank character.
- I believe these problems are a small price to pay for the benefits LyX
- brings to you for typing, compiling, and debugging your literate program.
+ I believe these problems are a small price to pay for the benefits \SpecialChar LyX
+ brings
+ to you for typing, compiling, and debugging your literate program.
 \end_layout
 
 \begin_layout Paragraph
@@ -15778,11 +16457,16 @@ At this point you already have a new document file with a proper document
 \end_layout
 
 \begin_layout Standard
-To help orientate you, I will now explain what happens inside LyX:
+To help orientate you, I will now explain what happens inside \SpecialChar LyX
+:
 \end_layout
 
 \begin_layout Enumerate
 When the ,,Update dvi'' menu option is chosen, a latex file is generated.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -15804,13 +16488,19 @@ literate_extension
 \end_deeper
 \begin_layout Enumerate
 Note that the only difference so far is in the name of the file, no special
- processing is required by LyX.
+ processing is required by \SpecialChar LyX
+.
  Given that you formatted the code using the Scrap layout that, by itself,
  takes care of the business.
 \end_layout
 
 \begin_layout Enumerate
-If the document is of any literate class LyX will execute:
+If the document is of any literate class \SpecialChar LyX
+ will execute:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -15862,8 +16552,9 @@ Otherwise it will just skip this step.
 
 \end_deeper
 \begin_layout Enumerate
-Finally, LaTeX is invoked and the regular post processing continues as in
- a plain document.
+Finally, \SpecialChar LaTeX
+ is invoked and the regular post processing continues as in a plain
+ document.
 \end_layout
 
 \begin_layout Standard
@@ -15891,7 +16582,8 @@ The purpose of the
 \backslash
 literate_error_filter
 \family default
- command is to help LyX display error boxes when the
+ command is to help \SpecialChar LyX
+ display error boxes when the
 \family typewriter
 
 \backslash
@@ -15900,7 +16592,8 @@ literate_command
  reports any errors.
  This filter can be a C program, a script, or any thing you want.
  Its job is to identify error messages from your literate tool, in our case
- Noweb, and convert them to a common format that LyX understands.
+ Noweb, and convert them to a common format that \SpecialChar LyX
+ understands.
  A separate document,
 \family typewriter
 Literate.lyx
@@ -15939,7 +16632,8 @@ When the ,,Build Program'' File menu option is chosen or the corresponding
 literate_extension
 \family default
  is generated just like step 1 above.
- Then LyX invokes 
+ Then \SpecialChar LyX
+ invokes 
 \family typewriter
 
 \backslash
@@ -15955,7 +16649,8 @@ build_error_filter
 \end_layout
 
 \begin_layout Standard
-Note that no special processing is required from LyX.
+Note that no special processing is required from \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -15967,7 +16662,8 @@ Also note that I am assuming that you are familiar with Noweb.
 \family default
  extension).
  It is likely that you will create a makefile for that purpose.
- For that reason, after LyX creates the noweb file, it invokes the command
+ For that reason, after \SpecialChar LyX
+ creates the noweb file, it invokes the command
  defined by
 \family typewriter
 
@@ -16020,7 +16716,8 @@ literate_error_filter
  If you have a different compiler you may want to change this program or
  create a new one.
  Again, the same comments from the previous section are valid here: this
- is optional, you can skip it if you can afford to loose the LyX error handling
+ is optional, you can skip it if you can afford to loose the \SpecialChar LyX
+ error handling
  feature.
 \end_layout
 
@@ -16095,7 +16792,8 @@ build_command
 \end_layout
 
 \begin_layout Subsubsection
-Konfiguracja LyXa
+Konfiguracja \SpecialChar LyX
+a
 \end_layout
 
 \begin_layout Standard
@@ -16110,10 +16808,15 @@ There are five new controls that you can put in your lyxrc file:
 literate_command
 \family default
  specifies which literate tool you are going to use.
- During normal LyX configuration, the auto configuration script will try
- to find the noweb package for you.
+ During normal \SpecialChar LyX
+ configuration, the auto configuration script will try to
+ find the noweb package for you.
  If the search is successful, the default value for this control is set
  to:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -16180,6 +16883,10 @@ make
 
 .
  You need to create a makefile to do the tangling, compilation, etc.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -16214,7 +16921,8 @@ notangle -Rbuild-script $1 | sh
 \end_layout
 
 \begin_layout Standard
-Finally set LyX to execute the
+Finally set \SpecialChar LyX
+ to execute the
 \family typewriter
 project-build
 \family default
@@ -16241,7 +16949,8 @@ Build Program
 \begin_inset Quotes erd
 \end_inset
 
-, LyX will extract that scrap (
+, \SpecialChar LyX
+ will extract that scrap (
 \family typewriter
 notangle -Rbuild-script...
 \family default
@@ -16266,6 +16975,10 @@ literate_error_filter
 Literate_example.lyx
 \family default
 , you can set:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -16309,6 +17022,10 @@ cat
 Literate_example.lyx
 \family default
 , you can set:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -16336,8 +17053,9 @@ Rozszerzenia diagnostyczne
 \end_layout
 
 \begin_layout Standard
-There is also a new function implemented in the LyX server, the ,,server-goto-fi
-le-row'' function, to be used with ddd/gdb or other debugger.
+There is also a new function implemented in the \SpecialChar LyX
+ server, the ,,server-goto-file-
+row'' function, to be used with ddd/gdb or other debugger.
 \end_layout
 
 \begin_layout Standard
@@ -16345,14 +17063,15 @@ When debugging code with ddd/gdb, it is possible to invoke a text editor
  at the current execution position with a single key stroke.
  The default ddd configuration for that is shift-ctrl-V.
  It happens that you can define the editor command line invocation in ddd
- by accessing the edit\SpecialChar \menuseparator
-preferences\SpecialChar \menuseparator
+ by accessing the edit\SpecialChar menuseparator
+preferences\SpecialChar menuseparator
 helpers window and changing the ,,Edit
  Sources'' entry.
 \end_layout
 
 \begin_layout Standard
-I take advantage of the new created LyX server function and this ddd feature,
+I take advantage of the new created \SpecialChar LyX
+ server function and this ddd feature,
  and set
 \begin_inset Quotes eld
 \end_inset
@@ -16371,15 +17090,19 @@ echo "LYXCMD:monitor:server-goto-file-row:@FILE@ @LINE@" >~/.lyxpipe.in
 \begin_layout Standard
 With this, whenever you are using ddd and find a point in the program that
  you want to edit, you just press shift-ctrl-V (in the ddd window), and
- ddd you forward this information to LyX through the LyX server and then
- the LyX window will show the same file with the cursor at the same position
- ddd was pointing to.
+ ddd you forward this information to \SpecialChar LyX
+ through the \SpecialChar LyX
+ server and then the \SpecialChar LyX
+
+ window will show the same file with the cursor at the same position ddd
+ was pointing to.
  No more guessing or long scrolling to locate a point in the program back
  from debugging !
 \end_layout
 
 \begin_layout Standard
-Note however that you must enable the LyX server to get this feature working
+Note however that you must enable the \SpecialChar LyX
+ server to get this feature working
  (it is disabled by default).
  To enable it, insert in your lyxrc file:
 \end_layout
@@ -16391,7 +17114,8 @@ serverpipe "/home/<your home directory>/.lyxpipe"
 \end_layout
 
 \begin_layout Standard
-Read the LyX server documentation for further information.
+Read the \SpecialChar LyX
+ server documentation for further information.
 \end_layout
 
 \begin_layout Subsubsection
@@ -16399,9 +17123,12 @@ Rozszerzenia paska narzędzi
 \end_layout
 
 \begin_layout Standard
-I created six new buttons that can be added to your LyX toolbar.
+I created six new buttons that can be added to your \SpecialChar LyX
+ toolbar.
  Five of these buttons are short cuts to layout styles: Standard, Section,
- LaTeX, LyX-Code, and Scrap.
+ \SpecialChar LaTeX
+, \SpecialChar LyX
+-Code, and Scrap.
  I created those because they are the ones I use most and I was tired of
  scrolling the layout menu looking for the one I wanted.
  The last one is a short cut to the
@@ -16416,7 +17143,8 @@ Build Program
 \end_layout
 
 \begin_layout Standard
-LyX has a range of buttons that are available for tool bar customization.
+\SpecialChar LyX
+ has a range of buttons that are available for tool bar customization.
  In my toolbar I like to combine the six short cuts above with two more:
  One for
 \begin_inset Quotes eld
@@ -16465,13 +17193,15 @@ add layout Section
 \begin_layout LyX-Code
 
 \backslash
-add layout LaTeX
+add layout \SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout LyX-Code
 
 \backslash
-add layout LyX-Code
+add layout \SpecialChar LyX
+-Code
 \end_layout
 
 \begin_layout LyX-Code
@@ -16533,21 +17263,29 @@ Dopasowanie kolorów
 \end_layout
 
 \begin_layout Standard
-There are a number of colors in LyX that can be customized.
+There are a number of colors in \SpecialChar LyX
+ that can be customized.
  For each one there are two ways to do it: either by inserting a line in
- your X resource files, or by adding a flag in the LyX command line.
+ your X resource files, or by adding a flag in the \SpecialChar LyX
+ command line.
 \end_layout
 
 \begin_layout Standard
-One of the things that bothers people is the LaTeX font color.
- The default color is red, since the scraps uses LaTeX font, and there is
- a lot of scraps in literate documents, you may get tired of seeing everything
+One of the things that bothers people is the \SpecialChar LaTeX
+ font color.
+ The default color is red, since the scraps uses \SpecialChar LaTeX
+ font, and there is a lot
+ of scraps in literate documents, you may get tired of seeing everything
  in red.
  Example:
 \end_layout
 
 \begin_layout Itemize
 In the X resource file:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -16558,6 +17296,10 @@ lyx*LatexColor: gold
 \end_deeper
 \begin_layout Itemize
 In the command line:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -16578,6 +17320,10 @@ The next thing is the visible presence of the newline character in the screen.
 
 \begin_layout Itemize
 In the X resource file:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -16592,6 +17338,10 @@ lyx*NewLineColor: gray35
 \end_deeper
 \begin_layout Itemize
 In the command line:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -16607,6 +17357,10 @@ If you don't like a bright clear background burning your eyes all day long,
 
 \begin_layout Itemize
 In the X resource file:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -16617,6 +17371,10 @@ lyx*Reverse: 1
 \end_deeper
 \begin_layout Itemize
 In the command line:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -16682,9 +17440,14 @@ Special features
 \begin_layout Standard
 
 \lang english
-You can do everything with LyX that you can do with LaTeX.
- However, LyX cannot support every LaTeX feature directly.
- But you can always use TeX Code.
+You can do everything with \SpecialChar LyX
+ that you can do with \SpecialChar LaTeX
+.
+ However, \SpecialChar LyX
+ cannot support every \SpecialChar LaTeX
+ feature directly.
+ But you can always use \SpecialChar TeX
+ Code.
  This chapter shows you some more special things you might want to use.
  For other special things you can do with figures, tables, floats, boxes
  and notes, have a look at the 
@@ -16734,11 +17497,12 @@ Multiple Columns
 \family default
  (menu 
 \family sans
-Document\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Modules
 \family default
-) and must have the LaTeX-package 
+) and must have the \SpecialChar LaTeX
+-package 
 \series bold
 multicol
 \series default
@@ -16773,12 +17537,12 @@ If you want to have 2
 
 columns in your text, insert a multicolumn inset via the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Custom
 \begin_inset space ~
 \end_inset
 
-Insets\SpecialChar \menuseparator
+Insets\SpecialChar menuseparator
 Multiple
 \begin_inset space ~
 \end_inset
@@ -16859,7 +17623,7 @@ ty which utterly submerged my mind.
 To get 3 or more columns, set the cursor into the multicolumn inset and
  use the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Number
 \begin_inset space ~
 \end_inset
@@ -16909,7 +17673,6 @@ status open
 
 \begin_layout Plain Layout
 
-\lang english
 3
 \end_layout
 
@@ -17067,7 +17830,8 @@ The examples in this section show some more special features of multiple
 
 \lang english
 For more features of multiple columns, have a look at the documentation
- of the LaTeX-package 
+ of the \SpecialChar LaTeX
+-package 
 \series bold
 multicol
 \series default
@@ -17075,6 +17839,7 @@ multicol
 \begin_inset CommandInset citation
 LatexCommand cite
 key "multicol"
+literal "true"
 
 \end_inset
 
@@ -17093,7 +17858,7 @@ Preface
 To add a preface text for multiple columns, set the cursor into the mulitcolumn
  inset and use the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Preface
 \family default
 .
@@ -17128,7 +17893,7 @@ status open
 \begin_layout Plain Layout
 
 \lang english
-And the story continues and continues and continues and continues\SpecialChar \ldots{}
+And the story continues and continues and continues and continues\SpecialChar ldots
 
 \end_layout
 
@@ -17161,7 +17926,8 @@ On the evening of the crime, he returned from the club exactly at ten.
 
 \lang english
 You can also use a section heading as the preface if you use a section command
- as TeX Code.
+ as \SpecialChar TeX
+ Code.
  For example the command
 \end_layout
 
@@ -17267,7 +18033,7 @@ text lines is left on the page at the beginning of the multiple columns,
  This is done by setting the cursor into the mulitcolumn inset behind the
  preface (if there is any) and using the menu 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Space
 \begin_inset space ~
 \end_inset
@@ -17323,7 +18089,8 @@ baselineskip
 \backslash
 baselineskip
 \series default
- needs to be inserted as TeX code):
+ needs to be inserted as \SpecialChar TeX
+ code):
 \end_layout
 
 \begin_layout Standard
@@ -17416,7 +18183,8 @@ multicolsep}{3cm}
 \begin_layout Standard
 
 \lang english
-in TeX Code changes its value to 3
+in \SpecialChar TeX
+ Code changes its value to 3
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -17829,7 +18597,7 @@ Catullus
 \noun on
 The Holy War
 \noun default
---a bargain, every one of them.
+–a bargain, every one of them.
  With five volumes you could just fill that gap on that second shelf.
  It looks untidy, does it not, sir?
 \begin_inset Quotes erd
@@ -17894,10 +18662,12 @@ Non-standard Paragraph Shapes
 \noindent
 
 \lang english
-LaTeX as well as any other text processor uses by default rectangular paragraphs.
+\SpecialChar LaTeX
+ as well as any other text processor uses by default rectangular paragraphs.
  For special cases like for example posters, invitation cards or poems you
  can modify the paragraph shape to one of your choice.
- This can be done by using the LaTeX-package 
+ This can be done by using the \SpecialChar LaTeX
+-package 
 \series bold
 shapepar
 \series default
@@ -17928,7 +18698,7 @@ shapepar
 \lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="13" columns="3">
-<features rotate="0" booktabs="true" islongtable="true" longtabularalignment="center">
+<features booktabs="true" islongtable="true" longtabularalignment="center">
 <column alignment="center" valignment="middle" width="16col%">
 <column alignment="center" valignment="middle" width="40col%">
 <column alignment="center" valignment="middle" width="35col%">
@@ -18332,7 +19102,8 @@ Fragile, calculation might fail
 \begin_layout Plain Layout
 
 \lang english
-TeX
+\SpecialChar TeX
+
 \end_layout
 
 \end_inset
@@ -18343,7 +19114,8 @@ TeX
 \begin_layout Plain Layout
 
 \lang english
-The TeX logo
+The \SpecialChar TeX
+ logo
 \end_layout
 
 \end_inset
@@ -18409,7 +19181,8 @@ Triangles in different orientations
 \begin_layout Standard
 
 \lang english
-To use a shape for your paragraph, simply select it in LyX's pull-down box
+To use a shape for your paragraph, simply select it in \SpecialChar LyX
+'s pull-down box
  for environments in the toolbar.
 \end_layout
 
@@ -18567,7 +19340,8 @@ circle
 \family default
  shape are fragile, meaning that the calculation of their size can fail,
  depending on the amount of text.
- You will then get the LaTeX error 
+ You will then get the \SpecialChar LaTeX
+ error 
 \begin_inset Quotes eld
 \end_inset
 
@@ -18592,8 +19366,9 @@ Arithmetic overflow
 \begin_layout Standard
 
 \lang english
-For shapes with tips you will maybe see that LaTeX's hyphenation routine
- fails for text in the tips.
+For shapes with tips you will maybe see that \SpecialChar LaTeX
+'s hyphenation routine fails
+ for text in the tips.
  Therefore it is often necessary to add hyphenation points 
 \family sans
 (
@@ -18645,7 +19420,7 @@ Shapepar paragraphs are either always centered or placed on the page so
 \noindent
 
 \lang latin
-Lo\SpecialChar \-
+Lo\SpecialChar softhyphen
 rem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
  eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
  voluptua.
@@ -18679,13 +19454,18 @@ width "42col%"
 special "none"
 height "1in"
 height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
 status open
 
 \begin_layout Heart
 \noindent
 
 \lang latin
-Lo\SpecialChar \-
+Lo\SpecialChar softhyphen
 rem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
  eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
  voluptua.
@@ -18721,6 +19501,7 @@ Install the program
 LatexCommand href
 name "Jpgfdraw"
 target "http://www.ctan.org/tex-archive/graphics/jpgfdraw"
+literal "false"
 
 \end_inset
 
@@ -18758,8 +19539,8 @@ status collapsed
 
 \end_inset
 
-eX\SpecialChar \menuseparator
-Settings\SpecialChar \menuseparator
+eX\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
 Set Normal Size
 \family default
  and select the font size you are using in your document.
@@ -18803,7 +19584,7 @@ status collapsed
 
 \end_inset
 
-eX\SpecialChar \menuseparator
+eX\SpecialChar menuseparator
 Shapepar
 \family default
  to export the shape to coordinates.
@@ -18819,6 +19600,7 @@ For more information see
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.dickimaw-books.com/apps/jpgfdraw/manual/shapepar.html"
+literal "false"
 
 \end_inset
 
@@ -18833,8 +19615,10 @@ target "http://www.dickimaw-books.com/apps/jpgfdraw/manual/shapepar.html"
 \begin_layout Standard
 
 \lang english
-The coordinates are written into a TeX-file.
- To use it for your LyX document
+The coordinates are written into a \SpecialChar TeX
+-file.
+ To use it for your \SpecialChar LyX
+ document
 \end_layout
 
 \begin_layout Enumerate
@@ -18847,10 +19631,11 @@ Place the cursor before the first character of your paragraph (or into a
 \begin_layout Enumerate
 
 \lang english
-Open in LyX the menu 
+Open in \SpecialChar LyX
+ the menu 
 \family sans
-Insert\SpecialChar \menuseparator
-File\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
+File\SpecialChar menuseparator
 Child
 \begin_inset space ~
 \end_inset
@@ -19017,6 +19802,7 @@ shapepar
 \begin_inset CommandInset citation
 LatexCommand cite
 key "shapepar"
+literal "true"
 
 \end_inset
 
@@ -19029,14 +19815,17 @@ key "shapepar"
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "multicol"
+literal "true"
 
 \end_inset
 
-Documentation of the LaTeX-package 
+Documentation of the \SpecialChar LaTeX
+-package 
 \begin_inset CommandInset href
 LatexCommand href
 name "multicol"
 target "http://mirror.ctan.org/macros/latex/required/tools/multicol.pdf"
+literal "false"
 
 \end_inset
 
@@ -19049,14 +19838,17 @@ target "http://mirror.ctan.org/macros/latex/required/tools/multicol.pdf"
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "shapepar"
+literal "true"
 
 \end_inset
 
-Documentation of the LaTeX-package 
+Documentation of the \SpecialChar LaTeX
+-package 
 \begin_inset CommandInset href
 LatexCommand href
 name "shapepar"
 target "http://mirrors.ctan.org/macros/latex/contrib/shapepar/shapepar.pdf"
+literal "false"
 
 \end_inset
 

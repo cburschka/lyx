@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin /systemlyxdir/doc/attic/
 \textclass scrbook
 \begin_preamble
 % DO NOT ALTER THIS PREAMBLE!!!
@@ -31,7 +33,7 @@
   \myTOC
   \mainmatter }
 \end_preamble
-\options fleqn,bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
+\options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
 \begin_modules
 logicalmkup
@@ -65,16 +67,18 @@ End
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -118,6 +122,7 @@ End
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Indice
 \shortcut idx
 \color #008000
@@ -126,7 +131,11 @@ End
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 1
+\math_indentation default
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
@@ -140,11 +149,13 @@ End
 \begin_body
 
 \begin_layout Title
-Personalizzazione di LyX: Caratteristiche per l'utente avanzato
+Personalizzazione di \SpecialChar LyX
+: Caratteristiche per l'utente avanzato
 \end_layout
 
 \begin_layout Author
-dal LyX Team
+dal \SpecialChar LyX
+ Team
 \begin_inset Foot
 status collapsed
 
@@ -186,26 +197,32 @@ Introduzione
 
 \begin_layout Standard
 Questo manuale illustra le caratteristiche di personalizzazione presenti
- in LyX.
+ in \SpecialChar LyX
+.
  Verranno di seguito discussi temi come le scorciatoie da tastiera, le opzioni
  di anteprima sullo schermo, le opzioni di stampa, i comandi da inviare
- a LyX attraverso il LyX Server, l'internazionalizzazione, l'installazione
- di nuove classi di testo LaTeX e layouts di LyX ecc.
+ a \SpecialChar LyX
+ attraverso il \SpecialChar LyX
+ Server, l'internazionalizzazione, l'installazione di
+ nuove classi di testo \SpecialChar LaTeX
+ e layouts di \SpecialChar LyX
+ ecc.
  Ovviamente non ci possiamo augurare di prendere in considerazione tutto
- quello che è possibile cambiare--i nostri sviluppatori aggiungono nuovi
- funzioni più velocemente di quanto riusciamo a documentare--ma andremo
- a spiegare le personalizzazioni più comuni e possibilmente cercheremo di
+ quello che è possibile cambiare–i nostri sviluppatori aggiungono nuovi
+ funzioni più velocemente di quanto riusciamo a documentare–ma andremo a
+ spiegare le personalizzazioni più comuni e possibilmente cercheremo di
  darvi qualche indicazione per quelle più complesse.
 \end_layout
 
 \begin_layout Standard
-LyX 1.1.6 introduce una nuova interfaccia utente per le personalizzazioni
- che possono essere richiamate attraverso 
+\SpecialChar LyX
+ 1.1.6 introduce una nuova interfaccia utente per le personalizzazioni che
+ possono essere richiamate attraverso 
 \family sans
 \bar under
 E
 \bar default
-dit\SpecialChar \menuseparator
+dit\SpecialChar menuseparator
 
 \bar under
 P
@@ -214,8 +231,10 @@ references
 \family default
 .
  Questo non rende obsoleta la seguente trattazione circa i files di configurazio
-ni di LyX, ma si spera invece che semplifichi considerabilmente l'adattamento
- di LyX alle 
+ni di \SpecialChar LyX
+, ma si spera invece che semplifichi considerabilmente l'adattamento
+ di \SpecialChar LyX
+ alle 
 \shape slanted
 vostre
 \shape default
@@ -223,19 +242,22 @@ vostre
 \end_layout
 
 \begin_layout Chapter
-File di configurazione di LyX
+File di configurazione di \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
  Questo capitolo ha lo scopo di aiutare ad orientarsi all'interno dei file
- di configurazione di LyX.
+ di configurazione di \SpecialChar LyX
+.
  Prima di continuare a leggere questo capitolo, dovreste trovare dove si
- trova la directory delle librerie di LyX usando 
+ trova la directory delle librerie di \SpecialChar LyX
+ usando 
 \family sans
 \bar under
 H
 \bar default
-elp\SpecialChar \menuseparator
+elp\SpecialChar menuseparator
 
 \bar under
 V
@@ -243,10 +265,12 @@ V
 ersion.
 
 \family default
- Questa direcotry è il posto in cui LyX mette i suoi files di configurazione
+ Questa direcotry è il posto in cui \SpecialChar LyX
+ mette i suoi files di configurazione
  generale, che chiameremo 
 \family typewriter
-LyXDir
+\SpecialChar LyX
+Dir
 \family default
  nel prosieguo del documento.
 \end_layout
@@ -257,7 +281,8 @@ LyXDir
 Cosa c'è in 
 \family typewriter
 \size default
-LyXDir
+\SpecialChar LyX
+Dir
 \family default
 \size larger
 ?
@@ -266,19 +291,23 @@ LyXDir
 \begin_layout Standard
 
 \family typewriter
-LyXDir
+\SpecialChar LyX
+Dir
 \family default
  e le sue sottodirectory contiene numerosi files che possono essere usati
- per la personalizzazione del comportamento di LyX.
- Nuovo in LyX 1.1.6 è la possibiltà di richiamare questi files dall'interno
- dello stesso LyX attraverso il menu 
+ per la personalizzazione del comportamento di \SpecialChar LyX
+.
+ Nuovo in \SpecialChar LyX
+ 1.1.6 è la possibiltà di richiamare questi files dall'interno dello
+ stesso \SpecialChar LyX
+ attraverso il menu 
 \family sans
 \shape smallcaps
 \bar under
 E
 \shape default
 \bar default
-dit \SpecialChar \menuseparator
+dit \SpecialChar menuseparator
 
 \family default
  
@@ -291,10 +320,12 @@ references
 .
  La maggior parte delle personalizzazioni che si effettuano sono possibili
  attraverso questo menu.
- Tuttavia, molti altri aspetti principali di LyX possono essere personalizzati
+ Tuttavia, molti altri aspetti principali di \SpecialChar LyX
+ possono essere personalizzati
  modificando gli altri file nella directory 
 \family typewriter
-LyXDir
+\SpecialChar LyX
+Dir
 \family default
 .
  Questi sono divisi in differenti categorie, descritte nelle seguenti sottosezio
@@ -306,7 +337,8 @@ Files generati automaticamente
 \end_layout
 
 \begin_layout Standard
-Questi files vengono generati quando configurate LyX.
+Questi files vengono generati quando configurate \SpecialChar LyX
+.
  Contengono vari valori predefiniti che vengono fissati mediante una procedura
  di ispezione.
  In generale, non è una buona idea modificarli, dato che potrebbero essere
@@ -330,7 +362,7 @@ lyxrc.defaults
 E
 \shape default
 \bar default
-dit \SpecialChar \menuseparator
+dit \SpecialChar menuseparator
 
 \family default
  
@@ -351,19 +383,21 @@ references
 packages.lst
 \family default
 \series default
- contiene la lista dei pacchetti che sono stati riconosciuti da LyX.
+ contiene la lista dei pacchetti che sono stati riconosciuti da \SpecialChar LyX
+.
  Non è normalmente usata dal programma, ma le informazioni estratte, ed
  anche di più sono rese disponibili attraverso 
 \family sans
 \bar under
 H
 \bar default
-elp \SpecialChar \menuseparator
+elp \SpecialChar menuseparator
 L
 \bar under
 a
 \bar default
-TeX
+\SpecialChar TeX
+
 \begin_inset space ~
 \end_inset
 
@@ -388,11 +422,13 @@ layout/
 \labelwidthstring 00.00.0000
 
 \family typewriter
-doc/LaTeXConfig.lyx
+doc/\SpecialChar LaTeX
+Config.lyx
 \family default
  è generata automaticamente durante la configurazione dal file 
 \family typewriter
-LaTeXConfig.lyx.in
+\SpecialChar LaTeX
+Config.lyx.in
 \family default
 .
  Ogni stringa del form 
@@ -442,7 +478,8 @@ bind/
 \family typewriter
 .bind
 \family default
- che definiscono i tasti di scelta rapida usati in LyX.
+ che definiscono i tasti di scelta rapida usati in \SpecialChar LyX
+.
  Se esiste una versione internazionalizzata del bindfile chiamato 
 \family typewriter
 $LANG_xxx.bind
@@ -470,11 +507,12 @@ clipart/
 doc/
 \family default
 \series default
- contiene i files di documentazioni di LyX (incluso quello che state ora
- leggendo).
+ contiene i files di documentazioni di \SpecialChar LyX
+ (incluso quello che state ora leggendo).
  Il file 
 \family typewriter
-LaTeXConfig.lyx
+\SpecialChar LaTeX
+Config.lyx
 \family default
  è particolarmente speciale, come già detto.
  Se esiste una versione internazionale del documento di aiuto con 
@@ -522,7 +560,8 @@ Document
 \family default
 .
  In aggiunta, vi sono contenute anche le icone idividuali usate nella toolbar
- e nella schermata che viene mostrata all'avvio di LyX.
+ e nella schermata che viene mostrata all'avvio di \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Labeling
@@ -583,15 +622,15 @@ Template.
 \family default
  Riferirsi a 
 \family sans
-Help\SpecialChar \menuseparator
-External\SpecialChar \menuseparator
+Help\SpecialChar menuseparator
+External\SpecialChar menuseparator
 Material
 \family default
  per ulteriori informazioni.
  [
 \emph on
 Nota dell'autore: se questo file è incorporato in un altro dei documenti
- standard, non sarà reperibile in questa locazione---AL
+ standard, non sarà reperibile in questa locazione—AL
 \emph default
 ].
 \end_layout
@@ -602,7 +641,8 @@ Nota dell'autore: se questo file è incorporato in un altro dei documenti
 \family typewriter
 templates/
 \family default
- contiene i files templates standard di LyX descritti nel Capitolo
+ contiene i files templates standard di \SpecialChar LyX
+ descritti nel Capitolo
 \begin_inset space ~
 \end_inset
 
@@ -622,7 +662,8 @@ reference "sec:templates"
 \family typewriter
 tex/
 \family default
- contiene alcuni files .cls distribuiti con LyX.
+ contiene alcuni files .cls distribuiti con \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Labeling
@@ -635,7 +676,8 @@ ui/
 \family typewriter
 .ui
 \family default
- che definiscono l'interfaccia utente di LyX.
+ che definiscono l'interfaccia utente di \SpecialChar LyX
+.
  Cioè i files definiscono quali oggetti appaiono in quali menu e quelli
  che appaiono nella toolbar.
  Riferirsi al Capitolo
@@ -657,7 +699,8 @@ Files che non volete modificare
 \end_layout
 
 \begin_layout Standard
-Questi files sono usati internamente da LyX e generalmente non avete bisogno
+Questi files sono usati internamente da \SpecialChar LyX
+ e generalmente non avete bisogno
  di modificarli a meno che non siate sviluppatori.
 \end_layout
 
@@ -669,13 +712,14 @@ Questi files sono usati internamente da LyX e generalmente non avete bisogno
 CREDITS
 \family default
 \series default
- questo file contiene la lista degli sviluppatori di LyX.
+ questo file contiene la lista degli sviluppatori di \SpecialChar LyX
+.
  Si può accedere a questo file attraverso il menu 
 \family sans
 \bar under
 H
 \bar default
-elp\SpecialChar \menuseparator
+elp\SpecialChar menuseparator
 Cr
 \bar under
 e
@@ -691,7 +735,8 @@ dits.
 chkconfig.ltx
 \family default
 \series default
- questo è uno script LaTeX usato durante il processo di configurazione.
+ questo è uno script \SpecialChar LaTeX
+ usato durante il processo di configurazione.
  Non va lanciato direttamente.
 \end_layout
 
@@ -703,7 +748,8 @@ chkconfig.ltx
 configure
 \family default
 \series default
- questo è lo script usato per riconfigurare LyX.
+ questo è lo script usato per riconfigurare \SpecialChar LyX
+.
  Crea files di configurazione nella directory in cui è lanciato.
 \end_layout
 
@@ -740,7 +786,7 @@ Template
 \bar under
 H
 \bar default
-elp\SpecialChar \menuseparator
+elp\SpecialChar menuseparator
 External
 \begin_inset space ~
 \end_inset
@@ -761,7 +807,8 @@ aterial
 language
 \family default
  questo file contiene una lista di tutti i linguaggi correntemente supportati
- da LyX.
+ da \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Section
@@ -771,7 +818,8 @@ La vostra directory di configurazione
 \end_layout
 
 \begin_layout Standard
-Anche se si usa LyX come utente non privilegiato, è possibile voler cambiare
+Anche se si usa \SpecialChar LyX
+ come utente non privilegiato, è possibile voler cambiare
  la configurazione per un uso personale.
  La directory 
 \family typewriter
@@ -791,7 +839,7 @@ user directory
 \bar under
 H
 \bar default
-elp\SpecialChar \menuseparator
+elp\SpecialChar menuseparator
 
 \bar under
 V
@@ -801,7 +849,8 @@ ersion.
 \family default
  Questa directory è usata come mirror di 
 \family typewriter
-LyXDir
+\SpecialChar LyX
+Dir
 \family default
 , il che significa che ogni file in 
 \family typewriter
@@ -809,7 +858,8 @@ UserDir
 \family default
  è un sostituto del corrispondente file in 
 \family typewriter
-LyXDir
+\SpecialChar LyX
+Dir
 \family default
 .
  Ogni file di configurazione descritto nelle sezioni precedenti può essere
@@ -823,17 +873,20 @@ Per rendere chiare le cose, si forniscono alcuni esempi:
 \end_layout
 
 \begin_layout Itemize
-Per personalizzare il comportamento di LyX prima della versione 1.1.6, l'utente
+Per personalizzare il comportamento di \SpecialChar LyX
+ prima della versione 1.1.6, l'utente
  doveva copiare il file 
 \family typewriter
-LyXDir/lyxrc.example
+\SpecialChar LyX
+Dir/lyxrc.example
 \family default
  in 
 \family typewriter
 UserDir/lyxrc
 \family default
  e modificarlo direttamente.
- La nuova versione di LyX legge ancora questo file, se presente in 
+ La nuova versione di \SpecialChar LyX
+ legge ancora questo file, se presente in 
 \family typewriter
 UserDir
 \family default
@@ -842,7 +895,7 @@ UserDir
 \bar under
 E
 \bar default
-dit\SpecialChar \menuseparator
+dit\SpecialChar menuseparator
 
 \bar under
 P
@@ -867,14 +920,15 @@ Quando si riconfigura attraverso
 \bar under
 O
 \bar default
-ptions\SpecialChar \menuseparator
+ptions\SpecialChar menuseparator
 
 \bar under
 R
 \bar default
 econfigure
 \family default
- LyX lancia configure ed i files risultanti sono scritti nella vostra directory
+ \SpecialChar LyX
+ lancia configure ed i files risultanti sono scritti nella vostra directory
  di configurazione locale 
 \family sans
 (vedere la sezione
@@ -890,7 +944,7 @@ reference "sec:autodetected"
 
 
 \family default
-per avere una lista dei settaggi di\SpecialChar \menuseparator
+per avere una lista dei settaggi di\SpecialChar menuseparator
  questa sezione).Questo significa che
  ogni classe di testo addizionale che potreste aver aggiunto alla directory
  
@@ -904,15 +958,17 @@ L
 \bar default
 ayout
 \bar under
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 D
 \bar default
 ocument.
 \end_layout
 
 \begin_layout Itemize
-Similmente, se avete installato alcune classi di documento LaTeX nella vostra
- home directory, che LaTeX può trovare nel vostro path 
+Similmente, se avete installato alcune classi di documento \SpecialChar LaTeX
+ nella vostra
+ home directory, che \SpecialChar LaTeX
+ può trovare nel vostro path 
 \family typewriter
 TEXTINPUTS
 \family default
@@ -921,7 +977,8 @@ TEXTINPUTS
 status collapsed
 
 \begin_layout Plain Layout
-come pure se voi o LyX abbiate un file 
+come pure se voi o \SpecialChar LyX
+ abbiate un file 
 \family typewriter
 .layout
 \family default
@@ -935,7 +992,8 @@ come pure se voi o LyX abbiate un file
 \end_layout
 
 \begin_layout Itemize
-Se acquisite della documentazione aggiornata dal sito ftp di LyX e non potete
+Se acquisite della documentazione aggiornata dal sito ftp di \SpecialChar LyX
+ e non potete
  installarla perchè non avete i permessi di amministratore sul vostro sistema,
  potete semplicemente copiare i files in 
 \family typewriter
@@ -952,7 +1010,8 @@ elp
 \end_layout
 
 \begin_layout Section
-Lanciare LyX con configurazioni multiple
+Lanciare \SpecialChar LyX
+ con configurazioni multiple
 \end_layout
 
 \begin_layout Standard
@@ -965,7 +1024,8 @@ La libertà di configurazione della relativa directory locale può non essere
 \end_layout
 
 \begin_layout Standard
-Richiamando LyX con lo switch da riga di comando 
+Richiamando \SpecialChar LyX
+ con lo switch da riga di comando 
 \family typewriter
 -userdir
 \family default
@@ -975,9 +1035,11 @@ some directory
 \emph default
 > permette al programma di leggere la configurazione da quella directory
  e non dalla directory di default (potete scegliere la directory di default
- lanciando LyX senza lo switch descritto sopra).
- Se questa directory non esiste, LyX può crearla per voi proprio come fa
- per la directory di default la prima volta che si lancia il programma.
+ lanciando \SpecialChar LyX
+ senza lo switch descritto sopra).
+ Se questa directory non esiste, \SpecialChar LyX
+ può crearla per voi proprio come fa per
+ la directory di default la prima volta che si lancia il programma.
  Potete modificare le opzioni di configurazione in questa 
 \family typewriter
 Userdir
@@ -999,7 +1061,8 @@ Userdir/layouts
 \family default
  che volete disponibile per tutte le vostre configurazioni, dovete aggiungerlo
  ad ogni directory separatamente.
- Potete evitare questo col seguente trucco: dopo che LyX ha creato la directory
+ Potete evitare questo col seguente trucco: dopo che \SpecialChar LyX
+ ha creato la directory
  addizionale, la maggior parte delle sottodirectory (vedi sotto) sono vuote.
  Se volete che la nuova configurazione faccia da mirror ad una esistente,
  sostituite la sottodirectory vuota con un link simbolico alla relativa
@@ -1014,7 +1077,7 @@ doc/
 \bar under
 O
 \bar default
-ptions\SpecialChar \menuseparator
+ptions\SpecialChar menuseparator
 
 \bar under
 R
@@ -1042,18 +1105,20 @@ Usare il popup per la prima volta
 \end_layout
 
 \begin_layout Standard
-Storicamente, è possibile personalizzare il comportamento di LyX attraverso
+Storicamente, è possibile personalizzare il comportamento di \SpecialChar LyX
+ attraverso
  la modifica del contenuto del file 
 \family typewriter
 UserDir/lyxrc.
 
 \family default
- Questo è cambiato in LyX 1.1.6 perchè ora esiste un menu 
+ Questo è cambiato in \SpecialChar LyX
+ 1.1.6 perchè ora esiste un menu 
 \family sans
 \bar under
 E
 \bar default
-dit\SpecialChar \menuseparator
+dit\SpecialChar menuseparator
 
 \bar under
 P
@@ -1085,10 +1150,12 @@ Il nuovo file
 UserDir/preferences
 \family default
  conterrà solo i cambiamenti che sono stati fatti nel comportamento di base,
- alcuni dei quali sono ben codificati in LyX ed altri sono contenuti nel
- file di sistema 
+ alcuni dei quali sono ben codificati in \SpecialChar LyX
+ ed altri sono contenuti nel file
+ di sistema 
 \family typewriter
-LyXDir/lyxrc.defaults.
+\SpecialChar LyX
+Dir/lyxrc.defaults.
 
 \family default
  Notate che in entrambi i files le righe che iniziano con 
@@ -1102,7 +1169,8 @@ LyXDir/lyxrc.defaults.
  sono solo commenti e non sono interpretati.
  Tuttavia, solo gli amministratori di sistema dovrebbero editare 
 \family typewriter
-LyXDir/lyxrc.
+\SpecialChar LyX
+Dir/lyxrc.
 
 \family default
  Gli utenti dovrebbero usare la voce 
@@ -1110,7 +1178,7 @@ LyXDir/lyxrc.
 \bar under
 E
 \bar default
-dit\SpecialChar \menuseparator
+dit\SpecialChar menuseparator
 
 \bar under
 P
@@ -1128,7 +1196,7 @@ Speriamo che il menu
 \bar under
 E
 \bar default
-dit\SpecialChar \menuseparator
+dit\SpecialChar menuseparator
 
 \bar under
 P
@@ -1145,7 +1213,8 @@ references
  cambiamenti nel file associazioni) non l'avranno.
  Abbiate pazienza; questo è un work-in-progress.
  Se nulla sembra accadere come cambiamento salvate i cambiamenti e riavviate
- LyX.
+ \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Section
@@ -1154,12 +1223,13 @@ Schermo & Fonts
 
 \begin_layout Standard
 Il carattere usato per visualizzare i vostri documenti sullo schermo di
- LyX è molto importante, dato che leggerete tutti i documenti con questo
- carattere.
+ \SpecialChar LyX
+ è molto importante, dato che leggerete tutti i documenti con questo carattere.
  Inoltre è importante che il carattere sia leggibile ed abbia il miglior
  aspetto possibile.
- Il LyX team ha provato a fornire il migliore carattere predefinito, ma
- dato che praticamente tutti i sistemi X11 sono differenti, è molto probabile
+ Il \SpecialChar LyX
+ team ha provato a fornire il migliore carattere predefinito, ma dato
+ che praticamente tutti i sistemi X11 sono differenti, è molto probabile
  che il carattere predefinito sia sub-ottimale per il vostro sistema.
  Fortunatamente è possibile ovviare a tale situazione, ma prima di chiarirvi
  le modalità secondo le quali procedere, sarebbe bene che sapeste qualcosa
@@ -1172,7 +1242,8 @@ Notate che questa sezione tratta solo dei caratteri visibili sullo
 \emph on
 schermo
 \emph default
- all'interno della finestra di LyX.
+ all'interno della finestra di \SpecialChar LyX
+.
  I caratteri che appaioni sulla 
 \emph on
 carta
@@ -1281,7 +1352,8 @@ curier
 \end_layout
 
 \begin_layout Standard
-In seguito descriveremo cosa fare se in LyX il testo non ha un bell'aspetto.
+In seguito descriveremo cosa fare se in \SpecialChar LyX
+ il testo non ha un bell'aspetto.
  Partiremo con i parametri più importanti: DPI e lo zoom dei fonts.
 \end_layout
 
@@ -1290,18 +1362,22 @@ Settaggi DPI e Zoom di Font
 \end_layout
 
 \begin_layout Standard
-LyX automaticamente prova a scalare i fonts in modo da farli sembrare il
- più possibile uguali a quelli che verranno stampati, a meno del cosiddetto
+\SpecialChar LyX
+ automaticamente prova a scalare i fonts in modo da farli sembrare il più
+ possibile uguali a quelli che verranno stampati, a meno del cosiddetto
  fattore di zoom.
 \end_layout
 
 \begin_layout Standard
 Per far funzionare su ogni sistema, questo meccanismo sfrutta i settaggi
  dei DPI (dots per inch) dello schermo.
- Il settaggio dei DPI del vostro sistema è rilevato automaticamente da LyX
+ Il settaggio dei DPI del vostro sistema è rilevato automaticamente da \SpecialChar LyX
+
  attraverso le informazioni che fornisce il server X.
- Potete controllare cosa rileva LyX circa i DPI, lanciando LyX in questo
- modo: 
+ Potete controllare cosa rileva \SpecialChar LyX
+ circa i DPI, lanciando \SpecialChar LyX
+ in questo modo:
+ 
 \family typewriter
 lyx -dbg 2.
 
@@ -1329,7 +1405,8 @@ xdpyinfo
 \end_inset
 
  e scrivete quali sono i DPI per la risoluzione che usate (che dovrebbe
- essere simile a quella che LyX rileva).
+ essere simile a quella che \SpecialChar LyX
+ rileva).
  E' il numero menzionato come 
 \begin_inset Quotes eld
 \end_inset
@@ -1360,14 +1437,17 @@ Dopodichè prendete il buon vecchio righello e misurate la larghezza visibile
  dividendo il numero dei pixels della larghezza per la larghezza dell'immagine
  sullo schermo del monitor.
  Se questo numero è superiore a, per esempio, 5 DPI rispetto al valore autodeter
-minato, dovrete correggere l' X setup, o almeno dire a LyX che il valore
- di DPI è diverso da quello rilevato.
+minato, dovrete correggere l' X setup, o almeno dire a \SpecialChar LyX
+ che il valore di
+ DPI è diverso da quello rilevato.
 \end_layout
 
 \begin_layout Standard
 Se non potete correggere l'X setup (che sarebbe la soluzione migliore perchè
- ne beneficerebbero altri programmi oltre a LyX), è possibile comunicare
- a LyX il corretto settaggio DPI attraverso il menu 
+ ne beneficerebbero altri programmi oltre a \SpecialChar LyX
+), è possibile comunicare a
+ \SpecialChar LyX
+ il corretto settaggio DPI attraverso il menu 
 \family sans
 Preferences.
 
@@ -1380,13 +1460,16 @@ Se il testo è troppo piccolo o troppo grande per il vostro gusto, dovrete
  cercare di rimendiare attraverso lo zoom sul carattere.
  Questo settaggio è usato per scalare la grandezza del punto del testo.
  Se il vostro DPI è corretto, e lo zoom del carattere è settato a 100, questo
- significa che LyX proverà a mostrare il testo esattamente alla stessa grandezza
+ significa che \SpecialChar LyX
+ proverà a mostrare il testo esattamente alla stessa grandezza
  della pagina stampata.
  Se il fattore di zoom viene settato a 200, il testo visualizzato sarà il
  doppio di quello che si vedrà sulla pagina stampata.
- Naturalmente questo accadrà solo se LyX riesce a trovare ed usare un carattere
+ Naturalmente questo accadrà solo se \SpecialChar LyX
+ riesce a trovare ed usare un carattere
  che abbia una grandezza appropriata.
- Ma, dato che LyX è comunque un sistema WYSIWYM, questa limitazione, eventuale,
+ Ma, dato che \SpecialChar LyX
+ è comunque un sistema WYSIWYM, questa limitazione, eventuale,
  è improbabile.
 \end_layout
 
@@ -1399,7 +1482,7 @@ Font
 \begin_inset space ~
 \end_inset
 
-Zo\SpecialChar \@.
+Zo\SpecialChar endofsentence
 default  nel menu Preferences
 \family default
  per trovare una grandezza che vi soddisfi.
@@ -1435,7 +1518,8 @@ Comandi di definizione dei Fonts
 \end_layout
 
 \begin_layout Standard
-Come menzionato, LyX usa fonts bitmap non scalabili di default.
+Come menzionato, \SpecialChar LyX
+ usa fonts bitmap non scalabili di default.
  Per i fonts serif, è usato 
 \emph on
 times
@@ -1497,8 +1581,9 @@ A
 pply
 \family default
 .
- LyX poi riformatterà il vostro documento usando il nuovo font, e se il
- font vi piace, dovreste salvarlo con 
+ \SpecialChar LyX
+ poi riformatterà il vostro documento usando il nuovo font, e se il font
+ vi piace, dovreste salvarlo con 
 \family sans
 \bar under
 S
@@ -1562,8 +1647,9 @@ Usa fonts scalabili
 .
  Questo è utile solo se usate fonts bitmap, perchè solo questi non scalano
  perfettamente.
- Se definite questo flag, LyX userà solo le grandezze fisse del carattere
- disponibili, e questo garantisce che tutti i fonts bitmap sembrino buoni.
+ Se definite questo flag, \SpecialChar LyX
+ userà solo le grandezze fisse del carattere disponibi
+li, e questo garantisce che tutti i fonts bitmap sembrino buoni.
  (Potete vedere quale grandezze individuali del carattere son o disponibili
  con il comando 
 \family typewriter
@@ -1577,7 +1663,8 @@ man xlsfonts
 ).
  Tuttavia il prezzo da pagare è che la differenza tra la grandezza del font
  sullo schermo e la grandezza del font sulla carta sarà più grande perchè
- LyX dovrà accontentarsi della grandezza più vicina disponibile, e non proverà
+ \SpecialChar LyX
+ dovrà accontentarsi della grandezza più vicina disponibile, e non proverà
  a scalare la grandezza per adeguarsi.
  Inoltre, c'è il ridchio che alcune grandezze differenti da un punto di
  vista logico, come 
@@ -1591,7 +1678,8 @@ Larger
 , saranno mappate come lo stesso font sullo schermo, rendendo difficile
  identificare le differenze sullo schermo.
  Abbiamo deciso di non usare i fonts scalabili di default a causa di questi
- effetti, ma dato che LyX è un sistema WYSIWYM, a molte persone piace comunque
+ effetti, ma dato che \SpecialChar LyX
+ è un sistema WYSIWYM, a molte persone piace comunque
  usare i flag, pur sapendo che la grandezza del carattere sullo schermo
  potrebbe non essere veritiera.
  Ma ricordate che questo flag crea una differenza solo se usate font bitmap.
@@ -1635,7 +1723,8 @@ Usa fonts scalabili
 Qualche volta gli artefatti introdotti dall'uso del flag possono essere
  eliminate usando il comando fine-detail che definisce a quali grandezze
  di punto corrispondono le differenti grandezze logiche dei caratteri.
- Lanciate LyX con 
+ Lanciate \SpecialChar LyX
+ con 
 \family typewriter
 lyx -dbg 513
 \family default
@@ -1645,7 +1734,8 @@ lyx -dbg 513
 Preferences
 \family default
  fino a quando i risultati vi soddisfano.
- Questo è difficile da fare, perchè LyX usa i settaggi DPI e quelli di zoom
+ Questo è difficile da fare, perchè \SpecialChar LyX
+ usa i settaggi DPI e quelli di zoom
  del font per calcolare l'esatta grandezza del font sullo schermo da chiedere
  al server X.
  Se non riuscite ad ottenere risultati soddisfacenti con la tecnica dello
@@ -1668,7 +1758,8 @@ Codifica dei Fonts
 \end_layout
 
 \begin_layout Standard
-Di default, LyX userà dei font per scrivere un testo Western European, inclusi
+Di default, \SpecialChar LyX
+ userà dei font per scrivere un testo Western European, inclusi
  tutti i tipi di inglese.
  Viene definito attraverso il cosiddetto 
 \emph on
@@ -1719,8 +1810,10 @@ lyxrc
 \end_layout
 
 \begin_layout Standard
-Quando settate LyX per l'uso di una codifica differente, dovrete considerare
- i cambiamenti nei fonts della finestra pop-up di LyX.
+Quando settate \SpecialChar LyX
+ per l'uso di una codifica differente, dovrete considerare
+ i cambiamenti nei fonts della finestra pop-up di \SpecialChar LyX
+.
  Per esempio il menu 
 \family sans
 Table
@@ -1733,7 +1826,8 @@ of
 
 Contents
 \family default
- non sarà comprensibile fino a quando non dite a LyX di usare un font differente.
+ non sarà comprensibile fino a quando non dite a \SpecialChar LyX
+ di usare un font differente.
  Di default, il menu font è settato su 
 \family typewriter
 -*-helvetica-medium-r
@@ -1759,15 +1853,18 @@ screen_font_emenu
 Come potete vedere, ci sono alcune opzioni che possono essere usate per
  affinare l'aspetto dei vostri fonts.
  Questo non dovrebbe spaventarvi dal maneggiare coi settaggi, poichè dopo
- tutto, vi augurate di usare molto LyX in futuro.
+ tutto, vi augurate di usare molto \SpecialChar LyX
+ in futuro.
  E contrariamente ai veri word processors WYSIWYG, dove siete costretti
  ad usare fonts che hanno un aspetto buono sia sul video che sulla carta,
- LyX vi da la possibilità di usare fonts che sono disegnati per essere visti
+ \SpecialChar LyX
+ vi da la possibilità di usare fonts che sono disegnati per essere visti
  sullo schermo, se siete abbastanza fortunati da averli.
 \end_layout
 
 \begin_layout Standard
-Nella versione di LyX, proveremo a supportare il font renderer 
+Nella versione di \SpecialChar LyX
+, proveremo a supportare il font renderer 
 \family typewriter
 T1Lib
 \family default
@@ -1785,7 +1882,8 @@ anti-aliased
  Questo significa che ogni glifo è costituito da molte ombre colorate piuttosto
  che da soli due colori, creando un effetto di alta risoluzione.
  Questo non renderà solo il testo più leggibile sullo schermo, ma permetterà
- anche a LyX di avvicinare i fonts visti sullo scermo a quelli che verranno
+ anche a \SpecialChar LyX
+ di avvicinare i fonts visti sullo scermo a quelli che verranno
  stampati, dato che sarà ad esempio possibile settare un valore di 14.4 punti
  al contrario di ora che è possibile solo scegliere il valore arrotondato
  14.
@@ -1826,24 +1924,26 @@ Sto scherzando, ovviamente!
 Se, tuttavia, volete personalizzare le associazioni secondo i vostri specifici
  gusti, allora copiate il file della directory 
 \family typewriter
-LyXDir/bind/
+\SpecialChar LyX
+Dir/bind/
 \family default
  che meglio si adatta nella vostra 
 \family typewriter
 UserDir/bind/
 \family default
  e modificatelo.
- Non dimenticate di caricare questo nuovo file in LyX attraverso il menu
- 
+ Non dimenticate di caricare questo nuovo file in \SpecialChar LyX
+ attraverso il menu 
 \family sans
 Preferences
 \family default
- (per il momento dovete riavviare LyX per rendere effettivi i cambiamenti).
+ (per il momento dovete riavviare \SpecialChar LyX
+ per rendere effettivi i cambiamenti).
 \end_layout
 
 \begin_layout Standard
-LyX supporta l'internazionalizzazione dell'interfaccia utente (vedere il
- Capitolo
+\SpecialChar LyX
+ supporta l'internazionalizzazione dell'interfaccia utente (vedere il Capitolo
 \shape italic
 \emph on
 
@@ -1875,7 +1975,8 @@ viene settato con la variabile d'ambiente
 \family typewriter
 $LANG
 \family default
-, LyX proverà ad usare i bindfile preponendo 
+, \SpecialChar LyX
+ proverà ad usare i bindfile preponendo 
 \family typewriter
 $LANG_
 \family default
@@ -1885,11 +1986,12 @@ $LANG_
 \family typewriter
 bind/
 \family default
-personale e LyX li userà automaticamente.
+personale e \SpecialChar LyX
+ li userà automaticamente.
  [
 \emph on
 Nota dell'autore: non sono sicuro se è ancora vero ma forse qualcuno che
- utilizza questo metodo potrebbe testarlo---AL
+ utilizza questo metodo potrebbe testarlo—AL
 \emph default
 ].
 \end_layout
@@ -1921,7 +2023,8 @@ doppie virgolette
 \end_inset
 
 .
- Tutte le funzioni di LyX sono elencate nella 
+ Tutte le funzioni di \SpecialChar LyX
+ sono elencate nella 
 \emph on
 Guida di Riferimento.
 \end_layout
@@ -1950,7 +2053,8 @@ Preferences
 \family default
  in 
 \family typewriter
-LyXDir/ui/
+\SpecialChar LyX
+Dir/ui/
 \family default
 .
  Per il momento esiste solo un file, 
@@ -1962,8 +2066,9 @@ default.ui
 \family typewriter
 UserDir/ui/
 \family default
- e andate! Notate che, per il momento, dovete riavviare LyX per rendere
- effettivi i cambiamenti.
+ e andate! Notate che, per il momento, dovete riavviare \SpecialChar LyX
+ per rendere effettivi
+ i cambiamenti.
 \end_layout
 
 \begin_layout Standard
@@ -2032,12 +2137,14 @@ Convertitori, Formati e Visualizzatori
 \end_layout
 
 \begin_layout Standard
-LyX ha un nuovo e potente meccanismo per convertire da e verso ogni formato
+\SpecialChar LyX
+ ha un nuovo e potente meccanismo per convertire da e verso ogni formato
  di file utilizzando programmi esterni.
  Prendiamo un paio di formati, ad es.
  
 \family typewriter
-LaTeX
+\SpecialChar LaTeX
+
 \family default
  e 
 \family typewriter
@@ -2049,16 +2156,19 @@ PDF
 \end_layout
 
 \begin_layout Enumerate
-Una conversione diretta, da LaTeX a PDF usando pdflatex
+Una conversione diretta, da \SpecialChar LaTeX
+ a PDF usando pdflatex
 \end_layout
 
 \begin_layout Enumerate
-Una via più contorta attraverso formati e convertitori intermedi: LaTeX
- a DVI (usando latex) a PostScript® (usando dvips) a PDF (usando ps2pdf)
+Una via più contorta attraverso formati e convertitori intermedi: \SpecialChar LaTeX
+ a DVI
+ (usando latex) a PostScript® (usando dvips) a PDF (usando ps2pdf)
 \end_layout
 
 \begin_layout Standard
-LyX sceglierà sempre la via più veloce, così dovrete specificare due differenti
+\SpecialChar LyX
+ sceglierà sempre la via più veloce, così dovrete specificare due differenti
  nomi di Format per i files 
 \family typewriter
 .pdf
@@ -2090,7 +2200,7 @@ Nota dell'autore: Questa sezione probabilmente ha bisogno di essere espansa,
  e Cambiare Colori.
  La sezione Ascii-Export è ancora importante, sebbene ha bisogno di essere
  usata per differenziare l'approccio lyxrc da quello del menu Preference.
- --- AL
+ — AL
 \emph default
 ].
 \end_layout
@@ -2100,10 +2210,12 @@ Anteprima sullo schermo
 \end_layout
 
 \begin_layout Standard
-Oltre alla normale visualizzazione dei documenti attraverso LyX, è possibile
+Oltre alla normale visualizzazione dei documenti attraverso \SpecialChar LyX
+, è possibile
  avere un'anteprima del vostro documento nella forma in cui apparirà sulla
  carta dopo stampato.
- Di default LyX usa 
+ Di default \SpecialChar LyX
+ usa 
 \family typewriter
 xdvi
 \family default
@@ -2111,11 +2223,13 @@ xdvi
 \family typewriter
 dvi
 \family default
- (l'output di LaTeX).
+ (l'output di \SpecialChar LaTeX
+).
 \end_layout
 
 \begin_layout Standard
-LyX può anche usare 
+\SpecialChar LyX
+ può anche usare 
 \family typewriter
 dvips
 \family default
@@ -2220,9 +2334,11 @@ ps_command
 \family default
 \series default
  Definisce il programma per usare le figure PostScript all'interno di un
- documento LyX.
+ documento \SpecialChar LyX
+.
  Non è possibile includere nessuna opzione.
- Se viene definita una stringa vuota (""), LyX non processerà nessuna figura.
+ Se viene definita una stringa vuota (""), \SpecialChar LyX
+ non processerà nessuna figura.
  Questo può essere utile se avete una macchina lenta e lavorate con molte
  figure.
 \end_layout
@@ -2236,9 +2352,11 @@ ps_command
 default_papersize
 \family default
 \series default
- Setta la grandezza della carta usata da LyX per fare l'anteprima dei documenti.
+ Setta la grandezza della carta usata da \SpecialChar LyX
+ per fare l'anteprima dei documenti.
  Il valore di default è la carta USletter.
- Se LaTeX è configurato per usare una differente grandezza di default, potrete
+ Se \SpecialChar LaTeX
+ è configurato per usare una differente grandezza di default, potrete
  cambiare questo settaggio.
 \end_layout
 
@@ -2256,8 +2374,9 @@ ripulire
 \end_inset
 
  i files di testo esportati in ASCII.
- Notate che LyX automaticamente riconosce ed usa il miglior settaggio per
- il vostro sistema sin dalla fase di installazione, ma è possibile modificarli
+ Notate che \SpecialChar LyX
+ automaticamente riconosce ed usa il miglior settaggio per il
+ vostro sistema sin dalla fase di installazione, ma è possibile modificarli
  se non vi piacciono.
 \end_layout
 
@@ -2275,8 +2394,8 @@ plaintext_roff_command
 groff/troff/nroff
 \family default
  (referirsi alle relative man pages per ulteriori informazioni).
- Non definirlo per niente dice a LyX di usare il formattatore interno (inferiore
-).
+ Non definirlo per niente dice a \SpecialChar LyX
+ di usare il formattatore interno (inferiore).
  
 \end_layout
 
@@ -2354,7 +2473,8 @@ Stampante
 
 \begin_layout Standard
 Ci sono una serie di comandi che vi aiutano a settare il comando della stampante
- da LyX.
+ da \SpecialChar LyX
+.
  Normalmente si usano solo alcuni di questi, ma vengono riportati tutti
  per questione di completezza.
 \end_layout
@@ -2380,8 +2500,9 @@ printer
 print_command
 \family default
 \series default
- Questo valore definisce quale comando LyX deve essere usato per stampare
- il vostro documento.
+ Questo valore definisce quale comando \SpecialChar LyX
+ deve essere usato per stampare il
+ vostro documento.
 \end_layout
 
 \begin_layout Description
@@ -2502,7 +2623,8 @@ print_extra_options
 print_spool_cmd
 \family default
 \series default
- Se si specifica qualcosa in questo comando, LyX stamperà in due fasi: Prima
+ Se si specifica qualcosa in questo comando, \SpecialChar LyX
+ stamperà in due fasi: Prima
  sarà eseguito il programma specificato nel comando 
 \family typewriter
 
@@ -2557,7 +2679,8 @@ Guida di Riferimento
 \begin_layout Standard
 
 \family typewriter
-set-color LyXName X11Color
+set-color \SpecialChar LyX
+Name X11Color
 \end_layout
 
 \begin_layout Standard
@@ -2576,7 +2699,7 @@ Di seguito è presentata una lista (parziale) delle funzioni e dei colori
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -2587,7 +2710,8 @@ Di seguito è presentata una lista (parziale) delle funzioni e dei colori
 \begin_layout Plain Layout
 
 \lang english
-Nome LyX
+Nome \SpecialChar LyX
+
 \end_layout
 
 \end_inset
@@ -2703,7 +2827,8 @@ latex
 \begin_layout Plain Layout
 
 \lang english
-LaTeX code
+\SpecialChar LaTeX
+ code
 \end_layout
 
 \end_inset
@@ -2910,7 +3035,8 @@ La lista completa si trova correntemente solo nel file sorgente LColor.cpp
 \end_layout
 
 \begin_layout Section
-TeX
+\SpecialChar TeX
+
 \end_layout
 
 \begin_layout Standard
@@ -2921,15 +3047,17 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-come la mia macchina da ufficio -- Dave johnson
+come la mia macchina da ufficio – Dave johnson
 \end_layout
 
 \end_inset
 
- hanno ancora la versione 2.09 di LaTeX.
+ hanno ancora la versione 2.09 di \SpecialChar LaTeX
+.
  Sebbene non possiamo immaginare perchè questo dovrebbe essere ancora il
  default dato che la versione 2.09, essendo questa obsoleta dal 1994, dovremo
- comunque continuare a riferirci con LyX a tale ambiente.
+ comunque continuare a riferirci con \SpecialChar LyX
+ a tale ambiente.
  Non bisogna 
 \emph on
 pensare
@@ -2942,14 +3070,17 @@ fixing
 \begin_inset Quotes erd
 \end_inset
 
- di LyX per girare sotto LaTeX 2.09.
- Aggiornare il vostro LaTeX sarà più facile, ed è comunque la soluzione
- migliore.
+ di \SpecialChar LyX
+ per girare sotto \SpecialChar LaTeX
+ 2.09.
+ Aggiornare il vostro \SpecialChar LaTeX
+ sarà più facile, ed è comunque la soluzione migliore.
  Molti grandi sistemi dovrebbero avere, anche se di default hanno la 2.09,
- una versione disponibile di LaTeX2, ma forse l'eseguibile potrebbe avere
- un altro nome.
- Potete cambiare il nome del comando LaTeX appropriato, come ad esempio
- 
+ una versione disponibile di \SpecialChar LaTeX
+2, ma forse l'eseguibile potrebbe avere un
+ altro nome.
+ Potete cambiare il nome del comando \SpecialChar LaTeX
+ appropriato, come ad esempio 
 \begin_inset Quotes erd
 \end_inset
 
@@ -2970,7 +3101,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \emph on
-come la mia macchina da ufficio -- Dave johnson
+come la mia macchina da ufficio – Dave johnson
 \end_layout
 
 \end_inset
@@ -2990,9 +3121,9 @@ nel vostro file
 lyxrc
 \family default
 .
- Al momento dell'installazione, LyX proverà a rilevare automaticamente se
- questo settaggio è necessario, quindi normalmente, non ve ne dovrete preoccupar
-e.
+ Al momento dell'installazione, \SpecialChar LyX
+ proverà a rilevare automaticamente se questo
+ settaggio è necessario, quindi normalmente, non ve ne dovrete preoccupare.
 \end_layout
 
 \begin_layout Section
@@ -3013,7 +3144,7 @@ O
 \bar default
 ptions
 \bar under
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 R
 \bar default
 econfigure.
@@ -3049,7 +3180,8 @@ niente
 latex_command
 \family default
 \series default
- è settato su un processore LaTeX2e valido (programmi testati sono 
+ è settato su un processore \SpecialChar LaTeX2e
+ valido (programmi testati sono 
 \family typewriter
 latex
 \family default
@@ -3228,7 +3360,8 @@ T1
 \family typewriter
 ec
 \family default
- sono rilevati e LaTeX ha un supporto interno per questi fonts.
+ sono rilevati e \SpecialChar LaTeX
+ ha un supporto interno per questi fonts.
  Potete settarli manualmente se avete i cosiddetti fonts 
 \family typewriter
 dc
@@ -3246,7 +3379,8 @@ Ci sono molti altri comandi
 \family typewriter
 lyxrc
 \family default
- che possono essere usati per personalizzare il comportamento di LyX.
+ che possono essere usati per personalizzare il comportamento di \SpecialChar LyX
+.
  Abbiamo attualmente ancora necessità di documentarli in questa sede, ma
  ancora, il file 
 \family typewriter
@@ -3262,7 +3396,8 @@ Guida di RIferimento,
 \end_layout
 
 \begin_layout Chapter
-Il Server LyX
+Il Server \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Section
@@ -3270,19 +3405,26 @@ Introduzione
 \end_layout
 
 \begin_layout Standard
-Il server LyX è un metodo implementato in LyX che abilita altri programmi
- a parlare con LyX, a chiamare comandi LyX e ad ottenere informazioni sullo
- stato interno di LyX.
+Il server \SpecialChar LyX
+ è un metodo implementato in \SpecialChar LyX
+ che abilita altri programmi a parlare
+ con \SpecialChar LyX
+, a chiamare comandi \SpecialChar LyX
+ e ad ottenere informazioni sullo stato interno
+ di \SpecialChar LyX
+.
  E' uno strumento principalmente indirizzato ad utenti esperti, che dovrebbero
  trovarlo utile.
 \end_layout
 
 \begin_layout Section
-Iniziare il Server LyX
+Iniziare il Server \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
-Il server LyX lavora attraverso l'uso di un paio di canali.
+Il server \SpecialChar LyX
+ lavora attraverso l'uso di un paio di canali.
  Queste sono di solito locate nella vostra directory home e si chiamano
  
 \begin_inset Quotes eld
@@ -3332,7 +3474,8 @@ serverpipe "/home/myhome/.lyxpipe"
 \end_layout
 
 \begin_layout Standard
-LyX aggiungerà '
+\SpecialChar LyX
+ aggiungerà '
 \family typewriter
 .in
 \family default
@@ -3341,10 +3484,14 @@ LyX aggiungerà '
 .out
 \family default
 ' per creare i canali.
- La precedente riga ha inoltre l'effetto di attivare il server LyX.
- se uno dei canali già esiste, LyX assumerà che c'è un altro processo LyX
- in esecuzione e non lascerà partire il server.
- Per avere molti processi LyX con rispettivi servers in contemporanea, dovete
+ La precedente riga ha inoltre l'effetto di attivare il server \SpecialChar LyX
+.
+ se uno dei canali già esiste, \SpecialChar LyX
+ assumerà che c'è un altro processo \SpecialChar LyX
+ in esecuzion
+e e non lascerà partire il server.
+ Per avere molti processi \SpecialChar LyX
+ con rispettivi servers in contemporanea, dovete
  cambiare il 
 \family typewriter
 lyxrc
@@ -3354,16 +3501,20 @@ lyxrc
 
 \begin_layout Standard
 Se state sviluppando un programma client, potreste trovare utile abilitare
- una modalità di debugging dal server LyX.
- Potete farlo facendo partire LyX con 
+ una modalità di debugging dal server \SpecialChar LyX
+.
+ Potete farlo facendo partire \SpecialChar LyX
+ con 
 \family typewriter
 lyx -dbg 8192.
 \end_layout
 
 \begin_layout Standard
-Attenzione: se LyX va in crash, non può gestire la rimozione dei canali,
- e quindi bisognerà farlo manualmente.
- Se LyX parte e i canali sono già esistenti, non farà partire alcun server.
+Attenzione: se \SpecialChar LyX
+ va in crash, non può gestire la rimozione dei canali, e
+ quindi bisognerà farlo manualmente.
+ Se \SpecialChar LyX
+ parte e i canali sono già esistenti, non farà partire alcun server.
 \end_layout
 
 \begin_layout Standard
@@ -3380,8 +3531,9 @@ Comunicazione normale
 \end_layout
 
 \begin_layout Standard
-Per assegnare una chiamata LyX, il client scrive una riga di codice ASCII
- nel canale di input.
+Per assegnare una chiamata \SpecialChar LyX
+, il client scrive una riga di codice ASCII nel
+ canale di input.
  Questa linea ha il seguente formato:
 \end_layout
 
@@ -3405,8 +3557,9 @@ In questo caso
 clientname
 \emph default
  è un nome che il client può scegliere arbitrariamente.
- Il suo unico uso è che LyX gli risponderà se questi manda una risposta
- - così un client può mandare risultati da differenti richiedenti.
+ Il suo unico uso è che \SpecialChar LyX
+ gli risponderà se questi manda una risposta - così
+ un client può mandare risultati da differenti richiedenti.
 \end_layout
 
 \begin_layout Standard
@@ -3414,7 +3567,8 @@ clientname
 \emph on
 function
 \emph default
- è la funzione che volete che LyX esegua.
+ è la funzione che volete che \SpecialChar LyX
+ esegua.
  E' lo stesso dei comandi che dovreste usare in minibuffer.
 \end_layout
 
@@ -3436,7 +3590,8 @@ auto-inserimento
 \end_layout
 
 \begin_layout Quote
-La risposta da LyX arriverà nel canale di output e sarà del tipo
+La risposta da \SpecialChar LyX
+ arriverà nel canale di output e sarà del tipo
 \end_layout
 
 \begin_layout Quote
@@ -3467,8 +3622,9 @@ function
 data
 \emph default
  è un'informazione più o meno utile a seconda dell'esecuzione del comando.
- Alcuni comandi restituiscono informazioni circa lo stato interno di LyX,
- come il 
+ Alcuni comandi restituiscono informazioni circa lo stato interno di \SpecialChar LyX
+, come
+ il 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3489,7 +3645,8 @@ vuote
 \end_layout
 
 \begin_layout Standard
-In caso di errori, la risposta da LyX avrà questa forma
+In caso di errori, la risposta da \SpecialChar LyX
+ avrà questa forma
 \end_layout
 
 \begin_layout Quote
@@ -3539,7 +3696,8 @@ Notifica
 \end_layout
 
 \begin_layout Standard
-LyX può notificare ai clients gli eventi asincroni.
+\SpecialChar LyX
+ può notificare ai clients gli eventi asincroni.
  Correntemente lo farà soltanto se l'utente assegna una sequenza di tasti
  alla funzione 
 \begin_inset Quotes eld
@@ -3553,7 +3711,8 @@ notifica
 \end_layout
 
 \begin_layout Standard
-Il formato della stringa che LyX manda è:
+Il formato della stringa che \SpecialChar LyX
+ manda è:
 \end_layout
 
 \begin_layout Quote
@@ -3574,8 +3733,9 @@ key-sequence
 \end_layout
 
 \begin_layout Standard
-Questo meccanismo può essere usato per estendere il set di comandi LyX ed
- implementare macro: assegnare una sequenza di tasti a 
+Questo meccanismo può essere usato per estendere il set di comandi \SpecialChar LyX
+ ed implement
+are macro: assegnare una sequenza di tasti a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3585,12 +3745,14 @@ notifica
 
 , lanciare un client che ascolta sul canale d'uscita, fornisce il comando
  relativo alla sequenza e inizia una funzione che può usare le chiamate
- e le richieste di LyX per assegnare un comando o una serie di comandi a
- LyX.
+ e le richieste di \SpecialChar LyX
+ per assegnare un comando o una serie di comandi a \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Section
-Il Protocollo Server LyX semplice
+Il Protocollo Server \SpecialChar LyX
+ semplice
 \end_layout
 
 \begin_layout Standard
@@ -3639,8 +3801,9 @@ hello
 \begin_inset Quotes erd
 \end_inset
 
- è ricevuto da un client, LyX ritornerà indietro per informare il client
- che sta ascoltando il suo messaggio, mentre 
+ è ricevuto da un client, \SpecialChar LyX
+ ritornerà indietro per informare il client che
+ sta ascoltando il suo messaggio, mentre 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3648,11 +3811,14 @@ bye
 \begin_inset Quotes erd
 \end_inset
 
- mandato da LyX informa i clients che LyX sta chiudendo.
+ mandato da \SpecialChar LyX
+ informa i clients che \SpecialChar LyX
+ sta chiudendo.
 \end_layout
 
 \begin_layout Chapter
-Internazionalizzare LyX
+Internazionalizzare \SpecialChar LyX
+
 \begin_inset CommandInset label
 LatexCommand label
 name "chap:i18n"
@@ -3663,8 +3829,10 @@ name "chap:i18n"
 \end_layout
 
 \begin_layout Standard
-LyX supporta l'uso di interfacce tradotte.
- L'ultima volta che abbiamo controllato, LyX forniva testi in 14 linguaggi
+\SpecialChar LyX
+ supporta l'uso di interfacce tradotte.
+ L'ultima volta che abbiamo controllato, \SpecialChar LyX
+ forniva testi in 14 linguaggi
  diversi oltre l'inglese di base.
  Il linguaggio scelto è definito linguaggio 
 \emph on
@@ -3687,7 +3855,8 @@ Notate che queste traduzioni funzionano, ma contengono alcuni difetti.
  A volte , molto semplicemente, non ci sono abbastanza lettere disponibili.
  Altre volte, il traduttore non lo ha ancorafatto.
  Cercheremo di ovviare a questi inconvenienti nelle prossime versioni di
- LyX.
+ \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Section
@@ -3730,7 +3899,8 @@ Evidenetemente vorrete mettere la linea appropriata in
 ~/.xinitrc
 \family default
  in modo che la traduzione sia attivata di default.
- Ricordate che se LyX è configurato e compilato con 
+ Ricordate che se \SpecialChar LyX
+ è configurato e compilato con 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3766,10 +3936,10 @@ begin{sloppypar}
 \end_layout
 
 \begin_layout Standard
-Una causa principale di inconsistenza nelle versioni tradotte di LyX è il
- fatto che tutte le scorciatoie da tastiera per le funzioni del menu sono
- basate sulla versione inglese del testo Ad esempio, l'entrata nel menu
- 
+Una causa principale di inconsistenza nelle versioni tradotte di \SpecialChar LyX
+ è il fatto
+ che tutte le scorciatoie da tastiera per le funzioni del menu sono basate
+ sulla versione inglese del testo Ad esempio, l'entrata nel menu 
 \family sans
 M-f t
 \family default
@@ -3777,7 +3947,8 @@ M-f t
  Questo è semplice da cambiare, come tutte le scorciatoie delle operazioni
  del menu definite nel file unico 
 \family typewriter
-LyXDir/bind/menus.bind
+\SpecialChar LyX
+Dir/bind/menus.bind
 \family default
 .
  Ogni utente può avere la propria copia di questo file nella propria directory
@@ -3797,7 +3968,7 @@ M-d v
 \family default
  (per 
 \family sans
-Date\SpecialChar \menuseparator
+Date\SpecialChar menuseparator
 Vorlage).
 
 \family default
@@ -3807,7 +3978,8 @@ menus.bind
 \family default
  si possono trovare in 
 \family typewriter
-LyXDir/bind/
+\SpecialChar LyX
+Dir/bind/
 \series bold
 xx
 \series default
@@ -3828,7 +4000,8 @@ $LANG=
 xx
 \family default
 \series default
-), saranno automaticamente usati da LyX.
+), saranno automaticamente usati da \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -3870,8 +4043,9 @@ word-delete-forward
 \end_layout
 
 \begin_layout Standard
-Dalla versione 1.0 di LyX, i nomi tradotti per i menu top level (tradotti
- nei files 
+Dalla versione 1.0 di \SpecialChar LyX
+, i nomi tradotti per i menu top level (tradotti nei
+ files 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3891,7 +4065,8 @@ menus.bind
 \end_layout
 
 \begin_layout Section
-Tradurre LyX
+Tradurre \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Subsection
@@ -3899,11 +4074,12 @@ Tradurre l'interfaccia grafica utente (messaggi di testo).
 \end_layout
 
 \begin_layout Standard
-LyX usa la libreria GNU gettext per gestire l'internazionalizzazione dell'interf
-accia.
- Per far parlare a LyX il vostro linguaggio preferito in tutti i menu e
- le caselle di diagolo, avete bisogno di un po-file per quel determinato
- linguaggio.
+\SpecialChar LyX
+ usa la libreria GNU gettext per gestire l'internazionalizzazione dell'interfacc
+ia.
+ Per far parlare a \SpecialChar LyX
+ il vostro linguaggio preferito in tutti i menu e le
+ caselle di diagolo, avete bisogno di un po-file per quel determinato linguaggio.
  Quando questo è reperibile, dovrete creare da questi un mo-file ed installarlo.
  Tutti i passaggi necessari ad eseguire questa operazione sono spiegati
  nella documentazione di GNU gettext, ma, in breve, questo è quello che
@@ -4080,9 +4256,11 @@ Aggiungere un nuovo file po alla
 \emph on
 distribuzion
 \emph default
-e di LyX comprende il cambiamento degli script di configurazione ed oltre,
- ma per come lavora gettext, attualmente non avete bisogno di codice LyX
- per tradurlo---se si ha 
+e di \SpecialChar LyX
+ comprende il cambiamento degli script di configurazione ed oltre,
+ ma per come lavora gettext, attualmente non avete bisogno di codice \SpecialChar LyX
+ per
+ tradurlo—se si ha 
 \family typewriter
 lyx.pot
 \family default
@@ -4091,7 +4269,8 @@ lyx.pot
 
 \begin_layout Standard
 Se avete scritto un file di traduzione per un linguaggio che attualmente
- LyX non supporta, ritenetevi liberi di introdurlo magari mandando una patch.
+ \SpecialChar LyX
+ non supporta, ritenetevi liberi di introdurlo magari mandando una patch.
  In questo caso vi raccomandiamo di leggere il README della directory 
 \family typewriter
 LYX-SOURCE-DIR/po/
@@ -4123,10 +4302,13 @@ Ad Aprile 1999, quasi tutti i documenti sono stati tradotti in tedesco.
 \end_inset
 
 , e il locale è adeguatamente settato, queste saranno usate automaticamente
- da LyX.
- LyX cerca di tradurre le versioni come 
+ da \SpecialChar LyX
+.
+ \SpecialChar LyX
+ cerca di tradurre le versioni come 
 \family typewriter
-LyXDir/doc/
+\SpecialChar LyX
+Dir/doc/
 \series bold
 xx
 \series default
@@ -4155,8 +4337,8 @@ DocName
 \end_layout
 
 \begin_layout Itemize
-Controllare la pagina web delle traduzioni The LyX Developer's Web Site
- 
+Controllare la pagina web delle traduzioni The \SpecialChar LyX
+ Developer's Web Site 
 \begin_inset Flex URL
 status collapsed
 
@@ -4187,7 +4369,7 @@ Intro.lyx
 \family default
  (
 \family sans
-Help\SpecialChar \-
+Help\SpecialChar softhyphen
  paese.
  Inventare una vostra propria terminologia potrebbe solo creare confusione
  al lettore.
@@ -4215,7 +4397,8 @@ Fate una copia del documento.
 \end_layout
 
 \begin_layout Itemize
-Qualche volta il documento originale (dal team LyX) viene aggiornato.
+Qualche volta il documento originale (dal team \SpecialChar LyX
+) viene aggiornato.
  Usate lo strumento CVSweb reperibile presso il sito dello sviluppatore
  per vedere i cambiamenti avvenuti
 \begin_inset Foot
@@ -4587,7 +4770,8 @@ Circa i caratteri, backslash non è presente, quindi per inserirlo avete
  bisogno del doppio backslash.
  Inoltre virgolette e # hanno differenti significati.
  # segna i commenti, le virgolette iniziano e finiscono i comandi in stile
- LaTeX.
+ \SpecialChar LaTeX
+.
  Per immettere le virgolette dovete usare 
 \family typewriter
 
@@ -5096,7 +5280,8 @@ Dopo la mappatura fatta con
 \family default
  mappa le stringhe che i symboli generano rispetto ai caratteri del font
  corrente.
- La corrente distribuzione di LyX include almeno i files 
+ La corrente distribuzione di \SpecialChar LyX
+ include almeno i files 
 \family typewriter
 iso8859-1.cdef
 \family default
@@ -5196,7 +5381,8 @@ iso-8859-7.cdef
 \end_layout
 
 \begin_layout Standard
-Se LyX non trova una mappatura per la stringa prodotta dalla pressione del
+Se \SpecialChar LyX
+ non trova una mappatura per la stringa prodotta dalla pressione del
  tasto o da una sequenza con tasti morti, controllerà se assomiglia ad un
  carattere accentato e proverà a disegnare un accento sul carattere sullo
  schermo.
@@ -5233,7 +5419,8 @@ Supponiamo di avere bisogno di un carattere circonflesso,
 
 Shift-
 \family default
-6] al comando LyX 
+6] al comando \SpecialChar LyX
+ 
 \family typewriter
 accent-circumflex
 \family default
@@ -5261,7 +5448,8 @@ lyxrc
 \begin_inset Quotes erd
 \end_inset
 
-, tuttavia, LyX segnalerà con un beep che l'operazione non è possibile dato
+, tuttavia, \SpecialChar LyX
+ segnalerà con un beep che l'operazione non è possibile dato
  che la t non ha mai accento.
  Premere 
 \family sans
@@ -5351,7 +5539,8 @@ Shift
 usldead_cedilla
 \family default
  e successivamente, associando questo tasto simbolico al corrispondente
- comando LyX.
+ comando \SpecialChar LyX
+.
 \begin_inset Foot
 status collapsed
 
@@ -5424,7 +5613,8 @@ Mode_Switch
 Ctrl-
 \family default
 , una funzione libera, ecc.
- Come per i comandi LyX che producono accenti, consultate il 
+ Come per i comandi \SpecialChar LyX
+ che producono accenti, consultate il 
 \emph on
 Manuale di Riferimento
 \emph default
@@ -5444,7 +5634,8 @@ Potete editare il vostro file
 lyxrc
 \family default
  in modo che il linguaggio da voi preferito sia configurato e caricato automatic
-amente allo startup di LyX.
+amente allo startup di \SpecialChar LyX
+.
  Questa sezione descrive i comandi 
 \family typewriter
 lyxrc
@@ -5518,10 +5709,13 @@ name "chap:textclass"
 
 \begin_layout Standard
 In questo capitolo si descrivono le procedure per creare ed installare nuovi
- layouts di LyX e files template, come anche si procederà ad illustrare
- la corretta installazione di nuove classi di documento LaTeX.
- Alcune definizioni: una classe di documento è un file LaTeX (che di solito
- hanno estensione in 
+ layouts di \SpecialChar LyX
+ e files template, come anche si procederà ad illustrare la
+ corretta installazione di nuove classi di documento \SpecialChar LaTeX
+.
+ Alcune definizioni: una classe di documento è un file \SpecialChar LaTeX
+ (che di solito hanno
+ estensione in 
 \family typewriter
 .cls
 \family default
@@ -5532,8 +5726,11 @@ In questo capitolo si descrivono le procedure per creare ed installare nuovi
 ) che descrive il formato di un documento come un articolo, report, prestampa
  di giornale, ecc.
  e tutti i comandi di cui si ha bisogno per realizzare quel formato.
- Un file layout è un file LyX che corrisponde ad una classe di documento
- LaTeX e che dice a LyX come 
+ Un file layout è un file \SpecialChar LyX
+ che corrisponde ad una classe di documento \SpecialChar LaTeX
+ e
+ che dice a \SpecialChar LyX
+ come 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5551,7 +5748,8 @@ textclass
 \begin_inset Quotes erd
 \end_inset
 
- che è il costrutto interno che LyX usa per fare il rendering dello schermo.
+ che è il costrutto interno che \SpecialChar LyX
+ usa per fare il rendering dello schermo.
  
 \begin_inset Quotes eld
 \end_inset
@@ -5569,23 +5767,29 @@ textclass
 \end_inset
 
  possono a volta essere usate come sinonimi, ma è meglio riferirsi al file
- come il layout, e all'oggetto residente nella memoria di LyX come textclass.
- Un file template è semplicemente un documento LyX che contiene un set di
- righe predefinite per una data classe di documento che sono generalmente
- richiesti per quella classe.
+ come il layout, e all'oggetto residente nella memoria di \SpecialChar LyX
+ come textclass.
+ Un file template è semplicemente un documento \SpecialChar LyX
+ che contiene un set di righe
+ predefinite per una data classe di documento che sono generalmente richiesti
+ per quella classe.
  I templates sono in particolare utili per cose come i manoscritti di giornale
  che devono essere processati elettronicamente.
  
 \end_layout
 
 \begin_layout Section
-Installare un nuovo pacchetto LaTeX
+Installare un nuovo pacchetto \SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Standard
-Alcune installazioni possono non includere un pacchetto LaTeX che vorreste
- usare in LyX.
- Ad esempio, vorreste avere FoilTeX, un pacchetto comune (e molto potente)
+Alcune installazioni possono non includere un pacchetto \SpecialChar LaTeX
+ che vorreste usare
+ in \SpecialChar LyX
+.
+ Ad esempio, vorreste avere Foil\SpecialChar TeX
+, un pacchetto comune (e molto potente)
  per preparare slides o grafici per capiprogetto.
 \begin_inset Foot
 status collapsed
@@ -5593,15 +5797,18 @@ status collapsed
 \begin_layout Plain Layout
 Vedere il manuale 
 \emph on
-Additional LyX Features
+Additional \SpecialChar LyX
+ Features
 \emph default
- per ulteriori informazioni su FoilTeX
+ per ulteriori informazioni su Foil\SpecialChar TeX
+
 \end_layout
 
 \end_inset
 
 Ecco di seguito tutti i passaggi necessari per avere il pacchetto e lanciarlo
- se si usa una recente versione di teTeX
+ se si usa una recente versione di te\SpecialChar TeX
+
 \begin_inset Foot
 status collapsed
 
@@ -5625,7 +5832,8 @@ status collapsed
 \begin_layout Plain Layout
 Vedere il manuale 
 \emph on
-Inventory of your LaTeX configuration
+Inventory of your \SpecialChar LaTeX
+ configuration
 \emph default
  per i dettagli su cosa è CTAN e dove possono essere trovate le classi di
  documento supportate.
@@ -5675,6 +5883,10 @@ texmf.cnf
 \family default
 .
  Di solito dovete modificare solo due cose:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -5737,7 +5949,8 @@ texmf
 
 \begin_layout Enumerate
 Installare il pacchetto.
- Ad esempio, vogliamo scompattare l'archivio FoilTeX e creare 
+ Ad esempio, vogliamo scompattare l'archivio Foil\SpecialChar TeX
+ e creare 
 \family typewriter
 /usr/local/texmf/tex/latex/foiltex
 \family default
@@ -5763,12 +5976,13 @@ texhash
 \end_layout
 
 \begin_layout Enumerate
-Dall'interno di LyX, fate: 
+Dall'interno di \SpecialChar LyX
+, fate: 
 \family sans
 \bar under
 O
 \bar default
-ptions\SpecialChar \menuseparator
+ptions\SpecialChar menuseparator
 
 \bar under
 R
@@ -5776,17 +5990,19 @@ R
 econfigure
 \family default
 .
- Riavviate LyX.
+ Riavviate \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
-Ora dovreste vedere il vostro nuovo pacchetto--ad esempio 
+Ora dovreste vedere il vostro nuovo pacchetto–ad esempio 
 \family sans
-slides (FoilTeX)
+slides (Foil\SpecialChar TeX
+)
 \family default
----sotto 
+—sotto 
 \family sans
-Layout\SpecialChar \menuseparator
+Layout\SpecialChar menuseparator
 Document
 \family default
 , campo 
@@ -5796,7 +6012,8 @@ Class
 .
  Notate che ci sono modi più semplici per installare pacchetti: potete aggiunger
 e un link alla nuova directory del pacchetto nella directory di sistema
- LaTeX (
+ \SpecialChar LaTeX
+ (
 \family typewriter
 $TEXMF/tex/latex
 \family default
@@ -5820,7 +6037,8 @@ Layouts
 
 \begin_layout Standard
 Questa sezione descrive come scrivere ed installare i propri files di layout
- di LyX (anche detti textclass), utilizzando la textclass 
+ di \SpecialChar LyX
+ (anche detti textclass), utilizzando la textclass 
 \family typewriter
 article
 \family default
@@ -5830,19 +6048,24 @@ article
 .layout
 \family default
  descrivono quali stili di paragrafi sono disponibili per una data classe
- di documenti e come LyX dovrebbe mostrarli.
+ di documenti e come \SpecialChar LyX
+ dovrebbe mostrarli.
  Proveremo qui a fornire un'accurata descrizione del processo; tuttavia,
- ci sono così tanti tipi di documenti supportati dalle classi LaTeX da renderci
+ ci sono così tanti tipi di documenti supportati dalle classi \SpecialChar LaTeX
+ da renderci
  impossibile fornire una descrizione esaustiva dell'argomento e delle possibilit
 à che si possono manifestare.
 \end_layout
 
 \begin_layout Standard
 Quando programmate di scrivere un nuovo layout, è estremamente utile guardare
- prima i layout di esempio distribuiti con LyX.
- Se usate una classe di documento LaTeX particolarmente bella che può essere
+ prima i layout di esempio distribuiti con \SpecialChar LyX
+.
+ Se usate una classe di documento \SpecialChar LaTeX
+ particolarmente bella che può essere
  di interesse anche per altre persone e che abbia un buon corrispondente
- layout in LyX, siete liberi di mandarcelo in modo da poterlo inserire nella
+ layout in \SpecialChar LyX
+, siete liberi di mandarcelo in modo da poterlo inserire nella
  distribuzione.
 \end_layout
 
@@ -5899,13 +6122,18 @@ Supportare nuove classi di documento
 
 \begin_layout Standard
 Ci sono tre situazioni che potete incontrare se volete supportare una nuova
- classe di documento LaTeX.
- I due tipi più semplici coinvolgono classe (.cls) e style (.sty) LaTeX2e.
+ classe di documento \SpecialChar LaTeX
+.
+ I due tipi più semplici coinvolgono classe (.cls) e style (.sty) \SpecialChar LaTeX2e
+.
  Se siete sfortunati potreste incappare nella terza situazione di supportare
- un file di stile LaTeX 2.09.
+ un file di stile \SpecialChar LaTeX
+ 2.09.
  Il processo di creazione di un file di layout per queste tre situazioni
- è simile; tuttavia un passo in più è richiesto per permettere a LyX di
- usare LaTeX 2.09.
+ è simile; tuttavia un passo in più è richiesto per permettere a \SpecialChar LyX
+ di usare
+ \SpecialChar LaTeX
+ 2.09.
 \end_layout
 
 \begin_layout Subsection
@@ -5943,7 +6171,8 @@ myclass.layout
 \begin_layout LyX-Code
 
 \backslash
-DeclareLaTeXClass{report}
+Declare\SpecialChar LaTeX
+Class{report}
 \end_layout
 
 \begin_layout Standard
@@ -5953,7 +6182,8 @@ in modo da avere
 \begin_layout LyX-Code
 
 \backslash
-DeclareLaTeXClass[report, myclass.sty]{report (myclass)}
+Declare\SpecialChar LaTeX
+Class[report, myclass.sty]{report (myclass)}
 \end_layout
 
 \begin_layout Standard
@@ -5971,12 +6201,13 @@ presso l'inizio del file.
 \end_layout
 
 \begin_layout Standard
-Lanciamo LyX e selezioniamo 
+Lanciamo \SpecialChar LyX
+ e selezioniamo 
 \family sans
 \bar under
 O
 \bar default
-ptions\SpecialChar \menuseparator
+ptions\SpecialChar menuseparator
 
 \bar under
 R
@@ -5984,7 +6215,8 @@ R
 econfigure
 \family default
 .
- Riavviamo LyX e proviamo a creare un nuovo documento.
+ Riavviamo \SpecialChar LyX
+ e proviamo a creare un nuovo documento.
  Dovreste vedere 
 \family sans
 
@@ -6008,7 +6240,7 @@ L
 \bar default
 ayout
 \bar under
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 D
 \bar default
 ocument
@@ -6034,7 +6266,8 @@ Report
 \end_layout
 
 \begin_layout Subsection
-File cls LaTeX2e
+File cls \SpecialChar LaTeX2e
+
 \end_layout
 
 \begin_layout Standard
@@ -6048,14 +6281,16 @@ vedervela da soli
 
  con il vostro layout.
  Raccomandiamo fortemente di copiare un file di layout esistente che usa
- una classe di testo LaTeX simile e modificarlo per quanto possibile.
+ una classe di testo \SpecialChar LaTeX
+ simile e modificarlo per quanto possibile.
  oppure si può almeno usare un file esistente come punto di partenza in
  modo da capire quali oggetti servano ai vostri scopi.
  Ancora, più avanti ci saranno altri dettagli.
 \end_layout
 
 \begin_layout Subsection
-File sty LaTeX 2.09
+File sty \SpecialChar LaTeX
+ 2.09
 \end_layout
 
 \begin_layout Standard
@@ -6063,8 +6298,9 @@ Se il file
 \family typewriter
 .sty
 \family default
- è specifico per l'ormai defunto LaTeX 2.09 potete stabilirlo attraverso
- uno di questi due modi:
+ è specifico per l'ormai defunto \SpecialChar LaTeX
+ 2.09 potete stabilirlo attraverso uno di
+ questi due modi:
 \end_layout
 
 \begin_layout Enumerate
@@ -6088,8 +6324,9 @@ documentclass
 \end_layout
 
 \begin_layout Enumerate
-Lanciare LaTeX su un file di esempio produrra un banner con l'avvertimento
- che si sta entrando nel 
+Lanciare \SpecialChar LaTeX
+ su un file di esempio produrra un banner con l'avvertimento che
+ si sta entrando nel 
 \begin_inset Quotes eld
 \end_inset
 
@@ -6101,7 +6338,9 @@ compatibility mode
 \end_layout
 
 \begin_layout Standard
-LyX tecnicamente supporta solo documenti LaTeX2e.
+\SpecialChar LyX
+ tecnicamente supporta solo documenti \SpecialChar LaTeX2e
+.
  Ma non mollate ancora! Dove c'è volontà c'è un modo ( oppure 
 \begin_inset Quotes eld
 \end_inset
@@ -6111,9 +6350,11 @@ adattarsi è impossibile, ma l'abbiamo comunque fatto.
 \end_inset
 
 ).
- Il supporto esistente per ReVTeX 3.1, ad esempio, comprende il codice 2.09
- da usare nei documenti formattati 2e.
- Potete riutilizzare l'adattatore ReVTeX per la vostra 
+ Il supporto esistente per ReV\SpecialChar TeX
+ 3.1, ad esempio, comprende il codice 2.09 da
+ usare nei documenti formattati 2e.
+ Potete riutilizzare l'adattatore ReV\SpecialChar TeX
+ per la vostra 
 \family typewriter
 myclass.sty
 \family default
@@ -6126,11 +6367,13 @@ Bene, ecco cosa dovete fare:
 \end_layout
 
 \begin_layout LyX-Code
-cp LyXDir/tex/revtex.cls ~/tex/myclass.cls
+cp \SpecialChar LyX
+Dir/tex/revtex.cls ~/tex/myclass.cls
 \end_layout
 
 \begin_layout Standard
-oppure dove avete i vostri files locali TeX.
+oppure dove avete i vostri files locali \SpecialChar TeX
+.
  Ora editate 
 \family typewriter
 myclass.cls
@@ -6170,7 +6413,8 @@ Il prossimo passo è quello di ripetere il processo di creazione del file
 \begin_layout LyX-Code
 
 \backslash
-DeclareLaTeXClass{myclass}
+Declare\SpecialChar LaTeX
+Class{myclass}
 \end_layout
 
 \begin_layout Standard
@@ -6179,11 +6423,13 @@ e non dovreste aver bisogno di definizioni di tipo
 Preamble
 \family default
 .
- Lanciate LyX e riconfigurate, riavviate LyX e con un po di fortuna avrete
- un sistema che ha bisogno solo di qualche accorgimento allo schermo e null'altr
-o.
- Questo implica il manipolare dei valori usati da LyX per lo spazio, lo
- stile dei fonts e le altre cose definite nei files 
+ Lanciate \SpecialChar LyX
+ e riconfigurate, riavviate \SpecialChar LyX
+ e con un po di fortuna avrete un
+ sistema che ha bisogno solo di qualche accorgimento allo schermo e null'altro.
+ Questo implica il manipolare dei valori usati da \SpecialChar LyX
+ per lo spazio, lo stile
+ dei fonts e le altre cose definite nei files 
 \family typewriter
 .layout
 \family default
@@ -6235,7 +6481,8 @@ Guardare in seguito per i dettagli circa quello che fa ogni elemento nel
 Dovrebbe essere abbastanza per mettervi sulla giusta strada.
  Fate riferimento alle successive sezioni per i dettagli sui contenuti attuali
  dei files layout e ricordate che se ci sono problemi potete chiedere aiuto
- alla mailing list di LyX.
+ alla mailing list di \SpecialChar LyX
+.
  Siamo sempre lieti di avere nuove classi di documento.
 \end_layout
 
@@ -6275,17 +6522,21 @@ Le linee in un file di layout che iniziano con # sono commenti.
 \size small
 #  
 \backslash
-DeclareLaTeXClass{article}
+Declare\SpecialChar LaTeX
+Class{article}
 \end_layout
 
 \begin_layout Standard
-La seconda linea è usata quando configurate LyX.
- Il file di layout è letto dallo script LaTeX 
+La seconda linea è usata quando configurate \SpecialChar LyX
+.
+ Il file di layout è letto dallo script \SpecialChar LaTeX
+ 
 \family typewriter
 chkconfig.ltx
 \family default
 , in un modo speciale e tale che # venga ignorato.
- La prima linea è solo un commento LaTeX, e la seconda contiene la dichiarazione
+ La prima linea è solo un commento \SpecialChar LaTeX
+, e la seconda contiene la dichiarazione
  della classe di testo.
  Se queste linne appaiono in un file chiamato 
 \family typewriter
@@ -6295,7 +6546,8 @@ article.layout
 \family typewriter
 article
 \family default
- (il nome del file di layout) che usa la classe di documento LaTeX 
+ (il nome del file di layout) che usa la classe di documento \SpecialChar LaTeX
+ 
 \family typewriter
 article.cls
 \family default
@@ -6315,7 +6567,7 @@ L
 \bar default
 ayout
 \bar under
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 D
 \bar default
 ocument .
@@ -6346,7 +6598,8 @@ myarticle.layout
 \size small
 #  
 \backslash
-DeclareLaTeXClass[article]{article (with my own headings)}
+Declare\SpecialChar LaTeX
+Class[article]{article (with my own headings)}
 \end_layout
 
 \begin_layout Standard
@@ -6354,7 +6607,8 @@ Questi dichiarano una textclass
 \family typewriter
 myarticle
 \family default
-, associata con la classe di documento LaTeX 
+, associata con la classe di documento \SpecialChar LaTeX
+ 
 \family typewriter
 article.cls
 \family default
@@ -6381,7 +6635,8 @@ article (con le vostre intestazioni)
 \size small
 #  
 \backslash
-DeclareLaTeXClass[article,foo.sty]{article (with my own headings)}
+Declare\SpecialChar LaTeX
+Class[article,foo.sty]{article (with my own headings)}
 \end_layout
 
 \begin_layout Standard
@@ -6413,7 +6668,8 @@ Notate che a queste dichiarazioni può essere anche dato come parametro opzional
 Quando la textclass è stata modificata secondo i vostri gusti, tutto quello
  che dovete fare è copiarla in 
 \family typewriter
-$LyXDir/layouts/
+$\SpecialChar LyX
+Dir/layouts/
 \family default
  o in 
 \family typewriter
@@ -6426,13 +6682,14 @@ O
 \bar default
 ptions
 \bar under
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 R
 \bar default
 econfigure.
 
 \family default
- Chiudete LyX e rilanciatelo; a questo punto la vostra nuova textclass dovrebbe
+ Chiudete \SpecialChar LyX
+ e rilanciatelo; a questo punto la vostra nuova textclass dovrebbe
  essere disponibile insieme alle altre.
 \end_layout
 
@@ -6483,7 +6740,7 @@ L
 \bar default
 ayout
 \bar under
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 D
 \bar default
 ocument.
@@ -6494,7 +6751,8 @@ ocument.
 Sides
 \family default
 ) è importante: se le vostre textclass hanno due colonne di default, ma
- dimenticate di settarlo correttamente, l'opzione LaTeX 
+ dimenticate di settarlo correttamente, l'opzione \SpecialChar LaTeX
+ 
 \family typewriter
 twocolumn
 \family default
@@ -6513,7 +6771,7 @@ L
 \bar default
 ayout
 \bar under
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 D
 \bar default
 ocument.
@@ -6542,7 +6800,7 @@ L
 \bar default
 ayout
 \bar under
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 D
 \bar default
 ocument
@@ -6574,7 +6832,7 @@ L
 \bar default
 ayout
 \bar under
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 D
 \bar default
 ocument.
@@ -6630,7 +6888,7 @@ Counter_EnumI
 
 \family typewriter
 \series medium
-ClassOptions\SpecialChar \ldots{}
+ClassOptions\SpecialChar ldots
 End
 \family default
 \series default
@@ -6719,7 +6977,8 @@ url
 .
  Questo è il caso della classe di documento 
 \family typewriter
-AASTeX
+AAS\SpecialChar TeX
+
 \family default
 .
 \end_layout
@@ -6750,11 +7009,12 @@ reference "sec:fonts"
 
 \family typewriter
 \series medium
-Preamble\SpecialChar \ldots{}
+Preamble\SpecialChar ldots
 EndPreamble
 \family default
 \series default
- Un set di macro definizione che saranno emesse all'inizio dei files LaTeX.
+ Un set di macro definizione che saranno emesse all'inizio dei files \SpecialChar LaTeX
+.
  Usatelo per definizioni globali.
 \end_layout
 
@@ -6975,7 +7235,8 @@ Paragraph
 \family typewriter
 List_Environment
 \family default
-] Come dovrebbe essere tradotto il layout in LaTeX.
+] Come dovrebbe essere tradotto il layout in \SpecialChar LaTeX
+.
  
 \family typewriter
 Paragraph
@@ -6993,7 +7254,7 @@ Command
 \emph on
 LatexName
 \emph default
-{\SpecialChar \ldots{}
+{\SpecialChar ldots
 }
 \family default
  e 
@@ -7008,7 +7269,7 @@ begin{
 \emph on
 LatexName
 \emph default
-}\SpecialChar \ldots{}
+}\SpecialChar ldots
 
 \backslash
 end{
@@ -7055,7 +7316,7 @@ LabelWidthString
 \bar under
 L
 \bar default
-ayout\SpecialChar \menuseparator
+ayout\SpecialChar menuseparator
 
 \bar under
 P
@@ -7092,7 +7353,8 @@ maketitle
 LatexName
 \family default
 \series default
- Il nome del corrispondente materiale LaTeX.
+ Il nome del corrispondente materiale \SpecialChar LaTeX
+.
  Può essere sia di ambiente che di comando.
 \end_layout
 
@@ -7108,7 +7370,8 @@ LatexParam
 LatexName
 \family default
 .
- Questo parametro non può essere cambiato da LyX.
+ Questo parametro non può essere cambiato da \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Description
@@ -7145,7 +7408,7 @@ Manual
 \bar under
 L
 \bar default
-ayout\SpecialChar \menuseparator
+ayout\SpecialChar menuseparator
 
 \bar under
 P
@@ -7279,7 +7542,8 @@ Parskip
 \family typewriter
 float=0
 \family default
-] LyX permette di scegliere sia il 
+] \SpecialChar LyX
+ permette di scegliere sia il 
 \begin_inset Quotes eld
 \end_inset
 
@@ -7321,7 +7585,8 @@ Paragrafo
 \begin_inset Quotes erd
 \end_inset
 
- in stile LaTeX è ignorato e tutti i paragrafi sono addizionalmente separati
+ in stile \SpecialChar LaTeX
+ è ignorato e tutti i paragrafi sono addizionalmente separati
  da questo argomento parskip.
  Lo spazio è verticale è calcolato con 
 \family typewriter
@@ -7544,7 +7809,8 @@ Bibliography
 \family typewriter
 Manual
 \family default
- con tipo LaTeX 
+ con tipo \SpecialChar LaTeX
+ 
 \family typewriter
 Enviroment
 \family default
@@ -7644,7 +7910,7 @@ L
 \bar default
 ayout
 \family typewriter
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \family sans
 \bar under
@@ -7687,8 +7953,9 @@ block
 liste
 \emph default
 , separate da una virgola, di possibili allineamenti.
- Alcuni stili LaTeX proibiscono certi allineamenti, dato che questi non
- hanno senso.
+ Alcuni stili \SpecialChar LaTeX
+ proibiscono certi allineamenti, dato che questi non hanno
+ senso.
  Ad esempio una numerazione allineata a destra o centrata non è possibile.
 \end_layout
 
@@ -7723,7 +7990,7 @@ Spazi verticali sopra
 \bar under
 L
 \bar default
-ayout\SpecialChar \-
+ayout\SpecialChar softhyphen
 
 \family default
 
@@ -7806,7 +8073,8 @@ Newline
 1
 \family default
 \emph default
-] Se le nuove linee sono tradotte in nuove linee LaTeX (
+] Se le nuove linee sono tradotte in nuove linee \SpecialChar LaTeX
+ (
 \family typewriter
 
 \backslash
@@ -7815,8 +8083,10 @@ Newline
 
 \family default
 ) o no.
- La traduzione può essere evitata per facilitare l'editing di LaTeX all'interno
- di LyX.
+ La traduzione può essere evitata per facilitare l'editing di \SpecialChar LaTeX
+ all'interno
+ di \SpecialChar LyX
+.
  
 \end_layout
 
@@ -7834,18 +8104,22 @@ FreeSpacing
 \emph default
 , 1
 \family default
-] Di solito LyX non vi permette di inserire più di uno spazio tra le parole,
+] Di solito \SpecialChar LyX
+ non vi permette di inserire più di uno spazio tra le parole,
  dato che lo spazio è considerato come una separazione tra due parole, non
  un carattere o un simbolo a se stante.
  Questa è una cosa molto simpatica ma a volte annoiante, ad esempio quando
- si scrive il codice di un programma o codice LaTeX.
+ si scrive il codice di un programma o codice \SpecialChar LaTeX
+.
  Per queste ragioni, 
 \family typewriter
 FreeSpacing
 \family default
  può essere abilitato.
- Notate che LyX creerà bianchi protetti per i bianchi addizionali se in
- un modo diverso dal modo-LaTeX.
+ Notate che \SpecialChar LyX
+ creerà bianchi protetti per i bianchi addizionali se in un
+ modo diverso dal modo-\SpecialChar LaTeX
+.
 \end_layout
 
 \begin_layout Description
@@ -7862,8 +8136,10 @@ KeepEmpty
 \emph default
 , 1
 \family default
-] Di solito LyX non vi consente di lasciare un paragrafo vuoto, dato che
- porterebbe ad un output LaTeX vuoto.
+] Di solito \SpecialChar LyX
+ non vi consente di lasciare un paragrafo vuoto, dato che porterebbe
+ ad un output \SpecialChar LaTeX
+ vuoto.
  Ci sono alcuni casi in cui però questo è auspicabile: in un template di
  lettera i campi richiesti possono essere rappresentati da spazi vuoti,
  così da agevolare le persone; in alcune classi speciali, un layout potrebbe
@@ -7911,8 +8187,8 @@ other
 \family typewriter
 Spacing
 \family default
- implica la generazione di uno specifico codice LaTeX, usando il pacchetto
- 
+ implica la generazione di uno specifico codice \SpecialChar LaTeX
+, usando il pacchetto 
 \family typewriter
 setspace.sty
 \family default
@@ -8001,12 +8277,13 @@ reference "sec:fonts"
 
 \family typewriter
 \series medium
-Preamble\SpecialChar \ldots{}
+Preamble\SpecialChar ldots
 EndPreamble
 \family default
 \series default
- Un set di macro definizione che saranno emesse all'inizio dei files LaTeX
- quando il layout è usato.
+ Un set di macro definizione che saranno emesse all'inizio dei files \SpecialChar LaTeX
+ quando
+ il layout è usato.
  Usatelo per definire le macro di cui si hanno bisogno per questo particolare
  layout.
 \end_layout
@@ -8173,7 +8450,9 @@ no_latex
 \family typewriter
 no_latex
 \family default
- significa che LyX tradurrà tutto in LaTeX.
+ significa che \SpecialChar LyX
+ tradurrà tutto in \SpecialChar LaTeX
+.
  
 \family typewriter
 Latex
@@ -8210,7 +8489,8 @@ fontscheme
 \backslash
 papersize
 \family default
- dal file di template di LyX.
+ dal file di template di \SpecialChar LyX
+.
  Questo si può fare con un qualsiasi editor di testo come 
 \family typewriter
 vi
@@ -8230,7 +8510,8 @@ $UserDir/templates/
 \family default
 , copiate quello che usate dalla directory globale dei template in 
 \family typewriter
-$LyXDir/templates/
+$\SpecialChar LyX
+Dir/templates/
 \family default
  nello stesso posto, e ridefinite la directory dei template in 
 \family typewriter
@@ -8255,7 +8536,8 @@ Introduzione
 
 \begin_layout Standard
 Questo capitolo descrive come sia possibile fare il setup di una stampante
- sotto Unix, in modo da poterla usare in LyX.
+ sotto Unix, in modo da poterla usare in \SpecialChar LyX
+.
  Se avete un sistema Linux, e avete bisogno di settare la vostra stampante,
  potete anche leggere il file 
 \family typewriter
@@ -9526,6 +9808,10 @@ dalla linea di comando.
 
 \begin_layout Itemize
 Stampanti Apple:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -9552,6 +9838,10 @@ iwlq Imagewriter LQ in
 \end_deeper
 \begin_layout Itemize
 Stampanti Canon:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -9592,6 +9882,10 @@ lips3 LIPS-III laser printer in CaPSL mode
 \end_deeper
 \begin_layout Itemize
 Stampanti DEC:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -9630,6 +9924,10 @@ declj250 Alternate LJ250 driver0
 \end_deeper
 \begin_layout Itemize
 Stampanti Epson:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -9674,6 +9972,10 @@ stcolor the Stylus Color, Stylus Color Pro, Stylus Color II and IIs color
 \end_deeper
 \begin_layout Itemize
 Stampanti Hewlet Packard [HP]:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -9767,6 +10069,10 @@ paintjet Alternate PaintJet color driver
 \end_deeper
 \begin_layout Itemize
 Stampanti Tektronix:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -9789,6 +10095,10 @@ tek4696 4695 and 4696 inkjet plotters
 \end_deeper
 \begin_layout Itemize
 Stampanti varie:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -10156,7 +10466,7 @@ color
 \end_layout
 
 \begin_layout Subsection
-Se Già avete una Stampante PostScript®\SpecialChar \ldots{}
+Se Già avete una Stampante PostScript®\SpecialChar ldots
 
 \end_layout
 
@@ -10348,6 +10658,10 @@ su root
 
 \begin_layout Enumerate
 Eseguite i seguenti comandi:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -10363,6 +10677,10 @@ cd /var/spool
 mkdir lpd
 \family default
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -10375,6 +10693,12 @@ mkdir lpd
 
 \family typewriter
 chgrp lp lpd
+\family default
+
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -10417,6 +10741,12 @@ cd lpd
 
 \family typewriter
 mkdir lp ps
+\family default
+
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -10442,17 +10772,27 @@ chgrp daemon lp ps lp/errs ps/errs
 Ora editate il file 
 \family typewriter
 /etc/printcap
+\family default
+
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Se il file esiste, quindi\SpecialChar \ldots{}
+Se il file esiste, quindi\SpecialChar ldots
+
+\begin_inset Separator latexpar
+\end_inset
+
 
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-\SpecialChar \ldots{}
+\SpecialChar ldots
 rinominate la vecchia versione in qualcosa tipo 
 \begin_inset Quotes eld
 \end_inset
@@ -10469,7 +10809,7 @@ rinominate la vecchia versione in qualcosa tipo
 \end_layout
 
 \begin_layout Enumerate
-\SpecialChar \ldots{}
+\SpecialChar ldots
 oppure, commentate tutto il file mettendo 
 \begin_inset Quotes eld
 \end_inset
@@ -10492,6 +10832,10 @@ Mettete quanto segue in
 /etc/printcap
 \family default
 :
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -10564,6 +10908,10 @@ ps|Postscript printer:
 \end_deeper
 \begin_layout Enumerate
 ASSICURATEVI CHE:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -10606,6 +10954,10 @@ ps
 \end_inset
 
 .
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -10615,6 +10967,10 @@ Mettete quanto segue nel file
 /var/spool/lpd/ps/ps.filter
 \family default
 :
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -10660,6 +11016,10 @@ gs
 \end_deeper
 \begin_layout Enumerate
 Eseguite questi comandi:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -10683,6 +11043,10 @@ Infine, lanciate il demone della stampante,
 lpd
 \family default
 :
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -10893,11 +11257,14 @@ Background
 \end_layout
 
 \begin_layout Standard
-Una caratteristica spesso richiesta dagli utenti LyX è quella di interfacciare
- LyX con Xfig, Dia, o altre applicazioni specializzate nella produzioni
- di un certo tipo di diagrammi, figure, schemi e simili cose che possono
- essere rilevanti per il vostro documento.
- Prima in LyX era solo possibile includere immagini fisse, statiche, noiose
+Una caratteristica spesso richiesta dagli utenti \SpecialChar LyX
+ è quella di interfacciare
+ \SpecialChar LyX
+ con Xfig, Dia, o altre applicazioni specializzate nella produzioni di
+ un certo tipo di diagrammi, figure, schemi e simili cose che possono essere
+ rilevanti per il vostro documento.
+ Prima in \SpecialChar LyX
+ era solo possibile includere immagini fisse, statiche, noiose
  con l'insieme figure, ma ci sono numerose limitazioni relative a questo
  approccio:
 \end_layout
@@ -10908,8 +11275,9 @@ Se volete cambiare la figura, dovete richiamare manualmente un programma
 \end_layout
 
 \begin_layout Itemize
-LyX non notifica i cambiamenti ai riferimenti dei files, così quello che
- è visualizzato sullo schermo può rapidamente diventare obsoleto, e questo
+\SpecialChar LyX
+ non notifica i cambiamenti ai riferimenti dei files, così quello che è
+ visualizzato sullo schermo può rapidamente diventare obsoleto, e questo
  è aggravato da una media di aggiornamenti dello schermo
 \end_layout
 
@@ -10936,8 +11304,9 @@ Anche se l'insieme delle figure non può risolvere tutti i problemi, è ancora
 \end_inset
 
 .
- Effettua ciò offrendo un metodo generale per interfacciare LyX alle applicazion
-i esterne.
+ Effettua ciò offrendo un metodo generale per interfacciare \SpecialChar LyX
+ alle applicazioni
+ esterne.
  Invece di introdurre una lunga lista di insiemi ritagliati per ogni specifica
  applicazione, abbiamo scelto di sacrificare la visualizzazione in line
  del materiale incluso al fine di fornire uno strumento generale per affrontare
@@ -10961,14 +11330,16 @@ L'insieme esterno è basato sul concetto di
 template
 \emph default
 .
- Un template è una specificazione di come LyX dovrebbe interfacciarsi con
- un certo tipo di materiale.
- In genere LyX viene distribuito con una serie di template predefiniti per
+ Un template è una specificazione di come \SpecialChar LyX
+ dovrebbe interfacciarsi con un
+ certo tipo di materiale.
+ In genere \SpecialChar LyX
+ viene distribuito con una serie di template predefiniti per
  figure XFig, diagrammi Dia, varie immagini in formato raster, gnuplot,
  ed oltre.
  Potete controllare la lista attuale attraverso il comando 
 \family sans
-Insert\SpecialChar \menuseparator
+Insert\SpecialChar menuseparator
 Insert external material.
 
 \family default
@@ -10976,7 +11347,8 @@ Insert external material.
  uno specifico tipo di materiale.
  Più avanti descriveremo più in dettaglio gli elementi coinvolti, e si spera
  che possiate creare dei template che poi ci manderete per includerli nelle
- successive versioni di LyX.
+ successive versioni di \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -11001,7 +11373,8 @@ fig
 transfig
 \family default
  al fine di creare un file PostScript che può essere prontamente incluso
- nel vostro file LaTeX.
+ nel vostro file \SpecialChar LaTeX
+.
  In questo caso, il file 
 \family typewriter
 .fig
@@ -11019,7 +11392,8 @@ Questa distinzione è importante al fine di effettuare l'aggiornamento del
  l'includere un riferimento alla figura oppure provare a richiamare qualche
  convertitore grafico da Ascii per rendere il risultato finale accettabile.
  L'insieme materiale esterno vi permette di farlo, perchè è parametrizzato
- su differenti formati di export supportati da LyX.
+ su differenti formati di export supportati da \SpecialChar LyX
+.
 \end_layout
 
 \begin_layout Standard
@@ -11027,8 +11401,9 @@ Oltre a supportare la produzione di differenti prodotti in relazione al
  formato esportato, l'insieme esterno supporta una stretta integrazione
  con le applicazioni di editing e di visualizzazione.
  Nel caso di una figura XFig, potete richiamare xfig sul file originale
- con un singolo clic all'interno di LyX oltre che avere un'anteprima del
- file PostScript prodotto con ghostview sempre con un semplice clic.
+ con un singolo clic all'interno di \SpecialChar LyX
+ oltre che avere un'anteprima del file
+ PostScript prodotto con ghostview sempre con un semplice clic.
  Non c'è più bisogno di smanettare con la riga di comando o con il browser
  per trovare e manipolare i files originali o quelli prodotti.
  In questo modo potrete finalmente utilizzare a pieno molte differenti applicazi
@@ -11037,16 +11412,19 @@ oni che risultano rilevanti nella scrittura di un documento, al fine di
 \end_layout
 
 \begin_layout Standard
-Quindi, in definitiva, LyX ha informazioni circa un numero di programmi
- differenti da usare dietro le quinte per realizzare tutto questo marchingegno.
+Quindi, in definitiva, \SpecialChar LyX
+ ha informazioni circa un numero di programmi differenti
+ da usare dietro le quinte per realizzare tutto questo marchingegno.
  Questa informazione, infatti, è esattamente ciò che è contenuto nei templates.
  Per ogni template, c'è associata una lista di linee di comando usate per
  irchiamare le applicazioni, convertire il file originale nel file prodotto
  ed altro ancora.
  Questo meccanismo permette all'utente avanzato di estendere le capacità
- di LyX senza smanettare col codice sorgente.
+ di \SpecialChar LyX
+ senza smanettare col codice sorgente.
  Questo richiede un imponente lavoro per definire tutti i differenti comandi
- e flags, ma fortunatamente, il team di LyX ha già fatto questo lavoro per
+ e flags, ma fortunatamente, il team di \SpecialChar LyX
+ ha già fatto questo lavoro per
  voi!
 \end_layout
 
@@ -11056,7 +11434,8 @@ Ma prima che gli alberi diventino grattacieli, dobbiamo ammettere che abbiamo
  Siccome il set esterno può produrre molti tipi di files prodotti per i
  relativi formati di export, ci si potrebbe anche aspettare che sia possibile
  vedere l'anteprima di ogni prodotto.
- Ma, ancora una voltea, il team di LyX ha deciso per una linea che mantenesse
+ Ma, ancora una voltea, il team di \SpecialChar LyX
+ ha deciso per una linea che mantenesse
  l'interfaccia utente semplice.
  Per evitare di mettere un pulsante per ogni formato di file esportato,
  si è deciso di introdurre il concetto di formato primario di file ed avere
@@ -11065,7 +11444,8 @@ Ma prima che gli alberi diventino grattacieli, dobbiamo ammettere che abbiamo
  visualizzata un'immagine del file prodotto nel formato di file primario.
  E questo è specificato dalla vostra classe di documento.
  Per la maggior parte delle classi di documento il formato primario di file
- è LaTeX, ma per la classe di documento DocBook, il formato di file primario
+ è \SpecialChar LaTeX
+, ma per la classe di documento DocBook, il formato di file primario
  è DocBook.
  Così quando si visualizza il file prodotto, ricordatevi che sarà solo un'antepr
 ima di quello che sarà il risultato principale.
@@ -11162,10 +11542,11 @@ vostra
  responsabilità fare questo per mantenere i files prodotti costantemente
  aggiornati: prima di stampare, prima di esportare, prima di visualizzare,
  ecc.
- Forse, in futuro, sarà possibile che LyX vi aiuti in questo compito.
+ Forse, in futuro, sarà possibile che \SpecialChar LyX
+ vi aiuti in questo compito.
  Sarebbe infatti simpatico poter usare un comando 
 \family sans
-Edit\SpecialChar \menuseparator
+Edit\SpecialChar menuseparator
 Update all external inset
 \family default
  per aggiornare tutti gli insiemi esterni che usano un template manuale.
@@ -11204,7 +11585,8 @@ Update result
 cancel
 \family default
 .
- Fortunatamente, potete usare la funzione undo generale in LyX per ritornare
+ Fortunatamente, potete usare la funzione undo generale in \SpecialChar LyX
+ per ritornare
  allo stato precedente.
 \end_layout
 
@@ -11239,7 +11621,8 @@ Uso dei makefiles
 \end_layout
 
 \begin_layout Itemize
-Templates LyX esterni ricorsivi
+Templates \SpecialChar LyX
+ esterni ricorsivi
 \end_layout
 
 \begin_layout Section
@@ -11247,7 +11630,8 @@ Il file di configurazione external template
 \end_layout
 
 \begin_layout Standard
-E' relativamente semplice aggiungere definizioni di template esterni a LyX.
+E' relativamente semplice aggiungere definizioni di template esterni a \SpecialChar LyX
+.
  Tuttavia state attenti poichè fare queste cose in maniera approssimativa
  
 \emph on
@@ -11321,7 +11705,8 @@ filename.ext
 $$Sysdir Questa macro espanderà all'indirizzo assoluto della directory di
  sistema.
  E' tipicamente usato per puntare i vari script di aiuto che sono inseriti
- in LyX
+ in \SpecialChar LyX
+
 \end_layout
 
 \begin_layout Standard
@@ -11351,7 +11736,8 @@ L'insieme del materiale esterno si interfaccia con molti programmi esterni
 \begin_layout Standard
 Tuttavia, dato che i comandi dei programmi esterni sono specificati solo
  nel file di configurazione del template, non ci sono problemi di sicurezza
- se LyX è configurato bene solo con templates sicuri.
+ se \SpecialChar LyX
+ è configurato bene solo con templates sicuri.
  E' così perche i programmi esterni sono richiamati con la chiamata di sitema
  
 \family typewriter
@@ -11369,7 +11755,8 @@ system
 Tutto ciò implica che siete limitati nelle stringhe di comando che potete
  usare nei template dei materiali esterni, In particolare canali e redirection
  non sono subito disponibili.
- Ciò dovrebbe essere così se LyX dovesse rimanere sicuro.
+ Ciò dovrebbe essere così se \SpecialChar LyX
+ dovesse rimanere sicuro.
  Se volete usare alcune funzioni della shell, dovrete scrivere uno script
  sicuro per farlo in maniera controllata, dopodochè richimare lo script
  dalla linea di comando.
@@ -11377,7 +11764,8 @@ Tutto ciò implica che siete limitati nelle stringhe di comando che potete
 \family typewriter
 lib/scripts
 \family default
- dell'installazione di LyX, potrete trovare uno script sicuro preconfezionato
+ dell'installazione di \SpecialChar LyX
+, potrete trovare uno script sicuro preconfezionato
  
 \family typewriter
 general_command_wrapper.py
@@ -11411,9 +11799,11 @@ andrete a creare
 \emph default
  un buco di sicurezza facilmente sfruttabile nel vostro sistema.
  Naturalmente è ragionevole che questi templates non sicuri non verranno
- mai inclusi nella distribuzione LyX standard, sebbene incoraggiamo le persone
+ mai inclusi nella distribuzione \SpecialChar LyX
+ standard, sebbene incoraggiamo le persone
  a sottoporre nuovi templates nella tradizione open source.
- Ma LyX come rilasciato nei canali ufficiali di distribuzioni non avrà mai
+ Ma \SpecialChar LyX
+ come rilasciato nei canali ufficiali di distribuzioni non avrà mai
  tamplates non sicuri.
 \end_layout
 
@@ -11423,8 +11813,9 @@ L'insieme del materiale esterno fornisce molta potenza, perciò dovete stare
  Un lieve errore in una singola riga di un semplice script può creare grandi
  problemi di sicurezza.
  Così, se non capite completamente questo tema, vi consigliamo di consultare
- un professionista della sicurezza oppure il team di sviluppo di LyX se
- avete domande sulle implicazioni di sicurezza circa uno script.
+ un professionista della sicurezza oppure il team di sviluppo di \SpecialChar LyX
+ se avete
+ domande sulle implicazioni di sicurezza circa uno script.
  E, ovviamente, fate questo prima di usare lo script in un ambiente non
  sicuro.
 \end_layout
@@ -11435,9 +11826,11 @@ Il futuro dell'insieme esterno
 
 \begin_layout Standard
 La corrente implementazione dell'insieme esterno èun costrutto potente e
- stabile che fornisce un accesso diretto alle parti più interne di LyX,
- ma come ogni caratteristca di LyX, dovrebbe essere sempre considerata un
- work-in-progress.
+ stabile che fornisce un accesso diretto alle parti più interne di \SpecialChar LyX
+, ma
+ come ogni caratteristca di \SpecialChar LyX
+, dovrebbe essere sempre considerata un work-in-prog
+ress.
  Quando e se qualcuno ha il tempo di continuare a lavorarci su, ecco alcune
  direzioni generali che possono essere seguite:
 \end_layout
@@ -11468,7 +11861,8 @@ Estendere l'area di lavoro per fornire delle opzioni di personalizzazione
  più intelligenti in aggiunta alla piuttosto semplicistica stringa di parametri.
  Con un linguaggio di script adatto, sarà possibile implementare versioni
  user friendly di molti insiemi di personalizzazione che supportano una
- grande quantità di formati, pacchetti LaTeX, editors, ecc.
+ grande quantità di formati, pacchetti \SpecialChar LaTeX
+, editors, ecc.
 \end_layout
 
 \end_body

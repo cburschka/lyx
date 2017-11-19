@@ -1,9 +1,9 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 507
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
-\origin /systemlyxdir/examples/
+\origin /systemlyxdir/doc/attic/
 \textclass aastex
 \begin_preamble
 \newcommand{\vdag}{(v)^\dagger}
@@ -28,6 +28,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -57,6 +59,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -65,14 +68,17 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
 \tracking_changes false
+\output_changes false
 \html_math_output 0
 \html_css_as_file 0
-\output_changes false
 \html_be_strict false
 \end_header
 
@@ -166,6 +172,7 @@ Space Telescope Science Institute, Baltimore, MD 21218
 status open
 
 \begin_layout Plain Layout
+
 1
 \end_layout
 
@@ -184,6 +191,7 @@ under contract to the National Science Foundation.
 status open
 
 \begin_layout Plain Layout
+
 2
 \end_layout
 
@@ -197,6 +205,7 @@ Society of Fellows, Harvard University.
 status open
 
 \begin_layout Plain Layout
+
 3
 \end_layout
 
@@ -211,6 +220,7 @@ present address: Center for Astrophysics, 60 Garden Street, Cambridge, MA
 status open
 
 \begin_layout Plain Layout
+
 4
 \end_layout
 
@@ -224,6 +234,7 @@ Visiting Programmer, Space Telescope Science Institute
 status open
 
 \begin_layout Plain Layout
+
 5
 \end_layout
 
@@ -452,6 +463,7 @@ Footnotes can be inserted like this.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hag86"
+literal "true"
 
 \end_inset
 
@@ -867,6 +879,7 @@ e=mc^{2}
 LatexCommand bibitem
 label "Auri\\`ere(1982)"
 key "aur82"
+literal "true"
 
 \end_inset
 
@@ -892,6 +905,7 @@ aap
 LatexCommand bibitem
 label "Canizares et al.(1978)"
 key "can78"
+literal "true"
 
 \end_inset
 
@@ -921,6 +935,7 @@ apj
 LatexCommand bibitem
 label "Djorgovski and King(1984)"
 key "djo84"
+literal "true"
 
 \end_inset
 
@@ -947,6 +962,7 @@ apjl
 LatexCommand bibitem
 label "Hagiwara and Zeppenfeld(1986)"
 key "hag86"
+literal "true"
 
 \end_inset
 
@@ -959,6 +975,7 @@ Hagiwara, K., and Zeppenfeld, D.
 LatexCommand bibitem
 label "Harris and van den Bergh(1984)"
 key "har84"
+literal "true"
 
 \end_inset
 
@@ -985,6 +1002,7 @@ aj
 LatexCommand bibitem
 label "H\\`enon(1961)"
 key "hen61"
+literal "true"
 
 \end_inset
 
@@ -997,6 +1015,7 @@ Hénon, M.
 LatexCommand bibitem
 label "King(1966)"
 key "kin66"
+literal "true"
 
 \end_inset
 
@@ -1023,6 +1042,7 @@ aj
 LatexCommand bibitem
 label "King(1975)"
 key "kin75"
+literal "true"
 
 \end_inset
 
@@ -1037,6 +1057,7 @@ King, I.
 LatexCommand bibitem
 label "King et al.(1968)"
 key "kin68"
+literal "true"
 
 \end_inset
 
@@ -1065,6 +1086,7 @@ aj
 LatexCommand bibitem
 label "Kron et al.(1984)"
 key "kro84"
+literal "true"
 
 \end_inset
 
@@ -1093,6 +1115,7 @@ pasp
 LatexCommand bibitem
 label "Lynden-Bell and Wood(1968)"
 key "lyn68"
+literal "true"
 
 \end_inset
 
@@ -1118,6 +1141,7 @@ mnras
 LatexCommand bibitem
 label "Newell and O'Neil(1978)"
 key "new78"
+literal "true"
 
 \end_inset
 
@@ -1145,6 +1169,7 @@ apjs
 LatexCommand bibitem
 label "Ortolani et al.(1985)"
 key "ort85"
+literal "true"
 
 \end_inset
 
@@ -1170,6 +1195,7 @@ aj
 LatexCommand bibitem
 label "Peterson(1976)"
 key "pet76"
+literal "true"
 
 \end_inset
 
@@ -1196,6 +1222,7 @@ aj
 LatexCommand bibitem
 label "Spitzer(1985)"
 key "spi85"
+literal "true"
 
 \end_inset
 

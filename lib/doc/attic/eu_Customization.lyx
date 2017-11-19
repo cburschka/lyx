@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin /systemlyxdir/doc/attic/
 \textclass scrbook
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +11,18 @@
 \language_package default
 \inputencoding iso8859-1
 \fontencoding global
-\font_roman times
-\font_sans helvet
-\font_typewriter courier
-\font_math auto
+\font_roman "times" "default"
+\font_sans "helvet" "default"
+\font_typewriter "courier" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -48,6 +52,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Indizea
 \shortcut idx
 \color #008000
@@ -56,7 +61,10 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -70,7 +78,8 @@
 \begin_body
 
 \begin_layout Title
-LyX pertsonalizatzea: 
+\SpecialChar LyX
+ pertsonalizatzea: 
 \begin_inset Newline newline
 \end_inset
 
@@ -78,7 +87,8 @@ erabiltzaile aurreratuentzako ezaugarriak
 \end_layout
 
 \begin_layout Author
-egilea: LyX taldea
+egilea: \SpecialChar LyX
+ taldea
 \begin_inset Foot
 status open
 
@@ -88,8 +98,9 @@ Fitxategi honen arduradun nagusia
 Mike Ressler
 \noun default
  da.
- Bidali iradokizunak edo erroreei buruzko zuzenketak LyX dokumentazioko
- posta-zerrendara : <lyx-docs@lists.lyx.org>.
+ Bidali iradokizunak edo erroreei buruzko zuzenketak \SpecialChar LyX
+ dokumentazioko posta-zerre
+ndara : <lyx-docs@lists.lyx.org>.
  
 \begin_inset Newline newline
 \end_inset
@@ -121,11 +132,16 @@ Sarrera
 \end_layout
 
 \begin_layout Standard
-Eskuliburu honek pertsonaliza ditzakezun LyX-eko ezaugarriak azaltzen ditu.
+Eskuliburu honek pertsonaliza ditzakezun \SpecialChar LyX
+-eko ezaugarriak azaltzen ditu.
  Berton, teklatuko laster-teklak, pantailako aurrebistaren aukerak, inprimagailu
-aren aukerak, LyX-i (LyX zerbitzariaren bitartez) aginduak bidaltzea, nazioartek
-o hizkuntzak, LaTeX klaseak eta LyX diseinu berriak instalatzea, eta bestelako
- gauza batzuetaz mintzatuko gara.
+aren aukerak, \SpecialChar LyX
+-i (\SpecialChar LyX
+ zerbitzariaren bitartez) aginduak bidaltzea, nazioarteko
+ hizkuntzak, \SpecialChar LaTeX
+ klaseak eta \SpecialChar LyX
+ diseinu berriak instalatzea, eta bestelako gauza
+ batzuetaz mintzatuko gara.
  Baliteke alda dezakezun guztia ez azaltzea, gure garatzaileek ezaugarri
  berriak horiei buruzko dokumentazioa prestatu baino azkarrago sortzen baitira.
  Hala ere, gehien pertsonalizatzen diren gauzak azalduko ditugu, eta, zorionez,
@@ -133,19 +149,22 @@ o hizkuntzak, LaTeX klaseak eta LyX diseinu berriak instalatzea, eta bestelako
 \end_layout
 
 \begin_layout Chapter
-LyX-en konfigurazioko fitxategiak
+\SpecialChar LyX
+-en konfigurazioko fitxategiak
 \end_layout
 
 \begin_layout Standard
-Kapitulu honen xedea da LyX-en konfigurazioko fitxategien artean zure bidea
+Kapitulu honen xedea da \SpecialChar LyX
+-en konfigurazioko fitxategien artean zure bidea
  aurkitzen laguntzea.
- Kapitulu hau irakurtzen jarraitu aurretik, LyX-eko liburutegien direktorioa
+ Kapitulu hau irakurtzen jarraitu aurretik, \SpecialChar LyX
+-eko liburutegien direktorioa
  non kokatzen den aurkitu beharko zenuke, horretarako erabili 
 \family sans
 \bar under
 L
 \bar default
-aguntza\SpecialChar \menuseparator
+aguntza\SpecialChar menuseparator
 Ly
 \bar under
 X
@@ -157,31 +176,37 @@ X
 buruz
 \family default
  menua.
- Direktorio horretan LyX-ek bere konfigurazioko fitxategien sistema osoa
- dago, eta dokumentu honetan 
+ Direktorio horretan \SpecialChar LyX
+-ek bere konfigurazioko fitxategien sistema osoa dago,
+ eta dokumentu honetan 
 \family typewriter
-LyXDir
+\SpecialChar LyX
+Dir
 \family default
  esaten diogu.
 \end_layout
 
 \begin_layout Section
-Zer dago LyXDir-en?
+Zer dago \SpecialChar LyX
+Dir-en?
 \end_layout
 
 \begin_layout Standard
 
 \family typewriter
-LyXDir
+\SpecialChar LyX
+Dir
 \family default
--en, eta beraren azpidirektorioetan, hainbat fitxategi dago, eta LyX-en
- jokaera pertsonalizatzeko erabil ditzakezu.
- Fitxategi horietariko asko LyX bertatik alda ditzakezu, 
+-en, eta beraren azpidirektorioetan, hainbat fitxategi dago, eta \SpecialChar LyX
+-en jokaera
+ pertsonalizatzeko erabil ditzakezu.
+ Fitxategi horietariko asko \SpecialChar LyX
+ bertatik alda ditzakezu, 
 \family sans
 \bar under
 E
 \bar default
-ditatu\SpecialChar \menuseparator
+ditatu\SpecialChar menuseparator
 
 \bar under
 H
@@ -193,10 +218,13 @@ obespenak
 \family sans
 Hobespenak
 \family default
- leihoan LyX-en pertsonalizatzeko nahi dituzun ia gauza guztiak egoki ditzakezu.
- Hala ere, LyX-eko beste gauza batzuk 
+ leihoan \SpecialChar LyX
+-en pertsonalizatzeko nahi dituzun ia gauza guztiak egoki ditzakezu.
+ Hala ere, \SpecialChar LyX
+-eko beste gauza batzuk 
 \family typewriter
-LyXDir
+\SpecialChar LyX
+Dir
 \family default
  direktorioko fitxategiak aldatuta pertsonaliza ditzakezu.
  Horiek honako azpiatal hauetan azaltzen diren kategoria ezberdinetan sailkatzen
@@ -208,7 +236,8 @@ Automatikoki sortutako fitxategiak
 \end_layout
 
 \begin_layout Standard
-Fitxategi hauek LyX konfiguratzen duzunean sortzen dira.
+Fitxategi hauek \SpecialChar LyX
+ konfiguratzen duzunean sortzen dira.
  Lehenetsitako hainbat balio edukitzen dute, eta zure sistemaren gain egindako
  ikuskapenetik kalkulatzen dira.
  Orokorrean, ez da komeni horiek aldatzea, zeren eta edozein unetan gainidatzita
@@ -230,18 +259,21 @@ lyxrc.defaults
 \family typewriter
 packages.lst
 \family default
-: LyX-ek ezagutu dituen paketeen zerrenda bat dauka.
- Gaur egun, LyX programak fitxategi honek duen informazioa jaso eta 
+: \SpecialChar LyX
+-ek ezagutu dituen paketeen zerrenda bat dauka.
+ Gaur egun, \SpecialChar LyX
+ programak fitxategi honek duen informazioa jaso eta 
 \family sans
 \bar under
 L
 \bar default
-aguntza\SpecialChar \menuseparator
+aguntza\SpecialChar menuseparator
 
 \bar under
 L
 \bar default
-aTeX
+a\SpecialChar TeX
+
 \begin_inset space ~
 \end_inset
 
@@ -261,19 +293,22 @@ textclass.lst
 \family typewriter
 layout/
 \family default
- direktorioan aurkitu diren testu-klaseen zerrenda da, dagokien LaTeX dokumentu-
-klase eta azalpenekin batera.
+ direktorioan aurkitu diren testu-klaseen zerrenda da, dagokien \SpecialChar LaTeX
+ dokumentu-klase
+ eta azalpenekin batera.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family typewriter
-doc/LaTeXConfig.lyx
+doc/\SpecialChar LaTeX
+Config.lyx
 \family default
 : 
 \family typewriter
-LaTeXConfig.lyx.in
+\SpecialChar LaTeX
+Config.lyx.in
 \family default
  fitxategia konfiguratzerakoan automatikoki sortzen da.
 \end_layout
@@ -292,8 +327,9 @@ bind/
 \family typewriter
 .bind
 \family default
- luzapenak dituzten fitxategiak dauzka; horiek LyX-en erabiltzen diren laster-te
-klak definitzen dituzte (ikusi 
+ luzapenak dituzten fitxategiak dauzka; horiek \SpecialChar LyX
+-en erabiltzen diren laster-tekla
+k definitzen dituzte (ikusi 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "atal:lasterbideak"
@@ -347,11 +383,13 @@ clipart
 \family typewriter
 doc/
 \family default
- LyX-eko dokumentazioaren fitxategiak ditu (une honetan irakurtzen ari zarena
+ \SpecialChar LyX
+-eko dokumentazioaren fitxategiak ditu (une honetan irakurtzen ari zarena
  barne).
  
 \family typewriter
-LaTeXConfig.lyx
+\SpecialChar LaTeX
+Config.lyx
 \family default
  fitxategiak, arestian azaldu den bezala, arreta berezia eskatzen du.
  Laguntzako dokumentazioak hizkuntza batera itzulita badaude, fitxategi-izenen
@@ -400,8 +438,9 @@ images/
 Dokumentu-ezarpenak
 \family default
  leihoan erabiltzen diren irudien fitxategiak ditu.
- Gainera, tresna-barrako eta iragarkiaren (LyX abiatzen denean erakusten
- dena) ikonoak ditu.
+ Gainera, tresna-barrako eta iragarkiaren (\SpecialChar LyX
+ abiatzen denean erakusten dena)
+ ikonoak ditu.
 \end_layout
 
 \begin_layout Labeling
@@ -449,10 +488,15 @@ kapituluan azaltzen diren testu-klaseen fitxategiak ditu.
 \labelwidthstring 00.00.0000
 
 \family typewriter
-reLyX/
+re\SpecialChar LyX
+/
 \family default
- reLyX-en fitxategiak dauzka.
- reLyX LaTeX-eko fitxategiak LyX formatura bihurtzen ditu.
+ re\SpecialChar LyX
+-en fitxategiak dauzka.
+ re\SpecialChar LyX
+ \SpecialChar LaTeX
+-eko fitxategiak \SpecialChar LyX
+ formatura bihurtzen ditu.
 \end_layout
 
 \begin_layout Labeling
@@ -481,7 +525,8 @@ reference "atal:txantiloiak"
 \begin_inset space ~
 \end_inset
 
-kapituluan azaltzen diren LyX-eko txantiloi estandarrak ditu.
+kapituluan azaltzen diren \SpecialChar LyX
+-eko txantiloi estandarrak ditu.
 \end_layout
 
 \begin_layout Labeling
@@ -490,7 +535,9 @@ kapituluan azaltzen diren LyX-eko txantiloi estandarrak ditu.
 \family typewriter
 tex/
 \family default
- LyX-ekin banatzen diren LaTeX cls motako fitxategiak ditu.
+ \SpecialChar LyX
+-ekin banatzen diren \SpecialChar LaTeX
+ cls motako fitxategiak ditu.
 \end_layout
 
 \begin_layout Labeling
@@ -503,9 +550,10 @@ ui/
 \family typewriter
 .ui
 \family default
- luzapena duten fitxategiak ditu, LyX-entzako erabiltzailearen interfazea
- definitzen dute, hau da, fitxategiok zein menutan eta tresna-barran zein
- elementu agertu behar duten definitzen dute.
+ luzapena duten fitxategiak ditu, \SpecialChar LyX
+-entzako erabiltzailearen interfazea definitze
+n dute, hau da, fitxategiok zein menutan eta tresna-barran zein elementu
+ agertu behar duten definitzen dute.
  Xehetasun gehiagorako, ikusi 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -525,7 +573,8 @@ Fitxategi hauek ez aldatu
 \end_layout
 
 \begin_layout Standard
-LyX-ek bere barruan erabiltzen dituen fitxategi batzuk daude, eta garatzailea
+\SpecialChar LyX
+-ek bere barruan erabiltzen dituen fitxategi batzuk daude, eta garatzailea
  ez bazara ez zaizu hauek aldatzea komeni.
 \end_layout
 
@@ -535,13 +584,14 @@ LyX-ek bere barruan erabiltzen dituen fitxategi batzuk daude, eta garatzailea
 \family typewriter
 CREDITS
 \family default
- Fitxategi honek LyX-eko garatzaileen zerrenda dauka.
+ Fitxategi honek \SpecialChar LyX
+-eko garatzaileen zerrenda dauka.
  Honen edukia 
 \family sans
 \bar under
 L
 \bar default
-aguntza\SpecialChar \menuseparator
+aguntza\SpecialChar menuseparator
 
 \bar under
 L
@@ -561,7 +611,8 @@ buruz
 \family typewriter
 chkconfig.ltx
 \family default
- Hau konfigurazio prozesuan erabiltzen den LaTeX-eko script bat da.
+ Hau konfigurazio prozesuan erabiltzen den \SpecialChar LaTeX
+-eko script bat da.
  Ez exekutatu zuzenean.
 \end_layout
 
@@ -571,12 +622,13 @@ chkconfig.ltx
 \family typewriter
 configure
 \family default
- Hau LyX birkonfiguratzeko erabiltzen den script-a da.
+ Hau \SpecialChar LyX
+ birkonfiguratzeko erabiltzen den script-a da.
  Exekutatu den direktorioan konfigurazioko fitxategiak sortzen ditu.
 \end_layout
 
 \begin_layout Subsection
-Lerro bat edo bi behar duten fitxategiak\SpecialChar \ldots{}
+Lerro bat edo bi behar duten fitxategiak\SpecialChar ldots
 
 \end_layout
 
@@ -609,7 +661,8 @@ Kanpo-materiala
 \family typewriter
 languages
 \family default
- Fitxategi honek gaur egun LyX-en onartuta dauden hizkuntza guztien zerrenda
+ Fitxategi honek gaur egun \SpecialChar LyX
+-en onartuta dauden hizkuntza guztien zerrenda
  dauka.
 \end_layout
 
@@ -618,8 +671,10 @@ Zure konfigurazio lokaleko direktorioa
 \end_layout
 
 \begin_layout Standard
-LyX programa erabiltzaile arrunt gisa erabiltzen baduzu, noizbait LyX-en
- kofigurazioa aldatzu nahi izango duzu zure erabilerarentzako.
+\SpecialChar LyX
+ programa erabiltzaile arrunt gisa erabiltzen baduzu, noizbait \SpecialChar LyX
+-en kofigurazioa
+ aldatzu nahi izango duzu zure erabilerarentzako.
  
 \family typewriter
 ErabDir
@@ -630,7 +685,7 @@ ErabDir
 \bar under
 L
 \bar default
-aguntza\SpecialChar \menuseparator
+aguntza\SpecialChar menuseparator
 
 \bar under
 L
@@ -644,7 +699,8 @@ buruz
  menuko leihoa agertzen den "erabiltzailearen direktorioa" da.
  Direktorio hau 
 \family typewriter
-LyXDir
+\SpecialChar LyX
+Dir
 \family default
 -en ispilu bezala erabiltzen da, hau da, 
 \family typewriter
@@ -652,7 +708,8 @@ ErabDir
 \family default
 -en aurkitzen den fitxategi bakoitza 
 \family typewriter
-LyXDir
+\SpecialChar LyX
+Dir
 \family default
 -eko dagokion fitxategiaren ordezko bat da.
  Arestian azaldu den konfigurazioko edozein fitxategi sistema osoko direktorioan
@@ -670,7 +727,7 @@ Gauzak argiago azalteko, adibide gutxi batzuk jarriko dizkizugu:
 \bar under
 E
 \bar default
-ditatu\SpecialChar \menuseparator
+ditatu\SpecialChar menuseparator
 
 \bar under
 H
@@ -689,19 +746,21 @@ preferences
 \end_layout
 
 \begin_layout Itemize
-LyX konfiguratzen duzunean 
+\SpecialChar LyX
+ konfiguratzen duzunean 
 \family sans
 \bar under
 E
 \bar default
-ditatu\SpecialChar \menuseparator
+ditatu\SpecialChar menuseparator
 
 \bar under
 B
 \bar default
 irkonfiguratu
 \family default
- erabiliz, LyX-ek 
+ erabiliz, \SpecialChar LyX
+-ek 
 \family typewriter
 configure
 \family default
@@ -734,8 +793,10 @@ Dokumentu-ezarpenak
 \end_layout
 
 \begin_layout Itemize
-Halaber, etxean (direktorio pertsonalean) LaTeX dokumentu-klaseak instalatu
- badituzu, eta LaTeX zure 
+Halaber, etxean (direktorio pertsonalean) \SpecialChar LaTeX
+ dokumentu-klaseak instalatu badituzu,
+ eta \SpecialChar LaTeX
+ zure 
 \family typewriter
 TEXINPUTS
 \family default
@@ -745,7 +806,8 @@ TEXINPUTS
 status collapsed
 
 \begin_layout Plain Layout
-LyX-ek edo zuk 
+\SpecialChar LyX
+-ek edo zuk 
 \family typewriter
 .layout
 \family default
@@ -759,9 +821,10 @@ LyX-ek edo zuk
 \end_layout
 
 \begin_layout Itemize
-LyX-eko ftp zerbitzaritik eguneratutako dokumentazioa eskuratzen baduzu,
- eta sistemako arduraduna ez zarenez zure sisteman ezin baduzu instalatu,
- kopiatu fitxategiok 
+\SpecialChar LyX
+-eko ftp zerbitzaritik eguneratutako dokumentazioa eskuratzen baduzu, eta
+ sistemako arduraduna ez zarenez zure sisteman ezin baduzu instalatu, kopiatu
+ fitxategiok 
 \family typewriter
 ErabDir/doc/
 \family default
@@ -773,7 +836,8 @@ Laguntza
 \end_layout
 
 \begin_layout Section
-LyX hainbat konfiguraziorekin exekutatzen
+\SpecialChar LyX
+ hainbat konfiguraziorekin exekutatzen
 \end_layout
 
 \begin_layout Standard
@@ -788,7 +852,8 @@ Konfigurazio lokaleko direktorioaren konfigurazio askatasuna ez da nahikoa
 \end_layout
 
 \begin_layout Standard
-Komando lerroan LyX programari 
+Komando lerroan \SpecialChar LyX
+ programari 
 \family typewriter
 -userdir
 \family default
@@ -801,14 +866,16 @@ direktorio-bat
 direktorio-bat
 \emph default
 > direktorioko konfigurazio-fitxategiak irakurtzera bultzatuko duzu (bestela,
- komando lerroan LyX aukerarik gabe deitzen bada, lehenespeneko direktorioa
+ komando lerroan \SpecialChar LyX
+ aukerarik gabe deitzen bada, lehenespeneko direktorioa
  hartuko du oinarritzat).
  <
 \emph on
 direktorio-bat
 \emph default
-> direktorioa ez balego, LyX-ek zure ordez sortuko luke, lehenetsitako direktori
-oa sortzen duen bezalaxe, programa lehen aldiz abiatzen denean.
+> direktorioa ez balego, \SpecialChar LyX
+-ek zure ordez sortuko luke, lehenetsitako direktorioa
+ sortzen duen bezalaxe, programa lehen aldiz abiatzen denean.
  
 \family typewriter
 Erabdir
@@ -834,7 +901,8 @@ Erabdir/layouts
  direktorian diseinu berri bat gehitu nahi baduzu, eta hori zure konfigurazio
  guztietan eskuragarri eduki nahi izanez gero, diseinuari dagokion fitxategia
  direktorio bakoitzean gehitu beharko duzu.
- Lan guzti hori sahiesteko, honako hau egin behar duzu: behin LyX-ek direktorio
+ Lan guzti hori sahiesteko, honako hau egin behar duzu: behin \SpecialChar LyX
+-ek direktorio
  gehigarri bat sortzen duenean, azpidirektorio gehienak (ikus arestian)
  hutsik egoten dira.
  Konfigurazio berri bat existitzen den beste baten 
@@ -852,7 +920,7 @@ doc/
 \bar under
 E
 \bar default
-ditatu\SpecialChar \menuseparator
+ditatu\SpecialChar menuseparator
 
 \bar under
 B
@@ -886,6 +954,10 @@ Itzultzailearen
 
 oharra: esteka sinbolikoak sortzeko komando lerroan (shell batean) honako
  agindu hau lantzen da:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -928,7 +1000,8 @@ jator_bidea
 helbur_bidea
 \family default
  ezberdinak badira, bederen).
- Adibidez, LyX-eko konfigurazioari dagokion esteka sinbolikoa sortzeko honako
+ Adibidez, \SpecialChar LyX
+-eko konfigurazioari dagokion esteka sinbolikoa sortzeko honako
  komando hau erabili nuen:
 \end_layout
 
@@ -982,10 +1055,12 @@ Leihoa lehen aldiz erabiltzea
 ErabDir/preferences
 \family default
  fitxategiak jatorrizko jokaeraren aldaketak bakarrik ditu.
- Horietariko batzuk LyX-eko iturburuan kodetuta daude; beste batzuk, berriz,
+ Horietariko batzuk \SpecialChar LyX
+-eko iturburuan kodetuta daude; beste batzuk, berriz,
  sistemako 
 \family typewriter
-LyXDir/lyxrc.defaults
+\SpecialChar LyX
+Dir/lyxrc.defaults
 \family default
  fitxategian daude.
  Jabetu zaitez bi fitxategiotan "
@@ -996,12 +1071,13 @@ LyXDir/lyxrc.defaults
  izango.
  Hala ere, 
 \family typewriter
-LyXDir/lyxrc
+\SpecialChar LyX
+Dir/lyxrc
 \family default
  fitxategia sistemako arduradunak bakarrik edita dezake.
  Erabiltzaileek fitxategia sortu eta aldatzeko, 
 \family sans
-Editatu\SpecialChar \menuseparator
+Editatu\SpecialChar menuseparator
 Hobespenak
 \family default
  leihoa erabili beharko dute.
@@ -1029,7 +1105,8 @@ Aplikatu
 \family sans
 Gorde
 \family default
- eta LyX berrabiarazi.
+ eta \SpecialChar LyX
+ berrabiarazi.
 \end_layout
 
 \begin_layout Section
@@ -1037,14 +1114,16 @@ Pantailako letra-tipoak
 \end_layout
 
 \begin_layout Standard
-Zure dokumentuak LyX-eko pantailan erakusteko erabiltzen den letra-tipoa
- oso garrantzitsua da, zure dokumentu guztiak letra-tipo honekin irakurtzen
+Zure dokumentuak \SpecialChar LyX
+-eko pantailan erakusteko erabiltzen den letra-tipoa oso
+ garrantzitsua da, zure dokumentu guztiak letra-tipo honekin irakurtzen
  arituko baitzara.
  Horrela, dokumentua irakurtzeko, letra-tipoa eroso eta ahalik eta politena
  izateak bere garrantzia dauka.
  Zuretzat lehenespenez ahalik eta letra-tipo onena eskaintzen saiatzen da
- LyX taldea, baina X11 sistema guztiak ezberdinak direnez, gerta daiteke
- lehenetsitako letra-tipoa zure sistemako egokiena ez izatea.
+ \SpecialChar LyX
+ taldea, baina X11 sistema guztiak ezberdinak direnez, gerta daiteke lehenetsit
+ako letra-tipoa zure sistemako egokiena ez izatea.
  Zorionez, hori konpontzeko, zerbait egin dezakezu.
  Nola egiten den azaldu baino lehenago, letra-tipoei buruz gehiago ikasi
  beharko zenuke, horrela letra-tipoak aukeratzeko hobeto prestatuta egongo
@@ -1053,10 +1132,12 @@ Zure dokumentuak LyX-eko pantailan erakusteko erabiltzen den letra-tipoa
 \end_layout
 
 \begin_layout Standard
-Atal honek LyX-eko leihoan (pantailan) agertzen diren letra-tipoe aztertuko
+Atal honek \SpecialChar LyX
+-eko leihoan (pantailan) agertzen diren letra-tipoe aztertuko
  ditu.
- Inprimatutako edo aurrebistako letra-tipoek ez dute zerikusirik LyX-en
- pantailako letra-tipoekin, dokumentu-klaseak letra-tipoak zehazten baititu.
+ Inprimatutako edo aurrebistako letra-tipoek ez dute zerikusirik \SpecialChar LyX
+-en pantailako
+ letra-tipoekin, dokumentu-klaseak letra-tipoak zehazten baititu.
  Inprimatutako bertsioaren letra-tipoak aldatzen ikasteko, irakurri 
 \emph on
 Erabiltzailearen Gida
@@ -1134,8 +1215,9 @@ ri daudenean, berriz, letra-tipo eskalakorrak orokorrean egokiagoak dira
 \end_layout
 
 \begin_layout Standard
-Lehenespenez, LyX-ek (interfazean XForms liburutegiak erabiltzerakoan) eskalakai
-tzak diren bitmap motako letra-tipoak erabiltzen ditu.
+Lehenespenez, \SpecialChar LyX
+-ek (interfazean XForms liburutegiak erabiltzerakoan) eskalakaitza
+k diren bitmap motako letra-tipoak erabiltzen ditu.
  Serif letra-tipoentzat 
 \emph on
 times
@@ -1152,7 +1234,8 @@ courier
 \end_layout
 
 \begin_layout Standard
-Ondoren, LyX-en ongi ikusten ez diren letra-tipoez arituko gara.
+Ondoren, \SpecialChar LyX
+-en ongi ikusten ez diren letra-tipoez arituko gara.
  Parametro garrantzitsuenekin hasiko gara: DPI eta zoom letra-tipoa.
 \end_layout
 
@@ -1161,7 +1244,8 @@ DPIren ezarpenak eta zooma
 \end_layout
 
 \begin_layout Standard
-LyX automatikoki letra-tipoak eskalatzen saiatzen da, inprimatuko den bertsioko
+\SpecialChar LyX
+ automatikoki letra-tipoak eskalatzen saiatzen da, inprimatuko den bertsioko
  tamainara ahalik eta gehien gerturatuz, zoom faktorea deitzen zaionarentzat
  izan ezik.
 \end_layout
@@ -1169,10 +1253,12 @@ LyX automatikoki letra-tipoak eskalatzen saiatzen da, inprimatuko den bertsioko
 \begin_layout Standard
 Sistema guztian hau lantzeko, pantailako DPI ("dots per inch" edo "puntuak
  hatzeko") ezarpenetan oinarritzen da.
- LyX-ek zure sistemako DPI ezarpenak autodetektatzen ditu, horretarako X
- zerbitzariak eskaintzen duen informazioa erabiliz.
- LyX-ek jasotzen dituen DPI ezarpenak ikusteko, terminal batean exekutatu
- komando hau: 
+ \SpecialChar LyX
+-ek zure sistemako DPI ezarpenak autodetektatzen ditu, horretarako X zerbitzari
+ak eskaintzen duen informazioa erabiliz.
+ \SpecialChar LyX
+-ek jasotzen dituen DPI ezarpenak ikusteko, terminal batean exekutatu komando
+ hau: 
 \family typewriter
 lyx -dbg 2
 \family default
@@ -1188,7 +1274,8 @@ xdpyinfo | more
 \family default
 " eta idatzi papertxo batean erabiltzen ari zaren pantailako bereizmenean
  zein DPI daukazun.
- Hor agertzen diren balioak LyX-ek detektatzen dituenen antzekoak izan beharko
+ Hor agertzen diren balioak \SpecialChar LyX
+-ek detektatzen dituenen antzekoak izan beharko
  lukete.
  Balioa "resolution" bezala adierazitako zenbakia da.
  Zabaleran duzun pixel kopurua ere idatzi ("dimensions" eremuan agertuko
@@ -1203,13 +1290,16 @@ Gero, eskuratu erregela zahar bat, eta neurtu zure monitorean ikusten den
  Orain, zure pantailaren DPI ezarpen egokia zehaz dezakezu, zabalerak duen
  pixel kopurua monitoreak duen marrazte arearen zabaleragatik zatituz.
  Emaitza detektatu den balioa baino 5 DPI handiagoa bada, X-en konfigurazioa
- zuzendu beharko zenuke, edo behintzat LyX-i jakinarazi DPI-ren balioa eta
+ zuzendu beharko zenuke, edo behintzat \SpecialChar LyX
+-i jakinarazi DPI-ren balioa eta
  dektektatu denarena ezberdinak direla.
 \end_layout
 
 \begin_layout Standard
-X-en konfigurazioa zuzendu ezin baduzu (zuzenduz gero, LyX eta beste programa
- guztiek horren onura jasoko lukete), LyX-i, 
+X-en konfigurazioa zuzendu ezin baduzu (zuzenduz gero, \SpecialChar LyX
+ eta beste programa
+ guztiek horren onura jasoko lukete), \SpecialChar LyX
+-i, 
 \family sans
 Hobespenak
 \family default
@@ -1218,13 +1308,16 @@ Hobespenak
  egoki dezakezu.
  Ezarpen honek testuko puntuaren tamaina eskalatzen du.
  Zure DPI ezarpenak zuzenak badira, eta zoomaren balioa 100 bada, horrek
- esanahi du LyX-ek agertzen duen letra-tamaina eta inprimatuko dena berdinak
+ esanahi du \SpecialChar LyX
+-ek agertzen duen letra-tamaina eta inprimatuko dena berdinak
  izango direla.
  Zooma 200 balioarekin jartzen baduzu, pantailako testua inprimatuko dena
  baino bi bider handiago agertuko da.
- Noski, LyX-ek tamaina egokia duen letra-tipo bat aurkitzen badu gertatuko
+ Noski, \SpecialChar LyX
+-ek tamaina egokia duen letra-tipo bat aurkitzen badu gertatuko
  da, baina hori ezin da erabat bermatu.
- LyX programa WYSIWYM izaera duenez, murriztapen hori ez da arazo larria.
+ \SpecialChar LyX
+ programa WYSIWYM izaera duenez, murriztapen hori ez da arazo larria.
 \end_layout
 
 \begin_layout Standard
@@ -1270,7 +1363,8 @@ Letra-tipoak definitzeko komandoak
 \end_layout
 
 \begin_layout Standard
-Arestian aipatu den bezala, LyX-ek interfaze lanetarako XForms liburutegiak
+Arestian aipatu den bezala, \SpecialChar LyX
+-ek interfaze lanetarako XForms liburutegiak
  erabiltzen dituenean, bitmap motako letra-tipo eskalakaitzak erabiltzen
  ditu.
  Serif letra-tipoentzako 
@@ -1313,7 +1407,8 @@ A
 plikatu
 \family default
  botoian.
- LyX-ek, orduan, letra-tipo berria erabiliz zure dokumentua birfomateatuko
+ \SpecialChar LyX
+-ek, orduan, letra-tipo berria erabiliz zure dokumentua birfomateatuko
  du, eta letra-tipo hori egitan (baina egi-egitan) atsegin baduzu, 
 \family sans
 \bar under
@@ -1347,8 +1442,9 @@ Bitmap motako letra-tipoekin jauregiak eraikitzen hasi aurretik, tamaina
  fonts") gaitu beharko zenuke.
  Hori bitmap letra-tipoentzako bakarrik da, ez baitira ongi eskalatzen.
  Bandera hau ezartzen baduzu, eskuragarri dauden finkatutako letra-tipoak
- bakarrik erabiliko ditu LyX-ek, eta horrela bitmap letra-tipoak itxura
- polita edukiko dutela ziurtatuko du.
+ bakarrik erabiliko ditu \SpecialChar LyX
+-ek, eta horrela bitmap letra-tipoak itxura polita
+ edukiko dutela ziurtatuko du.
  Gogoratu, eskuragarri dauden letra-tipoak ikusteko 
 \family typewriter
 xlsfonts
@@ -1361,8 +1457,9 @@ man xlsfonts
 .
  Hala ere, lortzen dena ezberdina izan daiteke; izan ere, pantailako letra-tipoe
 n tamainaren aldean inprimatzen den letra-tipoa handiagoa izan daiteke,
- zeren eta dagoen tamainatik gertuena erabiltzen saiatzen baita LyX, eta
- egokitzeko ez du letra-tipoa eskalatuko.
+ zeren eta dagoen tamainatik gertuena erabiltzen saiatzen baita \SpecialChar LyX
+, eta egokitzeko
+ ez du letra-tipoa eskalatuko.
  Gainera, logikoa denez, pantailan tamaina batzuk berdintsu agertuko dira,
  adibidez, Handia eta Handiagoa, eta pantailan bien arteko aldeak ikustea
  zaila izango da zuretzat.
@@ -1408,7 +1505,8 @@ oharra
 \begin_layout Standard
 Batzuetan aukera hori erabiltzeak sortzen duen eragozpena pantailako letra-tamai
 nak erabiliz arindu daiteke (hauei dagozkien tamaina logiko ezberdinak aldatuz).
- LyX 
+ \SpecialChar LyX
+ 
 \family typewriter
 lyx -dbg 513
 \family default
@@ -1418,7 +1516,8 @@ lyx -dbg 513
 Hobespenak
 \family default
  leihoan egokitzen saia zaitezke, nahi dituzun letra-tipoak lorzeko.
- Hau lantzea nahiko astuna gerta dakizuke, LyX-ek pantailako letra-tamainak
+ Hau lantzea nahiko astuna gerta dakizuke, \SpecialChar LyX
+-ek pantailako letra-tamainak
  X zerbitzariari eskatzeko DPI ezarpena eta letra-tipoaren zooma erabiltzen
  baititu, eta ondorioz mapatze lanak korapilatzen du.
  Saiakera eta erroreen bitartez ezin baduzu lortu, DPI ezarpena eta zooma
@@ -1433,14 +1532,16 @@ Letra-kodeketa
 \end_layout
 
 \begin_layout Standard
-Lehenespenez, LyX-ek europa mendebaldeko (Western European) testuak, eta
- ingeleseko mota guztiak, idazteko letra-tipoak erabiltzen ditu.
+Lehenespenez, \SpecialChar LyX
+-ek europa mendebaldeko (Western European) testuak, eta ingeleseko
+ mota guztiak, idazteko letra-tipoak erabiltzen ditu.
  Hau 
 \emph on
 letra-kodeketa
 \emph default
  deitzen zaionaren birtartez definitzen da.
- LyX-ekin europa ekialdeko testuak, Cirilikoa edo ISO-8859-1 kodeketak betetzen
+ \SpecialChar LyX
+-ekin europa ekialdeko testuak, Cirilikoa edo ISO-8859-1 kodeketak betetzen
  ez duen beste hizkuntza batean idazteko, kodeketaren ezarpen ezberdin bat
  defini dezakezu.
  Honek letra-tipo bereziak instalatuta edukitzea eskatzen du.
@@ -1453,15 +1554,19 @@ xfontsel
  eta"encdng" egiaztatu.
  Kodeketaren bat aurkituz gero, leihoan sar ezazu.
  Ezezko kasuan, letra-tipo egokiak aurkitzeko zoaz Interneten bilatzera.
- LyX programak Qt liburutegia erabiltzen badu, orduan egokiena iso646 kodeketa
+ \SpecialChar LyX
+ programak Qt liburutegia erabiltzen badu, orduan egokiena iso646 kodeketa
  erabiltzea da.
 \end_layout
 
 \begin_layout Standard
-Bestelako letra-kodeketa erabiltzeko LyX konfiguratzen duzunean, LyX-eko
- leihoetan erabiltzen diren letra-tipoak aldatzea ere komeniko zaizu.
- Adibidez, Gaien aurkibidearen leihoa ez da ulertuko LyX-i bertan beste
- letra-tipo bat erabiltzeko esaten ez diozun bitartean.
+Bestelako letra-kodeketa erabiltzeko \SpecialChar LyX
+ konfiguratzen duzunean, \SpecialChar LyX
+-eko leihoetan
+ erabiltzen diren letra-tipoak aldatzea ere komeniko zaizu.
+ Adibidez, Gaien aurkibidearen leihoa ez da ulertuko \SpecialChar LyX
+-i bertan beste letra-tipo
+ bat erabiltzeko esaten ez diozun bitartean.
  Lehenetsi gisa, menuen letra-tipoa 
 \family typewriter
 -*-helvetica-medium-r
@@ -1481,9 +1586,11 @@ Hobespenak
 \begin_layout Standard
 Ikus dezakezun bezala, zure letra-tipoak fintzeko Hainbat aukera dituzu.
  Ez zaitez beldurtu eta egokitu ezarpenak zeure nahietara, azken finean
- LyX etorkizunean asko erabiliko baituzu.
+ \SpecialChar LyX
+ etorkizunean asko erabiliko baituzu.
  WYSIWYG motako testu prozesatzaileekin ez bezala (bai pantailan bai inprimatzen
- diren orrietan letra-tipo berdinak erabiltzeaz aspertuko zarelakoan), LyX-ek
+ diren orrietan letra-tipo berdinak erabiltzeaz aspertuko zarelakoan), \SpecialChar LyX
+-ek
  inprimatutako orrietarako letra-tipo dotoreak erabiltzen dituzun bitartean
  pantailarako egokiak diren letra-tipoak erabiltzea uzten dizu.
 \end_layout
@@ -1522,21 +1629,25 @@ Argi dago ni hauetariko bat naizela, ez?
 Hala ere, lasterbideak zuretzat atseginagoak izan daitezen aldatu nahi badituzu,
  orduan 
 \family typewriter
-LyXDir/bind/
+\SpecialChar LyX
+Dir/bind/
 \family default
  direktorioko gehien gerturatzen zaizun fitxategia 
 \family typewriter
 ErabDir/bind/
 \family default
  direktorioan kopiatu eta biderik egokiena bertan aldatzea duzu.
- Ez ahaztu gitxategi berri hau LyX-en kargatzea; horretarako, erabili Hobespenak
+ Ez ahaztu gitxategi berri hau \SpecialChar LyX
+-en kargatzea; horretarako, erabili Hobespenak
  leihoa.
- Oraingoz aldaketa hauek eragina izan dezaten LyX berrabiaraztea nahikoa
- izaten da.
+ Oraingoz aldaketa hauek eragina izan dezaten \SpecialChar LyX
+ berrabiaraztea nahikoa izaten
+ da.
 \end_layout
 
 \begin_layout Standard
-LyX-ek erabiltzailearen interfazerako nazioarteko hizkuntzen euskarria dauka
+\SpecialChar LyX
+-ek erabiltzailearen interfazerako nazioarteko hizkuntzen euskarria dauka
  (ikusi 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1553,7 +1664,8 @@ kapitulua).
 \family typewriter
 $LANG
 \family default
- aldagaiarekin ezarrita badago, LyX lasterbideen fitxategiak (aurretik 
+ aldagaiarekin ezarrita badago, \SpecialChar LyX
+ lasterbideen fitxategiak (aurretik 
 \family typewriter
 $LANG_
 \family default
@@ -1562,7 +1674,8 @@ $LANG_
 \family typewriter
 bind/
 \family default
- direktorioan jar dezakezu, eta LyX-ek automatikoki erabiliko du.
+ direktorioan jar dezakezu, eta \SpecialChar LyX
+-ek automatikoki erabiliko du.
 \end_layout
 
 \begin_layout Standard
@@ -1582,7 +1695,8 @@ bind <tekla elkartea> <lyx-funtzioa>
 \begin_layout Standard
 Bai tekla-elkarteak bai lyx-funtzioak (eduki ditzakeen argumentuak barne)
  "komatxo bikoitzen" artean egon behar dute.
- LyX-eko funtzio guztiak 
+ \SpecialChar LyX
+-eko funtzio guztiak 
 \emph on
 Erreferentzia Gida
 \emph default
@@ -1604,7 +1718,8 @@ name "atal:ui"
 Menua eta tresna-barraren itxura Hobespenak leihoa erabiliz alda ditzakezu.
  
 \family typewriter
-LyXDir/ui/
+\SpecialChar LyX
+Dir/ui/
 \family default
  direktorioko .ui fitxategia aldatzea besterik ez da.
  Oraingoz, fitxategi bakarra dago, 
@@ -1617,7 +1732,8 @@ default.ui
 ErabDir/ui/
 \family default
  direktorioan kopiatu eta jolastera! Gogoratu, oraingoz, aldaketa hauek
- eragina izan dezaten LyX berrabiarazi behar duzula.
+ eragina izan dezaten \SpecialChar LyX
+ berrabiarazi behar duzula.
 \end_layout
 
 \begin_layout Standard
@@ -1704,15 +1820,17 @@ Bihurtzaileak, formatuak eta ikustaileak
 \end_layout
 
 \begin_layout Standard
-LyX-ek fitxategien formatuetatik edota formatuetara bihurtzeko mekanismo
- ahaltsu bat dauka, eta horretarako kanpoko tresnetan oinarritzen da.
+\SpecialChar LyX
+-ek fitxategien formatuetatik edota formatuetara bihurtzeko mekanismo ahaltsu
+ bat dauka, eta horretarako kanpoko tresnetan oinarritzen da.
  Formatu bikote bat definitu, adib.
 \family typewriter
 
 \begin_inset space ~
 \end_inset
 
-LaTeX
+\SpecialChar LaTeX
+
 \family default
  eta
 \family typewriter
@@ -1728,7 +1846,8 @@ PDF
 \end_layout
 
 \begin_layout Enumerate
-LaTeX-etik PDF-ra 
+\SpecialChar LaTeX
+-etik PDF-ra 
 \family typewriter
 pdflatex
 \family default
@@ -1736,8 +1855,10 @@ pdflatex
 \end_layout
 
 \begin_layout Enumerate
-Bide korapilatsuago bat, bitarteko bihurtzaile eta formatuak erabiliz: LaTeX-eti
-k DVI-ra (LaTeX erabiliz) eta gero PostScript® formatora (
+Bide korapilatsuago bat, bitarteko bihurtzaile eta formatuak erabiliz: \SpecialChar LaTeX
+-etik
+ DVI-ra (\SpecialChar LaTeX
+ erabiliz) eta gero PostScript® formatora (
 \family typewriter
 dvips
 \family default
@@ -1749,7 +1870,8 @@ ps2pdf
 \end_layout
 
 \begin_layout Standard
-LyX-ek beti biderik motzena hautatzen du, beraz biak erabiltzeko 
+\SpecialChar LyX
+-ek beti biderik motzena hautatzen du, beraz biak erabiltzeko 
 \family typewriter
 .pdf
 \family default
@@ -1768,7 +1890,8 @@ Horretaz gain, formatu bakoitzari ikustaile bat esleitzen zaio.
 \family typewriter
 ghostview
 \family default
- edo LaTeX-eko irteera aurreikusteko 
+ edo \SpecialChar LaTeX
+-eko irteera aurreikusteko 
 \family typewriter
 xdvi
 \family default
@@ -1776,7 +1899,7 @@ xdvi
  Erabili nahi dituzun ikustaileak aldatzeko (eta hoiei zein aukera igorriko
  zaien zehazteko), 
 \family sans
-Editatu\SpecialChar \menuseparator
+Editatu\SpecialChar menuseparator
 Hobespenak
 \family default
  menua hautatu, eta, sortzen den leihoan, erabili 
@@ -1809,8 +1932,9 @@ ASCIIra esportatzeko aukerak
 
 \begin_layout Standard
 ASCII eran esportatzen diren testu fitxategiak "garbitzeko" bi komando daude.
- Jabetu zaitez LyX-ek instalazio-garaian zure sistemako ezarpen egokienak
- automatikoki detektatu eta erabiltzen dituela.
+ Jabetu zaitez \SpecialChar LyX
+-ek instalazio-garaian zure sistemako ezarpen egokienak automatik
+oki detektatu eta erabiltzen dituela.
  Haren interpretazioarekin ados ez bazaude, horiek alda ditzakezu.
  Ezarpen horiek 
 \family sans
@@ -1858,7 +1982,8 @@ nroff
 man
 \family default
  orrialdeak.
- Eremu hau hutsik utzita, LyX-i bere barneko bihurtzailea erabiltzeko adierazten
+ Eremu hau hutsik utzita, \SpecialChar LyX
+-i bere barneko bihurtzailea erabiltzeko adierazten
  zaio.
 \end_layout
 
@@ -1888,7 +2013,8 @@ Inprimagailua
 \end_layout
 
 \begin_layout Standard
-LyX-ek kanpoko inprimatzeko komandoarekin lan egiteko konfigurazioko hainbat
+\SpecialChar LyX
+-ek kanpoko inprimatzeko komandoarekin lan egiteko konfigurazioko hainbat
  aukera ditu.
  Ezarpen horiek 
 \family sans
@@ -1909,7 +2035,8 @@ Koloreak aldatzea
 \end_layout
 
 \begin_layout Standard
-LyX-ek pantailan darabiltzan koloreak aldatzea nahi baduzu, erabili 
+\SpecialChar LyX
+-ek pantailan darabiltzan koloreak aldatzea nahi baduzu, erabili 
 \family sans
 Hobespenak
 \family default
@@ -1930,18 +2057,23 @@ Erreferentzia Gida
 \end_layout
 
 \begin_layout LyX-Code
-set-color LyXIzena X11Kolorea
+set-color \SpecialChar LyX
+Izena X11Kolorea
 \end_layout
 
 \begin_layout Standard
 Hemen funtzioen eta lehenetsitako koloreen zerrenda-zati bat aurkezten dizugu:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 \align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="3">
-<features rotate="0" tabularvalignment="middle">
+<features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="center" valignment="top" width="0pt">
@@ -1959,7 +2091,8 @@ Hemen funtzioen eta lehenetsitako koloreen zerrenda-zati bat aurkezten dizugu:
 \bar no
 \noun off
 \color none
-LyX
+\SpecialChar LyX
+
 \family default
 \series default
 \shape default
@@ -2137,7 +2270,8 @@ latex
 \bar no
 \noun off
 \color none
-LaTeX
+\SpecialChar LaTeX
+
 \family default
 \series default
 \shape default
@@ -2476,7 +2610,7 @@ name "atal:autodetektatuta"
 \bar under
 E
 \bar default
-ditatu\SpecialChar \menuseparator
+ditatu\SpecialChar menuseparator
 
 \bar under
 B
@@ -2591,7 +2725,8 @@ T1
 \family typewriter
 ec
 \family default
- letra-tipoak aurkitu badira eta LaTeX-ek letra-tipo horiek onartzen baditu.
+ letra-tipoak aurkitu badira eta \SpecialChar LaTeX
+-ek letra-tipo horiek onartzen baditu.
  Eskuz ezar dezakezu 
 \family typewriter
 dc
@@ -2604,7 +2739,8 @@ Hainbat
 \end_layout
 
 \begin_layout Standard
-LyX-en jokaera pertsonalizatzeko beste konfigurazio aukera asko daude.
+\SpecialChar LyX
+-en jokaera pertsonalizatzeko beste konfigurazio aukera asko daude.
  Horiei buruz idatzi beharra daukagun arren, gehienak zertarako diren nahiko
  garbi egongo dira.
  Informazio gehiago behar baduzu, idatzi posta-zerrendetara, horrela atal
@@ -2612,7 +2748,8 @@ LyX-en jokaera pertsonalizatzeko beste konfigurazio aukera asko daude.
 \end_layout
 
 \begin_layout Chapter
-LyX internazionalizatzea 
+\SpecialChar LyX
+ internazionalizatzea 
 \begin_inset CommandInset label
 LatexCommand label
 name "kapi:i18n"
@@ -2623,8 +2760,10 @@ name "kapi:i18n"
 \end_layout
 
 \begin_layout Standard
-LyX-ek itzulitako interfaze bat erabiltzeko euskarria dauka.
- Azken aldiz begiratu genuenean LyX, ingelesera eta beste 14 hizkuntzatara
+\SpecialChar LyX
+-ek itzulitako interfaze bat erabiltzeko euskarria dauka.
+ Azken aldiz begiratu genuenean \SpecialChar LyX
+, ingelesera eta beste 14 hizkuntzatara
  itzulita zegoen.
  Hizkuntzaren aukerari 
 \emph on
@@ -2648,7 +2787,8 @@ Itzulpen hauek erabil ditzakezu.
  Gainera, zenbait itzulpenetan lasterbide guztiak ez dira erabiltzen.
  Batzuetan lasterbide gisa erabiltzeko hizkirik ez baitute aurkitu.
  Beste batzuetan, itzultzailea ez da horretaz arduratu.
- Etorriko diren LyX-en bertsioetan hori finkatzen saiatuko gara.
+ Etorriko diren \SpecialChar LyX
+-en bertsioetan hori finkatzen saiatuko gara.
 \end_layout
 
 \begin_layout Section
@@ -2701,7 +2841,8 @@ Egokiena lerro hori zure
 \family default
  fitxategian jartzea duzu; horrela, lehenespenez hautatutako hizkuntza hori
  erabiliko duzu.
- Gogoratu LyX "
+ Gogoratu \SpecialChar LyX
+ "
 \family typewriter
 --disable-nls
 \family default
@@ -2709,7 +2850,8 @@ Egokiena lerro hori zure
 \end_layout
 
 \begin_layout Section
-LyX itzultzea
+\SpecialChar LyX
+ itzultzea
 \end_layout
 
 \begin_layout Subsection
@@ -2717,13 +2859,15 @@ GUI itzultzea (testuen mezuak)
 \end_layout
 
 \begin_layout Standard
-LyX-ek, bere interfazea bestelako hizkuntzekin kudeatzeko, GNU 
+\SpecialChar LyX
+-ek, bere interfazea bestelako hizkuntzekin kudeatzeko, GNU 
 \family typewriter
 gettext
 \family default
  liburutegia erabiltzen du.
- LyX-ek menu eta leiho guztiak atseginen duzun hizkuntzan bistaratzeko,
- hizkuntza horri dagokion PO fitxategia eduki behar du.
+ \SpecialChar LyX
+-ek menu eta leiho guztiak atseginen duzun hizkuntzan bistaratzeko, hizkuntza
+ horri dagokion PO fitxategia eduki behar du.
  Hori eskuragarri dagoenean, PO fitxategitik MO fitxategia sortzen da, eta
  mo hori instalatzen da.
  Eman beharreko urrats guztiak GNU 
@@ -2853,7 +2997,8 @@ Itzulpen Memoriekin
 
 .
  Zenbait menu eta etiketarentzako itzuli beharreko lasterbideak daude.
- Gako hauek `|' ikurraren ostean agertzen dira (LyX bertsio berriek batzuetan
+ Gako hauek `|' ikurraren ostean agertzen dira (\SpecialChar LyX
+ bertsio berriek batzuetan
  '&' ere erabiltzen hasi dira), eta xx hizkuntzaren hitz eta esaldiei egokituta
  egon behar dute.
  
@@ -2884,6 +3029,10 @@ xx.mo
 \family default
  sortu.
  Honela sortu behar duzu:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2896,6 +3045,10 @@ msgfmt -o xx.mo < xx.po
 Kopiatu sortu berri den MO fitxategia ondoren agertzen den direktoriopean
  lyx.mo izenarekin; horretarako, supererabiltzailearen baimenak eduki beharko
  dituzu:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2921,9 +3074,11 @@ end{sloppypar}
 \end_layout
 
 \begin_layout Standard
-PO fitxategi bat LyX banaketan gehitzeak konfigurazioaren script-a eta bestelako
+PO fitxategi bat \SpecialChar LyX
+ banaketan gehitzeak konfigurazioaren script-a eta bestelako
  batzuk aldatu beharra izatea dakar.
- Baina POa itzultzeko LyX-en iturbururik ez duzu behar, 
+ Baina POa itzultzeko \SpecialChar LyX
+-en iturbururik ez duzu behar, 
 \family typewriter
 lyx.pot
 \family default
@@ -2939,8 +3094,9 @@ gettext
 \end_layout
 
 \begin_layout Standard
-LyX une honetan onartzen ez duen PO bat hizkuntza batera itzuli baduzu,
- bidal iezaguzu.
+\SpecialChar LyX
+ une honetan onartzen ez duen PO bat hizkuntza batera itzuli baduzu, bidal
+ iezaguzu.
  Kasu horretan, xehetasun gehiagorako, 
 \family typewriter
 LYX-ITURBURU-DIR/po/
@@ -2963,10 +3119,13 @@ Laguntza menuan agertzen diren eskuliburuak itzul daiteke (edo itzultzea
 \emph on
 locale
 \emph default
- egokiro ezarrita balego, LyX-ek automatikoki erabiliko lituzke.
- LyX-ek itzulitako bertsioak 
+ egokiro ezarrita balego, \SpecialChar LyX
+-ek automatikoki erabiliko lituzke.
+ \SpecialChar LyX
+-ek itzulitako bertsioak 
 \family typewriter
-LyXDir/doc/
+\SpecialChar LyX
+Dir/doc/
 \series bold
 xx
 \series default
@@ -2995,8 +3154,8 @@ DokIzena
 \end_layout
 
 \begin_layout Itemize
-Begiratu dokumentazioaren itzulpenaren web gunean (LyX garatzaileen gunea
- 
+Begiratu dokumentazioaren itzulpenaren web gunean (\SpecialChar LyX
+ garatzaileen gunea 
 \begin_inset Flex URL
 status collapsed
 
@@ -3008,8 +3167,9 @@ http://www.devel.lyx.org
 \end_inset
 
 ), horrela jakingo duzu zein dokumentu dauden zure hizkuntzara itzulita.
- Gune horretan LyX-eko gauzak zure hizkuntzara itzultzen eta antolatzen
- ari den taldeari buruzko informazioa ere aurkituko duzu.
+ Gune horretan \SpecialChar LyX
+-eko gauzak zure hizkuntzara itzultzen eta antolatzen ari
+ den taldeari buruzko informazioa ere aurkituko duzu.
  Antolaketa-talderik ez balego, bidali iezaguzu mezu bat interesa duzula
  adieraziz.
 \end_layout
@@ -3030,7 +3190,7 @@ Intro.lyx
 \bar under
 L
 \bar default
-aguntza\SpecialChar \menuseparator
+aguntza\SpecialChar menuseparator
 
 \bar under
 S
@@ -3069,7 +3229,8 @@ Laguntza
 \end_layout
 
 \begin_layout Itemize
-Batzuetan jatorrizko dokumentua (LyX taldearen eskutik) eguneratu daiteke.
+Batzuetan jatorrizko dokumentua (\SpecialChar LyX
+ taldearen eskutik) eguneratu daiteke.
  Aldatu dena aztertzeko, erabili 
 \begin_inset Flex URL
 status collapsed
@@ -3435,7 +3596,8 @@ Karaktereei buruzko gauza batzuk: alderantzizko barra ihes karaktere motakoa
 #
 \family default
  ikurrak iruzkinak adierazten ditu.
- Komatxoak (hasiera eta amaierakoak), berriz, LaTeX estiloko komandoak.
+ Komatxoak (hasiera eta amaierakoak), berriz, \SpecialChar LaTeX
+ estiloko komandoak.
  Komatxo bat sartzeko 
 \family typewriter
 
@@ -3595,6 +3757,10 @@ kcomb
 kmap
 \family default
  Karakte bat kate batera mapatzen du.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -3667,6 +3833,10 @@ kmap & /
 kmod
 \family default
  Azentodun karakterea zehazten du.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -3767,6 +3937,10 @@ kmod
 ksmod
 \family default
  azentodun karakterearentzako salbuespen bat zehazten du
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -3853,6 +4027,10 @@ i}"
 kcomb
 \family default
  Bi azentudun karaktere bateratzen ditu
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -3959,7 +4137,8 @@ tekla
 \family default
  fitxategi batek uneko letra-tipoaren karaktereekin sortu diren kateak mapatzen
  ditu.
- LyX banaketak gaur egun 
+ \SpecialChar LyX
+ banaketak gaur egun 
 \family typewriter
 iso8859-1.cdef
 \family default
@@ -4060,7 +4239,8 @@ iso-8859-7.cdef
 \end_layout
 
 \begin_layout Standard
-LyX-ek lasterbide edo tekla hil sekuentzi batek sortzen duen katearentzako
+\SpecialChar LyX
+-ek lasterbide edo tekla hil sekuentzi batek sortzen duen katearentzako
  mapa bat ezin badu aurkitu, azentudun karaktere bezalakoa al den begiratuko
  du, eta pantailan karakterearen gainean azentua marrazten saiatuko da.
 \end_layout
@@ -4091,7 +4271,8 @@ Demagun circumflex karakterea (" ̂") behar duzula.
 \family sans
 Shift-6
 \family default
-) LyX-en 
+) \SpecialChar LyX
+-en 
 \family typewriter
 accent-circumflex
 \family default
@@ -4115,7 +4296,8 @@ lyxrc
 \family sans
 ^t
 \family default
-"-rekin saiatzen bazara, LyX-ek soinu bat kaleratuko du, zeren eta "
+"-rekin saiatzen bazara, \SpecialChar LyX
+-ek soinu bat kaleratuko du, zeren eta "
 \family sans
 t
 \family default
@@ -4171,7 +4353,8 @@ Shift
 \family typewriter
 usldead_cedilla
 \family default
- bezalako batekin lotuz eta gero tekla sinboliko hau dagokion LyX komandoarekin
+ bezalako batekin lotuz eta gero tekla sinboliko hau dagokion \SpecialChar LyX
+ komandoarekin
  elkartuz
 \begin_inset Foot
 status collapsed
@@ -4237,7 +4420,8 @@ Mode_Switch
 Ctrl-
 \family default
  tekletariko bat funtzio-tekla bezala erabiltzeko definitu, e.a.
- Azentuek sortzen dituzten LyX-en komandoak 
+ Azentuek sortzen dituzten \SpecialChar LyX
+-en komandoak 
 \emph on
 Erreferentzia Gida
 \emph default
@@ -4253,14 +4437,15 @@ Hizkuntzaren konfigurazioa gordetzea
 \end_layout
 
 \begin_layout Standard
-Zure hobespenak edita ditzakezu, eta beraz, LyX abiatzen denean automatikoki
+Zure hobespenak edita ditzakezu, eta beraz, \SpecialChar LyX
+ abiatzen denean automatikoki
  nahi duzun hizkuntzaren ingurunea konfiguratu dezan ezar dezakezu.
  Horretarako erabili 
 \family sans
 \bar under
 E
 \bar default
-ditatu\SpecialChar \menuseparator
+ditatu\SpecialChar menuseparator
 
 \bar under
 H
@@ -4292,14 +4477,17 @@ Dokumentu-klase berriak instalatzea
 \end_layout
 
 \begin_layout Standard
-Kapitulu honetan azalduko da LyX-eko diseinu eta txantiloi berriak nola
- sortu eta instalatzen diren erakusteaz gain, bai eta LaTeX-eko dokumentu-klase
- berriak nola instalatzen diren ere.
+Kapitulu honetan azalduko da \SpecialChar LyX
+-eko diseinu eta txantiloi berriak nola sortu
+ eta instalatzen diren erakusteaz gain, bai eta \SpecialChar LaTeX
+-eko dokumentu-klase berriak
+ nola instalatzen diren ere.
  Hona zenbait definizio:
 \end_layout
 
 \begin_layout Description
-Dokumentu-klasea LaTeX motako fitxategia bat izaten da (
+Dokumentu-klasea \SpecialChar LaTeX
+ motako fitxategia bat izaten da (
 \family typewriter
 .cls
 \family default
@@ -4317,28 +4505,38 @@ Diseinu
 \begin_inset space ~
 \end_inset
 
-fitxategia LyX motako fitxategi bat da, eta LaTeX-eko dokumentu-klase bati
- dagokio.
- Fitxategi honek LyX-i gauzak pantailan nola bistaratu behar dituen esaten
- dio, azken finean inprimatutako bertsioaren antzeko itxura LyX-eko pantailan
+fitxategia \SpecialChar LyX
+ motako fitxategi bat da, eta \SpecialChar LaTeX
+-eko dokumentu-klase bati dagokio.
+ Fitxategi honek \SpecialChar LyX
+-i gauzak pantailan nola bistaratu behar dituen esaten
+ dio, azken finean inprimatutako bertsioaren antzeko itxura \SpecialChar LyX
+-eko pantailan
  marrazteko.
  Zehatzago esanda, diseinuaren fitxategi batek "testu-klase" bat definitzen
- du, eta azken hori ("testu-klasea") LyX-ek pantailan gauzak bistaratzeko
- erabiltzen duen eta bere barnean dagoen eraikitzaile bat da.
+ du, eta azken hori ("testu-klasea") \SpecialChar LyX
+-ek pantailan gauzak bistaratzeko erabiltze
+n duen eta bere barnean dagoen eraikitzaile bat da.
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 Nahiz eta dokumentazioan bai "diseinua" bai "testu-klasea" hitzak bereiztu
  gabe erabili izan diren, fitxategi bati buruz hitz egiterakoan egokiagoa
- da "diseinua" hitza erabiltzea, eta LyX-en memorian dagoenari "testu-klasea"
+ da "diseinua" hitza erabiltzea, eta \SpecialChar LyX
+-en memorian dagoenari "testu-klasea"
  deitzea.
 \end_layout
 
 \end_deeper
 \begin_layout Description
-Txantiloia Hau LyX dokumentu normal bat da, eta dokumentu-klase batentzako
+Txantiloia Hau \SpecialChar LyX
+ dokumentu normal bat da, eta dokumentu-klase batentzako
  aurrez definitutako sarrera-multzo bat edukitzen du.
  Sarrera multzo hori dokumentu-klase horrek eskatzen duena izan ohi da.
  Txantiloiak batik bat aldizkarien idazkietarako erabilgarriak izaten dira.
@@ -4346,16 +4544,21 @@ Txantiloia Hau LyX dokumentu normal bat da, eta dokumentu-klase batentzako
 \end_layout
 
 \begin_layout Section
-LaTeX pakete berri bat instalatzea
+\SpecialChar LaTeX
+ pakete berri bat instalatzea
 \end_layout
 
 \begin_layout Standard
-Banaketa batzuek LaTeX-eko pakete guztiak ez dituzte instalatzen, batzuetan
- LyX-ekin erabili nahiko zenukeena instalatu gabe gelditzen da.
- Adibidez, demagun FoilTeX (gardenkiak sortzeko pakete ahaltsua) behar duzula.
+Banaketa batzuek \SpecialChar LaTeX
+-eko pakete guztiak ez dituzte instalatzen, batzuetan \SpecialChar LyX
+-ekin
+ erabili nahiko zenukeena instalatu gabe gelditzen da.
+ Adibidez, demagun Foil\SpecialChar TeX
+ (gardenkiak sortzeko pakete ahaltsua) behar duzula.
  Orain paketea nola lortu eta instalatzeko ematen diren urratsak zerrendatuko
- ditugu, eta teTeX edo web2c banaketan oinarritutako zerbait erabiltzen
- duzula suposatzen da:
+ ditugu, eta te\SpecialChar TeX
+ edo web2c banaketan oinarritutako zerbait erabiltzen duzula
+ suposatzen da:
 \end_layout
 
 \begin_layout Enumerate
@@ -4366,7 +4569,8 @@ status collapsed
 \begin_layout Plain Layout
 Ikusi 
 \emph on
-Inventory of your LaTeX configuration
+Inventory of your \SpecialChar LaTeX
+ configuration
 \emph default
  eskuliburua CTAN zer den jakiteko, eta bertan aurki ditzakezun paketeen
  zerrenda lortzeko.
@@ -4420,6 +4624,10 @@ texmf
 \family default
  erabiltzea komeniko litzaizuke.
  Arruntena bi gauza bakarrik aldatzea izaten da:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -4430,6 +4638,10 @@ TEXMFLOCAL
 \family default
  aldagaia aukeratu duzun direktorioarekin.
  Adibidez,
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -4475,7 +4687,8 @@ texmf
 texmf
 \family default
  direktorioan dagoen direktorio-egitura zure direktorio lokalean errepikatu
- behar duzu: adibidez, LaTeX-eko paketeak 
+ behar duzu: adibidez, \SpecialChar LaTeX
+-eko paketeak 
 \family typewriter
 /usr/local/texmf/tex/latex/
 \family default
@@ -4484,7 +4697,12 @@ texmf
 
 \begin_layout Enumerate
 Paketea instalatu.
- Adibidez, deskonprimatu FoilTeX artxiboa eta
+ Adibidez, deskonprimatu Foil\SpecialChar TeX
+ artxiboa eta
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -4509,6 +4727,10 @@ texhash
 \family default
 .
  Honek, beste batzuen artean, hau sortuko luke:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -4519,12 +4741,13 @@ texhash
 \end_deeper
 \begin_layout Enumerate
 6.
- LyX-en hau landu: 
+ \SpecialChar LyX
+-en hau landu: 
 \family sans
 \bar under
 E
 \bar default
-ditatu\SpecialChar \menuseparator
+ditatu\SpecialChar menuseparator
 
 \bar under
 B
@@ -4532,7 +4755,8 @@ B
 irkonfiguratu
 \family default
 .
- Gero berrabiarazi LyX .
+ Gero berrabiarazi \SpecialChar LyX
+ .
 \end_layout
 
 \begin_layout Standard
@@ -4542,14 +4766,15 @@ slides
 \begin_inset space ~
 \end_inset
 
-(FoilTeX)
+(Foil\SpecialChar TeX
+)
 \family default
  izango litzakete) 
 \family sans
 \bar under
 D
 \bar default
-iseinua\SpecialChar \menuseparator
+iseinua\SpecialChar menuseparator
 
 \bar under
 D
@@ -4570,7 +4795,8 @@ Dokumentu-klasea
 \family default
  zerrendan aurkituko duzu.
  Jakin ezazu paketeak instalatzeko beste bide errazgo bat ere badagoela:
- sistemako LaTeX direktorioan (
+ sistemako \SpecialChar LaTeX
+ direktorioan (
 \family typewriter
 $TEXMF/tex/latex
 \family default
@@ -4602,9 +4828,9 @@ Diseinuak
 \end_layout
 
 \begin_layout Standard
-Atal honek LyX diseinuen fitxategiak (gogoratu testu-klaseak ere deitzen
- zaiela) nola idatzi eta instalatu ditzakezun azaltzen du, eta adibide gisa,
- 
+Atal honek \SpecialChar LyX
+ diseinuen fitxategiak (gogoratu testu-klaseak ere deitzen zaiela)
+ nola idatzi eta instalatu ditzakezun azaltzen du, eta adibide gisa, 
 \family sans
 article
 \family default
@@ -4614,10 +4840,11 @@ article
 .layout
 \family default
  luzapena edukitzen du) dokumentu-klase batentzako eskuragarri dauden paragrafo
- estiloak deskribatzen ditu, eta LyX-ek nola bistaratu behar dituen ere
- bai.
- Hemen prozesu hau azaltzen saiatuko garen arren, LaTeX-ek dokumentu-klase
- ugari dituenez, aukera denak ezin izango ditugu azaldu.
+ estiloak deskribatzen ditu, eta \SpecialChar LyX
+-ek nola bistaratu behar dituen ere bai.
+ Hemen prozesu hau azaltzen saiatuko garen arren, \SpecialChar LaTeX
+-ek dokumentu-klase ugari
+ dituenez, aukera denak ezin izango ditugu azaldu.
 \end_layout
 
 \begin_layout Standard
@@ -4656,8 +4883,10 @@ Dokumentu-klase berriak onartzea
 \end_layout
 
 \begin_layout Standard
-LaTeX-eko dokumentu-klase berriak onartu nahi izanen gero, bi egoera aurkitu
- ditzakezu: LaTeX2e klasearen (
+\SpecialChar LaTeX
+-eko dokumentu-klase berriak onartu nahi izanen gero, bi egoera aurkitu
+ ditzakezu: \SpecialChar LaTeX2e
+ klasearen (
 \family typewriter
 .cls
 \family default
@@ -4706,7 +4935,8 @@ klasea.layout
 \begin_layout LyX-Code
 
 \backslash
-DeclareLaTeXClass{report}
+Declare\SpecialChar LaTeX
+Class{report}
 \end_layout
 
 \begin_layout Standard
@@ -4717,7 +4947,8 @@ aldatu.
 \begin_layout LyX-Code
 
 \backslash
-DeclareLaTeXClass[report, 
+Declare\SpecialChar LaTeX
+Class[report, 
 \begin_inset ERT
 status collapsed
 
@@ -4754,12 +4985,13 @@ fitxategiaren hasieratik gertu egon dadila.
 \end_layout
 
 \begin_layout Standard
-Abiatu LyX eta hautatu 
+Abiatu \SpecialChar LyX
+ eta hautatu 
 \family sans
 \bar under
 E
 \bar default
-ditatu\SpecialChar \menuseparator
+ditatu\SpecialChar menuseparator
 
 \bar under
 B
@@ -4767,7 +4999,8 @@ B
 irkonfiguratu
 \family default
 .
- LyX berrabiarazi eta dokumentu berri bat sortzen saia zaitez.
+ \SpecialChar LyX
+ berrabiarazi eta dokumentu berri bat sortzen saia zaitez.
  
 \family sans
 Dokumentu-ezarpenak
@@ -4815,8 +5048,9 @@ cls
 
 \begin_layout Standard
 Kasu honetan, diseinua zeuk sortzea nahiko duzu.
- Gure aholkua hau da: jadanik antzeko LaTeX klasea erabiltzen duen diseinu
- bat kopiatu, eta aukera egonez gero, zure beharretara moldatu.
+ Gure aholkua hau da: jadanik antzeko \SpecialChar LaTeX
+ klasea erabiltzen duen diseinu bat
+ kopiatu, eta aukera egonez gero, zure beharretara moldatu.
  Behintzat existitzen den fitxategi bat hasierako oinarri bezala erabili,
  horrela arduratu beharko zaren elementuak aurkituko baitituzu.
  Berriro diogu, xehetasunak azpian azaltzen ditugu.
@@ -4871,12 +5105,15 @@ status collapsed
 \begin_layout LyX-Code
 # 
 \backslash
-DeclareLaTeXClass{article}
+Declare\SpecialChar LaTeX
+Class{article}
 \end_layout
 
 \begin_layout Standard
-Bigarren lerroa LyX konfiguratzeko erabiltzen da.
- Diseinuaren fitxategia LaTeX-eko 
+Bigarren lerroa \SpecialChar LyX
+ konfiguratzeko erabiltzen da.
+ Diseinuaren fitxategia \SpecialChar LaTeX
+-eko 
 \family typewriter
 chkconfig.ltx
 \family default
@@ -4885,7 +5122,8 @@ chkconfig.ltx
 #
 \family default
  ikurrari ezikusi egiten dio.
- Lehenbiziko lerroa LaTeX-eko iruzkin bat da, eta bigarrenak testu-klasearen
+ Lehenbiziko lerroa \SpecialChar LaTeX
+-eko iruzkin bat da, eta bigarrenak testu-klasearen
  deklarazioa dauka.
  Lerro hauek 
 \family typewriter
@@ -4896,7 +5134,8 @@ article.layout
 article
 \family default
  izeneko (diseinu fitxategiaren izena) testu-klase bat definitzen dute,
- eta testu-klaseak LaTeX-eko 
+ eta testu-klaseak \SpecialChar LaTeX
+-eko 
 \family typewriter
 article.cls
 \family default
@@ -4930,7 +5169,8 @@ nireartikulua.cls
 \begin_layout LyX-Code
 # 
 \backslash
-DeclareLaTeXClass[article]{artikulua (nere izenburuekin)}
+Declare\SpecialChar LaTeX
+Class[article]{artikulua (nere izenburuekin)}
 \end_layout
 
 \begin_layout Standard
@@ -4938,7 +5178,8 @@ Honek
 \family sans
 nireartikulua
 \family default
- testu-klase bat deklaratzen du, LaTeX-eko 
+ testu-klase bat deklaratzen du, \SpecialChar LaTeX
+-eko 
 \family typewriter
 article.cls
 \family default
@@ -4955,7 +5196,8 @@ article.cls
 \begin_layout LyX-Code
 # 
 \backslash
-DeclareLaTeXClass[article,lelo.sty]{artikulua (nere izenburuekin)}
+Declare\SpecialChar LaTeX
+Class[article,lelo.sty]{artikulua (nere izenburuekin)}
 \end_layout
 
 \begin_layout Standard
@@ -4986,7 +5228,8 @@ Jabetu zaitez deklarazio hauek aurkerazko parametro bat ere eman dezaketela,
 \begin_layout Standard
 Atsegin duzun testu-klase bat moldatutakoan, 
 \family typewriter
-$LyXDir/layouts/
+$\SpecialChar LyX
+Dir/layouts/
 \family default
  edota 
 \family typewriter
@@ -4997,7 +5240,7 @@ $ErabDir/layouts
 \bar under
 E
 \bar default
-ditatu\SpecialChar \menuseparator
+ditatu\SpecialChar menuseparator
 
 \bar under
 B
@@ -5005,7 +5248,8 @@ B
 irkonfiguratu
 \family default
  hautatu.
- LyX-etik irten eta berriro abiatu, orduan testu-klase berri hau beste guztiekin
+ \SpecialChar LyX
+-etik irten eta berriro abiatu, orduan testu-klase berri hau beste guztiekin
  batera erabilgarri izango duzu.
 \end_layout
 
@@ -5060,7 +5304,8 @@ Dokumentu-ezarpenak
 \family sans
 Bi zutabeko dokumentua
 \family default
- eremua gaitu arren LaTeX-en 
+ eremua gaitu arren \SpecialChar LaTeX
+-en 
 \family typewriter
 twocolumn
 \family default
@@ -5150,7 +5395,7 @@ Counter_EnumI
 
 \family typewriter
 \series medium
-ClassOptions\SpecialChar \ldots{}
+ClassOptions\SpecialChar ldots
 End
 \family default
 \series default
@@ -5242,7 +5487,8 @@ url
  paketearen funtzionalitatea eskaintzen du.
  Hau 
 \family sans
-AASTeX
+AAS\SpecialChar TeX
+
 \family default
  dokumentu-klasearen kasua da.
 \end_layout
@@ -5351,12 +5597,12 @@ TitleLatexName
 
 \family typewriter
 \series medium
-Preamble\SpecialChar \ldots{}
+Preamble\SpecialChar ldots
 EndPreamble
 \family default
 \series default
- Makroen definizio multzo bat, eta LaTeX fitxategietako hasieran idazten
- dira.
+ Makroen definizio multzo bat, eta \SpecialChar LaTeX
+ fitxategietako hasieran idazten dira.
  Erabili definizio orokorretarako.
 \end_layout
 
@@ -5381,7 +5627,7 @@ stdclass.inc
 
 \family typewriter
 \series medium
-Style\SpecialChar \ldots{}
+Style\SpecialChar ldots
 End
 \family default
 \series default
@@ -5416,7 +5662,7 @@ NoStyle
 
 \family typewriter
 \series medium
-Float\SpecialChar \ldots{}
+Float\SpecialChar ldots
 End
 \family default
 \series default
@@ -5451,7 +5697,7 @@ NoFloat
 
 \family typewriter
 \series medium
-Counter\SpecialChar \ldots{}
+Counter\SpecialChar ldots
 End
 \family default
 \series default
@@ -5635,7 +5881,8 @@ LatexType
 \family typewriter
 [Paragraph, Command, Environment, Item_Environment, List_Environment]
 \family default
- Ingurunea LaTeX-era nola bihurtu beharko litzatekeen.
+ Ingurunea \SpecialChar LaTeX
+-era nola bihurtu beharko litzatekeen.
  
 \family typewriter
 Paragraph
@@ -5649,7 +5896,7 @@ Command
 \family typewriter
 
 \backslash
-LatexName{\SpecialChar \ldots{}
+LatexName{\SpecialChar ldots
 }
 \family default
 .
@@ -5661,7 +5908,7 @@ Environment
 \family typewriter
 
 \backslash
-begin{LatexName}\SpecialChar \ldots{}
+begin{LatexName}\SpecialChar ldots
 
 \backslash
 end{LatexName}
@@ -5700,7 +5947,7 @@ LabelWidthString
 \bar under
 D
 \bar default
-iseinua\SpecialChar \menuseparator
+iseinua\SpecialChar menuseparator
 
 \bar under
 P
@@ -5751,7 +5998,8 @@ TitleLatexName
 LatexName
 \family default
 \series default
- LaTeX objektuari dagokion izena da, bai ingurune bai komandoaren izena.
+ \SpecialChar LaTeX
+ objektuari dagokion izena da, bai ingurune bai komandoaren izena.
 \end_layout
 
 \begin_layout Description
@@ -5766,7 +6014,8 @@ LatexParam
 LatexName
 \family default
  objektuari dagokion aukerazko parametroa da.
- Parametro hau LyX-en ezin da aldatu.
+ Parametro hau \SpecialChar LyX
+-en ezin da aldatu.
 \end_layout
 
 \begin_layout Description
@@ -5795,7 +6044,7 @@ Manual
 \bar under
 D
 \bar default
-iseinua\SpecialChar \menuseparator
+iseinua\SpecialChar menuseparator
 
 \bar under
 P
@@ -5926,7 +6175,8 @@ Parskip
 \family typewriter
 [float=0]
 \family default
- LyX-ek dokumentu bateko paragrafoak bereizteko Koska ("indent") edo Jauzia
+ \SpecialChar LyX
+-ek dokumentu bateko paragrafoak bereizteko Koska ("indent") edo Jauzia
  ("skip") erabiltzeko aukera eskaintzen du.
  Koska aukeratzen denean balio hau baztertu egingo da.
  Jauzia aukeratzen denean, ingurune baten ParIndent baztertu egiten da eta
@@ -6221,7 +6471,7 @@ LabelWidthString
 \bar under
 D
 \bar default
-iseinua\SpecialChar \menuseparator
+iseinua\SpecialChar menuseparator
 
 \bar under
 P
@@ -6333,7 +6583,8 @@ AlignPossible
 [block, left, right, center]
 \family default
  Komaz bereiztutako lerrokadura aukeren zerrenda da.
- LaTeX estilo batzuk zenbait lerrokadura debekatzen dute, ez baitute zentzurik
+ \SpecialChar LaTeX
+ estilo batzuk zenbait lerrokadura debekatzen dute, ez baitute zentzurik
  izaten.
  Adibidez, eskuinera edo erdira lerrokatutako zenbakera ezinezkoa da.
 \end_layout
@@ -6354,7 +6605,7 @@ Fill_Top
 \bar under
 D
 \bar default
-iseinua\SpecialChar \menuseparator
+iseinua\SpecialChar menuseparator
 
 \bar under
 P
@@ -6428,7 +6679,8 @@ Newline
 \family typewriter
 [0, 1]
 \family default
- Lerro berriak LaTeX-eko lerro-berrietara (
+ Lerro berriak \SpecialChar LaTeX
+-eko lerro-berrietara (
 \family typewriter
 
 \backslash
@@ -6437,8 +6689,9 @@ Newline
 
 \family default
 ) bihurtu behar al diren edo ez.
- Bihurketa desgaitu daiteke LyX-en LaTeX modu eroso batean editatu ahal
- izateko.
+ Bihurketa desgaitu daiteke \SpecialChar LyX
+-en \SpecialChar LaTeX
+ modu eroso batean editatu ahal izateko.
 \end_layout
 
 \begin_layout Description
@@ -6452,9 +6705,11 @@ PassThru
 \family typewriter
 [0, 1]
 \family default
- Paragrafo honen edukia era gordin batean, LaTeX-ek eskatzen duen bihurketa
- berezirik egin gabe, kanporatuko den zehazten du.
- Honek nolabait LaTeX zaharreko letra-tipoaren propietateak ordezten ditu.
+ Paragrafo honen edukia era gordin batean, \SpecialChar LaTeX
+-ek eskatzen duen bihurketa berezirik
+ egin gabe, kanporatuko den zehazten du.
+ Honek nolabait \SpecialChar LaTeX
+ zaharreko letra-tipoaren propietateak ordezten ditu.
 \end_layout
 
 \begin_layout Description
@@ -6468,18 +6723,21 @@ FreeSpacing
 \family typewriter
 [0, 1]
 \family default
- Gehienetan LyX-ek hitzen artean zuriune bat baino gehiago sartzen ez dizu
+ Gehienetan \SpecialChar LyX
+-ek hitzen artean zuriune bat baino gehiago sartzen ez dizu
  utziko, zeren eta zuriune bat bi hitzen arteko bereizketa egiteko (eta
  ez karaktere edo ikur bezala) hartzen baita.
  Hau gauza nahiko fina izan arren batzuetan nekagarria gerta daiteke, adibidez
- programa baten kodea edo LaTeX-eko kode soila idazterakoan.
+ programa baten kodea edo \SpecialChar LaTeX
+-eko kode soila idazterakoan.
  Hori dela eta, 
 \family typewriter
 FreeSpacing
 \family default
  gaitzeko aukera dago.
- Jakin ezazu LyX-ek zuriune gehigarrientzako, eta LaTeX eran ez dagoenean,
- 
+ Jakin ezazu \SpecialChar LyX
+-ek zuriune gehigarrientzako, eta \SpecialChar LaTeX
+ eran ez dagoenean, 
 \family sans
 Zuriune-babestuak
 \family default
@@ -6497,8 +6755,10 @@ KeepEmpty
 \family typewriter
 [0, 1]
 \family default
- Normalki LyX-ek paragrafo huts bat edukitzea ez du utziko, LaTeX irteera
- hutsa sortuko lukeelako.
+ Normalki \SpecialChar LyX
+-ek paragrafo huts bat edukitzea ez du utziko, \SpecialChar LaTeX
+ irteera hutsa
+ sortuko lukeelako.
  Hala ere, zenbait egoeretan horrelako paragrafo hutsak edukitzea baliagarria
  izan daiteke, adibidez gutunen txantiloi batean, bete beharreko eremu hutsak
  eduki ditzake, eta horrela erabiltzailea ez da hauetaz ahaztuko.
@@ -6549,7 +6809,8 @@ Spacing
 \family typewriter
 setspace.sty
 \family default
- paketea erabiltzen duen LaTeX kode berezia sortzea dakar.
+ paketea erabiltzen duen \SpecialChar LaTeX
+ kode berezia sortzea dakar.
 \end_layout
 
 \begin_layout Description
@@ -6627,11 +6888,12 @@ atala ikusi.
 
 \family typewriter
 \series medium
-Preamble\SpecialChar \ldots{}
+Preamble\SpecialChar ldots
 EndPreamble
 \family default
 \series default
- Makro definizioen multzo bat, diseinu hau erabiltzerakoan LaTeX fitxategien
+ Makro definizioen multzo bat, diseinu hau erabiltzerakoan \SpecialChar LaTeX
+ fitxategien
  hasieran idatziko dira.
  Zure diseinu bereziak behar dituen makroak definitzeko erabil ezazu.
 \end_layout
@@ -6653,7 +6915,8 @@ status collapsed
 \begin_layout Plain Layout
 Jabetu zaitez, funtzionalitate honetatik kanpo, hitzaurreak ordenatzeko
  biderik ez dagoela.
- LyX-eko bertsio baten ikusten duzun ordena beste azken bertsio batzuetan,
+ \SpecialChar LyX
+-eko bertsio baten ikusten duzun ordena beste azken bertsio batzuetan,
  eta jakinarazpenik gabe, alda daiteke.
 \end_layout
 
@@ -6689,7 +6952,8 @@ name "atal:mugikor"
 
 \end_inset
 
-LyX-en 1.3.0 betsiotik honantz, mugikorrak (irudia, taula, \SpecialChar \ldots{}
+\SpecialChar LyX
+-en 1.3.0 betsiotik honantz, mugikorrak (irudia, taula, \SpecialChar ldots
 ) testu-klase bertan
  definitu behar dira.
  Existitzen den testu-klase bat nola eguneratzen den ikasteko atal honetara
@@ -6712,7 +6976,8 @@ Input stdfloats.inc
 \end_layout
 
 \begin_layout Standard
-Bestelako mugikor-motak (AGU klasea LyX-ekin erabiltzea bezalakoa) erabiltzeko
+Bestelako mugikor-motak (AGU klasea \SpecialChar LyX
+-ekin erabiltzea bezalakoa) erabiltzeko
  gaitasuna duen testu-klase bat garatu nahi baduzu, azpiko informazioak
  lagunduko dituzu:
 \end_layout
@@ -6765,7 +7030,8 @@ GuiName
 \begin_layout Standard
 
 \family typewriter
-LaTeXBuiltin [0, 1]
+\SpecialChar LaTeX
+Builtin [0, 1]
 \family default
  Mugikorra jadanik dokumentu-klasean definituta badago, 
 \family typewriter
@@ -6776,7 +7042,8 @@ LaTeXBuiltin [0, 1]
 \family typewriter
 0
 \family default
- balioarekin ezartzen bada, mugikorra LaTeX-eko float paketearekin definituko
+ balioarekin ezartzen bada, mugikorra \SpecialChar LaTeX
+-eko float paketearekin definituko
  da.
 \end_layout
 
@@ -6833,8 +7100,9 @@ Placement
 [string=""]
 \family default
  Mugikor klasearentzako ematen den kokapen lehenetsia.
- LaTeX estandarrekoen bezalakoak dira (parentesi artean beraien esanahiak
- azaltzen dira): 
+ \SpecialChar LaTeX
+ estandarrekoen bezalakoak dira (parentesi artean beraien esanahiak azaltzen
+ dira): 
 \family typewriter
 t
 \family default
@@ -6855,8 +7123,9 @@ h
 status collapsed
 
 \begin_layout Plain Layout
-Jakin ezazu hizki hauen ordenak ez duela inolako garrantzirik, LaTeX-en
- gertatzen den bezala.
+Jakin ezazu hizki hauen ordenak ez duela inolako garrantzirik, \SpecialChar LaTeX
+-en gertatzen
+ den bezala.
 \end_layout
 
 \end_inset
@@ -6876,7 +7145,8 @@ H
  tipo berezia dela, eta garapenen arrazoiak direla medio, dokumentu-klasean
  definitu (
 \family typewriter
-LaTeXBuiltin=1
+\SpecialChar LaTeX
+Builtin=1
 \family default
 ) ez diren mugikorrekin ezin dela erabili.
  Zeri buruz ari garen ez baduzu ulertzen, lasai, erabili 
@@ -6899,7 +7169,8 @@ Extension
 \family default
  Irudien (edo beste zerbaiten) zerrendaren fitxategi-laguntzaile baten fitxategi
 -izenaren luzapena.
- LaTeX-ek epigrafeak fitxategi honekiko idatziko ditu.
+ \SpecialChar LaTeX
+-ek epigrafeak fitxategi honekiko idatziko ditu.
 \end_layout
 
 \begin_layout Description
@@ -6927,7 +7198,8 @@ name "atal:zenbatzaile"
 
 \end_inset
 
-LyX-en 1.3.0 bertsiotik honantz, zenbatzaileak (kapitulua, irudia, \SpecialChar \ldots{}
+\SpecialChar LyX
+-en 1.3.0 bertsiotik honantz, zenbatzaileak (kapitulua, irudia, \SpecialChar ldots
 ) testu-klase
  bertan definitu behar dira.
  Existitzen den testu-klase bat nola eguneratzen den ikasteko atal honetara
@@ -6940,8 +7212,9 @@ Input stdcounters.inc
 \end_layout
 
 \begin_layout Standard
-Zenbatzaileen definizioa, LyX-en, nahikoa gogorra da, gauza asko oraindik
- ere iturburuetan jarraitzen dutelako.
+Zenbatzaileen definizioa, \SpecialChar LyX
+-en, nahikoa gogorra da, gauza asko oraindik ere
+ iturburuetan jarraitzen dutelako.
  Honako bi parametro hauek erabil ditzakezu:
 \end_layout
 
@@ -7093,7 +7366,8 @@ Txantiloiak ohiko dokumentuen antzera sortzen dira.
  barne.
  Gehienetan erabiltzaile batek txantiloi bateko lehenespenak gainidazterik
  ez du nahi izaten.
- Horregatik, txantiloiaren egileak bere LyX txantiloitik dagokion komandoak
+ Horregatik, txantiloiaren egileak bere \SpecialChar LyX
+ txantiloitik dagokion komandoak
  (
 \family typewriter
 
@@ -7127,7 +7401,8 @@ $ErabDir/templates/
 \family default
  direktorioan jarri, erabili ohi duzuna 
 \family typewriter
-$LyXDir/templates/
+$\SpecialChar LyX
+Dir/templates/
 \family default
  direktoriotik (txantiloien direktorio orokorra) zure direktorio lokalean
  kopiatu, eta 
@@ -7135,7 +7410,7 @@ $LyXDir/templates/
 \bar under
 E
 \bar default
-ditatu\SpecialChar \menuseparator
+ditatu\SpecialChar menuseparator
 
 \bar under
 H
@@ -7160,7 +7435,7 @@ defaults.lyx
 \bar under
 F
 \bar default
-itxategia\SpecialChar \menuseparator
+itxategia\SpecialChar menuseparator
 
 \bar under
 B
@@ -7169,7 +7444,8 @@ erria
 \family default
  hautatuta dokumentu berri bat sortzen den bakoitzean (eta lehenespenak
  erabilgarri edukitzeko xedearekin) kargatzen dela.
- LyX-ekin, txantiloi hori sortzeko, ireki dokumentu bat eta egokitu ezarpenak,
+ \SpecialChar LyX
+-ekin, txantiloi hori sortzeko, ireki dokumentu bat eta egokitu ezarpenak,
  gero 
 \family sans
 Dokumentu-ezarpenak
@@ -7190,7 +7466,9 @@ Testuingurua
 \end_layout
 
 \begin_layout Standard
-LyX-en erabiltzaileek gehien eskatzen duten gauzetariko bat LyX-ek 
+\SpecialChar LyX
+-en erabiltzaileek gehien eskatzen duten gauzetariko bat \SpecialChar LyX
+-ek 
 \family typewriter
 XFig
 \family default
@@ -7201,7 +7479,8 @@ Dia
  edo antzerako beste programa batentzako interfazea edukitzea da.
  Programak horiek dokumentuan edukitzea garrantzitsuak diren diagrama, irudi,
  eskemak edo bestelako gauzak sortzeko bereziki prestatuta daude.
- Garai batean LyX dokumentuetan irudi finko edo estatikoak bakarrik gehitu
+ Garai batean \SpecialChar LyX
+ dokumentuetan irudi finko edo estatikoak bakarrik gehitu
  zitekeen, baina arazo horri eusteko murriztapen batzuk daude:
 \end_layout
 
@@ -7210,9 +7489,10 @@ Irudia aldatzea nahi baduzu, kanpoko programa bati eskuz deitu behar diozu.
 \end_layout
 
 \begin_layout Itemize
-Erreferentzia fitxategia aldatzen denean LyX-ek ez du oharrik ematen, eta
- pantailako bistaratzea zaharkitua egon daiteke, bistaratzea ezin eguneratzeak
- hau astunago egiten du.
+Erreferentzia fitxategia aldatzen denean \SpecialChar LyX
+-ek ez du oharrik ematen, eta pantailak
+o bistaratzea zaharkitua egon daiteke, bistaratzea ezin eguneratzeak hau
+ astunago egiten du.
 \end_layout
 
 \begin_layout Itemize
@@ -7236,7 +7516,8 @@ Nahiz eta irudien erraztasunak arazo guztiak ezin konpondu, oraindik baliagarria
 
 .
  Hori egiteko, kanpoko aplikazioentzako interfaze bezala lantzeko prestatu
- da LyX.
+ da \SpecialChar LyX
+.
  Aplikazio berezi bakoitzarentzako funtzio ezberdinen zerrenda luze bat
  sartu ordez, aplikazio esparru handia biltzen duen funtzio orokor bat eskaintze
 ko xedearekin gehitutako materialaren lerro-barneko bistara galtzea erabaki
@@ -7260,9 +7541,11 @@ Kanpoko materialaren ezaugarria
 txantiloi
 \emph default
  baten zentzuan oinarritzen da.
- Txantiloi batek LyX-ek material mota batekin interfaze lanak nola egin
- behar dituen zehazten du.
- Orokorrean LyX banaketa 
+ Txantiloi batek \SpecialChar LyX
+-ek material mota batekin interfaze lanak nola egin behar
+ dituen zehazten du.
+ Orokorrean \SpecialChar LyX
+ banaketa 
 \family typewriter
 XFig
 \family default
@@ -7308,7 +7591,7 @@ gnuplot
 \bar under
 T
 \bar default
-xertatu\SpecialChar \menuseparator
+xertatu\SpecialChar menuseparator
 
 \bar under
 K
@@ -7319,8 +7602,8 @@ anpo-materiala
  Horretaz gain, material mota zehatz baten euskarria duen txantiloi bat
  sor dezakezu.
  Geroxeago zer egin behar den azalduko dugu, eta horrela sortzen dituzun
- txantiloi guztiak guri bidali eta hurrengo LyX-en bertsioan kaleratuko
- genituzke.
+ txantiloi guztiak guri bidali eta hurrengo \SpecialChar LyX
+-en bertsioan kaleratuko genituzke.
 \end_layout
 
 \begin_layout Standard
@@ -7349,8 +7632,8 @@ XFig
 -ekin irudiak sortu eta alda ditzakezu, eta behin amaitutakoan fig fitxategia
  gorde.
  Irudi hori zure dokumentuan gehitu nahi duzunean, PostScript fitxategi
- bat sortzeko (eta hau LaTeX fitxategian gehitzeko), landu terminal batean
- 
+ bat sortzeko (eta hau \SpecialChar LaTeX
+ fitxategian gehitzeko), landu terminal batean 
 \family typewriter
 transfig
 \family default
@@ -7373,7 +7656,8 @@ n duzun bitartean materialaren eguneraketak egin ditzakezu.
  Horren ordez, irudiaren erreferentzia bat gehitzea, edo amaierako emaitzak
  benetako grafiko baten itxura izan dezan grafikoetatik ASCII-ra moldatzen
  duen bihurtzaile bati deitzea komenigarriagoa da.
- Kanpoko materialen kudeaketak hori egiten uzten du, zeren eta LyX-ek onartzen
+ Kanpoko materialen kudeaketak hori egiten uzten du, zeren eta \SpecialChar LyX
+-ek onartzen
  dituen formatu ezberdinetara esportatzeko parametrizatua baitago.
 \end_layout
 
@@ -7385,7 +7669,8 @@ Esportatzeko formatuei dagokien produktu ezberdinen ekoizpena onartzeko
 \family typewriter
 XFig
 \family default
- motako irudi baten kasuan, LyX-eko kanpoko materialen leihoan klik batekin
+ motako irudi baten kasuan, \SpecialChar LyX
+-eko kanpoko materialen leihoan klik batekin
  jatorrizko fitxategiaren gain lan egin dezan 
 \family typewriter
 xfig
@@ -7404,23 +7689,27 @@ oa izango da.
 \end_layout
 
 \begin_layout Standard
-Beraz, LyX-ek, hori guztia lantzeko, erabil daitezkeen programa ezberdinei
+Beraz, \SpecialChar LyX
+-ek, hori guztia lantzeko, erabil daitezkeen programa ezberdinei
  buruzko informazioa dauka.
  Egotez, informazio hori txantiloietan dago.
  Txantiloi bakoitzak deitu behar duen aplikazioentzat, jatorrizkotik bihurtutako
  fitxategira bihurtzeko eta beste gauza batzuk egiteko komandoen zerrenda
  bat dauka.
- Mekanismo honek erabiltzaile aurreratuei Lyx-en gaitasuna hedatzeko (LyX-eko
+ Mekanismo honek erabiltzaile aurreratuei Lyx-en gaitasuna hedatzeko (\SpecialChar LyX
+-eko
  iturburak ukitu gabe) aukera eskaintzen die.
  Komando eta bandera (aukera) guztiak definitzeak bere lana eskatzen du,
- baina zorionez LyX taldekoek lan gogor guzti hau zure ordez egin dute.
+ baina zorionez \SpecialChar LyX
+ taldekoek lan gogor guzti hau zure ordez egin dute.
 \end_layout
 
 \begin_layout Standard
 Onartu behar dugu zenbait gauza ez ditugula egin.
  Esportatutako formatu bakoitzarekin fitxategi mota ezberdin asko sor ditzakezun
 ez, produktu bakoitzaren aurrebista lantzeko aukera dagoela pentsa dezakezu.
- Erabiltzailearen interfazea sinplea izaten jarraitu dezan, LyX-eko taldeak
+ Erabiltzailearen interfazea sinplea izaten jarraitu dezan, \SpecialChar LyX
+-eko taldeak
  hau ez egitea erabaki zuen.
  Esportutako fitxategi formatu bakoitzeko botoi bat sortu ordez, botoi bakarra
  edukitzea (oinarrizko fitxategi formatuaren kontzeptua sartzen duelarik)
@@ -7436,9 +7725,9 @@ emaitza
  botoian klikatzen duzuenan bukerako fitxategiaren ikuspegia oinarrizko
  fitxategiaren formatuan lortuko duzu.
  Eta zure dokumentu-klasean oinarrizko fitxategiaren formatua zehazten da.
- Dokumentu-klase gehienetan oinarrizko fitxategiaren formatua LaTeX izaten
- da, baina DocBook dokumentu-klaseetan oinarrizko fitxategiaren formatua
- 
+ Dokumentu-klase gehienetan oinarrizko fitxategiaren formatua \SpecialChar LaTeX
+ izaten da,
+ baina DocBook dokumentu-klaseetan oinarrizko fitxategiaren formatua 
 \family typewriter
 DocBook
 \family default
@@ -7560,7 +7849,8 @@ emaitza
  Hau da, zure eskuetan gelditzen da une bakoitzean bihurtutako fitxategia
  eguneratua dagoela ziurtatzea: inprimatu, esportatu, aurrebista landu eta
  bestelako batzuen aurretik jorratu beharko zenituzke.
- Agian, etorkizunean, baliteke LyX-ek zeregin honetan zuri laguntzea.
+ Agian, etorkizunean, baliteke \SpecialChar LyX
+-ek zeregin honetan zuri laguntzea.
  Txantiloia, jatorrizko fitxategia edo parametroak aldatzerakoan 
 \family sans
 Editatu
@@ -7618,7 +7908,8 @@ makefiles-en erabilera.
 \end_layout
 
 \begin_layout Itemize
-Kanpoko LyX txantiloi errekurtsiboak.
+Kanpoko \SpecialChar LyX
+ txantiloi errekurtsiboak.
 \end_layout
 
 \begin_layout Section
@@ -7626,7 +7917,8 @@ Kanpoko txantiloiaren konfigurazio fitxategia
 \end_layout
 
 \begin_layout Standard
-Kanpoko txantiloiaren definizioak LyX-en gehitzea nahikoa erraza da.
+Kanpoko txantiloiaren definizioak \SpecialChar LyX
+-en gehitzea nahikoa erraza da.
  Hala ere, argi ibili hori lantzerakoan, zeren eta segurtasun alorreko zulo
  bat sor baitezakezu.
  Beraz, horrekin jolasean hasi aurretik, irakurri geroago aurkituko duzun
@@ -7700,8 +7992,8 @@ fitxa_izena.ext
 \begin_layout Description
 $$Sysdir Makro hau sistemako direktorioaren bide-izen osoarekin hedatuko
  da.
- LyX-ekin datozten script lagungarriengana bideratzeko erabili ohi izaten
- da.
+ \SpecialChar LyX
+-ekin datozten script lagungarriengana bideratzeko erabili ohi izaten da.
 \end_layout
 
 \begin_layout Standard
@@ -7729,7 +8021,8 @@ Kanpoko materialaren funtzioak kanpoko programa askoren interfaze lanak
 
 \begin_layout Standard
 Hala ere, kanpoko programen komandoak txantiloiaren konfigurazio fitxategian
- bakarrik zehazten direnez, eta LyX txantiloi seguruekin bakarrik konfiguratuta
+ bakarrik zehazten direnez, eta \SpecialChar LyX
+ txantiloi seguruekin bakarrik konfiguratuta
  badago, orduan ez dago segurtasun arriskurik.
  Horrela da zeren eta 
 \family typewriter
@@ -7747,11 +8040,13 @@ system
 Horrek beste ondorio batzuk ditu, kanpoko materialen txantiloietan komando
  batzuk erabiltzera mugatuta egotea.
  Kanalizazioak eta berbideratzeak ezin dituzu erabili.
- Horrela izan behar du LyX segurtasun aldetik segurua izaten jarraitzeko.
+ Horrela izan behar du \SpecialChar LyX
+ segurtasun aldetik segurua izaten jarraitzeko.
  Komando lerroko zenbait funtzio erabili nahi badituzu, hori modu kontrolatu
  batean egiteko, script seguru bat idatz dezakezu, eta gero komando lerrotik
  script horri deitu.
- LyX instalatzen den 
+ \SpecialChar LyX
+ instalatzen den 
 \family typewriter
 lib/scripts
 \family default
@@ -7785,8 +8080,9 @@ execvp
  erabiltzea oso tentagarria izan daiteke.
  Hori eginez gero, konturatu zaitez zure sisteman erraz lehertu daitekeen
  segurtasun zulo bat eskaini dezakezula.
- Segurtasunari begira, LyX-eko banaketeta arruntetan ez da inoiz seguruak
- ez diren txantiloirik gehituko.
+ Segurtasunari begira, \SpecialChar LyX
+-eko banaketeta arruntetan ez da inoiz seguruak ez
+ diren txantiloirik gehituko.
  Iturburu irekien izaeran oinarrituz, erabiltzaileei txantiloiak bidaltzeko
  eskatzen jarraituko dugu, baina seguruak ez direnak ez ditugu banaketan
  sartuko.
@@ -7799,13 +8095,15 @@ Kanpoko materiala gehitzeak ahalmen handia eskaintzen du, eta argi ibili
  ikaragarrizko atzeko atea ireki eta arazo larriak sortzeko.
  Arazo horiek ez badituzu ongi ulertu, segurtasun sistemetan aditua den
  norbaiti galdetzeko eskatzen dizugu, edo bestela hor dituzun txantiloiak
- seguruak al diren edo ez jakiteko, jo LyX taldearengana.
+ seguruak al diren edo ez jakiteko, jo \SpecialChar LyX
+ taldearengana.
  Eta hori guztia ingurune ez-kontrolatu batean aritzen hasi aurretik egin
  beharko zenuke.
 \end_layout
 
 \begin_layout Chapter
-LyX zerbitzaria
+\SpecialChar LyX
+ zerbitzaria
 \end_layout
 
 \begin_layout Section
@@ -7813,19 +8111,26 @@ Sarrera
 \end_layout
 
 \begin_layout Standard
-LyX zerbitzaria LyX-en garatutako metodo bat da, eta horren bitartez beste
- programa batzuek LyX-ekin hitzegin, LyX-eko komandoei deitu eta LyX-en
- barneko egoeraren informazioa eskura dezakete.
+\SpecialChar LyX
+ zerbitzaria \SpecialChar LyX
+-en garatutako metodo bat da, eta horren bitartez beste programa
+ batzuek \SpecialChar LyX
+-ekin hitzegin, \SpecialChar LyX
+-eko komandoei deitu eta \SpecialChar LyX
+-en barneko egoeraren
+ informazioa eskura dezakete.
  Hau erabiltzaile adituentzako zuzenduta dago, oso erabilkorra aurkituko
  baitute.
 \end_layout
 
 \begin_layout Section
-LyX zerbitzaria abiatzea
+\SpecialChar LyX
+ zerbitzaria abiatzea
 \end_layout
 
 \begin_layout Standard
-LyX zerbitzaria kanalizazioko tutua (pipe) izeneko bikotearen bitartez lantzen
+\SpecialChar LyX
+ zerbitzaria kanalizazioko tutua (pipe) izeneko bikotearen bitartez lantzen
  da.
  Zure direktorioan (etxean) "
 \family typewriter
@@ -7862,7 +8167,8 @@ Bide-izenak
 \end_layout
 
 \begin_layout Standard
-LyX-ek tutuak sortzeko '
+\SpecialChar LyX
+-ek tutuak sortzeko '
 \family typewriter
 .in
 \family default
@@ -7871,10 +8177,14 @@ LyX-ek tutuak sortzeko '
 .out
 \family default
 ' luzapenak gehituko ditu.
- Arestiko ezarpenak LyX zerbitzaria aktibatzea eragiten du baita ere.
- Tutuetariko bat jadanik sortuta balego, LyX-ek beste LyX-en procesu bat
- lanean dagoela suposatzen duela uste du, eta ez du zerbitzaririk abiatuko.
- Une berean, hainbat LyX prozesu zerbitzariekin edukitzeko, programa horiek
+ Arestiko ezarpenak \SpecialChar LyX
+ zerbitzaria aktibatzea eragiten du baita ere.
+ Tutuetariko bat jadanik sortuta balego, \SpecialChar LyX
+-ek beste \SpecialChar LyX
+-en procesu bat lanean
+ dagoela suposatzen duela uste du, eta ez du zerbitzaririk abiatuko.
+ Une berean, hainbat \SpecialChar LyX
+ prozesu zerbitzariekin edukitzeko, programa horiek
  abiatu aurretik beraien konfigurazioa aldatu beharko dituzu.
 \end_layout
 
@@ -7926,9 +8236,11 @@ server
 
 \end_inset
 
- bat garatzen ari bazara, LyX zerbitzaritik arazketa informazioa gaitzea
- erabilgarria izan daiteke.
- Horretarako LyX honela abiatu: 
+ bat garatzen ari bazara, \SpecialChar LyX
+ zerbitzaritik arazketa informazioa gaitzea erabilgarr
+ia izan daiteke.
+ Horretarako \SpecialChar LyX
+ honela abiatu: 
 \family typewriter
 lyx -dbg 8192
 \family default
@@ -7940,9 +8252,11 @@ lyx -dbg 8192
 \emph on
 Oharra
 \emph default
-: LyX hondatzen bada, tutuak ez ditu ezabatuko.
+: \SpecialChar LyX
+ hondatzen bada, tutuak ez ditu ezabatuko.
  Gogoratu tutu horiek fitxategiak direla, eta ondorioz zeuk eskuz ezabatu
- beharko dituzu, zeren eta LyX abiatzerakoan tutuak hor badaude, zerbitzaririk
+ beharko dituzu, zeren eta \SpecialChar LyX
+ abiatzerakoan tutuak hor badaude, zerbitzaririk
  ez baita abiatuko.
 \end_layout
 
@@ -7954,7 +8268,8 @@ Esandakoaz gainera, beste gauza batzuk kontuan eduki behar dira:
 Bai zerbitzari bai bezeroek UNIX edo OS/2 sistema eragileetan aritu behar
  dute.
  Bai zerbitzariek bai bezeroek, oraingoz, sistema eragile-mota berdinarekin
- aritu behar dute: adibidez, LyX zerbitzaria UNIX batean lantzen ari bada,
+ aritu behar dute: adibidez, \SpecialChar LyX
+ zerbitzaria UNIX batean lantzen ari bada,
  bezeroek ere UNIX sistema motetan egon beharko dute, bestela beraien artean
  ez baita komunikaziorik gertatutako.
  Zerbitzaria OS/2 sisteman badago, bezeroak ere sistema eragile horretan
@@ -7962,7 +8277,8 @@ Bai zerbitzari bai bezeroek UNIX edo OS/2 sistema eragileetan aritu behar
 \end_layout
 
 \begin_layout Itemize
-OS/2 sisteman LyX zerbitzari batekin, aldi berdinean, bezero bakar bat konekta
+OS/2 sisteman \SpecialChar LyX
+ zerbitzari batekin, aldi berdinean, bezero bakar bat konekta
  daiteke.
 \end_layout
 
@@ -7992,8 +8308,8 @@ Komunikazio normala
 \end_layout
 
 \begin_layout Standard
-LyX-i dei bat igortzeko bezeroek sarrerako tutuan ASCII lerro bat idazten
- dute.
+\SpecialChar LyX
+-i dei bat igortzeko bezeroek sarrerako tutuan ASCII lerro bat idazten dute.
  Lerroak formatu hau dauka:
 \end_layout
 
@@ -8017,7 +8333,8 @@ Hemen
 bezeroizena
 \emph default
  bezeroak hartu dezakeen edozein izen da.
- LyX-ek erantzuna bidali behar duenean bakarrik erabiliko du, horrela bezero
+ \SpecialChar LyX
+-ek erantzuna bidali behar duenean bakarrik erabiliko du, horrela bezero
  batek beste hainbat eskaleren emaitzak bana ditzake.
 \end_layout
 
@@ -8026,7 +8343,8 @@ bezeroizena
 \emph on
 funtzioa
 \emph default
- LyX-ek lantzea nahi duzun funtzioa da.
+ \SpecialChar LyX
+-ek lantzea nahi duzun funtzioa da.
  Bufertxoan erabiltzen dituzun komandoen antzekoa da.
 \end_layout
 
@@ -8045,7 +8363,8 @@ argumentua
 \end_layout
 
 \begin_layout Standard
-LyX-etik datorren erantzuna irteerako tutura iristen da eta honelako formatua
+\SpecialChar LyX
+-etik datorren erantzuna irteerako tutura iristen da eta honelako formatua
  edukitzen du
 \end_layout
 
@@ -8078,7 +8397,8 @@ datua
 \emph default
  komandoaren eraginez sor daitekeen informazio (neurri batean gehiago edo
  gutxiago) erabilgarria izan daiteke.
- Komando batzuek LyX-en barneko egoeraren informazioa itzultzen dute, 
+ Komando batzuek \SpecialChar LyX
+-en barneko egoeraren informazioa itzultzen dute, 
 \begin_inset Quotes eld
 \end_inset
 
@@ -8088,7 +8408,8 @@ font-state" komandoak esaterako.
 \end_layout
 
 \begin_layout Standard
-Errorea gertatzen bada, LyX-ek honelako erantzuna botako du:
+Errorea gertatzen bada, \SpecialChar LyX
+-ek honelako erantzuna botako du:
 \end_layout
 
 \begin_layout Quote
@@ -8135,14 +8456,16 @@ Jakinarazpena
 \end_layout
 
 \begin_layout Standard
-LyX-ek gertaerak asinkronoki joango direla adieraziz bezeroei jakinarazpena
+\SpecialChar LyX
+-ek gertaerak asinkronoki joango direla adieraziz bezeroei jakinarazpena
  bidal diezaieke.
  Une honetan hori egiteko erabiltzaileak 
 \begin_inset Quotes eld
 \end_inset
 
 notify" funtzioarekin tekla-sekuentzi bat elkartu behar du.
- LyX-ek bidaltzen duen katearen formatua hau da:
+ \SpecialChar LyX
+-ek bidaltzen duen katearen formatua hau da:
 \end_layout
 
 \begin_layout Quote
@@ -8164,11 +8487,14 @@ tekla-sekuentzia
 \end_layout
 
 \begin_layout Standard
-Erabili mekanisko hau LyX-eko komando multzoak hedatzeko eta makroak garatzeko:
+Erabili mekanisko hau \SpecialChar LyX
+-eko komando multzoak hedatzeko eta makroak garatzeko:
  tekla sekuentzia batzuk "notify"-rekin elkartuz, irteerako tutuan entzuten
  duen bezero bat abiatu, sekuentziari dagokion bezala komando bat igorri,
- eta LyX-i komando bat (edo batzuk) igortzeko LyX-en deiak eta eskariak
- erabiltzen dituen funtzio bat abiatu.
+ eta \SpecialChar LyX
+-i komando bat (edo batzuk) igortzeko \SpecialChar LyX
+-en deiak eta eskariak erabiltzen
+ dituen funtzio bat abiatu.
 \end_layout
 
 \begin_layout Section
@@ -8176,8 +8502,8 @@ LYX zerbitzariaren protokoloa
 \end_layout
 
 \begin_layout Standard
-LyX-ek protokolo sinple bat dauka, eta saioaren kudeaketa egiteko erabil
- daiteke.
+\SpecialChar LyX
+-ek protokolo sinple bat dauka, eta saioaren kudeaketa egiteko erabil daiteke.
  Mezu guztiak era honetakoak dira:
 \end_layout
 
@@ -8197,9 +8523,11 @@ protokolo-mezuak
 \family typewriter
 "hello"
 \family default
- jasotzen badu, LyX-ek bezeroari bere mezuak entzuten ari dela adierazteko
+ jasotzen badu, \SpecialChar LyX
+-ek bezeroari bere mezuak entzuten ari dela adierazteko
  erantzun bat itzuliko dio.
- LyX-ek bezeroei 
+ \SpecialChar LyX
+-ek bezeroei 
 \family typewriter
 "bye"
 \family default
@@ -8248,12 +8576,12 @@ C-S-c
 ).
  Sarrera guztiak erabiltzailearen interfaze eta lasterbideen fitxategietatik
  eskuratu dira.
- Fitxategiok \SpecialChar \ldots{}
+ Fitxategiok \SpecialChar ldots
 
 \family typewriter
 /share/lyx/ui
 \family default
- eta \SpecialChar \ldots{}
+ eta \SpecialChar ldots
 
 \family typewriter
 /share/lyx/bind
@@ -8296,9 +8624,9 @@ Itzultzailearen
 
 oharra
 \emph default
-: hemen agertzen diren lasterbide asko ingelesari eta, gainera, LyX-eko
- bertsio zaharkituei dagozkienez, lasterbide eta funtzioen izenak ez dira
- euskaratu.
+: hemen agertzen diren lasterbide asko ingelesari eta, gainera, \SpecialChar LyX
+-eko bertsio
+ zaharkituei dagozkienez, lasterbide eta funtzioen izenak ez dira euskaratu.
  Bestelako azalpenak lagungarriak izango direlakoan euskaratu dira.
 \end_layout
 
@@ -8594,6 +8922,10 @@ v
 file_vc
 \family default
  azpimenua
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -8788,6 +9120,10 @@ i
 edit_floats
 \family default
  azpimenua
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -8970,6 +9306,12 @@ l
  
 \family typewriter
 matematikako panela
+\family default
+
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -9149,6 +9491,10 @@ x
 edit_paste
 \family default
  azpimenua
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -9194,6 +9540,10 @@ a
 insert_floats
 \family default
  azpimenua
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -9433,6 +9783,10 @@ o
 insert_toc
 \family default
  azpimenua
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -9533,6 +9887,10 @@ s
 insert_special
 \family default
  azpimenua
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -9662,6 +10020,10 @@ t
 insert_file
 \family default
  azpimenua
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -9931,7 +10293,7 @@ tex-mode
 \begin_layout Subsubsection
 Diseinua
 \family sans
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \family default
 Karakterea
@@ -10490,7 +10852,8 @@ c
 \family default
  
 \family typewriter
-layout LyXCode
+layout \SpecialChar LyX
+Code
 \end_layout
 
 \begin_layout Labeling
@@ -11004,7 +11367,8 @@ S-L
 \family default
  
 \family typewriter
-layout LaTeX
+layout \SpecialChar LaTeX
+
 \end_layout
 
 \begin_layout Labeling
@@ -13217,20 +13581,23 @@ sciword.bind
 \end_layout
 
 \begin_layout Standard
-Hauek matematikarentzako (edo Scientific Word-en antzekoentzako) LyX teklatuaren
+Hauek matematikarentzako (edo Scientific Word-en antzekoentzako) \SpecialChar LyX
+ teklatuaren
  definizioak dira.
 \end_layout
 
 \begin_layout Standard
 Laster-teklen fitxategiak eta dokumentu hau Serge Winitzki-ek sortu zuen,
  Jean-Marc Lasgouttes-ren laguntzarekin.
- 1.3 bertsioa, LyX 1.2 eta 1.3.x-entzako.
+ 1.3 bertsioa, \SpecialChar LyX
+ 1.2 eta 1.3.x-entzako.
 \end_layout
 
 \begin_layout Standard
 Definizio hauek sagua erabili gabe ekuazioak sartzeko bide errazagoa eskaintzen
  dute, batik bat Scientific Word ezagutzen duten erabiltzaileentzako.
- LyX-en lasterbide estandarrak, 
+ \SpecialChar LyX
+-en lasterbide estandarrak, 
 \family sans
 M-m
 \family default
@@ -13246,8 +13613,9 @@ M-o
 \emph on
 Trikimailua
 \emph default
-: "LyX-eko lasterbide baten izena" aurkitzeko, begiratu egoera-barran ez
- dagoen lasterbide-elkarte batekin.
+: "\SpecialChar LyX
+-eko lasterbide baten izena" aurkitzeko, begiratu egoera-barran ez dagoen
+ lasterbide-elkarte batekin.
  Adibidez, "
 \family sans
 Ctrl-&
@@ -13265,7 +13633,8 @@ Ctrl-&
 C-s S-c-ampersand
 \family default
 ".
- Gauza bat! Hau ez dabil LyX-en 1.3.0 bertsiotik aurrera (garatuagoak)!
+ Gauza bat! Hau ez dabil \SpecialChar LyX
+-en 1.3.0 bertsiotik aurrera (garatuagoak)!
 \end_layout
 
 \begin_layout Labeling
@@ -13278,7 +13647,7 @@ C-c
 \family typewriter
 copy
 \family default
- -- Kopiatu, ebaki, itsatsi Sciword-en bezala, 
+ – Kopiatu, ebaki, itsatsi Sciword-en bezala, 
 \family sans
 C-c
 \family default
@@ -13303,7 +13672,7 @@ C-d
 \family typewriter
 math-display
 \family default
- -- Adierazpen-formula txandakatu: adierazpen-ekuazio bat sartzeko 
+ – Adierazpen-formula txandakatu: adierazpen-ekuazio bat sartzeko 
 \family sans
 C-d
 \family default
@@ -13331,7 +13700,7 @@ math-insert
 \backslash
 frac
 \family default
- -- Zatikiak: zatiki bat txertatzeko 
+ – Zatikiak: zatiki bat txertatzeko 
 \family sans
 C-f
 \family default
@@ -13369,7 +13738,7 @@ math-insert
 \backslash
 int
 \family default
- -- 
+ – 
 \begin_inset Formula $\int$
 \end_inset
 
@@ -13386,7 +13755,7 @@ C-k
 \family typewriter
 line-delete-forward
 \family default
- -- Emacs-en lasterbideak: kurtsorea dagoen lekutik lerroaren bukaera arte
+ – Emacs-en lasterbideak: kurtsorea dagoen lekutik lerroaren bukaera arte
  ezabatzen du.
 \end_layout
 
@@ -13400,7 +13769,7 @@ C-m
 \family typewriter
 math-mode
 \family default
- -- Testua/Matematika txandakatzeko: testu-eran matematika-erara aldatzen
+ – Testua/Matematika txandakatzeko: testu-eran matematika-erara aldatzen
  da, eta matematika-eran letra-tipo erromatarra duen testua sartzen du.
  
 \end_layout
@@ -13415,7 +13784,7 @@ C-n
 \family typewriter
 math-number-toggle
 \family default
- -- Ekuazio baten zenbatzailea gehitu/kendu.
+ – Ekuazio baten zenbatzailea gehitu/kendu.
 \end_layout
 
 \begin_layout Labeling
@@ -13428,7 +13797,7 @@ S-C-N
 \family typewriter
 math-number-line-toggle
 \family default
- -- Ekuazio-multzoko lerro baten zenbatzailea gehitu/kendu.
+ – Ekuazio-multzoko lerro baten zenbatzailea gehitu/kendu.
 \end_layout
 
 \begin_layout Standard
@@ -13438,7 +13807,8 @@ Arestiko komandoak ekuazioen zenbakera kontrola txandakatzeko dira.
 Oharra
 \emph default
 : ekuazio-multzo bateko zenbatzailearen etiketa ezabatzen denean, egitan
- etiketa hori ez da ezabatuko (TeX kodea honelakoa da: "
+ etiketa hori ez da ezabatuko (\SpecialChar TeX
+ kodea honelakoa da: "
 \family typewriter
 
 \backslash
@@ -13446,7 +13816,8 @@ label{}
 \backslash
 nonumber
 \family default
-"), eta LaTeX-en ohar (ez kaltegarri) bat sortzen du.
+"), eta \SpecialChar LaTeX
+-en ohar (ez kaltegarri) bat sortzen du.
 \end_layout
 
 \begin_layout Labeling
@@ -13459,7 +13830,7 @@ C-o
 \family typewriter
 file-open
 \family default
- -- Dokumentu berri bat ireki.
+ – Dokumentu berri bat ireki.
  (W*ndows)
 \end_layout
 
@@ -13473,7 +13844,7 @@ C-q
 \family typewriter
 quote-insert
 \family default
- -- Komatxo bat " txertatzen du.
+ – Komatxo bat " txertatzen du.
  Hori ez da lehenespenez lortzen duzun komatxo bikoitz "azkarra".
 \end_layout
 
@@ -13493,7 +13864,7 @@ math-insert
 \backslash
 sqrt
 \family default
- -- 
+ – 
 \begin_inset Formula $\sqrt{x}$
 \end_inset
 
@@ -13516,7 +13887,7 @@ math-insert
 \backslash
 root
 \family default
- -- 
+ – 
 \begin_inset Formula $\sqrt[n]{x}$
 \end_inset
 
@@ -13533,7 +13904,7 @@ C-t
 \family typewriter
 math-mode
 \family default
- -- Beste lasterbide testu eta matematika artean txandakatzen aritzeko.
+ – Beste lasterbide testu eta matematika artean txandakatzen aritzeko.
  Jakin ezazu matematika-eran txertatzen den testu erromatarra berezia dela.
 \end_layout
 
@@ -13547,7 +13918,7 @@ C-u
 \family typewriter
 font-underline
 \family default
- -- Hautatutako testua 
+ – Hautatutako testua 
 \bar under
 azpimarratu
 \bar default
@@ -13576,7 +13947,7 @@ C-v
 \family typewriter
 paste
 \family default
- -- W*ndows-etik jasotakoa
+ – W*ndows-etik jasotakoa
 \end_layout
 
 \begin_layout Labeling
@@ -13589,7 +13960,7 @@ C-w
 \family typewriter
 buffer-close
 \family default
- -- Uneko dokumentua itxi (berriro, W*ndows-etik jasotakoa).
+ – Uneko dokumentua itxi (berriro, W*ndows-etik jasotakoa).
 \end_layout
 
 \begin_layout Labeling
@@ -13624,7 +13995,7 @@ S-C-Z
 \family typewriter
 redo
 \family default
- -- "Berregin" eragiketa, edo "desegindakoa desegin".
+ – "Berregin" eragiketa, edo "desegindakoa desegin".
 \end_layout
 
 \begin_layout Standard
@@ -13705,7 +14076,7 @@ C-9
 \family typewriter
 math-delim ( )
 \family default
- -- Komeni delako, 
+ – Komeni delako, 
 \family sans
 Ctrl-9
 \family default
@@ -13785,7 +14156,7 @@ C-S-less
 \family typewriter
 math-delim langle rangle
 \family default
- -- Mugatzaile angularrak 
+ – Mugatzaile angularrak 
 \begin_inset Formula $\left\langle \right\rangle $
 \end_inset
 
@@ -13914,7 +14285,7 @@ C-period
 \family typewriter
 accent-dot
 \family default
- -- "gaipuntu" azentua: ȧ (testu eran soilik).
+ – "gaipuntu" azentua: ȧ (testu eran soilik).
 \end_layout
 
 \begin_layout Labeling
@@ -13929,11 +14300,11 @@ math-insert
 \backslash
 dot
 \family default
- -- "gaipuntu" azentua: 
+ – "gaipuntu" azentua: 
 \begin_inset Formula $\dot{a}$
 \end_inset
 
- (matetamtika eran soilik -- fisikan lehen deribatua adierazten du).
+ (matetamtika eran soilik – fisikan lehen deribatua adierazten du).
 \end_layout
 
 \begin_layout Labeling
@@ -13948,7 +14319,7 @@ math-insert
 \backslash
 overrightarrow
 \family default
- -- Bektore azentua: 
+ – Bektore azentua: 
 \begin_inset Formula $\overrightarrow{x}$
 \end_inset
 
@@ -13965,7 +14336,7 @@ S-C-quotedbl
 \family typewriter
 accent-umlaut
 \family default
- -- umlaut azentua: ä (testuan soilik).
+ – umlaut azentua: ä (testuan soilik).
 \end_layout
 
 \begin_layout Labeling
@@ -13980,12 +14351,12 @@ math-insert
 \backslash
 ddot
 \family default
- -- "puntu bikoitza" azentua: 
+ – "puntu bikoitza" azentua: 
 \begin_inset Formula $\ddot{a}$
 \end_inset
 
  (matem.
- -- fisikan bigarren deribatua adierazten du).
+ – fisikan bigarren deribatua adierazten du).
  Matematika-eran hirugarren puntua lortzeko, erabili 
 \family typewriter
 
@@ -14005,7 +14376,7 @@ C-quoteleft
 \family typewriter
 accent-grave
 \family default
- -- grave azentua: à  (testu eran soilik, matem.
+ – grave azentua: à  (testu eran soilik, matem.
  
 \family typewriter
 
@@ -14025,7 +14396,7 @@ S-C-asciitilde
 \family typewriter
 accent-tilde
 \family default
- -- tilet azentua: ã (testu eran soilik, matem.
+ – tilet azentua: ã (testu eran soilik, matem.
  
 \family typewriter
 
@@ -14045,7 +14416,7 @@ C-apostrophe
 \family typewriter
 accent-acute
 \family default
- -- azentu zorrotza: á (testu eran soilik, matem.
+ – azentu zorrotza: á (testu eran soilik, matem.
  
 \family typewriter
 
@@ -14065,7 +14436,7 @@ S-C-asciicircum
 \family typewriter
 accent-circumflex
 \family default
- -- circumflex azentua: â (testu eran soilik, matem.
+ – circumflex azentua: â (testu eran soilik, matem.
  
 \family typewriter
 
@@ -14077,7 +14448,8 @@ hat
 
 \begin_layout Standard
 Funtzio teklak.
- S-F2 tekla berria LaTeX fitxategia sortzeko erosoa dela dirudi.
+ S-F2 tekla berria \SpecialChar LaTeX
+ fitxategia sortzeko erosoa dela dirudi.
 \end_layout
 
 \begin_layout Labeling
@@ -14090,7 +14462,7 @@ F2
 \family typewriter
 buffer-write
 \family default
- -- Uneko dokumentua gorde.
+ – Uneko dokumentua gorde.
 \end_layout
 
 \begin_layout Labeling
@@ -14103,7 +14475,8 @@ S-F2
 \family typewriter
 buffer-export latex
 \family default
- -- Uneko dokumentua LaTeX fitxategi gisa esportatu.
+ – Uneko dokumentua \SpecialChar LaTeX
+ fitxategi gisa esportatu.
 \end_layout
 
 \begin_layout Labeling
@@ -14116,7 +14489,7 @@ F3
 \family typewriter
 find-replace
 \family default
- -- Bilatu eta ordeztu leihoa.
+ – Bilatu eta ordeztu leihoa.
 \end_layout
 
 \begin_layout Labeling
@@ -14129,7 +14502,7 @@ C-F4
 \family typewriter
 buffer-close
 \family default
- -- 
+ – 
 \family sans
 C-w
 \family default
@@ -14146,11 +14519,12 @@ M-F4
 \family typewriter
 lyx-quit
 \family default
- -- 
+ – 
 \family sans
 Alt-F4
 \family default
- LyX-etik irteteko.
+ \SpecialChar LyX
+-etik irteteko.
 \end_layout
 
 \begin_layout Standard
@@ -14191,7 +14565,7 @@ F4
 \family typewriter
 font-default
 \family default
- -- letra-tipo berezia erabiltzeari utzi.
+ – letra-tipo berezia erabiltzeari utzi.
 \end_layout
 
 \begin_layout Labeling
@@ -14204,7 +14578,7 @@ F5
 \family typewriter
 font-bold
 \family default
- -- letra-
+ – letra-
 \series bold
 lodia
 \series default
@@ -14221,7 +14595,7 @@ F6
 \family typewriter
 font-emph
 \family default
- -- letra-
+ – letra-
 \emph on
 etzana
 \emph default
@@ -14238,7 +14612,7 @@ F7
 \family typewriter
 font-code
 \family default
- -- testua 
+ – testua 
 \family typewriter
 idazmakina
 \family default
@@ -14255,7 +14629,7 @@ F8
 \family typewriter
 font-noun
 \family default
- -- testua 
+ – testua 
 \noun on
 Maius/maius txiki
 \noun default
@@ -14307,7 +14681,7 @@ math-insert
 \backslash
 prime
 \family default
- -- Matematikako 
+ – Matematikako 
 \begin_inset Formula $\prime$
 \end_inset
 
@@ -14318,7 +14692,8 @@ kin nahikoa izaten da, adib.
 \begin_inset Formula $x'+2x=0$
 \end_inset
 
-, batzuetan ordea honek LaTeX goi-indizeko errore bat sortzen du.
+, batzuetan ordea honek \SpecialChar LaTeX
+ goi-indizeko errore bat sortzen du.
  Kasu horretan 
 \begin_inset Formula $x^{\prime2}$
 \end_inset
@@ -14340,7 +14715,7 @@ C-s
 \family typewriter
 math-matrix 3 3
 \family default
- -- 3
+ – 3
 \begin_inset Formula $\times$
 \end_inset
 
@@ -14358,7 +14733,7 @@ math-matrix 3 3
 \bar under
 E
 \bar default
-ditatu\SpecialChar \menuseparator
+ditatu\SpecialChar menuseparator
 
 \bar under
 M
@@ -14384,7 +14759,7 @@ math-insert
 \backslash
 dagger
 \family default
- -- 
+ – 
 \begin_inset Quotes eld
 \end_inset
 
@@ -14415,7 +14790,7 @@ math-insert
 \backslash
 equiv
 \family default
- -- 
+ – 
 \begin_inset Quotes eld
 \end_inset
 
@@ -14442,7 +14817,7 @@ math-insert
 \backslash
 approx
 \family default
- -- 
+ – 
 \begin_inset Quotes eld
 \end_inset
 
@@ -14469,7 +14844,7 @@ math-insert
 \backslash
 sim
 \family default
- -- 
+ – 
 \begin_inset Quotes eld
 \end_inset
 
@@ -14496,7 +14871,7 @@ math-insert
 \backslash
 rightarrow
 \family default
- -- Gezia 
+ – Gezia 
 \begin_inset Formula $\rightarrow$
 \end_inset
 
@@ -14519,7 +14894,7 @@ math-insert
 \backslash
 leq
 \family default
- -- Txikiago edo berdina 
+ – Txikiago edo berdina 
 \begin_inset Formula $\leq$
 \end_inset
 
@@ -14538,7 +14913,7 @@ math-insert
 \backslash
 geq
 \family default
- -- Handiago edo berdina 
+ – Handiago edo berdina 
 \begin_inset Formula $\geq$
 \end_inset
 
@@ -14561,7 +14936,7 @@ math-insert
 \backslash
 ll
 \family default
- -- 
+ – 
 \begin_inset Quotes eld
 \end_inset
 
@@ -14592,7 +14967,7 @@ math-insert
 \backslash
 gg
 \family default
- -- 
+ – 
 \begin_inset Quotes eld
 \end_inset
 

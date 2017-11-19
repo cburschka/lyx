@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -71,6 +71,8 @@ enumitem
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
 \graphics default
 \default_output_format pdf2
 \output_sync 0
@@ -114,6 +116,7 @@ enumitem
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \notefontcolor #0000ff
 \branch Question
 \selected 1
@@ -133,7 +136,10 @@ enumitem
 \tocdepth 2
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
@@ -173,6 +179,7 @@ Waluyo Adi Siswanto
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -2173,6 +2180,7 @@ Tab
 LatexCommand nomenclature
 symbol "Tab"
 description "Tombol ketik Tabulator"
+literal "true"
 
 \end_inset
 
@@ -2228,6 +2236,7 @@ Esc
 LatexCommand nomenclature
 symbol "Esc"
 description "Tombol ketik Escape"
+literal "true"
 
 \end_inset
 
@@ -2310,6 +2319,7 @@ Ctrl
 LatexCommand nomenclature
 symbol "Ctrl"
 description "Tombol ketik Control"
+literal "true"
 
 \end_inset
 
@@ -2382,6 +2392,7 @@ Shift
 LatexCommand nomenclature
 symbol "Shift"
 description "Tombol ketik Shift"
+literal "true"
 
 \end_inset
 
@@ -2412,6 +2423,7 @@ Alt
 LatexCommand nomenclature
 symbol "Alt"
 description "Tombol ketik Alt atau tombol ketik Meta"
+literal "true"
 
 \end_inset
 
@@ -7210,6 +7222,7 @@ status collapsed
 \begin_inset CommandInset citation
 LatexCommand cite
 key "enumitem"
+literal "true"
 
 \end_inset
 
@@ -7377,6 +7390,7 @@ status collapsed
 \begin_inset CommandInset citation
 LatexCommand cite
 key "enumitem"
+literal "true"
 
 \end_inset
 
@@ -16226,29 +16240,29 @@ this
 \labelwidthstring 00.00.0000
 
 \family sans
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 Text
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
 
 \family default
  Use quotes like 
-\begin_inset Quotes fld
+\begin_inset Quotes cld
 \end_inset
 
 this
-\begin_inset Quotes frd
+\begin_inset Quotes crd
 \end_inset
 
  or 
-\begin_inset Quotes fls
+\begin_inset Quotes cls
 \end_inset
 
 this
-\begin_inset Quotes frs
+\begin_inset Quotes crs
 \end_inset
 
 
@@ -16742,6 +16756,7 @@ There's no way we can go into how \SpecialChar TeX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexcompanion"
+literal "true"
 
 \end_inset
 
@@ -16753,6 +16768,7 @@ key "latexcompanion"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexguide"
+literal "true"
 
 \end_inset
 
@@ -24925,6 +24941,7 @@ multline
 \begin_inset CommandInset citation
 LatexCommand cite
 key "AMS"
+literal "true"
 
 \end_inset
 
@@ -25424,6 +25441,7 @@ For more information about the format, have a look at the package documentations
 \begin_inset CommandInset citation
 LatexCommand cite
 key "prettyref,refstyle"
+literal "true"
 
 \end_inset
 
@@ -25836,6 +25854,7 @@ Name
 LatexCommand href
 name "LyX's homepage"
 target "http://www.lyx.org"
+literal "false"
 
 \end_inset
 
@@ -25845,6 +25864,7 @@ LatexCommand href
 name "lyx-docs mailing list"
 target "lyx-docs@lists.lyx.org?subject=LyX's documentation"
 type "mailto:"
+literal "false"
 
 \end_inset
 
@@ -25881,6 +25901,7 @@ Hyperlinks will automatically be hyphenated if necessary in the PDF output,
 LatexCommand href
 name "LyX's homepage"
 target "http://www.lyx.org"
+literal "false"
 
 \end_inset
 
@@ -26162,6 +26183,7 @@ Have a look at the
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexcompanion"
+literal "true"
 
 \end_inset
 
@@ -26174,6 +26196,7 @@ The \SpecialChar LyX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "lyxcredit"
+literal "true"
 
 \end_inset
 
@@ -26282,6 +26305,7 @@ The database is a text file with the file extension
 \begin_inset CommandInset citation
 LatexCommand cite
 key "BibTeX-2"
+literal "true"
 
 \end_inset
 
@@ -26290,6 +26314,7 @@ key "BibTeX-2"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Mittelbach,Kopka,Lamport"
+literal "true"
 
 \end_inset
 
@@ -26378,6 +26403,7 @@ For information on how this is done, have a look at
 \begin_inset CommandInset href
 LatexCommand href
 target "http://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxhak.pdf"
+literal "false"
 
 \end_inset
 
@@ -26472,6 +26498,7 @@ Bib\SpecialChar TeX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "BibTeX"
+literal "true"
 
 \end_inset
 
@@ -26592,6 +26619,7 @@ Have a look at
 LatexCommand cite
 after "Chapter 3"
 key "latexcompanion"
+literal "true"
 
 \end_inset
 
@@ -26682,6 +26710,7 @@ We give a short overview of the index commands in the next subsections.
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexcompanion,latexguide,latexbook"
+literal "true"
 
 \end_inset
 
@@ -27346,6 +27375,7 @@ xindy
 LatexCommand cite
 after "p. 678 ff."
 key "latexcompanion"
+literal "true"
 
 \end_inset
 
@@ -27426,6 +27456,7 @@ xindy
 \begin_inset CommandInset citation
 LatexCommand cite
 key "makeindex,xindy"
+literal "true"
 
 \end_inset
 
@@ -27507,6 +27538,7 @@ reference "subsec:LaTeX-settings"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "makeindex-man,xindy"
+literal "true"
 
 \end_inset
 
@@ -27577,6 +27609,7 @@ If yours does not ship it, consult the \SpecialChar TeX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "TeXCatalogue"
+literal "true"
 
 \end_inset
 
@@ -27759,6 +27792,7 @@ status collapsed
 \begin_inset CommandInset citation
 LatexCommand cite
 key "TeXCatalogue"
+literal "true"
 
 \end_inset
 
@@ -28089,6 +28123,7 @@ should appear in nomenclature entries they need to be escaped by adding
 LatexCommand nomenclature
 symbol "\"@, \"|, \"!, \"\""
 description "The quote sign is output by writing ` \"\"\"\" '"
+literal "true"
 
 \end_inset
 
@@ -28124,6 +28159,7 @@ a
 LatexCommand nomenclature
 symbol "a"
 description "dummy entry for the character \"a\""
+literal "true"
 
 \end_inset
 
@@ -28139,6 +28175,7 @@ LatexCommand nomenclature
 prefix "sigma"
 symbol "$\\sigma$"
 description "dummy entry for the character \\textsf{sigma}"
+literal "true"
 
 \end_inset
 
@@ -28228,6 +28265,7 @@ nomencl
 \begin_inset CommandInset citation
 LatexCommand cite
 key "nomencl"
+literal "true"
 
 \end_inset
 
@@ -28609,6 +28647,7 @@ reference "subsec:LaTeX-settings"
 \begin_inset CommandInset citation
 LatexCommand cite
 key "nomencl,makeindex"
+literal "true"
 
 \end_inset
 
@@ -28722,6 +28761,7 @@ Here is an example, where only the question text appears, the answer branch
 
 \begin_layout Standard
 \begin_inset Branch Question
+inverted 0
 status open
 
 \begin_layout Standard
@@ -28737,6 +28777,7 @@ Question: Who was the first physics Nobel prize winner?
 
 \begin_layout Standard
 \begin_inset Branch Answer
+inverted 0
 status collapsed
 
 \begin_layout Standard
@@ -28929,6 +28970,7 @@ answer}[1]{#1}
 
 \begin_layout Standard
 \begin_inset Branch Question
+inverted 0
 status open
 
 \begin_layout Standard
@@ -28967,6 +29009,7 @@ answer}[1]{}
 
 \begin_layout Standard
 \begin_inset Branch Answer
+inverted 0
 status collapsed
 
 \begin_layout Standard
@@ -29325,6 +29368,7 @@ hyperref
 \begin_inset CommandInset citation
 LatexCommand cite
 key "hyperref"
+literal "true"
 
 \end_inset
 
@@ -29591,6 +29635,7 @@ Now \SpecialChar LaTeX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Catalogue"
+literal "true"
 
 \end_inset
 
@@ -29685,6 +29730,7 @@ caption
 \begin_inset CommandInset citation
 LatexCommand cite
 key "caption"
+literal "true"
 
 \end_inset
 
@@ -29751,6 +29797,7 @@ If you want to learn more about \SpecialChar LaTeX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "latexcompanion,latexguide"
+literal "true"
 
 \end_inset
 
@@ -30501,6 +30548,7 @@ The lines can also be colored, but this requires more knowledge of \SpecialChar 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Mittelbach"
+literal "true"
 
 \end_inset
 
@@ -30731,6 +30779,7 @@ fancyhdr
 \begin_inset CommandInset citation
 LatexCommand cite
 key "fancyhdr"
+literal "true"
 
 \end_inset
 
@@ -30847,6 +30896,7 @@ preview
 \begin_inset CommandInset citation
 LatexCommand cite
 key "TeXCatalogue"
+literal "true"
 
 \end_inset
 
@@ -31741,6 +31791,7 @@ A good explanation of regular expressions is given in this Wikipedia entry:
 \begin_inset CommandInset href
 LatexCommand href
 target "http://en.wikipedia.org/wiki/Regular_expression"
+literal "false"
 
 \end_inset
 
@@ -32238,6 +32289,7 @@ status collapsed
 \begin_inset CommandInset href
 LatexCommand href
 target "http://lingucomponent.openoffice.org/thesaurus.html"
+literal "false"
 
 \end_inset
 
@@ -33214,6 +33266,7 @@ status collapsed
 \begin_inset CommandInset citation
 LatexCommand cite
 key "TeXCatalogue"
+literal "true"
 
 \end_inset
 
@@ -33347,6 +33400,7 @@ This section describes how to use \SpecialChar LyX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Arabic,Armenian,Farsi,Hebrew,Latvian,Lithuanian,Mongolian,Vietnamese"
+literal "true"
 
 \end_inset
 
@@ -39523,6 +39577,7 @@ Driver support
 \begin_inset CommandInset href
 LatexCommand href
 target "http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf"
+literal "false"
 
 \end_inset
 
@@ -42228,6 +42283,7 @@ Set
 LatexCommand href
 name "this image"
 target "http://wiki.lyx.org/uploads/LyX/NewInLyX20/themes.png"
+literal "false"
 
 \end_inset
 
@@ -43786,6 +43842,7 @@ language Here you can select the language for \SpecialChar LyX
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.lyx.org/I18n"
+literal "false"
 
 \end_inset
 
@@ -43900,6 +43957,7 @@ Arab\SpecialChar TeX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Arabic"
+literal "true"
 
 \end_inset
 
@@ -45641,6 +45699,7 @@ The \SpecialChar LyX
 \begin_inset CommandInset citation
 LatexCommand cite
 key "lyxcredit"
+literal "true"
 
 \end_inset
 
@@ -45663,6 +45722,7 @@ Bibliography
 LatexCommand bibitem
 label "Credits"
 key "lyxcredit"
+literal "true"
 
 \end_inset
 
@@ -45672,6 +45732,7 @@ The \SpecialChar LyX
 LatexCommand href
 name "Credits"
 target "http://www.lyx.org/Credits"
+literal "false"
 
 \end_inset
 
@@ -45697,6 +45758,7 @@ http://www.lyx.org/Credits
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexcompanion"
+literal "true"
 
 \end_inset
 
@@ -45713,6 +45775,7 @@ The \SpecialChar LaTeX
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexguide"
+literal "true"
 
 \end_inset
 
@@ -45730,6 +45793,7 @@ A Guide to \SpecialChar LaTeX
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "latexbook"
+literal "true"
 
 \end_inset
 
@@ -45746,6 +45810,7 @@ Leslie Lamport:
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "texbook"
+literal "true"
 
 \end_inset
 
@@ -45764,6 +45829,7 @@ book.
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "TeXCatalogue"
+literal "true"
 
 \end_inset
 
@@ -45790,6 +45856,7 @@ http://mirrors.ctan.org/help/Catalogue/bytopic.html
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "LaTeXFAQ"
+literal "true"
 
 \end_inset
 
@@ -45816,6 +45883,7 @@ http://www.tex.ac.uk/faq/
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "BibTeX"
+literal "true"
 
 \end_inset
 
@@ -45824,6 +45892,7 @@ key "BibTeX"
 LatexCommand href
 name "Documentation"
 target "http://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxdoc.pdf"
+literal "false"
 
 \end_inset
 
@@ -45854,6 +45923,7 @@ http://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxdoc.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "BibTeX-2"
+literal "true"
 
 \end_inset
 
@@ -45862,6 +45932,7 @@ key "BibTeX-2"
 LatexCommand href
 name "Documentation"
 target "http://www.ctan.org/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf"
+literal "false"
 
 \end_inset
 
@@ -45892,6 +45963,7 @@ http://www.ctan.org/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "makeindex"
+literal "true"
 
 \end_inset
 
@@ -45900,6 +45972,7 @@ key "makeindex"
 LatexCommand href
 name "Documentation"
 target "http://mirrors.ctan.org/indexing/makeindex/doc/makeindex.pdf"
+literal "false"
 
 \end_inset
 
@@ -45929,6 +46002,7 @@ http://mirrors.ctan.org/indexing/makeindex/doc/makeindex.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "makeindex-man"
+literal "true"
 
 \end_inset
 
@@ -45937,6 +46011,7 @@ key "makeindex-man"
 LatexCommand href
 name "Options"
 target "http://mirrors.ctan.org/indexing/makeindex/doc/manpages.dvi"
+literal "false"
 
 \end_inset
 
@@ -45966,6 +46041,7 @@ http://mirrors.ctan.org/indexing/makeindex/doc/manpages.dvi
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "xindy"
+literal "true"
 
 \end_inset
 
@@ -45974,6 +46050,7 @@ key "xindy"
 LatexCommand href
 name "Documentation"
 target "http://www.xindy.org/documentation.html"
+literal "false"
 
 \end_inset
 
@@ -46003,6 +46080,7 @@ http://www.xindy.org/documentation.html
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "AMS"
+literal "true"
 
 \end_inset
 
@@ -46011,6 +46089,7 @@ key "AMS"
 LatexCommand href
 name "Documentation"
 target "http://www.ams.org/publications/authors/tex/amslatex"
+literal "false"
 
 \end_inset
 
@@ -46037,6 +46116,7 @@ http://www.ams.org/publications/authors/tex/amslatex
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "caption"
+literal "true"
 
 \end_inset
 
@@ -46045,6 +46125,7 @@ key "caption"
 LatexCommand href
 name "Documentation"
 target "http://mirrors.ctan.org/macros/latex/contrib/caption/caption-eng.pdf"
+literal "false"
 
 \end_inset
 
@@ -46088,6 +46169,7 @@ http://mirrors.ctan.org/macros/latex/contrib/caption/caption-eng.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "enumitem"
+literal "true"
 
 \end_inset
 
@@ -46096,6 +46178,7 @@ key "enumitem"
 LatexCommand href
 name "Documentation"
 target "http://mirrors.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf"
+literal "false"
 
 \end_inset
 
@@ -46139,6 +46222,7 @@ http://mirrors.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "fancyhdr"
+literal "true"
 
 \end_inset
 
@@ -46147,6 +46231,7 @@ key "fancyhdr"
 LatexCommand href
 name "Documentation"
 target "http://mirrors.ctan.org/macros/latex/contrib/fancyhdr/fancyhdr.pdf"
+literal "false"
 
 \end_inset
 
@@ -46190,6 +46275,7 @@ http://mirrors.ctan.org/macros/latex/contrib/fancyhdr/fancyhdr.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "hyperref"
+literal "true"
 
 \end_inset
 
@@ -46198,6 +46284,7 @@ key "hyperref"
 LatexCommand href
 name "Documentation"
 target "http://www.ctan.org/pkg/hyperref"
+literal "false"
 
 \end_inset
 
@@ -46241,6 +46328,7 @@ http://www.ctan.org/pkg/hyperref
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "nomencl"
+literal "true"
 
 \end_inset
 
@@ -46249,6 +46337,7 @@ key "nomencl"
 LatexCommand href
 name "Documentation"
 target "http://mirrors.ctan.org/macros/latex/contrib/nomencl/nomencl.pdf"
+literal "false"
 
 \end_inset
 
@@ -46292,6 +46381,7 @@ http://mirrors.ctan.org/macros/latex/contrib/nomencl/nomencl.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "prettyref"
+literal "true"
 
 \end_inset
 
@@ -46300,6 +46390,7 @@ key "prettyref"
 LatexCommand href
 name "Documentation"
 target "http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf"
+literal "false"
 
 \end_inset
 
@@ -46343,6 +46434,7 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "refstyle"
+literal "true"
 
 \end_inset
 
@@ -46351,6 +46443,7 @@ key "refstyle"
 LatexCommand href
 name "Documentation"
 target "http://www.ctan.org/tex-archive/macros/latex/contrib/refstyle/refstyle.pdf"
+literal "false"
 
 \end_inset
 
@@ -46394,6 +46487,7 @@ http://www.ctan.org/tex-archive/macros/latex/contrib/refstyle/refstyle.pdf
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Arabic"
+literal "true"
 
 \end_inset
 
@@ -46402,6 +46496,7 @@ key "Arabic"
 LatexCommand href
 name "Wiki-page"
 target "http://wiki.lyx.org/Windows/Arabic"
+literal "false"
 
 \end_inset
 
@@ -46428,6 +46523,7 @@ http://wiki.lyx.org/Windows/Arabic
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Armenian"
+literal "true"
 
 \end_inset
 
@@ -46436,6 +46532,7 @@ key "Armenian"
 LatexCommand href
 name "Wiki-page"
 target "http://wiki.lyx.org/Windows/Armenian"
+literal "false"
 
 \end_inset
 
@@ -46462,6 +46559,7 @@ http://wiki.lyx.org/Windows/Armenian
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Cyrillic"
+literal "true"
 
 \end_inset
 
@@ -46470,6 +46568,7 @@ key "Cyrillic"
 LatexCommand href
 name "Wiki-page"
 target "http://wiki.lyx.org/Windows/Cyrillic"
+literal "false"
 
 \end_inset
 
@@ -46496,6 +46595,7 @@ http://wiki.lyx.org/Windows/Cyrillic
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Farsi"
+literal "true"
 
 \end_inset
 
@@ -46504,6 +46604,7 @@ key "Farsi"
 LatexCommand href
 name "Wiki-page"
 target "http://wiki.lyx.org/Windows/Farsi"
+literal "false"
 
 \end_inset
 
@@ -46530,6 +46631,7 @@ http://wiki.lyx.org/Windows/Farsi
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Hebrew"
+literal "true"
 
 \end_inset
 
@@ -46538,6 +46640,7 @@ key "Hebrew"
 LatexCommand href
 name "Wiki-page"
 target "http://wiki.lyx.org/Windows/Hebrew"
+literal "false"
 
 \end_inset
 
@@ -46564,6 +46667,7 @@ http://wiki.lyx.org/Windows/Hebrew
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Japanese"
+literal "true"
 
 \end_inset
 
@@ -46572,6 +46676,7 @@ key "Japanese"
 LatexCommand href
 name "Wiki-page"
 target "http://wiki.lyx.org/Windows/Japanese"
+literal "false"
 
 \end_inset
 
@@ -46598,6 +46703,7 @@ http://wiki.lyx.org/Windows/Japanese
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Latvian"
+literal "true"
 
 \end_inset
 
@@ -46606,6 +46712,7 @@ key "Latvian"
 LatexCommand href
 name "Wiki-page"
 target "http://wiki.lyx.org/Windows/Latvian"
+literal "false"
 
 \end_inset
 
@@ -46632,6 +46739,7 @@ http://wiki.lyx.org/Windows/Latvian
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Lithuanian"
+literal "true"
 
 \end_inset
 
@@ -46640,6 +46748,7 @@ key "Lithuanian"
 LatexCommand href
 name "Wiki-page"
 target "http://wiki.lyx.org/Windows/Lithuanian"
+literal "false"
 
 \end_inset
 
@@ -46666,6 +46775,7 @@ http://wiki.lyx.org/Windows/Lithuanian
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Mongolian"
+literal "true"
 
 \end_inset
 
@@ -46674,6 +46784,7 @@ key "Mongolian"
 LatexCommand href
 name "Wiki-page"
 target "http://wiki.lyx.org/Windows/Mongolian"
+literal "false"
 
 \end_inset
 
@@ -46700,6 +46811,7 @@ http://wiki.lyx.org/Windows/Mongolian
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "Vietnamese"
+literal "true"
 
 \end_inset
 
@@ -46708,6 +46820,7 @@ key "Vietnamese"
 LatexCommand href
 name "Wiki-page"
 target "http://wiki.lyx.org/Windows/Vietnamese"
+literal "false"
 
 \end_inset
 
@@ -46734,6 +46847,7 @@ http://wiki.lyx.org/Windows/Vietnamese
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "NewInLyX20"
+literal "true"
 
 \end_inset
 
@@ -46742,6 +46856,7 @@ key "NewInLyX20"
 LatexCommand href
 name "Wiki-page"
 target "http://wiki.lyx.org/LyX/NewInLyX20"
+literal "false"
 
 \end_inset
 
@@ -46852,6 +46967,8 @@ set_width "auto"
 \begin_inset CommandInset index_print
 LatexCommand printindex
 type "idx"
+name "Index"
+literal "true"
 
 \end_inset
 
