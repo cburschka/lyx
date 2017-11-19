@@ -48,6 +48,8 @@ private:
 	docstring custom_label_;
 	///
 	bool intitle_;
+	///
+	bool infloattable_;
 };
 
 

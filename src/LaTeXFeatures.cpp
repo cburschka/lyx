@@ -975,6 +975,7 @@ char const * simplefeatures[] = {
 	"forest",
 	"varwidth",
 	"footnote",
+	"tablefootnote",
 };
 
 char const * bibliofeatures[] = {
