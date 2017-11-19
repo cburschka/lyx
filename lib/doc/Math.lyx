@@ -29961,7 +29961,7 @@ The equations to be subnumbered are put into the
 \family sans
 Subequations
 \family default
- environment.
+ inset.
  An example:
 \begin_inset Formula 
 \begin{equation}
@@ -30007,7 +30007,7 @@ Every formula in the
 \family sans
 Subequations
 \family default
- environment will be subnumbered with a, b, c, \SpecialChar ldots
+ inset will be subnumbered with a, b, c, \SpecialChar ldots
  in the output.
  For multiline formulas every line will be subnumbered.
 \end_layout
@@ -30033,7 +30033,7 @@ reference "eq:c"
 \family sans
 Subequations
 \family default
- environment.
+ inset.
  Formula 
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -30057,7 +30057,7 @@ mm vertical space right before the
 \family sans
 Subequations
 \family default
- environment.
+ inset.
  If the formula style 
 \series bold
 Indented
@@ -30093,7 +30093,7 @@ To get another subnumber instead of small Latin letters, insert this command
 \family sans
 Subequations
 \family default
- environment:
+ inset:
 \end_layout
 
 \begin_layout Standard
