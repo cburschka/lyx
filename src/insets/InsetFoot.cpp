@@ -17,6 +17,7 @@
 #include "BufferParams.h"
 #include "Counters.h"
 #include "Language.h"
+#include "LaTeXFeatures.h"
 #include "Layout.h"
 #include "OutputParams.h"
 #include "ParIterator.h"
@@ -102,6 +103,20 @@ int InsetFoot::docbook(odocstream & os, OutputParams const & runparams) const
 	os << "</footnote>";
 
 	return i;
+}
+
+
+void InsetFoot::validate(LaTeXFeatures & features) const
+{
+	if (!features.saveNoteEnv().empty()) {
+		features.require("footnote");
+		features.addPreambleSnippet(
+			from_ascii("\\makesavenoteenv{"
+				   + features.saveNoteEnv()
+				   + "}\n"));
+	}
+
+	InsetText::validate(features);
 }
 
 } // namespace lyx

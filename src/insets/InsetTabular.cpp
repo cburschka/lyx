@@ -3424,7 +3424,16 @@ void Tabular::validate(LaTeXFeatures & features) const
 		if (getVAlignment(cell) != LYX_VALIGN_TOP
 		    || !getPWidth(cell).zero())
 			features.require("array");
+		// Tell footnote that we need a savenote
+		// environment in non-long tables or
+		// longtable headers/footers
+		if (!is_long_tabular)
+			features.saveNoteEnv("tabular");
+		else if (!isValidRow(cellRow(cell)))
+			features.saveNoteEnv("longtable");
+
 		cellInset(cell)->validate(features);
+		features.saveNoteEnv(string());
 	}
 }
 

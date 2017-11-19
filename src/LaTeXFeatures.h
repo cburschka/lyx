@@ -163,6 +163,10 @@ public:
 	bool inDeletedInset() const { return in_deleted_inset_; }
 	/// are we in a deleted inset?
 	void inDeletedInset(bool const b) { in_deleted_inset_ = b; }
+	/// set savenote environment (footnote package)
+	std::string saveNoteEnv() const { return savenote_env_; }
+	/// return savenote environment
+	void saveNoteEnv(std::string const s) { savenote_env_ = s; }
 	/// Runparams that will be used for exporting this file.
 	OutputParams const & runparams() const { return runparams_; }
 	/// Resolve alternatives like "esint|amsmath|wasysym"
@@ -221,6 +225,8 @@ private:
 	bool in_deleted_inset_;
 	///
 	docstring htmltitle_;
+	///
+	std::string savenote_env_;
 };
 
 
