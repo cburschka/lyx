@@ -1860,7 +1860,7 @@ int Tabular::getRotateCell(idx_type cell) const
 
 bool Tabular::needRotating() const
 {
-	if (rotate)
+	if (rotate && !is_long_tabular)
 		return true;
 	for (row_type r = 0; r < nrows(); ++r)
 		for (col_type c = 0; c < ncols(); ++c)
@@ -2719,7 +2719,7 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 	if (!TexRow::isNone(pos))
 		os.texrow().start(pos);
 
-	if (rotate != 0)
+	if (rotate != 0 && !is_long_tabular)
 		os << "\\begin{turn}{" << convert<string>(rotate) << "}\n";
 
 	if (is_long_tabular) {
@@ -2870,7 +2870,7 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 			os << "\\end{tabular}";
 	}
 
-	if (rotate != 0)
+	if (rotate != 0 && !is_long_tabular)
 		os << breakln << "\\end{turn}";
 
 	if (!TexRow::isNone(pos))
