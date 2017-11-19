@@ -3427,7 +3427,7 @@ void Tabular::validate(LaTeXFeatures & features) const
 		// Tell footnote that we need a savenote
 		// environment in non-long tables or
 		// longtable headers/footers
-		if (!is_long_tabular)
+		else if (!is_long_tabular && !features.inFloat())
 			features.saveNoteEnv("tabular");
 		else if (!isValidRow(cellRow(cell)))
 			features.saveNoteEnv("longtable");

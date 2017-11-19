@@ -122,6 +122,13 @@ InsetLayout Foot:InTitle
 	EndHTMLStyle
 End
 
+InsetLayout Foot:InFloatTable
+	CopyStyle             Foot
+	LatexName             tablefootnote
+	Requires              tablefootnote
+End
+
+
 InsetLayout Note:Comment
 	LabelString           Comment
 	LatexType             environment

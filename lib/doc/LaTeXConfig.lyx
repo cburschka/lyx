@@ -5178,8 +5178,8 @@ Notes: The package
 footnote
 \family default
  is needed by \SpecialChar LyX
- to allow footnotes in non-floating tables and multi-page
- table headers and footers.
+ to allow footnotes in description items, non-floating tables
+ and multi-page table headers and footers.
  
 \end_layout
 
@@ -5305,6 +5305,35 @@ longtable
 \family default
  is needed by \SpecialChar LyX
  to be able to output correctly multipage tables.
+\end_layout
+
+\begin_layout Subsection
+tablefootnote
+\end_layout
+
+\begin_layout Description
+Found: 
+\begin_inset Info
+type  "package"
+arg   "tablefootnote"
+\end_inset
+
+
+\end_layout
+
+\begin_layout Description
+CTAN: 
+\family typewriter
+macros/latex/contrib/tablefootnote/
+\end_layout
+
+\begin_layout Description
+Notes: The package 
+\family sans
+tablefootnote
+\family default
+ is needed by \SpecialChar LyX
+ to be able to output footnotes in floating tables.
 \end_layout
 
 \begin_layout Subsection
