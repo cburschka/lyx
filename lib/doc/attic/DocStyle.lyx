@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin /systemlyxdir/doc/attic/
 \textclass article
 \use_default_options false
 \maintain_unincluded_children false
@@ -9,16 +11,18 @@
 \language_package default
 \inputencoding iso8859-1
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics dvips
 \default_output_format default
 \output_sync 0
@@ -48,6 +52,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -56,7 +61,10 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle plain
@@ -88,12 +96,14 @@ This article is a style sheet.
 \end_layout
 
 \begin_layout Abstract
-The Style Sheet for LyX documentation (hereafter known as the Style Sheet)
+The Style Sheet for \SpecialChar LyX
+ documentation (hereafter known as the Style Sheet)
  applies to 
 \emph on
 all
 \emph default
- forms of LyX documenation, regardless of language.
+ forms of \SpecialChar LyX
+ documenation, regardless of language.
  There is a section for translators in the Style Sheet, towards the end.
  
 \emph on
@@ -109,7 +119,8 @@ Questions and Clarifications
 
 \begin_layout Standard
 After the second version of this Style Sheet grew uncomfortably large, the
- LyX DocTeam decided it needed to lose some excess weight.
+ \SpecialChar LyX
+ DocTeam decided it needed to lose some excess weight.
  It seems the Style Sheet began to specify too many special cases, too many
  points of clarification.
  On the other hand, contributors to the documents were discovering many
@@ -124,7 +135,8 @@ ask first, write second!
 \end_layout
 
 \begin_layout Standard
-Field all questions to the LyX Developer's Mailing List.
+Field all questions to the \SpecialChar LyX
+ Developer's Mailing List.
  There are seasoned DocTeam members who can answer your questions.
  If you have any problems with the Style Sheet itself, also contact the
  mailing list.
@@ -150,6 +162,10 @@ Emphasized
 \emph default
  general emphasis, generic arguments, titles of books, names the other manuals
  and of their sections, and notes from the authors
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -168,8 +184,11 @@ Typewriter
 \family typewriter
 man
 \family default
--page names, LaTeX code, LaTeX commands, LaTeX package names, and LyX code
- and functions
+-page names, \SpecialChar LaTeX
+ code, \SpecialChar LaTeX
+ commands, \SpecialChar LaTeX
+ package names, and \SpecialChar LyX
+ code and functions
 \end_layout
 
 \begin_layout Labeling
@@ -228,11 +247,15 @@ Serif
  and on buttons.
  It helps to highlight the accelerator keys, and human brains store information
  best when they see it frequently.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Description
-WARNING! --- When you do this, make sure you 
+WARNING! — When you do this, make sure you 
 \emph on
 only
 \emph default
@@ -251,7 +274,7 @@ his
 \begin_inset Newline newline
 \end_inset
 
-\SpecialChar \ldots{}
+\SpecialChar ldots
 i.
 \begin_inset space ~
 \end_inset
@@ -291,6 +314,10 @@ Serif
 Bold
 \series default
  Unused.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -300,7 +327,8 @@ If you want to emphasize any text, use
 Emphasized
 \emph default
 .
- LaTeX will put many things boldface on its own, such as 
+ \SpecialChar LaTeX
+ will put many things boldface on its own, such as 
 \family sans
 Section
 \family default
@@ -321,8 +349,10 @@ The function
 \family typewriter
 math-mode
 \family default
- appears in configuration files and in the LyX source.
- Therefore, it (and all other LyX function names) count as code and is set
+ appears in configuration files and in the \SpecialChar LyX
+ source.
+ Therefore, it (and all other \SpecialChar LyX
+ function names) count as code and is set
  in 
 \family typewriter
 Typewriter
@@ -378,6 +408,10 @@ Serif
 
 \begin_layout Enumerate
 Consider the following excerpt from the introduction of one of the manuals:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -412,7 +446,8 @@ Enter,
 \end_inset
 
  still others have two keys.
- LyX treats all of them as the same key, so we'll use 
+ \SpecialChar LyX
+ treats all of them as the same key, so we'll use 
 \family sans
 Return
 \family default
@@ -448,6 +483,10 @@ only
 \end_deeper
 \begin_layout Enumerate
 Take the following command:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -502,11 +541,13 @@ Typewriter
 
 \end_deeper
 \begin_layout Enumerate
-Any LaTeX commands and code, and any 
+Any \SpecialChar LaTeX
+ commands and code, and any 
 \emph on
 unsupported
 \emph default
- LaTeX package names get set in 
+ \SpecialChar LaTeX
+ package names get set in 
 \family typewriter
 Typewriter
 \family default
@@ -523,7 +564,8 @@ multicol
 \begin_inset Quotes erd
 \end_inset
 
- is the name of an unsupported LaTeX package, but 
+ is the name of an unsupported \SpecialChar LaTeX
+ package, but 
 \begin_inset Quotes eld
 \end_inset
 
@@ -535,7 +577,8 @@ book
 \begin_inset Quotes erd
 \end_inset
 
- is a supported LaTeX class.
+ is a supported \SpecialChar LaTeX
+ class.
 \end_layout
 
 \begin_layout Section
@@ -580,6 +623,10 @@ M-
 Meta-
 \family default
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -597,6 +644,12 @@ use the abbreviations
 
 \family sans
 F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 F11 F12
+\family default
+
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -612,6 +665,10 @@ The function keys.
 Esc
 \family default
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -652,6 +709,12 @@ PageUp
  
 \family sans
 PageDown
+\family default
+
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -665,6 +728,12 @@ These are the 6 keys that appear above the cursor keys on many PC keyboards.
 
 \family sans
 Left Right Up Down
+\family default
+
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -719,6 +788,10 @@ Return
 Enter
 \family default
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -733,8 +806,9 @@ Return
 Enter
 \family default
 , but it's okay if you slip up and forget.
- Since these two keys are bound to the same function in LyX, it doesn't
- really matter.
+ Since these two keys are bound to the same function in \SpecialChar LyX
+, it doesn't really
+ matter.
 \end_layout
 
 \end_deeper
@@ -771,9 +845,11 @@ Alt
 \end_layout
 
 \begin_layout Standard
-LyX does not support keyboards missing any of the keys described above,
- with one exception.
- LyX can support a keyboard missing 
+\SpecialChar LyX
+ does not support keyboards missing any of the keys described above, with
+ one exception.
+ \SpecialChar LyX
+ can support a keyboard missing 
 \family sans
 F11
 \family default
@@ -786,7 +862,8 @@ F12
 \family sans
 F10
 \family default
-, but this is the only function key LyX assumes exists.
+, but this is the only function key \SpecialChar LyX
+ assumes exists.
  Nevertheless, these details are of minor, if any, concern for the documentation.
  Assume the aforementioned keys exist.
 \end_layout
@@ -837,7 +914,7 @@ middle mouse button
 \begin_layout Standard
 There are only 3 mouse buttons.
  The use of them and of the mouse itself is obvious.
- There are few --- if any --- nonstandard things we do with the mouse.
+ There are few — if any — nonstandard things we do with the mouse.
  Therefore, there's no need to make the word 
 \begin_inset Quotes eld
 \end_inset
@@ -897,6 +974,10 @@ Save As
 \family default
 .
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -921,7 +1002,8 @@ Typewriter
 \family default
 , put that in a 
 \family sans
-LyX
+\SpecialChar LyX
+
 \begin_inset space ~
 \end_inset
 
@@ -955,7 +1037,8 @@ Blank
 \backslash
 sloppypar
 \family default
- in that parargraph (consult a LaTeX book for more about 
+ in that parargraph (consult a \SpecialChar LaTeX
+ book for more about 
 \begin_inset Quotes eld
 \end_inset
 
@@ -979,6 +1062,10 @@ Special
 \end_inset
 
 Terms These are things like the following:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1016,6 +1103,12 @@ Figure
 \end_inset
 
 Float
+\family default
+
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1040,8 +1133,10 @@ VFill
 \end_layout
 
 \begin_layout Standard
-Why are these terms special? They are concepts which the seasoned LaTeX-pert
- is familiar with, but which the new LyX user is not.
+Why are these terms special? They are concepts which the seasoned \SpecialChar LaTeX
+-pert
+ is familiar with, but which the new \SpecialChar LyX
+ user is not.
  I want them to stand out from the rest of the text, hence the use of 
 \family sans
 Sans
@@ -1056,7 +1151,8 @@ Serif
 \end_deeper
 \end_deeper
 \begin_layout Standard
-Seasoned LyX Team Members: Are there other terms that require this special
+Seasoned \SpecialChar LyX
+ Team Members: Are there other terms that require this special
  status? On the other hand, should we eliminate this style completely?
 \end_layout
 
@@ -1153,6 +1249,10 @@ g.
 
 Roman).
  If you must, cut and paste it from here.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1209,7 +1309,7 @@ Items When quick-referencing an item in a menu, use the menu separator:
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \begin_inset Quotes erd
 \end_inset
@@ -1217,7 +1317,7 @@ Items When quick-referencing an item in a menu, use the menu separator:
 .
  Example: 
 \family sans
-File\SpecialChar \menuseparator
+File\SpecialChar menuseparator
 Save
 \family default
 .
@@ -1229,7 +1329,7 @@ no spaces
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \begin_inset Quotes erd
 \end_inset
@@ -1243,6 +1343,10 @@ Sans
 Serif
 \family default
 , just like the menu and item names.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1251,12 +1355,13 @@ The reason why I want no spaces around the
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \begin_inset Quotes erd
 \end_inset
 
- is to prevent LyX from splitting terms across lines.
+ is to prevent \SpecialChar LyX
+ from splitting terms across lines.
  The same goes for using 
 \family sans
 Protected
@@ -1274,7 +1379,7 @@ A
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \begin_inset Quotes erd
 \end_inset
@@ -1296,7 +1401,7 @@ NEVER
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \begin_inset Quotes erd
 \end_inset
@@ -1311,12 +1416,12 @@ NEVER
 \bar under
 L
 \bar default
-ayout\SpecialChar \menuseparator
+ayout\SpecialChar menuseparator
 P
 \bar under
 a
 \bar default
-per\SpecialChar \menuseparator
+per\SpecialChar menuseparator
 Paper
 \begin_inset space ~
 \end_inset
@@ -1332,6 +1437,10 @@ Dialog
 IS STRICTLY FORBIDDEN!
 \emph default
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1344,7 +1453,7 @@ NEVER
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \begin_inset Quotes erd
 \end_inset
@@ -1360,7 +1469,7 @@ Paper
 \begin_inset space ~
 \end_inset
 
-Dialog\SpecialChar \menuseparator
+Dialog\SpecialChar menuseparator
 P
 \bar under
 o
@@ -1385,7 +1494,7 @@ NEVER
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialChar \menuseparator
+\SpecialChar menuseparator
 
 \begin_inset Quotes erd
 \end_inset
@@ -1400,12 +1509,12 @@ NEVER
 \bar under
 L
 \bar default
-ayout\SpecialChar \menuseparator
+ayout\SpecialChar menuseparator
 P
 \bar under
 a
 \bar default
-per\SpecialChar \menuseparator
+per\SpecialChar menuseparator
 P
 \bar under
 o
@@ -1433,8 +1542,9 @@ Note
 \begin_inset space ~
 \end_inset
 
-Boxes LyX has a feature for adding comments that appear only within the
- LyX GUI.
+Boxes \SpecialChar LyX
+ has a feature for adding comments that appear only within the \SpecialChar LyX
+ GUI.
  Here's one: 
 \begin_inset Note Note
 status collapsed
@@ -1450,6 +1560,10 @@ These should NEVER appear in the manuals.
  Therefore, they have no place in the manuals.
  Period.
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1471,7 +1585,7 @@ reference "sec:author-notes"
 \begin_inset Quotes eld
 \end_inset
 
-(\SpecialChar \ldots{}
+(\SpecialChar ldots
 )
 \begin_inset Quotes erd
 \end_inset
@@ -1484,7 +1598,7 @@ reference "sec:author-notes"
 \begin_inset Quotes eld
 \end_inset
 
-[\SpecialChar \ldots{}
+[\SpecialChar ldots
 ]
 \begin_inset Quotes erd
 \end_inset
@@ -1501,7 +1615,7 @@ and
 \begin_inset Quotes eld
 \end_inset
 
-{\SpecialChar \ldots{}
+{\SpecialChar ldots
 }
 \begin_inset Quotes erd
 \end_inset
@@ -1511,7 +1625,7 @@ and
 \begin_inset Quotes eld
 \end_inset
 
-(\SpecialChar \ldots{}
+(\SpecialChar ldots
 )
 \begin_inset Quotes erd
 \end_inset
@@ -1521,7 +1635,7 @@ and
 \begin_inset Quotes eld
 \end_inset
 
-[\SpecialChar \ldots{}
+[\SpecialChar ldots
 ]
 \begin_inset Quotes erd
 \end_inset
@@ -1542,7 +1656,7 @@ reference "sec:quote"
 \begin_inset Quotes eld
 \end_inset
 
-{\SpecialChar \ldots{}
+{\SpecialChar ldots
 }
 \begin_inset Quotes erd
 \end_inset
@@ -1552,7 +1666,7 @@ reference "sec:quote"
 \begin_inset Quotes eld
 \end_inset
 
-[\SpecialChar \ldots{}
+[\SpecialChar ldots
 ]
 \begin_inset Quotes erd
 \end_inset
@@ -1561,7 +1675,7 @@ reference "sec:quote"
 \begin_inset Quotes eld
 \end_inset
 
-{\SpecialChar \ldots{}
+{\SpecialChar ldots
 }
 \begin_inset Quotes erd
 \end_inset
@@ -1586,6 +1700,10 @@ Dashes: Be sure to use the correct one.
  character is not a dash, it's a hyphen.
  Use it only as a hyphen.
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1632,7 +1750,8 @@ em- dash.
 \end_inset
 
  characters create an em-dash, which is slightly longer than the en-dash.
- In the printed version of any document, LyX will combine the two or three
+ In the printed version of any document, \SpecialChar LyX
+ will combine the two or three
  
 \begin_inset Quotes eld
 \end_inset
@@ -1714,6 +1833,10 @@ end of the last line.
 
 \emph default
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1737,7 +1860,7 @@ Section
 
 \end_deeper
 \begin_layout Section
-Content --- What Goes Where
+Content — What Goes Where
 \end_layout
 
 \begin_layout Standard
@@ -1791,8 +1914,8 @@ only
 \emph default
 .
  DO NOT ADD new features to here willy-nilly.
- Let the editor decide if --- and when --- new sections go in here.
- Place any new features in\SpecialChar \ldots{}
+ Let the editor decide if — and when — new sections go in here.
+ Place any new features in\SpecialChar ldots
 
 \end_layout
 
@@ -1803,7 +1926,7 @@ only
 Extended.lyx
 \family default
  This is where all new features go from now on.
- It's in the style of a bound journal --- each section is an 
+ It's in the style of a bound journal — each section is an 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1819,6 +1942,10 @@ article
  file for a new document class should write a section describing that new
  class and how to use it.
  That also goes here.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1853,9 +1980,14 @@ Tutorial.lyx
 Customization.lyx
 \family default
  This document describes advanced features, most of which alter the look,
- feel, and behavior of LyX.
+ feel, and behavior of \SpecialChar LyX
+.
  This manual is still a bit incomplete, although that may change soon.
  Check for updates often.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1873,7 +2005,8 @@ really
 Extended.lyx
 \family default
 .
- Again, let the current editor of the LyX documentation decide if your new
+ Again, let the current editor of the \SpecialChar LyX
+ documentation decide if your new
  section should be migrated to 
 \family typewriter
 Customization.lyx
@@ -1890,7 +2023,8 @@ Reference.lyx
 \family default
  I'd prefer to completely finish this one before doing anything else, but
  that's unrealistic.
- LyX keeps changing so much that I think the 
+ \SpecialChar LyX
+ keeps changing so much that I think the 
 \emph on
 Reference Manual
 \emph default
@@ -1898,6 +2032,10 @@ Reference Manual
  However, I'd like it if the developer's would add entries anytime they
  create a new function or popup.
  That would help things immensely!
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -1938,7 +2076,8 @@ All contributions to the
 \emph on
 primary
 \emph default
- LyX documentation must be in English.
+ \SpecialChar LyX
+ documentation must be in English.
  I don't care if it's British, Australian, or American English.
  The DocTeam editor will proofread for glaring mistakes and fix them.
 \end_layout
@@ -1962,8 +2101,9 @@ primary
  documentation, I exclude the translations.
  We usually don't have enough people to cover the manuals in one language,
  let alone more than one.
- Subsequently, the tranlsations are just that --- translations of the English
- version of the LyX manuals.
+ Subsequently, the tranlsations are just that — translations of the English
+ version of the \SpecialChar LyX
+ manuals.
  The translation efforts require have their own set of guidelines.
  See section 
 \begin_inset CommandInset ref
@@ -2019,7 +2159,8 @@ we
 \end_layout
 
 \begin_layout Standard
-In short, when you contribute to the LyX Docs, you wear many hats.
+In short, when you contribute to the \SpecialChar LyX
+ Docs, you wear many hats.
 \end_layout
 
 \begin_layout Standard
@@ -2057,7 +2198,7 @@ Name of Person
 \end_layout
 
 \begin_layout Standard
-\SpecialChar \ldots{}
+\SpecialChar ldots
 using the 
 \noun on
 Noun Style
@@ -2086,7 +2227,8 @@ e.
 \begin_inset space ~
 \end_inset
 
-to speak for yourself instead of for the LyX Team.
+to speak for yourself instead of for the \SpecialChar LyX
+ Team.
 \end_layout
 
 \begin_layout Standard
@@ -2131,8 +2273,9 @@ Author
 \end_layout
 
 \begin_layout Standard
-There will be times when you are not speaking for the LyX Team, yet you
- are not entirely speaking for yourself.
+There will be times when you are not speaking for the \SpecialChar LyX
+ Team, yet you are
+ not entirely speaking for yourself.
  Instead, you are speaking on behalf of the manual itself, as the author
  of the manual.
  Some examples of when you might need to do this are:
@@ -2215,7 +2358,7 @@ Author's Note:
 \begin_inset Quotes eld
 \end_inset
 
----
+—
 \begin_inset Quotes erd
 \end_inset
 
@@ -2227,7 +2370,7 @@ Author's Note:
 Here's an example: [
 \emph on
 Author's Note: This is an example note.
- ---jw
+ —jw
 \emph default
 ].
 \end_layout
@@ -2273,7 +2416,7 @@ AN
 \begin_inset Quotes eld
 \end_inset
 
----
+—
 \begin_inset Quotes erd
 \end_inset
 
@@ -2307,7 +2450,7 @@ Footnotes:
 \begin_layout Standard
 You are also free to use footnotes on their own in addition to the Personal
  Notes and/or Author's Notes.
- I've frequently used footnotes to \SpecialChar \ldots{}
+ I've frequently used footnotes to \SpecialChar ldots
  well, to comment on parts of a section
  without putting the commentary into the body of the text.
 \end_layout
@@ -2361,9 +2504,11 @@ A
 \emph on
 short
 \emph default
- opinion --- yours or another LyX developer's --- about anything.
+ opinion — yours or another \SpecialChar LyX
+ developer's — about anything.
  Anywhere in the manuals you wish to speak for yourself instead the the
- LyX Team, use this.
+ \SpecialChar LyX
+ Team, use this.
  If you have a long rant, however, quote yourself (see section
 \begin_inset space ~
 \end_inset
@@ -2383,7 +2528,8 @@ Author's Note:
 \begin_inset Newline newline
 \end_inset
 
-Use this to describe things in LyX (or the manuals) that may change in the
+Use this to describe things in \SpecialChar LyX
+ (or the manuals) that may change in the
  future or are somehow incomplete.
  Author's Notes are supposed to disappear as a manual matures.
 \end_layout
@@ -2393,7 +2539,7 @@ Plain Footnotes:
 \begin_inset Newline newline
 \end_inset
 
-Used for text fragments that almost fit into the flow of the text\SpecialChar \ldots{}
+Used for text fragments that almost fit into the flow of the text\SpecialChar ldots
 but not
  quite.
 \end_layout
@@ -2441,6 +2587,10 @@ There is some typographic freedom in those rules in earlier sections.
  Use that freedom wisely.
  Most importanly, never sacrifice the online appearance for the printed
  appearance and vice versa.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2459,7 +2609,8 @@ multcols
 Itemize
 \family default
  environment into 3 columns.
- It adds some LaTeX commands to the online version, the so-called 
+ It adds some \SpecialChar LaTeX
+ commands to the online version, the so-called 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2477,6 +2628,10 @@ Evil Red Text
 \end_deeper
 \begin_layout Enumerate
 When in doubt, compromise.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2499,11 +2654,16 @@ we
 \end_inset
 
 .
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-When you speak, you speak for the entire LyX Team, so use 
+When you speak, you speak for the entire \SpecialChar LyX
+ Team, so use 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2533,6 +2693,10 @@ you
 \end_inset
 
 .
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2579,6 +2743,10 @@ cursor
 
 \begin_layout Enumerate
 When in doubt, compromise.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2599,7 +2767,8 @@ Quoting Yourself and Others
 
 \begin_layout Standard
 In some cases, you'll have something to say, an opinion of yours.
- Since this is your opinion, you're not speaking for the LyX Team.
+ Since this is your opinion, you're not speaking for the \SpecialChar LyX
+ Team.
  You have so much to say, in fact, that it won't fit into a Personal Note
  or an Author's Note.
  In these cases you want to quote yourself.
@@ -2680,7 +2849,7 @@ If you omit text from the beginning of the first sentence in the quote,
 \begin_inset Quotes eld
 \end_inset
 
-[\SpecialChar \ldots{}
+[\SpecialChar ldots
 ]
 \begin_inset Quotes erd
 \end_inset
@@ -2695,7 +2864,7 @@ If you omit text from the end of the last sentence in the quote, the quote
 \begin_inset Quotes eld
 \end_inset
 
-[\SpecialChar \ldots{}
+[\SpecialChar ldots
 ]
 \begin_inset Quotes erd
 \end_inset
@@ -2709,7 +2878,7 @@ If you omit any text from the middle of the quote, be it whole sentences
 \begin_inset Quotes eld
 \end_inset
 
-[\SpecialChar \ldots{}
+[\SpecialChar ldots
 ]
 \begin_inset Quotes erd
 \end_inset
@@ -2720,6 +2889,10 @@ If you omit any text from the middle of the quote, be it whole sentences
 \begin_layout Itemize
 The quote must be grammatically correct.
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2760,7 +2933,7 @@ the
 \begin_inset Quotes eld
 \end_inset
 
-[\SpecialChar \ldots{}
+[\SpecialChar ldots
 ]
 \begin_inset Quotes erd
 \end_inset
@@ -2801,7 +2974,7 @@ Back-to-back bracket blocks merge together.
 \begin_inset Quotes eld
 \end_inset
 
-[\SpecialChar \ldots{}
+[\SpecialChar ldots
 ][the]
 \begin_inset Quotes erd
 \end_inset
@@ -2811,7 +2984,7 @@ Back-to-back bracket blocks merge together.
 \begin_inset Quotes eld
 \end_inset
 
-[\SpecialChar \ldots{}
+[\SpecialChar ldots
 the]
 \begin_inset Quotes erd
 \end_inset
@@ -2876,6 +3049,10 @@ Keep It Simple, Stupid!
 \end_inset
 
 )
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2893,7 +3070,7 @@ Get to the point.
 \end_layout
 
 \begin_layout Itemize
-Take a look at the manual for a commercial word processor --- it's a fine
+Take a look at the manual for a commercial word processor — it's a fine
  example of how 
 \series bold
 NOT
@@ -2913,7 +3090,7 @@ Avoid being pedantic like The Plague!
 
 \begin_layout Enumerate
 In the same vein, don't write more than you have to.
- You're not working in a vacuum --- refer freely to other parts of the manual
+ You're not working in a vacuum — refer freely to other parts of the manual
  (and other parts of other manuals).
  Even if that 
 \begin_inset Quotes eld
@@ -2929,6 +3106,10 @@ other part of the manual
 
 \begin_layout Enumerate
 On the other hand, BE THOROUGH!
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2945,7 +3126,7 @@ Group by feature, not by widget.
 \end_layout
 
 \begin_layout Enumerate
-Stay on topic --- one 
+Stay on topic — one 
 \family sans
 Section
 \family default
@@ -2968,6 +3149,10 @@ Section
 
 \begin_layout Enumerate
 Describe EVERYTHING related to that feature, no matter where it is.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -2991,7 +3176,7 @@ John Weiss
 \begin_inset Newline newline
 \end_inset
 
-I've had people only document one popup --- literally.
+I've had people only document one popup — literally.
  This added off-topic information and only described half of the feature,
  since other menus, popups, and even unbound functions contained additional
  stuff.
@@ -3008,6 +3193,10 @@ I
 \emph default
  ended up fixing it.
  Bad help is worse than no help at all.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -3030,6 +3219,10 @@ your
 \end_deeper
 \begin_layout Enumerate
 When in doubt, compromise.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -3141,7 +3334,7 @@ name "sec:english-only"
 
 \end_inset
 
-When contributing to the primary --- i.
+When contributing to the primary — i.
 \begin_inset space ~
 \end_inset
 
@@ -3149,8 +3342,8 @@ e.
 \begin_inset space ~
 \end_inset
 
-the English language version --- of the LyX manuals, keep the following
- in mind.
+the English language version — of the \SpecialChar LyX
+ manuals, keep the following in mind.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3184,7 +3377,8 @@ It is felt that this name best explains the command's purpose.
 \begin_inset Quotes eld
 \end_inset
 
-The LyX Team felt ...
+The \SpecialChar LyX
+ Team felt ...
 \begin_inset Quotes erd
 \end_inset
 
@@ -3202,11 +3396,13 @@ We felt that ...
 \begin_layout Enumerate
 Things don't happen by magic - somebody or something did it.
  Only politicians use the passive voice to cover up who did something.
- If LyX reformats a paragraph, write, 
+ If \SpecialChar LyX
+ reformats a paragraph, write, 
 \begin_inset Quotes eld
 \end_inset
 
-LyX reformatted the paragraph.
+\SpecialChar LyX
+ reformatted the paragraph.
 \begin_inset Quotes erd
 \end_inset
 
@@ -3224,6 +3420,10 @@ ispell
 \family default
  changes the document.
 \begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Separator latexpar
 \end_inset
 
 
@@ -3272,6 +3472,10 @@ will make you rewrite
 
 \begin_layout Enumerate
 Note to non-Americans:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -3325,8 +3529,8 @@ In general, stick to short sentences in written English.
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialChar \ldots{}
-was done by\SpecialChar \ldots{}
+\SpecialChar ldots
+was done by\SpecialChar ldots
 
 \begin_inset Quotes erd
 \end_inset
@@ -3368,7 +3572,8 @@ breathing room.
 \end_inset
 
  However, you shouldn't encounter such complex ideas often when documenting
- LyX.
+ \SpecialChar LyX
+.
  Try to keep things short, and use your judgement as needed.
 \end_layout
 
@@ -3484,8 +3689,8 @@ Using context, fix the meanings on the next pass.
 
 \begin_layout Standard
 This is where your multiple translations of a single word become useful.
- Using the other sentences you translated, you can now translate that mystery--s
-entence without reconsulting your dictionary.
+ Using the other sentences you translated, you can now translate that mystery–se
+ntence without reconsulting your dictionary.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3533,8 +3738,9 @@ Tips for the Translators
 \end_layout
 
 \begin_layout Standard
-Those of you contributing to a translation of the LyX manuals must follow
- a modified set of rules.
+Those of you contributing to a translation of the \SpecialChar LyX
+ manuals must follow a
+ modified set of rules.
  The first few rules are analogous to those in section
 \begin_inset space ~
 \end_inset
@@ -3552,7 +3758,8 @@ reference "sec:english-only"
 \end_layout
 
 \begin_layout Subsubsection
-Write as if you are explaining LyX to a colleague you know well.
+Write as if you are explaining \SpecialChar LyX
+ to a colleague you know well.
 \end_layout
 
 \begin_layout Enumerate
@@ -3562,7 +3769,8 @@ Think that way when you write.
 
 \begin_layout Enumerate
 Use a conversational style in your writing.
- Pretend you are teaching LyX to a colleague you know well.
+ Pretend you are teaching \SpecialChar LyX
+ to a colleague you know well.
 \end_layout
 
 \begin_layout Enumerate
@@ -3590,7 +3798,8 @@ In English, the passive voice appears formal, dry, barren.
  In other langauges, however, this is not the case.
  There is nothing wrong with passive voice, and people use it frequently
  in everyday conversation.
- Nevertheless, your translation of the LyX manuals must avoid 
+ Nevertheless, your translation of the \SpecialChar LyX
+ manuals must avoid 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3634,7 +3843,8 @@ dead
 \end_layout
 
 \begin_layout Standard
-We who write the LyX manuals, original or translated, seek to 
+We who write the \SpecialChar LyX
+ manuals, original or translated, seek to 
 \emph on
 inform
 \emph default
@@ -3665,8 +3875,9 @@ Use short sentences and short paragraphs.
 \end_layout
 
 \begin_layout Standard
-Nevertheless, the translations of the LyX manuals should be as clear as
- the originals.
+Nevertheless, the translations of the \SpecialChar LyX
+ manuals should be as clear as the
+ originals.
  So, for our international colleagues, we apply this rule: Keep your sentences
  and paragraphs as short as makes sense.
 \end_layout
@@ -3692,7 +3903,7 @@ Translators must follow the Style Sheet, too!
 \end_layout
 
 \begin_layout Standard
-Everything in this manual --- 
+Everything in this manual — 
 \emph on
 except section
 \begin_inset space ~
@@ -3707,7 +3918,8 @@ reference "sec:english-only"
 
 
 \emph default
- --- applies to every LyX documenter, no matter what the language.
+ — applies to every \SpecialChar LyX
+ documenter, no matter what the language.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3726,7 +3938,7 @@ DocStyle_Supplement_<cn>.lyx
 \end_layout
 
 \begin_layout Standard
-\SpecialChar \ldots{}
+\SpecialChar ldots
 where 
 \begin_inset Quotes eld
 \end_inset
@@ -3768,7 +3980,8 @@ completely
 \end_layout
 
 \begin_layout Subsubsection
-Any information in the LyX manuals must also be in the translations.
+Any information in the \SpecialChar LyX
+ manuals must also be in the translations.
 \end_layout
 
 \begin_layout Standard
@@ -3791,7 +4004,8 @@ stricly forbidden
 \end_layout
 
 \begin_layout Itemize
-Misrepresenting or misdescribing any LyX feature or operation 
+Misrepresenting or misdescribing any \SpecialChar LyX
+ feature or operation 
 \emph on
 must be avoided
 \emph default
@@ -3807,7 +4021,8 @@ cannot
 \begin_inset Newline newline
 \end_inset
 
-If no one has documented new feature in the primary LyX manuals (i.
+If no one has documented new feature in the primary \SpecialChar LyX
+ manuals (i.
 \begin_inset space ~
 \end_inset
 
@@ -3817,11 +4032,15 @@ e.
 
 the English versions), do not do so in the translations.
  If you're really looking for something to do, either:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-\SpecialChar \ldots{}
+\SpecialChar ldots
 focus on translating something you haven't yet,
 \begin_inset Newline newline
 \end_inset
@@ -3830,7 +4049,7 @@ OR
 \end_layout
 
 \begin_layout Itemize
-\SpecialChar \ldots{}
+\SpecialChar ldots
 update or repair the primary manual.
 \end_layout
 
@@ -3848,7 +4067,7 @@ What you cannot translate, you may omit (usually).
 \begin_layout Standard
 Prepositions, idioms, metaphors, slang, Oh My! There's a jungle of potentially
  untranslatable text you may face.
- Happily, none of these untranslatables are essential to the original text\SpecialChar \ldots{}
+ Happily, none of these untranslatables are essential to the original text\SpecialChar ldots
 
  usually.
  If you can't translate a phrase or two, try omitting them.
@@ -3903,7 +4122,8 @@ in context.
 \begin_inset Quotes erd
 \end_inset
 
- It should not clash with the explanation of LyX features and functions.
+ It should not clash with the explanation of \SpecialChar LyX
+ features and functions.
 \end_layout
 
 \begin_layout Subsection
@@ -3916,12 +4136,14 @@ The First Is In Charge
 
 \begin_layout Standard
 If you were the first person to start translating the manuals, you're the
- LyXDoc Translation Project Chief for your language.
+ \SpecialChar LyX
+Doc Translation Project Chief for your language.
  If you are the 
 \emph on
 only
 \emph default
- person translating the LyXDocs, that automatically makes you the Translation
+ person translating the \SpecialChar LyX
+Docs, that automatically makes you the Translation
  Project Chief.
 \end_layout
 
@@ -3931,7 +4153,8 @@ Amongst other things, that means that you must read this section and perform
 \end_layout
 
 \begin_layout Standard
-If you are a member of a LyX Documentation Translation Team, but 
+If you are a member of a \SpecialChar LyX
+ Documentation Translation Team, but 
 \emph on
 are not
 \emph default
@@ -4003,7 +4226,8 @@ There are parts of this Style Sheet that are English-specific.
 \end_layout
 
 \begin_layout Standard
-That's where you, as head of a LyXDoc Translation Team, come in.
+That's where you, as head of a \SpecialChar LyX
+Doc Translation Team, come in.
 \end_layout
 
 \begin_layout Standard
@@ -4013,8 +4237,9 @@ required
 \emph default
  to write a Supplement to the official Documentation Style Sheet, with specifics
  issues affecting your language.
- (You are, after all, the LyX Team expert on your native tongue.) Follow
- these guidelines when writing the Supplement:
+ (You are, after all, the \SpecialChar LyX
+ Team expert on your native tongue.) Follow these
+ guidelines when writing the Supplement:
 \end_layout
 
 \begin_layout Enumerate
@@ -4030,7 +4255,7 @@ DocStyle_Supplement_<cn>.lyx
 \begin_inset Newline newline
 \end_inset
 
-\SpecialChar \ldots{}
+\SpecialChar ldots
 where 
 \begin_inset Quotes eld
 \end_inset
@@ -4093,6 +4318,10 @@ Do not worry about where the file goes.
 
 \begin_layout Enumerate
 Document Properties: 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -4124,6 +4353,10 @@ Exceptions: Use margins, indentation/paragraph separation, language, and
 \end_deeper
 \begin_layout Enumerate
 The title of the Supplement: 
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -4142,6 +4375,10 @@ Title
 
  paragraph environment.
  In your native tongue, the title will read:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -4210,6 +4447,10 @@ Appendix
  An appendix is an extra part of a document.
  A supplement is an extra document.
  
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -4250,6 +4491,10 @@ Author
 \end_inset
 
  paragraph environment, place your name.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -4264,6 +4509,10 @@ The first
 Section
 \family default
  of the Supplement:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -4314,7 +4563,7 @@ The second
 \family sans
 Section
 \family default
- will be about font issues\SpecialChar \ldots{}
+ will be about font issues\SpecialChar ldots
  if you have any.
  Not all Translation Project Chiefs will need to deal with this issue.
  The fonts:
@@ -4361,7 +4610,7 @@ Noun (actually Small Caps)
 \end_layout
 
 \begin_layout Standard
-\SpecialChar \ldots{}
+\SpecialChar ldots
 certainly exist for all languages that use the Roman alphabet.
  Do they exist, however, for Greek? How about Cyrillic? These different
  fonts almost certainly do not exist for Devanagri, Chinese, Korean, Japanese,
@@ -4413,6 +4662,10 @@ or
 \end_inset
 
 What to do when a font doesn't exist:
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -4420,7 +4673,9 @@ What to do when a font doesn't exist:
 \labelwidthstring MMMMMMMM
 Roman Use the font that typesetters in your language use for printing books,
  manuals, etc.
- This will typically be the default font LyX (and LaTeX) uses in your language.
+ This will typically be the default font \SpecialChar LyX
+ (and \SpecialChar LaTeX
+) uses in your language.
 \end_layout
 
 \begin_layout Labeling
@@ -4447,6 +4702,10 @@ Style
 Emphasized
 \emph default
  Use the font with which your language normally emphasizes text.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -4545,6 +4804,10 @@ Sans
 Serif
 \family default
  Don't worry about this one.
+\begin_inset Separator latexpar
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
@@ -4583,7 +4846,8 @@ Boldface
 
 \begin_layout Standard
 Once you have determined which fonts in your native writing system will
- replace one or more of the above, propose it to the LyX Developer's Mailing
+ replace one or more of the above, propose it to the \SpecialChar LyX
+ Developer's Mailing
  List.
  You may receive valuable feedback this way.
  If not, that's okay.
@@ -4666,7 +4930,8 @@ reference "sec:quote"
 \end_inset
 
  of this Style Sheet is overly detailed for a good reason.
- Authors of the primary LyX manuals are not necessarily native English speakers.
+ Authors of the primary \SpecialChar LyX
+ manuals are not necessarily native English speakers.
  The members of your Translation Team, however, will all likely be native
  speakers of your language.
  Therefore, discuss proper quoting style of your native tongue to an appropriate
@@ -4856,15 +5121,15 @@ n, or other difficult to translate text.
 \family sans
 Subsection
 \family default
- --- or even 
+ — or even 
 \family sans
 Subsubsection
 \family default
-s --- to each specific issue.
+s — to each specific issue.
 \end_layout
 
 \begin_layout Subsubsection
-\SpecialChar \ldots{}
+\SpecialChar ldots
  
 \begin_inset Quotes eld
 \end_inset
@@ -4873,7 +5138,7 @@ Yes, we mean now.
 \begin_inset Quotes erd
 \end_inset
 
- \SpecialChar \ldots{}
+ \SpecialChar ldots
 
 \end_layout
 
@@ -4910,8 +5175,8 @@ Lost in Translation
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialChar \ldots{}
- Yes, we mean now\SpecialChar \ldots{}
+\SpecialChar ldots
+ Yes, we mean now\SpecialChar ldots
 
 \begin_inset Quotes erd
 \end_inset
@@ -4926,7 +5191,8 @@ Here's what those two sentences, sitting alone in their own paragraph, mean:
 
 \begin_layout Standard
 The first sentence uses the English conditional followed by an imperative.
- We, as the LyX team, are commanding the reader to go back to another manual.
+ We, as the \SpecialChar LyX
+ team, are commanding the reader to go back to another manual.
  For example, the 
 \emph on
 Intro
@@ -5009,8 +5275,8 @@ In the same part of the Supplement that you place the
 \begin_inset Quotes eld
 \end_inset
 
-\SpecialChar \ldots{}
-Yes, we mean now\SpecialChar \ldots{}
+\SpecialChar ldots
+Yes, we mean now\SpecialChar ldots
 
 \begin_inset Quotes erd
 \end_inset
@@ -5082,7 +5348,8 @@ e.
 \end_inset
 
 how you want such sentences translated.) If stumped, ask for help on the
- LyX Developer's List.
+ \SpecialChar LyX
+ Developer's List.
 \end_layout
 
 \begin_layout Subsubsection
