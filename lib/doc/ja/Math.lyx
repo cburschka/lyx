@@ -29394,7 +29394,7 @@ The equations to be subnumbered are put into the
 \family sans
 Subequations
 \family default
- environment
+ inset
 \lang japanese
 ．たとえば，
 \begin_inset Formula 
@@ -29443,7 +29443,7 @@ Every formula in the
 \family sans
 Subequations
 \family default
- environment will be subnumbered with 
+ inset will be subnumbered with 
 \lang japanese
 a・b・c\SpecialChar ldots
 のように細目番号が振られます．
@@ -29471,7 +29471,7 @@ If you want to reference the subequations collectively, insert a label as
 \family sans
 Subequations
 \family default
- environment
+ inset
 \lang japanese
 ．数式
 \begin_inset CommandInset ref
@@ -29498,7 +29498,7 @@ vertical space right before the
 \family sans
 Subequations
 \family default
- environment
+ inset
 \lang japanese
 ．数式様式として
 \series bold
@@ -29537,7 +29537,7 @@ To get another subnumber instead of small Latin letters, insert this command
 \family sans
 Subequations
 \family default
- environment:
+ inset:
 \end_layout
 
 \begin_layout Standard
