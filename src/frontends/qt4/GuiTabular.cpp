@@ -258,6 +258,12 @@ void GuiTabular::enableWidgets() const
 	// longtables and tabular* cannot have a vertical alignment
 	TableAlignLA->setDisabled(is_tabular_star || longtabular);
 	TableAlignCO->setDisabled(is_tabular_star || longtabular);
+	// longtable cannot be rotated (with rotating package)
+	// FIXME: Add support for [pdf]lscape
+	rotateTabularCB->setDisabled(longtabular);
+	rotateTabularLA->setDisabled(longtabular);
+	// this one would also be disabled with [pdf]lscape
+	rotateTabularAngleSB->setDisabled(longtabular);
 
 	// FIXME: This Dialog is really horrible, disabling/enabling a checkbox
 	// depending on the cursor position is very very unintuitive...
