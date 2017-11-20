@@ -31505,129 +31505,6 @@ Footnotes in title environments are usually not numbered with symbols and
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-Footnotes in tables are not printed by \SpecialChar LaTeX
- due to technical reasons.
- However there exists another method to print them: Instead of the footnote
- the command 
-\series bold
-
-\backslash
-footnotemark{}
-\series default
- is inserted as \SpecialChar TeX
- code.
- The text of the footnote is entered as an argument of the \SpecialChar TeX
- code command
- 
-\series bold
-
-\backslash
-footnotetext
-\series default
- after the table.
-\begin_inset Newline newline
-\end_inset
-
-This was done for the following table with the command
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-footnotetext{
-\series default
-Printed table footnote.
-\series bold
-}
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="1">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-This an example text.
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-This footnote will not be printed!
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-This an example text.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-footnotemark{}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-footnotetext{
-\end_layout
-
-\end_inset
-
-Printed table footnote.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Footnotes in multi-page tables are described in section
 \begin_inset space ~
 \end_inset
@@ -31640,6 +31517,13 @@ reference "subsec:Footnotes-in-Multi-page"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -31657,19 +31541,40 @@ reference "sec:Minipages"
 \end_inset
 
 .) To get a footnote in the minipage that is output at the bottom of the
- page like normal footnotes, also use the method of 
+ page like normal footnotes use this method: Instead of the footnote the
+ command 
 \series bold
 
 \backslash
 footnotemark{}
 \series default
- and 
+ is inserted as \SpecialChar TeX
+ code.
+ The text of the footnote is entered as an argument of the \SpecialChar TeX
+ code command
+ 
 \series bold
 
 \backslash
 footnotetext
 \series default
-.
+ after the minipage.
+\begin_inset Newline newline
+\end_inset
+
+This was done for the following minipage with the command
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+footnotetext{
+\series default
+Footnote outside the minipage.
+\series bold
+}
 \end_layout
 
 \begin_layout Standard

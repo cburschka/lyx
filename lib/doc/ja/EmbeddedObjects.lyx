@@ -29814,6 +29814,17 @@ reference "fn:これは脚注の一例"
 \end_layout
 
 \begin_layout Standard
+多頁表中の脚註は，第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:多頁表での脚注"
+
+\end_inset
+
+節で述べられています．
+\end_layout
+
+\begin_layout Standard
 \begin_inset VSpace defskip
 \end_inset
 
@@ -29821,22 +29832,32 @@ reference "fn:これは脚注の一例"
 \end_layout
 
 \begin_layout Standard
-\SpecialChar LaTeX
-では，技術的要因により，表中の脚註は印字されません．しかし，それを行うには他の方法があり，まず脚註の代わりに\SpecialChar TeX
+ミニページ中の脚註は出力されますが，ミニボックスは頁中の頁のようなものなので，ボックス内に独立した連番として出力されます（ミニページについての詳細は，第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:ミニページ"
+
+\end_inset
+
+節を参照）．通常の脚註のように頁底部に出力されるミニページを得るには，しかし，それを行うには他の方法があり，まず脚註の代わりに\SpecialChar TeX
 コードで
 \series bold
 
 \backslash
 footnotemark{}
 \series default
-コマンドを入れてください．脚註の本文は，表の後で\SpecialChar TeX
+コマンドを入れてください．脚註の本文は．表の後で\SpecialChar TeX
 コード
 \series bold
 
 \backslash
 footnotetext
 \series default
-コマンドの引数として入力します．
+コマンドの引数として入力します
+\lang english
+minipage
+\lang japanese
+．
 \begin_inset Newline newline
 \end_inset
 
@@ -29850,7 +29871,7 @@ footnotetext
 \backslash
 footnotetext{
 \series default
-出力される脚註の表
+ミニページ外の脚註です．
 \series bold
 }
 \series default
@@ -29858,122 +29879,11 @@ footnotetext{
 \begin_inset Newline newline
 \end_inset
 
-を用いています．
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="1">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-これは例文です．
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-この脚註は出力されません!
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-これは例文です．
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-footnotemark{}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-footnotetext{
-\end_layout
-
-\end_inset
-
-出力される脚註の表
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-多頁表中の脚註は，第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:多頁表での脚注"
-
-\end_inset
-
-節で述べられています．
-\end_layout
-
-\begin_layout Standard
-ミニページ中の脚註は出力されますが，ミニボックスは頁中の頁のようなものなので，ボックス内に独立した連番として出力されます（ミニページについての詳細は，第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:ミニページ"
-
-\end_inset
-
-節を参照）．通常の脚註のように頁底部に出力されるミニページを得るには，やはり
-\series bold
-
-\backslash
-footnotemark{}
-\series default
-と
-\series bold
-
-\backslash
-footntoetext
-\series default
-による方法を用いてください．
+を用いています
+\lang english
+minipage
+\lang japanese
+．
 \end_layout
 
 \begin_layout Standard

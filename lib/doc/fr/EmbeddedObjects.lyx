@@ -32026,143 +32026,6 @@ Footnotes in title environments are usually not numbered with symbols and
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Le notes de bas de page se trouvant dans des tableaux ne sont pas imprimées
- par \SpecialChar LaTeX
- pour des raisons techniques.
- Il existe pourtant une autre méthode pour les imprimer : on insère la commande
- 
-\series bold
-
-\backslash
-footnotemark{}
-\series default
- en code \SpecialChar TeX
- à la place de la note de bas de page.
- Le texte de la note est mis en argument de la commande \SpecialChar TeX
- 
-\series bold
-
-\backslash
-footnotetext
-\series default
- après le tableau.
-\begin_inset Newline newline
-\end_inset
-
-C'est ce qui a été fait pour le tableau qui suit avec la commande
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-footnotetext{
-\series default
-Note de bas de page de tableau imprimée.
-\series bold
-}
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="1">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Un exemple de texte
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Cette note ne sera pas imprimée
-\begin_inset space ~
-\end_inset
-
-!
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Un autre exemple de texte
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-footnotemark{}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-footnotetext{
-\end_layout
-
-\end_inset
-
-
-\lang french
-Note de bas de page de tableau imprimée.
-\lang english
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Les notes de bas de page dans des tableaux multi-pages sont décrites dans
  la section
 \begin_inset space ~
@@ -32176,6 +32039,13 @@ reference "subsec:Notes-dans-tableau-multi-pages"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -32196,20 +32066,39 @@ reference "sec:Minipages"
 
 .
  Pour avoir une note de bas de page à l'intérieur d'une minipage et qui
- s'imprime en bas de page comme une note normale, on doit aussi utiliser
- la méthode utilisant les commandes 
+ s'imprime en bas de page comme une note normale, on doit utiliser cette
+ méthode : On insère la commande 
 \series bold
 
 \backslash
 footnotemark{}
 \series default
- et 
+ en code \SpecialChar TeX
+ à la place de la note de bas de page.
+ Le texte de la note est mis en argument de la commande \SpecialChar TeX
+ 
 \series bold
 
 \backslash
 footnotetext
 \series default
-.
+ après la minipage.
+\begin_inset Newline newline
+\end_inset
+
+C'est ce qui a été fait pour la minipage qui suit avec la commande
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+footnotetext{
+\series default
+Note de bas de page en dehors de la minipage.
+\series bold
+}
 \end_layout
 
 \begin_layout Standard
