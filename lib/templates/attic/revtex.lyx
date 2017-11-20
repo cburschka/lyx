@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin /systemlyxdir/templates/attic/
 \textclass revtex4
 \options aps,manuscript
 \use_default_options true
@@ -10,16 +12,18 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -49,6 +53,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -57,7 +62,10 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -104,7 +112,8 @@ status collapsed
 You don't have to write 
 \backslash
 maketitle..
- LyX does this by itself.
+ \SpecialChar LyX
+ does this by itself.
 \end_layout
 
 \end_inset
@@ -162,13 +171,16 @@ Section 2 text goes here.
 \end_layout
 
 \begin_layout Standard
-Special REVTeX 3.1 macros must be typed in TeX mode, so typing 
+Special REV\SpecialChar TeX
+ 3.1 macros must be typed in \SpecialChar TeX
+ mode, so typing 
 \family typewriter
 
 \backslash
 openone
 \family default
- in TeX mode yields 
+ in \SpecialChar TeX
+ mode yields 
 \begin_inset ERT
 status collapsed
 
@@ -182,8 +194,10 @@ openone{}
 \end_inset
 
 .
- (See the REVTeX manual for other macros.) REVTeX macros can also be used
- freely in the math editor, so you can type 
+ (See the REV\SpecialChar TeX
+ manual for other macros.) REV\SpecialChar TeX
+ macros can also be used freely
+ in the math editor, so you can type 
 \begin_inset Formula $\sqrt{\overstar a}>\overcirc b$
 \end_inset
 
@@ -192,17 +206,22 @@ openone{}
 
 \begin_layout Standard
 You can do a bibliography by hand, as shown below, or erase that, and use
- BibTeX.
- If you use BibTeX, don't forget to use a REVTeX bibliography style file,
- such as 
+ Bib\SpecialChar TeX
+.
+ If you use Bib\SpecialChar TeX
+, don't forget to use a REV\SpecialChar TeX
+ bibliography style file, such
+ as 
 \family typewriter
 prsty.bst
 \family default
 .
- With either method, you can cite references with the LyX citation commands
+ With either method, you can cite references with the \SpecialChar LyX
+ citation commands
 \begin_inset CommandInset citation
 LatexCommand cite
 key "mycitation"
+literal "true"
 
 \end_inset
 
@@ -215,7 +234,8 @@ If you get question marks instead of numbers in your references,
 \end_layout
 
 \begin_layout Plain Layout
-re-run LaTeX (File->update dvi)
+re-run \SpecialChar LaTeX
+ (File->update dvi)
 \end_layout
 
 \end_inset
@@ -227,6 +247,7 @@ re-run LaTeX (File->update dvi)
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
 key "mycitation"
+literal "true"
 
 \end_inset
 
@@ -242,7 +263,7 @@ Title
 \series bold
 Volume
 \series default
-, page--numbers (year).
+, page–numbers (year).
 \end_layout
 
 \end_body
