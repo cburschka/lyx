@@ -8559,12 +8559,14 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
+
 Esto es entorno Literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8577,6 +8579,7 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
+
 Casi todo está permitido en entorno Literal:"%&$§#~'`
 \backslash
 }][{|
@@ -8601,6 +8604,7 @@ con la diferencia de que los espacios aparecen en la salida como el carácter
 \end_layout
 
 \begin_layout Verbatim*
+
 Esto es entorno Literal*.
 \end_layout
 
@@ -15016,14 +15020,33 @@ Esto es un texto tachado.
 \family sans
 Ctrl+Mayúsculas+O
 \family default
-).
+)
 \begin_inset Newline newline
 \end_inset
 
 Se usa frecuentemente para señalar la versión antigua de un texto cambiado.
+\end_layout
 
-\strikeout on
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+\lang english
+Cross
+\begin_inset space ~
+\end_inset
+
+out
+\family default
  
+\xout on
+This is text with Cross out on.
+\xout default
+
+\begin_inset Newline newline
+\end_inset
+
+This is used to make text hardly readable.
 \end_layout
 
 \begin_layout Labeling
@@ -15045,7 +15068,7 @@ Alt+C
 
 C
 \family default
-).
+)
 \noun on
 
 \begin_inset Newline newline
@@ -31275,95 +31298,6 @@ reference "sec:Indice-alfabético"
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-En algunos casos, si estás usando el programa 
-\family sans
-makeindex
-\family default
- para generar el índice, el orden de entradas en el índice no es correcto
- (véase la sec.
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Programas-para-índice"
-
-\end_inset
-
-).
- Por ejemplo, 
-\family sans
-makeindex
-\family default
- podría imprimir la entrada de índice para el paquete \SpecialChar LaTeX
- aeguill, en la sec.
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Tipografía-del-documento"
-
-\end_inset
-
-, después de las entradas de índice de los demás paquetes \SpecialChar LaTeX
-, aunque todos
- estos comandos de índice empiezan con 
-\begin_inset Quotes eld
-\end_inset
-
-
-\series bold
-\SpecialChar LaTeX
-, paquetes ! 
-\series default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- La razón es que la entrada de índice para aeguill está en una nota al pie.
- Para arreglar este fallo de 
-\family sans
-makeindex
-\family default
-, añade estos comandos en el preámbulo del documento:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-let
-\backslash
-OrgIndex
-\backslash
-index
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-renewcommand*{
-\backslash
-index}[1]{
-\backslash
-OrgIndex{#1}}
 \end_layout
 
 \begin_layout Subsection

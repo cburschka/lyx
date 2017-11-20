@@ -14824,9 +14824,8 @@ Unterstrichen
  
 \bar under
 Dies ist unterstrichener Text.
-
 \bar default
- 
+
 \begin_inset Newline newline
 \end_inset
 
@@ -14867,9 +14866,8 @@ unterstrichen
  
 \uuline on
 Dies ist doppelt unterstrichener Text.
-
 \uuline default
- 
+
 \begin_inset Newline newline
 \end_inset
 
@@ -14902,9 +14900,8 @@ unterstrichen
  
 \uwave on
 Dies ist wellig unterstrichener Text.
-
 \uwave default
- 
+
 \begin_inset Newline newline
 \end_inset
 
@@ -14928,16 +14925,12 @@ Verwenden Sie dies nur wenn ein Journal unbedingt darauf besteht.
 \labelwidthstring 00.00.0000
 
 \family sans
-Durchgestrichen
+Durchgestrichen 
 \family default
-\bar under
- 
-\bar default
 \strikeout on
 Dies ist durchgestrichener Text.
-
 \strikeout default
- 
+
 \begin_inset Newline newline
 \end_inset
 
@@ -14949,8 +14942,24 @@ Strg+Umschalt+O
 \begin_inset Newline newline
 \end_inset
 
-Dies wird oft verwendet um eine alte Version eines Textes zu kennzeichnen,
+Dies wird oft verwendet, um eine alte Version eines Textes zu kennzeichnen,
  der inzwischen geändert wurde.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+Durchgekreuzt 
+\family default
+\xout on
+Dies ist durchgekreuzter Text.
+\xout default
+
+\begin_inset Newline newline
+\end_inset
+
+Dies wird verwendet, um Text schwer lesbar zu machen.
 \end_layout
 
 \begin_layout Labeling
@@ -29969,92 +29978,6 @@ Der vorige Eintrag muss kein existierender Eintrag sein.
  Man kann ein beliebiges Wort verwenden um \SpecialChar LaTeX
  die Reihenfolge vorzugeben,
  siehe den nächsten Unterabschnitt für ein Beispiel.
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-In einigen Fällen ist die Stichwort-Reihenfolge inkorrekt wenn das Programm
- 
-\family sans
-makeindex 
-\family default
-verwendet wird um das Stichwortverzeichnis zu erzeugen (siehe Kap.
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Stichwort-Programm"
-
-\end_inset
-
-).
- 
-\family sans
-makeindex
-\family default
- gibt zum Beispiel das Stichwort für das \SpecialChar LaTeX
--Paket aeguill in Kap.
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Dokumentschrift-und-Schriftgröße"
-
-\end_inset
-
- nach den Stichworten der anderen \SpecialChar LaTeX
--Pakete aus, obwohl all diese Stichwort-Befehl
-e mit 
-\begin_inset Quotes gld
-\end_inset
-
-
-\series bold
-\SpecialChar LaTeX
--Paket ! 
-\series default
-“ beginnen.
- Der Grund ist, dass sich das Stichwort für aeguill in einer Fußnote befindet.
- Um diesen Fehler von 
-\family sans
-makeindex
-\family default
- zu umgehen, kann man diese Befehle zum \SpecialChar LaTeX
--Vorspann des Dokuments hinzufügen:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-let
-\backslash
-OrgIndex
-\backslash
-index
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-renewcommand*{
-\backslash
-index}[1]{
-\backslash
-OrgIndex{#1}}
 \end_layout
 
 \begin_layout Subsection

@@ -7173,12 +7173,14 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 これは原文儘(verbatim)環境です．
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 この下の2行は空白行です．
 \end_layout
 
@@ -7191,6 +7193,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim
+
 右記の各文字を始め，ほぼすべての文字が使えます．例："%&$§#~'`
 \backslash
 }][{|
@@ -7213,6 +7216,7 @@ Space
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -12735,6 +12739,28 @@ arg   "font-strikeout"
 \end_inset
 
 これは，変更した文章の元の文章を示すためによく用いられます．
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+\lang english
+Cross
+\begin_inset space ~
+\end_inset
+
+out
+\family default
+ 
+\xout on
+This is text with Cross out on.
+\xout default
+
+\begin_inset Newline newline
+\end_inset
+
+This is used to make text hardly readable.
 \end_layout
 
 \begin_layout Labeling
@@ -25839,77 +25865,6 @@ is@maison
 とします．前項目は実際に存在する項目でなくてもかまわないので，\SpecialChar LaTeX
 に項目順序を告げる単語であればどんな単語を使ってもかまいません．例として次の小節を参照してください
 ．
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-索引の生成に
-\family sans
-makeindex
-\family default
-プログラムを使用している場合には，索引項目の順序が正しくないことがあります(第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:索引プログラム"
-
-\end_inset
-
-節を参照)．たとえば，
-\family sans
-makeindex
-\family default
-は，第
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:文書フォント"
-
-\end_inset
-
-節のaeguill \SpecialChar LaTeX
-パッケージの索引項目を，他の\SpecialChar LaTeX
-パッケージの索引コマンドも「
-\series bold
-\SpecialChar LaTeX
-パッケージ ! 
-\series default
-」で始まっているにもかかわらず，これらの項目の後に印字してしまいます．そのわけは，aeguillの索引項目が脚註にあるからです．この
-\family sans
-makeindex
-\family default
-のバグを修正するには，使用中の文書のプリアンブルに
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-let
-\backslash
-OrgIndex
-\backslash
-index
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-renewcommand*{
-\backslash
-index}[1]{
-\backslash
-OrgIndex{#1}}
-\series default
-
-\begin_inset Newline newline
-\end_inset
-
-というコマンドを書き加えて下さい．
 \end_layout
 
 \begin_layout Subsection
