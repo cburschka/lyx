@@ -31214,132 +31214,6 @@ reference "pie:Esto-es-una"
 Las notas al pie en entornos de título generalmente no se numeran y no pueden
  contener varios párrafos.
  Véase como ejemplo la nota al pie en el título de este documento.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Debido a razones técnicas, \SpecialChar LaTeX
- no imprime las notas al pie en cuadros.
- No obstante, hay otro método para imprimirlas: en lugar de la nota al pie
- se inserta el comando 
-\series bold
-
-\backslash
-footnotemark{}
-\series default
- en código \SpecialChar TeX
-.
- El texto de la nota se introduce como argumento del comando
-\series bold
- 
-\backslash
-footnotetext
-\series default
- después del cuadro.
-\begin_inset Newline newline
-\end_inset
-
-Esto es lo que se ha hecho para el siguiente cuadro con el comando
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-footnotetext{
-\series default
-Texto de la nota del cuadro.
-\series bold
-}
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="1">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Texto de ejemplo.
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-¡Esta nota no se imprimirá!
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Texto de ejemplo.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-footnotemark{}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-footnotetext{
-\end_layout
-
-\end_inset
-
-Texto de la nota del cuadro.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -31355,6 +31229,13 @@ reference "subsec:Notas-al-pie-en-Cuadros-Multipágina"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -31374,19 +31255,38 @@ reference "sec:Minipáginas"
 
 ).
  Para poner notas en una minipágina que se impriman a pie de página como
- las notas al pie normales, se puede usar también el método de 
+ las notas al pie normales, se puede usar este método: En lugar de la nota
+ al pie se inserta el comando 
 \series bold
 
 \backslash
 footnotemark{}
 \series default
- y 
+ en código \SpecialChar TeX
+.
+ El texto de la nota se introduce como argumento del comando
 \series bold
-
+ 
 \backslash
 footnotetext
 \series default
-.
+ después de la minipágina.
+\begin_inset Newline newline
+\end_inset
+
+Esto es lo que se ha hecho para la siguiente minipágina con el comando
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+footnotetext{
+\series default
+Nota fuera de la minipágina.
+\series bold
+}
 \end_layout
 
 \begin_layout Standard

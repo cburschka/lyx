@@ -31534,128 +31534,6 @@ Fußnoten in Titel-Umgebungen werden üblicherweise mit Symbolen nummeriert
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace defskip
-\end_inset
-
-Fußnoten in Tabellen werden von \SpecialChar LaTeX
- aus technischen Gründen nicht gedruckt.
- Jedoch gibt es eine andere Methode sie zu drucken: Anstatt einer Fußnote
- wird der Befehl 
-\series bold
-
-\backslash
-footnotemark{}
-\series default
- als \SpecialChar TeX
--Code eingefügt.
- Der Text der Fußnote wird als Argument des \SpecialChar TeX
--Code-Befehls 
-\series bold
-
-\backslash
-footnotetext
-\series default
- nach der Tabelle eingegeben.
-\begin_inset Newline newline
-\end_inset
-
-Hinter folgender Tabelle wurde als Beispiel dieser Befehl eingegeben:
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-
-\backslash
-footnotetext{
-\series default
-Gedruckte Tabellenfußnote.
-\series bold
-}
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="1">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Dies ist ein Beispieltext.
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Diese Fußnote wird nicht gedruckt!
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Dies ist ein Beispieltext.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-footnotemark{}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-footnotetext{
-\end_layout
-
-\end_inset
-
-Gedruckte Tabellenfußnote.
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Fußnoten in langen Tabellen sind in Abschnitt
 \begin_inset space ~
 \end_inset
@@ -31668,6 +31546,13 @@ reference "uab:Fußnoten-in-mehrseitigen"
 \end_inset
 
  beschrieben.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -31686,20 +31571,39 @@ reference "abs:Minipage"
 \end_inset
 
  zu finden.) Um eine Fußnote in der Minipage zu erhalten, die am unteren
- Seitenrand wie normale Fußnoten gedruckt wird, verenden Sie ebenfalls die
- Methode mit 
+ Seitenrand wie normale Fußnoten gedruckt wird, verwenden Sie diese Methode:
+ Anstatt einer Fußnote wird der Befehl 
 \series bold
 
 \backslash
 footnotemark{}
 \series default
- und 
+ als \SpecialChar TeX
+-Code eingefügt.
+ Der Text der Fußnote wird als Argument des \SpecialChar TeX
+-Code-Befehls 
 \series bold
 
 \backslash
 footnotetext
 \series default
-.
+ nach der Minipage-Box eingegeben.
+\begin_inset Newline newline
+\end_inset
+
+Hinter folgender Minipage-Box wurde als Beispiel dieser Befehl eingegeben:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+footnotetext{
+\series default
+Fußnote außerhalb der Minipage.
+\series bold
+}
 \end_layout
 
 \begin_layout Standard
