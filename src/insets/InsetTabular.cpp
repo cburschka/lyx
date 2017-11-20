@@ -33,6 +33,7 @@
 #include "DispatchResult.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
+#include "InsetIterator.h"
 #include "InsetList.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
@@ -2651,6 +2652,17 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 				dit.push_back(CursorSlice(tail));
 				tail.setMacrocontextPositionRecursive(dit);
 				tail.latex(os, newrp);
+			}
+		} else if (ltCaption(row)) {
+			// Inside longtable caption rows, we must only output the caption inset
+			// with its content and omit anything outside of that (see #10791)
+			InsetIterator it = inset_iterator_begin(*const_cast<InsetTableCell *>(inset));
+			InsetIterator i_end = inset_iterator_end(*const_cast<InsetTableCell *>(inset));
+			for (; it != i_end; ++it) {
+				if (it->lyxCode() != CAPTION_CODE)
+					continue;
+				it->latex(os, runparams);
+				break;
 			}
 		} else if (!isPartOfMultiRow(row, c)) {
 			if (!runparams.nice)
