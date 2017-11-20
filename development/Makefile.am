@@ -43,7 +43,6 @@ Win32/packaging/installer/gui/external.nsh \
 Win32/packaging/installer/gui/io_latex.ini \
 Win32/packaging/installer/gui/LaTeXFolder.nsh \
 Win32/packaging/installer/include/declarations.nsh \
-Win32/packaging/installer/include/declarations.nsh.cmake \
 Win32/packaging/installer/include/detection.nsh \
 Win32/packaging/installer/include/dictionaries.nsh \
 Win32/packaging/installer/include/EnvVarUpdate.nsh \
@@ -92,13 +91,11 @@ Win32/packaging/installer/DictionaryMirrors.txt \
 Win32/packaging/installer/HunspellDictionaryNames.txt \
 Win32/packaging/installer/license.rtf \
 Win32/packaging/installer/lyx.nsi \
-Win32/packaging/installer/lyx.nsi.cmake \
 Win32/packaging/installer/lyx-bundle.nsi \
 Win32/packaging/installer/lyx-standard.nsi \
 Win32/packaging/installer/Packages.txt \
 Win32/packaging/installer/Readme.txt \
 Win32/packaging/installer/settings.nsh \
-Win32/packaging/installer/settings.nsh.cmake \
 Win32/packaging/installer/ThesaurusDictionaryNames.txt \
 Win32/pdfview/pdfview.nsi \
 Win32/vld/cmake/CMakeLists.txt \
