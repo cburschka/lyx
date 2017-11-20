@@ -522,13 +522,15 @@ else()
 endif()
 mark_as_advanced(LYX_MAN_DIR)
 
-if(LYX_INSTALL AND WIN32)
-	message(STATUS "Configuring NSIS files")
-	configure_file(development/Win32/packaging/installer/lyx.nsi.cmake ${CMAKE_BINARY_DIR}/installer/lyx.nsi @ONLY)
-	configure_file(development/Win32/packaging/installer/settings.nsh.cmake ${CMAKE_BINARY_DIR}/installer/settings-cmake.nsh @ONLY)
-	configure_file(development/Win32/packaging/installer/include/declarations.nsh.cmake ${CMAKE_BINARY_DIR}/installer/declarations-cmake.nsh @ONLY)
-	message(STATUS "NSIS files are created in ${CMAKE_BINARY_DIR}/installer")
-endif()
+# The Win installer cannot be built by CMake because one needs to install plugins for NSIS
+# see the Readme.txt of the installer
+#if(LYX_INSTALL AND WIN32)
+#	message(STATUS "Configuring NSIS files")
+#	configure_file(development/Win32/packaging/installer/lyx.nsi.cmake ${CMAKE_BINARY_DIR}/installer/lyx.nsi @ONLY)
+#	configure_file(development/Win32/packaging/installer/settings.nsh.cmake ${CMAKE_BINARY_DIR}/installer/settings-cmake.nsh @ONLY)
+#	configure_file(development/Win32/packaging/installer/include/declarations.nsh.cmake ${CMAKE_BINARY_DIR}/installer/declarations-cmake.nsh @ONLY)
+#	message(STATUS "NSIS files are created in ${CMAKE_BINARY_DIR}/installer")
+#endif()
 
 if(NOT GROUP_CODE)
 	#set(GROUP_CODE "The Golden Code")

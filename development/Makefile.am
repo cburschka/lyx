@@ -27,6 +27,7 @@ tools/README \
 tools/count_total_lines_of_compiled_code.sh \
 tools/count_lines_of_included_code.sh \
 tools/lyxeditor \
+Win32/packaging/icons/Lydia.svg \
 Win32/packaging/icons/lyx_doc.svg \
 Win32/packaging/icons/lyx_32x32.png \
 Win32/packaging/icons/lyx_doc_32x32.png \
@@ -42,9 +43,9 @@ Win32/packaging/installer/gui/external.nsh \
 Win32/packaging/installer/gui/io_latex.ini \
 Win32/packaging/installer/gui/LaTeXFolder.nsh \
 Win32/packaging/installer/include/declarations.nsh \
-Win32/packaging/installer/include/declarations.nsh.cmake \
 Win32/packaging/installer/include/detection.nsh \
 Win32/packaging/installer/include/dictionaries.nsh \
+Win32/packaging/installer/include/EnvVarUpdate.nsh \
 Win32/packaging/installer/include/filelist.nsh \
 Win32/packaging/installer/include/gui.nsh \
 Win32/packaging/installer/include/init.nsh \
@@ -52,6 +53,11 @@ Win32/packaging/installer/include/LaTeX.nsh \
 Win32/packaging/installer/include/LyXUtils.nsh \
 Win32/packaging/installer/include/nsis.nsh \
 Win32/packaging/installer/include/variables.nsh \
+Win32/packaging/installer/information/InstallerStructure.odg \
+Win32/packaging/installer/information/InstallerStructure.pdf \
+Win32/packaging/installer/information/ISO_3166.html \
+Win32/packaging/installer/information/iso639.htm \
+Win32/packaging/installer/information/WinLangCode.htm \
 Win32/packaging/installer/lang/arabic.nsh \
 Win32/packaging/installer/lang/basque.nsh \
 Win32/packaging/installer/lang/catalan.nsh \
@@ -74,6 +80,7 @@ Win32/packaging/installer/lang/romanian.nsh \
 Win32/packaging/installer/lang/slovak.nsh \
 Win32/packaging/installer/lang/spanish.nsh \
 Win32/packaging/installer/lang/swedish.nsh \
+Win32/packaging/installer/lang/TranslatedLanguages.nsh \
 Win32/packaging/installer/lang/turkish.nsh \
 Win32/packaging/installer/lang/ukrainian.nsh \
 Win32/packaging/installer/setup/configure.nsh \
@@ -84,11 +91,11 @@ Win32/packaging/installer/DictionaryMirrors.txt \
 Win32/packaging/installer/HunspellDictionaryNames.txt \
 Win32/packaging/installer/license.rtf \
 Win32/packaging/installer/lyx.nsi \
-Win32/packaging/installer/lyx.nsi.cmake \
 Win32/packaging/installer/lyx-bundle.nsi \
 Win32/packaging/installer/lyx-standard.nsi \
+Win32/packaging/installer/Packages.txt \
+Win32/packaging/installer/Readme.txt \
 Win32/packaging/installer/settings.nsh \
-Win32/packaging/installer/settings.nsh.cmake \
 Win32/packaging/installer/ThesaurusDictionaryNames.txt \
 Win32/pdfview/pdfview.nsi \
 Win32/vld/cmake/CMakeLists.txt \
