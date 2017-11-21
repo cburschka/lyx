@@ -603,31 +603,21 @@ Function .onInit
     Quit
   ${endif}
   
-  # Fixme: the Unicode version of FindProcDLL::FindProc
-  # reports always that it is already running
-  # check that the installer is not currently running
-  #FindProcDLL::FindProc "${BundleExeFile}"
-  #${if} $R0 == "1"
-  # MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)" /SD IDOK
-  # Abort
-  #${endif}
-  #FindProcDLL::FindProc "${ExeFile}"
-  #${if} $R0 == "1"
-  # MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)" /SD IDOK
-  # Abort
-  #${endif}
-  #System::Call 'kernel32::CreateMutexA(i 0, i 0, t "${BundleExeFile}.Instance") i .r1 ?e'
-  #Pop $R0
-  #${if} $R0 != "0"
-  # MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)" /SD IDOK
-  # Abort
-  #${endif}
-  #System::Call 'kernel32::CreateMutexA(i 0, i 0, t "${ExeFile}.Instance") i .r1 ?e'
-  #Pop $R0
-  #${if} $R0 != "0"
-  # MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)" /SD IDOK
-  # Abort
-  #${endif}
+  # check that another LyX installer is not currently running
+  !if ${SETUPTYPE} == STANDARD
+   FindProcDLL::FindProc "${BundleExeFile}"
+   ${if} $R0 == "1"
+    MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)" /SD IDOK
+    Abort
+   ${endif}
+  !endif
+  !if ${SETUPTYPE} == BUNDLE
+   FindProcDLL::FindProc "${ExeFile}"
+   ${if} $R0 == "1"
+    MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)" /SD IDOK
+    Abort
+   ${endif}
+  !endif
   
   # Check that LyX is not currently running
   FindProcDLL::FindProc "lyx.exe"
