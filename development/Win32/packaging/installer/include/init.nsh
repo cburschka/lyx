@@ -212,7 +212,7 @@ Section /o "Euskara" SecDBasque
  AddSize 4850
 SectionEnd
 
-Section /o "Farsi" SecDFarsi
+Section /o "فارسی" SecDFarsi
  StrCpy $DictCodes "fa_IR,$DictCodes"
  AddSize 6710
 SectionEnd
@@ -603,14 +603,15 @@ Function .onInit
     Quit
   ${endif}
   
-  # fixme
+  # Fixme: the Unicode version of FindProcDLL::FindProc
+  # reports always that it is already running
   # check that the installer is not currently running
-  FindProcDLL::FindProc "${BundleExeFile}"
-  ${if} $R0 == "1"
-   MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)" /SD IDOK
-   Abort
-  ${endif}
-  FindProcDLL::FindProc "${ExeFile}"
+  #FindProcDLL::FindProc "${BundleExeFile}"
+  #${if} $R0 == "1"
+  # MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)" /SD IDOK
+  # Abort
+  #${endif}
+  #FindProcDLL::FindProc "${ExeFile}"
   #${if} $R0 == "1"
   # MessageBox MB_OK|MB_ICONSTOP "$(InstallRunning)" /SD IDOK
   # Abort
