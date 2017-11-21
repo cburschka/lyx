@@ -212,7 +212,7 @@ Section /o "Euskara" SecDBasque
  AddSize 4850
 SectionEnd
 
-Section /o "Farsi" SecDFarsi
+Section /o "فارسی" SecDFarsi
  StrCpy $DictCodes "fa_IR,$DictCodes"
  AddSize 6710
 SectionEnd
