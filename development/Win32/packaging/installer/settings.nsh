@@ -14,7 +14,7 @@ These typically need to be modified for each LyX release
 !define APP_VERSION_REVISION 0
 !define APP_VERSION_EMERGENCY "RC-1" # use "1" for an emergency release of LyX otherwise ""
 !define APP_EMERGENCY_DOT "" # use "." for an emergency release of LyX otherwise ""
-!define APP_VERSION_BUILD 5 # Start with 1 for the installer releases of each version
+!define APP_VERSION_BUILD 6 # Start with 1 for the installer releases of each version
 
 !define APP_VERSION "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_REVISION}${APP_EMERGENCY_DOT}${APP_VERSION_EMERGENCY}" # Version to display
 
@@ -38,7 +38,7 @@ These typically need to be modified for each LyX release
 
 !define FILES_LYX "D:\LyXPackage2.3\LyX"
 !define FILES_DEPS "D:\LyXGit\Master\lyx-windows-deps-msvc2015"
-!define FILES_QT "C:\Qt\Qt5.9.2\5.9.2\msvc2015"
+!define FILES_QT "C:\Qt\Qt5.9.3\5.9.3\msvc2015"
 !define ClassFileDir "${FILES_LYX}\Resources\tex"
 !define DVIPostFileDir "${FILES_DEPS}\tex"
 
