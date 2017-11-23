@@ -298,7 +298,7 @@ dist_ukdoc_DATA = \
 
 ukclipartdocdir = $(ukdocdir)/clipart
 dist_ukclipartdoc_DATA = \
-	uk/clipart/Footnote.png
+	uk/clipart/footnote.png
 
 zhCNdocdir = $(docdir)/zh_CN
 dist_zhCNdoc_DATA = \
