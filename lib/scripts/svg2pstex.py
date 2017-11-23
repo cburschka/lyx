@@ -38,7 +38,7 @@ def runCommand(cmd):
     '''
     res = subprocess.check_call(cmd)
     if res != 0:
-        print "Command '%s' fails (exit code: %i)." % (res.cmd, res.returncode)
+        print("Command '%s' fails (exit code: %i)." % (res.cmd, res.returncode))
         sys.exit(1)
 
 InkscapeCmd = "inkscape"
