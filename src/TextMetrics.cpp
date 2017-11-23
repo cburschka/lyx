@@ -45,6 +45,7 @@
 #include "frontends/Painter.h"
 #include "frontends/NullPainter.h"
 
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/lassert.h"
 
@@ -1925,8 +1926,16 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 			LYXERR(Debug::PAINTING, "Clear rect@("
 			       << max(row_x, 0) << ", " << y - row.ascent() << ")="
 			       << width() << " x " << row.height());
-			pi.pain.fillRectangle(max(row_x, 0), y - row.ascent(),
-				width(), row.height(), pi.background_color);
+			// FIXME: this is a hack. We know that at least this
+			// amount of pixels can be cleared on right and left.
+			// Doing so gets rid of caret ghosts when the cursor is at
+			// the begining/end of row. However, it will not work if
+			// the caret has a ridiculous width like 6. (see ticket
+			// #10797)
+			pi.pain.fillRectangle(max(row_x, 0) - Inset::TEXT_TO_INSET_OFFSET,
+			                      y - row.ascent(),
+			                      width() + 2 * Inset::TEXT_TO_INSET_OFFSET,
+			                      row.height(), pi.background_color);
 		}
 
 		// Instrumentation for testing row cache (see also
@@ -1963,6 +1972,20 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		rp.paintTooLargeMarks(row_x + row.left_x() < 0,
 				      row_x + row.right_x() > bv_->workWidth());
 		y += row.descent();
+
+#if 0
+		// This debug code shows on screen which rows are repainted.
+		// FIXME: since the updates related to caret blinking restrict
+		// the painter to a small rectangle, the numbers are not
+		// updated when this happens. Change the code in
+		// GuiWorkArea::Private::show/hideCaret if this is important.
+		static int count = 0;
+		++count;
+		FontInfo fi(sane_font);
+		fi.setSize(FONT_SIZE_TINY);
+		fi.setColor(Color_red);
+		pi.pain.text(row_x, y, convert<docstring>(count), fi);
+#endif
 
 		// Restore full_repaint status.
 		pi.full_repaint = tmp;
