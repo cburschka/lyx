@@ -2979,7 +2979,7 @@ namespace {
 bool sliceInRow(CursorSlice const & cs, Text const * text, Row const & row)
 {
 	return !cs.empty() && cs.text() == text && cs.pit() == row.pit()
-		&& row.pos() <= cs.pos() && cs.pos() <= row.endpos();
+		&& row.pos() <= cs.pos() && cs.pos() < row.endpos();
 }
 
 }
@@ -3162,9 +3162,11 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 	}
 
 	// Remember what has just been done for the next draw() step
-	if (paint_caret)
+	if (paint_caret) {
 		d->caret_slice_ = d->cursor_.top();
-	else
+		if (d->cursor_.boundary())
+			--d->caret_slice_.pos();
+	} else
 		d->caret_slice_ = CursorSlice();
 }
 
