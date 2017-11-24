@@ -30,6 +30,8 @@
 # This script converts an SVG image to something that latex can process
 # into high quality PostScript.
 
+from __future__ import print_function
+
 import os, sys, re, subprocess
 
 def runCommand(cmd):
