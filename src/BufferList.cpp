@@ -241,7 +241,6 @@ void BufferList::updateIncludedTeXfiles(string const & masterTmpDir,
 			(*it)->markDepClean(masterTmpDir);
 		}
 	}
-	runparams.is_child = false;
 }
 
 
