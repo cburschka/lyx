@@ -3164,7 +3164,8 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 	// Remember what has just been done for the next draw() step
 	if (paint_caret) {
 		d->caret_slice_ = d->cursor_.top();
-		if (d->cursor_.boundary())
+		if (d->cursor_.boundary()
+		    || d->cursor_.top().pos() == d->cursor_.top().lastpos())
 			--d->caret_slice_.pos();
 	} else
 		d->caret_slice_ = CursorSlice();
