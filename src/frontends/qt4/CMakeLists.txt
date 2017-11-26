@@ -7,6 +7,9 @@
 project(frontend_qt)
 
 file(GLOB frontends_qt_sources ${TOP_SRC_DIR}/src/frontends/qt4/${LYX_CPP_FILES})
+if (LYX_USE_FILEDIALOG MATCHES "NATIVE")
+  set_property(SOURCE "${TOP_SRC_DIR}/src/frontends/qt4/FileDialog.cpp" PROPERTY COMPILE_FLAGS -DUSE_NATIVE_FILEDIALOG=1)
+endif()
 file(GLOB moc_files ${TOP_SRC_DIR}/src/frontends/qt4/${LYX_MOC_FILES})
 
 list(REMOVE_ITEM frontends_qt_sources ${moc_files} .)
