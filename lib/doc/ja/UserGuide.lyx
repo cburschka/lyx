@@ -24147,6 +24147,17 @@ literal "false"
 \end_inset
 
 のような電子メールリンク型か，ファイルへのリンクのいずれかです．
+\lang english
+The option 
+\family sans
+Literal
+\family default
+ in the hyperlink settings dialog allows to input \SpecialChar TeX
+ code to the 
+\family sans
+Name
+\family default
+ field.
 \end_layout
 
 \begin_layout Standard
@@ -24351,7 +24362,7 @@ status collapsed
 を入力することができるようになります． 鍵は，この文献項目を参照するのに使うシンボリック名です．各項目は重複のない鍵を与えられなくてはならず，ASCII文字のみ
 を含む一語でなくてはなりません
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 ASCIIとは，
@@ -24387,6 +24398,28 @@ https://ja.wikipedia.org/wiki/ASCII
 
 ．例えば，この文書の書誌情報の二つめの項目は\SpecialChar LaTeX
 に関する書籍ですが，本文書ではこの書籍の鍵として，その題名を縮めた「latexcompanion」を使っています．
+\begin_inset Newline newline
+\end_inset
+
+
+\lang english
+If you set a 
+\family sans
+Label
+\family default
+ for the entry, references to it will appear with this label instead of
+ the number of the entry.
+ The option 
+\family sans
+Literal
+\family default
+ in the bibliography items settings dialog allows to input \SpecialChar TeX
+ code to the
+ 
+\family sans
+Label
+\family default
+ field.
 \end_layout
 
 \begin_layout Standard
@@ -24406,11 +24439,12 @@ arg   "dialog-show-new-inset citation"
 \end_layout
 
 \begin_layout Standard
-引用参照は，出力では角括弧に囲まれた文献項目番号として印字されます．もし項目に
-\family sans
-ラベル
-\family default
-が設定してあると，番号の代わりにラベルが印字されます．以下の二つの例は，最初がラベルなし，二番目が「謝辞」というラベル付きです．
+
+\lang english
+Citation references appear in the output as the number or the label of the
+ bibliography entry with surrounding brackets
+\lang japanese
+．以下の二つの例は，最初がラベルなし，二番目が「謝辞」というラベル付きです．
 \end_layout
 
 \begin_layout Standard
@@ -25295,8 +25329,31 @@ Natbib
 \end_layout
 
 \begin_layout Standard
-文献引用ダイアログでは，文献参照の後に表示する文章（ページ番号など）を設定し，様式の要請に応じて整形する（「pp.」を付けるか否かなど）ことができます．以下は，参
-照の直後に「第3章」という文を設定しています．
+文献引用ダイアログでは，文献参照の後に表示する文章（ページ番号など）を設定し，様式の要請に応じて整形する（「pp.」を付けるか否かなど）ことができます．
+\lang english
+The option 
+\family sans
+Literal
+\family default
+ in the citation dialog allows to input \SpecialChar TeX
+ code to the fields 
+\family sans
+Text
+\begin_inset space ~
+\end_inset
+
+before
+\family default
+ and 
+\family sans
+Text
+\begin_inset space ~
+\end_inset
+
+after
+\family default
+\lang japanese
+．以下は，参照の直後に「第3章」という文を設定しています．
 \end_layout
 
 \begin_layout Standard
@@ -26297,6 +26354,17 @@ literal "true"
 ．
 \end_layout
 
+\begin_layout Itemize
+
+\lang english
+The option 
+\family sans
+Literal
+\family default
+ allows to use \SpecialChar TeX
+ code in the name of the index.
+\end_layout
+
 \begin_layout Section
 記号一覧／用語集
 \begin_inset Index idx
@@ -26477,6 +26545,28 @@ arg   "nomencl-insert"
 説明
 \family default
 です．
+\lang english
+The option 
+\family sans
+Literal
+\family default
+ in the nomenclature settings dialog allows to input \SpecialChar TeX
+ code to the fields
+ 
+\family sans
+Description
+\family default
+ and 
+\family sans
+Sort
+\begin_inset space ~
+\end_inset
+
+as
+\family default
+.
+\lang japanese
+．
 \end_layout
 
 \begin_layout Standard
@@ -26488,8 +26578,13 @@ status open
 \series bold
 【註】
 \series default
-用語集ダイアログのすべてのフィールドに有効な\SpecialChar LaTeX
-コードを入力しなくてはなりません．
+\lang english
+To use \SpecialChar TeX
+ code for nomenclature entries the option 
+\family sans
+Literal
+\family default
+ in the nomenclature dialog has to be used.
 \end_layout
 
 \end_inset
@@ -30948,7 +31043,7 @@ status collapsed
 を設定する方法を説明したWikiページがあるものもあります
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Arabic,Armenian,Farsi,Hebrew,Japanese,Lithuanian,Latvian,Mongolian,Vietnamese"
+key "Arabic,Armenian,Cyrillic,Farsi,Hebrew,Japanese"
 literal "true"
 
 \end_inset
@@ -42374,190 +42469,6 @@ status collapsed
 \begin_layout Plain Layout
 
 http://wiki.lyx.org/Windows/Japanese
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Latvian"
-literal "true"
-
-\end_inset
-
- ラトビア語用に\SpecialChar LyX
-を設定する方法を述べた
-\begin_inset CommandInset href
-LatexCommand href
-name "Wikiページ"
-target "http://wiki.lyx.org/Windows/Latvian"
-literal "false"
-
-\end_inset
-
-:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/Windows/Latvian
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Lithuanian"
-literal "true"
-
-\end_inset
-
- リトアニア語用に\SpecialChar LyX
-を設定する方法を述べた
-\begin_inset CommandInset href
-LatexCommand href
-name "Wikiページ"
-target "http://wiki.lyx.org/Windows/Lithuanian"
-literal "false"
-
-\end_inset
-
-:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/Windows/Lithuanian
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Mongolian"
-literal "true"
-
-\end_inset
-
- モンゴル語用に\SpecialChar LyX
-を設定する方法を述べた
-\begin_inset CommandInset href
-LatexCommand href
-name "Wikiページ"
-target "http://wiki.lyx.org/Windows/Mongolian"
-literal "false"
-
-\end_inset
-
-:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/Windows/Mongolian
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Vietnamese"
-literal "true"
-
-\end_inset
-
-ベトナム語用に\SpecialChar LyX
-を設定する方法を述べた
-\begin_inset CommandInset href
-LatexCommand href
-name "Wikiページ"
-target "http://wiki.lyx.org/Windows/Vietnamese"
-literal "false"
-
-\end_inset
-
-:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/Windows/Vietnamese
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "NewInLyX20"
-literal "true"
-
-\end_inset
-
-
-\family sans
-\SpecialChar LyX
- 2.0
-\family default
-の新機能に関する
-\begin_inset CommandInset href
-LatexCommand href
-name "Wikiページ"
-target "http://wiki.lyx.org/LyX/NewInLyX20"
-literal "false"
-
-\end_inset
-
-:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/LyX/NewInLyX20
 \end_layout
 
 \end_inset

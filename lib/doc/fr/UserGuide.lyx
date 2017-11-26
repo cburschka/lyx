@@ -29887,6 +29887,26 @@ literal "false"
 \end_inset
 
 , ou encore un lien vers un fichier.
+ L'option 
+\family sans
+Littéral
+\family default
+ 
+\lang english
+in the
+\lang french
+ paramètres d'hyperlien 
+\lang english
+dialog allows to input \SpecialChar TeX
+ code to the
+\lang french
+ 
+\family sans
+Nom
+\family default
+ 
+\lang english
+field.
 \end_layout
 
 \begin_layout Standard
@@ -30221,6 +30241,42 @@ latexcompanion
 \end_inset
 
 , qui est une forme abrégée de son titre.
+\begin_inset Newline newline
+\end_inset
+
+Si vous avez défini une 
+\family sans
+Étiquette
+\family default
+, 
+\lang english
+references to it will appear with this
+\lang french
+ étiquette à la place du nombre 
+\lang english
+of the entry
+\lang french
+.
+ L'option 
+\family sans
+Littéral
+\family default
+ 
+\lang english
+in the
+\lang french
+ paramètres de champs bibliographiques 
+\lang english
+dialog allows to input \SpecialChar TeX
+ code to the
+\lang french
+ 
+\family sans
+Étiquette
+\family default
+ 
+\lang english
+field.
 \end_layout
 
 \begin_layout Standard
@@ -30247,11 +30303,6 @@ arg   "dialog-show-new-inset citation"
 
 \begin_layout Standard
 Les citations apparaissent à l'impression comme un nombre entre deux crochets.
- Si vous avez défini une 
-\family sans
-Étiquette
-\family default
-, c'est elle qui va apparaître, à la place du nombre.
  Voici deux exemples: le premier sans étiquette et le second avec l'étiquette
  
 \begin_inset Quotes cld
@@ -31615,13 +31666,19 @@ In the citation dialog you can also set text to appear after a citation
 \end_inset
 
 g.
- page numbers, which will then be formatted according to the style's needs
+\begin_inset space \space{}
+\end_inset
+
+page numbers, which will then be formatted according to the style's needs
  (e.
 \begin_inset space \thinspace{}
 \end_inset
 
 g.
- with or without 
+\begin_inset space \space{}
+\end_inset
+
+with or without 
 \begin_inset Quotes eld
 \end_inset
 
@@ -31629,9 +31686,39 @@ pp.
 \begin_inset Quotes erd
 \end_inset
 
-).
 
 \lang french
+).
+ L'option 
+\family sans
+Littéral
+\family default
+ 
+\lang english
+in the
+\lang french
+ citation 
+\lang english
+dialog allows to input \SpecialChar TeX
+ code to the fields
+\lang french
+ 
+\family sans
+Text
+\begin_inset space ~
+\end_inset
+
+avant
+\family default
+ et 
+\family sans
+Text
+\begin_inset space ~
+\end_inset
+
+après
+\family default
+.
  Voici un exemple où nous fait que le texte 
 \begin_inset Quotes cld
 \end_inset
@@ -31739,20 +31826,22 @@ after
 .
  If you double-click on an item's 
 \family sans
+\lang french
 Text
 \begin_inset space ~
 \end_inset
 
-before
+avant
 \family default
- or 
+ ou 
 \family sans
 Text
 \begin_inset space ~
 \end_inset
 
-after
+après
 \family default
+\lang english
  field, you can add such individual pre- and postnotes.
  In the 
 \family sans
@@ -32764,13 +32853,9 @@ si vous voulez changer l'attribution d'une entrée d'index particulière,
 \begin_layout Itemize
 avec un clic droit sur une index, vous pouvez modifier son type.
  De plus, vous pouvez définir une liste d'index en tant que 
-\begin_inset Quotes cld
-\end_inset
-
+\family sans
 Sous-index
-\begin_inset Quotes crd
-\end_inset
-
+\family default
 .
  Si vous choisissez cette action, l'en-tête de cette liste verra son niveau
  diminué d'une unité: par exemple, si vous utilisez une classe 
@@ -32784,6 +32869,19 @@ book
 , où l'en-tête standard d'index est au niveau chapitre, les sous-index seront
  définis en tant que sections et pourront alors être inclus dans des index
  qui ne sont pas déclarés sous-index.
+\end_layout
+
+\begin_layout Itemize
+L'option 
+\family sans
+Littéral
+\family default
+ 
+\lang english
+allows to input \SpecialChar TeX
+ code in
+\lang french
+ le nom d'index.
 \end_layout
 
 \begin_layout Section
@@ -32917,8 +33015,41 @@ Nom
 
 \begin_layout Standard
 Une entrée de glossaire consiste en deux éléments principaux.
- Le premier est le symbole que vous voulez référencer et le deuxième est
- la description que vous voulez lui attacher.
+ Le premier est le 
+\family sans
+Symbole
+\family default
+ que vous voulez référencer et le deuxième est la 
+\family sans
+Description
+\family default
+ que vous voulez lui attacher.
+ L'option 
+\family sans
+Littéral
+\family default
+ 
+\lang english
+in the
+\lang french
+ citation 
+\lang english
+dialog allows to input \SpecialChar TeX
+ code to the fields
+\lang french
+ 
+\family sans
+Description
+\family default
+ et 
+\family sans
+Classé
+\begin_inset space ~
+\end_inset
+
+comme
+\family default
+.
 \end_layout
 
 \begin_layout Standard
@@ -32930,9 +33061,22 @@ status open
 \series bold
 Nota:
 \series default
- il faut taper du code \SpecialChar LaTeX
- valide dans tous les champs de la fenêtre de dialogue
- de glossaire.
+ 
+\lang english
+To use \SpecialChar TeX
+ code for nomenclature entries
+\lang french
+ l'option 
+\family sans
+Littéral
+\family default
+ 
+\lang english
+in the
+\lang french
+ dialogue de glossaire
+\lang english
+ has to be used.
 \end_layout
 
 \end_inset
@@ -38507,7 +38651,7 @@ Cette section vous montre comment utiliser \SpecialChar LyX
  
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Arabic,Armenian,Farsi,Hebrew,Japanese,Latvian,Lithuanian,Mongolian,Vietnamese"
+key "Arabic,Armenian,Cyrillic,Farsi,Hebrew,Japanese"
 literal "true"
 
 \end_inset
@@ -52213,190 +52357,6 @@ status collapsed
 \begin_layout Plain Layout
 
 http://wiki.lyx.org/Windows/Japanese
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Latvian"
-literal "true"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "page Wiki"
-target "http://wiki.lyx.org/Windows/Latvian"
-literal "false"
-
-\end_inset
-
- comment configurer \SpecialChar LyX
- pour le letton:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/Windows/Latvian
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Lithuanian"
-literal "true"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "page Wiki"
-target "http://wiki.lyx.org/Windows/Lithuanian"
-literal "false"
-
-\end_inset
-
- comment configurer \SpecialChar LyX
- pour le lituanien:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/Windows/Lithuanian
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Mongolian"
-literal "true"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "page Wiki"
-target "http://wiki.lyx.org/Windows/Mongolian"
-literal "false"
-
-\end_inset
-
- comment configurer \SpecialChar LyX
- pour le mongol:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/Windows/Mongolian
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Vietnamese"
-literal "true"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "page Wiki"
-target "http://wiki.lyx.org/Windows/Vietnamese"
-literal "false"
-
-\end_inset
-
- comment configurer \SpecialChar LyX
- pour le vietnamien:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/Windows/Vietnamese
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "NewInLyX20"
-literal "true"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "page Wiki"
-target "http://wiki.lyx.org/LyX/NewInLyX20"
-literal "false"
-
-\end_inset
-
- au sujet des nouveautés de 
-\family sans
-\SpecialChar LyX
- 2.0
-\family default
-:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/LyX/NewInLyX20
 \end_layout
 
 \end_inset

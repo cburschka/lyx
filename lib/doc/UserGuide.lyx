@@ -28193,6 +28193,16 @@ literal "false"
 \end_inset
 
 , or a link to a file.
+ The option 
+\family sans
+Literal
+\family default
+ in the hyperlink settings dialog allows to input \SpecialChar TeX
+ code to the 
+\family sans
+Name
+\family default
+ field.
 \end_layout
 
 \begin_layout Standard
@@ -28494,6 +28504,26 @@ latexcompanion
 \end_inset
 
 , a short form of its title, as the key.
+\begin_inset Newline newline
+\end_inset
+
+If you set a 
+\family sans
+Label
+\family default
+ for the entry, references to it will appear with this label instead of
+ the number of the entry.
+ The option 
+\family sans
+Literal
+\family default
+ in the bibliography items settings dialog allows to input \SpecialChar TeX
+ code to the
+ 
+\family sans
+Label
+\family default
+ field.
 \end_layout
 
 \begin_layout Standard
@@ -28527,13 +28557,8 @@ OK
 \end_layout
 
 \begin_layout Standard
-Citation references appear in the output as the number of the bibliography
- entry with surrounding brackets.
- If you set a 
-\family sans
-Label
-\family default
- for the entry, the label will appear instead of the number.
+Citation references appear in the output as the number or the label of the
+ bibliography entry with surrounding brackets.
  Here are two examples; the first without a label, the second with the label
  
 \begin_inset Quotes eld
@@ -29700,13 +29725,19 @@ In the citation dialog you can also set text to appear after a citation
 \end_inset
 
 g.
- page numbers, which will then be formatted according to the style's needs
+\begin_inset space \space{}
+\end_inset
+
+page numbers, which will then be formatted according to the style's needs
  (e.
 \begin_inset space \thinspace{}
 \end_inset
 
 g.
- with or without 
+\begin_inset space \space{}
+\end_inset
+
+with or without 
 \begin_inset Quotes eld
 \end_inset
 
@@ -29715,6 +29746,28 @@ pp.
 \end_inset
 
 ).
+ The option 
+\family sans
+Literal
+\family default
+ in the citation dialog allows to input \SpecialChar TeX
+ code to the fields 
+\family sans
+Text
+\begin_inset space ~
+\end_inset
+
+before
+\family default
+ and 
+\family sans
+Text
+\begin_inset space ~
+\end_inset
+
+after
+\family default
+.
  Here is a simple example where the text 
 \begin_inset Quotes eld
 \end_inset
@@ -29736,7 +29789,7 @@ Have a look at
 LatexCommand cite
 after "Chapter 3"
 key "latexcompanion"
-literal "true"
+literal "false"
 
 \end_inset
 
@@ -30791,17 +30844,23 @@ If you want to change the attribution of a specific index entry, right-clicking
 \begin_layout Itemize
 By right-clicking on an index, you can change its type.
  Furthermore, you can specify an index to be a 
-\begin_inset Quotes eld
-\end_inset
-
-Subindex.
-\begin_inset Quotes erd
-\end_inset
-
+\family sans
+Subindex
+\family default
+.
  If you do that, the heading of that list will be decreased by one level.
  For example, if you use a book class, where the standard index heading
  is defined as a chapter, subindexes will be defined as sections and can
  thus be nested to the non-subindexes.
+\end_layout
+
+\begin_layout Itemize
+The option 
+\family sans
+Literal
+\family default
+ allows to use \SpecialChar TeX
+ code in the name of the index.
 \end_layout
 
 \begin_layout Section
@@ -30955,8 +31014,12 @@ status open
 \series bold
 Note:
 \series default
- You have to enter valid \SpecialChar LaTeX
--code for all fields of the nomenclature dialog.
+ To use \SpecialChar TeX
+ code for nomenclature entries the option 
+\family sans
+Literal
+\family default
+ in the nomenclature dialog has to be used.
 \end_layout
 
 \end_inset
@@ -30984,7 +31047,7 @@ If you have symbols in formulas, you have to define them in the
 Symbol
 \family default
  field as \SpecialChar LaTeX
--formulas.
+ formulas.
  For example to get 
 \begin_inset Quotes eld
 \end_inset
@@ -31045,7 +31108,7 @@ Sigma
 
 \begin_layout Standard
 (A short introduction to the \SpecialChar LaTeX
--syntax is given in section
+ syntax is given in section
 \begin_inset space ~
 \end_inset
 
@@ -36487,7 +36550,7 @@ This section describes how to use \SpecialChar LyX
  to use them: 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Arabic,Armenian,Farsi,Hebrew,Latvian,Lithuanian,Mongolian,Vietnamese"
+key "Arabic,Armenian,Cyrillic,Farsi,Hebrew,Japanese"
 literal "true"
 
 \end_inset
@@ -50097,190 +50160,6 @@ status collapsed
 \begin_layout Plain Layout
 
 http://wiki.lyx.org/Windows/Japanese
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Latvian"
-literal "true"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "Wiki-page"
-target "http://wiki.lyx.org/Windows/Latvian"
-literal "false"
-
-\end_inset
-
- how to set up \SpecialChar LyX
- for Latvian:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/Windows/Latvian
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Lithuanian"
-literal "true"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "Wiki-page"
-target "http://wiki.lyx.org/Windows/Lithuanian"
-literal "false"
-
-\end_inset
-
- how to set up \SpecialChar LyX
- for Lithuanian:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/Windows/Lithuanian
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Mongolian"
-literal "true"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "Wiki-page"
-target "http://wiki.lyx.org/Windows/Mongolian"
-literal "false"
-
-\end_inset
-
- how to set up \SpecialChar LyX
- for Mongolian:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/Windows/Mongolian
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "Vietnamese"
-literal "true"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "Wiki-page"
-target "http://wiki.lyx.org/Windows/Vietnamese"
-literal "false"
-
-\end_inset
-
- how to set up \SpecialChar LyX
- for Vietnamese:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/Windows/Vietnamese
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Bibliography
-\begin_inset CommandInset bibitem
-LatexCommand bibitem
-key "NewInLyX20"
-literal "true"
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "Wiki-page"
-target "http://wiki.lyx.org/LyX/NewInLyX20"
-literal "false"
-
-\end_inset
-
- about new features in 
-\family sans
-\SpecialChar LyX
- 2.0
-\family default
-:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-http://wiki.lyx.org/LyX/NewInLyX20
 \end_layout
 
 \end_inset
