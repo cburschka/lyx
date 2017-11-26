@@ -11638,6 +11638,45 @@ latexはつけじ@\SpecialChar LaTeX
 \end_layout
 
 \begin_layout Standard
+
+\lang english
+The option
+\family sans
+\lang japanese
+マイクロタイポグラフィ拡張を有効にする(&O)
+\family default
+\lang english
+activates extensions such as character protrusion and font expansion via
+ the
+\lang japanese
+\SpecialChar LaTeX
+パッケージ
+\series bold
+microtype
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+latexはつけじ@\SpecialChar LaTeX
+パッケージ ! microtype
+\end_layout
+
+\end_inset
+
+．
+\lang english
+The option
+\family sans
+\lang japanese
+ダッシュとemダッシュは合字で出力
+\family default
+\lang english
+outputs en- and em-dashes as ligatures (--, ---) instead of a sigle character.
+\end_layout
+
+\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -41915,6 +41954,57 @@ status collapsed
 \begin_layout Plain Layout
 
 http://www.ctan.org/pkg/hyperref
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "microtype"
+literal "true"
+
+\end_inset
+
+\SpecialChar LaTeX
+パッケージ
+\series bold
+microtype
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+latexはつけじ@\SpecialChar LaTeX
+パッケージ ! microtype
+\end_layout
+
+\end_inset
+
+の
+\begin_inset CommandInset href
+LatexCommand href
+name "取扱説明書"
+target "http://mirrors.ctan.org/macros/latex/contrib/microtype/microtype.pdf"
+literal "false"
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/latex/contrib/microtype/microtype.pdf
 \end_layout
 
 \end_inset

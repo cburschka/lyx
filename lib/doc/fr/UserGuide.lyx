@@ -14290,9 +14290,20 @@ Encodage de polices LaTeX
  est un réglage pour utilisateurs experts, qui vous permet de modifier la
  valeur transmise au paquetage \SpecialChar LaTeX
  
-\emph on
+\series bold
 fontenc
-\emph default
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages \SpecialChar LaTeX
+ ! fontenc
+\end_layout
+
+\end_inset
+
  (voir aussi la section.
 \begin_inset space ~
 \end_inset
@@ -14375,6 +14386,17 @@ La police sera l'argument des commandes du paquetage \SpecialChar LaTeX
 \series bold
 CJK
 \series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages \SpecialChar LaTeX
+ ! CJK
+\end_layout
+
+\end_inset
+
 .
  Elle n'aura donc aucun effet sur un document en japonnais qui n'utiliserait
  pas 
@@ -14387,6 +14409,42 @@ CJK
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+L'option 
+\family sans
+Active les fonctionnalités micro-typographiques
+\family default
+ active les fonctionnalités micro-typographiques via the paquetage \SpecialChar LaTeX
+ 
+\series bold
+microtype
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages \SpecialChar LaTeX
+ ! microtype
+\end_layout
+
+\end_inset
+
+.
+ L'option
+\lang english
+ 
+\family sans
+\lang french
+Exporter les tirets de longueur en et &em comme des ligatures
+\family default
+ utiliser les ligatures -- et --- à la place 
+\lang english
+of a sigle character
+\lang french
+ pour les tirets de longueur en et em.
 \end_layout
 
 \begin_layout Standard
@@ -51735,6 +51793,57 @@ status collapsed
 \begin_layout Plain Layout
 
 http://www.ctan.org/pkg/hyperref
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "microtype"
+literal "true"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentation"
+target "http://mirrors.ctan.org/macros/latex/contrib/microtype/microtype.pdf"
+literal "false"
+
+\end_inset
+
+ du paquetage \SpecialChar LaTeX
+ 
+\series bold
+microtype
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+Paquetages \SpecialChar LaTeX
+ ! microtype
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/latex/contrib/microtype/microtype.pdf
 \end_layout
 
 \end_inset

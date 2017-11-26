@@ -8603,10 +8603,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8619,6 +8621,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8642,6 +8645,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -13493,6 +13497,40 @@ CJK
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Die Option 
+\family sans
+Mikrotypographische Erweiterungen aktivieren
+\family default
+ aktiviert mikrotypographische Erweiterungen wie optischen Randausgleich
+ und Schriftskalierung mithilfe des \SpecialChar LaTeX
+-Paket
+\emph on
+ 
+\series bold
+\emph default
+microtype
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-Paket ! microtype
+\end_layout
+
+\end_inset
+
+.
+ Die Option 
+\family sans
+Halbgeviert- und Geviertstriche als Ligaturen ausgeben
+\family default
+ gibt Halbgeviert- und Geviertstriche in Form von Ligaturen (--, ---) aus,
+ nicht in Form eines Zeichens.
 \end_layout
 
 \begin_layout Standard
@@ -48099,6 +48137,57 @@ status collapsed
 \begin_layout Plain Layout
 
 http://www.ctan.org/pkg/hyperref
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "microtype"
+literal "true"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Dokumentation"
+target "http://mirrors.ctan.org/macros/latex/contrib/microtype/microtype.pdf"
+literal "false"
+
+\end_inset
+
+ des \SpecialChar LaTeX
+-Pakets 
+\series bold
+microtype
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+-Paket ! microtype
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/latex/contrib/microtype/microtype.pdf
 \end_layout
 
 \end_inset
