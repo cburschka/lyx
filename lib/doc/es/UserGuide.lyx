@@ -13598,6 +13598,41 @@ CJK
 \end_layout
 
 \begin_layout Standard
+La opción
+\family sans
+ Habilitar extensiones micro-tipográficas
+\family default
+ 
+\lang english
+activates extensions such as character protrusion and font expansion via
+\lang spanish
+ el paquete \SpecialChar LaTeX
+ 
+\series bold
+microtype
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+, paquetes ! microtype
+\end_layout
+
+\end_inset
+
+.
+ La opción 
+\family sans
+Salir en-guiones y &em-guiones como ligaduras
+\family default
+ 
+\lang english
+outputs en- and em-dashes as ligatures (--, ---) instead of a sigle character.
+\end_layout
+
+\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -50033,6 +50068,57 @@ status collapsed
 \begin_layout Plain Layout
 
 http://www.ctan.org/pkg/hyperref
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "microtype"
+literal "true"
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Documentación"
+target "http://mirrors.ctan.org/macros/latex/contrib/microtype/microtype.pdf"
+literal "false"
+
+\end_inset
+
+ del paquete \SpecialChar LaTeX
+ 
+\series bold
+microtype
+\series default
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LaTeX
+, paquetes ! microtype
+\end_layout
+
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://mirrors.ctan.org/macros/latex/contrib/microtype/microtype.pdf
 \end_layout
 
 \end_inset
