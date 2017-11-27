@@ -88,7 +88,9 @@
 \newcommand{\fracS}[3][]{\genfrac{}{}{#1}{}{#2}{#3}}
 
 % Beispielmakro aus Kap. 19.4
+%\AtBeginDocument{
 %\def\tagform@#1{\maketag@@@{|#1|}}
+%}
 
 \@ifpackageloaded{babel}{
  % Damit der Index einen anderen Namen erhält.
@@ -96,7 +98,6 @@
  {\renewcommand{\indexname}
  {Stichwort- und Befehlsverzeichnis}}
 }{}
-
 
 % ------------------------------------
 % used to check for needed LaTeX packages
@@ -30266,7 +30267,6 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\color none
 Achtung:
 \series default
  Es können nur maximal 26
@@ -30486,6 +30486,65 @@ Formelnummerierung ! benutzerdefinierte
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Achtung:
+\series default
+ Wenn man die Dokumentsprache von recht nach links liest, wie z.
+\begin_inset space \thinspace{}
+\end_inset
+
+B.
+ bei Arabisch, muss man im \SpecialChar LaTeX
+-Vorspann Folgendes hinzufügen, damit man die
+ in diesem Abschnitt beschriebenen Befehle verwenden kann:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+AtBeginDocument{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
+def
+\backslash
+tagform@#1{
+\backslash
+maketag@@@{(
+\backslash
+ignorespaces#1
+\backslash
+unskip)}} }
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Index idx
 status collapsed
 
@@ -30511,20 +30570,39 @@ B.
 \series bold
 
 \backslash
+AtBeginDocument{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
 def
 \backslash
 tagform@#1{
 \backslash
 maketag@@@{|#1|}}
 \series default
-
+ }
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
 Dieses Makro ist zum Testen bereits im \SpecialChar LaTeX
 -Vorspann angegeben.
- Damit es wirksam wird, muss das Prozentzeichen am Zeilenbeginn entfernt
+ Damit es wirksam wird, müssen die Prozentzeichen am Zeilenbeginn entfernt
  werden.
 \end_layout
 
@@ -31692,7 +31770,6 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\color none
 Achtung:
 \series default
  Es ist nicht möglich in \SpecialChar LyX
@@ -37563,11 +37640,18 @@ literal "true"
 
 
 \emph on
-Duden Band 1
+Duden Band
+\begin_inset space ~
+\end_inset
+
+1
 \emph default
 .
  22.
- Auflage, Duden Verlag 2001
+\begin_inset space ~
+\end_inset
+
+Auflage, Dudenverlag, 2000
 \end_layout
 
 \begin_layout Bibliography
@@ -37582,7 +37666,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Prüfliste"
-target "http://physics.nist.gov/Pubs/SP811/sec11.html"
+target "https://www.nist.gov/physical-measurement-laboratory/special-publication-811"
 literal "false"
 
 \end_inset

@@ -86,8 +86,9 @@
 \newcommand{\fracS}[3][]{\genfrac{}{}{#1}{}{#2}{#3}}
 
 % example macro from sec. 19.4
+%\AtBeginDocument{
 %\def\tagform@#1{\maketag@@@{|#1|}}
-
+%}
 
 % ------------------------------------
 % used to check for needed LaTeX packages
@@ -30823,7 +30824,6 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\color none
 Note:
 \series default
  on peut numéroter au maximum 26
@@ -31049,6 +31049,68 @@ Numérotation des formules !  personnalisée
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Nota:
+\series default
+ 
+\lang english
+If the document language is a right-to-left language such as Arabic, you
+ must add this to the to 
+\lang french
+le préambule \SpecialChar LaTeX
+
+\lang english
+ to be able to use the commands described in this section
+\lang french
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+AtBeginDocument{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
+def
+\backslash
+tagform@#1{
+\backslash
+maketag@@@{(
+\backslash
+ignorespaces#1
+\backslash
+unskip)}} }
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Index idx
 status collapsed
 
@@ -31068,6 +31130,25 @@ Avec la numérotation standard, on a des parenthèses autour du numéro de
 \begin_layout Standard
 
 \series bold
+
+\backslash
+AtBeginDocument{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 
 \backslash
 def
@@ -32208,7 +32289,6 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\color none
 Nota:
 \series default
  il n'est pas possible avec \SpecialChar LyX
@@ -38331,11 +38411,18 @@ literal "true"
 
 
 \emph on
-Duden Band 1
+Duden Band
+\begin_inset space ~
+\end_inset
+
+1
 \emph default
 .
  22.
- Auflage, Duden 2001
+\begin_inset space ~
+\end_inset
+
+Auflage, Dudenverlag, 2000
 \end_layout
 
 \begin_layout Bibliography
@@ -38350,7 +38437,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Check list"
-target "http://physics.nist.gov/Pubs/SP811/sec11.html"
+target "https://www.nist.gov/physical-measurement-laboratory/special-publication-811"
 literal "false"
 
 \end_inset
