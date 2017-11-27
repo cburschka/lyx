@@ -518,12 +518,12 @@ def checkInkscape():
     try:
         aKey = winreg.OpenKey(aReg, r"inkscape.svg\DefaultIcon")
         val = winreg.QueryValueEx(aKey, "")
-        return str(val[0]).split('"')[1].replace('.exe', '')
+        return str(val[0]).split('"')[1]
     except EnvironmentError:
         try:
             aKey = winreg.OpenKey(aReg, r"Applications\inkscape.exe\shell\open\command")
             val = winreg.QueryValueEx(aKey, "")
-            return str(val[0]).split('"')[1].replace('.exe', '')
+            return str(val[0]).split('"')[1]
         except EnvironmentError:
             return 'inkscape'
 
@@ -621,7 +621,7 @@ def checkFormatEntries(dtl_tools):
     checkViewerEditor('a FEN viewer and editor', ['xboard -lpf $$i -mode EditPosition'],
         rc_entry = [r'\Format fen        fen     FEN                    "" "%%"	"%%"	""	""'])
     #
-    checkViewerEditor('a SVG viewer and editor', [inkscape_name],
+    checkViewerEditor('a SVG viewer and editor', [inkscape_gui],
         rc_entry = [r'''\Format svg        "svg" SVG                "" "%%" "%%"	"vector"	"image/svg+xml"
 \Format svgz       "svgz" "SVG (compressed)" "" "%%" "%%"	"vector,zipped=native"	""'''],
         path = [inkscape_path])
@@ -997,11 +997,11 @@ def checkConverterEntries():
 \converter fig        pdftex     "python -tt $$s/scripts/fig2pdftex.py $$i $$o"	""
 \converter fig        pstex      "python -tt $$s/scripts/fig2pstex.py $$i $$o"	""''')
     #
-    checkProg('a SVG -> PDFTeX converter', [inkscape_name],
+    checkProg('a SVG -> PDFTeX converter', [inkscape_cl],
         rc_entry = [ r'\converter svg        pdftex     "python -tt $$s/scripts/svg2pdftex.py %% $$p$$i $$p$$o" ""'],
         path = [inkscape_path])
     #
-    checkProg('a SVG -> PSTeX converter', [inkscape_name],
+    checkProg('a SVG -> PSTeX converter', [inkscape_cl],
         rc_entry = [ r'\converter svg        pstex     "python -tt $$s/scripts/svg2pstex.py %% $$p$$i $$p$$o" ""'],
         path = [inkscape_path])
     #
@@ -1014,18 +1014,18 @@ def checkConverterEntries():
 \converter tgif       png        "tgif -print -color -png -o $$d $$i"	""
 \converter tgif       pdf6       "tgif -print -color -pdf -stdout $$i > $$o"	""'''])
     #
-    checkProg('a WMF -> EPS converter', ['metafile2eps $$i $$o', 'wmf2eps -o $$o $$i', inkscape_name + ' --file=%s$$i --export-area-drawing --without-gui --export-eps=%s$$o'
+    checkProg('a WMF -> EPS converter', ['metafile2eps $$i $$o', 'wmf2eps -o $$o $$i', inkscape_cl + ' --file=%s$$i --export-area-drawing --without-gui --export-eps=%s$$o'
                % (inkscape_fileprefix, inkscape_fileprefix)],
         rc_entry = [ r'\converter wmf        eps        "%%"	""'])
     #
-    checkProg('an EMF -> EPS converter', ['metafile2eps $$i $$o', inkscape_name + ' --file=%s$$i --export-area-drawing --without-gui --export-eps=%s$$o'
+    checkProg('an EMF -> EPS converter', ['metafile2eps $$i $$o', inkscape_cl + ' --file=%s$$i --export-area-drawing --without-gui --export-eps=%s$$o'
                % (inkscape_fileprefix, inkscape_fileprefix)],
         rc_entry = [ r'\converter emf        eps        "%%"	""'])
     #
-    checkProg('a WMF -> PDF converter', [inkscape_name + ' --file=%s$$i --export-area-drawing --without-gui --export-pdf=%s$$o' % (inkscape_fileprefix, inkscape_fileprefix)],
+    checkProg('a WMF -> PDF converter', [inkscape_cl + ' --file=%s$$i --export-area-drawing --without-gui --export-pdf=%s$$o' % (inkscape_fileprefix, inkscape_fileprefix)],
         rc_entry = [ r'\converter wmf        pdf6        "%%"	""'])
     #
-    checkProg('an EMF -> PDF converter', [inkscape_name + ' --file=%s$$i --export-area-drawing --without-gui --export-pdf=%s$$o' % (inkscape_fileprefix, inkscape_fileprefix)],
+    checkProg('an EMF -> PDF converter', [inkscape_cl + ' --file=%s$$i --export-area-drawing --without-gui --export-pdf=%s$$o' % (inkscape_fileprefix, inkscape_fileprefix)],
         rc_entry = [ r'\converter emf        pdf6        "%%"	""'])
     # Only define a converter to pdf6 for graphics
     checkProg('an EPS -> PDF converter', ['epstopdf'],
@@ -1071,19 +1071,19 @@ def checkConverterEntries():
         rc_entry = [ r'\converter svg        svgz       "%%"	""'])
     # Only define a converter to pdf6 for graphics
     # Prefer rsvg-convert over inkscape since it is faster (see http://www.lyx.org/trac/ticket/9891)
-    checkProg('a SVG -> PDF converter', ['rsvg-convert -f pdf -o $$o $$i', inkscape_name + ' --file=%s$$i --export-area-drawing --without-gui --export-pdf=%s$$o'
+    checkProg('a SVG -> PDF converter', ['rsvg-convert -f pdf -o $$o $$i', inkscape_cl + ' --file=%s$$i --export-area-drawing --without-gui --export-pdf=%s$$o'
                % (inkscape_fileprefix, inkscape_fileprefix)],
         rc_entry = [ r'''\converter svg        pdf6       "%%"    ""
 \converter svgz       pdf6       "%%"    ""'''],
         path = ['', inkscape_path])
     #
-    checkProg('a SVG -> EPS converter', ['rsvg-convert -f ps -o $$o $$i', inkscape_name + ' --file=%s$$i --export-area-drawing --without-gui --export-eps=%s$$o'
+    checkProg('a SVG -> EPS converter', ['rsvg-convert -f ps -o $$o $$i', inkscape_cl + ' --file=%s$$i --export-area-drawing --without-gui --export-eps=%s$$o'
                % (inkscape_fileprefix, inkscape_fileprefix)],
         rc_entry = [ r'''\converter svg        eps        "%%"    ""
 \converter svgz       eps        "%%"    ""'''],
         path = ['', inkscape_path])
     #
-    checkProg('a SVG -> PNG converter', ['rsvg-convert -f png -o $$o $$i', inkscape_name + ' --without-gui --file=%s$$i --export-png=%s$$o'
+    checkProg('a SVG -> PNG converter', ['rsvg-convert -f png -o $$o $$i', inkscape_cl + ' --without-gui --file=%s$$i --export-png=%s$$o'
                % (inkscape_fileprefix, inkscape_fileprefix)],
         rc_entry = [ r'''\converter svg        png        "%%"    "",
 \converter svgz       png        "%%"    ""'''],
@@ -1854,7 +1854,12 @@ Format %i
     # check java and perl before any checkProg that may require them
     java = checkProg('a java interpreter', ['java'])[1]
     perl = checkProg('a perl interpreter', ['perl'])[1]
-    (inkscape_path, inkscape_name) = os.path.split(checkInkscape())
+    (inkscape_path, inkscape_gui) = os.path.split(checkInkscape())
+    # On Windows, we need to call the "inkscape.com" wrapper
+    # for command line purposes. Other OSes do not differentiate.
+    inkscape_cl = inkscape_gui
+    if os.name == 'nt':
+        inkscape_cl = inkscape_gui.replace('.exe', '.com')
     # On MacOSX, Inkscape requires full path file arguments. This
     # is not needed on Linux and Win and even breaks the latter.
     inkscape_fileprefix = ""
