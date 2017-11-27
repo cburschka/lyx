@@ -87,8 +87,9 @@
 \newcommand{\fracS}[3][]{\genfrac{}{}{#1}{}{#2}{#3}}
 
 % example macro from sec. 19.4
+%\AtBeginDocument{
 %\def\tagform@#1{\maketag@@@{|#1|}}
-
+%}
 
 % ------------------------------------
 % used to check for needed LaTeX packages
@@ -30432,7 +30433,6 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\color none
 Note:
 \series default
  Only maximal 26
@@ -30658,6 +30658,63 @@ Formula numbering ! user-defined
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Note:
+\series default
+ If the document language is a right-to-left language such as Arabic, you
+ must add this to the to the \SpecialChar LaTeX
+-preamble to be able to use the commands described
+ in this section:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+AtBeginDocument{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
+def
+\backslash
+tagform@#1{
+\backslash
+maketag@@@{(
+\backslash
+ignorespaces#1
+\backslash
+unskip)}} }
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Index idx
 status collapsed
 
@@ -30678,11 +30735,32 @@ With the standard numbering parentheses are set around the formula number.
 \series bold
 
 \backslash
+AtBeginDocument{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
 def
 \backslash
 tagform@#1{
 \backslash
-maketag@@@{|#1|}}
+maketag@@@{|#1|}} }
 \series default
 
 \begin_inset Note Note
@@ -30691,7 +30769,7 @@ status collapsed
 \begin_layout Plain Layout
 This macro is already declared in the \SpecialChar LaTeX
 -preamble for testing.
- To activate it, remove the percent sign at the beginning.
+ To activate it, remove the percent signs at the beginning.
 \end_layout
 
 \end_inset
@@ -31824,7 +31902,6 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\color none
 Note:
 \series default
  It is not possible in \SpecialChar LyX
@@ -37699,11 +37776,18 @@ literal "true"
 
 
 \emph on
-Duden Band 1
+Duden Band
+\begin_inset space ~
+\end_inset
+
+1
 \emph default
 .
  22.
- Auflage, Duden 2001
+\begin_inset space ~
+\end_inset
+
+Auflage, Dudenverlag, 2000
 \end_layout
 
 \begin_layout Bibliography
@@ -37718,7 +37802,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Check list"
-target "http://physics.nist.gov/Pubs/SP811/sec11.html"
+target "https://www.nist.gov/physical-measurement-laboratory/special-publication-811"
 literal "false"
 
 \end_inset

@@ -86,8 +86,9 @@
 \newcommand{\fracS}[3][]{\genfrac{}{}{#1}{}{#2}{#3}}
 
 % example macro from sec. 19.4
+%\AtBeginDocument{
 %\def\tagform@#1{\maketag@@@{|#1|}}
-
+%}
 
 % ------------------------------------
 % used to check for needed LaTeX packages
@@ -30876,7 +30877,6 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\color none
 Nota:
 \series default
  Con letras latinas sólo se puede numerar hasta un máximo de 26
@@ -31103,6 +31103,68 @@ Numeración de ecuaciones ! personalizada
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+Nota:
+\series default
+ 
+\lang english
+If the document language is a right-to-left language such as Arabic, you
+ must add this to the to the 
+\lang spanish
+preámbulo \SpecialChar LaTeX
+
+\lang english
+ to be able to use the commands described in this section
+\lang spanish
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+AtBeginDocument{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
+def
+\backslash
+tagform@#1{
+\backslash
+maketag@@@{(
+\backslash
+ignorespaces#1
+\backslash
+unskip)}} }
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Con la numeración estándar el número se coloca entre paréntesis.
  Para reemplazar los paréntesis con barras verticales, p.
 \begin_inset space \thinspace{}
@@ -31115,6 +31177,25 @@ e., se añade al preámbulo \SpecialChar LaTeX
 \begin_layout Standard
 
 \series bold
+
+\backslash
+AtBeginDocument{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 
 \backslash
 def
@@ -38210,11 +38291,18 @@ literal "true"
 
 
 \emph on
-Duden Band 1
+Duden Band
+\begin_inset space ~
+\end_inset
+
+1
 \emph default
 .
  22.
- Auflage, Duden 2001
+\begin_inset space ~
+\end_inset
+
+Auflage, Dudenverlag, 2000
 \end_layout
 
 \begin_layout Bibliography
@@ -38229,7 +38317,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Página web"
-target "http://www.tex-tipografia.com/spanish.html"
+target "http://www.texnia.com/spanish.html"
 literal "false"
 
 \end_inset
@@ -38258,7 +38346,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "Documento"
-target "http://www.tex-tipografia.com/archive/ortomatem.pdf"
+target "http://www.texnia.com/archive/ortomatem.pdf"
 literal "false"
 
 \end_inset

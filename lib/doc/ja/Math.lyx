@@ -89,8 +89,9 @@
 \newcommand{\fracS}[3][]{\genfrac{}{}{#1}{}{#2}{#3}}
 
 % example macro from sec. 19.4
+%\AtBeginDocument{
 %\def\tagform@#1{\maketag@@@{|#1|}}
-
+%}
 
 % ------------------------------------
 % used to check for needed LaTeX packages
@@ -30064,6 +30065,64 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+【註】
+\series default
+\lang english
+If the document language is a right-to-left language such as Arabic, you
+ must add this to the to the \SpecialChar LaTeX
+-preamble to be able to use the commands described
+ in this section:
+\lang japanese
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+AtBeginDocument{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
+def
+\backslash
+tagform@#1{
+\backslash
+maketag@@@{(
+\backslash
+ignorespaces#1
+\backslash
+unskip)}} }
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Index idx
 status collapsed
 
@@ -30080,6 +30139,25 @@ status collapsed
 \begin_layout Standard
 
 \series bold
+
+\backslash
+AtBeginDocument{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 
 \backslash
 def
@@ -30104,7 +30182,7 @@ maketag@@@{
 \series bold
 }}
 \series default
-
+ }
 \begin_inset Note Note
 status collapsed
 
@@ -31208,8 +31286,6 @@ mhchem
 uparrow
 \series default
 コマンドを続けます．
-\color none
-
 \begin_inset Formula $\ce{Fe + 2H+ -> Fe^{2+} + H2\negthinspace\uparrow}$
 \end_inset
 
@@ -36955,11 +37031,18 @@ literal "true"
 
 
 \emph on
-Duden Band 1
+Duden Band
+\begin_inset space ~
+\end_inset
+
+1
 \emph default
 .
  22.
- Auflage, Duden 2001
+\begin_inset space ~
+\end_inset
+
+Auflage, Dudenverlag, 2000
 \end_layout
 
 \begin_layout Bibliography
@@ -36974,7 +37057,7 @@ literal "true"
 \begin_inset CommandInset href
 LatexCommand href
 name "チェックリスト"
-target "http://physics.nist.gov/Pubs/SP811/sec11.html"
+target "https://www.nist.gov/physical-measurement-laboratory/special-publication-811"
 literal "false"
 
 \end_inset
