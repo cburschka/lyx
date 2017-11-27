@@ -37,6 +37,7 @@ private:
 	//@{
 	InsetCode insetCode() const { return NOMENCL_PRINT_CODE; }
 	FuncCode creationCode() const { return LFUN_INSET_INSERT; }
+	QString dialogTitle() const { return qt_("Nomenclature List Settings"); }
 	void paramsToDialog(Inset const *);
 	void paramsToDialog(InsetCommandParams const &);
 	docstring dialogToParams() const;
