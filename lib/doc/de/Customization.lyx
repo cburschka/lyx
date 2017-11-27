@@ -12268,12 +12268,22 @@ Enumerate
 \end_inset
 
  erzeugt die üblichen Marken für Nummerierungen.
- Momentan sind diese fest auf arabische Zahlen, Kleinbuchstaben, kleine
- römische Zahlen und Großbuchstaben (für die 4
-\begin_inset space ~
+ Die Art der Nummerierung muss im 
+\family sans
+Zähler
+\family default
+ festgelegt werden, siehe
+\lang english
+ 
+\lang ngerman
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Zähler"
+
 \end_inset
 
-möglichen Schachtelungstiefen) programmiert.
+.
 \end_layout
 
 \begin_layout Description
@@ -12286,8 +12296,14 @@ Itemize
 
 \end_inset
 
- erzeugt je nach Schachtelungstiefe verschiedene Auflistungszeichen, Diese
- sind ebenfalls fest programmiert.
+ erzeugt je nach Schachtelungstiefe verschiedene Auflistungszeichen.
+ Die Auflistungszeichen können über das Menü 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Auflistungszeichen
+\family default
+ eingestellt werden.
 \end_layout
 
 \begin_layout Description
@@ -21822,7 +21838,7 @@ Hier ist abschließend ein Beispiel, das mehrere Möglichkeiten ausschöpft:
 \begin_layout Standard
 \noindent
 
-\family typewriter
+\family sans
 !authoredit {%author%[[%author%, ]][[{%editor%[[%editor%, %_edtext%, ]]}]]}
 \end_layout
 
@@ -21990,6 +22006,8 @@ Im Fall eines Befehls oder eines normalen Absatzes sieht die XHTML-Ausgabe
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <tag attr=
 \begin_inset Quotes qrd
 \end_inset
@@ -22002,6 +22020,8 @@ Wert
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <labeltag attr=
 \begin_inset Quotes qrd
 \end_inset
@@ -22014,10 +22034,14 @@ Wert
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 Inhalt des Absatzes.
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 </tag>
 \end_layout
 
@@ -22044,6 +22068,8 @@ keine
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <tag attr=
 \begin_inset Quotes qrd
 \end_inset
@@ -22056,6 +22082,8 @@ Wert
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <itemtag attr=
 \begin_inset Quotes qrd
 \end_inset
@@ -22080,10 +22108,14 @@ Erster Absatz.</itemtag>
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <itemtag>Zweiter Absatz.</itemtag>
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 </tag>
 \end_layout
 
@@ -22099,6 +22131,8 @@ Im Fall von Listen wird eine der folgenden Ausgabeformen generiert:
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <tag attr=
 \begin_inset Quotes qrd
 \end_inset
@@ -22111,6 +22145,8 @@ Wert
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <itemtag attr=
 \begin_inset Quotes qrd
 \end_inset
@@ -22135,6 +22171,8 @@ Listenmarke</labeltag>Erster Listeneintrag.</itemtag>
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <itemtag attr=
 \begin_inset Quotes qrd
 \end_inset
@@ -22159,6 +22197,8 @@ Zweiter Listeneintrag.</itemtag>
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 </tag>
 \end_layout
 
@@ -22167,6 +22207,8 @@ Zweiter Listeneintrag.</itemtag>
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <tag attr=
 \begin_inset Quotes qrd
 \end_inset
@@ -22179,6 +22221,8 @@ Wert
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <labeltag attr=
 \begin_inset Quotes qrd
 \end_inset
@@ -22203,6 +22247,8 @@ Erster Listeneintrag.</itemtag>
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <labeltag attr=
 \begin_inset Quotes qrd
 \end_inset
@@ -22227,6 +22273,8 @@ Zweiter Listeneintrag.</itemtag>
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 </tag>
 \end_layout
 
