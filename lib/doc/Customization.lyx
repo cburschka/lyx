@@ -1,4 +1,4 @@
-#LyX 2.4 created this file. For more info see http://www.lyx.org/
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
 \lyxformat 544
 \begin_document
 \begin_header
@@ -124,12 +124,11 @@ logicalmkup
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author 424524441 "rgheck"
 \end_header
 
 \begin_body
@@ -7454,7 +7453,10 @@ Paths
 
 \begin_layout Standard
 Note, by the way, that there is a template which has a particular meaning:
- 
+\begin_inset Newline linebreak
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
@@ -11977,8 +11979,12 @@ string of characters
 \family typewriter
  
 \family default
-Defines individual characters that should be output in raw form, meaning
- without special translations that \SpecialChar LaTeX
+Defines individual characters
+\begin_inset Newline linebreak
+\end_inset
+
+that should be output in raw form, meaning without special translations
+ that \SpecialChar LaTeX
  would require.
  Note that, contrary to PassThru, this needs to be explicitly defined for
  arguments.
@@ -13728,13 +13734,11 @@ Enumerate
 \end_inset
 
  produces the usual sort of enumeration labels.
- 
-\change_deleted 424524441 1511752012
-At present, it is hardcoded to use Arabic numerals, lowercase letters, small
- Roman numerals, and uppercase letters for the four possible depths.
-\change_inserted 424524441 1511752012
-The label type needs to be set in the Counter.
- See 
+ The number type needs to be set in the 
+\family sans
+Counter
+\family default
+, see 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Counters"
@@ -13742,8 +13746,6 @@ reference "subsec:Counters"
 \end_inset
 
 .
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -13757,15 +13759,19 @@ Itemize
 \end_inset
 
  produces various bullets at the different levels.
- 
-\change_deleted 424524441 1511752024
-It is also hardcoded.
-\change_inserted 424524441 1511752031
-The bullet types displayed can be set via Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Bullets.
-\change_unchanged
+ The bullet types displayed can be set via 
+\begin_inset Flex Noun
+status collapsed
 
+\begin_layout Plain Layout
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Bullets
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -17837,7 +17843,11 @@ Multilingual
 \begin_inset space ~
 \end_inset
 
-Captions 
+Captions
+\begin_inset Newline linebreak
+\end_inset
+
+
 \family default
 (
 \begin_inset Flex Code
@@ -22903,7 +22913,7 @@ So here then is an example that use all these features:
 \begin_layout Standard
 \noindent
 
-\family typewriter
+\family sans
 !authoredit {%author%[[%author%, ]][[{%editor%[[%editor%, %_edtext%, ]]}]]}
 \end_layout
 
@@ -23073,6 +23083,8 @@ For a command or normal paragraph, the output XHTML has the following form:
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <tag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -23085,6 +23097,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <labeltag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -23097,10 +23111,14 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 Contents of the paragraph.
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 </tag>
 \end_layout
 
@@ -23113,6 +23131,8 @@ For an environment that is not some sort of list, the XHTML takes this form:
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <tag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -23125,6 +23145,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <itemtag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -23145,10 +23167,14 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <itemtag>Second paragraph.</itemtag>
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 </tag>
 \end_layout
 
@@ -23163,6 +23189,8 @@ For a list, we have one of these forms:
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <tag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -23175,6 +23203,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <itemtag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -23195,6 +23225,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <itemtag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -23215,6 +23247,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 </tag>
 \end_layout
 
@@ -23223,6 +23257,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <tag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -23235,6 +23271,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <labeltag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -23255,6 +23293,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <labeltag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -23275,6 +23315,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 </tag>
 \end_layout
 
@@ -23550,7 +23592,11 @@ string
 \end_inset
 
 ] Attributes for the item tag.
- Defaults to 
+ Defaults to
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -23692,7 +23738,11 @@ string
 \end_inset
 
 ] Attributes for the label tag.
- Defaults to 
+ Defaults to
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -24222,7 +24272,11 @@ string
 \end_inset
 
 ] Attributes for the inner tag.
- Defaults to 
+ Defaults to
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Quotes eld
 \end_inset
 

@@ -12037,8 +12037,22 @@ Enumerate
 
 \end_inset
 
- は，通常の連番ラベルを生成します．現在のところ，これは，第4階層まで順に，アラビア数字・小文字・小文字ローマ数字・大文字を使用するようにハードコードされていま
-す．
+ は，通常の連番ラベルを生成します．
+\lang english
+The number type needs to be set in the 
+\family sans
+Counter
+\family default
+, see 
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:カウンタ"
+
+\end_inset
+
+．
 \end_layout
 
 \begin_layout Description
@@ -12051,7 +12065,23 @@ Itemize
 
 \end_inset
 
- は，各階層でさまざまなブリットを生成します．これもハードコードされています．
+ は，各階層でさまざまなブリットを生成します．
+\lang english
+The bullet types displayed can be set via 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Bullets
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -20208,7 +20238,7 @@ status collapsed
 \begin_layout Standard
 \noindent
 
-\family typewriter
+\family sans
 !authoredit {%author%[[%author%, ]][[{%editor%[[%editor%, %_edtext%, ]]}]]}
 \end_layout
 
@@ -20366,6 +20396,8 @@ Type
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <tag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -20378,6 +20410,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <labeltag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -20390,10 +20424,14 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 段落の内容
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 </tag>
 \end_layout
 
@@ -20406,6 +20444,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <tag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -20418,6 +20458,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <itemtag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -20438,14 +20480,20 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 </itemtag>
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <itemtag>二つめの段落．</itemtag>
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 </tag>
 \end_layout
 
@@ -20458,6 +20506,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <tag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -20470,6 +20520,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <itemtag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -20490,6 +20542,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <itemtag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -20510,6 +20564,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 </tag>
 \end_layout
 
@@ -20518,6 +20574,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <tag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -20530,6 +20588,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <labeltag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -20550,6 +20610,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <labeltag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -20570,6 +20632,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 </tag>
 \end_layout
 

@@ -11221,7 +11221,11 @@ status collapsed
 
 e., en comandos \SpecialChar LaTeX
 , los argumentos opcionales requieren a menudo argumentos
- opcionales previos para ser emitidos (al menos vacíos), como en 
+ opcionales previos para ser emitidos (al menos vacíos), como en
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
@@ -11822,7 +11826,11 @@ BabelPreamble
 
 \end_inset
 
- Esto sobrescribirá completamente cualquier anterior declaración 
+ Esto sobrescribirá completamente cualquier anterior declaración
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
@@ -13243,7 +13251,7 @@ LabelType
 
 \end_inset
 
-[
+ [
 \begin_inset Flex Code
 status collapsed
 
@@ -13464,9 +13472,21 @@ Enumerate
 \end_inset
 
  produce los tipos habituales de etiquetas de enumeración.
- Por ahora está codificado para usar números arábigos, minúsculas, números
- romanos en minúsculas y mayúsculas, respectivamente, para los cuatro niveles
- de profundidad posibles.
+ 
+\lang english
+The number type needs to be set in the 
+\family sans
+\lang spanish
+Contador
+\family default
+, véase 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Contadores"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -13480,7 +13500,23 @@ Itemize
 \end_inset
 
  produce varias marcas para los distintos niveles.
- También está codificado.
+ 
+\lang english
+The bullet types displayed can be set via
+\lang spanish
+ 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+Documento\SpecialChar menuseparator
+Configuratción\SpecialChar menuseparator
+Marcas
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -13869,15 +13905,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Editar\SpecialChar menuseparator
-Configuración
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-párrafos
+Configuración de párrafos
 \end_layout
 
 \end_inset
@@ -19908,7 +19936,11 @@ LabelString
 
 \end_inset
 
- (o 
+
+\begin_inset Newline newline
+\end_inset
+
+(o 
 \begin_inset Flex Code
 status collapsed
 
@@ -23001,7 +23033,7 @@ Aquí hay, pues, un ejemplo que usa todas estas características:
 \begin_layout Standard
 \noindent
 
-\family typewriter
+\family sans
 !authoredit {%author%[[%author%, ]][[{%editor%[[%editor%, %_edtext%, ]]}]]}
 \end_layout
 
@@ -23176,6 +23208,8 @@ Para un comando o párrafo, la salida XHTML tiene la forma siguiente:
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <tag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -23188,6 +23222,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <labeltag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -23200,10 +23236,14 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 Contents of the paragraph.
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 </tag>
 \end_layout
 
@@ -23216,6 +23256,8 @@ Para un entorno que no sea algún tipo de lista, XHTML toma la forma:
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <tag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -23228,6 +23270,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <itemtag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -23248,10 +23292,14 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <itemtag>Second paragraph.</itemtag>
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 </tag>
 \end_layout
 
@@ -23266,6 +23314,8 @@ Para una lista disponemos de una de estas formas:
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <tag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -23278,6 +23328,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <itemtag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -23298,6 +23350,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <itemtag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -23318,6 +23372,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 </tag>
 \end_layout
 
@@ -23326,6 +23382,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <tag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -23338,6 +23396,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <labeltag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -23358,6 +23418,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 <labeltag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -23378,6 +23440,8 @@ value
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 </tag>
 \end_layout
 
@@ -23668,7 +23732,11 @@ string
 \end_inset
 
 ] Atributos para la etiqueta ítem.
- Por omisión 
+ Por omisión
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -23810,7 +23878,11 @@ string
 \end_inset
 
 ] Atributos para la etiqueta del rótulo.
- Por omisión es 
+ Por omisión es
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Quotes eld
 \end_inset
 
@@ -24374,7 +24446,11 @@ string
 \end_inset
 
 ] Atributos para la etiqueta interna.
- Por omisión, es 
+ Por omisión, es
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Quotes eld
 \end_inset
 

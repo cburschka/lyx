@@ -5817,7 +5817,11 @@ TEXMFHOME
 \family sans
 $HOME/texmf/
 \family default
- ou 
+ ou
+\begin_inset Newline newline
+\end_inset
+
+
 \family sans
 $HOME/.texliveXXXX
 \family default
@@ -6375,8 +6379,6 @@ article.layout
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Document\SpecialChar menuseparator
 Paramètres
 \end_layout
@@ -6404,8 +6406,6 @@ t actives, si vous ouvrez
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Document\SpecialChar menuseparator
 Paramètres\SpecialChar menuseparator
 Modules
@@ -6995,8 +6995,6 @@ book
 \end_inset
 
 , cette ligne doit être
-\lang english
-
 \begin_inset Foot
 status collapsed
 
@@ -7020,8 +7018,6 @@ thesis.layout
 
 \end_inset
 
-
-\lang french
 :
 \end_layout
 
@@ -7265,7 +7261,11 @@ myclass.old
 \end_layout
 
 \begin_layout Enumerate
-exécutez la commande 
+exécutez la commande
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
@@ -7689,8 +7689,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Document\SpecialChar menuseparator
-Paramètres\SpecialChar ldots
-\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
 Classe de document
 \end_layout
 
@@ -7706,22 +7705,17 @@ Articles
 \end_inset
 
  dans l'exemple) est également utilisés dans la fenêtre 
-\lang english
-
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
 Document\SpecialChar menuseparator
-Paramètres\SpecialChar ldots
-\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
 Classe de document
 \end_layout
 
 \end_inset
 
-
-\lang french
 : les classes sont regroupées par catégories (qui sont aussi des genres
  de documents, les catégories typiques sont 
 \begin_inset Quotes cld
@@ -8856,7 +8850,11 @@ Biblatex
 \family default
  or Bib\SpecialChar TeX
  is used to generate a Bibliography.
- Primarily used in cite engine files (see 
+ Primarily used in cite engine files (see
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Cite-Engine-Files"
@@ -10160,7 +10158,11 @@ square
 
  (pour les \SpecialChar TeX
 perts, ceci force \SpecialChar LyX
- à exporter 
+ à exporter
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
@@ -14461,9 +14463,21 @@ Enumerate
 \end_inset
 
  produit le type habituel d'étiquettes d'énumération.
- Pour le moment, il est défini en dur comme chiffres arabes, lettres en
- bas de casse, petits chiffres romains et lettres capitales pour les quatre
- profondeurs possibles.
+ 
+\lang english
+The number type needs to be set in the 
+\family sans
+\lang french
+Compteur
+\family default
+, voir 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Compteurs"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -14483,7 +14497,23 @@ Itemize
 
 \lang french
  produit des symboles pour les différents niveaux.
- Il est également défini en dur.
+ 
+\lang english
+The bullet types displayed can be set via
+\lang french
+ 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
+Puces
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
@@ -14650,7 +14680,7 @@ Argument
 \end_inset
 
  pour les paramètres personnalisables).
- Ceci sera émis tel quel après tous les
+ Ceci sera émis tel quel après tous les 
 \begin_inset Flex Code
 status collapsed
 
@@ -14703,14 +14733,10 @@ List_Environment, Bib_Environment
 \lang french
 ] décrit comment traduire l'environnement en \SpecialChar LaTeX
 .
-\lang english
-
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Flex Code
 status collapsed
 
@@ -14722,8 +14748,6 @@ LatexType
 
 \end_inset
 
-
-\lang french
  est peut-être trompeur, dans la mesure où ces règles s'appliquent également
  aux classes DocBook.
  Explorer les fichiers des classes DocBook (noms de fichiers 
@@ -14921,15 +14945,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Édition\SpecialChar menuseparator
-Paramètres
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-Paragraphe
+Paramètres de Paragraphe
 \end_layout
 
 \end_inset
@@ -16203,11 +16219,7 @@ chaîne
 
 \end_inset
 
-] indique que le style requiert la fonctionnalité chaîne (voir
-\begin_inset space ~
-\end_inset
-
-
+] indique que le style requiert la fonctionnalité chaîne (voir 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "chap:List-of-functions"
@@ -16226,11 +16238,7 @@ PackageOptions
 
 \end_inset
 
- en tant que paramètre général pour la classe de texte (voir
-\begin_inset space ~
-\end_inset
-
-
+ en tant que paramètre général pour la classe de texte (voir 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Paramètres-généraux-d'une"
@@ -19512,6 +19520,10 @@ status collapsed
 
 \begin_layout Plain Layout
 Édition\SpecialChar menuseparator
+
+\begin_inset Newline linebreak
+\end_inset
+
 Paramètres de paragraphe
 \end_layout
 
@@ -21430,11 +21442,7 @@ status collapsed
 
 
 \family default
-] fonctionne comme avec les styles de paragraphe, voir
-\begin_inset space ~
-\end_inset
-
-
+] fonctionne comme avec les styles de paragraphe, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Styles-de-paragraphe"
@@ -21494,11 +21502,7 @@ status collapsed
 
 
 \family default
-] fonctionne comme avec les styles de paragraphe, voir
-\begin_inset space ~
-\end_inset
-
-
+] fonctionne comme avec les styles de paragraphe, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Styles-de-paragraphe"
@@ -21524,11 +21528,7 @@ Preamble
 
 
 \lang french
- fonctionne comme avec les styles de paragraphe, voir
-\begin_inset space ~
-\end_inset
-
-
+ fonctionne comme avec les styles de paragraphe, voir 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Styles-de-paragraphe"
@@ -25145,8 +25145,6 @@ status collapsed
 
 \begin_layout Standard
 Voici donc un exemple utilisant toutes ces fonctionnalités:
-\lang english
-
 \begin_inset VSpace defskip
 \end_inset
 
@@ -25156,19 +25154,14 @@ Voici donc un exemple utilisant toutes ces fonctionnalités:
 \begin_layout Standard
 \noindent
 
-\family typewriter
-\lang english
+\family sans
 !authoredit {%author%[[%author%, ]][[{%editor%[[%editor%, %_edtext%, ]]}]]}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset VSpace defskip
 \end_inset
 
-
-\lang french
 Ceci défini une macro qui imprime le nom de l'auteur, suivi d'un virgule,
  si la clé 
 \begin_inset Flex Code
@@ -25336,7 +25329,7 @@ Pour une commande ou un paragraphe normal, le résultat XHTML a la forme
 
 \begin_layout LyX-Code
 
-\lang english
+\family sans
 <tag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -25350,7 +25343,7 @@ value
 
 \begin_layout LyX-Code
 
-\lang english
+\family sans
 <labeltag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -25359,20 +25352,18 @@ value
 \begin_inset Quotes erd
 \end_inset
 
->
-\lang french
-Étiquette
-\lang english
-</labeltag>
+>Étiquette</labeltag>
 \end_layout
 
 \begin_layout LyX-Code
+
+\family sans
 Contenu du paragraphe
 \end_layout
 
 \begin_layout LyX-Code
 
-\lang english
+\family sans
 </tag>
 \end_layout
 
@@ -25387,7 +25378,7 @@ Pour un environnement qui n'est pas du type liste, le XHTML prend la forme:
 
 \begin_layout LyX-Code
 
-\lang english
+\family sans
 <tag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -25401,7 +25392,7 @@ value
 
 \begin_layout LyX-Code
 
-\lang english
+\family sans
 <itemtag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -25418,30 +25409,18 @@ value
 \begin_inset Quotes erd
 \end_inset
 
->
-\lang french
-Étiquette d'environnement
-\lang english
-</labeltag>
-\lang french
-Premier paragraphe.
-\lang english
-</itemtag>
+>Étiquette d'environnement</labeltag>Premier paragraphe.</itemtag>
 \end_layout
 
 \begin_layout LyX-Code
 
-\lang english
-<itemtag>
-\lang french
-Second paragraphe.
-\lang english
-</itemtag>
+\family sans
+<itemtag>Second paragraphe.</itemtag>
 \end_layout
 
 \begin_layout LyX-Code
 
-\lang english
+\family sans
 </tag>
 \end_layout
 
@@ -25456,7 +25435,7 @@ Pour une liste, nous avons une de ces formes:
 
 \begin_layout LyX-Code
 
-\lang english
+\family sans
 <tag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -25470,7 +25449,7 @@ value
 
 \begin_layout LyX-Code
 
-\lang english
+\family sans
 <itemtag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -25487,20 +25466,12 @@ value
 \begin_inset Quotes erd
 \end_inset
 
->
-\lang french
-Étiquette de liste
-\lang english
-</labeltag>
-\lang french
-Premier élément.
-\lang english
-</itemtag>
+>Étiquette de liste</labeltag>Premier élément.</itemtag>
 \end_layout
 
 \begin_layout LyX-Code
 
-\lang english
+\family sans
 <itemtag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -25517,20 +25488,12 @@ value
 \begin_inset Quotes erd
 \end_inset
 
->
-\lang french
-Étiquette de liste
-\lang english
-</labeltag>
-\lang french
-Second élément.
-\lang english
-</itemtag>
+>Étiquette de liste</labeltag>Second élément.</itemtag>
 \end_layout
 
 \begin_layout LyX-Code
 
-\lang english
+\family sans
 </tag>
 \end_layout
 
@@ -25540,7 +25503,7 @@ Second élément.
 
 \begin_layout LyX-Code
 
-\lang english
+\family sans
 <tag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -25554,7 +25517,7 @@ value
 
 \begin_layout LyX-Code
 
-\lang english
+\family sans
 <labeltag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -25563,11 +25526,7 @@ value
 \begin_inset Quotes erd
 \end_inset
 
->
-\lang french
-Étiquette de liste
-\lang english
-</labeltag><itemtag attr=
+>Étiquette de liste</labeltag><itemtag attr=
 \begin_inset Quotes erd
 \end_inset
 
@@ -25575,16 +25534,12 @@ value
 \begin_inset Quotes erd
 \end_inset
 
->
-\lang french
-Premier élément.
-\lang english
-</itemtag>
+>Premier élément.</itemtag>
 \end_layout
 
 \begin_layout LyX-Code
 
-\lang english
+\family sans
 <labeltag attr=
 \begin_inset Quotes erd
 \end_inset
@@ -25593,11 +25548,7 @@ value
 \begin_inset Quotes erd
 \end_inset
 
->
-\lang french
-Étiquette de liste
-\lang english
-</labeltag><itemtag attr=
+>Étiquette de liste</labeltag><itemtag attr=
 \begin_inset Quotes erd
 \end_inset
 
@@ -25605,16 +25556,12 @@ value
 \begin_inset Quotes erd
 \end_inset
 
->
-\lang french
-Second élément.
-\lang english
-</itemtag>
+>Second élément.</itemtag>
 \end_layout
 
 \begin_layout LyX-Code
 
-\lang english
+\family sans
 </tag>
 \end_layout
 
@@ -25722,7 +25669,11 @@ class=`madiv'
 
 .
  Implicitement, \SpecialChar LyX
- émettra 
+ émettra
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Flex Code
 status collapsed
 
