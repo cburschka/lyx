@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-11-08 10:23+0100\n"
-"PO-Revision-Date: 2017-11-10 13:21+0000\n"
+"POT-Creation-Date: 2017-11-27 12:03+0100\n"
+"PO-Revision-Date: 2017-11-28 09:46+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -8655,17 +8655,17 @@ msgstr "Odstavec*"
 #: lib/layouts/aguplus.inc:80 lib/layouts/customHeadersFooters.module:11
 #: lib/layouts/foils.layout:191 lib/layouts/simplecv.layout:109
 msgid "Left Header"
-msgstr "Ľavá Hlavička"
+msgstr "Hlavička Vľavo"
 
 #: lib/layouts/aguplus.inc:93 lib/layouts/customHeadersFooters.module:18
 #: lib/layouts/foils.layout:195
 msgid "Left Header:"
-msgstr "Ľavá Hlavička:"
+msgstr "Hlavička Vľavo:"
 
 #: lib/layouts/aguplus.inc:103 lib/layouts/customHeadersFooters.module:39
 #: lib/layouts/foils.layout:199 lib/layouts/simplecv.layout:126
 msgid "Right Header"
-msgstr "Pravá Hlavička"
+msgstr "Hlavička Vpravo"
 
 #: lib/layouts/aguplus.inc:107 lib/layouts/customHeadersFooters.module:42
 #: lib/layouts/foils.layout:203
@@ -9019,7 +9019,7 @@ msgstr "ĽaváHlavička"
 
 #: lib/layouts/apa6.layout:136
 msgid "Left header:"
-msgstr "Ľavá hlavička:"
+msgstr "Hlavička vľavo:"
 
 #: lib/layouts/apa6.layout:191
 msgid "FiveAffiliations"
@@ -10134,35 +10134,35 @@ msgstr "Alternatívny text pre párnu hlavičku"
 
 #: lib/layouts/customHeadersFooters.module:33
 msgid "Center Header"
-msgstr "Stredná Hlavička"
+msgstr "Hlavička Stred"
 
 #: lib/layouts/customHeadersFooters.module:36
 msgid "Center Header:"
-msgstr "Centrovaná Hlavička:"
+msgstr "Hlavička Stred:"
 
 #: lib/layouts/customHeadersFooters.module:45
 msgid "Left Footer"
-msgstr "Ľavá Päta"
+msgstr "Päta Vľavo"
 
 #: lib/layouts/customHeadersFooters.module:48
 msgid "Left Footer:"
-msgstr "Ľavá Päta:"
+msgstr "Päta Vľavo:"
 
 #: lib/layouts/customHeadersFooters.module:51
 msgid "Center Footer"
-msgstr "Centrovaná Päta"
+msgstr "Päta Stred"
 
 #: lib/layouts/customHeadersFooters.module:54
 msgid "Center Footer:"
-msgstr "Centrovaná Päta:"
+msgstr "Päta Stred:"
 
 #: lib/layouts/customHeadersFooters.module:57 lib/layouts/foils.layout:207
 msgid "Right Footer"
-msgstr "Pravá päta"
+msgstr "Päta Vpravo"
 
 #: lib/layouts/customHeadersFooters.module:60 lib/layouts/foils.layout:211
 msgid "Right Footer:"
-msgstr "Pravá päta:"
+msgstr "Päta Vpravo:"
 
 #: lib/layouts/db_stdcharstyles.inc:21 lib/layouts/db_stdcharstyles.inc:23
 msgid "Directory"
@@ -13310,12 +13310,12 @@ msgstr "Krátky Titul(zoznam)"
 msgid "The chapter as it appears in the table of contents"
 msgstr "Kapitola ako sa zobrazí v zozname"
 
-#: lib/layouts/memoir.layout:70 lib/layouts/memoir.layout:94
-#: lib/layouts/memoir.layout:109 lib/layouts/memoir.layout:124
-#: lib/layouts/memoir.layout:139 lib/layouts/memoir.layout:154
-#: lib/layouts/memoir.layout:223
+#: lib/layouts/memoir.layout:76 lib/layouts/memoir.layout:100
+#: lib/layouts/memoir.layout:115 lib/layouts/memoir.layout:130
+#: lib/layouts/memoir.layout:145 lib/layouts/memoir.layout:160
+#: lib/layouts/memoir.layout:229
 msgid "Short Title (Header)"
-msgstr "Krátky titul (hlavička)"
+msgstr "Krátky titul (Hlavička)"
 
 #: lib/layouts/memoir.layout:71
 msgid "The chapter as it appears in the running headers"
@@ -30527,6 +30527,10 @@ msgstr "LyX klávesové mapy (*.kmap)"
 #: src/frontends/qt4/GuiPrintNomencl.cpp:49
 msgid "Longest label width"
 msgstr "Veľkosť najdlhšej značky"
+
+#: src/frontends/qt4/GuiPrintNomencl.h:40
+msgid "Nomenclature List Settings"
+msgstr "Nastavenia Listiny Nomenklatúry"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:37
 msgid "Index Settings"
