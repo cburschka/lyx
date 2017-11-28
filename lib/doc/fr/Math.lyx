@@ -30250,34 +30250,19 @@ Numérotation des formules ! sous-numérotation
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Formulas can be numbered as subequations.
- To activate this feature, add the module
-\lang french
- 
+Les formules peuvent être numérotées en tant que sous-équations.
+ Pour utiliser cette fonctionnalité, ajouter le module
 \family sans
-Sous-équations
+ Sous-équations
 \family default
- 
-\lang english
-to the document in
-\lang french
- le menu
-\lang english
- 
+ via le menu
 \family sans
-\lang french
-Document\SpecialChar menuseparator
+ Document\SpecialChar menuseparator
 Paramètres\SpecialChar menuseparator
 Modules
 \family default
 .
- 
-\lang english
-To insert subequations use
-\lang french
- le menu 
+ Pour insérer les sous-équations, utiliser alors le menu 
 \family sans
 Insertion\SpecialChar menuseparator
 Inserts
@@ -30291,18 +30276,10 @@ Sous-équations
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The equations to be subnumbered are put into the
-\lang french
- 
+Les équations à sous-numéroter sont saisies dans l'insert 
 \family sans
 Sous-équations
 \family default
- 
-\lang english
-inset
-\lang french
 .
  Un exemple:
 \begin_inset Formula 
@@ -30345,18 +30322,10 @@ C=A+B\label{eq:c}
 \end_layout
 
 \begin_layout Standard
-Chaque formule 
-\lang english
-in the
-\lang french
- 
+Chaque formule de l'insert
 \family sans
-Sous-équations
+ Sous-équations
 \family default
- 
-\lang english
-inset
-\lang french
  sera sous-numérotée avec a, b, c, \SpecialChar ldots
  dans la sortie imprimable.
  Pour les formules multi-lignes, chaque ligne sera numérotée.
@@ -30380,18 +30349,10 @@ reference "eq:c"
 
 .
  Si vous désirez une référence globale aux sous-numéros, insérez une étiquette
- 
-\lang english
-as first thing in the
-\lang french
- 
+ en premier dans l'insert
 \family sans
-Sous-équations
+ Sous-équations
 \family default
- 
-\lang english
-inset
-\lang french
 .
  La formule
 \begin_inset space ~
@@ -30408,28 +30369,16 @@ reference "eq:Voici-un-exemple"
 \end_layout
 
 \begin_layout Standard
-En insérant sous-équations 
-\lang english
-vertical space is added before it.
-
-\lang french
- Pour la supprimer, on insère une espace verticale négative de -5
+En insérant des sous-équations, une espace verticale est ajoutée avant.
+ Pour le supprimer, on insère une espace verticale négative de -5
 \begin_inset space \thinspace{}
 \end_inset
 
-mm
-\lang english
- right before the
-\lang french
- 
+mm juste avant l'insert
 \family sans
-Sous-équations
+ Sous-équations
 \family default
- 
-\lang english
-inset.
-
-\lang french
+.
  Quand on utilise le style 
 \series bold
 Indenté
@@ -30465,18 +30414,10 @@ mm à la place.
 \begin_layout Standard
 Pour obtenir un chiffe latin minuscule plutôt que des lettres latines, insérer
  ce code \SpecialChar TeX
- 
-\lang english
-before the equations in the
-\lang french
- 
+ avant les équations dans l'insert 
 \family sans
 Sous-équations
 \family default
- 
-\lang english
-inset
-\lang french
 :
 \end_layout
 
@@ -31057,17 +30998,10 @@ status open
 \series bold
 Nota:
 \series default
- 
-\lang english
-If the document language is a right-to-left language such as Arabic, you
- must add this to the to 
-\lang french
-le préambule \SpecialChar LaTeX
-
-\lang english
- to be able to use the commands described in this section
-\lang french
-:
+ si la langue du document s'écrit de droite à gauche comme l'arabe, il faut
+ ajouter ceci au préambule \SpecialChar LaTeX
+ pour pouvoir utiliser les commandes décrites
+ dans la présente section.
 \begin_inset Newline newline
 \end_inset
 
