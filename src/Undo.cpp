@@ -40,6 +40,7 @@
 
 #include <algorithm>
 #include <deque>
+#include <set>
 
 using namespace std;
 using namespace lyx::support;
@@ -649,22 +650,31 @@ void Undo::recordUndoFullBuffer(CursorData const & cur)
 
 /// UndoGroupHelper class stuff
 
-/** FIXME: handle restarted groups
- * It may happen that the buffers are visited in order buffer1,
- * buffer2, buffer1. In this case, we want to have only one undo group
- * in buffer1. One solution is to replace buffer_ with a set<Buffer*>,
- * but I am not sure yet how to do it. A use case is
- * InsetLabel::updateReferences.
- */
+class UndoGroupHelper::Impl {
+	friend class UndoGroupHelper;
+	set<Buffer *> buffers_;
+};
+
+
+UndoGroupHelper::UndoGroupHelper(Buffer * buf) : d(new UndoGroupHelper::Impl)
+{
+	resetBuffer(buf);
+}
+
+
+UndoGroupHelper::~UndoGroupHelper()
+{
+	for (Buffer * buf : d->buffers_)
+		buf->undo().endUndoGroup();
+	delete d;
+}
+
 void UndoGroupHelper::resetBuffer(Buffer * buf)
 {
-	if (buf == buffer_)
-		return;
-	if (buffer_)
-		buffer_->undo().endUndoGroup();
-	buffer_ = buf;
-	if (buffer_)
-		buffer_->undo().beginUndoGroup();
+	if (buf && d->buffers_.count(buf) == 0) {
+		d->buffers_.insert(buf);
+		buf->undo().beginUndoGroup();
+	}
 }
 
 
