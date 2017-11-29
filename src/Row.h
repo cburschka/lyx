@@ -136,6 +136,29 @@ public:
 
 	///
 	Row();
+	/**
+	 * Helper function: set variable \c var to value \c val, and mark
+	 * row as changed is the values were different. This is intended
+	 * for use when changing members of the row object.
+	 */
+	template<class T1, class T2>
+	void change(T1 & var, T2 const val) {
+		if (var != val)
+			changed(true);
+		var = val;
+	}
+	/**
+	 * Helper function: set variable \c var to value \c val, and mark
+	 * row as changed is the values were different. This is intended
+	 * for use when changing members of the row object.
+	 * This is the const version, useful for mutable members.
+	 */
+	template<class T1, class T2>
+	void change(T1 & var, T2 const val) const {
+		if (var != val)
+			changed(true);
+		var = val;
+	}
 	///
 	bool changed() const { return changed_; }
 	///

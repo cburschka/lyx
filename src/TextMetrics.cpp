@@ -1892,9 +1892,9 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		// whether this row is the first or last and update the margins.
 		if (row.selection()) {
 			if (row.sel_beg == 0)
-				row.begin_margin_sel = sel_beg.pit() < pit;
+				row.change(row.begin_margin_sel, sel_beg.pit() < pit);
 			if (row.sel_end == sel_end_par.lastpos())
-				row.end_margin_sel = sel_end.pit() > pit;
+				row.change(row.end_margin_sel, sel_end.pit() > pit);
 		}
 
 		// has row changed since last paint?
