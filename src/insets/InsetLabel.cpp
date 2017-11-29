@@ -110,17 +110,14 @@ void InsetLabel::updateReferences(docstring const & old_label,
 		docstring const & new_label)
 {
 	UndoGroupHelper ugh;
-	Buffer::References const & refs = buffer().references(old_label);
-	Buffer::References::const_iterator it = refs.begin();
-	Buffer::References::const_iterator end = refs.end();
-	for (; it != end; ++it) {
-		ugh.resetBuffer(it->second.buffer());
-		CursorData(it->second).recordUndo();
-		if (it->first->lyxCode() == MATH_REF_CODE) {
-			InsetMathRef * mi = it->first->asInsetMath()->asRefInset();
+	for (auto const & p: buffer().references(old_label)) {
+		ugh.resetBuffer(p.second.buffer());
+		CursorData(p.second).recordUndo();
+		if (p.first->lyxCode() == MATH_REF_CODE) {
+			InsetMathRef * mi = p.first->asInsetMath()->asRefInset();
 			mi->changeTarget(new_label);
 		} else {
-			InsetCommand * ref = it->first->asInsetCommand();
+			InsetCommand * ref = p.first->asInsetCommand();
 			ref->setParam("reference", new_label);
 		}
 	}
@@ -180,18 +177,15 @@ void InsetLabel::addToToc(DocIterator const & cpit, bool output_active,
 		toc->push_back(TocItem(cpit, 0, screen_label_, output_active));
 	} else {
 		toc->push_back(TocItem(cpit, 0, screen_label_, output_active));
-		Buffer::References const & refs = buffer().references(label);
-		Buffer::References::const_iterator it = refs.begin();
-		Buffer::References::const_iterator end = refs.end();
-		for (; it != end; ++it) {
-			DocIterator const ref_pit(it->second);
-			if (it->first->lyxCode() == MATH_REF_CODE)
+		for (auto const & p : buffer().references(label)) {
+			DocIterator const ref_pit(p.second);
+			if (p.first->lyxCode() == MATH_REF_CODE)
 				toc->push_back(TocItem(ref_pit, 1,
-						it->first->asInsetMath()->asRefInset()->screenLabel(),
+						p.first->asInsetMath()->asRefInset()->screenLabel(),
 						output_active));
 			else
 				toc->push_back(TocItem(ref_pit, 1,
-						static_cast<InsetRef *>(it->first)->getTOCString(),
+						static_cast<InsetRef *>(p.first)->getTOCString(),
 						output_active));
 		}
 	}
