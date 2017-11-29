@@ -676,7 +676,7 @@ void GuiCompleter::tab()
 	}
 
 	// Make undo possible
-	cur.beginUndoGroup();
+	UndoGroupHelper ugh;
 	cur.recordUndo();
 
 	// If completion is active, at least complete by one character
@@ -690,14 +690,11 @@ void GuiCompleter::tab()
 		hidePopup();
 		hideInline(cur);
 		updateVisibility(false, false);
-		cur.endUndoGroup();
 		return;
 	}
 	docstring nextchar = completion.substr(prefix.size(), 1);
-	if (!cur.inset().insertCompletion(cur, nextchar, false)) {
-		cur.endUndoGroup();
+	if (!cur.inset().insertCompletion(cur, nextchar, false))
 		return;
-	}
 	updatePrefix(cur);
 
 	// try to complete as far as it is unique
@@ -717,7 +714,6 @@ void GuiCompleter::tab()
 	// redraw if needed
 	if (cur.result().screenUpdate())
 		gui_->bufferView().processUpdateFlags(cur.result().screenUpdate());
-	cur.endUndoGroup();
 }
 
 
