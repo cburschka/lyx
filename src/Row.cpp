@@ -203,8 +203,8 @@ void Row::setSelectionAndMargins(DocIterator const & beg,
 	setSelection(beg.pos(), end.pos());
 
 	if (selection()) {
-		end_margin_sel = isMarginSelected(false, beg, end);
-		begin_margin_sel = isMarginSelected(true, beg, end);
+		change(end_margin_sel, isMarginSelected(false, beg, end));
+		change(begin_margin_sel, isMarginSelected(true, beg, end));
 	}
 }
 
@@ -212,18 +212,18 @@ void Row::setSelectionAndMargins(DocIterator const & beg,
 void Row::setSelection(pos_type beg, pos_type end) const
 {
 	if (pos_ >= beg && pos_ <= end)
-		sel_beg = pos_;
+		change(sel_beg, pos_);
 	else if (beg > pos_ && beg <= end_)
-		sel_beg = beg;
+		change(sel_beg, beg);
 	else
-		sel_beg = -1;
+		change(sel_beg, -1);
 
 	if (end_ >= beg && end_ <= end)
-		sel_end = end_;
+		change(sel_end,end_);
 	else if (end < end_ && end >= pos_)
-		sel_end = end;
+		change(sel_end, end);
 	else
-		sel_end = -1;
+		change(sel_end, -1);
 }
 
 
