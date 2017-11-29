@@ -50270,6 +50270,47 @@ The above bibliography is created from a Bib\SpecialChar TeX
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+nomname}{Nomenclature}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+The name of the nomenclature has to be redefined to English because a bug
+ in the 
+\series bold
+nomencl
+\series default
+ package takes the last used language for the title that is not the document
+ language.
+ See 
+\begin_inset CommandInset href
+LatexCommand href
+name "this"
+target "https://tex.stackexchange.com/questions/65913/why-nomenclature-text-is-not-english-when-loading-additional-languages-in-docume"
+literal "false"
+
+\end_inset
+
+ for a detailed explanation of the bug.
+\end_layout
+
+\end_inset
+
+
 \begin_inset CommandInset nomencl_print
 LatexCommand printnomenclature
 set_width "auto"
