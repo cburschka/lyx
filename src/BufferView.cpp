@@ -2611,12 +2611,6 @@ Cursor const & BufferView::cursor() const
 }
 
 
-pit_type BufferView::anchor_ref() const
-{
-	return d->anchor_pit_;
-}
-
-
 bool BufferView::singleParUpdate()
 {
 	Text & buftext = buffer_.text();

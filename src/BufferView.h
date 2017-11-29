@@ -251,9 +251,6 @@ public:
 	/// \sa WorkArea
 	void mouseEventDispatch(FuncRequest const & ev);
 
-	/// access to anchor.
-	pit_type anchor_ref() const;
-
 	///
 	CursorStatus cursorStatus(DocIterator const & dit) const;
 	/// access to full cursor.
