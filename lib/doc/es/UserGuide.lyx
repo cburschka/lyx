@@ -32327,11 +32327,20 @@ Para introducir en entradas de la nomenclatura caracteres como |
 
 , es necesario que vayan precedidos por comillas como secuencia de escape.
  
+\lang english
+To avoid that a single " affects the following characters one writes braces
+ behind it:
+\lang spanish
+ 
+\family sans
+""{}
+\family default
+
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
-symbol "\"@, \"|, \"!, \"\""
-description "El carácter comillas se obtiene escribiendo ' \"\"\"\" '"
-literal "false"
+symbol "\"@, \"|, \"!, \"\"{}"
+description "El carácter comillas se obtiene escribiendo ' \"\"{}\"\"{} '"
+literal "true"
 
 \end_inset
 
@@ -32381,7 +32390,7 @@ LatexCommand nomenclature
 prefix "Sigma"
 symbol "$\\sigma$"
 description "entrada postiza para el carácter \\textsf{sigma}"
-literal "false"
+literal "true"
 
 \end_inset
 
