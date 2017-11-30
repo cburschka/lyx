@@ -31278,8 +31278,27 @@ should appear in nomenclature entries they need to be escaped by adding
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "\"@, \"|, \"!, \"\""
-description "The quote sign is output by writing ‘ \"\"\"\" '"
+description "The quote sign is output by writing ' \"\" '"
+literal "true"
+
+\end_inset
+
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Update description when bug 
+\begin_inset CommandInset href
+LatexCommand href
+name "10825"
+target "http://www.lyx.org/trac/ticket/10825"
 literal "false"
+
+\end_inset
+
+ is fixed.
+\end_layout
 
 \end_inset
 
@@ -31329,7 +31348,7 @@ LatexCommand nomenclature
 prefix "sigma"
 symbol "$\\sigma$"
 description "dummy entry for the character \\textsf{sigma}"
-literal "false"
+literal "true"
 
 \end_inset
 
@@ -50272,6 +50291,28 @@ The above bibliography is created from a Bib\SpecialChar TeX
 \begin_layout Standard
 \begin_inset ERT
 status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+eqdeclaration#1{, see equation
+\backslash
+nobreakspace(#1)}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+pagedeclaration#1{, page
+\backslash
+nobreakspace#1}
+\end_layout
 
 \begin_layout Plain Layout
 

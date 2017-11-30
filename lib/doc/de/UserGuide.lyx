@@ -30924,7 +30924,7 @@ Sollen die Zeichen |
 
 in Nomenklatureinträgen erscheinen, müssen sie geschützt werden.
  indem man ein Anführungszeichen davor setzt.
- Um zu verhindern, dass das Zeichen " nachfolgende Zeichen beeinflusst,
+ Um zu verhindern, dass das Anführungszeichen nachfolgende Zeichen beeinflusst,
  wird es mit einem leeren \SpecialChar TeX
 -Klammerpaar abgeschlossen: ""{}
 \begin_inset CommandInset nomenclature
@@ -30976,7 +30976,7 @@ LatexCommand nomenclature
 prefix "sigma"
 symbol "$\\sigma$"
 description "Sinnsloseintrag für das Zeichen \\textsf{sigma}"
-literal "false"
+literal "true"
 
 \end_inset
 

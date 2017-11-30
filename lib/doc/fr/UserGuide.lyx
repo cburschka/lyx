@@ -9030,14 +9030,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -9050,7 +9048,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9083,7 +9080,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -33339,8 +33335,8 @@ double apostrophe
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "\"@, \"|, \"!, \"\""
-description "The quote sign is output by writing ‘ \"\"\"\" '"
-literal "false"
+description "Le signe de citation est produit en écrivant ' \"\"\"\" '"
+literal "true"
 
 \end_inset
 
@@ -33390,7 +33386,7 @@ LatexCommand nomenclature
 prefix "sigma"
 symbol "$\\sigma$"
 description "entrée illustrative pour le symbole \\textsf{sigma}"
-literal "false"
+literal "true"
 
 \end_inset
 
@@ -52471,6 +52467,28 @@ La bibliographie ci-dessus a été créée à partir d'une base de données Bib\
 \begin_layout Standard
 \begin_inset ERT
 status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+eqdeclaration#1{, voir équation
+\backslash
+nobreakspace(#1)}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+def
+\backslash
+pagedeclaration#1{, page
+\backslash
+nobreakspace#1}
+\end_layout
 
 \begin_layout Plain Layout
 
