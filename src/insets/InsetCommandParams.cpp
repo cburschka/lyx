@@ -441,7 +441,8 @@ docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 		result = command;
 		ltrimmed = true;
 	}
-	if (handling & ParamInfo::HANDLING_LATEXIFY)
+	if (handling & ParamInfo::HANDLING_LATEXIFY
+	    || handling & ParamInfo::HANDLING_INDEX_ESCAPE)
 		if ((*this)["literal"] == "true")
 			handling = ParamInfo::HANDLING_NONE;
 
@@ -490,6 +491,22 @@ docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 		result = escape(command);
 	else if (handling & ParamInfo::HANDLING_NONE)
 		result = command;
+	// INDEX_ESCAPE is independent of the others
+	if (handling & ParamInfo::HANDLING_INDEX_ESCAPE) {
+		// Now escape special commands
+		static docstring const quote = from_ascii("\"");
+		static char_type const chars_escape[4] = { '"', '@', '|', '!' };
+
+		if (!result.empty()) {
+			// The characters in chars_name[] need to be changed to a command when
+			// they are LaTeXified.
+			for (int k = 0; k < 4; k++)
+				for (size_t i = 0, pos;
+					(pos = result.find(chars_escape[k], i)) != string::npos;
+					i = pos + 2)
+						result.replace(pos, 1, quote + chars_escape[k]);
+		}
+	}
 
 	return ltrimmed ? ltrim(result) : result;
 }
