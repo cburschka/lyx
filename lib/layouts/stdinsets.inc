@@ -698,7 +698,21 @@ End
 
 
 InsetLayout PrintNomencl
-  HTMLTag h2
+	BabelPreamble
+		\addto\captions$$lang{%
+			\def\eqdeclaration#1{, _(see equation[[nomencl]])\nobreakspace(#1)}%
+			\def\pagedeclaration#1{, _(page[[nomencl]])\nobreakspace#1}%
+			\def\nomname{_(Nomenclature[[output]])}%
+		}
+	EndBabelPreamble
+	# The command is defined for several languages in nomencl.sty. However, we need to define
+	# it anyway for the other, non suppported languages.
+	LangPreamble
+		\def\eqdeclaration#1{, _(see equation[[nomencl]])\nobreakspace(#1)}
+		\def\pagedeclaration#1{, _(page[[nomencl]])\nobreakspace#1}
+		\def\nomname{_(Nomenclature[[output]])}
+	EndLangPreamble
+	HTMLTag h2
 End
 
 InsetLayout Tabular

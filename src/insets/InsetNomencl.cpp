@@ -422,6 +422,7 @@ void InsetPrintNomencl::latex(otexstream & os, OutputParams const & runparams_in
 
 void InsetPrintNomencl::validate(LaTeXFeatures & features) const
 {
+	features.useInsetLayout(getLayout());
 	features.require("nomencl");
 }
 
