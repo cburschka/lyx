@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-12-01 08:40+0100\n"
-"PO-Revision-Date: 2017-11-28 09:46+0000\n"
+"POT-Creation-Date: 2017-12-01 10:50+0100\n"
+"PO-Revision-Date: 2017-12-01 10:05+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -15413,11 +15413,11 @@ msgstr "Náhľad"
 
 #: lib/layouts/stdinsets.inc:703 lib/layouts/stdinsets.inc:711
 msgid "see equation[[nomencl]]"
-msgstr ""
+msgstr "porovnaj s rovnicou"
 
 #: lib/layouts/stdinsets.inc:704 lib/layouts/stdinsets.inc:712
 msgid "page[[nomencl]]"
-msgstr ""
+msgstr "strana"
 
 #: lib/layouts/stdinsets.inc:705 lib/layouts/stdinsets.inc:713
 msgid "Nomenclature[[output]]"
@@ -30540,6 +30540,10 @@ msgstr "LyX klávesové mapy (*.kmap)"
 msgid "Longest label width"
 msgstr "Veľkosť najdlhšej značky"
 
+#: src/frontends/qt4/GuiPrintNomencl.h:40
+msgid "Nomenclature List Settings"
+msgstr "Nastavenia Listiny Nomenklatúry"
+
 #: src/frontends/qt4/GuiPrintindex.cpp:37
 msgid "Index Settings"
 msgstr "Nastavenia Registra"
@@ -33537,9 +33541,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
-
-#~ msgid "Nomenclature List Settings"
-#~ msgstr "Nastavenia Listiny Nomenklatúry"
 
 #~ msgid "Use the minted package instead of the listings one"
 #~ msgstr "Použiť minted balík namiesto balíka listings"
