@@ -45,11 +45,6 @@
  {\usepackage{array}}{}
 \setlength{\extrarowheight}{2pt}
 
-%für deutsche Nomenlatur
-\renewcommand{\eqdeclaration}[1]{, siehe Gleichung\nobreakspace(#1)}
-\renewcommand{\pagedeclaration}[1]{, Seite\nobreakspace{}#1}
-\renewcommand{\nomname}{Nomenklatur}
-
 % workaround for a makeindex bug, 
 % see sec. "Index Entry Order"
 % only uncomment this when you are using makindex
@@ -8603,12 +8598,10 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8621,7 +8614,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8645,7 +8637,6 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
-
 Dies ist Unformatiert*.
 \end_layout
 
@@ -31174,8 +31165,17 @@ nomnorefeqpage schaltet die entsprechende Option ab
 \end_layout
 
 \begin_layout Standard
-Damit Wörter wie „Seite“ auch auf Deutsch und nicht in Englisch erscheinen,
- fügen Sie diese Zeilen dem \SpecialChar LaTeX
+Für die meisten Sprachen (auch für Deutsch) werden Ausdrücke wie 
+\begin_inset Quotes gld
+\end_inset
+
+Seite
+\begin_inset Quotes grd
+\end_inset
+
+ automatisch übersetzt.
+ Wenn Sie diese Übersetzungen ändern wollen, fügen Sie diese Zeilen dem
+ \SpecialChar LaTeX
 -Vorspann ihres Dokuments hinzu:
 \end_layout
 
@@ -31282,7 +31282,11 @@ Benutzerdefiniert benutzerdefinierte Breite
 \end_layout
 
 \begin_layout Standard
-In der Druckausgabe erscheint die Nomenklatur als „Nomenclature“.
+In der Druckausgabe erscheint die Nomenklatur als „Nomenklatur
+\begin_inset Quotes grd
+\end_inset
+
+.
  Sie können den Namen im \SpecialChar LaTeX
 -Vorspann mit dieser Zeile ändern:
 \end_layout
@@ -31294,7 +31298,7 @@ In der Druckausgabe erscheint die Nomenklatur als „Nomenclature“.
 \backslash
 renewcommand{
 \backslash
-nomname}{Nomenklatur}
+nomname}{Symbolverzeichnis}
 \end_layout
 
 \begin_layout Subsection
