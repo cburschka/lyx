@@ -8336,14 +8336,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8356,7 +8354,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8380,7 +8377,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -31615,7 +31611,7 @@ page
 \begin_inset Quotes erd
 \end_inset
 
- are automatically translated for some document languages.
+ are automatically translated for most document languages.
  If not, add these lines to your \SpecialChar LaTeX
  preamble:
 \end_layout
@@ -50289,69 +50285,6 @@ The above bibliography is created from a Bib\SpecialChar TeX
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-def
-\backslash
-eqdeclaration#1{, see equation
-\backslash
-nobreakspace(#1)}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-def
-\backslash
-pagedeclaration#1{, page
-\backslash
-nobreakspace#1}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-nomname}{Nomenclature}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-The name of the nomenclature has to be redefined to English because a bug
- in the 
-\series bold
-nomencl
-\series default
- package takes the last used language for the title that is not the document
- language.
- See 
-\begin_inset CommandInset href
-LatexCommand href
-name "this"
-target "https://tex.stackexchange.com/questions/65913/why-nomenclature-text-is-not-english-when-loading-additional-languages-in-docume"
-literal "false"
-
-\end_inset
-
- for a detailed explanation of the bug.
-\end_layout
-
-\end_inset
-
-
 \begin_inset CommandInset nomencl_print
 LatexCommand printnomenclature
 set_width "auto"

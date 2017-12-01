@@ -33818,7 +33818,7 @@ Dans la sortie imprimée le titre du glossaire devrait apparaître comme
 \begin_inset Quotes cld
 \end_inset
 
-Nomenclature
+Liste des symboles
 \begin_inset Quotes crd
 \end_inset
 
@@ -33833,7 +33833,7 @@ nomname
  dans le préambule.
  Par exemple, si vous voulez utiliser 
 \emph on
-Liste des Symboles
+Nomenclature
 \emph default
 , ajoutez la ligne suivante au préambule:
 \end_layout
@@ -33845,7 +33845,7 @@ Liste des Symboles
 \backslash
 renewcommand{
 \backslash
-nomname}{Liste des Symboles}
+nomname}{Nomenclature}
 \end_layout
 
 \begin_layout Subsection
@@ -52465,75 +52465,6 @@ La bibliographie ci-dessus a été créée à partir d'une base de données Bib\
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-def
-\backslash
-eqdeclaration#1{, voir équation
-\backslash
-nobreakspace(#1)}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-def
-\backslash
-pagedeclaration#1{, page
-\backslash
-nobreakspace#1}
-\end_layout
-
-\begin_layout Plain Layout
-
-
-\backslash
-renewcommand{
-\backslash
-nomname}{Nomenclature}
-\end_layout
-
-\end_inset
-
-
-\lang english
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
-The name of the nomenclature has to be redefined to English because a bug
- in the 
-\series bold
-nomencl
-\series default
- package takes the last used language for the title that is not the document
- language.
- See 
-\begin_inset CommandInset href
-LatexCommand href
-name "this"
-target "https://tex.stackexchange.com/questions/65913/why-nomenclature-text-is-not-english-when-loading-additional-languages-in-docume"
-literal "false"
-
-\end_inset
-
- for a detailed explanation of the bug.
-\end_layout
-
-\end_inset
-
-
-\lang french
-
 \begin_inset CommandInset nomencl_print
 LatexCommand printnomenclature
 set_width "auto"
