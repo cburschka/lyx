@@ -45,7 +45,8 @@ public:
 		HANDLING_NONE = 1,    /// no special handling
 		HANDLING_ESCAPE = 2,  /// escape special characters
 		HANDLING_LATEXIFY = 4, /// transform special characters to LaTeX macros
-		HANDLING_LTRIM = 8 /// trim blanks on the left
+		HANDLING_LTRIM = 8, /// trim blanks on the left
+		HANDLING_INDEX_ESCAPE = 16, /// escape makeindex special chars
 	};
 	///
 	class ParamData {
