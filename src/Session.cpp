@@ -507,8 +507,7 @@ void ShellEscapeSection::read(istream & is)
 		if (c == '[')
 			break;
 		getline(is, s);
-		c = s[0];
-		if (c == 0 || c == '#' || c == ' ' || !FileName::isAbsolute(s))
+		if (s.empty() || s[0] == '#' || s[0] == ' ' || !FileName::isAbsolute(s))
 			continue;
 
 		// read shellescape files
