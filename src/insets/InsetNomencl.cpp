@@ -364,9 +364,11 @@ docstring nomenclWidest(Buffer const & buffer, OutputParams const & runparams)
 			if (inset->lyxCode() != NOMENCL_CODE)
 				continue;
 			nomencl = static_cast<InsetNomencl const *>(inset);
-			docstring const symbol =
+			// Use proper formatting. We do not escape makeindex chars here
+			docstring const symbol = nomencl ?
 				nomencl->params().prepareCommand(runparams, nomencl->getParam("symbol"),
-							nomencl->findInfo(string())["symbol"].handling());
+							ParamInfo::HANDLING_LATEXIFY)
+				: docstring();
 			// This is only an approximation,
 			// but the best we can get.
 			int const wx = use_gui ?
