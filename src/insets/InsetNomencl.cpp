@@ -365,7 +365,8 @@ docstring nomenclWidest(Buffer const & buffer, OutputParams const & runparams)
 				continue;
 			nomencl = static_cast<InsetNomencl const *>(inset);
 			docstring const symbol =
-				nomencl->getParam("symbol");
+				nomencl->params().prepareCommand(runparams, nomencl->getParam("symbol"),
+							nomencl->findInfo(string())["symbol"].handling());
 			// This is only an approximation,
 			// but the best we can get.
 			int const wx = use_gui ?
@@ -378,17 +379,7 @@ docstring nomenclWidest(Buffer const & buffer, OutputParams const & runparams)
 		}
 	}
 	// return the widest (or an empty) string
-	if (symb.empty())
-		return symb;
-
-	// we have to encode the string properly
-	pair<docstring, docstring> latex_symb =
-		runparams.encoding->latexString(symb, runparams.dryrun);
-	if (!latex_symb.second.empty())
-		LYXERR0("Omitting uncodable characters '"
-			<< latex_symb.second
-			<< "' in nomencl widest string!");
-	return latex_symb.first;
+	return symb;
 }
 } // namespace
 
