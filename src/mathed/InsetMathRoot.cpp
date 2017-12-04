@@ -123,7 +123,7 @@ void mathed_draw_root(PainterInfo & pi, int x, int y, MathData const & nucleus,
 	pi.pain.line(x + dim.width(), y - a + 2 * t,
 	             x + wl, y - a + 2 * t, pi.base.font.color(),
 	             Painter::line_solid, t);
-	xp[0] = x + wl;              yp[0] = y - a + 2 * t;
+	xp[0] = x + wl;              yp[0] = y - a + 2 * t + 1;
 	xp[1] = x + wl - w / 2;      yp[1] = y + d;
 	xp[2] = x + wl - w + h / 4;  yp[2] = y + d - h;
 	xp[3] = x + wl - w;          yp[3] = y + d - h + h / 4;
