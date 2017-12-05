@@ -8336,12 +8336,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8354,6 +8356,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8377,6 +8380,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -31269,32 +31273,14 @@ If the characters |
 \begin_inset space \space{}
 \end_inset
 
-should appear in nomenclature entries they need to be escaped by adding
- a quote character in front of them.
+should appear in nomenclature entries containing \SpecialChar TeX
+ code they need to be escaped
+ by adding a quote character in front of them.
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "\"@, \"|, \"!, \"\""
-description "The quote sign is output by writing ' \"\" '"
+description "The quote sign in TeX code is output by writing ' \"\" '."
 literal "true"
-
-\end_inset
-
-
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Update description when bug 
-\begin_inset CommandInset href
-LatexCommand href
-name "10825"
-target "http://www.lyx.org/trac/ticket/10825"
-literal "false"
-
-\end_inset
-
- is fixed.
-\end_layout
 
 \end_inset
 
@@ -50282,6 +50268,36 @@ options "biblio/alphadin"
 \begin_layout Standard
 The above bibliography is created from a Bib\SpecialChar TeX
  database.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand*{
+\backslash
+pagedeclaration}[1]{, page~
+\backslash
+hyperpage{#1}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+This command makes the page number a clickable hyperlink.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
