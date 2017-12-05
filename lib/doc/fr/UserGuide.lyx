@@ -33059,8 +33059,12 @@ Nota:
 \series default
  
 \lang english
-To use \SpecialChar TeX
- code for nomenclature entries
+To use
+\lang french
+ code \SpecialChar TeX
+ 
+\lang english
+for nomenclature entries
 \lang french
  l'option 
 \family sans
@@ -33322,8 +33326,9 @@ Si les caractères |
 \begin_inset space \space{}
 \end_inset
 
-" apparaissent dans les entrées de la nomenclature, ils doivent être protégés
- en ajoutant un caractère 
+" apparaissent dans les entrées de la nomenclature avec code \SpecialChar TeX
+, ils doivent
+ être protégés en ajoutant un caractère 
 \begin_inset Quotes cld
 \end_inset
 
@@ -33335,7 +33340,7 @@ double apostrophe
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "\"@, \"|, \"!, \"\""
-description "Le signe de citation est produit en écrivant ' \"\"\"\" '"
+description "Le signe de citation dans code TeX est produit en écrivant ' \"\"\"\" '."
 literal "true"
 
 \end_inset
@@ -52462,6 +52467,40 @@ options "../biblio/alphadin"
 \begin_layout Standard
 La bibliographie ci-dessus a été créée à partir d'une base de données Bib\SpecialChar TeX
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand*{
+\backslash
+pagedeclaration}[1]{, page~
+\backslash
+hyperpage{#1}}
+\end_layout
+
+\end_inset
+
+
+\lang english
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+This command makes the page number a clickable hyperlink.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard

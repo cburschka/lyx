@@ -30913,7 +30913,8 @@ Sollen die Zeichen |
 \begin_inset space \space{}
 \end_inset
 
-in Nomenklatureinträgen erscheinen, müssen sie geschützt werden.
+in Nomenklatureinträgen mit \SpecialChar TeX
+-Code erscheinen, müssen sie geschützt werden.
  indem man ein Anführungszeichen davor setzt.
  Um zu verhindern, dass das Anführungszeichen nachfolgende Zeichen beeinflusst,
  wird es mit einem leeren \SpecialChar TeX
@@ -30921,8 +30922,8 @@ in Nomenklatureinträgen erscheinen, müssen sie geschützt werden.
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "\"@, \"|, \"!, \"\"{}"
-description "Das Anführungszeichen wird mit der Sequenz ' \"\"{}\"\"{} ' ausgegeben"
-literal "false"
+description "Das Anführungszeichen wird im TeX-Code mit der Sequenz ' \"\"{}\"\"{} ' ausgegeben."
+literal "true"
 
 \end_inset
 
@@ -48742,35 +48743,28 @@ Das obige Literaturverzeichnis stammt aus einer Bib\SpecialChar TeX
 \end_layout
 
 \begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand*{
+\backslash
+pagedeclaration}[1]{, Seite~
+\backslash
+hyperpage{#1}}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Note Note
 status collapsed
 
 \begin_layout Plain Layout
-Damit die Nomenklatur auch den entspechenden Namen erhält, wurde im \SpecialChar LaTeX
--Vorspann
-\end_layout
-
-\begin_layout Plain Layout
-
-\series bold
-
-\backslash
-renewcommand{
-\backslash
-nomname}{Nomenklatur}
-\end_layout
-
-\begin_layout Plain Layout
-eingefügt.
- Denn voreingestellt ist 
-\begin_inset Quotes gld
-\end_inset
-
-Nomenclature
-\begin_inset Quotes grd
-\end_inset
-
-.
+Dieser Befehl macht die Seitennummer zu einem klickbaren Hyperlink.
 \end_layout
 
 \end_inset

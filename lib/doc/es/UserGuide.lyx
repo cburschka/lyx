@@ -8559,14 +8559,12 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
-
 Esto es entorno Literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8579,7 +8577,6 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
-
 Casi todo está permitido en entorno Literal:"%&$§#~'`
 \backslash
 }][{|
@@ -8604,7 +8601,6 @@ con la diferencia de que los espacios aparecen en la salida como el carácter
 \end_layout
 
 \begin_layout Verbatim*
-
 Esto es entorno Literal*.
 \end_layout
 
@@ -32305,7 +32301,9 @@ palo seco
 \end_layout
 
 \begin_layout Standard
-Para introducir en entradas de la nomenclatura caracteres como |
+Para introducir en entradas de la nomenclatura con código \SpecialChar TeX
+ caracteres como
+ |
 \begin_inset space \space{}
 \end_inset
 
@@ -32329,9 +32327,9 @@ Para introducir en entradas de la nomenclatura caracteres como |
  
 \lang english
 To avoid that a single " affects the following characters one writes braces
- behind it:
+ behind it
 \lang spanish
- 
+: 
 \family sans
 ""{}
 \family default
@@ -32339,7 +32337,7 @@ To avoid that a single " affects the following characters one writes braces
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "\"@, \"|, \"!, \"\"{}"
-description "El carácter comillas se obtiene escribiendo ' \"\"{}\"\"{} '"
+description "El carácter comillas en código TeX se obtiene escribiendo ' \"\"{}\"\"{} '."
 literal "true"
 
 \end_inset
@@ -50772,6 +50770,40 @@ options "../biblio/alphadin"
 \begin_layout Standard
 Esta bibliografía se ha generado a partir de una base de datos Bib\SpecialChar TeX
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand*{
+\backslash
+pagedeclaration}[1]{, página~
+\backslash
+hyperpage{#1}}
+\end_layout
+
+\end_inset
+
+
+\lang english
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+This command makes the page number a clickable hyperlink.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
