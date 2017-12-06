@@ -161,6 +161,7 @@
 \begin_modules
 initials
 graphicboxes
+varwidth
 \end_modules
 \maintain_unincluded_children false
 \language french
@@ -20949,6 +20950,52 @@ reference "sec:Parboxes"
 
  Si vous faites pivoter cette cellule de 90°, la largeur de la boîte est
  la hauteur de la cellule.
+ 
+\lang english
+To avoid to estimate a suitable box width one can use a minipage with a
+ variable width.
+ Such a box is inserted by loading the module
+\lang french
+ 
+\family sans
+Minipages
+\begin_inset space ~
+\end_inset
+
+à
+\begin_inset space ~
+\end_inset
+
+largeur
+\begin_inset space ~
+\end_inset
+
+variable
+\family default
+ 
+\lang english
+in the document settings.
+ Then one can use
+\lang french
+ le menu 
+\family sans
+Insertion\SpecialChar menuseparator
+Inserts
+\begin_inset space ~
+\end_inset
+
+personnalisables\SpecialChar menuseparator
+Minipage
+\begin_inset space ~
+\end_inset
+
+
+\family default
+(larg.
+\begin_inset space ~
+\end_inset
+
+variable).
  Le tableau
 \begin_inset space ~
 \end_inset
@@ -20960,12 +21007,11 @@ reference "tab:Tableau-incluant-une"
 
 \end_inset
 
- donne un exemple d'une cellule multi-lignes où la largeur de boîte a été
- réglée à 3
-\begin_inset space \thinspace{}
-\end_inset
-
-cm.
+ donne un exemple d'une cellule multi-lignes où 
+\lang english
+a variable width minipage is used
+\lang french
+.
 \end_layout
 
 \begin_layout Standard
@@ -21016,22 +21062,7 @@ a
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "3cm"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
+\begin_inset Flex Minipage (Var. Width)
 status open
 
 \begin_layout Plain Layout
@@ -21040,6 +21071,10 @@ cellule pivotée
 \end_inset
 
 avec saut de ligne
+\begin_inset space ~
+\end_inset
+
+
 \end_layout
 
 \end_inset

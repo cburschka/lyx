@@ -158,6 +158,7 @@
 \begin_modules
 initials
 graphicboxes
+varwidth
 \end_modules
 \maintain_unincluded_children false
 \language ngerman
@@ -20774,6 +20775,36 @@ reference "abs:Parbox"
 \end_inset
 
 ° rotieren, ist die Breite der Box die Höhe der Zelle.
+ Um zu vermeiden, dass man eine geeignete Breite abschätzen muss, kann man
+ eine Minipage mit variabler Breite verwenden.
+ So eine Box wird eingefügt, indem man das Modul 
+\family sans
+Breitenvariable
+\begin_inset space ~
+\end_inset
+
+Minipages
+\family default
+ in den Dokumenteinstellungen lädt.
+ Dann kann man das Menü 
+\family sans
+Einfügen\SpecialChar menuseparator
+Benutzerdefinierte
+\begin_inset space ~
+\end_inset
+
+Einfügungen\SpecialChar menuseparator
+Minipage
+\begin_inset space ~
+\end_inset
+
+(var.
+\begin_inset space ~
+\end_inset
+
+Breite)
+\family default
+ vewenden.
  Tabelle
 \begin_inset space ~
 \end_inset
@@ -20785,12 +20816,8 @@ reference "tab:Tabelle-mit-rotierter-Umbruch"
 
 \end_inset
 
- ist ein Beispiel für eine rotierte Zelle mit Zeilenumbruch, wobei die Boxbreite
- auch 3
-\begin_inset space \thinspace{}
-\end_inset
-
-cm gesetzt wurde.
+ ist ein Beispiel für eine rotierte Zelle mit Zeilenumbruch in der eine
+ Minipage mit variabler Breite verwendet wurde.
 \end_layout
 
 \begin_layout Standard
@@ -20840,22 +20867,7 @@ a
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "3cm"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
+\begin_inset Flex Minipage (Var. Width)
 status open
 
 \begin_layout Plain Layout
@@ -20864,6 +20876,10 @@ rotierte Zelle
 \end_inset
 
 mit Zeilenumbruch
+\begin_inset space ~
+\end_inset
+
+
 \end_layout
 
 \end_inset

@@ -173,6 +173,7 @@
 \begin_modules
 initials
 graphicboxes
+varwidth
 \end_modules
 \maintain_unincluded_children false
 \begin_local_layout
@@ -19943,18 +19944,52 @@ reference "sec:Parboxes"
 \begin_inset space \thinspace{}
 \end_inset
 
-°回転させると，ボックス幅はセルの高さになります．表
+°回転させると，ボックス幅はセルの高さになります．
+\lang english
+To avoid to estimate a suitable box width one can use a minipage with a
+ variable width.
+ Such a box is inserted by loading the module 
+\family sans
+Variable-width
+\begin_inset space ~
+\end_inset
+
+Minipages
+\family default
+ in the document settings.
+ Then one can use the menu 
+\family sans
+Insert\SpecialChar menuseparator
+Custom
+\begin_inset space ~
+\end_inset
+
+Insets\SpecialChar menuseparator
+Minipage
+\begin_inset space ~
+\end_inset
+
+
+\family default
+(Var.
+\begin_inset space ~
+\end_inset
+
+Width)
+\lang japanese
+．表
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:表多行回転"
 
 \end_inset
 
-は，ボックス幅が3
-\begin_inset space \thinspace{}
-\end_inset
-
-cmの，多行セルを回転させる例です．
+は
+\lang english
+is an example for a rotated multiline cell where a variable width minipage
+ is used
+\lang japanese
+．
 \end_layout
 
 \begin_layout Standard
@@ -20004,22 +20039,7 @@ name "tab:表多行回転"
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "3cm"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
+\begin_inset Flex Minipage (Var. Width)
 status open
 
 \begin_layout Plain Layout
@@ -20028,6 +20048,10 @@ status open
 \end_inset
 
 回転
+\begin_inset space ~
+\end_inset
+
+
 \end_layout
 
 \end_inset

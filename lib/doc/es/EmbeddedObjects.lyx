@@ -159,6 +159,7 @@
 \begin_modules
 initials
 graphicboxes
+varwidth
 \end_modules
 \maintain_unincluded_children false
 \language spanish
@@ -20530,6 +20531,48 @@ reference "sec:Marcos-de-Párrafo"
 \end_inset
 
 °, la anchura del marco es la altura de la celda.
+ 
+\lang english
+To avoid to estimate a suitable box width one can use a minipage with a
+ variable width.
+ Such a box is inserted by loading the module
+\lang spanish
+ 
+\family sans
+Minipáginas
+\begin_inset space ~
+\end_inset
+
+ancho
+\begin_inset space ~
+\end_inset
+
+variable
+\family default
+ 
+\lang english
+in the document settings.
+ Then one can use
+\lang spanish
+ el menú 
+\family sans
+Insertar\SpecialChar menuseparator
+Recuadro
+\begin_inset space ~
+\end_inset
+
+personalizado\SpecialChar menuseparator
+Minipágina
+\begin_inset space ~
+\end_inset
+
+(ancho
+\begin_inset space ~
+\end_inset
+
+var.)
+\family default
+.
  El cuadro
 \begin_inset space ~
 \end_inset
@@ -20541,12 +20584,11 @@ reference "tab:Cuadro-rotación-multilínea"
 
 \end_inset
 
- es un ejemplo de una celda rotada con salto de línea en la que la anchura
- del marco se ha establecido en 3
-\begin_inset space \thinspace{}
-\end_inset
-
-cm.
+ es un ejemplo de una celda rotada con salto de línea en la 
+\lang english
+a variable width minipage is used
+\lang spanish
+.
 \end_layout
 
 \begin_layout Standard
@@ -20596,22 +20638,7 @@ a
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "3cm"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
+\begin_inset Flex Minipage (Var. Width)
 status open
 
 \begin_layout Plain Layout
@@ -20620,6 +20647,10 @@ celda rotada
 \end_inset
 
 con salto de línea
+\begin_inset space ~
+\end_inset
+
+
 \end_layout
 
 \end_inset
