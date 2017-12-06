@@ -17,7 +17,6 @@
 #include "Buffer.h"
 #include "BufferParams.h"
 #include "BufferView.h"
-#include "Counters.h"
 #include "Cursor.h"
 #include "Dimension.h"
 #include "Floating.h"
