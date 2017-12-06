@@ -47,7 +47,7 @@ BrandingText " "
 
 # Specify where to install program shortcuts.
 !define MUI_STARTMENUPAGE_REGISTRY_VALUENAME "Start Menu Folder"
-!define MUI_STARTMENUPAGE_DEFAULTFOLDER "LyX ${APP_SERIES_NAME}"
+!define MUI_STARTMENUPAGE_DEFAULTFOLDER "${APP_NAME} ${APP_SERIES_NAME}"
 !insertmacro MUI_PAGE_STARTMENU ${APP_NAME} $StartmenuFolder
 
 !if ${SETUPTYPE} != BUNDLE
@@ -70,7 +70,7 @@ BrandingText " "
 !define MUI_FINISHPAGE_SHOWREADME_FUNCTION StartLyX
 !define MUI_FINISHPAGE_SHOWREADME_TEXT $(FinishPageRun)
 !define MUI_FINISHPAGE_LINK $(TEXT_FINISH_WEBSITE)
-!define MUI_FINISHPAGE_LINK_LOCATION "http://www.lyx.org/"
+!define MUI_FINISHPAGE_LINK_LOCATION "https://www.lyx.org/"
 #!define MUI_PAGE_CUSTOMFUNCTION_SHOW CheckDesktopShortcut
 !insertmacro MUI_PAGE_FINISH
 
@@ -97,6 +97,6 @@ VIAddVersionKey /LANG=${LANG_ENGLISH} "ProductVersion" "${APP_NAME} ${APP_VERSIO
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileDescription" "${APP_INFO}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "FileVersion" "${APP_VERSION}"
 VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalCopyright" "${APP_COPYRIGHT}"
-VIAddVersionKey /LANG=${LANG_ENGLISH} "CompanyName" "LyX Team"
-# Fixme: LyX should register the name LyX as trademark
+VIAddVersionKey /LANG=${LANG_ENGLISH} "CompanyName" "${APP_NAME} Team"
+# Fixme: LyX should register the name "LyX" as trademark
 VIAddVersionKey /LANG=${LANG_ENGLISH} "LegalTrademarks" ""

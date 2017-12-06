@@ -63,7 +63,7 @@ Section "un.LyX" un.SecUnProgramFiles
    ${endif}
   ${endif}
   ${if} $MultiUser.Privileges == "Admin"
-   DeleteRegKey HKCR "LyX.Document"
+   DeleteRegKey HKCR "${APP_NAME}.Document"
   ${endif}
 
   # Uninstaller itself
@@ -77,9 +77,9 @@ Section "un.LyX" un.SecUnProgramFiles
   DeleteRegKey SHCTX "${APP_REGKEY_SETUP}"
   DeleteRegKey SHCTX "${APP_REGKEY}"
   DeleteRegKey SHCTX "${APP_UNINST_KEY}"
-  DeleteRegKey HKCR "Applications\lyx.exe"
-  DeleteRegValue HKCR "LyX.Document\Shell\open\command" ""
-  DeleteRegValue HKCR "LyX.Document\DefaultIcon" ""
+  DeleteRegKey HKCR "Applications\${BIN_LYX}"
+  DeleteRegValue HKCR "${APP_NAME}.Document\Shell\open\command" ""
+  DeleteRegValue HKCR "${APP_NAME}.Document\DefaultIcon" ""
   
   # File associations
   ReadRegStr $FileAssociation SHELL_CONTEXT "Software\Classes\${APP_EXT}" ""
@@ -115,7 +115,7 @@ Section /o "un.$(UnLyXPreferencesTitle)" un.SecUnPreferences
  StrCpy $AppSubfolder ${APP_DIR_USERDATA}
  Call un.DelAppPathSub # function from LyXUtils.nsh
  # remove registry settings
- DeleteRegKey HKCU "Software\LyX\LyX${APP_SERIES_NAME}"
+ DeleteRegKey HKCU "Software\${APP_NAME}\${APP_NAME}${APP_SERIES_NAME}"
   
 SectionEnd
 
