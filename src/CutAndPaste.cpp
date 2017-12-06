@@ -40,6 +40,7 @@
 
 #include "insets/InsetBibitem.h"
 #include "insets/InsetBranch.h"
+#include "insets/InsetCitation.h"
 #include "insets/InsetCommand.h"
 #include "insets/InsetFlex.h"
 #include "insets/InsetGraphics.h"
@@ -318,6 +319,16 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 			InsetInclude & inc = static_cast<InsetInclude &>(*it);
 			inc.updateCommand();
 			// We need to update the list of included files.
+			need_update = true;
+			break;
+		}
+
+		case CITE_CODE: {
+			InsetCitation & cit = static_cast<InsetCitation &>(*it);
+			// This actually only needs to be done if the cite engine
+			// differs, but we do it in general.
+			cit.redoLabel();
+			// We need to update the list of citations.
 			need_update = true;
 			break;
 		}
