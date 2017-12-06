@@ -44,7 +44,7 @@ Configuration of LyX installer
 
 !define APP_NAME "LyX"
 !define APP_VERSION_NUMBER "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_REVISION}.${APP_VERSION_BUILD}"
-# for the proposed install folder we use the scheme "LyX 2.1" while we need for the registry the scheme "LyX 2.1.4"
+# for the proposed install folder we use the scheme "LyX 2.2" while we need for the registry the scheme "LyX 2.1.4"
 # to check if it is exactly this version (to support side by side installations)
 !define APP_SERIES_NAME "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}"
 !define APP_SERIES_KEY "${APP_VERSION_MAJOR}${APP_VERSION_MINOR}${APP_VERSION_REVISION}${APP_VERSION_EMERGENCY}"
@@ -53,11 +53,11 @@ Configuration of LyX installer
 !define APP_DIR "${APP_NAME} ${APP_SERIES_NAME}"
 !define APP_DIR_USERDATA "${APP_NAME}${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}"
 !define APP_INFO "${APP_NAME} - The Document Processor"
-!define APP_WEBPAGE "http://www.lyx.org/"
+!define APP_WEBPAGE "https://www.lyx.org/"
 !define APP_WEBPAGE_INFO "${APP_NAME} Website"
-!define APP_WIKI "http://wiki.lyx.org"
+!define APP_WIKI "https://wiki.lyx.org"
 !define APP_WIKI_INFO "${APP_NAME} Wiki"
-!define APP_COPYRIGHT "LyX is Copyright © 1995 by Matthias Ettrich, 1995-${COPYRIGHT_YEAR} by the LyX Team"
+!define APP_COPYRIGHT "${APP_NAME} is Copyright © 1995 by Matthias Ettrich, 1995-${COPYRIGHT_YEAR} by the ${APP_NAME} Team"
 !if ${SETUPTYPE} == STANDARD
   !define APP_SETUPTYPE "Standard"
 !else if ${SETUPTYPE} == BUNDLE

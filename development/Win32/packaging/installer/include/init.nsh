@@ -599,7 +599,8 @@ Function .onInit
   ${if} $R0 == "5.0" # 2000
   ${orif} $R0 == "5.1" # XP
   ${orif} $R0 == "5.2" # 2003
-    MessageBox MB_OK|MB_ICONSTOP "${APP_NAME} ${APP_VERSION} requires Windows Vista or newer." /SD IDOK
+  ${orif} $R0 == "6.0" # Vista
+    MessageBox MB_OK|MB_ICONSTOP "${APP_NAME} ${APP_VERSION} requires Windows 7 or newer." /SD IDOK
     Quit
   ${endif}
   
@@ -620,7 +621,7 @@ Function .onInit
   !endif
   
   # Check that LyX is not currently running
-  FindProcDLL::FindProc "lyx.exe"
+  FindProcDLL::FindProc "${BIN_LYX}"
   ${if} $R0 == "1"
    MessageBox MB_OK|MB_ICONSTOP "$(UnInstallRunning)" /SD IDOK
    Abort
@@ -650,7 +651,7 @@ Function .onInit
    # because he won't have a chance to deny this
    StrCpy $4 $0 -10 # remove '\bin\lyx,0'
    # (for FileCheck the variables $0 and $1 cannot be used)
-   !insertmacro FileCheck $5 "Uninstall-LyX.exe" "$4" # macro from LyXUtils.nsh
+   !insertmacro FileCheck $5 "Uninstall-${APP_NAME}.exe" "$4" # macro from LyXUtils.nsh
    ${if} $5 == "False"
     Goto ForceInstallation
    ${endif}
@@ -1429,7 +1430,7 @@ Function un.onInit
   !insertmacro MULTIUSER_UNINIT
 
   # Check that LyX is not currently running
-  FindProcDLL::FindProc "lyx.exe"
+  FindProcDLL::FindProc "${BIN_LYX}"
   ${if} $R0 == "1"
    MessageBox MB_OK|MB_ICONSTOP "$(UnInstallRunning)" /SD IDOK
    Abort
