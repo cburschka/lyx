@@ -48,9 +48,9 @@ Section -InstallData
   WriteRegStr SHCTX ${APP_UNINST_KEY} "DisplayVersion" "${APP_VERSION}"
   WriteRegStr SHCTX ${APP_UNINST_KEY} "DisplayIcon" "$INSTDIR\bin\lyx,0"
   WriteRegStr SHCTX ${APP_UNINST_KEY} "URLUpdateInfo" "${APP_WEBPAGE}"
-  WriteRegStr SHCTX ${APP_UNINST_KEY} "URLInfoAbout" "http://www.lyx.org/AboutLyX"
-  WriteRegStr SHCTX ${APP_UNINST_KEY} "Publisher" "LyX Team"
-  WriteRegStr SHCTX ${APP_UNINST_KEY} "HelpLink" "http://www.lyx.org/MailingLists"
+  WriteRegStr SHCTX ${APP_UNINST_KEY} "URLInfoAbout" "https://www.lyx.org/AboutLyX"
+  WriteRegStr SHCTX ${APP_UNINST_KEY} "Publisher" "${APP_NAME} Team"
+  WriteRegStr SHCTX ${APP_UNINST_KEY} "HelpLink" "https://www.lyx.org/MailingLists"
   WriteRegDWORD SHCTX ${APP_UNINST_KEY} "NoModify" 0x00000001
   WriteRegDWORD SHCTX ${APP_UNINST_KEY} "NoRepair" 0x00000001
   WriteRegStr SHCTX ${APP_UNINST_KEY} "StartMenu" "$SMPROGRAMS\$StartmenuFolder"
@@ -265,34 +265,13 @@ Section -ConfigureScript
 SectionEnd
 
 #--------------------------------
-# Desktop shortcut
+#
 
 Function StartLyX
 
   # run LyX in a command line window to give the users feedback about
   # the time consuming LaTeX package installation
   
-  #Exec 'cmd /K " "$INSTDIR\bin\lyx.exe""'
   Exec "$INSTDIR\${APP_RUN}"
 
 FunctionEnd
-
-/*Function CheckDesktopShortcut
-
-  # Enable desktop icon creation when there is an icon already
-  # Old shortcuts need to be updated
-  
-  ${If} ${FileExists} "$DESKTOP\${APP_NAME} ${APP_SERIES_NAME}.lnk"
-    ${NSD_SetState} $mui.FinishPage.ShowReadme ${BST_CHECKED}
-  ${EndIf}
-
-FunctionEnd
-
-Function CreateDesktopShortcut
-
-  # Desktop icon creation is an option on the finish page
-  SetOutPath "$INSTDIR\bin"
-  CreateShortCut "$DESKTOP\${APP_NAME} ${APP_SERIES_NAME}.lnk" "$INSTDIR\${APP_RUN}" "" "$INSTDIR\${APP_RUN}" "" "" "" "${APP_INFO}"
-
-FunctionEnd*/
-
