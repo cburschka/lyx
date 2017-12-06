@@ -8598,10 +8598,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8614,6 +8616,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8637,6 +8640,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -30622,7 +30626,7 @@ Manchmal benötigen Sie vielleicht eine Liste von Symbolen oder Begriffen
 \begin_inset space ~
 \end_inset
 
- ein Glossar.
+ein Glossar.
 \end_layout
 
 \begin_layout Standard
@@ -31048,6 +31052,13 @@ Nomenklatur ! Optionen
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Nomenklatur-Optionen"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -31175,9 +31186,9 @@ Seite
 \end_inset
 
  automatisch übersetzt.
- Wenn Sie diese Übersetzungen ändern wollen, fügen Sie diese Zeilen dem
- \SpecialChar LaTeX
--Vorspann ihres Dokuments hinzu:
+ Wenn Sie diese Übersetzungen ändern wollen, fügen Sie diese Zeilen als
+ \SpecialChar TeX
+-Code vor der Nomenklaturliste ein:
 \end_layout
 
 \begin_layout Standard
@@ -31186,9 +31197,28 @@ Seite
 \series bold
 
 \backslash
-renewcommand{
+renewcommand*{
 \backslash
-eqdeclaration}[1]{, siehe Gleichung
+eqdeclaration}[1]{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
+unskip, siehe Gleichung
 \backslash
 nobreakspace(#1)}
 \begin_inset Newline newline
@@ -31196,11 +31226,106 @@ nobreakspace(#1)}
 
 
 \backslash
-renewcommand{
+renewcommand*{
 \backslash
-pagedeclaration}[1]{, Seite
+pagedeclaration}[1]{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
+unskip, Seite
 \backslash
 nobreakspace{}#1}
+\end_layout
+
+\begin_layout Standard
+Wenn die Nummern Hyperlinks sein sollen, stellen Sie sicher, dass Sie 
+\family sans
+Hyperref-Unterstützung
+\family default
+ in den Documenteinstellungen unter 
+\family sans
+PDF-Eigenschaften
+\family default
+ verwenden, und nehmen stattdessen:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand*{
+\backslash
+eqdeclaration}[1]{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
+unskip, siehe 
+\backslash
+hyperlink{equation.#1}{Gleichung
+\backslash
+nobreakspace{}(#1)}}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+renewcommand*{
+\backslash
+pagedeclaration}[1]{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
+unskip, 
+\backslash
+hyperlink{page.#1}{Seite
+\backslash
+nobreakspace{}#1}}
 \end_layout
 
 \begin_layout Subsection
@@ -37324,8 +37449,8 @@ Werkzeugleiste
 \end_layout
 
 \begin_layout Standard
-In diesem Menü kann das Erscheinungsbild der verschiedenen Werkzeugleisten
- eingestellt werden.
+In diesem Menü kann die Größe der Symbole und das Erscheinungsbild der verschied
+enen Werkzeugleisten eingestellt werden.
  Alle Werkzeugleisten und das 
 \family sans
 Befehlseingabefenster
@@ -48752,9 +48877,18 @@ status collapsed
 \backslash
 renewcommand*{
 \backslash
-pagedeclaration}[1]{, Seite~
+pagedeclaration}[1]{
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
 \backslash
-hyperpage{#1}}
+unskip, 
+\backslash
+hyperlink{page.#1}{Seite
+\backslash
+nobreakspace{}#1}}
 \end_layout
 
 \end_inset
@@ -48764,7 +48898,19 @@ hyperpage{#1}}
 status collapsed
 
 \begin_layout Plain Layout
-Dieser Befehl macht die Seitennummer zu einem klickbaren Hyperlink.
+Dieser Befehl macht die Seitennummer zu einem klickbaren Hyperlink, siehe
+ Kap.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Nomenklatur-Optionen"
+
+\end_inset
+
+ für weitere Infos.
 \end_layout
 
 \end_inset
