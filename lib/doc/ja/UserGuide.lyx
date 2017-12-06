@@ -26912,6 +26912,13 @@ status collapsed
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:用語集オプション"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -27030,8 +27037,10 @@ nomnorefeqpage 対応するオプションを解除する
 \end_layout
 
 \begin_layout Standard
-「page」のような単語は，自動的に他の文書言語に翻訳されます．そうならない場合には，\SpecialChar LaTeX
-プリアンブルに以下のように追記してください．
+「page」のような単語は，自動的に他の文書言語に翻訳されます．
+\lang english
+If not, add these lines in front of the nomenclature list as \SpecialChar TeX
+ code:
 \end_layout
 
 \begin_layout Standard
@@ -27040,25 +27049,153 @@ nomnorefeqpage 対応するオプションを解除する
 \series bold
 
 \backslash
-renewcommand{
+renewcommand*{
 \backslash
-eqdeclaration}[1]{, 
+eqdeclaration}[1]{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \backslash
-nobreakspace(#1)
+unskip,
 \backslash
-nobreakspace 式を参照}
+nobreakspace{}(#1)
+\backslash
+nobreakspace{}式を参照}
 \begin_inset Newline newline
 \end_inset
 
 
 \backslash
-renewcommand{
+renewcommand*{
 \backslash
-pagedeclaration}[1]{, 
+pagedeclaration}[1]{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
+unskip,
 \backslash
 nobreakspace{}#1
 \backslash
 nobreakspace{}ページ}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If the numbers should be hyperlinks, assure that you use 
+\family sans
+Hyperref
+\begin_inset space ~
+\end_inset
+
+Support
+\family default
+ in the document settings under 
+\family sans
+PDF
+\begin_inset space ~
+\end_inset
+
+Properties
+\family default
+ and use instead:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand*{
+\backslash
+eqdeclaration}[1]{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
+unskip,
+\backslash
+nobreakspace{}
+\backslash
+hyperlink{equation.#1}{(#1)
+\backslash
+nobreakspace{}式を参照}}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+renewcommand*{
+\backslash
+pagedeclaration}[1]{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
+unskip,
+\backslash
+nobreakspace{}
+\backslash
+hyperlink{page.#1}{#1
+\backslash
+nobreakspace{}ページ}}
 \end_layout
 
 \begin_layout Subsection
@@ -32415,7 +32552,11 @@ name "subsec:ツールバー"
 \end_layout
 
 \begin_layout Standard
-このメニューでは，さまざまなツールバーの表示を設定することができます．すべてのツールバーと
+このメニューでは，
+\lang english
+set the icon size and
+\lang japanese
+ さまざまなツールバーの表示を設定することができます．すべてのツールバーと
 \family sans
 コマンドバッファ
 \family default
@@ -42589,11 +42730,22 @@ status collapsed
 
 
 \backslash
-renewcommand{
+renewcommand*{
 \backslash
-pagedeclaration}[1]{ (
+pagedeclaration}[1]{
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
 \backslash
-hyperpage{#1}頁参照)}
+unskip,
+\backslash
+nobreakspace{}
+\backslash
+hyperlink{page.#1}{#1
+\backslash
+nobreakspace{}ページ}}
 \end_layout
 
 \end_inset
@@ -42607,7 +42759,22 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-This command makes the page number a clickable hyperlink.
+This command makes the page number a clickable hyperlink, see sec.
+\begin_inset space ~
+\end_inset
+
+
+\lang japanese
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:用語集オプション"
+
+\end_inset
+
+
+\lang english
+ fro moe info.
 \end_layout
 
 \end_inset

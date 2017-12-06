@@ -31439,6 +31439,13 @@ Nomenclature ! Options
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Nomenclature-Options"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -31598,8 +31605,8 @@ page
 \end_inset
 
  are automatically translated for most document languages.
- If not, add these lines to your \SpecialChar LaTeX
- preamble:
+ If not, add these lines in front of the nomenclature list as \SpecialChar TeX
+ code:
 \end_layout
 
 \begin_layout Standard
@@ -31608,9 +31615,32 @@ page
 \series bold
 
 \backslash
-renewcommand{
+renewcommand*{
 \backslash
-eqdeclaration}[1]{, see equation
+eqdeclaration}[1]{
+\begin_inset Newline newline
+\end_inset
+
+
+\size small
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\size default
+
+\backslash
+unskip, see equation
 \backslash
 nobreakspace(#1)}
 \begin_inset Newline newline
@@ -31618,33 +31648,118 @@ nobreakspace(#1)}
 
 
 \backslash
-renewcommand{
+renewcommand*{
 \backslash
-pagedeclaration}[1]{, page
-\backslash
-nobreakspace{}#1}
-\series default
-
+pagedeclaration}[1]{
 \begin_inset Newline newline
 \end_inset
 
-and replace 
-\begin_inset Quotes eld
+
+\size small
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
 \end_inset
 
-see equation
-\begin_inset Quotes erd
+
+\end_layout
+
 \end_inset
 
- and 
-\begin_inset Quotes eld
+
+\size default
+
+\backslash
+unskip, page
+\backslash
+nobreakspace{}#1}
+\end_layout
+
+\begin_layout Standard
+If the numbers should be hyperlinks, assure that you use 
+\family sans
+Hyperref
+\begin_inset space ~
 \end_inset
 
-page
-\begin_inset Quotes erd
+Support
+\family default
+ in the document settings under 
+\family sans
+PDF
+\begin_inset space ~
 \end_inset
 
- by their translation.
+Properties
+\family default
+ and use instead:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand*{
+\backslash
+eqdeclaration}[1]{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
+unskip, see 
+\backslash
+hyperlink{equation.#1}{equation
+\backslash
+nobreakspace{}(#1)}}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+renewcommand*{
+\backslash
+pagedeclaration}[1]{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
+unskip, 
+\backslash
+hyperlink{page.#1}{page
+\backslash
+nobreakspace{}#1}}
 \end_layout
 
 \begin_layout Subsection
@@ -38036,7 +38151,8 @@ Toolbar
 \end_layout
 
 \begin_layout Standard
-In this menu entry you can set the appearance of the different toolbars.
+In this menu entry you can set the icon size and the appearance of the different
+ toolbars.
  All toolbars and the 
 \family sans
 Command
@@ -50280,9 +50396,18 @@ status collapsed
 \backslash
 renewcommand*{
 \backslash
-pagedeclaration}[1]{, page~
+pagedeclaration}[1]{
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
 \backslash
-hyperpage{#1}}
+unskip, 
+\backslash
+hyperlink{page.#1}{page
+\backslash
+nobreakspace{}#1}}
 \end_layout
 
 \end_inset
@@ -50292,7 +50417,18 @@ hyperpage{#1}}
 status collapsed
 
 \begin_layout Plain Layout
-This command makes the page number a clickable hyperlink.
+This command makes the page number a clickable hyperlink, see sec.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Nomenclature-Options"
+
+\end_inset
+
+ for more info.
 \end_layout
 
 \end_inset

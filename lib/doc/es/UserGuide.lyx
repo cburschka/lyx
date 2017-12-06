@@ -8559,12 +8559,14 @@ Literal
 \end_layout
 
 \begin_layout Verbatim
+
 Esto es entorno Literal.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 Las dos  líneas siguientes están vacías:
 \end_layout
 
@@ -8577,6 +8579,7 @@ Las dos  líneas siguientes están vacías:
 \end_layout
 
 \begin_layout Verbatim
+
 Casi todo está permitido en entorno Literal:"%&$§#~'`
 \backslash
 }][{|
@@ -8601,6 +8604,7 @@ con la diferencia de que los espacios aparecen en la salida como el carácter
 \end_layout
 
 \begin_layout Verbatim*
+
 Esto es entorno Literal*.
 \end_layout
 
@@ -32474,6 +32478,13 @@ Nomenclatura ! Opciones
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Opciones-para-la"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -32616,7 +32627,11 @@ page
 \end_inset
 
  se traducen automáticamente para algunos idiomas.
- Si no es así, añade estas líneas al preámbulo \SpecialChar LaTeX
+ Si no es así, añade estas líneas 
+\lang english
+in front of the nomenclature list
+\lang spanish
+ en código \SpecialChar TeX
 :
 \end_layout
 
@@ -32626,9 +32641,28 @@ page
 \series bold
 
 \backslash
-renewcommand{
+renewcommand*{
 \backslash
-eqdeclaration}[1]{, see equation
+eqdeclaration}[1]{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
+unskip, véase ecuación
 \backslash
 nobreakspace(#1)}
 \begin_inset Newline newline
@@ -32636,33 +32670,116 @@ nobreakspace(#1)}
 
 
 \backslash
-renewcommand{
+renewcommand*{
 \backslash
-pagedeclaration}[1]{, page
-\backslash
-nobreakspace{}#1}
-\series default
-
+pagedeclaration}[1]{
 \begin_inset Newline newline
 \end_inset
 
-reemplazando 
-\begin_inset Quotes cld
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
 \end_inset
 
-see equation
-\begin_inset Quotes crd
+
+\end_layout
+
 \end_inset
 
- y 
-\begin_inset Quotes cld
+
+\backslash
+unskip, página
+\backslash
+nobreakspace{}#1}
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+If the numbers should be hyperlinks, assure that you use 
+\family sans
+Hyperref
+\begin_inset space ~
 \end_inset
 
-page
-\begin_inset Quotes crd
+Support
+\family default
+ in the document settings under 
+\family sans
+PDF
+\begin_inset space ~
 \end_inset
 
- por su traducción.
+Properties
+\family default
+ and use instead:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand*{
+\backslash
+eqdeclaration}[1]{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
+unskip, véase 
+\backslash
+hyperlink{equation.#1}{ecuación
+\backslash
+nobreakspace{}(#1)}}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+renewcommand*{
+\backslash
+pagedeclaration}[1]{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
+unskip, 
+\backslash
+hyperlink{page.#1}{página
+\backslash
+nobreakspace{}#1}}
 \end_layout
 
 \begin_layout Subsection
@@ -38792,8 +38909,12 @@ Barras de herramientas
 \end_layout
 
 \begin_layout Standard
-Este menú permite mostrar en pantalla, o no, las distintas barras de herramienta
-s, así como el 
+Este menú permite 
+\lang english
+set the icon size
+\lang spanish
+ y mostrar en pantalla, o no, las distintas barras de herramientas, así
+ como el 
 \family sans
 Búfer
 \begin_inset space ~
@@ -50782,9 +50903,18 @@ status collapsed
 \backslash
 renewcommand*{
 \backslash
-pagedeclaration}[1]{, página~
+pagedeclaration}[1]{
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
 \backslash
-hyperpage{#1}}
+unskip, 
+\backslash
+hyperlink{page.#1}{página
+\backslash
+nobreakspace{}#1}}
 \end_layout
 
 \end_inset
@@ -50798,7 +50928,22 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-This command makes the page number a clickable hyperlink.
+This command makes the page number a clickable hyperlink, see sec.
+\begin_inset space ~
+\end_inset
+
+
+\lang spanish
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Opciones-para-la"
+
+\end_inset
+
+
+\lang english
+ for more info.
 \end_layout
 
 \end_inset

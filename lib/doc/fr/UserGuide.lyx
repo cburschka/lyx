@@ -9030,12 +9030,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -9048,6 +9050,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9080,6 +9083,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -33513,6 +33517,13 @@ Glossaire ! Options
 \end_inset
 
 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Options-de-glossaire"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -33685,7 +33696,11 @@ page
 \end_inset
 
  sont automatiquement traduits pour cerianes langues de documents.
- Sinon, ajoutez v)ces lignes au préambule \SpecialChar LaTeX
+ Sinon, ajoutez vouz ces lignes 
+\lang english
+in front of the nomenclature list as
+\lang french
+ code \SpecialChar TeX
 :
 \end_layout
 
@@ -33695,9 +33710,28 @@ page
 \series bold
 
 \backslash
-renewcommand{
+renewcommand*{
 \backslash
-eqdeclaration}[1]{, see equation
+eqdeclaration}[1]{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
+unskip, voir équation
 \backslash
 nobreakspace(#1)}
 \begin_inset Newline newline
@@ -33705,37 +33739,116 @@ nobreakspace(#1)}
 
 
 \backslash
-renewcommand{
+renewcommand*{
 \backslash
-pagedeclaration}[1]{, page
-\backslash
-nobreakspace{}#1}
-\series default
-
+pagedeclaration}[1]{
 \begin_inset Newline newline
 \end_inset
 
-en remplaçant 
-\begin_inset Quotes cld
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
 \end_inset
 
+
+\end_layout
+
+\end_inset
+
+
+\backslash
+unskip, page
+\backslash
+nobreakspace{}#1}
+\end_layout
+
+\begin_layout Standard
 
 \lang english
-see equation
-\lang french
-
-\begin_inset Quotes crd
+If the numbers should be hyperlinks, assure that you use 
+\family sans
+Hyperref
+\begin_inset space ~
 \end_inset
 
- et 
-\begin_inset Quotes cld
+Support
+\family default
+ in the document settings under 
+\family sans
+PDF
+\begin_inset space ~
 \end_inset
 
-page
-\begin_inset Quotes crd
+Properties
+\family default
+ and use instead:
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+
+\backslash
+renewcommand*{
+\backslash
+eqdeclaration}[1]{
+\begin_inset Newline newline
 \end_inset
 
- par leur traduction.
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
+unskip, voir 
+\backslash
+hyperlink{equation.#1}{équation
+\backslash
+nobreakspace{}(#1)}}
+\begin_inset Newline newline
+\end_inset
+
+
+\backslash
+renewcommand*{
+\backslash
+pagedeclaration}[1]{
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\backslash
+unskip, 
+\backslash
+hyperlink{page.#1}{page
+\backslash
+nobreakspace{}#1}}
 \end_layout
 
 \begin_layout Subsection
@@ -40138,7 +40251,11 @@ Barres d'outils
 \end_layout
 
 \begin_layout Standard
-Avec ce menu, vous pouvez déterminer les barres d'outils qui sont visibles.
+Avec ce menu, vous pouvez 
+\lang english
+set the icon size
+\lang french
+ et déterminer les barres d'outils qui sont visibles.
  Toutes les barres d'outils ainsi que la 
 \family sans
 zone de commande
@@ -52479,9 +52596,18 @@ status collapsed
 \backslash
 renewcommand*{
 \backslash
-pagedeclaration}[1]{, page~
+pagedeclaration}[1]{
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
 \backslash
-hyperpage{#1}}
+unskip, 
+\backslash
+hyperlink{page.#1}{page
+\backslash
+nobreakspace{}#1}}
 \end_layout
 
 \end_inset
@@ -52495,7 +52621,22 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-This command makes the page number a clickable hyperlink.
+This command makes the page number a clickable hyperlink, see sec.
+\begin_inset space ~
+\end_inset
+
+
+\lang french
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Options-de-glossaire"
+
+\end_inset
+
+
+\lang english
+ for more info.
 \end_layout
 
 \end_inset
