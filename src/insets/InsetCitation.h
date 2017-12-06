@@ -82,6 +82,8 @@ public:
 	static bool isCompatibleCommand(std::string const &);
 	//@}
 	///
+	void redoLabel() { cache.recalculate = true; }
+	///
 	CitationStyle getCitationStyle(BufferParams const & bp, std::string const & input,
 				       std::vector<CitationStyle> const & valid_styles) const;
 	///
