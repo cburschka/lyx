@@ -49,7 +49,6 @@ Lists of files to include in the installer
 !macro FileListQtPlatforms COMMAND DIRECTORY
 
   ${FILE}qminimal.dll"
-  ${FILE}qoffscreen.dll"
   ${FILE}qwindows.dll"
 
 !macroend
