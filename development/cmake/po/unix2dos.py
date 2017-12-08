@@ -7,7 +7,7 @@ for fname in sys.argv[1:]:
     infile = open( fname, "rb" )
     instr = infile.read()
     infile.close()
-    outstr = instr.replace( "\r\n", "\n" ).replace( "\r", "\n" ).replace( "\n", "\r\n" )
+    outstr = instr.replace( b"\r\n", b"\n" ).replace( b"\r", b"\n" ).replace( b"\n", b"\r\n" )
 
     if len(outstr) == len(instr):
         continue
