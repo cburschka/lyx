@@ -3025,9 +3025,6 @@ void Buffer::markDirty()
 	}
 	d->bak_clean = false;
 
-	DepClean::iterator it = d->dep_clean.begin();
-	DepClean::const_iterator const end = d->dep_clean.end();
-
 	for (auto & depit : d->dep_clean)
 		depit.second = false;
 }
