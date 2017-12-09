@@ -1913,7 +1913,7 @@ void LyXAction::init()
                the work area.\n
                2. select the text and run info-insert lfun.
  * \li Syntax: info-insert <TYPE> <ARG>
- * \li Params: <TYPE>: shortcut[s]|lyxrc|lyxinfo|package|textclass|menu|buffer \n
+ * \li Params: <TYPE>: shortcut[s]|lyxrc|lyxinfo|package|textclass|menu|icon|buffer \n
                <ARG>: argument for a given type. Look into InsetInfo.h for detailed
                       description. \n
 		      shortcut[s]: name of lfun (e.g math-insert \alpha) \n
