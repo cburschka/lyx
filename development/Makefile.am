@@ -77,6 +77,7 @@ Win32/packaging/installer/lang/polish.nsh \
 Win32/packaging/installer/lang/portuguese.nsh \
 Win32/packaging/installer/lang/portugueseBR.nsh \
 Win32/packaging/installer/lang/romanian.nsh \
+Win32/packaging/installer/lang/russian.nsh \
 Win32/packaging/installer/lang/slovak.nsh \
 Win32/packaging/installer/lang/spanish.nsh \
 Win32/packaging/installer/lang/swedish.nsh \

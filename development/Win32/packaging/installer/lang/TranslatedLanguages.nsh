@@ -25,6 +25,7 @@
 !insertmacro LANG "portuguese"
 !insertmacro LANG "portugueseBR"
 !insertmacro LANG "romanian"
+!insertmacro LANG "russian"
 !insertmacro LANG "slovak"
 !insertmacro LANG "spanish"
 !insertmacro LANG "swedish"
