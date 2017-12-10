@@ -16717,7 +16717,27 @@ Ergänzungsstrich
 \end_layout
 
 \begin_layout Enumerate
-Von A
+Von A–Z; Seiten
+\begin_inset space ~
+\end_inset
+
+369–378 (
+\emph on
+Bis-Strich
+\emph default
+)
+\begin_inset Newline newline
+\end_inset
+
+Autobahn München–Salzburg (
+\emph on
+Streckenstrich
+\emph default
+)
+\begin_inset Newline newline
+\end_inset
+
+Das Spiel München
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -16725,25 +16745,9 @@ Von A
 \begin_inset space \thinspace{}
 \end_inset
 
-Z; Seiten
-\begin_inset space ~
-\end_inset
-
-369–378 (
+Dortmund (
 \emph on
-Bis-strich
-\emph default
-)
-\begin_inset Newline newline
-\end_inset
-
-Autobahn München
-\begin_inset space ~
-\end_inset
-
-– Salzburg (
-\emph on
-Streckenstrich
+Gegen-Strich
 \emph default
 )
 \begin_inset Newline newline
@@ -16846,14 +16850,79 @@ Ob Zeilenumbrüche vor oder nach Gedankenstrichen erlaubt sind, hängt vom
 \end_layout
 
 \begin_layout Itemize
-Zeilenumbrüche sind nicht erlaubt bei Intervallangaben wie 1975–1982.
+Zeilenumbrüche nach dem 
+\begin_inset Quotes gld
+\end_inset
+
+Bis-Strich
+\begin_inset Quotes grd
+\end_inset
+
+ (bei Intervallangaben wie 
+\begin_inset Quotes gld
+\end_inset
+
+1975–1982
+\begin_inset Quotes grd
+\end_inset
+
+), dem Streckenstrich (
+\begin_inset Quotes gld
+\end_inset
+
+die Strecke München–Berlin
+\begin_inset Quotes grd
+\end_inset
+
+) und dem 
+\begin_inset Quotes gld
+\end_inset
+
+Gegen-Strich
+\begin_inset Quotes grd
+\end_inset
+
+ (
+\begin_inset Quotes gld
+\end_inset
+
+das Spiel München
+\begin_inset space \thinspace{}
+\end_inset
+
+–
+\begin_inset space \thinspace{}
+\end_inset
+
+Berlin
+\begin_inset Quotes grd
+\end_inset
+
+) sind erlaubt.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Nach DIN 5008 steht auch vor und nach dem Bis- und Streckenstrich jeweils
+ ein halbes Leerzeichen, laut Rechtschreibduden nicht.
+\end_layout
+
+\end_inset
+
+ Die Zeilentrennung muss nach dem Strich erfolgen.
 \end_layout
 
 \begin_layout Itemize
 Prinzipiell ist ein Zeilenumbruch sowohl vor als auch nach einem Gedankenstrich
  zulässig.
- Ein einzelner Gedankenstrich sowie der Abschließende eines Gedankenstrichpaares
- stehen jedoch aus Gründen der Lesbarkeit normalerweise nicht am Zeilenanfang.
+ Ein einzelner Gedankenstrich sowie der abschließende eines Gedankenstrichpaares
+ stehen jedoch aus Gründen der Lesbarkeit normalerweise nicht am Zeilenanfang
+ (der Rechtschreibduden empfiehlt grundsätzlich, einen Gedankenstrich nach
+ Möglichkeit 
+\emph on
+nicht
+\emph default
+ an den Zeilenanfang zu setzen).
 \end_layout
 
 \begin_layout Itemize
@@ -16863,35 +16932,23 @@ Im Französischen und Spanischen werden Gedankenstriche um eingeschobene
 \end_layout
 
 \begin_layout Standard
-Zeilenumbrüche vor abgesetzten Gedankenstrichen können mit einem geschütztem
- Leerzeichen unterbunden werden.
-\end_layout
-
-\begin_layout Standard
-Bei langen Gedankenstrichen ohne Abstand zum umgebenden Text—\SpecialChar allowbreak
-üblich im amerikani
-schen Englisch—\SpecialChar allowbreak
-kann man optionale Zeilenumbrüche mit dem Menü 
-\family sans
-Einfügen\SpecialChar menuseparator
-Formatierung\SpecialChar menuseparator
-Optionaler Zeilenumbruch
-\family default
- einfügen.
-\end_layout
-
-\begin_layout Standard
-In englischsprachigen Dokumenten mit langen Gedankenstrichen kann man alternativ
- die Option 
+In \SpecialChar LyX
+ sind Zeilenumbrüche nach Halbgeviert- und Geviertstrichen nur dann ohne
+ manuellen Eingriff erlaubt, wenn die Option 
 \family sans
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
 Schriften\SpecialChar menuseparator
-Halbgeviert und Geviertstriche als Ligaturen
- ausgeben 
+Halbgeviert- und Geviertstriche als Ligaturen
+ ausgeben
 \family default
-verwenden.
- Die Striche werden dann als 
+ gewählt wurde (bei \SpecialChar LyX
+ 2.3 ist das die Voreinstellung).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Die Striche werden in diesem Fall als 
 \begin_inset Quotes gld
 \end_inset
 
@@ -16910,8 +16967,13 @@ verwenden.
  in die \SpecialChar LaTeX
  Quelldatei geschrieben.
  Der \SpecialChar TeX
--Ligaturmechanismus konvertiert sie zu (Halb-) Geviertstrichen, auf
+-Ligaturmechanismus konvertiert sie zu (Halb-)Geviertstrichen, auf
  die ein optionaler Zeilenumbruch folgt.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -16924,8 +16986,8 @@ Die Einstellung erlaubt Zeilenumbrüche nach
 allen
 \emph default
  Halbgeviert- und Geviertstrichen.
- Inkorrekte Zeilenumbrüche müssen verhindert werden, indem man sie in eine
- Makebox packt
+ Unerwünschte Zeilenumbrüche können verhindert werden, indem man sie in
+ eine Makebox packt
 \begin_inset Foot
 status collapsed
 
@@ -16947,7 +17009,7 @@ Objekte
 
 \end_inset
 
- oder 
+, ein geschütztes Leerzeichen verwendet oder 
 \series bold
 
 \backslash
@@ -16993,40 +17055,26 @@ status open
 \end_layout
 
 \begin_layout Itemize
-
-\lang french
-Les incises 
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 1
-width ""
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-
-\lang french
-–
+Beim folgenden Einschub
 \begin_inset space ~
 \end_inset
 
-même
-\end_layout
-
+– diesem hier
+\begin_inset space ~
 \end_inset
 
- si tout le monde ne les aime pas
+– kommen keine Gedankenstriche an den Zeilenanfang.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\lang french
+Les incises –
+\begin_inset space ~
+\end_inset
+
+même si tout le monde ne les aime pas
 \begin_inset space ~
 \end_inset
 
@@ -17136,6 +17184,32 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
+Wurde die Option 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Schriften\SpecialChar menuseparator
+Halbgeviert- und Geviertstriche als Ligaturen
+ ausgeben
+\family default
+ nicht gewählt, kann man umgekehrt optionale Zeilenumbrüche mit dem Menü
+ 
+\family sans
+Einfügen\SpecialChar menuseparator
+Formatierung\SpecialChar menuseparator
+Optionaler Zeilenumbruch
+\family default
+ einfügen:
+\end_layout
+
+\begin_layout Itemize
+Lange Gedankenstrichen ohne Abstand zum umgebenden Text—\SpecialChar allowbreak
+üblich im amerikanischen
+ Englisch—\SpecialChar allowbreak
+sollten an der Zeile umbrochen werden
+\end_layout
+
+\begin_layout Standard
 Seit \SpecialChar LyX
 
 \begin_inset space ~
@@ -17169,7 +17243,7 @@ Export führte.
 \begin_inset space ~
 \end_inset
 
-2.3 gibt es die Option 
+2.3 gibt es die oben erwähnte Option 
 \family sans
 Halbgeviert- und Geviertstriche als Ligaturen ausgeben
 \family default
