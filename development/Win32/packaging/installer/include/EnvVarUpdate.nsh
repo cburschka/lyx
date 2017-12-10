@@ -261,7 +261,7 @@ Function ${UN}EnvVarUpdate
       ${If} $6 == 1
         DetailPrint "appended to $1"
       ${Else}
-        DetailPrint "Target was appended to $1"
+        #DetailPrint "Target was appended to $1"
       ${EndIf}
     ${Else}                                ;  If Prepend (and EnvVar is not empty),
       StrCpy $0 $4;$0                      ;     prepend PathString
