@@ -799,6 +799,14 @@ contributors = [
                  "25 April 2016",
                  u"Mingw-w64 build fixes"),
 
+     contributor(u"D. Gloger",
+                 "2wochenurlaub () gloger ! biz",
+                 "GPL",
+                 "Re: external material template: SVG -> PDF/PS with LaTeX",
+                 "m=151298047124676",
+                 "11 December 2017",
+                 u"Inkscape External Template"),
+
      contributor(u"Hartmut Goebel",
                  "h.goebel () crazy-compilers ! com",
                  "GPL",
