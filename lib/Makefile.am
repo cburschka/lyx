@@ -37,6 +37,10 @@ dist_noinst_DATA = \
 	images/math/misc.png \
 	images/math/varsz.png
 
+skbinddir = $(pkgdatadir)/bind/sk
+dist_skbind_DATA = \
+	bind/sk/menus.bind
+
 debinddir = $(pkgdatadir)/bind/de
 dist_debind_DATA = \
 	bind/de/menus.bind
