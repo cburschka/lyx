@@ -1,0 +1,101 @@
+# -*- text -*-
+
+# file sk_menus.bind
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
+
+# author Lars Gullik Bjønnes
+# author Jean-Marc Lasgouttes
+# author Michael Gerz
+# author Jürgen Vigna
+# author Kornel Benko
+
+# Full author contact details are available in file CREDITS.
+
+# Key bindings for so-called "invisible" menus
+# Adapted to the slovak internationalisation
+
+# Toto je slovenská verzia súboru /usr/local/share/lyx/bind/menus.bind.
+# Je myslená pre tých, ktorí používajú slovenské UI pre funkcie v menu.
+# Slovenské verzia je nutná, lebo niektoré niektoré skratky sa neznášajú
+# so slovenskou ponukou.
+#
+# Napr. je pre ponuku 'Súbor' teraz skratka ALT-S.
+#
+# Bývalé skratky ktoré začńali s ALT-S, začínajú teraz s ALT-F.
+#
+
+Format 4
+
+\bind "M-f t"                   "font-size tiny"
+\bind "M-f S-S"                 "font-size footnotesize"
+\bind "M-f s"                   "font-size small"
+\bind "M-f n"                   "font-size normal"
+\bind "M-f l"                   "font-size large"
+\bind "M-f S-L"                 "font-size larger"
+\bind "M-f h"                   "font-size huge"
+\bind "M-f S-H"                 "font-size giant"
+
+\bind "M-f ~S-1"                "font-size tiny"
+\bind "M-f ~S-2"                "font-size scriptsize"
+\bind "M-f ~S-3"                "font-size footnotesize"
+\bind "M-f ~S-4"                "font-size small"
+\bind "M-f ~S-5"                "font-size normal"
+\bind "M-f ~S-6"                "font-size large"
+\bind "M-f ~S-7"                "font-size larger"
+\bind "M-f ~S-8"                "font-size largest"
+\bind "M-f ~S-9"                "font-size huge"
+\bind "M-f ~S-0"                "font-size giant"
+
+\bind "M-f ~S-plus"             "font-size increase"
+\bind "M-f ~S-minus"            "font-size decrease"
+
+#
+# Paragraph menu
+#
+
+\bind "M-o l"                   "paragraph-params \align left"
+\bind "M-o r"                   "paragraph-params \align right"
+\bind "M-o c"                   "paragraph-params \align center"
+# It's called Justified in the UI
+\bind "M-o j"                   "paragraph-params \align block"
+\bind "M-o e"                   "paragraph-params \align default"
+\bind "M-o i"                   "paragraph-params \indent-toggle"
+\bind "M-o s"                   "paragraph-params \paragraph_spacing single"
+
+#
+# Arguments
+#
+
+\bind "M-a 1"                   "argument-insert 1"
+\bind "M-a 2"                   "argument-insert 2"
+\bind "M-a 3"                   "argument-insert 3"
+\bind "M-a 4"                   "argument-insert 4"
+\bind "M-a 5"                   "argument-insert 5"
+\bind "M-a 6"                   "argument-insert 6"
+\bind "M-a 7"                   "argument-insert 7"
+\bind "M-a 8"                   "argument-insert 8"
+\bind "M-a 9"                   "argument-insert 9"
+\bind "M-a 0"                   "argument-insert post:1"
+
+#
+# Paragraph style menu
+#
+
+\bind "M-o ~S-0"                "layout Part"
+\bind "M-o ~S-1"                "layout Chapter"
+\bind "M-o ~S-2"                "layout Section"
+\bind "M-o ~S-3"                "layout Subsection"
+\bind "M-o ~S-4"                "layout Subsubsection"
+\bind "M-o ~S-5"                "layout Paragraph"
+\bind "M-o ~S-6"                "layout Subparagraph"
+\bind "M-o ~S-asterisk ~S-0"    "layout Part*"
+\bind "M-o ~S-asterisk ~S-1"    "layout Chapter*"
+\bind "M-o ~S-asterisk ~S-2"    "layout Section*"
+
+#
+# Clashes
+#
+
+\unbind "M-u" "word-upcase partial"
+\unbind "M-d" "word-delete-forward"
