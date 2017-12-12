@@ -1783,6 +1783,14 @@ contributors = [
                  "Mar 2 2009",
                  u"Indonesian translation"),
 
+     contributor(u"Yuriy Skalko",
+                 "yuriy.skalko () gmail ! com",
+                 "GPL",
+                 "Re: Updated Russian translation",
+                 "m=151306079714476",
+                 "12 December 2017",
+                 u"Russian translation of the user interface"),
+     
      contributor(u"Giovanni Sora",
                  "g.sora () tiscali ! it",
                  "GPL",
