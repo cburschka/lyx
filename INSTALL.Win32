@@ -52,7 +52,12 @@ Compiling with Microsoft Visual C++ (MSVC)
 
 	Install the latest CMake from http://www.cmake.org
 
-5	Configure
+5	Download dependencies
+
+	Download the LyX for Windows build dependencies from
+	ftp.lyx.de/LyXWinInstaller/lyx-windows-deps-msvc2015.zip
+
+6	Configure
 
 	- Open the "Developer Command Prompt for VS2015" from the
 	  "Visual Studio 2015\Visual Studio Tools" subfolder of the start menu.
@@ -72,23 +77,23 @@ Compiling with Microsoft Visual C++ (MSVC)
 
 	- Set LYX_USE_QT to QT5 and click Configure.
 
-	- Enable LYX_DEPENDENCIES_DOWNLOAD and click Configure.
-	  Pre-compiled dependencies will automatically be downloaded.
-	  If you installed the dependencies manually, set GNUWIN32_DIR instead
-	  to the folder that contains the dependencies and click Configure.
+	- Set GNUWIN32_DIR to the folder that contains the dependencies.
+	  (This alternative does currently not work:
+	   Enable LYX_DEPENDENCIES_DOWNLOAD and click Configure.
+	   Pre-compiled dependencies will automatically be downloaded.)
 
 	- Enable the LYX_INSTALL option and click Configure.
 
 	- Click Generate.
 
-6	Compile
+7	Compile
 
 	A Microsoft Visual C++ solution should have been generated at
 	C:\LyX\lyx-23-build\lyx.sln
 	Compile the INSTALL project to get a LyX installation in
 	C:\LyX\lyx-23-build\LYX_INSTALLED.
 
-7	Copy dependencies
+8	Copy dependencies
 
 	Copy
 	- C:\LyX\lyx-23-build\msvc2015-deps\lyx-windows-deps-msvc2015\bin
@@ -111,7 +116,7 @@ Compiling with Microsoft Visual C++ (MSVC)
 	Qt5WinExtrasd.dll (if compiling Debug version)
 	to C:\LyX\lyx-23-build\LYX_INSTALLED\bin
 
-8	Define path prefix
+9	Define path prefix
 
 	Add the following line to C:\LyX\lyx-23-build\LYX_INSTALLED\Resources\lyxrc.dist,
 	so LyX will find the bundled tools such as Python, ImageMagick
@@ -122,7 +127,7 @@ Compiling with Microsoft Visual C++ (MSVC)
 	You may also add the location of your LaTeX installation if it's not on the
 	system PATH, and the location of JabRef.
 
-9	Start LyX
+10	Start LyX
 
 	C:\LyX\lyx-23-build\LYX_INSTALLED\bin\lyx.exe
 
@@ -132,9 +137,7 @@ Creating the Installer
 
 	- Get NSIS from http://nsis.sourceforge.net
 	- In the LyX source directory, go to development\Win32\packaging\installer
-	- Copy the 3 dll-files from there to the DLL folder of the NSIS installation
-	- Check whether the file locations/paths in settings.nsh match your setup.
-	- Right-click on lyx.nsi and click "Compile NSIS Script".
+	- Follow the steps in the file Readme.txt
 
 
 Compiling with GCC with MinGW64 + MSYS2 Environment using autotools

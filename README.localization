@@ -35,10 +35,12 @@ can follow http://www.lyx.org/HowToUseGIT page.
 2) HOW DO I EDIT PO FILES?
 
 PO files can be edited with any text editor available for your system (e.g.
-Vim, NotePad etc.). Yet another option is to use a specialized editor for .po
-files. You can e.g. use the editors "poEdit" or "jEdit", Linux users can
-additionally use e.g. "kbabel". Using these editors usually makes things easier
+Vim, jEdit etc.). Yet another option is to use a specialized editor for .po
+files. You can e.g. use the editor "Poedit", Linux users can
+additionally use e.g. "Lokalize". Using these editors usually makes things easier
 as they have many tools to assist the translator.
+If you use Poedit, please uncheck in its settings the option to break lines after
+80 characters.
 
 
 3) WHAT DO I NEED TO TRANSLATE?
@@ -118,9 +120,9 @@ compile updated xx.po translation and then run LyX.
 For advanced users - if you want to remerge your files against current source:
 
 - on Linux: execute the command: make update-po
-- on Windows: either build the update-po target in MSVC
-              or run the command: msbuild po\update-po.vcxproj
-              (depending on the directory you are in)
+- on Windows: if you compile LyX in install mode, the po files are automatically
+	updated and output to the folder <compilation output folder>\po
+	Another option is to build the target "update-po" in MSVC.
 
 
 7) HOW TO CONTRIBUTE MY WORK?
