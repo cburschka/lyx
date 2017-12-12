@@ -16945,7 +16945,9 @@ Whether line breaks around dashes are allowed depends on the use case and
 \begin_layout Itemize
 
 \lang english
-No line breaks are allowed in ranges of values like A–Z or 1975–1982.
+In English, line breaks are generally allowed after the dash in ranges of
+ values such as 1975–1982, but no line break should occur if only a single
+ character follows the dash (as in A–Z).
 \end_layout
 
 \begin_layout Itemize
@@ -16965,86 +16967,66 @@ In French and Spanish, dashes around parenthetical statements are treated
 \begin_layout Standard
 
 \lang english
-When using spaced en dashes
-\begin_inset space ~
-\end_inset
-
-- common in British English
-\begin_inset space ~
-\end_inset
-
-- line breaks before the dash can be prevented with protected spaces.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-When using em dashes without spaces—\SpecialChar allowbreak
-common in American English—\SpecialChar allowbreak
-one can insert
- optional line breaks with the menu 
+In \SpecialChar LyX
+, line breaks after en-dashes and em-dashes are only allowed (without
+ manual intervention), if the option 
 \family sans
-Insert\SpecialChar menuseparator
-Formatting\SpecialChar menuseparator
-Optional line break
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-For documents containing many em dashes, you may consider to select the
- option
-\lang spanish
- 
-\family sans
-Documento\SpecialChar menuseparator
-
-\lang english
+Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
 Fonts\SpecialChar menuseparator
-Output en- and em-dashes as ligatures.
- 
+Output en- and em-dashes as ligatures
 \family default
-This forces the output of dashes as 
-\begin_inset Quotes cld
+ is selected (this is the default in \SpecialChar LyX
+ 2.3).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+In this case, the dashes are output as 
+\begin_inset Quotes eld
 \end_inset
 
 --
-\begin_inset Quotes crd
+\begin_inset Quotes erd
 \end_inset
 
  and 
-\begin_inset Quotes cld
+\begin_inset Quotes eld
 \end_inset
 
 ---
-\begin_inset Quotes crd
+\begin_inset Quotes erd
 \end_inset
 
- when exporting to \SpecialChar LaTeX
+, respectively, when exporting to \SpecialChar LaTeX
 .
  The \SpecialChar TeX
  font ligature mechanism converts them to dash characters followed
  by an optional line break.
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 
 \lang english
-Caution:
+Please note:
 \end_layout
 
 \begin_layout Enumerate
 
 \lang english
 This results in optional line breaks after 
-\series bold
+\emph on
 all
-\series default
- en and em dashes.
- Incorrect line breaks must be prevented by wrapping in a makebox
+\emph default
+ en- and em-dashes.
+ Unwanted line breaks must be prevented by wrapping in a makebox
 \lang spanish
 
 \begin_inset Foot
@@ -17064,9 +17046,9 @@ Objetos insertados
 
 \end_inset
 
- 
+
 \lang english
-or preceding with 
+, using protected spaces or preceding with 
 \series bold
 
 \backslash
@@ -17107,7 +17089,7 @@ status open
 \begin_layout Plain Layout
 
 \lang english
-369–378
+368–9
 \end_layout
 
 \end_inset
@@ -17117,39 +17099,35 @@ status open
 
 \begin_layout Itemize
 
-\lang french
-Les incises 
-\begin_inset Box Frameless
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 1
-width ""
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-
-\lang french
-–
+\lang english
+With spaced en dashes
 \begin_inset space ~
 \end_inset
 
-même
-\end_layout
-
+– common e.
+\begin_inset space \thinspace{}
 \end_inset
 
- si tout le monde ne les aime pas
+g.
+ in British English and generally recommended by 
+\emph on
+The Elements of Typographic Style
+\emph default
+
+\begin_inset space ~
+\end_inset
+
+– line breaks should not occur before the dash.
+\end_layout
+
+\begin_layout Itemize
+
+\lang french
+Les incises –
+\begin_inset space ~
+\end_inset
+
+même si tout le monde ne les aime pas
 \begin_inset space ~
 \end_inset
 
@@ -17253,7 +17231,36 @@ Hyphenation is suppressed in words adjacent to hyphens and ligature dashes.
 \begin_layout Standard
 
 \lang english
-Since \SpecialChar LyX
+If the option 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Fonts\SpecialChar menuseparator
+Output en- and em-dashes as ligatures
+\family default
+ has not been selected, you can  insert optional line breaks via the menu
+ 
+\family sans
+Insert\SpecialChar menuseparator
+Formatting\SpecialChar menuseparator
+Optional line break
+\family default
+:
+\end_layout
+
+\begin_layout Itemize
+
+\lang english
+Em-dashes without spaces—\SpecialChar allowbreak
+as common in American English—\SpecialChar allowbreak
+should be broken
+ after the dash.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+As of \SpecialChar LyX
 
 \begin_inset space ~
 \end_inset
@@ -17285,7 +17292,7 @@ Up to \SpecialChar LyX
 \begin_inset space ~
 \end_inset
 
-2.3 provides the option 
+2.3 provides the aforementioned option 
 \family sans
 Output en- and em-dashes as ligatures
 \family default
