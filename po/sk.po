@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-12-01 10:50+0100\n"
-"PO-Revision-Date: 2017-12-01 10:05+0000\n"
+"POT-Creation-Date: 2017-12-09 14:28+0100\n"
+"PO-Revision-Date: 2017-12-09 15:07+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1597,7 +1597,7 @@ msgstr "&Otvorené dokumenty"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:251
 msgid "&All manuals"
-msgstr "Všetky &príručky"
+msgstr "Vš&etky príručky"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:269
 msgid ""
@@ -1619,11 +1619,11 @@ msgstr "Udržovať veľkosť prvých písiem v slove tak, ako v nájdenom texte"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:285
 msgid "&Preserve first case on replace"
-msgstr "Zachovať v&eľkosť prvých písiem"
+msgstr "&Zachovať veľkosť prvých písiem"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:295
 msgid "&Expand macros"
-msgstr "Rozvinúť &makrá"
+msgstr "&Rozvinúť makrá"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:302
 msgid "Restrict search to math environments only"
@@ -17939,7 +17939,7 @@ msgstr "Zosivelé"
 
 #: lib/ui/stdcontext.inc:208
 msgid "Open All Notes|A"
-msgstr "Otvoriť všetky poznámky|p"
+msgstr "Otvoriť Všetky Poznámky|P"
 
 #: lib/ui/stdcontext.inc:209
 msgid "Close All Notes|l"
@@ -18156,7 +18156,7 @@ msgstr "Skoč späť na uloženú záložku"
 
 #: lib/ui/stdcontext.inc:341 lib/ui/stdmenus.inc:569
 msgid "Forward Search|F"
-msgstr "Dopredu Hľadať"
+msgstr "Dopredu Hľadať|D"
 
 #: lib/ui/stdcontext.inc:343 lib/ui/stdmenus.inc:118
 msgid "Move Paragraph Up|o"
@@ -18485,7 +18485,7 @@ msgstr "Obtekať pri Náhľade"
 
 #: lib/ui/stdcontext.inc:677 lib/ui/stdmenus.inc:356
 msgid "Lock Toolbars|L"
-msgstr "Blokuj Lišty nástrojov"
+msgstr "Blokuj Lišty Nástrojov|B"
 
 #: lib/ui/stdcontext.inc:679 lib/ui/stdmenus.inc:358
 msgid "Small-sized Icons"
@@ -18513,7 +18513,7 @@ msgstr "Upraviť|U"
 
 #: lib/ui/stdmenus.inc:32
 msgid "View|V"
-msgstr "Zobraziť|Z"
+msgstr "Zobraziť|b"
 
 #: lib/ui/stdmenus.inc:33
 msgid "Insert|I"
@@ -18533,7 +18533,7 @@ msgstr "Nástroje|N"
 
 #: lib/ui/stdmenus.inc:37
 msgid "Help|H"
-msgstr "Pomocník"
+msgstr "Pomocník|P"
 
 #: lib/ui/stdmenus.inc:45
 msgid "New|N"
@@ -18573,11 +18573,11 @@ msgstr "Uložiť všetko|v"
 
 #: lib/ui/stdmenus.inc:55
 msgid "Revert to Saved|R"
-msgstr "Vrátiť na uložené"
+msgstr "Vrátiť na uložené|t"
 
 #: lib/ui/stdmenus.inc:56
 msgid "Version Control|V"
-msgstr "Správa Verzií"
+msgstr "Správa Verzií|S"
 
 #: lib/ui/stdmenus.inc:58
 msgid "Import|I"
@@ -18669,11 +18669,11 @@ msgstr "Vlepiť špeciálne"
 
 #: lib/ui/stdmenus.inc:112
 msgid "Select Whole Inset"
-msgstr "Vyberte Celú vložku"
+msgstr "Vyberte Celú Vložku"
 
 #: lib/ui/stdmenus.inc:113
 msgid "Select All"
-msgstr "Vybrať všetko"
+msgstr "Vybrať Všetko"
 
 #: lib/ui/stdmenus.inc:115
 msgid "Find & Replace (Quick)...|F"
@@ -19029,11 +19029,11 @@ msgstr "Maple, Evalf (plávajúca čiarka)|v"
 
 #: lib/ui/stdmenus.inc:334
 msgid "Open All Insets|O"
-msgstr "Otvoriť všetky vložky"
+msgstr "Otvoriť Všetky Vložky"
 
 #: lib/ui/stdmenus.inc:335
 msgid "Close All Insets|C"
-msgstr "Zavrieť všetky vložky"
+msgstr "Zavrieť Všetky Vložky"
 
 #: lib/ui/stdmenus.inc:337
 msgid "Unfold Math Macro|n"
@@ -19057,11 +19057,11 @@ msgstr "Ladiace Výpisy"
 
 #: lib/ui/stdmenus.inc:343
 msgid "Toolbars|b"
-msgstr "Lišty nástrojov"
+msgstr "Lišty Nástrojov"
 
 #: lib/ui/stdmenus.inc:345
 msgid "Split View Into Left and Right Half|i"
-msgstr "Pohľad rozdeliť na ľavú a pravú polovičku"
+msgstr "Pohľad Rozdeliť na Ľavú a Pravú Polovičku"
 
 #: lib/ui/stdmenus.inc:346
 msgid "Split View Into Upper and Lower Half|e"
@@ -19069,7 +19069,7 @@ msgstr "Pohľad Rozdeliť na Vrchnú a Spodnú Polovičku"
 
 #: lib/ui/stdmenus.inc:347
 msgid "Close Current View|w"
-msgstr "Zavri aktuálny náhľad"
+msgstr "Zavri Aktuálny Náhľad"
 
 #: lib/ui/stdmenus.inc:348
 msgid "Fullscreen|l"
@@ -19333,7 +19333,7 @@ msgstr "Sledovať Zmeny|S"
 
 #: lib/ui/stdmenus.inc:536
 msgid "Build Program|B"
-msgstr "Vytvoriť program"
+msgstr "Vytvoriť Program|V"
 
 #: lib/ui/stdmenus.inc:537
 msgid "LaTeX Log|L"
@@ -19345,11 +19345,11 @@ msgstr "Začni Prílohy Tu|P"
 
 #: lib/ui/stdmenus.inc:542
 msgid "View Master Document|M"
-msgstr "Zobraziť Hlavný Dokument"
+msgstr "Zobraziť Hlavný Dokument|H"
 
 #: lib/ui/stdmenus.inc:543
 msgid "Update Master Document|a"
-msgstr "Aktualizovať Hlavný Dokument"
+msgstr "Aktualizovať Hlavný Dokument|A"
 
 #: lib/ui/stdmenus.inc:545
 msgid "Compressed|o"
