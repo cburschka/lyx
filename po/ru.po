@@ -12,14 +12,14 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2017-12-12 15:50+0100\n"
-"PO-Revision-Date: 2017-12-13 01:02+0200\n"
+"PO-Revision-Date: 2017-12-13 13:12+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <kruvalig@gmail.com>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.5\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Bookmarks: 1979,613,-1,-1,-1,-1,-1,-1,-1,-1\n"
@@ -693,7 +693,7 @@ msgstr "Переименовать выбранную ветку"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:146
 msgid "Re&name..."
-msgstr "Пе&реименовать"
+msgstr "Переименовать..."
 
 #: src/frontends/qt4/ui/BranchesUnknownUi.ui:25
 msgid "Add the selected branches to the list."
@@ -2398,7 +2398,7 @@ msgstr "Значение ширины линии."
 
 #: src/frontends/qt4/ui/LineUi.ui:94
 msgid "&Thickness:"
-msgstr "Толщина"
+msgstr "Толщина:"
 
 #: src/frontends/qt4/ui/LineUi.ui:107
 msgid "Value of the line thickness."
@@ -4347,7 +4347,7 @@ msgstr "&Файл пользовательского интерфейса:"
 # ?
 #: src/frontends/qt4/ui/PrefUi.ui:74
 msgid "&Icon set:"
-msgstr "&Набор иконок:"
+msgstr "&Набор значков:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:84
 msgid ""
@@ -4357,7 +4357,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefUi.ui:108
 msgid "Use icons from system's &theme"
-msgstr "Использовать иконки из системной темы"
+msgstr "Использовать значки из системной темы"
 
 #: src/frontends/qt4/ui/PrefUi.ui:120
 msgid "Context Help"
@@ -6419,9 +6419,8 @@ msgstr "Обычный"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:31 lib/layouts/iucr.layout:103
 #: lib/layouts/iucr.layout:106
-#, fuzzy
 msgid "Author Footnote"
-msgstr "Заметка в подвал"
+msgstr "Сноска автора"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:37
 #, fuzzy
@@ -6979,7 +6978,7 @@ msgstr "Корреспонденция к:"
 
 #: lib/layouts/aa.layout:166 lib/layouts/egs.layout:541
 msgid "Acknowledgements."
-msgstr "Благодарности"
+msgstr "Благодарности."
 
 #: lib/layouts/aa.layout:178 lib/layouts/aapaper.layout:66
 #: lib/layouts/aapaper.layout:139 lib/layouts/aastex.layout:95
@@ -9375,10 +9374,10 @@ msgid "\\arabic{section}.\\arabic{subsection}"
 msgstr "\\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:381
-#, fuzzy
 msgid ""
 "Subsubsection \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
-msgstr "Подраздел \\arabic{section}.\\arabic{subsection}"
+msgstr ""
+"Подподраздел \arabic{section}.\arabic{subsection}.\arabic{subsubsection}"
 
 #: lib/layouts/beamer.layout:393
 msgid ""
@@ -9386,18 +9385,17 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/beamer.layout:404
-#, fuzzy
 msgid "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
-msgstr "Подраздел \\arabic{section}.\\arabic{subsection}"
+msgstr "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 
 #: lib/layouts/beamer.layout:431 lib/layouts/beamer.layout:437
 msgid "Frame"
-msgstr "Кадр"
+msgstr "Рамка"
 
 #: lib/layouts/beamer.layout:432 lib/layouts/beamer.layout:510
 #: lib/layouts/beamer.layout:556 lib/layouts/beamer.layout:587
 msgid "Frames"
-msgstr "Кадры"
+msgstr "Рамки"
 
 #: lib/layouts/beamer.layout:454 lib/layouts/beamer.layout:870
 #: lib/layouts/beamer.layout:1220 lib/layouts/beamer.layout:1368
@@ -9406,9 +9404,8 @@ msgstr "Кадры"
 #: lib/layouts/beamer.layout:1464 lib/layouts/beamer.layout:1484
 #: lib/layouts/beamer.layout:1504 lib/layouts/beamer.layout:1524
 #: lib/layouts/beamer.layout:1549 lib/layouts/pdfform.module:123
-#, fuzzy
 msgid "Action"
-msgstr "Раздел"
+msgstr "Действие"
 
 #: lib/layouts/beamer.layout:456 lib/layouts/beamer.layout:517
 msgid "Overlay specifications for this frame"
@@ -9425,7 +9422,7 @@ msgstr ""
 #: lib/layouts/beamer.layout:469 lib/layouts/beamer.layout:491
 #: lib/layouts/beamer.layout:502 lib/layouts/beamer.layout:530
 msgid "Frame Options"
-msgstr "Параметры кадра"
+msgstr "Параметры рамки"
 
 #: lib/layouts/beamer.layout:470 lib/layouts/beamer.layout:492
 #: lib/layouts/beamer.layout:503 lib/layouts/beamer.layout:531
@@ -9435,9 +9432,8 @@ msgstr "Параметры кадра"
 #: lib/layouts/lilypond.module:36 lib/layouts/litinsets.inc:45
 #: lib/layouts/litinsets.inc:46 lib/layouts/todonotes.module:78
 #: lib/layouts/todonotes.module:90 lib/layouts/todonotes.module:107
-#, fuzzy
 msgid "Options"
-msgstr "&Параметры:"
+msgstr "&Параметры"
 
 #: lib/layouts/beamer.layout:471 lib/layouts/beamer.layout:493
 #: lib/layouts/beamer.layout:504 lib/layouts/beamer.layout:532
@@ -9445,9 +9441,8 @@ msgid "Frame options (see beamer manual)"
 msgstr ""
 
 #: lib/layouts/beamer.layout:474
-#, fuzzy
 msgid "Frame Title"
-msgstr "Подзаголовок рамки"
+msgstr "Заголовок рамки"
 
 #: lib/layouts/beamer.layout:475
 msgid "Enter the frame title here"
@@ -9489,9 +9484,8 @@ msgid "Repeat frame with label"
 msgstr "Снова кадр с меткой"
 
 #: lib/layouts/beamer.layout:555
-#, fuzzy
 msgid "FrameTitle"
-msgstr "Подзаголовок рамки"
+msgstr "Заголовок рамки"
 
 #: lib/layouts/beamer.layout:574 lib/layouts/beamer.layout:604
 #: lib/layouts/beamer.layout:809 lib/layouts/beamer.layout:838
@@ -11201,9 +11195,8 @@ msgid "Title footnote"
 msgstr "Заметка в подвал"
 
 #: lib/layouts/elsarticle.layout:133
-#, fuzzy
 msgid "Footnote Label"
-msgstr "ярлык сноски"
+msgstr "Метка сноски"
 
 #: lib/layouts/elsarticle.layout:134
 msgid "Label you refer to in the title"
@@ -11275,9 +11268,8 @@ msgid "Label of the author you refer to"
 msgstr ""
 
 #: lib/layouts/elsarticle.layout:248
-#, fuzzy
 msgid "Internet"
-msgstr "InternetRowA"
+msgstr "Интернет"
 
 #: lib/layouts/elsarticle.layout:249
 msgid "If content is 'url', email becomes an Internet address"
@@ -12152,7 +12144,6 @@ msgid "Foot to End"
 msgstr "Сноски в примечания"
 
 #: lib/layouts/foottoend.module:6
-#, fuzzy
 msgid ""
 "Sets all footnotes as endnotes. You will need to add \\theendnotes in TeX-"
 "code where you want the endnotes to appear."
@@ -12991,7 +12982,7 @@ msgstr ""
 
 #: lib/layouts/iopart.layout:84
 msgid "Review"
-msgstr "Обзор (изменений)"
+msgstr "Рецензирование"
 
 #: lib/layouts/iopart.layout:90
 #, fuzzy
@@ -14034,9 +14025,8 @@ msgid "Height the photo is resized to"
 msgstr ""
 
 #: lib/layouts/moderncv.layout:215
-#, fuzzy
 msgid "Thickness"
-msgstr "Толстая линия"
+msgstr "Толщина"
 
 #: lib/layouts/moderncv.layout:216
 msgid "Thickness of the surrounding frame"
@@ -14058,14 +14048,12 @@ msgid "CloseSection"
 msgstr "Выделенная область"
 
 #: lib/layouts/moderncv.layout:296
-#, fuzzy
 msgid "Columns:"
 msgstr "&Столбцов:"
 
 #: lib/layouts/moderncv.layout:311
-#, fuzzy
 msgid "Optional width"
-msgstr "необязательное"
+msgstr "Необязательная ширина"
 
 #: lib/layouts/moderncv.layout:318
 #, fuzzy
@@ -14099,12 +14087,10 @@ msgid "Item with Comment:"
 msgstr "Комментарий"
 
 #: lib/layouts/moderncv.layout:408 lib/layouts/moderncv.layout:409
-#, fuzzy
 msgid "Text"
 msgstr "Текст"
 
 #: lib/layouts/moderncv.layout:425
-#, fuzzy
 msgid "ListItem"
 msgstr "ЭлементСписка"
 
@@ -14113,14 +14099,12 @@ msgid "List Item:"
 msgstr "Элемент Списка:"
 
 #: lib/layouts/moderncv.layout:432
-#, fuzzy
 msgid "DoubleItem"
 msgstr "Двойной"
 
 #: lib/layouts/moderncv.layout:435
-#, fuzzy
 msgid "Double Item:"
-msgstr "Двойной"
+msgstr "Двойной:"
 
 #: lib/layouts/moderncv.layout:439
 msgid "Left Summary"
@@ -14139,14 +14123,12 @@ msgid "Left text"
 msgstr "Левый текст"
 
 #: lib/layouts/moderncv.layout:449
-#, fuzzy
 msgid "Right Summary"
-msgstr "Сводка"
+msgstr "Правая сводка"
 
 #: lib/layouts/moderncv.layout:450
-#, fuzzy
 msgid "Right summary"
-msgstr "Заголовок справа"
+msgstr "Правая сводка"
 
 #: lib/layouts/moderncv.layout:454
 #, fuzzy
@@ -15691,9 +15673,8 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/shapepar.module:26
-#, fuzzy
 msgid "CD label"
-msgstr "ярлык URL"
+msgstr "ярлык CD"
 
 #: lib/layouts/shapepar.module:30
 #, fuzzy
@@ -15701,9 +15682,8 @@ msgid "ShapedParagraphs"
 msgstr "Абзац"
 
 #: lib/layouts/shapepar.module:39 lib/ui/stdtoolbars.inc:823
-#, fuzzy
 msgid "Circle"
-msgstr "circledS"
+msgstr "Окружность"
 
 #: lib/layouts/shapepar.module:44
 #, fuzzy
@@ -15712,11 +15692,11 @@ msgstr "бубны"
 
 #: lib/layouts/shapepar.module:49
 msgid "Heart"
-msgstr ""
+msgstr "Сердце"
 
 #: lib/layouts/shapepar.module:54
 msgid "Hexagon"
-msgstr ""
+msgstr "Шестиугольник"
 
 #: lib/layouts/shapepar.module:59
 #, fuzzy
@@ -15749,28 +15729,24 @@ msgid "TeX"
 msgstr "TeX"
 
 #: lib/layouts/shapepar.module:96
-#, fuzzy
 msgid "Triangle up"
-msgstr "bigtriangleup"
+msgstr "Треугольник вверх"
 
 #: lib/layouts/shapepar.module:101
-#, fuzzy
 msgid "Triangle down"
-msgstr "triangledown"
+msgstr "Треугольник вниз"
 
 #: lib/layouts/shapepar.module:106
-#, fuzzy
 msgid "Triangle left"
-msgstr "triangleleft"
+msgstr "Треугольник влево"
 
 #: lib/layouts/shapepar.module:111
-#, fuzzy
 msgid "Triangle right"
-msgstr "triangleright"
+msgstr "Треугольник вправо"
 
 #: lib/layouts/shapepar.module:117
 msgid "shapepar"
-msgstr ""
+msgstr "shapepar"
 
 #: lib/layouts/shapepar.module:123
 msgid "For scaling the <Shape specification> to positions on the page"
@@ -15824,9 +15800,8 @@ msgid "ACM SIGPLAN (Obsolete)"
 msgstr "ACM SIGPLAN (устаревшая версия)"
 
 #: lib/layouts/sigplanconf.layout:85
-#, fuzzy
 msgid "Name of the conference"
-msgstr "Название принтера по умолчанию"
+msgstr "Название конференции"
 
 #: lib/layouts/sigplanconf.layout:89
 msgid "Conference:"
@@ -16109,16 +16084,15 @@ msgstr "Предварительный просмотр"
 
 #: lib/layouts/stdinsets.inc:703 lib/layouts/stdinsets.inc:711
 msgid "see equation[[nomencl]]"
-msgstr ""
+msgstr "см."
 
 #: lib/layouts/stdinsets.inc:704 lib/layouts/stdinsets.inc:712
 msgid "page[[nomencl]]"
-msgstr ""
+msgstr "стр."
 
 #: lib/layouts/stdinsets.inc:705 lib/layouts/stdinsets.inc:713
-#, fuzzy
 msgid "Nomenclature[[output]]"
-msgstr "Форматы[[output]]"
+msgstr "Список обозначений[[output]]"
 
 #: lib/layouts/stdlayouts.inc:99
 msgid "Verbatim*"
@@ -16139,7 +16113,7 @@ msgstr "Приложение \\thechapter"
 #: lib/layouts/subequations.module:2 lib/layouts/subequations.module:10
 #: lib/layouts/subequations.module:13
 msgid "Subequations"
-msgstr "Подуравнение"
+msgstr "Подуравнения"
 
 #: lib/layouts/subequations.module:5
 msgid ""
@@ -16399,7 +16373,6 @@ msgid "Title*"
 msgstr "Заглавие*"
 
 #: lib/layouts/svmult.layout:37
-#, fuzzy
 msgid "Title*:"
 msgstr "Заглавие*:"
 
@@ -16430,7 +16403,7 @@ msgstr "Для редакторов"
 
 #: lib/layouts/svprobth.layout:3
 msgid "Springer SV Jour/PTRF"
-msgstr ""
+msgstr "Springer SV Jour/PTRF"
 
 #: lib/layouts/sweave.module:2 lib/configure.py:656
 msgid "Sweave"
@@ -16459,14 +16432,12 @@ msgstr ""
 "таблицы, например 'Таблица 2.1'."
 
 #: lib/layouts/tarticle.layout:3
-#, fuzzy
 msgid "Japanese Article (Standard Class: Vertical Writing)"
-msgstr "Beamer Article (стандартный класс)"
+msgstr "Japanese Article (стандартный класс: вертикальное письмо)"
 
 #: lib/layouts/tbook.layout:3
-#, fuzzy
 msgid "Japanese Book (Standard Class: Vertical Writing)"
-msgstr "Book (стандартный класс)"
+msgstr "Japanese Book (стандартный класс: вертикальное письмо)"
 
 #: lib/layouts/tcolorbox.module:2
 msgid "Fancy Colored Boxes"
@@ -16492,7 +16463,7 @@ msgstr ""
 
 #: lib/layouts/tcolorbox.module:26
 msgid "Dynamic Color Box"
-msgstr ""
+msgstr "Динамический цветной блок"
 
 #: lib/layouts/tcolorbox.module:29
 msgid "Color Box (Dynamic)"
@@ -16534,7 +16505,7 @@ msgstr "Цвета"
 
 #: lib/layouts/tcolorbox.module:70
 msgid "-----"
-msgstr ""
+msgstr "-----"
 
 #: lib/layouts/tcolorbox.module:81
 #, fuzzy
@@ -16559,9 +16530,8 @@ msgid "Options for the new box type (optional)"
 msgstr ""
 
 #: lib/layouts/tcolorbox.module:135
-#, fuzzy
 msgid "Name of the new box type"
-msgstr "Нет языка"
+msgstr "Имя нового типа блока"
 
 #: lib/layouts/tcolorbox.module:140
 msgid "Arguments"
@@ -16572,9 +16542,8 @@ msgid "Number of arguments (remove this inset if none!)"
 msgstr "Количество аргументов (удалите, если их нет)"
 
 #: lib/layouts/tcolorbox.module:146
-#, fuzzy
 msgid "Default Value"
-msgstr "По умолчанию|у"
+msgstr "Значение по умолчанию"
 
 #: lib/layouts/tcolorbox.module:147
 msgid "Default value for argument (keep empty!)"
@@ -16963,59 +16932,48 @@ msgstr ""
 "критерий 1, критерий 2, аксиома 3, предположение 4, ...)."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:69
-#, fuzzy
 msgid "Criterion \\thechapter.\\thecriterion."
-msgstr "Критерий \\thecriterion."
+msgstr "Критерий \\thechapter.\\thecriterion."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:108
-#, fuzzy
 msgid "Algorithm \\thechapter.\\thealgorithm."
-msgstr "Алгоритм \\thealgorithm."
+msgstr "Алгоритм \\thechapter.\\thealgorithm."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:147
-#, fuzzy
 msgid "Axiom \\thechapter.\\theaxiom."
-msgstr "Аксиома \\theaxiom."
+msgstr "Аксиома \\thechapter.\\theaxiom."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:186
-#, fuzzy
 msgid "Condition \\thechapter.\\thecondition."
-msgstr "Условие \\thecondition."
+msgstr "Условие \\thechapter.\\thecondition."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:225
-#, fuzzy
 msgid "Note \\thechapter.\\thenote."
-msgstr "Замечание \\thetheorem."
+msgstr "Замечание \\thechapter.\\thetheorem."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:264
-#, fuzzy
 msgid "Notation \\thechapter.\\thenotation."
-msgstr "Обозначение \\thenotation."
+msgstr "Обозначение \\thechapter.\\thenotation."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:303
-#, fuzzy
 msgid "Summary \\thechapter.\\thesummary."
-msgstr "Обобщение \\thesummary."
+msgstr "Обобщение \\thechapter.\\thesummary."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:343
-#, fuzzy
 msgid "Acknowledgement \\thechapter.\\theacknowledgement."
-msgstr "Подтверждение \\theacknowledgement."
+msgstr "Подтверждение \\thechapter.\\theacknowledgement."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:382
-#, fuzzy
 msgid "Conclusion \\thechapter.\\theconclusion."
-msgstr "Заключение \\theconclusion."
+msgstr "Заключение \\thechapter.\\theconclusion."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:421
-#, fuzzy
 msgid "Assumption \\thechapter.\\theassumption."
-msgstr "Допущение \\theassumption."
+msgstr "Допущение \\thechapter.\\theassumption."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:460
-#, fuzzy
 msgid "Question \\thechapter.\\thequestion."
-msgstr "Вопрос \\thequestion."
+msgstr "Вопрос \\thechapter.\\thequestion."
 
 #: lib/layouts/theorems-ams-extended.module:2
 msgid "Theorems (AMS-Extended)"
@@ -17147,24 +17105,20 @@ msgstr ""
 "разделов, используйте модули 'внутри Разделов'/'внутри Глав' соответственно."
 
 #: lib/layouts/theorems-case.inc:12
-#, fuzzy
 msgid "Case \\arabic{casei}."
-msgstr "Случай \\arabic{case}"
+msgstr "Случай \\arabic{casei}."
 
 #: lib/layouts/theorems-case.inc:16
-#, fuzzy
 msgid "Case \\roman{caseii}."
-msgstr "Случай \\arabic{case}"
+msgstr "Случай \\roman{caseii}."
 
 #: lib/layouts/theorems-case.inc:20
-#, fuzzy
 msgid "Case \\alph{caseiii}."
-msgstr "Утверждение \\theclaim."
+msgstr "Случай \\alph{caseiii}."
 
 #: lib/layouts/theorems-case.inc:24
-#, fuzzy
 msgid "Case \\arabic{caseiv}."
-msgstr "Случай \\arabic{case}"
+msgstr "Случай \\arabic{caseiv}."
 
 #: lib/layouts/theorems-chap-bytype.module:2
 msgid "Theorems (Numbered by Type within Chapters)"
@@ -17362,7 +17316,7 @@ msgstr "Метка задачи"
 
 #: lib/layouts/theorems-without-preamble.inc:296
 msgid "Label of the corresponding problem"
-msgstr ""
+msgstr "Метка соответствующей задачи"
 
 #: lib/layouts/theorems-without-preamble.inc:372
 #, fuzzy
@@ -18761,7 +18715,7 @@ msgstr "Пробел в 2em|р"
 
 #: lib/ui/stdcontext.inc:243
 msgid "Horizontal Fill|F"
-msgstr "Гор. заполнение:|Г"
+msgstr "Гор. заполнение|Г"
 
 # ?
 #: lib/ui/stdcontext.inc:244
@@ -18777,24 +18731,20 @@ msgid "Horizontal Fill (Rule)|R"
 msgstr "Горизонтальное заполнение(линия)|л"
 
 #: lib/ui/stdcontext.inc:247
-#, fuzzy
 msgid "Horizontal Fill (Left Arrow)|L"
-msgstr "Горизонтальное заполнениие(левая стрелка)|л"
+msgstr "Горизонтальное заполнениие (левая стрелка)|л"
 
 #: lib/ui/stdcontext.inc:248
-#, fuzzy
 msgid "Horizontal Fill (Right Arrow)|g"
-msgstr "Горизонтальное заполнениие(правая стрелка)|л"
+msgstr "Горизонтальное заполнениие (правая стрелка)|п"
 
 #: lib/ui/stdcontext.inc:249
-#, fuzzy
 msgid "Horizontal Fill (Up Brace)|p"
-msgstr "Горизонтальное заполнениие(верхняя скобка)|в"
+msgstr "Горизонтальное заполнениие (верхняя скобка)|в"
 
 #: lib/ui/stdcontext.inc:250
-#, fuzzy
 msgid "Horizontal Fill (Down Brace)|B"
-msgstr "Горизонтальное заполнениие(нижняя скобка)|н"
+msgstr "Горизонтальное заполнениие (нижняя скобка)|н"
 
 #: lib/ui/stdcontext.inc:251 lib/ui/stdcontext.inc:269
 msgid "Custom Length|C"
@@ -18802,11 +18752,11 @@ msgstr "Выборочная длина|В"
 
 #: lib/ui/stdcontext.inc:261
 msgid "Medium Space|M"
-msgstr "Нормальный пробел|С"
+msgstr "Нормальный пробел|Н"
 
 #: lib/ui/stdcontext.inc:262
 msgid "Thick Space|h"
-msgstr "Тонкий пробел|Т"
+msgstr "Широкий пробел|Ш"
 
 #: lib/ui/stdcontext.inc:264
 msgid "Negative Medium Space|u"
@@ -18814,7 +18764,7 @@ msgstr "Отрицательный пробел|п"
 
 #: lib/ui/stdcontext.inc:265
 msgid "Negative Thick Space|i"
-msgstr "Отрицательный тонкий пробел|О"
+msgstr "Отрицательный широкий пробел|О"
 
 #: lib/ui/stdcontext.inc:278
 msgid "DefSkip|D"
@@ -18893,14 +18843,12 @@ msgid "Justified Line Break|J"
 msgstr "Равномерный разрыв строки|Р"
 
 #: lib/ui/stdcontext.inc:325
-#, fuzzy
 msgid "Plain Separator|P"
 msgstr "Разделитель пунктов меню|м"
 
 #: lib/ui/stdcontext.inc:326
-#, fuzzy
 msgid "Paragraph Break|B"
-msgstr "Абзац"
+msgstr "Разрыв абзаца"
 
 #: lib/ui/stdcontext.inc:335 lib/ui/stdmenus.inc:106 lib/ui/stdtoolbars.inc:80
 #: src/Text3.cpp:1390 src/mathed/InsetMathNest.cpp:564
@@ -19019,11 +18967,11 @@ msgstr "Убрать последний аргумент"
 # ?
 #: lib/ui/stdcontext.inc:388
 msgid "Make First Non-Optional Into Optional Argument"
-msgstr "Сделать первый обязательный параметр необязательным"
+msgstr "Сделать первый обязательный аргумент необязательным"
 
 #: lib/ui/stdcontext.inc:389
 msgid "Make Last Optional Into Non-Optional Argument"
-msgstr "Сделать последний необязательный параметр обязательным"
+msgstr "Сделать последний необязательный аргумент обязательным"
 
 #: lib/ui/stdcontext.inc:390 lib/ui/stdmenus.inc:267
 msgid "Insert Optional Argument"
@@ -19035,19 +18983,16 @@ msgstr "Убрать необязательный аргумент"
 
 # Eating From the Right?wtf?
 #: lib/ui/stdcontext.inc:393 lib/ui/stdmenus.inc:270
-#, fuzzy
 msgid "Append Argument Eating From the Right"
-msgstr "Добавить аргумент cъедающий справа"
+msgstr "Добавить аргумент, поглощающий справа"
 
 #: lib/ui/stdcontext.inc:394 lib/ui/stdmenus.inc:271
-#, fuzzy
 msgid "Append Optional Argument Eating From the Right"
-msgstr "Убрать последний параметр"
+msgstr "Добавить необязательный аргумент, поглощающий справа"
 
 #: lib/ui/stdcontext.inc:395 lib/ui/stdmenus.inc:272
-#, fuzzy
 msgid "Remove Last Argument Spitting Out to the Right"
-msgstr "Убрать последний параметр"
+msgstr "Убрать последний аргумент"
 
 #: lib/ui/stdcontext.inc:404
 msgid "Reload|R"
@@ -19266,7 +19211,7 @@ msgstr "Предварительный просмотр"
 
 #: lib/ui/stdcontext.inc:677 lib/ui/stdmenus.inc:356
 msgid "Lock Toolbars|L"
-msgstr "Фиксировать панели инструментов"
+msgstr "Блокировать панели инструментов"
 
 #: lib/ui/stdcontext.inc:679 lib/ui/stdmenus.inc:358
 msgid "Small-sized Icons"
@@ -19410,7 +19355,7 @@ msgstr "Обновить локальный каталог из репозито
 
 #: lib/ui/stdmenus.inc:79
 msgid "Revert to Repository Version|v"
-msgstr "Откат к сохраненной версии|п"
+msgstr "Откат к версии в репозитории|п"
 
 #: lib/ui/stdmenus.inc:80
 msgid "Undo Last Check In|U"
@@ -19479,7 +19424,7 @@ msgstr "Математика|М"
 
 #: lib/ui/stdmenus.inc:128
 msgid "Rows & Columns|C"
-msgstr "Столбцы и колонки|К"
+msgstr "Строки и столбцы|К"
 
 #: lib/ui/stdmenus.inc:135
 msgid "Increase List Depth|I"
@@ -19694,14 +19639,12 @@ msgid "Delete Line Below|e"
 msgstr "Удалить строку снизу"
 
 #: lib/ui/stdmenus.inc:265
-#, fuzzy
 msgid "Transform First Non-Optional to Optional Argument"
-msgstr "Вставить необязательный параметр"
+msgstr "Сделать первый обязательный аргумент необязательным"
 
 #: lib/ui/stdmenus.inc:266
-#, fuzzy
 msgid "Transform Last Optional to Non-Optional Argument"
-msgstr "Вставить необязательный параметр"
+msgstr "Сделать последний необязательный аргумент обязательным"
 
 #: lib/ui/stdmenus.inc:276
 msgid "Default|t"
@@ -20427,7 +20370,7 @@ msgstr "Вкл/выкл панель таблиц"
 
 #: lib/ui/stdtoolbars.inc:98
 msgid "Toggle review toolbar"
-msgstr "Вкл/выкл панель обзора"
+msgstr "Вкл/выкл панель рецензирования"
 
 #: lib/ui/stdtoolbars.inc:101
 msgid "View/Update"
@@ -20511,7 +20454,7 @@ msgstr "Вставить элемент списка обозначений"
 
 #: lib/ui/stdtoolbars.inc:129
 msgid "Insert footnote"
-msgstr "Вставить подстрочное примечание"
+msgstr "Вставить подстрочную сноску"
 
 #: lib/ui/stdtoolbars.inc:130
 msgid "Insert margin note"
@@ -20723,39 +20666,39 @@ msgstr "Математические макросы"
 
 #: lib/ui/stdtoolbars.inc:204
 msgid "Remove last argument"
-msgstr "Убрать последний параметр"
+msgstr "Убрать последний аргумент"
 
 #: lib/ui/stdtoolbars.inc:205
 msgid "Append argument"
-msgstr "Добавить параметр"
+msgstr "Добавить аргумент"
 
 #: lib/ui/stdtoolbars.inc:207
 msgid "Make first non-optional into optional argument"
-msgstr "Сделать первый обязательный параметр необязательным"
+msgstr "Сделать первый обязательный аргумент необязательным"
 
 #: lib/ui/stdtoolbars.inc:208
 msgid "Make last optional into non-optional argument"
-msgstr "Сделать последний необязательный параметр обязательным"
+msgstr "Сделать последний необязательный аргумент обязательным"
 
 #: lib/ui/stdtoolbars.inc:210
 msgid "Remove optional argument"
-msgstr "Убрать необязательный параметр"
+msgstr "Убрать необязательный аргумент"
 
 #: lib/ui/stdtoolbars.inc:211
 msgid "Insert optional argument"
-msgstr "Вставить необязательный параметр"
+msgstr "Вставить необязательный аргумент"
 
 #: lib/ui/stdtoolbars.inc:213
 msgid "Remove last argument spitting out to the right"
-msgstr "Убрать последний параметр"
+msgstr "Убрать последний аргумент"
 
 #: lib/ui/stdtoolbars.inc:214
 msgid "Append argument eating from the right"
-msgstr "Добавить параметр, поглощающий справа"
+msgstr "Добавить аргумент, поглощающий справа"
 
 #: lib/ui/stdtoolbars.inc:215
 msgid "Append optional argument eating from the right"
-msgstr "Добавить необязательный параметр, поглощающий справа"
+msgstr "Добавить необязательный аргумент, поглощающий справа"
 
 #: lib/ui/stdtoolbars.inc:218
 msgid "Phonetic Symbols"
@@ -20852,7 +20795,7 @@ msgstr "Разделитель пунктов меню"
 
 #: lib/ui/stdtoolbars.inc:252
 msgid "LyX Logo"
-msgstr "Лого"
+msgstr "Лого LyX"
 
 #: lib/ui/stdtoolbars.inc:253
 msgid "TeX Logo"
@@ -20868,7 +20811,7 @@ msgstr "Лого LaTeX2e"
 
 #: lib/ui/stdtoolbars.inc:258
 msgid "View Other Formats"
-msgstr "Просмотреть другие объекты"
+msgstr "Просмотреть другие форматы"
 
 #: lib/ui/stdtoolbars.inc:262
 msgid "Update Other Formats"
@@ -26830,15 +26773,15 @@ msgstr "просмотренный фрагмент"
 
 #: src/Color.cpp:235
 msgid "note label"
-msgstr "ярлык заметки"
+msgstr "метка заметки"
 
 #: src/Color.cpp:236
 msgid "note background"
-msgstr "Фон заметки"
+msgstr "фон заметки"
 
 #: src/Color.cpp:237
 msgid "comment label"
-msgstr "ярлык коментария"
+msgstr "метка коментария"
 
 #: src/Color.cpp:238
 msgid "comment background"
@@ -26870,23 +26813,23 @@ msgstr "фон листингов"
 
 #: src/Color.cpp:245
 msgid "branch label"
-msgstr "ярлык ветки"
+msgstr "метка ветки"
 
 #: src/Color.cpp:246
 msgid "footnote label"
-msgstr "ярлык сноски"
+msgstr "метка сноски"
 
 #: src/Color.cpp:247
 msgid "index label"
-msgstr "ярлык индекса"
+msgstr "метка индекса"
 
 #: src/Color.cpp:248
 msgid "margin note label"
-msgstr "ярлык заметки на полях"
+msgstr "метка заметки на полях"
 
 #: src/Color.cpp:249
 msgid "URL label"
-msgstr "ярлык URL"
+msgstr "метка URL"
 
 #: src/Color.cpp:250
 msgid "URL text"
@@ -26894,7 +26837,7 @@ msgstr "текст URL"
 
 #: src/Color.cpp:251
 msgid "depth bar"
-msgstr "Полоска уровня окружения"
+msgstr "полоска уровня окружения"
 
 #: src/Color.cpp:252
 msgid "scroll indicator"
@@ -26973,12 +26916,10 @@ msgid "math macro new parameter"
 msgstr "матем. макрос, новый параметр"
 
 #: src/Color.cpp:272
-#, fuzzy
 msgid "collapsible inset text"
 msgstr "текст сворачиваемой вставки"
 
 #: src/Color.cpp:273
-#, fuzzy
 msgid "collapsible inset frame"
 msgstr "рамка сворачиваемой вкладки"
 
@@ -26992,7 +26933,7 @@ msgstr "рамка вставки"
 
 #: src/Color.cpp:276
 msgid "LaTeX error"
-msgstr "Ошибка LaTeX"
+msgstr "ошибка LaTeX"
 
 #: src/Color.cpp:277
 msgid "end-of-line marker"
@@ -27042,7 +26983,7 @@ msgstr "модификатор удаленного текста"
 
 #: src/Color.cpp:288
 msgid "added space markers"
-msgstr "Маркеры дополнительного пространства"
+msgstr "маркеры дополнительного пространства"
 
 #: src/Color.cpp:289
 msgid "table line"
@@ -27082,7 +27023,7 @@ msgstr "маркер абзаца"
 
 #: src/Color.cpp:299
 msgid "preview frame"
-msgstr "Кадр предварительного просмотра"
+msgstr "рамка предпросмотра"
 
 #: src/Color.cpp:300
 msgid "inherit"
@@ -27107,9 +27048,8 @@ msgid ""
 msgstr ""
 
 #: src/Converter.cpp:303
-#, fuzzy
 msgid "Security Warning"
-msgstr "Следующее &предупреждение"
+msgstr "Предупреждение безопасности"
 
 #: src/Converter.cpp:316
 #, c-format
@@ -27131,7 +27071,7 @@ msgstr ""
 
 #: src/Converter.cpp:333
 msgid "An external converter is disabled for security reasons"
-msgstr ""
+msgstr "Внешний конвертер отключен для безопасности"
 
 #: src/Converter.cpp:335
 msgid ""
@@ -27147,7 +27087,7 @@ msgstr ""
 
 #: src/Converter.cpp:345
 msgid "An external converter requires your authorization"
-msgstr ""
+msgstr "Внешний конвертер требует вашей авторизации"
 
 #: src/Converter.cpp:348
 msgid ""
@@ -27162,27 +27102,24 @@ msgid ""
 msgstr ""
 
 #: src/Converter.cpp:355
-#, fuzzy
 msgid "Do &not allow"
-msgstr "Не загружать"
+msgstr "Не разрешать"
 
 #: src/Converter.cpp:355
 msgid "Do &not run"
 msgstr "Не запускать"
 
 #: src/Converter.cpp:356
-#, fuzzy
 msgid "A&llow"
-msgstr "жёлтый"
+msgstr "Разрешить"
 
 #: src/Converter.cpp:356
 msgid "&Run"
 msgstr "Запустить"
 
 #: src/Converter.cpp:358
-#, fuzzy
 msgid "&Always allow for this document"
-msgstr "Всегда запускать для этого документа"
+msgstr "Всегда разрешать для этого документа"
 
 #: src/Converter.cpp:359
 msgid "&Always run for this document"
@@ -27228,7 +27165,6 @@ msgid "Build errors"
 msgstr "Ошибки сборки"
 
 #: src/Converter.cpp:678
-#, fuzzy
 msgid "There were errors during the build process."
 msgstr "Во время создания выходного файла возникли ошибки."
 
@@ -27316,7 +27252,7 @@ msgstr "Неизвестная ветка"
 
 #: src/CutAndPaste.cpp:385
 msgid "&Don't Add"
-msgstr ""
+msgstr "Не добавлять"
 
 #: src/CutAndPaste.cpp:771 src/Text.cpp:393
 #, c-format
@@ -30700,7 +30636,7 @@ msgstr "Средний пробел"
 
 #: src/frontends/qt4/GuiHSpace.cpp:48 src/insets/InsetSpace.cpp:84
 msgid "Thick Space"
-msgstr "Толстый пробел"
+msgstr "Широкий пробел"
 
 #: src/frontends/qt4/GuiHSpace.cpp:49 src/frontends/qt4/GuiHSpace.cpp:60
 #: src/insets/InsetSpace.cpp:99
@@ -30715,7 +30651,7 @@ msgstr "Отрицательный средний пробел"
 #: src/frontends/qt4/GuiHSpace.cpp:51 src/frontends/qt4/GuiHSpace.cpp:62
 #: src/insets/InsetSpace.cpp:105
 msgid "Negative Thick Space"
-msgstr "Отрицательный толстый пробел"
+msgstr "Отрицательный широкий пробел"
 
 #: src/frontends/qt4/GuiHSpace.cpp:52 src/frontends/qt4/GuiHSpace.cpp:63
 msgid "Half Quad (0.5 em)"
@@ -30828,7 +30764,7 @@ msgstr "меню"
 
 #: src/frontends/qt4/GuiInfo.cpp:47
 msgid "icon"
-msgstr "иконка"
+msgstr "значок"
 
 #: src/frontends/qt4/GuiInfo.cpp:47
 msgid "buffer"
@@ -31095,7 +31031,7 @@ msgstr "Конверторы"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1890
 msgid "SECURITY WARNING!"
-msgstr ""
+msgstr "ПРЕДУПРЕЖДЕНИЕ БЕЗОПАСНОСТИ!"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1890
 msgid ""
@@ -31267,7 +31203,6 @@ msgid "Longest label width"
 msgstr "Ширина длиннейшей метки"
 
 #: src/frontends/qt4/GuiPrintNomencl.h:40
-#, fuzzy
 msgid "Nomenclature List Settings"
 msgstr "Настройки списка обозначений"
 
@@ -31403,7 +31338,7 @@ msgstr "Бенгальский"
 
 #: src/frontends/qt4/GuiSymbols.cpp:67
 msgid "Gurmukhi"
-msgstr "Gurmukhi"
+msgstr "Гурмукхи"
 
 #: src/frontends/qt4/GuiSymbols.cpp:68
 msgid "Gujarati"
@@ -31411,15 +31346,15 @@ msgstr "Гуджарати"
 
 #: src/frontends/qt4/GuiSymbols.cpp:69
 msgid "Oriya"
-msgstr "Oriya"
+msgstr "Ория"
 
 #: src/frontends/qt4/GuiSymbols.cpp:73
 msgid "Malayalam"
-msgstr "Малайялам"
+msgstr "Малаялам"
 
 #: src/frontends/qt4/GuiSymbols.cpp:78
 msgid "Hangul Jamo"
-msgstr "Hangul Jamo"
+msgstr "Хангыль Jamo"
 
 #: src/frontends/qt4/GuiSymbols.cpp:79
 msgid "Phonetic Extensions"
@@ -31516,9 +31451,8 @@ msgid "Katakana"
 msgstr "Катакана"
 
 #: src/frontends/qt4/GuiSymbols.cpp:103
-#, fuzzy
 msgid "Bopomofo"
-msgstr "Низ ряда:"
+msgstr "Чжуинь"
 
 #: src/frontends/qt4/GuiSymbols.cpp:104
 #, fuzzy
@@ -31526,9 +31460,8 @@ msgid "Hangul Compatibility Jamo"
 msgstr "CJK совместимость"
 
 #: src/frontends/qt4/GuiSymbols.cpp:105
-#, fuzzy
 msgid "Kanbun"
-msgstr "Канадский"
+msgstr "Камбун"
 
 #: src/frontends/qt4/GuiSymbols.cpp:106
 msgid "Enclosed CJK Letters and Months"
@@ -31617,9 +31550,8 @@ msgid "Ancient Greek Numbers"
 msgstr "Древнегреческие числа"
 
 #: src/frontends/qt4/GuiSymbols.cpp:127
-#, fuzzy
 msgid "Old Italic"
-msgstr "Курсивный"
+msgstr "Древнеитальянский"
 
 #: src/frontends/qt4/GuiSymbols.cpp:128
 msgid "Gothic"
@@ -31631,7 +31563,7 @@ msgstr "Ugaritic"
 
 #: src/frontends/qt4/GuiSymbols.cpp:130
 msgid "Old Persian"
-msgstr "Староперсидский"
+msgstr "Древнеперсидский"
 
 #: src/frontends/qt4/GuiSymbols.cpp:131
 msgid "Deseret"
@@ -31651,7 +31583,7 @@ msgstr "Cypriot Syllabary"
 
 #: src/frontends/qt4/GuiSymbols.cpp:135
 msgid "Kharoshthi"
-msgstr "Kharoshthi"
+msgstr "Кхароштхи"
 
 #: src/frontends/qt4/GuiSymbols.cpp:136
 #, fuzzy
@@ -31745,7 +31677,7 @@ msgstr "Состояние панели \"%1$s\" установлено в %2$s"
 
 #: src/frontends/qt4/GuiToolbar.cpp:425
 msgid "movable"
-msgstr "движимый"
+msgstr "подвижный"
 
 #: src/frontends/qt4/GuiToolbar.cpp:427
 msgid "immovable"
@@ -32032,7 +31964,7 @@ msgstr "Закрыть или спрятать документ?"
 
 #: src/frontends/qt4/GuiView.cpp:2838
 msgid "&Hide"
-msgstr "Спрятать"
+msgstr "Скрыть"
 
 #: src/frontends/qt4/GuiView.cpp:2928
 msgid "Close document"
@@ -32211,11 +32143,11 @@ msgstr "Все документы сохранены."
 
 #: src/frontends/qt4/GuiView.cpp:3913
 msgid "Developer mode is now enabled."
-msgstr ""
+msgstr "Режим разработчика включен."
 
 #: src/frontends/qt4/GuiView.cpp:3915
 msgid "Developer mode is now disabled."
-msgstr ""
+msgstr "Режим разработчика отключен."
 
 #: src/frontends/qt4/GuiView.cpp:3939
 msgid "Toolbars unlocked."
@@ -32228,7 +32160,7 @@ msgstr "Панели инструментов заблокированы|и"
 #: src/frontends/qt4/GuiView.cpp:3954
 #, c-format
 msgid "Icon size set to %1$dx%2$d."
-msgstr "Размер иконки установлен на %1$dx%2$d."
+msgstr "Размер значков установлен на %1$dx%2$d."
 
 #: src/frontends/qt4/GuiView.cpp:4044
 #, c-format
@@ -32236,9 +32168,8 @@ msgid "%1$s unknown command!"
 msgstr "%1$s неизвестная команда!"
 
 #: src/frontends/qt4/GuiView.cpp:4148
-#, fuzzy
 msgid "Zoom level is now %1$d% (default value: %2$d%)"
-msgstr "Текущий масштаб %1$d%"
+msgstr "Текущий масштаб %1$d% (по умолчанию: %2$d%)"
 
 #: src/frontends/qt4/GuiView.cpp:4204
 msgid "Please, preview the document first."
@@ -32246,7 +32177,7 @@ msgstr "Пожалуйста, сначала просмотрите докуме
 
 #: src/frontends/qt4/GuiView.cpp:4220
 msgid "Couldn't proceed."
-msgstr "Невозможно продолжить"
+msgstr "Невозможно продолжить."
 
 #: src/frontends/qt4/GuiView.cpp:4698
 msgid "Disable Shell Escape"
