@@ -84,6 +84,9 @@ public:
 	/// returns true if the buffer is loaded
 	bool isLoaded(Buffer const * b) const;
 
+	/// returns true if the buffer is known as internal buffer
+	bool isInternal(Buffer const * b) const;
+
 	/// \return index of named buffer in buffer list
 	int bufferNum(support::FileName const & name) const;
 
