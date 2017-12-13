@@ -1407,7 +1407,7 @@ DispatchResult const & GuiApplication::dispatch(FuncRequest const & cmd)
 	updateCurrentView(cmd, dr);
 
 	// the buffer may have been closed by one action
-	if (theBufferList().isLoaded(buffer))
+	if (theBufferList().isLoaded(buffer) || theBufferList().isInternal(buffer))
 		buffer->undo().endUndoGroup();
 
 	d->dispatch_result_ = dr;
@@ -1883,7 +1883,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			dispatch(func);
 		}
 		// the buffer may have been closed by one action
-		if (theBufferList().isLoaded(buffer))
+		if (theBufferList().isLoaded(buffer) || theBufferList().isInternal(buffer))
 			buffer->undo().endUndoGroup();
 		break;
 	}
