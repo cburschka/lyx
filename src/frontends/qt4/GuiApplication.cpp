@@ -1395,9 +1395,9 @@ DispatchResult const & GuiApplication::dispatch(FuncRequest const & cmd)
 	if (current_view_ && current_view_->currentBufferView()) {
 		current_view_->currentBufferView()->cursor().saveBeforeDispatchPosXY();
 		buffer = &current_view_->currentBufferView()->buffer();
-		if (buffer)
-			buffer->undo().beginUndoGroup();
 	}
+	// This handles undo groups automagically
+	UndoGroupHelper ugh(buffer);
 
 	DispatchResult dr;
 	// redraw the screen at the end (first of the two drawing steps).
@@ -1405,10 +1405,6 @@ DispatchResult const & GuiApplication::dispatch(FuncRequest const & cmd)
 	dr.screenUpdate(Update::FitCursor);
 	dispatch(cmd, dr);
 	updateCurrentView(cmd, dr);
-
-	// the buffer may have been closed by one action
-	if (theBufferList().isLoaded(buffer) || theBufferList().isInternal(buffer))
-		buffer->undo().endUndoGroup();
 
 	d->dispatch_result_ = dr;
 	return d->dispatch_result_;
@@ -1873,8 +1869,8 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		// FIXME: this LFUN should also work without any view.
 		Buffer * buffer = (current_view_ && current_view_->documentBufferView())
 				  ? &(current_view_->documentBufferView()->buffer()) : 0;
-		if (buffer)
-			buffer->undo().beginUndoGroup();
+		// This handles undo groups automagically
+		UndoGroupHelper ugh(buffer);
 		while (!arg.empty()) {
 			string first;
 			arg = split(arg, first, ';');
@@ -1882,9 +1878,6 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			func.setOrigin(cmd.origin());
 			dispatch(func);
 		}
-		// the buffer may have been closed by one action
-		if (theBufferList().isLoaded(buffer) || theBufferList().isInternal(buffer))
-			buffer->undo().endUndoGroup();
 		break;
 	}
 

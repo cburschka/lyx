@@ -18,6 +18,7 @@
 #include "Undo.h"
 
 #include "Buffer.h"
+#include "BufferList.h"
 #include "BufferParams.h"
 #include "buffer_funcs.h"
 #include "Cursor.h"
@@ -661,7 +662,8 @@ UndoGroupHelper::UndoGroupHelper(Buffer * buf) : d(new UndoGroupHelper::Impl)
 UndoGroupHelper::~UndoGroupHelper()
 {
 	for (Buffer * buf : d->buffers_)
-		buf->undo().endUndoGroup();
+		if (theBufferList().isLoaded(buf) || theBufferList().isInternal(buf))
+			buf->undo().endUndoGroup();
 	delete d;
 }
 

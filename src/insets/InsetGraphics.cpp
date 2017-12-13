@@ -1150,7 +1150,8 @@ void unifyGraphicsGroups(Buffer & b, string const & argument)
 	InsetGraphicsParams params;
 	InsetGraphics::string2params(argument, b, params);
 
-	b.undo().beginUndoGroup();
+	// This handles undo groups automagically
+	UndoGroupHelper ugh(&b);
 	Inset & inset = b.inset();
 	InsetIterator it  = inset_iterator_begin(inset);
 	InsetIterator const end = inset_iterator_end(inset);
@@ -1165,7 +1166,6 @@ void unifyGraphicsGroups(Buffer & b, string const & argument)
 			}
 		}
 	}
-	b.undo().endUndoGroup();
 }
 
 
