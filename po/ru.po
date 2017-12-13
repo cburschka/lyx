@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2017-12-12 15:50+0100\n"
-"PO-Revision-Date: 2017-12-13 13:12+0200\n"
+"PO-Revision-Date: 2017-12-13 18:22+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <kruvalig@gmail.com>\n"
 "Language: ru\n"
@@ -1880,7 +1880,7 @@ msgstr "Название файла с изображением"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:313
 msgid "&Coordinates and Clipping"
-msgstr ""
+msgstr "Координаты и обрезка"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:347
 msgid ""
@@ -1889,9 +1889,8 @@ msgid ""
 msgstr ""
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:350
-#, fuzzy
 msgid "Clip to c&oordinates"
-msgstr "Обрезать по рамке (bounding box)"
+msgstr "Обрезать по рамке"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:438
 #: src/frontends/qt4/ui/GraphicsUi.ui:445
@@ -16018,7 +16017,7 @@ msgstr "Примечания на полях"
 
 #: lib/layouts/stdinsets.inc:12
 msgid "Footnotes"
-msgstr "Подстрочные сноски|н"
+msgstr "Подстрочные сноски"
 
 #: lib/layouts/stdinsets.inc:13
 msgid "Notes"
@@ -18510,11 +18509,11 @@ msgstr "Удалить строку справа"
 
 #: lib/ui/stdcontext.inc:75
 msgid "Show Math Toolbar"
-msgstr "Показать панель математики"
+msgstr "Показать математическую панель"
 
 #: lib/ui/stdcontext.inc:76
 msgid "Show Math-Panels Toolbar"
-msgstr "Показать мат. панели инструментов"
+msgstr "Показать матем. панели инструментов"
 
 #: lib/ui/stdcontext.inc:77
 msgid "Show Table Toolbar"
@@ -19844,7 +19843,7 @@ msgstr "Блок[[Меню]]"
 
 #: lib/ui/stdmenus.inc:383
 msgid "Citation...|C"
-msgstr "Ссылка на источник...|С"
+msgstr "Библиографическая ссылка...|Б"
 
 #: lib/ui/stdmenus.inc:384
 msgid "Cross-Reference...|R"
@@ -19864,7 +19863,7 @@ msgstr "Таблица...|Т"
 
 #: lib/ui/stdmenus.inc:391
 msgid "Graphics...|G"
-msgstr "Графика...|р"
+msgstr "Изображение...|р"
 
 #: lib/ui/stdmenus.inc:392
 msgid "URL|U"
@@ -20362,7 +20361,7 @@ msgstr "Вкл/Выкл структуру"
 
 #: lib/ui/stdtoolbars.inc:96
 msgid "Toggle math toolbar"
-msgstr "Вкл/выкл мат. панель"
+msgstr "Вкл/выкл матем. панель"
 
 #: lib/ui/stdtoolbars.inc:97
 msgid "Toggle table toolbar"
@@ -20442,7 +20441,7 @@ msgstr "Вставить перекрёстную ссылку"
 
 #: lib/ui/stdtoolbars.inc:125
 msgid "Insert citation"
-msgstr "Вставить ссылку"
+msgstr "Вставить библиографическую ссылку"
 
 #: lib/ui/stdtoolbars.inc:126
 msgid "Insert index entry"
@@ -20658,7 +20657,7 @@ msgstr "Вставить блок вариантов"
 
 #: lib/ui/stdtoolbars.inc:200
 msgid "Toggle math panels"
-msgstr "Вкл/выкл мат. панели"
+msgstr "Вкл/выкл матем. панели"
 
 #: lib/ui/stdtoolbars.inc:203 src/TocBackend.cpp:289
 msgid "Math Macros"
@@ -20863,7 +20862,7 @@ msgstr "Обновить локальный каталог с репозитор
 
 #: lib/ui/stdtoolbars.inc:297
 msgid "Math Panels"
-msgstr "Мат. панели"
+msgstr "Матем. панели"
 
 #: lib/ui/stdtoolbars.inc:298
 msgid "Math spacings"
