@@ -5,30 +5,14 @@
 \save_transient_properties true
 \origin /systemlyxdir/doc/ru/
 \textclass book
-\begin_preamble
-% DO NOT ALTER THIS PREAMBLE!!!
-%
-%This preamble is designed to ensure that the document prints
-% out as advertised. If you mess with this preamble,
-% parts of the document may not print out as expected.  If you
-% have problems LaTeXing this file, please contact 
-% the documentation team
-% email: lyx-docs@lists.lyx.org
-
-% the pages of the TOC is numbered roman
-% and a pdf-bookmark for the TOC is added
-\let\myTOC\tableofcontents
-\renewcommand\tableofcontents{%
-  \frontmatter
-  \pdfbookmark[1]{\contentsname}{}
-  \myTOC
-  \mainmatter }
-\end_preamble
 \use_default_options false
+\begin_modules
+logicalmkup
+\end_modules
 \maintain_unincluded_children false
 \language russian
 \language_package default
-\inputencoding koi8-r
+\inputencoding auto
 \fontencoding global
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -42,7 +26,7 @@
 \font_tt_scale 100 100
 \use_microtype false
 \use_dash_ligatures false
-\graphics none
+\graphics default
 \default_output_format pdf2
 \output_sync 0
 \bibtex_command default
@@ -58,7 +42,7 @@
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 1
-\pdf_breaklinks false
+\pdf_breaklinks true
 \pdf_pdfborder false
 \pdf_colorlinks true
 \pdf_backref false
@@ -96,7 +80,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style russian
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 2
@@ -116,17 +100,30 @@
 \end_layout
 
 \begin_layout Author
-автор: Amir Karger и команда разработки \SpecialChar LyX
+by the \SpecialChar LyX
+ Team
+\begin_inset Foot
+status collapsed
 
-\begin_inset Newline newline
+\begin_layout Plain Layout
+\noindent
+If you have comments on or corrections to this documentation, please send
+ them to the \SpecialChar LyX
+ Documentation mailing list: 
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+literal "false"
+
 \end_inset
 
-перевод: Максим Дзюманенко
-\begin_inset Newline newline
+
+\end_layout
+
 \end_inset
 
-лит.
- редакторы: Юрий Калиниченко, Виталий Липатов
+
 \end_layout
 
 \begin_layout Standard
@@ -193,41 +190,20 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Section
-Чем 
-\emph on
-является
-\emph default
- самоучитель и чем 
-\emph on
-не является
+Чем является самоучитель и чем не является
 \end_layout
 
 \begin_layout Standard
 Перед тем как начать этот раздел, мы хотели бы кое-что пояснить.
- 
-\emph on
-Самоучитель
-\emph default
- использует обозначения, приведённые во 
-\emph on
-Введении
-\emph default
-\SpecialChar endofsentence
- Если вы начали чтение с этого материала, прочтите сначала 
-\emph on
-Введение
-\emph default
-.
+ Самоучитель использует обозначения, приведённые во Введении\SpecialChar endofsentence
+ Если вы начали
+ чтение с этого материала, прочтите сначала Введение.
  
 \end_layout
 
 \begin_layout Standard
 Теперь, когда вы знаете, какой шрифт что означает, мы бы хотели немного
- поговорить о предназначении этого 
-\emph on
-Самоучителя
-\emph default
-.
+ поговорить о предназначении этого Самоучителя.
 \end_layout
 
 \begin_layout Subsection
@@ -240,31 +216,14 @@ LatexCommand tableofcontents
  весь документ, набирая все те небольшие примеры, которые мы будем просить
  вас набрать и выполняя все приведённые упражнения, контролируя правильность
  их выполнения.
- Для удобства вы можете напечатать PostScript
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-textregistered
-\end_layout
-
-\end_inset
-
--версию этого документа.
+ Для удобства вы можете напечатать PostScript-версию этого документа.
 \end_layout
 
 \begin_layout Standard
 Если вы знакомы с \SpecialChar LaTeX
-, вероятно вы сможете прочесть 
-\emph on
-Самоучитель
-\emph default
- несколько быстрее, так как многие идеи \SpecialChar LyX
- — попросту замаскированные идеи
- \SpecialChar LaTeX
+, вероятно вы сможете прочесть Самоучитель несколько быстрее,
+ так как многие идеи \SpecialChar LyX
+ — попросту замаскированные идеи \SpecialChar LaTeX
 .
  Однако у \SpecialChar LyX
  есть свои повороты
@@ -286,11 +245,8 @@ status collapsed
 \end_inset
 
 , которые вам предстоит изучить.
- Даже если вы не чувствуете необходимым читать оставшуюся часть 
-\emph on
-Самоучителя
-\emph default
-, вы определённо должны просмотреть раздел
+ Даже если вы не чувствуете необходимым читать оставшуюся часть Самоучителя,
+ вы определённо должны просмотреть раздел
 \begin_inset space ~
 \end_inset
 
@@ -306,11 +262,7 @@ reference "sec:latexusers"
 \end_layout
 
 \begin_layout Subsection
-Что вы 
-\emph on
-не
-\emph default
- найдёте:
+Что вы не найдёте:
 \end_layout
 
 \begin_layout Itemize
@@ -326,10 +278,7 @@ status collapsed
 \begin_layout Plain Layout
 Заметка 
 \shape smallcaps
-\noun on
-John 
-\noun default
-Weiss
+John Weiss
 \shape default
 : \SpecialChar ldots
 по крайней мере в Америке, где мы всё приводим к наименьшему общему знаменател
@@ -355,11 +304,8 @@ Weiss
 \begin_layout Standard
 С другой стороны, мы понимаем, что большинство пользователей читают руководства,
  особенно учебники, только тогда, когда они не знают, что же делать дальше.
- Так что хотя мы сознаем что вы, пользователь, 
-\emph on
-не
-\emph default
- глупы, мы понимаем, что вы можете быть несведущи или сбиты с толку.
+ Так что хотя мы сознаем что вы, пользователь, не глупы, мы понимаем, что
+ вы можете быть несведущи или сбиты с толку.
 \end_layout
 
 \end_deeper
@@ -394,38 +340,23 @@ status collapsed
 
 \begin_deeper
 \begin_layout Standard
-Ведь нам же не нужны два 
-\emph on
-Руководства пользователя
-\emph default
-, правда?
+Ведь нам же не нужны два Руководства пользователя, правда?
 \end_layout
 
 \begin_layout Standard
 Если серьёзно, мы сделали этот документ только для того, чтобы дать вам
- начальный толчок, поскольку всё, что вам реально необходимо — это 
-\emph on
-Руководство пользователя
-\emph default
-.
+ начальный толчок, поскольку всё, что вам реально необходимо — это Руководство
+ пользователя.
  Если бы мы попробовали повторить здесь всю информацию обо всех возможностях
  \SpecialChar LyX
-, 
-\emph on
-Самоучитель
-\emph default
- был бы избыточен, слишком длинен, и всегда устаревший.
+, Самоучитель был бы избыточен, слишком длинен, и всегда устаревший.
  Так что здесь мы только ознакомим вас с возможностями \SpecialChar LyX
 ; представьте себе,
  что в конце каждого раздела написано 
 \begin_inset Quotes cld
 \end_inset
 
-смотрите 
-\emph on
-Руководство пользователя
-\emph default
-
+смотрите Руководство пользователя
 \begin_inset Quotes crd
 \end_inset
 
@@ -469,50 +400,25 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
- Итак, вы готовы к написанию.
+Итак, вы готовы к написанию.
  Однако перед тем как вы приступите к этом, нам нужно сделать несколько
- замечаний, которые, будем надеяться, сделают 
-\emph on
-Самоучитель
-\emph default
- более информативным, полезным и интересным.
+ замечаний, которые, будем надеяться, сделают Самоучитель более информативным,
+ полезным и интересным.
 \end_layout
 
 \begin_layout Standard
-Так как здесь приводится далеко не вся информация, 
-\emph on
-первое
-\emph default
-, что вы должны сделать — найти другие справочные файлы
-\series medium
-.
-
-\series default
- К счастью
-\series medium
-,
-\series default
- это очень просто
-\series medium
-.
-
-\series default
+Так как здесь приводится далеко не вся информация, первое, что вы должны
+ сделать — найти другие справочные файлы.
+ К счастью, это очень просто.
  Запустите \SpecialChar LyX
 .
- Выберите 
-\emph on
-Руководство пользователя
-\emph default
- из меню 
+ Выберите Руководство пользователя из меню 
 \family sans
 Помощь
 \family default
 .
- Таким же образом вы можете загрузить и 
-\emph on
-Самоучитель
-\emph default
- (если вы уже его не читаете с экрана).
+ Таким же образом вы можете загрузить и Самоучитель (если вы уже его не
+ читаете с экрана).
  То есть вы можете читать справочные файлы в процессе написания вашего собственн
 ого документа
 \begin_inset Foot
@@ -533,31 +439,19 @@ status collapsed
 Документы
 \family default
 .
- 
-\emph on
-Самоучитель
-\emph default
- не раскрывает детально каждую из тем, описанных в других руководствах по
- \SpecialChar LyX
+ Самоучитель не раскрывает детально каждую из тем, описанных в других руководств
+ах по \SpecialChar LyX
 .
  Это немного усложняет вашу жизнь на первых порах, но позволяет сохранить
- 
-\emph on
-Самоучитель
-\emph default
- коротким.
+ Самоучитель коротким.
  Также у вас выработается привычка использовать другие руководства, что
  в итоге сохранит вам массу времени.
 \end_layout
 
 \begin_layout Standard
-В этом 
-\emph on
-Самоучителе
-\emph default
- мы предполагаем, что у вас есть полностью работоспособная версия \SpecialChar LyX
-, а также
- \SpecialChar LaTeX
+В этом Самоучителе мы предполагаем, что у вас есть полностью работоспособная
+ версия \SpecialChar LyX
+, а также \SpecialChar LaTeX
 , 
 \family typewriter
 xdvi
@@ -570,20 +464,8 @@ dvi
 \family typewriter
 dvips
 \family default
- или какой-то другой путь преобразования документов в PostScript
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-textregistered
-\end_layout
-
-\end_inset
-
-, и работающий принтер.
+ или какой-то другой путь преобразования документов в PostScript, и работающий
+ принтер.
  Если что либо из этого у вас отсутствует, вы (или доброжелательный системный
  администратор) должны настроить вашу систему.
  Информацию по настройке можно найти в других руководствах.
@@ -652,30 +534,17 @@ examples/
 \family default
 , к которому можно добраться, выбрав 
 \family sans
-\bar under
-Ф
-\bar default
-айл\SpecialChar menuseparator
-
-\bar under
-О
-\bar default
-ткрыть
+Файл\SpecialChar menuseparator
+Открыть
 \family default
  и нажав на кнопке 
 \family sans
-\bar under
-П
-\bar default
-римеры
+Примеры
 \family default
 .
  Откройте документ, и используя 
 \family sans
-\bar under
-Ф
-\bar default
-айл\SpecialChar menuseparator
+Файл\SpecialChar menuseparator
 Сохранить
 \begin_inset space ~
 \end_inset
@@ -701,13 +570,9 @@ examples/
 .
  Эти примеры также демонстрируют некоторые возможности, которые не были
  помещены в документации (из-за размеров или по другим соображениям).
- После прочтения 
-\emph on
-Самоучителя
-\emph default
-, или если вы запутаетесь при выполнении чего-либо необычного в \SpecialChar LyX
-, взгляните
- на эти файлы.
+ После прочтения Самоучителя, или если вы запутаетесь при выполнении чего-либо
+ необычного в \SpecialChar LyX
+, взгляните на эти файлы.
 \end_layout
 
 \begin_layout Subsection
@@ -763,59 +628,44 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-Запустите \SpecialChar LaTeX
- для создания файла 
+Создайте файл 
 \family typewriter
-dvi
+pdf
 \family default
  через пункт меню 
 \family sans
-Просмотреть\SpecialChar menuseparator
+Документ\SpecialChar menuseparator
+Просмотреть
+\family default
+ или кнопку 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
 
-\bar under
-D
-\bar default
-VI
-\family default
-\SpecialChar endofsentence
- Вы увидите, как в окне, из которого вы запустили lyx, будут печататься
- сообщения \SpecialChar LaTeX
-, сейчас вы можете их проигнорировать.
+ на панели инструментов\SpecialChar endofsentence
  \SpecialChar LyX
- запустит 
-\family typewriter
-xDVI
-\family default
- (или другой просмотрщик 
-\family typewriter
-dvi
-\family default
-), который откроется в новом окне и отобразит как будет выглядеть ваш документ
- при печати.
+ запустит просмотрщик PDF-файлов, который откроется
+ в новом окне и отобразит как будет выглядеть ваш документ при печати.
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Вы можете сэкономить время, оставив 
-\family typewriter
-xdvi
-\family default
- запущенным в фоновом режиме.
+Вы можете сэкономить время, оставив просмотрщик PDF запущенным в фоновом
+ режиме.
  Далее вы можете использовать 
 \family sans
-Просмотреть\SpecialChar menuseparator
-Обновить\SpecialChar menuseparator
+Документ\SpecialChar menuseparator
+Обновить
+\family default
+ или кнопку 
+\begin_inset Info
+type  "icon"
+arg   "buffer-update"
+\end_inset
 
-\bar under
-D
-\bar default
-VI
-\family default
- и просто щёлкать на окне 
-\family typewriter
-xdvi
-\family default
- (или раскрывать его) после завершения вывода \SpecialChar LaTeX
+ и просто щёлкать на окне просмотрщика (или раскрывать его) после завершения
+ вывода \SpecialChar LaTeX
 .
 \end_layout
 
@@ -825,33 +675,20 @@ xdvi
 \end_layout
 
 \begin_layout Itemize
-Напечатайте файл через меню 
+Экспортируйте файл через меню 
 \family sans
 Файл\SpecialChar menuseparator
-Распечатать
+Экспортировать
 \family default
-, и нажмите 
-\family sans
-OK\SpecialChar endofsentence
+ в нужный вам формат\SpecialChar endofsentence
 
 \end_layout
 
 \begin_layout Standard
 Наши поздравления! Вы написали и напечатали ваш первый документ \SpecialChar LyX
 .
- Всё остальное просто детали, которые раскрываются в оставшейся части 
-\emph on
-Самоучителя
-\emph default
-, 
-\emph on
-Руководстве пользователя
-\emph default
- и 
-\emph on
-Дополнительных возможностях
-\emph default
-.
+ Всё остальное просто детали, которые раскрываются в оставшейся части Самоучител
+я, Руководстве пользователя и Дополнительных возможностях.
 \end_layout
 
 \begin_layout Subsection
@@ -868,15 +705,8 @@ OK\SpecialChar endofsentence
 status collapsed
 
 \begin_layout Plain Layout
-Если вы похожи на многих других пользователей 
-\noun on
-unix
-\noun default
-, то наверняка делали это до чтения 
-\emph on
-Самоучителя
-\emph default
-.
+Если вы похожи на многих других пользователей unix, то наверняка делали
+ это до чтения Самоучителя.
 \end_layout
 
 \end_inset
@@ -896,11 +726,7 @@ unix
 \begin_layout Description
 Отмена.
  В \SpecialChar LyX
- есть 
-\emph on
-возможность
-\emph default
- 
+ есть возможность 
 \begin_inset Quotes cld
 \end_inset
 
@@ -913,42 +739,33 @@ unix
 \family sans
 Правка\SpecialChar menuseparator
 Отменить
-\begin_inset space ~
-\end_inset
-
-последнее
-\begin_inset space ~
-\end_inset
-
-действие
 \family default
- нужное количество раз.
+ (кнопка 
+\begin_inset Info
+type  "icon"
+arg   "undo"
+\end_inset
+
+) нужное количество раз.
  Если вы отменили слишком много, чтобы вернуть отменённое просто выберите
  
 \family sans
 Правка\SpecialChar menuseparator
 Повторить
-\begin_inset space ~
-\end_inset
-
-отменённое
-\begin_inset space ~
-\end_inset
-
-действие
 \family default
-.
+ (кнопка 
+\begin_inset Info
+type  "icon"
+arg   "redo"
+\end_inset
+
+).
  
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-[На данный момент, отмена ограничена 100 шагами.
- Отмена работает не для 
-\emph on
-всего
-\emph default
-, например, нельзя отменить изменения в формате документа.]
+[На данный момент, отмена ограничена 100 шагами.]
 \end_layout
 
 \end_deeper
@@ -959,22 +776,36 @@ unix
 Правка\SpecialChar menuseparator
 Вырезать
 \family default
-, 
+ (кнопка 
+\begin_inset Info
+type  "icon"
+arg   "cut"
+\end_inset
+
+), 
 \family sans
 Правка\SpecialChar menuseparator
 Вставить
 \family default
- и 
+ (кнопка 
+\begin_inset Info
+type  "icon"
+arg   "paste"
+\end_inset
+
+) и 
 \family sans
 Правка\SpecialChar menuseparator
 Копировать
 \family default
-.
- Или автоматически вставляйте выбранный текст с помощью 
-\emph on
-средней кнопки мыши
-\emph default
-.
+ (кнопка 
+\begin_inset Info
+type  "icon"
+arg   "copy"
+\end_inset
+
+).
+ Или автоматически вставляйте выбранный текст с помощью средней кнопки мыши.
 \end_layout
 
 \begin_layout Description
@@ -982,7 +813,7 @@ unix
  Для поиска используйте 
 \family sans
 Правка\SpecialChar menuseparator
-Найти
+Поиск
 \begin_inset space ~
 \end_inset
 
@@ -990,17 +821,23 @@ unix
 \begin_inset space ~
 \end_inset
 
-заменить
+замена
 \family default
-.
- В открывающемся при этом диалоговом окне вы можете начать поиск кнопками
+ (кнопка 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show findreplace"
+\end_inset
+
+).
+ В открывающемся при этом диалоговом окне вы можете начать поиск кнопкой
  
 \family sans
-Вперёд
-\family default
- или 
-\family sans
-Назад
+Искать
+\begin_inset space ~
+\end_inset
+
+следующее
 \family default
 ; для замены найденного слова используйте кнопку 
 \family sans
@@ -1047,7 +884,7 @@ status collapsed
 \end_inset
 
  Если пожелаете, вы можете указать, выполнять ли чувствительный к регистру
- поиск, или поиск только полных слов.
+ поиск, или поиск только целых слов.
 \end_layout
 
 \begin_layout Description
@@ -1056,25 +893,37 @@ status collapsed
 \end_inset
 
 символов.
- Вы можете 
-\emph on
-выделять
-\emph default
- текст (обычно выделяемые символы становятся наклонными), делать его 
-\series bold
-полужирным
-\series default
-, включать шрифт 
-\noun on
-имён собственных
-\noun default
- (обычно капитель, используется для имён людей) переключая кнопки в меню
- 
+ Вы можете выделять текст (кнопка 
+\begin_inset Info
+type  "icon"
+arg   "font-emph"
+\end_inset
+
+, обычно выделяемые символы становятся наклонными), включать шрифт имён
+ собственных (кнопка 
+\begin_inset Info
+type  "icon"
+arg   "font-noun"
+\end_inset
+
+, обычно капитель, используется для имён людей) или использовать собственное
+ форматирование в меню 
 \family sans
-Формат\SpecialChar menuseparator
-Символ
+Правка\SpecialChar menuseparator
+Стиль
+\begin_inset space ~
+\end_inset
+
+текста\SpecialChar menuseparator
+Выборочно
 \family default
-.
+ (кнопка 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Description
@@ -1087,33 +936,22 @@ status collapsed
  некоторые часто используемые действия, такие как 
 \family sans
 Вставить
+\begin_inset space ~
+\end_inset
+
+формулу
 \family default
- и 
+ или 
 \family sans
-Распечатать
+Вставить
+\begin_inset space ~
+\end_inset
+
+таблицу
 \family default
 .
  Если вы удерживаете мышь над кнопкой панели инструментов, небольшая жёлтая
  заметка расскажет вам о назначении этой кнопки.
-\end_layout
-
-\begin_layout Description
-Мини-буфер.
- Серая строка в самом низу окна \SpecialChar LyX
- называется мини-буфер.
- Эта строка показывает различную полезную информацию.
- Например, после сохранения документа она сообщит имя только что сохранённого
- файла.
- Также тут могут появляться некоторые сообщения об ошибках.
- Обратите внимание, вы также можете 
-\emph on
-набирать
-\emph default
- в мини-буфере.
- Это даст вам доступ ко всем видам интересных выполняемых функций, включая
- функции, которые могут испортить ваш документ.
- Другими словами, не набирайте ничего в мини-буфере, пока не будете знать,
- что вы делаете.
 \end_layout
 
 \begin_layout Standard
@@ -1154,11 +992,7 @@ Enter
 Tab
 \family default
  не будет передвигать курсор по позициям табуляции; фактически табуляции
- 
-\emph on
-нет
-\emph default
-! Для установки табуляции и границ вверху страницы нет никакой линейки.
+ нет! Для установки табуляции и границ вверху страницы нет никакой линейки.
 \end_layout
 
 \begin_layout Standard
@@ -1191,10 +1025,7 @@ What You See Is What You Get
 
 
 \lang english
-What You See Is What You 
-\emph on
-Mean
-\emph default
+What You See Is What You Mean
 \lang russian
 
 \begin_inset Quotes crd
@@ -1228,20 +1059,9 @@ Tab
  вовсе не имеет никакой грамматической функции, и \SpecialChar LyX
  её не поддерживает.
  Используя \SpecialChar LyX
-, вы будете уделять большую часть вашего времени 
-\emph on
-содержимому
-\emph default
- вашего документа, и меньшую — его 
-\emph on
-форматированию.
-
-\emph default
- Более подробно о концепции WYSIWYM смотрите во 
-\emph on
-Введении
-\emph default
-.
+, вы будете уделять большую часть вашего времени содержимому
+ вашего документа, и меньшую — его форматированию.
+ Более подробно о концепции WYSIWYM смотрите во Введении.
  
 \end_layout
 
@@ -1250,16 +1070,8 @@ Tab
  есть (в большом количестве) инструменты точной настройки форматирования
  вашего документа.
  Ведь всё-таки \SpecialChar LyX
- не может оформлять текст 
-\emph on
-точно так,
-\emph default
- как вы себе представляете.
- Обо всём этом содержится информация в 
-\emph on
-Руководстве пользователя
-\emph default
-.
+ не может оформлять текст точно так, как вы себе представляете.
+ Обо всём этом содержится информация в Руководстве пользователя.
  Данный инструментарий включает: горизонтальный клей и вертикальные интервалы,
  что более мощно и универсально, чем повторяющиеся пустые сроки, а также
  способы изменения размеров шрифта, стилей символов и выравнивания абзацев
@@ -1285,12 +1097,8 @@ C-Пробел
 \family default
  (или 
 \family sans
-Вставить\SpecialChar menuseparator
-Специальный
-\begin_inset space ~
-\end_inset
-
-символ\SpecialChar menuseparator
+Вставка\SpecialChar menuseparator
+Форматирование\SpecialChar menuseparator
 Неразрывный
 \begin_inset space ~
 \end_inset
@@ -1365,11 +1173,8 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-Мы также используем его в 
-\emph on
-Самоучителе
-\emph default
- для описания названий меню, или специальных символов подобных\SpecialChar ldots
+Мы также используем его в Самоучителе для описания названий меню, или специальны
+х символов подобных\SpecialChar ldots
  
 \family sans
 Неразрывному
@@ -1390,11 +1195,7 @@ status collapsed
 
 \begin_layout Standard
 Различные части документа служат различным целям; мы называем эти части
- 
-\emph on
-окружениями
-\emph default
-.
+ окружениями.
  Большинство документов состоит из обычного текста.
  Заголовки раздела (главы, подраздела и т.д.) дают понять пользователю, что
  начинается новый тематический раздел или подраздел.
@@ -1436,7 +1237,16 @@ status collapsed
 \family sans
 Файл
 \family default
-).
+) и выглядит так: 
+\begin_inset Graphics
+	filename clipart/ToolbarEnvBox.png
+	scale 75
+	BoundingBox 0bp 0bp 133bp 27bp
+	clip
+
+\end_inset
+
+.
  Оно отображает текущее используемое окружение, в котором вы пишете.
  Когда вы писали ваш первый документ, оно показывало 
 \begin_inset Quotes cld
@@ -1496,11 +1306,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-Не обязательно 
-\emph on
-выделять
-\emph default
- строку.
+Не обязательно выделять строку.
  Если ничего не выделено, \SpecialChar LyX
  изменяет окружение текущего абзаца.
  Как вариант, вы можете изменить окружение нескольких абзацев путём их выделения
@@ -1522,11 +1328,6 @@ status collapsed
 \end_inset
 
  и установит большой шрифт для его заголовка.
- (Конечно, заголовок раздела будет также корректно отображаться и в 
-\family typewriter
-dvi
-\family default
-, и в печатном документе).
  Теперь нажмите 
 \family sans
 Enter
@@ -1565,11 +1366,7 @@ status collapsed
 
 \begin_layout Plain Layout
 О том, как набирать заголовки из двух или более строк см.
- 
-\emph on
-Руководство Пользователя
-\emph default
-.
+ Руководство Пользователя.
  Конечно же, окружение 
 \family sans
 Обычный
@@ -1802,15 +1599,23 @@ Enter
 \end_layout
 
 \begin_layout Standard
-Четыре уровня секционирования включают Подподраздел, Параграф, и Подпараграф.
- Поиграйте с ними по вашему усмотрению.
- Вы можете заметить, что заголовки параграфов и подпараграфов по умолчанию
- не нумеруются, и что подпараграфы начинаются с отступа; как это изменить
- смотрите в 
-\emph on
-Руководстве пользователя
-\emph default
+Дальнейшие уровни секционирования включают 
+\family sans
+Подподраздел
+\family default
+, 
+\family sans
+Абзац
+\family default
+, и 
+\family sans
+Подабзац
+\family default
 .
+ Поиграйте с ними по вашему усмотрению.
+ Вы можете заметить, что заголовки абзацев и подабзацев по умолчанию не
+ нумеруются, и что подабзацы начинаются с отступа; как это изменить смотрите
+ в Руководстве пользователя.
  Заголовок 
 \family sans
 Часть
@@ -1894,16 +1699,8 @@ Tab
 status collapsed
 
 \begin_layout Plain Layout
-Да, мы подчёркиваем это на протяжении всего 
-\emph on
-Самоучителя
-\emph default
-.
- Но 
-\emph on
-это
-\emph default
- — главная философия \SpecialChar LyX
+Да, мы подчёркиваем это на протяжении всего Самоучителя.
+ Но это — главная философия \SpecialChar LyX
 'а, так что, пожалуйста, простите нас.
 \end_layout
 
@@ -1913,20 +1710,21 @@ status collapsed
 \end_layout
 
 \begin_layout Itemize
-Слайды презентации могут использовать окружение точечного списка 
+Слайды презентации могут использовать точечные списки окружения 
 \family sans
 Перечисление
 \family default
- для описания различных точек.
+ для описания различных пунктов.
  
 \end_layout
 
 \begin_layout Itemize
-Планы и структуры могут использовать окружение 
+Планы и структуры могут использовать нумерованные списки (и буквенные подсписки)
+ окружения 
 \family sans
 Нумерация
 \family default
- нумерованного списка (и буквенных подсписков).
+.
  
 \end_layout
 
@@ -1942,10 +1740,9 @@ status collapsed
 \begin_layout Itemize
 Окружение 
 \family sans
-Список,
+Маркировка
 \family default
- отсутствующее в \SpecialChar LaTeX
-, является несколько изменённой формой окружения 
+ является несколько изменённой формой окружения 
 \family sans
 Описание
 \family default
@@ -1988,8 +1785,7 @@ Enter
 \begin_inset Quotes crd
 \end_inset
 
- (фактически, звёздочку, которая преобразуется в кружочек при печати) в
- строке.
+ в строке.
  Наберите ваши причины: 
 \end_layout
 
@@ -2015,17 +1811,14 @@ Enter
  предполагает, что вы собираетесь продолжить список следующим
  пунктом.
  Таким образом, выше вы получите список из трёх пунктов.
- Если вам нужно более одного абзаца в одном 
-\emph on
-пункте списка,
-\emph default
- одним из способов будет использовать 
+ Если вам нужно более одного абзаца в одном пункте списка, одним из способов
+ будет использовать 
 \family sans
 Разрыв
 \begin_inset space ~
 \end_inset
 
-Строки
+строки
 \family default
 , который вы получите, нажав 
 \family sans
@@ -2058,10 +1851,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \SpecialChar LyX
- не позволит вам выделить первую метку, пока вы не выберете абзац 
-\emph on
-перед
-\emph default
+ не позволит вам выделить первую метку, пока вы не выберете абзац перед
  списком, что, вероятно, вам не нужно.
  Также вы не сможете выделять номера в нумерованных заголовках разделов.
  Не беспокойтесь об этом.
@@ -2073,7 +1863,11 @@ status collapsed
 \family sans
 Нумерация
 \family default
- из меню Окружение.
+ из меню 
+\family sans
+Окружение
+\family default
+.
  Ух! Как мы и говорили, если вы удаляете или добавляете пункты списка, \SpecialChar LyX
 
  будет исправлять нумерацию.
@@ -2087,7 +1881,7 @@ status collapsed
 \family default
  и 
 \family sans
-Список
+Маркировка
 \family default
 , для того, чтобы посмотреть, как они выглядят.
  Для этих двух окружений, каждый пункт списка состоит из термина, который
@@ -2123,7 +1917,7 @@ status collapsed
 
  (
 \family sans
-Список
+Маркировка
 \family default
 ).
  Если вы хотите получить более одного слова в определении, разделяйте их
@@ -2154,11 +1948,7 @@ example_raw.lyx
  Нумерованные и не нумерованные списки будут иметь различные схемы нумерации
  подсписков.
  Большие подробности о списках, а также примеры с множественными вложениями,
- смотрите в 
-\emph on
-Руководстве Пользователя
-\emph default
-.
+ смотрите в Руководстве Пользователя.
 \end_layout
 
 \begin_layout Subsection
@@ -2173,7 +1963,7 @@ example_raw.lyx
 \family default
  для коротких цитат и 
 \family sans
-Большая
+Длинная
 \begin_inset space ~
 \end_inset
 
@@ -2182,14 +1972,14 @@ example_raw.lyx
  для длинных.
  Код программ (окружение 
 \family sans
-\SpecialChar LyX
--
+Код
+\begin_inset space \thinspace{}
+\end_inset
+
+LyX
 \family default
-код, также используется в 
-\emph on
-Самоучителе
-\emph default
- для оформления длинных примеров) пишется 
+, также используется в Самоучителе для оформления длинных примеров) пишется
+ 
 \family typewriter
 машинописным
 \family default
@@ -2208,7 +1998,11 @@ status collapsed
 
 \end_inset
 
- используя стиль Стихи.
+ используя стиль 
+\family sans
+Стихи
+\family default
+.
  При этом вам нужно будет использовать 
 \family sans
 Enter
@@ -2219,11 +2013,8 @@ C-Enter
 \family default
  для разделения строк в строфе.
  Более полное описание всех свойств окружений \SpecialChar LyX
- смотрите в 
-\emph on
-Руководстве Пользователя
-\emph default
-.
+ смотрите в Руководстве Пользовате
+ля.
 \end_layout
 
 \begin_layout Standard
@@ -2233,8 +2024,7 @@ C-Enter
 \series default
 : Корректно оформите окружения 
 \family sans
-Цитата, \SpecialChar LyX
--код,
+Цитата, Код LyX,
 \family default
  и 
 \family sans
@@ -2284,11 +2074,7 @@ name "sec:textclasses"
  — с одной стороны.
  Дополнительно, многие документы содержат специальные окружения: письма
  включают адрес отправителя и подпись, что не имеет смысла в книге или статье.
- 
-\emph on
-Класс текста
-\emph default
- \SpecialChar LyX
+ Класс текста \SpecialChar LyX
 
 \begin_inset Foot
 status collapsed
@@ -2302,11 +2088,7 @@ status collapsed
 \end_inset
 
  заботится об этих значительных различиях между различными типами документов.
- Например, 
-\emph on
-Самоучитель
-\emph default
- был написан в классе текста 
+ Например, Самоучитель был написан в классе текста 
 \family sans
 Book
 \family default
@@ -2398,13 +2180,8 @@ Article
 
 \begin_layout Standard
 Вот небольшой справочник классов текста.
- Для получение большей информации обратитесь к разделу 
-\emph on
-Специальные классы документов
-\emph default
- в 
-\emph on
-Дополнительных возможностях.
+ Для получение большей информации обратитесь к разделу Специальные классы
+ документов в Дополнительных возможностях.
  
 \end_layout
 
@@ -2619,13 +2396,9 @@ Letter
  Каждый раз, когда вы пишете деловое письмо, вы набираете свой адрес, адрес
  получателя, тело письма, подпись и т.п.
  В \SpecialChar LyX
- есть 
-\emph on
-шаблон
-\emph default
- для писем, содержащий пример письма; если у вас есть шаблон, вы можете
- просто заменить несколько частей письма своим текстом каждый раз когда
- вы пишете письмо.
+ есть шаблон для писем, содержащий пример письма; если у вас есть шаблон,
+ вы можете просто заменить несколько частей письма своим текстом каждый
+ раз когда вы пишете письмо.
 \end_layout
 
 \begin_layout Standard
@@ -2879,9 +2652,15 @@ example_raw.lyx
  Нажмите левой кнопкой мыши в строке на окончании заголовка раздела, и выберите
  
 \family sans
-Вставить\SpecialChar menuseparator
-Метку
+Вставка\SpecialChar menuseparator
+Метка
 \family default
+ или нажмите кнопку 
+\begin_inset Info
+type  "icon"
+arg   "label-insert"
+\end_inset
+
 .
  Откроется диалоговое окно, в котором будет будет предложено ввести имя
  метки.
@@ -2900,9 +2679,7 @@ status collapsed
 \begin_layout Plain Layout
 Возможно, у вас будут проблемы с названиями меток по-русски и вам придётся
  называть метки только латинскими буквами.
- — 
-\emph on
-прим.
+ — прим.
  лит.
  ред.
 \end_layout
@@ -2951,7 +2728,7 @@ OK
 \begin_layout Standard
 Поскольку вы ещё ничего другого не сделали, файл 
 \family typewriter
-dvi
+pdf
 \family default
  будет выглядеть точно так же, так как метки не показываются в печатном
  документе.
@@ -2991,14 +2768,20 @@ dvi
 
  и выберите 
 \family sans
-Вставить\SpecialChar menuseparator
-Перекрёстную
+Вставка\SpecialChar menuseparator
+Перекрёстная
 \begin_inset space ~
 \end_inset
 
-ссылку
+ссылк
 \family default
-.
+а (кнопка 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset ref"
+\end_inset
+
+).
  Появится диалоговое окно 
 \family sans
 Перекрёстная
@@ -3024,7 +2807,7 @@ dvi
 .
  Выделите её (она может быть выделена по умолчанию), затем установите 
 \family sans
-Тип
+Формат
 \begin_inset space ~
 \end_inset
 
@@ -3032,7 +2815,7 @@ dvi
 \family default
  на 
 \family sans
-Обычный
+<ссылка>
 \family default
  (по умолчанию), и нажмите 
 \family sans
@@ -3049,15 +2832,15 @@ dvi
 
 , и измените 
 \family sans
-Тип ссылки
-\family default
- на 
-\family typewriter
-Номер
+Формат
 \begin_inset space ~
 \end_inset
 
-страницы
+ссылки
+\family default
+ на 
+\family sans
+<страница>
 \family default
 , затем нажмите 
 \family sans
@@ -3119,7 +2902,7 @@ dvi
 \begin_inset space ~
 \end_inset
 
-ссылке
+метке
 \family default
  переместит курсор к метке ссылки, а 
 \family sans
@@ -3128,13 +2911,8 @@ C-<
  вернёт курсор обратно к ссылке.
  Используйте 
 \family sans
-Просмотреть\SpecialChar menuseparator
-Обновить\SpecialChar menuseparator
-
-\bar under
-D
-\bar default
-VI
+Документ\SpecialChar menuseparator
+Обновить
 \family default
 , и вы увидите, что на последней странице мы делали ссылку на 
 \begin_inset Quotes cld
@@ -3240,11 +3018,8 @@ VI
 \family sans
 Скопируйте
 \family default
- несколько страниц текста из 
-\emph on
-Руководства пользователя
-\emph default
- в буфер обмена, и 
+ несколько страниц текста из Руководства пользователя в буфер обмена, и
+ 
 \family sans
 Вставьте
 \family default
@@ -3301,25 +3076,28 @@ example_raw.lyx
 \begin_inset space ~
 \end_inset
 
-сноску
-\family default
- в панели инструментов
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Кнопка выглядит в виде стрелки, указывающей на красный текст, прямо под
- строками с чёрным текстом.
-\end_layout
-
+подстрочную
+\begin_inset space ~
 \end_inset
 
- или через меню 
+сноску 
+\family default
+
+\begin_inset Info
+type  "icon"
+arg   "footnote-insert"
+\end_inset
+
+ на панели инструментов или через меню 
 \family sans
 Вставить\SpecialChar menuseparator
-Сноску
+Подстрочная
+\begin_inset space ~
+\end_inset
+
+сноск
 \family default
-\SpecialChar endofsentence
+а\SpecialChar endofsentence
  Нажмите мышью на конец слова 
 \begin_inset Quotes cld
 \end_inset
@@ -3332,6 +3110,10 @@ status collapsed
  где-то в вашем документе и нажмите кнопку 
 \family sans
 Вставить
+\begin_inset space ~
+\end_inset
+
+подстрочную
 \begin_inset space ~
 \end_inset
 
@@ -3399,7 +3181,7 @@ status collapsed
  заботится о нумерации сносок при печати текста.
  Вы сами сможете это увидеть, просмотрев файл 
 \family typewriter
-dvi
+pdf
 \family default
  (или печатный экземпляр).
  Если вы добавите другие сноски, \SpecialChar LyX
@@ -3441,11 +3223,19 @@ status collapsed
 \begin_inset space ~
 \end_inset
 
+подстрочную
+\begin_inset space ~
+\end_inset
+
 сноску
 \family default
 ; изменить сноску на обычный текст можно, нажав на кнопку 
 \family sans
 Вставить
+\begin_inset space ~
+\end_inset
+
+подстрочную
 \begin_inset space ~
 \end_inset
 
@@ -3469,30 +3259,17 @@ status collapsed
 \begin_inset space ~
 \end_inset
 
-полях
-\begin_inset Foot
-status collapsed
+полях 
+\family default
 
-\begin_layout Plain Layout
-Кнопка выглядит в виде стрелки указывающей на красный текст следующий за
- (т.е., в полях) чёрным текстом, и обычно располагается за кнопкой 
-\family sans
-Вставить
-\begin_inset space ~
+\begin_inset Info
+type  "icon"
+arg   "marginalnote-insert"
 \end_inset
 
-сноску
-\family default
- на панели инструментов.
-\end_layout
-
-\end_inset
-
-
-\family default
- или 
+ или в меню 
 \family sans
-Вставить\SpecialChar menuseparator
+Вставка\SpecialChar menuseparator
 Примечание
 \begin_inset space ~
 \end_inset
@@ -3566,7 +3343,7 @@ name "sec:bibliographies"
 
 Библиографии (по крайней мере в науке) подобны перекрёстным ссылкам
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Чтобы получить гуманитарный стиль библиографий, творчески совместите методику
@@ -3622,13 +3399,17 @@ status open
  Для ссылки на элемент в документе \SpecialChar LyX
  вы используете первое поле 
 \family sans
-Ссылка
+Ключ
 \family default
-.
- По умолчанию, это число.
+, второе поле 
+\family sans
+Метка
+\family default
+ появится в результирующем документе.
+ Если метка не установлена (по умолчанию), то будет использовано число.
  Измените 
 \family sans
-Ссылку
+Ключ
 \family default
  на 
 \begin_inset Quotes cld
@@ -3645,9 +3426,7 @@ status collapsed
 \begin_layout Plain Layout
 Кириллические символы вызовут ошибку при вызове \SpecialChar LaTeX
 .
- — 
-\emph on
-прим.
+ — прим.
  пер.
 \end_layout
 
@@ -3660,28 +3439,26 @@ status collapsed
 Теперь нажмите в том месте вашего документа, где вы хотите вставить ссылку.
  Теперь вставьте ссылку с помощью меню 
 \family sans
-Вставить\SpecialChar menuseparator
-Ссылку
+Вставка\SpecialChar menuseparator
+Библиографическая
 \begin_inset space ~
 \end_inset
 
-на
-\begin_inset space ~
-\end_inset
-
-источник
-\begin_inset space ~
-\end_inset
-
-цитирования\SpecialChar endofsentence
-
+ссылка
 \family default
+ (кнопка 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset citation"
+\end_inset
+
+).
  Появится диалоговое окно 
 \family sans
 Ссылка на источник
 \family default
 .
- Правая панель этого окна будет содержать список элементов библиографии,
+ Левая панель этого окна будет содержать полный список элементов библиографии,
  и это поле позволит вам выбрать элемент библиографии, на который вы хотите
  сослаться
 \begin_inset Foot
@@ -3690,7 +3467,7 @@ status collapsed
 \begin_layout Plain Layout
 Рекомендуется в поле 
 \family sans
-Ссылка
+Ключ
 \family default
  давать ключам логичные уникальные имена, а не оставлять нумерацию по умолчанию.
 \end_layout
@@ -3706,8 +3483,12 @@ lyxtutorial
 \begin_inset Quotes crd
 \end_inset
 
- (сейчас это единственный элемент библиографии), затем, используя стрелку
- влево в центре, переместите её в прямоугольник 
+ (сейчас это единственный элемент библиографии), затем, используя кнопку
+ 
+\family sans
+Добавить
+\family default
+ в центре, переместите её в поле 
 \family sans
 Выбранные
 \begin_inset space ~
@@ -3726,14 +3507,10 @@ lyxtutorial
 \begin_layout Standard
 Как использовать остальные поля? Поле 
 \family sans
-После
+Текст после
 \family default
- в диалоговом окне 
-\family sans
-Цитата
-\family default
- вставляет в скобках после ссылки заметку (например, ссылку на страницу
- или главу в книге или статье, на которую ссылаются).
+ в диалоговом окне вставляет в скобках после ссылки заметку (например, ссылку
+ на страницу или главу в книге или статье, на которую ссылаются).
  Если вы хотите, чтобы ссылки в печатном документе были метками, а не числами
  (например, некоторые журналы хотели бы использовать 
 \begin_inset Quotes cld
@@ -3757,11 +3534,7 @@ lyxtutorial
 библиографии
 \family default
 .
- Как обычно, более подробную информацию можно найти в 
-\emph on
-Руководстве пользователя
-\emph default
-.
+ Как обычно, более подробную информацию можно найти в Руководстве пользователя.
 \end_layout
 
 \begin_layout Standard
@@ -3802,20 +3575,12 @@ status collapsed
 
  и выберите 
 \family sans
-Вставить\SpecialChar menuseparator
-Списки
-\begin_inset space ~
-\end_inset
-
-и
-\begin_inset space ~
-\end_inset
-
-содержания\SpecialChar menuseparator
+Вставка\SpecialChar menuseparator
+Списки/содержание\SpecialChar menuseparator
 Содержание
 \family default
 .
- В прямоугольнике (называемом также вкладкой) появится слово 
+ В прямоугольнике (называемом также вставкой) появится слово 
 \begin_inset Quotes cld
 \end_inset
 
@@ -3831,14 +3596,14 @@ status collapsed
 Оно не кажется слишком полезным.
  Однако, если вы посмотрите в ваш файл 
 \family typewriter
-dvi
+pdf
 \family default
 , вы увидите сгенерированное содержание, в котором перечислены различные
  разделы и подразделы вашего документа.
  Как обычно, если вы переставите разделы или создадите новые, то увидите
  эти изменения в файле 
 \family typewriter
-dvi
+pdf
 \family default
  после его обновления.
  
@@ -3850,8 +3615,12 @@ dvi
  Однако, вы можете отобразить его в отдельном окне, нажав на вкладке, или
  используя меню 
 \family sans
-Просмотреть\SpecialChar menuseparator
-Содержание
+Вид\SpecialChar menuseparator
+Панель
+\begin_inset space ~
+\end_inset
+
+структуры
 \begin_inset Foot
 status collapsed
 
@@ -3873,28 +3642,22 @@ status collapsed
 \family default
 .
  Это очень полезный инструмент.
- Вы можете использовать окно 
+ Вы можете использовать панель 
 \family sans
-Содержание
+Структура
 \family default
  для перемещения по вашему документу.
- Нажатие кнопкой мыши на заголовок раздела или подраздела в окне 
-\family sans
-Содержание
-\family default
- приведёт к подсветке её строки и перемещению курсора (в окне редактора
- \SpecialChar LyX
-) на соответствующее место в документе.
+ Нажатие кнопкой мыши на заголовок раздела или подраздела в нём приведёт
+ к подсветке строки и перемещению курсора (в окне редактора \SpecialChar LyX
+) на соответствующее
+ место в документе.
  Также вы можете использовать клавиши стрелок для передвижения вверх и вниз
  по содержанию.
  Поэтому, вам, возможно, будет удобнее держать это окно открытым в процессе
  редактирования.
  Подобную функциональность вы можете получить через меню 
 \family sans
-\bar under
-П
-\bar default
-ерейти
+Навигация
 \family default
 , где содержание появлется автоматически.
 \end_layout
@@ -3923,11 +3686,11 @@ example_raw.lyx
  используется многими учёными, так как он прекрасно отображает формулы,
  избегая управляющих символов, используемых другими текстовыми процессорами
  и их редакторами формул.
- Однако многие учёные недовольны тем, что написание формул в \SpecialChar LaTeX
- больше подобно
- программированию, чем написанию.
+ Однако многие из этих учёных недовольны тем, что набор формул в \SpecialChar LaTeX
+ больше
+ похож на программирование, чем на писательство.
  К счастью, \SpecialChar LyX
- поддерживает режим WYSIWYM для набора формул.
+ поддерживает режим WYSIWYM для ввода формул.
  Если вы пользовались \SpecialChar LaTeX
 , вы обнаружите, что можно набирать все обычные математиче
 ские команды \SpecialChar LaTeX
@@ -3947,11 +3710,7 @@ status collapsed
 
 \begin_layout Plain Layout
 Извините, но \SpecialChar LyX
- не может проверять 
-\emph on
-корректность
-\emph default
- ваших формул.
+ не может проверять корректность ваших формул.
 \end_layout
 
 \end_inset
@@ -3973,12 +3732,10 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-Итак, эта формула выглядит не очень хорошо, даже в файле 
-\family typewriter
-dvi
-\family default
- — в ней нет пропусков между символами и знаком равенства, и вы хотели бы
- написать 
+Итак, эта формула выглядит не очень хорошо, как в \SpecialChar LyX
+, так и в результирующем
+ PDF — в ней нет пропусков между символами и знаком равенства, и вы хотели
+ бы написать 
 \begin_inset Quotes cld
 \end_inset
 
@@ -3986,7 +3743,7 @@ dvi
 \begin_inset Quotes crd
 \end_inset
 
- в верхнем индексе.
+ верхним индексом.
  Такое плохое оформление произошло из-за того, что мы не сказали \SpecialChar LyX
  о том,
  что мы писали математическое выражение, поэтому он оформил его как обычный
@@ -3994,22 +3751,20 @@ dvi
 \end_layout
 
 \begin_layout Standard
-Математические формулы пишутся в математическом редакторе (ещё известном
+Математические формулы пишутся в математическом редакторе (также известном
  как математический режим).
- Чтобы войти в математический режим, просто нажмите на кнопку панели инструменто
-в с синей надписью 
-\begin_inset Formula $\frac{a+b}{c}$
+ Чтобы войти в математический режим, просто нажмите кнопку 
+\begin_inset Info
+type  "icon"
+arg   "math-mode"
 \end_inset
 
- на ней.
+ на панели инструментов.
  \SpecialChar LyX
  откроет голубой прямоугольник, обрамлённый фиолетовым.
- Голубой прямоугольник — это 
-\emph on
-точка ввода
-\emph default
-, сообщающая вам, что математический редактор ожидает, что вы что-то введёте,
- а фиолетовый прямоугольник означает, что вы в математическом редакторе.
+ Голубой прямоугольник — это точка ввода, сообщающая вам, что математический
+ редактор ожидает, что вы что-то введёте, а фиолетовый прямоугольник означает,
+ что вы в математическом редакторе.
  Курсор уже размещён в голубом прямоугольнике, поэтому просто наберите 
 \family typewriter
 E=mc^2
@@ -4023,17 +3778,13 @@ Esc
 \family default
  (Заметка: нажатие на кнопку 
 \family sans
-Математический
+Вставить
 \begin_inset space ~
 \end_inset
 
-режим
+формулу
 \family default
- 
-\emph on
-не
-\emph default
- приведёт к выходу из математического редактора).
+ не приведёт к выходу из математического редактора).
  Фиолетовый прямоугольник исчезнет, оставив курсор справа от выражения,
  и теперь если вы что-то наберёте, это будет обычный текст.
 \end_layout
@@ -4042,7 +3793,7 @@ Esc
 Запустите \SpecialChar LaTeX
  и просмотрите файл 
 \family typewriter
-dvi
+pdf
 \family default
 .
  Обратите внимание, что выражение красиво оформлено, с пробелами между символами
@@ -4056,7 +3807,7 @@ dvi
 
  в верхнем индексе.
  Символы в математическом режиме рассматриваются как переменные, и отображаются
- наклонном шрифтом.
+ курсивным шрифтом.
  Числа — просто числа.
 \end_layout
 
@@ -4091,11 +3842,7 @@ sqrt
  выполняет \SpecialChar LaTeX
 .
  Таким образом (извиняюсь за повторение) вы можете сконцентрироваться на
- 
-\emph on
-содержимом
-\emph default
- ваших математических выражений, а не на их формате.
+ содержимом ваших математических выражений, а не на их формате.
 \end_layout
 
 \begin_layout Section
@@ -4159,14 +3906,6 @@ Backspace
 \family sans
 Правка\SpecialChar menuseparator
 Отменить
-\begin_inset space ~
-\end_inset
-
-последнее
-\begin_inset space ~
-\end_inset
-
-действие
 \family default
  работает и в математическом режиме, так же, как и вырезка и вставка.
  Нужно быть осторожным с одним: если вы находитесь прямо после математического
@@ -4182,14 +3921,6 @@ Backspace
  К счастью, чтобы всё вернуть, вы можете просто использовать 
 \family sans
 Отменить
-\begin_inset space ~
-\end_inset
-
-последнее
-\begin_inset space ~
-\end_inset
-
-действие
 \family default
 .
 \end_layout
@@ -4253,10 +3984,7 @@ c
 \family sans
 Вниз
 \family default
- где-либо в верхнем индексе, курсор будет помещён непосредственно 
-\emph on
-после
-\emph default
+ где-либо в верхнем индексе, курсор будет помещён непосредственно после
  верхнего индекса (так что теперь вы можете набрать 
 \begin_inset Quotes cld
 \end_inset
@@ -4290,12 +4018,8 @@ c
 \begin_inset Formula $E=mc^{1+x}-2$
 \end_inset
 
- без использования мыши 
-\emph on
-или
-\emph default
- клавиш стрелок, это будет предпочитаемый вами метод, когда вы приобретёте
- некоторый опыт.
+ без использования мыши или клавиш стрелок, это будет предпочитаемый вами
+ метод, когда вы приобретёте некоторый опыт.
  Только будьте внимательны и не нажимайте 
 \family sans
 Пробел
@@ -4351,11 +4075,8 @@ reference "sec:whitespace"
 
 ).
  Если вы не удовлетворены результатом, есть способы точной настройки пропусков,
- для чего вы можете заглянуть в 
-\emph on
-Руководство пользователя,
-\emph default
- но не заботьтесь об этом до создания всего содержимого вашего документа.
+ для чего вы можете заглянуть в Руководство пользователя, но не заботьтесь
+ об этом до создания всего содержимого вашего документа.
 \end_layout
 
 \end_inset
@@ -4455,7 +4176,7 @@ Esc
 \end_inset
 
 _
-\begin_inset Quotes cld
+\begin_inset Quotes crd
 \end_inset
 
 .
@@ -4497,27 +4218,8 @@ example_raw.lyx
 еского редактора.
  Многие из этих функций можно выполнить с клавиатуры или из меню 
 \family sans
-\bar under
-П
-\bar default
-равка\SpecialChar menuseparator
-
-\bar under
-М
-\bar default
-атематика
-\family default
- и 
-\family sans
-\bar under
-В
-\bar default
-ставить\SpecialChar menuseparator
-
-\bar under
-М
-\bar default
-атематика
+Вставка\SpecialChar menuseparator
+Математика
 \family default
 .
  Однако мы собираемся сконцентрироваться на использовании 
@@ -4540,16 +4242,14 @@ example_raw.lyx
 \family default
  через меню 
 \family sans
-\bar under
-В
-\bar default
-ставить\SpecialChar menuseparator
+Вид\SpecialChar menuseparator
+Панели
+\begin_inset space \thinspace{}
+\end_inset
 
-\bar under
-М
-\bar default
-атематика\SpecialChar menuseparator
-Математическая панель
+инструментов\SpecialChar menuseparator
+Матем.
+ панели
 \family default
  и не закрывайте её, пока не прочтёте этот раздел.
 \end_layout
@@ -4564,7 +4264,7 @@ example_raw.lyx
 \end_inset
 
 
-\begin_inset Formula $\Gamma\rho\varepsilon\varepsilon\kappa$
+\begin_inset Formula $\alpha$
 \end_inset
 
 
@@ -4728,43 +4428,22 @@ status collapsed
 Ограничители
 \family default
 , на которой изображён синий квадрат, окружённый квадратными скобками.
- Выберите левый ограничитель нажатием 
-\emph on
-левой кнопки мыши,
-\emph default
- а правый — нажатием 
-\emph on
-правой кнопки мыши
-\emph default
-.
+ Выберите левый ограничитель нажатием левой кнопки мыши, а правый — нажатием
+ правой кнопки мыши.
  (Либо воспользуйтесь кнопками 
 \family sans
-С
-\bar under
-л
-\bar default
-ева,
+Слева,
 \family default
  
 \family sans
-С
-\bar under
-п
-\bar default
-рава
+Справа
 \family default
  и 
 \family sans
-\bar under
-О
-\bar default
-бе
+Обе
 \family default
-, а затем выберите нужный ограничитель нажатием 
-\emph on
-левой кнопки мыши
-\emph default
-.) Ваш текущий выбор ограничителей отображается в квадрате вверху окна.
+, а затем выберите нужный ограничитель нажатием левой кнопки мыши.) Ваш текущий
+ выбор ограничителей отображается в квадрате вверху окна.
  По умолчанию — это пара круглых скобок, но вы может выбрать пару фигурных
  скобок, фигурную и круглую скобку, или даже выбрать пустой квадрат, чтобы
  получить что-то вроде 
@@ -5099,19 +4778,19 @@ name "sec:matrices"
 
 Нажмите на кнопке 
 \family sans
-Матрица
-\family default
- в 
-\family sans
-Математической
-\begin_inset space ~
+Вставить
+\begin_inset space \thinspace{}
 \end_inset
 
-панели
+матрицу
+\family default
+ в панели 
+\family sans
+Формула
 \family default
 .
- Появится диалоговое окно Матрица, в нём будут две полосы прокрутки, которые
- позволят вам выбирать количество строк и столбцов в вашей матрице.
+ Появится диалоговое окно Матрица, в нём можно выбирать количество строк
+ и столбцов в вашей матрице.
  Выберите 2 строки и 3 столбца и нажмите 
 \family sans
 Применить
@@ -5151,19 +4830,10 @@ Tab
 \end_layout
 
 \begin_layout Standard
-Если вам вдруг потребуется больше колонок или столбцов, используйте пункты
+Если вам вдруг потребуется больше строк или столбцов, используйте кнопки
  
 \family sans
-\bar under
-П
-\bar default
-равка\SpecialChar menuseparator
-
-\bar under
-М
-\bar default
-атематика\SpecialChar menuseparator
-Вставить
+Добавить
 \begin_inset space ~
 \end_inset
 
@@ -5171,16 +4841,7 @@ Tab
 \family default
  и 
 \family sans
-\bar under
-П
-\bar default
-равка\SpecialChar menuseparator
-
-\bar under
-М
-\bar default
-атематика\SpecialChar menuseparator
-Вставить
+Добавить
 \begin_inset space ~
 \end_inset
 
@@ -5204,20 +4865,16 @@ Tab
 
 столбец
 \family default
- из того же меню.
+.
 \end_layout
 
 \begin_layout Standard
 Способы изменения горизонтального выравнивания каждого столбца, а также
- изменения вертикальной позиции всей матрицы смотрите в 
-\emph on
-Руководстве
+ изменения вертикальной позиции всей матрицы смотрите в Руководстве
 \begin_inset space ~
 \end_inset
 
-Пользователя
-\emph default
-.
+Пользователя.
  Обратите внимание, если вы хотите набрать таблицу с текстом, вам следует
  использовать замечательную поддержку таблиц в \SpecialChar LyX
 , а не набор текста в матрице.
@@ -5235,11 +4892,8 @@ Tab
  большие выражения, или что бы ваши выражения выделялись из текста — вам
  нужно писать их в выключном режиме.
  К тому же только выключные выражения можно снабжать метками и нумеровать
- (смотрите 
-\emph on
-Руководство Пользователя
-\emph default
-), также многострочные формулы (смотрите Разд.
+ (смотрите Руководство Пользователя), также многострочные формулы (смотрите
+ Разд.
  
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5253,15 +4907,11 @@ reference "sec:multiline"
 \begin_layout Standard
 Нажмите на кнопке 
 \family sans
-Выключной режим
+Установить выключной режим
 \family default
- в 
+ в панели 
 \family sans
-Математической
-\begin_inset space ~
-\end_inset
-
-панели
+Формула
 \family default
 , на которой изображены несколько линий текста до и после синего прямоугольника.
  \SpecialChar LyX
@@ -5271,7 +4921,7 @@ reference "sec:multiline"
  и посмотрите, как оно выглядит.
  Кнопка 
 \family sans
-Выключной режим
+Установить выключной режим
 \family default
  на самом деле является переключателем; используйте её для преобразования
  нескольких ваших выражений в выключной режим и обратно.
@@ -5315,11 +4965,7 @@ reference "sec:multiline"
 Enter
 \family default
 .
- Если вы это сделаете, текст 
-\emph on
-после
-\emph default
- формулы будет начинаться с нового абзаца.
+ Если вы это сделаете, текст после формулы будет начинаться с нового абзаца.
  Таким образом, текст будет выведен с отступом, что, вероятно, вам не нужно.
 \end_layout
 
@@ -5398,7 +5044,7 @@ name "sec:multiline"
 
 Попробуйте набрать следующие формулы и посмотрите результат в файле 
 \family typewriter
-dvi
+pdf
 \family default
 .
  Вам нужно будет ввести две отдельные формулы в выключном режиме.
@@ -5447,11 +5093,8 @@ x & = & y+y+y+y+y\\
 \end_layout
 
 \begin_layout Standard
-Выглядит 
-\emph on
-намного
-\emph default
- лучше! Знаки равенства выравнены, и меньше вертикальный пропуск между формулами.
+Выглядит намного лучше! Знаки равенства выравнены, и меньше вертикальный
+ пропуск между формулами.
 \end_layout
 
 \begin_layout Standard
@@ -5462,13 +5105,13 @@ C-Enter
 \family default
  или выберите 
 \family sans
-Вставить\SpecialChar menuseparator
+Вставка\SpecialChar menuseparator
 Математика\SpecialChar menuseparator
-Блок
+Окружение
 \begin_inset space ~
 \end_inset
 
-уравнений
+eqnarray
 \family default
 .
  \SpecialChar LyX
@@ -5503,11 +5146,7 @@ status collapsed
  терпит неудачу и вы должны позаботиться
  о промежутке самостоятельно.
  Подробнее см.
- 
-\emph on
-Руководство пользователя
-\emph default
-.
+ Руководство пользователя.
 \end_layout
 
 \end_inset
@@ -5619,7 +5258,7 @@ C-k
  Но мы не можем подробностях объяснить все эти загадочные пункты в меню
  
 \family sans
-Вставить\SpecialChar menuseparator
+Вставка\SpecialChar menuseparator
 Математика
 \family default
 , которые начинаются с букв AMS! Американское Математическое Сообщество,
@@ -5627,11 +5266,8 @@ C-k
  создало собственное семейство конструкций \SpecialChar LaTeX
  для выполнения тех же самых
  задач.
- Почему вам хотелось бы использовать их? Читайте об этом в 
-\emph on
-Руковостве пользователя
-\emph default
-.
+ Почему вам хотелось бы использовать их? Читайте об этом в Руковостве пользовате
+ля.
 \end_layout
 
 \begin_layout Section
@@ -5640,35 +5276,21 @@ C-k
 
 \begin_layout Standard
 Математический редактор может делать намного больше.
- Теперь, когда вы ознакомились с основами, обратитесь к 
-\emph on
-Руководству пользователя
-\emph default
+ Теперь, когда вы ознакомились с основами, обратитесь к Руководству пользователя
  за подсказками относительно:
 \end_layout
 
 \begin_layout Itemize
-Пометок и нумерации выражений;
+Пометок и нумерации формул.
 \end_layout
 
 \begin_layout Itemize
 Изменений гарнитур, например, чтобы написать в выражении текст жирным шрифтом.
- Мы должны заметить, что нажатие кнопки 
-\family sans
-Математический
-\begin_inset space ~
-\end_inset
-
-режим
-\family default
- в панели инструментов, в то время как вы уже в математическом редакторе,
- приведёт к написанию текста прямым шрифтом, до тех пор, пока вы не нажмёте
- её ещё раз;
 \end_layout
 
 \begin_layout Itemize
 Точной подстройки размеров шрифтов или пробелов в выражении.
- (Принимайтесь за это только в конце работы над документом)
+ (Принимайтесь за это только в конце работы над документом!)
 \end_layout
 
 \begin_layout Itemize
@@ -5678,16 +5300,12 @@ C-k
  документа.
  Если вы измените определение макроса, изменятся все ссылки на макрос во
  всём документе.
- Макрос даже может содержать аргументы;
+ Макрос даже может содержать аргументы.
 \end_layout
 
 \begin_layout Itemize
 Выполнения многих других вещей, рассмотреть которые у нас не хватило времени
- в этом 
-\emph on
-Самоучителе
-\emph default
-.
+ в этом Самоучителе.
 \end_layout
 
 \begin_layout Chapter
@@ -5702,17 +5320,9 @@ C-k
 \begin_layout Standard
 Мы не рассмотрели все возможные команды \SpecialChar LyX
 , но мы это и не планировали.
- Как обычно, более подробную информацию ищите в 
-\emph on
-Руководстве пользователя
-\emph default
-.
+ Как обычно, более подробную информацию ищите в Руководстве пользователя.
  Назначение каждой команды \SpecialChar LyX
- описано в 
-\emph on
-Справочном руководстве
-\emph default
-.
+ описано в Справочном руководстве.
  Мы просто ещё упомянем о нескольких важных вещах, которые может делать
  \SpecialChar LyX
 \SpecialChar ldots
@@ -5724,10 +5334,16 @@ C-k
  есть WYSIWYM-поддержка таблиц.
  Для вставки таблицы используйте 
 \family sans
-Вставить\SpecialChar menuseparator
-Таблицу
+Вставка\SpecialChar menuseparator
+Таблиц
 \family default
-.
+а (кнопка 
+\begin_inset Info
+type  "icon"
+arg   "tabular-insert"
+\end_inset
+
+).
  
 \begin_inset Note Note
 status collapsed
@@ -5744,11 +5360,7 @@ status collapsed
 
 \end_inset
 
- Нажатие на таблице 
-\emph on
-правой кнопкой
-\emph default
- мыши приводит к появлению меню 
+ Нажатие на таблице правой кнопкой мыши приводит к появлению меню 
 \family sans
 Формат
 \begin_inset space ~
@@ -5762,41 +5374,29 @@ status collapsed
 \begin_layout Itemize
 \SpecialChar LyX
  также поддерживает включение рисунков в различных форматах (включая JPEG
- или другие растровые форматы, PostScript
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-textregistered{}
-\end_layout
-
-\end_inset
-
- и простой \SpecialChar LaTeX
+ или другие растровые форматы, PostScript и простой \SpecialChar LaTeX
 ) в документ.
  (Вы уже догадались как это сделать: 
 \family sans
-Вставить\SpecialChar menuseparator
-Рисунок
+Вставка\SpecialChar menuseparator
+Изображение
 \family default
-\SpecialChar endofsentence
+ (кнопка 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show-new-inset graphics"
+\end_inset
+
+).
  Затем нажмите мышью на рисунке и выберите включаемый файл, угол поворота,
- масштаб, и прочее) Таблицы и рисунки могут иметь заголовки, и \SpecialChar LyX
- может автоматиче
-ски генерировать списки рисунков и/или таблиц.
+ масштаб и прочее).
+ Таблицы и рисунки могут иметь заголовки, и \SpecialChar LyX
+ может автоматически генерировать
+ списки рисунков и/или таблиц.
 \end_layout
 
 \begin_layout Itemize
-Поддерживается контроль версий с помощью RCS (более подробно об этом 
-\family typewriter
-\lang english
-man rcsintro
-\family default
-\lang russian
-).
+Поддерживается контроль версий с помощью RCS, Subversion, Git.
 \end_layout
 
 \begin_layout Itemize
@@ -5807,7 +5407,7 @@ man rcsintro
  способов.
  Большая часть настроек может быть выполнена в меню 
 \family sans
-Правка\SpecialChar menuseparator
+Инструменты\SpecialChar menuseparator
 Настройки
 \family default
 .
@@ -5842,69 +5442,27 @@ man rcsintro
 \begin_layout Itemize
 Меню \SpecialChar LyX
  имеют соответствующие клавишные комбинации.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-В русском варианте локализации клавишные комбинации (пока?) не реализованы.
- — 
-\emph on
-прим.
- пер.
-\end_layout
-
-\end_inset
-
  Это означают, что вы можете выполнять 
 \family sans
-\emph on
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
-
-\bar under
-O
-\bar default
-pen,
+File\SpecialChar menuseparator
+Open,
 \family default
-\emph default
- 
-\emph on
-нажав
-\emph default
- 
+ нажав 
 \family sans
-\emph on
 M-F
 \family default
-\emph default
- 
-\emph on
-и далее
-\emph default
- 
+ и далее 
 \family sans
-\emph on
 O
 \family default
-\emph default
- 
-\emph on
-или используя комбинацию клавиш, которая указаны в пункте меню (
+ или используя комбинацию клавиш, которая указаны в пункте меню (
 \family sans
 C-O
 \family default
-\emph default
- 
-\emph on
-по умолчанию).
+ по умолчанию).
  Комбинации клавиш также настраиваются.
- Информацию об этом смотрите в
-\emph default
- 
+ Информацию об этом смотрите в 
 \family sans
-\emph on
 Помощь\SpecialChar menuseparator
 Руководство
 \begin_inset space ~
@@ -5939,21 +5497,10 @@ reference "subsec:Импортирование-документов-LaTeX"
 \begin_layout Itemize
 Можно выполнять проверку орфографии с помощью 
 \family sans
-Правка\SpecialChar menuseparator
+Инструменты\SpecialChar menuseparator
 Проверка правописания
 \family default
 \SpecialChar endofsentence
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Обратите внимание, что проверка орфографии производится только от позиции
- курсора до конца документа.
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -5972,11 +5519,7 @@ name "sec:latexusers"
 
 Если вы ничего не знаете о \SpecialChar LaTeX
 , вам не нужно читать этот раздел.
- Конечно, вы можете 
-\emph on
-изучить
-\emph default
- \SpecialChar LaTeX
+ Конечно, вы можете изучить \SpecialChar LaTeX
 , а затем читать эту главу.
  Однако многие люди, начавшие использовать \SpecialChar LyX
 , ознакомлены с \SpecialChar LaTeX
@@ -6001,24 +5544,14 @@ name "sec:latexusers"
 Так как это лишь самоучитель, мы только упомянем некоторые вещи, наиболее
  интересные новым пользователям \SpecialChar LyX
 .
- Так как в наших интересах держать 
-\emph on
-Самоучитель
-\emph default
- небольшим, мы приведём здесь минимальную информацию.
- В руководстве 
-\emph on
-Дополнительные возможности
-\emph default
-, особенно в главе 
-\emph on
-Секреты специалистов по \SpecialChar LaTeX
-
-\emph default
+ Так как в наших интересах держать Самоучитель небольшим, мы приведём здесь
+ минимальную информацию.
+ В руководстве Дополнительные возможности, особенно в главе Секреты специалистов
+ по \SpecialChar LaTeX
 , приведена большая часть информации о различиях между \SpecialChar LyX
  и \SpecialChar LaTeX
-, а также приведены
- приёмы использования \SpecialChar LaTeX
+, а также
+ приведены приёмы использования \SpecialChar LaTeX
  в \SpecialChar LyX
 .
 \end_layout
@@ -6037,18 +5570,22 @@ name "sec:latexusers"
  в \SpecialChar LyX
 , выбрав 
 \family sans
-Вставить\SpecialChar menuseparator
-Команду
+Вставка\SpecialChar menuseparator
+Код
 \begin_inset space ~
 \end_inset
 
-\SpecialChar LaTeX
-
+TeX
 \family default
- или нажав на кнопке с красной надписью \SpecialChar TeX
+ или нажав на кнопку 
+\begin_inset Info
+type  "icon"
+arg   "ert-insert"
+\end_inset
+
 .
- При этом создается текстовое окно, всё содержимое которого будет напрямую
- передано \SpecialChar LaTeX
+ При этом создается вставка, всё содержимое которой будет напрямую передано
+ \SpecialChar LaTeX
 .
 \end_layout
 
@@ -6057,8 +5594,7 @@ name "sec:latexusers"
  обрабатывается немного по-другому.
  Войдите в режим \SpecialChar LaTeX
 , нажав на обратный слэш.
- Обратный слэш не отображается, но всё, что вы введёте, отобразится в красном
- цвете.
+ Всё, что вы введёте, отобразится в красном цвете.
  Выход из режима \SpecialChar LaTeX
  производится нажатием клавиши 
 \family sans
@@ -6128,16 +5664,10 @@ gamma
 \begin_layout Standard
 Как специальный случай, если вы набираете фигурную скобку в математическом
  редакторе в режиме \SpecialChar LaTeX
-, то математический редактор оформит открывающую 
-\emph on
-и
-\emph default
- закрывающую фигурные скобки красным, затем 
-\emph on
-выведет
-\emph default
- вас из режима \SpecialChar LaTeX
- и поместит курсор в пространство между фигурными скобками.
+, то математический редактор оформит открывающую и закрывающ
+ую фигурные скобки красным, затем выведет вас из режима \SpecialChar LaTeX
+ и поместит курсор
+ в пространство между фигурными скобками.
  Так более удобно набирать команды, для которых математический редактор
  не знает, как передавать аргументы.
 \end_layout
@@ -6199,20 +5729,9 @@ You can import a \SpecialChar LaTeX
  file into \SpecialChar LyX
  by using the 
 \family sans
-\bar under
-F
-\bar default
-ile\SpecialChar menuseparator
-
-\bar under
-I
-\bar default
-mport\SpecialChar menuseparator
-
-\bar under
-L
-\bar default
-a\SpecialChar TeX
+File\SpecialChar menuseparator
+Import\SpecialChar menuseparator
+La\SpecialChar TeX
 
 \family default
  command in \SpecialChar LyX
@@ -6318,10 +5837,10 @@ whatever.lyx
 \end_layout
 
 \begin_layout Standard
-В диалоговом окне 
+В диалоговом окне
 \family sans
-Формат\SpecialChar menuseparator
-Документ
+ Документ\SpecialChar menuseparator
+Настройки
 \family default
  задаётся множество параметров, некоторые из которых можно было бы указать
  в команде 
@@ -6332,7 +5851,7 @@ documentclass
 \family default
 .
  Здесь можно изменить класс, размер шрифта по умолчанию, размер бумаги.
- Вставьте дополнительные параметры команды 
+ При необходимости вставьте дополнительные параметры команды 
 \family typewriter
 
 \backslash
@@ -6340,11 +5859,9 @@ documentclass
 \family default
  в 
 \family sans
-Доп.
-\begin_inset space ~
-\end_inset
-
-параметры
+Класс документа\SpecialChar menuseparator
+Параметры класса\SpecialChar menuseparator
+Пользовательские
 \family default
 .
 \end_layout
@@ -6366,7 +5883,6 @@ name "sec:preamble"
 .
  Выберите 
 \family sans
-Формат\SpecialChar menuseparator
 Преамбула
 \begin_inset space ~
 \end_inset
@@ -6374,7 +5890,12 @@ name "sec:preamble"
 \SpecialChar LaTeX
 
 \family default
- и введите их в появившемся окне.
+ в диалоговом окне 
+\family sans
+Документ\SpecialChar menuseparator
+Настройки
+\family default
+ и введите команды в появившемся окне.
  Всё, что вы введёте, будет (как в режиме \SpecialChar LaTeX
 ) отправлено непосредственно \SpecialChar LaTeX
 .
@@ -6388,33 +5909,17 @@ Bib\SpecialChar TeX
 \begin_layout Standard
 В \SpecialChar LyX
  есть поддержка Bib\SpecialChar TeX
-, что позволяет вам создавать базы данных библиографических
- ссылок, используемых во многих документах.
+, который позволяет вам создавать базы данных библиографиче
+ских ссылок для использования во многих документах.
  Для включения 
 \family typewriter
 bib
 \family default
 -файла выберите 
 \family sans
-Вставить\SpecialChar menuseparator
-Списки
-\begin_inset space ~
-\end_inset
-
-и
-\begin_inset space ~
-\end_inset
-
-содержания\SpecialChar menuseparator
-Ссылки
-\begin_inset space ~
-\end_inset
-
-сгенерированные
-\begin_inset space ~
-\end_inset
-
-через
+Вставка\SpecialChar menuseparator
+Списки/содержание\SpecialChar menuseparator
+Библиография
 \begin_inset space ~
 \end_inset
 
@@ -6430,7 +5935,7 @@ Bib\SpecialChar TeX
 .
  В поле 
 \family sans
-База
+Базы
 \begin_inset space ~
 \end_inset
 
@@ -6471,20 +5976,12 @@ bibliographystyle{}
 Как только вы это сделали — можете использовать цитаты из любой включенной
  библиографии с помощью 
 \family sans
-Вставить\SpecialChar menuseparator
-Ссылку
+Вставка\SpecialChar menuseparator
+Библиографическая
 \begin_inset space ~
 \end_inset
 
-на
-\begin_inset space ~
-\end_inset
-
-источник
-\begin_inset space ~
-\end_inset
-
-цитирования
+ссылка
 \family default
  (смотрите Раздел
 \begin_inset space ~
@@ -6525,17 +6022,17 @@ bib
 \end_layout
 
 \begin_layout Standard
-Для вставки других специальных символов, включая эллипсы, разрывы строк,
+Для вставки других специальных символов, включая многоточия, разрывы строк,
  точки переносов, смотрите меню 
 \family sans
-Вставить\SpecialChar menuseparator
-Специальный
+Вставка\SpecialChar menuseparator
+Специальные
 \begin_inset space ~
 \end_inset
 
 символ
 \family default
-.
+ы.
 \end_layout
 
 \begin_layout Section
@@ -6544,26 +6041,14 @@ bib
 
 \begin_layout Standard
 Иногда при преобразовании документов \SpecialChar LaTeX
-, случаются ошибки, т.е.
+ случаются ошибки, т.е.
  места, непонятные для \SpecialChar LyX
  или \SpecialChar LaTeX
 .
  Когда это происходит, \SpecialChar LyX
- создаёт прямоугольник ошибки (прямоугольник с написанным
- внутри словом 
-\begin_inset Quotes cld
-\end_inset
-
-Ошибка
-\begin_inset Quotes crd
-\end_inset
-
-).
- Нажатие на этот прямоугольник приведёт к появлению окна с описанием ошибки.
- Если вы что-то не так сделали в \SpecialChar LyX
-, то там будет описание ошибки \SpecialChar LyX
-, но это
- должно происходить очень редко.
+ открывает диалоговое окно ошибки.
+ В нём можно выбирать отдельные ошибки, при этом происходит переход в место
+ документа, где произошла эта ошибка.
  Если это проблема \SpecialChar LaTeX
  (чаще это происходит с текстом, набранным в режиме \SpecialChar TeX
 ),

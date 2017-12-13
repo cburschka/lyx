@@ -276,6 +276,10 @@ dist_rudoc_DATA = \
 	ru/Intro.lyx \
 	ru/Tutorial.lyx
 
+ruclipartdocdir = $(rudocdir)/clipart
+dist_ruclipartdoc_DATA = \
+	ru/clipart/ToolbarEnvBox.png
+
 skdocdir = $(docdir)/sk
 dist_skdoc_DATA = \
 	sk/Intro.lyx \
