@@ -83,16 +83,14 @@
 
 #include <queue>
 
-#include <QFontDatabase>
 #include <QByteArray>
-#include <QClipboard>
 #include <QDateTime>
 #include <QDesktopWidget>
 #include <QDir>
 #include <QEvent>
-#include <QEventLoop>
 #include <QFileOpenEvent>
 #include <QFileInfo>
+#include <QFontDatabase>
 #include <QHash>
 #include <QIcon>
 #include <QImageReader>
@@ -108,11 +106,9 @@
 #include <QRegExp>
 #include <QSessionManager>
 #include <QSettings>
-#include <QShowEvent>
 #include <QSocketNotifier>
 #include <QSortFilterProxyModel>
 #include <QStandardItemModel>
-#include <QTextCodec>
 #include <QTimer>
 #include <QTranslator>
 #include <QThreadPool>
