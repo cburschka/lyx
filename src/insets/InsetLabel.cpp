@@ -97,12 +97,12 @@ void InsetLabel::updateLabelAndRefs(docstring const & new_label,
 	if (label == old_label)
 		return;
 
-	buffer().undo().beginUndoGroup();
+	// This handles undo groups automagically
+	UndoGroupHelper ugh(&buffer());
 	if (cursor)
 		cursor->recordUndo();
 	setParam("name", label);
 	updateReferences(old_label, label);
-	buffer().undo().endUndoGroup();
 }
 
 
