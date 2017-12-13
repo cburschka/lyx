@@ -300,28 +300,28 @@ def main(argv, contributors):
          txt_credits_data = unicode(as_txt_credits(contributors)).encode("utf-8")
      else:
          txt_credits_data = str(as_txt_credits(contributors)).encode("utf-8")
-     txt_credits = open(argv[1], "w")
+     txt_credits = open(argv[1], "wb")
      txt_credits.write(txt_credits_data)
 
      if sys.version_info[0] < 3:
          php_credits_data = unicode(as_php_credits(contributors, argv[2])).encode("utf-8")
      else:
          php_credits_data = str(as_php_credits(contributors, argv[2])).encode("utf-8")
-     php_credits = open(argv[2], "w")
+     php_credits = open(argv[2], "wb")
      php_credits.write(php_credits_data)
 
      if sys.version_info[0] < 3:
          php_blanket_data = unicode(as_php_blanket(contributors, argv[3])).encode("utf-8")
      else:
          php_blanket_data = str(as_php_blanket(contributors, argv[3])).encode("utf-8")
-     php_blanket = open(argv[3], "w")
+     php_blanket = open(argv[3], "wb")
      php_blanket.write(php_blanket_data)
 
      if sys.version_info[0] < 3:
          warning_data =  unicode(collate_incomplete(contributors) + '\n').encode("utf-8")
      else:
          warning_data =  str(collate_incomplete(contributors) + '\n').encode("utf-8")
-     sys.stderr.write(warning_data)
+     sys.stderr.write(warning_data.decode('utf-8'))
 
 
 # Store the raw data.
