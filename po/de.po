@@ -95,15 +95,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-12-01 10:55+0100\n"
-"PO-Revision-Date: 2017-11-26 03:00+0100\n"
+"POT-Creation-Date: 2017-12-14 02:51+0100\n"
+"PO-Revision-Date: 2017-12-14 03:21+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.5\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:33
@@ -2935,7 +2935,7 @@ msgstr "&Löschen"
 msgid "S&elected:"
 msgstr "Ausg&ewählt:"
 
-#: src/frontends/qt4/ui/NomenclUi.ui:14 src/insets/InsetNomencl.cpp:182
+#: src/frontends/qt4/ui/NomenclUi.ui:14 src/insets/InsetNomencl.cpp:184
 msgid "Nomenclature"
 msgstr "Nomenklatur"
 
@@ -3064,7 +3064,7 @@ msgstr "XHTML-Ausgabe-Optionen"
 
 #: src/frontends/qt4/ui/OutputUi.ui:175
 msgid "Whether to comply strictly with XHTML 1.1."
-msgstr "Striktes XHTML 1.1 verwenden?"
+msgstr "Ob striktes XHTML 1.1 verwendet werden soll"
 
 #: src/frontends/qt4/ui/OutputUi.ui:178
 msgid "&Strict XHTML 1.1"
@@ -5687,19 +5687,19 @@ msgstr " et al."
 #: lib/citeengines/biblatex.citeengine:145
 #: lib/citeengines/natbib.citeengine:124 lib/layouts/stdciteformats.inc:27
 msgid ", [[separate author names in citation, except for last name]]"
-msgstr ""
+msgstr ","
 
 #: lib/citeengines/biblatex-natbib.citeengine:154
 #: lib/citeengines/biblatex.citeengine:146
 #: lib/citeengines/natbib.citeengine:125 lib/layouts/stdciteformats.inc:28
 msgid ", and [[separate name of last author in citation]]"
-msgstr ""
+msgstr ", und"
 
 #: lib/citeengines/biblatex-natbib.citeengine:155
 #: lib/citeengines/biblatex.citeengine:147
 #: lib/citeengines/natbib.citeengine:126 lib/layouts/stdciteformats.inc:29
 msgid " and [[separate two authors in citation]]"
-msgstr ""
+msgstr " und"
 
 #: lib/citeengines/biblatex-natbib.citeengine:299
 #: lib/citeengines/biblatex.citeengine:283
@@ -25608,7 +25608,7 @@ msgstr "Der Export des Dokuments wurde abgebrochen."
 #: src/Buffer.cpp:4467
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
-msgstr "Dokument als %1$s in die Datei ,%2$s` exportiert"
+msgstr "Dokument wurde als %1$s in die Datei ,%2$s` exportiert."
 
 #: src/Buffer.cpp:4474
 #, c-format
@@ -32403,11 +32403,11 @@ msgstr "Unbekannter Argumentname: "
 msgid "Missing \\end_inset at this point: "
 msgstr "Fehlendes \\end_inset an dieser Stelle: "
 
-#: src/insets/InsetCommandParams.cpp:459
+#: src/insets/InsetCommandParams.cpp:460
 msgid "Uncodable characters"
 msgstr "Unkodierbare Zeichen"
 
-#: src/insets/InsetCommandParams.cpp:460
+#: src/insets/InsetCommandParams.cpp:461
 #, c-format
 msgid ""
 "The following characters that are used in the inset %1$s are not\n"
@@ -32572,7 +32572,7 @@ msgstr ""
 
 #: src/insets/InsetInclude.cpp:745
 msgid "Different use-non-TeX-fonts settings"
-msgstr "TeX-Schriften: ja oder nein?"
+msgstr "Verschiedene Einstellungen für die Verwendung von TeX-Schriften"
 
 #: src/insets/InsetInclude.cpp:760
 #, c-format
@@ -33008,19 +33008,19 @@ msgstr "Seite leeren"
 msgid "Clear Double Page"
 msgstr "Doppelseite leeren"
 
-#: src/insets/InsetNomencl.cpp:80
+#: src/insets/InsetNomencl.cpp:82
 msgid "Nom: "
 msgstr "Nom: "
 
-#: src/insets/InsetNomencl.cpp:88
+#: src/insets/InsetNomencl.cpp:90
 msgid "Nomenclature Symbol: "
 msgstr "Nomenklatursymbol: "
 
-#: src/insets/InsetNomencl.cpp:89
+#: src/insets/InsetNomencl.cpp:91
 msgid "Description: "
 msgstr "Beschreibung: "
 
-#: src/insets/InsetNomencl.cpp:92
+#: src/insets/InsetNomencl.cpp:94
 msgid "Sorting: "
 msgstr "Sortierung: "
 
