@@ -13944,12 +13944,9 @@ Implicite
 \family sans
 Implicite
 \family default
- , la police pré-sélectionnée par la classe du document est utilisée.
- 
-\lang english
-With LyX's default font encoding this is a look-alike of
-\lang french
- la police \SpecialChar TeX
+, la police pré-sélectionnée par la classe du document est utilisée.
+ La police implicite du texte apparaissant dans la fenêtre LyX ressemble
+ à la police \SpecialChar TeX
  standard 
 \begin_inset Quotes cld
 \end_inset
@@ -13966,11 +13963,7 @@ Computer Modern
 \family typewriter
 cm
 \family default
-):
-\lang english
- either
-\lang french
- 
+): soit 
 \begin_inset Quotes cld
 \end_inset
 
@@ -13982,11 +13975,7 @@ cm-super
 \begin_inset Quotes crd
 \end_inset
 
- 
-\lang english
-or the bitmap font
-\lang french
- 
+, soit la police matricielle 
 \begin_inset Quotes cld
 \end_inset
 
@@ -14003,11 +13992,7 @@ European Computer Modern
 ec
 \family default
 ).
- 
-\lang english
-However,
-\lang french
- certaines classes pré-sélectionnent des polices différentes.
+ Cependant, certaines classes pré-sélectionnent des polices différentes.
 \end_layout
 
 \begin_layout Standard
