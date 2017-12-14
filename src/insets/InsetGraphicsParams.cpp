@@ -288,10 +288,8 @@ graphics::Params InsetGraphicsParams::as_grfxParams() const
 		}
 
 		// Paranoia check.
-		int const width  = pars.bb.xr.inBP() - pars.bb.xl.inBP();
-		int const height = pars.bb.yt.inBP() - pars.bb.yb.inBP();
-
-		if (width  < 0 || height < 0) {
+		if (pars.bb.xr.inBP() < pars.bb.xl.inBP()
+		    || pars.bb.yt.inBP() < pars.bb.yb.inBP()) {
 			pars.bb.xl = Length();
 			pars.bb.xr = Length();
 			pars.bb.yb = Length();
