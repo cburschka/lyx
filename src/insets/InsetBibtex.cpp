@@ -459,11 +459,9 @@ namespace {
 			return false;
 
 		// read value
-		bool legalChar = true;
 		while (ifs && !isSpace(ch) &&
-						 delimChars.find(ch) == docstring::npos &&
-						 (legalChar = (illegalChars.find(ch) == docstring::npos))
-					)
+		       delimChars.find(ch) == docstring::npos &&
+		       illegalChars.find(ch) == docstring::npos)
 		{
 			if (chCase == makeLowerCase)
 				val += lowercase(ch);
@@ -472,7 +470,7 @@ namespace {
 			ifs.get(ch);
 		}
 
-		if (!legalChar) {
+		if (illegalChars.find(ch) != docstring::npos) {
 			ifs.putback(ch);
 			return false;
 		}

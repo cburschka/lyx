@@ -388,7 +388,8 @@ void InsetCaption::updateBuffer(ParIterator const & it, UpdateType utype)
 		else
 			name = master.B_(tclass.floats().getType(type).name());
 		docstring counter = from_utf8(type);
-		if ((is_subfloat_ = cnts.isSubfloat())) {
+		is_subfloat_ = cnts.isSubfloat();
+		if (is_subfloat_) {
 			// only standard captions allowed in subfloats
 			type_ = "Standard";
 			counter = "sub-" + from_utf8(type);

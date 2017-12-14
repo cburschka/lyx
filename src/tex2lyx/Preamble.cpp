@@ -689,7 +689,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 {
 	vector<string> options = split_options(opts);
 	add_package(name, options);
-	char const * const * where = 0;
 
 	if (is_known(name, known_xetex_packages)) {
 		xetex = true;
@@ -1016,7 +1015,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (name == "subfig")
 		; // ignore this FIXME: Use the package separator mechanism instead
 
-	else if ((where = is_known(name, known_languages)))
+	else if (char const * const * where = is_known(name, known_languages))
 		h_language = known_coded_languages[where - known_languages];
 
 	else if (name == "natbib") {
