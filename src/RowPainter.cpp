@@ -196,7 +196,6 @@ void RowPainter::paintMisspelledMark(Row::Element const & e) const
 			continue;
 		}
 
-		FontMetrics const & fm = theFontMetrics(e.font);
 		int x1 = fm.pos2x(e.str, range.first - e.pos,
 		                  e.isRTL(), e.extra);
 		int x2 = fm.pos2x(e.str, min(range.last - e.pos + 1,
