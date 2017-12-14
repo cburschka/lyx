@@ -197,8 +197,7 @@ The latest PDF-version of this document can be found here:
 
 
 \series bold
-http://wiki.lyx.org/\SpecialChar LyX
-/DocumentationDevelopment#UserGuide
+https://wiki.lyx.org/LyX/Manuals#UserGuide
 \end_layout
 
 \end_inset
@@ -28105,7 +28104,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.lyx.org
+https://www.lyx.org
 \end_layout
 
 \end_inset
@@ -28794,7 +28793,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/BibTeX/Programs
+https://wiki.lyx.org/BibTeX/Programs
 \end_layout
 
 \end_inset
@@ -28982,7 +28981,7 @@ For information on how this is done, have a look at
 
 \begin_inset CommandInset href
 LatexCommand href
-target "http://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxhak.pdf"
+target "https://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/btxhak.pdf"
 literal "false"
 
 \end_inset
@@ -35078,7 +35077,7 @@ A good explanation of regular expressions is given in this Wikipedia entry:
  
 \begin_inset CommandInset href
 LatexCommand href
-target "http://en.wikipedia.org/wiki/Regular_expression"
+target "https://en.wikipedia.org/wiki/Regular_expression"
 literal "false"
 
 \end_inset
@@ -35341,7 +35340,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://sourceforge.net/projects/lyxwininstaller/files/hunspell/
+https://sourceforge.net/projects/lyxwininstaller/files/hunspell/
 \end_layout
 
 \end_inset
@@ -35421,10 +35420,6 @@ Spellchecker
 engine Select the library \SpecialChar LyX
  should use for spell checking.
  Depending on your platform, 
-\family typewriter
-aspell
-\family default
-, 
 \family typewriter
 hunspell
 \family default
@@ -35572,7 +35567,7 @@ status collapsed
 \begin_layout Plain Layout
 \begin_inset CommandInset href
 LatexCommand href
-target "http://lingucomponent.openoffice.org/thesaurus.html"
+target "https://lingucomponent.openoffice.org/thesaurus.html"
 literal "false"
 
 \end_inset
@@ -35725,15 +35720,16 @@ user
 If you want to install new\SpecialChar breakableslash
 further thesaurus dictionaries, you can downloaded
  them from here:
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Itemize
+
 \begin_inset Flex URL
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
-http://www.lyx.org/trac/browser/lyxsvn/dictionaries/trunk/thes/
+https://sourceforge.net/projects/lyxwininstaller/files/thesaurus/
 \end_layout
 
 \end_inset
@@ -42971,7 +42967,7 @@ Driver support
  in 
 \begin_inset CommandInset href
 LatexCommand href
-target "http://mirrors.ctan.org/macros/latex/required/graphics/grfguide.pdf"
+target "https://www.ctan.org/tex-archive/macros/latex/required/graphics/grfguide.pdf"
 literal "false"
 
 \end_inset
@@ -47266,7 +47262,7 @@ language Here you can select the language for \SpecialChar LyX
  You can find its actual translation status here: 
 \begin_inset CommandInset href
 LatexCommand href
-target "http://www.lyx.org/I18n"
+target "https://www.lyx.org/I18n"
 literal "false"
 
 \end_inset
@@ -49055,137 +49051,6 @@ textwidth
 
 \end_layout
 
-\begin_layout Chapter
-Credits
-\begin_inset CommandInset label
-LatexCommand label
-name "chap:Credits"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The documentation is a collaborative effort between many different people
- (and we would encourage people to contribute!).
-\end_layout
-
-\begin_layout Itemize
-
-\noun on
-Alejandro Aguilar Sierra
-\end_layout
-
-\begin_layout Itemize
-
-\noun on
-Amir Karger
-\end_layout
-
-\begin_layout Itemize
-
-\noun on
-David Johnson
-\end_layout
-
-\begin_layout Itemize
-
-\noun on
-Hartmut Haase
-\end_layout
-
-\begin_layout Itemize
-
-\noun on
-Ignacio García
-\end_layout
-
-\begin_layout Itemize
-
-\noun on
-Ivan Schreter
-\end_layout
-
-\begin_layout Itemize
-
-\noun on
-John Raithel
-\end_layout
-
-\begin_layout Itemize
-
-\noun on
-John Weiss
-\end_layout
-
-\begin_layout Itemize
-
-\noun on
-Lars Gullik Bjønnes
-\end_layout
-
-\begin_layout Itemize
-
-\noun on
-Matthias Ettrich
-\end_layout
-
-\begin_layout Itemize
-
-\noun on
-Matthias Zenker
-\end_layout
-
-\begin_layout Itemize
-
-\noun on
-Rich Fields
-\end_layout
-
-\begin_layout Itemize
-
-\noun on
-Pascal André
-\end_layout
-
-\begin_layout Itemize
-
-\noun on
-Paul Evans
-\end_layout
-
-\begin_layout Itemize
-
-\noun on
-Paul Russel
-\end_layout
-
-\begin_layout Itemize
-
-\noun on
-Robin Socha
-\end_layout
-
-\begin_layout Itemize
-
-\noun on
-Uwe Stöhr
-\end_layout
-
-\begin_layout Itemize
-The \SpecialChar LyX
- Team: 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "lyxcredit"
-literal "true"
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
 \begin_inset Newpage newpage
 \end_inset
@@ -49226,7 +49091,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.lyx.org/Credits
+https://www.lyx.org/Credits
 \end_layout
 
 \end_inset
@@ -49324,7 +49189,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://mirrors.ctan.org/help/Catalogue/bytopic.html
+http://texcatalogue.ctan.org/bytopic.html
 \end_layout
 
 \end_inset
@@ -49391,7 +49256,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://mirrors.ctan.org/biblio/bibtex/contrib/doc/btxdoc.pdf
+https://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/btxdoc.pdf
 \end_layout
 
 \end_inset
@@ -49431,7 +49296,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.ctan.org/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf
+https://www.ctan.org/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf
 \end_layout
 
 \end_inset
@@ -49482,7 +49347,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://mirrors.ctan.org/macros/latex/contrib/biblatex/doc/biblatex.pdf
+https://www.ctan.org/tex-archive/macros/latex/contrib/biblatex/doc/biblatex.pdf
 \end_layout
 
 \end_inset
@@ -49533,7 +49398,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://mirrors.ctan.org/biblio/biber/documentation/biber.pdf
+https://www.ctan.org/tex-archive/biblio/biber/documentation/biber.pdf
 \end_layout
 
 \end_inset
@@ -49572,7 +49437,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://mirrors.ctan.org/indexing/makeindex/doc/makeindex.pdf
+https://www.ctan.org/tex-archive/indexing/makeindex/doc/makeindex.pdf
 \end_layout
 
 \end_inset
@@ -49611,7 +49476,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://mirrors.ctan.org/indexing/makeindex/doc/manpages.dvi
+https://www.ctan.org/tex-archive/indexing/makeindex/doc/manpages.dvi
 \end_layout
 
 \end_inset
@@ -49686,7 +49551,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.ams.org/publications/authors/tex/amslatex
+https://www.ams.org/publications/authors/tex/amslatex
 \end_layout
 
 \end_inset
@@ -49737,7 +49602,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://mirrors.ctan.org/macros/latex/contrib/caption/caption-eng.pdf
+https://www.ctan.org/tex-archive/macros/latex/contrib/caption/caption-eng.pdf
 \end_layout
 
 \end_inset
@@ -49788,7 +49653,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://mirrors.ctan.org/macros/latex/contrib/enumitem/enumitem.pdf
+https://www.ctan.org/tex-archive/macros/latex/contrib/enumitem/enumitem.pdf
 \end_layout
 
 \end_inset
@@ -49839,7 +49704,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://mirrors.ctan.org/macros/latex/contrib/fancyhdr/fancyhdr.pdf
+https://www.ctan.org/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf
 \end_layout
 
 \end_inset
@@ -49890,7 +49755,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.ctan.org/pkg/hyperref
+https://www.ctan.org/tex-archive/macros/latex/contrib/hyperref/doc/manual.pdf
 \end_layout
 
 \end_inset
@@ -49941,7 +49806,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://mirrors.ctan.org/macros/latex/contrib/microtype/microtype.pdf
+https://www.ctan.org/tex-archive/macros/latex/contrib/microtype/microtype.pdf
 \end_layout
 
 \end_inset
@@ -49992,7 +49857,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://mirrors.ctan.org/macros/latex/contrib/nomencl/nomencl.pdf
+https://www.ctan.org/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf
 \end_layout
 
 \end_inset
@@ -50043,7 +49908,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf
+https://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf
 \end_layout
 
 \end_inset
@@ -50094,7 +49959,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://www.ctan.org/tex-archive/macros/latex/contrib/refstyle/refstyle.pdf
+https://www.ctan.org/tex-archive/macros/latex/contrib/refstyle/refstyle.pdf
 \end_layout
 
 \end_inset
@@ -50130,7 +49995,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/Windows/Arabic
+https://wiki.lyx.org/Windows/Arabic
 \end_layout
 
 \end_inset
@@ -50166,7 +50031,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/Windows/Armenian
+https://wiki.lyx.org/Windows/Armenian
 \end_layout
 
 \end_inset
@@ -50202,7 +50067,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/Windows/Cyrillic
+https://wiki.lyx.org/Windows/Cyrillic
 \end_layout
 
 \end_inset
@@ -50238,7 +50103,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/Windows/Farsi
+https://wiki.lyx.org/Windows/Farsi
 \end_layout
 
 \end_inset
@@ -50274,7 +50139,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/Windows/Hebrew
+https://wiki.lyx.org/Windows/Hebrew
 \end_layout
 
 \end_inset
@@ -50310,7 +50175,7 @@ status collapsed
 
 \begin_layout Plain Layout
 
-http://wiki.lyx.org/Windows/Japanese
+https://wiki.lyx.org/Windows/Japanese
 \end_layout
 
 \end_inset
