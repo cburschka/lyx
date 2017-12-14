@@ -408,12 +408,9 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		Font const f(inherit_font, buffer().params().language);
 		//Font fu = f;
 		//fu.fontInfo().setUnderbar(FONT_ON);
-		docstring_list::const_iterator beg = names.begin();
-		docstring_list::const_iterator end = names.end();
-		for (docstring_list::const_iterator it = beg ;
-		     it != end ; ++it) {
+		for (docstring const & name : names) {
 			// do not insert > for the top level menu item
-			if (it != beg)
+			if (&name != &names.front())
 				par.insertInset(par.size(), new InsetSpecialChar(InsetSpecialChar::MENU_SEPARATOR),
 						f, Change(Change::UNCHANGED));
 			//FIXME: add proper underlines here. This
@@ -421,9 +418,8 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 			// return a vector of menus. If we do not do
 			// that, we might as well use below
 			// Paragraph::insert on each string (JMarc)
-			for (size_type i = 0; i != it->length(); ++i)
-				par.insertChar(par.size(), (*it)[i],
-					       f, Change(Change::UNCHANGED));
+			for (char_type c : name)
+				par.insertChar(par.size(), c, f, Change(Change::UNCHANGED));
 		}
 		break;
 	}
