@@ -1261,10 +1261,8 @@ docstring const BiblioInfo::getYear(docstring const & key, bool use_modifier) co
 		if (xrefs.empty())
 			// no luck
 			return docstring();
-		vector<docstring>::const_iterator it = xrefs.begin();
-		vector<docstring>::const_iterator en = xrefs.end();
-		for (; it != en; ++it) {
-			BiblioInfo::const_iterator const xrefit = find(*it);
+		for (docstring const & xref : xrefs) {
+			BiblioInfo::const_iterator const xrefit = find(xref);
 			if (xrefit == end())
 				continue;
 			BibTeXInfo const & xref_data = xrefit->second;
@@ -1298,14 +1296,10 @@ docstring const BiblioInfo::getInfo(docstring const & key,
 	BibTeXInfo const & data = it->second;
 	BibTeXInfoList xrefptrs;
 	vector<docstring> const xrefs = getXRefs(data);
-	if (!xrefs.empty()) {
-		vector<docstring>::const_iterator it = xrefs.begin();
-		vector<docstring>::const_iterator en = xrefs.end();
-		for (; it != en; ++it) {
-			BiblioInfo::const_iterator const xrefit = find(*it);
-			if (xrefit != end())
-				xrefptrs.push_back(&(xrefit->second));
-		}
+	for (docstring const & xref : getXRefs(data)) {
+		BiblioInfo::const_iterator const xrefit = find(xref);
+		if (xrefit != end())
+			xrefptrs.push_back(&(xrefit->second));
 	}
 	return data.getInfo(xrefptrs, buf, ci);
 }
@@ -1337,15 +1331,10 @@ docstring const BiblioInfo::getLabel(vector<docstring> keys,
 		vector<BibTeXInfo const *> xrefptrs;
 		if (it != end()) {
 			data = it->second;
-			vector<docstring> const xrefs = getXRefs(data);
-			if (!xrefs.empty()) {
-				vector<docstring>::const_iterator it = xrefs.begin();
-				vector<docstring>::const_iterator en = xrefs.end();
-				for (; it != en; ++it) {
-					BiblioInfo::const_iterator const xrefit = find(*it);
-					if (xrefit != end())
-						xrefptrs.push_back(&(xrefit->second));
-				}
+			for (docstring const & xref : getXRefs(data)) {
+				BiblioInfo::const_iterator const xrefit = find(xref);
+				if (xrefit != end())
+					xrefptrs.push_back(&(xrefit->second));
 			}
 		}
 		ret = data.getLabel(xrefptrs, buf, ret, ci, key + 1 != ken, i == 1);
