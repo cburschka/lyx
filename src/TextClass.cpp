@@ -1142,8 +1142,9 @@ bool TextClass::readCiteEngine(Lexer & lexrc)
 
 int TextClass::readCiteEngineType(Lexer & lexrc) const
 {
-	LATTEST(ENGINE_TYPE_DEFAULT ==
-		(ENGINE_TYPE_AUTHORYEAR | ENGINE_TYPE_NUMERICAL));
+	static_assert(ENGINE_TYPE_DEFAULT ==
+				  (ENGINE_TYPE_AUTHORYEAR | ENGINE_TYPE_NUMERICAL),
+				  "Incorrect default engine type");
 	if (!lexrc.next()) {
 		lexrc.printError("No cite engine type given for token: `$$Token'.");
 		return ENGINE_TYPE_DEFAULT;
