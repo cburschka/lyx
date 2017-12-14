@@ -169,11 +169,11 @@ Row::Row()
 {}
 
 
-bool Row::isMarginSelected(bool left_margin, DocIterator const & beg,
+bool Row::isMarginSelected(bool left, DocIterator const & beg,
 		DocIterator const & end) const
 {
-	pos_type const sel_pos = left_margin ? sel_beg : sel_end;
-	pos_type const margin_pos = left_margin ? pos_ : end_;
+	pos_type const sel_pos = left ? sel_beg : sel_end;
+	pos_type const margin_pos = left ? pos_ : end_;
 
 	// Is the chosen margin selected ?
 	if (sel_pos == margin_pos) {

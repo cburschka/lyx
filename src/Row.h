@@ -321,7 +321,7 @@ private:
 	  * \param beg
 	  * \param end
 	  */
-	bool isMarginSelected(bool left_margin, DocIterator const & beg,
+	bool isMarginSelected(bool left, DocIterator const & beg,
 		DocIterator const & end) const;
 
 	/**
