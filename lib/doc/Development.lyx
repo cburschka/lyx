@@ -859,7 +859,7 @@ status open
 
 \begin_layout Plain Layout
 
-http://www.lyx.org/trac/ticket/9794
+https://www.lyx.org/trac/ticket/9794
 \end_layout
 
 \end_inset
@@ -1432,86 +1432,6 @@ info-insert package <name>
 \begin_layout Enumerate
 Modules do not need a template, only an example, which is strongly encouraged
  but not necessarily required.
-\end_layout
-
-\begin_layout Subsection
-Dependencies
-\end_layout
-
-\begin_layout Standard
-The declaration lines of layouts and modules (
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-DeclareLaTeXClass
-\end_layout
-
-\end_inset
-
-, 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\backslash
-DeclareLyXModule
-\end_layout
-
-\end_inset
-
-) should list the packages and classes the layout (or some\SpecialChar breakableslash
-one of the layouts\SpecialChar breakableslash
-inse
-ts of the module) needs.
- Please do not add dependencies beyond this 
-\begin_inset Quotes eld
-\end_inset
-
-top level
-\begin_inset Quotes erd
-\end_inset
-
-, i.
-\begin_inset space \thinspace{}
-\end_inset
-
-e., packages that are needed by a required class or package itself (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-xcolor
-\end_layout
-
-\end_inset
-
- as required by the 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-beamer
-\end_layout
-
-\end_inset
-
- class).
- Such lower level dependencies constantly change, so they differ between
- class and package versions.
- Thus, resolving such lower-level dependencies is a task of the respective
- package manager of the \SpecialChar LaTeX
- distribution (or your operating system).
- \SpecialChar LyX
- cannot reliably predict on a general level what a class package needs
- (or even what the packages a class need themselves need).
 \end_layout
 
 \begin_layout Subsection
