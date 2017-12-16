@@ -1289,7 +1289,10 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 
 	case 0x2013:
 	case 0x2014:
-		if (bparams.use_dash_ligatures && !bparams.useNonTeXFonts) {
+		// XeTeX's dash behaviour is determined via a global setting
+		if (bparams.use_dash_ligatures
+		    && owner_->getFontSettings(bparams, i).fontInfo().family() != TYPEWRITER_FAMILY
+		    && (!bparams.useNonTeXFonts || runparams.flavor != OutputParams::XETEX)) {
 			if (c == 0x2013) {
 				// en-dash
 				os << "--";
@@ -1417,6 +1420,14 @@ bool Paragraph::Private::latexSpecialT3(char_type const c, otexstream & os,
 		os << "\\textvertline" << termcmd;
 		column += 14;
 		return true;
+	case 0x2013:
+		os << "\\textendash" << termcmd;
+		column += 12;
+		return true;
+	case 0x2014:
+		os << "\\textemdash" << termcmd;
+		column += 12;
+		return true;
 	default:
 		return false;
 	}
@@ -1425,11 +1436,11 @@ bool Paragraph::Private::latexSpecialT3(char_type const c, otexstream & os,
 
 void Paragraph::Private::validate(LaTeXFeatures & features) const
 {
+	Buffer const & buf = inset_owner_->buffer();
+	BufferParams const & bp = features.runparams().is_child
+		? buf.masterParams() : buf.params();
 	if (layout_->inpreamble && inset_owner_) {
 		bool const is_command = layout_->latextype == LATEX_COMMAND;
-		Buffer const & buf = inset_owner_->buffer();
-		BufferParams const & bp = features.runparams().is_child
-			? buf.masterParams() : buf.params();
 		Font f;
 		// Using a string stream here circumvents the encoding
 		// switching machinery of odocstream. Therefore the
@@ -1509,7 +1520,6 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 	}
 
 	// then the contents
-	BufferParams const bp = features.buffer().masterParams();
 	for (pos_type i = 0; i < int(text_.size()) ; ++i) {
 		char_type c = text_[i];
 		if (c == 0x0022) {
@@ -1519,6 +1529,12 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 				 || ((&owner_->getFontSettings(bp, i))->language()->internalFontEncoding()))
 				features.require("textquotedbl");
 		}
+		if (!bp.use_dash_ligatures
+		    && (c == 0x2013 || c == 0x2014)
+		    && bp.useNonTeXFonts
+		    && features.runparams().flavor == OutputParams::XETEX)
+			// XeTeX's dash behaviour is determined via a global setting
+			features.require("xetexdashbreakstate");
 		BufferEncodings::validate(c, features);
 	}
 }
