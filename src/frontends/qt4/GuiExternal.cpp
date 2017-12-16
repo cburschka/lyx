@@ -626,9 +626,9 @@ void GuiExternal::applyView()
 }
 
 
-bool GuiExternal::initialiseParams(string const & data)
+bool GuiExternal::initialiseParams(string const & sdata)
 {
-	InsetExternal::string2params(data, buffer(), params_);
+	InsetExternal::string2params(sdata, buffer(), params_);
 	return true;
 }
 
