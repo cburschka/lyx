@@ -744,6 +744,7 @@ docstring Parser::parse_verbatim_option()
 	skipSpaces();
 	docstring res;
 	if (nextToken().character() == '[') {
+		Token t = getToken();
 		for (Token t = getToken(); t.character() != ']' && good(); t = getToken()) {
 			if (t.cat() == catBegin) {
 				putback();
@@ -761,6 +762,7 @@ docstring Parser::parse_verbatim_item()
 	skipSpaces();
 	docstring res;
 	if (nextToken().cat() == catBegin) {
+		Token t = getToken();
 		for (Token t = getToken(); t.cat() != catEnd && good(); t = getToken()) {
 			if (t.cat() == catBegin) {
 				putback();
@@ -1035,10 +1037,10 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		else if (t.cat() == catComment) {
 			docstring s;
 			while (good()) {
-				Token const & tt = getToken();
-				if (tt.cat() == catNewline)
+				Token const & t = getToken();
+				if (t.cat() == catNewline)
 					break;
-				s += tt.asInput();
+				s += t.asInput();
 			}
 			cell->push_back(MathAtom(new InsetMathComment(buf, s)));
 			skipSpaces();
@@ -1772,7 +1774,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 			docstring s;
 			int num_tokens = 0;
 			while (true) {
-				Token const & tt = getToken();
+				Token const & t = getToken();
 				++num_tokens;
 				if (!good()) {
 					s.clear();
@@ -1780,7 +1782,7 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 						putback();
 					break;
 				}
-				s += tt.character();
+				s += t.character();
 				if (isValidLength(to_utf8(s)))
 					break;
 			}
