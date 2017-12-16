@@ -148,28 +148,28 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 
 		case TO_POPUPMENU:
 			if (lex.next(true)) {
-				string const name = lex.getString();
+				string const pname = lex.getString();
 				lex.next(true);
 				docstring const label = lex.getDocString();
-				add(ToolbarItem(ToolbarItem::POPUPMENU, name, label));
+				add(ToolbarItem(ToolbarItem::POPUPMENU, pname, label));
 			}
 			break;
 
 		case TO_STICKYPOPUPMENU:
 			if (lex.next(true)) {
-				string const name = lex.getString();
+				string const pname = lex.getString();
 				lex.next(true);
 				docstring const label = lex.getDocString();
-				add(ToolbarItem(ToolbarItem::STICKYPOPUPMENU, name, label));
+				add(ToolbarItem(ToolbarItem::STICKYPOPUPMENU, pname, label));
 			}
 			break;
 
 		case TO_ICONPALETTE:
 			if (lex.next(true)) {
-				string const name = lex.getString();
+				string const pname = lex.getString();
 				lex.next(true);
 				docstring const label = lex.getDocString();
-				add(ToolbarItem(ToolbarItem::ICONPALETTE, name, label));
+				add(ToolbarItem(ToolbarItem::ICONPALETTE, pname, label));
 			}
 			break;
 
