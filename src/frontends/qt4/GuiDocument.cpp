@@ -494,7 +494,7 @@ void PreambleModule::update(BufferParams const & params, BufferId id)
 		preamble_coords_[current_id_] = make_pair(0, 0);
 	else {
 		// Restore saved coords.
-		QTextCursor cur = preambleTE->textCursor();
+		cur = preambleTE->textCursor();
 		cur.setPosition(it->second.first);
 		preambleTE->setTextCursor(cur);
 		preambleTE->verticalScrollBar()->setValue(it->second.second);
@@ -1078,9 +1078,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 	QStringList encodinglist;
 	Encodings::const_iterator it = encodings.begin();
 	Encodings::const_iterator const end = encodings.end();
-	for (; it != end; ++it)
-		if (!it->unsafe())
-			encodinglist.append(qt_(it->guiName()));
+	for (auto const & encvar : encodings) {
+		if (!encvar.unsafe())
+			encodinglist.append(qt_(encvar.guiName()));
+	}
 	encodinglist.sort();
 	langModule->encodingCO->addItems(encodinglist);
 
@@ -1191,9 +1192,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 	// NOTE: we do not provide "custom" here for security reasons!
 	biblioModule->bibtexCO->clear();
 	biblioModule->bibtexCO->addItem(qt_("Default"), QString("default"));
-	for (set<string>::const_iterator it = lyxrc.bibtex_alternatives.begin();
-			     it != lyxrc.bibtex_alternatives.end(); ++it) {
-		QString const command = toqstr(*it).left(toqstr(*it).indexOf(" "));
+	for (auto const & alts : lyxrc.bibtex_alternatives) {
+		QString const command = toqstr(alts).left(toqstr(alts).indexOf(" "));
 		biblioModule->bibtexCO->addItem(command, command);
 	}
 
@@ -1213,11 +1213,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 	setSectionResizeMode(mathsModule->packagesTW->horizontalHeader(), QHeaderView::ResizeToContents);
 	map<string, string> const & packages = BufferParams::auto_packages();
 	mathsModule->packagesTW->setRowCount(packages.size());
-	int i = 0;
-	for (map<string, string>::const_iterator it = packages.begin();
-	     it != packages.end(); ++it) {
-		docstring const package = from_ascii(it->first);
-		QString autoTooltip = qt_(it->second);
+	int packnum = 0;
+	for (auto const & pkgvar : packages) {
+		docstring const package = from_ascii(pkgvar.first);
+		QString autoTooltip = qt_(pkgvar.second);
 		QString alwaysTooltip;
 		if (package == "amsmath")
 			alwaysTooltip =
@@ -1245,10 +1244,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 		alwaysRB->setToolTip(alwaysTooltip);
 		neverRB->setToolTip(neverTooltip);
 		QTableWidgetItem * pack = new QTableWidgetItem(toqstr(package));
-		mathsModule->packagesTW->setItem(i, 0, pack);
-		mathsModule->packagesTW->setCellWidget(i, 1, autoRB);
-		mathsModule->packagesTW->setCellWidget(i, 2, alwaysRB);
-		mathsModule->packagesTW->setCellWidget(i, 3, neverRB);
+		mathsModule->packagesTW->setItem(packnum, 0, pack);
+		mathsModule->packagesTW->setCellWidget(packnum, 1, autoRB);
+		mathsModule->packagesTW->setCellWidget(packnum, 2, alwaysRB);
+		mathsModule->packagesTW->setCellWidget(packnum, 3, neverRB);
 		//center the radio buttons
 		autoRB->setStyleSheet("margin-left:50%; margin-right:50%;");
 		alwaysRB->setStyleSheet("margin-left:50%; margin-right:50%;");
@@ -1260,7 +1259,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		        this, SLOT(change_adaptor()));
 		connect(neverRB, SIGNAL(clicked()),
 		        this, SLOT(change_adaptor()));
-		++i;
+		++packnum;
 	}
 	connect(mathsModule->allPackagesAutoPB, SIGNAL(clicked()),
 		this, SLOT(allPackagesAuto()));
@@ -1345,10 +1344,8 @@ GuiDocument::GuiDocument(GuiView & lv)
 	vector<LayoutFileIndex> classList = bcl.classList();
 	sort(classList.begin(), classList.end(), less_textclass_avail_desc());
 
-	vector<LayoutFileIndex>::const_iterator cit  = classList.begin();
-	vector<LayoutFileIndex>::const_iterator cen = classList.end();
-	for (int i = 0; cit != cen; ++cit, ++i) {
-		LayoutFile const & tc = bcl[*cit];
+	for (auto const & cvar : classList) {
+		LayoutFile const & tc = bcl[cvar];
 		bool const available = tc.isTeXClassAvailable();
 		docstring const guiname = translateIfPossible(from_utf8(tc.description()));
 		// tooltip sensu "KOMA-Script Article [Class 'scrartcl']"
