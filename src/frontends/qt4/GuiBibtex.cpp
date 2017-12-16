@@ -452,33 +452,33 @@ QString GuiBibtex::browseBst(QString const & in_name) const
 
 QStringList GuiBibtex::bibStyles() const
 {
-	QStringList data = texFileList("bstFiles.lst");
+	QStringList sdata = texFileList("bstFiles.lst");
 	// test whether we have a valid list, otherwise run rescan
-	if (data.isEmpty()) {
+	if (sdata.isEmpty()) {
 		rescanBibStyles();
-		data = texFileList("bstFiles.lst");
+		sdata = texFileList("bstFiles.lst");
 	}
-	for (int i = 0; i != data.size(); ++i)
-		data[i] = onlyFileName(data[i]);
+	for (int i = 0; i != sdata.size(); ++i)
+		sdata[i] = onlyFileName(sdata[i]);
 	// sort on filename only (no path)
-	data.sort();
-	return data;
+	sdata.sort();
+	return sdata;
 }
 
 
 QStringList GuiBibtex::bibFiles() const
 {
-	QStringList data = texFileList("bibFiles.lst");
+	QStringList sdata = texFileList("bibFiles.lst");
 	// test whether we have a valid list, otherwise run rescan
-	if (data.isEmpty()) {
+	if (sdata.isEmpty()) {
 		rescanBibStyles();
-		data = texFileList("bibFiles.lst");
+		sdata = texFileList("bibFiles.lst");
 	}
-	for (int i = 0; i != data.size(); ++i)
-		data[i] = onlyFileName(data[i]);
+	for (int i = 0; i != sdata.size(); ++i)
+		sdata[i] = onlyFileName(sdata[i]);
 	// sort on filename only (no path)
-	data.sort();
-	return data;
+	sdata.sort();
+	return sdata;
 }
 
 
@@ -539,9 +539,9 @@ QString GuiBibtex::styleFile() const
 }
 
 
-bool GuiBibtex::initialiseParams(std::string const & data)
+bool GuiBibtex::initialiseParams(std::string const & sdata)
 {
-	InsetCommand::string2params(data, params_);
+	InsetCommand::string2params(sdata, params_);
 	return true;
 }
 
