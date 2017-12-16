@@ -8597,10 +8597,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8613,6 +8615,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8636,6 +8639,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -16928,61 +16932,17 @@ Im Französischen und Spanischen werden Gedankenstriche um eingeschobene
 
 \begin_layout Standard
 In \SpecialChar LyX
- sind Zeilenumbrüche nach Halbgeviert- und Geviertstrichen nur dann ohne
- manuellen Eingriff erlaubt, wenn die Option 
-\family sans
-Dokument\SpecialChar menuseparator
-Einstellungen\SpecialChar menuseparator
-Schriften\SpecialChar menuseparator
-Halbgeviert- und Geviertstriche als Ligaturen
- ausgeben
-\family default
- gewählt wurde (bei \SpecialChar LyX
- 2.3 ist das die Voreinstellung).
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Die Striche werden in diesem Fall als 
-\begin_inset Quotes gld
-\end_inset
-
---
-\begin_inset Quotes grd
-\end_inset
-
- und 
-\begin_inset Quotes gld
-\end_inset
-
----
-\begin_inset Quotes grd
-\end_inset
-
- in die \SpecialChar LaTeX
- Quelldatei geschrieben.
- Der \SpecialChar TeX
--Ligaturmechanismus konvertiert sie zu (Halb-)Geviertstrichen, auf
- die ein optionaler Zeilenumbruch folgt.
-\end_layout
-
-\end_inset
-
-
+ sind Zeilenumbrüche nach Halbgeviert- und Geviertstrichen sowie vor
+ Geviertstrichen in der Voreinstellung grundsätzlich erlaubt.
 \end_layout
 
 \begin_layout Standard
-Vorsicht:
+Bitte beachten Sie:
 \end_layout
 
 \begin_layout Enumerate
-Die Einstellung erlaubt Zeilenumbrüche nach 
-\emph on
-allen
-\emph default
- Halbgeviert- und Geviertstrichen.
- Unerwünschte Zeilenumbrüche können verhindert werden, indem man sie in
- eine Makebox packt
+Unerwünschte Zeilenumbrüche können verhindert werden, indem man sie in eine
+ Makebox packt
 \begin_inset Foot
 status collapsed
 
@@ -17110,57 +17070,9 @@ Ein inkorrekter Zeilenumbruch wird schnell übersehen, denn
 
 \end_deeper
 \begin_layout Enumerate
-In Dokumenten, die keine \SpecialChar TeX
--Schriften verwenden, wird die Option ignoriert.
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Xe\SpecialChar TeX
- bietet die Einstellung 
-\series bold
-
-\backslash
-XeTeXdashbreakstate
-\series default
-.
- Die Voreinstellung bewirkt, dass sich alle Halbgeviert- und Geviertstriche
- sich wie Ligaturstriche verhalten.
- Mit 
-\series bold
-
-\backslash
-XeTeXdashbreakstate=0
-\series default
- im \SpecialChar LaTeX
--Vorspann kann auf das Verhalten von normalen Halbgeviert- und Geviertstrich
-en umgestellt werden.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Gedankenstriche in 
-\family typewriter
-Schreibmaschinenschrift
-\family default
- werden 
-\family typewriter
-–-
-\family default
- oder 
-\family typewriter
----
-\family default
- in der Ausgabe.
-\end_layout
-
-\begin_layout Enumerate
-Bei Wörtern, die an Ligatur-Gedankenstriche grenzen, erfolgt – wie bei zusammeng
-esetzten Wörtern mit Bindestrich – keine automatische Worttrennung (vgl.
+Bei Wörtern, die direkt an Halbgeviert- und Geviertstriche grenzen, erfolgt
+ – wie bei zusammengesetzten Wörtern mit Bindestrich – keine automatische
+ Worttrennung (vgl.
  Abschnitt
 \begin_inset space ~
 \end_inset
@@ -17179,22 +17091,24 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-Wurde die Option 
+Wenn sie global Zeilenumbrüche nach Halbgeviertstrichen sowie vor und nach
+ Geviertstrichen verhindern wollen, wählen Sie die Option 
 \family sans
 Dokument\SpecialChar menuseparator
 Einstellungen\SpecialChar menuseparator
 Schriften\SpecialChar menuseparator
-Halbgeviert- und Geviertstriche als Ligaturen
- ausgeben
+Zeilenumbruch bei Halbgeviert- und Geviertstrichen
+ verhindern
 \family default
- nicht gewählt, kann man umgekehrt optionale Zeilenumbrüche mit dem Menü
- 
+.
+ In diesem Fall können Sie optionale Zeilenumbrüche bei einzelnen dieser
+ Striche mit dem Menü 
 \family sans
 Einfügen\SpecialChar menuseparator
 Formatierung\SpecialChar menuseparator
 Optionaler Zeilenumbruch
 \family default
- einfügen:
+ einfügen wieder erlauben:
 \end_layout
 
 \begin_layout Itemize
@@ -17205,42 +17119,102 @@ sollten an der Zeile umbrochen werden
 \end_layout
 
 \begin_layout Standard
-Seit \SpecialChar LyX
+Achtung: Bis \SpecialChar LyX
 
 \begin_inset space ~
 \end_inset
 
-2.2 werden beim LaTeX-Export -- und --- als -{}- und -{}-{}- ausgegeben um
- die Ligatur zu einem Halbgeviert- oder Geviertstrich zu verhindern.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Bis zu \SpecialChar LyX
-
-\begin_inset space ~
-\end_inset
-
-2.1 wurde -- und --- in \SpecialChar LyX
- unverändert ausgegeben, was zu unterschiedlichem
- Aussehen in \SpecialChar LyX
-, Text- und HTML-Export im Vergleich zu DVI-, PDF-, und Postscript-
-Export führte.
-\end_layout
-
-\end_inset
-
- Vorkommen in älteren Dokumenten werden in die entsprechenden Unicode-Zeichen
- konvertiert.
- Dies führte in einigen Dokumenten zu veränderten Zeilenumbrüchen.
+2.1 konnten Sie Halbgeviert- und Geviertstriche als -- und --- eingeben;
+ sie wurden automatisch in der Ausgabe in (
+\emph on
+umbrechbare
+\emph default
+) Halbgeviert- und Geviertstriche umgewandelt, im \SpecialChar LyX
+-Dokument aber als Reihe
+ von Bindestrichen beibehalten.
+ Wenn Sie dagegen einen richtigen Halbgeviert- oder Geviertstrich eingegeben
+ haben, wurde dieser als 
+\emph on
+nicht umbrechbar
+\emph default
+ nach \SpecialChar LaTeX
+ ausgegeben (das war eher ein Versehen als Absicht, aber Einige haben
+ diese beiden Varianten der Halbgeviert- oder Geviertstriche bewusst verwendet).
  Seit \SpecialChar LyX
 
 \begin_inset space ~
 \end_inset
 
-2.3 gibt es die oben erwähnte Option 
+2.2 werden nacheinander eingegebene Bindestriche direkt in \SpecialChar LyX
+ in echte Halbgeviert-
+ oder Geviertstriche umgewandelt.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Das wurde geändert, weil das frühere Verhaltens zu unterschiedlichem Aussehen
+ in \SpecialChar LyX
+, Text- und HTML-Export im Vergleich zu DVI-, PDF-, und Postscript-Export
+ führte.
+\end_layout
+
+\end_inset
+
+ Wenn Sie aufeinander folgende Bindestrich in ein \SpecialChar LyX
+-Dokument kopieren, werden
+ diese hingegen auch als aufeinander folgende Bindestriche ausgegeben.
+ Eine unbeabsichtigte Folge dieser Veränderung war es, dass nun alle Halbgeviert
+- oder Geviertstriche als 
+\emph on
+nicht umbrechbar
+\emph default
+ ausgegeben wurden.
+ Da weiterhin, um die Ausgabe von Halbgeviert- oder Geviertstrichen aus
+ alten Dokumenten zu gewährleisten, Vorkommen von -- und --- in Dokumenten,
+ die mit \SpecialChar LyX
+
+\begin_inset space ~
+\end_inset
+
+2.1 (oder einer älteren Version) gespeichert wurden, in die (Halb)Geviertzeichen
+ konvertiert wurden, wurden diese folglich auch als 
+\emph on
+nicht umbrechbare
+\emph default
+ Zeichen ausgegeben.
+ Dies führte offensichtlich dazu, dass es in einigen Dokumenten veränderte
+ Zeilenumbrüche gab.
+ Seit \SpecialChar LyX
+
+\begin_inset space ~
+\end_inset
+
+2.3 werden, im Gegensatz dazu und wie oben erläutert, per Voreinstellung
+ immer 
+\emph on
+umbrechbare
+\emph default
+ Halbgeviert- oder Geviertstriche ausgegeben.
+ Wenn Sie also ein Dokument, dass mit \SpecialChar LyX
+
+\begin_inset space ~
+\end_inset
+
+2.1 (oder einer älteren Version) gespeichert wurde, mit \SpecialChar LyX
+
+\begin_inset space ~
+\end_inset
+
+2.3 laden, sollten Sie für die mit -- und --- eingegebenen Striche dieselbe
+ Ausgabe bekommen.
+ Zudem gibt es seit \SpecialChar LyX
+
+\begin_inset space ~
+\end_inset
+
+2.3 die oben erwähnte Option 
 \family sans
-Halbgeviert- und Geviertstriche als Ligaturen ausgeben
+Zeilenumbruch bei Halbgeviert- und Geviertstrichen verhindern
 \family default
  im Menü 
 \family sans
@@ -17249,13 +17223,14 @@ Einstellungen\SpecialChar menuseparator
 Schriften
 \family default
 .
- Sie ist per Voreinstellung aktiviert, wird aber deaktiviert, wenn Dokumente
+ Sie ist per Voreinstellung deaktiviert, wird aber aktiviert, wenn Dokumente
  geöffnet werden, die mit \SpecialChar LyX
 
 \begin_inset space ~
 \end_inset
 
-2.2 erstellt wurden.
+2.2 erstellt wurden, um Zeilenumbrüche zwischen diesen beiden Versionen unverände
+rt zu lassen (diese Dokumente haben also weiterhin nicht umbrechbare Striche).
 \begin_inset Newline newline
 \end_inset
 
@@ -17263,17 +17238,21 @@ Beachten Sie die folgenden Nebeneffekte der Änderungen:
 \end_layout
 
 \begin_layout Itemize
-Falls Sie gewöhnliche Gedankenstriche in Dokumenten älter als \SpecialChar LyX
+Falls Sie ausschließlich echte Gedankenstriche in Dokumenten älter als \SpecialChar LyX
 
 \begin_inset space ~
 \end_inset
 
-2.2 verwendet haben, müssen Sie die Option manuell ausschalten um sicherzustellen
-, dass diese Dokumente unverändert ausgegeben werden.
+2.2 verwendet haben, müssen Sie die Option 
+\family sans
+Zeilenumbruch bei Halbgeviert- und Geviertstrichen verhindern
+\family default
+ manuell auswählen, um sicherzustellen, dass diese Dokumente unverändert
+ ausgegeben werden.
 \end_layout
 
 \begin_layout Itemize
-Falls Sie gewöhnliche und Ligatur-Gedankenstriche in älteren Dokumenten
+Falls Sie echte und zusammengesetzte Gedankenstriche in älteren Dokumenten
  parallel verwendet haben, müssen möglicherweise einige Zeilenumbrüche individue
 ll erlaubt oder unterdrückt werden um das korrekte Verhalten wiederherzustellen.
 \end_layout
