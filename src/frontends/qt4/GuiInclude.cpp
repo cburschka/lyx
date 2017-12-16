@@ -160,9 +160,9 @@ void GuiInclude::typeChanged(int v)
 }
 
 
-void GuiInclude::paramsToDialog(InsetCommandParams const & params_)
+void GuiInclude::paramsToDialog(InsetCommandParams const & icp)
 {
-	filenameED->setText(toqstr(params_["filename"]));
+	filenameED->setText(toqstr(icp["filename"]));
 
 	visiblespaceCB->setChecked(false);
 	visiblespaceCB->setEnabled(false);
@@ -175,7 +175,7 @@ void GuiInclude::paramsToDialog(InsetCommandParams const & params_)
 	listingsTB->setPlainText(
 		qt_("Input listing parameters on the right. Enter ? for a list of parameters."));
 
-	string cmdname = params_.getCmdName();
+	string cmdname = icp.getCmdName();
 	if (cmdname != "include" &&
 	    cmdname != "verbatiminput" &&
 	    cmdname != "verbatiminput*" &&
@@ -189,7 +189,7 @@ void GuiInclude::paramsToDialog(InsetCommandParams const & params_)
 	} else if (cmdname == "input") {
 		typeCO->setCurrentIndex(1);
 		previewCB->setEnabled(true);
-		previewCB->setChecked(params_.preview());
+		previewCB->setChecked(icp.preview());
 
 	} else if (cmdname == "verbatiminput*") {
 		typeCO->setCurrentIndex(2);
@@ -204,7 +204,7 @@ void GuiInclude::paramsToDialog(InsetCommandParams const & params_)
 		typeCO->setCurrentIndex(3);
 		listingsGB->setEnabled(true);
 		listingsED->setEnabled(true);
-		InsetListingsParams par(to_utf8(params_["lstparams"]));
+		InsetListingsParams par(to_utf8(icp["lstparams"]));
 		// extract caption and label and put them into their respective editboxes
 		vector<string> pars = getVectorFromString(par.separatedParams(), "\n");
 		for (vector<string>::iterator it = pars.begin();
@@ -331,9 +331,9 @@ QString GuiInclude::browse(QString const & in_name, Type in_type) const
 }
 
 
-bool GuiInclude::initialiseParams(std::string const & data)
+bool GuiInclude::initialiseParams(std::string const & sdata)
 {
-	InsetCommand::string2params(data, params_);
+	InsetCommand::string2params(sdata, params_);
 	paramsToDialog(params_);
 	return true;
 }

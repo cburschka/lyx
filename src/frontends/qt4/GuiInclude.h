@@ -47,9 +47,9 @@ private Q_SLOTS:
 
 private:
 	///
-	bool initialiseParams(std::string const & data);
+	bool initialiseParams(std::string const & sdata);
 	///
-	void paramsToDialog(InsetCommandParams const & params_);
+	void paramsToDialog(InsetCommandParams const & icp);
 	/// clean-up on hide.
 	void clearParams() { params_.clear(); }
 	/// clean-up on hide.
