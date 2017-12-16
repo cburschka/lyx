@@ -14,11 +14,11 @@
   if needed, as usual.
 
 * The new setting
-  "Document->Settings->Fonts->Output em- and en-dash as ligatures" forces
-  output of en- and em-dashes as -- and --- when exporting to LaTeX.
-  It is is "true" by default but "false" when opening documents edited
-  with LyX 2.2.
-  See chapter 3.9.1.1 "Dashes and line breaks" of the User Guide and
+  "Document->Settings->Fonts->Disallow line breaks after dashes" forces
+  output of en- and em-dashes as \textendash and \textemdash when exporting
+  to LaTeX. It is is "false" by default but "true" when opening documents
+  edited with LyX 2.2.
+  See chapter 3.9.1.1 "Dashes and Line Breaks" of the User Guide and
   "Caveats when upgrading from earlier versions to 2.3.x" below.
 
 * The following UI translations were dropped, because the lack of translation
@@ -212,19 +212,19 @@
   the external_templates file, you will have to move the modifications to
   the respective *.xtemplate file manually.
 
-* By default, LyX 2.3 forces output of all en and em dashes as -- and ---
-  when exporting to LaTeX. This can lead to incorrect line breaks, wrong
-  characters in typewriter fonts, and problems with some LaTeX packages.
-  Unselect "Document->Settings->Fonts->Output em- and en-dash as ligatures"
-  to keep the LyX 2.2 behaviour and avoid these problems. See chapter 3.9.1.1
-  "Dashes and line breaks" of the User Guide for details.
+* By default, LyX 2.3 outputs en- and em-dashes after which a line break can
+  occur in the output. Sometimes, this results in undesired line breaks.
+  Select "Document->Settings->Fonts->Disallow line breaks after dashes"
+  to keep the LyX 2.2 behaviour, where such line breaks have been generally
+  suppressed. See chapter 3.9.1.1, "Dashes and Line Breaks", of the User Guide
+  for details.
 
 * ZWSP characters (u200b) following literal em- and en-dashes are deleted by
   lyx2lyx when converting to 2.3 format. If you used them as optional line
   breaks after dashes, convert them to space insets before opening your
   document with LyX 2.3 or the optional line breaks will be lost!
 
-* If using TeX fonts and en- and em-dashes are output as font ligatures,
+* If using TeX fonts and en- and em-dashes are output in breakable form,
   when exporting documents containing en- and em-dashes to the format of
   LyX 2.0 or earlier, the following line has to be manually added to the
   unicodesymbols file of that LyX version:<br>

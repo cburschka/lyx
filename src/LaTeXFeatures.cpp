@@ -1318,6 +1318,9 @@ TexString LaTeXFeatures::getMacros() const
 		macros << getPreambleSnippets();
 	}
 
+	if (mustProvide("xetexdashbreakstate"))
+		macros << "\\XeTeXdashbreakstate 0" << '\n';
+
 	if (mustProvide("papersize")) {
 		if (runparams_.flavor == OutputParams::LATEX
 		    || runparams_.flavor == OutputParams::DVILUATEX)

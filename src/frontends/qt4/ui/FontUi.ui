@@ -297,10 +297,10 @@
    <item row="11" column="1">
     <widget class="QCheckBox" name="dashesCB">
      <property name="toolTip">
-      <string>Use font ligatures -- and --- instead of \textendash and \textemdash for en- and em-dashes</string>
+      <string>By default, a line break can occur after en- and em-dashes and before em-dashes. Checking this box prevents that.</string>
      </property>
      <property name="text">
-      <string>Output en- and &amp;em-dashes as ligatures</string>
+      <string>Disallow l&amp;ine breaks at dashes</string>
      </property>
     </widget>
    </item>
