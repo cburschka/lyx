@@ -469,9 +469,9 @@ void GuiGraphics::updateAspectRatioStatus()
 }
 
 
-void GuiGraphics::on_aspectratio_toggled(bool aspectratio)
+void GuiGraphics::on_aspectratio_toggled(bool aspect_ratio)
 {
-	if (aspectratio) {
+	if (aspect_ratio) {
 		WidthCB->setText(qt_("Set max. &width:"));
 		HeightCB->setText(qt_("Set max. &height:"));
 		Width->setToolTip(qt_("Maximal width of image in output"));
@@ -485,12 +485,12 @@ void GuiGraphics::on_aspectratio_toggled(bool aspectratio)
 }
 
 
-void GuiGraphics::on_angle_textChanged(const QString & filename)
+void GuiGraphics::on_angle_textChanged(const QString & file_name)
 {
 	rotateOrderCB->setEnabled((WidthCB->isChecked() ||
 				 HeightCB->isChecked() ||
 				 scaleCB->isChecked()) &&
-				 (filename != "0"));
+				 (file_name != "0"));
 }
 
 
@@ -752,9 +752,9 @@ bool GuiGraphics::isValid()
 }
 
 
-bool GuiGraphics::initialiseParams(string const & data)
+bool GuiGraphics::initialiseParams(string const & sdata)
 {
-	InsetGraphics::string2params(data, buffer(), params_);
+	InsetGraphics::string2params(sdata, buffer(), params_);
 	paramsToDialog(params_);
 	current_group_ = params_.groupId;
 	return true;
@@ -781,10 +781,10 @@ QString GuiGraphics::browse(QString const & in_name) const
 
 	// Does user clipart directory exist?
 	string clipdir = addName(package().user_support().absFileName(), "clipart");
-	FileName clip(clipdir);
+	FileName fclip(clipdir);
 
 	// bail out to system clipart directory
-	if (!clip.isDirectory())
+	if (!fclip.isDirectory())
 		clipdir = addName(package().system_support().absFileName(), "clipart");
 
 	return browseRelToParent(in_name, bufferFilePath(),
