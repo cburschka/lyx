@@ -751,7 +751,7 @@ void GuiWorkArea::contextMenuEvent(QContextMenuEvent * e)
 			if (inset && inset->asInsetMath())
 				--pos.rx();
 			else if (cur.pos() > 0) {
-				Inset * inset = cur.paragraph().getInset(cur.pos() - 1);
+				inset = cur.paragraph().getInset(cur.pos() - 1);
 				if (inset)
 					++pos.rx();
 			}
