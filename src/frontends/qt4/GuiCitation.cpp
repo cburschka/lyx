@@ -908,9 +908,9 @@ void GuiCitation::setCitedKeys()
 }
 
 
-bool GuiCitation::initialiseParams(string const & data)
+bool GuiCitation::initialiseParams(string const & sdata)
 {
-	InsetCommand::string2params(data, params_);
+	InsetCommand::string2params(sdata, params_);
 	citeCmds_ = documentBuffer().params().citeCommands();
 	citeStyles_ = documentBuffer().params().citeStyles();
 	init();
@@ -1010,19 +1010,19 @@ vector<docstring> GuiCitation::searchKeys(BiblioInfo const & bi,
 			continue;
 
 		BibTeXInfo const & kvm = info->second;
-		string data;
+		string sdata;
 		if (only_keys)
-			data = to_utf8(*it);
+			sdata = to_utf8(*it);
 		else if (field.empty())
-			data = to_utf8(*it) + ' ' + to_utf8(kvm.allData());
+			sdata = to_utf8(*it) + ' ' + to_utf8(kvm.allData());
 		else
-			data = to_utf8(kvm[field]);
+			sdata = to_utf8(kvm[field]);
 
-		if (data.empty())
+		if (sdata.empty())
 			continue;
 
 		try {
-			if (lyx::regex_search(data, reg_exp))
+			if (lyx::regex_search(sdata, reg_exp))
 				foundKeys.push_back(*it);
 		}
 		catch (lyx::regex_error const & e) {
