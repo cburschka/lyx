@@ -388,10 +388,10 @@ bool SpellcheckerWidget::initialiseParams(std::string const &)
 	BufferView * bv = d->gv_->documentBufferView();
 	if (bv == 0)
 		return false;
-	std::set<Language const *> languages =
+	std::set<Language const *> langs =
 		bv->buffer().masterBuffer()->getLanguages();
-	if (!languages.empty())
-		d->setLanguage(*languages.begin());
+	if (!langs.empty())
+		d->setLanguage(*langs.begin());
 	d->start_ = DocIterator();
 	d->wrapAround(false);
 	d->canCheck();

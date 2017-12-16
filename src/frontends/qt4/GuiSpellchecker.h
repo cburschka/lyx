@@ -71,7 +71,8 @@ public:
 private:
 	///{
 	void updateView();
-	bool initialiseParams(std::string const & data) { return widget_->initialiseParams(data); }
+	bool initialiseParams(std::string const & sdata)
+		{ return widget_->initialiseParams(sdata); }
 	void clearParams() {}
 	void dispatchParams() {}
 	bool isBufferDependent() const { return false; }
