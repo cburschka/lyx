@@ -168,16 +168,16 @@ protected:
 			fprintf(stderr, "\nStopped at: 0x%04x\n", c);
 			fputs("Unconverted input:", stderr);
 			for (intern_type const * i = from_next + 1; i < from_end; ++i) {
-				unsigned int const c = *i;
-				fprintf(stderr, " 0x%04x", c);
+				unsigned int const cc = *i;
+				fprintf(stderr, " 0x%04x", cc);
 			}
 			fputs("\nConverted output:", stderr);
 			for (extern_type const * i = to; i < to_next; ++i) {
 				// extern_type may be signed, avoid output of
 				// something like 0xffffffc2
-				unsigned int const c =
+				unsigned int const cc =
 					*reinterpret_cast<unsigned char const *>(i);
-				fprintf(stderr, " 0x%02x", c);
+				fprintf(stderr, " 0x%02x", cc);
 			}
 			fputc('\n', stderr);
 			fflush(stderr);
@@ -222,14 +222,14 @@ protected:
 			fprintf(stderr, "\nStopped at: 0x%02x\n", c);
 			fputs("Unconverted input:", stderr);
 			for (extern_type const * i = from_next + 1; i < from_end; ++i) {
-				unsigned int const c =
+				unsigned int const cc =
 					*reinterpret_cast<unsigned char const *>(i);
-				fprintf(stderr, " 0x%02x", c);
+				fprintf(stderr, " 0x%02x", cc);
 			}
 			fputs("\nConverted output:", stderr);
 			for (intern_type const * i = to; i < to_next; ++i) {
-				unsigned int const c = *i;
-				fprintf(stderr, " 0x%02x", c);
+				unsigned int const cc = *i;
+				fprintf(stderr, " 0x%02x", cc);
 			}
 			fputc('\n', stderr);
 			fflush(stderr);
