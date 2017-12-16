@@ -2339,9 +2339,9 @@ void Buffer::registerBibfiles(FileNamePairList const & bf) const {
 		return tmp->registerBibfiles(bf);
 
 	for (auto const & p : bf) {
-		FileNamePairList::const_iterator tmp =
+		FileNamePairList::const_iterator temp =
 			find(d->bibfiles_cache_.begin(), d->bibfiles_cache_.end(), p);
-		if (tmp == d->bibfiles_cache_.end())
+		if (temp == d->bibfiles_cache_.end())
 			d->bibfiles_cache_.push_back(p);
 	}
 }
@@ -2722,14 +2722,14 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 	}
 
 	case LFUN_BRANCH_ADD: {
-		docstring branch_name = func.argument();
-		if (branch_name.empty()) {
+		docstring branchnames = func.argument();
+		if (branchnames.empty()) {
 			dispatched = false;
 			break;
 		}
 		BranchList & branch_list = params().branchlist();
 		vector<docstring> const branches =
-			getVectorFromString(branch_name, branch_list.separator());
+			getVectorFromString(branchnames, branch_list.separator());
 		docstring msg;
 		for (docstring const & branch_name : branches) {
 			Branch * branch = branch_list.find(branch_name);
@@ -2874,24 +2874,24 @@ bool Buffer::isMultiLingual() const
 
 std::set<Language const *> Buffer::getLanguages() const
 {
-	std::set<Language const *> languages;
-	getLanguages(languages);
-	return languages;
+	std::set<Language const *> langs;
+	getLanguages(langs);
+	return langs;
 }
 
 
-void Buffer::getLanguages(std::set<Language const *> & languages) const
+void Buffer::getLanguages(std::set<Language const *> & langs) const
 {
 	ParConstIterator end = par_iterator_end();
 	// add the buffer language, even if it's not actively used
-	languages.insert(language());
+	langs.insert(language());
 	// iterate over the paragraphs
 	for (ParConstIterator it = par_iterator_begin(); it != end; ++it)
-		it->getLanguages(languages);
+		it->getLanguages(langs);
 	// also children
 	ListOfBuffers clist = getDescendents();
 	for (auto const & cit : clist)
-		cit->getLanguages(languages);
+		cit->getLanguages(langs);
 }
 
 
@@ -3505,10 +3505,10 @@ void Buffer::Impl::updateMacros(DocIterator & it, DocIterator & scope)
 			// is it an external file?
 			if (insit.inset->lyxCode() == INCLUDE_CODE) {
 				// get buffer of external file
-				InsetInclude const & inset =
+				InsetInclude const & incinset =
 					static_cast<InsetInclude const &>(*insit.inset);
 				macro_lock = true;
-				Buffer * child = inset.getChildBuffer();
+				Buffer * child = incinset.getChildBuffer();
 				macro_lock = false;
 				if (!child)
 					continue;
@@ -4318,8 +4318,8 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 		// FIXME: There is a possibility of concurrent access to texrow
 		// here from the main GUI thread that should be securized.
 		d->cloned_buffer_->d->texrow = d->texrow;
-		string const error_type = params().bufferFormat();
-		d->cloned_buffer_->d->errorLists[error_type] = d->errorLists[error_type];
+		string const err_type = params().bufferFormat();
+		d->cloned_buffer_->d->errorLists[error_type] = d->errorLists[err_type];
 	}
 
 
