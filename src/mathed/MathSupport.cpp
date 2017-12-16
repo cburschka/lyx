@@ -495,7 +495,7 @@ public:
 	}
 };
 
-static init_deco_table dummy;
+static init_deco_table dummy_deco_table;
 
 
 deco_struct const * search_deco(docstring const & name)
@@ -640,8 +640,8 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 		} else {
 			int xp[32];
 			int yp[32];
-			int const n = int(d[i++]);
-			for (int j = 0; j < n; ++j) {
+			int const n2 = int(d[i++]);
+			for (int j = 0; j < n2; ++j) {
 				double xx = d[i++];
 				double yy = d[i++];
 //	     lyxerr << ' ' << xx << ' ' << yy << ' ';
@@ -653,7 +653,7 @@ void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 				yp[j] = int(y + yy + 0.5);
 				//  lyxerr << "P[" << j ' ' << xx << ' ' << yy << ' ' << x << ' ' << y << ']';
 			}
-			pi.pain.lines(xp, yp, n, pi.base.font.color());
+			pi.pain.lines(xp, yp, n2, pi.base.font.color());
 		}
 	}
 }
