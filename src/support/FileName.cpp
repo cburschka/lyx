@@ -283,6 +283,9 @@ bool FileName::changePermission(unsigned long int mode) const
 			<< mode << ".");
 		return false;
 	}
+#else
+	// squash warning
+	(void) mode;
 #endif
 	return true;
 }
@@ -683,7 +686,9 @@ static int mymkdir(char const * pathname, unsigned long int mode)
 #else
 #   error "Don't know how to create a directory on this system."
 #endif
-
+	// squash warnings
+	(void) mode;
+	(void) pathname;
 }
 
 
@@ -692,6 +697,7 @@ bool FileName::createDirectory(int permission) const
 	LASSERT(!empty(), return false);
 #ifdef Q_OS_WIN32
 	// FIXME: "Permissions of created directories are ignored on this system."
+	(void) permission;
 	return createPath();
 #else
 	return mymkdir(toFilesystemEncoding().c_str(), permission) == 0;
