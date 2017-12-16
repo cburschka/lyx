@@ -121,7 +121,7 @@ int gzstreambuf::overflow( int c) { // used for output buffer only
     if ( ! ( mode & ios::out) || ! opened)
         return EOF;
     if (c != EOF) {
-        *pptr() = c;
+				*pptr() = (char) c;
         pbump(1);
     }
     if ( flush_buffer() == EOF)

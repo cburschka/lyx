@@ -823,11 +823,9 @@ void InsetMathHull::preparePreview(DocIterator const & pos,
 	for (idx_type idx = 0; idx < nargs(); ++idx)
 		usedMacros(cell(idx), pos, macros, defs);
 
-	MacroNameSet::iterator it = defs.begin();
-	MacroNameSet::iterator end = defs.end();
 	docstring macro_preamble;
-	for (; it != end; ++it)
-		macro_preamble.append(*it);
+	for (auto const & defit : defs)
+		macro_preamble.append(defit);
 
 	// set the font series and size for this snippet
 	DocIterator dit = pos.getInnerText();
@@ -1650,7 +1648,8 @@ void InsetMathHull::mutate(HullType newtype)
 
 	default:
 		// we passed the guard so we should not be here
-		LASSERT("Mutation not implemented, but should have been.", return);
+		LYXERR0("Mutation not implemented, but should have been.");
+		LASSERT(false, return);
 		break;
 	}// switch
 }
@@ -2084,11 +2083,10 @@ bool InsetMathHull::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_LABEL_COPY_AS_REFERENCE: {
 		bool enabled = false;
-		row_type row;
 		if (cmd.argument().empty() && &cur.inset() == this) {
 			// if there is no argument and we're inside math, we retrieve
 			// the row number from the cursor position.
-			row = (type_ == hullMultline) ? nrows() - 1 : cur.row();
+			row_type row = (type_ == hullMultline) ? nrows() - 1 : cur.row();
 			enabled = numberedType() && label_[row] && numbered(row);
 		} else {
 			// if there is an argument, find the corresponding label, else
@@ -2319,8 +2317,8 @@ bool InsetMathHull::readQuiet(Lexer & lex)
 int InsetMathHull::plaintext(odocstringstream & os,
         OutputParams const & op, size_t max_length) const
 {
-	// disables ASCII-art for export of equations. See #2275.
-	if (0 && display()) {
+	// Try enabling this now that there is a flag as requested at #2275.
+	if (buffer().isExporting() && display()) {
 		Dimension dim;
 		TextMetricsInfo mi;
 		metricsT(mi, dim);
