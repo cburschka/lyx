@@ -381,9 +381,9 @@ static void build_script(string const & doc_fname,
 
 		// If two formats share the same extension we may get identical names
 		if (outfile == infile && conv.result_file().empty()) {
-			TempFile tempfile(addExtension("gconvertXXXXXX", conv.To()->extension()));
-			tempfile.setAutoRemove(false);
-			outfile = tempfile.name().toFilesystemEncoding();
+			TempFile tmpfile(addExtension("gconvertXXXXXX", conv.To()->extension()));
+			tmpfile.setAutoRemove(false);
+			outfile = tmpfile.name().toFilesystemEncoding();
 		}
 
 		if (!theConverters().checkAuth(conv, doc_fname))
