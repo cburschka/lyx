@@ -2674,9 +2674,8 @@ OutputParams::FLAVOR BufferParams::getOutputFlavor(string const & format) const
 		if (find(backs.begin(), backs.end(), dformat) == backs.end()) {
 			// Get shortest path to format
 			Graph::EdgePath path;
-			for (vector<string>::const_iterator it = backs.begin();
-			    it != backs.end(); ++it) {
-				Graph::EdgePath p = theConverters().getPath(*it, dformat);
+			for (auto const & bit : backs) {
+				Graph::EdgePath p = theConverters().getPath(bit, dformat);
 				if (!p.empty() && (path.empty() || p.size() < path.size())) {
 					path = p;
 				}
@@ -3191,21 +3190,21 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			language->encoding()->package();
 
 		// Create list of inputenc options:
-		set<string> encodings;
+		set<string> encoding_set;
 		// luainputenc fails with more than one encoding
 		if (!features.runparams().isFullUnicode()) // if we reach this point, this means LuaTeX with TeX fonts
 			// list all input encodings used in the document
-			encodings = features.getEncodingSet(doc_encoding);
+			encoding_set = features.getEncodingSet(doc_encoding);
 
 		// If the "japanese" package (i.e. pLaTeX) is used,
 		// inputenc must be omitted.
 		// see http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg129680.html
-		if ((!encodings.empty() || package == Encoding::inputenc)
+		if ((!encoding_set.empty() || package == Encoding::inputenc)
 		    && !features.isRequired("japanese")
 		    && !features.isProvided("inputenc")) {
 			os << "\\usepackage[";
-			set<string>::const_iterator it = encodings.begin();
-			set<string>::const_iterator const end = encodings.end();
+			set<string>::const_iterator it = encoding_set.begin();
+			set<string>::const_iterator const end = encoding_set.end();
 			if (it != end) {
 				os << from_ascii(*it);
 				++it;
@@ -3213,7 +3212,7 @@ void BufferParams::writeEncodingPreamble(otexstream & os,
 			for (; it != end; ++it)
 				os << ',' << from_ascii(*it);
 			if (package == Encoding::inputenc) {
-				if (!encodings.empty())
+				if (!encoding_set.empty())
 					os << ',';
 				os << from_ascii(doc_encoding);
 			}
