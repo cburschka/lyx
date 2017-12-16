@@ -824,8 +824,8 @@ void InsetMathHull::preparePreview(DocIterator const & pos,
 		usedMacros(cell(idx), pos, macros, defs);
 
 	docstring macro_preamble;
-	for (auto const & defit : defs)
-		macro_preamble.append(defit);
+	for (auto const & defvar : defs)
+		macro_preamble.append(defvar);
 
 	// set the font series and size for this snippet
 	DocIterator dit = pos.getInnerText();

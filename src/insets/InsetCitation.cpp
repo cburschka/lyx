@@ -253,8 +253,8 @@ docstring InsetCitation::toolTip(BufferView const & bv, int, int) const
 	docstring tip;
 	tip += "<ol>";
 	int count = 0;
-	for (docstring const & kit : keys) {
-		docstring const key_info = bi.getInfo(kit, buffer(), ci);
+	for (docstring const & kvar : keys) {
+		docstring const key_info = bi.getInfo(kvar, buffer(), ci);
 		// limit to reasonable size.
 		if (count > 9 && keys.size() > 11) {
 			tip.push_back(0x2026);// HORIZONTAL ELLIPSIS

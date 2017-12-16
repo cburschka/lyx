@@ -2674,8 +2674,8 @@ OutputParams::FLAVOR BufferParams::getOutputFlavor(string const & format) const
 		if (find(backs.begin(), backs.end(), dformat) == backs.end()) {
 			// Get shortest path to format
 			Graph::EdgePath path;
-			for (auto const & bit : backs) {
-				Graph::EdgePath p = theConverters().getPath(bit, dformat);
+			for (auto const & bvar : backs) {
+				Graph::EdgePath p = theConverters().getPath(bvar, dformat);
 				if (!p.empty() && (path.empty() || p.size() < path.size())) {
 					path = p;
 				}

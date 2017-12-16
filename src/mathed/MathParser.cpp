@@ -745,7 +745,7 @@ docstring Parser::parse_verbatim_option()
 	docstring res;
 	if (nextToken().character() == '[') {
 		Token t = getToken();
-		for (Token t = getToken(); t.character() != ']' && good(); t = getToken()) {
+		for (t = getToken(); t.character() != ']' && good(); t = getToken()) {
 			if (t.cat() == catBegin) {
 				putback();
 				res += '{' + parse_verbatim_item() + '}';
@@ -763,7 +763,7 @@ docstring Parser::parse_verbatim_item()
 	docstring res;
 	if (nextToken().cat() == catBegin) {
 		Token t = getToken();
-		for (Token t = getToken(); t.cat() != catEnd && good(); t = getToken()) {
+		for (t = getToken(); t.cat() != catEnd && good(); t = getToken()) {
 			if (t.cat() == catBegin) {
 				putback();
 				res += '{' + parse_verbatim_item() + '}';
