@@ -53,7 +53,7 @@ class contributor:
      def as_txt_credits(self):
           result = [ '@b%s\n' % self.name ]
           if len(self.contact) != 0:
-               if self.contact.find("http") != -1:
+               if self.contact.find("https") != -1:
                     result.append('@i%s\n' % self.contact)
                else:
                     result.append('@iE-mail: %s\n' % self.contact)
@@ -163,7 +163,7 @@ $email = str_replace(' () ', '@', $email);
 $email = str_replace(' ! ', '.', $email);
 
 if (isset($email) && $email != "") {
-        if (strncasecmp($email,"http",4) == 0)
+        if (strncasecmp($email,"https",4) == 0)
             $output =$output. "<dt><b>[[${email} | ${name}]]</b>";
          else
             $output=$output. "<dt><b>[[mailto:${email} | ${name}]]</b>";
@@ -234,7 +234,7 @@ $output=$output. "
 
 if (isset($msg_ref) && $msg_ref != "") {
         $msg_ref = htmlspecialchars("$msg_ref");
-        $output=$output. "[[http://marc.info/?l=lyx-devel&amp;" . ${msg_ref} . "|" . ${msg_title} . "]]";
+        $output=$output. "[[https://marc.info/?l=lyx-devel&amp;" . ${msg_ref} . "|" . ${msg_title} . "]]";
 } else {
         $output=$output. "${msg_title}";
 }
@@ -251,7 +251,7 @@ function blanket_output() {
 $output=$output."<p>
      The following people hereby grant permission to license their
      contributions to LyX under the
-     [[http://www.opensource.org/licenses/gpl-license.php |
+     [[https://opensource.org/licenses/gpl-license |
      Gnu General Public License]], version 2 or later.
 </p>
 
@@ -269,7 +269,7 @@ $output=$output."
 <p>
      The following people hereby grant permission to license their
      contributions to LyX under the
-     [[http://www.opensource.org/licenses/artistic-license-2.0.php |
+     [[https://opensource.org/licenses/Artistic-2.0 |
      Artistic License 2]].
 </p>
 
@@ -1024,7 +1024,7 @@ contributors = [
                  u"Original name that is now two characters shorter"),
 
      contributor(u"KDE Artists",
-                 "http://artist.kde.org/",
+                 "",
                  "",
                  "",
                  "",
@@ -1184,7 +1184,7 @@ contributors = [
                  u"Added native support for \makebox to mathed. Several bug fixes, both to the source code and to the llncs layout file"),
 
      contributor(u"LibreOffice Team",
-                 "http://www.libreoffice.org/",
+                 "https://www.libreoffice.org/",
                  "LGPL",
                  "",
                  "",
@@ -1368,7 +1368,7 @@ contributors = [
                  u"Improvements to the outliner."),
 
      contributor(u"Oxygen Team",
-                 "http://www.oxygen-icons.org/",
+                 "https://techbase.kde.org/Projects/Oxygen",
                  "LGPL",
                  "",
                  "",
