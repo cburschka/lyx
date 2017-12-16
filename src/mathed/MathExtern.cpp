@@ -775,17 +775,17 @@ void extractSums(MathData & ar)
 		InsetMathScript const * sub = ar[i]->asScriptInset();
 		if (sub && sub->hasDown()) {
 			// try to figure out the summation index from the subscript
-			MathData const & ar = sub->down();
+			MathData const & md = sub->down();
 			MathData::const_iterator xt =
-				find_if(ar.begin(), ar.end(), &testEqualSign);
-			if (xt != ar.end()) {
+				find_if(md.begin(), md.end(), &testEqualSign);
+			if (xt != md.end()) {
 				// we found a '=', use everything in front of that as index,
 				// and everything behind as lower index
-				p->cell(1) = MathData(buf, ar.begin(), xt);
-				p->cell(2) = MathData(buf, xt + 1, ar.end());
+				p->cell(1) = MathData(buf, md.begin(), xt);
+				p->cell(2) = MathData(buf, xt + 1, md.end());
 			} else {
 				// use everything as summation index, don't use scripts.
-				p->cell(1) = ar;
+				p->cell(1) = md;
 			}
 		}
 
@@ -900,7 +900,7 @@ void extractDiff(MathData & ar)
 						lyxerr << "Cannot differentiate less than 0 or more than 1000 times !" << endl;
 						continue;
 					}
-					for (int i = 0; i < mult; ++i)
+					for (int ii = 0; ii < mult; ++ii)
 						diff->addDer(MathData(buf, dt + 1, st));
 				}
 			} else {
