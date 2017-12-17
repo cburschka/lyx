@@ -2057,7 +2057,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 			os << from_ascii(tclass.class_header());
 		else if (runparams.flavor == OutputParams::XML)
 			os << "PUBLIC \"-//OASIS//DTD DocBook XML V4.2//EN\" "
-			    << "\"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd\"";
+			    << "\"https://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd\"";
 		else
 			os << " PUBLIC \"-//OASIS//DTD DocBook V4.2//EN\"";
 
@@ -4733,7 +4733,7 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 			// not updated during the updateBuffer call and TocModel::toc_ is invalid
 			// (bug 5699). The same happens if the master buffer is open in a different
 			// window. This test catches both possibilities.
-			// See: http://marc.info/?l=lyx-devel&m=138590578911716&w=2
+			// See: https://marc.info/?l=lyx-devel&m=138590578911716&w=2
 			// There remains a problem here: If there is another child open in yet a third
 			// window, that TOC is not updated. So some more general solution is needed at
 			// some point.
@@ -5159,7 +5159,7 @@ int Buffer::charCount(bool with_blanks) const
 Buffer::ReadStatus Buffer::reload()
 {
 	setBusy(true);
-	// c.f. bug http://www.lyx.org/trac/ticket/6587
+	// c.f. bug https://www.lyx.org/trac/ticket/6587
 	removeAutosaveFile();
 	// e.g., read-only status could have changed due to version control
 	d->filename.refresh();
