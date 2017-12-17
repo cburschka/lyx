@@ -880,10 +880,12 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 		// (ligatures not featured)
 		qstr = quoteparams.getLaTeXQuote(quotechar, "int");
 #ifdef DO_USE_DEFAULT_LANGUAGE
-	} else if (doclang == "default") {
+	} else if ((doclang == "default"
 #else
-	} else if (!runparams.use_babel || runparams.isFullUnicode()) {
+	} else if ((!runparams.use_babel
 #endif
+		   || fontenc_ != "T1" || fontenc_ != "OT1")
+		   || runparams.isFullUnicode()) {
 		// Standard quotation mark macros
 		// These are also used by babel
 		// without fontenc (XeTeX/LuaTeX)
