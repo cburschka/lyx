@@ -95,7 +95,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-12-16 17:36+0100\n"
+"POT-Creation-Date: 2017-12-17 02:19+0100\n"
 "PO-Revision-Date: 2017-12-17 02:04+0100\n"
 "Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
@@ -30889,6 +30889,10 @@ msgstr "LyX-Tastaturtabellen (*.kmap)"
 msgid "Longest label width"
 msgstr "Breite der längsten Marke"
 
+#: src/frontends/qt4/GuiPrintNomencl.h:40
+msgid "Nomenclature List Settings"
+msgstr "Nomenklaturverzeichnis-Einstellungen"
+
 #: src/frontends/qt4/GuiPrintindex.cpp:37
 msgid "Index Settings"
 msgstr "Index-Einstellungen"
@@ -33933,9 +33937,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "Output en- and &em-dashes as ligatures"
 #~ msgstr "&Halbgeviert- und Geviertstriche als Ligaturen ausgeben"
-
-#~ msgid "Nomenclature List Settings"
-#~ msgstr "Nomenklaturverzeichnis-Einstellungen"
 
 #~ msgid "&Clipping"
 #~ msgstr "&Ausschnitt"
