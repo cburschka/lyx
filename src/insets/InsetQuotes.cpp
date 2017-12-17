@@ -884,7 +884,7 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 #else
 	} else if ((!runparams.use_babel
 #endif
-		   || fontenc_ != "T1" || fontenc_ != "OT1")
+		   || (fontenc_ != "T1" && fontenc_ != "OT1"))
 		   || runparams.isFullUnicode()) {
 		// Standard quotation mark macros
 		// These are also used by babel
