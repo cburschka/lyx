@@ -880,13 +880,18 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 		// (ligatures not featured)
 		qstr = quoteparams.getLaTeXQuote(quotechar, "int");
 #ifdef DO_USE_DEFAULT_LANGUAGE
-	} else if (doclang == "default") {
+	} else if ((doclang == "default"
 #else
-	} else if (!runparams.use_babel || runparams.isFullUnicode()) {
+	} else if ((!runparams.use_babel
 #endif
+		   || fontenc_ == "T2A")
+		   || runparams.isFullUnicode()) {
 		// Standard quotation mark macros
 		// These are also used by babel
 		// without fontenc (XeTeX/LuaTeX)
+		// We use those for T2A (russian), since
+		// babel falls back for ugly OT1 versions for
+		// the guillemots.
 		qstr = quoteparams.getLaTeXQuote(quotechar, "ot1");
 	} else {
 		// Babel shorthand quotation marks (for T1/OT1)
