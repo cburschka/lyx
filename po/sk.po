@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-12-01 11:22+0100\n"
-"PO-Revision-Date: 2017-12-01 10:24+0000\n"
+"POT-Creation-Date: 2017-12-17 06:57+0100\n"
+"PO-Revision-Date: 2017-12-17 05:59+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -88,7 +88,7 @@ msgstr ""
 #: src/frontends/qt4/ui/HyperlinkUi.ui:80 src/frontends/qt4/ui/NomenclUi.ui:72
 #: src/frontends/qt4/ui/PrintindexUi.ui:74
 msgid "Li&teral"
-msgstr "Doslovne"
+msgstr "&Doslovne"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:26
 msgid "Citation Style"
@@ -171,7 +171,7 @@ msgstr "Pr&ispôsobiť"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:265
 msgid "Default BibTeX st&yle:"
-msgstr "Štandardný BibTeX-štýl:"
+msgstr "Š&tandardný BibTeX-štýl:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:281
 msgid ""
@@ -182,7 +182,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/BiblioUi.ui:294
 msgid "&Reset"
-msgstr "&Vynulovať"
+msgstr "V&ynulovať"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:305
 msgid "Select this if you want to split your bibliography into sections"
@@ -198,7 +198,7 @@ msgstr "Znovu prehľadať súbory so štýlom"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:331
 msgid "Re&scan"
-msgstr "Znovu prehľadať"
+msgstr "&Znovu prehľadať"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:342
 msgid "&Multiple bibliographies:"
@@ -227,11 +227,12 @@ msgstr "&Procesor:"
 msgid "Select a processor"
 msgstr "Vyberte jeden procesor"
 
-#: src/frontends/qt4/ui/BiblioUi.ui:424 src/frontends/qt4/ui/PrefLatexUi.ui:120
+#: src/frontends/qt4/ui/BiblioUi.ui:424
+#: src/frontends/qt4/ui/PrefLatexUi.ui:120
 #: src/frontends/qt4/ui/PrefLatexUi.ui:222 src/frontends/qt4/GuiPrefs.cpp:851
 #: src/frontends/qt4/GuiPrefs.cpp:986
 msgid "Op&tions:"
-msgstr "Možnos&ti:"
+msgstr "&Možnosti:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:440
 msgid ""
@@ -253,7 +254,7 @@ msgstr "Znovu prehľadať nové LaTeXové databázy a štýle"
 #: src/frontends/qt4/ui/BibtexAddUi.ui:70 src/frontends/qt4/ui/BibtexUi.ui:107
 #: src/frontends/qt4/ui/TexinfoUi.ui:122
 msgid "&Rescan"
-msgstr "Z&novu prehľadať"
+msgstr "Znovu p&rehľadať"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:81
 msgid ""
@@ -273,12 +274,13 @@ msgstr "Tu môžte vložiť meno lokálnej BibTeX databázy"
 msgid "Browse your local directory"
 msgstr "Prehľadať váš lokálny adresár"
 
-#: src/frontends/qt4/ui/BibtexAddUi.ui:112 src/frontends/qt4/ui/BibtexUi.ui:152
-#: src/frontends/qt4/ui/CompareUi.ui:50 src/frontends/qt4/ui/ExternalUi.ui:70
-#: src/frontends/qt4/ui/GraphicsUi.ui:58 src/frontends/qt4/ui/IncludeUi.ui:335
-#: src/frontends/qt4/ui/LaTeXUi.ui:161 src/frontends/qt4/ui/PrefInputUi.ui:111
+#: src/frontends/qt4/ui/BibtexAddUi.ui:112
+#: src/frontends/qt4/ui/BibtexUi.ui:152 src/frontends/qt4/ui/CompareUi.ui:50
+#: src/frontends/qt4/ui/ExternalUi.ui:70 src/frontends/qt4/ui/GraphicsUi.ui:58
+#: src/frontends/qt4/ui/IncludeUi.ui:335 src/frontends/qt4/ui/LaTeXUi.ui:161
+#: src/frontends/qt4/ui/PrefInputUi.ui:111
 msgid "&Browse..."
-msgstr "Pr&echádzať…"
+msgstr "Pre&chádzať…"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:162
 #: src/frontends/qt4/ui/BranchesUi.ui:113
@@ -302,7 +304,7 @@ msgstr "BibTeX databáza na použitie"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:32
 msgid "Da&tabases"
-msgstr "Databázy"
+msgstr "Databáz&y"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:48
 msgid "Add a BibTeX database file"
@@ -310,7 +312,7 @@ msgstr "Pridať súbor s BibTeX databázou"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:51
 msgid "&Add..."
-msgstr "Prid&ať…"
+msgstr "Pr&idať…"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:58
 msgid "Remove the selected database"
@@ -318,7 +320,7 @@ msgstr "Odstrániť vybranú databázu"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:61 src/frontends/qt4/ui/CitationUi.ui:156
 msgid "&Delete"
-msgstr "&Zmazať"
+msgstr "Zm&azať"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:68
 msgid "Move the selected database upwards in the list"
@@ -336,7 +338,7 @@ msgstr "Presunúť označenú databázu v listine dole"
 #: src/frontends/qt4/ui/BibtexUi.ui:81 src/frontends/qt4/ui/CitationUi.ui:211
 #: src/frontends/qt4/ui/ModulesUi.ui:124
 msgid "Do&wn"
-msgstr "Na&dol"
+msgstr "Nado&l"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:104
 msgid "Scan for new databases and styles"
@@ -360,7 +362,7 @@ msgstr "Táto bibliografická sekcia obsahuje…"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:171
 msgid "&Content:"
-msgstr "&Obsah:"
+msgstr "O&bsah:"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:185 src/frontends/qt4/GuiBibtex.cpp:340
 #: src/insets/InsetBibtex.cpp:223 src/insets/InsetBibtex.cpp:241
@@ -383,7 +385,7 @@ msgstr "Pridať literatúru do obsahu"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:222
 msgid "Add bibliography to &TOC"
-msgstr "Pridať &literatúru do obsahu"
+msgstr "Pridať lit&eratúru do obsahu"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:231
 msgid "O&ptions:"
@@ -506,7 +508,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/BoxUi.ui:181
 msgid "&Box:"
-msgstr "&Rámik:"
+msgstr "Rám&ik:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:204 src/frontends/qt4/ui/BoxUi.ui:234
 #: src/frontends/qt4/ui/TabularUi.ui:277 src/frontends/qt4/ui/TabularUi.ui:532
@@ -590,7 +592,7 @@ msgstr "Hodnota rozchodu"
 
 #: src/frontends/qt4/ui/BoxUi.ui:345
 msgid "Box s&eparation:"
-msgstr "&Oddeľovač rámikov:"
+msgstr "Odd&eľovač rámikov:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:358
 msgid "&Decoration:"
@@ -614,7 +616,7 @@ msgstr "&Pozadie:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:444
 msgid "&Frame:"
-msgstr "&Rám:"
+msgstr "Rá&m:"
 
 #: src/frontends/qt4/ui/BranchUi.ui:20
 msgid "&Available branches:"
@@ -641,7 +643,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/BranchesUi.ui:38
 msgid "Filename &Suffix"
-msgstr "&Sufix súboru"
+msgstr "&Sufix Súboru"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:61
 msgid "Show undefined branches used in this document."
@@ -649,11 +651,11 @@ msgstr "Ukázať ne-definované vetvy použité v tomto dokumente."
 
 #: src/frontends/qt4/ui/BranchesUi.ui:64
 msgid "&Undefined Branches"
-msgstr "N&edefinované vetvy"
+msgstr "N&edefinované Vetvy"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:84
 msgid "A&vailable Branches:"
-msgstr "Dostupné &vetvy:"
+msgstr "Dostupné &Vetvy:"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:94
 msgid "Toggle the selected branch"
@@ -828,7 +830,7 @@ msgstr "Ozrutné"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:144
 msgid "&Custom bullet:"
-msgstr "&Vlastná odrážka:"
+msgstr "V&lastná odrážka:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:174
 #: src/frontends/qt4/ui/PDFSupportUi.ui:336
@@ -945,7 +947,7 @@ msgstr "Vždy prepnuté"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:255
 msgid "&Misc:"
-msgstr "R&ôzne:"
+msgstr "Rô&zne:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:295
 msgid "toggle font on all of the above"
@@ -1045,7 +1047,7 @@ msgstr "Formátovanie"
 
 #: src/frontends/qt4/ui/CitationUi.ui:279
 msgid "Citation st&yle:"
-msgstr "Štý&l citácie:"
+msgstr "Štýl &citácie:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:289 src/frontends/qt4/GuiCitation.cpp:298
 msgid "Text befo&re:"
@@ -1365,11 +1367,11 @@ msgstr "Voľby LaTeX"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:162
 msgid "O&ption:"
-msgstr "M&ožnosť:"
+msgstr "Mož&nosť:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:175
 msgid "Forma&t:"
-msgstr "F&ormát:"
+msgstr "&Formát:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:191
 msgid ""
@@ -1418,11 +1420,11 @@ msgstr "Počiatok otáčania"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:341
 msgid "Ori&gin:"
-msgstr "Stre&dobod:"
+msgstr "S&tredobod:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:361
 msgid "A&ngle:"
-msgstr "U&hol:"
+msgstr "&Uhol:"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:376 lib/layouts/shapepar.module:122
 msgid "Scale"
@@ -1445,7 +1447,7 @@ msgstr "Zachovať pomer strán s najväčším rozmerom"
 #: src/frontends/qt4/ui/ExternalUi.ui:436
 #: src/frontends/qt4/ui/GraphicsUi.ui:177
 msgid "&Maintain aspect ratio"
-msgstr "Zachovať po&mer strán"
+msgstr "Zachovať pom&er strán"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:459
 msgid "Crop"
@@ -1459,7 +1461,7 @@ msgstr "Odrezať podľa hodnôt ohraničujúceho rámiku"
 #: src/frontends/qt4/ui/ExternalUi.ui:477
 #: src/frontends/qt4/ui/GraphicsUi.ui:312
 msgid "Clip to &bounding box"
-msgstr "&Odrezať k ohraničujúcemu rámiku"
+msgstr "Odrezať k ohran&ičujúcemu rámiku"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:484
 #: src/frontends/qt4/ui/GraphicsUi.ui:345
@@ -1483,7 +1485,7 @@ msgstr "Získať ohraničujúci rámik z (EPS) súboru"
 #: src/frontends/qt4/ui/ExternalUi.ui:517
 #: src/frontends/qt4/ui/GraphicsUi.ui:440
 msgid "&Get from File"
-msgstr "Získať zo sú&boru"
+msgstr "Získ&ať zo súboru"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:547
 msgid "y"
@@ -1600,7 +1602,7 @@ msgstr "&Otvorené dokumenty"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:251
 msgid "&All manuals"
-msgstr "Všetky &príručky"
+msgstr "Vš&etky príručky"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:269
 msgid ""
@@ -1622,11 +1624,11 @@ msgstr "Udržovať veľkosť prvých písiem v slove tak, ako v nájdenom texte"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:285
 msgid "&Preserve first case on replace"
-msgstr "Zachovať v&eľkosť prvých písiem"
+msgstr "&Zachovať veľkosť prvých písiem"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:295
 msgid "&Expand macros"
-msgstr "Rozvinúť &makrá"
+msgstr "&Rozvinúť makrá"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:302
 msgid "Restrict search to math environments only"
@@ -1647,7 +1649,7 @@ msgstr "Typ plávajúceho objektu:"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:36
 msgid "Use &default placement"
-msgstr "Použiť štan&dardné umiestňovanie"
+msgstr "P&oužiť štandardné umiestňovanie"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:43
 msgid "Advanced Placement Options"
@@ -1663,15 +1665,15 @@ msgstr "&Ignorovať pravidlá LaTeX-u"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:69
 msgid "Here de&finitely"
-msgstr "Určit&e tu"
+msgstr "&Určite tu"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:76
 msgid "&Here if possible"
-msgstr "Pokiaľ možno &tu"
+msgstr "Pokiaľ &možno tu"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:83
 msgid "&Page of floats"
-msgstr "Strana &plávajúcich objektov"
+msgstr "Strana p&lávajúcich objektov"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:90
 msgid "&Bottom of page"
@@ -1679,11 +1681,11 @@ msgstr "&Spodok strany"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:100
 msgid "&Span columns"
-msgstr "&Preklenúť stĺpce"
+msgstr "&Preklepnúť stĺpce"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:107
 msgid "&Rotate sideways"
-msgstr "&Otočiť bokom"
+msgstr "Otočiť &bokom"
 
 #: src/frontends/qt4/ui/FontUi.ui:14
 msgid "FontUi"
@@ -1877,15 +1879,15 @@ msgstr "Vyberte, keď chcete prehodiť poradie zmeny mierky a rotácie"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:205
 msgid "Ro&tate after scaling"
-msgstr "&Otočiť po zmene mierky"
+msgstr "Otoč&iť po zmene mierky"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:222
 msgid "Or&igin:"
-msgstr "Stre&dobod:"
+msgstr "S&tredobod:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:250
 msgid "A&ngle (degrees):"
-msgstr "U&hol (stupne):"
+msgstr "&Uhol (stupne):"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:263
 #: src/frontends/qt4/ui/GraphicsUi.ui:276
@@ -1929,7 +1931,7 @@ msgstr "Zobraziť v L&yXe"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:559
 msgid "Sca&le on screen (%):"
-msgstr "Mierka na o&brazovke (%):"
+msgstr "Mierka na obra&zovke (%):"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:585
 msgid "Assign the graphic to a group of graphics that share the same settings"
@@ -1950,7 +1952,7 @@ msgstr "Kliknite na definovanie novej skupiny obrázkov."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:640
 msgid "O&pen new group..."
-msgstr "Založiť &novú skupinu…"
+msgstr "Za&ložiť novú skupinu…"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:647
 msgid "Select an existing group for the current graphics."
@@ -1962,7 +1964,7 @@ msgstr "Režim konceptu"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:663
 msgid "&Draft mode"
-msgstr "Režim kon&ceptu"
+msgstr "Režim ko&nceptu"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
 msgid "Select a fill pattern style for HFills"
@@ -2010,7 +2012,7 @@ msgstr "Vlastná hodnota. Potrebuje typ rozstupu &quot;Vlastný&quot;."
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:110
 msgid "&Fill Pattern:"
-msgstr "&Vzor výplne:"
+msgstr "&Vzor Výplne:"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:123 src/frontends/qt4/ui/VSpaceUi.ui:45
 msgid "&Protect:"
@@ -2096,19 +2098,19 @@ msgstr "Vyberte to pre parametre ktoré LyX nepozná"
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:82
 #: src/frontends/qt4/ui/ListingsUi.ui:510
 msgid "&Bypass validation"
-msgstr "&Preskočiť overenie platnosti"
+msgstr "Nes&kontrolovať platnosť"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:86
 msgid "C&aption:"
-msgstr "Po&pis:"
+msgstr "Pop&is:"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:99
 msgid "La&bel:"
-msgstr "&Návestie:"
+msgstr "Ná&vestie:"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:109
 msgid "Mo&re parameters"
-msgstr "Ďa&lšie parametre"
+msgstr "Ď&alšie parametre"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:183
 msgid "Underline spaces in generated output"
@@ -2116,7 +2118,7 @@ msgstr "Podčiarknuť medzery v generovanom výstupe"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:186
 msgid "&Mark spaces in output"
-msgstr "&Označiť medzery vo výstupe"
+msgstr "Označiť &medzery vo výstupe"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:201
 msgid "Show LaTeX preview"
@@ -2124,7 +2126,7 @@ msgstr "Zobraziť LaTeX náhľad"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:204
 msgid "&Show preview"
-msgstr "Zo&braziť náhľad"
+msgstr "Zobraziť &náhľad"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:275
 msgid "File name to include"
@@ -2132,7 +2134,7 @@ msgstr "Názov súboru pre zaradenie"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:282
 msgid "&Include Type:"
-msgstr "&Spôsob zahrnutia:"
+msgstr "Spôsob za&hrnutia:"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:293 src/insets/InsetInclude.cpp:390
 msgid "Include"
@@ -2181,7 +2183,7 @@ msgstr "Generácia Registrov"
 #: src/frontends/qt4/ui/IndicesUi.ui:54 src/frontends/qt4/GuiPrefs.cpp:801
 #: src/frontends/qt4/GuiPrefs.cpp:931
 msgid "&Options:"
-msgstr "M&ožnosti:"
+msgstr "&Možnosti:"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:64
 msgid "Define program options of the selected processor."
@@ -2224,7 +2226,7 @@ msgstr "Premenovať označený register"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:175
 msgid "R&ename..."
-msgstr "Premenu&j…"
+msgstr "P&remenuj…"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:182
 msgid "Define or change button color"
@@ -2257,7 +2259,7 @@ msgstr "Okamžite použiť zmeny"
 #: src/frontends/qt4/ui/InsetParamsUi.ui:62
 #: src/frontends/qt4/ui/ParagraphUi.ui:45
 msgid "I&mmediate Apply"
-msgstr "O&kamžite použiť"
+msgstr "O&kamžite Použiť"
 
 #: src/frontends/qt4/ui/InsetParamsUi.ui:79
 msgid "Restore initial values in dialog"
@@ -2329,7 +2331,7 @@ msgstr "Udajte meno implicitného hlavného dokumentu"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:187
 msgid "&Suppress default date on front page"
-msgstr "Potlačiť implicitný &dátum na titulnej stránke"
+msgstr "Potlačiť implicitný dátum na titulnej &stránke"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:207
 msgid "&Use refstyle (not prettyref) for cross-references"
@@ -2438,7 +2440,7 @@ msgstr "Zvoliť pre výpisy priamo do textu"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:38
 msgid "&Inline listing"
-msgstr "Vnútr&i riadku"
+msgstr "&Vložený výpis"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:45
 msgid "Check for floating listings"
@@ -2470,7 +2472,7 @@ msgstr "Na ktorej strane by mali byť vytlačené čísla riadkov?"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:119
 msgid "S&tep:"
-msgstr "&Krok:"
+msgstr "K&rok:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:132
 msgid "Difference between two numbered lines"
@@ -2478,7 +2480,7 @@ msgstr "Odstup v číslovaní riadkov"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:148
 msgid "Font si&ze:"
-msgstr "V&eľkosť písma:"
+msgstr "Veľkosť pís&ma:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:169
 msgid "Choose the font size for line numbers"
@@ -2491,7 +2493,7 @@ msgstr "Štýl"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:194
 msgid "F&ont size:"
-msgstr "&Veľkosť písma:"
+msgstr "Veľkosť písm&a:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:215
 msgid "The content's base font size"
@@ -2499,7 +2501,7 @@ msgstr "Základná veľkosť písma"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:231
 msgid "Font Famil&y:"
-msgstr "Ro&dina písma:"
+msgstr "Rodi&na písma:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:252
 msgid "The content's base font style"
@@ -2511,7 +2513,7 @@ msgstr "Zalamovať riadky presahujúce štandardnú dĺžku riadkov"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:271
 msgid "&Break long lines"
-msgstr "Z&alamovať dlhé riadky"
+msgstr "Rozdeliť dl&hé riadky"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:281
 msgid "Make spaces visible by a special symbol"
@@ -2519,7 +2521,7 @@ msgstr "Zobraz medzery špeciálnym symbolom"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:284
 msgid "S&pace as symbol"
-msgstr "Medzera ako sym&bol"
+msgstr "Medzera ako s&ymbol"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:294
 msgid "Make spaces in strings visible by a special symbol"
@@ -2527,11 +2529,11 @@ msgstr "Zobraz medzery v reťazcoch špeciálnym symbolom"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:297
 msgid "Space i&n string as symbol"
-msgstr "&Medzera v reťazci ako symbol"
+msgstr "Medzera v re&ťazci ako symbol"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:307
 msgid "Tab&ulator size:"
-msgstr "Veľkosť &tabulátoru:"
+msgstr "Dĺžka &tabulátoru:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:323
 msgid "Use extended character table"
@@ -2539,7 +2541,7 @@ msgstr "Použiť rozšírenú tabuľku znakov"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:326
 msgid "&Extended character table"
-msgstr "R&ozšírená tabuľka znakov"
+msgstr "Rozšírená ta&buľka znakov"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:345
 msgid "Lan&guage:"
@@ -2563,7 +2565,7 @@ msgstr "Rozsah"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:388
 msgid "Fi&rst line:"
-msgstr "P&rvý riadok:"
+msgstr "Prvý r&iadok:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:401
 msgid "The first line to be printed"
@@ -2571,7 +2573,7 @@ msgstr "Prvý riadok výpisu"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:414
 msgid "&Last line:"
-msgstr "Posled&ný riadok:"
+msgstr "Kon&cový riadok:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:427
 msgid "The last line to be printed"
@@ -2579,7 +2581,7 @@ msgstr "Posledný riadok výpisu"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:444
 msgid "Ad&vanced"
-msgstr "R&ozšírené"
+msgstr "Rozšír&ené"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:458
 msgid "More Parameters"
@@ -2656,7 +2658,7 @@ msgstr "Použi nastavenie okrajov z triedy dokumentu"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:31
 msgid "&Default margins"
-msgstr "Štan&dardné okraje"
+msgstr "Š&tandardné okraje"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:89
 msgid "&Top:"
@@ -2668,7 +2670,7 @@ msgstr "&Dolný:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:115
 msgid "&Inner:"
-msgstr "V&nútorný:"
+msgstr "&Vnútorný:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:128
 msgid "O&uter:"
@@ -2676,11 +2678,11 @@ msgstr "V&onkajší:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:141
 msgid "Head &sep:"
-msgstr "Od&stup ku hlavičke:"
+msgstr "Odst&up ku hlavičke:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:154
 msgid "Head &height:"
-msgstr "Výška &hlavičky:"
+msgstr "Výš&ka hlavičky:"
 
 #: src/frontends/qt4/ui/MarginsUi.ui:167
 msgid "&Foot skip:"
@@ -2797,7 +2799,7 @@ msgstr "Odsadiť exponované vzorce namiesto vystreďovania"
 
 #: src/frontends/qt4/ui/MathsUi.ui:51
 msgid "Indent &Formulas"
-msgstr "Odsadiť Vzorce"
+msgstr "Odsadiť &Vzorce"
 
 #: src/frontends/qt4/ui/MathsUi.ui:67 src/frontends/qt4/ui/TextLayoutUi.ui:48
 msgid "Size of the indentation"
@@ -2944,7 +2946,7 @@ msgstr "S&ynchronizovať s výstupom"
 
 #: src/frontends/qt4/ui/OutputUi.ui:141
 msgid "C&ustom macro:"
-msgstr "&Vlastné makro:"
+msgstr "V&lastné makro:"
 
 #: src/frontends/qt4/ui/OutputUi.ui:151
 msgid "Custom LaTeX preamble macro"
@@ -3058,7 +3060,7 @@ msgstr "Povoliť rozdeliť odkazy na viac riadkov."
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:225
 msgid "B&reak links over lines"
-msgstr "&Rozdeliť odkazy aj na viac riadkov"
+msgstr "R&ozdeliť odkazy aj na viac riadkov"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:232
 msgid "No &frames around links"
@@ -3074,7 +3076,7 @@ msgstr "Bibliografické spätné referencie"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:252
 msgid "B&ackreferences:"
-msgstr "Spä&tné referencie:"
+msgstr "Spät&né referencie:"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:281
 msgid "&Bookmarks"
@@ -3124,7 +3126,7 @@ msgstr "&Orientácia:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:136
 msgid "&Portrait"
-msgstr "Na &výšku"
+msgstr "Na výš&ku"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:146
 msgid "&Landscape"
@@ -3162,7 +3164,7 @@ msgstr "Tento text definuje šírku návestia odstavca"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:73
 msgid "Lo&ngest label"
-msgstr "Naj&dlhšie návestie"
+msgstr "&Najdlhšie návestie"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:93
 msgid "Line &spacing"
@@ -3201,15 +3203,15 @@ msgstr "Vlastný"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:147
 msgid "&Indent Paragraph"
-msgstr "O&dsadiť odstavec"
+msgstr "Ods&adiť Odstavec"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:169
 msgid "&Justified"
-msgstr "Do &bloku"
+msgstr "&Do bloku"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:176
 msgid "&Left"
-msgstr "Vľa&vo"
+msgstr "&Vľavo"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:183
 msgid "C&enter"
@@ -3217,7 +3219,7 @@ msgstr "Na &stred"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:190
 msgid "Ri&ght"
-msgstr "V&pravo"
+msgstr "Vp&ravo"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:197
 msgid "Use the default alignment for this paragraph, whatever it is."
@@ -3226,7 +3228,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:200
 msgid "Paragraph's &Default"
-msgstr "Štandardné &zarovnanie odstavca"
+msgstr "Š&tandardné Zarovnanie Odstavca"
 
 #: src/frontends/qt4/ui/PhantomUi.ui:60
 msgid "Horizontal and vertical space of the phantom content"
@@ -3298,7 +3300,7 @@ msgstr "Zobrazovať šedé doplňovanie za kurzorom na danom riadku po zdržaní
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:89
 msgid "Automatic &inline completion"
-msgstr "Automatické do&plňovanie v riadku"
+msgstr "Automatické doplňo&vanie v riadku"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:96
 msgid "Show the popup after the set delay in text mode."
@@ -3306,7 +3308,7 @@ msgstr "Zobraz vyťahovacie menu po zdržaní."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:99
 msgid "Automatic &popup"
-msgstr "Automatická ponu&ka"
+msgstr "Automatická &ponuka"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:106
 msgid ""
@@ -3389,7 +3391,7 @@ msgstr "&Konvertor:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:91
 msgid "E&xtra flag:"
-msgstr "Prída&vný indikátor:"
+msgstr "&Prídavný indikátor:"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:121
 msgid "&From format:"
@@ -3420,7 +3422,7 @@ msgstr "Z&apnutá"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:274
 msgid "Maximum a&ge (in days):"
-msgstr "Živo&tnosť (v dňoch):"
+msgstr "Ži&votnosť (v dňoch):"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:292
 msgid "Security"
@@ -3428,7 +3430,7 @@ msgstr "Bezpečnosť"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:312
 msgid "&Forbid use of needauth converters"
-msgstr "&Zakázať overujúce konvertory"
+msgstr "Zakázať ove&rujúce konvertory"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:315
 msgid ""
@@ -3524,7 +3526,7 @@ msgstr "Zá&lohovať dokumenty, každých"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:120
 msgid "&minutes"
-msgstr "minút"
+msgstr "&minút"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:145
 msgid ""
@@ -3770,7 +3772,7 @@ msgstr "Pre &TeX fonty:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:294
 msgid "&Japanese:"
-msgstr "Japonsky:"
+msgstr "&Japonsky:"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -3961,7 +3963,7 @@ msgstr "Označiť &cudzie jazyky"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:217
 msgid "Right-to-Left Language Support"
-msgstr "Podpora Písania Sprava-Doľava"
+msgstr "Podpora Písania Zprava-Doľava"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:237
 msgid "Cursor movement:"
@@ -4214,7 +4216,7 @@ msgstr "Š&ablóny dokumentov:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:220
 msgid "&Working directory:"
-msgstr "P&racovný adresár:"
+msgstr "Pra&covný adresár:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:230
 msgid "H&unspell dictionaries:"
@@ -4422,7 +4424,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:40
 msgid "Avai&lable indexes:"
-msgstr "&Dostupné registre:"
+msgstr "Do&stupné registre:"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:50
 msgid "Select the index that shall be printed at this place of the document."
@@ -4511,7 +4513,7 @@ msgstr "Filtrovať aj podľa veľkosti písmen"
 
 #: src/frontends/qt4/ui/RefUi.ui:95
 msgid "Case Sensiti&ve"
-msgstr "R&ozlišovať Veľkosť Písmen"
+msgstr "Roz&lišovať Veľkosť Písmen"
 
 #: src/frontends/qt4/ui/RefUi.ui:110
 msgid "The (sub-)document from which the available labels are displayed"
@@ -4519,7 +4521,7 @@ msgstr "Ten (pod-)dokument z ktorého sa dostupné heslá majú zobraziť"
 
 #: src/frontends/qt4/ui/RefUi.ui:138
 msgid "So&rt:"
-msgstr "Por&adie:"
+msgstr "Po&radie:"
 
 #: src/frontends/qt4/ui/RefUi.ui:148
 msgid "Sorting of the list of available labels"
@@ -4555,7 +4557,7 @@ msgstr "Pre&jsť na Heslo"
 
 #: src/frontends/qt4/ui/RefUi.ui:232
 msgid "Reference For&mat:"
-msgstr "Štýl &Referencie:"
+msgstr "Š&týl Referencie:"
 
 #: src/frontends/qt4/ui/RefUi.ui:251
 msgid "Adjust the style of the cross-reference"
@@ -4716,7 +4718,7 @@ msgstr "Hľadať ďa&lšie"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:92
 msgid "Re&placement:"
-msgstr "Náh&rada:"
+msgstr "Náhr&ada:"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:105
 msgid "Replace with selected word"
@@ -4797,11 +4799,11 @@ msgstr "Zlúčiť bunky rozličných riadkov"
 
 #: src/frontends/qt4/ui/TabularUi.ui:121
 msgid "M&ultirow"
-msgstr "V&iacriadkové"
+msgstr "Viac-r&iadkové"
 
 #: src/frontends/qt4/ui/TabularUi.ui:133
 msgid "&Vertical Offset:"
-msgstr "Z&dvihnúť:"
+msgstr "&Zdvihnúť:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:146
 msgid "Optional vertical offset"
@@ -4833,7 +4835,7 @@ msgstr "Šírk&a:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:260
 msgid "Verti&cal alignment:"
-msgstr "Vertikálne &zarovnanie:"
+msgstr "V&ertikálne zarovnanie:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:270
 msgid "Vertical alignment of the table"
@@ -4845,7 +4847,7 @@ msgstr "Otočiť tabuľku o 90 stupňov"
 
 #: src/frontends/qt4/ui/TabularUi.ui:319
 msgid "&Rotate"
-msgstr "Otočiť"
+msgstr "&Otočiť"
 
 #: src/frontends/qt4/ui/TabularUi.ui:366
 msgid "Column settings"
@@ -4879,7 +4881,7 @@ msgstr "Fixná šírka stĺpca"
 
 #: src/frontends/qt4/ui/TabularUi.ui:518
 msgid "&Vertical alignment in row:"
-msgstr "&Vertikálne zarovnanie v riadku:"
+msgstr "Verti&kálne zarovnanie v riadku:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:528
 msgid ""
@@ -4940,7 +4942,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/TabularUi.ui:1137
 msgid "Fo&rmal"
-msgstr "Fo&rmálny"
+msgstr "&Formálny"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1147
 msgid "Use default (grid-like) border style"
@@ -4948,7 +4950,7 @@ msgstr "Použiť štandardný štýl okraja (mriežka)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1150
 msgid "De&fault"
-msgstr "Štan&dardný"
+msgstr "Š&tandardný"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1176
 msgid "Additional Space"
@@ -4956,11 +4958,11 @@ msgstr "Dodatočná medzera"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1182
 msgid "T&op of row:"
-msgstr "&Vrch riadku:"
+msgstr "Vr&ch riadku:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1242
 msgid "Botto&m of row:"
-msgstr "&Spodok riadku:"
+msgstr "S&podok riadku:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1255
 msgid "Bet&ween rows:"
@@ -4976,7 +4978,7 @@ msgstr "Vyberte to pre tabuľky presahujúce viac strán"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1313
 msgid "&Use multi-page table"
-msgstr "Použiť viacstrannú tabuľku"
+msgstr "Použiť viac-strannú ta&buľku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1323
 msgid "Row settings"
@@ -5074,15 +5076,15 @@ msgstr "Nastaviť zalomenie strany na aktuálnom riadku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1527
 msgid "Page &break on current row"
-msgstr "Zalo&m stranu na aktuálnom riadku"
+msgstr "Zalom stranu na akt&uálnom riadku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1540
 msgid "Horizontal alignment of the multi-page table"
-msgstr "Horizontálne zarovnanie viacstrannej tabuľky"
+msgstr "Horizontálne zarovnanie viac-strannej tabuľky"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1543
 msgid "Multi-page table alignment"
-msgstr "Zarovnanie viacstrannej tabuľky"
+msgstr "Zarovnanie viac-strannej tabuľky"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:74
 msgid "Close this dialog"
@@ -5148,11 +5150,11 @@ msgstr "Odsadenie postupných odstavcov"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:38
 msgid "&Indentation:"
-msgstr "&Odsadzovaním:"
+msgstr "&Odsadzovanie:"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:122
 msgid "&Vertical space:"
-msgstr "&Vertikálnou medzerou:"
+msgstr "&Vertikálna medzera:"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:132
 msgid "Size of the vertical space"
@@ -5379,7 +5381,7 @@ msgstr "Použiť počet riadkov"
 
 #: src/frontends/qt4/ui/WrapUi.ui:78
 msgid "&Line span:"
-msgstr "&Rozpätie riadkov:"
+msgstr "Rozpä&tie riadkov:"
 
 #: src/frontends/qt4/ui/WrapUi.ui:199
 msgid "Outer (default)"
@@ -5411,7 +5413,7 @@ msgstr "Povoľuje premenlivé umiestnenie"
 
 #: src/frontends/qt4/ui/WrapUi.ui:283
 msgid "Allow &floating"
-msgstr "U&možniť plávajúce objekty"
+msgstr "Umožniť p&lávajúce objekty"
 
 #: lib/citeengines/basic.citeengine:2
 msgid "Basic (BibTeX)"
@@ -13054,7 +13056,7 @@ msgstr "Tablá"
 
 #: lib/layouts/linguistics.module:35
 msgid "Numbered Example (multiline)"
-msgstr "Číslovaný príklad (viacriadkový)"
+msgstr "Číslovaný príklad (viac-riadkový)"
 
 #: lib/layouts/linguistics.module:67
 msgid "Numbered Examples (consecutive)"
@@ -17645,115 +17647,115 @@ msgstr "ASCII"
 
 #: lib/ui/stdcontext.inc:30 lib/ui/stdmenus.inc:461
 msgid "Array Environment|y"
-msgstr "Pole prostredie"
+msgstr "Array Prostredie|y"
 
 #: lib/ui/stdcontext.inc:31 lib/ui/stdmenus.inc:462
 msgid "Cases Environment|C"
-msgstr "Cases prostredie"
+msgstr "Cases Prostredie|C"
 
 #: lib/ui/stdcontext.inc:32 lib/ui/stdmenus.inc:463
 msgid "Aligned Environment|l"
-msgstr "Aligned prostredie"
+msgstr "Aligned Prostredie|l"
 
 #: lib/ui/stdcontext.inc:33 lib/ui/stdmenus.inc:464
 msgid "AlignedAt Environment|v"
-msgstr "AlignedAt prostredie"
+msgstr "AlignedAt Prostredie|n"
 
 #: lib/ui/stdcontext.inc:34 lib/ui/stdmenus.inc:465
 msgid "Gathered Environment|h"
-msgstr "Gathered prostredie"
+msgstr "Gathered Prostredie|h"
 
 #: lib/ui/stdcontext.inc:35 lib/ui/stdmenus.inc:466
 msgid "Split Environment|S"
-msgstr "Rozdeliť prostredie"
+msgstr "Rozdeliť Prostredie|z"
 
 #: lib/ui/stdcontext.inc:37 lib/ui/stdmenus.inc:468
 msgid "Delimiters...|r"
-msgstr "Oddeľovače…"
+msgstr "Oddeľovače…|O"
 
 #: lib/ui/stdcontext.inc:38 lib/ui/stdmenus.inc:469
 msgid "Matrix...|x"
-msgstr "Matica…"
+msgstr "Matica…|M"
 
 #: lib/ui/stdcontext.inc:39 lib/ui/stdmenus.inc:470
 msgid "Macro|o"
-msgstr "Makro"
+msgstr "Makro|k"
 
 #: lib/ui/stdcontext.inc:43 lib/ui/stdmenus.inc:322 lib/ui/stdmenus.inc:454
 msgid "AMS align Environment|a"
-msgstr "AMS align prostredie"
+msgstr "AMS align Prostredie|a"
 
 #: lib/ui/stdcontext.inc:44 lib/ui/stdmenus.inc:323 lib/ui/stdmenus.inc:455
 msgid "AMS alignat Environment|t"
-msgstr "AMS alignat prostredie"
+msgstr "AMS alignat Prostredie|i"
 
 #: lib/ui/stdcontext.inc:45 lib/ui/stdmenus.inc:324 lib/ui/stdmenus.inc:456
 msgid "AMS flalign Environment|f"
-msgstr "AMS flalign prostredie"
+msgstr "AMS flalign Prostredie|f"
 
 #: lib/ui/stdcontext.inc:46 lib/ui/stdmenus.inc:325 lib/ui/stdmenus.inc:457
 msgid "AMS gather Environment|g"
-msgstr "AMS gather prostredie"
+msgstr "AMS gather Prostredie|g"
 
 #: lib/ui/stdcontext.inc:47 lib/ui/stdmenus.inc:326 lib/ui/stdmenus.inc:458
 msgid "AMS multline Environment|m"
-msgstr "AMS viacriadkové prostredie"
+msgstr "AMS viac-riadkové Prostredie|v"
 
 #: lib/ui/stdcontext.inc:51 lib/ui/stdmenus.inc:319 lib/ui/stdmenus.inc:450
 msgid "Inline Formula|I"
-msgstr "Vzorec v riadku"
+msgstr "Vzorec v Riadku|R"
 
 #: lib/ui/stdcontext.inc:52 lib/ui/stdmenus.inc:320
 msgid "Displayed Formula|D"
-msgstr "Exponovaný vzorec"
+msgstr "Exponovaný Vzorec|E"
 
 #: lib/ui/stdcontext.inc:53 lib/ui/stdmenus.inc:321 lib/ui/stdmenus.inc:453
 msgid "Eqnarray Environment|E"
-msgstr "Eqnarray prostredie"
+msgstr "Eqnarray Prostredie|q"
 
 #: lib/ui/stdcontext.inc:54
 msgid "AMS Environment|A"
-msgstr "AMS prostredie"
+msgstr "AMS prostredie|A"
 
 #: lib/ui/stdcontext.inc:56 lib/ui/stdmenus.inc:237
 msgid "Number Whole Formula|N"
-msgstr "Očísliť Celý Vzorec"
+msgstr "Očísliť Celý Vzorec|C"
 
 #: lib/ui/stdcontext.inc:57 lib/ui/stdmenus.inc:238
 msgid "Number This Line|u"
-msgstr "Očísliť Tento Riadok"
+msgstr "Očísliť Tento Riadok|O"
 
 #: lib/ui/stdcontext.inc:58
 msgid "Equation Label|L"
-msgstr "Návestie Rovnice|N"
+msgstr "Návestie Rovnice|s"
 
 #: lib/ui/stdcontext.inc:59
 msgid "Copy as Reference|R"
-msgstr "Kopírovať ako referenciu|r"
+msgstr "Kopírovať ako referenciu|K"
 
 #: lib/ui/stdcontext.inc:61 lib/ui/stdmenus.inc:248
 msgid "Split Cell|C"
-msgstr "Rozdeliť bunku"
+msgstr "Rozdeliť Bunku|d"
 
 #: lib/ui/stdcontext.inc:63
 msgid "Insert|s"
-msgstr "Vložiť"
+msgstr "Vložiť|V"
 
 #: lib/ui/stdcontext.inc:65
 msgid "Add Line Above|o"
-msgstr "Pridať Líniu Nad"
+msgstr "Pridať Líniu Nad|N"
 
 #: lib/ui/stdcontext.inc:66 lib/ui/stdmenus.inc:251
 msgid "Add Line Below|B"
-msgstr "Pridať Líniu Pod"
+msgstr "Pridať Líniu Pod|P"
 
 #: lib/ui/stdcontext.inc:67
 msgid "Delete Line Above|v"
-msgstr "Zmazať Líniu Nad"
+msgstr "Zmazať Líniu Nad|Z"
 
 #: lib/ui/stdcontext.inc:68
 msgid "Delete Line Below|w"
-msgstr "Zmazať Líniu Pod"
+msgstr "Zmazať Líniu Pod|m"
 
 #: lib/ui/stdcontext.inc:70 lib/ui/stdmenus.inc:255
 msgid "Add Line to Left"
@@ -17785,7 +17787,7 @@ msgstr "Zobraz lištu nástrojov pre tabuľku"
 
 #: lib/ui/stdcontext.inc:79
 msgid "Use Computer Algebra System|m"
-msgstr "Použiť Systém Computer Algebra"
+msgstr "Použiť Systém Computer Algebra|g"
 
 #: lib/ui/stdcontext.inc:87 lib/ui/stdcontext.inc:106
 msgid "Next Cross-Reference|N"
@@ -17845,11 +17847,11 @@ msgstr "Nastavenia…|N"
 
 #: lib/ui/stdcontext.inc:107
 msgid "Go Back|G"
-msgstr "Choď späť"
+msgstr "Choď Späť|S"
 
 #: lib/ui/stdcontext.inc:109 lib/ui/stdcontext.inc:514
 msgid "Copy as Reference|C"
-msgstr "Kopírovať ako referenciu"
+msgstr "Kopírovať ako Referenciu|p"
 
 #: lib/ui/stdcontext.inc:131
 msgid "Edit Database(s) Externally...|x"
@@ -17857,24 +17859,24 @@ msgstr "Externe upraviť databázu(y)…|x"
 
 #: lib/ui/stdcontext.inc:145
 msgid "Open Inset|O"
-msgstr "Otvoriť vložku"
+msgstr "Otvoriť Vložku|i"
 
 #: lib/ui/stdcontext.inc:146
 msgid "Close Inset|C"
-msgstr "Zavrieť vložku"
+msgstr "Zavrieť Vložku|Z"
 
 #: lib/ui/stdcontext.inc:148 lib/ui/stdcontext.inc:154
 #: lib/ui/stdcontext.inc:170 lib/ui/stdcontext.inc:630
 msgid "Dissolve Inset|D"
-msgstr "Rozpustiť Vložku"
+msgstr "Rozpustiť Vložku|k"
 
 #: lib/ui/stdcontext.inc:153 lib/ui/stdcontext.inc:169
 msgid "Show Label|L"
-msgstr "Zobraz Návestie|N"
+msgstr "Zobraz Návestie|Z"
 
 #: lib/ui/stdcontext.inc:180 lib/ui/stdmenus.inc:499
 msgid "Frameless|l"
-msgstr "Bez rámu"
+msgstr "Bez Rámu|B"
 
 #: lib/ui/stdcontext.inc:181 lib/ui/stdmenus.inc:500
 msgid "Simple Frame|F"
@@ -17882,19 +17884,19 @@ msgstr "Jednoduchý Rám|R"
 
 #: lib/ui/stdcontext.inc:182
 msgid "Simple Frame, Page Breaks|P"
-msgstr "Jednoduchý Rám, Zalomené Stránky|Z"
+msgstr "Jednoduchý Rám, Zalomené Stránky|J"
 
 #: lib/ui/stdcontext.inc:183 lib/ui/stdmenus.inc:501
 msgid "Oval, Thin|a"
-msgstr "Oválny, Tenký"
+msgstr "Oválny, Tenký|e"
 
 #: lib/ui/stdcontext.inc:184 lib/ui/stdmenus.inc:502
 msgid "Oval, Thick|v"
-msgstr "Oválny, Tučný|v"
+msgstr "Oválny, Tučný|u"
 
 #: lib/ui/stdcontext.inc:185 lib/ui/stdmenus.inc:503
 msgid "Drop Shadow|w"
-msgstr "S Tieňom"
+msgstr "S Tieňom|T"
 
 #: lib/ui/stdcontext.inc:186 lib/ui/stdmenus.inc:504
 msgid "Shaded Background|B"
@@ -17902,47 +17904,47 @@ msgstr "Pozadie Tieňované|P"
 
 #: lib/ui/stdcontext.inc:187 lib/ui/stdmenus.inc:505
 msgid "Double Frame|u"
-msgstr "Dvojitý Rám"
+msgstr "Dvojitý Rám|D"
 
 #: lib/ui/stdcontext.inc:204 lib/ui/stdmenus.inc:509
 msgid "LyX Note|N"
-msgstr "Zápis LyXu"
+msgstr "Zápis LyXu|y"
 
 #: lib/ui/stdcontext.inc:205
 msgid "Comment|m"
-msgstr "Komentár"
+msgstr "Komentár|m"
 
 #: lib/ui/stdcontext.inc:206 lib/ui/stdmenus.inc:511
 msgid "Greyed Out|G"
-msgstr "Zosivelé"
+msgstr "Zosivelé|s"
 
 #: lib/ui/stdcontext.inc:208
 msgid "Open All Notes|A"
-msgstr "Otvoriť všetky poznámky|p"
+msgstr "Otvoriť Všetky Poznámky|P"
 
 #: lib/ui/stdcontext.inc:209
 msgid "Close All Notes|l"
-msgstr "Zavrieť všetky poznámky|o"
+msgstr "Zavrieť všetky poznámky|a"
 
 #: lib/ui/stdcontext.inc:217 lib/ui/stdmenus.inc:521
 msgid "Phantom|P"
-msgstr "Fantóm"
+msgstr "Fantóm|F"
 
 #: lib/ui/stdcontext.inc:218 lib/ui/stdmenus.inc:522
 msgid "Horizontal Phantom|H"
-msgstr "Horizontálny Fantóm"
+msgstr "Horizontálny Fantóm|H"
 
 #: lib/ui/stdcontext.inc:219 lib/ui/stdmenus.inc:523
 msgid "Vertical Phantom|V"
-msgstr "Vertikálny Fantóm"
+msgstr "Vertikálny Fantóm|V"
 
 #: lib/ui/stdcontext.inc:234 lib/ui/stdmenus.inc:429
 msgid "Interword Space|w"
-msgstr "Medzi-slovná Medzera"
+msgstr "Medzi-slovná Medzera|e"
 
 #: lib/ui/stdcontext.inc:235
 msgid "Protected Space|o"
-msgstr "Chránená Medzera"
+msgstr "Chránená Medzera|C"
 
 #: lib/ui/stdcontext.inc:236
 msgid "Visible Space|a"
@@ -17950,104 +17952,104 @@ msgstr "Viditeľná Medzera|a"
 
 #: lib/ui/stdcontext.inc:237 lib/ui/stdcontext.inc:260 lib/ui/stdmenus.inc:430
 msgid "Thin Space|T"
-msgstr "Úzka medzera"
+msgstr "Úzka Medzera|k"
 
 #: lib/ui/stdcontext.inc:238 lib/ui/stdcontext.inc:263
 msgid "Negative Thin Space|N"
-msgstr "Záporná úzka medzera"
+msgstr "Záporná Úzka Medzera|Z"
 
 #: lib/ui/stdcontext.inc:239 lib/ui/stdcontext.inc:266
 msgid "Half Quad Space (Enskip)|k"
-msgstr "Polovička Quad medzery (Enskip)"
+msgstr "Polovička Quad Medzery (Enskip)|P"
 
 #: lib/ui/stdcontext.inc:240
 msgid "Protected Half Quad Space (Enspace)|E"
-msgstr "Chránená polovička Quad medzery (Enspace)"
+msgstr "Chránená Polovička Quad Medzery (Enspace)|u"
 
 #: lib/ui/stdcontext.inc:241 lib/ui/stdcontext.inc:267
 msgid "Quad Space|Q"
-msgstr "Quad medzera"
+msgstr "Quad Medzera|Q"
 
 #: lib/ui/stdcontext.inc:242 lib/ui/stdcontext.inc:268
 msgid "Double Quad Space|u"
-msgstr "dvojnásobná Quad medzera"
+msgstr "Dvojnásobná Quad Medzera|D"
 
 #: lib/ui/stdcontext.inc:243
 msgid "Horizontal Fill|F"
-msgstr "Variabilná Horizontálna Medzera"
+msgstr "Variabilná Horizontálna Medzera|H"
 
 #: lib/ui/stdcontext.inc:244
 msgid "Protected Horizontal Fill|i"
-msgstr "Chránená Variabilná Horizontálna Medzera"
+msgstr "Chránená Variabilná Horizontálna Medzera|i"
 
 #: lib/ui/stdcontext.inc:245
 msgid "Horizontal Fill (Dots)|D"
-msgstr "Variabilná Horizontálna Medzera(Bodky)"
+msgstr "Variabilná Horizontálna Medzera(Bodky)|B"
 
 #: lib/ui/stdcontext.inc:246
 msgid "Horizontal Fill (Rule)|R"
-msgstr "Variabilná Horizontálna Medzera (línia)"
+msgstr "Variabilná Horizontálna Medzera (Línia)|L"
 
 #: lib/ui/stdcontext.inc:247
 msgid "Horizontal Fill (Left Arrow)|L"
-msgstr "Variabilná Horizontálna Medzera(šípka doľava)"
+msgstr "Variabilná Horizontálna Medzera(Šípka Doľava)|r"
 
 #: lib/ui/stdcontext.inc:248
 msgid "Horizontal Fill (Right Arrow)|g"
-msgstr "Variabilná Horizontálna Medzera(šípka doprava)"
+msgstr "Variabilná Horizontálna Medzera(Šípka Doprava)|o"
 
 #: lib/ui/stdcontext.inc:249
 msgid "Horizontal Fill (Up Brace)|p"
-msgstr "Variabilná Horizontálna Medzera(svorka nahor)"
+msgstr "Variabilná Horizontálna Medzera(Svorka Nahor)|t"
 
 #: lib/ui/stdcontext.inc:250
 msgid "Horizontal Fill (Down Brace)|B"
-msgstr "Variabilná Horizontálna Medzera(svorka nadol)"
+msgstr "Variabilná Horizontálna Medzera(Svorka Nadol)|S"
 
 #: lib/ui/stdcontext.inc:251 lib/ui/stdcontext.inc:269
 msgid "Custom Length|C"
-msgstr "Vlastná dĺžka"
+msgstr "Vlastná dĺžka|V"
 
 #: lib/ui/stdcontext.inc:261
 msgid "Medium Space|M"
-msgstr "Stredná Medzera"
+msgstr "Stredná Medzera|S"
 
 #: lib/ui/stdcontext.inc:262
 msgid "Thick Space|h"
-msgstr "Tučná medzera"
+msgstr "Tučná Medzera|T"
 
 #: lib/ui/stdcontext.inc:264
 msgid "Negative Medium Space|u"
-msgstr "Záporná Stredná Medzera"
+msgstr "Záporná Stredná Medzera|o"
 
 #: lib/ui/stdcontext.inc:265
 msgid "Negative Thick Space|i"
-msgstr "Záporná tučná medzera"
+msgstr "Záporná Tučná Medzera|u"
 
 #: lib/ui/stdcontext.inc:278
 msgid "DefSkip|D"
-msgstr "Štandardná medzera(DefSkip)"
+msgstr "Štandardná Medzera(DefSkip)|t"
 
 #: lib/ui/stdcontext.inc:279
 msgid "SmallSkip|S"
-msgstr "Malá medzera(SmallSkip)"
+msgstr "Malá Medzera(SmallSkip)|M"
 
 #: lib/ui/stdcontext.inc:280
 msgid "MedSkip|M"
-msgstr "Stredná medzera(MedSkip)"
+msgstr "Stredná Medzera(MedSkip)|S"
 
 #: lib/ui/stdcontext.inc:281
 msgid "BigSkip|B"
-msgstr "Veľká medzera(BigSkip)"
+msgstr "Veľká Medzera(BigSkip)|e"
 
 # Výplň
 #: lib/ui/stdcontext.inc:282
 msgid "VFill|F"
-msgstr "Variabilná medzera|V"
+msgstr "Variabilná Medzera|r"
 
 #: lib/ui/stdcontext.inc:283
 msgid "Custom|C"
-msgstr "Vlastné"
+msgstr "Vlastné|V"
 
 #: lib/ui/stdcontext.inc:285
 msgid "Settings...|e"
@@ -18055,23 +18057,23 @@ msgstr "Nastavenia…|a"
 
 #: lib/ui/stdcontext.inc:292 lib/ui/stdcontext.inc:577
 msgid "Include|c"
-msgstr "Zahrnúť"
+msgstr "Zahrnúť|ú"
 
 #: lib/ui/stdcontext.inc:293 lib/ui/stdcontext.inc:578
 msgid "Input|p"
-msgstr "Vstup"
+msgstr "Vstup|p"
 
 #: lib/ui/stdcontext.inc:294 lib/ui/stdcontext.inc:579
 msgid "Verbatim|V"
-msgstr "Doslovne (Verbatim)"
+msgstr "Doslovne (Verbatim)|D"
 
 #: lib/ui/stdcontext.inc:295 lib/ui/stdcontext.inc:580
 msgid "Verbatim (marked blanks)|b"
-msgstr "Doslovne (vyznačené medzery)"
+msgstr "Doslovne (vyznačené medzery)|y"
 
 #: lib/ui/stdcontext.inc:296 lib/ui/stdcontext.inc:581
 msgid "Listing|L"
-msgstr "Výpis"
+msgstr "Výpis|V"
 
 #: lib/ui/stdcontext.inc:300 lib/ui/stdcontext.inc:585
 msgid "Edit Included File...|E"
@@ -18079,27 +18081,27 @@ msgstr "Editovať zahrnutý súbor…|E"
 
 #: lib/ui/stdcontext.inc:307 lib/ui/stdmenus.inc:442
 msgid "New Page|N"
-msgstr "Nová stránka"
+msgstr "Nová Stránka|N"
 
 #: lib/ui/stdcontext.inc:308 lib/ui/stdmenus.inc:443
 msgid "Page Break|a"
-msgstr "Zalomenie strany"
+msgstr "Zalomenie Strany|a"
 
 #: lib/ui/stdcontext.inc:309 lib/ui/stdmenus.inc:444
 msgid "Clear Page|C"
-msgstr "Stránku vyprázdniť"
+msgstr "Stránku Vyprázdniť|S"
 
 #: lib/ui/stdcontext.inc:310 lib/ui/stdmenus.inc:445
 msgid "Clear Double Page|D"
-msgstr "Vyprázdniť Dvojitú Stránku"
+msgstr "Dvojitú Stránku Vyprázdniť|j"
 
 #: lib/ui/stdcontext.inc:317 lib/ui/stdmenus.inc:439
 msgid "Ragged Line Break|R"
-msgstr "Normálne Zalomenie Riadku"
+msgstr "Normálne Zalomenie Riadku|r"
 
 #: lib/ui/stdcontext.inc:318 lib/ui/stdmenus.inc:440
 msgid "Justified Line Break|J"
-msgstr "Zarovnané Zalomenie Riadku Sprava"
+msgstr "Zarovnané Zalomenie Riadku Zprava|p"
 
 #: lib/ui/stdcontext.inc:325
 msgid "Plain Separator|P"
@@ -18127,39 +18129,39 @@ msgstr "Vlepiť"
 
 #: lib/ui/stdcontext.inc:338 lib/ui/stdmenus.inc:109
 msgid "Paste Recent|e"
-msgstr "Vlepiť nedávne|l"
+msgstr "Vlepiť Nedávne|l"
 
 #: lib/ui/stdcontext.inc:340
 msgid "Jump Back to Saved Bookmark|B"
-msgstr "Skoč späť na uloženú záložku"
+msgstr "Skoč Späť na Uloženú Záložku|u"
 
 #: lib/ui/stdcontext.inc:341 lib/ui/stdmenus.inc:569
 msgid "Forward Search|F"
-msgstr "Dopredu Hľadať"
+msgstr "Dopredu Hľadať|a"
 
 #: lib/ui/stdcontext.inc:343 lib/ui/stdmenus.inc:118
 msgid "Move Paragraph Up|o"
-msgstr "Presunúť odstavec nahor|h"
+msgstr "Presunúť Odstavec Nahor|d"
 
 #: lib/ui/stdcontext.inc:344 lib/ui/stdmenus.inc:119
 msgid "Move Paragraph Down|v"
-msgstr "Presunúť odstavec nadol|d"
+msgstr "Presunúť Odstavec Nadol|ť"
 
 #: lib/ui/stdcontext.inc:348
 msgid "Promote Section|r"
-msgstr "Zvýšiť úroveň Sekcie"
+msgstr "Zvýšiť Úroveň Sekcie|ý"
 
 #: lib/ui/stdcontext.inc:349
 msgid "Demote Section|m"
-msgstr "Znížiť úroveň sekcie"
+msgstr "Znížiť Úroveň Sekcie|í"
 
 #: lib/ui/stdcontext.inc:350
 msgid "Move Section Down|D"
-msgstr "Presunúť sekciu nadol|D"
+msgstr "Presunúť Sekciu Nadol|r"
 
 #: lib/ui/stdcontext.inc:351 lib/ui/stdcontext.inc:650
 msgid "Move Section Up|U"
-msgstr "Presunúť sekciu nahor|N"
+msgstr "Presunúť Sekciu Nahor|c"
 
 #: lib/ui/stdcontext.inc:353 lib/ui/stdmenus.inc:381
 msgid "Insert Regular Expression"
@@ -18167,19 +18169,19 @@ msgstr "Vložiť Regulárny Výraz"
 
 #: lib/ui/stdcontext.inc:355 lib/ui/stdcontext.inc:639
 msgid "Accept Change|c"
-msgstr "Akceptovať Zmenu"
+msgstr "Akceptovať Zmenu|e"
 
 #: lib/ui/stdcontext.inc:356
 msgid "Reject Change|j"
-msgstr "Odmietnuť Zmenu"
+msgstr "Odmietnuť Zmenu|m"
 
 #: lib/ui/stdcontext.inc:358
 msgid "Apply Last Text Style|A"
-msgstr "Použiť posledný štýl textu"
+msgstr "Použiť Posledný Štýl Textu|s"
 
 #: lib/ui/stdcontext.inc:359
 msgid "Text Style|x"
-msgstr "Štýl Textu"
+msgstr "Štýl Textu|T"
 
 #: lib/ui/stdcontext.inc:360 lib/ui/stdmenus.inc:123
 msgid "Paragraph Settings...|P"
@@ -18187,7 +18189,7 @@ msgstr "Nastavenia Odstavca…|O"
 
 #: lib/ui/stdcontext.inc:363
 msgid "Fullscreen Mode"
-msgstr "Celoobrazovkový mód"
+msgstr "Celoobrazovkový Mód"
 
 #: lib/ui/stdcontext.inc:364
 msgid "Close Current View"
@@ -18239,40 +18241,40 @@ msgstr "Zmazať Voliteľný Argument"
 
 #: lib/ui/stdcontext.inc:393 lib/ui/stdmenus.inc:270
 msgid "Append Argument Eating From the Right"
-msgstr "Pridať Argument Sprava"
+msgstr "Pridať Argument Zprava"
 
 #: lib/ui/stdcontext.inc:394 lib/ui/stdmenus.inc:271
 msgid "Append Optional Argument Eating From the Right"
-msgstr "Pridať Voliteľný Argument Sprava"
+msgstr "Pridať Voliteľný Argument Zprava"
 
 #: lib/ui/stdcontext.inc:395 lib/ui/stdmenus.inc:272
 msgid "Remove Last Argument Spitting Out to the Right"
-msgstr "Odstráň Posledný Argument Sprava"
+msgstr "Odstráň Posledný Argument Zprava"
 
 #: lib/ui/stdcontext.inc:404
 msgid "Reload|R"
-msgstr "Opäť načítať"
+msgstr "Opäť Načítať|O"
 
 #: lib/ui/stdcontext.inc:406 lib/ui/stdcontext.inc:418
 #: lib/ui/stdcontext.inc:538
 msgid "Edit Externally...|x"
-msgstr "Externe upraviť…|x"
+msgstr "Externe Upraviť…|x"
 
 #: lib/ui/stdcontext.inc:426 lib/ui/stdmenus.inc:217
 msgid "Top|T"
-msgstr "Hore"
+msgstr "Hore|H"
 
 #: lib/ui/stdcontext.inc:427 lib/ui/stdmenus.inc:219
 msgid "Bottom|B"
-msgstr "Dole"
+msgstr "Dole|D"
 
 #: lib/ui/stdcontext.inc:428 lib/ui/stdmenus.inc:213
 msgid "Left|L"
-msgstr "Vľavo"
+msgstr "Vľavo|a"
 
 #: lib/ui/stdcontext.inc:429 lib/ui/stdmenus.inc:215
 msgid "Right|R"
-msgstr "Vpravo"
+msgstr "Vpravo|r"
 
 #: lib/ui/stdcontext.inc:433
 msgid "Left|f"
@@ -18280,7 +18282,7 @@ msgstr "Vľavo"
 
 #: lib/ui/stdcontext.inc:434 lib/ui/stdmenus.inc:214
 msgid "Center|C"
-msgstr "Na stred"
+msgstr "Na Stred|t"
 
 #: lib/ui/stdcontext.inc:435
 msgid "Right|h"
@@ -18292,23 +18294,23 @@ msgstr "Desatinná"
 
 #: lib/ui/stdcontext.inc:444
 msgid "Multicolumn|u"
-msgstr "Viac-stĺpcové"
+msgstr "Viac-stĺpcové|c"
 
 #: lib/ui/stdcontext.inc:445
 msgid "Multirow|w"
-msgstr "Viacriadkové"
+msgstr "Viac-riadkové|i"
 
 #: lib/ui/stdcontext.inc:447
 msgid "Append Row|A"
-msgstr "Pridať Riadok"
+msgstr "Pridať Riadok|P"
 
 #: lib/ui/stdcontext.inc:448 lib/ui/stdmenus.inc:222
 msgid "Delete Row|D"
-msgstr "Zmazať Riadok"
+msgstr "Zmazať Riadok|Z"
 
 #: lib/ui/stdcontext.inc:449 lib/ui/stdmenus.inc:223
 msgid "Copy Row|o"
-msgstr "Kopírovať Riadok"
+msgstr "Kopírovať Riadok|K"
 
 #: lib/ui/stdcontext.inc:450 lib/ui/stdmenus.inc:224
 msgid "Move Row Up"
@@ -18320,19 +18322,19 @@ msgstr "Presunúť Riadok Nadol"
 
 #: lib/ui/stdcontext.inc:453
 msgid "Append Column|p"
-msgstr "Pridať Stĺpec"
+msgstr "Pridať Stĺpec|r"
 
 #: lib/ui/stdcontext.inc:454 lib/ui/stdmenus.inc:229
 msgid "Delete Column|e"
-msgstr "Zmazať Stĺpec"
+msgstr "Zmazať Stĺpec|m"
 
 #: lib/ui/stdcontext.inc:455
 msgid "Copy Column|y"
-msgstr "Kopírovať Stĺpec"
+msgstr "Kopírovať Stĺpec|o"
 
 #: lib/ui/stdcontext.inc:456 lib/ui/stdmenus.inc:231
 msgid "Move Column Right|v"
-msgstr "Presunúť Stĺpec Doprava"
+msgstr "Presunúť Stĺpec Doprava|u"
 
 #: lib/ui/stdcontext.inc:457 lib/ui/stdmenus.inc:232
 msgid "Move Column Left"
@@ -18340,7 +18342,7 @@ msgstr "Presunúť Stĺpec Doľava"
 
 #: lib/ui/stdcontext.inc:461 lib/ui/stdmenus.inc:196
 msgid "Multi-page Table|g"
-msgstr "Viacstranná Tabuľka|V"
+msgstr "Viac-stranná Tabuľka|V"
 
 #: lib/ui/stdcontext.inc:462
 msgid "Formal Style|m"
@@ -18348,15 +18350,15 @@ msgstr "Formálny Štýl|F"
 
 #: lib/ui/stdcontext.inc:464
 msgid "Borders|d"
-msgstr "Okraje|k"
+msgstr "Okraje|j"
 
 #: lib/ui/stdcontext.inc:465
 msgid "Alignment|i"
-msgstr "Zarovnanie"
+msgstr "Zarovnanie|i"
 
 #: lib/ui/stdcontext.inc:466
 msgid "Columns/Rows|C"
-msgstr "Stĺpce/Riadky|S"
+msgstr "Stĺpce/Riadky|p"
 
 #: lib/ui/stdcontext.inc:476 lib/ui/stdmenus.inc:30
 msgid "File|F"
@@ -18364,59 +18366,59 @@ msgstr "Súbor|S"
 
 #: lib/ui/stdcontext.inc:477
 msgid "Path|P"
-msgstr "Cesty"
+msgstr "Cesty|C"
 
 #: lib/ui/stdcontext.inc:478
 msgid "Class|C"
-msgstr "Trieda"
+msgstr "Trieda|T"
 
 #: lib/ui/stdcontext.inc:480
 msgid "File Revision|R"
-msgstr "Revízia Súboru"
+msgstr "Revízia Súboru|R"
 
 #: lib/ui/stdcontext.inc:481
 msgid "Tree Revision|T"
-msgstr "Revízia Stromu"
+msgstr "Revízia Stromu|i"
 
 #: lib/ui/stdcontext.inc:482
 msgid "Revision Author|A"
-msgstr "Autor Revízie"
+msgstr "Autor Revízie|u"
 
 #: lib/ui/stdcontext.inc:483
 msgid "Revision Date|D"
-msgstr "Dátum Revízie"
+msgstr "Dátum Revízie|D"
 
 #: lib/ui/stdcontext.inc:484
 msgid "Revision Time|i"
-msgstr "Čas Revízie"
+msgstr "Čas Revízie|a"
 
 #: lib/ui/stdcontext.inc:486
 msgid "LyX Version|X"
-msgstr "Verzia LyXu"
+msgstr "Verzia LyXu|X"
 
 #: lib/ui/stdcontext.inc:490
 msgid "Document Info|D"
-msgstr "Info Dokumentu"
+msgstr "Info Dokumentu|f"
 
 #: lib/ui/stdcontext.inc:492
 msgid "Copy Text|o"
-msgstr "Kopírovať Text"
+msgstr "Kopírovať Text|T"
 
 #: lib/ui/stdcontext.inc:501 lib/ui/stdcontext.inc:525
 msgid "Activate Branch|A"
-msgstr "Aktivovať vetvu|A"
+msgstr "Aktivovať Vetvu|t"
 
 #: lib/ui/stdcontext.inc:502 lib/ui/stdcontext.inc:526
 msgid "Deactivate Branch|e"
-msgstr "Dezaktivovať vetvu|e"
+msgstr "Dezaktivovať Vetvu|e"
 
 #: lib/ui/stdcontext.inc:503
 msgid "Activate Branch in Master|M"
-msgstr "Aktivovať vetvu v hlavnom dokumente|H"
+msgstr "Aktivovať Vetvu v Hlavnom Dokumente|ť"
 
 #: lib/ui/stdcontext.inc:504
 msgid "Deactivate Branch in Master|v"
-msgstr "Dezaktivovať vetvu v hlavnom dokumente|v"
+msgstr "Dezaktivovať Vetvu v Hlavnom Dokumente|v"
 
 #: lib/ui/stdcontext.inc:505
 msgid "Invert Inset|I"
@@ -18424,47 +18426,47 @@ msgstr "Invertovať Vložku|I"
 
 #: lib/ui/stdcontext.inc:506
 msgid "Add Unknown Branch|w"
-msgstr "Pridať Neznámu Vetvu"
+msgstr "Pridať Neznámu Vetvu|P"
 
 #: lib/ui/stdcontext.inc:515
 msgid "Insert Reference at Cursor Position|I"
-msgstr "Vložiť Referenciu na Pozícii Kurzoru"
+msgstr "Vložiť Referenciu na Pozícii Kurzoru|V"
 
 #: lib/ui/stdcontext.inc:609
 msgid "All Indexes|A"
-msgstr "Všetky Registre"
+msgstr "Všetky Registre|V"
 
 #: lib/ui/stdcontext.inc:612
 msgid "Subindex|b"
-msgstr "Pod-register"
+msgstr "Pod-register|P"
 
 #: lib/ui/stdcontext.inc:640 lib/ui/stdmenus.inc:554
 msgid "Reject Change|R"
-msgstr "Odmietnuť Zmenu"
+msgstr "Odmietnuť Zmenu|d"
 
 #: lib/ui/stdcontext.inc:648
 msgid "Promote Section|P"
-msgstr "Zvýšiť úroveň Sekcie"
+msgstr "Zvýšiť Úroveň Sekcie|i"
 
 #: lib/ui/stdcontext.inc:649
 msgid "Demote Section|D"
-msgstr "Znížiť úroveň Sekcie"
+msgstr "Znížiť Úroveň Sekcie|n"
 
 #: lib/ui/stdcontext.inc:651
 msgid "Move Section Down|w"
-msgstr "Presunúť Sekciu Nadol"
+msgstr "Presunúť Sekciu Nadol|P"
 
 #: lib/ui/stdcontext.inc:653
 msgid "Select Section|S"
-msgstr "Vybrať Sekciu"
+msgstr "Vybrať Sekciu|V"
 
 #: lib/ui/stdcontext.inc:661
 msgid "Wrap by Preview|y"
-msgstr "Obtekať pri Náhľade"
+msgstr "Obtekať pri Náhľade|b"
 
 #: lib/ui/stdcontext.inc:677 lib/ui/stdmenus.inc:356
 msgid "Lock Toolbars|L"
-msgstr "Blokuj Lišty nástrojov"
+msgstr "Blokuj Lišty Nástrojov|B"
 
 #: lib/ui/stdcontext.inc:679 lib/ui/stdmenus.inc:358
 msgid "Small-sized Icons"
@@ -18492,7 +18494,7 @@ msgstr "Upraviť|U"
 
 #: lib/ui/stdmenus.inc:32
 msgid "View|V"
-msgstr "Zobraziť|Z"
+msgstr "Zobraziť|b"
 
 #: lib/ui/stdmenus.inc:33
 msgid "Insert|I"
@@ -18512,7 +18514,7 @@ msgstr "Nástroje|N"
 
 #: lib/ui/stdmenus.inc:37
 msgid "Help|H"
-msgstr "Pomocník"
+msgstr "Pomocník|P"
 
 #: lib/ui/stdmenus.inc:45
 msgid "New|N"
@@ -18552,11 +18554,11 @@ msgstr "Uložiť všetko|v"
 
 #: lib/ui/stdmenus.inc:55
 msgid "Revert to Saved|R"
-msgstr "Vrátiť na uložené"
+msgstr "Vrátiť na uložené|t"
 
 #: lib/ui/stdmenus.inc:56
 msgid "Version Control|V"
-msgstr "Správa Verzií"
+msgstr "Správa Verzií|S"
 
 #: lib/ui/stdmenus.inc:58
 msgid "Import|I"
@@ -18588,11 +18590,11 @@ msgstr "Registrovať…|R"
 
 #: lib/ui/stdmenus.inc:74
 msgid "Check In Changes...|I"
-msgstr "Uložiť Zmeny…"
+msgstr "Uložiť Zmeny…|U"
 
 #: lib/ui/stdmenus.inc:75
 msgid "Check Out for Edit|O"
-msgstr "Prevziať na Úpravu"
+msgstr "Prevziať na Úpravu|P"
 
 #: lib/ui/stdmenus.inc:76
 msgid "Copy|p"
@@ -18600,23 +18602,23 @@ msgstr "Kopírovať|K"
 
 #: lib/ui/stdmenus.inc:77
 msgid "Rename|R"
-msgstr "Premenovať|P"
+msgstr "Premenovať|e"
 
 #: lib/ui/stdmenus.inc:78
 msgid "Update Local Directory From Repository|d"
-msgstr "Aktualizovať Lokálny Adresár Z Repozitáru"
+msgstr "Aktualizovať Lokálny Adresár Z Repozitáru|A"
 
 #: lib/ui/stdmenus.inc:79
 msgid "Revert to Repository Version|v"
-msgstr "Vrátiť na Verziu Repozitára"
+msgstr "Vrátiť na Verziu Repozitára|V"
 
 #: lib/ui/stdmenus.inc:80
 msgid "Undo Last Check In|U"
-msgstr "Zrušiť Naposledy Uložené Zmeny"
+msgstr "Zrušiť Naposledy Uložené Zmeny|Z"
 
 #: lib/ui/stdmenus.inc:81
 msgid "Compare with Older Revision...|C"
-msgstr "Porovnať so Staršou Revíziou…"
+msgstr "Porovnať so Staršou Revíziou…|S"
 
 #: lib/ui/stdmenus.inc:82
 msgid "Show History...|H"
@@ -18624,15 +18626,15 @@ msgstr "Zobraziť históriu…|h"
 
 #: lib/ui/stdmenus.inc:83
 msgid "Use Locking Property|L"
-msgstr "Použiť blokovanie súborov"
+msgstr "Použiť Blokovanie Súborov|B"
 
 #: lib/ui/stdmenus.inc:92
 msgid "Export As...|s"
-msgstr "Exportovať Ako…"
+msgstr "Exportovať Ako…|A"
 
 #: lib/ui/stdmenus.inc:95
 msgid "More Formats & Options...|r"
-msgstr "Viac Formátov a Volieb…"
+msgstr "Viac Formátov a Volieb…|i"
 
 #: lib/ui/stdmenus.inc:103
 msgid "Undo|U"
@@ -18648,11 +18650,11 @@ msgstr "Vlepiť špeciálne"
 
 #: lib/ui/stdmenus.inc:112
 msgid "Select Whole Inset"
-msgstr "Vyberte Celú vložku"
+msgstr "Vyberte Celú Vložku"
 
 #: lib/ui/stdmenus.inc:113
 msgid "Select All"
-msgstr "Vybrať všetko"
+msgstr "Vybrať Všetko"
 
 #: lib/ui/stdmenus.inc:115
 msgid "Find & Replace (Quick)...|F"
@@ -18664,11 +18666,11 @@ msgstr "Nájsť a Nahradiť (Rozšírené)…"
 
 #: lib/ui/stdmenus.inc:121
 msgid "Text Style|S"
-msgstr "Štýl textu"
+msgstr "Štýl Textu|x"
 
 #: lib/ui/stdmenus.inc:126
 msgid "Table|T"
-msgstr "Tabuľka"
+msgstr "Tabuľka|T"
 
 #: lib/ui/stdmenus.inc:127 lib/ui/stdmenus.inc:614
 msgid "Math|M"
@@ -18676,15 +18678,15 @@ msgstr "Matematika|M"
 
 #: lib/ui/stdmenus.inc:128
 msgid "Rows & Columns|C"
-msgstr "Riadky & Stĺpce"
+msgstr "Riadky & Stĺpce|ĺ"
 
 #: lib/ui/stdmenus.inc:135
 msgid "Increase List Depth|I"
-msgstr "Zväčšiť hĺbku listiny|v"
+msgstr "Zväčšiť Hĺbku Listiny|v"
 
 #: lib/ui/stdmenus.inc:136
 msgid "Decrease List Depth|D"
-msgstr "Zmenšiť hĺbku listiny|m"
+msgstr "Zmenšiť Hĺbku Listiny|Z"
 
 #: lib/ui/stdmenus.inc:138
 msgid "Dissolve Inset"
@@ -18696,15 +18698,15 @@ msgstr "Nastavenia TeX Kódu…|K"
 
 #: lib/ui/stdmenus.inc:141
 msgid "Float Settings...|a"
-msgstr "Nastavenia Plávajúceho Objektu…|P"
+msgstr "Nastavenia Plávajúceho Objektu…|j"
 
 #: lib/ui/stdmenus.inc:142
 msgid "Text Wrap Settings...|W"
-msgstr "Nastavenia Obtekania Textu…|O"
+msgstr "Nastavenia Obtekania Textu…|b"
 
 #: lib/ui/stdmenus.inc:143
 msgid "Note Settings...|N"
-msgstr "Nastavenia Poznámky…|N"
+msgstr "Nastavenia Poznámky…|y"
 
 #: lib/ui/stdmenus.inc:144
 msgid "Phantom Settings...|h"
@@ -18720,7 +18722,7 @@ msgstr "Nastavenia Rámiku…|R"
 
 #: lib/ui/stdmenus.inc:147
 msgid "Index Entry Settings...|y"
-msgstr "Nastavenia Registrových Hesiel…|H"
+msgstr "Nastavenia Registrových Hesiel…|c"
 
 #: lib/ui/stdmenus.inc:148
 msgid "Index Settings...|x"
@@ -18732,11 +18734,11 @@ msgstr "Nastavenia pre Info…|I"
 
 #: lib/ui/stdmenus.inc:150
 msgid "Listings Settings...|g"
-msgstr "Nastavenia Výpisu…|s"
+msgstr "Nastavenia Výpisu…|a"
 
 #: lib/ui/stdmenus.inc:154
 msgid "Table Settings...|a"
-msgstr "Nastavenia Tabuľky…|T"
+msgstr "Nastavenia Tabuľky…|u"
 
 #: lib/ui/stdmenus.inc:158
 msgid "Paste from HTML|H"
@@ -18768,19 +18770,19 @@ msgstr "Vlepiť ako EMF"
 
 #: lib/ui/stdmenus.inc:166
 msgid "Plain Text|T"
-msgstr "Prostý Text"
+msgstr "Prostý Text|T"
 
 #: lib/ui/stdmenus.inc:167
 msgid "Plain Text, Join Lines|J"
-msgstr "Prostý text, riadky spojiť"
+msgstr "Prostý Text, Riadky Spojiť|S"
 
 #: lib/ui/stdmenus.inc:169
 msgid "Selection|S"
-msgstr "Výber"
+msgstr "Výber|V"
 
 #: lib/ui/stdmenus.inc:170
 msgid "Selection, Join Lines|i"
-msgstr "Výber, spojiť riadky"
+msgstr "Výber, Spojiť Riadky|b"
 
 #: lib/ui/stdmenus.inc:183
 msgid "Dissolve Text Style"
@@ -18788,19 +18790,19 @@ msgstr "Rozpustiť štýl znakov do textu"
 
 #: lib/ui/stdmenus.inc:187
 msgid "Customized...|C"
-msgstr "Vlastné…"
+msgstr "Vlastné…|l"
 
 #: lib/ui/stdmenus.inc:189
 msgid "Capitalize|a"
-msgstr "Prvé veľké"
+msgstr "Prvé Veľké|P"
 
 #: lib/ui/stdmenus.inc:190
 msgid "Uppercase|U"
-msgstr "Veľké písmená"
+msgstr "Veľké Písmená|V"
 
 #: lib/ui/stdmenus.inc:191
 msgid "Lowercase|L"
-msgstr "Malé písmená"
+msgstr "Malé Písmená|M"
 
 #: lib/ui/stdmenus.inc:197
 msgid "Formal Style|F"
@@ -18808,59 +18810,59 @@ msgstr "Formálny Štýl|F"
 
 #: lib/ui/stdmenus.inc:199
 msgid "Multicolumn|M"
-msgstr "Viac-stĺpcové"
+msgstr "Viac-stĺpcové|i"
 
 #: lib/ui/stdmenus.inc:200
 msgid "Multirow|u"
-msgstr "Viacriadkové"
+msgstr "Viac-riadkové|k"
 
 #: lib/ui/stdmenus.inc:202
 msgid "Top Line|T"
-msgstr "Horný riadok"
+msgstr "Horný Riadok|o"
 
 #: lib/ui/stdmenus.inc:203
 msgid "Bottom Line|B"
-msgstr "Spodný Riadok"
+msgstr "Spodný Riadok|p"
 
 #: lib/ui/stdmenus.inc:204
 msgid "Left Line|L"
-msgstr "Ľavý riadok"
+msgstr "Ľavý Riadok|a"
 
 #: lib/ui/stdmenus.inc:205
 msgid "Right Line|R"
-msgstr "Pravý riadok"
+msgstr "Pravý Riadok|R"
 
 #: lib/ui/stdmenus.inc:207
 msgid "Top|p"
-msgstr "Hore"
+msgstr "Hore|H"
 
 #: lib/ui/stdmenus.inc:208
 msgid "Middle|i"
-msgstr "Stred"
+msgstr "Stred|S"
 
 #: lib/ui/stdmenus.inc:209
 msgid "Bottom|o"
-msgstr "Dole"
+msgstr "Dole|D"
 
 #: lib/ui/stdmenus.inc:218
 msgid "Middle|M"
-msgstr "Stred"
+msgstr "Stred|S"
 
 #: lib/ui/stdmenus.inc:221
 msgid "Add Row|A"
-msgstr "Pridať riadok"
+msgstr "Pridať Riadok|P"
 
 #: lib/ui/stdmenus.inc:228
 msgid "Add Column|u"
-msgstr "Pridať stĺpec"
+msgstr "Pridať Stĺpec|e"
 
 #: lib/ui/stdmenus.inc:230
 msgid "Copy Column|p"
-msgstr "Kopírovať stĺpec"
+msgstr "Kopírovať Stĺpec|o"
 
 #: lib/ui/stdmenus.inc:239
 msgid "Change Limits Type|L"
-msgstr "Zmeniť štýl indexov"
+msgstr "Zmeniť Štýl Indexov|I"
 
 #: lib/ui/stdmenus.inc:240
 msgid "Macro Definition"
@@ -18868,27 +18870,27 @@ msgstr "Definícia makra"
 
 #: lib/ui/stdmenus.inc:242
 msgid "Change Formula Type|F"
-msgstr "Zmeniť typ vzorcov"
+msgstr "Zmeniť Typ Vzorcov|V"
 
 #: lib/ui/stdmenus.inc:244
 msgid "Text Style|T"
-msgstr "Štýl textu|t"
+msgstr "Štýl Textu|T"
 
 #: lib/ui/stdmenus.inc:246
 msgid "Use Computer Algebra System|S"
-msgstr "Použiť Systém Computer Algebra"
+msgstr "Použiť Systém Computer Algebra|S"
 
 #: lib/ui/stdmenus.inc:250
 msgid "Add Line Above|A"
-msgstr "Pridať Líniu Nad"
+msgstr "Pridať Líniu Nad|N"
 
 #: lib/ui/stdmenus.inc:252
 msgid "Delete Line Above|D"
-msgstr "Zmazať Líniu Nad"
+msgstr "Zmazať Líniu Nad|Z"
 
 #: lib/ui/stdmenus.inc:253
 msgid "Delete Line Below|e"
-msgstr "Zmazať Líniu Pod"
+msgstr "Zmazať Líniu Pod|m"
 
 #: lib/ui/stdmenus.inc:265
 msgid "Transform First Non-Optional to Optional Argument"
@@ -18900,15 +18902,15 @@ msgstr "Zmeniť Posledný Voliteľný Argument na Povinný"
 
 #: lib/ui/stdmenus.inc:276
 msgid "Default|t"
-msgstr "Štandard"
+msgstr "Štandard|t"
 
 #: lib/ui/stdmenus.inc:277
 msgid "Display|D"
-msgstr "Exponované"
+msgstr "Exponované|E"
 
 #: lib/ui/stdmenus.inc:278
 msgid "Inline|I"
-msgstr "V riadku (inline)"
+msgstr "V Riadku (inline)|R"
 
 #: lib/ui/stdmenus.inc:282
 msgid "Math Normal Font|N"
@@ -18916,31 +18918,31 @@ msgstr "Mat. Normálny Font|N"
 
 #: lib/ui/stdmenus.inc:284
 msgid "Math Calligraphic Family|C"
-msgstr "Mat. kaligrafická rodina písma|k"
+msgstr "Mat. Kaligrafická Rodina Písma|K"
 
 #: lib/ui/stdmenus.inc:285
 msgid "Math Formal Script Family|o"
-msgstr "Mat. rodina písma Formal"
+msgstr "Mat. Rodina Písma Formal|o"
 
 #: lib/ui/stdmenus.inc:286
 msgid "Math Fraktur Family|F"
-msgstr "Mat. rodina písma Fraktur|F"
+msgstr "Mat. Rodina Písma Fraktur|F"
 
 #: lib/ui/stdmenus.inc:287
 msgid "Math Roman Family|R"
-msgstr "Mat. rodina písma antikva (Roman)|R"
+msgstr "Mat. Rodina Písma Antikva (Roman)|R"
 
 #: lib/ui/stdmenus.inc:288
 msgid "Math Sans Serif Family|S"
-msgstr "Mat. rodina bezserifového písma (Sans Serif)|b"
+msgstr "Mat. Rodina Bezserifového Písma (Sans Serif)|S"
 
 #: lib/ui/stdmenus.inc:290
 msgid "Math Bold Series|B"
-msgstr "Mat. Tučný duktus|T"
+msgstr "Mat. Tučný Duktus|D"
 
 #: lib/ui/stdmenus.inc:292
 msgid "Text Normal Font|T"
-msgstr "Text. Normálne Písmo"
+msgstr "Text. Normálne Písmo|T"
 
 #: lib/ui/stdmenus.inc:294
 msgid "Text Roman Family"
@@ -19008,51 +19010,51 @@ msgstr "Maple, Evalf (plávajúca čiarka)|v"
 
 #: lib/ui/stdmenus.inc:334
 msgid "Open All Insets|O"
-msgstr "Otvoriť všetky vložky"
+msgstr "Otvoriť Všetky Vložky|O"
 
 #: lib/ui/stdmenus.inc:335
 msgid "Close All Insets|C"
-msgstr "Zavrieť všetky vložky"
+msgstr "Zavrieť Všetky Vložky|Z"
 
 #: lib/ui/stdmenus.inc:337
 msgid "Unfold Math Macro|n"
-msgstr "Rozbaliť Matematické Makro"
+msgstr "Rozbaliť Matematické Makro|M"
 
 #: lib/ui/stdmenus.inc:338
 msgid "Fold Math Macro|d"
-msgstr "Zabaliť Matematické Makro"
+msgstr "Zabaliť Matematické Makro|r"
 
 #: lib/ui/stdmenus.inc:340
 msgid "Outline Pane|u"
-msgstr "Osnova"
+msgstr "Osnova|s"
 
 #: lib/ui/stdmenus.inc:341
 msgid "Code Preview Pane|P"
-msgstr "Náhľady Kódu"
+msgstr "Náhľady Kódu|K"
 
 #: lib/ui/stdmenus.inc:342
 msgid "Messages Pane|g"
-msgstr "Ladiace Výpisy"
+msgstr "Ladiace Výpisy|L"
 
 #: lib/ui/stdmenus.inc:343
 msgid "Toolbars|b"
-msgstr "Lišty nástrojov"
+msgstr "Lišty Nástrojov|j"
 
 #: lib/ui/stdmenus.inc:345
 msgid "Split View Into Left and Right Half|i"
-msgstr "Pohľad rozdeliť na ľavú a pravú polovičku"
+msgstr "Horizontálne Rozdelenie|H"
 
 #: lib/ui/stdmenus.inc:346
 msgid "Split View Into Upper and Lower Half|e"
-msgstr "Pohľad Rozdeliť na Vrchnú a Spodnú Polovičku"
+msgstr "Vertikálne Rozdelenie|V"
 
 #: lib/ui/stdmenus.inc:347
 msgid "Close Current View|w"
-msgstr "Zavri aktuálny náhľad"
+msgstr "Zavri Aktuálny Náhľad|N"
 
 #: lib/ui/stdmenus.inc:348
 msgid "Fullscreen|l"
-msgstr "Celoobrazovkový mód"
+msgstr "Celoobrazovkový mód|C"
 
 #: lib/ui/stdmenus.inc:371
 msgid "Math|h"
@@ -19092,7 +19094,7 @@ msgstr "Súbor|S"
 
 #: lib/ui/stdmenus.inc:380
 msgid "Box[[Menu]]|x"
-msgstr "Rámik"
+msgstr "Rámik|k"
 
 #: lib/ui/stdmenus.inc:383
 msgid "Citation...|C"
@@ -19124,11 +19126,11 @@ msgstr "URL|U"
 
 #: lib/ui/stdmenus.inc:393
 msgid "Hyperlink...|k"
-msgstr "Hyperlinka…|k"
+msgstr "Hyperlinka…|H"
 
 #: lib/ui/stdmenus.inc:394
 msgid "Footnote|F"
-msgstr "Poznámka pod čiarou"
+msgstr "Poznámka pod čiarou|d"
 
 #: lib/ui/stdmenus.inc:395
 msgid "Marginal Note|M"
@@ -19144,7 +19146,7 @@ msgstr "Výpis Zdrojového Kódu"
 
 #: lib/ui/stdmenus.inc:400
 msgid "Preview|w"
-msgstr "Náhľad"
+msgstr "Náhľad|N"
 
 #: lib/ui/stdmenus.inc:404
 msgid "Symbols...|b"
@@ -19152,19 +19154,19 @@ msgstr "Symboly…|S"
 
 #: lib/ui/stdmenus.inc:405
 msgid "Ellipsis|i"
-msgstr "Vypustenie"
+msgstr "Vypustenie|V"
 
 #: lib/ui/stdmenus.inc:406
 msgid "End of Sentence|E"
-msgstr "Koniec vety|K"
+msgstr "Koniec Vety|K"
 
 #: lib/ui/stdmenus.inc:407
 msgid "Plain Quotation Mark|Q"
-msgstr "Prosté Úvodzovky"
+msgstr "Prosté Úvodzovky|P"
 
 #: lib/ui/stdmenus.inc:408
 msgid "Inner Quotation Mark|n"
-msgstr "Vnútorná Úvodzovka"
+msgstr "Vnútorná Úvodzovka|n"
 
 #: lib/ui/stdmenus.inc:409
 msgid "Protected Hyphen|y"
@@ -19208,19 +19210,19 @@ msgstr "LaTeX2e Logo|e"
 
 #: lib/ui/stdmenus.inc:425
 msgid "Superscript|S"
-msgstr "Horný index"
+msgstr "Horný Index|H"
 
 #: lib/ui/stdmenus.inc:426
 msgid "Subscript|u"
-msgstr "Dolný index"
+msgstr "Dolný Index|D"
 
 #: lib/ui/stdmenus.inc:428
 msgid "Protected Space|P"
-msgstr "Chránená Medzera"
+msgstr "Chránená Medzera|M"
 
 #: lib/ui/stdmenus.inc:431
 msgid "Horizontal Space...|o"
-msgstr "Horizontálna medzera…|o"
+msgstr "Horizontálna Medzera…|o"
 
 #: lib/ui/stdmenus.inc:432
 msgid "Horizontal Line...|L"
@@ -19228,19 +19230,19 @@ msgstr "Horizontálna Línia…|L"
 
 #: lib/ui/stdmenus.inc:433
 msgid "Vertical Space...|V"
-msgstr "Vertikálna medzera…|V"
+msgstr "Vertikálna Medzera…|V"
 
 #: lib/ui/stdmenus.inc:434
 msgid "Phantom|m"
-msgstr "Fantóm"
+msgstr "Fantóm|F"
 
 #: lib/ui/stdmenus.inc:436
 msgid "Hyphenation Point|H"
-msgstr "Bod Rozdeľovania"
+msgstr "Bod Rozdeľovania|B"
 
 #: lib/ui/stdmenus.inc:437
 msgid "Ligature Break|k"
-msgstr "Zlomiť zliatku (ligatúru)"
+msgstr "Zlomiť Zliatku (ligatúru)|i"
 
 #: lib/ui/stdmenus.inc:438
 msgid "Optional Line Break|B"
@@ -19248,35 +19250,35 @@ msgstr "Voliteľný Zlom Riadku|Z"
 
 #: lib/ui/stdmenus.inc:451
 msgid "Display Formula|D"
-msgstr "Exponovaný vzorec"
+msgstr "Exponovaný Vzorec|E"
 
 #: lib/ui/stdmenus.inc:452
 msgid "Numbered Formula|N"
-msgstr "Číslovaný vzorec"
+msgstr "Číslovaný Vzorec|s"
 
 #: lib/ui/stdmenus.inc:476
 msgid "Figure Wrap Float|F"
-msgstr "Plávajúci obrázok (obtekanie)"
+msgstr "Plávajúci Obrázok (obtekanie)|O"
 
 #: lib/ui/stdmenus.inc:477
 msgid "Table Wrap Float|T"
-msgstr "Plávajúca tabuľka (obtekanie)"
+msgstr "Plávajúca Tabuľka (obtekanie)|T"
 
 #: lib/ui/stdmenus.inc:481
 msgid "Table of Contents|C"
-msgstr "Obsah"
+msgstr "Obsah|O"
 
 #: lib/ui/stdmenus.inc:484
 msgid "List of Listings|L"
-msgstr "Zoznam Výpisov"
+msgstr "Zoznam Výpisov|Z"
 
 #: lib/ui/stdmenus.inc:485
 msgid "Nomenclature|N"
-msgstr "Nomenklatúra"
+msgstr "Nomenklatúra|N"
 
 #: lib/ui/stdmenus.inc:486
 msgid "Bib(la)TeX Bibliography...|B"
-msgstr "Bib(la)TeX bibliografia…|B"
+msgstr "Bib(la)TeX Bibliografia…|B"
 
 #: lib/ui/stdmenus.inc:490
 msgid "LyX Document...|X"
@@ -19284,15 +19286,15 @@ msgstr "LyX Dokument…|X"
 
 #: lib/ui/stdmenus.inc:491
 msgid "Plain Text...|T"
-msgstr "Ako prostý text…|t"
+msgstr "Ako Prostý Text…|T"
 
 #: lib/ui/stdmenus.inc:492
 msgid "Plain Text, Join Lines...|J"
-msgstr "Prostý text, riadky spojiť…|s"
+msgstr "Prostý Text, Riadky Spojiť…|S"
 
 #: lib/ui/stdmenus.inc:494
 msgid "External Material...|M"
-msgstr "Externý materiál…|m"
+msgstr "Externý Materiál…|M"
 
 #: lib/ui/stdmenus.inc:495
 msgid "Child Document...|d"
@@ -19300,7 +19302,7 @@ msgstr "Dokument Potomka…|P"
 
 #: lib/ui/stdmenus.inc:510
 msgid "Comment|C"
-msgstr "Komentár"
+msgstr "Komentár|K"
 
 #: lib/ui/stdmenus.inc:517
 msgid "Insert New Branch...|I"
@@ -19312,7 +19314,7 @@ msgstr "Sledovať Zmeny|S"
 
 #: lib/ui/stdmenus.inc:536
 msgid "Build Program|B"
-msgstr "Vytvoriť program"
+msgstr "Vytvoriť Program|V"
 
 #: lib/ui/stdmenus.inc:537
 msgid "LaTeX Log|L"
@@ -19324,11 +19326,11 @@ msgstr "Začni Prílohy Tu|P"
 
 #: lib/ui/stdmenus.inc:542
 msgid "View Master Document|M"
-msgstr "Zobraziť Hlavný Dokument"
+msgstr "Zobraziť Hlavný Dokument|H"
 
 #: lib/ui/stdmenus.inc:543
 msgid "Update Master Document|a"
-msgstr "Aktualizovať Hlavný Dokument"
+msgstr "Aktualizovať Hlavný Dokument|A"
 
 #: lib/ui/stdmenus.inc:545
 msgid "Compressed|o"
@@ -19384,7 +19386,7 @@ msgstr "Prejsť na Heslo|j"
 
 #: lib/ui/stdmenus.inc:575
 msgid "Save Bookmark 1|S"
-msgstr "Uložiť záložku 1"
+msgstr "Uložiť Záložku 1|U"
 
 #: lib/ui/stdmenus.inc:576
 msgid "Save Bookmark 2"
@@ -19404,11 +19406,11 @@ msgstr "Uložiť záložku 5"
 
 #: lib/ui/stdmenus.inc:580
 msgid "Clear Bookmarks|C"
-msgstr "Zrušiť záložky"
+msgstr "Zrušiť Záložky|Z"
 
 #: lib/ui/stdmenus.inc:582
 msgid "Navigate Back|B"
-msgstr "Choď späť"
+msgstr "Choď Späť|S"
 
 #: lib/ui/stdmenus.inc:591
 msgid "Spellchecker...|S"
@@ -19444,7 +19446,7 @@ msgstr "Preferencie…|P"
 
 #: lib/ui/stdmenus.inc:609
 msgid "Introduction|I"
-msgstr "Úvod|Ú"
+msgstr "Úvod|v"
 
 #: lib/ui/stdmenus.inc:610
 msgid "Tutorial|T"
@@ -19452,7 +19454,7 @@ msgstr "Príručka|P"
 
 #: lib/ui/stdmenus.inc:611
 msgid "User's Guide|U"
-msgstr "Užívateľská príručka|U"
+msgstr "Užívateľská Príručka|U"
 
 #: lib/ui/stdmenus.inc:612
 msgid "Additional Features|F"
@@ -19464,7 +19466,7 @@ msgstr "Vložené Objekty|O"
 
 #: lib/ui/stdmenus.inc:615
 msgid "Customization|C"
-msgstr "Prispôsobenie|ô"
+msgstr "Prispôsobenie|r"
 
 #: lib/ui/stdmenus.inc:616
 msgid "Shortcuts|S"
@@ -19472,7 +19474,7 @@ msgstr "Skratky|S"
 
 #: lib/ui/stdmenus.inc:617
 msgid "LyX Functions|y"
-msgstr "LyX Funkcie|y"
+msgstr "LyX Funkcie|F"
 
 #: lib/ui/stdmenus.inc:618
 msgid "LaTeX Configuration|L"
@@ -19480,7 +19482,7 @@ msgstr "Konfigurácia LaTeX-u|K"
 
 #: lib/ui/stdmenus.inc:619
 msgid "Specific Manuals|p"
-msgstr "Špecifické manuály|Š"
+msgstr "Špecifické Manuály|a"
 
 #: lib/ui/stdmenus.inc:621
 msgid "About LyX|X"
@@ -19488,7 +19490,7 @@ msgstr "O programe LyX|X"
 
 #: lib/ui/stdmenus.inc:625
 msgid "Beamer Presentations|B"
-msgstr "Beamer Prezentácie"
+msgstr "Beamer Prezentácie|B"
 
 #: lib/ui/stdmenus.inc:626
 msgid "Braille|a"
@@ -19496,7 +19498,7 @@ msgstr "Braille|a"
 
 #: lib/ui/stdmenus.inc:627
 msgid "Colored boxes|r"
-msgstr "Farebné rámiky"
+msgstr "Farebné rámiky|e"
 
 #: lib/ui/stdmenus.inc:628
 msgid "Feynman-diagram|F"
@@ -19520,7 +19522,7 @@ msgstr "Viac-Jazykové popisy|J"
 
 #: lib/ui/stdmenus.inc:633
 msgid "Paralist|t"
-msgstr "Paralist"
+msgstr "Paralist|t"
 
 #: lib/ui/stdmenus.inc:634
 msgid "PDF comments|D"
@@ -19844,7 +19846,7 @@ msgstr "Zvoliť viac-stĺpcovú"
 
 #: lib/ui/stdtoolbars.inc:173
 msgid "Set multi-row"
-msgstr "Zvoliť viacriadkové"
+msgstr "Zvoliť viac-riadkové"
 
 #: lib/ui/stdtoolbars.inc:176
 msgid "Math"
@@ -19940,15 +19942,15 @@ msgstr "Vložiť voliteľný argument"
 
 #: lib/ui/stdtoolbars.inc:213
 msgid "Remove last argument spitting out to the right"
-msgstr "Odstráň posledný argument sprava"
+msgstr "Odstráň posledný argument zprava"
 
 #: lib/ui/stdtoolbars.inc:214
 msgid "Append argument eating from the right"
-msgstr "Pridať argument sprava"
+msgstr "Pridať argument zprava"
 
 #: lib/ui/stdtoolbars.inc:215
 msgid "Append optional argument eating from the right"
-msgstr "Pridať voliteľný argument sprava"
+msgstr "Pridať voliteľný argument zprava"
 
 #: lib/ui/stdtoolbars.inc:218
 msgid "Phonetic Symbols"
@@ -24271,7 +24273,7 @@ msgid ""
 "both for gnumeric and excel files.\n"
 msgstr ""
 "Tabuľka vytvorená s gnumeric, libreoffice, openoffice alebo excel.\n"
-"Import prevádza do viacstranných tabuliek, čiže každá dĺžka je v poriadku.\n"
+"Import prevádza do viac-stranných tabuliek, čiže každá dĺžka je v poriadku.\n"
 "Prehnaná šírka by mohla mať problém.\n"
 "Pre konverziu gnumeric alebo excel súborov\n"
 "je potrebný program gnumeric.\n"
@@ -29956,7 +29958,7 @@ msgstr "Tučná medzera"
 #: src/frontends/qt4/GuiHSpace.cpp:49 src/frontends/qt4/GuiHSpace.cpp:60
 #: src/insets/InsetSpace.cpp:99
 msgid "Negative Thin Space"
-msgstr "Záporná úzka medzera"
+msgstr "Záporná Úzka Medzera"
 
 #: src/frontends/qt4/GuiHSpace.cpp:50 src/frontends/qt4/GuiHSpace.cpp:61
 #: src/insets/InsetSpace.cpp:102
@@ -30518,6 +30520,10 @@ msgstr "LyX klávesové mapy (*.kmap)"
 #: src/frontends/qt4/GuiPrintNomencl.cpp:49
 msgid "Longest label width"
 msgstr "Veľkosť najdlhšej značky"
+
+#: src/frontends/qt4/GuiPrintNomencl.h:40
+msgid "Nomenclature List Settings"
+msgstr "Nastavenia Listiny Nomenklatúry"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:37
 msgid "Index Settings"
@@ -31462,7 +31468,7 @@ msgstr "Spôsob hlásenia pre vývojárov je vypnutý."
 
 #: src/frontends/qt4/GuiView.cpp:3939
 msgid "Toolbars unlocked."
-msgstr "Lišty nástrojov neblokované."
+msgstr "Lišty nástrojov nezablokované."
 
 #: src/frontends/qt4/GuiView.cpp:3941
 msgid "Toolbars locked."
@@ -31807,7 +31813,7 @@ msgstr "Rámik"
 
 #: src/insets/Inset.cpp:115
 msgid "Horizontal Space"
-msgstr "Horizontálna medzera"
+msgstr "Horizontálna Medzera"
 
 #: src/insets/Inset.cpp:164
 msgid "Horizontal Math Space"
@@ -32837,7 +32843,7 @@ msgstr "Viac-stĺpcové v aktuálnom alebo cieľovom stĺpci."
 
 #: src/insets/InsetTabular.cpp:4620
 msgid "Multi-row in current or destination row."
-msgstr "Viacriadkové v aktuálnom alebo cieľovom riadku."
+msgstr "Viac-riadkové v aktuálnom alebo cieľovom riadku."
 
 #: src/insets/InsetTabular.cpp:5060
 msgid "Selection size should match clipboard content."
@@ -33070,7 +33076,7 @@ msgstr "Len jeden stĺpec"
 
 #: src/mathed/InsetMathGrid.cpp:1748
 msgid "No hline to delete"
-msgstr "žiadna horizontálna línia na zmazanie"
+msgstr "Žiadna horizontálna línia na zmazanie"
 
 #: src/mathed/InsetMathGrid.cpp:1757
 msgid "No vline to delete"
@@ -34331,7 +34337,7 @@ msgstr "Neznámy používateľ"
 #~ msgstr "Via&cstranná tabuľka"
 
 #~ msgid "Breakable Table|g"
-#~ msgstr "Viacstranná Tabuľka|V"
+#~ msgstr "Viac-stranná Tabuľka|V"
 
 #~ msgid "Longtable|g"
 #~ msgstr "Dlhá tabuľka|D"
@@ -34773,11 +34779,11 @@ msgstr "Neznámy používateľ"
 #~ msgid ""
 #~ "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 #~ msgstr ""
-#~ "Vyberte pre zapnutie podpory písania sprava doľava (napr. pre Hebrejčinu, "
+#~ "Vyberte pre zapnutie podpory písania zprava doľava (napr. pre Hebrejčinu, "
 #~ "Arabčinu)."
 
 #~ msgid "Enable &RTL support"
-#~ msgstr "Z&apnúť podporu písania sprava-doľava"
+#~ msgstr "Z&apnúť podporu písania zprava-doľava"
 
 #~ msgid "Disable any kerning and ligatures for text drawing on screen."
 #~ msgstr ""
@@ -35598,7 +35604,7 @@ msgstr "Neznámy používateľ"
 #~ msgstr "Falign prostredie"
 
 #~ msgid "Multline Environment"
-#~ msgstr "Viacriadkové prostredie"
+#~ msgstr "Viac-riadkové prostredie"
 
 #~ msgid "Special Character|S"
 #~ msgstr "Špeciálny znak|z"
@@ -37443,7 +37449,7 @@ msgstr "Neznámy používateľ"
 #~ msgstr "Lupa pomocou rolovacieho tlačítka"
 
 #~ msgid "Right-to-left language support"
-#~ msgstr "Podpora písania sprava-doľava"
+#~ msgstr "Podpora písania zprava-doľava"
 
 #~ msgid "Context help"
 #~ msgstr "Kontextovo závislá pomoc"
@@ -37553,13 +37559,13 @@ msgstr "Neznámy používateľ"
 #~ msgstr "Viac-&stĺpcové"
 
 #~ msgid "&Use long table"
-#~ msgstr "Použiť viacstrannú tabuľku"
+#~ msgstr "Použiť viac-strannú tabuľku"
 
 #~ msgid "Horizontal alignment of the longtable"
-#~ msgstr "Horizontálne zarovnanie viacstrannej tabuľky"
+#~ msgstr "Horizontálne zarovnanie viac-strannej tabuľky"
 
 #~ msgid "Longtable alignment"
-#~ msgstr "Zarovnanie viacstrannej tabuľky"
+#~ msgstr "Zarovnanie viac-strannej tabuľky"
 
 #~ msgid ""
 #~ "A spreadsheet made with Gnumeric, LibreOffice, OpenOffice or Excel.\n"
@@ -37569,7 +37575,7 @@ msgstr "Neznámy používateľ"
 #~ "both for gnumeric and excel files.\n"
 #~ msgstr ""
 #~ "Tabuľka vytvorená s gnumeric, libreoffice, openoffice alebo excel.\n"
-#~ "Import prevádza do viacstranných tabuliek, čiže každá dĺžka je v "
+#~ "Import prevádza do viac-stranných tabuliek, čiže každá dĺžka je v "
 #~ "poriadku.\n"
 #~ "Prehnaná šírka by mohla mať problém.\n"
 #~ "Pre konverziu gnumeric alebo excel súborov\n"
