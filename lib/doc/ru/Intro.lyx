@@ -20,10 +20,10 @@
 \pagenumbering{roman}
 \let\myTOC\tableofcontents
 \renewcommand\tableofcontents{%
-\pdfbookmark[1]{\contentsname}{}
-\myTOC
-\cleardoublepage
-\pagenumbering{arabic} }
+  \pdfbookmark[1]{\contentsname}{}
+  \myTOC
+  \cleardoublepage
+  \pagenumbering{arabic} }
 \end_preamble
 \use_default_options false
 \maintain_unincluded_children false
@@ -97,7 +97,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style swiss
+\quotes_style russian
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -242,19 +242,17 @@ status collapsed
  Вот некоторые примеры использования \SpecialChar LyX
 : записки, письма, диссертации и дипломные
  работы, конспекты лекций, заметки для семинара, протоколы собраний, документаци
-я к программам, книги (по PostgreSQL, удалённому обнаружению и криптографии;
- научная фантастика, поэзия и даже одна или две детские книжки), статьи
- в реферируемые научные журналы, сценарии для спектаклей и фильмов, коммерческие
- предложения\SpecialChar ldots
+я к программам, книги, статьи в реферируемые научные журналы, сценарии для
+ спектаклей и фильмов, коммерческие предложения, презентации\SpecialChar ldots
  и многое другое.
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LyX
- — программа, обеспечивающая современный подход к написанию документов,
- используя парадигму стилевой разметки — подход, который принципиально отличаетс
-я от устаревшей традиции, сложившейся во времена повсеместного использования
- пишущих машинок.
+ — программа, обеспечивающая современный подход к написанию документов на
+ компьютере, используя парадигму стилевой разметки — подход, который принципиаль
+но отличается от устаревшей традиции, сложившейся во времена повсеместного
+ использования пишущих машинок.
  Он разработан для авторов, которым быстро и с минимальными усилиями требуется
  получить профессионально выглядящий документ, без необходимости становиться
  специалистом в области полиграфии.
@@ -344,14 +342,14 @@ What You See Is All You Get
  отличается от обычных текстовых процессоров.
  Вам не придётся беспокоиться, какой символ куда поставить.
  Вы указываете \SpecialChar LyX
-, 
+ 
 \emph on
 что вы делаете
 \emph default
 , а \SpecialChar LyX
  заботится об остальном, следуя своду правил, называемым 
 \emph on
-стилем.
+стилем
 \begin_inset Foot
 status collapsed
 
@@ -364,9 +362,10 @@ status collapsed
 
 \end_inset
 
-
+.
+ 
 \emph default
- Рассмотрим небольшой пример:
+Рассмотрим небольшой пример:
 \end_layout
 
 \begin_layout Standard
@@ -400,18 +399,10 @@ status collapsed
 \end_inset
 
 .
- 
-\begin_inset Quotes cld
-\end_inset
-
-
-\begin_inset Quotes crd
-\end_inset
-
  Конечно, если позже вы решите, что этот раздел должен располагаться в другом
  месте документа, или если вы вставите перед ним новый раздел, вам потребуется
- изменить номера этого и всех последующих разделов, а также изменить строчки
- в содержании документа.
+ изменить номера этого и всех последующих разделов, а также изменить соответству
+ющие строки в содержании документа.
  
 \end_layout
 
@@ -580,6 +571,17 @@ WYSIWYM
 \begin_layout Subsection
 Различия между \SpecialChar LyX
  и другими текстовыми процессорами
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+\SpecialChar LyX
+ и другие текстовые процессоры
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -634,8 +636,16 @@ Enter
 \end_layout
 
 \begin_layout Itemize
-Междустрочные интервалы (т.е.
- одиночный интервал, двойной интервал, и т.д.)
+Междустрочные интервалы (т.
+\begin_inset space \thinspace{}
+\end_inset
+
+е.
+ одиночный интервал, двойной интервал и т.
+\begin_inset space \thinspace{}
+\end_inset
+
+д.)
 \end_layout
 
 \begin_layout Itemize
@@ -647,7 +657,11 @@ Enter
 \end_layout
 
 \begin_layout Itemize
-Гарнитуры шрифта (жирный, наклонный, подчёркнутый, и т.п.)
+Гарнитуры шрифта (жирный, наклонный, подчёркнутый и т.
+\begin_inset space \thinspace{}
+\end_inset
+
+п.)
 \end_layout
 
 \begin_layout Standard
@@ -662,7 +676,7 @@ Enter
  Разбиение на страницы также производится автоматически.
  В общем случае пространство между строками, между словами и между абзацами
  непостоянно, и определяется \SpecialChar LyX
-.
+
 \begin_inset Foot
 status collapsed
 
@@ -683,7 +697,7 @@ status collapsed
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -720,13 +734,13 @@ status collapsed
  Однако, они поддерживают их только с недавних пор, в то время как \SpecialChar LyX
  построен
  поверх системы подготовки документов \SpecialChar LaTeX
-, которая существует уже более 15-ти
- лет, и 
+, которая существует с 1985 года и
+ 
 \emph on
 работает
 \emph default
 .
- Все ошибки давно уже устранены.
+ Все ошибки давно уже устранены
 \begin_inset Foot
 status collapsed
 
@@ -738,12 +752,23 @@ status collapsed
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsection
-Что же такое \SpecialChar LaTeX
+Что такое \SpecialChar LaTeX
 ? (И почему я должен быть осторожен?)
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+Что такое \SpecialChar LaTeX
+?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -784,11 +809,11 @@ status collapsed
 
 \end_inset
 
- — система подготовки документов разработанная Лэсли Лампортом (
+ — это система подготовки документов, разработанная Лесли Лэмпортом (
 \lang english
 Leslie Lamport
 \lang russian
-) в 1985 году.
+) в 1985 году
 \begin_inset Foot
 status collapsed
 
@@ -817,9 +842,10 @@ A Guide to \SpecialChar LaTeX2e
 
 \end_inset
 
- Она, в свою очередь, была построена на языке полиграфического оформления,
- называемом \SpecialChar TeX
-,
+.
+ Она, в свою очередь, была построена на базе языка полиграфического оформления,
+ называемого \SpecialChar TeX
+
 \begin_inset Foot
 status collapsed
 
@@ -829,20 +855,7 @@ status collapsed
 \begin_inset Quotes cld
 \end_inset
 
-т
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-'
-\end_layout
-
-\end_inset
-
-ех
+тех
 \begin_inset Quotes crd
 \end_inset
 
@@ -855,41 +868,25 @@ status collapsed
 
 \end_inset
 
- созданном Дональдом Кнутом (
+ и созданного Дональдом Кнутом (
 \lang english
 Donald Knuth
 \lang russian
 ) в 1984 году.
- 
-\begin_inset Quotes cld
-\end_inset
-
-\SpecialChar TeX
-
-\begin_inset Quotes crd
-\end_inset
-
- произносится как 
-\begin_inset Quotes cld
-\end_inset
-
-blech!
-\begin_inset Quotes crd
-\end_inset
-
- (пузырь), так его и воспринимают многие люди.
- Однако большинство людей не понимают, чем на самом деле является \SpecialChar TeX
-.
  \SpecialChar TeX
  берет последовательность команд полиграфического оформления, записанных
  в простом текстовом файле, и выполняет их.
  Это устроено немного сложнее, чем простая пишущая машинка, но и не особенно
  близко к настоящему печатному станку.
  Однако, многие приёмы печатного дела смоделированы Кнутом в виде компьютерных
- алгоритмов и объединены в \SpecialChar TeX
-, таким образом, это великолепное печатное явление.
+ алгоритмов и встроены в \SpecialChar TeX
+, отсюда и великолепное качество печати.
  Так или иначе, \SpecialChar TeX
- выдаёт так называемый 
+ выдаёт формат 
+\emph on
+pdf
+\emph default
+ или так называемый 
 \begin_inset Quotes cld
 \end_inset
 
@@ -905,40 +902,17 @@ device independent
 \begin_inset Quotes crd
 \end_inset
 
-) формат файла, если коротко — 
-\family typewriter
+) формат файла 
 \emph on
 dvi
-\family default
+\emph default
 .
- Вы можете передать
-\emph default
- 
-\family typewriter
+
 \emph on
-dvi
-\family default
-\emph default
  
-\emph on
-файл какой-либо программе понимающей
 \emph default
- 
-\family typewriter
-\emph on
-dvi
-\family default
-, или преобразовать
-\emph default
- 
-\family typewriter
-\emph on
-dvi
-\family default
-\emph default
- 
-\emph on
-в другие форматы, такие как PostScript, PDF, и т.п.
+Формат часто используется для предпросмотра, позже его можно преобразовать
+ в другие форматы, такие как PostScript.
  
 \end_layout
 
@@ -952,7 +926,7 @@ dvi
 status collapsed
 
 \begin_layout Plain Layout
-наименованная последовательность команд — 
+именованная последовательность команд — 
 \emph on
 прим
 \emph default
@@ -980,7 +954,7 @@ status collapsed
  с \SpecialChar TeX
 , который представляет из себя просто набор команд для полиграфического
  оформления, это делают люди, создающие новые пакеты макросов.
- И тут в нашей истории появляется Лэсли Лампорт.
+ И тут в нашей истории появляется Лесли Лэмпорт.
  Ему был нужен пакет макросов, который был бы ориентирован на пользователя,
  а не на методы оформления, набор команд, который единообразно оформляет
  разделы, таблицы и математические формулы последовательно и с наименьшими
@@ -1000,7 +974,7 @@ status collapsed
  \SpecialChar LaTeX
 .
  Для унификации этого беспорядка, команда \SpecialChar LaTeX
-'ников (разумеется, включая Лампорта)
+'ников (разумеется, включая Лэмпорта)
  в конце 80-х годов XX века начала работу над \SpecialChar LaTeX2e
 , текущей версией \SpecialChar LaTeX
 .
@@ -1046,47 +1020,42 @@ status collapsed
  Есть различные стилевые файлы: для печати этикеток или конвертов, изменения
  поведения отступов, добавления новых шрифтов, манипулирования графикой,
  создание необычных колонтитулов, специализированных библиографий, изменения
- расположения и появления сносок, таблиц и рисунков, настройки списков,
- и так далее, и так далее, и так далее.
+ расположения и появления сносок, таблиц и рисунков, настройки списков и
+ так далее.
 \end_layout
 
 \begin_layout Standard
 Вот обобщение:
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Description
 \SpecialChar TeX
-: Язык полиграфического оформления с возможностью использования макросов.
+: язык полиграфического оформления с возможностью использования макросов.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Description
 \SpecialChar LaTeX
-: Пакет макросов, основанный на \SpecialChar TeX
+: пакет макросов, основанный на \SpecialChar TeX
 \SpecialChar endofsentence
 
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-классы: Описания типов документов с использованием \SpecialChar LaTeX
+\begin_layout Description
+классы: описания типов документов, используемых \SpecialChar LaTeX
 \SpecialChar endofsentence
 
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
-стили: Изменяют поведение \SpecialChar LaTeX
- по умолчанию.
+\begin_layout Description
+стили: описания поведения по умолчанию для отдельных элементов \SpecialChar LaTeX
+.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Description
 \SpecialChar LyX
-: Визуальный текстовый процессор WYSIWYM, который использует для печати
+: визуальный текстовый процессор WYSIWYM, который использует для печати
  \SpecialChar LaTeX
- во всём его великолепии.
+.
 \end_layout
 
 \begin_layout Standard
@@ -1113,112 +1082,6 @@ status collapsed
  это всё должно выглядеть, компьютер потом сам поймёт.
 \end_layout
 
-\begin_layout Standard
-И ещё одна вещь.
- \SpecialChar LaTeX
- произносится сходно с \SpecialChar TeX
-.
- Он рифмуется с 
-\begin_inset Quotes cld
-\end_inset
-
-hey blech.
-\begin_inset Quotes crd
-\end_inset
-
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-или 
-\begin_inset Quotes cld
-\end_inset
-
-ha blech
-\begin_inset Quotes crd
-\end_inset
-
-, в зависимости от того, как вы произносите 
-\begin_inset Quotes cld
-\end_inset
-
-a
-\begin_inset Quotes crd
-\end_inset
-
-\SpecialChar ldots
-
-\end_layout
-
-\end_inset
-
- Лампорт говорит в своей книге, что также возможно 
-\begin_inset Quotes cld
-\end_inset
-
-
-\emph on
-lay
-\emph default
--tecks
-\begin_inset Quotes crd
-\end_inset
-
-.
- 
-\begin_inset Quotes cld
-\end_inset
-
-\SpecialChar LyX
-
-\begin_inset Quotes crd
-\end_inset
-
- же произносится как 
-\begin_inset Quotes cld
-\end_inset
-
-licks
-\begin_inset Quotes crd
-\end_inset
-
-.
- Или 
-\begin_inset Quotes cld
-\end_inset
-
-lucks
-\begin_inset Quotes crd
-\end_inset
-
-, или 
-\begin_inset Quotes cld
-\end_inset
-
-looks
-\begin_inset Quotes crd
-\end_inset
-
-, в зависимости от вашей страны\SpecialChar ldots
- из-за этого начинались многочисленные стычки
- и обсуждения в почтовых рассылках по \SpecialChar LyX
-, так что произносите его как вам
- удобнее.
- Просто не произносите его как 
-\begin_inset Quotes cld
-\end_inset
-
-word
-\begin_inset Quotes crd
-\end_inset
-
-.
- 
-\family typewriter
-:-)
-\end_layout
-
 \begin_layout Section
 Обзор документации
 \end_layout
@@ -1234,25 +1097,15 @@ word
 \end_layout
 
 \begin_layout Standard
-Не смотря на то, что \SpecialChar LyX
- уже прошёл отметку 
-\begin_inset Quotes cld
-\end_inset
-
-версия 1.0
-\begin_inset Quotes crd
-\end_inset
-
-, некоторые части документации могут быть неполными или устаревшими, хотя
- мы очень стараемся поддерживать её в актуальном состоянии.
+Надеемся, что развитие \SpecialChar LyX
+ никогда не прекратится, поэтому некоторые части
+ документации могут быть неполными или немного устаревшими, хотя мы стараемся
+ поддерживать её в актуальном состоянии.
  Как и весь \SpecialChar LyX
 , руководства к нему — результат работы группы добровольцев,
- у которых есть основная работа, семьи, мытьё посуды, уборка за котёнком,
+ у которых есть основная работа, семьи, мытьё посуды, уборка за котёнком
  и так далее.
- Мы делаем всё возможное для поддержания руководств в наилучшей форме, но
- не всегда можем успешно с этим справляться, так как разработчики добавляют
- новые функции в то время, как мы всё ещё документируем старые! (Если вы
- желаете помочь исправить эту ситуацию, прочтите раздел
+ Если вы желаете помочь, прочтите, пожалуйста, раздел
 \begin_inset space ~
 \end_inset
 
@@ -1263,7 +1116,7 @@ reference "sec:Contrib"
 
 \end_inset
 
- в конце этого документа.)
+ в конце этого документа.
 \end_layout
 
 \begin_layout Standard
@@ -1307,7 +1160,7 @@ literal "false"
  Во-первых, заголовок в начале документа не расположен на отдельной странице,
  как в печатной версии.
  Не видны ни сноски, ни Содержание.
- Для открытия сноски, которая выглядит вот так,
+ Для открытия сноски, которая выглядит вот так: 
 \begin_inset Foot
 status collapsed
 
@@ -1334,15 +1187,15 @@ status collapsed
  Для просмотра Содержания либо нажмите на серый прямоугольник, либо войдите
  в меню 
 \family sans
-Перейти
+Навигация
 \family default
-, где содержимое отображается автоматически\SpecialChar endofsentence
- (Попробуйте!)
+, где содержание отображается автоматически\SpecialChar endofsentence
+
 \end_layout
 
 \begin_layout Standard
 В печатных руководствах все перекрёстные ссылки появляются с соответствующими
- номерами глав, разделов, подразделов, и так далее.
+ номерами глав, разделов, подразделов и так далее.
  Однако в электронной версии все перекрёстные ссылки выглядят как серые
  прямоугольники, вот так:
 \begin_inset space ~
@@ -1368,16 +1221,20 @@ sec:Contrib
 \end_inset
 
 .
- Вы можете перейти к указанному разделу, нажав на кнопку "Перейти к ссылке".
+ Вы можете перейти к указанному разделу, нажав на кнопку 
+\family sans
+Перейти к ссылке
+\family default
+.
  Вернуться назад очень просто.
  Для возврата в предыдущую позицию нажмите на 
-\begin_inset Quotes cld
+\family sans
+Вернуться
+\begin_inset space \thinspace{}
 \end_inset
 
-Вернуться назад
-\begin_inset Quotes crd
-\end_inset
-
+назад
+\family default
  или нажмите 
 \family sans
 C-<
@@ -1440,13 +1297,22 @@ C-<
  используется для имён людей.
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+Жирный шрифт
+\series default
+ используется для кода \SpecialChar LaTeX
+.
+\end_layout
+
 \begin_layout Standard
 Чтобы больше узнать о клавишах акселераторов меню и других более загадочных
  комбинаций клавиш, вам следует перейти к разделу 
 \emph on
 Комбинации клавиш
 \emph default
- в 
+ в руководстве 
 \begin_inset Quotes cld
 \end_inset
 
@@ -1473,7 +1339,7 @@ Additional.lyx
 
 
 \family sans
-C-
+Ctrl+
 \family default
 
 \begin_inset Quotes crd
@@ -1490,7 +1356,7 @@ Control;
 
 
 \family sans
-S-
+Shift+
 \family default
 
 \begin_inset Quotes crd
@@ -1507,7 +1373,7 @@ Shift;
 
 
 \family sans
-M-
+Alt+
 \family default
 
 \begin_inset Quotes crd
@@ -1515,11 +1381,15 @@ M-
 
  обозначает клавишу 
 \family sans
+Alt
+\family default
+ (
+\family sans
 Meta
 \family default
-, которая на большинстве клавиатур будет клавишей 
+)
 \family sans
-Alt;
+;
 \end_layout
 
 \begin_layout Itemize
@@ -1708,7 +1578,8 @@ PageUp
 
 
 \family sans
-PageDown
+Pa\SpecialChar softhyphen
+geDown
 \family default
 
 \begin_inset Quotes crd
@@ -1786,71 +1657,561 @@ Enter
 \end_layout
 
 \begin_layout Standard
-Время от времени вы будете видеть что-то вроде 
-\begin_inset Quotes cld
-\end_inset
-
-(Смотрите 
-\emph on
-
-\begin_inset Quotes els
-\end_inset
-
-Руководство
-\emph default
-
-\begin_inset Quotes ers
-\end_inset
-
-)
-\begin_inset Quotes crd
-\end_inset
-
+Список текущих горячих клавиш может быть найден в меню 
+\family sans
+Помощь
+\family default
+ пункт 
+\family sans
+Горячие клавиши
+\family default
 .
- Мы поместили описание всех возможных комбинаций клавиш по умолчанию в 
-\begin_inset Quotes cld
+\end_layout
+
+\begin_layout Subsection
+Единицы, используемые в руководствах
+\end_layout
+
+\begin_layout Standard
+Чтобы понять единицы, используемые в документации, таблица
+\begin_inset space ~
 \end_inset
 
 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Units"
+
+\end_inset
+
+ поясняет все единицы, доступные в \SpecialChar LyX
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Units"
+
+\end_inset
+
+Единицы
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="20" columns="2">
+<features booktabs="true" tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+единица
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+название/описание
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+миллиметр
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cm
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+сантиметр
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+in
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+дюйм (1
+\begin_inset space \thinspace{}
+\end_inset
+
+in = 2.54
+\begin_inset space \thinspace{}
+\end_inset
+
+cm)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pt
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+пункт (72.27
+\begin_inset space \thinspace{}
+\end_inset
+
+pt = 1
+\begin_inset space \thinspace{}
+\end_inset
+
+in)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+пика (1
+\begin_inset space \thinspace{}
+\end_inset
+
+pc = 12
+\begin_inset space \thinspace{}
+\end_inset
+
+pt)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+масштабный пункт (65536
+\begin_inset space \thinspace{}
+\end_inset
+
+sp = 1
+\begin_inset space \thinspace{}
+\end_inset
+
+pt)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+bp
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+большой пункт (72
+\begin_inset space \thinspace{}
+\end_inset
+
+bp = 1
+\begin_inset space \thinspace{}
+\end_inset
+
+in)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+dd
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+дидо (72
+\begin_inset space \thinspace{}
+\end_inset
+
+dd 
+\begin_inset Formula $\approx$
+\end_inset
+
+ 37.6
+\begin_inset space \thinspace{}
+\end_inset
+
+mm)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+cc
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+цицеро (1
+\begin_inset space \thinspace{}
+\end_inset
+
+cc = 12
+\begin_inset space \thinspace{}
+\end_inset
+
+dd)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Scale%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% ширины исходного изображения
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+text%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% ширины текста
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+col%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% ширины столбца
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+page%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% ширины бумаги
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+line%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% ширины строки
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+theight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% высоты текста
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+pheight%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+% высоты бумаги
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ex
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+высота буквы 
 \emph on
-Дополнительные возможности
+x
 \emph default
+ текущего шрифта
+\end_layout
 
-\begin_inset Quotes crd
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+em
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ширина буквы 
+\emph on
+M
+\emph default
+ текущего шрифта
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+mu
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+математическая единица (1
+\begin_inset space \thinspace{}
 \end_inset
 
-, так что ищите их там.
- Обратите внимание, что в сообществе пользователей \SpecialChar LyX
- используются две различные
- клавиатурные раскладки: установленного по умолчанию 
-\begin_inset Quotes cld
+mu = 1/18
+\begin_inset space \thinspace{}
 \end_inset
 
-CUA
-\begin_inset Quotes crd
+em)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
 \end_inset
 
--стиля, который близок пришедшим из мира PC, и 
-\begin_inset Quotes cld
+
+\end_layout
+
 \end_inset
 
-emacs
-\begin_inset Quotes crd
-\end_inset
 
--стиля, который общепринят среди тех, кто 
-\begin_inset Quotes cld
-\end_inset
-
-вырос
-\begin_inset Quotes crd
-\end_inset
-
- на Unix системах и использует редактор Emacs.
- Пока явно не указано, по умолчанию раскладка клавиатуры в документации
- CUA.
- Если вам нравится Emacs, вы должны быть достаточно подготовлены, чтобы
- прочесть документацию и найти ваши комбинации клавиш.
 \end_layout
 
 \begin_layout Subsection
@@ -1862,8 +2223,6 @@ emacs
 \end_layout
 
 \begin_layout Description
-
-\emph on
 Введение
 \end_layout
 
@@ -1874,9 +2233,9 @@ emacs
 
 \end_deeper
 \begin_layout Description
-
+Самоучитель
 \emph on
-Самоучитель 
+ 
 \end_layout
 
 \begin_deeper
@@ -1951,8 +2310,6 @@ status collapsed
 
 \end_deeper
 \begin_layout Description
-
-\emph on
 Руководство
 \begin_inset space ~
 \end_inset
@@ -1977,8 +2334,6 @@ status collapsed
 
 \end_deeper
 \begin_layout Description
-
-\emph on
 Дополнительные
 \begin_inset space ~
 \end_inset
@@ -2002,8 +2357,41 @@ status collapsed
 
 \end_deeper
 \begin_layout Description
+Встроенные
+\begin_inset space ~
+\end_inset
 
+объекты
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Расширение 
 \emph on
+Руководства пользователя
+\emph default
+.
+ В нём описывается использование таблиц, рисунков, плавающих объектов, заметок,
+ сносок, примечаний, листингов и блоков.
+\end_layout
+
+\end_deeper
+\begin_layout Description
+Математика
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Расширение 
+\emph on
+Руководства пользователя
+\emph default
+.
+ В нём детально описывается как набирать любые виды формул.
+\end_layout
+
+\end_deeper
+\begin_layout Description
 Руководство
 \begin_inset space ~
 \end_inset
@@ -2031,13 +2419,7 @@ status collapsed
 
 \end_deeper
 \begin_layout Description
-
-\emph on
-Текущая
-\begin_inset space ~
-\end_inset
-
-конфигурация
+Конфигурация
 \begin_inset space ~
 \end_inset
 
@@ -2132,9 +2514,9 @@ name "sec:Contrib"
 \SpecialChar LyX
  по большей части написан на C++ (фильтр импорта документов \SpecialChar LaTeX
  написан на
- Perl).
- Это большой проект, и вследствие этого результат не свободен от ошибок
- и необходимости совершенствования исходного кода.
+ Python).
+ Это большой проект, и вследствие этого он не свободен от ошибок и необходимости
+ улучшения исходного кода.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2157,46 +2539,37 @@ name "sec:Contrib"
 Для \SpecialChar LyX
  существует система отслеживания ошибок, которую вы можете найти по
  адресу 
-\family typewriter
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-https://www.lyx.org/trac/wiki/BugTrackerHome
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "https://www.lyx.org/trac/wiki/BugTrackerHome"
+literal "false"
 
 \end_inset
 
-
-\family default
 .
  Перед тем как сообщать об ошибке, удостоверьтесь, что об этой ошибке ещё
  никто не сообщал в систему отслеживания ошибок.
  Если у вас есть комментарий к существующей ошибке, или вы хотите сообщить
  о новой ошибке, вы можете либо использовать систему отслеживания ошибок,
  либо отослать электронное письмо в список рассылки для разработчиков 
-\family typewriter
-lyx-devel@lists.lyx.org
-\family default
-.
- К архивам этого списка вы можете перейти с главного сайта по \SpecialChar LyX
- 
-\family typewriter
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-https://www.lyx.org/
-\end_layout
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-devel@lists.lyx.org"
+type "mailto:"
+literal "false"
 
 \end_inset
 
+.
+ К архивам этого списка вы можете перейти с главного сайта \SpecialChar LyX
+ 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://www.lyx.org/"
+literal "false"
 
-\family default
+\end_inset
+
 .
 \end_layout
 
@@ -2220,115 +2593,6 @@ config.log
 \family default
 , и укажите используемый вами компилятор.
  
-\end_layout
-
-\begin_layout Standard
-Если вы можете 
-\begin_inset Quotes cld
-\end_inset
-
-свалить
-\begin_inset Quotes crd
-\end_inset
-
- \SpecialChar LyX
-, пожалуйста, найдите время для отслеживания исполняемого файла lyx, из
- которого не удалена отладочная информация.
- Построенный из исходных кодов файл по умолчанию содержит отладочную информацию,
- но при установке она удаляется.
- Итак, запустите \SpecialChar LyX
- из gdb набрав, например, 
-\begin_inset Quotes cld
-\end_inset
-
-
-\family typewriter
-\size small
-gdb /users/steve/lyx-1.6.x/src/lyx
-\family default
-\size default
-
-\begin_inset Quotes crd
-\end_inset
-
- и затем 
-\begin_inset Quotes cld
-\end_inset
-
-
-\family typewriter
-\size small
-run
-\family default
-\size default
-
-\begin_inset Quotes crd
-\end_inset
-
-.
- 
-\begin_inset Quotes cld
-\end_inset
-
-Завалите
-\begin_inset Quotes crd
-\end_inset
-
- \SpecialChar LyX
- и вернитесь в gdb.
- Используйте 
-\begin_inset Quotes cld
-\end_inset
-
-
-\family typewriter
-\size small
-bt
-\family default
-\size default
-
-\begin_inset Quotes crd
-\end_inset
-
- для отслеживания и и включите вывод в сообщение об ошибке.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Для полноты картины используйте команды 
-\begin_inset Quotes cld
-\end_inset
-
-
-\family typewriter
-info locals
-\family default
-
-\begin_inset Quotes crd
-\end_inset
-
- и 
-\begin_inset Quotes cld
-\end_inset
-
-
-\family typewriter
-up
-\family default
-
-\begin_inset Quotes crd
-\end_inset
-
-, они печатают значения локальных переменных на нескольких уровня стека.
-\end_layout
-
-\end_inset
-
- Если возможно описать путь воспроизведения ошибки, то это более важно,
- чем её отслеживание, так как у нас будет возможность самим выполнить отслеживан
-ие.
- Если ошибку сложно воспроизвести, отслеживание особенно важно, потому что
- это всё, что мы можем знать об ошибке.
 \end_layout
 
 \begin_layout Subsubsection
@@ -2366,9 +2630,14 @@ up
 Если вы обнаружите какую-либо проблему в документации к \SpecialChar LyX
 , отправьте сообщение
  в список рассылки 
-\family typewriter
-lyx-docs@lists.lyx.org
-\family default
+\begin_inset CommandInset href
+LatexCommand href
+target "lyx-docs@lists.lyx.org"
+type "mailto:"
+literal "false"
+
+\end_inset
+
 .
  Команда документирования внесёт необходимые изменения.
 \end_layout
@@ -2381,44 +2650,21 @@ lyx-docs@lists.lyx.org
 Проекту документирования \SpecialChar LyX
 , как и всему остальному в проекте \SpecialChar LyX
 , всегда нужна
- помощь! Если вы заинтересованы в содействии проекту документирования, 
-\emph on
-сначала
-\emph default
- вам следует выполнить следующие требования:
+ помощь! Если вы заинтересованы в содействии проекту документирования, то
+ вам следует выполнить следующее:
 \end_layout
 
 \begin_layout Enumerate
 Получите исходный код последней версии \SpecialChar LyX
- и распакуйте его.
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Более предприимчивые могут взять последнюю версию документации с анонимного
- \SpecialChar LyX
- CVS-репозитория — она содержится в модуле 
-\family typewriter
-lyxdoc
-\family default
-.
-\end_layout
+ с 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master "
+literal "false"
 
 \end_inset
 
- В основном дереве вы найдёте каталог под названием 
-\family typewriter
-lib/doc/
-\family default
-.
-\end_layout
-
-\begin_layout Enumerate
-Отдохните день или два, затем снова прочтите 
-\family typewriter
-DocStyle.lyx
-\family default
-.
+ .
 \end_layout
 
 \begin_layout Enumerate
@@ -2474,7 +2720,7 @@ literal "false"
 \end_deeper
 \begin_layout Standard
 Вы можете выполнять любые изменения — от усовершенствования доходчивости
- текста, до выполнения значительной реструктуризации документации.
+ текста до выполнения значительной реструктуризации документации.
  Все усовершенствования принимаются с радостью.
 \end_layout
 
