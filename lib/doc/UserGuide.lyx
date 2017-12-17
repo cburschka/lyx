@@ -8336,14 +8336,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8356,7 +8354,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8380,7 +8377,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -16614,9 +16610,11 @@ The dashes that are output by \SpecialChar LyX
  to \SpecialChar LaTeX
  by default generally allow for 
 \change_unchanged
-line breaks after en-dashes and em-dashes 
+line breaks after en-dashes and em-dashes
+\change_deleted -712698321 1513498469
+ 
 \change_inserted -712698321 1513437597
-as well as linebreaks before em-dashes.
+.
 \change_deleted -712698321 1513438851
 are only allowed (without manual intervention), if the option 
 \family sans
@@ -16892,8 +16890,8 @@ in words adjacent to hyphens and ligature dashes.
 
 \begin_layout Standard
 If 
-\change_inserted -712698321 1513438154
-you want to globally disable line breaks at dashes, you can select 
+\change_inserted -712698321 1513498511
+you want to globally disable line breaks after dashes, you can select 
 \change_unchanged
 the option 
 \family sans
@@ -16901,11 +16899,11 @@ Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
 Fonts\SpecialChar menuseparator
 
-\change_inserted -712698321 1513438180
-Disallow line breaks at dashes
+\change_inserted -712698321 1513498530
+Disallow line breaks after dashes
 \family default
 .
- In this case optional line breaks at individual
+ In this case optional line breaks after individual
 \family sans
  dashes
 \change_deleted -712698321 1513438124
@@ -17115,8 +17113,8 @@ provides the aforementioned option
 
 \family sans
 Output en- and em-dashes as ligatures
-\change_inserted -712698321 1513441759
-Disallow line breaks at dashes
+\change_inserted -712698321 1513498544
+Disallow line breaks after dashes
 \change_unchanged
 
 \family default
@@ -17175,8 +17173,8 @@ select
 
 \family sans
 Output en- and em-dashes as ligatures
-\change_inserted -712698321 1513438687
-Disallow line breaks at dashes
+\change_inserted -712698321 1513498551
+Disallow line breaks after dashes
 \change_unchanged
 
 \family default
