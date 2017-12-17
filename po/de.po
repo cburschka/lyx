@@ -95,15 +95,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-12-17 02:19+0100\n"
-"PO-Revision-Date: 2017-12-17 02:04+0100\n"
-"Last-Translator: Uwe Stöhr <uwestoehr@web.de>\n"
+"POT-Creation-Date: 2017-12-17 09:23+0100\n"
+"PO-Revision-Date: 2017-12-17 09:25+0100\n"
+"Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.5\n"
+"X-Generator: Lokalize 2.0\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:33
@@ -1907,16 +1907,16 @@ msgstr "M&ikrotypographische Erweiterungen aktivieren"
 
 #: src/frontends/qt4/ui/FontUi.ui:300
 msgid ""
-"By default, a line break can occur after en- and em-dashes and before em-"
-"dashes. Checking this box prevents that."
+"By default, a line break can occur after en- and em-dashes. Checking this "
+"box prevents that."
 msgstr ""
-"Per Voreinstellung kann ein Zeilenumbruch nach einem Halbgeviertstrich "
-"(Gedankenstrich) und vor sowie nach einem Geviertstrich (langem "
-"Gedankenstrich) vorkommen. Diese Option verhindert das."
+"Per Voreinstellung kann ein Zeilenumbruch nach Halbgeviertstrichen "
+"(Gedankenstrichen) und Geviertstrichen (langen "
+"Gedankenstrichen) vorkommen. Diese Option verhindert das."
 
 #: src/frontends/qt4/ui/FontUi.ui:303
-msgid "Disallow l&ine breaks at dashes"
-msgstr "Zeilenumbruch bei (Halb-)Geviertstrichen &verhindern"
+msgid "Disallow l&ine breaks after dashes"
+msgstr "Zeilenumbruch nach (Halb-)Geviertstrichen &verhindern"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:51
 msgid "&Graphics"
@@ -30889,10 +30889,6 @@ msgstr "LyX-Tastaturtabellen (*.kmap)"
 msgid "Longest label width"
 msgstr "Breite der längsten Marke"
 
-#: src/frontends/qt4/GuiPrintNomencl.h:40
-msgid "Nomenclature List Settings"
-msgstr "Nomenklaturverzeichnis-Einstellungen"
-
 #: src/frontends/qt4/GuiPrintindex.cpp:37
 msgid "Index Settings"
 msgstr "Index-Einstellungen"
@@ -33927,6 +33923,9 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "Nomenclature List Settings"
+#~ msgstr "Nomenklaturverzeichnis-Einstellungen"
 
 #~ msgid ""
 #~ "Use font ligatures -- and --- instead of \\textendash and \\textemdash "
