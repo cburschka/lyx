@@ -533,7 +533,7 @@ class LyX_base:
         " Set the header with the version used."
 
         initial_comment = " ".join(["#LyX %s created this file." % version__,
-                                    "For more info see http://www.lyx.org/"])
+                                    "For more info see https://www.lyx.org/"])
 
         # Simple heuristic to determine the comment that always starts
         # a lyx file

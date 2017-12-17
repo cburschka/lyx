@@ -1610,7 +1610,7 @@ bool Buffer::write(ostream & ofs) const
 	// Important: Keep the version formatting in sync with lyx2lyx and
 	//            tex2lyx (bug 7951)
 	ofs << "#LyX " << lyx_version_major << "." << lyx_version_minor
-	    << " created this file. For more info see http://www.lyx.org/\n"
+	    << " created this file. For more info see https://www.lyx.org/\n"
 	    << "\\lyxformat " << LYX_FORMAT << "\n"
 	    << "\\begin_document\n";
 
@@ -1794,7 +1794,7 @@ void Buffer::writeLaTeXSource(otexstream & os,
 	// first paragraph of the document. (Asger)
 	if (output_preamble && runparams.nice) {
 		os << "%% LyX " << lyx_version << " created this file.  "
-			"For more info, see http://www.lyx.org/.\n"
+			"For more info, see https://www.lyx.org/.\n"
 			"%% Do not edit unless you really know what "
 			"you are doing.\n";
 	}
@@ -2038,7 +2038,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 			os << from_ascii(tclass.class_header());
 		else if (runparams.flavor == OutputParams::XML)
 			os << "PUBLIC \"-//OASIS//DTD DocBook XML V4.2//EN\" "
-			    << "\"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd\"";
+			    << "\"https://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd\"";
 		else
 			os << " PUBLIC \"-//OASIS//DTD DocBook V4.2//EN\"";
 
@@ -2077,7 +2077,7 @@ void Buffer::writeDocBookSource(odocstream & os, string const & fname,
 
 		os << "<!-- " << ((runparams.flavor == OutputParams::XML)? "XML" : "SGML")
 				<< " file was created by LyX " << lyx_version
-				<< "\n  See http://www.lyx.org/ for more information -->\n";
+				<< "\n  See https://www.lyx.org/ for more information -->\n";
 
 		params().documentClass().counters().reset();
 
@@ -4646,7 +4646,7 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 			// not updated during the updateBuffer call and TocModel::toc_ is invalid
 			// (bug 5699). The same happens if the master buffer is open in a different
 			// window. This test catches both possibilities.
-			// See: http://marc.info/?l=lyx-devel&m=138590578911716&w=2
+			// See: https://marc.info/?l=lyx-devel&m=138590578911716&w=2
 			// There remains a problem here: If there is another child open in yet a third
 			// window, that TOC is not updated. So some more general solution is needed at
 			// some point.
@@ -5087,7 +5087,7 @@ int Buffer::charCount(bool with_blanks) const
 Buffer::ReadStatus Buffer::reload()
 {
 	setBusy(true);
-	// c.f. bug http://www.lyx.org/trac/ticket/6587
+	// c.f. bug https://www.lyx.org/trac/ticket/6587
 	removeAutosaveFile();
 	// e.g., read-only status could have changed due to version control
 	d->filename.refresh();
