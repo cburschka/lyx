@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-12-16 16:32+0100\n"
-"PO-Revision-Date: 2017-12-16 20:06+0000\n"
+"POT-Creation-Date: 2017-12-17 09:29+0100\n"
+"PO-Revision-Date: 2017-12-17 08:45+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1816,15 +1816,15 @@ msgstr "Povoliť mikr&o-typografické rozšírenia"
 
 #: src/frontends/qt4/ui/FontUi.ui:300
 msgid ""
-"By default, a line break can occur after en- and em-dashes and before em-"
-"dashes. Checking this box prevents that."
+"By default, a line break can occur after en- and em-dashes. Checking this "
+"box prevents that."
 msgstr ""
-"Normálne, zalomenie prichádza za ''en'- alebo 'em'- pomlčkou a pred 'em' "
-"pomlčkou. Začiarknutím políčka sa to prevencuje."
+"Normálne, zalomenie prichádza za 'en'- a 'em'- pomlčkou. Začiarknutím "
+"políčka sa tomu zabráni."
 
 #: src/frontends/qt4/ui/FontUi.ui:303
-msgid "Disallow l&ine breaks at dashes"
-msgstr "Nepovoliť zalomenie &riadku pri pomlčkách"
+msgid "Disallow l&ine breaks after dashes"
+msgstr "Nepovoliť zalomenie &riadku za pomlčkami"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:51
 msgid "&Graphics"
@@ -27245,7 +27245,7 @@ msgid ""
 "Forbid use of external converters with 'needauth' option to prevent "
 "undesired effects."
 msgstr ""
-"Blokovať externé konvertori s 'needauth' voľbou na zabránenie nežiadúcich "
+"Blokovať externé konvertory s 'needauth' voľbou na zabránenie nežiadúcich "
 "efektov. "
 
 #: src/LyXRC.cpp:3114
@@ -35578,6 +35578,16 @@ msgstr "Neznámy používateľ"
 #~ "%[[, {!<i>!}%žurnál%{!</i>!}]][[{%vydavateľ%[[, %vydavateľ%]]"
 #~ "[[{%inštitúcia%[[, %inštitúcia%]]}]]}]]}{%rok%[[ (%rok%)]]}{%strany%[[, "
 #~ "%strany%]]}."
+
+#~ msgid ""
+#~ "By default, a line break can occur after en- and em-dashes and before em-"
+#~ "dashes. Checking this box prevents that."
+#~ msgstr ""
+#~ "Normálne, zalomenie prichádza za ''en'- alebo 'em'- pomlčkou a pred 'em' "
+#~ "pomlčkou. Začiarknutím políčka sa to prevencuje."
+
+#~ msgid "Disallow l&ine breaks at dashes"
+#~ msgstr "Nepovoliť zalomenie &riadku pri pomlčkách"
 
 #~ msgid "A&ssigned to group:"
 #~ msgstr "&Priradené ku skupine:"
