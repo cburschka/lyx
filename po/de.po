@@ -95,7 +95,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-12-17 09:23+0100\n"
+"POT-Creation-Date: 2017-12-17 14:10+0100\n"
 "PO-Revision-Date: 2017-12-17 09:25+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
@@ -1911,8 +1911,8 @@ msgid ""
 "box prevents that."
 msgstr ""
 "Per Voreinstellung kann ein Zeilenumbruch nach Halbgeviertstrichen "
-"(Gedankenstrichen) und Geviertstrichen (langen "
-"Gedankenstrichen) vorkommen. Diese Option verhindert das."
+"(Gedankenstrichen) und Geviertstrichen (langen Gedankenstrichen) vorkommen. "
+"Diese Option verhindert das."
 
 #: src/frontends/qt4/ui/FontUi.ui:303
 msgid "Disallow l&ine breaks after dashes"
@@ -30889,6 +30889,10 @@ msgstr "LyX-Tastaturtabellen (*.kmap)"
 msgid "Longest label width"
 msgstr "Breite der längsten Marke"
 
+#: src/frontends/qt4/GuiPrintNomencl.h:40
+msgid "Nomenclature List Settings"
+msgstr "Nomenklaturverzeichnis-Einstellungen"
+
 #: src/frontends/qt4/GuiPrintindex.cpp:37
 msgid "Index Settings"
 msgstr "Index-Einstellungen"
@@ -33923,9 +33927,6 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
-
-#~ msgid "Nomenclature List Settings"
-#~ msgstr "Nomenklaturverzeichnis-Einstellungen"
 
 #~ msgid ""
 #~ "Use font ligatures -- and --- instead of \\textendash and \\textemdash "
