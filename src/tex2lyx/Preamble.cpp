@@ -689,7 +689,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 {
 	vector<string> options = split_options(opts);
 	add_package(name, options);
-	char const * const * where = 0;
 
 	if (is_known(name, known_xetex_packages)) {
 		xetex = true;
@@ -1016,7 +1015,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (name == "subfig")
 		; // ignore this FIXME: Use the package separator mechanism instead
 
-	else if ((where = is_known(name, known_languages)))
+	else if (char const * const * where = is_known(name, known_languages))
 		h_language = known_coded_languages[where - known_languages];
 
 	else if (name == "natbib") {
@@ -1114,9 +1113,9 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 	// LyX only knows the following quotes languages:
 	// english, swedish, german, polish, french and danish
 	// (quotes for "japanese" and "chinese-traditional" are missing because
-	//  they wouldn't be useful: http://www.lyx.org/trac/ticket/6383)
+	//  they wouldn't be useful: https://www.lyx.org/trac/ticket/6383)
 	// conversion list taken from
-	// http://en.wikipedia.org/wiki/Quotation_mark,_non-English_usage
+	// https://en.wikipedia.org/wiki/Quotation_mark,_non-English_usage
 	// (quotes for kazakh and interlingua are unknown)
 	// danish
 	if (is_known(h_language, known_danish_quotes_languages))

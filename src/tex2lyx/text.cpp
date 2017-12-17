@@ -3621,8 +3621,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				type = target.substr(0, i + 1);
 				if (type == "mailto:" || type == "file:")
 					target = target.substr(i + 1);
-				// handle the case that name is equal to target, except of "http://"
-				else if (target.substr(i + 3) == name && type == "http:")
+				// handle the case that name is equal to target, except of "http(s)://"
+				else if (target.substr(i + 3) == name && (type == "http:" || type == "https:"))
 					target = name;
 			}
 			begin_command_inset(os, "href", "href");
