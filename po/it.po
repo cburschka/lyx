@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-12-01 10:55+0100\n"
+"POT-Creation-Date: 2017-12-17 03:06+0100\n"
 "PO-Revision-Date: 2017-11-04 17:03+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
@@ -2838,7 +2838,7 @@ msgstr "E&limina"
 msgid "S&elected:"
 msgstr "S&elezionati:"
 
-#: src/frontends/qt4/ui/NomenclUi.ui:14 src/insets/InsetNomencl.cpp:182
+#: src/frontends/qt4/ui/NomenclUi.ui:14 src/insets/InsetNomencl.cpp:184
 msgid "Nomenclature"
 msgstr "Nomenclatura"
 
@@ -30658,6 +30658,11 @@ msgstr "Mappa di tastiera di LyX (*.kmap)"
 msgid "Longest label width"
 msgstr "Etichetta più lunga"
 
+#: src/frontends/qt4/GuiPrintNomencl.h:40
+#, fuzzy
+msgid "Nomenclature List Settings"
+msgstr "Impostazioni nomenclatura"
+
 #: src/frontends/qt4/GuiPrintindex.cpp:37
 msgid "Index Settings"
 msgstr "Impostazioni indice"
@@ -32181,11 +32186,11 @@ msgstr "Nome parametro sconosciuto: "
 msgid "Missing \\end_inset at this point: "
 msgstr "Manca \\end_inset in questo punto: "
 
-#: src/insets/InsetCommandParams.cpp:459
+#: src/insets/InsetCommandParams.cpp:460
 msgid "Uncodable characters"
 msgstr "Carattere intraducibili"
 
-#: src/insets/InsetCommandParams.cpp:460
+#: src/insets/InsetCommandParams.cpp:461
 #, c-format
 msgid ""
 "The following characters that are used in the inset %1$s are not\n"
@@ -32778,19 +32783,19 @@ msgstr "Azzera pagina"
 msgid "Clear Double Page"
 msgstr "Azzera pagina doppia"
 
-#: src/insets/InsetNomencl.cpp:80
+#: src/insets/InsetNomencl.cpp:82
 msgid "Nom: "
 msgstr "Nom: "
 
-#: src/insets/InsetNomencl.cpp:88
+#: src/insets/InsetNomencl.cpp:90
 msgid "Nomenclature Symbol: "
 msgstr "Simbolo di nomenclatura: "
 
-#: src/insets/InsetNomencl.cpp:89
+#: src/insets/InsetNomencl.cpp:91
 msgid "Description: "
 msgstr "Descrizione: "
 
-#: src/insets/InsetNomencl.cpp:92
+#: src/insets/InsetNomencl.cpp:94
 msgid "Sorting: "
 msgstr "Ordinamento: "
 
@@ -33722,35 +33727,6 @@ msgstr "Utente sconosciuto"
 
 #~ msgid "Minted Source Code"
 #~ msgstr "Codice Sorgente Minted"
-
-#~ msgid ""
-#~ "Format source code using the 'minted' package.\n"
-#~ "This template works with minted version 2.1 or higher.\n"
-#~ "The source language is specified by the 'lang' option,\n"
-#~ "which must be inserted into the 'Option' field in the\n"
-#~ "'LaTeX and LyX options' tab.\n"
-#~ "Example options:\n"
-#~ "* linenos,fontsize=\footnotesize,lang=fortran\n"
-#~ "* bgcolor=yellow,baselinestretch=1.2,lang=c\n"
-#~ "* frame=lines,framesep=2\fboxsep,lang=python\n"
-#~ "If 'lang=xxx' is not given, 'lang=latex' is assumed by default.\n"
-#~ "Make sure to use the '-shell-escape' option for the latex backend.\n"
-#~ "Read the documentation of the minted package\n"
-#~ "for further options and details.\n"
-#~ msgstr ""
-#~ "Formattazione di codice sorgente con il pacchetto 'minted'.\n"
-#~ "Questo modello funziona con minted versione 2.1 o superiore.\n"
-#~ "Il linguaggio del sorgente è specificato con l'opzione 'lang',\n"
-#~ "che deve essere inserita nel campo 'Opzione' della scheda\n"
-#~ "'Opzioni per LaTeX e LyX'.\n"
-#~ "Esempi di opzioni:\n"
-#~ "* linenos,fontsize=\\footnotesize,lang=fortran\n"
-#~ "* bgcolor=yellow,baselinestretch=1.2,lang=c\n"
-#~ "* frame=lines,framesep=2\\fboxsep,lang=python\n"
-#~ "Se 'lang=xxx' non è specificato, si assume 'lang=latex' per default.\n"
-#~ "Assicuratevi di usare l'opzione '-shell-escape' per il motore latex.\n"
-#~ "Leggete la documentazione del pacchetto minted\n"
-#~ "per ulteriori opzioni e dettagli.\n"
 
 #~ msgid ""
 #~ "An Inkscape figure.\n"
