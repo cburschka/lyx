@@ -34,10 +34,10 @@ logicalmkup
 \paperfontsize 12
 \spacing single
 \use_hyperref true
-\pdf_title "The LyX Tutorial"
-\pdf_author "LyX Team"
-\pdf_subject "LyX-documentation Tutorial"
-\pdf_keywords "LyX, documentation"
+\pdf_title "Самоучитель по LyX"
+\pdf_author "Команда LyX"
+\pdf_subject "Документация LyX - Самоучитель по LyX"
+\pdf_keywords "LyX, документация"
 \pdf_bookmarks true
 \pdf_bookmarksnumbered true
 \pdf_bookmarksopen true
@@ -100,16 +100,15 @@ logicalmkup
 \end_layout
 
 \begin_layout Author
-by the \SpecialChar LyX
- Team
+команда \SpecialChar LyX
+
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-\noindent
-If you have comments on or corrections to this documentation, please send
- them to the \SpecialChar LyX
- Documentation mailing list: 
+Если у вас возникли комментарии или исправления к этой документации, пожалуйста,
+ отправьте их в список рассылки документации \SpecialChar LyX
+: 
 \begin_inset CommandInset href
 LatexCommand href
 target "lyx-docs@lists.lyx.org"
