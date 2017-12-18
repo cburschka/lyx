@@ -1,0 +1,239 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin /systemlyxdir/examples/ar/
+\textclass article
+\use_default_options false
+\maintain_unincluded_children false
+\language arabic_arabi
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "palatino" "Scheherazade"
+\font_sans "helvet" "Scheherazade"
+\font_typewriter "courier" "Scheherazade"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 95 95
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style french
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+أهلا بك مع ليك
+\end_layout
+
+\begin_layout Section*
+أهم الأشياء التي يجب أن تعرفها عند استخدام ليك
+\end_layout
+
+\begin_layout Enumerate
+يأتي ليك مع وثائق ممتازة — فضلا ابدأ بها! 
+\family sans
+من قائمة مساعدة\SpecialChar menuseparator
+
+\family default
+مقدمة، والتي ستعطيك مقدمة تعريفية موجزة جدا عن الوثائق.
+ ثم يمكنك تعلم كيفية استخدام ليك بواسطة 
+\family sans
+مساعدة\SpecialChar menuseparator
+
+\family default
+دروس.
+\end_layout
+
+\begin_layout Enumerate
+ليك مصمم ليكون 
+\begin_inset Quotes eld
+\end_inset
+
+معالج مستندات
+\begin_inset Quotes erd
+\end_inset
+
+ ، لكنه يختلف عن معالجات النصوص العادية — إنه يعمل بطريقة تجعل كتابة المستندات
+ أسهل.
+ لكن مع بعض الاختلافات البسيطة، لكن لا تخف.
+ الوثائق ستجعل كل شيء واضح لك.
+\end_layout
+
+\begin_layout Enumerate
+مخرجات ليك ستبدو بمظهر رائع! 
+\family sans
+من القائمة اختر مستند\SpecialChar menuseparator
+عرض
+\begin_inset space ~
+\end_inset
+
+
+\lang english
+[PDF
+\begin_inset space ~
+\end_inset
+
+(XeTeX)]
+\family default
+\lang arabic_arabi
+ أو انقر على الزر التالي في شريط الأدوات 
+\begin_inset Info
+type  "icon"
+arg   "buffer-view"
+\end_inset
+
+ لترى إبداعاتك.
+\end_layout
+
+\begin_layout Enumerate
+نعم، ليك يستطيع استخدام كل (معظم) وظائف لتيك.
+ ويستطيع استيراد ملفات لتيك.
+ خبراء لتيك يمكنهم تجاوز الدروس , ثم قراءة فصل 
+\begin_inset Quotes eld
+\end_inset
+
+ليك لمستخدمي لتيك
+\begin_inset Quotes erd
+\end_inset
+
+ .
+ (المستخدمين الآخرين: لا تقلقوا، ليس عليكم معرفة لتيك للعمل على ليك.) 
+\end_layout
+
+\begin_layout Enumerate
+ليك يملك الكثير من المميزات التي تساعد مستخدمي اللغات غير الانجليزية.
+ بالإضافة إلى، الاختصارات، واشرطة الادوات، والكثير من الادوات المتقدمة في
+ عملية التنضيد.
+ أنظر 
+\family sans
+مساعدة\SpecialChar menuseparator
+التعديلات
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+موقع ليك هو 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://www.lyx.org
+\end_layout
+
+\end_inset
+
+.
+ للحصول على معلومات عن ليك، سجل في القوائم البريدية الخاصة بالبرنامج، وخذ
+ جولة مصورة عن البرنامج هنا: 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://www.lyx.org/Walkthrough
+\end_layout
+
+\end_inset
+
+، وأكثر.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+ملاحظة لمستخدمي لينكس:
+\series default
+ فضلا تأكد من تركيب حزمة اللغة التي تستخدمها في 
+\family sans
+\SpecialChar TeX
+
+\begin_inset space ~
+\end_inset
+
+Live
+\family default
+ .
+ وإلا فإنك ستحصل على رسالة خطأ.
+\begin_inset Newline newline
+\end_inset
+
+على سبيل المثال في اوبنتو ودبيان حزمة اللغة العربية هي 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+texlive-lang-
+\family default
+arabic
+\begin_inset Quotes erd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+وبعد تركيب حزمة اللغة اختر من القائمة أدوات\SpecialChar menuseparator
+إعادة ضبط النظام.
+\end_layout
+
+\end_body
+\end_document

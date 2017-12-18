@@ -66,6 +66,10 @@ commandsdir = $(pkgdatadir)/commands
 dist_commands_DATA = \
 	commands/default.def
 
+arexamplesdir = $(pkgdatadir)/examples/ar
+dist_arexamples_DATA = \
+	examples/ar/splash.lyx
+
 caexamplesdir = $(pkgdatadir)/examples/ca
 dist_caexamples_DATA = \
 	examples/ca/ItemizeBullets.lyx \
