@@ -18,6 +18,7 @@
 #include "MathSupport.h"
 
 #include "BufferView.h"
+#include "ColorSet.h"
 #include "CoordCache.h"
 #include "MetricsInfo.h"
 
@@ -97,11 +98,6 @@ void drawMarkers(PainterInfo const & pi, MathRow::Element const & e,
 	if (e.marker == InsetMath::NO_MARKER)
 		return;
 
-	// The color
-	bool const highlight = e.inset->mouseHovered(pi.base.bv)
-	                       || e.inset->editing(pi.base.bv);
-	ColorCode const pen_color = highlight ? Color_mathframe : Color_mathcorners;
-
 	CoordCache const & coords = pi.base.bv->coordCache();
 	Dimension const dim = coords.getInsets().dim(e.inset);
 
@@ -121,6 +117,14 @@ void drawMarkers(PainterInfo const & pi, MathRow::Element const & e,
 		                      dim.wid, namedim.height() + 2, Color_mathmacrobg);
 		pi.pain.text(l, y + dim.des - namedim.des - 1, e.inset->name(), font);
 	}
+
+	// Color for corners
+	bool const highlight = e.inset->mouseHovered(pi.base.bv)
+	                       || e.inset->editing(pi.base.bv);
+	ColorCode const pen_color = highlight ? Color_mathframe : Color_mathcorners;
+	// If the corners have the same color as the background, do not paint them.
+	if (lcolor.getX11Name(Color_mathbg) == lcolor.getX11Name(pen_color))
+		return;
 
 	// Lower corners in all cases
 	int const d = y + dim.descent();
