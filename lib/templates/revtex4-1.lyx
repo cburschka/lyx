@@ -7,6 +7,9 @@
 \textclass revtex4-1
 \options reprint, aps
 \use_default_options false
+\begin_modules
+subequations
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -841,14 +844,14 @@ Note the open one in Eq.
 \begin_inset space ~
 \end_inset
 
-(
+
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:one"
 
 \end_inset
 
-).
+.
 \end_layout
 
 \begin_layout Standard
@@ -923,63 +926,45 @@ tag
 \end_layout
 
 \begin_layout Standard
-Enclosing display math within the \SpecialChar LaTeX
--commands 
-\series bold
-
-\backslash
-begin{subequations}
-\series default
- and 
-\series bold
-
-\backslash
-end{subequations}
-\series default
+Setting display math within custom inset 
+\family sans
+Subequations
+\family default
  will produce a set of equations that are labeled with letters, as shown
  in Eqs.
 \begin_inset space ~
 \end_inset
 
-(
+
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "subeq:1"
 
 \end_inset
 
-) and (
+ and 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "subeq:2"
 
 \end_inset
 
-) below.
+ below.
  You may include any number of single-line and multiline equations, although
  it is probably not a good idea to follow one display math directly after
  another.
  
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Subequations
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-begin{subequations}
-\end_layout
-
-\end_inset
-
- 
 \begin_inset CommandInset label
 LatexCommand label
 name "eq:whole"
 
 \end_inset
 
- 
+
 \begin_inset Formula 
 \begin{eqnarray}
 {\cal M}= &  & ig_{Z}^{2}(4E_{1}E_{2})^{1/2}(l_{i}^{2})^{-1}(g_{\sigma_{2}}^{e})^{2}\chi_{-\sigma_{2}}(p_{2})\nonumber \\
@@ -997,14 +982,6 @@ name "eq:whole"
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{subequations}
 \end_layout
 
 \end_inset
@@ -2952,19 +2929,10 @@ reference "app:subsec"
 \begin_layout Standard
 Note the equation numbers in this appendix, produced with the subequations
  environment: 
-\begin_inset ERT
-status collapsed
+\begin_inset Flex Subequations
+status open
 
 \begin_layout Plain Layout
-
-
-\backslash
-begin{subequations}
-\end_layout
-
-\end_inset
-
- 
 \begin_inset Formula 
 \begin{eqnarray}
 E & = & mc,\label{appa}\\
@@ -2975,14 +2943,6 @@ E & \agt & mc^{3}.\label{appc}
 \end_inset
 
 
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-end{subequations}
 \end_layout
 
 \end_inset
@@ -2991,28 +2951,28 @@ end{subequations}
 \begin_inset space ~
 \end_inset
 
-(
+
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "appa"
 
 \end_inset
 
-), (
+, 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "appb"
 
 \end_inset
 
-), and (
+, and 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "appc"
 
 \end_inset
 
-).
+.
 \end_layout
 
 \begin_layout Standard
