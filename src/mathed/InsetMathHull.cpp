@@ -599,6 +599,25 @@ ColorCode InsetMathHull::backgroundColor(PainterInfo const & pi) const
 }
 
 
+void InsetMathHull::drawMarkers(PainterInfo & pi, int x, int y) const
+{
+	ColorCode pen_color = mouseHovered(pi.base.bv) || editing(pi.base.bv)?
+		Color_mathframe : Color_mathcorners;
+	// If the corners have the same color as the background, do not paint them.
+	if (lcolor.getX11Name(Color_mathbg) == lcolor.getX11Name(pen_color))
+		return;
+
+	Inset::drawMarkers(pi, x, y);
+	Dimension const dim = dimension(*pi.base.bv);
+	int const t = x + dim.width() - 1;
+	int const a = y - dim.ascent();
+	pi.pain.line(x, a + 3, x, a, pen_color);
+	pi.pain.line(t, a + 3, t, a, pen_color);
+	pi.pain.line(x, a, x + 3, a, pen_color);
+	pi.pain.line(t - 3, a, t, a, pen_color);
+}
+
+
 void InsetMathHull::drawBackground(PainterInfo & pi, int x, int y) const
 {
 	Dimension const dim = dimension(*pi.base.bv);
@@ -659,7 +678,7 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 	}
 
 	InsetMathGrid::draw(pi, xmath + 1, y);
-	drawMarkers2(pi, x, y);
+	drawMarkers(pi, x, y);
 
 	if (numberedType()) {
 		Changer dummy = pi.base.changeFontSet("mathrm");

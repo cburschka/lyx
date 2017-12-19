@@ -553,22 +553,6 @@ void Inset::drawMarkers(PainterInfo & pi, int x, int y) const
 }
 
 
-void Inset::drawMarkers2(PainterInfo & pi, int x, int y) const
-{
-	ColorCode pen_color = mouseHovered(pi.base.bv) || editing(pi.base.bv)?
-		Color_mathframe : Color_mathcorners;
-
-	drawMarkers(pi, x, y);
-	Dimension const dim = dimension(*pi.base.bv);
-	int const t = x + dim.width() - 1;
-	int const a = y - dim.ascent();
-	pi.pain.line(x, a + 3, x, a, pen_color);
-	pi.pain.line(t, a + 3, t, a, pen_color);
-	pi.pain.line(x, a, x + 3, a, pen_color);
-	pi.pain.line(t - 3, a, t, a, pen_color);
-}
-
-
 bool Inset::editing(BufferView const * bv) const
 {
 	return bv->cursor().isInside(this);

@@ -260,6 +260,8 @@ private:
 	bool colChangeOK() const;
 	/// are any of the equations numbered?
 	bool haveNumbers() const;
+	/// draw four angular markers
+	virtual void drawMarkers(PainterInfo & pi, int x, int y) const;
 
 	/// "none", "simple", "display", "eqnarray",...
 	HullType type_;
