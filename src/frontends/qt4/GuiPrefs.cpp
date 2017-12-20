@@ -112,7 +112,7 @@ QString browseFile(QString const & filename,
 		lastPath = fallback_dir;
 
 	FileDialog dlg(title);
-	dlg.setButton2(label1, dir1);
+	dlg.setButton1(label1, dir1);
 	dlg.setButton2(label2, dir2);
 
 	FileDialog::Result result;
