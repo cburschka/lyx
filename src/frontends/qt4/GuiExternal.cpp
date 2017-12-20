@@ -672,7 +672,7 @@ QString GuiExternal::browse(QString const & input,
 	QString const bufpath = bufferFilePath();
 	QStringList const filter = templateFilters(template_name);
 
-	QString const label1 = qt_("Documents|#o#O");
+	QString const label1 = qt_("D&ocuments");
 	QString const dir1 = toqstr(lyxrc.document_path);
 
 	return browseRelToParent(input, bufpath, title, filter, false, label1, dir1);

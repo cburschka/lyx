@@ -432,7 +432,7 @@ bool GuiBibtex::isValid()
 
 QString GuiBibtex::browseBib(QString const & in_name) const
 {
-	QString const label1 = qt_("Documents|#o#O");
+	QString const label1 = qt_("D&ocuments");
 	QString const dir1 = toqstr(lyxrc.document_path);
 	QStringList const filter(qt_("BibTeX Databases (*.bib)"));
 	return browseRelToParent(in_name, bufferFilePath(),
@@ -442,7 +442,7 @@ QString GuiBibtex::browseBib(QString const & in_name) const
 
 QString GuiBibtex::browseBst(QString const & in_name) const
 {
-	QString const label1 = qt_("Documents|#o#O");
+	QString const label1 = qt_("D&ocuments");
 	QString const dir1 = toqstr(lyxrc.document_path);
 	QStringList const filter(qt_("BibTeX Styles (*.bst)"));
 	return browseRelToParent(in_name, bufferFilePath(),

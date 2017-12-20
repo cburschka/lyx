@@ -789,8 +789,8 @@ QString GuiGraphics::browse(QString const & in_name) const
 
 	return browseRelToParent(in_name, bufferFilePath(),
 		title, fileFilters(QString()), false,
-		qt_("Clipart|#C#c"), toqstr(clipdir),
-		qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
+		qt_("&Clipart"), toqstr(clipdir),
+		qt_("D&ocuments"), toqstr(lyxrc.document_path));
 }
 
 

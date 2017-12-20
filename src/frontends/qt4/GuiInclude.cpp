@@ -327,7 +327,7 @@ QString GuiInclude::browse(QString const & in_name, Type in_type) const
 	QString const docpath = toqstr(support::onlyPath(buffer().absFileName()));
 
 	return browseRelToParent(in_name, docpath, title, filters, false,
-		qt_("Documents|#o#O"), toqstr(lyxrc.document_path));
+		qt_("D&ocuments"), toqstr(lyxrc.document_path));
 }
 
 

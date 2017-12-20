@@ -25,21 +25,6 @@ using namespace lyx::support;
 
 namespace lyx {
 
-/// return the Qt form of the label
-static QString getLabel(QString const & qstr)
-{
-	// FIXME UNICODE (or "qt-ify")
-	string str = fromqstr(qstr);
-	string label;
-	string sc = split(str, label, '|');
-	if (sc.length() < 2)
-		return toqstr(label);
-	size_t pos = label.find(sc[1]);
-	if (pos != string::npos)
-		label.insert(pos, 1, '&');
-	return toqstr(label);
-}
-
 
 LyXFileDialog::LyXFileDialog(QString const & title,
 			     QString const & path,
@@ -60,7 +45,7 @@ LyXFileDialog::LyXFileDialog(QString const & title,
 		b1_dir_ = b1.second;
 		QToolButton * tb = new QToolButton(this);
 		connect(tb, SIGNAL(clicked()), this, SLOT(button1Clicked()));
-		tb->setText(getLabel(b1.first));
+		tb->setText(b1.first);
 		layout.at(0)->addWidget(tb);
 	}
 
@@ -68,7 +53,7 @@ LyXFileDialog::LyXFileDialog(QString const & title,
 		b2_dir_ = b2.second;
 		QToolButton * tb = new QToolButton(this);
 		connect(tb, SIGNAL(clicked()), this, SLOT(button2Clicked()));
-		tb->setText(getLabel(b2.first));
+		tb->setText(b2.first);
 		layout.at(0)->addWidget(tb);
 	}
 }
