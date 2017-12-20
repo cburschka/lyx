@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-12-17 14:10+0100\n"
-"PO-Revision-Date: 2017-12-17 09:25+0100\n"
+"POT-Creation-Date: 2017-12-20 12:21+0100\n"
+"PO-Revision-Date: 2017-12-20 12:25+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -7426,7 +7426,7 @@ msgid "Altaffilation"
 msgstr "Alt. Zugehörigkeit"
 
 #: lib/layouts/aastex.layout:185 lib/layouts/agutex.layout:124
-#: src/mathed/InsetMathHull.cpp:1842 src/mathed/InsetMathHull.cpp:1851
+#: src/mathed/InsetMathHull.cpp:1861 src/mathed/InsetMathHull.cpp:1870
 msgid "Number"
 msgstr "Nummer"
 
@@ -29156,8 +29156,8 @@ msgstr "alle Literaturverzeichnisse"
 #: src/frontends/qt4/GuiView.cpp:2196 src/frontends/qt4/GuiView.cpp:2253
 #: src/frontends/qt4/GuiView.cpp:2391 src/frontends/qt4/GuiView.cpp:2524
 #: src/frontends/qt4/GuiView.cpp:2564 src/frontends/qt4/GuiView.cpp:2682
-msgid "Documents|#o#O"
-msgstr "Dokumente|#k"
+msgid "D&ocuments"
+msgstr "Do&kumente"
 
 #: src/frontends/qt4/GuiBibtex.cpp:437
 msgid "BibTeX Databases (*.bib)"
@@ -29917,8 +29917,8 @@ msgid "Class Default"
 msgstr "Klassenvoreinstellungen"
 
 #: src/frontends/qt4/GuiDocument.cpp:2310
-msgid "Layouts|#o#O"
-msgstr "Formatdateien|#o#O"
+msgid "Lay&outs"
+msgstr "F&ormatdateien"
 
 #: src/frontends/qt4/GuiDocument.cpp:2312
 msgid "LyX Layout (*.layout)"
@@ -30293,8 +30293,8 @@ msgid "Select graphics file"
 msgstr "Wählen Sie eine Grafikdatei"
 
 #: src/frontends/qt4/GuiGraphics.cpp:792
-msgid "Clipart|#C#c"
-msgstr "Clipart|#C#c"
+msgid "&Clipart"
+msgstr "&Clipart"
 
 #: src/frontends/qt4/GuiHSpace.cpp:45 src/frontends/qt4/GuiHSpace.cpp:58
 #: src/insets/InsetSpace.cpp:69
@@ -30608,12 +30608,12 @@ msgid "Phantom Settings"
 msgstr "Phantom Einstellungen"
 
 #: src/frontends/qt4/GuiPrefs.cpp:141
-msgid "System files|#S#s"
-msgstr "Systemdateien|#S#s"
+msgid "&System files"
+msgstr "&Systemdateien"
 
 #: src/frontends/qt4/GuiPrefs.cpp:145
-msgid "User files|#U#u"
-msgstr "Benutzerdateien|#B#b"
+msgid "&User files"
+msgstr "&Benutzerdateien"
 
 #: src/frontends/qt4/GuiPrefs.cpp:251
 msgid "Look & Feel"
@@ -31443,8 +31443,8 @@ msgid "Select template file"
 msgstr "Wählen Sie eine Vorlagendatei"
 
 #: src/frontends/qt4/GuiView.cpp:2197 src/frontends/qt4/GuiView.cpp:2565
-msgid "Templates|#T#t"
-msgstr "Vorlagen|#V"
+msgid "&Templates"
+msgstr "&Vorlagen"
 
 #: src/frontends/qt4/GuiView.cpp:2224
 msgid "Document not loaded."
@@ -31456,8 +31456,8 @@ msgstr "Wählen Sie das zu öffnende Dokument"
 
 #: src/frontends/qt4/GuiView.cpp:2254 src/frontends/qt4/GuiView.cpp:2392
 #: src/frontends/qt4/GuiView.cpp:2525
-msgid "Examples|#E#e"
-msgstr "Beispiele|#B"
+msgid "&Examples"
+msgstr "&Beispiele"
 
 #: src/frontends/qt4/GuiView.cpp:2282
 #, c-format
@@ -33426,7 +33426,7 @@ msgstr "Die Zeichenkette wurde nicht gefunden!"
 msgid "Match found!"
 msgstr "Die Zeichenkette wurde gefunden!"
 
-#: src/mathed/InsetMathAMSArray.cpp:115 src/mathed/InsetMathHull.cpp:2139
+#: src/mathed/InsetMathAMSArray.cpp:115 src/mathed/InsetMathHull.cpp:2158
 #: src/mathed/InsetMathSplit.cpp:120 src/mathed/InsetMathSubstack.cpp:70
 #, c-format
 msgid "Can't add vertical grid lines in '%1$s'"
@@ -33489,16 +33489,16 @@ msgstr "Keine vertikale Linie zu löschen"
 msgid "Unknown tabular feature '%1$s'"
 msgstr "Unbekanntes Tabellenmerkmal '%1$s'"
 
-#: src/mathed/InsetMathHull.cpp:1700
+#: src/mathed/InsetMathHull.cpp:1719
 #, c-format
 msgid "Type: %1$s"
 msgstr "Typ: %1$s"
 
-#: src/mathed/InsetMathHull.cpp:1738
+#: src/mathed/InsetMathHull.cpp:1757
 msgid "Bad math environment"
 msgstr "Ungeeignete Matheumgebung"
 
-#: src/mathed/InsetMathHull.cpp:1739
+#: src/mathed/InsetMathHull.cpp:1758
 msgid ""
 "Computation cannot be performed for AMS math environments.\n"
 "Change the math formula type and try again."
@@ -33506,16 +33506,16 @@ msgstr ""
 "In AMS-Matheumgebungen kann keine Berechnung durchgeführt werden.\n"
 "Bitte ändern Sie die Formelart und versuchen Sie es noch einmal."
 
-#: src/mathed/InsetMathHull.cpp:1842 src/mathed/InsetMathHull.cpp:1851
+#: src/mathed/InsetMathHull.cpp:1861 src/mathed/InsetMathHull.cpp:1870
 msgid "No number"
 msgstr "Keine Nummer"
 
-#: src/mathed/InsetMathHull.cpp:2122
+#: src/mathed/InsetMathHull.cpp:2141
 #, c-format
 msgid "Can't change number of rows in '%1$s'"
 msgstr "Die Anzahl der Zeilen in '%1$s' kann nicht geändert werden."
 
-#: src/mathed/InsetMathHull.cpp:2132
+#: src/mathed/InsetMathHull.cpp:2151
 #, c-format
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Die Anzahl der Spalten in '%1$s' kann nicht geändert werden."
@@ -33927,6 +33927,15 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#~ msgid "Documents|#o#O"
+#~ msgstr "Dokumente|#k"
+
+#~ msgid "Templates|#T#t"
+#~ msgstr "Vorlagen|#V"
+
+#~ msgid "Examples|#E#e"
+#~ msgstr "Beispiele|#B"
 
 #~ msgid ""
 #~ "Use font ligatures -- and --- instead of \\textendash and \\textemdash "
@@ -34944,9 +34953,6 @@ msgstr "Unbekannter Benutzer"
 
 #~ msgid "Session"
 #~ msgstr "Sitzung"
-
-#~ msgid "Documents"
-#~ msgstr "Dokumente"
 
 #~ msgid "&Use amsmath package automatically"
 #~ msgstr "&AMS-Mathe-Paket automatisch verwenden"
