@@ -103,7 +103,7 @@ void InsetMathDelim::metrics(MetricsInfo & mi, Dimension & dim) const
 		dw_ = 8;
 	if (dw_ < 4)
 		dw_ = 4;
-	dim.wid = dim0.width() + 2 * dw_;
+	dim.wid = dim0.width() + 2 * dw_ + 2 * mathed_thinmuskip(mi.base.font);
 	dim.asc = max(a0, d0) + h0;
 	dim.des = max(a0, d0) - h0;
 }
@@ -114,9 +114,10 @@ void InsetMathDelim::draw(PainterInfo & pi, int x, int y) const
 	Changer dummy = pi.base.changeEnsureMath();
 	Dimension const dim = dimension(*pi.base.bv);
 	int const b = y - dim.asc;
-	cell(0).draw(pi, x + dw_, y);
-	mathed_draw_deco(pi, x, b, dw_, dim.height(), left_);
-	mathed_draw_deco(pi, x + dim.width() - dw_,
+	int const skip = mathed_thinmuskip(pi.base.font);
+	cell(0).draw(pi, x + dw_ + skip, y);
+	mathed_draw_deco(pi, x + skip / 2, b, dw_, dim.height(), left_);
+	mathed_draw_deco(pi, x + dim.width() - dw_ - skip / 2,
 		b, dw_, dim.height(), right_);
 }
 
