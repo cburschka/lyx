@@ -1994,7 +1994,11 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		eat_whitespace(p, os, parent_context, false);
 		parent_context.check_layout(os);
 		begin_inset(os, "Flex ");
-		os << to_utf8(newinsetlayout->name()) << '\n'
+		docstring flex_name = newinsetlayout->name();
+		// FIXME: what do we do if the prefix is not Flex: ?
+		if (prefixIs(flex_name, from_ascii("Flex:")))
+			flex_name.erase(0, 5);
+		os << to_utf8(flex_name) << '\n'
 		   << "status collapsed\n";
 		if (newinsetlayout->isPassThru()) {
 			string const arg = p.verbatimEnvironment(name);
@@ -4803,7 +4807,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				p.get_token();
 			p.skip_spaces();
 			context.check_layout(os);
-			docstring const name = newinsetlayout->name();
+			docstring name = newinsetlayout->name();
 			bool const caption = name.find(from_ascii("Caption:")) == 0;
 			if (caption) {
 				// Already done for floating minted listings.
@@ -4812,6 +4816,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					os << to_utf8(name.substr(8)) << '\n';
 				}
 			} else {
+				// FIXME: what do we do if the prefix is not Flex: ?
+				if (prefixIs(name, from_ascii("Flex:")))
+					name.erase(0, 5);
 				begin_inset(os, "Flex ");
 				os << to_utf8(name) << '\n'
 				   << "status collapsed\n";
