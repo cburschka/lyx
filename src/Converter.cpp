@@ -416,7 +416,10 @@ bool Converters::convert(Buffer const * buffer,
 			LYXERR(Debug::FILES, "No converter defined! "
 				   "I use convertDefault.py:\n\t" << command);
 			Systemcall one;
-			one.startscript(Systemcall::Wait, command,
+            Systemcall::Starttype starttype =
+                (buffer && buffer->isClone()) ?
+                    Systemcall::WaitLoop : Systemcall::Wait;
+			one.startscript(starttype, command,
 			                buffer ? buffer->filePath() : string(),
 			                buffer ? buffer->layoutPos() : string());
 			if (to_file.isReadableFile()) {
@@ -640,7 +643,10 @@ bool Converters::convert(Buffer const * buffer,
 				// We're not waiting for the result, so we can't do anything
 				// else here.
 			} else {
-				res = one.startscript(Systemcall::Wait,
+				Systemcall::Starttype starttype =
+						(buffer && buffer->isClone()) ?
+							Systemcall::WaitLoop : Systemcall::Wait;
+				res = one.startscript(starttype,
 						to_filesystem8bit(from_utf8(command)),
 						buffer ? buffer->filePath()
 						       : string(),
@@ -663,7 +669,7 @@ bool Converters::convert(Buffer const * buffer,
 					string const command2 = conv.parselog() +
 						" < " + quoteName(infile2 + ".out") +
 						" > " + quoteName(logfile);
-					one.startscript(Systemcall::Wait,
+					one.startscript(starttype,
 						to_filesystem8bit(from_utf8(command2)),
 						buffer->filePath(),
 						buffer->layoutPos());
@@ -673,7 +679,15 @@ bool Converters::convert(Buffer const * buffer,
 			}
 
 			if (res) {
-				if (conv.to() == "program") {
+				if (res == Systemcall::KILLED) {
+					Alert::information(_("Process Killed"),
+						bformat(_("The conversion process was killed while running:\n%1$s"),
+							wrapParas(from_utf8(command))));
+				} else if (res == Systemcall::TIMEOUT) {
+					Alert::information(_("Process Timed Out"),
+						bformat(_("The conversion process:\n%1$s\ntimed out before completing."),
+							wrapParas(from_utf8(command))));
+				} else if (conv.to() == "program") {
 					Alert::error(_("Build errors"),
 						_("There were errors during the build process."));
 				} else {
