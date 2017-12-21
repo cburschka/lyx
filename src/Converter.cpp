@@ -810,7 +810,7 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 	string const name = buffer.latexName();
 	LaTeX latex(command, runparams, FileName(makeAbsPath(name)),
 	            buffer.filePath(), buffer.layoutPos(),
-	            buffer.lastPreviewError());
+	            buffer.isClone(), buffer.lastPreviewError());
 	TeXErrors terr;
 	// The connection closes itself at the end of the scope when latex is
 	// destroyed. One cannot close (and destroy) buffer while the converter is

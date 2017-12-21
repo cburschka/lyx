@@ -93,9 +93,10 @@ bool operator!=(AuxInfo const & a, AuxInfo const & o)
  */
 
 LaTeX::LaTeX(string const & latex, OutputParams const & rp,
-	     FileName const & f, string const & p, string const & lp,
-	     bool const clean_start)
-	: cmd(latex), file(f), path(p), lpath(lp), runparams(rp), biber(false)
+	     FileName const & f, string const & p, string const & lp, 
+	     bool allow_cancellation, bool const clean_start)
+	: cmd(latex), file(f), path(p), lpath(lp), runparams(rp), biber(false),
+       allow_cancel(allow_cancellation)
 {
 	num_errors = 0;
 	// lualatex can still produce a DVI with --output-format=dvi. However,
@@ -244,12 +245,16 @@ int LaTeX::run(TeXErrors & terr)
 	message(runMessage(count));
 
 	int exit_code = startscript();
+	if (exit_code == Systemcall::KILLED)
+		return Systemcall::KILLED;
 
 	scanres = scanLogFile(terr);
 	if (scanres & ERROR_RERUN) {
 		LYXERR(Debug::LATEX, "Rerunning LaTeX");
 		terr.clearErrors();
 		exit_code = startscript();
+		if (exit_code == Systemcall::KILLED)
+			return Systemcall::KILLED;
 		scanres = scanLogFile(terr);
 	}
 
@@ -339,7 +344,9 @@ int LaTeX::run(TeXErrors & terr)
 		LYXERR(Debug::DEPEND, "Dep. file has changed or rerun requested");
 		LYXERR(Debug::LATEX, "Run #" << count);
 		message(runMessage(count));
-		startscript();
+		int exitCode = startscript();
+		if (exitCode == Systemcall::KILLED)
+			return Systemcall::KILLED;
 		scanres = scanLogFile(terr);
 
 		// update the depedencies
@@ -442,7 +449,9 @@ int LaTeX::startscript()
 		     + quoteName(onlyFileName(file.toFilesystemEncoding()))
 		     + " > " + os::nulldev();
 	Systemcall one;
-	return one.startscript(Systemcall::Wait, tmp, path, lpath);
+	Systemcall::Starttype const starttype = 
+		allow_cancel ? Systemcall::WaitLoop : Systemcall::Wait;
+	return one.startscript(starttype, tmp, path, lpath, true);
 }
 
 

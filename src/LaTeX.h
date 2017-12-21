@@ -162,6 +162,7 @@ public:
 	      support::FileName const & file,
 	      std::string const & path = empty_string(),
 	      std::string const & lpath = empty_string(),
+	      bool allow_cancellation = false,
 	      bool const clean_start = false);
 
 	/// runs LaTeX several times
@@ -242,9 +243,10 @@ private:
 
 	/// Do we use biber?
 	bool biber;
-
 	///
 	std::vector <std::string> children;
+	///
+	bool allow_cancel;
 };
 
 
