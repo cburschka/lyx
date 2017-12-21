@@ -541,6 +541,7 @@ Menuset
 		UpdateFormats
 		OptItem "View Master Document|M" "master-buffer-view"
 		OptItem "Update Master Document|a" "master-buffer-update"
+		OptItem "Cancel Background Process|P" "export-cancel"
 		Separator
 		Item "Compressed|o" "buffer-toggle-compression"
 		Item "Disable Editing|E" "buffer-toggle-read-only"

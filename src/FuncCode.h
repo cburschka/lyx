@@ -474,6 +474,8 @@ enum FuncCode
 	LFUN_TOOLBAR_MOVABLE,           // daniel, 20160712
 	LFUN_FONT_CROSSOUT,             // uwestoehr 20170404
 	LFUN_DEVEL_MODE_TOGGLE,         // lasgouttes 20170723
+	//370
+	LFUN_EXPORT_CANCEL,             // rgh, 20171227
 	LFUN_LASTACTION                 // end of the table
 };
 

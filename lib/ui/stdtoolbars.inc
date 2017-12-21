@@ -103,6 +103,7 @@ ToolbarSet
 		Item "Update" "buffer-update"
 		Item "View master document" "master-buffer-view"
 		Item "Update master document" "master-buffer-update"
+#		Item "Cancel export" "export-cancel"
 		Item "Enable Forward/Reverse Search" "buffer-toggle-output-sync"
 		Separator
 		StickyPopupMenu "view-others" "View other formats"

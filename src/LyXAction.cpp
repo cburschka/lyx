@@ -1542,6 +1542,15 @@ void LyXAction::init()
 		{ LFUN_ESCAPE, "escape", ReadOnly, Edit },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_EXPORT_CANCEL
+ * \li Action: Cancel background export process.
+ * \li Syntax: export-cancel
+ * \li Origin: rgh, 10 December 2017
+ * \endvar
+ */
+		{ LFUN_EXPORT_CANCEL, "export-cancel", ReadOnly | NoUpdate | NoInternal, Edit },
+		
+/*!
  * \var lyx::FuncCode lyx::LFUN_FILE_INSERT
  * \li Action: Inserts another LyX file.
  * \li Syntax: file-insert [<FILE>]

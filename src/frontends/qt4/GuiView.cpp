@@ -1918,6 +1918,10 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		enable = doc_buffer != 0;
 		break;
 
+	case LFUN_EXPORT_CANCEL:
+		enable = d.processing_thread_watcher_.isRunning();
+		break;
+
 	case LFUN_BUFFER_CLOSE:
 	case LFUN_VIEW_CLOSE:
 		enable = doc_buffer != 0;
@@ -3726,6 +3730,10 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 						0, &Buffer::preview);
 			break;
 		}
+		case LFUN_EXPORT_CANCEL: {
+			theApp()->cancel_export = true;
+			break;
+		}
 		case LFUN_BUFFER_SWITCH: {
 			string const file_name = to_utf8(cmd.argument());
 			if (!FileName::isAbsolute(file_name)) {
@@ -4699,7 +4707,6 @@ SEMenu::SEMenu(QWidget * parent)
 	connect(action, SIGNAL(triggered()),
 		parent, SLOT(disableShellEscape()));
 }
-
 
 } // namespace frontend
 } // namespace lyx
