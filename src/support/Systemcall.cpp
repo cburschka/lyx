@@ -23,6 +23,8 @@
 #include "support/os.h"
 #include "support/ProgressInterface.h"
 
+#include "frontends/Application.h"
+
 #include "LyX.h"
 #include "LyXRC.h"
 
@@ -251,6 +253,7 @@ int Systemcall::startscript(Starttype how, string const & what,
 			parsecmd(what_ss, infile, outfile, errfile).c_str());
 
 	SystemcallPrivate d(infile, outfile, errfile);
+	bool do_events = process_events || how == WaitLoop;
 
 #ifdef Q_OS_WIN32
 	// QProcess::startDetached cannot provide environment variables. When the
@@ -259,34 +262,48 @@ int Systemcall::startscript(Starttype how, string const & what,
 	// time a viewer is started. To avoid this, we fall back on Windows to the
 	// original implementation that creates a QProcess object.
 	d.startProcess(cmd, path, lpath, false);
-	if (!d.waitWhile(SystemcallPrivate::Starting, process_events, -1)) {
-		LYXERR0("Systemcall: '" << cmd << "' did not start!");
-		LYXERR0("error " << d.errorMessage());
-		return 10;
+	if (!d.waitWhile(SystemcallPrivate::Starting, do_events, -1)) {
+		if (d.state == SystemcallPrivate::Error) {
+			LYXERR0("Systemcall: '" << cmd << "' did not start!");
+			LYXERR0("error " << d.errorMessage());
+			return NOSTART;
+		} else if (d.state == SystemcallPrivate::Killed) {
+			LYXERR0("Killed: " << cmd);
+			return KILLED;
+		}
 	}
 	if (how == DontWait) {
 		d.releaseProcess();
-		return 0;
+		return OK;
 	}
 #else
 	d.startProcess(cmd, path, lpath, how == DontWait);
 	if (how == DontWait && d.state == SystemcallPrivate::Running)
-		return 0;
+		return OK;
 
 	if (d.state == SystemcallPrivate::Error
-			|| !d.waitWhile(SystemcallPrivate::Starting, process_events, -1)) {
-		LYXERR0("Systemcall: '" << cmd << "' did not start!");
-		LYXERR0("error " << d.errorMessage());
-		return 10;
+			|| !d.waitWhile(SystemcallPrivate::Starting, do_events, -1)) {
+		if (d.state == SystemcallPrivate::Error) {
+			LYXERR0("Systemcall: '" << cmd << "' did not start!");
+			LYXERR0("error " << d.errorMessage());
+			return NOSTART;
+		} else if (d.state == SystemcallPrivate::Killed) {
+			LYXERR0("Killed: " << cmd);
+			return KILLED;
+		}
 	}
 #endif
 
-	if (!d.waitWhile(SystemcallPrivate::Running, process_events,
+	if (!d.waitWhile(SystemcallPrivate::Running, do_events,
 			 os::timeout_min() * 60 * 1000)) {
+		if (d.state == SystemcallPrivate::Killed) {
+			LYXERR0("Killed: " << cmd);
+			return KILLED;
+		}
 		LYXERR0("Systemcall: '" << cmd << "' did not finish!");
 		LYXERR0("error " << d.errorMessage());
 		LYXERR0("status " << d.exitStatusMessage());
-		return 20;
+		return TIMEOUT;
 	}
 
 	int const exit_code = d.exitCode();
@@ -383,18 +400,19 @@ void SystemcallPrivate::startProcess(QString const & cmd, string const & path,
 }
 
 
-void SystemcallPrivate::processEvents()
-{
-	if (process_events_) {
-		QCoreApplication::processEvents(/*QEventLoop::ExcludeUserInputEvents*/);
-	}
-}
-
-
-void SystemcallPrivate::waitAndProcessEvents()
+bool SystemcallPrivate::waitAndCheck()
 {
 	Sleep::millisec(100);
-	processEvents();
+	if (theApp()->cancel_export) {
+		// is there a better place to reset this?
+		process_->kill();
+		state = Killed;
+		theApp()->cancel_export = false;
+		LYXERR0("Export Canceled!!");
+		return false;
+	}
+	QCoreApplication::processEvents(/*QEventLoop::ExcludeUserInputEvents*/);
+	return true;
 }
 
 
@@ -449,7 +467,9 @@ bool SystemcallPrivate::waitWhile(State waitwhile, bool process_events, int time
 	// process events while waiting, no timeout
 	if (timeout == -1) {
 		while (state == waitwhile && state != Error) {
-			waitAndProcessEvents();
+			// check for cancellation of background process
+			if (!waitAndCheck())
+				return false;
 		}
 		return state != Error;
 	}
@@ -458,7 +478,10 @@ bool SystemcallPrivate::waitWhile(State waitwhile, bool process_events, int time
 	QTime timer;
 	timer.start();
 	while (state == waitwhile && state != Error && !timedout) {
-		waitAndProcessEvents();
+		// check for cancellation of background process
+		if (!waitAndCheck())
+			return false;
+
 		if (timer.elapsed() > timeout) {
 			bool stop = queryStopCommand(cmd_);
 			// The command may have finished in the meantime

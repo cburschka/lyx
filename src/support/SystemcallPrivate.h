@@ -40,7 +40,8 @@ public:
 		Starting,
 		Running,
 		Finished,
-		Error
+		Error,
+		Killed
 	};
 	State state;
 
@@ -95,6 +96,9 @@ private:
 	void processEvents();
 	void killProcess();
 
+	/// returns false if we killed the process
+	/// actually returns Systemcall::ReturnValue
+	bool waitAndCheck();
 };
 
 } // namespace support
