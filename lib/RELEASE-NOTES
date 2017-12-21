@@ -3,6 +3,9 @@
 
 !!Interface changes
 
+- It is now possible to cancel background export processes. A menu entry
+  to do so will appear on the Document menu when such a process is underway.
+  The LFUN for this is export-cancel.
 
 
 !!Documents compilation process and images conversion
@@ -25,6 +28,7 @@
 
 !!!The following new LyX functions have been introduced in 2.4:
 
+LFUN_EXPORT_CANCEL: Used to cancel background export processes.
 
 
 !!!The following LyX functions have been changed in 2.4:
