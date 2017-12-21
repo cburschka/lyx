@@ -49,6 +49,15 @@ using namespace lyx::support::os;
 
 namespace lyx {
 
+
+struct App {
+	bool cancel_export;
+};
+
+App app;
+App theApp() { return app; }
+
+
 string const trimSpaceAndEol(string const & a)
 {
 	return trim(a, " \t\n\r");
