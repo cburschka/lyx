@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-12-17 06:57+0100\n"
-"PO-Revision-Date: 2017-12-17 05:59+0000\n"
+"POT-Creation-Date: 2017-12-17 19:29+0100\n"
+"PO-Revision-Date: 2017-12-21 05:06+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1394,11 +1394,11 @@ msgstr "Percento zmeny zobrazenia v LyXe"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:215
 msgid "Sca&le on Screen (%):"
-msgstr "Mierka na O&brazovke (%):"
+msgstr "&Mierka na Obrazovke (%):"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:271
 msgid "Si&ze and Rotation"
-msgstr "&Veľkosť a rotácia"
+msgstr "Ve&ľkosť a rotácia"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:283 src/frontends/qt4/ui/TabularUi.ui:175
 msgid "Rotate"
@@ -1819,15 +1819,15 @@ msgstr "Povoliť mikr&o-typografické rozšírenia"
 
 #: src/frontends/qt4/ui/FontUi.ui:300
 msgid ""
-"Use font ligatures -- and --- instead of \\textendash and \\textemdash for "
-"en- and em-dashes"
+"By default, a line break can occur after en- and em-dashes. Checking this "
+"box prevents that."
 msgstr ""
-"Použiť zliatky fontu pre '--' a '---' namiesto \\textendash a \\textemdash "
-"pre en a em čiarky"
+"Normálne, zalomenie prichádza za 'en'- a 'em'- pomlčkou. Začiarknutím "
+"políčka sa tomu zabráni."
 
 #: src/frontends/qt4/ui/FontUi.ui:303
-msgid "Output en- and &em-dashes as ligatures"
-msgstr "Výstup pre en a em čiarky ako zliatky"
+msgid "Disallow l&ine breaks after dashes"
+msgstr "Nepovoliť zalomenie &riadku za pomlčkami"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
@@ -1915,7 +1915,7 @@ msgstr "Dodatočné LaTeX voľby"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:491
 msgid "LaTeX &options:"
-msgstr "LaTe&X voľby:"
+msgstr "LaTeX voľby:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:517
 msgid ""
@@ -2008,7 +2008,7 @@ msgstr "&Hodnota:"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:100 src/frontends/qt4/ui/VSpaceUi.ui:61
 msgid "Custom value. Needs spacing type \"Custom\"."
-msgstr "Vlastná hodnota. Potrebuje typ rozstupu &quot;Vlastný&quot;."
+msgstr "Vlastná hodnota. Potrebuje typ rozstupu \"Vlastný\"."
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:110
 msgid "&Fill Pattern:"
@@ -2513,7 +2513,7 @@ msgstr "Zalamovať riadky presahujúce štandardnú dĺžku riadkov"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:271
 msgid "&Break long lines"
-msgstr "Rozdeliť dl&hé riadky"
+msgstr "Rozdeliť dlh&é riadky"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:281
 msgid "Make spaces visible by a special symbol"
@@ -4419,8 +4419,7 @@ msgstr "&Vlastná Šírka:"
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:52
 msgid "Custom value. \"List Indentation\" needs to be set to \"Custom\"."
 msgstr ""
-"Vlastná hodnota. &quot;Odsadzovanie Zoznamov&quot; je treba nastaviť na "
-"&quot;Vlastné&quot;."
+"Vlastná hodnota. \"Odsadzovanie Zoznamov\" je treba nastaviť na \"Vlastné\"."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:40
 msgid "Avai&lable indexes:"
@@ -4465,7 +4464,7 @@ msgstr "Pred pokračovaním kompilácie LaTeX-om okno automaticky vyčistiť"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:176
 msgid "&Clear automatically"
-msgstr "Vyčistiť &automaticky"
+msgstr "Vyčis&tiť automaticky"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:191
 msgid "Debug messages"
@@ -4477,7 +4476,7 @@ msgstr "Neukazovať žiadne ladiace hlásenia"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:206
 msgid "&None"
-msgstr "Žia&dne"
+msgstr "Ž&iadne"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:213
 msgid "Display the debug messages selected to the right"
@@ -4493,7 +4492,7 @@ msgstr "Ukazovať všetky ladiace hlásenia"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:226
 msgid "&All"
-msgstr "&Všetko"
+msgstr "Vš&etko"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:236
 msgid "Display statusbar messages?"
@@ -4501,7 +4500,7 @@ msgstr "Ukázať správy v stavovom pruhu?"
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:239
 msgid "&Statusbar messages"
-msgstr "Správy v &stavovom pruhu"
+msgstr "Sp&rávy v stavovom pruhu"
 
 #: src/frontends/qt4/ui/RefUi.ui:73
 msgid "&In[[buffer]]:"
@@ -4674,7 +4673,7 @@ msgstr "Zmazať súčasnú skratku"
 #: src/frontends/qt4/ui/ShortcutUi.ui:100
 #: src/frontends/qt4/ui/TabularUi.ui:1118
 msgid "C&lear"
-msgstr "&Vyčistiť"
+msgstr "V&yčistiť"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:107
 msgid "&Shortcut:"
@@ -4799,7 +4798,7 @@ msgstr "Zlúčiť bunky rozličných riadkov"
 
 #: src/frontends/qt4/ui/TabularUi.ui:121
 msgid "M&ultirow"
-msgstr "Viac-r&iadkové"
+msgstr "&Viac-riadkové"
 
 #: src/frontends/qt4/ui/TabularUi.ui:133
 msgid "&Vertical Offset:"
@@ -4950,7 +4949,7 @@ msgstr "Použiť štandardný štýl okraja (mriežka)"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1150
 msgid "De&fault"
-msgstr "Š&tandardný"
+msgstr "Štandardn&ý"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1176
 msgid "Additional Space"
@@ -4970,7 +4969,7 @@ msgstr "&Medzi riadkami:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1304
 msgid "&Multi-page table"
-msgstr "Via&cstranná tabuľka"
+msgstr "V&iac-stranná tabuľka"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1310
 msgid "Select for tables that span multiple pages"
@@ -6577,7 +6576,7 @@ msgstr "Autor"
 
 #: lib/layouts/IEEEtran.layout:124 lib/layouts/beamer.layout:984
 msgid "Short Author|S"
-msgstr "Skratka Autora"
+msgstr "Skratka Autora|k"
 
 #: lib/layouts/IEEEtran.layout:125
 msgid "A short version of the author name"
@@ -7436,7 +7435,7 @@ msgstr "American Chemical Society (ACS)"
 #: lib/layouts/stdsections.inc:93 lib/layouts/tufte-book.layout:80
 #: lib/layouts/tufte-book.layout:108 lib/layouts/tufte-handout.layout:40
 msgid "Short Title|S"
-msgstr "Krátky Titul"
+msgstr "Krátky Titul|K"
 
 #: lib/layouts/achemso.layout:75
 msgid "Short title which will appear in the running header"
@@ -17795,7 +17794,7 @@ msgstr "Ďalšia krížová referencia|o"
 
 #: lib/ui/stdcontext.inc:88
 msgid "Go to Label|G"
-msgstr "Prejsť na Značku|P"
+msgstr "Prejsť na Heslo|P"
 
 #: lib/ui/stdcontext.inc:90
 msgid "<Reference>|R"
@@ -18197,23 +18196,23 @@ msgstr "Zavri Aktuálny Náhľad"
 
 #: lib/ui/stdcontext.inc:372
 msgid "Anything|A"
-msgstr "Hocičo"
+msgstr "Hocičo|H"
 
 #: lib/ui/stdcontext.inc:373
 msgid "Anything Non-Empty|o"
-msgstr "Hocijaký Neprázdny"
+msgstr "Hocijaký Neprázdny|e"
 
 #: lib/ui/stdcontext.inc:374
 msgid "Any Word|W"
-msgstr "Hocijaké Slovo"
+msgstr "Hocijaké Slovo|S"
 
 #: lib/ui/stdcontext.inc:375
 msgid "Any Number|N"
-msgstr "Hocijaké Číslo"
+msgstr "Hocijaké Číslo|l"
 
 #: lib/ui/stdcontext.inc:376
 msgid "User Defined|U"
-msgstr "Užívateľom Definované"
+msgstr "Užívateľom Definované|U"
 
 #: lib/ui/stdcontext.inc:385 lib/ui/stdmenus.inc:262
 msgid "Append Argument"
@@ -18278,7 +18277,7 @@ msgstr "Vpravo|r"
 
 #: lib/ui/stdcontext.inc:433
 msgid "Left|f"
-msgstr "Vľavo"
+msgstr "Vľavo|V"
 
 #: lib/ui/stdcontext.inc:434 lib/ui/stdmenus.inc:214
 msgid "Center|C"
@@ -18286,7 +18285,7 @@ msgstr "Na Stred|t"
 
 #: lib/ui/stdcontext.inc:435
 msgid "Right|h"
-msgstr "Vpravo"
+msgstr "Vpravo|p"
 
 #: lib/ui/stdcontext.inc:436
 msgid "Decimal"
@@ -24500,7 +24499,7 @@ msgstr "DocBook"
 
 #: lib/configure.py:643
 msgid "DocBook|B"
-msgstr "DocBook"
+msgstr "DocBook|B"
 
 #: lib/configure.py:644
 msgid "DocBook (XML)"
@@ -24524,7 +24523,7 @@ msgstr "NoWeb"
 
 #: lib/configure.py:648
 msgid "NoWeb|N"
-msgstr "NoWeb"
+msgstr "NoWeb|N"
 
 #: lib/configure.py:650
 msgid "Sweave (Japanese)"
@@ -24556,7 +24555,7 @@ msgstr "LaTeX (prostý)"
 
 #: lib/configure.py:656
 msgid "LaTeX (plain)|L"
-msgstr "LaTeX (prostý)"
+msgstr "LaTeX (prostý)|L"
 
 #: lib/configure.py:657
 msgid "LaTeX (LuaTeX)"
@@ -24580,7 +24579,7 @@ msgstr "Prostý text"
 
 #: lib/configure.py:661
 msgid "Plain text|a"
-msgstr "Prostý text"
+msgstr "Prostý text|r"
 
 #: lib/configure.py:662
 msgid "Plain text (pstotext)"
@@ -24632,7 +24631,7 @@ msgstr "LyXHTML"
 
 #: lib/configure.py:681
 msgid "LyXHTML|y"
-msgstr "LyXHTML"
+msgstr "LyXHTML|y"
 
 #: lib/configure.py:689 src/frontends/qt4/GuiLog.cpp:252
 #: src/insets/InsetBibtex.cpp:155
@@ -24657,7 +24656,7 @@ msgstr "Postscript"
 
 #: lib/configure.py:700
 msgid "Postscript|t"
-msgstr "Postscript"
+msgstr "Postscript|t"
 
 #: lib/configure.py:709
 msgid "PDF (ps2pdf)"
@@ -24665,7 +24664,7 @@ msgstr "PDF (ps2pdf)"
 
 #: lib/configure.py:709
 msgid "PDF (ps2pdf)|P"
-msgstr "PDF (ps2pdf)"
+msgstr "PDF (ps2pdf)|P"
 
 #: lib/configure.py:710
 msgid "PDF (pdflatex)"
@@ -24673,7 +24672,7 @@ msgstr "PDF (pdflatex)"
 
 #: lib/configure.py:710
 msgid "PDF (pdflatex)|F"
-msgstr "PDF (pdflatex)"
+msgstr "PDF (pdflatex)|F"
 
 #: lib/configure.py:711
 msgid "PDF (dvipdfm)"
@@ -24681,7 +24680,7 @@ msgstr "PDF (dvipdfm)"
 
 #: lib/configure.py:711
 msgid "PDF (dvipdfm)|m"
-msgstr "PDF (dvipdfm)"
+msgstr "PDF (dvipdfm)|m"
 
 #: lib/configure.py:712
 msgid "PDF (XeTeX)"
@@ -24717,7 +24716,7 @@ msgstr "DVI"
 
 #: lib/configure.py:721
 msgid "DVI|D"
-msgstr "DVI"
+msgstr "DVI|D"
 
 #: lib/configure.py:722
 msgid "DVI (LuaTeX)"
@@ -24769,7 +24768,7 @@ msgstr "MS Word"
 
 #: lib/configure.py:741
 msgid "MS Word|W"
-msgstr "MS Word"
+msgstr "MS Word|W"
 
 #: lib/configure.py:742
 msgid "MS Word Office Open XML"
@@ -24777,7 +24776,7 @@ msgstr "MS-Word Office-Open XML"
 
 #: lib/configure.py:742
 msgid "MS Word Office Open XML|O"
-msgstr "MS-Word Office-Open XML|W"
+msgstr "MS-Word Office-Open XML|O"
 
 #: lib/configure.py:745
 msgid "Table (CSV)"
@@ -27224,7 +27223,7 @@ msgid ""
 "Forbid use of external converters with 'needauth' option to prevent "
 "undesired effects."
 msgstr ""
-"Blokovať externé konvertori s 'needauth' voľbou na zabránenie nežiadúcich "
+"Blokovať externé konvertory s 'needauth' voľbou na zabránenie nežiadúcich "
 "efektov. "
 
 #: src/LyXRC.cpp:3129
@@ -31573,11 +31572,11 @@ msgstr "Pridať do osobného slovníka"
 
 #: src/frontends/qt4/Menus.cpp:852
 msgid "Ignore all|I"
-msgstr "Ignorovať všade"
+msgstr "Ignorovať všade|I"
 
 #: src/frontends/qt4/Menus.cpp:860
 msgid "Remove from personal dictionary|r"
-msgstr "Vybrať z osobného slovníka"
+msgstr "Vybrať z osobného slovníka|r"
 
 #: src/frontends/qt4/Menus.cpp:901
 msgid "Language|L"
@@ -31610,12 +31609,12 @@ msgstr "Aktualizovať (Iné Formáty)"
 #: src/frontends/qt4/Menus.cpp:1113
 #, c-format
 msgid "View [%1$s]|V"
-msgstr "Zobraziť [%1$s]"
+msgstr "Zobraziť [%1$s]|o"
 
 #: src/frontends/qt4/Menus.cpp:1114
 #, c-format
 msgid "Update [%1$s]|U"
-msgstr "Aktualizovať [%1$s]"
+msgstr "Aktualizovať [%1$s]|k"
 
 #: src/frontends/qt4/Menus.cpp:1225
 msgid "No Custom Insets Defined!"
@@ -33523,6 +33522,16 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid ""
+#~ "Use font ligatures -- and --- instead of \\textendash and \\textemdash "
+#~ "for en- and em-dashes"
+#~ msgstr ""
+#~ "Použiť zliatky fontu pre '--' a '---' namiesto \\textendash a "
+#~ "\\textemdash pre en a em čiarky"
+
+#~ msgid "Output en- and &em-dashes as ligatures"
+#~ msgstr "Výstup pre en a em čiarky ako zliatk&y"
+
 #~ msgid "ACM Volume:"
 #~ msgstr "ACM Diel:"
 
@@ -34334,7 +34343,7 @@ msgstr "Neznámy používateľ"
 #~ msgstr "Nastavenia Tabuľky…|a"
 
 #~ msgid "&Longtable"
-#~ msgstr "Via&cstranná tabuľka"
+#~ msgstr "Via&c-stranná tabuľka"
 
 #~ msgid "Breakable Table|g"
 #~ msgstr "Viac-stranná Tabuľka|V"
