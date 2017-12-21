@@ -188,12 +188,12 @@ private:
 	///
 	void deplog(DepTable & head);
 
-	///
-	bool runMakeIndex(std::string const &, OutputParams const &,
+	/// returns exit code
+	int runMakeIndex(std::string const &, OutputParams const &,
 			  std::string const & = std::string());
 
-	///
-	bool runMakeIndexNomencl(support::FileName const &,
+	/// returns exit code
+	int runMakeIndexNomencl(support::FileName const &, 
 				 std::string const &, std::string const &);
 
 	///
@@ -215,7 +215,7 @@ private:
 
 	///
 	bool runBibTeX(std::vector<AuxInfo> const &,
-		       OutputParams const &);
+		       OutputParams const &, int & exit_code);
 
 	///
 	void removeAuxiliaryFiles() const;
