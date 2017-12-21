@@ -175,7 +175,7 @@ foreach my $pofilename ( @ARGV ) {
 
     if ($check_qt) {
       # Check for "&" shortcuts
-      if ( ( $msgid =~ m/&[^ ]/ ) != ( $msgstr =~ m/&[^ ]/ ) ) {
+      if ( ( $msgid =~ m/&[^ &]/ ) != ( $msgstr =~ m/&[^ &]/ ) ) {
         print "Line $linenum: Missing or unexpected Qt shortcut:\n  '$msgid' => '$msgstr'\n"
           unless $only_total;
         ++$bad{"Bad Qt shortcuts"};
