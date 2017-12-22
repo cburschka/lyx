@@ -61,4 +61,12 @@ namespace lyx {
 		static frontend::FontMetrics dummy;
 		return dummy;
 	}
+
+	struct App {
+		bool cancel_export;
+	};
+
+	App app;
+	App theApp() { return app; }
+
 } // namespace lyx
