@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-12-20 19:15+0100\n"
-"PO-Revision-Date: 2017-12-21 04:48+0000\n"
+"POT-Creation-Date: 2017-12-22 07:16+0100\n"
+"PO-Revision-Date: 2017-12-22 06:53+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1207,7 +1207,7 @@ msgstr "Nový &Dokument"
 
 #: src/frontends/qt4/ui/CompareUi.ui:112
 msgid "Ol&d Document"
-msgstr "&Bývalí Dokument"
+msgstr "Bý&valí Dokument"
 
 #: src/frontends/qt4/ui/CompareUi.ui:178
 msgid ""
@@ -2151,7 +2151,7 @@ msgstr "Názov súboru pre zaradenie"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:282
 msgid "&Include Type:"
-msgstr "Spôsob za&hrnutia:"
+msgstr "Spôsob Za&hrnutia:"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:293 src/insets/InsetInclude.cpp:383
 msgid "Include"
@@ -9182,7 +9182,7 @@ msgstr "Mód"
 #: lib/layouts/beamer.layout:356 lib/layouts/beamer.layout:385
 #: lib/layouts/beamer.layout:417
 msgid "Mode Specification|S"
-msgstr "Špecifikácie módu"
+msgstr "Špecifikácie Módu"
 
 #: lib/layouts/beamer.layout:210 lib/layouts/beamer.layout:264
 #: lib/layouts/beamer.layout:296 lib/layouts/beamer.layout:325
@@ -9507,7 +9507,7 @@ msgstr "Blok:"
 
 #: lib/layouts/beamer.layout:871
 msgid "Action Specification|S"
-msgstr "Špecifikácie akcie"
+msgstr "Špecifikácie Akcie"
 
 #: lib/layouts/beamer.layout:878
 msgid "Block Title"
@@ -9612,7 +9612,7 @@ msgstr "Korolár."
 #: lib/layouts/beamer.layout:1505 lib/layouts/beamer.layout:1525
 #: lib/layouts/beamer.layout:1550
 msgid "Action Specifications|S"
-msgstr "Špecifikácie akcie"
+msgstr "Špecifikácie Akcie"
 
 #: lib/layouts/beamer.layout:1236 lib/layouts/foils.layout:330
 #: lib/layouts/theorems-starred.inc:162
@@ -14389,7 +14389,7 @@ msgstr "Na fóliách"
 
 #: lib/layouts/powerdot.layout:594
 msgid "Overlay Specification|S"
-msgstr "Špecifikácie prekrytia"
+msgstr "Špecifikácie Prekrytia"
 
 #: lib/layouts/powerdot.layout:595
 msgid "Specify the overlay settings (see powerdot manual)"
@@ -14477,7 +14477,7 @@ msgstr "Elektronická Adresa:"
 
 #: lib/layouts/revtex4-1.layout:119 lib/layouts/revtex4.layout:207
 msgid "Electronic Address Option|s"
-msgstr "Voľba elektronická adresa"
+msgstr "Voľba Elektronická Adresa"
 
 #: lib/layouts/revtex4-1.layout:120 lib/layouts/revtex4.layout:208
 msgid "Optional argument to the email command"
@@ -19351,6 +19351,10 @@ msgstr "Zobraziť Hlavný Dokument|H"
 #: lib/ui/stdmenus.inc:543
 msgid "Update Master Document|a"
 msgstr "Aktualizovať Hlavný Dokument|A"
+
+#: lib/ui/stdmenus.inc:544
+msgid "Cancel Background Process|P"
+msgstr "Zrušiť Beh Úlohy v Pozadí|B"
 
 #: lib/ui/stdmenus.inc:545
 msgid "Compressed|o"
@@ -26460,6 +26464,34 @@ msgstr ""
 #: src/Converter.cpp:630 src/Format.cpp:722 src/Format.cpp:793
 msgid "Executing command: "
 msgstr "Vykonávam príkaz: "
+
+#: src/Converter.cpp:683
+msgid "Process Killed"
+msgstr "Úloha Prerušená"
+
+#: src/Converter.cpp:684
+#, c-format
+msgid ""
+"The conversion process was killed while running:\n"
+"%1$s"
+msgstr ""
+"Konverzná úloha bola zrušená počas spracovania:\n"
+"%1$s"
+
+#: src/Converter.cpp:687
+msgid "Process Timed Out"
+msgstr "Čas Úlohy Vypršal"
+
+#: src/Converter.cpp:688
+#, c-format
+msgid ""
+"The conversion process:\n"
+"%1$s\n"
+"timed out before completing."
+msgstr ""
+"Čas konverznej úlohy:\n"
+"%1$s\n"
+"vypršal pred dokončením."
 
 #: src/Converter.cpp:677
 msgid "Build errors"
