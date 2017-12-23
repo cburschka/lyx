@@ -820,6 +820,12 @@ bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 		});
 	int const result = latex.run(terr);
 
+	if (result == Systemcall::KILLED) {
+		Alert::error(_("Export canceled"),
+			_("The export process was terminated by the user."));
+		return result;
+	}
+
 	if (result & LaTeX::ERRORS)
 		buffer.bufferErrors(terr, errorList);
 
