@@ -419,9 +419,16 @@ bool Converters::convert(Buffer const * buffer,
 			Systemcall::Starttype starttype =
 				(buffer && buffer->isClone()) ?
 					Systemcall::WaitLoop : Systemcall::Wait;
-			one.startscript(starttype, command,
-			                buffer ? buffer->filePath() : string(),
-			                buffer ? buffer->layoutPos() : string());
+			int const exitval = one.startscript(starttype, command,
+					buffer ? buffer->filePath() : string(),
+					buffer ? buffer->layoutPos() : string());
+			if (exitval == Systemcall::KILLED) {
+				frontend::Alert::warning(
+					_("Converter killed"),
+					bformat(_("The running converter\n %1$s\nwas killed by the user."), 
+						from_utf8(command)));
+				return false;
+			}
 			if (to_file.isReadableFile()) {
 				if (conversionflags & try_cache)
 					ConverterCache::get().add(orig_from,
@@ -567,6 +574,8 @@ bool Converters::convert(Buffer const * buffer,
 			    && !contains(command, "-shell-escape"))
 				command += " -shell-escape ";
 			LYXERR(Debug::FILES, "Running " << command);
+			// FIXME KILLED
+			// Check changed return value here.
 			if (!runLaTeX(*buffer, command, runparams, errorList))
 				return false;
 		} else {
@@ -595,6 +604,8 @@ bool Converters::convert(Buffer const * buffer,
 					LYXERR(Debug::FILES, "Running "
 						<< command
 						<< " to update aux file");
+					// FIXME KILLED
+					// Check changed return value here.
 					if (!runLaTeX(*buffer, command,
 						      runparams, errorList))
 						return false;
@@ -652,6 +663,14 @@ bool Converters::convert(Buffer const * buffer,
 						       : string(),
 						buffer ? buffer->layoutPos()
 						       : string());
+				if (res == Systemcall::KILLED) {
+					frontend::Alert::warning(
+						_("Converter killed"),
+						bformat(_("The running converter\n %1$s\nwas killed by the user."), 
+							from_utf8(command)));
+					return false;
+				}
+				
 				if (!real_outfile.empty()) {
 					Mover const & mover = getMover(conv.to());
 					if (!mover.rename(outfile, real_outfile))
@@ -669,10 +688,17 @@ bool Converters::convert(Buffer const * buffer,
 					string const command2 = conv.parselog() +
 						" < " + quoteName(infile2 + ".out") +
 						" > " + quoteName(logfile);
-					one.startscript(starttype,
+					res = one.startscript(starttype,
 						to_filesystem8bit(from_utf8(command2)),
 						buffer->filePath(),
 						buffer->layoutPos());
+					if (res == Systemcall::KILLED) {
+						frontend::Alert::warning(
+							_("Converter killed"),
+							bformat(_("The running converter\n %1$s\nwas killed by the user."), 
+								from_utf8(command)));
+						return false;
+					}
 					if (!scanLog(*buffer, command, makeAbsPath(logfile, path), errorList))
 						return false;
 				}
@@ -800,6 +826,8 @@ bool Converters::scanLog(Buffer const & buffer, string const & /*command*/,
 }
 
 
+// FIXME KILL
+// Probably need to return an INT here
 bool Converters::runLaTeX(Buffer const & buffer, string const & command,
 			  OutputParams const & runparams, ErrorList & errorList)
 {
