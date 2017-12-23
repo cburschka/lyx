@@ -416,9 +416,9 @@ bool Converters::convert(Buffer const * buffer,
 			LYXERR(Debug::FILES, "No converter defined! "
 				   "I use convertDefault.py:\n\t" << command);
 			Systemcall one;
-            Systemcall::Starttype starttype =
-                (buffer && buffer->isClone()) ?
-                    Systemcall::WaitLoop : Systemcall::Wait;
+			Systemcall::Starttype starttype =
+				(buffer && buffer->isClone()) ?
+					Systemcall::WaitLoop : Systemcall::Wait;
 			one.startscript(starttype, command,
 			                buffer ? buffer->filePath() : string(),
 			                buffer ? buffer->layoutPos() : string());
