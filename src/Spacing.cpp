@@ -99,6 +99,18 @@ string envName(Spacing::Space space, bool useSetSpace)
 	return useSetSpace ? name : support::ascii_lowercase(name);
 }
 
+string cmdName(Spacing::Space space, bool useSetSpace)
+{
+	static char const * const cmd_names[]
+		= { "SingleSpacing", "OnehalfSpacing", "DoubleSpacing", "SetStretch", ""};
+	string const name = cmd_names[space];
+
+	if (useSetSpace && name == "SetStretch")
+		return "setSpacing";
+
+	return useSetSpace ? name : support::ascii_lowercase(name);
+}
+
 } // namespace
 
 string const Spacing::writeEnvirBegin(bool useSetSpace) const
@@ -115,6 +127,16 @@ string const Spacing::writeEnvirEnd(bool useSetSpace) const
 {
 	string const name = envName(space, useSetSpace);
 	return name.empty() ? string() : "\\end{" + name + '}';
+}
+
+
+string const Spacing::writeCmd(bool useSetSpace) const
+{
+	string const name = cmdName(space, useSetSpace);
+	if (space == Other)
+		return "\\" + name + "{" + getValueAsString() + '}';
+	else
+		return name.empty() ? string() : "\\" + name + "{}";
 }
 
 
