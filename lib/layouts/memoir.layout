@@ -250,6 +250,15 @@ End
 
 
 Input stdtitle.inc
+
+Style Title
+	NeedProtect          true
+End
+
+Style Author
+	NeedProtect          true
+End
+
 Input stdstruct.inc
 
 
