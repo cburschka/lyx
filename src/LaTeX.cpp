@@ -416,10 +416,11 @@ int LaTeX::run(TeXErrors & terr)
 	}
 
 	// I am not pretty sure if need this twice.
+	// MSVC complains that bool |= int is unsafe. Not sure why.
 	if (head.haschanged(nlofile))
-		rerun |= runMakeIndexNomencl(file, ".nlo", ".nls");
+		rerun |= (runMakeIndexNomencl(file, ".nlo", ".nls") != 0);
 	if (head.haschanged(glofile))
-		rerun |= runMakeIndexNomencl(file, ".glo", ".gls");
+		rerun |= (runMakeIndexNomencl(file, ".glo", ".gls") != 0);
 
 	// 5
 	// we will only run latex more if the log file asks for it.
