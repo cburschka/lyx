@@ -2424,7 +2424,9 @@ void Paragraph::latex(BufferParams const & bparams,
 
 	// if the paragraph is empty, the loop will not be entered at all
 	if (empty()) {
-		if (style.isCommand()) {
+		// For InTitle commands, we have already opened a group
+		// in output_latex::TeXOnePar.
+		if (style.isCommand() && style.intitle) {
 			os << '{';
 			++column;
 		}
@@ -2462,7 +2464,9 @@ void Paragraph::latex(BufferParams const & bparams,
 				os << "}] ";
 				column +=3;
 			}
-			if (style.isCommand()) {
+			// For InTitle commands, we have already opened a group
+			// in output_latex::TeXOnePar.
+			if (style.isCommand() && !style.intitle) {
 				os << '{';
 				++column;
 			}
