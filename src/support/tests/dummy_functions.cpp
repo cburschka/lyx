@@ -67,6 +67,6 @@ namespace lyx {
 	};
 
 	App app;
-	App theApp() { return app; }
+	App * theApp() { return &app; }
 
 } // namespace lyx

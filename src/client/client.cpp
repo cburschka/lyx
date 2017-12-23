@@ -74,7 +74,7 @@ struct App {
 };
 
 App app;
-App theApp() { return app; }
+App * theApp() { return &app; }
 
 // Dummy LyXRC support
 struct LyXRC {

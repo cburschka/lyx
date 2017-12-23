@@ -55,7 +55,7 @@ struct App {
 };
 
 App app;
-App theApp() { return app; }
+App * theApp() { return &app; }
 
 
 string const trimSpaceAndEol(string const & a)
