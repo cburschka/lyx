@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-12-24 05:00+0100\n"
-"PO-Revision-Date: 2017-10-17 01:09-0800\n"
+"POT-Creation-Date: 2017-12-24 05:01+0100\n"
+"PO-Revision-Date: 2017-10-30 01:09-0800\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
 "Language: cs\n"
@@ -248,21 +248,20 @@ msgstr "&Aktualizovat"
 msgid ""
 "Here you can enter a local BibTeX database name or browse your directory."
 msgstr ""
+"Zadejte jméno lokální databáze BibTeX-u nebo zvolte procházení vaším "
+"adresářem"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:84
-#, fuzzy
 msgid "&Local databases:"
-msgstr "Databáze:"
+msgstr "&Lokální databáze:"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:102
-#, fuzzy
 msgid "Here you can enter a local BibTeX database name"
-msgstr "Vložit jméno BibTeX-ové databáze"
+msgstr "Vložte jméno lokální BibTeX-ové databáze"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:109
-#, fuzzy
 msgid "Browse your local directory"
-msgstr "Žádný uživatelský adresář"
+msgstr "Procházet lokální uživatelský adresář"
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:112 src/frontends/qt4/ui/BibtexUi.ui:152
 #: src/frontends/qt4/ui/CompareUi.ui:50 src/frontends/qt4/ui/ExternalUi.ui:70
@@ -292,9 +291,8 @@ msgid "BibTeX database to use"
 msgstr "BibTeX-ová databáze k použití"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:32
-#, fuzzy
 msgid "Da&tabases"
-msgstr "Databáze:"
+msgstr "Da&tabáze:"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:48
 msgid "Add a BibTeX database file"
@@ -378,15 +376,14 @@ msgid "Add bibliography to &TOC"
 msgstr "Přidat bibliografii k O&bsahu"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:231
-#, fuzzy
 msgid "O&ptions:"
-msgstr "&Volba:"
+msgstr "&Volby:"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:241
 msgid ""
 "Options to the biblatex bibliography command. See the biblatex manual for "
 "details."
-msgstr ""
+msgstr "Volby pro příkaz biblatex-u. Viz manuál biblatex-u."
 
 #: src/frontends/qt4/ui/BibtexUi.ui:283 src/frontends/qt4/ui/CharacterUi.ui:357
 #: src/frontends/qt4/ui/CitationUi.ui:453
@@ -408,9 +405,8 @@ msgid "&OK"
 msgstr "&OK"
 
 #: src/frontends/qt4/ui/BoxUi.ui:23
-#, fuzzy
 msgid "Type and Size"
-msgstr "Velikost stránky"
+msgstr "Typ a velikost"
 
 #: src/frontends/qt4/ui/BoxUi.ui:32 src/frontends/qt4/ui/WrapUi.ui:103
 msgid "Width value"
@@ -432,9 +428,8 @@ msgid "Inner Bo&x:"
 msgstr "Vn&itřní rámeček:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:87
-#, fuzzy
 msgid "Inner box type"
-msgstr "Vložit rámeček"
+msgstr "Typ vnitřního rámečku"
 
 #: src/frontends/qt4/ui/BoxUi.ui:91 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:98 src/frontends/qt4/ui/TabularUi.ui:1199
@@ -566,57 +561,48 @@ msgid "Decoration"
 msgstr "Dekorace"
 
 #: src/frontends/qt4/ui/BoxUi.ui:308
-#, fuzzy
 msgid "Decoration box types"
-msgstr "Podporované typy rámečků"
+msgstr "Dekorované typy rámečků"
 
 #: src/frontends/qt4/ui/BoxUi.ui:318
-#, fuzzy
 msgid "Thickness value"
-msgstr "Thickness"
+msgstr "Hodnota tloušťky"
 
 #: src/frontends/qt4/ui/BoxUi.ui:325
-#, fuzzy
 msgid "&Line thickness:"
-msgstr "&Tloušťka:"
+msgstr "&Tloušťka čáry:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:338
-#, fuzzy
 msgid "Separation value"
-msgstr "úhel rotace"
+msgstr "Hodnota oddělení"
 
 #: src/frontends/qt4/ui/BoxUi.ui:345
-#, fuzzy
 msgid "Box s&eparation:"
-msgstr "&Dekorace:"
+msgstr "Odděl&ení rámečku:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:358
 msgid "&Decoration:"
 msgstr "&Dekorace:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:368
-#, fuzzy
 msgid "&Shadow size:"
-msgstr "&Velikost písma:"
+msgstr "&Velikost stínu:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:402
-#, fuzzy
 msgid "Size value"
-msgstr "Hodnota šířky"
+msgstr "Hodnota velikosti"
 
 #: src/frontends/qt4/ui/BoxUi.ui:412 src/frontends/qt4/GuiBranches.cpp:55
 msgid "Color"
 msgstr "Barevně"
 
 #: src/frontends/qt4/ui/BoxUi.ui:434
-#, fuzzy
 msgid "Back&ground:"
-msgstr "pozadí"
+msgstr "&Pozadí:"
 
 #: src/frontends/qt4/ui/BoxUi.ui:444
-#, fuzzy
 msgid "&Frame:"
-msgstr "Frame"
+msgstr "&Rámeček:"
 
 #: src/frontends/qt4/ui/BranchUi.ui:20
 msgid "&Available branches:"
@@ -627,9 +613,8 @@ msgid "Select your branch"
 msgstr "Vyber svoji větev"
 
 #: src/frontends/qt4/ui/BranchUi.ui:37
-#, fuzzy
 msgid "Inverted"
-msgstr "Konvertory"
+msgstr "Invertovaná"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25
 msgid "&New:[[branch]]"
@@ -831,7 +816,6 @@ msgid "Huger"
 msgstr "Obrovité"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:144
-#, fuzzy
 msgid "&Custom bullet:"
 msgstr "&Vlastní odrážka:"
 
@@ -1247,11 +1231,11 @@ msgstr "Drže&t spárované"
 msgid ""
 "Swap left and right delimiter type (while reversing to the appropriate "
 "direction)"
-msgstr ""
+msgstr "Prohodit levý a pravý typ oddělovače (a obrátit směr)"
 
 #: src/frontends/qt4/ui/DelimiterUi.ui:265
 msgid "S&wap && Reverse"
-msgstr ""
+msgstr "&Prohodit && obrátit"
 
 #: src/frontends/qt4/ui/DocumentUi.ui:112
 msgid "Reset to the default settings for the document class"
@@ -1311,17 +1295,19 @@ msgstr "Zobraz úplný &log ..."
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:93
 msgid "Attempt to show the output even if there were compilation errors"
-msgstr ""
+msgstr "Pokus zobrazit výstup i v případě kompilační chyby"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:96
 msgid "Show Output &Anyway"
-msgstr ""
+msgstr "&Zobrazit výstup i tak"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:103
 msgid ""
 "Selecting an error will show the error message in the panel below and the "
 "cursor will jump to the location in the document where the error occurred."
 msgstr ""
+"Volba chyby zobrazí celou chybovou hlášku ve spodním panelu, kurzor v "
+"dokumentu bude nastaven na místo, kde chyba nastala."
 
 #: src/frontends/qt4/ui/ExternalUi.ui:35
 msgid "F&ile"
@@ -1715,14 +1701,12 @@ msgid "Select the default family for the document"
 msgstr "Nastavit standardní rodinu písma pro dokument"
 
 #: src/frontends/qt4/ui/FontUi.ui:49
-#, fuzzy
 msgid "&Base size:"
 msgstr ""
 "&Základní\n"
 "velikost:"
 
 #: src/frontends/qt4/ui/FontUi.ui:81
-#, fuzzy
 msgid "&LaTeX font encoding:"
 msgstr ""
 "Kódování\n"
@@ -1816,6 +1800,8 @@ msgid ""
 "Activate extensions such as character protrusion and font expansion via the "
 "microtype package"
 msgstr ""
+"Aktivovat mikrotypografická rozšíření jako např. vysunutí interpunkce nebo "
+"úpravy šířky znaků"
 
 #: src/frontends/qt4/ui/FontUi.ui:293
 msgid "Enable micr&o-typographic extensions"
@@ -1853,7 +1839,6 @@ msgid "Set &height:"
 msgstr "&Výška:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:151
-#, fuzzy
 msgid "&Scale graphics (%):"
 msgstr "&Měřítko obrázku (%):"
 
@@ -1888,7 +1873,6 @@ msgid "Or&igin:"
 msgstr "Počá&tek:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:250
-#, fuzzy
 msgid "A&ngle (degrees):"
 msgstr "Ú&hel (stupně):"
 
@@ -1921,20 +1905,18 @@ msgid "LaTeX &options:"
 msgstr "Parametry pro LaTe&X:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:517
-#, fuzzy
 msgid ""
 "Enable LyX to preview this graphics, if graphics previewing is not disabled "
 "at application level (see Preferences dialog)."
 msgstr ""
-"Zapnout náhled tohoto obrázku. Pouze v případě že náhled obrázků nenívypnutý "
-"v Nastaveních."
+"Zapnout náhled tohoto obrázku. Pouze v případě že náhled obrázků není "
+"vypnutý v Nastaveních."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:520
 msgid "Sho&w in LyX"
 msgstr "&Zobrazit v LyX-u"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:559
-#, fuzzy
 msgid "Sca&le on screen (%):"
 msgstr "Měřítko na o&brazovce (%):"
 
@@ -1947,6 +1929,7 @@ msgid "Graphics Group"
 msgstr "Skupiny obrázků"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:627
+#, fuzzy
 msgid "A&ssigned to group:"
 msgstr "&Přiřadit ke skupině:"
 
@@ -2053,6 +2036,8 @@ msgid ""
 "Pass content of the `Name' field literally to LaTeX. Check this if you want "
 "to enter LaTeX code."
 msgstr ""
+"Předat LaTeX-u pole `Jméno' v doslovném znění. Vhodné pro případ přímého "
+"vkládaání LaTeX-ového kódu."
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:106
 msgid "Specify the link target"
@@ -2075,9 +2060,8 @@ msgid "Link to an email address"
 msgstr "Odkaz na e-mailovou adresu"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:146
-#, fuzzy
 msgid "E&mail"
-msgstr "Email"
+msgstr "&Email"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:153
 msgid "Link to a file"
@@ -2085,7 +2069,7 @@ msgstr "Odkaz na soubor"
 
 #: src/frontends/qt4/ui/HyperlinkUi.ui:156
 msgid "Fi&le"
-msgstr ""
+msgstr "Sou&bor"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:36
 msgid "Listing Parameters"
@@ -2382,10 +2366,12 @@ msgid ""
 "If this is not selected, the quotation marks will stick with the style they "
 "have been inserted with."
 msgstr ""
+"Uvozovky ve výstupu se automaticky přizpůsobí stylu výše. Pokud nepoužijete "
+"tuto volbu, uvozovky zůstanou ve stylu, ve kterém byly vloženy."
 
 #: src/frontends/qt4/ui/LanguageUi.ui:193
 msgid "Use d&ynamic quotation marks"
-msgstr ""
+msgstr "Použití d&ynamických uvozovek"
 
 #: src/frontends/qt4/ui/LineUi.ui:22
 msgid "Of&fset:"
@@ -2418,11 +2404,11 @@ msgstr "Okno pro odezvu"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:92
 msgid "Choose the LaTeX package for code syntax highlighting"
-msgstr ""
+msgstr "LaTeX-ový balíček pro zvýrazňení &syntaxe"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:95
 msgid "&Syntax Highlighting Package:"
-msgstr ""
+msgstr "Balíček pro zvýrazňení &syntaxe:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:331
 #: lib/layouts/stdinsets.inc:337 lib/layouts/stdinsets.inc:382
@@ -2632,9 +2618,8 @@ msgid "&Update"
 msgstr "&Aktualizace"
 
 #: src/frontends/qt4/ui/LogUi.ui:111
-#, fuzzy
 msgid "&Open Containing Directory"
-msgstr "Pra&covní adresář:"
+msgstr "&Otevřít pracovní adresář:"
 
 #: src/frontends/qt4/ui/LogUi.ui:131
 msgid "&Go!"
@@ -2786,41 +2771,36 @@ msgid "All packages:"
 msgstr "Všechny balíčky:"
 
 #: src/frontends/qt4/ui/MathsUi.ui:27
-#, fuzzy
 msgid "Load A&utomatically"
 msgstr "Načíst &automaticky"
 
 #: src/frontends/qt4/ui/MathsUi.ui:34
-#, fuzzy
 msgid "Load Alwa&ys"
 msgstr "Načíst &vždy"
 
 #: src/frontends/qt4/ui/MathsUi.ui:41
-#, fuzzy
 msgid "Do &Not Load"
 msgstr "&Nenačítat"
 
 #: src/frontends/qt4/ui/MathsUi.ui:48
 msgid "Indent displayed formulas instead of centering"
-msgstr ""
+msgstr "Indentace celořádkových vzorců namísto centrování"
 
 #: src/frontends/qt4/ui/MathsUi.ui:51
-#, fuzzy
 msgid "Indent &Formulas"
-msgstr "Vzorec do řádky (inline)|V"
+msgstr "&Indentace vzorců"
 
 #: src/frontends/qt4/ui/MathsUi.ui:67 src/frontends/qt4/ui/TextLayoutUi.ui:48
 msgid "Size of the indentation"
 msgstr "Velikost indentace"
 
 #: src/frontends/qt4/ui/MathsUi.ui:141
-#, fuzzy
 msgid "Formula numbering side:"
-msgstr "Používaný formát"
+msgstr "Strana pro číslování vzorce:"
 
 #: src/frontends/qt4/ui/MathsUi.ui:157
 msgid "Side where formulas are numbered"
-msgstr ""
+msgstr "Strana pro číslování vzorce"
 
 #: src/frontends/qt4/ui/ModulesUi.ui:60
 msgid "A&vailable:"
@@ -2845,14 +2825,12 @@ msgid "Nomenclature"
 msgstr "Nomenklatura"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:22
-#, fuzzy
 msgid "Sy&mbol:"
 msgstr "&Symbol:"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:39
-#, fuzzy
 msgid "Des&cription:"
-msgstr "Popis:"
+msgstr "&Popis:"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:56
 msgid "Sort &as:"
@@ -2863,6 +2841,8 @@ msgid ""
 "Pass content of the `Symbol' and `Description' fields literally to LaTeX. "
 "Check this if you want to enter LaTeX code."
 msgstr ""
+"Předat pole `Symbol' and `Popis' LaTeX-u v doslovném znění. Vhodné pokud "
+"chcete vkládat LaTeX-ový kód."
 
 #: src/frontends/qt4/ui/NoteUi.ui:48 src/frontends/qt4/ui/PhantomUi.ui:48
 msgid "Type"
@@ -2924,6 +2904,9 @@ msgid ""
 "changes, or the document directory path). Disabling this option plays nicer "
 "in collaborative settings and with version control systems."
 msgstr ""
+"Uložit i nastavení, která se často mění a jsou specifická pro konkrétního "
+"uživatele (sledování změn, cesta k dokumentu, rozbalení vložek). Vypnutí "
+"této volby je vhodné pro výměnu mezi uživateli a při použití správy verzí."
 
 #: src/frontends/qt4/ui/OutputUi.ui:101
 msgid "Save &transient properties"
@@ -3360,11 +3343,11 @@ msgstr "&s - prodleva pro doplnění v menu"
 msgid ""
 "Words with less than the specified number of characters will not be "
 "completed."
-msgstr ""
+msgstr "Slova s menším počtem znaků nebudou doplňována."
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:250
 msgid "Minimum characters for words that should be completed"
-msgstr ""
+msgstr "Minimum znaků ve slově potřebných pro funkci doplňování"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:275
 msgid ""
@@ -3426,41 +3409,38 @@ msgid "&Enabled"
 msgstr "&Zapnuto"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:274
-#, fuzzy
 msgid "Maximum a&ge (in days):"
 msgstr "Živo&tnost (ve dnech):"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:292
 msgid "Security"
-msgstr ""
+msgstr "Bezpečnost"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:312
 msgid "&Forbid use of needauth converters"
-msgstr ""
+msgstr "Zákaz použití kon&vertorů vyžadujících souhlas"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:315
 msgid ""
 "When enabled, use of converters with the 'needauth' option is forbidden."
-msgstr ""
+msgstr "Zákaz konvertorů vyžadujících explicitní souhlas s během"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:322
-#, fuzzy
 msgid "Use need&auth option"
-msgstr "CenteredCaption"
+msgstr "Používat &autorizaci"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:325
 msgid ""
 "When enabled, ask user before launching any external converter with the "
 "'needauth' option."
 msgstr ""
+"Dotaz na uživatele před během konvertoru vyžadujícího autorizační souhlas"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:31
-#, fuzzy
 msgid "Display &graphics"
 msgstr "&Zobrazit obrázky"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:51
-#, fuzzy
 msgid "Instant &preview:"
 msgstr "&Okamžitý náhled (vzorce):"
 
@@ -3478,7 +3458,6 @@ msgid "On"
 msgstr "Zapnuto"
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:80
-#, fuzzy
 msgid "Preview si&ze:"
 msgstr "&Velikost náhledu:"
 
@@ -3495,7 +3474,6 @@ msgid "&Mark end of paragraphs"
 msgstr "Označit &konec odstavců"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:26
-#, fuzzy
 msgid "Session Handling"
 msgstr "Nastavení relace"
 
@@ -3520,7 +3498,6 @@ msgid "&Clear all session information"
 msgstr "Smazat veškerá nastavení &rozvrhu oken"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:85
-#, fuzzy
 msgid "Backup && Saving"
 msgstr "Zálohování a ukládání"
 
@@ -3542,9 +3519,10 @@ msgid ""
 "format by default. Existing documents will still be saved in their current "
 "state (compressed or uncompressed)."
 msgstr ""
+"Nové dokumenty budou uloženy standardně v komprimovaném formátu. Existující "
+"dokumenty budou uloženy dle jejich předechozího nastavení."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
-#, fuzzy
 msgid "&Save new documents compressed by default"
 msgstr "Standardně &ukládat dokumenty komprimované"
 
@@ -3554,14 +3532,14 @@ msgid ""
 "document. This allows moving the document elsewhere and still finding the "
 "included files."
 msgstr ""
+"Cesta k dokumentu bude uložena uvnitř dokumentu. Dovoluje zachování odkazů "
+"na soubory při přesunech dokumentu."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:158
-#, fuzzy
 msgid "Save the &document directory path"
-msgstr "Vybrat adresář pro dokumenty"
+msgstr "Ukládat &cestu k dokumentu"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:168
-#, fuzzy
 msgid "Windows && Work Area"
 msgstr "Okna a pracovní plocha"
 
@@ -3570,7 +3548,6 @@ msgid "Open documents in &tabs"
 msgstr "Otevírat dokumenty v &panelech"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:184
-#, fuzzy
 msgid ""
 "Whether to open documents in an already running instance of LyX. (Set the "
 "LyXServer pipe path and restart LyX to enable this feature)"
@@ -3742,11 +3719,12 @@ msgid "Co&pier:"
 msgstr "&Kopír.skript:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:202
-#, fuzzy
 msgid ""
 "Specification of the default output formats when using specific LaTeX "
 "variants"
-msgstr "Nastavit standardní výstupní formát při použití (PDF)LaTeX-u"
+msgstr ""
+"Nastavení standardního výstupního formátu při použití specifických variant "
+"LaTeX-u"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:205
 msgid "Default Output Formats"
@@ -3758,17 +3736,16 @@ msgstr ""
 "Standardní formát pro dokumenty používající fonty, jež nebyly určeny pro TeX"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:260
-#, fuzzy
 msgid ""
 "This is the default output format for LyX documents, except for DocBook "
 "classes, documents that use non-TeX fonts and Japanese documents"
-msgstr "Standardní výstupní formát pro dokumenty"
+msgstr ""
+"Standardní výstupní formát pro dokumenty LyX-u. Vyjímku tvoří třídy pro "
+"DocBook, japonštinu a dokumenty používající fonty nepodporovaní TeX-em."
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:267
-#, fuzzy
 msgid "The default output format for Japanese documents (using pLaTeX)"
-msgstr ""
-"Standardní formát pro dokumenty používající fonty, jež nebyly určeny pro TeX"
+msgstr "Standardní formát pro japonské dokumenty (pLaTeX)"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:274
 msgid "With n&on-TeX fonts:"
@@ -3779,9 +3756,8 @@ msgid "With &TeX fonts:"
 msgstr "Při použití fontů &TeX-u:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:294
-#, fuzzy
 msgid "&Japanese:"
-msgstr "Japonština"
+msgstr "&Japonština:"
 
 #: src/frontends/qt4/ui/PrefIdentityUi.ui:33
 msgid "&E-mail:"
@@ -3845,14 +3821,13 @@ msgstr "1.0 je standardní rychlost. Vyšší hodnoty zrychlí, nižší zpomal�
 #: src/frontends/qt4/ui/PrefInputUi.ui:194
 msgid ""
 "If this is checked, the middle mouse button will paste the recent selection"
-msgstr ""
+msgstr "Prostřední tlačítko myši bude vkládat obsah výběru"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:197
 msgid "&Middle mouse button pasting"
-msgstr ""
+msgstr "&Vkládání prostředním tlačítkem myši"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:213
-#, fuzzy
 msgid "Scroll Wheel Zoom"
 msgstr "Lupa pomocí kolečka myši"
 
@@ -3918,7 +3893,6 @@ msgid "The LaTeX command that ends a switch to a foreign language"
 msgstr "Příkaz LaTeX-u, který ukončuje přepnutí změny jazyka."
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:135
-#, fuzzy
 msgid "Default decimal &separator:"
 msgstr "Oddělovač &desetinné čárky:"
 
@@ -3969,7 +3943,6 @@ msgid "Mark &foreign languages"
 msgstr "Označit cizí &jazyk"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:217
-#, fuzzy
 msgid "Right-to-Left Language Support"
 msgstr "Podpora psaní zprava-doleva"
 
@@ -4005,7 +3978,6 @@ msgid "Optional paper size flag (-paper) for some DVI viewers"
 msgstr "Volitelný příznak velikosti (-paper) pro některé DVI prohlížeče"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:107
-#, fuzzy
 msgid "P&rocessor:"
 msgstr "&Generátor:"
 
@@ -4019,7 +3991,6 @@ msgid "Processor for &Japanese:"
 msgstr "Generátor pro &japonštinu:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:150
-#, fuzzy
 msgid "Options:"
 msgstr "&Možnosti:"
 
@@ -4044,7 +4015,6 @@ msgid "CheckTeX start options and flags"
 msgstr "Nastavení pro CheckTeX"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:299
-#, fuzzy
 msgid "&CheckTeX command:"
 msgstr "Příkaz Chec&kTex-u:"
 
@@ -4053,7 +4023,6 @@ msgid "&Nomenclature command:"
 msgstr "&Příkaz nomenklatury:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:324
-#, fuzzy
 msgid ""
 "Select whether LyX should output Windows or Cygwin style paths to LaTeX "
 "files. Change the default only if the TeX engine was not correctly detected "
@@ -4078,9 +4047,8 @@ msgid "R&eset class options when document class changes"
 msgstr "&Obnovit nastavení, když se změní třída dokumentu"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:20
-#, fuzzy
 msgid "Forward Search"
-msgstr "Dopředné hledání|h"
+msgstr "Dopředné hledání"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:40
 msgid "DV&I command:"
@@ -4091,9 +4059,8 @@ msgid "&PDF command:"
 msgstr "PD&F příkaz:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:107
-#, fuzzy
 msgid "Dvips Options"
-msgstr "Note Options"
+msgstr "Nastavení pro Dvips"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:123
 msgid "Paper t&ype:"
@@ -4108,9 +4075,8 @@ msgid "Lan&dscape:"
 msgstr "Na šíř&ku:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:162
-#, fuzzy
 msgid "Other Options"
-msgstr "Note Options"
+msgstr "Další možnosti"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:170
 msgid "Output &line length:"
@@ -4164,13 +4130,18 @@ msgid ""
 "the WD is the directory containing the document. The path \".\" (without "
 "quotes) is a common example of a relative path and refers to the WD."
 msgstr ""
+"Relativní a absolutní cesty jsou povoleny. Relativní cesty budou doplněny "
+"vzhledem k pracovnímu adresáři. Pro všechny cesty (krom prefixu \"TEXINPUTS"
+"\") je pracovní adresář adresářem, ze kterého jste spustili LyX a může se "
+"tedy měnit pro každou relaci. V případě prefixu \"TEXINPUTS\" je pracovní "
+"adresář adresářem obsahujícím dokument. Cesta \".\" (bez uvozovek) je běžným "
+"příkladem relativní cesty a odkazuje k pracovnímu adresáři."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:35
 msgid "&PATH prefix:"
 msgstr "P&refix cesty:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:45
-#, fuzzy
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
@@ -4184,13 +4155,12 @@ msgid "TEX&INPUTS prefix:"
 msgstr "P&refix TEXINPUTS:"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:62
-#, fuzzy
 msgid ""
 "Specify those directories which should be prepended to the TEXINPUTS "
 "environment variable. Use the OS native format."
 msgstr ""
-"Určete adresáře, které by měly být přidány do proměnné prostředí PATH před "
-"ostatní adresáře.\n"
+"Určete adresáře, které by měly být přidány do proměnné prostředí TEXINPUTS "
+"před ostatní adresáře.\n"
 "Použijte formát vlastní danému operačnímu systému."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:69
@@ -4253,9 +4223,8 @@ msgstr ""
 "(Roman):"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:209
-#, fuzzy
 msgid "Default &zoom %:"
-msgstr "Standardní formát"
+msgstr "&Lupa %:"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:246
 msgid "Font Sizes"
@@ -4381,7 +4350,6 @@ msgid "&Icon set:"
 msgstr "&Sada ikon:"
 
 #: src/frontends/qt4/ui/PrefUi.ui:84
-#, fuzzy
 msgid ""
 "The icon set to use. Warning: normal size of icons may be wrong until you "
 "save the preferences and restart LyX."
@@ -4394,7 +4362,6 @@ msgid "Use icons from system's &theme"
 msgstr "Použít s&ystémové ikony"
 
 #: src/frontends/qt4/ui/PrefUi.ui:120
-#, fuzzy
 msgid "Context Help"
 msgstr "Kontextová nápověda"
 
@@ -4444,7 +4411,6 @@ msgstr ""
 "Vlastní hodnota. \"Odsazení seznamu\" musí být nastavené na \"Vlastní\"."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:40
-#, fuzzy
 msgid "Avai&lable indexes:"
 msgstr "Dostupné &rejstříky:"
 
@@ -4466,6 +4432,8 @@ msgid ""
 "Pass index names literally to LaTeX. Check this if you want to use LaTeX "
 "code in index names."
 msgstr ""
+"Předat LaTeX-u jména rejstříku doslovně. Použijte pokud chcete použít kód "
+"LaTeX-u v rejstříkových jménech."
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90 src/frontends/qt4/GuiPrefs.cpp:254
 msgid "Output"
@@ -4914,9 +4882,8 @@ msgid "Merge cells of different columns"
 msgstr "Sloučit buňky odlišných sloupců"
 
 #: src/frontends/qt4/ui/TabularUi.ui:553
-#, fuzzy
 msgid "Mu&lticolumn"
-msgstr "&Vícesloupcová"
+msgstr "&Více sloupců"
 
 #: src/frontends/qt4/ui/TabularUi.ui:560
 msgid "LaTe&X argument:"
@@ -7413,9 +7380,8 @@ msgid "Separate the dataset ID from text"
 msgstr "Separate the dataset ID from text"
 
 #: lib/layouts/aastex6.layout:3
-#, fuzzy
 msgid "American Astronomical Society (AASTeX v. 6)"
-msgstr "American Astronomical Society (AASTeX)"
+msgstr "American Astronomical Society (AASTeX v. 6)"
 
 #: lib/layouts/aastex6.layout:59
 msgid "Software"
@@ -7430,14 +7396,12 @@ msgid "APPENDIX"
 msgstr ""
 
 #: lib/layouts/aastex6.layout:103
-#, fuzzy
 msgid "References-"
-msgstr "Reference"
+msgstr "References-"
 
 #: lib/layouts/aastex6.layout:110
-#, fuzzy
 msgid "Note-"
-msgstr "Poznámka"
+msgstr "Note-"
 
 #: lib/layouts/achemso.layout:3
 msgid "American Chemical Society (ACS)"
@@ -7512,9 +7476,8 @@ msgid "Abbreviations:"
 msgstr "Abbreviations:"
 
 #: lib/layouts/achemso.layout:162
-#, fuzzy
 msgid "Schemes"
-msgstr "Schéma"
+msgstr "Schemes"
 
 #: lib/layouts/achemso.layout:166 lib/layouts/achemso.layout:178
 msgid "Scheme"
@@ -7525,9 +7488,8 @@ msgid "List of Schemes"
 msgstr "Seznam schémat"
 
 #: lib/layouts/achemso.layout:186
-#, fuzzy
 msgid "Charts"
-msgstr "Diagram"
+msgstr "Charts"
 
 #: lib/layouts/achemso.layout:190 lib/layouts/achemso.layout:202
 msgid "Chart"
@@ -7538,9 +7500,8 @@ msgid "List of Charts"
 msgstr "Seznam diagramů"
 
 #: lib/layouts/achemso.layout:210
-#, fuzzy
 msgid "Graphs[[mathematical]]"
-msgstr "Graf"
+msgstr "Graphs"
 
 #: lib/layouts/achemso.layout:216 lib/layouts/achemso.layout:228
 msgid "Graph[[mathematical]]"
@@ -7588,9 +7549,8 @@ msgid "Latin"
 msgstr "Latina"
 
 #: lib/layouts/acm-sigs-alt.layout:3
-#, fuzzy
 msgid "ACM SIGS ('Alternate' Style, obsolete)"
-msgstr "ACM SIGS ('Alternate' Style)"
+msgstr "ACM SIGS ('Alternate' Style, obsolete)"
 
 #: lib/layouts/acm-sigs.inc:31 lib/layouts/acmart.layout:392
 #: lib/layouts/sigplanconf.layout:180
@@ -7602,13 +7562,12 @@ msgid "General terms:"
 msgstr "General terms:"
 
 #: lib/layouts/acm-sigs.layout:3
-#, fuzzy
 msgid "ACM SIG Proceedings (SP, Obsolete)"
-msgstr "ACM SIG Proceedings (SP)"
+msgstr "ACM SIG Proceedings (SP, Obsolete)"
 
 #: lib/layouts/acmart.layout:3
 msgid "Association for Computing Machinery (ACM) article"
-msgstr ""
+msgstr "Association for Computing Machinery (ACM) article"
 
 #: lib/layouts/acmart.layout:86 lib/layouts/acmsiggraph-0-92.layout:332
 #: lib/layouts/acmsiggraph.layout:288 lib/layouts/amsdefs.inc:175
@@ -7618,14 +7577,12 @@ msgid "Thanks"
 msgstr "Thanks"
 
 #: lib/layouts/acmart.layout:100
-#, fuzzy
 msgid "Thanks: "
-msgstr "Thanks:"
+msgstr "Thanks: "
 
 #: lib/layouts/acmart.layout:106
-#, fuzzy
 msgid "ACM Journal"
-msgstr "R Journal"
+msgstr "ACM Journal"
 
 #: lib/layouts/acmart.layout:109 lib/layouts/apa6.layout:308
 #: lib/layouts/apa6.layout:316 lib/layouts/apa6.layout:325
@@ -7635,64 +7592,55 @@ msgstr "Preamble"
 
 #: lib/layouts/acmart.layout:111
 msgid "Journal's Short Name: "
-msgstr ""
+msgstr "Journal's Short Name: "
 
 #: lib/layouts/acmart.layout:122
-#, fuzzy
 msgid "ACM Conference"
-msgstr "Conference"
+msgstr "ACM Conference"
 
 #: lib/layouts/acmart.layout:129
-#, fuzzy
 msgid "Full name"
-msgstr "Fname"
+msgstr "Full name"
 
 #: lib/layouts/acmart.layout:137
 msgid "Venue"
-msgstr ""
+msgstr "Venue"
 
 #: lib/layouts/acmart.layout:140
-#, fuzzy
 msgid "Conference Name: "
-msgstr "Conference"
+msgstr "Conference Name: "
 
 #: lib/layouts/acmart.layout:147
-#, fuzzy
 msgid "Short title"
-msgstr "Short title:"
+msgstr "Short title"
 
 #: lib/layouts/acmart.layout:178
-#, fuzzy
 msgid "Email address: "
-msgstr "E-mail address:"
+msgstr "Email address: "
 
 #: lib/layouts/acmart.layout:190
 msgid "ORCID"
-msgstr ""
+msgstr "ORCID"
 
 #: lib/layouts/acmart.layout:192
 msgid "ORCID: "
-msgstr ""
+msgstr "ORCID: "
 
 #: lib/layouts/acmart.layout:212
-#, fuzzy
 msgid "Affiliation: "
-msgstr "Affiliation:"
+msgstr "Affiliation: "
 
 #: lib/layouts/acmart.layout:216
-#, fuzzy
 msgid "Additional Affiliation"
-msgstr "Alt Affiliation"
+msgstr "Additional Affiliation"
 
 #: lib/layouts/acmart.layout:218
-#, fuzzy
 msgid "Additional Affiliation: "
-msgstr "Alt Affiliation"
+msgstr "Additional Affiliation: "
 
 #: lib/layouts/acmart.layout:222 lib/layouts/acmart.layout:226
-#, fuzzy
 msgid "Position"
-msgstr "Tvrzení"
+msgstr "Position"
 
 #: lib/layouts/acmart.layout:231 lib/layouts/acmart.layout:233
 #: lib/layouts/paper.layout:163
@@ -7700,14 +7648,12 @@ msgid "Institution"
 msgstr "Institution"
 
 #: lib/layouts/acmart.layout:238 lib/layouts/acmart.layout:240
-#, fuzzy
 msgid "Department"
-msgstr "&Náhrada:"
+msgstr "Department"
 
 #: lib/layouts/acmart.layout:246 lib/layouts/acmart.layout:248
-#, fuzzy
 msgid "Street Address"
-msgstr "Current Address"
+msgstr "Street Address"
 
 #: lib/layouts/acmart.layout:254 lib/layouts/acmart.layout:256
 #: lib/layouts/agu_stdtitle.inc:460 lib/layouts/agu_stdtitle.inc:462
@@ -7730,213 +7676,184 @@ msgid "State"
 msgstr "State"
 
 #: lib/layouts/acmart.layout:278 lib/layouts/acmart.layout:280
-#, fuzzy
 msgid "Postal Code"
-msgstr "PostalComment"
+msgstr "Postal Code"
 
 #: lib/layouts/acmart.layout:286
-#, fuzzy
 msgid "TitleNote"
-msgstr "Titlenotemark"
+msgstr "TitleNote"
 
 #: lib/layouts/acmart.layout:296
-#, fuzzy
 msgid "Title Note: "
-msgstr "Title:"
+msgstr "Title Note: "
 
 #: lib/layouts/acmart.layout:302
-#, fuzzy
 msgid "SubtitleNote"
-msgstr "Podtitulek"
+msgstr "SubtitleNote"
 
 #: lib/layouts/acmart.layout:304
-#, fuzzy
 msgid "Subtitle Note: "
-msgstr "Podtitulek"
+msgstr "Subtitle Note: "
 
 #: lib/layouts/acmart.layout:308 lib/layouts/apa6.layout:274
 msgid "AuthorNote"
 msgstr "AuthorNote"
 
 #: lib/layouts/acmart.layout:310
-#, fuzzy
 msgid "Note: "
-msgstr "Note:"
+msgstr "Note: "
 
 #: lib/layouts/acmart.layout:314
-#, fuzzy
 msgid "ACM Volume"
-msgstr "Volume"
+msgstr "ACM Volume"
 
 #: lib/layouts/acmart.layout:316
-#, fuzzy
 msgid "Volume: "
-msgstr "Volume"
+msgstr "Volume: "
 
 #: lib/layouts/acmart.layout:320
-#, fuzzy
 msgid "ACM Number"
-msgstr "Číslo"
+msgstr "ACM Number"
 
 #: lib/layouts/acmart.layout:322
-#, fuzzy
 msgid "Number: "
-msgstr "Číslo"
+msgstr "Number: "
 
 #: lib/layouts/acmart.layout:326
-#, fuzzy
 msgid "ACM Article"
-msgstr "Article"
+msgstr "ACM Article"
 
 #: lib/layouts/acmart.layout:328
-#, fuzzy
 msgid "Article: "
-msgstr "Article"
+msgstr "Article: "
 
 #: lib/layouts/acmart.layout:332
-#, fuzzy
 msgid "ACM Year"
-msgstr "Year"
+msgstr "ACM Year"
 
 #: lib/layouts/acmart.layout:334
-#, fuzzy
 msgid "Year: "
-msgstr "Year"
+msgstr "Year: "
 
 #: lib/layouts/acmart.layout:338
-#, fuzzy
 msgid "ACM Month"
-msgstr "Month"
+msgstr "ACM Month"
 
 #: lib/layouts/acmart.layout:340
-#, fuzzy
 msgid "Month: "
-msgstr "Month"
+msgstr "Month: "
 
 #: lib/layouts/acmart.layout:344
 msgid "ACM Art Seq Num"
-msgstr ""
+msgstr "ACM Art Seq Num"
 
 #: lib/layouts/acmart.layout:346
-#, fuzzy
 msgid "Article Sequential Number: "
-msgstr "Article number:"
+msgstr "Article Sequential Number: "
 
 #: lib/layouts/acmart.layout:350
 msgid "ACM Submission ID"
-msgstr ""
+msgstr "ACM Submission ID"
 
 #: lib/layouts/acmart.layout:352
-#, fuzzy
 msgid "Submission ID: "
-msgstr "Publication ID"
+msgstr "Submission ID: "
 
 #: lib/layouts/acmart.layout:356
 msgid "ACM Price"
-msgstr ""
+msgstr "ACM Price"
 
 #: lib/layouts/acmart.layout:358
 msgid "Price: "
-msgstr ""
+msgstr "Price: "
 
 #: lib/layouts/acmart.layout:362
 msgid "ACM ISBN"
-msgstr ""
+msgstr "ACM ISBN"
 
 #: lib/layouts/acmart.layout:364
 msgid "ISBN: "
-msgstr ""
+msgstr "ISBN: "
 
 #: lib/layouts/acmart.layout:368
 msgid "ACM DOI"
-msgstr ""
+msgstr "ACM DOI"
 
 #: lib/layouts/acmart.layout:370
 msgid "ACM DOI: "
-msgstr ""
+msgstr "ACM DOI: "
 
 #: lib/layouts/acmart.layout:374
 msgid "ACM Badge R"
-msgstr ""
+msgstr "ACM Badge R"
 
 #: lib/layouts/acmart.layout:376
 msgid "ACM Badge R: "
-msgstr ""
+msgstr "ACM Badge R: "
 
 #: lib/layouts/acmart.layout:380
 msgid "ACM Badge L"
-msgstr ""
+msgstr "ACM Badge L"
 
 #: lib/layouts/acmart.layout:382
 msgid "ACM Badge L: "
-msgstr ""
+msgstr "ACM Badge L: "
 
 #: lib/layouts/acmart.layout:386
-#, fuzzy
 msgid "Start Page"
-msgstr "Uzavřít stránku (\\clearpage)"
+msgstr "Start Page"
 
 #: lib/layouts/acmart.layout:388
-#, fuzzy
 msgid "Start Page: "
-msgstr "Stránka: "
+msgstr "Start Page: "
 
 #: lib/layouts/acmart.layout:394
-#, fuzzy
 msgid "Terms: "
-msgstr "Terms:"
+msgstr "Terms: "
 
 #: lib/layouts/acmart.layout:400
-#, fuzzy
 msgid "Keywords: "
-msgstr "Keywords:"
+msgstr "Keywords: "
 
 #: lib/layouts/acmart.layout:404
 msgid "CCSXML"
-msgstr ""
+msgstr "CCSXML"
 
 #: lib/layouts/acmart.layout:415
 msgid "Computing Classification Scheme (XML): "
-msgstr ""
+msgstr "Computing Classification Scheme (XML): "
 
 #: lib/layouts/acmart.layout:426
-#, fuzzy
 msgid "CCS Description"
-msgstr "Popis"
+msgstr "CCS Description"
 
 #: lib/layouts/acmart.layout:429
 msgid "Significance"
-msgstr ""
+msgstr "Significance"
 
 #: lib/layouts/acmart.layout:431
-#, fuzzy
 msgid "Computing Classification Scheme: "
-msgstr "AMS subject classifications:"
+msgstr "Computing Classification Scheme: "
 
 #: lib/layouts/acmart.layout:444
-#, fuzzy
 msgid "Set Copyright"
-msgstr "Autorská práva"
+msgstr "Set Copyright"
 
 #: lib/layouts/acmart.layout:446
-#, fuzzy
 msgid "Set Copyright: "
-msgstr "Autorská práva"
+msgstr "Set Copyright: "
 
 #: lib/layouts/acmart.layout:450
-#, fuzzy
 msgid "Copyright Year"
-msgstr "CopyrightYear"
+msgstr "Copyright Year"
 
 #: lib/layouts/acmart.layout:452
-#, fuzzy
 msgid "Copyright Year: "
-msgstr "Copyright year:"
+msgstr "Copyright Year: "
 
 #: lib/layouts/acmart.layout:456 lib/layouts/acmart.layout:459
-#, fuzzy
 msgid "Teaser Figure"
-msgstr "Teaser image:"
+msgstr "Teaser Figure"
 
 #: lib/layouts/acmart.layout:465 lib/layouts/agu_stdtitle.inc:199
 #: lib/layouts/aguplus.inc:111 lib/layouts/egs.layout:423
@@ -7947,36 +7864,31 @@ msgstr "Received"
 
 #: lib/layouts/acmart.layout:468
 msgid "Stage"
-msgstr ""
+msgstr "Stage"
 
 #: lib/layouts/acmart.layout:471
-#, fuzzy
 msgid "Received: "
-msgstr "Received:"
+msgstr "Received: "
 
 #: lib/layouts/acmart.layout:479
-#, fuzzy
 msgid "ShortAuthors"
-msgstr "Klávesové zkratky|z"
+msgstr "ShortAuthors"
 
 #: lib/layouts/acmart.layout:487
-#, fuzzy
 msgid "Short authors: "
-msgstr "Klávesové zkratky|z"
+msgstr "Short authors: "
 
 #: lib/layouts/acmart.layout:501
-#, fuzzy
 msgid "Sidebar"
-msgstr "Str&ana:"
+msgstr "Sidebar"
 
 #: lib/layouts/acmart.layout:505
 msgid "Sidebar (sigchi-a only)"
-msgstr ""
+msgstr "Sidebar (sigchi-a only)"
 
 #: lib/layouts/acmart.layout:515
-#, fuzzy
 msgid "Margin figure (sigchi-a only)"
-msgstr "Pouze hlavní soubor"
+msgstr "Margin figure (sigchi-a only)"
 
 #: lib/layouts/acmart.layout:520 lib/layouts/beamer.layout:1612
 #: lib/layouts/powerdot.layout:530 lib/layouts/sciposter.layout:109
@@ -7986,7 +7898,7 @@ msgstr "Seznam obrázků"
 
 #: lib/layouts/acmart.layout:528
 msgid "Margin table (sigchi-a only)"
-msgstr ""
+msgstr "Margin table (sigchi-a only)"
 
 #: lib/layouts/acmart.layout:533 lib/layouts/beamer.layout:1599
 #: lib/layouts/powerdot.layout:513 lib/layouts/sciposter.layout:123
@@ -8056,32 +7968,28 @@ msgid "Example \\thetheorem."
 msgstr "Příklad \\thetheorem."
 
 #: lib/layouts/acmart.layout:628
-#, fuzzy
 msgid "Print Only"
-msgstr "&Tisk"
+msgstr "Print Only"
 
 #: lib/layouts/acmart.layout:635
-#, fuzzy
 msgid "Print version only"
-msgstr "Kam tisknout"
+msgstr "Print version only"
 
 #: lib/layouts/acmart.layout:638
-#, fuzzy
 msgid "Screen Only"
-msgstr "Zobrazit na displeji"
+msgstr "Screen Only"
 
 #: lib/layouts/acmart.layout:641
-#, fuzzy
 msgid "Screen version only"
-msgstr "Bez správy verzí"
+msgstr "Screen version only"
 
 #: lib/layouts/acmart.layout:644
 msgid "Anonymous Suppression"
-msgstr ""
+msgstr "Anonymous Suppression"
 
 #: lib/layouts/acmart.layout:647
 msgid "Non anonymous only"
-msgstr ""
+msgstr "Non anonymous only"
 
 #: lib/layouts/acmart.layout:650 lib/layouts/acmart.layout:654
 #: lib/layouts/acmsiggraph-0-92.layout:343
@@ -8098,21 +8006,19 @@ msgstr "Acknowledgments"
 
 #: lib/layouts/acmart.layout:665 lib/layouts/acmart.layout:669
 msgid "Grant Sponsor"
-msgstr ""
+msgstr "Grant Sponsor"
 
 #: lib/layouts/acmart.layout:673 lib/layouts/acmart.layout:709
 msgid "Sponsor ID"
-msgstr ""
+msgstr "Sponsor ID"
 
 #: lib/layouts/acmart.layout:694 lib/layouts/acmart.layout:698
-#, fuzzy
 msgid "Grant Number"
-msgstr "Číslo stránky"
+msgstr "Grant Number"
 
 #: lib/layouts/acmsiggraph-0-92.layout:3
-#, fuzzy
 msgid "ACM SIGGGRAPH 0.92 (obsolete)"
-msgstr "ACM SIGGRAPH"
+msgstr "ACM SIGGGRAPH 0.92 (obsolete)"
 
 #: lib/layouts/acmsiggraph-0-92.layout:74 lib/layouts/acmsiggraph.layout:66
 msgid "TOG online ID"
@@ -8139,52 +8045,44 @@ msgid "Article number:"
 msgstr "Article number:"
 
 #: lib/layouts/acmsiggraph-0-92.layout:107
-#, fuzzy
 msgid "Set copyright"
-msgstr "Autorská práva"
+msgstr "Set copyright"
 
 #: lib/layouts/acmsiggraph-0-92.layout:110
-#, fuzzy
 msgid "Copyright type:"
-msgstr "Copyright year:"
+msgstr "Copyright type:"
 
 #: lib/layouts/acmsiggraph-0-92.layout:114
-#, fuzzy
 msgid "Copyright year"
-msgstr "Copyright year:"
+msgstr "Copyright year"
 
 #: lib/layouts/acmsiggraph-0-92.layout:117
-#, fuzzy
 msgid "Year of copyright:"
-msgstr "varcopyright"
+msgstr "Year of copyright:"
 
 #: lib/layouts/acmsiggraph-0-92.layout:125
-#, fuzzy
 msgid "Conference info"
-msgstr "Conference"
+msgstr "Conference info"
 
 #: lib/layouts/acmsiggraph-0-92.layout:128
-#, fuzzy
 msgid "Conference info:"
-msgstr "Conference:"
+msgstr "Conference info:"
 
 #: lib/layouts/acmsiggraph-0-92.layout:132
-#, fuzzy
 msgid "Conference name"
-msgstr "Conference"
+msgstr "Conference name"
 
 #: lib/layouts/acmsiggraph-0-92.layout:137
 msgid "ISBN"
-msgstr ""
+msgstr "ISBN"
 
 #: lib/layouts/acmsiggraph-0-92.layout:140
 msgid "ISBN:"
-msgstr ""
+msgstr "ISBN:"
 
 #: lib/layouts/acmsiggraph-0-92.layout:144 lib/layouts/sigplanconf.layout:126
-#, fuzzy
 msgid "DOI"
-msgstr "DIA"
+msgstr "DOI"
 
 #: lib/layouts/acmsiggraph-0-92.layout:147
 #: lib/layouts/acmsiggraph-0-92.layout:154 lib/layouts/acmsiggraph.layout:102
@@ -8205,21 +8103,18 @@ msgstr "PDF author:"
 
 #: lib/layouts/acmsiggraph-0-92.layout:195
 #: lib/layouts/acmsiggraph-0-92.layout:200
-#, fuzzy
 msgid "Keyword list"
-msgstr "Keywords"
+msgstr "Keyword list"
 
 #: lib/layouts/acmsiggraph-0-92.layout:204
 #: lib/layouts/acmsiggraph-0-92.layout:207
-#, fuzzy
 msgid "Concept list"
-msgstr "Koncept"
+msgstr "Concept list"
 
 #: lib/layouts/acmsiggraph-0-92.layout:211
 #: lib/layouts/acmsiggraph-0-92.layout:214
-#, fuzzy
 msgid "Print copyright"
-msgstr "varcopyright"
+msgstr "Print copyright"
 
 #: lib/layouts/acmsiggraph-0-92.layout:218 lib/layouts/acmsiggraph.layout:175
 msgid "Teaser"
@@ -8282,7 +8177,7 @@ msgstr "E-mail"
 
 #: lib/layouts/acmsiggraph.layout:3
 msgid "ACM SIGGRAPH (older than 0.91, obsolete)"
-msgstr ""
+msgstr "ACM SIGGRAPH (older than 0.91, obsolete)"
 
 #: lib/layouts/acmsiggraph.layout:106
 msgid "TOG project URL"
@@ -8780,14 +8675,12 @@ msgid "Slug Comment:"
 msgstr "Slug Comment:"
 
 #: lib/layouts/aguplus.inc:182
-#, fuzzy
 msgid "Plates"
-msgstr "Plate"
+msgstr "Plates"
 
 #: lib/layouts/aguplus.inc:183
-#, fuzzy
 msgid "Planotables"
-msgstr "Planotable"
+msgstr "Planotables"
 
 #: lib/layouts/aguplus.inc:187
 msgid "Plate"
@@ -11165,7 +11058,7 @@ msgstr "\\thesection.\\arabic{equation}"
 
 #: lib/layouts/europasscv.layout:3
 msgid "Europass CV (2013)"
-msgstr ""
+msgstr "Europass CV (2013)"
 
 #: lib/layouts/europasscv.layout:4 lib/layouts/europecv.layout:4
 #: lib/layouts/moderncv.layout:4 lib/layouts/simplecv.layout:4
@@ -11177,9 +11070,8 @@ msgid "FooterName"
 msgstr "FooterName"
 
 #: lib/layouts/europasscv.layout:97
-#, fuzzy
 msgid "Name (footer):"
-msgstr "Poslední patička:"
+msgstr "Name (footer):"
 
 #: lib/layouts/europasscv.layout:111 lib/layouts/moderncv.layout:166
 msgid "Mobile:"
@@ -11200,21 +11092,19 @@ msgstr "Homepage:"
 
 #: lib/layouts/europasscv.layout:134
 msgid "InstantMessaging"
-msgstr ""
+msgstr "InstantMessaging"
 
 #: lib/layouts/europasscv.layout:137
-#, fuzzy
 msgid "Instant Messaging:"
-msgstr "&Okamžitý náhled (vzorce):"
+msgstr "Instant Messaging:"
 
 #: lib/layouts/europasscv.layout:141
-#, fuzzy
 msgid "IM Type:"
-msgstr "&Typ:"
+msgstr "IM Type:"
 
 #: lib/layouts/europasscv.layout:142
 msgid "IM Type (e.g., AOL Messenger)"
-msgstr ""
+msgstr "IM Type (e.g., AOL Messenger)"
 
 #: lib/layouts/europasscv.layout:146 lib/layouts/europecv.layout:59
 msgid "Birthday"
@@ -11287,9 +11177,8 @@ msgid "Item"
 msgstr "Item"
 
 #: lib/layouts/europasscv.layout:225 lib/layouts/europasscv.layout:261
-#, fuzzy
 msgid "Summary of the item, can also be the time span"
-msgstr "Summary of the item, can also be the time"
+msgstr "Summary of the item, can also be the time span"
 
 #: lib/layouts/europasscv.layout:231 lib/layouts/europecv.layout:175
 #: lib/layouts/moderncv.layout:388
@@ -11297,72 +11186,60 @@ msgid "Item:"
 msgstr "Item:"
 
 #: lib/layouts/europasscv.layout:248
-#, fuzzy
 msgid "ItemInset"
-msgstr "ItemList"
+msgstr "ItemInset"
 
 #: lib/layouts/europasscv.layout:263
 msgid "Subitems"
-msgstr ""
+msgstr "Subitems"
 
 #: lib/layouts/europasscv.layout:270
-#, fuzzy
 msgid "TitleItem"
-msgstr "Titlenotemark"
+msgstr "TitleItem"
 
 #: lib/layouts/europasscv.layout:274
-#, fuzzy
 msgid "Title item:"
-msgstr "Title:"
+msgstr "Title item:"
 
 #: lib/layouts/europasscv.layout:277
-#, fuzzy
 msgid "TitleLevel"
-msgstr "Titulek"
+msgstr "TitleLevel"
 
 #: lib/layouts/europasscv.layout:281
-#, fuzzy
 msgid "Title level:"
-msgstr "Title:"
+msgstr "Title level:"
 
 #: lib/layouts/europasscv.layout:285 lib/layouts/europasscv.layout:286
-#, fuzzy
 msgid "Text (right side)"
-msgstr "Nastavit linku napravo"
+msgstr "Text (right side)"
 
 #: lib/layouts/europasscv.layout:290
-#, fuzzy
 msgid "BlueItem"
-msgstr "BulletedItem"
+msgstr "BlueItem"
 
 #: lib/layouts/europasscv.layout:293
-#, fuzzy
 msgid "Blue item:"
-msgstr "Bulleted Item:"
+msgstr "Blue item:"
 
 #: lib/layouts/europasscv.layout:296
-#, fuzzy
 msgid "BlueItemInset"
-msgstr "Vlastní vložky"
+msgstr "BlueItemInset"
 
 #: lib/layouts/europasscv.layout:299
 msgid "Blue subitems"
-msgstr ""
+msgstr "Blue subitems"
 
 #: lib/layouts/europasscv.layout:306
-#, fuzzy
 msgid "BigItem"
-msgstr "Item"
+msgstr "BigItem"
 
 #: lib/layouts/europasscv.layout:309
-#, fuzzy
 msgid "Big Item:"
-msgstr "List Item:"
+msgstr "Big Item:"
 
 #: lib/layouts/europasscv.layout:312
-#, fuzzy
 msgid "EcvItemize"
-msgstr "Položka"
+msgstr "EcvItemize"
 
 #: lib/layouts/europasscv.layout:336 lib/layouts/europecv.layout:215
 msgid "MotherTongue"
@@ -11445,9 +11322,8 @@ msgid "End of CV"
 msgstr "End of CV"
 
 #: lib/layouts/europasscv.layout:442 lib/layouts/europasscv.layout:447
-#, fuzzy
 msgid "Highlight"
-msgstr "Highlights:"
+msgstr "Highlight"
 
 #: lib/layouts/europecv.layout:3
 msgid "Europe CV"
@@ -12774,117 +12650,97 @@ msgstr "ACKNOWLEDGEMENTS"
 
 #: lib/layouts/iucr.layout:3
 msgid "International Union of Crystallography (IUCr)"
-msgstr ""
+msgstr "International Union of Crystallography (IUCr)"
 
 #: lib/layouts/iucr.layout:47 lib/layouts/jss.layout:26
-#, fuzzy
 msgid "\\thesection."
-msgstr "mathsection"
+msgstr "\\thesection."
 
 #: lib/layouts/iucr.layout:48
-#, fuzzy
 msgid "\\thesection"
-msgstr "mathsection"
+msgstr "\\thesection"
 
 #: lib/layouts/iucr.layout:53 lib/layouts/jss.layout:30
-#, fuzzy
 msgid "\\thesubsection."
-msgstr "\\Alph{subsection}."
+msgstr "\\thesubsection."
 
 #: lib/layouts/iucr.layout:61
-#, fuzzy
 msgid "\\thesubsubsection."
-msgstr "\\alph{subsubsection}."
+msgstr "\\thesubsubsection."
 
 #: lib/layouts/iucr.layout:109
-#, fuzzy
 msgid "Main Author"
-msgstr "Running Author"
+msgstr "Main Author"
 
 #: lib/layouts/iucr.layout:117 lib/layouts/iucr.layout:150
 #: lib/layouts/iucr.layout:181
-#, fuzzy
 msgid "Affiliation Key"
-msgstr "Affiliation"
+msgstr "Affiliation Key"
 
 #: lib/layouts/iucr.layout:118
-#, fuzzy
 msgid "Affiliation key of the author"
-msgstr "Affiliation and/or address of the author"
+msgstr "Affiliation key of the author"
 
 #: lib/layouts/iucr.layout:122 lib/layouts/iucr.layout:123
 #: lib/layouts/iucr.layout:155 lib/layouts/iucr.layout:156
-#, fuzzy
 msgid "Forename"
-msgstr "Fname"
+msgstr "Forename"
 
 #: lib/layouts/iucr.layout:144
-#, fuzzy
 msgid "Co Author"
-msgstr "Corr Author:"
+msgstr "Co Author"
 
 #: lib/layouts/iucr.layout:147
-#, fuzzy
 msgid "Co-author"
-msgstr "ChapAuthor"
+msgstr "Co-author"
 
 #: lib/layouts/iucr.layout:151
-#, fuzzy
 msgid "Affiliation key of the co-author"
-msgstr "Affiliation and/or address of the author"
+msgstr "Affiliation key of the co-author"
 
 #: lib/layouts/iucr.layout:160
-#, fuzzy
 msgid "Short Author"
-msgstr "Klávesové zkratky|z"
+msgstr "Short Author"
 
 #: lib/layouts/iucr.layout:163
-#, fuzzy
 msgid "Short author:"
-msgstr "Klávesové zkratky|z"
+msgstr "Short author:"
 
 #: lib/layouts/iucr.layout:182
-#, fuzzy
 msgid "Affiliation key"
-msgstr "Affiliation"
+msgstr "Affiliation key"
 
 #: lib/layouts/iucr.layout:197
-#, fuzzy
 msgid "Keyword:"
-msgstr "&Hledané slovo:"
+msgstr "Keyword:"
 
 #: lib/layouts/iucr.layout:200
 msgid "Vita"
-msgstr ""
+msgstr "Vita"
 
 #: lib/layouts/iucr.layout:203
 msgid "Vita:"
-msgstr ""
+msgstr "Vita:"
 
 #: lib/layouts/iucr.layout:206
-#, fuzzy
 msgid "PDB reference"
-msgstr "Nastavení"
+msgstr "PDB reference"
 
 #: lib/layouts/iucr.layout:209
-#, fuzzy
 msgid "PDB reference:"
-msgstr "Nastavení"
+msgstr "PDB reference:"
 
 #: lib/layouts/iucr.layout:212
-#, fuzzy
 msgid "Optional name"
-msgstr "rám popisku"
+msgstr "Optional name"
 
 #: lib/layouts/iucr.layout:216
-#, fuzzy
 msgid "NDB reference"
-msgstr "<reference>"
+msgstr "NDB reference"
 
 #: lib/layouts/iucr.layout:219
-#, fuzzy
 msgid "NDB reference:"
-msgstr "Reference:"
+msgstr "NDB reference:"
 
 #: lib/layouts/iucr.layout:222 lib/layouts/iucr.layout:225
 msgid "Synopsis"
@@ -12957,78 +12813,64 @@ msgid "Journal of Statistical Software (JSS) version 2"
 msgstr "Journal of Statistical Software (JSS)"
 
 #: lib/layouts/jss.layout:107
-#, fuzzy
 msgid "Plain Keywords"
-msgstr "Keywords"
+msgstr "Plain Keywords"
 
 #: lib/layouts/jss.layout:110
-#, fuzzy
 msgid "Plain Keywords:"
-msgstr "Keywords:"
+msgstr "Plain Keywords:"
 
 #: lib/layouts/jss.layout:113
-#, fuzzy
 msgid "Plain Title"
-msgstr "Part Title"
+msgstr "Plain Title"
 
 #: lib/layouts/jss.layout:116
-#, fuzzy
 msgid "Plain Title:"
-msgstr "Part Title"
+msgstr "Plain Title:"
 
 #: lib/layouts/jss.layout:122
-#, fuzzy
 msgid "Short Title:"
-msgstr "Krátký titulek|i"
+msgstr "Short Title:"
 
 #: lib/layouts/jss.layout:125
-#, fuzzy
 msgid "Plain Author"
-msgstr "Running Author"
+msgstr "Plain Author"
 
 #: lib/layouts/jss.layout:128
-#, fuzzy
 msgid "Plain Author:"
-msgstr "Running Author:"
+msgstr "Plain Author:"
 
 #: lib/layouts/jss.layout:131
-#, fuzzy
 msgid "Pkg"
-msgstr "Balíček"
+msgstr "Pkg"
 
 #: lib/layouts/jss.layout:133
-#, fuzzy
 msgid "pkg"
-msgstr "balíček"
+msgstr "pkg"
 
 #: lib/layouts/jss.layout:156
-#, fuzzy
 msgid "Proglang"
-msgstr "Program"
+msgstr "Proglang"
 
 #: lib/layouts/jss.layout:158
 msgid "proglang"
-msgstr ""
+msgstr "proglang"
 
 #: lib/layouts/jss.layout:174 lib/layouts/logicalmkup.module:65
 msgid "code"
 msgstr "kód"
 
 #: lib/layouts/jss.layout:186 lib/layouts/jss.layout:196
-#, fuzzy
 msgid "Code Chunk"
-msgstr "Útržek"
+msgstr "Code Chunk"
 
-# TODO lze i rekurzivne
 #: lib/layouts/jss.layout:233 lib/layouts/jss.layout:236
-#, fuzzy
 msgid "Code Input"
-msgstr "Vstup (lze rekurzivně)"
+msgstr "Code Input"
 
 #: lib/layouts/jss.layout:239 lib/layouts/jss.layout:242
-#, fuzzy
 msgid "Code Output"
-msgstr "Výstup"
+msgstr "Code Output"
 
 #: lib/layouts/kluwer.layout:3
 msgid "Kluwer"
@@ -13598,14 +13440,12 @@ msgid "CV Style:"
 msgstr "CV Style:"
 
 #: lib/layouts/moderncv.layout:52
-#, fuzzy
 msgid "Style Options"
-msgstr "Note Options"
+msgstr "Style Options"
 
 #: lib/layouts/moderncv.layout:53
-#, fuzzy
 msgid "Options for the CV style"
-msgstr "Volby iniciálky"
+msgstr "Options for the CV style"
 
 #: lib/layouts/moderncv.layout:57
 msgid "CVColor"
@@ -13617,22 +13457,19 @@ msgstr "CV Color Scheme:"
 
 #: lib/layouts/moderncv.layout:63
 msgid "CVIcons"
-msgstr ""
+msgstr "CVIcons"
 
 #: lib/layouts/moderncv.layout:66
-#, fuzzy
 msgid "CV Icon Set:"
-msgstr "&Sada ikon:"
+msgstr "CV Icon Set:"
 
 #: lib/layouts/moderncv.layout:69
-#, fuzzy
 msgid "CVColumnWidth"
-msgstr "Šířka sloupce %"
+msgstr "CVColumnWidth"
 
 #: lib/layouts/moderncv.layout:72
-#, fuzzy
 msgid "Column Width:"
-msgstr "Šířka sloupce %"
+msgstr "Column Width:"
 
 #: lib/layouts/moderncv.layout:75
 msgid "PDF Page Mode"
@@ -13643,9 +13480,8 @@ msgid "PDF Page Mode:"
 msgstr "PDF Page Mode:"
 
 #: lib/layouts/moderncv.layout:94
-#, fuzzy
 msgid "First name"
-msgstr "Firstname"
+msgstr "First name"
 
 #: lib/layouts/moderncv.layout:106
 msgid "FamilyName"
@@ -13668,13 +13504,12 @@ msgid "Line 2"
 msgstr "Line 2"
 
 #: lib/layouts/moderncv.layout:158
-#, fuzzy
 msgid "Phone Type"
-msgstr "Phone"
+msgstr "Phone Type"
 
 #: lib/layouts/moderncv.layout:159
 msgid "can be fixed, mobile or fax"
-msgstr ""
+msgstr "can be fixed, mobile or fax"
 
 #: lib/layouts/moderncv.layout:189
 msgid "Social"
@@ -14799,33 +14634,28 @@ msgid "Float Link"
 msgstr "Float Link"
 
 #: lib/layouts/revtex4-1.layout:291
-#, fuzzy
 msgid "Float link"
-msgstr "Float Link"
+msgstr "Float link"
 
 #: lib/layouts/revtex4-1.layout:302
-#, fuzzy
 msgid "lowercase text"
-msgstr "lowercase"
+msgstr "lowercase text"
 
 #: lib/layouts/revtex4-1.layout:314
-#, fuzzy
 msgid "Online cite"
-msgstr "Online citation"
+msgstr "Online cite"
 
 #: lib/layouts/revtex4-1.layout:318
-#, fuzzy
 msgid "online cite"
-msgstr "Online citation"
+msgstr "online cite"
 
 #: lib/layouts/revtex4-1.layout:320
-#, fuzzy
 msgid "Text behind"
-msgstr "Šířka textu %"
+msgstr "Text behind"
 
 #: lib/layouts/revtex4-1.layout:321
 msgid "text behind the cite"
-msgstr ""
+msgstr "text behind the cite"
 
 #: lib/layouts/revtex4.layout:3
 msgid "REVTeX (V. 4)"
@@ -14851,77 +14681,69 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/rsphrase.module:11 lib/layouts/rsphrase.module:16
-#, fuzzy
 msgid "R-S number"
-msgstr "Žádné číslo"
+msgstr "R-S number"
 
 #: lib/layouts/rsphrase.module:33 lib/layouts/rsphrase.module:36
 msgid "R-S phrase"
-msgstr ""
+msgstr "R-S phrase"
 
 #: lib/layouts/rsphrase.module:39
 msgid "Safety phrase"
-msgstr ""
+msgstr "Safety phrase"
 
 #: lib/layouts/rsphrase.module:46
-#, fuzzy
 msgid "Phrase Text"
-msgstr "Thanks Text"
+msgstr "Phrase Text"
 
 #: lib/layouts/rsphrase.module:47
 msgid "Argument for statements that requires to specify additional information"
 msgstr ""
+"Argument for statements that requires to specify additional information"
 
 #: lib/layouts/rsphrase.module:60
 msgid "S phrase:"
-msgstr ""
+msgstr "S phrase:"
 
 #: lib/layouts/sciposter.layout:3
-#, fuzzy
 msgid "SciPoster"
-msgstr "Postvermerk"
+msgstr "SciPoster"
 
 #: lib/layouts/sciposter.layout:34 lib/layouts/sigplanconf.layout:72
 msgid "Conference"
 msgstr "Conference"
 
 #: lib/layouts/sciposter.layout:40
-#, fuzzy
 msgid "LeftLogo"
-msgstr "Nalevo|l"
+msgstr "LeftLogo"
 
 #: lib/layouts/sciposter.layout:46
-#, fuzzy
 msgid "Left logo:"
-msgstr "Levá patička:"
+msgstr "Left logo:"
 
 #: lib/layouts/sciposter.layout:60
-#, fuzzy
 msgid "Logo Size"
-msgstr "Velikost Písma"
+msgstr "Logo Size"
 
 #: lib/layouts/sciposter.layout:61
 msgid "Relative logo size (0 through 1)"
-msgstr ""
+msgstr "Relative logo size (0 through 1)"
 
 #: lib/layouts/sciposter.layout:65
-#, fuzzy
 msgid "RightLogo"
-msgstr "Napravo"
+msgstr "RightLogo"
 
 #: lib/layouts/sciposter.layout:68
-#, fuzzy
 msgid "Right logo:"
-msgstr "Pravá patička:"
+msgstr "Right logo:"
 
 #: lib/layouts/sciposter.layout:80
-#, fuzzy
 msgid "Caption Width"
-msgstr "Optional width"
+msgstr "Caption Width"
 
 #: lib/layouts/sciposter.layout:81
 msgid "The caption width relative to the column (0 through 1)"
-msgstr ""
+msgstr "The caption width relative to the column (0 through 1)"
 
 #: lib/layouts/scrartcl.layout:3
 msgid "KOMA-Script Article"
@@ -14940,9 +14762,8 @@ msgid "\\thechapter.\\arabic{equation}"
 msgstr "\\thechapter.\\arabic{equation}"
 
 #: lib/layouts/scrclass.inc:41
-#, fuzzy
 msgid "\\alph{enumii})"
-msgstr "(\\alph{enumii})"
+msgstr "\\alph{enumii}"
 
 #: lib/layouts/scrclass.inc:122
 msgid "Addpart"
@@ -15700,20 +15521,19 @@ msgstr "Náhled"
 
 #: lib/layouts/stdinsets.inc:703 lib/layouts/stdinsets.inc:711
 msgid "see equation[[nomencl]]"
-msgstr ""
+msgstr "viz rovnice"
 
 #: lib/layouts/stdinsets.inc:704 lib/layouts/stdinsets.inc:712
 msgid "page[[nomencl]]"
-msgstr ""
+msgstr "strana"
 
 #: lib/layouts/stdinsets.inc:705 lib/layouts/stdinsets.inc:713
 msgid "Nomenclature[[output]]"
 msgstr "Nomenklatura"
 
 #: lib/layouts/stdlayouts.inc:99
-#, fuzzy
 msgid "Verbatim*"
-msgstr "Doslovně"
+msgstr "Doslovně*"
 
 #: lib/layouts/stdsections.inc:15 lib/layouts/svcommon.inc:119
 msgid "Part \\thepart"
@@ -15729,9 +15549,8 @@ msgstr "Příloha \\thechapter"
 
 #: lib/layouts/subequations.module:2 lib/layouts/subequations.module:10
 #: lib/layouts/subequations.module:13
-#, fuzzy
 msgid "Subequations"
-msgstr "Rovnice"
+msgstr "Podrovnice"
 
 #: lib/layouts/subequations.module:5
 msgid ""
@@ -18775,9 +18594,8 @@ msgid "Deactivate Branch in Master|v"
 msgstr "Deaktivovat větev v hlavním dokumentu|v"
 
 #: lib/ui/stdcontext.inc:505
-#, fuzzy
 msgid "Invert Inset|I"
-msgstr "Vložit poznámku"
+msgstr "Invertovat vložku|I"
 
 #: lib/ui/stdcontext.inc:506
 msgid "Add Unknown Branch|w"
@@ -19610,9 +19428,8 @@ msgid "Ligature Break|k"
 msgstr "Rozbít slitek (ligaturu)|l"
 
 #: lib/ui/stdmenus.inc:438
-#, fuzzy
 msgid "Optional Line Break|B"
-msgstr "Zalomení řádku|k"
+msgstr "Volitelné zalomení řádku|t"
 
 #: lib/ui/stdmenus.inc:451
 msgid "Display Formula|D"
@@ -20495,12 +20312,11 @@ msgstr "Matematický panel"
 
 #: lib/ui/stdtoolbars.inc:298
 msgid "Math spacings"
-msgstr "Mat. mezery"
+msgstr "Matematické mezery"
 
 #: lib/ui/stdtoolbars.inc:299
-#, fuzzy
 msgid "Styles & classes"
-msgstr "Třídy LaTeX-u"
+msgstr "Styly a třídy"
 
 #: lib/ui/stdtoolbars.inc:300 lib/ui/stdtoolbars.inc:389
 msgid "Fractions"
@@ -20742,27 +20558,27 @@ msgstr "Vertikální fantóm\t\\vphantom"
 
 #: lib/ui/stdtoolbars.inc:365
 msgid "Smash\t\\smash"
-msgstr ""
+msgstr "Rozbít vertikálně\t\\smash"
 
 #: lib/ui/stdtoolbars.inc:366
 msgid "Top smash\t\\smasht"
-msgstr ""
+msgstr "Rozbít vertikálně nahoru\t\\smasht"
 
 #: lib/ui/stdtoolbars.inc:367
 msgid "Bottom smash\t\\smashb"
-msgstr ""
+msgstr "Rozbít vertikálně dolů\t\\smashb"
 
 #: lib/ui/stdtoolbars.inc:368
 msgid "Left overlap\t\\mathllap"
-msgstr ""
+msgstr "Rozbít vertikálně nalevo\t\\mathllap"
 
 #: lib/ui/stdtoolbars.inc:369
 msgid "Center overlap\t\\mathclap"
-msgstr ""
+msgstr "Rozbít do centra\t\\mathclap"
 
 #: lib/ui/stdtoolbars.inc:370
 msgid "Right overlap\t\\mathrlap"
-msgstr ""
+msgstr "Rozbít vertikálně napravo\t\\mathrlap"
 
 #: lib/ui/stdtoolbars.inc:373
 msgid "Roots"
@@ -20778,7 +20594,7 @@ msgstr "Jiná odmocnina\t\\root"
 
 #: lib/ui/stdtoolbars.inc:378
 msgid "Styles & Classes"
-msgstr ""
+msgstr "Styly a třídy"
 
 #: lib/ui/stdtoolbars.inc:379
 msgid "Display style\t\\displaystyle"
@@ -20798,19 +20614,19 @@ msgstr "Menší (scriptscript)\t\\scriptscriptstyle"
 
 #: lib/ui/stdtoolbars.inc:383
 msgid "Relation class\t\\mathrel"
-msgstr ""
+msgstr "Třída relace\t\\mathrel"
 
 #: lib/ui/stdtoolbars.inc:384
 msgid "Binary operator class\t\\mathbin"
-msgstr ""
+msgstr "Třída binárního operátoru\t\\mathbin"
 
 #: lib/ui/stdtoolbars.inc:385
 msgid "Large operator class\t\\mathop"
-msgstr ""
+msgstr "Třída velkého oprátoru\t\\mathop"
 
 #: lib/ui/stdtoolbars.inc:386
 msgid "Ordinary class\t\\mathord"
-msgstr ""
+msgstr "Bežná třída\t\\mathord"
 
 #: lib/ui/stdtoolbars.inc:390
 msgid "Standard\t\\frac"
@@ -26572,10 +26388,12 @@ msgid "math macro new parameter"
 msgstr "nový parametr makra (matematika)"
 
 #: src/Color.cpp:272
+#, fuzzy
 msgid "collapsible inset text"
 msgstr "sbalitelná vložka textu"
 
 #: src/Color.cpp:273
+#, fuzzy
 msgid "collapsible inset frame"
 msgstr "sbalitelná vložka rámu"
 
@@ -33375,9 +33193,8 @@ msgid "Page Height %"
 msgstr "Výška stránky %"
 
 #: src/lengthcommon.cpp:45
-#, fuzzy
 msgid "Line Distance %"
-msgstr "Šířka řádku %"
+msgstr "Meziřádková vzdálenost %"
 
 #: src/lyxfind.cpp:128
 msgid "Search error"
@@ -33392,7 +33209,7 @@ msgid ""
 "End of file reached while searching forward.\n"
 "Continue searching from the beginning?"
 msgstr ""
-"%1$s: bylo dosaženo konce dokumentu při vyhledávání.\n"
+"Bylo dosaženo konce dokumentu při vyhledávání.\n"
 "Pokračovat ve vyhledávání od počátku dokumentu?"
 
 #: src/lyxfind.cpp:161 src/lyxfind.cpp:457
@@ -33400,7 +33217,7 @@ msgid ""
 "Beginning of file reached while searching backward.\n"
 "Continue searching from the end?"
 msgstr ""
-"%1$s: bylo dosaženo začátku dokumentu při zpětném vyhledávání.\n"
+"Bylo dosaženo začátku dokumentu při zpětném vyhledávání.\n"
 "Pokračovat ve vyhledávání od konce dokumentu?"
 
 #: src/lyxfind.cpp:397 src/lyxfind.cpp:415
@@ -33439,9 +33256,9 @@ msgid "Can't add vertical grid lines in '%1$s'"
 msgstr "Nelze přidat vertikální linku mřížky '%1$s'"
 
 #: src/mathed/InsetMathBox.cpp:98
-#, fuzzy, c-format
+#, c-format
 msgid "Box: %1$s"
-msgstr "Font: %1$s"
+msgstr "Rámeček: %1$s"
 
 #: src/mathed/InsetMathCases.cpp:94
 #, c-format
@@ -33454,19 +33271,19 @@ msgid "Changing number of columns not allowed in 'cases': feature %1$s"
 msgstr "Nelze změnit počet sloupců v prostředí 'cases': vlastnost '%1$s'"
 
 #: src/mathed/InsetMathColor.cpp:117
-#, fuzzy, c-format
+#, c-format
 msgid "Color: %1$s"
-msgstr "Barvy"
+msgstr "Barva: %1$s"
 
 #: src/mathed/InsetMathDecoration.cpp:158
-#, fuzzy, c-format
+#, c-format
 msgid "Decoration: %1$s"
-msgstr "&Dekorace:"
+msgstr "Dekorace: %1$s"
 
 #: src/mathed/InsetMathEnv.cpp:70
-#, fuzzy, c-format
+#, c-format
 msgid "Environment: %1$s"
-msgstr "Začít nové prostředí (%1$s)"
+msgstr "Prostředí: %1$s"
 
 #: src/mathed/InsetMathGrid.cpp:1729
 msgid "Cursor not in table"
@@ -33494,9 +33311,9 @@ msgid "Unknown tabular feature '%1$s'"
 msgstr "Neznámá vlastnost tabulky '%1$s'"
 
 #: src/mathed/InsetMathHull.cpp:1720
-#, fuzzy, c-format
+#, c-format
 msgid "Type: %1$s"
-msgstr "LyX: %1$s"
+msgstr "Typ: %1$s"
 
 #: src/mathed/InsetMathHull.cpp:1758
 msgid "Bad math environment"
@@ -33525,9 +33342,9 @@ msgid "Can't change number of columns in '%1$s'"
 msgstr "Nelze změnit počet sloupců v '%1$s'"
 
 #: src/mathed/InsetMathMacro.cpp:1202 src/mathed/InsetMathMacro.cpp:1208
-#, fuzzy, c-format
+#, c-format
 msgid "Macro: %1$s"
-msgstr " Makro: %1$s: "
+msgstr "Makro: %1$s"
 
 #: src/mathed/InsetMathMacroTemplate.cpp:501
 msgid "optional"
@@ -33538,14 +33355,14 @@ msgid "math macro"
 msgstr "mat. makro"
 
 #: src/mathed/InsetMathMacroTemplate.cpp:1389
-#, fuzzy, c-format
+#, c-format
 msgid "Math Macro: \\%1$s"
-msgstr "Mat. makra"
+msgstr "Mat. makro: \\%1$s"
 
 #: src/mathed/InsetMathMacroTemplate.cpp:1404
 #, c-format
 msgid "Invalid macro! \\%1$s"
-msgstr ""
+msgstr "Neplatné makro! \\%1$s"
 
 #: src/mathed/InsetMathNest.cpp:715 src/mathed/InsetMathNest.cpp:1742
 #: src/mathed/InsetMathNest.cpp:1885
@@ -33582,9 +33399,9 @@ msgid "FormatRef: "
 msgstr "FormatRef: "
 
 #: src/mathed/InsetMathSize.cpp:107
-#, fuzzy, c-format
+#, c-format
 msgid "Size: %1$s"
-msgstr "Prohlížet %1$s"
+msgstr "Velikost: %1$s"
 
 #: src/mathed/InsetMathSubstack.cpp:79
 #, c-format
@@ -33801,9 +33618,8 @@ msgid "Workarea events"
 msgstr "Události na pracovní ploše"
 
 #: src/support/debug.cpp:62
-#, fuzzy
 msgid "Clipboard handling"
-msgstr "Obsluha klávesových událostí"
+msgstr "Obsluha schránky"
 
 #: src/support/debug.cpp:63
 msgid "Graphics conversion and loading"
@@ -33928,6 +33744,36 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámý uživatel"
+
+#~ msgid ""
+#~ "Use font ligatures -- and --- instead of \\textendash and \\textemdash "
+#~ "for en- and em-dashes"
+#~ msgstr ""
+#~ "Použití fontových ligatur --, --- namísto \\textendash and \\textemdash "
+#~ "pro dlouhé pomlčky (en-, em-dash)"
+
+#~ msgid "Output en- and &em-dashes as ligatures"
+#~ msgstr "Ligatury pro dlouhé/čtverčíkové pomlčky"
+
+#~ msgid "&Coordinates and Clipping"
+#~ msgstr "Seříz&nutí a souřadnice"
+
+#~ msgid ""
+#~ "Clip to the coordinates specified below (bounding box for DVI/PS output, "
+#~ "viewport for PDF output)"
+#~ msgstr ""
+#~ "Seříznout podle souřadnic níže (ohraničující rámeček pro DVI/PS, "
+#~ "zobrazení pro PDF"
+
+#~ msgid "Clip to c&oordinates"
+#~ msgstr "&Seříznout podle souřadnic"
+
+#~ msgid ""
+#~ "Read coordinates from the file (bounding box value in case of PostScript "
+#~ "files, graphic dimensions in case of other file types)"
+#~ msgstr ""
+#~ "Načíst souřadnice ze souboru (ohraničující rámeček pro PostScript, "
+#~ "dimenze obrázku pro ostatní formáty)"
 
 #~ msgid "Caption: "
 #~ msgstr "Caption: "
