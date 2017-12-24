@@ -721,6 +721,17 @@ Encoding const * DocIterator::getEncoding() const
 	Text const & text = *sl.text();
 	Font font = text.getPar(sl.pit()).getFont(bp, sl.pos(),
 	                                          text.outerFont(sl.pit()));
+	Encoding const * enc = font.language()->encoding();
+	if (enc->name() == "inherit") {
+		size_t const n = depth();
+		for (size_t i = 0; i < n; ++i) {
+			Text const & otext = *slices_[i].text();
+			Font ofont = otext.getPar(slices_[i].pit()).getFont(bp, slices_[i].pos(),
+								  otext.outerFont(slices_[i].pit()));
+			if (ofont.language()->encoding()->name() != "inherit")
+				return ofont.language()->encoding();
+		}
+	}
 	return font.language()->encoding();
 }
 

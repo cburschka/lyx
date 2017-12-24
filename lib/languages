@@ -65,6 +65,8 @@
 # * Encoding is the default encoding used with TeX fonts.
 #   It is only used if Document > Settings > Language > Encoding
 #   is set to "Language Default" and "use non-TeX fonts" is FALSE.
+#   Encoding "inherit" means: keep encoding of the context (used by
+#   latex_language).
 # * InternalEncoding is used to tell LyX that babel internally sets a
 #   non-standard font encoding (such as hebrew to LHE or greek to LGR).
 #   If True, LyX cares for characters/macros that do not exist in
@@ -100,13 +102,13 @@ Language ignore
 	GuiName          "Ignore"
 	BabelName        ignore
 	PolyglossiaName  ignore
-	Encoding         iso8859-1
+	Encoding         inherit
 	LangCode         ignore
 End
 
 Language latex
 	GuiName          "LaTeX"
-	Encoding         iso8859-1
+	Encoding         inherit
 	LangCode         latex
 End
 

@@ -1079,7 +1079,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	Encodings::const_iterator it = encodings.begin();
 	Encodings::const_iterator const end = encodings.end();
 	for (auto const & encvar : encodings) {
-		if (!encvar.unsafe())
+		if (!encvar.unsafe() && !encvar.guiName().empty())
 			encodinglist.append(qt_(encvar.guiName()));
 	}
 	encodinglist.sort();

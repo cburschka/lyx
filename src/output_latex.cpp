@@ -1530,7 +1530,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 	// * with useNonTeXFonts: "utf8plain",
 	// * with XeTeX and TeX fonts: "ascii" (inputenc fails),
 	// * with LuaTeX and TeX fonts: only one encoding accepted by luainputenc.
-	if (runparams.isFullUnicode())
+	if (runparams.isFullUnicode() || newEnc.name() == "inherit")
 		return make_pair(false, 0);
 
 	Encoding const & oldEnc = *runparams.encoding;

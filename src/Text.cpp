@@ -933,15 +933,12 @@ bool canInsertChar(Cursor const & cur, char_type c)
 		}
 	}
 
-	// Prevent to insert uncodable characters in verbatim and ERT
-	// (workaround for bug 9012)
-	// Don't do it for listings inset, since InsetListings::latex() tries
-	// to switch to a usable encoding which works in many cases (bug 9102).
-	if (par.isPassThru() && cur.inset().lyxCode() != LISTINGS_CODE &&
-	    cur.current_font.language()) {
-		Encoding const * e = cur.current_font.language()->encoding();
+	// Prevent to insert uncodable characters in verbatim and ERT.
+	// The encoding is inherited from the context here.
+	if (par.isPassThru() && cur.getEncoding()) {
+		Encoding const * e = cur.getEncoding();
 		if (!e->encodable(c)) {
-			cur.message(_("Character is uncodable in verbatim paragraphs."));
+			cur.message(_("Character is uncodable in this verbatim context."));
 			return false;
 		}
 	}
