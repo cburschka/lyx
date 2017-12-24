@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-12-22 07:16+0100\n"
-"PO-Revision-Date: 2017-12-22 06:53+0000\n"
+"POT-Creation-Date: 2017-12-24 06:24+0100\n"
+"PO-Revision-Date: 2017-12-24 12:18+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2324,7 +2324,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:84
 msgid "Cus&tom:"
-msgstr "Vlas&tné:"
+msgstr "&Vlastné:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:100
 msgid "&Graphics driver:"
@@ -3057,7 +3057,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:169
 msgid "Automatically fi&ll header"
-msgstr "A&utomaticky vyplniť hlavičku"
+msgstr "Automat&icky vyplniť hlavičku"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:176
 msgid "Enable fullscreen PDF presentation"
@@ -3185,7 +3185,7 @@ msgstr "&Najdlhšie návestie"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:93
 msgid "Line &spacing"
-msgstr "&Rozstup riadkov"
+msgstr "Rozst&up riadkov"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:121 src/Text.cpp:1939
 #: src/frontends/qt4/GuiDocument.cpp:749
@@ -8980,7 +8980,7 @@ msgstr "PrispôsobiťBitmap"
 #: lib/layouts/powerdot.layout:332 lib/layouts/stdlists.inc:33
 #: lib/layouts/stdlists.inc:62 lib/layouts/theorems-case.inc:53
 msgid "Custom Item|s"
-msgstr "Vlastná Položka"
+msgstr "Vlastná Položka|V"
 
 #: lib/layouts/apa.layout:375 lib/layouts/apa.layout:400
 #: lib/layouts/apa6.layout:476 lib/layouts/apa6.layout:501
@@ -9108,7 +9108,7 @@ msgstr "Prezentácie"
 #: lib/layouts/beamer.layout:1158 lib/layouts/beamer.layout:1185
 #: lib/layouts/beamer.layout:1345
 msgid "Overlay Specifications|v"
-msgstr "Špecifikácie Prekrytia"
+msgstr "Špecifikácie Prekrytia|P"
 
 #: lib/layouts/beamer.layout:87 lib/layouts/beamer.layout:123
 #: lib/layouts/beamer.layout:165
@@ -9147,7 +9147,7 @@ msgstr "Mini šablóna pre túto listinu (viď enumitem manuál)"
 
 #: lib/layouts/beamer.layout:171
 msgid "Longest label|s"
-msgstr "Najdlhšie návestie"
+msgstr "Najdlhšie návestie|v"
 
 #: lib/layouts/beamer.layout:172
 msgid "The longest label in this list (to determine the indendation width)"
@@ -9182,7 +9182,7 @@ msgstr "Mód"
 #: lib/layouts/beamer.layout:356 lib/layouts/beamer.layout:385
 #: lib/layouts/beamer.layout:417
 msgid "Mode Specification|S"
-msgstr "Špecifikácie Módu"
+msgstr "Špecifikácie Módu|u"
 
 #: lib/layouts/beamer.layout:210 lib/layouts/beamer.layout:264
 #: lib/layouts/beamer.layout:296 lib/layouts/beamer.layout:325
@@ -9349,7 +9349,7 @@ msgstr "Špecifikovať voľby prekrytia (viď beamer manuál)"
 
 #: lib/layouts/beamer.layout:580
 msgid "Short Frame Title|S"
-msgstr "Krátky Titul Rámu"
+msgstr "Krátky Titul Rámu|K"
 
 #: lib/layouts/beamer.layout:581
 msgid "A short form of the frame title used in some themes"
@@ -9507,7 +9507,7 @@ msgstr "Blok:"
 
 #: lib/layouts/beamer.layout:871
 msgid "Action Specification|S"
-msgstr "Špecifikácie Akcie"
+msgstr "Špecifikácie Akcie|A"
 
 #: lib/layouts/beamer.layout:878
 msgid "Block Title"
@@ -9549,7 +9549,7 @@ msgstr "Titul (prostý rám)"
 
 #: lib/layouts/beamer.layout:960
 msgid "Short Subtitle|S"
-msgstr "Krátky Podtitul"
+msgstr "Krátky Podtitul|K"
 
 #: lib/layouts/beamer.layout:961
 msgid "Short subtitle which appears in the sidebar/header"
@@ -9561,7 +9561,7 @@ msgstr "Skratka autora ktorá sa zjaví na boku/hlavičke"
 
 #: lib/layouts/beamer.layout:1007
 msgid "Short Institute|S"
-msgstr "Krátky Inštitút"
+msgstr "Krátky Inštitút|K"
 
 #: lib/layouts/beamer.layout:1008
 msgid "Short institute which appears in the sidebar/header"
@@ -9573,7 +9573,7 @@ msgstr "Znak Inštitútu"
 
 #: lib/layouts/beamer.layout:1051
 msgid "Short Date|S"
-msgstr "Krátky Dátum"
+msgstr "Krátky Dátum|K"
 
 #: lib/layouts/beamer.layout:1052
 msgid "Short date which appears in the sidebar/header"
@@ -9612,7 +9612,7 @@ msgstr "Korolár."
 #: lib/layouts/beamer.layout:1505 lib/layouts/beamer.layout:1525
 #: lib/layouts/beamer.layout:1550
 msgid "Action Specifications|S"
-msgstr "Špecifikácie Akcie"
+msgstr "Špecifikácie Akcie|A"
 
 #: lib/layouts/beamer.layout:1236 lib/layouts/foils.layout:330
 #: lib/layouts/theorems-starred.inc:162
@@ -10446,7 +10446,7 @@ msgstr "Záverečný pozdrav:"
 
 #: lib/layouts/dinbrief.layout:206
 msgid "Signature|S"
-msgstr "Podpis"
+msgstr "Podpis|P"
 
 #: lib/layouts/dinbrief.layout:207
 msgid "Here you can insert a signature scan"
@@ -11516,7 +11516,7 @@ msgstr "Fixme Poznámka"
 #: lib/layouts/fixme.module:68 lib/layouts/fixme.module:103
 #: lib/layouts/fixme.module:146 lib/layouts/fixme.module:188
 msgid "Fixme Note Options|s"
-msgstr "Voľby Poznámky Fixme"
+msgstr "Voľby Poznámky Fixme|y"
 
 #: lib/layouts/fixme.module:69 lib/layouts/fixme.module:104
 #: lib/layouts/fixme.module:147 lib/layouts/fixme.module:189
@@ -11560,7 +11560,7 @@ msgstr "Fixme (Plánované)"
 
 #: lib/layouts/fixme.module:109
 msgid "Fixme Note|x"
-msgstr "Fixme Poznámka"
+msgstr "Fixme Poznámka|x"
 
 #: lib/layouts/fixme.module:111
 msgid "Insert the FIXME note here"
@@ -11644,7 +11644,7 @@ msgstr "Vysvetlujúci Text"
 
 #: lib/layouts/fixme.module:202
 msgid "Annotated Text|x"
-msgstr "Vysvetlujúci Text"
+msgstr "Vysvetľujúci Text|x"
 
 #: lib/layouts/fixme.module:203
 msgid "Insert the text to annotate here"
@@ -13305,7 +13305,7 @@ msgstr "Memoir"
 #: lib/layouts/memoir.layout:155 lib/layouts/memoir.layout:224
 #: lib/layouts/memoir.layout:245
 msgid "Short Title (TOC)|S"
-msgstr "Krátky Titul(zoznam)"
+msgstr "Krátky Titul(Zoznam)|K"
 
 #: lib/layouts/memoir.layout:72 lib/layouts/memoir.layout:87
 msgid "The chapter as it appears in the table of contents"
@@ -13372,7 +13372,7 @@ msgstr "Epigraf"
 
 #: lib/layouts/memoir.layout:197
 msgid "Epigraph Source|S"
-msgstr "Epigraf Zdroj"
+msgstr "Epigraf Zdroj|E"
 
 #: lib/layouts/memoir.layout:198
 msgid "Source"
@@ -14389,7 +14389,7 @@ msgstr "Na fóliách"
 
 #: lib/layouts/powerdot.layout:594
 msgid "Overlay Specification|S"
-msgstr "Špecifikácie Prekrytia"
+msgstr "Špecifikácie Prekrytia|P"
 
 #: lib/layouts/powerdot.layout:595
 msgid "Specify the overlay settings (see powerdot manual)"
@@ -14477,7 +14477,7 @@ msgstr "Elektronická Adresa:"
 
 #: lib/layouts/revtex4-1.layout:119 lib/layouts/revtex4.layout:207
 msgid "Electronic Address Option|s"
-msgstr "Voľba Elektronická Adresa"
+msgstr "Voľba Elektronická Adresa|a"
 
 #: lib/layouts/revtex4-1.layout:120 lib/layouts/revtex4.layout:208
 msgid "Optional argument to the email command"
@@ -26421,6 +26421,21 @@ msgstr "&Vždy povoliť pre tento dokument"
 msgid "&Always run for this document"
 msgstr "&Vždy spustiť pre tento dokument"
 
+#: src/Converter.cpp:427 src/Converter.cpp:668 src/Converter.cpp:697
+msgid "Converter killed"
+msgstr "Konvertor prerušený"
+
+#: src/Converter.cpp:428 src/Converter.cpp:669 src/Converter.cpp:698
+#, c-format
+msgid ""
+"The running converter\n"
+" %1$s\n"
+"was killed by the user."
+msgstr ""
+"Beh konverzie\n"
+" %1$s\n"
+"bol prerušený užívateľom."
+
 #: src/Converter.cpp:437 src/Converter.cpp:682 src/Converter.cpp:705
 #: src/Converter.cpp:748
 msgid "Cannot convert file"
@@ -26528,6 +26543,14 @@ msgstr "Nedá sa presunúť pomocný súbor z %1$s do %2$s."
 #: src/Converter.cpp:793
 msgid "Running LaTeX..."
 msgstr "Spúšťam LaTeX…"
+
+#: src/Converter.cpp:824
+msgid "Export canceled"
+msgstr "Export zrušený"
+
+#: src/Converter.cpp:825
+msgid "The export process was terminated by the user."
+msgstr "Export bol ukončený používateľom."
 
 #: src/Converter.cpp:819
 #, c-format
@@ -31622,7 +31645,7 @@ msgstr "Viacej Pravopisných Návrhov"
 
 #: src/frontends/qt4/Menus.cpp:850
 msgid "Add to personal dictionary|n"
-msgstr "Pridať do osobného slovníka"
+msgstr "Pridať do osobného slovníka|P"
 
 #: src/frontends/qt4/Menus.cpp:852
 msgid "Ignore all|I"
@@ -31663,7 +31686,7 @@ msgstr "Aktualizovať (Iné Formáty)"
 #: src/frontends/qt4/Menus.cpp:1113
 #, c-format
 msgid "View [%1$s]|V"
-msgstr "Zobraziť [%1$s]|o"
+msgstr "Zobraziť [%1$s]|b"
 
 #: src/frontends/qt4/Menus.cpp:1114
 #, c-format
