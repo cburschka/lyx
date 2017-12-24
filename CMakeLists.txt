@@ -1037,15 +1037,17 @@ if(LYX_INSTALL)
 endif()
 include(../Install)
 
+# By running the URL tests first, time can be saved when running the ctests in
+# parallel since the URL tests take a long time to run (e.g. 10 minutes).
+if(LYX_ENABLE_URLTESTS)
+	add_subdirectory(development/checkurls "${TOP_BINARY_DIR}/checkurls")
+endif()
 add_subdirectory(src "${TOP_BINARY_DIR}/src")
 add_subdirectory(lib/lyx2lyx "${TOP_BINARY_DIR}/lyx2lyx")
 add_subdirectory(lib/scripts "${TOP_BINARY_DIR}/scripts")
 add_subdirectory(lib/examples "${TOP_BINARY_DIR}/lib/examples")
 add_subdirectory(sourcedoc "${TOP_BINARY_DIR}/sourcedoc")
 add_subdirectory(development/autotests "${TOP_BINARY_DIR}/autotests")
-if(LYX_ENABLE_URLTESTS)
-	add_subdirectory(development/checkurls "${TOP_BINARY_DIR}/checkurls")
-endif()
 
 message(STATUS)
 message(STATUS "Build params, switch LYX_* options by -DLYX_*=ON or OFF, LYX_* combos by -DLYX_*=value:")
