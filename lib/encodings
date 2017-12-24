@@ -246,3 +246,9 @@ End
 # Pure 7bit ASCII encoding (partially hardcoded in LyX)
 Encoding ascii ascii "ASCII" ascii fixed none
 End
+
+# Semantic encodings
+
+# Inherit encoding of the context (used by verbatim)
+Encoding inherit inherit "" "" fixed none
+End

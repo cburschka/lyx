@@ -15,7 +15,11 @@
 #include "DocIterator.h"
 
 #include "Buffer.h"
+#include "BufferParams.h"
+#include "Encoding.h"
+#include "Font.h"
 #include "InsetList.h"
+#include "Language.h"
 #include "Paragraph.h"
 #include "LyXRC.h"
 #include "Text.h"
@@ -685,6 +689,33 @@ void DocIterator::append(DocIterator::idx_type idx, pos_type pos)
 	slices_.push_back(CursorSlice());
 	top().idx() = idx;
 	top().pos() = pos;
+}
+
+
+Encoding const * DocIterator::getEncoding() const
+{
+	if (empty())
+		return 0;
+	BufferParams const & bp = buffer()->params();
+	if (bp.useNonTeXFonts)
+		return encodings.fromLyXName("utf8-plain");
+
+	CursorSlice const & sl = innerTextSlice();
+	Text const & text = *sl.text();
+	Font font = text.getPar(sl.pit()).getFont(bp, sl.pos(),
+	                                          text.outerFont(sl.pit()));
+	Encoding const * enc = font.language()->encoding();
+	if (enc->name() == "inherit") {
+		size_t const n = depth();
+		for (size_t i = 0; i < n; ++i) {
+			Text const & otext = *slices_[i].text();
+			Font ofont = otext.getPar(slices_[i].pit()).getFont(bp, slices_[i].pos(),
+								  otext.outerFont(slices_[i].pit()));
+			if (ofont.language()->encoding()->name() != "inherit")
+				return ofont.language()->encoding();
+		}
+	}
+	return font.language()->encoding();
 }
 
 

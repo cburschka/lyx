@@ -1076,11 +1076,10 @@ GuiDocument::GuiDocument(GuiView & lv)
 	// Always put the default encoding in the first position.
 	langModule->encodingCO->addItem(qt_("Language Default (no inputenc)"));
 	QStringList encodinglist;
-	Encodings::const_iterator it = encodings.begin();
-	Encodings::const_iterator const end = encodings.end();
-	for (; it != end; ++it)
-		if (!it->unsafe())
-			encodinglist.append(qt_(it->guiName()));
+	for (auto const & encvar : encodings) {
+		if (!encvar.unsafe() && !encvar.guiName().empty())
+			encodinglist.append(qt_(encvar.guiName()));
+	}
 	encodinglist.sort();
 	langModule->encodingCO->addItems(encodinglist);
 

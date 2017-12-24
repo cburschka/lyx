@@ -21,7 +21,6 @@
 #include "Cursor.h"
 #include "CutAndPaste.h"
 #include "DispatchResult.h"
-#include "Encoding.h"
 #include "Font.h"
 #include "FuncCode.h"
 #include "FuncRequest.h"
@@ -2135,22 +2134,6 @@ docstring Cursor::currentState(bool devel_mode) const
 docstring Cursor::getPossibleLabel() const
 {
 	return inMathed() ? from_ascii("eq:") : text()->getPossibleLabel(*this);
-}
-
-
-Encoding const * Cursor::getEncoding() const
-{
-	if (empty())
-		return 0;
-	BufferParams const & bp = bv().buffer().params();
-	if (bp.useNonTeXFonts)
-		return encodings.fromLyXName("utf8-plain");
-
-	CursorSlice const & sl = innerTextSlice();
-	Text const & text = *sl.text();
-	Font font = text.getPar(sl.pit()).getFont(bp, sl.pos(),
-	                                          text.outerFont(sl.pit()));
-	return font.language()->encoding();
 }
 
 

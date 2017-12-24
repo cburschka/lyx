@@ -72,7 +72,6 @@ class Row;
 
 // these should go
 class InsetMathUnknown;
-class Encoding;
 
 /**
  * This class describes the position of a cursor within a document,
@@ -546,8 +545,6 @@ public:
 	int macroNamePos();
 	/// can we enter the inset?
 	bool openable(MathAtom const &) const;
-	///
-	Encoding const * getEncoding() const;
 	/// font at cursor position
 	Font getFont() const;
 };

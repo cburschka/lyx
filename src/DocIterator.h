@@ -20,6 +20,7 @@
 namespace lyx {
 
 class DocIterator;
+class Encoding;
 class LyXErr;
 class MathAtom;
 class Paragraph;
@@ -256,6 +257,9 @@ public:
 	void append(std::vector<CursorSlice> const & x);
 	/// push one CursorSlice on top and set its index and position
 	void append(idx_type idx, pos_type pos);
+
+	///
+	Encoding const * getEncoding() const;
 
 private:
 	friend class InsetIterator;
