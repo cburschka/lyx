@@ -403,7 +403,7 @@ void SystemcallPrivate::startProcess(QString const & cmd, string const & path,
 bool SystemcallPrivate::waitAndCheck()
 {
 	Sleep::millisec(100);
-	if (theApp()->cancel_export) {
+	if (theApp() && theApp()->cancel_export) {
 		// is there a better place to reset this?
 		process_->kill();
 		state = Killed;
