@@ -160,6 +160,38 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 		}
 	}
 
+	// Prevent to paste uncodable characters in verbatim and ERT.
+	// The encoding is inherited from the context here.
+	docstring uncodable_content;
+	if (target_inset->getLayout().isPassThru() && cur.getEncoding()) {
+		odocstringstream res;
+		Encoding const * e = cur.getEncoding();
+		for (size_t i = 0; i != insertion.size(); ++i) {
+			pos_type end = insertion[i].size();
+			for (pos_type j = 0; j != end; ++j) {
+				char_type const c = insertion[i].getChar(j);
+				if (!e->encodable(c)) {
+					// do not track deletion
+					res << c;
+					insertion[i].eraseChar(j, false);
+					--end;
+					--j;
+				}
+			}
+		}
+		docstring const uncodable = res.str();
+		if (!uncodable.empty()) {
+			if (uncodable.size() == 1)
+				uncodable_content = bformat(_("The character \"%1$s\" is uncodable in this verbatim context "
+						      "and thus has not been pasted."),
+						    uncodable);
+			else
+				uncodable_content = bformat(_("The characters \"%1$s\" are uncodable in this verbatim context "
+						      "and thus have not been pasted."),
+						    uncodable);
+		}
+	}
+
 	// set the paragraphs to plain layout if necessary
 	DocumentClassConstPtr newDocClass = buffer.params().documentClassPtr();
 	if (cur.inset().usePlainLayout()) {
@@ -195,6 +227,9 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 	// want to invalidate them.
 	insertion.swap(in.paragraphs());
 	cap::switchBetweenClasses(oldDocClass, newDocClass, in, errorlist);
+	// Do this here since switchBetweenClasses clears the errorlist
+	if (!uncodable_content.empty())
+		errorlist.push_back(ErrorItem(_("Uncodable content"), uncodable_content));
 	insertion.swap(in.paragraphs());
 
 	ParagraphList::iterator tmpbuf = insertion.begin();
