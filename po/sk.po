@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-12-24 06:24+0100\n"
-"PO-Revision-Date: 2017-12-24 12:18+0000\n"
+"POT-Creation-Date: 2017-12-24 19:48+0100\n"
+"PO-Revision-Date: 2017-12-25 13:07+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -18177,7 +18177,7 @@ msgstr "Znížiť Úroveň Sekcie|í"
 
 #: lib/ui/stdcontext.inc:350
 msgid "Move Section Down|D"
-msgstr "Presunúť Sekciu Nadol|r"
+msgstr "Presunúť Sekciu Nadol|N"
 
 #: lib/ui/stdcontext.inc:351 lib/ui/stdcontext.inc:650
 msgid "Move Section Up|U"
@@ -26598,6 +26598,25 @@ msgstr ", Bunka: "
 msgid ", Position: "
 msgstr ", Pozícia: "
 
+#: src/CutAndPaste.cpp:185
+#, c-format
+msgid ""
+"The character \"%1$s\" is uncodable in this verbatim context and thus has "
+"not been pasted."
+msgstr "Nekódovateľný znak \"%1$s\" v tomto doslovnom kontexte bol vynechaný."
+
+#: src/CutAndPaste.cpp:189
+#, c-format
+msgid ""
+"The characters \"%1$s\" are uncodable in this verbatim context and thus have "
+"not been pasted."
+msgstr ""
+"Nekódovateľné znaky \"%1$s\" v tomto doslovnom kontexte boli vynechané."
+
+#: src/CutAndPaste.cpp:232
+msgid "Uncodable content"
+msgstr "Nekódovateľný obsah"
+
 #: src/CutAndPaste.cpp:370
 #, c-format
 msgid ""
@@ -27856,9 +27875,9 @@ msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Nemôžte takýmto spôsobom vložiť dve medzery. Prečítajte si, prosím, Príručku."
 
-#: src/Text.cpp:944
-msgid "Character is uncodable in verbatim paragraphs."
-msgstr "Znak je v doslovných(verbatim) odstavcoch nekódovateľný."
+#: src/Text.cpp:941
+msgid "Character is uncodable in this verbatim context."
+msgstr "Znak je v tomto doslovnom(verbatim) kontexte nekódovateľný."
 
 #: src/Text.cpp:1907
 msgid "[Change Tracking] "
@@ -31657,7 +31676,7 @@ msgstr "Vybrať z osobného slovníka|r"
 
 #: src/frontends/qt4/Menus.cpp:901
 msgid "Language|L"
-msgstr "Jazyk"
+msgstr "Jazyk|J"
 
 #: src/frontends/qt4/Menus.cpp:903
 msgid "More Languages ...|M"
@@ -31665,7 +31684,7 @@ msgstr "Viac Jazykov …|V"
 
 #: src/frontends/qt4/Menus.cpp:973 src/frontends/qt4/Menus.cpp:974
 msgid "Hidden|H"
-msgstr "Skryté"
+msgstr "Skryté|y"
 
 #: src/frontends/qt4/Menus.cpp:978
 msgid "<No Documents Open>"
@@ -35633,6 +35652,9 @@ msgstr "Neznámy používateľ"
 #~ "%[[, {!<i>!}%žurnál%{!</i>!}]][[{%vydavateľ%[[, %vydavateľ%]]"
 #~ "[[{%inštitúcia%[[, %inštitúcia%]]}]]}]]}{%rok%[[ (%rok%)]]}{%strany%[[, "
 #~ "%strany%]]}."
+
+#~ msgid "Character is uncodable in verbatim paragraphs."
+#~ msgstr "Znak je v doslovných(verbatim) odstavcoch nekódovateľný."
 
 #~ msgid ""
 #~ "By default, a line break can occur after en- and em-dashes and before em-"
