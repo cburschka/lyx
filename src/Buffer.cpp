@@ -1706,13 +1706,23 @@ bool Buffer::makeLaTeXFile(FileName const & fname,
 		docstring const failed(1, e.failed_char);
 		ostringstream oss;
 		oss << "0x" << hex << e.failed_char << dec;
-		docstring msg = bformat(_("Could not find LaTeX command for character '%1$s'"
-					  " (code point %2$s)"),
-					  failed, from_utf8(oss.str()));
-		errorList.push_back(ErrorItem(msg, _("Some characters of your document are probably not "
-				"representable in the chosen encoding.\n"
-				"Changing the document encoding to utf8 could help."),
-		                              {e.par_id, e.pos}, {e.par_id, e.pos + 1}));
+		if (getParFromID(e.par_id).paragraph().layout().pass_thru) {
+			docstring msg = bformat(_("Uncodable character '%1$s'"
+						  " (code point %2$s)"),
+						  failed, from_utf8(oss.str()));
+			errorList.push_back(ErrorItem(msg, _("Some characters of your document are not "
+					"representable in specific verbatim contexts.\n"
+					"Changing the document encoding to utf8 could help."),
+						      {e.par_id, e.pos}, {e.par_id, e.pos + 1}));
+		} else {
+			docstring msg = bformat(_("Could not find LaTeX command for character '%1$s'"
+						  " (code point %2$s)"),
+						  failed, from_utf8(oss.str()));
+			errorList.push_back(ErrorItem(msg, _("Some characters of your document are probably not "
+					"representable in the chosen encoding.\n"
+					"Changing the document encoding to utf8 could help."),
+						      {e.par_id, e.pos}, {e.par_id, e.pos + 1}));
+		}
 		failed_export = true;
 	}
 	catch (iconv_codecvt_facet_exception const & e) {
