@@ -15,13 +15,14 @@ use Getopt::Std;
 use Encode qw(encode decode);
 
 sub mylc($);
+sub replaceSynopsis($);
 
 my $usage = <<EOT;
 pocheck.pl [-acmpqst] po_file [po_file] ...
 
-This script performs some consistency checks on po files. 
+This script performs some consistency checks on po files.
 
-We check for everything listed here, unless one or more of these 
+We check for everything listed here, unless one or more of these
 options is given, in which case we checks only for those requested.
 -a: Check arguments, like %1\$s
 -c: Check for colons at end
@@ -39,9 +40,9 @@ EOT
 my %options;
 getopts(":hacfmpqstwi", \%options);
 
-if (defined($options{h})) { 
-  print $usage; 
-  exit 0; 
+if (defined($options{h})) {
+  print $usage;
+  exit 0;
 }
 
 my $only_total = defined($options{w});
@@ -155,6 +156,9 @@ foreach my $pofilename ( @ARGV ) {
 
     if ($check_periods) {
       # Check period at the end of a message; uncomment code if you are paranoid
+      # Convert '...' to '…' first
+      $msgid = replaceSynopsis($msgid);
+      $msgstr = replaceSynopsis($msgstr);
       if ( ( $msgid =~ m/\. *(\|.*)?$/ ) != ( $msgstr =~ m/\. *(\|.*)?$/ ) ) {
        print "Line $linenum: Missing or unexpected period:\n  '$msgid' => '$msgstr'\n"
         unless $only_total;
@@ -256,4 +260,14 @@ sub mylc($)
 {
   my ($msg) = @_;
   return(encode('utf-8',lc(decode('utf-8', $msg))));
+}
+
+sub replaceSynopsis($)
+{
+  my ($string) = @_;
+
+  return ($string) if ($string !~ /^(.*)\.\.\.(.*)$/);
+  my ($before, $after) = ($1, $2);
+  return $string if (($before =~ /\.$/) || ($after =~ /^\./));
+  return("$before…$after");
 }
