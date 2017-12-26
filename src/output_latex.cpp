@@ -683,7 +683,8 @@ void TeXOnePar(Buffer const & buf,
 	       otexstream & os,
 	       OutputParams const & runparams_in,
 	       string const & everypar,
-	       int start_pos, int end_pos)
+	       int start_pos, int end_pos,
+	       bool const force)
 {
 	BufferParams const & bparams = runparams_in.is_child
 		? buf.masterParams() : buf.params();
@@ -694,7 +695,7 @@ void TeXOnePar(Buffer const & buf,
 	Layout const & style = text.inset().forcePlainLayout() ?
 		bparams.documentClass().plainLayout() : par.layout();
 
-	if (style.inpreamble)
+	if (style.inpreamble && !force)
 		return;
 
 	LYXERR(Debug::LATEX, "TeXOnePar for paragraph " << pit << " ptr " << &par << " '"
@@ -728,7 +729,7 @@ void TeXOnePar(Buffer const & buf,
 				os << '\n';
 		}
 
-		par.latex(bparams, outerfont, os, runparams, start_pos, end_pos);
+		par.latex(bparams, outerfont, os, runparams, start_pos, end_pos, force);
 		return;
 	}
 
@@ -739,7 +740,7 @@ void TeXOnePar(Buffer const & buf,
 		Font const outerfont = text.outerFont(pit);
 		parStartCommand(par, os, runparams, style);
 
-		par.latex(bparams, outerfont, os, runparams, start_pos, end_pos);
+		par.latex(bparams, outerfont, os, runparams, start_pos, end_pos, force);
 
 		// I did not create a parEndCommand for this minuscule
 		// task because in the other user of parStartCommand
@@ -1015,7 +1016,7 @@ void TeXOnePar(Buffer const & buf,
 
 	// FIXME UNICODE
 	os << from_utf8(everypar);
-	par.latex(bparams, outerfont, os, runparams, start_pos, end_pos);
+	par.latex(bparams, outerfont, os, runparams, start_pos, end_pos, force);
 
 	Font const font = par.empty()
 		 ? par.getLayoutFont(bparams, outerfont)
