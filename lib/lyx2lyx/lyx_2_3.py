@@ -1875,7 +1875,7 @@ def convert_dashligatures(document):
                          flags=re.UNICODE):
                 has_literal_dashes = True
             # ligature dash followed by word or no-break space on next line:
-            if re.search(u"(\\twohyphens|\\threehyphens)", line,
+            if re.search(u"(\\\\twohyphens|\\\\threehyphens)", line,
                             flags=re.UNICODE) and re.match(u"[\w\u00A0]",
                             document.body[i+1], flags=re.UNICODE):
                 has_ligature_dashes = True
