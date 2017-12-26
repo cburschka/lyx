@@ -1440,40 +1440,17 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 	BufferParams const & bp = features.runparams().is_child
 		? buf.masterParams() : buf.params();
 	if (layout_->inpreamble && inset_owner_) {
-		bool const is_command = layout_->latextype == LATEX_COMMAND;
-		Font f;
-		// Using a string stream here circumvents the encoding
+		// FIXME: Using a string stream here circumvents the encoding
 		// switching machinery of odocstream. Therefore the
 		// output is wrong if this paragraph contains content
 		// that needs to switch encoding.
 		otexstringstream os;
 		os << layout_->preamble();
-		if (is_command) {
-			os << '\\' << from_ascii(layout_->latexname());
-			// we have to provide all the optional arguments here, even though
-			// the last one is the only one we care about.
-			// Separate handling of optional argument inset.
-			if (!layout_->latexargs().empty()) {
-				OutputParams rp = features.runparams();
-				rp.local_font = &owner_->getFirstFontSettings(bp);
-				latexArgInsets(*owner_, os, rp, layout_->latexargs());
-			}
-			os << from_ascii(layout_->latexparam());
-		}
 		size_t const length = os.length();
-		// this will output "{" at the beginning, but not at the end
-		owner_->latex(bp, f, os, features.runparams(), 0, -1, true);
-		if (os.length() > length) {
-			if (is_command) {
-				os << '}';
-				if (!layout_->postcommandargs().empty()) {
-					OutputParams rp = features.runparams();
-					rp.local_font = &owner_->getFirstFontSettings(bp);
-					latexArgInsets(*owner_, os, rp, layout_->postcommandargs(), "post:");
-				}
-			}
+		TeXOnePar(buf, buf.text(), buf.getParFromID(owner_->id()).pit(), os,
+			  features.runparams(), string(), 0, -1, true);
+		if (os.length() > length)
 			features.addPreambleSnippet(os.release(), true);
-		}
 	}
 
 	if (features.runparams().flavor == OutputParams::HTML
@@ -2426,7 +2403,7 @@ void Paragraph::latex(BufferParams const & bparams,
 	if (empty()) {
 		// For InTitle commands, we have already opened a group
 		// in output_latex::TeXOnePar.
-		if (style.isCommand() && (!style.intitle || style.inpreamble)) {
+		if (style.isCommand() && !style.intitle) {
 			os << '{';
 			++column;
 		}
@@ -2466,7 +2443,7 @@ void Paragraph::latex(BufferParams const & bparams,
 			}
 			// For InTitle commands, we have already opened a group
 			// in output_latex::TeXOnePar.
-			if (style.isCommand() && (!style.intitle || style.inpreamble)) {
+			if (style.isCommand() && !style.intitle) {
 				os << '{';
 				++column;
 			}
