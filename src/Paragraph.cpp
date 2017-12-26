@@ -2428,7 +2428,7 @@ void Paragraph::latex(BufferParams const & bparams,
 	if (empty()) {
 		// For InTitle commands, we have already opened a group
 		// in output_latex::TeXOnePar.
-		if (style.isCommand() && style.intitle) {
+		if (style.isCommand() && (!style.intitle || style.inpreamble)) {
 			os << '{';
 			++column;
 		}
@@ -2468,7 +2468,7 @@ void Paragraph::latex(BufferParams const & bparams,
 			}
 			// For InTitle commands, we have already opened a group
 			// in output_latex::TeXOnePar.
-			if (style.isCommand() && !style.intitle) {
+			if (style.isCommand() && (!style.intitle || style.inpreamble)) {
 				os << '{';
 				++column;
 			}
