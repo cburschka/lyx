@@ -118,7 +118,10 @@ int InsetFoot::docbook(odocstream & os, OutputParams const & runparams) const
 
 void InsetFoot::validate(LaTeXFeatures & features) const
 {
-	if (!features.saveNoteEnv().empty()) {
+	// Use footnote package to provide footnotes in tables
+	// unless an alternative approach is built in the class.
+	if (!features.saveNoteEnv().empty()
+	    && !features.isProvided("footnote-alternative")) {
 		features.require("footnote");
 		features.addPreambleSnippet(
 			from_ascii("\\makesavenoteenv{"
