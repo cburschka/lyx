@@ -736,9 +736,13 @@ void TeXOnePar(Buffer const & buf,
 	Paragraph const * nextpar = runparams.isLastPar
 		? 0 : &paragraphs.at(pit + 1);
 
+	bool const intitle_command = style.intitle && style.latextype == LATEX_COMMAND;
+
 	if (style.pass_thru) {
 		Font const outerfont = text.outerFont(pit);
 		parStartCommand(par, os, runparams, style);
+		if (intitle_command)
+			os << '{';
 
 		par.latex(bparams, outerfont, os, runparams, start_pos, end_pos, force);
 
@@ -815,7 +819,6 @@ void TeXOnePar(Buffer const & buf,
 
 	// For InTitle commands, we need to switch the language inside the command
 	// (see #10849); thus open the command here.
-	bool const intitle_command = style.intitle && style.latextype == LATEX_COMMAND;
 	if (intitle_command) {
 		parStartCommand(par, os, runparams, style);
 		os << '{';
