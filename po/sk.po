@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-12-24 19:48+0100\n"
-"PO-Revision-Date: 2017-12-25 13:07+0000\n"
+"POT-Creation-Date: 2017-12-26 15:26+0100\n"
+"PO-Revision-Date: 2017-12-26 14:53+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1398,7 +1398,7 @@ msgstr "&Mierka na Obrazovke (%):"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:271
 msgid "Si&ze and Rotation"
-msgstr "Ve&ľkosť a rotácia"
+msgstr "Ve&ľkosť a Rotácia"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:283 src/frontends/qt4/ui/TabularUi.ui:175
 msgid "Rotate"
@@ -11560,7 +11560,7 @@ msgstr "Fixme (Plánované)"
 
 #: lib/layouts/fixme.module:109
 msgid "Fixme Note|x"
-msgstr "Fixme Poznámka|x"
+msgstr "Fixme Poznámka|F"
 
 #: lib/layouts/fixme.module:111
 msgid "Insert the FIXME note here"
@@ -11640,7 +11640,7 @@ msgstr "Fixme (MP Plán.)"
 
 #: lib/layouts/fixme.module:200
 msgid "Annotated Text"
-msgstr "Vysvetlujúci Text"
+msgstr "Vysvetľujúci Text"
 
 #: lib/layouts/fixme.module:202
 msgid "Annotated Text|x"
@@ -18177,7 +18177,7 @@ msgstr "Znížiť Úroveň Sekcie|í"
 
 #: lib/ui/stdcontext.inc:350
 msgid "Move Section Down|D"
-msgstr "Presunúť Sekciu Nadol|N"
+msgstr "Presunúť Sekciu Nadol|r"
 
 #: lib/ui/stdcontext.inc:351 lib/ui/stdcontext.inc:650
 msgid "Move Section Up|U"
@@ -18702,7 +18702,7 @@ msgstr "Riadky & Stĺpce|ĺ"
 
 #: lib/ui/stdmenus.inc:135
 msgid "Increase List Depth|I"
-msgstr "Zväčšiť Hĺbku Listiny|v"
+msgstr "Zväčšiť Hĺbku Listiny|ä"
 
 #: lib/ui/stdmenus.inc:136
 msgid "Decrease List Depth|D"
@@ -18718,7 +18718,7 @@ msgstr "Nastavenia TeX Kódu…|K"
 
 #: lib/ui/stdmenus.inc:141
 msgid "Float Settings...|a"
-msgstr "Nastavenia Plávajúceho Objektu…|j"
+msgstr "Nastavenia Plávajúceho Objektu…|h"
 
 #: lib/ui/stdmenus.inc:142
 msgid "Text Wrap Settings...|W"
@@ -19094,7 +19094,7 @@ msgstr "Listiny / Obsah|L"
 
 #: lib/ui/stdmenus.inc:375
 msgid "Float|a"
-msgstr "Plávajúci objekt|a"
+msgstr "Plávajúci objekt|j"
 
 #: lib/ui/stdmenus.inc:376
 msgid "Note|N"
@@ -19122,7 +19122,7 @@ msgstr "Citácia…|C"
 
 #: lib/ui/stdmenus.inc:384
 msgid "Cross-Reference...|R"
-msgstr "Krížová referencia…|r"
+msgstr "Krížová Referencia…|a"
 
 #: lib/ui/stdmenus.inc:385
 msgid "Label...|L"
@@ -19326,7 +19326,7 @@ msgstr "Komentár|K"
 
 #: lib/ui/stdmenus.inc:517
 msgid "Insert New Branch...|I"
-msgstr "Vložiť Novú Vetvu…|V"
+msgstr "Vložiť Novú Vetvu…|e"
 
 #: lib/ui/stdmenus.inc:535
 msgid "Change Tracking|C"
@@ -19354,7 +19354,7 @@ msgstr "Aktualizovať Hlavný Dokument|A"
 
 #: lib/ui/stdmenus.inc:544
 msgid "Cancel Background Process|P"
-msgstr "Zrušiť Beh Úlohy v Pozadí|B"
+msgstr "Zrušiť Beh Úlohy v Pozadí|Z"
 
 #: lib/ui/stdmenus.inc:545
 msgid "Compressed|o"
@@ -25182,6 +25182,21 @@ msgid ""
 msgstr ""
 "Skontrolujte prosím či softvér pre podporu vášho kódovania (%1$s) je správne "
 "inštalovaná"
+
+#: src/Buffer.cpp:1710
+#, c-format
+msgid "Uncodable character '%1$s' (code point %2$s)"
+msgstr "Nekódovateľný znak '%1$s' (hodnota %2$s)"
+
+#: src/Buffer.cpp:1713
+msgid ""
+"Some characters of your document are not representable in specific verbatim "
+"contexts.\n"
+"Changing the document encoding to utf8 could help."
+msgstr ""
+"Niektoré znaky vášho dokumentu sú nereprezentovateľné v niektorých "
+"špecifických verbatim kontextoch.\n"
+"Pomôcť by mohla zmena kódovania dokumentu na utf8."
 
 #: src/Buffer.cpp:1709
 #, c-format
@@ -31668,11 +31683,11 @@ msgstr "Pridať do osobného slovníka|P"
 
 #: src/frontends/qt4/Menus.cpp:852
 msgid "Ignore all|I"
-msgstr "Ignorovať všade|I"
+msgstr "Ignorovať všade|g"
 
 #: src/frontends/qt4/Menus.cpp:860
 msgid "Remove from personal dictionary|r"
-msgstr "Vybrať z osobného slovníka|r"
+msgstr "Vyhodiť z osobného slovníka|h"
 
 #: src/frontends/qt4/Menus.cpp:901
 msgid "Language|L"
@@ -31700,7 +31715,7 @@ msgstr "Zobraziť (Iné Formáty)|F"
 
 #: src/frontends/qt4/Menus.cpp:1085
 msgid "Update (Other Formats)|p"
-msgstr "Aktualizovať (Iné Formáty)"
+msgstr "Aktualizovať (Iné Formáty)|t"
 
 #: src/frontends/qt4/Menus.cpp:1113
 #, c-format
@@ -31746,11 +31761,11 @@ msgstr "Dokument neobsahuje vetvenie!"
 
 #: src/frontends/qt4/Menus.cpp:1477
 msgid "Index List|I"
-msgstr "Register"
+msgstr "Register|R"
 
 #: src/frontends/qt4/Menus.cpp:1482
 msgid "Index Entry|d"
-msgstr "Heslo Registra"
+msgstr "Heslo Registra|e"
 
 #: src/frontends/qt4/Menus.cpp:1497
 #, c-format
@@ -31773,11 +31788,11 @@ msgstr "Žiadna citácia nie je vybraná!"
 
 #: src/frontends/qt4/Menus.cpp:1612
 msgid "All authors|h"
-msgstr "Každý autor"
+msgstr "Každý autor|K"
 
 #: src/frontends/qt4/Menus.cpp:1643
 msgid "Force upper case|u"
-msgstr "Vynútiť veľké písmo"
+msgstr "Vynútiť veľké písmo|v"
 
 #: src/frontends/qt4/Menus.cpp:1713
 #, c-format
@@ -31820,11 +31835,11 @@ msgstr "Vrátiť na štandard jazyku (%1$s, %2$s)|j"
 #: src/frontends/qt4/Menus.cpp:1835
 #, c-format
 msgid "Reset to language default (%1$s)|l"
-msgstr "Vrátiť na štandard jazyku (%1$s)|j"
+msgstr "Vrátiť na štandard jazyku (%1$s)|a"
 
 #: src/frontends/qt4/Menus.cpp:1843
 msgid "Change Style|y"
-msgstr "Zmeniť Štýl"
+msgstr "Zmeniť Štýl|e"
 
 #: src/frontends/qt4/Menus.cpp:1878
 #, c-format
