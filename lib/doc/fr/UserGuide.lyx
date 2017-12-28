@@ -9027,14 +9027,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -9047,7 +9045,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9080,7 +9077,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -32885,7 +32881,23 @@ status collapsed
 \begin_layout Standard
 On a parfois besoin de compiler une liste de tous les symboles utilisés
  dans un document avec une brève description pour chacun – on appelle cela
- un glossaire ou une nomenclature ou encore une liste des symboles.
+ un glossaire ou une nomenclature ou encore une liste des symboles
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Le paquetage 
+\family sans
+nomencl
+\family default
+ étant plutôt destiné à la construction d'une liste des symboles ou d'un
+ glossaire, nous avons traduit nomenclature par glossaire de manière unifiée
+ dans l'interface et dans la documentation (NdT).
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -33006,26 +33018,13 @@ status open
 \series bold
 Nota:
 \series default
- 
-\lang english
-To use
-\lang french
- code \SpecialChar TeX
- 
-\lang english
-for nomenclature entries
-\lang french
- l'option 
+ l'utilisation de code \SpecialChar TeX
+ dans les entrées de glossaire requiert l'utilisation
+ de l'option 
 \family sans
 Littéral
 \family default
- 
-\lang english
-in the
-\lang french
- dialogue de glossaire
-\lang english
- has to be used.
+ dans le dialogue dialogue de glossaire.
 \end_layout
 
 \end_inset
@@ -33275,9 +33274,9 @@ Si les caractères |
 \begin_inset space \space{}
 \end_inset
 
-" apparaissent dans les entrées de la nomenclature avec code \SpecialChar TeX
-, ils doivent
- être protégés en ajoutant un caractère 
+" apparaissent dans les entrées de glossaire avec code \SpecialChar TeX
+, ils doivent être
+ protégés en ajoutant un caractère 
 \begin_inset Quotes cld
 \end_inset
 
@@ -33289,7 +33288,7 @@ double apostrophe
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "\"@, \"|, \"!, \"\""
-description "Le signe de citation dans code TeX est produit en écrivant ' \"\"\"\" '."
+description "Le signe de citation en code TeX est produit en écrivant ' \"\"\"\" '."
 literal "true"
 
 \end_inset
@@ -33640,12 +33639,8 @@ page
 \begin_inset Quotes crd
 \end_inset
 
- sont automatiquement traduits pour cerianes langues de documents.
- Sinon, ajoutez vouz ces lignes 
-\lang english
-in front of the nomenclature list as
-\lang french
- code \SpecialChar TeX
+ sont automatiquement traduits pour certaines langues de documents.
+ Sinon, ajoutez ces lignes avant le glossaire en tant que code \SpecialChar TeX
 :
 \end_layout
 
@@ -33711,25 +33706,13 @@ nobreakspace{}#1}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If the numbers should be hyperlinks, assure that you use 
+Pour que les nombres soient des liens hypertexte, vérifiez que vous avez
+ activé le support pour hyperref dans les paramètres du document, rubrique
+ 
 \family sans
-Hyperref
-\begin_inset space ~
-\end_inset
-
-Support
+Propriétés du PDF
 \family default
- in the document settings under 
-\family sans
-PDF
-\begin_inset space ~
-\end_inset
-
-Properties
-\family default
- and use instead:
+ et saisissez à la place:
 \end_layout
 
 \begin_layout Standard
@@ -36129,10 +36112,10 @@ name "sec:Aperçu-de-morceaux"
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Aperçu au vol
+Aperçu sur le vif
 \end_layout
 
 \end_inset
@@ -49984,7 +49967,7 @@ de
 \begin_inset space ~
 \end_inset
 
-nomenclature Commande pour le programme qui génère le glossaire (nomenclature),
+glossaire Commande pour le programme qui génère le glossaire (nomenclature),
  voir la section
 \begin_inset space ~
 \end_inset
