@@ -1515,9 +1515,11 @@ void LyXAction::init()
  * \li Action: Splits the current environment with a Separator.
  * \li Syntax: environment-split [outer|previous]
  * \li Params: outer: If this is given, LyX will split the outermost environment in
- *                    the current nesting hierarchy.
- *             previous: If this is given, LyX will split the environment in the previous
- *                    paragraph (is there is one).
+		      the current nesting hierarchy.
+	       previous: If this is given, LyX will split the environment in the previous
+		      paragraph (is there is one).
+	       before: If this is given, the new environment will be appended rather than
+		      prepended.
  * \li Origin: spitz, 23 Dec 2012
  * \endvar
  */
@@ -3059,10 +3061,11 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_BREAK
  * \li Action: Breaks the current paragraph at the current location.
  * \li Notion: Removes the selection.
- * \li Syntax: paragraph-break [<LAYOUT>]
+ * \li Syntax: paragraph-break [<LAYOUT>] [ignoresep]
  * \li Params: <LAYOUT>: "inverse" - decreases depth by one (or change layout
                          to default layout) when the cursor is at the end of
                          the line.
+	       ignoresep: Do not account for paragraph separators while breaking.
  * \endvar
  */
 		{ LFUN_PARAGRAPH_BREAK, "paragraph-break", Noop, Edit },

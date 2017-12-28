@@ -1141,9 +1141,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			Font const f(inherit_font, cur.current_font.language());
 			pars_[cur.pit() - 1].resetFonts(f);
 		} else {
-			if (par.isEnvSeparator(cur.pos()))
+			if (par.isEnvSeparator(cur.pos()) && cmd.getArg(1) != "ignoresep")
 				cur.posForward();
-			breakParagraph(cur, cmd.argument() == "inverse");
+			breakParagraph(cur, cmd.getArg(0) == "inverse");
 		}
 		cur.resetAnchor();
 		// If we have a list and autoinsert item insets,
@@ -1493,6 +1493,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_ENVIRONMENT_SPLIT: {
 		bool const outer = cmd.argument() == "outer";
 		bool const previous = cmd.argument() == "previous";
+		bool const before = cmd.argument() == "before";
 		Paragraph const & para = cur.paragraph();
 		docstring layout;
 		if (para.layout().isEnvironment())
@@ -1521,7 +1522,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 					break;
 			}
 		}
-		if (cur.pos() > 0)
+		if (before)
+			cur.top().setPitPos(cur.pit(), 0);
+		if (before || cur.pos() > 0)
 			lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK));
 		if (outer) {
 			while (cur.paragraph().params().depth() > split_depth)
@@ -1530,7 +1533,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		DocumentClass const & tc = bv->buffer().params().documentClass();
 		lyx::dispatch(FuncRequest(LFUN_LAYOUT, tc.plainLayout().name()));
 		lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "plain"));
-		lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK, "inverse"));
+		if (before) {
+			cur.backwardPos();
+			lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK, "inverse ignoresep"));
+			while (cur.paragraph().params().depth() < split_depth)
+				lyx::dispatch(FuncRequest(LFUN_DEPTH_INCREMENT));
+		}
+		else
+			lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK, "inverse"));
 		lyx::dispatch(FuncRequest(LFUN_LAYOUT, layout));
 
 		break;
