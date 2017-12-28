@@ -286,8 +286,8 @@ int LaTeX::run(TeXErrors & terr)
 		// onlyFileName() is needed for cygwin
 		int const ret = 
 				runMakeIndex(onlyFileName(idxfile.absFileName()), runparams);
-		if (ret)
-			return ret;
+		if (ret == Systemcall::KILLED)
+			return Systemcall::KILLED;
 		rerun = true;
 	}
 
@@ -299,8 +299,8 @@ int LaTeX::run(TeXErrors & terr)
 	// FIXME: Sort out the real problem in DepTable.
 	if (head.haschanged(nlofile) || (nlofile.exists() && nlofile.isFileEmpty())) {
 		int const ret = runMakeIndexNomencl(file, ".nlo", ".nls");
-		if (ret)
-			return ret;
+		if (ret == Systemcall::KILLED)
+			return Systemcall::KILLED;
 		rerun = true;
 	}
 
@@ -329,10 +329,10 @@ int LaTeX::run(TeXErrors & terr)
 		LYXERR(Debug::LATEX, "Running BibTeX.");
 		message(_("Running BibTeX."));
 		updateBibtexDependencies(head, bibtex_info);
-		int exitCode;
-		rerun |= runBibTeX(bibtex_info, runparams, exitCode);
-		if (exitCode)
-			return exitCode;
+		int exit_code;
+		rerun |= runBibTeX(bibtex_info, runparams, exit_code);
+		if (exit_code == Systemcall::KILLED)
+			return Systemcall::KILLED;
 		FileName const blgfile(changeExtension(file.absFileName(), ".blg"));
 		if (blgfile.exists())
 			bscanres = scanBlgFile(head, terr);
@@ -361,8 +361,8 @@ int LaTeX::run(TeXErrors & terr)
 		LYXERR(Debug::DEPEND, "Dep. file has changed or rerun requested");
 		LYXERR(Debug::LATEX, "Run #" << count);
 		message(runMessage(count));
-		int exitCode = startscript();
-		if (exitCode == Systemcall::KILLED)
+		int exit_code = startscript();
+		if (exit_code == Systemcall::KILLED)
 			return Systemcall::KILLED;
 		scanres = scanLogFile(terr);
 
@@ -385,10 +385,10 @@ int LaTeX::run(TeXErrors & terr)
 		LYXERR(Debug::LATEX, "Running BibTeX.");
 		message(_("Running BibTeX."));
 		updateBibtexDependencies(head, bibtex_info);
-		int exitCode;
-		rerun |= runBibTeX(bibtex_info, runparams, exitCode);
-		if (exitCode)
-			return exitCode;
+		int exit_code;
+		rerun |= runBibTeX(bibtex_info, runparams, exit_code);
+		if (exit_code == Systemcall::KILLED)
+			return Systemcall::KILLED;
 		FileName const blgfile(changeExtension(file.absFileName(), ".blg"));
 		if (blgfile.exists())
 			bscanres = scanBlgFile(head, terr);
@@ -410,12 +410,11 @@ int LaTeX::run(TeXErrors & terr)
 		// onlyFileName() is needed for cygwin
 		int const ret = runMakeIndex(onlyFileName(changeExtension(
 				file.absFileName(), ".idx")), runparams);
-		if (ret)
-			return ret;
+		if (ret == Systemcall::KILLED)
+			return Systemcall::KILLED;
 		rerun =	true;
 	}
 
-	// I am not pretty sure if need this twice.
 	// MSVC complains that bool |= int is unsafe. Not sure why.
 	if (head.haschanged(nlofile))
 		rerun |= (runMakeIndexNomencl(file, ".nlo", ".nls") != 0);
