@@ -1492,23 +1492,33 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_ENVIRONMENT_SPLIT: {
 		bool const outer = cmd.argument() == "outer";
+		bool const previous = cmd.argument() == "previous";
 		Paragraph const & para = cur.paragraph();
-		docstring layout = para.layout().name();
+		docstring layout;
+		if (para.layout().isEnvironment())
+			layout = para.layout().name();
 		depth_type split_depth = cur.paragraph().params().depth();
-		if (outer) {
-			// check if we have an environment in our nesting hierarchy
+		if (outer || previous) {
+			// check if we have an environment in our scope
 			pit_type pit = cur.pit();
 			Paragraph cpar = pars_[pit];
 			while (true) {
-				if (pit == 0 || cpar.params().depth() == 0)
+				if (pit == 0)
 					break;
 				--pit;
 				cpar = pars_[pit];
+				if (layout.empty() && previous
+				    && cpar.layout().isEnvironment()
+				    && cpar.params().depth() <= split_depth)
+					layout = cpar.layout().name();
 				if (cpar.params().depth() < split_depth
 				    && cpar.layout().isEnvironment()) {
-						layout = cpar.layout().name();
+						if (!previous)
+							layout = cpar.layout().name();
 						split_depth = cpar.params().depth();
 				}
+				if (cpar.params().depth() == 0)
+					break;
 			}
 		}
 		if (cur.pos() > 0)
@@ -3178,6 +3188,19 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 					res = cpar.layout().isEnvironment();
 			}
 			enable = res;
+			break;
+		}
+		else if (cmd.argument() == "previous") {
+			// look if we have an environment in the previous par
+			pit_type pit = cur.pit();
+			Paragraph cpar = pars_[pit];
+			if (pit > 0) {
+				--pit;
+				cpar = pars_[pit];
+				enable = cpar.layout().isEnvironment();
+				break;
+			}
+			enable = false;
 			break;
 		}
 		else if (cur.paragraph().layout().isEnvironment()) {

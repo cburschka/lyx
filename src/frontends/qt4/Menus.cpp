@@ -1859,19 +1859,25 @@ void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv)
 	Paragraph const & par = text->getPar(pit);
 	docstring const curlayout = par.layout().name();
 	docstring outerlayout;
+	docstring prevlayout;
 	depth_type current_depth = par.params().depth();
-	// check if we have an environment in our nesting hierarchy
+	// check if we have an environment in our scope
 	Paragraph cpar = par;
 	while (true) {
-		if (pit == 0 || cpar.params().depth() == 0)
+		if (pit == 0)
 			break;
 		--pit;
 		cpar = text->getPar(pit);
+		if (cpar.layout().isEnvironment() && prevlayout.empty()
+		    && cpar.params().depth() <= current_depth)
+				prevlayout = cpar.layout().name();
 		if (cpar.params().depth() < current_depth
 		    && cpar.layout().isEnvironment()) {
 				outerlayout = cpar.layout().name();
 				current_depth = cpar.params().depth();
 		}
+		if (cpar.params().depth() == 0)
+			break;
 	}
 	if (par.layout().isEnvironment()) {
 		docstring const label =
@@ -1879,6 +1885,14 @@ void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv)
 				translateIfPossible(curlayout));
 		add(MenuItem(MenuItem::Command, toqstr(label),
 			     FuncRequest(LFUN_ENVIRONMENT_SPLIT)));
+	}
+	else if (!prevlayout.empty()) {
+		docstring const label =
+			bformat(_("Start New Environment (%1$s)"),
+				translateIfPossible(prevlayout));
+		add(MenuItem(MenuItem::Command, toqstr(label),
+			     FuncRequest(LFUN_ENVIRONMENT_SPLIT,
+					 from_ascii("previous"))));
 	}
 	if (!outerlayout.empty()) {
 		docstring const label =
