@@ -2313,8 +2313,9 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_LAYOUT
  * \li Action: Sets the layout (that is, environment) for the current paragraph.
- * \li Syntax: layout <LAYOUT>
+ * \li Syntax: layout <LAYOUT> [ignorenests]
  * \li Params: <LAYOUT>: the layout to use
+	       ignorenests: If specified, nesting advices will be ignored.
  * \endvar
  */
 		{ LFUN_LAYOUT, "layout", Noop, Layout },

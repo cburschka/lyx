@@ -75,6 +75,7 @@ enum LayoutTags {
 	LT_NEED_PROTECT,
 	LT_NEWLINE,
 	LT_NEXTNOINDENT,
+	LT_NESTS,
 	LT_PAR_GROUP,
 	LT_PARINDENT,
 	LT_PARSEP,
@@ -239,6 +240,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 		{ "leftmargin",     LT_LEFTMARGIN },
 		{ "margin",         LT_MARGIN },
 		{ "needprotect",    LT_NEED_PROTECT },
+		{ "nests",          LT_NESTS },
 		{ "newline",        LT_NEWLINE },
 		{ "nextnoindent",   LT_NEXTNOINDENT },
 		{ "obsoletedby",    LT_OBSOLETEDBY },
@@ -589,6 +591,17 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 			vector<string> const req =
 				getVectorFromString(lex.getString(true));
 			requires_.insert(req.begin(), req.end());
+			break;
+		}
+
+		case LT_NESTS: {
+			docstring const nest = subst(subst(subst(lex.getLongString(from_ascii("EndNests")),
+						     from_ascii("\n"), docstring()),
+						     from_ascii(" "), docstring()),
+						     from_ascii("\t"), docstring());
+			vector<docstring> const nests =
+				getVectorFromString(nest);
+			nests_.insert(nests.begin(), nests.end());
 			break;
 		}
 
@@ -1384,6 +1397,16 @@ void Layout::write(ostream & os) const
 			if (it != requires_.begin())
 				os << ',';
 			os << *it;
+		}
+		os << '\n';
+	}
+	if (!nests_.empty()) {
+		os << "\tNests ";
+		for (set<docstring>::const_iterator it = nests_.begin();
+		     it != nests_.end(); ++it) {
+			if (it != nests_.begin())
+				os << ',';
+			os << to_utf8(*it);
 		}
 		os << '\n';
 	}

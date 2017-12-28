@@ -149,6 +149,8 @@ public:
 	///
 	std::set<std::string> const & requires() const { return requires_; }
 	///
+	std::set<docstring> const & nests() const { return nests_; }
+	///
 	std::string const & latexparam() const { return latexparam_; }
 	///
 	docstring leftdelim() const { return leftdelim_; }
@@ -468,6 +470,8 @@ private:
 	bool par_group_;
 	/// Packages needed for this layout
 	std::set<std::string> requires_;
+	/// Layouts that are by default nested after this one
+	std::set<docstring> nests_;
 	///
 	LaTeXArgMap latexargs_;
 	///
