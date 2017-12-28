@@ -247,6 +247,7 @@ void InsetInfo::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_MODIFY:
 		cur.recordUndo();
 		setInfo(to_utf8(cmd.argument()));
+		cur.forceBufferUpdate();
 		initialized_ = false;
 		break;
 
@@ -296,6 +297,14 @@ void InsetInfo::setText(docstring const & str)
 
 
 void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
+	// If the Buffer is a clone, then we neither need nor want to do any
+	// of what follows. We want, rather, just to inherit how things were
+	// in the original Buffer. This is especially important for VCS.
+	// Otherwise, we could in principle have different settings here
+	// than in the Buffer we were exporting.
+	if (buffer().isClone())
+		return;
+
 	BufferParams const & bp = buffer().params();
 
 	switch (type_) {
@@ -305,11 +314,7 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		break;
 	case SHORTCUT_INFO:
 	case SHORTCUTS_INFO: {
-		// only need to do this once.
-		if (initialized_)
-			break;
-		// and we will not keep trying if we fail
-		initialized_ = true;
+		// shortcuts can change, so we need to re-do this each time
 		FuncRequest const func = lyxaction.lookupFunc(name_);
 		if (func.action() == LFUN_UNKNOWN_ACTION) {
 			error("Unknown action %1$s");
@@ -328,7 +333,7 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		break;
 	}
 	case LYXRC_INFO: {
-		// this information could actually change, if the preferences are changed,
+		// this information could change, if the preferences are changed,
 		// so we will recalculate each time through.
 		ostringstream oss;
 		if (name_.empty()) {
@@ -369,16 +374,13 @@ void InsetInfo::updateBuffer(ParIterator const & it, UpdateType utype) {
 		break;
 
 	case TEXTCLASS_INFO: {
-		// only need to do this once.
-		if (initialized_)
-			break;
-		// name_ is the class name
+		// the TextClass can change
 		LayoutFileList const & list = LayoutFileList::get();
 		bool available = false;
+		// name_ is the class name
 		if (list.haveClass(name_))
 			available = list[name_].isTeXClassAvailable();
 		setText(available ? _("yes") : _("no"));
-		initialized_ = true;
 		break;
 	}
 	case MENU_INFO: {
