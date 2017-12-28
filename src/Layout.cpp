@@ -1401,14 +1401,14 @@ void Layout::write(ostream & os) const
 		os << '\n';
 	}
 	if (!nests_.empty()) {
-		os << "\tNests ";
+		os << "\tNests\n\t";
 		for (set<docstring>::const_iterator it = nests_.begin();
 		     it != nests_.end(); ++it) {
 			if (it != nests_.begin())
 				os << ',';
 			os << to_utf8(*it);
 		}
-		os << '\n';
+		os << "\n\tEndNests\n";
 	}
 	if (refprefix.empty())
 		os << "\tRefPrefix OFF\n";
