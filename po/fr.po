@@ -340,7 +340,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2017-12-22 11:00+0100\n"
-"PO-Revision-Date: 2017-12-28 18:02+0100\n"
+"PO-Revision-Date: 2017-12-29 10:41+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -3179,7 +3179,7 @@ msgstr "Sél&ectionné :"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:14 src/insets/InsetNomencl.cpp:184
 msgid "Nomenclature"
-msgstr "Glossaire"
+msgstr "Liste des symboles"
 
 #: src/frontends/qt4/ui/NomenclUi.ui:22
 msgid "Sy&mbol:"
@@ -4418,7 +4418,7 @@ msgstr "Commande Chec&kTeX :"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:309
 msgid "&Nomenclature command:"
-msgstr "Commande de &glossaire :"
+msgstr "Constructeur de la liste des s&ymboles :"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:324
 msgid ""
@@ -4799,14 +4799,14 @@ msgstr "&Enregistrer"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:13
 msgid "Nomenclature settings"
-msgstr "Paramètres de glossaire"
+msgstr "Paramètres de la liste des symboles"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:19
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:32
 msgid "Define hanging indentation/label length for the nomenclature list."
 msgstr ""
-"Définir l'indentation du renfoncement/la longueur d'étiquette pour le "
-"glossaire."
+"Définir l'indentation du renfoncement/la longueur d'étiquette pour la liste "
+"des symboles"
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:22
 msgid "&List Indentation:"
@@ -15869,7 +15869,7 @@ msgstr "page"
 
 #: lib/layouts/stdinsets.inc:705 lib/layouts/stdinsets.inc:713
 msgid "Nomenclature[[output]]"
-msgstr "Glossaire"
+msgstr "Liste des symboles"
 
 #: lib/layouts/stdlayouts.inc:99
 msgid "Verbatim*"
@@ -19595,7 +19595,7 @@ msgstr "Étiquette...|q"
 
 #: lib/ui/stdmenus.inc:388
 msgid "Nomenclature Entry...|y"
-msgstr "Entrée de glossaire...|s"
+msgstr "Symbole...|S"
 
 #: lib/ui/stdmenus.inc:390
 msgid "Table...|T"
@@ -19759,7 +19759,7 @@ msgstr "Liste des listings|g"
 
 #: lib/ui/stdmenus.inc:485
 msgid "Nomenclature|N"
-msgstr "Glossaire|o"
+msgstr "Liste des symboles|o"
 
 #: lib/ui/stdmenus.inc:486
 msgid "Bib(la)TeX Bibliography...|B"
@@ -20187,7 +20187,7 @@ msgstr "Insérer une entrée d'index"
 
 #: lib/ui/stdtoolbars.inc:127
 msgid "Insert nomenclature entry"
-msgstr "Insérer une entrée de glossaire"
+msgstr "Insérer une entrée dans la liste des symboles"
 
 #: lib/ui/stdtoolbars.inc:129
 msgid "Insert footnote"
@@ -27883,8 +27883,8 @@ msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
 msgstr ""
-"Définir les options de makeindex (cf. man makeindex) utilisées pour les "
-"glossaires. Elles peuvent différer des options utilisées pour l'index."
+"Définir les options de makeindex (cf. man makeindex) utilisées pour la liste "
+"des symboles. Elles peuvent différer des options utilisées pour l'index."
 
 #: src/LyXRC.cpp:3216
 msgid "The command to run the python pygments syntax highlighter."
@@ -28610,7 +28610,7 @@ msgstr "Objet externe"
 
 #: src/TocBackend.cpp:290
 msgid "Nomenclature Entries"
-msgstr "Entrées de glossaire"
+msgstr "Entrées de la liste des symboles"
 
 #: src/VCBackend.cpp:63 src/VCBackend.cpp:873 src/VCBackend.cpp:878
 #: src/VCBackend.cpp:927 src/VCBackend.cpp:986 src/VCBackend.cpp:1045
@@ -30792,7 +30792,7 @@ msgstr "Matrice mathématique"
 
 #: src/frontends/qt4/GuiNomenclature.h:36
 msgid "Nomenclature Settings"
-msgstr "Paramètres de glossaire"
+msgstr "Paramètres de la liste des symboles"
 
 #: src/frontends/qt4/GuiNote.cpp:26
 msgid "Note Settings"
@@ -31105,7 +31105,7 @@ msgstr "Taille de l'étiquette la plus longue"
 
 #: src/frontends/qt4/GuiPrintNomencl.h:40
 msgid "Nomenclature List Settings"
-msgstr "Paramètres du glossaire"
+msgstr "Paramètres de la liste des symboles"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:37
 msgid "Index Settings"
@@ -33238,7 +33238,7 @@ msgstr "Nom : "
 
 #: src/insets/InsetNomencl.cpp:90
 msgid "Nomenclature Symbol: "
-msgstr "Symbole de glossaire : "
+msgstr "Symbole : "
 
 #: src/insets/InsetNomencl.cpp:91
 msgid "Description: "

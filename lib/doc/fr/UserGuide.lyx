@@ -58,6 +58,8 @@
 \@ifpackageloaded{babel}{%
 \frenchbsetup{GlobalLayoutFrench=false}
 }{}
+
+\AtBeginDocument{\addto\captionsfrench{\def\nomname{Glossaire}}}
 \end_preamble
 \options refpage,intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading,numbers=noenddot
 \use_default_options false
@@ -9012,8 +9014,9 @@ avoir un langage et un style de texte;
 
 \begin_layout Itemize
 contenir des hyperliens, des boites, les notes de pied de page ou en marge,
- des notes, des maths, des entrées d'index ou de glossaire, des étiquettes,
- des tableaux, des graphiques, des listings, des flottants et du code \SpecialChar TeX
+ des notes, des maths, des entrées d'index ou de liste de symboles, des
+ étiquettes, des tableaux, des graphiques, des listings, des flottants et
+ du code \SpecialChar TeX
 .
 \end_layout
 
@@ -9027,12 +9030,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -9045,6 +9050,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9077,6 +9083,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -32813,20 +32820,16 @@ book
 \end_layout
 
 \begin_layout Itemize
-L'option 
+l'option 
 \family sans
 Littéral
 \family default
- 
-\lang english
-allows to input \SpecialChar TeX
- code in
-\lang french
- le nom d'index.
+ permet la saisie de code \SpecialChar TeX
+ dans le nom indexé.
 \end_layout
 
 \begin_layout Section
-Glossaire
+Liste des symboles
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Glossaire"
@@ -32835,10 +32838,10 @@ name "sec:Glossaire"
 
 
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Glossaire
+Liste des symboles
 \end_layout
 
 \end_inset
@@ -32876,23 +32879,54 @@ status collapsed
 \end_inset
 
 
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Glossaire|see
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+Liste des symboles
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
 On a parfois besoin de compiler une liste de tous les symboles utilisés
- dans un document avec une brève description pour chacun – on appelle cela
- un glossaire ou une nomenclature ou encore une liste des symboles
+ dans un document avec une brève description pour chacun – on appelle également
+ cela un glossaire ou une nomenclature
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Le paquetage 
-\family sans
-nomencl
-\family default
- étant plutôt destiné à la construction d'une liste des symboles ou d'un
- glossaire, nous avons traduit nomenclature par glossaire de manière unifiée
- dans l'interface et dans la documentation (NdT).
+Dans un souci de cohérence, nous avons traduit le terme anglophone 
+\emph on
+nomenclature
+\emph default
+ par liste des symboles de manière unifiée dans l'interface et dans la documenta
+tion (NdT).
 \end_layout
 
 \end_inset
@@ -32901,7 +32935,8 @@ nomencl
 \end_layout
 
 \begin_layout Standard
-Pour pouvoir créer des glossaires, vous avez besoin du paquetage \SpecialChar LaTeX
+Pour pouvoir créer des listes de symboles, vous avez besoin du paquetage
+ \SpecialChar LaTeX
  
 \series bold
 nomencl
@@ -32932,19 +32967,11 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
-Une entrée de glossaire est créée en plaçant le curseur juste après le symbole
- que l'on veut référencer en utilisant le menu 
+Une entrée dans la liste est créée en plaçant le curseur juste après le
+ symbole que l'on veut référencer en utilisant le menu 
 \family sans
 Insertion\SpecialChar menuseparator
-Entrée
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-glossaire
+Symbole
 \family default
  ou le bouton 
 \begin_inset Info
@@ -32965,13 +32992,12 @@ Nom
 \begin_inset Quotes crd
 \end_inset
 
- est insérée et une fenêtre de dialogue apparaît pour décrire l'entrée de
- glossaire.
+ est insérée et une fenêtre de dialogue apparaît pour décrire le symbole.
  
 \end_layout
 
 \begin_layout Standard
-Une entrée de glossaire consiste en deux éléments principaux.
+Une entrée consiste en deux éléments principaux.
  Le premier est le 
 \family sans
 Symbole
@@ -32981,32 +33007,7 @@ Symbole
 Description
 \family default
  que vous voulez lui attacher.
- L'option 
-\family sans
-Littéral
-\family default
  
-\lang english
-in the
-\lang french
- citation 
-\lang english
-dialog allows to input \SpecialChar TeX
- code to the fields
-\lang french
- 
-\family sans
-Description
-\family default
- et 
-\family sans
-Classé
-\begin_inset space ~
-\end_inset
-
-comme
-\family default
-.
 \end_layout
 
 \begin_layout Standard
@@ -33019,12 +33020,12 @@ status open
 Nota:
 \series default
  l'utilisation de code \SpecialChar TeX
- dans les entrées de glossaire requiert l'utilisation
- de l'option 
+ dans les entrées de la liste des symboles requiert
+ l'utilisation de l'option 
 \family sans
 Littéral
 \family default
- dans le dialogue dialogue de glossaire.
+ dans la fenêtre de dialogue.
 \end_layout
 
 \end_inset
@@ -33033,12 +33034,12 @@ Littéral
 \end_layout
 
 \begin_layout Subsection
-Définition et mise en forme du glossaire
+Définition et mise en forme de la liste des symboles
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Glossaire ! Mise en forme
+Liste des symboles! Mise en forme
 \end_layout
 
 \end_inset
@@ -33048,7 +33049,7 @@ Glossaire ! Mise en forme
 
 \begin_layout Standard
 Quand votre symbole est utilisé dans des formules mathématiques, vous devez
- le mettrez dans le champ 
+ le mettre dans le champ 
 \family sans
 Symbole
 \family default
@@ -33141,7 +33142,7 @@ texte
  pour mettre en forme le texte de description, vous devez utiliser des commandes
  \SpecialChar LaTeX
 .
- Par exemple la description de l'entrée de glossaire du 
+ Par exemple la description de l'entrée du 
 \begin_inset Quotes cld
 \end_inset
 
@@ -33274,9 +33275,9 @@ Si les caractères |
 \begin_inset space \space{}
 \end_inset
 
-" apparaissent dans les entrées de glossaire avec code \SpecialChar TeX
-, ils doivent être
- protégés en ajoutant un caractère 
+" apparaissent dans les entrées de la liste des symboles avec code \SpecialChar TeX
+, ils
+ doivent être protégés en ajoutant un caractère 
 \begin_inset Quotes cld
 \end_inset
 
@@ -33297,12 +33298,12 @@ literal "true"
 \end_layout
 
 \begin_layout Subsection
-Ordre de tri des entrées de glossaire
+Ordre de tri des entrées
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Glossaire ! Ordre des entrées
+Liste des symboles ! Ordre des entrées
 \end_layout
 
 \end_inset
@@ -33311,12 +33312,12 @@ Glossaire ! Ordre des entrées
 \end_layout
 
 \begin_layout Standard
-Les entrées de glossaire sont classées dans l'ordre alphabétique du code
- \SpecialChar LaTeX
+Les entrées de la liste des symboles sont classées dans l'ordre alphabétique
+ du code \SpecialChar LaTeX
  de la définition du symbole.
  Cela peut donner des résultats indésirables quand vous utilisez des symboles
  qui se trouvent dans des formules mathématiques.
- Supposons que nous avons des entrées de glossaire pour les symboles 
+ Supposons que nous avons des entrées pour les symboles 
 \emph on
 a
 \begin_inset CommandInset nomenclature
@@ -33410,7 +33411,7 @@ Classé
 
 comme
 \family default
- dans la boîte de dialogue de glossaire.
+ dans la fenêtre de dialogue.
  Les entrées seront alors triées en utilisant cette entrée et non pas la
  définition du symbole.
  Dans notre exemple, on peut entrer 
@@ -33450,12 +33451,12 @@ literal "true"
 \end_layout
 
 \begin_layout Subsection
-Options de glossaire
+Options de la liste des symboles
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Glossaire ! Options
+Liste des symboles ! Options
 \end_layout
 
 \end_inset
@@ -33475,7 +33476,7 @@ Le paquetage
 \series bold
 nomencl
 \series default
- offre plusieurs options pour modifier l'apparence du glossaire.
+ offre plusieurs options pour modifier l'apparence de la liste des symboles.
  Voici quelques-unes de ces options, pour plus d'options, voyez la documentation
 :
 \end_layout
@@ -33497,13 +33498,13 @@ eq
 \begin_inset Quotes erd
 \end_inset
 
- à chaque entrée de glossaire, avec 
+ à chaque entrée de la liste, avec 
 \family sans
 \emph on
 eq
 \family default
 \emph default
- le numéro de la dernière équation située juste avant l'entrée de glossaire;
+ le numéro de la dernière équation située juste avant l'entrée;
 \end_layout
 
 \begin_layout Description
@@ -33523,21 +33524,21 @@ page
 \begin_inset Quotes erd
 \end_inset
 
- à chaque entrée de glossaire, avec 
+ à chaque entrée de la liste, avec 
 \family sans
 \emph on
 page
 \family default
 \emph default
- est le numéro de la page sur laquelle apparaît l'entrée de glossaire;
+ est le numéro de la page sur laquelle apparaît l'entrée;
 \end_layout
 
 \begin_layout Description
-intoc insère le glossaire dans la table de matières.
+intoc insère la liste des symboles dans la table de matières.
 \end_layout
 
 \begin_layout Standard
-Pour utiliser une ou plusieurs de ces options, ajoutez-les, séparés par
+Pour utiliser une ou plusieurs de ces options, ajoutez-les, séparées par
  des virgules, à la liste d'options de la classe de document de la fenêtre
  de dialogue 
 \family sans
@@ -33570,12 +33571,12 @@ refpage, intoc
 
 \begin_layout Standard
 Vous pouvez aussi utiliser les deux premières options seulement pour certaines
- entrées de glossaires quand vous ajoutez une des commandes qui suivent
+ entrées particulières quand vous ajoutez une des commandes qui suivent
  dans le champ 
 \family sans
 Description
 \family default
- de la fenêtre de glossaire:
+ de la fenêtre de dialogue:
 \end_layout
 
 \begin_layout Description
@@ -33640,7 +33641,8 @@ page
 \end_inset
 
  sont automatiquement traduits pour certaines langues de documents.
- Sinon, ajoutez ces lignes avant le glossaire en tant que code \SpecialChar TeX
+ Sinon, ajoutez ces lignes avant la liste des symboles en tant que code
+ \SpecialChar TeX
 :
 \end_layout
 
@@ -33707,8 +33709,11 @@ nobreakspace{}#1}
 
 \begin_layout Standard
 Pour que les nombres soient des liens hypertexte, vérifiez que vous avez
- activé le support pour hyperref dans les paramètres du document, rubrique
- 
+ activé le support pour 
+\family sans
+hyperref
+\family default
+ dans les paramètres du document, rubrique 
 \family sans
 Propriétés du PDF
 \family default
@@ -33780,12 +33785,12 @@ nobreakspace{}#1}}
 \end_layout
 
 \begin_layout Subsection
-Impression du glossaire
+Impression de la liste des symboles
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Glossaire ! Impression
+Liste des symboles ! Impression
 \end_layout
 
 \end_inset
@@ -33794,7 +33799,7 @@ Glossaire ! Impression
 \end_layout
 
 \begin_layout Standard
-Pour imprimer le glossaire dans votre document, utilisez 
+Pour imprimer la liste dans votre document, utilisez 
 \family sans
 Insertion\SpecialChar menuseparator
 Listes
@@ -33806,7 +33811,7 @@ Listes
 \end_inset
 
 TdM\SpecialChar menuseparator
-Glossaire
+Liste des symboles
 \family default
 .
  Une boîte bleu clair marquée 
@@ -33815,13 +33820,13 @@ Glossaire
 
 
 \family sans
-Glossaire
+Liste des symboles
 \family default
 
 \begin_inset Quotes crd
 \end_inset
 
- est insérée pour montrer la place à laquelle le glossaire sera imprimé.
+ est insérée pour montrer la place à laquelle la liste sera imprimée.
  Via un clic droit dans la boîte, la taille des espacements pour les symboles
  peut être modifiée.
  Vous pouvez choisir parmi ces réglages:
@@ -33852,7 +33857,7 @@ plus
 \begin_inset space ~
 \end_inset
 
-longue la largeur du symbole le plus large de tout le glossaire est insérée;
+longue la largeur du symbole le plus large de toute la liste est insérée;
 \end_layout
 
 \begin_layout Description
@@ -33860,7 +33865,7 @@ Réglable espacement paramétrable.
 \end_layout
 
 \begin_layout Standard
-Dans la sortie imprimée le titre du glossaire devrait apparaître comme 
+Dans la sortie imprimée le titre de la liste devrait apparaître comme 
 \begin_inset Quotes cld
 \end_inset
 
@@ -33889,18 +33894,24 @@ Nomenclature
 \series bold
 
 \backslash
-renewcommand{
+AtBeginDocument{
 \backslash
-nomname}{Nomenclature}
+addto
+\backslash
+captionsfrench{
+\backslash
+def
+\backslash
+nomname{Glossaire}}}
 \end_layout
 
 \begin_layout Subsection
-Moteur d'indexation pour un glossaire
+Moteur d'indexation pour la liste de symboles
 \begin_inset Index idx
-status collapsed
+status open
 
 \begin_layout Plain Layout
-Glossaire!Moteur
+Liste des symboles!Moteur
 \end_layout
 
 \end_inset
@@ -33921,7 +33932,7 @@ name "subsec:programme-glossaire"
 \family sans
 makeindex
 \family default
- pour créer le glossaire.
+ pour créer la liste.
  Ce dernier fait partie de toutes les distributions \SpecialChar LaTeX
 .
  La fenêtre de dialogue de préférences de \SpecialChar LyX
@@ -41036,7 +41047,7 @@ reference "sec:Index"
 
 \end_inset
 
-, le glossaire section
+, la liste des symboles section
 \begin_inset space ~
 \end_inset
 
@@ -41347,11 +41358,11 @@ reference "sec:Index"
 \end_layout
 
 \begin_layout Subsection
-Entrée de glossaire
+Symbole
 \end_layout
 
 \begin_layout Standard
-Insère une entrée de glossaire, décrite section
+Insère une entrée de la liste des symboles, décrite section
 \begin_inset space ~
 \end_inset
 
@@ -43974,15 +43985,7 @@ arg   "nomencl-insert"
 
 \family sans
 Insertion\SpecialChar menuseparator
-Entrée
-\begin_inset space ~
-\end_inset
-
-de
-\begin_inset space ~
-\end_inset
-
-glossaire
+Symbole
 \end_layout
 
 \end_inset
@@ -49959,7 +49962,7 @@ reference "subsec:Programme-d'indexation"
 \end_layout
 
 \begin_layout Description
-Commande
+Construction
 \begin_inset space ~
 \end_inset
 
@@ -49967,8 +49970,20 @@ de
 \begin_inset space ~
 \end_inset
 
-glossaire Commande pour le programme qui génère le glossaire (nomenclature),
- voir la section
+la
+\begin_inset space ~
+\end_inset
+
+liste
+\begin_inset space ~
+\end_inset
+
+des
+\begin_inset space ~
+\end_inset
+
+symboles Commande pour le programme qui génère la liste des symboles, voir
+ la section
 \begin_inset space ~
 \end_inset
 
