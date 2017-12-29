@@ -39,7 +39,8 @@ Style Part
 	Argument 1
 	  LabelString	"Short Title|S"
 	  Tooltip	"The part as it appears in the table of contents/running headers"
-	  InsertCotext   1
+	  InsertCotext  1
+	  IsTocCaption  1
 	EndArgument
 	Font
 	  Series	Bold

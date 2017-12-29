@@ -69,6 +69,8 @@ public:
 	///
 	bool isPassThru() const { return pass_thru_; }
 	///
+	bool isTocCaption() const { return is_toc_caption_; }
+	///
 	bool resetFontEdit() const { return false; }
 	//@}
 	/// \name Public functions inherited from InsetCollapsible class
@@ -113,6 +115,8 @@ private:
 	bool pass_thru_;
 	///
 	docstring pass_thru_chars_;
+	/// Does this argument provide content for the TOC?
+	bool is_toc_caption_;
 	/// The type of Toc this is the caption of, empty otherwise.
 	std::string caption_of_toc_;
 

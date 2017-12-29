@@ -216,6 +216,7 @@ Style Part
     LabelString    "Short Title|S"
     Tooltip        "The part as it appears in the table of contents/running headers"
     InsertCotext   1
+    IsTocCaption   1
   EndArgument
   NeedProtect      1
   NextNoIndent     1
@@ -270,6 +271,7 @@ Style Section
     LabelString    "Short Title|S"
     Tooltip        "The section as it appears in the table of contents/running headers"
     InsertCotext   1
+    IsTocCaption   1
   EndArgument
   Font
     Family         Roman
@@ -331,6 +333,7 @@ Style Subsection
     LabelString    "Short Title|S"
     Tooltip        "The subsection as it appears in the table of contents/running headers"
     InsertCotext   1
+    IsTocCaption   1
   EndArgument
   Font
     Family         Roman
@@ -392,6 +395,7 @@ Style Subsubsection
     LabelString    "Short Title|S"
     Tooltip        "The subsubsection as it appears in the table of contents/running headers"
     InsertCotext   1
+    IsTocCaption   1
   EndArgument
   Font
     Family         Roman
@@ -481,6 +485,7 @@ Style Frame
       Size         largest
     EndFont
     AutoInsert     1
+    IsTocCaption   1
   EndArgument
 End
 

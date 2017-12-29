@@ -46,11 +46,12 @@ Style Section
 	  Family              Sans
 	  Series              Bold
 	EndFont
-		TocLevel 1
+	TocLevel 1
 	Argument 1
 		LabelString   "Short Title|S"
 		Tooltip       "The section as it appears in the table of contents/running headers"
 		InsertCotext   1
+		IsTocCaption   1
 	EndArgument
 End
 

@@ -140,6 +140,7 @@ Style PartBacktext
 	  Mandatory	1
 	  LabelString	"Part Title"
 	  Tooltip	"Title of this part"
+	  IsTocCaption  1
 	EndArgument
 	Preamble
 	  \newenvironment{svmultpartbacktext}[1]{\begin{partbacktext}

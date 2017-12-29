@@ -32,6 +32,7 @@ Style Part
 		LabelString   "Short Title|S"
 		Tooltip       "The part as it appears in the table of contents/running headers"
 		InsertCotext  1
+		IsTocCaption  1
 	EndArgument
 	Font
 	  Series              Bold
@@ -63,6 +64,7 @@ Style Chapter
 		LabelString   "Short Title|S"
 		Tooltip       "The chapter as it appears in the table of contents/running headers"
 		InsertCotext  1
+		IsTocCaption  1
 	EndArgument
 	Font
 	  Series              Bold
@@ -93,6 +95,7 @@ Style Section
 		LabelString   "Short Title|S"
 		Tooltip       "The section as it appears in the table of contents/running headers"
 		InsertCotext  1
+		IsTocCaption  1
 	EndArgument
 	Font
 	  Series              Bold
