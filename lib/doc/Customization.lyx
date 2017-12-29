@@ -12163,7 +12163,7 @@ Argument item:1
 \end_deeper
 \begin_layout Description
 
-\change_inserted -712698321 1514534780
+\change_inserted -712698321 1514539256
 \begin_inset Flex Code
 status collapsed
 
@@ -12177,7 +12177,8 @@ AutoNests
 
  Includes a comma-separated list of layout names that should be nested in
  and after the current one.
- Only makes sense for nestable layouts (such as environments) 
+ Only makes sense for nestable layouts (such as environments).
+ Must be ended by 
 \begin_inset Quotes eld
 \end_inset
 
@@ -12195,6 +12196,21 @@ EndAutoNests
 
 
 \begin_inset Quotes erd
+\end_inset
+
+.
+ See also 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1514539161
+IsAutoNestedBy
+\change_unchanged
+
+\end_layout
+
 \end_inset
 
 .
@@ -12929,6 +12945,63 @@ TitleLatexName
 \end_inset
 
  global entries).
+\change_inserted -712698321 1514539171
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1514539282
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1514539190
+IsAutoNestedBy
+\end_layout
+
+\end_inset
+
+ Includes a comma-separated list of layout names after which this one should
+ be nested.
+ Only makes sense with regard to nestable layouts (such as environments).
+ Must be ended by 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1514539279
+EndIsAutoNestedBy
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ See also 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1514539172
+AutoNest
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description

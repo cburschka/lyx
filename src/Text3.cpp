@@ -1478,11 +1478,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			setLayout(cur, layout);
 			bool do_nest = false;
 			set<docstring> autonests;
+			set<docstring> autonested;
 			if (cur.pit() > 0) {
 				autonests = pars_[cur.pit() - 1].layout().autonests();
+				autonested = pars_[cur.pit()].layout().isAutonestedBy();
 				do_nest = !ignoreautonests;
 			}
-			if (do_nest && autonests.find(layout) != autonests.end())
+			if (do_nest && (autonests.find(layout) != autonests.end()
+					|| autonested.find(old_layout) != autonested.end()))
 				lyx::dispatch(FuncRequest(LFUN_DEPTH_INCREMENT));
 		}
 

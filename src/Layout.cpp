@@ -41,6 +41,7 @@ enum LayoutTags {
 	LT_ALIGNPOSSIBLE,
 	LT_ARGUMENT,
 	LT_AUTONESTS,
+	LT_AUTONESTEDBY,
 	LT_MARGIN,
 	LT_BOTTOMSEP,
 	LT_CATEGORY,
@@ -219,6 +220,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 		{ "innertag",       LT_INNERTAG },
 		{ "inpreamble",     LT_INPREAMBLE },
 		{ "intitle",        LT_INTITLE },
+		{ "isautonestedby", LT_AUTONESTEDBY },
 		{ "istoccaption",   LT_ISTOCCAPTION },
 		{ "itemcommand",    LT_ITEMCOMMAND },
 		{ "itemsep",        LT_ITEMSEP },
@@ -603,6 +605,18 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 			vector<docstring> const autonests =
 				getVectorFromString(autonest);
 			autonests_.insert(autonests.begin(), autonests.end());
+			break;
+		}
+
+		case LT_AUTONESTEDBY: {
+			docstring const autonest =
+				subst(subst(subst(lex.getLongString(from_ascii("EndIsAutoNestedBy")),
+						  from_ascii("\n"), docstring()),
+					    from_ascii(" "), docstring()),
+				      from_ascii("\t"), docstring());
+			vector<docstring> const autonests =
+				getVectorFromString(autonest);
+			autonested_by_.insert(autonests.begin(), autonests.end());
 			break;
 		}
 
@@ -1410,6 +1424,16 @@ void Layout::write(ostream & os) const
 			os << to_utf8(*it);
 		}
 		os << "\n\tEndAutoNests\n";
+	}
+	if (!autonested_by_.empty()) {
+		os << "\tIsAutoNestedBy\n\t";
+		for (set<docstring>::const_iterator it = autonested_by_.begin();
+		     it != autonested_by_.end(); ++it) {
+			if (it != autonested_by_.begin())
+				os << ',';
+			os << to_utf8(*it);
+		}
+		os << "\n\tIsAutoNestedBy\n";
 	}
 	if (refprefix.empty())
 		os << "\tRefPrefix OFF\n";
