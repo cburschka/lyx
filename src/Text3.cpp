@@ -1476,17 +1476,15 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 		if (change_layout) {
 			setLayout(cur, layout);
-			bool do_nest = false;
-			set<docstring> autonests;
-			set<docstring> autonested;
-			if (cur.pit() > 0) {
-				autonests = pars_[cur.pit() - 1].layout().autonests();
-				autonested = pars_[cur.pit()].layout().isAutonestedBy();
-				do_nest = !ignoreautonests;
+			if (cur.pit() > 0 && !ignoreautonests) {
+				set<docstring> const & autonests =
+						pars_[cur.pit() - 1].layout().autonests();
+				set<docstring> const & autonested =
+						pars_[cur.pit()].layout().isAutonestedBy();
+				if (autonests.find(layout) != autonests.end()
+						|| autonested.find(old_layout) != autonested.end())
+					lyx::dispatch(FuncRequest(LFUN_DEPTH_INCREMENT));
 			}
-			if (do_nest && (autonests.find(layout) != autonests.end()
-					|| autonested.find(old_layout) != autonested.end()))
-				lyx::dispatch(FuncRequest(LFUN_DEPTH_INCREMENT));
 		}
 
 		Layout::LaTeXArgMap args = tclass[layout].args();
