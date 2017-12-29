@@ -43,7 +43,7 @@ InsetArgument::InsetArgument(Buffer * buf, string const & name)
     : InsetCollapsible(buf), name_(name), labelstring_(docstring()),
       font_(inherit_font), labelfont_(inherit_font), decoration_(string()),
       pass_thru_context_(false), pass_thru_local_(false), pass_thru_(false),
-      pass_thru_chars_(docstring())
+      pass_thru_chars_(docstring()), is_toc_caption_(false)
 {}
 
 
@@ -119,11 +119,13 @@ void InsetArgument::updateBuffer(ParIterator const & it, UpdateType utype)
 		decoration_ = (*lait).second.decoration;
 		pass_thru_chars_ = (*lait).second.pass_thru_chars;
 		pass_thru_local_ = false;
-		if (lait->second.is_toc_caption)
+		if (lait->second.is_toc_caption) {
+			is_toc_caption_ = true;
 			// empty if AddToToc is not set
 			caption_of_toc_ = insetlayout
 				? it.inset().getLayout().tocType()
 				: it.paragraph().layout().tocType();
+		}
 
 		switch ((*lait).second.passthru) {
 			case PT_INHERITED:
