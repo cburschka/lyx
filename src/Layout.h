@@ -149,7 +149,7 @@ public:
 	///
 	std::set<std::string> const & requires() const { return requires_; }
 	///
-	std::set<docstring> const & nests() const { return nests_; }
+	std::set<docstring> const & autonests() const { return autonests_; }
 	///
 	std::string const & latexparam() const { return latexparam_; }
 	///
@@ -471,7 +471,7 @@ private:
 	/// Packages needed for this layout
 	std::set<std::string> requires_;
 	/// Layouts that are by default nested after this one
-	std::set<docstring> nests_;
+	std::set<docstring> autonests_;
 	///
 	LaTeXArgMap latexargs_;
 	///

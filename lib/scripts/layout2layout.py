@@ -221,7 +221,7 @@ currentFormat = 66
 # Color collapsable -> collapsible
 
 # Incremented to format 66, 28 December 2017 by spitz
-# New Layout tag "Nests ... EndNests"
+# New Layout tag "AutoNests ... EndAutoNests"
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").

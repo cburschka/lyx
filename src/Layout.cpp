@@ -40,6 +40,7 @@ enum LayoutTags {
 	LT_ALIGN = 1,
 	LT_ALIGNPOSSIBLE,
 	LT_ARGUMENT,
+	LT_AUTONESTS,
 	LT_MARGIN,
 	LT_BOTTOMSEP,
 	LT_CATEGORY,
@@ -75,7 +76,6 @@ enum LayoutTags {
 	LT_NEED_PROTECT,
 	LT_NEWLINE,
 	LT_NEXTNOINDENT,
-	LT_NESTS,
 	LT_PAR_GROUP,
 	LT_PARINDENT,
 	LT_PARSEP,
@@ -192,6 +192,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 		{ "align",          LT_ALIGN },
 		{ "alignpossible",  LT_ALIGNPOSSIBLE },
 		{ "argument",       LT_ARGUMENT },
+		{ "autonests",      LT_AUTONESTS },
 		{ "babelpreamble",  LT_BABELPREAMBLE },
 		{ "bottomsep",      LT_BOTTOMSEP },
 		{ "category",       LT_CATEGORY },
@@ -240,7 +241,6 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 		{ "leftmargin",     LT_LEFTMARGIN },
 		{ "margin",         LT_MARGIN },
 		{ "needprotect",    LT_NEED_PROTECT },
-		{ "nests",          LT_NESTS },
 		{ "newline",        LT_NEWLINE },
 		{ "nextnoindent",   LT_NEXTNOINDENT },
 		{ "obsoletedby",    LT_OBSOLETEDBY },
@@ -594,14 +594,15 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 			break;
 		}
 
-		case LT_NESTS: {
-			docstring const nest = subst(subst(subst(lex.getLongString(from_ascii("EndNests")),
-						     from_ascii("\n"), docstring()),
-						     from_ascii(" "), docstring()),
-						     from_ascii("\t"), docstring());
-			vector<docstring> const nests =
-				getVectorFromString(nest);
-			nests_.insert(nests.begin(), nests.end());
+		case LT_AUTONESTS: {
+			docstring const autonest =
+				subst(subst(subst(lex.getLongString(from_ascii("EndAutoNests")),
+						  from_ascii("\n"), docstring()),
+					    from_ascii(" "), docstring()),
+				      from_ascii("\t"), docstring());
+			vector<docstring> const autonests =
+				getVectorFromString(autonest);
+			autonests_.insert(autonests.begin(), autonests.end());
 			break;
 		}
 
@@ -1400,15 +1401,15 @@ void Layout::write(ostream & os) const
 		}
 		os << '\n';
 	}
-	if (!nests_.empty()) {
-		os << "\tNests\n\t";
-		for (set<docstring>::const_iterator it = nests_.begin();
-		     it != nests_.end(); ++it) {
-			if (it != nests_.begin())
+	if (!autonests_.empty()) {
+		os << "\tAutoNests\n\t";
+		for (set<docstring>::const_iterator it = autonests_.begin();
+		     it != autonests_.end(); ++it) {
+			if (it != autonests_.begin())
 				os << ',';
 			os << to_utf8(*it);
 		}
-		os << "\n\tEndNests\n";
+		os << "\n\tEndAutoNests\n";
 	}
 	if (refprefix.empty())
 		os << "\tRefPrefix OFF\n";

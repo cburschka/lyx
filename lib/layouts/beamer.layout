@@ -482,12 +482,12 @@ Style Frame
     EndFont
     AutoInsert     1
   EndArgument
-  Nests 
+  AutoNests 
 	Standard,Itemize,Enumerate,Description,FrameTitle,FrameSubtitle,Column,
 	Columns,ColumnsCenterAligned,ColumnsTopAligned,Pause,Overprint,OverlayArea,Only,Block,
 	ExampleBlock,AlertBlock,Bibliography,Quotation,Quote,Verse,Corollary,Definition,Definitions,
 	Example,Examples,Fact,Lemma,Proof,Theorem,LyX-Code
-  EndNests
+  EndAutoNests
 End
 
 Style PlainFrame
@@ -671,11 +671,11 @@ Style Columns
     Family         Roman
     Color          latex
   EndFont
-  Nests 
+  AutoNests 
 	Standard,Itemize,Enumerate,Description,Pause,Overprint,OverlayArea,Only,Block,
 	ExampleBlock,AlertBlock,Bibliography,Quotation,Quote,Verse,Corollary,Definition,Definitions,
 	Example,Examples,Fact,Lemma,Proof,Theorem,LyX-Code
-  EndNests
+  EndAutoNests
 End
 
 Style ColumnsCenterAligned
@@ -896,10 +896,10 @@ Style Block
     EndFont
     AutoInsert     1
   EndArgument
-  Nests 
+  AutoNests 
 	Standard,Itemize,Enumerate,Description,Pause,Overprint,OverlayArea,Only,Quotation,
 	Quote,Verse,Corollary,Definition,Definitions,Example,Examples,Fact,Lemma,Proof,Theorem,LyX-Code
-  EndNests
+  EndAutoNests
 End
 
 Style ExampleBlock
@@ -1243,9 +1243,9 @@ Style Corollary
     LabelString    "Additional Theorem Text"
     Tooltip        "Additional text appended to the theorem header"
   EndArgument
-  Nests 
+  AutoNests 
 	Standard,Itemize,Enumerate,Description,Pause,Overprint,OverlayArea,Only,LyX-Code
-  EndNests
+  EndAutoNests
 End
 
 Style Definition

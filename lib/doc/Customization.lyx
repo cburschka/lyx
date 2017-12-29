@@ -12162,6 +12162,45 @@ Argument item:1
 
 \end_deeper
 \begin_layout Description
+
+\change_inserted -712698321 1514534780
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1514534780
+AutoNests
+\end_layout
+
+\end_inset
+
+ Includes a comma-separated list of layout names that should be nested in
+ and after the current one.
+ Only makes sense for nestable layouts (such as environments) 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1514538124
+EndAutoNests
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
 \begin_inset Flex Code
 status collapsed
 
@@ -14617,49 +14656,6 @@ protect
 not
 \emph default
  whether this command should itself be protected.)
-\change_inserted -712698321 1514479340
-
-\end_layout
-
-\begin_layout Description
-
-\change_inserted -712698321 1514479340
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted -712698321 1514479340
-Nests
-\end_layout
-
-\end_inset
-
- Includes a comma-separated list of layout names that should be nested in
- and after the current one.
- Only makes sense for nestable layouts (such as environments) 
-\begin_inset Quotes eld
-\end_inset
-
-
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted -712698321 1514479340
-EndNests
-\end_layout
-
-\end_inset
-
-
-\begin_inset Quotes erd
-\end_inset
-
-.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description

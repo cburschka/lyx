@@ -1419,13 +1419,12 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_LAYOUT: {
-		bool const ignorenests = cmd.getArg(1) == "ignorenests";
-		docstring layout = ignorenests ? from_utf8(cmd.getArg(0)) : cmd.argument();
+		bool const ignoreautonests = cmd.getArg(1) == "ignoreautonests";
+		docstring layout = ignoreautonests ? from_utf8(cmd.getArg(0)) : cmd.argument();
 		LYXERR(Debug::INFO, "LFUN_LAYOUT: (arg) " << to_utf8(layout));
 
 		Paragraph const & para = cur.paragraph();
 		docstring const old_layout = para.layout().name();
-		set<docstring> nests = para.layout().nests();
 		DocumentClass const & tclass = bv->buffer().params().documentClass();
 
 		if (layout.empty())
@@ -1478,9 +1477,12 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (change_layout) {
 			setLayout(cur, layout);
 			bool do_nest = false;
-			if (cur.pit() > 0 && pars_[cur.pit() - 1].layout().name() == old_layout)
-				do_nest = !ignorenests;
-			if (do_nest && nests.find(layout) != nests.end())
+			set<docstring> autonests;
+			if (cur.pit() > 0) {
+				autonests = pars_[cur.pit() - 1].layout().autonests();
+				do_nest = !ignoreautonests;
+			}
+			if (do_nest && autonests.find(layout) != autonests.end())
 				lyx::dispatch(FuncRequest(LFUN_DEPTH_INCREMENT));
 		}
 
@@ -1540,7 +1542,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		DocumentClass const & tc = bv->buffer().params().documentClass();
 		lyx::dispatch(FuncRequest(LFUN_LAYOUT, from_ascii("\"") + tc.plainLayout().name()
-					  + from_ascii("\" ignorenests")));
+					  + from_ascii("\" ignoreautonests")));
 		lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "plain"));
 		if (before) {
 			cur.backwardPos();
@@ -3182,8 +3184,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_LAYOUT: {
 		DocumentClass const & tclass = cur.buffer()->params().documentClass();
-		bool const ignorenests = cmd.getArg(1) == "ignorenests";
-		docstring layout = ignorenests ? from_utf8(cmd.getArg(0)) : cmd.argument();
+		bool const ignoreautonests = cmd.getArg(1) == "ignoreautonests";
+		docstring layout = ignoreautonests ? from_utf8(cmd.getArg(0)) : cmd.argument();
 		if (layout.empty())
 			layout = tclass.defaultLayoutName();
 		enable = !owner_->forcePlainLayout() && tclass.hasLayout(layout);
