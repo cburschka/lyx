@@ -1856,6 +1856,7 @@ void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv)
 		return;
 
 	pit_type pit = bv->cursor().selBegin().pit();
+	pos_type pos = bv->cursor().selBegin().pos();
 	Paragraph const & par = text->getPar(pit);
 	docstring const curlayout = par.layout().name();
 	docstring outerlayout;
@@ -1885,10 +1886,12 @@ void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv)
 		add(MenuItem(MenuItem::Command, toqstr(label),
 			     FuncRequest(LFUN_ENVIRONMENT_SPLIT,
 					 from_ascii("before"))));
-		label = bformat(_("Append New Environment (%1$s)"),
-				translateIfPossible(curlayout));
-		add(MenuItem(MenuItem::Command, toqstr(label),
-			     FuncRequest(LFUN_ENVIRONMENT_SPLIT)));
+		if (!par.layout().keepempty || pos > 0 || !text->isFirstInSequence(pit)) {
+			label = bformat(_("Append New Environment (%1$s)"),
+					translateIfPossible(curlayout));
+			add(MenuItem(MenuItem::Command, toqstr(label),
+				     FuncRequest(LFUN_ENVIRONMENT_SPLIT)));
+		}
 	}
 	else if (!prevlayout.empty()) {
 		docstring const label =
