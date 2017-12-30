@@ -1505,6 +1505,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		bool const outer = cmd.argument() == "outer";
 		bool const previous = cmd.argument() == "previous";
 		bool const before = cmd.argument() == "before";
+		bool const normal = cmd.argument().empty();
 		Paragraph const & para = cur.paragraph();
 		docstring layout;
 		if (para.layout().isEnvironment())
@@ -1535,6 +1536,20 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		if (before)
 			cur.top().setPitPos(cur.pit(), 0);
+		DocumentClass const & tc = bv->buffer().params().documentClass();
+		if (normal && cur.pos() == 0 && isFirstInSequence(cur.pit())) {
+			Layout::LaTeXArgMap args = tc[layout].args();
+			Layout::LaTeXArgMap::const_iterator lait = args.begin();
+			Layout::LaTeXArgMap::const_iterator const laend = args.end();
+			for (; lait != laend; ++lait) {
+				Layout::latexarg arg = (*lait).second;
+				if (arg.autoinsert) {
+					FuncRequest cmd(LFUN_ARGUMENT_INSERT, (*lait).first + " force");
+					lyx::dispatch(cmd);
+				}
+			}
+			cur.forwardPos();
+		}
 		if (before || cur.pos() > 0)
 			lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK));
 		else if (previous && cur.nextInset() && cur.nextInset()->lyxCode() == SEPARATOR_CODE)
@@ -1543,7 +1558,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			while (cur.paragraph().params().depth() > split_depth)
 				lyx::dispatch(FuncRequest(LFUN_DEPTH_DECREMENT));
 		}
-		DocumentClass const & tc = bv->buffer().params().documentClass();
 		lyx::dispatch(FuncRequest(LFUN_LAYOUT, from_ascii("\"") + tc.plainLayout().name()
 					  + from_ascii("\" ignoreautonests")));
 		lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "plain"));
@@ -2860,6 +2874,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		code = ARG_CODE;
 		allow_in_passthru = true;
 		string const arg = cmd.getArg(0);
+		bool const force = cmd.getArg(1) == "force";
 		if (arg.empty()) {
 			enable = false;
 			break;
@@ -2893,7 +2908,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 					break;
 				for (auto const & table : pars_[pit].insetList())
 					if (InsetArgument const * ins = table.inset->asInsetArgument())
-						if (ins->name() == arg) {
+						if (ins->name() == arg && !force) {
 							// we have this already
 							enable = false;
 							break;

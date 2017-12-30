@@ -302,8 +302,9 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_ARGUMENT_INSERT
  * \li Action: Inserts an argument (short title) inset.
- * \li Syntax: argument-insert <argument nr>
+ * \li Syntax: argument-insert <argument nr> [force]
  * \li Params: <argument nr>: see layout declarations
+ *             force: Insert argument even if already there.
  * \li Origin: vermeer, 12 Aug 2002
  * \endvar
  */
