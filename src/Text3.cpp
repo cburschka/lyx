@@ -1510,6 +1510,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if (para.layout().isEnvironment())
 			layout = para.layout().name();
 		depth_type split_depth = cur.paragraph().params().depth();
+		depth_type nextpar_depth = 0;
 		if (outer || previous) {
 			// check if we have an environment in our scope
 			pit_type pit = cur.pit();
@@ -1531,6 +1532,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				}
 				if (cpar.params().depth() == 0)
 					break;
+			}
+			if (outer && pit < cur.lastpit()) {
+				// save nesting of following paragraph
+				cpar = pars_[cur.pit() + 1];
+				nextpar_depth = cpar.params().depth();
 			}
 		}
 		if (before)
@@ -1556,6 +1562,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		else
 			lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK, "inverse"));
 		lyx::dispatch(FuncRequest(LFUN_LAYOUT, layout));
+		if (outer && nextpar_depth > 0) {
+			// restore nesting of following paragraph
+			DocIterator scur = cur;
+			cur.forwardPar();
+			while (cur.paragraph().params().depth() < nextpar_depth)
+				lyx::dispatch(FuncRequest(LFUN_DEPTH_INCREMENT));
+			cur.setCursor(scur);
+		}
 
 		break;
 	}
