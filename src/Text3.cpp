@@ -1537,6 +1537,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			cur.top().setPitPos(cur.pit(), 0);
 		if (before || cur.pos() > 0)
 			lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK));
+		else if (previous && cur.nextInset() && cur.nextInset()->lyxCode() == SEPARATOR_CODE)
+			lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK, "inverse ignoresep"));
 		if (outer) {
 			while (cur.paragraph().params().depth() > split_depth)
 				lyx::dispatch(FuncRequest(LFUN_DEPTH_DECREMENT));
