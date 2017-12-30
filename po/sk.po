@@ -3,13 +3,13 @@
 # Zdenko Podobný <zdpo@mailbox.sk>
 #
 # Kornel Benko <Kornel.Benko@berlin.de>, 2009.
-# Kornel Benko <kornel@lyx.org>, 2009-2017.
+# Kornel Benko <kornel@lyx.org>, 2009-2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-12-26 15:26+0100\n"
-"PO-Revision-Date: 2017-12-26 14:53+0000\n"
+"POT-Creation-Date: 2017-12-30 19:46+0100\n"
+"PO-Revision-Date: 2017-12-30 19:33+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -92,7 +92,7 @@ msgstr "&Doslovne"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:26
 msgid "Citation Style"
-msgstr "Štýl citovania"
+msgstr "Štýl Citovania"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:55
 msgid "Sty&le format:"
@@ -9116,10 +9116,10 @@ msgid "Overlay specifications for this list"
 msgstr "Špecifikácie prekrytia tejto listiny"
 
 #: lib/layouts/beamer.layout:97 lib/layouts/beamer.layout:137
-#: lib/layouts/beamer.layout:175 lib/layouts/beamer.layout:731
+#: lib/layouts/beamer.layout:175 lib/layouts/beamer.layout:747
 #: lib/layouts/powerdot.layout:284 lib/layouts/powerdot.layout:336
 msgid "Item Overlay Specifications"
-msgstr "Špecifikácie prekrytia objektu"
+msgstr "Špecifikácie Prekrytia Objektu"
 
 #: lib/layouts/beamer.layout:98 lib/layouts/beamer.layout:138
 #: lib/layouts/beamer.layout:176 lib/layouts/beamer.layout:572
@@ -9182,7 +9182,7 @@ msgstr "Mód"
 #: lib/layouts/beamer.layout:356 lib/layouts/beamer.layout:385
 #: lib/layouts/beamer.layout:417
 msgid "Mode Specification|S"
-msgstr "Špecifikácie Módu|u"
+msgstr "Špecifikácie Módu|k"
 
 #: lib/layouts/beamer.layout:210 lib/layouts/beamer.layout:264
 #: lib/layouts/beamer.layout:296 lib/layouts/beamer.layout:325
@@ -9263,9 +9263,9 @@ msgstr "Akcia"
 msgid "Overlay specifications for this frame"
 msgstr "Špecifikácie prekrytia tohto rámca"
 
-#: lib/layouts/beamer.layout:462 lib/layouts/beamer.layout:523
+#: lib/layouts/beamer.layout:466 lib/layouts/beamer.layout:534
 msgid "Default Overlay Specifications"
-msgstr "Štandardné špecifikácie prekrytia"
+msgstr "Štandardné Špecifikácie Prekrytia"
 
 #: lib/layouts/beamer.layout:463 lib/layouts/beamer.layout:524
 msgid "Default overlay specifications within this frame"
@@ -9446,25 +9446,25 @@ msgstr "Šírka (obsahu rámiku)"
 msgid "The width of the overprint area (default: text width)"
 msgstr "Šírka plochy pretlačenia (štandard: šírka textu)"
 
-#: lib/layouts/beamer.layout:755
+#: lib/layouts/beamer.layout:771
 msgid "OverlayArea"
-msgstr "Plocha Prekrytia"
+msgstr "Prekrytie"
 
-#: lib/layouts/beamer.layout:765
+#: lib/layouts/beamer.layout:781
 msgid "Overlayarea"
-msgstr "Plocha prekrytia"
+msgstr "Prekrytie"
 
-#: lib/layouts/beamer.layout:775
+#: lib/layouts/beamer.layout:791
 msgid "Overlay Area Width"
-msgstr "Šírka plochy prekrytia"
+msgstr "Šírka Plochy Prekrytia"
 
 #: lib/layouts/beamer.layout:776
 msgid "The width of the overlay area"
 msgstr "Šírka plochy prekrytia"
 
-#: lib/layouts/beamer.layout:780
+#: lib/layouts/beamer.layout:796
 msgid "Overlay Area Height"
-msgstr "Výška plochy prekrytia"
+msgstr "Výška Plochy Prekrytia"
 
 #: lib/layouts/beamer.layout:781 lib/layouts/graphicboxes.module:55
 #: lib/layouts/moderncv.layout:210 src/frontends/qt4/GuiBox.cpp:74
@@ -9507,7 +9507,7 @@ msgstr "Blok:"
 
 #: lib/layouts/beamer.layout:871
 msgid "Action Specification|S"
-msgstr "Špecifikácie Akcie|A"
+msgstr "Špecifikácie Akcie|k"
 
 #: lib/layouts/beamer.layout:878
 msgid "Block Title"
@@ -9517,17 +9517,17 @@ msgstr "Titul Bloku"
 msgid "Enter the block title here"
 msgstr "Vložte sem titul bloku"
 
-#: lib/layouts/beamer.layout:890
+#: lib/layouts/beamer.layout:910
 msgid "ExampleBlock"
-msgstr "PríkladnýBlok"
+msgstr "Príkladný Blok"
 
 #: lib/layouts/beamer.layout:893
 msgid "Example Block:"
 msgstr "Príkladný Blok:"
 
-#: lib/layouts/beamer.layout:899
+#: lib/layouts/beamer.layout:919
 msgid "AlertBlock"
-msgstr "VýstražnýBlok"
+msgstr "Výstražný Blok"
 
 #: lib/layouts/beamer.layout:902
 msgid "Alert Block:"
@@ -10105,7 +10105,7 @@ msgstr "Čínska Kniha (CTeX)"
 
 #: lib/layouts/ctex-report.layout:3
 msgid "Chinese Report (CTeX)"
-msgstr "Čínsky referát (CTeX)"
+msgstr "Čínsky Referát (CTeX)"
 
 #: lib/layouts/customHeadersFooters.module:2
 msgid "Custom Header/Footerlines"
@@ -11516,7 +11516,7 @@ msgstr "Fixme Poznámka"
 #: lib/layouts/fixme.module:68 lib/layouts/fixme.module:103
 #: lib/layouts/fixme.module:146 lib/layouts/fixme.module:188
 msgid "Fixme Note Options|s"
-msgstr "Voľby Poznámky Fixme|y"
+msgstr "Voľby Poznámky Fixme|k"
 
 #: lib/layouts/fixme.module:69 lib/layouts/fixme.module:104
 #: lib/layouts/fixme.module:147 lib/layouts/fixme.module:189
@@ -13082,7 +13082,7 @@ msgstr "Číslované príklady (postupne)"
 
 #: lib/layouts/linguistics.module:75
 msgid "Custom Numbering|s"
-msgstr "Vlastné Číslovanie|s"
+msgstr "Vlastné Číslovanie|V"
 
 #: lib/layouts/linguistics.module:76
 msgid "Customize the numeration"
@@ -13102,7 +13102,7 @@ msgstr "Preklad"
 
 #: lib/layouts/linguistics.module:135 lib/layouts/linguistics.module:170
 msgid "Glosse Translation|s"
-msgstr "Preklad Glosy"
+msgstr "Preklad Glosy|k"
 
 #: lib/layouts/linguistics.module:136 lib/layouts/linguistics.module:171
 msgid "Add a translation for the glosse"
@@ -14016,7 +14016,7 @@ msgstr "PDF"
 
 #: lib/layouts/pdfcomment.module:105
 msgid "PDFComment Options"
-msgstr "Voľby PDFKomentárov"
+msgstr "Voľby pre PDFKomentár"
 
 #: lib/layouts/pdfcomment.module:107
 msgid "Insert PDFComment options here (see pdfcomment manual)"
@@ -14124,7 +14124,7 @@ msgstr "[Zoznam PDF Komentárov]"
 
 #: lib/layouts/pdfcomment.module:223
 msgid "List Options|s"
-msgstr "Voľby Listiny"
+msgstr "Voľby pre Zoznam Komentárov|K"
 
 #: lib/layouts/pdfcomment.module:224
 msgid "Insert list options here (see pdfcomment manual)"
@@ -14475,9 +14475,9 @@ msgstr "Bez príslušenstva"
 msgid "Electronic Address:"
 msgstr "Elektronická Adresa:"
 
-#: lib/layouts/revtex4-1.layout:119 lib/layouts/revtex4.layout:207
+#: lib/layouts/revtex4-1.layout:122 lib/layouts/revtex4.layout:210
 msgid "Electronic Address Option|s"
-msgstr "Voľba Elektronická Adresa|a"
+msgstr "Voľba Elektronická Adresa|k"
 
 #: lib/layouts/revtex4-1.layout:120 lib/layouts/revtex4.layout:208
 msgid "Optional argument to the email command"
@@ -14535,6 +14535,10 @@ msgstr "Video"
 #: lib/layouts/revtex4-1.layout:279
 msgid "List of Videos"
 msgstr "Zoznam Videí"
+
+#: lib/layouts/revtex4-1.layout:292
+msgid "Videos"
+msgstr "Videá"
 
 #: lib/layouts/revtex4-1.layout:289
 msgid "Float Link"
@@ -14893,7 +14897,7 @@ msgstr "Sekcia Rámik"
 
 #: lib/layouts/sectionbox.module:22
 msgid "Section Box Width|S"
-msgstr "Šírka Rámiku Sekcie|S"
+msgstr "Šírka Rámiku Sekcie|k"
 
 #: lib/layouts/sectionbox.module:23
 msgid "Width of the section Box"
@@ -16643,7 +16647,7 @@ msgstr "[Zoznam TODOs]"
 
 #: lib/layouts/todonotes.module:47
 msgid "List of TODOs Heading|s"
-msgstr "Nadpis Zoznamu TODOs"
+msgstr "Zoznam TODO-Hlavičiek|k"
 
 #: lib/layouts/todonotes.module:48
 msgid "Enter a custom header for the List of TODOs here"
@@ -16659,7 +16663,7 @@ msgstr "TODO (Okraj)"
 
 #: lib/layouts/todonotes.module:79 lib/layouts/todonotes.module:91
 msgid "TODO Note Options|s"
-msgstr "Voľby Poznámky TODO"
+msgstr "Voľby Poznámky TODO|k"
 
 #: lib/layouts/todonotes.module:80 lib/layouts/todonotes.module:109
 msgid "See the todonotes manual for possible options"
@@ -16667,19 +16671,19 @@ msgstr "Viď manuál balíka todonotes pre možné voľby"
 
 #: lib/layouts/todonotes.module:86
 msgid "TODO Note (inline)"
-msgstr "TODO Poznámka (v riadku)"
+msgstr "TODO Poznámka (v texte)"
 
 #: lib/layouts/todonotes.module:88
 msgid "TODO (Inline)"
-msgstr "TODO (v riadku)"
+msgstr "TODO (v Texte)"
 
 #: lib/layouts/todonotes.module:101 lib/layouts/todonotes.module:103
 msgid "Missing Figure"
-msgstr "Chýba Obrázok"
+msgstr "Chýbajúci Obrázok"
 
 #: lib/layouts/todonotes.module:108
 msgid "Missing Figure Note Options|s"
-msgstr "Chýbajú Voľby Poznámky k Obrázku"
+msgstr "Chýbajú Voľby Poznámky k Obrázku|k"
 
 #: lib/layouts/todonotes.module:123
 msgid "Todo[Inline]"
@@ -17735,7 +17739,7 @@ msgstr "Eqnarray Prostredie|q"
 
 #: lib/ui/stdcontext.inc:54
 msgid "AMS Environment|A"
-msgstr "AMS prostredie|A"
+msgstr "AMS Prostredie|A"
 
 #: lib/ui/stdcontext.inc:56 lib/ui/stdmenus.inc:237
 msgid "Number Whole Formula|N"
@@ -17751,7 +17755,7 @@ msgstr "Návestie Rovnice|s"
 
 #: lib/ui/stdcontext.inc:59
 msgid "Copy as Reference|R"
-msgstr "Kopírovať ako referenciu|K"
+msgstr "Kopírovať ako Referenciu|K"
 
 #: lib/ui/stdcontext.inc:61 lib/ui/stdmenus.inc:248
 msgid "Split Cell|C"
@@ -17795,15 +17799,15 @@ msgstr "Zmazať Líniu Vpravo"
 
 #: lib/ui/stdcontext.inc:75
 msgid "Show Math Toolbar"
-msgstr "Zobraz lištu nástrojov pre matematiku"
+msgstr "Zobraz Lištu Nástrojov pre Matematiku"
 
 #: lib/ui/stdcontext.inc:76
 msgid "Show Math-Panels Toolbar"
-msgstr "Zobraz paneli nástrojov pre matematiku"
+msgstr "Zobraz Paneli Nástrojov pre Matematiku"
 
 #: lib/ui/stdcontext.inc:77
 msgid "Show Table Toolbar"
-msgstr "Zobraz lištu nástrojov pre tabuľku"
+msgstr "Zobraz Lištu Nástrojov pre Tabuľku"
 
 #: lib/ui/stdcontext.inc:79
 msgid "Use Computer Algebra System|m"
@@ -17811,7 +17815,7 @@ msgstr "Použiť Systém Computer Algebra|g"
 
 #: lib/ui/stdcontext.inc:87 lib/ui/stdcontext.inc:106
 msgid "Next Cross-Reference|N"
-msgstr "Ďalšia krížová referencia|o"
+msgstr "Ďalšia Krížová Referencia|o"
 
 #: lib/ui/stdcontext.inc:88
 msgid "Go to Label|G"
@@ -17875,7 +17879,7 @@ msgstr "Kopírovať ako Referenciu|p"
 
 #: lib/ui/stdcontext.inc:131
 msgid "Edit Database(s) Externally...|x"
-msgstr "Externe upraviť databázu(y)…|x"
+msgstr "Externe Upraviť Databázu(y)…|x"
 
 #: lib/ui/stdcontext.inc:145
 msgid "Open Inset|O"
@@ -18028,7 +18032,7 @@ msgstr "Variabilná Horizontálna Medzera(Svorka Nadol)|S"
 
 #: lib/ui/stdcontext.inc:251 lib/ui/stdcontext.inc:269
 msgid "Custom Length|C"
-msgstr "Vlastná dĺžka|V"
+msgstr "Vlastná Dĺžka|V"
 
 #: lib/ui/stdcontext.inc:261
 msgid "Medium Space|M"
@@ -18245,15 +18249,15 @@ msgstr "Zmazať Posledný Argument"
 
 #: lib/ui/stdcontext.inc:388
 msgid "Make First Non-Optional Into Optional Argument"
-msgstr "Zmeniť prvý povinný argument na voliteľný"
+msgstr "Zmeniť Prvý Povinný Argument na Voliteľný"
 
 #: lib/ui/stdcontext.inc:389
 msgid "Make Last Optional Into Non-Optional Argument"
-msgstr "Zmeniť posledný voliteľný argument na povinný"
+msgstr "Zmeniť Posledný Voliteľný Argument na Povinný"
 
 #: lib/ui/stdcontext.inc:390 lib/ui/stdmenus.inc:267
 msgid "Insert Optional Argument"
-msgstr "Vložiť voliteľný argument"
+msgstr "Vložiť Voliteľný Argument"
 
 #: lib/ui/stdcontext.inc:391 lib/ui/stdmenus.inc:268
 msgid "Remove Optional Argument"
@@ -18642,7 +18646,7 @@ msgstr "Porovnať so Staršou Revíziou…|S"
 
 #: lib/ui/stdmenus.inc:82
 msgid "Show History...|H"
-msgstr "Zobraziť históriu…|h"
+msgstr "Zobraziť Históriu…|H"
 
 #: lib/ui/stdmenus.inc:83
 msgid "Use Locking Property|L"
@@ -18806,7 +18810,7 @@ msgstr "Výber, Spojiť Riadky|b"
 
 #: lib/ui/stdmenus.inc:183
 msgid "Dissolve Text Style"
-msgstr "Rozpustiť štýl znakov do textu"
+msgstr "Rozpustiť Štýl Znakov do Textu"
 
 #: lib/ui/stdmenus.inc:187
 msgid "Customized...|C"
@@ -18886,7 +18890,7 @@ msgstr "Zmeniť Štýl Indexov|I"
 
 #: lib/ui/stdmenus.inc:240
 msgid "Macro Definition"
-msgstr "Definícia makra"
+msgstr "Definícia Makra"
 
 #: lib/ui/stdmenus.inc:242
 msgid "Change Formula Type|F"
@@ -18930,7 +18934,7 @@ msgstr "Exponované|E"
 
 #: lib/ui/stdmenus.inc:278
 msgid "Inline|I"
-msgstr "V Riadku (inline)|R"
+msgstr "V Riadku (Inline)|R"
 
 #: lib/ui/stdmenus.inc:282
 msgid "Math Normal Font|N"
@@ -18966,39 +18970,39 @@ msgstr "Text. Normálne Písmo|T"
 
 #: lib/ui/stdmenus.inc:294
 msgid "Text Roman Family"
-msgstr "Text. rodina písma antikva (Roman)"
+msgstr "Text. Rodina Písma Antikva (Roman)"
 
 #: lib/ui/stdmenus.inc:295
 msgid "Text Sans Serif Family"
-msgstr "Text. rodina bezserifového písma (Sans Serif)"
+msgstr "Text. Rodina Bezserifového Písma (Sans Serif)"
 
 #: lib/ui/stdmenus.inc:296
 msgid "Text Typewriter Family"
-msgstr "Text strojopisná rodina"
+msgstr "Text Strojopisná Rodina"
 
 #: lib/ui/stdmenus.inc:298
 msgid "Text Bold Series"
-msgstr "Text. tučný duktus"
+msgstr "Text. Tučný Duktus"
 
 #: lib/ui/stdmenus.inc:299
 msgid "Text Medium Series"
-msgstr "Text. stredný duktus"
+msgstr "Text. Stredný Duktus"
 
 #: lib/ui/stdmenus.inc:301
 msgid "Text Italic Shape"
-msgstr "Text. rez kurzíva (italic)"
+msgstr "Text. Rez Kurzíva (Italic)"
 
 #: lib/ui/stdmenus.inc:302
 msgid "Text Small Caps Shape"
-msgstr "Text. rez kapitálky (small caps)"
+msgstr "Text. Rez Kapitálky (Small Caps)"
 
 #: lib/ui/stdmenus.inc:303
 msgid "Text Slanted Shape"
-msgstr "Text. rez sklonený (slanted)"
+msgstr "Text. Rez Sklonený (Slanted)"
 
 #: lib/ui/stdmenus.inc:304
 msgid "Text Upright Shape"
-msgstr "Text. rez vzpriamený"
+msgstr "Text. Rez Vzpriamený"
 
 #: lib/ui/stdmenus.inc:308
 msgid "Octave|O"
@@ -19074,7 +19078,7 @@ msgstr "Zavri Aktuálny Náhľad|N"
 
 #: lib/ui/stdmenus.inc:348
 msgid "Fullscreen|l"
-msgstr "Celoobrazovkový mód|C"
+msgstr "Celoobrazovkový Mód|C"
 
 #: lib/ui/stdmenus.inc:371
 msgid "Math|h"
@@ -19130,7 +19134,7 @@ msgstr "Referenčná Značka…|Z"
 
 #: lib/ui/stdmenus.inc:388
 msgid "Nomenclature Entry...|y"
-msgstr "Záznam nomenklatúry…|y"
+msgstr "Záznam Nomenklatúry…|y"
 
 #: lib/ui/stdmenus.inc:390
 msgid "Table...|T"
@@ -19150,7 +19154,7 @@ msgstr "Hyperlinka…|H"
 
 #: lib/ui/stdmenus.inc:394
 msgid "Footnote|F"
-msgstr "Poznámka pod čiarou|d"
+msgstr "Poznámka pod Čiarou|d"
 
 #: lib/ui/stdmenus.inc:395
 msgid "Marginal Note|M"
@@ -19306,7 +19310,7 @@ msgstr "LyX Dokument…|X"
 
 #: lib/ui/stdmenus.inc:491
 msgid "Plain Text...|T"
-msgstr "Ako Prostý Text…|T"
+msgstr "Prostý Text…|T"
 
 #: lib/ui/stdmenus.inc:492
 msgid "Plain Text, Join Lines...|J"
@@ -19392,17 +19396,17 @@ msgstr "Zobraziť Zmeny vo Výstupe|i"
 msgid "Bookmarks|B"
 msgstr "Záložky|l"
 
-#: lib/ui/stdmenus.inc:565
-msgid "Next Note|N"
-msgstr "Ďalšia poznámka|p"
-
 #: lib/ui/stdmenus.inc:566
-msgid "Next Change|C"
-msgstr "Ďalšia zmena|z"
+msgid "Next Note|N"
+msgstr "Ďalšia Poznámka|P"
 
 #: lib/ui/stdmenus.inc:567
+msgid "Next Change|C"
+msgstr "Ďalšia Zmena|Z"
+
+#: lib/ui/stdmenus.inc:568
 msgid "Next Cross-Reference|R"
-msgstr "Ďalšia krížová referencia|r"
+msgstr "Ďalšia Krížová Referencia|R"
 
 #: lib/ui/stdmenus.inc:568
 msgid "Go to Label|L"
@@ -19540,9 +19544,9 @@ msgstr "LilyPond|P"
 msgid "Linguistics|L"
 msgstr "Lingvistika|L"
 
-#: lib/ui/stdmenus.inc:632
+#: lib/ui/stdmenus.inc:633
 msgid "Multilingual Captions|C"
-msgstr "Viac-Jazykové popisy|J"
+msgstr "Viac-Jazykové Popisy|J"
 
 #: lib/ui/stdmenus.inc:633
 msgid "Paralist|t"
@@ -20406,9 +20410,9 @@ msgstr "Prekrytie doľava\t\\mathllap"
 msgid "Center overlap\t\\mathclap"
 msgstr "Prekrytie na stred\t\\mathclap"
 
-#: lib/ui/stdtoolbars.inc:370
+#: lib/ui/stdtoolbars.inc:371
 msgid "Right overlap\t\\mathrlap"
-msgstr "Prekryte doprava\t\\mathrlap"
+msgstr "Prekrytie doprava\t\\mathrlap"
 
 #: lib/ui/stdtoolbars.inc:373
 msgid "Roots"
@@ -27978,9 +27982,9 @@ msgstr "Schéma "
 msgid " not known"
 msgstr " neznámy"
 
-#: src/Text3.cpp:2089 src/frontends/qt4/GuiApplication.cpp:1707
+#: src/Text3.cpp:2118 src/frontends/qt4/GuiApplication.cpp:1699
 msgid "Missing argument"
-msgstr "Chýba parameter"
+msgstr "Chýbajúci parameter"
 
 #: src/Text3.cpp:2241 src/Text3.cpp:2253
 msgid "Character set"
@@ -28012,7 +28016,7 @@ msgstr "Prostý Formát"
 
 #: src/TextClass.cpp:892
 msgid "Missing File"
-msgstr "Chýba Súbor"
+msgstr "Chýbajúci Súbor"
 
 #: src/TextClass.cpp:893
 msgid "Could not find stdinsets.inc! This may lead to data loss!"
@@ -28138,9 +28142,9 @@ msgstr "Citácie"
 msgid "Labels and References"
 msgstr "Značky a Referencie"
 
-#: src/TocBackend.cpp:285 src/frontends/qt4/GuiDocument.cpp:1495
+#: src/TocBackend.cpp:285 src/frontends/qt4/GuiDocument.cpp:1492
 msgid "Child Documents"
-msgstr "Dokumenty potomkov"
+msgstr "Dokumenty Potomkov"
 
 #: src/TocBackend.cpp:286 src/frontends/qt4/GuiGraphics.cpp:113
 msgid "Graphics"
@@ -29351,7 +29355,7 @@ msgstr "Nastavenia Dokumentu"
 #: src/frontends/qt4/GuiDocument.cpp:777 src/frontends/qt4/GuiInclude.cpp:49
 #: src/frontends/qt4/Menus.cpp:1461
 msgid "Child Document"
-msgstr "Dokument potomka"
+msgstr "Dokument Potomka"
 
 #: src/frontends/qt4/GuiDocument.cpp:778
 msgid "Include to Output"
@@ -29697,9 +29701,9 @@ msgstr ""
 "Váš dokument bude mať problémy kým súbor schémy\n"
 "nedržíte v adresáre dokumentu."
 
-#: src/frontends/qt4/GuiDocument.cpp:2332
+#: src/frontends/qt4/GuiDocument.cpp:2328
 msgid "&Set Layout"
-msgstr "&Nastaviť formát"
+msgstr "&Nastaviť Formát"
 
 #: src/frontends/qt4/GuiDocument.cpp:2346
 msgid "Unable to read local layout file."
@@ -31707,7 +31711,7 @@ msgstr "<Niet Otvorených Dokumentov>"
 
 #: src/frontends/qt4/Menus.cpp:1044
 msgid "<No Bookmarks Saved Yet>"
-msgstr "<Ešte nie sú uložené záložky>"
+msgstr "<Ešte Nie sú Uložené Záložky>"
 
 #: src/frontends/qt4/Menus.cpp:1084
 msgid "View (Other Formats)|F"
@@ -31753,11 +31757,11 @@ msgstr "Otvoriť Prehľad…"
 
 #: src/frontends/qt4/Menus.cpp:1406
 msgid "Other Toolbars"
-msgstr "Iné lišty nástrojov"
+msgstr "Iné Lišty Nástrojov"
 
 #: src/frontends/qt4/Menus.cpp:1421
 msgid "No Branches Set for Document!"
-msgstr "Dokument neobsahuje vetvenie!"
+msgstr "Dokument Neobsahuje Vetvenie!"
 
 #: src/frontends/qt4/Menus.cpp:1477
 msgid "Index List|I"
@@ -31841,15 +31845,21 @@ msgstr "Vrátiť na štandard jazyku (%1$s)|a"
 msgid "Change Style|y"
 msgstr "Zmeniť Štýl|e"
 
-#: src/frontends/qt4/Menus.cpp:1878
+#: src/frontends/qt4/Menus.cpp:1884
 #, c-format
-msgid "Start New Environment (%1$s)"
-msgstr "Vytvoriť Nové Prostredie (%1$s)"
+msgid "Separated %1$s Above"
+msgstr "Oddelené Prostredie '%1$s' Ponad"
 
-#: src/frontends/qt4/Menus.cpp:1885
+#: src/frontends/qt4/Menus.cpp:1890 src/frontends/qt4/Menus.cpp:1898
+#: src/frontends/qt4/Menus.cpp:1908
 #, c-format
-msgid "Start New Parent Environment (%1$s)"
-msgstr "Vytvoriť Nové Nadriadené Prostredie (%1$s)"
+msgid "Separated %1$s Below"
+msgstr "Oddelené Prostredie '%1$s' Popod"
+
+#: src/frontends/qt4/Menus.cpp:1906
+#, c-format
+msgid "Separated Outer %1$s Below"
+msgstr "Oddelené Vonkajšie Prostredie '%1$s' Popod"
 
 #: src/frontends/qt4/Menus.cpp:2197
 #, c-format
@@ -35594,6 +35604,9 @@ msgstr "Neznámy používateľ"
 #~ msgid "Preferences..."
 #~ msgstr "Preferencie..."
 
+#~ msgid "Prepend New Environment (%1$s)"
+#~ msgstr "Predpojiť Nové Prostredie (%1$s)"
+
 #~ msgid "Quit LyX"
 #~ msgstr "Opustiť LyX"
 
@@ -35667,6 +35680,12 @@ msgstr "Neznámy používateľ"
 #~ "%[[, {!<i>!}%žurnál%{!</i>!}]][[{%vydavateľ%[[, %vydavateľ%]]"
 #~ "[[{%inštitúcia%[[, %inštitúcia%]]}]]}]]}{%rok%[[ (%rok%)]]}{%strany%[[, "
 #~ "%strany%]]}."
+
+#~ msgid "Start New Environment (%1$s)"
+#~ msgstr "Vytvoriť Nové Prostredie (%1$s)"
+
+#~ msgid "Start New Parent Environment (%1$s)"
+#~ msgstr "Vytvoriť Nové Nadriadené Prostredie (%1$s)"
 
 #~ msgid "Character is uncodable in verbatim paragraphs."
 #~ msgstr "Znak je v doslovných(verbatim) odstavcoch nekódovateľný."
