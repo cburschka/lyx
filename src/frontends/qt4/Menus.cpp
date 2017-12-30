@@ -1881,13 +1881,13 @@ void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv)
 			break;
 	}
 	if (par.layout().isEnvironment()) {
-		docstring label = bformat(_("Prepend New Environment (%1$s)"),
+		docstring label = bformat(_("Separated %1$s Above"),
 				translateIfPossible(curlayout));
 		add(MenuItem(MenuItem::Command, toqstr(label),
 			     FuncRequest(LFUN_ENVIRONMENT_SPLIT,
 					 from_ascii("before"))));
 		if (!par.layout().keepempty || pos > 0 || !text->isFirstInSequence(pit)) {
-			label = bformat(_("Append New Environment (%1$s)"),
+			label = bformat(_("Separated %1$s Below"),
 					translateIfPossible(curlayout));
 			add(MenuItem(MenuItem::Command, toqstr(label),
 				     FuncRequest(LFUN_ENVIRONMENT_SPLIT)));
@@ -1895,15 +1895,17 @@ void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv)
 	}
 	else if (!prevlayout.empty()) {
 		docstring const label =
-			bformat(_("Append New Environment (%1$s)"),
+			bformat(_("Separated %1$s Below"),
 				translateIfPossible(prevlayout));
 		add(MenuItem(MenuItem::Command, toqstr(label),
 			     FuncRequest(LFUN_ENVIRONMENT_SPLIT,
 					 from_ascii("previous"))));
 	}
 	if (!outerlayout.empty()) {
-		docstring const label =
-			bformat(_("Append New Parent Environment (%1$s)"),
+		docstring const label = (outerlayout == curlayout) ?
+			bformat(_("Separated Outer %1$s Below"),
+				translateIfPossible(outerlayout)) :
+			bformat(_("Separated %1$s Below"),
 				translateIfPossible(outerlayout));
 		add(MenuItem(MenuItem::Command, toqstr(label),
 			     FuncRequest(LFUN_ENVIRONMENT_SPLIT,
