@@ -360,7 +360,6 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_ARGUMENT_INSERT: {
 		string const arg = cmd.getArg(0);
-		bool const force = cmd.getArg(1) == "force";
 		if (arg.empty()) {
 			status.setEnabled(false);
 			return true;
@@ -375,7 +374,7 @@ bool InsetText::getStatus(Cursor & cur, FuncRequest const & cmd,
 			for (Paragraph const & par : paragraphs())
 				for (auto const & table : par.insetList())
 					if (InsetArgument const * ins = table.inset->asInsetArgument())
-						if (ins->name() == arg && !force) {
+						if (ins->name() == arg) {
 							// we have this already
 							status.setEnabled(false);
 							return true;
