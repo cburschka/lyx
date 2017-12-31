@@ -123,11 +123,12 @@ logicalmkup
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -11817,6 +11818,69 @@ Argument item:1
 
 \end_deeper
 \begin_layout Description
+
+\change_inserted -712698321 1514710560
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1514710560
+
+\lang english
+AutoNests
+\end_layout
+
+\end_inset
+
+ Includes a comma-separated list of layout names that should be nested in
+ and after the current one.
+ Only makes sense for nestable layouts (such as environments).
+ Must be ended by 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1514710560
+
+\lang english
+EndAutoNests
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ See also 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1514710560
+
+\lang english
+IsAutoNestedBy
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Description
 \begin_inset Flex Code
 status collapsed
 
@@ -12600,6 +12664,71 @@ TitleLatexName
 \end_inset
 
 ).
+\change_inserted -712698321 1514710606
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1514710606
+
+\lang english
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1514710606
+
+\lang english
+IsAutoNestedBy
+\end_layout
+
+\end_inset
+
+ Includes a comma-separated list of layout names after which this one should
+ be nested.
+ Only makes sense with regard to nestable layouts (such as environments).
+ Must be ended by 
+\begin_inset Quotes eld
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1514710606
+
+\lang english
+EndIsAutoNestedBy
+\end_layout
+
+\end_inset
+
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ See also 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1514710757
+
+\lang english
+AutoNests
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description

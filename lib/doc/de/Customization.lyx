@@ -10616,6 +10616,43 @@ Argument item:1
 status collapsed
 
 \begin_layout Plain Layout
+AutoNests
+\end_layout
+
+\end_inset
+
+ beinhaltet eine mit Kommata separierte Liste von Layoutnamen, welche in
+ und nach der aktuellen automatisch eingebettet werden sollen.
+ Dies ist nur für Layouts sinnvoll, die auch einbetten können (etwa Umgebungen).
+ Muss mit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+EndAutoNests
+\end_layout
+
+\end_inset
+
+ beendet werden.
+ Siehe auch 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+IsAutoNestedBy
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 BabelPreamble
 \end_layout
 
@@ -11395,6 +11432,44 @@ TitleLatexName
 \end_inset
 
 ).
+\end_layout
+
+\begin_layout Description
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+IsAutoNestedBy
+\end_layout
+
+\end_inset
+
+ beinhaltet eine mit Kommata separierte Liste von Layoutnamen, nach welchen
+ Absätze mit dem aktuellen Layout automatisch eingebettet werden sollen.
+ Sinnvolle Layouts für diese Liste sind nur solche, die auch einbetten können
+ (etwa Umgebungen).
+ Muss mit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+EndIsAutoNestedBy
+\end_layout
+
+\end_inset
+
+ beendet werden.
+ Siehe auch 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+AutoNests
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Description
