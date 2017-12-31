@@ -173,6 +173,7 @@ End
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -9236,6 +9237,41 @@ name "subsec:入れ子の分離"
 新たな親環境を開始
 \family default
 メニューは，項目が入れ子になっているときにのみ表示されます．これは，箇条書きを分離するだけでなく，入れ子から出たところに新しい箇条書きを作ります．
+\change_inserted -712698321 1514711380
+
+\lang ngerman
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1514711380
+
+\lang english
+NEW: To split an existing list into two lists, set the cursor at the end
+ of a list item and use the menu 
+\family sans
+Insert\SpecialChar menuseparator
+Separated <Name> Above
+\family default
+ or
+\family sans
+ Insert\SpecialChar menuseparator
+Separated <Name> Below
+\family default
+.
+ This inserts a plain separator (red line in \SpecialChar LyX
+) and before or behind it the
+ new list.
+ Inside nested environments, it is also possible to split the outer environment.
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
@@ -32384,10 +32420,14 @@ reference "subsec:番号の付け方-深度"
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted -712698321 1514711626
 新たな環境を開始/新たな親環境を開始
 \end_layout
 
 \begin_layout Standard
+
+\change_deleted -712698321 1514711626
 これらのメニューは，同じ型の環境を2つ続けることが可能なときにのみ，表示されます．詳細については，第
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -32396,6 +32436,8 @@ reference "subsec:入れ子の分離"
 \end_inset
 
 節をご覧ください．
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -33513,6 +33555,43 @@ reference "sec:傍注"
 \end_inset
 
 節に説明されているように，傍註を挿入します．
+\change_inserted -712698321 1514711647
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1514711654
+新たな環境を開始
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1514711660
+above/below
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1514711648
+これらのメニューは，同じ型の環境を2つ続けることが可能なときにのみ，表示されます．詳細については，第
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:入れ子の分離"
+
+\end_inset
+
+節をご覧ください．
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
