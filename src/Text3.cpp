@@ -1505,6 +1505,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		bool const outer = cmd.argument() == "outer";
 		bool const previous = cmd.argument() == "previous";
 		bool const before = cmd.argument() == "before";
+		bool const normal = cmd.argument().empty();
 		Paragraph const & para = cur.paragraph();
 		docstring layout;
 		if (para.layout().isEnvironment())
@@ -1533,11 +1534,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				if (cpar.params().depth() == 0)
 					break;
 			}
-			if (outer && cur.pit() < cur.lastpit()) {
-				// save nesting of following paragraph
-				cpar = pars_[cur.pit() + 1];
-				nextpar_depth = cpar.params().depth();
-			}
+		}
+		if ((outer || normal) && cur.pit() < cur.lastpit()) {
+			// save nesting of following paragraph
+			Paragraph cpar = pars_[cur.pit() + 1];
+			nextpar_depth = cpar.params().depth();
 		}
 		if (before)
 			cur.top().setPitPos(cur.pit(), 0);
@@ -1562,7 +1563,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		else
 			lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK, "inverse"));
 		lyx::dispatch(FuncRequest(LFUN_LAYOUT, layout));
-		if (outer && nextpar_depth > 0) {
+		if ((outer || normal) && nextpar_depth > 0) {
 			// restore nesting of following paragraph
 			DocIterator scur = cur;
 			cur.forwardPar();
