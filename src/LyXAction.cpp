@@ -584,10 +584,10 @@ void LyXAction::init()
                         apply to this format. Internally the control is then passed
                         to #LFUN_BUFFER_EXPORT_CUSTOM.\n
                         If absent or "default", then the default output format of the
-                        document is used.
-		<DEST>	If present, this argument provides the export destination
-			filename. Its containing folder will also be the destination
-			folder, where all the needed external files will be copied.
+                        document is used.\n
+               <DEST>   If present, this argument provides the export destination
+                        filename. Its containing folder will also be the destination
+                        folder, where all the needed external files will be copied.
  * \li Origin: Lgb, 29 Jul 1997
  * \endvar
  */
@@ -632,17 +632,17 @@ void LyXAction::init()
  * \li Syntax: buffer-forall <LFUN-COMMAND>
  * \li Params: <LFUN-COMMAND>: The command to be applied to the buffers.
  * \li Sample: Close all Notes in buffers: \n
-	           buffer-forall inset-forall Note inset-toggle close \n
+               buffer-forall inset-forall Note inset-toggle close \n
                Toggle change tracking on buffers: \n
-	           buffer-forall changes-track \n
+               buffer-forall changes-track \n
                Toggle read-only for buffers: \n
-	           buffer-forall buffer-toggle-read-only \n
+               buffer-forall buffer-toggle-read-only \n
                Show statistics for individual buffers: \n
-	           buffer-forall statistics \n
+               buffer-forall statistics \n
                Activate the branch named "Solutions" in buffers: \n
-	           buffer-forall branch-activate Solutions \n
+               buffer-forall branch-activate Solutions \n
                Export buffers to PDF (pdflatex): \n
-	           buffer-forall buffer-export pdf2 \n
+               buffer-forall buffer-export pdf2 \n
  * \li Origin: skostysh, 20 Jul 2012
  * \endvar
  */
@@ -1018,7 +1018,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_CHANGES_OUTPUT
  * \li Action: Toggles showing of change tracking in typeset output.
  * \li Syntax: changes-output
- * \li Origin: jspitzm, 21 Jan 2005
+ * \li Origin: spitz, 21 Jan 2005
  * \endvar
  */
 		{ LFUN_CHANGES_OUTPUT, "changes-output", Noop, Edit },
@@ -1467,7 +1467,7 @@ void LyXAction::init()
  * \li Notion: Internally uses #LFUN_DIALOG_SHOW , #LFUN_DIALOG_HIDE .
  * \li Syntax: dialog-toggle <NAME> [<DATA>]
  * \li Params: See #LFUN_DIALOG_SHOW .
- * \li Origin: JSpitzm, 30 Apr 2007
+ * \li Origin: spitz, 30 Apr 2007
  * \endvar
  */
 		{ LFUN_DIALOG_TOGGLE, "dialog-toggle", NoBuffer, Edit },
@@ -1514,12 +1514,12 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_ENVIRONMENT_SPLIT
  * \li Action: Splits the current environment with a Separator.
  * \li Syntax: environment-split [outer|previous]
- * \li Params: outer: If this is given, LyX will split the outermost environment in
-		      the current nesting hierarchy.
-	       previous: If this is given, LyX will split the environment in the previous
-		      paragraph (is there is one).
-	       before: If this is given, the new environment will be appended rather than
-		      prepended.
+ * \li Params: outer:    If this is given, LyX will split the outermost environment in
+                         the current nesting hierarchy.\n
+               previous: If this is given, LyX will split the environment in the previous
+                         paragraph (is there is one).\n
+               before:   If this is given, the new environment will be appended rather than
+                         prepended.
  * \li Origin: spitz, 23 Dec 2012
  * \endvar
  */
@@ -1553,7 +1553,7 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_EXPORT_CANCEL, "export-cancel", ReadOnly | NoUpdate | NoInternal, Edit },
-		
+
 /*!
  * \var lyx::FuncCode lyx::LFUN_FILE_INSERT
  * \li Action: Inserts another LyX file.
@@ -1846,7 +1846,7 @@ void LyXAction::init()
                number in LyX window.
  * \li Notion: The external program used for forward search call can be specified in
                LyX Output preferences. See Additional manual for details of these
-	       settings.
+               settings.
  * \li Syntax: forward-search
  * \li Origin: sanda, 14 Apr 2010
  * \endvar
@@ -1929,14 +1929,14 @@ void LyXAction::init()
  * \li Params: <TYPE>: shortcut[s]|lyxrc|lyxinfo|package|textclass|menu|icon|buffer \n
                <ARG>: argument for a given type. Look into InsetInfo.h for detailed
                       description. \n
-		      shortcut[s]: name of lfun (e.g math-insert \alpha) \n
-		      lyxrc: name of rc_entry (e.g. bind_file) \n
-		      lyxinfo: "version" - used version of LyX \n
-		      package: name of latex package (e.g. listings) \n
-		      textclass: name of textclass (e.g. article) \n
-		      menu: name of lfun used in menu  \n
-		      icon: icon of lfun used in toolbar or direct icon name\n
-		      buffer: "name"|"path"|"class"|"vcs-tree-revision"|
+                      shortcut[s]: name of lfun (e.g math-insert \alpha) \n
+                      lyxrc: name of rc_entry (e.g. bind_file) \n
+                      lyxinfo: "version" - used version of LyX \n
+                      package: name of latex package (e.g. listings) \n
+                      textclass: name of textclass (e.g. article) \n
+                      menu: name of lfun used in menu  \n
+                      icon: icon of lfun used in toolbar or direct icon name\n
+                      buffer: "name"|"path"|"class"|"vcs-tree-revision"|
                               "vcs-revision"|"vcs-author"|"vcs-date"|"vcs-time"
  * \li Sample: command-sequence info-insert buffer path; info-insert buffer name
  * \li Origin: bpeng, 7 Oct 2007
@@ -2022,7 +2022,7 @@ void LyXAction::init()
  * \li Syntax: inset-edit [<INSET_PARAMS>]
  * \li Params: <INSET_PARAMS>: Parameters for the inset. \n
                                Currently only the filename will be considered.
- * \li Origin: JSpitzm, 27 Apr 2006
+ * \li Origin: spitz, 27 Apr 2006
  * \endvar
  */
 		{ LFUN_INSET_EDIT, "inset-edit", ReadOnly | AtPoint, Edit },
@@ -2070,13 +2070,13 @@ void LyXAction::init()
                matches all note insets, while "Note:Note" only matches LyX
                yellow note insets.
  * \li Sample: Remove all index insets: \n
-	           inset-forall Index char-delete-forward force \n
+                   inset-forall Index char-delete-forward force \n
                Close all Notes (also works for a particular branch, for example): \n
-	           inset-forall Note inset-toggle close \n
+                   inset-forall Note inset-toggle close \n
                Transform all yellow notes to comments \n
-	           inset-forall Note:Note inset-modify note Note Comment \n
+                   inset-forall Note:Note inset-modify note Note Comment \n
                Try to put LyX in an infinite loop if there is at least a Note: \n
-	           inset-forall Note char-backward
+                   inset-forall Note char-backward
  * \li Origin: lasgouttes, 27 Nov 2009
  * \endvar
  */
@@ -2088,7 +2088,7 @@ void LyXAction::init()
  * \li Action: Insert new inset (type given by the parameters).
  * \li Syntax: inset-insert <INSET> <ARGS>
  * \li Params: <INSET>: <bibitem|bibtex|citation|ert|listings|external|graphics|tabular|\n
-	                 hyperlink|include|index|label|line|nomencl|vspace|ref|toc|script>\n
+                         hyperlink|include|index|label|line|nomencl|vspace|ref|toc|script>\n
                <ARGS>: depends on the given inset. Use "lyx -dbg action" to explore.
  * \li Sample: inset-insert ref LatexCommand <Format> reference "<label name>"\end_inset \n
                where <label name> is the name of the referenced label and
@@ -2197,7 +2197,7 @@ void LyXAction::init()
  * \li Syntax: ipamacro-insert <CHAR>
  * \li Params: <CHAR>: tone-falling, tone-rising, tone-high-rising, tone-low-rising,
  *                     tone-high-rising-falling, deco bottomtiebar, deco toptiebar.
- * \li Origin: JSpitzm, 22 Aug 2012
+ * \li Origin: spitz, 22 Aug 2012
  * \endvar
  */
 		{ LFUN_IPAMACRO_INSERT, "ipamacro-insert", Noop, Edit },
@@ -2314,8 +2314,8 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_LAYOUT
  * \li Action: Sets the layout (that is, environment) for the current paragraph.
  * \li Syntax: layout <LAYOUT> [ignorenests]
- * \li Params: <LAYOUT>: the layout to use
-	       ignorenests: If specified, nesting advices will be ignored.
+ * \li Params: <LAYOUT>: the layout to use\n
+               ignorenests: If specified, nesting advices will be ignored.
  * \endvar
  */
 		{ LFUN_LAYOUT, "layout", Noop, Layout },
@@ -2958,7 +2958,7 @@ void LyXAction::init()
  * \li Action: Inserts a line break or new line.
  * \li Syntax: newline-insert [<ARG>]
  * \li Params: <ARG>: <newline|linebreak> default: newline
- * \li Origin: JSpitzm, 25 Mar 2008
+ * \li Origin: spitz, 25 Mar 2008
  * \endvar
  */
 		{ LFUN_NEWLINE_INSERT, "newline-insert", Noop, Edit },
@@ -3065,8 +3065,8 @@ void LyXAction::init()
  * \li Syntax: paragraph-break [<LAYOUT>] [ignoresep]
  * \li Params: <LAYOUT>: "inverse" - decreases depth by one (or change layout
                          to default layout) when the cursor is at the end of
-                         the line.
-	       ignoresep: Do not account for paragraph separators while breaking.
+                         the line.\n
+               ignoresep: Do not account for paragraph separators while breaking.
  * \endvar
  */
 		{ LFUN_PARAGRAPH_BREAK, "paragraph-break", Noop, Edit },
@@ -3564,7 +3564,7 @@ void LyXAction::init()
                        hfill*, dotfill, hrulefill, hspace, hspace* \n
                        Only in math mode: med and thick.\n
                <LEN>: length for custom spaces (hspace, hspace* for protected)
- * \li Origin: JSpitzm, 20 May 2003, Mar 17 2008
+ * \li Origin: spitz, 20 May 2003, Mar 17 2008
  * \endvar
  */
 		{ LFUN_SPACE_INSERT, "space-insert", Noop, Edit },
@@ -3574,9 +3574,9 @@ void LyXAction::init()
  * \li Action: Inserts various characters into the document.
  * \li Syntax: specialchar-insert <CHAR>
  * \li Params: <CHAR>: hyphenation, allowbreak, ligature-break, slash,
-   	   		   		   nobreakdash, dots, end-of-sentence, menu-separator,
- 					   lyx, tex, latex, latex2e.
- * \li Origin: JSpitzm, 6 Dec 2007
+                       nobreakdash, dots, end-of-sentence, menu-separator,
+                       lyx, tex, latex, latex2e.
+ * \li Origin: spitz, 6 Dec 2007
  * \endvar
  */
 		{ LFUN_SPECIALCHAR_INSERT, "specialchar-insert", Noop, Edit },
@@ -3589,7 +3589,7 @@ void LyXAction::init()
  * \li Syntax: spelling-add [<STRING>] [<LANG>]
  * \li Params: <WORD>: word to add
                <LANG>: language name (see file languages)
- * \li Origin: JSpitzm, 18 Jan 2010
+ * \li Origin: spitz, 18 Jan 2010
  * \endvar
  */
 		{ LFUN_SPELLING_ADD, "spelling-add", ReadOnly, Edit },
@@ -3612,7 +3612,7 @@ void LyXAction::init()
  * \li Syntax: spelling-ignore [<WORD>] [<LANG>]
  * \li Params: <WORD>: word to ignore
                <LANG>: language name (see file languages)
- * \li Origin: JSpitzm, 18 Jan 2010
+ * \li Origin: spitz, 18 Jan 2010
  * \endvar
  */
 		{ LFUN_SPELLING_IGNORE, "spelling-ignore", ReadOnly, Edit },
@@ -3782,9 +3782,9 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_TOOLBAR_MOVABLE
  * \li Action: Toggles movability of a given toolbar between true/false.
  * \li Syntax: toolbar-movable <NAME>
- * \li Params: <NAME>: *|standard|extra|table|math|mathmacrotemplate|\n
-					   minibuffer|review|view/update|math_panels|vcs|
-					   view-others|update-others
+ * \li Params: <NAME>: *|standard|extra|table|math|mathmacrotemplate|
+                        minibuffer|review|view/update|math_panels|vcs|
+                        view-others|update-others
 * \li Origin: daniel, 12 July 2016
 * \endvar
 */
@@ -3902,17 +3902,17 @@ void LyXAction::init()
  * \li Syntax: vc-compare [<REV1>] [<REV2>]
  * \li Params: Revision number either points directly to commit in history
                or if negative number -x it points to (last commit - x).\n
-	       In RCS we subtract only in the last number of revision specification.
+               In RCS we subtract only in the last number of revision specification.
                Special case "0" is reserved for the last committed revision.\n
                <REV1>: Older file.\n
-	       <REV2>: Newer file. Used only if REV1 > 0.\n
+               <REV2>: Newer file. Used only if REV1 > 0.\n
                If no parameter is given, interactive dialog will be shown.
  * \li Sample: Compare current document against last commit\n
-	       vc-compare 0\n
+               vc-compare 0\n
                Compare current document against current revision - 5 commits\n
-	       vc-compare -5\n
+               vc-compare -5\n
                Compare revisions 120 and 155\n
-	       vc-compare 120 155
+               vc-compare 120 155
  * \li Origin: sanda, 12 Feb 2010
  * \endvar
  */
