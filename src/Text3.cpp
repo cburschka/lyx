@@ -1533,7 +1533,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				if (cpar.params().depth() == 0)
 					break;
 			}
-			if (outer && pit < cur.lastpit()) {
+			if (outer && cur.pit() < cur.lastpit()) {
 				// save nesting of following paragraph
 				cpar = pars_[cur.pit() + 1];
 				nextpar_depth = cpar.params().depth();
