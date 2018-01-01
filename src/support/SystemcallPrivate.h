@@ -58,6 +58,9 @@ public:
 
 	static void killProcess(QProcess * p);
 
+	// when true, kill any running script ASAP
+	static bool kill_script;
+
 
 public Q_SLOTS:
 	void stdOut();

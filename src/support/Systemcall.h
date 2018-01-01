@@ -38,7 +38,7 @@ public:
 		WaitLoop, //< wait, but check occasionally for cancellation
 		DontWait  //< don't wait for completion
 	};
- 
+
 	// enum values chosen hopefully not to conflict with ordinary return values
 	enum ReturnValue {
 		OK = 0,
@@ -47,6 +47,10 @@ public:
 		TIMEOUT = 4001,
 		KILLED = 9001
 	};
+
+
+	// Kill the process which is running at time being
+	static void killscript();
 
 	/** Start child process.
 	 *  The string "what" contains a commandline with arguments separated

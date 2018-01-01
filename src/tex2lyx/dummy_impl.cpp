@@ -130,16 +130,6 @@ frontend::FontMetrics const & theFontMetrics(FontInfo const &) {
 }
 
 //
-// Dummy theApp() support (needed by support/Systemcall.cpp)
-//
-struct App {
-	bool cancel_export;
-};
-
-App app;
-App * theApp() { return &app; }
-
-//
 // Keep the linker happy on Windows
 //
 

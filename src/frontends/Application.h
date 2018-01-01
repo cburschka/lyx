@@ -166,7 +166,7 @@ class Application
 {
 public:
 	///
-	Application() : cancel_export(false) {}
+	Application() {}
 	///
 	virtual ~Application() {}
 
@@ -253,8 +253,6 @@ public:
 
 	// Add a buffer to the current view, do not switch to it.
 	virtual bool unhide(Buffer * buf) = 0;
-	///
-	bool cancel_export;
 };
 
 /// Return the list of loadable formats.

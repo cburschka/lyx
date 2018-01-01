@@ -23,10 +23,7 @@
 #include "support/os.h"
 #include "support/ProgressInterface.h"
 
-#include "frontends/Application.h"
-
 #include "LyX.h"
-#include "LyXRC.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -236,6 +233,12 @@ string const parsecmd(string const & incmd, string & infile, string & outfile,
 } // namespace
 
 
+void Systemcall::killscript()
+{
+	SystemcallPrivate::kill_script = true;
+}
+
+
 int Systemcall::startscript(Starttype how, string const & what,
 			    string const & path, string const & lpath,
 			    bool process_events)
@@ -313,6 +316,9 @@ int Systemcall::startscript(Starttype how, string const & what,
 
 	return exit_code;
 }
+
+
+bool SystemcallPrivate::kill_script = false;
 
 
 SystemcallPrivate::SystemcallPrivate(std::string const & sf, std::string const & of,
@@ -403,11 +409,11 @@ void SystemcallPrivate::startProcess(QString const & cmd, string const & path,
 bool SystemcallPrivate::waitAndCheck()
 {
 	Sleep::millisec(100);
-	if (theApp() && theApp()->cancel_export) {
+	if (kill_script) {
 		// is there a better place to reset this?
 		process_->kill();
 		state = Killed;
-		theApp()->cancel_export = false;
+		kill_script = false;
 		LYXERR0("Export Canceled!!");
 		return false;
 	}

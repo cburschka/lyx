@@ -69,13 +69,6 @@ namespace lyx {
 // Dummy verbose support
 bool verbose = false;
 
-struct App {
-	bool cancel_export;
-};
-
-App app;
-App * theApp() { return &app; }
-
 // Dummy LyXRC support
 struct LyXRC {
 	string icon_set;

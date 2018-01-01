@@ -62,11 +62,4 @@ namespace lyx {
 		return dummy;
 	}
 
-	struct App {
-		bool cancel_export;
-	};
-
-	App app;
-	App * theApp() { return &app; }
-
 } // namespace lyx
