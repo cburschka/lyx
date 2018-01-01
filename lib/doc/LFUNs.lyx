@@ -188,12 +188,22 @@ Action Splits the current environment with a Separator.
 \end_layout
 
 \begin_layout Description
-Syntax environment-split [outer]
+Syntax environment-split [before|outer|previous]
 \end_layout
 
 \begin_layout Description
-Params outer: If this is given, LyX will split the outermost environment
+Params outer:    If this is given, LyX will split the outermost environment
  in the current nesting hierarchy.
+\begin_inset Newline newline
+\end_inset
+
+previous: If this is given, LyX will split the environment in the previous
+ paragraph (is there is one).
+\begin_inset Newline newline
+\end_inset
+
+before:   If this is given, the new environment will be appended rather
+ than prepended.
 \end_layout
 
 \begin_layout Description
@@ -445,11 +455,15 @@ Action Sets the layout (that is, environment) for the current paragraph.
 \end_layout
 
 \begin_layout Description
-Syntax layout <LAYOUT>
+Syntax layout <LAYOUT> [ignorenests]
 \end_layout
 
 \begin_layout Description
 Params <LAYOUT>: the layout to use
+\begin_inset Newline newline
+\end_inset
+
+ignorenests: If specified, nesting advices will be ignored.
 \end_layout
 
 \begin_layout Subsection*
@@ -1308,7 +1322,7 @@ Syntax changes-output
 \end_layout
 
 \begin_layout Description
-Origin jspitzm, 21 Jan 2005
+Origin spitz, 21 Jan 2005
 \end_layout
 
 \begin_layout Subsection*
@@ -1915,7 +1929,7 @@ Params See LFUN_DIALOG_SHOW .
 \end_layout
 
 \begin_layout Description
-Origin JSpitzm, 30 Apr 2007
+Origin spitz, 30 Apr 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -1999,6 +2013,22 @@ Syntax escape
 
 \begin_layout Description
 Origin Lgb, 17 May 2001
+\end_layout
+
+\begin_layout Subsection*
+export-cancel
+\end_layout
+
+\begin_layout Description
+Action Cancel background export process.
+\end_layout
+
+\begin_layout Description
+Syntax export-cancel
+\end_layout
+
+\begin_layout Description
+Origin rgh, 10 December 2017
 \end_layout
 
 \begin_layout Subsection*
@@ -2321,41 +2351,41 @@ Params <TYPE>: shortcut[s]|lyxrc|lyxinfo|package|textclass|menu|icon|buffer
 \begin_inset Newline newline
 \end_inset
 
-		      shortcut[s]: name of lfun (e.g math-insert 
+shortcut[s]: name of lfun (e.g math-insert 
 \backslash
 alpha)
 \begin_inset Newline newline
 \end_inset
 
-		      lyxrc: name of rc_entry (e.g.
+lyxrc: name of rc_entry (e.g.
  bind_file)
 \begin_inset Newline newline
 \end_inset
 
-		      lyxinfo: "version" - used version of LyX
+lyxinfo: "version" - used version of LyX
 \begin_inset Newline newline
 \end_inset
 
-		      package: name of latex package (e.g.
+package: name of latex package (e.g.
  listings)
 \begin_inset Newline newline
 \end_inset
 
-		      textclass: name of textclass (e.g.
+textclass: name of textclass (e.g.
  article)
 \begin_inset Newline newline
 \end_inset
 
-		      menu: name of lfun used in menu 
+menu: name of lfun used in menu 
 \begin_inset Newline newline
 \end_inset
 
-		      icon: icon of lfun used in toolbar or direct icon name
+icon: icon of lfun used in toolbar or direct icon name
 \begin_inset Newline newline
 \end_inset
 
-		      buffer: "name"|"path"|"class"|"vcs-tree-revision"| "vcs-revision"|"vcs-a
-uthor"|"vcs-date"|"vcs-time"
+buffer: "name"|"path"|"class"|"vcs-tree-revision"| "vcs-revision"|"vcs-author"|"
+vcs-date"|"vcs-time"
 \end_layout
 
 \begin_layout Description
@@ -2495,7 +2525,7 @@ Currently only the filename will be considered.
 \end_layout
 
 \begin_layout Description
-Origin JSpitzm, 27 Apr 2006
+Origin spitz, 27 Apr 2006
 \end_layout
 
 \begin_layout Subsection*
@@ -2569,7 +2599,7 @@ Sample Remove all index insets:
 \begin_inset Newline newline
 \end_inset
 
-	           inset-forall Index char-delete-forward force
+inset-forall Index char-delete-forward force
 \begin_inset Newline newline
 \end_inset
 
@@ -2577,7 +2607,7 @@ Close all Notes (also works for a particular branch, for example):
 \begin_inset Newline newline
 \end_inset
 
-	           inset-forall Note inset-toggle close
+inset-forall Note inset-toggle close
 \begin_inset Newline newline
 \end_inset
 
@@ -2585,7 +2615,7 @@ Transform all yellow notes to comments
 \begin_inset Newline newline
 \end_inset
 
-	           inset-forall Note:Note inset-modify note Note Comment
+inset-forall Note:Note inset-modify note Note Comment
 \begin_inset Newline newline
 \end_inset
 
@@ -2593,7 +2623,7 @@ Try to put LyX in an infinite loop if there is at least a Note:
 \begin_inset Newline newline
 \end_inset
 
-	           inset-forall Note char-backward
+inset-forall Note char-backward
 \end_layout
 
 \begin_layout Description
@@ -2617,8 +2647,7 @@ Params <INSET>: <bibitem|bibtex|citation|ert|listings|external|graphics|tabular|
 \begin_inset Newline newline
 \end_inset
 
-	                 hyperlink|include|index|label|line|nomencl|vspace|ref|toc|scri
-pt>
+hyperlink|include|index|label|line|nomencl|vspace|ref|toc|script>
 \begin_inset Newline newline
 \end_inset
 
@@ -2839,7 +2868,7 @@ Params <CHAR>: tone-falling, tone-rising, tone-high-rising, tone-low-rising,
 \end_layout
 
 \begin_layout Description
-Origin JSpitzm, 22 Aug 2012
+Origin spitz, 22 Aug 2012
 \end_layout
 
 \begin_layout Subsection*
@@ -3164,7 +3193,7 @@ Params <ARG>: <newline|linebreak> default: newline
 \end_layout
 
 \begin_layout Description
-Origin JSpitzm, 25 Mar 2008
+Origin spitz, 25 Mar 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -3352,12 +3381,16 @@ Notion Removes the selection.
 \end_layout
 
 \begin_layout Description
-Syntax paragraph-break [<LAYOUT>]
+Syntax paragraph-break [<LAYOUT>] [ignoresep]
 \end_layout
 
 \begin_layout Description
 Params <LAYOUT>: "inverse" - decreases depth by one (or change layout to
  default layout) when the cursor is at the end of the line.
+\begin_inset Newline newline
+\end_inset
+
+ignoresep: Do not account for paragraph separators while breaking.
 \end_layout
 
 \begin_layout Subsection*
@@ -4034,7 +4067,7 @@ Only in math mode: med and thick.
 \end_layout
 
 \begin_layout Description
-Origin JSpitzm, 20 May 2003, Mar 17 2008
+Origin spitz, 20 May 2003, Mar 17 2008
 \end_layout
 
 \begin_layout Subsection*
@@ -4050,13 +4083,12 @@ Syntax specialchar-insert <CHAR>
 \end_layout
 
 \begin_layout Description
-Params <CHAR>: hyphenation, allowbreak, ligature-break, slash, 	   		  
- 		   nobreakdash, dots, end-of-sentence, menu-separator, 					   lyx, tex,
- latex, latex2e.
+Params <CHAR>: hyphenation, allowbreak, ligature-break, slash, nobreakdash,
+ dots, end-of-sentence, menu-separator, lyx, tex, latex, latex2e.
 \end_layout
 
 \begin_layout Description
-Origin JSpitzm, 6 Dec 2007
+Origin spitz, 6 Dec 2007
 \end_layout
 
 \begin_layout Subsection*
@@ -4077,7 +4109,7 @@ Params <WORD>: word to add <LANG>: language name (see file languages)
 \end_layout
 
 \begin_layout Description
-Origin JSpitzm, 18 Jan 2010
+Origin spitz, 18 Jan 2010
 \end_layout
 
 \begin_layout Subsection*
@@ -4115,7 +4147,7 @@ Params <WORD>: word to ignore <LANG>: language name (see file languages)
 \end_layout
 
 \begin_layout Description
-Origin JSpitzm, 18 Jan 2010
+Origin spitz, 18 Jan 2010
 \end_layout
 
 \begin_layout Subsection*
@@ -5871,9 +5903,12 @@ In case of "custom" you will be asked for a format you want to start from
 
 If absent or "default", then the default output format of the document is
  used.
- 		<DEST>	If present, this argument provides the export destination 			filename.
- Its containing folder will also be the destination 			folder, where all
- the needed external files will be copied.
+\begin_inset Newline newline
+\end_inset
+
+<DEST>   If present, this argument provides the export destination filename.
+ Its containing folder will also be the destination folder, where all the
+ needed external files will be copied.
 \end_layout
 
 \begin_layout Description
@@ -5981,7 +6016,7 @@ Sample Close all Notes in buffers:
 \begin_inset Newline newline
 \end_inset
 
-	           buffer-forall inset-forall Note inset-toggle close
+buffer-forall inset-forall Note inset-toggle close
 \begin_inset Newline newline
 \end_inset
 
@@ -5989,7 +6024,7 @@ Toggle change tracking on buffers:
 \begin_inset Newline newline
 \end_inset
 
-	           buffer-forall changes-track
+buffer-forall changes-track
 \begin_inset Newline newline
 \end_inset
 
@@ -5997,7 +6032,7 @@ Toggle read-only for buffers:
 \begin_inset Newline newline
 \end_inset
 
-	           buffer-forall buffer-toggle-read-only
+buffer-forall buffer-toggle-read-only
 \begin_inset Newline newline
 \end_inset
 
@@ -6005,7 +6040,7 @@ Show statistics for individual buffers:
 \begin_inset Newline newline
 \end_inset
 
-	           buffer-forall statistics
+buffer-forall statistics
 \begin_inset Newline newline
 \end_inset
 
@@ -6013,7 +6048,7 @@ Activate the branch named "Solutions" in buffers:
 \begin_inset Newline newline
 \end_inset
 
-	           buffer-forall branch-activate Solutions
+buffer-forall branch-activate Solutions
 \begin_inset Newline newline
 \end_inset
 
@@ -6021,7 +6056,7 @@ Export buffers to PDF (pdflatex):
 \begin_inset Newline newline
 \end_inset
 
-	           buffer-forall buffer-export pdf2
+buffer-forall buffer-export pdf2
 \begin_inset Newline newline
 \end_inset
 
@@ -6699,12 +6734,8 @@ Syntax toolbar-movable <NAME>
 \end_layout
 
 \begin_layout Description
-Params <NAME>: *|standard|extra|table|math|mathmacrotemplate|
-\begin_inset Newline newline
-\end_inset
-
-					   minibuffer|review|view/update|math_panels|vcs| 					   view-others|updat
-e-others
+Params <NAME>: *|standard|extra|table|math|mathmacrotemplate| minibuffer|review|
+view/update|math_panels|vcs| view-others|update-others
 \end_layout
 
 \begin_layout Description
@@ -7078,7 +7109,7 @@ Action Sets the cursor position in the previewed (dvi/pdf) file based on
 \begin_layout Description
 Notion The external program used for forward search call can be specified
  in LyX Output preferences.
- See Additional manual for details of these 	       settings.
+ See Additional manual for details of these settings.
 \end_layout
 
 \begin_layout Description
@@ -7485,7 +7516,7 @@ Params Revision number either points directly to commit in history or if
 \begin_inset Newline newline
 \end_inset
 
-	       In RCS we subtract only in the last number of revision specification.
+In RCS we subtract only in the last number of revision specification.
  Special case "0" is reserved for the last committed revision.
 \begin_inset Newline newline
 \end_inset
@@ -7494,7 +7525,7 @@ Params Revision number either points directly to commit in history or if
 \begin_inset Newline newline
 \end_inset
 
-	       <REV2>: Newer file.
+<REV2>: Newer file.
  Used only if REV1 > 0.
 \begin_inset Newline newline
 \end_inset
@@ -7507,7 +7538,7 @@ Sample Compare current document against last commit
 \begin_inset Newline newline
 \end_inset
 
-	       vc-compare 0
+vc-compare 0
 \begin_inset Newline newline
 \end_inset
 
@@ -7515,7 +7546,7 @@ Compare current document against current revision - 5 commits
 \begin_inset Newline newline
 \end_inset
 
-	       vc-compare -5
+vc-compare -5
 \begin_inset Newline newline
 \end_inset
 
@@ -7523,7 +7554,7 @@ Compare revisions 120 and 155
 \begin_inset Newline newline
 \end_inset
 
-	       vc-compare 120 155
+vc-compare 120 155
 \end_layout
 
 \begin_layout Description
