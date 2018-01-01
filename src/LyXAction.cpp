@@ -3049,10 +3049,11 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_PARAGRAPH_BREAK
  * \li Action: Breaks the current paragraph at the current location.
  * \li Notion: Removes the selection.
- * \li Syntax: paragraph-break [<LAYOUT>]
+ * \li Syntax: paragraph-break [<LAYOUT>] [ignoresep]
  * \li Params: <LAYOUT>: "inverse" - decreases depth by one (or change layout
                          to default layout) when the cursor is at the end of
-                         the line.
+                         the line.\n
+               ignoresep: Do not account for paragraph separators while breaking.
  * \endvar
  */
 		{ LFUN_PARAGRAPH_BREAK, "paragraph-break", Noop, Edit },

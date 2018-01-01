@@ -1129,9 +1129,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			Font const f(inherit_font, cur.current_font.language());
 			pars_[cur.pit() - 1].resetFonts(f);
 		} else {
-			if (par.isEnvSeparator(cur.pos()))
+			if (par.isEnvSeparator(cur.pos()) && cmd.getArg(1) != "ignoresep")
 				cur.posForward();
-			breakParagraph(cur, cmd.argument() == "inverse");
+			breakParagraph(cur, cmd.getArg(0) == "inverse");
 		}
 		cur.resetAnchor();
 		// If we have a list and autoinsert item insets,
