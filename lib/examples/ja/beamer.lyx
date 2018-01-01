@@ -863,6 +863,8 @@ arg   "depth-increment"
 \end_inset
 
 を使用して)フレーム環境に入れ子にしなくてはならないことに注意してください。
+\lang english
+ This is done automatically if you insert new frame paragraphs.
 \end_layout
 
 \begin_layout Itemize
@@ -983,6 +985,64 @@ arg   "paragraph-break inverse"
 \end_inset
 
 を打鍵してください!
+\end_layout
+
+\begin_layout Block
+
+\lang english
+There is a simple and much more convenient way to start a new frame: Issue
+ 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Insert\SpecialChar menuseparator
+Separated Frame Below
+\end_layout
+
+\end_inset
+
+ (
+\begin_inset Info
+type  "shortcut"
+arg   "environment-split"
+\end_inset
+
+ if you are in a non-nested 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Frame
+\end_layout
+
+\end_inset
+
+ paragraph, or 
+\begin_inset Info
+type  "shortcut"
+arg   "environment-split outer"
+\end_inset
+
+, respectively, if you are in a nested paragraph within the frame).
+ If you are in the frame heading, 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+Insert\SpecialChar menuseparator
+Separated Frame Above
+\end_layout
+
+\end_inset
+
+ inserts a new, properly separated frame above the current one!
 \end_layout
 
 \end_deeper
