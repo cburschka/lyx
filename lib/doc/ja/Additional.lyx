@@ -8620,7 +8620,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-okular –unique
+okular --unique
 \end_layout
 
 \end_inset
@@ -19615,7 +19615,7 @@ status collapsed
 status collapsed
 
 \begin_layout Plain Layout
-svn update –non-interactive 
+svn update --non-interactive 
 \begin_inset Quotes qld
 \end_inset
 
@@ -19856,7 +19856,7 @@ svn diff $path（変更が発見された場合には通知します）
 \begin_inset Newline newline
 \end_inset
 
-svn update –accept mine-full $path
+svn update --accept mine-full $path
 \end_layout
 
 \end_inset
@@ -20372,7 +20372,7 @@ info
 \begin_inset space ~
 \end_inset
 
-–xml
+--xml
 \begin_inset space ~
 \end_inset
 
@@ -20601,7 +20601,7 @@ new project
 status collapsed
 
 \begin_layout Plain Layout
-svn –help
+svn --help
 \end_layout
 
 \end_inset
@@ -20762,7 +20762,7 @@ Linuxに較べて，WindowsでSVNクライアントをSSH経由で通信する�
 status collapsed
 
 \begin_layout Plain Layout
-svn –version
+svn --version
 \end_layout
 
 \end_inset
@@ -22704,8 +22704,11 @@ status open
 \begin_layout Plain Layout
 
 \size footnotesize
-The youth moved in the best society–had, so far as was known, no enemies
- and no particular vices.
+The youth moved in the best society
+\begin_inset space ~
+\end_inset
+
+– had, so far as was known, no enemies and no particular vices.
  He had been engaged to Miss Edith Woodley, of Carstairs, but the engagement
  had been broken off by mutual consent some months before, and there was
  no sign that it had left any very profound feeling behind it.
@@ -22724,8 +22727,11 @@ The youth moved in the best society–had, so far as was known, no enemies
 \begin_layout Plain Layout
 
 \size footnotesize
-Ronald Adair was fond of cards–playing continually, but never for such stakes
- as would hurt him.
+Ronald Adair was fond of cards
+\begin_inset space ~
+\end_inset
+
+– playing continually, but never for such stakes as would hurt him.
  He was a member of the Baldwin, the Cavendish, and the Bagatelle card clubs.
  It was shown that, after dinner on the day of his death, he had played
  a rubber of whist at the latter club.
@@ -22734,9 +22740,17 @@ Ronald Adair was fond of cards–playing continually, but never for such stakes
 \size default
  
 \size footnotesize
-The evidence of those who had played with him– Mr.
- Murray, Sir John Hardy, and Colonel Moran–showed that the game was whist,
- and that there was a fairly equal fall of the cards.
+The evidence of those who had played with him
+\begin_inset space ~
+\end_inset
+
+– Mr.
+ Murray, Sir John Hardy, and Colonel Moran
+\begin_inset space ~
+\end_inset
+
+– showed that the game was whist, and that there was a fairly equal fall
+ of the cards.
  Adair might have lost five pounds, but not more.
  His fortune was a considerable one, and such a loss could not in any way
  affect him.
@@ -23323,7 +23337,11 @@ Catullus
 \noun on
 The Holy War
 \noun default
-–a bargain, every one of them.
+
+\begin_inset space ~
+\end_inset
+
+– a bargain, every one of them.
  With five volumes you could just fill that gap on that second shelf.
  It looks untidy, does it not, sir?
 \begin_inset Quotes erd
@@ -23589,7 +23607,11 @@ Catullus
 \noun on
 The Holy War
 \noun default
-–a bargain, every one of them.
+
+\begin_inset space ~
+\end_inset
+
+– a bargain, every one of them.
  With five volumes you could just fill that gap on that second shelf.
  It looks untidy, does it not, sir?
 \begin_inset Quotes erd
@@ -23789,7 +23811,11 @@ Catullus
 \noun on
 The Holy War
 \noun default
-–a bargain, every one of them.
+
+\begin_inset space ~
+\end_inset
+
+– a bargain, every one of them.
  With five volumes you could just fill that gap on that second shelf.
  It looks untidy, does it not, sir?
 \begin_inset Quotes erd

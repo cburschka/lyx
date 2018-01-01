@@ -8031,7 +8031,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-okular –unique
+okular --unique
 \end_layout
 
 \end_inset
@@ -18692,7 +18692,11 @@ article
 .
  C'est-à-dire que les compteurs (notes de bas de page, figures, tableaux
  etc.) ne seront pas réinitialisés à chaque nouveau chapitre, les chapitres
- ne commenceront pas sur une nouvelle page (mais–contrairement à la 
+ ne commenceront pas sur une nouvelle page (mais –
+\begin_inset space ~
+\end_inset
+
+contrairement à la 
 \begin_inset Quotes cld
 \end_inset
 
@@ -18704,7 +18708,11 @@ vraie
 \family sans
 article
 \family default
-—ils sont encore autorisés), les parties cependant utilisent leur propre
+
+\begin_inset space ~
+\end_inset
+
+– ils sont encore autorisés), les parties cependant utilisent leur propre
  page comme dans 
 \family sans
 book
@@ -23446,7 +23454,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-svn update –accept mine-full $path
+svn update --accept mine-full $path
 \end_layout
 
 \end_inset
@@ -23960,7 +23968,7 @@ info
 \begin_inset space ~
 \end_inset
 
-–xml
+--xml
 \begin_inset space ~
 \end_inset
 
@@ -24395,7 +24403,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang english
-svn –version
+svn --version
 \end_layout
 
 \end_inset
@@ -26950,8 +26958,11 @@ status open
 
 \size footnotesize
 \lang english
-The youth moved in the best society–had, so far as was known, no enemies
- and no particular vices.
+The youth moved in the best society
+\begin_inset space ~
+\end_inset
+
+– had, so far as was known, no enemies and no particular vices.
  He had been engaged to Miss Edith Woodley, of Carstairs, but the engagement
  had been broken off by mutual consent some months before, and there was
  no sign that it had left any very profound feeling behind it.
@@ -26971,8 +26982,11 @@ The youth moved in the best society–had, so far as was known, no enemies
 
 \size footnotesize
 \lang english
-Ronald Adair was fond of cards–playing continually, but never for such stakes
- as would hurt him.
+Ronald Adair was fond of cards
+\begin_inset space ~
+\end_inset
+
+– playing continually, but never for such stakes as would hurt him.
  He was a member of the Baldwin, the Cavendish, and the Bagatelle card clubs.
  It was shown that, after dinner on the day of his death, he had played
  a rubber of whist at the latter club.
@@ -26981,9 +26995,17 @@ Ronald Adair was fond of cards–playing continually, but never for such stakes
 \size default
  
 \size footnotesize
-The evidence of those who had played with him– Mr.
- Murray, Sir John Hardy, and Colonel Moran–showed that the game was whist,
- and that there was a fairly equal fall of the cards.
+The evidence of those who had played with him
+\begin_inset space ~
+\end_inset
+
+– Mr.
+ Murray, Sir John Hardy, and Colonel Moran
+\begin_inset space ~
+\end_inset
+
+– showed that the game was whist, and that there was a fairly equal fall
+ of the cards.
  Adair might have lost five pounds, but not more.
  His fortune was a considerable one, and such a loss could not in any way
  affect him.
@@ -27611,7 +27633,11 @@ Catullus
 \noun on
 The Holy War
 \noun default
-–a bargain, every one of them.
+
+\begin_inset space ~
+\end_inset
+
+– a bargain, every one of them.
  With five volumes you could just fill that gap on that second shelf.
  It looks untidy, does it not, sir?
 \begin_inset Quotes erd
@@ -27856,7 +27882,11 @@ Catullus
 \noun on
 The Holy War
 \noun default
-–a bargain, every one of them.
+
+\begin_inset space ~
+\end_inset
+
+– a bargain, every one of them.
  With five volumes you could just fill that gap on that second shelf.
  It looks untidy, does it not, sir?
 \begin_inset Quotes erd
@@ -28066,7 +28096,11 @@ Catullus
 \noun on
 The Holy War
 \noun default
-–a bargain, every one of them.
+
+\begin_inset space ~
+\end_inset
+
+– a bargain, every one of them.
  With five volumes you could just fill that gap on that second shelf.
  It looks untidy, does it not, sir?
 \begin_inset Quotes erd
