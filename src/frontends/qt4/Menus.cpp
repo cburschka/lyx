@@ -193,6 +193,8 @@ public:
 		SwitchCaptions,
 		/** Commands to separate environments. */
 		EnvironmentSeparators,
+		/** Commands to separate environments (context menu version). */
+		EnvironmentSeparatorsContext,
 		/** This is the list of quotation marks available */
 		SwitchQuotes
 	};
@@ -368,7 +370,7 @@ public:
 	void expandLanguageSelector(Buffer const * buf);
 	void expandArguments(BufferView const *, bool switcharg = false);
 	void expandCaptions(Buffer const * buf, bool switchcap = false);
-	void expandEnvironmentSeparators(BufferView const *);
+	void expandEnvironmentSeparators(BufferView const *, bool contextmenu = false);
 	void expandQuotes(BufferView const *);
 	///
 	ItemList items_;
@@ -484,6 +486,7 @@ void MenuDefinition::read(Lexer & lex)
 		md_captions,
 		md_switchcaptions,
 		md_env_separators,
+		md_env_separatorscontext,
 		md_switchquotes
 	};
 
@@ -499,6 +502,7 @@ void MenuDefinition::read(Lexer & lex)
 		{ "elements", md_elements },
 		{ "end", md_endmenu },
 		{ "environmentseparators", md_env_separators },
+		{ "environmentseparatorscontext", md_env_separatorscontext },
 		{ "exportformat", md_exportformat },
 		{ "exportformats", md_exportformats },
 		{ "floatinsert", md_floatinsert },
@@ -670,6 +674,10 @@ void MenuDefinition::read(Lexer & lex)
 
 		case md_env_separators:
 			add(MenuItem(MenuItem::EnvironmentSeparators));
+			break;
+
+		case md_env_separatorscontext:
+			add(MenuItem(MenuItem::EnvironmentSeparatorsContext));
 			break;
 
 		case md_switchquotes:
@@ -1846,7 +1854,8 @@ void MenuDefinition::expandQuotes(BufferView const * bv)
 }
 
 
-void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv)
+void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv,
+						 bool contextmenu)
 {
 	if (!bv)
 		return;
@@ -1881,20 +1890,28 @@ void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv)
 			break;
 	}
 	if (par.layout().isEnvironment()) {
-		docstring label = bformat(_("Separated %1$s Above"),
-				translateIfPossible(curlayout));
+		docstring label = contextmenu ?
+					bformat(_("Insert Separated %1$s Above"),
+						translateIfPossible(curlayout)) :
+					bformat(_("Separated %1$s Above"),
+						translateIfPossible(curlayout));
 		add(MenuItem(MenuItem::Command, toqstr(label),
 			     FuncRequest(LFUN_ENVIRONMENT_SPLIT,
 					 from_ascii("before"))));
 		if (!par.layout().keepempty || pos > 0 || !text->isFirstInSequence(pit)) {
-			label = bformat(_("Separated %1$s Below"),
-					translateIfPossible(curlayout));
+			label = contextmenu ?
+					bformat(_("Insert Separated %1$s Below"),
+						translateIfPossible(curlayout)):
+					bformat(_("Separated %1$s Below"),
+						translateIfPossible(curlayout));
 			add(MenuItem(MenuItem::Command, toqstr(label),
 				     FuncRequest(LFUN_ENVIRONMENT_SPLIT)));
 		}
 	}
 	else if (!prevlayout.empty()) {
-		docstring const label =
+		docstring const label = contextmenu ?
+			bformat(_("Insert Separated %1$s Below"),
+				translateIfPossible(prevlayout)) :
 			bformat(_("Separated %1$s Below"),
 				translateIfPossible(prevlayout));
 		add(MenuItem(MenuItem::Command, toqstr(label),
@@ -1902,11 +1919,20 @@ void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv)
 					 from_ascii("previous"))));
 	}
 	if (!outerlayout.empty()) {
-		docstring const label = (outerlayout == curlayout) ?
-			bformat(_("Separated Outer %1$s Below"),
-				translateIfPossible(outerlayout)) :
-			bformat(_("Separated %1$s Below"),
-				translateIfPossible(outerlayout));
+		docstring label;
+		if (contextmenu) {
+			label = (outerlayout == curlayout) ?
+				bformat(_("Insert Separated Outer %1$s Below"),
+					translateIfPossible(outerlayout)) :
+				bformat(_("Insert Separated %1$s Below"),
+					translateIfPossible(outerlayout));
+		} else {
+			label = (outerlayout == curlayout) ?
+				bformat(_("Separated Outer %1$s Below"),
+					translateIfPossible(outerlayout)) :
+				bformat(_("Separated %1$s Below"),
+					translateIfPossible(outerlayout));
+		}
 		add(MenuItem(MenuItem::Command, toqstr(label),
 			     FuncRequest(LFUN_ENVIRONMENT_SPLIT,
 					 from_ascii("outer"))));
@@ -2310,6 +2336,10 @@ void Menus::Impl::expand(MenuDefinition const & frommenu,
 
 		case MenuItem::EnvironmentSeparators:
 			tomenu.expandEnvironmentSeparators(bv);
+			break;
+
+		case MenuItem::EnvironmentSeparatorsContext:
+			tomenu.expandEnvironmentSeparators(bv, true);
 			break;
 
 		case MenuItem::SwitchQuotes:
