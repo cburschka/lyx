@@ -29829,7 +29829,7 @@ msgstr "Odrážky"
 
 #: src/frontends/qt4/GuiDocument.cpp:1510
 msgid "Formats[[output]]"
-msgstr ""
+msgstr "Formáty"
 
 #: src/frontends/qt4/GuiDocument.cpp:1511
 msgid "LaTeX Preamble"
@@ -29866,9 +29866,8 @@ msgid "Class Default"
 msgstr "Standardní nastavení třídy"
 
 #: src/frontends/qt4/GuiDocument.cpp:2310
-#, fuzzy
 msgid "Lay&outs"
-msgstr "Rozvržení|#o#O"
+msgstr "&Rozvržení"
 
 #: src/frontends/qt4/GuiDocument.cpp:2312
 msgid "LyX Layout (*.layout)"
@@ -32062,46 +32061,45 @@ msgid "Reset to language default (%1$s)|l"
 msgstr "Po&užij standardní kódování jazyka"
 
 #: src/frontends/qt4/Menus.cpp:1851
-#, fuzzy
 msgid "Change Style|y"
-msgstr "Změnit styl indexů|i"
+msgstr "Změnit styl|y"
 
 #: src/frontends/qt4/Menus.cpp:1894
 #, c-format
 msgid "Insert Separated %1$s Above"
-msgstr ""
+msgstr "Vložit jednotlivý  %1$s nahoru"
 
 #: src/frontends/qt4/Menus.cpp:1896
-#, fuzzy, c-format
+#, c-format
 msgid "Separated %1$s Above"
-msgstr "Parametr %1$s: "
+msgstr "Jednotlivý %1$s nahoru"
 
 #: src/frontends/qt4/Menus.cpp:1903 src/frontends/qt4/Menus.cpp:1913
 #: src/frontends/qt4/Menus.cpp:1927
 #, c-format
 msgid "Insert Separated %1$s Below"
-msgstr ""
+msgstr "Vložit jednotlivý %1$s dolů"
 
 #: src/frontends/qt4/Menus.cpp:1905 src/frontends/qt4/Menus.cpp:1915
 #: src/frontends/qt4/Menus.cpp:1933
-#, fuzzy, c-format
+#, c-format
 msgid "Separated %1$s Below"
-msgstr "Parametr %1$s: "
+msgstr "Jednotlivý %1$s dolů"
 
 #: src/frontends/qt4/Menus.cpp:1925
 #, c-format
 msgid "Insert Separated Outer %1$s Below"
-msgstr ""
+msgstr "Vložit jednotlivý vnější %1$s dolů"
 
 #: src/frontends/qt4/Menus.cpp:1931
-#, fuzzy, c-format
+#, c-format
 msgid "Separated Outer %1$s Below"
-msgstr "Parametr %1$s: "
+msgstr "Jednotlivý vnější %1$s dolů"
 
 #: src/frontends/qt4/Menus.cpp:2246
-#, fuzzy, c-format
+#, c-format
 msgid "Export [%1$s]|E"
-msgstr "Exportovat %1$s"
+msgstr "Exportovat [%1$s]|E"
 
 #: src/frontends/qt4/Menus.cpp:2595
 msgid "No Action Defined!"
