@@ -343,7 +343,7 @@ Menuset
 		Item "Move Paragraph Up|o" "paragraph-move-up"
 		Item "Move Paragraph Down|v" "paragraph-move-down"
 		Separator
-		EnvironmentSeparators
+		EnvironmentSeparatorsContext
 		Separator
 		OptItem "Promote Section|r" "outline-out"
 		OptItem "Demote Section|m" "outline-in"
