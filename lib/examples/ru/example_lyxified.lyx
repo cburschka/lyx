@@ -1,0 +1,353 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options false
+\maintain_unincluded_children false
+\language russian
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style russian
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+ЭТО НАЗВАНИЕ ДОКУМЕНТА
+\end_layout
+
+\begin_layout Author
+Фе Ликс
+\end_layout
+
+\begin_layout Date
+12 июня 1972
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Основная философия
+\end_layout
+
+\begin_layout Standard
+Основная философия \SpecialChar LyX
+ заключается в том, что вы должны беспокоиться о содержании
+ того, что вы пишете, а не о форме.
+\end_layout
+
+\begin_layout Subsection
+Как \SpecialChar LyX
+ это делает
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ использует \SpecialChar LaTeX
+, систему подготовки документов, разработанную Лесли Лэмпортом
+ в 1985 году.
+ Он, в свою очередь, был построен на базе языка верстки под названием \SpecialChar TeX
+,
+ созданного Дональдом Кнутом в 1984 году.
+ \SpecialChar LaTeX
+ разработан вокруг философии, аналогичной философии \SpecialChar LyX
+.
+ Лесли Лэмпорт однажды сказал (см.
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "lamport"
+literal "true"
+
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Quote
+Функция типографского дизайна заключается в том, чтобы помочь читателю понять
+ идеи автора.
+ Для удобства чтения документа его визуальная структура должна отражать
+ его логическую структуру.
+ Цитаты и компьютерные программы, являясь логически отличающимися структурными
+ элементами, должны визуально различаться друг от друга \SpecialChar ldots
+ Поскольку \SpecialChar LaTeX
+ не может
+ понимать ваш текст, вы должны явно указать логическую структуру, введя
+ специальные команды \SpecialChar ldots
+ При написании документа необходимо учитывать его логическу
+ю структуру, а не внешний вид.
+\end_layout
+
+\begin_layout Subsection
+Почему \SpecialChar LyX
+ лучше
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Почему-LyX-лучше"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ может быть полезен большему количеству людей, чем \SpecialChar LaTeX
+.
+ Его значительно проще изучить, потому что вам не нужно изучать \SpecialChar LaTeX
+ (который
+ является практически языком программирования).
+ \SpecialChar LyX
+ в основном похож на другие “что вы видите, что вы получаете” текстовые
+ процессоры, за исключением того, что \SpecialChar LyX
+ — это “вы видите то, что вы имеете
+ в виду”.
+ Таким образом, он сочетает в себе простоту использования текстовых процессоров
+ с мощностью \SpecialChar LaTeX
+а.
+ Это хорошо.
+ Кроме того, формат его файлов не зависит от платформы.
+ Ну и лучше всего, то что он БЕСПЛАТЕН!
+\end_layout
+
+\begin_layout Section
+Возможности \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Standard
+\SpecialChar LyX
+ имеет много функций, которые облегчают написание документов
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+В конце концов, почему же еще вам хотелось бы использовать его?
+\end_layout
+
+\end_inset
+
+.
+ Я очень 
+\emph on
+восхищен
+\emph default
+ и хочу обсудить их.
+ Вот список из нескольких.
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar LyX
+ заботится о полях и нумерации сносок для вас
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar LyX
+ позволяет легко писать и редактировать математические формулы
+\end_layout
+
+\begin_layout Standard
+Для более философского обсуждения того, почему \SpecialChar LyX
+ лучше, чем многие другие
+ текстовые процессоры, см.
+ раздел
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Почему-LyX-лучше"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, который можно найти на странице
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand pageref
+reference "subsec:Почему-LyX-лучше"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Неубедительные попытки использовать \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Standard
+Я написал программу на днях.
+ Это выглядело вот так.
+\end_layout
+
+\begin_layout LyX-Code
+5 REMARK МОЯ ЗАМЕЧАТЕЛЬНАЯ ПРОГРАММА
+\end_layout
+
+\begin_layout LyX-Code
+10 PRINT "I'M AWESOME!"
+\end_layout
+
+\begin_layout LyX-Code
+20 GOTO 10
+\end_layout
+
+\begin_layout Standard
+После всего научного мышления, я начал чувствовать себя более художественным,
+ так что я написал эту хокку
+\end_layout
+
+\begin_layout Verse
+\SpecialChar LyX
+ — это действительно хороший
+\begin_inset Newline newline
+\end_inset
+
+Верстающий текстовый процессор
+\begin_inset Newline newline
+\end_inset
+
+Он экономит так много времени
+\end_layout
+
+\begin_layout Section
+Математические вещи
+\end_layout
+
+\begin_layout Standard
+Моя любимая формула — это решение квадратного уравнения.
+ Если 
+\begin_inset Formula 
+\begin{equation}
+ax^{2}+bx+c=0,
+\end{equation}
+
+\end_inset
+
+ то
+\begin_inset Formula 
+\begin{equation}
+x=\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Еще одна любимая формула — определение производной:
+\begin_inset Formula 
+\begin{equation}
+f'(x)=\lim_{\Delta x\rightarrow0}\frac{f(x+\Delta x)-f(x)}{\Delta x}.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "lamport"
+literal "false"
+
+\end_inset
+
+Lamport, Leslie.
+ 
+\emph on
+\SpecialChar LaTeX
+: A Document Preparation System.
+
+\emph default
+ Addison-Wesley, Reading, Massachusetts, second edition, 1994.
+\end_layout
+
+\end_body
+\end_document

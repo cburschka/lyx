@@ -231,6 +231,8 @@ dist_roexamples_DATA = \
 
 ruexamplesdir = $(pkgdatadir)/examples/ru
 dist_ruexamples_DATA = \
+	examples/ru/example_lyxified.lyx \
+	examples/ru/example_raw.lyx \
 	examples/ru/splash.lyx
 
 slexamplesdir = $(pkgdatadir)/examples/sl
