@@ -149,6 +149,10 @@ public:
 	///
 	std::set<std::string> const & requires() const { return requires_; }
 	///
+	std::set<docstring> const & autonests() const { return autonests_; }
+	///
+	std::set<docstring> const & isAutonestedBy() const { return autonested_by_; }
+	///
 	std::string const & latexparam() const { return latexparam_; }
 	///
 	docstring leftdelim() const { return leftdelim_; }
@@ -468,6 +472,10 @@ private:
 	bool par_group_;
 	/// Packages needed for this layout
 	std::set<std::string> requires_;
+	/// Layouts that are by default nested after this one
+	std::set<docstring> autonests_;
+	/// Layouts that by auto-nest this one
+	std::set<docstring> autonested_by_;
 	///
 	LaTeXArgMap latexargs_;
 	///

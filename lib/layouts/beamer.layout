@@ -6,7 +6,7 @@
 #   Richard Heck <rgheck@lyx.org>, Martin Vermeer <martin.vermeer@hut.fi> and probably others.
 
 
-Format 65
+Format 66
 
 #
 # GLOBAL SETTINGS
@@ -487,6 +487,12 @@ Style Frame
     AutoInsert     1
     IsTocCaption   1
   EndArgument
+  AutoNests 
+	Standard,Itemize,Enumerate,Description,FrameTitle,FrameSubtitle,Column,
+	Columns,ColumnsCenterAligned,ColumnsTopAligned,Pause,Overprint,OverlayArea,Only,Block,
+	ExampleBlock,AlertBlock,Bibliography,Quotation,Quote,Verse,Corollary,Definition,Definitions,
+	Example,Examples,Fact,Lemma,Proof,Theorem,LyX-Code
+  EndAutoNests
 End
 
 Style PlainFrame
@@ -670,6 +676,11 @@ Style Columns
     Family         Roman
     Color          latex
   EndFont
+  AutoNests 
+	Standard,Itemize,Enumerate,Description,Pause,Overprint,OverlayArea,Only,Block,
+	ExampleBlock,AlertBlock,Bibliography,Quotation,Quote,Verse,Corollary,Definition,Definitions,
+	Example,Examples,Fact,Lemma,Proof,Theorem,LyX-Code
+  EndAutoNests
 End
 
 Style ColumnsCenterAligned
@@ -890,6 +901,10 @@ Style Block
     EndFont
     AutoInsert     1
   EndArgument
+  AutoNests 
+	Standard,Itemize,Enumerate,Description,Pause,Overprint,OverlayArea,Only,Quotation,
+	Quote,Verse,Corollary,Definition,Definitions,Example,Examples,Fact,Lemma,Proof,Theorem,LyX-Code
+  EndAutoNests
 End
 
 Style ExampleBlock
@@ -1233,6 +1248,9 @@ Style Corollary
     LabelString    "Additional Theorem Text"
     Tooltip        "Additional text appended to the theorem header"
   EndArgument
+  AutoNests 
+	Standard,Itemize,Enumerate,Description,Pause,Overprint,OverlayArea,Only,LyX-Code
+  EndAutoNests
 End
 
 Style Definition

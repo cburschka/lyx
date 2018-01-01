@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 65
+currentFormat = 66
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -219,6 +219,10 @@ currentFormat = 65
 
 # Incremented to format 65, 16 October 2017 by spitz
 # Color collapsable -> collapsible
+
+# Incremented to format 66, 28 December 2017 by spitz
+# New Layout tags "AutoNests ... EndAutoNests" and
+# "IsAutoNestedBy ... EndIsAutoNestedBy"
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
@@ -467,6 +471,11 @@ def convert(lines, end_format):
             i += 1
             while i < len(lines) and not re_EndBabelPreamble.match(lines[i]):
                 i += 1
+            continue
+
+        if format == 65:
+            # nothing to do.
+            i += 1
             continue
 
         if format == 64:

@@ -1407,7 +1407,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_LAYOUT: {
-		docstring layout = cmd.argument();
+		bool const ignoreautonests = cmd.getArg(1) == "ignoreautonests";
+		docstring layout = ignoreautonests ? from_utf8(cmd.getArg(0)) : cmd.argument();
 		LYXERR(Debug::INFO, "LFUN_LAYOUT: (arg) " << to_utf8(layout));
 
 		Paragraph const & para = cur.paragraph();
@@ -1461,8 +1462,18 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			}
 		}
 
-		if (change_layout)
+		if (change_layout) {
 			setLayout(cur, layout);
+			if (cur.pit() > 0 && !ignoreautonests) {
+				set<docstring> const & autonests =
+						pars_[cur.pit() - 1].layout().autonests();
+				set<docstring> const & autonested =
+						pars_[cur.pit()].layout().isAutonestedBy();
+				if (autonests.find(layout) != autonests.end()
+						|| autonested.find(old_layout) != autonested.end())
+					lyx::dispatch(FuncRequest(LFUN_DEPTH_INCREMENT));
+			}
+		}
 
 		Layout::LaTeXArgMap args = tclass[layout].args();
 		Layout::LaTeXArgMap::const_iterator lait = args.begin();
@@ -3141,7 +3152,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_LAYOUT: {
 		DocumentClass const & tclass = cur.buffer()->params().documentClass();
-		docstring layout = cmd.argument();
+		bool const ignoreautonests = cmd.getArg(1) == "ignoreautonests";
+		docstring layout = ignoreautonests ? from_utf8(cmd.getArg(0)) : cmd.argument();
 		if (layout.empty())
 			layout = tclass.defaultLayoutName();
 		enable = !owner_->forcePlainLayout() && tclass.hasLayout(layout);
