@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-12-30 19:46+0100\n"
-"PO-Revision-Date: 2017-12-30 19:33+0000\n"
+"POT-Creation-Date: 2018-01-01 14:08+0100\n"
+"PO-Revision-Date: 2018-01-01 13:14+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -31845,16 +31845,32 @@ msgstr "Vrátiť na štandard jazyku (%1$s)|a"
 msgid "Change Style|y"
 msgstr "Zmeniť Štýl|e"
 
+#: src/frontends/qt4/Menus.cpp:1894
+#, c-format
+msgid "Insert Separated %1$s Above"
+msgstr "Vložiť Oddelené Prostredie '%1$s' Ponad"
+
 #: src/frontends/qt4/Menus.cpp:1884
 #, c-format
 msgid "Separated %1$s Above"
 msgstr "Oddelené Prostredie '%1$s' Ponad"
+
+#: src/frontends/qt4/Menus.cpp:1903 src/frontends/qt4/Menus.cpp:1913
+#: src/frontends/qt4/Menus.cpp:1927
+#, c-format
+msgid "Insert Separated %1$s Below"
+msgstr "Vložiť Oddelené Prostredie '%1$s' Popod"
 
 #: src/frontends/qt4/Menus.cpp:1890 src/frontends/qt4/Menus.cpp:1898
 #: src/frontends/qt4/Menus.cpp:1908
 #, c-format
 msgid "Separated %1$s Below"
 msgstr "Oddelené Prostredie '%1$s' Popod"
+
+#: src/frontends/qt4/Menus.cpp:1925
+#, c-format
+msgid "Insert Separated Outer %1$s Below"
+msgstr "Vložiť Oddelené Vonkajšie Prostredie '%1$s' Popod"
 
 #: src/frontends/qt4/Menus.cpp:1906
 #, c-format
