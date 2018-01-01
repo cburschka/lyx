@@ -8597,10 +8597,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8613,6 +8615,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8636,6 +8639,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -10732,21 +10736,29 @@ Aufzählung
 Um eine Liste zu teilen, setzt man den Cursor ans Ende des letzten Listeneintrag
 s und verwendet das Menü 
 \family sans
-Bearbeiten\SpecialChar menuseparator
-Neue Umgebung
+Einfügen\SpecialChar menuseparator
+Separierte Umgebung
+\family default
+ 
+\family sans
+oberhalb
+\family default
+ bzw.
+ 
+\family sans
+Einfügen\SpecialChar menuseparator
+Separierte Umgebung
+\family default
+ 
+\family sans
+unterhalb
 \family default
 .
  Dies fügt einen einfachen Trenner (rote Linie in \SpecialChar LyX
-) und dahinter eine neue
- Liste ein.
- Das Menü 
-\family sans
-Bearbeiten\SpecialChar menuseparator
-Neue äußere Umgebung
-\family default
- erscheint nur, wenn der Listeneintrag geschachtelt ist.
- Es trennt nicht nur die Liste, sondern erstellt auch eine neue Liste außerhalb
- der Schachtelung.
+) und davor bzw.
+ dahinter eine neue Liste ein.
+ Innerhalb geschachtelter Umgebungen ist es zusätzlich möglich, die äußere
+ Umgebung zu teilen.
 \end_layout
 
 \begin_layout Standard
@@ -37335,27 +37347,6 @@ reference "subsec:Nummerierung-aendern"
  beschrieben ist.
 \end_layout
 
-\begin_layout Subsection
-Neue Umgebung/Neue äußere Umgebung
-\end_layout
-
-\begin_layout Standard
-Diese Menüs sind nur sichtbar wenn es möglich ist, zwei aufeinanderfolgende
- Umgebungen desselben Typs zu haben.
- Siehe Kapitel
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Schachtelungen-trennen"
-
-\end_inset
-
- für eine Beschreibung.
-\end_layout
-
 \begin_layout Section
 Das Ansicht Menü
 \begin_inset Index idx
@@ -38766,6 +38757,27 @@ reference "sec:Randnotizen"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection
+Neue Umgebung (oberhalb/unterhalb)
+\end_layout
+
+\begin_layout Standard
+Diese Menüs sind nur sichtbar wenn es möglich ist, zwei aufeinanderfolgende
+ Umgebungen desselben Typs zu haben.
+ Siehe Kapitel
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Schachtelungen-trennen"
+
+\end_inset
+
+ für eine Beschreibung.
 \end_layout
 
 \begin_layout Subsection
