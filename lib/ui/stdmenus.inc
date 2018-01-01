@@ -134,7 +134,6 @@ Menuset
 # obvious what the context is for the others)
 		OptItem "Increase List Depth|I" "depth-increment"
 		OptItem "Decrease List Depth|D" "depth-decrement"
-		EnvironmentSeparators
 		OptItem "Dissolve Inset" "inset-dissolve"
 		OptItem "TeX Code Settings...|C" "inset-settings ert"
 # 'a' shortcut to match Insert entry, shouldn't clash with Table Settings
@@ -393,6 +392,7 @@ Menuset
 		Item "Hyperlink...|k" "href-insert"
 		Item "Footnote|F" "footnote-insert"
 		Item "Marginal Note|M" "marginalnote-insert"
+		EnvironmentSeparators
 		Arguments
 		Item "TeX Code" "ert-insert"
 		Item "Program Listing[[Menu]]" "listing-insert"

@@ -1491,36 +1491,74 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_ENVIRONMENT_SPLIT: {
 		bool const outer = cmd.argument() == "outer";
+		bool const previous = cmd.argument() == "previous";
+		bool const before = cmd.argument() == "before";
+		bool const normal = cmd.argument().empty();
 		Paragraph const & para = cur.paragraph();
-		docstring layout = para.layout().name();
+		docstring layout;
+		if (para.layout().isEnvironment())
+			layout = para.layout().name();
 		depth_type split_depth = cur.paragraph().params().depth();
-		if (outer) {
-			// check if we have an environment in our nesting hierarchy
+		depth_type nextpar_depth = 0;
+		if (outer || previous) {
+			// check if we have an environment in our scope
 			pit_type pit = cur.pit();
 			Paragraph cpar = pars_[pit];
 			while (true) {
-				if (pit == 0 || cpar.params().depth() == 0)
+				if (pit == 0)
 					break;
 				--pit;
 				cpar = pars_[pit];
+				if (layout.empty() && previous
+				    && cpar.layout().isEnvironment()
+				    && cpar.params().depth() <= split_depth)
+					layout = cpar.layout().name();
 				if (cpar.params().depth() < split_depth
 				    && cpar.layout().isEnvironment()) {
-						layout = cpar.layout().name();
+						if (!previous)
+							layout = cpar.layout().name();
 						split_depth = cpar.params().depth();
 				}
+				if (cpar.params().depth() == 0)
+					break;
 			}
 		}
-		if (cur.pos() > 0)
+		if ((outer || normal) && cur.pit() < cur.lastpit()) {
+			// save nesting of following paragraph
+			Paragraph cpar = pars_[cur.pit() + 1];
+			nextpar_depth = cpar.params().depth();
+		}
+		if (before)
+			cur.top().setPitPos(cur.pit(), 0);
+		if (before || cur.pos() > 0)
 			lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK));
+		else if (previous && cur.nextInset() && cur.nextInset()->lyxCode() == SEPARATOR_CODE)
+			lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK, "inverse ignoresep"));
 		if (outer) {
 			while (cur.paragraph().params().depth() > split_depth)
 				lyx::dispatch(FuncRequest(LFUN_DEPTH_DECREMENT));
 		}
 		DocumentClass const & tc = bv->buffer().params().documentClass();
-		lyx::dispatch(FuncRequest(LFUN_LAYOUT, tc.plainLayout().name()));
+		lyx::dispatch(FuncRequest(LFUN_LAYOUT, from_ascii("\"") + tc.plainLayout().name()
+					  + from_ascii("\" ignoreautonests")));
 		lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "plain"));
-		lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK, "inverse"));
+		if (before) {
+			cur.backwardPos();
+			lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK, "inverse ignoresep"));
+			while (cur.paragraph().params().depth() < split_depth)
+				lyx::dispatch(FuncRequest(LFUN_DEPTH_INCREMENT));
+		}
+		else
+			lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK, "inverse"));
 		lyx::dispatch(FuncRequest(LFUN_LAYOUT, layout));
+		if ((outer || normal) && nextpar_depth > 0) {
+			// restore nesting of following paragraph
+			DocIterator scur = cur;
+			cur.forwardPar();
+			while (cur.paragraph().params().depth() < nextpar_depth)
+				lyx::dispatch(FuncRequest(LFUN_DEPTH_INCREMENT));
+			cur.setCursor(scur);
+		}
 
 		break;
 	}
@@ -3178,6 +3216,19 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 					res = cpar.layout().isEnvironment();
 			}
 			enable = res;
+			break;
+		}
+		else if (cmd.argument() == "previous") {
+			// look if we have an environment in the previous par
+			pit_type pit = cur.pit();
+			Paragraph cpar = pars_[pit];
+			if (pit > 0) {
+				--pit;
+				cpar = pars_[pit];
+				enable = cpar.layout().isEnvironment();
+				break;
+			}
+			enable = false;
 			break;
 		}
 		else if (cur.paragraph().layout().isEnvironment()) {

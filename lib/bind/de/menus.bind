@@ -113,7 +113,7 @@ Format 4
 \bind "M-a Down"		"outline-down"
 
 
-\bind "M-a Return"		"environment-split"
+\bind "M-a Return"		"command-alternatives environment-split ; environment-split previous"
 \bind "M-a S-Return"		"environment-split outer"
 
 # Obsolete Tastenbelegung: in die persönliche *.bind Datei kopieren und

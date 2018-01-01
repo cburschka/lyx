@@ -1513,9 +1513,13 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_ENVIRONMENT_SPLIT
  * \li Action: Splits the current environment with a Separator.
- * \li Syntax: environment-split [outer]
+ * \li Syntax: environment-split [before|outer|previous]
  * \li Params: outer: If this is given, LyX will split the outermost environment in
- *                    the current nesting hierarchy.
+                      the current nesting hierarchy.\n
+               previous: If this is given, LyX will split the environment in the previous
+                      paragraph (is there is one).\n
+               before: If this is given, the new environment will be appended rather than
+                      prepended.
  * \li Origin: spitz, 23 Dec 2012
  * \endvar
  */
