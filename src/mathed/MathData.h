@@ -176,6 +176,8 @@ public:
 	void updateMacros(Cursor * cur, MacroContext const & mc, UpdateType, int nesting);
 	///
 	void updateBuffer(ParIterator const &, UpdateType);
+	///
+	void setBuffer(Buffer & b) { buffer_ = &b; }
 
 protected:
 	/// cached values for super/subscript placement
