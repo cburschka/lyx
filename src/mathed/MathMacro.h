@@ -129,6 +129,8 @@ public:
 	size_t appetite() const;
 	///
 	InsetCode lyxCode() const { return MATH_MACRO_CODE; }
+	/// Override so as to set Buffer for defnition_ member, too.
+	void setBuffer(Buffer &);
 
 protected:
 	friend class MathData;
