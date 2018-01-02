@@ -4,7 +4,7 @@
 # in most LyX layouts.
 
 
-Format 65
+Format 66
 
 Input stdfloatnames.inc
 
