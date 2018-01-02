@@ -4,7 +4,7 @@
 #
 # Detailed format description is available in the customization manual
 
-Format 65
+Format 66
 
 Provides stdinsets 1
 
