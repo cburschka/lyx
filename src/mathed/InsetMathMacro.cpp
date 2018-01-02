@@ -1318,4 +1318,10 @@ void InsetMathMacro::completionPosAndDim(Cursor const & cur, int & x, int & y,
 }
 
 
+void InsetMathMacro::setBuffer(Buffer & buffer)
+{
+	d->definition_.setBuffer(buffer);
+	InsetMathNest::setBuffer(buffer);
+}
+
 } // namespace lyx
