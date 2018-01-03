@@ -415,8 +415,8 @@ if(LYX_BUNDLE)
 		set(OSX_BUNDLE_DIRS "Resources;Resources;Resources")
 
 		# Process Info.plist and lyxrc.dist
+		# See development/cmake/Install.cmake
 		configure_file("${CMAKE_CURRENT_SOURCE_DIR}/development/MacOSX/Info.plist.in" "${CMAKE_CURRENT_BINARY_DIR}/Info.plist")
-		configure_file("${CMAKE_CURRENT_SOURCE_DIR}/development/MacOSX/lyxrc.dist.in" "${CMAKE_CURRENT_BINARY_DIR}/lyxrc.dist")
 
 		set(LYX_BUILD_BUNDLE MACOSX_BUNDLE)
 		set(LYX_DATA_SUBDIR ${LYX_BUNDLE_NAME}.app/Contents/Resources/ CACHE STRING "Bundle Contents dir" FORCE)
@@ -694,7 +694,8 @@ endif()
 
 find_package(Magic)
 if(Magic_FOUND)
-	set(HAVE_MAGIC_H 1)
+  set(HAVE_MAGIC_H 1)
+  include_directories(${Magic_INCLUDE_DIR})
 endif()
 
 include_directories(${TOP_BINARY_DIR} ${TOP_SRC_DIR}/src)
