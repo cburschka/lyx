@@ -1865,7 +1865,6 @@ void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv,
 		return;
 
 	pit_type pit = bv->cursor().selBegin().pit();
-	pos_type pos = bv->cursor().selBegin().pos();
 	Paragraph const & par = text->getPar(pit);
 	docstring const curlayout = par.layout().name();
 	docstring outerlayout;
@@ -1898,18 +1897,17 @@ void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv,
 		add(MenuItem(MenuItem::Command, toqstr(label),
 			     FuncRequest(LFUN_ENVIRONMENT_SPLIT,
 					 from_ascii("before"))));
-		if (!par.layout().keepempty || pos > 0 || !text->isFirstInSequence(pit)) {
-			label = contextmenu ?
-					bformat(_("Insert Separated %1$s Below"),
-						translateIfPossible(curlayout)):
-					bformat(_("Separated %1$s Below"),
-						translateIfPossible(curlayout));
-			// We use command-alternatives here since this is how the binding is defined
-			// (otherwise, the binding is not displayed in the menu)
+		label = contextmenu ?
+				bformat(_("Insert Separated %1$s Below"),
+					translateIfPossible(curlayout)):
+				bformat(_("Separated %1$s Below"),
+					translateIfPossible(curlayout));
+		// We use command-alternatives here since this is how the binding is defined
+		// (otherwise, the binding is not displayed in the menu)
+		if (getStatus(FuncRequest(LFUN_ENVIRONMENT_SPLIT)).enabled())
 			add(MenuItem(MenuItem::Command, toqstr(label),
 				     FuncRequest(LFUN_COMMAND_ALTERNATIVES,
 						 from_ascii("environment-split ; environment-split previous"))));
-		}
 	}
 	else if (!prevlayout.empty()) {
 		docstring const label = contextmenu ?
