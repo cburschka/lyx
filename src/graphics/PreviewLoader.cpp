@@ -239,7 +239,7 @@ private:
 	/// We don't own this
 	static lyx::Converter const * pconverter_;
 
-	signals2::scoped_connection connection_;
+	Trackable trackable_;
 };
 
 
@@ -738,10 +738,9 @@ void PreviewLoader::Impl::startLoading(bool wait)
 
 	// Initiate the conversion from LaTeX to bitmap images files.
 	ForkedCall::sigPtr convert_ptr = make_shared<ForkedCall::sig>();
-	// This is a scoped connection
-	connection_ = convert_ptr->connect([this](pid_t pid, int retval){
-			finishedGenerating(pid, retval);
-		});
+	convert_ptr->connect(ForkedProcess::slot([this](pid_t pid, int retval){
+				finishedGenerating(pid, retval);
+			}).track_foreign(trackable_.p()));
 
 	ForkedCall call(buffer_.filePath());
 	int ret = call.startScript(command, convert_ptr);
