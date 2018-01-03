@@ -276,7 +276,7 @@ void RowPainter::paintDepthBar() const
 
 	// We also mark follow-up paragraphs in a paragraph group
 	if (par_.layout().isParagraphGroup()
-	    && par_.layout().labeltype != LABEL_NO_LABEL
+	    && par_.layout().labeltype == LABEL_STATIC
 	    && !text_.isFirstInSequence(row_.pit()))
 		++depth;
 
@@ -291,7 +291,7 @@ void RowPainter::paintDepthBar() const
 		prev_depth = pars_[pit2].getDepth();
 		// We also mark follow-up paragraphs in a paragraph group
 		if (pars_[pit2].layout().isParagraphGroup()
-		    && pars_[pit2].layout().labeltype != LABEL_NO_LABEL
+		    && pars_[pit2].layout().labeltype == LABEL_STATIC
 		    && !text_.isFirstInSequence(pit2))
 			++prev_depth;
 	}
@@ -304,7 +304,7 @@ void RowPainter::paintDepthBar() const
 		next_depth = pars_[pit2].getDepth();
 		// We also mark follow-up paragraphs in a paragraph group
 		if (pars_[pit2].layout().isParagraphGroup()
-		    && pars_[pit2].layout().labeltype != LABEL_NO_LABEL
+		    && pars_[pit2].layout().labeltype == LABEL_STATIC
 		    && !text_.isFirstInSequence(pit2))
 			++next_depth;
 	}
