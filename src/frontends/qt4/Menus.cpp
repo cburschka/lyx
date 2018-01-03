@@ -1904,8 +1904,11 @@ void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv,
 						translateIfPossible(curlayout)):
 					bformat(_("Separated %1$s Below"),
 						translateIfPossible(curlayout));
+			// We use command-alternatives here since this is how the binding is defined
+			// (otherwise, the binding is not displayed in the menu)
 			add(MenuItem(MenuItem::Command, toqstr(label),
-				     FuncRequest(LFUN_ENVIRONMENT_SPLIT)));
+				     FuncRequest(LFUN_COMMAND_ALTERNATIVES,
+						 from_ascii("environment-split ; environment-split previous"))));
 		}
 	}
 	else if (!prevlayout.empty()) {
@@ -1914,9 +1917,11 @@ void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv,
 				translateIfPossible(prevlayout)) :
 			bformat(_("Separated %1$s Below"),
 				translateIfPossible(prevlayout));
+		// We use command-alternatives here since this is how the binding is defined
+		// (otherwise, the binding is not displayed in the menu)
 		add(MenuItem(MenuItem::Command, toqstr(label),
-			     FuncRequest(LFUN_ENVIRONMENT_SPLIT,
-					 from_ascii("previous"))));
+			     FuncRequest(LFUN_COMMAND_ALTERNATIVES,
+					 from_ascii("environment-split ; environment-split previous"))));
 	}
 	if (!outerlayout.empty()) {
 		docstring label;
