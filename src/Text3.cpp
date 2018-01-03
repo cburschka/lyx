@@ -3232,7 +3232,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 			break;
 		}
 		else if (cur.paragraph().layout().isEnvironment()) {
-			enable = true;
+			enable = cmd.argument() == "before"
+				|| cur.pos() > 0 || !isFirstInSequence(cur.pit());
 			break;
 		}
 		enable = false;
