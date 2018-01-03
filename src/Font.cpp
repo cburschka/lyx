@@ -362,6 +362,8 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 
 	FontInfo f = bits_;
 	f.reduce(base.bits_);
+	FontInfo p = bits_;
+	p.reduce(prev.bits_);
 
 	if (f.family() != INHERIT_FAMILY) {
 		os << '\\'
@@ -385,10 +387,16 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 		env = true; //We have opened a new environment
 	}
 	if (f.color() != Color_inherit && f.color() != Color_ignore) {
-		os << "\\textcolor{"
-		   << from_ascii(lcolor.getLaTeXName(f.color()))
-		   << "}{";
-		count += lcolor.getLaTeXName(f.color()).length() + 13;
+		if (f.color() == Color_none && p.color() != Color_none) {
+			// Color none: Close previous color, if any
+			os << '}';
+			++count;
+		} else if (f.color() != Color_none) {
+			os << "\\textcolor{"
+			   << from_ascii(lcolor.getLaTeXName(f.color()))
+			   << "}{";
+			count += lcolor.getLaTeXName(f.color()).length() + 13;
+		}
 		env = true; //We have opened a new environment
 	}
 	// FIXME: uncomment this when we support background.
@@ -489,7 +497,7 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 		++count;
 		env = true; // Size change need not bother about closing env.
 	}
-	if (f.color() != Color_inherit && f.color() != Color_ignore) {
+	if (f.color() != Color_inherit && f.color() != Color_ignore && f.color() != Color_none) {
 		os << '}';
 		++count;
 		env = true; // Size change need not bother about closing env.
