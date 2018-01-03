@@ -844,11 +844,6 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 	// the width available for the row.
 	int const width = max_width_ - row.right_margin;
 
-	if (pos >= end || row.width() > width) {
-		row.endpos(end);
-		return need_new_row;
-	}
-
 #if 0
 	//FIXME: As long as leftMargin() is not correctly implemented for
 	// MARGIN_RIGHT_ADDRESS_BOX, we should also not do this here.
@@ -867,10 +862,7 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 	// or the end of the par, then build a representation of the row.
 	pos_type i = pos;
 	FontIterator fi = FontIterator(*this, par, row.pit(), pos);
-	do {
-		// this can happen for an empty row after a newline
-		if (i >= end)
-			break;
+	while (i < end && row.width() <= width) {
 		char_type c = par.getChar(i);
 		// The most special cases are handled first.
 		if (par.isInset(i)) {
@@ -952,7 +944,7 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 
 		++i;
 		++fi;
-	} while (i < end && row.width() <= width);
+	}
 	row.finalizeLast();
 	row.endpos(i);
 
