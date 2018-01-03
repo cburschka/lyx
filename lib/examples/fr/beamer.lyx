@@ -72,12 +72,11 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
-\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -92,6 +91,11 @@ Traduction française Jean-Pierre Chrétien, septembre 2014
 
 \begin_layout Plain Layout
 Revue pour LyX 2.2, mars 2015
+\end_layout
+
+\begin_layout Plain Layout
+Revue pour LyX 2.3, janvier 2017 (simplification de l'insertion de nouveaux
+ cadres et autre constructions)
 \end_layout
 
 \begin_layout Plain Layout
@@ -131,7 +135,7 @@ Version
 
 \begin_layout TitleGraphic
 \begin_inset Graphics
-	filename ../../doc/clipart/3D-structure-distort.pdf
+	filename /ext/lyx/2.3.x/lib/doc/clipart/3D-structure-distort.pdf
 	lyxscale 30
 	scale 10
 
@@ -208,7 +212,53 @@ Beamer
 
 \end_inset
 
-, vous pouvez créer, en vue d'une présentation, des diapositives qui
+, vous pouvez c
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Insertion\SpecialChar menuseparator
+Cadre séparé au-dessous
+\end_layout
+
+\end_inset
+
+ (
+\begin_inset Info
+type  "shortcut"
+arg   "environment-split"
+\end_inset
+
+ si vous vous trouvez dans un paragraphe 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Cadre
+\end_layout
+
+\end_inset
+
+ non emboîté, ou 
+\begin_inset Info
+type  "shortcut"
+arg   "environment-split outer"
+\end_inset
+
+, respectivement, si vous vous trouvez dans un paragraphe emboîté à l'intérieur
+ du cadre)! Si vous êtes dans un titre de cadre, 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Insertion\SpecialChar menuseparator
+Cadre séparé au-dessus
+\end_layout
+
+\end_inset
+
+ insère un nouveau cadre séparé correctement au-dessus du cadre courantréer,
+ en vue d'une présentation, des diapositives qui
 \end_layout
 
 \begin_deeper
@@ -920,14 +970,8 @@ type  "shortcut"
 arg   "depth-increment"
 \end_inset
 
-)
-\change_inserted -712698321 1514657870
-
-\lang english
-.
- This is done automatically if you insert new frame paragraphs.
-\change_unchanged
-
+); ceci est automatique si vous insérez de nouveaux paragraphes dans le
+ cadre
 \end_layout
 
 \begin_layout Itemize
@@ -943,7 +987,7 @@ ion (sur une diapositive différente), mais ne sera pas aligné correctement
 \end_layout
 
 \begin_layout Itemize
-Évitez-le donc!
+À éviter!
 \end_layout
 
 \begin_layout Standard
@@ -1000,51 +1044,22 @@ Astuce
 \begin_layout Block
 Il existe une méthode automatique simple pour commencer un nouveau cadre,
  via 
-\change_deleted -712698321 1514658396
-
 \begin_inset Flex Alert
 status collapsed
 
 \begin_layout Plain Layout
-Édition\SpecialChar menuseparator
-Début de nouvel environnement
+Insertion\SpecialChar menuseparator
+Cadre séparé au-dessous
 \end_layout
 
 \end_inset
 
-
-\change_inserted -712698321 1514658396
-
-\lang english
-
-\begin_inset Flex Alert
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted -712698321 1514658396
-
-\lang english
-Insert\SpecialChar menuseparator
-Separated Frame Below
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
-\lang french
  (
 \begin_inset Info
 type  "shortcut"
 arg   "environment-split"
 \end_inset
 
-
-\change_deleted -712698321 1514658409
-)
-\change_unchanged
  si vous vous trouvez dans un paragraphe 
 \begin_inset Flex Structure
 status collapsed
@@ -1056,57 +1071,25 @@ Cadre
 \end_inset
 
  non emboîté, ou 
-\change_deleted -712698321 1514658415
-
-\begin_inset Flex Alert
-status collapsed
-
-\begin_layout Plain Layout
-Édition\SpecialChar menuseparator
-Début de nouvel environnement parent
-\end_layout
-
-\end_inset
-
- (
-\change_unchanged
-
 \begin_inset Info
 type  "shortcut"
 arg   "environment-split outer"
 \end_inset
 
-
-\change_deleted -712698321 1514658417
-)
-\change_unchanged
 , respectivement, si vous vous trouvez dans un paragraphe emboîté à l'intérieur
- du cadre
-\change_inserted -712698321 1514658424
-)
-\change_unchanged
-!
-\change_inserted -712698321 1514658363
- 
-\lang english
-If you are in the frame heading, 
+ du cadre).
+ Si vous êtes dans un titre de cadre, 
 \begin_inset Flex Alert
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1514658363
-
-\lang english
-Insert\SpecialChar menuseparator
-Separated Frame Above
+Insertion\SpecialChar menuseparator
+Cadre séparé au-dessus
 \end_layout
 
 \end_inset
 
- inserts a new, properly separated frame above the current one!
-\change_unchanged
-
+ insère un nouveau cadre séparé correctement au-dessus du cadre courant!
 \end_layout
 
 \end_deeper
