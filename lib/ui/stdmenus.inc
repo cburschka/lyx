@@ -392,13 +392,14 @@ Menuset
 		Item "Hyperlink...|k" "href-insert"
 		Item "Footnote|F" "footnote-insert"
 		Item "Marginal Note|M" "marginalnote-insert"
+		Item "Program Listing[[Menu]]" "listing-insert"
+		Item "Date" "date-insert"
 		Separator
 		EnvironmentSeparators
 		Separator
 		Arguments
+		Separator
 		Item "TeX Code" "ert-insert"
-		Item "Program Listing[[Menu]]" "listing-insert"
-		Item "Date" "date-insert"
 		Item "Preview|w" "preview-insert"
 	End
 
