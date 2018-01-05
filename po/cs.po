@@ -4970,18 +4970,16 @@ msgid "Bet&ween rows:"
 msgstr "&Mezi řádky:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1304
-#, fuzzy
 msgid "&Multi-page table"
-msgstr "Otočit tabulku"
+msgstr "&Vícestranná tabulka"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1310
 msgid "Select for tables that span multiple pages"
 msgstr "Použít pro tabulky rozsahem na více stran"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1313
-#, fuzzy
 msgid "&Use multi-page table"
-msgstr "Použít &dlouhou tabulku"
+msgstr "Použít ví&cestrannou tabulku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1323
 msgid "Row settings"
@@ -5082,14 +5080,12 @@ msgid "Page &break on current row"
 msgstr "Zalo&m stranu na aktuálním řádku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1540
-#, fuzzy
 msgid "Horizontal alignment of the multi-page table"
-msgstr "Horizontální zarovnání pro dlouhou tabulku"
+msgstr "Horizontální zarovnání pro vícestrannou tabulku"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1543
-#, fuzzy
 msgid "Multi-page table alignment"
-msgstr "Zarovnání dlouhé tabulky"
+msgstr "Zarovnání vícestranné tabulky"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:74
 msgid "Close this dialog"
@@ -5130,14 +5126,12 @@ msgid "BibTeX databases"
 msgstr "Databáze BibTeX-u"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:185
-#, fuzzy
 msgid "Biblatex bibliography styles"
-msgstr "Styl bibliografie"
+msgstr "Styl bibliografie Biblatex-u"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:190
-#, fuzzy
 msgid "Biblatex citation styles"
-msgstr "Natbib citační styl pro použití"
+msgstr "Citační styl Biblatex-u"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:214
 msgid "Toggles view of the file list"
@@ -20247,38 +20241,32 @@ msgid "Next note"
 msgstr "Další poznámka"
 
 #: lib/ui/stdtoolbars.inc:249
-#, fuzzy
 msgid "LyX Documentation Tools"
-msgstr "Dokumenty LyX-u (*.lyx)"
+msgstr "Nástroje dokumentace LyX-u"
 
 #: lib/ui/stdtoolbars.inc:250 src/insets/Inset.cpp:119
 msgid "Info"
 msgstr "Info"
 
 #: lib/ui/stdtoolbars.inc:251
-#, fuzzy
 msgid "Menu Separator"
-msgstr "Oddělovač výběru|O"
+msgstr "Oddělovač menu"
 
 #: lib/ui/stdtoolbars.inc:253
-#, fuzzy
 msgid "LyX Logo"
-msgstr "My Logo"
+msgstr "Logo LyX-u"
 
 #: lib/ui/stdtoolbars.inc:254
-#, fuzzy
 msgid "TeX Logo"
-msgstr "Log LaTeX-u"
+msgstr "Logo TeX-u"
 
 #: lib/ui/stdtoolbars.inc:255
-#, fuzzy
 msgid "LaTeX Logo"
-msgstr "Log LaTeX-u"
+msgstr "Logo LaTeX-u"
 
 #: lib/ui/stdtoolbars.inc:256
-#, fuzzy
 msgid "LaTeX2e Logo"
-msgstr "Log LaTeX-u"
+msgstr "Logo pro LaTeX2e"
 
 #: lib/ui/stdtoolbars.inc:259
 msgid "View Other Formats"
@@ -24512,7 +24500,6 @@ msgid "Spreadsheet"
 msgstr "Tabulka"
 
 #: lib/xtemplates/gnumeric.xtemplate:16
-#, fuzzy
 msgid ""
 "A spreadsheet made with Gnumeric, LibreOffice, OpenOffice or Excel.\n"
 "It imports as a multi-page table, so any length\n"
@@ -24521,19 +24508,17 @@ msgid ""
 "both for gnumeric and excel files.\n"
 msgstr ""
 "Tabulka vytvořená v prostředí Gnumeric, Libre/OpenOffice nebo Excelu.\n"
-"Import převádí do dlouhých tabulek (longtable), excesivní šířka "
-"neošetřována.\n"
+"Import převádí do vícestranných tabulek, takže je akceptována libovolná délka.\n"
+"Eexcesivní šířka neošetřována.\n"
 "Pro konverzi je potřebný program gnumeric.\n"
 
 #: lib/xtemplates/inkscape.xtemplate:38
-#, fuzzy
 msgid "Inkscape"
-msgstr "Na šířk&u"
+msgstr "Inkscape"
 
 #: lib/xtemplates/inkscape.xtemplate:39 lib/xtemplates/inkscape.xtemplate:44
-#, fuzzy
 msgid "Inkscape figure"
-msgstr "Vožit plovoucí obrázek"
+msgstr "Inkscape obrázek"
 
 #: lib/xtemplates/inkscape.xtemplate:41
 msgid ""
@@ -24541,6 +24526,9 @@ msgid ""
 "Note that using this template automatically uses the \n"
 "document text in the image (like with the Xfig template).\n"
 msgstr ""
+"Vložit obrázek pro inkscape.\n"
+"Použití této šablony automaticky používá text uvnitř obrázku\n"
+"(jako v případě šablony pro Xfig).\n"
 
 #: lib/xtemplates/lilypond.xtemplate:15 lib/xtemplates/lilypond.xtemplate:21
 msgid "Lilypond typeset music"
@@ -24614,9 +24602,8 @@ msgstr "Obrázky"
 
 #: lib/xtemplates/vector_graphics.xtemplate:15
 #: lib/xtemplates/vector_graphics.xtemplate:24
-#, fuzzy
 msgid "Vector graphics"
-msgstr "&Vektorový formát obrázku"
+msgstr "Vektorový obrázek"
 
 #: lib/xtemplates/vector_graphics.xtemplate:17
 msgid ""
@@ -24662,9 +24649,8 @@ msgid "sxd"
 msgstr "sxd"
 
 #: lib/configure.py:616
-#, fuzzy
 msgid "sxd|OpenDocument"
-msgstr "OpenDocument"
+msgstr "sxd|OpenDocument"
 
 #: lib/configure.py:619
 msgid "Grace"
@@ -24679,9 +24665,8 @@ msgid "SVG"
 msgstr "SVG"
 
 #: lib/configure.py:626
-#, fuzzy
 msgid "SVG (compressed)"
-msgstr "Komprimovat dokument|K"
+msgstr "SVG (komprimovaný)"
 
 #: lib/configure.py:629
 msgid "BMP"
@@ -24765,32 +24750,28 @@ msgid "NoWeb|N"
 msgstr "NoWeb|N"
 
 #: lib/configure.py:657
-#, fuzzy
 msgid "Sweave (Japanese)"
-msgstr "Parametry pro Sweave"
+msgstr "Sweave (Japonsky)"
 
 #: lib/configure.py:657
-#, fuzzy
 msgid "Sweave (Japanese)|S"
-msgstr "Sweave|w"
+msgstr "Sweave (Japonsky)|S"
 
 #: lib/configure.py:658
 msgid "R/S code"
 msgstr "R/S kód"
 
 #: lib/configure.py:660
-#, fuzzy
 msgid "Rnw (knitr, Japanese)"
-msgstr "Rnw (knitr)"
+msgstr "Rnw (knitr, Japonsky)"
 
 #: lib/configure.py:661
 msgid "LilyPond book (LaTeX)"
-msgstr "Lilipond book (LaTeX)"
+msgstr "Lilipond kniha (LaTeX)"
 
 #: lib/configure.py:662
-#, fuzzy
 msgid "LilyPond book (pLaTeX)"
-msgstr "Lilipond book (LaTeX)"
+msgstr "LilyPond kniha (pLaTeX)"
 
 #: lib/configure.py:663
 msgid "LaTeX (plain)"
@@ -24858,16 +24839,15 @@ msgstr "Tabulkový kalkulátor Excel"
 
 #: lib/configure.py:682
 msgid "MS Excel Office Open XML"
-msgstr ""
+msgstr "MS Excel Office Open XML"
 
 #: lib/configure.py:683
 msgid "HTML Table (for spreadsheets)"
-msgstr ""
+msgstr "HTML Tabulka (pro tabulkové kalkulátory)"
 
 #: lib/configure.py:684
-#, fuzzy
 msgid "OpenDocument spreadsheet"
-msgstr "Tabulkový kalkulátor OpenOffice"
+msgstr "OpenDocument tabulkový kalkulátor"
 
 #: lib/configure.py:687
 msgid "LyXHTML"
@@ -24951,9 +24931,8 @@ msgid "PDF (cropped)"
 msgstr "PDF (ořezaný)"
 
 #: lib/configure.py:720
-#, fuzzy
 msgid "PDF (lower resolution)"
-msgstr "PDF (dvipdfm)"
+msgstr "PDF (nižší rozlišení)"
 
 #: lib/configure.py:725
 msgid "DVI"
@@ -24988,19 +24967,16 @@ msgid "Noteedit"
 msgstr "Noteedit"
 
 #: lib/configure.py:738
-#, fuzzy
 msgid "OpenDocument (tex4ht)"
-msgstr "OpenDocument"
+msgstr "OpenDocument (tex4ht)"
 
 #: lib/configure.py:739
-#, fuzzy
 msgid "OpenDocument (eLyXer)"
-msgstr "OpenDocument"
+msgstr "OpenDocument (eLyXer)"
 
 #: lib/configure.py:740
-#, fuzzy
 msgid "OpenDocument (Pandoc)"
-msgstr "OpenDocument"
+msgstr "OpenDocument (Pandoc)"
 
 #: lib/configure.py:741
 msgid "OpenOffice.Org (sxw)"
@@ -25020,11 +24996,11 @@ msgstr "MS Word|W"
 
 #: lib/configure.py:746
 msgid "MS Word Office Open XML"
-msgstr ""
+msgstr "MS Word Office Open XML"
 
 #: lib/configure.py:746
 msgid "MS Word Office Open XML|O"
-msgstr ""
+msgstr "MS Word Office Open XML|O"
 
 #: lib/configure.py:749
 msgid "Table (CSV)"
@@ -25056,14 +25032,12 @@ msgid "LyX 2.0.x"
 msgstr "LyX 2.0.x"
 
 #: lib/configure.py:757
-#, fuzzy
 msgid "LyX 2.1.x"
-msgstr "LyX 2.0.x"
+msgstr "LyX 2.1.x"
 
 #: lib/configure.py:758
-#, fuzzy
 msgid "LyX 2.2.x"
-msgstr "LyX 2.0.x"
+msgstr "LyX 2.2.x"
 
 #: lib/configure.py:759
 msgid "CJK LyX 1.4.x (big5)"
@@ -25083,12 +25057,11 @@ msgstr "LyX Náhled"
 
 #: lib/configure.py:763
 msgid "pdf_tex"
-msgstr ""
+msgstr "pdf_tex"
 
 #: lib/configure.py:763
-#, fuzzy
 msgid "pdf_tex|PDFTEX"
-msgstr "PDFTEX"
+msgstr "pdf_tex|PDFTEX"
 
 #: lib/configure.py:764
 msgid "Program"
@@ -25096,15 +25069,15 @@ msgstr "Program"
 
 #: lib/configure.py:765
 msgid "ps_tex"
-msgstr ""
+msgstr "ps_tex"
 
 #: lib/configure.py:765
 msgid "ps_tex|PSTEX"
-msgstr ""
+msgstr "ps_tex|PSTEX"
 
 #: lib/configure.py:766 src/frontends/qt4/GuiClipboard.cpp:173
 msgid "Windows Metafile"
-msgstr "WMF"
+msgstr "Windows Metafile"
 
 #: lib/configure.py:767 src/frontends/qt4/GuiClipboard.cpp:172
 msgid "Enhanced Metafile"
@@ -25116,11 +25089,11 @@ msgstr "LyXBlogger"
 
 #: lib/configure.py:1093
 msgid "gnuplot"
-msgstr ""
+msgstr "gnuplot"
 
 #: lib/configure.py:1093
 msgid "gnuplot|Gnuplot"
-msgstr ""
+msgstr "gnuplot|Gnuplot"
 
 #: lib/configure.py:1166
 msgid "LyX Archive (zip)"
@@ -25131,9 +25104,8 @@ msgid "LyX Archive (tar.gz)"
 msgstr "LyX Archive (tar.gz)"
 
 #: src/Author.cpp:57
-#, fuzzy, c-format
 msgid "%1$s[[name]] (%2$s[[email]])"
-msgstr "Sestaven %1$s[[date]], %2$s[[time]]"
+msgstr "%1$s[[jméno]] (%2$s[[email]])"
 
 #: src/BiblioInfo.cpp:797 src/BiblioInfo.cpp:840 src/BiblioInfo.cpp:851
 #: src/BiblioInfo.cpp:906 src/BiblioInfo.cpp:910
@@ -25163,7 +25135,6 @@ msgid "LyX attempted to close a document that had unsaved changes!\n"
 msgstr "LyX se pokusil uzavřít dokument, který obsahuje neuložené změny!\n"
 
 #: src/Buffer.cpp:544 src/Buffer.cpp:1593
-#, fuzzy
 msgid "Save failed! Document is lost."
 msgstr "Uložení se nepovedlo! Dokument je ztracen."
 
@@ -25334,9 +25305,8 @@ msgstr ""
 "Zkontrolujte, zda-li daný adresář existuje a lze do něj zapisovat."
 
 #: src/Buffer.cpp:1486 src/Buffer.cpp:1497
-#, fuzzy
 msgid "Write failure"
-msgstr "chktex selhal"
+msgstr "Chyba zápisu"
 
 #: src/Buffer.cpp:1487
 #, c-format
@@ -25348,6 +25318,12 @@ msgid ""
 "Your original file has been backed up to:\n"
 "  %3$s"
 msgstr ""
+"Soubor byl úspěšně uložen jako:\n"
+"  %1$s.\n"
+"LyX ho nemohl přesunout do:\n"
+"  %2$s.\n"
+"Váš původní soubor byl zálohován do:\n"
+"  %3$s"
 
 #: src/Buffer.cpp:1498
 #, c-format
@@ -25403,19 +25379,18 @@ msgstr ""
 "správně nainstalován."
 
 #: src/Buffer.cpp:1710
-#, fuzzy, c-format
+#, c-format
 msgid "Uncodable character '%1$s' (code point %2$s)"
-msgstr "Nepodařilo se najít příkaz LaTeX-u pro znak '%1$s' (hodnota %2$s)"
+msgstr "Nekódovatelný znak '%1$s' (hodnota %2$s)"
 
 #: src/Buffer.cpp:1713
-#, fuzzy
 msgid ""
 "Some characters of your document are not representable in specific verbatim "
 "contexts.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
-"Některé znaky vašeho dokumentu pravděpodobně nejsou reprezentovatelné ve "
-"zvoleném kódování.\n"
+"Některé znaky vašeho dokumentu nejsou reprezentovatelné ve specifickém"
+"kontextu.\n"
 "Mohla by pomoci změna kódování dokumentu na utf8."
 
 #: src/Buffer.cpp:1718
@@ -25489,9 +25464,8 @@ msgid "The language %1$s is only supported by Polyglossia."
 msgstr ""
 
 #: src/Buffer.cpp:1937
-#, fuzzy
 msgid "Incompatible Languages!"
-msgstr "Nekompatibilní jméno příkazu"
+msgstr "Nekompatibilní jazyky!"
 
 #: src/Buffer.cpp:1939
 #, c-format
@@ -25499,7 +25473,7 @@ msgid ""
 "You cannot use the following languages together in one LaTeX document "
 "because they require conflicting language packages:\n"
 "%1$s%2$s"
-msgstr ""
+msgstr "Nelze společně použít následující jazyky v jednom LaTeX-ovém dokumentu, neboť vyžadují konfliktní balíčky:\n%1$s%2$s"
 
 #: src/Buffer.cpp:2247
 msgid "Running chktex..."
@@ -25539,9 +25513,8 @@ msgid "Branch \"%1$s\" already exists."
 msgstr "Větev \"%1$s\" již existuje."
 
 #: src/Buffer.cpp:2808
-#, fuzzy
 msgid "Error viewing the output file."
-msgstr "Chyba při duplikování souboru"
+msgstr "Chyba při zobrazování výstupního souboru."
 
 #: src/Buffer.cpp:3144 src/frontends/qt4/GuiView.cpp:2285
 #: src/frontends/qt4/Validator.cpp:222 src/insets/ExternalSupport.cpp:386
@@ -25890,12 +25863,11 @@ msgid "uncodable character"
 msgstr "nekódovatelný znak"
 
 #: src/BufferParams.cpp:2171
-#, fuzzy
 msgid "Uncodable character in user preamble"
-msgstr "Nekódovatelné znaky ve jménu autora"
+msgstr "Nekódovatelné znaky v uživatelské preambuli"
 
 #: src/BufferParams.cpp:2173
-#, fuzzy, c-format
+#,c-format
 msgid ""
 "The user preamble of your document contains glyphs that are unknown in the "
 "current document encoding (namely %1$s).\n"
@@ -25905,13 +25877,10 @@ msgid ""
 "Please select an appropriate document encoding\n"
 "(such as utf8) or change the preamble code accordingly."
 msgstr ""
-"Jméno autora '%1$s',\n"
-"použité pro revize, obsahuje následující znaky, které nelze reprezentovat\n"
-"v aktuálním kódování: %2$s.\n"
-"Příslušné znaky budou při exportu do LaTeX-u vynechány.\n"
+"Uživatelská preambule vašeho dokumentu obsahuje znaky, které jsou neznámé v aktuálním kódování (%1$s).\n"
+"Příslušné znaky budou při exportu vynechány, což může v důsledku znamenat neúplný výstupní soubor.\n"
 "\n"
-"Vyberte vhodné kódování dokumentu (např. utf8)\n"
-"nebo změnte jméno autora."
+"Vyberte vhodné kódování dokumentu (např. utf8) nebo změnte preambuli."
 
 #: src/BufferParams.cpp:2438
 #, c-format
@@ -25974,9 +25943,8 @@ msgid "Document is read-only"
 msgstr "Dokument je jen ke čtení"
 
 #: src/BufferView.cpp:1047
-#, fuzzy
 msgid "Document has been modified externally"
-msgstr "Edituj soubor externě"
+msgstr "Dokument byl externě modifikován"
 
 #: src/BufferView.cpp:1056
 msgid "This portion of the document is deleted."
@@ -26159,9 +26127,9 @@ msgstr ""
 "nebo změnte jméno autora."
 
 #: src/Chktex.cpp:59
-#, fuzzy, c-format
+#, c-format
 msgid "ChkTeX warning id # %1$s"
-msgstr "ChkTeX varování id # %1$d"
+msgstr "ChkTeX varování id # %1$s"
 
 #: src/Color.cpp:203 src/insets/InsetBibtex.cpp:179
 #: src/insets/InsetBibtex.cpp:198
@@ -26181,9 +26149,8 @@ msgid "blue"
 msgstr "modrá"
 
 #: src/Color.cpp:207
-#, fuzzy
 msgid "brown"
-msgstr "frown"
+msgstr "hnědá"
 
 #: src/Color.cpp:208
 msgid "cyan"
@@ -26191,25 +26158,23 @@ msgstr "azurová"
 
 #: src/Color.cpp:209
 msgid "darkgray"
-msgstr ""
+msgstr "tmavě šedá"
 
 #: src/Color.cpp:210
-#, fuzzy
 msgid "gray"
-msgstr "Svgraybox"
+msgstr "šedá"
 
 #: src/Color.cpp:211
 msgid "green"
 msgstr "zelená"
 
 #: src/Color.cpp:212
-#, fuzzy
 msgid "lightgray"
-msgstr "lightning"
+msgstr "světle šedá"
 
 #: src/Color.cpp:213
 msgid "lime"
-msgstr ""
+msgstr "limetková"
 
 #: src/Color.cpp:214
 msgid "magenta"
@@ -26353,9 +26318,8 @@ msgid "depth bar"
 msgstr "značení hloubky"
 
 #: src/Color.cpp:252
-#, fuzzy
 msgid "scroll indicator"
-msgstr "I&ndikátor kurzoru"
+msgstr "indikátor posuvníku"
 
 #: src/Color.cpp:253
 msgid "language"
@@ -26430,12 +26394,10 @@ msgid "math macro new parameter"
 msgstr "nový parametr makra (matematika)"
 
 #: src/Color.cpp:272
-#, fuzzy
 msgid "collapsible inset text"
 msgstr "sbalitelná vložka textu"
 
 #: src/Color.cpp:273
-#, fuzzy
 msgid "collapsible inset frame"
 msgstr "sbalitelná vložka rámu"
 
@@ -26520,9 +26482,8 @@ msgid "page break / line break"
 msgstr "konec řádky/stránky"
 
 #: src/Color.cpp:295
-#, fuzzy
 msgid "button frame"
-msgstr "Bez nakresleného rámu"
+msgstr "rám tlačítka"
 
 #: src/Color.cpp:296
 msgid "button background"
@@ -26974,14 +26935,14 @@ msgid "Underline %1$s, "
 msgstr "Podtržení %1$s, "
 
 #: src/Font.cpp:169
-#, fuzzy, c-format
+#, c-format
 msgid "Strike out %1$s, "
 msgstr "Přeškrtnutí %1$s, "
 
 #: src/Font.cpp:172
-#, fuzzy, c-format
+#, c-format
 msgid "Cross out %1$s, "
-msgstr "Přeškrtnutí %1$s, "
+msgstr "Křížkování %1$s, "
 
 #: src/Font.cpp:175
 #, c-format
@@ -27377,11 +27338,17 @@ msgstr ""
 "                  soubor, v případě 'none' žádný. Ostatní řetězce jsou "
 "interpretovány\n"
 "                 jako 'all'.\n"
+"\t--ignore-error-message msg\n"
+"                  umožní ignorovat specifické chyby LaTeX-u.\n"
+"                  Nepoužívejte pro finální dokumnety! Podporované hodnoty:\n"
+"                  * missing_glyphs: Fontspec `missing glyphs' error.\n"
 "\t-n [--no-remote]\n"
 "                  otevřít dokument v nové instanci.\n"
 "\t-r [--remote]\n"
 "                  otevřít dokument v již běžící instanci\n"
 "                  (musí fungovat \"lyxpipe\").\n"
+"\t-v [--verbose]\n"
+"                  výpis spouštených programů na terminálu.\n"
 "\t-batch          spustí pouze příkazy z řádky bez spouštění GUI.\n"
 "\t-version        shrnout verzi a informace o sestavení.\n"
 "Prohlédněte manuálovou stránku LyX-u pro detailnější informace."
@@ -29879,7 +29846,6 @@ msgid "Local layout file"
 msgstr "Lokální soubor s rozvržením"
 
 #: src/frontends/qt4/GuiDocument.cpp:2324
-#, fuzzy
 msgid ""
 "The layout file you have selected is a local layout\n"
 "file, not one in the system or user directory.\n"
@@ -29939,18 +29905,16 @@ msgid "Unable to set document class."
 msgstr "Nelze nastavit třídu dokumentu"
 
 #: src/frontends/qt4/GuiDocument.cpp:2559
-#, fuzzy
 msgid "Basic numerical"
-msgstr "Numerický"
+msgstr "Základní numerický"
 
 #: src/frontends/qt4/GuiDocument.cpp:2562
 msgid "Author-year"
 msgstr "Autor-rok"
 
 #: src/frontends/qt4/GuiDocument.cpp:2565
-#, fuzzy
 msgid "Author-number"
-msgstr "Autor-rok"
+msgstr "Autor-číslo"
 
 #: src/frontends/qt4/GuiDocument.cpp:2608
 #, c-format
@@ -30077,14 +30041,12 @@ msgstr ""
 "nelze načíst."
 
 #: src/frontends/qt4/GuiDocument.cpp:4456
-#, fuzzy
 msgid "(Module name: %1)"
-msgstr "Požadované moduly: %1$s."
+msgstr "(Jméno modulu: %1)"
 
 #: src/frontends/qt4/GuiERT.h:33
-#, fuzzy
 msgid "TeX Mode Inset Settings"
-msgstr "Nastavení pro Kód TeX-u"
+msgstr "Nastavení pro vložku Kód TeX-u"
 
 #: src/frontends/qt4/GuiErrorList.cpp:47 src/frontends/qt4/GuiLog.cpp:260
 msgid "Literate"
@@ -30206,24 +30168,20 @@ msgid "A graphics group with the name '%1$s' already exists."
 msgstr "Skupina obrázků se jménem '%1$s' již existuje."
 
 #: src/frontends/qt4/GuiGraphics.cpp:475
-#, fuzzy
 msgid "Set max. &width:"
-msgstr "Šíř&ka:"
+msgstr "Max. šíř&ka:"
 
 #: src/frontends/qt4/GuiGraphics.cpp:476
-#, fuzzy
 msgid "Set max. &height:"
-msgstr "&Výška:"
+msgstr "Max. &výška:"
 
 #: src/frontends/qt4/GuiGraphics.cpp:477
-#, fuzzy
 msgid "Maximal width of image in output"
-msgstr "Šířka obrázku na výstupu"
+msgstr "Maximální šířka obrázku na výstupu"
 
 #: src/frontends/qt4/GuiGraphics.cpp:478
-#, fuzzy
 msgid "Maximal height of image in output"
-msgstr "Výška obrázku na výstupu"
+msgstr "Maximální výška obrázku na výstupu"
 
 #: src/frontends/qt4/GuiGraphics.cpp:500 src/lengthcommon.cpp:41
 msgid "bp"
@@ -30246,9 +30204,8 @@ msgid "Select graphics file"
 msgstr "Vybrat soubor s obrázkem"
 
 #: src/frontends/qt4/GuiGraphics.cpp:792
-#, fuzzy
 msgid "&Clipart"
-msgstr "Klipart|#K#k"
+msgstr "&Klipart"
 
 #: src/frontends/qt4/GuiHSpace.cpp:45 src/frontends/qt4/GuiHSpace.cpp:58
 #: src/insets/InsetSpace.cpp:69
@@ -30319,9 +30276,8 @@ msgid "Horizontal Space Settings"
 msgstr "Nastavení horizontální mezery"
 
 #: src/frontends/qt4/GuiHyperlink.h:35
-#, fuzzy
 msgid "Hyperlink Settings"
-msgstr "Odkaz (hyperlink)"
+msgstr "Nastavení odkazu"
 
 #: src/frontends/qt4/GuiInclude.cpp:114 src/frontends/qt4/GuiInclude.cpp:176
 #: src/frontends/qt4/GuiListings.cpp:241 src/frontends/qt4/GuiListings.cpp:385
@@ -30406,9 +30362,8 @@ msgid "lyxinfo"
 msgstr "lyxinfo"
 
 #: src/frontends/qt4/GuiInfo.h:36
-#, fuzzy
 msgid "Info Inset Settings"
-msgstr "Nastavení rejstříku"
+msgstr "Nastavení Info-vložky"
 
 #: src/frontends/qt4/GuiKeySymbol.cpp:712
 msgid "Shift-"
@@ -30427,9 +30382,8 @@ msgid "Command-"
 msgstr "Command-"
 
 #: src/frontends/qt4/GuiLabel.h:35
-#, fuzzy
 msgid "Label Settings"
-msgstr "Nastavení &Tabulky"
+msgstr "Nastavení štítku"
 
 #: src/frontends/qt4/GuiLine.h:34
 #, fuzzy
@@ -32067,34 +32021,34 @@ msgstr "Změnit styl|y"
 #: src/frontends/qt4/Menus.cpp:1894
 #, c-format
 msgid "Insert Separated %1$s Above"
-msgstr "Vložit jednotlivý  %1$s nahoru"
+msgstr "Vložit odděleně nahoru: %1$s"
 
 #: src/frontends/qt4/Menus.cpp:1896
 #, c-format
 msgid "Separated %1$s Above"
-msgstr "Jednotlivý %1$s nahoru"
+msgstr "Odděleně nahoru: %1$s"
 
 #: src/frontends/qt4/Menus.cpp:1903 src/frontends/qt4/Menus.cpp:1913
 #: src/frontends/qt4/Menus.cpp:1927
 #, c-format
 msgid "Insert Separated %1$s Below"
-msgstr "Vložit jednotlivý %1$s dolů"
+msgstr "Vložit odděleně dolů: %1$s"
 
 #: src/frontends/qt4/Menus.cpp:1905 src/frontends/qt4/Menus.cpp:1915
 #: src/frontends/qt4/Menus.cpp:1933
 #, c-format
 msgid "Separated %1$s Below"
-msgstr "Jednotlivý %1$s dolů"
+msgstr "Odděleně dolů: %1$s"
 
 #: src/frontends/qt4/Menus.cpp:1925
 #, c-format
 msgid "Insert Separated Outer %1$s Below"
-msgstr "Vložit jednotlivý vnější %1$s dolů"
+msgstr "Vložit odděleně vnější dolů: %1$s"
 
 #: src/frontends/qt4/Menus.cpp:1931
 #, c-format
 msgid "Separated Outer %1$s Below"
-msgstr "Jednotlivý vnější %1$s dolů"
+msgstr "Oddělený vnější dolů: %1$s"
 
 #: src/frontends/qt4/Menus.cpp:2246
 #, c-format
