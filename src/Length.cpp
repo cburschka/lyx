@@ -17,9 +17,6 @@
 
 #include "Length.h"
 #include "LyXRC.h"
-#include "MetricsInfo.h"
-
-#include "frontends/FontMetrics.h"
 
 #include "support/debug.h"
 #include "support/docstream.h"
@@ -306,19 +303,6 @@ double Length::inInch(double text_width, double em_width) const
 		break;
 	}
 	return result;
-}
-
-
-int Length::inPixels(MetricsBase const & base) const
-{
-	FontInfo fi = base.font;
-	if (unit_ == Length::MU)
-		// mu is 1/18th of an em in the math symbol font
-		fi.setFamily(SYMBOL_FAMILY);
-	else
-		// Math style is only taken into account in the case of mu
-		fi.setStyle(LM_ST_TEXT);
-	return inPixels(base.textwidth, theFontMetrics(fi).em());
 }
 
 

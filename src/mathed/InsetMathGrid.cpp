@@ -99,7 +99,7 @@ InsetMathGrid::RowInfo::RowInfo()
 
 int InsetMathGrid::RowInfo::skipPixels(MetricsInfo const & mi) const
 {
-	return crskip_.inPixels(mi.base);
+	return mi.base.inPixels(crskip_);
 }
 
 

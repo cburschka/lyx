@@ -182,15 +182,15 @@ bool InsetBox::allowMultiPar() const
 }
 
 
-void InsetBox::metrics(MetricsInfo & m, Dimension & dim) const
+void InsetBox::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	// back up textwidth.
-	int textwidth_backup = m.base.textwidth;
+	int textwidth_backup = mi.base.textwidth;
 	if (hasFixedWidth())
-		m.base.textwidth = params_.width.inPixels(m.base);
-	InsetCollapsible::metrics(m, dim);
+		mi.base.textwidth = mi.base.inPixels(params_.width);
+	InsetCollapsible::metrics(mi, dim);
 	// retore textwidth.
-	m.base.textwidth = textwidth_backup;
+	mi.base.textwidth = textwidth_backup;
 }
 
 

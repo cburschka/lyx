@@ -49,20 +49,4 @@ namespace lyx {
 		return string();
 	}
 
-	//
-	// Dummy FontMetrics (needed by Length)
-	//
-	namespace frontend {
-	class FontMetrics {
-		int em() const { return 0; };
-	};
-	} // namespace frontend
-
-	class FontInfo;
-
-	frontend::FontMetrics const & theFontMetrics(FontInfo const &) {
-		static frontend::FontMetrics dummy;
-		return dummy;
-	}
-
 } // namespace lyx

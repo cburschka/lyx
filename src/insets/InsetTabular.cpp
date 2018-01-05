@@ -3690,7 +3690,7 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			MetricsInfo m = mi;
 			Length const p_width = tabular.getPWidth(cell);
 			if (!p_width.zero())
-				m.base.textwidth = p_width.inPixels(mi.base);
+				m.base.textwidth = mi.base.inPixels(p_width);
 			tabular.cellInset(cell)->metrics(m, dim);
 			if (!p_width.zero())
 				dim.wid = m.base.textwidth;
@@ -3750,12 +3750,12 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 			maxdes = max(maxdes, dim.des + offset);
 		}
 		int const top_space = tabular.row_info[r].top_space_default ?
-			default_line_space :
-			tabular.row_info[r].top_space.inPixels(mi.base);
+		    default_line_space :
+		    mi.base.inPixels(tabular.row_info[r].top_space);
 		tabular.setRowAscent(r, maxasc + ADD_TO_HEIGHT + top_space);
 		int const bottom_space = tabular.row_info[r].bottom_space_default ?
-			default_line_space :
-			tabular.row_info[r].bottom_space.inPixels(mi.base);
+		    default_line_space :
+		    mi.base.inPixels(tabular.row_info[r].bottom_space);
 		tabular.setRowDescent(r, maxdes + ADD_TO_HEIGHT + bottom_space);
 	}
 

@@ -49,7 +49,7 @@ void InsetMathKern::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	dim.asc = 0;
 	dim.des = 0;
-	dim.wid = wid_.inPixels(mi.base);
+	dim.wid = mi.base.inPixels(wid_);
 }
 
 

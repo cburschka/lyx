@@ -30,6 +30,7 @@ namespace lyx {
 
 namespace frontend { class Painter; }
 class BufferView;
+class Length;
 class MacroContext;
 
 
@@ -69,6 +70,13 @@ public:
 	int solidLineOffset() const { return solid_line_offset_; }
 	///
 	int dottedLineThickness() const { return dotted_line_thickness_; }
+	/** return the on-screen size of this length
+	 *
+	 *  This version of the function uses the current inset width as
+	 *  width and the EM value of the current font.
+	 */
+	int inPixels(Length const & len) const;
+
 private:
 	int solid_line_thickness_;
 	int solid_line_offset_;

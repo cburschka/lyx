@@ -20,8 +20,6 @@
 
 namespace lyx {
 
-class MetricsBase;
-
 // Solaris/x86 version 9 and earlier define these
 #undef PC
 #undef SP
@@ -98,12 +96,6 @@ public:
 	 */
 	int inPixels(int text_width, int em_width = 0) const;
 
-	/** return the on-screen size of this length
-	 *
-	 *  This version of the function uses the current inset width as
-	 *  width and the EM value of the current font.
-	 */
-	int inPixels(MetricsBase const &) const;
 	/// return the value in Big Postscript points.
 	/// Caution: Inaccurate for em, ex, mu and percent units.
 	int inBP() const;

@@ -19,6 +19,7 @@
 
 #include "mathed/MathSupport.h"
 
+#include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
 
 #include "support/docstring.h"
@@ -91,6 +92,19 @@ Changer MetricsBase::changeEnsureMath(Inset::mode_type mode)
 		return isTextFont(fontname) ? changeFontSet("mathnormal"): Changer();
 	}
 	return Changer();
+}
+
+
+int MetricsBase::inPixels(Length const & len) const
+{
+	FontInfo fi = font;
+	if (len.unit() == Length::MU)
+		// mu is 1/18th of an em in the math symbol font
+		fi.setFamily(SYMBOL_FAMILY);
+	else
+		// Math style is only taken into account in the case of mu
+		fi.setStyle(LM_ST_TEXT);
+	return len.inPixels(textwidth, theFontMetrics(fi).em());
 }
 
 

@@ -565,7 +565,7 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 
 		if (l)
 			// Value was hardcoded to 30 pixels
-			dim.wid += Length(0.3, Length::IN).inPixels(mi.base) + l;
+			dim.wid += mi.base.inPixels(Length(0.3, Length::IN)) + l;
 	}
 
 	// reserve some space for marker.
@@ -674,7 +674,7 @@ void InsetMathHull::draw(PainterInfo & pi, int x, int y) const
 
 		if (l)
 			// Value was hardcoded to 30 pixels
-			xmath += Length(0.3, Length::IN).inPixels(pi.base) + l;
+			xmath += pi.base.inPixels(Length(0.3, Length::IN)) + l;
 	}
 
 	InsetMathGrid::draw(pi, xmath + 1, y);
