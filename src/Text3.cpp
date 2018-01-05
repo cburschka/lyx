@@ -1197,6 +1197,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			if (cur.selection())
 				cutSelection(cur, true, false);
 			cur.insert(inset);
+			cur.forceBufferUpdate();
 			if (inset->editable() && inset->asInsetText())
 				inset->edit(cur, true);
 			else
@@ -1934,6 +1935,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			break;
 		cur.recordUndo();
 		insertInset(cur, inset);
+		cur.forceBufferUpdate();
 		cur.posForward();
 		break;
 	}
