@@ -28489,17 +28489,17 @@ changedtextauthor5
 \begin_layout Description
 
 \lang english
-collapsable_inset_frame
+collapsable
 \lang french
- cadre d'insert repliable
+ texte d'insert repliable
 \end_layout
 
 \begin_layout Description
 
 \lang english
-collapsable_inset_text
+collapsableframe
 \lang french
- texte d'insert repliable
+ cadre d'insert repliable
 \end_layout
 
 \begin_layout Description
@@ -28531,7 +28531,7 @@ commandframe
 \lang english
 comment
 \lang french
- commentaire
+ étiquette de commentaire
 \end_layout
 
 \begin_layout Description
@@ -28835,7 +28835,7 @@ notebg
 \begin_layout Description
 
 \lang english
-notelabel
+note
 \lang french
  étiquette de note
 \end_layout
@@ -28886,6 +28886,12 @@ previewframe
 regexpframe
 \lang french
  cadre d'expression régulière
+\end_layout
+
+\begin_layout Description
+
+\lang english
+scroll Color that indicates when a row can be scrolled
 \end_layout
 
 \begin_layout Description

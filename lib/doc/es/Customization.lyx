@@ -25380,11 +25380,11 @@ changedtextauthor5 Color autor 5 de texto cambiado
 \end_layout
 
 \begin_layout Description
-collapsable_inset_frame Color marco de recuadro plegable
+collapsable Color texto de recuadro plegable 
 \end_layout
 
 \begin_layout Description
-collapsable_inset_text Color texto de recuadro plegable 
+collapsableframe Color marco de recuadro plegable
 \end_layout
 
 \begin_layout Description
@@ -25400,7 +25400,7 @@ commandframe Color marco recuadros de comando
 \end_layout
 
 \begin_layout Description
-comment Color comentarios
+comment Color etiqueta de comentarios
 \end_layout
 
 \begin_layout Description
@@ -25554,7 +25554,7 @@ notebg Color fondo de notas
 \end_layout
 
 \begin_layout Description
-notelabel Color etiqueta de notas
+note Color etiqueta de notas
 \end_layout
 
 \begin_layout Description
@@ -25579,6 +25579,12 @@ previewframe Color marco vista preliminar
 
 \begin_layout Description
 regexpframe Color marco regexp
+\end_layout
+
+\begin_layout Description
+
+\lang english
+scroll Color that indicates when a row can be scrolled
 \end_layout
 
 \begin_layout Description

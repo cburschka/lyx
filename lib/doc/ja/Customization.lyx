@@ -22830,11 +22830,11 @@ changedtextauthor5 変更された文章:第5著者の色
 \end_layout
 
 \begin_layout Description
-collapsable_inset_frame 畳み込み可能枠の縁色
+collapsable 畳み込み可能枠の文字色
 \end_layout
 
 \begin_layout Description
-collapsable_inset_text 畳み込み可能枠の文字色
+collapsableframe 畳み込み可能枠の縁色
 \end_layout
 
 \begin_layout Description
@@ -23004,7 +23004,7 @@ notebg 註釈の背景色
 \end_layout
 
 \begin_layout Description
-notelabel 註釈のラベル色
+note 註釈のラベル色
 \end_layout
 
 \begin_layout Description
@@ -23029,6 +23029,12 @@ previewframe プレビュー縁色
 
 \begin_layout Description
 regexpframe 正規表現枠の色
+\end_layout
+
+\begin_layout Description
+
+\lang english
+scroll Color that indicates when a row can be scrolled
 \end_layout
 
 \begin_layout Description

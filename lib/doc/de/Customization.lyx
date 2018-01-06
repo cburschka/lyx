@@ -25067,13 +25067,13 @@ Autors
 \begin_layout Description
 
 \lang english
-collapsable_inset_frame Collapsable insets framecolor
+collapsable Collapsable insets text color
 \end_layout
 
 \begin_layout Description
 
 \lang english
-collapsable_inset_text Collapsable insets text color
+collapsableframe Collapsable insets framecolor
 \end_layout
 
 \begin_layout Description
@@ -25097,7 +25097,7 @@ commandframe Frame color for command insets
 \begin_layout Description
 
 \lang english
-comment color for comments
+comment Label color for comments
 \end_layout
 
 \begin_layout Description
@@ -25329,7 +25329,7 @@ notebg Background color of notes
 \begin_layout Description
 
 \lang english
-notelabel Label color for notes
+note Label color for notes
 \end_layout
 
 \begin_layout Description
@@ -25366,6 +25366,12 @@ previewframe Preview frame color
 
 \lang english
 regexpframe Color for regexp frame
+\end_layout
+
+\begin_layout Description
+
+\lang english
+scroll Color that indicates when a row can be scrolled 
 \end_layout
 
 \begin_layout Description

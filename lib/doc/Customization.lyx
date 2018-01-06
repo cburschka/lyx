@@ -25544,11 +25544,11 @@ changedtextauthor5 Changed text color author 5
 \end_layout
 
 \begin_layout Description
-collapsable_inset_frame Collapsable insets framecolor
+collapsable Collapsable insets text color
 \end_layout
 
 \begin_layout Description
-collapsable_inset_text Collapsable insets text color
+collapsableframe Collapsable insets framecolor
 \end_layout
 
 \begin_layout Description
@@ -25564,7 +25564,7 @@ commandframe Frame color for command insets
 \end_layout
 
 \begin_layout Description
-comment color for comments
+comment Label color for comments
 \end_layout
 
 \begin_layout Description
@@ -25718,7 +25718,7 @@ notebg Background color of notes
 \end_layout
 
 \begin_layout Description
-notelabel Label color for notes
+note Label color for notes
 \end_layout
 
 \begin_layout Description
@@ -25743,6 +25743,10 @@ previewframe Preview frame color
 
 \begin_layout Description
 regexpframe Color for regexp frame
+\end_layout
+
+\begin_layout Description
+scroll Color that indicates when a row can be scrolled 
 \end_layout
 
 \begin_layout Description
