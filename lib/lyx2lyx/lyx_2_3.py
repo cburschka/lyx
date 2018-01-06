@@ -2134,7 +2134,7 @@ def revert_allowbreak(document):
     " \SpecialChar allowbreak -> Zero widths Space-inset. "
     body = "\n".join(document.body)
     body = body.replace("\\SpecialChar allowbreak\n",
-                        "\\begin_inset space \hspace{}\n"
+                        "\n\\begin_inset space \hspace{}\n"
                         "\\length 0dd\n"
                         "\\end_inset\n\n")
     document.body = body.split("\n")
