@@ -122,6 +122,7 @@
 #include <X11/Xatom.h>
 #include <X11/Xlib.h>
 #include <QX11Info>
+#undef CursorShape
 #undef None
 #elif defined(QPA_XCB)
 #include <xcb/xcb.h>
