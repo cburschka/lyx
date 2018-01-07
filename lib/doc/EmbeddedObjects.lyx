@@ -41091,7 +41091,7 @@ The
 minted
 \series default
  package places them after the listing by default if it is floating.
- If tit is not floating caption will be typeset before the listing if it
+ If it is not floating, caption will be typeset before the listing if it
  is inserted to its first line, otherwise it will be typeset after the listing.
  If you want to force the placement in avery case before the listing, you
  have to add the following lines as last thing to the preamble:
