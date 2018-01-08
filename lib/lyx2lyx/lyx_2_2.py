@@ -618,12 +618,15 @@ def convert_dashes(document):
     i = 0
     while i < len(document.body):
         words = document.body[i].split()
-        if len(words) > 1 and words[0] == "\\begin_inset" and \
-           words[1] in ["CommandInset", "ERT", "External", "Formula", "FormulaMacro", "Graphics", "IPA", "listings"]:
+        if (len(words) > 1 and words[0] == "\\begin_inset"
+            and (words[1] in ["CommandInset", "ERT", "External", "Formula",
+                              "FormulaMacro", "Graphics", "IPA", "listings"]
+                 or ' '.join(words[1:]) == "Flex Code")):
             # must not replace anything in insets that store LaTeX contents in .lyx files
-            # (math and command insets withut overridden read() and write() methods
+            # (math and command insets without overridden read() and write() methods
             # filtering out IPA makes Text::readParToken() more simple
             # skip ERT as well since it is not needed there
+            # Flex Code is logical markup, typically rendered as typewriter
             j = find_end_of_inset(document.body, i)
             if j == -1:
                 document.warning("Malformed LyX document: Can't find end of " + words[1] + " inset at line " + str(i))
