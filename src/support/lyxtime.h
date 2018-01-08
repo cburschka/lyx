@@ -16,7 +16,7 @@
 #include <time.h>
 #include <string>
 
-#include "strfwd.h"
+#include "support/strfwd.h"
 
 
 namespace lyx {

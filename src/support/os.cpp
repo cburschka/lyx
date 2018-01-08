@@ -11,9 +11,9 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "filetools.h"
-#include "qstring_helpers.h"
+#include "support/debug.h"
+#include "support/filetools.h"
+#include "support/qstring_helpers.h"
 
 #include <QDir>
 
