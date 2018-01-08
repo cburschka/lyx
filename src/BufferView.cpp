@@ -2968,8 +2968,14 @@ namespace {
 
 bool sliceInRow(CursorSlice const & cs, Text const * text, Row const & row)
 {
+	/* The normal case is the last line. The previous line takes care
+	 * of empty rows (e.g. empty paragraphs). Cursor boundary issues
+	 * are taken care of when setting caret_slice_ in
+	 * BufferView::draw.
+	 */
 	return !cs.empty() && cs.text() == text && cs.pit() == row.pit()
-		&& row.pos() <= cs.pos() && cs.pos() < row.endpos();
+	       && ((row.pos() == row.endpos() && row.pos() == cs.pos())
+	          || (row.pos() <= cs.pos() && cs.pos() < row.endpos()));
 }
 
 }
@@ -3154,8 +3160,9 @@ void BufferView::draw(frontend::Painter & pain, bool paint_caret)
 	// Remember what has just been done for the next draw() step
 	if (paint_caret) {
 		d->caret_slice_ = d->cursor_.top();
-		if (d->cursor_.boundary()
-		    || d->cursor_.top().pos() == d->cursor_.top().lastpos())
+		if (d->caret_slice_.pos() > 0
+		    && (d->cursor_.boundary()
+		        || d->caret_slice_.pos() == d->caret_slice_.lastpos()))
 			--d->caret_slice_.pos();
 	} else
 		d->caret_slice_ = CursorSlice();
