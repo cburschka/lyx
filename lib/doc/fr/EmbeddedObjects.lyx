@@ -282,36 +282,52 @@ literal "false"
 
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
+
+\family sans
+\size normal
 auteur original : Uwe Stöhr
 \end_layout
 
 \begin_layout Plain Layout
+
+\family sans
+\size normal
 Traduction française : Siegfried Meunier-Guttin-Cluzel
 \end_layout
 
 \begin_layout Plain Layout
+
+\family sans
+\size normal
 remplacement de Éditer/Visionner/Insérer/Naviguer par Édition/Affichage/Insertio
 n/Navigation, 31/10/2012, JPChrétien
 \end_layout
 
 \begin_layout Plain Layout
+
+\family sans
+\size normal
 version initiale 2.1.x avril 2014, mise à jour J.P.
  Chrétien
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Plain Layout
 Remplacement de « appendice » par « annexe », 31/12/2014 (JPC)
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Plain Layout
 Mise à jour pour 2.2, 26 janvier 2016 (JPC)
-\end_layout
+\begin_inset Newline newline
+\end_inset
 
-\begin_layout Plain Layout
 Mise à jour pour 2.2.3, section 2.11.3, 7 janvier 2017 (JPC)
+\begin_inset Newline newline
+\end_inset
+
+Mise à jour pour 2.3.0, janvier 2018 (JPC)
 \end_layout
 
 \end_inset
@@ -20949,15 +20965,11 @@ reference "sec:Parboxes"
 
  Si vous faites pivoter cette cellule de 90°, la largeur de la boîte est
  la hauteur de la cellule.
- 
-\lang english
-To avoid to estimate a suitable box width one can use a minipage with a
- variable width.
- Such a box is inserted by loading the module
-\lang french
- 
+ Pour éviter d'avoir à estimer une largeur de boîte appropriée, il est possible
+ d’utiliser une minipage à largeur variable.
+ Une telle boîte est insérée en chargeant le module
 \family sans
-Minipages
+ Minipages
 \begin_inset space ~
 \end_inset
 
@@ -20971,14 +20983,10 @@ largeur
 
 variable
 \family default
- 
-\lang english
-in the document settings.
- Then one can use
-\lang french
- le menu 
+ dans les paramètres du document.
+ On peut alors utiliser le menu
 \family sans
-Insertion\SpecialChar menuseparator
+ Insertion\SpecialChar menuseparator
 Inserts
 \begin_inset space ~
 \end_inset
@@ -20988,13 +20996,13 @@ Minipage
 \begin_inset space ~
 \end_inset
 
-
-\family default
 (larg.
 \begin_inset space ~
 \end_inset
 
-variable).
+variable)
+\family default
+.
  Le tableau
 \begin_inset space ~
 \end_inset
@@ -21006,11 +21014,8 @@ reference "tab:Tableau-incluant-une"
 
 \end_inset
 
- donne un exemple d'une cellule multi-lignes où 
-\lang english
-a variable width minipage is used
-\lang french
-.
+ donne un exemple d'une cellule multi-lignes où une minipage à largeur variable
+ est utilisée.
 \end_layout
 
 \begin_layout Standard
@@ -26755,7 +26760,7 @@ newrefformat
 newref
 \series default
  (refstyle) au préambule du document.
- Par exemple, pour redéfinir toutes les référence à des figures (qui ont
+ Par exemple, pour redéfinir toutes les références à des figures (qui ont
  l'étiquette abrégée 'fig') on peut utiliser la commande suivante
 \begin_inset space ~
 \end_inset
@@ -26871,7 +26876,7 @@ Label
 \end_inset
 
 only: n'imprime que l'étiquette \SpecialChar LaTeX
- comme reference: 
+ comme référence: 
 \begin_inset CommandInset ref
 LatexCommand labelonly
 reference "fig:Deux-images-déformées"
@@ -32052,11 +32057,9 @@ reference "fn:Note-en-bas"
 \begin_inset VSpace defskip
 \end_inset
 
-
-\lang english
-Footnotes in title environments are usually not numbered with symbols and
- they cannot contain several paragraphs.
- See for example the footnote in the titling of this document.
+Les notes de bas de page dans un titre ne sont habituellement pas numérotées
+ avec des symboles et ne peuvent pas contenir plusieurs paragraphes: voyez
+ par exemple le note de bas de page du titre du présent document.
 \end_layout
 
 \begin_layout Standard
@@ -41550,14 +41553,12 @@ Paquetages \SpecialChar LaTeX
 
  fournit un moyen puissant et flexible d'insérer des listings de code source
  dans votre document.
- 
-\lang english
-One can only use one of these packages in a document.
+ Il n'est possible d'utiliser que l'un de ces paquetages dans un document.
  
 \series bold
 listings
 \series default
- is used by default.
+ est l'alternative implicite.
 \end_layout
 
 \begin_layout Standard
@@ -41569,48 +41570,44 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Note:
+Nota:
 \series default
- \SpecialChar LyX
- does NOT want to encourage users to add the 
+ LyX NE souhaite PAS encourager les utilisateurs dans l'utilisation de l'option
+ 
 \family typewriter
 -shell-escape
 \family default
- option to converter definitions.
- It works, but it is a huge security risk.
- There is an active discussion about how to handle this.
- Once that's been resolved, this can be updated appropriately.
+ dans les définitions des convertisseurs.
+ Cette option fonctionne, mais elle affecte gravement la sécurité.
+ Une discussion active sur la liste de messagerie des développeurs (en anglais)
+ traite de la manière de traiter ce problème.
+ Une fois ce problème résolu, la présente note pourra être mise à jour.
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 =====
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
-In order to use 
+Pour utiliser
 \series bold
-minted
+ minted
 \series default
-, you need to select it as the syntax highlighting package in the document
- settings under 
+, vous devez sélectionner cette option en tant que paquetage d'accentuation
+ de la syntaxe dans la page 
 \family sans
 Listings
 \family default
-.
- 
+ des paramètres du document.
+
 \series bold
-minted
+ minted
 \series default
- requires also additionally the module 
+ nécessite en plus la présence du moduler 
 \family sans
 pygments
 \family default
- of the software 
+ du logiciel 
 \noun on
 Python
 \noun default
@@ -41619,25 +41616,23 @@ Python
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Under \SpecialChar LyX
- for Windows 
+Avec \SpecialChar LyX
+ pour Windows, 
 \family sans
 pygments
 \family default
- is already installed.
+ est installé.
 \end_layout
 
 \end_inset
 
- and the option 
+ et l'option 
 \family typewriter
 -shell-escape
 \family default
- for the \SpecialChar LaTeX
- processor.
- If you want for example view or export your document as the format 
+ pour le processeur \SpecialChar LaTeX
+.
+ Si par exemple vous souhaitez visionner ou afficher votre document en 
 \family sans
 PDF
 \begin_inset space ~
@@ -41645,20 +41640,16 @@ PDF
 
 (pdflatex)
 \family default
-, go to the \SpecialChar LyX
- preferences and there to the section 
+, ouvrez dans les préférences \SpecialChar LyX
+ la section 
 \family sans
-File
-\begin_inset space ~
-\end_inset
-
-Handling\SpecialChar menuseparator
-Converters
+Gestion des fichiers\SpecialChar menuseparator
+Convertisseurs
 \family default
 .
- There go to the entry 
+ Allez alors à l'entrée
 \family sans
-LaTeX
+ LaTeX
 \begin_inset space ~
 \end_inset
 
@@ -41668,14 +41659,12 @@ LaTeX
 
 (pdflatex)
 \family default
- and look at the field 
+et examinez le champ 
 \family sans
-Converter
+Convertisseur
 \family default
 .
- There you see by default the content
-\lang french
-
+ Vous voyez que le contenu implicite est
 \begin_inset Newline newline
 \end_inset
 
@@ -41687,11 +41676,7 @@ pdflatex $$i
 \begin_inset Newline newline
 \end_inset
 
-
-\lang english
-Now change it to
-\lang french
-
+Remplacez-le par
 \begin_inset Newline newline
 \end_inset
 
@@ -41703,21 +41688,16 @@ pdflatex $$i -shell-escape
 
 
 \series default
-\lang english
-and press the 
+et appuyez sur le bouton
 \family sans
-Modify
-\family default
- button and subsequently 
-\family sans
-Apply
+ Modifier puis sur Appliquer
 \family default
  or 
 \family sans
-Save
+Enregistrer
 \family default
 .
- The same can be done for the output formats 
+ La même opération peut être effectuée pour le formats imprimables 
 \family sans
 PDF
 \begin_inset space ~
@@ -41725,7 +41705,7 @@ PDF
 
 (LuaTeX)
 \family default
- and 
+ et 
 \family sans
 PDF
 \begin_inset space ~
@@ -41969,29 +41949,25 @@ status open
 \begin_layout Plain Layout
 
 \series bold
-Note: 
+Nota: 
 \series default
-\lang english
-The 
+le paquetage 
 \series bold
 listings
 \series default
- package places captions before the listing by default.
+ place implicitement les légendes avant le listing.
 \begin_inset Newline newline
 \end_inset
 
-The 
+Le paquetage 
 \series bold
 minted
 \series default
- package places them after the listing by default if it is floating.
- If tit is not floating  caption will be typeset before the listing if it
- is inserted to its first line, otherwise  it will be typeset after the
- listing.
- If you want to force the placement in avery case before the listing, you
- have to add the following lines as last thing to the preamble
-\lang french
-:
+ les place après le listing s'il est dans un flottant.
+ S'il n'est pas flottant, la légende sera placée avant le listing si elle
+ est insérée en première ligne, sinon elle sera placée après le listing.
+ Si vous souhaitez forcer le placement avant le listing dans tous les cas,
+ vous devez ajouter les lignes qui suivent en dernier dans le préambule:
 \begin_inset Newline newline
 \end_inset
 
@@ -42031,22 +42007,20 @@ floatstyle{plaintop}
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-The package 
+Le paquetage 
 \series bold
-float
+float 
 \series default
- will be loaded automatically by \SpecialChar LyX
- when you use special document-wide float
- placement settings.
- To avoid that it is loaded twice the command 
+sera automatiquement chargé par \SpecialChar LyX
+ si vous utilisez un placement particulier
+ des flottants pour l'ensemble du document.
+ L'usage de la commande 
 \series bold
 
 \backslash
 @ifundefined
 \series default
- is used in the above command.
+ évitera de le charger deux fois.
 \end_layout
 
 \end_inset
@@ -43262,9 +43236,7 @@ Interligne %
 \begin_inset Text
 
 \begin_layout Plain Layout
-% de hauteur 
-\lang english
-between baselines of two subsequent text lines
+% de hauteur entre lignes de base de deux lignes de texte consécutives
 \end_layout
 
 \end_inset
