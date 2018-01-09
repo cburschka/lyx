@@ -172,7 +172,6 @@ End
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
-\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -10619,15 +10618,11 @@ Argument item:1
 \end_deeper
 \begin_layout Description
 
-\change_inserted -712698321 1514710543
-
 \lang english
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1514710543
 
 \lang english
 AutoNests
@@ -10635,8 +10630,8 @@ AutoNests
 
 \end_inset
 
- Includes a comma-separated list of layout names that should be nested in
- and after the current one.
+ Includes a comma-separated list of layouts that should be nested in and
+ after the current layout.
  Only makes sense for nestable layouts (such as environments).
  Must be ended by 
 \begin_inset Quotes eld
@@ -10647,8 +10642,6 @@ AutoNests
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1514710543
 
 \lang english
 EndAutoNests
@@ -10667,8 +10660,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1514710543
-
 \lang english
 IsAutoNestedBy
 \end_layout
@@ -10676,8 +10667,6 @@ IsAutoNestedBy
 \end_inset
 
 .
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
@@ -11340,13 +11329,9 @@ TitleLatexName
 \end_inset
 
 も参照）．
-\change_inserted -712698321 1514710627
-
 \end_layout
 
 \begin_layout Description
-
-\change_inserted -712698321 1514710627
 
 \lang english
 \begin_inset Flex Code
@@ -11354,15 +11339,13 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1514710627
-
 \lang english
 IsAutoNestedBy
 \end_layout
 
 \end_inset
 
- Includes a comma-separated list of layout names after which this one should
+ Includes a comma-separated list of layouts after which this one should
  be nested.
  Only makes sense with regard to nestable layouts (such as environments).
  Must be ended by 
@@ -11374,8 +11357,6 @@ IsAutoNestedBy
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1514710627
 
 \lang english
 EndIsAutoNestedBy
@@ -11394,8 +11375,6 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\change_inserted -712698321 1514710769
-
 \lang english
 AutoNests
 \end_layout
@@ -11403,8 +11382,6 @@ AutoNests
 \end_inset
 
 .
-\change_unchanged
-
 \end_layout
 
 \begin_layout Description
