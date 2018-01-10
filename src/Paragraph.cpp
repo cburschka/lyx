@@ -1290,6 +1290,9 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		// XeTeX's dash behaviour is determined via a global setting
 		if (bparams.use_dash_ligatures
 		    && owner_->getFontSettings(bparams, i).fontInfo().family() != TYPEWRITER_FAMILY
+			&& !runparams.inIPA
+			// TODO #10961: && not in inset Flex Code
+			// TODO #10961: && not in layout LyXCode
 		    && (!bparams.useNonTeXFonts || runparams.flavor != OutputParams::XETEX)) {
 			if (c == 0x2013) {
 				// en-dash
@@ -1417,14 +1420,6 @@ bool Paragraph::Private::latexSpecialT3(char_type const c, otexstream & os,
 	case '|':
 		os << "\\textvertline" << termcmd;
 		column += 14;
-		return true;
-	case 0x2013:
-		os << "\\textendash" << termcmd;
-		column += 12;
-		return true;
-	case 0x2014:
-		os << "\\textemdash" << termcmd;
-		column += 12;
 		return true;
 	default:
 		return false;
