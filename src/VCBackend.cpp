@@ -392,7 +392,7 @@ void RCS::undoLast()
 
 bool RCS::undoLastEnabled()
 {
-	return true;
+	return owner_->hasReadonlyFlag();
 }
 
 
