@@ -6,13 +6,13 @@
 # Nick A. Gusev <guusev@yandex.ru>, 2009.
 # Valeriy Kruchko <lerkru@gmail.com>, 2009.
 # Sergey Tereschenko <serg.partizan@gmail.com>, 2010.
-# Yuriy Skalko <yuriy.skalko@gmail.com>, 2017.
+# Yuriy Skalko <yuriy.skalko@gmail.com>, 2017-2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2017-12-17 03:06+0100\n"
-"PO-Revision-Date: 2017-12-28 22:30+0200\n"
+"PO-Revision-Date: 2018-01-07 04:00+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -6654,14 +6654,12 @@ msgid "BackMatter"
 msgstr "Закл. часть"
 
 #: lib/layouts/IEEEtran.layout:323
-#, fuzzy
 msgid "Peer Review Title"
-msgstr "Предварительный просмотр не удался"
+msgstr ""
 
 #: lib/layouts/IEEEtran.layout:328
-#, fuzzy
 msgid "PeerReviewTitle"
-msgstr "Предварительный просмотр не удался"
+msgstr ""
 
 #: lib/layouts/IEEEtran.layout:332 lib/layouts/IEEEtran.layout:335
 #: lib/layouts/aastex.layout:378 lib/layouts/aastex6.layout:95
@@ -6758,9 +6756,8 @@ msgid "Biography without photo"
 msgstr "Биография без фото"
 
 #: lib/layouts/IEEEtran.layout:402
-#, fuzzy
 msgid "BiographyNoPhoto"
-msgstr "Элемент биографии"
+msgstr ""
 
 #: lib/layouts/IEEEtran.layout:408 lib/layouts/acmart.layout:546
 #: lib/layouts/beamer.layout:1199 lib/layouts/elsart.layout:273
@@ -6785,9 +6782,8 @@ msgstr "Альтернативная строка доказательства"
 
 # ?
 #: lib/layouts/IEEEtran.layout:415 lib/layouts/siamltex.layout:163
-#, fuzzy
 msgid "An alternative proof string"
-msgstr "Alternative affiliation:"
+msgstr ""
 
 #: lib/layouts/IEEEtran.layout:427 lib/layouts/beamer.layout:1276
 #: lib/layouts/foils.layout:288 lib/layouts/llncs.layout:388
@@ -6798,9 +6794,8 @@ msgid "Proof."
 msgstr "Доказательство."
 
 #: lib/layouts/InStar.module:2
-#, fuzzy
 msgid "Title and Preamble Hacks"
-msgstr "Титул (простой слайд)"
+msgstr ""
 
 #: lib/layouts/InStar.module:12
 msgid ""
@@ -6882,7 +6877,7 @@ msgstr "Постер A0"
 #: lib/layouts/a0poster.layout:4 lib/layouts/beamerposter.layout:4
 #: lib/layouts/sciposter.layout:4
 msgid "Posters"
-msgstr "Постер"
+msgstr "Постеры"
 
 #: lib/layouts/a0poster.layout:41 lib/layouts/a0poster.layout:44
 #: lib/layouts/a0poster.layout:71 lib/layouts/beamerposter.layout:53
@@ -6925,7 +6920,7 @@ msgstr ""
 
 #: lib/layouts/aa.layout:3
 msgid "Astronomy & Astrophysics"
-msgstr "Астрономия и астрофизика"
+msgstr "Astronomy & Astrophysics"
 
 #: lib/layouts/aa.layout:68 lib/layouts/aapaper.inc:9
 #: lib/layouts/aapaper.layout:81 lib/layouts/acm-sigs.inc:10
@@ -7240,9 +7235,8 @@ msgstr "altaffilmark"
 
 # ?
 #: lib/layouts/aastex.layout:272
-#, fuzzy
 msgid "altaffiliation mark"
-msgstr "altaffiliation mark"
+msgstr ""
 
 #: lib/layouts/aastex.layout:303
 msgid "Subject headings:"
@@ -7426,14 +7420,12 @@ msgid "Short name which appears in the footer of the title page"
 msgstr "Данная строка - подвал на последней странице"
 
 #: lib/layouts/achemso.layout:115
-#, fuzzy
 msgid "Alt Affiliation"
-msgstr "Affiliation"
+msgstr ""
 
 #: lib/layouts/achemso.layout:121
-#, fuzzy
 msgid "Also Affiliation"
-msgstr "Affiliation"
+msgstr ""
 
 #: lib/layouts/achemso.layout:127 lib/layouts/europasscv.layout:116
 #: lib/layouts/europecv.layout:93 lib/layouts/lettre.layout:46
@@ -7625,14 +7617,12 @@ msgid "Affiliation: "
 msgstr "Принадлежность: "
 
 #: lib/layouts/acmart.layout:216
-#, fuzzy
 msgid "Additional Affiliation"
-msgstr "Affiliation"
+msgstr ""
 
 #: lib/layouts/acmart.layout:218
-#, fuzzy
 msgid "Additional Affiliation: "
-msgstr "Affiliation"
+msgstr ""
 
 #: lib/layouts/acmart.layout:222 lib/layouts/acmart.layout:226
 msgid "Position"
@@ -7676,9 +7666,8 @@ msgid "Postal Code"
 msgstr "Почтовый индекс"
 
 #: lib/layouts/acmart.layout:286
-#, fuzzy
 msgid "TitleNote"
-msgstr "Заметка в подвал"
+msgstr ""
 
 #: lib/layouts/acmart.layout:296
 msgid "Title Note: "
@@ -7703,45 +7692,40 @@ msgid "Note: "
 msgstr "Заметка: "
 
 #: lib/layouts/acmart.layout:314
-#, fuzzy
 msgid "ACM Volume"
-msgstr "Колонок"
+msgstr ""
 
 #: lib/layouts/acmart.layout:316
 msgid "Volume: "
 msgstr "Том: "
 
 #: lib/layouts/acmart.layout:320
-#, fuzzy
 msgid "ACM Number"
-msgstr "Нумерация"
+msgstr ""
 
 #: lib/layouts/acmart.layout:322
 msgid "Number: "
 msgstr "Номер: "
 
 #: lib/layouts/acmart.layout:326
-#, fuzzy
 msgid "ACM Article"
-msgstr "Вертикальное"
+msgstr ""
 
 #: lib/layouts/acmart.layout:328
 msgid "Article: "
 msgstr "Статья: "
 
 #: lib/layouts/acmart.layout:332
-#, fuzzy
 msgid "ACM Year"
-msgstr "Оч&истить"
+msgstr ""
 
 #: lib/layouts/acmart.layout:334
 msgid "Year: "
 msgstr "Год: "
 
 #: lib/layouts/acmart.layout:338
-#, fuzzy
 msgid "ACM Month"
-msgstr "Пути"
+msgstr ""
 
 #: lib/layouts/acmart.layout:340
 msgid "Month: "
@@ -7752,18 +7736,16 @@ msgid "ACM Art Seq Num"
 msgstr ""
 
 #: lib/layouts/acmart.layout:346
-#, fuzzy
 msgid "Article Sequential Number: "
-msgstr "Номер страницы"
+msgstr ""
 
 #: lib/layouts/acmart.layout:350
 msgid "ACM Submission ID"
 msgstr ""
 
 #: lib/layouts/acmart.layout:352
-#, fuzzy
 msgid "Submission ID: "
-msgstr "Издатели"
+msgstr ""
 
 #: lib/layouts/acmart.layout:356
 msgid "ACM Price"
@@ -7814,9 +7796,8 @@ msgid "Start Page: "
 msgstr "Начальная страница: "
 
 #: lib/layouts/acmart.layout:394
-#, fuzzy
 msgid "Terms: "
-msgstr "Теорема"
+msgstr ""
 
 #: lib/layouts/acmart.layout:400
 msgid "Keywords: "
@@ -7831,33 +7812,28 @@ msgid "Computing Classification Scheme (XML): "
 msgstr ""
 
 #: lib/layouts/acmart.layout:426
-#, fuzzy
 msgid "CCS Description"
-msgstr "Описание"
+msgstr ""
 
 #: lib/layouts/acmart.layout:429
 msgid "Significance"
 msgstr "Значимость"
 
 #: lib/layouts/acmart.layout:431
-#, fuzzy
 msgid "Computing Classification Scheme: "
-msgstr "AMS классификации темы:"
+msgstr ""
 
 #: lib/layouts/acmart.layout:444
-#, fuzzy
 msgid "Set Copyright"
-msgstr "Авторское право"
+msgstr ""
 
 #: lib/layouts/acmart.layout:446
-#, fuzzy
 msgid "Set Copyright: "
-msgstr "Авторское право"
+msgstr ""
 
 #: lib/layouts/acmart.layout:450
-#, fuzzy
 msgid "Copyright Year"
-msgstr "КопирайтГод"
+msgstr ""
 
 #: lib/layouts/acmart.layout:452
 msgid "Copyright Year: "
@@ -7865,9 +7841,8 @@ msgstr "Год копирайта: "
 
 # ?
 #: lib/layouts/acmart.layout:456 lib/layouts/acmart.layout:459
-#, fuzzy
 msgid "Teaser Figure"
-msgstr "Рисунок тизера:"
+msgstr ""
 
 #: lib/layouts/acmart.layout:465 lib/layouts/agu_stdtitle.inc:199
 #: lib/layouts/aguplus.inc:111 lib/layouts/egs.layout:423
@@ -7885,14 +7860,12 @@ msgid "Received: "
 msgstr "Получено: "
 
 #: lib/layouts/acmart.layout:479
-#, fuzzy
 msgid "ShortAuthors"
-msgstr "Горячие клавиши|ш"
+msgstr ""
 
 #: lib/layouts/acmart.layout:487
-#, fuzzy
 msgid "Short authors: "
-msgstr "Горячие клавиши|ш"
+msgstr ""
 
 #: lib/layouts/acmart.layout:501
 msgid "Sidebar"
@@ -8040,14 +8013,12 @@ msgid "TOG online ID"
 msgstr ""
 
 #: lib/layouts/acmsiggraph-0-92.layout:85 lib/layouts/acmsiggraph.layout:77
-#, fuzzy
 msgid "Online ID:"
-msgstr "Встроенный в строку|с"
+msgstr ""
 
 #: lib/layouts/acmsiggraph-0-92.layout:93 lib/layouts/acmsiggraph.layout:85
-#, fuzzy
 msgid "TOG volume"
-msgstr "AGU-том"
+msgstr ""
 
 #: lib/layouts/acmsiggraph-0-92.layout:96 lib/layouts/acmsiggraph.layout:88
 #, fuzzy
@@ -8134,9 +8105,8 @@ msgstr "Ключевые слова"
 
 #: lib/layouts/acmsiggraph-0-92.layout:204
 #: lib/layouts/acmsiggraph-0-92.layout:207
-#, fuzzy
 msgid "Concept list"
-msgstr "понятие"
+msgstr ""
 
 #: lib/layouts/acmsiggraph-0-92.layout:211
 #: lib/layouts/acmsiggraph-0-92.layout:214
@@ -8172,9 +8142,8 @@ msgid "CR category"
 msgstr "CR категория"
 
 #: lib/layouts/acmsiggraph-0-92.layout:304 lib/layouts/acmsiggraph.layout:260
-#, fuzzy
 msgid "CR-number"
-msgstr "msnumber"
+msgstr ""
 
 #: lib/layouts/acmsiggraph-0-92.layout:305 lib/layouts/acmsiggraph.layout:261
 #, fuzzy
@@ -8261,9 +8230,8 @@ msgid "Firstname"
 msgstr "Имя"
 
 #: lib/layouts/agu_stdclass.inc:50 lib/layouts/agu_stdclass.inc:52
-#, fuzzy
 msgid "Fname"
-msgstr "Параметры"
+msgstr ""
 
 #: lib/layouts/agu_stdclass.inc:66 lib/layouts/agu_stdclass.inc:68
 #: lib/layouts/db_stdcharstyles.inc:49 lib/layouts/db_stdcharstyles.inc:51
@@ -8285,15 +8253,13 @@ msgid "Emph"
 msgstr "Выделительный"
 
 #: lib/layouts/agu_stdclass.inc:131 lib/layouts/agu_stdclass.inc:133
-#, fuzzy
 msgid "Abbrev"
-msgstr "Предварительный просмотр|#П"
+msgstr ""
 
 #: lib/layouts/agu_stdclass.inc:143 lib/layouts/agu_stdclass.inc:145
 #: lib/layouts/agu_stdtitle.inc:56
-#, fuzzy
 msgid "Citation-number"
-msgstr "Ссылка на источник"
+msgstr ""
 
 #: lib/layouts/agu_stdclass.inc:155 lib/layouts/agu_stdclass.inc:157
 #: lib/layouts/apa6.layout:332
@@ -8313,9 +8279,8 @@ msgid "Year"
 msgstr "Год"
 
 #: lib/layouts/agu_stdclass.inc:203 lib/layouts/agu_stdclass.inc:205
-#, fuzzy
 msgid "Issue-number"
-msgstr "msnumber"
+msgstr ""
 
 #: lib/layouts/agu_stdclass.inc:215 lib/layouts/agu_stdclass.inc:217
 #, fuzzy
@@ -8449,14 +8414,12 @@ msgid "Index-term:"
 msgstr "Запись в предметном указателе"
 
 #: lib/layouts/agu_stdtitle.inc:111
-#, fuzzy
 msgid "Cross-term"
-msgstr "CrossList"
+msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:115
-#, fuzzy
 msgid "Cross-term:"
-msgstr "CrossList"
+msgstr ""
 
 # ?
 #: lib/layouts/agu_stdtitle.inc:132 lib/layouts/apa.layout:172
@@ -8616,9 +8579,8 @@ msgid "ISSN"
 msgstr "ISSN"
 
 #: lib/layouts/agu_stdtitle.inc:334 lib/layouts/agu_stdtitle.inc:336
-#, fuzzy
 msgid "CODEN"
-msgstr "Сцена"
+msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:347 lib/layouts/agu_stdtitle.inc:349
 #, fuzzy
@@ -8643,9 +8605,8 @@ msgid "Code"
 msgstr "Код"
 
 #: lib/layouts/agu_stdtitle.inc:398 lib/layouts/agu_stdtitle.inc:400
-#, fuzzy
 msgid "Dscr"
-msgstr "От&клонить"
+msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:411 lib/layouts/agu_stdtitle.inc:413
 #: lib/layouts/ectaart.layout:123 lib/layouts/ectaart.layout:206
@@ -9003,7 +8964,6 @@ msgid "ThickLine"
 msgstr "Толстая линия"
 
 #: lib/layouts/apa.layout:250 lib/layouts/apa6.layout:350
-#, fuzzy
 msgid "Centered"
 msgstr "По середине"
 
@@ -9061,14 +9021,12 @@ msgid "American Psychological Association (APA), v. 6"
 msgstr "American Psychological Association (APA), v. 6"
 
 #: lib/layouts/apa6.layout:113
-#, fuzzy
 msgid "FiveAuthors"
-msgstr "Автор"
+msgstr ""
 
 #: lib/layouts/apa6.layout:120
-#, fuzzy
 msgid "SixAuthors"
-msgstr "Автор"
+msgstr ""
 
 #: lib/layouts/apa6.layout:127
 msgid "LeftHeader"
@@ -9079,14 +9037,12 @@ msgid "Left header:"
 msgstr "Левая шапка:"
 
 #: lib/layouts/apa6.layout:191
-#, fuzzy
 msgid "FiveAffiliations"
-msgstr "Affiliation"
+msgstr ""
 
 #: lib/layouts/apa6.layout:198
-#, fuzzy
 msgid "SixAffiliations"
-msgstr "Affiliation"
+msgstr ""
 
 #: lib/layouts/apa6.layout:206 lib/layouts/beamer.layout:1541
 #: lib/layouts/elsart.layout:407 lib/layouts/fixme.module:107
@@ -9166,9 +9122,8 @@ msgstr "Презентации"
 #: lib/layouts/beamer.layout:837 lib/layouts/beamer.layout:1133
 #: lib/layouts/beamer.layout:1158 lib/layouts/beamer.layout:1185
 #: lib/layouts/beamer.layout:1345
-#, fuzzy
 msgid "Overlay Specifications|v"
-msgstr "Выделение|В"
+msgstr ""
 
 #: lib/layouts/beamer.layout:87 lib/layouts/beamer.layout:123
 #: lib/layouts/beamer.layout:165
@@ -9241,9 +9196,8 @@ msgstr "Режим"
 #: lib/layouts/beamer.layout:295 lib/layouts/beamer.layout:324
 #: lib/layouts/beamer.layout:356 lib/layouts/beamer.layout:385
 #: lib/layouts/beamer.layout:417
-#, fuzzy
 msgid "Mode Specification|S"
-msgstr "Переместить раздел вверх|е"
+msgstr ""
 
 #: lib/layouts/beamer.layout:210 lib/layouts/beamer.layout:264
 #: lib/layouts/beamer.layout:296 lib/layouts/beamer.layout:325
@@ -9266,9 +9220,8 @@ msgstr "Раздел \\arabic{section}"
 #: lib/layouts/beamer.layout:271 lib/layouts/scrclass.inc:149
 #: lib/layouts/simplecv.layout:52 lib/layouts/stdsections.inc:94
 #: lib/layouts/tufte-book.layout:109
-#, fuzzy
 msgid "The section as it appears in the table of contents/running headers"
-msgstr "Метка, как она будет показываться в документе"
+msgstr ""
 
 #: lib/layouts/beamer.layout:282 lib/layouts/numarticle.inc:10
 #: lib/layouts/powerdot.layout:245
@@ -9280,9 +9233,8 @@ msgid "Subsection \\arabic{section}.\\arabic{subsection}"
 msgstr "Подраздел \\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:332
-#, fuzzy
 msgid "The subsection as it appears in the table of contents/running headers"
-msgstr "Метка, как она будет показываться в документе"
+msgstr ""
 
 #: lib/layouts/beamer.layout:343
 msgid "\\arabic{section}.\\arabic{subsection}"
@@ -9581,14 +9533,12 @@ msgid "Block:"
 msgstr "Блок:"
 
 #: lib/layouts/beamer.layout:871
-#, fuzzy
 msgid "Action Specification|S"
-msgstr "Выделение|В"
+msgstr ""
 
 #: lib/layouts/beamer.layout:878
-#, fuzzy
 msgid "Block Title"
-msgstr "Благодарности"
+msgstr ""
 
 #: lib/layouts/beamer.layout:879
 msgid "Enter the block title here"
@@ -9617,9 +9567,8 @@ msgstr "Оба края"
 #: lib/layouts/beamer.layout:914 lib/layouts/beamer.layout:947
 #: lib/layouts/beamer.layout:972 lib/layouts/beamer.layout:995
 #: lib/layouts/beamer.layout:1039 lib/layouts/beamer.layout:1062
-#, fuzzy
 msgid "Titling"
-msgstr "Листинг"
+msgstr ""
 
 #: lib/layouts/beamer.layout:928
 msgid "Short title which appears in the sidebar/header"
@@ -9653,9 +9602,8 @@ msgid "Short institute which appears in the sidebar/header"
 msgstr ""
 
 #: lib/layouts/beamer.layout:1017
-#, fuzzy
 msgid "InstituteMark"
-msgstr "Institute"
+msgstr ""
 
 #: lib/layouts/beamer.layout:1051
 msgid "Short Date|S"
@@ -9766,9 +9714,8 @@ msgid "LyX-Code"
 msgstr "Код LyX"
 
 #: lib/layouts/beamer.layout:1324
-#, fuzzy
 msgid "NoteItem"
-msgstr "Создать запись"
+msgstr ""
 
 #: lib/layouts/beamer.layout:1359 lib/layouts/beamer.layout:1361
 #: src/Font.cpp:65 src/frontends/qt4/GuiCharacter.cpp:127
@@ -9827,18 +9774,16 @@ msgid "Specifiy note options (see beamer manual)"
 msgstr ""
 
 #: lib/layouts/beamer.layout:1563
-#, fuzzy
 msgid "ArticleMode"
-msgstr "Вертикальное"
+msgstr ""
 
 #: lib/layouts/beamer.layout:1569
 msgid "Article"
 msgstr "Статья"
 
 #: lib/layouts/beamer.layout:1574
-#, fuzzy
 msgid "PresentationMode"
-msgstr "&Ориентация:"
+msgstr ""
 
 #: lib/layouts/beamer.layout:1580
 msgid "Presentation"
@@ -9850,9 +9795,8 @@ msgid "Figure"
 msgstr "Рисунок"
 
 #: lib/layouts/beamerposter.layout:3
-#, fuzzy
 msgid "Beamerposter"
-msgstr "Создать запись"
+msgstr ""
 
 #: lib/layouts/bicaption.module:2
 msgid "Multilingual Captions"
@@ -9933,64 +9877,52 @@ msgid "Braille (default)"
 msgstr "Брайлевская печать (по умолчанию)"
 
 #: lib/layouts/braille.module:36 lib/layouts/braille.module:59
-#, fuzzy
 msgid "Braille:"
-msgstr "Доступные:"
+msgstr ""
 
 #: lib/layouts/braille.module:45
-#, fuzzy
 msgid "Braille (textsize)"
-msgstr "Braille (textsize)"
+msgstr ""
 
 #: lib/layouts/braille.module:68
-#, fuzzy
 msgid "Braille (dots on)"
-msgstr "Braille (dots on)"
+msgstr ""
 
 #: lib/layouts/braille.module:83
-#, fuzzy
 msgid "Braille_dots_on"
-msgstr "Braille_dots_on"
+msgstr ""
 
 #: lib/layouts/braille.module:92
-#, fuzzy
 msgid "Braille (dots off)"
-msgstr "Braille (dots off)"
+msgstr ""
 
 #: lib/layouts/braille.module:107
-#, fuzzy
 msgid "Braille_dots_off"
-msgstr "Braille_dots_off"
+msgstr ""
 
 #: lib/layouts/braille.module:116
-#, fuzzy
 msgid "Braille (mirror on)"
-msgstr "Braille (mirror on)"
+msgstr ""
 
 #: lib/layouts/braille.module:131
-#, fuzzy
 msgid "Braille_mirror_on"
-msgstr "Braille_mirror_on"
+msgstr ""
 
 #: lib/layouts/braille.module:140
-#, fuzzy
 msgid "Braille (mirror off)"
-msgstr "Braille (mirror off)"
+msgstr ""
 
 #: lib/layouts/braille.module:155
-#, fuzzy
 msgid "Braille_mirror_off"
-msgstr "Braille_mirror_off"
+msgstr ""
 
 #: lib/layouts/braille.module:163
-#, fuzzy
 msgid "Braillebox"
-msgstr "параллельно"
+msgstr ""
 
 #: lib/layouts/braille.module:167
-#, fuzzy
 msgid "Braille box"
-msgstr "параллельно"
+msgstr ""
 
 #: lib/layouts/broadway.layout:3
 msgid "Broadway"
@@ -10094,25 +10026,22 @@ msgid "Mainline"
 msgstr "Mainline"
 
 #: lib/layouts/chess.layout:43
-#, fuzzy
 msgid "Mainline:"
-msgstr "Mainline"
+msgstr ""
 
 #: lib/layouts/chess.layout:62
 msgid "Variation"
 msgstr "Вариация"
 
 #: lib/layouts/chess.layout:66
-#, fuzzy
 msgid "Variation:"
-msgstr "Вариация"
+msgstr "Вариант:"
 
 #: lib/layouts/chess.layout:72
 msgid "SubVariation"
 msgstr "Подвариант"
 
 #: lib/layouts/chess.layout:75
-#, fuzzy
 msgid "Subvariation:"
 msgstr "Подвариант"
 
@@ -10121,45 +10050,40 @@ msgid "SubVariation2"
 msgstr "Подвариант2"
 
 #: lib/layouts/chess.layout:84
-#, fuzzy
 msgid "Subvariation(2):"
-msgstr "Подвариант2"
+msgstr "Подвариант(2):"
 
 #: lib/layouts/chess.layout:90
 msgid "SubVariation3"
 msgstr "Подвариант3"
 
 #: lib/layouts/chess.layout:93
-#, fuzzy
 msgid "Subvariation(3):"
-msgstr "Подвариант3"
+msgstr "Подвариант(3):"
 
 #: lib/layouts/chess.layout:99
 msgid "SubVariation4"
 msgstr "Подвариант4"
 
 #: lib/layouts/chess.layout:102
-#, fuzzy
 msgid "Subvariation(4):"
-msgstr "Подвариант4"
+msgstr "Подвариант(4):"
 
 #: lib/layouts/chess.layout:108
 msgid "SubVariation5"
 msgstr "Подвариант5"
 
 #: lib/layouts/chess.layout:111
-#, fuzzy
 msgid "Subvariation(5):"
-msgstr "Подвариант5"
+msgstr "Подвариант(5):"
 
 #: lib/layouts/chess.layout:118
 msgid "HideMoves"
 msgstr "HideMoves"
 
 #: lib/layouts/chess.layout:123
-#, fuzzy
 msgid "HideMoves:"
-msgstr "HideMoves"
+msgstr ""
 
 #: lib/layouts/chess.layout:128
 msgid "ChessBoard"
@@ -10182,9 +10106,8 @@ msgid "HighLight"
 msgstr "HighLight"
 
 #: lib/layouts/chess.layout:161
-#, fuzzy
 msgid "Highlights:"
-msgstr "HighLight"
+msgstr ""
 
 #: lib/layouts/chess.layout:176
 msgid "Arrow"
@@ -10199,9 +10122,8 @@ msgid "KnightMove"
 msgstr "KnightMove"
 
 #: lib/layouts/chess.layout:192
-#, fuzzy
 msgid "KnightMove:"
-msgstr "KnightMove"
+msgstr ""
 
 #: lib/layouts/cl2emult.layout:3
 msgid "Springer cl2emult"
@@ -10288,9 +10210,8 @@ msgid "KeyCombo"
 msgstr "Клавиатура"
 
 #: lib/layouts/db_stdcharstyles.inc:106 lib/layouts/db_stdcharstyles.inc:108
-#, fuzzy
 msgid "KeyCap"
-msgstr "Подпись"
+msgstr ""
 
 #: lib/layouts/db_stdcharstyles.inc:121 lib/layouts/db_stdcharstyles.inc:123
 msgid "GuiMenu"
@@ -10380,9 +10301,8 @@ msgstr "Адреса"
 #: lib/layouts/g-brief2.layout:755 lib/layouts/g-brief2.layout:777
 #: lib/layouts/lettre.layout:145 lib/layouts/stdletter.inc:26
 #: lib/layouts/stdletter.inc:38
-#, fuzzy
 msgid "Postal Data"
-msgstr "PostalComment"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:55 lib/layouts/frletter.layout:17
 #: lib/layouts/heb-letter.layout:16 lib/layouts/lettre.layout:60
@@ -10410,24 +10330,20 @@ msgid "Backaddress:"
 msgstr "Обратный адрес:"
 
 #: lib/layouts/dinbrief.layout:89
-#, fuzzy
 msgid "Postal comment"
-msgstr "PostalComment"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:91
-#, fuzzy
 msgid "Postal Remark:"
-msgstr "Postvermerk"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:96
-#, fuzzy
 msgid "Handling"
-msgstr "Венгерский"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:98
-#, fuzzy
 msgid "Handling:"
-msgstr "Венгерский"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:102 lib/layouts/g-brief.layout:109
 #: lib/layouts/g-brief2.layout:50 lib/layouts/g-brief2.layout:819
@@ -10437,9 +10353,8 @@ msgstr "Ваша ссылка"
 
 #: lib/layouts/dinbrief.layout:104 lib/layouts/scrlettr.layout:211
 #: lib/layouts/scrlttr2.layout:297
-#, fuzzy
 msgid "Your ref.:"
-msgstr "Ваша ссылка:"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:108 lib/layouts/g-brief.layout:102
 #: lib/layouts/g-brief2.layout:48 lib/layouts/g-brief2.layout:798
@@ -10449,9 +10364,8 @@ msgstr "MyRef"
 
 #: lib/layouts/dinbrief.layout:110 lib/layouts/scrlettr.layout:232
 #: lib/layouts/scrlttr2.layout:321
-#, fuzzy
 msgid "Our ref.:"
-msgstr "Ваша ссылка:"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:114
 msgid "Writer"
@@ -10496,14 +10410,12 @@ msgid "Bottom text:"
 msgstr "Нижний текст:"
 
 #: lib/layouts/dinbrief.layout:138
-#, fuzzy
 msgid "Area code"
-msgstr "Anrede"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:140
-#, fuzzy
 msgid "Area Code:"
-msgstr "Anrede"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:144 lib/layouts/europasscv.layout:106
 #: lib/layouts/europecv.layout:77 lib/layouts/lettre.layout:42
@@ -10734,7 +10646,7 @@ msgstr "DocBook Book (SGML)"
 #: lib/layouts/docbook-book.layout:4 lib/layouts/docbook-chapter.layout:4
 #: lib/layouts/docbook-section.layout:4
 msgid "Books (DocBook)"
-msgstr "Books (DocBook)"
+msgstr "Книги (DocBook)"
 
 #: lib/layouts/docbook-chapter.layout:3
 msgid "DocBook Chapter (SGML)"
@@ -10758,44 +10670,39 @@ msgstr ""
 
 #: lib/layouts/ectaart.layout:3
 msgid "Econometrica"
-msgstr "Эконометрика"
+msgstr "Econometrica"
 
 #: lib/layouts/ectaart.layout:22
 msgid "RunTitle"
 msgstr "RunTitle"
 
 #: lib/layouts/ectaart.layout:29 lib/layouts/llncs.layout:166
-#, fuzzy
 msgid "Running Title:"
-msgstr "RunningTitle"
+msgstr ""
 
 #: lib/layouts/ectaart.layout:36
 msgid "RunAuthor"
 msgstr "RunAuthor"
 
 #: lib/layouts/ectaart.layout:40
-#, fuzzy
 msgid "Running Author:"
-msgstr "RunningAuthor"
+msgstr ""
 
 #: lib/layouts/ectaart.layout:67 lib/layouts/elsart.layout:148
-#, fuzzy
 msgid "Address Option"
-msgstr "Адрес не для печати"
+msgstr ""
 
 #: lib/layouts/ectaart.layout:68 lib/layouts/elsart.layout:149
-#, fuzzy
 msgid "Optional argument for the address"
-msgstr "Убрать последний параметр"
+msgstr ""
 
 #: lib/layouts/ectaart.layout:78
 msgid "E-Mail Option"
 msgstr "Параметры эл. почты"
 
 #: lib/layouts/ectaart.layout:79
-#, fuzzy
 msgid "Optional argument for the e-mail"
-msgstr "Убрать последний параметр"
+msgstr ""
 
 #: lib/layouts/ectaart.layout:84 lib/layouts/europasscv.layout:125
 #: lib/layouts/europecv.layout:74 lib/layouts/latex8.layout:78
@@ -10828,28 +10735,24 @@ msgid "Thanks \\theThanks:"
 msgstr ""
 
 #: lib/layouts/ectaart.layout:159
-#, fuzzy
 msgid "Thanks Reference"
-msgstr "Перекрёстная ссылка"
+msgstr ""
 
 #: lib/layouts/ectaart.layout:166
-#, fuzzy
 msgid "Thanks Ref"
-msgstr "Благодарности"
+msgstr ""
 
 #: lib/layouts/ectaart.layout:172
-#, fuzzy
 msgid "Internet Address Reference"
-msgstr "Вставить перекрёстную ссылку"
+msgstr ""
 
 #: lib/layouts/ectaart.layout:175
 msgid "Internet Addess Ref"
 msgstr ""
 
 #: lib/layouts/ectaart.layout:178 lib/layouts/ectaart.layout:181
-#, fuzzy
 msgid "Corresponding Author"
-msgstr "RunningAuthor"
+msgstr ""
 
 #: lib/layouts/ectaart.layout:192
 msgid "Name (First Name)"
@@ -10924,14 +10827,12 @@ msgid "Elsevier (Obsolete Version)"
 msgstr "Elsevier (устаревшая версия)"
 
 #: lib/layouts/elsart.layout:129
-#, fuzzy
 msgid "Author Option"
-msgstr "Параметры математики"
+msgstr ""
 
 #: lib/layouts/elsart.layout:130
-#, fuzzy
 msgid "Optional argument for the author"
-msgstr "Убрать последний параметр"
+msgstr ""
 
 #: lib/layouts/elsart.layout:138
 msgid "Author Address"
@@ -10953,9 +10854,8 @@ msgid "Author URL"
 msgstr "URL автора"
 
 #: lib/layouts/elsart.layout:207
-#, fuzzy
 msgid "Thanks Option"
-msgstr "Переход"
+msgstr ""
 
 #: lib/layouts/elsart.layout:208
 msgid "Optional argument for the thanks statement"
@@ -11030,39 +10930,32 @@ msgid "Elsevier"
 msgstr "Elsevier"
 
 #: lib/layouts/elsarticle.layout:57
-#, fuzzy
 msgid "BeginFrontmatter"
-msgstr "Введение"
+msgstr ""
 
 #: lib/layouts/elsarticle.layout:67
-#, fuzzy
 msgid "Begin frontmatter"
-msgstr "Введение"
+msgstr ""
 
 #: lib/layouts/elsarticle.layout:75
-#, fuzzy
 msgid "EndFrontmatter"
-msgstr "Введение"
+msgstr ""
 
 #: lib/layouts/elsarticle.layout:78
-#, fuzzy
 msgid "End frontmatter"
-msgstr "Введение"
+msgstr ""
 
 #: lib/layouts/elsarticle.layout:103
-#, fuzzy
 msgid "Titlenotemark"
-msgstr "Заметка в подвал"
+msgstr ""
 
 #: lib/layouts/elsarticle.layout:108
-#, fuzzy
 msgid "Titlenote mark"
-msgstr "Заметка в подвал"
+msgstr ""
 
 #: lib/layouts/elsarticle.layout:126
-#, fuzzy
 msgid "Title footnote"
-msgstr "Заметка в подвал"
+msgstr ""
 
 #: lib/layouts/elsarticle.layout:133
 msgid "Footnote Label"
@@ -11073,9 +10966,8 @@ msgid "Label you refer to in the title"
 msgstr ""
 
 #: lib/layouts/elsarticle.layout:141 lib/layouts/revtex4-1.layout:193
-#, fuzzy
 msgid "Title footnote:"
-msgstr "Заметка в подвал"
+msgstr ""
 
 #: lib/layouts/elsarticle.layout:155
 msgid "Author Label"
@@ -11086,9 +10978,8 @@ msgid "Label you will reference in the address"
 msgstr ""
 
 #: lib/layouts/elsarticle.layout:172
-#, fuzzy
 msgid "Authormark"
-msgstr "Автор-год"
+msgstr ""
 
 #: lib/layouts/elsarticle.layout:195
 #, fuzzy
@@ -11393,9 +11284,8 @@ msgid "Title level:"
 msgstr "Название:"
 
 #: lib/layouts/europasscv.layout:285 lib/layouts/europasscv.layout:286
-#, fuzzy
 msgid "Text (right side)"
-msgstr "Линия справа"
+msgstr ""
 
 #: lib/layouts/europasscv.layout:290
 #, fuzzy
@@ -11403,9 +11293,8 @@ msgid "BlueItem"
 msgstr "Маркеры"
 
 #: lib/layouts/europasscv.layout:293
-#, fuzzy
 msgid "Blue item:"
-msgstr "Уда&лить"
+msgstr ""
 
 #: lib/layouts/europasscv.layout:296
 msgid "BlueItemInset"
@@ -11431,23 +11320,20 @@ msgid "EcvItemize"
 msgstr "Перечисление"
 
 #: lib/layouts/europasscv.layout:336 lib/layouts/europecv.layout:215
-#, fuzzy
 msgid "MotherTongue"
-msgstr "MotherTongue"
+msgstr ""
 
 #: lib/layouts/europasscv.layout:345 lib/layouts/europecv.layout:229
 msgid "Mother Tongue:"
 msgstr "Родной язык:"
 
 #: lib/layouts/europasscv.layout:355 lib/layouts/europecv.layout:239
-#, fuzzy
 msgid "LangHeader"
-msgstr "Шапка"
+msgstr ""
 
 #: lib/layouts/europasscv.layout:359 lib/layouts/europecv.layout:243
-#, fuzzy
 msgid "Language Header:"
-msgstr "Левая шапка"
+msgstr ""
 
 #: lib/layouts/europasscv.layout:376 lib/layouts/europecv.layout:249
 msgid "Language:"
@@ -11474,18 +11360,16 @@ msgid "Level how good you think you can read"
 msgstr ""
 
 #: lib/layouts/europasscv.layout:398 lib/layouts/europecv.layout:267
-#, fuzzy
 msgid "Interaction"
-msgstr "Введение|е"
+msgstr ""
 
 #: lib/layouts/europasscv.layout:399 lib/layouts/europecv.layout:268
 msgid "Level how good you think you can conversate"
 msgstr ""
 
 #: lib/layouts/europasscv.layout:404 lib/layouts/europecv.layout:272
-#, fuzzy
 msgid "Production"
-msgstr "Введение|е"
+msgstr ""
 
 #: lib/layouts/europasscv.layout:405 lib/layouts/europecv.layout:273
 msgid "Level how good you think you can freely talk"
@@ -12108,9 +11992,8 @@ msgid "PostalComment"
 msgstr "PostalComment"
 
 #: lib/layouts/g-brief.layout:182 lib/layouts/g-brief2.layout:765
-#, fuzzy
 msgid "PostalComment:"
-msgstr "PostalComment"
+msgstr ""
 
 #: lib/layouts/g-brief.layout:207 lib/layouts/g-brief2.layout:894
 #, fuzzy
@@ -12393,22 +12276,20 @@ msgid "Scalebox"
 msgstr "Масштаб"
 
 #: lib/layouts/graphicboxes.module:31
-#, fuzzy
 msgid "H-Factor"
-msgstr "Факт"
+msgstr ""
 
 #: lib/layouts/graphicboxes.module:32
 msgid "Insert horizontal scale factor (1 = 100%)"
 msgstr ""
 
 #: lib/layouts/graphicboxes.module:38
-#, fuzzy
 msgid "V-Factor"
-msgstr "Факт"
+msgstr ""
 
 #: lib/layouts/graphicboxes.module:39
 msgid "Insert vertical scale factor (1 = 100%)"
-msgstr ""
+msgstr "Вставить вертикальный масштаб (1 = 100%)"
 
 #: lib/layouts/graphicboxes.module:43 lib/layouts/graphicboxes.module:45
 msgid "Resizebox"
@@ -12550,14 +12431,12 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/hpstatement.module:11 lib/layouts/hpstatement.module:16
-#, fuzzy
 msgid "H-P number"
-msgstr "Нет числа"
+msgstr ""
 
 #: lib/layouts/hpstatement.module:35 lib/layouts/hpstatement.module:38
-#, fuzzy
 msgid "H-P statement"
-msgstr "&Размещение"
+msgstr ""
 
 #: lib/layouts/hpstatement.module:40
 #, fuzzy
@@ -12794,9 +12673,8 @@ msgid "Mathematics Subject Classification number:"
 msgstr "обновлённых спецификаций классов документов."
 
 #: lib/layouts/iopart.layout:239
-#, fuzzy
 msgid "submitto"
-msgstr "submitto"
+msgstr ""
 
 #: lib/layouts/iopart.layout:242
 msgid "submit to paper:"
@@ -12823,9 +12701,8 @@ msgid "KEY WORDS:"
 msgstr "КЛЮЧЕВЫЕ СЛОВА:"
 
 #: lib/layouts/isprs.layout:129
-#, fuzzy
 msgid "Commission"
-msgstr "Условие"
+msgstr ""
 
 #: lib/layouts/isprs.layout:220
 msgid "ACKNOWLEDGEMENTS"
@@ -12857,20 +12734,17 @@ msgstr "Основной автор"
 
 #: lib/layouts/iucr.layout:117 lib/layouts/iucr.layout:150
 #: lib/layouts/iucr.layout:181
-#, fuzzy
 msgid "Affiliation Key"
-msgstr "Affiliation"
+msgstr ""
 
 #: lib/layouts/iucr.layout:118
-#, fuzzy
 msgid "Affiliation key of the author"
-msgstr "Название принтера по умолчанию"
+msgstr ""
 
 #: lib/layouts/iucr.layout:122 lib/layouts/iucr.layout:123
 #: lib/layouts/iucr.layout:155 lib/layouts/iucr.layout:156
-#, fuzzy
 msgid "Forename"
-msgstr "Параметры"
+msgstr ""
 
 #: lib/layouts/iucr.layout:144
 msgid "Co Author"
@@ -12881,24 +12755,20 @@ msgid "Co-author"
 msgstr "Соавтор"
 
 #: lib/layouts/iucr.layout:151
-#, fuzzy
 msgid "Affiliation key of the co-author"
-msgstr "Название принтера по умолчанию"
+msgstr ""
 
 #: lib/layouts/iucr.layout:160
-#, fuzzy
 msgid "Short Author"
-msgstr "Горячие клавиши|ш"
+msgstr ""
 
 #: lib/layouts/iucr.layout:163
-#, fuzzy
 msgid "Short author:"
-msgstr "Горячие клавиши|ш"
+msgstr ""
 
 #: lib/layouts/iucr.layout:182
-#, fuzzy
 msgid "Affiliation key"
-msgstr "Affiliation"
+msgstr ""
 
 #: lib/layouts/iucr.layout:197
 msgid "Keyword:"
@@ -12913,38 +12783,32 @@ msgid "Vita:"
 msgstr ""
 
 #: lib/layouts/iucr.layout:206
-#, fuzzy
 msgid "PDB reference"
-msgstr "Настройки"
+msgstr ""
 
 #: lib/layouts/iucr.layout:209
-#, fuzzy
 msgid "PDB reference:"
-msgstr "Настройки"
+msgstr ""
 
 #: lib/layouts/iucr.layout:212
-#, fuzzy
 msgid "Optional name"
-msgstr "Рамка подписи"
+msgstr ""
 
 #: lib/layouts/iucr.layout:216
-#, fuzzy
 msgid "NDB reference"
-msgstr "<ссылка>"
+msgstr ""
 
 #: lib/layouts/iucr.layout:219
-#, fuzzy
 msgid "NDB reference:"
-msgstr "Перекрёстная ссылка"
+msgstr ""
 
 #: lib/layouts/iucr.layout:222 lib/layouts/iucr.layout:225
 msgid "Synopsis"
 msgstr "Краткий обзор"
 
 #: lib/layouts/jarticle.layout:3
-#, fuzzy
 msgid "Japanese Article (Standard Class)"
-msgstr "Beamer Article (стандартный класс)"
+msgstr "Japanese Article (стандартный класс)"
 
 #: lib/layouts/jasatex.layout:3
 msgid "Journal of the Acoustical Society of America (JASA)"
@@ -12952,23 +12816,20 @@ msgstr "Journal of the Acoustical Society of America (JASA)"
 
 # ?
 #: lib/layouts/jasatex.layout:122
-#, fuzzy
 msgid "Alternative Affiliation"
-msgstr "Alternative affiliation:"
+msgstr ""
 
 #: lib/layouts/jasatex.layout:127
-#, fuzzy
 msgid "Affiliation Prefix"
-msgstr "Affiliation"
+msgstr ""
 
 #: lib/layouts/jasatex.layout:128
 msgid "A prefix like 'Also at '"
 msgstr ""
 
 #: lib/layouts/jasatex.layout:220 lib/layouts/revtex4-1.layout:173
-#, fuzzy
 msgid "PACS numbers:"
-msgstr "Номер страницы"
+msgstr ""
 
 #: lib/layouts/jasatex.layout:223
 msgid "Preprint number"
@@ -12979,9 +12840,8 @@ msgid "Preprint number:"
 msgstr "Номер препринта:"
 
 #: lib/layouts/jasatex.layout:247 lib/layouts/jasatex.layout:251
-#, fuzzy
 msgid "Online citation"
-msgstr "Вставить ссылку"
+msgstr ""
 
 #: lib/layouts/jbook.layout:3
 msgid "Japanese Book (Standard Class)"
@@ -13392,9 +13252,8 @@ msgid "Author Running"
 msgstr ""
 
 #: lib/layouts/llncs.layout:208
-#, fuzzy
 msgid "Author Running:"
-msgstr "Author_Running"
+msgstr ""
 
 # TOC - Table of Contents
 # Автор содержания?
@@ -13510,9 +13369,8 @@ msgid "Short Title (TOC)|S"
 msgstr "Короткое заглавие (для оглавления)"
 
 #: lib/layouts/memoir.layout:72 lib/layouts/memoir.layout:87
-#, fuzzy
 msgid "The chapter as it appears in the table of contents"
-msgstr "Метка, как она будет показываться в документе"
+msgstr ""
 
 #: lib/layouts/memoir.layout:76 lib/layouts/memoir.layout:100
 #: lib/layouts/memoir.layout:115 lib/layouts/memoir.layout:130
@@ -13522,59 +13380,48 @@ msgid "Short Title (Header)"
 msgstr "Короткое заглавие (для шапки)"
 
 #: lib/layouts/memoir.layout:77
-#, fuzzy
 msgid "The chapter as it appears in the running headers"
-msgstr "Метка, как она будет показываться в документе"
+msgstr ""
 
 #: lib/layouts/memoir.layout:96
-#, fuzzy
 msgid "The section as it appears in the table of contents"
-msgstr "Метка, как она будет показываться в документе"
+msgstr ""
 
 #: lib/layouts/memoir.layout:101
-#, fuzzy
 msgid "The section as it appears in the running headers"
-msgstr "Метка, как она будет показываться в документе"
+msgstr ""
 
 #: lib/layouts/memoir.layout:111
-#, fuzzy
 msgid "The subsection as it appears in the table of contents"
-msgstr "Метка, как она будет показываться в документе"
+msgstr ""
 
 #: lib/layouts/memoir.layout:116
-#, fuzzy
 msgid "The subsection as it appears in the running headers"
-msgstr "Метка, как она будет показываться в документе"
+msgstr ""
 
 #: lib/layouts/memoir.layout:126
-#, fuzzy
 msgid "The subsubsection as it appears in the table of contents"
-msgstr "Метка, как она будет показываться в документе"
+msgstr ""
 
 #: lib/layouts/memoir.layout:131
-#, fuzzy
 msgid "The subsubsection as it appears in the running headers"
-msgstr "Метка, как она будет показываться в документе"
+msgstr ""
 
 #: lib/layouts/memoir.layout:141
-#, fuzzy
 msgid "The paragraph as it appears in the table of contents"
-msgstr "Метка, как она будет показываться в документе"
+msgstr ""
 
 #: lib/layouts/memoir.layout:146
-#, fuzzy
 msgid "The paragraph as it appears in the running headers"
-msgstr "Метка, как она будет показываться в документе"
+msgstr ""
 
 #: lib/layouts/memoir.layout:156
-#, fuzzy
 msgid "The subparagraph as it appears in the table of contents"
-msgstr "Метка, как она будет показываться в документе"
+msgstr ""
 
 #: lib/layouts/memoir.layout:161
-#, fuzzy
 msgid "The subparagraph as it appears in the running headers"
-msgstr "Метка, как она будет показываться в документе"
+msgstr ""
 
 #: lib/layouts/memoir.layout:168
 msgid "Chapterprecis"
@@ -13601,9 +13448,8 @@ msgid "Poemtitle"
 msgstr "НазваниеПоэмы"
 
 #: lib/layouts/memoir.layout:225 lib/layouts/memoir.layout:246
-#, fuzzy
 msgid "The poem title as it appears in the table of contents"
-msgstr "Метка, как она будет показываться в документе"
+msgstr ""
 
 #: lib/layouts/memoir.layout:230
 #, fuzzy
@@ -13637,9 +13483,8 @@ msgid "CVStyle"
 msgstr "Стиль"
 
 #: lib/layouts/moderncv.layout:46
-#, fuzzy
 msgid "CV Style:"
-msgstr "Стиль ссылок на источник:"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:52
 msgid "Style Options"
@@ -13650,14 +13495,12 @@ msgid "Options for the CV style"
 msgstr "Настройки для стиля CV"
 
 #: lib/layouts/moderncv.layout:57
-#, fuzzy
 msgid "CVColor"
-msgstr "Цветное"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:60
-#, fuzzy
 msgid "CV Color Scheme:"
-msgstr "Цветное"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:63
 msgid "CVIcons"
@@ -13665,28 +13508,24 @@ msgstr ""
 
 # ?
 #: lib/layouts/moderncv.layout:66
-#, fuzzy
 msgid "CV Icon Set:"
-msgstr "&Столбцов разделитель:"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:69
-#, fuzzy
 msgid "CVColumnWidth"
-msgstr "От ширины столбца в %"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:72
 msgid "Column Width:"
 msgstr "Ширина колонки:"
 
 #: lib/layouts/moderncv.layout:75
-#, fuzzy
 msgid "PDF Page Mode"
-msgstr "PDFСтраницы"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:78
-#, fuzzy
 msgid "PDF Page Mode:"
-msgstr "PDFСтраницы"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:94
 msgid "First name"
@@ -13723,19 +13562,16 @@ msgid "can be fixed, mobile or fax"
 msgstr ""
 
 #: lib/layouts/moderncv.layout:189
-#, fuzzy
 msgid "Social"
-msgstr "Особенный"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:192
-#, fuzzy
 msgid "Social:"
-msgstr "Особенный"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:195
-#, fuzzy
 msgid "Name of the social network"
-msgstr "Название принтера по умолчанию"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:199
 #, fuzzy
@@ -13880,29 +13716,24 @@ msgid "Computer"
 msgstr "Компьютер"
 
 #: lib/layouts/moderncv.layout:475
-#, fuzzy
 msgid "MakeCVtitle"
-msgstr "НазваниеПоэмы"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:478
-#, fuzzy
 msgid "Make CV Title"
-msgstr "Заголовок содержания:"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:485
-#, fuzzy
 msgid "MakeLetterTitle"
-msgstr "MathLetters"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:488
-#, fuzzy
 msgid "Make Letter Title"
-msgstr "MathLetters"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:492
-#, fuzzy
 msgid "MakeLetterClosing"
-msgstr "MathLetters"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:495
 #, fuzzy
@@ -13927,18 +13758,16 @@ msgid "Enclosing"
 msgstr "Эпилог"
 
 #: lib/layouts/moderncv.layout:581 lib/layouts/svcommon.inc:519
-#, fuzzy
 msgid "Alternative Name"
-msgstr "&Другие языки:"
+msgstr ""
 
 #: lib/layouts/moderncv.layout:582
 msgid "Alternative instead of 'Enclosure'"
 msgstr ""
 
 #: lib/layouts/moderncv.layout:586
-#, fuzzy
 msgid "Enclosing:"
-msgstr "Эпилог"
+msgstr "Приложение:"
 
 #: lib/layouts/multicol.module:2 lib/layouts/multicol.module:11
 msgid "Multiple Columns"
@@ -14080,100 +13909,81 @@ msgstr ""
 #: lib/layouts/paralist.module:91 lib/layouts/paralist.module:103
 #: lib/layouts/paralist.module:112 lib/layouts/paralist.module:121
 #: lib/layouts/paralist.module:133
-#, fuzzy
 msgid "Optional arguments for this list (see paralist manual)"
-msgstr "Убрать последний параметр"
+msgstr ""
 
 #: lib/layouts/paralist.module:47
-#, fuzzy
 msgid "AsParagraphItem"
-msgstr "Абзац"
+msgstr ""
 
 #: lib/layouts/paralist.module:51
-#, fuzzy
 msgid "As Paragraph Itemize Options"
-msgstr "Перечисляемый список"
+msgstr ""
 
 #: lib/layouts/paralist.module:56
-#, fuzzy
 msgid "InParagraphItem"
-msgstr "Абзац"
+msgstr ""
 
 #: lib/layouts/paralist.module:60
-#, fuzzy
 msgid "In Paragraph Itemize Options"
-msgstr "Перечисляемый список"
+msgstr ""
 
 #: lib/layouts/paralist.module:65
-#, fuzzy
 msgid "CompactItem"
-msgstr "Создать запись"
+msgstr ""
 
 #: lib/layouts/paralist.module:72
-#, fuzzy
 msgid "Compact Itemize Options"
-msgstr "Перечисляемый список"
+msgstr ""
 
 #: lib/layouts/paralist.module:77
-#, fuzzy
 msgid "AsParagraphEnum"
-msgstr "Абзац"
+msgstr ""
 
 #: lib/layouts/paralist.module:81
-#, fuzzy
 msgid "As Paragraph Enumerate Options"
-msgstr "Параметры LaTeX"
+msgstr ""
 
 #: lib/layouts/paralist.module:86
-#, fuzzy
 msgid "InParagraphEnum"
-msgstr "Абзац"
+msgstr ""
 
 #: lib/layouts/paralist.module:90
-#, fuzzy
 msgid "In Paragraph Enumerate Options"
-msgstr "Параметры LaTeX"
+msgstr ""
 
 # ?
 #: lib/layouts/paralist.module:95
-#, fuzzy
 msgid "CompactEnum"
-msgstr "Имя данных:"
+msgstr ""
 
 #: lib/layouts/paralist.module:102
-#, fuzzy
 msgid "Compact Enumerate Options"
-msgstr "Параметры LaTeX"
+msgstr ""
 
 #: lib/layouts/paralist.module:107
-#, fuzzy
 msgid "AsParagraphDescr"
-msgstr "Абзац"
+msgstr ""
 
 #: lib/layouts/paralist.module:111
-#, fuzzy
 msgid "As Paragraph Description Options"
-msgstr "Описание:"
+msgstr ""
 
 #: lib/layouts/paralist.module:116
-#, fuzzy
 msgid "InParagraphDescr"
-msgstr "Абзац"
+msgstr ""
 
 #: lib/layouts/paralist.module:120
-#, fuzzy
 msgid "In Paragraph Description Options"
-msgstr "Описание:"
+msgstr ""
 
 #: lib/layouts/paralist.module:125
-#, fuzzy
 msgid "CompactDescr"
-msgstr "Копий"
+msgstr ""
 
 #: lib/layouts/paralist.module:132
-#, fuzzy
 msgid "Compact Description Options"
-msgstr "Описание:"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:2
 msgid "PDF Comments"
@@ -14200,18 +14010,16 @@ msgid "PDF-comment avatar:"
 msgstr ""
 
 #: lib/layouts/pdfcomment.module:30
-#, fuzzy
 msgid "Name of the Avatar"
-msgstr "Название принтера по умолчанию"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:41
 msgid "Define PDF-Comment Style"
 msgstr ""
 
 #: lib/layouts/pdfcomment.module:44
-#, fuzzy
 msgid "PDF-comment style:"
-msgstr "ярлык коментария"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:47
 msgid "Name of the style"
@@ -14246,9 +14054,8 @@ msgid "PDF (Setup)"
 msgstr "PDF (настройка)"
 
 #: lib/layouts/pdfcomment.module:82
-#, fuzzy
 msgid "PDF-Comment setup options"
-msgstr "Настройки документа"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:83 lib/layouts/pdfcomment.module:106
 #: lib/layouts/pdfcomment.module:222
@@ -14269,9 +14076,8 @@ msgid "PDF"
 msgstr "PDF"
 
 #: lib/layouts/pdfcomment.module:105
-#, fuzzy
 msgid "PDFComment Options"
-msgstr "Настройки документа"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:107
 msgid "Insert PDFComment options here (see pdfcomment manual)"
@@ -14292,9 +14098,8 @@ msgid "PDF-Markup"
 msgstr ""
 
 #: lib/layouts/pdfcomment.module:124
-#, fuzzy
 msgid "PDF (Markup)"
-msgstr "PDF (ps2pdf)"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:129
 msgid "Insert the comment to the marked-up text here"
@@ -14305,48 +14110,40 @@ msgid "PDF-Freetext"
 msgstr ""
 
 #: lib/layouts/pdfcomment.module:135
-#, fuzzy
 msgid "PDF (Freetext)"
-msgstr "PDF (pdflatex)"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:139
-#, fuzzy
 msgid "PDF-Square"
-msgstr "square"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:141
-#, fuzzy
 msgid "PDF (Square)"
-msgstr "LaTeX (pLaTeX)"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:145
-#, fuzzy
 msgid "PDF-Circle"
-msgstr "circledS"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:147
-#, fuzzy
 msgid "PDF (Circle)"
-msgstr "circledS"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:151
 msgid "PDF-Line"
 msgstr ""
 
 #: lib/layouts/pdfcomment.module:153
-#, fuzzy
 msgid "PDF (Line)"
-msgstr "LaTeX (pLaTeX)"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:157
-#, fuzzy
 msgid "PDF-Sideline"
-msgstr "Заметка на полях"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:159
-#, fuzzy
 msgid "PDF (Sideline)"
-msgstr "PDF (pdflatex)"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:166
 msgid "Insert the comment here"
@@ -14357,32 +14154,28 @@ msgid "PDF-Reply"
 msgstr ""
 
 #: lib/layouts/pdfcomment.module:172
-#, fuzzy
 msgid "PDF (Reply)"
-msgstr "PDF (pdflatex)"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:180
 msgid "PDF-Tooltip"
 msgstr ""
 
 #: lib/layouts/pdfcomment.module:182
-#, fuzzy
 msgid "PDF (Tooltip)"
-msgstr "PDF (dvipdfm)"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:189
-#, fuzzy
 msgid "Tooltip Text"
-msgstr "Копировать|К"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:190
 msgid "Tooltip"
 msgstr "Всплывающая подсказка"
 
 #: lib/layouts/pdfcomment.module:192
-#, fuzzy
 msgid "Insert the tooltip text here"
-msgstr "Название принтера по умолчанию"
+msgstr ""
 
 #: lib/layouts/pdfcomment.module:200
 msgid "List of PDF Comments"
@@ -14416,46 +14209,40 @@ msgid "Begin PDF Form"
 msgstr ""
 
 #: lib/layouts/pdfform.module:19
-#, fuzzy
 msgid "PDF form"
-msgstr "TOC_Author"
+msgstr ""
 
 #: lib/layouts/pdfform.module:28 lib/layouts/pdfform.module:65
-#, fuzzy
 msgid "PDF Form Parameters"
-msgstr "Больше параметров"
+msgstr ""
 
 #: lib/layouts/pdfform.module:29 lib/layouts/pdfform.module:66
 msgid "Params"
 msgstr ""
 
 #: lib/layouts/pdfform.module:30 lib/layouts/pdfform.module:67
-#, fuzzy
 msgid "Insert PDF form parameters here"
-msgstr "Невозможно изменить число колонок в '%1$s'"
+msgstr ""
 
 #: lib/layouts/pdfform.module:40 lib/layouts/pdfform.module:43
 msgid "End PDF Form"
 msgstr ""
 
 #: lib/layouts/pdfform.module:47
-#, fuzzy
 msgid "PDF Link Setup"
-msgstr "PDF (ps2pdf)"
+msgstr ""
 
 #: lib/layouts/pdfform.module:50
-#, fuzzy
 msgid "PDF link setup"
-msgstr "PDF (ps2pdf)"
+msgstr ""
 
 #: lib/layouts/pdfform.module:58 lib/layouts/pdfform.module:63
 msgid "TextField"
 msgstr "Текст"
 
 #: lib/layouts/pdfform.module:78 lib/layouts/pdfform.module:81
-#, fuzzy
 msgid "CheckBox"
-msgstr "check"
+msgstr ""
 
 #: lib/layouts/pdfform.module:84 lib/layouts/pdfform.module:87
 msgid "ChoiceMenu"
@@ -14474,24 +14261,20 @@ msgid "PushButton"
 msgstr ""
 
 #: lib/layouts/pdfform.module:102 lib/layouts/pdfform.module:105
-#, fuzzy
 msgid "SubmitButton"
-msgstr "submitto"
+msgstr ""
 
 #: lib/layouts/pdfform.module:108 lib/layouts/pdfform.module:111
-#, fuzzy
 msgid "ResetButton"
-msgstr "Сбросить"
+msgstr ""
 
 #: lib/layouts/pdfform.module:118 lib/layouts/pdfform.module:121
-#, fuzzy
 msgid "PDFAction"
-msgstr "Раздел"
+msgstr ""
 
 #: lib/layouts/pdfform.module:126
-#, fuzzy
 msgid "The name of the PDF action"
-msgstr "Центр вращения"
+msgstr ""
 
 #: lib/layouts/pdfform.module:134
 #, fuzzy
@@ -14499,88 +14282,72 @@ msgid "Text Field Style"
 msgstr "Стиль текста"
 
 #: lib/layouts/pdfform.module:137
-#, fuzzy
 msgid "Default text field style"
-msgstr "&Принтер по умолчанию:"
+msgstr ""
 
 #: lib/layouts/pdfform.module:141
-#, fuzzy
 msgid "Submit Button Style"
-msgstr "Стиль &ссылок на источник"
+msgstr ""
 
 #: lib/layouts/pdfform.module:144
-#, fuzzy
 msgid "Default submit button style"
-msgstr "&Принтер по умолчанию:"
+msgstr ""
 
 #: lib/layouts/pdfform.module:147
-#, fuzzy
 msgid "Push Button Style"
-msgstr "Стиль &ссылок на источник"
+msgstr ""
 
 #: lib/layouts/pdfform.module:150
-#, fuzzy
 msgid "Default push button style"
-msgstr "&Принтер по умолчанию:"
+msgstr ""
 
 #: lib/layouts/pdfform.module:153
-#, fuzzy
 msgid "Check Box Style"
-msgstr "Стиль текста"
+msgstr ""
 
 #: lib/layouts/pdfform.module:156
-#, fuzzy
 msgid "Default check box style"
-msgstr "&Принтер по умолчанию:"
+msgstr ""
 
 #: lib/layouts/pdfform.module:159
-#, fuzzy
 msgid "Reset Button Style"
-msgstr "Стиль &ссылок на источник"
+msgstr ""
 
 #: lib/layouts/pdfform.module:162
-#, fuzzy
 msgid "Default reset button style"
-msgstr "&Принтер по умолчанию:"
+msgstr ""
 
 #: lib/layouts/pdfform.module:165
-#, fuzzy
 msgid "List Box Style"
-msgstr "[Список слайдов]"
+msgstr ""
 
 #: lib/layouts/pdfform.module:168
-#, fuzzy
 msgid "Default list box style"
-msgstr "&Принтер по умолчанию:"
+msgstr ""
 
 #: lib/layouts/pdfform.module:171
-#, fuzzy
 msgid "Combo Box Style"
-msgstr "&Цветные ссылки"
+msgstr ""
 
 #: lib/layouts/pdfform.module:174
-#, fuzzy
 msgid "Default combo box style"
-msgstr "&Принтер по умолчанию:"
+msgstr ""
 
 #: lib/layouts/pdfform.module:177
 msgid "Popdown Box Style"
 msgstr ""
 
 #: lib/layouts/pdfform.module:180
-#, fuzzy
 msgid "Default popdown box style"
-msgstr "&Принтер по умолчанию:"
+msgstr ""
 
 #: lib/layouts/pdfform.module:183
-#, fuzzy
 msgid "Radio Box Style"
-msgstr "Стиль &ссылок на источник"
+msgstr ""
 
 #: lib/layouts/pdfform.module:186
-#, fuzzy
 msgid "Default radio box style"
-msgstr "&Принтер по умолчанию:"
+msgstr ""
 
 #: lib/layouts/powerdot.layout:3
 msgid "Powerdot"
@@ -14614,9 +14381,8 @@ msgid "~=~"
 msgstr "~=~"
 
 #: lib/layouts/powerdot.layout:180
-#, fuzzy
 msgid "WideSlide"
-msgstr "Слайд"
+msgstr "ШирокийСлайд"
 
 #: lib/layouts/powerdot.layout:191
 msgid "EmptySlide"
@@ -14685,9 +14451,8 @@ msgid "On Slides"
 msgstr "На слайдах"
 
 #: lib/layouts/powerdot.layout:594
-#, fuzzy
 msgid "Overlay Specification|S"
-msgstr "Выделение|В"
+msgstr ""
 
 #: lib/layouts/powerdot.layout:595
 msgid "Specify the overlay settings (see powerdot manual)"
@@ -14722,9 +14487,8 @@ msgid "Ingredients"
 msgstr "Ингредиенты"
 
 #: lib/layouts/recipebook.layout:118
-#, fuzzy
 msgid "Ingredients Header"
-msgstr "Благодарности"
+msgstr ""
 
 #: lib/layouts/recipebook.layout:119
 msgid "Specify an optional ingredients header"
@@ -14747,29 +14511,25 @@ msgid "REVTeX (V. 4.1)"
 msgstr "REVTeX (V. 4.1)"
 
 #: lib/layouts/revtex4-1.layout:85 lib/layouts/revtex4.layout:152
-#, fuzzy
 msgid "Affiliation (alternate)"
-msgstr "Affiliation"
+msgstr ""
 
 #: lib/layouts/revtex4-1.layout:88 lib/layouts/revtex4.layout:161
-#, fuzzy
 msgid "Affiliation (alternate):"
-msgstr "Affiliation"
+msgstr ""
 
 # ?
 #: lib/layouts/revtex4-1.layout:90 lib/layouts/revtex4.layout:158
-#, fuzzy
 msgid "Alternate Affiliation Option"
-msgstr "Alternative affiliation:"
+msgstr ""
 
 #: lib/layouts/revtex4-1.layout:91 lib/layouts/revtex4.layout:159
 msgid "Optional argument to the altaffiliation command"
 msgstr ""
 
 #: lib/layouts/revtex4-1.layout:97 lib/layouts/revtex4.layout:165
-#, fuzzy
 msgid "Affiliation (none)"
-msgstr "Affiliation"
+msgstr ""
 
 #: lib/layouts/revtex4-1.layout:100 lib/layouts/revtex4.layout:168
 msgid "No affiliation"
@@ -14780,9 +14540,8 @@ msgid "Electronic Address:"
 msgstr "Электронный адрес:"
 
 #: lib/layouts/revtex4-1.layout:119 lib/layouts/revtex4.layout:207
-#, fuzzy
 msgid "Electronic Address Option|s"
-msgstr "Обратный адрес"
+msgstr ""
 
 #: lib/layouts/revtex4-1.layout:120 lib/layouts/revtex4.layout:208
 msgid "Optional argument to the email command"
@@ -14819,9 +14578,8 @@ msgid "acknowledgments"
 msgstr "благодарности"
 
 #: lib/layouts/revtex4-1.layout:231
-#, fuzzy
 msgid "Ruled Table"
-msgstr "Размещение таблицы"
+msgstr ""
 
 #: lib/layouts/revtex4-1.layout:233 lib/layouts/revtex4-1.layout:241
 #: lib/layouts/revtex4-1.layout:249 src/frontends/qt4/GuiSymbols.cpp:122
@@ -14845,33 +14603,28 @@ msgid "List of Videos"
 msgstr "Список видео"
 
 #: lib/layouts/revtex4-1.layout:289
-#, fuzzy
 msgid "Float Link"
-msgstr "Настройки плавающих объектов"
+msgstr ""
 
 #: lib/layouts/revtex4-1.layout:291
-#, fuzzy
 msgid "Float link"
-msgstr "Настройки плавающих объектов"
+msgstr ""
 
 #: lib/layouts/revtex4-1.layout:302
 msgid "lowercase text"
 msgstr "строчные|с"
 
 #: lib/layouts/revtex4-1.layout:314
-#, fuzzy
 msgid "Online cite"
-msgstr "Вставить ссылку"
+msgstr ""
 
 #: lib/layouts/revtex4-1.layout:318
-#, fuzzy
 msgid "online cite"
-msgstr "Вставить ссылку"
+msgstr ""
 
 #: lib/layouts/revtex4-1.layout:320
-#, fuzzy
 msgid "Text behind"
-msgstr "От ширины текста в %"
+msgstr ""
 
 #: lib/layouts/revtex4-1.layout:321
 msgid "text behind the cite"
@@ -14882,14 +14635,12 @@ msgid "REVTeX (V. 4)"
 msgstr "REVTeX (V. 4)"
 
 #: lib/layouts/revtex4.layout:173
-#, fuzzy
 msgid "AltAffiliation"
-msgstr "Affiliation"
+msgstr ""
 
 #: lib/layouts/revtex4.layout:267
-#, fuzzy
 msgid "PACS number:"
-msgstr "Номер страницы"
+msgstr ""
 
 #: lib/layouts/rsphrase.module:2
 msgid "Risk and Safety Statements"
@@ -14915,9 +14666,8 @@ msgid "Safety phrase"
 msgstr ""
 
 #: lib/layouts/rsphrase.module:46
-#, fuzzy
 msgid "Phrase Text"
-msgstr "Благодарности"
+msgstr ""
 
 #: lib/layouts/rsphrase.module:47
 msgid "Argument for statements that requires to specify additional information"
@@ -14928,9 +14678,8 @@ msgid "S phrase:"
 msgstr ""
 
 #: lib/layouts/sciposter.layout:3
-#, fuzzy
 msgid "SciPoster"
-msgstr "Postvermerk"
+msgstr ""
 
 #: lib/layouts/sciposter.layout:34 lib/layouts/sigplanconf.layout:72
 msgid "Conference"
@@ -15064,9 +14813,8 @@ msgid "Dictum"
 msgstr "Афоризм"
 
 #: lib/layouts/scrclass.inc:335
-#, fuzzy
 msgid "Dictum Author"
-msgstr "Первый автор"
+msgstr ""
 
 #: lib/layouts/scrclass.inc:336
 msgid "The author of this dictum"
@@ -15097,9 +14845,8 @@ msgid "Specialmail"
 msgstr "Specialmail"
 
 #: lib/layouts/scrlettr.layout:182 lib/layouts/scrlttr2.layout:264
-#, fuzzy
 msgid "Specialmail:"
-msgstr "Specialmail:"
+msgstr ""
 
 #: lib/layouts/scrlettr.layout:196 lib/layouts/scrlttr2.layout:280
 msgid "Title:"
@@ -15190,9 +14937,8 @@ msgid "KOMA-Script Report"
 msgstr "KOMA-Script Report"
 
 #: lib/layouts/sectionbox.module:2
-#, fuzzy
 msgid "Section Boxes"
-msgstr "Раздел"
+msgstr ""
 
 #: lib/layouts/sectionbox.module:6
 msgid ""
@@ -15200,19 +14946,16 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/sectionbox.module:11
-#, fuzzy
 msgid "SectionBox"
-msgstr "Раздел"
+msgstr ""
 
 #: lib/layouts/sectionbox.module:13
-#, fuzzy
 msgid "Section Box"
-msgstr "Раздел"
+msgstr ""
 
 #: lib/layouts/sectionbox.module:22
-#, fuzzy
 msgid "Section Box Width|S"
-msgstr "Выделение|В"
+msgstr ""
 
 #: lib/layouts/sectionbox.module:23
 #, fuzzy
@@ -15302,9 +15045,8 @@ msgid "ProgressContents"
 msgstr "ProgressContents"
 
 #: lib/layouts/seminar.layout:80
-#, fuzzy
 msgid "Progress Contents"
-msgstr "ProgressContents"
+msgstr ""
 
 #: lib/layouts/seminar.layout:101
 msgid "Landscape Slide:"
@@ -15335,9 +15077,8 @@ msgid "[Progress Contents]"
 msgstr "[Содержимое прогресса]"
 
 #: lib/layouts/shapepar.module:2
-#, fuzzy
 msgid "Custom Paragraph Shapes"
-msgstr "&Делать отступ в начале абзаца"
+msgstr ""
 
 #: lib/layouts/shapepar.module:7
 msgid ""
@@ -15387,9 +15128,8 @@ msgid "Candle"
 msgstr "Свеча"
 
 #: lib/layouts/shapepar.module:81
-#, fuzzy
 msgid "Drop down"
-msgstr "Отбрасывать тень"
+msgstr ""
 
 #: lib/layouts/shapepar.module:86
 msgid "Drop up"
@@ -15432,9 +15172,8 @@ msgid "Specification of the shape"
 msgstr ""
 
 #: lib/layouts/shapepar.module:132
-#, fuzzy
 msgid "Shapepar"
-msgstr "На&чертание:"
+msgstr ""
 
 #: lib/layouts/siamltex.layout:3
 msgid "Society for Industrial and Applied Mathematics (SIAM)"
@@ -15494,24 +15233,20 @@ msgid "Copyright data:"
 msgstr "Данные об авторских правах:"
 
 #: lib/layouts/sigplanconf.layout:112
-#, fuzzy
 msgid "TitleBanner"
-msgstr "Заметка в подвал"
+msgstr ""
 
 #: lib/layouts/sigplanconf.layout:115
-#, fuzzy
 msgid "Title banner:"
-msgstr "Заметка в подвал"
+msgstr ""
 
 #: lib/layouts/sigplanconf.layout:119
-#, fuzzy
 msgid "PreprintFooter"
-msgstr "Препринт"
+msgstr ""
 
 #: lib/layouts/sigplanconf.layout:122
-#, fuzzy
 msgid "Preprint footer:"
-msgstr "Препринт"
+msgstr ""
 
 #: lib/layouts/sigplanconf.layout:129
 msgid "Digital Object Identifier:"
@@ -15817,9 +15552,8 @@ msgid "Part Title"
 msgstr "Заглавие части"
 
 #: lib/layouts/svcommon.inc:142
-#, fuzzy
 msgid "Title of this part"
-msgstr "Заметка в подвал"
+msgstr ""
 
 #: lib/layouts/svcommon.inc:155 lib/layouts/svmult.layout:123
 #, fuzzy
@@ -15867,34 +15601,28 @@ msgid "TOC author:"
 msgstr "Автор TOC:"
 
 #: lib/layouts/svcommon.inc:400
-#, fuzzy
 msgid "Running Title"
-msgstr "RunningTitle"
+msgstr ""
 
 #: lib/layouts/svcommon.inc:407
-#, fuzzy
 msgid "Running Author"
-msgstr "RunningAuthor"
+msgstr ""
 
 #: lib/layouts/svcommon.inc:413 lib/layouts/svmult.layout:115
-#, fuzzy
 msgid "Running Chapter"
-msgstr "RunningAuthor"
+msgstr ""
 
 #: lib/layouts/svcommon.inc:418
-#, fuzzy
 msgid "Running chapter:"
-msgstr "RunningAuthor"
+msgstr ""
 
 #: lib/layouts/svcommon.inc:421
-#, fuzzy
 msgid "Running Section"
-msgstr "RunningTitle"
+msgstr ""
 
 #: lib/layouts/svcommon.inc:424
-#, fuzzy
 msgid "Running section:"
-msgstr "RunningTitle"
+msgstr ""
 
 #: lib/layouts/svcommon.inc:448
 msgid "Abstract*"
@@ -15971,9 +15699,8 @@ msgstr "Институт #"
 
 #: lib/layouts/svglobal.layout:135 lib/layouts/svjog.layout:139
 #: lib/layouts/svprobth.layout:169
-#, fuzzy
 msgid "Corr Author:"
-msgstr "TOC_Author"
+msgstr ""
 
 #: lib/layouts/svglobal.layout:139 lib/layouts/svjog.layout:143
 #: lib/layouts/svprobth.layout:173
@@ -16004,9 +15731,8 @@ msgid "CRSC"
 msgstr "CRSC"
 
 #: lib/layouts/svglobal3.layout:82
-#, fuzzy
 msgid "CR Subject Classification"
-msgstr "AMS классификации темы:"
+msgstr ""
 
 #: lib/layouts/svglobal3.layout:87
 msgid "Solution \\thesolution"
@@ -16123,28 +15849,24 @@ msgid "Color Box (Dynamic)"
 msgstr ""
 
 #: lib/layouts/tcolorbox.module:33
-#, fuzzy
 msgid "Fit Color Box"
-msgstr "Цвет шрифта"
+msgstr ""
 
 #: lib/layouts/tcolorbox.module:35
 msgid "Color Box (Fit Contents)"
 msgstr ""
 
 #: lib/layouts/tcolorbox.module:39 lib/layouts/tcolorbox.module:41
-#, fuzzy
 msgid "Raster Color Box"
-msgstr "Цвет шрифта"
+msgstr ""
 
 #: lib/layouts/tcolorbox.module:50
-#, fuzzy
 msgid "Subtitle Options"
-msgstr "Параметры математики"
+msgstr ""
 
 #: lib/layouts/tcolorbox.module:51
-#, fuzzy
 msgid "Insert the options here"
-msgstr "Невозможно изменить число колонок в '%1$s'"
+msgstr ""
 
 #: lib/layouts/tcolorbox.module:56
 #, fuzzy
@@ -16160,18 +15882,16 @@ msgid "-----"
 msgstr "-----"
 
 #: lib/layouts/tcolorbox.module:81
-#, fuzzy
 msgid "Color Box Line"
-msgstr "&Цветные ссылки"
+msgstr ""
 
 #: lib/layouts/tcolorbox.module:90 lib/layouts/tcolorbox.module:105
 msgid "Color Box Setup"
 msgstr ""
 
 #: lib/layouts/tcolorbox.module:118 lib/layouts/tcolorbox.module:121
-#, fuzzy
 msgid "New Color Box Type"
-msgstr "Цвета"
+msgstr ""
 
 #: lib/layouts/tcolorbox.module:129
 msgid "New Box Options"
@@ -16206,14 +15926,12 @@ msgid "Custom Color Box 1"
 msgstr "Пользовательский цветной блок 1"
 
 #: lib/layouts/tcolorbox.module:159
-#, fuzzy
 msgid "More Color Box Options"
-msgstr "Настройки документа"
+msgstr ""
 
 #: lib/layouts/tcolorbox.module:160
-#, fuzzy
 msgid "Insert more color box options here"
-msgstr "Невозможно изменить число колонок в '%1$s'"
+msgstr ""
 
 #: lib/layouts/tcolorbox.module:165 lib/layouts/tcolorbox.module:167
 msgid "Custom Color Box 2"
@@ -16841,9 +16559,8 @@ msgstr "Утверждение*"
 
 # ?
 #: lib/layouts/theorems-proof.inc:22
-#, fuzzy
 msgid "Alternative proof string"
-msgstr "Alternative affiliation:"
+msgstr ""
 
 #: lib/layouts/theorems-sec-bytype.module:2
 msgid "Theorems (Numbered by Type within Sections)"
@@ -17007,9 +16724,8 @@ msgid "TODO (Margin)"
 msgstr "TODO (на полях)"
 
 #: lib/layouts/todonotes.module:79 lib/layouts/todonotes.module:91
-#, fuzzy
 msgid "TODO Note Options|s"
-msgstr "Параметры математики"
+msgstr ""
 
 #: lib/layouts/todonotes.module:80 lib/layouts/todonotes.module:109
 msgid "See the todonotes manual for possible options"
@@ -17020,9 +16736,8 @@ msgid "TODO Note (inline)"
 msgstr "Заметка TODO (внутри строки)"
 
 #: lib/layouts/todonotes.module:88
-#, fuzzy
 msgid "TODO (Inline)"
-msgstr "Встроенный в строку|с"
+msgstr ""
 
 #: lib/layouts/todonotes.module:101 lib/layouts/todonotes.module:103
 msgid "Missing Figure"
@@ -17033,9 +16748,8 @@ msgid "Missing Figure Note Options|s"
 msgstr ""
 
 #: lib/layouts/todonotes.module:123
-#, fuzzy
 msgid "Todo[Inline]"
-msgstr "Встроенный в строку|с"
+msgstr ""
 
 #: lib/layouts/todonotes.module:127
 #, fuzzy
@@ -17048,7 +16762,7 @@ msgstr "Отсутствует рисунок"
 
 #: lib/layouts/treport.layout:3
 msgid "Japanese Report (Vertical Writing)"
-msgstr "Japanese Report (вертикальное написание)"
+msgstr "Japanese Report (вертикальное письмо)"
 
 #: lib/layouts/tufte-book.layout:3
 msgid "Tufte Book"
@@ -17104,9 +16818,8 @@ msgid "MarginTable"
 msgstr "примечание на полях"
 
 #: lib/layouts/tufte-book.layout:244
-#, fuzzy
 msgid "MarginFigure"
-msgstr "FitFigure"
+msgstr ""
 
 #: lib/layouts/tufte-handout.layout:3
 msgid "Tufte Handout"
@@ -17114,7 +16827,7 @@ msgstr ""
 
 #: lib/layouts/tufte-handout.layout:4
 msgid "Handouts"
-msgstr ""
+msgstr "Проспекты"
 
 #: lib/layouts/varwidth.module:2
 msgid "Variable-width Minipages"
@@ -17138,13 +16851,12 @@ msgid "Minipage (var.)"
 msgstr "Мини-страница"
 
 #: lib/layouts/varwidth.module:31
-#, fuzzy
 msgid "Vert. Adjustment"
-msgstr "Печатать документ"
+msgstr "Верт. выравнивание"
 
 #: lib/layouts/varwidth.module:32
 msgid "Vertical adjustment: c (center), t (top) or b (bottom)"
-msgstr ""
+msgstr "Вертикальное выравнивание: c (по центру), t (по верху) or b (по низу)"
 
 #: lib/layouts/varwidth.module:35
 msgid "Max. Width"
@@ -21067,19 +20779,16 @@ msgid "Insert left/right side scripts"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:469
-#, fuzzy
 msgid "Insert right side scripts"
-msgstr "Вставить ограничители"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:470
-#, fuzzy
 msgid "Insert left side scripts"
-msgstr "Вставить ограничители"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:471
-#, fuzzy
 msgid "Insert side scripts"
-msgstr "Вставить ограничители"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:472
 msgid "overset"
@@ -23322,7 +23031,6 @@ msgid "Join"
 msgstr "Join"
 
 #: lib/ui/stdtoolbars.inc:1110
-#, fuzzy
 msgid "Negative Relations (extended)"
 msgstr "Отношения AMS с отрицанием"
 
@@ -24187,9 +23895,8 @@ msgid "Close back unrounded vowel"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1351
-#, fuzzy
 msgid "Close back rounded vowel"
-msgstr "Фон заметки"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1352
 msgid "Near-close near-front unrounded vowel"
@@ -24320,12 +24027,10 @@ msgid "Simultaneous voiceless postalveolar and velar fricative"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1387 src/insets/InsetIPAMacro.cpp:55
-#, fuzzy
 msgid "Top tie bar"
 msgstr "Посередине сверху"
 
 #: lib/ui/stdtoolbars.inc:1388 src/insets/InsetIPAMacro.cpp:56
-#, fuzzy
 msgid "Bottom tie bar"
 msgstr "Посередине снизу"
 
@@ -24338,18 +24043,16 @@ msgid "Half-long"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1394
-#, fuzzy
 msgid "Extra short"
-msgstr "Изменить горячую клавишу"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1395
 msgid "Primary stress"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1396
-#, fuzzy
 msgid "Secondary stress"
-msgstr "Адрес отправителя:"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1397
 msgid "Minor (foot) group"
@@ -24360,9 +24063,8 @@ msgid "Major (intonation) group"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1399
-#, fuzzy
 msgid "Syllable break"
-msgstr "разрыв строки"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1400
 msgid "Linking (absence of a break)"
@@ -24377,9 +24079,8 @@ msgid "Voiceless (above)"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1406
-#, fuzzy
 msgid "Voiced"
-msgstr "Счёт"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1407
 msgid "Breathy voiced"
@@ -24394,23 +24095,20 @@ msgid "Linguolabial"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1410
-#, fuzzy
 msgid "Dental"
-msgstr "Пурпурный"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1411
-#, fuzzy
 msgid "Apical"
-msgstr "Тема обсуждения"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1412
 msgid "Laminal"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1413
-#, fuzzy
 msgid "Aspirated"
-msgstr "Включено"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1414
 msgid "More rounded"
@@ -24421,18 +24119,16 @@ msgid "Less rounded"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1416
-#, fuzzy
 msgid "Advanced"
-msgstr "&Дополнительно"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1417
 msgid "Retracted"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1418
-#, fuzzy
 msgid "Centralized"
-msgstr "Первые Прописные|е"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1419
 msgid "Mid-centralized"
@@ -24451,14 +24147,12 @@ msgid "Rhoticity"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1423
-#, fuzzy
 msgid "Labialized"
-msgstr "Первые Прописные|е"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1424
-#, fuzzy
 msgid "Palatized"
-msgstr "Palatino"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1425
 msgid "Velarized"
@@ -24473,14 +24167,12 @@ msgid "Velarized or pharyngialized"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1428
-#, fuzzy
 msgid "Raised"
-msgstr "Проверено"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1429
-#, fuzzy
 msgid "Lowered"
-msgstr "строчные|с"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1430
 msgid "Advanced tongue root"
@@ -24503,9 +24195,8 @@ msgid "Lateral release"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1435
-#, fuzzy
 msgid "No audible release"
-msgstr "двойная рамка"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1439
 msgid "Extra high (accent)"
@@ -24528,18 +24219,16 @@ msgid "Mid (accent)"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1444
-#, fuzzy
 msgid "Mid (tone letter)"
-msgstr "Конец письма"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1445
 msgid "Low (accent)"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1446
-#, fuzzy
 msgid "Low (tone letter)"
-msgstr "Конец письма"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1447
 msgid "Extra low (accent)"
@@ -24558,14 +24247,12 @@ msgid "Upstep"
 msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1451
-#, fuzzy
 msgid "Rising (accent)"
-msgstr "Отсутствует аргумент"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1452
-#, fuzzy
 msgid "Rising (tone letter)"
-msgstr "Конец письма"
+msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1453
 msgid "Falling (accent)"
@@ -28619,7 +28306,7 @@ msgstr "Большой вертикальный отступ"
 
 #: src/VSpace.cpp:174
 msgid "Vertical fill"
-msgstr "Вертикальный растягивающийся промежуток"
+msgstr "Вертикальное заполнение"
 
 #: src/VSpace.cpp:181
 msgid "protected"
@@ -31076,9 +30763,8 @@ msgid "Dingbats"
 msgstr "Dingbats"
 
 #: src/frontends/qt4/GuiSymbols.cpp:99
-#, fuzzy
 msgid "Miscellaneous Mathematical Symbols-A"
-msgstr "Различное"
+msgstr "Различные математические символы-A"
 
 #: src/frontends/qt4/GuiSymbols.cpp:100
 msgid "CJK Symbols and Punctuation"
@@ -31097,9 +30783,8 @@ msgid "Bopomofo"
 msgstr "Чжуинь"
 
 #: src/frontends/qt4/GuiSymbols.cpp:104
-#, fuzzy
 msgid "Hangul Compatibility Jamo"
-msgstr "CJK совместимость"
+msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:105
 msgid "Kanbun"
@@ -31138,19 +30823,16 @@ msgid "Private Use Area"
 msgstr "Область частного использования"
 
 #: src/frontends/qt4/GuiSymbols.cpp:114
-#, fuzzy
 msgid "CJK Compatibility Ideographs"
-msgstr "CJK совместимость"
+msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:115
-#, fuzzy
 msgid "Alphabetic Presentation Forms"
-msgstr "&Ориентация:"
+msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:116
-#, fuzzy
 msgid "Arabic Presentation Forms-A"
-msgstr "&Ориентация:"
+msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:117
 msgid "Combining Half Marks"
@@ -31165,18 +30847,16 @@ msgid "Small Form Variants"
 msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:120
-#, fuzzy
 msgid "Arabic Presentation Forms-B"
-msgstr "&Ориентация:"
+msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:121
 msgid "Halfwidth and Fullwidth Forms"
 msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:123
-#, fuzzy
 msgid "Linear B Syllabary"
-msgstr "Вывод"
+msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:124
 msgid "Linear B Ideograms"
@@ -31227,9 +30907,8 @@ msgid "Kharoshthi"
 msgstr "Кхароштхи"
 
 #: src/frontends/qt4/GuiSymbols.cpp:136
-#, fuzzy
 msgid "Byzantine Musical Symbols"
-msgstr "Символы фонетики"
+msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:137
 msgid "Musical Symbols"
@@ -31261,9 +30940,8 @@ msgid "Tags"
 msgstr "Теги"
 
 #: src/frontends/qt4/GuiSymbols.cpp:144
-#, fuzzy
 msgid "Variation Selectors Supplement"
-msgstr "Сводка"
+msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:145
 msgid "Supplementary Private Use Area-A"
@@ -33360,7 +33038,7 @@ msgstr "Блок: %1$s"
 #: src/mathed/InsetMathCases.cpp:94
 #, c-format
 msgid "No vertical grid lines in 'cases': feature %1$s"
-msgstr "Невозможно добавить вертикальные линии в 'случаях': возможность %1$s"
+msgstr "Невозможно добавить вертикальные линии в 'cases': возможность %1$s"
 
 #: src/mathed/InsetMathCases.cpp:101
 #, c-format
