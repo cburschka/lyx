@@ -634,6 +634,16 @@ def convert_dashes(document):
             else:
                 i = j
             continue
+        if document.body[i] == "\\begin_layout LyX-Code":
+            j = find_end_of_layout(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: "
+                    "Can't find end of %s layout at line %d" % (words[1],i))
+                i += 1
+            else:
+                i = j
+            continue
+
         if len(words) > 0 and words[0] in ["\\leftindent", "\\paragraph_spacing", "\\align", "\\labelwidthstring"]:
             # skip paragraph parameters (bug 10243)
             i += 1

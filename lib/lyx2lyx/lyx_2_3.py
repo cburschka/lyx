@@ -1871,6 +1871,12 @@ def convert_dashligatures(document):
                     document.warning("Malformed LyX document: "
                         "Can't find end of %s inset at line %d" % (words[1],i))
                 continue
+            if line == "\\begin_layout LyX-Code":
+                j = find_end_of_layout(document.body, i)
+                if j == -1:
+                    document.warning("Malformed LyX document: "
+                       "Can't find end of %s layout at line %d" % (words[1],i))
+                continue
             # literal dash followed by a word or no-break space:
             if re.search(u"[\u2013\u2014]([\w\u00A0]|$)", line,
                          flags=re.UNICODE):
@@ -1925,6 +1931,14 @@ def revert_dashligatures(document):
                                  + words[1] + " inset at line " + str(i))
             new_body.append(line)
             continue
+        if line == "\\begin_layout LyX-Code":
+            j = find_end_of_layout(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: "
+                    "Can't find end of %s layout at line %d" % (words[1],i))
+            new_body.append(line)
+            continue
+        # TODO: skip replacement in typewriter fonts
         line = line.replace(u'\u2013', '\\twohyphens\n')
         line = line.replace(u'\u2014', '\\threehyphens\n')
         lines = line.split('\n')
