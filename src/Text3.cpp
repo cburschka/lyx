@@ -411,6 +411,22 @@ static void outline(OutlineOp mode, Cursor & cur)
 			// Not found; do nothing
 			if (toclevel == Layout::NOT_IN_TOC || toclevel > thistoclevel)
 				return;
+			// If we move an environment upwards, make sure it is
+			// separated from its new neighbour below.
+			ParagraphList::iterator lastmoved = finish;
+			--lastmoved;
+			if (start->layout().isEnvironment()
+				&& dest->layout() == start->layout()
+				&& !lastmoved->isEnvSeparator(lastmoved->beginOfBody())) {
+				cur.pit() = distance(bgn, finish);
+				cur.pos() = 0;
+				lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK));
+				DocumentClass const & tc = buf.params().documentClass();
+				lyx::dispatch(FuncRequest(LFUN_LAYOUT, tc.plainLayout().name()));
+				lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "plain"));
+				++finish;
+				cur.pit() = pit;
+			}
 			pit_type const newpit = distance(bgn, dest);
 			pit_type const len = distance(start, finish);
 			pit_type const deletepit = pit + len;
@@ -2556,12 +2572,24 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		needsUpdate = true;
 		break;
 
-	case LFUN_OUTLINE_DOWN:
+	case LFUN_OUTLINE_DOWN: {
 		outline(OutlineDown, cur);
 		setCursor(cur, cur.pit(), 0);
+		// If we move an environment, make sure it is separated
+		// from its new neighbour above.
+		pit_type pit = cur.pit();
+		if (pit > 0 && pars_[pit].layout().isEnvironment()
+			&& pars_[pit - 1].layout() == pars_[pit].layout()) {
+			lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK));
+			DocumentClass const & tc = bv->buffer().params().documentClass();
+			lyx::dispatch(FuncRequest(LFUN_LAYOUT, tc.plainLayout().name()));
+			lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "plain"));
+			setCursor(cur, pit + 1, 0);
+		}
 		cur.forceBufferUpdate();
 		needsUpdate = true;
 		break;
+	}
 
 	case LFUN_OUTLINE_IN:
 		outline(OutlineIn, cur);
