@@ -2582,7 +2582,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			&& pars_[pit - 1].layout() == pars_[pit].layout()) {
 			lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK));
 			DocumentClass const & tc = bv->buffer().params().documentClass();
-			lyx::dispatch(FuncRequest(LFUN_LAYOUT, tc.plainLayout().name()));
+			lyx::dispatch(FuncRequest(LFUN_LAYOUT, from_ascii("\"") + tc.plainLayout().name()
+						  + from_ascii("\" ignoreautonests")));
 			lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "plain"));
 			setCursor(cur, pit + 1, 0);
 		}
