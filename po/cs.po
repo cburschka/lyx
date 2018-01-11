@@ -5339,9 +5339,8 @@ msgid "Show the source as the master document gets it"
 msgstr "Zobrazit zdrojový kód z perspektivty hlavního dokumentu"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:130
-#, fuzzy
 msgid "Master's perspective"
-msgstr "Kód hlavního dokumentu"
+msgstr "Z perspektivy hlavního dokumentu"
 
 #: src/frontends/qt4/ui/ViewSourceUi.ui:137
 msgid "Automatic update"
@@ -5417,15 +5416,14 @@ msgid "Allow &floating"
 msgstr "Plovoucí &objekt"
 
 #: lib/citeengines/basic.citeengine:2
-#, fuzzy
 msgid "Basic (BibTeX)"
-msgstr "Arabština (ArabTeX)"
+msgstr "Základní (BibTeX)"
 
 #: lib/citeengines/basic.citeengine:6
 msgid ""
 "The basic citation capabilities provided by BibTeX. Mainly simple numeric "
 "styles primarily suitable for science and maths."
-msgstr ""
+msgstr "Základní citační vlasnosti poskytované balíkem BibTeX. Zejména jednoduché numerické styly primárně určené pro vědecko-technické obory."
 
 #: lib/citeengines/basic.citeengine:51
 #: lib/citeengines/biblatex-natbib.citeengine:137
@@ -5439,28 +5437,25 @@ msgstr "necitováno"
 #: lib/citeengines/biblatex.citeengine:129
 #: lib/citeengines/jurabib.citeengine:121 lib/citeengines/natbib.citeengine:119
 msgid "Add to bibliography only."
-msgstr "Přidat pouze bibliografii."
+msgstr "Přidat pouze bibliografii"
 
 #: lib/citeengines/basic.citeengine:53
 #: lib/citeengines/biblatex-natbib.citeengine:139
 #: lib/citeengines/biblatex.citeengine:130
 #: lib/citeengines/jurabib.citeengine:122 lib/citeengines/natbib.citeengine:120
-#, fuzzy
 msgid "Key only."
-msgstr "Barva štítku"
+msgstr "Pouze klíč"
 
 #: lib/citeengines/basic.citeengine:54
 #: lib/citeengines/biblatex-natbib.citeengine:140
 #: lib/citeengines/biblatex.citeengine:131
 #: lib/citeengines/jurabib.citeengine:123 lib/citeengines/natbib.citeengine:121
-#, fuzzy
 msgid "Key"
-msgstr "Klíče"
+msgstr "Klíč"
 
 #: lib/citeengines/biblatex-natbib.citeengine:2
-#, fuzzy
 msgid "Biblatex (natbib mode)"
-msgstr "Natbib citační styl pro použití"
+msgstr "Biblatex (mód natbib)"
 
 #: lib/citeengines/biblatex-natbib.citeengine:10
 msgid ""
@@ -5469,13 +5464,12 @@ msgid ""
 "Biblatex. The natbib mode supports slightly different and a few more styles "
 "than normal Biblatex. As with normal Biblatex, the use of 'biber' as "
 "Bibliography processor is advised."
-msgstr ""
+msgstr "Tato varianta Biblatex-u emuluje citační příkazy Natbib-u a je vhodná pro přechod z Natbib-u samotného na Biblatex. Mód natbib podporuje mírně odlišné styly nežli normální Biblatex. Podobně jako v případě Biblatex-u je doporučené použití bibliografického procesoru 'biber'."
 
 #: lib/citeengines/biblatex-natbib.citeengine:142
 #: lib/citeengines/biblatex.citeengine:132
-#, fuzzy
 msgid "Footnote"
-msgstr "Poznámky pod čarou"
+msgstr "Poznámka pod čarou"
 
 #: lib/citeengines/biblatex-natbib.citeengine:143
 #: lib/citeengines/biblatex.citeengine:133
@@ -5490,61 +5484,57 @@ msgstr "heslo bibliografie"
 
 #: lib/citeengines/biblatex-natbib.citeengine:145
 #: lib/citeengines/biblatex.citeengine:135
-#, fuzzy
 msgid "Full bibliography entry."
-msgstr "heslo bibliografie"
+msgstr "Plné heslo bibliografie."
 
 #: lib/citeengines/biblatex-natbib.citeengine:146
 #: lib/citeengines/biblatex.citeengine:136
 msgid "Autocite"
-msgstr ""
+msgstr "Autocite"
 
 #: lib/citeengines/biblatex-natbib.citeengine:147
 #: lib/citeengines/biblatex.citeengine:137
-#, fuzzy
 msgid "Auto"
-msgstr "Automaticky"
+msgstr "Auto"
 
 #: lib/citeengines/biblatex-natbib.citeengine:149
 #: lib/citeengines/biblatex.citeengine:141
 msgid "F&orce full title[[Possible substitute to All aut&hors]]"
-msgstr ""
+msgstr "V&ynutit plný název"
 
 #: lib/citeengines/biblatex-natbib.citeengine:150
 #: lib/citeengines/biblatex.citeengine:142
 msgid "Use full title even if shorttitle exists"
-msgstr ""
+msgstr "Použítí plného názvu i v případě existence zkráceného titulku"
 
 #: lib/citeengines/biblatex-natbib.citeengine:152
 #: lib/citeengines/biblatex.citeengine:144
 #: lib/citeengines/jurabib.citeengine:129 lib/citeengines/natbib.citeengine:123
-#, fuzzy
 msgid " et al."
-msgstr "%1$s et al."
+msgstr " et al."
 
 #: lib/citeengines/biblatex-natbib.citeengine:153
 #: lib/citeengines/biblatex.citeengine:145
 #: lib/citeengines/natbib.citeengine:124 lib/layouts/stdciteformats.inc:27
 msgid ", [[separate author names in citation, except for last name]]"
-msgstr ""
+msgstr ", "
 
 #: lib/citeengines/biblatex-natbib.citeengine:154
 #: lib/citeengines/biblatex.citeengine:146
 #: lib/citeengines/natbib.citeengine:125 lib/layouts/stdciteformats.inc:28
 msgid ", and [[separate name of last author in citation]]"
-msgstr ""
+msgstr ", a "
 
 #: lib/citeengines/biblatex-natbib.citeengine:155
 #: lib/citeengines/biblatex.citeengine:147
 #: lib/citeengines/natbib.citeengine:126 lib/layouts/stdciteformats.inc:29
 msgid " and [[separate two authors in citation]]"
-msgstr ""
+msgstr " a "
 
 #: lib/citeengines/biblatex-natbib.citeengine:299
 #: lib/citeengines/biblatex.citeengine:283
-#, fuzzy
 msgid "Super"
-msgstr "Index nahoře"
+msgstr "Nahoře"
 
 #: lib/citeengines/biblatex-natbib.citeengine:300
 #: lib/citeengines/biblatex.citeengine:284 lib/ui/stdtoolbars.inc:181
@@ -5553,9 +5543,8 @@ msgid "Superscript"
 msgstr "Index nahoře"
 
 #: lib/citeengines/biblatex.citeengine:2 src/insets/InsetBibtex.cpp:138
-#, fuzzy
 msgid "Biblatex"
-msgstr "Plate"
+msgstr "Biblatex"
 
 #: lib/citeengines/biblatex.citeengine:8
 msgid ""
@@ -5563,27 +5552,26 @@ msgid ""
 "at the Humanities. It is highly customizable, fully localized and provides "
 "many features that are not possible with BibTeX. The use of 'biber' as "
 "bibliography processor is advised."
-msgstr ""
+msgstr "Biblatex podporuje množství numerických a autor-rok stylů. Je zaměřen zejména na Humanitní obory. Je vysoce konfigurovatelný, poskytuje množství vlastností nedosažitelných BiblaTeX-em a je plně lokalizován. Podobně jako v případě Biblatex-u je doporučené použití bibliografického procesoru 'biber'."
 
 #: lib/citeengines/biblatex.citeengine:139
 msgid "S&horten author list[[Possible substitute to All aut&hors]]"
-msgstr ""
+msgstr "Zk&rátit list autorů"
 
 #: lib/citeengines/biblatex.citeengine:140
 msgid "Force a short author list (using et al.)"
-msgstr ""
+msgstr "Vynutit zkrácený autorský list (za použití et al.)"
 
 #: lib/citeengines/jurabib.citeengine:2
-#, fuzzy
 msgid "Jurabib (BibTeX)"
-msgstr "Arabština (ArabTeX)"
+msgstr "Jurabib (BibTeX)"
 
 #: lib/citeengines/jurabib.citeengine:7
 msgid ""
 "Jurabib supports a range of author-year styles primarily suitable for law "
 "studies and the Humanities. It includes localizations for English, German, "
 "French, Dutch, Spanish and Italian."
-msgstr ""
+msgstr "Jurabib podoporuje mnoho autor-rok stylů a je primárně určen pro právnické a humanitní obory. Obsahuje lokalizaci pro angličtinu, němčinu, holandštinu, španělštinu a italštinu. "
 
 #: lib/citeengines/jurabib.citeengine:125
 msgid "Bibliography entry."
@@ -5600,14 +5588,12 @@ msgstr "krátký titulek"
 #: lib/citeengines/jurabib.citeengine:130
 #: lib/citeengines/jurabib.citeengine:131
 #: lib/citeengines/jurabib.citeengine:132
-#, fuzzy
 msgid "/"
-msgstr "_/"
+msgstr "/"
 
 #: lib/citeengines/natbib.citeengine:2
-#, fuzzy
 msgid "Natbib (BibTeX)"
-msgstr "Arabština (ArabTeX)"
+msgstr "Natbib (BibTeX)"
 
 #: lib/citeengines/natbib.citeengine:8
 msgid ""
@@ -5615,7 +5601,7 @@ msgid ""
 "aimed at the Humanities. It features automatic sorting and merging of "
 "numerical citations, annotations, capitalization of the `van' part of author "
 "names, shortened and full author lists, and more."
-msgstr ""
+msgstr "Natbib podoporuje mnoho numerických a autor-rok stylů a je primárně určen pro humanitní obory. Umí abecedně třídit, spojovat numerické citace, anotace, kapitalizaci pro jména autorů obsahující 'van', zkrácená i plná autorská jména apod."
 
 #: lib/layouts/AEA.layout:3
 msgid "American Economic Association (AEA)"
@@ -29248,14 +29234,12 @@ msgid "Wavy underbar"
 msgstr "Vlnitě podtržený"
 
 #: src/frontends/qt4/GuiCharacter.cpp:88
-#, fuzzy
 msgid "Strike out"
 msgstr "Přeškrtnutý"
 
 #: src/frontends/qt4/GuiCharacter.cpp:89
-#, fuzzy
 msgid "Cross out"
-msgstr "CrossList"
+msgstr "Proškrtávaný"
 
 #: src/frontends/qt4/GuiCharacter.cpp:180
 msgid "No color"
@@ -29271,9 +29255,8 @@ msgid "Clear text"
 msgstr "Smazat text"
 
 #: src/frontends/qt4/GuiCitation.cpp:105
-#, fuzzy
 msgid "All avail. citations"
-msgstr "&Dostupné citace:"
+msgstr "Všechny dostupné citace"
 
 #: src/frontends/qt4/GuiCitation.cpp:111
 msgid "Regular e&xpression"
@@ -29288,38 +29271,36 @@ msgid "Search as you &type"
 msgstr "&Vyhledávat při zadávání"
 
 #: src/frontends/qt4/GuiCitation.cpp:288
-#, fuzzy
 msgid "General text befo&re:"
-msgstr "General terms:"
+msgstr "Obecný text pře&d:"
 
 #: src/frontends/qt4/GuiCitation.cpp:289 src/frontends/qt4/GuiCitation.cpp:293
-#, fuzzy
 msgid "General &text after:"
-msgstr "General terms:"
+msgstr "Obecný text z&a:"
 
 #: src/frontends/qt4/GuiCitation.cpp:290
 msgid ""
 "Text that precedes the whole reference list. For text that precedes "
 "individual items, double-click on the respective entry above."
-msgstr ""
+msgstr "Text předcházející citačnímu seznamu. Pro text předcházející jednotlivým položkám dvojitě klikněte na požadovanou položku výše."
 
 #: src/frontends/qt4/GuiCitation.cpp:294
 msgid ""
 "Text that follows the whole reference list. For text that follows individual "
 "items, double-click on the respective entry above."
-msgstr ""
+msgstr "Text následující citačním seznam. Pro text následující jednotlivé položky dvojitě klikněte na požadovanou položku výše."
 
 #: src/frontends/qt4/GuiCitation.cpp:300
 msgid "Text that precedes the reference (e.g., \"cf.\")"
-msgstr ""
+msgstr "Text předcházející citaci (např, \"viz\")"
 
 #: src/frontends/qt4/GuiCitation.cpp:306
 msgid "Text that follows the reference (e.g., pages)"
-msgstr ""
+msgstr "Text následující citaci (např. \"stránky\")"
 
 #: src/frontends/qt4/GuiCitation.cpp:349
 msgid "Always list all authors (rather than using \"et al.\")"
-msgstr ""
+msgstr "Vždy použít plný výčet autorů (namísto \"et al.\")"
 
 #: src/frontends/qt4/GuiCitation.cpp:421
 msgid "Keys"
@@ -29327,37 +29308,32 @@ msgstr "Klíče"
 
 #: src/frontends/qt4/GuiCitation.cpp:462
 msgid "Displays a sketchy preview if a citation is selected above"
-msgstr ""
+msgstr "Zobrazit skicovitý náhled při výběru citace výše"
 
 #: src/frontends/qt4/GuiCitation.cpp:466
-#, fuzzy
 msgid "Sketchy preview of the selected citation"
-msgstr "Změnit jméno vybrané větve"
+msgstr "Skicovitý náhled vybrané citace"
 
 #: src/frontends/qt4/GuiCitation.cpp:577
-#, fuzzy
 msgid "Enter string to filter the list of available citations"
-msgstr "Zadejte řetězec pro filtrování seznamu značek"
+msgstr "Zadejte řetězec pro filtrování seznamu citací"
 
 #: src/frontends/qt4/GuiCitation.cpp:578
-#, fuzzy
 msgid ""
 "Enter string to filter the list of available citations and press <Enter>"
-msgstr "Zadejte řetězec pro filtrování seznamu značek"
+msgstr "Zadejte řetězec pro filtrování seznamu citací s stiskněte <Enter>"
 
 #: src/frontends/qt4/GuiCitation.cpp:642
-#, fuzzy
 msgid "Text before"
-msgstr "Text &před:"
+msgstr "Text před"
 
 #: src/frontends/qt4/GuiCitation.cpp:643
 msgid "Cite key"
-msgstr ""
+msgstr "Klíč citace"
 
 #: src/frontends/qt4/GuiCitation.cpp:644
-#, fuzzy
 msgid "Text after"
-msgstr "T&ext za:"
+msgstr "Text za"
 
 #: src/frontends/qt4/GuiClipboard.cpp:174
 msgid "LinkBack PDF"
@@ -29490,14 +29466,12 @@ msgid "Layout is invalid!"
 msgstr "Rozvržení je neplatné."
 
 #: src/frontends/qt4/GuiDocument.cpp:635
-#, fuzzy
 msgid "Conversion to current format impossible!"
-msgstr "Konverze do současného formátu"
+msgstr "Konverze do současného formátu není možná!"
 
 #: src/frontends/qt4/GuiDocument.cpp:636
-#, fuzzy
 msgid "Conversion to current stable format impossible."
-msgstr "Konverze do současného formátu"
+msgstr "Konverze do současného stabilního formátu nemožná."
 
 #: src/frontends/qt4/GuiDocument.cpp:641
 msgid "Convert to current format"
