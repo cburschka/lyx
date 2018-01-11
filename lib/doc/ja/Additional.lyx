@@ -1,4 +1,4 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
 \lyxformat 544
 \begin_document
 \begin_header
@@ -21301,13 +21301,25 @@ git log
 \begin_layout Standard
 \SpecialChar LyX
 は，ファイルの最終コミットのGITハッシュ番号・著者名・最終コミットの日時をサポートします．これらの情報は，すべて
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 git log -n 1 --pretty=format:%H%n%an%n%ai
-\family default
+\end_layout
+
+\end_inset
+
 によって抽出されます．ツリーバージョン情報は，
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 git describe --abbrev --dirty --long
-\family default
+\end_layout
+
+\end_inset
+
 で取得されます．詳細については，第
 \begin_inset CommandInset ref
 LatexCommand ref

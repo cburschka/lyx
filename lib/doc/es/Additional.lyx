@@ -1,4 +1,4 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
 \lyxformat 544
 \begin_document
 \begin_header
@@ -22679,7 +22679,14 @@ status collapsed
 
  
 \family typewriter
-svn update --non-interactive 
+svn update 
+\family default
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+--non-interactive 
 \lang english
 
 \begin_inset Quotes qld
@@ -22691,6 +22698,11 @@ svn update --non-interactive
 \lang english
 
 \begin_inset Quotes qld
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -23767,8 +23779,18 @@ new project
  Para información sobre el uso del programa cliente de Subversion, ejecuta
  
 \family typewriter
-svn --help
+svn 
 \family default
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+--help
+\end_layout
+
+\end_inset
+
  en línea de comandos de DOS.
 \end_layout
 
@@ -24451,14 +24473,26 @@ Información de la versión
  soporta número hash GIT del últim ingreso al archivo, autor, fecha y hora
  del último ingreso.
  Todos se obtienen de 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 git log -n 1 --pretty=format:%H%n%an%n%ai
-\family default
+\end_layout
+
+\end_inset
+
 .
  La información de l versión del árbol se obtiene vía 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 git describe --abbrev --dirty --long
-\family default
+\end_layout
+
+\end_inset
+
 .
  Véase 
 \begin_inset CommandInset ref

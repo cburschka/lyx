@@ -1,4 +1,4 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
 \lyxformat 544
 \begin_document
 \begin_header
@@ -23105,13 +23105,23 @@ Ditto.
 \end_inset
 
  
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 svn update --non-interactive 
 \begin_inset Quotes qld
 \end_inset
 
 <file-name>
 \begin_inset Quotes qld
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -24268,10 +24278,18 @@ new project
 \family default
 .
  For information on using the Subversion client program, run 
-\family typewriter
-svn --help 
-\family default
-in a DOS shell.
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+svn --help
+\end_layout
+
+\end_inset
+
+ in a DOS shell.
 \end_layout
 
 \begin_layout Enumerate
@@ -25059,14 +25077,30 @@ Version Info
  supports GIT hash number of the last commit to the file, author name, date
  and time of last commit.
  All those are extracted from 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 git log -n 1 --pretty=format:%H%n%an%n%ai
-\family default
+\end_layout
+
+\end_inset
+
 .
  Tree version information is obtained via 
-\family typewriter
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
 git describe --abbrev --dirty --long
-\family default
+\end_layout
+
+\end_inset
+
 .
  See 
 \begin_inset CommandInset ref
