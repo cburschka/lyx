@@ -1436,9 +1436,6 @@ bool Paragraph::Private::latexSpecialT3(char_type const c, otexstream & os,
 
 void Paragraph::Private::validate(LaTeXFeatures & features) const
 {
-	Buffer const & buf = inset_owner_->buffer();
-	BufferParams const & bp = features.runparams().is_child
-		? buf.masterParams() : buf.params();
 	if (layout_->inpreamble && inset_owner_) {
 		bool const is_command = layout_->latextype == LATEX_COMMAND;
 		Font f;
@@ -1446,6 +1443,9 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 		// switching machinery of odocstream. Therefore the
 		// output is wrong if this paragraph contains content
 		// that needs to switch encoding.
+		Buffer const & buf = inset_owner_->buffer();
+		BufferParams const & bp = features.runparams().is_child
+			? buf.masterParams() : buf.params();
 		otexstringstream os;
 		os << layout_->preamble();
 		if (is_command) {
@@ -1520,6 +1520,8 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 	}
 
 	// then the contents
+	BufferParams const bp = features.runparams().is_child
+		? features.buffer().masterParams() : features.buffer().params();
 	for (pos_type i = 0; i < int(text_.size()) ; ++i) {
 		char_type c = text_[i];
 		if (c == 0x0022) {
