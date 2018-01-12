@@ -664,6 +664,7 @@ bool FileName::destroyDirectory() const
 
 
 // Only used in non Win32 platforms
+#ifndef Q_OS_WIN32
 static int mymkdir(char const * pathname, unsigned long int mode)
 {
 	// FIXME: why don't we have mode_t in lyx::mkdir prototype ??
@@ -686,10 +687,8 @@ static int mymkdir(char const * pathname, unsigned long int mode)
 #else
 #   error "Don't know how to create a directory on this system."
 #endif
-	// squash warnings
-	(void) mode;
-	(void) pathname;
 }
+#endif
 
 
 bool FileName::createDirectory(int permission) const
