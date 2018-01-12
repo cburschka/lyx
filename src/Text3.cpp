@@ -422,7 +422,8 @@ static void outline(OutlineOp mode, Cursor & cur)
 				cur.pos() = 0;
 				lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK));
 				DocumentClass const & tc = buf.params().documentClass();
-				lyx::dispatch(FuncRequest(LFUN_LAYOUT, tc.plainLayout().name()));
+				lyx::dispatch(FuncRequest(LFUN_LAYOUT, from_ascii("\"") + tc.plainLayout().name()
+							  + from_ascii("\" ignoreautonests")));
 				lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "plain"));
 				++finish;
 				cur.pit() = pit;
@@ -449,6 +450,23 @@ static void outline(OutlineOp mode, Cursor & cur)
 					break;
 			}
 			// One such was found:
+			// If we move an environment downwards, make sure it is
+			// separated from its new neighbour below.
+			ParagraphList::iterator lastmoved = finish;
+			--lastmoved;
+			if (start->layout().isEnvironment()
+				&& dest->layout() == start->layout()
+				&& !lastmoved->isEnvSeparator(lastmoved->beginOfBody())) {
+				cur.pit() = distance(bgn, finish);
+				cur.pos() = 0;
+				lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK));
+				DocumentClass const & tc = buf.params().documentClass();
+				lyx::dispatch(FuncRequest(LFUN_LAYOUT, from_ascii("\"") + tc.plainLayout().name()
+							  + from_ascii("\" ignoreautonests")));
+				lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "plain"));
+				++finish;
+				cur.pit() = pit;
+			}
 			pit_type newpit = distance(bgn, dest);
 			buf.undo().recordUndo(cur, pit, newpit - 1);
 			pit_type const len = distance(start, finish);
@@ -2565,18 +2583,31 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		break;
 
-	case LFUN_OUTLINE_UP:
+	case LFUN_OUTLINE_UP: {
 		outline(OutlineUp, cur);
 		setCursor(cur, cur.pit(), 0);
+		// If we moved an environment upwards, make sure it is
+		// separated from its new neighbour above.
+		pit_type pit = cur.pit();
+		if (pit > 0 && pars_[pit].layout().isEnvironment()
+			&& pars_[pit - 1].layout() == pars_[pit].layout()) {
+			lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK));
+			DocumentClass const & tc = bv->buffer().params().documentClass();
+			lyx::dispatch(FuncRequest(LFUN_LAYOUT, from_ascii("\"") + tc.plainLayout().name()
+						  + from_ascii("\" ignoreautonests")));
+			lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "plain"));
+			setCursor(cur, pit + 1, 0);
+		}
 		cur.forceBufferUpdate();
 		needsUpdate = true;
 		break;
+	}
 
 	case LFUN_OUTLINE_DOWN: {
 		outline(OutlineDown, cur);
 		setCursor(cur, cur.pit(), 0);
-		// If we move an environment, make sure it is separated
-		// from its new neighbour above.
+		// If we moved an environment downwards, make sure it is
+		// separated from its new neighbour above.
 		pit_type pit = cur.pit();
 		if (pit > 0 && pars_[pit].layout().isEnvironment()
 			&& pars_[pit - 1].layout() == pars_[pit].layout()) {
