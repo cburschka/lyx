@@ -1039,9 +1039,11 @@ CompressorProxy::CompressorProxy(GuiWorkArea * wa) : QObject(wa)
 {
 	qRegisterMetaType<KeySymbol>("KeySymbol");
 	qRegisterMetaType<KeyModifier>("KeyModifier");
-	connect(wa, &GuiWorkArea::compressKeySym, this, &CompressorProxy::slot,
+	connect(wa, SIGNAL(compressKeySym(KeySymbol, KeyModifier, bool)),
+		this, SLOT(slot(KeySymbol, KeyModifier, bool)),
 	        Qt::QueuedConnection);
-	connect(this, &CompressorProxy::signal, wa, &GuiWorkArea::processKeySym);
+	connect(this, SIGNAL(signal(KeySymbol, KeyModifier)),
+		wa, SLOT(processKeySym(KeySymbol, KeyModifier)));
 }
 
 
