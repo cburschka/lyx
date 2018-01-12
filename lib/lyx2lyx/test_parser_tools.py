@@ -89,5 +89,5 @@ class TestParserTools(unittest.TestCase):
         self.assertEqual(find_tokens(lines, tokens, 0, 4), -1)
 
 
-if __name__ == '__main__':  
-    unittest.main() 
+if __name__ == '__main__':
+    unittest.main()

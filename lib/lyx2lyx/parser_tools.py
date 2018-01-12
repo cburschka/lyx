@@ -1,6 +1,6 @@
 # This file is part of lyx2lyx
 # -*- coding: utf-8 -*-
-# Copyright (C) 2002-2011 Dekel Tsur <dekel@lyx.org>, 
+# Copyright (C) 2002-2011 Dekel Tsur <dekel@lyx.org>,
 # José Matos <jamatos@lyx.org>, Richard Heck <rgheck@comcast.net>
 #
 # This program is free software; you can redistribute it and/or
@@ -18,17 +18,17 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 
-''' 
+'''
 This module offers several free functions to help parse lines.
-More documentaton is below, but here is a quick guide to what 
+More documentaton is below, but here is a quick guide to what
 they do. Optional arguments are marked by brackets.
 
 find_token(lines, token, start[, end[, ignorews]]):
   Returns the first line i, start <= i < end, on which
-  token is found at the beginning. Returns -1 if not 
-  found. 
+  token is found at the beginning. Returns -1 if not
+  found.
   If ignorews is (given and) True, then differences
-  in whitespace do not count, except that there must be no 
+  in whitespace do not count, except that there must be no
   extra whitespace following token itself.
 
 find_token_exact(lines, token, start[, end]):
@@ -36,15 +36,15 @@ find_token_exact(lines, token, start[, end]):
 
 find_tokens(lines, tokens, start[, end[, ignorews]]):
   Returns the first line i, start <= i < end, on which
-  one of the tokens in tokens is found at the beginning. 
-  Returns -1 if not found. 
+  one of the tokens in tokens is found at the beginning.
+  Returns -1 if not found.
   If ignorews is (given and) True, then differences
-  in whitespace do not count, except that there must be no 
+  in whitespace do not count, except that there must be no
   extra whitespace following token itself.
 
 find_tokens_exact(lines, token, start[, end]):
   As find_tokens, but with ignorews True.
-  
+
 find_token_backwards(lines, token, start):
 find_tokens_backwards(lines, tokens, start):
   As before, but look backwards.
@@ -54,16 +54,16 @@ find_re(lines, rexp, start[, end]):
   so it has to be passed as e.g.: re.compile(r'...').
 
 get_value(lines, token, start[, end[, default]):
-  Similar to find_token, but it returns what follows the 
+  Similar to find_token, but it returns what follows the
   token on the found line. Example:
     get_value(document.header, "\\use_xetex", 0)
   will find a line like:
     \\use_xetex true
   and, in that case, return "true". (Note that whitespace
-  is stripped.) The final argument, default, defaults to "", 
+  is stripped.) The final argument, default, defaults to "",
   and is what is returned if we do not find anything. So you
   can use that to set a default.
-  
+
 get_quoted_value(lines, token, start[, end[, default]]):
   Similar to get_value, but it will strip quotes off the
   value, if they are present. So use this one for cases
@@ -82,12 +82,12 @@ del_token(lines, token, start[, end]):
   Returns True if a line got deleted, otherwise False.
 
 find_beginning_of(lines, i, start_token, end_token):
-  Here, start_token and end_token are meant to be a matching 
-  pair, like "\\begin_layout" and "\\end_layout". We look for 
+  Here, start_token and end_token are meant to be a matching
+  pair, like "\\begin_layout" and "\\end_layout". We look for
   the start_token that pairs with the end_token that occurs
   on or after line i. Returns -1 if not found.
-  So, in the layout case, this would find the \\begin_layout 
-  for the layout line i is in. 
+  So, in the layout case, this would find the \\begin_layout
+  for the layout line i is in.
   Example:
     ec = find_token(document.body, "</cell", i)
     bc = find_beginning_of(document.body, ec, \
@@ -95,7 +95,7 @@ find_beginning_of(lines, i, start_token, end_token):
   Now, assuming no -1s, bc-ec wraps the cell for line i.
 
 find_end_of(lines, i, start_token, end_token):
-  Like find_beginning_of, but looking for the matching 
+  Like find_beginning_of, but looking for the matching
   end_token. This might look like:
     bc = find_token_(document.body, "<cell", i)
     ec = find_end_of(document.body, bc,  "<cell", "</cell")
@@ -115,7 +115,7 @@ find_end_of_sequence(lines, i):
 
 is_in_inset(lines, i, inset):
   Checks if line i is in an inset of the given type.
-  If so, returns starting and ending lines. Otherwise, 
+  If so, returns starting and ending lines. Otherwise,
   returns False.
   Example:
     is_in_inset(document.body, i, "\\begin_inset Tabular")
@@ -127,8 +127,8 @@ is_in_inset(lines, i, inset):
   will do what you expect.
 
 get_containing_inset(lines, i):
-  Finds out what kind of inset line i is within. Returns a 
-  list containing what follows \begin_inset on the line 
+  Finds out what kind of inset line i is within. Returns a
+  list containing what follows \begin_inset on the line
   on which the inset begins, plus the starting and ending line.
   Returns False on any kind of error or if it isn't in an inset.
   So get_containing_inset(document.body, i) might return:
@@ -180,7 +180,7 @@ def find_token(lines, token, start, end = 0, ignorews = False):
 
     Return the lowest line where token is found, and is the first
     element, in lines[start, end].
-    
+
     If ignorews is True (default is False), then differences in
     whitespace are ignored, except that there must be no extra
     whitespace following token itself.
@@ -358,7 +358,7 @@ def set_option_value(line, option, value):
 def del_token(lines, token, start, end = 0):
     """ del_token(lines, token, start, end) -> int
 
-    Find the first line in lines where token is the first element 
+    Find the first line in lines where token is the first element
     and delete that line. Returns True if we deleted a line, False
     if we did not."""
 
@@ -445,8 +445,8 @@ def is_in_inset(lines, i, inset):
 
 
 def get_containing_inset(lines, i):
-  ''' 
-  Finds out what kind of inset line i is within. Returns a 
+  '''
+  Finds out what kind of inset line i is within. Returns a
   list containing (i) what follows \begin_inset on the line
   on which the inset begins, plus the starting and ending line.
   Returns False on any kind of error or if it isn't in an inset.
@@ -472,8 +472,8 @@ def get_containing_inset(lines, i):
 
 
 def get_containing_layout(lines, i):
-  ''' 
-  Finds out what kind of layout line i is within. Returns a 
+  '''
+  Finds out what kind of layout line i is within. Returns a
   list containing what follows \begin_layout on the line
   on which the layout begins, plus the starting and ending line
   and the start of the paragraph (after all params). I.e, returns:
@@ -553,4 +553,3 @@ def find_end_of_sequence(lines, i):
       i = i + 1
 
   return endlay
-

@@ -1256,7 +1256,7 @@ def convert_colorbox(document):
 
 def revert_colorbox(document):
     " outputs color settings for boxes as TeX code "
-    
+
     i = 0
     defaultframecolor = "black"
     defaultbackcolor = "none"
