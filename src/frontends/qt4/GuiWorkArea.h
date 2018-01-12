@@ -74,9 +74,6 @@ public:
 
 	/// return true if the key is part of a shortcut
 	bool queryKeySym(KeySymbol const & key, KeyModifier mod) const;
-	/// Process Key pressed event.
-	/// This needs to be public because it is accessed externally by GuiView.
-	void processKeySym(KeySymbol const & key, KeyModifier mod);
 
 	bool inDialogMode() const;
 	void setDialogMode(bool mode);
@@ -94,6 +91,9 @@ public:
 	double pixelRatio() const;
 
 public Q_SLOTS:
+	/// Process Key pressed event.
+	/// This needs to be public because it is accessed externally by GuiView.
+	void processKeySym(KeySymbol const & key, KeyModifier mod);
 	///
 	void stopBlinkingCursor();
 	///
