@@ -8597,10 +8597,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8613,6 +8615,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8636,6 +8639,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -13546,8 +13550,11 @@ Bzw.
 
 \end_inset
 
- aus, nicht in Form von Ligaturen (--, ---) (vgl.
- Abschnitt
+ aus, statt in Form von Ligaturen (--, ---) (vgl.
+\begin_inset space \space{}
+\end_inset
+
+Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -16468,14 +16475,33 @@ Minuszeichen
 \end_layout
 
 \begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
 <features tabularvalignment="middle">
-<column alignment="left" valignment="top">
+<column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top">
 <column alignment="left" valignment="top">
 <row interlinespace="3mm">
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -16484,7 +16510,7 @@ Name
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -16493,7 +16519,7 @@ Aussehen
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -16504,7 +16530,7 @@ Eingefügt mit
 </cell>
 </row>
 <row interlinespace="3mm">
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -16545,7 +16571,7 @@ Viertelgeviertstrich
 </cell>
 </row>
 <row interlinespace="3mm">
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -16590,7 +16616,7 @@ literal "false"
 </cell>
 </row>
 <row interlinespace="3mm">
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -16635,7 +16661,7 @@ literal "false"
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -16678,6 +16704,11 @@ Minuszeichen
 </cell>
 </row>
 </lyxtabular>
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
@@ -17018,13 +17049,13 @@ Objekte
 \end_inset
 
  oder 
-\family typewriter
+\series bold
 
 \backslash
 nobreakdash
-\family default
- (als \SpecialChar TeX
--Code) vor den Strich schreibt.
+\series default
+ als \SpecialChar TeX
+-Code vor den Strich schreibt.
  Beispiele:
 \end_layout
 
@@ -17185,8 +17216,25 @@ n verhindern
 \begin_layout Enumerate
 Zeilenumbrüche sind weiterhin erlaubt, wenn auf den Strich ein Leerzeichen
  folgt.
+ Beispiel:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\lang french
+Les incises –
+\begin_inset space ~
+\end_inset
+
+même si tout le monde ne les aime pas
+\begin_inset space ~
+\end_inset
+
+– sont très utiles.
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 \SpecialChar LaTeX
  trennt mit dieser Option auch Wörter unmittelbar vor einem Halbgeviert-
@@ -38863,7 +38911,7 @@ reference "sec:Randnotizen"
 \end_layout
 
 \begin_layout Subsection
-Neue Umgebung (oberhalb/unterhalb)
+Separierte Umgebung (oberhalb/unterhalb)
 \end_layout
 
 \begin_layout Standard
