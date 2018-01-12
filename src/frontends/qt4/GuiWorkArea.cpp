@@ -265,6 +265,7 @@ GuiWorkArea::GuiWorkArea(QWidget * /* w */)
 GuiWorkArea::GuiWorkArea(Buffer & buffer, GuiView & gv)
 : d(new Private(this))
 {
+	new CompressorProxy(this); // not a leak
 	setGuiView(gv);
 	buffer.params().display_pixel_ratio = theGuiApp()->pixelRatio();
 	setBuffer(buffer);
@@ -1050,6 +1051,37 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 }
 
 
+// CompressorProxy adapted from Kuba Ober https://stackoverflow.com/a/21006207
+CompressorProxy::CompressorProxy(GuiWorkArea * wa) : QObject(wa)
+{
+	qRegisterMetaType<KeySymbol>("KeySymbol");
+	qRegisterMetaType<KeyModifier>("KeyModifier");
+	connect(wa, &GuiWorkArea::compressKeySym, this, &CompressorProxy::slot,
+	        Qt::QueuedConnection);
+	connect(this, &CompressorProxy::signal, wa, &GuiWorkArea::processKeySym);
+}
+
+
+bool CompressorProxy::emitCheck(bool isAutoRepeat)
+{
+	flag_ = true;
+	if (isAutoRepeat)
+		QCoreApplication::sendPostedEvents(this, QEvent::MetaCall); // recurse
+	bool result = flag_;
+	flag_ = false;
+	return result;
+}
+
+
+void CompressorProxy::slot(KeySymbol sym, KeyModifier mod, bool isAutoRepeat)
+{
+	if (emitCheck(isAutoRepeat))
+		Q_EMIT signal(sym, mod);
+	else
+		LYXERR(Debug::KEY, "system is busy: autoRepeat key event ignored");
+}
+
+
 void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 {
 	// this is also called for ShortcutOverride events. In this case, one must
@@ -1057,13 +1089,16 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 	bool const act = (ev->type() != QEvent::ShortcutOverride);
 
 	// Do not process here some keys if dialog_mode_ is set
-	if (d->dialog_mode_
+	bool const for_dialog_mode = d->dialog_mode_
 		&& (ev->modifiers() == Qt::NoModifier
 		    || ev->modifiers() == Qt::ShiftModifier)
 		&& (ev->key() == Qt::Key_Escape
 		    || ev->key() == Qt::Key_Enter
-		    || ev->key() == Qt::Key_Return)
-	    ) {
+		    || ev->key() == Qt::Key_Return);
+	// also do not use autoRepeat to input shortcuts
+	bool const autoRepeat = ev->isAutoRepeat();
+
+	if (for_dialog_mode || (!act && autoRepeat)) {
 		ev->ignore();
 		return;
 	}
@@ -1080,51 +1115,31 @@ void GuiWorkArea::keyPressEvent(QKeyEvent * ev)
 		}
 	}
 
-	// do nothing if there are other events
-	// (the auto repeated events come too fast)
-	// it looks like this is only needed on X11
-#if defined(Q_WS_X11) || defined(QPA_XCB)
-	// FIXME: this is a weird way to implement event compression. Also, this is
-	// broken with IBus.
-	if (act && qApp->hasPendingEvents() && ev->isAutoRepeat()) {
-		switch (ev->key()) {
-		case Qt::Key_PageDown:
-		case Qt::Key_PageUp:
-		case Qt::Key_Left:
-		case Qt::Key_Right:
-		case Qt::Key_Up:
-		case Qt::Key_Down:
-			LYXERR(Debug::KEY, "system is busy: scroll key event ignored");
-			ev->ignore();
-			return;
-		}
-	}
-#endif
-
 	KeyModifier const m = q_key_state(ev->modifiers());
 
-	std::string str;
-	if (m & ShiftModifier)
-		str += "Shift-";
-	if (m & ControlModifier)
-		str += "Control-";
-	if (m & AltModifier)
-		str += "Alt-";
-	if (m & MetaModifier)
-		str += "Meta-";
-
-	if (act)
+	if (act && lyxerr.debugging(Debug::KEY)) {
+		std::string str;
+		if (m & ShiftModifier)
+			str += "Shift-";
+		if (m & ControlModifier)
+			str += "Control-";
+		if (m & AltModifier)
+			str += "Alt-";
+		if (m & MetaModifier)
+			str += "Meta-";
 		LYXERR(Debug::KEY, " count: " << ev->count() << " text: " << ev->text()
 		       << " isAutoRepeat: " << ev->isAutoRepeat() << " key: " << ev->key()
 		       << " keyState: " << str);
+	}
 
 	KeySymbol sym;
 	setKeySymbol(&sym, ev);
 	if (sym.isOK()) {
 		if (act) {
-			processKeySym(sym, m);
+			Q_EMIT compressKeySym(sym, m, autoRepeat);
 			ev->accept();
 		} else
+			// here, !autoRepeat, as determined at the beginning
 			ev->setAccepted(queryKeySym(sym, m));
 	} else {
 		ev->ignore();
