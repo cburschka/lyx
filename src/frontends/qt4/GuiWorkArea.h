@@ -16,6 +16,7 @@
 #include "ui_WorkAreaUi.h"
 
 #include "frontends/WorkArea.h"
+#include "frontends/KeySymbol.h"
 
 #include <QAbstractScrollArea>
 #include <QTabBar>
@@ -97,6 +98,8 @@ Q_SIGNALS:
 	void busy(bool);
 	///
 	void bufferViewChanged();
+	/// send key event to CompressorProxy
+	void compressKeySym(KeySymbol sym, KeyModifier mod, bool isAutoRepeat);
 
 private Q_SLOTS:
 	/// Scroll the BufferView.
@@ -155,6 +158,23 @@ private:
 	struct Private;
 	Private * const d;
 }; // GuiWorkArea
+
+
+/// CompressorProxy adapted from Kuba Ober https://stackoverflow.com/a/21006207
+class CompressorProxy : public QObject
+{
+    Q_OBJECT
+	bool emitCheck(bool isAutoRepeat);
+	bool flag_;
+	// input: event to compress
+	Q_SLOT void slot(KeySymbol sym, KeyModifier mod, bool isAutoRepeat);
+	// output: compressed event
+    Q_SIGNAL void signal(KeySymbol sym, KeyModifier mod);
+public:
+    // No default constructor, since the proxy must be a child of the
+    // target object.
+	explicit CompressorProxy(GuiWorkArea * wa);
+};
 
 
 class EmbeddedWorkArea : public GuiWorkArea
