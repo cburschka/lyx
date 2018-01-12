@@ -1052,7 +1052,7 @@ void GuiWorkArea::generateSyntheticMouseEvent()
 
 
 // CompressorProxy adapted from Kuba Ober https://stackoverflow.com/a/21006207
-CompressorProxy::CompressorProxy(GuiWorkArea * wa) : QObject(wa)
+CompressorProxy::CompressorProxy(GuiWorkArea * wa) : QObject(wa), flag_(false)
 {
 	qRegisterMetaType<KeySymbol>("KeySymbol");
 	qRegisterMetaType<KeyModifier>("KeyModifier");
