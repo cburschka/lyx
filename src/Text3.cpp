@@ -1555,9 +1555,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		if ((outer || normal) && nextpar_depth > 0) {
 			// restore nesting of following paragraph
 			DocIterator scur = cur;
-			depth_type const max_depth = cur.paragraph().getMaxDepthAfter();
+			depth_type const max_depth = cur.paragraph().params().depth() + 1;
 			cur.forwardPar();
-			while (cur.paragraph().params().depth() <= min(nextpar_depth, max_depth))
+			while (cur.paragraph().params().depth() < min(nextpar_depth, max_depth))
 				lyx::dispatch(FuncRequest(LFUN_DEPTH_INCREMENT));
 			cur.setCursor(scur);
 		}
