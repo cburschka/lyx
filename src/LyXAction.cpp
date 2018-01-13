@@ -742,7 +742,8 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_RELOAD
  * \li Action: Reverts opened document.
- * \li Syntax: buffer-reload
+ * \li Syntax: buffer-reload [dump]
+ * \li Params: dump: do not ask for any confirmation, just reload. All changes will be lost.
  * \li Origin: Asger, 2 Feb 1997
  * \endvar
  */
