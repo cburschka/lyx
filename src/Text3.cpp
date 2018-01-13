@@ -1644,6 +1644,9 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		DocumentClass const & tc = bv->buffer().params().documentClass();
 		lyx::dispatch(FuncRequest(LFUN_LAYOUT, from_ascii("\"") + tc.plainLayout().name()
 					  + from_ascii("\" ignoreautonests")));
+		// FIXME: Bibitem mess!
+		if (cur.prevInset() && cur.prevInset()->lyxCode() == BIBITEM_CODE)
+			lyx::dispatch(FuncRequest(LFUN_CHAR_DELETE_BACKWARD));
 		lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "plain"));
 		if (before) {
 			cur.backwardPos();
