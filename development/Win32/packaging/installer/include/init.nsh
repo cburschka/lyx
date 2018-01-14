@@ -364,9 +364,9 @@ Section /o "Serbšcina (Horno)" SecDSorbianH
  AddSize 740
 SectionEnd
 
-Section /o "Shqipe" SecDAlbanian
+Section /o "Shqip" SecDAlbanian
  StrCpy $DictCodes "sq_AL,$DictCodes"
- AddSize 2400
+ AddSize 2612
 SectionEnd
 
 Section /o "Slovenšcina" SecDSlovenian
