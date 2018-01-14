@@ -10,4 +10,6 @@ if (UNIX)
 	# include(../PyCompile)
 endif()
 configure_file("${CMAKE_CURRENT_SOURCE_DIR}/prefTest.pl.in" "${CMAKE_BINARY_DIR}/prefTest.pl" @ONLY)
+configure_file("${CMAKE_CURRENT_SOURCE_DIR}/lyx_batch.pl.in" "${CMAKE_BINARY_DIR}/lyx_batch.pl" @ONLY)
+
 

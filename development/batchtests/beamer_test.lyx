@@ -1,0 +1,4606 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+% We use the "Berkeley" theme with a 3.45em-wide side bar on the left
+\usetheme[left,width=3.45em]{Berkeley}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "lmss" "default"
+\font_typewriter "lmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format pdf2
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+presentation
+\end_layout
+
+\end_inset
+
+Contents
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Purposes
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
++-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Purpose of the Beamer class
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+With the 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ class, you can produce presentation slides, which
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+are visually highly customizable
+\end_layout
+
+\begin_layout Itemize
+can be very well structured
+\end_layout
+
+\begin_layout Itemize
+can be constructed step-by-step (
+\begin_inset Quotes eld
+\end_inset
+
+overlay
+\begin_inset Quotes erd
+\end_inset
+
+ concept)
+\end_layout
+
+\begin_layout Itemize
+may contain different navigation paths (note that the slides contain all
+ sorts of hyperlinks)
+\end_layout
+
+\begin_layout Itemize
+use \SpecialChar LaTeX
+'s superb output quality
+\end_layout
+
+\begin_layout Itemize
+might embed multimedia content (audio, video)
+\end_layout
+
+\begin_layout Itemize
+can easily be transformed to accompanying material (such as an article-like
+ handout)
+\end_layout
+
+\begin_layout Itemize
+and much more \SpecialChar ldots
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Purpose of this presentation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+This presentation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+describes some basic features of 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+especially how they can be used with \SpecialChar LyX
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+For more general and comprehensive information on 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ itself, please refer to the extensive class manual 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "beamer-ug"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Segments of a presentation
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The global structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+A presentation usually consists of
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+a title page
+\end_layout
+
+\begin_layout Itemize
+slides that might be grouped to sections/parts
+\end_layout
+
+\begin_layout Itemize
+an appendix with additional information, such as a bibliography
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+We describe these global segments in what follows.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The title page
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Within \SpecialChar LyX
+, a title page is constructed by the layouts 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Title
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Subtitle
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Author
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Institute
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Date
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+TitleGraphic
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+None of these elements is mandatory, but at least one must be given 
+\end_layout
+
+\begin_layout Itemize
+The order of insertion does not matter (the real order is defined in the
+ 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ theme)
+\end_layout
+
+\begin_layout Itemize
+For 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Title
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Subtitle
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Author
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Institute
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Date
+\end_layout
+
+\end_inset
+
+, you can define 
+\begin_inset Quotes eld
+\end_inset
+
+short
+\begin_inset Quotes erd
+\end_inset
+
+ forms via 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Insert\SpecialChar menuseparator
+Short Title\SpecialChar breakableslash
+Date\SpecialChar breakableslash
+\SpecialChar ldots
+
+\end_layout
+
+\end_inset
+
+ These are used in the sidebar\SpecialChar breakableslash
+heading (given the theme actually provides
+ a sidebar\SpecialChar breakableslash
+heading)
+\end_layout
+
+\begin_layout Itemize
+If you select 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Title (Plain Frame)
+\end_layout
+
+\end_inset
+
+ instead of 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Title
+\end_layout
+
+\end_inset
+
+, the title page will have no sidebar or heading
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Slides/Frames
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Slides are called 
+\begin_inset Quotes eld
+\end_inset
+
+frames
+\begin_inset Quotes erd
+\end_inset
+
+ in 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+.
+ Everything inside a frame is put on one slide (which itself might consist
+ of sub-slides).
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Select the 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Frame
+\end_layout
+
+\end_inset
+
+ style to start a frame
+\end_layout
+
+\begin_layout Itemize
+The frame title is to be inserted in the 
+\begin_inset Quotes eld
+\end_inset
+
+Frame title
+\begin_inset Quotes erd
+\end_inset
+
+ inset, which is automatically inserted for new frames or can be manually
+ inserted via 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Insert\SpecialChar menuseparator
+Frame Title
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Alternatively, you can also use the 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+FrameTitle
+\end_layout
+
+\end_inset
+
+ layout, which additionally offers a (rarely used) short frame title option,
+ and, more importantly, overlay options
+\end_layout
+
+\begin_layout Itemize
+A subtitle can be added via the 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+FrameSubtitle
+\end_layout
+
+\end_inset
+
+ layout
+\end_layout
+
+\begin_layout Itemize
+Frame options (see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "beamer-ug"
+literal "true"
+
+\end_inset
+
+ for the diverse options) are inserted via 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Insert\SpecialChar menuseparator
+Frame Options
+\end_layout
+
+\end_inset
+
+, overlay options via 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Insert\SpecialChar menuseparator
+Overlay Specifications
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Insert\SpecialChar menuseparator
+Default Overlay Specifications
+\end_layout
+
+\end_inset
+
+ (we explain later what this is)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+1-2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+label=myframe
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Frames can be repeated
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Frames can be repeated fully or only in terms of selected sub-slides, multiple
+ times at any later point of the presentation.
+\end_layout
+
+\begin_layout Frame
+You just need to give the respective frame a label name via the frame option
+ 
+\begin_inset Quotes eld
+\end_inset
+
+label
+\begin_inset Quotes erd
+\end_inset
+
+ (as done here).
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+Then you can repeat this frame by means of the 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+AgainFrame
+\end_layout
+
+\end_inset
+
+ layout later in the presentation.
+ Just enter the label name in the 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+AgainFrame
+\end_layout
+
+\end_inset
+
+ layout and specify, if required, which sub-slides you want to be repeated
+ via 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Insert\SpecialChar menuseparator
+Overlay Specifications
+\end_layout
+
+\end_inset
+
+ (again, see below for the concept of 
+\begin_inset Quotes eld
+\end_inset
+
+overlays
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\begin_deeper
+\begin_layout Proof
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+3
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Here's the proof!
+\end_layout
+
+\end_inset
+
+ (This text is only shown on sub-slide 3 which is itself only shown when
+ this frame is repeated later on)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Keeping frames together
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Use nesting!
+\end_layout
+
+\begin_layout Itemize
+Note that all frame content, if the style is not 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Frame
+\end_layout
+
+\end_inset
+
+, must be nested to the frame environment (via 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Edit\SpecialChar menuseparator
+Increase List Depth
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Info
+type  "shortcut"
+arg   "depth-increment"
+\end_inset
+
+).
+ This is done automatically if you insert new frame paragraphs.
+\end_layout
+
+\begin_layout Itemize
+Nested content is marked by a red bar in the margin of the \SpecialChar LyX
+ workarea
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Non-nested content (such as this) will also be displayed in the presentation
+ (on a separate slide), but not properly aligned
+\end_layout
+
+\begin_layout Itemize
+So please avoid this
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Separating frames
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\noindent
+Consecutive frames have to be separated from each other.
+ This is done by means of the 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+Separator
+\end_layout
+
+\end_inset
+
+ inset, which can be produced by hitting return in an empty Standard paragraph
+ right below the frame (see UserGuide, sec.
+\begin_inset space ~
+\end_inset
+
+3.4.6).
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Tip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+There is a simple and much more convenient way to start a new frame: Issue
+ 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Insert\SpecialChar menuseparator
+Separated Frame Below
+\end_layout
+
+\end_inset
+
+ (
+\begin_inset Info
+type  "shortcut"
+arg   "environment-split"
+\end_inset
+
+ if you are in a non-nested 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Frame
+\end_layout
+
+\end_inset
+
+ paragraph, or 
+\begin_inset Info
+type  "shortcut"
+arg   "environment-split outer"
+\end_inset
+
+, respectively, if you are in a nested paragraph within the frame).
+ If you are in the frame heading, 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Insert\SpecialChar menuseparator
+Separated Frame Above
+\end_layout
+
+\end_inset
+
+ inserts a new, properly separated frame above the current one!
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout AgainFrame
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+3
+\end_layout
+
+\end_inset
+
+myframe
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout PlainFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Special frame types
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout PlainFrame
+\SpecialChar LyX
+ provides two special frame types:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Frame (plain)
+\end_layout
+
+\end_inset
+
+ is a frame without a sidebar/header (such as this one).
+ This is useful for slides with much content\SpecialChar breakableslash
+wide tables
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Frame (fragile)
+\end_layout
+
+\end_inset
+
+ is to be used if the frame consists of 
+\begin_inset Quotes eld
+\end_inset
+
+fragile
+\begin_inset Quotes erd
+\end_inset
+
+ content, especially verbatim stuff such as program listings
+\end_layout
+
+\end_deeper
+\begin_layout PlainFrame
+If you want a fragile plain frame, pass the option 
+\begin_inset Quotes eld
+\end_inset
+
+plain
+\begin_inset Quotes erd
+\end_inset
+
+ to a fragile frame or the option 
+\begin_inset Quotes eld
+\end_inset
+
+fragile
+\begin_inset Quotes erd
+\end_inset
+
+ to a plain frame.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sectioning a presentation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+To group frames, you can use the usual sectioning commands (
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Section
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Subsection
+\end_layout
+
+\end_inset
+
+ etc.)
+\end_layout
+
+\begin_layout Itemize
+These are shown in the table of contents, the sidebar\SpecialChar breakableslash
+header (depending on
+ the theme) and the article output (for 
+\begin_inset Quotes eld
+\end_inset
+
+article
+\begin_inset Quotes erd
+\end_inset
+
+ see below, the section on 
+\begin_inset Quotes eld
+\end_inset
+
+modes
+\begin_inset Quotes erd
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Parts have special meaning
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+You can also divide your presentation into 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Parts
+\end_layout
+
+\end_inset
+
+.
+ Note, however, that parts behave differently in 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ than in other document classes: a part is considered to be 
+\begin_inset Quotes eld
+\end_inset
+
+a little 
+\begin_inset Quotes els
+\end_inset
+
+talk of its own
+\begin_inset Quotes ers
+\end_inset
+
+ with its own table of contents, its own navigation bars, and so on.
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+after "sec.~10.3"
+key "beamer-ug"
+literal "true"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This means, for instance, that if you use parts, the table of contents will
+ only list the sections and subsections of the part that contains this table
+ of contents, and the sidebar\SpecialChar breakableslash
+header will also only show the sections of
+ the current part.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Re-arranging frames
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Tip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+Did you know that you can easily move and re-arrange whole frames via the
+ outliner (
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+View\SpecialChar menuseparator
+Outline Pane
+\end_layout
+
+\end_inset
+
+)?
+\end_layout
+
+\begin_layout Block
+Also, you can navigate to a specific frame via the 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Navigate
+\end_layout
+
+\end_inset
+
+ menu!
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The appendix
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Appendices might be useful for additional\SpecialChar breakableslash
+reserve material.
+ The appendix is part of the presentation, but not shown in the table of
+ contents\SpecialChar breakableslash
+sidebar\SpecialChar breakableslash
+header
+\end_layout
+
+\begin_layout Itemize
+An appendix is inserted as usual in \SpecialChar LyX
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Use 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Document\SpecialChar menuseparator
+Start Appendix Here
+\end_layout
+
+\end_inset
+
+ at the position where the appendix should begin
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Typical content of the appendix is the bibliography
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+You insert it as in all other \SpecialChar LyX
+ classes, via the 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Bibliography
+\end_layout
+
+\end_inset
+
+ style (see the bibliography at the end of this presentation as an example)
+\end_layout
+
+\begin_layout Itemize
+Note that you can also use Bib\SpecialChar TeX
+, although not all Bib\SpecialChar TeX
+ styles are prepared
+ to work with 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The overlay concept
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+What are overlays?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Basically, the overlay concept allows to change the slide content dynamically.
+ You can uncover things/text piecewise, fade out content, highlight things,
+ replace text, images etc.
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
++-
+\end_layout
+
+\end_inset
+
+Overlays are useful to build up slides as you speak
+\end_layout
+
+\begin_layout Itemize
+They help you to shift your audience's focus on specific things
+\end_layout
+
+\begin_layout Itemize
+And they help your audience to follow you
+\end_layout
+
+\begin_layout Itemize
+So use overlays! 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+6
+\end_layout
+
+\end_inset
+
+Really, use them!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Overlay types
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ provides many different overlay types.
+ The most important ones are:
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Hidden
+\begin_inset space ~
+\end_inset
+
+content: Stuff that is completely invisible up to a point
+\end_layout
+
+\begin_layout Description
+Covered
+\begin_inset space ~
+\end_inset
+
+content: Stuff that is faded out (not completely invisible)
+\end_layout
+
+\begin_layout Description
+Highlighted
+\begin_inset space ~
+\end_inset
+
+content: Stuff that is somehow emphasized at a certain point
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+We give examples for these types in what follows, but begin with some general
+ remarks on overlay possibilities
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+General overlay/action possibilities
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Many 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ elements provide overlay settings.
+ Basically, you can define on which sub-slide(s) a given content appears
+ (
+\begin_inset Quotes eld
+\end_inset
+
+2
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+2-4
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+3-
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+1,3
+\begin_inset Quotes erd
+\end_inset
+
+ etc.), or in which output mode (
+\begin_inset Quotes eld
+\end_inset
+
+presentation
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+article
+\begin_inset Quotes erd
+\end_inset
+
+ etc.)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In \SpecialChar LyX
+, these settings are generally accessible via 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Insert\SpecialChar menuseparator
+Overlay Specifications
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Insert\SpecialChar menuseparator
+Action Specifications
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Overprint
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+
+2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Definition
+\begin_inset Quotes eld
+\end_inset
+
+Action
+\begin_inset Quotes erd
+\end_inset
+
+ is a more general concept, which does not only include what we have called
+ 
+\begin_inset Quotes eld
+\end_inset
+
+overlays
+\begin_inset Quotes erd
+\end_inset
+
+ (
+\begin_inset Quotes eld
+\end_inset
+
+on which sub-slide[s] is this to be shown\SpecialChar breakableslash
+hidden\SpecialChar breakableslash
+highlighted
+\begin_inset Quotes erd
+\end_inset
+
+), but also tasks such as 
+\begin_inset Quotes eld
+\end_inset
+
+only show this in the presentation, not on the handout
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+show this on the second screen only
+\begin_inset Quotes erd
+\end_inset
+
+ (so-called 
+\begin_inset Quotes eld
+\end_inset
+
+modes
+\begin_inset Quotes erd
+\end_inset
+
+).
+\end_layout
+
+\end_deeper
+\begin_layout Overprint
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+
+3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout AlertBlock
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Note to the \SpecialChar LaTeX
+ aficionados
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout AlertBlock
+The mentioned overlay/action settings conform to those command/environment
+ options embraced by
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset space \space{}
+\end_inset
+
+<\SpecialChar ldots
+>
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+[<\SpecialChar ldots
+>]
+\end_layout
+
+\end_inset
+
+ in the \SpecialChar LaTeX
+ output.
+\end_layout
+
+\begin_layout AlertBlock
+Note that \SpecialChar LyX
+ adds those braces on export, so you must not enter them yourself.
+ In other words, enter 
+\begin_inset Quotes eld
+\end_inset
+
+1
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
++-
+\begin_inset Quotes erd
+\end_inset
+
+ to the overlay/action insets, not 
+\begin_inset Quotes eld
+\end_inset
+
+<1>
+\begin_inset Quotes erd
+\end_inset
+
+ or 
+\begin_inset Quotes eld
+\end_inset
+
+[<+->]
+\begin_inset Quotes erd
+\end_inset
+
+!
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+An example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Take for example a quote.
+ In a 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Quote
+\end_layout
+
+\end_inset
+
+ environment, you can specify the overlay settings via 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Insert\SpecialChar menuseparator
+Overlay Specifications
+\end_layout
+
+\end_inset
+
+.
+ If you do this and enter 
+\begin_inset Quotes eld
+\end_inset
+
+2
+\begin_inset Quotes erd
+\end_inset
+
+, the quote will only appear on (sub-)slide 2:
+\end_layout
+
+\begin_deeper
+\begin_layout Quote
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+2
+\end_layout
+
+\end_inset
+
+Fear no more the heat o’ the sun
+\end_layout
+
+\begin_layout Quote
+Nor the furious winter’s rages
+\end_layout
+
+\begin_layout Quote
+Thou thy worldly task hast done
+\end_layout
+
+\begin_layout Quote
+Home art gone, and ta’en thy wages
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+This is how the concept works, basically.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Covering vs.
+ hiding
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+The difference between 
+\begin_inset Quotes eld
+\end_inset
+
+covering
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+hiding
+\begin_inset Quotes erd
+\end_inset
+
+ is that hidden content is treated as if it isn't there, while covered content
+ is just covered (and the space is reserved).
+ If we would have hidden the quote on the last slide and not covered, it
+ would only have taken space on appearance:
+\end_layout
+
+\begin_deeper
+\begin_layout Quote
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+only@2
+\end_layout
+
+\end_inset
+
+Fear no more the heat o’ the sun
+\end_layout
+
+\begin_layout Quote
+Nor the furious winter’s rages
+\end_layout
+
+\begin_layout Quote
+Thou thy worldly task hast done
+\end_layout
+
+\begin_layout Quote
+Home art gone, and ta’en thy wages
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+You can see how this text moves when the quote is un-hidden.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Coverage degrees
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamercovered{transparent}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ offers several degrees of 
+\begin_inset Quotes eld
+\end_inset
+
+coverage
+\begin_inset Quotes erd
+\end_inset
+
+, which can be set via the command 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+setbeamercovered
+\end_layout
+
+\end_inset
+
+ either globally (for the whole presentation) or locally (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ for a single frame, as here).
+ By default, content is completely covered.
+ In 
+\begin_inset Quotes eld
+\end_inset
+
+transparent
+\begin_inset Quotes erd
+\end_inset
+
+ mode, you can see covered text greyed-out:
+\end_layout
+
+\begin_deeper
+\begin_layout Quote
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+2
+\end_layout
+
+\end_inset
+
+Fear no more the heat o’ the sun
+\end_layout
+
+\begin_layout Quote
+Nor the furious winter’s rages
+\end_layout
+
+\begin_layout Quote
+Thou thy worldly task hast done
+\end_layout
+
+\begin_layout Quote
+Home art gone, and ta’en thy wages
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+Check the 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ manual for more possibilities.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Default overlay/action specifications vs.
+\begin_inset Newline newline
+\end_inset
+
+(normal) overlay/action specifications
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For some environments (such as lists and also frames), you can set 
+\begin_inset Quotes eld
+\end_inset
+
+default specifications
+\begin_inset Quotes erd
+\end_inset
+
+ additionally to normal overlay/action specifications (or in the case of
+ lists: 
+\begin_inset Quotes eld
+\end_inset
+
+overlay specifications
+\begin_inset Quotes erd
+\end_inset
+
+ for the whole list and 
+\begin_inset Quotes eld
+\end_inset
+
+item overlay specifications
+\begin_inset Quotes erd
+\end_inset
+
+ for singular items)
+\end_layout
+
+\begin_layout Itemize
+Default specifications apply to all content of the given environment, if
+ not individually specified otherwise
+\end_layout
+
+\begin_layout Itemize
+They use a placeholder syntax.
+ E.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., 
+\begin_inset Quotes eld
+\end_inset
+
++(1)-
+\begin_inset Quotes erd
+\end_inset
+
+ will uncover all items in a list step by step (with a start offset of 1)
+ if they have no individual item specification:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
++(1)-
+\end_layout
+
+\end_inset
+
+One
+\end_layout
+
+\begin_layout Itemize
+Two
+\end_layout
+
+\begin_layout Itemize
+Three
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+
+1-
+\end_layout
+
+\end_inset
+
+Always
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Frame
+Please consult the 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ manual for details on this syntax.
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
++-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Default overlay/action specifications vs.
+\begin_inset Newline newline
+\end_inset
+
+(normal) overlay/action specifications
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\noindent
+This frame uses a specific default overlay specification
+\end_layout
+
+\begin_layout Frame
+which causes each overlay-aware paragraph \SpecialChar ldots
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\SpecialChar ldots
+ or list item \SpecialChar ldots
+
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar ldots
+ to appear \SpecialChar ldots
+
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar ldots
+ on a subsequent sub-slide \SpecialChar ldots
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+A block
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+\SpecialChar ldots
+ one after the other
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+
+alert@+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Default overlay/action specifications vs.
+\begin_inset Newline newline
+\end_inset
+
+(normal) overlay/action specifications
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\noindent
+And this frame uses a specific default overlay specification \SpecialChar ldots
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\SpecialChar ldots
+ which causes each overlay-aware list item \SpecialChar ldots
+
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar ldots
+ to be highlighted \SpecialChar ldots
+
+\end_layout
+
+\begin_layout Itemize
+\SpecialChar ldots
+ on respective sub-slides
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Pause
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+The 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Pause
+\end_layout
+
+\end_inset
+
+ layout lets you mark a point where all following content will be covered
+ (by default for one slide, with regard to the content preceding the pause):
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+After first pause
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+After second pause
+\end_layout
+
+\begin_layout Pause
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+By default, consecutive pauses also end consecutively.
+ 
+\end_layout
+
+\begin_layout Frame
+Via 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Insert\SpecialChar menuseparator
+Pause Number
+\end_layout
+
+\end_inset
+
+, however, you can specify a specific sub-slide at which the given pause
+ ends, independent from the number of pauses inserted before this one.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Paragraph-wide overlays
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ and \SpecialChar LyX
+ provide you with paragraph layouts whose purpose it is to show/hide
+ whole paragraphs or sequences of paragraphs on specific slides.
+ These are particularly:
+\end_layout
+
+\begin_deeper
+\begin_layout Uncover
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+2-
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Uncover
+The 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Uncovered
+\end_layout
+
+\end_inset
+
+ layout which uncovers all content on the specified slides \SpecialChar ldots
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\SpecialChar ldots
+ including nested paragraphs of other layout.
+\end_layout
+
+\end_deeper
+\begin_layout Only
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+3-
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Only
+The 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Only
+\end_layout
+
+\end_inset
+
+ layout which un-hides content (note again how the surrounding text 
+\begin_inset Quotes eld
+\end_inset
+
+moves
+\begin_inset Quotes erd
+\end_inset
+
+ when this gets visible).
+\end_layout
+
+\begin_layout Overprint
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+
+4
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+And the 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Overprint
+\end_layout
+
+\end_inset
+
+ environment which lets you enter \SpecialChar ldots
+
+\end_layout
+
+\end_deeper
+\begin_layout Overprint
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+
+5
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\SpecialChar ldots
+ alternative text taking a specific space on specified slides.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Frame
+as demonstrated here.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Inline overlays
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+To demonstrate uncover/visible difference:
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamercovered{transparent}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ also supports inline overlays for text parts (as opposed to whole paragraphs),
+ which are accessible via 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Edit\SpecialChar menuseparator
+Text Style
+\end_layout
+
+\end_inset
+
+ in \SpecialChar LyX
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+You can 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+uncover
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Uncover
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+2-
+\end_layout
+
+\end_inset
+
+text
+\end_layout
+
+\end_inset
+
+ on specific slides
+\end_layout
+
+\begin_layout Itemize
+You can make 
+\begin_inset Flex Visible
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+3-
+\end_layout
+
+\end_inset
+
+text
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+visible
+\end_layout
+
+\end_inset
+
+ (which makes a difference to 
+\begin_inset Quotes eld
+\end_inset
+
+uncover
+\begin_inset Quotes erd
+\end_inset
+
+ only with 
+\begin_inset Quotes eld
+\end_inset
+
+transparent
+\begin_inset Quotes erd
+\end_inset
+
+ coverage setting, as used locally on this slide)
+\end_layout
+
+\begin_layout Itemize
+You can show 
+\begin_inset Flex Only
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+4-
+\end_layout
+
+\end_inset
+
+text 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+only
+\end_layout
+
+\end_inset
+
+ on specific slides
+\end_layout
+
+\begin_layout Itemize
+You can make 
+\begin_inset Flex Invisible
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+5-
+\end_layout
+
+\end_inset
+
+text
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+invisible
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+And you can show 
+\begin_inset Flex Alternative
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+6-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+different
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+alternative
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ text
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+As for the paragraph layouts, the overlay settings can be accessed via the
+ 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Insert
+\end_layout
+
+\end_inset
+
+ menu.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Overlay-aware commands
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Many 
+\begin_inset Quotes eld
+\end_inset
+
+inline
+\begin_inset Quotes erd
+\end_inset
+
+ commands (also to be found at 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Edit\SpecialChar menuseparator
+Text Style
+\end_layout
+
+\end_inset
+
+) are overlay-aware.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Thus, you can make for instance text on specific slides 
+\begin_inset Flex Emphasize
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+2
+\end_layout
+
+\end_inset
+
+emphasized
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Bold
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+3
+\end_layout
+
+\end_inset
+
+bold
+\end_layout
+
+\end_inset
+
+, shown in 
+\begin_inset Flex Alert
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+4
+\end_layout
+
+\end_inset
+
+alert
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Structure
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+5
+\end_layout
+
+\end_inset
+
+structure
+\end_layout
+
+\end_inset
+
+ color.
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+6
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Tip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+Use these Emphasize and Bold insets (instead of the usual respective font
+ settings) also if you do not need overlay specifications.
+ Due to the way emphasized and bold is defined in 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+, normal emphasizing and boldface can lead to \SpecialChar LaTeX
+ errors, e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g.
+ when used in section headings.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Specific environments
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Specific environments
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Specific environments, particularly suited for presentations are:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Diverse 
+\begin_inset Quotes eld
+\end_inset
+
+blocks
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Theorem-style environments
+\end_layout
+
+\begin_layout Itemize
+Columns
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+We sketch them briefly in what follows.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Blocks
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Blocks can contain all sorts of information.
+ We used them here for 
+\begin_inset Quotes eld
+\end_inset
+
+tips
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+hints
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The class provides 3 pre-defined blocks with different look:
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+2-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Block
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+A general-purpose block
+\end_layout
+
+\begin_layout ExampleBlock
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+3-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Example Block
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout ExampleBlock
+A block for 
+\begin_inset Quotes eld
+\end_inset
+
+examples
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout AlertBlock
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+4-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Alert Block
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout AlertBlock
+And an 
+\begin_inset Quotes eld
+\end_inset
+
+alert
+\begin_inset Quotes erd
+\end_inset
+
+ block for important remarks.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Handling Blocks
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In \SpecialChar LyX
+, blocks have a similar user interface to frames, which means that
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Content inside blocks needs to be nested (if the paragraph layout is not
+ 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Block
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+Consecutive blocks of the same type must be separated by the 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Separator
+\end_layout
+
+\end_inset
+
+ paragraph style
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+only@2
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Tip
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+Use 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Edit\SpecialChar menuseparator
+Start New Environment
+\end_layout
+
+\end_inset
+
+ (
+\begin_inset Info
+type  "shortcut"
+arg   "environment-split"
+\end_inset
+
+) to quickly start a new block from within a previous block!
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Blocks are overlay-aware
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Theorem-style environments
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+(Theorem, Corollary, Definition, Definitions, Example, Examples, Fact, Proof)
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+Theorems look similar to blocks in the output, but they have a fixed title
+ (depending on the type).
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Theorem
+This is a theorem!
+\end_layout
+
+\begin_layout Fact
+This is a fact!
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+Via 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Insert\SpecialChar menuseparator
+Additional Theorem Text
+\end_layout
+
+\end_inset
+
+, you can add some extra text to this fixed title
+\end_layout
+
+\begin_deeper
+\begin_layout Example
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+a bad one!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+An example with additional text (brackets added automatically)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Columns
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Sometimes it is useful to divide a presentation into columns
+\end_layout
+
+\begin_deeper
+\begin_layout ColumnsTopAligned
+
+\end_layout
+
+\begin_deeper
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.4
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To do this, first select 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Columns
+\end_layout
+
+\end_inset
+
+ (note the plural) to start the columns
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Column
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+.4
+\backslash
+textwidth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And then, in the following paragraph, select 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Column
+\end_layout
+
+\end_inset
+
+ (singular) to start a specific column
+\end_layout
+
+\end_deeper
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Note:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In the 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Column
+\end_layout
+
+\end_inset
+
+ (singular) environment, you need to specify the width using \SpecialChar LaTeX
+ syntax (but
+ also something like 
+\begin_inset Quotes eld
+\end_inset
+
+3.5cm
+\begin_inset Quotes erd
+\end_inset
+
+ will work)
+\end_layout
+
+\begin_layout Itemize
+Any (singular) 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Column
+\end_layout
+
+\end_inset
+
+ must be nested to the (plural) 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Columns
+\end_layout
+
+\end_inset
+
+.
+ Likewise, column content can be any paragraph style that is nested to a
+ singular 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Column
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Short remarks on modes
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Modes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+In 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ terms, a 
+\begin_inset Quotes eld
+\end_inset
+
+mode
+\begin_inset Quotes erd
+\end_inset
+
+ is a specific output route.
+ There are several modes for different purposes.
+ We just want to highlight three:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The 
+\begin_inset Quotes eld
+\end_inset
+
+beamer
+\begin_inset Quotes erd
+\end_inset
+
+ mode
+\end_layout
+
+\begin_layout Enumerate
+The 
+\begin_inset Quotes eld
+\end_inset
+
+presentation
+\begin_inset Quotes erd
+\end_inset
+
+ mode
+\end_layout
+
+\begin_layout Enumerate
+The 
+\begin_inset Quotes eld
+\end_inset
+
+article
+\begin_inset Quotes erd
+\end_inset
+
+ mode
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+The beamer mode is the default.
+ Unless explicitly specified otherwise, your 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ document is in 
+\begin_inset Quotes eld
+\end_inset
+
+beamer
+\begin_inset Quotes erd
+\end_inset
+
+ mode.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+presentation
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Switching Modes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+However, you can switch document parts, frames, headings and all 
+\begin_inset Quotes eld
+\end_inset
+
+action
+\begin_inset Quotes erd
+\end_inset
+
+-aware environments to a different mode.
+ For instance, we have switched this frame to 
+\begin_inset Quotes eld
+\end_inset
+
+presentation
+\begin_inset Quotes erd
+\end_inset
+
+ mode.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+What does this mean?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+It means that this frame will only be visible in the presentation, not in
+ the accompanying 
+\begin_inset Quotes eld
+\end_inset
+
+article
+\begin_inset Quotes erd
+\end_inset
+
+, if you produce such an article (we will elaborate on this a bit below)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+article
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Switching Modes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+This frame will not be visible in the presentation, but only in the article,
+ since it is in 
+\begin_inset Quotes eld
+\end_inset
+
+article
+\begin_inset Quotes erd
+\end_inset
+
+ mode.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+So what?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+This is actually pretty useful! You can set up a single document and produce
+ both a presentation and – using the article mode – a handout.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+And we mean a 
+\begin_inset Flex Emphasize
+status collapsed
+
+\begin_layout Plain Layout
+real
+\end_layout
+
+\end_inset
+
+, useful handout, not one of those scaled slide printouts that are so common
+ nowadays (but if you insist, you can produce one of those as well)
+\end_layout
+
+\begin_layout Itemize
+Modes allow you to add extra text to the handout or hide parts from it
+\end_layout
+
+\begin_layout Itemize
+You can use for instance different graphics for the presentation and the
+ handout
+\end_layout
+
+\begin_layout Itemize
+and so on \SpecialChar ldots
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Examples
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+As said, many elements are mode-aware.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\noindent
+You can show particular text 
+\begin_inset Flex Only
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+presentation
+\end_layout
+
+\end_inset
+
+only in the presentation
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex Only
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+article
+\end_layout
+
+\end_inset
+
+only in the article
+\end_layout
+
+\end_inset
+
+ via 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+Edit\SpecialChar menuseparator
+Text Style\SpecialChar menuseparator
+Only
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Flex ArticleMode
+status open
+
+\begin_layout Itemize
+Or put all sorts of complex contents via 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Insert\SpecialChar menuseparator
+Custom Insets\SpecialChar menuseparator
+ArticleMode
+\end_layout
+
+\end_inset
+
+ in an inset that will only be output in article mode
+\end_layout
+
+\end_inset
+
+
+\begin_inset Flex PresentationMode
+status open
+
+\begin_layout Itemize
+Or put all sorts of complex contents via 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Insert\SpecialChar menuseparator
+Custom Insets\SpecialChar menuseparator
+PresentationMode
+\end_layout
+
+\end_inset
+
+ in an inset that will only be output in presentation mode
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Or you can define that an 
+\begin_inset Flex Emphasize
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+presentation
+\end_layout
+
+\end_inset
+
+emphasizing
+\end_layout
+
+\end_inset
+
+ should only apply to the presentation, 
+\begin_inset Flex Bold
+status open
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+article
+\end_layout
+
+\end_inset
+
+a bold face
+\end_layout
+
+\end_inset
+
+ only to article
+\end_layout
+
+\begin_layout Itemize
+You can also show section headings or frame titles\SpecialChar breakableslash
+subtitles only in the
+ presentation\SpecialChar breakableslash
+article (like we do for the 
+\begin_inset Quotes eld
+\end_inset
+
+Contents
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+References
+\begin_inset Quotes erd
+\end_inset
+
+ frame titles in this presentation)
+\end_layout
+
+\begin_layout Itemize
+And much more of this sort \SpecialChar ldots
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Setting up an article
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Setting up a beamer article with \SpecialChar LyX
+ is easy.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\noindent
+Just create a new document with the class 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+Beamer Article (Standard Class)
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+Beamer Article (KOMA-Script)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Then add the presentation to this document as a child (via 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Insert\SpecialChar menuseparator
+File\SpecialChar menuseparator
+Child Document\SpecialChar ldots
+
+\end_layout
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+And that's it.
+ Now you can produce the handout and the presentation by compiling one of
+ these two documents, while you only need to edit one, namely the presentation
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+Check out the accompanying beamer-article example document for this presentation.
+ You can find it in the same folder as this document.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Changing the look
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Themes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ presentations are themeable.
+ Themes determine the colors used, the macro structure (use of sidebars,
+ headlines etc.), the fonts, the look of list items, blocks and in general
+ the whole look and feel of a presentation
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ itself ships a number of different-looking themes to chose from (we use
+ the 
+\begin_inset Quotes eld
+\end_inset
+
+Berkeley
+\begin_inset Quotes erd
+\end_inset
+
+ theme in this presentation; see 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+\SpecialChar LaTeX
+ Preamble
+\end_layout
+
+\end_inset
+
+ for how we activated and slightly tweaked the theme)
+\end_layout
+
+\begin_layout Itemize
+In addition to this standard set, you can get more themes from 
+\begin_inset CommandInset href
+LatexCommand href
+name "CTAN"
+target "http://www.ctan.org"
+literal "false"
+
+\end_inset
+
+ and other places at the Internet
+\end_layout
+
+\begin_layout Itemize
+If you still are not satisified or if you need a theme matching to your
+ University's or company's corporate design, the 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ manual 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "beamer-ug"
+literal "true"
+
+\end_inset
+
+ explains how you can setup your own theme
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Themes can be modified
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+But you do not need to write a theme from scratch if you want to alter the
+ look.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Existing themes can be modified both in details and in major areas (such
+ as the coloring)
+\end_layout
+
+\begin_layout Itemize
+Consult the 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ manual 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "beamer-ug"
+literal "true"
+
+\end_inset
+
+ for details
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+And more \SpecialChar ldots
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+\SpecialChar ldots
+ much more!
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Note that 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ can do much more than we have described here.
+ The 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ manual 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "beamer-ug"
+literal "true"
+
+\end_inset
+
+ provides a comprehensive documentation.
+\end_layout
+
+\begin_layout Frame
+Also, have a look at the 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Beamer
+\end_layout
+
+\end_inset
+
+ examples and templates shipped with \SpecialChar LyX
+!
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\start_of_appendix
+Appendix
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+We use a FrameTitle layout (and not the Frame Title inset) below in order
+ to exclude the redundant title from the article.
+ Also note the 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+ in the bibliography.
+ It is needed for proper entry rendering (note the different coloring of
+ the author in the PDF output).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+presentation
+\end_layout
+
+\end_inset
+
+References
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "beamer-ug"
+literal "true"
+
+\end_inset
+
+Tantau, Till et al.:
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+newblock
+\end_layout
+
+\end_inset
+
+ The beamer class.
+ 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+https://ctan.org/tex-archive/macros/latex/contrib/beamer/doc/beameruserguide.pdf
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

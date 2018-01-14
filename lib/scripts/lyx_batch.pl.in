@@ -1,0 +1,57 @@
+#! /usr/bin/env perl
+# -*- mode: perl; -*-
+
+# lyx_batch.pl testname
+
+use strict;
+use warnings;
+use File::Copy;
+use File::Compare;
+
+my $builddir = "@CMAKE_BINARY_DIR@";
+my $userdir = "$builddir/Testing/.lyx";
+my $workdir = "$builddir/autotests/out-home";
+
+my $vsuffix = "@PROGRAM_SUFFIX@";
+my $lyx_exe = "$builddir/bin/lyx$vsuffix";
+
+my $lyxsource = "@LYX_ABS_TOP_SRCDIR@";
+my $data = "$lyxsource/development/batchtests";
+
+my %Tests = (
+  beamer_test => {
+    create => "beamer_test.tex",
+    commands => ["file-open beamer_test.lyx",
+		 "buffer-begin",
+		 "repeat 150 outline-down",
+		 "repeat 150 outline-up",
+		 "buffer-export pdflatex",
+		 "repeat 150 outline-down",
+		 "buffer-reload dump",
+		 "lyx-quit"]
+  }
+    );
+
+exit(1) if (! defined($ARGV[0]));
+my $test = $ARGV[0];
+exit(2) if (! defined($Tests{$test}));
+
+my $orig_lyx = "$data/$test.lyx";
+my $work_lyx = "$workdir/$test.lyx";
+my $expected = "$data/$test.tex.orig";
+my $created = "$workdir/$Tests{$test}->{create}";
+
+die("File \"$expected\" does not exist") if (! -e $expected);
+# Create lyx-file to work with
+copy($orig_lyx, $work_lyx) or die("Copy failed: $!");
+unlink($created);
+$ENV{LANG} = "en";
+$ENV{LC_ALL} = "C";
+$ENV{LANGUAGE} = "en_US";
+
+chdir($workdir);
+system($lyx_exe, "-userdir", $userdir, "-x", "command-sequence " . join(';', @{$Tests{$test}->{commands}}));
+die("Expected and created files differ") if (compare($expected, $created) != 0);
+
+exit(0);
+

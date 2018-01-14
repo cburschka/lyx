@@ -1049,6 +1049,7 @@ add_subdirectory(lib/scripts "${TOP_BINARY_DIR}/scripts")
 add_subdirectory(lib/examples "${TOP_BINARY_DIR}/lib/examples")
 add_subdirectory(sourcedoc "${TOP_BINARY_DIR}/sourcedoc")
 add_subdirectory(development/autotests "${TOP_BINARY_DIR}/autotests")
+add_subdirectory(development/batchtests "${TOP_BINARY_DIR}/batchtests")
 
 message(STATUS)
 message(STATUS "Build params, switch LYX_* options by -DLYX_*=ON or OFF, LYX_* combos by -DLYX_*=value:")
