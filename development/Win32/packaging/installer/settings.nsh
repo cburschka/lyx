@@ -18,7 +18,7 @@ These typically need to be modified for each LyX release
 
 !define APP_VERSION "${APP_VERSION_MAJOR}.${APP_VERSION_MINOR}.${APP_VERSION_REVISION}${APP_EMERGENCY_DOT}${APP_VERSION_EMERGENCY}" # Version to display
 
-!define COPYRIGHT_YEAR 2017
+!define COPYRIGHT_YEAR 2018
 
 #--------------------------------
 # Installer file name
