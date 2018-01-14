@@ -27,6 +27,8 @@
 
 set(outputformat pdflatex)
 set(checkdir "${TOP_SRC_DIR}/autotests/checklatexexports")
+# Checking that info inset correctly fills up VCS information
+# see also bug #10835
 set(checkfiles vcs_info_export)
 
 foreach(_f ${checkfiles})
