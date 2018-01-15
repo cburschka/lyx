@@ -4,7 +4,7 @@
 \begin_header
 \save_transient_properties true
 \origin /systemlyxdir/examples/ja/
-\textclass jarticle
+\textclass bxjsarticle
 \begin_preamble
 %% maxwidth is the original width if it's less than linewidth
 %% otherwise use linewidth (to make sure the graphics do not exceed the margin)
@@ -31,7 +31,7 @@ sweave
 \font_typewriter "lmtt" "default"
 \font_math "auto" "auto"
 \font_default_family default
-\use_non_tex_fonts false
+\use_non_tex_fonts true
 \font_sc false
 \font_osf false
 \font_sf_scale 100 100
@@ -303,22 +303,27 @@ bin
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
+\begin_inset Flex Chunk
 status open
 
 \begin_layout Plain Layout
 
-<<where-is-R-bin,eval=FALSE>>=
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+where-is-R-bin,eval=FALSE
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
 
 R.home('bin')
-\end_layout
-
-\begin_layout Plain Layout
-
-@
 \end_layout
 
 \end_inset
@@ -355,22 +360,27 @@ Sweave.sty
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
+\begin_inset Flex Chunk
 status open
 
 \begin_layout Plain Layout
 
-<<sweave-sty,eval=FALSE>>=
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+sweave-sty,eval=FALSE
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
 
 file.path(R.home('share'), 'texmf', 'tex', 'latex')
-\end_layout
-
-\begin_layout Plain Layout
-
-@
 \end_layout
 
 \end_inset
@@ -463,12 +473,22 @@ useFancyQuotes
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
+\begin_inset Flex Chunk
 status open
 
 \begin_layout Plain Layout
 
-<<setup, keep.source=TRUE>>=
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+setup, keep.source=TRUE
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -481,14 +501,28 @@ status open
 options(width = 70, useFancyQuotes = FALSE, digits = 4)
 \end_layout
 
-\begin_layout Plain Layout
+\end_inset
 
-@
+
 \end_layout
 
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
+
 \begin_layout Plain Layout
 
-<<sweave-manual, eval=FALSE, keep.source=TRUE>>=
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+sweave-manual, eval=FALSE, keep.source=TRUE
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -501,27 +535,28 @@ options(width = 70, useFancyQuotes = FALSE, digits = 4)
 vignette("Sweave", package = "utils")
 \end_layout
 
+\end_inset
+
+下記は、どのSエンジンでも動作する単純な例です。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
+
 \begin_layout Plain Layout
 
-@
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+print-integers, keep.source=TRUE
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-下記は、どのSエンジンでも動作する単純な例です。
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<print-integers, keep.source=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -531,17 +566,31 @@ status open
 
 \begin_layout Plain Layout
 
-1:10 
+1:10
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
 
 \begin_layout Plain Layout
 
-@
-\end_layout
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
 
-<<hide-results, results=hide>>=
+hide-results, results=hide
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -554,27 +603,28 @@ status open
 print(1:20)
 \end_layout
 
+\end_inset
+
+単純な計算機をエミュレートすることもできます。
+\end_layout
+
+\begin_layout Standard
+\begin_inset Flex Chunk
+status open
+
 \begin_layout Plain Layout
 
-@
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+calculator
 \end_layout
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-単純な計算機をエミュレートすることもできます。
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<calculator>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -587,11 +637,6 @@ status open
 sin(pi/6)
 \end_layout
 
-\begin_layout Plain Layout
-
-@
-\end_layout
-
 \end_inset
 
 
@@ -602,12 +647,22 @@ sin(pi/6)
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
+\begin_inset Flex Chunk
 status open
 
 \begin_layout Plain Layout
 
-<<rnorm>>=
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+rnorm
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -628,11 +683,6 @@ print(x)
 \begin_layout Plain Layout
 
 t1 <- t.test(x)
-\end_layout
-
-\begin_layout Plain Layout
-
-@
 \end_layout
 
 \end_inset
@@ -728,22 +778,27 @@ iris
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
+\begin_inset Flex Chunk
 status open
 
 \begin_layout Plain Layout
 
-<<iris-summary>>=
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+iris-summary
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
 
 summary(iris[,-5])
-\end_layout
-
-\begin_layout Plain Layout
-
-@
 \end_layout
 
 \end_inset
@@ -782,16 +837,22 @@ name "tab:xtable-demo"
 
 \begin_layout Plain Layout
 \align center
-\begin_inset ERT
+\begin_inset Flex Chunk
 status open
 
 \begin_layout Plain Layout
 
-\end_layout
+\begin_inset Argument 1
+status open
 
 \begin_layout Plain Layout
 
-<<xtable-demo,results=tex,echo=FALSE>>=
+xtable-demo,results=tex,echo=FALSE
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -808,11 +869,6 @@ print(xtable(sapply(iris[,-5], quantile)), floating=FALSE)
 
 } else cat('the xtable package is not available! please install.packages("xtable"
 )')
-\end_layout
-
-\begin_layout Plain Layout
-
-@
 \end_layout
 
 \end_inset
@@ -889,22 +945,27 @@ epsとpdfの両方をtrueにして、latexとpdflatexの両方を動作するよ
 \end_inset
 
 
-\begin_inset ERT
+\begin_inset Flex Chunk
 status open
 
 \begin_layout Plain Layout
 
-<<iris-pairs,fig=TRUE,width=4.5,height=4.5,eps=TRUE,pdf=TRUE>>=
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+iris-pairs,fig=TRUE,width=4.5,height=4.5,eps=TRUE,pdf=TRUE
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
 
 pairs(iris, col = iris$Species)
-\end_layout
-
-\begin_layout Plain Layout
-
-@
 \end_layout
 
 \end_inset
@@ -948,12 +1009,22 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset ERT
+\begin_inset Flex Chunk
 status open
 
 \begin_layout Plain Layout
 
-<<iris-boxplots,fig=TRUE,width=7,height=2,keep.source=F,eps=T,pdf=T>>=
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+
+iris-boxplots,fig=TRUE,width=7,height=2,keep.source=F,eps=T,pdf=T
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -964,11 +1035,6 @@ par(mar=c(4,5,.1,.3), las=1)
 \begin_layout Plain Layout
 
 boxplot(Sepal.Length~Species,data=iris,horizontal=TRUE,xlab='Sepal.Length')
-\end_layout
-
-\begin_layout Plain Layout
-
-@
 \end_layout
 
 \end_inset
@@ -1409,7 +1475,7 @@ reference "tab:xtable-demo"
 \end_layout
 
 \begin_layout Standard
-The user manual of Sweave is at 
+Sweaveの利用者の手引きは
 \begin_inset Flex URL
 status collapsed
 
@@ -1420,8 +1486,7 @@ https://stat.ethz.ch/R-manual/R-devel/library/utils/doc/Sweave.pdf
 
 \end_inset
 
-にあります。 The CRAN task view on 「Reproducible Research」にあるCRANタスクビューには、便利と思われるSweav
-e関連パッケージの一覧があります。
+にあります。「Reproducible Research」にあるCRANタスクビューには、便利と思われるSweave関連パッケージの一覧があります。
 \begin_inset Flex URL
 status collapsed
 
