@@ -56,9 +56,12 @@ export/.*/zh_CN/.*texF
 # http://www.preining.info/blog/2014/12/writing-japanese-in-latex-part-1-introduction/
 #
 # Exception: ja knitr.lyx and sweave.lyx support only XeLaTeX with system fonts
-# because they use the "bxjsarticle" class
+# because they use the "bxjsarticle" class.
+#
+# The "!" means "Protect these tests from being matched by future patterns".
 !export/.*/ja/(knitr|sweave).*_(lyx.*|xhtml|pdf4_systemF)
 export/.*/ja/(knitr|sweave).*
+#
 export/.*/ja/.*_(pdf[245]|dvi3).*
 
 # These files are not expected to compile, they use math-macros
