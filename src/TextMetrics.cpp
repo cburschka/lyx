@@ -1878,7 +1878,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		if (selection)
 			row.setSelectionAndMargins(sel_beg_par, sel_end_par);
 		else
-			row.setSelection(-1, -1);
+			row.clearSelectionAndMargins();
 
 		// The row knows nothing about the paragraph, so we have to check
 		// whether this row is the first or last and update the margins.

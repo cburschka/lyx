@@ -163,18 +163,18 @@ public:
 	bool changed() const { return changed_; }
 	///
 	void changed(bool c) const { changed_ = c; }
-	/// Set the selection begin and end.
-	/**
-	  * This is const because we update the selection status only at draw()
-	  * time.
-	  */
-	void setSelection(pos_type sel_beg, pos_type sel_end) const;
 	///
 	bool selection() const;
-	/// Set the selection begin and end and whether the left and/or right
-	/// margins are selected.
+	/**
+	 * Set the selection begin and end and whether the left and/or
+	 * right margins are selected.
+	 * This is const because we update the selection status only at
+	 * draw() time.
+	 */
 	void setSelectionAndMargins(DocIterator const & beg,
 		DocIterator const & end) const;
+	/// no selection on this row.
+	void clearSelectionAndMargins() const;
 
 	///
 	void pit(pit_type p) { pit_ = p; }
@@ -323,6 +323,8 @@ private:
 	  */
 	bool isMarginSelected(bool left, DocIterator const & beg,
 		DocIterator const & end) const;
+	/// Set the selection begin and end.
+	void setSelection(pos_type sel_beg, pos_type sel_end) const;
 
 	/**
 	 * Returns true if a char or string with font \c f and change

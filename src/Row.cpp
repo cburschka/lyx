@@ -175,25 +175,24 @@ bool Row::isMarginSelected(bool left, DocIterator const & beg,
 	pos_type const sel_pos = left ? sel_beg : sel_end;
 	pos_type const margin_pos = left ? pos_ : end_;
 
-	// Is the chosen margin selected ?
-	if (sel_pos == margin_pos) {
-		if (beg.pos() == end.pos())
-			// This is a special case in which the space between after
-			// pos i-1 and before pos i is selected, i.e. the margins
-			// (see DocIterator::boundary_).
-			return beg.boundary() && !end.boundary();
-		else if (end.pos() == margin_pos)
-			// If the selection ends around the margin, it is only
-			// drawn if the cursor is after the margin.
-			return !end.boundary();
-		else if (beg.pos() == margin_pos)
-			// If the selection begins around the margin, it is
-			// only drawn if the cursor is before the margin.
-			return beg.boundary();
-		else
-			return true;
-	}
-	return false;
+	// Is there a selection and is the chosen margin selected ?
+	if (!selection() || sel_pos != margin_pos)
+		return false;
+	else if (beg.pos() == end.pos())
+		// This is a special case in which the space between after
+		// pos i-1 and before pos i is selected, i.e. the margins
+		// (see DocIterator::boundary_).
+		return beg.boundary() && !end.boundary();
+	else if (end.pos() == margin_pos)
+		// If the selection ends around the margin, it is only
+		// drawn if the cursor is after the margin.
+		return !end.boundary();
+	else if (beg.pos() == margin_pos)
+		// If the selection begins around the margin, it is
+		// only drawn if the cursor is before the margin.
+		return beg.boundary();
+	else
+		return true;
 }
 
 
@@ -202,10 +201,17 @@ void Row::setSelectionAndMargins(DocIterator const & beg,
 {
 	setSelection(beg.pos(), end.pos());
 
-	if (selection()) {
-		change(end_margin_sel, isMarginSelected(false, beg, end));
-		change(begin_margin_sel, isMarginSelected(true, beg, end));
-	}
+	change(end_margin_sel, isMarginSelected(false, beg, end));
+	change(begin_margin_sel, isMarginSelected(true, beg, end));
+}
+
+
+void Row::clearSelectionAndMargins() const
+{
+	change(sel_beg, -1);
+	change(sel_end, -1);
+	change(end_margin_sel, false);
+	change(begin_margin_sel, false);
 }
 
 
