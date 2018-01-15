@@ -25427,7 +25427,7 @@ msgstr ""
 "relativní cesty v preambuli nebo TeX-ovém kódu.\n"
 "\n"
 "Vyberte vhodné kódování dokumentu (např. utf8)\n"
-"nebo změnte cestu k souboru."
+"nebo změňte cestu k souboru."
 
 #: src/Buffer.cpp:1919
 #, c-format
@@ -25853,7 +25853,7 @@ msgid "Uncodable character in user preamble"
 msgstr "Nekódovatelné znaky v uživatelské preambuli"
 
 #: src/BufferParams.cpp:2173
-#,c-format
+#, c-format
 msgid ""
 "The user preamble of your document contains glyphs that are unknown in the "
 "current document encoding (namely %1$s).\n"
