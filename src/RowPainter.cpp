@@ -77,7 +77,7 @@ FontInfo RowPainter::labelFont() const
 {
 	FontInfo f = text_.labelFont(par_);
 	// selected text?
-	if (row_.begin_margin_sel || pi_.selected)
+	if ((row_.selection() && row_.begin_margin_sel) || pi_.selected)
 		f.setPaintColor(Color_selectiontext);
 	return f;
 }
