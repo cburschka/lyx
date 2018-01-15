@@ -54,6 +54,11 @@ export/.*/zh_CN/.*texF
 # see also INVERTED.TODO_export/export/latex/ja_wrong_auto_encoding_(dvi|pdf(|3)).*
 # For a discussion of alternatives for Japanese with LaTeX , see also
 # http://www.preining.info/blog/2014/12/writing-japanese-in-latex-part-1-introduction/
+# 
+# Exception: ja knitr.lyx and sweave.lyx support only XeLaTeX with system fonts
+# because they use the "bxjsarticle" class
+!export/.*/ja/(knitr|sweave).*_(lyx.*|xhtml|pdf4_systemF)
+export/.*/ja/(knitr|sweave).*
 export/.*/ja/.*_(pdf[245]|dvi3).*
 
 # These files are not expected to compile, they use math-macros
