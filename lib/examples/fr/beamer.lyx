@@ -72,12 +72,11 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
-\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -92,6 +91,11 @@ Traduction française Jean-Pierre Chrétien, septembre 2014
 
 \begin_layout Plain Layout
 Revue pour LyX 2.2, mars 2015
+\end_layout
+
+\begin_layout Plain Layout
+Revue pour LyX 2.3, janvier 2017 (simplification de l'insertion de nouveaux
+ cadres et autre constructions)
 \end_layout
 
 \begin_layout Plain Layout
@@ -175,7 +179,7 @@ Objectifs
 
 \begin_layout Frame
 \begin_inset Argument 2
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -208,7 +212,53 @@ Beamer
 
 \end_inset
 
-, vous pouvez créer, en vue d'une présentation, des diapositives qui
+, vous pouvez c
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Insertion\SpecialChar menuseparator
+Cadre séparé au-dessous
+\end_layout
+
+\end_inset
+
+ (
+\begin_inset Info
+type  "shortcut"
+arg   "environment-split"
+\end_inset
+
+ si vous vous trouvez dans un paragraphe 
+\begin_inset Flex Structure
+status collapsed
+
+\begin_layout Plain Layout
+Cadre
+\end_layout
+
+\end_inset
+
+ non emboîté, ou 
+\begin_inset Info
+type  "shortcut"
+arg   "environment-split outer"
+\end_inset
+
+, respectivement, si vous vous trouvez dans un paragraphe emboîté à l'intérieur
+ du cadre)! Si vous êtes dans un titre de cadre, 
+\begin_inset Flex Alert
+status collapsed
+
+\begin_layout Plain Layout
+Insertion\SpecialChar menuseparator
+Cadre séparé au-dessus
+\end_layout
+
+\end_inset
+
+ insère un nouveau cadre séparé correctement au-dessus du cadre courantréer,
+ en vue d'une présentation, des diapositives qui
 \end_layout
 
 \begin_deeper
@@ -733,7 +783,7 @@ Spécifications de recouvrement {implicites}
 
 \begin_layout Frame
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -744,7 +794,7 @@ status collapsed
 
 
 \begin_inset Argument 3
-status collapsed
+status open
 
 \begin_layout Plain Layout
 label=myframe
@@ -835,7 +885,7 @@ recouvrement
 \begin_deeper
 \begin_layout Proof
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -920,14 +970,8 @@ type  "shortcut"
 arg   "depth-increment"
 \end_inset
 
-)
-\change_inserted -712698321 1514657870
-
-\lang english
-.
- This is done automatically if you insert new frame paragraphs.
-\change_unchanged
-
+); ceci est automatique si vous insérez de nouveaux paragraphes dans le
+ cadre.
 \end_layout
 
 \begin_layout Itemize
@@ -943,7 +987,7 @@ ion (sur une diapositive différente), mais ne sera pas aligné correctement
 \end_layout
 
 \begin_layout Itemize
-Évitez-le donc!
+À éviter!
 \end_layout
 
 \begin_layout Standard
@@ -1000,51 +1044,22 @@ Astuce
 \begin_layout Block
 Il existe une méthode automatique simple pour commencer un nouveau cadre,
  via 
-\change_deleted -712698321 1514658396
-
 \begin_inset Flex Alert
 status collapsed
 
 \begin_layout Plain Layout
-Édition\SpecialChar menuseparator
-Début de nouvel environnement
+Insertion\SpecialChar menuseparator
+Cadre séparé au-dessous
 \end_layout
 
 \end_inset
 
-
-\change_inserted -712698321 1514658396
-
-\lang english
-
-\begin_inset Flex Alert
-status collapsed
-
-\begin_layout Plain Layout
-
-\change_inserted -712698321 1514658396
-
-\lang english
-Insert\SpecialChar menuseparator
-Separated Frame Below
-\end_layout
-
-\end_inset
-
-
-\change_unchanged
-
-\lang french
  (
 \begin_inset Info
 type  "shortcut"
-arg   "environment-split"
+arg   "command-alternatives environment-split ; environment-split previous"
 \end_inset
 
-
-\change_deleted -712698321 1514658409
-)
-\change_unchanged
  si vous vous trouvez dans un paragraphe 
 \begin_inset Flex Structure
 status collapsed
@@ -1056,63 +1071,31 @@ Cadre
 \end_inset
 
  non emboîté, ou 
-\change_deleted -712698321 1514658415
-
-\begin_inset Flex Alert
-status collapsed
-
-\begin_layout Plain Layout
-Édition\SpecialChar menuseparator
-Début de nouvel environnement parent
-\end_layout
-
-\end_inset
-
- (
-\change_unchanged
-
 \begin_inset Info
 type  "shortcut"
 arg   "environment-split outer"
 \end_inset
 
-
-\change_deleted -712698321 1514658417
-)
-\change_unchanged
 , respectivement, si vous vous trouvez dans un paragraphe emboîté à l'intérieur
- du cadre
-\change_inserted -712698321 1514658424
-)
-\change_unchanged
-!
-\change_inserted -712698321 1514658363
- 
-\lang english
-If you are in the frame heading, 
+ du cadre).
+ Si vous êtes dans un titre de cadre, 
 \begin_inset Flex Alert
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1514658363
-
-\lang english
-Insert\SpecialChar menuseparator
-Separated Frame Above
+Insertion\SpecialChar menuseparator
+Cadre séparé au-dessus
 \end_layout
 
 \end_inset
 
- inserts a new, properly separated frame above the current one!
-\change_unchanged
-
+ insère un nouveau cadre séparé correctement au-dessus du cadre courant!
 \end_layout
 
 \end_deeper
 \begin_layout AgainFrame
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1539,7 +1522,7 @@ Fondamentalement, les recouvrements permettent de modifier le contenu d'un
 
 \begin_layout Itemize
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1568,7 +1551,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1754,7 +1737,7 @@ Spécifications de {recouvrement|action}
 
 \begin_layout Overprint
 \begin_inset Argument item:1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1823,7 +1806,7 @@ modes
 \end_deeper
 \begin_layout Overprint
 \begin_inset Argument item:1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -1980,7 +1963,7 @@ Spécifications de recouvrement
 \begin_deeper
 \begin_layout Quote
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2064,7 +2047,7 @@ caché
 \begin_deeper
 \begin_layout Quote
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2188,7 +2171,7 @@ transparent
 \begin_deeper
 \begin_layout Quote
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2323,7 +2306,7 @@ g.,
 \begin_deeper
 \begin_layout Itemize
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2345,7 +2328,7 @@ trois
 
 \begin_layout Itemize
 \begin_inset Argument item:2
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2386,7 +2369,7 @@ Beamer
 
 \begin_layout Frame
 \begin_inset Argument 2
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2481,7 +2464,7 @@ Un bloc
 
 \begin_layout Frame
 \begin_inset Argument 2
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2673,7 +2656,7 @@ Beamer
 \begin_deeper
 \begin_layout Uncover
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2709,7 +2692,7 @@ Découvrir
 \end_deeper
 \begin_layout Only
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2747,7 +2730,7 @@ bouge
 
 \begin_layout Overprint
 \begin_inset Argument item:1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2778,7 +2761,7 @@ Surimpression
 \end_deeper
 \begin_layout Overprint
 \begin_inset Argument item:1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2895,7 +2878,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2919,7 +2902,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -2969,7 +2952,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3003,7 +2986,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3037,7 +3020,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3048,7 +3031,7 @@ status collapsed
 
 
 \begin_inset Argument 2
-status collapsed
+status open
 
 \begin_layout Plain Layout
 différent
@@ -3141,7 +3124,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3161,7 +3144,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3181,7 +3164,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3201,7 +3184,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3220,7 +3203,7 @@ structurée
 
 \begin_layout Block
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3355,7 +3338,7 @@ indices
 \begin_deeper
 \begin_layout Block
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3383,7 +3366,7 @@ Un bloc d'usage général
 
 \begin_layout ExampleBlock
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3419,7 +3402,7 @@ exemples
 
 \begin_layout AlertBlock
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3515,7 +3498,7 @@ Séparateur
 \begin_deeper
 \begin_layout Block
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -3631,7 +3614,7 @@ Texte de théorème complémentaire
 \begin_deeper
 \begin_layout Example
 \begin_inset Argument 2
-status collapsed
+status open
 
 \begin_layout Plain Layout
 il est mauvais!
@@ -3932,7 +3915,7 @@ beamer
 
 \begin_layout Frame
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -4007,7 +3990,7 @@ article
 
 \begin_layout Frame
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -4134,7 +4117,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -4154,7 +4137,7 @@ status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -4169,19 +4152,13 @@ seulement dans l'article
 \end_inset
 
  via 
-\lang english
-
 \begin_inset Flex Alert
 status collapsed
 
 \begin_layout Plain Layout
 \noindent
 Édition\SpecialChar menuseparator
-Style de texte
-\lang english
-\SpecialChar menuseparator
-
-\lang french
+Style de texte\SpecialChar menuseparator
 Seulement
 \end_layout
 
@@ -4243,16 +4220,12 @@ ModePrésentation
 \begin_deeper
 \begin_layout Itemize
 Ou vous pouvez décider qu'une 
-\lang english
-
 \begin_inset Flex Emphasize
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -4261,22 +4234,18 @@ presentation
 
 \end_inset
 
-
-\lang french
 mise en évidence
 \end_layout
 
 \end_inset
 
-
-\lang french
  n'apparaîtra que dans la présentation, une 
 \begin_inset Flex Bold
 status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -4467,8 +4436,11 @@ status collapsed
 \begin_layout Plain Layout
 Document\SpecialChar menuseparator
 Paramètres\SpecialChar menuseparator
-Préambule \SpecialChar LaTeX
+Préambule
+\begin_inset space ~
+\end_inset
 
+LaTeX
 \end_layout
 
 \end_inset
@@ -4683,7 +4655,7 @@ newblock
 \begin_deeper
 \begin_layout FrameTitle
 \begin_inset Argument 1
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
