@@ -342,7 +342,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-01-15 13:02-0500\n"
-"PO-Revision-Date: 2018-01-03 18:17+0100\n"
+"PO-Revision-Date: 2018-01-16 18:04+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -4808,7 +4808,7 @@ msgstr "Paramètres de la liste des symboles"
 msgid "Define hanging indentation/label length for the nomenclature list."
 msgstr ""
 "Définir l'indentation du renfoncement/la longueur d'étiquette pour la liste "
-"des symboles"
+"des symboles."
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:22
 msgid "&List Indentation:"
@@ -8009,7 +8009,7 @@ msgstr "Remerciements"
 
 #: lib/layouts/acmart.layout:100
 msgid "Thanks: "
-msgstr "Remerciements :"
+msgstr "Remerciements : "
 
 #: lib/layouts/acmart.layout:106
 msgid "ACM Journal"
@@ -26911,7 +26911,7 @@ msgstr "&Toujours autoriser pour ce document"
 
 #: src/Converter.cpp:359
 msgid "&Always run for this document"
-msgstr "Toujours exécuter pour ce document"
+msgstr "Toujours ex&écuter pour ce document"
 
 #: src/Converter.cpp:437 src/Converter.cpp:682 src/Converter.cpp:705
 #: src/Converter.cpp:748
@@ -28065,7 +28065,7 @@ msgstr ""
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr ""
 "Les équations en aperçu auront des étiquettes « (#) » au lieu d'avoir des "
-"numéros."
+"numéros"
 
 #: src/LyXRC.cpp:3340
 msgid "Scale the preview size to suit."
@@ -30018,12 +30018,12 @@ msgstr "Ne pas charger"
 
 #: src/frontends/qt4/GuiDocument.cpp:1224
 msgid "The AMS LaTeX packages are always used"
-msgstr "Les paquetages LaTeX AMS sont utilisés dans tous les cas."
+msgstr "Les paquetages LaTeX AMS sont utilisés dans tous les cas"
 
 #: src/frontends/qt4/GuiDocument.cpp:1227
 #, c-format
 msgid "The LaTeX package %1$s is always used"
-msgstr "Le paquetage LaTeX %1$s est utilisé dans tous les cas."
+msgstr "Le paquetage LaTeX %1$s est utilisé dans tous les cas"
 
 #: src/frontends/qt4/GuiDocument.cpp:1232
 msgid "The AMS LaTeX packages are never used"
