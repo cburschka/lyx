@@ -72,12 +72,11 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
-\tracking_changes true
+\tracking_changes false
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
-\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -896,12 +895,8 @@ type  "shortcut"
 arg   "depth-increment"
 \end_inset
 
-)
-\change_inserted -712698321 1514652486
-.
+).
  This is done automatically if you insert new frame paragraphs.
-\change_unchanged
-
 \end_layout
 
 \begin_layout Itemize
@@ -982,20 +977,8 @@ There is a simple and much more convenient way to start a new frame: Issue
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_deleted -712698321 1514652514
-Edit
-\change_inserted -712698321 1514652516
-Insert
-\change_unchanged
-\SpecialChar menuseparator
-
-\change_deleted -712698321 1514652520
-Start New Environment
-\change_inserted -712698321 1514652821
+Insert\SpecialChar menuseparator
 Separated Frame Below
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1006,10 +989,6 @@ type  "shortcut"
 arg   "environment-split"
 \end_inset
 
-
-\change_deleted -712698321 1514652564
-)
-\change_unchanged
  if you are in a non-nested 
 \begin_inset Flex Structure
 status collapsed
@@ -1021,51 +1000,24 @@ Frame
 \end_inset
 
  paragraph, or 
-\change_deleted -712698321 1514652572
-
-\begin_inset Flex Alert
-status collapsed
-
-\begin_layout Plain Layout
-Edit\SpecialChar menuseparator
-Start New Parent Environment
-\end_layout
-
-\end_inset
-
- (
-\change_unchanged
-
 \begin_inset Info
 type  "shortcut"
 arg   "environment-split outer"
 \end_inset
 
-
-\change_deleted -712698321 1514652575
-)
-\change_unchanged
-, respectively, if you are in a nested paragraph within the frame
-\change_inserted -712698321 1514652721
-).
+, respectively, if you are in a nested paragraph within the frame).
  If you are in the frame heading, 
 \begin_inset Flex Alert
 status collapsed
 
 \begin_layout Plain Layout
-
-\change_inserted -712698321 1514652823
 Insert\SpecialChar menuseparator
 Separated Frame Above
-\change_unchanged
-
 \end_layout
 
 \end_inset
 
- inserts a new, properly separated frame above the current one
-\change_unchanged
-!
+ inserts a new, properly separated frame above the current one!
 \end_layout
 
 \end_deeper
@@ -4356,8 +4308,11 @@ status collapsed
 \begin_layout Plain Layout
 Document\SpecialChar menuseparator
 Settings\SpecialChar menuseparator
-\SpecialChar LaTeX
- Preamble
+LaTeX
+\begin_inset space ~
+\end_inset
+
+Preamble
 \end_layout
 
 \end_inset
