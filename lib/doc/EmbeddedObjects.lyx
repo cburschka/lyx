@@ -2558,8 +2558,8 @@ type  "icon"
 arg   "tabular-feature set-all-lines"
 \end_inset
 
- adds lines around the current or selected cells - if the current cell no
- multicolumn cell this also affects the current row and column
+ adds lines around the current or selected cells - if the current cell is
+ not a multicolumn cell this also affects the current row and column
 \end_layout
 
 \begin_layout Labeling
@@ -2570,7 +2570,7 @@ arg   "tabular-feature unset-all-lines"
 \end_inset
 
  deletes all lines of the current or selected cells - if the current cell
- no multicolumn cell this also affects the current row and column
+ is not a multicolumn cell this also affects the current row and column
 \end_layout
 
 \begin_layout Labeling
