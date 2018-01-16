@@ -47,8 +47,7 @@ global.
   deriving from DocIterator
 
 * A Cursor is a descendant of CursorData that contains interesting
-  display-related information, in particular targetX(), the horizontal
-  position of the cursor in pixels.
+  display-related information, in particular the BufferView that owns it.
 */
 
 #ifndef LCURSOR_H
@@ -138,7 +137,6 @@ public:
 	DocIterator & realAnchor() { return anchor_; }
 	/// sets anchor to cursor position
 	void resetAnchor();
-	/// access to owning BufferView
 
 	/// access start of selection
 	CursorSlice selBegin() const;
@@ -216,7 +214,7 @@ public:
 	/// one inset in the selection has confirmDeletion.
 	bool confirmDeletion(bool before = false) const;
 
-protected:
+private:
 	/// validate the "new born word" position
 	void checkNewWordPosition();
 	/// clear the "new born word" position
@@ -231,15 +229,6 @@ protected:
 	/// are we in word-selection mode? This is set when double clicking.
 	bool word_selection_;
 
-// FIXME: make them protected.
-public:
-	/// the current font settings
-	Font current_font;
-	/// the current font
-	Font real_current_font;
-
-protected:
-
 	/// the start of the new born word
 	DocIterator new_word_;
 	//
@@ -247,6 +236,13 @@ protected:
 	//
 	/// do we allow autocorrection
 	bool autocorrect_;
+
+	// FIXME: make them private
+public:
+	/// the current font settings
+	Font current_font;
+	/// the current font
+	Font real_current_font;
 };
 
 
@@ -380,6 +376,7 @@ public:
 	/// distance between actual and targeted position during last up/down in text
 	int textTargetOffset() const;
 
+	/// access to owning BufferView
 	BufferView & bv() const;
 	/// reset cursor bottom to the beginning of the top inset
 	// (sort of 'chroot' environment...)
@@ -549,4 +546,4 @@ bool notifyCursorLeavesOrEnters(Cursor const & old, Cursor & cur);
 
 } // namespace lyx
 
-#endif // LYXLCURSOR_H
+#endif // LCURSOR_H

@@ -121,19 +121,19 @@ DocIterator bruteFind(Cursor const & c, int x, int y)
 
 CursorData::CursorData()
 	: DocIterator(), anchor_(), selection_(false), mark_(false),
-	  word_selection_(false), current_font(inherit_font), autocorrect_(false)
+	  word_selection_(false), autocorrect_(false), current_font(inherit_font)
 {}
 
 
 CursorData::CursorData(Buffer * buffer)
 	: DocIterator(buffer), anchor_(), selection_(false), mark_(false),
-	  word_selection_(false), current_font(inherit_font), autocorrect_(false)
+	  word_selection_(false), autocorrect_(false), current_font(inherit_font)
 {}
 
 
 CursorData::CursorData(DocIterator const & dit)
 	: DocIterator(dit), anchor_(), selection_(false), mark_(false),
-	  word_selection_(false), current_font(inherit_font), autocorrect_(false)
+	  word_selection_(false), autocorrect_(false), current_font(inherit_font)
 {}
 
 
@@ -513,6 +513,7 @@ bool CursorData::fixIfBroken()
 void CursorData::sanitize()
 {
 	DocIterator::sanitize();
+	new_word_.sanitize();
 	if (selection())
 		anchor_.sanitize();
 	else
@@ -1386,9 +1387,9 @@ bool Cursor::openable(MathAtom const & t) const
 		return true;
 
 	// we can't move into anything new during selection
-	if (depth() >= anchor_.depth())
+	if (depth() >= realAnchor().depth())
 		return false;
-	if (t.nucleus() != &anchor_[depth()].inset())
+	if (t.nucleus() != &realAnchor()[depth()].inset())
 		return false;
 
 	return true;
@@ -2291,9 +2292,8 @@ Font Cursor::getFont() const
 
 void Cursor::sanitize()
 {
-	setBuffer(buffer());
+	setBuffer(&bv_->buffer());
 	CursorData::sanitize();
-	new_word_.sanitize();
 }
 
 
