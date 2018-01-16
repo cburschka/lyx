@@ -73,11 +73,12 @@ RowPainter::RowPainter(PainterInfo & pi,
 }
 
 
-FontInfo RowPainter::labelFont() const
+FontInfo RowPainter::labelFont(bool end) const
 {
 	FontInfo f = text_.labelFont(par_);
 	// selected text?
-	if (row_.begin_margin_sel || pi_.selected)
+	if ((end ? row_.end_margin_sel : row_.begin_margin_sel)
+	    || pi_.selected)
 		f.setPaintColor(Color_selectiontext);
 	return f;
 }
@@ -397,7 +398,7 @@ void RowPainter::paintLabel() const
 		return;
 
 	Layout const & layout = par_.layout();
-	FontInfo const font = labelFont();
+	FontInfo const font = labelFont(false);
 	FontMetrics const & fm = theFontMetrics(font);
 	double x = x_;
 
@@ -415,7 +416,7 @@ void RowPainter::paintTopLevelLabel() const
 	BufferParams const & bparams = pi_.base.bv->buffer().params();
 	ParagraphParameters const & pparams = par_.params();
 	Layout const & layout = par_.layout();
-	FontInfo const font = labelFont();
+	FontInfo const font = labelFont(false);
 	docstring const str = par_.labelString();
 	if (str.empty())
 		return;
@@ -508,7 +509,9 @@ void RowPainter::paintLast() const
 	switch (endlabel) {
 	case END_LABEL_BOX:
 	case END_LABEL_FILLED_BOX: {
-		FontInfo const font = labelFont();
+		FontInfo font = labelFont(true);
+		if (font.realColor() != Color_selectiontext)
+			font.setPaintColor(Color_eolmarker);
 		FontMetrics const & fm = theFontMetrics(font);
 		int const size = int(0.75 * fm.maxAscent());
 		int const y = yo_ - size;
@@ -525,14 +528,14 @@ void RowPainter::paintLast() const
 		}
 
 		if (endlabel == END_LABEL_BOX)
-			pi_.pain.rectangle(x, y, size, size, Color_eolmarker);
+			pi_.pain.rectangle(x, y, size, size, font.realColor());
 		else
-			pi_.pain.fillRectangle(x, y, size, size, Color_eolmarker);
+			pi_.pain.fillRectangle(x, y, size, size, font.realColor());
 		break;
 	}
 
 	case END_LABEL_STATIC: {
-		FontInfo const font = labelFont();
+		FontInfo const font = labelFont(true);
 		FontMetrics const & fm = theFontMetrics(font);
 		docstring const & str = par_.layout().endlabelstring();
 		double const x = row_.isRTL() ? x_ - fm.width(str) : x_;

@@ -64,8 +64,8 @@ private:
 	void paintAppendixStart(int y) const;
 	void paintInset(Row::Element const & e) const;
 
-	/// return the label font for this row
-	FontInfo labelFont() const;
+	/// return the label font for this row (end label when \c end is true)
+	FontInfo labelFont(bool end) const;
 
 	///
 	void paintLabel() const;
