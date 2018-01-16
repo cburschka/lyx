@@ -27342,6 +27342,38 @@ renewcommand{
 nomname}{記号一覧}
 \end_layout
 
+\begin_layout Standard
+
+\series bold
+
+\backslash
+AtBeginDocument{
+\backslash
+addto
+\backslash
+captionsjapanese{
+\backslash
+def
+\backslash
+nomname{記号一覧}}}
+\end_layout
+
+\begin_layout Standard
+のようにプリアンブルに挿入することで参照名を再定義することができます．英語以外の文書言語を使用している際には，
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+captionsjapaneseを
+\backslash
+extras***
+\series default
+に置き換えてください（***は使用中の言語名）．
+\end_layout
+
 \begin_layout Subsection
 用語集プログラム
 \begin_inset Index idx

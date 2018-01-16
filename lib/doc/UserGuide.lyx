@@ -8335,12 +8335,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8353,6 +8355,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8376,6 +8379,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -31906,13 +31910,38 @@ List of Symbols
 
 \begin_layout Standard
 
-\family roman
 \series bold
 
 \backslash
-renewcommand{
+AtBeginDocument{
 \backslash
-nomname}{List of Symbols}
+addto
+\backslash
+captionsenglish{
+\backslash
+def
+\backslash
+nomname{List of Symbols}}}
+\end_layout
+
+\begin_layout Standard
+When you are using another document language than English, replace
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+captionsenglish
+\series default
+ by 
+\series bold
+
+\backslash
+extras***
+\series default
+, where *** is the name of the language used.
 \end_layout
 
 \begin_layout Subsection
