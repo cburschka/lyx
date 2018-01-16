@@ -33886,7 +33886,7 @@ nobreakspace{}#1}}
 \begin_layout Subsection
 Impression de la liste des symboles
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Liste des symboles ! Impression
@@ -34004,10 +34004,29 @@ def
 nomname{Glossaire}}}
 \end_layout
 
+\begin_layout Standard
+Si vous utilisez une autre langue que le français, remplacez 
+\series bold
+
+\backslash
+captionsfrench
+\series default
+ par 
+\series bold
+
+\backslash
+extras***
+\series default
+, où *** est le nom de la langue que vous utilisez.
+
+\series bold
+ 
+\end_layout
+
 \begin_layout Subsection
 Moteur d'indexation pour la liste de symboles
 \begin_inset Index idx
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Liste des symboles!Moteur

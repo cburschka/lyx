@@ -31629,9 +31629,35 @@ In der Druckausgabe erscheint die Nomenklatur als „Nomenklatur
 \series bold
 
 \backslash
-renewcommand{
+AtBeginDocument{
 \backslash
-nomname}{Symbolverzeichnis}
+addto
+\backslash
+captionsngerman{
+\backslash
+def
+\backslash
+nomname{Symbolverzeichnis}}}
+\end_layout
+
+\begin_layout Standard
+Wenn Sie eine andere Dokumentsprache als Deutsch benutzen, ersetzen Sie
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+
+\backslash
+captionsngerman
+\series default
+ durch 
+\series bold
+
+\backslash
+extras***
+\series default
+, wobei *** der Name der verwendeten Sprache ist.
 \end_layout
 
 \begin_layout Subsection

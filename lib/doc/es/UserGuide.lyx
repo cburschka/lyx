@@ -32964,13 +32964,38 @@ nomname
 
 \begin_layout Standard
 
-\family roman
 \series bold
 
 \backslash
-renewcommand{
+AtBeginDocument{
 \backslash
-nomname}{Índice de símbolos}
+addto
+\backslash
+captionsspanish{
+\backslash
+def
+\backslash
+nomname{Índice de símbolos}}}
+\end_layout
+
+\begin_layout Standard
+Si estás usando un idioma de documento distinto del español, reemplaza
+\begin_inset Newline newline
+\end_inset
+
+ 
+\series bold
+
+\backslash
+captionsspanish
+\series default
+ por
+\series bold
+ 
+\backslash
+extras***
+\series default
+, donde *** es el nombre del idioma utilizado.
 \end_layout
 
 \begin_layout Subsection
