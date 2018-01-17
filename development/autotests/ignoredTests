@@ -58,7 +58,8 @@ export/.*/zh_CN/.*texF
 # Exception: ja knitr.lyx and sweave.lyx support only XeLaTeX with system fonts
 # because they use the "bxjsarticle" class.
 #
-# The "!" means "Protect these tests from being matched by future patterns".
+# The "!" means the following:
+#   "Protect these tests from being matched by future patterns in this file".
 !export/.*/ja/(knitr|sweave).*_(lyx.*|xhtml|pdf4_systemF)
 export/.*/ja/(knitr|sweave).*
 #
