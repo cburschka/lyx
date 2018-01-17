@@ -117,6 +117,11 @@ autotests/xvkbd/xvkbd.xbm \
 autotests/xvkbd/iconify.xbm \
 autotests/xvkbd/xvkbd_icon.xbm \
 autotests/xvkbd/xvkbd_iconmask.xbm \
+batchtests/CMakeLists.txt \
+batchtests/beamer_test.lyx \
+batchtests/beamer_test.tex.orig \
+batchtests/vcs_info_export.lyx \
+batchtests/vcs_info_export.tex.orig \
 checkurls/CMakeLists.txt \
 checkurls/CheckURL.pm \
 checkurls/search_url.pl \

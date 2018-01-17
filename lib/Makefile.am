@@ -2363,6 +2363,7 @@ dist_scripts_DATA += \
 	scripts/lyxpak.py \
 	scripts/lyxpreview2bitmap.py \
 	scripts/lyxpreview_tools.py \
+	scripts/lyx_batch.pl.in \
 	scripts/prefs2prefs.py \
 	scripts/prefs2prefs_lfuns.py \
 	scripts/prefs2prefs_prefs.py \
