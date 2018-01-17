@@ -148,6 +148,7 @@ dist_frexamples_DATA = \
 	examples/fr/seminar.lyx \
 	examples/fr/simplecv.lyx \
 	examples/fr/splash.lyx \
+	examples/fr/xyfigure.lyx \
 	examples/fr/xyfigure.png \
 	examples/fr/xypic.lyx
 
