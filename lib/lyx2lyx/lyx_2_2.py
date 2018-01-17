@@ -42,7 +42,7 @@ from parser_tools import find_token, find_token_backwards, find_re, \
 # Private helper functions
 
 def revert_Argument_to_TeX_brace(document, line, endline, n, nmax, environment, opt, nolastopt):
-    '''
+    """
     Reverts an InsetArgument to TeX-code
     usage:
     revert_Argument_to_TeX_brace(document, LineOfBegin, LineOfEnd, StartArgument, EndArgument, isEnvironment, isOpt, notLastOpt)
@@ -53,7 +53,7 @@ def revert_Argument_to_TeX_brace(document, line, endline, n, nmax, environment, 
     isEnvironment must be true, if the layout is for a LaTeX environment
     isOpt must be true, if the argument is an optional one
     notLastOpt must be true if the argument is mandatory and followed by optional ones
-    '''
+    """
     lineArg = 0
     wasOpt = False
     while lineArg != -1 and n < nmax + 1:
@@ -668,29 +668,67 @@ def convert_dashes(document):
                 document.body[i] = front + "\\twohyphens"
         i += 1
 
-
-def revert_dashes(document):
-    "convert \\twohyphens and \\threehyphens to -- and ---"
-
-    # eventually remove preamble code from 2.3->2.2 conversion:
-    for i, line in enumerate(document.preamble):
-        if i > 1 and line == r'\renewcommand{\textemdash}{---}':
-            if (document.preamble[i-1] == r'\renewcommand{\textendash}{--}'
-                and document.preamble[i-2] == '% Added by lyx2lyx'):
-                del document.preamble[i-2:i+1]
     i = 0
     while i < len(document.body):
+        line = document.body[i]
+        while (line.endswith(r"-\SpecialChar \textcompwordmark{}") and
+               document.body[i+1].startswith("-")):
+            line = line.replace(r"\SpecialChar \textcompwordmark{}",
+                                document.body.pop(i+1))
+            document.body[i] = line
+        i += 1
+
+# Return number of the next line to check for dashes.
+def _dashes_next_line(document, i):
+    i +=1
+    words = document.body[i].split()
+    # skip paragraph parameters (bug 10243):
+    if words and words[0] in ["\\leftindent", "\\paragraph_spacing",
+                              "\\align", "\\labelwidthstring"]:
+        i += 1
         words = document.body[i].split()
-        if len(words) > 1 and words[0] == "\\begin_inset" and \
-           words[1] in ["CommandInset", "ERT", "External", "Formula", "Graphics", "IPA", "listings"]:
-            # see convert_dashes
-            j = find_end_of_inset(document.body, i)
-            if j == -1:
-                document.warning("Malformed LyX document: Can't find end of " + words[1] + " inset at line " + str(i))
-                i += 1
-            else:
-                i = j
-            continue
+    # some insets should be skipped in revert_dashes (cf. convert_dashes)
+    if (len(words) > 1 and words[0] == "\\begin_inset" and
+        words[1] in ["CommandInset", "ERT", "External", "Formula",
+                     "FormulaMacro", "Graphics", "IPA", "listings"]):
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of "
+                                + words[1] + " inset at line " + str(i))
+            return i
+        return j+1
+    return i
+
+def revert_dashes(document):
+    """
+    Prevent ligatures of existing --- and --.
+    Convert \\twohyphens and \\threehyphens to -- and ---.
+    Remove preamble code from 2.3->2.2 conversion.
+    """
+    # Remove preamble code from 2.3->2.2 conversion:
+    for i, line in enumerate(document.preamble):
+        if (line == '% Added by lyx2lyx' and
+            document.preamble[i+1] == r'\renewcommand{\textendash}{--}' and
+            document.preamble[i+2] == r'\renewcommand{\textemdash}{---}'):
+            del document.preamble[i:i+3]
+            break
+    # Prevent ligation of hyphens:
+    i = 0
+    while i < len(document.body)-1:
+        # increment i, skip some insets (cf. convert_dashes)
+        i = _dashes_next_line(document, i) 
+        line = document.body[i]
+        while "--" in line:
+            line = line.replace("--", "-\\SpecialChar \\textcompwordmark{}\n-")
+        parts = line.split('\n')
+        if len(parts) > 1:
+            document.body[i:i+1] = parts
+            i += len(parts)-1
+    # Convert \twohyphens and \threehyphens:
+    i = 0
+    while i < len(document.body):
+        # skip some insets (see convert_dashes())
+        i = _dashes_next_line(document, i-1)
         replaced = False
         if document.body[i].find("\\twohyphens") >= 0:
             document.body[i] = document.body[i].replace("\\twohyphens", "--")
