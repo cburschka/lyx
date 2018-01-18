@@ -204,7 +204,7 @@ export/.*/he/.*pdf4_texF
 # Babel-Russian uses UTF-8 for auto-strings if it detects Xe/LuaTeX.
 # This fails unless the inputencoding is set to utf-8, too.
 export/doc/ru/(Intro|Tutorial)_(dvi3|pdf[45])_texF
-export/examples/ru/splash_(dvi3|pdf[45])_texF
+export/examples/ru/(example_lyxified|splash)_(dvi3|pdf[45])_texF
 
 # Babel-Spanish uses  UTF-8 for auto-strings if it detects Xe/LuaTeX.
 # This leads to wrong output (see unreliableTests) and fails in some cases
