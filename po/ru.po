@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-01-15 13:02-0500\n"
-"PO-Revision-Date: 2018-01-16 01:57+0200\n"
+"PO-Revision-Date: 2018-01-18 13:59+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -1803,7 +1803,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:293
 msgid "Enable micr&o-typographic extensions"
-msgstr "Включить микротипографические расширения"
+msgstr "Включить расширения микротипографики"
 
 #: src/frontends/qt4/ui/FontUi.ui:300
 msgid ""
@@ -2448,7 +2448,7 @@ msgstr "&Размещение:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:68
 msgid "Specify placement (htbp) for floating listings"
-msgstr "Установите размещениеt (htbp) для плавающих листингов"
+msgstr "Установите размещение (htbp) для плавающих листингов"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:78
 msgid "Line numbering"
@@ -3822,7 +3822,7 @@ msgstr ""
 #: src/frontends/qt4/ui/PrefInputUi.ui:194
 msgid ""
 "If this is checked, the middle mouse button will paste the recent selection"
-msgstr "При включении средняя конпка мыши вставляет последний выделенный текст"
+msgstr "При включении средняя кнопка мыши вставляет последний выделенный текст"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:197
 msgid "&Middle mouse button pasting"
@@ -4004,7 +4004,7 @@ msgstr "Специфичная команда BibTeX и опции для pLaTeX
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:232
 msgid "Index command and options (makeindex, xindy)"
-msgstr "Командна для создания индекса (makeindex, xindy)"
+msgstr "Команда для создания индекса (makeindex, xindy)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:249
 msgid "Specific index command and options for pLaTeX (Japanese)"
@@ -4025,7 +4025,7 @@ msgstr "Команда Chec&kTeX:"
 # ?
 #: src/frontends/qt4/ui/PrefLatexUi.ui:309
 msgid "&Nomenclature command:"
-msgstr "&Комманда номенклатуры:"
+msgstr "&Команда номенклатуры:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:324
 msgid ""
@@ -4636,7 +4636,7 @@ msgstr "Изменить горячую клавишу"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:77
 msgid "Enter LyX function or command sequence"
-msgstr "Введите функцию LyX или последовательность комманд"
+msgstr "Введите функцию LyX или последовательность команд"
 
 #: src/frontends/qt4/ui/ShortcutUi.ui:87
 msgid "Remove last key from the shortcut sequence"
@@ -4994,7 +4994,7 @@ msgstr ""
 #: src/frontends/qt4/GuiToolbar.cpp:404 src/insets/InsetBranch.cpp:79
 #: src/insets/InsetBranch.cpp:82
 msgid "on"
-msgstr "вкл"
+msgstr "вкл."
 
 #: src/frontends/qt4/ui/TabularUi.ui:1377
 #: src/frontends/qt4/ui/TabularUi.ui:1384
@@ -5262,7 +5262,7 @@ msgstr "Сортировать"
 
 #: src/frontends/qt4/ui/TocUi.ui:246
 msgid "Try to keep persistent view of the uncollapsed nodes"
-msgstr "По возможности сохранять постоянный вид развернутых узлов"
+msgstr "По возможности сохранять постоянный вид развёрнутых узлов"
 
 #: src/frontends/qt4/ui/TocUi.ui:249
 msgid "Keep"
@@ -5367,7 +5367,7 @@ msgstr "&Междустрочный интервал:"
 
 #: src/frontends/qt4/ui/WrapUi.ui:199
 msgid "Outer (default)"
-msgstr "Наружный (по умочанию)"
+msgstr "Наружный (по умолчанию)"
 
 #: src/frontends/qt4/ui/WrapUi.ui:204
 msgid "Inner"
@@ -7124,7 +7124,7 @@ msgstr "Тезаурус"
 
 #: lib/layouts/aapaper.inc:114
 msgid "Thesaurus not supported in recent A&A:"
-msgstr "Тезарус не поддерживается в последней A&A:"
+msgstr "Тезаурус не поддерживается в последней A&A:"
 
 #: lib/layouts/aapaper.layout:3 lib/layouts/aapaper.layout:14
 msgid "Astronomy & Astrophysics (V. 4, Obsolete)"
@@ -7477,7 +7477,7 @@ msgstr "Чертежи"
 
 #: lib/layouts/achemso.layout:190 lib/layouts/achemso.layout:202
 msgid "Chart"
-msgstr "Чертеж"
+msgstr "Чертёж"
 
 #: lib/layouts/achemso.layout:196
 msgid "List of Charts"
@@ -7636,7 +7636,7 @@ msgstr "Заведение"
 
 #: lib/layouts/acmart.layout:238 lib/layouts/acmart.layout:240
 msgid "Department"
-msgstr "Подрпзделение"
+msgstr "Подразделение"
 
 #: lib/layouts/acmart.layout:246 lib/layouts/acmart.layout:248
 msgid "Street Address"
@@ -7966,11 +7966,11 @@ msgstr "Версия только для печати"
 
 #: lib/layouts/acmart.layout:638
 msgid "Screen Only"
-msgstr "Толко для экрана"
+msgstr "Только для экрана"
 
 #: lib/layouts/acmart.layout:641
 msgid "Screen version only"
-msgstr "Версия только для элрана"
+msgstr "Версия только для экрана"
 
 #: lib/layouts/acmart.layout:644
 msgid "Anonymous Suppression"
@@ -8022,14 +8022,12 @@ msgid "TOG volume"
 msgstr ""
 
 #: lib/layouts/acmsiggraph-0-92.layout:96 lib/layouts/acmsiggraph.layout:88
-#, fuzzy
 msgid "Volume number:"
-msgstr "Нет числа"
+msgstr ""
 
 #: lib/layouts/acmsiggraph-0-92.layout:100 lib/layouts/acmsiggraph.layout:92
-#, fuzzy
 msgid "TOG number"
-msgstr "Нет числа"
+msgstr ""
 
 #: lib/layouts/acmsiggraph-0-92.layout:103 lib/layouts/acmsiggraph.layout:95
 msgid "Article number:"
@@ -8372,12 +8370,10 @@ msgid "Citation-number:"
 msgstr "Ссылка на источник"
 
 #: lib/layouts/agu_stdtitle.inc:65
-#, fuzzy
 msgid "AGU-volume"
 msgstr "AGU-том"
 
 #: lib/layouts/agu_stdtitle.inc:68
-#, fuzzy
 msgid "AGU-volume:"
 msgstr "AGU-том:"
 
@@ -8532,14 +8528,12 @@ msgid "Posting-order:"
 msgstr "Порядок отправки:"
 
 #: lib/layouts/agu_stdtitle.inc:280
-#, fuzzy
 msgid "AGU-pages"
 msgstr "AGU-страницы"
 
 #: lib/layouts/agu_stdtitle.inc:283
-#, fuzzy
 msgid "AGU-pages:"
-msgstr "Нечётные страницы:"
+msgstr "AGU-страницы:"
 
 #: lib/layouts/agu_stdtitle.inc:288
 msgid "Words"
@@ -8617,14 +8611,12 @@ msgid "Keyword"
 msgstr "Ключевое слово"
 
 #: lib/layouts/agu_stdtitle.inc:424 lib/layouts/agu_stdtitle.inc:426
-#, fuzzy
 msgid "Orgdiv"
-msgstr "Orgdiv"
+msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:436 lib/layouts/agu_stdtitle.inc:438
-#, fuzzy
 msgid "Orgname"
-msgstr "Отчество"
+msgstr ""
 
 #: lib/layouts/agu_stdtitle.inc:448 lib/layouts/agu_stdtitle.inc:450
 #: lib/layouts/g-brief.layout:67
@@ -8632,9 +8624,8 @@ msgid "Street"
 msgstr "Улица"
 
 #: lib/layouts/agu_stdtitle.inc:484 lib/layouts/agu_stdtitle.inc:486
-#, fuzzy
 msgid "Postcode"
-msgstr "Вставить"
+msgstr ""
 
 #: lib/layouts/agums.layout:3
 msgid "American Geophysical Union (AGUPLUS Manuscript)"
@@ -8678,9 +8669,8 @@ msgstr "Заголовок справа"
 
 #: lib/layouts/aguplus.inc:107 lib/layouts/customHeadersFooters.module:42
 #: lib/layouts/foils.layout:203
-#, fuzzy
 msgid "Right Header:"
-msgstr "Заголовок справа"
+msgstr "Заголовок справа:"
 
 #: lib/layouts/aguplus.inc:135
 msgid "CCC"
@@ -8691,9 +8681,8 @@ msgid "CCC code:"
 msgstr "CCC code:"
 
 #: lib/layouts/aguplus.inc:148
-#, fuzzy
 msgid "PaperId"
-msgstr "PaperId"
+msgstr ""
 
 #: lib/layouts/aguplus.inc:152
 #, fuzzy
@@ -8709,9 +8698,8 @@ msgid "Author Address:"
 msgstr "АдресАвтора:"
 
 #: lib/layouts/aguplus.inc:164
-#, fuzzy
 msgid "SlugComment"
-msgstr "SlugComment"
+msgstr ""
 
 #: lib/layouts/aguplus.inc:168
 #, fuzzy
@@ -8755,9 +8743,8 @@ msgid "Authors"
 msgstr "Авторы"
 
 #: lib/layouts/agutex.layout:92 lib/layouts/agutex.layout:96
-#, fuzzy
 msgid "Affiliation Mark"
-msgstr "Affiliation"
+msgstr ""
 
 #: lib/layouts/agutex.layout:125
 msgid "Consecutive number for the author affiliations"
@@ -9503,9 +9490,8 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:804 lib/layouts/beamer.layout:1479
 #: lib/layouts/beamer.layout:1481 lib/layouts/powerdot.layout:605
-#, fuzzy
 msgid "Uncover"
-msgstr "&Удалить"
+msgstr ""
 
 #: lib/layouts/beamer.layout:814
 #, fuzzy
@@ -9556,14 +9542,12 @@ msgid "Example Block:"
 msgstr "Пример"
 
 #: lib/layouts/beamer.layout:920
-#, fuzzy
 msgid "AlertBlock"
-msgstr "Оба края"
+msgstr ""
 
 #: lib/layouts/beamer.layout:923
-#, fuzzy
 msgid "Alert Block:"
-msgstr "Оба края"
+msgstr ""
 
 #: lib/layouts/beamer.layout:935 lib/layouts/beamer.layout:968
 #: lib/layouts/beamer.layout:993 lib/layouts/beamer.layout:1016
@@ -9831,9 +9815,8 @@ msgid "bilingual"
 msgstr "двуязычный"
 
 #: lib/layouts/bicaption.module:44
-#, fuzzy
 msgid "Main Language Short Title"
-msgstr "Встаить короткое заглавие|к"
+msgstr "Краткое заглавие на основном языке"
 
 #: lib/layouts/bicaption.module:45
 #, fuzzy
@@ -10535,23 +10518,23 @@ msgstr "Обратный адрес"
 
 #: lib/layouts/dinbrief.layout:259
 msgid "RetourAdresse"
-msgstr "Обратный адрес"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:269
 msgid "Adresse"
-msgstr "Адрес"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:274
 msgid "Postvermerk"
-msgstr "Postvermerk"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:279
 msgid "Zusatz"
-msgstr "Zusatz"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:284
 msgid "IhrZeichen"
-msgstr "IhrZeichen"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:289 lib/layouts/g-brief.layout:116
 #: lib/layouts/g-brief2.layout:52 lib/layouts/g-brief2.layout:841
@@ -10560,19 +10543,19 @@ msgstr "Ваш почтовый адрес"
 
 #: lib/layouts/dinbrief.layout:294
 msgid "IhrSchreiben"
-msgstr "IhrSchreiben"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:299
 msgid "MeinZeichen"
-msgstr "MeinZeichen"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:304
 msgid "Unterschrift"
-msgstr "Unterschrift"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:314
 msgid "Telefon"
-msgstr "Телефон"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:319 lib/layouts/lettre.layout:52
 #: lib/layouts/lettre.layout:163 lib/layouts/scrlettr.layout:158
@@ -10582,7 +10565,7 @@ msgstr "Размещение"
 
 #: lib/layouts/dinbrief.layout:324
 msgid "Stadt"
-msgstr "Stadt"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:329 lib/layouts/g-brief.layout:81
 msgid "Town"
@@ -10590,7 +10573,7 @@ msgstr "Город"
 
 #: lib/layouts/dinbrief.layout:334
 msgid "Ort"
-msgstr "Ort"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:339
 msgid "Datum"
@@ -10604,41 +10587,41 @@ msgstr "Ссылка"
 
 #: lib/layouts/dinbrief.layout:349
 msgid "Betreff"
-msgstr "Betreff"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:354
 msgid "Anrede"
-msgstr "Anrede"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:364
 msgid "Brieftext"
-msgstr "Brieftext"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:369
 msgid "Gruss"
-msgstr "Gruss"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:373
 msgid "ps"
-msgstr "ps"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:378 lib/layouts/g-brief.layout:220
 #: lib/layouts/g-brief2.layout:975
 msgid "Encl."
-msgstr "Encl."
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:383
 msgid "Anlagen"
-msgstr "Anlagen"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:388 lib/layouts/scrlettr.layout:95
 #: lib/layouts/scrlttr2.layout:134
 msgid "CC"
-msgstr "CC"
+msgstr ""
 
 #: lib/layouts/dinbrief.layout:393
 msgid "Verteiler"
-msgstr "Verteiler"
+msgstr ""
 
 #: lib/layouts/docbook-book.layout:3
 msgid "DocBook Book (SGML)"
@@ -10773,7 +10756,7 @@ msgstr ""
 
 #: lib/layouts/ectaart.layout:215
 msgid "bysame"
-msgstr "bysame"
+msgstr ""
 
 #: lib/layouts/egs.layout:3
 msgid "European Geophysical Society (EGS)"
@@ -11011,9 +10994,8 @@ msgid "CorAuthor mark"
 msgstr ""
 
 #: lib/layouts/elsarticle.layout:216
-#, fuzzy
 msgid "Corresponding author"
-msgstr "RunningAuthor"
+msgstr ""
 
 #: lib/layouts/elsarticle.layout:219
 msgid "Corresponding author text:"
@@ -11048,13 +11030,12 @@ msgstr ""
 "добавить \\theendnotes в ERT где вы хотите увидеть примечания."
 
 #: lib/layouts/endnotes.module:10
-#, fuzzy
 msgid "Endnote ##"
-msgstr "Примечение"
+msgstr ""
 
 #: lib/layouts/endnotes.module:23
 msgid "endnote"
-msgstr "примечение"
+msgstr "примечание"
 
 #: lib/layouts/entcs.layout:3
 msgid "Electronic Notes in Theor. Comp. Sc. (ENTCS)"
@@ -11405,9 +11386,8 @@ msgid "End of CV"
 msgstr "Конец резюме"
 
 #: lib/layouts/europasscv.layout:442 lib/layouts/europasscv.layout:447
-#, fuzzy
 msgid "Highlight"
-msgstr "HighLight"
+msgstr ""
 
 #: lib/layouts/europecv.layout:3
 msgid "Europe CV"
@@ -11448,9 +11428,8 @@ msgid "BulletedItem"
 msgstr "Маркеры"
 
 #: lib/layouts/europecv.layout:186
-#, fuzzy
 msgid "Bulleted Item:"
-msgstr "Уда&лить"
+msgstr ""
 
 #: lib/layouts/europecv.layout:189
 msgid "Begin"
@@ -11574,18 +11553,16 @@ msgid "Consult the fixme package documentation for options"
 msgstr ""
 
 #: lib/layouts/fixme.module:74
-#, fuzzy
 msgid "Fixme Warning"
-msgstr "значение"
+msgstr ""
 
 #: lib/layouts/fixme.module:76
 msgid "Warning"
 msgstr "Предупреждение"
 
 #: lib/layouts/fixme.module:80
-#, fuzzy
 msgid "Fixme Error"
-msgstr "Ошибка в названии файла"
+msgstr ""
 
 #: lib/layouts/fixme.module:82 src/frontends/qt4/GuiCompare.cpp:198
 #: src/frontends/qt4/GuiDocument.cpp:2340
@@ -11611,9 +11588,8 @@ msgid "Fixme (Targeted)"
 msgstr ""
 
 #: lib/layouts/fixme.module:109
-#, fuzzy
 msgid "Fixme Note|x"
-msgstr "Рисунок"
+msgstr ""
 
 #: lib/layouts/fixme.module:111
 #, fuzzy
@@ -12258,18 +12234,16 @@ msgid "BankRowF:"
 msgstr "BankRowF:"
 
 #: lib/layouts/graphicboxes.module:2
-#, fuzzy
 msgid "GraphicBoxes"
-msgstr "Изображение"
+msgstr ""
 
 #: lib/layouts/graphicboxes.module:5
 msgid "Boxes to scale and rotate its contents"
 msgstr ""
 
 #: lib/layouts/graphicboxes.module:11 lib/layouts/graphicboxes.module:14
-#, fuzzy
 msgid "Reflectbox"
-msgstr "Выделенная область"
+msgstr ""
 
 #: lib/layouts/graphicboxes.module:26 lib/layouts/graphicboxes.module:28
 #, fuzzy
@@ -18071,7 +18045,7 @@ msgstr "Гор. заполнение|Г"
 # ?
 #: lib/ui/stdcontext.inc:244
 msgid "Protected Horizontal Fill|i"
-msgstr "Защищенное горизонтальное заполнение|З"
+msgstr "Защищённое горизонтальное заполнение|З"
 
 #: lib/ui/stdcontext.inc:245
 msgid "Horizontal Fill (Dots)|D"
@@ -18083,19 +18057,19 @@ msgstr "Горизонтальное заполнение(линия)|л"
 
 #: lib/ui/stdcontext.inc:247
 msgid "Horizontal Fill (Left Arrow)|L"
-msgstr "Горизонтальное заполнениие (левая стрелка)|л"
+msgstr "Горизонтальное заполнение (левая стрелка)|л"
 
 #: lib/ui/stdcontext.inc:248
 msgid "Horizontal Fill (Right Arrow)|g"
-msgstr "Горизонтальное заполнениие (правая стрелка)|п"
+msgstr "Горизонтальное заполнение (правая стрелка)|п"
 
 #: lib/ui/stdcontext.inc:249
 msgid "Horizontal Fill (Up Brace)|p"
-msgstr "Горизонтальное заполнениие (верхняя скобка)|в"
+msgstr "Горизонтальное заполнение (верхняя скобка)|в"
 
 #: lib/ui/stdcontext.inc:250
 msgid "Horizontal Fill (Down Brace)|B"
-msgstr "Горизонтальное заполнениие (нижняя скобка)|н"
+msgstr "Горизонтальное заполнение (нижняя скобка)|н"
 
 #: lib/ui/stdcontext.inc:251 lib/ui/stdcontext.inc:269
 msgid "Custom Length|C"
@@ -18223,7 +18197,7 @@ msgstr "Вставить недавнее|е"
 
 #: lib/ui/stdcontext.inc:340
 msgid "Jump Back to Saved Bookmark|B"
-msgstr "Перейти назад к сохраненной закладке|с"
+msgstr "Перейти назад к сохранённой закладке|с"
 
 #: lib/ui/stdcontext.inc:341 lib/ui/stdmenus.inc:572
 msgid "Forward Search|F"
@@ -18646,7 +18620,7 @@ msgstr "Сохранить как...|к"
 
 #: lib/ui/stdmenus.inc:54
 msgid "Save All|l"
-msgstr "Сохранить все|а"
+msgstr "Сохранить всё|а"
 
 #: lib/ui/stdmenus.inc:55
 msgid "Revert to Saved|R"
@@ -24341,7 +24315,7 @@ msgstr ""
 "вставляют материал в доску.\n"
 "Чтобы это заработало, вам нужно\n"
 "поместить файл lyxskak.sty туда,\n"
-"где TeX его найдет и\n"
+"где TeX его найдёт и\n"
 "установить пакет skak из CTAN.\n"
 
 #: lib/xtemplates/dia.xtemplate:14
@@ -25018,7 +24992,7 @@ msgstr "\\begin_header отсутствует"
 
 #: src/Buffer.cpp:1004
 msgid "\\begin_document is missing"
-msgstr "\\begin_documen отсутствует"
+msgstr "\\begin_document отсутствует"
 
 #: src/Buffer.cpp:1016 src/Buffer.cpp:1022 src/Buffer.cpp:2874
 #: src/Buffer.cpp:2880
@@ -25541,7 +25515,7 @@ msgstr "Обнаружен запасной файл"
 
 #: src/Buffer.cpp:4578
 msgid "Do not forget to save your file now!"
-msgstr "Не забудьте сохранить ваш вайл прямо сейчас!"
+msgstr "Не забудьте сохранить ваш файл прямо сейчас!"
 
 #: src/Buffer.cpp:4585
 msgid "Remove emergency file now?"
@@ -25761,7 +25735,7 @@ msgstr "Не удалось загрузить класс"
 
 #: src/BufferParams.cpp:2510
 msgid "Error reading internal layout information"
-msgstr "Ошибка чтения внутреней информации макета"
+msgstr "Ошибка чтения внутренней информации макета"
 
 #: src/BufferParams.cpp:2511 src/TextClass.cpp:1704 src/TextClass.cpp:1739
 msgid "Read Error"
@@ -26101,7 +26075,7 @@ msgstr "фон заметки"
 
 #: src/Color.cpp:237
 msgid "comment label"
-msgstr "метка коментария"
+msgstr "метка комментария"
 
 #: src/Color.cpp:238
 msgid "comment background"
@@ -26299,7 +26273,7 @@ msgstr "текст изменён 5-ым автором"
 # ?
 #: src/Color.cpp:287
 msgid "deleted text modifier"
-msgstr "модификатор удаленного текста"
+msgstr "модификатор удалённого текста"
 
 #: src/Color.cpp:288
 msgid "added space markers"
@@ -26773,7 +26747,7 @@ msgstr "Нет информации для редактирования %1$s"
 #: src/Format.cpp:775
 #, c-format
 msgid "Auto-edit file %1$s failed"
-msgstr "Авто-редактирование файла %1$s неудалось"
+msgstr "Авто-редактирование файла %1$s не удалось"
 
 #: src/KeyMap.cpp:229 src/KeyMap.cpp:244
 msgid "Could not find bind file"
@@ -26904,7 +26878,7 @@ msgstr "LyX не смог загрузить файл: %1$s"
 
 #: src/LyX.cpp:593
 msgid "No textclass is found"
-msgstr "Не найдет класс текста"
+msgstr "Не найден класс текста"
 
 #: src/LyX.cpp:594
 msgid ""
@@ -27452,7 +27426,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3261
 msgid "De-select if you do not want LyX to scroll to saved position."
-msgstr "Снимите отметку, чтобы LyX не прокручивал к сохраненной позиции."
+msgstr "Снимите отметку, чтобы LyX не прокручивал к сохранённой позиции."
 
 #: src/LyXRC.cpp:3265
 msgid "De-select to prevent loading files opened from the last LyX session."
@@ -28845,7 +28819,7 @@ msgstr "Стили BibTeX (*.bst)"
 
 #: src/frontends/qt4/GuiBibtex.cpp:449
 msgid "Select a BibTeX style"
-msgstr "Выберите cтиль BibTeX"
+msgstr "Выберите стиль BibTeX"
 
 #: src/frontends/qt4/GuiBox.cpp:58
 msgid "No frame"
@@ -30003,7 +29977,7 @@ msgstr "Двойной квадрат (2 em)"
 #: src/frontends/qt4/GuiHSpace.cpp:55 src/frontends/qt4/GuiHSpace.cpp:66
 #: src/insets/InsetSpace.cpp:108
 msgid "Horizontal Fill"
-msgstr "Горизонтальное заполнениие"
+msgstr "Горизонтальное заполнение"
 
 #: src/frontends/qt4/GuiHSpace.cpp:68 src/insets/InsetSpace.cpp:75
 msgid "Visible Space"
@@ -31441,7 +31415,7 @@ msgid ""
 "on disk of the document %1$s?"
 msgstr ""
 "Все изменения будут потеряны. Вы уверены, что хотите откатиться к "
-"сохраненной версии документа %1$s?"
+"сохранённой версии документа %1$s?"
 
 #: src/frontends/qt4/GuiView.cpp:3852
 #, c-format
@@ -31450,7 +31424,7 @@ msgid ""
 "version of the document %1$s?"
 msgstr ""
 "Все изменения будут потеряны. Вы уверены, что хотите откатиться к "
-"сохраненной версии документа %1$s?"
+"сохранённой версии документа %1$s?"
 
 #: src/frontends/qt4/GuiView.cpp:3855
 msgid "Revert to saved document?"
@@ -32014,7 +31988,7 @@ msgstr "Ветка (главный): "
 
 #: src/insets/InsetBranch.cpp:126
 msgid "Branch (undefined): "
-msgstr "Ветка (неопределено): "
+msgstr "Ветка (не определена): "
 
 #: src/insets/InsetBranch.cpp:186
 msgid "Branch state changes in master document"
@@ -32817,7 +32791,7 @@ msgstr "Enskip"
 
 #: src/insets/InsetSpace.cpp:111
 msgid "Protected Horizontal Fill"
-msgstr "Защищенное горизонтальное заполнение"
+msgstr "Защищённое горизонтальное заполнение"
 
 #: src/insets/InsetSpace.cpp:114
 msgid "Horizontal Fill (Dots)"
@@ -33448,7 +33422,7 @@ msgstr "Локаль/Интернационализация"
 
 #: src/support/debug.cpp:71
 msgid "Selection copy/paste mechanism"
-msgstr "Механизм копрования/вставки выделения"
+msgstr "Механизм копирования/вставки выделения"
 
 #: src/support/debug.cpp:72
 msgid "Find and replace mechanism"
