@@ -9030,14 +9030,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -9050,7 +9048,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9083,7 +9080,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -26250,7 +26246,7 @@ Les signes somme (
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\sum_{n=1}^{\infty}\frac{x^{n}}{n}=\ln\left(\frac{1}{1-x}\right)
+\sum_{n=0}^{\infty}\frac{1}{n!}=e
 \]
 
 \end_inset

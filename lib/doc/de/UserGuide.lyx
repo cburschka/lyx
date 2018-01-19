@@ -8597,12 +8597,10 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
-
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
-
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8615,7 +8613,6 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
-
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8639,7 +8636,6 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
-
 Dies ist Unformatiert*.
 \end_layout
 
@@ -24666,7 +24662,7 @@ Die Summen- und Integralzeichen
 , bei abgesetzten Formeln hingegen über und unter dem Summenzeichen: 
 \begin_inset Formula 
 \[
-\sum_{n=1}^{\infty}\frac{x^{n}}{n}=\ln\left(\frac{1}{1-x}\right).
+\sum_{n=0}^{\infty}\frac{1}{n!}=e
 \]
 
 \end_inset

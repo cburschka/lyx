@@ -7172,14 +7172,12 @@ Space
 \end_layout
 
 \begin_layout Verbatim
-
 これは原文儘(verbatim)環境です．
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 この下の2行は空白行です．
 \end_layout
 
@@ -7192,7 +7190,6 @@ Space
 \end_layout
 
 \begin_layout Verbatim
-
 右記の各文字を始め，ほぼすべての文字が使えます．例："%&$§#~'`
 \backslash
 }][{|
@@ -7215,7 +7212,6 @@ Space
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -21195,7 +21191,7 @@ name "subsec:範囲付き演算子"
  と表記され，別行立て数式では
 \begin_inset Formula 
 \[
-\sum_{n=1}^{\infty}\frac{1}{n!}=e
+\sum_{n=0}^{\infty}\frac{1}{n!}=e
 \]
 
 \end_inset
