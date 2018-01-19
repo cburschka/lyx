@@ -8335,14 +8335,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8355,7 +8353,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8379,7 +8376,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -24698,7 +24694,7 @@ limits
 , versus
 \begin_inset Formula 
 \[
-\sum\nolimits _{n=0}^{\infty}\frac{1}{n!}=e
+\sum_{n=0}^{\infty}\frac{1}{n!}=e
 \]
 
 \end_inset
