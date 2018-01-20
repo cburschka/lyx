@@ -337,12 +337,14 @@
 # -----------------------------------------------------------------
 # 3 janvier 2018 : nouveaux environnements Beamer
 # -----------------------------------------------------------------
+# 20 janvier 2018 : messages en contexte verbatim
+# -----------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-01-20 09:43+0100\n"
-"PO-Revision-Date: 2018-01-16 18:04+0100\n"
+"PO-Revision-Date: 2018-01-20 14:22+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -27046,6 +27048,8 @@ msgid ""
 "The character \"%1$s\" is uncodable in this verbatim context and thus has "
 "not been pasted."
 msgstr ""
+"Le caractère « %1$s » n'est pas codable dans ce contexte verbatim et n'a "
+"donc pas été collé."
 
 #: src/CutAndPaste.cpp:188
 #, c-format
@@ -27053,11 +27057,12 @@ msgid ""
 "The characters \"%1$s\" are uncodable in this verbatim context and thus have "
 "not been pasted."
 msgstr ""
+"Les caractères « %1$s » ne sont pas codables dans ce contexte verbatim et "
+"n'ont donc pas été collés."
 
 #: src/CutAndPaste.cpp:231
-#, fuzzy
 msgid "Uncodable content"
-msgstr "Caractères incodables"
+msgstr "Contenu non codable"
 
 #: src/CutAndPaste.cpp:405
 #, c-format
@@ -28367,9 +28372,8 @@ msgstr ""
 "d'Apprentissage."
 
 #: src/Text.cpp:941
-#, fuzzy
 msgid "Character is uncodable in this verbatim context."
-msgstr "Caractère non encodable dans un paragraphe verbatim."
+msgstr "Caractère non codable dans ce contexte verbatim."
 
 #: src/Text.cpp:1904
 msgid "[Change Tracking] "
