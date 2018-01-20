@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-01-20 09:43+0100\n"
-"PO-Revision-Date: 2018-01-01 13:46+0100\n"
+"PO-Revision-Date: 2018-01-20 09:46+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -26764,6 +26764,8 @@ msgid ""
 "The character \"%1$s\" is uncodable in this verbatim context and thus has "
 "not been pasted."
 msgstr ""
+"Das Zeichen \"%1$s\" ist in diesem unformatierten Absatz nicht kodierbar und "
+"wurde daher nicht eingefügt."
 
 #: src/CutAndPaste.cpp:188
 #, c-format
@@ -26771,11 +26773,12 @@ msgid ""
 "The characters \"%1$s\" are uncodable in this verbatim context and thus have "
 "not been pasted."
 msgstr ""
+"Die Zeichen \"%1$s\" sind in diesem unformatierten Absatz nicht kodierbar "
+"und wurden daher nicht eingefügt."
 
 #: src/CutAndPaste.cpp:231
-#, fuzzy
 msgid "Uncodable content"
-msgstr "Unkodierbare Zeichen"
+msgstr "Nicht kodierbarer Inhalt"
 
 #: src/CutAndPaste.cpp:405
 #, c-format
@@ -28108,9 +28111,8 @@ msgstr ""
 "das Tutorium."
 
 #: src/Text.cpp:941
-#, fuzzy
 msgid "Character is uncodable in this verbatim context."
-msgstr "Das Zeichen ist in unformatierten Absätzen nicht kodierbar."
+msgstr "Das Zeichen ist in diesem unformatierten Absatz nicht kodierbar."
 
 #: src/Text.cpp:1904
 msgid "[Change Tracking] "
