@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-01-01 17:44+0100\n"
-"PO-Revision-Date: 2018-01-01 18:21+0100\n"
+"PO-Revision-Date: 2018-01-20 11:30+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
 "Language: it\n"
@@ -26624,7 +26624,7 @@ msgid ""
 "The character \"%1$s\" is uncodable in this verbatim context and thus has not "
 "been pasted."
 msgstr ""
-"Il carattere \"%1$s\" non è codificabile in questo contesto testuale e quindi "
+"Il carattere \"%1$s\" è intraducibile in questo contesto testuale e quindi "
 "non è stato incollato."
 
 #: src/CutAndPaste.cpp:189
@@ -26633,12 +26633,12 @@ msgid ""
 "The characters \"%1$s\" are uncodable in this verbatim context and thus have "
 "not been pasted."
 msgstr ""
-"I caratteri \"%1$s\" non sono codificabili in questo contesto testuale e "
-"quindi non sono stati incollati."
+"I caratteri \"%1$s\" sono intraducibili in questo contesto testuale e quindi "
+"non sono stati incollati."
 
 #: src/CutAndPaste.cpp:232
 msgid "Uncodable content"
-msgstr "Contenuto incodificabile"
+msgstr "Contenuto intraducibile"
 
 #: src/CutAndPaste.cpp:416
 #, c-format
@@ -27935,7 +27935,7 @@ msgstr ""
 
 #: src/Text.cpp:941
 msgid "Character is uncodable in this verbatim context."
-msgstr "Carattere non codificabile in questo contesto testuale."
+msgstr "Carattere intraducibile in questo contesto testuale."
 
 #: src/Text.cpp:1904
 msgid "[Change Tracking] "
