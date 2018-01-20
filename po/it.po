@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-01-15 13:02-0500\n"
+"POT-Creation-Date: 2018-01-20 09:43+0100\n"
 "PO-Revision-Date: 2018-01-16 09:21+0100\n"
 "Last-Translator: Enrico Forestieri <forenr@lyx.org>\n"
 "Language-Team: italiano <it@li.org>\n"
@@ -44,7 +44,8 @@ msgid "Release Notes"
 msgstr "Note di pubblicazione"
 
 #: src/frontends/qt4/ui/AboutUi.ui:159 src/frontends/qt4/ui/CompareUi.ui:163
-#: src/frontends/qt4/ui/DelimiterUi.ui:83 src/frontends/qt4/ui/ErrorListUi.ui:60
+#: src/frontends/qt4/ui/DelimiterUi.ui:83
+#: src/frontends/qt4/ui/ErrorListUi.ui:60
 #: src/frontends/qt4/ui/ExternalUi.ui:620 src/frontends/qt4/ui/IncludeUi.ui:250
 #: src/frontends/qt4/ui/InsetParamsUi.ui:138 src/frontends/qt4/ui/LogUi.ui:88
 #: src/frontends/qt4/ui/ParagraphUi.ui:261 src/frontends/qt4/ui/PrefsUi.ui:90
@@ -173,11 +174,11 @@ msgstr "Stile &BibTeX di default:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:281
 msgid ""
-"Here, you can define a BibTeX style that is suggested in the BibTeX dialog by "
-"default"
+"Here, you can define a BibTeX style that is suggested in the BibTeX dialog "
+"by default"
 msgstr ""
-"Qui si può definire lo stile BibTeX che viene suggerito per default quando si "
-"inserisce la bibliografia"
+"Qui si può definire lo stile BibTeX che viene suggerito per default quando "
+"si inserisce la bibliografia"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:294
 msgid "&Reset"
@@ -233,7 +234,8 @@ msgid "Op&tions:"
 msgstr "&Opzioni:"
 
 #: src/frontends/qt4/ui/BiblioUi.ui:440
-msgid "Define options such as --min-crossrefs (see the documentation of BibTeX)"
+msgid ""
+"Define options such as --min-crossrefs (see the documentation of BibTeX)"
 msgstr ""
 "Per definire opzioni quali --min-crossrefs (vedere il manuale di BibTeX)."
 
@@ -283,8 +285,9 @@ msgid "&Browse..."
 msgstr "&Sfoglia..."
 
 #: src/frontends/qt4/ui/BibtexAddUi.ui:162
-#: src/frontends/qt4/ui/BranchesUi.ui:113 src/frontends/qt4/ui/CitationUi.ui:143
-#: src/frontends/qt4/ui/IndicesUi.ui:134 src/CutAndPaste.cpp:374
+#: src/frontends/qt4/ui/BranchesUi.ui:113
+#: src/frontends/qt4/ui/CitationUi.ui:143 src/frontends/qt4/ui/IndicesUi.ui:134
+#: src/CutAndPaste.cpp:409
 msgid "&Add"
 msgstr "A&ggiungi"
 
@@ -395,16 +398,16 @@ msgid ""
 "Options to the biblatex bibliography command. See the biblatex manual for "
 "details."
 msgstr ""
-"Opzioni per il comando bibliografico biblatex. Consultare il manuale biblatex "
-"per i dettagli."
+"Opzioni per il comando bibliografico biblatex. Consultare il manuale "
+"biblatex per i dettagli."
 
 #: src/frontends/qt4/ui/BibtexUi.ui:283 src/frontends/qt4/ui/CharacterUi.ui:357
 #: src/frontends/qt4/ui/CitationUi.ui:453
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:183
 #: src/frontends/qt4/ui/CompareUi.ui:153 src/frontends/qt4/ui/DocumentUi.ui:67
-#: src/frontends/qt4/ui/ExternalUi.ui:600 src/frontends/qt4/ui/GraphicsUi.ui:711
-#: src/frontends/qt4/ui/IncludeUi.ui:237 src/frontends/qt4/ui/IndexUi.ui:41
-#: src/frontends/qt4/ui/InsetParamsUi.ui:118
+#: src/frontends/qt4/ui/ExternalUi.ui:600
+#: src/frontends/qt4/ui/GraphicsUi.ui:711 src/frontends/qt4/ui/IncludeUi.ui:237
+#: src/frontends/qt4/ui/IndexUi.ui:41 src/frontends/qt4/ui/InsetParamsUi.ui:118
 #: src/frontends/qt4/ui/ListingsUi.ui:539
 #: src/frontends/qt4/ui/MathMatrixUi.ui:263 src/frontends/qt4/ui/NoteUi.ui:38
 #: src/frontends/qt4/ui/ParagraphUi.ui:241 src/frontends/qt4/ui/PhantomUi.ui:38
@@ -412,7 +415,8 @@ msgstr ""
 #: src/frontends/qt4/ui/SendtoUi.ui:72 src/frontends/qt4/ui/ShortcutUi.ui:52
 #: src/frontends/qt4/ui/SymbolsUi.ui:49
 #: src/frontends/qt4/ui/TabularCreateUi.ui:127
-#: src/frontends/qt4/ui/ToggleWarningUi.ui:90 src/frontends/qt4/ui/WrapUi.ui:150
+#: src/frontends/qt4/ui/ToggleWarningUi.ui:90
+#: src/frontends/qt4/ui/WrapUi.ui:150
 msgid "&OK"
 msgstr "&OK"
 
@@ -445,11 +449,11 @@ msgstr "Tipo di casella"
 
 #: src/frontends/qt4/ui/BoxUi.ui:91 src/frontends/qt4/ui/HSpaceUi.ui:32
 #: src/frontends/qt4/ui/ListingsUi.ui:98 src/frontends/qt4/ui/TabularUi.ui:1199
-#: src/frontends/qt4/ui/TabularUi.ui:1218 src/frontends/qt4/ui/TabularUi.ui:1266
-#: src/frontends/qt4/GuiBox.cpp:424 src/frontends/qt4/GuiBox.cpp:634
-#: src/frontends/qt4/GuiDocument.cpp:123 src/frontends/qt4/GuiGraphics.cpp:582
-#: src/frontends/qt4/GuiMathMatrix.cpp:33 src/frontends/qt4/GuiPrefs.cpp:2314
-#: src/frontends/qt4/GuiPrefs.cpp:2337
+#: src/frontends/qt4/ui/TabularUi.ui:1218
+#: src/frontends/qt4/ui/TabularUi.ui:1266 src/frontends/qt4/GuiBox.cpp:424
+#: src/frontends/qt4/GuiBox.cpp:634 src/frontends/qt4/GuiDocument.cpp:123
+#: src/frontends/qt4/GuiGraphics.cpp:582 src/frontends/qt4/GuiMathMatrix.cpp:33
+#: src/frontends/qt4/GuiPrefs.cpp:2314 src/frontends/qt4/GuiPrefs.cpp:2337
 msgid "None"
 msgstr "Nessuno"
 
@@ -549,7 +553,7 @@ msgstr "Ad estensione"
 
 #: src/frontends/qt4/ui/BoxUi.ui:265 src/frontends/qt4/ui/ListingsUi.ui:103
 #: src/frontends/qt4/ui/TabularUi.ui:391 src/frontends/qt4/ui/TabularUi.ui:1549
-#: src/frontends/qt4/ui/WrapUi.ui:209 src/frontends/qt4/GuiDocument.cpp:1296
+#: src/frontends/qt4/ui/WrapUi.ui:209 src/frontends/qt4/GuiDocument.cpp:1295
 #: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:851
 msgid "Left"
 msgstr "A sinistra"
@@ -563,7 +567,7 @@ msgstr "Al centro"
 
 #: src/frontends/qt4/ui/BoxUi.ui:275 src/frontends/qt4/ui/ListingsUi.ui:108
 #: src/frontends/qt4/ui/TabularUi.ui:401 src/frontends/qt4/ui/TabularUi.ui:1566
-#: src/frontends/qt4/ui/WrapUi.ui:214 src/frontends/qt4/GuiDocument.cpp:1298
+#: src/frontends/qt4/ui/WrapUi.ui:214 src/frontends/qt4/GuiDocument.cpp:1297
 #: src/frontends/qt4/GuiParagraph.cpp:112 src/frontends/qt4/GuiTabular.cpp:853
 msgid "Right"
 msgstr "A destra"
@@ -717,15 +721,16 @@ msgstr "Aggiungi &tutti"
 #: src/frontends/qt4/ui/PrintindexUi.ui:108 src/Buffer.cpp:1402
 #: src/Buffer.cpp:4547 src/Buffer.cpp:4611 src/LyXVC.cpp:114 src/LyXVC.cpp:304
 #: src/buffer_funcs.cpp:78 src/frontends/qt4/GuiBranches.cpp:219
-#: src/frontends/qt4/GuiClipboard.cpp:247 src/frontends/qt4/GuiDocument.cpp:2327
-#: src/frontends/qt4/GuiParagraph.cpp:69 src/frontends/qt4/GuiParagraph.cpp:161
-#: src/frontends/qt4/GuiPrefs.cpp:3328 src/frontends/qt4/GuiView.cpp:2452
-#: src/frontends/qt4/GuiView.cpp:2600 src/frontends/qt4/GuiView.cpp:2624
-#: src/frontends/qt4/GuiView.cpp:2638 src/frontends/qt4/GuiView.cpp:2739
-#: src/frontends/qt4/GuiView.cpp:2783 src/frontends/qt4/GuiView.cpp:3051
-#: src/frontends/qt4/GuiView.cpp:3065 src/frontends/qt4/GuiView.cpp:3167
-#: src/frontends/qt4/GuiView.cpp:3195 src/frontends/qt4/GuiView.cpp:3850
-#: src/frontends/qt4/GuiView.cpp:3857 src/insets/InsetBibtex.cpp:160
+#: src/frontends/qt4/GuiClipboard.cpp:247
+#: src/frontends/qt4/GuiDocument.cpp:2326 src/frontends/qt4/GuiParagraph.cpp:69
+#: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/GuiPrefs.cpp:3328
+#: src/frontends/qt4/GuiView.cpp:2452 src/frontends/qt4/GuiView.cpp:2600
+#: src/frontends/qt4/GuiView.cpp:2624 src/frontends/qt4/GuiView.cpp:2638
+#: src/frontends/qt4/GuiView.cpp:2739 src/frontends/qt4/GuiView.cpp:2783
+#: src/frontends/qt4/GuiView.cpp:3051 src/frontends/qt4/GuiView.cpp:3065
+#: src/frontends/qt4/GuiView.cpp:3167 src/frontends/qt4/GuiView.cpp:3195
+#: src/frontends/qt4/GuiView.cpp:3850 src/frontends/qt4/GuiView.cpp:3857
+#: src/insets/InsetBibtex.cpp:160
 msgid "&Cancel"
 msgstr "&Cancella"
 
@@ -748,19 +753,26 @@ msgid "Si&ze:"
 msgstr "Dimen&sione:"
 
 #: src/frontends/qt4/ui/BulletsUi.ui:66 src/frontends/qt4/ui/ParagraphUi.ui:116
-#: src/frontends/qt4/ui/TabularUi.ui:1204 src/frontends/qt4/ui/TabularUi.ui:1223
+#: src/frontends/qt4/ui/TabularUi.ui:1204
+#: src/frontends/qt4/ui/TabularUi.ui:1223
 #: src/frontends/qt4/ui/TabularUi.ui:1271 lib/ui/stdtoolbars.inc:113
 #: src/Font.cpp:184 src/frontends/qt4/GuiDocument.cpp:119
 #: src/frontends/qt4/GuiDocument.cpp:742 src/frontends/qt4/GuiDocument.cpp:872
 #: src/frontends/qt4/GuiDocument.cpp:877 src/frontends/qt4/GuiDocument.cpp:918
-#: src/frontends/qt4/GuiDocument.cpp:929 src/frontends/qt4/GuiDocument.cpp:1088
-#: src/frontends/qt4/GuiDocument.cpp:1193 src/frontends/qt4/GuiDocument.cpp:1290
-#: src/frontends/qt4/GuiDocument.cpp:1297 src/frontends/qt4/GuiDocument.cpp:2083
-#: src/frontends/qt4/GuiDocument.cpp:2161 src/frontends/qt4/GuiDocument.cpp:2162
-#: src/frontends/qt4/GuiDocument.cpp:2163 src/frontends/qt4/GuiDocument.cpp:2183
-#: src/frontends/qt4/GuiDocument.cpp:2190 src/frontends/qt4/GuiDocument.cpp:2197
-#: src/frontends/qt4/GuiDocument.cpp:2282 src/frontends/qt4/GuiDocument.cpp:2811
-#: src/frontends/qt4/GuiDocument.cpp:4201 src/frontends/qt4/GuiExternal.cpp:77
+#: src/frontends/qt4/GuiDocument.cpp:929 src/frontends/qt4/GuiDocument.cpp:1087
+#: src/frontends/qt4/GuiDocument.cpp:1192
+#: src/frontends/qt4/GuiDocument.cpp:1289
+#: src/frontends/qt4/GuiDocument.cpp:1296
+#: src/frontends/qt4/GuiDocument.cpp:2082
+#: src/frontends/qt4/GuiDocument.cpp:2160
+#: src/frontends/qt4/GuiDocument.cpp:2161
+#: src/frontends/qt4/GuiDocument.cpp:2162
+#: src/frontends/qt4/GuiDocument.cpp:2182
+#: src/frontends/qt4/GuiDocument.cpp:2189
+#: src/frontends/qt4/GuiDocument.cpp:2196
+#: src/frontends/qt4/GuiDocument.cpp:2281
+#: src/frontends/qt4/GuiDocument.cpp:2810
+#: src/frontends/qt4/GuiDocument.cpp:4200 src/frontends/qt4/GuiExternal.cpp:77
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiIndices.cpp:58
 #: src/frontends/qt4/GuiListings.cpp:154 src/frontends/qt4/GuiListings.cpp:161
 #: src/frontends/qt4/GuiPrefs.cpp:2462 src/frontends/qt4/GuiPrefs.cpp:2575
@@ -873,7 +885,8 @@ msgstr "Famiglia caratteri"
 msgid "&Family:"
 msgstr "&Famiglia:"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:65 src/frontends/qt4/ui/CharacterUi.ui:72
+#: src/frontends/qt4/ui/CharacterUi.ui:65
+#: src/frontends/qt4/ui/CharacterUi.ui:72
 msgid "Font shape"
 msgstr "Forma carattere"
 
@@ -892,7 +905,7 @@ msgstr "Serie carattere"
 #: lib/layouts/europasscv.layout:340 lib/layouts/europasscv.layout:373
 #: lib/layouts/europasscv.layout:380 lib/layouts/europecv.layout:247
 #: lib/layouts/europecv.layout:253 lib/layouts/moderncv.layout:467
-#: src/frontends/qt4/GuiDocument.cpp:1498 src/frontends/qt4/GuiPrefs.cpp:2417
+#: src/frontends/qt4/GuiDocument.cpp:1497 src/frontends/qt4/GuiPrefs.cpp:2417
 #: src/frontends/qt4/Menus.cpp:910
 msgid "Language"
 msgstr "Lingua"
@@ -955,15 +968,17 @@ msgstr "Applica ogni cambiamento automaticamente"
 msgid "Apply changes &immediately"
 msgstr "Applica i cambiamenti &immediatamente"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:367 src/frontends/qt4/ui/DocumentUi.ui:77
-#: src/frontends/qt4/ui/ExternalUi.ui:610 src/frontends/qt4/ui/GraphicsUi.ui:732
+#: src/frontends/qt4/ui/CharacterUi.ui:367
+#: src/frontends/qt4/ui/DocumentUi.ui:77 src/frontends/qt4/ui/ExternalUi.ui:610
+#: src/frontends/qt4/ui/GraphicsUi.ui:732
 #: src/frontends/qt4/ui/InsetParamsUi.ui:128
 #: src/frontends/qt4/ui/ListingsUi.ui:549
 #: src/frontends/qt4/ui/ParagraphUi.ui:251 src/frontends/qt4/ui/PrefsUi.ui:80
 #: src/frontends/qt4/ui/RefUi.ui:362 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
-#: src/frontends/qt4/GuiDocument.cpp:2403 src/frontends/qt4/GuiDocument.cpp:2683
-#: src/frontends/qt4/GuiDocument.cpp:4138
+#: src/frontends/qt4/GuiDocument.cpp:2402
+#: src/frontends/qt4/GuiDocument.cpp:2682
+#: src/frontends/qt4/GuiDocument.cpp:4137
 msgid "&Apply"
 msgstr "&Applica"
 
@@ -1015,7 +1030,8 @@ msgstr "Cliccare o premere Enter per aggiungere alla lista la voce selezionata"
 
 #: src/frontends/qt4/ui/CitationUi.ui:153
 msgid "Click or press Delete to delete the selected citation from the list"
-msgstr "Cliccare o premere Delete per rimuovere dalla lista la voce selezionata"
+msgstr ""
+"Cliccare o premere Delete per rimuovere dalla lista la voce selezionata"
 
 #: src/frontends/qt4/ui/CitationUi.ui:185
 msgid "Move the selected citation up (Ctrl-Up)"
@@ -1136,7 +1152,8 @@ msgid "Greyed-out notes:"
 msgstr "Note sbiadite:"
 
 #: src/frontends/qt4/ui/ColorUi.ui:118 src/frontends/qt4/ui/ColorUi.ui:256
-#: src/frontends/qt4/GuiDocument.cpp:1797 src/frontends/qt4/GuiDocument.cpp:1827
+#: src/frontends/qt4/GuiDocument.cpp:1796
+#: src/frontends/qt4/GuiDocument.cpp:1826
 msgid "&Change..."
 msgstr "&Modifica..."
 
@@ -1201,8 +1218,8 @@ msgid ""
 "Turns on the change tracking and showing changes in LaTeX output for the "
 "resulting document"
 msgstr ""
-"Attiva il tracciamento modifiche e mostra i cambiamenti nell'output LaTeX del "
-"documento risultante"
+"Attiva il tracciamento modifiche e mostra i cambiamenti nell'output LaTeX "
+"del documento risultante"
 
 #: src/frontends/qt4/ui/CompareUi.ui:181
 msgid "Enable &change tracking features in the output"
@@ -1345,7 +1362,8 @@ msgstr "&Modello"
 msgid "Available templates"
 msgstr "Modelli disponibili"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:132 src/frontends/qt4/ui/GraphicsUi.ui:448
+#: src/frontends/qt4/ui/ExternalUi.ui:132
+#: src/frontends/qt4/ui/GraphicsUi.ui:448
 msgid "LaTe&X and LyX options"
 msgstr "Opzioni per LaTe&X e LyX"
 
@@ -1373,8 +1391,10 @@ msgstr ""
 msgid "&Show in LyX"
 msgstr "&Mostra in LyX"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:212 src/frontends/qt4/ui/ExternalUi.ui:234
-#: src/frontends/qt4/ui/GraphicsUi.ui:549 src/frontends/qt4/ui/GraphicsUi.ui:556
+#: src/frontends/qt4/ui/ExternalUi.ui:212
+#: src/frontends/qt4/ui/ExternalUi.ui:234
+#: src/frontends/qt4/ui/GraphicsUi.ui:549
+#: src/frontends/qt4/ui/GraphicsUi.ui:556
 msgid "Percentage to scale by in LyX"
 msgstr "Percentuale di ridimensionamento in LyX"
 
@@ -1390,13 +1410,17 @@ msgstr "Dimensione e rota&zione"
 msgid "Rotate"
 msgstr "Ro&tazione"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:328 src/frontends/qt4/ui/ExternalUi.ui:358
-#: src/frontends/qt4/ui/GraphicsUi.ui:240 src/frontends/qt4/ui/GraphicsUi.ui:247
+#: src/frontends/qt4/ui/ExternalUi.ui:328
+#: src/frontends/qt4/ui/ExternalUi.ui:358
+#: src/frontends/qt4/ui/GraphicsUi.ui:240
+#: src/frontends/qt4/ui/GraphicsUi.ui:247
 msgid "Angle to rotate image by"
 msgstr "Angolo di cui ruotare l'immagine"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:338 src/frontends/qt4/ui/ExternalUi.ui:351
-#: src/frontends/qt4/ui/GraphicsUi.ui:212 src/frontends/qt4/ui/GraphicsUi.ui:219
+#: src/frontends/qt4/ui/ExternalUi.ui:338
+#: src/frontends/qt4/ui/ExternalUi.ui:351
+#: src/frontends/qt4/ui/GraphicsUi.ui:212
+#: src/frontends/qt4/ui/GraphicsUi.ui:219
 msgid "The origin of the rotation"
 msgstr "È l'origine della rotazione"
 
@@ -1412,8 +1436,8 @@ msgstr "A&ngolo:"
 msgid "Scale"
 msgstr "Scala"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:400 src/frontends/qt4/ui/GraphicsUi.ui:131
-#: src/frontends/qt4/GuiGraphics.cpp:483
+#: src/frontends/qt4/ui/ExternalUi.ui:400
+#: src/frontends/qt4/ui/GraphicsUi.ui:131 src/frontends/qt4/GuiGraphics.cpp:483
 msgid "Height of image in output"
 msgstr "Altezza dell'immagine prodotta in uscita"
 
@@ -1426,7 +1450,8 @@ msgstr "Larghezza dell'immagine prodotta in uscita"
 msgid "Maintain aspect ratio with largest dimension"
 msgstr "Mantiene il rapporto con la dimensione più grande"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:436 src/frontends/qt4/ui/GraphicsUi.ui:177
+#: src/frontends/qt4/ui/ExternalUi.ui:436
+#: src/frontends/qt4/ui/GraphicsUi.ui:177
 msgid "&Maintain aspect ratio"
 msgstr "&Mantieni il rapporto tra le dimensioni"
 
@@ -1434,15 +1459,18 @@ msgstr "&Mantieni il rapporto tra le dimensioni"
 msgid "Crop"
 msgstr "Ritaglia"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:474 src/frontends/qt4/ui/GraphicsUi.ui:309
+#: src/frontends/qt4/ui/ExternalUi.ui:474
+#: src/frontends/qt4/ui/GraphicsUi.ui:309
 msgid "Clip to bounding box values"
 msgstr "Limita l'immagine ai valori della casella delimitante"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:477 src/frontends/qt4/ui/GraphicsUi.ui:312
+#: src/frontends/qt4/ui/ExternalUi.ui:477
+#: src/frontends/qt4/ui/GraphicsUi.ui:312
 msgid "Clip to &bounding box"
 msgstr "Ritaglia secondo la &casella delimitante"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:484 src/frontends/qt4/ui/GraphicsUi.ui:345
+#: src/frontends/qt4/ui/ExternalUi.ui:484
+#: src/frontends/qt4/ui/GraphicsUi.ui:345
 msgid "&Left bottom:"
 msgstr "In basso a &sinistra:"
 
@@ -1450,15 +1478,18 @@ msgstr "In basso a &sinistra:"
 msgid "x"
 msgstr "x"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:504 src/frontends/qt4/ui/GraphicsUi.ui:383
+#: src/frontends/qt4/ui/ExternalUi.ui:504
+#: src/frontends/qt4/ui/GraphicsUi.ui:383
 msgid "Right &top:"
 msgstr "In alto a &destra:"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:514 src/frontends/qt4/ui/GraphicsUi.ui:437
+#: src/frontends/qt4/ui/ExternalUi.ui:514
+#: src/frontends/qt4/ui/GraphicsUi.ui:437
 msgid "Get bounding box from the (EPS) file"
 msgstr "Usa la casella delimitante specificata nel file (EPS)"
 
-#: src/frontends/qt4/ui/ExternalUi.ui:517 src/frontends/qt4/ui/GraphicsUi.ui:440
+#: src/frontends/qt4/ui/ExternalUi.ui:517
+#: src/frontends/qt4/ui/GraphicsUi.ui:440
 msgid "&Get from File"
 msgstr "Come da &file"
 
@@ -1792,8 +1823,8 @@ msgstr "Attiva estensioni micr&o-tipografiche"
 
 #: src/frontends/qt4/ui/FontUi.ui:300
 msgid ""
-"By default, a line break can occur after en- and em-dashes. Checking this box "
-"prevents that."
+"By default, a line break can occur after en- and em-dashes. Checking this "
+"box prevents that."
 msgstr ""
 "Di norma, è consentito andare a capo subito dopo le lineette brevi e lunghe. "
 "Questo viene disabilitato selezionando questa opzione."
@@ -1859,7 +1890,8 @@ msgstr "Or&igine:"
 msgid "A&ngle (degrees):"
 msgstr "A&ngolo (gradi):"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:263 src/frontends/qt4/ui/GraphicsUi.ui:276
+#: src/frontends/qt4/ui/GraphicsUi.ui:263
+#: src/frontends/qt4/ui/GraphicsUi.ui:276
 msgid "File name of image"
 msgstr "Nome del file immagine"
 
@@ -1867,15 +1899,18 @@ msgstr "Nome del file immagine"
 msgid "&Clipping"
 msgstr "&Ritaglio"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:393 src/frontends/qt4/ui/GraphicsUi.ui:400
+#: src/frontends/qt4/ui/GraphicsUi.ui:393
+#: src/frontends/qt4/ui/GraphicsUi.ui:400
 msgid "y:"
 msgstr "y:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:407 src/frontends/qt4/ui/GraphicsUi.ui:414
+#: src/frontends/qt4/ui/GraphicsUi.ui:407
+#: src/frontends/qt4/ui/GraphicsUi.ui:414
 msgid "x:"
 msgstr "x:"
 
-#: src/frontends/qt4/ui/GraphicsUi.ui:481 src/frontends/qt4/ui/GraphicsUi.ui:488
+#: src/frontends/qt4/ui/GraphicsUi.ui:481
+#: src/frontends/qt4/ui/GraphicsUi.ui:488
 msgid "Additional LaTeX options"
 msgstr "Opzioni addizionali per LaTeX"
 
@@ -1975,7 +2010,8 @@ msgstr "&Valore:"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:100 src/frontends/qt4/ui/VSpaceUi.ui:61
 msgid "Custom value. Needs spacing type \"Custom\"."
-msgstr "Valore personalizzato. Necessita spaziatura di tipo \"Personalizzato\"."
+msgstr ""
+"Valore personalizzato. Necessita spaziatura di tipo \"Personalizzato\"."
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:110
 msgid "&Fill Pattern:"
@@ -1989,11 +2025,11 @@ msgstr "&Protezione:"
 msgid "Insert the spacing even after a line break"
 msgstr "La spaziatura permane anche se si trova a inizio o fine riga."
 
-#: src/frontends/qt4/ui/HyperlinkUi.ui:24 src/frontends/qt4/ui/HyperlinkUi.ui:61
-#: lib/layouts/acmart.layout:684 lib/layouts/acmart.layout:702
-#: lib/layouts/amsdefs.inc:160 lib/layouts/minimalistic.module:26
-#: lib/layouts/scrlttr2.layout:212 lib/layouts/stdinsets.inc:541
-#: lib/layouts/stdinsets.inc:544
+#: src/frontends/qt4/ui/HyperlinkUi.ui:24
+#: src/frontends/qt4/ui/HyperlinkUi.ui:61 lib/layouts/acmart.layout:684
+#: lib/layouts/acmart.layout:702 lib/layouts/amsdefs.inc:160
+#: lib/layouts/minimalistic.module:26 lib/layouts/scrlttr2.layout:212
+#: lib/layouts/stdinsets.inc:541 lib/layouts/stdinsets.inc:544
 msgid "URL"
 msgstr "URL"
 
@@ -2001,7 +2037,8 @@ msgstr "URL"
 msgid "&Target:"
 msgstr "Des&tinazione:"
 
-#: src/frontends/qt4/ui/HyperlinkUi.ui:37 src/frontends/qt4/ui/HyperlinkUi.ui:68
+#: src/frontends/qt4/ui/HyperlinkUi.ui:37
+#: src/frontends/qt4/ui/HyperlinkUi.ui:68
 msgid "Name associated with the URL"
 msgstr "Nome associato con l'URL"
 
@@ -2456,7 +2493,8 @@ msgstr "Dimensione carattere:"
 msgid "Choose the font size for line numbers"
 msgstr "Scegli la dimensione del carattere per i numeri di linea"
 
-#: src/frontends/qt4/ui/ListingsUi.ui:188 src/frontends/qt4/ui/TabularUi.ui:1128
+#: src/frontends/qt4/ui/ListingsUi.ui:188
+#: src/frontends/qt4/ui/TabularUi.ui:1128
 msgid "Style"
 msgstr "Stile"
 
@@ -2821,8 +2859,8 @@ msgid ""
 "Pass content of the `Symbol' and `Description' fields literally to LaTeX. "
 "Check this if you want to enter LaTeX code."
 msgstr ""
-"Usa letteralmente il contenuto dei campi `Simbolo' e `Descrizione' per LaTeX. "
-"Utile se si vuole inserire codice LaTeX."
+"Usa letteralmente il contenuto dei campi `Simbolo' e `Descrizione' per "
+"LaTeX. Utile se si vuole inserire codice LaTeX."
 
 #: src/frontends/qt4/ui/NoteUi.ui:48 src/frontends/qt4/ui/PhantomUi.ui:48
 msgid "Type"
@@ -2886,8 +2924,8 @@ msgstr ""
 "Salva tutti i parametri nel file LyX, compresi quelli che sono modificati "
 "frequentemente o che sono specifici per l'utente (ad esempio output del "
 "tracciamento modifiche, o il percorso della cartella del documento). "
-"Disabilitare questa opzione può facilitare lo scambio di documenti e l'uso di "
-"sistemi di controllo versione."
+"Disabilitare questa opzione può facilitare lo scambio di documenti e l'uso "
+"di sistemi di controllo versione."
 
 #: src/frontends/qt4/ui/OutputUi.ui:101
 msgid "Save &transient properties"
@@ -2956,8 +2994,8 @@ msgid "Images"
 msgstr "Immagini"
 
 #: src/frontends/qt4/ui/OutputUi.ui:226 lib/layouts/aapaper.layout:63
-#: lib/layouts/egs.layout:639 lib/languages:108
-#: src/frontends/qt4/GuiDocument.cpp:1353 src/frontends/qt4/GuiErrorList.cpp:51
+#: lib/layouts/egs.layout:639 lib/languages:110
+#: src/frontends/qt4/GuiDocument.cpp:1352 src/frontends/qt4/GuiErrorList.cpp:51
 #: src/frontends/qt4/GuiLog.cpp:245 src/frontends/qt4/GuiPrefs.cpp:724
 msgid "LaTeX"
 msgstr "LaTeX"
@@ -3105,7 +3143,7 @@ msgid "&Landscape"
 msgstr "&Orizzontale"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:162
-#: src/frontends/qt4/GuiDocument.cpp:1496
+#: src/frontends/qt4/GuiDocument.cpp:1495
 msgid "Page Layout"
 msgstr "Layout pagina"
 
@@ -3129,7 +3167,8 @@ msgstr "Documento su &due facce"
 msgid "Label Width"
 msgstr "Larghezza dell'etichetta"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:70 src/frontends/qt4/ui/ParagraphUi.ui:83
+#: src/frontends/qt4/ui/ParagraphUi.ui:70
+#: src/frontends/qt4/ui/ParagraphUi.ui:83
 msgid "This text defines the width of the paragraph label"
 msgstr "Questo testo definisce la larghezza dell'etichetta del paragrafo"
 
@@ -3141,7 +3180,7 @@ msgstr "Etichetta più &lunga"
 msgid "Line &spacing"
 msgstr "I&nterlinea"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:121 src/Text.cpp:1939
+#: src/frontends/qt4/ui/ParagraphUi.ui:121 src/Text.cpp:1936
 #: src/frontends/qt4/GuiDocument.cpp:749
 msgid "Single"
 msgstr "Singola"
@@ -3150,23 +3189,25 @@ msgstr "Singola"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:131 src/Text.cpp:1945
+#: src/frontends/qt4/ui/ParagraphUi.ui:131 src/Text.cpp:1942
 #: src/frontends/qt4/GuiDocument.cpp:753
 msgid "Double"
 msgstr "Doppia"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:136
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:66
-#: src/frontends/qt4/ui/TabularUi.ui:1209 src/frontends/qt4/ui/TabularUi.ui:1228
+#: src/frontends/qt4/ui/TabularUi.ui:1209
+#: src/frontends/qt4/ui/TabularUi.ui:1228
 #: src/frontends/qt4/ui/TabularUi.ui:1276 src/frontends/qt4/ui/VSpaceUi.ui:107
 #: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:743
 #: src/frontends/qt4/GuiDocument.cpp:747 src/frontends/qt4/GuiDocument.cpp:755
 #: src/frontends/qt4/GuiDocument.cpp:878 src/frontends/qt4/GuiDocument.cpp:930
-#: src/frontends/qt4/GuiDocument.cpp:1094 src/frontends/qt4/GuiDocument.cpp:1291
-#: src/frontends/qt4/GuiHSpace.cpp:56 src/frontends/qt4/GuiHSpace.cpp:67
-#: src/frontends/qt4/GuiPrefs.cpp:913 src/frontends/qt4/GuiPrefs.cpp:941
-#: src/frontends/qt4/GuiPrefs.cpp:968 src/frontends/qt4/GuiPrefs.cpp:2316
-#: src/frontends/qt4/GuiPrefs.cpp:2339 src/frontends/qt4/GuiPrintNomencl.cpp:51
+#: src/frontends/qt4/GuiDocument.cpp:1093
+#: src/frontends/qt4/GuiDocument.cpp:1290 src/frontends/qt4/GuiHSpace.cpp:56
+#: src/frontends/qt4/GuiHSpace.cpp:67 src/frontends/qt4/GuiPrefs.cpp:913
+#: src/frontends/qt4/GuiPrefs.cpp:941 src/frontends/qt4/GuiPrefs.cpp:968
+#: src/frontends/qt4/GuiPrefs.cpp:2316 src/frontends/qt4/GuiPrefs.cpp:2339
+#: src/frontends/qt4/GuiPrintNomencl.cpp:51
 msgid "Custom"
 msgstr "Personalizzato"
 
@@ -3289,7 +3330,8 @@ msgstr "Menù a com&parsa automatico"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:106
 msgid ""
-"Show a small triangle on the cursor if a completion is available in text mode."
+"Show a small triangle on the cursor if a completion is available in text "
+"mode."
 msgstr ""
 "Visualizza un piccolo triangolo sul cursore se è\n"
 "disponibile un suggerimento nel modo testo."
@@ -3298,8 +3340,8 @@ msgstr ""
 msgid "Cursor i&ndicator"
 msgstr "I&ndicatore cursore"
 
-#: src/frontends/qt4/ui/PrefCompletionUi.ui:119 lib/layouts/hollywood.layout:281
-#: src/frontends/qt4/GuiPrefs.cpp:388
+#: src/frontends/qt4/ui/PrefCompletionUi.ui:119
+#: lib/layouts/hollywood.layout:281 src/frontends/qt4/GuiPrefs.cpp:388
 msgid "General"
 msgstr "Generale"
 
@@ -3329,7 +3371,8 @@ msgstr "s&econdi di ritardo per menù a comparsa"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:234
 msgid ""
-"Words with less than the specified number of characters will not be completed."
+"Words with less than the specified number of characters will not be "
+"completed."
 msgstr ""
 "Parole più corte del numero specificato di caratteri non vengono suggerite."
 
@@ -3410,7 +3453,8 @@ msgid "&Forbid use of needauth converters"
 msgstr "&Non usare convertitori insicuri"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:315
-msgid "When enabled, use of converters with the 'needauth' option is forbidden."
+msgid ""
+"When enabled, use of converters with the 'needauth' option is forbidden."
 msgstr ""
 "Attivando questa opzione viene impedito l'utilizzo di convertitori esterni "
 "per cui è specificata l'opzione supplementare 'needauth'."
@@ -3425,7 +3469,8 @@ msgid ""
 "'needauth' option."
 msgstr ""
 "Attivando questa opzione viene chiesta conferma prima di eseguire "
-"convertitori esterni per cui è specificata l'opzione supplementare 'needauth'."
+"convertitori esterni per cui è specificata l'opzione supplementare "
+"'needauth'."
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:31
 msgid "Display &graphics"
@@ -3508,13 +3553,13 @@ msgstr "&minuti"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:145
 msgid ""
-"If this is checked, new documents will be saved in a compressed binary-format "
-"by default. Existing documents will still be saved in their current state "
-"(compressed or uncompressed)."
+"If this is checked, new documents will be saved in a compressed binary-"
+"format by default. Existing documents will still be saved in their current "
+"state (compressed or uncompressed)."
 msgstr ""
 "Impostando questa opzione, i nuovi documenti saranno salvati in formato "
-"compresso binario per default. Tuttavia, i documenti esistenti vengono ancora "
-"salvati secondo il loro stato (compressi o non compressi)."
+"compresso binario per default. Tuttavia, i documenti esistenti vengono "
+"ancora salvati secondo il loro stato (compressi o non compressi)."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
 msgid "&Save new documents compressed by default"
@@ -3607,7 +3652,8 @@ msgstr "Scorrimento oltre la &fine del documento"
 #: src/frontends/qt4/ui/PrefEditUi.ui:97
 msgid "Skip trailing non-word characters"
 msgstr ""
-"Salta in avanti alla fine di una parola invece che all'inizio della successiva"
+"Salta in avanti alla fine di una parola invece che all'inizio della "
+"successiva"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:100
 msgid "Use M&ac-style cursor movement"
@@ -3720,7 +3766,8 @@ msgstr "&Trascrittore:"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:202
 msgid ""
-"Specification of the default output formats when using specific LaTeX variants"
+"Specification of the default output formats when using specific LaTeX "
+"variants"
 msgstr ""
 "Specifica il formato di default dell'output per specifiche varianti di LaTeX"
 
@@ -3792,8 +3839,8 @@ msgstr "S&econdaria:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:121
 msgid ""
-"Mac OS X specific setting for use with emacs bindings. Takes effect next time "
-"LyX is launched."
+"Mac OS X specific setting for use with emacs bindings. Takes effect next "
+"time LyX is launched."
 msgstr ""
 "Impostazione specifica per Mac OS X per usare associazioni tasti stile "
 "emacs.\n"
@@ -3863,18 +3910,19 @@ msgid "Language &package:"
 msgstr "&Pacchetto linguistico:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:56
-#: src/frontends/qt4/GuiDocument.cpp:1090 src/frontends/qt4/GuiDocument.cpp:2204
-#: src/frontends/qt4/GuiPrefs.cpp:912 src/frontends/qt4/GuiPrefs.cpp:940
+#: src/frontends/qt4/GuiDocument.cpp:1089
+#: src/frontends/qt4/GuiDocument.cpp:2203 src/frontends/qt4/GuiPrefs.cpp:912
+#: src/frontends/qt4/GuiPrefs.cpp:940
 msgid "Automatic"
 msgstr "Automatico"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:61
-#: src/frontends/qt4/GuiDocument.cpp:1092
+#: src/frontends/qt4/GuiDocument.cpp:1091
 msgid "Always Babel"
 msgstr "Sempre babel"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:71
-#: src/frontends/qt4/GuiDocument.cpp:1096
+#: src/frontends/qt4/GuiDocument.cpp:1095
 msgid "None[[language package]]"
 msgstr "Nessuno"
 
@@ -3966,8 +4014,8 @@ msgstr "&Visuale"
 msgid ""
 "Enable if a specific font encoding (such as T1) should be used (via fontenc)"
 msgstr ""
-"Abilita l'uso (via fontenc) di una specifica codifica per i caratteri (T1, ad "
-"es.)"
+"Abilita l'uso (via fontenc) di una specifica codifica per i caratteri (T1, "
+"ad es.)"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:37
 msgid "Use LaTe&X font encoding:"
@@ -4035,9 +4083,9 @@ msgid ""
 "at configure time. Warning: Your changes here will not be saved."
 msgstr ""
 "Determina se LyX debba produrre percorsi in stile Windows piuttosto che in "
-"stile Cygwin per i file LaTeX. Modificate il valore di default solo se questo "
-"non è stato rilevato correttamente durante la configurazione. Attenzione: le "
-"modifiche effettuate non saranno salvate."
+"stile Cygwin per i file LaTeX. Modificate il valore di default solo se "
+"questo non è stato rilevato correttamente durante la configurazione. "
+"Attenzione: le modifiche effettuate non saranno salvate."
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:330
 msgid "&Use Windows-style paths in LaTeX files"
@@ -4091,12 +4139,13 @@ msgstr "Larghezza della &riga prodotta:"
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:186 src/LyXRC.cpp:3079
 msgid ""
-"The maximum line length of exported plain text/LaTeX/SGML files. If set to 0, "
-"paragraphs are output in a single line; if the line length is > 0, paragraphs "
-"are separated by a blank line."
+"The maximum line length of exported plain text/LaTeX/SGML files. If set to "
+"0, paragraphs are output in a single line; if the line length is > 0, "
+"paragraphs are separated by a blank line."
 msgstr ""
 "Larghezza massima della riga per file esportati come testo/LaTeX/SGML.\n"
-"Se impostata a 0, ogni paragrafo è esportato su una singola riga, altrimenti\n"
+"Se impostata a 0, ogni paragrafo è esportato su una singola riga, "
+"altrimenti\n"
 "i paragrafi vengono separati da una riga vuota."
 
 #: src/frontends/qt4/ui/PrefOutputUi.ui:200
@@ -4131,12 +4180,12 @@ msgstr "Tutti i file"
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:25
 msgid ""
-"Relative and absolute paths are allowed. Relative paths will be expanded with "
-"respect to the working directory (WD). For all paths except the \"TEXINPUTS "
-"prefix\" the WD is the directory from which you start LyX, and thus could "
-"change for each LyX session. For the \"TEXINPUTS prefix\" path the WD is the "
-"directory containing the document. The path \".\" (without quotes) is a "
-"common example of a relative path and refers to the WD."
+"Relative and absolute paths are allowed. Relative paths will be expanded "
+"with respect to the working directory (WD). For all paths except the "
+"\"TEXINPUTS prefix\" the WD is the directory from which you start LyX, and "
+"thus could change for each LyX session. For the \"TEXINPUTS prefix\" path "
+"the WD is the directory containing the document. The path \".\" (without "
+"quotes) is a common example of a relative path and refers to the WD."
 msgstr ""
 "Sono consentiti percorsi relativi o assoluti. I percorsi relativi sono "
 "riferiti alla cartella di lavoro tranne che per TEXINPUTS, nel qual caso la "
@@ -4169,7 +4218,8 @@ msgstr ""
 "Specifica quali cartelle devono essere preposte alla variabile d'ambiente "
 "TEXINPUTS. Usate il formato nativo del sistema operativo."
 
-#: src/frontends/qt4/ui/PrefPathsUi.ui:69 src/frontends/qt4/ui/PrefPathsUi.ui:92
+#: src/frontends/qt4/ui/PrefPathsUi.ui:69
+#: src/frontends/qt4/ui/PrefPathsUi.ui:92
 #: src/frontends/qt4/ui/PrefPathsUi.ui:115
 #: src/frontends/qt4/ui/PrefPathsUi.ui:138
 #: src/frontends/qt4/ui/PrefPathsUi.ui:161
@@ -4412,7 +4462,8 @@ msgstr "Larghezza &personalizzata:"
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:52
 msgid "Custom value. \"List Indentation\" needs to be set to \"Custom\"."
 msgstr ""
-"Valore personalizzato. \"Rientro\" deve essere impostato a \"Personalizzato\"."
+"Valore personalizzato. \"Rientro\" deve essere impostato a \"Personalizzato"
+"\"."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:40
 msgid "Avai&lable indexes:"
@@ -4433,8 +4484,8 @@ msgstr "&Sottoindice"
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:71
 msgid ""
-"Pass index names literally to LaTeX. Check this if you want to use LaTeX code "
-"in index names."
+"Pass index names literally to LaTeX. Check this if you want to use LaTeX "
+"code in index names."
 msgstr ""
 "Usa letteralmente i nomi dell'indice per LaTeX. Utile se si vuole inserire "
 "codice LaTeX nei nomi."
@@ -4594,8 +4645,8 @@ msgstr "Aggiorna la lista delle etichette"
 
 #: src/frontends/qt4/ui/RefUi.ui:389
 msgid ""
-"Use plural form of formatted reference. (Works only for formatted references, "
-"and only if you are using refstyle.)"
+"Use plural form of formatted reference. (Works only for formatted "
+"references, and only if you are using refstyle.)"
 msgstr ""
 "Usa la forma plurale per il riferimento formattato (funziona solo per i "
 "riferimenti formattati e solo se si utilizza refstyle)."
@@ -4664,7 +4715,8 @@ msgstr "&Elimina tasto"
 msgid "Clear current shortcut"
 msgstr "Cancella la scorciatoia corrente"
 
-#: src/frontends/qt4/ui/ShortcutUi.ui:100 src/frontends/qt4/ui/TabularUi.ui:1118
+#: src/frontends/qt4/ui/ShortcutUi.ui:100
+#: src/frontends/qt4/ui/TabularUi.ui:1118
 msgid "C&lear"
 msgstr "C&ancella"
 
@@ -5000,20 +5052,27 @@ msgstr "Intestazione:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1364
 msgid "Repeat this row as header on every (except the first) page"
-msgstr "Ripeti questa riga come intestazione per ogni pagina (eccetto la prima)"
+msgstr ""
+"Ripeti questa riga come intestazione per ogni pagina (eccetto la prima)"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1367 src/frontends/qt4/ui/TabularUi.ui:1404
-#: src/frontends/qt4/ui/TabularUi.ui:1445 src/frontends/qt4/ui/TabularUi.ui:1476
+#: src/frontends/qt4/ui/TabularUi.ui:1367
+#: src/frontends/qt4/ui/TabularUi.ui:1404
+#: src/frontends/qt4/ui/TabularUi.ui:1445
+#: src/frontends/qt4/ui/TabularUi.ui:1476
 #: src/frontends/qt4/ui/TabularUi.ui:1514 src/frontends/qt4/GuiToolbar.cpp:395
 #: src/frontends/qt4/GuiToolbar.cpp:404 src/insets/InsetBranch.cpp:79
 #: src/insets/InsetBranch.cpp:82
 msgid "on"
 msgstr "attivo"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1377 src/frontends/qt4/ui/TabularUi.ui:1384
-#: src/frontends/qt4/ui/TabularUi.ui:1411 src/frontends/qt4/ui/TabularUi.ui:1418
-#: src/frontends/qt4/ui/TabularUi.ui:1452 src/frontends/qt4/ui/TabularUi.ui:1459
-#: src/frontends/qt4/ui/TabularUi.ui:1483 src/frontends/qt4/ui/TabularUi.ui:1490
+#: src/frontends/qt4/ui/TabularUi.ui:1377
+#: src/frontends/qt4/ui/TabularUi.ui:1384
+#: src/frontends/qt4/ui/TabularUi.ui:1411
+#: src/frontends/qt4/ui/TabularUi.ui:1418
+#: src/frontends/qt4/ui/TabularUi.ui:1452
+#: src/frontends/qt4/ui/TabularUi.ui:1459
+#: src/frontends/qt4/ui/TabularUi.ui:1483
+#: src/frontends/qt4/ui/TabularUi.ui:1490
 msgid "double"
 msgstr "doppio"
 
@@ -5029,7 +5088,8 @@ msgstr "Questa riga è l'intestazione della prima pagina"
 msgid "Don't output the first header"
 msgstr "Non produrre la prima intestazione"
 
-#: src/frontends/qt4/ui/TabularUi.ui:1428 src/frontends/qt4/ui/TabularUi.ui:1500
+#: src/frontends/qt4/ui/TabularUi.ui:1428
+#: src/frontends/qt4/ui/TabularUi.ui:1500
 msgid "is empty"
 msgstr "è vuoto"
 
@@ -5203,7 +5263,8 @@ msgstr "Parola da cercare"
 msgid "L&ookup"
 msgstr "&Cerca"
 
-#: src/frontends/qt4/ui/ThesaurusUi.ui:72 src/frontends/qt4/ui/ThesaurusUi.ui:85
+#: src/frontends/qt4/ui/ThesaurusUi.ui:72
+#: src/frontends/qt4/ui/ThesaurusUi.ui:85
 msgid "The selected entry"
 msgstr "È la voce selezionata"
 
@@ -5508,20 +5569,20 @@ msgid " et al."
 msgstr " et al."
 
 #: lib/citeengines/biblatex-natbib.citeengine:153
-#: lib/citeengines/biblatex.citeengine:145 lib/citeengines/natbib.citeengine:124
-#: lib/layouts/stdciteformats.inc:27
+#: lib/citeengines/biblatex.citeengine:145
+#: lib/citeengines/natbib.citeengine:124 lib/layouts/stdciteformats.inc:27
 msgid ", [[separate author names in citation, except for last name]]"
 msgstr ", "
 
 #: lib/citeengines/biblatex-natbib.citeengine:154
-#: lib/citeengines/biblatex.citeengine:146 lib/citeengines/natbib.citeengine:125
-#: lib/layouts/stdciteformats.inc:28
+#: lib/citeengines/biblatex.citeengine:146
+#: lib/citeengines/natbib.citeengine:125 lib/layouts/stdciteformats.inc:28
 msgid ", and [[separate name of last author in citation]]"
 msgstr " e "
 
 #: lib/citeengines/biblatex-natbib.citeengine:155
-#: lib/citeengines/biblatex.citeengine:147 lib/citeengines/natbib.citeengine:126
-#: lib/layouts/stdciteformats.inc:29
+#: lib/citeengines/biblatex.citeengine:147
+#: lib/citeengines/natbib.citeengine:126 lib/layouts/stdciteformats.inc:29
 msgid " and [[separate two authors in citation]]"
 msgstr " e "
 
@@ -5586,7 +5647,8 @@ msgstr "prima"
 msgid "short title"
 msgstr "titolo breve"
 
-#: lib/citeengines/jurabib.citeengine:130 lib/citeengines/jurabib.citeengine:131
+#: lib/citeengines/jurabib.citeengine:130
+#: lib/citeengines/jurabib.citeengine:131
 #: lib/citeengines/jurabib.citeengine:132
 msgid "/"
 msgstr "/"
@@ -5597,16 +5659,16 @@ msgstr "Natbib (BibTeX)"
 
 #: lib/citeengines/natbib.citeengine:8
 msgid ""
-"Natbib supports a range of both author-year and numerical styles mainly aimed "
-"at the Humanities. It features automatic sorting and merging of numerical "
-"citations, annotations, capitalization of the `van' part of author names, "
-"shortened and full author lists, and more."
+"Natbib supports a range of both author-year and numerical styles mainly "
+"aimed at the Humanities. It features automatic sorting and merging of "
+"numerical citations, annotations, capitalization of the `van' part of author "
+"names, shortened and full author lists, and more."
 msgstr ""
 "Natbib supporta una vasta gamma di entrambi gli stili autore-anno e numerici "
-"rivolti principalmente alle scienze umane. È dotato di ordinamento automatico "
-"e fusione di citazioni numeriche, annotazioni, capitalizzazione della parte "
-"`van' di nomi di autori, liste abbreviate e complete di autori, e altro "
-"ancora."
+"rivolti principalmente alle scienze umane. È dotato di ordinamento "
+"automatico e fusione di citazioni numeriche, annotazioni, capitalizzazione "
+"della parte `van' di nomi di autori, liste abbreviate e complete di autori, "
+"e altro ancora."
 
 #: lib/layouts/AEA.layout:3
 msgid "American Economic Association (AEA)"
@@ -5649,7 +5711,8 @@ msgid "ShortTitle"
 msgstr "Titolo breve"
 
 #: lib/layouts/AEA.layout:51 lib/layouts/AEA.layout:106
-#: lib/layouts/IEEEtran-CompSoc.layout:21 lib/layouts/IEEEtran-CompSoc.layout:64
+#: lib/layouts/IEEEtran-CompSoc.layout:21
+#: lib/layouts/IEEEtran-CompSoc.layout:64
 #: lib/layouts/IEEEtran-TransMag.layout:22
 #: lib/layouts/IEEEtran-TransMag.layout:42 lib/layouts/IEEEtran.layout:70
 #: lib/layouts/IEEEtran.layout:121 lib/layouts/IEEEtran.layout:222
@@ -5674,69 +5737,69 @@ msgstr "Titolo breve"
 #: lib/layouts/agutex.layout:142 lib/layouts/amsdefs.inc:28
 #: lib/layouts/amsdefs.inc:55 lib/layouts/amsdefs.inc:75
 #: lib/layouts/amsdefs.inc:99 lib/layouts/amsdefs.inc:126
-#: lib/layouts/apa.layout:42 lib/layouts/apa.layout:74 lib/layouts/apa.layout:97
-#: lib/layouts/apa.layout:120 lib/layouts/apa.layout:136
-#: lib/layouts/apa.layout:144 lib/layouts/apa.layout:152
-#: lib/layouts/apa.layout:160 lib/layouts/apa.layout:182
-#: lib/layouts/apa.layout:190 lib/layouts/apa.layout:198
-#: lib/layouts/apa6.layout:39 lib/layouts/apa6.layout:52
-#: lib/layouts/apa6.layout:75 lib/layouts/apa6.layout:91
-#: lib/layouts/apa6.layout:99 lib/layouts/apa6.layout:107
-#: lib/layouts/apa6.layout:114 lib/layouts/apa6.layout:121
-#: lib/layouts/apa6.layout:128 lib/layouts/apa6.layout:150
-#: lib/layouts/apa6.layout:171 lib/layouts/apa6.layout:178
-#: lib/layouts/apa6.layout:185 lib/layouts/apa6.layout:192
-#: lib/layouts/apa6.layout:199 lib/layouts/apa6.layout:207
-#: lib/layouts/apa6.layout:229 lib/layouts/apa6.layout:251
-#: lib/layouts/apa6.layout:275 lib/layouts/bicaption.module:13
-#: lib/layouts/broadway.layout:190 lib/layouts/broadway.layout:205
-#: lib/layouts/cl2emult.layout:42 lib/layouts/cl2emult.layout:61
-#: lib/layouts/cl2emult.layout:74 lib/layouts/ectaart.layout:23
-#: lib/layouts/ectaart.layout:48 lib/layouts/ectaart.layout:74
-#: lib/layouts/egs.layout:268 lib/layouts/egs.layout:311
-#: lib/layouts/egs.layout:505 lib/layouts/elsart.layout:94
-#: lib/layouts/elsart.layout:116 lib/layouts/elsarticle.layout:61
-#: lib/layouts/elsarticle.layout:86 lib/layouts/elsarticle.layout:130
-#: lib/layouts/elsarticle.layout:152 lib/layouts/elsarticle.layout:226
-#: lib/layouts/elsarticle.layout:261 lib/layouts/elsarticle.layout:290
-#: lib/layouts/entcs.layout:75 lib/layouts/europasscv.layout:78
-#: lib/layouts/europecv.layout:35 lib/layouts/europecv.layout:193
-#: lib/layouts/foils.layout:166 lib/layouts/ijmpc.layout:68
-#: lib/layouts/ijmpc.layout:93 lib/layouts/ijmpc.layout:111
-#: lib/layouts/ijmpc.layout:129 lib/layouts/ijmpc.layout:163
-#: lib/layouts/ijmpc.layout:213 lib/layouts/ijmpd.layout:73
-#: lib/layouts/ijmpd.layout:98 lib/layouts/ijmpd.layout:116
-#: lib/layouts/ijmpd.layout:134 lib/layouts/ijmpd.layout:153
-#: lib/layouts/ijmpd.layout:221 lib/layouts/ijmpd.layout:233
-#: lib/layouts/iopart.layout:63 lib/layouts/iopart.layout:137
-#: lib/layouts/iopart.layout:156 lib/layouts/iopart.layout:181
-#: lib/layouts/iopart.layout:210 lib/layouts/iucr.layout:113
-#: lib/layouts/iucr.layout:178 lib/layouts/jasatex.layout:64
-#: lib/layouts/jasatex.layout:90 lib/layouts/jasatex.layout:110
-#: lib/layouts/jasatex.layout:151 lib/layouts/jasatex.layout:171
-#: lib/layouts/jasatex.layout:200 lib/layouts/jss.layout:52
-#: lib/layouts/jss.layout:91 lib/layouts/kluwer.layout:114
-#: lib/layouts/kluwer.layout:169 lib/layouts/latex8.layout:90
-#: lib/layouts/llncs.layout:109 lib/layouts/llncs.layout:184
-#: lib/layouts/llncs.layout:221 lib/layouts/llncs.layout:248
-#: lib/layouts/ltugboat.layout:141 lib/layouts/ltugboat.layout:161
-#: lib/layouts/lyxmacros.inc:45 lib/layouts/lyxmacros.inc:66
-#: lib/layouts/moderncv.layout:41 lib/layouts/moderncv.layout:84
-#: lib/layouts/moderncv.layout:117 lib/layouts/moderncv.layout:479
-#: lib/layouts/revtex4-1.layout:67 lib/layouts/revtex4-1.layout:158
-#: lib/layouts/revtex4-1.layout:181 lib/layouts/revtex4.layout:107
-#: lib/layouts/revtex4.layout:137 lib/layouts/revtex4.layout:263
-#: lib/layouts/sciposter.layout:41 lib/layouts/siamltex.layout:288
-#: lib/layouts/siamltex.layout:308 lib/layouts/sigplanconf.layout:76
-#: lib/layouts/sigplanconf.layout:151 lib/layouts/sigplanconf.layout:199
-#: lib/layouts/simplecv.layout:135 lib/layouts/stdstruct.inc:16
-#: lib/layouts/stdtitle.inc:17 lib/layouts/stdtitle.inc:38
-#: lib/layouts/stdtitle.inc:57 lib/layouts/svcommon.inc:354
-#: lib/layouts/svcommon.inc:378 lib/layouts/svcommon.inc:429
-#: lib/layouts/svcommon.inc:466 lib/layouts/svcommon.inc:484
-#: lib/layouts/svcommon.inc:505 lib/layouts/svcommon.inc:532
-#: lib/layouts/svmult.layout:49 lib/layouts/svmult.layout:99
-#: lib/layouts/tufte-handout.layout:55
+#: lib/layouts/apa.layout:42 lib/layouts/apa.layout:74
+#: lib/layouts/apa.layout:97 lib/layouts/apa.layout:120
+#: lib/layouts/apa.layout:136 lib/layouts/apa.layout:144
+#: lib/layouts/apa.layout:152 lib/layouts/apa.layout:160
+#: lib/layouts/apa.layout:182 lib/layouts/apa.layout:190
+#: lib/layouts/apa.layout:198 lib/layouts/apa6.layout:39
+#: lib/layouts/apa6.layout:52 lib/layouts/apa6.layout:75
+#: lib/layouts/apa6.layout:91 lib/layouts/apa6.layout:99
+#: lib/layouts/apa6.layout:107 lib/layouts/apa6.layout:114
+#: lib/layouts/apa6.layout:121 lib/layouts/apa6.layout:128
+#: lib/layouts/apa6.layout:150 lib/layouts/apa6.layout:171
+#: lib/layouts/apa6.layout:178 lib/layouts/apa6.layout:185
+#: lib/layouts/apa6.layout:192 lib/layouts/apa6.layout:199
+#: lib/layouts/apa6.layout:207 lib/layouts/apa6.layout:229
+#: lib/layouts/apa6.layout:251 lib/layouts/apa6.layout:275
+#: lib/layouts/bicaption.module:13 lib/layouts/broadway.layout:190
+#: lib/layouts/broadway.layout:205 lib/layouts/cl2emult.layout:42
+#: lib/layouts/cl2emult.layout:61 lib/layouts/cl2emult.layout:74
+#: lib/layouts/ectaart.layout:23 lib/layouts/ectaart.layout:48
+#: lib/layouts/ectaart.layout:74 lib/layouts/egs.layout:268
+#: lib/layouts/egs.layout:311 lib/layouts/egs.layout:505
+#: lib/layouts/elsart.layout:94 lib/layouts/elsart.layout:116
+#: lib/layouts/elsarticle.layout:61 lib/layouts/elsarticle.layout:86
+#: lib/layouts/elsarticle.layout:130 lib/layouts/elsarticle.layout:152
+#: lib/layouts/elsarticle.layout:226 lib/layouts/elsarticle.layout:261
+#: lib/layouts/elsarticle.layout:290 lib/layouts/entcs.layout:75
+#: lib/layouts/europasscv.layout:78 lib/layouts/europecv.layout:35
+#: lib/layouts/europecv.layout:193 lib/layouts/foils.layout:166
+#: lib/layouts/ijmpc.layout:68 lib/layouts/ijmpc.layout:93
+#: lib/layouts/ijmpc.layout:111 lib/layouts/ijmpc.layout:129
+#: lib/layouts/ijmpc.layout:163 lib/layouts/ijmpc.layout:213
+#: lib/layouts/ijmpd.layout:73 lib/layouts/ijmpd.layout:98
+#: lib/layouts/ijmpd.layout:116 lib/layouts/ijmpd.layout:134
+#: lib/layouts/ijmpd.layout:153 lib/layouts/ijmpd.layout:221
+#: lib/layouts/ijmpd.layout:233 lib/layouts/iopart.layout:63
+#: lib/layouts/iopart.layout:137 lib/layouts/iopart.layout:156
+#: lib/layouts/iopart.layout:181 lib/layouts/iopart.layout:210
+#: lib/layouts/iucr.layout:113 lib/layouts/iucr.layout:178
+#: lib/layouts/jasatex.layout:64 lib/layouts/jasatex.layout:90
+#: lib/layouts/jasatex.layout:110 lib/layouts/jasatex.layout:151
+#: lib/layouts/jasatex.layout:171 lib/layouts/jasatex.layout:200
+#: lib/layouts/jss.layout:52 lib/layouts/jss.layout:91
+#: lib/layouts/kluwer.layout:114 lib/layouts/kluwer.layout:169
+#: lib/layouts/latex8.layout:90 lib/layouts/llncs.layout:109
+#: lib/layouts/llncs.layout:184 lib/layouts/llncs.layout:221
+#: lib/layouts/llncs.layout:248 lib/layouts/ltugboat.layout:141
+#: lib/layouts/ltugboat.layout:161 lib/layouts/lyxmacros.inc:45
+#: lib/layouts/lyxmacros.inc:66 lib/layouts/moderncv.layout:41
+#: lib/layouts/moderncv.layout:84 lib/layouts/moderncv.layout:117
+#: lib/layouts/moderncv.layout:479 lib/layouts/revtex4-1.layout:67
+#: lib/layouts/revtex4-1.layout:158 lib/layouts/revtex4-1.layout:181
+#: lib/layouts/revtex4.layout:107 lib/layouts/revtex4.layout:137
+#: lib/layouts/revtex4.layout:263 lib/layouts/sciposter.layout:41
+#: lib/layouts/siamltex.layout:288 lib/layouts/siamltex.layout:308
+#: lib/layouts/sigplanconf.layout:76 lib/layouts/sigplanconf.layout:151
+#: lib/layouts/sigplanconf.layout:199 lib/layouts/simplecv.layout:135
+#: lib/layouts/stdstruct.inc:16 lib/layouts/stdtitle.inc:17
+#: lib/layouts/stdtitle.inc:38 lib/layouts/stdtitle.inc:57
+#: lib/layouts/svcommon.inc:354 lib/layouts/svcommon.inc:378
+#: lib/layouts/svcommon.inc:429 lib/layouts/svcommon.inc:466
+#: lib/layouts/svcommon.inc:484 lib/layouts/svcommon.inc:505
+#: lib/layouts/svcommon.inc:532 lib/layouts/svmult.layout:49
+#: lib/layouts/svmult.layout:99 lib/layouts/tufte-handout.layout:55
 msgid "FrontMatter"
 msgstr "Frontespizio"
 
@@ -5959,14 +6022,16 @@ msgstr "Argomento opzionale per nota in tabella"
 #: lib/layouts/foils.layout:224 lib/layouts/heb-article.layout:29
 #: lib/layouts/ijmpc.layout:352 lib/layouts/ijmpd.layout:358
 #: lib/layouts/llncs.layout:426 lib/layouts/siamltex.layout:68
-#: lib/layouts/theorems-ams-bytype.inc:55 lib/layouts/theorems-ams-bytype.inc:94
+#: lib/layouts/theorems-ams-bytype.inc:55
+#: lib/layouts/theorems-ams-bytype.inc:94
 #: lib/layouts/theorems-ams-bytype.inc:97
 #: lib/layouts/theorems-ams-chap-bytype.inc:57
 #: lib/layouts/theorems-ams-chap-bytype.inc:100
 #: lib/layouts/theorems-ams-chap-bytype.inc:103 lib/layouts/theorems-ams.inc:27
 #: lib/layouts/theorems-ams.inc:66 lib/layouts/theorems-ams.inc:69
 #: lib/layouts/theorems-bytype.inc:27 lib/layouts/theorems-bytype.inc:63
-#: lib/layouts/theorems-bytype.inc:66 lib/layouts/theorems-chap-bytype.module:54
+#: lib/layouts/theorems-bytype.inc:66
+#: lib/layouts/theorems-chap-bytype.module:54
 #: lib/layouts/theorems-chap.module:19 lib/layouts/theorems-named.module:46
 #: lib/layouts/theorems-named.module:49 lib/layouts/theorems-order.inc:7
 #: lib/layouts/theorems-sec-bytype.module:54 lib/layouts/theorems-sec.module:18
@@ -6043,12 +6108,12 @@ msgstr "Caso \\thecase."
 #: lib/layouts/theorems-ams-bytype.inc:333
 #: lib/layouts/theorems-ams-chap-bytype.inc:370
 #: lib/layouts/theorems-ams-chap-bytype.inc:384
-#: lib/layouts/theorems-ams-chap-bytype.inc:387 lib/layouts/theorems-ams.inc:284
-#: lib/layouts/theorems-ams.inc:293 lib/layouts/theorems-ams.inc:296
-#: lib/layouts/theorems-bytype.inc:289 lib/layouts/theorems-bytype.inc:299
-#: lib/layouts/theorems-bytype.inc:302
-#: lib/layouts/theorems-chap-bytype.module:186 lib/layouts/theorems-order.inc:73
-#: lib/layouts/theorems-sec-bytype.module:142
+#: lib/layouts/theorems-ams-chap-bytype.inc:387
+#: lib/layouts/theorems-ams.inc:284 lib/layouts/theorems-ams.inc:293
+#: lib/layouts/theorems-ams.inc:296 lib/layouts/theorems-bytype.inc:289
+#: lib/layouts/theorems-bytype.inc:299 lib/layouts/theorems-bytype.inc:302
+#: lib/layouts/theorems-chap-bytype.module:186
+#: lib/layouts/theorems-order.inc:73 lib/layouts/theorems-sec-bytype.module:142
 #: lib/layouts/theorems-starred-equivalents.inc:83
 #: lib/layouts/theorems-starred.inc:285 lib/layouts/theorems-starred.inc:288
 #: lib/layouts/theorems-without-preamble.inc:336
@@ -6105,12 +6170,12 @@ msgstr "Condizione"
 #: lib/layouts/theorems-ams-bytype.inc:169
 #: lib/layouts/theorems-ams-chap-bytype.inc:175
 #: lib/layouts/theorems-ams-chap-bytype.inc:188
-#: lib/layouts/theorems-ams-chap-bytype.inc:191 lib/layouts/theorems-ams.inc:129
-#: lib/layouts/theorems-ams.inc:139 lib/layouts/theorems-ams.inc:142
-#: lib/layouts/theorems-bytype.inc:126 lib/layouts/theorems-bytype.inc:135
-#: lib/layouts/theorems-bytype.inc:138
-#: lib/layouts/theorems-chap-bytype.module:102 lib/layouts/theorems-order.inc:31
-#: lib/layouts/theorems-sec-bytype.module:86
+#: lib/layouts/theorems-ams-chap-bytype.inc:191
+#: lib/layouts/theorems-ams.inc:129 lib/layouts/theorems-ams.inc:139
+#: lib/layouts/theorems-ams.inc:142 lib/layouts/theorems-bytype.inc:126
+#: lib/layouts/theorems-bytype.inc:135 lib/layouts/theorems-bytype.inc:138
+#: lib/layouts/theorems-chap-bytype.module:102
+#: lib/layouts/theorems-order.inc:31 lib/layouts/theorems-sec-bytype.module:86
 #: lib/layouts/theorems-starred-equivalents.inc:34
 #: lib/layouts/theorems-starred.inc:133 lib/layouts/theorems-starred.inc:136
 #: lib/layouts/theorems-without-preamble.inc:143
@@ -6133,8 +6198,9 @@ msgstr "Congettura"
 #: lib/layouts/theorems-ams-chap-bytype.inc:126 lib/layouts/theorems-ams.inc:75
 #: lib/layouts/theorems-ams.inc:85 lib/layouts/theorems-ams.inc:88
 #: lib/layouts/theorems-bytype.inc:72 lib/layouts/theorems-bytype.inc:81
-#: lib/layouts/theorems-bytype.inc:84 lib/layouts/theorems-chap-bytype.module:66
-#: lib/layouts/theorems-order.inc:13 lib/layouts/theorems-sec-bytype.module:62
+#: lib/layouts/theorems-bytype.inc:84
+#: lib/layouts/theorems-chap-bytype.module:66 lib/layouts/theorems-order.inc:13
+#: lib/layouts/theorems-sec-bytype.module:62
 #: lib/layouts/theorems-starred-equivalents.inc:13
 #: lib/layouts/theorems-starred.inc:82 lib/layouts/theorems-starred.inc:85
 #: lib/layouts/theorems-without-preamble.inc:79
@@ -6172,12 +6238,12 @@ msgstr "Criterio"
 #: lib/layouts/theorems-ams-bytype.inc:212
 #: lib/layouts/theorems-ams-chap-bytype.inc:219
 #: lib/layouts/theorems-ams-chap-bytype.inc:239
-#: lib/layouts/theorems-ams-chap-bytype.inc:242 lib/layouts/theorems-ams.inc:165
-#: lib/layouts/theorems-ams.inc:182 lib/layouts/theorems-ams.inc:185
-#: lib/layouts/theorems-bytype.inc:162 lib/layouts/theorems-bytype.inc:178
-#: lib/layouts/theorems-bytype.inc:181
-#: lib/layouts/theorems-chap-bytype.module:126 lib/layouts/theorems-order.inc:37
-#: lib/layouts/theorems-sec-bytype.module:102
+#: lib/layouts/theorems-ams-chap-bytype.inc:242
+#: lib/layouts/theorems-ams.inc:165 lib/layouts/theorems-ams.inc:182
+#: lib/layouts/theorems-ams.inc:185 lib/layouts/theorems-bytype.inc:162
+#: lib/layouts/theorems-bytype.inc:178 lib/layouts/theorems-bytype.inc:181
+#: lib/layouts/theorems-chap-bytype.module:126
+#: lib/layouts/theorems-order.inc:37 lib/layouts/theorems-sec-bytype.module:102
 #: lib/layouts/theorems-starred-equivalents.inc:41
 #: lib/layouts/theorems-starred.inc:175 lib/layouts/theorems-starred.inc:178
 #: lib/layouts/theorems-without-preamble.inc:182
@@ -6194,19 +6260,19 @@ msgstr "Definizione"
 #: lib/layouts/theorems-ams-bytype.inc:231
 #: lib/layouts/theorems-ams-chap-bytype.inc:248
 #: lib/layouts/theorems-ams-chap-bytype.inc:262
-#: lib/layouts/theorems-ams-chap-bytype.inc:265 lib/layouts/theorems-ams.inc:190
-#: lib/layouts/theorems-ams.inc:199 lib/layouts/theorems-ams.inc:202
-#: lib/layouts/theorems-bytype.inc:187 lib/layouts/theorems-bytype.inc:197
-#: lib/layouts/theorems-bytype.inc:200
-#: lib/layouts/theorems-chap-bytype.module:138 lib/layouts/theorems-order.inc:43
-#: lib/layouts/theorems-sec-bytype.module:110
+#: lib/layouts/theorems-ams-chap-bytype.inc:265
+#: lib/layouts/theorems-ams.inc:190 lib/layouts/theorems-ams.inc:199
+#: lib/layouts/theorems-ams.inc:202 lib/layouts/theorems-bytype.inc:187
+#: lib/layouts/theorems-bytype.inc:197 lib/layouts/theorems-bytype.inc:200
+#: lib/layouts/theorems-chap-bytype.module:138
+#: lib/layouts/theorems-order.inc:43 lib/layouts/theorems-sec-bytype.module:110
 #: lib/layouts/theorems-starred-equivalents.inc:48
 #: lib/layouts/theorems-starred.inc:192 lib/layouts/theorems-starred.inc:195
 #: lib/layouts/theorems-without-preamble.inc:206
 #: lib/layouts/theorems-without-preamble.inc:213
 #: lib/layouts/theorems-without-preamble.inc:216 lib/layouts/theorems.inc:190
 #: lib/layouts/theorems.inc:199 lib/layouts/theorems.inc:202
-#: src/frontends/qt4/GuiDocument.cpp:1130
+#: src/frontends/qt4/GuiDocument.cpp:1129
 msgid "Example"
 msgstr "Esempio"
 
@@ -6216,12 +6282,12 @@ msgstr "Esempio"
 #: lib/layouts/theorems-ams-bytype.inc:269
 #: lib/layouts/theorems-ams-chap-bytype.inc:294
 #: lib/layouts/theorems-ams-chap-bytype.inc:308
-#: lib/layouts/theorems-ams-chap-bytype.inc:311 lib/layouts/theorems-ams.inc:224
-#: lib/layouts/theorems-ams.inc:233 lib/layouts/theorems-ams.inc:236
-#: lib/layouts/theorems-bytype.inc:225 lib/layouts/theorems-bytype.inc:235
-#: lib/layouts/theorems-bytype.inc:238
-#: lib/layouts/theorems-chap-bytype.module:162 lib/layouts/theorems-order.inc:55
-#: lib/layouts/theorems-sec-bytype.module:126
+#: lib/layouts/theorems-ams-chap-bytype.inc:311
+#: lib/layouts/theorems-ams.inc:224 lib/layouts/theorems-ams.inc:233
+#: lib/layouts/theorems-ams.inc:236 lib/layouts/theorems-bytype.inc:225
+#: lib/layouts/theorems-bytype.inc:235 lib/layouts/theorems-bytype.inc:238
+#: lib/layouts/theorems-chap-bytype.module:162
+#: lib/layouts/theorems-order.inc:55 lib/layouts/theorems-sec-bytype.module:126
 #: lib/layouts/theorems-starred-equivalents.inc:69
 #: lib/layouts/theorems-starred.inc:226 lib/layouts/theorems-starred.inc:229
 #: lib/layouts/theorems-without-preamble.inc:225
@@ -6284,12 +6350,12 @@ msgstr "Notazione"
 #: lib/layouts/theorems-ams-bytype.inc:250
 #: lib/layouts/theorems-ams-chap-bytype.inc:271
 #: lib/layouts/theorems-ams-chap-bytype.inc:285
-#: lib/layouts/theorems-ams-chap-bytype.inc:288 lib/layouts/theorems-ams.inc:207
-#: lib/layouts/theorems-ams.inc:216 lib/layouts/theorems-ams.inc:219
-#: lib/layouts/theorems-bytype.inc:206 lib/layouts/theorems-bytype.inc:216
-#: lib/layouts/theorems-bytype.inc:219
-#: lib/layouts/theorems-chap-bytype.module:150 lib/layouts/theorems-order.inc:49
-#: lib/layouts/theorems-sec-bytype.module:118
+#: lib/layouts/theorems-ams-chap-bytype.inc:288
+#: lib/layouts/theorems-ams.inc:207 lib/layouts/theorems-ams.inc:216
+#: lib/layouts/theorems-ams.inc:219 lib/layouts/theorems-bytype.inc:206
+#: lib/layouts/theorems-bytype.inc:216 lib/layouts/theorems-bytype.inc:219
+#: lib/layouts/theorems-chap-bytype.module:150
+#: lib/layouts/theorems-order.inc:49 lib/layouts/theorems-sec-bytype.module:118
 #: lib/layouts/theorems-starred-equivalents.inc:62
 #: lib/layouts/theorems-starred.inc:209 lib/layouts/theorems-starred.inc:212
 #: lib/layouts/theorems-without-preamble.inc:223
@@ -6308,10 +6374,10 @@ msgstr "Problema"
 #: lib/layouts/theorems-ams-bytype.inc:151
 #: lib/layouts/theorems-ams-chap-bytype.inc:153
 #: lib/layouts/theorems-ams-chap-bytype.inc:166
-#: lib/layouts/theorems-ams-chap-bytype.inc:169 lib/layouts/theorems-ams.inc:111
-#: lib/layouts/theorems-ams.inc:121 lib/layouts/theorems-ams.inc:124
-#: lib/layouts/theorems-bytype.inc:108 lib/layouts/theorems-bytype.inc:117
-#: lib/layouts/theorems-bytype.inc:120
+#: lib/layouts/theorems-ams-chap-bytype.inc:169
+#: lib/layouts/theorems-ams.inc:111 lib/layouts/theorems-ams.inc:121
+#: lib/layouts/theorems-ams.inc:124 lib/layouts/theorems-bytype.inc:108
+#: lib/layouts/theorems-bytype.inc:117 lib/layouts/theorems-bytype.inc:120
 #: lib/layouts/theorems-chap-bytype.module:90 lib/layouts/theorems-order.inc:25
 #: lib/layouts/theorems-sec-bytype.module:78
 #: lib/layouts/theorems-starred-equivalents.inc:27
@@ -6330,12 +6396,12 @@ msgstr "Proposizione"
 #: lib/layouts/theorems-ams-bytype.inc:314
 #: lib/layouts/theorems-ams-chap-bytype.inc:340
 #: lib/layouts/theorems-ams-chap-bytype.inc:361
-#: lib/layouts/theorems-ams-chap-bytype.inc:364 lib/layouts/theorems-ams.inc:258
-#: lib/layouts/theorems-ams.inc:276 lib/layouts/theorems-ams.inc:279
-#: lib/layouts/theorems-bytype.inc:263 lib/layouts/theorems-bytype.inc:280
-#: lib/layouts/theorems-bytype.inc:283
-#: lib/layouts/theorems-chap-bytype.module:174 lib/layouts/theorems-order.inc:67
-#: lib/layouts/theorems-sec-bytype.module:134
+#: lib/layouts/theorems-ams-chap-bytype.inc:364
+#: lib/layouts/theorems-ams.inc:258 lib/layouts/theorems-ams.inc:276
+#: lib/layouts/theorems-ams.inc:279 lib/layouts/theorems-bytype.inc:263
+#: lib/layouts/theorems-bytype.inc:280 lib/layouts/theorems-bytype.inc:283
+#: lib/layouts/theorems-chap-bytype.module:174
+#: lib/layouts/theorems-order.inc:67 lib/layouts/theorems-sec-bytype.module:134
 #: lib/layouts/theorems-starred-equivalents.inc:76
 #: lib/layouts/theorems-starred.inc:268 lib/layouts/theorems-starred.inc:271
 #: lib/layouts/theorems-without-preamble.inc:321
@@ -6358,10 +6424,11 @@ msgstr "Osservazione \\theremark."
 #: lib/layouts/theorems-ams-bytype.inc:288
 #: lib/layouts/theorems-ams-chap-bytype.inc:317
 #: lib/layouts/theorems-ams-chap-bytype.inc:331
-#: lib/layouts/theorems-ams-chap-bytype.inc:334 lib/layouts/theorems-ams.inc:241
-#: lib/layouts/theorems-ams.inc:250 lib/layouts/theorems-ams.inc:253
-#: lib/layouts/theorems-bytype.inc:244 lib/layouts/theorems-bytype.inc:254
-#: lib/layouts/theorems-bytype.inc:257 lib/layouts/theorems-order.inc:61
+#: lib/layouts/theorems-ams-chap-bytype.inc:334
+#: lib/layouts/theorems-ams.inc:241 lib/layouts/theorems-ams.inc:250
+#: lib/layouts/theorems-ams.inc:253 lib/layouts/theorems-bytype.inc:244
+#: lib/layouts/theorems-bytype.inc:254 lib/layouts/theorems-bytype.inc:257
+#: lib/layouts/theorems-order.inc:61
 #: lib/layouts/theorems-starred-equivalents.inc:55
 #: lib/layouts/theorems-starred.inc:243 lib/layouts/theorems-starred.inc:246
 #: lib/layouts/theorems-without-preamble.inc:273
@@ -6715,7 +6782,7 @@ msgstr "Forma breve del titolo per l'appendice"
 #: lib/layouts/siamltex.layout:326 lib/layouts/simplecv.layout:156
 #: lib/layouts/stdstruct.inc:54 lib/layouts/svcommon.inc:575
 #: lib/layouts/tufte-book.layout:263 lib/layouts/tufte-book.layout:265
-#: src/frontends/qt4/GuiDocument.cpp:1501
+#: src/frontends/qt4/GuiDocument.cpp:1500
 msgid "Bibliography"
 msgstr "Bibliografia"
 
@@ -6815,19 +6882,19 @@ msgstr "Trucchi per titolo e preambolo"
 msgid ""
 "Provides two new styles: 1. An 'In Preamble' style that puts whatever is "
 "entered into it into the preamble. This can be used, if one wishes, to "
-"include preamble code in the body of the LyX document. 2. An 'In Title' style "
-"that will put its contents into the body of the LaTeX document, but before "
-"\\maketitle is issued. This is useful for making branches and notes in title-"
-"related material. (If you put these in a Standard layout, this signals to LyX "
-"to output \\maketitle, which may then come too early.)"
+"include preamble code in the body of the LyX document. 2. An 'In Title' "
+"style that will put its contents into the body of the LaTeX document, but "
+"before \\maketitle is issued. This is useful for making branches and notes "
+"in title-related material. (If you put these in a Standard layout, this "
+"signals to LyX to output \\maketitle, which may then come too early.)"
 msgstr ""
 "Fornisce i due nuovi ambienti 'In preambolo' e 'In titolo'. Tutto ciò che "
-"viene immesso nell'ambiente 'In preambolo' viene trasferito nel preambolo del "
-"file LaTeX. Questo ambiente può quindi essere usato per includere codice da "
-"preambolo nel corpo del documento LyX. Tutto ciò che viene immesso "
-"nell'ambiente 'In titolo' viene invece trasferito nel file LaTeX ma prima del "
-"comando \\maketitle. Questo ambiente è quindi utile per inserire rami e note "
-"relativi al titolo, dal momento che usando l'ambiente Standard LyX "
+"viene immesso nell'ambiente 'In preambolo' viene trasferito nel preambolo "
+"del file LaTeX. Questo ambiente può quindi essere usato per includere codice "
+"da preambolo nel corpo del documento LyX. Tutto ciò che viene immesso "
+"nell'ambiente 'In titolo' viene invece trasferito nel file LaTeX ma prima "
+"del comando \\maketitle. Questo ambiente è quindi utile per inserire rami e "
+"note relativi al titolo, dal momento che usando l'ambiente Standard LyX "
 "inserirebbe automaticamente (e possibilmente prematuramente) il comando "
 "\\maketitle."
 
@@ -7242,9 +7309,10 @@ msgstr "Affiliazione alt.:"
 msgid "And"
 msgstr "Congiunzione"
 
-#: lib/layouts/aastex.layout:228 src/frontends/qt4/GuiDocument.cpp:2608
-#: src/frontends/qt4/GuiDocument.cpp:2620 src/frontends/qt4/GuiDocument.cpp:2731
-#: src/frontends/qt4/GuiDocument.cpp:2750
+#: lib/layouts/aastex.layout:228 src/frontends/qt4/GuiDocument.cpp:2607
+#: src/frontends/qt4/GuiDocument.cpp:2619
+#: src/frontends/qt4/GuiDocument.cpp:2730
+#: src/frontends/qt4/GuiDocument.cpp:2749
 msgid "and"
 msgstr "e"
 
@@ -7541,7 +7609,7 @@ msgid "chemistry"
 msgstr "chimica"
 
 #: lib/layouts/achemso.layout:305 lib/layouts/achemso.layout:308
-#: lib/languages:791
+#: lib/languages:793
 msgid "Latin"
 msgstr "Latino"
 
@@ -9200,7 +9268,8 @@ msgstr ""
 "Sottosezione \\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
 
 #: lib/layouts/beamer.layout:396
-msgid "The subsubsection as it appears in the table of contents/running headers"
+msgid ""
+"The subsubsection as it appears in the table of contents/running headers"
 msgstr "Forma breve della sottosottosezione che appare nell'indice/testatine"
 
 #: lib/layouts/beamer.layout:408
@@ -9612,10 +9681,10 @@ msgstr "Esempi."
 #: lib/layouts/theorems-ams-bytype.inc:187
 #: lib/layouts/theorems-ams-chap-bytype.inc:197
 #: lib/layouts/theorems-ams-chap-bytype.inc:210
-#: lib/layouts/theorems-ams-chap-bytype.inc:213 lib/layouts/theorems-ams.inc:147
-#: lib/layouts/theorems-ams.inc:157 lib/layouts/theorems-ams.inc:160
-#: lib/layouts/theorems-bytype.inc:144 lib/layouts/theorems-bytype.inc:153
-#: lib/layouts/theorems-bytype.inc:156
+#: lib/layouts/theorems-ams-chap-bytype.inc:213
+#: lib/layouts/theorems-ams.inc:147 lib/layouts/theorems-ams.inc:157
+#: lib/layouts/theorems-ams.inc:160 lib/layouts/theorems-bytype.inc:144
+#: lib/layouts/theorems-bytype.inc:153 lib/layouts/theorems-bytype.inc:156
 #: lib/layouts/theorems-chap-bytype.module:114
 #: lib/layouts/theorems-sec-bytype.module:94
 #: lib/layouts/theorems-starred.inc:150 lib/layouts/theorems-starred.inc:153
@@ -9649,8 +9718,8 @@ msgstr "Codice LyX"
 msgid "NoteItem"
 msgstr "Nota puntata"
 
-#: lib/layouts/beamer.layout:1383 lib/layouts/beamer.layout:1385 src/Font.cpp:65
-#: src/frontends/qt4/GuiCharacter.cpp:127
+#: lib/layouts/beamer.layout:1383 lib/layouts/beamer.layout:1385
+#: src/Font.cpp:65 src/frontends/qt4/GuiCharacter.cpp:127
 msgid "Bold"
 msgstr "Grassetto"
 
@@ -10081,9 +10150,9 @@ msgstr "Intestazioni personalizzate"
 
 #: lib/layouts/customHeadersFooters.module:7
 msgid ""
-"Adds environments to define header and footer lines. NOTE: To use this module "
-"you must set the 'Headings style' in the menu Document Settings -> Page "
-"Layout to 'fancy'!"
+"Adds environments to define header and footer lines. NOTE: To use this "
+"module you must set the 'Headings style' in the menu Document Settings -> "
+"Page Layout to 'fancy'!"
 msgstr ""
 "Aggiunge nuovi ambienti per definire testatine e piè pagina.\n"
 "NOTA: Per usare questo modulo occorre selezionare lo stile intestazioni "
@@ -11433,16 +11502,17 @@ msgid ""
 "compatibility. If you use this module your typeset document may look "
 "different with different LaTeX versions, depending on the respective version "
 "of fixltx2e. NOTE: recent LaTeX kernels (as of 2015/01/01) include the "
-"functionality of fixltx2e, so the fixltx2e module becomes obsolete with newer "
-"LaTeX distributions."
+"functionality of fixltx2e, so the fixltx2e module becomes obsolete with "
+"newer LaTeX distributions."
 msgstr ""
 "Usa il pacchetto fixltx2e per correggere alcuni bachi di LaTeX. Queste "
 "correzioni non facevano parte dei vecchi kernel di LaTeX per ragioni di "
 "compatibilità all'indietro. Se si usa questo modulo, il documento potrebbe "
-"cambiare aspetto se viene processato con versioni diverse di LaTeX, a seconda "
-"delle rispettive versioni di fixltx2e. NOTA: versioni recenti di LaTeX (a "
-"partire da 2015/01/01) includono la funzionalità di fixltx2e, e quindi il "
-"modulo fixltx2e è di fatto obsoleto con le più recenti distribuzioni di LaTeX."
+"cambiare aspetto se viene processato con versioni diverse di LaTeX, a "
+"seconda delle rispettive versioni di fixltx2e. NOTA: versioni recenti di "
+"LaTeX (a partire da 2015/01/01) includono la funzionalità di fixltx2e, e "
+"quindi il modulo fixltx2e è di fatto obsoleto con le più recenti "
+"distribuzioni di LaTeX."
 
 #: lib/layouts/fixme.module:2
 msgid "FiXme"
@@ -11452,12 +11522,12 @@ msgstr "FiXme"
 msgid ""
 "Provides 'FiXme' (marginal) annotations for document revision purposes. A "
 "list of annotations can be produced by using the 'List of FIXMEs' paragraph "
-"style. The annotations are customizable via the LaTeX preamble. See the FiXme "
-"documentation for details. NOTE: By default, the notes are only displayed in "
-"'draft' mode (if the option 'draft' has been inserted to Document > Settings "
-"> Document Class > Class Options > Custom). To display them always, insert "
-"\\fxsetup{draft} to Document > Settings > Preamble. NOTE also that you need "
-"version 4 or later of the FiXme package for some features."
+"style. The annotations are customizable via the LaTeX preamble. See the "
+"FiXme documentation for details. NOTE: By default, the notes are only "
+"displayed in 'draft' mode (if the option 'draft' has been inserted to "
+"Document > Settings > Document Class > Class Options > Custom). To display "
+"them always, insert \\fxsetup{draft} to Document > Settings > Preamble. NOTE "
+"also that you need version 4 or later of the FiXme package for some features."
 msgstr ""
 "Fornisce annotazioni 'FIXme' (a margine) intese per la revisione di "
 "documenti. Un elenco di annotazioni viene prodotto usando lo stile paragrafo "
@@ -11508,8 +11578,9 @@ msgid "Fixme Error"
 msgstr "Fixme errore"
 
 #: lib/layouts/fixme.module:82 src/frontends/qt4/GuiCompare.cpp:198
-#: src/frontends/qt4/GuiDocument.cpp:2340 src/frontends/qt4/GuiDocument.cpp:2414
-#: src/frontends/qt4/GuiDocument.cpp:4146
+#: src/frontends/qt4/GuiDocument.cpp:2339
+#: src/frontends/qt4/GuiDocument.cpp:2413
+#: src/frontends/qt4/GuiDocument.cpp:4145
 msgid "Error"
 msgstr "Errore"
 
@@ -12249,9 +12320,9 @@ msgid ""
 "in which the first line is set to the left margin, but all subsequent lines "
 "are indented."
 msgstr ""
-"Aggiunge un ambiente per paragrafi con rientro. Un paragrafo con rientro è un "
-"paragrafo la cui prima riga comincia dal margine sinistro ma tutte le righe "
-"successive sono indentate."
+"Aggiunge un ambiente per paragrafi con rientro. Un paragrafo con rientro è "
+"un paragrafo la cui prima riga comincia dal margine sinistro ma tutte le "
+"righe successive sono indentate."
 
 #: lib/layouts/heb-article.layout:3
 msgid "Hebrew Article"
@@ -12344,9 +12415,9 @@ msgid ""
 "precautionary statements. For a description see the file H-P-statements.lyx "
 "in LyX's examples folder."
 msgstr ""
-"Fornisce due inserti per inserire numeri e frasi di dichiarazione di pericolo "
-"e cautela chimiche. Per una descrizione vedere il file H-P-statements.lyx "
-"nella cartella esempi di LyX."
+"Fornisce due inserti per inserire numeri e frasi di dichiarazione di "
+"pericolo e cautela chimiche. Per una descrizione vedere il file H-P-"
+"statements.lyx nella cartella esempi di LyX."
 
 #: lib/layouts/hpstatement.module:11 lib/layouts/hpstatement.module:16
 msgid "H-P number"
@@ -12506,8 +12577,8 @@ msgstr "Capolettere"
 
 #: lib/layouts/initials.module:6
 msgid ""
-"Define a style for paragraphs with an initial. See the EmbeddedObjects manual "
-"for a detailed description."
+"Define a style for paragraphs with an initial. See the EmbeddedObjects "
+"manual for a detailed description."
 msgstr ""
 "Definisce lo stile per le capolettere. Vedere il manuale per gli oggetti "
 "incorporati per una descrizione dettagliata."
@@ -12873,14 +12944,14 @@ msgstr "Rnw (knitr)"
 
 #: lib/layouts/knitr.module:6
 msgid ""
-"Uses the knitr package in R for dynamic report generation. This R package has "
-"to be installed for this module to work: install.packages('knitr'). Note it "
-"depends on R >= 2.14.1. For more info see http://yihui.name/knitr"
+"Uses the knitr package in R for dynamic report generation. This R package "
+"has to be installed for this module to work: install.packages('knitr'). Note "
+"it depends on R >= 2.14.1. For more info see http://yihui.name/knitr"
 msgstr ""
 "Usa il pacchetto knitr per la generazione di rapporti dinamici in R. Questo "
-"pacchetto per R deve essere installato perché questo modulo funzioni: install."
-"packages('knitr'). Da notare che è necessaria la versione 2.14.1 o superiore "
-"di R. Per ulteriori informazioni vedere http://yihui.name/knitr"
+"pacchetto per R deve essere installato perché questo modulo funzioni: "
+"install.packages('knitr'). Da notare che è necessaria la versione 2.14.1 o "
+"superiore di R. Per ulteriori informazioni vedere http://yihui.name/knitr"
 
 #: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
 #: lib/layouts/sweave.module:6
@@ -13023,9 +13094,9 @@ msgid ""
 "glosses, semantic markup, tableau floats). See linguistics.lyx file in "
 "examples."
 msgstr ""
-"Definisce alcuni ambienti speciali utili per la linguistica (esempi numerati, "
-"glossari, marcatura semantica, tableau flottanti). Vedere il file di esempio "
-"linguistic.lyx."
+"Definisce alcuni ambienti speciali utili per la linguistica (esempi "
+"numerati, glossari, marcatura semantica, tableau flottanti). Vedere il file "
+"di esempio linguistic.lyx."
 
 #: lib/layouts/linguistics.module:14
 msgid "(\\arabic{example})"
@@ -13383,7 +13454,8 @@ msgstr "Minimalistico"
 
 #: lib/layouts/minimalistic.module:5
 msgid "Redefines several insets (Index, Branch, URL) as being Minimalistic."
-msgstr "Ridefinisce diversi inserti (Indice, Ramo, URL) in stile minimalistico."
+msgstr ""
+"Ridefinisce diversi inserti (Indice, Ramo, URL) in stile minimalistico."
 
 #: lib/layouts/moderncv.layout:3
 msgid "Modern CV"
@@ -13706,10 +13778,11 @@ msgstr "Spazio prima delle colonne"
 
 #: lib/layouts/multicol.module:31
 msgid ""
-"Free space that needs to be on the page to start the multiple columns on this "
-"page"
+"Free space that needs to be on the page to start the multiple columns on "
+"this page"
 msgstr ""
-"Spazio da lasciare prima dell'inserimento di colonne multiple su questa pagina"
+"Spazio da lasciare prima dell'inserimento di colonne multiple su questa "
+"pagina"
 
 #: lib/layouts/mwart.layout:3
 msgid "Polish Article (MW Bundle)"
@@ -13730,8 +13803,8 @@ msgstr "Natbibapa"
 #: lib/layouts/natbibapa.module:9
 msgid ""
 "This module adds support for using natbib together with apacite (the "
-"bibliography style need not be apacite--it could be apacite, apacitex, or any "
-"bibliography that works with both the natbib and apacite packages.)"
+"bibliography style need not be apacite--it could be apacite, apacitex, or "
+"any bibliography that works with both the natbib and apacite packages.)"
 msgstr ""
 "Questo modulo supporta l'uso di natbib insieme ad apacite. Lo stile BibTeX "
 "può essere apacite, apacitex o qualsiasi altro che funzioni con entrambi i "
@@ -13902,9 +13975,9 @@ msgstr "Commenti PDF"
 
 #: lib/layouts/pdfcomment.module:7
 msgid ""
-"Provides various kinds of annotations for the PDF output. The module uses the "
-"pdfcomment package. Please consult the LyX example file PDF-comment.lyx and "
-"the package documentation for details."
+"Provides various kinds of annotations for the PDF output. The module uses "
+"the pdfcomment package. Please consult the LyX example file PDF-comment.lyx "
+"and the package documentation for details."
 msgstr ""
 "Fornisce vari tipi di annotazione for l'output PDF. Questo modulo usa il "
 "pacchetto pdfcomment. Consultare il file di esempio PDF-comment.lyx e la "
@@ -14998,9 +15071,9 @@ msgid ""
 "standard Paragraph Shapes'."
 msgstr ""
 "Fornisce diverse sagomature per un paragrafo e comandi per definire sagome "
-"personalizzate. Per ulteriori informazioni consultare la versione inglese del "
-"manuale LyX sulle caratteristiche avanzate, sezione 'Non-standard Paragraph "
-"Shapes'."
+"personalizzate. Per ulteriori informazioni consultare la versione inglese "
+"del manuale LyX sulle caratteristiche avanzate, sezione 'Non-standard "
+"Paragraph Shapes'."
 
 #: lib/layouts/shapepar.module:26
 msgid "CD label"
@@ -15335,7 +15408,7 @@ msgstr "Nota a piè pagina"
 msgid "Notes"
 msgstr "Note"
 
-#: lib/layouts/stdinsets.inc:14 src/frontends/qt4/GuiDocument.cpp:1508
+#: lib/layouts/stdinsets.inc:14 src/frontends/qt4/GuiDocument.cpp:1507
 msgid "Branches"
 msgstr "Rami"
 
@@ -15373,7 +15446,7 @@ msgstr "Elenco dei listati"
 msgid "List of Listings"
 msgstr "Elenco dei listati"
 
-#: lib/layouts/stdinsets.inc:344 src/frontends/qt4/GuiDocument.cpp:1506
+#: lib/layouts/stdinsets.inc:344 src/frontends/qt4/GuiDocument.cpp:1505
 msgid "Listings[[inset]]"
 msgstr "Listati"
 
@@ -15696,8 +15769,8 @@ msgstr "Sweave"
 
 #: lib/layouts/sweave.module:6
 msgid ""
-"Allows to use the statistical language S/R as a literate programming tool via "
-"the Sweave() function. For more info see the LyX example file sweave.lyx."
+"Allows to use the statistical language S/R as a literate programming tool "
+"via the Sweave() function. For more info see the LyX example file sweave.lyx."
 msgstr ""
 "Consente di usare il linguaggio statistico S/R come strumento di "
 "programmazione esperta per mezzo della funzione Sweave(). Vedere il file di "
@@ -15891,22 +15964,22 @@ msgstr "Teoremi (AMS, numerati per tipo)"
 
 #: lib/layouts/theorems-ams-bytype.module:11
 msgid ""
-"Defines theorem environments and the proof environment using the extended AMS "
-"machinery. Both numbered and unnumbered types are provided. Contrary to the "
-"plain AMS Theorem module, the different theorem types provided here each have "
-"a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
+"Defines theorem environments and the proof environment using the extended "
+"AMS machinery. Both numbered and unnumbered types are provided. Contrary to "
+"the plain AMS Theorem module, the different theorem types provided here each "
+"have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
 "theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
 "proposition 4, ...). The numbering's scope is the whole document. For "
-"chapter- and section-wide numbering, use one of the 'within Sections'/'within "
-"Chapters' modules, respectively."
+"chapter- and section-wide numbering, use one of the 'within "
+"Sections'/'within Chapters' modules, respectively."
 msgstr ""
 "Definisce gli ambienti tipo teorema e prova usando l'apparato AMS esteso. "
 "Vengono fornite sia la forma numerata che non numerata. Contrariamente al "
 "modulo Teoremi AMS, i differenti tipi di teorema usano un contatore separato "
 "(cioè, si ottiene teorema 1, teorema 2, lemma 1, proposizione 1, teorema 3, "
-"lemma 2, ..., invece che teorema 1, teorema 2, lemma 3, proposizione 4, ...). "
-"L'ambito della numerazione è costituito dall'intero documento. Per numerare "
-"nell'ambito di sezioni o capitoli, occorre usare uno dei moduli "
+"lemma 2, ..., invece che teorema 1, teorema 2, lemma 3, proposizione "
+"4, ...). L'ambito della numerazione è costituito dall'intero documento. Per "
+"numerare nell'ambito di sezioni o capitoli, occorre usare uno dei moduli "
 "contrassegnati 'per sezione' o 'per capitolo', rispettivamente."
 
 #: lib/layouts/theorems-ams-chap-bytype.inc:82
@@ -15967,13 +16040,13 @@ msgstr "Teoremi (AMS, numerati per tipo e per capitolo)"
 
 #: lib/layouts/theorems-ams-chap-bytype.module:11
 msgid ""
-"Defines theorem environments and the proof environment using the extended AMS "
-"machinery. Both numbered and unnumbered types are provided. Contrary to the "
-"plain AMS Theorem module, the different theorem types provided here each have "
-"a separate counter (e.g., theorem 1.1, theorem 1.2, lemma 1.1, proposition "
-"1.1, theorem 1.3, lemma 1.2, ..., as opposed to theorem 1, theorem 2, lemma "
-"3, proposition 4, ...). The numbering restarts for each chapter: theorem 1.1, "
-"theorem 2.1, ..."
+"Defines theorem environments and the proof environment using the extended "
+"AMS machinery. Both numbered and unnumbered types are provided. Contrary to "
+"the plain AMS Theorem module, the different theorem types provided here each "
+"have a separate counter (e.g., theorem 1.1, theorem 1.2, lemma 1.1, "
+"proposition 1.1, theorem 1.3, lemma 1.2, ..., as opposed to theorem 1, "
+"theorem 2, lemma 3, proposition 4, ...). The numbering restarts for each "
+"chapter: theorem 1.1, theorem 2.1, ..."
 msgstr ""
 "Definisce gli ambienti tipo teorema e prova usando l'apparato AMS esteso. "
 "Vengono fornite sia la forma numerata che non numerata. Contrariamente al "
@@ -15994,8 +16067,8 @@ msgid ""
 "Summary, Acknowledgement, Conclusion, Assumption, and Case, in both numbered "
 "and non-numbered forms. Contrary to the plain AMS-Extended module, the "
 "different theorem types provided here each have a separate counter (e.g., "
-"criterion 1, criterion 2, axiom 1, assumption 1, criterion 3, ..., as opposed "
-"to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
+"criterion 1, criterion 2, axiom 1, assumption 1, criterion 3, ..., as "
+"opposed to criterion 1, criterion 2, axiom 3, assumption 4, ...)."
 msgstr ""
 "Definisce alcuni ambienti addizionali tipo teorema da usarsi con i pacchetti "
 "AMS. Include Criterio, Algoritmo, Assioma, Condizione, Nota, Notazione, "
@@ -16194,19 +16267,19 @@ msgid ""
 "packages. Includes Criterion, Algorithm, Axiom, Condition, Note, Notation, "
 "Summary, Acknowledgement, Conclusion, Assumption, and Case, in both numbered "
 "and non-numbered forms. Contrary to the plain AMS-Extended module, the "
-"different theorem types provided here each have a separate counter, restarted "
-"with each new chapter (e.g., criterion 1.1, criterion 1.2, axiom 1.1, "
-"assumption 1.1, #criterion 2.1, criterion 2.2, axiom 2.1..., as opposed to "
-"criterion 1, criterion 2, axiom 3, assumption 4...)"
+"different theorem types provided here each have a separate counter, "
+"restarted with each new chapter (e.g., criterion 1.1, criterion 1.2, axiom "
+"1.1, assumption 1.1, #criterion 2.1, criterion 2.2, axiom 2.1..., as opposed "
+"to criterion 1, criterion 2, axiom 3, assumption 4...)"
 msgstr ""
 "Definisce alcuni ambienti addizionali tipo teorema da usarsi con i pacchetti "
 "AMS. Include Criterio, Algoritmo, Assioma, Condizione, Nota, Notazione, "
 "Sommario, Riconoscimento, Conclusione, Assunto e Caso, sia nella forma "
 "numerata che non numerata. Contrariamente al normale modulo AMS-Esteso, i "
-"differenti tipi di teorema usano un contatore separato che riparte all'inizio "
-"di ogni capitolo (cioè, si ottiene criterio 1.1, criterio 1.2, assioma 1.1, "
-"assunto 1.1, criterio 2.1, criterio 2.2, assioma 2.1, ..., invece che "
-"criterio 1, criterio 2, assioma 3, assunto 4, ...)."
+"differenti tipi di teorema usano un contatore separato che riparte "
+"all'inizio di ogni capitolo (cioè, si ottiene criterio 1.1, criterio 1.2, "
+"assioma 1.1, assunto 1.1, criterio 2.1, criterio 2.2, assioma 2.1, ..., "
+"invece che criterio 1, criterio 2, assioma 3, assunto 4, ...)."
 
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:69
 msgid "Criterion \\thechapter.\\thecriterion."
@@ -16268,9 +16341,10 @@ msgstr ""
 "Sommario, Riconoscimento, Conclusione, Fatto, Assunto, Caso e Quesito, sia "
 "nella forma numerata che non numerata."
 
-#: lib/layouts/theorems-ams-extended.module:10 lib/layouts/theorems-ams.module:9
-#: lib/layouts/theorems-chap.module:9 lib/layouts/theorems-sec.module:8
-#: lib/layouts/theorems-starred.module:7 lib/layouts/theorems-std.module:8
+#: lib/layouts/theorems-ams-extended.module:10
+#: lib/layouts/theorems-ams.module:9 lib/layouts/theorems-chap.module:9
+#: lib/layouts/theorems-sec.module:8 lib/layouts/theorems-starred.module:7
+#: lib/layouts/theorems-std.module:8
 msgid "theorems"
 msgstr "teoremi"
 
@@ -16348,9 +16422,9 @@ msgstr "Teoremi (AMS)"
 
 #: lib/layouts/theorems-ams.module:8
 msgid ""
-"Defines theorem environments and the proof environment using the extended AMS "
-"machinery. Both numbered and unnumbered types are provided. By default, the "
-"theorems are numbered consecutively throughout the document. This can be "
+"Defines theorem environments and the proof environment using the extended "
+"AMS machinery. Both numbered and unnumbered types are provided. By default, "
+"the theorems are numbered consecutively throughout the document. This can be "
 "changed by loading one of the 'Theorems (Numbered by ...)' modules."
 msgstr ""
 "Definisce gli ambienti tipo teorema e l'ambiente prova usando l'apparato AMS "
@@ -16366,19 +16440,19 @@ msgstr "Teoremi (per tipo)"
 #: lib/layouts/theorems-bytype.module:10
 msgid ""
 "Defines some theorem environments for use with non-AMS classes. Contrary to "
-"the plain Theorem module, the different theorem types provided here each have "
-"a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
+"the plain Theorem module, the different theorem types provided here each "
+"have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
 "theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
 "proposition 4, ...). The numbering's scope is the whole document. For "
-"chapter- and section-wide numbering, use one of the 'within Sections'/'within "
-"Chapters' modules, respectively."
+"chapter- and section-wide numbering, use one of the 'within "
+"Sections'/'within Chapters' modules, respectively."
 msgstr ""
 "Definisce alcuni ambienti tipo teorema per classi non-AMS. Contrariamente al "
 "modulo Teoremi, i differenti tipi di teorema usano un contatore separato "
 "(cioè, si ottiene teorema 1, teorema 2, lemma 1, proposizione 1, teorema 3, "
-"lemma 2, ..., invece che teorema 1, teorema 2, lemma 3, proposizione 4, ...). "
-"L'ambito della numerazione è costituito dall'intero documento. Per numerare "
-"nell'ambito di sezioni o capitoli, occorre usare uno dei moduli "
+"lemma 2, ..., invece che teorema 1, teorema 2, lemma 3, proposizione "
+"4, ...). L'ambito della numerazione è costituito dall'intero documento. Per "
+"numerare nell'ambito di sezioni o capitoli, occorre usare uno dei moduli "
 "contrassegnati 'per sezione' o 'per capitolo', rispettivamente."
 
 #: lib/layouts/theorems-case.inc:12
@@ -16404,16 +16478,16 @@ msgstr "Teoremi (per tipo e per capitolo)"
 #: lib/layouts/theorems-chap-bytype.module:9
 msgid ""
 "Defines some theorem environments for use with non-AMS classes. Contrary to "
-"the plain Theorem module, the different theorem types provided here each have "
-"a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
+"the plain Theorem module, the different theorem types provided here each "
+"have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
 "theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
 "proposition 4, ...). The numbering is reset at each chapter start."
 msgstr ""
 "Definisce alcuni ambienti tipo teorema per classi non-AMS. Contrariamente al "
 "modulo Teoremi, i differenti tipi di teorema usano un contatore separato "
 "(cioè, si ottiene teorema 1, teorema 2, lemma 1, proposizione 1, teorema 3, "
-"lemma 2, ..., invece che teorema 1, teorema 2, lemma 3, proposizione 4, ...). "
-"La numerazione viene azzerata all'inizio di ogni capitolo."
+"lemma 2, ..., invece che teorema 1, teorema 2, lemma 3, proposizione "
+"4, ...). La numerazione viene azzerata all'inizio di ogni capitolo."
 
 #: lib/layouts/theorems-chap.module:2
 msgid "Theorems (Numbered by Chapter)"
@@ -16484,16 +16558,16 @@ msgstr "Teoremi (per tipo e per sezione)"
 #: lib/layouts/theorems-sec-bytype.module:9
 msgid ""
 "Defines some theorem environments for use with non-AMS classes. Contrary to "
-"the plain Theorem module, the different theorem types provided here each have "
-"a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
+"the plain Theorem module, the different theorem types provided here each "
+"have a separate counter (e.g., theorem 1, theorem 2, lemma 1, proposition 1, "
 "theorem 3, lemma 2, ..., as opposed to theorem 1, theorem 2, lemma 3, "
 "proposition 4, ...). The numbering is reset at each section start."
 msgstr ""
 "Definisce alcuni ambienti tipo teorema per classi non-AMS. Contrariamente al "
 "modulo Teoremi, i differenti tipi di teorema usano un contatore separato "
 "(cioè, si ottiene teorema 1, teorema 2, lemma 1, proposizione 1, teorema 3, "
-"lemma 2, ..., invece che teorema 1, teorema 2, lemma 3, proposizione 4, ...). "
-"La numerazione viene azzerata all'inizio di ogni sezione."
+"lemma 2, ..., invece che teorema 1, teorema 2, lemma 3, proposizione "
+"4, ...). La numerazione viene azzerata all'inizio di ogni sezione."
 
 #: lib/layouts/theorems-sec.module:2
 msgid "Theorems (Numbered by Section)"
@@ -16753,16 +16827,16 @@ msgstr "Minipagine a larghezza var."
 #: lib/layouts/varwidth.module:11
 msgid ""
 "Adds a 'Minipage (Var. Width)' inset using the varwidth LaTeX package. The "
-"varwidth package provides a variable-width minipage, whose resulting width is "
-"the width of its contents (if this does not exceed the specified maximum "
+"varwidth package provides a variable-width minipage, whose resulting width "
+"is the width of its contents (if this does not exceed the specified maximum "
 "width).  The inset has two optional arguments: vertical adjustment (c|t|b) "
 "and maximum width (defaults to \\linewidth)."
 msgstr ""
 "Aggiunge un inserto 'Minipagina (larghezza var.)' usando il pacchetto LaTeX "
 "varwidth. Tale pacchetto fornisce una minipagina a larghezza variabile di "
 "dimensioni pari al suo contenuto (se non viene ecceduta la larghezza massima "
-"specificata). L'inserto ha due argomenti opzionali: allineamento verticale (c|"
-"t|b) e larghezza massima (il cui default è \\linewidth)."
+"specificata). L'inserto ha due argomenti opzionali: allineamento verticale "
+"(c|t|b) e larghezza massima (il cui default è \\linewidth)."
 
 #: lib/layouts/varwidth.module:17
 msgid "Minipage (Var. Width)"
@@ -16788,409 +16862,409 @@ msgstr "Larghezza max"
 msgid "Maximum width (default: \\linewidth)"
 msgstr "Larghezza massima (default: \\linewidth)"
 
-#: lib/languages:100 src/Font.cpp:62 src/Font.cpp:65 src/Font.cpp:69
+#: lib/languages:102 src/Font.cpp:62 src/Font.cpp:65 src/Font.cpp:69
 #: src/Font.cpp:74 src/Font.cpp:77
 msgid "Ignore"
 msgstr "Ignora"
 
-#: lib/languages:119
+#: lib/languages:121
 msgid "Afrikaans"
 msgstr "Afrikaans"
 
-#: lib/languages:127
+#: lib/languages:129
 msgid "Albanian"
 msgstr "Albanese"
 
-#: lib/languages:136
+#: lib/languages:138
 msgid "English (USA)"
 msgstr "Inglese (USA)"
 
-#: lib/languages:147
+#: lib/languages:149
 msgid "Amharic"
 msgstr "Amarico"
 
-#: lib/languages:156
+#: lib/languages:158
 msgid "Greek (ancient)"
 msgstr "Greco (antico)"
 
-#: lib/languages:173
+#: lib/languages:175
 msgid "Arabic (ArabTeX)"
 msgstr "Arabo (ArabTeX)"
 
-#: lib/languages:184
+#: lib/languages:186
 msgid "Arabic (Arabi)"
 msgstr "Arabo (Arabi)"
 
-#: lib/languages:197 src/frontends/qt4/GuiSymbols.cpp:62
+#: lib/languages:199 src/frontends/qt4/GuiSymbols.cpp:62
 msgid "Armenian"
 msgstr "Armeno"
 
-#: lib/languages:206
+#: lib/languages:208
 msgid "Asturian"
 msgstr "Asturiano"
 
-#: lib/languages:214
+#: lib/languages:216
 msgid "English (Australia)"
 msgstr "Inglese (Australia)"
 
-#: lib/languages:226
+#: lib/languages:228
 msgid "German (Austria, old spelling)"
 msgstr "Tedesco (Austria, vecchia sillabazione)"
 
-#: lib/languages:238
+#: lib/languages:240
 msgid "German (Austria)"
 msgstr "Tedesco (Austria)"
 
-#: lib/languages:248
+#: lib/languages:250
 msgid "Indonesian"
 msgstr "Indonesiano"
 
-#: lib/languages:258
+#: lib/languages:260
 msgid "Malay"
 msgstr "Malese"
 
-#: lib/languages:267
+#: lib/languages:269
 msgid "Basque"
 msgstr "Basco"
 
-#: lib/languages:281
+#: lib/languages:283
 msgid "Belarusian"
 msgstr "Bielorusso"
 
-#: lib/languages:291
+#: lib/languages:293
 msgid "Bosnian"
 msgstr "Bosniaco"
 
-#: lib/languages:299
+#: lib/languages:301
 msgid "Portuguese (Brazil)"
 msgstr "Portoghese (Brasile)"
 
-#: lib/languages:309
+#: lib/languages:311
 msgid "Breton"
 msgstr "Bretone"
 
-#: lib/languages:318
+#: lib/languages:320
 msgid "English (UK)"
 msgstr "Inglese (UK)"
 
-#: lib/languages:328
+#: lib/languages:330
 msgid "Bulgarian"
 msgstr "Bulgaro"
 
-#: lib/languages:339
+#: lib/languages:341
 msgid "English (Canada)"
 msgstr "Inglese (Canada)"
 
-#: lib/languages:352
+#: lib/languages:354
 msgid "French (Canada)"
 msgstr "Francese (Canada)"
 
-#: lib/languages:362
+#: lib/languages:364
 msgid "Catalan"
 msgstr "Catalano"
 
-#: lib/languages:374
+#: lib/languages:376
 msgid "Chinese (simplified)"
 msgstr "Cinese (semplificato)"
 
-#: lib/languages:384
+#: lib/languages:386
 msgid "Chinese (traditional)"
 msgstr "Cinese (tradizionale)"
 
-#: lib/languages:394
+#: lib/languages:396
 msgid "Coptic"
 msgstr "Copto"
 
-#: lib/languages:401
+#: lib/languages:403
 msgid "Croatian"
 msgstr "Croato"
 
-#: lib/languages:410
+#: lib/languages:412
 msgid "Czech"
 msgstr "Ceco"
 
-#: lib/languages:420
+#: lib/languages:422
 msgid "Danish"
 msgstr "Danese"
 
-#: lib/languages:431
+#: lib/languages:433
 msgid "Divehi (Maldivian)"
 msgstr "Divehi (Maldivo)"
 
-#: lib/languages:438
+#: lib/languages:440
 msgid "Dutch"
 msgstr "Olandese"
 
-#: lib/languages:449
+#: lib/languages:451
 msgid "English"
 msgstr "Inglese"
 
-#: lib/languages:462
+#: lib/languages:464
 msgid "Esperanto"
 msgstr "Esperanto"
 
-#: lib/languages:471
+#: lib/languages:473
 msgid "Estonian"
 msgstr "Estone"
 
-#: lib/languages:485
+#: lib/languages:487
 msgid "Farsi"
 msgstr "Farsi"
 
-#: lib/languages:500
+#: lib/languages:502
 msgid "Finnish"
 msgstr "Finnico"
 
-#: lib/languages:511
+#: lib/languages:513
 msgid "French"
 msgstr "Francese"
 
-#: lib/languages:527
+#: lib/languages:529
 msgid "Friulian"
 msgstr "Friuliano"
 
-#: lib/languages:537
+#: lib/languages:539
 msgid "Galician"
 msgstr "Galiziano"
 
-#: lib/languages:550 src/frontends/qt4/GuiSymbols.cpp:77
+#: lib/languages:552 src/frontends/qt4/GuiSymbols.cpp:77
 msgid "Georgian"
 msgstr "Georgiano"
 
-#: lib/languages:560
+#: lib/languages:562
 msgid "German (old spelling)"
 msgstr "Tedesco (vecchia sillabazione)"
 
-#: lib/languages:571
+#: lib/languages:573
 msgid "German"
 msgstr "Tedesco"
 
-#: lib/languages:586
+#: lib/languages:588
 msgid "German (Switzerland)"
 msgstr "Tedesco (Svizzera)"
 
-#: lib/languages:599
+#: lib/languages:601
 msgid "German (Switzerland, old spelling)"
 msgstr "Tedesco (Svizzera, vecchia sillabazione)"
 
-#: lib/languages:609 lib/ui/stdtoolbars.inc:306 lib/ui/stdtoolbars.inc:599
+#: lib/languages:611 lib/ui/stdtoolbars.inc:306 lib/ui/stdtoolbars.inc:599
 #: src/frontends/qt4/GuiSymbols.cpp:60
 msgid "Greek"
 msgstr "Greco"
 
-#: lib/languages:622
+#: lib/languages:624
 msgid "Greek (polytonic)"
 msgstr "Greco (politonico)"
 
-#: lib/languages:634 src/frontends/qt4/GuiSymbols.cpp:63
+#: lib/languages:636 src/frontends/qt4/GuiSymbols.cpp:63
 msgid "Hebrew"
 msgstr "Ebraico"
 
-#: lib/languages:650
+#: lib/languages:652
 msgid "Hindi"
 msgstr "Hindi"
 
-#: lib/languages:669
+#: lib/languages:671
 msgid "Icelandic"
 msgstr "Islandese"
 
-#: lib/languages:680
+#: lib/languages:682
 msgid "Interlingua"
 msgstr "Interlingua"
 
-#: lib/languages:690
+#: lib/languages:692
 msgid "Irish"
 msgstr "Irlandese"
 
-#: lib/languages:699
+#: lib/languages:701
 msgid "Italian"
 msgstr "Italiano"
 
-#: lib/languages:714
+#: lib/languages:716
 msgid "Japanese"
 msgstr "Giapponese"
 
-#: lib/languages:728
+#: lib/languages:730
 msgid "Japanese (CJK)"
 msgstr "Giapponese (CJK)"
 
-#: lib/languages:737 src/frontends/qt4/GuiSymbols.cpp:72
+#: lib/languages:739 src/frontends/qt4/GuiSymbols.cpp:72
 msgid "Kannada"
 msgstr "Kannada"
 
-#: lib/languages:746
+#: lib/languages:748
 msgid "Kazakh"
 msgstr "Kazakho"
 
-#: lib/languages:757
+#: lib/languages:759
 msgid "Khmer"
 msgstr "Khmer"
 
-#: lib/languages:764
+#: lib/languages:766
 msgid "Korean"
 msgstr "Coreano"
 
-#: lib/languages:773
+#: lib/languages:775
 msgid "Kurmanji"
 msgstr "Kurmanji"
 
-#: lib/languages:782 src/frontends/qt4/GuiSymbols.cpp:75
+#: lib/languages:784 src/frontends/qt4/GuiSymbols.cpp:75
 msgid "Lao"
 msgstr "Lao"
 
-#: lib/languages:801
+#: lib/languages:803
 msgid "Latvian"
 msgstr "Latviano"
 
-#: lib/languages:814
+#: lib/languages:816
 msgid "Lithuanian"
 msgstr "Lituano"
 
-#: lib/languages:825
+#: lib/languages:827
 msgid "Lower Sorbian"
 msgstr "Serbo meridionale"
 
-#: lib/languages:834
+#: lib/languages:836
 msgid "Hungarian"
 msgstr "Ungherese"
 
-#: lib/languages:845
+#: lib/languages:847
 msgid "Macedonian"
 msgstr "Macedone"
 
-#: lib/languages:855
+#: lib/languages:857
 msgid "Marathi"
 msgstr "Marathi"
 
-#: lib/languages:865
+#: lib/languages:867
 msgid "Mongolian"
 msgstr "Mongolo"
 
-#: lib/languages:874
+#: lib/languages:876
 msgid "English (New Zealand)"
 msgstr "Inglese (Nuova Zelanda)"
 
-#: lib/languages:884
+#: lib/languages:886
 msgid "Norwegian (Bokmaal)"
 msgstr "Norvegese"
 
-#: lib/languages:894
+#: lib/languages:896
 msgid "Norwegian (Nynorsk)"
 msgstr "Neonorvegese"
 
-#: lib/languages:905
+#: lib/languages:907
 msgid "Occitan"
 msgstr "Occitano"
 
-#: lib/languages:926
+#: lib/languages:928
 msgid "Piedmontese"
 msgstr "Piemontese"
 
-#: lib/languages:936
+#: lib/languages:938
 msgid "Polish"
 msgstr "Polacco"
 
-#: lib/languages:947
+#: lib/languages:949
 msgid "Portuguese"
 msgstr "Portoghese"
 
-#: lib/languages:957
+#: lib/languages:959
 msgid "Romanian"
 msgstr "Romeno"
 
-#: lib/languages:967
+#: lib/languages:969
 msgid "Romansh"
 msgstr "Romancio"
 
-#: lib/languages:977
+#: lib/languages:979
 msgid "Russian"
 msgstr "Russo"
 
-#: lib/languages:988
+#: lib/languages:990
 msgid "North Sami"
 msgstr "Lappone del nord"
 
-#: lib/languages:997
+#: lib/languages:999
 msgid "Sanskrit"
 msgstr "Sanscrito"
 
-#: lib/languages:1004
+#: lib/languages:1006
 msgid "Scottish"
 msgstr "Scozzese"
 
-#: lib/languages:1015
+#: lib/languages:1017
 msgid "Serbian"
 msgstr "Serbo"
 
-#: lib/languages:1030
+#: lib/languages:1032
 msgid "Serbian (Latin)"
 msgstr "Serbo (latino)"
 
-#: lib/languages:1040
+#: lib/languages:1042
 msgid "Slovak"
 msgstr "Slovacco"
 
-#: lib/languages:1050
+#: lib/languages:1052
 msgid "Slovene"
 msgstr "Sloveno"
 
-#: lib/languages:1059
+#: lib/languages:1061
 msgid "Spanish"
 msgstr "Spagnolo"
 
-#: lib/languages:1073
+#: lib/languages:1075
 msgid "Spanish (Mexico)"
 msgstr "Spagnolo (Messico)"
 
-#: lib/languages:1085
+#: lib/languages:1087
 msgid "Swedish"
 msgstr "Svedese"
 
-#: lib/languages:1096
+#: lib/languages:1098
 msgid "Syriac"
 msgstr "Siriaco"
 
-#: lib/languages:1105 src/frontends/qt4/GuiSymbols.cpp:70
+#: lib/languages:1107 src/frontends/qt4/GuiSymbols.cpp:70
 msgid "Tamil"
 msgstr "Tamil"
 
-#: lib/languages:1113 src/frontends/qt4/GuiSymbols.cpp:71
+#: lib/languages:1115 src/frontends/qt4/GuiSymbols.cpp:71
 msgid "Telugu"
 msgstr "Telugu"
 
-#: lib/languages:1120 src/frontends/qt4/GuiSymbols.cpp:74
+#: lib/languages:1122 src/frontends/qt4/GuiSymbols.cpp:74
 msgid "Thai"
 msgstr "Thailandese"
 
-#: lib/languages:1134 src/frontends/qt4/GuiSymbols.cpp:76
+#: lib/languages:1136 src/frontends/qt4/GuiSymbols.cpp:76
 msgid "Tibetan"
 msgstr "Tibetano"
 
-#: lib/languages:1141
+#: lib/languages:1143
 msgid "Turkish"
 msgstr "Turco"
 
-#: lib/languages:1156
+#: lib/languages:1158
 msgid "Turkmen"
 msgstr "Turcomanno"
 
-#: lib/languages:1166
+#: lib/languages:1168
 msgid "Ukrainian"
 msgstr "Ucraino"
 
-#: lib/languages:1177
+#: lib/languages:1179
 msgid "Upper Sorbian"
 msgstr "Serbo"
 
-#: lib/languages:1187
+#: lib/languages:1189
 msgid "Urdu"
 msgstr "Urdu"
 
-#: lib/languages:1195
+#: lib/languages:1197
 msgid "Vietnamese"
 msgstr "Vietnamita"
 
-#: lib/languages:1204
+#: lib/languages:1206
 msgid "Welsh"
 msgstr "Gallese"
 
@@ -17832,14 +17906,18 @@ msgid "Label Only|L"
 msgstr "Solo etichetta|l"
 
 #: lib/ui/stdcontext.inc:99 lib/ui/stdcontext.inc:111 lib/ui/stdcontext.inc:121
-#: lib/ui/stdcontext.inc:129 lib/ui/stdcontext.inc:138 lib/ui/stdcontext.inc:149
-#: lib/ui/stdcontext.inc:156 lib/ui/stdcontext.inc:253 lib/ui/stdcontext.inc:271
-#: lib/ui/stdcontext.inc:298 lib/ui/stdcontext.inc:403 lib/ui/stdcontext.inc:416
-#: lib/ui/stdcontext.inc:468 lib/ui/stdcontext.inc:493 lib/ui/stdcontext.inc:517
-#: lib/ui/stdcontext.inc:528 lib/ui/stdcontext.inc:536 lib/ui/stdcontext.inc:546
-#: lib/ui/stdcontext.inc:554 lib/ui/stdcontext.inc:562 lib/ui/stdcontext.inc:570
-#: lib/ui/stdcontext.inc:583 lib/ui/stdcontext.inc:593 lib/ui/stdcontext.inc:614
-#: lib/ui/stdcontext.inc:622 lib/ui/stdcontext.inc:668 lib/ui/stdmenus.inc:550
+#: lib/ui/stdcontext.inc:129 lib/ui/stdcontext.inc:138
+#: lib/ui/stdcontext.inc:149 lib/ui/stdcontext.inc:156
+#: lib/ui/stdcontext.inc:253 lib/ui/stdcontext.inc:271
+#: lib/ui/stdcontext.inc:298 lib/ui/stdcontext.inc:403
+#: lib/ui/stdcontext.inc:416 lib/ui/stdcontext.inc:468
+#: lib/ui/stdcontext.inc:493 lib/ui/stdcontext.inc:517
+#: lib/ui/stdcontext.inc:528 lib/ui/stdcontext.inc:536
+#: lib/ui/stdcontext.inc:546 lib/ui/stdcontext.inc:554
+#: lib/ui/stdcontext.inc:562 lib/ui/stdcontext.inc:570
+#: lib/ui/stdcontext.inc:583 lib/ui/stdcontext.inc:593
+#: lib/ui/stdcontext.inc:614 lib/ui/stdcontext.inc:622
+#: lib/ui/stdcontext.inc:668 lib/ui/stdmenus.inc:550
 msgid "Settings...|S"
 msgstr "Impostazioni...|z"
 
@@ -17863,8 +17941,8 @@ msgstr "Apri inserto|o"
 msgid "Close Inset|C"
 msgstr "Chiudi inserto|C"
 
-#: lib/ui/stdcontext.inc:148 lib/ui/stdcontext.inc:154 lib/ui/stdcontext.inc:170
-#: lib/ui/stdcontext.inc:630
+#: lib/ui/stdcontext.inc:148 lib/ui/stdcontext.inc:154
+#: lib/ui/stdcontext.inc:170 lib/ui/stdcontext.inc:630
 msgid "Dissolve Inset|D"
 msgstr "Dissolvi inserto|s"
 
@@ -18252,7 +18330,8 @@ msgstr "Rimuovi ultimo argomento rilasciando a destra"
 msgid "Reload|R"
 msgstr "Ricarica|R"
 
-#: lib/ui/stdcontext.inc:406 lib/ui/stdcontext.inc:418 lib/ui/stdcontext.inc:538
+#: lib/ui/stdcontext.inc:406 lib/ui/stdcontext.inc:418
+#: lib/ui/stdcontext.inc:538
 msgid "Edit Externally...|x"
 msgstr "Modifica esternamente...|e"
 
@@ -20125,7 +20204,7 @@ msgid "Fractions"
 msgstr "Frazioni"
 
 #: lib/ui/stdtoolbars.inc:301 lib/ui/stdtoolbars.inc:406
-#: src/frontends/qt4/GuiDocument.cpp:1494
+#: src/frontends/qt4/GuiDocument.cpp:1493
 msgid "Fonts"
 msgstr "Caratteri"
 
@@ -24489,7 +24568,7 @@ msgstr "XPM"
 msgid "Plain text (chess output)"
 msgstr "Testo semplice (scacchi)"
 
-#: lib/configure.py:643 src/frontends/qt4/GuiDocument.cpp:1353
+#: lib/configure.py:643 src/frontends/qt4/GuiDocument.cpp:1352
 #: src/frontends/qt4/GuiErrorList.cpp:45
 msgid "DocBook"
 msgstr "DocBook"
@@ -24967,8 +25046,8 @@ msgstr ""
 "Occorre installare entrambi tali pacchetti o ridefinire \\lyxadded e "
 "\\lyxdeleted nel preambolo LaTeX."
 
-#: src/Buffer.cpp:1061 src/BufferParams.cpp:455 src/frontends/qt4/GuiLog.cpp:256
-#: src/insets/InsetIndex.cpp:455
+#: src/Buffer.cpp:1061 src/BufferParams.cpp:455
+#: src/frontends/qt4/GuiLog.cpp:256 src/insets/InsetIndex.cpp:455
 msgid "Index"
 msgstr "Indice"
 
@@ -25030,8 +25109,8 @@ msgstr "Lo script di conversione ha fallito"
 #: src/Buffer.cpp:1326
 #, c-format
 msgid ""
-"%1$s is from an older version of LyX and the lyx2lyx script failed to convert "
-"it."
+"%1$s is from an older version of LyX and the lyx2lyx script failed to "
+"convert it."
 msgstr ""
 "Il file %1$s è stato generato da una precedente\n"
 "versione di LyX e lo script lyx2lyx non è riuscito a convertirlo."
@@ -25167,12 +25246,13 @@ msgstr ""
 #: src/Buffer.cpp:1726
 #, c-format
 msgid "Could not find LaTeX command for character '%1$s' (code point %2$s)"
-msgstr "Comando LaTeX per il carattere '%1$s' (codice unicode %2$s) non trovato"
+msgstr ""
+"Comando LaTeX per il carattere '%1$s' (codice unicode %2$s) non trovato"
 
 #: src/Buffer.cpp:1729
 msgid ""
-"Some characters of your document are probably not representable in the chosen "
-"encoding.\n"
+"Some characters of your document are probably not representable in the "
+"chosen encoding.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
 "Alcuni caratteri del documento non sono probabilmente rappresentabili nella "
@@ -25241,8 +25321,8 @@ msgstr "Lingue incompatibili!"
 #: src/Buffer.cpp:1946
 #, c-format
 msgid ""
-"You cannot use the following languages together in one LaTeX document because "
-"they require conflicting language packages:\n"
+"You cannot use the following languages together in one LaTeX document "
+"because they require conflicting language packages:\n"
 "%1$s%2$s"
 msgstr ""
 "Le seguenti lingue non possono essere usate insieme in un documento LaTeX "
@@ -25543,8 +25623,8 @@ msgstr ""
 
 #: src/BufferParams.cpp:514
 msgid ""
-"The LaTeX package esint is only used if special integral symbols are inserted "
-"into formulas"
+"The LaTeX package esint is only used if special integral symbols are "
+"inserted into formulas"
 msgstr ""
 "Il pacchetto LaTeX esint sarà usato solo se simboli di\n"
 "integrale speciali vengono inseriti nelle formule"
@@ -25804,7 +25884,8 @@ msgstr "Statistiche"
 
 #: src/BufferView.cpp:1883
 #, c-format
-msgid "`inset-forall' interrupted because number of actions is larger than %1$d"
+msgid ""
+"`inset-forall' interrupted because number of actions is larger than %1$d"
 msgstr ""
 "`inset-forall' è stato interrotto perché il numero di azioni è maggiore di "
 "%1$d"
@@ -26304,8 +26385,8 @@ msgstr ""
 "<p>Il seguente comando LaTeX è stato configurato per consentire l'esecuzione "
 "di comandi esterni per qualsiasi documento:</p><center><p><tt>%1$s</tt></p></"
 "center><p>Questa è una configurazione rischiosa. Considerate di usare il "
-"supporto offerto da LyX per accordare questo privilegio solo ai documenti che "
-"lo necessitano.</p>"
+"supporto offerto da LyX per accordare questo privilegio solo ai documenti "
+"che lo necessitano.</p>"
 
 #: src/Converter.cpp:303
 msgid "Security Warning"
@@ -26328,14 +26409,14 @@ msgstr ""
 #, c-format
 msgid ""
 "<p>The requested operation requires the use of a converter from %2$s to %3$s:"
-"</p><blockquote><p><tt>%1$s</tt></p></blockquote><p>This external program can "
-"execute arbitrary commands on your system, including dangerous ones, if "
+"</p><blockquote><p><tt>%1$s</tt></p></blockquote><p>This external program "
+"can execute arbitrary commands on your system, including dangerous ones, if "
 "instructed to do so by a maliciously crafted LyX document.</p>"
 msgstr ""
-"<p>L'operazione richiesta necessita l'uso del seguente convertitore da %2$s a "
-"%3$s:</p><center><p><tt>%1$s</tt></p></center><p>Questo programma esterno può "
-"eseguire comandi arbitrari, inclusi quelli pericolosi, se viene istruito a "
-"farlo da un documento LyX dolosamente artefatto.</p>"
+"<p>L'operazione richiesta necessita l'uso del seguente convertitore da %2$s "
+"a %3$s:</p><center><p><tt>%1$s</tt></p></center><p>Questo programma esterno "
+"può eseguire comandi arbitrari, inclusi quelli pericolosi, se viene istruito "
+"a farlo da un documento LyX dolosamente artefatto.</p>"
 
 #: src/Converter.cpp:333
 msgid "An external converter is disabled for security reasons"
@@ -26349,9 +26430,9 @@ msgid ""
 "i>.)"
 msgstr ""
 "<p><b>Le impostazioni correnti impediscono la sua esecuzione.</b></"
-"p><p>(Questa impostazione può essere modificata in <i>Preferenze</i> &#x25b9; "
-"<i>Gestione file</i> &#x25b9; <i>Convertitori</i> togliendo la spunta a "
-"<i>Sicurezza</i> &#x25b9; <i>Non usare convertitori insicuri</i>.)"
+"p><p>(Questa impostazione può essere modificata in <i>Preferenze</i> "
+"&#x25b9; <i>Gestione file</i> &#x25b9; <i>Convertitori</i> togliendo la "
+"spunta a <i>Sicurezza</i> &#x25b9; <i>Non usare convertitori insicuri</i>.)"
 
 #: src/Converter.cpp:344
 msgid "A LaTeX backend requires your authorization"
@@ -26375,8 +26456,8 @@ msgid ""
 "<p>Would you like to run this converter?</p><p><b>Only run if you trust the "
 "origin/sender of the LyX document!</b></p>"
 msgstr ""
-"<p>Devo eseguire questo convertitore?</p><p><b>Si consiglia di eseguirlo solo "
-"se l'origine o mittente del documento LyX sono fidati!</b></p>"
+"<p>Devo eseguire questo convertitore?</p><p><b>Si consiglia di eseguirlo "
+"solo se l'origine o mittente del documento LyX sono fidati!</b></p>"
 
 #: src/Converter.cpp:355
 msgid "Do &not allow"
@@ -26416,11 +26497,11 @@ msgstr ""
 "Nessuna informazione per convertire i file di formato %1$s in %2$s.\n"
 "Occorre definire un convertitore nelle preferenze."
 
-#: src/Converter.cpp:540 src/frontends/qt4/GuiDocument.cpp:1633
+#: src/Converter.cpp:540 src/frontends/qt4/GuiDocument.cpp:1632
 msgid "Pygments driver command not found!"
 msgstr "Comando pilota di Pygments non trovato!"
 
-#: src/Converter.cpp:541 src/frontends/qt4/GuiDocument.cpp:1634
+#: src/Converter.cpp:541 src/frontends/qt4/GuiDocument.cpp:1633
 msgid ""
 "The driver command necessary to use the minted package\n"
 "(pygmentize) has not been found. Make sure you have\n"
@@ -26516,19 +26597,38 @@ msgstr "Output vuoto"
 msgid "No output file was generated."
 msgstr "Non è stato generato nessun file di output."
 
-#: src/Cursor.cpp:1075 src/Text.cpp:1957
+#: src/Cursor.cpp:1074 src/Text.cpp:1954
 msgid ", Inset: "
 msgstr ", Inserto: "
 
-#: src/Cursor.cpp:1076
+#: src/Cursor.cpp:1075
 msgid ", Cell: "
 msgstr ", Cella: "
 
-#: src/Cursor.cpp:1077 src/Text.cpp:1960
+#: src/Cursor.cpp:1076 src/Text.cpp:1957
 msgid ", Position: "
 msgstr ", Posizione: "
 
-#: src/CutAndPaste.cpp:370
+#: src/CutAndPaste.cpp:184
+#, c-format
+msgid ""
+"The character \"%1$s\" is uncodable in this verbatim context and thus has "
+"not been pasted."
+msgstr ""
+
+#: src/CutAndPaste.cpp:188
+#, c-format
+msgid ""
+"The characters \"%1$s\" are uncodable in this verbatim context and thus have "
+"not been pasted."
+msgstr ""
+
+#: src/CutAndPaste.cpp:231
+#, fuzzy
+msgid "Uncodable content"
+msgstr "Carattere intraducibili"
+
+#: src/CutAndPaste.cpp:405
 #, c-format
 msgid ""
 "The pasted branch \"%1$s\" is undefined.\n"
@@ -26537,40 +26637,40 @@ msgstr ""
 "Il ramo incollato \"%1$s\" non è definito.\n"
 "Volete aggiungerlo alla lista dei rami del documento?"
 
-#: src/CutAndPaste.cpp:373
+#: src/CutAndPaste.cpp:408
 msgid "Unknown branch"
 msgstr "Ramo sconosciuto"
 
-#: src/CutAndPaste.cpp:374
+#: src/CutAndPaste.cpp:409
 msgid "&Don't Add"
 msgstr "&Non aggiungerlo"
 
-#: src/CutAndPaste.cpp:760 src/Text.cpp:393
+#: src/CutAndPaste.cpp:795 src/Text.cpp:393
 #, c-format
 msgid "Layout `%1$s' was not found."
 msgstr "Layout `%1$s' non trovato."
 
-#: src/CutAndPaste.cpp:761 src/Text.cpp:394
+#: src/CutAndPaste.cpp:796 src/Text.cpp:394
 msgid "Layout Not Found"
 msgstr "Layout non trovato"
 
-#: src/CutAndPaste.cpp:789
+#: src/CutAndPaste.cpp:824
 #, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr ""
 "L'inserto flessibile %1$s non è definito dopo l'aggiornamento del layout `"
 "%2$s'."
 
-#: src/CutAndPaste.cpp:792
+#: src/CutAndPaste.cpp:827
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
 "%3$s'."
 msgstr ""
-"L'inserto flessibile %1$s non è definito a causa della conversione del layout "
-"da `%2$s' a `%3$s'."
+"L'inserto flessibile %1$s non è definito a causa della conversione del "
+"layout da `%2$s' a `%3$s'."
 
-#: src/CutAndPaste.cpp:797
+#: src/CutAndPaste.cpp:832
 msgid "Undefined flex inset"
 msgstr "Inserto flessibile non definito"
 
@@ -26611,17 +26711,17 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "È fallita la copia di %1$s su %2$s."
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:137
-#: src/frontends/qt4/GuiDocument.cpp:4201 src/frontends/qt4/GuiListings.cpp:161
+#: src/frontends/qt4/GuiDocument.cpp:4200 src/frontends/qt4/GuiListings.cpp:161
 msgid "Roman"
 msgstr "Romano"
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:138
-#: src/frontends/qt4/GuiDocument.cpp:4201 src/frontends/qt4/GuiListings.cpp:161
+#: src/frontends/qt4/GuiDocument.cpp:4200 src/frontends/qt4/GuiListings.cpp:161
 msgid "Sans Serif"
 msgstr "Senza Grazie"
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:139
-#: src/frontends/qt4/GuiDocument.cpp:4201 src/frontends/qt4/GuiListings.cpp:161
+#: src/frontends/qt4/GuiDocument.cpp:4200 src/frontends/qt4/GuiListings.cpp:161
 msgid "Typewriter"
 msgstr "Monospazio"
 
@@ -26887,9 +26987,9 @@ msgid ""
 "without checking your LaTeX installation, or continue."
 msgstr ""
 "La funzionalità di LyX sarà minima perché non è stata trovata nessuna classe "
-"di documento. Potete provare ad eseguire una riconfigurazione normale, oppure "
-"una riconfigurazione senza verifica dell'installazione LaTeX (solo le classi "
-"predefinite saranno disponibili), oppure continuare."
+"di documento. Potete provare ad eseguire una riconfigurazione normale, "
+"oppure una riconfigurazione senza verifica dell'installazione LaTeX (solo le "
+"classi predefinite saranno disponibili), oppure continuare."
 
 #: src/LyX.cpp:598
 msgid "&Reconfigure"
@@ -27018,7 +27118,8 @@ msgid ""
 "                  where fmt is the export format of choice. Look in\n"
 "                  Tools->Preferences->File Handling->File Formats->Short "
 "Name\n"
-"                  to see which parameter (which differs from the format name\n"
+"                  to see which parameter (which differs from the format "
+"name\n"
 "                  in the File->Export menu) should be passed. To export to\n"
 "                  the document's default output format, use 'default'.\n"
 "                  Note that the order of -e and -x switches matters.\n"
@@ -27030,9 +27131,12 @@ msgid ""
 "                  and file.xxx is the file to be imported.\n"
 "\t-f [--force-overwrite] what\n"
 "                  where what is either `all', `main' or `none',\n"
-"                  specifying whether all files, main file only, or no files,\n"
-"                  respectively, are to be overwritten during a batch export.\n"
-"                  Anything else is equivalent to `all', but is not consumed.\n"
+"                  specifying whether all files, main file only, or no "
+"files,\n"
+"                  respectively, are to be overwritten during a batch "
+"export.\n"
+"                  Anything else is equivalent to `all', but is not "
+"consumed.\n"
 "\t--ignore-error-message which\n"
 "                  allows you to ignore specific LaTeX error messages.\n"
 "                  Do not use for final documents! Currently supported "
@@ -27179,7 +27283,8 @@ msgstr ""
 "quelle predefinite dopo un cambiamento di classe."
 
 #: src/LyXRC.cpp:3091
-msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid ""
+"The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Intervallo di tempo tra due autosalvataggi (in secondi): 0 significa nessun "
 "autosalvataggio."
@@ -27228,16 +27333,16 @@ msgstr ""
 
 #: src/LyXRC.cpp:3125
 msgid ""
-"Forbid use of external converters with 'needauth' option to prevent undesired "
-"effects."
+"Forbid use of external converters with 'needauth' option to prevent "
+"undesired effects."
 msgstr ""
 "Impedisci l'uso di convertitori esterni insicuri per prevenire effetti "
 "indesiderati."
 
 #: src/LyXRC.cpp:3129
 msgid ""
-"Ask user before calling external converters with 'needauth' option to prevent "
-"undesired effects."
+"Ask user before calling external converters with 'needauth' option to "
+"prevent undesired effects."
 msgstr ""
 "Richiedi autorizzazione prima di eseguire convertitori esterni insicuri per "
 "prevenire effetti indesiderati."
@@ -27247,8 +27352,8 @@ msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
 msgstr ""
-"Normalmente LyX non aggiorna la posizione del cursore se non muovete la barra "
-"di scorrimento. Impostare su \"vero\" se si preferisce avere sempre il "
+"Normalmente LyX non aggiorna la posizione del cursore se non muovete la "
+"barra di scorrimento. Impostare su \"vero\" se si preferisce avere sempre il "
 "cursore sullo schermo."
 
 #: src/LyXRC.cpp:3144
@@ -27259,8 +27364,8 @@ msgid ""
 msgstr ""
 "Normalmente LyX non consente di far scorrere il documento oltre il suo "
 "fondo.\n"
-"Impostare a vero se si preferisce far scorrere il fondo del documento in cima "
-"allo schermo."
+"Impostare a vero se si preferisce far scorrere il fondo del documento in "
+"cima allo schermo."
 
 #: src/LyXRC.cpp:3148
 msgid "Make Apple key act as Meta and Control key as Ctrl."
@@ -27275,8 +27380,8 @@ msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
 msgstr ""
-"Visualizza una cornice attorno a una macro matematica con il nome della macro "
-"quando il cursore è all'interno."
+"Visualizza una cornice attorno a una macro matematica con il nome della "
+"macro quando il cursore è all'interno."
 
 #: src/LyXRC.cpp:3161
 #, no-c-format
@@ -27321,8 +27426,8 @@ msgstr "Scegliere come LyX mostrerà ogni grafico."
 
 #: src/LyXRC.cpp:3185
 msgid ""
-"The default path for your documents. An empty value selects the directory LyX "
-"was started from."
+"The default path for your documents. An empty value selects the directory "
+"LyX was started from."
 msgstr ""
 "Cartella prestabilita per i documenti. Un valore vuoto seleziona la cartella "
 "da cui LyX è stato avviato."
@@ -27334,19 +27439,19 @@ msgstr ""
 
 #: src/LyXRC.cpp:3193
 msgid ""
-"The path that LyX will set when offering to choose an example. An empty value "
-"selects the directory LyX was started from."
+"The path that LyX will set when offering to choose an example. An empty "
+"value selects the directory LyX was started from."
 msgstr ""
-"È il percorso che LyX imposta quando offre di scegliere un esempio. Un valore "
-"vuoto seleziona la cartella da cui LyX è stato avviato."
+"È il percorso che LyX imposta quando offre di scegliere un esempio. Un "
+"valore vuoto seleziona la cartella da cui LyX è stato avviato."
 
 #: src/LyXRC.cpp:3197
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
 msgstr ""
-"Codifica dei caratteri usata per il pacchetto LaTeX2e fontenc. La codifica T1 "
-"è altamente raccomandata per lingue diverse dall'Inglese."
+"Codifica dei caratteri usata per il pacchetto LaTeX2e fontenc. La codifica "
+"T1 è altamente raccomandata per lingue diverse dall'Inglese."
 
 #: src/LyXRC.cpp:3204
 msgid ""
@@ -27354,9 +27459,9 @@ msgid ""
 "compiler. E.g., using xindy/make-rules, the command string would be "
 "\"makeindex.sh -m $$lang\"."
 msgstr ""
-"Definire le opzioni di makeindex (vedere man makeindex) oppure selezionare un "
-"compilatore alternativo. Per esempio, usando xindy/make-rules, la stringa di "
-"comando sarebbe \"makeindex.sh -m $$lang\"."
+"Definire le opzioni di makeindex (vedere man makeindex) oppure selezionare "
+"un compilatore alternativo. Per esempio, usando xindy/make-rules, la stringa "
+"di comando sarebbe \"makeindex.sh -m $$lang\"."
 
 #: src/LyXRC.cpp:3208
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
@@ -27408,8 +27513,8 @@ msgid ""
 "name of the second language."
 msgstr ""
 "È il comando LaTeX per passare dalla lingua del documento ad un'altra. Cioè: "
-"\\selectlanguage{$$lang} dove $$lang deve essere sostituito con il nome della "
-"seconda lingua."
+"\\selectlanguage{$$lang} dove $$lang deve essere sostituito con il nome "
+"della seconda lingua."
 
 #: src/LyXRC.cpp:3241
 msgid "The LaTeX command for changing back to the language of the document."
@@ -27440,8 +27545,8 @@ msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
 msgstr ""
-"Deselezionare se non si vuole usare babel quando la lingua del documento è la "
-"lingua predefinita."
+"Deselezionare se non si vuole usare babel quando la lingua del documento è "
+"la lingua predefinita."
 
 #: src/LyXRC.cpp:3261
 msgid "De-select if you do not want LyX to scroll to saved position."
@@ -27497,8 +27602,8 @@ msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
 msgstr ""
-"Visualizza un piccolo triangolo sul cursore per indicare che è disponibile un "
-"suggerimento."
+"Visualizza un piccolo triangolo sul cursore per indicare che è disponibile "
+"un suggerimento."
 
 #: src/LyXRC.cpp:3301
 msgid "The inline completion delay."
@@ -27525,8 +27630,8 @@ msgstr "Consenti scorciatoie tipo TeXmacs, ad esempio => diventa \\Rightarrow."
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
-"Massimo numero di ultimi file aperti. Nel menù ne possono apparire al massimo "
-"%1$d."
+"Massimo numero di ultimi file aperti. Nel menù ne possono apparire al "
+"massimo %1$d."
 
 #: src/LyXRC.cpp:3326
 msgid ""
@@ -27613,8 +27718,8 @@ msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
 "roughly the same size as on paper."
 msgstr ""
-"Percentuale di zoom per i caratteri su schermo. Una scelta del 100% renderà i "
-"caratteri approssimativamente della stessa dimensione di quelli su carta."
+"Percentuale di zoom per i caratteri su schermo. Una scelta del 100% renderà "
+"i caratteri approssimativamente della stessa dimensione di quelli su carta."
 
 #: src/LyXRC.cpp:3392
 msgid "Allow session manager to save and restore windows geometry."
@@ -27648,11 +27753,11 @@ msgstr "Questo è il posto dove si trovano i file del dizionario lessicale."
 
 #: src/LyXRC.cpp:3415
 msgid ""
-"The path that LyX will set when offering to choose a template. An empty value "
-"selects the directory LyX was started from."
+"The path that LyX will set when offering to choose a template. An empty "
+"value selects the directory LyX was started from."
 msgstr ""
-"È il percorso che LyX imposta quando offre di scegliere un modello. Un valore "
-"vuoto seleziona la cartella da cui LyX è stato avviato."
+"È il percorso che LyX imposta quando offre di scegliere un modello. Un "
+"valore vuoto seleziona la cartella da cui LyX è stato avviato."
 
 #: src/LyXRC.cpp:3425
 msgid ""
@@ -27694,8 +27799,8 @@ msgstr "Abilita la cache grafica del testo (utile solo per Mac e Windows)."
 #: src/LyXRC.cpp:3454
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
-"Specifica il comando carta al visualizzatore DVI (lasciare vuoto oppure usare "
-"\"-paper\")."
+"Specifica il comando carta al visualizzatore DVI (lasciare vuoto oppure "
+"usare \"-paper\")."
 
 #: src/LyXVC.cpp:49
 #, c-format
@@ -27821,55 +27926,56 @@ msgstr ""
 "Non si possono inserire due spazi in questo modo. Per favore, leggete il "
 "Tutorial!"
 
-#: src/Text.cpp:944
-msgid "Character is uncodable in verbatim paragraphs."
+#: src/Text.cpp:941
+#, fuzzy
+msgid "Character is uncodable in this verbatim context."
 msgstr "Carattere intraducibile in paragrafi testuali."
 
-#: src/Text.cpp:1907
+#: src/Text.cpp:1904
 msgid "[Change Tracking] "
 msgstr "[Tracciamento modifiche] "
 
-#: src/Text.cpp:1915
+#: src/Text.cpp:1912
 #, c-format
 msgid "Changed by %1$s[[author]] on %2$s[[date]]. "
 msgstr "Modificato da %1$s il %2$s. "
 
-#: src/Text.cpp:1925 src/mathed/InsetMathFont.cpp:237
+#: src/Text.cpp:1922 src/mathed/InsetMathFont.cpp:237
 #: src/mathed/InsetMathFontOld.cpp:111
 #, c-format
 msgid "Font: %1$s"
 msgstr "Carattere: %1$s"
 
-#: src/Text.cpp:1930
+#: src/Text.cpp:1927
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", Rientro: %1$d"
 
-#: src/Text.cpp:1936
+#: src/Text.cpp:1933
 msgid ", Spacing: "
 msgstr ", Spaziatura: "
 
-#: src/Text.cpp:1942 src/frontends/qt4/GuiDocument.cpp:751
+#: src/Text.cpp:1939 src/frontends/qt4/GuiDocument.cpp:751
 msgid "OneHalf"
 msgstr "Uno e mezzo"
 
-#: src/Text.cpp:1948
+#: src/Text.cpp:1945
 msgid "Other ("
 msgstr "Altro ("
 
-#: src/Text.cpp:1958
+#: src/Text.cpp:1955
 msgid ", Paragraph: "
 msgstr ", Paragrafo: "
 
-#: src/Text.cpp:1959
+#: src/Text.cpp:1956
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1966
+#: src/Text.cpp:1963
 msgid ", Char: 0x"
 msgstr ", Car: 0x"
 
-#: src/Text.cpp:1968
+#: src/Text.cpp:1965
 msgid ", Boundary: "
 msgstr ", Confine: "
 
@@ -28071,7 +28177,7 @@ msgstr "Citazioni"
 msgid "Labels and References"
 msgstr "Etichette e riferimenti"
 
-#: src/TocBackend.cpp:285 src/frontends/qt4/GuiDocument.cpp:1491
+#: src/TocBackend.cpp:285 src/frontends/qt4/GuiDocument.cpp:1490
 msgid "Child Documents"
 msgstr "Documenti figlio"
 
@@ -28520,8 +28626,8 @@ msgstr ""
 #: src/frontends/qt4/GuiAbout.cpp:53 src/frontends/qt4/GuiAbout.cpp:59
 msgid "amount of work other people have done for the LyX project."
 msgstr ""
-"mole di lavoro che altre persone hanno fatto e stanno facendo per il progetto "
-"LyX!"
+"mole di lavoro che altre persone hanno fatto e stanno facendo per il "
+"progetto LyX!"
 
 #: src/frontends/qt4/GuiAbout.cpp:57
 msgid "ERROR: LyX wasn't able to read the CREDITS file\n"
@@ -28554,21 +28660,21 @@ msgstr ""
 
 #: src/frontends/qt4/GuiAbout.cpp:191
 msgid ""
-"This program is free software; you can redistribute it and/or modify it under "
-"the terms of the GNU General Public License as published by the Free Software "
-"Foundation; either version 2 of the License, or (at your option) any later "
-"version."
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version."
 msgstr ""
 "Questo programma è software libero; può essere ridistribuito e/o modificato "
-"secondo i termini della GNU General Public License così come pubblicata dalla "
-"Free Software Foundation; sia secondo la versione 2 della Licenza, o (a "
-"vostra discrezione) qualsiasi altra versione successiva."
+"secondo i termini della GNU General Public License così come pubblicata "
+"dalla Free Software Foundation; sia secondo la versione 2 della Licenza, o "
+"(a vostra discrezione) qualsiasi altra versione successiva."
 
 #: src/frontends/qt4/GuiAbout.cpp:197
 msgid ""
 "LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR "
-"A PARTICULAR PURPOSE.\n"
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE.\n"
 "See the GNU General Public License for more details.\n"
 "You should have received a copy of the GNU General Public License along with "
 "this program; if not, write to the Free Software Foundation, Inc., 51 "
@@ -28580,7 +28686,8 @@ msgstr ""
 "Consultate la GNU General Public License (GPL) per ulteriori dettagli.\n"
 "Dovreste aver ricevuto una copia della GNU General Public License (GPL) "
 "insieme a questo programma; se così non fosse, scrivete alla Free Software "
-"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
+"Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, "
+"USA."
 
 #: src/frontends/qt4/GuiAbout.cpp:210
 msgid "not released yet"
@@ -28853,7 +28960,7 @@ msgstr "tutte le unità con riferimenti"
 
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
-#: src/frontends/qt4/GuiDocument.cpp:2378 src/frontends/qt4/GuiExternal.cpp:675
+#: src/frontends/qt4/GuiDocument.cpp:2377 src/frontends/qt4/GuiExternal.cpp:675
 #: src/frontends/qt4/GuiGraphics.cpp:793 src/frontends/qt4/GuiInclude.cpp:330
 #: src/frontends/qt4/GuiView.cpp:2196 src/frontends/qt4/GuiView.cpp:2253
 #: src/frontends/qt4/GuiView.cpp:2391 src/frontends/qt4/GuiView.cpp:2524
@@ -28939,7 +29046,8 @@ msgid "Filename Suffix"
 msgstr "Suffisso del nome del file"
 
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
-#: src/frontends/qt4/GuiDocument.cpp:2776 src/frontends/qt4/GuiDocument.cpp:3934
+#: src/frontends/qt4/GuiDocument.cpp:2775
+#: src/frontends/qt4/GuiDocument.cpp:3933
 #: src/frontends/qt4/GuiProgressView.cpp:144
 #: src/frontends/qt4/GuiProgressView.cpp:158
 #: src/frontends/qt4/GuiProgressView.cpp:179
@@ -28947,8 +29055,9 @@ msgid "Yes"
 msgstr "Sì"
 
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
-#: src/frontends/qt4/GuiDocument.cpp:2775 src/frontends/qt4/GuiDocument.cpp:3332
-#: src/frontends/qt4/GuiDocument.cpp:3933
+#: src/frontends/qt4/GuiDocument.cpp:2774
+#: src/frontends/qt4/GuiDocument.cpp:3331
+#: src/frontends/qt4/GuiDocument.cpp:3932
 #: src/frontends/qt4/GuiProgressView.cpp:110
 #: src/frontends/qt4/GuiProgressView.cpp:143
 #: src/frontends/qt4/GuiProgressView.cpp:179
@@ -28998,7 +29107,8 @@ msgstr "Data della modifica: %1\n"
 
 #: src/frontends/qt4/GuiCharacter.cpp:49 src/frontends/qt4/GuiCharacter.cpp:62
 #: src/frontends/qt4/GuiCharacter.cpp:83 src/frontends/qt4/GuiCharacter.cpp:125
-#: src/frontends/qt4/GuiCharacter.cpp:136 src/frontends/qt4/GuiCharacter.cpp:179
+#: src/frontends/qt4/GuiCharacter.cpp:136
+#: src/frontends/qt4/GuiCharacter.cpp:179
 #: src/frontends/qt4/GuiCharacter.cpp:229
 msgid "No change"
 msgstr "Nessuna modifica"
@@ -29009,7 +29119,8 @@ msgstr "Maiuscoletto"
 
 #: src/frontends/qt4/GuiCharacter.cpp:54 src/frontends/qt4/GuiCharacter.cpp:75
 #: src/frontends/qt4/GuiCharacter.cpp:91 src/frontends/qt4/GuiCharacter.cpp:128
-#: src/frontends/qt4/GuiCharacter.cpp:140 src/frontends/qt4/GuiCharacter.cpp:193
+#: src/frontends/qt4/GuiCharacter.cpp:140
+#: src/frontends/qt4/GuiCharacter.cpp:193
 #: src/frontends/qt4/GuiCharacter.cpp:228
 msgid "Reset"
 msgstr "Reimposta"
@@ -29116,7 +29227,8 @@ msgid "Enter string to filter the list of available citations"
 msgstr "Inserire la maschera per filtrare la lista delle citazioni disponibili"
 
 #: src/frontends/qt4/GuiCitation.cpp:578
-msgid "Enter string to filter the list of available citations and press <Enter>"
+msgid ""
+"Enter string to filter the list of available citations and press <Enter>"
 msgstr ""
 "Inserire la maschera per filtrare la lista delle citazioni disponibili e "
 "premere Invio"
@@ -29236,8 +29348,10 @@ msgstr "Fissa (Bigg)"
 msgid "Math Delimiter"
 msgstr "Delimitatori matematici"
 
-#: src/frontends/qt4/GuiDelimiter.cpp:244 src/frontends/qt4/GuiDelimiter.cpp:245
-#: src/frontends/qt4/GuiDelimiter.cpp:436 src/frontends/qt4/GuiDelimiter.cpp:438
+#: src/frontends/qt4/GuiDelimiter.cpp:244
+#: src/frontends/qt4/GuiDelimiter.cpp:245
+#: src/frontends/qt4/GuiDelimiter.cpp:436
+#: src/frontends/qt4/GuiDelimiter.cpp:438
 msgid "(None)"
 msgstr "(Nessuno)"
 
@@ -29454,54 +29568,55 @@ msgstr "JIS B6"
 msgid "Language Default (no inputenc)"
 msgstr "Default di lingua (no inputenc)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1131
+#: src/frontends/qt4/GuiDocument.cpp:1130
 msgid "Numbered"
 msgstr "Numerato"
 
-#: src/frontends/qt4/GuiDocument.cpp:1132
+#: src/frontends/qt4/GuiDocument.cpp:1131
 msgid "Appears in TOC"
 msgstr "Appare nell'indice"
 
-#: src/frontends/qt4/GuiDocument.cpp:1210
+#: src/frontends/qt4/GuiDocument.cpp:1209
 msgid "Package"
 msgstr "Pacchetto"
 
-#: src/frontends/qt4/GuiDocument.cpp:1210
+#: src/frontends/qt4/GuiDocument.cpp:1209
 msgid "Load automatically"
 msgstr "Usato in automatico"
 
-#: src/frontends/qt4/GuiDocument.cpp:1211
+#: src/frontends/qt4/GuiDocument.cpp:1210
 msgid "Load always"
 msgstr "Usato sempre"
 
-#: src/frontends/qt4/GuiDocument.cpp:1211
+#: src/frontends/qt4/GuiDocument.cpp:1210
 msgid "Do not load"
 msgstr "Non usato"
 
-#: src/frontends/qt4/GuiDocument.cpp:1224
+#: src/frontends/qt4/GuiDocument.cpp:1223
 msgid "The AMS LaTeX packages are always used"
 msgstr "Il pacchetto LaTeX amsmath sarà sempre usato"
 
-#: src/frontends/qt4/GuiDocument.cpp:1227
+#: src/frontends/qt4/GuiDocument.cpp:1226
 #, c-format
 msgid "The LaTeX package %1$s is always used"
 msgstr "Il pacchetto LaTeX %1$s sarà sempre usato"
 
-#: src/frontends/qt4/GuiDocument.cpp:1232
+#: src/frontends/qt4/GuiDocument.cpp:1231
 msgid "The AMS LaTeX packages are never used"
 msgstr "Il pacchetto LaTeX amsmath non sarà mai usato"
 
-#: src/frontends/qt4/GuiDocument.cpp:1235
+#: src/frontends/qt4/GuiDocument.cpp:1234
 #, c-format
 msgid "The LaTeX package %1$s is never used"
 msgstr "Il pacchetto LaTeX %1$s non sarà mai usato"
 
-#: src/frontends/qt4/GuiDocument.cpp:1351 src/frontends/qt4/GuiDocument.cpp:2357
+#: src/frontends/qt4/GuiDocument.cpp:1350
+#: src/frontends/qt4/GuiDocument.cpp:2356
 #, c-format
 msgid "%1$s [Class '%2$s']"
 msgstr "%1$s [Classe '%2$s']"
 
-#: src/frontends/qt4/GuiDocument.cpp:1354
+#: src/frontends/qt4/GuiDocument.cpp:1353
 #, c-format
 msgid ""
 "Class not found by LyX. Please check if you have the matching %1$s class and "
@@ -29510,107 +29625,113 @@ msgstr ""
 "Classe non trovata da LyX. Verificate di avere installato la corrispondente "
 "classe %1$s e tutti i pacchetti necessari (%2$s)."
 
-#: src/frontends/qt4/GuiDocument.cpp:1483 src/frontends/qt4/GuiDocument.cpp:1619
+#: src/frontends/qt4/GuiDocument.cpp:1482
+#: src/frontends/qt4/GuiDocument.cpp:1618
 msgid "Input listings parameters below. Enter ? for a list of parameters."
 msgstr ""
 "Inserire qui sotto i parametri per il listato. Digitare ? per una lista dei "
 "parametri."
 
-#: src/frontends/qt4/GuiDocument.cpp:1490
+#: src/frontends/qt4/GuiDocument.cpp:1489
 msgid "Document Class"
 msgstr "Classe documento"
 
-#: src/frontends/qt4/GuiDocument.cpp:1492
+#: src/frontends/qt4/GuiDocument.cpp:1491
 msgid "Modules"
 msgstr "Moduli"
 
-#: src/frontends/qt4/GuiDocument.cpp:1493
+#: src/frontends/qt4/GuiDocument.cpp:1492
 msgid "Local Layout"
 msgstr "Layout locale"
 
-#: src/frontends/qt4/GuiDocument.cpp:1495
+#: src/frontends/qt4/GuiDocument.cpp:1494
 msgid "Text Layout"
 msgstr "Struttura testo"
 
-#: src/frontends/qt4/GuiDocument.cpp:1497
+#: src/frontends/qt4/GuiDocument.cpp:1496
 msgid "Page Margins"
 msgstr "Margini"
 
-#: src/frontends/qt4/GuiDocument.cpp:1499 src/frontends/qt4/GuiPrefs.cpp:1185
+#: src/frontends/qt4/GuiDocument.cpp:1498 src/frontends/qt4/GuiPrefs.cpp:1185
 msgid "Colors"
 msgstr "Colori"
 
-#: src/frontends/qt4/GuiDocument.cpp:1500
+#: src/frontends/qt4/GuiDocument.cpp:1499
 msgid "Numbering & TOC"
 msgstr "Numerazione & Indice"
 
-#: src/frontends/qt4/GuiDocument.cpp:1502
+#: src/frontends/qt4/GuiDocument.cpp:1501
 msgid "Indexes"
 msgstr "Indici"
 
-#: src/frontends/qt4/GuiDocument.cpp:1503
+#: src/frontends/qt4/GuiDocument.cpp:1502
 msgid "PDF Properties"
 msgstr "Proprietà PDF"
 
-#: src/frontends/qt4/GuiDocument.cpp:1504
+#: src/frontends/qt4/GuiDocument.cpp:1503
 msgid "Math Options"
 msgstr "Opzioni matematiche"
 
-#: src/frontends/qt4/GuiDocument.cpp:1505
+#: src/frontends/qt4/GuiDocument.cpp:1504
 msgid "Float Placement"
 msgstr "Posizione oggetti flottanti"
 
-#: src/frontends/qt4/GuiDocument.cpp:1507
+#: src/frontends/qt4/GuiDocument.cpp:1506
 msgid "Bullets"
 msgstr "Elenchi puntati"
 
-#: src/frontends/qt4/GuiDocument.cpp:1509
+#: src/frontends/qt4/GuiDocument.cpp:1508
 msgid "Formats[[output]]"
 msgstr "Formati"
 
-#: src/frontends/qt4/GuiDocument.cpp:1510
+#: src/frontends/qt4/GuiDocument.cpp:1509
 msgid "LaTeX Preamble"
 msgstr "Preambolo di LaTeX"
 
-#: src/frontends/qt4/GuiDocument.cpp:1810 src/frontends/qt4/GuiDocument.cpp:1840
+#: src/frontends/qt4/GuiDocument.cpp:1809
+#: src/frontends/qt4/GuiDocument.cpp:1839
 msgid "&Default..."
 msgstr "&Predefinito..."
 
-#: src/frontends/qt4/GuiDocument.cpp:2139 src/frontends/qt4/GuiDocument.cpp:3694
-#: src/frontends/qt4/GuiDocument.cpp:3703 src/frontends/qt4/GuiDocument.cpp:3712
-#: src/frontends/qt4/GuiDocument.cpp:3721
+#: src/frontends/qt4/GuiDocument.cpp:2138
+#: src/frontends/qt4/GuiDocument.cpp:3693
+#: src/frontends/qt4/GuiDocument.cpp:3702
+#: src/frontends/qt4/GuiDocument.cpp:3711
+#: src/frontends/qt4/GuiDocument.cpp:3720
 msgid " (not installed)"
 msgstr " (non installato)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2164
+#: src/frontends/qt4/GuiDocument.cpp:2163
 msgid "Non-TeX Fonts Default"
 msgstr "Predefinito (caratteri non-TeX)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2166
+#: src/frontends/qt4/GuiDocument.cpp:2165
 msgid " (not available)"
 msgstr "(non disponibile)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2167
+#: src/frontends/qt4/GuiDocument.cpp:2166
 msgid "Class Default (TeX Fonts)"
 msgstr "Predefinito (caratteri TeX)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2205 src/frontends/qt4/GuiDocument.cpp:2232
+#: src/frontends/qt4/GuiDocument.cpp:2204
+#: src/frontends/qt4/GuiDocument.cpp:2231
 msgid "Class Default"
 msgstr "Predefinito"
 
-#: src/frontends/qt4/GuiDocument.cpp:2309
+#: src/frontends/qt4/GuiDocument.cpp:2308
 msgid "Layouts|#o#O"
 msgstr "Layout|#o#O"
 
-#: src/frontends/qt4/GuiDocument.cpp:2311
+#: src/frontends/qt4/GuiDocument.cpp:2310
 msgid "LyX Layout (*.layout)"
 msgstr "Layout LyX (*.layout)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2313 src/frontends/qt4/GuiDocument.cpp:2322
+#: src/frontends/qt4/GuiDocument.cpp:2312
+#: src/frontends/qt4/GuiDocument.cpp:2321
 msgid "Local layout file"
 msgstr "File di layout locale"
 
-#: src/frontends/qt4/GuiDocument.cpp:2323
+#: src/frontends/qt4/GuiDocument.cpp:2322
 msgid ""
 "The layout file you have selected is a local layout\n"
 "file, not one in the system or user directory.\n"
@@ -29622,33 +29743,35 @@ msgstr ""
 "Il documento non sarà usabile se il file di\n"
 "layout viene spostato in un'altra cartella."
 
-#: src/frontends/qt4/GuiDocument.cpp:2327
+#: src/frontends/qt4/GuiDocument.cpp:2326
 msgid "&Set Layout"
 msgstr "Impo&sta layout"
 
-#: src/frontends/qt4/GuiDocument.cpp:2341
+#: src/frontends/qt4/GuiDocument.cpp:2340
 msgid "Unable to read local layout file."
 msgstr "Impossibile leggere il file di layout locale."
 
-#: src/frontends/qt4/GuiDocument.cpp:2358
+#: src/frontends/qt4/GuiDocument.cpp:2357
 msgid "This is a local layout file."
 msgstr "Questo è un file di layout locale."
 
-#: src/frontends/qt4/GuiDocument.cpp:2372
+#: src/frontends/qt4/GuiDocument.cpp:2371
 msgid "Select master document"
 msgstr "Selezionare documento padre"
 
-#: src/frontends/qt4/GuiDocument.cpp:2376
+#: src/frontends/qt4/GuiDocument.cpp:2375
 msgid "LyX Files (*.lyx)"
 msgstr "File LyX (*.lyx)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2400 src/frontends/qt4/GuiDocument.cpp:2680
-#: src/frontends/qt4/GuiDocument.cpp:4135
+#: src/frontends/qt4/GuiDocument.cpp:2399
+#: src/frontends/qt4/GuiDocument.cpp:2679
+#: src/frontends/qt4/GuiDocument.cpp:4134
 msgid "Unapplied changes"
 msgstr "Modifiche non salvate"
 
-#: src/frontends/qt4/GuiDocument.cpp:2401 src/frontends/qt4/GuiDocument.cpp:2681
-#: src/frontends/qt4/GuiDocument.cpp:4136
+#: src/frontends/qt4/GuiDocument.cpp:2400
+#: src/frontends/qt4/GuiDocument.cpp:2680
+#: src/frontends/qt4/GuiDocument.cpp:4135
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -29656,129 +29779,131 @@ msgstr ""
 "Alcune modifiche nella finestra di dialogo non sono state ancora applicate.\n"
 "Se non lo fate adesso, verranno abbandonate dopo questa azione."
 
-#: src/frontends/qt4/GuiDocument.cpp:2403 src/frontends/qt4/GuiDocument.cpp:2683
-#: src/frontends/qt4/GuiDocument.cpp:4138
+#: src/frontends/qt4/GuiDocument.cpp:2402
+#: src/frontends/qt4/GuiDocument.cpp:2682
+#: src/frontends/qt4/GuiDocument.cpp:4137
 msgid "&Dismiss"
 msgstr "&Abbandona"
 
-#: src/frontends/qt4/GuiDocument.cpp:2414 src/frontends/qt4/GuiDocument.cpp:4146
+#: src/frontends/qt4/GuiDocument.cpp:2413
+#: src/frontends/qt4/GuiDocument.cpp:4145
 msgid "Unable to set document class."
 msgstr "Non è possibile impostare la classe del documento."
 
-#: src/frontends/qt4/GuiDocument.cpp:2558
+#: src/frontends/qt4/GuiDocument.cpp:2557
 msgid "Basic numerical"
 msgstr "Essenziale numerico"
 
-#: src/frontends/qt4/GuiDocument.cpp:2561
+#: src/frontends/qt4/GuiDocument.cpp:2560
 msgid "Author-year"
 msgstr "Autore-anno"
 
-#: src/frontends/qt4/GuiDocument.cpp:2564
+#: src/frontends/qt4/GuiDocument.cpp:2563
 msgid "Author-number"
 msgstr "Autore-numero"
 
-#: src/frontends/qt4/GuiDocument.cpp:2607
+#: src/frontends/qt4/GuiDocument.cpp:2606
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s e %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:2614
+#: src/frontends/qt4/GuiDocument.cpp:2613
 #, c-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:2619
+#: src/frontends/qt4/GuiDocument.cpp:2618
 #, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s, %2$s, e %3$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:2633
+#: src/frontends/qt4/GuiDocument.cpp:2632
 #, c-format
 msgid "%1$s (unavailable)"
 msgstr "%1$s (non disponibile)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2720
+#: src/frontends/qt4/GuiDocument.cpp:2719
 msgid "Module provided by document class."
 msgstr "Modulo fornito dalla classe del documento."
 
-#: src/frontends/qt4/GuiDocument.cpp:2727
+#: src/frontends/qt4/GuiDocument.cpp:2726
 #, c-format
 msgid "Category: %1$s."
 msgstr "Categoria: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2735
+#: src/frontends/qt4/GuiDocument.cpp:2734
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr "Pacchetti necessari: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2741
+#: src/frontends/qt4/GuiDocument.cpp:2740
 msgid "or"
 msgstr "oppure"
 
-#: src/frontends/qt4/GuiDocument.cpp:2744
+#: src/frontends/qt4/GuiDocument.cpp:2743
 #, c-format
 msgid "Modules required: %1$s."
 msgstr "Moduli richiesti: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2753
+#: src/frontends/qt4/GuiDocument.cpp:2752
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr "Moduli esclusi: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2759
+#: src/frontends/qt4/GuiDocument.cpp:2758
 msgid "WARNING: Some required packages are unavailable!"
 msgstr "ATTENZIONE: alcuni pacchetti non sono disponibili!"
 
-#: src/frontends/qt4/GuiDocument.cpp:3334
+#: src/frontends/qt4/GuiDocument.cpp:3333
 msgid "per part"
 msgstr "per parte"
 
-#: src/frontends/qt4/GuiDocument.cpp:3336
+#: src/frontends/qt4/GuiDocument.cpp:3335
 msgid "per chapter"
 msgstr "per capitolo"
 
-#: src/frontends/qt4/GuiDocument.cpp:3338
+#: src/frontends/qt4/GuiDocument.cpp:3337
 msgid "per section"
 msgstr "per sezione"
 
-#: src/frontends/qt4/GuiDocument.cpp:3340
+#: src/frontends/qt4/GuiDocument.cpp:3339
 msgid "per subsection"
 msgstr "per sottosezione"
 
-#: src/frontends/qt4/GuiDocument.cpp:3341
+#: src/frontends/qt4/GuiDocument.cpp:3340
 msgid "per child document"
 msgstr "per documento figlio"
 
-#: src/frontends/qt4/GuiDocument.cpp:3626
+#: src/frontends/qt4/GuiDocument.cpp:3625
 msgid "[No options predefined]"
 msgstr "[Nessuna opzione predefinita]"
 
-#: src/frontends/qt4/GuiDocument.cpp:3852
+#: src/frontends/qt4/GuiDocument.cpp:3851
 msgid "C&ustomize Hyperref Options"
 msgstr "&Modifica supporto hyperref"
 
-#: src/frontends/qt4/GuiDocument.cpp:3854
+#: src/frontends/qt4/GuiDocument.cpp:3853
 msgid "&Use Hyperref Support"
 msgstr "&Usa supporto hyperref"
 
-#: src/frontends/qt4/GuiDocument.cpp:4158
+#: src/frontends/qt4/GuiDocument.cpp:4157
 msgid "Can't set layout!"
 msgstr "Impossibile impostare il layout!"
 
-#: src/frontends/qt4/GuiDocument.cpp:4159
+#: src/frontends/qt4/GuiDocument.cpp:4158
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Impossibile impostare il layout per ID: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:4255
+#: src/frontends/qt4/GuiDocument.cpp:4254
 msgid "Not Found"
 msgstr "non trovato"
 
-#: src/frontends/qt4/GuiDocument.cpp:4315
+#: src/frontends/qt4/GuiDocument.cpp:4314
 msgid "Assigned master does not include this file"
 msgstr "Il documento genitore specificato non include questo file"
 
-#: src/frontends/qt4/GuiDocument.cpp:4316
+#: src/frontends/qt4/GuiDocument.cpp:4315
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -29789,11 +29914,11 @@ msgstr ""
 "'%1$s' per poterlo dichiarare\n"
 "come genitore."
 
-#: src/frontends/qt4/GuiDocument.cpp:4320
+#: src/frontends/qt4/GuiDocument.cpp:4319
 msgid "Could not load master"
 msgstr "Impossibile caricare documento padre"
 
-#: src/frontends/qt4/GuiDocument.cpp:4321
+#: src/frontends/qt4/GuiDocument.cpp:4320
 #, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -29802,7 +29927,7 @@ msgstr ""
 "Il documento padre '%1$s'\n"
 "non può essere caricato."
 
-#: src/frontends/qt4/GuiDocument.cpp:4458
+#: src/frontends/qt4/GuiDocument.cpp:4457
 msgid "(Module name: %1)"
 msgstr "(Nome modulo: %1)"
 
@@ -30044,7 +30169,8 @@ msgstr "Impostazioni ipercollegamento"
 #: src/frontends/qt4/GuiInclude.cpp:114 src/frontends/qt4/GuiInclude.cpp:176
 #: src/frontends/qt4/GuiListings.cpp:241 src/frontends/qt4/GuiListings.cpp:385
 #: src/frontends/qt4/GuiListings.cpp:463
-msgid "Input listing parameters on the right. Enter ? for a list of parameters."
+msgid ""
+"Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
 "Inserire i parametri per il listato a destra. Digitare ? per una lista dei "
 "parametri."
@@ -30356,7 +30482,8 @@ msgstr "Impostare il percorso ai dizionari di Hunspell"
 msgid "Give a filename for the LyX server pipe"
 msgstr "Inserire un nome di file per la pipe del LyX server"
 
-#: src/frontends/qt4/GuiPrefs.cpp:1566 src/frontends/qt4/GuiSpellchecker.cpp:594
+#: src/frontends/qt4/GuiPrefs.cpp:1566
+#: src/frontends/qt4/GuiSpellchecker.cpp:594
 msgid "Spellchecker"
 msgstr "Correttore ortografico"
 
@@ -30406,8 +30533,8 @@ msgstr "Formato in uso"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2245
 msgid ""
-"You cannot change a format's short name if the format is used by a converter. "
-"Please remove the converter first."
+"You cannot change a format's short name if the format is used by a "
+"converter. Please remove the converter first."
 msgstr ""
 "Non si può cambiare il nome breve di un formato se è usato da un "
 "convertitore. Occorre prima rimuovere il convertitore."
@@ -30634,7 +30761,8 @@ msgstr "Errore -> Non posso aprire il file!"
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:252
 msgid "Spell check of the selection done, did not find any errors."
-msgstr "Verifica ortografica della selezione completata, nessun errore trovato."
+msgstr ""
+"Verifica ortografica della selezione completata, nessun errore trovato."
 
 #: src/frontends/qt4/GuiSpellchecker.cpp:259
 msgid ""
@@ -31550,27 +31678,27 @@ msgstr "Anteprima sorgente"
 msgid "%1[[preview format name]] Preview"
 msgstr "Anteprima sorgente %1"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1582
+#: src/frontends/qt4/GuiWorkArea.cpp:1599
 msgid "Close File"
 msgstr "Chiudi file"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2098
+#: src/frontends/qt4/GuiWorkArea.cpp:2115
 msgid "%1 (read only)"
 msgstr "%1 (sola lettura)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2102
+#: src/frontends/qt4/GuiWorkArea.cpp:2119
 msgid "%1 (modified externally)"
 msgstr "%1 (modificato esternamente)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2122
+#: src/frontends/qt4/GuiWorkArea.cpp:2139
 msgid "Hide tab"
 msgstr "Nascondi linguetta"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2124
+#: src/frontends/qt4/GuiWorkArea.cpp:2141
 msgid "Close tab"
 msgstr "Chiudi linguetta"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2241
+#: src/frontends/qt4/GuiWorkArea.cpp:2258
 msgid "<b>The file %1 changed on disk.</b>"
 msgstr "<b>Il file %1 è stato modificato sul disco.</b>"
 
@@ -32308,8 +32436,8 @@ msgid ""
 "Offending file:\n"
 "%1$s"
 msgstr ""
-"Non so come includere un file non-LyX per la generazione di codice HTML. File "
-"incriminato:\n"
+"Non so come includere un file non-LyX per la generazione di codice HTML. "
+"File incriminato:\n"
 "%1$s"
 
 #: src/insets/InsetIndex.cpp:146
@@ -32412,7 +32540,8 @@ msgstr ""
 "Uno dei listati, però, usa tutti i caratteri disponibili e dunque non ne "
 "rimane\n"
 "nessuno da usare come delimitatore.\n"
-"Per il momento ho sostituito '!' con un avvertimento, ma occorre una verifica!"
+"Per il momento ho sostituito '!' con un avvertimento, ma occorre una "
+"verifica!"
 
 #: src/insets/InsetListings.cpp:338 src/insets/InsetListings.cpp:347
 msgid "Uncodable characters in listings inset"
@@ -32452,9 +32581,12 @@ msgstr ""
 msgid "A value is expected."
 msgstr "È richiesto un valore."
 
-#: src/insets/InsetListingsParams.cpp:128 src/insets/InsetListingsParams.cpp:141
-#: src/insets/InsetListingsParams.cpp:154 src/insets/InsetListingsParams.cpp:167
-#: src/insets/InsetListingsParams.cpp:181 src/insets/InsetListingsParams.cpp:208
+#: src/insets/InsetListingsParams.cpp:128
+#: src/insets/InsetListingsParams.cpp:141
+#: src/insets/InsetListingsParams.cpp:154
+#: src/insets/InsetListingsParams.cpp:167
+#: src/insets/InsetListingsParams.cpp:181
+#: src/insets/InsetListingsParams.cpp:208
 #: src/insets/InsetListingsParams.cpp:240
 msgid "Unbalanced braces!"
 msgstr "Parentesi sbilanciate!"
@@ -32540,8 +32672,8 @@ msgid ""
 "Enter four letters (either t = round or f = square) for top right, bottom "
 "right, bottom left and top left corner."
 msgstr ""
-"Inserire quattro lettere (t = round oppure f = square) per l'angolo in alto a "
-"destra, basso a destra, basso a sinistra e alto a sinistra."
+"Inserire quattro lettere (t = round oppure f = square) per l'angolo in alto "
+"a destra, basso a destra, basso a sinistra e alto a sinistra."
 
 #: src/insets/InsetListingsParams.cpp:336
 msgid "Previously defined color name as a string"
@@ -32555,26 +32687,29 @@ msgstr "Inserire qualcosa tipo \\color{white}"
 msgid "Expect a number with an optional * before it"
 msgstr "È richiesto un numero con un opzionale * a prefisso"
 
-#: src/insets/InsetListingsParams.cpp:452 src/insets/InsetListingsParams.cpp:775
+#: src/insets/InsetListingsParams.cpp:452
+#: src/insets/InsetListingsParams.cpp:775
 msgid "auto, last or a number"
 msgstr "auto, last oppure un numero"
 
-#: src/insets/InsetListingsParams.cpp:462 src/insets/InsetListingsParams.cpp:671
+#: src/insets/InsetListingsParams.cpp:462
+#: src/insets/InsetListingsParams.cpp:671
 msgid ""
 "This parameter should not be entered here. Please use the caption edit box "
-"(when using the child document dialog) or menu Insert->Caption (when defining "
-"a listing inset)"
+"(when using the child document dialog) or menu Insert->Caption (when "
+"defining a listing inset)"
 msgstr ""
 "Questo parametro non va inserito qui. Siete pregati di usare la casella per "
 "editare la didascalia (quando si inserisce un listato come documento figlio) "
 "o il menù Inserisci->Didascalia (quando si definisce un inserto Listato di "
 "programma)"
 
-#: src/insets/InsetListingsParams.cpp:468 src/insets/InsetListingsParams.cpp:678
+#: src/insets/InsetListingsParams.cpp:468
+#: src/insets/InsetListingsParams.cpp:678
 msgid ""
 "This parameter should not be entered here. Please use the label edit box "
-"(when using the child document dialog) or menu Insert->Label (when defining a "
-"listing inset)"
+"(when using the child document dialog) or menu Insert->Label (when defining "
+"a listing inset)"
 msgstr ""
 "Questo parametro non va inserito qui. Siete pregati di usare la casella per "
 "editare l'etichetta (quando si inserisce un listato come documento figlio) o "
@@ -32612,8 +32747,8 @@ msgstr "Un insieme di linee come {1,3-4}"
 #: src/insets/InsetListingsParams.cpp:815
 msgid ""
 "Enter one of the supported languages. However, if you are defining a listing "
-"inset, it is better using the  language combo box, unless you need to enter a "
-"language not offered there, otherwise the combo box will be disabled."
+"inset, it is better using the  language combo box, unless you need to enter "
+"a language not offered there, otherwise the combo box will be disabled."
 msgstr ""
 "Inserire uno dei linguaggi supportati. Comunque, se state definendo un "
 "inserto 'Listato di programma', è meglio usare il relativo pulsante combo "
@@ -32644,7 +32779,8 @@ msgstr "Lo stile usato da Pygments"
 msgid "A macro to redefine visible tabs"
 msgstr "Una macro per ridefinire le tabulazioni visibili"
 
-#: src/insets/InsetListingsParams.cpp:881 src/insets/InsetListingsParams.cpp:884
+#: src/insets/InsetListingsParams.cpp:881
+#: src/insets/InsetListingsParams.cpp:884
 msgid "Enables latex code in comments"
 msgstr "Abilita codice latex nei commenti"
 
@@ -33585,8 +33721,8 @@ msgid "Unknown user"
 msgstr "Utente sconosciuto"
 
 #~ msgid ""
-#~ "Use font ligatures -- and --- instead of \\textendash and \\textemdash for "
-#~ "en- and em-dashes"
+#~ "Use font ligatures -- and --- instead of \\textendash and \\textemdash "
+#~ "for en- and em-dashes"
 #~ msgstr ""
 #~ "Usa le legature '--' e '---'  invece che \\textendash e \\textemdash per "
 #~ "le lineette medie e lunghe"
@@ -33919,8 +34055,8 @@ msgstr "Utente sconosciuto"
 
 #~ msgid ""
 #~ "Specify those directories which should be prepended to the TEXINPUTS "
-#~ "environment variable. A '.' represents the current document directory. Use "
-#~ "the OS native format."
+#~ "environment variable. A '.' represents the current document directory. "
+#~ "Use the OS native format."
 #~ msgstr ""
 #~ "Specifica quali cartelle devono essere preposte alla variabile d'ambiente "
 #~ "TEXINPUTS. Un '.' rappresenta la cartella del documento. Usate il formato "
@@ -33930,7 +34066,8 @@ msgstr "Utente sconosciuto"
 #~ msgstr "Conversione non riuscita!"
 
 #~ msgid "Failed to convert local layout to current format."
-#~ msgstr "Non sono riuscito a convertire il layout locale al formato corrente."
+#~ msgstr ""
+#~ "Non sono riuscito a convertire il layout locale al formato corrente."
 
 #~ msgid "Branch, inverted (%1$s): %2$s"
 #~ msgstr "Ramo, invertito (%1$s): %2$s"
@@ -34098,12 +34235,12 @@ msgstr "Utente sconosciuto"
 
 #~ msgid ""
 #~ "Normally, this needs to be checked only if you are using dvips as your "
-#~ "printer command and you have config.<printer> files installed for all your "
-#~ "printers."
+#~ "printer command and you have config.<printer> files installed for all "
+#~ "your printers."
 #~ msgstr ""
 #~ "Di norma, questa casella va segnata solo se si usa dvips come comando di "
-#~ "stampa e si abbiano installati i file di configurazione config.<stampante> "
-#~ "per tutte le stampanti che si intendono usare."
+#~ "stampa e si abbiano installati i file di configurazione config."
+#~ "<stampante> per tutte le stampanti che si intendono usare."
 
 #~ msgid "Adapt &output to printer"
 #~ msgstr "Adatta l'&output alla stampante"
@@ -34635,8 +34772,8 @@ msgstr "Utente sconosciuto"
 #~ msgstr "Usa il pacchetto &undertilde"
 
 #~ msgid ""
-#~ "Setting causes printer command to print to file and then use this actually "
-#~ "to print."
+#~ "Setting causes printer command to print to file and then use this "
+#~ "actually to print."
 #~ msgstr ""
 #~ "Impostandolo, il comando di stampa produrrà un file\n"
 #~ "che verrà poi usato per stampare effettivamente."
@@ -34772,13 +34909,15 @@ msgstr "Utente sconosciuto"
 #~ msgid "Error exporting to format: %1$s"
 #~ msgstr "Errore durante l'esportazione al formato: %1$s"
 
-#~ msgid "Command not allowed without any visible document in the active window"
+#~ msgid ""
+#~ "Command not allowed without any visible document in the active window"
 #~ msgstr ""
 #~ "Il comando non è permesso senza alcun documento visibile nella finestra "
 #~ "attiva"
 
 #~ msgid ""
-#~ "Applied the following command to all visible buffers in the active window: "
+#~ "Applied the following command to all visible buffers in the active "
+#~ "window: "
 #~ msgstr ""
 #~ "Il seguente comando è stato applicato a tutti i buffer visibili nella "
 #~ "finestra attiva: "
@@ -34787,8 +34926,8 @@ msgstr "Utente sconosciuto"
 #~ "Applied the following command to all visible and hidden buffers in the "
 #~ "active window: "
 #~ msgstr ""
-#~ "Il seguente comando è stato applicato a tutti i buffer visibili e nascosti "
-#~ "nella finestra attiva: "
+#~ "Il seguente comando è stato applicato a tutti i buffer visibili e "
+#~ "nascosti nella finestra attiva: "
 
 #~ msgid ""
 #~ "Applied the following command to all hidden buffers in the active window: "
@@ -34980,10 +35119,10 @@ msgstr "Utente sconosciuto"
 #~ "paths to LaTeX files. Useful if you're using the native Windows MikTeX "
 #~ "rather than the Cygwin teTeX."
 #~ msgstr ""
-#~ "Determina se LyX debba produrre percorsi in stile Windows piuttosto che in "
-#~ "stile Posix. Questa opzione è utile in Windows se si usa "
-#~ "un'implementazione nativa di TeX, come ad esempio MikTeX, piuttosto che il "
-#~ "teTeX di Cygwin."
+#~ "Determina se LyX debba produrre percorsi in stile Windows piuttosto che "
+#~ "in stile Posix. Questa opzione è utile in Windows se si usa "
+#~ "un'implementazione nativa di TeX, come ad esempio MikTeX, piuttosto che "
+#~ "il teTeX di Cygwin."
 
 #~ msgid "Layout|L"
 #~ msgstr "Struttura|S"
@@ -35274,9 +35413,9 @@ msgstr "Utente sconosciuto"
 #~ msgstr "Il testo di ricerca è vuoto!"
 
 #~ msgid ""
-#~ "Use to define an external program to render tables in plain text output. E."
-#~ "g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"\" "
-#~ "is specified, an internal routine is used."
+#~ "Use to define an external program to render tables in plain text output. "
+#~ "E.g. \"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If "
+#~ "\"\" is specified, an internal routine is used."
 #~ msgstr ""
 #~ "Usare questa opzione per definire un programma che restituisca tabelle in "
 #~ "forma di testo semplice. Cioè: \"groff -t -Tlatin1 $$FName\" dove $$FName "
@@ -35317,13 +35456,13 @@ msgstr "Utente sconosciuto"
 #~ msgid ""
 #~ "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%"
 #~ "\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]]"
-#~ "[[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, "
-#~ "%pages%]]}."
+#~ "[[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages"
+#~ "%[[, %pages%]]}."
 #~ msgstr ""
 #~ "{%author%[[%author%, ]][[{%editor%[[%editor%, ed., ]]}]]}\"%title%"
 #~ "\"{%journal%[[, {!<i>!}%journal%{!</i>!}]][[{%publisher%[[, %publisher%]]"
-#~ "[[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages%[[, "
-#~ "%pages%]]}."
+#~ "[[{%institution%[[, %institution%]]}]]}]]}{%year%[[ (%year%)]]}{%pages"
+#~ "%[[, %pages%]]}."
 
 #~ msgid "Use the XeTeX processing engine"
 #~ msgstr "Usa XeTeX per la compilazione"
@@ -35582,8 +35721,8 @@ msgstr "Utente sconosciuto"
 #~ msgstr "Pers&onalizzato:"
 
 #~ msgid ""
-#~ "%1$s is from a newer version of LyX and cannot be converted by the lyx2lyx "
-#~ "script."
+#~ "%1$s is from a newer version of LyX and cannot be converted by the "
+#~ "lyx2lyx script."
 #~ msgstr ""
 #~ "Il file %1$s è stato generato da una versione\n"
 #~ "di LyX più recente e lo script lyx2lyx non può convertirlo."
@@ -36422,8 +36561,8 @@ msgstr "Utente sconosciuto"
 #~ "Forse è stato configurato in modo sbagliato?"
 
 #~ msgid ""
-#~ "Could not check word `%1$s' because it could not be converted to encoding `"
-#~ "%2$s'."
+#~ "Could not check word `%1$s' because it could not be converted to encoding "
+#~ "`%2$s'."
 #~ msgstr ""
 #~ "Non sono riuscito a verificare `%1$s' perché non può essere convertita "
 #~ "nella codifica `%2$s'."
@@ -36433,15 +36572,15 @@ msgstr "Utente sconosciuto"
 #~ "Non riesco a comunicare con il processo di controllo ortografico ispell."
 
 #~ msgid ""
-#~ "Could not insert word `%1$s' because it could not be converted to encoding "
-#~ "`%2$s'."
+#~ "Could not insert word `%1$s' because it could not be converted to "
+#~ "encoding `%2$s'."
 #~ msgstr ""
 #~ "Non sono riuscito ad inserire la parola `%1$s' perché non può essere "
 #~ "convertita nella codifica `%2$s'."
 
 #~ msgid ""
-#~ "Could not accept word `%1$s' because it could not be converted to encoding "
-#~ "`%2$s'."
+#~ "Could not accept word `%1$s' because it could not be converted to "
+#~ "encoding `%2$s'."
 #~ msgstr ""
 #~ "Non posso accettare la parola `%1$s' perché non può essere convertita "
 #~ "nella codifica `%2$s'."
@@ -36483,7 +36622,8 @@ msgstr "Utente sconosciuto"
 #~ msgstr "FAQ|F"
 
 #~ msgid "Adds \"backlink\" text to the end of each item in the bibliography"
-#~ msgstr "Aggiunge testo \"backlink\" alla fine di ciascuna voce bibliografica"
+#~ msgstr ""
+#~ "Aggiunge testo \"backlink\" alla fine di ciascuna voce bibliografica"
 
 #~ msgid "Backreference by pa&ge number"
 #~ msgstr "Riferimento inverso per numero di &pagina"

@@ -107,7 +107,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 2.1.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-01-15 13:02-0500\n"
+"POT-Creation-Date: 2018-01-20 09:43+0100\n"
 "PO-Revision-Date: 2014-04-11 19:41+0800\n"
 "Last-Translator: Mingyi Wu <mingi.wu@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -399,7 +399,7 @@ msgstr "瀏覽(&B)..."
 #: src/frontends/qt4/ui/BibtexAddUi.ui:162
 #: src/frontends/qt4/ui/BranchesUi.ui:113
 #: src/frontends/qt4/ui/CitationUi.ui:143 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:374
+#: src/CutAndPaste.cpp:409
 msgid "&Add"
 msgstr "加入(&A)"
 
@@ -666,7 +666,7 @@ msgstr "擴展"
 
 #: src/frontends/qt4/ui/BoxUi.ui:265 src/frontends/qt4/ui/ListingsUi.ui:103
 #: src/frontends/qt4/ui/TabularUi.ui:391 src/frontends/qt4/ui/TabularUi.ui:1549
-#: src/frontends/qt4/ui/WrapUi.ui:209 src/frontends/qt4/GuiDocument.cpp:1296
+#: src/frontends/qt4/ui/WrapUi.ui:209 src/frontends/qt4/GuiDocument.cpp:1295
 #: src/frontends/qt4/GuiParagraph.cpp:111 src/frontends/qt4/GuiTabular.cpp:851
 msgid "Left"
 msgstr "左"
@@ -680,7 +680,7 @@ msgstr "中"
 
 #: src/frontends/qt4/ui/BoxUi.ui:275 src/frontends/qt4/ui/ListingsUi.ui:108
 #: src/frontends/qt4/ui/TabularUi.ui:401 src/frontends/qt4/ui/TabularUi.ui:1566
-#: src/frontends/qt4/ui/WrapUi.ui:214 src/frontends/qt4/GuiDocument.cpp:1298
+#: src/frontends/qt4/ui/WrapUi.ui:214 src/frontends/qt4/GuiDocument.cpp:1297
 #: src/frontends/qt4/GuiParagraph.cpp:112 src/frontends/qt4/GuiTabular.cpp:853
 msgid "Right"
 msgstr "右"
@@ -843,7 +843,7 @@ msgstr "全部加入(&l)"
 #: src/Buffer.cpp:4547 src/Buffer.cpp:4611 src/LyXVC.cpp:114 src/LyXVC.cpp:304
 #: src/buffer_funcs.cpp:78 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:247
-#: src/frontends/qt4/GuiDocument.cpp:2327 src/frontends/qt4/GuiParagraph.cpp:69
+#: src/frontends/qt4/GuiDocument.cpp:2326 src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/GuiPrefs.cpp:3328
 #: src/frontends/qt4/GuiView.cpp:2452 src/frontends/qt4/GuiView.cpp:2600
 #: src/frontends/qt4/GuiView.cpp:2624 src/frontends/qt4/GuiView.cpp:2638
@@ -880,20 +880,20 @@ msgstr "大小(&z):"
 #: src/Font.cpp:184 src/frontends/qt4/GuiDocument.cpp:119
 #: src/frontends/qt4/GuiDocument.cpp:742 src/frontends/qt4/GuiDocument.cpp:872
 #: src/frontends/qt4/GuiDocument.cpp:877 src/frontends/qt4/GuiDocument.cpp:918
-#: src/frontends/qt4/GuiDocument.cpp:929 src/frontends/qt4/GuiDocument.cpp:1088
-#: src/frontends/qt4/GuiDocument.cpp:1193
-#: src/frontends/qt4/GuiDocument.cpp:1290
-#: src/frontends/qt4/GuiDocument.cpp:1297
-#: src/frontends/qt4/GuiDocument.cpp:2083
+#: src/frontends/qt4/GuiDocument.cpp:929 src/frontends/qt4/GuiDocument.cpp:1087
+#: src/frontends/qt4/GuiDocument.cpp:1192
+#: src/frontends/qt4/GuiDocument.cpp:1289
+#: src/frontends/qt4/GuiDocument.cpp:1296
+#: src/frontends/qt4/GuiDocument.cpp:2082
+#: src/frontends/qt4/GuiDocument.cpp:2160
 #: src/frontends/qt4/GuiDocument.cpp:2161
 #: src/frontends/qt4/GuiDocument.cpp:2162
-#: src/frontends/qt4/GuiDocument.cpp:2163
-#: src/frontends/qt4/GuiDocument.cpp:2183
-#: src/frontends/qt4/GuiDocument.cpp:2190
-#: src/frontends/qt4/GuiDocument.cpp:2197
-#: src/frontends/qt4/GuiDocument.cpp:2282
-#: src/frontends/qt4/GuiDocument.cpp:2811
-#: src/frontends/qt4/GuiDocument.cpp:4201 src/frontends/qt4/GuiExternal.cpp:77
+#: src/frontends/qt4/GuiDocument.cpp:2182
+#: src/frontends/qt4/GuiDocument.cpp:2189
+#: src/frontends/qt4/GuiDocument.cpp:2196
+#: src/frontends/qt4/GuiDocument.cpp:2281
+#: src/frontends/qt4/GuiDocument.cpp:2810
+#: src/frontends/qt4/GuiDocument.cpp:4200 src/frontends/qt4/GuiExternal.cpp:77
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiIndices.cpp:58
 #: src/frontends/qt4/GuiListings.cpp:154 src/frontends/qt4/GuiListings.cpp:161
 #: src/frontends/qt4/GuiPrefs.cpp:2462 src/frontends/qt4/GuiPrefs.cpp:2575
@@ -1027,7 +1027,7 @@ msgstr "字型系列"
 #: lib/layouts/europasscv.layout:340 lib/layouts/europasscv.layout:373
 #: lib/layouts/europasscv.layout:380 lib/layouts/europecv.layout:247
 #: lib/layouts/europecv.layout:253 lib/layouts/moderncv.layout:467
-#: src/frontends/qt4/GuiDocument.cpp:1498 src/frontends/qt4/GuiPrefs.cpp:2417
+#: src/frontends/qt4/GuiDocument.cpp:1497 src/frontends/qt4/GuiPrefs.cpp:2417
 #: src/frontends/qt4/Menus.cpp:910
 msgid "Language"
 msgstr "語言"
@@ -1098,9 +1098,9 @@ msgstr "立即套用變更(&i)"
 #: src/frontends/qt4/ui/ParagraphUi.ui:251 src/frontends/qt4/ui/PrefsUi.ui:80
 #: src/frontends/qt4/ui/RefUi.ui:362 src/frontends/qt4/ui/SendtoUi.ui:85
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
-#: src/frontends/qt4/GuiDocument.cpp:2403
-#: src/frontends/qt4/GuiDocument.cpp:2683
-#: src/frontends/qt4/GuiDocument.cpp:4138
+#: src/frontends/qt4/GuiDocument.cpp:2402
+#: src/frontends/qt4/GuiDocument.cpp:2682
+#: src/frontends/qt4/GuiDocument.cpp:4137
 msgid "&Apply"
 msgstr "套用(&A)"
 
@@ -1272,8 +1272,8 @@ msgid "Greyed-out notes:"
 msgstr "灰色顯示註記:"
 
 #: src/frontends/qt4/ui/ColorUi.ui:118 src/frontends/qt4/ui/ColorUi.ui:256
-#: src/frontends/qt4/GuiDocument.cpp:1797
-#: src/frontends/qt4/GuiDocument.cpp:1827
+#: src/frontends/qt4/GuiDocument.cpp:1796
+#: src/frontends/qt4/GuiDocument.cpp:1826
 msgid "&Change..."
 msgstr "變更(&C)..."
 
@@ -3106,8 +3106,8 @@ msgid "Images"
 msgstr "圖片"
 
 #: src/frontends/qt4/ui/OutputUi.ui:226 lib/layouts/aapaper.layout:63
-#: lib/layouts/egs.layout:639 lib/languages:108
-#: src/frontends/qt4/GuiDocument.cpp:1353 src/frontends/qt4/GuiErrorList.cpp:51
+#: lib/layouts/egs.layout:639 lib/languages:110
+#: src/frontends/qt4/GuiDocument.cpp:1352 src/frontends/qt4/GuiErrorList.cpp:51
 #: src/frontends/qt4/GuiLog.cpp:245 src/frontends/qt4/GuiPrefs.cpp:724
 msgid "LaTeX"
 msgstr "LaTeX"
@@ -3253,7 +3253,7 @@ msgid "&Landscape"
 msgstr "橫印(&L)"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:162
-#: src/frontends/qt4/GuiDocument.cpp:1496
+#: src/frontends/qt4/GuiDocument.cpp:1495
 msgid "Page Layout"
 msgstr "頁面"
 
@@ -3290,7 +3290,7 @@ msgstr "最長的標籤(&n)"
 msgid "Line &spacing"
 msgstr "列距(&s)"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:121 src/Text.cpp:1939
+#: src/frontends/qt4/ui/ParagraphUi.ui:121 src/Text.cpp:1936
 #: src/frontends/qt4/GuiDocument.cpp:749
 msgid "Single"
 msgstr "一倍"
@@ -3299,7 +3299,7 @@ msgstr "一倍"
 msgid "1.5"
 msgstr "1.5"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:131 src/Text.cpp:1945
+#: src/frontends/qt4/ui/ParagraphUi.ui:131 src/Text.cpp:1942
 #: src/frontends/qt4/GuiDocument.cpp:753
 msgid "Double"
 msgstr "雙倍"
@@ -3312,8 +3312,8 @@ msgstr "雙倍"
 #: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:743
 #: src/frontends/qt4/GuiDocument.cpp:747 src/frontends/qt4/GuiDocument.cpp:755
 #: src/frontends/qt4/GuiDocument.cpp:878 src/frontends/qt4/GuiDocument.cpp:930
-#: src/frontends/qt4/GuiDocument.cpp:1094
-#: src/frontends/qt4/GuiDocument.cpp:1291 src/frontends/qt4/GuiHSpace.cpp:56
+#: src/frontends/qt4/GuiDocument.cpp:1093
+#: src/frontends/qt4/GuiDocument.cpp:1290 src/frontends/qt4/GuiHSpace.cpp:56
 #: src/frontends/qt4/GuiHSpace.cpp:67 src/frontends/qt4/GuiPrefs.cpp:913
 #: src/frontends/qt4/GuiPrefs.cpp:941 src/frontends/qt4/GuiPrefs.cpp:968
 #: src/frontends/qt4/GuiPrefs.cpp:2316 src/frontends/qt4/GuiPrefs.cpp:2339
@@ -3996,19 +3996,19 @@ msgid "Language &package:"
 msgstr "語言套件(&p):"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:56
-#: src/frontends/qt4/GuiDocument.cpp:1090
-#: src/frontends/qt4/GuiDocument.cpp:2204 src/frontends/qt4/GuiPrefs.cpp:912
+#: src/frontends/qt4/GuiDocument.cpp:1089
+#: src/frontends/qt4/GuiDocument.cpp:2203 src/frontends/qt4/GuiPrefs.cpp:912
 #: src/frontends/qt4/GuiPrefs.cpp:940
 msgid "Automatic"
 msgstr "自動"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:61
-#: src/frontends/qt4/GuiDocument.cpp:1092
+#: src/frontends/qt4/GuiDocument.cpp:1091
 msgid "Always Babel"
 msgstr "總是 Babel"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:71
-#: src/frontends/qt4/GuiDocument.cpp:1096
+#: src/frontends/qt4/GuiDocument.cpp:1095
 msgid "None[[language package]]"
 msgstr "無"
 
@@ -6338,7 +6338,7 @@ msgstr "定義"
 #: lib/layouts/theorems-without-preamble.inc:213
 #: lib/layouts/theorems-without-preamble.inc:216 lib/layouts/theorems.inc:190
 #: lib/layouts/theorems.inc:199 lib/layouts/theorems.inc:202
-#: src/frontends/qt4/GuiDocument.cpp:1130
+#: src/frontends/qt4/GuiDocument.cpp:1129
 msgid "Example"
 msgstr "範例"
 
@@ -6848,7 +6848,7 @@ msgstr "附錄的短標題"
 #: lib/layouts/siamltex.layout:326 lib/layouts/simplecv.layout:156
 #: lib/layouts/stdstruct.inc:54 lib/layouts/svcommon.inc:575
 #: lib/layouts/tufte-book.layout:263 lib/layouts/tufte-book.layout:265
-#: src/frontends/qt4/GuiDocument.cpp:1501
+#: src/frontends/qt4/GuiDocument.cpp:1500
 msgid "Bibliography"
 msgstr "Bibliography 參考書目"
 
@@ -7372,10 +7372,10 @@ msgstr "其他隸屬單位:"
 msgid "And"
 msgstr "And 和"
 
-#: lib/layouts/aastex.layout:228 src/frontends/qt4/GuiDocument.cpp:2608
-#: src/frontends/qt4/GuiDocument.cpp:2620
-#: src/frontends/qt4/GuiDocument.cpp:2731
-#: src/frontends/qt4/GuiDocument.cpp:2750
+#: lib/layouts/aastex.layout:228 src/frontends/qt4/GuiDocument.cpp:2607
+#: src/frontends/qt4/GuiDocument.cpp:2619
+#: src/frontends/qt4/GuiDocument.cpp:2730
+#: src/frontends/qt4/GuiDocument.cpp:2749
 msgid "and"
 msgstr "和"
 
@@ -7679,7 +7679,7 @@ msgid "chemistry"
 msgstr "化學"
 
 #: lib/layouts/achemso.layout:305 lib/layouts/achemso.layout:308
-#: lib/languages:791
+#: lib/languages:793
 msgid "Latin"
 msgstr "拉丁語"
 
@@ -11718,9 +11718,9 @@ msgid "Fixme Error"
 msgstr "檔案名稱錯誤"
 
 #: lib/layouts/fixme.module:82 src/frontends/qt4/GuiCompare.cpp:198
-#: src/frontends/qt4/GuiDocument.cpp:2340
-#: src/frontends/qt4/GuiDocument.cpp:2414
-#: src/frontends/qt4/GuiDocument.cpp:4146
+#: src/frontends/qt4/GuiDocument.cpp:2339
+#: src/frontends/qt4/GuiDocument.cpp:2413
+#: src/frontends/qt4/GuiDocument.cpp:4145
 msgid "Error"
 msgstr "錯誤"
 
@@ -15722,7 +15722,7 @@ msgstr "註腳"
 msgid "Notes"
 msgstr "註記"
 
-#: lib/layouts/stdinsets.inc:14 src/frontends/qt4/GuiDocument.cpp:1508
+#: lib/layouts/stdinsets.inc:14 src/frontends/qt4/GuiDocument.cpp:1507
 msgid "Branches"
 msgstr "分支"
 
@@ -15760,7 +15760,7 @@ msgstr "程式碼列表 清單"
 msgid "List of Listings"
 msgstr "程式碼列表 清單"
 
-#: lib/layouts/stdinsets.inc:344 src/frontends/qt4/GuiDocument.cpp:1506
+#: lib/layouts/stdinsets.inc:344 src/frontends/qt4/GuiDocument.cpp:1505
 msgid "Listings[[inset]]"
 msgstr "程式碼列表"
 
@@ -17212,413 +17212,413 @@ msgstr "標籤寬度"
 msgid "Maximum width (default: \\linewidth)"
 msgstr ""
 
-#: lib/languages:100 src/Font.cpp:62 src/Font.cpp:65 src/Font.cpp:69
+#: lib/languages:102 src/Font.cpp:62 src/Font.cpp:65 src/Font.cpp:69
 #: src/Font.cpp:74 src/Font.cpp:77
 msgid "Ignore"
 msgstr "忽略"
 
-#: lib/languages:119
+#: lib/languages:121
 msgid "Afrikaans"
 msgstr "南非荷蘭語"
 
-#: lib/languages:127
+#: lib/languages:129
 msgid "Albanian"
 msgstr "阿爾巴尼亞語"
 
-#: lib/languages:136
+#: lib/languages:138
 msgid "English (USA)"
 msgstr "英語 (USA)"
 
-#: lib/languages:147
+#: lib/languages:149
 msgid "Amharic"
 msgstr ""
 
-#: lib/languages:156
+#: lib/languages:158
 msgid "Greek (ancient)"
 msgstr "希臘語 (ancient)"
 
-#: lib/languages:173
+#: lib/languages:175
 msgid "Arabic (ArabTeX)"
 msgstr "阿拉伯語 (ArabTeX)"
 
-#: lib/languages:184
+#: lib/languages:186
 msgid "Arabic (Arabi)"
 msgstr "阿拉伯語 (Arabi)"
 
-#: lib/languages:197 src/frontends/qt4/GuiSymbols.cpp:62
+#: lib/languages:199 src/frontends/qt4/GuiSymbols.cpp:62
 msgid "Armenian"
 msgstr "亞美尼亞語"
 
-#: lib/languages:206
+#: lib/languages:208
 #, fuzzy
 msgid "Asturian"
 msgstr "triangle"
 
-#: lib/languages:214
+#: lib/languages:216
 msgid "English (Australia)"
 msgstr "英語 (Australia)"
 
-#: lib/languages:226
+#: lib/languages:228
 msgid "German (Austria, old spelling)"
 msgstr "德語 (Austria, old spelling)"
 
-#: lib/languages:238
+#: lib/languages:240
 msgid "German (Austria)"
 msgstr "德語 (Austria)"
 
-#: lib/languages:248
+#: lib/languages:250
 msgid "Indonesian"
 msgstr "印尼語"
 
-#: lib/languages:258
+#: lib/languages:260
 msgid "Malay"
 msgstr "馬來語"
 
-#: lib/languages:267
+#: lib/languages:269
 msgid "Basque"
 msgstr "巴斯克語"
 
-#: lib/languages:281
+#: lib/languages:283
 msgid "Belarusian"
 msgstr "白俄羅斯語"
 
-#: lib/languages:291
+#: lib/languages:293
 #, fuzzy
 msgid "Bosnian"
 msgstr "愛沙尼亞語"
 
-#: lib/languages:299
+#: lib/languages:301
 msgid "Portuguese (Brazil)"
 msgstr "葡萄牙語 (Brazil)"
 
-#: lib/languages:309
+#: lib/languages:311
 msgid "Breton"
 msgstr "布里多尼語"
 
-#: lib/languages:318
+#: lib/languages:320
 msgid "English (UK)"
 msgstr "英語 (UK)"
 
-#: lib/languages:328
+#: lib/languages:330
 msgid "Bulgarian"
 msgstr "保加利亞語"
 
-#: lib/languages:339
+#: lib/languages:341
 msgid "English (Canada)"
 msgstr "英語 (Canada)"
 
-#: lib/languages:352
+#: lib/languages:354
 msgid "French (Canada)"
 msgstr "法語 (Canada)"
 
-#: lib/languages:362
+#: lib/languages:364
 msgid "Catalan"
 msgstr "加泰隆語"
 
-#: lib/languages:374
+#: lib/languages:376
 msgid "Chinese (simplified)"
 msgstr "中文 (簡體)"
 
-#: lib/languages:384
+#: lib/languages:386
 msgid "Chinese (traditional)"
 msgstr "中文 (正體)"
 
-#: lib/languages:394
+#: lib/languages:396
 msgid "Coptic"
 msgstr "科普特語"
 
-#: lib/languages:401
+#: lib/languages:403
 msgid "Croatian"
 msgstr "克羅埃西亞語"
 
-#: lib/languages:410
+#: lib/languages:412
 msgid "Czech"
 msgstr "捷克語"
 
-#: lib/languages:420
+#: lib/languages:422
 msgid "Danish"
 msgstr "丹麥語"
 
-#: lib/languages:431
+#: lib/languages:433
 msgid "Divehi (Maldivian)"
 msgstr "迪維希語 (馬爾地夫)"
 
-#: lib/languages:438
+#: lib/languages:440
 msgid "Dutch"
 msgstr "荷蘭語"
 
-#: lib/languages:449
+#: lib/languages:451
 msgid "English"
 msgstr "英語"
 
-#: lib/languages:462
+#: lib/languages:464
 msgid "Esperanto"
 msgstr "世界語"
 
-#: lib/languages:471
+#: lib/languages:473
 msgid "Estonian"
 msgstr "愛沙尼亞語"
 
-#: lib/languages:485
+#: lib/languages:487
 msgid "Farsi"
 msgstr "波斯語"
 
-#: lib/languages:500
+#: lib/languages:502
 msgid "Finnish"
 msgstr "芬蘭語"
 
-#: lib/languages:511
+#: lib/languages:513
 msgid "French"
 msgstr "法語"
 
-#: lib/languages:527
+#: lib/languages:529
 msgid "Friulian"
 msgstr ""
 
-#: lib/languages:537
+#: lib/languages:539
 msgid "Galician"
 msgstr "加里西亞語"
 
-#: lib/languages:550 src/frontends/qt4/GuiSymbols.cpp:77
+#: lib/languages:552 src/frontends/qt4/GuiSymbols.cpp:77
 msgid "Georgian"
 msgstr "Georgian"
 
-#: lib/languages:560
+#: lib/languages:562
 msgid "German (old spelling)"
 msgstr "德語 (old spelling)"
 
-#: lib/languages:571
+#: lib/languages:573
 msgid "German"
 msgstr "德語"
 
-#: lib/languages:586
+#: lib/languages:588
 msgid "German (Switzerland)"
 msgstr "德語 (Switzerland)"
 
-#: lib/languages:599
+#: lib/languages:601
 #, fuzzy
 msgid "German (Switzerland, old spelling)"
 msgstr "德語 (Austria, old spelling)"
 
-#: lib/languages:609 lib/ui/stdtoolbars.inc:306 lib/ui/stdtoolbars.inc:599
+#: lib/languages:611 lib/ui/stdtoolbars.inc:306 lib/ui/stdtoolbars.inc:599
 #: src/frontends/qt4/GuiSymbols.cpp:60
 msgid "Greek"
 msgstr "希臘語"
 
-#: lib/languages:622
+#: lib/languages:624
 msgid "Greek (polytonic)"
 msgstr "希臘語 (polytonic)"
 
-#: lib/languages:634 src/frontends/qt4/GuiSymbols.cpp:63
+#: lib/languages:636 src/frontends/qt4/GuiSymbols.cpp:63
 msgid "Hebrew"
 msgstr "希伯來語"
 
-#: lib/languages:650
+#: lib/languages:652
 msgid "Hindi"
 msgstr "印地語"
 
-#: lib/languages:669
+#: lib/languages:671
 msgid "Icelandic"
 msgstr "冰島語"
 
-#: lib/languages:680
+#: lib/languages:682
 msgid "Interlingua"
 msgstr "國際語"
 
-#: lib/languages:690
+#: lib/languages:692
 msgid "Irish"
 msgstr "愛爾蘭語"
 
-#: lib/languages:699
+#: lib/languages:701
 msgid "Italian"
 msgstr "義大利語"
 
-#: lib/languages:714
+#: lib/languages:716
 msgid "Japanese"
 msgstr "日語"
 
-#: lib/languages:728
+#: lib/languages:730
 msgid "Japanese (CJK)"
 msgstr "日語 (CJK)"
 
-#: lib/languages:737 src/frontends/qt4/GuiSymbols.cpp:72
+#: lib/languages:739 src/frontends/qt4/GuiSymbols.cpp:72
 msgid "Kannada"
 msgstr "Kannada"
 
-#: lib/languages:746
+#: lib/languages:748
 msgid "Kazakh"
 msgstr "哈薩克語"
 
-#: lib/languages:757
+#: lib/languages:759
 msgid "Khmer"
 msgstr ""
 
-#: lib/languages:764
+#: lib/languages:766
 msgid "Korean"
 msgstr "韓語"
 
-#: lib/languages:773
+#: lib/languages:775
 msgid "Kurmanji"
 msgstr "庫德語"
 
-#: lib/languages:782 src/frontends/qt4/GuiSymbols.cpp:75
+#: lib/languages:784 src/frontends/qt4/GuiSymbols.cpp:75
 msgid "Lao"
 msgstr "寮語"
 
-#: lib/languages:801
+#: lib/languages:803
 msgid "Latvian"
 msgstr "拉脫維亞語"
 
-#: lib/languages:814
+#: lib/languages:816
 msgid "Lithuanian"
 msgstr "立陶宛語"
 
-#: lib/languages:825
+#: lib/languages:827
 msgid "Lower Sorbian"
 msgstr "下索布語"
 
-#: lib/languages:834
+#: lib/languages:836
 msgid "Hungarian"
 msgstr "匈牙利語"
 
-#: lib/languages:845
+#: lib/languages:847
 msgid "Macedonian"
 msgstr ""
 
-#: lib/languages:855
+#: lib/languages:857
 msgid "Marathi"
 msgstr "馬拉地語"
 
-#: lib/languages:865
+#: lib/languages:867
 msgid "Mongolian"
 msgstr "蒙古語"
 
-#: lib/languages:874
+#: lib/languages:876
 msgid "English (New Zealand)"
 msgstr "英語 (New Zealand)"
 
-#: lib/languages:884
+#: lib/languages:886
 msgid "Norwegian (Bokmaal)"
 msgstr "挪威語 (Bokmaal)"
 
-#: lib/languages:894
+#: lib/languages:896
 msgid "Norwegian (Nynorsk)"
 msgstr "挪威語 (Nynorsk)"
 
-#: lib/languages:905
+#: lib/languages:907
 msgid "Occitan"
 msgstr "奧克語"
 
-#: lib/languages:926
+#: lib/languages:928
 msgid "Piedmontese"
 msgstr ""
 
-#: lib/languages:936
+#: lib/languages:938
 msgid "Polish"
 msgstr "波蘭語"
 
-#: lib/languages:947
+#: lib/languages:949
 msgid "Portuguese"
 msgstr "葡萄牙語"
 
-#: lib/languages:957
+#: lib/languages:959
 msgid "Romanian"
 msgstr "羅馬尼亞語"
 
-#: lib/languages:967
+#: lib/languages:969
 #, fuzzy
 msgid "Romansh"
 msgstr "羅馬體"
 
-#: lib/languages:977
+#: lib/languages:979
 msgid "Russian"
 msgstr "俄語"
 
-#: lib/languages:988
+#: lib/languages:990
 msgid "North Sami"
 msgstr "薩米語"
 
-#: lib/languages:997
+#: lib/languages:999
 msgid "Sanskrit"
 msgstr "梵語"
 
-#: lib/languages:1004
+#: lib/languages:1006
 msgid "Scottish"
 msgstr "蓋爾語"
 
-#: lib/languages:1015
+#: lib/languages:1017
 msgid "Serbian"
 msgstr "塞爾維亞語"
 
-#: lib/languages:1030
+#: lib/languages:1032
 msgid "Serbian (Latin)"
 msgstr "塞爾維亞語 (Latin)"
 
-#: lib/languages:1040
+#: lib/languages:1042
 msgid "Slovak"
 msgstr "斯洛伐克語"
 
-#: lib/languages:1050
+#: lib/languages:1052
 msgid "Slovene"
 msgstr "斯洛維尼亞語"
 
-#: lib/languages:1059
+#: lib/languages:1061
 msgid "Spanish"
 msgstr "西班牙語"
 
-#: lib/languages:1073
+#: lib/languages:1075
 msgid "Spanish (Mexico)"
 msgstr "西班牙語 (Mexico)"
 
-#: lib/languages:1085
+#: lib/languages:1087
 msgid "Swedish"
 msgstr "瑞典語"
 
-#: lib/languages:1096
+#: lib/languages:1098
 msgid "Syriac"
 msgstr "敘利亞語"
 
-#: lib/languages:1105 src/frontends/qt4/GuiSymbols.cpp:70
+#: lib/languages:1107 src/frontends/qt4/GuiSymbols.cpp:70
 msgid "Tamil"
 msgstr "坦米爾語"
 
-#: lib/languages:1113 src/frontends/qt4/GuiSymbols.cpp:71
+#: lib/languages:1115 src/frontends/qt4/GuiSymbols.cpp:71
 msgid "Telugu"
 msgstr "泰盧固語"
 
-#: lib/languages:1120 src/frontends/qt4/GuiSymbols.cpp:74
+#: lib/languages:1122 src/frontends/qt4/GuiSymbols.cpp:74
 msgid "Thai"
 msgstr "泰語"
 
-#: lib/languages:1134 src/frontends/qt4/GuiSymbols.cpp:76
+#: lib/languages:1136 src/frontends/qt4/GuiSymbols.cpp:76
 msgid "Tibetan"
 msgstr "藏語"
 
-#: lib/languages:1141
+#: lib/languages:1143
 msgid "Turkish"
 msgstr "土耳其語"
 
-#: lib/languages:1156
+#: lib/languages:1158
 msgid "Turkmen"
 msgstr "土庫曼語"
 
-#: lib/languages:1166
+#: lib/languages:1168
 msgid "Ukrainian"
 msgstr "烏克蘭語"
 
-#: lib/languages:1177
+#: lib/languages:1179
 msgid "Upper Sorbian"
 msgstr "上索布語"
 
-#: lib/languages:1187
+#: lib/languages:1189
 msgid "Urdu"
 msgstr "烏爾都語"
 
-#: lib/languages:1195
+#: lib/languages:1197
 msgid "Vietnamese"
 msgstr "越南語"
 
-#: lib/languages:1204
+#: lib/languages:1206
 msgid "Welsh"
 msgstr "威爾斯語"
 
@@ -20602,7 +20602,7 @@ msgid "Fractions"
 msgstr "分數"
 
 #: lib/ui/stdtoolbars.inc:301 lib/ui/stdtoolbars.inc:406
-#: src/frontends/qt4/GuiDocument.cpp:1494
+#: src/frontends/qt4/GuiDocument.cpp:1493
 msgid "Fonts"
 msgstr "字型"
 
@@ -24967,7 +24967,7 @@ msgstr "XPM"
 msgid "Plain text (chess output)"
 msgstr "Plain text (chess output)"
 
-#: lib/configure.py:643 src/frontends/qt4/GuiDocument.cpp:1353
+#: lib/configure.py:643 src/frontends/qt4/GuiDocument.cpp:1352
 #: src/frontends/qt4/GuiErrorList.cpp:45
 msgid "DocBook"
 msgstr "DocBook"
@@ -26843,11 +26843,11 @@ msgstr ""
 "沒有關於轉換 %1$s 格式檔案到 %2$s 的資訊. \n"
 "請在偏好設定中定義一個轉換器."
 
-#: src/Converter.cpp:540 src/frontends/qt4/GuiDocument.cpp:1633
+#: src/Converter.cpp:540 src/frontends/qt4/GuiDocument.cpp:1632
 msgid "Pygments driver command not found!"
 msgstr ""
 
-#: src/Converter.cpp:541 src/frontends/qt4/GuiDocument.cpp:1634
+#: src/Converter.cpp:541 src/frontends/qt4/GuiDocument.cpp:1633
 msgid ""
 "The driver command necessary to use the minted package\n"
 "(pygmentize) has not been found. Make sure you have\n"
@@ -26929,19 +26929,38 @@ msgstr "輸出為空"
 msgid "No output file was generated."
 msgstr "已產生空的輸出檔案."
 
-#: src/Cursor.cpp:1075 src/Text.cpp:1957
+#: src/Cursor.cpp:1074 src/Text.cpp:1954
 msgid ", Inset: "
 msgstr ", 嵌框: "
 
-#: src/Cursor.cpp:1076
+#: src/Cursor.cpp:1075
 msgid ", Cell: "
 msgstr ""
 
-#: src/Cursor.cpp:1077 src/Text.cpp:1960
+#: src/Cursor.cpp:1076 src/Text.cpp:1957
 msgid ", Position: "
 msgstr ", 位置: "
 
-#: src/CutAndPaste.cpp:370
+#: src/CutAndPaste.cpp:184
+#, c-format
+msgid ""
+"The character \"%1$s\" is uncodable in this verbatim context and thus has "
+"not been pasted."
+msgstr ""
+
+#: src/CutAndPaste.cpp:188
+#, c-format
+msgid ""
+"The characters \"%1$s\" are uncodable in this verbatim context and thus have "
+"not been pasted."
+msgstr ""
+
+#: src/CutAndPaste.cpp:231
+#, fuzzy
+msgid "Uncodable content"
+msgstr "無法編碼的字元"
+
+#: src/CutAndPaste.cpp:405
 #, c-format
 msgid ""
 "The pasted branch \"%1$s\" is undefined.\n"
@@ -26950,36 +26969,36 @@ msgstr ""
 "貼上的分支 \"%1$s\" 尚未定義\n"
 "你要將這個分支增加到文件的分支清單嗎?"
 
-#: src/CutAndPaste.cpp:373
+#: src/CutAndPaste.cpp:408
 msgid "Unknown branch"
 msgstr "未知的分支"
 
-#: src/CutAndPaste.cpp:374
+#: src/CutAndPaste.cpp:409
 msgid "&Don't Add"
 msgstr "不要新增(&D)"
 
-#: src/CutAndPaste.cpp:760 src/Text.cpp:393
+#: src/CutAndPaste.cpp:795 src/Text.cpp:393
 #, c-format
 msgid "Layout `%1$s' was not found."
 msgstr "找不到布局 `%1$s'."
 
-#: src/CutAndPaste.cpp:761 src/Text.cpp:394
+#: src/CutAndPaste.cpp:796 src/Text.cpp:394
 msgid "Layout Not Found"
 msgstr "找不到布局"
 
-#: src/CutAndPaste.cpp:789
+#: src/CutAndPaste.cpp:824
 #, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr "重新讀取 `%2$s' 布局後, 彈性嵌框 %1$s 未定義."
 
-#: src/CutAndPaste.cpp:792
+#: src/CutAndPaste.cpp:827
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
 "%3$s'."
 msgstr "彈性嵌框 %1$s 未定義, 因為布局從 `%2$s' 轉換到 `%3$s'."
 
-#: src/CutAndPaste.cpp:797
+#: src/CutAndPaste.cpp:832
 msgid "Undefined flex inset"
 msgstr "未定義的彈性嵌框"
 
@@ -27020,17 +27039,17 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "複製 %1$s 到 %2$s 時失敗."
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:137
-#: src/frontends/qt4/GuiDocument.cpp:4201 src/frontends/qt4/GuiListings.cpp:161
+#: src/frontends/qt4/GuiDocument.cpp:4200 src/frontends/qt4/GuiListings.cpp:161
 msgid "Roman"
 msgstr "羅馬體"
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:138
-#: src/frontends/qt4/GuiDocument.cpp:4201 src/frontends/qt4/GuiListings.cpp:161
+#: src/frontends/qt4/GuiDocument.cpp:4200 src/frontends/qt4/GuiListings.cpp:161
 msgid "Sans Serif"
 msgstr "無襯線"
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:139
-#: src/frontends/qt4/GuiDocument.cpp:4201 src/frontends/qt4/GuiListings.cpp:161
+#: src/frontends/qt4/GuiDocument.cpp:4200 src/frontends/qt4/GuiListings.cpp:161
 msgid "Typewriter"
 msgstr "打字體"
 
@@ -28124,55 +28143,56 @@ msgstr "您無法於段落開始處插入空格. 請讀取教學課程."
 msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "您無法以此方式輸入兩個空格. 請讀取教學課程."
 
-#: src/Text.cpp:944
-msgid "Character is uncodable in verbatim paragraphs."
+#: src/Text.cpp:941
+#, fuzzy
+msgid "Character is uncodable in this verbatim context."
 msgstr "在 原樣呈現 的段落字元無法編碼."
 
-#: src/Text.cpp:1907
+#: src/Text.cpp:1904
 msgid "[Change Tracking] "
 msgstr "[追蹤變更] "
 
-#: src/Text.cpp:1915
+#: src/Text.cpp:1912
 #, c-format
 msgid "Changed by %1$s[[author]] on %2$s[[date]]. "
 msgstr ""
 
-#: src/Text.cpp:1925 src/mathed/InsetMathFont.cpp:237
+#: src/Text.cpp:1922 src/mathed/InsetMathFont.cpp:237
 #: src/mathed/InsetMathFontOld.cpp:111
 #, c-format
 msgid "Font: %1$s"
 msgstr "字型: %1$s"
 
-#: src/Text.cpp:1930
+#: src/Text.cpp:1927
 #, c-format
 msgid ", Depth: %1$d"
 msgstr ", 深度: %1$d"
 
-#: src/Text.cpp:1936
+#: src/Text.cpp:1933
 msgid ", Spacing: "
 msgstr ", 間隔: "
 
-#: src/Text.cpp:1942 src/frontends/qt4/GuiDocument.cpp:751
+#: src/Text.cpp:1939 src/frontends/qt4/GuiDocument.cpp:751
 msgid "OneHalf"
 msgstr "1.5倍"
 
-#: src/Text.cpp:1948
+#: src/Text.cpp:1945
 msgid "Other ("
 msgstr "其他 ("
 
-#: src/Text.cpp:1958
+#: src/Text.cpp:1955
 msgid ", Paragraph: "
 msgstr ", 段落: "
 
-#: src/Text.cpp:1959
+#: src/Text.cpp:1956
 msgid ", Id: "
 msgstr ", Id: "
 
-#: src/Text.cpp:1966
+#: src/Text.cpp:1963
 msgid ", Char: 0x"
 msgstr ", 字元: 0x"
 
-#: src/Text.cpp:1968
+#: src/Text.cpp:1965
 msgid ", Boundary: "
 msgstr ", 邊界: "
 
@@ -28371,7 +28391,7 @@ msgstr "引用"
 msgid "Labels and References"
 msgstr "標籤 和 對照參考"
 
-#: src/TocBackend.cpp:285 src/frontends/qt4/GuiDocument.cpp:1491
+#: src/TocBackend.cpp:285 src/frontends/qt4/GuiDocument.cpp:1490
 msgid "Child Documents"
 msgstr "子文件"
 
@@ -29144,7 +29164,7 @@ msgstr "所有參考資料"
 
 #: src/frontends/qt4/GuiBibtex.cpp:435 src/frontends/qt4/GuiBibtex.cpp:445
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
-#: src/frontends/qt4/GuiDocument.cpp:2378 src/frontends/qt4/GuiExternal.cpp:675
+#: src/frontends/qt4/GuiDocument.cpp:2377 src/frontends/qt4/GuiExternal.cpp:675
 #: src/frontends/qt4/GuiGraphics.cpp:793 src/frontends/qt4/GuiInclude.cpp:330
 #: src/frontends/qt4/GuiView.cpp:2196 src/frontends/qt4/GuiView.cpp:2253
 #: src/frontends/qt4/GuiView.cpp:2391 src/frontends/qt4/GuiView.cpp:2524
@@ -29232,8 +29252,8 @@ msgid "Filename Suffix"
 msgstr "檔名前綴"
 
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
-#: src/frontends/qt4/GuiDocument.cpp:2776
-#: src/frontends/qt4/GuiDocument.cpp:3934
+#: src/frontends/qt4/GuiDocument.cpp:2775
+#: src/frontends/qt4/GuiDocument.cpp:3933
 #: src/frontends/qt4/GuiProgressView.cpp:144
 #: src/frontends/qt4/GuiProgressView.cpp:158
 #: src/frontends/qt4/GuiProgressView.cpp:179
@@ -29241,9 +29261,9 @@ msgid "Yes"
 msgstr "是"
 
 #: src/frontends/qt4/GuiBranches.cpp:135 src/frontends/qt4/GuiBranches.cpp:143
-#: src/frontends/qt4/GuiDocument.cpp:2775
-#: src/frontends/qt4/GuiDocument.cpp:3332
-#: src/frontends/qt4/GuiDocument.cpp:3933
+#: src/frontends/qt4/GuiDocument.cpp:2774
+#: src/frontends/qt4/GuiDocument.cpp:3331
+#: src/frontends/qt4/GuiDocument.cpp:3932
 #: src/frontends/qt4/GuiProgressView.cpp:110
 #: src/frontends/qt4/GuiProgressView.cpp:143
 #: src/frontends/qt4/GuiProgressView.cpp:179
@@ -29763,55 +29783,55 @@ msgstr "JIS B6"
 msgid "Language Default (no inputenc)"
 msgstr "語言預設 (不使用 inputenc)"
 
-#: src/frontends/qt4/GuiDocument.cpp:1131
+#: src/frontends/qt4/GuiDocument.cpp:1130
 msgid "Numbered"
 msgstr "編號的"
 
-#: src/frontends/qt4/GuiDocument.cpp:1132
+#: src/frontends/qt4/GuiDocument.cpp:1131
 msgid "Appears in TOC"
 msgstr "出現在目錄中"
 
-#: src/frontends/qt4/GuiDocument.cpp:1210
+#: src/frontends/qt4/GuiDocument.cpp:1209
 msgid "Package"
 msgstr "套件"
 
-#: src/frontends/qt4/GuiDocument.cpp:1210
+#: src/frontends/qt4/GuiDocument.cpp:1209
 msgid "Load automatically"
 msgstr "自動載入"
 
-#: src/frontends/qt4/GuiDocument.cpp:1211
+#: src/frontends/qt4/GuiDocument.cpp:1210
 msgid "Load always"
 msgstr "總是載入"
 
-#: src/frontends/qt4/GuiDocument.cpp:1211
+#: src/frontends/qt4/GuiDocument.cpp:1210
 msgid "Do not load"
 msgstr "不要載入"
 
-#: src/frontends/qt4/GuiDocument.cpp:1224
+#: src/frontends/qt4/GuiDocument.cpp:1223
 msgid "The AMS LaTeX packages are always used"
 msgstr "總是使用 AMS LaTeX 套件"
 
-#: src/frontends/qt4/GuiDocument.cpp:1227
+#: src/frontends/qt4/GuiDocument.cpp:1226
 #, c-format
 msgid "The LaTeX package %1$s is always used"
 msgstr "總是使用 %1$s 套件"
 
-#: src/frontends/qt4/GuiDocument.cpp:1232
+#: src/frontends/qt4/GuiDocument.cpp:1231
 msgid "The AMS LaTeX packages are never used"
 msgstr "絕不使用 AMS LaTeX 套件"
 
-#: src/frontends/qt4/GuiDocument.cpp:1235
+#: src/frontends/qt4/GuiDocument.cpp:1234
 #, c-format
 msgid "The LaTeX package %1$s is never used"
 msgstr "絕不使用 %1$s 套件"
 
-#: src/frontends/qt4/GuiDocument.cpp:1351
-#: src/frontends/qt4/GuiDocument.cpp:2357
+#: src/frontends/qt4/GuiDocument.cpp:1350
+#: src/frontends/qt4/GuiDocument.cpp:2356
 #, c-format
 msgid "%1$s [Class '%2$s']"
 msgstr "%1$s [類別 '%2$s']"
 
-#: src/frontends/qt4/GuiDocument.cpp:1354
+#: src/frontends/qt4/GuiDocument.cpp:1353
 #, c-format
 msgid ""
 "Class not found by LyX. Please check if you have the matching %1$s class and "
@@ -29819,111 +29839,111 @@ msgid ""
 msgstr ""
 "LyX 找不到該類別, 請檢查您已有 %1$s 文件類別而且已安裝必須的套件 (%2$s)."
 
-#: src/frontends/qt4/GuiDocument.cpp:1483
-#: src/frontends/qt4/GuiDocument.cpp:1619
+#: src/frontends/qt4/GuiDocument.cpp:1482
+#: src/frontends/qt4/GuiDocument.cpp:1618
 msgid "Input listings parameters below. Enter ? for a list of parameters."
 msgstr "在此輸入 程式碼列表 參數. 輸入 ? 以取得參數清單."
 
-#: src/frontends/qt4/GuiDocument.cpp:1490
+#: src/frontends/qt4/GuiDocument.cpp:1489
 msgid "Document Class"
 msgstr "文件類別"
 
-#: src/frontends/qt4/GuiDocument.cpp:1492
+#: src/frontends/qt4/GuiDocument.cpp:1491
 msgid "Modules"
 msgstr "模組"
 
-#: src/frontends/qt4/GuiDocument.cpp:1493
+#: src/frontends/qt4/GuiDocument.cpp:1492
 msgid "Local Layout"
 msgstr "自訂布局/模組"
 
-#: src/frontends/qt4/GuiDocument.cpp:1495
+#: src/frontends/qt4/GuiDocument.cpp:1494
 msgid "Text Layout"
 msgstr "文字布局"
 
-#: src/frontends/qt4/GuiDocument.cpp:1497
+#: src/frontends/qt4/GuiDocument.cpp:1496
 msgid "Page Margins"
 msgstr "邊界"
 
-#: src/frontends/qt4/GuiDocument.cpp:1499 src/frontends/qt4/GuiPrefs.cpp:1185
+#: src/frontends/qt4/GuiDocument.cpp:1498 src/frontends/qt4/GuiPrefs.cpp:1185
 msgid "Colors"
 msgstr "顏色"
 
-#: src/frontends/qt4/GuiDocument.cpp:1500
+#: src/frontends/qt4/GuiDocument.cpp:1499
 msgid "Numbering & TOC"
 msgstr "編號 & 目錄"
 
-#: src/frontends/qt4/GuiDocument.cpp:1502
+#: src/frontends/qt4/GuiDocument.cpp:1501
 msgid "Indexes"
 msgstr "索引"
 
-#: src/frontends/qt4/GuiDocument.cpp:1503
+#: src/frontends/qt4/GuiDocument.cpp:1502
 msgid "PDF Properties"
 msgstr "PDF 屬性"
 
-#: src/frontends/qt4/GuiDocument.cpp:1504
+#: src/frontends/qt4/GuiDocument.cpp:1503
 msgid "Math Options"
 msgstr "數學選項"
 
-#: src/frontends/qt4/GuiDocument.cpp:1505
+#: src/frontends/qt4/GuiDocument.cpp:1504
 msgid "Float Placement"
 msgstr "浮動框位置"
 
-#: src/frontends/qt4/GuiDocument.cpp:1507
+#: src/frontends/qt4/GuiDocument.cpp:1506
 msgid "Bullets"
 msgstr "分項符號"
 
-#: src/frontends/qt4/GuiDocument.cpp:1509
+#: src/frontends/qt4/GuiDocument.cpp:1508
 msgid "Formats[[output]]"
 msgstr ""
 
-#: src/frontends/qt4/GuiDocument.cpp:1510
+#: src/frontends/qt4/GuiDocument.cpp:1509
 msgid "LaTeX Preamble"
 msgstr "LaTeX 前文"
 
-#: src/frontends/qt4/GuiDocument.cpp:1810
-#: src/frontends/qt4/GuiDocument.cpp:1840
+#: src/frontends/qt4/GuiDocument.cpp:1809
+#: src/frontends/qt4/GuiDocument.cpp:1839
 msgid "&Default..."
 msgstr "預設(&D)..."
 
-#: src/frontends/qt4/GuiDocument.cpp:2139
-#: src/frontends/qt4/GuiDocument.cpp:3694
-#: src/frontends/qt4/GuiDocument.cpp:3703
-#: src/frontends/qt4/GuiDocument.cpp:3712
-#: src/frontends/qt4/GuiDocument.cpp:3721
+#: src/frontends/qt4/GuiDocument.cpp:2138
+#: src/frontends/qt4/GuiDocument.cpp:3693
+#: src/frontends/qt4/GuiDocument.cpp:3702
+#: src/frontends/qt4/GuiDocument.cpp:3711
+#: src/frontends/qt4/GuiDocument.cpp:3720
 msgid " (not installed)"
 msgstr " (未安裝的)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2164
+#: src/frontends/qt4/GuiDocument.cpp:2163
 msgid "Non-TeX Fonts Default"
 msgstr "預設 非-TeX 字體"
 
-#: src/frontends/qt4/GuiDocument.cpp:2166
+#: src/frontends/qt4/GuiDocument.cpp:2165
 msgid " (not available)"
 msgstr " (無法使用)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2167
+#: src/frontends/qt4/GuiDocument.cpp:2166
 msgid "Class Default (TeX Fonts)"
 msgstr "類別預設 (TeX 字體)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2205
-#: src/frontends/qt4/GuiDocument.cpp:2232
+#: src/frontends/qt4/GuiDocument.cpp:2204
+#: src/frontends/qt4/GuiDocument.cpp:2231
 msgid "Class Default"
 msgstr "類別預設"
 
-#: src/frontends/qt4/GuiDocument.cpp:2309
+#: src/frontends/qt4/GuiDocument.cpp:2308
 msgid "Layouts|#o#O"
 msgstr "布局(o)|#o#O"
 
-#: src/frontends/qt4/GuiDocument.cpp:2311
+#: src/frontends/qt4/GuiDocument.cpp:2310
 msgid "LyX Layout (*.layout)"
 msgstr "LyX 布局檔(*.layout)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2313
-#: src/frontends/qt4/GuiDocument.cpp:2322
+#: src/frontends/qt4/GuiDocument.cpp:2312
+#: src/frontends/qt4/GuiDocument.cpp:2321
 msgid "Local layout file"
 msgstr "本地布局檔"
 
-#: src/frontends/qt4/GuiDocument.cpp:2323
+#: src/frontends/qt4/GuiDocument.cpp:2322
 #, fuzzy
 msgid ""
 "The layout file you have selected is a local layout\n"
@@ -29936,35 +29956,35 @@ msgstr ""
 "若您沒有將此布局檔與文件檔放在同一目錄內,\n"
 "您的文件檔可能會無法正常使用."
 
-#: src/frontends/qt4/GuiDocument.cpp:2327
+#: src/frontends/qt4/GuiDocument.cpp:2326
 msgid "&Set Layout"
 msgstr "設定布局(&S)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2341
+#: src/frontends/qt4/GuiDocument.cpp:2340
 msgid "Unable to read local layout file."
 msgstr "無法讀取本地布局檔."
 
-#: src/frontends/qt4/GuiDocument.cpp:2358
+#: src/frontends/qt4/GuiDocument.cpp:2357
 msgid "This is a local layout file."
 msgstr "這是一個本地布局檔."
 
-#: src/frontends/qt4/GuiDocument.cpp:2372
+#: src/frontends/qt4/GuiDocument.cpp:2371
 msgid "Select master document"
 msgstr "選擇主文件"
 
-#: src/frontends/qt4/GuiDocument.cpp:2376
+#: src/frontends/qt4/GuiDocument.cpp:2375
 msgid "LyX Files (*.lyx)"
 msgstr "LyX 文件 (*.lyx)"
+
+#: src/frontends/qt4/GuiDocument.cpp:2399
+#: src/frontends/qt4/GuiDocument.cpp:2679
+#: src/frontends/qt4/GuiDocument.cpp:4134
+msgid "Unapplied changes"
+msgstr "無法套用變更"
 
 #: src/frontends/qt4/GuiDocument.cpp:2400
 #: src/frontends/qt4/GuiDocument.cpp:2680
 #: src/frontends/qt4/GuiDocument.cpp:4135
-msgid "Unapplied changes"
-msgstr "無法套用變更"
-
-#: src/frontends/qt4/GuiDocument.cpp:2401
-#: src/frontends/qt4/GuiDocument.cpp:2681
-#: src/frontends/qt4/GuiDocument.cpp:4136
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -29972,138 +29992,138 @@ msgstr ""
 "在對話框內做的一些變更尚未套用. \n"
 "若您現在不套用的話, 在這個動作之後, 它們將會遺失."
 
-#: src/frontends/qt4/GuiDocument.cpp:2403
-#: src/frontends/qt4/GuiDocument.cpp:2683
-#: src/frontends/qt4/GuiDocument.cpp:4138
+#: src/frontends/qt4/GuiDocument.cpp:2402
+#: src/frontends/qt4/GuiDocument.cpp:2682
+#: src/frontends/qt4/GuiDocument.cpp:4137
 msgid "&Dismiss"
 msgstr "屏棄(&D)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2414
-#: src/frontends/qt4/GuiDocument.cpp:4146
+#: src/frontends/qt4/GuiDocument.cpp:2413
+#: src/frontends/qt4/GuiDocument.cpp:4145
 msgid "Unable to set document class."
 msgstr "無法設定文件類別."
 
-#: src/frontends/qt4/GuiDocument.cpp:2558
+#: src/frontends/qt4/GuiDocument.cpp:2557
 #, fuzzy
 msgid "Basic numerical"
 msgstr "數字編號"
 
-#: src/frontends/qt4/GuiDocument.cpp:2561
+#: src/frontends/qt4/GuiDocument.cpp:2560
 msgid "Author-year"
 msgstr "作者-年份"
 
-#: src/frontends/qt4/GuiDocument.cpp:2564
+#: src/frontends/qt4/GuiDocument.cpp:2563
 #, fuzzy
 msgid "Author-number"
 msgstr "作者-年份"
 
-#: src/frontends/qt4/GuiDocument.cpp:2607
+#: src/frontends/qt4/GuiDocument.cpp:2606
 #, c-format
 msgid "%1$s and %2$s"
 msgstr "%1$s 和 %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:2614
+#: src/frontends/qt4/GuiDocument.cpp:2613
 #, c-format
 msgid "%1$s, %2$s"
 msgstr "%1$s, %2$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:2619
+#: src/frontends/qt4/GuiDocument.cpp:2618
 #, c-format
 msgid "%1$s, %2$s, and %3$s"
 msgstr "%1$s, %2$s, 和 %3$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:2633
+#: src/frontends/qt4/GuiDocument.cpp:2632
 #, c-format
 msgid "%1$s (unavailable)"
 msgstr "%1$s (無法使用)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2720
+#: src/frontends/qt4/GuiDocument.cpp:2719
 msgid "Module provided by document class."
 msgstr "由文件類別提供的模組."
 
-#: src/frontends/qt4/GuiDocument.cpp:2727
+#: src/frontends/qt4/GuiDocument.cpp:2726
 #, c-format
 msgid "Category: %1$s."
 msgstr "分類: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2735
+#: src/frontends/qt4/GuiDocument.cpp:2734
 #, c-format
 msgid "Package(s) required: %1$s."
 msgstr "需要的套件: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2741
+#: src/frontends/qt4/GuiDocument.cpp:2740
 msgid "or"
 msgstr "或"
 
-#: src/frontends/qt4/GuiDocument.cpp:2744
+#: src/frontends/qt4/GuiDocument.cpp:2743
 #, c-format
 msgid "Modules required: %1$s."
 msgstr "需要的模組: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2753
+#: src/frontends/qt4/GuiDocument.cpp:2752
 #, c-format
 msgid "Modules excluded: %1$s."
 msgstr "排除的模組: %1$s."
 
-#: src/frontends/qt4/GuiDocument.cpp:2759
+#: src/frontends/qt4/GuiDocument.cpp:2758
 msgid "WARNING: Some required packages are unavailable!"
 msgstr "警告: 一些需要的模組無法使用!"
 
-#: src/frontends/qt4/GuiDocument.cpp:3334
+#: src/frontends/qt4/GuiDocument.cpp:3333
 #, fuzzy
 msgid "per part"
 msgstr "紙張格式"
 
-#: src/frontends/qt4/GuiDocument.cpp:3336
+#: src/frontends/qt4/GuiDocument.cpp:3335
 #, fuzzy
 msgid "per chapter"
 msgstr "章 \\thechapter"
 
-#: src/frontends/qt4/GuiDocument.cpp:3338
+#: src/frontends/qt4/GuiDocument.cpp:3337
 #, fuzzy
 msgid "per section"
 msgstr "mathsection"
 
-#: src/frontends/qt4/GuiDocument.cpp:3340
+#: src/frontends/qt4/GuiDocument.cpp:3339
 #, fuzzy
 msgid "per subsection"
 msgstr "\\Alph{subsection}."
 
-#: src/frontends/qt4/GuiDocument.cpp:3341
+#: src/frontends/qt4/GuiDocument.cpp:3340
 #, fuzzy
 msgid "per child document"
 msgstr "子文件"
 
-#: src/frontends/qt4/GuiDocument.cpp:3626
+#: src/frontends/qt4/GuiDocument.cpp:3625
 msgid "[No options predefined]"
 msgstr "[無預先定義的選項]"
 
-#: src/frontends/qt4/GuiDocument.cpp:3852
+#: src/frontends/qt4/GuiDocument.cpp:3851
 msgid "C&ustomize Hyperref Options"
 msgstr "自訂的 Hyperref 選項(&u)"
 
-#: src/frontends/qt4/GuiDocument.cpp:3854
+#: src/frontends/qt4/GuiDocument.cpp:3853
 msgid "&Use Hyperref Support"
 msgstr "使用 Hyperref 功能(&U)"
 
-#: src/frontends/qt4/GuiDocument.cpp:4158
+#: src/frontends/qt4/GuiDocument.cpp:4157
 msgid "Can't set layout!"
 msgstr "無法設定布局!"
 
-#: src/frontends/qt4/GuiDocument.cpp:4159
+#: src/frontends/qt4/GuiDocument.cpp:4158
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "無法為 ID: %1$s 設定布局"
 
-#: src/frontends/qt4/GuiDocument.cpp:4255
+#: src/frontends/qt4/GuiDocument.cpp:4254
 msgid "Not Found"
 msgstr "找不到"
 
-#: src/frontends/qt4/GuiDocument.cpp:4315
+#: src/frontends/qt4/GuiDocument.cpp:4314
 msgid "Assigned master does not include this file"
 msgstr "指定的主文件, 並未包含這份文件"
 
-#: src/frontends/qt4/GuiDocument.cpp:4316
+#: src/frontends/qt4/GuiDocument.cpp:4315
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -30113,11 +30133,11 @@ msgstr ""
 "您必須包含此檔案到文件\n"
 "'%1$s', 以使用主文件功能."
 
-#: src/frontends/qt4/GuiDocument.cpp:4320
+#: src/frontends/qt4/GuiDocument.cpp:4319
 msgid "Could not load master"
 msgstr "無法載入主文件"
 
-#: src/frontends/qt4/GuiDocument.cpp:4321
+#: src/frontends/qt4/GuiDocument.cpp:4320
 #, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -30126,7 +30146,7 @@ msgstr ""
 "主文件 '%1$s'\n"
 "無法載入."
 
-#: src/frontends/qt4/GuiDocument.cpp:4458
+#: src/frontends/qt4/GuiDocument.cpp:4457
 #, fuzzy
 msgid "(Module name: %1)"
 msgstr "需要的模組: %1$s."
@@ -31876,28 +31896,28 @@ msgstr "預覽"
 msgid "%1[[preview format name]] Preview"
 msgstr ""
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1582
+#: src/frontends/qt4/GuiWorkArea.cpp:1599
 msgid "Close File"
 msgstr "關閉檔案"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2098
+#: src/frontends/qt4/GuiWorkArea.cpp:2115
 #, fuzzy
 msgid "%1 (read only)"
 msgstr " (唯讀)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2102
+#: src/frontends/qt4/GuiWorkArea.cpp:2119
 msgid "%1 (modified externally)"
 msgstr ""
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2122
+#: src/frontends/qt4/GuiWorkArea.cpp:2139
 msgid "Hide tab"
 msgstr "隱藏標籤頁"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2124
+#: src/frontends/qt4/GuiWorkArea.cpp:2141
 msgid "Close tab"
 msgstr "關閉標籤頁"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2241
+#: src/frontends/qt4/GuiWorkArea.cpp:2258
 msgid "<b>The file %1 changed on disk.</b>"
 msgstr ""
 
