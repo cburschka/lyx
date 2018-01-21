@@ -898,15 +898,21 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 	if (!runparams.pass_thru) {
 		// Guard against unwanted ligatures with preceding text
 		char_type const lastchar = os.lastChar();
+		// LuaTeX does not respect {} as ligature breaker by design,
+		// see https://tex.stackexchange.com/q/349725/19291
+		docstring const nolig =
+				(runparams.flavor == OutputParams::LUATEX
+				 || runparams.flavor == OutputParams::DVILUATEX) ?
+					from_ascii("\\/") : from_ascii("{}");
 		// !` ?` => !{}` ?{}`
 		if (prefixIs(qstr, from_ascii("`"))
 		    && (lastchar == '!' || lastchar == '?'))
-			os << "{}";
+			os << nolig;
 		// ``` ''' ,,, <<< >>>
 		// => `{}`` '{}'' ,{},, <{}<< >{}>>
 		if (contains(from_ascii(",'`<>"), lastchar)
 		    && prefixIs(qstr, lastchar))
-			os << "{}";
+			os << nolig;
 	}
 
 	os << qstr;
