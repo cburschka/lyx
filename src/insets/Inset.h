@@ -44,6 +44,7 @@ class FuncStatus;
 class InsetArgument;
 class InsetCollapsible;
 class InsetCommand;
+class InsetGraphics;
 class InsetIterator;
 class InsetLayout;
 class InsetList;
@@ -158,6 +159,10 @@ public:
 	virtual InsetCommand const * asInsetCommand() const { return 0; }
 	/// is this inset based on the InsetArgument class?
 	virtual InsetArgument const * asInsetArgument() const { return nullptr; }
+	/// is this inset based on the InsetGraphics class?
+	virtual InsetGraphics * asInsetGraphics() { return 0; }
+	/// is this inset based on the InsetGraphics class?
+	virtual InsetGraphics const * asInsetGraphics() const { return 0; }
 
 	/// the real dispatcher
 	void dispatch(Cursor & cur, FuncRequest & cmd);

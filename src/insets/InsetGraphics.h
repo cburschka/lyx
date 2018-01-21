@@ -55,7 +55,11 @@ public:
 	///
 	bool clickable(BufferView const &, int, int) const { return true; }
 	///
-	bool canPaintChange(BufferView const &) const { return true; };
+	bool canPaintChange(BufferView const &) const { return true; }
+	///
+	InsetGraphics * asInsetGraphics() { return this; }
+	/// 
+	InsetGraphics const * asInsetGraphics() const { return this; }
 
 private:
 	///
