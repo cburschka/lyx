@@ -18,7 +18,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 
-'''
+"""
 This module offers several free functions to help parse lines.
 More documentaton is below, but here is a quick guide to what
 they do. Optional arguments are marked by brackets.
@@ -152,18 +152,68 @@ is_nonempty_line(line):
 count_pars_in_inset(lines, i):
   Counts the paragraphs inside an inset.
 
-'''
+"""
 
 import re
+
+# Fast search in lists
+def find_slice(l, sl, start = 0, stop = None):
+    """Return position of first occurence of sequence `sl` in list `l`
+    as a `slice` object.
+
+    >>> find_slice([1, 2, 3, 1, 1, 2], (1, 2))
+    slice(0, 2, None)
+
+    The return value can be used to delete or substitute the sub-list:
+
+    >>> l = [1, 0, 1, 1, 1, 2]
+    >>> s = find_slice(l, [0, 1, 1])
+    >>> del(l[s]); l
+    [1, 1, 2]
+    >>> s = find_slice(l, (1, 2))
+    >>> l[s] = [3]; l
+    [1, 3]
+
+    The start argument works similar to list.index()
+
+    >>> find_slice([1, 2, 3, 1, 1 ,2], (1, 2), start = 1)
+    slice(4, 6, None)
+
+    Use the `stop` attribute of the returned `slice` to test for success:
+
+    >>> s1 = find_slice([2, 3, 1], (3, 1))
+    >>> s2 = find_slice([2, 3, 1], (2, 1))
+    >>> if s1.stop and not s2.stop:
+    ...     print "wow"
+    wow
+    """
+    stop = stop or len(l)
+    N = len(sl) # lenght of sub-list
+    try:
+        while True:
+            for j, value in enumerate(sl):
+                i = l.index(value, start, stop)
+                if j and i != start:
+                    start = i-j
+                    break
+                start = i +1
+            else:
+                return slice(i+1-N, i+1)
+    except ValueError: # sub list `sl` not found
+        return slice(0, 0)
+
 
 # Utilities for one line
 def check_token(line, token):
     """ check_token(line, token) -> bool
 
     Return True if token is present in line and is the first element
-    else returns False."""
+    else returns False.
 
-    return line[:len(token)] == token
+    Deprecated. Use line.startswith(token).
+    """
+
+    return line.startswith(token)
 
 
 def is_nonempty_line(line):
@@ -171,7 +221,7 @@ def is_nonempty_line(line):
 
     Return False if line is either empty or it has only whitespaces,
     else return True."""
-    return line != " "*len(line)
+    return bool(line.strip())
 
 
 # Utilities for a list of lines

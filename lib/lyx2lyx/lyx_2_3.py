@@ -24,9 +24,10 @@ import sys, os
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import find_end_of, find_token_backwards, find_end_of_layout, \
-    find_token, find_end_of_inset, get_value,  get_bool_value, \
-    get_containing_layout, get_quoted_value, del_token, find_re
+from parser_tools import del_token, find_end_of, find_end_of_layout, \
+    find_end_of_inset, find_re, find_slice, find_token, \
+    find_token_backwards, get_containing_layout, \
+    get_bool_value, get_value, get_quoted_value
 #  find_tokens, find_token_exact, is_in_inset, \
 #  check_token, get_option_value
 
@@ -1843,17 +1844,18 @@ def revert_chapterbib(document):
 def convert_dashligatures(document):
     "Set 'use_dash_ligatures' according to content."
     use_dash_ligatures = None
-    # eventually remove preamble code from 2.3->2.2 conversion:
-    for i, line in enumerate(document.preamble):
-        if i > 1 and line == r'\renewcommand{\textemdash}{---}':
-            if (document.preamble[i-1] == r'\renewcommand{\textendash}{--}'
-                and document.preamble[i-2] == '% Added by lyx2lyx'):
-                del document.preamble[i-2:i+1]
-                use_dash_ligatures = True
+    # Eventually remove preamble code from 2.3->2.2 conversion:
+    dash_renew_lines = find_slice(document.preamble,
+                                  ['% Added by lyx2lyx',
+                                   r'\renewcommand{\textendash}{--}',
+                                   r'\renewcommand{\textemdash}{---}'])
+    del(document.preamble[dash_renew_lines])
+    use_dash_ligatures = bool(dash_renew_lines.stop)
+
     if use_dash_ligatures is None:
         # Look for dashes:
         # (Documents by LyX 2.1 or older have "\twohyphens\n" or "\threehyphens\n"
-        # as interim representation for dash ligatures in 2.2.)
+        # as interim representation for dash ligatures)
         has_literal_dashes = False
         has_ligature_dashes = False
         j = 0
@@ -1882,9 +1884,8 @@ def convert_dashligatures(document):
                          flags=re.UNICODE):
                 has_literal_dashes = True
             # ligature dash followed by word or no-break space on next line:
-            if re.search(u"(\\\\twohyphens|\\\\threehyphens)", line,
-                            flags=re.UNICODE) and re.match(u"[\w\u00A0]",
-                            document.body[i+1], flags=re.UNICODE):
+            if (re.search(r"(\\twohyphens|\\threehyphens)", line) and
+                re.match(u"[\w\u00A0]", document.body[i+1], flags=re.UNICODE)):
                 has_ligature_dashes = True
         if has_literal_dashes and has_ligature_dashes:
             # TODO: insert a warning note in the document?
@@ -1920,11 +1921,10 @@ def revert_dashligatures(document):
         if (i < j) or line.startswith("\\labelwidthstring"):
             new_body.append(line)
             continue
-        words = line.split()
-        if (len(words) > 1 and words[0] == "\\begin_inset"
-            and (words[1] in ["CommandInset", "ERT", "External", "Formula",
-                              "FormulaMacro", "Graphics", "IPA", "listings"]
-                 or ' '.join(words[1:]) == "Flex Code")):
+        if (line.startswith("\\begin_inset ") and
+            line[13:].split()[0] in ["CommandInset", "ERT", "External",
+                "Formula", "FormulaMacro", "Graphics", "IPA", "listings"]
+            or line == "\\begin_inset Flex Code"):
             j = find_end_of_inset(document.body, i)
             if j == -1:
                 document.warning("Malformed LyX document: Can't find end of "

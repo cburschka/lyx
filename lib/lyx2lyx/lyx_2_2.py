@@ -29,14 +29,14 @@ import sys, os
 #  find_token_backwards, is_in_inset, get_value, get_quoted_value, \
 #  del_token, check_token, get_option_value
 
-from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, get_ert, lyx2latex, \
-  lyx2verbatim, length_in_bp, convert_info_insets
-#  insert_to_preamble, latex_length, revert_flex_inset, \
-#  revert_font_attrs, hex2ratio, str2bool
+from lyx2lyx_tools import (add_to_preamble, put_cmd_in_ert, get_ert,
+    lyx2latex, lyx2verbatim, length_in_bp, convert_info_insets)
+#   insert_to_preamble, latex_length, revert_flex_inset,
+#   revert_font_attrs, hex2ratio, str2bool
 
-from parser_tools import find_token, find_token_backwards, find_re, \
-     find_end_of_inset, find_end_of_layout, find_nonempty_line, \
-     get_containing_layout, get_value, check_token
+from parser_tools import (find_end_of_inset, find_end_of_layout,
+    find_nonempty_line, find_re, find_slice, find_token, find_token_backwards,
+    get_containing_layout, get_value, check_token)
 
 ####################################################################
 # Private helper functions
@@ -706,24 +706,20 @@ def revert_dashes(document):
     Remove preamble code from 2.3->2.2 conversion.
     """
     # Remove preamble code from 2.3->2.2 conversion:
-    for i, line in enumerate(document.preamble):
-        if (line == '% Added by lyx2lyx' and
-            document.preamble[i+1] == r'\renewcommand{\textendash}{--}' and
-            document.preamble[i+2] == r'\renewcommand{\textemdash}{---}'):
-            del document.preamble[i:i+3]
-            break
+    dash_renew_lines = find_slice(document.preamble,
+                                  ['% Added by lyx2lyx',
+                                   r'\renewcommand{\textendash}{--}',
+                                   r'\renewcommand{\textemdash}{---}'])
+    del(document.preamble[dash_renew_lines])
     # Prevent ligation of hyphens:
     i = 0
     while i < len(document.body)-1:
         # increment i, skip some insets (cf. convert_dashes)
-        i = _dashes_next_line(document, i) 
+        i = _dashes_next_line(document, i)
         line = document.body[i]
-        while "--" in line:
+        if "--" in line:
             line = line.replace("--", "-\\SpecialChar \\textcompwordmark{}\n-")
-        parts = line.split('\n')
-        if len(parts) > 1:
-            document.body[i:i+1] = parts
-            i += len(parts)-1
+            document.body[i:i+1] = line.split('\n')
     # Convert \twohyphens and \threehyphens:
     i = 0
     while i < len(document.body):
