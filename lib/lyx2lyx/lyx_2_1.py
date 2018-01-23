@@ -24,7 +24,8 @@ import sys, os
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import count_pars_in_inset, del_token, find_token, find_token_exact, \
+from parser_tools import count_pars_in_inset, del_complete_lines, del_token, \
+    find_token, find_token_exact, \
     find_token_backwards, find_end_of, find_end_of_inset, find_end_of_layout, \
     find_end_of_sequence, find_re, get_option_value, get_containing_layout, \
     get_containing_inset, get_value, get_quoted_value, set_option_value
@@ -618,15 +619,16 @@ def convert_use_package(document, pkg, commands, oldauto):
     # oldauto defines how the version we are converting from behaves:
     # if it is true, the old version uses the package automatically.
     # if it is false, the old version never uses the package.
-    i = find_token(document.header, "\\use_package", 0)
+    i = find_token(document.header, "\\use_package")
     if i == -1:
         document.warning("Malformed LyX document: Can't find \\use_package.")
         return;
-    j = find_token(document.preamble, "\\usepackage{" + pkg + "}", 0)
-    if j != -1:
-        # package was loaded in the preamble, convert this to header setting for round trip
+    packageline = "\\usepackage{%s}" % pkg
+    if (del_complete_lines(document.preamble,
+                           ['% Added by lyx2lyx', packageline]) or
+        del_complete_lines(document.preamble, [packageline])):
+        # package was loaded in the preamble, convert this to header setting
         document.header.insert(i + 1, "\\use_package " + pkg + " 2") # on
-        del document.preamble[j]
     # If oldauto is true we have two options:
     # We can either set the package to auto - this is correct for files in
     # format 425 to 463, and may create a conflict for older files which use

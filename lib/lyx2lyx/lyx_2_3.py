@@ -24,11 +24,11 @@ import sys, os
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import del_token, del_value, del_complete_lines, \
-    find_end_of, find_end_of_layout, find_end_of_inset, find_re, \
-    find_token, find_token_backwards, get_containing_layout, \
-    get_bool_value, get_value, get_quoted_value
-#  find_tokens, find_token_exact, is_in_inset, \
+from parser_tools import (del_token, del_value, del_complete_lines,
+    find_complete_lines, find_end_of, find_end_of_layout, find_end_of_inset,
+    find_re, find_token, find_token_backwards,
+    get_containing_layout, get_bool_value, get_value, get_quoted_value)
+#  find_tokens, find_token_exact, is_in_inset,
 #  check_token, get_option_value
 
 from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, revert_font_attrs, \
@@ -1902,6 +1902,7 @@ def convert_dashligatures(document):
         document.header.insert(i, "\\use_dash_ligatures %s"
                                % str(use_dash_ligatures).lower())
 
+
 def revert_dashligatures(document):
     """Remove font ligature settings for en- and em-dashes.
     Revert conversion of \twodashes or \threedashes to literal dashes."""
@@ -1973,51 +1974,41 @@ def revert_xout(document):
 
 
 def convert_mathindent(document):
-    " add the \\is_math_indent tag "
+    """Add the \\is_math_indent tag.
+    """
+    k = find_token(document.header, "\\quotes_style") # where to insert
     # check if the document uses the class option "fleqn"
-    k = find_token(document.header, "\\quotes_style", 0)
-    regexp = re.compile(r'^.*fleqn.*')
-    i = find_re(document.header, regexp, 0)
-    if i != -1:
+    options = get_value(document.header, "\\options")
+    if 'fleqn' in options:
         document.header.insert(k, "\\is_math_indent 1")
-        # delete the found option
-        document.header[i] = document.header[i].replace(",fleqn", "")
-        document.header[i] = document.header[i].replace(", fleqn", "")
-        document.header[i] = document.header[i].replace("fleqn,", "")
-        j = find_re(document.header, regexp, 0)
-        if i == j:
-            # then we have fleqn as the only option
+        # delete the fleqn option
+        i = find_token(document.header, "\\options")
+        options = [option for option in options.split(",")
+                   if option.strip() != "fleqn"]
+        if options:
+            document.header[i] = "\\options " + ",".join(options)
+        else:
             del document.header[i]
     else:
         document.header.insert(k, "\\is_math_indent 0")
 
-
 def revert_mathindent(document):
     " Define mathindent if set in the document "
-    # first output the length
-    regexp = re.compile(r'(\\math_indentation)')
-    i = find_re(document.header, regexp, 0)
+    # emulate and delete \math_indentation
+    value = get_value(document.header, "\\math_indentation",
+                      default="default", delete=True)
+    if value != "default":
+        add_to_preamble(document, [r"\setlength{\mathindent}{%s}"%value])
+    # delete \is_math_indent and emulate via document class option
+    if not get_bool_value(document.header, "\\is_math_indent", delete=True):
+        return
+    i = find_token(document.header, "\\options")
     if i != -1:
-        value = get_value(document.header, "\\math_indentation" , i).split()[0]
-        if value != "default":
-            add_to_preamble(document, ["\\setlength{\\mathindent}{" + value + '}'])
-        del document.header[i]
-    # now set the document class option
-    regexp = re.compile(r'(\\is_math_indent 1)')
-    i = find_re(document.header, regexp, 0)
-    if i == -1:
-        regexp = re.compile(r'(\\is_math_indent)')
-        j = find_re(document.header, regexp, 0)
-        del document.header[j]
+        document.header[i] = document.header[i].replace("\\options ",
+                                                        "\\options fleqn,")
     else:
-        k = find_token(document.header, "\\options", 0)
-        if k != -1:
-            document.header[k] = document.header[k].replace("\\options", "\\options fleqn,")
-            del document.header[i]
-        else:
-            l = find_token(document.header, "\\use_default_options", 0)
-            document.header.insert(l, "\\options fleqn")
-            del document.header[i + 1]
+        l = find_token(document.header, "\\use_default_options")
+        document.header.insert(l, "\\options fleqn")
 
 
 def revert_baselineskip(document):
@@ -2126,24 +2117,31 @@ def revert_rotfloat(document):
     i = i + 1
 
 
+allowbreak_emulation =  [r"\begin_inset space \hspace{}",
+                         r"\length 0dd",
+                         r"\end_inset",
+                         r""]
+
 def convert_allowbreak(document):
     " Zero widths Space-inset -> \SpecialChar allowbreak. "
-    body = "\n".join(document.body)
-    body = body.replace("\\begin_inset space \hspace{}\n"
-                        "\\length 0dd\n"
-                        "\\end_inset\n\n",
-                        "\\SpecialChar allowbreak\n")
-    document.body = body.split("\n")
+    lines = document.body
+    i = find_complete_lines(lines, allowbreak_emulation, 2)
+    while i != -1:
+        lines[i-1:i+4] = [lines[i-1] + r"\SpecialChar allowbreak"]
+        i = find_complete_lines(lines, allowbreak_emulation, i)
 
 
 def revert_allowbreak(document):
     " \SpecialChar allowbreak -> Zero widths Space-inset. "
-    body = "\n".join(document.body)
-    body = body.replace("\\SpecialChar allowbreak\n",
-                        "\n\\begin_inset space \hspace{}\n"
-                        "\\length 0dd\n"
-                        "\\end_inset\n\n")
-    document.body = body.split("\n")
+    i = 1
+    lines = document.body
+    while i < len(lines):
+        if lines[i].endswith(r"\SpecialChar allowbreak"):
+            lines[i:i+1] = [lines[i].replace(r"\SpecialChar allowbreak", "")
+                           ] + allowbreak_emulation
+            i += 5
+        else:
+            i += 1
 
 
 def convert_mathnumberpos(document):
@@ -2227,7 +2225,7 @@ def revert_mathnumberingname(document):
         document.header[i] = "\\math_number_before 0"
         k = find_token(document.header, "\\options", 0)
         if k != -1:
-    	    document.header[k] = document.header[k].replace("\\options", "\\options reqno,")
+            document.header[k] = document.header[k].replace("\\options", "\\options reqno,")
         else:
             l = find_token(document.header, "\\use_default_options", 0)
             document.header.insert(l, "\\options reqno")
@@ -2240,7 +2238,8 @@ def revert_mathnumberingname(document):
 
 def convert_minted(document):
     " add the \\use_minted tag "
-    document.header.insert(-1, "\\use_minted 0")
+    i = find_token(document.header, "\\index ")
+    document.header.insert(i, "\\use_minted 0")
 
 
 def revert_minted(document):

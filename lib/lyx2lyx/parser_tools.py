@@ -53,7 +53,7 @@ find_re(lines, rexp, start[, end]):
   As find_token, but rexp is a regular expression object,
   so it has to be passed as e.g.: re.compile(r'...').
 
-get_value(lines, token, start[, end[, default]):
+get_value(lines, token[, start[, end[, default[, delete]]]]):
   Similar to find_token, but it returns what follows the
   token on the found line. Example:
     get_value(document.header, "\\use_xetex", 0)
@@ -64,7 +64,7 @@ get_value(lines, token, start[, end[, default]):
   and is what is returned if we do not find anything. So you
   can use that to set a default.
 
-get_quoted_value(lines, token, start[, end[, default]]):
+get_quoted_value(lines, token[, start[, end[, default[, delete]]]]):
   Similar to get_value, but it will strip quotes off the
   value, if they are present. So use this one for cases
   where the value is normally quoted.
@@ -74,7 +74,7 @@ get_option_value(line, option):
       option="value"
   and returns value. Returns "" if not found.
 
-get_bool_value(lines, token, start[, end[, default]]):
+get_bool_value(lines, token[, start[, end[, default, delete]]]]):
   Like get_value, but returns a boolean.
 
 del_token(lines, token, start[, end]):
@@ -357,12 +357,15 @@ def find_across_lines(lines, sub, start=0, end=0):
     return -1
 
 
-def get_value(lines, token, start=0, end=0, default=""):
-    """ get_value(lines, token, start[[, end], default]) -> string
+def get_value(lines, token, start=0, end=0, default="", delete=False):
+    """Find `token` in `lines` and return part of line that follows it.
 
     Find the next line that looks like:
       token followed by other stuff
-    Returns "followed by other stuff" with leading and trailing
+
+    If `delete` is True, delete the line (if found).
+
+    Return "followed by other stuff" with leading and trailing
     whitespace removed.
     """
     i = find_token_exact(lines, token, start, end)
@@ -372,12 +375,14 @@ def get_value(lines, token, start=0, end=0, default=""):
     #  return lines.pop(i)[len(token):].strip() # or default
     # see test_parser_tools.py
     l = lines[i].split(None, 1)
+    if delete:
+        del(lines[i])
     if len(l) > 1:
         return l[1].strip()
     return default
 
 
-def get_quoted_value(lines, token, start=0, end=0, default=""):
+def get_quoted_value(lines, token, start=0, end=0, default="", delete=False):
     """ get_quoted_value(lines, token, start[[, end], default]) -> string
 
     Find the next line that looks like:
@@ -388,13 +393,13 @@ def get_quoted_value(lines, token, start=0, end=0, default=""):
     if they are there.
     Note that we will NOT strip quotes from default!
     """
-    val = get_value(lines, token, start, end, "")
+    val = get_value(lines, token, start, end, "", delete)
     if not val:
       return default
     return val.strip('"')
 
 
-def get_bool_value(lines, token, start=0, end=0, default=None):
+def get_bool_value(lines, token, start=0, end=0, default=None, delete=False):
     """ get_bool_value(lines, token, start[[, end], default]) -> string
 
     Find the next line that looks like:
@@ -404,7 +409,7 @@ def get_bool_value(lines, token, start=0, end=0, default=None):
     False if bool_value is 0 or false
     """
 
-    val = get_quoted_value(lines, token, start, end, "")
+    val = get_quoted_value(lines, token, start, end, default, delete)
 
     if val == "1" or val == "true":
         return True

@@ -22,7 +22,8 @@ import re, string
 import unicodedata
 import sys, os
 
-from parser_tools import find_token, find_end_of, find_tokens, \
+from parser_tools import del_complete_lines, \
+  find_token, find_end_of, find_tokens, \
   find_token_exact, find_end_of_inset, find_end_of_layout, \
   find_token_backwards, is_in_inset, get_value, get_quoted_value, \
   del_token, check_token, get_option_value
@@ -484,6 +485,15 @@ def revert_printindexall(document):
             document.body[i:k + 1] = subst
         i = i + 1
 
+strikeout_preamble = ['%  for proper underlining',
+                      r'\PassOptionsToPackage{normalem}{ulem}',
+                      r'\usepackage{ulem}']
+
+def convert_strikeout(document):
+    " Remove preamble code loading 'ulem' package. "
+    del_complete_lines(document.preamble,
+                       ['% Added by lyx2lyx']+strikeout_preamble)
+
 
 def revert_strikeout(document):
   " Reverts \\strikeout font attribute "
@@ -491,25 +501,32 @@ def revert_strikeout(document):
   changed = revert_font_attrs(document.body, "\\uwave", "\\uwave") or changed
   changed = revert_font_attrs(document.body, "\\strikeout", "\\sout")  or changed
   if changed == True:
-    insert_to_preamble(document, \
-        ['%  for proper underlining',
-        '\\PassOptionsToPackage{normalem}{ulem}',
-        '\\usepackage{ulem}'])
+    insert_to_preamble(document, strikeout_preamble)
 
+
+ulinelatex_preamble = ['% fix underbar in citations',
+    r'\let\cite@rig\cite',
+    r'\newcommand{\b@xcite}[2][\%]{\def\def@pt{\%}\def\pas@pt{#1}',
+    r'  \mbox{\ifx\def@pt\pas@pt\cite@rig{#2}\else\cite@rig[#1]{#2}\fi}}',
+    r'\renewcommand{\underbar}[1]{{\let\cite\b@xcite\uline{#1}}}']
+
+def convert_ulinelatex(document):
+    " Remove preamble code for \\uline font attribute. "
+    del_complete_lines(document.preamble,
+                       ['% Added by lyx2lyx']+ulinelatex_preamble)
+    for line in document.preamble:
+        print line
 
 def revert_ulinelatex(document):
-    " Reverts \\uline font attribute "
+    " Add preamble code for \\uline font attribute in citations. "
     i = find_token(document.body, '\\bar under', 0)
     if i == -1:
         return
-    insert_to_preamble(document,\
-            ['%  for proper underlining',
-            '\\PassOptionsToPackage{normalem}{ulem}',
-            '\\usepackage{ulem}',
-            '\\let\\cite@rig\\cite',
-            '\\newcommand{\\b@xcite}[2][\\%]{\\def\\def@pt{\\%}\\def\\pas@pt{#1}',
-            '  \\mbox{\\ifx\\def@pt\\pas@pt\\cite@rig{#2}\\else\\cite@rig[#1]{#2}\\fi}}',
-            '\\renewcommand{\\underbar}[1]{{\\let\\cite\\b@xcite\\uline{#1}}}'])
+    try:
+        document.preamble.index(r'\usepackage{ulem}')
+    except ValueError:
+        insert_to_preamble(document, strikeout_preamble)
+    insert_to_preamble(document, ulinelatex_preamble)
 
 
 def revert_custom_processors(document):
@@ -2468,9 +2485,9 @@ convert = [[346, []],
            [352, [convert_splitindex]],
            [353, []],
            [354, []],
-           [355, []],
+           [355, [convert_strikeout]],
            [356, []],
-           [357, []],
+           [357, [convert_ulinelatex]],
            [358, []],
            [359, [convert_nomencl_width]],
            [360, []],
