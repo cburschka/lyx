@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-01-20 09:43+0100\n"
-"PO-Revision-Date: 2018-01-18 13:59+0200\n"
+"PO-Revision-Date: 2018-01-22 22:14+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -1321,6 +1321,8 @@ msgid ""
 "Selecting an error will show the error message in the panel below and the "
 "cursor will jump to the location in the document where the error occurred."
 msgstr ""
+"Выбор ошибки покажет сообщение об ошибке в панели ниже, и курсор перейдет к "
+"месту в документе, где произошла ошибка."
 
 #: src/frontends/qt4/ui/ExternalUi.ui:35
 msgid "F&ile"
@@ -1607,6 +1609,8 @@ msgid ""
 "If unchecked, the search will be limited to occurrences of the selected text "
 "and paragraph style"
 msgstr ""
+"Если флажок снят, поиск будет ограничен вхождениями выбранного стиля текста "
+"и абзаца"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:272
 msgid "I&gnore format"
@@ -1617,6 +1621,8 @@ msgid ""
 "Keep the case of the replacement's first letter as in each matching text "
 "first letter"
 msgstr ""
+"Сохранять регистр первой буквы замены, как в каждой соответствующей первой "
+"букве текста"
 
 #: src/frontends/qt4/ui/FindAndReplaceUi.ui:285
 msgid "&Preserve first case on replace"
@@ -2367,6 +2373,9 @@ msgid ""
 "If this is not selected, the quotation marks will stick with the style they "
 "have been inserted with."
 msgstr ""
+"Выходные кавычки, которые автоматически адаптируются к стилю, выбранному "
+"выше. Если этот параметр не выбран, кавычки будут совпадать со стилем, в "
+"который они были вставлены."
 
 #: src/frontends/qt4/ui/LanguageUi.ui:193
 msgid "Use d&ynamic quotation marks"
@@ -2845,6 +2854,8 @@ msgid ""
 "Pass content of the `Symbol' and `Description' fields literally to LaTeX. "
 "Check this if you want to enter LaTeX code."
 msgstr ""
+"Передавать содержимое полей `Символ' и `Описание' буквально в LaTeX. "
+"Установите, если хотите ввести код LaTeX."
 
 #: src/frontends/qt4/ui/NoteUi.ui:48 src/frontends/qt4/ui/PhantomUi.ui:48
 msgid "Type"
@@ -2907,6 +2918,10 @@ msgid ""
 "changes, or the document directory path). Disabling this option plays nicer "
 "in collaborative settings and with version control systems."
 msgstr ""
+"Сохранять все параметры в файле LyX, включая часто переключаемые или "
+"специфичные для пользователя (например, результат отслеживаемых изменений "
+"или путь к каталогу документа). Отключение этой опции полезно при совместной "
+"работе над документом и при использовании систем управления версиями."
 
 #: src/frontends/qt4/ui/OutputUi.ui:101
 msgid "Save &transient properties"
@@ -3430,6 +3445,8 @@ msgstr "Запретить использование конвертеров nee
 msgid ""
 "When enabled, use of converters with the 'needauth' option is forbidden."
 msgstr ""
+"Если этот параметр включен, использование конвертеров с параметром "
+"'needauth' запрещено."
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:322
 msgid "Use need&auth option"
@@ -3440,6 +3457,8 @@ msgid ""
 "When enabled, ask user before launching any external converter with the "
 "'needauth' option."
 msgstr ""
+"Если этот параметр включен, спрашивать пользователя перед запуском любого "
+"внешнего конвертера с опцией 'needauth'."
 
 #: src/frontends/qt4/ui/PrefDisplayUi.ui:31
 msgid "Display &graphics"
@@ -3525,6 +3544,9 @@ msgid ""
 "format by default. Existing documents will still be saved in their current "
 "state (compressed or uncompressed)."
 msgstr ""
+"Если эта опция включена, новые документы будут сохраняться в сжатом двоичном "
+"формате по умолчанию. Существующие документы будут сохраняться в текущем "
+"состоянии (сжатом или несжатом)."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
 msgid "&Save new documents compressed by default"
@@ -3536,6 +3558,9 @@ msgid ""
 "document. This allows moving the document elsewhere and still finding the "
 "included files."
 msgstr ""
+"Если эта опция включена, путь к каталогу документа будет сохранен в "
+"документе. Это позволяет перемещать документ в другое место и всё равно "
+"находить включенные файлы."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:158
 msgid "Save the &document directory path"
@@ -3554,6 +3579,8 @@ msgid ""
 "Whether to open documents in an already running instance of LyX. (Set the "
 "LyXServer pipe path and restart LyX to enable this feature)"
 msgstr ""
+"Открывать ли документы в уже запущенном экземпляре LyX. (Установите путь "
+"канала LyXServer и перезапустите LyX для включения этой функции)"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:187
 msgid "Use s&ingle instance"
@@ -3743,6 +3770,8 @@ msgid ""
 "This is the default output format for LyX documents, except for DocBook "
 "classes, documents that use non-TeX fonts and Japanese documents"
 msgstr ""
+"Это формат по умолчанию для документов LyX, кроме классов DocBook, "
+"документов, использующих не-TeX шрифты, и японских документов"
 
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:267
 msgid "The default output format for Japanese documents (using pLaTeX)"
@@ -3798,6 +3827,8 @@ msgid ""
 "Mac OS X specific setting for use with emacs bindings. Takes effect next "
 "time LyX is launched."
 msgstr ""
+"Настройка использования привязок emacs (только для Mac OS X). Вступает в "
+"силу при следующем запуске LyX."
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:124
 msgid "Do not swap Apple and Control keys"
@@ -4033,6 +4064,10 @@ msgid ""
 "files. Change the default only if the TeX engine was not correctly detected "
 "at configure time. Warning: Your changes here will not be saved."
 msgstr ""
+"Выберите, должен ли LyX выводить пути к файлам LaTeX в стиле Windows или "
+"Cygwin. Измените значение по умолчанию только если TeX не был правильно "
+"обнаружен во время настройки. Предупреждение: ваши изменения здесь не будут "
+"сохранены."
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:330
 msgid "&Use Windows-style paths in LaTeX files"
@@ -4392,7 +4427,7 @@ msgstr "Настройки списка обозначений"
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:19
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:32
 msgid "Define hanging indentation/label length for the nomenclature list."
-msgstr ""
+msgstr "Определите отступ/длину метки для списка обозначений."
 
 #: src/frontends/qt4/ui/PrintNomenclUi.ui:22
 msgid "&List Indentation:"
@@ -4418,6 +4453,8 @@ msgstr "Выберите индекс, который будет напечат�
 #: src/frontends/qt4/ui/PrintindexUi.ui:61
 msgid "Check if this index should be part (e.g., a section) of the former one."
 msgstr ""
+"Установите, если этот индекс должен быть частью (например, разделом) "
+"предыдущего."
 
 #: src/frontends/qt4/ui/PrintindexUi.ui:64
 msgid "&Subindex"
@@ -4428,6 +4465,8 @@ msgid ""
 "Pass index names literally to LaTeX. Check this if you want to use LaTeX "
 "code in index names."
 msgstr ""
+"Передавать индексные имена буквально в LaTeX. Выберите это, если вы хотите "
+"использовать код LaTeX в именах для индексов."
 
 #: src/frontends/qt4/ui/ProgressViewUi.ui:90 src/frontends/qt4/GuiPrefs.cpp:254
 msgid "Output"
@@ -4499,7 +4538,7 @@ msgstr "Учитывать &регистр"
 
 #: src/frontends/qt4/ui/RefUi.ui:110
 msgid "The (sub-)document from which the available labels are displayed"
-msgstr ""
+msgstr "(Под-)документ, из которого отображаются доступные метки"
 
 #: src/frontends/qt4/ui/RefUi.ui:138
 msgid "So&rt:"
@@ -4586,6 +4625,8 @@ msgid ""
 "Use plural form of formatted reference. (Works only for formatted "
 "references, and only if you are using refstyle.)"
 msgstr ""
+"Использовать форму множественного числа отформатированной ссылки. (Работает "
+"только для отформатированных ссылок, и только если вы используете refstyle.)"
 
 #: src/frontends/qt4/ui/RefUi.ui:392
 msgid "Plural"
@@ -4596,6 +4637,8 @@ msgid ""
 "Use capitalized form of formatted reference. (Works only for formatted "
 "references, and only if you are using refstyle.)"
 msgstr ""
+"Использовать прописную форму форматированной ссылки. (Работает только для "
+"отформатированных ссылок, и только если вы используете refstyle.)"
 
 #: src/frontends/qt4/ui/RefUi.ui:402
 msgid "Capitalized"
@@ -6886,7 +6929,7 @@ msgstr "Постеры"
 #: lib/layouts/sciposter.layout:130 lib/layouts/sciposter.layout:133
 #: lib/layouts/sciposter.layout:160
 msgid "Giant"
-msgstr ""
+msgstr "Гигантский"
 
 #: lib/layouts/a0poster.layout:57 lib/layouts/a0poster.layout:60
 #: lib/layouts/a0poster.layout:86 lib/layouts/beamerposter.layout:69
@@ -6894,7 +6937,7 @@ msgstr ""
 #: lib/layouts/sciposter.layout:146 lib/layouts/sciposter.layout:149
 #: lib/layouts/sciposter.layout:175
 msgid "More Giant"
-msgstr ""
+msgstr "Более гигантский"
 
 #: lib/layouts/a0poster.layout:63 lib/layouts/a0poster.layout:66
 #: lib/layouts/a0poster.layout:92 lib/layouts/beamerposter.layout:75
@@ -6902,22 +6945,22 @@ msgstr ""
 #: lib/layouts/sciposter.layout:152 lib/layouts/sciposter.layout:155
 #: lib/layouts/sciposter.layout:181
 msgid "Most Giant"
-msgstr ""
+msgstr "Самый гигантский"
 
 #: lib/layouts/a0poster.layout:69 lib/layouts/beamerposter.layout:81
 #: lib/layouts/sciposter.layout:158
 msgid "Giant Snippet"
-msgstr ""
+msgstr "Гигантский фрагмент"
 
 #: lib/layouts/a0poster.layout:84 lib/layouts/beamerposter.layout:96
 #: lib/layouts/sciposter.layout:173
 msgid "More Giant Snippet"
-msgstr ""
+msgstr "Более гигантский фрагмент"
 
 #: lib/layouts/a0poster.layout:90 lib/layouts/beamerposter.layout:102
 #: lib/layouts/sciposter.layout:179
 msgid "Most Giant Snippet"
-msgstr ""
+msgstr "Самый гигантский фрагмент"
 
 #: lib/layouts/aa.layout:3
 msgid "Astronomy & Astrophysics"
@@ -7511,7 +7554,7 @@ msgstr "Элемент содержания"
 
 #: lib/layouts/achemso.layout:266
 msgid "Graphical TOC Entry"
-msgstr ""
+msgstr "Графический пункт содержания"
 
 #: lib/layouts/achemso.layout:269
 msgid "Bibnote"
@@ -7798,7 +7841,7 @@ msgstr "Начальная страница: "
 
 #: lib/layouts/acmart.layout:394
 msgid "Terms: "
-msgstr ""
+msgstr "Условия: "
 
 #: lib/layouts/acmart.layout:400
 msgid "Keywords: "
@@ -7834,7 +7877,7 @@ msgstr ""
 
 #: lib/layouts/acmart.layout:450
 msgid "Copyright Year"
-msgstr ""
+msgstr "Год авторского права"
 
 #: lib/layouts/acmart.layout:452
 msgid "Copyright Year: "
@@ -8744,7 +8787,7 @@ msgstr "Авторы"
 
 #: lib/layouts/agutex.layout:92 lib/layouts/agutex.layout:96
 msgid "Affiliation Mark"
-msgstr ""
+msgstr "Знак принадлежности"
 
 #: lib/layouts/agutex.layout:125
 msgid "Consecutive number for the author affiliations"
@@ -8901,7 +8944,7 @@ msgstr "обновлённых спецификаций классов доку�
 
 #: lib/layouts/apa.layout:3
 msgid "American Psychological Association (APA)"
-msgstr ""
+msgstr "American Psychological Association (APA)"
 
 #: lib/layouts/apa.layout:54
 msgid "RightHeader"
@@ -9293,7 +9336,7 @@ msgstr "Параметры"
 #: lib/layouts/beamer.layout:475 lib/layouts/beamer.layout:504
 #: lib/layouts/beamer.layout:515 lib/layouts/beamer.layout:543
 msgid "Frame options (see beamer manual)"
-msgstr ""
+msgstr "Параметры рамки (см. руководство beamer)"
 
 #: lib/layouts/beamer.layout:478
 msgid "Frame Title"
@@ -9833,11 +9876,11 @@ msgstr "Текст на основном языке"
 
 #: lib/layouts/bicaption.module:53
 msgid "Second Language Short Title"
-msgstr ""
+msgstr "Краткое заглавие для второго языка"
 
 #: lib/layouts/bicaption.module:54
 msgid "Short title for the second language"
-msgstr ""
+msgstr "Краткое заглавие для второго языка"
 
 #: lib/layouts/book.layout:3
 msgid "Book (Standard Class)"
@@ -10000,6 +10043,8 @@ msgid ""
 "Enables LyX to add vertical change bars in the margin of PDF output when "
 "change tracking is turned on and pdflatex output format is chosen."
 msgstr ""
+"Разрешает LyX добавлять вертикальные полосы изменений на полях вывода PDF "
+"при включении отслеживания изменений и выборе формата вывода pdflatex."
 
 #: lib/layouts/chess.layout:3
 msgid "Chess"
@@ -11387,7 +11432,7 @@ msgstr "Конец резюме"
 
 #: lib/layouts/europasscv.layout:442 lib/layouts/europasscv.layout:447
 msgid "Highlight"
-msgstr ""
+msgstr "Выделение"
 
 #: lib/layouts/europecv.layout:3
 msgid "Europe CV"
@@ -11485,7 +11530,7 @@ msgstr ""
 
 #: lib/layouts/fix-cm.module:2
 msgid "Fix cm"
-msgstr ""
+msgstr "Fix cm"
 
 #: lib/layouts/fix-cm.module:8
 msgid ""
@@ -11511,7 +11556,7 @@ msgstr ""
 
 #: lib/layouts/fixme.module:2
 msgid "FiXme"
-msgstr ""
+msgstr "FiXme"
 
 #: lib/layouts/fixme.module:11
 msgid ""
@@ -11527,7 +11572,7 @@ msgstr ""
 
 #: lib/layouts/fixme.module:17 lib/layouts/fixme.module:55
 msgid "Fixme"
-msgstr ""
+msgstr "Fixme"
 
 #: lib/layouts/fixme.module:23
 msgid "List of FIXMEs"
@@ -11554,7 +11599,7 @@ msgstr ""
 
 #: lib/layouts/fixme.module:74
 msgid "Fixme Warning"
-msgstr ""
+msgstr "Предупреждение Fixme"
 
 #: lib/layouts/fixme.module:76
 msgid "Warning"
@@ -11562,7 +11607,7 @@ msgstr "Предупреждение"
 
 #: lib/layouts/fixme.module:80
 msgid "Fixme Error"
-msgstr ""
+msgstr "Ошибка Fixme"
 
 #: lib/layouts/fixme.module:82 src/frontends/qt4/GuiCompare.cpp:198
 #: src/frontends/qt4/GuiDocument.cpp:2339
@@ -11573,7 +11618,7 @@ msgstr "Ошибка"
 
 #: lib/layouts/fixme.module:86
 msgid "Fixme Fatal"
-msgstr ""
+msgstr "Фатальная ошибка Fixme"
 
 #: lib/layouts/fixme.module:88
 msgid "Fatal"
@@ -11670,11 +11715,11 @@ msgstr ""
 
 #: lib/layouts/fixme.module:200
 msgid "Annotated Text"
-msgstr ""
+msgstr "Аннотированный текст"
 
 #: lib/layouts/fixme.module:202
 msgid "Annotated Text|x"
-msgstr ""
+msgstr "Аннотированный текст|к"
 
 #: lib/layouts/fixme.module:203
 msgid "Insert the text to annotate here"
@@ -12252,7 +12297,7 @@ msgstr "Масштаб"
 
 #: lib/layouts/graphicboxes.module:31
 msgid "H-Factor"
-msgstr ""
+msgstr "H-Factor"
 
 #: lib/layouts/graphicboxes.module:32
 msgid "Insert horizontal scale factor (1 = 100%)"
@@ -12260,7 +12305,7 @@ msgstr ""
 
 #: lib/layouts/graphicboxes.module:38
 msgid "V-Factor"
-msgstr ""
+msgstr "V-Factor"
 
 #: lib/layouts/graphicboxes.module:39
 msgid "Insert vertical scale factor (1 = 100%)"
@@ -12340,7 +12385,7 @@ msgstr "Hebrew Letter"
 
 #: lib/layouts/hollywood.layout:3
 msgid "Hollywood"
-msgstr ""
+msgstr "Hollywood"
 
 #: lib/layouts/hollywood.layout:56
 msgid "More"
@@ -12554,7 +12599,7 @@ msgstr "Приложение \\Alph{appendix}."
 
 #: lib/layouts/ijmpd.layout:3
 msgid "Int. Journal of Modern Physics D"
-msgstr ""
+msgstr "Int. Journal of Modern Physics D"
 
 #: lib/layouts/ijmpd.layout:199 lib/layouts/ijmpd.layout:203
 #, fuzzy
@@ -12595,7 +12640,7 @@ msgstr ""
 
 #: lib/layouts/iopart.layout:3
 msgid "Institute of Physics (IOP)"
-msgstr ""
+msgstr "Institute of Physics (IOP)"
 
 #: lib/layouts/iopart.layout:67 lib/layouts/jasatex.layout:75
 msgid "Short title that will appear in header line"
@@ -12640,7 +12685,7 @@ msgstr "Код системы классификации по физике и а
 
 #: lib/layouts/iopart.layout:232
 msgid "MSC"
-msgstr ""
+msgstr "MSC"
 
 #: lib/layouts/iopart.layout:235
 #, fuzzy
@@ -12649,7 +12694,7 @@ msgstr "обновлённых спецификаций классов доку�
 
 #: lib/layouts/iopart.layout:239
 msgid "submitto"
-msgstr ""
+msgstr "submitto"
 
 #: lib/layouts/iopart.layout:242
 msgid "submit to paper:"
@@ -12677,7 +12722,7 @@ msgstr "КЛЮЧЕВЫЕ СЛОВА:"
 
 #: lib/layouts/isprs.layout:129
 msgid "Commission"
-msgstr ""
+msgstr "Комитет"
 
 #: lib/layouts/isprs.layout:220
 msgid "ACKNOWLEDGEMENTS"
@@ -12719,7 +12764,7 @@ msgstr ""
 #: lib/layouts/iucr.layout:122 lib/layouts/iucr.layout:123
 #: lib/layouts/iucr.layout:155 lib/layouts/iucr.layout:156
 msgid "Forename"
-msgstr ""
+msgstr "Имя"
 
 #: lib/layouts/iucr.layout:144
 msgid "Co Author"
@@ -12767,7 +12812,7 @@ msgstr ""
 
 #: lib/layouts/iucr.layout:212
 msgid "Optional name"
-msgstr ""
+msgstr "Необязательное имя"
 
 #: lib/layouts/iucr.layout:216
 msgid "NDB reference"
@@ -12792,19 +12837,19 @@ msgstr "Journal of the Acoustical Society of America (JASA)"
 # ?
 #: lib/layouts/jasatex.layout:122
 msgid "Alternative Affiliation"
-msgstr ""
+msgstr "Альтернативная принадлежность"
 
 #: lib/layouts/jasatex.layout:127
 msgid "Affiliation Prefix"
-msgstr ""
+msgstr "Префикс принадлежности"
 
 #: lib/layouts/jasatex.layout:128
 msgid "A prefix like 'Also at '"
-msgstr ""
+msgstr "Префикс типа 'также в'"
 
 #: lib/layouts/jasatex.layout:220 lib/layouts/revtex4-1.layout:176
 msgid "PACS numbers:"
-msgstr ""
+msgstr "Номера PACS:"
 
 #: lib/layouts/jasatex.layout:223
 msgid "Preprint number"
@@ -12840,7 +12885,7 @@ msgstr "Japanese Book (JS Class)"
 
 #: lib/layouts/jss.layout:3
 msgid "Journal of Statistical Software (JSS) version 2"
-msgstr ""
+msgstr "Journal of Statistical Software (JSS) version 2"
 
 #: lib/layouts/jss.layout:107
 msgid "Plain Keywords"
@@ -12936,7 +12981,7 @@ msgstr "RunningAuthor"
 
 #: lib/layouts/knitr.module:2 lib/configure.py:652
 msgid "Rnw (knitr)"
-msgstr ""
+msgstr "Rnw (knitr)"
 
 #: lib/layouts/knitr.module:6
 msgid ""
@@ -13003,7 +13048,7 @@ msgstr "Post Scriptum"
 
 #: lib/layouts/lettre.layout:80 lib/layouts/lettre.layout:521
 msgid "EndOfMessage"
-msgstr ""
+msgstr "КонецСообщения"
 
 #: lib/layouts/lettre.layout:82 lib/layouts/lettre.layout:541
 msgid "EndOfFile"
@@ -13035,7 +13080,7 @@ msgstr "Нет тел."
 
 #: lib/layouts/lettre.layout:531
 msgid "EndOfMessage."
-msgstr ""
+msgstr "КонецСообщения."
 
 #: lib/layouts/lettre.layout:543
 msgid "EndOfFile."
@@ -13208,7 +13253,7 @@ msgstr "Фрагмент"
 
 #: lib/layouts/llncs.layout:3
 msgid "Lecture Notes in Comp. Science (LNCS)"
-msgstr ""
+msgstr "Lecture Notes in Comp. Science (LNCS)"
 
 #: lib/layouts/llncs.layout:152
 msgid "Running LaTeX Title"
@@ -13345,7 +13390,7 @@ msgstr "Короткое заглавие (для оглавления)"
 
 #: lib/layouts/memoir.layout:72 lib/layouts/memoir.layout:87
 msgid "The chapter as it appears in the table of contents"
-msgstr ""
+msgstr "Глава, как она отображается в содержании"
 
 #: lib/layouts/memoir.layout:76 lib/layouts/memoir.layout:100
 #: lib/layouts/memoir.layout:115 lib/layouts/memoir.layout:130
@@ -13356,47 +13401,47 @@ msgstr "Короткое заглавие (для шапки)"
 
 #: lib/layouts/memoir.layout:77
 msgid "The chapter as it appears in the running headers"
-msgstr ""
+msgstr "Глава, как она отображается в колонтитуле"
 
 #: lib/layouts/memoir.layout:96
 msgid "The section as it appears in the table of contents"
-msgstr ""
+msgstr "Раздел, как он отображается в содержании"
 
 #: lib/layouts/memoir.layout:101
 msgid "The section as it appears in the running headers"
-msgstr ""
+msgstr "Раздел, как он отображается в колонтитуле"
 
 #: lib/layouts/memoir.layout:111
 msgid "The subsection as it appears in the table of contents"
-msgstr ""
+msgstr "Подраздел, как он отображается в содержании"
 
 #: lib/layouts/memoir.layout:116
 msgid "The subsection as it appears in the running headers"
-msgstr ""
+msgstr "Подраздел, как он отображается в колонтитуле"
 
 #: lib/layouts/memoir.layout:126
 msgid "The subsubsection as it appears in the table of contents"
-msgstr ""
+msgstr "Подподраздел, как он отображается в содержании"
 
 #: lib/layouts/memoir.layout:131
 msgid "The subsubsection as it appears in the running headers"
-msgstr ""
+msgstr "Подподраздел, как он отображается в колонтитуле"
 
 #: lib/layouts/memoir.layout:141
 msgid "The paragraph as it appears in the table of contents"
-msgstr ""
+msgstr "Абзац, как он отображается в содержании"
 
 #: lib/layouts/memoir.layout:146
 msgid "The paragraph as it appears in the running headers"
-msgstr ""
+msgstr "Абзац, как он отображается в колонтитуле"
 
 #: lib/layouts/memoir.layout:156
 msgid "The subparagraph as it appears in the table of contents"
-msgstr ""
+msgstr "Подабзац, как он отображается в содержании"
 
 #: lib/layouts/memoir.layout:161
 msgid "The subparagraph as it appears in the running headers"
-msgstr ""
+msgstr "Подабзац, как он отображается в колонтитуле"
 
 #: lib/layouts/memoir.layout:168
 msgid "Chapterprecis"
@@ -13424,7 +13469,7 @@ msgstr "НазваниеПоэмы"
 
 #: lib/layouts/memoir.layout:225 lib/layouts/memoir.layout:246
 msgid "The poem title as it appears in the table of contents"
-msgstr ""
+msgstr "Название стиха, как он отображается в содержании"
 
 #: lib/layouts/memoir.layout:230
 #, fuzzy
@@ -14069,47 +14114,47 @@ msgstr "Поля"
 
 #: lib/layouts/pdfcomment.module:122
 msgid "PDF-Markup"
-msgstr ""
+msgstr "PDF-Разметка"
 
 #: lib/layouts/pdfcomment.module:124
 msgid "PDF (Markup)"
-msgstr ""
+msgstr "PDF (Разметка)"
 
 #: lib/layouts/pdfcomment.module:129
 msgid "Insert the comment to the marked-up text here"
-msgstr ""
+msgstr "Вставьте здесь комментарий к размеченному тексту"
 
 #: lib/layouts/pdfcomment.module:133
 msgid "PDF-Freetext"
-msgstr ""
+msgstr "PDF-Свободный текст"
 
 #: lib/layouts/pdfcomment.module:135
 msgid "PDF (Freetext)"
-msgstr ""
+msgstr "PDF (Свободный текст)"
 
 #: lib/layouts/pdfcomment.module:139
 msgid "PDF-Square"
-msgstr ""
+msgstr "PDF-Квадрат"
 
 #: lib/layouts/pdfcomment.module:141
 msgid "PDF (Square)"
-msgstr ""
+msgstr "PDF (Квадрат)"
 
 #: lib/layouts/pdfcomment.module:145
 msgid "PDF-Circle"
-msgstr ""
+msgstr "PDF-Окружность"
 
 #: lib/layouts/pdfcomment.module:147
 msgid "PDF (Circle)"
-msgstr ""
+msgstr "PDF (Окружность)"
 
 #: lib/layouts/pdfcomment.module:151
 msgid "PDF-Line"
-msgstr ""
+msgstr "PDF-Линия"
 
 #: lib/layouts/pdfcomment.module:153
 msgid "PDF (Line)"
-msgstr ""
+msgstr "PDF (Линия)"
 
 #: lib/layouts/pdfcomment.module:157
 msgid "PDF-Sideline"
@@ -14141,7 +14186,7 @@ msgstr ""
 
 #: lib/layouts/pdfcomment.module:189
 msgid "Tooltip Text"
-msgstr ""
+msgstr "Текст всплывающей подсказки"
 
 #: lib/layouts/pdfcomment.module:190
 msgid "Tooltip"
@@ -14149,7 +14194,7 @@ msgstr "Всплывающая подсказка"
 
 #: lib/layouts/pdfcomment.module:192
 msgid "Insert the tooltip text here"
-msgstr ""
+msgstr "Вставьте сюда текст подсказки"
 
 #: lib/layouts/pdfcomment.module:200
 msgid "List of PDF Comments"
@@ -14165,7 +14210,7 @@ msgstr "Параметры списка"
 
 #: lib/layouts/pdfcomment.module:224
 msgid "Insert list options here (see pdfcomment manual)"
-msgstr ""
+msgstr "Вставьте сюда настройки списка (см. инструкцию pdfcomment)"
 
 #: lib/layouts/pdfform.module:2
 msgid "PDF Form"
@@ -14180,19 +14225,19 @@ msgstr ""
 
 #: lib/layouts/pdfform.module:15 lib/layouts/pdfform.module:26
 msgid "Begin PDF Form"
-msgstr ""
+msgstr "Начать форму PDF"
 
 #: lib/layouts/pdfform.module:19
 msgid "PDF form"
-msgstr ""
+msgstr "Форма PDF"
 
 #: lib/layouts/pdfform.module:28 lib/layouts/pdfform.module:65
 msgid "PDF Form Parameters"
-msgstr ""
+msgstr "Параметры формы PDF"
 
 #: lib/layouts/pdfform.module:29 lib/layouts/pdfform.module:66
 msgid "Params"
-msgstr ""
+msgstr "Параметры"
 
 #: lib/layouts/pdfform.module:30 lib/layouts/pdfform.module:67
 msgid "Insert PDF form parameters here"
@@ -14325,7 +14370,7 @@ msgstr ""
 
 #: lib/layouts/powerdot.layout:3
 msgid "Powerdot"
-msgstr ""
+msgstr "Powerdot"
 
 #: lib/layouts/powerdot.layout:45 lib/layouts/powerdot.layout:69
 #: lib/layouts/powerdot.layout:91
@@ -14380,7 +14425,7 @@ msgstr "Перечисление"
 
 #: lib/layouts/powerdot.layout:273 lib/layouts/powerdot.layout:296
 msgid "Itemize type specification (see powerdot manual)"
-msgstr ""
+msgstr "Спецификация типов ненумерованных списков (см. руководство powerdot)"
 
 #: lib/layouts/powerdot.layout:292
 #, fuzzy
@@ -14393,7 +14438,7 @@ msgstr "Нумерация"
 
 #: lib/layouts/powerdot.layout:324 lib/layouts/powerdot.layout:348
 msgid "Enumerate type specification (see powerdot manual)"
-msgstr ""
+msgstr "Спецификация типов нумерованных списков (см. руководство powerdot)"
 
 #: lib/layouts/powerdot.layout:344
 #, fuzzy
@@ -14406,7 +14451,7 @@ msgstr "Две колонки"
 
 #: lib/layouts/powerdot.layout:458
 msgid "Twocolumn options (see powerdot manual)"
-msgstr ""
+msgstr "Параметры двух столбцов (см. руководство powerdot)"
 
 #: lib/layouts/powerdot.layout:461
 msgid "Left Column"
@@ -14503,7 +14548,7 @@ msgstr ""
 
 #: lib/layouts/revtex4-1.layout:100 lib/layouts/revtex4.layout:168
 msgid "Affiliation (none)"
-msgstr ""
+msgstr "Принадлежность (нет)"
 
 #: lib/layouts/revtex4-1.layout:103 lib/layouts/revtex4.layout:171
 msgid "No affiliation"
@@ -14519,7 +14564,7 @@ msgstr ""
 
 #: lib/layouts/revtex4-1.layout:123 lib/layouts/revtex4.layout:211
 msgid "Optional argument to the email command"
-msgstr ""
+msgstr "Необязательный аргумент команды email"
 
 #: lib/layouts/revtex4-1.layout:137 lib/layouts/revtex4.layout:229
 #, fuzzy
@@ -14528,7 +14573,7 @@ msgstr "URL автора"
 
 #: lib/layouts/revtex4-1.layout:138 lib/layouts/revtex4.layout:230
 msgid "Optional argument to the homepage command"
-msgstr ""
+msgstr "Необязательный аргумент команды homepage"
 
 #: lib/layouts/revtex4-1.layout:144 lib/layouts/revtex4.layout:190
 msgid "Collaboration"
@@ -14618,11 +14663,11 @@ msgstr ""
 
 #: lib/layouts/revtex4.layout:270
 msgid "PACS number:"
-msgstr ""
+msgstr "Номер PACS:"
 
 #: lib/layouts/rsphrase.module:2
 msgid "Risk and Safety Statements"
-msgstr ""
+msgstr "Утверждения о рисках и безопасности"
 
 #: lib/layouts/rsphrase.module:7
 msgid ""
@@ -14630,6 +14675,9 @@ msgid ""
 "chemical risk and safety statements. For a description see the file R-S-"
 "statements.lyx in LyX's examples folder."
 msgstr ""
+"Предоставляет две вставки и одно окружение для вёрстки номеров и фраз "
+"утверждений о химическом риске и безопасности. Описание см. в файле R-S-"
+"statements.lyx в папке примеров LyX."
 
 #: lib/layouts/rsphrase.module:11 lib/layouts/rsphrase.module:16
 msgid "R-S number"
@@ -14641,23 +14689,23 @@ msgstr "R-S phrase"
 
 #: lib/layouts/rsphrase.module:39
 msgid "Safety phrase"
-msgstr ""
+msgstr "Фраза безопасности"
 
 #: lib/layouts/rsphrase.module:46
 msgid "Phrase Text"
-msgstr ""
+msgstr "Текст фразы"
 
 #: lib/layouts/rsphrase.module:47
 msgid "Argument for statements that requires to specify additional information"
-msgstr ""
+msgstr "Аргумент для утверждений, требующих указания дополнительных сведений"
 
 #: lib/layouts/rsphrase.module:60
 msgid "S phrase:"
-msgstr ""
+msgstr "S-фраза:"
 
 #: lib/layouts/sciposter.layout:3
 msgid "SciPoster"
-msgstr ""
+msgstr "SciPoster"
 
 #: lib/layouts/sciposter.layout:34 lib/layouts/sigplanconf.layout:72
 msgid "Conference"
@@ -14677,7 +14725,7 @@ msgstr "Размер логотипа"
 
 #: lib/layouts/sciposter.layout:61
 msgid "Relative logo size (0 through 1)"
-msgstr ""
+msgstr "Относительный размер логотипа (от 0 до 1)"
 
 #: lib/layouts/sciposter.layout:65
 msgid "RightLogo"
@@ -14693,7 +14741,7 @@ msgstr "Ширина подписи"
 
 #: lib/layouts/sciposter.layout:81
 msgid "The caption width relative to the column (0 through 1)"
-msgstr ""
+msgstr "Ширина заголовка относительно столбца (от 0 до 1)"
 
 #: lib/layouts/scrartcl.layout:3
 msgid "KOMA-Script Article"
@@ -14792,11 +14840,11 @@ msgstr "Афоризм"
 
 #: lib/layouts/scrclass.inc:335
 msgid "Dictum Author"
-msgstr ""
+msgstr "Автор афоризма"
 
 #: lib/layouts/scrclass.inc:336
 msgid "The author of this dictum"
-msgstr ""
+msgstr "Автор этого афоризма"
 
 #: lib/layouts/scrlettr.layout:3
 msgid "KOMA-Script Letter (V. 1, Obsolete)"
@@ -15024,7 +15072,7 @@ msgstr "ProgressContents"
 
 #: lib/layouts/seminar.layout:80
 msgid "Progress Contents"
-msgstr ""
+msgstr "Содержание прогресса"
 
 #: lib/layouts/seminar.layout:101
 msgid "Landscape Slide:"
@@ -15056,7 +15104,7 @@ msgstr "[Содержимое прогресса]"
 
 #: lib/layouts/shapepar.module:2
 msgid "Custom Paragraph Shapes"
-msgstr ""
+msgstr "Пользовательские формы абзаца"
 
 #: lib/layouts/shapepar.module:7
 msgid ""
@@ -15064,6 +15112,9 @@ msgid ""
 "shapes. For a description see LyX's Additional features manual, section 'Non-"
 "standard Paragraph Shapes'."
 msgstr ""
+"Предоставляет несколько форм абзаца, а также команды для определения "
+"пользовательских форм. Описание см. в руководстве по дополнительным функциям "
+"LyX, раздел \"Нестандартные формы абзаца\"."
 
 #: lib/layouts/shapepar.module:26
 msgid "CD label"
@@ -15147,15 +15198,15 @@ msgstr "Спецификация формы"
 
 #: lib/layouts/shapepar.module:128
 msgid "Specification of the shape"
-msgstr ""
+msgstr "Спецификация формы"
 
 #: lib/layouts/shapepar.module:132
 msgid "Shapepar"
-msgstr ""
+msgstr "Shapepar"
 
 #: lib/layouts/siamltex.layout:3
 msgid "Society for Industrial and Applied Mathematics (SIAM)"
-msgstr ""
+msgstr "Society for Industrial and Applied Mathematics (SIAM)"
 
 #: lib/layouts/siamltex.layout:113 lib/layouts/theorems-order.inc:34
 #: lib/layouts/theorems-starred.inc:124
@@ -15232,7 +15283,7 @@ msgstr "DOI:"
 
 #: lib/layouts/sigplanconf.layout:170
 msgid "Affiliation and/or address of the author"
-msgstr ""
+msgstr "Принадлежность и/или адрес автора"
 
 #: lib/layouts/sigplanconf.layout:184
 msgid "Terms:"
@@ -15248,7 +15299,7 @@ msgstr "Тема обсуждения"
 
 #: lib/layouts/singlecol-new.layout:3
 msgid "Inderscience 9.5 x 6.5 Journals"
-msgstr ""
+msgstr "Inderscience 9.5 x 6.5 Journals"
 
 #: lib/layouts/singlecol.layout:3
 msgid "Inderscience Journals (Obsolete)"
@@ -15289,7 +15340,7 @@ msgstr "<Видимый текст>"
 
 #: lib/layouts/spie.layout:3
 msgid "SPIE Proceedings"
-msgstr ""
+msgstr "SPIE Proceedings"
 
 #: lib/layouts/spie.layout:56
 msgid "Authorinfo"
@@ -15496,6 +15547,8 @@ msgid ""
 "Provide a straightforward way to segregate subequations in LyX. See the "
 "subequations.lyx example file."
 msgstr ""
+"Предоставляет прямой способ разделения подуравнений в LyX. См. файл примера "
+"subequations.lyx."
 
 #: lib/layouts/svcommon.inc:68
 msgid "Front Matter"
@@ -15523,7 +15576,7 @@ msgstr "--- Закл. часть ---"
 
 #: lib/layouts/svcommon.inc:116 lib/layouts/svmult.layout:107
 msgid "PartBacktext"
-msgstr ""
+msgstr "PartBacktext"
 
 #: lib/layouts/svcommon.inc:141
 msgid "Part Title"
@@ -15531,7 +15584,7 @@ msgstr "Заглавие части"
 
 #: lib/layouts/svcommon.inc:142
 msgid "Title of this part"
-msgstr ""
+msgstr "Заглавие этой части"
 
 #: lib/layouts/svcommon.inc:156 lib/layouts/svmult.layout:123
 #, fuzzy
@@ -15580,27 +15633,27 @@ msgstr "Автор TOC:"
 
 #: lib/layouts/svcommon.inc:401
 msgid "Running Title"
-msgstr ""
+msgstr "Заглавие в колонтитуле"
 
 #: lib/layouts/svcommon.inc:408
 msgid "Running Author"
-msgstr ""
+msgstr "Автор в колонтитуле"
 
 #: lib/layouts/svcommon.inc:414 lib/layouts/svmult.layout:115
 msgid "Running Chapter"
-msgstr ""
+msgstr "Глава в колонтитуле"
 
 #: lib/layouts/svcommon.inc:419
 msgid "Running chapter:"
-msgstr ""
+msgstr "Глава в колонтитуле:"
 
 #: lib/layouts/svcommon.inc:422
 msgid "Running Section"
-msgstr ""
+msgstr "Раздел в колонтитуле"
 
 #: lib/layouts/svcommon.inc:425
 msgid "Running section:"
-msgstr ""
+msgstr "Раздел в колонтитуле:"
 
 #: lib/layouts/svcommon.inc:449
 msgid "Abstract*"
@@ -15634,7 +15687,7 @@ msgstr "Мелкий"
 
 #: lib/layouts/svcommon.inc:620
 msgid "Svgraybox"
-msgstr ""
+msgstr "Svgraybox"
 
 #: lib/layouts/svcommon.inc:660 lib/layouts/svmono.layout:91
 msgid "Proof(QED)"
@@ -15710,7 +15763,7 @@ msgstr "CRSC"
 
 #: lib/layouts/svglobal3.layout:82
 msgid "CR Subject Classification"
-msgstr ""
+msgstr "Классификация предмета CR"
 
 #: lib/layouts/svglobal3.layout:87
 msgid "Solution \\thesolution"
@@ -15718,15 +15771,15 @@ msgstr "Решение \\thesolution"
 
 #: lib/layouts/svjog.layout:3
 msgid "Springer SV Jour/Jog"
-msgstr ""
+msgstr "Springer SV Jour/Jog"
 
 #: lib/layouts/svmono.layout:3
 msgid "Springer SV Mono"
-msgstr ""
+msgstr "Springer SV Mono"
 
 #: lib/layouts/svmult.layout:3
 msgid "Springer SV Mult"
-msgstr ""
+msgstr "Springer SV Mult"
 
 #: lib/layouts/svmult.layout:34
 msgid "Title*"
@@ -15771,6 +15824,9 @@ msgid ""
 "Allows to use the statistical language S/R as a literate programming tool "
 "via the Sweave() function. For more info see the LyX example file sweave.lyx."
 msgstr ""
+"Позволяет использовать статистический язык S/R в качестве инструмента "
+"грамотного программирования с помощью функции Sweave(). Для получения "
+"дополнительной информации см. файл примера sweave.lyx."
 
 #: lib/layouts/sweave.module:76 lib/layouts/sweave.module:77
 msgid "Sweave Input File"
@@ -15840,11 +15896,11 @@ msgstr ""
 
 #: lib/layouts/tcolorbox.module:50
 msgid "Subtitle Options"
-msgstr ""
+msgstr "Параметры подзаголовка"
 
 #: lib/layouts/tcolorbox.module:51
 msgid "Insert the options here"
-msgstr ""
+msgstr "Вставьте настройки здесь"
 
 #: lib/layouts/tcolorbox.module:56
 #, fuzzy
@@ -15877,7 +15933,7 @@ msgstr "Настройки нового блока"
 
 #: lib/layouts/tcolorbox.module:130
 msgid "Options for the new box type (optional)"
-msgstr ""
+msgstr "Параметры для нового типа блока (необязательно)"
 
 #: lib/layouts/tcolorbox.module:135
 msgid "Name of the new box type"
@@ -16502,6 +16558,8 @@ msgid ""
 "Facilitates the use of named theorems. The name of the theorem goes into the "
 "'Additional Theorem Text' argument."
 msgstr ""
+"Облегчает использование именованных теорем. Название теоремы переходит в "
+"аргумент 'Дополнительный текст теоремы'."
 
 #: lib/layouts/theorems-named.module:55
 msgid "Named Theorem"
@@ -16538,7 +16596,7 @@ msgstr "Утверждение*"
 # ?
 #: lib/layouts/theorems-proof.inc:22
 msgid "Alternative proof string"
-msgstr ""
+msgstr "Альтернативная строка доказательства"
 
 #: lib/layouts/theorems-sec-bytype.module:2
 msgid "Theorems (Numbered by Type within Sections)"
@@ -16627,7 +16685,7 @@ msgstr "Имя/Заглавие"
 
 #: lib/layouts/theorems-without-preamble.inc:45
 msgid "Alternative optional name or title"
-msgstr ""
+msgstr "Альтернативное необязательное имя или название"
 
 #: lib/layouts/theorems-without-preamble.inc:131
 msgid "Prop \\theprop."
@@ -16703,11 +16761,11 @@ msgstr "TODO (на полях)"
 
 #: lib/layouts/todonotes.module:79 lib/layouts/todonotes.module:91
 msgid "TODO Note Options|s"
-msgstr ""
+msgstr "Настройки заметки TODO"
 
 #: lib/layouts/todonotes.module:80 lib/layouts/todonotes.module:109
 msgid "See the todonotes manual for possible options"
-msgstr ""
+msgstr "См. руководство todonotes для возможных вариантов"
 
 #: lib/layouts/todonotes.module:86
 msgid "TODO Note (inline)"
@@ -16715,7 +16773,7 @@ msgstr "Заметка TODO (внутри строки)"
 
 #: lib/layouts/todonotes.module:88
 msgid "TODO (Inline)"
-msgstr ""
+msgstr "TODO (Встроенный)"
 
 #: lib/layouts/todonotes.module:101 lib/layouts/todonotes.module:103
 msgid "Missing Figure"
@@ -16727,7 +16785,7 @@ msgstr ""
 
 #: lib/layouts/todonotes.module:123
 msgid "Todo[Inline]"
-msgstr ""
+msgstr "Todo[Встроенный]"
 
 #: lib/layouts/todonotes.module:127
 #, fuzzy
@@ -16744,7 +16802,7 @@ msgstr "Japanese Report (вертикальное письмо)"
 
 #: lib/layouts/tufte-book.layout:3
 msgid "Tufte Book"
-msgstr ""
+msgstr "Книга Tufte"
 
 #: lib/layouts/tufte-book.layout:137
 msgid "Sidenote"
@@ -16764,7 +16822,7 @@ msgstr "примечание на полях"
 
 #: lib/layouts/tufte-book.layout:170
 msgid "NewThought"
-msgstr ""
+msgstr "Новая мысль"
 
 #: lib/layouts/tufte-book.layout:174
 msgid "new thought"
@@ -16797,11 +16855,11 @@ msgstr "примечание на полях"
 
 #: lib/layouts/tufte-book.layout:249
 msgid "MarginFigure"
-msgstr ""
+msgstr "Рисунок на полях"
 
 #: lib/layouts/tufte-handout.layout:3
 msgid "Tufte Handout"
-msgstr ""
+msgstr "Проспект Tufte"
 
 #: lib/layouts/tufte-handout.layout:4
 msgid "Handouts"
@@ -19595,7 +19653,7 @@ msgstr "Многоязычные подписи"
 
 #: lib/ui/stdmenus.inc:636
 msgid "Paralist|t"
-msgstr ""
+msgstr "Список абзацев Paralist|t"
 
 #: lib/ui/stdmenus.inc:637
 msgid "PDF comments|D"
@@ -19607,7 +19665,7 @@ msgstr "Формы PDF"
 
 #: lib/ui/stdmenus.inc:639
 msgid "Hazard and Precautionary Statements|H"
-msgstr ""
+msgstr "Сообщения об опасности и мерах предосторожности"
 
 #: lib/ui/stdmenus.inc:640 lib/configure.py:649
 msgid "Sweave|S"
@@ -19663,7 +19721,7 @@ msgstr "Переключить выделение"
 
 #: lib/ui/stdtoolbars.inc:88
 msgid "Toggle noun"
-msgstr "Переключить прописные"
+msgstr "Переключить малые прописные"
 
 #: lib/ui/stdtoolbars.inc:89
 msgid "Apply last"
@@ -24146,11 +24204,11 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1428
 msgid "Raised"
-msgstr ""
+msgstr "Приподнятый"
 
 #: lib/ui/stdtoolbars.inc:1429
 msgid "Lowered"
-msgstr ""
+msgstr "Опущенный"
 
 #: lib/ui/stdtoolbars.inc:1430
 msgid "Advanced tongue root"
@@ -24162,19 +24220,19 @@ msgstr ""
 
 #: lib/ui/stdtoolbars.inc:1432
 msgid "Nasalized"
-msgstr ""
+msgstr "Назализованный"
 
 #: lib/ui/stdtoolbars.inc:1433
 msgid "Nasal release"
-msgstr ""
+msgstr "Носовой отпуск"
 
 #: lib/ui/stdtoolbars.inc:1434
 msgid "Lateral release"
-msgstr ""
+msgstr "Боковой отпуск"
 
 #: lib/ui/stdtoolbars.inc:1435
 msgid "No audible release"
-msgstr ""
+msgstr "Невнятный отпуск"
 
 #: lib/ui/stdtoolbars.inc:1439
 msgid "Extra high (accent)"
@@ -26377,7 +26435,7 @@ msgstr ""
 
 #: src/Converter.cpp:344
 msgid "A LaTeX backend requires your authorization"
-msgstr ""
+msgstr "Серверная часть LaTeX требует вашей авторизации"
 
 #: src/Converter.cpp:345
 msgid "An external converter requires your authorization"
@@ -26510,6 +26568,10 @@ msgid ""
 "finished with an error. It is recommended you fix the cause of the external "
 "program's error (check the logs). "
 msgstr ""
+"Внешняя программа\n"
+"%1$s\n"
+"завершилась с ошибкой. Рекомендуется устранить причину ошибки внешней "
+"программы (проверьте логи). "
 
 #: src/Converter.cpp:831
 msgid "Output is empty"
@@ -26525,7 +26587,7 @@ msgstr ", Вставка: "
 
 #: src/Cursor.cpp:1075
 msgid ", Cell: "
-msgstr ""
+msgstr ", Ячейка: "
 
 #: src/Cursor.cpp:1076 src/Text.cpp:1957
 msgid ", Position: "
@@ -26537,6 +26599,8 @@ msgid ""
 "The character \"%1$s\" is uncodable in this verbatim context and thus has "
 "not been pasted."
 msgstr ""
+"Символ \"%1$s\" является некодируемым в этом дословном контексте, и поэтому "
+"не был вставлен."
 
 #: src/CutAndPaste.cpp:188
 #, c-format
@@ -26544,6 +26608,8 @@ msgid ""
 "The characters \"%1$s\" are uncodable in this verbatim context and thus have "
 "not been pasted."
 msgstr ""
+"Символы \"%1$s\" являются некодируемыми в этом дословном контексте, и "
+"поэтому не были вставлены."
 
 #: src/CutAndPaste.cpp:231
 #, fuzzy
@@ -27245,12 +27311,16 @@ msgid ""
 "Forbid use of external converters with 'needauth' option to prevent "
 "undesired effects."
 msgstr ""
+"Запретить использование внешних конвертеров с опцией 'needauth' для "
+"предотвращения нежелательных эффектов."
 
 #: src/LyXRC.cpp:3129
 msgid ""
 "Ask user before calling external converters with 'needauth' option to "
 "prevent undesired effects."
 msgstr ""
+"Спрашивать пользователя перед вызовом внешних конвертеров с опцией "
+"'needauth', чтобы предотвратить нежелательные эффекты."
 
 #: src/LyXRC.cpp:3136
 msgid ""
@@ -27274,6 +27344,7 @@ msgstr ""
 #: src/LyXRC.cpp:3148
 msgid "Make Apple key act as Meta and Control key as Ctrl."
 msgstr ""
+"Настроить клавишу Apple действовать как Мета, а клавишу Control как Ctrl."
 
 #: src/LyXRC.cpp:3152
 msgid "Use the Mac OS X conventions for cursor movement"
@@ -28462,7 +28533,7 @@ msgstr "Расширенный поиск отменён пользовател�
 #: src/frontends/qt4/FindAndReplace.cpp:380 src/lyxfind.cpp:163
 #: src/lyxfind.cpp:431 src/lyxfind.cpp:459
 msgid "Wrap search?"
-msgstr ""
+msgstr "Продолжить поиск?"
 
 #: src/frontends/qt4/FindAndReplace.cpp:431
 msgid "Nothing to search"
@@ -29043,12 +29114,16 @@ msgid ""
 "Text that precedes the whole reference list. For text that precedes "
 "individual items, double-click on the respective entry above."
 msgstr ""
+"Текст, предшествующий всему списку ссылок. Для текста, предшествующего "
+"отдельным элементам, дважды щелкните соответствующую запись выше."
 
 #: src/frontends/qt4/GuiCitation.cpp:294
 msgid ""
 "Text that follows the whole reference list. For text that follows individual "
 "items, double-click on the respective entry above."
 msgstr ""
+"Текст, который следует за всем списком ссылок. Для текста, следующего за "
+"отдельными элементами, дважды щелкните соответствующую запись выше."
 
 #: src/frontends/qt4/GuiCitation.cpp:300
 msgid "Text that precedes the reference (e.g., \"cf.\")"
@@ -29068,7 +29143,7 @@ msgstr "Ключи"
 
 #: src/frontends/qt4/GuiCitation.cpp:462
 msgid "Displays a sketchy preview if a citation is selected above"
-msgstr ""
+msgstr "Отображает эскизный предпросмотр, если цитата выбрана выше"
 
 #: src/frontends/qt4/GuiCitation.cpp:466
 msgid "Sketchy preview of the selected citation"
@@ -29555,7 +29630,7 @@ msgstr " (не установлен)"
 
 #: src/frontends/qt4/GuiDocument.cpp:2163
 msgid "Non-TeX Fonts Default"
-msgstr ""
+msgstr "Не-TeX шрифты по умолчанию"
 
 #: src/frontends/qt4/GuiDocument.cpp:2165
 msgid " (not available)"
@@ -30368,6 +30443,10 @@ msgid ""
 "recommended, unless you know what you are doing. Are you sure you would like "
 "to proceed ? The recommended and safe answer is NO!"
 msgstr ""
+"Если этот параметр отключен, потенциально опасные конвертеры будут "
+"запускаться без предварительного запроса вашего разрешения. Это НЕБЕЗОПАСНО "
+"и НЕ рекомендуется, если вы не знаете, что вы делаете. Вы уверены, что "
+"хотите продолжить? Рекомендуемый и безопасный ответ - НЕТ!"
 
 #: src/frontends/qt4/GuiPrefs.cpp:2010
 msgid "File Formats"
@@ -30798,23 +30877,23 @@ msgstr "CJK совместимость"
 
 #: src/frontends/qt4/GuiSymbols.cpp:108
 msgid "CJK Unified Ideographs"
-msgstr ""
+msgstr "Унифицированные идеограммы CJK"
 
 #: src/frontends/qt4/GuiSymbols.cpp:109
 msgid "Hangul Syllables"
-msgstr ""
+msgstr "Звуки хангыля"
 
 #: src/frontends/qt4/GuiSymbols.cpp:110
 msgid "High Surrogates"
-msgstr ""
+msgstr "Высшие суррогаты"
 
 #: src/frontends/qt4/GuiSymbols.cpp:111
 msgid "Private Use High Surrogates"
-msgstr ""
+msgstr "Высшие суррогаты для частного использования"
 
 #: src/frontends/qt4/GuiSymbols.cpp:112
 msgid "Low Surrogates"
-msgstr ""
+msgstr "Низшие суррогаты"
 
 #: src/frontends/qt4/GuiSymbols.cpp:113
 msgid "Private Use Area"
@@ -30822,19 +30901,19 @@ msgstr "Область частного использования"
 
 #: src/frontends/qt4/GuiSymbols.cpp:114
 msgid "CJK Compatibility Ideographs"
-msgstr ""
+msgstr "Совместимые идеограммы CJK"
 
 #: src/frontends/qt4/GuiSymbols.cpp:115
 msgid "Alphabetic Presentation Forms"
-msgstr ""
+msgstr "Формы представления алфавита"
 
 #: src/frontends/qt4/GuiSymbols.cpp:116
 msgid "Arabic Presentation Forms-A"
-msgstr ""
+msgstr "Арабские формы представления-A"
 
 #: src/frontends/qt4/GuiSymbols.cpp:117
 msgid "Combining Half Marks"
-msgstr ""
+msgstr "Совмещённые половинные метки"
 
 #: src/frontends/qt4/GuiSymbols.cpp:118
 msgid "CJK Compatibility Forms"
@@ -30842,15 +30921,15 @@ msgstr "Формы CJK-совместимости"
 
 #: src/frontends/qt4/GuiSymbols.cpp:119
 msgid "Small Form Variants"
-msgstr ""
+msgstr "Варианты малых форм"
 
 #: src/frontends/qt4/GuiSymbols.cpp:120
 msgid "Arabic Presentation Forms-B"
-msgstr ""
+msgstr "Арабские формы представления-B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:121
 msgid "Halfwidth and Fullwidth Forms"
-msgstr ""
+msgstr "Полные и неполные формы"
 
 #: src/frontends/qt4/GuiSymbols.cpp:123
 msgid "Linear B Syllabary"
@@ -30906,7 +30985,7 @@ msgstr "Кхароштхи"
 
 #: src/frontends/qt4/GuiSymbols.cpp:136
 msgid "Byzantine Musical Symbols"
-msgstr ""
+msgstr "Византийские музыкальные символы"
 
 #: src/frontends/qt4/GuiSymbols.cpp:137
 msgid "Musical Symbols"
@@ -30943,11 +31022,11 @@ msgstr ""
 
 #: src/frontends/qt4/GuiSymbols.cpp:145
 msgid "Supplementary Private Use Area-A"
-msgstr ""
+msgstr "Дополнительная зона частного использования-A"
 
 #: src/frontends/qt4/GuiSymbols.cpp:146
 msgid "Supplementary Private Use Area-B"
-msgstr ""
+msgstr "Дополнительная зона частного использования-B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:245
 msgid "<p>LaTeX code: %1</p>"
@@ -31016,6 +31095,8 @@ msgid ""
 "WARNING: LaTeX is allowed to execute external commands for this document. "
 "Right click to change."
 msgstr ""
+"Предупреждение: LaTeX разрешено выполнять внешние команды для этого "
+"документа. Щелкните правой кнопкой мыши, чтобы изменить это."
 
 #: src/frontends/qt4/GuiView.cpp:687
 #, c-format
@@ -31200,6 +31281,11 @@ msgid ""
 "Please close it before attempting to overwrite it.\n"
 "Do you want to choose a new filename?"
 msgstr ""
+"Файл\n"
+"%1$s\n"
+"уже открыт в текущем сеансе.\n"
+"Пожалуйста, закройте его, прежде чем пытаться перезаписать его.\n"
+"Вы хотите выбрать новое имя?"
 
 #: src/frontends/qt4/GuiView.cpp:2599
 msgid "Chosen File Already Open"
@@ -31273,6 +31359,14 @@ msgid ""
 "To remove this question, set your preference in:\n"
 "  Tools->Preferences->Look&Feel->UserInterface\n"
 msgstr ""
+"Последнее представление документа %1$s закрывается.\n"
+"Хотите закрыть или скрыть документ?\n"
+"\n"
+"Спрятанные документы можно показать снова через\n"
+"меню: Вид->Скрытые->...\n"
+"\n"
+"Чтобы убрать этот вопрос, задайте ваше предпочтение в:\n"
+"  Инструменты->Настройки->Вид и поведение->Интерфейс пользователя\n"
 
 #: src/frontends/qt4/GuiView.cpp:2837
 msgid "Close or hide document?"
@@ -31497,7 +31591,7 @@ msgstr "Невозможно продолжить."
 
 #: src/frontends/qt4/GuiView.cpp:4698
 msgid "Disable Shell Escape"
-msgstr ""
+msgstr "Отключить выход из shell"
 
 #: src/frontends/qt4/GuiViewSource.cpp:402
 #: src/frontends/qt4/GuiViewSource.cpp:456
@@ -31588,7 +31682,7 @@ msgstr "Больше языков...|Б"
 
 #: src/frontends/qt4/Menus.cpp:981 src/frontends/qt4/Menus.cpp:982
 msgid "Hidden|H"
-msgstr "Скрытый"
+msgstr "Скрытые"
 
 #: src/frontends/qt4/Menus.cpp:986
 msgid "<No Documents Open>"
@@ -32267,6 +32361,9 @@ msgid ""
 "Offending file:\n"
 "%1$s"
 msgstr ""
+"LyX не знает, как включить не-LyX файлы при генерации HTML-вывода. Файл-"
+"нарушитель:\n"
+"%1$s"
 
 #: src/insets/InsetIndex.cpp:146
 msgid "Index sorting failed"
@@ -32504,7 +32601,7 @@ msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:336
 msgid "Previously defined color name as a string"
-msgstr ""
+msgstr "Ранее определённое имя цвета в виде строки"
 
 #: src/insets/InsetListingsParams.cpp:338
 msgid "Enter something like \\color{white}"
@@ -32548,27 +32645,27 @@ msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:768
 msgid "Sets encoding expected by Pygments"
-msgstr ""
+msgstr "Устанавливает кодировку, ожидаемую Pygments"
 
 #: src/insets/InsetListingsParams.cpp:778
 msgid "A latex family such as tt, sf, rm"
-msgstr ""
+msgstr "Семейство LaTeX, такое как tt, sf, rm"
 
 #: src/insets/InsetListingsParams.cpp:781
 msgid "A latex series such as m, b, c, bx, sb"
-msgstr ""
+msgstr "Серия LaTeX, такая как m, b, c, bx, sb"
 
 #: src/insets/InsetListingsParams.cpp:784
 msgid "A latex name such as \\small"
-msgstr ""
+msgstr "Имя LaTeX, такое как \\small"
 
 #: src/insets/InsetListingsParams.cpp:787
 msgid "A latex shape such as n, it, sl, sc"
-msgstr ""
+msgstr "Форма LaTeX, такая как n, it, sl, sc"
 
 #: src/insets/InsetListingsParams.cpp:806
 msgid "A range of lines such as {1,3-4}"
-msgstr ""
+msgstr "Диапазон строк типа {1,3-4}"
 
 #: src/insets/InsetListingsParams.cpp:815
 msgid ""
@@ -32576,6 +32673,10 @@ msgid ""
 "inset, it is better using the  language combo box, unless you need to enter "
 "a language not offered there, otherwise the combo box will be disabled."
 msgstr ""
+"Введите один из поддерживаемых языков. Однако, если вы определяете вставку "
+"листинга, лучше использовать поле со списком язык, если вам не нужно вводить "
+"язык, не предложенный там, в противном случае поле со списком будет "
+"отключено."
 
 #: src/insets/InsetListingsParams.cpp:838
 msgid "File encoding used by Pygments for highlighting"
@@ -32703,7 +32804,7 @@ msgstr "%1$sвнешние%2$s и %3$sвнутренние%4$s[[quotation marks]
 #: src/insets/InsetQuotes.cpp:577
 #, c-format
 msgid "%1$s[[quot. mark description]] (language default)"
-msgstr ""
+msgstr "%1$s[[quot. mark description]] (по умолчанию для языка)"
 
 #: src/insets/InsetQuotes.cpp:590
 #, c-format
@@ -32856,11 +32957,11 @@ msgstr "Выделения не поддерживаются."
 
 #: src/insets/InsetTabular.cpp:4608
 msgid "Multi-column in current or destination column."
-msgstr ""
+msgstr "Мульти-столбец в текущем или целевом столбце."
 
 #: src/insets/InsetTabular.cpp:4620
 msgid "Multi-row in current or destination row."
-msgstr ""
+msgstr "Мульти-строка в текущей или целевой строке."
 
 #: src/insets/InsetTabular.cpp:5060
 msgid "Selection size should match clipboard content."
@@ -33223,6 +33324,9 @@ msgid ""
 "You are using at least one layout (%1$s) intended for the title, after using "
 "non-title layouts. This could lead to missing or incorrect output."
 msgstr ""
+"Вы используете хотя бы один макет (%1$s), предназначенный для заголовка, "
+"после использования макетов без заголовка. Это может привести к отсутствию "
+"вывода или неправильному выводу."
 
 #: src/output_plaintext.cpp:144
 msgid "Abstract: "
@@ -33249,6 +33353,7 @@ msgstr "Программа LyX не найдена"
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr ""
+"Не удалось определить путь к двоичному файлу LyX из командной строки %1$s"
 
 #: src/support/Package.cpp:648
 #, c-format
@@ -33258,6 +33363,11 @@ msgid ""
 "Use the '-sysdir' command line parameter or set the environment variable\n"
 "%2$s to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
+"Не удается определить системный каталог после поиска в\n"
+"\t%1$s\n"
+"Используйте параметр командной строки '-sysdir' или задайте переменную "
+"среды\n"
+"%2$s в системный каталог LyX, содержащий файл `chkconfig.ltx'."
 
 #: src/support/Package.cpp:717 src/support/Package.cpp:744
 msgid "File not found"
@@ -33269,6 +33379,8 @@ msgid ""
 "Invalid %1$s switch.\n"
 "Directory %2$s does not contain %3$s."
 msgstr ""
+"Неверный переключатель %1$s.\n"
+"Каталог %2$s не содержит %3$s."
 
 #: src/support/Package.cpp:745
 #, c-format
