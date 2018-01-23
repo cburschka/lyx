@@ -34,9 +34,10 @@ from lyx2lyx_tools import (add_to_preamble, put_cmd_in_ert, get_ert,
 #   insert_to_preamble, latex_length, revert_flex_inset,
 #   revert_font_attrs, hex2ratio, str2bool
 
-from parser_tools import (find_end_of_inset, find_end_of_layout,
-    find_nonempty_line, find_re, find_slice, find_token, find_token_backwards,
-    get_containing_layout, get_value, check_token)
+from parser_tools import (del_complete_lines,
+    find_end_of_inset, find_end_of_layout, find_nonempty_line, find_re,
+    find_token, find_token_backwards, get_containing_layout,
+    get_value, check_token)
 
 ####################################################################
 # Private helper functions
@@ -615,130 +616,105 @@ def convert_dashes(document):
     if document.backend != "latex":
         return
 
+    lines = document.body
     i = 0
-    while i < len(document.body):
-        words = document.body[i].split()
+    while i+1 < len(lines):
+        i += 1
+        line = lines[i]
+        words = line.split()
         if (len(words) > 1 and words[0] == "\\begin_inset"
             and (words[1] in ["CommandInset", "ERT", "External", "Formula",
                               "FormulaMacro", "Graphics", "IPA", "listings"]
-                 or ' '.join(words[1:]) == "Flex Code")):
+                 or line.endswith("Flex Code"))):
             # must not replace anything in insets that store LaTeX contents in .lyx files
             # (math and command insets without overridden read() and write() methods
             # filtering out IPA makes Text::readParToken() more simple
             # skip ERT as well since it is not needed there
             # Flex Code is logical markup, typically rendered as typewriter
-            j = find_end_of_inset(document.body, i)
+            j = find_end_of_inset(lines, i)
             if j == -1:
-                document.warning("Malformed LyX document: Can't find end of " + words[1] + " inset at line " + str(i))
-                i += 1
+                document.warning("Malformed LyX document: Can't find end of " +
+                                 words[1] + " inset at line " + str(i))
             else:
                 i = j
             continue
-        if document.body[i] == "\\begin_layout LyX-Code":
-            j = find_end_of_layout(document.body, i)
+        if lines[i] == "\\begin_layout LyX-Code":
+            j = find_end_of_layout(lines, i)
             if j == -1:
                 document.warning("Malformed LyX document: "
                     "Can't find end of %s layout at line %d" % (words[1],i))
-                i += 1
             else:
                 i = j
             continue
-
-        if len(words) > 0 and words[0] in ["\\leftindent", "\\paragraph_spacing", "\\align", "\\labelwidthstring"]:
-            # skip paragraph parameters (bug 10243)
-            i += 1
+        if line.startswith("\\labelwidthstring"):
+            # skip label width string (bug 10243)
             continue
-        while True:
-            j = document.body[i].find("--")
-            if j == -1:
-                break
-            front = document.body[i][:j]
-            back = document.body[i][j+2:]
+
+        if "--" in line:
             # We can have an arbitrary number of consecutive hyphens.
-            # These must be split into the corresponding number of two and three hyphens
-            # We must match what LaTeX does: First try emdash, then endash, then single hyphen
-            if back.find("-") == 0:
-                back = back[1:]
-                if len(back) > 0:
-                    document.body.insert(i+1, back)
-                document.body[i] = front + "\\threehyphens"
-            else:
-                if len(back) > 0:
-                    document.body.insert(i+1, back)
-                document.body[i] = front + "\\twohyphens"
-        i += 1
+            # Replace as LaTeX does: First try emdash, then endash
+            line = line.replace("---", "\\threehyphens\n")
+            line = line.replace("--", "\\twohyphens\n")
+            lines[i:i+1] = line.splitlines()
 
-    i = 0
-    while i < len(document.body):
-        line = document.body[i]
-        while (line.endswith(r"-\SpecialChar \textcompwordmark{}") and
-               document.body[i+1].startswith("-")):
-            line = line.replace(r"\SpecialChar \textcompwordmark{}",
-                                document.body.pop(i+1))
-            document.body[i] = line
-        i += 1
+    # remove ligature breaks between dashes
+    i = 1
+    while i < len(lines):
+        line = lines[i]
+        if (line.endswith(r"-\SpecialChar \textcompwordmark{}") and
+            lines[i+1].startswith("-")):
+            lines[i] = line.replace(r"\SpecialChar \textcompwordmark{}",
+                                    lines.pop(i+1))
+        else:
+            i += 1
 
-# Return number of the next line to check for dashes.
-def _dashes_next_line(document, i):
-    i +=1
-    words = document.body[i].split()
-    # skip paragraph parameters (bug 10243):
-    if words and words[0] in ["\\leftindent", "\\paragraph_spacing",
-                              "\\align", "\\labelwidthstring"]:
-        i += 1
-        words = document.body[i].split()
-    # some insets should be skipped in revert_dashes (cf. convert_dashes)
-    if (len(words) > 1 and words[0] == "\\begin_inset" and
-        words[1] in ["CommandInset", "ERT", "External", "Formula",
-                     "FormulaMacro", "Graphics", "IPA", "listings"]):
-        j = find_end_of_inset(document.body, i)
-        if j == -1:
-            document.warning("Malformed LyX document: Can't find end of "
-                                + words[1] + " inset at line " + str(i))
-            return i
-        return j+1
-    return i
 
 def revert_dashes(document):
     """
     Prevent ligatures of existing --- and --.
-    Convert \\twohyphens and \\threehyphens to -- and ---.
+    Revert \\twohyphens and \\threehyphens to -- and ---.
     Remove preamble code from 2.3->2.2 conversion.
     """
-    # Remove preamble code from 2.3->2.2 conversion:
-    dash_renew_lines = find_slice(document.preamble,
-                                  ['% Added by lyx2lyx',
-                                   r'\renewcommand{\textendash}{--}',
-                                   r'\renewcommand{\textemdash}{---}'])
-    del(document.preamble[dash_renew_lines])
-    # Prevent ligation of hyphens:
+    del_complete_lines(document.preamble,
+                       ['% Added by lyx2lyx',
+                        r'\renewcommand{\textendash}{--}',
+                        r'\renewcommand{\textemdash}{---}'])
+    # Insert ligature breaks to prevent ligation of hyphens to dashes:
+    lines = document.body
     i = 0
-    while i < len(document.body)-1:
-        # increment i, skip some insets (cf. convert_dashes)
-        i = _dashes_next_line(document, i)
-        line = document.body[i]
+    while i+1 < len(lines):
+        i += 1
+        line = lines[i]
+        # skip label width string (bug 10243):
+        if line.startswith("\\labelwidthstring"):
+            continue
+        # do not touch hyphens in some insets (cf. convert_dashes):
+        if line.startswith("\\begin_inset"):
+            try:
+                if line.split()[1] in ["CommandInset", "ERT", "External",
+                                       "Formula", "FormulaMacro", "Graphics",
+                                       "IPA", "listings"]:
+                    j = find_end_of_inset(lines, i)
+                    if j == -1:
+                        document.warning("Malformed LyX document: Can't find "
+                                    "end of %s inset at line %d." % (itype, i))
+                        continue
+                    i = j
+            except IndexError:
+                continue
         if "--" in line:
             line = line.replace("--", "-\\SpecialChar \\textcompwordmark{}\n-")
             document.body[i:i+1] = line.split('\n')
-    # Convert \twohyphens and \threehyphens:
-    i = 0
-    while i < len(document.body):
-        # skip some insets (see convert_dashes())
-        i = _dashes_next_line(document, i-1)
-        replaced = False
-        if document.body[i].find("\\twohyphens") >= 0:
-            document.body[i] = document.body[i].replace("\\twohyphens", "--")
-            replaced = True
-        if document.body[i].find("\\threehyphens") >= 0:
-            document.body[i] = document.body[i].replace("\\threehyphens", "---")
-            replaced = True
-        if replaced and i+1 < len(document.body) and \
-           (document.body[i+1].find("\\") != 0 or \
-            document.body[i+1].find("\\twohyphens") == 0 or
-            document.body[i+1].find("\\threehyphens") == 0) and \
-           len(document.body[i]) + len(document.body[i+1]) <= 80:
-            document.body[i] = document.body[i] + document.body[i+1]
-            document.body[i+1:i+2] = []
+    # Revert \twohyphens and \threehyphens:
+    i = 1
+    while i < len(lines):
+        line = lines[i]
+        if not line.endswith("hyphens"):
+            i +=1
+        elif line.endswith("\\twohyphens") or line.endswith("\\threehyphens"):
+            line = line.replace("\\twohyphens", "--")
+            line = line.replace("\\threehyphens", "---")
+            lines[i] = line + lines.pop(i+1)
         else:
             i += 1
 
@@ -879,16 +855,16 @@ def revert_georgian(document):
         document.language = "english"
         i = find_token(document.header, "\\language georgian", 0)
         if i != -1:
-    	    document.header[i] = "\\language english"
+            document.header[i] = "\\language english"
         j = find_token(document.header, "\\language_package default", 0)
         if j != -1:
-    	    document.header[j] = "\\language_package babel"
+            document.header[j] = "\\language_package babel"
         k = find_token(document.header, "\\options", 0)
         if k != -1:
-    	    document.header[k] = document.header[k].replace("\\options", "\\options georgian,")
+            document.header[k] = document.header[k].replace("\\options", "\\options georgian,")
         else:
-    	    l = find_token(document.header, "\\use_default_options", 0)
-    	    document.header.insert(l + 1, "\\options georgian")
+            l = find_token(document.header, "\\use_default_options", 0)
+            document.header.insert(l + 1, "\\options georgian")
 
 
 def revert_sigplan_doi(document):

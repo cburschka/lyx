@@ -156,53 +156,6 @@ count_pars_in_inset(lines, i):
 
 import re
 
-# Fast search in lists
-def find_slice(l, sl, start = 0, stop = None):
-    """Return position of first occurence of sequence `sl` in list `l`
-    as a `slice` object.
-
-    >>> find_slice([1, 2, 3, 1, 1, 2], (1, 2))
-    slice(0, 2, None)
-
-    The return value can be used to delete or substitute the sub-list:
-
-    >>> l = [1, 0, 1, 1, 1, 2]
-    >>> s = find_slice(l, [0, 1, 1])
-    >>> del(l[s]); l
-    [1, 1, 2]
-    >>> s = find_slice(l, (1, 2))
-    >>> l[s] = [3]; l
-    [1, 3]
-
-    The start argument works similar to list.index()
-
-    >>> find_slice([1, 2, 3, 1, 1 ,2], (1, 2), start = 1)
-    slice(4, 6, None)
-
-    Use the `stop` attribute of the returned `slice` to test for success:
-
-    >>> s1 = find_slice([2, 3, 1], (3, 1))
-    >>> s2 = find_slice([2, 3, 1], (2, 1))
-    >>> if s1.stop and not s2.stop:
-    ...     print "wow"
-    wow
-    """
-    stop = stop or len(l)
-    N = len(sl) # lenght of sub-list
-    try:
-        while True:
-            for j, value in enumerate(sl):
-                i = l.index(value, start, stop)
-                if j and i != start:
-                    start = i-j
-                    break
-                start = i +1
-            else:
-                return slice(i+1-N, i+1)
-    except ValueError: # sub list `sl` not found
-        return slice(0, 0)
-
-
 # Utilities for one line
 def check_token(line, token):
     """ check_token(line, token) -> bool
@@ -212,7 +165,6 @@ def check_token(line, token):
 
     Deprecated. Use line.startswith(token).
     """
-
     return line.startswith(token)
 
 
@@ -225,40 +177,40 @@ def is_nonempty_line(line):
 
 
 # Utilities for a list of lines
-def find_token(lines, token, start, end = 0, ignorews = False):
+def find_token(lines, token, start=0, end=0, ignorews=False):
     """ find_token(lines, token, start[[, end], ignorews]) -> int
 
     Return the lowest line where token is found, and is the first
     element, in lines[start, end].
 
     If ignorews is True (default is False), then differences in
-    whitespace are ignored, except that there must be no extra
-    whitespace following token itself.
+    whitespace are ignored, but there must be whitespace following
+    token itself.
 
     Return -1 on failure."""
 
     if end == 0 or end > len(lines):
         end = len(lines)
-    m = len(token)
+    if ignorews:
+        y = token.split()
     for i in range(start, end):
         if ignorews:
             x = lines[i].split()
-            y = token.split()
             if len(x) < len(y):
                 continue
             if x[:len(y)] == y:
                 return i
         else:
-            if lines[i][:m] == token:
+            if lines[i].startswith(token):
                 return i
     return -1
 
 
-def find_token_exact(lines, token, start, end = 0):
+def find_token_exact(lines, token, start=0, end=0):
     return find_token(lines, token, start, end, True)
 
 
-def find_tokens(lines, tokens, start, end = 0, ignorews = False):
+def find_tokens(lines, tokens, start=0, end=0, ignorews=False):
     """ find_tokens(lines, tokens, start[[, end], ignorews]) -> int
 
     Return the lowest line where one token in tokens is found, and is
@@ -278,17 +230,17 @@ def find_tokens(lines, tokens, start, end = 0, ignorews = False):
                 if x[:len(y)] == y:
                     return i
             else:
-                if lines[i][:len(token)] == token:
+                if lines[i].startswith(token):
                     return i
     return -1
 
 
-def find_tokens_exact(lines, tokens, start, end = 0):
+def find_tokens_exact(lines, tokens, start=0, end=0):
     return find_tokens(lines, tokens, start, end, True)
 
 
-def find_re(lines, rexp, start, end = 0):
-    """ find_token_re(lines, rexp, start[, end]) -> int
+def find_re(lines, rexp, start=0, end=0):
+    """ find_re(lines, rexp, start[, end]) -> int
 
     Return the lowest line where rexp, a regular expression, is found
     in lines[start, end].
@@ -310,10 +262,8 @@ def find_token_backwards(lines, token, start):
     element, in lines[start, end].
 
     Return -1 on failure."""
-    m = len(token)
     for i in range(start, -1, -1):
-        line = lines[i]
-        if line[:m] == token:
+        if lines[i].startswith(token):
             return i
     return -1
 
@@ -328,12 +278,86 @@ def find_tokens_backwards(lines, tokens, start):
     for i in range(start, -1, -1):
         line = lines[i]
         for token in tokens:
-            if line[:len(token)] == token:
+            if line.startswith(token):
                 return i
     return -1
 
 
-def get_value(lines, token, start, end = 0, default = ""):
+def find_complete_lines(lines, sublines, start=0, end=0):
+    """Find first occurence of sequence `sublines` in list `lines`.
+    Return index of first line or -1 on failure.
+
+    Efficient search for a sub-list in a large list. Works for any values.
+
+    >>> find_complete_lines([1, 2, 3, 1, 1, 2], [1, 2])
+    0
+
+    The `start` and `end` arguments work similar to list.index()
+
+    >>> find_complete_lines([1, 2, 3, 1, 1 ,2], [1, 2], start=1)
+    4
+    >>> find_complete_lines([1, 2, 3, 1, 1 ,2], [1, 2], start=1, end=4)
+    -1
+
+    The return value can be used to substitute the sub-list.
+    Take care to check before use:
+
+    >>> l = [1, 1, 2]
+    >>> s = find_complete_lines(l, [1, 2])
+    >>> if s != -1:
+    ...     l[s:s+2] = [3]; l
+    [1, 3]
+
+    See also del_complete_lines().
+    """
+    if not sublines:
+        return start
+    end = end or len(lines)
+    N = len(sublines)
+    try:
+        while True:
+            for j, value in enumerate(sublines):
+                i = lines.index(value, start, end)
+                if j and i != start:
+                    start = i-j
+                    break
+                start = i + 1
+            else:
+                return i +1 - N
+    except ValueError: # `sublines` not found
+        return -1
+
+
+def find_across_lines(lines, sub, start=0, end=0):
+    sublines = sub.splitlines()
+    if len(sublines) > 2:
+        # at least 3 lines: the middle one(s) are complete -> use index search
+        i = find_complete_lines(lines, sublines[1:-1], start+1, end-1)
+        if i < start+1:
+            return -1
+        try:
+            if (lines[i-1].endswith(sublines[0]) and
+                lines[i+len(sublines)].startswith(sublines[-1])):
+                return i-1
+        except IndexError:
+            pass
+    elif len(sublines) > 1:
+        # last subline must start a line
+        i = find_token(lines, sublines[-1], start, end)
+        if i < start + 1:
+            return -1
+        if lines[i-1].endswith(sublines[0]):
+            return i-1
+    else: # no line-break, may be in the middle of a line
+        if end == 0 or end > len(lines):
+            end = len(lines)
+        for i in range(start, end):
+            if sub in lines[i]:
+                return i
+    return -1
+
+
+def get_value(lines, token, start=0, end=0, default=""):
     """ get_value(lines, token, start[[, end], default]) -> string
 
     Find the next line that looks like:
@@ -341,17 +365,19 @@ def get_value(lines, token, start, end = 0, default = ""):
     Returns "followed by other stuff" with leading and trailing
     whitespace removed.
     """
-
     i = find_token_exact(lines, token, start, end)
     if i == -1:
         return default
+    # TODO: establish desired behaviour, eventually change to
+    #  return lines.pop(i)[len(token):].strip() # or default
+    # see test_parser_tools.py
     l = lines[i].split(None, 1)
     if len(l) > 1:
         return l[1].strip()
     return default
 
 
-def get_quoted_value(lines, token, start, end = 0, default = ""):
+def get_quoted_value(lines, token, start=0, end=0, default=""):
     """ get_quoted_value(lines, token, start[[, end], default]) -> string
 
     Find the next line that looks like:
@@ -368,8 +394,8 @@ def get_quoted_value(lines, token, start, end = 0, default = ""):
     return val.strip('"')
 
 
-def get_bool_value(lines, token, start, end = 0, default = None):
-    """ get_value(lines, token, start[[, end], default]) -> string
+def get_bool_value(lines, token, start=0, end=0, default=None):
+    """ get_bool_value(lines, token, start[[, end], default]) -> string
 
     Find the next line that looks like:
       token bool_value
@@ -405,7 +431,7 @@ def set_option_value(line, option, value):
     return re.sub(rx, '\g<1>' + value + '"', line)
 
 
-def del_token(lines, token, start, end = 0):
+def del_token(lines, token, start=0, end=0):
     """ del_token(lines, token, start, end) -> int
 
     Find the first line in lines where token is the first element
@@ -418,6 +444,41 @@ def del_token(lines, token, start, end = 0):
     del lines[k]
     return True
 
+def del_complete_lines(lines, sublines, start=0, end=0):
+    """Delete first occurence of `sublines` in list `lines`.
+
+    Efficient deletion of a sub-list in a list. Works for any values.
+    The `start` and `end` arguments work similar to list.index()
+
+    Returns True if a deletion was done and False if not.
+
+    >>> l = [1, 0, 1, 1, 1, 2]
+    >>> del_complete_lines(l, [0, 1, 1])
+    True
+    >>> l
+    [1, 1, 2]
+    """
+    i = find_complete_lines(lines, sublines, start, end)
+    if i == -1:
+        return False
+    del(lines[i:i+len(sublines)])
+    return True
+
+
+def del_value(lines, token, start=0, end=0, default=None):
+    """
+    Find the next line that looks like:
+      token followed by other stuff
+    Delete that line and return "followed by other stuff"
+    with leading and trailing whitespace removed.
+
+    If token is not found, return `default`.
+    """
+    i = find_token_exact(lines, token, start, end)
+    if i == -1:
+        return default
+    return lines.pop(i)[len(token):].strip()
+
 
 def find_beginning_of(lines, i, start_token, end_token):
     count = 1
@@ -425,7 +486,7 @@ def find_beginning_of(lines, i, start_token, end_token):
         i = find_tokens_backwards(lines, [start_token, end_token], i-1)
         if i == -1:
             return -1
-        if check_token(lines[i], end_token):
+        if lines[i].startswith(end_token):
             count = count+1
         else:
             count = count-1
@@ -441,7 +502,7 @@ def find_end_of(lines, i, start_token, end_token):
         i = find_tokens(lines, [end_token, start_token], i+1)
         if i == -1:
             return -1
-        if check_token(lines[i], start_token):
+        if lines[i].startswith(start_token):
             count = count+1
         else:
             count = count-1
@@ -450,11 +511,11 @@ def find_end_of(lines, i, start_token, end_token):
     return -1
 
 
-def find_nonempty_line(lines, start, end = 0):
+def find_nonempty_line(lines, start=0, end=0):
     if end == 0:
         end = len(lines)
     for i in range(start, end):
-        if is_nonempty_line(lines[i]):
+        if lines[i].strip():
             return i
     return -1
 

@@ -24,9 +24,9 @@ import sys, os
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import del_token, find_end_of, find_end_of_layout, \
-    find_end_of_inset, find_re, find_slice, find_token, \
-    find_token_backwards, get_containing_layout, \
+from parser_tools import del_token, del_value, del_complete_lines, \
+    find_end_of, find_end_of_layout, find_end_of_inset, find_re, \
+    find_token, find_token_backwards, get_containing_layout, \
     get_bool_value, get_value, get_quoted_value
 #  find_tokens, find_token_exact, is_in_inset, \
 #  check_token, get_option_value
@@ -1303,7 +1303,7 @@ def revert_biblatex(document):
                       "Citealt*", "Citealp*", "Citeauthor*", "fullcite", "footcite",\
                       "footcitet", "footcitep", "footcitealt", "footcitealp",\
                       "footciteauthor", "footciteyear", "footciteyearpar",\
-		      "citefield", "citetitle", "cite*" ]
+                      "citefield", "citetitle", "cite*" ]
 
     i = 0
     while (True):
@@ -1843,19 +1843,16 @@ def revert_chapterbib(document):
 
 def convert_dashligatures(document):
     "Set 'use_dash_ligatures' according to content."
-    use_dash_ligatures = None
-    # Eventually remove preamble code from 2.3->2.2 conversion:
-    dash_renew_lines = find_slice(document.preamble,
-                                  ['% Added by lyx2lyx',
-                                   r'\renewcommand{\textendash}{--}',
-                                   r'\renewcommand{\textemdash}{---}'])
-    del(document.preamble[dash_renew_lines])
-    use_dash_ligatures = bool(dash_renew_lines.stop)
+    # Look for and remove dashligatures workaround from 2.3->2.2 reversion,
+    # set use_dash_ligatures to True if found, to None else.
+    use_dash_ligatures = del_complete_lines(document.preamble,
+                                ['% Added by lyx2lyx',
+                                 r'\renewcommand{\textendash}{--}',
+                                 r'\renewcommand{\textemdash}{---}']) or None
 
     if use_dash_ligatures is None:
-        # Look for dashes:
-        # (Documents by LyX 2.1 or older have "\twohyphens\n" or "\threehyphens\n"
-        # as interim representation for dash ligatures)
+        # Look for dashes (Documents by LyX 2.1 or older have "\twohyphens\n"
+        # or "\threehyphens\n" as interim representation for -- an ---.)
         has_literal_dashes = False
         has_ligature_dashes = False
         j = 0
@@ -1863,16 +1860,19 @@ def convert_dashligatures(document):
             # Skip some document parts where dashes are not converted
             if (i < j) or line.startswith("\\labelwidthstring"):
                 continue
-            words = line.split()
-            if (len(words) > 1 and words[0] == "\\begin_inset"
-                and (words[1] in ["CommandInset", "ERT", "External", "Formula",
-                                 "FormulaMacro", "Graphics", "IPA", "listings"]
-                     or ' '.join(words[1:]) == "Flex Code")):
-                j = find_end_of_inset(document.body, i)
-                if j == -1:
-                    document.warning("Malformed LyX document: "
-                        "Can't find end of %s inset at line %d" % (words[1],i))
-                continue
+            if line.startswith("\\begin_inset"):
+                try:
+                    it = line.split()[1]
+                except IndexError:
+                    continue
+                if (it in ["CommandInset", "ERT", "External", "Formula",
+                           "FormulaMacro", "Graphics", "IPA", "listings"]
+                    or line.endswith("Flex Code")):
+                    j = find_end_of_inset(document.body, i)
+                    if j == -1:
+                        document.warning("Malformed LyX document: Can't "
+                            "find end of %s inset at line %d." % (itype, i))
+                        continue
             if line == "\\begin_layout LyX-Code":
                 j = find_end_of_layout(document.body, i)
                 if j == -1:
@@ -1898,22 +1898,16 @@ def convert_dashligatures(document):
             use_dash_ligatures = True
     # insert the setting if there is a preferred value
     if use_dash_ligatures is not None:
-        i = find_token(document.header, "\\use_microtype", 0)
-        if i != -1:
-            document.header.insert(i+1, "\\use_dash_ligatures %s"
-                                % str(use_dash_ligatures).lower())
+        i = find_token(document.header, "\\graphics")
+        document.header.insert(i, "\\use_dash_ligatures %s"
+                               % str(use_dash_ligatures).lower())
 
 def revert_dashligatures(document):
     """Remove font ligature settings for en- and em-dashes.
     Revert conversion of \twodashes or \threedashes to literal dashes."""
-    i = find_token(document.header, "\\use_dash_ligatures", 0)
-    if i == -1:
+    use_dash_ligatures = del_value(document.header, "\\use_dash_ligatures")
+    if use_dash_ligatures != "true" or document.backend != "latex":
         return
-    use_dash_ligatures = get_bool_value(document.header, "\\use_dash_ligatures", i)
-    del document.header[i]
-    if not use_dash_ligatures or document.backend != "latex":
-        return
-
     j = 0
     new_body = []
     for i, line in enumerate(document.body):
@@ -2018,8 +2012,8 @@ def revert_mathindent(document):
     else:
         k = find_token(document.header, "\\options", 0)
         if k != -1:
-    	    document.header[k] = document.header[k].replace("\\options", "\\options fleqn,")
-    	    del document.header[i]
+            document.header[k] = document.header[k].replace("\\options", "\\options fleqn,")
+            del document.header[i]
         else:
             l = find_token(document.header, "\\use_default_options", 0)
             document.header.insert(l, "\\options fleqn")
