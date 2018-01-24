@@ -1557,10 +1557,11 @@ def convert_latexargs(document):
                     "theorems-chap-bytype", "theorems-chap", "theorems-named", "theorems-sec-bytype",
                     "theorems-sec", "theorems-starred", "theorems-std", "todonotes"]
     # Modules we need to take care of
-    caveat_modules = ["initials"]
+    caveat_modules = ["initials"] # TODO: , "graphicboxes", "bicaption"]
     # information about the relevant styles in caveat_modules (number of opt and req args)
     # use this if we get more caveat_modules. For now, use hard coding (see below).
     # initials = [{'Layout' : 'Initial', 'opt' : 1, 'req' : 1}]
+    # graphicboxes = { ... }
 
     # Is this a known safe layout?
     safe_layout = document.textclass in safe_layouts

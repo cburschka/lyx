@@ -37,7 +37,7 @@ from lyx2lyx_tools import (add_to_preamble, put_cmd_in_ert, get_ert,
 from parser_tools import (check_token, del_complete_lines,
     find_end_of_inset, find_end_of_layout, find_nonempty_line, find_re,
     find_token, find_token_backwards, get_containing_layout,
-    get_value, is_in_inset)
+    get_containing_inset, get_value, is_in_inset)
 
 
 ####################################################################
@@ -622,41 +622,40 @@ def convert_dashes(document):
     while i+1 < len(lines):
         i += 1
         line = lines[i]
-        words = line.split()
-        if (len(words) > 1 and words[0] == "\\begin_inset"
-            and (words[1] in ["CommandInset", "ERT", "External", "Formula",
-                              "FormulaMacro", "Graphics", "IPA", "listings"]
-                 or line.endswith("Flex Code"))):
-            # must not replace anything in insets that store LaTeX contents in .lyx files
-            # (math and command insets without overridden read() and write() methods
-            # filtering out IPA makes Text::readParToken() more simple
-            # skip ERT as well since it is not needed there
-            # Flex Code is logical markup, typically rendered as typewriter
-            j = find_end_of_inset(lines, i)
-            if j == -1:
-                document.warning("Malformed LyX document: Can't find end of " +
-                                 words[1] + " inset at line " + str(i))
-            else:
-                i = j
+        if "--" not in line:
             continue
-        if lines[i] == "\\begin_layout LyX-Code":
-            j = find_end_of_layout(lines, i)
-            if j == -1:
-                document.warning("Malformed LyX document: "
-                    "Can't find end of %s layout at line %d" % (words[1],i))
-            else:
-                i = j
-            continue
+        # skip label width string (bug 10243):
         if line.startswith("\\labelwidthstring"):
-            # skip label width string (bug 10243)
             continue
-
-        if "--" in line:
-            # We can have an arbitrary number of consecutive hyphens.
-            # Replace as LaTeX does: First try emdash, then endash
-            line = line.replace("---", "\\threehyphens\n")
-            line = line.replace("--", "\\twohyphens\n")
-            lines[i:i+1] = line.splitlines()
+        # Do not touch hyphens in some insets:
+        try:
+            value, start, end = get_containing_inset(lines, i)
+        except TypeError:
+            # False means no (or malformed) containing inset
+            value, start, end = "no inset", -1, -1
+        # We must not replace anything in insets that store LaTeX contents in .lyx files
+        # (math and command insets without overridden read() and write() methods.
+        # Filtering out IPA and ERT makes Text::readParToken() more simple,
+        # Flex Code is logical markup, typically rendered as typewriter
+        if (value.split()[0] in ["CommandInset", "ERT", "External", "Formula",
+                                 "FormulaMacro", "Graphics", "IPA", "listings"]
+            or value in ["Flex Code", "Flex URL"]):
+            i = end
+            continue
+        try:
+            layout, start, end, j = get_containing_layout(lines, i)
+        except TypeError: # no (or malformed) containing layout
+            document.warning("Malformed LyX document: "
+                             "Can't find layout at line %d" % i)
+            continue
+        if layout == "LyX-Code":
+            i = end
+            continue
+        # We can have an arbitrary number of consecutive hyphens.
+        # Replace as LaTeX does: First try emdash, then endash
+        line = line.replace("---", "\\threehyphens\n")
+        line = line.replace("--", "\\twohyphens\n")
+        lines[i:i+1] = line.splitlines()
 
     # remove ligature breaks between dashes
     i = 1
@@ -672,40 +671,40 @@ def convert_dashes(document):
 
 def revert_dashes(document):
     """
+    Remove preamble code from 2.3->2.2 conversion.
     Prevent ligatures of existing --- and --.
     Revert \\twohyphens and \\threehyphens to -- and ---.
-    Remove preamble code from 2.3->2.2 conversion.
     """
     del_complete_lines(document.preamble,
                        ['% Added by lyx2lyx',
                         r'\renewcommand{\textendash}{--}',
                         r'\renewcommand{\textemdash}{---}'])
+
     # Insert ligature breaks to prevent ligation of hyphens to dashes:
     lines = document.body
     i = 0
     while i+1 < len(lines):
         i += 1
         line = lines[i]
+        if "--" not in line:
+            continue
         # skip label width string (bug 10243):
         if line.startswith("\\labelwidthstring"):
             continue
         # do not touch hyphens in some insets (cf. convert_dashes):
-        if line.startswith("\\begin_inset"):
-            try:
-                if line.split()[1] in ["CommandInset", "ERT", "External",
-                                       "Formula", "FormulaMacro", "Graphics",
-                                       "IPA", "listings"]:
-                    j = find_end_of_inset(lines, i)
-                    if j == -1:
-                        document.warning("Malformed LyX document: Can't find "
-                                    "end of %s inset at line %d." % (itype, i))
-                        continue
-                    i = j
-            except IndexError:
-                continue
-        if "--" in line:
-            line = line.replace("--", "-\\SpecialChar \\textcompwordmark{}\n-")
-            document.body[i:i+1] = line.split('\n')
+        try:
+            value, start, end = get_containing_inset(lines, i)
+        except TypeError:
+            # False means no (or malformed) containing inset
+            value, start, end = "no inset", -1, -1
+        if (value.split()[0] in ["CommandInset", "ERT", "External", "Formula",
+                                 "FormulaMacro", "Graphics", "IPA", "listings"]
+            or value == "Flex URL"):
+            i = end
+            continue
+        line = line.replace("--", "-\\SpecialChar \\textcompwordmark{}\n-")
+        document.body[i:i+1] = line.split('\n')
+
     # Revert \twohyphens and \threehyphens:
     i = 1
     while i < len(lines):

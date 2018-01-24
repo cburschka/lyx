@@ -26,7 +26,7 @@ import sys, os
 
 from parser_tools import (del_token, del_value, del_complete_lines,
     find_complete_lines, find_end_of, find_end_of_layout, find_end_of_inset,
-    find_re, find_token, find_token_backwards,
+    find_re, find_token, find_token_backwards, get_containing_inset,
     get_containing_layout, get_bool_value, get_value, get_quoted_value)
 #  find_tokens, find_token_exact, is_in_inset,
 #  check_token, get_option_value
@@ -1853,46 +1853,54 @@ def convert_dashligatures(document):
     if use_dash_ligatures is None:
         # Look for dashes (Documents by LyX 2.1 or older have "\twohyphens\n"
         # or "\threehyphens\n" as interim representation for -- an ---.)
-        has_literal_dashes = False
-        has_ligature_dashes = False
-        j = 0
-        for i, line in enumerate(document.body):
-            # Skip some document parts where dashes are not converted
-            if (i < j) or line.startswith("\\labelwidthstring"):
+        lines = document.body
+        has_literal_dashes = has_ligature_dashes = False
+        i = j = 0
+        while i+1 < len(lines):
+            i += 1
+            line = lines[i]
+            # skip lines without any dashes:
+            if not re.search(u"[\u2013\u2014]|\\twohyphens|\\threehyphens", line):
                 continue
-            if line.startswith("\\begin_inset"):
-                try:
-                    it = line.split()[1]
-                except IndexError:
-                    continue
-                if (it in ["CommandInset", "ERT", "External", "Formula",
-                           "FormulaMacro", "Graphics", "IPA", "listings"]
-                    or line.endswith("Flex Code")):
-                    j = find_end_of_inset(document.body, i)
-                    if j == -1:
-                        document.warning("Malformed LyX document: Can't "
-                            "find end of %s inset at line %d." % (itype, i))
-                        continue
-            if line == "\\begin_layout LyX-Code":
-                j = find_end_of_layout(document.body, i)
-                if j == -1:
-                    document.warning("Malformed LyX document: "
-                       "Can't find end of %s layout at line %d" % (words[1],i))
+            # skip label width string (see bug 10243):
+            if line.startswith("\\labelwidthstring"):
                 continue
+            # do not touch hyphens in some insets (cf. lyx_2_2.convert_dashes):
+            try:
+                value, start, end = get_containing_inset(lines, i)
+            except TypeError: # no containing inset
+                value, start, end = "no inset", -1, -1
+            if (value.split()[0] in
+                ["CommandInset", "ERT", "External", "Formula",
+                 "FormulaMacro", "Graphics", "IPA", "listings"]
+                or value == "Flex Code"):
+                i = end
+                continue
+            try:
+                layout, start, end, j = get_containing_layout(lines, i)
+            except TypeError: # no (or malformed) containing layout
+                document.warning("Malformed LyX document: "
+                                "Can't find layout at line %d" % i)
+                continue
+            if layout == "LyX-Code":
+                i = end
+                continue
+
             # literal dash followed by a word or no-break space:
             if re.search(u"[\u2013\u2014]([\w\u00A0]|$)", line,
                          flags=re.UNICODE):
                 has_literal_dashes = True
             # ligature dash followed by word or no-break space on next line:
             if (re.search(r"(\\twohyphens|\\threehyphens)", line) and
-                re.match(u"[\w\u00A0]", document.body[i+1], flags=re.UNICODE)):
+                re.match(u"[\w\u00A0]", lines[i+1], flags=re.UNICODE)):
                 has_ligature_dashes = True
-        if has_literal_dashes and has_ligature_dashes:
-            # TODO: insert a warning note in the document?
-            document.warning('This document contained both literal and '
-                '"ligature" dashes.\n Line breaks may have changed. '
-                'See UserGuide chapter 3.9.1 for details.')
-        elif has_literal_dashes:
+            if has_literal_dashes and has_ligature_dashes:
+                # TODO: insert a warning note in the document?
+                document.warning('This document contained both literal and '
+                                 '"ligature" dashes.\n Line breaks may have changed. '
+                                 'See UserGuide chapter 3.9.1 for details.')
+                break
+        if has_literal_dashes:
             use_dash_ligatures = False
         elif has_ligature_dashes:
             use_dash_ligatures = True
