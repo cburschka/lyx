@@ -5,7 +5,7 @@ REM Create a link and add  cmd.exe /k  in the preferences in front of the mingw.
 ::echo off
 
 REM Install Qt from qt.io
-set PATH=C:\Qt\Qt5.9.3\5.9.3\msvc2015\bin;%PATH%
+set PATH=C:\Qt\Qt5.9.4\5.9.4\msvc2015\bin;%PATH%
 
 set LYX_SOURCE=%~DP0..\..
 set LYX_BUILD=%LYX_SOURCE%\..\build-result-5-2015

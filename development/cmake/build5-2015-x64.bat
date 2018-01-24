@@ -32,13 +32,12 @@ set CL=/MP
 REM Save path
 set CALLED_FROM=%CD%
 
-REM Add path to qmake here or set PATH correctly on your system.
-set PATH=C:\Qt\Qt5.9.3\5.9.3\msvc2015_64;%PATH%
-
 REM Edit pathes here or set the environment variables on your system.
-set GNUWIN32_DIR=D:\LyXGit\Master\lyx-windows-deps-msvc2015-x64
-set LYX_SOURCE=D:\LyXGit\Master\
-set LYX_BUILD=D:\LyXGit\Master\compile-2015-x64
+set CMAKE_PATH="C:\Program Files\CMake\bin"
+set QT_PATH="C:\Qt\Qt5.9.4\5.9.4\msvc2015_64"
+set GNUWIN32_DIR="D:\LyXGit\Master\lyx-windows-deps-msvc2015-x64"
+set LYX_SOURCE="D:\LyXGit\Master"
+set LYX_BUILD="D:\LyXGit\Master\compile-2015-x64"
 
 if [%LYX_SOURCE%]==[] (
 	set LYX_SOURCE=%~DP0\..\..
@@ -73,7 +72,7 @@ REM start with a new cmake run
 if "%1%" == "devel" (
 	REM Build solution to develop LyX
 	REM you can add the option "-GNinja" for a faster compilation
-	cmake %LYX_SOURCE% -G"Visual Studio 14 2015 Win64" -DLYX_USE_QT=QT5 -DLYX_ENABLE_EXPORT_TESTS=0 -DLYX_MERGE_FILES=0 -DLYX_NLS=1 -DLYX_INSTALL=0 -DLYX_RELEASE=0 -DLYX_CONSOLE=ON -DLYX_3RDPARTY_BUILD=1 %DEPENDENCIES_DOWNLOAD%
+	cmake %LYX_SOURCE% -G"Visual Studio 14 2015 Win64" -DLYX_USE_QT=QT5 -DLYX_ENABLE_EXPORT_TESTS=0 -DLYX_MERGE_FILES=0 -DLYX_NLS=1 -DLYX_INSTALL=0 -DLYX_RELEASE=0 -DLYX_CONSOLE=FORCE -DLYX_3RDPARTY_BUILD=1 %DEPENDENCIES_DOWNLOAD%
 	msbuild src\LyX.vcxproj /p:Configuration=Debug
 	msbuild src\tex2lyx\tex2lyx.vcxproj /p:Configuration=Debug
 )
