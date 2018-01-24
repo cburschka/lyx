@@ -32,13 +32,12 @@ set CL=/MP
 REM Save path
 set CALLED_FROM=%CD%
 
-REM Add path to qmake here or set PATH correctly on your system.
-set PATH=C:\Qt\Qt5.9.3\5.9.3\msvc2015_64;%PATH%
-
 REM Edit pathes here or set the environment variables on your system.
-set GNUWIN32_DIR=D:\LyXGit\Master\lyx-windows-deps-msvc2015-x64
-set LYX_SOURCE=D:\LyXGit\Master\
-set LYX_BUILD=D:\LyXGit\Master\compile-2015-x64
+set CMAKE_PATH="C:\Program Files\CMake\bin"
+set QT_PATH="C:\Qt\Qt5.9.4\5.9.4\msvc2015_64"
+set GNUWIN32_DIR="D:\LyXGit\Master\lyx-windows-deps-msvc2015-x64"
+set LYX_SOURCE="D:\LyXGit\2.3.x"
+set LYX_BUILD="D:\LyXGit\2.3.x\compile-2015-x64"
 
 if [%LYX_SOURCE%]==[] (
 	set LYX_SOURCE=%~DP0\..\..
