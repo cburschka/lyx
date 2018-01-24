@@ -88,6 +88,9 @@ ${Include_used_spellchecker}
 // Define to 1 if std::call_once is supported by the compiler
 #cmakedefine LYX_USE_STD_CALL_ONCE 1
 
+// Define to 1 if enchant is version 2.x at least
+#cmakedefine HAVE_ENCHANT2 1
+
 #endif // config.h guard
 
 #define MYTHES_H_LOCATION <${MYTHES_DIR}/mythes.hxx>

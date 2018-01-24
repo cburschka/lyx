@@ -30,6 +30,17 @@ namespace lyx {
 
 namespace {
 
+enchant::Broker & broker()
+{
+#ifdef HAVE_ENCHANT2
+	static enchant::Broker thebroker;
+	return thebroker;
+#else
+	return *enchant::Broker::instance();
+#endif
+}
+
+
 struct Speller {
 	enchant::Dict * speller;
 };
@@ -68,12 +79,11 @@ EnchantChecker::Private::~Private()
 
 enchant::Dict * EnchantChecker::Private::addSpeller(string const & lang)
 {
-	enchant::Broker * instance = enchant::Broker::instance();
 	Speller m;
 
 	try {
 		LYXERR(Debug::FILES, "request enchant speller for language " << lang);
-		m.speller = instance->request_dict(lang);
+		m.speller = broker().request_dict(lang);
 	}
 	catch (enchant::Exception & e) {
 		// FIXME error handling?
@@ -186,8 +196,7 @@ bool EnchantChecker::hasDictionary(Language const * lang) const
 {
 	if (!lang)
 		return false;
-	enchant::Broker * instance = enchant::Broker::instance();
-	return (instance->dict_exists(lang->code()));
+	return broker().dict_exists(lang->code());
 }
 
 
