@@ -113,17 +113,17 @@ find_end_of_sequence(lines, i):
   the position of the last \end_deeper is returned, else
   the position of the last \end_layout.
 
-is_in_inset(lines, i, inset):
-  Checks if line i is in an inset of the given type.
+is_in_inset(lines, i, inset, default=(-1,-1)):
+  Check if line i is in an inset of the given type.
   If so, returns starting and ending lines. Otherwise,
-  returns False.
+  return default.
   Example:
     is_in_inset(document.body, i, "\\begin_inset Tabular")
-  returns False unless i is within a table. If it is, then
+  returns (-1,-1) unless i is within a table. If it is, then
   it returns the line on which the table begins and the one
   on which it ends. Note that this pair will evaulate to
   boolean True, so
-    if is_in_inset(...):
+    if is_in_inset(..., default=False):
   will do what you expect.
 
 get_containing_inset(lines, i):
@@ -535,29 +535,26 @@ def find_end_of_layout(lines, i):
     return find_end_of(lines, i, "\\begin_layout", "\\end_layout")
 
 
-def is_in_inset(lines, i, inset):
-    '''
-    Checks if line i is in an inset of the given type.
-    If so, returns starting and ending lines.
-    Otherwise, returns False.
+def is_in_inset(lines, i, inset, default=(-1,-1)):
+    """
+    Check if line i is in an inset of the given type.
+    If so, return starting and ending lines, otherwise `default`.
     Example:
       is_in_inset(document.body, i, "\\begin_inset Tabular")
-    returns False unless i is within a table. If it is, then
-    it returns the line on which the table begins and the one
+    returns (-1,-1) if `i` is not within a "Tabular" inset (i.e. a table).
+    If it is, then it returns the line on which the table begins and the one
     on which it ends. Note that this pair will evaulate to
     boolean True, so
-      if is_in_inset(...):
+      if is_in_inset(..., default=False):
     will do what you expect.
-    '''
-    defval = (-1, -1)
-    stins = find_token_backwards(lines, inset, i)
-    if stins == -1:
-      return defval
-    endins = find_end_of_inset(lines, stins)
-    # note that this includes the notfound case.
-    if endins < i:
-      return defval
-    return (stins, endins)
+    """
+    start = find_token_backwards(lines, inset, i)
+    if start == -1:
+      return default
+    end = find_end_of_inset(lines, start)
+    if end < i: # this includes the notfound case.
+      return default
+    return (start, end)
 
 
 def get_containing_inset(lines, i):

@@ -34,10 +34,11 @@ from lyx2lyx_tools import (add_to_preamble, put_cmd_in_ert, get_ert,
 #   insert_to_preamble, latex_length, revert_flex_inset,
 #   revert_font_attrs, hex2ratio, str2bool
 
-from parser_tools import (del_complete_lines,
+from parser_tools import (check_token, del_complete_lines,
     find_end_of_inset, find_end_of_layout, find_nonempty_line, find_re,
     find_token, find_token_backwards, get_containing_layout,
-    get_value, check_token)
+    get_value, is_in_inset)
+
 
 ####################################################################
 # Private helper functions
@@ -1253,15 +1254,21 @@ def revert_textcolor(document):
 
 
 def convert_colorbox(document):
-    " adds color settings for boxes "
-
-    i = 0
+    "Add color settings for boxes."
+    i = 1
     while True:
         i = find_token(document.body, "shadowsize", i)
         if i == -1:
             return
-        document.body[i+1:i+1] = ['framecolor "black"', 'backgroundcolor "none"']
-        i = i + 3
+        # check whether this is really a LyX Box setting
+        start, end = is_in_inset(document.body, i, "\\begin_inset Box")
+        if (end == -1 or
+            find_token(document.body, "\\begin_layout", start, i) != -1):
+            i += 1
+            continue
+        document.body[i+1:i+1] = ['framecolor "black"',
+                                  'backgroundcolor "none"']
+        i += 3
 
 
 def revert_colorbox(document):

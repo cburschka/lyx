@@ -514,8 +514,6 @@ def convert_ulinelatex(document):
     " Remove preamble code for \\uline font attribute. "
     del_complete_lines(document.preamble,
                        ['% Added by lyx2lyx']+ulinelatex_preamble)
-    for line in document.preamble:
-        print line
 
 def revert_ulinelatex(document):
     " Add preamble code for \\uline font attribute in citations. "
@@ -835,6 +833,9 @@ def revert_suppress_date(document):
     del document.header[i]
 
 
+mhchem_preamble = [r"\PassOptionsToPackage{version=3}{mhchem}",
+                   r"\usepackage{mhchem}"]
+
 def convert_mhchem(document):
     "Set mhchem to off for versions older than 1.6.x"
     if document.initial_format < 277:
@@ -852,47 +853,44 @@ def convert_mhchem(document):
         # pre-1.5.x document
         i = find_token(document.header, "\\use_amsmath", 0)
     if i == -1:
-        document.warning("Malformed LyX document: Could not find amsmath os esint setting.")
+        document.warning("Malformed LyX document: "
+                         "Could not find amsmath or esint setting.")
         return
     document.header.insert(i + 1, "\\use_mhchem %d" % mhchem)
+    # remove LyX-inserted preamble 
+    if mhchem != 0:
+        del_complete_lines(document.preamble,
+                           ['% Added by lyx2lyx']+mhchem_preamble)
 
 
 def revert_mhchem(document):
-    "Revert mhchem loading to preamble code"
+    "Revert mhchem loading to preamble code."
 
-    mhchem = "off"
-    i = find_token(document.header, "\\use_mhchem", 0)
-    if i == -1:
-        document.warning("Malformed LyX document: Could not find mhchem setting.")
-        mhchem = "auto"
-    else:
-        val = get_value(document.header, "\\use_mhchem", i)
-        if val == "1":
-            mhchem = "auto"
-        elif val == "2":
-            mhchem = "on"
-        del document.header[i]
+    mhchem = get_value(document.header, "\\use_mhchem", delete=True)
+    try:
+        mhchem = int(mhchem)
+    except ValueError:
+        document.warning("Malformed LyX document: "
+                         "Could not find mhchem setting.")
+        mhchem = 1 # "auto"
+    # mhchem in {0: "off", 1: "auto", 2: "on"}
 
-    if mhchem == "off":
-      # don't load case
-      return
-
-    if mhchem == "auto":
+    if mhchem == 1: # "auto"
         i = 0
-        while True:
+        while i != 1 and mhchem == 1:
             i = find_token(document.body, "\\begin_inset Formula", i)
-            if i == -1:
-               break
-            line = document.body[i]
-            if line.find("\\ce{") != -1 or line.find("\\cf{") != -1:
-              mhchem = "on"
-              break
+            j = find_end_of_inset(document.body, i)
+            if j == -1:
+                break
+            if (True for line in document.body[i:j]
+                if r"\ce{" in line or r"\cf{" in line):
+                mhchem = 2
+                break
             i += 1
 
-    if mhchem == "on":
-        pre = ["\\PassOptionsToPackage{version=3}{mhchem}",
-          "\\usepackage{mhchem}"]
-        insert_to_preamble(document, pre)
+    if (mhchem == 2 # on
+        and find_token(document.preamble, r"\usepackage{mhchem}") == -1):
+        insert_to_preamble(document, mhchem_preamble)
 
 
 def revert_fontenc(document):
@@ -1681,12 +1679,10 @@ def revert_nameref(document):
       i += 1
       # Make sure it is actually in an inset!
       # A normal line could begin with "LatexCommand nameref"!
-      val = is_in_inset(document.body, cmdloc, \
-          "\\begin_inset CommandInset ref")
-      if not val:
+      stins, endins = is_in_inset(document.body, cmdloc,
+                                  "\\begin_inset CommandInset ref")
+      if endins == -1:
           continue
-      stins, endins = val
-
       # ok, so it is in an InsetRef
       refline = find_token(document.body, "reference", stins, endins)
       if refline == -1:
@@ -1716,10 +1712,9 @@ def remove_Nameref(document):
       break
     cmdloc = i
     i += 1
-
     # Make sure it is actually in an inset!
-    val = is_in_inset(document.body, cmdloc, \
-        "\\begin_inset CommandInset ref")
+    val = is_in_inset(document.body, cmdloc,
+                      "\\begin_inset CommandInset ref", default=False)
     if not val:
       continue
     document.body[cmdloc] = "LatexCommand nameref"
