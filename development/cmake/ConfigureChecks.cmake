@@ -195,6 +195,24 @@ check_cxx_source_compiles(
   "
 LYX_USE_STD_CALL_ONCE)
 
+if (ENCHANT_FOUND)
+  set(CMAKE_REQUIRED_INCLUDES ${ENCHANT_INCLUDE_DIR})
+  set(CMAKE_REQUIRED_LIBRARIES ${ENCHANT_LIBRARY})
+  # Check, whether enchant is version 2.x at least
+  check_cxx_source_compiles(
+    "
+    #include <enchant++.h>
+    enchant::Broker broker;
+    int main() {
+      return(0);
+    }
+    "
+  HAVE_ENCHANT2)
+  if (HAVE_ENCHANT2)
+    message(STATUS "ENCHANT2 found")
+  endif()
+endif()
+
 set(USE_LLVM_LIBCPP)
 set(STD_STRING_USES_COW)
 set(USE_GLIBCXX_CXX11_ABI)

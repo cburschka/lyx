@@ -23,7 +23,21 @@ AC_DEFUN([CHECK_WITH_ASPELL],
 	fi
 	])
 
-# Macro to add for using enchant spellchecker libraries!     -*- sh -*-
+AC_DEFUN([LYX_HAVE_ENCHANT2],
+[
+  AC_MSG_CHECKING([whether enchant is version 2.x at least])
+  save_CXXFLAGS=$CXXFLAGS
+  CXXFLAGS="$ENCHANT_CFLAGS $AM_CXXFLAGS $CXXFLAGS"
+
+  AC_TRY_COMPILE([#include <enchant++.h>],
+      [enchant::Broker broker;],
+      [AC_MSG_RESULT(yes)
+       AC_DEFINE(HAVE_ENCHANT2, 1, [Define to 1 if enchant 2.x is detected])
+      ],
+      [AC_MSG_RESULT(no)])
+  CXXFLAGS=$save_CXXFLAGS
+])
+
 AC_DEFUN([CHECK_WITH_ENCHANT],
 [
 	lyx_use_enchant=true
@@ -36,6 +50,7 @@ AC_DEFUN([CHECK_WITH_ENCHANT],
 		if $lyx_use_enchant ; then
 		    AC_MSG_RESULT(yes)
 		    AC_DEFINE(USE_ENCHANT, 1, [Define as 1 to use the enchant library])
+		    LYX_HAVE_ENCHANT2
 		    lyx_flags="$lyx_flags use-enchant"
 		else
 		    AC_MSG_RESULT(no)
