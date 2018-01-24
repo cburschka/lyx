@@ -17,6 +17,10 @@ export/templates/IEEEtran-Journal_lyx16
 # problems exporting to lyx16x
 export/examples/(Literate|noweb2lyx)_lyx16
 
+# Tests created for lyx2lyx-tests only
+!export/export/lyx2lyx/lyx_.*_test_lyx[12][1236]
+.*/export/lyx2lyx/lyx_.*_test.*
+
 # Ignore MergedManuals_xhtml because the test is very time-consuming
 # and the underlying subdocuments are already tested
 export/doc/(ja/|)MergedManuals_xhtml
