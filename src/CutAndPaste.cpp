@@ -172,7 +172,7 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 				char_type const c = insertion[i].getChar(j);
 				if (!e->encodable(c)) {
 					// do not track deletion
-					res << c;
+					res.put(c);
 					insertion[i].eraseChar(j, false);
 					--end;
 					--j;
