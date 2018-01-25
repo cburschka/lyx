@@ -501,7 +501,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 	// Top and bottom margin of the document (only at top-level)
 	if (text_->isMainText()) {
 		// original value was 20px, which is 0.2in at 100dpi
-		int const margin = Length(0.2, Length::IN).inPixels(0);
+		int const margin = bv_->zoomedPixels(20);
 		if (pit == 0) {
 			pm.rows().front().dimension().asc += margin;
 			/* coverity thinks that we should update pm.dim().asc
