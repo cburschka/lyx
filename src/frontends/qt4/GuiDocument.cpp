@@ -556,6 +556,8 @@ void PreambleModule::closeEvent(QCloseEvent * e)
 LocalLayout::LocalLayout(QWidget * parent)
 	: UiWidget<Ui::LocalLayoutUi>(parent), current_id_(0), validated_(false)
 {
+	locallayoutTE->setFont(guiApp->typewriterSystemFont());
+	locallayoutTE->setWordWrapMode(QTextOption::NoWrap);
 	connect(locallayoutTE, SIGNAL(textChanged()), this, SLOT(textChanged()));
 	connect(validatePB, SIGNAL(clicked()), this, SLOT(validatePressed()));
 	connect(convertPB, SIGNAL(clicked()), this, SLOT(convertPressed()));
