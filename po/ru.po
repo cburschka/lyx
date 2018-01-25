@@ -12,14 +12,14 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-01-20 09:43+0100\n"
-"PO-Revision-Date: 2018-01-22 22:14+0200\n"
+"PO-Revision-Date: 2018-01-25 23:06+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.5\n"
+"X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Poedit-Bookmarks: 1979,613,-1,-1,-1,-1,-1,-1,-1,-1\n"
@@ -895,7 +895,7 @@ msgstr "На&чертание:"
 #: src/frontends/qt4/ui/CharacterUi.ui:93
 #: src/frontends/qt4/ui/CharacterUi.ui:158
 msgid "Font series"
-msgstr "Серия шрифтов"
+msgstr "Серия шрифта"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:108
 #: src/frontends/qt4/ui/CharacterUi.ui:145
@@ -930,7 +930,7 @@ msgstr "&Цвет:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:197
 msgid "Never Toggled"
-msgstr "Никогда не переключаются"
+msgstr "Непереключаемый"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:209
 #: src/frontends/qt4/ui/CharacterUi.ui:230
@@ -940,15 +940,15 @@ msgstr "Размер шрифта"
 #: src/frontends/qt4/ui/CharacterUi.ui:240
 #: src/frontends/qt4/ui/CharacterUi.ui:273
 msgid "Other font settings"
-msgstr "Другие параметры шрифтов"
+msgstr "Другие свойства шрифта"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:243
 msgid "Always Toggled"
-msgstr "Переключаются"
+msgstr "Переключаемый"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:255
 msgid "&Misc:"
-msgstr "&Другие:"
+msgstr "&Свойство:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:295
 msgid "toggle font on all of the above"
@@ -1785,7 +1785,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/FontUi.ui:270
 msgid "Use a real small caps shape, if the font provides one"
-msgstr "Использовать настоящую капитель если она есть в данном шрифте"
+msgstr "Использовать настоящую капитель при наличии в шрифте"
 
 #: src/frontends/qt4/ui/FontUi.ui:273
 msgid "Use true s&mall caps"
@@ -1965,7 +1965,8 @@ msgstr "&Черновой режим"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:28
 msgid "Select a fill pattern style for HFills"
-msgstr "Выберите стиль шаблона заполнения для HFills"
+msgstr ""
+"Выберите стиль шаблона заполнения (только для горизонтального заполнения)"
 
 #: src/frontends/qt4/ui/HSpaceUi.ui:37
 msgid "..............."
@@ -2090,7 +2091,7 @@ msgstr "Параметры листинга"
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:79
 #: src/frontends/qt4/ui/ListingsUi.ui:507
 msgid "Check it to enter parameters that are not recognizable by LyX"
-msgstr "Поставьте этот флажок для ввода параметров которые LyX не распознаёт"
+msgstr "Поставьте этот флажок для ввода параметров, которые LyX не распознаёт"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:69
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:82
@@ -2312,7 +2313,7 @@ msgstr "&Графический драйвер:"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:130
 msgid "Select if the current document is included to a master file"
-msgstr "Отметьте, если текущий документ включается в главный файл"
+msgstr "Отметьте, если текущий документ включается в главный документ"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:136
 msgid "Select de&fault master document"
@@ -2361,7 +2362,7 @@ msgstr "Кодировка"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:147
 msgid "Lan&guage default"
-msgstr "Язык по умолчанию"
+msgstr "По умолчанию для языка"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:170
 msgid "Othe&r:"
@@ -2408,7 +2409,7 @@ msgstr "Введите параметры листинга"
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:63
 #: src/frontends/qt4/ui/ListingsUi.ui:477
 msgid "Feedback window"
-msgstr "Окно обратной связи"
+msgstr "Информационное окно"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:92
 msgid "Choose the LaTeX package for code syntax highlighting"
@@ -2534,7 +2535,7 @@ msgstr "Пробел &в строке как символ"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:307
 msgid "Tab&ulator size:"
-msgstr "&Размер отступа:"
+msgstr "&Размер табуляции:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:323
 msgid "Use extended character table"
@@ -2805,7 +2806,7 @@ msgstr "Отступ для формул"
 
 #: src/frontends/qt4/ui/MathsUi.ui:67 src/frontends/qt4/ui/TextLayoutUi.ui:48
 msgid "Size of the indentation"
-msgstr "Ра&змер отступа"
+msgstr "Размер отступа"
 
 #: src/frontends/qt4/ui/MathsUi.ui:141
 msgid "Formula numbering side:"
@@ -3038,7 +3039,7 @@ msgstr "&Ключевые слова:"
 msgid ""
 "If not stated explicitly, fill title and author from appropriate environments"
 msgstr ""
-"Если не указано явно, заполнить заголовок и поле автора из соответствующих "
+"Если не указано явно, заполнить поля названия и автора из соответствующих "
 "окружений"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:169
@@ -3121,7 +3122,8 @@ msgstr "&Формат:"
 #: src/frontends/qt4/ui/PageLayoutUi.ui:45
 msgid "Choose a particular paper size, or set your own with \"Custom\""
 msgstr ""
-"Выберите размер бумаги или задайте собственный с помощью \"Специальный\""
+"Установите размер бумаги или задайте собственный, выбрав \"Задано "
+"пользователем\""
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:126
 msgid "&Orientation:"
@@ -3146,7 +3148,7 @@ msgstr "Стиль &страницы:"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:187
 msgid "Style used for the page header and footer"
-msgstr "Стиль, использованный в верхнем и нижнем колонтитуле"
+msgstr "Стиль для верхнего и нижнего колонтитула"
 
 #: src/frontends/qt4/ui/PageLayoutUi.ui:207
 msgid "Lay out the page for double-sided printing"
@@ -3227,7 +3229,7 @@ msgstr "Справа"
 #: src/frontends/qt4/ui/ParagraphUi.ui:197
 msgid "Use the default alignment for this paragraph, whatever it is."
 msgstr ""
-"Использовать выравнивание для абзаца по умолчанию, какое бы оно не было."
+"Использовать выравнивание для абзаца по умолчанию, каким бы оно ни было."
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:200
 msgid "Paragraph's &Default"
@@ -3267,7 +3269,7 @@ msgstr "Использовать системные цвета"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:26
 msgid "In Math"
-msgstr "В математике"
+msgstr "В математических формулах"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:41
 msgid ""
@@ -3333,7 +3335,7 @@ msgstr "И&ндикатор курсора"
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:119
 #: lib/layouts/hollywood.layout:281 src/frontends/qt4/GuiPrefs.cpp:388
 msgid "General"
-msgstr "Общий"
+msgstr "Общие"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:142
 msgid ""
@@ -3345,7 +3347,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:155
 msgid "s inline completion dela&y"
-msgstr "с. задержка дополнен&ия"
+msgstr "с задержка дополнен&ия"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:188
 msgid ""
@@ -3357,7 +3359,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:201
 msgid "s popup d&elay"
-msgstr "с. задержка всплывающего &окна"
+msgstr "с задержка всплывающего &окна"
 
 #: src/frontends/qt4/ui/PrefCompletionUi.ui:234
 msgid ""
@@ -3508,11 +3510,11 @@ msgstr "Восстанавливать положение и &геометрию
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:45
 msgid "Restore to the cursor position when the file was last closed"
-msgstr "Восстановить позицию курсора на момент сохранения файла"
+msgstr "Восстанавливать позицию курсора на момент закрытия файла"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:48
 msgid "Restore cursor &positions"
-msgstr "Восстанавливать &позиции курсора"
+msgstr "Восстанавливать &позицию курсора"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:55
 msgid "&Load opened files from last session"
@@ -3550,7 +3552,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
 msgid "&Save new documents compressed by default"
-msgstr "Сохранить новые документы сжатыми по умолчанию"
+msgstr "Сохранять новые документы сжатыми по умолчанию"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:155
 msgid ""
@@ -3564,7 +3566,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:158
 msgid "Save the &document directory path"
-msgstr "Сохранить путь к каталогу документа"
+msgstr "Сохранять путь к каталогу документа"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:168
 msgid "Windows && Work Area"
@@ -3597,19 +3599,19 @@ msgstr "&Единственная кнопка закрытия вкладки"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:206
 msgid "Closing last &view:"
-msgstr "Закрыть последний вид:"
+msgstr "При закрытии последнего вида:"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:217
 msgid "Closes document"
-msgstr "Закрывает документ"
+msgstr "закрывать документ"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:222
 msgid "Hides document"
-msgstr "Скрывает документ"
+msgstr "скрывать документ"
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:227
 msgid "Ask the user"
-msgstr "Спросить пользователя"
+msgstr "спросить пользователя"
 
 #: src/frontends/qt4/ui/PrefEditUi.ui:25 src/frontends/qt4/GuiPrefs.cpp:252
 msgid "Editing"
@@ -3811,16 +3813,16 @@ msgstr "Использовать раскладку &клавиатуры"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:45
 msgid "&Primary:"
-msgstr "Первичный:"
+msgstr "Первичная:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:65
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:83
 msgid "Br&owse..."
-msgstr "&Просмотреть..."
+msgstr "В&ыбрать..."
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:91
 msgid "S&econdary:"
-msgstr "&Вторичный:"
+msgstr "&Вторичная:"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:121
 msgid ""
@@ -3885,7 +3887,7 @@ msgstr "Язык &пользовательского интерфейса:"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:30
 msgid "Select the language of the user interface (menus, dialogs, etc.)"
-msgstr "Выберите язык пользовательского интерфейса (меню, диалогов, и т.д.)"
+msgstr "Выберите язык пользовательского интерфейса (меню, диалогов, и т. д.)"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:40
 msgid "Language &package:"
@@ -4165,6 +4167,12 @@ msgid ""
 "the WD is the directory containing the document. The path \".\" (without "
 "quotes) is a common example of a relative path and refers to the WD."
 msgstr ""
+"Разрешены относительные и абсолютные пути. Относительные пути будут "
+"расширены относительно рабочего каталога (WD). Для всех путей, кроме "
+"\"Префикс TEXINPUTS\", WD является каталогом, из которого вы запускаете LyX, "
+"и поэтому может меняться для каждой сессии LyX. Для пути \"Префикс TEXINPUTS"
+"\" WD - это каталог, содержащий текущий документ. Путь \".\" (без кавычек) "
+"является общим примером относительного пути и ссылается на WD."
 
 #: src/frontends/qt4/ui/PrefPathsUi.ui:35
 msgid "&PATH prefix:"
@@ -4334,7 +4342,7 @@ msgstr "Программа проверки правописания:"
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:64
 msgid "Accept words such as \"diskdrive\""
-msgstr "Принимать такие слова как \"diskdrive\""
+msgstr "Принимать такие слова, как \"diskdrive\""
 
 #: src/frontends/qt4/ui/PrefSpellcheckerUi.ui:67
 msgid "Accept compound &words"
@@ -4530,7 +4538,7 @@ msgstr "&В[[buffer]]:"
 
 #: src/frontends/qt4/ui/RefUi.ui:92
 msgid "Filter case-sensitively"
-msgstr "Учитывать &регистр"
+msgstr "Фильтровать с учётом регистра"
 
 #: src/frontends/qt4/ui/RefUi.ui:95
 msgid "Case Sensiti&ve"
@@ -4724,7 +4732,7 @@ msgstr "Проверка правописания"
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:43
 msgid ""
 "The checked language. Switching this alters the language of the checked word."
-msgstr ""
+msgstr "Выбранный язык. Переключение этого изменяет язык проверяемого слова."
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:59
 msgid "Unknown word:"
@@ -5052,7 +5060,7 @@ msgstr "двойной"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1391
 msgid "First header:"
-msgstr "Первая шапка:"
+msgstr "Первый заголовок:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1398
 msgid "This row is the header of the first page"
@@ -5074,7 +5082,8 @@ msgstr "Подвал:"
 #: src/frontends/qt4/ui/TabularUi.ui:1442
 msgid "Repeat this row as footer on every (except the last) page"
 msgstr ""
-"Повторить данную строку как подвал на всех за исключением первой страницах"
+"Повторить данную строку как подвал на всех (за исключением последней) "
+"страницах"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1466
 msgid "Last footer:"
@@ -5119,9 +5128,7 @@ msgstr "Перестроить список файлов"
 #: src/frontends/qt4/ui/TexinfoUi.ui:132
 msgid ""
 "Show contents of marked file. Only possible when files are shown with path"
-msgstr ""
-"Показывает содержимое отмеченного файла. Это возможно только в том случае, "
-"если файлы показываются с полным путём."
+msgstr "Показывает содержимое отмеченного файла"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:135
 msgid "&View"
@@ -5157,11 +5164,11 @@ msgstr "Стили цитирования Biblatex"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:214
 msgid "Toggles view of the file list"
-msgstr "Переключить просмотр списка файлов"
+msgstr "Переключить вид списка файлов"
 
 #: src/frontends/qt4/ui/TexinfoUi.ui:217
 msgid "Show &path"
-msgstr "Показать &путь"
+msgstr "Показывать &путь"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:20
 msgid "Paragraph Separation"
@@ -5193,7 +5200,7 @@ msgstr "&Междустрочный интервал:"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:225
 msgid "Spacing type"
-msgstr "Тип отступа"
+msgstr "Расстояние между строками"
 
 #: src/frontends/qt4/ui/TextLayoutUi.ui:238
 msgid "Number of lines"
@@ -5309,7 +5316,7 @@ msgstr "По возможности сохранять постоянный ви
 
 #: src/frontends/qt4/ui/TocUi.ui:249
 msgid "Keep"
-msgstr "Хранить вид"
+msgstr "Сохранять вид"
 
 #: src/frontends/qt4/ui/TocUi.ui:266
 msgid "Adjust the depth of the navigation tree"
@@ -6459,9 +6466,8 @@ msgid "Author Footnote"
 msgstr "Сноска автора"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:37
-#, fuzzy
 msgid "Author foot"
-msgstr "Заметка в подвал"
+msgstr ""
 
 #: lib/layouts/IEEEtran-CompSoc.layout:61
 #: lib/layouts/IEEEtran-TransMag.layout:39
@@ -6617,9 +6623,8 @@ msgid "Author mark"
 msgstr "Пометка автора"
 
 #: lib/layouts/IEEEtran.layout:198
-#, fuzzy
 msgid "Special Paper Notice"
-msgstr "Специальный символ|ц"
+msgstr ""
 
 #: lib/layouts/IEEEtran.layout:209
 msgid "After Title Text"
@@ -7352,9 +7357,8 @@ msgstr "tablenotemark"
 
 # ?
 #: lib/layouts/aastex.layout:518
-#, fuzzy
 msgid "tablenote mark"
-msgstr "метка примечания в таблице"
+msgstr "пометка примечания к таблице"
 
 #: lib/layouts/aastex.layout:536
 msgid "FigCaption"
@@ -7459,9 +7463,8 @@ msgid "Short name"
 msgstr "Короткое имя"
 
 #: lib/layouts/achemso.layout:110
-#, fuzzy
 msgid "Short name which appears in the footer of the title page"
-msgstr "Данная строка - подвал на последней странице"
+msgstr ""
 
 #: lib/layouts/achemso.layout:115
 msgid "Alt Affiliation"
@@ -8281,7 +8284,7 @@ msgstr ""
 #: lib/layouts/iucr.layout:127 lib/layouts/iucr.layout:128
 #: lib/layouts/revtex4-1.layout:340 lib/layouts/revtex4-1.layout:342
 msgid "Surname"
-msgstr "Отчество"
+msgstr "Фамилия"
 
 #: lib/layouts/agu_stdclass.inc:98 lib/layouts/agu_stdclass.inc:100
 #: lib/layouts/db_stdcharstyles.inc:61 lib/layouts/db_stdcharstyles.inc:63
@@ -8292,7 +8295,7 @@ msgstr "Буквально"
 #: lib/layouts/agu_stdclass.inc:114 lib/layouts/agu_stdclass.inc:116
 #: lib/layouts/logicalmkup.module:32 src/frontends/qt4/GuiCharacter.cpp:84
 msgid "Emph"
-msgstr "Выделительный"
+msgstr "Выделение"
 
 #: lib/layouts/agu_stdclass.inc:131 lib/layouts/agu_stdclass.inc:133
 msgid "Abbrev"
@@ -8698,22 +8701,22 @@ msgstr "Абзац*"
 #: lib/layouts/aguplus.inc:80 lib/layouts/customHeadersFooters.module:11
 #: lib/layouts/foils.layout:191 lib/layouts/simplecv.layout:110
 msgid "Left Header"
-msgstr "Левая шапка"
+msgstr "Левый верхний колонтитул"
 
 #: lib/layouts/aguplus.inc:93 lib/layouts/customHeadersFooters.module:18
 #: lib/layouts/foils.layout:195
 msgid "Left Header:"
-msgstr "Левая шапка:"
+msgstr "Левый верхний колонтитул:"
 
 #: lib/layouts/aguplus.inc:103 lib/layouts/customHeadersFooters.module:39
 #: lib/layouts/foils.layout:199 lib/layouts/simplecv.layout:127
 msgid "Right Header"
-msgstr "Заголовок справа"
+msgstr "Правый верхний колонтитул"
 
 #: lib/layouts/aguplus.inc:107 lib/layouts/customHeadersFooters.module:42
 #: lib/layouts/foils.layout:203
 msgid "Right Header:"
-msgstr "Заголовок справа:"
+msgstr "Правый верхний колонтитул:"
 
 #: lib/layouts/aguplus.inc:135
 msgid "CCC"
@@ -9154,18 +9157,18 @@ msgstr "Презентации"
 #: lib/layouts/beamer.layout:1179 lib/layouts/beamer.layout:1206
 #: lib/layouts/beamer.layout:1369
 msgid "Overlay Specifications|v"
-msgstr ""
+msgstr "Спецификации наложения"
 
 #: lib/layouts/beamer.layout:87 lib/layouts/beamer.layout:123
 #: lib/layouts/beamer.layout:165
 msgid "Overlay specifications for this list"
-msgstr ""
+msgstr "Спецификации наложения для этого списка"
 
 #: lib/layouts/beamer.layout:97 lib/layouts/beamer.layout:137
 #: lib/layouts/beamer.layout:175 lib/layouts/beamer.layout:748
 #: lib/layouts/powerdot.layout:284 lib/layouts/powerdot.layout:336
 msgid "Item Overlay Specifications"
-msgstr ""
+msgstr "Спецификации наложения элемента"
 
 #: lib/layouts/beamer.layout:98 lib/layouts/beamer.layout:138
 #: lib/layouts/beamer.layout:176 lib/layouts/beamer.layout:584
@@ -9181,7 +9184,7 @@ msgstr "На слайде"
 #: lib/layouts/beamer.layout:177 lib/layouts/beamer.layout:750
 #: lib/layouts/powerdot.layout:286 lib/layouts/powerdot.layout:338
 msgid "Overlay specifications for this item"
-msgstr ""
+msgstr "Спецификации наложения для этого элемента"
 
 #: lib/layouts/beamer.layout:129
 msgid "Mini Template"
@@ -9189,7 +9192,7 @@ msgstr "Мини-шаблон"
 
 #: lib/layouts/beamer.layout:130
 msgid "Mini template for this list (see beamer manual for details)"
-msgstr ""
+msgstr "Мини-шаблон для этого списка (подробности см. в руководстве beamer)"
 
 #: lib/layouts/beamer.layout:171
 msgid "Longest label|s"
@@ -9197,7 +9200,7 @@ msgstr "Длин&нейшая метка"
 
 #: lib/layouts/beamer.layout:172
 msgid "The longest label in this list (to determine the indendation width)"
-msgstr ""
+msgstr "Самая длинная метка в этом списке (для определения ширины отступа)"
 
 #: lib/layouts/beamer.layout:203 lib/layouts/beamer.layout:245
 #: lib/layouts/beamer.layout:307 lib/layouts/beamer.layout:369
@@ -9228,7 +9231,7 @@ msgstr "Режим"
 #: lib/layouts/beamer.layout:359 lib/layouts/beamer.layout:388
 #: lib/layouts/beamer.layout:421
 msgid "Mode Specification|S"
-msgstr ""
+msgstr "Спецификация режима"
 
 #: lib/layouts/beamer.layout:210 lib/layouts/beamer.layout:265
 #: lib/layouts/beamer.layout:298 lib/layouts/beamer.layout:327
@@ -9236,13 +9239,13 @@ msgstr ""
 #: lib/layouts/beamer.layout:422
 msgid "Specify in which mode (article, presentation etc.) this header appears"
 msgstr ""
+"Укажите, в каком режиме (статья, презентация и т. д.) появится этот заголовок"
 
 #: lib/layouts/beamer.layout:217 lib/layouts/memoir.layout:63
 #: lib/layouts/scrclass.inc:127 lib/layouts/stdsections.inc:33
 #: lib/layouts/tufte-handout.layout:41
-#, fuzzy
 msgid "The part as it appears in the table of contents/running headers"
-msgstr "Метка, как она будет показываться в документе"
+msgstr "Часть, как она отображается в содержании/колонтитулах"
 
 #: lib/layouts/beamer.layout:260
 msgid "Section \\arabic{section}"
@@ -9252,7 +9255,7 @@ msgstr "Раздел \\arabic{section}"
 #: lib/layouts/simplecv.layout:52 lib/layouts/stdsections.inc:96
 #: lib/layouts/tufte-book.layout:113
 msgid "The section as it appears in the table of contents/running headers"
-msgstr ""
+msgstr "Раздел, как он отображается в содержании/колонтитулах"
 
 #: lib/layouts/beamer.layout:284 lib/layouts/numarticle.inc:10
 #: lib/layouts/powerdot.layout:245
@@ -9265,7 +9268,7 @@ msgstr "Подраздел \\arabic{section}.\\arabic{subsection}"
 
 #: lib/layouts/beamer.layout:334
 msgid "The subsection as it appears in the table of contents/running headers"
-msgstr ""
+msgstr "Подраздел, как он отображается в содержании/колонтитулах"
 
 #: lib/layouts/beamer.layout:346
 msgid "\\arabic{section}.\\arabic{subsection}"
@@ -9280,7 +9283,7 @@ msgstr ""
 #: lib/layouts/beamer.layout:396
 msgid ""
 "The subsubsection as it appears in the table of contents/running headers"
-msgstr ""
+msgstr "Подподраздел, как он отображается в содержании/колонтитулах"
 
 #: lib/layouts/beamer.layout:408
 msgid "\\arabic{section}.\\arabic{subsection}.\\arabic{subsubsection}"
@@ -9307,15 +9310,15 @@ msgstr "Действие"
 
 #: lib/layouts/beamer.layout:460 lib/layouts/beamer.layout:528
 msgid "Overlay specifications for this frame"
-msgstr ""
+msgstr "Спецификации наложения для этого кадра"
 
 #: lib/layouts/beamer.layout:466 lib/layouts/beamer.layout:534
 msgid "Default Overlay Specifications"
-msgstr ""
+msgstr "Спецификации наложения по умолчанию"
 
 #: lib/layouts/beamer.layout:467 lib/layouts/beamer.layout:535
 msgid "Default overlay specifications within this frame"
-msgstr ""
+msgstr "Спецификации наложения по умолчанию внутри этого кадра"
 
 #: lib/layouts/beamer.layout:473 lib/layouts/beamer.layout:502
 #: lib/layouts/beamer.layout:513 lib/layouts/beamer.layout:541
@@ -9344,19 +9347,19 @@ msgstr "Заголовок рамки"
 
 #: lib/layouts/beamer.layout:479
 msgid "Enter the frame title here"
-msgstr ""
+msgstr "Введите здесь название кадра"
 
 #: lib/layouts/beamer.layout:498
 msgid "PlainFrame"
-msgstr ""
+msgstr "ПростойКадр"
 
 #: lib/layouts/beamer.layout:500
 msgid "Frame (plain)"
-msgstr ""
+msgstr "Кадр (простой)"
 
 #: lib/layouts/beamer.layout:509
 msgid "FragileFrame"
-msgstr ""
+msgstr "ХрупкийКадр"
 
 #: lib/layouts/beamer.layout:511
 msgid "Frame (fragile)"
@@ -9364,7 +9367,7 @@ msgstr "Рамка (хрупкая)"
 
 #: lib/layouts/beamer.layout:520
 msgid "AgainFrame"
-msgstr ""
+msgstr "ПовторныйКадр"
 
 #: lib/layouts/beamer.layout:526 lib/layouts/powerdot.layout:126
 #: lib/layouts/seminar.layout:111 lib/layouts/slides.layout:91
@@ -9373,7 +9376,6 @@ msgid "Slide"
 msgstr "Слайд"
 
 #: lib/layouts/beamer.layout:555
-#, fuzzy
 msgid "Repeat frame with label"
 msgstr "Снова кадр с меткой"
 
@@ -9392,16 +9394,15 @@ msgstr "Заголовок рамки"
 #: lib/layouts/beamer.layout:1510 lib/layouts/beamer.layout:1530
 #: lib/layouts/beamer.layout:1550 lib/layouts/beamer.layout:1575
 msgid "Specify the overlay settings (see beamer manual)"
-msgstr ""
+msgstr "Укажите параметры наложения (см. руководство beamer)"
 
 #: lib/layouts/beamer.layout:592
-#, fuzzy
 msgid "Short Frame Title|S"
-msgstr "Короткое заглавие"
+msgstr "Короткое заглавие кадра"
 
 #: lib/layouts/beamer.layout:593
 msgid "A short form of the frame title used in some themes"
-msgstr ""
+msgstr "Короткая форма заголовка кадра, используемая в некоторых темах"
 
 #: lib/layouts/beamer.layout:598
 msgid "FrameSubtitle"
@@ -9419,27 +9420,24 @@ msgid "Columns"
 msgstr "Колонок"
 
 #: lib/layouts/beamer.layout:641
-#, fuzzy
 msgid "Start column (increase depth!), width:"
 msgstr "Начать колонку (увеличить глубину!), ширина:"
 
 #: lib/layouts/beamer.layout:644 lib/layouts/powerdot.layout:457
-#, fuzzy
 msgid "Column Options"
-msgstr "Настройки документа"
+msgstr "Настройки столбца"
 
 #: lib/layouts/beamer.layout:646
 msgid "Column options (see beamer manual)"
-msgstr ""
+msgstr "Параметры столбцов (см. руководство beamer)"
 
 #: lib/layouts/beamer.layout:669
-#, fuzzy
 msgid "Column Placement Options"
-msgstr "Дополнительные параметры размещения"
+msgstr "Настройки размещения столбца"
 
 #: lib/layouts/beamer.layout:670
 msgid "Column placement options (t, T, c, b)"
-msgstr ""
+msgstr "Варианты размещения столбцов (t ,T, c, b)"
 
 #: lib/layouts/beamer.layout:687
 msgid "ColumnsCenterAligned"
@@ -9473,7 +9471,7 @@ msgstr "Число пауз"
 
 #: lib/layouts/beamer.layout:716 lib/layouts/powerdot.layout:479
 msgid "Number of slide where the context below the pause gets visible"
-msgstr ""
+msgstr "Номер слайда, где контекст ниже паузы становится видимым"
 
 #: lib/layouts/beamer.layout:727 lib/layouts/powerdot.layout:490
 msgid "_ _ _ _ _ _ _ _ _ _ _ _ _ _"
@@ -9495,32 +9493,27 @@ msgstr "Ширина"
 
 #: lib/layouts/beamer.layout:745
 msgid "The width of the overprint area (default: text width)"
-msgstr ""
+msgstr "Ширина области надпечатки (по умолчанию: ширина текста)"
 
 #: lib/layouts/beamer.layout:772
-#, fuzzy
 msgid "OverlayArea"
-msgstr "Перекрытие"
+msgstr "ОбластьНаложения"
 
 #: lib/layouts/beamer.layout:782
-#, fuzzy
 msgid "Overlayarea"
-msgstr "Перекрытие"
+msgstr "Областьналожения"
 
 #: lib/layouts/beamer.layout:792
-#, fuzzy
 msgid "Overlay Area Width"
-msgstr "Перекрытие"
+msgstr "Ширина области наложения"
 
 #: lib/layouts/beamer.layout:793
-#, fuzzy
 msgid "The width of the overlay area"
-msgstr "Фиксированная ширина столбца"
+msgstr "Ширина области наложения"
 
 #: lib/layouts/beamer.layout:797
-#, fuzzy
 msgid "Overlay Area Height"
-msgstr "Перекрытие"
+msgstr "Высота области наложения"
 
 #: lib/layouts/beamer.layout:798 lib/layouts/graphicboxes.module:55
 #: lib/layouts/moderncv.layout:210 src/frontends/qt4/GuiBox.cpp:74
@@ -9529,15 +9522,14 @@ msgstr "Высота"
 
 #: lib/layouts/beamer.layout:799
 msgid "The height of the overlay area"
-msgstr ""
+msgstr "Высота области наложения"
 
 #: lib/layouts/beamer.layout:804 lib/layouts/beamer.layout:1479
 #: lib/layouts/beamer.layout:1481 lib/layouts/powerdot.layout:605
 msgid "Uncover"
-msgstr ""
+msgstr "Раскрыть"
 
 #: lib/layouts/beamer.layout:814
-#, fuzzy
 msgid "Uncovered on slides"
 msgstr "Показывается на слайдах"
 
@@ -9564,25 +9556,23 @@ msgstr "Блок:"
 
 #: lib/layouts/beamer.layout:888
 msgid "Action Specification|S"
-msgstr ""
+msgstr "Спецификация действия"
 
 #: lib/layouts/beamer.layout:895
 msgid "Block Title"
-msgstr ""
+msgstr "Заголовок блока"
 
 #: lib/layouts/beamer.layout:896
 msgid "Enter the block title here"
-msgstr ""
+msgstr "Введите заголовок блока"
 
 #: lib/layouts/beamer.layout:911
-#, fuzzy
 msgid "ExampleBlock"
 msgstr "Пример"
 
 #: lib/layouts/beamer.layout:914
-#, fuzzy
 msgid "Example Block:"
-msgstr "Пример"
+msgstr "Пример:"
 
 #: lib/layouts/beamer.layout:920
 msgid "AlertBlock"
@@ -9600,34 +9590,31 @@ msgstr ""
 
 #: lib/layouts/beamer.layout:949
 msgid "Short title which appears in the sidebar/header"
-msgstr ""
+msgstr "Краткое название, которое появляется в боковой панели/заголовке"
 
 #: lib/layouts/beamer.layout:959
-#, fuzzy
 msgid "Title (Plain Frame)"
-msgstr "Титул (простой слайд)"
+msgstr "Название (простой кадр)"
 
 #: lib/layouts/beamer.layout:981
-#, fuzzy
 msgid "Short Subtitle|S"
-msgstr "Короткое заглавие"
+msgstr "Краткий подзаголовок"
 
 #: lib/layouts/beamer.layout:982
 msgid "Short subtitle which appears in the sidebar/header"
-msgstr ""
+msgstr "Краткий подзаголовок, который появляется в боковой панели/заголовке"
 
 #: lib/layouts/beamer.layout:1006
 msgid "Short author which appears in the sidebar/header"
-msgstr ""
+msgstr "Краткий автор, который появляется в боковой панели/заголовке"
 
 #: lib/layouts/beamer.layout:1028
-#, fuzzy
 msgid "Short Institute|S"
-msgstr "Короткое заглавие"
+msgstr "Краткий институт"
 
 #: lib/layouts/beamer.layout:1029
 msgid "Short institute which appears in the sidebar/header"
-msgstr ""
+msgstr "Краткий институт, который появляется в боковой панели/заголовке"
 
 #: lib/layouts/beamer.layout:1038
 msgid "InstituteMark"
@@ -9639,12 +9626,11 @@ msgstr "Короткая дата"
 
 #: lib/layouts/beamer.layout:1073
 msgid "Short date which appears in the sidebar/header"
-msgstr ""
+msgstr "Краткая дата, который появляется в боковой панели/заголовке"
 
 #: lib/layouts/beamer.layout:1082 lib/layouts/beamerposter.layout:46
-#, fuzzy
 msgid "TitleGraphic"
-msgstr "Изображение"
+msgstr "НазваниеИзображения"
 
 #: lib/layouts/beamer.layout:1135 lib/layouts/db_stdlayouts.inc:19
 #: lib/layouts/egs.layout:102 lib/layouts/powerdot.layout:379
@@ -9674,9 +9660,8 @@ msgstr "Вывод."
 #: lib/layouts/beamer.layout:1489 lib/layouts/beamer.layout:1509
 #: lib/layouts/beamer.layout:1529 lib/layouts/beamer.layout:1549
 #: lib/layouts/beamer.layout:1574
-#, fuzzy
 msgid "Action Specifications|S"
-msgstr "Выделение|В"
+msgstr "Спецификации действия"
 
 #: lib/layouts/beamer.layout:1260 lib/layouts/foils.layout:330
 #: lib/layouts/theorems-starred.inc:162
@@ -9862,9 +9847,8 @@ msgid "Main Language Short Title"
 msgstr "Краткое заглавие на основном языке"
 
 #: lib/layouts/bicaption.module:45
-#, fuzzy
 msgid "Short title for the main(document) language"
-msgstr "Статистики для документа:"
+msgstr "Краткое название основного языка (документа)"
 
 #: lib/layouts/bicaption.module:49
 msgid "Main Language Text"
@@ -9899,7 +9883,6 @@ msgstr ""
 "в примерах."
 
 #: lib/layouts/braille.module:22
-#, fuzzy
 msgid "Braille (default)"
 msgstr "Брайлевская печать (по умолчанию)"
 
@@ -10182,52 +10165,48 @@ msgid ""
 msgstr ""
 
 #: lib/layouts/customHeadersFooters.module:12
-#, fuzzy
 msgid "Header/Footer"
-msgstr "Подвал справа"
+msgstr "Колонтитулы"
 
 #: lib/layouts/customHeadersFooters.module:20
-#, fuzzy
 msgid "Even Header"
-msgstr "Левая шапка"
+msgstr "Чётный заголовок"
 
 #: lib/layouts/customHeadersFooters.module:21
 msgid "Alternative text for the even header"
 msgstr ""
 
 #: lib/layouts/customHeadersFooters.module:33
-#, fuzzy
 msgid "Center Header"
-msgstr "Левая шапка"
+msgstr "Центральный верхний колонтитул"
 
 #: lib/layouts/customHeadersFooters.module:36
-#, fuzzy
 msgid "Center Header:"
-msgstr "Левая шапка"
+msgstr "Центральный верхний колонтитул:"
 
 #: lib/layouts/customHeadersFooters.module:45
 msgid "Left Footer"
-msgstr "Подвал слева"
+msgstr "Левый нижний колонтитул"
 
 #: lib/layouts/customHeadersFooters.module:48
 msgid "Left Footer:"
-msgstr "Подвал слева:"
+msgstr "Левый нижний колонтитул:"
 
 #: lib/layouts/customHeadersFooters.module:51
 msgid "Center Footer"
-msgstr "Подвал по центру"
+msgstr "Центральный нижний колонтитул"
 
 #: lib/layouts/customHeadersFooters.module:54
 msgid "Center Footer:"
-msgstr "Подвал по центру:"
+msgstr "Центральный нижний колонтитул:"
 
 #: lib/layouts/customHeadersFooters.module:57 lib/layouts/foils.layout:207
 msgid "Right Footer"
-msgstr "Подвал справа"
+msgstr "Правый нижний колонтитул"
 
 #: lib/layouts/customHeadersFooters.module:60 lib/layouts/foils.layout:211
 msgid "Right Footer:"
-msgstr "Подвал справа:"
+msgstr "Правый нижний колонтитул:"
 
 #: lib/layouts/db_stdcharstyles.inc:21 lib/layouts/db_stdcharstyles.inc:23
 msgid "Directory"
@@ -10418,9 +10397,8 @@ msgstr "Подпись"
 #: lib/layouts/g-brief2.layout:998 lib/layouts/lettre.layout:522
 #: lib/layouts/lettre.layout:613 lib/layouts/lettre.layout:656
 #: lib/layouts/stdletter.inc:76
-#, fuzzy
 msgid "Closings"
-msgstr "Эпилог"
+msgstr "Окончание"
 
 #: lib/layouts/dinbrief.layout:123 lib/layouts/g-brief.layout:63
 #: lib/layouts/g-brief2.layout:965 lib/layouts/lettre.layout:577
@@ -10755,9 +10733,8 @@ msgid "Authors Block:"
 msgstr "Блок авторов:"
 
 #: lib/layouts/ectaart.layout:133
-#, fuzzy
 msgid "Thanks Text"
-msgstr "Благодарности"
+msgstr "Текст благодарности"
 
 #: lib/layouts/ectaart.layout:140
 msgid "Thanks \\theThanks:"
@@ -11102,9 +11079,8 @@ msgstr ""
 
 #: lib/layouts/enumitem.module:58 lib/layouts/paralist.module:29
 #: lib/layouts/powerdot.layout:276
-#, fuzzy
 msgid "Itemize Options"
-msgstr "Перечисляемый список"
+msgstr "Параметры ненумерованного списка"
 
 #: lib/layouts/enumitem.module:59 lib/layouts/enumitem.module:67
 #: lib/layouts/enumitem.module:75 lib/layouts/enumitem.module:112
@@ -11114,14 +11090,12 @@ msgstr ""
 
 #: lib/layouts/enumitem.module:66 lib/layouts/enumitem.module:111
 #: lib/layouts/paralist.module:36 lib/layouts/powerdot.layout:327
-#, fuzzy
 msgid "Enumerate Options"
-msgstr "Параметры LaTeX"
+msgstr "Параметры ненумерованного списка"
 
 #: lib/layouts/enumitem.module:74
-#, fuzzy
 msgid "Description Options"
-msgstr "Описание:"
+msgstr "Параметры списка описаний"
 
 #: lib/layouts/enumitem.module:86 lib/layouts/scrclass.inc:51
 #: lib/layouts/scrlettr.layout:26 lib/layouts/scrlttr2.layout:31
@@ -11130,9 +11104,8 @@ msgid "Labeling"
 msgstr "Маркировка"
 
 #: lib/layouts/enumitem.module:108
-#, fuzzy
 msgid "Enumerate-Resume"
-msgstr "Нумерация"
+msgstr "Нумерация-Продолжение"
 
 #: lib/layouts/eqs-within-sections.module:2
 msgid "Number Equations by Section"
@@ -12469,7 +12442,7 @@ msgstr ""
 
 #: lib/layouts/ijmpc.layout:3
 msgid "Int. Journal of Modern Physics C"
-msgstr ""
+msgstr "Int. Journal of Modern Physics C"
 
 #: lib/layouts/ijmpc.layout:74 lib/layouts/ijmpd.layout:79
 msgid "Author Names"
@@ -12966,18 +12939,16 @@ msgid "RunningTitle"
 msgstr "Заголовок в колонтитуле"
 
 #: lib/layouts/kluwer.layout:228 lib/layouts/svcommon.inc:405
-#, fuzzy
 msgid "Running title:"
-msgstr "RunningTitle"
+msgstr ""
 
 #: lib/layouts/kluwer.layout:242
 msgid "RunningAuthor"
 msgstr "Автор в колонтитуле"
 
 #: lib/layouts/kluwer.layout:249 lib/layouts/svcommon.inc:411
-#, fuzzy
 msgid "Running author:"
-msgstr "RunningAuthor"
+msgstr ""
 
 #: lib/layouts/knitr.module:2 lib/configure.py:652
 msgid "Rnw (knitr)"
@@ -13178,9 +13149,8 @@ msgid "Translation"
 msgstr "Перевод"
 
 #: lib/layouts/linguistics.module:135 lib/layouts/linguistics.module:170
-#, fuzzy
 msgid "Glosse Translation|s"
-msgstr "Переход"
+msgstr ""
 
 #: lib/layouts/linguistics.module:136 lib/layouts/linguistics.module:171
 #, fuzzy
@@ -13354,7 +13324,7 @@ msgstr "charstyles"
 
 #: lib/layouts/logicalmkup.module:11 src/frontends/qt4/GuiCharacter.cpp:90
 msgid "Noun"
-msgstr "Прописной"
+msgstr "Имя (капитель)"
 
 #: lib/layouts/logicalmkup.module:13
 msgid "noun"
@@ -17768,7 +17738,7 @@ msgstr "Окружение array|r"
 
 #: lib/ui/stdcontext.inc:31 lib/ui/stdmenus.inc:465
 msgid "Cases Environment|C"
-msgstr "Окружение cases|C"
+msgstr "Окружение cases|c"
 
 #: lib/ui/stdcontext.inc:32 lib/ui/stdmenus.inc:466
 msgid "Aligned Environment|l"
@@ -19315,7 +19285,7 @@ msgstr "Разделитель пунктов меню|м"
 
 #: lib/ui/stdmenus.inc:416
 msgid "Phonetic Symbols|P"
-msgstr "Фонетические символы"
+msgstr "Фонетические символы|Ф"
 
 #: lib/ui/stdmenus.inc:417
 msgid "Logos|L"
@@ -20089,15 +20059,15 @@ msgstr "Фонетические символы"
 
 #: lib/ui/stdtoolbars.inc:219 lib/ui/stdtoolbars.inc:1269
 msgid "IPA Pulmonic Consonants"
-msgstr ""
+msgstr "Пульмонические согласные IPA"
 
 #: lib/ui/stdtoolbars.inc:220 lib/ui/stdtoolbars.inc:1331
 msgid "IPA Non-Pulmonic Consonants"
-msgstr ""
+msgstr "Непульмонические согласные IPA"
 
 #: lib/ui/stdtoolbars.inc:221 lib/ui/stdtoolbars.inc:1345
 msgid "IPA Vowels"
-msgstr ""
+msgstr "Гласные IPA"
 
 #: lib/ui/stdtoolbars.inc:222 lib/ui/stdtoolbars.inc:1376
 msgid "IPA Other Symbols"
@@ -20105,15 +20075,15 @@ msgstr "Другие символы IPA"
 
 #: lib/ui/stdtoolbars.inc:223 lib/ui/stdtoolbars.inc:1391
 msgid "IPA Suprasegmentals"
-msgstr ""
+msgstr "Суперсегментные единицы IPA"
 
 #: lib/ui/stdtoolbars.inc:224 lib/ui/stdtoolbars.inc:1403
 msgid "IPA Diacritics"
-msgstr ""
+msgstr "Диакритические знаки IPA"
 
 #: lib/ui/stdtoolbars.inc:225 lib/ui/stdtoolbars.inc:1438
 msgid "IPA Tones and Word Accents"
-msgstr ""
+msgstr "Тоны и ударения IPA"
 
 #: lib/ui/stdtoolbars.inc:228
 msgid "Command Buffer"
@@ -24404,6 +24374,13 @@ msgid ""
 "The gnumeric software is necessary for conversion,\n"
 "both for gnumeric and excel files.\n"
 msgstr ""
+"Электронная таблица, созданная с помощью Gnumeric, LibreOffice, OpenOffice "
+"или Excel.\n"
+"Она импортируется как многостраничная таблица, поэтому допустима любая "
+"длина.\n"
+"Чрезмерная ширина может быть проблемой.\n"
+"Для преобразования необходимо приложение Gnumeric,\n"
+"как для файлов gnumeric, так и для и excel.\n"
 
 #: lib/xtemplates/inkscape.xtemplate:38
 msgid "Inkscape"
@@ -24419,6 +24396,9 @@ msgid ""
 "Note that using this template automatically uses the \n"
 "document text in the image (like with the Xfig template).\n"
 msgstr ""
+"Рисунок Inkscape.\n"
+"Обратите внимание, что использование этого шаблона автоматически \n"
+"использует текст документа в изображении (как и в шаблоне Xfig).\n"
 
 #: lib/xtemplates/lilypond.xtemplate:15 lib/xtemplates/lilypond.xtemplate:21
 msgid "Lilypond typeset music"
@@ -25358,6 +25338,9 @@ msgid ""
 "because they require conflicting language packages:\n"
 "%1$s%2$s"
 msgstr ""
+"В одном документе LaTeX нельзя одновременно использовать следующие языки, "
+"так как для них требуются конфликтующие языковые пакеты:\n"
+"%1$s%2$s"
 
 #: src/Buffer.cpp:2256
 msgid "Running chktex..."
@@ -25718,6 +25701,15 @@ msgid ""
 "See section 3.1.2.2 (Class Availability) of the\n"
 "User's Guide for more information."
 msgstr ""
+"Выбранный класс документа\n"
+"\t%1$s\n"
+"требует внешние файлы, которые сейчас недоступны.\n"
+"Класс документ все равно можно использовать, но\n"
+"документ не может быть скомпилирован пока следующие\n"
+"необходимые компоненты не будут установлены:\n"
+"\t%2$s\n"
+"См. раздел 3.1.2.2 (Наличие класса) в \n"
+"Руководстве пользователя для получения дополнительной информации."
 
 #: src/BufferParams.cpp:740
 msgid "Document class not available"
@@ -25863,7 +25855,7 @@ msgstr "Статистика для выделения:"
 
 #: src/BufferView.cpp:1669
 msgid "Statistics for the document:"
-msgstr "Статистики для документа:"
+msgstr "Статистика для документа:"
 
 #: src/BufferView.cpp:1672
 #, c-format
@@ -26612,7 +26604,6 @@ msgstr ""
 "поэтому не были вставлены."
 
 #: src/CutAndPaste.cpp:231
-#, fuzzy
 msgid "Uncodable content"
 msgstr "Некодируемые символы"
 
@@ -26738,7 +26729,7 @@ msgstr "Наклонный"
 
 #: src/Font.cpp:68
 msgid "Smallcaps"
-msgstr "Прописной"
+msgstr "Капитель"
 
 #: src/Font.cpp:73 src/frontends/qt4/GuiCharacter.cpp:73
 msgid "Increase"
@@ -26755,32 +26746,32 @@ msgstr "Переключить"
 #: src/Font.cpp:163
 #, c-format
 msgid "Emphasis %1$s, "
-msgstr "Выделительный %1$s, "
+msgstr "Выделить %1$s, "
 
 #: src/Font.cpp:166
 #, c-format
 msgid "Underline %1$s, "
-msgstr "Подчёркнутый %1$s, "
+msgstr "Подчеркнуть %1$s, "
 
 #: src/Font.cpp:169
 #, c-format
 msgid "Strike out %1$s, "
-msgstr "Вычеркнутый %1$s, "
+msgstr "Вычеркнуть %1$s, "
 
 #: src/Font.cpp:172
 #, c-format
 msgid "Cross out %1$s, "
-msgstr "Перечёркнутый %1$s, "
+msgstr "Перечеркнуть %1$s, "
 
 #: src/Font.cpp:175
 #, c-format
 msgid "Double underline %1$s, "
-msgstr "Подчёркнутый дважды %1$s, "
+msgstr "Подчеркнуть дважды %1$s, "
 
 #: src/Font.cpp:178
 #, c-format
 msgid "Wavy underline %1$s, "
-msgstr "Подчёркнутый волной %1$s, "
+msgstr "Подчеркнуть волной %1$s, "
 
 #: src/Font.cpp:181
 #, c-format
@@ -27178,7 +27169,7 @@ msgstr ""
 
 #: src/LyX.cpp:1232 src/frontends/qt4/GuiAbout.cpp:244
 msgid "  Git commit hash "
-msgstr ""
+msgstr "Хэш коммита Git"
 
 #: src/LyX.cpp:1243 src/support/Package.cpp:647
 msgid "No system directory"
@@ -27640,6 +27631,8 @@ msgid ""
 "Specify whether, closing the last view of an open document, LyX should close "
 "the document (yes), hide it (no), or ask the user (ask)."
 msgstr ""
+"Укажите, следует ли, закрыв последний вид открытого документа, закрыть "
+"документ (да), скрыть его (нет) или спросить пользователя (спросить)."
 
 #: src/LyXRC.cpp:3364
 msgid ""
@@ -27704,7 +27697,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3411
 msgid "This is the place where the files of the thesaurus library reside."
-msgstr ""
+msgstr "Это место, где хранятся файлы библиотеки тезауруса."
 
 #: src/LyXRC.cpp:3415
 msgid ""
@@ -27738,6 +27731,8 @@ msgid ""
 "Enable use the system colors for some things like main window background and "
 "selection."
 msgstr ""
+"Включить использование системных цветов для некоторых вещей, таких как фон "
+"главного окна и выделение."
 
 #: src/LyXRC.cpp:3446
 msgid "Enable the automatic appearance of tool tips in the work area."
@@ -27878,7 +27873,7 @@ msgstr ""
 
 #: src/Text.cpp:941
 msgid "Character is uncodable in this verbatim context."
-msgstr ""
+msgstr "Символ является некодируемым в дословном контексте."
 
 #: src/Text.cpp:1904
 msgid "[Change Tracking] "
@@ -27985,6 +27980,10 @@ msgid ""
 "Please refer to sec. 6.15.1 of the User's Guide for setup\n"
 "instructions."
 msgstr ""
+"Путь к каталогу тезауруса не указан.\n"
+"Тезаурус не работает.\n"
+"Пожалуйста, обратитесь к разделу 6.15.1 Руководства пользователя за\n"
+"инструкциями по установке."
 
 #: src/Text3.cpp:2514 src/Text3.cpp:2525
 msgid "Paragraph layout set"
@@ -28637,7 +28636,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiAbout.cpp:219
 msgid "Built from git commit hash "
-msgstr ""
+msgstr "Построен из коммита Git с хэшем "
 
 #: src/frontends/qt4/GuiAbout.cpp:226
 msgid "Library directory: "
@@ -28876,6 +28875,10 @@ msgid ""
 "subdirectory of LaTeX's texmf tree. If you want to reuse your own database, "
 "this is the place you should store it."
 msgstr ""
+"Этот список состоит из всех баз данных, которые индексируются LaTeX и, таким "
+"образом, находятся без задания пути к файлу. Обычно это все в подкаталоге "
+"bib/ в каталоге texmf установки LaTeX. Если вы хотите использовать свою "
+"собственную базу данных, это место, где вы должны хранить её."
 
 #: src/frontends/qt4/GuiBibtex.cpp:309
 msgid "Biblatex Bibliography"
@@ -29054,23 +29057,23 @@ msgstr "Сбросить"
 
 #: src/frontends/qt4/GuiCharacter.cpp:85
 msgid "Underbar"
-msgstr "Подчёркнутый"
+msgstr "Подчёркивание"
 
 #: src/frontends/qt4/GuiCharacter.cpp:86
 msgid "Double underbar"
-msgstr "Двойной"
+msgstr "Двойное подчёркивание"
 
 #: src/frontends/qt4/GuiCharacter.cpp:87
 msgid "Wavy underbar"
-msgstr "Волнистый"
+msgstr "Подчёркивание волной"
 
 #: src/frontends/qt4/GuiCharacter.cpp:88
 msgid "Strike out"
-msgstr "Вычеркнутый"
+msgstr "Зачёркивание"
 
 #: src/frontends/qt4/GuiCharacter.cpp:89
 msgid "Cross out"
-msgstr "Перечёркнутый"
+msgstr "Перечёркивание"
 
 #: src/frontends/qt4/GuiCharacter.cpp:180
 msgid "No color"
@@ -29143,7 +29146,7 @@ msgstr "Ключи"
 
 #: src/frontends/qt4/GuiCitation.cpp:462
 msgid "Displays a sketchy preview if a citation is selected above"
-msgstr "Отображает эскизный предпросмотр, если цитата выбрана выше"
+msgstr "Отображает примерный печатный вид для выделенной ссылки"
 
 #: src/frontends/qt4/GuiCitation.cpp:466
 msgid "Sketchy preview of the selected citation"
@@ -30094,7 +30097,7 @@ msgstr "Настройки горизонтального отступа"
 
 #: src/frontends/qt4/GuiHyperlink.h:35
 msgid "Hyperlink Settings"
-msgstr "Параметры гиперссылок"
+msgstr "Настройки гиперссылки"
 
 #: src/frontends/qt4/GuiInclude.cpp:114 src/frontends/qt4/GuiInclude.cpp:176
 #: src/frontends/qt4/GuiListings.cpp:241 src/frontends/qt4/GuiListings.cpp:385
@@ -30303,7 +30306,7 @@ msgstr "Матрица"
 
 #: src/frontends/qt4/GuiNomenclature.h:36
 msgid "Nomenclature Settings"
-msgstr "Настройки списка обозначений"
+msgstr "Настройки обозначения"
 
 #: src/frontends/qt4/GuiNote.cpp:26
 msgid "Note Settings"
@@ -30705,27 +30708,27 @@ msgstr "Основной латинский"
 
 #: src/frontends/qt4/GuiSymbols.cpp:54
 msgid "Latin-1 Supplement"
-msgstr "Дополнительный латинский"
+msgstr "Латинский-1 дополнительный"
 
 #: src/frontends/qt4/GuiSymbols.cpp:55
 msgid "Latin Extended-A"
-msgstr "Latin Extended-A"
+msgstr "Латинский расширенный-A"
 
 #: src/frontends/qt4/GuiSymbols.cpp:56
 msgid "Latin Extended-B"
-msgstr "Latin Extended-B"
+msgstr "Латинский расширенный-B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:57
 msgid "IPA Extensions"
-msgstr "Рас&ширения IPA"
+msgstr "Расширения IPA"
 
 #: src/frontends/qt4/GuiSymbols.cpp:58
 msgid "Spacing Modifier Letters"
-msgstr ""
+msgstr "Литеры модификации пробелов"
 
 #: src/frontends/qt4/GuiSymbols.cpp:59
 msgid "Combining Diacritical Marks"
-msgstr ""
+msgstr "Комбинирующие диакритические знаки"
 
 #: src/frontends/qt4/GuiSymbols.cpp:61
 msgid "Cyrillic"
@@ -30769,11 +30772,11 @@ msgstr "Фонетические расширения"
 
 #: src/frontends/qt4/GuiSymbols.cpp:80
 msgid "Latin Extended Additional"
-msgstr "Latin Extended Additional"
+msgstr "Латинский расширенный дополнительный"
 
 #: src/frontends/qt4/GuiSymbols.cpp:81
 msgid "Greek Extended"
-msgstr "Greek Extended"
+msgstr "Греческий расширенный"
 
 #: src/frontends/qt4/GuiSymbols.cpp:82
 msgid "General Punctuation"
@@ -30817,7 +30820,7 @@ msgstr "Оптическое распознавание символов"
 
 #: src/frontends/qt4/GuiSymbols.cpp:93
 msgid "Enclosed Alphanumerics"
-msgstr ""
+msgstr "Цифры в окружности"
 
 #: src/frontends/qt4/GuiSymbols.cpp:94
 msgid "Box Drawing"
@@ -33645,15 +33648,15 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Неизвестный пользователь"
 
-#~ msgid ""
-#~ "Use font ligatures -- and --- instead of \\textendash and \\textemdash "
-#~ "for en- and em-dashes"
-#~ msgstr ""
-#~ "Использовать лигатуры шрифта -- и --- вместо \\textendash и \\textemdash "
-#~ "для короткого и длинного тире"
+msgid ""
+"Use font ligatures -- and --- instead of \\textendash and \\textemdash for "
+"en- and em-dashes"
+msgstr ""
+"Использовать лигатуры шрифта -- и --- вместо \\textendash и \\textemdash для "
+"короткого и длинного тире"
 
-#~ msgid "Output en- and &em-dashes as ligatures"
-#~ msgstr "Выводить короткое и длинное тире как лигатуры"
+msgid "Output en- and &em-dashes as ligatures"
+msgstr "Выводить короткое и длинное тире как лигатуры"
 
 #~ msgid "Start New Environment (%1$s)"
 #~ msgstr "Начать новое окружение (%1$s)"
