@@ -714,6 +714,24 @@ Encoding const * DocIterator::getEncoding() const
 		(customenc && lang->encoding()->package() != Encoding::CJK)
 		? &bp.encoding() : lang->encoding();
 
+	// Some insets force specific encodings sometimes (e.g., listings in
+	// multibyte context forces singlebyte).
+	if (inset().forcedEncoding(enc, encodings.fromLyXName("iso8859-1"))) {
+		// Get the language outside the inset
+		size_t const n = depth();
+		for (size_t i = 0; i < n; ++i) {
+			Text const & otext = *slices_[i].text();
+			Language const * olang =
+					otext.getPar(slices_[i].pit()).getFont(bp, slices_[i].pos(),
+														   otext.outerFont(slices_[i].pit())).language();
+			Encoding const * oenc = olang->encoding();
+			if (oenc->name() != "inherit")
+				return inset().forcedEncoding(enc, oenc);
+		}
+		// Fall back to buffer encoding if no outer lang was found.
+		return inset().forcedEncoding(enc, &bp.encoding());
+	}
+
 	// Inherited encoding (latex_language) is determined by the context
 	// Look for the first outer encoding that is not itself "inherit"
 	if (lang->encoding()->name() == "inherit") {
