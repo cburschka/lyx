@@ -696,26 +696,44 @@ Encoding const * DocIterator::getEncoding() const
 {
 	if (empty())
 		return 0;
+
 	BufferParams const & bp = buffer()->params();
 	if (bp.useNonTeXFonts)
 		return encodings.fromLyXName("utf8-plain");
 
 	CursorSlice const & sl = innerTextSlice();
 	Text const & text = *sl.text();
-	Font font = text.getPar(sl.pit()).getFont(bp, sl.pos(),
-	                                          text.outerFont(sl.pit()));
-	Encoding const * enc = font.language()->encoding();
-	if (enc->name() == "inherit") {
+	Language const * lang =
+		text.getPar(sl.pit()).getFont(bp, sl.pos(),
+										  text.outerFont(sl.pit())).language();
+	// If we have a custom encoding for the buffer, we only switch
+	// encoding for CJK (see output_latex::switchEncoding())
+	bool const customenc =
+		bp.inputenc != "auto" && bp.inputenc != "default";
+	Encoding const * enc =
+		(customenc && lang->encoding()->package() != Encoding::CJK)
+		? &bp.encoding() : lang->encoding();
+
+	// Inherited encoding (latex_language) is determined by the context
+	// Look for the first outer encoding that is not itself "inherit"
+	if (lang->encoding()->name() == "inherit") {
 		size_t const n = depth();
 		for (size_t i = 0; i < n; ++i) {
 			Text const & otext = *slices_[i].text();
-			Font ofont = otext.getPar(slices_[i].pit()).getFont(bp, slices_[i].pos(),
-								  otext.outerFont(slices_[i].pit()));
-			if (ofont.language()->encoding()->name() != "inherit")
-				return ofont.language()->encoding();
+			Language const * olang =
+					otext.getPar(slices_[i].pit()).getFont(bp, slices_[i].pos(),
+														   otext.outerFont(slices_[i].pit())).language();
+			// Again, if we have a custom encoding, this is used
+			// instead of the language's.
+			Encoding const * oenc =
+					(customenc && olang->encoding()->package() != Encoding::CJK)
+					? &bp.encoding() : olang->encoding();
+			if (olang->encoding()->name() != "inherit")
+				return oenc;
 		}
 	}
-	return font.language()->encoding();
+
+	return enc;
 }
 
 
