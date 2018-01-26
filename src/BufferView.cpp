@@ -394,10 +394,10 @@ int BufferView::zoomedPixels(int pix) const
 	// Zoom factor specified by user in percent
 	double const zoom = lyxrc.currentZoom / 100.0; // [percent]
 
-	// DPI setting for monitor: pixels/inch
-	double const dpi = lyxrc.dpi; // screen resolution [pixels/inch]
+	// DPI setting for monitor relative to 100dpi
+	double const dpizoom = lyxrc.dpi / 100.0; // [per 100dpi]
 
-	return support::iround(pix * zoom * dpi);
+	return support::iround(pix * zoom * dpizoom);
 }
 
 
