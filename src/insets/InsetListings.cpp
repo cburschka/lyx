@@ -119,6 +119,26 @@ void InsetListings::read(Lexer & lex)
 }
 
 
+Encoding const * InsetListings::forcedEncoding(Encoding const * inner_enc,
+											   Encoding const * outer_enc) const
+{
+	// The listings package cannot deal with multi-byte-encoded
+	// glyphs, except if full-unicode aware backends
+	// such as XeTeX or LuaTeX are used, and with pLaTeX.
+	// Minted can deal with all encodings.
+	if (buffer().params().use_minted
+		|| (buffer().params().encoding().package() == Encoding::japanese
+			&& inner_enc->package() == Encoding::japanese)
+		|| inner_enc->hasFixedWidth())
+		return 0;
+
+	// We try if there's a singlebyte encoding for the outer
+	// language; if not, fall back to latin1.
+	return (outer_enc->hasFixedWidth()) ?
+			outer_enc : encodings.fromLyXName("iso8859-1");
+}
+
+
 void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 {
 	string param_string = params().params();
@@ -160,30 +180,19 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 
 	bool encoding_switched = false;
 	Encoding const * const save_enc = runparams.encoding;
-	// The listings package cannot deal with multi-byte-encoded
-	// glyphs, except if full-unicode aware backends
-	// such as XeTeX or LuaTeX are used, and with pLaTeX.
-	bool const multibyte_possible =	use_minted || runparams.isFullUnicode()
-	    || (buffer().params().encoding().package() == Encoding::japanese
-	        && runparams.encoding->package() == Encoding::japanese);
 
-	if (!multibyte_possible && !runparams.encoding->hasFixedWidth()) {
+	Encoding const * const outer_encoding =
+		(runparams.local_font != 0) ?
+			runparams.local_font->language()->encoding()
+			: buffer().params().language->encoding();
+	Encoding const * fixedlstenc = forcedEncoding(runparams.encoding, outer_encoding);
+	if (fixedlstenc) {
 		// We need to switch to a singlebyte encoding, due to
 		// the restrictions of the listings package (see above).
 		// This needs to be consistent with
 		// LaTeXFeatures::getTClassI18nPreamble().
-		Language const * const outer_language =
-			(runparams.local_font != 0) ?
-				runparams.local_font->language()
-				: buffer().params().language;
-		// We try if there's a singlebyte encoding for the current
-		// language; if not, fall back to latin1.
-		Encoding const * const lstenc =
-			(outer_language->encoding()->hasFixedWidth()) ?
-				outer_language->encoding()
-				: encodings.fromLyXName("iso8859-1");
-		switchEncoding(os.os(), buffer().params(), runparams, *lstenc, true);
-		runparams.encoding = lstenc;
+		switchEncoding(os.os(), buffer().params(), runparams, *fixedlstenc, true);
+		runparams.encoding = fixedlstenc;
 		encoding_switched = true;
 	}
 
@@ -334,7 +343,7 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 	if (!uncodable.empty() && !runparams.silent) {
 		// issue a warning about omitted characters
 		// FIXME: should be passed to the error dialog
-		if (!multibyte_possible && !runparams.encoding->hasFixedWidth())
+		if (fixedlstenc)
 			frontend::Alert::warning(_("Uncodable characters in listings inset"),
 				bformat(_("The following characters in one of the program listings are\n"
 					  "not representable in the current encoding and have been omitted:\n%1$s.\n"

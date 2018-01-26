@@ -39,6 +39,7 @@ class Cursor;
 class CursorSlice;
 class Dimension;
 class DocIterator;
+class Encoding;
 class FuncRequest;
 class FuncStatus;
 class InsetArgument;
@@ -422,6 +423,10 @@ public:
 	/// if this inset has paragraphs should they be forced to use a
 	/// local font language switch?
 	virtual bool forceLocalFontSwitch() const { return false; }
+	/// Does the inset force a specific encoding?
+	virtual Encoding const * forcedEncoding(Encoding const *, Encoding const *) const
+	{ return 0; }
+
 
 	/// Is the content of this inset part of the output document?
 	virtual bool producesOutput() const { return true; }
