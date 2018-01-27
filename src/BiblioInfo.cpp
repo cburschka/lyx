@@ -541,16 +541,16 @@ docstring const BibTeXInfo::getAuthorList(Buffer const * buf,
 
 	// These are defined in the styles
 	string const etal =
-		buf ? buf->params().documentClass().getCiteMacro(engine_type, "_etal")
+		buf ? buf->params().documentClass().getCiteMacro(engine_type, "B_etal")
 		    : " et al.";
 	string const namesep =
-		buf ? buf->params().documentClass().getCiteMacro(engine_type, "_namesep")
+		buf ? buf->params().documentClass().getCiteMacro(engine_type, "B_namesep")
 		   : ", ";
 	string const lastnamesep =
-		buf ? buf->params().documentClass().getCiteMacro(engine_type, "_lastnamesep")
+		buf ? buf->params().documentClass().getCiteMacro(engine_type, "B_lastnamesep")
 		    : ", and ";
 	string const pairnamesep =
-		buf ? buf->params().documentClass().getCiteMacro(engine_type, "_pairnamesep")
+		buf ? buf->params().documentClass().getCiteMacro(engine_type, "B_pairnamesep")
 		     : " and ";
 	string firstnameform =
 			buf ? buf->params().documentClass().getCiteMacro(engine_type, "!firstnameform")
@@ -811,12 +811,19 @@ docstring BibTeXInfo::expandFormat(docstring const & format,
 					fmt = from_utf8(val) + fmt.substr(1);
 					counter += 1;
 					continue;
-				} else if (key[0] == '_') {
-					// a translatable bit
+				} else if (prefixIs(key, "B_")) {
+					// a translatable bit (to the Buffer language)
 					string const val =
 						buf.params().documentClass().getCiteMacro(engine_type, key);
 					docstring const trans =
 						translateIfPossible(from_utf8(val), buf.params().language->code());
+					ret << trans;
+				} else if (key[0] == '_') {
+					// a translatable bit (to the GUI language)
+					string const val =
+						buf.params().documentClass().getCiteMacro(engine_type, key);
+					docstring const trans =
+						translateIfPossible(from_utf8(val));
 					ret << trans;
 				} else {
 					docstring const val =

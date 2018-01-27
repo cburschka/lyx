@@ -114,7 +114,8 @@ CiteFormat authoryear
 	#
 	# MACROS
 	#
-	# 1. Translatable bits (need to be marked by _ prefix)
+	# 1. Translatable bits (need to be marked by _ prefix, if translated to the GUI language,
+	#    or B_, if translated to the buffer language)
 	#    Note that preceding and trailing spaces matter.
 	#
 	_notcited not cited
@@ -126,10 +127,10 @@ CiteFormat authoryear
 	_before before
 	_shorttitle short title
 	# The following are handled by BiblioInfo
-	_etal  et al.
-	_namesep /
-	_lastnamesep /
-	_pairnamesep /
+	B_etal  et al.
+	B_namesep /
+	B_lastnamesep /
+	B_pairnamesep /
 
 	#
 	# 2. Macros re-used in the style definitions
