@@ -1180,7 +1180,7 @@ bool TextClass::readCiteFormat(Lexer & lexrc)
 		char initchar = etype[0];
 		if (initchar == '#')
 			continue;
-		if (initchar == '!' || initchar == '_') {
+		if (initchar == '!' || initchar == '_' || prefixIs(etype, "B_")) {
 			if (type & ENGINE_TYPE_AUTHORYEAR)
 				cite_macros_[ENGINE_TYPE_AUTHORYEAR][etype] = definition;
 			if (type & ENGINE_TYPE_NUMERICAL)

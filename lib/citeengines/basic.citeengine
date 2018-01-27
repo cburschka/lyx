@@ -45,7 +45,8 @@ CiteFormat default
 	#
 	# MACROS
 	#
-	# 1. Translatable bits (need to be marked by _ prefix)
+	# 1. Translatable bits (need to be marked by _ prefix, if translated to the GUI language,
+	#    or B_, if translated to the buffer language)
 	#    Note that preceding and trailing spaces matter.
 	#
 	_notcited not cited

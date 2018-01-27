@@ -15,18 +15,20 @@ Format 66
 
 CiteFormat default
 	#
-	# Translatable bits
+	# Translatable bits (need to be marked by _ prefix, if translated to the GUI language,
+	# or B_, if translated to the buffer language)
+	# Note that preceding and trailing spaces matter.
 	#
-	_pptext pp.
-	_edtext ed.
-	_edstext eds.
-	_voltext vol.
-	_numtext no.
-	_in in
+	B_pptext pp.
+	B_edtext ed.
+	B_edstext eds.
+	B_voltext vol.
+	B_numtext no.
+	B_in in
 	# The following are handled by BiblioInfo. Note that preceding and trailing spaces matter
-	_namesep , [[separate author names in citation, except for last name]]
-	_lastnamesep , and [[separate name of last author in citation]]
-	_pairnamesep  and [[separate two authors in citation]]
+	B_namesep , [[separate author names in citation, except for last name]]
+	B_lastnamesep , and [[separate name of last author in citation]]
+	B_pairnamesep  and [[separate two authors in citation]]
 
 	#
 	# Macros
@@ -42,13 +44,13 @@ CiteFormat default
 	# Scheme of authors in citation references
 	!citenameform {%prefix%[[%prefix% ]]}%surname%
 	# pagination
-	!pages {%pages%[[, %_pptext% %pages%]]}
+	!pages {%pages%[[, %B_pptext% %pages%]]}
 	# ed. or eds.
-	!makeed {%ifmultiple:editor%[[%_edstext%]][[%_edtext%]]}
+	!makeed {%ifmultiple:editor%[[%B_edstext%]][[%B_edtext%]]}
 	# author or editor, as fullnames, following the schemes above
 	!authoredit {%fullnames:author%[[%fullnames:author%, ]][[{%fullnames:editor%[[%fullnames:editor%, %!makeed%, ]]}]]}
 	# "vol. 1, no.
-	!volnum {%volume%[[ %_voltext% %volume%, {%number%[[%_numtext% %number%]]}]]}
+	!volnum {%volume%[[ %B_voltext% %volume%, {%number%[[%B_numtext% %number%]]}]]}
 	!quotetitle "%title%"
 	!emphtitle {!<i>!}%title%{!</i>!}
 	!emphjournal {!<i>!}{%journal%[[%journal%]][[{%journaltitle%[[%journaltitle%]]}]]}{!</i>!}
@@ -57,7 +59,7 @@ CiteFormat default
 	#
 	# Entry types. Note that final punctuation will be added later, if needed.
 	#
-	!insomething %fullnames:author%, %!quotetitle%, %_in%{%fullbynames:editor%[[ %fullbynames:editor%, %!makeed%,]]} {!<i>!}%booktitle%{!</i>!}%!volnum%{%edition%[[ %edition%]]} (%!location%%publisher%, %year%)%!pages%{%note%[[. %note%]]}
+	!insomething %fullnames:author%, %!quotetitle%, %B_in%{%fullbynames:editor%[[ %fullbynames:editor%, %!makeed%,]]} {!<i>!}%booktitle%{!</i>!}%!volnum%{%edition%[[ %edition%]]} (%!location%%publisher%, %year%)%!pages%{%note%[[. %note%]]}
 
 	article %fullnames:author%, %!quotetitle%, %!emphjournal% {%volume%[[ %volume%{%number%[[, %number%]]}]]} (%year%)%!pages%{%note%[[. %note%]]}
 

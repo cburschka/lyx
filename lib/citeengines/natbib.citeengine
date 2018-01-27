@@ -112,7 +112,8 @@ CiteFormat default
 	#
 	# MACROS
 	#
-	# 1. Translatable bits (need to be marked by _ prefix)
+	# 1. Translatable bits (need to be marked by _ prefix, if translated to the GUI language,
+	#    or B_, if translated to the buffer language)
 	#    Note that preceding and trailing spaces matter.
 	#
 	_notcited not cited
@@ -120,10 +121,10 @@ CiteFormat default
 	_keyonly Key only.
 	_key Key
 	# The following are handled by BiblioInfo
-	_etal  et al.
-	_namesep , [[separate author names in citation, except for last name]]
-	_lastnamesep , and [[separate name of last author in citation]]
-	_pairnamesep  and [[separate two authors in citation]]
+	B_etal  et al.
+	B_namesep , [[separate author names in citation, except for last name]]
+	B_lastnamesep , and [[separate name of last author in citation]]
+	B_pairnamesep  and [[separate two authors in citation]]
 
 	#
 	# 2. Macros re-used in the style definitions

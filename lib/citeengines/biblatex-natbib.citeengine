@@ -131,14 +131,15 @@ CiteFormat default
 	#
 	# MACROS
 	#
-	# 1. Translatable bits (need to be marked by _ prefix)
+	# 1. Translatable bits (need to be marked by _ prefix, if translated to the GUI language,
+	#    or B_, if translated to the buffer language)
 	#    Note that preceding and trailing spaces matter.
 	#
 	_notcited not cited
 	_addtobib Add to bibliography only.
 	_keyonly Key only.
 	_key Key
-	_finaland , and 
+	B_finaland , and 
 	_footnote Footnote
 	_foot Foot
 	_fullcite bibliography entry
@@ -149,10 +150,10 @@ CiteFormat default
 	_citetitlestar F&orce full title[[Possible substitute to All aut&hors]]
 	_citetitlestartooltip Use full title even if shorttitle exists
 	# The following are handled by BiblioInfo
-	_etal  et al.
-	_namesep , [[separate author names in citation, except for last name]]
-	_lastnamesep , and [[separate name of last author in citation]]
-	_pairnamesep  and [[separate two authors in citation]]
+	B_etal  et al.
+	B_namesep , [[separate author names in citation, except for last name]]
+	B_lastnamesep , and [[separate name of last author in citation]]
+	B_pairnamesep  and [[separate two authors in citation]]
 
 	#
 	# 2. Macros re-used in the style definitions
@@ -171,7 +172,7 @@ CiteFormat default
 	!endlink {!</a>!}
 
 	# Add " , and " before the last item (but " and " if there are only two), else ", "
-	!smartsep {%second%[[{%next%[[%_namesep%]][[%_pairnamesep%]]}]][[{%next%[[%_namesep%]][[%_lastnamesep%]]}]]}
+	!smartsep {%second%[[{%next%[[%B_namesep%]][[%B_pairnamesep%]]}]][[{%next%[[%B_namesep%]][[%B_lastnamesep%]]}]]}
 
 	# "Author et al." or "??"
 	!abbrvciteauthor {%abbrvciteauthor%[[%abbrvciteauthor%]][[??]]}
@@ -294,7 +295,8 @@ CiteFormat numerical
 	#
 	# MACROS
 	#
-	# 1. Translatable bits (need to be marked by _ prefix)
+	# 1. Translatable bits (need to be marked by _ prefix, if translated to the GUI language,
+	#    or B_, if translated to the buffer language)
 	#
 	_super Super
 	_superscript Superscript
