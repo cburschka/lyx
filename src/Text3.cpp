@@ -366,7 +366,23 @@ enum OutlineOp {
 };
 
 
-static void outline(OutlineOp mode, Cursor & cur)
+static void insertSeparator(Cursor & cur, depth_type const depth)
+{
+	Buffer & buf = *cur.buffer();
+	lyx::dispatch(FuncRequest(LFUN_PARAGRAPH_BREAK));
+	DocumentClass const & tc = buf.params().documentClass();
+	lyx::dispatch(FuncRequest(LFUN_LAYOUT, from_ascii("\"") + tc.plainLayout().name()
+				  + from_ascii("\" ignoreautonests")));
+	// FIXME: Bibitem mess!
+	if (cur.prevInset() && cur.prevInset()->lyxCode() == BIBITEM_CODE)
+		lyx::dispatch(FuncRequest(LFUN_CHAR_DELETE_BACKWARD));
+	lyx::dispatch(FuncRequest(LFUN_SEPARATOR_INSERT, "plain"));
+	while (cur.paragraph().params().depth() > depth)
+		lyx::dispatch(FuncRequest(LFUN_DEPTH_DECREMENT));
+}
+
+
+static void outline(OutlineOp mode, Cursor & cur, Text * text)
 {
 	Buffer & buf = *cur.buffer();
 	pit_type & pit = cur.pit();
@@ -377,6 +393,7 @@ static void outline(OutlineOp mode, Cursor & cur)
 	// The final paragraph of area to be copied:
 	ParagraphList::iterator finish = start;
 	ParagraphList::iterator const end = pars.end();
+	depth_type const current_depth = cur.paragraph().params().depth();
 
 	int const thistoclevel = buf.text().getTocLevel(distance(bgn, start));
 	int toclevel;
@@ -411,10 +428,47 @@ static void outline(OutlineOp mode, Cursor & cur)
 			// Not found; do nothing
 			if (toclevel == Layout::NOT_IN_TOC || toclevel > thistoclevel)
 				return;
-			pit_type const newpit = distance(bgn, dest);
+			pit_type newpit = distance(bgn, dest);
 			pit_type const len = distance(start, finish);
 			pit_type const deletepit = pit + len;
 			buf.undo().recordUndo(cur, newpit, deletepit - 1);
+			// If we move an environment upwards, make sure it is
+			// separated from its new neighbour below:
+			// If an environment of the same layout follows, and the moved
+			// paragraph sequence does not end with a separator, insert one.
+			ParagraphList::iterator lastmoved = finish;
+			--lastmoved;
+			if (start->layout().isEnvironment()
+			    && dest->layout() == start->layout()
+			    && !lastmoved->isEnvSeparator(lastmoved->beginOfBody())) {
+				cur.pit() = distance(bgn, lastmoved);
+				cur.pos() = cur.lastpos();
+				insertSeparator(cur, current_depth);
+				cur.pit() = pit;
+			}
+			// Likewise, if we moved an environment upwards, make sure it
+			// is separated from its new neighbour above.
+			// The paragraph before the target of movement
+			if (dest != bgn) {
+				ParagraphList::iterator before = dest;
+				--before;
+				// Get the parent paragraph (outer in nested context)
+				pit_type const parent =
+					before->params().depth() > current_depth
+						? text->depthHook(distance(bgn, before), current_depth)
+						: distance(bgn, before);
+				// If a environment with same layout preceeds the moved one in the new
+				// position, and there is no separator yet, insert one.
+				if (start->layout().isEnvironment()
+				    && pars[parent].layout() == start->layout()
+				    && !before->isEnvSeparator(before->beginOfBody())) {
+					cur.pit() = distance(bgn, before);
+					cur.pos() = cur.lastpos();
+					insertSeparator(cur, current_depth);
+					cur.pit() = pit;
+				}
+			}
+			newpit = distance(bgn, dest);
 			pars.splice(dest, start, finish);
 			cur.pit() = newpit;
 			break;
@@ -432,9 +486,45 @@ static void outline(OutlineOp mode, Cursor & cur)
 				      && toclevel <= thistoclevel)
 					break;
 			}
-			// One such was found:
+			// One such was found, so go on...
+			// If we move an environment downwards, make sure it is
+			// separated from its new neighbour above.
 			pit_type newpit = distance(bgn, dest);
 			buf.undo().recordUndo(cur, pit, newpit - 1);
+			// The paragraph before the target of movement
+			ParagraphList::iterator before = dest;
+			--before;
+			// Get the parent paragraph (outer in nested context)
+			pit_type const parent =
+				before->params().depth() > current_depth
+					? text->depthHook(distance(bgn, before), current_depth)
+					: distance(bgn, before);
+			// If a environment with same layout preceeds the moved one in the new
+			// position, and there is no separator yet, insert one.
+			if (start->layout().isEnvironment()
+			    && pars[parent].layout() == start->layout()
+			    && !before->isEnvSeparator(before->beginOfBody())) {
+				cur.pit() = distance(bgn, before);
+				cur.pos() = cur.lastpos();
+				insertSeparator(cur, current_depth);
+				cur.pit() = pit;
+			}
+			// Likewise, make sure moved environments are separated
+			// from their new neighbour below:
+			// If an environment of the same layout follows, and the moved
+			// paragraph sequence does not end with a separator, insert one.
+			ParagraphList::iterator lastmoved = finish;
+			--lastmoved;
+			if (dest != end
+			    && start->layout().isEnvironment()
+			    && dest->layout() == start->layout()
+			    && !lastmoved->isEnvSeparator(lastmoved->beginOfBody())) {
+				cur.pit() = distance(bgn, lastmoved);
+				cur.pos() = cur.lastpos();
+				insertSeparator(cur, current_depth);
+				cur.pit() = pit;
+			}
+			newpit = distance(bgn, dest);
 			pit_type const len = distance(start, finish);
 			pars.splice(dest, start, finish);
 			cur.pit() = newpit - len;
@@ -2538,27 +2628,27 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_OUTLINE_UP:
-		outline(OutlineUp, cur);
+		outline(OutlineUp, cur, this);
 		setCursor(cur, cur.pit(), 0);
 		cur.forceBufferUpdate();
 		needsUpdate = true;
 		break;
 
 	case LFUN_OUTLINE_DOWN:
-		outline(OutlineDown, cur);
+		outline(OutlineDown, cur, this);
 		setCursor(cur, cur.pit(), 0);
 		cur.forceBufferUpdate();
 		needsUpdate = true;
 		break;
 
 	case LFUN_OUTLINE_IN:
-		outline(OutlineIn, cur);
+		outline(OutlineIn, cur, this);
 		cur.forceBufferUpdate();
 		needsUpdate = true;
 		break;
 
 	case LFUN_OUTLINE_OUT:
-		outline(OutlineOut, cur);
+		outline(OutlineOut, cur, this);
 		cur.forceBufferUpdate();
 		needsUpdate = true;
 		break;
