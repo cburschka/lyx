@@ -6888,15 +6888,13 @@ msgid "Email"
 msgstr "Email"
 
 #: lib/layouts/a0poster.layout:3
-#, fuzzy
 msgid "A0 Poster"
-msgstr "Postvermerk"
+msgstr "A0 Poster"
 
 #: lib/layouts/a0poster.layout:4 lib/layouts/beamerposter.layout:4
 #: lib/layouts/sciposter.layout:4
-#, fuzzy
 msgid "Posters"
-msgstr "Postvermerk"
+msgstr "Postery"
 
 #: lib/layouts/a0poster.layout:41 lib/layouts/a0poster.layout:44
 #: lib/layouts/a0poster.layout:71 lib/layouts/beamerposter.layout:53
@@ -7203,9 +7201,8 @@ msgid "List"
 msgstr "Seznam"
 
 #: lib/layouts/aastex.layout:3
-#, fuzzy
 msgid "American Astronomical Society (AASTeX v. 5)"
-msgstr "American Astronomical Society (AASTeX)"
+msgstr "American Astronomical Society (AASTeX v. 5)"
 
 #: lib/layouts/aastex.layout:159 lib/layouts/achemso.layout:102
 #: lib/layouts/acmart.layout:203 lib/layouts/agu_stdtitle.inc:128
@@ -7335,9 +7332,8 @@ msgid "fig."
 msgstr "fig."
 
 #: lib/layouts/aastex.layout:543
-#, fuzzy
 msgid "Filename to identify the corresponding figure file"
-msgstr "Značka odpovídajícího problému"
+msgstr "Filename to identify the corresponding figure file"
 
 #: lib/layouts/aastex.layout:558
 msgid "Facility"
@@ -7381,15 +7377,15 @@ msgstr "American Astronomical Society (AASTeX v. 6)"
 
 #: lib/layouts/aastex6.layout:59
 msgid "Software"
-msgstr ""
+msgstr "Software"
 
 #: lib/layouts/aastex6.layout:66
 msgid "Software:"
-msgstr ""
+msgstr "Software:"
 
 #: lib/layouts/aastex6.layout:99
 msgid "APPENDIX"
-msgstr ""
+msgstr "APPENDIX"
 
 #: lib/layouts/aastex6.layout:103
 msgid "References-"
@@ -7906,9 +7902,8 @@ msgstr "Seznam tabulek"
 #: lib/layouts/theorems-ams-chap-bytype.inc:55 lib/layouts/theorems-ams.inc:25
 #: lib/layouts/theorems-starred.inc:24
 #: lib/layouts/theorems-without-preamble.inc:31 lib/layouts/theorems.inc:25
-#, fuzzy
 msgid "Definitions & Theorems"
-msgstr "Definice \\thetheorem."
+msgstr "Definice a teorémy"
 
 #: lib/layouts/acmart.layout:555 lib/layouts/beamer.layout:1248
 #: lib/layouts/theorems-ams-bytype.inc:65
@@ -11446,6 +11441,7 @@ msgstr ""
 "opravy nejsou součástí jádra LaTeX-u kvůli dodržení zpětné kompatibility."
 "Pokud použijete tento balíček, je možné, že vysázený dokument bude odlišnýv "
 "budoucích verzích LaTeX-u díky dalším opravám, které přibudou do fixltx2e."
+" Poznámka: nové kernely LaTeX-u (>2015) již obsahují fixltx2e funkcionalitu, čímž se tento modul stal zastaralým."
 
 #: lib/layouts/fixme.module:2
 msgid "FiXme"
@@ -12740,12 +12736,11 @@ msgstr "NDB reference:"
 
 #: lib/layouts/iucr.layout:222 lib/layouts/iucr.layout:225
 msgid "Synopsis"
-msgstr ""
+msgstr "Synopsis"
 
 #: lib/layouts/jarticle.layout:3
-#, fuzzy
 msgid "Japanese Article (Standard Class)"
-msgstr "Beamer Article (Standard Class)"
+msgstr "Japanese Article (Standard Class)"
 
 #: lib/layouts/jasatex.layout:3
 msgid "Journal of the Acoustical Society of America (JASA)"
@@ -12780,33 +12775,28 @@ msgid "Online citation"
 msgstr "Online citation"
 
 #: lib/layouts/jbook.layout:3
-#, fuzzy
 msgid "Japanese Book (Standard Class)"
-msgstr "Book (Standard Class)"
+msgstr "Japanese Book (Standard Class)"
 
 #: lib/layouts/jgrga.layout:3
 msgid "American Geophysical Union (AGUPLUS JGR)"
 msgstr "American Geophysical Union (AGUPLUS JGR)"
 
 #: lib/layouts/jreport.layout:3
-#, fuzzy
 msgid "Japanese Report (Standard Class)"
-msgstr "Report (Standard Class)"
+msgstr "Japanese Report (Standard Class)"
 
 #: lib/layouts/jsarticle.layout:3
-#, fuzzy
 msgid "Japanese Article (JS Class)"
-msgstr "Japanese Article (jarticle)"
+msgstr "Japanese Article (JS Class)"
 
 #: lib/layouts/jsbook.layout:3
-#, fuzzy
 msgid "Japanese Book (JS Class)"
-msgstr "Japanese Book (jsbook)"
+msgstr "Japanese Book (JS Class)"
 
 #: lib/layouts/jss.layout:3
-#, fuzzy
 msgid "Journal of Statistical Software (JSS) version 2"
-msgstr "Journal of Statistical Software (JSS)"
+msgstr "Journal of Statistical Software (JSS) version 2"
 
 #: lib/layouts/jss.layout:107
 msgid "Plain Keywords"
@@ -14626,9 +14616,8 @@ msgid "List of Videos"
 msgstr "List of Videos"
 
 #: lib/layouts/revtex4-1.layout:292
-#, fuzzy
 msgid "Videos"
-msgstr "Video"
+msgstr "Videos"
 
 #: lib/layouts/revtex4-1.layout:295
 msgid "Float Link"
@@ -15095,9 +15084,8 @@ msgid "Slide*"
 msgstr "Slide*"
 
 #: lib/layouts/seminar.layout:125
-#, fuzzy
 msgid "List/TOC"
-msgstr "Seznamy / Obsah"
+msgstr "List/TOC"
 
 #: lib/layouts/seminar.layout:135
 msgid "[List Of Slides]"
@@ -15241,9 +15229,8 @@ msgid "AMS subject classifications:"
 msgstr "AMS subject classifications:"
 
 #: lib/layouts/sigplanconf.layout:3
-#, fuzzy
 msgid "ACM SIGPLAN (Obsolete)"
-msgstr "ACM SIGPLAN"
+msgstr "ACM SIGPLAN (Obsolete)"
 
 #: lib/layouts/sigplanconf.layout:85
 msgid "Name of the conference"
@@ -15310,9 +15297,8 @@ msgid "Inderscience 9.5 x 6.5 Journals"
 msgstr "Inderscience 9.5 x 6.5 Journals"
 
 #: lib/layouts/singlecol.layout:3
-#, fuzzy
 msgid "Inderscience Journals (Obsolete)"
-msgstr "Inderscience Journals (Obsolete Version)"
+msgstr "Inderscience Journals (Obsolete)"
 
 #: lib/layouts/slides.layout:107
 msgid "New Slide:"
@@ -15376,7 +15362,7 @@ msgstr "ed."
 
 #: lib/layouts/stdciteformats.inc:22
 msgid "eds."
-msgstr ""
+msgstr "eds."
 
 #: lib/layouts/stdciteformats.inc:23
 msgid "vol."
@@ -15436,9 +15422,8 @@ msgid "\\fnsymbol{thanks}"
 msgstr ""
 
 #: lib/layouts/stdfloatnames.inc:7
-#, fuzzy
 msgid "Algorithms"
-msgstr "Algoritmus"
+msgstr "Algoritmy"
 
 #: lib/layouts/stdfloatnames.inc:8
 #, fuzzy
@@ -15786,9 +15771,8 @@ msgid "Title*"
 msgstr "Title*"
 
 #: lib/layouts/svmult.layout:37
-#, fuzzy
 msgid "Title*:"
-msgstr "Title*: "
+msgstr "Title*:"
 
 #: lib/layouts/svmult.layout:66 lib/layouts/svmult.layout:151
 msgid "Contributors"
@@ -15846,14 +15830,12 @@ msgstr ""
 "např. 'Table 2.1'"
 
 #: lib/layouts/tarticle.layout:3
-#, fuzzy
 msgid "Japanese Article (Standard Class: Vertical Writing)"
-msgstr "Japanese Article (Vertical Writing)"
+msgstr "Japanese Article (Standard Class: Vertical Writing)"
 
 #: lib/layouts/tbook.layout:3
-#, fuzzy
 msgid "Japanese Book (Standard Class: Vertical Writing)"
-msgstr "Japanese Book (Vertical Writing)"
+msgstr "Japanese Book (Standard Class: Vertical Writing)"
 
 #: lib/layouts/tcolorbox.module:2
 msgid "Fancy Colored Boxes"
@@ -16984,9 +16966,8 @@ msgid "Armenian"
 msgstr "Arménština"
 
 #: lib/languages:208
-#, fuzzy
 msgid "Asturian"
-msgstr "Rakousky"
+msgstr "Asturština"
 
 #: lib/languages:216
 msgid "English (Australia)"
@@ -17017,9 +16998,8 @@ msgid "Belarusian"
 msgstr "Běloruština"
 
 #: lib/languages:293
-#, fuzzy
 msgid "Bosnian"
-msgstr "Estonština"
+msgstr "Bosenština"
 
 #: lib/languages:301
 msgid "Portuguese (Brazil)"
@@ -17130,9 +17110,8 @@ msgid "German (Switzerland)"
 msgstr "Němčina (Švýcarsko)"
 
 #: lib/languages:601
-#, fuzzy
 msgid "German (Switzerland, old spelling)"
-msgstr "Němčina (Rakousko, starý pravopis)"
+msgstr "Němčina (Švýcarsko, starý pravopis)"
 
 #: lib/languages:611 lib/ui/stdtoolbars.inc:307 lib/ui/stdtoolbars.inc:600
 #: src/frontends/qt4/GuiSymbols.cpp:60
@@ -17185,7 +17164,7 @@ msgstr "Kazachština"
 
 #: lib/languages:759
 msgid "Khmer"
-msgstr ""
+msgstr "Khmerština"
 
 #: lib/languages:766
 msgid "Korean"
@@ -17217,7 +17196,7 @@ msgstr "Maďarština"
 
 #: lib/languages:847
 msgid "Macedonian"
-msgstr ""
+msgstr "Makedonština"
 
 #: lib/languages:857
 msgid "Marathi"
@@ -17260,9 +17239,8 @@ msgid "Romanian"
 msgstr "Rumunština"
 
 #: lib/languages:969
-#, fuzzy
 msgid "Romansh"
-msgstr "Antikva (Roman)"
+msgstr "Rétorománština"
 
 #: lib/languages:979
 msgid "Russian"
@@ -17382,11 +17360,11 @@ msgstr "Bitstream Charter (PSNFSS)"
 
 #: lib/latexfonts:128
 msgid "Crimson (Cochineal)"
-msgstr ""
+msgstr "Crimson (Cochineal)"
 
 #: lib/latexfonts:136
 msgid "Crimson"
-msgstr ""
+msgstr "Crimson"
 
 #: lib/latexfonts:142
 msgid "Computer Modern Roman"
@@ -17425,9 +17403,8 @@ msgid "New Century Schoolbook"
 msgstr "New Century Schoolbook"
 
 #: lib/latexfonts:293 lib/latexfonts:301
-#, fuzzy
 msgid "Noto Serif"
-msgstr "Bera Serif"
+msgstr "Noto Serif"
 
 #: lib/latexfonts:307 lib/latexfonts:319 lib/latexfonts:326 lib/latexfonts:332
 #: lib/latexfonts:339
@@ -17524,7 +17501,7 @@ msgstr "Latin Modern Sans"
 
 #: lib/latexfonts:556
 msgid "Noto Sans"
-msgstr ""
+msgstr "Noto Sans"
 
 #: lib/latexfonts:563
 msgid "TeX Gyre Adventor"
@@ -17568,7 +17545,7 @@ msgstr "LuxiMono"
 
 #: lib/latexfonts:636
 msgid "Noto Mono"
-msgstr ""
+msgstr "Noto Mono"
 
 #: lib/latexfonts:643
 msgid "TeX Gyre Cursor"
@@ -17579,9 +17556,8 @@ msgid "TX Typewriter"
 msgstr "TX Typewriter"
 
 #: lib/latexfonts:661
-#, fuzzy
 msgid "Crimson (New TX)"
-msgstr "Times Roman (New TX)"
+msgstr "Crimson (New TX)"
 
 #: lib/latexfonts:669
 msgid "Euler VM"
@@ -17992,9 +17968,8 @@ msgid "Textual Reference|x"
 msgstr "Doslovná reference|D"
 
 #: lib/ui/stdcontext.inc:97
-#, fuzzy
 msgid "Label Only|L"
-msgstr "Pouze preambule"
+msgstr "Pouze štítek|k"
 
 #: lib/ui/stdcontext.inc:99 lib/ui/stdcontext.inc:111 lib/ui/stdcontext.inc:121
 #: lib/ui/stdcontext.inc:129 lib/ui/stdcontext.inc:138
@@ -18511,28 +18486,24 @@ msgid "Move Column Left"
 msgstr "Přesun sloupce doleva"
 
 #: lib/ui/stdcontext.inc:461 lib/ui/stdmenus.inc:195
-#, fuzzy
 msgid "Multi-page Table|g"
-msgstr "Ruled Table"
+msgstr "Vícestranná tabulka|t"
 
 #: lib/ui/stdcontext.inc:462
-#, fuzzy
 msgid "Formal Style|m"
-msgstr "Tučný styl|u"
+msgstr "Formální styl|F"
 
 #: lib/ui/stdcontext.inc:464
-#, fuzzy
 msgid "Borders|d"
-msgstr "&Okraje"
+msgstr "Okraje|O"
 
 #: lib/ui/stdcontext.inc:465
 msgid "Alignment|i"
 msgstr "Zarovnání|a"
 
 #: lib/ui/stdcontext.inc:466
-#, fuzzy
 msgid "Columns/Rows|C"
-msgstr "Columns"
+msgstr "Sloupce/Řádky|S"
 
 #: lib/ui/stdcontext.inc:476 lib/ui/stdmenus.inc:30
 msgid "File|F"
@@ -18639,34 +18610,28 @@ msgid "Wrap by Preview|y"
 msgstr "Obalit náhledem (preview)|O"
 
 #: lib/ui/stdcontext.inc:677 lib/ui/stdmenus.inc:355
-#, fuzzy
 msgid "Lock Toolbars|L"
-msgstr "Panely nástrojů|n"
+msgstr "Zamknout panely nástrojů|n"
 
 #: lib/ui/stdcontext.inc:679 lib/ui/stdmenus.inc:357
-#, fuzzy
 msgid "Small-sized Icons"
 msgstr "Malé ikony"
 
 #: lib/ui/stdcontext.inc:680 lib/ui/stdmenus.inc:358
-#, fuzzy
 msgid "Normal-sized Icons"
 msgstr "Normální ikony"
 
 #: lib/ui/stdcontext.inc:681 lib/ui/stdmenus.inc:359
-#, fuzzy
 msgid "Big-sized Icons"
 msgstr "Velké ikony"
 
 #: lib/ui/stdcontext.inc:682 lib/ui/stdmenus.inc:360
-#, fuzzy
 msgid "Huge-sized Icons"
-msgstr "Velké ikony"
+msgstr "Extra-velké ikony"
 
 #: lib/ui/stdcontext.inc:683 lib/ui/stdmenus.inc:361
-#, fuzzy
 msgid "Giant-sized Icons"
-msgstr "Velké ikony"
+msgstr "Gigantické ikony"
 
 #: lib/ui/stdmenus.inc:31
 msgid "Edit|E"
@@ -18985,9 +18950,8 @@ msgid "Lowercase|L"
 msgstr "Malá písmena|M"
 
 #: lib/ui/stdmenus.inc:196
-#, fuzzy
 msgid "Formal Style|F"
-msgstr "Tučný styl|u"
+msgstr "Formální styl|F"
 
 #: lib/ui/stdmenus.inc:198
 msgid "Multicolumn|M"
@@ -19343,14 +19307,12 @@ msgid "End of Sentence|E"
 msgstr "Konec věty|K"
 
 #: lib/ui/stdmenus.inc:409
-#, fuzzy
 msgid "Plain Quotation Mark|Q"
-msgstr "Affiliation Mark"
+msgstr "Uvozovky|U"
 
 #: lib/ui/stdmenus.inc:410
-#, fuzzy
 msgid "Inner Quotation Mark|n"
-msgstr "úhel rotace"
+msgstr "Vnitřní uvozovky|n"
 
 #: lib/ui/stdmenus.inc:411
 msgid "Protected Hyphen|y"
@@ -19517,9 +19479,8 @@ msgid "Update Master Document|a"
 msgstr "Aktualizovat hlavní dokument|A"
 
 #: lib/ui/stdmenus.inc:546
-#, fuzzy
 msgid "Cancel Background Process|P"
-msgstr "Pozadí s odstínem|P"
+msgstr "Zrušit proces na pozadí|Z"
 
 #: lib/ui/stdmenus.inc:548
 msgid "Compressed|o"
@@ -19686,9 +19647,8 @@ msgid "Braille|a"
 msgstr "Braillovo písmo|B"
 
 #: lib/ui/stdmenus.inc:630
-#, fuzzy
 msgid "Colored boxes|r"
-msgstr "Barvy"
+msgstr "Barevné rámečky|B"
 
 #: lib/ui/stdmenus.inc:631
 msgid "Feynman-diagram|F"
@@ -19813,9 +19773,8 @@ msgid "Toggle table toolbar"
 msgstr "Přepnout panel nástrojů pro tabulku"
 
 #: lib/ui/stdtoolbars.inc:98
-#, fuzzy
 msgid "Toggle review toolbar"
-msgstr "Přepnout panel nástrojů pro tabulku"
+msgstr "Přepnout panel nástrojů pro revize"
 
 #: lib/ui/stdtoolbars.inc:101
 msgid "View/Update"
@@ -24582,9 +24541,8 @@ msgid ""
 msgstr ""
 
 #: lib/xtemplates/vector_graphics.xtemplate:14
-#, fuzzy
 msgid "VectorGraphics"
-msgstr "Obrázky"
+msgstr "Vektorový obrázek"
 
 #: lib/xtemplates/vector_graphics.xtemplate:15
 #: lib/xtemplates/vector_graphics.xtemplate:24
@@ -26168,20 +26126,19 @@ msgstr "fialová"
 
 #: src/Color.cpp:215
 msgid "olive"
-msgstr ""
+msgstr "olivová"
 
 #: src/Color.cpp:216
-#, fuzzy
 msgid "orange"
-msgstr "Rozmezí"
+msgstr "oranžová"
 
 #: src/Color.cpp:217
 msgid "pink"
-msgstr ""
+msgstr "růžová"
 
 #: src/Color.cpp:218
 msgid "purple"
-msgstr ""
+msgstr "nachová"
 
 #: src/Color.cpp:219
 msgid "red"
@@ -26189,11 +26146,11 @@ msgstr "červená"
 
 #: src/Color.cpp:220
 msgid "teal"
-msgstr ""
+msgstr "modř kachní"
 
 #: src/Color.cpp:221
 msgid "violet"
-msgstr ""
+msgstr "fialová"
 
 #: src/Color.cpp:222
 msgid "yellow"
@@ -26508,11 +26465,14 @@ msgid ""
 "support offered by LyX for allowing this privilege only to documents that "
 "actually need it, instead.</p>"
 msgstr ""
+"<p>Následující backend LaTeX-u je nakonfigurován pro běh externích programů pro jakýkoliv dokument:"
+"</p><center><p><tt>%1$s</tt></p></"
+"center><p>Jedná se o nebezpečnou konfiguraci. Rozvažte, zda-li toto privilegium nepovolit pouze pro vybrané dokumenty, které to ve skutečnosti potřebují.</p>"
+
 
 #: src/Converter.cpp:303
-#, fuzzy
 msgid "Security Warning"
-msgstr "Další &upozornění"
+msgstr "Bezpečnostní upozornění"
 
 #: src/Converter.cpp:316
 #, c-format
@@ -26522,6 +26482,9 @@ msgid ""
 "programs can execute arbitrary commands on your system, including dangerous "
 "ones, if instructed to do so by a maliciously crafted LyX document.</p>"
 msgstr ""
+"<p>Následující backend LaTeX-u je nakonfigurován pro běh externích programů:"
+"</p><center><p><tt>%1$s</tt></p></"
+"center><p>Externí programy mohou spouštět libovolné procesy ve vašem systému, včetně škodlivého kódu, pokud bude podstrčen do LyX-ového dokumentu.</p>"
 
 #: src/Converter.cpp:323
 #, c-format
@@ -26531,10 +26494,14 @@ msgid ""
 "can execute arbitrary commands on your system, including dangerous ones, if "
 "instructed to do so by a maliciously crafted LyX document.</p>"
 msgstr ""
+"<p>Následující operace vyžaduje použití konvertoru z %2$s do %3$s:"
+"</p><blockquote><p><tt>%1$s</tt></p></blockquote><p>"
+"Tento externí program může spouštět libovolné procesy ve vašem systému, včetně škodlivého kódu, pokud bude podstrčen do LyX-ového dokumentu.</p>"
+
 
 #: src/Converter.cpp:333
 msgid "An external converter is disabled for security reasons"
-msgstr ""
+msgstr "Externí konvertor je vypnutý z bezpečnostních důvodů"
 
 #: src/Converter.cpp:335
 msgid ""
@@ -26543,60 +26510,62 @@ msgid ""
 "Converters</i> and uncheck <i>Security &#x25b9; Forbid needauth converters</"
 "i>.)"
 msgstr ""
+"<p><b>Vaše současná nastavení brání spuštení.</b></p><p>"
+"Pro změnu nastavení jděte do <i>Nastavení &#x25b9; Obsluha souborů &#x25b9; "
+"Konvertory</i> a odškrtněte <i>Bezpečnost &#x25b9; Zákaz použití konvertorů vyžadujících souhlas</"
+"i>.)"
+
 
 #: src/Converter.cpp:344
 msgid "A LaTeX backend requires your authorization"
-msgstr ""
+msgstr "Backend LaTeX-u vyžaduje vaši autorizaci"
 
 #: src/Converter.cpp:345
 msgid "An external converter requires your authorization"
-msgstr ""
+msgstr "Externí konvertor vyžaduje vaši autorizaci"
 
 #: src/Converter.cpp:348
 msgid ""
 "<p>Should LaTeX backends be allowed to run external programs?</p><p><b>Allow "
 "them only if you trust the origin/sender of the LyX document!</b></p>"
 msgstr ""
+"<p>Mají mít backendy LaTeX-u dovoleno spouštět externí programy?</p><p><b>Povolte "
+"je pouze v případě, že důvěřujete zdroji/původci dokumentů LyX-u!</b></p>"
 
 #: src/Converter.cpp:351
 msgid ""
 "<p>Would you like to run this converter?</p><p><b>Only run if you trust the "
 "origin/sender of the LyX document!</b></p>"
 msgstr ""
+"Přejete si spustit tento konvertor?</p><p><b>Povolte spuštění pouze v případě, že důvěřujete zdroji/původci dokumentů LyX-u!"
 
 #: src/Converter.cpp:355
-#, fuzzy
 msgid "Do &not allow"
-msgstr "Nenačítat"
+msgstr "&Nepovolit"
 
 #: src/Converter.cpp:355
-#, fuzzy
 msgid "Do &not run"
-msgstr "Nenačítat"
+msgstr "N&espouštět"
 
 #: src/Converter.cpp:356
-#, fuzzy
 msgid "A&llow"
-msgstr "žlutá"
+msgstr "&Povollit"
 
 #: src/Converter.cpp:356
 msgid "&Run"
-msgstr ""
+msgstr "&Spustit"
 
 #: src/Converter.cpp:358
-#, fuzzy
 msgid "&Always allow for this document"
-msgstr "Zavřít nebo skrýt dokument"
+msgstr "Povolit &vždy pro tento dokument"
 
 #: src/Converter.cpp:359
-#, fuzzy
 msgid "&Always run for this document"
-msgstr "Zavřít nebo skrýt dokument"
+msgstr "Vždy sp&ouštět pro tento dokument"
 
 #: src/Converter.cpp:427 src/Converter.cpp:668 src/Converter.cpp:697
-#, fuzzy
 msgid "Converter killed"
-msgstr "Vyrovnávací paměť pro konvertor souborů"
+msgstr "Konvertor přerušen"
 
 #: src/Converter.cpp:428 src/Converter.cpp:669 src/Converter.cpp:698
 #, c-format
@@ -26604,7 +26573,7 @@ msgid ""
 "The running converter\n"
 " %1$s\n"
 "was killed by the user."
-msgstr ""
+msgstr "Běžící konvertor %1$s\nbyl zrušen uživatelem."
 
 #: src/Converter.cpp:447 src/Converter.cpp:722 src/Converter.cpp:745
 #: src/Converter.cpp:788
