@@ -341,7 +341,7 @@ void GuiBox::paramsToDialog(Inset const * inset)
 	// add the entry "Stretch" if the box is \makebox or \framebox and if not already there
 	if ((inner_type == "makebox" || (type == "Boxed" && inner_type == "none"))
 		&& halignCO->count() < 4)
-		halignCO->addItem(toqstr("Stretch"));
+		halignCO->addItem(qt_("Stretch"));
 	else if (inner_type != "makebox" && (type != "Boxed" && inner_type != "none"))
 		halignCO->removeItem(3); 
 	// pagebreak is only allowed for Boxed without inner box
@@ -556,7 +556,7 @@ bool GuiBox::checkWidgets(bool readonly) const
 		// add the entry "Stretch" if the box is \makebox or \framebox and if not already there
 		if ((itype == "makebox" || (outer == "Boxed" && itype == "none"))
 			&& halignCO->count() < 4)
-			halignCO->addItem(toqstr("Stretch"));
+			halignCO->addItem(qt_("Stretch"));
 		else if (itype != "makebox" && (outer != "Boxed" && itype != "none"))
 			halignCO->removeItem(3);
 		// pagebreak is only allowed for Boxed without inner box
