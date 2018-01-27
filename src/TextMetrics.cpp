@@ -862,7 +862,7 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 	// or the end of the par, then build a representation of the row.
 	pos_type i = pos;
 	FontIterator fi = FontIterator(*this, par, row.pit(), pos);
-	while (i < end && row.width() <= width) {
+	while (i < end && (i == pos || row.width() <= width)) {
 		char_type c = par.getChar(i);
 		// The most special cases are handled first.
 		if (par.isInset(i)) {
