@@ -106,6 +106,9 @@ What's new
 - Fix crash when changing preview preferences while previewable
   external inset is open (bug 10785).
 
+- Fix problem with decimal special height/width values in the Box
+  dialog in some localizations (bug 11000).
+
 - Remove duplicate entries from the Symbols dialog (bug 10644).
 
 - Always show the float type in the float inset label (bug 10618).

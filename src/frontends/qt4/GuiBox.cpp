@@ -440,7 +440,7 @@ docstring GuiBox::dialogToParams() const
 		if (ids_spec_.contains(unit) && !isValidLength(fromqstr(value))) {
 			params.special = fromqstr(unit);
 			// Note: the unit is simply ignored in this case
-			params.width = Length(value.toDouble(), Length::IN);
+			params.width = Length(widgetToDouble(widthED), Length::IN);
 		} else {
 			params.special = "none";
 			// we must specify a valid length in this case
@@ -466,7 +466,7 @@ docstring GuiBox::dialogToParams() const
 		if (ids_spec_.contains(unit) && !isValidLength(fromqstr(value))) {
 			params.height_special = fromqstr(unit);
 			// Note: the unit is simply ignored in this case
-			params.height = Length(value.toDouble(), Length::IN);
+			params.height = Length(widgetToDouble(heightED), Length::IN);
 		} else {
 			params.height_special = "none";
 			params.height =
