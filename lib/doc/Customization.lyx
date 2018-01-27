@@ -124,11 +124,12 @@ logicalmkup
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -22950,6 +22951,10 @@ The second sort of special definition might look like this:
 \end_layout
 
 \begin_layout LyX-Code
+
+\change_inserted -712698321 1517060160
+B
+\change_unchanged
 _pptext pp.
 \end_layout
 
@@ -22961,13 +22966,55 @@ This defines a translatable piece of text, which allows relevant parts of
 status collapsed
 
 \begin_layout Plain Layout
-%_pptext%
+%
+\change_inserted -712698321 1517060167
+B
+\change_unchanged
+_pptext%
 \end_layout
 
 \end_inset
 
 .
- Several of these are predefined in 
+ 
+\change_inserted -712698321 1517060791
+Note that there are two different translation paths: All definitions starting
+ with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1517060380
+B_
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+, such as in the example above, will be translated to the currently active
+ buffer language (so the translation will match the generated document).
+ All definitions starting with underscore only will be translated to the
+ GUI language.
+ This is the proper translation for strings that only occur in the dialogs
+ or on buttons, such as this one:
+\end_layout
+
+\begin_layout LyX-Code
+
+\change_inserted -712698321 1517060574
+_addtobib Add to bibliography only.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+Several of these 
+\change_inserted -712698321 1517060688
+translatable strings 
+\change_unchanged
+are predefined in 
 \begin_inset Flex Code
 status collapsed
 
@@ -22993,7 +23040,17 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-So here then is an example that use all these features:
+So here then is an example that use
+\change_inserted -712698321 1517061156
+s
+\change_unchanged
+ 
+\change_deleted -712698321 1517061147
+all
+\change_inserted -712698321 1517061148
+several of
+\change_unchanged
+ these features:
 \begin_inset VSpace defskip
 \end_inset
 
@@ -23004,7 +23061,11 @@ So here then is an example that use all these features:
 \noindent
 
 \family sans
-!authoredit {%author%[[%author%, ]][[{%editor%[[%editor%, %_edtext%, ]]}]]}
+!authoredit {%author%[[%author%, ]][[{%editor%[[%editor%, %
+\change_inserted -712698321 1517060173
+B
+\change_unchanged
+_edtext%, ]]}]]}
 \end_layout
 
 \begin_layout Standard
@@ -23028,6 +23089,10 @@ author
 status collapsed
 
 \begin_layout Plain Layout
+
+\change_inserted -712698321 1517060231
+B
+\change_unchanged
 _edtext
 \end_layout
 

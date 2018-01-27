@@ -21860,24 +21860,48 @@ Die zweite spezielle Form sieht so aus:
 \end_layout
 
 \begin_layout LyX-Code
-_pptext pp.
+B_pptext pp.
 \end_layout
 
 \begin_layout Standard
-Dies definiert ein übersetzbares Stück Text, womit es möglich wird, relevante
+Dies definiert ein übersetzbares Textsegment, womit es möglich wird, relevante
  Teile der bibliographischen Angaben zu übersetzen.
  Auch dies kann in Definitionen wie ein Platzhalter verwendet werden: 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-%_pptext%
+%B_pptext%
 \end_layout
 
 \end_inset
 
 .
- Viele von diesen sind in 
+ Beachten Sie, dass es zwei verschiedene Arten der Übersetzung gibt.
+ Alle Definitionen, die wie das obige Beispiel mit 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+B_
+\end_layout
+
+\end_inset
+
+ beginnen werden in die jeweils aktuelle Sprache des Dokuments oder Abschnitts
+ übersetzt (so dass die Übersetzung mit dem ausgegebenen Dokument übereinstimmt).
+ Alle Definitionen, die nur mit Unterstrich beginnen, werden in die aktuelle
+ Sprache der Benutzeroberfläche übersetzt.
+ Das ist die angemessene Übersetzung für Textsegmente, die nur in Dialogfenstern
+ oder auf Knöpfen in der Arbeitsfläche erscheinen, wie etwas diese:
+\end_layout
+
+\begin_layout LyX-Code
+_addtobib Add to bibliography only.
+\end_layout
+
+\begin_layout Standard
+Viele von diesen übersetzbaren Textsegmenten sind in 
 \begin_inset Flex Code
 status collapsed
 
@@ -21914,7 +21938,7 @@ Hier ist abschließend ein Beispiel, das mehrere Möglichkeiten ausschöpft:
 \noindent
 
 \family sans
-!authoredit {%author%[[%author%, ]][[{%editor%[[%editor%, %_edtext%, ]]}]]}
+!authoredit {%author%[[%author%, ]][[{%editor%[[%editor%, %B_edtext%, ]]}]]}
 \end_layout
 
 \begin_layout Standard
@@ -21928,7 +21952,7 @@ Dies definiert ein Makro das den Autornamen ausgibt, gefolgt von einem Komma,
 status collapsed
 
 \begin_layout Plain Layout
-_edtext
+B_edtext
 \end_layout
 
 \end_inset
