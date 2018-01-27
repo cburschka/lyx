@@ -311,10 +311,10 @@ void GuiCitation::updateFormatting(CitationStyle const & currentStyle)
 
 	forceuppercaseCB->setEnabled(force && haveSelection);
 	if (force && haveSelection)
-		forceuppercaseCB->setToolTip("Force upper case in names (\"Del Piero\", not \"del Piero\").");
+		forceuppercaseCB->setToolTip(qt_("Force upper case in names (\"Del Piero\", not \"del Piero\")."));
 	else
-		forceuppercaseCB->setToolTip("Force upper case in names (\"Del Piero\", not \"del Piero\"), "
-					     "if the current citation style supports this.");
+		forceuppercaseCB->setToolTip(qt_("Force upper case in names (\"Del Piero\", not \"del Piero\"), "
+					     "if the current citation style supports this."));
 	starredCB->setEnabled(full && haveSelection);
 	textBeforeED->setEnabled(textbefore && haveSelection);
 	textBeforeLA->setEnabled(textbefore && haveSelection);
