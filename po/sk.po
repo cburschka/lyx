@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-01-20 10:13+0100\n"
-"PO-Revision-Date: 2018-01-20 09:14+0000\n"
+"POT-Creation-Date: 2018-01-28 13:22+0100\n"
+"PO-Revision-Date: 2018-01-28 12:22+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -29074,6 +29074,11 @@ msgstr "Text predchádzajúci referencie (napr., \"por.\")"
 #: src/frontends/qt4/GuiCitation.cpp:306
 msgid "Text that follows the reference (e.g., pages)"
 msgstr "Text nasledujúci referencie (napr., strany)"
+
+#: src/frontends/qt4/GuiCitation.cpp:314
+msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")."
+msgstr ""
+"Vynúti veľké prvé písmená v menách (\"Del Piero\", miesto \"del Piero\")."
 
 #: src/frontends/qt4/GuiCitation.cpp:349
 msgid "Always list all authors (rather than using \"et al.\")"
