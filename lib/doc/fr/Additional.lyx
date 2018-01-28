@@ -88,9 +88,11 @@ shapepar
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine basic
-\cite_engine_type default
+\cite_engine biblatex
+\cite_engine_type authoryear
 \biblio_style plain
+\biblatex_bibstyle authoryear
+\biblatex_citestyle authoryear
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -133,7 +135,7 @@ Options avancées de \SpecialChar LyX
 \begin_layout Subtitle
 Version 2.3.x
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Informations de révision :
@@ -167,7 +169,8 @@ appendix
 \end_layout
 
 \begin_layout Plain Layout
-Mise à jour pour 2.3 (JPC): 04/08/2017, nouveautés 2.3, revue générale
+Mise à jour pour 2.3 (JPC): 04/08/2017, nouveautés 2.3, revue générale; 28/01/2018
+, revue avant 2.3.0
 \end_layout
 
 \begin_layout Plain Layout
@@ -1671,54 +1674,46 @@ hbox
 adore
 \emph default
  cracher ce genre de messages.
+ Il engendre apparemment au moins un message de ce type pour n'importe quel
+ document que vous écrivez.
+ Ces messages vous préviennent que les lignes sont trop longues et débordent
+ sur la marge de droite.
+ Ceci se produit si \SpecialChar LaTeX
+ ne trouve pas comment couper les lignes de manière
+ raisonnablement correcte (notoirement avec une police à chasse fixe, du
+ fait que cette police ne permet pas trouver les points de césure automatiquemen
+t).
+ Dans de nombreux cas, c'est impossible à déceler dans le rendu final (ce
+ peut être un point ou deux).
+ Parfois cependant, les lignes débordent visiblement dans la marge, et c'est
+ quelque chose que vous ne souhaiterez pas voir dans votre impression finale.
+\begin_inset Newline newline
+\end_inset
 
-\lang english
- It seems to generate at least one of these messages for just about any
- document you write.
-
-\lang french
- Ils vous préviennent que les lignes sont trop longues et débordent sur
- la marge de droite.
-
-\lang english
- This happens if \SpecialChar LaTeX
- does not find a reasonable way to break the lines (notoriously
- often with typewriter font, since this does not allow for automatic break
- points).
- In many cases,
-\lang french
- c'est impossible à déceler dans le rendu final (ce peut être un point ou
- deux).
- 
-\lang english
-Sometimes, however, the lines run rather visibly into the margin; something
- you will not want to have in your final print.here are several global ways
- to try to minimize the overfull lines.
- Clicking 
+Il y a plusieurs solutions pour minimiser l'effet de ces débordements.
+ Cocher 
 \family sans
-Enable micro-typographic extensions
+Activer les fonctionnalités micro-typographiques
 \family default
- in 
+ dans 
 \family sans
 Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Fonts
+Paramètres\SpecialChar menuseparator
+Polices
 \family default
- might already improve things a lot.
- Furthermore, \SpecialChar LaTeX
- code such as the following in 
+ peut déjà améliorer significativement les choses.
+ Par ailleurs, un code \SpecialChar LaTeX
+ tel que celui qui suit, inséré dans 
 \family sans
 Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Preamble
+Paramètres\SpecialChar menuseparator
+Préambule
 \family default
- usually reduces the overfull lines drastically (we use this in the preamble
- of this document):
+ réduit d'habitude massivement les débordements de ligne (ce code est inséré
+ dans le préambule du présent document):
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
 
 \backslash
 tolerance 1414
@@ -1742,19 +1737,14 @@ emergencystretch 1.5em
 hfuzz 0.3pt
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
-
-\lang english
-In some cases, however, you eventually have to rewrite the text to get the
- line breaking right.
+Dans certains, cependant, vous devrez finalement réécrire le texte pour
+ obtenir des césures correctes
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-For more information, see 
+Pour les détails , voir 
 \begin_inset Flex URL
 status open
 
@@ -1770,45 +1760,46 @@ http://www.tex.ac.uk/FAQ-overfull.html
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In any case, you should check the respective lines, at least for the final
- version of your document.
- Your eyes will tell you if there's a problem with something that's too
- wide.
+Dans tous les cas, il faut vérifier les lignes concernées, au plus tard
+ avant l’édition de la version finale du document.
+ Vos yeux vous diront s'il y a un problème avec un espacement trop grand
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
+Vous pouvez aussi activer l'option 
+\begin_inset Quotes cld
+\end_inset
 
-\lang english
-You can also enable the `draft' option in 
+draft
+\begin_inset Quotes crd
+\end_inset
+
+ dans les options de classe via 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Document\SpecialChar menuseparator
-Settings
+Paramètres\SpecialChar menuseparator
+Classe de document
 \end_layout
 
 \end_inset
 
-, and then \SpecialChar LaTeX
- will draw a black box in the margin of lines that are overfull.
+: \SpecialChar LaTeX
+ tracera une barre noire dans la marge des lignes qui débordent.
 \end_layout
 
 \end_inset
 
-
+.
 \end_layout
 
-\end_deeper
 \end_deeper
 \begin_layout Itemize
 
@@ -1828,16 +1819,10 @@ hbox
 \begin_deeper
 \begin_layout Standard
 Pas aussi courant que son cousin.
- 
-\lang english
-This happens again if \SpecialChar LaTeX
- does not find a reasonable break point and consequently
- generates too loose lines.As with the overfull lines, you should check if
- this is a visible problem.
-\end_layout
-
-\begin_layout Standard
-Vous pouvez tout autant les ignorer que les précédents.
+ Ceci de produit si \SpecialChar LaTeX
+ ne trouve pas de point de césure raisonnable et par
+ conséquent crée des lignes trop aérées.
+ Comme précédemment, vérifiez si cela se voit.
 \end_layout
 
 \end_deeper
@@ -2164,13 +2149,10 @@ Personnaliser une bibliographie avec Bib\SpecialChar TeX
 
 \begin_layout Standard
 L'essentiel des bases de l'utilisation de Bib\SpecialChar TeX
-
-\lang english
- or 
+ ou 
 \family sans
 Biblatex
 \family default
-\lang french
  sont décrites dans le paragraphe 
 \emph on
 Les bases de données bibliographiques 
@@ -2212,15 +2194,11 @@ Knuth 1984a
 
 ).
  \SpecialChar LyX
- gère trois paquetages qui fournissent ce style,
-\lang english
- 
+ gère trois paquetages qui fournissent ce style, 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 biblatex
 \end_layout
 
@@ -2228,7 +2206,6 @@ biblatex
 
 , 
 \family typewriter
-\lang french
 natbib
 \family default
  et 
@@ -2245,34 +2222,28 @@ jurabib
 natbib
 \family default
  qui est réputé.
- 
-\lang english
-look for specific citation styles common in law studies
-\lang french
+ Si vous cherchez des styles de citation adaptés aux documents juridiques,
  vous pouvez envisager d'utiliser le paquetage plus récent 
 \family typewriter
 jurabib
 \family default
 .
-
-\lang english
- If you want to have full control over the formatting or look for advanced
- features such as ibidem, footnote citations, full title citations, advanced
- date formats (such as 400 BC) or full localization to other languages than
- English, you should definitely consider 
+ Si vous voulez contrôler complètement la mise en forme ou si vous cherches
+ des fonctionnalités sophistiquées comme ibidem, citations en notes de bas
+ de page, citations plein titre, formats de dates évolués (comme 400 AC)
+ ou une internationalisation complète dans d'autres langues que l'anglais,
+ vous devriez vraiment utiliser 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 biblatex
 \end_layout
 
 \end_inset
 
-, which exceeds all other packages in terms of features, but is also quite
- heavy and more resource-hungry.
+, qui surpasse tous les autres paquetages en termes de fonctionnalités,
+ mais qui est également assez lourd et consommateur de ressources.
 \end_layout
 
 \begin_layout Standard
@@ -2287,15 +2258,12 @@ Paramètres
 \family sans
 Bibliographie
 \family default
-\lang english
- the 
+ le 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Style Format
+Format du style
 \end_layout
 
 \end_inset
@@ -2305,8 +2273,16 @@ Style Format
 status collapsed
 
 \begin_layout Plain Layout
+Basique (BibTeX)
+\end_layout
 
-\lang english
+\end_inset
+
+, 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
 Biblatex
 \end_layout
 
@@ -2317,9 +2293,7 @@ Biblatex
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Biblatex (Natbib mode)
+Biblatex (mode Natbib)
 \end_layout
 
 \end_inset
@@ -2329,8 +2303,6 @@ Biblatex (Natbib mode)
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Natbib (BibTeX)
 \end_layout
 
@@ -2341,21 +2313,21 @@ Natbib (BibTeX)
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Jurabib (BibTeX)
 \end_layout
 
 \end_inset
 
- (see sec.
+ (voir la section
 \begin_inset space ~
 \end_inset
 
-6.5.3 in the User's Guide for more information on these choices).
- 
-\lang french
-Avec ces tous ces paquetages, vous aurez des options supplémentaires dans
+6.5.3 du 
+\emph on
+Guide de l'utilisateur
+\emph default
+ pour les détails au sujet de ces choix).
+ Avec ces tous ces paquetages, vous aurez des options supplémentaires dans
  le dialogue 
 \family sans
 Citation
@@ -2522,7 +2494,7 @@ Bibliographie
 .
  Activez l'option 
 \family sans
-Bibliographies
+Bibliographie
 \begin_inset space ~
 \end_inset
 
@@ -2532,7 +2504,7 @@ subdivisée
  Vous pouvez maintenant insérer plusieurs bibliographies Bib\SpecialChar TeX
 , une par section
  de votre bibliographie.
- Pour revenir à notre exemple : Insérez une bibliographie Bib\SpecialChar TeX
+ Pour revenir à notre exemple : insérez une bibliographie Bib\SpecialChar TeX
  pour la base
  de donnée 
 \family typewriter
@@ -2554,7 +2526,7 @@ toutes les références citées
 \begin_inset Quotes crd
 \end_inset
 
- de la base de données utilisée (ce qui est le comportement par défaut),
+ de la base de données utilisée (ce qui est le comportement implicite),
  
 \begin_inset Quotes cld
 \end_inset
@@ -2609,155 +2581,130 @@ t ( comme un chapitre* ou une section*, par exemple).
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-With 
+Avec 
 \family sans
 Biblatex
 \family default
-, the procedure is a bit different.
- Since 
+, la procédure est un peu différente.
+ Puisque 
 \family typewriter
 bibtopic
 \family default
- does not work with 
+ ne fonctionne pas avec 
 \family sans
 Biblatex
 \family default
-, the aforementioned 
+, l'option 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Subdivided bibliography
+Bbibliographie subdivisée
 \end_layout
 
 \end_inset
 
- option is disabled if you use 
+ est désactivée si vous utilisez 
 \family sans
 Biblatex
 \family default
 .
- However, 
+ Cependant, 
 \family sans
 Biblatex
 \family default
- provides its own means to generate subdivided bibliographies.
- You can either add keywords to bibliography entries via the 
+ inclut ses moyens propres pour créer des bibliographies subdivisées.
+ Vous pouvez: soit ajouter des mots-clés aux entrées bibliographiques à
+ l'aide de l'entrée 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 keywords
 \end_layout
 
 \end_inset
 
- entry option and then filter bibliography sections by keyword (by adding
- 
+, puis filtrer les sections bibliographiques par mot-clé (en ajoutant 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-keyword=mykeyword
+keyword=monMotClé
 \end_layout
 
 \end_inset
 
- to the 
+ au champ 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Options
 \end_layout
 
 \end_inset
 
- field of the dialog that opens if you right-click on the 
+ de la fenêtre de dialogue qui apparaît si vous faites un clic gauche sur
+ le bouton 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Biblatex Generated Bibliography
+Bibliographie Biblatex
 \end_layout
 
 \end_inset
 
- button), or you can filter by entry types (such as 
-\emph on
-book
-\emph default
- or 
-\emph on
-article
-\emph default
-) by entering e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
- 
+); soit filtrer par type d'entrée (comme book ou article) en saisissant
+ par exemple 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 type=book
 \end_layout
 
 \end_inset
 
- or 
+ ou 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 nottype=collection
 \end_layout
 
 \end_inset
 
- to the mentioned 
+ au champ 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Options
 \end_layout
 
 \end_inset
 
- field, or you can create so-called 
-\begin_inset Quotes eld
+ mentionné ci-dessus; soit créer des 
+\begin_inset Quotes cld
 \end_inset
 
-Bibliography Categories
-\begin_inset Quotes erd
+catégories bibliographiques
+\begin_inset Quotes crd
 \end_inset
 
- to which you can assign individual entries.
- Please refer to the Biblatex manual, section 
+ auxquelles vous pouvez affecter des entrées bibliographiques individuelles.
+ Voyez le manuel Biblatex, subsection 
 \emph on
 Subdivided Bibliographies
 \emph default
-, for details.
+ de la section 
+\emph on
+Usage Notes
+\emph default
+, pour les détails.
 \end_layout
 
 \begin_layout Subsection
@@ -2772,155 +2719,132 @@ name "subsec:Bibliographies-multiples"
 \end_layout
 
 \begin_layout Standard
-Les bibliographies multiples, par exemple une bibliographie 
-\lang english
-part, chapter, section, subsection or child (sub-document) 
-\lang french
-du document, 
-\lang english
-are also supported by \SpecialChar LyX
+Les bibliographies multiples, par exemple une bibliographie pour chaque
+ partie, chapitre, section, sous-section or sous-document du document, sont
+ également possibles avec \SpecialChar LyX
 .
- In order to enable it, go to 
+ Pour les activer, allez à 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Bibliography
+Paramètres\SpecialChar menuseparator
+Bibliographie
 \end_layout
 
 \end_inset
 
- and select the relevant unit (e.
-\begin_inset space \thinspace{}
+ et sélectionnez le sectionnement requis (e.g.
+ 
+\begin_inset Quotes cld
 \end_inset
 
-g., 
-\begin_inset Quotes eld
+par section
+\begin_inset Quotes crd
 \end_inset
 
-per section
-\begin_inset Quotes erd
-\end_inset
-
-) in the 
+) dans le sous-menu 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Multiple Bibliographies
+Bibliographies multiples
 \end_layout
 
 \end_inset
 
- combo box.
- Then add a Bib(la)\SpecialChar TeX
- bibliography to each unit (e.
+.
+ Puis ajoutez une bibliographie Bib(la)\SpecialChar TeX
+ à chaque élément (e.
 \begin_inset space \thinspace{}
 \end_inset
 
-g., section) of your document.
- In the output, a separate bibliography, containing only the references
- done in the current unit is generated.
+g., section) de votre document.
+ Dans le résultat imprimable, une bibliographie séparée ne contenant que
+ les références du sectionnement considéré sera créée.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you use Bib\SpecialChar TeX
-, either the 
+Si vous utilisez Bib\SpecialChar TeX
+, Le paquetage 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 chapterbib
 \end_layout
 
 \end_inset
 
- or the 
+ ou le paquetage 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 bibtopic
 \end_layout
 
 \end_inset
 
- package is used to create multiple bibliographies.
- The former package is used if you select 
-\begin_inset Quotes eld
+ est utilisé pour créer des bibliographies multiples.
+ Le premier est utilisé si vous sélectionnez 
+\begin_inset Quotes cld
 \end_inset
 
-per child document
-\begin_inset Quotes erd
+par sous-document
+\begin_inset Quotes crd
 \end_inset
 
- and do 
+ et si vous 
 \emph on
-not
+ne
 \emph default
- check 
+ sélectionnez 
+\emph on
+pas
+\emph default
+ 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Sectioned Bibliography
+Bibliographie subdivisée
 \end_layout
 
 \end_inset
 
 .
- In all other cases, 
+ Dans tous les autres cas, c'est 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 bibtopic
 \end_layout
 
 \end_inset
 
- is used.
+ qui est utilisé
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-An alternative approach, if you are willing to use some 
+Une autre approche, si vous êtes prêt à utiliser un peu de 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
+Code \SpecialChar TeX
 
-\lang english
-\SpecialChar TeX
- Code
 \end_layout
 
 \end_inset
 
- (see section
+ (voir section
 \begin_inset space ~
 \end_inset
 
-
-\lang french
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2928,57 +2852,37 @@ reference "sec:Insérer-du-code-LaTeX"
 
 \end_inset
 
-
-\lang english
-), is to use the 
+), consiste à utiliser le paquetage 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 bibunits
 \end_layout
 
 \end_inset
 
- package.
+.
 \end_layout
 
 \end_inset
 
- If 
+ .Avec 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 bibtopic
 \end_layout
 
 \end_inset
 
- is used, \SpecialChar LyX
- encloses the specified units in 
+, \SpecialChar LyX
+ encapsule les entités spécifiées entre les commandes 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-bibtopic
-\end_layout
-
-\end_inset
-
-'s 
-\begin_inset Flex Code
-status collapsed
-
-\begin_layout Plain Layout
-
-\lang english
 
 \backslash
 begin{btUnit}
@@ -2986,13 +2890,11 @@ begin{btUnit}
 
 \end_inset
 
- and 
+ et 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 end{btUnit}
@@ -3000,49 +2902,42 @@ end{btUnit}
 
 \end_inset
 
- in order to create the units.
- Note that this approach has some limitations.
- First, every citation reference has to be inside some 
+ pour créer les bibliographies.
+ Notez que cette approche a quelques limitations.
+ D'abord, chaque référence de citation doit se trouver dans une 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 btUnit
 \end_layout
 
 \end_inset
 
 .
- So citations outside a defined unit (e.
-\begin_inset space \thinspace{}
+ Les citations en-dehors d'une entité défini (par exemple, avant la première
+ section si vous utilisez 
+\begin_inset Quotes cld
 \end_inset
 
-g., before the first section if you use 
-\begin_inset Quotes eld
+par section
+\begin_inset Quotes crd
 \end_inset
 
-by section
-\begin_inset Quotes erd
-\end_inset
-
-) will appear as 
-\begin_inset Quotes eld
+) apparaîtront comme 
+\begin_inset Quotes cld
 \end_inset
 
 ???
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
 .
- You can also create your own units by entering 
+ Vous pouvez cependant créer vos propres entités en saisissant 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 begin{btUnit}
@@ -3050,13 +2945,11 @@ begin{btUnit}
 
 \end_inset
 
- and 
+ et 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 end{btUnit}
@@ -3064,80 +2957,80 @@ end{btUnit}
 
 \end_inset
 
- as \SpecialChar TeX
- code (for instance to work around the mentioned limitation).
- Note, though, that 
+ en code \SpecialChar TeX
+ (par exemple pour contourner la présente limitation).
+ Notez bien que les 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 btUnit
 \end_layout
 
 \end_inset
 
-s cannot be nested.
- A second limitation is that 
+s ne peuvent inclure d'autres 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
+btUnit
+\end_layout
 
-\lang english
+\end_inset
+
+s.
+ Une seconde limitation vient du fait que 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
 bibtopic
 \end_layout
 
 \end_inset
 
- always processes all references of a bibliography database, even if they
- are not cited.
- This can result in odd labels (e.
+ parcourt toujours toutes les références d'une base bibliographique, même
+ celles qui ne sont pas citées.
+ Ceci peut créer des citations bizarres (e.
 \begin_inset space \thinspace{}
 \end_inset
 
 g.
  
-\begin_inset Quotes eld
+\begin_inset Quotes cld
 \end_inset
 
-Miller 2014b
-\begin_inset Quotes erd
+Martin 2014b
+\begin_inset Quotes crd
 \end_inset
 
- if two works of this author from 2014 are in the database, even if only
- one is cited).
+ si deux œuvres de cet auteur publiées en 2014 sont dans la base, alors
+ qu'une seule est citée).
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you use 
+Si vous utilisez 
 \family sans
 Biblatex
 \family default
-, the 
+, l'option 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 refsection
 \end_layout
 
 \end_inset
 
- option is used instead.
- If you need specific units, you can start them with the \SpecialChar TeX
- code 
+ est utilisée à la place du choix déroulant.
+ Si vous avez besoin d'entités spécifiques, vous pouvez insérer au début
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 newrefsection
@@ -3145,13 +3038,11 @@ newrefsection
 
 \end_inset
 
- or 
+ ou 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 newrefsegment
@@ -3159,14 +3050,14 @@ newrefsegment
 
 \end_inset
 
-, respectively.
- If you also want to control the end of the unit, use the environment 
+ respectivement, en code\SpecialChar TeX
+.
+ Si vous voulez aussi préciser la fin de l'entité, utilisez l'environnement
+ 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 begin{refsection}
@@ -3181,55 +3072,57 @@ status collapsed
 
 \begin_layout Plain Layout
 
-\lang english
-
 \backslash
 end{refsection}
 \end_layout
 
 \end_inset
 
- instead.
- Note, though, that 
+ à la place.
+ Notez cependant que les 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 refsection
 \end_layout
 
 \end_inset
 
-s cannot be nested.
- In addition to the individual bibliography of the current unit, 
+s ne peuvent contenir d'autres 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+refsection
+\end_layout
+
+\end_inset
+
+s.
+ En plus de la bibliographie individuelle de l'entité considérée, 
 \family sans
 Biblatex
 \family default
- also provides an easy way to output all bibliographies, subsequently, at
- one place (e.
+ permet aussi d'émettre toutes le bibliographies, les unes après les autres,
+ à un endroit particulier (e.
 \begin_inset space \thinspace{}
 \end_inset
 
-g., at the end of the document).
- Select 
-\begin_inset Quotes eld
+g., à la fin du document).
+ Sélectionnez 
+\begin_inset Quotes cld
 \end_inset
 
-all reference units
-\begin_inset Quotes erd
+toutes les entités de références
+\begin_inset Quotes crd
 \end_inset
 
- from the Content combo box of the Bib(la)TeX inset dialog in order to achieve
- this.
- Please refer to the 
-\family sans
-Biblatex
-\family default
- manual for more information on this topic.
-
-\lang french
+ dans le menu déroulant 
+\emph on
+Contenu
+\emph default
+ de la fenêtre de dialogue de l'insert de bibliographie pour obtenir ceci.
  
 \end_layout
 
@@ -3344,25 +3237,31 @@ Verbatim
 \end_inset
 
 .
- 
-\lang english
-The methods 
-\begin_inset Quotes eld
+ Les méthodes 
+\begin_inset Quotes cld
 \end_inset
 
-include
-\begin_inset Quotes erd
+
+\family sans
+inclus (include)
+\family default
+
+\begin_inset Quotes crd
 \end_inset
 
- and 
-\begin_inset Quotes eld
+ et 
+\begin_inset Quotes cld
 \end_inset
 
-input
-\begin_inset Quotes erd
+
+\family sans
+incorporé (input)
+\family default
+
+\begin_inset Quotes crd
 \end_inset
 
- are similar in many ways, but there are also some notable differences:
+ se ressemblent sur de nombreux points, mais diffèrent notablement sur d'autres:
 \end_layout
 
 \begin_layout Enumerate
@@ -3387,102 +3286,101 @@ incorporés
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-\begin_inset Quotes eld
+les fichiers 
+\begin_inset Quotes cld
 \end_inset
 
-Included
-\begin_inset Quotes erd
+
+\family sans
+inclus (include)
+\family default
+
+\begin_inset Quotes crd
 \end_inset
 
- files cannot themselves 
-\begin_inset Quotes eld
+ ne peuvent pas eux-mêmes 
+\begin_inset Quotes cld
 \end_inset
 
-include
-\begin_inset Quotes erd
+inclure
+\begin_inset Quotes crd
 \end_inset
 
- further files (
-\begin_inset Quotes eld
+ d'autre fichiers (sous-sous-documents).
+ Avec 
+\begin_inset Quotes cld
 \end_inset
 
-grandchilds
-\begin_inset Quotes erd
+
+\family sans
+incorporé (input)
+\family default
+
+\begin_inset Quotes crd
 \end_inset
 
-).
- With 
-\begin_inset Quotes eld
-\end_inset
-
-input
-\begin_inset Quotes erd
-\end_inset
-
-, on the other hand, infinite sub-inputting is possible.
+, en revanche, la sous incorporation est illimitée.
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-\begin_inset Quotes eld
+\begin_inset Quotes cld
 \end_inset
 
-Include
-\begin_inset Quotes erd
+
+\family sans
+inclus (include)
+\family default
+
+\begin_inset Quotes crd
 \end_inset
 
- allow for the output of only selected 
-\begin_inset Quotes eld
+ permet l'émettre la sortie imprimable d'un sous-ensemble de fichiers 
+\begin_inset Quotes cld
 \end_inset
 
-included
-\begin_inset Quotes erd
+inclus
+\begin_inset Quotes crd
 \end_inset
 
- files, while maintaining the actual counters (pagination etc.) and references
- (please refer to the section 
+ tout en conservant la valeur correcte des compteurs (pagination et autres)
+ et des références (voyez la section 
 \emph on
-Child
-\begin_inset space ~
-\end_inset
-
-Documents
+Sous-documents
 \emph default
- of the 
+ du manuel des 
 \emph on
-Embedded
-\begin_inset space ~
-\end_inset
-
-Objects
+Objets insérés
 \emph default
- manual for details).
+ pour les détails).
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Hence, 
-\begin_inset Quotes eld
+De ce fait, 
+\begin_inset Quotes cld
 \end_inset
 
-include
-\begin_inset Quotes erd
+
+\family sans
+inclus (include)
+\family default
+
+\begin_inset Quotes crd
 \end_inset
 
- is the preferred method for chapters that are outsourced to child documents,
- while 
-\begin_inset Quotes eld
+ est la méthode appropriée pour des chapitres rédigés à part comme des sous-docu
+ments, alors que 
+\begin_inset Quotes cld
 \end_inset
 
-input
-\begin_inset Quotes erd
+
+\family sans
+incorporé (input)
+\family default
+
+\begin_inset Quotes crd
 \end_inset
 
- is more suitable for arbitrary file inheritance.
+ convient mieux pour un héritage de fichiers arbitraires.
 \end_layout
 
 \begin_layout Standard
@@ -3516,13 +3414,11 @@ espaces
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Generally, the master file is converted into a full \SpecialChar LaTeX
- file before typesetting,
- while the included files are converted to \SpecialChar LaTeX
- files that do not have all the
- preamble information.
+D'une manière générale, le fichier maître est converti en un seul fichier
+ \SpecialChar LaTeX
+ avant la typographie, alors que les fichiers inclus sont convertis en
+ fichiers \SpecialChar LaTeX
+ dépourvus de préambule.
 \end_layout
 
 \begin_layout Subsection
@@ -3579,87 +3475,66 @@ Listes bibliographiques dans tous les sous-documents
 \end_layout
 
 \begin_layout Standard
-.
+Lorsque vous travaillez avec un sous-document, vous pouvez préférer avoir
+ une seule bibliographie principale à la fin, tout en conservant la possibilité
+ d'avoir une bibliographie sélectionnée pour le sous-document si vous affichez
+ la sortie de ce sous-document seul.
+ Voici comment procéder.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you work with child documents, you might want to have only one main bibliogra
-phy at the end, but still be able to have a selected bibliography for the
- child if you output it on its own.
- Here is how to achieve this.
+Dans le document maître, vous insérez simplement un insert bibliographique
+ là où la bibliographie principale doit apparaître, que ce soit dan sle
+ document maître ou dans un sous-document.
+ Si la bibliographie est dans le document maître, les références seront
+ héritées par tous les sous-documents: elles sont donc disponibles dans
+ la fenêtre de dialogue des citations dans chacun d'entre eux.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For the main document, you just insert a bibliography inset at the place
- where the main bibliography has to appear (within the master file or within
- a child).
- If the bibliography inset is in the master file, the references will be
- inherited by all children, so they are available in the citation dialog
- within each child.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-For child-specific bibliographies, insert bibliography insets within the
- child documents, at the place where the bibliography should appear when
- the child is compiled separately.
- However, the trick is to insert them into a branch (
+Pour le bibliographies particulières aux sous-documents, saisir des inserts
+ bibliographiques là où la bibliographie doit apparaître quand le sous-document
+ est compilé à part.
+ Cependant, l'astuce consiste à la saisir dans une branche (
 \family sans
-Insert\SpecialChar menuseparator
-Branch\SpecialChar menuseparator
-Insert New Branch
+Insertion\SpecialChar menuseparator
+Branche\SpecialChar menuseparator
+Insérer une nouvelle branche
 \family default
-), e.
-\begin_inset space \thinspace{}
+), appelée par exemple 
+\begin_inset Quotes cld
 \end_inset
 
-g.
- called 
-\begin_inset Quotes eld
-\end_inset
-
-Childonly
-\begin_inset Quotes erd
+SousDocSeul
+\begin_inset Quotes crd
 \end_inset
 
 .
- Within the children, activate the branch (
+ Dans le sous-document, activer la branche (
 \family sans
 Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
 Branches
 \family default
 ).
- Within the master, deactivate the branch (
+ Dans le document maître, désactiver la branche (
 \family sans
 Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
 Branches
 \family default
 ).
- Now the child's bibliography will be ignored by the master, but considered
- by the child.
+ La bibliographie du sous-document sera alors ignorée dans le document maître,
+ mais présente dans le sous-document.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you need multiple bibliographies (e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., one per child in the 
+S'il vous faut des bibliographies multiples (une par sous-document dans
+ le 
 \emph on
-main document
+document maître
 \emph default
-), please refer to sec
-\lang french
-.
+, par exemple), voyez la section
 \begin_inset space ~
 \end_inset
 
@@ -4771,7 +4646,7 @@ savelabelitemi}
  inclut depuis longtemps l'exportation de documents vers divers formats
  appropriés au monde du Web, comme HTML.
  Avant la version 2.0, le format HTML était obtenu par l'utilisation de convertis
-seurs externes.
+seurs externes
 \begin_inset Foot
 status collapsed
 
@@ -4782,11 +4657,16 @@ Pour les détails sur l'utilisation des convertisseurs externes depuis \SpecialC
 \emph on
 Convertisseurs
 \emph default
- de manuel de Personnalisation.
+ de manuel de 
+\emph on
+Personnalisation
+\emph default
+.
 \end_layout
 
 \end_inset
 
+.
  Ceux-ci se divisent en deux groupes principaux: certains convertisseurs
  utilisent \SpecialChar LaTeX
  comme format intermédiaire, comme 
@@ -4940,7 +4820,7 @@ htlatex
 
 \end_inset
 
-: ceci révèle les limitations de HTML.
+: ceci révèle les limitations de HTML
 \begin_inset Foot
 status collapsed
 
@@ -4982,6 +4862,7 @@ MathJax
 
 \end_inset
 
+.
  Plus important (du moins pour la version 1.1.1), 
 \begin_inset Flex Code
 status collapsed
@@ -5179,7 +5060,8 @@ MathML est in dialecte de XML développé spécifiquement pour afficher les
 \begin_inset Newline newline
 \end_inset
 
-Si Lyx ne sait pas afficher un formule en MathML — par exemple, la formule
+Si \SpecialChar LyX
+ ne sait pas afficher un formule en MathML — par exemple, la formule
  utilise le paquetage 
 \begin_inset Flex Code
 status collapsed
@@ -5209,7 +5091,7 @@ elyxer
 
 \end_inset
 
- exporte les formules mathématiques en HTML, mis en forme par CSS.
+ exporte les formules mathématiques en HTML, mis en forme par CSS
 \begin_inset Foot
 status collapsed
 
@@ -5231,6 +5113,7 @@ elyxer
 
 \end_inset
 
+.
  Pour des formules simples, ceci fonctionne correctement, mais a tendance
  à échouer pour des formules plus compliquées.
  Cette méthode a cependant l'avantage d'être largement reconnue et peut
@@ -5276,7 +5159,7 @@ htlatex
 
 ,\SpecialChar LyX
  exportera les formules comme des images, les mêmes images en fait que
- celles utilisées par la fonction d'aperçu sur le vif.
+ celles utilisées par la fonction d'aperçu sur le vif
 \begin_inset Foot
 status collapsed
 
@@ -5290,6 +5173,7 @@ pas
 
 \end_inset
 
+.
  Comme indiqué plus haut, l'avantage de cette méthode réside dans la grande
  précision des images puisqu'elles sont engendrées par \SpecialChar LaTeX
 .
@@ -5700,6 +5584,10 @@ Il n'y a actuellement pas d'exportation des glossaires.
 
 \begin_layout Chapter
 Le Serveur \SpecialChar LyX
+
+\end_layout
+
+\begin_layout Section
 Introduction
 \end_layout
 
@@ -5713,7 +5601,7 @@ serveur \SpecialChar LyX
 \begin_inset Quotes crd
 \end_inset
 
- est une méthode implémentée dans \SpecialChar LyX
+ est une méthode implantée dans \SpecialChar LyX
  qui permet à d'autres programmes de dialoguer
  avec \SpecialChar LyX
 , d'invoquer des commandes \SpecialChar LyX
@@ -5841,15 +5729,12 @@ lyxpipe
 \begin_inset Quotes crd
 \end_inset
 
- avec Windows (
-\lang english
-where any working path instead of lyxpipe can be used, for example 
+ avec Windows (ou n'importe quel chemin admissible peut être utilisé à la
+ place de lyxpipe, par exemple 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 "
 \backslash
 
@@ -5867,9 +5752,7 @@ pipe"
 
 \end_inset
 
- would also work
-\lang french
-).
+ fonctionnerait également).
  Vous devez configurer ceci 
 \emph on
 manuellement
@@ -6350,25 +6233,22 @@ Activation automatique
 
 \begin_layout Standard
 Le plus souvent, \SpecialChar LyX
- démarrera le serveur pour vous en
+ démarrera le serveur pour vous en appuyant sur le bouton
 \lang english
- pressing the following button in the toolbar: 
+ 
 \begin_inset Info
 type  "icon"
 arg   "buffer-toggle-output-sync"
 \end_inset
 
-.
- Alternatively, you can also enable the feature by checking
+
+\lang french
+ de la barre des outils.
+ Une alternative consiste à activer la fonctionnalité en cochant
 \family sans
- 
-\lang french
-Synchroniser avec la sortie imprimable
+ Synchroniser avec la sortie imprimable
 \family default
-\lang english
- in
-\lang french
- 
+ dans 
 \begin_inset Flex Noun
 status collapsed
 
@@ -6384,7 +6264,11 @@ Formats
  Dans ce cas, \SpecialChar LyX
  insérera automatiquement la macro Sync\SpecialChar TeX
  (pour PDF) ou chargera
- le paquetage srcltx (pour DVI).
+ le paquetage 
+\family typewriter
+srcltx
+\family default
+ (pour DVI).
  Cette option peut être facilement atteinte depuis la barre d'outils 
 \begin_inset Flex Code
 status collapsed
@@ -6885,14 +6769,10 @@ pdflatex -synctex=1 $$i
 \end_inset
 
 .
+ Si votre visionneuse n'est pas décrite dans ce qui suit, ou en cas d'échec,
+ vérifiez la documentation de votre visionneuse pour ce qui concerne la
+ configuration pour Sync\SpecialChar TeX
 
-\lang english
- Should your viewer not be considered in the following description, or in
- case of missing success, please 
-\lang french
-vérifiez la documentation de votre visionneuse pour ce qui concerne la configura
-tion pour Sync\SpecialChar TeX
-.
 \begin_inset Foot
 status collapsed
 
@@ -6923,7 +6803,7 @@ status collapsed
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Subsection
@@ -7216,17 +7096,12 @@ La recherche inversée est déclenchée par COMMAND-SHIFT-clic.
 \end_layout
 
 \begin_layout Subsubsection*
-
-\lang english
 Evince (GNOME)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Reverse search with evince does not work out of the box, but it can be achieved
- by means of some third party helper scripts.
- Please refer to 
+La recherche inversée ne fonctionne pas directement avec evince, mais elle
+ peut être obtenue à l'aide de scripts auxiliaires externes: voir 
 \begin_inset CommandInset href
 LatexCommand href
 target "https://wiki.lyx.org/LyX/SyncTeX"
@@ -7234,7 +7109,7 @@ literal "false"
 
 \end_inset
 
- for details.
+ pour les détails.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -7276,45 +7151,33 @@ La recherche inversée est déclenchée par SHIFT-clic.
 \end_layout
 
 \begin_layout Subsubsection*
-
-\lang english
 Qpdfview (Unix)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Qpdfview supports Sync\SpecialChar TeX
- since version 0.3.5.
- Go to 
+Qpdfview fonctionne avec Sync\SpecialChar TeX
+ depuis la version 0.3.5.
+ Allez à 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Edit\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Behavior
+Modifier\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
+Comportement
 \end_layout
 
 \end_inset
 
-, click on the input field of the 
-\begin_inset Quotes eld
-\end_inset
-
-Source editor
-\begin_inset Quotes erd
-\end_inset
-
- item and add the command 
+, cliquer dans le champ de l'
+\emph on
+Éditeur de source
+\emph default
+ et ajoutez la commande 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 lyxclient -g %1 %2
 \end_layout
 
@@ -7324,9 +7187,7 @@ lyxclient -g %1 %2
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Reverse search is triggered by double-click.
+La recherche inversée est activée par un clic double.
 \end_layout
 
 \begin_layout Subsubsection*
@@ -8019,12 +7880,12 @@ okular
 \lang english
 
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
 \lang english
-You might want to set 
+Vous pouvez saisir 
 \begin_inset Flex Code
 status collapsed
 
@@ -8036,21 +7897,17 @@ okular --unique
 
 \end_inset
 
- in 
+ dans 
 \begin_inset Flex Noun
 status collapsed
 
 \begin_layout Plain Layout
 
 \lang english
-Tools\SpecialChar menuseparator
-Preferences\SpecialChar menuseparator
-File Handling\SpecialChar menuseparator
-File
-\begin_inset space ~
-\end_inset
-
-Formats
+Outils\SpecialChar menuseparator
+Préférences\SpecialChar menuseparator
+Gestion des fichiers\SpecialChar menuseparator
+Formats de ficheirs
 \end_layout
 
 \end_inset
@@ -8083,16 +7940,12 @@ Sumatra PDF
 \end_inset
 
 
-\lang english
-
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-SumatraPDF can also use DDE commands through the external program CMCDDE
- — downloadable from 
+SumatraPDF peut aussi utiliser les commandes DDE via le programme externe
+ CMCDDE — téléchargeable depuis 
 \begin_inset CommandInset href
 LatexCommand href
 target "http://www.istri.fr/spip/zip/CMCDDE.zip"
@@ -8105,22 +7958,16 @@ literal "false"
 
 \end_inset
 
-
-\lang french
 .
- 
-\lang english
-Others, such as evince
+ d'autres, comme evince
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 \paragraph_spacing single
-
-\lang english
-Forward search with evince can be achieved by means of third party helper
- scripts.
- Please refer to 
+La recherche directe avec evince peut être obtenue via des programmes externes
+ auxiliaires.
+ Voir 
 \begin_inset CommandInset href
 LatexCommand href
 target "https://wiki.lyx.org/LyX/SyncTeX"
@@ -8128,15 +7975,13 @@ literal "false"
 
 \end_inset
 
- for details.
+ pour les détails.
 \end_layout
 
 \end_inset
 
-, require some extra tools in order to use forward search.
- 
-\lang french
-Alors que beaucoup des visionneuses PDF largement diffusées (parmi lesquelles
+, nécessitent des outils supplémentaires.
+ Alors que beaucoup des visionneuses PDF largement diffusées (parmi lesquelles
  on remarquera Adobe Reader) ne comprennent pas du tout la recherche directe,
  d'autre visionneuses, comme 
 \begin_inset Flex Noun
@@ -9705,40 +9550,37 @@ thanks{}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Under 
+Via 
 \family sans
-Edit\SpecialChar menuseparator
-Text Style
+Édition\SpecialChar menuseparator
+Style
 \family default
-, you'll find two insets which are relevant for the titling:
+ de texte, vous trouverez deux marqueurs utiles pour le titrage:
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
-Institute
+Institution
 \family typewriter
  
 \family default
-to mark corresponding author\SpecialChar breakableslash
-institute pairs.
- The institutes are numbered sequentially as they appear in the 
+pour indiquer les couples auteur/institution.
+ Les institutions sont numérotées séquentiellement comme elles apparaissent
+ dans le champ
 \family sans
-Address
+ Address
 \family default
- field, so you have to put a marker to each author.
+, vous devez donc mettre un marqueur pour chaque auteur.
+ 
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
 Email
 \family default
- to supply an email address for fast contact.
+ pour indiquer une adresse électronique.
 \end_layout
 
 \begin_layout Standard
@@ -9776,13 +9618,14 @@ L'abstract devrait suivre immédiatement le bloc d'en-tête.
  En plus, il doit contenir une entrée avec les mots-clés.
  La seule chose spéciale à en dire est qu'il doit contenir une entrée avec
  les mots-clés.
- Ce se vait via le style de paragraphe 
+ Ce se fait via le style de paragraphe 
 \family sans
 \lang english
 Keywords.
+
 \family default
 \lang french
-Référez-vous au fichier d'exemple.
+ Référez-vous au fichier d'exemple.
 \end_layout
 
 \begin_layout Subsection
@@ -10082,12 +9925,12 @@ Là encore, voyez les figures dans le papier exemple.
 \end_layout
 
 \begin_layout Subsection
-Format du référé
+Format de revue
 \end_layout
 
 \begin_layout Standard
-Pour la soumission, le papier doit être formaté dans un format spécial à
- double interligne.
+Pour la soumission, la communication doit être mise en forme dans un format
+ spécial à double interligne.
  Pour ce faire, vous devez donner à la classe de document l'option 
 \family typewriter
 referee
@@ -12087,18 +11930,24 @@ Théorèmes, lemmes, preuves et tutti quanti
 \begin_layout Standard
 Deux de ces environnements ne peuvent se suivre directement.
  Ils doivent être séparés par quelque chose.
+ Si vous utilisez une rupture normale de paragraphe, vous allez juste allonger
+ l'environnement précédent comme si vous aviez fusionné les deux environnements.
+ Plutôt que de faire cela, vous devez insérer un 
+\begin_inset Quotes cld
+\end_inset
 
-\lang english
- If you use a normal paragraph break, , you will just be extending the previous
- environment as if you had merged the two environments together.
- Rather than that, you need to insert a so-called separator.
- Please refer to the section entitled 
+séparateur
+\begin_inset Quotes crd
+\end_inset
+
+.
+ Voyez la section intitulée 
 \emph on
-Separate Nestings
+Emboîtements séparés
 \emph default
- in the 
+ dans le 
 \emph on
-User's Guide
+Guide de l'utilisateur
 \emph default
 .
 \end_layout
@@ -17205,9 +17054,7 @@ letter (koma-script)
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Note: This section discusses the obsolete 
+Nota: Cette décrit la classe obsolète 
 \family sans
 KOMA-Script-Letter (v.
 \begin_inset space ~
@@ -17215,8 +17062,8 @@ KOMA-Script-Letter (v.
 
 1)
 \family default
-, which is not even included anymore in recent KOMA releases.
- Please refer to the next section for the current KOMA-Script-Letter class
+, qui n'est même plus incluse dans les publications KOMA récentes.
+ Voyez plutôt la section suivante pour la classe courante KOMA-Script-Letter
  (v.
 \begin_inset space ~
 \end_inset
@@ -21597,18 +21444,12 @@ Avant de vous lancer dans l'utilisation du contrôle de version sous \SpecialCha
  opération vous pouvez les vérifier dans la console de lancement de \SpecialChar LyX
  si
  vous doutez.
-
-\lang english
- Regular users of version control will appreciate the VC toolbar, which
- can be enabled via 
+ Les utilisateurs réguliers du contrôle de version apprécieront la barre
+ d'outils correspondante, qui peut être activée via 
 \family sans
-View\SpecialChar menuseparator
-Toolbars\SpecialChar menuseparator
-Version
-\begin_inset space ~
-\end_inset
-
-Control
+Affichage\SpecialChar menuseparator
+Barre d'outils\SpecialChar menuseparator
+Contrôle de version
 \family default
 .
 \end_layout
@@ -21633,18 +21474,19 @@ Fonctions \SpecialChar LyX
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-It is strongly recommended to store documents in uncompressed format if
- using version control (uncheck 
+Il est fortement recommandé d'enregistrer les documents en mode non compressé
+ lors de l'utilisation du contrôle de version (décochez
 \family sans
-Document\SpecialChar menuseparator
-Compressed
+ Document\SpecialChar menuseparator
+Compressé
 \family default
- if it is checked): Uncompressed LyX documents are text files and therefore
- for merging two different versions by version control systems.
- Compressed LyX documents are binary files, which cannot be merged by version
- control systems.
+ si la case est cochée): les documents LyX non compressées sont des fichiers
+ textuels qui peuvent être fusionnés par le contrôle de version.
+ Mes documents compressés sont des fichiers binaires qui ne peuvent p
+\emph on
+a
+\emph default
+s être fusionnés.
 \end_layout
 
 \begin_layout Subsection
@@ -27537,8 +27379,6 @@ go back to the default
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
 Sauts de colonne
 \end_layout
 
