@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-01-20 09:43+0100\n"
-"PO-Revision-Date: 2018-01-25 23:06+0200\n"
+"PO-Revision-Date: 2018-01-27 00:51+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -460,12 +460,12 @@ msgstr "Нет"
 #: src/frontends/qt4/ui/BoxUi.ui:96 src/frontends/qt4/GuiBox.cpp:426
 #: src/frontends/qt4/GuiBox.cpp:637 src/insets/InsetBox.cpp:139
 msgid "Parbox"
-msgstr "Блок-абзац"
+msgstr "Parbox"
 
 #: src/frontends/qt4/ui/BoxUi.ui:101 src/frontends/qt4/GuiBox.cpp:638
 #: src/insets/InsetBox.cpp:143
 msgid "Minipage"
-msgstr "Мини-страница"
+msgstr "Minipage"
 
 #: src/frontends/qt4/ui/BoxUi.ui:109
 msgid "Check this if the box should break across pages"
@@ -578,7 +578,7 @@ msgstr "Декорирование"
 
 #: src/frontends/qt4/ui/BoxUi.ui:308
 msgid "Decoration box types"
-msgstr "Типы блоков декорирования"
+msgstr "Типы декорирования блока"
 
 #: src/frontends/qt4/ui/BoxUi.ui:318
 msgid "Thickness value"
@@ -877,11 +877,11 @@ msgstr "&Отклонить"
 #: src/frontends/qt4/ui/CharacterUi.ui:44
 #: src/frontends/qt4/ui/CharacterUi.ui:123
 msgid "Font family"
-msgstr "Семейство шрифта"
+msgstr "Гарнитура шрифта"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:47
 msgid "&Family:"
-msgstr "&Семейство:"
+msgstr "&Гарнитура:"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:65
 #: src/frontends/qt4/ui/CharacterUi.ui:72
@@ -935,7 +935,7 @@ msgstr "Непереключаемый"
 #: src/frontends/qt4/ui/CharacterUi.ui:209
 #: src/frontends/qt4/ui/CharacterUi.ui:230
 msgid "Font size"
-msgstr "Размер шрифта"
+msgstr "Кегль шрифта"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:240
 #: src/frontends/qt4/ui/CharacterUi.ui:273
@@ -1278,7 +1278,7 @@ msgstr "Показывать только кнопку ERT"
 
 #: src/frontends/qt4/ui/ERTUi.ui:43
 msgid "&Collapsed"
-msgstr "&Свёрнутое"
+msgstr "&Свёрнутый"
 
 #: src/frontends/qt4/ui/ERTUi.ui:50
 msgid "Show ERT contents"
@@ -1286,7 +1286,7 @@ msgstr "Показывать содержимое ERT"
 
 #: src/frontends/qt4/ui/ERTUi.ui:53
 msgid "O&pen"
-msgstr "&Открыть"
+msgstr "&Развёрнутый"
 
 #: src/frontends/qt4/ui/ErrorListUi.ui:36
 msgid "For more information, refer to the complete log."
@@ -2436,7 +2436,7 @@ msgstr "&Размещение"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:35
 msgid "Check for inline listings"
-msgstr "Проверить наличие листингов в строках"
+msgstr "Установите для внутристрочного листинга"
 
 # ?
 #: src/frontends/qt4/ui/ListingsUi.ui:38
@@ -2446,11 +2446,11 @@ msgstr "&Внутристрочный листинг"
 # ?
 #: src/frontends/qt4/ui/ListingsUi.ui:45
 msgid "Check for floating listings"
-msgstr "Проверять плавающие листинги"
+msgstr "Установите для плавающего листинга"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:48
 msgid "&Float"
-msgstr "&Плавающий объект"
+msgstr "&Плавающий листинг"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:55 src/frontends/qt4/ui/WrapUi.ui:185
 msgid "&Placement:"
@@ -2499,7 +2499,7 @@ msgstr "&Кегль шрифта:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:215
 msgid "The content's base font size"
-msgstr "Основной кегль шрифта содержимого"
+msgstr "Основной кегль шрифта листинга"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:231
 msgid "Font Famil&y:"
@@ -2507,7 +2507,7 @@ msgstr "&Гарнитура шрифта:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:252
 msgid "The content's base font style"
-msgstr "Основная гарнитура шрифта содержимого"
+msgstr "Основная гарнитура шрифта листинга"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:268
 msgid "Break lines longer than the linewidth"
@@ -2515,7 +2515,7 @@ msgstr "Переносить строки, которые шире устано�
 
 #: src/frontends/qt4/ui/ListingsUi.ui:271
 msgid "&Break long lines"
-msgstr "&Перенести длинные строки"
+msgstr "&Переносить длинные строки"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:281
 msgid "Make spaces visible by a special symbol"
@@ -2523,7 +2523,7 @@ msgstr "Визуализировать пробелы специальным с�
 
 #: src/frontends/qt4/ui/ListingsUi.ui:284
 msgid "S&pace as symbol"
-msgstr "Пробел как символ"
+msgstr "Показывать пробелы"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:294
 msgid "Make spaces in strings visible by a special symbol"
@@ -2531,7 +2531,7 @@ msgstr "Визуализировать пробелы в строках спец
 
 #: src/frontends/qt4/ui/ListingsUi.ui:297
 msgid "Space i&n string as symbol"
-msgstr "Пробел &в строке как символ"
+msgstr "Показывать пробелы внутри \"строк\""
 
 #: src/frontends/qt4/ui/ListingsUi.ui:307
 msgid "Tab&ulator size:"
@@ -2777,7 +2777,7 @@ msgstr "Тип:"
 
 #: src/frontends/qt4/ui/MathMatrixUi.ui:229
 msgid "decoration type / matrix border"
-msgstr "тип декорации / рамка матрицы"
+msgstr "Скобки матрицы"
 
 #: src/frontends/qt4/ui/MathsUi.ui:20
 msgid "All packages:"
@@ -4578,7 +4578,7 @@ msgstr "Выберите метку из списка выше или введи
 
 #: src/frontends/qt4/ui/RefUi.ui:218 src/frontends/qt4/GuiRef.cpp:389
 msgid "Jump to the selected label"
-msgstr "Перейти к метке"
+msgstr "Перейти к выделенной метке"
 
 #: src/frontends/qt4/ui/RefUi.ui:221 src/frontends/qt4/GuiRef.cpp:388
 msgid "&Go to Label"
@@ -4590,7 +4590,7 @@ msgstr "Формат ссылки:"
 
 #: src/frontends/qt4/ui/RefUi.ui:251
 msgid "Adjust the style of the cross-reference"
-msgstr "Настроить перекрёстную ссылку"
+msgstr "Настроить стиль перекрёстной ссылки"
 
 #: src/frontends/qt4/ui/RefUi.ui:255
 msgid "<reference>"
@@ -4638,7 +4638,7 @@ msgstr ""
 
 #: src/frontends/qt4/ui/RefUi.ui:392
 msgid "Plural"
-msgstr "Множественное"
+msgstr "Множ. число"
 
 #: src/frontends/qt4/ui/RefUi.ui:399
 msgid ""
@@ -4777,7 +4777,7 @@ msgstr "Принимать слово в течение поиска"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:200
 msgid "I&gnore All"
-msgstr "&Пропустить все"
+msgstr "Пропустить все"
 
 #: src/frontends/qt4/ui/SpellcheckerUi.ui:213
 msgid "Add the word to your personal dictionary"
@@ -4911,7 +4911,7 @@ msgstr "Фиксированная ширина столбца"
 
 #: src/frontends/qt4/ui/TabularUi.ui:518
 msgid "&Vertical alignment in row:"
-msgstr "&Вертикальное выравнивание в строке:"
+msgstr "&Верт. выравнивание в строке:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:528
 msgid ""
@@ -4990,7 +4990,7 @@ msgstr "Верх строки:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1242
 msgid "Botto&m of row:"
-msgstr "Низ ряда:"
+msgstr "Низ строки:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1255
 msgid "Bet&ween rows:"
@@ -5030,12 +5030,13 @@ msgstr "Содержит"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1357
 msgid "Header:"
-msgstr "Шапка:"
+msgstr "Заголовок:"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1364
 msgid "Repeat this row as header on every (except the first) page"
 msgstr ""
-"Повторить данную строку как заголовок на всех за исключением первой страницах"
+"Повторить данную строку как заголовок на всех (за исключением первой) "
+"страницах"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1367
 #: src/frontends/qt4/ui/TabularUi.ui:1404
@@ -5056,7 +5057,7 @@ msgstr "вкл."
 #: src/frontends/qt4/ui/TabularUi.ui:1483
 #: src/frontends/qt4/ui/TabularUi.ui:1490
 msgid "double"
-msgstr "двойной"
+msgstr "двойная"
 
 #: src/frontends/qt4/ui/TabularUi.ui:1391
 msgid "First header:"
@@ -7519,15 +7520,15 @@ msgstr "Список схем"
 
 #: lib/layouts/achemso.layout:186
 msgid "Charts"
-msgstr "Чертежи"
+msgstr "Диаграммы"
 
 #: lib/layouts/achemso.layout:190 lib/layouts/achemso.layout:202
 msgid "Chart"
-msgstr "Чертёж"
+msgstr "Диаграмма"
 
 #: lib/layouts/achemso.layout:196
 msgid "List of Charts"
-msgstr "Список чертежей"
+msgstr "Список диаграмм"
 
 #: lib/layouts/achemso.layout:210
 msgid "Graphs[[mathematical]]"
@@ -13315,8 +13316,8 @@ msgid ""
 "Defines some character styles for logical markup: noun, emph, strong, and "
 "code."
 msgstr ""
-"Определяет некоторые стили символов для логической разметки:  noun, emph, "
-"strong, и code."
+"Определяет несколько стилей символов для логической разметки: noun, emph, "
+"strong и code."
 
 #: lib/layouts/logicalmkup.module:5
 msgid "charstyles"
@@ -13324,7 +13325,7 @@ msgstr "charstyles"
 
 #: lib/layouts/logicalmkup.module:11 src/frontends/qt4/GuiCharacter.cpp:90
 msgid "Noun"
-msgstr "Имя (капитель)"
+msgstr "Имя"
 
 #: lib/layouts/logicalmkup.module:13
 msgid "noun"
@@ -13336,7 +13337,7 @@ msgstr "emph"
 
 #: lib/layouts/logicalmkup.module:46
 msgid "Strong"
-msgstr "Strong"
+msgstr "Сильное выделение"
 
 #: lib/layouts/logicalmkup.module:48
 msgid "strong"
@@ -13356,7 +13357,7 @@ msgstr "Мемуары"
 #: lib/layouts/memoir.layout:155 lib/layouts/memoir.layout:224
 #: lib/layouts/memoir.layout:245
 msgid "Short Title (TOC)|S"
-msgstr "Короткое заглавие (для оглавления)"
+msgstr "Краткое заглавие (для оглавления)"
 
 #: lib/layouts/memoir.layout:72 lib/layouts/memoir.layout:87
 msgid "The chapter as it appears in the table of contents"
@@ -16854,7 +16855,7 @@ msgstr "Мини-страница (пер. ширина)"
 
 #: lib/layouts/varwidth.module:19
 msgid "Minipage (var.)"
-msgstr "Мини-страница"
+msgstr "Мини-страница (пер.)"
 
 #: lib/layouts/varwidth.module:31
 msgid "Vert. Adjustment"
@@ -17988,7 +17989,7 @@ msgstr "Отбрасывать тень|т"
 
 #: lib/ui/stdcontext.inc:186 lib/ui/stdmenus.inc:507
 msgid "Shaded Background|B"
-msgstr "Затенённый фон|З"
+msgstr "Закрашенный фон|З"
 
 #: lib/ui/stdcontext.inc:187 lib/ui/stdmenus.inc:508
 msgid "Double Frame|u"
@@ -18817,7 +18818,7 @@ msgstr "Настройки ветки...|в"
 
 #: lib/ui/stdmenus.inc:145
 msgid "Box Settings...|x"
-msgstr "Настройки блоков|б"
+msgstr "Настройки блока|б"
 
 #: lib/ui/stdmenus.inc:146
 msgid "Index Entry Settings...|y"
@@ -19399,7 +19400,7 @@ msgstr "Внешний объект...|В"
 
 #: lib/ui/stdmenus.inc:498
 msgid "Child Document...|d"
-msgstr "Документ-потомок..."
+msgstr "Дочерний документ..."
 
 #: lib/ui/stdmenus.inc:513
 msgid "Comment|C"
@@ -19691,7 +19692,7 @@ msgstr "Переключить выделение"
 
 #: lib/ui/stdtoolbars.inc:88
 msgid "Toggle noun"
-msgstr "Переключить малые прописные"
+msgstr "Переключить имя (капитель)"
 
 #: lib/ui/stdtoolbars.inc:89
 msgid "Apply last"
@@ -19819,7 +19820,7 @@ msgstr "Вставить заметку LyX"
 
 #: lib/ui/stdtoolbars.inc:132
 msgid "Insert box"
-msgstr "Вставить рамку"
+msgstr "Вставить блок"
 
 #: lib/ui/stdtoolbars.inc:133
 msgid "Insert hyperlink"
@@ -24329,9 +24330,9 @@ msgid ""
 "to install the skak package from CTAN.\n"
 msgstr ""
 "Диаграмма шахматных позиций.\n"
-"Этот шаблон должен использовать XBoard для изменения позиции\n"
+"Этот шаблон будет использовать XBoard для изменения позиции.\n"
 "Используйте 'File->Save Position' в XBoard для сохранения\n"
-"позиции, которую хотите показать\n"
+"позиции, которую хотите показать.\n"
 "Убедитесь, что файл имеет расширение '.fen'\n"
 "и не забудьте ввести относительный путь\n"
 "к документу LyX.\n"
@@ -24340,10 +24341,10 @@ msgstr ""
 "Вы такжке можете проверить\n"
 "параметр 'Options->Test legality', и\n"
 "запомните, правый и средний клик -- \n"
-"вставляют материал в доску.\n"
+"добавляют новый материал на доску.\n"
 "Чтобы это заработало, вам нужно\n"
 "поместить файл lyxskak.sty туда,\n"
-"где TeX его найдёт и\n"
+"где TeX его найдёт, а также\n"
 "установить пакет skak из CTAN.\n"
 
 #: lib/xtemplates/dia.xtemplate:14
@@ -26001,7 +26002,7 @@ msgstr "Предупреждение ChkTeX id # %1$s"
 #: src/Color.cpp:203 src/insets/InsetBibtex.cpp:196
 #: src/insets/InsetBibtex.cpp:215
 msgid "none"
-msgstr "ничего"
+msgstr "нет"
 
 #: src/Color.cpp:204
 msgid "black"
@@ -26149,7 +26150,7 @@ msgstr "текст вставки фантома"
 
 #: src/Color.cpp:243
 msgid "shaded box"
-msgstr "затенённый блок"
+msgstr "закрашенный блок"
 
 #: src/Color.cpp:244
 msgid "listings background"
@@ -28137,7 +28138,7 @@ msgstr "Уравнения"
 
 #: src/TocBackend.cpp:288 src/frontends/qt4/GuiExternal.cpp:87
 msgid "External Material"
-msgstr "Внешний материал"
+msgstr "Внешний объект"
 
 #: src/TocBackend.cpp:290
 msgid "Nomenclature Entries"
@@ -28936,7 +28937,7 @@ msgstr "Отбрасывать тень"
 
 #: src/frontends/qt4/GuiBox.cpp:60
 msgid "Shaded background"
-msgstr "Затенённый фон"
+msgstr "Закрашенный фон"
 
 #: src/frontends/qt4/GuiBox.cpp:61
 msgid "Double rectangular frame"
@@ -28953,11 +28954,11 @@ msgstr "Полная высота"
 #: src/frontends/qt4/GuiBox.cpp:428 src/frontends/qt4/GuiBox.cpp:636
 #: src/insets/InsetBox.cpp:141
 msgid "Makebox"
-msgstr ""
+msgstr "Makebox"
 
 #: src/frontends/qt4/GuiBox.h:44
 msgid "Box Settings"
-msgstr "Настройки блоков|б"
+msgstr "Настройки блока"
 
 #: src/frontends/qt4/GuiBranch.h:35
 msgid "Branch Settings"
@@ -29323,7 +29324,7 @@ msgstr "Настройки документа"
 #: src/frontends/qt4/GuiDocument.cpp:777 src/frontends/qt4/GuiInclude.cpp:49
 #: src/frontends/qt4/Menus.cpp:1469
 msgid "Child Document"
-msgstr "Документ-потомок"
+msgstr "Дочерний документ"
 
 #: src/frontends/qt4/GuiDocument.cpp:778
 msgid "Include to Output"
@@ -29864,7 +29865,7 @@ msgstr "(Имя модуля: %1)"
 
 #: src/frontends/qt4/GuiERT.h:33
 msgid "TeX Mode Inset Settings"
-msgstr "Параметры вставки режима TeX"
+msgstr "Настройки вставки кода TeX"
 
 #: src/frontends/qt4/GuiErrorList.cpp:47 src/frontends/qt4/GuiLog.cpp:260
 msgid "Literate"
@@ -31411,7 +31412,7 @@ msgid ""
 msgstr ""
 "Документ %1$s содержит несохранённые изменения.\n"
 "\n"
-"Хотите ли Вы сохранить документ или отбросить изменения?"
+"Хотите ли Вы сохранить документ или отклонить изменения?"
 
 #: src/frontends/qt4/GuiView.cpp:3059
 #, c-format
@@ -31477,7 +31478,7 @@ msgstr "Каталог недоступен."
 #: src/frontends/qt4/GuiView.cpp:3405
 #, c-format
 msgid "Opening child document %1$s..."
-msgstr "Открывается документ-потомок %1$s..."
+msgstr "Открывается дочерний документ %1$s..."
 
 #: src/frontends/qt4/GuiView.cpp:3469
 #, c-format
@@ -31669,7 +31670,7 @@ msgstr "Добавить в личный словарь"
 
 #: src/frontends/qt4/Menus.cpp:860
 msgid "Ignore all|I"
-msgstr "&Пропустить все"
+msgstr "Пропустить все"
 
 #: src/frontends/qt4/Menus.cpp:868
 msgid "Remove from personal dictionary|r"
@@ -32652,7 +32653,7 @@ msgstr "Устанавливает кодировку, ожидаемую Pygmen
 
 #: src/insets/InsetListingsParams.cpp:778
 msgid "A latex family such as tt, sf, rm"
-msgstr "Семейство LaTeX, такое как tt, sf, rm"
+msgstr "Гарнитура LaTeX, такая как tt, sf, rm"
 
 #: src/insets/InsetListingsParams.cpp:781
 msgid "A latex series such as m, b, c, bx, sb"
@@ -32833,7 +32834,7 @@ msgstr "Уравнение"
 
 #: src/insets/InsetRef.cpp:419 src/mathed/InsetMathRef.cpp:241
 msgid "EqRef: "
-msgstr "Ссылка на формулу: "
+msgstr "Формула: "
 
 #: src/insets/InsetRef.cpp:420 src/mathed/InsetMathRef.cpp:242
 msgid "Page Number"
@@ -32841,7 +32842,7 @@ msgstr "Номер страницы"
 
 #: src/insets/InsetRef.cpp:420 src/mathed/InsetMathRef.cpp:242
 msgid "Page: "
-msgstr "Стр.: "
+msgstr "Страница: "
 
 #: src/insets/InsetRef.cpp:421 src/mathed/InsetMathRef.cpp:243
 msgid "Textual Page Number"
@@ -32849,7 +32850,7 @@ msgstr "Текстовый номер страницы"
 
 #: src/insets/InsetRef.cpp:421 src/mathed/InsetMathRef.cpp:243
 msgid "TextPage: "
-msgstr "ТекстСтр.: "
+msgstr "Текст стр.: "
 
 #: src/insets/InsetRef.cpp:422 src/mathed/InsetMathRef.cpp:244
 msgid "Standard+Textual Page"
