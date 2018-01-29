@@ -2484,6 +2484,11 @@ void Buffer::makeCitationLabels() const
 }
 
 
+void Buffer::invalidateCiteLabels() const
+{
+	masterBuffer()->d->cite_labels_valid_ = false;
+}
+
 bool Buffer::citeLabelsValid() const
 {
 	return masterBuffer()->d->cite_labels_valid_;
