@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR 2.2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2017-06-06 16:41-0400\n"
+"POT-Creation-Date: 2018-01-29 00:03-0500\n"
 "PO-Revision-Date: 2017-04-13 10:17-0300\n"
 "Last-Translator: Georger Araujo <georger underline br pound yahoo dot com "
 "dot br>\n"
@@ -59,7 +59,7 @@ msgstr "Notas de Lançamento"
 #: src/frontends/qt4/ui/ShowFileUi.ui:55 src/frontends/qt4/ui/SymbolsUi.ui:66
 #: src/frontends/qt4/ui/TexinfoUi.ui:58 src/frontends/qt4/ui/ThesaurusUi.ui:138
 #: src/frontends/qt4/ui/WrapUi.ui:173 src/frontends/qt4/GuiParagraph.cpp:163
-#: src/frontends/qt4/GuiView.cpp:2737
+#: src/frontends/qt4/GuiView.cpp:2740
 msgid "&Close"
 msgstr "&Fechar"
 
@@ -223,7 +223,7 @@ msgstr "&Adicionar"
 #: src/frontends/qt4/ui/ChangesUi.ui:91 src/frontends/qt4/ui/SendtoUi.ui:92
 #: src/frontends/qt4/ui/ShortcutUi.ui:65 src/buffer_funcs.cpp:129
 #: src/frontends/qt4/ButtonController.cpp:239
-#: src/frontends/qt4/GuiApplication.cpp:1786
+#: src/frontends/qt4/GuiApplication.cpp:1798
 #: src/frontends/qt4/GuiCompare.cpp:192
 msgid "Cancel"
 msgstr "Cancelar"
@@ -256,7 +256,7 @@ msgstr "&Conteúdo:"
 msgid "all cited references"
 msgstr "todas as referências citadas"
 
-#: src/frontends/qt4/ui/BibtexUi.ui:153 src/frontends/qt4/GuiBibtex.cpp:332
+#: src/frontends/qt4/ui/BibtexUi.ui:153 src/frontends/qt4/GuiBibtex.cpp:333
 #: src/insets/InsetBibtex.cpp:214
 msgid "all uncited references"
 msgstr "todas as referências não-citadas"
@@ -461,7 +461,8 @@ msgstr "Centralizado"
 msgid "Bottom"
 msgstr "Inferior"
 
-#: src/frontends/qt4/ui/BoxUi.ui:219
+#: src/frontends/qt4/ui/BoxUi.ui:219 src/frontends/qt4/GuiBox.cpp:344
+#: src/frontends/qt4/GuiBox.cpp:559
 msgid "Stretch"
 msgstr "Esticar"
 
@@ -595,7 +596,7 @@ msgid "Remove the selected branch"
 msgstr "Remover o ramo selecionado"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:136 src/frontends/qt4/ui/IndicesUi.ui:165
-#: src/Buffer.cpp:4431 src/Buffer.cpp:4444
+#: src/Buffer.cpp:4436 src/Buffer.cpp:4449
 msgid "&Remove"
 msgstr "&Remover"
 
@@ -629,17 +630,17 @@ msgstr "Adicionar T&odos"
 #: src/frontends/qt4/ui/DocumentUi.ui:84 src/frontends/qt4/ui/IndexUi.ui:78
 #: src/frontends/qt4/ui/ListingsUi.ui:559
 #: src/frontends/qt4/ui/PrintindexUi.ui:28 src/Buffer.cpp:1379
-#: src/Buffer.cpp:4405 src/Buffer.cpp:4469 src/LyXVC.cpp:119 src/LyXVC.cpp:309
+#: src/Buffer.cpp:4410 src/Buffer.cpp:4474 src/LyXVC.cpp:119 src/LyXVC.cpp:309
 #: src/buffer_funcs.cpp:78 src/frontends/qt4/GuiBranches.cpp:219
 #: src/frontends/qt4/GuiClipboard.cpp:247
 #: src/frontends/qt4/GuiDocument.cpp:2151 src/frontends/qt4/GuiParagraph.cpp:69
 #: src/frontends/qt4/GuiParagraph.cpp:161 src/frontends/qt4/GuiPrefs.cpp:3166
-#: src/frontends/qt4/GuiView.cpp:2337 src/frontends/qt4/GuiView.cpp:2487
-#: src/frontends/qt4/GuiView.cpp:2511 src/frontends/qt4/GuiView.cpp:2525
-#: src/frontends/qt4/GuiView.cpp:2638 src/frontends/qt4/GuiView.cpp:2682
-#: src/frontends/qt4/GuiView.cpp:2940 src/frontends/qt4/GuiView.cpp:2947
-#: src/frontends/qt4/GuiView.cpp:3049 src/frontends/qt4/GuiView.cpp:3077
-#: src/frontends/qt4/GuiView.cpp:3718 src/insets/InsetBibtex.cpp:152
+#: src/frontends/qt4/GuiView.cpp:2340 src/frontends/qt4/GuiView.cpp:2490
+#: src/frontends/qt4/GuiView.cpp:2514 src/frontends/qt4/GuiView.cpp:2528
+#: src/frontends/qt4/GuiView.cpp:2641 src/frontends/qt4/GuiView.cpp:2685
+#: src/frontends/qt4/GuiView.cpp:2943 src/frontends/qt4/GuiView.cpp:2950
+#: src/frontends/qt4/GuiView.cpp:3052 src/frontends/qt4/GuiView.cpp:3081
+#: src/frontends/qt4/GuiView.cpp:3721 src/insets/InsetBibtex.cpp:152
 msgid "&Cancel"
 msgstr "&Cancelar"
 
@@ -679,7 +680,7 @@ msgstr "Ta&manho:"
 #: src/frontends/qt4/GuiDocument.cpp:2021
 #: src/frontends/qt4/GuiDocument.cpp:2106
 #: src/frontends/qt4/GuiDocument.cpp:2547
-#: src/frontends/qt4/GuiDocument.cpp:3668 src/frontends/qt4/GuiExternal.cpp:76
+#: src/frontends/qt4/GuiDocument.cpp:3669 src/frontends/qt4/GuiExternal.cpp:76
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiIndices.cpp:58
 #: src/frontends/qt4/GuiListings.cpp:152 src/frontends/qt4/GuiListings.cpp:159
 #: src/frontends/qt4/GuiPrefs.cpp:2334 src/frontends/qt4/GuiPrefs.cpp:2447
@@ -2263,8 +2264,8 @@ msgid "Feedback window"
 msgstr "Janela de feedback"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:285
-#: lib/layouts/stdinsets.inc:291 src/insets/InsetCaption.cpp:383
-#: src/insets/InsetListings.cpp:365 src/insets/InsetListings.cpp:367
+#: lib/layouts/stdinsets.inc:291 src/insets/InsetCaption.cpp:385
+#: src/insets/InsetListings.cpp:366 src/insets/InsetListings.cpp:368
 msgid "Listing"
 msgstr "Listagem"
 
@@ -3400,7 +3401,7 @@ msgstr "Edição"
 msgid "Cursor &follows scrollbar"
 msgstr "Cursor &segue a barra de rolagem"
 
-#: src/frontends/qt4/ui/PrefEditUi.ui:46 src/LyXRC.cpp:2951
+#: src/frontends/qt4/ui/PrefEditUi.ui:46 src/LyXRC.cpp:3063
 msgid ""
 "Configure the width of the text cursor. Automatic zoom-controlled cursor "
 "width used when set to 0."
@@ -3885,7 +3886,7 @@ msgstr "Outras Opções"
 msgid "Output &line length:"
 msgstr "Comprimento de l&inha do resultado:"
 
-#: src/frontends/qt4/ui/PrefOutputUi.ui:186 src/LyXRC.cpp:2898
+#: src/frontends/qt4/ui/PrefOutputUi.ui:186 src/LyXRC.cpp:3010
 msgid ""
 "The maximum line length of exported plain text/LaTeX/SGML files. If set to "
 "0, paragraphs are output in a single line; if the line length is > 0, "
@@ -3929,7 +3930,7 @@ msgstr "Todos os arquivos"
 msgid "&PATH prefix:"
 msgstr "Prefixo &PATH:"
 
-#: src/frontends/qt4/ui/PrefPathsUi.ui:51 src/LyXRC.cpp:3133
+#: src/frontends/qt4/ui/PrefPathsUi.ui:51 src/LyXRC.cpp:3245
 msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable.\n"
@@ -3942,7 +3943,7 @@ msgstr ""
 msgid "TEX&INPUTS prefix:"
 msgstr "Prefixo TEX&INPUTS:"
 
-#: src/frontends/qt4/ui/PrefPathsUi.ui:68 src/LyXRC.cpp:3232
+#: src/frontends/qt4/ui/PrefPathsUi.ui:68 src/LyXRC.cpp:3344
 msgid ""
 "Specify those directories which should be prepended to the TEXINPUTS "
 "environment variable.\n"
@@ -4175,8 +4176,8 @@ msgstr "Menus"
 msgid "&Maximum last files:"
 msgstr "Número &máximo de arquivos recentes:"
 
-#: src/frontends/qt4/ui/PrefsUi.ui:70 src/frontends/qt4/GuiView.cpp:2940
-#: src/frontends/qt4/GuiView.cpp:2947 src/frontends/qt4/GuiView.cpp:3049
+#: src/frontends/qt4/ui/PrefsUi.ui:70 src/frontends/qt4/GuiView.cpp:2943
+#: src/frontends/qt4/GuiView.cpp:2950 src/frontends/qt4/GuiView.cpp:3052
 msgid "&Save"
 msgstr "&Salvar"
 
@@ -4755,8 +4756,8 @@ msgstr ""
 #: src/frontends/qt4/ui/TabularUi.ui:1404
 #: src/frontends/qt4/ui/TabularUi.ui:1445
 #: src/frontends/qt4/ui/TabularUi.ui:1476
-#: src/frontends/qt4/ui/TabularUi.ui:1514 src/frontends/qt4/GuiToolbar.cpp:394
-#: src/frontends/qt4/GuiToolbar.cpp:403
+#: src/frontends/qt4/ui/TabularUi.ui:1514 src/frontends/qt4/GuiToolbar.cpp:393
+#: src/frontends/qt4/GuiToolbar.cpp:402
 msgid "on"
 msgstr "ativado"
 
@@ -8016,7 +8017,7 @@ msgid "Centered"
 msgstr "Centralizado"
 
 #: lib/layouts/apa.layout:251 lib/layouts/apa6.layout:351
-#: lib/layouts/stdinsets.inc:572 src/insets/InsetCaption.cpp:404
+#: lib/layouts/stdinsets.inc:572 src/insets/InsetCaption.cpp:406
 msgid "standard"
 msgstr "padrão"
 
@@ -10563,13 +10564,16 @@ msgstr ""
 msgid "Fix LaTeX"
 msgstr "Corrigir LaTeX"
 
-#: lib/layouts/fixltx2e.module:9
+#: lib/layouts/fixltx2e.module:10
+#, fuzzy
 msgid ""
 "Loads the LaTeX package fixltx2e which contains some bug fixes for LaTeX. "
-"Those fixes are not part of the LaTeX kernel because of backward "
+"Those fixes were not part of older LaTeX kernels because of backward "
 "compatibility. If you use this module your typeset document may look "
-"different when you process it with future LaTeX versions, because fixltx2e "
-"may provide more bugfixes in future versions."
+"different with different LaTeX versions, depending on the respective version "
+"of fixltx2e. NOTE: recent LaTeX kernels (as of 2015/01/01) include the "
+"functionality of fixltx2e, so the fixltx2e module becomes obsolete with "
+"newer LaTeX distributions."
 msgstr ""
 "Carrega o pacote LaTeX fixltx2e, que contém correções para alguns bugs do "
 "LaTeX. Essas correções não fazem parte do kernel do LaTeX para manter a "
@@ -16271,11 +16275,11 @@ msgstr "Ucraniano"
 msgid "Upper Sorbian"
 msgstr "Alto Sorábio"
 
-#: lib/languages:1102
+#: lib/languages:1099
 msgid "Vietnamese"
 msgstr "Vietnamita"
 
-#: lib/languages:1113
+#: lib/languages:1109
 msgid "Welsh"
 msgstr "Galês"
 
@@ -17174,17 +17178,17 @@ msgid "Paragraph Break|B"
 msgstr "Quebra de Parágrafo|b"
 
 #: lib/ui/stdcontext.inc:326 lib/ui/stdmenus.inc:104 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1358 src/mathed/InsetMathNest.cpp:618
+#: src/Text3.cpp:1359 src/mathed/InsetMathNest.cpp:618
 msgid "Cut"
 msgstr "Recortar"
 
 #: lib/ui/stdcontext.inc:327 lib/ui/stdmenus.inc:105 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1363 src/mathed/InsetMathNest.cpp:627
+#: src/Text3.cpp:1364 src/mathed/InsetMathNest.cpp:627
 msgid "Copy"
 msgstr "Copiar"
 
 #: lib/ui/stdcontext.inc:328 lib/ui/stdmenus.inc:106 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1304 src/mathed/InsetMathGrid.cpp:1598
+#: src/Text3.cpp:1305 src/mathed/InsetMathGrid.cpp:1598
 #: src/mathed/InsetMathNest.cpp:597
 msgid "Paste"
 msgstr "Colar"
@@ -23804,7 +23808,7 @@ msgstr "comando date"
 msgid "Table (CSV)"
 msgstr "Tabela (CSV)"
 
-#: lib/configure.py:698 src/frontends/qt4/GuiView.cpp:1305
+#: lib/configure.py:698 src/frontends/qt4/GuiView.cpp:1307
 #: src/mathed/MathMacroTemplate.cpp:537
 msgid "LyX"
 msgstr "LyX"
@@ -23873,11 +23877,11 @@ msgstr "Enhanced Metafile"
 msgid "LyXBlogger"
 msgstr "LyXBlogger"
 
-#: lib/configure.py:1079
+#: lib/configure.py:1087
 msgid "LyX Archive (zip)"
 msgstr "Formato de Arquivamento LyX (zip)"
 
-#: lib/configure.py:1082
+#: lib/configure.py:1090
 msgid "LyX Archive (tar.gz)"
 msgstr "Formato de Arquivamento LyX (tar.gz)"
 
@@ -24058,7 +24062,7 @@ msgstr ""
 "%1$s é de uma versão mais recente do LyX, e o script de conversão lyx2lyx "
 "não conseguiu convertê-lo."
 
-#: src/Buffer.cpp:1366 src/Buffer.cpp:4415 src/Buffer.cpp:4478
+#: src/Buffer.cpp:1366 src/Buffer.cpp:4420 src/Buffer.cpp:4483
 msgid "File is read-only"
 msgstr "O arquivo é somente-leitura"
 
@@ -24083,8 +24087,8 @@ msgid "Overwrite modified file?"
 msgstr "Sobrescrever arquivo modificado?"
 
 #: src/Buffer.cpp:1379 src/Exporter.cpp:50
-#: src/frontends/qt4/GuiClipboard.cpp:247 src/frontends/qt4/GuiView.cpp:2337
-#: src/frontends/qt4/GuiView.cpp:2524 src/frontends/qt4/GuiView.cpp:2638
+#: src/frontends/qt4/GuiClipboard.cpp:247 src/frontends/qt4/GuiView.cpp:2340
+#: src/frontends/qt4/GuiView.cpp:2527 src/frontends/qt4/GuiView.cpp:2641
 msgid "&Overwrite"
 msgstr "S&obrescrever"
 
@@ -24311,77 +24315,77 @@ msgstr "Ramo \"%1$s\" já existe."
 msgid "Error viewing the output file."
 msgstr "Erro ao visualizar o arquivo de saída."
 
-#: src/Buffer.cpp:3723
+#: src/Buffer.cpp:3727
 #, c-format
 msgid "Preview source code for paragraph %1$d"
 msgstr "Pré-visualizar código-fonte para parágrafo %1$d"
 
-#: src/Buffer.cpp:3727
+#: src/Buffer.cpp:3731
 #, c-format
 msgid "Preview source code from paragraph %1$s to %2$s"
 msgstr "Pré-visualizar código-fonte do parágrafo %1$s ao %2$s"
 
-#: src/Buffer.cpp:3781
+#: src/Buffer.cpp:3785
 msgid "Preview source code"
 msgstr "Pré-visualizar código-fonte"
 
-#: src/Buffer.cpp:3783
+#: src/Buffer.cpp:3787
 msgid "Preview preamble"
 msgstr "Pré-visualização do preâmbulo"
 
-#: src/Buffer.cpp:3785
+#: src/Buffer.cpp:3789
 msgid "Preview body"
 msgstr "Pré-visualização do corpo"
 
-#: src/Buffer.cpp:3800
+#: src/Buffer.cpp:3804
 msgid "Plain text does not have a preamble."
 msgstr "Texto simples não possui preâmbulo."
 
-#: src/Buffer.cpp:3905
+#: src/Buffer.cpp:3910
 #, c-format
 msgid "Auto-saving %1$s"
 msgstr "Auto-salvando %1$s"
 
-#: src/Buffer.cpp:3961
+#: src/Buffer.cpp:3966
 msgid "Autosave failed!"
 msgstr "Falha ao auto-salvar!"
 
-#: src/Buffer.cpp:4022
+#: src/Buffer.cpp:4027
 msgid "Autosaving current document..."
 msgstr "Auto-salvando documento atual..."
 
-#: src/Buffer.cpp:4145
+#: src/Buffer.cpp:4150
 msgid "Couldn't export file"
 msgstr "Não foi possível exportar o arquivo"
 
-#: src/Buffer.cpp:4146
+#: src/Buffer.cpp:4151
 #, c-format
 msgid "No information for exporting the format %1$s."
 msgstr "Não há informação para exportar o formato %1$s."
 
-#: src/Buffer.cpp:4207 src/frontends/qt4/GuiView.cpp:2310
+#: src/Buffer.cpp:4212 src/frontends/qt4/GuiView.cpp:2313
 msgid "File name error"
 msgstr "Erro no nome do arquivo"
 
-#: src/Buffer.cpp:4208
+#: src/Buffer.cpp:4213
 msgid "The directory path to the document cannot contain spaces."
 msgstr "O caminho (path) para o documento não pode conter espaços."
 
-#: src/Buffer.cpp:4308 src/Buffer.cpp:4322 src/frontends/qt4/GuiView.cpp:660
+#: src/Buffer.cpp:4313 src/Buffer.cpp:4327 src/frontends/qt4/GuiView.cpp:660
 msgid "Document export cancelled."
 msgstr "Exportação de documento cancelada."
 
-#: src/Buffer.cpp:4325
+#: src/Buffer.cpp:4330
 #, c-format
 msgid "Document exported as %1$s to file `%2$s'"
 msgstr "Documento exportado como %1$s para o arquivo `%2$s'"
 
-#: src/Buffer.cpp:4332
+#: src/Buffer.cpp:4337
 #, c-format
 msgid "Document exported as %1$s"
 msgstr "Documento exportado como %1$s"
 
-#: src/Buffer.cpp:4401
+#: src/Buffer.cpp:4406
 #, c-format
 msgid ""
 "An emergency save of the document %1$s exists.\n"
@@ -24392,19 +24396,19 @@ msgstr ""
 "\n"
 "Recuperá-la?"
 
-#: src/Buffer.cpp:4404
+#: src/Buffer.cpp:4409
 msgid "Load emergency save?"
 msgstr "Carregar cópia de emergência?"
 
-#: src/Buffer.cpp:4405
+#: src/Buffer.cpp:4410
 msgid "&Recover"
 msgstr "&Recuperar"
 
-#: src/Buffer.cpp:4405
+#: src/Buffer.cpp:4410
 msgid "&Load Original"
 msgstr "&Carregar Original"
 
-#: src/Buffer.cpp:4416
+#: src/Buffer.cpp:4421
 #, c-format
 msgid ""
 "An emergency file is successfully loaded, but the original file %1$s is "
@@ -24414,15 +24418,15 @@ msgstr ""
 "%1$s foi marcado como somente-leitura. Não se esqueça de salvar o documento "
 "como um arquivo diferente."
 
-#: src/Buffer.cpp:4423
+#: src/Buffer.cpp:4428
 msgid "Document was successfully recovered."
 msgstr "Documento recuperado com sucesso."
 
-#: src/Buffer.cpp:4425
+#: src/Buffer.cpp:4430
 msgid "Document was NOT successfully recovered."
 msgstr "Documento NÃO FOI recuperado com sucesso."
 
-#: src/Buffer.cpp:4426
+#: src/Buffer.cpp:4431
 #, c-format
 msgid ""
 "Remove emergency file now?\n"
@@ -24431,27 +24435,27 @@ msgstr ""
 "Excluir arquivo de emergência agora?\n"
 "(%1$s)"
 
-#: src/Buffer.cpp:4430 src/Buffer.cpp:4442
+#: src/Buffer.cpp:4435 src/Buffer.cpp:4447
 msgid "Delete emergency file?"
 msgstr "Excluir arquivo de emergência?"
 
-#: src/Buffer.cpp:4431 src/Buffer.cpp:4444
+#: src/Buffer.cpp:4436 src/Buffer.cpp:4449
 msgid "&Keep"
 msgstr "&Manter"
 
-#: src/Buffer.cpp:4435
+#: src/Buffer.cpp:4440
 msgid "Emergency file deleted"
 msgstr "Arquivo de emergência excluído"
 
-#: src/Buffer.cpp:4436
+#: src/Buffer.cpp:4441
 msgid "Do not forget to save your file now!"
 msgstr "Não se esqueça de salvar o seu arquivo agora!"
 
-#: src/Buffer.cpp:4443
+#: src/Buffer.cpp:4448
 msgid "Remove emergency file now?"
 msgstr "Excluir arquivo de emergência agora?"
 
-#: src/Buffer.cpp:4466
+#: src/Buffer.cpp:4471
 #, c-format
 msgid ""
 "The backup of the document %1$s is newer.\n"
@@ -24462,19 +24466,19 @@ msgstr ""
 "\n"
 "Carregar a cópia de segurança em seu lugar?"
 
-#: src/Buffer.cpp:4468
+#: src/Buffer.cpp:4473
 msgid "Load backup?"
 msgstr "Carregar cópia de segurança?"
 
-#: src/Buffer.cpp:4469
+#: src/Buffer.cpp:4474
 msgid "&Load backup"
 msgstr "&Carregar cópia de segurança"
 
-#: src/Buffer.cpp:4469
+#: src/Buffer.cpp:4474
 msgid "Load &original"
 msgstr "Carregar &original"
 
-#: src/Buffer.cpp:4479
+#: src/Buffer.cpp:4484
 #, c-format
 msgid ""
 "A backup file is successfully loaded, but the original file %1$s is marked "
@@ -24484,16 +24488,16 @@ msgstr ""
 "original %1$s foi marcado como somente-leitura. Não se esqueça de salvar o "
 "documento como um arquivo diferente."
 
-#: src/Buffer.cpp:4821 src/insets/InsetCaption.cpp:377
+#: src/Buffer.cpp:4828 src/insets/InsetCaption.cpp:379
 msgid "Senseless!!! "
 msgstr "Sem sentido!!! "
 
-#: src/Buffer.cpp:5043
+#: src/Buffer.cpp:5050
 #, c-format
 msgid "Document %1$s reloaded."
 msgstr "Documento %1$s recarregado."
 
-#: src/Buffer.cpp:5046
+#: src/Buffer.cpp:5053
 #, c-format
 msgid "Could not reload document %1$s."
 msgstr "Não foi possível recarregar o documento %1$s."
@@ -24621,14 +24625,14 @@ msgstr ""
 "não são representáveis na codificação atual e por isso foram omitidos:\n"
 "%1$s."
 
-#: src/BufferParams.cpp:2044 src/Encoding.cpp:245 src/Paragraph.cpp:2634
+#: src/BufferParams.cpp:2044 src/Encoding.cpp:245 src/Paragraph.cpp:2635
 #: src/frontends/qt4/LaTeXHighlighter.cpp:127 src/insets/InsetListings.cpp:168
 #: src/insets/InsetListings.cpp:176 src/insets/InsetListings.cpp:199
 #: src/mathed/MathExtern.cpp:1478
 msgid "LyX Warning: "
 msgstr "Aviso do LyX:"
 
-#: src/BufferParams.cpp:2045 src/Encoding.cpp:246 src/Paragraph.cpp:2635
+#: src/BufferParams.cpp:2045 src/Encoding.cpp:246 src/Paragraph.cpp:2636
 #: src/insets/InsetListings.cpp:169 src/insets/InsetListings.cpp:177
 #: src/mathed/MathExtern.cpp:1479
 msgid "uncodable character"
@@ -24723,7 +24727,7 @@ msgid "This portion of the document is deleted."
 msgstr "Esta porção do documento está apagada."
 
 #: src/BufferView.cpp:1082 src/BufferView.cpp:2003
-#: src/frontends/qt4/GuiView.cpp:3603 src/frontends/qt4/GuiView.cpp:3681
+#: src/frontends/qt4/GuiView.cpp:3606 src/frontends/qt4/GuiView.cpp:3684
 msgid "Absolute filename expected."
 msgstr "Nome absoluto de arquivo esperado."
 
@@ -25481,17 +25485,17 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "A cópia de %1$s para %2$s falhou."
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:136
-#: src/frontends/qt4/GuiDocument.cpp:3668 src/frontends/qt4/GuiListings.cpp:159
+#: src/frontends/qt4/GuiDocument.cpp:3669 src/frontends/qt4/GuiListings.cpp:159
 msgid "Roman"
 msgstr "Roman"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:137
-#: src/frontends/qt4/GuiDocument.cpp:3668 src/frontends/qt4/GuiListings.cpp:159
+#: src/frontends/qt4/GuiDocument.cpp:3669 src/frontends/qt4/GuiListings.cpp:159
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
 #: src/Font.cpp:59 src/frontends/qt4/GuiCharacter.cpp:138
-#: src/frontends/qt4/GuiDocument.cpp:3668 src/frontends/qt4/GuiListings.cpp:159
+#: src/frontends/qt4/GuiDocument.cpp:3669 src/frontends/qt4/GuiListings.cpp:159
 msgid "Typewriter"
 msgstr "Typewriter"
 
@@ -25580,7 +25584,7 @@ msgstr "Número %1$s"
 msgid "Cannot view file"
 msgstr "Não é possível visualizar arquivo"
 
-#: src/Format.cpp:662 src/Format.cpp:732 src/frontends/qt4/GuiView.cpp:3344
+#: src/Format.cpp:662 src/Format.cpp:732 src/frontends/qt4/GuiView.cpp:3348
 #, c-format
 msgid "File does not exist: %1$s"
 msgstr "O arquivo não existe: %1$s"
@@ -25672,11 +25676,11 @@ msgstr "Rodando BibTeX."
 msgid "Running MakeIndex for nomencl."
 msgstr "Rodando MakeIndex para nomencl."
 
-#: src/LaTeX.cpp:1301 src/LaTeX.cpp:1307 src/LaTeX.cpp:1316
+#: src/LaTeX.cpp:1322 src/LaTeX.cpp:1328 src/LaTeX.cpp:1337
 msgid "BibTeX error: "
 msgstr "Erro do BibTeX: "
 
-#: src/LaTeX.cpp:1323
+#: src/LaTeX.cpp:1344
 msgid "Biber error: "
 msgstr "Erro do Biber: "
 
@@ -25712,39 +25716,39 @@ msgstr ""
 msgid "The following files could not be loaded:"
 msgstr "Não foi possível carregar os arquivos a seguir:"
 
-#: src/LyX.cpp:400
+#: src/LyX.cpp:404
 #, c-format
 msgid "%1$s does not appear like a LyX created temporary directory."
 msgstr "%1$s não parece ser uma pasta temporária criada pelo LyX."
 
-#: src/LyX.cpp:402
+#: src/LyX.cpp:406
 msgid "Cannot remove temporary directory"
 msgstr "Não foi possível remover pasta temporária"
 
-#: src/LyX.cpp:407
+#: src/LyX.cpp:411
 #, c-format
 msgid "Unable to remove the temporary directory %1$s"
 msgstr "Não foi possível remover a pasta temporária %1$s"
 
-#: src/LyX.cpp:436
+#: src/LyX.cpp:440
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Opção de linha de comando `%1$s' errada. Encerrando."
 
-#: src/LyX.cpp:454
+#: src/LyX.cpp:458
 msgid "Missing filename for this operation."
 msgstr "Falta o nome de arquivo para esta operação."
 
-#: src/LyX.cpp:503
+#: src/LyX.cpp:507
 #, c-format
 msgid "LyX failed to load the following file: %1$s"
 msgstr "O LyX não conseguiu carregar o arquivo a seguir: %1$s"
 
-#: src/LyX.cpp:550
+#: src/LyX.cpp:554
 msgid "No textclass is found"
 msgstr "Nenhum textclass foi encontrado"
 
-#: src/LyX.cpp:551
+#: src/LyX.cpp:555
 msgid ""
 "LyX will only have minimal functionality because no textclasses have been "
 "found. You can either try to reconfigure LyX normally, try to reconfigure "
@@ -25754,19 +25758,19 @@ msgstr ""
 "textclass. Você pode tentar reconfigurar o LyX normalmente, tentar "
 "reconfigurar sem sua instalação do LaTeX, ou continuar."
 
-#: src/LyX.cpp:555
+#: src/LyX.cpp:559
 msgid "&Reconfigure"
 msgstr "&Reconfigurar"
 
-#: src/LyX.cpp:556
+#: src/LyX.cpp:560
 msgid "&Without LaTeX"
 msgstr "&Sem LaTeX"
 
-#: src/LyX.cpp:557 src/VCBackend.cpp:960 src/VCBackend.cpp:964
+#: src/LyX.cpp:561 src/VCBackend.cpp:960 src/VCBackend.cpp:964
 msgid "&Continue"
 msgstr "&Continuar"
 
-#: src/LyX.cpp:660
+#: src/LyX.cpp:664
 msgid ""
 "SIGHUP signal caught!\n"
 "Bye."
@@ -25774,7 +25778,7 @@ msgstr ""
 "Sinal SIGHUP recebido!\n"
 "Tchau."
 
-#: src/LyX.cpp:664
+#: src/LyX.cpp:668
 msgid ""
 "SIGFPE signal caught!\n"
 "Bye."
@@ -25782,7 +25786,7 @@ msgstr ""
 "Sinal SIGFPE recebido!\n"
 "Tchau."
 
-#: src/LyX.cpp:667
+#: src/LyX.cpp:671
 msgid ""
 "SIGSEGV signal caught!\n"
 "Sorry, you have found a bug in LyX, hope you have not lost any data.\n"
@@ -25798,19 +25802,19 @@ msgstr ""
 "necessário. Obrigado!\n"
 "Tchau."
 
-#: src/LyX.cpp:683
+#: src/LyX.cpp:687
 msgid "LyX crashed!"
 msgstr "O LyX travou!"
 
-#: src/LyX.cpp:717
+#: src/LyX.cpp:721
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/LyX.cpp:964
+#: src/LyX.cpp:968
 msgid "Could not create temporary directory"
 msgstr "Não foi possível criar pasta temporária"
 
-#: src/LyX.cpp:965
+#: src/LyX.cpp:969
 #, c-format
 msgid ""
 "Could not create a temporary directory in\n"
@@ -25822,11 +25826,11 @@ msgstr ""
 "Certifique-se de que este caminho (path) existe e é gravável e tente "
 "novamente."
 
-#: src/LyX.cpp:1027
+#: src/LyX.cpp:1031
 msgid "Missing user LyX directory"
 msgstr "Pasta de usuário do Lyx ausente"
 
-#: src/LyX.cpp:1028
+#: src/LyX.cpp:1032
 #, c-format
 msgid ""
 "You have specified a non-existent user LyX directory, %1$s.\n"
@@ -25835,37 +25839,37 @@ msgstr ""
 "Você especificou uma pasta de usuário inexistente, %1$s.\n"
 "Ela é necessária para manter a sua própria configuração."
 
-#: src/LyX.cpp:1033
+#: src/LyX.cpp:1037
 msgid "&Create directory"
 msgstr "&Criar pasta"
 
-#: src/LyX.cpp:1034
+#: src/LyX.cpp:1038
 msgid "&Exit LyX"
 msgstr "&Sair do LyX"
 
-#: src/LyX.cpp:1035
+#: src/LyX.cpp:1039
 msgid "No user LyX directory. Exiting."
 msgstr "Não há pasta de usuário do LyX. Encerrando."
 
-#: src/LyX.cpp:1039
+#: src/LyX.cpp:1043
 #, c-format
 msgid "LyX: Creating directory %1$s"
 msgstr "LyX: Criando pasta %1$s"
 
-#: src/LyX.cpp:1044
+#: src/LyX.cpp:1048
 msgid "Failed to create directory. Exiting."
 msgstr "Não foi possível criar pasta. Encerrando."
 
-#: src/LyX.cpp:1117
+#: src/LyX.cpp:1121
 msgid "List of supported debug flags:"
 msgstr "Lista de flags de debug suportados:"
 
-#: src/LyX.cpp:1121
+#: src/LyX.cpp:1125
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Definindo nível de debug para %1$s"
 
-#: src/LyX.cpp:1132
+#: src/LyX.cpp:1136
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -25949,58 +25953,58 @@ msgstr ""
 "\t-version  resumir informações da versão e da compilação\n"
 "Para mais informações, consulte a página de manual do LyX."
 
-#: src/LyX.cpp:1178 src/frontends/qt4/GuiAbout.cpp:246
+#: src/LyX.cpp:1182 src/frontends/qt4/GuiAbout.cpp:246
 msgid "  Git commit hash "
 msgstr "  Git commit hash "
 
-#: src/LyX.cpp:1189 src/support/Package.cpp:645
+#: src/LyX.cpp:1193 src/support/Package.cpp:645
 msgid "No system directory"
 msgstr "Sem pasta de sistema"
 
-#: src/LyX.cpp:1190
+#: src/LyX.cpp:1194
 msgid "Missing directory for -sysdir switch"
 msgstr "Falta a pasta para o parâmetro -sysdir"
 
-#: src/LyX.cpp:1201
+#: src/LyX.cpp:1205
 msgid "No user directory"
 msgstr "Sem pasta de usuário"
 
-#: src/LyX.cpp:1202
+#: src/LyX.cpp:1206
 msgid "Missing directory for -userdir switch"
 msgstr "Falta a pasta para o parâmetro -userdir"
 
-#: src/LyX.cpp:1213
+#: src/LyX.cpp:1217
 msgid "Incomplete command"
 msgstr "Comando incompleto"
 
-#: src/LyX.cpp:1214
+#: src/LyX.cpp:1218
 msgid "Missing command string after --execute switch"
 msgstr "Falta sequência alfanumérica para o parâmetro --execute"
 
-#: src/LyX.cpp:1225
+#: src/LyX.cpp:1229
 msgid "Missing file type [eg latex, ps...] after --export-to switch"
 msgstr ""
 "Falta o tipo de arquivo [p.ex., latex, ps...] para o parâmetro --export-to"
 
-#: src/LyX.cpp:1230
+#: src/LyX.cpp:1234
 msgid "Missing destination filename after --export-to switch"
 msgstr "Falta o arquivo de destino para o parâmetro --export-to"
 
-#: src/LyX.cpp:1243
+#: src/LyX.cpp:1247
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 "Falta o tipo de arquivo [p.ex., latex, ps...] para o parâmetro --export"
 
-#: src/LyX.cpp:1256
+#: src/LyX.cpp:1260
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 "Falta o tipo de arquivo [p.ex., latex, ps...] para o parâmetro --import"
 
-#: src/LyX.cpp:1261
+#: src/LyX.cpp:1265
 msgid "Missing filename for --import"
 msgstr "Falta o nome de arquivo para o parâmetro --import"
 
-#: src/LyXRC.cpp:2890
+#: src/LyXRC.cpp:3002
 msgid ""
 "Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
 "legal words?"
@@ -26008,14 +26012,14 @@ msgstr ""
 "Considerar palavras justapostas, como \"diskdrive\" para \"disk drive\", "
 "como palavras válidas?"
 
-#: src/LyXRC.cpp:2894
+#: src/LyXRC.cpp:3006
 msgid ""
 "Specify an alternate language. The default is to use the language of the "
 "document."
 msgstr ""
 "Especifique um idioma alternativo. O idioma do documento é usado por padrão."
 
-#: src/LyXRC.cpp:2902
+#: src/LyXRC.cpp:3014
 msgid ""
 "De-select if you don't want the current selection to be replaced "
 "automatically by what you type."
@@ -26023,7 +26027,7 @@ msgstr ""
 "Desmarque se você não quiser que a seleção atual seja substituída "
 "automaticamente pelo que você digitar."
 
-#: src/LyXRC.cpp:2906
+#: src/LyXRC.cpp:3018
 msgid ""
 "De-select if you don't want the class options to be reset to defaults after "
 "class change."
@@ -26031,14 +26035,14 @@ msgstr ""
 "Desmarque se você não quiser que as opções de classe sejam reiniciadas para "
 "o padrão após mudar a classe do documento."
 
-#: src/LyXRC.cpp:2910
+#: src/LyXRC.cpp:3022
 msgid ""
 "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "O intervalo de tempo para auto-salvar (em segundos). 0 significa não auto-"
 "salvar."
 
-#: src/LyXRC.cpp:2917
+#: src/LyXRC.cpp:3029
 msgid ""
 "The path for storing backup files. If it is an empty string, LyX will store "
 "the backup file in the same directory as the original file."
@@ -26046,7 +26050,7 @@ msgstr ""
 "O caminho para armazenar cópias de segurança. Caso vazio, o LyX armazenará o "
 "arquivo de cópia de segurança na mesma pasta que o arquivo original."
 
-#: src/LyXRC.cpp:2921
+#: src/LyXRC.cpp:3033
 msgid ""
 "Define the options of bibtex (cf. man bibtex) or select an alternative "
 "compiler (e.g. mlbibtex or bibulus)."
@@ -26054,11 +26058,11 @@ msgstr ""
 "Defina as opções do bibtex (cf. man bibtex) ou selecione um compilador "
 "alternativo (e.g. mlbibtex ou bibulus)."
 
-#: src/LyXRC.cpp:2925
+#: src/LyXRC.cpp:3037
 msgid "Define the options of the bibtex program for PLaTeX (Japanese LaTeX)."
 msgstr "Defina as opções do programa bibtex para PLaTeX (LaTeX Japonês)."
 
-#: src/LyXRC.cpp:2929
+#: src/LyXRC.cpp:3041
 msgid ""
 "Keybindings file. Can either specify an absolute path, or LyX will look in "
 "its global and local bind/ directories."
@@ -26066,11 +26070,11 @@ msgstr ""
 "Arquivo de combinações de teclas. Pode especificar um caminho absoluto, ou o "
 "LyX checará em suas pastas bind/ local e global."
 
-#: src/LyXRC.cpp:2933
+#: src/LyXRC.cpp:3045
 msgid "Select to check whether the lastfiles still exist."
 msgstr "Marque para verificar se os arquivos recentes ainda existem."
 
-#: src/LyXRC.cpp:2937
+#: src/LyXRC.cpp:3049
 msgid ""
 "Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
 "n38\" Refer to the ChkTeX documentation."
@@ -26078,7 +26082,7 @@ msgstr ""
 "Defina como rodar o chktex. Exemplo: \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -"
 "n30 -n38\" Consulte a documentação ChkTeX."
 
-#: src/LyXRC.cpp:2947
+#: src/LyXRC.cpp:3059
 msgid ""
 "LyX normally doesn't update the cursor position if you move the scrollbar. "
 "Set to true if you'd prefer to always have the cursor on screen."
@@ -26086,7 +26090,7 @@ msgstr ""
 "O LyX normalmente não atualiza a posição do cursor quando você move a barra "
 "de rolagem. Marque se você preferir que o cursor esteja sempre na tela."
 
-#: src/LyXRC.cpp:2955
+#: src/LyXRC.cpp:3067
 msgid ""
 "LyX normally doesn't allow the user to scroll further than the bottom of the "
 "document. Set to true if you prefer to scroll the bottom of the document to "
@@ -26095,15 +26099,15 @@ msgstr ""
 "O LyX normalmente não permite ao usuário rolar além do fim do documento. "
 "Marque se você preferir rolar o fim do documento para o alto da tela"
 
-#: src/LyXRC.cpp:2959
+#: src/LyXRC.cpp:3071
 msgid "Make Apple key act as Meta and Control key as Ctrl."
 msgstr "Fazer com que a tecla Apple atue como Meta e Control como Ctrl."
 
-#: src/LyXRC.cpp:2963
+#: src/LyXRC.cpp:3075
 msgid "Use the Mac OS X conventions for cursor movement"
 msgstr "Usar as convenções do Mac OS X para o movimento do cursor"
 
-#: src/LyXRC.cpp:2967
+#: src/LyXRC.cpp:3079
 msgid ""
 "Show a small box around a Math Macro with the macro name when the cursor is "
 "inside."
@@ -26111,7 +26115,7 @@ msgstr ""
 "Mostrar uma pequena caixa ao redor de uma Macro Matemática com o nome da "
 "macro quando o cursor estiver em seu interior."
 
-#: src/LyXRC.cpp:2972
+#: src/LyXRC.cpp:3084
 #, no-c-format
 msgid ""
 "This accepts the normal strftime formats; see man strftime for full details. "
@@ -26120,7 +26124,7 @@ msgstr ""
 "Isto aceita os formatos strftime normais; consulte man strftime para todos "
 "os detalhes. Exemplo: \"%A, %e. %B %Y\"."
 
-#: src/LyXRC.cpp:2976
+#: src/LyXRC.cpp:3088
 msgid ""
 "Command definition file. Can either specify an absolute path, or LyX will "
 "look in its global and local commands/ directories."
@@ -26128,17 +26132,17 @@ msgstr ""
 "Arquivo de definição de comandos. Pode especificar um caminho absoluto, ou o "
 "LyX checará em suas pastas commands/ local e global."
 
-#: src/LyXRC.cpp:2980
+#: src/LyXRC.cpp:3092
 msgid ""
 "The default format used with LFUN_BUFFER_[VIEW|UPDATE] with non-TeX fonts."
 msgstr ""
 "O formato padrão usado com LFUN_BUFFER_[VIEW|UPDATE] com fontes não-TeX."
 
-#: src/LyXRC.cpp:2984
+#: src/LyXRC.cpp:3096
 msgid "The default format used with LFUN_BUFFER_[VIEW|UPDATE]."
 msgstr "O formato padrão usado com LFUN_BUFFER_[VIEW|UPDATE]."
 
-#: src/LyXRC.cpp:2988
+#: src/LyXRC.cpp:3100
 msgid ""
 "Iconify the dialogs when the main window is iconified. (Affects only dialogs "
 "shown after the change has been made.)"
@@ -26146,11 +26150,11 @@ msgstr ""
 "Iconizar as janelas quando a janela principal estiver iconizada (só afeta "
 "janelas exibidas depois que alteração tiver sido feita)."
 
-#: src/LyXRC.cpp:2992
+#: src/LyXRC.cpp:3104
 msgid "Select how LyX will display any graphics."
 msgstr "Selecione como o LyX mostrará qualquer gráfico."
 
-#: src/LyXRC.cpp:2996
+#: src/LyXRC.cpp:3108
 msgid ""
 "The default path for your documents. An empty value selects the directory "
 "LyX was started from."
@@ -26158,12 +26162,12 @@ msgstr ""
 "O caminho (path) padrão para seus documentos. Um valor vazio seleciona a "
 "pasta a partir da qual o LyX foi iniciado."
 
-#: src/LyXRC.cpp:3000
+#: src/LyXRC.cpp:3112
 msgid "Specify additional chars that can be part of a word."
 msgstr ""
 "Especifique caracteres adicionais que podem fazer parte de uma palavra."
 
-#: src/LyXRC.cpp:3004
+#: src/LyXRC.cpp:3116
 msgid ""
 "The path that LyX will set when offering to choose an example. An empty "
 "value selects the directory LyX was started from."
@@ -26171,7 +26175,7 @@ msgstr ""
 "O caminho (path) que o LyX usará ao pedir para escolher um exemplo. Um valor "
 "vazio seleciona a pasta a partir da qual o LyX foi iniciado."
 
-#: src/LyXRC.cpp:3008
+#: src/LyXRC.cpp:3120
 msgid ""
 "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
 "recommended for non-English languages."
@@ -26179,7 +26183,7 @@ msgstr ""
 "A codificação de fonte usada para o pacote LaTeX2e fontenc. T1 é altamente "
 "recomendada para outras línguas que não o Inglês."
 
-#: src/LyXRC.cpp:3015
+#: src/LyXRC.cpp:3127
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
 "compiler. E.g., using xindy/make-rules, the command string would be "
@@ -26189,11 +26193,11 @@ msgstr ""
 "alternativo. Por exemplo, se usar xindy/make-rules, o valor seria "
 "\"makeindex.sh -m $$lang\"."
 
-#: src/LyXRC.cpp:3019
+#: src/LyXRC.cpp:3131
 msgid "Define the options of the index program for PLaTeX (Japanese LaTeX)."
 msgstr "Defina as opções do programa de indexação para PLaTeX (LaTeX Japonês)."
 
-#: src/LyXRC.cpp:3023
+#: src/LyXRC.cpp:3135
 msgid ""
 "Define the options of makeindex (cf. man makeindex) to be used for "
 "nomenclatures. This might differ from the index processing options."
@@ -26202,7 +26206,7 @@ msgstr ""
 "nomenclaturas. Pode ser que sejam distintas das opções de processamento de "
 "índice remissivo."
 
-#: src/LyXRC.cpp:3032
+#: src/LyXRC.cpp:3144
 msgid ""
 "Use this to set the correct mapping file for your keyboard. You'll need this "
 "if you for instance want to type German documents on an American keyboard."
@@ -26211,7 +26215,7 @@ msgstr ""
 "Será necessário se, por exemplo, você quiser escrever documentos em Alemão "
 "em um teclado Americano."
 
-#: src/LyXRC.cpp:3036
+#: src/LyXRC.cpp:3148
 msgid ""
 "Select if a language switching command is needed at the beginning of the "
 "document."
@@ -26219,14 +26223,14 @@ msgstr ""
 "Selecione se um comando de mudança de idioma é necessário no começo do "
 "documento."
 
-#: src/LyXRC.cpp:3040
+#: src/LyXRC.cpp:3152
 msgid ""
 "Select if a language switching command is needed at the end of the document."
 msgstr ""
 "Selecione se um comando de mudança de idioma é necessário no fim do "
 "documento."
 
-#: src/LyXRC.cpp:3044
+#: src/LyXRC.cpp:3156
 msgid ""
 "The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
@@ -26236,15 +26240,15 @@ msgstr ""
 "\\selectlanguage{$$lang} onde $$lang é substituído pelo nome do segundo "
 "idioma."
 
-#: src/LyXRC.cpp:3048
+#: src/LyXRC.cpp:3160
 msgid "The LaTeX command for changing back to the language of the document."
 msgstr "Comando LaTeX para retornar ao idioma do documento."
 
-#: src/LyXRC.cpp:3052
+#: src/LyXRC.cpp:3164
 msgid "The LaTeX command for local changing of the language."
 msgstr "Comando LaTeX para alterar localmente o idioma."
 
-#: src/LyXRC.cpp:3056
+#: src/LyXRC.cpp:3168
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
@@ -26252,7 +26256,7 @@ msgstr ""
 "Desmarque se você não quiser passar o(s) idioma(s) como argumento(s) para "
 "\\documentclass."
 
-#: src/LyXRC.cpp:3060
+#: src/LyXRC.cpp:3172
 msgid ""
 "The LaTeX command for loading the language package. E.g. "
 "\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
@@ -26260,7 +26264,7 @@ msgstr ""
 "Comando LaTeX para carregar o pacote de idioma. P.ex., "
 "\"\\usepackage{babel}\", \"\\usepackage{omega}\"."
 
-#: src/LyXRC.cpp:3064
+#: src/LyXRC.cpp:3176
 msgid ""
 "De-select if you don't want babel to be used when the language of the "
 "document is the default language."
@@ -26268,55 +26272,55 @@ msgstr ""
 "Desmarque se você não quiser que o babel seja usado quando o idioma do "
 "documento for o idioma padrão."
 
-#: src/LyXRC.cpp:3068
+#: src/LyXRC.cpp:3180
 msgid "De-select if you do not want LyX to scroll to saved position."
 msgstr "Desmarque se você não quiser que o LyX role para a posição salva."
 
-#: src/LyXRC.cpp:3072
+#: src/LyXRC.cpp:3184
 msgid "De-select to prevent loading files opened from the last LyX session."
 msgstr ""
 "Desmarque para impedir a carga dos arquivos que estavam abertos na última "
 "sessão do LyX."
 
-#: src/LyXRC.cpp:3076
+#: src/LyXRC.cpp:3188
 msgid "De-select if you don't want LyX to create backup files."
 msgstr "Desmarque se você não quiser que o LyX crie cópias de segurança."
 
-#: src/LyXRC.cpp:3080
+#: src/LyXRC.cpp:3192
 msgid ""
 "Select to control the highlighting of words with a language foreign to that "
 "of the document."
 msgstr ""
 "Selecione para controlar o realce de palavras estrangeiras em um documento."
 
-#: src/LyXRC.cpp:3084
+#: src/LyXRC.cpp:3196
 msgid "The scrolling speed of the mouse wheel."
 msgstr "Velocidade de rolagem da roda do mouse."
 
-#: src/LyXRC.cpp:3088
+#: src/LyXRC.cpp:3200
 msgid "The completion popup delay."
 msgstr "Quanto tempo esperar antes de exibir a janela popup de completação."
 
-#: src/LyXRC.cpp:3092
+#: src/LyXRC.cpp:3204
 msgid "Select to display the completion popup in math mode."
 msgstr ""
 "Quanto tempo esperar antes de exibir a janela popup de completação em modo "
 "matemático."
 
-#: src/LyXRC.cpp:3096
+#: src/LyXRC.cpp:3208
 msgid "Select to display the completion popup in text mode."
 msgstr ""
 "Quanto tempo esperar antes de exibir a janela popup de completação em modo "
 "texto."
 
-#: src/LyXRC.cpp:3100
+#: src/LyXRC.cpp:3212
 msgid ""
 "Show the completion popup without delay after non-unique completion attempt."
 msgstr ""
 "Não esperar para exibir a janela popup de completação quando houver mais de "
 "uma completação possível."
 
-#: src/LyXRC.cpp:3104
+#: src/LyXRC.cpp:3216
 msgid ""
 "Show a small triangle on the cursor to indicate that a completion is "
 "available."
@@ -26324,64 +26328,64 @@ msgstr ""
 "Mostrar um pequeno triângulo no cursor para indicar que há uma completação "
 "disponível."
 
-#: src/LyXRC.cpp:3108
+#: src/LyXRC.cpp:3220
 msgid "The inline completion delay."
 msgstr "Quanto tempo esperar antes de exibir a completação inline."
 
-#: src/LyXRC.cpp:3112
+#: src/LyXRC.cpp:3224
 msgid "Select to display the inline completion in math mode."
 msgstr "Selecione para exibir a completação inline em modo matemático."
 
-#: src/LyXRC.cpp:3116
+#: src/LyXRC.cpp:3228
 msgid "Select to display the inline completion in text mode."
 msgstr "Selecione para exibir a completação inline em modo texto."
 
-#: src/LyXRC.cpp:3120
+#: src/LyXRC.cpp:3232
 msgid "Use \"...\" to shorten long completions."
 msgstr "Usar \"...\" para encurtar completações longas."
 
-#: src/LyXRC.cpp:3124
+#: src/LyXRC.cpp:3236
 msgid "Allow TeXMacs shorthand, like => converting to \\Rightarrow."
 msgstr "Permitir taquigrafia TeXMacs, como converter => para \\Rightarrow."
 
-#: src/LyXRC.cpp:3128
+#: src/LyXRC.cpp:3240
 #, c-format
 msgid "Maximal number of lastfiles. Up to %1$d can appear in the file menu."
 msgstr ""
 "Número máximo de arquivos recentes. Até %1$d podem aparecer no menu Arquivo."
 
-#: src/LyXRC.cpp:3139
+#: src/LyXRC.cpp:3251
 msgid "Shows a typeset preview of things such as math"
 msgstr "Mostra uma pré-visualização composta de coisas como matemática"
 
-#: src/LyXRC.cpp:3143
+#: src/LyXRC.cpp:3255
 msgid "Previewed equations will have \"(#)\" labels rather than numbered ones"
 msgstr "Equações pré-visualizadas terão etiquetas \"(#)\" em vez de números"
 
-#: src/LyXRC.cpp:3147
+#: src/LyXRC.cpp:3259
 msgid "Scale the preview size to suit."
 msgstr "Redimensionar o tamanho de pré-visualização para caber."
 
-#: src/LyXRC.cpp:3151
+#: src/LyXRC.cpp:3263
 msgid "The option to print out in landscape."
 msgstr "A opção para imprimir em paisagem."
 
-#: src/LyXRC.cpp:3155
+#: src/LyXRC.cpp:3267
 msgid "Option to specify the dimensions of the print paper."
 msgstr "Opção para especificar as dimensões do papel de impressão."
 
-#: src/LyXRC.cpp:3159
+#: src/LyXRC.cpp:3271
 msgid "The option to specify paper type."
 msgstr "A opção para especificar tipo de papel."
 
-#: src/LyXRC.cpp:3163
+#: src/LyXRC.cpp:3275
 msgid ""
 "Select to have visual bidi cursor movement, unselect for logical movement."
 msgstr ""
 "Marque para ter movimento de cursor bidi visual, desmarque para movimento "
 "lógico."
 
-#: src/LyXRC.cpp:3167
+#: src/LyXRC.cpp:3279
 msgid ""
 "Specify whether, closing the last view of an open document, LyX should close "
 "the document (yes), hide it (no), or ask the user (ask)."
@@ -26389,7 +26393,7 @@ msgstr ""
 "Especifique se, ao fechar a última vista de um documento aberto, o LyX deve "
 "fechar o documento (yes), ocultá-lo (no), or perguntar ao usuário (ask)."
 
-#: src/LyXRC.cpp:3171
+#: src/LyXRC.cpp:3283
 msgid ""
 "DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
 "wrong, override the setting here."
@@ -26397,12 +26401,12 @@ msgstr ""
 "A métrica DPI (dots per inch) do seu monitor é detectada automaticamente "
 "pelo LyX. Em caso de erro, substitura essa configuração aqui."
 
-#: src/LyXRC.cpp:3177
+#: src/LyXRC.cpp:3289
 msgid "The screen fonts used to display the text while editing."
 msgstr ""
 "As fontes de tela usadas para exibir o texto enquanto durante a edição."
 
-#: src/LyXRC.cpp:3186
+#: src/LyXRC.cpp:3298
 msgid ""
 "Allow bitmap fonts to be resized. If you are using a bitmap font, selecting "
 "this option may make some fonts look blocky in LyX. Deselecting this option "
@@ -26413,13 +26417,13 @@ msgstr ""
 "serrilhadas no LyX. Desmarque esta opção para que o LyX, em vez de "
 "redimensionar, use o tamanho de fonte bitmap mais próximo disponível."
 
-#: src/LyXRC.cpp:3190
+#: src/LyXRC.cpp:3302
 msgid "The font sizes used for calculating the scaling of the screen fonts."
 msgstr ""
 "Os tamanhos de fonte usados para calcular o dimensionamento das fontes de "
 "tela."
 
-#: src/LyXRC.cpp:3195
+#: src/LyXRC.cpp:3307
 #, no-c-format
 msgid ""
 "The zoom percentage for screen fonts. A setting of 100% will make the fonts "
@@ -26428,12 +26432,12 @@ msgstr ""
 "A porcentagem de zoom para fontes de tela. Um valor de 100% torna as fontes "
 "aproximadamente do tamanho que teriam no papel."
 
-#: src/LyXRC.cpp:3199
+#: src/LyXRC.cpp:3311
 msgid "Allow session manager to save and restore windows geometry."
 msgstr ""
 "Permite ao gerenciador de sessão salvar e restaurar a geometria das janelas."
 
-#: src/LyXRC.cpp:3203
+#: src/LyXRC.cpp:3315
 msgid ""
 "This starts the lyxserver. The pipes get an additional extension \".in\" and "
 "\".out\". Only for advanced users."
@@ -26441,11 +26445,11 @@ msgstr ""
 "Inicia o lyxserver. Os pipes recebem uma extensão adicional \".in\" e \".out"
 "\". Somente para usuários avançados."
 
-#: src/LyXRC.cpp:3210
+#: src/LyXRC.cpp:3322
 msgid "De-select if you don't want the startup banner."
 msgstr "Desmarque se você não quiser o estandarte de inicialização."
 
-#: src/LyXRC.cpp:3214
+#: src/LyXRC.cpp:3326
 msgid ""
 "LyX will place its temporary directories in this path. They will be deleted "
 "when you quit LyX."
@@ -26453,13 +26457,13 @@ msgstr ""
 "O LyX porá suas pastas temporárias neste caminho (path). Elas serão apagadas "
 "quando você encerrar o LyX."
 
-#: src/LyXRC.cpp:3218
+#: src/LyXRC.cpp:3330
 msgid "This is the place where the files of the thesaurus library reside."
 msgstr ""
 "Este é o local onde residem os arquivos da biblioteca de dicionários de "
 "sinônimos."
 
-#: src/LyXRC.cpp:3222
+#: src/LyXRC.cpp:3334
 msgid ""
 "The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
@@ -26467,7 +26471,7 @@ msgstr ""
 "O caminho (path) que o LyX usará ao pedir para escolher um modelo. Um valor "
 "vazio seleciona a pasta a partir da qual o LyX foi iniciado."
 
-#: src/LyXRC.cpp:3239
+#: src/LyXRC.cpp:3351
 msgid ""
 "The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
@@ -26475,7 +26479,7 @@ msgstr ""
 "O arquivo da interface com o usuário (UI). Pode especificar um caminho "
 "absoluto, ou o LyX checará em suas pastas ui/ local e global."
 
-#: src/LyXRC.cpp:3249
+#: src/LyXRC.cpp:3361
 msgid ""
 "Enable use the system colors for some things like main window background and "
 "selection."
@@ -26483,18 +26487,18 @@ msgstr ""
 "Permite o uso das cores do sistema para coisas como o plano de fundo da "
 "janela principal e a seleção."
 
-#: src/LyXRC.cpp:3253
+#: src/LyXRC.cpp:3365
 msgid "Enable the automatic appearance of tool tips in the work area."
 msgstr ""
 "Permite que dicas de contexto apareçam automaticamente na área de trabalho."
 
-#: src/LyXRC.cpp:3257
+#: src/LyXRC.cpp:3369
 msgid ""
 "Enable the pixmap cache that might improve performance on Mac and Windows."
 msgstr ""
 "Habilita o cache pixmap que pode melhorar o desempenho no Mac e no Windows."
 
-#: src/LyXRC.cpp:3261
+#: src/LyXRC.cpp:3373
 msgid "Specify the paper command to DVI viewer (leave empty or use \"-paper\")"
 msgstr ""
 "Especifique o comando paper para o visualizador DVI (deixe vazio ou use \"-"
@@ -26543,7 +26547,7 @@ msgstr "LyX VC: Mensagem de log"
 msgid "(no log message)"
 msgstr "(sem mensagem de log)"
 
-#: src/LyXVC.cpp:251 src/frontends/qt4/GuiView.cpp:3202
+#: src/LyXVC.cpp:251 src/frontends/qt4/GuiView.cpp:3206
 msgid "LyX VC: Log Message"
 msgstr "LyX VC: Mensagem de Log"
 
@@ -26564,7 +26568,7 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr "Reverter para a versão armazenada do documento?"
 
-#: src/LyXVC.cpp:309 src/frontends/qt4/GuiView.cpp:3718
+#: src/LyXVC.cpp:309 src/frontends/qt4/GuiView.cpp:3721
 msgid "&Revert"
 msgstr "&Reverter"
 
@@ -26695,7 +26699,7 @@ msgstr "Modo de edição de matemática"
 msgid "No valid math formula"
 msgstr "Nenhuma fórmula matemática válida"
 
-#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1067
+#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1065
 msgid "Already in regular expression mode"
 msgstr "Já está no modo de expressão regular"
 
@@ -26703,28 +26707,28 @@ msgstr "Já está no modo de expressão regular"
 msgid "Regexp editor mode"
 msgstr "Modo de edição de expressão regular"
 
-#: src/Text3.cpp:1423
+#: src/Text3.cpp:1424
 msgid "Layout "
 msgstr "Layout "
 
-#: src/Text3.cpp:1424
+#: src/Text3.cpp:1425
 msgid " not known"
 msgstr " desconhecido"
 
-#: src/Text3.cpp:2038 src/frontends/qt4/GuiApplication.cpp:1682
+#: src/Text3.cpp:2039 src/frontends/qt4/GuiApplication.cpp:1694
 msgid "Missing argument"
 msgstr "Argumento ausente"
 
-#: src/Text3.cpp:2183 src/Text3.cpp:2195
+#: src/Text3.cpp:2184 src/Text3.cpp:2196
 msgid "Character set"
 msgstr "Conjunto de caracteres"
 
-#: src/Text3.cpp:2348
+#: src/Text3.cpp:2349
 msgid "Path to thesaurus directory not set!"
 msgstr ""
 "O caminho para a pasta dos dicionários de sinônimos não está configurado!"
 
-#: src/Text3.cpp:2349
+#: src/Text3.cpp:2350
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -26736,7 +26740,7 @@ msgstr ""
 "Para instruções de configuração, consulte a seção 6.15.1\n"
 "do Guia do Usuário."
 
-#: src/Text3.cpp:2416 src/Text3.cpp:2427
+#: src/Text3.cpp:2417 src/Text3.cpp:2428
 msgid "Paragraph layout set"
 msgstr "Layout de parágrafo definido"
 
@@ -26808,7 +26812,7 @@ msgstr "Erro ao ler o módulo %1$s\n"
 #: src/VCBackend.cpp:920 src/VCBackend.cpp:979 src/VCBackend.cpp:1038
 #: src/VCBackend.cpp:1046 src/VCBackend.cpp:1346 src/VCBackend.cpp:1448
 #: src/VCBackend.cpp:1454 src/VCBackend.cpp:1477 src/VCBackend.cpp:1963
-#: src/frontends/qt4/GuiView.cpp:3120 src/frontends/qt4/GuiView.cpp:3164
+#: src/frontends/qt4/GuiView.cpp:3124 src/frontends/qt4/GuiView.cpp:3168
 msgid "Revision control error."
 msgstr "Erro de controle de revisão."
 
@@ -27340,59 +27344,59 @@ msgstr "Sobre o LyX"
 msgid "LyX: %1$s"
 msgstr "LyX: %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:670
+#: src/frontends/qt4/GuiApplication.cpp:682
 msgid "About %1"
 msgstr "Sobre %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:670 src/frontends/qt4/GuiPrefs.cpp:3274
+#: src/frontends/qt4/GuiApplication.cpp:682 src/frontends/qt4/GuiPrefs.cpp:3274
 msgid "Preferences"
 msgstr "Preferências"
 
-#: src/frontends/qt4/GuiApplication.cpp:671
+#: src/frontends/qt4/GuiApplication.cpp:683
 msgid "Reconfigure"
 msgstr "Reconfigurar"
 
-#: src/frontends/qt4/GuiApplication.cpp:671
+#: src/frontends/qt4/GuiApplication.cpp:683
 msgid "Quit %1"
 msgstr "Encerrar %1"
 
-#: src/frontends/qt4/GuiApplication.cpp:1116
+#: src/frontends/qt4/GuiApplication.cpp:1128
 msgid "Nothing to do"
 msgstr "Nada a fazer"
 
-#: src/frontends/qt4/GuiApplication.cpp:1122
+#: src/frontends/qt4/GuiApplication.cpp:1134
 msgid "Unknown action"
 msgstr "Ação desconhecida"
 
-#: src/frontends/qt4/GuiApplication.cpp:1166
+#: src/frontends/qt4/GuiApplication.cpp:1178
 msgid "Command not handled"
 msgstr "Comando não manejado"
 
-#: src/frontends/qt4/GuiApplication.cpp:1172
+#: src/frontends/qt4/GuiApplication.cpp:1184
 msgid "Command disabled"
 msgstr "Comando desativado"
 
-#: src/frontends/qt4/GuiApplication.cpp:1286
+#: src/frontends/qt4/GuiApplication.cpp:1298
 msgid "Command not allowed without a buffer open"
 msgstr "Comando não permitido sem um buffer aberto"
 
-#: src/frontends/qt4/GuiApplication.cpp:1293
+#: src/frontends/qt4/GuiApplication.cpp:1305
 msgid "the <LFUN-COMMAND> argument of buffer-forall is not valid"
 msgstr "o argumento <LFUN-COMMAND> de buffer-forall não é válido"
 
-#: src/frontends/qt4/GuiApplication.cpp:1495
+#: src/frontends/qt4/GuiApplication.cpp:1507
 msgid "Running configure..."
 msgstr "Rodando configure..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1503
+#: src/frontends/qt4/GuiApplication.cpp:1515
 msgid "Reloading configuration..."
 msgstr "Recarregando configuração..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1510
+#: src/frontends/qt4/GuiApplication.cpp:1522
 msgid "System reconfiguration failed"
 msgstr "Reconfiguração do sistema falhou"
 
-#: src/frontends/qt4/GuiApplication.cpp:1511
+#: src/frontends/qt4/GuiApplication.cpp:1523
 msgid ""
 "The system reconfiguration has failed.\n"
 "Default textclass is used but LyX may\n"
@@ -27404,11 +27408,11 @@ msgstr ""
 "que o LyX não funcione corretamente.\n"
 "Reconfigure novamente caso necessário."
 
-#: src/frontends/qt4/GuiApplication.cpp:1516
+#: src/frontends/qt4/GuiApplication.cpp:1528
 msgid "System reconfigured"
 msgstr "Sistema reconfigurado"
 
-#: src/frontends/qt4/GuiApplication.cpp:1517
+#: src/frontends/qt4/GuiApplication.cpp:1529
 msgid ""
 "The system has been reconfigured.\n"
 "You need to restart LyX to make use of any\n"
@@ -27418,49 +27422,49 @@ msgstr ""
 "É necessário reiniciar o LyX para usar especificações\n"
 "de classe de documento porventura atualizadas."
 
-#: src/frontends/qt4/GuiApplication.cpp:1597
+#: src/frontends/qt4/GuiApplication.cpp:1609
 msgid "Exiting."
 msgstr "Encerrando."
 
-#: src/frontends/qt4/GuiApplication.cpp:1694
+#: src/frontends/qt4/GuiApplication.cpp:1706
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Abrindo arquivo de ajuda %1$s..."
 
-#: src/frontends/qt4/GuiApplication.cpp:1713
+#: src/frontends/qt4/GuiApplication.cpp:1725
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Sintaxe: set-color <nome_lyx> <nome_x11>"
 
-#: src/frontends/qt4/GuiApplication.cpp:1729
+#: src/frontends/qt4/GuiApplication.cpp:1741
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 "Set-color \"%1$s\" falhou- cor é indefinida ou pode ter sido redefinida"
 
-#: src/frontends/qt4/GuiApplication.cpp:1926
+#: src/frontends/qt4/GuiApplication.cpp:1938
 #, c-format
 msgid "Applied \"%1$s\" to %2$d buffer(s)"
 msgstr "\"%1$s\" aplicado a %2$d buffer(s)"
 
-#: src/frontends/qt4/GuiApplication.cpp:2001
+#: src/frontends/qt4/GuiApplication.cpp:2013
 #, c-format
 msgid "Document defaults saved in %1$s"
 msgstr "Padrões de documento salvos em %1$s"
 
-#: src/frontends/qt4/GuiApplication.cpp:2005
+#: src/frontends/qt4/GuiApplication.cpp:2017
 msgid "Unable to save document defaults"
 msgstr "Não foi possível salvar padrões de documento"
 
-#: src/frontends/qt4/GuiApplication.cpp:2210
-#: src/frontends/qt4/GuiApplication.cpp:2225
+#: src/frontends/qt4/GuiApplication.cpp:2221
+#: src/frontends/qt4/GuiApplication.cpp:2236
 msgid "Unknown function."
 msgstr "Função desconhecida."
 
-#: src/frontends/qt4/GuiApplication.cpp:2693
+#: src/frontends/qt4/GuiApplication.cpp:2705
 msgid "The current document was closed."
 msgstr "O documento atual foi fechado."
 
-#: src/frontends/qt4/GuiApplication.cpp:2703
+#: src/frontends/qt4/GuiApplication.cpp:2715
 msgid ""
 "LyX has caught an exception, it will now attempt to save all unsaved "
 "documents and exit.\n"
@@ -27472,12 +27476,12 @@ msgstr ""
 "\n"
 "Exceção:"
 
-#: src/frontends/qt4/GuiApplication.cpp:2707
-#: src/frontends/qt4/GuiApplication.cpp:2713
+#: src/frontends/qt4/GuiApplication.cpp:2719
+#: src/frontends/qt4/GuiApplication.cpp:2725
 msgid "Software exception Detected"
 msgstr "Exceção de software Detectada"
 
-#: src/frontends/qt4/GuiApplication.cpp:2711
+#: src/frontends/qt4/GuiApplication.cpp:2723
 msgid ""
 "LyX has caught some really weird exception, it will now attempt to save all "
 "unsaved documents and exit."
@@ -27485,13 +27489,13 @@ msgstr ""
 "O Lyx encontrou uma exceção muito estranha, e tentará agora salvar todos os "
 "documentos que ainda não foram salvos e encerrar."
 
-#: src/frontends/qt4/GuiApplication.cpp:3003
 #: src/frontends/qt4/GuiApplication.cpp:3015
+#: src/frontends/qt4/GuiApplication.cpp:3027
 msgid "Could not find UI definition file"
 msgstr ""
 "Não foi possível encontrar arquivo de definição de Interface de Usuário"
 
-#: src/frontends/qt4/GuiApplication.cpp:3004
+#: src/frontends/qt4/GuiApplication.cpp:3016
 #, c-format
 msgid ""
 "Error while reading the included file\n"
@@ -27502,13 +27506,13 @@ msgstr ""
 "%1$s\n"
 "Verifique sua instalação."
 
-#: src/frontends/qt4/GuiApplication.cpp:3010
+#: src/frontends/qt4/GuiApplication.cpp:3022
 msgid "Could not find default UI file"
 msgstr ""
 "Não foi possível encontrar arquivo padrão de definição de Interface de "
 "Usuário"
 
-#: src/frontends/qt4/GuiApplication.cpp:3011
+#: src/frontends/qt4/GuiApplication.cpp:3023
 msgid ""
 "LyX could not find the default UI file!\n"
 "Please check your installation."
@@ -27517,7 +27521,7 @@ msgstr ""
 "Usuário!\n"
 "Verifique sua instalação."
 
-#: src/frontends/qt4/GuiApplication.cpp:3016
+#: src/frontends/qt4/GuiApplication.cpp:3028
 #, c-format
 msgid ""
 "Error while reading the configuration file\n"
@@ -27540,7 +27544,7 @@ msgstr "Configurações de Item de Bibliografia"
 msgid "BibTeX Bibliography"
 msgstr "Bibliografia BibTeX"
 
-#: src/frontends/qt4/GuiBibtex.cpp:110
+#: src/frontends/qt4/GuiBibtex.cpp:111
 msgid ""
 "This list consists of all databases that are indexed by LaTeX and thus are "
 "found without a file path. This is usually everything in the bib/ "
@@ -27552,29 +27556,29 @@ msgstr ""
 "tudo que está na subpasta bib/ da árvore texmf do LaTeX. Esse é o lugar onde "
 "você deve manter sua base de dados particular se desejar reutilizá-la."
 
-#: src/frontends/qt4/GuiBibtex.cpp:439 src/frontends/qt4/GuiBibtex.cpp:449
+#: src/frontends/qt4/GuiBibtex.cpp:440 src/frontends/qt4/GuiBibtex.cpp:450
 #: src/frontends/qt4/GuiCompare.cpp:162 src/frontends/qt4/GuiCompare.cpp:166
 #: src/frontends/qt4/GuiDocument.cpp:2202 src/frontends/qt4/GuiExternal.cpp:680
 #: src/frontends/qt4/GuiGraphics.cpp:793 src/frontends/qt4/GuiInclude.cpp:334
-#: src/frontends/qt4/GuiView.cpp:2079 src/frontends/qt4/GuiView.cpp:2136
-#: src/frontends/qt4/GuiView.cpp:2275 src/frontends/qt4/GuiView.cpp:2409
-#: src/frontends/qt4/GuiView.cpp:2451 src/frontends/qt4/GuiView.cpp:2578
+#: src/frontends/qt4/GuiView.cpp:2082 src/frontends/qt4/GuiView.cpp:2139
+#: src/frontends/qt4/GuiView.cpp:2278 src/frontends/qt4/GuiView.cpp:2412
+#: src/frontends/qt4/GuiView.cpp:2454 src/frontends/qt4/GuiView.cpp:2581
 msgid "Documents|#o#O"
 msgstr "Documentos|#o#O"
 
-#: src/frontends/qt4/GuiBibtex.cpp:441
+#: src/frontends/qt4/GuiBibtex.cpp:442
 msgid "BibTeX Databases (*.bib)"
 msgstr "Bases de dados BibTeX (*.bib)"
 
-#: src/frontends/qt4/GuiBibtex.cpp:443
+#: src/frontends/qt4/GuiBibtex.cpp:444
 msgid "Select a BibTeX database to add"
 msgstr "Selecione uma base de dados BibTeX para incluir"
 
-#: src/frontends/qt4/GuiBibtex.cpp:451
+#: src/frontends/qt4/GuiBibtex.cpp:452
 msgid "BibTeX Styles (*.bst)"
 msgstr "Estilos BibTeX (*.bst)"
 
-#: src/frontends/qt4/GuiBibtex.cpp:453
+#: src/frontends/qt4/GuiBibtex.cpp:454
 msgid "Select a BibTeX style"
 msgstr "Selecione um estilo BibTeX"
 
@@ -27811,10 +27815,10 @@ msgstr "%1$s Arquivos"
 msgid "Choose a filename to save the pasted graphic as"
 msgstr "Escolha um nome de arquivo para salvar o gráfico colado como"
 
-#: src/frontends/qt4/GuiClipboard.cpp:215 src/frontends/qt4/GuiView.cpp:2151
-#: src/frontends/qt4/GuiView.cpp:2295 src/frontends/qt4/GuiView.cpp:2311
-#: src/frontends/qt4/GuiView.cpp:2323 src/frontends/qt4/GuiView.cpp:2340
-#: src/frontends/qt4/GuiView.cpp:2426 src/frontends/qt4/GuiView.cpp:3693
+#: src/frontends/qt4/GuiClipboard.cpp:215 src/frontends/qt4/GuiView.cpp:2154
+#: src/frontends/qt4/GuiView.cpp:2298 src/frontends/qt4/GuiView.cpp:2314
+#: src/frontends/qt4/GuiView.cpp:2326 src/frontends/qt4/GuiView.cpp:2343
+#: src/frontends/qt4/GuiView.cpp:2429 src/frontends/qt4/GuiView.cpp:3696
 msgid "Canceled."
 msgstr "Cancelado."
 
@@ -27843,9 +27847,9 @@ msgstr "Comparar arquivos LyX"
 msgid "Select document"
 msgstr "Selecionar documento"
 
-#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:2083
-#: src/frontends/qt4/GuiView.cpp:2140 src/frontends/qt4/GuiView.cpp:2415
-#: src/frontends/qt4/GuiView.cpp:2459
+#: src/frontends/qt4/GuiCompare.cpp:156 src/frontends/qt4/GuiView.cpp:2086
+#: src/frontends/qt4/GuiView.cpp:2143 src/frontends/qt4/GuiView.cpp:2418
+#: src/frontends/qt4/GuiView.cpp:2462
 msgid "LyX Documents (*.lyx)"
 msgstr "Documentos LyX (*.lyx)"
 
@@ -28434,24 +28438,24 @@ msgstr "&Personalizar Opções Hyperref"
 msgid "&Use Hyperref Support"
 msgstr "&Usar Hyperref"
 
-#: src/frontends/qt4/GuiDocument.cpp:3633
+#: src/frontends/qt4/GuiDocument.cpp:3634
 msgid "Can't set layout!"
 msgstr "Não é possível definir layout!"
 
-#: src/frontends/qt4/GuiDocument.cpp:3634
+#: src/frontends/qt4/GuiDocument.cpp:3635
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Não é possível definir layout para ID: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:3725
+#: src/frontends/qt4/GuiDocument.cpp:3726
 msgid "Not Found"
 msgstr "Não Encontrado"
 
-#: src/frontends/qt4/GuiDocument.cpp:3784
+#: src/frontends/qt4/GuiDocument.cpp:3785
 msgid "Assigned master does not include this file"
 msgstr "Documento mestre apontado não inclui este arquivo"
 
-#: src/frontends/qt4/GuiDocument.cpp:3785
+#: src/frontends/qt4/GuiDocument.cpp:3786
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -28462,11 +28466,11 @@ msgstr ""
 "'%1$s' para usar o recurso de documento\n"
 "mestre."
 
-#: src/frontends/qt4/GuiDocument.cpp:3789
+#: src/frontends/qt4/GuiDocument.cpp:3790
 msgid "Could not load master"
 msgstr "Não foi possível carregar documento mestre"
 
-#: src/frontends/qt4/GuiDocument.cpp:3790
+#: src/frontends/qt4/GuiDocument.cpp:3791
 #, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -29670,15 +29674,15 @@ msgstr "Este idioma não tem dicionário de sinônimos."
 msgid "Outline"
 msgstr "Estrutura de Tópicos"
 
-#: src/frontends/qt4/GuiToolbar.cpp:386 src/frontends/qt4/Toolbars.cpp:380
+#: src/frontends/qt4/GuiToolbar.cpp:385 src/frontends/qt4/Toolbars.cpp:380
 msgid "auto"
 msgstr "auto"
 
-#: src/frontends/qt4/GuiToolbar.cpp:391 src/frontends/qt4/GuiToolbar.cpp:400
+#: src/frontends/qt4/GuiToolbar.cpp:390 src/frontends/qt4/GuiToolbar.cpp:399
 msgid "off"
 msgstr "desligado"
 
-#: src/frontends/qt4/GuiToolbar.cpp:407
+#: src/frontends/qt4/GuiToolbar.cpp:406
 #, c-format
 msgid "Toolbar \"%1$s\" state set to %2$s"
 msgstr "Estado da barra de ferramentas \"%1$s\" definido como %2$s"
@@ -29715,67 +29719,67 @@ msgstr "Pré-visualização bem-sucedida do formato: %1$s"
 msgid "Error while previewing format: %1$s"
 msgstr "Erro ao pré-visualizar o formato: %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:971
+#: src/frontends/qt4/GuiView.cpp:973
 msgid "Exit LyX"
 msgstr "Encerrar o LyX"
 
-#: src/frontends/qt4/GuiView.cpp:972
+#: src/frontends/qt4/GuiView.cpp:974
 msgid "LyX could not be closed because documents are being processed by LyX."
 msgstr "Não foi possível encerrar o LyX porque há documentos em processamento."
 
-#: src/frontends/qt4/GuiView.cpp:1228
+#: src/frontends/qt4/GuiView.cpp:1230
 msgid "Welcome to LyX!"
 msgstr "Bem-vindo ao LyX!"
 
-#: src/frontends/qt4/GuiView.cpp:1715
+#: src/frontends/qt4/GuiView.cpp:1717
 msgid "Automatic save done."
 msgstr "Salvamento automático concluído."
 
-#: src/frontends/qt4/GuiView.cpp:1716
+#: src/frontends/qt4/GuiView.cpp:1718
 msgid "Automatic save failed!"
 msgstr "Salvamento automático falhou!"
 
-#: src/frontends/qt4/GuiView.cpp:1772
+#: src/frontends/qt4/GuiView.cpp:1774
 msgid "Command not allowed without any document open"
 msgstr "Comando não permitido sem nenhum documento aberto"
 
-#: src/frontends/qt4/GuiView.cpp:1878
+#: src/frontends/qt4/GuiView.cpp:1880
 #, c-format
 msgid "Unknown toolbar \"%1$s\""
 msgstr "Barra de ferramentas \"%1$s\" desconhecida"
 
-#: src/frontends/qt4/GuiView.cpp:1987
+#: src/frontends/qt4/GuiView.cpp:1990
 msgid "Zoom level cannot be less than 10%."
 msgstr "Nível de zoom não pode ser menor que 10%."
 
-#: src/frontends/qt4/GuiView.cpp:2078
+#: src/frontends/qt4/GuiView.cpp:2081
 msgid "Select template file"
 msgstr "Selecione arquivo de modelo"
 
-#: src/frontends/qt4/GuiView.cpp:2080 src/frontends/qt4/GuiView.cpp:2452
+#: src/frontends/qt4/GuiView.cpp:2083 src/frontends/qt4/GuiView.cpp:2455
 msgid "Templates|#T#t"
 msgstr "Modelos|#T#t"
 
-#: src/frontends/qt4/GuiView.cpp:2107
+#: src/frontends/qt4/GuiView.cpp:2110
 msgid "Document not loaded."
 msgstr "Documento não carregado."
 
-#: src/frontends/qt4/GuiView.cpp:2135
+#: src/frontends/qt4/GuiView.cpp:2138
 msgid "Select document to open"
 msgstr "Selecione documento para abrir"
 
-#: src/frontends/qt4/GuiView.cpp:2137 src/frontends/qt4/GuiView.cpp:2276
-#: src/frontends/qt4/GuiView.cpp:2410
+#: src/frontends/qt4/GuiView.cpp:2140 src/frontends/qt4/GuiView.cpp:2279
+#: src/frontends/qt4/GuiView.cpp:2413
 msgid "Examples|#E#e"
 msgstr "Exemplos|#E#e"
 
-#: src/frontends/qt4/GuiView.cpp:2165 src/frontends/qt4/Validator.cpp:222
+#: src/frontends/qt4/GuiView.cpp:2168 src/frontends/qt4/Validator.cpp:222
 #: src/insets/ExternalSupport.cpp:385 src/insets/InsetBibtex.cpp:297
-#: src/insets/InsetGraphics.cpp:613 src/insets/InsetInclude.cpp:546
+#: src/insets/InsetGraphics.cpp:615 src/insets/InsetInclude.cpp:546
 msgid "Invalid filename"
 msgstr "Nome de arquivo inválido"
 
-#: src/frontends/qt4/GuiView.cpp:2166
+#: src/frontends/qt4/GuiView.cpp:2169
 #, c-format
 msgid ""
 "The directory in the given path\n"
@@ -29786,40 +29790,40 @@ msgstr ""
 "%1$s\n"
 "não existe."
 
-#: src/frontends/qt4/GuiView.cpp:2183
+#: src/frontends/qt4/GuiView.cpp:2186
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Abrindo documento %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:2188
+#: src/frontends/qt4/GuiView.cpp:2191
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Documento %1$s aberto."
 
-#: src/frontends/qt4/GuiView.cpp:2191
+#: src/frontends/qt4/GuiView.cpp:2194
 msgid "Version control detected."
 msgstr "Controle de versão detectado."
 
-#: src/frontends/qt4/GuiView.cpp:2193
+#: src/frontends/qt4/GuiView.cpp:2196
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Não foi possível abrir documento %1$s"
 
-#: src/frontends/qt4/GuiView.cpp:2223
+#: src/frontends/qt4/GuiView.cpp:2226
 msgid "Couldn't import file"
 msgstr "Não foi possível importar o arquivo"
 
-#: src/frontends/qt4/GuiView.cpp:2224
+#: src/frontends/qt4/GuiView.cpp:2227
 #, c-format
 msgid "No information for importing the format %1$s."
 msgstr "Não há informação para importar o formato %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:2271
+#: src/frontends/qt4/GuiView.cpp:2274
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Selecione %1$s arquivo para importar"
 
-#: src/frontends/qt4/GuiView.cpp:2307
+#: src/frontends/qt4/GuiView.cpp:2310
 #, c-format
 msgid ""
 "The file name '%1$s' is invalid!\n"
@@ -29828,8 +29832,8 @@ msgstr ""
 "O nome de arquivo '%1$s' é inválido!\n"
 "Abortando importação."
 
-#: src/frontends/qt4/GuiView.cpp:2334 src/frontends/qt4/GuiView.cpp:2519
-#: src/frontends/qt4/GuiView.cpp:2633
+#: src/frontends/qt4/GuiView.cpp:2337 src/frontends/qt4/GuiView.cpp:2522
+#: src/frontends/qt4/GuiView.cpp:2636
 #, c-format
 msgid ""
 "The document %1$s already exists.\n"
@@ -29840,37 +29844,37 @@ msgstr ""
 "\n"
 "Deseja sobrescrever o documento?"
 
-#: src/frontends/qt4/GuiView.cpp:2336 src/frontends/qt4/GuiView.cpp:2523
-#: src/frontends/qt4/GuiView.cpp:2637
+#: src/frontends/qt4/GuiView.cpp:2339 src/frontends/qt4/GuiView.cpp:2526
+#: src/frontends/qt4/GuiView.cpp:2640
 msgid "Overwrite document?"
 msgstr "Sobrescrever documento?"
 
-#: src/frontends/qt4/GuiView.cpp:2345
+#: src/frontends/qt4/GuiView.cpp:2348
 #, c-format
 msgid "Importing %1$s..."
 msgstr "Importando %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:2348
+#: src/frontends/qt4/GuiView.cpp:2351
 msgid "imported."
 msgstr "importado."
 
-#: src/frontends/qt4/GuiView.cpp:2350
+#: src/frontends/qt4/GuiView.cpp:2353
 msgid "file not imported!"
 msgstr "arquivo não importado!"
 
-#: src/frontends/qt4/GuiView.cpp:2375
+#: src/frontends/qt4/GuiView.cpp:2378
 msgid "newfile"
 msgstr "novoarquivo"
 
-#: src/frontends/qt4/GuiView.cpp:2408
+#: src/frontends/qt4/GuiView.cpp:2411
 msgid "Select LyX document to insert"
 msgstr "Selecione documento LyX a inserir"
 
-#: src/frontends/qt4/GuiView.cpp:2450
+#: src/frontends/qt4/GuiView.cpp:2453
 msgid "Choose a filename to save document as"
 msgstr "Escolha um nome de arquivo para salvar documento como"
 
-#: src/frontends/qt4/GuiView.cpp:2482
+#: src/frontends/qt4/GuiView.cpp:2485
 #, c-format
 msgid ""
 "The file\n"
@@ -29885,17 +29889,17 @@ msgstr ""
 "Feche-o antes de tentar sobrescrevê-lo.\n"
 "Gostaria de escolher um novo nome de arquivo?"
 
-#: src/frontends/qt4/GuiView.cpp:2486
+#: src/frontends/qt4/GuiView.cpp:2489
 msgid "Chosen File Already Open"
 msgstr "Arquivo Escolhido Já Aberto"
 
-#: src/frontends/qt4/GuiView.cpp:2487 src/frontends/qt4/GuiView.cpp:2509
-#: src/frontends/qt4/GuiView.cpp:2525 src/frontends/qt4/GuiView.cpp:2638
-#: src/frontends/qt4/GuiView.cpp:2682
+#: src/frontends/qt4/GuiView.cpp:2490 src/frontends/qt4/GuiView.cpp:2512
+#: src/frontends/qt4/GuiView.cpp:2528 src/frontends/qt4/GuiView.cpp:2641
+#: src/frontends/qt4/GuiView.cpp:2685
 msgid "&Rename"
 msgstr "&Renomear"
 
-#: src/frontends/qt4/GuiView.cpp:2502
+#: src/frontends/qt4/GuiView.cpp:2505
 #, c-format
 msgid ""
 "The document %1$s is already registered.\n"
@@ -29906,27 +29910,27 @@ msgstr ""
 "\n"
 "Gostaria de descolher um novo nome?"
 
-#: src/frontends/qt4/GuiView.cpp:2507
+#: src/frontends/qt4/GuiView.cpp:2510
 msgid "Rename document?"
 msgstr "Renomear documento?"
 
-#: src/frontends/qt4/GuiView.cpp:2507
+#: src/frontends/qt4/GuiView.cpp:2510
 msgid "Copy document?"
 msgstr "Copiar documento?"
 
-#: src/frontends/qt4/GuiView.cpp:2509
+#: src/frontends/qt4/GuiView.cpp:2512
 msgid "&Copy"
 msgstr "&Copiar"
 
-#: src/frontends/qt4/GuiView.cpp:2577
+#: src/frontends/qt4/GuiView.cpp:2580
 msgid "Choose a filename to export the document as"
 msgstr "Escolha um nome de arquivo para exportar o documento como"
 
-#: src/frontends/qt4/GuiView.cpp:2581
+#: src/frontends/qt4/GuiView.cpp:2584
 msgid "Guess from extension (*.*)"
 msgstr "Adivinhar pela extensão (*.*)"
 
-#: src/frontends/qt4/GuiView.cpp:2678
+#: src/frontends/qt4/GuiView.cpp:2681
 #, c-format
 msgid ""
 "The document %1$s could not be saved.\n"
@@ -29937,15 +29941,15 @@ msgstr ""
 "\n"
 "Gostaria de renomear o documento e tentar novamente?"
 
-#: src/frontends/qt4/GuiView.cpp:2681
+#: src/frontends/qt4/GuiView.cpp:2684
 msgid "Rename and save?"
 msgstr "Renomear e salvar?"
 
-#: src/frontends/qt4/GuiView.cpp:2682
+#: src/frontends/qt4/GuiView.cpp:2685
 msgid "&Retry"
 msgstr "&Tentar Novamente"
 
-#: src/frontends/qt4/GuiView.cpp:2727
+#: src/frontends/qt4/GuiView.cpp:2730
 #, c-format
 msgid ""
 "Last view on document %1$s is being closed.\n"
@@ -29967,24 +29971,24 @@ msgstr ""
 "  Ferramentas->Preferências->Aparência & Comportamento->Interface de "
 "Usuário\n"
 
-#: src/frontends/qt4/GuiView.cpp:2736
+#: src/frontends/qt4/GuiView.cpp:2739
 msgid "Close or hide document?"
 msgstr "Fechar documento ou ocultar?"
 
-#: src/frontends/qt4/GuiView.cpp:2737
+#: src/frontends/qt4/GuiView.cpp:2740
 msgid "&Hide"
 msgstr "&Ocultar"
 
-#: src/frontends/qt4/GuiView.cpp:2823
+#: src/frontends/qt4/GuiView.cpp:2826
 msgid "Close document"
 msgstr "Fechar documento"
 
-#: src/frontends/qt4/GuiView.cpp:2824
+#: src/frontends/qt4/GuiView.cpp:2827
 msgid "Document could not be closed because it is being processed by LyX."
 msgstr ""
 "Não foi possível fechar o documento porque está em processamento pelo LyX."
 
-#: src/frontends/qt4/GuiView.cpp:2936 src/frontends/qt4/GuiView.cpp:3044
+#: src/frontends/qt4/GuiView.cpp:2939 src/frontends/qt4/GuiView.cpp:3047
 #, c-format
 msgid ""
 "The document %1$s has not been saved yet.\n"
@@ -29995,11 +29999,11 @@ msgstr ""
 "\n"
 "Gostaria de salvar o documento?"
 
-#: src/frontends/qt4/GuiView.cpp:2939 src/frontends/qt4/GuiView.cpp:3047
+#: src/frontends/qt4/GuiView.cpp:2942 src/frontends/qt4/GuiView.cpp:3050
 msgid "Save new document?"
 msgstr "Salvar novo documento?"
 
-#: src/frontends/qt4/GuiView.cpp:2944
+#: src/frontends/qt4/GuiView.cpp:2947
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -30010,15 +30014,15 @@ msgstr ""
 "\n"
 "Gostaria de salvar o documento ou de descartar as alterações?"
 
-#: src/frontends/qt4/GuiView.cpp:2946 src/frontends/qt4/GuiView.cpp:3041
+#: src/frontends/qt4/GuiView.cpp:2949 src/frontends/qt4/GuiView.cpp:3044
 msgid "Save changed document?"
 msgstr "Salvar documento alterado?"
 
-#: src/frontends/qt4/GuiView.cpp:2947
+#: src/frontends/qt4/GuiView.cpp:2950
 msgid "&Discard"
 msgstr "&Descartar"
 
-#: src/frontends/qt4/GuiView.cpp:3038
+#: src/frontends/qt4/GuiView.cpp:3041
 #, c-format
 msgid ""
 "The document %1$s has unsaved changes.\n"
@@ -30029,7 +30033,7 @@ msgstr ""
 "\n"
 "Gostaria de salvar o documento?"
 
-#: src/frontends/qt4/GuiView.cpp:3073
+#: src/frontends/qt4/GuiView.cpp:3077
 #, c-format
 msgid ""
 "Document \n"
@@ -30041,65 +30045,65 @@ msgstr ""
 " foi modificado externamente. Recarregar agora? Todas as alterações locais "
 "serão perdidas."
 
-#: src/frontends/qt4/GuiView.cpp:3076
+#: src/frontends/qt4/GuiView.cpp:3080
 msgid "Reload externally changed document?"
 msgstr "Recarregar documento alterado externamente?"
 
-#: src/frontends/qt4/GuiView.cpp:3077
+#: src/frontends/qt4/GuiView.cpp:3081
 msgid "&Reload"
 msgstr "&Recarregar"
 
-#: src/frontends/qt4/GuiView.cpp:3121
+#: src/frontends/qt4/GuiView.cpp:3125
 msgid "Document could not be checked in."
 msgstr "Não foi possível fazer check in do documento."
 
-#: src/frontends/qt4/GuiView.cpp:3165
+#: src/frontends/qt4/GuiView.cpp:3169
 msgid "Error when setting the locking property."
 msgstr "Erro ao ligar a propriedade de bloqueio."
 
-#: src/frontends/qt4/GuiView.cpp:3211
+#: src/frontends/qt4/GuiView.cpp:3215
 msgid "Directory is not accessible."
 msgstr "Pasta não está acessível."
 
-#: src/frontends/qt4/GuiView.cpp:3287
+#: src/frontends/qt4/GuiView.cpp:3291
 #, c-format
 msgid "Opening child document %1$s..."
 msgstr "Abrindo documento filho %1$s..."
 
-#: src/frontends/qt4/GuiView.cpp:3351
+#: src/frontends/qt4/GuiView.cpp:3355
 #, c-format
 msgid "No buffer for file: %1$s."
 msgstr "Sem buffer para o arquivo: %1$s."
 
-#: src/frontends/qt4/GuiView.cpp:3428
+#: src/frontends/qt4/GuiView.cpp:3431
 msgid "Export Error"
 msgstr "Erro de Exportação"
 
-#: src/frontends/qt4/GuiView.cpp:3429
+#: src/frontends/qt4/GuiView.cpp:3432
 msgid "Error cloning the Buffer."
 msgstr "Erro ao clonar o Buffer."
 
-#: src/frontends/qt4/GuiView.cpp:3547 src/frontends/qt4/GuiView.cpp:3567
+#: src/frontends/qt4/GuiView.cpp:3550 src/frontends/qt4/GuiView.cpp:3570
 msgid "Exporting ..."
 msgstr "Exportando ..."
 
-#: src/frontends/qt4/GuiView.cpp:3576
+#: src/frontends/qt4/GuiView.cpp:3579
 msgid "Previewing ..."
 msgstr "Pré-visualizando ..."
 
-#: src/frontends/qt4/GuiView.cpp:3610
+#: src/frontends/qt4/GuiView.cpp:3613
 msgid "Document not loaded"
 msgstr "Documento não carregado"
 
-#: src/frontends/qt4/GuiView.cpp:3687
+#: src/frontends/qt4/GuiView.cpp:3690
 msgid "Select file to insert"
 msgstr "Selecione arquivo a inserir"
 
-#: src/frontends/qt4/GuiView.cpp:3690
+#: src/frontends/qt4/GuiView.cpp:3693
 msgid "All Files (*)"
 msgstr "Todos os Arquivos (*)"
 
-#: src/frontends/qt4/GuiView.cpp:3714
+#: src/frontends/qt4/GuiView.cpp:3717
 #, c-format
 msgid ""
 "Any changes will be lost. Are you sure you want to revert to the saved "
@@ -30108,37 +30112,37 @@ msgstr ""
 "Todas as alterações serão perdidas. Tem certeza que deseja reverter para a "
 "versão salva do documento %1$s?"
 
-#: src/frontends/qt4/GuiView.cpp:3717
+#: src/frontends/qt4/GuiView.cpp:3720
 msgid "Revert to saved document?"
 msgstr "Reverter para o documento salvo?"
 
-#: src/frontends/qt4/GuiView.cpp:3743
+#: src/frontends/qt4/GuiView.cpp:3746
 msgid "Saving all documents..."
 msgstr "Salvando todos os documentso..."
 
-#: src/frontends/qt4/GuiView.cpp:3753
+#: src/frontends/qt4/GuiView.cpp:3756
 msgid "All documents saved."
 msgstr "Todos os documentos salvos."
 
-#: src/frontends/qt4/GuiView.cpp:3775
+#: src/frontends/qt4/GuiView.cpp:3778
 #, c-format
 msgid "Icon size set to %1$dx%2$d."
 msgstr "Tamanho dos ícones definido como %1$dx%2$d."
 
-#: src/frontends/qt4/GuiView.cpp:3861
+#: src/frontends/qt4/GuiView.cpp:3864
 #, c-format
 msgid "%1$s unknown command!"
 msgstr "%1$s comando desconhecido!"
 
-#: src/frontends/qt4/GuiView.cpp:3955
+#: src/frontends/qt4/GuiView.cpp:3958
 msgid "Zoom level is now %1$d%"
 msgstr "Nível de zoom agora é %1$d%"
 
-#: src/frontends/qt4/GuiView.cpp:4002
+#: src/frontends/qt4/GuiView.cpp:4005
 msgid "Please, preview the document first."
 msgstr "Por favor, pré-visualize o documento primeiro."
 
-#: src/frontends/qt4/GuiView.cpp:4018
+#: src/frontends/qt4/GuiView.cpp:4021
 msgid "Couldn't proceed."
 msgstr "Não foi possível prosseguir."
 
@@ -30151,19 +30155,19 @@ msgstr "Pré-visualização de Código"
 msgid "%1[[preview format name]] Preview"
 msgstr "%1[[preview format name]] Pré-visualização"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:1576
+#: src/frontends/qt4/GuiWorkArea.cpp:1582
 msgid "Close File"
 msgstr "Fechar Arquivo"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2031
+#: src/frontends/qt4/GuiWorkArea.cpp:2037
 msgid "%1 (read only)"
 msgstr "%1 (somente-leitura)"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2050
+#: src/frontends/qt4/GuiWorkArea.cpp:2056
 msgid "Hide tab"
 msgstr "Ocultar aba"
 
-#: src/frontends/qt4/GuiWorkArea.cpp:2052
+#: src/frontends/qt4/GuiWorkArea.cpp:2058
 msgid "Close tab"
 msgstr "Fechar aba"
 
@@ -30445,7 +30449,7 @@ msgid "Index Entries (%1$s)"
 msgstr "Entradas de Índice (%1$s)"
 
 #: src/insets/ExternalSupport.cpp:386 src/insets/InsetBibtex.cpp:298
-#: src/insets/InsetGraphics.cpp:614 src/insets/InsetInclude.cpp:547
+#: src/insets/InsetGraphics.cpp:616 src/insets/InsetInclude.cpp:547
 msgid ""
 "The following filename will cause troubles when running the exported file "
 "through LaTeX: "
@@ -30454,12 +30458,12 @@ msgstr ""
 "arquivo exportado: "
 
 #: src/insets/ExternalSupport.cpp:391 src/insets/InsetBibtex.cpp:303
-#: src/insets/InsetGraphics.cpp:621 src/insets/InsetInclude.cpp:551
+#: src/insets/InsetGraphics.cpp:623 src/insets/InsetInclude.cpp:551
 msgid "Problematic filename for DVI"
 msgstr "Nome de arquivo problemático para DVI"
 
 #: src/insets/ExternalSupport.cpp:392 src/insets/InsetBibtex.cpp:304
-#: src/insets/InsetGraphics.cpp:622 src/insets/InsetInclude.cpp:552
+#: src/insets/InsetGraphics.cpp:624 src/insets/InsetInclude.cpp:552
 msgid ""
 "The following filename can cause troubles when running the exported file "
 "through LaTeX and opening the resulting DVI: "
@@ -30655,7 +30659,7 @@ msgstr ""
 "O estado do ramo '%1$s' foi alterado no documento mestre. Certifique-se de "
 "salvar o mestre."
 
-#: src/insets/InsetCaption.cpp:391
+#: src/insets/InsetCaption.cpp:393
 #, c-format
 msgid "Sub-%1$s"
 msgstr "Sub-%1$s"
@@ -30713,19 +30717,19 @@ msgstr "Modelo externo %1$s não está instalado"
 msgid "ERROR: Unknown float type: %1$s"
 msgstr "ERRO: Tipo de float desconhecido: %1$s"
 
-#: src/insets/InsetFloat.cpp:401
+#: src/insets/InsetFloat.cpp:403
 msgid "float"
 msgstr "float"
 
-#: src/insets/InsetFloat.cpp:469
+#: src/insets/InsetFloat.cpp:471
 msgid "float: "
 msgstr "float: "
 
-#: src/insets/InsetFloat.cpp:472
+#: src/insets/InsetFloat.cpp:474
 msgid "subfloat: "
 msgstr "subfloat: "
 
-#: src/insets/InsetFloat.cpp:482
+#: src/insets/InsetFloat.cpp:484
 msgid " (sideways)"
 msgstr " (de lado)"
 
@@ -30742,7 +30746,7 @@ msgstr "O LyX não pode gerar uma lista de %1$s"
 msgid "footnote"
 msgstr "nota de rodapé"
 
-#: src/insets/InsetGraphics.cpp:491 src/insets/InsetInclude.cpp:752
+#: src/insets/InsetGraphics.cpp:493 src/insets/InsetInclude.cpp:752
 #, c-format
 msgid ""
 "Could not copy the file\n"
@@ -30753,12 +30757,12 @@ msgstr ""
 "%1$s\n"
 "para a pasta temporária."
 
-#: src/insets/InsetGraphics.cpp:699 src/insets/InsetGraphics.cpp:926
+#: src/insets/InsetGraphics.cpp:701 src/insets/InsetGraphics.cpp:930
 #, c-format
 msgid "No conversion of %1$s is needed after all"
 msgstr "A conversão of %1$s é mesmo necessária"
 
-#: src/insets/InsetGraphics.cpp:803
+#: src/insets/InsetGraphics.cpp:807
 #, c-format
 msgid "Graphics file: %1$s"
 msgstr "Arquivo gráfico: %1$s"
@@ -30968,7 +30972,7 @@ msgstr ""
 "A etiqueta %1$s já existe,\n"
 "será alterada para %2$s."
 
-#: src/insets/InsetLabel.cpp:149
+#: src/insets/InsetLabel.cpp:151
 msgid "DUPLICATE: "
 msgstr "DUPLICATA: "
 
@@ -31392,7 +31396,7 @@ msgstr "Multi-coluna na coluna atual ou na coluna de destino."
 msgid "Multi-row in current or destination row."
 msgstr "Multi-linha na linha atual ou na linha de destino."
 
-#: src/insets/InsetTabular.cpp:5059
+#: src/insets/InsetTabular.cpp:5065
 msgid "Selection size should match clipboard content."
 msgstr ""
 "O tamanho da seleção deve corresponder ao conteúdo da área de transferência."
@@ -31662,24 +31666,24 @@ msgstr "Não é possível alterar número de linhas em '%1$s'"
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Não é possível alterar número de colunas em '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:735 src/mathed/InsetMathNest.cpp:1768
-#: src/mathed/InsetMathNest.cpp:1911
+#: src/mathed/InsetMathNest.cpp:735 src/mathed/InsetMathNest.cpp:1766
+#: src/mathed/InsetMathNest.cpp:1909
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Autocorreção Desligada ('!' para entrar)"
 
-#: src/mathed/InsetMathNest.cpp:1053
+#: src/mathed/InsetMathNest.cpp:1051
 msgid "create new math text environment ($...$)"
 msgstr "criar novo environment matemático ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1056
+#: src/mathed/InsetMathNest.cpp:1054
 msgid "entered math text mode (textrm)"
 msgstr "entrou no modo de texto matemático (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1078
+#: src/mathed/InsetMathNest.cpp:1076
 msgid "Regular expression editor mode"
 msgstr "Modo editor de expressão regular"
 
-#: src/mathed/InsetMathNest.cpp:1773 src/mathed/InsetMathNest.cpp:1913
+#: src/mathed/InsetMathNest.cpp:1771 src/mathed/InsetMathNest.cpp:1911
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Autocorreção Ligada (<espaço> para sair)"
 
@@ -31737,11 +31741,11 @@ msgstr ""
 "Não foi possível abrir o documento especificado\n"
 "%1$s."
 
-#: src/output_latex.cpp:1335
+#: src/output_latex.cpp:1343
 msgid "Error in latexParagraphs"
 msgstr "Erro em latexParagraphs"
 
-#: src/output_latex.cpp:1336
+#: src/output_latex.cpp:1344
 #, c-format
 msgid ""
 "You are using at least one layout (%1$s) intended for the title, after using "
