@@ -53,9 +53,9 @@ shapepar
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
-\use_dash_ligatures false
+\use_dash_ligatures true
 \graphics default
-\default_output_format default
+\default_output_format pdf2
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -88,11 +88,9 @@ shapepar
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine biblatex
-\cite_engine_type authoryear
+\cite_engine basic
+\cite_engine_type default
 \biblio_style plain
-\biblatex_bibstyle authoryear
-\biblatex_citestyle authoryear
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -116,8 +114,7 @@ shapepar
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 2
-\paperpagestyle default
-\bullet 0 5 9 -1
+\paperpagestyle headings
 \tracking_changes false
 \output_changes false
 \html_math_output 0
@@ -135,7 +132,7 @@ Options avancées de \SpecialChar LyX
 \begin_layout Subtitle
 Version 2.3.x
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Informations de révision :
@@ -10563,6 +10560,258 @@ En plus, ces environnements se servent automatiquement des paquetages de
 \end_layout
 
 \begin_layout Section
+
+\lang english
+AGU journals (
+\family sans
+aguplus
+\family default
+)
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+by 
+\shape smallcaps
+Martin Vermeer
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Description
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+These are the layout files for some of the journals of the American Geophysical
+ Society.
+ It is assumed that you have both the AGU's own class files and AGUplus
+ installed (everything to be found at
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://publications.agu.org/files/2013/08/AGU-LaTeX.zip
+\end_layout
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+New styles
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Redefined are 
+\family sans
+Paragraph
+\family default
+, 
+\family sans
+Paragraph*
+\family default
+.
+ They are still called this in the \SpecialChar LyX
+ GUI, though their \SpecialChar LaTeX
+ equivalents in the
+ AGU classes are 
+\family sans
+Subsubsubsection
+\family default
+ and 
+\family sans
+Subsubsubsection*
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Newly defined styles are 
+\family sans
+Left_Header
+\family default
+, 
+\family sans
+Right_Header
+\family default
+, 
+\family sans
+Received
+\family default
+, 
+\family sans
+Revised
+\family default
+, 
+\family sans
+Accepted
+\family default
+, 
+\family sans
+CCC
+\family default
+, 
+\family sans
+PaperId
+\family default
+, 
+\family sans
+AuthorAddr
+\family default
+, 
+\family sans
+SlugComment
+\family default
+.
+ These are mostly manuscript attributes and defined in the AGU class documentati
+on.
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+I suspect this is still badly incomplete.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+New floats
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\lang english
+Planotable
+\family default
+ and 
+\family sans
+Plate
+\family default
+.
+ We also have a new 
+\family sans
+Table_Caption
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Supported journals
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+\lang english
+Journal of Geophysical Research
+\emph default
+: 
+\family typewriter
+jgrga.layout
+\family default
+ — Martin Vermeer
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+Add your own, it isn't so hard! Look at the 
+\family typewriter
+jgrga.layout
+\family default
+ example and 
+\family typewriter
+aguplus.inc
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Bugs and things to remember
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+In order to use the new layouts, you must remember to do the following for
+ a new document:
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+\lang english
+Turn off babel
+\emph default
+.
+ This can be done in the 
+\family sans
+Layout\SpecialChar menuseparator
+Document
+\family default
+ or 
+\family sans
+Document\SpecialChar menuseparator
+Settings
+\family default
+ menu item.
+ (AGU articles are always in English, right? So 
+\emph on
+don't
+\emph default
+ choose a language.)
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Enter 
+\family typewriter
+jgrga
+\family default
+ into the document's 
+\family sans
+Extra Options
+\family default
+ field.
+ (Yes, this is a bug.)
+\end_layout
+
+\begin_layout Enumerate
+
+\lang english
+Make sure you use the 
+\family typewriter
+agu.bst
+\family default
+ bibliography style, by entering 
+\family sans
+agu
+\family default
+ into the second field of the Bib\SpecialChar TeX
+ inset.
+ None of the standard styles will do.
+\end_layout
+
+\begin_layout Section
 Broadway
 \end_layout
 
@@ -10881,6 +11130,78 @@ dinbrief
 .../lyx/share/templates
 \family default
  pour vous servir de point de départ.
+\end_layout
+
+\begin_layout Section
+
+\lang english
+EGS journals (
+\family sans
+egs
+\family default
+)
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+by 
+\shape smallcaps
+Martin Vermeer
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+Description
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+This is the layout file for the European Geophysical Society journals.
+ The needed 
+\family typewriter
+egs.cls
+\family default
+ can be downloaded from the web site of the EGS under 
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+www.copernicus.org
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+
+\lang english
+New styles
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\lang english
+Right_address, Latex_Title, Affil, Journal, msnumber, FirstAuthor, Received,
+ Accepted
+\family default
+, 
+\family sans
+Offsets
+\family default
+.
+ The current layout file is unfortunately very unmodular and would benefit
+ from using the various 
+\family typewriter
+std*.inc
+\family default
+ file inclusions.
 \end_layout
 
 \begin_layout Section
@@ -12040,33 +12361,7 @@ Non
 \begin_inset Quotes crd
 \end_inset
 
-, bref, qui utilisent comme puces des coches (
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ding{51}
-\end_layout
-
-\end_inset
-
-) ou des croix (
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-ding{55}
-\end_layout
-
-\end_inset
-
-).
+, bref, qui utilisent comme puces des coches ou des croix.
  Ces listes sont en fait des versions spécialisées de l'environnement 
 \family sans
 Itemize
