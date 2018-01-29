@@ -11,7 +11,7 @@
 % not to its caption
 \usepackage[figure]{hypcap}
 
-% the pages of the TOC is numbered roman
+% the pages of the TOC are numbered roman
 % and a PDF-bookmark for the TOC is added
 \let\myTOC\tableofcontents
 \renewcommand\tableofcontents{%
