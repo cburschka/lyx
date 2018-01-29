@@ -483,12 +483,17 @@ int LyX::init(int & argc, char * argv[])
 	}
 
 	// Initialization of LyX (reads lyxrc and more)
-	LYXERR(Debug::INIT, "Initializing LyX::init...");
-	bool success = init();
-	LYXERR(Debug::INIT, "Initializing LyX::init...done");
-	if (!success)
+	try {
+		LYXERR(Debug::INIT, "Initializing LyX::init...");
+		bool success = init();
+		LYXERR(Debug::INIT, "Initializing LyX::init...done");
+		if (!success)
+			return EXIT_FAILURE;
+	} catch (exception const &e) {
+		// This can happen _in_theory_ in replaceEnvironmentPath
+		lyxerr << "Caught exception `" << e.what() << "'." << endl;
 		return EXIT_FAILURE;
-
+	}
 	// Remaining arguments are assumed to be files to load.
 	for (int argi = 1; argi < argc; ++argi)
 		pimpl_->files_to_load_.push_back(os::utf8_argv(argi));
