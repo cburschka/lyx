@@ -1290,7 +1290,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		// XeTeX's dash behaviour is determined via a global setting
 		if (bparams.use_dash_ligatures
 		    && owner_->getFontSettings(bparams, i).fontInfo().family() != TYPEWRITER_FAMILY
-			&& !runparams.inIPA
+		    && !runparams.inIPA
 			// TODO #10961: && not in inset Flex Code
 			// TODO #10961: && not in layout LyXCode
 		    && (!bparams.useNonTeXFonts || runparams.flavor != OutputParams::XETEX)) {
