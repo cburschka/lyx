@@ -517,6 +517,8 @@ public:
 	///
 	void makeCitationLabels() const;
 	///
+	void invalidateCiteLabels() const;
+	///
 	bool citeLabelsValid() const;
 	///
 	void getLabelList(std::vector<docstring> &) const;

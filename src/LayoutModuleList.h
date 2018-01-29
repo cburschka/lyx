@@ -75,6 +75,14 @@ public:
 	/// to be made.
 	bool adaptToBaseClass(LayoutFile const * const lay,
 			std::list<std::string> const & removedModules);
+	///
+	bool operator==(LayoutModuleList const & other) const {
+		return lml_ == other.lml_;
+	}
+	///
+	bool operator!=(LayoutModuleList const & other) const {
+		return !operator==(other);
+	}
 private:
 	/// Removes modules excluded by, provided by, etc, the base class.
 	/// \param lay The document class against which to check.

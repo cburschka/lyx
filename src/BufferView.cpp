@@ -1379,25 +1379,45 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		break;
 	}
 
-	case LFUN_UNDO:
+	case LFUN_UNDO: {
 		dr.setMessage(_("Undo"));
 		cur.clearSelection();
+		// We need to find out if the bibliography information
+		// has changed. See bug #11055.
+		// So these should not be references...
+		LayoutModuleList const engines = buffer().params().citeEngine();
+		CiteEngineType const enginetype = buffer().params().citeEngineType();
 		if (!cur.textUndo())
 			dr.setMessage(_("No further undo information"));
-		else
+		else {
 			dr.screenUpdate(Update::Force | Update::FitCursor);
-		dr.forceBufferUpdate();
+			dr.forceBufferUpdate();
+			if (buffer().params().citeEngine() != engines ||
+			    buffer().params().citeEngineType() != enginetype)
+				buffer().invalidateCiteLabels();
+		}
 		break;
+	}
 
-	case LFUN_REDO:
+	case LFUN_REDO: {
 		dr.setMessage(_("Redo"));
 		cur.clearSelection();
+		// We need to find out if the bibliography information
+		// has changed. See bug #11055.
+		// So these should not be references...
+		LayoutModuleList const engines = buffer().params().citeEngine();
+		CiteEngineType const enginetype = buffer().params().citeEngineType();
 		if (!cur.textRedo())
 			dr.setMessage(_("No further redo information"));
-		else
+		else {
 			dr.screenUpdate(Update::Force | Update::FitCursor);
-		dr.forceBufferUpdate();
+			dr.forceBufferUpdate();
+			if (buffer().params().citeEngine() != engines ||
+			    buffer().params().citeEngineType() != enginetype)
+				buffer().invalidateCiteLabels();
+		}
 		break;
+	}
 
 	case LFUN_FONT_STATE:
 		dr.setMessage(cur.currentState(false));
