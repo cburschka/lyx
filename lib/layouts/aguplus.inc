@@ -176,6 +176,7 @@ Style Bibliography
 	  Series              Bold
 	  Size                Huge
 	EndFont
+	TocLevel              1
 End
 
 

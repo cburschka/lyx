@@ -116,6 +116,10 @@ Input amsdefs.inc
 # Unwanted styles from the includes
 NoStyle Verse
 
+Style Bibliography
+	TocLevel             0
+End
+
 # Chapter is _not_ prepended
 # JSpitz: this seems to be not true (anymore?)
 #Style Section

@@ -81,4 +81,5 @@ Style Bibliography
 		span.bibitemlabel:before { content: "["; }
 		span.bibitemlabel:after { content: "] "; }
 	EndHTMLStyle
+	TocLevel              1
 End

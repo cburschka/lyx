@@ -225,4 +225,5 @@ Style Bibliography
 	  Size                Normal
 	  Shape               Smallcaps
 	EndFont
+	TocLevel             1
 End
