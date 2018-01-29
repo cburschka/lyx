@@ -1,9 +1,9 @@
 dnl Process with autoconf to generate configure script   -*- sh -*-
 
-AC_INIT(LyX,2.3.0dev,[lyx-devel@lists.lyx.org],[lyx])
+AC_INIT(LyX,2.3.0rc2,[lyx-devel@lists.lyx.org],[lyx])
 AC_PRESERVE_HELP_ORDER
 # Use ISO format only. The frontend needs to parse this
-AC_SUBST(LYX_DATE, ["2017-10-31"])
+AC_SUBST(LYX_DATE, ["2018-01-28"])
 AC_PREREQ(2.65)
 AC_CONFIG_SRCDIR(src/main.cpp)
 AC_CONFIG_HEADERS([config.h])
