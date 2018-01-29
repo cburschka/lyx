@@ -196,6 +196,9 @@ What's new
 
 - Fix some master/child issues with biblatex (bug 11083).
 
+- Recalculate citation insets when bibliography info changes as a result
+  of undo or redo (bug 11005).
+
 
 * INTERNALS
 
