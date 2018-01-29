@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-01-20 09:43+0100\n"
+"POT-Creation-Date: 2018-01-28 21:42-0500\n"
 "PO-Revision-Date: 2017-08-23 11:10+0900\n"
 "Last-Translator: Koji Yokota <yokota6@gmail.com>\n"
 "Language-Team: Japanese <lyx-docs@list.lyx.org>\n"
@@ -542,7 +542,8 @@ msgstr "中央"
 msgid "Bottom"
 msgstr "下"
 
-#: src/frontends/qt4/ui/BoxUi.ui:219
+#: src/frontends/qt4/ui/BoxUi.ui:219 src/frontends/qt4/GuiBox.cpp:343
+#: src/frontends/qt4/GuiBox.cpp:558
 msgid "Stretch"
 msgstr "広げる"
 
@@ -1079,7 +1080,7 @@ msgstr ""
 "「前置文字列」と「後置文字列」フィールドの内容を原文のままLaTeXに渡します．"
 "LaTeXコードを入力したい場合に有効にしてください．"
 
-#: src/frontends/qt4/ui/CitationUi.ui:388
+#: src/frontends/qt4/ui/CitationUi.ui:388 src/frontends/qt4/GuiCitation.cpp:316
 msgid ""
 "Force upper case in names (\"Del Piero\", not \"del Piero\"), if the current "
 "citation style supports this."
@@ -2403,7 +2404,7 @@ msgstr "文法ハイライト用パッケージ(&S):"
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:331
 #: lib/layouts/stdinsets.inc:337 lib/layouts/stdinsets.inc:382
 #: lib/layouts/stdinsets.inc:388 src/insets/InsetCaption.cpp:388
-#: src/insets/InsetListings.cpp:455 src/insets/InsetListings.cpp:457
+#: src/insets/InsetListings.cpp:464 src/insets/InsetListings.cpp:466
 msgid "Listing"
 msgstr "プログラムリスト"
 
@@ -18081,17 +18082,17 @@ msgid "Paragraph Break|B"
 msgstr "段落区切り(B)|B"
 
 #: lib/ui/stdcontext.inc:335 lib/ui/stdmenus.inc:106 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1379 src/mathed/InsetMathNest.cpp:564
+#: src/Text3.cpp:1469 src/mathed/InsetMathNest.cpp:564
 msgid "Cut"
 msgstr "切り取り"
 
 #: lib/ui/stdcontext.inc:336 lib/ui/stdmenus.inc:107 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1384 src/mathed/InsetMathNest.cpp:573
+#: src/Text3.cpp:1474 src/mathed/InsetMathNest.cpp:573
 msgid "Copy"
 msgstr "コピー"
 
 #: lib/ui/stdcontext.inc:337 lib/ui/stdmenus.inc:108 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1325 src/mathed/InsetMathGrid.cpp:1581
+#: src/Text3.cpp:1415 src/mathed/InsetMathGrid.cpp:1581
 #: src/mathed/InsetMathNest.cpp:543
 msgid "Paste"
 msgstr "貼り付け"
@@ -25598,14 +25599,14 @@ msgid "Document class not available"
 msgstr "文書クラスが利用不能です"
 
 #: src/BufferParams.cpp:2157 src/Encoding.cpp:246 src/Paragraph.cpp:2719
-#: src/frontends/qt4/LaTeXHighlighter.cpp:122 src/insets/InsetListings.cpp:221
-#: src/insets/InsetListings.cpp:229 src/insets/InsetListings.cpp:252
+#: src/frontends/qt4/LaTeXHighlighter.cpp:122 src/insets/InsetListings.cpp:230
+#: src/insets/InsetListings.cpp:238 src/insets/InsetListings.cpp:261
 #: src/mathed/MathExtern.cpp:1483
 msgid "LyX Warning: "
 msgstr "LyX警告: "
 
 #: src/BufferParams.cpp:2158 src/Encoding.cpp:247 src/Paragraph.cpp:2720
-#: src/insets/InsetListings.cpp:222 src/insets/InsetListings.cpp:230
+#: src/insets/InsetListings.cpp:231 src/insets/InsetListings.cpp:239
 #: src/mathed/MathExtern.cpp:1484
 msgid "uncodable character"
 msgstr "コード化できない文字"
@@ -27857,27 +27858,27 @@ msgstr "既に正規表現モードです"
 msgid "Regexp editor mode"
 msgstr "正規表現エディタモード"
 
-#: src/Text3.cpp:1445
+#: src/Text3.cpp:1535
 msgid "Layout "
 msgstr "割り付け"
 
-#: src/Text3.cpp:1446
+#: src/Text3.cpp:1536
 msgid " not known"
 msgstr "解釈不能"
 
-#: src/Text3.cpp:2129 src/frontends/qt4/GuiApplication.cpp:1715
+#: src/Text3.cpp:2219 src/frontends/qt4/GuiApplication.cpp:1715
 msgid "Missing argument"
 msgstr "引数がありません"
 
-#: src/Text3.cpp:2281 src/Text3.cpp:2293
+#: src/Text3.cpp:2371 src/Text3.cpp:2383
 msgid "Character set"
 msgstr "文字が調整されました"
 
-#: src/Text3.cpp:2446
+#: src/Text3.cpp:2536
 msgid "Path to thesaurus directory not set!"
 msgstr "類語辞典用辞書へのパスが設定されていません！"
 
-#: src/Text3.cpp:2447
+#: src/Text3.cpp:2537
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -27889,7 +27890,7 @@ msgstr ""
 "セットアップ方法については，ユーザーの手引きの\n"
 "第6.15.1章をご覧ください．"
 
-#: src/Text3.cpp:2514 src/Text3.cpp:2525
+#: src/Text3.cpp:2604 src/Text3.cpp:2615
 msgid "Paragraph layout set"
 msgstr "段落を割り付けました．"
 
@@ -29049,6 +29050,13 @@ msgstr "参照の前につけるテキスト(例:「cf.」)"
 #: src/frontends/qt4/GuiCitation.cpp:306
 msgid "Text that follows the reference (e.g., pages)"
 msgstr "参照の後につけるテキスト(例: pages)"
+
+#: src/frontends/qt4/GuiCitation.cpp:314
+#, fuzzy
+msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")."
+msgstr ""
+"現引用様式がサポートしている場合，名前の大文字を強制します(「del Piero」では"
+"なく「Del Piero」)．"
 
 #: src/frontends/qt4/GuiCitation.cpp:349
 msgid "Always list all authors (rather than using \"et al.\")"
@@ -32357,15 +32365,15 @@ msgstr "重複: "
 msgid "Horizontal line"
 msgstr "水平線"
 
-#: src/insets/InsetListings.cpp:253
+#: src/insets/InsetListings.cpp:262
 msgid "no more lstline delimiters available"
 msgstr "lstline区分記号は以上です"
 
-#: src/insets/InsetListings.cpp:258
+#: src/insets/InsetListings.cpp:267
 msgid "Running out of delimiters"
 msgstr "区分記号を使いきりました"
 
-#: src/insets/InsetListings.cpp:259
+#: src/insets/InsetListings.cpp:268
 msgid ""
 "For inline program listings, one character must be reserved\n"
 "as a delimiter. One of the listings, however, uses all available\n"
@@ -32381,11 +32389,11 @@ msgstr ""
 "とりあえず「!」を警告に置き換えましたが，\n"
 "チェックをする必要があります"
 
-#: src/insets/InsetListings.cpp:338 src/insets/InsetListings.cpp:347
+#: src/insets/InsetListings.cpp:347 src/insets/InsetListings.cpp:356
 msgid "Uncodable characters in listings inset"
 msgstr "プログラムリスト差込枠にコード化できない文字があります"
 
-#: src/insets/InsetListings.cpp:339
+#: src/insets/InsetListings.cpp:348
 #, c-format
 msgid ""
 "The following characters in one of the program listings are\n"
@@ -32404,7 +32412,7 @@ msgstr ""
 "文書→設定...中の「非TeXフォントを使う」を変更すると\n"
 "改善するかもしれません．"
 
-#: src/insets/InsetListings.cpp:348
+#: src/insets/InsetListings.cpp:357
 #, c-format
 msgid ""
 "The following characters in one of the program listings are\n"

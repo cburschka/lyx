@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-01-25 17:46+0100\n"
+"POT-Creation-Date: 2018-01-28 21:42-0500\n"
 "PO-Revision-Date: 2018-01-25 17:35+0100\n"
 "Last-Translator: Οδυσσέας Δαγκλής <o2d@freemail.gr>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
@@ -529,7 +529,8 @@ msgstr "Μέση"
 msgid "Bottom"
 msgstr "Κάτω"
 
-#: src/frontends/qt4/ui/BoxUi.ui:219
+#: src/frontends/qt4/ui/BoxUi.ui:219 src/frontends/qt4/GuiBox.cpp:343
+#: src/frontends/qt4/GuiBox.cpp:558
 msgid "Stretch"
 msgstr "Τέντωμα"
 
@@ -1068,7 +1069,7 @@ msgid ""
 "Check this if you want to enter LaTeX code."
 msgstr ""
 
-#: src/frontends/qt4/ui/CitationUi.ui:388
+#: src/frontends/qt4/ui/CitationUi.ui:388 src/frontends/qt4/GuiCitation.cpp:316
 msgid ""
 "Force upper case in names (\"Del Piero\", not \"del Piero\"), if the current "
 "citation style supports this."
@@ -2393,7 +2394,7 @@ msgstr ""
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:331
 #: lib/layouts/stdinsets.inc:337 lib/layouts/stdinsets.inc:382
 #: lib/layouts/stdinsets.inc:388 src/insets/InsetCaption.cpp:388
-#: src/insets/InsetListings.cpp:455 src/insets/InsetListings.cpp:457
+#: src/insets/InsetListings.cpp:464 src/insets/InsetListings.cpp:466
 msgid "Listing"
 msgstr "Καταλογοποίηση"
 
@@ -17987,17 +17988,17 @@ msgid "Paragraph Break|B"
 msgstr "Αλλαγή Παραγράφου|Π"
 
 #: lib/ui/stdcontext.inc:335 lib/ui/stdmenus.inc:106 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1379 src/mathed/InsetMathNest.cpp:564
+#: src/Text3.cpp:1469 src/mathed/InsetMathNest.cpp:564
 msgid "Cut"
 msgstr "Αποκοπή"
 
 #: lib/ui/stdcontext.inc:336 lib/ui/stdmenus.inc:107 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1384 src/mathed/InsetMathNest.cpp:573
+#: src/Text3.cpp:1474 src/mathed/InsetMathNest.cpp:573
 msgid "Copy"
 msgstr "Αντιγραφή"
 
 #: lib/ui/stdcontext.inc:337 lib/ui/stdmenus.inc:108 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1325 src/mathed/InsetMathGrid.cpp:1581
+#: src/Text3.cpp:1415 src/mathed/InsetMathGrid.cpp:1581
 #: src/mathed/InsetMathNest.cpp:543
 msgid "Paste"
 msgstr "Επικόλληση"
@@ -25422,14 +25423,14 @@ msgid "Document class not available"
 msgstr "Η κλάση εγγράφου δεν είναι διαθέσιμη"
 
 #: src/BufferParams.cpp:2157 src/Encoding.cpp:246 src/Paragraph.cpp:2719
-#: src/frontends/qt4/LaTeXHighlighter.cpp:122 src/insets/InsetListings.cpp:221
-#: src/insets/InsetListings.cpp:229 src/insets/InsetListings.cpp:252
+#: src/frontends/qt4/LaTeXHighlighter.cpp:122 src/insets/InsetListings.cpp:230
+#: src/insets/InsetListings.cpp:238 src/insets/InsetListings.cpp:261
 #: src/mathed/MathExtern.cpp:1483
 msgid "LyX Warning: "
 msgstr "Προειδοποίηση  LyX: "
 
 #: src/BufferParams.cpp:2158 src/Encoding.cpp:247 src/Paragraph.cpp:2720
-#: src/insets/InsetListings.cpp:222 src/insets/InsetListings.cpp:230
+#: src/insets/InsetListings.cpp:231 src/insets/InsetListings.cpp:239
 #: src/mathed/MathExtern.cpp:1484
 msgid "uncodable character"
 msgstr "μη κωδικοποιήσιμος χαρακτήρας"
@@ -27645,27 +27646,27 @@ msgstr "Ήδη σε κατάσταση κανονικής παράστασης"
 msgid "Regexp editor mode"
 msgstr ""
 
-#: src/Text3.cpp:1445
+#: src/Text3.cpp:1535
 msgid "Layout "
 msgstr "Διάταξη "
 
-#: src/Text3.cpp:1446
+#: src/Text3.cpp:1536
 msgid " not known"
 msgstr " άγνωστο"
 
-#: src/Text3.cpp:2129 src/frontends/qt4/GuiApplication.cpp:1715
+#: src/Text3.cpp:2219 src/frontends/qt4/GuiApplication.cpp:1715
 msgid "Missing argument"
 msgstr "Λείπει όρισμα"
 
-#: src/Text3.cpp:2281 src/Text3.cpp:2293
+#: src/Text3.cpp:2371 src/Text3.cpp:2383
 msgid "Character set"
 msgstr "Σύνολο χαρακτήρων"
 
-#: src/Text3.cpp:2446
+#: src/Text3.cpp:2536
 msgid "Path to thesaurus directory not set!"
 msgstr ""
 
-#: src/Text3.cpp:2447
+#: src/Text3.cpp:2537
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -27673,7 +27674,7 @@ msgid ""
 "instructions."
 msgstr ""
 
-#: src/Text3.cpp:2514 src/Text3.cpp:2525
+#: src/Text3.cpp:2604 src/Text3.cpp:2615
 msgid "Paragraph layout set"
 msgstr "Σύνολο διατάξεων παραγράφων"
 
@@ -28788,6 +28789,10 @@ msgstr ""
 
 #: src/frontends/qt4/GuiCitation.cpp:306
 msgid "Text that follows the reference (e.g., pages)"
+msgstr ""
+
+#: src/frontends/qt4/GuiCitation.cpp:314
+msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")."
 msgstr ""
 
 #: src/frontends/qt4/GuiCitation.cpp:349
@@ -32033,15 +32038,15 @@ msgstr "ΑΝΑΠΑΡΑΓΩΓΗ: "
 msgid "Horizontal line"
 msgstr "Οριζόντια γραμμή"
 
-#: src/insets/InsetListings.cpp:253
+#: src/insets/InsetListings.cpp:262
 msgid "no more lstline delimiters available"
 msgstr ""
 
-#: src/insets/InsetListings.cpp:258
+#: src/insets/InsetListings.cpp:267
 msgid "Running out of delimiters"
 msgstr ""
 
-#: src/insets/InsetListings.cpp:259
+#: src/insets/InsetListings.cpp:268
 msgid ""
 "For inline program listings, one character must be reserved\n"
 "as a delimiter. One of the listings, however, uses all available\n"
@@ -32050,11 +32055,11 @@ msgid ""
 "must investigate!"
 msgstr ""
 
-#: src/insets/InsetListings.cpp:338 src/insets/InsetListings.cpp:347
+#: src/insets/InsetListings.cpp:347 src/insets/InsetListings.cpp:356
 msgid "Uncodable characters in listings inset"
 msgstr "Μη κωδικωποιήσιμοι χαρακτήρες στο ένθεμα λιστών"
 
-#: src/insets/InsetListings.cpp:339
+#: src/insets/InsetListings.cpp:348
 #, c-format
 msgid ""
 "The following characters in one of the program listings are\n"
@@ -32066,7 +32071,7 @@ msgid ""
 "might help."
 msgstr ""
 
-#: src/insets/InsetListings.cpp:348
+#: src/insets/InsetListings.cpp:357
 #, c-format
 msgid ""
 "The following characters in one of the program listings are\n"

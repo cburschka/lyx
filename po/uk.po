@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-01-20 09:43+0100\n"
+"POT-Creation-Date: 2018-01-28 21:42-0500\n"
 "PO-Revision-Date: 2018-01-15 10:40+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
@@ -543,7 +543,8 @@ msgstr "Середня"
 msgid "Bottom"
 msgstr "Внизу"
 
-#: src/frontends/qt4/ui/BoxUi.ui:219
+#: src/frontends/qt4/ui/BoxUi.ui:219 src/frontends/qt4/GuiBox.cpp:343
+#: src/frontends/qt4/GuiBox.cpp:558
 msgid "Stretch"
 msgstr "Розтягнути"
 
@@ -1088,7 +1089,7 @@ msgstr ""
 "Передавати вміст поля «Текст перед» і «Текст після» буквально до LaTeX. "
 "Позначте цей пункт, якщо ви хочете використовувати код LaTeX."
 
-#: src/frontends/qt4/ui/CitationUi.ui:388
+#: src/frontends/qt4/ui/CitationUi.ui:388 src/frontends/qt4/GuiCitation.cpp:316
 msgid ""
 "Force upper case in names (\"Del Piero\", not \"del Piero\"), if the current "
 "citation style supports this."
@@ -2434,7 +2435,7 @@ msgstr "&Пакунок для підсвічування синтаксису:"
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:331
 #: lib/layouts/stdinsets.inc:337 lib/layouts/stdinsets.inc:382
 #: lib/layouts/stdinsets.inc:388 src/insets/InsetCaption.cpp:388
-#: src/insets/InsetListings.cpp:455 src/insets/InsetListings.cpp:457
+#: src/insets/InsetListings.cpp:464 src/insets/InsetListings.cpp:466
 msgid "Listing"
 msgstr "Текст програми"
 
@@ -18194,17 +18195,17 @@ msgid "Paragraph Break|B"
 msgstr "Розрив абзацу|Р"
 
 #: lib/ui/stdcontext.inc:335 lib/ui/stdmenus.inc:106 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1379 src/mathed/InsetMathNest.cpp:564
+#: src/Text3.cpp:1469 src/mathed/InsetMathNest.cpp:564
 msgid "Cut"
 msgstr "Вирізати"
 
 #: lib/ui/stdcontext.inc:336 lib/ui/stdmenus.inc:107 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1384 src/mathed/InsetMathNest.cpp:573
+#: src/Text3.cpp:1474 src/mathed/InsetMathNest.cpp:573
 msgid "Copy"
 msgstr "Копіювати"
 
 #: lib/ui/stdcontext.inc:337 lib/ui/stdmenus.inc:108 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1325 src/mathed/InsetMathGrid.cpp:1581
+#: src/Text3.cpp:1415 src/mathed/InsetMathGrid.cpp:1581
 #: src/mathed/InsetMathNest.cpp:543
 msgid "Paste"
 msgstr "Вставити"
@@ -25719,14 +25720,14 @@ msgid "Document class not available"
 msgstr "Документ неможливо зберегти!"
 
 #: src/BufferParams.cpp:2157 src/Encoding.cpp:246 src/Paragraph.cpp:2719
-#: src/frontends/qt4/LaTeXHighlighter.cpp:122 src/insets/InsetListings.cpp:221
-#: src/insets/InsetListings.cpp:229 src/insets/InsetListings.cpp:252
+#: src/frontends/qt4/LaTeXHighlighter.cpp:122 src/insets/InsetListings.cpp:230
+#: src/insets/InsetListings.cpp:238 src/insets/InsetListings.cpp:261
 #: src/mathed/MathExtern.cpp:1483
 msgid "LyX Warning: "
 msgstr "Попередження LyX: "
 
 #: src/BufferParams.cpp:2158 src/Encoding.cpp:247 src/Paragraph.cpp:2720
-#: src/insets/InsetListings.cpp:222 src/insets/InsetListings.cpp:230
+#: src/insets/InsetListings.cpp:231 src/insets/InsetListings.cpp:239
 #: src/mathed/MathExtern.cpp:1484
 msgid "uncodable character"
 msgstr "непридатний для кодування символ"
@@ -27999,27 +28000,27 @@ msgstr "Вже працюємо у режимі формальних вираз�
 msgid "Regexp editor mode"
 msgstr "Режим редактора рег. виразів"
 
-#: src/Text3.cpp:1445
+#: src/Text3.cpp:1535
 msgid "Layout "
 msgstr "Формат "
 
-#: src/Text3.cpp:1446
+#: src/Text3.cpp:1536
 msgid " not known"
 msgstr " невідомий"
 
-#: src/Text3.cpp:2129 src/frontends/qt4/GuiApplication.cpp:1715
+#: src/Text3.cpp:2219 src/frontends/qt4/GuiApplication.cpp:1715
 msgid "Missing argument"
 msgstr "Відсутній аргумент"
 
-#: src/Text3.cpp:2281 src/Text3.cpp:2293
+#: src/Text3.cpp:2371 src/Text3.cpp:2383
 msgid "Character set"
 msgstr "Кодування символів"
 
-#: src/Text3.cpp:2446
+#: src/Text3.cpp:2536
 msgid "Path to thesaurus directory not set!"
 msgstr "Не встановлено шлях до каталогу тезауруса!"
 
-#: src/Text3.cpp:2447
+#: src/Text3.cpp:2537
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -28031,7 +28032,7 @@ msgstr ""
 "Будь ласка, зверніться до розділу 6.15.1 підручника для користувачів,\n"
 "де наведено настанови із налаштовування."
 
-#: src/Text3.cpp:2514 src/Text3.cpp:2525
+#: src/Text3.cpp:2604 src/Text3.cpp:2615
 msgid "Paragraph layout set"
 msgstr "Встановлено розміщення абзацу"
 
@@ -29200,6 +29201,13 @@ msgstr "Текст, який передує посиланню (наприкла
 #: src/frontends/qt4/GuiCitation.cpp:306
 msgid "Text that follows the reference (e.g., pages)"
 msgstr "Текст, який слідує за посиланням (наприклад, сторінки)"
+
+#: src/frontends/qt4/GuiCitation.cpp:314
+#, fuzzy
+msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")."
+msgstr ""
+"Примусовий верхній регістр у іменах («Дель П’єро», а не «дель П’єро»), якщо "
+"у поточному стилі посилань передбачено його підтримку."
 
 #: src/frontends/qt4/GuiCitation.cpp:349
 msgid "Always list all authors (rather than using \"et al.\")"
@@ -32518,15 +32526,15 @@ msgstr "ДУБЛЮВАННЯ: "
 msgid "Horizontal line"
 msgstr "Горизонтальна лінія"
 
-#: src/insets/InsetListings.cpp:253
+#: src/insets/InsetListings.cpp:262
 msgid "no more lstline delimiters available"
 msgstr "більше немає роздільників lstline"
 
-#: src/insets/InsetListings.cpp:258
+#: src/insets/InsetListings.cpp:267
 msgid "Running out of delimiters"
 msgstr "Вихід за межі обмежувачів"
 
-#: src/insets/InsetListings.cpp:259
+#: src/insets/InsetListings.cpp:268
 msgid ""
 "For inline program listings, one character must be reserved\n"
 "as a delimiter. One of the listings, however, uses all available\n"
@@ -32540,11 +32548,11 @@ msgstr ""
 "Тимчасово, я замінив '!' на попередження, але вам\n"
 "слід бути уважними!"
 
-#: src/insets/InsetListings.cpp:338 src/insets/InsetListings.cpp:347
+#: src/insets/InsetListings.cpp:347 src/insets/InsetListings.cpp:356
 msgid "Uncodable characters in listings inset"
 msgstr "Непридатні для кодування символи у вкладці тексту програми"
 
-#: src/insets/InsetListings.cpp:339
+#: src/insets/InsetListings.cpp:348
 #, c-format
 msgid ""
 "The following characters in one of the program listings are\n"
@@ -32564,7 +32572,7 @@ msgstr ""
 "шрифти, що не є частиною TeX» на сторінці «Документ >\n"
 "Налаштувати > Шрифти»."
 
-#: src/insets/InsetListings.cpp:348
+#: src/insets/InsetListings.cpp:357
 #, c-format
 msgid ""
 "The following characters in one of the program listings are\n"

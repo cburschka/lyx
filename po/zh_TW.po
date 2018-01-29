@@ -107,7 +107,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 2.1.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-01-20 09:43+0100\n"
+"POT-Creation-Date: 2018-01-28 21:42-0500\n"
 "PO-Revision-Date: 2014-04-11 19:41+0800\n"
 "Last-Translator: Mingyi Wu <mingi.wu@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -660,7 +660,8 @@ msgstr "中間"
 msgid "Bottom"
 msgstr "底部"
 
-#: src/frontends/qt4/ui/BoxUi.ui:219
+#: src/frontends/qt4/ui/BoxUi.ui:219 src/frontends/qt4/GuiBox.cpp:343
+#: src/frontends/qt4/GuiBox.cpp:558
 msgid "Stretch"
 msgstr "擴展"
 
@@ -1210,7 +1211,7 @@ msgid ""
 "Check this if you want to enter LaTeX code."
 msgstr ""
 
-#: src/frontends/qt4/ui/CitationUi.ui:388
+#: src/frontends/qt4/ui/CitationUi.ui:388 src/frontends/qt4/GuiCitation.cpp:316
 msgid ""
 "Force upper case in names (\"Del Piero\", not \"del Piero\"), if the current "
 "citation style supports this."
@@ -2537,7 +2538,7 @@ msgstr ""
 #: src/frontends/qt4/ui/ListingsUi.ui:13 lib/layouts/stdinsets.inc:331
 #: lib/layouts/stdinsets.inc:337 lib/layouts/stdinsets.inc:382
 #: lib/layouts/stdinsets.inc:388 src/insets/InsetCaption.cpp:388
-#: src/insets/InsetListings.cpp:455 src/insets/InsetListings.cpp:457
+#: src/insets/InsetListings.cpp:464 src/insets/InsetListings.cpp:466
 msgid "Listing"
 msgstr "程式碼列表"
 
@@ -18546,17 +18547,17 @@ msgid "Paragraph Break|B"
 msgstr "Paragraph 段落"
 
 #: lib/ui/stdcontext.inc:335 lib/ui/stdmenus.inc:106 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1379 src/mathed/InsetMathNest.cpp:564
+#: src/Text3.cpp:1469 src/mathed/InsetMathNest.cpp:564
 msgid "Cut"
 msgstr "剪下"
 
 #: lib/ui/stdcontext.inc:336 lib/ui/stdmenus.inc:107 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1384 src/mathed/InsetMathNest.cpp:573
+#: src/Text3.cpp:1474 src/mathed/InsetMathNest.cpp:573
 msgid "Copy"
 msgstr "複製"
 
 #: lib/ui/stdcontext.inc:337 lib/ui/stdmenus.inc:108 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1325 src/mathed/InsetMathGrid.cpp:1581
+#: src/Text3.cpp:1415 src/mathed/InsetMathGrid.cpp:1581
 #: src/mathed/InsetMathNest.cpp:543
 msgid "Paste"
 msgstr "貼上"
@@ -26067,14 +26068,14 @@ msgid "Document class not available"
 msgstr "文件類別無法使用"
 
 #: src/BufferParams.cpp:2157 src/Encoding.cpp:246 src/Paragraph.cpp:2719
-#: src/frontends/qt4/LaTeXHighlighter.cpp:122 src/insets/InsetListings.cpp:221
-#: src/insets/InsetListings.cpp:229 src/insets/InsetListings.cpp:252
+#: src/frontends/qt4/LaTeXHighlighter.cpp:122 src/insets/InsetListings.cpp:230
+#: src/insets/InsetListings.cpp:238 src/insets/InsetListings.cpp:261
 #: src/mathed/MathExtern.cpp:1483
 msgid "LyX Warning: "
 msgstr "LyX 警告: "
 
 #: src/BufferParams.cpp:2158 src/Encoding.cpp:247 src/Paragraph.cpp:2720
-#: src/insets/InsetListings.cpp:222 src/insets/InsetListings.cpp:230
+#: src/insets/InsetListings.cpp:231 src/insets/InsetListings.cpp:239
 #: src/mathed/MathExtern.cpp:1484
 msgid "uncodable character"
 msgstr "無法編碼的字元"
@@ -28224,28 +28225,28 @@ msgstr "已經在正規表示式模式了"
 msgid "Regexp editor mode"
 msgstr "正規表示 編輯器模式"
 
-#: src/Text3.cpp:1445
+#: src/Text3.cpp:1535
 msgid "Layout "
 msgstr "布局 "
 
-#: src/Text3.cpp:1446
+#: src/Text3.cpp:1536
 msgid " not known"
 msgstr " 未知"
 
-#: src/Text3.cpp:2129 src/frontends/qt4/GuiApplication.cpp:1715
+#: src/Text3.cpp:2219 src/frontends/qt4/GuiApplication.cpp:1715
 msgid "Missing argument"
 msgstr "缺少引數"
 
-#: src/Text3.cpp:2281 src/Text3.cpp:2293
+#: src/Text3.cpp:2371 src/Text3.cpp:2383
 msgid "Character set"
 msgstr "字元集"
 
-#: src/Text3.cpp:2446
+#: src/Text3.cpp:2536
 #, fuzzy
 msgid "Path to thesaurus directory not set!"
 msgstr "設定同義詞字典的路徑"
 
-#: src/Text3.cpp:2447
+#: src/Text3.cpp:2537
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -28253,7 +28254,7 @@ msgid ""
 "instructions."
 msgstr ""
 
-#: src/Text3.cpp:2514 src/Text3.cpp:2525
+#: src/Text3.cpp:2604 src/Text3.cpp:2615
 msgid "Paragraph layout set"
 msgstr "段落版面配置設定"
 
@@ -29413,6 +29414,10 @@ msgstr ""
 
 #: src/frontends/qt4/GuiCitation.cpp:306
 msgid "Text that follows the reference (e.g., pages)"
+msgstr ""
+
+#: src/frontends/qt4/GuiCitation.cpp:314
+msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")."
 msgstr ""
 
 #: src/frontends/qt4/GuiCitation.cpp:349
@@ -32741,15 +32746,15 @@ msgstr "複本: "
 msgid "Horizontal line"
 msgstr "水平線"
 
-#: src/insets/InsetListings.cpp:253
+#: src/insets/InsetListings.cpp:262
 msgid "no more lstline delimiters available"
 msgstr "沒有更多的 lstline 分隔符"
 
-#: src/insets/InsetListings.cpp:258
+#: src/insets/InsetListings.cpp:267
 msgid "Running out of delimiters"
 msgstr "用完分隔符了"
 
-#: src/insets/InsetListings.cpp:259
+#: src/insets/InsetListings.cpp:268
 msgid ""
 "For inline program listings, one character must be reserved\n"
 "as a delimiter. One of the listings, however, uses all available\n"
@@ -32763,11 +32768,11 @@ msgstr ""
 "在「檢視原始碼」視窗以 '!' 作為分隔符, 並用警告代替分隔符. \n"
 "您必須自行檢查、修正!"
 
-#: src/insets/InsetListings.cpp:338 src/insets/InsetListings.cpp:347
+#: src/insets/InsetListings.cpp:347 src/insets/InsetListings.cpp:356
 msgid "Uncodable characters in listings inset"
 msgstr "在 listings 嵌框中, 有無法編碼的字元"
 
-#: src/insets/InsetListings.cpp:339
+#: src/insets/InsetListings.cpp:348
 #, fuzzy, c-format
 msgid ""
 "The following characters in one of the program listings are\n"
@@ -32782,7 +32787,7 @@ msgstr ""
 "該字元在目前的編碼環境中無法表示, 並且被忽略了:\n"
 "%1$s."
 
-#: src/insets/InsetListings.cpp:348
+#: src/insets/InsetListings.cpp:357
 #, c-format
 msgid ""
 "The following characters in one of the program listings are\n"
