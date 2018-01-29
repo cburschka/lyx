@@ -471,44 +471,45 @@ void LyX::earlyExit(int status)
 
 int LyX::init(int & argc, char * argv[])
 {
-	// check for any spurious extra arguments
-	// other than documents
-	for (int argi = 1; argi < argc ; ++argi) {
-		if (argv[argi][0] == '-') {
-			lyxerr << to_utf8(
-				bformat(_("Wrong command line option `%1$s'. Exiting."),
-				from_utf8(os::utf8_argv(argi)))) << endl;
-			return EXIT_FAILURE;
-		}
-	}
-
-	// Initialization of LyX (reads lyxrc and more)
 	try {
+		// check for any spurious extra arguments
+		// other than documents
+		for (int argi = 1; argi < argc ; ++argi) {
+			if (argv[argi][0] == '-') {
+				lyxerr << to_utf8(
+					bformat(_("Wrong command line option `%1$s'. Exiting."),
+							from_utf8(os::utf8_argv(argi)))) << endl;
+				return EXIT_FAILURE;
+			}
+		}
+
+		// Initialization of LyX (reads lyxrc and more)
 		LYXERR(Debug::INIT, "Initializing LyX::init...");
 		bool success = init();
 		LYXERR(Debug::INIT, "Initializing LyX::init...done");
 		if (!success)
 			return EXIT_FAILURE;
+		// Remaining arguments are assumed to be files to load.
+		for (int argi = 1; argi < argc; ++argi)
+			pimpl_->files_to_load_.push_back(os::utf8_argv(argi));
+
+		if (!use_gui && pimpl_->files_to_load_.empty()) {
+			lyxerr << to_utf8(_("Missing filename for this operation.")) << endl;
+			return EXIT_FAILURE;
+		}
+
+		if (first_start) {
+			pimpl_->files_to_load_.push_back(
+				i18nLibFileSearch("examples", "splash.lyx").absFileName());
+		}
+
+		return EXIT_SUCCESS;
+
 	} catch (exception const &e) {
 		// This can happen _in_theory_ in replaceEnvironmentPath
 		lyxerr << "Caught exception `" << e.what() << "'." << endl;
 		return EXIT_FAILURE;
 	}
-	// Remaining arguments are assumed to be files to load.
-	for (int argi = 1; argi < argc; ++argi)
-		pimpl_->files_to_load_.push_back(os::utf8_argv(argi));
-
-	if (!use_gui && pimpl_->files_to_load_.empty()) {
-		lyxerr << to_utf8(_("Missing filename for this operation.")) << endl;
-		return EXIT_FAILURE;
-	}
-
-	if (first_start) {
-		pimpl_->files_to_load_.push_back(
-			i18nLibFileSearch("examples", "splash.lyx").absFileName());
-	}
-
-	return EXIT_SUCCESS;
 }
 
 
