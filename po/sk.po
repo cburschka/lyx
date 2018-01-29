@@ -10512,7 +10512,6 @@ msgid "Fix LaTeX"
 msgstr "Upraviť LaTeX"
 
 #: lib/layouts/fixltx2e.module:10
-#, fuzzy
 msgid ""
 "Loads the LaTeX package fixltx2e which contains some bug fixes for LaTeX. "
 "Those fixes were not part of older LaTeX kernels because of backward "
@@ -10523,10 +10522,11 @@ msgid ""
 "newer LaTeX distributions."
 msgstr ""
 "Nahrá LaTeX-ov balík fixltx2e ktorý obsahuje pár korektúr pre LaTeX. Tieto "
-"korektúry nie sú časťou LaTeX-ovho jadra kvôli spätnej kompatibilite. "
-"Použitím tohto modulu môžu vaše vytlačené dokumenty vyzerať ináč pri "
-"spracovaní s budúcimi verziami LaTeX-u, lebo fixltx2e vtedy môže poskytovať "
-"aj viac korektúr."
+"korektúry neboli časťou v starších jadrách LaTeX-u kvôli spätnej "
+"kompatibilite. Použitím tohto modulu môžu vaše vytlačené dokumenty vyzerať "
+"ináč pri spracovaní s rozličnými verziami LaTeX-u (závisí to na aktuálnej "
+"fixltx2e verzii). Berte na vedomie že nedávne LaTeX jadrá (2015/01/01) "
+"obsahujú fixltx2e, čiže od TeXLive 2015 je modul fixltx2e obsoletný."
 
 #: lib/layouts/fixme.module:2
 msgid "FiXme"
