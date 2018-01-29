@@ -27,12 +27,6 @@
 
 % extra space for tables
 \newcommand{\extratablespace}[1]{\noalign{\vskip#1}}
-
-% Improve line breaking
-\tolerance 1414
-\hbadness 1414
-\emergencystretch 1.5em
-\hfuzz 0.3pt
 \end_preamble
 \options bibliography=totoc,index=totoc,BCOR7.5mm,titlepage,captions=tableheading
 \use_default_options false
@@ -2465,6 +2459,16 @@ Style Format
 status collapsed
 
 \begin_layout Plain Layout
+Basic (BibTeX)
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
 Biblatex
 \end_layout
 
@@ -2872,7 +2876,7 @@ Options
 
 \end_inset
 
- field of the dialog that opens if you right-click on the 
+ field of the dialog that opens if you left-click on the 
 \begin_inset Flex Noun
 status collapsed
 
@@ -8543,7 +8547,7 @@ The abstract
 \begin_layout Standard
 The abstract should immediately follow the header block.
  With version 5 the abstract environment was changed to a command, and there
- is now a resctriction to only one paragraph.
+ is now a restriction to only one paragraph.
  In addition, it should contain an entry with the keywords.
  This is done via the paragraph style 
 \family sans
@@ -8842,7 +8846,7 @@ For submission, the paper has to be formated in a special double-spacing
 \family typewriter
 referee
 \family default
- to the documentclass.
+ to the document class.
  This must be done using the custom class options field in the 
 \family sans
 Document\SpecialChar menuseparator
