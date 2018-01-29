@@ -593,6 +593,7 @@ Style Bibliography
 	LabelFont
 	  Series	Bold
 	EndFont
+	TocLevel        0
 End
 
 Style Description
