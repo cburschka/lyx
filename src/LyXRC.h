@@ -172,6 +172,7 @@ public:
 		RC_USE_CONVERTER_CACHE,
 		RC_USE_CONVERTER_NEEDAUTH_FORBIDDEN,
 		RC_USE_CONVERTER_NEEDAUTH,
+		RC_USE_NATIVE_FILEDIALOG,
 		RC_USE_SYSTEM_COLORS,
 		RC_USE_TOOLTIP,
 		RC_USE_PIXMAP_CACHE,
@@ -332,6 +333,8 @@ public:
 	bool use_tooltip;
 	/// Use the colors from current system theme?
 	bool use_system_colors;
+	/// use native file dialog or our own ?
+	bool use_native_filedialog;
 	/// Use pixmap cache?
 	bool use_pixmap_cache;
 	/// Spellchecker engine: aspell, hunspell, etc
