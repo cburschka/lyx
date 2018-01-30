@@ -57,6 +57,11 @@ What's new
   snappier, especially on repeated events. As an added bonus, subpixel
   aliasing is honored in the work area.
 
+- Use native file dialogs on all platforms by default. It is now
+  possible to switch to LyX custom dialogs (which have extra shortcuts
+  to relevant directories) by setting the preference
+  \use_native_filedialog true
+
 - Handle properly top/bottom of inset with mac-like cursor movement
   (bug 10701).
 
