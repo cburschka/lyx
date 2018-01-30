@@ -250,8 +250,7 @@ static docstring const textgreek_LGR_def = from_ascii(
 static docstring const textgreek_def = from_ascii(
 	"\\DeclareRobustCommand{\\greektext}{%\n"
 	"  \\fontencoding{LGR}\\selectfont\\def\\encodingdefault{LGR}}\n"
-	"\\DeclareRobustCommand{\\textgreek}[1]{\\leavevmode{\\greektext #1}}\n"
-        "\\ProvideTextCommand{\\~}{LGR}[1]{\\char126#1}\n");
+	"\\DeclareRobustCommand{\\textgreek}[1]{\\leavevmode{\\greektext #1}}\n");
 
 static docstring const textcyr_T2A_def = from_ascii(
 	"\\InputIfFileExists{t2aenc.def}{}{%\n"
