@@ -170,8 +170,16 @@ Font libertine
 	GuiName          "Libertine"
 	Family           rm
 	OsfOption        osf
+	Package          libertineRoman
+	CompleteFont     libertine
+	AltFonts         libertine-type1,libertine-2012,libertine-legacy
+EndFont
+
+AltFont libertine-type1
+	GuiName          "Libertine"
+	Family           rm
+	OsfOption        osf
 	Package          libertine-type1
-	AltFonts         libertine-2012,libertine-legacy
 	Requires         libertineMono-type1
 EndFont
 
@@ -455,9 +463,17 @@ Font biolinum
 	Family           sf
 	OsfOption        osf
 	ScaleOption      scaled=$$val
+	Package          biolinum
+	AltFonts         biolinum-type1,biolinum-2012
+EndFont
+
+AltFont biolinum-type1
+	GuiName          "Biolinum"
+	Family           sf
+	OsfOption        osf
+	ScaleOption      scaled=$$val
 	Package          biolinum-type1
 	Requires         libertineMono-type1
-	AltFonts         biolinum-2012
 EndFont
 
 AltFont biolinum-2012
@@ -612,6 +628,14 @@ Font courier
 EndFont
 
 Font libertine-mono
+	GuiName          "Libertine Mono"
+	Family           tt
+	ScaleOption      scaled=$$val
+	Package          libertineMono
+	AltFonts	 libertine-mono-type1
+EndFont
+
+AltFont libertine-mono-type1
 	GuiName          "Libertine Mono"
 	Family           tt
 	ScaleOption      scaled=$$val
