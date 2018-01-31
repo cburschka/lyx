@@ -457,34 +457,32 @@ void CursorData::checkNewWordPosition()
 {
 	if (!lyxrc.spellcheck_continuously || new_word_.empty())
 		return ;
-	if (!inTexted())
-		clearNewWordPosition();
+	// forget the position of the current new word if
+	// 1) or the remembered position was "broken"
+	// 2) or the count of nested insets changed
+	// 3) the top-level inset is not the same anymore
+	// 4) the cell index changed
+	// 5) or the paragraph changed
+	// 6) or the cursor pos is out of paragraph bound
+	if (new_word_.fixIfBroken()
+	    || depth() != new_word_.depth()
+	    || &inset() != &new_word_.inset()
+	    || pit() != new_word_.pit()
+	    || idx() != new_word_.idx()
+	    || new_word_.pos() > new_word_.lastpos())
+			clearNewWordPosition();
 	else {
-		// forget the position of the current new word if
-		// 1) the paragraph changes or
-		// 2) the count of nested insets changes or
-		// 3) the cursor pos is out of paragraph bound
-		if (pit() != new_word_.pit() ||
-			depth() != new_word_.depth() ||
-			new_word_.pos() > new_word_.lastpos()) {
-			clearNewWordPosition();
-		} else if (new_word_.fixIfBroken())
-			// 4) or the remembered position was "broken"
-			clearNewWordPosition();
-		else {
-			FontSpan nw = locateWord(WHOLE_WORD);
-			if (!nw.empty()) {
-				FontSpan ow = new_word_.locateWord(WHOLE_WORD);
-				if (nw.intersect(ow).empty())
-					clearNewWordPosition();
-				else
-					LYXERR(Debug::DEBUG, "new word: "
-						   << " par: " << pit()
-						   << " pos: " << nw.first << ".." << nw.last);
-			} else {
+		FontSpan nw = locateWord(WHOLE_WORD);
+		if (!nw.empty()) {
+			FontSpan ow = new_word_.locateWord(WHOLE_WORD);
+			if (nw.intersect(ow).empty())
 				clearNewWordPosition();
-			}
-		}
+			else
+				LYXERR(Debug::DEBUG, "new word: "
+					   << " par: " << pit()
+					   << " pos: " << nw.first << ".." << nw.last);
+		} else
+			clearNewWordPosition();
 	}
 }
 
