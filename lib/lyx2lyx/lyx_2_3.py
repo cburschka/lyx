@@ -27,15 +27,14 @@ import sys, os
 from parser_tools import (del_token, del_value, del_complete_lines,
     find_complete_lines, find_end_of, find_end_of_layout, find_end_of_inset,
     find_re, find_token, find_token_backwards, get_containing_inset,
-    get_containing_layout, get_bool_value, get_value, get_quoted_value)
-#  find_tokens, find_token_exact, is_in_inset,
-#  check_token, get_option_value
+    get_containing_layout, get_bool_value, get_value, get_quoted_value,
+    is_in_inset)
+#  find_tokens, find_token_exact, check_token, get_option_value
 
-from lyx2lyx_tools import add_to_preamble, put_cmd_in_ert, revert_font_attrs, \
-    insert_to_preamble
-#  get_ert, lyx2latex, \
-#  lyx2verbatim, length_in_bp, convert_info_insets
-#  latex_length, revert_flex_inset, hex2ratio, str2bool
+from lyx2lyx_tools import (add_to_preamble, put_cmd_in_ert, revert_font_attrs,
+                           insert_to_preamble, latex_length)
+#  get_ert, lyx2latex, lyx2verbatim, length_in_bp, convert_info_insets
+#  revert_flex_inset, hex2ratio, str2bool
 
 ####################################################################
 # Private helper functions
@@ -88,13 +87,12 @@ def convert_dateinset(document):
             continue
         if get_value(document.body, 'template', i, j) == "Date":
             document.body[i : j + 1] = put_cmd_in_ert("\\today ")
-        i += 1
-        continue
+        i = j+1 # skip inset
 
 
 def convert_inputenc(document):
     " Replace no longer supported input encoding settings. "
-    i = find_token(document.header, "\\inputenc", 0)
+    i = find_token(document.header, "\\inputenc")
     if i == -1:
         return
     if get_value(document.header, "\\inputencoding", i) == "pt254":
@@ -1859,7 +1857,7 @@ def convert_dashligatures(document):
         while i+1 < len(lines):
             i += 1
             line = lines[i]
-            # skip lines without any dashes:
+            # skip lines without dashes:
             if not re.search(u"[\u2013\u2014]|\\twohyphens|\\threehyphens", line):
                 continue
             # skip label width string (see bug 10243):
@@ -1867,28 +1865,28 @@ def convert_dashligatures(document):
                 continue
             # do not touch hyphens in some insets (cf. lyx_2_2.convert_dashes):
             try:
-                value, start, end = get_containing_inset(lines, i)
+                inset_type, start, end = get_containing_inset(lines, i)
             except TypeError: # no containing inset
-                value, start, end = "no inset", -1, -1
-            if (value.split()[0] in
+                inset_type, start, end = "no inset", -1, -1
+            if (inset_type.split()[0] in
                 ["CommandInset", "ERT", "External", "Formula",
                  "FormulaMacro", "Graphics", "IPA", "listings"]
-                or value == "Flex Code"):
+                or inset_type == "Flex Code"):
                 i = end
                 continue
             try:
-                layout, start, end, j = get_containing_layout(lines, i)
+                layoutname, start, end, j = get_containing_layout(lines, i)
             except TypeError: # no (or malformed) containing layout
                 document.warning("Malformed LyX document: "
                                 "Can't find layout at line %d" % i)
                 continue
-            if layout == "LyX-Code":
+            if layoutname == "LyX-Code":
                 i = end
                 continue
 
             # literal dash followed by a word or no-break space:
-            if re.search(u"[\u2013\u2014]([\w\u00A0]|$)", line,
-                         flags=re.UNICODE):
+            if re.search(u"[\u2013\u2014]([\w\u00A0]|$)",
+                         line, flags=re.UNICODE):
                 has_literal_dashes = True
             # ligature dash followed by word or no-break space on next line:
             if (re.search(r"(\\twohyphens|\\threehyphens)", line) and
@@ -1900,14 +1898,15 @@ def convert_dashligatures(document):
                                  '"ligature" dashes.\n Line breaks may have changed. '
                                  'See UserGuide chapter 3.9.1 for details.')
                 break
-        if has_literal_dashes:
+
+        if has_literal_dashes and not has_ligature_dashes:
             use_dash_ligatures = False
-        elif has_ligature_dashes:
+        elif has_ligature_dashes and not has_literal_dashes:
             use_dash_ligatures = True
+
     # insert the setting if there is a preferred value
     if use_dash_ligatures is not None:
-        i = find_token(document.header, "\\graphics")
-        document.header.insert(i, "\\use_dash_ligatures %s"
+        document.header.insert(-1, "\\use_dash_ligatures %s"
                                % str(use_dash_ligatures).lower())
 
 
@@ -2020,64 +2019,37 @@ def revert_mathindent(document):
 
 
 def revert_baselineskip(document):
-  " Revert baselineskips to TeX code "
-  i = 0
-  vspaceLine = 0
-  hspaceLine = 0
-  while True:
-    regexp = re.compile(r'^.*baselineskip%.*$')
-    i = find_re(document.body, regexp, i)
-    if i == -1:
-      return
-    vspaceLine = find_token(document.body, "\\begin_inset VSpace", i)
-    if  vspaceLine == i:
-      # output VSpace inset as TeX code
-      # first read out the values
-      beg = document.body[i].rfind("VSpace ");
-      end = document.body[i].rfind("baselineskip%");
-      baselineskip = float(document.body[i][beg + 7:end]);
-      # we store the value in percent, thus divide by 100
-      baselineskip = baselineskip/100;
-      baselineskip = str(baselineskip);
-      # check if it is the starred version
-      if document.body[i].find('*') != -1:
-        star = '*'
-      else:
-        star = ''
-      # now output TeX code
-      endInset = find_end_of_inset(document.body, i)
-      if endInset == -1:
-        document.warning("Malformed LyX document: Missing '\\end_inset' of VSpace inset.")
-        return
-      else:
-        document.body[vspaceLine: endInset + 1] = put_cmd_in_ert("\\vspace" + star + '{' + baselineskip + "\\baselineskip}")
-    hspaceLine = find_token(document.body, "\\begin_inset space \\hspace", i - 1)
-    document.warning("hspaceLine: " + str(hspaceLine))
-    document.warning("i: " + str(i))
-    if  hspaceLine == i - 1:
-      # output space inset as TeX code
-      # first read out the values
-      beg = document.body[i].rfind("\\length ");
-      end = document.body[i].rfind("baselineskip%");
-      baselineskip = float(document.body[i][beg + 7:end]);
-      document.warning("baselineskip: " + str(baselineskip))
-      # we store the value in percent, thus divide by 100
-      baselineskip = baselineskip/100;
-      baselineskip = str(baselineskip);
-      # check if it is the starred version
-      if document.body[i-1].find('*') != -1:
-        star = '*'
-      else:
-        star = ''
-      # now output TeX code
-      endInset = find_end_of_inset(document.body, i)
-      if endInset == -1:
-        document.warning("Malformed LyX document: Missing '\\end_inset' of space inset.")
-        return
-      else:
-        document.body[hspaceLine: endInset + 1] = put_cmd_in_ert("\\hspace" + star + '{' + baselineskip + "\\baselineskip}")
-
-    i = i + 1
+    " Revert baselineskips to TeX code "
+    i = 0
+    regexp = re.compile(r'.*baselineskip%.*')
+    while True:
+        i = i + 1
+        i = find_re(document.body, regexp, i)
+        if i == -1:
+            return
+        if  document.body[i].startswith("\\begin_inset VSpace"):
+            # output VSpace inset as TeX code
+            end = find_end_of_inset(document.body, i)
+            if end == -1:
+                document.warning("Malformed LyX document: "
+                        "Can't find end of VSpace inset at line %d." % i)
+                continue
+            # read out the value
+            baselineskip = document.body[i].split()[-1]
+            # check if it is the starred version
+            star = '*' if '*' in document.body[i] else ''
+            # now output TeX code
+            cmd = "\\vspace%s{%s}" %(star, latex_length(baselineskip)[1])
+            document.body[i:end+1] = put_cmd_in_ert(cmd)
+            i += 8
+            continue
+        begin, end = is_in_inset(document.body, i, "\\begin_inset space \\hspace")
+        if  begin != - 1:
+            # output space inset as TeX code
+            baselineskip = document.body[i].split()[-1]
+            star = '*' if '*' in document.body[i-1] else ''
+            cmd = "\\hspace%s{%s}" %(star, latex_length(baselineskip)[1])
+            document.body[begin:end+1] = put_cmd_in_ert(cmd)
 
 
 def revert_rotfloat(document):

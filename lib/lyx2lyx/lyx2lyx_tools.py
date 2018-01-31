@@ -17,8 +17,8 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 '''
-This module offers several free functions to help with lyx2lyx'ing. 
-More documentaton is below, but here is a quick guide to what 
+This module offers several free functions to help with lyx2lyx'ing.
+More documentaton is below, but here is a quick guide to what
 they do. Optional arguments are marked by brackets.
 
 add_to_preamble(document, text):
@@ -37,8 +37,8 @@ insert_to_preamble(document, text[, index]):
   default index is 0, so the material is inserted at the beginning.
   Prepends a comment "% Added by lyx2lyx" to text.
 
-put_cmd_in_ert(arg):
-  Here arg should be a list of strings (lines), which we want to
+put_cmd_in_ert(cmd):
+  Here cmd should be a list of strings (lines), which we want to
   wrap in ERT. Returns a list of strings so wrapped.
   A call to this routine will often go something like this:
     i = find_token('\\begin_inset FunkyInset', ...)
@@ -81,7 +81,6 @@ import string
 from parser_tools import find_token, find_end_of_inset
 from unicode_symbols import unicode_reps
 
-
 # This will accept either a list of lines or a single line.
 # It is bad practice to pass something with embedded newlines,
 # though we will handle that.
@@ -118,34 +117,37 @@ def add_to_preamble(document, text):
 # It should really be a list.
 def insert_to_preamble(document, text, index = 0):
     """ Insert text to the preamble at a given line"""
-    
+
     if not type(text) is list:
       # split on \n just in case
       # it'll give us the one element list we want
       # if there's no \n, too
       text = text.split('\n')
-    
+
     text.insert(0, "% Added by lyx2lyx")
     document.preamble[index:index] = text
 
 
-def put_cmd_in_ert(arg):
-    '''
-    arg should be a list of lines we want to wrap in ERT.
-    Returns a list of strings, with the lines so wrapped.
-    '''
-    
+# A dictionary of Unicode->LICR mappings for use in a Unicode string's translate() method
+# Created from the reversed list to keep the first of alternative definitions.
+licr_table = dict((ord(ch), cmd) for cmd, ch in unicode_reps[::-1])
+
+def put_cmd_in_ert(cmd):
+    """
+    Return ERT inset wrapping `cmd` as a list of strings.
+
+    `cmd` can be a string or list of lines. Non-ASCII characters are converted
+    to the respective LICR macros if defined in unicodesymbols.
+    """
     ret = ["\\begin_inset ERT", "status collapsed", "", "\\begin_layout Plain Layout", ""]
-    # It will be faster for us to work with a single string internally. 
-    # That way, we only go through the unicode_reps loop once.
-    if type(arg) is list:
-      s = "\n".join(arg)
+    # It will be faster to work with a single string internally.
+    if isinstance(cmd, list):
+        cmd = u"\n".join(cmd)
     else:
-      s = arg
-    for rep in unicode_reps:
-      s = s.replace(rep[1], rep[0])
-    s = s.replace('\\', "\\backslash\n")
-    ret += s.splitlines()
+        cmd = u"%s" % cmd # ensure it is an unicode instance
+    cmd = cmd.translate(licr_table)
+    cmd = cmd.replace("\\", "\\backslash\n")
+    ret += cmd.splitlines()
     ret += ["\\end_layout", "", "\\end_inset"]
     return ret
 
@@ -300,7 +302,7 @@ def lyx2verbatim(document, lines):
 
 
 def latex_length(slen):
-    ''' 
+    '''
     Convert lengths to their LaTeX representation. Returns (bool, length),
     where the bool tells us if it was a percentage, and the length is the
     LaTeX representation.
@@ -314,9 +316,14 @@ def latex_length(slen):
     # the + always precedes the -
 
     # Convert relative lengths to LaTeX units
-    units = {"text%":"\\textwidth", "col%":"\\columnwidth",
-             "page%":"\\paperwidth", "line%":"\\linewidth",
-             "theight%":"\\textheight", "pheight%":"\\paperheight"}
+    units = {"col%": "\\columnwidth",
+             "text%": "\\textwidth",
+             "page%": "\\paperwidth", 
+             "line%": "\\linewidth",
+             "theight%": "\\textheight",
+             "pheight%": "\\paperheight",
+             "baselineskip%": "\\baselineskip"
+            }
     for unit in list(units.keys()):
         i = slen.find(unit)
         if i == -1:

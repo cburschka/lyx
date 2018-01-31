@@ -94,7 +94,7 @@ Test reversion/conversion between 2.3 and 2.2 formats with lyx2lyx.
 \end_layout
 
 \begin_layout Description
-Allowbreak: 
+allowbreak: 
 \bar under
 
 \begin_inset Box Boxed
@@ -169,5 +169,69 @@ without spaces.
 
 \end_layout
 
+\begin_layout Description
+baselineskip%: 
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 1
+use_makebox 0
+width "250baselineskip%"
+special "none"
+height "50baselineskip%"
+height_special "none"
+thickness "4baselineskip%"
+separation "9baselineskip%"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+test
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset CommandInset line
+LatexCommand rule
+offset "40baselineskip%"
+width "800baselineskip%"
+height "5.3baselineskip%"
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset VSpace 200baselineskip%
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vertical space above this paragraph is 2·baselineskip.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hspace*{}
+\length 75.2baselineskip%
+\end_inset
+
+Paragraph with
+\begin_inset space \hspace{}
+\length 135baselineskip%
+\end_inset
+
+horizontal space insets using baselineskip.
+\end_layout
+
+\end_deeper
 \end_body
 \end_document

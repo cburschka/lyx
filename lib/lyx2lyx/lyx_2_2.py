@@ -746,10 +746,10 @@ def convert_phrases(document):
             if len(words) > 1 and words[0] == "\\begin_inset" and \
                words[1] in ["CommandInset", "External", "Formula", "Graphics", "listings"]:
                 # must not replace anything in insets that store LaTeX contents in .lyx files
-                # (math and command insets withut overridden read() and write() methods
+                # (math and command insets without overridden read() and write() methods)
                 j = find_end_of_inset(document.body, i)
                 if j == -1:
-                    document.warning("Malformed LyX document: Can't find end of Formula inset at line " + str(i))
+                    document.warning("Malformed LyX document: Can't find end of inset at line " + str(i))
                     i += 1
                 else:
                     i = j

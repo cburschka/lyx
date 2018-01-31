@@ -23,7 +23,7 @@ This module offers several free functions to help parse lines.
 More documentaton is below, but here is a quick guide to what
 they do. Optional arguments are marked by brackets.
 
-find_token(lines, token, start[, end[, ignorews]]):
+find_token(lines, token[, start[, end[, ignorews]]]):
   Returns the first line i, start <= i < end, on which
   token is found at the beginning. Returns -1 if not
   found.
@@ -31,10 +31,10 @@ find_token(lines, token, start[, end[, ignorews]]):
   in whitespace do not count, except that there must be no
   extra whitespace following token itself.
 
-find_token_exact(lines, token, start[, end]):
+find_token_exact(lines, token[, start[, end]]]):
   As find_token, but with ignorews set to True.
 
-find_tokens(lines, tokens, start[, end[, ignorews]]):
+find_tokens(lines, tokens[, start[, end[, ignorews]]]):
   Returns the first line i, start <= i < end, on which
   one of the tokens in tokens is found at the beginning.
   Returns -1 if not found.
@@ -42,7 +42,7 @@ find_tokens(lines, tokens, start[, end[, ignorews]]):
   in whitespace do not count, except that there must be no
   extra whitespace following token itself.
 
-find_tokens_exact(lines, token, start[, end]):
+find_tokens_exact(lines, token[, start[, end]]):
   As find_tokens, but with ignorews True.
 
 find_token_backwards(lines, token, start):
@@ -543,8 +543,9 @@ def is_in_inset(lines, i, inset, default=(-1,-1)):
       is_in_inset(document.body, i, "\\begin_inset Tabular")
     returns (-1,-1) if `i` is not within a "Tabular" inset (i.e. a table).
     If it is, then it returns the line on which the table begins and the one
-    on which it ends. Note that this pair will evaulate to
-    boolean True, so
+    on which it ends.
+    Note that this pair will evaulate to boolean True, so (with the optional
+    default value set to False)
       if is_in_inset(..., default=False):
     will do what you expect.
     """

@@ -23,7 +23,7 @@ import unicodedata
 import sys, os
 
 from parser_tools import find_token, find_end_of, find_tokens, get_value
-from unicode_symbols import read_unicodesymbols
+from unicode_symbols import unicode_reps
 
 ####################################################################
 # Private helper functions
@@ -146,54 +146,6 @@ def set_option(document, m, option, value):
     return l
 
 
-# FIXME: Remove this function if the version imported from unicode_symbols works.
-# This function was the predecessor from that function, that in the meanwhile got
-# new fixes.
-def read_unicodesymbols2():
-    " Read the unicodesymbols list of unicode characters and corresponding commands."
-
-    # Provide support for both python 2 and 3
-    PY2 = sys.version_info[0] == 2
-    if not PY2:
-        unichr = chr
-    # End of code to support for both python 2 and 3
-
-    pathname = os.path.abspath(os.path.dirname(sys.argv[0]))
-    fp = open(os.path.join(pathname.strip('lyx2lyx'), 'unicodesymbols'))
-    spec_chars = []
-    # Two backslashes, followed by some non-word character, and then a character
-    # in brackets. The idea is to check for constructs like: \"{u}, which is how
-    # they are written in the unicodesymbols file; but they can also be written
-    # as: \"u or even \" u.
-    r = re.compile(r'\\\\(\W)\{(\w)\}')
-    for line in fp.readlines():
-        if line[0] != '#' and line.strip() != "":
-            line=line.replace(' "',' ') # remove all quotation marks with spaces before
-            line=line.replace('" ',' ') # remove all quotation marks with spaces after
-            line=line.replace(r'\"','"') # replace \" by " (for characters with diaeresis)
-            try:
-                [ucs4,command,dead] = line.split(None,2)
-                if command[0:1] != "\\":
-                    continue
-                spec_chars.append([command, unichr(eval(ucs4))])
-            except:
-                continue
-            m = r.match(command)
-            if m != None:
-                command = "\\\\"
-                # If the character is a double-quote, then we need to escape it, too,
-                # since it is done that way in the LyX file.
-                if m.group(1) == "\"":
-                    command += "\\"
-                commandbl = command
-                command += m.group(1) + m.group(2)
-                commandbl += m.group(1) + ' ' + m.group(2)
-                spec_chars.append([command, unichr(eval(ucs4))])
-                spec_chars.append([commandbl, unichr(eval(ucs4))])
-    fp.close()
-    return spec_chars
-
-
 def extract_argument(line):
     'Extracts a LaTeX argument from the start of line. Returns (arg, rest).'
 
@@ -279,8 +231,6 @@ def latex2ert(line, isindex):
     retval += line
     return retval
 
-
-unicode_reps = read_unicodesymbols()
 
 #Bug 5022....
 #Might should do latex2ert first, then deal with stuff that DOESN'T
