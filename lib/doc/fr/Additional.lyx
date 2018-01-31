@@ -10560,42 +10560,71 @@ En plus, ces environnements se servent automatiquement des paquetages de
 \end_layout
 
 \begin_layout Section
-
-\lang english
-AGU journals (
-\family sans
-aguplus
-\family default
-)
+AGU journals (aguplus)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-by 
+par 
 \shape smallcaps
 Martin Vermeer
+\shape default
+
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+La classe AGUTeX étant notoirement insuffisante, un chercheur du Max Planck
+ Institut a écrit en 1999 un paquetage non officiel dénommé 
+\family sans
+aguplus.cls
+\family default
+ diffusé sur TeXLive et MiKTeX, dont l'interface LyX est documentée ci-après.
+ Cependant, l'AGU s'est décidée à publier une classe correcte en 2016 (
+\family sans
+agujournal
+\family default
+.
+\family sans
+cls
+\family default
+) qui remplace les anciennes classes et styles, en particulier
+\family sans
+ jgrga.sty
+\family default
+ qui est la seule revue disposant actuellement d'un fichier de format comme
+ indiqué plus bas.
+ Ce fichier est introuvable sur Internet.
+\end_layout
+
+\begin_layout Plain Layout
+Il manque donc pour le moment un fichier de format 
+\family sans
+agujournal.layout
+\family default
+ et le modèle pour les publications AGU.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
 Description
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-These are the layout files for some of the journals of the American Geophysical
- Society.
- It is assumed that you have both the AGU's own class files and AGUplus
- installed (everything to be found at
+Ce sont les fichiers de format pour un certain nombre de revues de la Société
+ Américaine de Géophysique.
+ Ils supposent que vous disposiez à la fois de des classes propres AGU et
+ des classes AGUplus (qui sont distribuées pat TeXLive et MiKTeX et peuvent
+ être trouvées sur CTAN 
 \begin_inset Flex URL
 status collapsed
 
 \begin_layout Plain Layout
 
-http://publications.agu.org/files/2013/08/AGU-LaTeX.zip
+https://www.ctan.org/pkg/aguplus
 \end_layout
 
 \end_inset
@@ -10604,31 +10633,27 @@ http://publications.agu.org/files/2013/08/AGU-LaTeX.zip
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-New styles
+Nouveaux styles
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Redefined are 
+Les styles redéfinis sont 
 \family sans
-Paragraph
+Paragraphe
 \family default
 , 
 \family sans
-Paragraph*
+Paragraphe*
 \family default
 .
- They are still called this in the \SpecialChar LyX
- GUI, though their \SpecialChar LaTeX
- equivalents in the
- AGU classes are 
+ Ils sont toujours appelés ainsi via l'interface \SpecialChar LyX
+, bine que leurs équivalents
+ en \SpecialChar LaTeX
+ dans les classes AGU soient
 \family sans
-Subsubsubsection
+ Subsubsubsection
 \family default
- and 
+ et 
 \family sans
 Subsubsubsection*
 \family default
@@ -10636,27 +10661,25 @@ Subsubsubsection*
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Newly defined styles are 
+Les nouveaux styles sont
 \family sans
-Left_Header
+ En-tête gauche
 \family default
 , 
 \family sans
-Right_Header
+En-tête droit
 \family default
 , 
 \family sans
-Received
+Re
+\family default
+çu, 
+\family sans
+Révisé
 \family default
 , 
 \family sans
-Revised
-\family default
-, 
-\family sans
-Accepted
+Accepté
 \family default
 , 
 \family sans
@@ -10664,61 +10687,62 @@ CCC
 \family default
 , 
 \family sans
-PaperId
+Id papier
 \family default
 , 
 \family sans
-AuthorAddr
+Adresse auteur
 \family default
 , 
 \family sans
-SlugComment
+Étiquette courte
 \family default
 .
- These are mostly manuscript attributes and defined in the AGU class documentati
-on.
+ Ce sont majoritairement des attributs du manuscrit définis dans la documentatio
+n de la 
+\begin_inset CommandInset href
+LatexCommand href
+name "http://mirrors.ctan.org/macros/latex/contrib/aguplus/aguplus.pdf"
+target "classe"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Je crains que ce soit encore très incomplet.
+\end_layout
+
+\begin_layout Subsection
+Nouveaux flottants
 \end_layout
 
 \begin_layout Standard
 
-\lang english
-I suspect this is still badly incomplete.
-\end_layout
-
-\begin_layout Subsection
-
-\lang english
-New floats
-\end_layout
-
-\begin_layout Standard
-
 \family sans
-\lang english
-Planotable
+Planche de tableaux
 \family default
- and 
+ et 
 \family sans
-Plate
+Planche
 \family default
 .
- We also have a new 
+ Nous avons aussi une nouvelle légende de 
 \family sans
-Table_Caption
+Légende de tableau
 \family default
 .
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Supported journals
+Revues reconnues
 \end_layout
 
 \begin_layout Itemize
 
 \emph on
-\lang english
 Journal of Geophysical Research
 \emph default
 : 
@@ -10729,13 +10753,12 @@ jgrga.layout
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Add your own, it isn't so hard! Look at the 
+Ajoutez la vôtre, ce n'est pas si difficile! Voyez les fichiers de format
+ 
 \family typewriter
 jgrga.layout
 \family default
- example and 
+ et 
 \family typewriter
 aguplus.inc
 \family default
@@ -10743,72 +10766,60 @@ aguplus.inc
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Bugs and things to remember
+Bogues et choses à connaître
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In order to use the new layouts, you must remember to do the following for
- a new document:
+Pour pouvoir utiliser les nouveaux styles, vous devez vous penser aux indication
+s suivantes pour un nouveau document:
 \end_layout
 
 \begin_layout Enumerate
 
 \emph on
-\lang english
-Turn off babel
+Désactivez babel
 \emph default
 .
- This can be done in the 
-\family sans
-Layout\SpecialChar menuseparator
-Document
-\family default
- or 
+ Ceci peut être fait dans pour tous les documents via 
 \family sans
 Document\SpecialChar menuseparator
-Settings
+Paramètres\SpecialChar menuseparator
+Langue
 \family default
- menu item.
- (AGU articles are always in English, right? So 
-\emph on
-don't
-\emph default
- choose a language.)
+ (les communications AGU sont toujours en anglais, n'est-ce pas? Ne choisissez
+ donc pas un langage différent).
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Enter 
+Saisir 
 \family typewriter
 jgrga
 \family default
- into the document's 
+ dans le champ 
 \family sans
-Extra Options
+Réglable 
 \family default
- field.
- (Yes, this is a bug.)
+de 
+\family sans
+Document\SpecialChar menuseparator
+Paramètres\SpecialChar menuseparator
+Classe de document
+\family default
+ (oui, ceci est une bogue).
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Make sure you use the 
+Assurez-vous d'utiliser le style bibliographique 
 \family typewriter
 agu.bst
 \family default
- bibliography style, by entering 
+, en saisissant 
 \family sans
 agu
 \family default
- into the second field of the Bib\SpecialChar TeX
- inset.
- None of the standard styles will do.
+ dans le second champ de l'insert Bib\SpecialChar TeX
+.
+ Aucun des styles standard ne conviendra.
 \end_layout
 
 \begin_layout Section
@@ -10903,6 +10914,10 @@ Vous ne devriez pas avoir à l'utiliser, mais il est là pour tout ce qui
 
 \family sans
 Narrative
+\family default
+by
+\family sans
+
 \begin_inset space \hfill{}
 \end_inset
 
@@ -11133,40 +11148,50 @@ dinbrief
 \end_layout
 
 \begin_layout Section
-
-\lang english
-EGS journals (
-\family sans
-egs
-\family default
-)
+Revues EGS (egs)
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-by 
+par 
 \shape smallcaps
 Martin Vermeer
 \end_layout
 
-\begin_layout Subsection
+\begin_layout Standard
+\begin_inset Note Note
+status open
 
-\lang english
+\begin_layout Plain Layout
+La Société Européenne de Géophysique a été remplacée en 2002 par l'Union
+ Européenne des Géosciences: de ce fait la documentation de la classe egs.cls
+ est obsolète d'autant plus que le fichier de classe est introuvable.
+\end_layout
+
+\begin_layout Plain Layout
+L'EGU (European Geophysical Union) diffuse un paquetage pour LaTeX sur le
+ site copernicus.org, il manque un fichier de format copernicus.layout et
+ le modèle pour les publications EGU.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
 Description
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This is the layout file for the European Geophysical Society journals.
- The needed 
+Il s'agit du fichier de format pour la revue de la Société Européenne de
+ Géophysique.
+ La classe
 \family typewriter
-egs.cls
+ egs.cls
 \family default
- can be downloaded from the web site of the EGS under 
+ ne peut plus être téléchargée depuis le site 
 \begin_inset Flex URL
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -11179,29 +11204,26 @@ www.copernicus.org
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-New styles
+Nouveaux styles
 \end_layout
 
 \begin_layout Standard
 
 \family sans
-\lang english
-Right_address, Latex_Title, Affil, Journal, msnumber, FirstAuthor, Received,
- Accepted
+Adresse_à_droite, Titre_Latex, Affil, Journal, Numéro ms, PremierAuteur,
+ Reçu, Accepté
 \family default
 , 
 \family sans
 Offsets
 \family default
 .
- The current layout file is unfortunately very unmodular and would benefit
- from using the various 
+ Le ficher de format actuel est malheureusement peu modulaire et bénéficierait
+ d'inclusions de fichiers 
 \family typewriter
 std*.inc
 \family default
- file inclusions.
+.
 \end_layout
 
 \begin_layout Section
