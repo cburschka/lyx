@@ -12,16 +12,16 @@ msgstr ""
 "Project-Id-Version: pt_BR 2.3.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-01-28 21:42-0500\n"
-"PO-Revision-Date: 2018-01-21 12:30-0300\n"
-"Last-Translator: Georger Araujo <georger underscore br at yahoo dot com dot "
-"br>\n"
+"PO-Revision-Date: 2018-01-31 21:04-0300\n"
+"Last-Translator: Georger Araujo <georger underline br pound yahoo dot com "
+"dot br>\n"
 "Language-Team: Brazilian Portuguese <georger underscore br at yahoo dot com "
 "dot br>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 2.0.6\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-Bookmarks: -1,-1,-1,-1,-1,-1,-1,417,-1,-1\n"
 
@@ -641,7 +641,7 @@ msgstr "Invertido"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25
 msgid "&New:[[branch]]"
-msgstr "&Novo:[[branch]]"
+msgstr "&Novo:"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:35
 msgid ""
@@ -3106,7 +3106,7 @@ msgstr "Referências com Listas de Páginas:"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:281
 msgid "&Bookmarks"
-msgstr "&Marcadores"
+msgstr "&Indicadores"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:293
 msgid "G&enerate bookmarks (toc)"
@@ -3114,11 +3114,11 @@ msgstr "G&erar indicadores (sumário)"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:314
 msgid "&Numbered bookmarks"
-msgstr "Marcadores &numerados"
+msgstr "Indicadores &numerados"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:321
 msgid "&Open bookmark tree"
-msgstr "Ár&vore de marcadores aberta"
+msgstr "Ár&vore de indicadores aberta"
 
 #: src/frontends/qt4/ui/PDFSupportUi.ui:346
 msgid "Number of levels"
@@ -4556,7 +4556,7 @@ msgstr "&Mensagens da barra de status"
 
 #: src/frontends/qt4/ui/RefUi.ui:73
 msgid "&In[[buffer]]:"
-msgstr "&Em[[buffer]]:"
+msgstr "&Em:"
 
 #: src/frontends/qt4/ui/RefUi.ui:92
 msgid "Filter case-sensitively"
@@ -5564,7 +5564,7 @@ msgstr "Auto"
 #: lib/citeengines/biblatex-natbib.citeengine:149
 #: lib/citeengines/biblatex.citeengine:141
 msgid "F&orce full title[[Possible substitute to All aut&hors]]"
-msgstr "F&orçar título completo[[Possible substitute to All aut&hors]]"
+msgstr "F&orçar título completo"
 
 #: lib/citeengines/biblatex-natbib.citeengine:150
 #: lib/citeengines/biblatex.citeengine:142
@@ -5581,19 +5581,19 @@ msgstr " et al."
 #: lib/citeengines/biblatex.citeengine:145
 #: lib/citeengines/natbib.citeengine:124 lib/layouts/stdciteformats.inc:27
 msgid ", [[separate author names in citation, except for last name]]"
-msgstr ", [[separate author names in citation, except for last name]]"
+msgstr ", "
 
 #: lib/citeengines/biblatex-natbib.citeengine:154
 #: lib/citeengines/biblatex.citeengine:146
 #: lib/citeengines/natbib.citeengine:125 lib/layouts/stdciteformats.inc:28
 msgid ", and [[separate name of last author in citation]]"
-msgstr ", e [[separate name of last author in citation]]"
+msgstr ", e "
 
 #: lib/citeengines/biblatex-natbib.citeengine:155
 #: lib/citeengines/biblatex.citeengine:147
 #: lib/citeengines/natbib.citeengine:126 lib/layouts/stdciteformats.inc:29
 msgid " and [[separate two authors in citation]]"
-msgstr " e [[separate two authors in citation]]"
+msgstr " e "
 
 #: lib/citeengines/biblatex-natbib.citeengine:299
 #: lib/citeengines/biblatex.citeengine:283
@@ -5624,7 +5624,7 @@ msgstr ""
 
 #: lib/citeengines/biblatex.citeengine:139
 msgid "S&horten author list[[Possible substitute to All aut&hors]]"
-msgstr "Encurtar lista de autores[[Possible substitute to All aut&hors]]"
+msgstr "Encurtar lista de autores"
 
 #: lib/citeengines/biblatex.citeengine:140
 msgid "Force a short author list (using et al.)"
@@ -7573,7 +7573,7 @@ msgstr "Lista de Gráficos"
 
 #: lib/layouts/achemso.layout:210
 msgid "Graphs[[mathematical]]"
-msgstr "Gráficos[[mathematical]]"
+msgstr "Grafos"
 
 #: lib/layouts/achemso.layout:216 lib/layouts/achemso.layout:228
 msgid "Graph[[mathematical]]"
@@ -18225,7 +18225,7 @@ msgstr "Colar Recente|e"
 
 #: lib/ui/stdcontext.inc:340
 msgid "Jump Back to Saved Bookmark|B"
-msgstr "Voltar para Marcador Salvo|V"
+msgstr "Voltar para Indicador Salvo|V"
 
 #: lib/ui/stdcontext.inc:341 lib/ui/stdmenus.inc:572
 msgid "Forward Search|F"
@@ -19186,7 +19186,7 @@ msgstr "Arquivo|A"
 
 #: lib/ui/stdmenus.inc:379
 msgid "Box[[Menu]]|x"
-msgstr "Caixa[[Menu]]|x"
+msgstr "Caixa|x"
 
 #: lib/ui/stdmenus.inc:382
 msgid "Citation...|C"
@@ -19230,7 +19230,7 @@ msgstr "Nota Marginal|M"
 
 #: lib/ui/stdmenus.inc:395
 msgid "Program Listing[[Menu]]"
-msgstr "Listagem de Programa[[Menu]]"
+msgstr "Listagem de Programa"
 
 #: lib/ui/stdmenus.inc:402 src/insets/Inset.cpp:92
 msgid "TeX Code"
@@ -19238,7 +19238,7 @@ msgstr "Código TeX"
 
 #: lib/ui/stdmenus.inc:403
 msgid "Preview|w"
-msgstr "Previsualização|V"
+msgstr "Previsualização|v"
 
 #: lib/ui/stdmenus.inc:407
 msgid "Symbols...|b"
@@ -19458,7 +19458,7 @@ msgstr "Mostrar Alterações no Resultado|R"
 
 #: lib/ui/stdmenus.inc:567
 msgid "Bookmarks|B"
-msgstr "Marcadores|M"
+msgstr "Indicadores|I"
 
 #: lib/ui/stdmenus.inc:568
 msgid "Next Note|N"
@@ -19478,27 +19478,27 @@ msgstr "Ir para Etiqueta|q"
 
 #: lib/ui/stdmenus.inc:578
 msgid "Save Bookmark 1|S"
-msgstr "Salvar Marcador 1|S"
+msgstr "Salvar Indicador 1|1"
 
 #: lib/ui/stdmenus.inc:579
 msgid "Save Bookmark 2"
-msgstr "Salvar Marcador 2"
+msgstr "Salvar Indicador 2|2"
 
 #: lib/ui/stdmenus.inc:580
 msgid "Save Bookmark 3"
-msgstr "Salvar Marcador 3"
+msgstr "Salvar Indicador 3|3"
 
 #: lib/ui/stdmenus.inc:581
 msgid "Save Bookmark 4"
-msgstr "Salvar Marcador 4"
+msgstr "Salvar Indicador 4|4"
 
 #: lib/ui/stdmenus.inc:582
 msgid "Save Bookmark 5"
-msgstr "Salvar Marcador 5"
+msgstr "Salvar Indicador 5|5"
 
 #: lib/ui/stdmenus.inc:583
 msgid "Clear Bookmarks|C"
-msgstr "Limpar Marcadores|L"
+msgstr "Limpar Indicadores|L"
 
 #: lib/ui/stdmenus.inc:585
 msgid "Navigate Back|B"
@@ -20082,7 +20082,7 @@ msgstr "Buffer de Comandos"
 
 #: lib/ui/stdtoolbars.inc:232
 msgid "Review[[Toolbar]]"
-msgstr "Revisão[[Toolbar]]"
+msgstr "Revisão"
 
 #: lib/ui/stdtoolbars.inc:233
 msgid "Track changes"
@@ -21176,7 +21176,7 @@ msgstr "neq"
 
 #: lib/ui/stdtoolbars.inc:584
 msgid "in[[math relation]]"
-msgstr "in[[math relation]]"
+msgstr "in"
 
 #: lib/ui/stdtoolbars.inc:585
 msgid "ni"
@@ -24979,7 +24979,7 @@ msgstr "Formato de Arquivamento LyX (tar.gz)"
 #: src/Author.cpp:57
 #, c-format
 msgid "%1$s[[name]] (%2$s[[email]])"
-msgstr "%1$s[[name]] (%2$s[[email]])"
+msgstr "%1$s (%2$s)"
 
 #: src/BiblioInfo.cpp:797 src/BiblioInfo.cpp:840 src/BiblioInfo.cpp:851
 #: src/BiblioInfo.cpp:906 src/BiblioInfo.cpp:910
@@ -25818,7 +25818,7 @@ msgstr "Não há mais insets"
 
 #: src/BufferView.cpp:769
 msgid "Save bookmark"
-msgstr "Salvar marcador"
+msgstr "Salvar indicador"
 
 #: src/BufferView.cpp:994
 msgid "Converting document to new document class..."
@@ -27950,7 +27950,7 @@ msgstr "[Controle de Alterações] "
 #: src/Text.cpp:1912
 #, c-format
 msgid "Changed by %1$s[[author]] on %2$s[[date]]. "
-msgstr "Alterado por %1$s[[author]] em %2$s[[date]]. "
+msgstr "Alterado por %1$s em %2$s. "
 
 #: src/Text.cpp:1922 src/mathed/InsetMathFont.cpp:237
 #: src/mathed/InsetMathFontOld.cpp:111
@@ -28525,7 +28525,7 @@ msgstr "Não foi possível ler modelo"
 
 #: src/frontends/qt4/BulletsModule.cpp:41
 msgid "Standard[[Bullets]]"
-msgstr "Padrão[[Bullets]]"
+msgstr "Padrão"
 
 #: src/frontends/qt4/BulletsModule.cpp:42
 msgid "Maths"
@@ -29220,11 +29220,9 @@ msgid "Text that follows the reference (e.g., pages)"
 msgstr "Texto que vai depois da referência (p. ex., páginas)"
 
 #: src/frontends/qt4/GuiCitation.cpp:314
-#, fuzzy
 msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")."
 msgstr ""
-"Forçar maiúsculas em nomes próprios (\"Del Piero\", não \"del Piero\"), se o "
-"estilo de citação atual permitir."
+"Forçar maiúsculas em nomes próprios (\"Del Piero\", não \"del Piero\")."
 
 #: src/frontends/qt4/GuiCitation.cpp:349
 msgid "Always list all authors (rather than using \"et al.\")"
@@ -29354,19 +29352,19 @@ msgstr "Compare revisões diferentes"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:61
 msgid "big[[delimiter size]]"
-msgstr "big[[delimiter size]]"
+msgstr "big"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:62
 msgid "Big[[delimiter size]]"
-msgstr "Big[[delimiter size]]"
+msgstr "Big"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:63
 msgid "bigg[[delimiter size]]"
-msgstr "bigg[[delimiter size]]"
+msgstr "bigg"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:64
 msgid "Bigg[[delimiter size]]"
-msgstr "Bigg[[delimiter size]]"
+msgstr "Bigg"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:184
 msgid "Math Delimiter"
@@ -29706,7 +29704,7 @@ msgstr "Marcadores"
 
 #: src/frontends/qt4/GuiDocument.cpp:1508
 msgid "Formats[[output]]"
-msgstr "Formatos[[output]]"
+msgstr "Formatos"
 
 #: src/frontends/qt4/GuiDocument.cpp:1509
 msgid "LaTeX Preamble"
@@ -30108,7 +30106,7 @@ msgstr "mm"
 
 #: src/frontends/qt4/GuiGraphics.cpp:500 src/lengthcommon.cpp:42
 msgid "in[[unit of measure]]"
-msgstr "in[[unit of measure]]"
+msgstr "in"
 
 #: src/frontends/qt4/GuiGraphics.cpp:780
 msgid "Select graphics file"
@@ -31705,7 +31703,7 @@ msgstr "Previsualização de Código"
 
 #: src/frontends/qt4/GuiViewSource.cpp:457
 msgid "%1[[preview format name]] Preview"
-msgstr "%1[[preview format name]] Previsualização"
+msgstr "Previsualização %1"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1599
 msgid "Close File"
@@ -31795,7 +31793,7 @@ msgstr "<Nenhum Documento Aberto>"
 
 #: src/frontends/qt4/Menus.cpp:1052
 msgid "<No Bookmarks Saved Yet>"
-msgstr "<Nenhum Marcador Salvo Ainda>"
+msgstr "<Nenhum Indicador Salvo Ainda>"
 
 #: src/frontends/qt4/Menus.cpp:1092
 msgid "View (Other Formats)|F"
@@ -31904,11 +31902,11 @@ msgstr "Usar aspas dinâmicas (%1$s)|d"
 
 #: src/frontends/qt4/Menus.cpp:1832
 msgid "dynamic[[Quotes]]"
-msgstr "dinâmicas[[Quotes]]"
+msgstr "dinâmicas"
 
 #: src/frontends/qt4/Menus.cpp:1832 src/frontends/qt4/Menus.cpp:1842
 msgid "static[[Quotes]]"
-msgstr "estáticas[[Quotes]]"
+msgstr "estáticas"
 
 #: src/frontends/qt4/Menus.cpp:1834
 #, c-format
@@ -32066,7 +32064,7 @@ msgid ""
 "The %1$s[[BibTeX/Biblatex]] inset includes %2$s databases.\n"
 "If you proceed, all of them will be opened."
 msgstr ""
-"O inset %1$s[[BibTeX/Biblatex]] inclui %2$s bases de dados.\n"
+"O inset %1$s inclui %2$s bases de dados.\n"
 "Se continuar, todas serão abertas."
 
 #: src/insets/InsetBibtex.cpp:159
@@ -32906,12 +32904,12 @@ msgstr "vphantom"
 #: src/insets/InsetQuotes.cpp:567
 #, c-format
 msgid "%1$souter%2$s and %3$sinner%4$s[[quotation marks]]"
-msgstr "%1$sexterna%2$s e %3$sinterna%4$s[[quotation marks]]"
+msgstr "%1$sexterna%2$s e %3$sinterna%4$s"
 
 #: src/insets/InsetQuotes.cpp:577
 #, c-format
 msgid "%1$s[[quot. mark description]] (language default)"
-msgstr "%1$s[[quot. mark description]] (padrão do idioma)"
+msgstr "%1$s (padrão do idioma)"
 
 #: src/insets/InsetQuotes.cpp:590
 #, c-format
@@ -33140,7 +33138,7 @@ msgstr "Previsualização falhou"
 
 #: src/lengthcommon.cpp:41
 msgid "cc[[unit of measure]]"
-msgstr "cc[[unit of measure]]"
+msgstr "cc"
 
 #: src/lengthcommon.cpp:41
 msgid "dd"
@@ -33156,7 +33154,7 @@ msgstr "ex"
 
 #: src/lengthcommon.cpp:42
 msgid "mu[[unit of measure]]"
-msgstr "mu[[unit of measure]]"
+msgstr "mu"
 
 #: src/lengthcommon.cpp:42
 msgid "pc"
@@ -33389,7 +33387,7 @@ msgstr "Autocorreção Ligada (<espaço> para sair)"
 
 #: src/mathed/InsetMathRef.cpp:240
 msgid "Standard[[mathref]]"
-msgstr "Padrão[[mathref]]"
+msgstr "Padrão"
 
 #: src/mathed/InsetMathRef.cpp:245
 msgid "PrettyRef"
