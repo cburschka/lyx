@@ -259,6 +259,7 @@ GuiWorkArea::Private::Private(GuiWorkArea * parent)
 GuiWorkArea::GuiWorkArea(QWidget * /* w */)
 : d(new Private(this))
 {
+	new CompressorProxy(this); // not a leak
 }
 
 
