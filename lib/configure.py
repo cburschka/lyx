@@ -1289,8 +1289,8 @@ def processLayoutFile(file, bool_docbook):
             return x.strip()
     classname = file.split(os.sep)[-1].split('.')[0]
     # return ('LaTeX', '[a,b]', 'a', ',b,c', 'article') for \DeclareLaTeXClass[a,b,c]{article}
-    p = re.compile(b'^\s*#\s*\\Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}\s*$')
-    q = re.compile(b'^\s*#\s*\\DeclareCategory{(.*)}\s*$')
+    p = re.compile(b'^\s*#\s*\\\\Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}\s*$')
+    q = re.compile(b'^\s*#\s*\\\\DeclareCategory{(.*)}\s*$')
     classdeclaration = b""
     categorydeclaration = b'""'
     for line in open(file, 'rb').readlines():
@@ -1363,7 +1363,7 @@ def checkLatexConfig(check_config, bool_docbook):
                 foundClasses.append(cleanclass)
                 retval = processLayoutFile(file, bool_docbook)
                 if retval != b"":
-                    tx.write(retval)
+                    tx.write(retval + os.linesep)
         tx.close()
         logger.info('\tdone')
     if not os.path.isfile('packages.lst') or not check_config:
