@@ -476,6 +476,7 @@ enum FuncCode
 	LFUN_DEVEL_MODE_TOGGLE,         // lasgouttes 20170723
 	//370
 	LFUN_EXPORT_CANCEL,             // rgh, 20171227
+	LFUN_DOC_ANONYMIZE,             // sanda, 20180201
 	LFUN_LASTACTION                 // end of the table
 };
 
