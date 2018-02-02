@@ -1515,7 +1515,7 @@ def processModuleFile(file, filename, bool_docbook):
         We expect output:
           "ModuleName" "filename" "Description" "Packages" "Requires" "Excludes" "Category"
     '''
-    remods = re.compile(b'\\\\DeclareLyXModule\s*(?:\[([^]]*?)\])?{(.*)}')
+    remods = re.compile(b'^#\s*\\\\DeclareLyXModule\s*(?:\[([^]]*?)\])?{(.*)}')
     rereqs = re.compile(b'#+\s*Requires: (.*)')
     reexcs = re.compile(b'#+\s*Excludes: (.*)')
     recaty = re.compile(b'#+\s*Category: (.*)')
@@ -1639,7 +1639,7 @@ def processCiteEngineFile(file, filename, bool_docbook):
         We expect output:
           "CiteEngineName" "filename" "CiteEngineType" "CiteFramework" "DefaultBiblio" "Description" "Packages"
     '''
-    remods = re.compile(b'\\\\DeclareLyXCiteEngine\s*(?:\[([^]]*?)\])?{(.*)}')
+    remods = re.compile(b'^#\s*\\\\DeclareLyXCiteEngine\s*(?:\[([^]]*?)\])?{(.*)}')
     redbeg = re.compile(b'#+\s*DescriptionBegin\s*$')
     redend = re.compile(b'#+\s*DescriptionEnd\s*$')
     recet = re.compile(b'\s*CiteEngineType\s*(.*)')
