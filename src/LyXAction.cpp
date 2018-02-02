@@ -4211,8 +4211,8 @@ void LyXAction::init()
  * \li Action: Replace a string in the document.
  * \li Syntax: word-replace [<DATA>]
  * \li Params: <DATA>: data is of the form
-                       "<replace> \n
-                        <search> \n
+                       "<replacestring> \n
+                        <searchstring> \n
                         <casesensitive> <matchword> <all> <forward> <findnext>"
  * \li Origin: Andre, Jan 7 2004
  * \endvar
