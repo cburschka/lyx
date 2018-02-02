@@ -1,14 +1,14 @@
 # Swedish translation of LyX / Svensk lokalisering för LyX
-# Copyright (C) 1997, 1998, 2010-2017 LyX Team
+# Copyright (C) 1997, 1998, 2010-2018 LyX Team
 #
 # Joacim Persson <sp2joap@ida.his.se> 1997, 1998.
-# Jim Rotmalm <jim.rotmalm@gmail.com>, 2010-2017.
+# Jim Rotmalm <jim.rotmalm@gmail.com>, 2010-2018.
 #
-# Information 2017-11-12:
-#   Bad menu shortcuts: 169
-#   Bad Qt shortcuts: 143
+# Information 2018-02-01:
+#   Bad menu shortcuts: 170
+#   Bad Qt shortcuts: 144
 #   Inconsistent translations: 21
-#   Total warnings: 333
+#   Total warnings: 335
 #
 # Behöver förbättras:
 #   Alla genvägar (snabbkommandon, kortkommandon)
@@ -209,13 +209,13 @@
 #   view(er)             -> visa(re)
 #   wrap               ? -> svep, varva? bryt? (automatisk) radbrytning? linda in? att svepa runt
 #
-# Jim Rotmalm <jim.rotmalm@gmail.com>, 2010-2017.
+# Jim Rotmalm <jim.rotmalm@gmail.com>, 2010-2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-01-28 21:42-0500\n"
-"PO-Revision-Date: 2017-11-12 21:12+0100\n"
+"POT-Creation-Date: 2018-02-01 12:21-0500\n"
+"PO-Revision-Date: 2018-02-01 21:12+0100\n"
 "Last-Translator: Jim Rotmalm <jim.rotmalm@gmail.com>\n"
 "Language-Team: Swedish <lyx-docs@lists.lyx.org>\n"
 "Language: sv\n"
@@ -2025,10 +2025,12 @@ msgid ""
 "By default, a line break can occur after en- and em-dashes. Checking this "
 "box prevents that."
 msgstr ""
+"Som standard kan en radbrytning inträffa efter en- och em-streck. Markera "
+"denna box för att förhindra det."
 
 #: src/frontends/qt4/ui/FontUi.ui:303
 msgid "Disallow l&ine breaks after dashes"
-msgstr ""
+msgstr "Tillåt inte radbrytningar efter streck"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
@@ -2342,7 +2344,7 @@ msgstr "Inmatning"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:303 lib/layouts/stdlayouts.inc:76
 msgid "Verbatim"
-msgstr "Verbatim"
+msgstr "Ordagrann"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1305
 #: src/insets/InsetInclude.cpp:1311
@@ -14741,9 +14743,8 @@ msgid "List of Videos"
 msgstr "Lista över videor"
 
 #: lib/layouts/revtex4-1.layout:292
-#, fuzzy
 msgid "Videos"
-msgstr "Video"
+msgstr "Videor"
 
 #: lib/layouts/revtex4-1.layout:295
 msgid "Float Link"
@@ -15623,11 +15624,11 @@ msgstr "Förhandsgranskning"
 
 #: lib/layouts/stdinsets.inc:703 lib/layouts/stdinsets.inc:711
 msgid "see equation[[nomencl]]"
-msgstr ""
+msgstr "se ekvation"
 
 #: lib/layouts/stdinsets.inc:704 lib/layouts/stdinsets.inc:712
 msgid "page[[nomencl]]"
-msgstr ""
+msgstr "sida"
 
 #: lib/layouts/stdinsets.inc:705 lib/layouts/stdinsets.inc:713
 msgid "Nomenclature[[output]]"
@@ -15635,7 +15636,7 @@ msgstr "Nomenklatur"
 
 #: lib/layouts/stdlayouts.inc:99
 msgid "Verbatim*"
-msgstr "Verbatim*"
+msgstr "Ordagrann*"
 
 #: lib/layouts/stdsections.inc:15 lib/layouts/svcommon.inc:119
 msgid "Part \\thepart"
@@ -18290,11 +18291,11 @@ msgstr "Inmatning"
 
 #: lib/ui/stdcontext.inc:294 lib/ui/stdcontext.inc:579
 msgid "Verbatim|V"
-msgstr "Verbatim|V"
+msgstr "Ordagrann"
 
 #: lib/ui/stdcontext.inc:295 lib/ui/stdcontext.inc:580
 msgid "Verbatim (marked blanks)|b"
-msgstr "Verbatim (märkta blanksteg)|b"
+msgstr "Ordagrann (märkta blanksteg)|b"
 
 #: lib/ui/stdcontext.inc:296 lib/ui/stdcontext.inc:581
 msgid "Listing|L"
@@ -26759,6 +26760,8 @@ msgid ""
 "The character \"%1$s\" is uncodable in this verbatim context and thus has "
 "not been pasted."
 msgstr ""
+"Tecknet \"%1$s\" är okodbart i detta ordagranna sammanhang och har således "
+"inte klistrats."
 
 #: src/CutAndPaste.cpp:188
 #, c-format
@@ -26766,11 +26769,12 @@ msgid ""
 "The characters \"%1$s\" are uncodable in this verbatim context and thus have "
 "not been pasted."
 msgstr ""
+"Tecknen \"%1$s\" är okodbara i detta ordagranna sammanhang och har således "
+"inte klistrats."
 
 #: src/CutAndPaste.cpp:231
-#, fuzzy
 msgid "Uncodable content"
-msgstr "Innehållsförteckning"
+msgstr "Okodbart innehåll"
 
 #: src/CutAndPaste.cpp:405
 #, c-format
@@ -28040,9 +28044,8 @@ msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Du kan inte skriva två mellanslag i rad. Vänligen läs Nybörjarkursen."
 
 #: src/Text.cpp:941
-#, fuzzy
 msgid "Character is uncodable in this verbatim context."
-msgstr "Tecken är okodbart i ordagranna stycken."
+msgstr "Tecken är okodbart i detta ordagranna sammanhang."
 
 #: src/Text.cpp:1904
 msgid "[Change Tracking] "
@@ -29313,11 +29316,8 @@ msgid "Text that follows the reference (e.g., pages)"
 msgstr "Text som följer referensen (t.ex., sidor)"
 
 #: src/frontends/qt4/GuiCitation.cpp:314
-#, fuzzy
 msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")."
-msgstr ""
-"Tvinga versaler i namn (\"Del Piero\", inte \"del Piero\"), om den aktuella "
-"citatstilen stöder detta."
+msgstr "Tvinga versaler i namn (\"Del Piero\", inte \"del Piero\")."
 
 #: src/frontends/qt4/GuiCitation.cpp:349
 msgid "Always list all authors (rather than using \"et al.\")"
@@ -30790,9 +30790,8 @@ msgid "Longest label width"
 msgstr "Längsta etikettbredd"
 
 #: src/frontends/qt4/GuiPrintNomencl.h:40
-#, fuzzy
 msgid "Nomenclature List Settings"
-msgstr "Nomenklaturinställningar"
+msgstr "Nomenklaturlistinställningar"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:37
 msgid "Index Settings"
@@ -32008,34 +32007,34 @@ msgstr "Ändra stil"
 #: src/frontends/qt4/Menus.cpp:1893
 #, c-format
 msgid "Insert Separated %1$s Above"
-msgstr ""
+msgstr "Infoga skild %1$s ovan"
 
 #: src/frontends/qt4/Menus.cpp:1895
-#, fuzzy, c-format
+#, c-format
 msgid "Separated %1$s Above"
-msgstr "Parameter %1$s: "
+msgstr "Skild %1$s ovan"
 
 #: src/frontends/qt4/Menus.cpp:1901 src/frontends/qt4/Menus.cpp:1914
 #: src/frontends/qt4/Menus.cpp:1930
 #, c-format
 msgid "Insert Separated %1$s Below"
-msgstr ""
+msgstr "Infoga skild %1$s nedan"
 
 #: src/frontends/qt4/Menus.cpp:1903 src/frontends/qt4/Menus.cpp:1916
 #: src/frontends/qt4/Menus.cpp:1936
-#, fuzzy, c-format
+#, c-format
 msgid "Separated %1$s Below"
-msgstr "Parameter %1$s: "
+msgstr "Skild %1$s nedan"
 
 #: src/frontends/qt4/Menus.cpp:1928
 #, c-format
 msgid "Insert Separated Outer %1$s Below"
-msgstr ""
+msgstr "Infoga skild yttre %1$s nedan"
 
 #: src/frontends/qt4/Menus.cpp:1934
-#, fuzzy, c-format
+#, c-format
 msgid "Separated Outer %1$s Below"
-msgstr "Parameter %1$s: "
+msgstr "Skild yttre %1$s nedan"
 
 #: src/frontends/qt4/Menus.cpp:2249
 #, c-format
@@ -32436,11 +32435,11 @@ msgstr "Hyperlänk (%1$s) till %2$s"
 
 #: src/insets/InsetInclude.cpp:383
 msgid "Verbatim Input"
-msgstr "Verbatim inmatning"
+msgstr "Ordagrann inmatning"
 
 #: src/insets/InsetInclude.cpp:386
 msgid "Verbatim Input*"
-msgstr "Verbatim inmatning*"
+msgstr "Ordagrann inmatning*"
 
 #: src/insets/InsetInclude.cpp:392
 msgid "Include (excluded)"
