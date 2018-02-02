@@ -1515,12 +1515,12 @@ def processModuleFile(file, filename, bool_docbook):
         We expect output:
           "ModuleName" "filename" "Description" "Packages" "Requires" "Excludes" "Category"
     '''
-    remods = re.compile(b'^#\s*\\\\DeclareLyXModule\s*(?:\[([^]]*?)\])?{(.*)}')
-    rereqs = re.compile(b'#+\s*Requires: (.*)')
-    reexcs = re.compile(b'#+\s*Excludes: (.*)')
-    recaty = re.compile(b'#+\s*Category: (.*)')
-    redbeg = re.compile(b'#+\s*DescriptionBegin\s*$')
-    redend = re.compile(b'#+\s*DescriptionEnd\s*$')
+    remods = re.compile(b'^\s*#\s*\\\\DeclareLyXModule\s*(?:\[([^]]*?)\])?{(.*)}')
+    rereqs = re.compile(b'^\s*#+\s*Requires: (.*)')
+    reexcs = re.compile(b'^\s*#+\s*Excludes: (.*)')
+    recaty = re.compile(b'^\s*#+\s*Category: (.*)')
+    redbeg = re.compile(b'^\s*#+\s*DescriptionBegin\s*$')
+    redend = re.compile(b'^\s*#+\s*DescriptionEnd\s*$')
 
     modname = desc = pkgs = req = excl = catgy = b""
     readingDescription = False
@@ -1639,9 +1639,9 @@ def processCiteEngineFile(file, filename, bool_docbook):
         We expect output:
           "CiteEngineName" "filename" "CiteEngineType" "CiteFramework" "DefaultBiblio" "Description" "Packages"
     '''
-    remods = re.compile(b'^#\s*\\\\DeclareLyXCiteEngine\s*(?:\[([^]]*?)\])?{(.*)}')
-    redbeg = re.compile(b'#+\s*DescriptionBegin\s*$')
-    redend = re.compile(b'#+\s*DescriptionEnd\s*$')
+    remods = re.compile(b'^\s*#\s*\\\\DeclareLyXCiteEngine\s*(?:\[([^]]*?)\])?{(.*)}')
+    redbeg = re.compile(b'^\s*#+\s*DescriptionBegin\s*$')
+    redend = re.compile(b'^\s*#+\s*DescriptionEnd\s*$')
     recet = re.compile(b'\s*CiteEngineType\s*(.*)')
     redb = re.compile(b'\s*DefaultBiblio\s*(.*)')
     resfm = re.compile(b'\s*CiteFramework\s*(.*)')
