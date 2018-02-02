@@ -4210,6 +4210,16 @@ void LyXAction::init()
 		{ LFUN_WORD_REPLACE, "word-replace", Noop, Edit },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_DOC_ANONYMIZE
+ * \li Action: For debug purposes only. Convert all [a-zA-Z0-1] characters to
+               single character. Useful when submitting docs to list or bugzilla.
+ * \li Syntax: doc-anonymize
+ * \li Origin: sanda, Feb 1 2018
+ * \endvar
+ */
+		{ LFUN_DOC_ANONYMIZE, "doc-anonymize", Noop, Edit },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_WORD_RIGHT
  * \li Action: Moves the cursor to the next beginning of a word "on the right".
  * \li Notion: This is the action which should be taken when the (e.g., ctrl-)

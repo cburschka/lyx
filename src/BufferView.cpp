@@ -1112,6 +1112,7 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_WORD_FIND_FORWARD:
 	case LFUN_WORD_FIND_BACKWARD:
 	case LFUN_WORD_REPLACE:
+	case LFUN_DOC_ANONYMIZE:
 	case LFUN_MARK_OFF:
 	case LFUN_MARK_ON:
 	case LFUN_MARK_TOGGLE:
@@ -1573,6 +1574,14 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			dr.screenUpdate(Update::Force | Update::FitCursor);
 		}
 		break;
+	}
+
+	case LFUN_DOC_ANONYMIZE: {
+		for(char c = '0'; c <='Z'; c++) {
+		  odocstringstream ss;
+		  ss << "a\n" << c << "\n0 0 1 1 0"; 
+		  lyx::dispatch(FuncRequest(LFUN_WORD_REPLACE, ss.str()));
+		}
 	}
 
 	case LFUN_WORD_FINDADV: {
