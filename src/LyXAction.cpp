@@ -4220,14 +4220,14 @@ void LyXAction::init()
 		{ LFUN_WORD_REPLACE, "word-replace", Noop, Edit },
 
 /*!
- * \var lyx::FuncCode lyx::LFUN_DOC_ANONYMIZE
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_ANONYMIZE
  * \li Action: For debug purposes only. Convert all [a-zA-Z0-1] characters to
                single character. Useful when submitting docs to list or bugzilla.
  * \li Syntax: doc-anonymize
  * \li Origin: sanda, Feb 1 2018
  * \endvar
  */
-		{ LFUN_DOC_ANONYMIZE, "doc-anonymize", Noop, Edit },
+		{ LFUN_BUFFER_ANONYMIZE, "buffer-anonymize", Noop, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_RIGHT
