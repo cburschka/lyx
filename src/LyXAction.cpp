@@ -4213,7 +4213,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_BUFFER_ANONYMIZE
  * \li Action: For debug purposes only. Convert all [a-zA-Z0-1] characters to
                single character. Useful when submitting docs to list or bugzilla.
- * \li Syntax: doc-anonymize
+ * \li Syntax: buffer-anonymize
  * \li Origin: sanda, Feb 1 2018
  * \endvar
  */
