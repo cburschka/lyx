@@ -503,8 +503,7 @@ def checkInkscape():
     ''' The answer of the real inkscape is validated and a fake binary used if this fails '''
     if sys.platform == 'darwin':
         version_string = cmdOutput("inkscape --version")
-        match = re.match('^Inkscape', version_string)
-        if match:
+        if version_string.startswith('Inkscape'):
             return 'inkscape'
         else:
             return 'inkscape-binary'
@@ -1131,7 +1130,7 @@ def checkConverterEntries():
     path, lilypond_book = checkProg('a LilyPond book (LaTeX) -> LaTeX converter', ['lilypond-book'])
     if (lilypond_book != ''):
         version_string = cmdOutput("lilypond-book --version")
-        match = re.match('^(\S+)$', version_string)
+        match = re.match('(\S+)$', version_string)
         if match:
             version_number = match.groups()[0]
             version = version_number.split('.')
@@ -1289,13 +1288,13 @@ def processLayoutFile(file, bool_docbook):
             return x.strip()
     classname = file.split(os.sep)[-1].split('.')[0]
     # return ('LaTeX', '[a,b]', 'a', ',b,c', 'article') for \DeclareLaTeXClass[a,b,c]{article}
-    p = re.compile(b'^\s*#\s*\\\\Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}\s*$')
-    q = re.compile(b'^\s*#\s*\\\\DeclareCategory{(.*)}\s*$')
+    p = re.compile(b'\s*#\s*\\\\Declare(LaTeX|DocBook)Class\s*(\[([^,]*)(,.*)*\])*\s*{(.*)}\s*$')
+    q = re.compile(b'\s*#\s*\\\\DeclareCategory{(.*)}\s*$')
     classdeclaration = b""
     categorydeclaration = b'""'
     for line in open(file, 'rb').readlines():
-        res = p.search(line)
-        qres = q.search(line)
+        res = p.match(line)
+        qres = q.match(line)
         if res != None:
             (classtype, optAll, opt, opt1, desc) = res.groups()
             avai = {b'LaTeX':b'false', b'DocBook':bool_docbook.encode('ascii')}[classtype]
@@ -1386,9 +1385,9 @@ def checkLatexConfig(check_config, bool_docbook):
     # Construct the list of classes to test for.
     # build the list of available layout files and convert it to commands
     # for chkconfig.ltx
-    declare = re.compile(b'^\\s*#\\s*\\\\Declare(LaTeX|DocBook)Class\\s*(\[([^,]*)(,.*)*\])*\\s*{(.*)}\\s*$')
-    category = re.compile(b'^\\s*#\\s*\\\\DeclareCategory{(.*)}\\s*$')
-    empty = re.compile(b'^\\s*$')
+    declare = re.compile(b'\\s*#\\s*\\\\Declare(LaTeX|DocBook)Class\\s*(\[([^,]*)(,.*)*\])*\\s*{(.*)}\\s*$')
+    category = re.compile(b'\\s*#\\s*\\\\DeclareCategory{(.*)}\\s*$')
+    empty = re.compile(b'\\s*$')
     testclasses = list()
     for file in (glob.glob( os.path.join('layouts', '*.layout') )
                  + glob.glob( os.path.join(srcdir, 'layouts', '*.layout' ) ) ):
@@ -1406,14 +1405,14 @@ def checkLatexConfig(check_config, bool_docbook):
                     nodeclaration = True
                 # A class, but no category declaration. Just break.
                 break
-            if declare.search(line) != None:
+            if declare.match(line) != None:
                 decline = b"\\TestDocClass{%s}{%s}" \
                            % (classname.encode('ascii'), line[1:].strip())
                 testclasses.append(decline)
-            elif category.search(line) != None:
+            elif category.match(line) != None:
                 catline = (b"\\DeclareCategory{%s}{%s}"
                            % (classname.encode('ascii'),
-                              category.search(line).groups()[0]))
+                              category.match(line).groups()[0]))
                 testclasses.append(catline)
             if catline == b"" or decline == b"":
                 continue
@@ -1432,7 +1431,7 @@ def checkLatexConfig(check_config, bool_docbook):
         line = latex_out.readline()
         if not line:
             break;
-        if re.match('^\+', line):
+        if line.startswith('+'):
             logger.info(line.strip())
     # if the command succeeds, None will be returned
     ret = latex_out.close()
@@ -1515,12 +1514,12 @@ def processModuleFile(file, filename, bool_docbook):
         We expect output:
           "ModuleName" "filename" "Description" "Packages" "Requires" "Excludes" "Category"
     '''
-    remods = re.compile(b'^\s*#\s*\\\\DeclareLyXModule\s*(?:\[([^]]*?)\])?{(.*)}')
-    rereqs = re.compile(b'^\s*#+\s*Requires: (.*)')
-    reexcs = re.compile(b'^\s*#+\s*Excludes: (.*)')
-    recaty = re.compile(b'^\s*#+\s*Category: (.*)')
-    redbeg = re.compile(b'^\s*#+\s*DescriptionBegin\s*$')
-    redend = re.compile(b'^\s*#+\s*DescriptionEnd\s*$')
+    remods = re.compile(b'\s*#\s*\\\\DeclareLyXModule\s*(?:\[([^]]*?)\])?{(.*)}')
+    rereqs = re.compile(b'\s*#+\s*Requires: (.*)')
+    reexcs = re.compile(b'\s*#+\s*Excludes: (.*)')
+    recaty = re.compile(b'\s*#+\s*Category: (.*)')
+    redbeg = re.compile(b'\s*#+\s*DescriptionBegin\s*$')
+    redend = re.compile(b'\s*#+\s*DescriptionEnd\s*$')
 
     modname = desc = pkgs = req = excl = catgy = b""
     readingDescription = False
@@ -1528,7 +1527,7 @@ def processModuleFile(file, filename, bool_docbook):
 
     for line in open(file, 'rb').readlines():
       if readingDescription:
-        res = redend.search(line)
+        res = redend.match(line)
         if res != None:
           readingDescription = False
           desc = b" ".join(descLines)
@@ -1537,11 +1536,11 @@ def processModuleFile(file, filename, bool_docbook):
           continue
         descLines.append(line[1:].strip())
         continue
-      res = redbeg.search(line)
+      res = redbeg.match(line)
       if res != None:
         readingDescription = True
         continue
-      res = remods.search(line)
+      res = remods.match(line)
       if res != None:
           (pkgs, modname) = res.groups()
           if pkgs == None:
@@ -1550,19 +1549,19 @@ def processModuleFile(file, filename, bool_docbook):
             tmp = [s.strip() for s in pkgs.split(b",")]
             pkgs = b",".join(tmp)
           continue
-      res = rereqs.search(line)
+      res = rereqs.match(line)
       if res != None:
         req = res.group(1)
         tmp = [s.strip() for s in req.split(b"|")]
         req = b"|".join(tmp)
         continue
-      res = reexcs.search(line)
+      res = reexcs.match(line)
       if res != None:
         excl = res.group(1)
         tmp = [s.strip() for s in excl.split(b"|")]
         excl = b"|".join(tmp)
         continue
-      res = recaty.search(line)
+      res = recaty.match(line)
       if res != None:
         catgy = res.group(1)
         continue
@@ -1639,9 +1638,9 @@ def processCiteEngineFile(file, filename, bool_docbook):
         We expect output:
           "CiteEngineName" "filename" "CiteEngineType" "CiteFramework" "DefaultBiblio" "Description" "Packages"
     '''
-    remods = re.compile(b'^\s*#\s*\\\\DeclareLyXCiteEngine\s*(?:\[([^]]*?)\])?{(.*)}')
-    redbeg = re.compile(b'^\s*#+\s*DescriptionBegin\s*$')
-    redend = re.compile(b'^\s*#+\s*DescriptionEnd\s*$')
+    remods = re.compile(b'\s*#\s*\\\\DeclareLyXCiteEngine\s*(?:\[([^]]*?)\])?{(.*)}')
+    redbeg = re.compile(b'\s*#+\s*DescriptionBegin\s*$')
+    redend = re.compile(b'\s*#+\s*DescriptionEnd\s*$')
     recet = re.compile(b'\s*CiteEngineType\s*(.*)')
     redb = re.compile(b'\s*DefaultBiblio\s*(.*)')
     resfm = re.compile(b'\s*CiteFramework\s*(.*)')
@@ -1652,7 +1651,7 @@ def processCiteEngineFile(file, filename, bool_docbook):
 
     for line in open(file, 'rb').readlines():
       if readingDescription:
-        res = redend.search(line)
+        res = redend.match(line)
         if res != None:
           readingDescription = False
           desc = b" ".join(descLines)
@@ -1661,11 +1660,11 @@ def processCiteEngineFile(file, filename, bool_docbook):
           continue
         descLines.append(line[1:].strip())
         continue
-      res = redbeg.search(line)
+      res = redbeg.match(line)
       if res != None:
         readingDescription = True
         continue
-      res = remods.search(line)
+      res = remods.match(line)
       if res != None:
           (pkgs, modname) = res.groups()
           if pkgs == None:
@@ -1674,15 +1673,15 @@ def processCiteEngineFile(file, filename, bool_docbook):
             tmp = [s.strip() for s in pkgs.split(b",")]
             pkgs = b",".join(tmp)
           continue
-      res = recet.search(line)
+      res = recet.match(line)
       if res != None:
         cet = res.group(1)
         continue
-      res = redb.search(line)
+      res = redb.match(line)
       if res != None:
         db = res.group(1)
         continue
-      res = resfm.search(line)
+      res = resfm.match(line)
       if res != None:
         cfm = res.group(1)
         continue
