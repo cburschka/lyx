@@ -25,18 +25,21 @@ import unittest
 class TestParserTools(unittest.TestCase):
 
     def test_put_cmd_in_ert(self):
-        ert =  ['\\begin_inset ERT',
-                'status collapsed',
-                '',
-                '\\begin_layout Plain Layout',
-                '',
+        ert =  [u'\\begin_inset ERT',
+                u'status collapsed',
+                u'',
+                u'\\begin_layout Plain Layout',
+                u'',
+                u'',
                 u'\\backslash',
-                u'texttt{Gr\\backslash',
-                u'"{u}\\backslash',
+                u'texttt{Gr',
+                u'\\backslash',
+                u'"{u}',
+                u'\\backslash',
                 u'ss{}e}',
-                '\\end_layout',
-                '',
-                '\\end_inset']
+                u'\\end_layout',
+                u'',
+                u'\\end_inset']
         self.assertEqual(put_cmd_in_ert(u"\\texttt{Grüße}"), ert)
         self.assertEqual(put_cmd_in_ert([u"\\texttt{Grüße}"]), ert)
 

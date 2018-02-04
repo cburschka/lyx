@@ -146,7 +146,7 @@ def put_cmd_in_ert(cmd):
     else:
         cmd = u"%s" % cmd # ensure it is an unicode instance
     cmd = cmd.translate(licr_table)
-    cmd = cmd.replace("\\", "\\backslash\n")
+    cmd = cmd.replace("\\", "\n\\backslash\n")
     ret += cmd.splitlines()
     ret += ["\\end_layout", "", "\\end_inset"]
     return ret
