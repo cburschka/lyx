@@ -49,6 +49,9 @@ find_token_backwards(lines, token, start):
 find_tokens_backwards(lines, tokens, start):
   As before, but look backwards.
 
+find_substring(lines, sub[, start[, end]]) -> int
+  As find_token, but sub may be anywhere in the line.
+
 find_re(lines, rexp, start[, end]):
   As find_token, but rexp is a regular expression object,
   so it has to be passed as e.g.: re.compile(r'...').
@@ -77,7 +80,11 @@ get_option_value(line, option):
 get_bool_value(lines, token[, start[, end[, default, delete]]]]):
   Like get_value, but returns a boolean.
 
-del_token(lines, token, start[, end]):
+set_bool_value(lines, token, value[, start[, end]]):
+  Find `token` in `lines[start:end]` and set to boolean value bool(`value`).
+  Return old value. Raise ValueError if token is not in lines.
+
+del_token(lines, token[, start[, end]]):
   Like find_token, but deletes the line if it finds one.
   Returns True if a line got deleted, otherwise False.
 
@@ -187,6 +194,8 @@ def find_token(lines, token, start=0, end=0, ignorews=False):
     whitespace are ignored, but there must be whitespace following
     token itself.
 
+    Use find_substring(lines, sub) to find a substring anywhere in `lines`.
+
     Return -1 on failure."""
 
     if end == 0 or end > len(lines):
@@ -239,14 +248,32 @@ def find_tokens_exact(lines, tokens, start=0, end=0):
     return find_tokens(lines, tokens, start, end, True)
 
 
-def find_re(lines, rexp, start=0, end=0):
-    """ find_re(lines, rexp, start[, end]) -> int
+def find_substring(lines, sub, start=0, end=0):
+    """ find_substring(lines, sub[, start[, end]]) -> int
 
-    Return the lowest line where rexp, a regular expression, is found
-    in lines[start, end].
+    Return the lowest line number `i` in [start, end] where
+    `sub` is a substring of line[i].
 
     Return -1 on failure."""
 
+    if end == 0 or end > len(lines):
+        end = len(lines)
+    for i in range(start, end):
+        if sub in lines[i]:
+                return i
+    return -1
+
+
+def find_re(lines, rexp, start=0, end=0):
+    """ find_re(lines, rexp[, start[, end]]) -> int
+
+    Return the lowest line number `i` in [start, end] where the regular
+    expression object `rexp` matches at the beginning of line[i].
+    Return -1 on failure.
+
+    Start your pattern with the wildcard ".*" to find a match anywhere in a
+    line. Use find_substring() to find a substring anywhere in the lines.
+    """
     if end == 0 or end > len(lines):
         end = len(lines)
     for i in range(start, end):
@@ -398,24 +425,49 @@ def get_quoted_value(lines, token, start=0, end=0, default="", delete=False):
       return default
     return val.strip('"')
 
+bool_values = {True:  ("true", "1"), 
+               False: ("false", "0")}
 
 def get_bool_value(lines, token, start=0, end=0, default=None, delete=False):
     """ get_bool_value(lines, token, start[[, end], default]) -> string
 
     Find the next line that looks like:
-      token bool_value
+      token <bool_value>
 
-    Returns True if bool_value is 1 or true and
-    False if bool_value is 0 or false
+    Return True if <bool_value> is 1 or "true", False if bool_value
+    is 0 or "false", else `default`.
     """
 
     val = get_quoted_value(lines, token, start, end, default, delete)
-
-    if val == "1" or val == "true":
+    if val in bool_values[True]:
         return True
-    if val == "0" or val == "false":
+    if val in bool_values[False]:
         return False
     return default
+
+
+def set_bool_value(lines, token, value, start=0, end=0):
+    """Find `token` in `lines` and set to bool(`value`).
+
+    Return previous value. Raise `ValueError` if `token` is not in lines.
+
+    Cf. find_token(), get_bool_value().
+    """
+    i = find_token(lines, token, start, end)
+    if i == -1:
+        raise ValueError
+    oldvalue = get_bool_value(lines, token, i, i+1)
+    if oldvalue is value:
+        return oldvalue
+    # Use 0/1 or true/false?
+    if get_quoted_value(lines, token, i, i+1) in ('0', '1'):
+        value_string = bool_values[value][1]
+    else:
+        value_string = bool_values[value][0]
+    # set to new value
+    lines[i] = "%s %s" % (token, value_string)
+
+    return oldvalue
 
 
 def get_option_value(line, option):

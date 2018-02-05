@@ -22,7 +22,7 @@ from parser_tools import *
 
 import unittest
 
-ug = r"""
+lines = r"""
 \begin_layout Standard
 The
 \begin_inset Quotes eld
@@ -56,9 +56,26 @@ Introduction
  describes that, too.
 \end_layout
 
-"""
+""".splitlines()
 
-lines = ug.splitlines()
+header = r"""\begin_header
+\origin unavailable
+\paperpagestyle default
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict fallse
+\end_header""".splitlines()
+
+newheader = r"""\begin_header
+\origin unavailable
+\paperpagestyle default
+\output_changes true
+\html_math_output 0
+\html_css_as_file 1
+\html_be_strict false
+\end_header""".splitlines()
+
 
 class TestParserTools(unittest.TestCase):
 
@@ -99,6 +116,23 @@ class TestParserTools(unittest.TestCase):
         self.assertEqual(find_tokens(lines, tokens, 0), 4)
         self.assertEqual(find_tokens(lines, tokens, 0, 4), -1)
 
+
+    def test_find_substring(self):
+        # Quotes is not a "token" (substring at the start of any line):
+        self.assertEqual(find_token(lines, "Quotes", 0), -1)
+        self.assertEqual(find_substring(lines, "Quotes", 0), 3)
+        # return -1 on failure:
+        self.assertEqual(find_substring(lines, "Qualen", 0), -1)
+
+
+    def test_find_re(self):
+        regexp_object = re.compile(r'\\begin.*Quote')
+        # matching starts with line[start] (default: start=0)
+        self.assertEqual(find_re(lines, regexp_object), 3)
+        self.assertEqual(find_re(lines, regexp_object, start=3), 3)
+        # matching ends one line *before* line[end]:
+        self.assertEqual(find_re(lines, regexp_object, start=4), 11)
+        self.assertEqual(find_re(lines, regexp_object, start=4, end=11), -1)
 
     def test_find_complete_lines(self):
         sublines = ["\\begin_inset Quotes eld",
@@ -163,6 +197,23 @@ class TestParserTools(unittest.TestCase):
         # or emtpy string if token is found but has no value:
         #  self.assertEqual(get_value(lines, "\\end_inset", default=None), "")
 
+    def test_get_bool_value(self):
+        self.assertEqual(get_bool_value(header, "\\output_changes"), False)
+        self.assertEqual(get_bool_value(newheader, "\\output_changes"), True)
+        self.assertEqual(get_bool_value(header, "\\html_css_as_file"), False)
+        self.assertEqual(get_bool_value(newheader, "\\html_css_as_file"), True)
+        self.assertEqual(get_bool_value(header, "\\something"), None)
+        self.assertEqual(get_bool_value(header, "\\output_changes", 4), None)
+
+    def test_set_bool_value(self):
+        # set to new value, return old value
+        self.assertEqual(set_bool_value(header, "\\output_changes", True), False)
+        self.assertEqual(set_bool_value(header, "\\html_css_as_file", True), False)
+        # return default if misspelled:
+        self.assertEqual(set_bool_value(header, "\\html_be_strict", False), None)
+        # catch error and insert new setting:
+        self.assertRaises(ValueError, set_bool_value, header, "\\something", 0)
+        self.assertEqual(header, newheader)
 
     def test_del_complete_lines(self):
         l = lines[:]
