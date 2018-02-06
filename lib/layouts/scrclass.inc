@@ -261,9 +261,7 @@ End
 Input stdstruct.inc
 
 Style Abstract
-	LabelFont
-	  Family              Sans
-	EndFont
+	LabelType             No_Label
 End
 
 
