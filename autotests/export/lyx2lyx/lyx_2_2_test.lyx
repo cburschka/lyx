@@ -25,7 +25,7 @@ logicalmkup
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
-\use_dash_ligatures true
+\use_dash_ligatures false
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -94,11 +94,15 @@ Test reversion/conversion between 2.2 and 2.1 formats with lyx2lyx
 \end_layout
 
 \begin_layout Description
+BoxFeatures,
+\begin_inset space ~
+\end_inset
+
 colorbox: The word
 \begin_inset Newline newline
 \end_inset
 
-shadowsize at start of a line did trigger insertion of box options.
+shadowsize at start of a line must not trigger insertion of box options.
  
 \end_layout
 
@@ -123,7 +127,7 @@ backgroundcolor "orange"
 status open
 
 \begin_layout Plain Layout
-simple green frame around orange box
+framecolor "green" around orange box
 \end_layout
 
 \end_inset
@@ -173,24 +177,41 @@ thickness "0.4pt"
 separation "3pt"
 shadowsize "4pt"
 framecolor "black"
-backgroundcolor "none"
+backgroundcolor "cyan"
 status open
 
 \begin_layout Plain Layout
-no frame around cyan box
+framecolor "black" around cyan box
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+nested inset
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
 
  
+\end_layout
+
+\begin_layout Standard
+Fancy boxes have the colour chooser greyed out:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Box ovalbox
-position "t"
+position "b"
 hor_pos "c"
 has_inner_box 1
 inner_pos "t"
 use_parbox 0
 use_makebox 0
-width "40col%"
+width "20col%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -202,16 +223,12 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-no frame around cyan box
+framecolor at bol must not trigger replacement
 \end_layout
 
 \end_inset
 
  
-\begin_inset Newline newline
-\end_inset
-
-
 \begin_inset Box Shadowbox
 position "t"
 hor_pos "c"
@@ -219,7 +236,7 @@ has_inner_box 1
 inner_pos "t"
 use_parbox 0
 use_makebox 0
-width "40col%"
+width "30col%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -231,7 +248,7 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-no frame around cyan box
+shadowsize at bol must not trigger insertion of box options
 \end_layout
 
 \end_inset
@@ -244,7 +261,7 @@ has_inner_box 1
 inner_pos "t"
 use_parbox 0
 use_makebox 0
-width "40col%"
+width "12col%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -256,36 +273,7 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-no frame around cyan box
-\end_layout
-
-\end_inset
-
- 
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Box Shaded
-position "t"
-hor_pos "c"
-has_inner_box 1
-inner_pos "t"
-use_parbox 0
-use_makebox 0
-width "40col%"
-special "none"
-height "1in"
-height_special "totalheight"
-thickness "0.4pt"
-separation "3pt"
-shadowsize "4pt"
-framecolor "black"
-backgroundcolor "none"
-status open
-
-\begin_layout Plain Layout
-no frame around cyan box
+oval, thick
 \end_layout
 
 \end_inset
@@ -298,7 +286,36 @@ has_inner_box 1
 inner_pos "t"
 use_parbox 0
 use_makebox 0
-width "40col%"
+width "30col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout LyX-Code
+double frame
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The background of 
+\begin_inset Box Shaded
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "30col%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -310,20 +327,16 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-no frame around cyan box
+shaded boxes
 \end_layout
 
 \end_inset
 
- 
+ is set in Document>Settings>Colors 
 \end_layout
 
 \begin_layout Standard
-The conversion must not change LyX code examples, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., for fancy frames:
+The problem was detected in a LyX-Code example for fancy frames:
 \end_layout
 
 \begin_layout LyX-Code
@@ -352,8 +365,15 @@ shadowsize}{1pt}]{shadow}
 
 \end_deeper
 \begin_layout Description
-Hyphens vs.
- dashes in different context
+Hyphens
+\begin_inset space ~
+\end_inset
+
+vs.
+\begin_inset space ~
+\end_inset
+
+dashes in different context
 \end_layout
 
 \begin_deeper
@@ -441,6 +461,7 @@ hyphens -- ---; en–dash, em—dash;
 \end_layout
 
 \end_deeper
+\end_deeper
 \begin_layout Subsubsection
 ligature breaks inserted by lyx2lyx 
 \begin_inset CommandInset label
@@ -458,11 +479,7 @@ Rows of hyphens on subsequent lines -- ---; en–dash, em—dash and more hyphen
 \end_layout
 
 \begin_layout Standard
-
-\bar under
-H
-\bar default
-yphens with explicit ligature breaks -\SpecialChar ligaturebreak
+Hyphens with explicit ligature breaks -\SpecialChar ligaturebreak
 - -\SpecialChar ligaturebreak
 -\SpecialChar ligaturebreak
 -; en–dash, em—dash.
@@ -516,7 +533,7 @@ literal "false"
 \end_inset
 
  
-\begin_inset Formula $\ @{-->>}[r]$
+\begin_inset Formula $math--formula>>$
 \end_inset
 
  
@@ -550,6 +567,5 @@ set_width "auto"
 
 \end_layout
 
-\end_deeper
 \end_body
 \end_document

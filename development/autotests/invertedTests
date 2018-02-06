@@ -94,7 +94,6 @@ export/export/latex/unicodesymbols/.*_jis-platex_pdf2
 export/export/latex/unicodesymbols/.*_shift-jis-platex_pdf2
 export/export/latex/unicodesymbols/.*_utf8-platex_pdf2
 
-
 # Arabic
 # If we want to try to get it to work with pdfTeX:
 # - set all non-Arab text parts to a different language (e.g. English)
@@ -120,6 +119,9 @@ export/templates/RJournal_(dvi3|pdf[45])_systemF
 export/templates/aa_(dvi3|pdf[45])_.*
 export/templates/kluwer_.*_systemF
 
+# lyx2lyx tests:
+# back-conversion fails for rotated float inset in a list
+export/export/lyx2lyx/lyx_2_3_test_lyx.*
 
 # ================================================
 Sublabel: lyxbugs
