@@ -1048,7 +1048,10 @@ void copySelectionToStack(CursorData const & cur, CutStack & cutstack)
 		BufferParams const & bp = cur.buffer()->params();
 		// FIXME This should be the plain layout...right?
 		par.setLayout(bp.documentClass().plainLayout());
-		par.insert(0, grabSelection(cur), Font(), Change(Change::UNCHANGED));
+		// For pasting into text, we set the language to the paragraph language
+		// (rather than the default_language which is always English; see #2596)
+		par.insert(0, grabSelection(cur), Font(sane_font, par.getParLanguage(bp)),
+			   Change(Change::UNCHANGED));
 		pars.push_back(par);
 		cutstack.push(make_pair(pars, bp.documentClassPtr()));
 	}
