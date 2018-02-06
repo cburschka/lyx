@@ -1156,8 +1156,12 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(biblioModule->biblatexBbxCO, SIGNAL(activated(int)),
 		this, SLOT(biblioChanged()));
 	connect(biblioModule->biblatexBbxCO, SIGNAL(editTextChanged(QString)),
+		this, SLOT(biblioChanged()));
+	connect(biblioModule->biblatexBbxCO, SIGNAL(editTextChanged(QString)),
 		this, SLOT(updateResetDefaultBiblio()));
 	connect(biblioModule->biblatexCbxCO, SIGNAL(activated(int)),
+		this, SLOT(biblioChanged()));
+	connect(biblioModule->biblatexCbxCO, SIGNAL(editTextChanged(QString)),
 		this, SLOT(biblioChanged()));
 	connect(biblioModule->biblatexCbxCO, SIGNAL(editTextChanged(QString)),
 		this, SLOT(updateResetDefaultBiblio()));
