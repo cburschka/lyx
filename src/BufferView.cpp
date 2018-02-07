@@ -1619,11 +1619,12 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_BUFFER_ANONYMIZE: {
-		for(char c = '0'; c <='Z'; c++) {
-		  odocstringstream ss;
-		  ss << "a\n" << c << "\n0 0 1 1 0"; 
-		  lyx::dispatch(FuncRequest(LFUN_WORD_REPLACE, ss.str()));
+		for (char c = '0'; c <= 'Z'; c++) {
+			odocstringstream ss;
+			ss << "a\n" << c << "\n0 0 1 1 0";
+			lyx::dispatch(FuncRequest(LFUN_WORD_REPLACE, ss.str()));
 		}
+		break;
 	}
 
 	case LFUN_WORD_FINDADV: {
