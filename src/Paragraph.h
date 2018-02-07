@@ -505,6 +505,10 @@ public:
 	/// presently used only in the XHTML output routines.
 	std::string magicLabel() const;
 
+	/// anonymizes the paragraph contents (but not the paragraphs
+	/// contained inside it. Does not handle undo.
+	void anonymize();
+
 private:
 	/// Expand the counters for the labelstring of \c layout
 	docstring expandParagraphLabel(Layout const &, BufferParams const &,

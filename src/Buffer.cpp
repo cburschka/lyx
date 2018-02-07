@@ -2569,15 +2569,16 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		flag.setOnOff(params().output_changes);
 		break;
 
-	case LFUN_BUFFER_TOGGLE_COMPRESSION: {
+	case LFUN_BUFFER_TOGGLE_COMPRESSION:
 		flag.setOnOff(params().compressed);
 		break;
-	}
 
-	case LFUN_BUFFER_TOGGLE_OUTPUT_SYNC: {
+	case LFUN_BUFFER_TOGGLE_OUTPUT_SYNC:
 		flag.setOnOff(params().output_sync);
 		break;
-	}
+
+	case LFUN_BUFFER_ANONYMIZE:
+		break;
 
 	default:
 		return false;
@@ -2848,6 +2849,15 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		undo().recordUndoBufferParams(CursorData());
 		params().output_sync = !params().output_sync;
 		break;
+
+	case LFUN_BUFFER_ANONYMIZE: {
+		undo().recordUndoFullBuffer(CursorData());
+		CursorData cur(doc_iterator_begin(this));
+		for ( ; cur ; cur.forwardPar())
+			cur.paragraph().anonymize();
+		dr.forceBufferUpdate();
+		break;
+	}
 
 	default:
 		dispatched = false;

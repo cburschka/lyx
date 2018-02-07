@@ -4148,6 +4148,15 @@ SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to,
 }
 
 
+void Paragraph::anonymize()
+{
+	// This is a very crude anonymization for now
+	for (char_type & c : d->text_)
+		if (isLetterChar(c) || isNumber(c))
+			c = 'a';
+}
+
+
 void Paragraph::Private::markMisspelledWords(
 	pos_type const & first, pos_type const & last,
 	SpellChecker::Result result,
