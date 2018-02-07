@@ -37,7 +37,8 @@ from lyx2lyx_tools import (add_to_preamble, put_cmd_in_ert, get_ert,
 from parser_tools import (check_token, del_complete_lines,
     find_end_of_inset, find_end_of_layout, find_nonempty_line, find_re,
     find_token, find_token_backwards, get_containing_layout,
-    get_containing_inset, get_value, is_in_inset)
+    get_containing_inset, get_quoted_value, get_value, is_in_inset,
+    get_bool_value, set_bool_value)
 
 
 ####################################################################
@@ -1271,55 +1272,47 @@ def convert_colorbox(document):
 
 
 def revert_colorbox(document):
-    " outputs color settings for boxes as TeX code "
+    """Change box color settings to LaTeX code."""
 
     i = 0
-    defaultframecolor = "black"
-    defaultbackcolor = "none"
     while True:
-        i = find_token(document.body, "framecolor", i)
+        i = find_token(document.body, "\\begin_inset Box", i+1)
         if i == -1:
             return
-        binset = find_token(document.body, "\\begin_inset Box", i - 14)
-        if binset == -1:
-            return
-        einset = find_end_of_inset(document.body, binset)
+        # Get and delete colour settings:
+        framecolor = get_quoted_value(document.body, "framecolor", i+14, i+15, delete=True)
+        backcolor = get_quoted_value(document.body, "backgroundcolor", i+14, i+15, delete=True)
+        if not framecolor or not backcolor:
+            document.warning("Malformed LyX document: color options not found in Box inset!")
+            continue
+        if framecolor == "black" and backcolor == "none": # default values
+            i += 15 # skip box option lines
+            continue
+        
+        # Emulate non-default colours with LaTeX code:
+        einset = find_end_of_inset(document.body, i)
         if einset == -1:
             document.warning("Malformed LyX document: Can't find end of box inset!")
             continue
-        # read out the values
-        beg = document.body[i].find('"');
-        end = document.body[i].rfind('"');
-        framecolor = document.body[i][beg+1:end];
-        beg = document.body[i + 1].find('"');
-        end = document.body[i + 1].rfind('"');
-        backcolor = document.body[i+1][beg+1:end];
-        # delete the specification
-        del document.body[i:i + 2]
-        # output ERT
-        # first output the closing brace
-        if framecolor != defaultframecolor or backcolor != defaultbackcolor:
-            add_to_preamble(document, ["\\@ifundefined{rangeHsb}{\\usepackage{xcolor}}{}"])
-            document.body[einset : einset] = put_cmd_in_ert("}")
-        # determine the box type
-        isBox = find_token(document.body, "\\begin_inset Box Boxed", binset)
-        # now output the box commands
-        if (framecolor != defaultframecolor and isBox == binset) or (backcolor != defaultbackcolor and isBox == binset):
-            document.body[i - 14 : i - 14] = put_cmd_in_ert("\\fcolorbox{" + framecolor + "}{" + backcolor + "}{")
-            # in the case we must also change the box type because the ERT code adds a frame
-            document.body[i - 4] = "\\begin_inset Box Frameless"
-            # if has_inner_box 0 we must set it and use_makebox to 1
-            ibox = find_token(document.body, "has_inner_box", i - 4)
-            if ibox == -1 or ibox != i - 1:
-                document.warning("Malformed LyX document: Can't find has_inner_box statement!")
-                continue
-            # read out the value
-            innerbox = document.body[ibox][-1:];
-            if innerbox == "0":
-                document.body[ibox] = "has_inner_box 1"
-                document.body[ibox + 3] = "use_makebox 1"
-        if backcolor != defaultbackcolor and isBox != binset:
-            document.body[i - 14 : i - 14] =  put_cmd_in_ert("\\colorbox{" + backcolor + "}{")
+        add_to_preamble(document, ["\\@ifundefined{rangeHsb}{\\usepackage{xcolor}}{}"])
+        # insert the closing brace first (keeps indices 'i' and 'einset' valid)
+        document.body[einset+1:einset+1] = put_cmd_in_ert("}") + [""]
+        # now insert the (f)color box command
+        if ("Box Boxed" in document.body[i]): # framed box, use \fcolorbox
+            # change the box type (frame added by \fcolorbox)
+            document.body[i] = "\\begin_inset Box Frameless"
+            # ensure an inner box:
+            try:
+                if not set_bool_value(document.body, "has_inner_box", True, i+3, i+4):
+                    set_bool_value(document.body, "use_makebox", True, i+6, i+7)
+            except ValueError:
+                document.warning("Malformed LyX document: 'has_inner_box' or "
+                                 "'use_makebox' option not found in box inset!")
+            ertinset = put_cmd_in_ert("\\fcolorbox{%s}{%s}{"% (framecolor, backcolor))
+        else:
+            ertinset = put_cmd_in_ert("\\colorbox{%s}{" % backcolor)
+        document.body[i:i] = ertinset + [""]
+        i = einset # skip inset
 
 
 def revert_mathmulticol(document):
