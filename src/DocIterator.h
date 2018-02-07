@@ -126,6 +126,7 @@ public:
 	/// return the last column of the top grid
 	col_type lastcol() const { return ncols() - 1; }
 	/// the inset just behind the cursor
+	/// returns 0 if there is no inset (e.g. normal text)
 	Inset * nextInset() const;
 	/// the inset just in front of the cursor
 	Inset * prevInset() const;
