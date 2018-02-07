@@ -208,7 +208,7 @@ public:
 	void forwardChar();
 	/// move on one paragraph
 	void forwardPar();
-	/// move on one inset
+	/// move on to the next closest inset
 	void forwardInset();
 	/// move backward one logical position
 	void backwardPos();
