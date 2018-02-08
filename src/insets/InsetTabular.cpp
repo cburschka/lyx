@@ -6174,6 +6174,7 @@ bool InsetTabular::pasteClipboard(Cursor & cur)
 			inset->setChange(Change(buffer().params().track_changes ?
 						Change::INSERTED : Change::UNCHANGED));
 			cur.pos() = 0;
+			cur.pit() = 0;
 		}
 	}
 	return true;
