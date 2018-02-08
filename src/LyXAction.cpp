@@ -3545,6 +3545,17 @@ void LyXAction::init()
  */
 		{ LFUN_SET_GRAPHICS_GROUP, "set-graphics-group", Noop, Edit },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_GRAPHICS_UNIFY
+ * \li Action: Set the same group for all graphics insets in the marked block.
+ * \li Syntax: graphics-unify [<GROUP>]
+ * \li Params: <GROUP>: Id for an existing group. In case the Id is an empty string,
+                        the group Id from the first graphics inset will be used.
+ * \li Origin: sanda, 7 Feb 2018
+ * \endvar
+ */
+		{ LFUN_GRAPHICS_UNIFY, "graphics-unify", Noop, Edit },
+
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_SPACE_INSERT
