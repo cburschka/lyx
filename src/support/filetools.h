@@ -16,11 +16,34 @@
 
 #include <utility>
 #include <string>
+#include <set>
 
 namespace lyx {
 namespace support {
 
 class FileName;
+
+/// Record used temp file names
+static std::set<std::string> tmp_names_;
+
+/// Get a temporary file name.
+/**
+* The actual temp file (QTemporaryFile object) is immediately
+* destroyed after the name has been generated, so a new file
+* has to be created manually from the name.
+* This is needed if the temp file has to be manually removed
+* (e.g., when temp files are used as conversion target, and the initial
+* file only serves as a placeholder), since QTemporaryFile objects
+* cannot be manually removed at least on Windows (they are always
+* kept open internally even after close()).
+* In order to avoid race conditions due to duplicate names, we record
+* all used temp file names.
+* If you don't have to remove the temp file manually, use TempFile instead!
+*/
+FileName const tempFileName(std::string const &);
+
+/// Remove and unregister a temporary file.
+void removeTempFile(FileName const &);
 
 /** Creates the global LyX temp dir.
   \p deflt can be an existing directory name. In this case a new directory

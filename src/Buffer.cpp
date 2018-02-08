@@ -1075,8 +1075,7 @@ bool Buffer::importString(string const & format, docstring const & contents, Err
 		return false;
 	// It is important to use the correct extension here, since some
 	// converters create a wrong output file otherwise (e.g. html2latex)
-	TempFile const tempfile("Buffer_importStringXXXXXX." + fmt->extension());
-	FileName const name(tempfile.name());
+	FileName const name = tempFileName("Buffer_importStringXXXXXX." + fmt->extension());
 	ofdocstream os(name.toFilesystemEncoding().c_str());
 	// Do not convert os implicitly to bool, since that is forbidden in C++11.
 	bool const success = !(os << contents).fail();
@@ -1092,8 +1091,7 @@ bool Buffer::importString(string const & format, docstring const & contents, Err
 		converted = importFile(format, name, errorList);
 	}
 
-	if (name.exists())
-		name.removeFile();
+	removeTempFile(name);
 	return converted;
 }
 
@@ -1103,10 +1101,12 @@ bool Buffer::importFile(string const & format, FileName const & name, ErrorList 
 	if (!theConverters().isReachable(format, "lyx"))
 		return false;
 
-	TempFile const tempfile("Buffer_importFileXXXXXX.lyx");
-	FileName const lyx(tempfile.name());
-	if (theConverters().convert(0, name, lyx, name, format, "lyx", errorList))
-		return readFile(lyx) == ReadSuccess;
+	FileName const lyx = tempFileName("Buffer_importFileXXXXXX.lyx");
+	if (theConverters().convert(0, name, lyx, name, format, "lyx", errorList)) {
+		bool const success = readFile(lyx) == ReadSuccess;
+		removeTempFile(lyx);
+		return success;
+	}
 
 	return false;
 }
