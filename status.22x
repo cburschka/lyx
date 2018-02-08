@@ -92,6 +92,9 @@ What's new
 - Fix crash when closing master with children and grandchildren
   (bug 10766).
 
+- Fix crash when pasting multiple cells into a multi-paragraph cell of
+  a table (bug 9983).
+
 - Fix random crash when dissolving inset (bug 10667).
 
 - Fix potential crash when cursor enters an inset (bug 10691).
