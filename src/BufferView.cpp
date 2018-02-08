@@ -1151,6 +1151,10 @@ bool BufferView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		flag.setEnabled(true);
 		break;
 
+	case LFUN_GRAPHICS_UNIFY:
+		flag.setEnabled(cur.selection());
+		break;
+
 	case LFUN_WORD_FINDADV: {
 		FindAndReplaceOptions opt;
 		istringstream iss(to_utf8(cmd.argument()));
@@ -1694,6 +1698,47 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			if (inset->delDatabase(cmd.argument()))
 				dr.forceBufferUpdate();
 		}
+		break;
+	}
+
+	case LFUN_GRAPHICS_UNIFY: {
+
+		cur.recordUndoFullBuffer();
+
+		DocIterator from, to;
+		from = cur.selectionBegin();
+		to = cur.selectionEnd();
+
+		string newId = cmd.getArg(0);
+		bool fetchId=newId.empty(); //if we wait for groupId from first graphics inset
+
+		InsetGraphicsParams grp_par;
+		InsetGraphics::string2params(graphics::getGroupParams(buffer_, newId), buffer_, grp_par);
+
+		if (!from.nextInset())	//move to closest inset
+			from.forwardInset();
+
+		while (!from.empty() && from < to) {
+			Inset * inset = from.nextInset();
+			if (!inset)
+				break;
+			if (inset->lyxCode() == GRAPHICS_CODE) {
+				InsetGraphics * ig = inset->asInsetGraphics();
+				if (!ig)
+					break;
+				InsetGraphicsParams inspar = ig->getParams();
+				if (fetchId) {
+				        grp_par = inspar;
+					fetchId = false;
+
+				} else {
+					grp_par.filename = inspar.filename;
+					ig->setParams(grp_par);
+				}
+			}
+			from.forwardInset();
+		}
+		dr.screenUpdate(Update::Force); //needed if triggered from context menu
 		break;
 	}
 
