@@ -2322,7 +2322,11 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	}
 
 	// ... but before biblatex (see #7065)
-	if (features.mustProvide("biblatex")) {
+	if (features.mustProvide("biblatex")
+	    && !features.isProvided("biblatex-natbib")
+	    && !features.isProvided("natbib-internal")
+	    && !features.isProvided("natbib")
+	    && !features.isProvided("jurabib")) {
 		string delim = "";
 		string opts;
 		os << "\\usepackage";
