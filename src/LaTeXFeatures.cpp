@@ -1231,7 +1231,11 @@ string const LaTeXFeatures::getPackages() const
 	// Some classes load natbib themselves, but still allow (or even require)
 	// plain numeric citations (ReVTeX is such a case, see bug 5182).
 	// This special case is indicated by the "natbib-internal" key.
-	if (mustProvide("natbib") && !isProvided("natbib-internal")) {
+	if (mustProvide("natbib")
+	    && !isProvided("natbib-internal")
+	    && !isProvided("biblatex")
+	    && !isProvided("biblatex-natbib")
+	    && !isProvided("jurabib")) {
 		packages << "\\usepackage[";
 		if (params_.citeEngineType() == ENGINE_TYPE_NUMERICAL)
 			packages << "numbers";
@@ -1250,7 +1254,11 @@ string const LaTeXFeatures::getPackages() const
 	}
 
 	// jurabib -- we need version 0.6 at least.
-	if (mustProvide("jurabib")) {
+	if (mustProvide("jurabib")
+	    && !isProvided("natbib-internal")
+	    && !isProvided("natbib")
+	    && !isProvided("biblatex")
+	    && !isProvided("biblatex-natbib")) {
 		packages << "\\usepackage";
 		if (!params_.biblio_opts.empty())
 			packages << '[' << params_.biblio_opts << ']';

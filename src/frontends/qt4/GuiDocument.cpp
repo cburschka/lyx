@@ -2445,6 +2445,28 @@ void GuiDocument::biblioChanged()
 }
 
 
+void GuiDocument::checkPossibleCiteEngines()
+{
+	// Check if the class provides a specific engine,
+	// and if so, enforce this.
+	string force_engine;
+	if (documentClass().provides("natbib")
+	    || documentClass().provides("natbib-internal"))
+		force_engine = "natbib";
+	else if (documentClass().provides("jurabib"))
+		force_engine = "jurabib";
+	else if (documentClass().provides("biblatex"))
+		force_engine = "biblatex";
+	else if (documentClass().provides("biblatex-natbib"))
+		force_engine = "biblatex-natbib";
+
+	if (!force_engine.empty())
+		biblioModule->citeEngineCO->setCurrentIndex(
+			biblioModule->citeEngineCO->findData(toqstr(force_engine)));
+	biblioModule->citeEngineCO->setEnabled(force_engine.empty());
+}
+
+
 void GuiDocument::rescanBibFiles()
 {
 	if (isBiblatex())
@@ -3325,6 +3347,8 @@ void GuiDocument::paramsToDialog()
 
 	updateEngineType(documentClass().opt_enginetype(),
 		bp_.citeEngineType());
+
+	checkPossibleCiteEngines();
 
 	biblioModule->citeStyleCO->setCurrentIndex(
 		biblioModule->citeStyleCO->findData(bp_.citeEngineType()));

@@ -296,6 +296,8 @@ private:
 	///
 	bool isBiblatex() const;
 	///
+	void checkPossibleCiteEngines();
+	///
 	BufferParams bp_;
 	/// List of names of available modules
 	std::list<modInfoStruct> moduleNames_;
