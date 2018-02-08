@@ -1312,7 +1312,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_SET_GRAPHICS_GROUP: {
+	case LFUN_GRAPHICS_SET_GROUP: {
 		InsetGraphics * ins = graphics::getCurrentGraphicsInset(cur);
 		if (!ins)
 			break;
@@ -3254,7 +3254,7 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		enable = cur.paragraph().isPassThru();
 		break;
 
-	case LFUN_SET_GRAPHICS_GROUP: {
+	case LFUN_GRAPHICS_SET_GROUP: {
 		InsetGraphics * ins = graphics::getCurrentGraphicsInset(cur);
 		if (!ins)
 			enable = false;

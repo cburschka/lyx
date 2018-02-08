@@ -803,10 +803,10 @@ void MenuDefinition::expandGraphicsGroups(BufferView const * bv)
 	set<string>::const_iterator it = grp.begin();
 	set<string>::const_iterator end = grp.end();
 	add(MenuItem(MenuItem::Command, qt_("No Group"),
-		     FuncRequest(LFUN_SET_GRAPHICS_GROUP)));
+		     FuncRequest(LFUN_GRAPHICS_SET_GROUP)));
 	for (; it != end; ++it) {
 		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(*it) + '|',
-				FuncRequest(LFUN_SET_GRAPHICS_GROUP, *it)));
+				FuncRequest(LFUN_GRAPHICS_SET_GROUP, *it)));
 	}
 }
 

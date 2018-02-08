@@ -3536,15 +3536,15 @@ void LyXAction::init()
 		{ LFUN_SET_COLOR, "set-color", ReadOnly | NoBuffer, System },
 
 /*!
- * \var lyx::FuncCode lyx::LFUN_SET_GRAPHICS_GROUP
+ * \var lyx::FuncCode lyx::LFUN_GRAPHICS_SET_GROUP
  * \li Action: Set the group for the graphics inset on the cursor position.
- * \li Syntax: set-graphics-group [<GROUP>]
+ * \li Syntax: graphics-set-group [<GROUP>]
  * \li Params: <GROUP>: Id for an existing group. In case the Id is an empty string,
                         the graphics inset is removed from the current group.
  * \li Origin: sanda, 6 May 2008
  * \endvar
  */
-		{ LFUN_SET_GRAPHICS_GROUP, "set-graphics-group", Noop, Edit },
+		{ LFUN_GRAPHICS_SET_GROUP, "graphics-set-group", Noop, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_GRAPHICS_UNIFY
