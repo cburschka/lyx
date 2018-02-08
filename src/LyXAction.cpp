@@ -1855,15 +1855,6 @@ void LyXAction::init()
 		{ LFUN_FORWARD_SEARCH, "forward-search", ReadOnly, System },
 
 /*!
- * \var lyx::FuncCode lyx::LFUN_GRAPHICS_RELOAD
- * \li Action: Reloads the image if necessary.
- * \li Syntax: graphics-reload
- * \li Origin: vfr, 10 Aug 2009
- * \endvar
- */
-		{ LFUN_GRAPHICS_RELOAD, "graphics-reload", ReadOnly | AtPoint, Edit },
-
-/*!
  * \var lyx::FuncCode lyx::LFUN_HELP_OPEN
  * \li Action: Open the given help file according to the language setting.
  * \li Syntax: help-open <FILE>[.lyx]
@@ -3566,6 +3557,14 @@ void LyXAction::init()
  */
 		{ LFUN_GRAPHICS_UNIFY, "graphics-unify", Noop, Edit },
 
+/*!
+ * \var lyx::FuncCode lyx::LFUN_GRAPHICS_RELOAD
+ * \li Action: Reloads the image if necessary.
+ * \li Syntax: graphics-reload
+ * \li Origin: vfr, 10 Aug 2009
+ * \endvar
+ */
+		{ LFUN_GRAPHICS_RELOAD, "graphics-reload", ReadOnly | AtPoint, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_SPACE_INSERT
