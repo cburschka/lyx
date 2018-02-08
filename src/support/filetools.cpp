@@ -40,7 +40,6 @@
 #include "support/TempFile.h"
 
 #include <QDir>
-#include <QTemporaryFile>
 
 #include "support/lassert.h"
 #include "support/regex.h"
@@ -460,7 +459,7 @@ string const commandPrep(string const & command_in)
 }
 
 
-FileName const tempFileName(string const & mask)
+FileName const tempFileName(string const & mask, bool const dir)
 {
 	FileName tempfile = TempFile(mask).name();
 	// Since the QTemporaryFile object is destroyed at function return
@@ -475,11 +474,16 @@ FileName const tempFileName(string const & mask)
 
 	// OK, we need another name. Simply append digits.
 	FileName tmp = tempfile;
-	tmp.changeExtension("");
+	string ext;
+	if (!dir) {
+		// Store and remove extensions
+		ext = "." + tempfile.extension();
+		tmp.changeExtension("");
+	}
 	for (int i = 1; i < INT_MAX ;++i) {
 		// Append digit to filename and re-add extension
-		string const new_fn = tmp.absFileName() + convert<string>(i)
-				+ "." + tempfile.extension();
+		string const new_fn =
+			tmp.absFileName() + convert<string>(i) + ext;
 		if (tmp_names_.find(new_fn) == tmp_names_.end()) {
 			tmp_names_.insert(new_fn);
 			tempfile.set(new_fn);
@@ -505,35 +509,14 @@ void removeTempFile(FileName const & fn)
 }
 
 
-static string createTempFile(QString const & mask)
-{
-	// FIXME: This is not safe. QTemporaryFile creates a file in open(),
-	//        but the file is deleted when qt_tmp goes out of scope.
-	//        Therefore the next call to createTempFile() may create the
-	//        same file again. To make this safe the QTemporaryFile object
-	//        needs to be kept for the whole life time of the temp file name.
-	//        This could be achieved by creating a class TempDir (like
-	//        TempFile, but using a currently non-existing
-	//        QTemporaryDirectory object).
-	QTemporaryFile qt_tmp(mask + ".XXXXXXXXXXXX");
-	if (qt_tmp.open()) {
-		string const temp_file = fromqstr(qt_tmp.fileName());
-		LYXERR(Debug::FILES, "Temporary file `" << temp_file << "' created.");
-		return temp_file;
-	}
-	LYXERR(Debug::FILES, "Unable to create temporary file with following template: "
-			<< qt_tmp.fileTemplate());
-	return string();
-}
-
-
 static FileName createTmpDir(FileName const & tempdir, string const & mask)
 {
 	LYXERR(Debug::FILES, "createTmpDir: tempdir=`" << tempdir << "'\n"
 		<< "createTmpDir:    mask=`" << mask << '\'');
 
 	QFileInfo tmp_fi(QDir(toqstr(tempdir.absFileName())), toqstr(mask));
-	FileName const tmpfl(createTempFile(tmp_fi.absoluteFilePath()));
+	FileName const tmpfl =
+		tempFileName(fromqstr(tmp_fi.absoluteFilePath()) + ".XXXXXXXXXXXX", true);
 
 	if (tmpfl.empty() || !tmpfl.createDirectory(0700)) {
 		LYXERR0("LyX could not create temporary directory in " << tempdir

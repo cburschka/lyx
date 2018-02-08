@@ -40,7 +40,7 @@ static std::set<std::string> tmp_names_;
 * all used temp file names.
 * If you don't have to remove the temp file manually, use TempFile instead!
 */
-FileName const tempFileName(std::string const &);
+FileName const tempFileName(std::string const &, bool const dir = false);
 
 /// Remove and unregister a temporary file.
 void removeTempFile(FileName const &);
