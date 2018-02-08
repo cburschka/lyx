@@ -273,13 +273,7 @@ void RowPainter::paintAppendix() const
 
 void RowPainter::paintDepthBar() const
 {
-	depth_type depth = par_.getDepth();
-
-	// We also mark follow-up paragraphs in a paragraph group
-	if (par_.layout().isParagraphGroup()
-	    && par_.layout().labeltype == LABEL_STATIC
-	    && !text_.isFirstInSequence(row_.pit()))
-		++depth;
+	depth_type const depth = par_.getDepth();
 
 	if (depth <= 0)
 		return;
@@ -290,11 +284,6 @@ void RowPainter::paintDepthBar() const
 		if (row_.pos() == 0)
 			--pit2;
 		prev_depth = pars_[pit2].getDepth();
-		// We also mark follow-up paragraphs in a paragraph group
-		if (pars_[pit2].layout().isParagraphGroup()
-		    && pars_[pit2].layout().labeltype == LABEL_STATIC
-		    && !text_.isFirstInSequence(pit2))
-			++prev_depth;
 	}
 
 	depth_type next_depth = 0;
@@ -303,11 +292,6 @@ void RowPainter::paintDepthBar() const
 		if (row_.endpos() >= pars_[pit2].size())
 			++pit2;
 		next_depth = pars_[pit2].getDepth();
-		// We also mark follow-up paragraphs in a paragraph group
-		if (pars_[pit2].layout().isParagraphGroup()
-		    && pars_[pit2].layout().labeltype == LABEL_STATIC
-		    && !text_.isFirstInSequence(pit2))
-			++next_depth;
 	}
 
 	for (depth_type i = 1; i <= depth; ++i) {
