@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-01-01 14:08+0100\n"
-"PO-Revision-Date: 2018-01-01 13:14+0000\n"
+"POT-Creation-Date: 2018-02-08 23:23+0100\n"
+"PO-Revision-Date: 2018-02-08 22:31+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1092,6 +1092,11 @@ msgid ""
 msgstr ""
 "Vynúti veľké prvé písmená v menách (\"Del Piero\", miesto \"del Piero\"), "
 "keď to aktuálny štýl citácie podporuje."
+
+#: src/frontends/qt4/GuiCitation.cpp:314
+msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")."
+msgstr ""
+"Vynúti veľké prvé písmená v menách (\"Del Piero\", miesto \"del Piero\")."
 
 #: src/frontends/qt4/ui/CitationUi.ui:391
 msgid "Force upcas&ing"
@@ -5530,30 +5535,6 @@ msgstr "Vnútiť plný titul"
 msgid "Use full title even if shorttitle exists"
 msgstr "Použiť plný titul aj keď krátky titul existuje"
 
-#: lib/citeengines/biblatex-natbib.citeengine:152
-#: lib/citeengines/biblatex.citeengine:144
-#: lib/citeengines/jurabib.citeengine:129 lib/citeengines/natbib.citeengine:123
-msgid " et al."
-msgstr " a kol."
-
-#: lib/citeengines/biblatex-natbib.citeengine:153
-#: lib/citeengines/biblatex.citeengine:145
-#: lib/citeengines/natbib.citeengine:124 lib/layouts/stdciteformats.inc:27
-msgid ", [[separate author names in citation, except for last name]]"
-msgstr ", "
-
-#: lib/citeengines/biblatex-natbib.citeengine:154
-#: lib/citeengines/biblatex.citeengine:146
-#: lib/citeengines/natbib.citeengine:125 lib/layouts/stdciteformats.inc:28
-msgid ", and [[separate name of last author in citation]]"
-msgstr ", a "
-
-#: lib/citeengines/biblatex-natbib.citeengine:155
-#: lib/citeengines/biblatex.citeengine:147
-#: lib/citeengines/natbib.citeengine:126 lib/layouts/stdciteformats.inc:29
-msgid " and [[separate two authors in citation]]"
-msgstr " a "
-
 #: lib/citeengines/biblatex-natbib.citeengine:299
 #: lib/citeengines/biblatex.citeengine:283
 msgid "Super"
@@ -5614,12 +5595,6 @@ msgstr "pred"
 #: lib/citeengines/jurabib.citeengine:127
 msgid "short title"
 msgstr "krátky titul"
-
-#: lib/citeengines/jurabib.citeengine:130
-#: lib/citeengines/jurabib.citeengine:131
-#: lib/citeengines/jurabib.citeengine:132
-msgid "/"
-msgstr "/"
 
 #: lib/citeengines/natbib.citeengine:2
 msgid "Natbib (BibTeX)"
@@ -9177,12 +9152,12 @@ msgstr "Členenie"
 msgid "Mode"
 msgstr "Mód"
 
-#: lib/layouts/beamer.layout:209 lib/layouts/beamer.layout:263
-#: lib/layouts/beamer.layout:295 lib/layouts/beamer.layout:324
-#: lib/layouts/beamer.layout:356 lib/layouts/beamer.layout:385
-#: lib/layouts/beamer.layout:417
+#: lib/layouts/beamer.layout:209 lib/layouts/beamer.layout:264
+#: lib/layouts/beamer.layout:297 lib/layouts/beamer.layout:326
+#: lib/layouts/beamer.layout:359 lib/layouts/beamer.layout:388
+#: lib/layouts/beamer.layout:421
 msgid "Mode Specification|S"
-msgstr "Špecifikácie Módu|k"
+msgstr "Špecifikácie Módu|f"
 
 #: lib/layouts/beamer.layout:210 lib/layouts/beamer.layout:264
 #: lib/layouts/beamer.layout:296 lib/layouts/beamer.layout:325
@@ -15265,30 +15240,6 @@ msgstr "POĎAKOVANIA"
 msgid "UNDEFINED"
 msgstr "NEDEFINOVANÉ"
 
-#: lib/layouts/stdciteformats.inc:20
-msgid "pp."
-msgstr "str."
-
-#: lib/layouts/stdciteformats.inc:21
-msgid "ed."
-msgstr "vyd."
-
-#: lib/layouts/stdciteformats.inc:22
-msgid "eds."
-msgstr "eds."
-
-#: lib/layouts/stdciteformats.inc:23
-msgid "vol."
-msgstr "diel"
-
-#: lib/layouts/stdciteformats.inc:24
-msgid "no."
-msgstr "č."
-
-#: lib/layouts/stdciteformats.inc:25
-msgid "in"
-msgstr "v"
-
 #: lib/layouts/stdcounters.inc:9
 msgid "\\Roman{part}"
 msgstr "\\Roman{part}"
@@ -17473,6 +17424,10 @@ msgstr "Times Roman (New TX)"
 msgid "Unicode (utf8)"
 msgstr "Unicode (utf8)"
 
+#: lib/ui/stdcontext.inc:361
+msgid "Unify Graphics Groups|U"
+msgstr "Zjednotiť Skupinu Obrázkov|Z"
+
 #: lib/encodings:55
 msgid "Unicode (ucs-extended) (utf8x)"
 msgstr "Unicode (ucs-rozšírenie) (utf8x)"
@@ -18546,7 +18501,7 @@ msgstr "Nový|N"
 
 #: lib/ui/stdmenus.inc:46
 msgid "New from Template...|m"
-msgstr "Nový zo šablóny…|b"
+msgstr "Nový zo Šablóny…|b"
 
 #: lib/ui/stdmenus.inc:47
 msgid "Open...|O"
@@ -18554,7 +18509,7 @@ msgstr "Otvoriť…|O"
 
 #: lib/ui/stdmenus.inc:48
 msgid "Open Recent|t"
-msgstr "Otvoriť nedávne|d"
+msgstr "Otvoriť Nedávne|d"
 
 #: lib/ui/stdmenus.inc:50
 msgid "Close|C"
@@ -18562,7 +18517,7 @@ msgstr "Zavrieť|Z"
 
 #: lib/ui/stdmenus.inc:51
 msgid "Close All"
-msgstr "Zavrieť všetko"
+msgstr "Zavrieť Všetko"
 
 #: lib/ui/stdmenus.inc:52
 msgid "Save|S"
@@ -18570,15 +18525,15 @@ msgstr "Uložiť|l"
 
 #: lib/ui/stdmenus.inc:53
 msgid "Save As...|A"
-msgstr "Uložiť ako…|a"
+msgstr "Uložiť Ako…|A"
 
 #: lib/ui/stdmenus.inc:54
 msgid "Save All|l"
-msgstr "Uložiť všetko|v"
+msgstr "Uložiť Všetko|V"
 
 #: lib/ui/stdmenus.inc:55
 msgid "Revert to Saved|R"
-msgstr "Vrátiť na uložené|t"
+msgstr "Vrátiť na Uložené|t"
 
 #: lib/ui/stdmenus.inc:56
 msgid "Version Control|V"
@@ -18598,11 +18553,11 @@ msgstr "Fax…|F"
 
 #: lib/ui/stdmenus.inc:62
 msgid "New Window|W"
-msgstr "Nové okno|é"
+msgstr "Nové Okno|k"
 
 #: lib/ui/stdmenus.inc:63
 msgid "Close Window|d"
-msgstr "Zavrieť okno|r"
+msgstr "Zavrieť Okno|r"
 
 #: lib/ui/stdmenus.inc:65
 msgid "Exit|x"
@@ -19716,6 +19671,14 @@ msgstr "Vložiť plávajúcu tabuľku"
 msgid "Insert label"
 msgstr "Vložiť značku"
 
+#: lib/ui/stdtoolbars.inc:471
+msgid "Insert left side scripts (sidesetl)"
+msgstr "Vložiť skripty na ľavej strane (sidesetl)"
+
+#: lib/ui/stdtoolbars.inc:469
+msgid "Insert left/right side scripts (sideset)"
+msgstr "Vložiť skripty na ľavej/pravej strane (sideset)"
+
 #: lib/ui/stdtoolbars.inc:124
 msgid "Insert cross-reference"
 msgstr "Vložiť krížovú referenciu"
@@ -19896,6 +19859,10 @@ msgstr "Vložiť druhú odmocninu"
 msgid "Insert root"
 msgstr "Vložiť odmocninu"
 
+#: lib/ui/stdtoolbars.inc:472
+msgid "Insert side scripts (sidesetn)"
+msgstr "Vložiť skripty na boku (sidesetn)"
+
 #: lib/ui/stdtoolbars.inc:183
 msgid "Insert standard fraction"
 msgstr "Vložiť zlomok"
@@ -19911,6 +19878,10 @@ msgstr "Vložiť integrál"
 #: lib/ui/stdtoolbars.inc:186
 msgid "Insert product"
 msgstr "Vložiť súčin"
+
+#: lib/ui/stdtoolbars.inc:470
+msgid "Insert right side scripts (sidesetr)"
+msgstr "Vložiť skripty na pravej strane (sidesetr)"
 
 #: lib/ui/stdtoolbars.inc:188
 msgid "Insert ( )"
@@ -20705,22 +20676,6 @@ msgstr "preškrtnúť (s 'X')"
 #: lib/ui/stdtoolbars.inc:467
 msgid "cancelto"
 msgstr "preškrtnúť až po"
-
-#: lib/ui/stdtoolbars.inc:468
-msgid "Insert left/right side scripts"
-msgstr "Vložiť bočné formuly"
-
-#: lib/ui/stdtoolbars.inc:469
-msgid "Insert right side scripts"
-msgstr "Pridať formuly na pravej strane"
-
-#: lib/ui/stdtoolbars.inc:470
-msgid "Insert left side scripts"
-msgstr "Pridať formuly na ľavej strane"
-
-#: lib/ui/stdtoolbars.inc:471
-msgid "Insert side scripts"
-msgstr "Vložiť bočné formuly"
 
 #: lib/ui/stdtoolbars.inc:472
 msgid "overset"
@@ -33659,6 +33614,33 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid " et al."
+#~ msgstr " a kol."
+
+#~ msgid ", [[separate author names in citation, except for last name]]"
+#~ msgstr ", "
+
+#~ msgid ", and [[separate name of last author in citation]]"
+#~ msgstr ", a "
+
+#~ msgid " and [[separate two authors in citation]]"
+#~ msgstr " a "
+
+#~ msgid "pp."
+#~ msgstr "str."
+
+#~ msgid "ed."
+#~ msgstr "vyd."
+
+#~ msgid "vol."
+#~ msgstr "diel"
+
+#~ msgid "no."
+#~ msgstr "č."
+
+#~ msgid "in"
+#~ msgstr "v"
+
 #~ msgid "Use the minted package instead of the listings one"
 #~ msgstr "Použiť minted balík namiesto balíka listings"
 
@@ -38098,3 +38080,15 @@ msgstr "Neznámy používateľ"
 #~ "vykonávať v mene užívateľa ľubovoľné akcie, vrátane nebezpečné ako napr. "
 #~ "zmazanie súborov. Keď je napr. inštruovaný robiť to zlovoľne vyrobeným "
 #~ "lyx dokumentom.</p> "
+
+#~ msgid "Insert left/right side scripts"
+#~ msgstr "Vložiť bočné formuly"
+
+#~ msgid "Insert right side scripts"
+#~ msgstr "Pridať formuly na pravej strane"
+
+#~ msgid "Insert left side scripts"
+#~ msgstr "Pridať formuly na ľavej strane"
+
+#~ msgid "Insert side scripts"
+#~ msgstr "Vložiť bočné formuly"
