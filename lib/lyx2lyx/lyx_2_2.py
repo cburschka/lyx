@@ -36,7 +36,7 @@ from lyx2lyx_tools import (add_to_preamble, put_cmd_in_ert, get_ert,
 
 from parser_tools import (check_token, del_complete_lines,
     find_end_of_inset, find_end_of_layout, find_nonempty_line, find_re,
-    find_token, find_token_backwards, get_containing_layout,
+    find_substring, find_token, find_token_backwards, get_containing_layout,
     get_containing_inset, get_quoted_value, get_value, is_in_inset,
     get_bool_value, set_bool_value)
 
@@ -618,19 +618,18 @@ def convert_dashes(document):
     if document.backend != "latex":
         return
 
-    lines = document.body
     i = 0
-    while i+1 < len(lines):
-        i += 1
-        line = lines[i]
-        if "--" not in line:
-            continue
+    while True:
+        i = find_substring(document.body, "--", i+1)
+        if i == -1:
+            break
+        line = document.body[i]
         # skip label width string (bug 10243):
         if line.startswith("\\labelwidthstring"):
             continue
         # Do not touch hyphens in some insets:
         try:
-            value, start, end = get_containing_inset(lines, i)
+            value, start, end = get_containing_inset(document.body, i)
         except TypeError:
             # False means no (or malformed) containing inset
             value, start, end = "no inset", -1, -1
@@ -644,7 +643,7 @@ def convert_dashes(document):
             i = end
             continue
         try:
-            layout, start, end, j = get_containing_layout(lines, i)
+            layout, start, end, j = get_containing_layout(document.body, i)
         except TypeError: # no (or malformed) containing layout
             document.warning("Malformed LyX document: "
                              "Can't find layout at line %d" % i)
@@ -656,18 +655,18 @@ def convert_dashes(document):
         # Replace as LaTeX does: First try emdash, then endash
         line = line.replace("---", "\\threehyphens\n")
         line = line.replace("--", "\\twohyphens\n")
-        lines[i:i+1] = line.splitlines()
+        document.body[i:i+1] = line.split('\n')
 
     # remove ligature breaks between dashes
-    i = 1
-    while i < len(lines):
-        line = lines[i]
-        if (line.endswith(r"-\SpecialChar \textcompwordmark{}") and
-            lines[i+1].startswith("-")):
-            lines[i] = line.replace(r"\SpecialChar \textcompwordmark{}",
-                                    lines.pop(i+1))
-        else:
-            i += 1
+    i = 0
+    while True:
+        i = find_substring(document.body, 
+                           r"-\SpecialChar \textcompwordmark{}", i+1)
+        if i == -1:
+            break
+        if document.body[i+1].startswith("-"):
+            document.body[i] = document.body[i].replace(
+                r"\SpecialChar \textcompwordmark{}", document.body.pop(i+1))
 
 
 def revert_dashes(document):
@@ -682,19 +681,18 @@ def revert_dashes(document):
                         r'\renewcommand{\textemdash}{---}'])
 
     # Insert ligature breaks to prevent ligation of hyphens to dashes:
-    lines = document.body
     i = 0
-    while i+1 < len(lines):
-        i += 1
-        line = lines[i]
-        if "--" not in line:
-            continue
+    while True:
+        i = find_substring(document.body, "--", i+1)
+        if i == -1:
+            break
+        line = document.body[i]
         # skip label width string (bug 10243):
         if line.startswith("\\labelwidthstring"):
             continue
         # do not touch hyphens in some insets (cf. convert_dashes):
         try:
-            value, start, end = get_containing_inset(lines, i)
+            value, start, end = get_containing_inset(document.body, i)
         except TypeError:
             # False means no (or malformed) containing inset
             value, start, end = "no inset", -1, -1
@@ -708,14 +706,14 @@ def revert_dashes(document):
 
     # Revert \twohyphens and \threehyphens:
     i = 1
-    while i < len(lines):
-        line = lines[i]
+    while i < len(document.body):
+        line = document.body[i]
         if not line.endswith("hyphens"):
             i +=1
         elif line.endswith("\\twohyphens") or line.endswith("\\threehyphens"):
             line = line.replace("\\twohyphens", "--")
             line = line.replace("\\threehyphens", "---")
-            lines[i] = line + lines.pop(i+1)
+            document.body[i] = line + document.body.pop(i+1)
         else:
             i += 1
 

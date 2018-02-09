@@ -12,7 +12,7 @@ logicalmkup
 \maintain_unincluded_children false
 \language bosnian
 \language_package default
-\inputencoding auto
+\inputencoding utf8
 \fontencoding global
 \font_roman "cochineal" "DejaVu Serif"
 \font_sans "lmss" "default"
@@ -295,5 +295,53 @@ y=x^{2}
 
 \end_layout
 
+\begin_layout Description
+Quote
+\begin_inset space ~
+\end_inset
+
+insets: Plain quote insets 
+\begin_inset Quotes qld
+\end_inset
+
+<file-
+\begin_inset Quotes qls
+\end_inset
+
+name
+\begin_inset Quotes qrs
+\end_inset
+
+>
+\begin_inset Quotes qrd
+\end_inset
+
+ vs.
+ literal quotes "<file-'name'>".
+\end_layout
+
+\begin_deeper
+\begin_layout Verbatim
+
+Quote insets in Verbatim: 
+\begin_inset Quotes cld
+\end_inset
+
+foo
+\begin_inset Quotes frd
+\end_inset
+
+ and 
+\begin_inset Quotes pls
+\end_inset
+
+bar
+\begin_inset Quotes prs
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \end_body
 \end_document

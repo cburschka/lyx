@@ -132,7 +132,6 @@ def revert_ibranches(document):
             continue
         if inverted:
             branch = document.body[i][20:].strip()
-            #document.warning(branch)
             if not branch in antibranches:
                 antibranch = "Anti-" + branch
                 while antibranch in antibranches:
@@ -140,7 +139,6 @@ def revert_ibranches(document):
                 antibranches[branch] = antibranch
             else:
                 antibranch = antibranches[branch]
-            #document.warning(antibranch)
             document.body[i] = "\\begin_inset Branch " + antibranch
 
     # now we need to add the new branches to the header
@@ -420,6 +418,7 @@ def revert_quotes(document):
         if len(words) > 1 and words[0] == "\\begin_inset" and \
            ( words[1] in ["ERT", "listings"] or ( len(words) > 2 and words[2] in ["URL", "Chunk", "Sweave", "S/R"]) ):
             j = find_end_of_inset(document.body, i)
+
             if j == -1:
                 document.warning("Malformed LyX document: Can't find end of " + words[1] + " inset at line " + str(i))
                 i += 1
@@ -434,10 +433,10 @@ def revert_quotes(document):
                     document.warning("Malformed LyX document: Can't find end of Quote inset at line " + str(k))
                     i = k
                     continue
-                replace = "\""
+                replace = '"'
                 if document.body[k].endswith("s"):
                     replace = "'"
-                document.body[k:l+1] = [replace]
+                document.body[k:l+2] = [replace]
         else:
             i += 1
             continue
@@ -467,7 +466,7 @@ def revert_quotes(document):
                 replace = "\""
                 if document.body[k].endswith("s"):
                     replace = "'"
-                document.body[k:l+1] = [replace]
+                document.body[k:l+2] = [replace]
         else:
             i += 1
             continue
@@ -498,7 +497,7 @@ def revert_quotes(document):
             replace = "\""
             if document.body[k].endswith("s"):
                 replace = "'"
-            document.body[k:l+1] = [replace]
+            document.body[k:l+2] = [replace]
         i = l
 
 
@@ -602,7 +601,7 @@ def revert_plainquote(document):
         replace = "\""
         if document.body[k].endswith("s"):
             replace = "'"
-        document.body[k:l+1] = [replace]
+        document.body[k:l+2] = [replace]
         i = l
 
 
@@ -1799,13 +1798,13 @@ def convert_dashligatures(document):
                                 ['% Added by lyx2lyx',
                                  r'\renewcommand{\textendash}{--}',
                                  r'\renewcommand{\textemdash}{---}']) or None
-
+    
     if use_dash_ligatures is None:
         # Look for dashes (Documents by LyX 2.1 or older have "\twohyphens\n"
         # or "\threehyphens\n" as interim representation for -- an ---.)
         lines = document.body
         has_literal_dashes = has_ligature_dashes = False
-        dash_pattern = re.compile(u"[\u2013\u2014]|\\twohyphens|\\threehyphens")
+        dash_pattern = re.compile(u".*[\u2013\u2014]|\\twohyphens|\\threehyphens")
         i = j = 0
         while True:
             # skip lines without dashes:
@@ -1837,13 +1836,13 @@ def convert_dashligatures(document):
                 i = end
                 continue
 
-            # literal dash followed by a word or no-break space:
-            if re.search(u"[\u2013\u2014]([\w\u00A0]|$)",
+            # literal dash followed by a non-white-character or no-break space:
+            if re.search(u"[\u2013\u2014]([\S\u00A0\u202F\u2060]|$)",
                          line, flags=re.UNICODE):
                 has_literal_dashes = True
-            # ligature dash followed by word or no-break space on next line:
+            # ligature dash followed by non-white-char or no-break space on next line:
             if (re.search(r"(\\twohyphens|\\threehyphens)", line) and
-                re.match(u"[\w\u00A0]", lines[i+1], flags=re.UNICODE)):
+                re.match(u"[\S\u00A0\u202F\u2060]", lines[i+1], flags=re.UNICODE)):
                 has_ligature_dashes = True
             if has_literal_dashes and has_ligature_dashes:
                 # TODO: insert a warning note in the document?
@@ -1866,40 +1865,46 @@ def convert_dashligatures(document):
 
 def revert_dashligatures(document):
     """Remove font ligature settings for en- and em-dashes.
-    Revert conversion of \twodashes or \threedashes to literal dashes."""
+    Revert conversion of \twodashes or \threedashes to literal dashes.
+    """
     use_dash_ligatures = del_value(document.header, "\\use_dash_ligatures")
     if use_dash_ligatures != "true" or document.backend != "latex":
         return
-    j = 0
-    new_body = []
-    for i, line in enumerate(document.body):
-        # Skip some document parts where dashes are not converted
-        if (i < j) or line.startswith("\\labelwidthstring"):
-            new_body.append(line)
+    i = 0
+    dash_pattern = re.compile(u".*[\u2013\u2014]")
+    while True:
+        # skip lines without dashes:
+        i = find_re(document.body, dash_pattern, i+1)
+        if i == -1:
+            break
+        line = document.body[i]
+        # skip label width string (see bug 10243):
+        if line.startswith("\\labelwidthstring"):
             continue
-        if (line.startswith("\\begin_inset ") and
-            line[13:].split()[0] in ["CommandInset", "ERT", "External",
-                "Formula", "FormulaMacro", "Graphics", "IPA", "listings"]
-            or line == "\\begin_inset Flex Code"):
-            j = find_end_of_inset(document.body, i)
-            if j == -1:
-                document.warning("Malformed LyX document: Can't find end of "
-                                 + words[1] + " inset at line " + str(i))
-            new_body.append(line)
+        # do not touch hyphens in some insets (cf. lyx_2_2.convert_dashes):
+        try:
+            inset_type, start, end = get_containing_inset(document.body, i)
+        except TypeError: # no containing inset
+            inset_type, start, end = "no inset", -1, -1
+        if (inset_type.split()[0] in
+            ["CommandInset", "ERT", "External", "Formula",
+                "FormulaMacro", "Graphics", "IPA", "listings"]
+            or inset_type == "Flex Code"):
+            i = end
             continue
-        if line == "\\begin_layout LyX-Code":
-            j = find_end_of_layout(document.body, i)
-            if j == -1:
-                document.warning("Malformed LyX document: "
-                    "Can't find end of %s layout at line %d" % (words[1],i))
-            new_body.append(line)
+        try:
+            layoutname, start, end, j = get_containing_layout(document.body, i)
+        except TypeError: # no (or malformed) containing layout
+            document.warning("Malformed LyX document: "
+                            "Can't find layout at body line %d" % i)
+            continue
+        if layoutname == "LyX-Code":
+            i = end
             continue
         # TODO: skip replacement in typewriter fonts
         line = line.replace(u'\u2013', '\\twohyphens\n')
         line = line.replace(u'\u2014', '\\threehyphens\n')
-        lines = line.split('\n')
-        new_body.extend(line.split('\n'))
-    document.body = new_body
+        document.body[i:i+1] = line.split('\n')
     # redefine the dash LICRs to use ligature dashes:
     add_to_preamble(document, [r'\renewcommand{\textendash}{--}',
                                r'\renewcommand{\textemdash}{---}'])
