@@ -2000,7 +2000,10 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 							new InsetMathBig(t.cs(), delim)));
 					else {
 						cell->push_back(createInsetMath(t.cs(), buf));
-						putback();
+						// For some reason delim.empty()
+						// is always false here
+						if (delim.at(0))
+							putback();
 					}
 				}
 
