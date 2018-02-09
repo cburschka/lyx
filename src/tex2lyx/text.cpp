@@ -4414,7 +4414,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				// \nocite{*} option
 				btprint.clear();
 			}
-			os << "bibfiles " << '"' << p.verbatim_item() << '"' << "\n";
+			os << "bibfiles " << '"' << normalize_filename(p.verbatim_item()) << '"' << "\n";
 			// Do we have addcontentsline?
 			if (contentslineContent == "\\refname") {
 				BibOpts = "bibtotoc";
@@ -4424,9 +4424,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// Do we have a bibliographystyle set?
 			if (!bibliographystyle.empty()) {
 				if (BibOpts.empty())
-					BibOpts = bibliographystyle;
+					BibOpts = normalize_filename(bibliographystyle);
 				else
-					BibOpts = BibOpts + ',' + bibliographystyle;
+					BibOpts = BibOpts + ',' + normalize_filename(bibliographystyle);
 				// clear it because each bibtex entry has its style
 				// and we need an empty string to handle \phantomsection
 				bibliographystyle.clear();
