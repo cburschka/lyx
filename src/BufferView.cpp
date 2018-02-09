@@ -1667,11 +1667,12 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		from = cur.selectionBegin();
 		to = cur.selectionEnd();
 
-		string newId = cmd.getArg(0);
-		bool fetchId=newId.empty(); //if we wait for groupId from first graphics inset
+		string const newId = cmd.getArg(0);
+		bool fetchId = newId.empty(); //if we wait for groupId from first graphics inset
 
 		InsetGraphicsParams grp_par;
-		InsetGraphics::string2params(graphics::getGroupParams(buffer_, newId), buffer_, grp_par);
+		if (!fetchId)
+			InsetGraphics::string2params(graphics::getGroupParams(buffer_, newId), buffer_, grp_par);
 
 		if (!from.nextInset())	//move to closest inset
 			from.forwardInset();
@@ -1680,15 +1681,12 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			Inset * inset = from.nextInset();
 			if (!inset)
 				break;
-			if (inset->lyxCode() == GRAPHICS_CODE) {
-				InsetGraphics * ig = inset->asInsetGraphics();
-				if (!ig)
-					break;
+			InsetGraphics * ig = inset->asInsetGraphics();
+			if (ig) {
 				InsetGraphicsParams inspar = ig->getParams();
 				if (fetchId) {
 				        grp_par = inspar;
 					fetchId = false;
-
 				} else {
 					grp_par.filename = inspar.filename;
 					ig->setParams(grp_par);
