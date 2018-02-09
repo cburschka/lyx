@@ -697,7 +697,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 	ifstream ifs(fn.toFilesystemEncoding().c_str());
 	bool fle_style = false;
 	static regex const file_line_error(".+\\.\\D+:[0-9]+: (.+)");
-	static regex const child_file(".*([0-9]+[A-Za-z]*_.+\\.tex).*");
+	static regex const child_file("[^0-9]*([0-9]+[A-Za-z]*_.+\\.tex).*");
 	// Flag for 'File ended while scanning' message.
 	// We need to wait for subsequent processing.
 	string wait_for_error;
@@ -732,8 +732,12 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				string const substr = token.substr(i + 1, len);
 				if (regex_match(substr, sub, child_file)) {
 					string const name = sub.str(1);
-					child.push(make_pair(name, pnest));
-					children.push_back(name);
+					// Sometimes also masters have a name that matches
+					// (if their name starts with a number and _)
+					if (name != file.onlyFileName()) {
+						child.push(make_pair(name, pnest));
+						children.push_back(name);
+					}
 					i += len;
 				}
 			} else if (token[i] == ')') {
