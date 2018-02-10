@@ -816,11 +816,11 @@ void switchBetweenClasses(DocumentClassConstPtr oldone,
 
 	// character styles and hidden table cells
 	InsetIterator const i_end = inset_iterator_end(in);
-	for (InsetIterator it = inset_iterator_begin(in); it != i_end; ++it) {
-		InsetCode const code = it->lyxCode();
+	for (InsetIterator iit = inset_iterator_begin(in); iit != i_end; ++iit) {
+		InsetCode const code = iit->lyxCode();
 		if (code == FLEX_CODE) {
 			// FIXME: Should we verify all InsetCollapsible?
-			docstring const layoutName = it->layoutName();
+			docstring const layoutName = iit->layoutName();
 			docstring const & n = newone->insetLayout(layoutName).name();
 			bool const is_undefined = n.empty() ||
 				n == DocumentClass::plainInsetLayout().name();
@@ -841,14 +841,14 @@ void switchBetweenClasses(DocumentClassConstPtr oldone,
 			// To warn the user that something had to be done.
 			errorlist.push_back(ErrorItem(
 			                              _("Undefined flex inset"), s,
-			                              {it.paragraph().id(), it.pos()},
-			                              {it.paragraph().id(), it.pos()+1}));
+						      {iit.paragraph().id(), iit.pos()},
+						      {iit.paragraph().id(), iit.pos() + 1}));
 		} else if (code == TABULAR_CODE) {
 			// The recursion above does not catch paragraphs in "hidden" cells,
 			// i.e., ones that are part of a multirow or multicolum. So we need
 			// to handle those separately.
 			// This is the cause of bug #9049.
-			InsetTabular * table = it->asInsetTabular();
+			InsetTabular * table = iit->asInsetTabular();
 			table->setLayoutForHiddenCells(newtc);
 		}
 	}
