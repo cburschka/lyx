@@ -98,7 +98,7 @@ checkExitCode
 # build LyX
 #
 
-mergefile=-DLYX_MERGE_FILES=1
+mergefile=-DLYX_MERGE_FILES=0
 #pch=-DLYX_PCH=1
 
 cmake $lyxsrcdir \

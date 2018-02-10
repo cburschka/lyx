@@ -240,22 +240,29 @@ if(LYX_USE_QT MATCHES "QT5")
   else()
     set(lyx_qt5_config "QtCore/qconfig.h")
   endif()
-  check_cxx_source_runs(
-    "
-    #include <${lyx_qt5_config}>
-    #include <string>
-    using namespace std;
-    string a(QT_QPA_DEFAULT_PLATFORM_NAME);
-    int main(int argc, char **argv)
-    {
-      if (a.compare(\"xcb\") == 0)
-	return(0);
-      else
-	return 1;
-    }
-    "
-    QT_USES_X11)
-  set(QPA_XCB ${QT_USES_X11})
+  if(WIN32)
+    set(QT_USES_X11 CACHE "Win32 compiled without X11" 0)
+    # The try_run for minngw would not work here anyway
+  else()
+    check_cxx_source_runs(
+      "
+      #include <${lyx_qt5_config}>
+      #include <string>
+      using namespace std;
+      string a(QT_QPA_DEFAULT_PLATFORM_NAME);
+      int main(int argc, char **argv)
+      {
+	if (a.compare(\"xcb\") == 0)
+	  return(0);
+	else
+	  return 1;
+      }
+      "
+      QT_USES_X11)
+    if(QT_USES_X11)
+      set(QPA_XCB ${QT_USES_X11})
+    endif()
+  endif()
 
   if (Qt5X11Extras_FOUND)
     get_target_property(_x11extra_prop Qt5::X11Extras IMPORTED_CONFIGURATIONS)
