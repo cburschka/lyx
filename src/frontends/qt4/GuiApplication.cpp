@@ -2271,8 +2271,12 @@ void GuiApplication::processFuncRequestAsync(FuncRequest const & func)
 void GuiApplication::processFuncRequestQueue()
 {
 	while (!d->func_request_queue_.empty()) {
-		processFuncRequest(d->func_request_queue_.front());
+		// take the item from the stack _before_ processing the
+		// request in order to avoid race conditions from nested
+		// or parallel requests (see #10406)
+		FuncRequest const fr(d->func_request_queue_.front());
 		d->func_request_queue_.pop();
+		processFuncRequest(fr);
 	}
 }
 
