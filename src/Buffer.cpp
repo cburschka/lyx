@@ -2528,10 +2528,6 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 	}
 
-	case LFUN_BUFFER_CHKTEX:
-		enable = params().isLatex() && !lyxrc.chktex_command.empty();
-		break;
-
 	case LFUN_BUILD_PROGRAM:
 		enable = params().isExportable("program", false);
 		break;
@@ -2643,10 +2639,6 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 			dr.setMessage(_("Error generating literate programming code."));
 		break;
 	}
-
-	case LFUN_BUFFER_CHKTEX:
-		runChktex();
-		break;
 
 	case LFUN_BUFFER_EXPORT_CUSTOM: {
 		string format_name;

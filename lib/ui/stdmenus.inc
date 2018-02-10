@@ -595,7 +595,7 @@ Menuset
 		Item "Spellchecker...|S" "dialog-show spellchecker"
 		OptItem "Thesaurus...|T" "thesaurus-entry"
 		Item "Statistics...|a" "statistics"
-		OptItem "Check TeX|h" "buffer-chktex"
+		Item "Check TeX|h" "buffer-chktex"
 		Item "TeX Information|I" "dialog-show texinfo"
 		Item "Compare...|C" "dialog-show compare"
 		Separator

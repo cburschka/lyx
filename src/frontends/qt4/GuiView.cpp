@@ -1931,6 +1931,19 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		enable = theBufferList().last() != theBufferList().first();
 		break;
 
+	case LFUN_BUFFER_CHKTEX: {
+		if (!doc_buffer || !doc_buffer->params().isLatex()
+		    || d.processing_thread_watcher_.isRunning()) {
+			// grey out, don't hide
+			enable = false;
+			break;
+		}
+		// hide if we have no checktex command
+		enable = !lyxrc.chktex_command.empty();
+		flag.setUnknown(!enable);
+		break;
+	}
+
 	case LFUN_VIEW_SPLIT:
 		if (cmd.getArg(0) == "vertical")
 			enable = doc_buffer && (d.splitter_->count() == 1 ||
@@ -3792,6 +3805,11 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 		case LFUN_BUFFER_MOVE_PREVIOUS:
 			gotoNextOrPreviousBuffer(PREVBUFFER, true);
+			break;
+
+		case LFUN_BUFFER_CHKTEX:
+			LASSERT(doc_buffer, break);
+			doc_buffer->runChktex();
 			break;
 
 		case LFUN_COMMAND_EXECUTE: {
