@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-01-28 21:42-0500\n"
-"PO-Revision-Date: 2018-02-04 20:42+0200\n"
+"PO-Revision-Date: 2018-02-09 17:11+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -5501,6 +5501,11 @@ msgid ""
 "than normal Biblatex. As with normal Biblatex, the use of 'biber' as "
 "Bibliography processor is advised."
 msgstr ""
+"Эта вариация Biblatex эмулирует команды цитирования Natbib и поэтому "
+"наилучшим образом подходит для перехода от Natbib (или обходного решения в "
+"LyX до версии 2.3) к Biblatex. Режим natbib поддерживает несколько больше "
+"стилей, чем обычный Biblatex. Как и для обычного Biblatex рекомендуется "
+"использование 'biber' в качестве процессора библиографии."
 
 #: lib/citeengines/biblatex-natbib.citeengine:142
 #: lib/citeengines/biblatex.citeengine:132
@@ -5590,6 +5595,11 @@ msgid ""
 "many features that are not possible with BibTeX. The use of 'biber' as "
 "bibliography processor is advised."
 msgstr ""
+"Biblatex поддерживает множество стилей типа автор-год и численных стилей, "
+"что в основном ориентировано на использование в гуманитарных науках. Он "
+"широко настраиваемый, полностью локализованный и предоставляет множество "
+"функций, которые невозможны в BibTeX. Рекомендуется использование 'biber' в "
+"качестве процессора библиографии."
 
 #: lib/citeengines/biblatex.citeengine:139
 msgid "S&horten author list[[Possible substitute to All aut&hors]]"
@@ -5609,6 +5619,10 @@ msgid ""
 "studies and the Humanities. It includes localizations for English, German, "
 "French, Dutch, Spanish and Italian."
 msgstr ""
+"Jurabib поддерживает ряд стилей автор-год и в первую очередь подходит для "
+"юридических и гуманитарных наук. Он включает в себя локализации для "
+"английского, немецкого, французского, голландского, испанского и "
+"итальянского языков."
 
 #: lib/citeengines/jurabib.citeengine:125
 msgid "Bibliography entry."
@@ -5639,6 +5653,10 @@ msgid ""
 "numerical citations, annotations, capitalization of the `van' part of author "
 "names, shortened and full author lists, and more."
 msgstr ""
+"Natbib поддерживает целый ряд стилей автор-год и численных стилей, главным "
+"образом направленных на гуманитарные науки. Он имеет автоматическую "
+"сортировку и слияние числовых цитирований, аннотаций, капитализацию части "
+"имен авторов, сокращенные и полные списки авторов и многое другое."
 
 #: lib/layouts/AEA.layout:3
 msgid "American Economic Association (AEA)"
@@ -10910,27 +10928,27 @@ msgstr "Elsevier"
 
 #: lib/layouts/elsarticle.layout:57
 msgid "BeginFrontmatter"
-msgstr ""
+msgstr "Начало вступ. части"
 
 #: lib/layouts/elsarticle.layout:67
 msgid "Begin frontmatter"
-msgstr ""
+msgstr "Начало вступ. части"
 
 #: lib/layouts/elsarticle.layout:75
 msgid "EndFrontmatter"
-msgstr ""
+msgstr "Конец вступ. части"
 
 #: lib/layouts/elsarticle.layout:78
 msgid "End frontmatter"
-msgstr ""
+msgstr "Конец вступ. части"
 
 #: lib/layouts/elsarticle.layout:103
 msgid "Titlenotemark"
-msgstr ""
+msgstr "Пометка заглавия"
 
 #: lib/layouts/elsarticle.layout:108
 msgid "Titlenote mark"
-msgstr ""
+msgstr "Пометка заглавия"
 
 #: lib/layouts/elsarticle.layout:126
 msgid "Title footnote"
@@ -10974,24 +10992,23 @@ msgstr "Метка сноски автора"
 
 #: lib/layouts/elsarticle.layout:201
 msgid "Label you refer to for an author"
-msgstr ""
+msgstr "Метка, на которую вы ссылаетесь для автора"
 
 #: lib/layouts/elsarticle.layout:206
-#, fuzzy
 msgid "CorAuthormark"
-msgstr "Автор-год"
+msgstr "Пометка отвечающего автора"
 
 #: lib/layouts/elsarticle.layout:209
 msgid "CorAuthor mark"
-msgstr ""
+msgstr "Пометка отвечающего автора"
 
 #: lib/layouts/elsarticle.layout:216
 msgid "Corresponding author"
-msgstr ""
+msgstr "Отвечающий автор"
 
 #: lib/layouts/elsarticle.layout:219
 msgid "Corresponding author text:"
-msgstr ""
+msgstr "Текст отвечающего автора:"
 
 #: lib/layouts/elsarticle.layout:230
 msgid "Address Label"
@@ -10999,7 +11016,7 @@ msgstr "Метка адреса"
 
 #: lib/layouts/elsarticle.layout:231
 msgid "Label of the author you refer to"
-msgstr ""
+msgstr "Метка автора, на которую вы ссылаетесь"
 
 #: lib/layouts/elsarticle.layout:248
 msgid "Internet"
@@ -11008,6 +11025,7 @@ msgstr "Интернет"
 #: lib/layouts/elsarticle.layout:249
 msgid "If content is 'url', email becomes an Internet address"
 msgstr ""
+"Если содержимое это 'url', то электронная почта становится интернет-адресом"
 
 #: lib/layouts/endnotes.module:2 lib/layouts/endnotes.module:13
 msgid "Endnote"
@@ -11023,7 +11041,7 @@ msgstr ""
 
 #: lib/layouts/endnotes.module:10
 msgid "Endnote ##"
-msgstr ""
+msgstr "Примечание ##"
 
 #: lib/layouts/endnotes.module:23
 msgid "endnote"
@@ -11106,14 +11124,12 @@ msgid "Curricula Vitae"
 msgstr "Резюме"
 
 #: lib/layouts/europasscv.layout:94 lib/layouts/europecv.layout:47
-#, fuzzy
 msgid "FooterName"
-msgstr "Подвал:"
+msgstr "НазваниеПодвала"
 
 #: lib/layouts/europasscv.layout:97
-#, fuzzy
 msgid "Name (footer):"
-msgstr "Последний подвал:"
+msgstr "Имя (подвал):"
 
 #: lib/layouts/europasscv.layout:111 lib/layouts/moderncv.layout:166
 msgid "Mobile:"
@@ -11134,7 +11150,7 @@ msgstr "Домашняя страница:"
 
 #: lib/layouts/europasscv.layout:134
 msgid "InstantMessaging"
-msgstr ""
+msgstr "Мгновенный обмен сообщениями"
 
 #: lib/layouts/europasscv.layout:137
 msgid "Instant Messaging:"
@@ -11179,7 +11195,7 @@ msgstr "ДоИзображения"
 
 #: lib/layouts/europasscv.layout:167 lib/layouts/europecv.layout:102
 msgid "Space before picture:"
-msgstr ""
+msgstr "Пространство перед изображением:"
 
 #: lib/layouts/europasscv.layout:170 lib/layouts/europecv.layout:105
 msgid "Picture"
@@ -11199,7 +11215,7 @@ msgstr "ПослеИзображения"
 
 #: lib/layouts/europasscv.layout:184 lib/layouts/europecv.layout:120
 msgid "Space after picture:"
-msgstr ""
+msgstr "Пространство после изображения:"
 
 #: lib/layouts/europasscv.layout:195 lib/layouts/europasscv.layout:218
 #: lib/layouts/europasscv.layout:254 lib/layouts/europecv.layout:162
@@ -11221,7 +11237,7 @@ msgstr "Пункт"
 
 #: lib/layouts/europasscv.layout:225 lib/layouts/europasscv.layout:261
 msgid "Summary of the item, can also be the time span"
-msgstr ""
+msgstr "Сводка элемента, также может быть временным интервалом"
 
 #: lib/layouts/europasscv.layout:231 lib/layouts/europecv.layout:176
 #: lib/layouts/moderncv.layout:388
@@ -11234,67 +11250,59 @@ msgstr "ПунктВставки"
 
 #: lib/layouts/europasscv.layout:263
 msgid "Subitems"
-msgstr ""
+msgstr "Подпункты"
 
 #: lib/layouts/europasscv.layout:270
-#, fuzzy
 msgid "TitleItem"
-msgstr "Заметка в подвал"
+msgstr "Элемент заглавия"
 
 #: lib/layouts/europasscv.layout:274
-#, fuzzy
 msgid "Title item:"
-msgstr "Название:"
+msgstr "Элемент заглавия:"
 
 #: lib/layouts/europasscv.layout:277
-#, fuzzy
 msgid "TitleLevel"
-msgstr "Заглавие"
+msgstr "Уровень заглавия"
 
 #: lib/layouts/europasscv.layout:281
-#, fuzzy
 msgid "Title level:"
-msgstr "Название:"
+msgstr "Уровень заглавия:"
 
 #: lib/layouts/europasscv.layout:285 lib/layouts/europasscv.layout:286
 msgid "Text (right side)"
-msgstr ""
+msgstr "Текст (справа)"
 
 #: lib/layouts/europasscv.layout:290
-#, fuzzy
 msgid "BlueItem"
-msgstr "Маркеры"
+msgstr "Голубой элемент"
 
 #: lib/layouts/europasscv.layout:293
 msgid "Blue item:"
-msgstr ""
+msgstr "Голубой элемент:"
 
 #: lib/layouts/europasscv.layout:296
 msgid "BlueItemInset"
-msgstr "Пользовательские вставки"
+msgstr "Вставка голубого элемента"
 
 #: lib/layouts/europasscv.layout:299
 msgid "Blue subitems"
-msgstr ""
+msgstr "Голубые подэлементы"
 
 #: lib/layouts/europasscv.layout:306
-#, fuzzy
 msgid "BigItem"
-msgstr "Перечисление"
+msgstr "Большой элемент"
 
 #: lib/layouts/europasscv.layout:309
-#, fuzzy
 msgid "Big Item:"
-msgstr "Элемент Списка:"
+msgstr "Большой элемент:"
 
 #: lib/layouts/europasscv.layout:312
-#, fuzzy
 msgid "EcvItemize"
-msgstr "Перечисление"
+msgstr "Ecv-Перечисление"
 
 #: lib/layouts/europasscv.layout:336 lib/layouts/europecv.layout:216
 msgid "MotherTongue"
-msgstr ""
+msgstr "Родной язык"
 
 #: lib/layouts/europasscv.layout:345 lib/layouts/europecv.layout:230
 msgid "Mother Tongue:"
@@ -11302,11 +11310,11 @@ msgstr "Родной язык:"
 
 #: lib/layouts/europasscv.layout:355 lib/layouts/europecv.layout:240
 msgid "LangHeader"
-msgstr ""
+msgstr "Заголовок языка"
 
 #: lib/layouts/europasscv.layout:359 lib/layouts/europecv.layout:244
 msgid "Language Header:"
-msgstr ""
+msgstr "Заголовок языка:"
 
 #: lib/layouts/europasscv.layout:376 lib/layouts/europecv.layout:250
 msgid "Language:"
@@ -11322,7 +11330,7 @@ msgstr "Прослушивание"
 
 #: lib/layouts/europasscv.layout:387 lib/layouts/europecv.layout:259
 msgid "Level how good you think you can listen"
-msgstr ""
+msgstr "Уровень (как вы думаете) насколько хорошо вы можете слушать"
 
 #: lib/layouts/europasscv.layout:392 lib/layouts/europecv.layout:263
 msgid "Reading"
@@ -11330,23 +11338,23 @@ msgstr "Чтение"
 
 #: lib/layouts/europasscv.layout:393 lib/layouts/europecv.layout:264
 msgid "Level how good you think you can read"
-msgstr ""
+msgstr "Уровень (как вы думаете) насколько хорошо вы можете читать"
 
 #: lib/layouts/europasscv.layout:398 lib/layouts/europecv.layout:268
 msgid "Interaction"
-msgstr ""
+msgstr "Взаимодействие"
 
 #: lib/layouts/europasscv.layout:399 lib/layouts/europecv.layout:269
 msgid "Level how good you think you can conversate"
-msgstr ""
+msgstr "Уровень (как вы думаете) насколько хорошо вы можете вести переговоры"
 
 #: lib/layouts/europasscv.layout:404 lib/layouts/europecv.layout:273
 msgid "Production"
-msgstr ""
+msgstr "Производство"
 
 #: lib/layouts/europasscv.layout:405 lib/layouts/europecv.layout:274
 msgid "Level how good you think you can freely talk"
-msgstr ""
+msgstr "Уровень (как вы думаете) насколько хорошо вы можете свободно говорить"
 
 #: lib/layouts/europasscv.layout:409 lib/layouts/europecv.layout:278
 msgid "LastLanguage"
@@ -11357,14 +11365,12 @@ msgid "Last Language:"
 msgstr "Последний язык:"
 
 #: lib/layouts/europasscv.layout:415 lib/layouts/europecv.layout:284
-#, fuzzy
 msgid "LangFooter"
-msgstr "Подвал:"
+msgstr "ПодвалЯзыка"
 
 #: lib/layouts/europasscv.layout:418 lib/layouts/europecv.layout:287
-#, fuzzy
 msgid "Language Footer:"
-msgstr "Подвал:"
+msgstr "Подвал языка:"
 
 #: lib/layouts/europasscv.layout:421 lib/layouts/europecv.layout:290
 msgid "End"
@@ -11396,7 +11402,7 @@ msgstr "Размер"
 
 #: lib/layouts/europecv.layout:112
 msgid "Size the photo is resized to"
-msgstr ""
+msgstr "Размер фотографии изменяет размер на"
 
 #: lib/layouts/europecv.layout:123 src/frontends/qt4/GuiDocument.cpp:135
 msgid "Page"
@@ -11408,16 +11414,15 @@ msgstr "Заглавие, как оно будет показываться в �
 
 #: lib/layouts/europecv.layout:170
 msgid "Summary of the item, can also be the time"
-msgstr ""
+msgstr "Сводная информация о предмете, также может быть временем"
 
 #: lib/layouts/europecv.layout:183
-#, fuzzy
 msgid "BulletedItem"
-msgstr "Маркеры"
+msgstr "Маркированный элемент"
 
 #: lib/layouts/europecv.layout:186
 msgid "Bulleted Item:"
-msgstr ""
+msgstr "Маркированный элемент:"
 
 #: lib/layouts/europecv.layout:189
 msgid "Begin"
@@ -11429,7 +11434,7 @@ msgstr "Начало резюме"
 
 #: lib/layouts/europecv.layout:208
 msgid "PersonalInfo"
-msgstr "PersonalInfo"
+msgstr "Персональные данные"
 
 #: lib/layouts/europecv.layout:213
 msgid "Personal Info"
@@ -11481,6 +11486,9 @@ msgid ""
 "available with arbitrary sizes. For details see the documentation of the fix-"
 "cm.sty package: http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
 msgstr ""
+"Fix-cm улучшает внешний вид шрифтов Computer Modern и делает их доступными с "
+"произвольными размерами. Дополнительные сведения см. в документации по пакет "
+"fix-cm.sty: http://tug.org/texmf-dist/doc/latex/base/fixltx2e.pdf"
 
 #: lib/layouts/fixltx2e.module:2
 msgid "Fix LaTeX"
@@ -11496,6 +11504,13 @@ msgid ""
 "functionality of fixltx2e, so the fixltx2e module becomes obsolete with "
 "newer LaTeX distributions."
 msgstr ""
+"Загружает пакет LaTeX fixltx2e, который содержит некоторые исправления "
+"ошибок для LaTeX. Эти исправления не были частью старых ядер LaTeX из-за "
+"обратной совместимости. Если вы используете этот модуль ваш свёрстанный "
+"документ может выглядеть по-разному на разных версиях LaTeX, в зависимости "
+"от версии fixltx2e. Примечание: последние ядра LaTeX (по состоянию на "
+"01-01-2015) включают в себя функции fixltx2e, поэтому модуль fixltx2e "
+"становится устаревшим при использовании новых дистрибутивов LaTeX."
 
 #: lib/layouts/fixme.module:2
 msgid "FiXme"
@@ -11512,6 +11527,15 @@ msgid ""
 "them always, insert \\fxsetup{draft} to Document > Settings > Preamble. NOTE "
 "also that you need version 4 or later of the FiXme package for some features."
 msgstr ""
+"Предоставляет аннотации \"FiXme\" (на полях) для целей пересмотра документа. "
+"Список аннотаций можно создать с помощью стиля абзаца \"Список FIXME\". "
+"Аннотации настраиваются с помощью преамбулы LaTeX. Подробности см. в "
+"документации FIXme. Примечание: по умолчанию заметки отображаются только в "
+"режиме черновика (если опция \"draft\" вставлена в Документ > Настройки > "
+"Класс документа > Параметры класса > Пользовательские). Чтобы отобразить их "
+"всегда, вставьте \\fxsetup{draft} в Документ > Настройки > Преамбула. "
+"Обратите внимание также, что для некоторых функций требуется версия 4 или "
+"более поздняя пакета FiXme."
 
 #: lib/layouts/fixme.module:17 lib/layouts/fixme.module:55
 msgid "Fixme"
@@ -11531,14 +11555,13 @@ msgstr "Заметка Fixme"
 
 #: lib/layouts/fixme.module:68 lib/layouts/fixme.module:103
 #: lib/layouts/fixme.module:146 lib/layouts/fixme.module:188
-#, fuzzy
 msgid "Fixme Note Options|s"
-msgstr "Параметры математики"
+msgstr "Параметры заметок Fixme"
 
 #: lib/layouts/fixme.module:69 lib/layouts/fixme.module:104
 #: lib/layouts/fixme.module:147 lib/layouts/fixme.module:189
 msgid "Consult the fixme package documentation for options"
-msgstr ""
+msgstr "Обратитесь к документации пакета fixme для вариантов"
 
 #: lib/layouts/fixme.module:74
 msgid "Fixme Warning"
@@ -11569,52 +11592,51 @@ msgstr "Фатальная ошибка"
 
 #: lib/layouts/fixme.module:97
 msgid "Fixme Note (Targeted)"
-msgstr ""
+msgstr "Заметка Fixme (нацеленная)"
 
 #: lib/layouts/fixme.module:99
 msgid "Fixme (Targeted)"
-msgstr ""
+msgstr "Fixme (нацеленная)"
 
 #: lib/layouts/fixme.module:109
 msgid "Fixme Note|x"
-msgstr ""
+msgstr "Заметка Fixme"
 
 #: lib/layouts/fixme.module:111
-#, fuzzy
 msgid "Insert the FIXME note here"
-msgstr "Вставить заметку"
+msgstr "Вставить заметку FIXME здесь"
 
 #: lib/layouts/fixme.module:116
 msgid "Fixme Warning (Targeted)"
-msgstr ""
+msgstr "Предупреждение Fixme (нацеленное)"
 
 #: lib/layouts/fixme.module:118
 msgid "Warning (Targeted)"
-msgstr ""
+msgstr "Предупреждение (нацеленное)"
 
 #: lib/layouts/fixme.module:122
 msgid "Fixme Error (Targeted)"
-msgstr ""
+msgstr "Ошибка Fixme (нацеленная)"
 
 #: lib/layouts/fixme.module:124
 msgid "Error (Targeted)"
-msgstr ""
+msgstr "Ошибка (нацеленная)"
 
 #: lib/layouts/fixme.module:128
 msgid "Fixme Fatal (Targeted)"
-msgstr ""
+msgstr "Фатальная ошибка Fixme (нацеленная)"
 
 #: lib/layouts/fixme.module:130
 msgid "Fatal (Targeted)"
-msgstr ""
+msgstr "Фатальная ошибка (нацеленная)"
 
 #: lib/layouts/fixme.module:139
 msgid "Fixme Note (Multipar)"
-msgstr ""
+msgstr "Заметка Fixme (Multipar)"
 
 #: lib/layouts/fixme.module:141
 msgid "Fixme (Multipar)"
-msgstr ""
+msgstr "Fixme (Multipar)"
 
 #: lib/layouts/fixme.module:153 lib/layouts/fixme.module:195
 msgid "Fixme Summary"
@@ -11622,39 +11644,39 @@ msgstr "Сводка Fixme"
 
 #: lib/layouts/fixme.module:154 lib/layouts/fixme.module:196
 msgid "Insert a summary of the FIXME note here"
-msgstr ""
+msgstr "Вставьте сводку заметки FIXME здесь"
 
 #: lib/layouts/fixme.module:159
 msgid "Fixme Warning (Multipar)"
-msgstr ""
+msgstr "Предупреждение Fixme (Multipar)"
 
 #: lib/layouts/fixme.module:161
 msgid "Warning (Multipar)"
-msgstr ""
+msgstr "Предупреждение (Multipar)"
 
 #: lib/layouts/fixme.module:165
 msgid "Fixme Error (Multipar)"
-msgstr ""
+msgstr "Ошибка Fixme (Multipar)"
 
 #: lib/layouts/fixme.module:167
 msgid "Error (Multipar)"
-msgstr ""
+msgstr "Ошибка (Multipar)"
 
 #: lib/layouts/fixme.module:171
 msgid "Fixme Fatal (Multipar)"
-msgstr ""
+msgstr "Фатальная ошибка Fixme (Multipar)"
 
 #: lib/layouts/fixme.module:173
 msgid "Fatal (Multipar)"
-msgstr ""
+msgstr "Фатальная ошибка (Multipar)"
 
 #: lib/layouts/fixme.module:182
 msgid "Fixme Note (Multipar Targeted)"
-msgstr ""
+msgstr "Заметка Fixme (Multipar Targeted)"
 
 #: lib/layouts/fixme.module:184
 msgid "Fixme (MP Targ.)"
-msgstr ""
+msgstr "Fixme (MP Targ.)"
 
 #: lib/layouts/fixme.module:200
 msgid "Annotated Text"
@@ -11670,27 +11692,27 @@ msgstr "Вставьте сюда текст для аннотации"
 
 #: lib/layouts/fixme.module:208
 msgid "Fixme Warning (Multipar Targeted)"
-msgstr ""
+msgstr "Предупреждение Fixme (Multipar Targeted)"
 
 #: lib/layouts/fixme.module:210
 msgid "Warning (MP Targ.)"
-msgstr ""
+msgstr "Предупреждение (MP Targ.)"
 
 #: lib/layouts/fixme.module:214
 msgid "Fixme Error (Multipar Targeted)"
-msgstr ""
+msgstr "Ошибка Fixme (Multipar Targeted)"
 
 #: lib/layouts/fixme.module:216
 msgid "Error (MP Targ.)"
-msgstr ""
+msgstr "Ошибка (MP Targ.)"
 
 #: lib/layouts/fixme.module:220
 msgid "Fixme Fatal (Multipar Targeted)"
-msgstr ""
+msgstr "Фатальная ошибка Fixme (Multipar Targeted)"
 
 #: lib/layouts/fixme.module:222
 msgid "Fatal (MP Targ.)"
-msgstr ""
+msgstr "Фатальная ошибка (MP Targ.)"
 
 #: lib/layouts/fixme.module:232
 msgid "FxNote"
@@ -11843,7 +11865,7 @@ msgstr ""
 
 #: lib/layouts/frletter.layout:3
 msgid "French Letter (frletter)"
-msgstr ""
+msgstr "French Letter (frletter)"
 
 #: lib/layouts/g-brief.layout:3
 msgid "G-Brief (V. 1, Obsolete)"
@@ -11954,11 +11976,11 @@ msgstr "Банковский счёт:"
 #: lib/layouts/g-brief.layout:179 lib/layouts/g-brief2.layout:42
 #: lib/layouts/g-brief2.layout:753
 msgid "PostalComment"
-msgstr "PostalComment"
+msgstr "Почтовый комментарий"
 
 #: lib/layouts/g-brief.layout:182 lib/layouts/g-brief2.layout:765
 msgid "PostalComment:"
-msgstr ""
+msgstr "Почтовый комментарий:"
 
 #: lib/layouts/g-brief.layout:207 lib/layouts/g-brief2.layout:894
 msgid "Reference:"
@@ -11970,7 +11992,7 @@ msgstr "Влож.:"
 
 #: lib/layouts/g-brief2.layout:3
 msgid "G-Brief (V. 2)"
-msgstr ""
+msgstr "G-Brief (V. 2)"
 
 #: lib/layouts/g-brief2.layout:103
 msgid "NameRowA"
@@ -12222,15 +12244,15 @@ msgstr "BankRowF:"
 
 #: lib/layouts/graphicboxes.module:2
 msgid "GraphicBoxes"
-msgstr ""
+msgstr "Графические блоки"
 
 #: lib/layouts/graphicboxes.module:5
 msgid "Boxes to scale and rotate its contents"
-msgstr ""
+msgstr "Блоки для масштабирования и поворота содержимого"
 
 #: lib/layouts/graphicboxes.module:11 lib/layouts/graphicboxes.module:14
 msgid "Reflectbox"
-msgstr ""
+msgstr "Блок отражения"
 
 #: lib/layouts/graphicboxes.module:26 lib/layouts/graphicboxes.module:28
 msgid "Scalebox"
@@ -12242,7 +12264,7 @@ msgstr "H-Factor"
 
 #: lib/layouts/graphicboxes.module:32
 msgid "Insert horizontal scale factor (1 = 100%)"
-msgstr ""
+msgstr "Вставить горизонтальный масштаб (1 = 100%)"
 
 #: lib/layouts/graphicboxes.module:38
 msgid "V-Factor"
@@ -12254,7 +12276,7 @@ msgstr "Вставить вертикальный масштаб (1 = 100%)"
 
 #: lib/layouts/graphicboxes.module:43 lib/layouts/graphicboxes.module:45
 msgid "Resizebox"
-msgstr ""
+msgstr "Блок изменения размера"
 
 #: lib/layouts/graphicboxes.module:49
 msgid "Width of the box"
@@ -12262,7 +12284,7 @@ msgstr "Ширина блока"
 
 #: lib/layouts/graphicboxes.module:56
 msgid "Height of the box, can also be '!' to keep aspect ratio"
-msgstr ""
+msgstr "Высота блока, также может быть \"!\" для сохранения пропорций"
 
 #: lib/layouts/graphicboxes.module:63 lib/layouts/graphicboxes.module:65
 msgid "Rotatebox"
@@ -12275,7 +12297,7 @@ msgstr "Начало"
 
 #: lib/layouts/graphicboxes.module:69
 msgid "Rotation origin; syntax: 'origin=lt' (for top left corner)"
-msgstr ""
+msgstr "Центр вращения; синтаксис: 'origin=lt' (для верхнего левого угла)"
 
 #: lib/layouts/graphicboxes.module:72
 msgid "Angle"
@@ -12283,11 +12305,11 @@ msgstr "Угол"
 
 #: lib/layouts/graphicboxes.module:73
 msgid "Rotation angle in degrees (counterclockwise)"
-msgstr ""
+msgstr "Угол поворота в градусах (против часовой стрелки)"
 
 #: lib/layouts/hanging.module:2 lib/layouts/hanging.module:16
 msgid "Hanging"
-msgstr "Висящие абзацы"
+msgstr "Висячие абзацы"
 
 #: lib/layouts/hanging.module:6
 msgid ""
@@ -12295,7 +12317,7 @@ msgid ""
 "in which the first line is set to the left margin, but all subsequent lines "
 "are indented."
 msgstr ""
-"Добавляет окружение для висящих абзацев. В таком абзаце первая строка "
+"Добавляет окружение для висячих абзацев. В таком абзаце первая строка "
 "начинается с левой границы, а все последующие строки имеют отступы."
 
 #: lib/layouts/heb-article.layout:3
@@ -12389,23 +12411,25 @@ msgid ""
 "precautionary statements. For a description see the file H-P-statements.lyx "
 "in LyX's examples folder."
 msgstr ""
+"Обеспечивает две вставки для вёрстки номеров и фраза о химической опасности "
+"и мерах предосторожности. Описание см. в файле H-P-statements.lyx в папке "
+"примеров LyX."
 
 #: lib/layouts/hpstatement.module:11 lib/layouts/hpstatement.module:16
 msgid "H-P number"
-msgstr ""
+msgstr "Номер H-P"
 
 #: lib/layouts/hpstatement.module:35 lib/layouts/hpstatement.module:38
 msgid "H-P statement"
-msgstr ""
+msgstr "Заявление H-P"
 
 #: lib/layouts/hpstatement.module:40
-#, fuzzy
 msgid "Statement Text"
-msgstr "Ссылка+Текст:"
+msgstr "Текст заявления"
 
 #: lib/layouts/hpstatement.module:41
 msgid "Text for statements that require some information"
-msgstr ""
+msgstr "Текст для заявлений, требующих некоторой информации"
 
 #: lib/layouts/ijmpc.layout:3
 msgid "Int. Journal of Modern Physics C"
@@ -12443,22 +12467,19 @@ msgstr "Название таблицы"
 
 #: lib/layouts/ijmpc.layout:265 lib/layouts/ijmpd.layout:268
 msgid "Refcite"
-msgstr ""
+msgstr "Ссылка"
 
 #: lib/layouts/ijmpc.layout:269 lib/layouts/ijmpd.layout:272
-#, fuzzy
 msgid "Cite reference"
-msgstr "все процитированные ссылки"
+msgstr "Ссылка"
 
 #: lib/layouts/ijmpc.layout:283 lib/layouts/ijmpd.layout:286
-#, fuzzy
 msgid "ItemList"
-msgstr "Перечисление"
+msgstr "ItemList"
 
 #: lib/layouts/ijmpc.layout:304 lib/layouts/ijmpd.layout:307
-#, fuzzy
 msgid "RomanList"
-msgstr "С засечками"
+msgstr "RomanList"
 
 #: lib/layouts/ijmpc.layout:310 lib/layouts/ijmpd.layout:313
 msgid "Numbering Scheme"
@@ -12469,6 +12490,8 @@ msgid ""
 "Use the largest item number in your list, e.g. '(iv)' for 4 Roman numbered "
 "items"
 msgstr ""
+"Используйте самый большой номер пункта в списке, например, '(iv)' для 4 при "
+"римской нумерации"
 
 #: lib/layouts/ijmpc.layout:372 lib/layouts/ijmpd.layout:384
 #: lib/layouts/theorems-ams-bytype.inc:106 lib/layouts/theorems-bytype.inc:75
@@ -12541,7 +12564,6 @@ msgid "Int. Journal of Modern Physics D"
 msgstr "Int. Journal of Modern Physics D"
 
 #: lib/layouts/ijmpd.layout:199 lib/layouts/ijmpd.layout:203
-#, fuzzy
 msgid "Comby"
 msgstr "Клавиатура"
 
@@ -12565,19 +12587,19 @@ msgstr "Буквица"
 
 #: lib/layouts/initials.module:35
 msgid "Option(s) for the initial"
-msgstr ""
+msgstr "Настройки для буквицы"
 
 #: lib/layouts/initials.module:40
 msgid "Initial letter(s)"
-msgstr ""
+msgstr "Литера буквицы"
 
 #: lib/layouts/initials.module:44
 msgid "Rest of Initial"
-msgstr ""
+msgstr "Остальная часть начального слова"
 
 #: lib/layouts/initials.module:45
 msgid "Rest of initial word or text"
-msgstr ""
+msgstr "Остальная часть исходного слова или текста"
 
 #: lib/layouts/iopart.layout:3
 msgid "Institute of Physics (IOP)"
@@ -12585,16 +12607,15 @@ msgstr "Institute of Physics (IOP)"
 
 #: lib/layouts/iopart.layout:67 lib/layouts/jasatex.layout:75
 msgid "Short title that will appear in header line"
-msgstr ""
+msgstr "Короткий Заголовок, который появится в строке заголовка"
 
 #: lib/layouts/iopart.layout:84
 msgid "Review"
 msgstr "Рецензирование"
 
 #: lib/layouts/iopart.layout:90
-#, fuzzy
 msgid "Topical"
-msgstr "Тема обсуждения"
+msgstr "Тематический"
 
 #: lib/layouts/iopart.layout:96 lib/layouts/pdfcomment.module:127
 #: lib/layouts/pdfcomment.module:164 lib/layouts/stdinsets.inc:133
@@ -12606,9 +12627,8 @@ msgid "Paper"
 msgstr "Бумага"
 
 #: lib/layouts/iopart.layout:114
-#, fuzzy
 msgid "Prelim"
-msgstr "Утверждение"
+msgstr "Предв."
 
 #: lib/layouts/iopart.layout:120
 msgid "Rapid"
@@ -12629,9 +12649,8 @@ msgid "MSC"
 msgstr "MSC"
 
 #: lib/layouts/iopart.layout:235
-#, fuzzy
 msgid "Mathematics Subject Classification number:"
-msgstr "обновлённых спецификаций классов документов."
+msgstr "Классификационный номер предмета математики:"
 
 #: lib/layouts/iopart.layout:239
 msgid "submitto"
@@ -12651,7 +12670,7 @@ msgstr "Заголовок библиографии"
 
 #: lib/layouts/isprs.layout:3
 msgid "Int. Society f. Photogrammetry and Remote Sensing (ISPRS)"
-msgstr ""
+msgstr "Int. Society f. Photogrammetry and Remote Sensing (ISPRS)"
 
 #: lib/layouts/isprs.layout:39
 msgid "ABSTRACT:"
@@ -12671,7 +12690,7 @@ msgstr "БЛАГОДАРНОСТИ"
 
 #: lib/layouts/iucr.layout:3
 msgid "International Union of Crystallography (IUCr)"
-msgstr ""
+msgstr "International Union of Crystallography (IUCr)"
 
 #: lib/layouts/iucr.layout:47 lib/layouts/jss.layout:26
 msgid "\\thesection."
@@ -12696,11 +12715,11 @@ msgstr "Основной автор"
 #: lib/layouts/iucr.layout:117 lib/layouts/iucr.layout:150
 #: lib/layouts/iucr.layout:181
 msgid "Affiliation Key"
-msgstr ""
+msgstr "Ключ принадлежности"
 
 #: lib/layouts/iucr.layout:118
 msgid "Affiliation key of the author"
-msgstr ""
+msgstr "Ключ принадлежности автора"
 
 #: lib/layouts/iucr.layout:122 lib/layouts/iucr.layout:123
 #: lib/layouts/iucr.layout:155 lib/layouts/iucr.layout:156
@@ -12717,19 +12736,19 @@ msgstr "Соавтор"
 
 #: lib/layouts/iucr.layout:151
 msgid "Affiliation key of the co-author"
-msgstr ""
+msgstr "Ключ принадлежности соавтора"
 
 #: lib/layouts/iucr.layout:160
 msgid "Short Author"
-msgstr ""
+msgstr "Краткий автор"
 
 #: lib/layouts/iucr.layout:163
 msgid "Short author:"
-msgstr ""
+msgstr "Краткий автор:"
 
 #: lib/layouts/iucr.layout:182
 msgid "Affiliation key"
-msgstr ""
+msgstr "Ключ принадлежности"
 
 #: lib/layouts/iucr.layout:197
 msgid "Keyword:"
@@ -12737,19 +12756,19 @@ msgstr "Ключевое слово:"
 
 #: lib/layouts/iucr.layout:200
 msgid "Vita"
-msgstr ""
+msgstr "Краткая биография"
 
 #: lib/layouts/iucr.layout:203
 msgid "Vita:"
-msgstr ""
+msgstr "Краткая биография:"
 
 #: lib/layouts/iucr.layout:206
 msgid "PDB reference"
-msgstr ""
+msgstr "Ссылка PDB"
 
 #: lib/layouts/iucr.layout:209
 msgid "PDB reference:"
-msgstr ""
+msgstr "Ссылка PDB:"
 
 #: lib/layouts/iucr.layout:212
 msgid "Optional name"
@@ -12757,11 +12776,11 @@ msgstr "Необязательное имя"
 
 #: lib/layouts/iucr.layout:216
 msgid "NDB reference"
-msgstr ""
+msgstr "Ссылка NDB"
 
 #: lib/layouts/iucr.layout:219
 msgid "NDB reference:"
-msgstr ""
+msgstr "Ссылка NDB:"
 
 #: lib/layouts/iucr.layout:222 lib/layouts/iucr.layout:225
 msgid "Synopsis"
@@ -12802,7 +12821,7 @@ msgstr "Номер препринта:"
 
 #: lib/layouts/jasatex.layout:247 lib/layouts/jasatex.layout:251
 msgid "Online citation"
-msgstr ""
+msgstr "Онлайн-цитата"
 
 #: lib/layouts/jbook.layout:3
 msgid "Japanese Book (Standard Class)"
@@ -12865,13 +12884,12 @@ msgid "pkg"
 msgstr "пакет"
 
 #: lib/layouts/jss.layout:156
-#, fuzzy
 msgid "Proglang"
-msgstr "Программа"
+msgstr "Язык программирования"
 
 #: lib/layouts/jss.layout:158
 msgid "proglang"
-msgstr "proglang"
+msgstr "язык программирования"
 
 #: lib/layouts/jss.layout:174 lib/layouts/logicalmkup.module:65
 msgid "code"
@@ -12898,9 +12916,8 @@ msgid "AddressForOffprints"
 msgstr "Адрес для оттиска"
 
 #: lib/layouts/kluwer.layout:210
-#, fuzzy
 msgid "Address for Offprints:"
-msgstr "Адрес не для печати"
+msgstr "Адрес для оттисков:"
 
 #: lib/layouts/kluwer.layout:220
 msgid "RunningTitle"
@@ -12908,7 +12925,7 @@ msgstr "Заголовок в колонтитуле"
 
 #: lib/layouts/kluwer.layout:228 lib/layouts/svcommon.inc:405
 msgid "Running title:"
-msgstr ""
+msgstr "Заголовок в колонтитуле:"
 
 #: lib/layouts/kluwer.layout:242
 msgid "RunningAuthor"
@@ -12916,7 +12933,7 @@ msgstr "Автор в колонтитуле"
 
 #: lib/layouts/kluwer.layout:249 lib/layouts/svcommon.inc:411
 msgid "Running author:"
-msgstr ""
+msgstr "Автор в колонтитуле:"
 
 #: lib/layouts/knitr.module:2 lib/configure.py:652
 msgid "Rnw (knitr)"
@@ -12928,6 +12945,10 @@ msgid ""
 "has to be installed for this module to work: install.packages('knitr'). Note "
 "it depends on R >= 2.14.1. For more info see http://yihui.name/knitr"
 msgstr ""
+"Использует пакет knitr в R для создания динамических отчетов. Этот пакет R "
+"должен быть установлен, чтобы этот модуль заработал: install."
+"packages('knitr'). Обратите внимание, что он зависит от R >= 2.14.1. Для "
+"получения дополнительной информации см. http://yihui.name/knitr"
 
 #: lib/layouts/knitr.module:6 lib/layouts/noweb.module:5
 #: lib/layouts/sweave.module:6
@@ -13038,6 +13059,9 @@ msgid ""
 "This module adds an inset to enter LilyPond code directly into LyX. It will "
 "be processed in the output. See the lilypond.lyx example file."
 msgstr ""
+"Этот модуль добавляет вставку для ввода кода LilyPond непосредственно в LyX. "
+"Он будет обработан при создании выходного файла. См. файл примера lilypond."
+"lyx."
 
 #: lib/layouts/lilypond.module:13 lib/layouts/lilypond.module:14
 #: lib/xtemplates/lilypond.xtemplate:14
@@ -13053,6 +13077,8 @@ msgid ""
 "A comma-separated option list (see the LilyPond documentation for available "
 "options)."
 msgstr ""
+"Список параметров, разделенных запятыми (доступные параметры см. в "
+"документации LilyPond)."
 
 #: lib/layouts/linguistics.module:2 lib/layouts/linguistics.module:62
 msgid "Linguistics"
@@ -13118,16 +13144,15 @@ msgstr "Перевод"
 
 #: lib/layouts/linguistics.module:135 lib/layouts/linguistics.module:170
 msgid "Glosse Translation|s"
-msgstr ""
+msgstr "Перевод glosse"
 
 #: lib/layouts/linguistics.module:136 lib/layouts/linguistics.module:171
-#, fuzzy
 msgid "Add a translation for the glosse"
-msgstr "Добавить новую ветку к списку"
+msgstr "Добавить перевод в glosse"
 
 #: lib/layouts/linguistics.module:142 lib/layouts/linguistics.module:144
 msgid "Tri-Glosse"
-msgstr ""
+msgstr "Tri-Glosse"
 
 #: lib/layouts/linguistics.module:177
 msgid "Structure Tree"
@@ -13163,7 +13188,7 @@ msgstr "значение"
 
 #: lib/layouts/linguistics.module:250
 msgid "GroupGlossedWords"
-msgstr ""
+msgstr "GroupGlossedWords"
 
 #: lib/layouts/linguistics.module:252
 msgid "Group"
@@ -13195,7 +13220,7 @@ msgstr "Lecture Notes in Comp. Science (LNCS)"
 
 #: lib/layouts/llncs.layout:152
 msgid "Running LaTeX Title"
-msgstr ""
+msgstr "Заглавие LaTeX в колонтитуле"
 
 #: lib/layouts/llncs.layout:175 lib/layouts/svcommon.inc:377
 msgid "TOC Title"
@@ -13207,11 +13232,11 @@ msgstr "Заголовок содержания:"
 
 #: lib/layouts/llncs.layout:204
 msgid "Author Running"
-msgstr ""
+msgstr "Автор в колонтитуле"
 
 #: lib/layouts/llncs.layout:208
 msgid "Author Running:"
-msgstr ""
+msgstr "Автор в колонтитуле:"
 
 # TOC - Table of Contents
 # Автор содержания?
@@ -13407,12 +13432,11 @@ msgstr "НазваниеПоэмы"
 
 #: lib/layouts/memoir.layout:225 lib/layouts/memoir.layout:246
 msgid "The poem title as it appears in the table of contents"
-msgstr "Название стиха, как он отображается в содержании"
+msgstr "Название стиха, как оно отображается в содержании"
 
 #: lib/layouts/memoir.layout:230
-#, fuzzy
 msgid "The poem title as it appears in the running headers"
-msgstr "Метка, как она будет показываться в документе"
+msgstr "Название стиха, как оно отображается в колонтитулах"
 
 #: lib/layouts/memoir.layout:240
 msgid "Poemtitle*"
@@ -13436,13 +13460,12 @@ msgid "Modern CV"
 msgstr "Современное резюме"
 
 #: lib/layouts/moderncv.layout:37
-#, fuzzy
 msgid "CVStyle"
-msgstr "Стиль"
+msgstr "Стиль CV"
 
 #: lib/layouts/moderncv.layout:46
 msgid "CV Style:"
-msgstr ""
+msgstr "Стиль CV:"
 
 #: lib/layouts/moderncv.layout:52
 msgid "Style Options"
@@ -13454,24 +13477,24 @@ msgstr "Настройки для стиля CV"
 
 #: lib/layouts/moderncv.layout:57
 msgid "CVColor"
-msgstr ""
+msgstr "Цвет CV"
 
 #: lib/layouts/moderncv.layout:60
 msgid "CV Color Scheme:"
-msgstr ""
+msgstr "Цветовая схема CV:"
 
 #: lib/layouts/moderncv.layout:63
 msgid "CVIcons"
-msgstr ""
+msgstr "Значки CV"
 
 # ?
 #: lib/layouts/moderncv.layout:66
 msgid "CV Icon Set:"
-msgstr ""
+msgstr "Набор значков CV:"
 
 #: lib/layouts/moderncv.layout:69
 msgid "CVColumnWidth"
-msgstr ""
+msgstr "Ширина колонки CV"
 
 #: lib/layouts/moderncv.layout:72
 msgid "Column Width:"
@@ -13479,25 +13502,23 @@ msgstr "Ширина колонки:"
 
 #: lib/layouts/moderncv.layout:75
 msgid "PDF Page Mode"
-msgstr ""
+msgstr "Режим страницы PDF"
 
 #: lib/layouts/moderncv.layout:78
 msgid "PDF Page Mode:"
-msgstr ""
+msgstr "Режим страницы PDF:"
 
 #: lib/layouts/moderncv.layout:94
 msgid "First name"
 msgstr "Имя"
 
 #: lib/layouts/moderncv.layout:106
-#, fuzzy
 msgid "FamilyName"
-msgstr "&Семейство:"
+msgstr "Фамилия"
 
 #: lib/layouts/moderncv.layout:110
-#, fuzzy
 msgid "Family Name:"
-msgstr "&Семейство:"
+msgstr "Фамилия:"
 
 #: lib/layouts/moderncv.layout:142
 msgid "Line 1"
@@ -13505,7 +13526,7 @@ msgstr "Строка 1"
 
 #: lib/layouts/moderncv.layout:143 lib/layouts/moderncv.layout:148
 msgid "Optional address line"
-msgstr ""
+msgstr "Необязательная строка адреса"
 
 #: lib/layouts/moderncv.layout:147
 msgid "Line 2"
@@ -13517,29 +13538,27 @@ msgstr "Тип телефона"
 
 #: lib/layouts/moderncv.layout:159
 msgid "can be fixed, mobile or fax"
-msgstr ""
+msgstr "могут быть стационарным, мобильным или факсом"
 
 #: lib/layouts/moderncv.layout:189
 msgid "Social"
-msgstr ""
+msgstr "Соцсеть"
 
 #: lib/layouts/moderncv.layout:192
 msgid "Social:"
-msgstr ""
+msgstr "Соцсеть:"
 
 #: lib/layouts/moderncv.layout:195
 msgid "Name of the social network"
-msgstr ""
+msgstr "Название социальной сети"
 
 #: lib/layouts/moderncv.layout:199
-#, fuzzy
 msgid "ExtraInfo"
 msgstr "Дополнительно"
 
 #: lib/layouts/moderncv.layout:202
-#, fuzzy
 msgid "Extra Info:"
-msgstr "&Дополнительно:"
+msgstr "Дополнительно:"
 
 #: lib/layouts/moderncv.layout:208
 msgid "Photo:"
@@ -13571,7 +13590,7 @@ msgstr "Закрыть раздел"
 
 #: lib/layouts/moderncv.layout:296
 msgid "Columns:"
-msgstr "&Столбцов:"
+msgstr "Столбцов:"
 
 #: lib/layouts/moderncv.layout:311
 msgid "Optional width"
@@ -13598,14 +13617,12 @@ msgid "Entry:"
 msgstr "Элемент:"
 
 #: lib/layouts/moderncv.layout:395
-#, fuzzy
 msgid "ItemWithComment"
-msgstr "Комментарий"
+msgstr "Элемент с комментарием"
 
 #: lib/layouts/moderncv.layout:398
-#, fuzzy
 msgid "Item with Comment:"
-msgstr "Комментарий"
+msgstr "Элемент с комментарием:"
 
 #: lib/layouts/moderncv.layout:408 lib/layouts/moderncv.layout:409
 msgid "Text"
@@ -13652,14 +13669,12 @@ msgid "Right summary"
 msgstr "Правая сводка"
 
 #: lib/layouts/moderncv.layout:454
-#, fuzzy
 msgid "DoubleListItem"
-msgstr "Двойной"
+msgstr "Пункт двойного списка"
 
 #: lib/layouts/moderncv.layout:457
-#, fuzzy
 msgid "Double List Item:"
-msgstr "Двойной"
+msgstr "Пункт двойного списка:"
 
 #: lib/layouts/moderncv.layout:462
 msgid "First Item"
@@ -13675,28 +13690,27 @@ msgstr "Компьютер"
 
 #: lib/layouts/moderncv.layout:475
 msgid "MakeCVtitle"
-msgstr ""
+msgstr "Сделать заглавие CV"
 
 #: lib/layouts/moderncv.layout:478
 msgid "Make CV Title"
-msgstr ""
+msgstr "Сделать заглавие CV"
 
 #: lib/layouts/moderncv.layout:485
 msgid "MakeLetterTitle"
-msgstr ""
+msgstr "Сделать заглавие письма"
 
 #: lib/layouts/moderncv.layout:488
 msgid "Make Letter Title"
-msgstr ""
+msgstr "Сделать заглавие письма"
 
 #: lib/layouts/moderncv.layout:492
 msgid "MakeLetterClosing"
-msgstr ""
+msgstr "Сделать завершение письма"
 
 #: lib/layouts/moderncv.layout:495
-#, fuzzy
 msgid "Close Letter"
-msgstr "Письмо"
+msgstr "Завершение письма"
 
 #: lib/layouts/moderncv.layout:524
 msgid "Recipient"
@@ -13717,11 +13731,11 @@ msgstr "Эпилог"
 
 #: lib/layouts/moderncv.layout:581 lib/layouts/svcommon.inc:520
 msgid "Alternative Name"
-msgstr ""
+msgstr "Альтернативное название"
 
 #: lib/layouts/moderncv.layout:582
 msgid "Alternative instead of 'Enclosure'"
-msgstr ""
+msgstr "Альтернатива вместо 'Вложение'"
 
 #: lib/layouts/moderncv.layout:586
 msgid "Enclosing:"
@@ -13737,6 +13751,9 @@ msgid ""
 "default). See the Additional manual, section 'Multiple Text Columns', for a "
 "detailed description of multiple columns."
 msgstr ""
+"Добавляет пользовательскую вставку, содержимое которой задается несколькими "
+"столбцами (по умолчанию 2). Подробное описание нескольких столбцов см. в "
+"дополнительном руководстве, раздел \"Несколько текстовых столбцов\"."
 
 #: lib/layouts/multicol.module:19
 msgid "Number of Columns"
@@ -13764,6 +13781,8 @@ msgid ""
 "Free space that needs to be on the page to start the multiple columns on "
 "this page"
 msgstr ""
+"Свободное пространство, которое должно быть на странице, чтобы начать "
+"несколько столбцов на этой странице"
 
 #: lib/layouts/mwart.layout:3
 msgid "Polish Article (MW Bundle)"
@@ -13787,6 +13806,10 @@ msgid ""
 "bibliography style need not be apacite--it could be apacite, apacitex, or "
 "any bibliography that works with both the natbib and apacite packages.)"
 msgstr ""
+"Этот модуль добавляет возможность использования natbib вместе с apacite "
+"(стиль библиографии не должен быть apacite - это может быть apacite, "
+"apacitex или другая библиография, которая работает с natbib и пакетами "
+"apacite.)"
 
 #: lib/layouts/noweb.module:2
 msgid "Noweb"
@@ -13795,6 +13818,7 @@ msgstr "Noweb"
 #: lib/layouts/noweb.module:5
 msgid "Allows to use Noweb as a literate programming tool."
 msgstr ""
+"Позволяет использовать Noweb как инструмент грамотного программирования."
 
 #: lib/layouts/numarticle.inc:9 lib/layouts/powerdot.layout:240
 msgid "\\arabic{section}"
@@ -13860,6 +13884,12 @@ msgid ""
 "labels. Additionally, the LaTeX environments itemize and enumerate are "
 "extended to use a similar optional argument."
 msgstr ""
+"Пакет paralist обеспечивает некоторые новые окружения списков. Нумерованные "
+"и ненумерованные списки могут быть набраны внутри абзацев, как абзацы, а "
+"также в компактном варианте. Большинство окружений имеют необязательные "
+"аргументы для форматирования меток. Кроме того, окружения LaTeX "
+"'Перечисление' и 'Нумерация' расширяются, чтобы использовать подобные "
+"дополнительные аргументы."
 
 #: lib/layouts/paralist.module:30 lib/layouts/paralist.module:37
 #: lib/layouts/paralist.module:52 lib/layouts/paralist.module:61
@@ -13868,80 +13898,80 @@ msgstr ""
 #: lib/layouts/paralist.module:112 lib/layouts/paralist.module:121
 #: lib/layouts/paralist.module:133
 msgid "Optional arguments for this list (see paralist manual)"
-msgstr ""
+msgstr "Необязательные аргументы для этого списка (см. руководство paralist)"
 
 #: lib/layouts/paralist.module:47
 msgid "AsParagraphItem"
-msgstr ""
+msgstr "Как абзац"
 
 #: lib/layouts/paralist.module:51
 msgid "As Paragraph Itemize Options"
-msgstr ""
+msgstr "Аргументы перечисления в виде абзаца"
 
 #: lib/layouts/paralist.module:56
 msgid "InParagraphItem"
-msgstr ""
+msgstr "В абзаце"
 
 #: lib/layouts/paralist.module:60
 msgid "In Paragraph Itemize Options"
-msgstr ""
+msgstr "Аргументы перечисления внутри абзаца"
 
 #: lib/layouts/paralist.module:65
 msgid "CompactItem"
-msgstr ""
+msgstr "Компактный"
 
 #: lib/layouts/paralist.module:72
 msgid "Compact Itemize Options"
-msgstr ""
+msgstr "Аргументы компактного перечисления"
 
 #: lib/layouts/paralist.module:77
 msgid "AsParagraphEnum"
-msgstr ""
+msgstr "Как абзац (нумер.)"
 
 #: lib/layouts/paralist.module:81
 msgid "As Paragraph Enumerate Options"
-msgstr ""
+msgstr "Аргументы нумерации в виде абзаца"
 
 #: lib/layouts/paralist.module:86
 msgid "InParagraphEnum"
-msgstr ""
+msgstr "В абзаце (нумер.)"
 
 #: lib/layouts/paralist.module:90
 msgid "In Paragraph Enumerate Options"
-msgstr ""
+msgstr "Аргументы нумерации внутри абзаца"
 
 # ?
 #: lib/layouts/paralist.module:95
 msgid "CompactEnum"
-msgstr ""
+msgstr "Компактный (нумер.)"
 
 #: lib/layouts/paralist.module:102
 msgid "Compact Enumerate Options"
-msgstr ""
+msgstr "Аргументы компактной нумерации"
 
 #: lib/layouts/paralist.module:107
 msgid "AsParagraphDescr"
-msgstr ""
+msgstr "Как абзац (опис.)"
 
 #: lib/layouts/paralist.module:111
 msgid "As Paragraph Description Options"
-msgstr ""
+msgstr "Аргументы описания в виде абзаца"
 
 #: lib/layouts/paralist.module:116
 msgid "InParagraphDescr"
-msgstr ""
+msgstr "В абзаце (опис.)"
 
 #: lib/layouts/paralist.module:120
 msgid "In Paragraph Description Options"
-msgstr ""
+msgstr "Аргументы описания внутри абзаца"
 
 #: lib/layouts/paralist.module:125
 msgid "CompactDescr"
-msgstr ""
+msgstr "Компактный (опис.)"
 
 #: lib/layouts/paralist.module:132
 msgid "Compact Description Options"
-msgstr ""
+msgstr "Аргументы компактного описания"
 
 #: lib/layouts/pdfcomment.module:2
 msgid "PDF Comments"
@@ -13953,6 +13983,9 @@ msgid ""
 "the pdfcomment package. Please consult the LyX example file PDF-comment.lyx "
 "and the package documentation for details."
 msgstr ""
+"Предоставляет различные виды аннотаций для вывода PDF. Модуль использует "
+"пакет pdfcomment. Пожалуйста, обратитесь к файлу примера PDF-comment.lyx и "
+"документации пакета."
 
 #: lib/layouts/pdfcomment.module:19
 msgid "Define Avatar"
@@ -13964,19 +13997,19 @@ msgstr "PDF-комментарий"
 
 #: lib/layouts/pdfcomment.module:27
 msgid "PDF-comment avatar:"
-msgstr ""
+msgstr "Аватар PDF-комментария:"
 
 #: lib/layouts/pdfcomment.module:30
 msgid "Name of the Avatar"
-msgstr ""
+msgstr "Имя аватара"
 
 #: lib/layouts/pdfcomment.module:41
 msgid "Define PDF-Comment Style"
-msgstr ""
+msgstr "Определить стиль PDF-комментариев"
 
 #: lib/layouts/pdfcomment.module:44
 msgid "PDF-comment style:"
-msgstr ""
+msgstr "Стиль PDF-комментариев:"
 
 #: lib/layouts/pdfcomment.module:47
 msgid "Name of the style"
@@ -13984,11 +14017,11 @@ msgstr "Название стиля"
 
 #: lib/layouts/pdfcomment.module:52
 msgid "Define PDF-Comment List Style"
-msgstr ""
+msgstr "Определить стиль списка PDF-комментариев"
 
 #: lib/layouts/pdfcomment.module:55
 msgid "Definition of PDF-comment list style:"
-msgstr ""
+msgstr "Определение стиля списка PDF-комментариев:"
 
 #: lib/layouts/pdfcomment.module:58
 msgid "Name of the list style"
@@ -13996,15 +14029,15 @@ msgstr "Название стиля списка"
 
 #: lib/layouts/pdfcomment.module:63
 msgid "Set PDF-Comment List Style"
-msgstr ""
+msgstr "Установить стиль списка PDF-комментариев"
 
 #: lib/layouts/pdfcomment.module:66
 msgid "PDF-comment list style:"
-msgstr ""
+msgstr "Стиль списка PDF-комментариев:"
 
 #: lib/layouts/pdfcomment.module:70
 msgid "PDF-Comment-Setup"
-msgstr ""
+msgstr "Настройка PDF-комментариев"
 
 #: lib/layouts/pdfcomment.module:74
 msgid "PDF (Setup)"
@@ -14012,16 +14045,18 @@ msgstr "PDF (настройка)"
 
 #: lib/layouts/pdfcomment.module:82
 msgid "PDF-Comment setup options"
-msgstr ""
+msgstr "Настройка PDF-комментариев"
 
 #: lib/layouts/pdfcomment.module:83 lib/layouts/pdfcomment.module:106
 #: lib/layouts/pdfcomment.module:222
 msgid "Opts"
-msgstr ""
+msgstr "Настройки"
 
 #: lib/layouts/pdfcomment.module:84
 msgid "Insert PDF-Comment setup options here (see the pdfcomment manual)"
 msgstr ""
+"Вставьте параметры настройки PDF-комментариев здесь (см. руководство "
+"pdfcomment)"
 
 #: lib/layouts/pdfcomment.module:93
 msgid "PDF-Annotation"
@@ -14033,11 +14068,11 @@ msgstr "PDF"
 
 #: lib/layouts/pdfcomment.module:105
 msgid "PDFComment Options"
-msgstr ""
+msgstr "Настройки PDFComment"
 
 #: lib/layouts/pdfcomment.module:107
 msgid "Insert PDFComment options here (see pdfcomment manual)"
-msgstr ""
+msgstr "Вставьте параметры PDFComment здесь (см. руководство pdfcomment)"
 
 #: lib/layouts/pdfcomment.module:112
 msgid "PDF-Margin"
@@ -14093,11 +14128,11 @@ msgstr "PDF (Линия)"
 
 #: lib/layouts/pdfcomment.module:157
 msgid "PDF-Sideline"
-msgstr ""
+msgstr "PDF-Боковая линия"
 
 #: lib/layouts/pdfcomment.module:159
 msgid "PDF (Sideline)"
-msgstr ""
+msgstr "PDF (Боковая линия)"
 
 #: lib/layouts/pdfcomment.module:166
 msgid "Insert the comment here"
@@ -14105,19 +14140,19 @@ msgstr "Вставьте комментарий здесь"
 
 #: lib/layouts/pdfcomment.module:170
 msgid "PDF-Reply"
-msgstr ""
+msgstr "PDF-Ответ"
 
 #: lib/layouts/pdfcomment.module:172
 msgid "PDF (Reply)"
-msgstr ""
+msgstr "PDF (Ответ)"
 
 #: lib/layouts/pdfcomment.module:180
 msgid "PDF-Tooltip"
-msgstr ""
+msgstr "PDF-Всплывающая подсказка"
 
 #: lib/layouts/pdfcomment.module:182
 msgid "PDF (Tooltip)"
-msgstr ""
+msgstr "PDF (Всплывающая подсказка)"
 
 #: lib/layouts/pdfcomment.module:189
 msgid "Tooltip Text"
@@ -14157,10 +14192,13 @@ msgid ""
 "hyperref. Please consult the LyX example file PDF-form.lyx and the "
 "documentation of hyperref for details."
 msgstr ""
+"Обеспечивает поля и кнопки для форм PDF. Модуль использует пакет LaTeX "
+"hyperref. Пожалуйста, ознакомьтесь с файлом примера PDF-form.lyx и "
+"документацией пакета hyperref."
 
 #: lib/layouts/pdfform.module:15 lib/layouts/pdfform.module:26
 msgid "Begin PDF Form"
-msgstr "Начать форму PDF"
+msgstr "Начало формы PDF"
 
 #: lib/layouts/pdfform.module:19
 msgid "PDF form"
@@ -14176,31 +14214,31 @@ msgstr "Параметры"
 
 #: lib/layouts/pdfform.module:30 lib/layouts/pdfform.module:67
 msgid "Insert PDF form parameters here"
-msgstr ""
+msgstr "Вставить параметры формы PDF здесь"
 
 #: lib/layouts/pdfform.module:40 lib/layouts/pdfform.module:43
 msgid "End PDF Form"
-msgstr ""
+msgstr "Конец формы PDF"
 
 #: lib/layouts/pdfform.module:47
 msgid "PDF Link Setup"
-msgstr ""
+msgstr "Настройки ссылок PDF"
 
 #: lib/layouts/pdfform.module:50
 msgid "PDF link setup"
-msgstr ""
+msgstr "Настройки ссылок PDF"
 
 #: lib/layouts/pdfform.module:58 lib/layouts/pdfform.module:63
 msgid "TextField"
-msgstr "Текст"
+msgstr "Поле текста"
 
 #: lib/layouts/pdfform.module:78 lib/layouts/pdfform.module:81
 msgid "CheckBox"
-msgstr ""
+msgstr "Флажок"
 
 #: lib/layouts/pdfform.module:84 lib/layouts/pdfform.module:87
 msgid "ChoiceMenu"
-msgstr ""
+msgstr "Меню выбора"
 
 #: lib/layouts/pdfform.module:89
 msgid "Label"
@@ -14212,23 +14250,23 @@ msgstr "Вставить метку здесь"
 
 #: lib/layouts/pdfform.module:96 lib/layouts/pdfform.module:99
 msgid "PushButton"
-msgstr ""
+msgstr "Кнопка"
 
 #: lib/layouts/pdfform.module:102 lib/layouts/pdfform.module:105
 msgid "SubmitButton"
-msgstr ""
+msgstr "Кнопка отправки"
 
 #: lib/layouts/pdfform.module:108 lib/layouts/pdfform.module:111
 msgid "ResetButton"
-msgstr ""
+msgstr "Кнопка сброса"
 
 #: lib/layouts/pdfform.module:118 lib/layouts/pdfform.module:121
 msgid "PDFAction"
-msgstr ""
+msgstr "PDFAction"
 
 #: lib/layouts/pdfform.module:126
 msgid "The name of the PDF action"
-msgstr ""
+msgstr "Имя действия PDF"
 
 #: lib/layouts/pdfform.module:134
 msgid "Text Field Style"
@@ -14236,71 +14274,71 @@ msgstr "Стиль текстового поля"
 
 #: lib/layouts/pdfform.module:137
 msgid "Default text field style"
-msgstr ""
+msgstr "Стиль текстового поля по умолчанию"
 
 #: lib/layouts/pdfform.module:141
 msgid "Submit Button Style"
-msgstr ""
+msgstr "Стиль кнопки отправки"
 
 #: lib/layouts/pdfform.module:144
 msgid "Default submit button style"
-msgstr ""
+msgstr "Стиль кнопки отправки по умолчанию"
 
 #: lib/layouts/pdfform.module:147
 msgid "Push Button Style"
-msgstr ""
+msgstr "Стиль кнопки"
 
 #: lib/layouts/pdfform.module:150
 msgid "Default push button style"
-msgstr ""
+msgstr "Стиль кнопки по умолчанию"
 
 #: lib/layouts/pdfform.module:153
 msgid "Check Box Style"
-msgstr ""
+msgstr "Стиль флажка"
 
 #: lib/layouts/pdfform.module:156
 msgid "Default check box style"
-msgstr ""
+msgstr "Стиль флажка по умолчанию"
 
 #: lib/layouts/pdfform.module:159
 msgid "Reset Button Style"
-msgstr ""
+msgstr "Стиль кнопки сброса"
 
 #: lib/layouts/pdfform.module:162
 msgid "Default reset button style"
-msgstr ""
+msgstr "Стиль кнопки сброса по умолчанию"
 
 #: lib/layouts/pdfform.module:165
 msgid "List Box Style"
-msgstr ""
+msgstr "Стиль списка"
 
 #: lib/layouts/pdfform.module:168
 msgid "Default list box style"
-msgstr ""
+msgstr "Стиль списка по умолчанию"
 
 #: lib/layouts/pdfform.module:171
 msgid "Combo Box Style"
-msgstr ""
+msgstr "Стиль комбобокса"
 
 #: lib/layouts/pdfform.module:174
 msgid "Default combo box style"
-msgstr ""
+msgstr "Стиль комбобокса по умолчанию"
 
 #: lib/layouts/pdfform.module:177
 msgid "Popdown Box Style"
-msgstr ""
+msgstr "Стиль выпадающего списка"
 
 #: lib/layouts/pdfform.module:180
 msgid "Default popdown box style"
-msgstr ""
+msgstr "Стиль выпадающего списка по умолчанию"
 
 #: lib/layouts/pdfform.module:183
 msgid "Radio Box Style"
-msgstr ""
+msgstr "Стиль радиокнопки"
 
 #: lib/layouts/pdfform.module:186
 msgid "Default radio box style"
-msgstr ""
+msgstr "Стиль радиокнопки по умолчанию"
 
 #: lib/layouts/powerdot.layout:3
 msgid "Powerdot"
@@ -14323,7 +14361,7 @@ msgstr "Параметры слайда"
 
 #: lib/layouts/powerdot.layout:143
 msgid "Optional arguments to the slide command (see powerdot manual)"
-msgstr ""
+msgstr "Необязательные аргументы к команде slide (см. инструкцию powerdot)"
 
 #: lib/layouts/powerdot.layout:152
 msgid "EndSlide"
@@ -14351,7 +14389,7 @@ msgstr "Настройки раздела"
 
 #: lib/layouts/powerdot.layout:248
 msgid "Optional arguments to the section command (see powerdot manual)"
-msgstr ""
+msgstr "Необязательные аргументы к команде section (см. инструкцию powerdot)"
 
 #: lib/layouts/powerdot.layout:272 lib/layouts/powerdot.layout:295
 msgid "Itemize Type"
@@ -14362,9 +14400,8 @@ msgid "Itemize type specification (see powerdot manual)"
 msgstr "Спецификация типов ненумерованных списков (см. руководство powerdot)"
 
 #: lib/layouts/powerdot.layout:292
-#, fuzzy
 msgid "ItemizeType1"
-msgstr "Перечисление"
+msgstr "Перечисление тип 1"
 
 #: lib/layouts/powerdot.layout:323 lib/layouts/powerdot.layout:347
 msgid "Enumerate Type"
@@ -14375,9 +14412,8 @@ msgid "Enumerate type specification (see powerdot manual)"
 msgstr "Спецификация типов нумерованных списков (см. руководство powerdot)"
 
 #: lib/layouts/powerdot.layout:344
-#, fuzzy
 msgid "EnumerateType1"
-msgstr "Нумерация"
+msgstr "Нумерация тип 1"
 
 #: lib/layouts/powerdot.layout:443
 msgid "Twocolumn"
@@ -14393,7 +14429,7 @@ msgstr "Левая колонка"
 
 #: lib/layouts/powerdot.layout:462
 msgid "Enter the text of the left column here (right column in main paragraph)"
-msgstr ""
+msgstr "Введите текст левого столбца здесь (правый столбец в главном абзаце)"
 
 #: lib/layouts/powerdot.layout:587
 msgid "Onslide"
@@ -14405,11 +14441,11 @@ msgstr "На слайдах"
 
 #: lib/layouts/powerdot.layout:594
 msgid "Overlay Specification|S"
-msgstr ""
+msgstr "Спецификация наложения"
 
 #: lib/layouts/powerdot.layout:595
 msgid "Specify the overlay settings (see powerdot manual)"
-msgstr ""
+msgstr "Укажите настройки наложения (см. руководство powerdot)"
 
 #: lib/layouts/powerdot.layout:602
 msgid "Onslide+"
@@ -14441,11 +14477,11 @@ msgstr "Ингредиенты"
 
 #: lib/layouts/recipebook.layout:118
 msgid "Ingredients Header"
-msgstr ""
+msgstr "Заголовок ингредиентов"
 
 #: lib/layouts/recipebook.layout:119
 msgid "Specify an optional ingredients header"
-msgstr ""
+msgstr "Укажите необязательный заголовок ингредиентов"
 
 #: lib/layouts/recipebook.layout:127
 msgid "Ingredients:"
@@ -14465,20 +14501,20 @@ msgstr "REVTeX (V. 4.1)"
 
 #: lib/layouts/revtex4-1.layout:88 lib/layouts/revtex4.layout:155
 msgid "Affiliation (alternate)"
-msgstr ""
+msgstr "Принадлежность (альтернатива)"
 
 #: lib/layouts/revtex4-1.layout:91 lib/layouts/revtex4.layout:164
 msgid "Affiliation (alternate):"
-msgstr ""
+msgstr "Принадлежность (альтернатива):"
 
 # ?
 #: lib/layouts/revtex4-1.layout:93 lib/layouts/revtex4.layout:161
 msgid "Alternate Affiliation Option"
-msgstr ""
+msgstr "Насторйка альтернативной принадлежности"
 
 #: lib/layouts/revtex4-1.layout:94 lib/layouts/revtex4.layout:162
 msgid "Optional argument to the altaffiliation command"
-msgstr ""
+msgstr "Необязательный аргумент для команды altaffiliation"
 
 #: lib/layouts/revtex4-1.layout:100 lib/layouts/revtex4.layout:168
 msgid "Affiliation (none)"
@@ -14494,7 +14530,7 @@ msgstr "Электронный адрес:"
 
 #: lib/layouts/revtex4-1.layout:122 lib/layouts/revtex4.layout:210
 msgid "Electronic Address Option|s"
-msgstr ""
+msgstr "Насторйка электронного адреса"
 
 #: lib/layouts/revtex4-1.layout:123 lib/layouts/revtex4.layout:211
 msgid "Optional argument to the email command"
@@ -14530,12 +14566,12 @@ msgstr "благодарности"
 
 #: lib/layouts/revtex4-1.layout:234
 msgid "Ruled Table"
-msgstr ""
+msgstr "Разлинованная таблица"
 
 #: lib/layouts/revtex4-1.layout:236 lib/layouts/revtex4-1.layout:244
 #: lib/layouts/revtex4-1.layout:252 src/frontends/qt4/GuiSymbols.cpp:122
 msgid "Specials"
-msgstr "Особенный"
+msgstr "Особенности"
 
 #: lib/layouts/revtex4-1.layout:242
 msgid "Turn Page"
@@ -14559,11 +14595,11 @@ msgstr "Видео"
 
 #: lib/layouts/revtex4-1.layout:295
 msgid "Float Link"
-msgstr ""
+msgstr "Плавающая ссылка"
 
 #: lib/layouts/revtex4-1.layout:297
 msgid "Float link"
-msgstr ""
+msgstr "Плавающая ссылка"
 
 #: lib/layouts/revtex4-1.layout:308
 msgid "lowercase text"
@@ -14571,15 +14607,15 @@ msgstr "строчные|с"
 
 #: lib/layouts/revtex4-1.layout:320
 msgid "Online cite"
-msgstr ""
+msgstr "Онлайн-цитата"
 
 #: lib/layouts/revtex4-1.layout:324
 msgid "online cite"
-msgstr ""
+msgstr "онлайн-цитата"
 
 #: lib/layouts/revtex4-1.layout:326
 msgid "Text behind"
-msgstr ""
+msgstr "Текст за"
 
 #: lib/layouts/revtex4-1.layout:327
 msgid "text behind the cite"
@@ -14591,7 +14627,7 @@ msgstr "REVTeX (V. 4)"
 
 #: lib/layouts/revtex4.layout:176
 msgid "AltAffiliation"
-msgstr ""
+msgstr "AltAffiliation"
 
 #: lib/layouts/revtex4.layout:270
 msgid "PACS number:"
@@ -14613,11 +14649,11 @@ msgstr ""
 
 #: lib/layouts/rsphrase.module:11 lib/layouts/rsphrase.module:16
 msgid "R-S number"
-msgstr "R-S number"
+msgstr "Номер R-S"
 
 #: lib/layouts/rsphrase.module:33 lib/layouts/rsphrase.module:36
 msgid "R-S phrase"
-msgstr "R-S phrase"
+msgstr "Фразы R-S"
 
 #: lib/layouts/rsphrase.module:39
 msgid "Safety phrase"
@@ -14800,11 +14836,11 @@ msgstr "Размещение:"
 
 #: lib/layouts/scrlettr.layout:179 lib/layouts/scrlttr2.layout:260
 msgid "Specialmail"
-msgstr "Specialmail"
+msgstr "Спецпочта"
 
 #: lib/layouts/scrlettr.layout:182 lib/layouts/scrlttr2.layout:264
 msgid "Specialmail:"
-msgstr ""
+msgstr "Спецпочта:"
 
 #: lib/layouts/scrlettr.layout:196 lib/layouts/scrlttr2.layout:280
 msgid "Title:"
@@ -14896,63 +14932,58 @@ msgstr "KOMA-Script Report"
 
 #: lib/layouts/sectionbox.module:2
 msgid "Section Boxes"
-msgstr ""
+msgstr "Блоки разделов"
 
 #: lib/layouts/sectionbox.module:6
 msgid ""
 "Defines Boxes with section header. Mainly intended for the SciPoster class."
 msgstr ""
+"Определяет блоки с заголовком раздела. В основном предназначен для класса "
+"SciPoster."
 
 #: lib/layouts/sectionbox.module:11
 msgid "SectionBox"
-msgstr ""
+msgstr "Блок раздела"
 
 #: lib/layouts/sectionbox.module:13
 msgid "Section Box"
-msgstr ""
+msgstr "Блок раздела"
 
 #: lib/layouts/sectionbox.module:22
 msgid "Section Box Width|S"
-msgstr ""
+msgstr "Ширина блока раздела"
 
 #: lib/layouts/sectionbox.module:23
-#, fuzzy
 msgid "Width of the section Box"
-msgstr "Ширина изображения в выводе"
+msgstr "Ширина блока раздела"
 
 #: lib/layouts/sectionbox.module:26 lib/layouts/todonotes.module:46
 msgid "Heading"
 msgstr "Заголовок"
 
 #: lib/layouts/sectionbox.module:27
-#, fuzzy
 msgid "Section Box Heading"
-msgstr "Раздел"
+msgstr "Заголовок блока раздела"
 
 #: lib/layouts/sectionbox.module:31
-#, fuzzy
 msgid "Insert the section box header here"
-msgstr "Вставить промежуток даже после разрыва строки"
+msgstr "Вставьте заголовок блока раздела здесь"
 
 #: lib/layouts/sectionbox.module:40
-#, fuzzy
 msgid "SubsectionBox"
-msgstr "Подраздел"
+msgstr "Блок подраздела"
 
 #: lib/layouts/sectionbox.module:42
-#, fuzzy
 msgid "Subsection Box"
-msgstr "Подраздел"
+msgstr "Блок подраздела"
 
 #: lib/layouts/sectionbox.module:46
-#, fuzzy
 msgid "SubsubsectionBox"
-msgstr "Подподраздел"
+msgstr "Блок подподраздела"
 
 #: lib/layouts/sectionbox.module:48
-#, fuzzy
 msgid "Subsubsection Box"
-msgstr "Подподраздел"
+msgstr "Блок подподраздела"
 
 #: lib/layouts/seminar.layout:3
 msgid "Seminar"
@@ -14960,7 +14991,7 @@ msgstr "Семинар"
 
 #: lib/layouts/seminar.layout:26 lib/layouts/seminar.layout:89
 msgid "LandscapeSlide"
-msgstr "LandscapeSlide"
+msgstr "Ландшафтный слайд"
 
 #: lib/layouts/seminar.layout:27
 msgid "Landscape Slide"
@@ -14968,7 +14999,7 @@ msgstr "Ландшафтный слайд"
 
 #: lib/layouts/seminar.layout:40 lib/layouts/seminar.layout:115
 msgid "PortraitSlide"
-msgstr "Слайд портрет"
+msgstr "Портретный слайд"
 
 #: lib/layouts/seminar.layout:42
 msgid "Portrait Slide"
@@ -14984,7 +15015,7 @@ msgstr "Подзаголовок слайда"
 
 #: lib/layouts/seminar.layout:61 lib/layouts/seminar.layout:124
 msgid "ListOfSlides"
-msgstr "Перечень слайдов"
+msgstr "Список слайдов"
 
 #: lib/layouts/seminar.layout:63
 msgid "List of Slides"
@@ -15000,7 +15031,7 @@ msgstr "Содержимое слайда"
 
 #: lib/layouts/seminar.layout:78 lib/layouts/seminar.layout:151
 msgid "ProgressContents"
-msgstr "ProgressContents"
+msgstr "Содержание прогресса"
 
 #: lib/layouts/seminar.layout:80
 msgid "Progress Contents"
@@ -15090,11 +15121,11 @@ msgstr "Свеча"
 
 #: lib/layouts/shapepar.module:81
 msgid "Drop down"
-msgstr ""
+msgstr "Выпадение вниз"
 
 #: lib/layouts/shapepar.module:86
 msgid "Drop up"
-msgstr ""
+msgstr "Выпадение вверх"
 
 #: lib/layouts/shapepar.module:91 src/mathed/InsetMathMacroTemplate.cpp:544
 msgid "TeX"
@@ -15122,7 +15153,7 @@ msgstr "shapepar"
 
 #: lib/layouts/shapepar.module:123
 msgid "For scaling the <Shape specification> to positions on the page"
-msgstr ""
+msgstr "Для масштабирования <Shape specification> по позициям на странице"
 
 #: lib/layouts/shapepar.module:127
 msgid "Shape specification"
@@ -15157,9 +15188,8 @@ msgid "AMS"
 msgstr "AMS"
 
 #: lib/layouts/siamltex.layout:206
-#, fuzzy
 msgid "The title as it appears in the running headers"
-msgstr "Метка, как она будет показываться в документе"
+msgstr "Заголовок, как он отображается в верхнем колонтитуле"
 
 #: lib/layouts/siamltex.layout:322
 msgid "AMS subject classifications:"
@@ -15195,19 +15225,19 @@ msgstr "Данные об авторских правах:"
 
 #: lib/layouts/sigplanconf.layout:112
 msgid "TitleBanner"
-msgstr ""
+msgstr "Баннер заглавия"
 
 #: lib/layouts/sigplanconf.layout:115
 msgid "Title banner:"
-msgstr ""
+msgstr "Баннер заглавия:"
 
 #: lib/layouts/sigplanconf.layout:119
 msgid "PreprintFooter"
-msgstr ""
+msgstr "Препринт нижнего колонтитула"
 
 #: lib/layouts/sigplanconf.layout:122
 msgid "Preprint footer:"
-msgstr ""
+msgstr "Препринт нижнего колонтитула:"
 
 #: lib/layouts/sigplanconf.layout:129
 msgid "Digital Object Identifier:"
@@ -15518,19 +15548,16 @@ msgid "Title of this part"
 msgstr "Заглавие этой части"
 
 #: lib/layouts/svcommon.inc:156 lib/layouts/svmult.layout:123
-#, fuzzy
 msgid "ChapSubtitle"
-msgstr "Подзаголовок"
+msgstr "Подзаголовок главы"
 
 #: lib/layouts/svcommon.inc:169 lib/layouts/svmult.layout:119
-#, fuzzy
 msgid "ChapAuthor"
-msgstr "Автор"
+msgstr "Автор главы"
 
 #: lib/layouts/svcommon.inc:181 lib/layouts/svmult.layout:155
-#, fuzzy
 msgid "ChapMotto"
-msgstr "Глава"
+msgstr "Девиз главы"
 
 #: lib/layouts/svcommon.inc:289
 msgid "Run-in headings"
@@ -15636,7 +15663,6 @@ msgstr "Заметка в шапке"
 
 #: lib/layouts/svglobal.layout:81 lib/layouts/svjog.layout:85
 #: lib/layouts/svprobth.layout:115
-#, fuzzy
 msgid "Headnote (optional):"
 msgstr "Вступительное замечание (необязательное):"
 
@@ -15659,7 +15685,7 @@ msgstr "Институт #"
 #: lib/layouts/svglobal.layout:135 lib/layouts/svjog.layout:139
 #: lib/layouts/svprobth.layout:169
 msgid "Corr Author:"
-msgstr ""
+msgstr "Корр. автор:"
 
 #: lib/layouts/svglobal.layout:139 lib/layouts/svjog.layout:143
 #: lib/layouts/svprobth.layout:173
@@ -15680,9 +15706,8 @@ msgid "Subclass"
 msgstr "Подкласс"
 
 #: lib/layouts/svglobal3.layout:76
-#, fuzzy
 msgid "Mathematics Subject Classification"
-msgstr "обновлённых спецификаций классов документов."
+msgstr "Классификация предмета математики"
 
 #: lib/layouts/svglobal3.layout:79
 msgid "CRSC"
@@ -15781,13 +15806,15 @@ msgstr "Japanese Book (стандартный класс: вертикально
 
 #: lib/layouts/tcolorbox.module:2
 msgid "Fancy Colored Boxes"
-msgstr ""
+msgstr "Красивые цветные блоки"
 
 #: lib/layouts/tcolorbox.module:6
 msgid ""
 "Adds custom insets that support colored boxes via the tcolorbox package. See "
 "the tcolorbox documentation for details."
 msgstr ""
+"Добавляет пользовательские вставки, которые поддерживают цветные блоки с "
+"помощью пакета tcolorbox. Подробности см. в документации tcolorbox."
 
 #: lib/layouts/tcolorbox.module:11 lib/layouts/tcolorbox.module:14
 msgid "Color Box"
@@ -15799,7 +15826,7 @@ msgstr "Настройки цветного блока"
 
 #: lib/layouts/tcolorbox.module:20
 msgid "Insert the color box options here (see tcolorbox manual)"
-msgstr ""
+msgstr "Вставьте параметры цветоного блока здесь (см. руководство tcolorbox)"
 
 #: lib/layouts/tcolorbox.module:26
 msgid "Dynamic Color Box"
@@ -15807,19 +15834,19 @@ msgstr "Динамический цветной блок"
 
 #: lib/layouts/tcolorbox.module:29
 msgid "Color Box (Dynamic)"
-msgstr ""
+msgstr "Цветной блок (динамический)"
 
 #: lib/layouts/tcolorbox.module:33
 msgid "Fit Color Box"
-msgstr ""
+msgstr "Поместить цветной блок"
 
 #: lib/layouts/tcolorbox.module:35
 msgid "Color Box (Fit Contents)"
-msgstr ""
+msgstr "Цветной блок (подгонка содержимого)"
 
 #: lib/layouts/tcolorbox.module:39 lib/layouts/tcolorbox.module:41
 msgid "Raster Color Box"
-msgstr ""
+msgstr "Растровый цветной блок"
 
 #: lib/layouts/tcolorbox.module:50
 msgid "Subtitle Options"
@@ -15843,15 +15870,15 @@ msgstr "-----"
 
 #: lib/layouts/tcolorbox.module:81
 msgid "Color Box Line"
-msgstr ""
+msgstr "Линия цветного блока"
 
 #: lib/layouts/tcolorbox.module:90 lib/layouts/tcolorbox.module:105
 msgid "Color Box Setup"
-msgstr ""
+msgstr "Настройка цветного блока"
 
 #: lib/layouts/tcolorbox.module:118 lib/layouts/tcolorbox.module:121
 msgid "New Color Box Type"
-msgstr ""
+msgstr "Новый тип цветного блока"
 
 #: lib/layouts/tcolorbox.module:129
 msgid "New Box Options"
@@ -15887,11 +15914,11 @@ msgstr "Пользовательский цветной блок 1"
 
 #: lib/layouts/tcolorbox.module:159
 msgid "More Color Box Options"
-msgstr ""
+msgstr "Больше настроек цветных блоков"
 
 #: lib/layouts/tcolorbox.module:160
 msgid "Insert more color box options here"
-msgstr ""
+msgstr "Вставьте больше настроек цветных блоков здесь"
 
 #: lib/layouts/tcolorbox.module:165 lib/layouts/tcolorbox.module:167
 msgid "Custom Color Box 2"
@@ -16656,6 +16683,10 @@ msgid ""
 "provides a paragraph style. Passing 'final' as document class option "
 "suppresses the output of TODO notes."
 msgstr ""
+"Предоставляет настраиваемые вставки для добавления элементов TODO в документ "
+"(с помощью пакета todonotes). Для создания 'Списка TODO' модуль "
+"предоставляет стиль абзаца. Добавление параметра 'final' в параметры класса "
+"подавляет вывод списка TODO."
 
 #: lib/layouts/todonotes.module:14 lib/layouts/todonotes.module:119
 msgid "TODO"
@@ -16675,7 +16706,7 @@ msgstr "Список заголовков TODO"
 
 #: lib/layouts/todonotes.module:48
 msgid "Enter a custom header for the List of TODOs here"
-msgstr ""
+msgstr "Введите пользовательский заголовок для списка TODO здесь"
 
 #: lib/layouts/todonotes.module:58
 msgid "TODO Note (Margin)"
@@ -16703,20 +16734,19 @@ msgstr "TODO (Встроенный)"
 
 #: lib/layouts/todonotes.module:101 lib/layouts/todonotes.module:103
 msgid "Missing Figure"
-msgstr "Отсутствует рисунок"
+msgstr "Отсутствующий рисунок"
 
 #: lib/layouts/todonotes.module:108
 msgid "Missing Figure Note Options|s"
-msgstr ""
+msgstr "Настройки заметки отсутствующего рисунка"
 
 #: lib/layouts/todonotes.module:123
 msgid "Todo[Inline]"
 msgstr "Todo[Встроенный]"
 
 #: lib/layouts/todonotes.module:127
-#, fuzzy
 msgid "Todo[margin]"
-msgstr "примечание на полях"
+msgstr "Заметка Todo [на полях]"
 
 #: lib/layouts/todonotes.module:131
 msgid "MissingFigure"
@@ -16802,14 +16832,20 @@ msgid ""
 "width).  The inset has two optional arguments: vertical adjustment (c|t|b) "
 "and maximum width (defaults to \\linewidth)."
 msgstr ""
+"Добавляет вставку 'Minipage (пер. ширина)' с использованием пакета varwidth. "
+"Пакет varwidth предоставляет minipage переменной ширины, результирующей "
+"шириной которого является ширина его содержимого (если она не превышает "
+"заданной максимальной ширины).  Вставка имеет два необязательных аргумента: "
+"вертикальное выравнивание (c|t|b) и максимальная ширина (по умолчанию "
+"\\linewidth)."
 
 #: lib/layouts/varwidth.module:17
 msgid "Minipage (Var. Width)"
-msgstr "Мини-страница (пер. ширина)"
+msgstr "Minipage (пер. ширина)"
 
 #: lib/layouts/varwidth.module:19
 msgid "Minipage (var.)"
-msgstr "Мини-страница (пер.)"
+msgstr "Minipage (пер.)"
 
 #: lib/layouts/varwidth.module:31
 msgid "Vert. Adjustment"
@@ -20735,19 +20771,19 @@ msgstr "cancelto"
 
 #: lib/ui/stdtoolbars.inc:468
 msgid "Insert left/right side scripts"
-msgstr ""
+msgstr "Вставка левых/правых боковых скриптов"
 
 #: lib/ui/stdtoolbars.inc:469
 msgid "Insert right side scripts"
-msgstr ""
+msgstr "Вставка правых скриптов"
 
 #: lib/ui/stdtoolbars.inc:470
 msgid "Insert left side scripts"
-msgstr ""
+msgstr "Вставка левых скриптов"
 
 #: lib/ui/stdtoolbars.inc:471
 msgid "Insert side scripts"
-msgstr ""
+msgstr "Вставка боковых скриптов"
 
 #: lib/ui/stdtoolbars.inc:472
 msgid "overset"
@@ -23895,7 +23931,7 @@ msgstr "Огублённый гласный заднего ряда средне
 
 #: lib/ui/stdtoolbars.inc:1361
 msgid "Mid-central vowel (Schwa)"
-msgstr ""
+msgstr "Ненапряжённый гласный среднего ряда среднего подъёма (Шва)"
 
 #: lib/ui/stdtoolbars.inc:1362
 msgid "Open-mid front unrounded vowel"
@@ -23923,211 +23959,211 @@ msgstr "Огублённый гласный заднего ряда средне
 
 #: lib/ui/stdtoolbars.inc:1368
 msgid "Near-open front unrounded vowel"
-msgstr ""
+msgstr "Ненапряжённый неогублённый гласный переднего ряда нижнего подъёма"
 
 #: lib/ui/stdtoolbars.inc:1369
 msgid "Near-open vowel"
-msgstr ""
+msgstr "Ненапряжённый гласный нижнего подъёма"
 
 #: lib/ui/stdtoolbars.inc:1370
 msgid "Open front unrounded vowel"
-msgstr ""
+msgstr "Неогублённый гласный переднего ряда нижнего подъёма"
 
 #: lib/ui/stdtoolbars.inc:1371
 msgid "Open front rounded vowel"
-msgstr ""
+msgstr "Огублённый гласный переднего ряда нижнего подъёма"
 
 #: lib/ui/stdtoolbars.inc:1372
 msgid "Open back unrounded vowel"
-msgstr ""
+msgstr "Неогублённый гласный заднего ряда нижнего подъёма"
 
 #: lib/ui/stdtoolbars.inc:1373
 msgid "Open back rounded vowel"
-msgstr ""
+msgstr "Огублённый гласный заднего ряда нижнего подъёма"
 
 #: lib/ui/stdtoolbars.inc:1377
 msgid "Voiceless labial-velar fricative"
-msgstr ""
+msgstr "Глухой лабиовелярный фрикативный"
 
 #: lib/ui/stdtoolbars.inc:1378
 msgid "Voiced labial-velar approximant"
-msgstr ""
+msgstr "Звонкий лабиовелярный аппроксимант"
 
 #: lib/ui/stdtoolbars.inc:1379
 msgid "Voiced labial-palatal approximant"
-msgstr ""
+msgstr "Звонкий лабиопалатальный аппроксимант"
 
 #: lib/ui/stdtoolbars.inc:1380
 msgid "Voiceless epiglottal fricative"
-msgstr ""
+msgstr "Глухой эпиглоттальный фрикативный"
 
 #: lib/ui/stdtoolbars.inc:1381
 msgid "Voiced epiglottal fricative"
-msgstr ""
+msgstr "Звонкий эпиглоттальный фрикативный"
 
 #: lib/ui/stdtoolbars.inc:1382
 msgid "Epiglottal plosive"
-msgstr ""
+msgstr "Эпиглоттальный взрывной"
 
 #: lib/ui/stdtoolbars.inc:1383
 msgid "Voiceless alveolo-palatal fricative"
-msgstr ""
+msgstr "Глухой альвео-палатальный фрикативный"
 
 #: lib/ui/stdtoolbars.inc:1384
 msgid "Voiced alveolo-palatal fricative"
-msgstr ""
+msgstr "Звонкий альвео-палатальный фрикативный"
 
 #: lib/ui/stdtoolbars.inc:1385
 msgid "Voiced alveolar lateral flap"
-msgstr ""
+msgstr "Звонкий альвеолярный латеральный удар"
 
 #: lib/ui/stdtoolbars.inc:1386
 msgid "Simultaneous voiceless postalveolar and velar fricative"
-msgstr ""
+msgstr "Одновременный глухой постальвеолярный и велярный фрикативный"
 
 #: lib/ui/stdtoolbars.inc:1387 src/insets/InsetIPAMacro.cpp:55
 msgid "Top tie bar"
-msgstr "Посередине сверху"
+msgstr "Верхняя перемычка"
 
 #: lib/ui/stdtoolbars.inc:1388 src/insets/InsetIPAMacro.cpp:56
 msgid "Bottom tie bar"
-msgstr "Посередине снизу"
+msgstr "Нижняя перемычка"
 
 #: lib/ui/stdtoolbars.inc:1392
 msgid "Long"
-msgstr ""
+msgstr "Долгий"
 
 #: lib/ui/stdtoolbars.inc:1393
 msgid "Half-long"
-msgstr ""
+msgstr "Полудолгий"
 
 #: lib/ui/stdtoolbars.inc:1394
 msgid "Extra short"
-msgstr ""
+msgstr "Очень короткий"
 
 #: lib/ui/stdtoolbars.inc:1395
 msgid "Primary stress"
-msgstr ""
+msgstr "Основное ударение"
 
 #: lib/ui/stdtoolbars.inc:1396
 msgid "Secondary stress"
-msgstr ""
+msgstr "Дополнительное ударение"
 
 #: lib/ui/stdtoolbars.inc:1397
 msgid "Minor (foot) group"
-msgstr ""
+msgstr "Незначительный разрыв"
 
 #: lib/ui/stdtoolbars.inc:1398
 msgid "Major (intonation) group"
-msgstr ""
+msgstr "Значительный разрыв"
 
 #: lib/ui/stdtoolbars.inc:1399
 msgid "Syllable break"
-msgstr ""
+msgstr "Разрыв слога"
 
 #: lib/ui/stdtoolbars.inc:1400
 msgid "Linking (absence of a break)"
-msgstr ""
+msgstr "Связывание (нет разрыва)"
 
 #: lib/ui/stdtoolbars.inc:1404
 msgid "Voiceless"
-msgstr ""
+msgstr "Глухой"
 
 #: lib/ui/stdtoolbars.inc:1405
 msgid "Voiceless (above)"
-msgstr ""
+msgstr "Глухой (верхний)"
 
 #: lib/ui/stdtoolbars.inc:1406
 msgid "Voiced"
-msgstr ""
+msgstr "Звонкий"
 
 #: lib/ui/stdtoolbars.inc:1407
 msgid "Breathy voiced"
-msgstr ""
+msgstr "Придыхательный голос"
 
 #: lib/ui/stdtoolbars.inc:1408
 msgid "Creaky voiced"
-msgstr ""
+msgstr "Скрипучий голос"
 
 #: lib/ui/stdtoolbars.inc:1409
 msgid "Linguolabial"
-msgstr ""
+msgstr "Язычногубной"
 
 #: lib/ui/stdtoolbars.inc:1410
 msgid "Dental"
-msgstr ""
+msgstr "Дентальный"
 
 #: lib/ui/stdtoolbars.inc:1411
 msgid "Apical"
-msgstr ""
+msgstr "Апикальный"
 
 #: lib/ui/stdtoolbars.inc:1412
 msgid "Laminal"
-msgstr ""
+msgstr "Ламинальный"
 
 #: lib/ui/stdtoolbars.inc:1413
 msgid "Aspirated"
-msgstr ""
+msgstr "Аспирированный"
 
 #: lib/ui/stdtoolbars.inc:1414
 msgid "More rounded"
-msgstr ""
+msgstr "Более огубленный"
 
 #: lib/ui/stdtoolbars.inc:1415
 msgid "Less rounded"
-msgstr ""
+msgstr "Более огубленный"
 
 #: lib/ui/stdtoolbars.inc:1416
 msgid "Advanced"
-msgstr ""
+msgstr "Продвинутый"
 
 #: lib/ui/stdtoolbars.inc:1417
 msgid "Retracted"
-msgstr ""
+msgstr "Отодвинутый"
 
 #: lib/ui/stdtoolbars.inc:1418
 msgid "Centralized"
-msgstr ""
+msgstr "Централизованный"
 
 #: lib/ui/stdtoolbars.inc:1419
 msgid "Mid-centralized"
-msgstr ""
+msgstr "Средне-централизованный"
 
 #: lib/ui/stdtoolbars.inc:1420
 msgid "Syllabic"
-msgstr ""
+msgstr "Слоговой"
 
 #: lib/ui/stdtoolbars.inc:1421
 msgid "Non-syllabic"
-msgstr ""
+msgstr "Неслоговой"
 
 #: lib/ui/stdtoolbars.inc:1422
 msgid "Rhoticity"
-msgstr ""
+msgstr "Эризованный"
 
 #: lib/ui/stdtoolbars.inc:1423
 msgid "Labialized"
-msgstr ""
+msgstr "Лабиализованный"
 
 #: lib/ui/stdtoolbars.inc:1424
 msgid "Palatized"
-msgstr ""
+msgstr "Палатализованный"
 
 #: lib/ui/stdtoolbars.inc:1425
 msgid "Velarized"
-msgstr ""
+msgstr "Веляризованный"
 
 #: lib/ui/stdtoolbars.inc:1426
 msgid "Pharyngialized"
-msgstr ""
+msgstr "Фарингализованный"
 
 #: lib/ui/stdtoolbars.inc:1427
 msgid "Velarized or pharyngialized"
-msgstr ""
+msgstr "Веляризованный или фарингализованный"
 
 #: lib/ui/stdtoolbars.inc:1428
 msgid "Raised"
-msgstr "Приподнятый"
+msgstr "Поднятый"
 
 #: lib/ui/stdtoolbars.inc:1429
 msgid "Lowered"
@@ -24135,11 +24171,11 @@ msgstr "Опущенный"
 
 #: lib/ui/stdtoolbars.inc:1430
 msgid "Advanced tongue root"
-msgstr ""
+msgstr "Прогрессивный корень языка"
 
 #: lib/ui/stdtoolbars.inc:1431
 msgid "Retracted tongue root"
-msgstr ""
+msgstr "Оттянутый корень языка"
 
 #: lib/ui/stdtoolbars.inc:1432
 msgid "Nasalized"
@@ -24159,99 +24195,99 @@ msgstr "Невнятный отпуск"
 
 #: lib/ui/stdtoolbars.inc:1439
 msgid "Extra high (accent)"
-msgstr ""
+msgstr "Верхний (ударение)"
 
 #: lib/ui/stdtoolbars.inc:1440
 msgid "Extra high (tone letter)"
-msgstr ""
+msgstr "Верхний (литера)"
 
 #: lib/ui/stdtoolbars.inc:1441
 msgid "High (accent)"
-msgstr ""
+msgstr "Высокий (ударение)"
 
 #: lib/ui/stdtoolbars.inc:1442
 msgid "High (tone letter)"
-msgstr ""
+msgstr "Высокий (литера)"
 
 #: lib/ui/stdtoolbars.inc:1443
 msgid "Mid (accent)"
-msgstr ""
+msgstr "Средний (ударение)"
 
 #: lib/ui/stdtoolbars.inc:1444
 msgid "Mid (tone letter)"
-msgstr ""
+msgstr "Средний (литера)"
 
 #: lib/ui/stdtoolbars.inc:1445
 msgid "Low (accent)"
-msgstr ""
+msgstr "Низкий (ударение)"
 
 #: lib/ui/stdtoolbars.inc:1446
 msgid "Low (tone letter)"
-msgstr ""
+msgstr "Низкий (литера)"
 
 #: lib/ui/stdtoolbars.inc:1447
 msgid "Extra low (accent)"
-msgstr ""
+msgstr "Нижний (ударение)"
 
 #: lib/ui/stdtoolbars.inc:1448
 msgid "Extra low (tone letter)"
-msgstr ""
+msgstr "Нижний (литера)"
 
 #: lib/ui/stdtoolbars.inc:1449
 msgid "Downstep"
-msgstr "Вниз"
+msgstr "Снижение тона на шаг"
 
 #: lib/ui/stdtoolbars.inc:1450
 msgid "Upstep"
-msgstr ""
+msgstr "Подъём тона на шаг"
 
 #: lib/ui/stdtoolbars.inc:1451
 msgid "Rising (accent)"
-msgstr ""
+msgstr "Восходящий (ударение)"
 
 #: lib/ui/stdtoolbars.inc:1452
 msgid "Rising (tone letter)"
-msgstr ""
+msgstr "Восходящий (ударение)"
 
 #: lib/ui/stdtoolbars.inc:1453
 msgid "Falling (accent)"
-msgstr ""
+msgstr "Нисходящий (ударение)"
 
 #: lib/ui/stdtoolbars.inc:1454
 msgid "Falling (tone letter)"
-msgstr ""
+msgstr "Нисходящий (ударение)"
 
 #: lib/ui/stdtoolbars.inc:1455
 msgid "High rising (accent)"
-msgstr ""
+msgstr "Высокий восходящий (ударение)"
 
 #: lib/ui/stdtoolbars.inc:1456
 msgid "High rising (tone letter)"
-msgstr ""
+msgstr "Высокий восходящий (ударение)"
 
 #: lib/ui/stdtoolbars.inc:1457
 msgid "Low rising (accent)"
-msgstr ""
+msgstr "Низкий восходящий (ударение)"
 
 #: lib/ui/stdtoolbars.inc:1458
 msgid "Low rising (tone letter)"
-msgstr ""
+msgstr "Низкий восходящий (ударение)"
 
 #: lib/ui/stdtoolbars.inc:1459
 msgid "Rising-falling (accent)"
-msgstr ""
+msgstr "Восходяще-нисходящий (ударение)"
 
 #: lib/ui/stdtoolbars.inc:1460
 msgid "Rising-falling (tone letter)"
-msgstr ""
+msgstr "Восходяще-нисходящий (ударение)"
 
 #: lib/ui/stdtoolbars.inc:1461
 msgid "Global rise"
-msgstr "Глобальный рост"
+msgstr "Общий подъём"
 
 #: lib/ui/stdtoolbars.inc:1462
 msgid "Global fall"
-msgstr "Глобальное падение"
+msgstr "Общее снижение"
 
 #: lib/xtemplates/chess.xtemplate:14
 msgid "ChessDiagram"
@@ -26359,6 +26395,11 @@ msgid ""
 "support offered by LyX for allowing this privilege only to documents that "
 "actually need it, instead.</p>"
 msgstr ""
+"<p>Следующая серверная часть LaTeX настроена так, чтобы разрешить выполнение "
+"внешних программ для любого документа:</p><center><p><tt>%1$s</tt></p></"
+"center><p>Это опасная конфигурация. Пожалуйста, рассмотрите возможность "
+"использования поддержки, предлагаемой LyX для разрешения этой привилегии "
+"только для документов, которые действительно в ней нуждаются.</p>"
 
 #: src/Converter.cpp:303
 msgid "Security Warning"
@@ -26372,6 +26413,10 @@ msgid ""
 "programs can execute arbitrary commands on your system, including dangerous "
 "ones, if instructed to do so by a maliciously crafted LyX document.</p>"
 msgstr ""
+"<p>Следующая серверная часть LaTeX была предложена для выполнения внешних "
+"программ:</p><center><p><tt>%1$s</tt></p></center><p>Внешние программы могут "
+"выполнять произвольные команды на вашей системе, в том числе опасные, если "
+"они будут проинструктированы вредоносным документом LyX.</p>"
 
 #: src/Converter.cpp:323
 #, c-format
@@ -26381,6 +26426,10 @@ msgid ""
 "can execute arbitrary commands on your system, including dangerous ones, if "
 "instructed to do so by a maliciously crafted LyX document.</p>"
 msgstr ""
+"<p>Запрошенная операция требует использования конвертера из %2$s в %3$s:</"
+"p><blockquote><p><tt>%1$s</tt></p></blockquote><p>Эта внешняя программа "
+"может выполнять произвольные команды на вашей системе, в том числе опасные, "
+"если это будет проинструктировано вредоносным документом LyX.</p>"
 
 #: src/Converter.cpp:333
 msgid "An external converter is disabled for security reasons"
@@ -26393,6 +26442,10 @@ msgid ""
 "Converters</i> and uncheck <i>Security &#x25b9; Forbid needauth converters</"
 "i>.)"
 msgstr ""
+"<p><b>Текущие настройки настроек запрещают его выполнение.</b></p><p>(Для "
+"измерения этой настройки зайдите в <i>Настройки &#x25b9; Обработка файлов "
+"&#x25b9; Конвертеры</i> и уберите <i>Security &#x25b9; Forbid needauth "
+"converters</i>.)"
 
 #: src/Converter.cpp:344
 msgid "A LaTeX backend requires your authorization"
@@ -30942,11 +30995,11 @@ msgstr "Полные и неполные формы"
 
 #: src/frontends/qt4/GuiSymbols.cpp:123
 msgid "Linear B Syllabary"
-msgstr ""
+msgstr "Линейные-B слоги"
 
 #: src/frontends/qt4/GuiSymbols.cpp:124
 msgid "Linear B Ideograms"
-msgstr ""
+msgstr "Линейные-B иероглифы"
 
 #: src/frontends/qt4/GuiSymbols.cpp:125
 msgid "Aegean Numbers"
@@ -31014,12 +31067,11 @@ msgstr "Математические буквенно-цифровые симв�
 
 #: src/frontends/qt4/GuiSymbols.cpp:141
 msgid "CJK Unified Ideographs Extension B"
-msgstr ""
+msgstr "Расширение B иероглифов CJK"
 
 #: src/frontends/qt4/GuiSymbols.cpp:142
-#, fuzzy
 msgid "CJK Compatibility Ideographs Supplement"
-msgstr "CJK совместимость"
+msgstr "Дополнение совместимости иероглифов CJK"
 
 #: src/frontends/qt4/GuiSymbols.cpp:143
 msgid "Tags"
@@ -31027,7 +31079,7 @@ msgstr "Теги"
 
 #: src/frontends/qt4/GuiSymbols.cpp:144
 msgid "Variation Selectors Supplement"
-msgstr ""
+msgstr "Дополнение селекторов вариантов"
 
 #: src/frontends/qt4/GuiSymbols.cpp:145
 msgid "Supplementary Private Use Area-A"
@@ -32333,7 +32385,7 @@ msgstr ""
 
 #: src/insets/InsetInclude.cpp:745
 msgid "Different use-non-TeX-fonts settings"
-msgstr ""
+msgstr "Другие настройки использования не-TeX шрифтов"
 
 #: src/insets/InsetInclude.cpp:760
 #, c-format
@@ -32650,7 +32702,7 @@ msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:689
 msgid "default: _minted-<jobname>"
-msgstr ""
+msgstr "default: _minted-<jobname>"
 
 #: src/insets/InsetListingsParams.cpp:768
 msgid "Sets encoding expected by Pygments"
