@@ -1942,15 +1942,19 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		break;
 
 	case LFUN_BUFFER_CHKTEX: {
+		// hide if we have no checktex command
+		if (lyxrc.chktex_command.empty()) {
+			flag.setUnknown(true);
+			enable = false;
+			break;
+		}
 		if (!doc_buffer || !doc_buffer->params().isLatex()
 		    || d.processing_thread_watcher_.isRunning()) {
 			// grey out, don't hide
 			enable = false;
 			break;
 		}
-		// hide if we have no checktex command
-		enable = !lyxrc.chktex_command.empty();
-		flag.setUnknown(!enable);
+		enable = true;
 		break;
 	}
 
