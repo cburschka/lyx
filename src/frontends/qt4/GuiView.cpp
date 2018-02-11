@@ -1913,8 +1913,22 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		enable = doc_buffer && doc_buffer->notifiesExternalModification();
 		break;
 
-	case LFUN_BUFFER_WRITE_AS:
+	case LFUN_BUFFER_EXPORT: {
+		if (!doc_buffer || d.processing_thread_watcher_.isRunning()) {
+			enable = false;
+			break;
+		}
+		return doc_buffer->getStatus(cmd, flag);
+		break;
+	}
+
 	case LFUN_BUFFER_EXPORT_AS:
+		if (!doc_buffer || d.processing_thread_watcher_.isRunning()) {
+			enable = false;
+			break;
+		}
+		// fall through
+	case LFUN_BUFFER_WRITE_AS:
 		enable = doc_buffer != 0;
 		break;
 
