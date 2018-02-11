@@ -255,7 +255,7 @@ CiteFormat authoryear
 	# "Author et al. (cf. Year..."
 	!makecitet %!startlink%%!makeauthor%%!endlink% %!open%%!textbefore%%!makeyear%%!nextcitet%
 	# "cf. Author et al. Year..."
-	!makecitealt  %!textbefore%%!startlink%%!makeauthor% %!makeyear%%!endlink%%!nextcitealt%
+	!makecitealt %!textbefore%%!startlink%%!makeauthor% %!makeyear%%!endlink%%!nextcitealt%
 	# "Author et al., Year..."
 	!makecitealp %!startlink%%!makeauthor%, %!makeyear%%!endlink%%!nextcitealp%
 
