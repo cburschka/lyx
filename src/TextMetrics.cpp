@@ -1502,14 +1502,14 @@ int TextMetrics::cursorX(CursorSlice const & sl,
 int TextMetrics::cursorY(CursorSlice const & sl, bool boundary) const
 {
 	//lyxerr << "TextMetrics::cursorY: boundary: " << boundary << endl;
-	ParagraphMetrics const & pm = par_metrics_[sl.pit()];
+	ParagraphMetrics const & pm = parMetrics(sl.pit());
 	if (pm.rows().empty())
 		return 0;
 
 	int h = 0;
-	h -= par_metrics_[0].rows()[0].ascent();
+	h -= parMetrics(0).rows()[0].ascent();
 	for (pit_type pit = 0; pit < sl.pit(); ++pit) {
-		h += par_metrics_[pit].height();
+		h += parMetrics(pit).height();
 	}
 	int pos = sl.pos();
 	if (pos && boundary)
