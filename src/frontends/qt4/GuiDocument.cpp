@@ -4007,6 +4007,12 @@ bool GuiDocument::isBiblatex() const
 		biblioModule->citeEngineCO->itemData(
 				biblioModule->citeEngineCO->currentIndex()).toString();
 
+	// this can happen if the cite engine is unknown, which can happen
+	// if one is using a file that came from someone else, etc. in that
+	// case, we crash if we proceed.
+	if (engine.isEmpty())
+	    return false;
+
 	return theCiteEnginesList[fromqstr(engine)]->getCiteFramework() == "biblatex";
 }
 
