@@ -25194,9 +25194,7 @@ Le second type de définitions particulières se présente comme ceci:
 \end_layout
 
 \begin_layout LyX-Code
-
-\lang english
-_pptext pp.
+B_pptext pp.
 \end_layout
 
 \begin_layout Standard
@@ -25212,13 +25210,47 @@ Ceci définit un segment de texte susceptible de traduction, ce qui permet
 status collapsed
 
 \begin_layout Plain Layout
-%_pptext%
+%B_pptext%
 \end_layout
 
 \end_inset
 
 .
- Plusieurs d'entre elles sont prédéfinies dans 
+ 
+\lang english
+Note that there are two different translation paths: All definitions starting
+ with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang english
+B_
+\end_layout
+
+\end_inset
+
+, such as in the example above, will be translated to the currently active
+ buffer language (so the translation will match the generated document).
+ All definitions starting with underscore only will be translated to the
+ GUI language.
+ This is the proper translation for strings that only occur in the dialogs
+ or on buttons, such as this one:
+\end_layout
+
+\begin_layout LyX-Code
+
+\lang english
+_addtobib Add to bibliography only.
+\end_layout
+
+\begin_layout Standard
+Plusieurs d'entre elles 
+\lang english
+translatable strings
+\lang french
+ sont prédéfinies dans 
 \begin_inset Flex Code
 status collapsed
 
@@ -25228,29 +25260,27 @@ stdciteformats.inc
 
 \end_inset
 
-.
-
+ et 
 \lang english
- and the diverse 
+the diverse
+\lang french
+ fichiers 
 \begin_inset Flex Code
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 *.citeengine
 \end_layout
 
 \end_inset
 
- files
-\lang french
+.
  Notez bien que ce ne sont pas des macro-instructions, au sens défini ci-dessus:
  elles ne seront pas interprétées.
 \end_layout
 
 \begin_layout Standard
-Voici donc un exemple utilisant toutes ces fonctionnalités:
+Voici donc un exemple utilisant variés ces fonctionnalités:
 \begin_inset VSpace defskip
 \end_inset
 
@@ -25261,7 +25291,7 @@ Voici donc un exemple utilisant toutes ces fonctionnalités:
 \noindent
 
 \family sans
-!authoredit {%author%[[%author%, ]][[{%editor%[[%editor%, %_edtext%, ]]}]]}
+!authoredit {%author%[[%author%, ]][[{%editor%[[%editor%, %B_edtext%, ]]}]]}
 \end_layout
 
 \begin_layout Standard
@@ -25284,7 +25314,7 @@ author
 status collapsed
 
 \begin_layout Plain Layout
-_edtext
+B_edtext
 \end_layout
 
 \end_inset
