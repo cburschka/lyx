@@ -56,7 +56,7 @@ Style Chapter
 	NextNoIndent          1
 	ToggleIndent          Never
 	ParSkip               0.4
-	TopSep                4
+	TopSep                2
 	BottomSep             0.8
 	ParSep                0.8
 	Align                 Block
