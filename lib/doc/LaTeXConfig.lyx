@@ -2538,11 +2538,15 @@ macros/latex/contrib/aguplus
 \end_layout
 
 \begin_layout Description
-Notes: The document class 
+Notes: The document style 
 \family sans
 jgrga
 \family default
- can be used to write articles for the 
+ together with class 
+\family sans
+aguplus
+\family default
+ could be used to write articles for the 
 \emph on
 Journal of Geophysical Research
 \emph default
@@ -2551,35 +2555,25 @@ Journal of Geophysical Research
 
 \begin_deeper
 \begin_layout Standard
-The layout consists of two parts: the general part 
-\family typewriter
-aguplus.inc
-\family default
-, and the journal specific part 
-\family typewriter
-jgrga.layout
+It now obsolete and replaced by class 
+\family sans
+agujournal
 \family default
 .
- It is not very thoroughly tested yet.
- It would be straightforward to extend this to support other publications
- of the AGU.
+ A layout and template for this new class (2016) should be written.
 \end_layout
 
 \begin_layout Standard
-The document class 
+The document style 
 \family sans
 agums
 \family default
- (file 
-\family typewriter
-agums.layout
-\family default
-) can be used to write articles for first-time submission to AGU editors
- (e.
+, which could be used to write articles for first-time submission to AGU
+ editors (e.
 \begin_inset space \thinspace{}
 \end_inset
 
-g., for review and copy editing)
+g., for review and copy editing), is obsolete as well.
 \end_layout
 
 \end_deeper
@@ -2871,9 +2865,20 @@ Notes: The document class
 \family sans
 egs
 \family default
- can be used to write articles for the European Geophysical Society.
+ could be used to write articles for the European Geophysical Society, which
+ became the European Geosciences Union in 2001.
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+The class is thus obsolete end replaced by class 
+\family sans
+copernicus
+\family default
+, for which a layout and template should be written.
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 elsart
 \end_layout
