@@ -50,7 +50,7 @@ const int Painter::thin_line = 1;
 
 GuiPainter::GuiPainter(QPaintDevice * device, double pixel_ratio)
 	: QPainter(device), Painter(pixel_ratio),
-	  use_pixmap_cache_(lyxrc.use_pixmap_cache && USE_PIXMAP_CACHE)
+	  use_pixmap_cache_(false)
 {
 	// new QPainter has default QPen:
 	current_color_ = guiApp->colorCache().get(Color_black);

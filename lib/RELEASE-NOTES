@@ -20,6 +20,10 @@
   See chapter 3.9.1.1 "Dashes and Line Breaks" of the User Guide and
   "Caveats when upgrading from earlier versions to 2.3.x" below.
 
+* The preference "Tools->Preferences->Look&Feel->Screen Fonts->Use
+  pixmap cache to speed up font rendering" is not available anymore.
+  It was of dubious value and led to rendering issues.
+
 * The following UI translations were dropped, because the lack of translation
   maintenance:  Russian, Danish, Greek, Serbian, Galician, Catalan, Romanian,
   Dutch.
@@ -87,6 +91,8 @@
 * \screen_zoom
   This is now independent of the value set via buffer-zoom[-in|-out].
 
+* \use_pixmap_cache
+  The value of this variable is now ignored.
 
 !!!The following new LyX functions have been introduced in 2.3:
 

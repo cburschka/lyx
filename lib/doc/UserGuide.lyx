@@ -46198,24 +46198,6 @@ reference "subsec:Document-Font"
 .
 \end_layout
 
-\begin_layout Standard
-With the option 
-\family sans
-Use pixmap cache to speed up font rendering
-\family default
- enabled, \SpecialChar LyX
- needs to redraw the screen less often.
- This results in better performance, especially on slow systems.
- On the other hand, the characters might look more fuzzy on screen.
- So whether you enable this or not depends on whether you prefer speed over
- aesthetics.
- Note that the Pixmap Cache is only available and useful under Mac
-\begin_inset space ~
-\end_inset
-
-OS and Windows.
-\end_layout
-
 \begin_layout Subsection
 Colors
 \begin_inset Index idx
