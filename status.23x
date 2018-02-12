@@ -58,6 +58,8 @@ What's new
 
 * USER INTERFACE
 
+- Fix crash with server-get-xy and tall inset (bug 8120).
+
 - Improve Undo for operations that act on several buffers (bug 10823).
 
 - Improve rendering of square roots in math editor (bug 10814).
