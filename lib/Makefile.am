@@ -2424,6 +2424,7 @@ dist_obsoletetemplates_DATA = \
 	templates/obsolete/ACM-siggraph.lyx \
 	templates/obsolete/ACM-sigplan.lyx \
 	templates/obsolete/ACM-SIGS.lyx \
+	templates/obsolete/AGUTeX.lyx \
 	templates/obsolete/g-brief-de.lyx \
 	templates/obsolete/g-brief-en.lyx
 
