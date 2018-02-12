@@ -2378,7 +2378,6 @@ dist_templates_DATA = \
 	templates/aastex6.lyx \
 	templates/acmart.lyx \
 	templates/AEA.lyx \
-	templates/AGUTeX.lyx \
 	templates/APA.lyx \
 	templates/APA6.lyx \
 	templates/beamer-conference-ornate-20min.lyx \
