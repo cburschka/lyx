@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: lyx_2.0.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-02-12 16:39+0100\n"
-"PO-Revision-Date: 2018-02-09 20:12+0100\n"
+"PO-Revision-Date: 2018-02-12 20:50+0100\n"
 "Last-Translator: Inaki Larranaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -1823,10 +1823,12 @@ msgid ""
 "By default, a line break can occur after en- and em-dashes. Checking this "
 "box prevents that."
 msgstr ""
+"Lehenetsi gisa, lerro-jauzi bat gertatu ohi da en- eta em-marratxoen ostean. "
+"Kutxa hau aktibatzeak hori saihesten du."
 
 #: src/frontends/qt4/ui/FontUi.ui:303
 msgid "Disallow l&ine breaks after dashes"
-msgstr ""
+msgstr "Desgaitu &lerro-jauziak marren ostean"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
@@ -1941,7 +1943,6 @@ msgid "Graphics Group"
 msgstr "Grafikoen taldea"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:627
-#, fuzzy
 msgid "A&ssigned to group:"
 msgstr "Taldeari e&sleituta:"
 
@@ -11464,7 +11465,6 @@ msgid "Fix LaTeX"
 msgstr "LaTeX zuzenketa"
 
 #: lib/layouts/fixltx2e.module:10
-#, fuzzy
 msgid ""
 "Loads the LaTeX package fixltx2e which contains some bug fixes for LaTeX. "
 "Those fixes were not part of older LaTeX kernels because of backward "
@@ -11474,12 +11474,16 @@ msgid ""
 "functionality of fixltx2e, so the fixltx2e module becomes obsolete with "
 "newer LaTeX distributions."
 msgstr ""
-"LaTeX-eko fixltx2 paketea kargatzen du. Pakete honek LaTeX-eko akats batzuen "
+"LaTeX-eko fixltx2e paketea kargatzen du. Pakete honek LaTeX-eko akats batzuen "
 "konponketak dauzka. Konponketa hauek ez daude LaTeX-eko nukleoaren barruan "
 "atzeranzko bateragarritasuna dela eta. Modulu hau erabiltzen baduzu, zure "
-"dokumentuko letra-tipoak itxura desberdina eduki dezakete etorkizuneko LaTeX "
-"bertsioetan, fixltx2e paketeak etorkizunean zuzenketa gehiago horni "
-"baititzake."
+"dokumentuko letra-tipoak itxura desberdina eduki dezakete fixltx2e paketearen "
+"bertsioaren "
+"arabera. Oharra: LaTeX-en azken bertsioetan (2015/01/01 datatik hona) "
+"fixltx2e-n "
+"funtzionaltasuna barneratuta daudenez, fixltx2e modulua zaharkitua dago "
+"LaTeX-en "
+"banaketa berrienetan."
 
 #: lib/layouts/fixme.module:2
 msgid "FiXme"
@@ -14556,9 +14560,8 @@ msgid "List of Videos"
 msgstr "Bideoen zerrenda"
 
 #: lib/layouts/revtex4-1.layout:292
-#, fuzzy
 msgid "Videos"
-msgstr "Bideoa"
+msgstr "Bideoak"
 
 #: lib/layouts/revtex4-1.layout:295
 msgid "Float Link"
@@ -15422,16 +15425,15 @@ msgstr "Aurrebista"
 
 #: lib/layouts/stdinsets.inc:703 lib/layouts/stdinsets.inc:711
 msgid "see equation[[nomencl]]"
-msgstr ""
+msgstr "ikus ekuazioa[[nomenklatura]]"
 
 #: lib/layouts/stdinsets.inc:704 lib/layouts/stdinsets.inc:712
 msgid "page[[nomencl]]"
-msgstr ""
+msgstr "orrialdea[[nomenklatura]]"
 
 #: lib/layouts/stdinsets.inc:705 lib/layouts/stdinsets.inc:713
-#, fuzzy
 msgid "Nomenclature[[output]]"
-msgstr "Formatuak[[irteera]]"
+msgstr "Nomenklatura[[irteera]]"
 
 #: lib/layouts/stdlayouts.inc:99
 msgid "Verbatim*"
@@ -26579,6 +26581,8 @@ msgid ""
 "The character \"%1$s\" is uncodable in this verbatim context and thus has "
 "not been pasted."
 msgstr ""
+"\"%1$s\" karakterea kodekaitza da hitzez hitzeko testuinguru honetan, "
+"beraz, ez da itsatsi."
 
 #: src/CutAndPaste.cpp:188
 #, c-format
@@ -26586,11 +26590,12 @@ msgid ""
 "The characters \"%1$s\" are uncodable in this verbatim context and thus have "
 "not been pasted."
 msgstr ""
+"\"%1$s\" karakterea kodekaitzak dira hitzez hitzeko testuinguru honetan, "
+"beraz, ez dira itsatsi."
 
 #: src/CutAndPaste.cpp:231
-#, fuzzy
 msgid "Uncodable content"
-msgstr "Kodetu ezin daitezkeen karaktereak"
+msgstr "Kodetu ezin daitekeen edukia"
 
 #: src/CutAndPaste.cpp:405
 #, c-format
@@ -27872,9 +27877,8 @@ msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr "Ezin duzu bi zuriune honela idatzi. Irakurri Tutoretza."
 
 #: src/Text.cpp:941
-#, fuzzy
 msgid "Character is uncodable in this verbatim context."
-msgstr "Karakterea ez da kodekagarria 'hitzez hitz' motako paragrafoetan."
+msgstr "Karakterea ez da kodekagarria 'hitzez hitz' testuinguran."
 
 #: src/Text.cpp:1904
 msgid "[Change Tracking] "
@@ -29156,11 +29160,10 @@ msgid "Text that follows the reference (e.g., pages)"
 msgstr "Erreferentziaren ostean doan testua (adib. orrialdeak)"
 
 #: src/frontends/qt4/GuiCitation.cpp:314
-#, fuzzy
 msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")."
 msgstr ""
 "Derrigortu maiuskulak izenetan (\"Enbata Lurrikaraenea\", ez \"enbata "
-"Lurrikaraenea\"), uneko aipamen-estiloak onartzen badu."
+"Lurrikaraenea\")."
 
 #: src/frontends/qt4/GuiCitation.cpp:349
 msgid "Always list all authors (rather than using \"et al.\")"
@@ -30640,9 +30643,8 @@ msgid "Longest label width"
 msgstr "Etiketa luzeenaren zabalera"
 
 #: src/frontends/qt4/GuiPrintNomencl.h:40
-#, fuzzy
 msgid "Nomenclature List Settings"
-msgstr "Nomenklaturen ezarpenak"
+msgstr "Nomenklaturen zerrenden ezarpenak"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:37
 msgid "Index Settings"
@@ -31858,34 +31860,34 @@ msgstr "Aldatu estiloa|s"
 #: src/frontends/qt4/Menus.cpp:1893
 #, c-format
 msgid "Insert Separated %1$s Above"
-msgstr ""
+msgstr "Txertatu bereiztutako %1$s gainean"
 
 #: src/frontends/qt4/Menus.cpp:1895
-#, fuzzy, c-format
+#, c-format
 msgid "Separated %1$s Above"
-msgstr "%1$s parametroa: "
+msgstr "Bereiztutako %1$s gainean"
 
 #: src/frontends/qt4/Menus.cpp:1901 src/frontends/qt4/Menus.cpp:1914
 #: src/frontends/qt4/Menus.cpp:1930
 #, c-format
 msgid "Insert Separated %1$s Below"
-msgstr ""
+msgstr "Txertatu bereiztutako %1$s azpian"
 
 #: src/frontends/qt4/Menus.cpp:1903 src/frontends/qt4/Menus.cpp:1916
 #: src/frontends/qt4/Menus.cpp:1936
-#, fuzzy, c-format
+#, c-format
 msgid "Separated %1$s Below"
-msgstr "%1$s parametroa: "
+msgstr "Bereiztutako %1$s azpian"
 
 #: src/frontends/qt4/Menus.cpp:1928
 #, c-format
 msgid "Insert Separated Outer %1$s Below"
-msgstr ""
+msgstr "Txertatu bereiztutako kanpoko %1$s azpian"
 
 #: src/frontends/qt4/Menus.cpp:1934
-#, fuzzy, c-format
+#, c-format
 msgid "Separated Outer %1$s Below"
-msgstr "%1$s parametroa: "
+msgstr "Bereiztutako kanpoko %1$s azpian"
 
 #: src/frontends/qt4/Menus.cpp:2249
 #, c-format
