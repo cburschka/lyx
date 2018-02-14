@@ -45175,24 +45175,6 @@ reference "subsec:Dokumentschrift-und-Schriftgröße"
  erläutert.
 \end_layout
 
-\begin_layout Standard
-Mit der aktivierten Option 
-\family sans
-Pixmap-Zwischenspeicher benutzen, um die Darstellung von Zeichen zu beschleunige
-n
-\family default
- muss \SpecialChar LyX
- seltener die Bildschirmanzeige erneuern.
- Dies führt zu einer besseren Performanz, besonders auf langsameren Rechnern.
- Allerdings könnten die Zeichen verpixelt aussehen.
- Ob es sich lohnt diese Option zu aktivieren, müssen Sie also ausprobieren.
- Man beachte, dass der Pixmap Cache nur unter Mac
-\begin_inset space ~
-\end_inset
-
-OS und Windows verfügbar und nützlich ist.
-\end_layout
-
 \begin_layout Subsection
 Farben
 \begin_inset Index idx

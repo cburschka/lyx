@@ -48069,24 +48069,6 @@ reference "subsec:Document-Polices"
 .
 \end_layout
 
-\begin_layout Standard
-Avec l'option 
-\family sans
-Utiliser le cache pixmap pour accélérer le rendu des polices
-\family default
-, \SpecialChar LyX
- a besoin de re-dessiner l'écran moins souvent.
- Cela donne de meilleures performances, surtout sur des systèmes lents.
- D'un autre côté, les caractères peuvent paraître un peu flous à l'écran.
- Vous allez donc activer ou non cette option selon que vous préférez la
- vitesse ou l'esthétique.
- Notez que le cache pixmap n'est disponible et utile que sous Mac
-\begin_inset space ~
-\end_inset
-
-OS et Windows.
-\end_layout
-
 \begin_layout Subsection
 Couleurs
 \begin_inset Index idx
