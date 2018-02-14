@@ -38906,20 +38906,6 @@ reference "subsec:文書フォント"
 節に詳細があります．
 \end_layout
 
-\begin_layout Standard
-
-\family sans
-フォントレンダリングの速度を向上させるためにPixmapキャッシュを使う
-\family default
-オプションを有効にすると，\SpecialChar LyX
-が画面を再描画する必要が減ります．これによって，特に遅いシステムでは，パフォーマンスが向上します．一方，画面上の文字は少し毛羽立って見
-えるかもしれません．したがって，これを有効にするか否かは，スピードをお求めになるか美しさをお求めになるかに依存します．Pixmapキャッシュは，Mac
-\begin_inset space ~
-\end_inset
-
-OSとWindowsでのみ使うことができ，また意味があることにご注意ください．
-\end_layout
-
 \begin_layout Subsection
 色
 \begin_inset Index idx
