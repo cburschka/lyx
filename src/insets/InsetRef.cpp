@@ -56,6 +56,7 @@ bool InsetRef::isCompatibleCommand(string const & s) {
 		|| s == "vref"
 		|| s == "vpageref"
 		|| s == "formatted"
+		|| s == "prettyref" // for InsetMathRef FIXME
 		|| s == "eqref"
 		|| s == "nameref"
 		|| s == "labelonly";
