@@ -111,6 +111,10 @@
   opened in editable mode. This state used to be hardcoded at compile
   time.
 
+* buffer-anonymize (2.3.2)
+  Replace all text n the document by streams of `a'. This is useful
+  for sharing private documents in a bug report.
+
 * font-crossout
   Cross out characters.
 
