@@ -1681,15 +1681,15 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			Inset * inset = from.nextInset();
 			if (!inset)
 				break;
-			InsetGraphics * ig = inset->asInsetGraphics();
-			if (ig) {
-				InsetGraphicsParams inspar = ig->getParams();
+			if (inset->lyxCode() == GRAPHICS_CODE) {
+			InsetGraphics & ig = static_cast<InsetGraphics &>(*inset);
+				InsetGraphicsParams inspar = ig.getParams();
 				if (fetchId) {
 				        grp_par = inspar;
 					fetchId = false;
 				} else {
 					grp_par.filename = inspar.filename;
-					ig->setParams(grp_par);
+					ig.setParams(grp_par);
 				}
 			}
 			from.forwardInset();
