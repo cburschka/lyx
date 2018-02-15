@@ -67,6 +67,8 @@ What's new
 - Fix display of citation labels when pasting from a document
   with other citation type (bug 10829).
 
+- Save the list of recent files when a file is open/saved so that it
+  is up to date after a crash (bug 10712).
 
 * INTERNALS
 
