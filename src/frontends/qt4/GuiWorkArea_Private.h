@@ -13,28 +13,19 @@
 #define WORKAREA_PRIVATE_H
 
 #include "FuncRequest.h"
-#include "LyXRC.h"
 
 #include "support/FileName.h"
 #include "support/Timeout.h"
 
 #include <QMouseEvent>
-#include <QImage>
-#include <QPixmap>
 #include <QTimer>
 
-class QContextMenuEvent;
-class QDragEnterEvent;
-class QDropEvent;
-class QKeyEvent;
-class QPaintEvent;
-class QResizeEvent;
-class QToolButton;
-class QWheelEvent;
-class QWidget;
-
-#ifdef CursorShape
-#undef CursorShape
+#ifdef Q_OS_MAC
+/* Qt on macOS does not respect the Qt::WA_OpaquePaintEvent attribute
+ * and resets the widget backing store at each update. Therefore, we
+ * use our own backing store in this case */
+#define LYX_BACKINGSTORE 1
+#include <QPainter>
 #endif
 
 namespace lyx {
@@ -44,6 +35,7 @@ class Buffer;
 namespace frontend {
 
 class GuiCompleter;
+class GuiPainter;
 class GuiView;
 class GuiWorkArea;
 
@@ -86,96 +78,104 @@ public:
 /**
  * Implementation of the work area (buffer view GUI)
 */
-class CursorWidget;
+class CaretWidget;
 
 struct GuiWorkArea::Private
 {
+	///
 	Private(GuiWorkArea *);
 
-	/// update the passed area.
-	void update(int x, int y, int w, int h);
 	///
-	void updateScreen();
+	~Private();
+
 	///
 	void resizeBufferView();
 
-	/// paint the cursor and store the background
-	void showCursor(int x, int y, int h,
-		bool l_shape, bool rtl, bool completable);
-
-	/// hide the cursor
-	void removeCursor();
 	///
 	void dispatch(FuncRequest const & cmd0);
-	/// hide the visible cursor, if it is visible
-	void hideCursor();
-	/// show the cursor if it is not visible
-	void showCursor();
+	/// recompute the shape and position of the caret
+	void updateCaretGeometry();
+	/// show the caret if it is not visible
+	void showCaret();
+	/// hide the caret if it is visible
+	void hideCaret();
 	/// Set the range and value of the scrollbar and connect to its valueChanged
 	/// signal.
 	void updateScrollbar();
 	/// Change the cursor when the mouse hovers over a clickable inset
 	void updateCursorShape();
-	///
-	void setCursorShape(Qt::CursorShape shape);
 
-	bool needResize() const {
-		return need_resize_ || p->pixelRatio() != pixel_ratio_;
+	void paintPreeditText(GuiPainter & pain);
+
+	void resetScreen() {
+#ifdef LYX_BACKINGSTORE
+		int const pr = p->pixelRatio();
+		screen_ = QImage(static_cast<int>(pr * p->viewport()->width()),
+		                 static_cast<int>(pr * p->viewport()->height()),
+		                 QImage::Format_ARGB32_Premultiplied);
+#  if QT_VERSION >= 0x050000
+		screen_.setDevicePixelRatio(pr);
+#  endif
+#endif
 	}
 
-	void resetScreen()
-	{
-		delete screen_;
-		pixel_ratio_ = p->pixelRatio();
-		if (lyxrc.use_qimage) {
-			QImage *x =
-				new QImage(static_cast<int>(pixel_ratio_ * p->viewport()->width()),
-						   static_cast<int>(pixel_ratio_ * p->viewport()->height()),
-						   QImage::Format_ARGB32_Premultiplied);
-#if QT_VERSION >= 0x050000
-			x->setDevicePixelRatio(pixel_ratio_);
+	QPaintDevice * screenDevice() {
+#ifdef LYX_BACKINGSTORE
+		return &screen_;
+#else
+		return p->viewport();
 #endif
-			screen_ = x;
-		} else {
-			QPixmap *x =
-				new QPixmap(static_cast<int>(pixel_ratio_ * p->viewport()->width()),
-							static_cast<int>(pixel_ratio_ * p->viewport()->height()));
-#if QT_VERSION >= 0x050000
-			x->setDevicePixelRatio(pixel_ratio_);
-#endif
-			screen_ = x;
-		}
 	}
+
+#ifdef LYX_BACKINGSTORE
+	void updateScreen(QRectF const & rc) {
+		QPainter qpain(p->viewport());
+		double const pr = p->pixelRatio();
+		QRectF const rcs = QRectF(rc.x() * pr, rc.y() * pr,
+		                          rc.width() * pr, rc.height() * pr);
+		qpain.drawImage(rc, screen_, rcs);
+	}
+#else
+	void updateScreen(QRectF const & ) {}
+#endif
+
 	///
 	GuiWorkArea * p;
-	///
-	QPaintDevice * screen_;
 	///
 	BufferView * buffer_view_;
 	///
 	GuiView * lyx_view_;
-	/// is the cursor currently displayed
-	bool cursor_visible_;
 
+#ifdef LYX_BACKINGSTORE
 	///
-	QTimer cursor_timeout_;
+	QImage screen_;
+#endif
+	///
+	CaretWidget * caret_;
+	/// is the caret currently displayed
+	bool caret_visible_;
+	///
+	QTimer caret_timeout_;
+
 	///
 	SyntheticMouseEvent synthetic_mouse_event_;
 	///
 	DoubleClick dc_event_;
 
 	///
-	CursorWidget * cursor_;
-	///
 	bool need_resize_;
-	///
-	bool schedule_redraw_;
-	///
+
+	/// the current preedit text of the input method
+	docstring preedit_string_;
+	/// Number of lines used by preedit text
 	int preedit_lines_;
+	/// the attributes of the preedit text
+	QList<QInputMethodEvent::Attribute> preedit_attr_;
+
 	/// Ratio between physical pixels and device-independent pixels
 	/// We save the last used value to detect changes of the
 	/// current pixel_ratio of the viewport.
-	double pixel_ratio_;
+	double last_pixel_ratio_;
 	///
 	GuiCompleter * completer_;
 

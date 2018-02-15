@@ -43,7 +43,9 @@
 
 #include "frontends/FontMetrics.h"
 #include "frontends/Painter.h"
+#include "frontends/NullPainter.h"
 
+#include "support/convert.h"
 #include "support/debug.h"
 #include "support/lassert.h"
 
@@ -195,6 +197,14 @@ bool TextMetrics::metrics(MetricsInfo & mi, Dimension & dim, int min_width)
 	changed |= dim_ != old_dim;
 	dim = dim_;
 	return changed;
+}
+
+
+void TextMetrics::updatePosCache(pit_type pit) const
+{
+	frontend::NullPainter np;
+	PainterInfo pi(bv_, np);
+	drawParagraph(pi, pit, origin_.x_, par_metrics_[pit].position());
 }
 
 
@@ -459,7 +469,7 @@ bool TextMetrics::redoParagraph(pit_type const pit)
 		row.pit(pit);
 		need_new_row = breakRow(row, right_margin);
 		setRowHeight(row);
-		row.setChanged(false);
+		row.changed(true);
 		if (row_index || row.endpos() < par.size()
 		    || (row.right_boundary() && par.inInset().lyxCode() != CELL_CODE)) {
 			/* If there is more than one row or the row has been
@@ -955,6 +965,10 @@ bool TextMetrics::breakRow(Row & row, int const right_margin) const
 		row.addVirtual(end, docstring(1, char_type(0x00B6)), f, Change());
 	}
 
+	// Is there a end-of-paragaph change?
+	if (i == end && par.lookupChange(end).changed() && !need_new_row)
+		row.needsChangeBar(true);
+
 	// if the row is too large, try to cut at last separator. In case
 	// of success, reset indication that the row was broken abruptly.
 	int const next_width = max_width_ - leftMargin(row.pit(), row.endpos())
@@ -1214,6 +1228,7 @@ void TextMetrics::newParMetricsDown()
 	redoParagraph(pit);
 	par_metrics_[pit].setPosition(last.second.position()
 		+ last.second.descent() + par_metrics_[pit].ascent());
+	updatePosCache(pit);
 }
 
 
@@ -1228,6 +1243,7 @@ void TextMetrics::newParMetricsUp()
 	redoParagraph(pit);
 	par_metrics_[pit].setPosition(first.second.position()
 		- first.second.ascent() - par_metrics_[pit].descent());
+	updatePosCache(pit);
 }
 
 // y is screen coordinate
@@ -1797,8 +1813,8 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		return;
 	size_t const nrows = pm.rows().size();
 
-	// Use fast lane when drawing is disabled.
-	if (!pi.pain.isDrawingEnabled()) {
+	// Use fast lane in nodraw stage.
+	if (pi.pain.isNull()) {
 		for (size_t i = 0; i != nrows; ++i) {
 
 			Row const & row = pm.rows()[i];
@@ -1850,17 +1866,11 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		if (i)
 			y += row.ascent();
 
-		RowPainter rp(pi, *text_, row, row_x, y);
-
 		// It is not needed to draw on screen if we are not inside.
 		bool const inside = (y + row.descent() >= 0
 			&& y - row.ascent() < ww);
-		pi.pain.setDrawingEnabled(inside);
 		if (!inside) {
-			// Paint only the insets to set inset cache correctly
-			// FIXME: remove paintOnlyInsets when we know that positions
-			// have already been set.
-			rp.paintOnlyInsets();
+			// Inset positions have already been set in nodraw stage.
 			y += row.descent();
 			continue;
 		}
@@ -1874,20 +1884,22 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		// whether this row is the first or last and update the margins.
 		if (row.selection()) {
 			if (row.sel_beg == 0)
-				row.begin_margin_sel = sel_beg.pit() < pit;
+				row.change(row.begin_margin_sel, sel_beg.pit() < pit);
 			if (row.sel_end == sel_end_par.lastpos())
-				row.end_margin_sel = sel_end.pit() > pit;
+				row.change(row.end_margin_sel, sel_end.pit() > pit);
 		}
 
-		// Row signature; has row changed since last paint?
-		row.setCrc(pm.computeRowSignature(row, *bv_));
+		// has row changed since last paint?
 		bool row_has_changed = row.changed()
-			|| bv_->hadHorizScrollOffset(text_, pit, row.pos());
+			|| bv_->hadHorizScrollOffset(text_, pit, row.pos())
+			|| bv_->needRepaint(text_, row);
 
 		// Take this opportunity to spellcheck the row contents.
 		if (row_has_changed && pi.do_spellcheck && lyxrc.spellcheck_continuously) {
 			text_->getPar(pit).spellCheck();
 		}
+
+		RowPainter rp(pi, *text_, row, row_x, y);
 
 		// Don't paint the row if a full repaint has not been requested
 		// and if it has not changed.
@@ -1895,6 +1907,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 			// Paint only the insets if the text itself is
 			// unchanged.
 			rp.paintOnlyInsets();
+			row.changed(false);
 			y += row.descent();
 			continue;
 		}
@@ -1905,21 +1918,28 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 			LYXERR(Debug::PAINTING, "Clear rect@("
 			       << max(row_x, 0) << ", " << y - row.ascent() << ")="
 			       << width() << " x " << row.height());
-			pi.pain.fillRectangle(max(row_x, 0), y - row.ascent(),
-				width(), row.height(), pi.background_color);
+			// FIXME: this is a hack. We know that at least this
+			// amount of pixels can be cleared on right and left.
+			// Doing so gets rid of caret ghosts when the cursor is at
+			// the begining/end of row. However, it will not work if
+			// the caret has a ridiculous width like 6. (see ticket
+			// #10797)
+			pi.pain.fillRectangle(max(row_x, 0) - Inset::TEXT_TO_INSET_OFFSET,
+			                      y - row.ascent(),
+			                      width() + 2 * Inset::TEXT_TO_INSET_OFFSET,
+			                      row.height(), pi.background_color);
 		}
 
 		// Instrumentation for testing row cache (see also
 		// 12 lines lower):
 		if (lyxerr.debugging(Debug::PAINTING)
-			&& (row.selection() || pi.full_repaint || row_has_changed)) {
-				string const foreword = text_->isMainText() ?
-					"main text redraw " : "inset text redraw: ";
-			LYXERR(Debug::PAINTING, foreword << "pit=" << pit << " row=" << i
-				<< " row_selection="	<< row.selection()
-				<< " full_repaint="	<< pi.full_repaint
-				<< " row_has_changed="	<< row_has_changed
-				<< " drawingEnabled=" << pi.pain.isDrawingEnabled());
+		    && (row.selection() || pi.full_repaint || row_has_changed)) {
+			string const foreword = text_->isMainText() ? "main text redraw "
+				: "inset text redraw: ";
+			LYXERR0(foreword << "pit=" << pit << " row=" << i
+			        << (row.selection() ? " row_selection": "")
+			        << (pi.full_repaint ? " full_repaint" : "")
+			        << (row_has_changed ? " row_has_changed" : ""));
 		}
 
 		// Backup full_repaint status and force full repaint
@@ -1930,7 +1950,8 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 		rp.paintSelection();
 		rp.paintAppendix();
 		rp.paintDepthBar();
-		rp.paintChangeBar();
+		if (row.needsChangeBar())
+			rp.paintChangeBar();
 		if (i == 0 && !row.isRTL())
 			rp.paintFirst();
 		if (i == nrows - 1 && row.isRTL())
@@ -1944,11 +1965,25 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 				      row_x + row.right_x() > bv_->workWidth());
 		y += row.descent();
 
+#if 0
+		// This debug code shows on screen which rows are repainted.
+		// FIXME: since the updates related to caret blinking restrict
+		// the painter to a small rectangle, the numbers are not
+		// updated when this happens. Change the code in
+		// GuiWorkArea::Private::show/hideCaret if this is important.
+		static int count = 0;
+		++count;
+		FontInfo fi(sane_font);
+		fi.setSize(FONT_SIZE_TINY);
+		fi.setColor(Color_red);
+		pi.pain.text(row_x, y, convert<docstring>(count), fi);
+#endif
+
 		// Restore full_repaint status.
 		pi.full_repaint = tmp;
+
+		row.changed(false);
 	}
-	// Re-enable screen drawing for future use of the painter.
-	pi.pain.setDrawingEnabled(true);
 
 	//LYXERR(Debug::PAINTING, ".");
 }

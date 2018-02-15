@@ -162,17 +162,11 @@ Row::Row()
 	: separator(0), label_hfill(0), left_margin(0), right_margin(0),
 	  sel_beg(-1), sel_end(-1),
 	  begin_margin_sel(false), end_margin_sel(false),
-	  changed_(false), crc_(0),
+	  changed_(true),
 	  pit_(0), pos_(0), end_(0),
-	  right_boundary_(false), flushed_(false), rtl_(false)
+	  right_boundary_(false), flushed_(false), rtl_(false),
+	  changebar_(false)
 {}
-
-
-void Row::setCrc(size_type crc) const
-{
-	changed_ = crc != crc_;
-	crc_ = crc;
-}
 
 
 bool Row::isMarginSelected(bool left_margin, DocIterator const & beg,
@@ -209,8 +203,8 @@ void Row::setSelectionAndMargins(DocIterator const & beg,
 	setSelection(beg.pos(), end.pos());
 
 	if (selection()) {
-		end_margin_sel = isMarginSelected(false, beg, end);
-		begin_margin_sel = isMarginSelected(true, beg, end);
+		change(end_margin_sel, isMarginSelected(false, beg, end));
+		change(begin_margin_sel, isMarginSelected(true, beg, end));
 	}
 }
 
@@ -218,18 +212,18 @@ void Row::setSelectionAndMargins(DocIterator const & beg,
 void Row::setSelection(pos_type beg, pos_type end) const
 {
 	if (pos_ >= beg && pos_ <= end)
-		sel_beg = pos_;
+		change(sel_beg, pos_);
 	else if (beg > pos_ && beg <= end_)
-		sel_beg = beg;
+		change(sel_beg, beg);
 	else
-		sel_beg = -1;
+		change(sel_beg, -1);
 
 	if (end_ >= beg && end_ <= end)
-		sel_end = end_;
+		change(sel_end,end_);
 	else if (end < end_ && end >= pos_)
-		sel_end = end;
+		change(sel_end, end);
 	else
-		sel_end = -1;
+		change(sel_end, -1);
 }
 
 
@@ -371,6 +365,8 @@ void Row::finalizeLast()
 	if (elt.final)
 		return;
 	elt.final = true;
+	if (elt.change.changed())
+		changebar_ = true;
 
 	if (elt.type == STRING) {
 		dim_.wid -= elt.dim.wid;

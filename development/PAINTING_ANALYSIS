@@ -60,38 +60,43 @@ cursor.
 
 * Clean-up of drawing code
 
-The goal is to make painting with drawing disable fast enough that it
-can be used after every metrics computation. Then we can separate real
-drawing from metrics.
+** Make SinglePar update flag useful again. 
 
-Other changes are only clean-ups.
+The current code can be very expensive when moving cursor inside a
+huge table, for example. We should test the flag again, although this
+will probably lead to some glitches here and there.
+
+** Set Row::changed() in a finer way
+
+*** singleParUpdate
+
+When the height of the current paragraph changes, there is no need for
+a full screen update. Only the rows after the current one need to have
+their position recomputed.
+
+This is also true when scrolling (how to do that?)
+
+*** redoParagraph
+
+It should be possible to check whether the new row is the same as the
+old one and keep its changed() status in this case. This would reduce
+a lot the amount of stuff to redraw.
+
+** Put labels and friends in the Row as elements
+
+It should not be necessary to access the Paragraph object to draw.
+Adding the static elements to Row is a lot of work, but worth it IMO.
+
+** Create a unique row by paragraph and break it afterwards
+
+This should be a performance gain (only if paragraph breaking still
+shows as expensive after the rest is done)
+
+** do not add the vertical margin of main text to first/last row
+
+Would make code cleaner. Probably no so difficult.
 
 ** When a paragraph ends with a newline, compute correctly the height of the extra row.
-** Rewrite TextMetrics::editXY, checkInsetHit using row information (getPosNearX)?
-
-   The helper version should return a Row::Element instead of an InsetTable.
-
-** Set inset position during metrics phase
-
-In order to do that, a no-paint drawing will be initiated after every
-redoParagraph. This code path will need to be made as fast as possible.
-
-Effect: avoid depending on actual drawing having taken place. In turn,
-it will allow to do drawing on paint events, like any reasonable
-application would do.
-
-** Cleanup after complete metrics
-   Then the following can be done:
-   + remove hack in InsetMathNest::drawSelection
-   + remove painting when not inside in drawParagraph
-   + remove Cursor::inCoordCache?
-
-** Paint directly to screen
-
-Instead of using an intermediary pixmap. I have no idea of how
-difficult it will prove.
-One benefit will be that subpixel aliasing will work again (#9972)
-
 ** Merging bv::updateMetrics and tm::metrics
 
 While the full metrics computation tries hard to limit the number of
@@ -101,25 +106,25 @@ insets. We should re-use the bv::updateMetrics logic:
  + transfer all the logic of bv::updateMetrics to tm.
  + Main InsetText should not be special.
 
-The difficuly for a tall table cell for example, is that it may be
+The difficulty for a tall table cell for example, is that it may be
 necessary to break the whole contents to know the width of the cell.
 
 
 * Description of current drawing mechanism
 
-** Two stage drawing
+** Three-stage drawing
 
-There are two parts to drawing the work area:
+There are three parts to drawing the work area:
 
  + the metrics phase computes the size of insets and breaks the
    paragraphs into rows. It stores the dimension of insets (both
    normal and math) in bv::coordCache.
 
- + the drawing phase draws the contents and caches the inset
-   positions. Since the caching of positions is useful in itself,
-   there is a provision for drawing "without" drawing when the only
-   thing we want is to cache inset positions
-   (Painter::setDrawingEnabled).
+ + the nodraw drawing phase paints the screen (see below) with a null
+   painter. The only useful effect is to store the inset positions.
+
+ + an update() signal is sent. This in turn will trigger a paint
+   event, and the actual screen painting will happen then.
 
 The machinery is controlled via bv::processUpdateFlags. This method is
 called at the end of bv::mouseEventDispatch and in
@@ -138,25 +143,37 @@ DecorationUpdate). It triggers a recomputation of the metrics when either:
    existing metrics. Note that the Update::SinglePar flag is *never*
    taken into account.
 
+If a computation of metrics has taken place, Force is removed from the
+flags and ForceDraw is added instead.
+
+It is OK to call processUptateFlags several times before an update. In
+this case, the effects are cumulative.processUpdateFlags execute the
+metrics-related actions, but defers the actual drawing to the next
+paint event.
+
 The screen is drawn (with appropriate update strategy), except when
 update flag is Update::None.
 
 
-** Metrics computation
+** Metrics computation (and nodraw drawing phase)
 
 This is triggered by bv::updateMetrics, which calls tm::redoParagraph for
-all visible paragraphs. Paragraphs above or below the screen (needed
+all visible paragraphs. Some Paragraphs above or below the screen (needed
 for page up/down) and computed as needed.
 
 tm::redoParagraph will call Inset::metrics for each inset. In the case
 of text insets, this will invoke recursively tm::metrics, which redoes
 all the paragraphs of the inset.
 
+At the end of the function, bv::updatePosCache is called. It triggers
+a repaint of the document with a NullPainter (a painter that does
+nothing). This has the effect of caching all insets positions.
 
 ** Drawing the work area.
 
-This is done in bv::draw. This method is triggered mainly by
-Buffer::changed, which draws all the work areas that show the given buffer.
+This is done in bv::draw. This method is triggered by a paint event,
+mainly called through Buffer::changed, which draws all the work areas
+that show the given buffer.
 
 Note that, When Buffer::changed is called outside of
 bv::processUpdateFlags, it is not clear whether the update strategy
@@ -186,3 +203,6 @@ The action depends on the update strategy:
 
  + SingleParUpdate: only tries to repaint current paragraph in a way
    that is not yet very clear to me.
+
+BufferView::draw can also be called with a null painter from
+BufferView::updateMetrics().

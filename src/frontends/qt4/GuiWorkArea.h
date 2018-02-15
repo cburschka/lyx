@@ -27,10 +27,6 @@ class QDropEvent;
 class QToolButton;
 class QWidget;
 
-#ifdef CursorShape
-#undef CursorShape
-#endif
-
 namespace lyx {
 
 class Buffer;
@@ -64,13 +60,11 @@ public:
 	/// is GuiView in fullscreen mode?
 	bool isFullScreen() const;
 	///
-	void scheduleRedraw();
-	///
 	BufferView & bufferView();
 	///
 	BufferView const & bufferView() const;
 	///
-	void redraw(bool update_metrics);
+	void scheduleRedraw(bool update_metrics);
 
 	/// return true if the key is part of a shortcut
 	bool queryKeySym(KeySymbol const & key, KeyModifier mod) const;
@@ -80,8 +74,6 @@ public:
 
 	///
 	GuiCompleter & completer();
-
-	Qt::CursorShape cursorShape() const;
 
 	/// Return the GuiView this workArea belongs to
 	GuiView const & view() const;
@@ -95,9 +87,9 @@ public Q_SLOTS:
 	/// This needs to be public because it is accessed externally by GuiView.
 	void processKeySym(KeySymbol const & key, KeyModifier mod);
 	///
-	void stopBlinkingCursor();
+	void stopBlinkingCaret();
 	///
-	void startBlinkingCursor();
+	void startBlinkingCaret();
 
 Q_SIGNALS:
 	///
@@ -118,8 +110,8 @@ private Q_SLOTS:
 	void scrollTo(int value);
 	/// timer to limit triple clicks
 	void doubleClickTimeout();
-	/// toggle the cursor's visibility
-	void toggleCursor();
+	/// toggle the caret's visibility
+	void toggleCaret();
 	/// close this work area.
 	/// Slot for Buffer::closing signal.
 	void close();

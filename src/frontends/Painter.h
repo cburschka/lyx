@@ -49,7 +49,7 @@ namespace frontend {
  */
 class Painter {
 public:
-	Painter(double pixel_ratio) : drawing_enabled_(true), pixel_ratio_(pixel_ratio) {}
+	Painter(double pixel_ratio) : pixel_ratio_(pixel_ratio) {}
 
 	static const int thin_line;
 
@@ -147,11 +147,8 @@ public:
 	                  Color other, size_type from, size_type to,
                       double wordspacing, double textwidth) = 0;
 
-	void setDrawingEnabled(bool drawing_enabled)
-	{ drawing_enabled_ = drawing_enabled; }
-
-	/// Indicate wether real screen drawing shall be done or not.
-	bool isDrawingEnabled() const { return drawing_enabled_; }
+	// Returns true if the painter does not actually paint.
+	virtual bool isNull() const = 0;
 
 	double pixelRatio() const { return pixel_ratio_; }
 
@@ -183,8 +180,6 @@ public:
 	/// draws a wavy line that can be used for underlining.
 	virtual void wavyHorizontalLine(int x, int y, int width, ColorCode col) = 0;
 private:
-	///
-	bool drawing_enabled_;
 	/// Ratio between physical pixels and device-independent pixels
 	double pixel_ratio_;
 };

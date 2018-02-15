@@ -1435,7 +1435,7 @@ void GuiApplication::updateCurrentView(FuncRequest const & cmd, DispatchResult &
 		theSelection().haveSelection(bv->cursor().selection());
 
 		// update gui
-		current_view_->restartCursor();
+		current_view_->restartCaret();
 	}
 	if (dr.needMessageUpdate()) {
 		// Some messages may already be translated, so we cannot use _()
@@ -1629,14 +1629,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	case LFUN_SCREEN_FONT_UPDATE: {
 		// handle the screen font changes.
 		d->font_loader_.update();
-		// Backup current_view_
-		GuiView * view = current_view_;
-		// Set current_view_ to zero to forbid GuiWorkArea::redraw()
-		// to skip the refresh.
-		current_view_ = 0;
-		theBufferList().changed(false);
-		// Restore current_view_
-		current_view_ = view;
+		dr.screenUpdate(Update::Force | Update::FitCursor);
 		break;
 	}
 
@@ -2151,7 +2144,7 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 		if (!keysym.isOK())
 			LYXERR(Debug::KEY, "Empty kbd action (probably composing)");
 		if (current_view_)
-			current_view_->restartCursor();
+			current_view_->restartCaret();
 		return;
 	}
 
@@ -2211,7 +2204,7 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 			if (!isPrintable(encoded_last_key)) {
 				LYXERR(Debug::KEY, "Non-printable character! Omitting.");
 				if (current_view_)
-					current_view_->restartCursor();
+					current_view_->restartCaret();
 				return;
 			}
 			// The following modifier check is not needed on Mac.
@@ -2233,7 +2226,7 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 			{
 				if (current_view_) {
 					current_view_->message(_("Unknown function."));
-					current_view_->restartCursor();
+					current_view_->restartCaret();
 				}
 				return;
 			}
@@ -2248,7 +2241,7 @@ void GuiApplication::processKeySym(KeySymbol const & keysym, KeyModifier state)
 			LYXERR(Debug::KEY, "Unknown Action and not isText() -- giving up");
 			if (current_view_) {
 				current_view_->message(_("Unknown function."));
-				current_view_->restartCursor();
+				current_view_->restartCaret();
 			}
 			return;
 		}

@@ -25,6 +25,11 @@ What's new
 
 * USER INTERFACE
 
+- Overhaul the document painting mechanism. Now the screen is updated
+  asyncronously (as all normal applications do), which makes LyX
+  snappier, especially on repeated events. As an added bonus, subpixel
+  aliasing is honored in the work area.
+
 - Handle properly top/bottom of inset with mac-like cursor movement
   (bug 10701).
 

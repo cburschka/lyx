@@ -47,8 +47,6 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
-#include <boost/crc.hpp>
-
 #include <algorithm>
 #include <list>
 #include <stack>
@@ -81,42 +79,6 @@ void ParagraphMetrics::reset(Paragraph const & par)
 	par_ = &par;
 	dim_ = Dimension();
 	//position_ = -1;
-}
-
-
-size_t ParagraphMetrics::computeRowSignature(Row const & row,
-		BufferView const & bv) const
-{
-	boost::crc_32_type crc;
-	for (pos_type i = row.pos(); i < row.endpos(); ++i) {
-		if (par_->isInset(i)) {
-			Inset const * in = par_->getInset(i);
-			Dimension const d = in->dimension(bv);
-			int const b[] = { d.wid, d.asc, d.des };
-			crc.process_bytes(b, sizeof(b));
-		} else {
-			char_type const b[] = { par_->getChar(i) };
-			crc.process_bytes(b, sizeof(char_type));
-		}
-		if (bv.buffer().params().track_changes) {
-			Change change = par_->lookupChange(i);
-			char_type const b[] = { static_cast<char_type>(change.type) };
-			// 1 byte is enough to encode Change::Type
-			crc.process_bytes(b, 1);
-		}
-	}
-
-	pos_type const b1[] = { row.sel_beg, row.sel_end };
-	crc.process_bytes(b1, sizeof(b1));
-
-	Dimension const & d = row.dimension();
-	int const b2[] = { row.begin_margin_sel,
-	                   row.end_margin_sel,
-	                   d.wid, d.asc, d.des };
-	crc.process_bytes(b2, sizeof(b2));
-	crc.process_bytes(&row.separator, sizeof(row.separator));
-
-	return crc.checksum();
 }
 
 
