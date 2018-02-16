@@ -1442,8 +1442,6 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 		// output is wrong if this paragraph contains content
 		// that needs to switch encoding.
 		Buffer const & buf = inset_owner_->buffer();
-		BufferParams const & bp = features.runparams().is_child
-			? buf.masterParams() : buf.params();
 		otexstringstream os;
 		os << layout_->preamble();
 		size_t const length = os.length();
