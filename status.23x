@@ -15,7 +15,7 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- it possible to anonymize document's content for bug submissions
+- It possible to anonymize document's content for bug submissions
   via buffer-anonymize lfun (bug 7259).
 
 
@@ -49,6 +49,9 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Fix language settings annd line spacing in InPreamble-titles
+  (bug 9332, 1049).
+
 
 * LYX2LYX
 
@@ -58,6 +61,9 @@ What's new
 - Improve Undo for operations that act on several buffers (bug 10823).
 
 - Improve rendering of square roots in math editor (bug 10814).
+
+- Fix display of citation labels when pasting from a document
+  with other citation type (bug 10829).
 
 
 * INTERNALS
