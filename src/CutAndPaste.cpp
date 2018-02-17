@@ -169,6 +169,9 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 		for (size_t i = 0; i != insertion.size(); ++i) {
 			pos_type end = insertion[i].size();
 			for (pos_type j = 0; j != end; ++j) {
+				// skip insets
+				if (insertion[i].isInset(j))
+					continue;
 				char_type const c = insertion[i].getChar(j);
 				if (!e->encodable(c)) {
 					// do not track deletion
