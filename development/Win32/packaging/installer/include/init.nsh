@@ -73,8 +73,8 @@ Section /o "Afrikaans" SecDAfrikaans
 SectionEnd
 
 Section /o "العربية" SecDArabic
- StrCpy $DictCodes "ar_DZ,$DictCodes"
- AddSize 2500
+ StrCpy $DictCodes "ar_SA,$DictCodes"
+ AddSize 7304
 SectionEnd
 
 Section /o "հայերեն" SecDArmenian
@@ -99,7 +99,7 @@ SectionEnd
 
 Section /o "Brezhoneg" SecDBreton 
  StrCpy $DictCodes "br_FR,$DictCodes"
- AddSize 5510
+ AddSize 5556
 SectionEnd
 
 Section /o "български" SecDBulgarian
@@ -426,7 +426,7 @@ SectionEnd
 
 Section /o "Українська" SecDUkrainian
  StrCpy $DictCodes "uk_UA,$DictCodes"
- AddSize 5555
+ AddSize 6375
 SectionEnd
 
 Section /o "اردو" SecDUrdu
@@ -443,6 +443,11 @@ SectionGroupEnd
 
 
 SectionGroup "$(SecThesaurus)" SecThesaurus
+
+Section /o "العربية" SecTArabic
+ StrCpy $ThesCodes "ar_SA,$ThesCodes"
+ AddSize 799
+SectionEnd
 
 Section /o "български" SecTBulgarian
  StrCpy $ThesCodes "bg_BG,$ThesCodes"
@@ -726,7 +731,7 @@ Function .onInit
    SectionSetFlags ${SecDAfrikaans} $0
    SectionSetSize ${SecDAfrikaans} 0
   ${endif}
-  StrCpy $Search "ar_DZ"
+  StrCpy $Search "ar_SA"
   Call StrPoint
   ${if} $Pointer != "-1"
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
@@ -1228,8 +1233,15 @@ Function .onInit
   # select sections of already installed thesaurus dictionaries, make them read-only
   # and set the necessary size to 0 bytes
   StrCpy $String $FoundThes
-  StrCpy $Search "bg_BG"
+  StrCpy $Search "ar_SA"
   Call StrPoint # function from LyXUtils.nsh
+  ${if} $Pointer != "-1"
+   IntOp $0 ${SF_SELECTED} | ${SF_RO}
+   SectionSetFlags ${SecTArabic} $0
+   SectionSetSize ${SecTArabic} 0
+  ${endif}
+  StrCpy $Search "bg_BG"
+  Call StrPoint
   ${if} $Pointer != "-1"
    IntOp $0 ${SF_SELECTED} | ${SF_RO}
    SectionSetFlags ${SecTBulgarian} $0
