@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: lyx_2.0.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-02-12 16:39+0100\n"
-"PO-Revision-Date: 2018-02-12 20:50+0100\n"
+"PO-Revision-Date: 2018-02-17 18:34+0100\n"
 "Last-Translator: Inaki Larranaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
@@ -627,9 +627,10 @@ msgstr "Hautatu adarra"
 msgid "Inverted"
 msgstr "Alderantzikatuta"
 
+# adarra
 #: src/frontends/qt4/ui/BranchesUi.ui:25
 msgid "&New:[[branch]]"
-msgstr "&Berria:[[adarra]]"
+msgstr "&Berria:"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:35
 msgid ""
@@ -2084,9 +2085,12 @@ msgstr "Estekatu fitxategia"
 msgid "Fi&le"
 msgstr "&Fitxategia"
 
+# 'listing'  pakete baten izena da, progamazioko iturburua nabarmentzeko eginbidea eskaintzen du. LyX-eko agerpenetan 'zerrendatua' gisa euskaratu da.
+# 
+# https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
 #: src/frontends/qt4/ui/IncludeUi.ui:36
 msgid "Listing Parameters"
-msgstr "Zerrendaren parametroak"
+msgstr "Zerrendatuaren parametroak"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:66
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:79
@@ -2148,10 +2152,11 @@ msgstr "Sarrera"
 msgid "Verbatim"
 msgstr "Hitzez hitz"
 
+# erabili 'zerrendatua' termino 'listing' terminoaren itzulen gisa
 #: src/frontends/qt4/ui/IncludeUi.ui:308 src/insets/InsetInclude.cpp:1305
 #: src/insets/InsetInclude.cpp:1311
 msgid "Program Listing"
-msgstr "Programaren zerrenda"
+msgstr "Iturburuaren zerrendatua"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:342
 msgid "Edit the file"
@@ -2197,9 +2202,10 @@ msgstr "Aktibatu hainbat indize behar badituzu (adib. Izenen indizea)"
 msgid "&Use multiple indexes"
 msgstr "&Erabili indize anitzak"
 
+# indizea
 #: src/frontends/qt4/ui/IndicesUi.ui:114
 msgid "&New:[[index]]"
-msgstr "&Berria:[[indizea]]"
+msgstr "&Berria:"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid ""
@@ -2407,7 +2413,7 @@ msgstr "Lerroaren lodieraren balioa."
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:47
 msgid "Input here the listings parameters"
-msgstr "Sartu hemen zerrenden parametroak"
+msgstr "Sartu hemen zerrendatuaren parametroak"
 
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:63
 #: src/frontends/qt4/ui/ListingsUi.ui:477
@@ -2427,7 +2433,7 @@ msgstr "&Sintaxiaren nabarmentzeko paketea:"
 #: lib/layouts/stdinsets.inc:388 src/insets/InsetCaption.cpp:388
 #: src/insets/InsetListings.cpp:464 src/insets/InsetListings.cpp:466
 msgid "Listing"
-msgstr "Zerrenda"
+msgstr "Zerrendatua"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:23
 msgid "&Main Settings"
@@ -2439,15 +2445,15 @@ msgstr "Kokapena"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:35
 msgid "Check for inline listings"
-msgstr "Aktibatu lerroko zerrendentzako"
+msgstr "Aktibatu lerroko zerrendatuak"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:38
 msgid "&Inline listing"
-msgstr "&Lerroko zerrenda"
+msgstr "&Lerroko zerrendatuak"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:45
 msgid "Check for floating listings"
-msgstr "Aktibatu zerrenda mugikorrentzako"
+msgstr "Aktibatu zerrendatu mugikorrentzako"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:48
 msgid "&Float"
@@ -2459,7 +2465,7 @@ msgstr "&Kokapena:"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:68
 msgid "Specify placement (htbp) for floating listings"
-msgstr "Zehaztu zerrenda mugikorren kokapena (htpb)"
+msgstr "Zehaztu zerrendatu mugikorren kokapena (htpb)"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:78
 msgid "Line numbering"
@@ -2593,7 +2599,7 @@ msgstr "Parametro gehiago"
 #: src/frontends/qt4/ui/ListingsUi.ui:499
 msgid "Input listing parameters here. Enter ? for a list of parameters."
 msgstr ""
-"Sartu zerrendaren parametroak hemen. Sartu ? parametroen zerrenda "
+"Sartu zerrendatuaren parametroak hemen. Sartu ? parametroen zerrenda "
 "eskuratzeko."
 
 #: src/frontends/qt4/ui/LocalLayoutUi.ui:19
@@ -3899,10 +3905,11 @@ msgstr "Automatikoa"
 msgid "Always Babel"
 msgstr "Beti erabili Babel"
 
+# hizkuntzaren paketea
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:71
 #: src/frontends/qt4/GuiDocument.cpp:1095
 msgid "None[[language package]]"
-msgstr "Bat ere ez [[hizkuntzaren paketea]]"
+msgstr "Bat ere ez"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:88
 msgid "Command s&tart:"
@@ -4524,9 +4531,10 @@ msgstr "Bistaratu egoera-barrako mezuak?"
 msgid "&Statusbar messages"
 msgstr "&Egoera-barrako mezuak"
 
+# bufferra
 #: src/frontends/qt4/ui/RefUi.ui:73
 msgid "&In[[buffer]]:"
-msgstr "&Sarrera[[bufferra]]:"
+msgstr "&Sarrera:"
 
 #: src/frontends/qt4/ui/RefUi.ui:92
 msgid "Filter case-sensitively"
@@ -4655,9 +4663,10 @@ msgstr "Ez atera etiketaren \":\" aurreko zatia"
 msgid "No Prefix"
 msgstr "Aurrizkirik ez"
 
+# bilaketa
 #: src/frontends/qt4/ui/SearchUi.ui:101
 msgid "Case &sensitive[[search]]"
-msgstr "Maiuskula/&Minuskula[[bilaketa]]"
+msgstr "Maiuskula/&minuskula"
 
 #: src/frontends/qt4/ui/SearchUi.ui:108
 msgid "Match w&hole words only"
@@ -5535,10 +5544,11 @@ msgstr "Aipu automatikoa"
 msgid "Auto"
 msgstr "Automatikoa"
 
+# Egile guztien aukerako ordezkoa
 #: lib/citeengines/biblatex-natbib.citeengine:150
 #: lib/citeengines/biblatex.citeengine:142
 msgid "F&orce full title[[Possible substitute to All aut&hors]]"
-msgstr "&Derrigortu titulu osoa[[Egile guztien aukerako ordezkoa]]"
+msgstr "&Derrigortu titulu osoa"
 
 #: lib/citeengines/biblatex-natbib.citeengine:151
 #: lib/citeengines/biblatex.citeengine:143
@@ -5573,9 +5583,10 @@ msgstr ""
 "Biblatex arruntaren antzera, bibliografiaren prozesadore gisa 'biber' "
 "erabiltzea gomendatzen da."
 
+# Egile guztien aukerako ordezkoa
 #: lib/citeengines/biblatex.citeengine:140
 msgid "S&horten author list[[Possible substitute to All aut&hors]]"
-msgstr "Egile &laburren zerrenda[[Egile &guztien aukerako ordezkoa]]"
+msgstr "Egile &laburren zerrenda"
 
 #: lib/citeengines/biblatex.citeengine:141
 msgid "Force a short author list (using et al.)"
@@ -7519,17 +7530,20 @@ msgstr "Diagrama"
 msgid "List of Charts"
 msgstr "Diagramen zerrenda"
 
+# matematikoak
 #: lib/layouts/achemso.layout:210
 msgid "Graphs[[mathematical]]"
-msgstr "Grafikoak[[matematikoak]]"
+msgstr "Grafikoak"
 
+# matematikoak
 #: lib/layouts/achemso.layout:216 lib/layouts/achemso.layout:228
 msgid "Graph[[mathematical]]"
-msgstr "Grafikoa[[matematikoak]]"
+msgstr "Grafikoa"
 
+# matematikoak
 #: lib/layouts/achemso.layout:222
 msgid "List of Graphs[[mathematical]]"
-msgstr "Grafikoen zerrenda[[matematikoak]]"
+msgstr "Grafikoen zerrenda"
 
 #: lib/layouts/achemso.layout:256
 msgid "SupplementalInfo"
@@ -15374,7 +15388,7 @@ msgstr "Indize-sarrerak"
 
 #: lib/layouts/stdinsets.inc:16
 msgid "Listings"
-msgstr "Zerrendak"
+msgstr "Zerrendatuak"
 
 #: lib/layouts/stdinsets.inc:19 src/insets/InsetMarginal.cpp:36
 msgid "margin"
@@ -15394,18 +15408,20 @@ msgstr "Grisa"
 msgid "ERT"
 msgstr "ITG"
 
+# Sarreren zerrenda edo programen zerrenda...
 #: lib/layouts/stdinsets.inc:287 lib/layouts/stdinsets.inc:293
 msgid "Listings[[List of Listings]]"
-msgstr "Zerrendak[[Zerrenden zerrenda]]"
+msgstr "Zerrendatuak"
 
 #: lib/layouts/stdinsets.inc:310 lib/layouts/stdinsets.inc:316
 #: src/insets/InsetTOC.cpp:77
 msgid "List of Listings"
-msgstr "Zerrenden zerrenda"
+msgstr "Zerrendatuen zerrenda"
 
+# txertakuntza
 #: lib/layouts/stdinsets.inc:344 src/frontends/qt4/GuiDocument.cpp:1509
 msgid "Listings[[inset]]"
-msgstr "Zerrendak[[txertakuntza]]"
+msgstr "Zerrendatuak"
 
 #: lib/layouts/stdinsets.inc:407
 msgid "Idx"
@@ -15423,17 +15439,20 @@ msgstr "etiketa gabe"
 msgid "Preview"
 msgstr "Aurrebista"
 
+# nomenklatura
 #: lib/layouts/stdinsets.inc:703 lib/layouts/stdinsets.inc:711
 msgid "see equation[[nomencl]]"
-msgstr "ikus ekuazioa[[nomenklatura]]"
+msgstr "ikus ekuazioa"
 
+# nomenklatura
 #: lib/layouts/stdinsets.inc:704 lib/layouts/stdinsets.inc:712
 msgid "page[[nomencl]]"
-msgstr "orrialdea[[nomenklatura]]"
+msgstr "orrialdea"
 
+# irteera
 #: lib/layouts/stdinsets.inc:705 lib/layouts/stdinsets.inc:713
 msgid "Nomenclature[[output]]"
-msgstr "Nomenklatura[[irteera]]"
+msgstr "Nomenklatura"
 
 #: lib/layouts/stdlayouts.inc:99
 msgid "Verbatim*"
@@ -18107,7 +18126,7 @@ msgstr "Berritsua (tarteak markatuta)|e"
 
 #: lib/ui/stdcontext.inc:296 lib/ui/stdcontext.inc:581
 msgid "Listing|L"
-msgstr "Zerrenda|Z"
+msgstr "Zerrendatua|Z"
 
 #: lib/ui/stdcontext.inc:300 lib/ui/stdcontext.inc:585
 msgid "Edit Included File...|E"
@@ -18768,7 +18787,7 @@ msgstr "Informazioaren ezarpenak...|f"
 
 #: lib/ui/stdmenus.inc:149
 msgid "Listings Settings...|g"
-msgstr "Zerrenden ezarpenak..|r"
+msgstr "Zerrendatuen ezarpenak..|r"
 
 #: lib/ui/stdmenus.inc:153
 msgid "Table Settings...|a"
@@ -19126,9 +19145,10 @@ msgstr "Txertakuntza pertsonalizatuak"
 msgid "File|e"
 msgstr "Fitxategia|F"
 
+# menua
 #: lib/ui/stdmenus.inc:379
 msgid "Box[[Menu]]|x"
-msgstr "Kutxa[[menua]]|x"
+msgstr "Kutxa|x"
 
 #: lib/ui/stdmenus.inc:382
 msgid "Citation...|C"
@@ -19170,9 +19190,10 @@ msgstr "Oin-oharra|n"
 msgid "Marginal Note|M"
 msgstr "Albo-oharra|A"
 
+# menua
 #: lib/ui/stdmenus.inc:395
 msgid "Program Listing[[Menu]]"
-msgstr "Programen zerrenda[[menua]]"
+msgstr "Iturburuaren zerrendatua"
 
 #: lib/ui/stdmenus.inc:402 src/insets/Inset.cpp:92
 msgid "TeX Code"
@@ -19304,7 +19325,7 @@ msgstr "Gaien aurkibidea|G"
 
 #: lib/ui/stdmenus.inc:487
 msgid "List of Listings|L"
-msgstr "Zerrenden zerrenda|Z"
+msgstr "Zerrendatuen zerrenda|Z"
 
 #: lib/ui/stdmenus.inc:488
 msgid "Nomenclature|N"
@@ -20022,9 +20043,10 @@ msgstr "IPA tonuen eta hitzen azentuak"
 msgid "Command Buffer"
 msgstr "Komandoaren bufferra"
 
+# tresna-barra
 #: lib/ui/stdtoolbars.inc:232
 msgid "Review[[Toolbar]]"
-msgstr "Berrikusi[[tresna-barra]]"
+msgstr "Berrikusi"
 
 #: lib/ui/stdtoolbars.inc:233
 msgid "Track changes"
@@ -21117,9 +21139,10 @@ msgstr "doteq"
 msgid "neq"
 msgstr "neq"
 
+# erlazio matematikoa
 #: lib/ui/stdtoolbars.inc:584
 msgid "in[[math relation]]"
-msgstr "in[[erlazio matematikoa]]"
+msgstr "in"
 
 #: lib/ui/stdtoolbars.inc:585
 msgid "ni"
@@ -24921,10 +24944,12 @@ msgstr "LyX artxiboa (zip)"
 msgid "LyX Archive (tar.gz)"
 msgstr "LyX artxiboa (tar.gz)"
 
+# %1$s : izena
+# %2$s helb elektronikoa
 #: src/Author.cpp:57
 #, c-format
 msgid "%1$s[[name]] (%2$s[[email]])"
-msgstr "%1$s[[name]] (%2$s[[email]])"
+msgstr "%1$s (%2$s)"
 
 #: src/BiblioInfo.cpp:797 src/BiblioInfo.cpp:847 src/BiblioInfo.cpp:858
 #: src/BiblioInfo.cpp:913 src/BiblioInfo.cpp:917
@@ -26110,7 +26135,7 @@ msgstr "kutxak itzaldurarekin"
 
 #: src/Color.cpp:244
 msgid "listings background"
-msgstr "zerrenden atzeko planoa"
+msgstr "zerrendatuaren atzeko planoa"
 
 #: src/Color.cpp:245
 msgid "branch label"
@@ -27884,10 +27909,12 @@ msgstr "Karakterea ez da kodekagarria 'hitzez hitz' testuinguran."
 msgid "[Change Tracking] "
 msgstr "[Aldaketen jarraipena] "
 
+# %1$s: egila
+# %2$s: data
 #: src/Text.cpp:1912
 #, c-format
 msgid "Changed by %1$s[[author]] on %2$s[[date]]. "
-msgstr "Aldatuta: %1$s[[author]] -- %2$s[[date]]. "
+msgstr "Aldatuta: %1$s -- %2$s. "
 
 #: src/Text.cpp:1922 src/mathed/InsetMathFont.cpp:237
 #: src/mathed/InsetMathFontOld.cpp:111
@@ -28460,9 +28487,10 @@ msgstr ""
 msgid "Could not read template"
 msgstr "Ezin izan da txantiloia irakurri"
 
+# buletak
 #: src/frontends/qt4/BulletsModule.cpp:41
 msgid "Standard[[Bullets]]"
-msgstr "Arrunta[[buletak]]"
+msgstr "Arrunta"
 
 #: src/frontends/qt4/BulletsModule.cpp:42
 msgid "Maths"
@@ -29287,21 +29315,25 @@ msgstr "desberdintasunak"
 msgid "Compare different revisions"
 msgstr "Konparatu bertsio desberdinak"
 
+# mugatzailearen tamaina
 #: src/frontends/qt4/GuiDelimiter.cpp:61
 msgid "big[[delimiter size]]"
-msgstr "handia[[mugatzailearen tamaina]]"
+msgstr "handia"
 
+# mugatzailearen tamaina
 #: src/frontends/qt4/GuiDelimiter.cpp:62
 msgid "Big[[delimiter size]]"
-msgstr "Handia[[mugatzailearen tamaina]]"
+msgstr "Handia"
 
+# mugatzailearen tamaina
 #: src/frontends/qt4/GuiDelimiter.cpp:63
 msgid "bigg[[delimiter size]]"
-msgstr "Oso handia[[mugatzailearen tamaina]]"
+msgstr "oso handia"
 
+# mugatzailearen tamaina
 #: src/frontends/qt4/GuiDelimiter.cpp:64
 msgid "Bigg[[delimiter size]]"
-msgstr "Oso Handia[[mugatzailearen tamaina]]"
+msgstr "Oso handia"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:184
 msgid "Math Delimiter"
@@ -29589,7 +29621,8 @@ msgstr ""
 #: src/frontends/qt4/GuiDocument.cpp:1622
 msgid "Input listings parameters below. Enter ? for a list of parameters."
 msgstr ""
-"Sarrerako zerrenden parametroak azpian. Sartu ? parametroen zerrendarentzako."
+"Sarrerako zerrendatuen parametroak azpian. Sartu ? parametroen "
+"zerrendarentzako."
 
 #: src/frontends/qt4/GuiDocument.cpp:1493
 msgid "Document Class"
@@ -29639,9 +29672,10 @@ msgstr "Mugikor-kokapena"
 msgid "Bullets"
 msgstr "Buletak"
 
+# irteera
 #: src/frontends/qt4/GuiDocument.cpp:1512
 msgid "Formats[[output]]"
-msgstr "Formatuak[[irteera]]"
+msgstr "Formatuak"
 
 #: src/frontends/qt4/GuiDocument.cpp:1513
 msgid "LaTeX Preamble"
@@ -30042,9 +30076,10 @@ msgstr "cm"
 msgid "mm"
 msgstr "mm"
 
+# neurketaren unitatea
 #: src/frontends/qt4/GuiGraphics.cpp:500 src/lengthcommon.cpp:42
 msgid "in[[unit of measure]]"
-msgstr "in[[neurketaren unitatea]]"
+msgstr "in"
 
 #: src/frontends/qt4/GuiGraphics.cpp:780
 msgid "Select graphics file"
@@ -30132,7 +30167,7 @@ msgstr "Hiperestekaren ezarpenak"
 msgid ""
 "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
-"Sartu zerrendaren parametroak eskuinean. Sartu ? parametroak zerrendatzeko."
+"Sartu zerrendatuaren parametroak eskuinean. Sartu ? parametroak zerrendatzeko."
 
 #: src/frontends/qt4/GuiInclude.cpp:312
 msgid "Select document to include"
@@ -30242,7 +30277,7 @@ msgstr "Hizkuntzarik ez"
 
 #: src/frontends/qt4/GuiListings.cpp:166
 msgid "Program Listing Settings"
-msgstr "Programen zerrendaren ezarpenak"
+msgstr "Iturburuaren zerrendatuaren ezarpenak"
 
 #: src/frontends/qt4/GuiListings.cpp:424
 msgid "No dialect"
@@ -31631,9 +31666,10 @@ msgstr "Desgaitu shell-aren ihes-ikurra"
 msgid "Code Preview"
 msgstr "Kodearen aurrebista"
 
+# aurrebista-formatuaren izena
 #: src/frontends/qt4/GuiViewSource.cpp:457
 msgid "%1[[preview format name]] Preview"
-msgstr "%1[[aurrebista-formatuaren izena]] aurrebista"
+msgstr "%1 aurrebista"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1600
 msgid "Close File"
@@ -31830,13 +31866,15 @@ msgstr "%1$s (dinamikoa)"
 msgid "Use dynamic quotes (%1$s)|d"
 msgstr "Erabili komatxo dinamikoak (%1$s)|d"
 
+# Komatxoak
 #: src/frontends/qt4/Menus.cpp:1832
 msgid "dynamic[[Quotes]]"
-msgstr "dinamikoa[[Komatxoak]]"
+msgstr "dinamikoa"
 
+# Komatxoak
 #: src/frontends/qt4/Menus.cpp:1832 src/frontends/qt4/Menus.cpp:1842
 msgid "static[[Quotes]]"
-msgstr "estatikoa[[Komatxoak]]"
+msgstr "estatikoa"
 
 #: src/frontends/qt4/Menus.cpp:1834
 #, c-format
@@ -31988,13 +32026,14 @@ msgstr ""
 "%1$s gakoa badago lehendik ere.\n"
 "Hona aldatuko da: %2$s."
 
+# BibTeX/Biblatex
 #: src/insets/InsetBibtex.cpp:156
 #, c-format
 msgid ""
 "The %1$s[[BibTeX/Biblatex]] inset includes %2$s databases.\n"
 "If you proceed, all of them will be opened."
 msgstr ""
-"%1$s[[BibTeX/Biblatex]]  txertakuntzak %2$s datu-base ditu.\n"
+"%1$s txertakuntzak %2$s datu-base ditu.\n"
 "Aurrera jarraitzen baduzu, guzti horiek irekiko dira."
 
 #: src/insets/InsetBibtex.cpp:159
@@ -32494,17 +32533,18 @@ msgid ""
 "For the time being, I have replaced '!' by a warning, but you\n"
 "must investigate!"
 msgstr ""
-"Lerroko programen zerrendetan, karaktere bat\n"
+"Lerroko iturburuen zerrendatuetan, karaktere bat\n"
 "mugatzaile gisa gorde behar da. Hala ere,\n"
-"zerrendetariko batek karaktere guztiak\n"
+"zerrendatutako batek karaktere guztiak\n"
 "darabilzkienez, ez da bat bera ere erabilgarri gelditzen.\n"
 "Oraingoz, '!' abisu batekin ordeztu da, baina ikertu egin\n"
 "behar duzu."
 
 #: src/insets/InsetListings.cpp:347 src/insets/InsetListings.cpp:356
 msgid "Uncodable characters in listings inset"
-msgstr "Kodetu ezin daitezkeen karaktereak zerrenden txertakuntzan"
+msgstr "Kodetu ezin daitezkeen karaktereak zerrendatuen txertakuntzan"
 
+# Paketea aipatzean, bere jatorrizko izena komatxoen artean erabili: 'listings'
 #: src/insets/InsetListings.cpp:348
 #, c-format
 msgid ""
@@ -32516,7 +32556,7 @@ msgid ""
 "Toggling 'Use non-TeX fonts' in Document > Settings...\n"
 "might help."
 msgstr ""
-"Programen zerrendetako bateko honako karaktereak\n"
+"Iturburuen zerrendatuetako batean honako karaktereak\n"
 "ezin dira uneko kodeketarekin adierazi, eta kanpoan utzi dira:\n"
 "%1$s.\n"
 "'listings' paketearen murriztapen bat da hau, '%2$s' kodeketa\n"
@@ -32531,7 +32571,7 @@ msgid ""
 "not representable in the current encoding and have been omitted:\n"
 "%1$s."
 msgstr ""
-"Programen zerrendetako bateko honako karaktereak\n"
+"Iturburuen zerrendatutako batean honako karaktereak\n"
 "ezin dira uneko kodeketarekin adierazi, eta kanpoan utzi dira:\n"
 "%1$s."
 
@@ -32658,7 +32698,7 @@ msgid ""
 msgstr ""
 "Parametroa ez litzakete hemen sartu behar. Erabili epigrafearen edizio-"
 "koadroa (ume-dokumentuaren elkarrizketa-koadroa erabiltzean) edo Txertatu-"
-">Epigrafea menua (zerrendaren txertakuntza bat definitzean)"
+">Epigrafea menua (zerrendatuaren txertakuntza bat definitzean)"
 
 #: src/insets/InsetListingsParams.cpp:468
 #: src/insets/InsetListingsParams.cpp:678
@@ -32669,7 +32709,7 @@ msgid ""
 msgstr ""
 "Parametroa ez litzakete hemen sartu behar. Erabili etiketaren edizio-koadroa "
 "(ume-dokumentuaren elkarrizketa-koadroa erabiltzean) edo Txertatu->Etiketa "
-"menua (zerrendaren txertakuntza bat definitzean)"
+"menua (zerrendatuaren txertakuntza bat definitzean)"
 
 #: src/insets/InsetListingsParams.cpp:689
 msgid "default: _minted-<jobname>"
@@ -32705,7 +32745,8 @@ msgid ""
 "inset, it is better using the  language combo box, unless you need to enter "
 "a language not offered there, otherwise the combo box will be disabled."
 msgstr ""
-"Sartu onartutako hizkuntzetariko bat. Hala ere, zerrenden txertakuntza bat "
+"Sartu onartutako hizkuntzetariko bat. Hala ere, zerrendatuaren txertakuntza "
+"bat "
 "definitzen ari bazara, egokiagoa da hizkuntzaren konbinazio-koadroa "
 "erabiltzea, hemen eskaintzen ez den hizkuntza bat sartu behar ez baduzu "
 "bederen. Bestela, konbinazio-koadroa desgaituko baita."
@@ -32741,17 +32782,17 @@ msgstr "Latex kodea iruzkinetan gaitzen du"
 
 #: src/insets/InsetListingsParams.cpp:898
 msgid "Invalid (empty) listing parameter name."
-msgstr "Zerrendaren parametro-izen baliogabea (hutsa)."
+msgstr "Zerrendatuaren parametro-izen baliogabea (hutsa)."
 
 #: src/insets/InsetListingsParams.cpp:914
 #, c-format
 msgid "Available listing parameters are %1$s"
-msgstr "Zerrendaren parametro erabilgarriak: %1$s"
+msgstr "Zerrendatuaren parametro erabilgarriak: %1$s"
 
 #: src/insets/InsetListingsParams.cpp:917
 #, c-format
 msgid "Available listings parameters containing string \"%1$s\" are %2$s"
-msgstr "\"%1$s\" katea duten zerrendaren parametro erabilgarriak: %2$s"
+msgstr "\"%1$s\" katea duten zerrendatuaren parametro erabilgarriak: %2$s"
 
 #: src/insets/InsetListingsParams.cpp:928
 #, c-format
@@ -32761,7 +32802,7 @@ msgstr "%1$s parametroa: "
 #: src/insets/InsetListingsParams.cpp:941
 #, c-format
 msgid "Unknown listing parameter name: %1$s"
-msgstr "Zerrendaren parametro-izen ezezaguna: %1$s"
+msgstr "Zerrendatuaren parametro-izen ezezaguna: %1$s"
 
 #: src/insets/InsetListingsParams.cpp:944
 #, c-format
@@ -32828,15 +32869,17 @@ msgstr "mamuh"
 msgid "vphantom"
 msgstr "mamub"
 
+# komatxoak
 #: src/insets/InsetQuotes.cpp:567
 #, c-format
 msgid "%1$souter%2$s and %3$sinner%4$s[[quotation marks]]"
-msgstr "%1$souter%2$s eta %3$sinner%4$s[[komatxoak]]"
+msgstr "%1$souter%2$s eta %3$sinner%4$s"
 
+# komatxoaren azalpena
 #: src/insets/InsetQuotes.cpp:577
 #, c-format
 msgid "%1$s[[quot. mark description]] (language default)"
-msgstr "%1$s[[azalpenaren komatxoak]] (hizkuntzaren lehenetsia)"
+msgstr "%1$s (hizkuntzaren lehenetsia)"
 
 #: src/insets/InsetQuotes.cpp:590
 #, c-format
@@ -33062,9 +33105,10 @@ msgstr "Aurrebista prest"
 msgid "Preview failed"
 msgstr "Aurrebistak huts egin du"
 
+# neurketaren unitatea
 #: src/lengthcommon.cpp:41
 msgid "cc[[unit of measure]]"
-msgstr "cc[[neurketaren unitatea]]"
+msgstr "cc"
 
 #: src/lengthcommon.cpp:41
 msgid "dd"
@@ -33078,9 +33122,10 @@ msgstr "em"
 msgid "ex"
 msgstr "ex"
 
+# neurketaren unitatea
 #: src/lengthcommon.cpp:42
 msgid "mu[[unit of measure]]"
-msgstr "mu[[neurketaren unitatea]]"
+msgstr "mu"
 
 #: src/lengthcommon.cpp:42
 msgid "pc"
@@ -33311,9 +33356,12 @@ msgstr "Adierazpen erregularren editore modua"
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Zuzenketa automatikoa gaituta (<zuriunea> amaitzeko)"
 
+# Oharra [[xxxx]] ez da euskaratu edo itzuli behar. Itzulpenaren testuingurua azaltzeko soilik erabiltzen da.
+# 
+# mathref
 #: src/mathed/InsetMathRef.cpp:240
 msgid "Standard[[mathref]]"
-msgstr "Arrunta[[mathref]]"
+msgstr "Arrunta"
 
 #: src/mathed/InsetMathRef.cpp:245
 msgid "PrettyRef"
