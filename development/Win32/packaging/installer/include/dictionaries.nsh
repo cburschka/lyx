@@ -43,8 +43,8 @@ Function FindDictionaries
   
   # read out the possible thesaurus filenames from the file	
   FileOpen $R5 "$INSTDIR\Resources\ThesaurusDictionaryNames.txt" r
-  ${for} $5 1 27
-   # the file has 54 lines, but we only need to check for one of the 2 thesaurus files per language
+  ${for} $5 1 28
+   # the file has 56 lines, but we only need to check for one of the 2 thesaurus files per language
    # therefore check only for every second line
    FileRead $R5 $String # $String is now the dictionary name
    FileRead $R5 $String # $String is now the dictionary name
@@ -77,11 +77,11 @@ Function DownloadHunspellDictionaries
    # if first download repository is not available try the other ones listed in "DictionaryMirrors.txt"
    FileOpen $R4 "$INSTDIR\Resources\DictionaryMirrors.txt" r
    
-   ${For} $4 1 29 # there are 29 mirrors in the file
+   ${For} $4 1 22 # there are 22 mirrors in the file
     FileRead $R4 $Search # $Search is now the mirror
     StrCpy $Search $Search -2 # delete the linebreak characters at the end
     Push $R0
-    inetc::get /TIMEOUT=5000 "http://$Search.dl.sourceforge.net/project/lyxwininstaller/hunspell/$String" "$INSTDIR\Resources\dicts\$String" /END
+    inetc::get /TIMEOUT=5000 "https://$Search.dl.sourceforge.net/project/lyxwininstaller/hunspell/$String" "$INSTDIR\Resources\dicts\$String" /END
     Pop $R0
     ${if} $R0 == "OK"
      ${ExitFor}
@@ -112,7 +112,7 @@ Function DownloadThesaurusDictionaries
  
  # read out the locations from the file	
  FileOpen $R5 "$INSTDIR\Resources\ThesaurusDictionaryNames.txt" r
- ${For} $5 1 54 # the file has 52 lines
+ ${For} $5 1 56 # the file has 56 lines
  
   FileRead $R5 $String # $String is now the thesaurus name
   StrCpy $R3 $String 5 3 # $R3 is now the thesaurus language code
@@ -123,11 +123,11 @@ Function DownloadThesaurusDictionaries
    # if first download repository is not available try the other ones listed in "DictionaryMirrors.txt"
    FileOpen $R4 "$INSTDIR\Resources\DictionaryMirrors.txt" r
    
-   ${For} $4 1 29 # there are 29 mirrors in the file
+   ${For} $4 1 22 # there are 22 mirrors in the file
     FileRead $R4 $Search # $Search is now the mirror
     StrCpy $Search $Search -2 # delete the linebreak characters at the end
     Push $R0
-    inetc::get /TIMEOUT=5000 "http://$Search.dl.sourceforge.net/project/lyxwininstaller/thesaurus/$String" "$INSTDIR\Resources\thes\$String" /END
+    inetc::get /TIMEOUT=5000 "https://$Search.dl.sourceforge.net/project/lyxwininstaller/thesaurus/$String" "$INSTDIR\Resources\thes\$String" /END
     Pop $R0
     ${if} $R0 == "OK"
      ${ExitFor}
