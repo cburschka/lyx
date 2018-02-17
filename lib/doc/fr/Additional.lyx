@@ -4522,8 +4522,6 @@ labelitem
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \begin_inset Argument item:1
 status open
 
@@ -4551,27 +4549,21 @@ star
 
 \end_inset
 
- 
-\lang french
-Agissez sur chaque entrée individuellement en écrivant le motif de la puce
- 
-\lang english
-in a 
-\begin_inset Quotes eld
+ Agissez sur chaque entrée individuellement en écrivant le motif de la puce
+ dans un insert 
+\begin_inset Quotes cld
 \end_inset
 
-Custom Item
-\begin_inset Quotes erd
+Élément paramétrable
+\begin_inset Quotes crd
 \end_inset
 
- inset (available at 
+ (accessible via 
 \family sans
-Insert\SpecialChar menuseparator
-Custom Item
+Insertion\SpecialChar menuseparator
+Élément paramétrable
 \family default
-)
-\lang french
- et en mode \SpecialChar TeX
+) et en code \SpecialChar TeX
 .
  Par exemple, cet élément a commencé par 
 \family typewriter
@@ -18420,18 +18412,18 @@ Memoir
  et les entêtes.
  Vous pouvez donc définir trois variantes d'un titre : un pour le corps
  du texte, un pour la table des matières et un pour les entêtes.
- 
-\lang english
-\SpecialChar LyX
- makes these available in form of specific 
+ \SpecialChar LyX
+ rend ceux-ci accessibles via des variantes particulières de
 \family sans
-Short Title
+ Titre
+\begin_inset space ~
+\end_inset
+
+court
 \family default
- variants in the 
+ dans le menu 
 \family sans
-Insert
-\family default
- menu.
+Insertion.
 \end_layout
 
 \begin_layout Description
