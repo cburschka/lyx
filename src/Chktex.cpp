@@ -34,16 +34,22 @@ Chktex::Chktex(string const & chktex, string const & f, string const & p)
 
 int Chktex::run(TeXErrors &terr)
 {
-	// run bibtex
+	// run chktex
 	string log = onlyFileName(changeExtension(file, ".log"));
 	string tmp = cmd + " -q -v0 -b0 -x " + file + " -o " + log;
 	Systemcall one;
 	int result = one.startscript(Systemcall::Wait, tmp);
-	if (result == 0) {
-		result = scanLogFile(terr);
-	} else {
+	// ChkTeX (as of v. 1.7.7) has the following return values:
+	// 0 = EXIT_SUCCESS : program ran successfully, nothing to report
+	// 1 = EXIT_FAILURE : program ran unsucessfully
+	// 2 = EXIT_WARNINGS : program ran successfully, only warnings to report
+	// 3 = EXIT_ERRORS : program ran successfully, errors to report
+	// We only check for EXIT_FAILURE here, since older versions of ChkTeX
+	// returned 0 also in case 2 and 3.
+	if (result == EXIT_FAILURE)
 		result = -1;
-	}
+	else
+		result = scanLogFile(terr);
 	return result;
 }
 
