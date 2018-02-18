@@ -40,10 +40,10 @@ int Chktex::run(TeXErrors &terr)
 	Systemcall one;
 	int result = one.startscript(Systemcall::Wait, tmp);
 	// ChkTeX (as of v. 1.7.7) has the following return values:
-	// 0 = EXIT_SUCCESS : program run successfully, nothing to report
-	// 1 = EXIT_FAILURE : program run unsucessfully
-	// 2 = EXIT_WARNINGS : program run successfully, only warnings to report
-	// 3 = EXIT_ERRORS : program run successfully, errors to report
+	// 0 = EXIT_SUCCESS : program ran successfully, nothing to report
+	// 1 = EXIT_FAILURE : program ran unsucessfully
+	// 2 = EXIT_WARNINGS : program ran successfully, only warnings to report
+	// 3 = EXIT_ERRORS : program ran successfully, errors to report
 	// We only check for EXIT_FAILURE here, since older versions of ChkTeX
 	// returned 0 also in case 2 and 3.
 	if (result == EXIT_FAILURE)
