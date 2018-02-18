@@ -1,4 +1,4 @@
-# This script contains the following functions:
+﻿# This script contains the following functions:
 #
 # - LaTeXCheck (check installed LaTeX-system),
 #    (only used by Small and Complete installer), uses:

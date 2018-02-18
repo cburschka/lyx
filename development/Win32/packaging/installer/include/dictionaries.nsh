@@ -1,4 +1,4 @@
-/*
+﻿/*
 dictionaries.nsh
 
 Handling of hunspell / MyThes dictionaries
