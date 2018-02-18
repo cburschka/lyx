@@ -245,14 +245,14 @@ Section -ConfigureScript
     # call the non-admin version
     # at first we need to synchronize the package database
     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--verbose" "--update-db"'
-    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--verbose" "--install-some=$INSTDIR\Resources\Packages.txt"'
+    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--verbose" "--require=@$INSTDIR\Resources\Packages.txt"'
    ${else}
     ${if} $MiKTeXUser != "HKCU" # call the admin version
      nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--verbose" "--update-db"'
-     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--verbose" "--install-some=$INSTDIR\Resources\Packages.txt"'
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--verbose" "--require=@$INSTDIR\Resources\Packages.txt"'
     ${else}
      nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--verbose" "--update-db"'
-     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--verbose" "--install-some=$INSTDIR\Resources\Packages.txt"'
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--verbose" "--require=@$INSTDIR\Resources\Packages.txt"'
     ${endif}
    ${endif}
   ${endif}
