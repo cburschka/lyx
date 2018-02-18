@@ -1,6 +1,6 @@
 
 	Localization/Translation FAQ
-                (2007-2015)
+                (2007-2018)
 
     by Ran Rutenberg, Pavel Sanda, Michael Gerz
 
@@ -18,7 +18,7 @@ and dialog items, console messages) into their native language.
 The file you need to edit is an xx.po file where xx stands for your language's
 two letter code. For a list of language codes look at:
 
-  http://www.gnu.org/software/gettext/manual/html_mono/gettext.html#Language-Codes
+  https://www.gnu.org/software/gettext/manual/html_mono/gettext.html#Language-Codes
 
 If you want to start from scratch then you should obtain a copy of the lyx.pot
 and name it after your language. German would be for example de.po and Polish
@@ -29,7 +29,7 @@ There are basically two source trees you can start to work with - trunk
 (development version) and branch (stable version). Unless the development
 version is shortly before release it is better to start your translating
 work on the stable version. If you have no idea how to get those trees you
-can follow http://www.lyx.org/HowToUseGIT page.
+can follow https://www.lyx.org/HowToUseGIT page.
 
 
 2) HOW DO I EDIT PO FILES?
@@ -129,7 +129,7 @@ For advanced users - if you want to remerge your files against current source:
 
 Send your edited xx.po file to po-updates@lyx.org.
 
-Also you can check http://www.lyx.org/trac/browser/lyxgit/?rev=master to track
+Also you can check https://www.lyx.org/trac/browser/lyxgit/?rev=master to track
 changes or watch updates.
 
 
@@ -144,12 +144,12 @@ new strings appear, no other function.
 
 For a basic idea of how the translation works, you can look at
 
-  http://en.wikipedia.org/wiki/Gettext
+  https://en.wikipedia.org/wiki/Gettext
 
 For detailed reference (including a full list of country and language codes),
 have a look at
 
-  http://www.gnu.org/software/gettext/manual/gettext.html
+  https://www.gnu.org/software/gettext/manual/gettext.html
 
 
 Consider subscribing to the documentation list, lyx-docs@lists.lyx.org (rather
@@ -177,11 +177,14 @@ instructions.
 
 The problematic strings can be then fixed in the .po file. For inspiration the
 typical places in .po files, where to fix the translation, can be seen on the
-following commit: http://www.lyx.org/trac/changeset/38169.
+following commit: https://www.lyx.org/trac/changeset/38169.
 
 If you need to manually regenerate the layouttranslations file from .po files
 run `make ../lib/layouttranslations' in the po directory. The Python polib
 library is needed for building the output file.
+
+Optionally - to quickly check whether some new translatable strings appeared
+for your language you can always check ../lib/layouttranslations.review.
 
 Q: Running make ../lib/layouttranslations returns with just saying
    ../lib/layouttranslations is up to date.
