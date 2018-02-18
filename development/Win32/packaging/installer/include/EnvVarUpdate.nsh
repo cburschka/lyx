@@ -1,4 +1,4 @@
-/**
+﻿/**
  *  EnvVarUpdate.nsh
  *    : Environmental Variables: append, prepend, and remove entries
  *

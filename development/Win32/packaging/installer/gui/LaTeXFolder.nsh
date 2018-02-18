@@ -1,4 +1,4 @@
-Function LatexFolder
+﻿Function LatexFolder
 
   !insertmacro INSTALLOPTIONS_EXTRACT_AS "gui\io_latex.ini" "io_latex.ini"
   # generate the installer page

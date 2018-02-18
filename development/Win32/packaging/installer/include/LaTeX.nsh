@@ -1,4 +1,4 @@
-/*
+﻿/*
 LaTeX.nsh
 
 Handling of LaTeX distributions
