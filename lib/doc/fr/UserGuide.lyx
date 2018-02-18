@@ -165,7 +165,7 @@ logicalmkup
 \begin_body
 
 \begin_layout Title
-Guide de l'utilisateur de \SpecialChar LyX
+ibGuide de l'utilisateur de \SpecialChar LyX
 
 \end_layout
 
@@ -9030,12 +9030,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -9048,6 +9050,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9080,6 +9083,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -14423,27 +14427,24 @@ Paquetages \SpecialChar LaTeX
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The option  
+L'option
 \family sans
-Disallow line breaks after dashes
+ Désactive les sauts de ligne après les cadratins
 \family default
- outputs en- and em-dashes as literal characters
+ émet les demi-cadratins et les cadratins comme des caractères littéraux
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-Or \SpecialChar LaTeX
- macro, if the literal character is not supported by the \SpecialChar LaTeX
- input encoding.
+Ou des macros \SpecialChar LaTeX
+, si lme caractère littéral n'est pas connu dans l'encodage
+ d'enrée de \SpecialChar LaTeX
+.
 \end_layout
 
 \end_inset
 
- instead of ligatures (--, ---) (see section
+ au lieu de (--, ---) (voir section
 \begin_inset space ~
 \end_inset
 
@@ -17422,11 +17423,7 @@ Tirets
 
 \begin_layout Standard
 Dans \SpecialChar LyX
-, le 
-\lang english
-symbol
-\lang french
- 
+, le symbole 
 \begin_inset Quotes cld
 \end_inset
 
@@ -17434,11 +17431,7 @@ symbol
 \begin_inset Quotes crd
 \end_inset
 
- existe dans trois 
-\lang english
-variants
-\lang french
-, souvent appelées 
+ existe dans trois variantes, souvent appelées 
 \emph on
 trait d'union
 \emph default
@@ -17450,7 +17443,7 @@ tiret
 \emph on
 tiret
 \emph default
- long:
+ long
 \emph on
 
 \begin_inset Foot
@@ -17484,7 +17477,7 @@ dash
 
 \end_inset
 
-
+:
 \emph default
 
 \begin_inset VSpace defskip
@@ -17582,9 +17575,7 @@ d'union
 \begin_inset Quotes crd
 \end_inset
 
- 
-\lang english
-in text
+ dans le texte
 \end_layout
 
 \end_inset
@@ -17613,35 +17604,19 @@ tiret
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-system key combination
+combinaison de touches
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-On Mac and Linux, the en dash is entered with 
+Sur Mac et Linux, le demi-cadratin est saisi via 
 \family sans
-Opt+
-\begin_inset Quotes eld
+Maj-Opt+ 
+\begin_inset Quotes cld
 \end_inset
 
 -
-\begin_inset Quotes erd
-\end_inset
-
-
-\family default
- and the em dash with 
-\family sans
-Shift-Opt+
-\begin_inset Quotes erd
-\end_inset
-
--
-\begin_inset Quotes erd
+\begin_inset Quotes crd
 \end_inset
 
 
@@ -17650,7 +17625,7 @@ Shift-Opt+
 \family sans
 Opt
 \family default
- is the Mac label for the right 
+ is the Mac label for the est la touche 
 \family sans
 Alt
 \family default
@@ -17658,15 +17633,13 @@ Alt
 \family sans
  
 \family default
-key).
+droite).
  
 \end_layout
 
 \end_inset
 
- 
-\lang french
-ou 
+ ou 
 \begin_inset Quotes cld
 \end_inset
 
@@ -17674,9 +17647,7 @@ ou
 \begin_inset Quotes crd
 \end_inset
 
-
-\lang english
- in text
+ dans le texte
 \end_layout
 
 \end_inset
@@ -17705,11 +17676,11 @@ tiret long
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+combinaison de touches
 \lang english
-system key combination
+ 
 \lang french
- ou 
+ou 
 \begin_inset Quotes cld
 \end_inset
 
@@ -17717,9 +17688,7 @@ system key combination
 \begin_inset Quotes crd
 \end_inset
 
-
-\lang english
- in text
+ dans le texte
 \end_layout
 
 \end_inset
@@ -17781,25 +17750,24 @@ signe moins
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Dashes can also be inserted with 
+Les cadratins peuvent également être insérés via 
 \family sans
-Insert\SpecialChar menuseparator
-Special
+Insertion\SpecialChar menuseparator
+Caractère
 \begin_inset space ~
 \end_inset
 
-Character\SpecialChar menuseparator
-Symbols
+spécial\SpecialChar menuseparator
+Symboles\SpecialChar ldots
+
 \family default
- or using the 
+ ou bien la fonction \SpecialChar LyX
+ 
 \family typewriter
 unicode-insert
 \family default
- \SpecialChar LyX
- function with the Unicode code point as argument (2013 for the em dash
- and 2014 for the en dash).
+ avec le point de code en argument(2013 pour le cadratin et 2014 pour le
+ demi-cadratin).
 \end_layout
 
 \begin_layout Standard
@@ -17864,24 +17832,21 @@ signe moins
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-See also the 
+Voir aussi l'entrée Wikipedia conscrée aux 
 \begin_inset CommandInset href
 LatexCommand href
-name "Wikipedia entry on dashes"
+name "tirets"
 target "https://fr.wikipedia.org/wiki/Tiret"
 literal "false"
 
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Subsection
-
-\lang english
-Dashes and line breaks
+Les tirets te les sauts de ligne
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Dashes-and-line-breaks"
@@ -17892,63 +17857,47 @@ name "subsec:Dashes-and-line-breaks"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Whether line breaks before or after dashes are allowed depends on the use
- case and locale, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.:
+Le fait que les sauts de ligne soient autorisés avant ou après les tirets
+ dépend des cas d'usage et de la langue, par exemple:
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-In English, line breaks are generally allowed after the dash, but no line
- break should occur if only a single character follows the dash (as in A–Z).
+en anglais, les sauts de ligne sont en général autorisés après un tiret,
+ mais aucun saut de ligne ne soit se produire si un seul caractère suit
+ le tiret (comme dans A–Z);
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-In English, dashes used to set off parenthetical statements should not start
- a new line.
+en anglais, les tirets utilisés pour désigner les incises ne doivent pas
+ commencer une une ligne;
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-In French and Spanish, dashes around parenthetical statements are treated
- similar to brackets: line breaks are not allowed on the inner side.
+en français et en espagnol, les tirets encadrant les incises sont typographiquem
+ent similaires aux crochets: les sauts de ligne ne sont pas autorisés côté
+ intérieur.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-By default, dashes are output by \SpecialChar LyX
- to \SpecialChar LaTeX
- as 
-\begin_inset Quotes eld
+Implicitement, les tirets sont exportés par \SpecialChar LyX
+ en \SpecialChar LaTeX
+ comme des 
+\begin_inset Quotes cld
 \end_inset
 
-ligature dashes
-\begin_inset Quotes erd
+ligatures de tiret
+\begin_inset Quotes crd
 \end_inset
 
- (-- and ---).
+ (-- et ---).
  \SpecialChar LaTeX
- allows line breaks after hyphens, en-dashes and em-dashes.
+ autorise les sauts de ligne après les tirets de césure, les demi-cadratins
+ et les cadratins.
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Line breaks before spaced en dashes
-\begin_inset space ~
-\end_inset
-
-– common in British English and generally recommended by 
+Les sauts de ligne avant les demi-cadratins précédés d'une espace, usuels
+ en anglais britannique et recommandés en général par 
 \emph on
 The Elements of Typographic Style
 \emph default
@@ -17956,14 +17905,15 @@ The Elements of Typographic Style
 \begin_inset space ~
 \end_inset
 
-– can be prevented using protected spaces.
+– peuvent être évités en utilisant des espaces insécables;
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Unwanted line breaks after dashes can be prevented by wrapping in a makebox
-\lang french
+Les sauts de ligne non désirés après des tirets peuvent être évités en encapsula
+nt dans une boîte de type 
+\family sans
+makebox
+\family default
 
 \begin_inset Foot
 status collapsed
@@ -17982,23 +17932,19 @@ Objets insérés
 
 \end_inset
 
-
-\lang english
- or preceding with 
+ ou en saisissant avant 
 \series bold
 
 \backslash
 nobreakdash
 \series default
- in \SpecialChar TeX
- code.
- Examples:
+ en code \SpecialChar TeX
+.
+ Exemples:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
 Pages
 \begin_inset space ~
 \end_inset
@@ -18023,8 +17969,6 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 36–39
 \end_layout
 
@@ -18071,8 +18015,6 @@ même
 \end_layout
 
 \begin_layout Itemize
-
-\lang spanish
 En una frase 
 \begin_inset ERT
 status collapsed
@@ -18091,47 +18033,42 @@ nobreakdash
 
 \end_deeper
 \begin_layout Standard
-
-\lang english
-An incorrect line break is easily overlooked because
+Un saut de ligne incorrect est facile à oublier puisque
 \begin_inset space ~
 \end_inset
 
-– in contrast to an overfull line
+– à l'opposé d'une ligne débordante
 \begin_inset space ~
 \end_inset
 
-– it does not trigger a warning in the \SpecialChar LaTeX
+– il ne déclenche pas d'avertissement dans le journal \SpecialChar LaTeX
  log.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you want to globally disable line breaks after dashes, you can select
- the option 
+Si vous voulez désactiver globalement les sauts de ligne après les tirets,
+ vous pouvez cocher l'option 
 \family sans
 Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Fonts\SpecialChar menuseparator
-Disallow line breaks after dashes
+Paramètres\SpecialChar menuseparator
+Polices\SpecialChar menuseparator
+Désactiver les sauts de lignes après les cadratins
 \family default
 :
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Line breaks are still allowed after spaced dashes.
- They can be prevented using protected spaces (without need for a makebox
- or \SpecialChar TeX
- code).
- Example:
+Les sauts de lignes sont toujours autorisés après les tirets précédés ou
+ suivis d'une espace.
+ Ils peuvent être évités à l'aide d'espaces insécables (sans boîte ou code
+ \SpecialChar TeX
+).
+ Exemple: 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Les incises –
+les incises –
 \begin_inset space ~
 \end_inset
 
@@ -18144,40 +18081,32 @@ même si tout le monde ne les aime pas
 
 \end_deeper
 \begin_layout Enumerate
-
-\lang english
-Line breaks after unspaced dashes can be allowed via the menu
+Les sauts de ligne après de tirets collés peuvent être autorisés via le
+ menu
 \begin_inset Newline newline
 \end_inset
 
 
 \family sans
-Insert\SpecialChar menuseparator
-Formatting\SpecialChar menuseparator
-Optional line break
+Insertion\SpecialChar menuseparator
+Typographie spéciale\SpecialChar menuseparator
+Point de césure
 \family default
 :
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
-Em-dashes without spaces—\SpecialChar allowbreak
-common in American English—\SpecialChar allowbreak
-should be followed by
- a line break opportunity.
+les cadratins collés—\SpecialChar allowbreak
+usuels en anglais américain—devraient être suivis d'une
+ opportunité de césure;
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This also allows hyphenation of the word following the dash (see section
+Ceci permet aussi la césure du mot suivant le tiret (voir la section
 \begin_inset space ~
 \end_inset
 
-
-\lang french
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -18185,23 +18114,17 @@ reference "subsec:Césure"
 
 \end_inset
 
-
-\lang english
 ).
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-
-\lang english
-With this setting, \SpecialChar LaTeX
- hyphenates words also if immediately followed by em
- or en dashes (see section
+Avec ce réglage, \SpecialChar LaTeX
+ coupe également les mots suivis immédiatement par un cadratin
+ ou un demi-cadratin (voir le section
 \begin_inset space ~
 \end_inset
 
-
-\lang french
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -18209,153 +18132,130 @@ reference "subsec:Césure"
 
 \end_inset
 
-
-\lang english
 ).
 \end_layout
 
 \begin_layout Subsubsection
-
-\lang english
-Changes and backwards compatibility
+Modifications et rétro-compatibilité
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Up to \SpecialChar LyX
+Jusqu'à la version \SpecialChar LyX
 
 \begin_inset space ~
 \end_inset
 
-2.1, consecutive hyphen characters (-- and ---) in the LyX source were merged
- to en or em dashes by LaTeX.
- These 
-\begin_inset Quotes eld
+2.1, les tirets consécutifs (-- et ---) dans le code source \SpecialChar LyX
+ étaient fusionnés
+ en demi-cadratins ou cadratins par \SpecialChar LaTeX
+.
+ Ces 
+\begin_inset Quotes cld
 \end_inset
 
-ligature dashes
-\begin_inset Quotes erd
+tirets ligaturés
+\begin_inset Quotes crd
 \end_inset
 
- retain the line-break properties of hyphens while literal dash characters
- are regarded by \SpecialChar LaTeX
- as 
-\emph on
-non-breakable
-\emph default
+ conservent les propriétés de césure des tirets alors que les tirets codés
+ en caractères littéraux sont considérés par \SpecialChar LaTeX
+ comme insécables.
+\end_layout
+
+\begin_layout Standard
+Depuis le version \SpecialChar LyX
+
+\begin_inset space ~
+\end_inset
+
+2.2, les tirets consécutifs du code source \SpecialChar LyX
+ sont exportés en \SpecialChar LaTeX
+ d'une façon
+ qui interdit la ligature.
+ Les 
+\begin_inset Quotes cld
+\end_inset
+
+tirets ligaturés
+\begin_inset Quotes crd
+\end_inset
+
+ des documents des versions antérieures sont convertis en caractères littéraux
+ (sauf en police 
+\family sans
+à chasse fixe
+\family default
+); les tirets saisis consécutivement sont fusionnés en caractères immédiatement
+ après la saisie (sauf si la police courant est à chasse fixe)
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Ce comportement a été modifié lorsque 
+\begin_inset Quotes cld
+\end_inset
+
+lyx --help
+\begin_inset Quotes crd
+\end_inset
+
+ est devenu 
+\begin_inset Quotes cld
+\end_inset
+
+lyx –help
+\begin_inset Quotes crd
+\end_inset
+
+ en dans les sorties PDF, Postscript, et DVI.
+ Une conséquence imprévue de ces changements fut que tous les tirets étaient
+ convertis en tirets insécables.
+ Ceci a également eu pour effet de modifier les sauts de ligne dans certains
+ documents anciens.
+\end_layout
+
+\end_inset
+
 .
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Since \SpecialChar LyX
-
-\begin_inset space ~
-\end_inset
-
-2.2, consecutive hyphens in the LyX source are exported to \SpecialChar LaTeX
- in a way that
- prevents ligation to dashes.
- 
-\begin_inset Quotes eld
-\end_inset
-
-Ligature dashes
-\begin_inset Quotes erd
-\end_inset
-
- in documents from earlier versions are converted to literal dash characters
- (except in 
-\family typewriter
-typewriter
-\family default
- font); typed in consecutive hyphens are merged to dash characters immediately
- after the input (unless the current text font is 
-\family typewriter
-type
-\family default
-writer).
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-
-\lang english
-The behavior was changed since 
-\begin_inset Quotes eld
-\end_inset
-
-lyx --help
-\begin_inset Quotes erd
-\end_inset
-
- became 
-\begin_inset Quotes eld
-\end_inset
-
-lyx –help
-\begin_inset Quotes erd
-\end_inset
-
- in PDF, Postscript, and DVI output.
- An unintended consequence of these changes was that all dashes were output
- as non-breakable dashes.
- This also resulted in changed line breaks in some older documents.
- 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\lang english
 \SpecialChar LyX
 
 \begin_inset space ~
 \end_inset
 
-2.3 outputs 
+2.3 exporte implicitement des 
 \emph on
-breakable
+tirets sécables
 \emph default
- dashes by default.
- When opening documents edited with \SpecialChar LyX
+.
+ Lorsque l'on ouvre des documents saisis avec la version \SpecialChar LyX
 
 \begin_inset space ~
 \end_inset
 
-2.2 or earlier and containing literal dash characters not followed by whitespace,
- the setting 
+2.2 ou plus ancienne contenant des caractères tiret littéraux qui ne sont
+ pas suivi d'une espace, le réglage 
 \family sans
 Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Fonts\SpecialChar menuseparator
-Disallow line breaks after dashes
+Paramètres\SpecialChar menuseparator
+Police\SpecialChar menuseparator
+Désactiver les sauts de lignes après les cadratins
 \family default
- is active to prevent changes to the line breaks.
+ est activé pour éviter les modifications des sauts de ligne.
+ 
 \series bold
-Warning:
+Attention:
 \series default
- If you used both literal and 
-\begin_inset Quotes eld
-\end_inset
-
-ligature
-\begin_inset Quotes erd
-\end_inset
-
- dashes in pre-\SpecialChar LyX
+ si vous avez utilisé à la fois des tirets ligaturés et des tirets littéraux
+ dans des documents antérieurs à \SpecialChar LyX
 
 \begin_inset space ~
 \end_inset
 
-2.2 documents, you may need to enable or prevent individual line breaks as
- shown above to restore the correct line breaking behavior.
+2.2, vous pourrez devoir autoriser ou empêcher les sauts de ligne un par
+ un comme indiqué plus haut pour préserver les césures antérieures.
 \end_layout
 
 \begin_layout Subsection
@@ -18399,12 +18299,12 @@ Paquetages \SpecialChar LaTeX
 \end_inset
 
  de \SpecialChar LaTeX
-, en suivant les règles spécifiques à la langue du document.
+, en suivant les règles spécifiques à la langue du document
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Pour les lecteurs utilisant l'allemand : C'est une des différences entre
+Pour les lecteurs utilisant l'allemand : c'est une des différences entre
  les langages 
 \family sans
 Allemand
@@ -18427,21 +18327,23 @@ Paramètres
 
 \lang english
  \SpecialChar LaTeX
- does not hyphenate text in the 
+
+\lang french
+ ne césure pas le texte saisi en police 
 \family sans
-typewriter
+à chasse fixe
 \family default
- font and words immediately preceded or followed by hyphens or dashes.
+ et les mots immédiatement précédés ou suivis par des tirets ou des cadratins.
 \end_layout
 
 \begin_layout Standard
 \SpecialChar LaTeX
- effectue les césures presque parfaitement ; il a seulement des problèmes
+ effectue les césures presque parfaitement; il a seulement des problèmes
  avec la police à 
 \family sans
 chasse fixe
 \family default
- et avec des construction inhabituelles comme 
+ et avec des constructions inhabituelles comme 
 \begin_inset Quotes cld
 \end_inset
 
@@ -18496,23 +18398,17 @@ A-b c
  \SpecialChar LaTeX
  considère le tiret comme une possibilité de césure, or une césure à cet
  endroit serait peu judicieuse.
- Pour empêcher le raccourci d'être coupé en deux, vous pouvez 
-\lang english
-use a protected hyphen 
-\lang french
-(
+ Pour empêcher le raccourci d'être coupé en deux, vous pouvez utiliser un
+ tiret protégé (
 \family sans
 Insertion\SpecialChar menuseparator
-Typographie
+Caractère
 \begin_inset space ~
 \end_inset
 
-spéciale\SpecialChar menuseparator
-
-\lang english
-Protected Hyphen
+spécial\SpecialChar menuseparator
+Césure protégée
 \family default
-\lang french
 ) ou le mettre dans une boîte comme expliqué à la section 
 \emph on
 Empêcher la césure
@@ -18984,7 +18880,8 @@ guillemets
 "
 \family default
  (notez que \SpecialChar LyX
- propse un choix raisonnable pour la principale langue sélectionnée).
+ propose un choix raisonnable pour la principale langue sélectionnée
+).
  Il y a 14
 \begin_inset space ~
 \end_inset
@@ -40675,7 +40572,7 @@ Ici vous pouvez insérer les constructions typographiques suivantes:
 \end_layout
 
 \begin_layout Description
-Exposant Insérer un exposant: test
+Exposant insère un exposant: test
 \begin_inset script superscript
 
 \begin_layout Plain Layout
@@ -40688,7 +40585,7 @@ a, b
 \end_layout
 
 \begin_layout Description
-Indice Insérer un indice: test
+Indice insère un indice: test
 \begin_inset script subscript
 
 \begin_layout Plain Layout
@@ -40705,7 +40602,7 @@ Espace
 \begin_inset space ~
 \end_inset
 
-insécable Insérer une espace insécable comme indiqué dans la section
+insécable insère une espace insécable comme indiqué dans la section
 \begin_inset space ~
 \end_inset
 
@@ -40728,7 +40625,7 @@ entre
 \begin_inset space ~
 \end_inset
 
-mots Insère une espace entre mots comme décrit section
+mots insère une espace entre mots comme décrit section
 \begin_inset space ~
 \end_inset
 
@@ -40747,7 +40644,7 @@ Espace
 \begin_inset space ~
 \end_inset
 
-fine Insère une espace fine comme décrit section
+fine insère une espace fine comme décrit section
 \begin_inset space ~
 \end_inset
 
@@ -40766,7 +40663,7 @@ Ressort
 \begin_inset space ~
 \end_inset
 
-horizontal Insère un ressort de remplissage horizontal, décrit section
+horizontal insère un ressort de remplissage horizontal, décrit section
 \begin_inset space ~
 \end_inset
 
@@ -40785,7 +40682,7 @@ Ligne
 \begin_inset space ~
 \end_inset
 
-horizontale Insère une ligne horizontale, décrite section
+horizontale insère une ligne horizontale, décrite section
 \begin_inset space ~
 \end_inset
 
@@ -40804,7 +40701,7 @@ Espacement
 \begin_inset space ~
 \end_inset
 
-vertical Insère un ressort de remplissage vertical, décrit section
+vertical insère un ressort de remplissage vertical, décrit section
 \begin_inset space ~
 \end_inset
 
@@ -40819,7 +40716,7 @@ reference "subsec:Espacement-Vertical"
 \end_layout
 
 \begin_layout Description
-Fantôme Insère une espace fantôme, décrite section
+Fantôme insère une espace fantôme, décrite section
 \begin_inset space ~
 \end_inset
 
@@ -40842,7 +40739,7 @@ de
 \begin_inset space ~
 \end_inset
 
-césure Insère un point de césure, décrit section
+césure insère un point de césure, décrit section
 \begin_inset space ~
 \end_inset
 
@@ -40865,7 +40762,7 @@ de
 \begin_inset space ~
 \end_inset
 
-ligature Insère une séparation de ligature, décrite section
+ligature insère une séparation de ligature, décrite section
 \begin_inset space ~
 \end_inset
 
@@ -40880,21 +40777,25 @@ reference "subsec:Ligatures"
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Optional
+Passage
 \begin_inset space ~
 \end_inset
 
-Line
+à
 \begin_inset space ~
 \end_inset
 
-Break Inserts a line break point (zero-width space character) that is invisible
- in the output
-\lang french
-.
- Voir section
+la
+\begin_inset space ~
+\end_inset
+
+ligne
+\begin_inset space ~
+\end_inset
+
+optionnel insère un point de saut le ligne (caractère espace de largeur
+ nulle) invisible dans la sortie.
+ Voir la section
 \begin_inset space ~
 \end_inset
 
@@ -40908,9 +40809,7 @@ noprefix "false"
 
 \end_inset
 
- 
-\lang english
-for a usage example.
+ pour un exemple d'utilisation.
 \end_layout
 
 \begin_layout Description
@@ -40938,7 +40837,7 @@ ligne
 \begin_inset space ~
 \end_inset
 
-gauche) Insère un passage à la ligne forcé, voir section
+gauche) insère un passage à la ligne forcé, voir section
 \begin_inset space ~
 \end_inset
 
@@ -40969,7 +40868,7 @@ ligne
 \begin_inset space ~
 \end_inset
 
-(justifié) Insère un passage à la ligne forcé qui de plus étire la ligne
+(justifié) insère un passage à la ligne forcé qui de plus étire la ligne
  de texte interrompue jusqu'à la marge de la page, description section
 \begin_inset space ~
 \end_inset
@@ -41005,7 +40904,7 @@ en
 \begin_inset space ~
 \end_inset
 
-haut) Insère un saut de page forcé, décrit section
+haut) insère un saut de page forcé, décrit section
 \begin_inset space ~
 \end_inset
 
@@ -41032,7 +40931,7 @@ page
 \begin_inset space ~
 \end_inset
 
-(justifié) Insère un saut de page forcé qui en plus étire le texte interrompu
+(justifié) insère un saut de page forcé qui en plus étire le texte interrompu
  jusqu'à la limite de page, description section
 \begin_inset space ~
 \end_inset
@@ -41068,7 +40967,7 @@ le
 \begin_inset space ~
 \end_inset
 
-tampon) Insère un saut de page et vide le tampon, décrit section
+tampon) insère un saut de page et vide le tampon, décrit section
 \begin_inset space ~
 \end_inset
 
@@ -41095,7 +40994,7 @@ page
 \begin_inset space ~
 \end_inset
 
-impaire Insère un saut de page, vide le tampon et s'assure que la prochaine
+impaire insère un saut de page, vide le tampon et s'assure que la prochaine
  page est impaire, décrit section
 \begin_inset space ~
 \end_inset
