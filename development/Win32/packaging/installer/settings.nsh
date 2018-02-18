@@ -45,12 +45,12 @@ These typically need to be modified for each LyX release
 #--------------------------------
 # MiKTeX and JabRef
 
-!define MiKTeXRepo "ftp://ftp.fernuni-hagen.de/pub/mirrors/www.ctan.org/systems/win32/miktex/tm/packages/"
+!define MiKTeXRepo "ftp://ftp.tu-chemnitz.de/pub/tex/systems/win32/miktex/tm/packages/"
 
 !define MiKTeXDeliveredVersion "2.9"
 !define ImageMagickVersion "7.0.7"
  
 # definitions for the Complete installer
 !if ${SETUPTYPE} == BUNDLE
- !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.6520.exe"
+ !define MiKTeXInstall "$INSTDIR\external\basic-miktex-2.9.6615.exe"
 !endif

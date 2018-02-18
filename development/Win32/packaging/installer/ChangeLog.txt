@@ -2,9 +2,15 @@
 - installs LyX 2.2.4
 - new Russian translation of the installer messages
 - fix installation of Arabic spell checker
+- LyX will work under Windows Vista but is no longer supported
+- updated to MiKTeX 2.9 build 6615
+- updated to ImageMagick 7.0.7-22
+- updated to Qt 5.9.4
 - new thesaurus for Arabic
 - updated thesaurus for Ukrainian
 - updated spell checker dictionaries for Arabic, Breton and Ukrainian
+  (To benefit from them you must uninstall an already installed LyX 2.2.x and
+   then use this installer.)
 
 
 Changelog for LyX-223-2:
