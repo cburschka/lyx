@@ -91,7 +91,6 @@ Win32/packaging/installer/ChangeLog.txt \
 Win32/packaging/installer/DictionaryMirrors.txt \
 Win32/packaging/installer/HunspellDictionaryNames.txt \
 Win32/packaging/installer/license.rtf \
-Win32/packaging/installer/lyx.nsi \
 Win32/packaging/installer/lyx-bundle.nsi \
 Win32/packaging/installer/lyx-standard.nsi \
 Win32/packaging/installer/Packages.txt \
