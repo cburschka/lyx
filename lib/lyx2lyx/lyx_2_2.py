@@ -189,6 +189,13 @@ def convert_separator(document):
 
         j = find_token_backwards(document.body, "\\end_layout", i-1)
         if j != -1:
+            # Very old LyX files do not have Plain Layout in insets (but Standard).
+            # So we additionally check here if there is no inset boundary
+            # between the previous layout and this one.
+            n = find_token(document.body, "\\end_inset", j, lay[1])
+            if n != -1:
+                i = i + 1
+                continue
             lay = get_containing_layout(document.body, j-1)
             if lay != False and lay[0] == "Standard" \
                and find_token(document.body, "\\align", lay[1], lay[2]) == -1 \
