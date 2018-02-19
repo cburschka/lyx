@@ -1,0 +1,26 @@
+#!/bin/sh
+#Create torrent for the bundled installers (Use only for huge files >100 MB)
+#Run this script from the root of the local ftp directory structure and give it the path to the binary, e.g.:
+#~/lyx-devel/development/tools/create_torrent devel/lyx-2.3/lyx-2.3.0rc2/LyX-230RC-2-Bundle-1.exe
+#Putting the torrent next to binaries on ftp is enough, you don't need to mess with trackers.
+
+#path to bundle, from the root of ftp directory
+bundle="$1"
+
+if ! [ -e "${bundle}" ]; then echo Wrong path. ; exit; fi
+
+
+#the tracker here is just an excuse, in reality the backup links will be used
+#in parallel by decent torrent clients while naturally solving the problem of
+#selecting the fastest mirror
+
+mktorrent -a udp://tracker.opentrackr.org:1337/announce -l 22 -v "${bundle}" \
+-w http://ftp.lyx.org/pub/lyx/"${bundle}" \
+-w http://ftp.ntua.gr/pub/X11/LyX/"${bundle}" \
+-w http://ftp.icm.edu.pl/packages/lyx/"${bundle}" \
+-w http://mirror.ufs.ac.za/applications/lyx/"${bundle}" \
+-w ftp://ftp.lyx.org/pub/lyx/"${bundle}" \
+-w ftp://ftp.ntua.gr/pub/X11/LyX/"${bundle}" \
+-w ftp://ftp.icm.edu.pl/packages/lyx/"${bundle}" \
+-w ftp://mirror.ufs.ac.za/applications/lyx/"${bundle}" \
+-w ftp://ftp.ucsd.edu/LyX/"${bundle}"
