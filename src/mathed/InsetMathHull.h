@@ -175,9 +175,6 @@ public:
 	///
 	void initUnicodeMath() const;
 
-	///
-	static int displayMargin() { return 12; }
-
 	/// Force inset into LTR environment if surroundings are RTL
 	virtual bool forceLTR() const { return true; }
 	///
@@ -305,8 +302,6 @@ protected:
 	void handleFont2(Cursor & cur, docstring const & arg);
 	///
 	bool previewState(BufferView const * const bv) const;
-	///
-	bool previewTooSmall(Dimension const & dim) const;
 };
 
 
