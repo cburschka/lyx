@@ -611,43 +611,51 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		string const opt = to_utf8(params()["lstparams"]);
 		// opt is set in QInclude dialog and should have passed validation.
 		InsetListingsParams lstparams(opt);
-		string parameters = lstparams.params();
-		string language;
-		string caption;
-		string label;
-		string placement;
+		docstring parameters = from_utf8(lstparams.params());
+		docstring language;
+		docstring caption;
+		docstring label;
+		docstring placement;
 		bool isfloat = lstparams.isFloat();
-		if (use_minted) {
-			// Get float placement, language, caption, and
-			// label, then remove the relative options.
-			vector<string> opts =
-				getVectorFromString(parameters, ",", false);
-			for (size_t i = 0; i < opts.size(); ++i) {
-				if (prefixIs(opts[i], "float")) {
-					if (prefixIs(opts[i], "float="))
-						placement = opts[i].substr(6);
-					opts.erase(opts.begin() + i--);
-				} else if (prefixIs(opts[i], "language=")) {
-					language = opts[i].substr(9);
-					opts.erase(opts.begin() + i--);
-				} else if (prefixIs(opts[i], "caption=")) {
-					caption = opts[i].substr(8);
-					opts.erase(opts.begin() + i--);
-				} else if (prefixIs(opts[i], "label=")) {
-					label = opts[i].substr(6);
-					opts.erase(opts.begin() + i--);
-				}
+		// Get float placement, language, caption, and
+		// label, then remove the relative options if minted.
+		vector<docstring> opts =
+			getVectorFromString(parameters, from_ascii(","), false);
+		vector<docstring> latexed_opts;
+		for (size_t i = 0; i < opts.size(); ++i) {
+			if (use_minted && prefixIs(opts[i], from_ascii("float"))) {
+				if (prefixIs(opts[i], from_ascii("float=")))
+					placement = opts[i].substr(6);
+				opts.erase(opts.begin() + i--);
+			} else if (use_minted && prefixIs(opts[i], from_ascii("language="))) {
+				language = opts[i].substr(9);
+				opts.erase(opts.begin() + i--);
+			} else if (prefixIs(opts[i], from_ascii("caption="))) {
+				// FIXME We should use HANDLING_LATEXIFY here,
+				// but that's a file format change (see #10455).
+				caption = opts[i].substr(8);
+				opts.erase(opts.begin() + i--);
+				if (!use_minted)
+					latexed_opts.push_back(from_ascii("caption=") + caption);
+			} else if (prefixIs(opts[i], from_ascii("label="))) {
+				label = params().prepareCommand(runparams, trim(opts[i].substr(6), "{}"),
+								ParamInfo::HANDLING_ESCAPE);
+				opts.erase(opts.begin() + i--);
+				if (!use_minted)
+					latexed_opts.push_back(from_ascii("label={") + label + "}");
 			}
-			if (!label.empty()) {
+			if (use_minted && !label.empty()) {
 				if (isfloat || !caption.empty())
 					label = trim(label, "{}");
 				else
-					opts.push_back("label=" + label);
+					opts.push_back(from_ascii("label=") + label);
 			}
-			parameters = getStringFromVector(opts, ",");
 		}
+		if (!latexed_opts.empty())
+			opts.insert(opts.end(), latexed_opts.begin(), latexed_opts.end());
+		parameters = getStringFromVector(opts, from_ascii(","));
 		if (language.empty())
-			language = "TeX";
+			language = from_ascii("TeX");
 		if (use_minted && isfloat) {
 			os << breakln << "\\begin{listing}";
 			if (!placement.empty())
