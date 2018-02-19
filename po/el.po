@@ -7,13 +7,14 @@ msgstr ""
 "Project-Id-Version: LyX 2.3.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-01-25 17:46+0100\n"
-"PO-Revision-Date: 2018-01-25 17:35+0100\n"
+"PO-Revision-Date: 2018-02-19 22:07+0200\n"
 "Last-Translator: Οδυσσέας Δαγκλής <o2d@freemail.gr>\n"
 "Language-Team: LyX team <lyx-docs@lists.lyx.org>\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.4\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:33
 msgid "Version"
@@ -75,6 +76,8 @@ msgid ""
 "Pass content of the `Label' field literally to LaTeX. Check this if you want "
 "to enter LaTeX code."
 msgstr ""
+"Άμεση μεταφορά περιεχομένου του πεδίου 'Ετικέτα-Label' στο LaTeX. Τσεκάρετε "
+"για να μπείτε στον κώδικα LaTeX."
 
 #: src/frontends/qt4/ui/BibitemUi.ui:88 src/frontends/qt4/ui/CitationUi.ui:368
 #: src/frontends/qt4/ui/HyperlinkUi.ui:80 src/frontends/qt4/ui/NomenclUi.ui:72
@@ -404,7 +407,7 @@ msgstr "Εντά&ξει"
 
 #: src/frontends/qt4/ui/BoxUi.ui:23
 msgid "Type and Size"
-msgstr ""
+msgstr "Τύπος και Μέγεθος"
 
 #: src/frontends/qt4/ui/BoxUi.ui:32 src/frontends/qt4/ui/WrapUi.ui:103
 msgid "Width value"
@@ -980,7 +983,7 @@ msgstr "&Φίλτρο:"
 
 #: src/frontends/qt4/ui/CitationUi.ui:48
 msgid "Select the fields on which the filter applies"
-msgstr ""
+msgstr "Επιλέξτε τα πεδία εφαρμογής του φίλτρου"
 
 #: src/frontends/qt4/ui/CitationUi.ui:61 src/frontends/qt4/GuiCitation.cpp:420
 msgid "All fields"
@@ -988,7 +991,7 @@ msgstr "Όλα τα πεδία"
 
 #: src/frontends/qt4/ui/CitationUi.ui:75
 msgid "Select the entry types on which the filter applies"
-msgstr ""
+msgstr "Επιλέξτε τους τύπους εισαγωγής επί των οποίων εφαρμόζεται το φίλτρο"
 
 #: src/frontends/qt4/ui/CitationUi.ui:85 src/frontends/qt4/GuiCitation.cpp:435
 msgid "All entry types"
@@ -996,7 +999,7 @@ msgstr "Όλοι οι τύποι καταχώρησης"
 
 #: src/frontends/qt4/ui/CitationUi.ui:93
 msgid "Click for more filter options"
-msgstr ""
+msgstr "Κάντε κλικ για περισσότερες επιλογές φίλτρου"
 
 #: src/frontends/qt4/ui/CitationUi.ui:96
 msgid "O&ptions"
@@ -15296,7 +15299,7 @@ msgstr "Καταχωρήσεις Ευρετηρίου"
 
 #: lib/layouts/stdinsets.inc:16
 msgid "Listings"
-msgstr ""
+msgstr "Καταλογοποιήσεις"
 
 #: lib/layouts/stdinsets.inc:19 src/insets/InsetMarginal.cpp:36
 msgid "margin"
@@ -15317,16 +15320,16 @@ msgstr ""
 
 #: lib/layouts/stdinsets.inc:287 lib/layouts/stdinsets.inc:293
 msgid "Listings[[List of Listings]]"
-msgstr "Λίστες[[Λίστα Λιστών]]"
+msgstr "Καταλογοποιήσεις[[Λίστα Καταλογοποιήσεων]]"
 
 #: lib/layouts/stdinsets.inc:310 lib/layouts/stdinsets.inc:316
 #: src/insets/InsetTOC.cpp:77
 msgid "List of Listings"
-msgstr "Λίστα Περιγραφών"
+msgstr "Λίστα Καταλογοποιήσεων"
 
 #: lib/layouts/stdinsets.inc:344 src/frontends/qt4/GuiDocument.cpp:1505
 msgid "Listings[[inset]]"
-msgstr "Λίστες[[ένθεμα]]"
+msgstr "Καταλογοποιήσεις[[ένθεμα]]"
 
 #: lib/layouts/stdinsets.inc:407
 msgid "Idx"
@@ -15346,16 +15349,15 @@ msgstr "Προεπισκόπηση"
 
 #: lib/layouts/stdinsets.inc:703 lib/layouts/stdinsets.inc:711
 msgid "see equation[[nomencl]]"
-msgstr ""
+msgstr "δείτε εξίσωση[[nomencl]]"
 
 #: lib/layouts/stdinsets.inc:704 lib/layouts/stdinsets.inc:712
 msgid "page[[nomencl]]"
-msgstr ""
+msgstr "σελίδα[[nomencl]]"
 
 #: lib/layouts/stdinsets.inc:705 lib/layouts/stdinsets.inc:713
-#, fuzzy
 msgid "Nomenclature[[output]]"
-msgstr "Επιστημονική Ορολογία"
+msgstr "Επιστημονική Ορολογία[[output]]"
 
 #: lib/layouts/stdlayouts.inc:99
 msgid "Verbatim*"
@@ -18610,7 +18612,7 @@ msgstr "Ρυθμίσεις Πληροφοριών...|ρ"
 
 #: lib/ui/stdmenus.inc:149
 msgid "Listings Settings...|g"
-msgstr "Ρυθμίσεις λίστας...|λ"
+msgstr "Ρυθμίσεις Καταλογοποίησης...|λ"
 
 #: lib/ui/stdmenus.inc:153
 msgid "Table Settings...|a"
@@ -19146,7 +19148,7 @@ msgstr "Πίνακας Περιεχομένων|Π"
 
 #: lib/ui/stdmenus.inc:487
 msgid "List of Listings|L"
-msgstr "Λίστα Λιστών|Λ"
+msgstr "Λίστα Καταλογοποιήσεων|Λ"
 
 #: lib/ui/stdmenus.inc:488
 msgid "Nomenclature|N"
@@ -32052,7 +32054,7 @@ msgstr ""
 
 #: src/insets/InsetListings.cpp:338 src/insets/InsetListings.cpp:347
 msgid "Uncodable characters in listings inset"
-msgstr "Μη κωδικωποιήσιμοι χαρακτήρες στο ένθεμα λιστών"
+msgstr "Μη κωδικωποιήσιμοι χαρακτήρες στο ένθεμα καταλογοποιήσεων"
 
 #: src/insets/InsetListings.cpp:339
 #, c-format
@@ -32279,7 +32281,8 @@ msgstr "Οι διαθέσιμες παράμετροι καταλογοποίη�
 #: src/insets/InsetListingsParams.cpp:917
 #, c-format
 msgid "Available listings parameters containing string \"%1$s\" are %2$s"
-msgstr "Οι διαθέσιμες παράμετροι λίστας με το κείμενο \"%1$s\" είναι %2$s"
+msgstr ""
+"Οι διαθέσιμες παράμετροι καταλογοποίησης με το κείμενο \"%1$s\" είναι %2$s"
 
 #: src/insets/InsetListingsParams.cpp:928
 #, c-format
