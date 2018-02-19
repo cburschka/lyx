@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: uk\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-02-04 15:17+0100\n"
-"PO-Revision-Date: 2018-01-15 10:40+0200\n"
+"PO-Revision-Date: 2018-02-19 20:11+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <translation@linux.org.ua>\n"
 "Language: uk\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Lokalize 2.0\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: src/frontends/qt4/ui/AboutUi.ui:33
 msgid "Version"
@@ -6335,7 +6335,7 @@ msgstr "Позначення"
 #: lib/layouts/theorems-without-preamble.inc:234 lib/layouts/theorems.inc:207
 #: lib/layouts/theorems.inc:216 lib/layouts/theorems.inc:219
 msgid "Problem"
-msgstr "Проблема"
+msgstr "Задача"
 
 #: lib/layouts/AEA.layout:267 lib/layouts/acmart.layout:594
 #: lib/layouts/elsart.layout:344 lib/layouts/foils.layout:264
@@ -6381,7 +6381,7 @@ msgstr "Твердження"
 #: lib/layouts/theorems-without-preamble.inc:331 lib/layouts/theorems.inc:258
 #: lib/layouts/theorems.inc:276 lib/layouts/theorems.inc:279
 msgid "Remark"
-msgstr "Помітка"
+msgstr "Примітка"
 
 #: lib/layouts/AEA.layout:276 lib/layouts/ijmpc.layout:364
 #: lib/layouts/ijmpd.layout:373 lib/layouts/theorems-ams-bytype.inc:297
@@ -6408,7 +6408,7 @@ msgstr "Примітка \\theremark."
 #: lib/layouts/theorems-without-preamble.inc:283 lib/layouts/theorems.inc:241
 #: lib/layouts/theorems.inc:250 lib/layouts/theorems.inc:253
 msgid "Solution"
-msgstr "Розчин"
+msgstr "Розв'язування"
 
 #: lib/layouts/AEA.layout:286 lib/layouts/theorems-ams-bytype.inc:278
 #: lib/layouts/theorems-bytype.inc:247
@@ -6438,7 +6438,7 @@ msgstr "Розв’язування \\thesolution."
 #: lib/layouts/theorems-ams-extended.module:268
 #: lib/layouts/theorems-ams-extended.module:271
 msgid "Summary"
-msgstr "Зведення"
+msgstr "Резюме"
 
 #: lib/layouts/AEA.layout:300 src/frontends/qt4/Menus.cpp:1713
 #: src/frontends/qt4/Menus.cpp:1728
@@ -6455,7 +6455,7 @@ msgstr "Підпис"
 #: lib/layouts/theorems-bytype.module:48 lib/layouts/theorems-order.inc:82
 #: lib/layouts/theorems-proof-std.inc:6 lib/layouts/theorems-proof.inc:13
 msgid "Proof"
-msgstr "На коректуру"
+msgstr "Доведення"
 
 #: lib/layouts/IEEEtran-CompSoc.layout:3
 msgid "IEEE Transactions Computer Society"
@@ -7350,7 +7350,7 @@ msgstr "Коментар до таблиці"
 
 #: lib/layouts/aastex.layout:491
 msgid "Note. ---"
-msgstr "Примітка. ---"
+msgstr "Зауваження. ---"
 
 #: lib/layouts/aastex.layout:499
 msgid "Table note"
@@ -7520,7 +7520,7 @@ msgstr "Схеми"
 
 #: lib/layouts/achemso.layout:166 lib/layouts/achemso.layout:178
 msgid "Scheme"
-msgstr "Scheme"
+msgstr "Схема"
 
 #: lib/layouts/achemso.layout:172
 msgid "List of Schemes"
@@ -8780,7 +8780,7 @@ msgstr ""
 #: lib/layouts/algorithm2e.module:25 lib/layouts/powerdot.layout:548
 #: lib/layouts/revtex4-1.layout:270 lib/layouts/stdfloats.inc:48
 msgid "List of Algorithms"
-msgstr "Алгоритм"
+msgstr "Список алгоритмів"
 
 #: lib/layouts/amsart.layout:3
 msgid "American Mathematical Society (AMS) Article"
@@ -9061,7 +9061,7 @@ msgstr "Місце роботи 6"
 #: lib/layouts/theorems-without-preamble.inc:409
 #: lib/layouts/theorems-without-preamble.inc:412
 msgid "Note"
-msgstr "Примітка"
+msgstr "Зауваження"
 
 #: lib/layouts/apa6.layout:293
 msgid "Author Note:"
@@ -13092,7 +13092,7 @@ msgstr "\\theexamplei (\\alph{subexamplei})"
 
 #: lib/layouts/linguistics.module:32 lib/layouts/linguistics.module:260
 msgid "Tableaux"
-msgstr "Табло"
+msgstr "Таблиця"
 
 #: lib/layouts/linguistics.module:35
 msgid "Numbered Example (multiline)"
@@ -13180,7 +13180,7 @@ msgstr "Табло"
 
 #: lib/layouts/linguistics.module:269
 msgid "List of Tableaux"
-msgstr "Список табло"
+msgstr "Список таблиць"
 
 #: lib/layouts/litinsets.inc:12
 msgid "Chunk ##"
@@ -15424,11 +15424,11 @@ msgstr "Перегляд"
 
 #: lib/layouts/stdinsets.inc:703 lib/layouts/stdinsets.inc:711
 msgid "see equation[[nomencl]]"
-msgstr "sдив."
+msgstr "див."
 
 #: lib/layouts/stdinsets.inc:704 lib/layouts/stdinsets.inc:712
 msgid "page[[nomencl]]"
-msgstr "sстор."
+msgstr "стор."
 
 #: lib/layouts/stdinsets.inc:705 lib/layouts/stdinsets.inc:713
 msgid "Nomenclature[[output]]"
@@ -16492,7 +16492,7 @@ msgstr "Вправа*"
 
 #: lib/layouts/theorems-order.inc:64 lib/layouts/theorems-starred.inc:234
 msgid "Solution*"
-msgstr "Solution*"
+msgstr "Розв'язування*"
 
 #: lib/layouts/theorems-order.inc:70 lib/layouts/theorems-starred.inc:251
 msgid "Remark*"
@@ -26576,6 +26576,8 @@ msgid ""
 "The character \"%1$s\" is uncodable in this verbatim context and thus has "
 "not been pasted."
 msgstr ""
+"Символ «%1$s» не можна закодувати у цьому буквальному контексті, тому його не"
+" було вставлено."
 
 #: src/CutAndPaste.cpp:188
 #, c-format
@@ -26583,11 +26585,12 @@ msgid ""
 "The characters \"%1$s\" are uncodable in this verbatim context and thus have "
 "not been pasted."
 msgstr ""
+"Символи «%1$s» не можна закодувати у цьому буквальному контексті, тому їх не"
+" було вставлено."
 
 #: src/CutAndPaste.cpp:231
-#, fuzzy
 msgid "Uncodable content"
-msgstr "Непридатні для кодування символи"
+msgstr "Непридатні до кодування дані"
 
 #: src/CutAndPaste.cpp:405
 #, c-format
@@ -27867,9 +27870,8 @@ msgstr ""
 "прочитайте Підручник."
 
 #: src/Text.cpp:941
-#, fuzzy
 msgid "Character is uncodable in this verbatim context."
-msgstr "Символ не можна закодувати у абзацах verbatim."
+msgstr "Символ не можна закодувати у цьому буквальному контексті."
 
 #: src/Text.cpp:1904
 msgid "[Change Tracking] "
@@ -29150,11 +29152,8 @@ msgid "Text that follows the reference (e.g., pages)"
 msgstr "Текст, який слідує за посиланням (наприклад, сторінки)"
 
 #: src/frontends/qt4/GuiCitation.cpp:314
-#, fuzzy
 msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")."
-msgstr ""
-"Примусовий верхній регістр у іменах («Дель П’єро», а не «дель П’єро»), якщо "
-"у поточному стилі посилань передбачено його підтримку."
+msgstr "Примусовий верхній регістр у іменах («Дель П’єро», а не «дель П’єро»)."
 
 #: src/frontends/qt4/GuiCitation.cpp:349
 msgid "Always list all authors (rather than using \"et al.\")"
