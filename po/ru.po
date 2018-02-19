@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-01-28 21:42-0500\n"
-"PO-Revision-Date: 2018-02-12 13:57+0200\n"
+"PO-Revision-Date: 2018-02-19 03:53+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -635,7 +635,7 @@ msgstr "Инвертирование"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:25
 msgid "&New:[[branch]]"
-msgstr "&Новая:[[branch]]"
+msgstr "&Новая:"
 
 #: src/frontends/qt4/ui/BranchesUi.ui:35
 msgid ""
@@ -1395,7 +1395,7 @@ msgstr "Процент масштабирования в LyX"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:215
 msgid "Sca&le on Screen (%):"
-msgstr "Масштабировать на экране (%):"
+msgstr "Масштаб на экране (%):"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:271
 msgid "Si&ze and Rotation"
@@ -1930,7 +1930,7 @@ msgstr "&Показывать в LyX"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:559
 msgid "Sca&le on screen (%):"
-msgstr "Масштабировать на экране (%):"
+msgstr "Масштаб на экране (%):"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:585
 msgid "Assign the graphic to a group of graphics that share the same settings"
@@ -1950,7 +1950,7 @@ msgstr "Нажмите чтобы определить новую группу �
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:640
 msgid "O&pen new group..."
-msgstr "О&ткрыть новую группу..."
+msgstr "&Создать новую группу..."
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:647
 msgid "Select an existing group for the current graphics."
@@ -2198,7 +2198,7 @@ msgstr "Использовать несколько индексов"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:114
 msgid "&New:[[index]]"
-msgstr "&Новый:[[index]]"
+msgstr "&Новый:"
 
 #: src/frontends/qt4/ui/IndicesUi.ui:124
 msgid ""
@@ -3217,7 +3217,7 @@ msgstr "&По ширине"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:176
 msgid "&Left"
-msgstr "Слева"
+msgstr "С&лева"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:183
 msgid "C&enter"
@@ -3225,7 +3225,7 @@ msgstr "По &центру"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:190
 msgid "Ri&ght"
-msgstr "Справа"
+msgstr "С&права"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:197
 msgid "Use the default alignment for this paragraph, whatever it is."
@@ -3911,7 +3911,7 @@ msgstr "Всегда Babel"
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:71
 #: src/frontends/qt4/GuiDocument.cpp:1095
 msgid "None[[language package]]"
-msgstr "Нет[[language package]]"
+msgstr "Нет"
 
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:88
 msgid "Command s&tart:"
@@ -4536,7 +4536,7 @@ msgstr "Сообщения в строке состояния"
 
 #: src/frontends/qt4/ui/RefUi.ui:73
 msgid "&In[[buffer]]:"
-msgstr "&В[[buffer]]:"
+msgstr "&В:"
 
 #: src/frontends/qt4/ui/RefUi.ui:92
 msgid "Filter case-sensitively"
@@ -4664,7 +4664,7 @@ msgstr "Без префикса"
 
 #: src/frontends/qt4/ui/SearchUi.ui:101
 msgid "Case &sensitive[[search]]"
-msgstr "Учитывать &регистр[[search]]"
+msgstr "Учитывать &регистр"
 
 #: src/frontends/qt4/ui/SearchUi.ui:108
 msgid "Match w&hole words only"
@@ -7262,7 +7262,7 @@ msgstr "Описание"
 #: lib/layouts/stdlists.inc:68 lib/layouts/stdlists.inc:97
 #: lib/layouts/stdlyxlist.inc:7 lib/ui/stdtoolbars.inc:116
 msgid "List"
-msgstr "Списки"
+msgstr "Список"
 
 #: lib/layouts/aastex.layout:3
 msgid "American Astronomical Society (AASTeX v. 5)"
@@ -7281,7 +7281,7 @@ msgstr "Принадлежность"
 
 #: lib/layouts/aastex.layout:176
 msgid "Altaffilation"
-msgstr "ДопПринадлежность"
+msgstr "Доп. принадлежность"
 
 #: lib/layouts/aastex.layout:185 lib/layouts/agutex.layout:124
 #: src/mathed/InsetMathHull.cpp:1862 src/mathed/InsetMathHull.cpp:1871
@@ -9429,7 +9429,7 @@ msgstr "Варианты размещения колонки (t ,T, c, b)"
 
 #: lib/layouts/beamer.layout:687
 msgid "ColumnsCenterAligned"
-msgstr "ColumnsCenterAligned"
+msgstr "Колонки по центру"
 
 #: lib/layouts/beamer.layout:690
 msgid "Columns (center aligned)"
@@ -9437,7 +9437,7 @@ msgstr "Колонки (выравнивание по центру)"
 
 #: lib/layouts/beamer.layout:695
 msgid "ColumnsTopAligned"
-msgstr "ColumnsTopAligned"
+msgstr "Колонки по верху"
 
 #: lib/layouts/beamer.layout:698
 msgid "Columns (top aligned)"
@@ -9716,7 +9716,7 @@ msgstr "Код LyX"
 
 #: lib/layouts/beamer.layout:1348
 msgid "NoteItem"
-msgstr "NoteItem"
+msgstr "Заметка"
 
 #: lib/layouts/beamer.layout:1383 lib/layouts/beamer.layout:1385
 #: src/Font.cpp:65 src/frontends/qt4/GuiCharacter.cpp:127
@@ -14319,11 +14319,11 @@ msgstr "Стиль списка по умолчанию"
 
 #: lib/layouts/pdfform.module:171
 msgid "Combo Box Style"
-msgstr "Стиль комбобокса"
+msgstr "Стиль комбинированного списка"
 
 #: lib/layouts/pdfform.module:174
 msgid "Default combo box style"
-msgstr "Стиль комбобокса по умолчанию"
+msgstr "Стиль комбинированного списка по умолчанию"
 
 #: lib/layouts/pdfform.module:177
 msgid "Popdown Box Style"
@@ -14335,11 +14335,11 @@ msgstr "Стиль выпадающего списка по умолчанию"
 
 #: lib/layouts/pdfform.module:183
 msgid "Radio Box Style"
-msgstr "Стиль радиокнопки"
+msgstr "Стиль переключателя"
 
 #: lib/layouts/pdfform.module:186
 msgid "Default radio box style"
-msgstr "Стиль радиокнопки по умолчанию"
+msgstr "Стиль переключателя по умолчанию"
 
 #: lib/layouts/powerdot.layout:3
 msgid "Powerdot"
@@ -14734,11 +14734,11 @@ msgstr "\\alph{enumii})"
 
 #: lib/layouts/scrclass.inc:122
 msgid "Addpart"
-msgstr "ДопЧасть"
+msgstr "Доп. часть"
 
 #: lib/layouts/scrclass.inc:133
 msgid "Addchap"
-msgstr "ДопГлава"
+msgstr "Доп. глава"
 
 #: lib/layouts/scrclass.inc:138 lib/layouts/stdsections.inc:65
 #: lib/layouts/tufte-book.layout:84
@@ -14747,19 +14747,19 @@ msgstr "Глава, как она будет выглядеть в содерж�
 
 #: lib/layouts/scrclass.inc:144
 msgid "Addsec"
-msgstr "ДопРаздел"
+msgstr "Доп. раздел"
 
 #: lib/layouts/scrclass.inc:155
 msgid "Addchap*"
-msgstr "ДопГлава*"
+msgstr "Доп. глава*"
 
 #: lib/layouts/scrclass.inc:161
 msgid "Addsec*"
-msgstr "ДопРаздел*"
+msgstr "Доп. раздел*"
 
 #: lib/layouts/scrclass.inc:167
 msgid "Minisec"
-msgstr "Minisec"
+msgstr "Минираздел"
 
 #: lib/layouts/scrclass.inc:222
 msgid "Publishers"
@@ -14777,15 +14777,15 @@ msgstr "Шапка заглавия"
 
 #: lib/layouts/scrclass.inc:244
 msgid "Uppertitleback"
-msgstr "Uppertitleback"
+msgstr "Оборот титула сверху"
 
 #: lib/layouts/scrclass.inc:250
 msgid "Lowertitleback"
-msgstr "Lowertitleback"
+msgstr "Оборот титула снизу"
 
 #: lib/layouts/scrclass.inc:256
 msgid "Extratitle"
-msgstr "Дополнительный заголовок"
+msgstr "Доп. заголовок"
 
 #: lib/layouts/scrclass.inc:279
 msgid "Above"
@@ -15444,7 +15444,7 @@ msgstr "ERT"
 
 #: lib/layouts/stdinsets.inc:287 lib/layouts/stdinsets.inc:293
 msgid "Listings[[List of Listings]]"
-msgstr "Листинги[[List of Listings]]"
+msgstr "Листинги"
 
 #: lib/layouts/stdinsets.inc:310 lib/layouts/stdinsets.inc:316
 #: src/insets/InsetTOC.cpp:77
@@ -15453,7 +15453,7 @@ msgstr "Список листингов"
 
 #: lib/layouts/stdinsets.inc:344 src/frontends/qt4/GuiDocument.cpp:1505
 msgid "Listings[[inset]]"
-msgstr "Листинги[[inset]]"
+msgstr "Листинги"
 
 #: lib/layouts/stdinsets.inc:407
 msgid "Idx"
@@ -15481,7 +15481,7 @@ msgstr "стр."
 
 #: lib/layouts/stdinsets.inc:705 lib/layouts/stdinsets.inc:713
 msgid "Nomenclature[[output]]"
-msgstr "Список обозначений[[output]]"
+msgstr "Список обозначений"
 
 #: lib/layouts/stdlayouts.inc:99
 msgid "Verbatim*"
@@ -15566,15 +15566,15 @@ msgstr "Верхние колонтитулы"
 
 #: lib/layouts/svcommon.inc:304
 msgid "Sub-run-in headings"
-msgstr "Дополнительные верхние колонтитулы"
+msgstr "Доп. верхние колонтитулы"
 
 #: lib/layouts/svcommon.inc:314 lib/layouts/svmult.layout:131
 msgid "Extrachap"
-msgstr "Дополнительно"
+msgstr "Доп. глава"
 
 #: lib/layouts/svcommon.inc:319 lib/layouts/svmult.layout:127
 msgid "extrachap"
-msgstr "extrachap"
+msgstr "допглава"
 
 #: lib/layouts/svcommon.inc:361
 msgid "Author data:"
@@ -18033,7 +18033,7 @@ msgstr "Неразрывный пробел|п"
 
 #: lib/ui/stdcontext.inc:236
 msgid "Visible Space|a"
-msgstr "Видимое пространство"
+msgstr "Видимый пробел"
 
 #: lib/ui/stdcontext.inc:237 lib/ui/stdcontext.inc:260 lib/ui/stdmenus.inc:433
 msgid "Thin Space|T"
@@ -18221,7 +18221,7 @@ msgstr "Вставить недавнее|е"
 
 #: lib/ui/stdcontext.inc:340
 msgid "Jump Back to Saved Bookmark|B"
-msgstr "Перейти назад к сохранённой закладке|с"
+msgstr "Перейти назад к сохранённой закладке|н"
 
 #: lib/ui/stdcontext.inc:341 lib/ui/stdmenus.inc:572
 msgid "Forward Search|F"
@@ -18341,7 +18341,7 @@ msgstr "Добавить необязательный аргумент, погл
 
 #: lib/ui/stdcontext.inc:395 lib/ui/stdmenus.inc:271
 msgid "Remove Last Argument Spitting Out to the Right"
-msgstr "Убрать последний аргумент"
+msgstr "Убрать последний аргумент, поглощающий справа"
 
 #: lib/ui/stdcontext.inc:404
 msgid "Reload|R"
@@ -18362,7 +18362,7 @@ msgstr "Снизу|н"
 
 #: lib/ui/stdcontext.inc:428 lib/ui/stdmenus.inc:212
 msgid "Left|L"
-msgstr "Слева"
+msgstr "Слева|л"
 
 #: lib/ui/stdcontext.inc:429 lib/ui/stdmenus.inc:214
 msgid "Right|R"
@@ -18370,7 +18370,7 @@ msgstr "Справа|п"
 
 #: lib/ui/stdcontext.inc:433
 msgid "Left|f"
-msgstr "Слева"
+msgstr "Слева|л"
 
 #: lib/ui/stdcontext.inc:434 lib/ui/stdmenus.inc:213
 msgid "Center|C"
@@ -18378,7 +18378,7 @@ msgstr "По центру|ц"
 
 #: lib/ui/stdcontext.inc:435
 msgid "Right|h"
-msgstr "Справа"
+msgstr "Справа|п"
 
 #: lib/ui/stdcontext.inc:436
 msgid "Decimal"
@@ -18765,7 +18765,7 @@ msgstr "Стиль текста"
 
 #: lib/ui/stdmenus.inc:126
 msgid "Table|T"
-msgstr "Таблица|T"
+msgstr "Таблица|Т"
 
 #: lib/ui/stdmenus.inc:127 lib/ui/stdmenus.inc:617
 msgid "Math|M"
@@ -18773,7 +18773,7 @@ msgstr "Математика|М"
 
 #: lib/ui/stdmenus.inc:128
 msgid "Rows & Columns|C"
-msgstr "Строки и столбцы|К"
+msgstr "Строки и столбцы|к"
 
 #: lib/ui/stdmenus.inc:135
 msgid "Increase List Depth|I"
@@ -18941,7 +18941,7 @@ msgstr "Снизу|н"
 
 #: lib/ui/stdmenus.inc:217
 msgid "Middle|M"
-msgstr "Посередине|д"
+msgstr "Посередине|с"
 
 #: lib/ui/stdmenus.inc:220
 msgid "Add Row|A"
@@ -19189,7 +19189,7 @@ msgstr "Файл|Ф"
 
 #: lib/ui/stdmenus.inc:379
 msgid "Box[[Menu]]|x"
-msgstr "Блок[[Меню]]"
+msgstr "Блок|л"
 
 #: lib/ui/stdmenus.inc:382
 msgid "Citation...|C"
@@ -19197,7 +19197,7 @@ msgstr "Библиографическая ссылка...|Б"
 
 #: lib/ui/stdmenus.inc:383
 msgid "Cross-Reference...|R"
-msgstr "Перекрёстная ссылка...|к"
+msgstr "Перекрёстная ссылка...|П"
 
 #: lib/ui/stdmenus.inc:384
 msgid "Label...|L"
@@ -19233,7 +19233,7 @@ msgstr "Примечание на полях|я"
 
 #: lib/ui/stdmenus.inc:395
 msgid "Program Listing[[Menu]]"
-msgstr "Листинг программы[[Меню]]"
+msgstr "Листинг программы"
 
 #: lib/ui/stdmenus.inc:402 src/insets/Inset.cpp:92
 msgid "TeX Code"
@@ -19245,7 +19245,7 @@ msgstr "Предварительный просмотр"
 
 #: lib/ui/stdmenus.inc:407
 msgid "Symbols...|b"
-msgstr "Символы...|в"
+msgstr "Символы...|С"
 
 #: lib/ui/stdmenus.inc:408
 msgid "Ellipsis|i"
@@ -19257,7 +19257,7 @@ msgstr "Конец предложения|К"
 
 #: lib/ui/stdmenus.inc:410
 msgid "Plain Quotation Mark|Q"
-msgstr "Обычные кавычки"
+msgstr "Простые кавычки"
 
 #: lib/ui/stdmenus.inc:411
 msgid "Inner Quotation Mark|n"
@@ -19265,15 +19265,15 @@ msgstr "Внутренние кавычки"
 
 #: lib/ui/stdmenus.inc:412
 msgid "Protected Hyphen|y"
-msgstr "Защищённый перенос"
+msgstr "Неразрывный дефис"
 
 #: lib/ui/stdmenus.inc:413
 msgid "Breakable Slash|a"
-msgstr "Хрупкий слэш|Х"
+msgstr "Разрывная косая черта|ч"
 
 #: lib/ui/stdmenus.inc:414
 msgid "Visible Space|V"
-msgstr "Видимое пространство"
+msgstr "Видимый пробел|В"
 
 #: lib/ui/stdmenus.inc:415
 msgid "Menu Separator|M"
@@ -19533,7 +19533,7 @@ msgstr "Сравнить...|в"
 
 #: lib/ui/stdmenus.inc:604
 msgid "Reconfigure|R"
-msgstr "Переконфигурировать|г"
+msgstr "Обновить конфигурацию|г"
 
 #: lib/ui/stdmenus.inc:605
 msgid "Preferences...|P"
@@ -19629,7 +19629,7 @@ msgstr "Формы PDF"
 
 #: lib/ui/stdmenus.inc:639
 msgid "Hazard and Precautionary Statements|H"
-msgstr "Сообщения об опасности и мерах предосторожности"
+msgstr "Химическая опасность"
 
 #: lib/ui/stdmenus.inc:640 lib/configure.py:649
 msgid "Sweave|S"
@@ -20037,7 +20037,7 @@ msgstr "Вставить необязательный аргумент"
 
 #: lib/ui/stdtoolbars.inc:213
 msgid "Remove last argument spitting out to the right"
-msgstr "Убрать последний аргумент"
+msgstr "Убрать последний аргумент, поглощающий справа"
 
 #: lib/ui/stdtoolbars.inc:214
 msgid "Append argument eating from the right"
@@ -21176,7 +21176,7 @@ msgstr "neq"
 
 #: lib/ui/stdtoolbars.inc:584
 msgid "in[[math relation]]"
-msgstr "in[[math relation]]"
+msgstr "in"
 
 #: lib/ui/stdtoolbars.inc:585
 msgid "ni"
@@ -27004,11 +27004,11 @@ msgid ""
 "without checking your LaTeX installation, or continue."
 msgstr ""
 "LyX будет предоставлять только минимальную функциональность, потому что не "
-"найдены классы текста. Вы можете переконфигурировать LyX или продолжить."
+"найдены классы текста. Вы можете обновить конфигурацию LyX или продолжить."
 
 #: src/LyX.cpp:598
 msgid "&Reconfigure"
-msgstr "Переконфигурировать"
+msgstr "Обновить конфигурацию"
 
 #: src/LyX.cpp:599
 msgid "&Without LaTeX"
@@ -28066,10 +28066,10 @@ msgid ""
 "available modules. If you recently installed it, you\n"
 "probably need to reconfigure LyX.\n"
 msgstr ""
-"Модуль %1$s требуется этим документом,\n"
+"Модуль %1$s требуется для этого документа,\n"
 "но его нет в списке доступных модулей.\n"
-"Если вы установили его недавно, вероятно\n"
-"нужно переконфигурировать LyX.\n"
+"Если вы установили его недавно, то\n"
+"необходимо обновить конфигурацию LyX.\n"
 
 #: src/TextClass.cpp:1685
 msgid "Module not available"
@@ -28112,8 +28112,8 @@ msgid ""
 msgstr ""
 "Модуль цитирования %1$s запрашивается этим документом,\n"
 "но его нет в списке доступных модулей.\n"
-"Если вы установили его недавно, вероятно\n"
-"нужно переконфигурировать LyX.\n"
+"Если вы установили его недавно, то\n"
+"необходимо обновить конфигурацию LyX.\n"
 
 #: src/TextClass.cpp:1720
 msgid "Cite Engine not available"
@@ -28505,7 +28505,7 @@ msgstr "Невозможно прочитать шаблон"
 
 #: src/frontends/qt4/BulletsModule.cpp:41
 msgid "Standard[[Bullets]]"
-msgstr "Стандартные[[Маркеры]]"
+msgstr "Стандартные"
 
 #: src/frontends/qt4/BulletsModule.cpp:42
 msgid "Maths"
@@ -28736,7 +28736,7 @@ msgstr "Настройки"
 
 #: src/frontends/qt4/GuiApplication.cpp:696
 msgid "Reconfigure"
-msgstr "Переконфигурировать"
+msgstr "Обновить конфигурацию"
 
 #: src/frontends/qt4/GuiApplication.cpp:696
 msgid "Quit %1"
@@ -28776,7 +28776,7 @@ msgstr "Перезагружаю конфигурацию..."
 
 #: src/frontends/qt4/GuiApplication.cpp:1541
 msgid "System reconfiguration failed"
-msgstr "Сбой переконфигурации системы"
+msgstr "Сбой обновления конфигурации системы"
 
 #: src/frontends/qt4/GuiApplication.cpp:1542
 msgid ""
@@ -28785,13 +28785,13 @@ msgid ""
 "not be able to work properly.\n"
 "Please reconfigure again if needed."
 msgstr ""
-"Реконфигурация системы завершилась неудачно.\n"
+"Обновление конфигурации системы завершилось неудачно.\n"
 "Классы текста по умолчанию будут использованы, но LyX может работать\n"
-"неправильно. Переконфигурируйте ещё раз, если понадобится."
+"неправильно. Обновите конфигурацию ещё раз при необходимости."
 
 #: src/frontends/qt4/GuiApplication.cpp:1547
 msgid "System reconfigured"
-msgstr "Система была переконфигурирована"
+msgstr "В системе была обновлена конфигурация"
 
 #: src/frontends/qt4/GuiApplication.cpp:1548
 msgid ""
@@ -28799,7 +28799,7 @@ msgid ""
 "You need to restart LyX to make use of any\n"
 "updated document class specifications."
 msgstr ""
-"Система переконфигурирована.\n"
+"В системе была обновлена конфигурация.\n"
 "Необходимо перезапустить LyX, чтобы использовать\n"
 "обновлённые классы документов."
 
@@ -29324,19 +29324,19 @@ msgstr "Сравнить разные ревизии"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:61
 msgid "big[[delimiter size]]"
-msgstr "большой[[размер ограничителя]]"
+msgstr "большой"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:62
 msgid "Big[[delimiter size]]"
-msgstr "Большой[[размер ограничителя]]"
+msgstr "Большой"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:63
 msgid "bigg[[delimiter size]]"
-msgstr "огромный[[размер ограничителя]]"
+msgstr "огромный"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:64
 msgid "Bigg[[delimiter size]]"
-msgstr "Огромный[[размер ограничителя]]"
+msgstr "Огромный"
 
 #: src/frontends/qt4/GuiDelimiter.cpp:184
 msgid "Math Delimiter"
@@ -29677,7 +29677,7 @@ msgstr "Маркеры"
 
 #: src/frontends/qt4/GuiDocument.cpp:1508
 msgid "Formats[[output]]"
-msgstr "Форматы[[output]]"
+msgstr "Форматы"
 
 #: src/frontends/qt4/GuiDocument.cpp:1509
 msgid "LaTeX Preamble"
@@ -30081,7 +30081,7 @@ msgstr "мм"
 
 #: src/frontends/qt4/GuiGraphics.cpp:500 src/lengthcommon.cpp:42
 msgid "in[[unit of measure]]"
-msgstr "дюйм[[единица измерения]]"
+msgstr "дюйм"
 
 #: src/frontends/qt4/GuiGraphics.cpp:780
 msgid "Select graphics file"
@@ -30143,7 +30143,7 @@ msgstr "Горизонтальное заполнение"
 
 #: src/frontends/qt4/GuiHSpace.cpp:68 src/insets/InsetSpace.cpp:75
 msgid "Visible Space"
-msgstr "Видимое пространство"
+msgstr "Видимый пробел"
 
 # Half Quad?
 #: src/frontends/qt4/GuiHSpace.cpp:220
@@ -30873,7 +30873,7 @@ msgstr "Математические операторы"
 
 #: src/frontends/qt4/GuiSymbols.cpp:90
 msgid "Miscellaneous Technical"
-msgstr "Разное техническое"
+msgstr "Разные технические символы"
 
 #: src/frontends/qt4/GuiSymbols.cpp:91
 msgid "Control Pictures"
@@ -30885,7 +30885,7 @@ msgstr "Оптическое распознавание символов"
 
 #: src/frontends/qt4/GuiSymbols.cpp:93
 msgid "Enclosed Alphanumerics"
-msgstr "Цифры в кружке"
+msgstr "Числа в кружке"
 
 #: src/frontends/qt4/GuiSymbols.cpp:94
 msgid "Box Drawing"
@@ -31667,7 +31667,7 @@ msgstr "Предварительный просмотр кода"
 
 #: src/frontends/qt4/GuiViewSource.cpp:457
 msgid "%1[[preview format name]] Preview"
-msgstr "%1[[preview format name]] Предпросмотр"
+msgstr "%1 Предпросмотр"
 
 #: src/frontends/qt4/GuiWorkArea.cpp:1599
 msgid "Close File"
@@ -31867,11 +31867,11 @@ msgstr "Использовать динамические кавычки (%1$s)"
 
 #: src/frontends/qt4/Menus.cpp:1832
 msgid "dynamic[[Quotes]]"
-msgstr "динамические[[Quotes]]"
+msgstr "динамические"
 
 #: src/frontends/qt4/Menus.cpp:1832 src/frontends/qt4/Menus.cpp:1842
 msgid "static[[Quotes]]"
-msgstr "статические[[Quotes]]"
+msgstr "статические"
 
 #: src/frontends/qt4/Menus.cpp:1834
 #, c-format
@@ -31895,34 +31895,34 @@ msgstr "Изменить стиль"
 #: src/frontends/qt4/Menus.cpp:1893
 #, c-format
 msgid "Insert Separated %1$s Above"
-msgstr "Вставить отдельный %1$s выше"
+msgstr "Вставить отдельное \"%1$s\" выше"
 
 #: src/frontends/qt4/Menus.cpp:1895
 #, c-format
 msgid "Separated %1$s Above"
-msgstr "Отдельный %1$s выше"
+msgstr "Отдельное \"%1$s\" выше"
 
 #: src/frontends/qt4/Menus.cpp:1901 src/frontends/qt4/Menus.cpp:1914
 #: src/frontends/qt4/Menus.cpp:1930
 #, c-format
 msgid "Insert Separated %1$s Below"
-msgstr "Вставить отдельный %1$s ниже"
+msgstr "Вставить отдельное \"%1$s\" ниже"
 
 #: src/frontends/qt4/Menus.cpp:1903 src/frontends/qt4/Menus.cpp:1916
 #: src/frontends/qt4/Menus.cpp:1936
 #, c-format
 msgid "Separated %1$s Below"
-msgstr "Отдельный  %1$s ниже"
+msgstr "Отдельное \"%1$s\" ниже"
 
 #: src/frontends/qt4/Menus.cpp:1928
 #, c-format
 msgid "Insert Separated Outer %1$s Below"
-msgstr "Вставить отдельный внешний %1$s ниже"
+msgstr "Вставить отдельное внешнее \"%1$s\" ниже"
 
 #: src/frontends/qt4/Menus.cpp:1934
 #, c-format
 msgid "Separated Outer %1$s Below"
-msgstr "Отдельный внешний %1$s ниже"
+msgstr "Отдельное внешнее \"%1$s\" ниже"
 
 # c-format
 #: src/frontends/qt4/Menus.cpp:2249
@@ -32866,12 +32866,12 @@ msgstr "vphantom"
 #: src/insets/InsetQuotes.cpp:567
 #, c-format
 msgid "%1$souter%2$s and %3$sinner%4$s[[quotation marks]]"
-msgstr "%1$sвнешние%2$s и %3$sвнутренние%4$s[[quotation marks]]"
+msgstr "%1$sвнешние%2$s и %3$sвнутренние%4$s"
 
 #: src/insets/InsetQuotes.cpp:577
 #, c-format
 msgid "%1$s[[quot. mark description]] (language default)"
-msgstr "%1$s[[quot. mark description]] (по умолчанию для языка)"
+msgstr "%1$s (по умолчанию для языка)"
 
 #: src/insets/InsetQuotes.cpp:590
 #, c-format
@@ -33100,7 +33100,7 @@ msgstr "Предварительный просмотр не удался"
 
 #: src/lengthcommon.cpp:41
 msgid "cc[[unit of measure]]"
-msgstr "cc[[unit of measure]]"
+msgstr "cc"
 
 #: src/lengthcommon.cpp:41
 msgid "dd"
@@ -33116,7 +33116,7 @@ msgstr "ex"
 
 #: src/lengthcommon.cpp:42
 msgid "mu[[unit of measure]]"
-msgstr "mu[[unit of measure]]"
+msgstr "mu"
 
 #: src/lengthcommon.cpp:42
 msgid "pc"
@@ -33351,7 +33351,7 @@ msgstr "Автокоррекция Вкл. (<пробел> для выхода)"
 
 #: src/mathed/InsetMathRef.cpp:240
 msgid "Standard[[mathref]]"
-msgstr "Стандарт[[mathref]]"
+msgstr "Стандарт"
 
 #: src/mathed/InsetMathRef.cpp:245
 msgid "PrettyRef"
@@ -33742,48 +33742,6 @@ msgstr "Неизвестный пользователь"
 #~ msgstr "Информация об авторе"
 
 #, fuzzy
-#~ msgid "ACM Volume: "
-#~ msgstr "Колонок"
-
-#, fuzzy
-#~ msgid "ACM Number: "
-#~ msgstr "Номер страницы"
-
-#, fuzzy
-#~ msgid "ACM Article: "
-#~ msgstr "Вертикальное"
-
-#, fuzzy
-#~ msgid "ACM Month: "
-#~ msgstr "Пути"
-
-#, fuzzy
-#~ msgid "Japanese Book (jbook)"
-#~ msgstr "Японский (CJK)"
-
-#~ msgid "Japanese Article (jsarticle)"
-#~ msgstr "Japanese Article (jsarticle)"
-
-#~ msgid "    "
-#~ msgstr "    "
-
-#, fuzzy
-#~ msgid "Use &minted"
-#~ msgstr "Использовать &кодировку ввода"
-
-#, fuzzy
-#~ msgid "Number floats by chapter"
-#~ msgstr "Число уровней"
-
-#, fuzzy
-#~ msgid "Number floats by section"
-#~ msgstr "Нумерация таблиц по разделам"
-
-#, fuzzy
-#~ msgid "(auto | last | integer)"
-#~ msgstr "auto, last или число"
-
-#, fuzzy
 #~ msgid "Revert to file on disk?"
 #~ msgstr "Вернуться к сохранённой версии документа?"
 
@@ -33802,17 +33760,11 @@ msgstr "Неизвестный пользователь"
 #~ "parameters in document class options."
 #~ msgstr "Использовать стили natbib для естественных наук и искусств"
 
-#~ msgid "&Natbib"
-#~ msgstr "&Natbib"
-
 #~ msgid "Natbib &style:"
 #~ msgstr "Стиль natbib"
 
 #~ msgid "Use the jurabib styles for law and humanities"
 #~ msgstr "Используйте стили jurabib для юридических и гуманитарных наук"
-
-#~ msgid "&Jurabib"
-#~ msgstr "&Jurabib"
 
 #, fuzzy
 #~ msgid "Define the default BibTeX style"
@@ -33826,16 +33778,8 @@ msgstr "Неизвестный пользователь"
 #~ msgstr "Поиск ссылки"
 
 #, fuzzy
-#~ msgid "Searc&h:"
-#~ msgstr "Поле поиска"
-
-#, fuzzy
 #~ msgid "Click or press Enter in the search box to search"
 #~ msgstr "Вы также можете нажать Enter в окне поиска"
-
-#, fuzzy
-#~ msgid "&Search"
-#~ msgstr "Ошибка поиска"
 
 #, fuzzy
 #~ msgid "Search &field:"
@@ -33864,9 +33808,6 @@ msgstr "Неизвестный пользователь"
 #~ msgid "&Size:"
 #~ msgstr "&Размер:"
 
-#~ msgid "&Email"
-#~ msgstr "&Email"
-
 #~ msgid "&File"
 #~ msgstr "&Файл"
 
@@ -33883,10 +33824,6 @@ msgstr "Неизвестный пользователь"
 #~ msgid "&References"
 #~ msgstr "Список литературы"
 
-#, fuzzy
-#~ msgid "Fil&ter:"
-#~ msgstr "&Снаружи:"
-
 #~ msgid "&Sort"
 #~ msgstr "Сортировать"
 
@@ -33901,18 +33838,6 @@ msgstr "Неизвестный пользователь"
 #~ msgid "Cross-reference as it appears in output"
 #~ msgstr "Перекрёстная ссылка, как она будет показана на выводе"
 
-#, fuzzy
-#~ msgid "Default (basic)"
-#~ msgstr "Вертикальный отступ по молчанию"
-
-#, fuzzy
-#~ msgid "Citation engine"
-#~ msgstr "Ссылка на источник"
-
-#, fuzzy
-#~ msgid "Jurabib"
-#~ msgstr "&Jurabib"
-
 #~ msgid "Example:"
 #~ msgstr "Пример:"
 
@@ -33922,16 +33847,8 @@ msgstr "Неизвестный пользователь"
 #~ msgid "Subexample:"
 #~ msgstr "СубПример:"
 
-#, fuzzy
-#~ msgid "Natbib"
-#~ msgstr "&Natbib"
-
 #~ msgid "Cyrillic (pt 254)"
 #~ msgstr "Кириллический (pt 254)"
-
-#, fuzzy
-#~ msgid "Source Pane|S"
-#~ msgstr "Просмотреть исходный текст|и"
 
 #~ msgid "Ordinary Quote|Q"
 #~ msgstr "Прямая кавычка|П"
@@ -33949,9 +33866,6 @@ msgstr "Неизвестный пользователь"
 #~ "Сегодняшняя дата.\n"
 #~ "Прочитайте 'info date' для дополнительной информации.\n"
 
-#~ msgid "Plain text (image)"
-#~ msgstr "Plain текст (image)"
-
 #~ msgid "Plain text (Xfig output)"
 #~ msgstr "Простой текст (вывод Xfig)"
 
@@ -33960,9 +33874,6 @@ msgstr "Неизвестный пользователь"
 
 #~ msgid "date command"
 #~ msgstr "комманда date"
-
-#~ msgid "PSTEX"
-#~ msgstr "PSTEX"
 
 #, fuzzy
 #~ msgid ""
@@ -34009,19 +33920,11 @@ msgstr "Неизвестный пользователь"
 #~ msgid ">>text<<"
 #~ msgstr "»текст«"
 
-#, fuzzy
-#~ msgid "pLaTeX"
-#~ msgstr "LaTeX"
-
 #~ msgid "Jump back"
 #~ msgstr "Вернуться обратно"
 
 #~ msgid "Jump to label"
 #~ msgstr "Перейти к метке"
-
-#, fuzzy
-#~ msgid "Character: "
-#~ msgstr "Кодировка символов"
 
 #~ msgid "Code Point: "
 #~ msgstr "Точка кода:"
@@ -34066,18 +33969,6 @@ msgstr "Неизвестный пользователь"
 #~ "Следующие символы в одном из листингов программ невозможно\n"
 #~ "представить в текущей кодировке и они будут пропущены:\n"
 #~ "%1$s."
-
-#, fuzzy
-#~ msgid "Missing included file"
-#~ msgstr "Включить файл"
-
-#, fuzzy
-#~ msgid "Export failure"
-#~ msgstr "Ошибка создания резервного файла"
-
-#, fuzzy
-#~ msgid "DVI-PS Options"
-#~ msgstr "&Параметры:"
 
 #~ msgid "Can't add horizontal grid lines in '%1$s'"
 #~ msgstr "Невозможно добавить горизонтальные линии в '%1$s'"
@@ -34291,22 +34182,6 @@ msgstr "Неизвестный пользователь"
 #~ msgstr ""
 #~ "Использую класс документа по умолчанию, т.к. класс %1$s не известен."
 
-#, fuzzy
-#~ msgid "Unable to parse \"%1$s\""
-#~ msgstr "Неизвестная панель инструментов \"%1$s\""
-
-#, fuzzy
-#~ msgid "Unrecognized target \"%1$s\""
-#~ msgstr "Неизвестная панель инструментов \"%1$s\""
-
-#, fuzzy
-#~ msgid "Error exporting to DVI."
-#~ msgstr "Ошибка при создании растрового изображения"
-
-#, fuzzy
-#~ msgid "Included File Invalid"
-#~ msgstr "Включить файл|к"
-
 #~ msgid "Unable to remove temporary directory"
 #~ msgstr "Невозможно удалить временный каталог"
 
@@ -34381,10 +34256,6 @@ msgstr "Неизвестный пользователь"
 #~ msgstr ""
 #~ "Программа печати, которой вы пользуетесь, например \"dvips\", \"dvilj4\"."
 
-#, fuzzy
-#~ msgid "Unknown author index for change: %1$d\n"
-#~ msgstr "Не найден список авторов для вставки: %1$d\n"
-
 #~ msgid "Black"
 #~ msgstr "Чёрный"
 
@@ -34427,26 +34298,6 @@ msgstr "Неизвестный пользователь"
 #~ msgid "Insettext/tabular messages"
 #~ msgstr "Сообщения в таблицах или текстовых вкладках"
 
-#, fuzzy
-#~ msgid "Scaling"
-#~ msgstr "Отступ"
-
-#, fuzzy
-#~ msgid "&Vertical factor:"
-#~ msgstr "Верт. промежуток"
-
-#, fuzzy
-#~ msgid "&Horizintal factor:"
-#~ msgstr "Горизонтальная линия"
-
-#, fuzzy
-#~ msgid "Rotation"
-#~ msgstr "Нотация"
-
-#, fuzzy
-#~ msgid "&Rotation:"
-#~ msgstr "Нотация"
-
 #~ msgid ""
 #~ "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
 #~ msgstr ""
@@ -34459,17 +34310,6 @@ msgstr "Неизвестный пользователь"
 
 #~ msgid "___"
 #~ msgstr "___"
-
-#~ msgid "EndOfSlide"
-#~ msgstr "EndOfSlide"
-
-#, fuzzy
-#~ msgid "--Separator--"
-#~ msgstr "Разделение абзацев"
-
-#, fuzzy
-#~ msgid "--- Separate Environment ---"
-#~ msgstr "Окружение с выравниванием|В"
 
 #~ msgid "TeX Code|X"
 #~ msgstr "Код TeX|X"
@@ -34508,29 +34348,12 @@ msgstr "Неизвестный пользователь"
 #~ msgid "%1$s (*.%2$s)"
 #~ msgstr "%1$s (%2$s)"
 
-# ?
-#, fuzzy
-#~ msgid "Alternative Theorem String"
-#~ msgstr "Alternative affiliation:"
-
-# ?
-#, fuzzy
-#~ msgid "Alternative theorem string"
-#~ msgstr "Alternative affiliation:"
-
 #, fuzzy
 #~ msgid "Key Words."
 #~ msgstr "Ключевые слова."
 
 #~ msgid "Scrap"
 #~ msgstr "Мусор"
-
-#, fuzzy
-#~ msgid "End Multiple Columns"
-#~ msgstr "&Многоколоночность"
-
-#~ msgid "[[Replace with the code of your language]]"
-#~ msgstr "ru"
 
 #~ msgid "&Use AMS math package automatically"
 #~ msgstr "Автоматически &использовать пакет AMS"
@@ -34542,26 +34365,6 @@ msgstr "Неизвестный пользователь"
 #~ msgstr "Автоматически &использовать пакет esint"
 
 #~ msgid "Use &esint package"
-#~ msgstr "Использовать пакет &esint"
-
-#, fuzzy
-#~ msgid "Use math&dots package automatically"
-#~ msgstr "Автоматически &использовать пакет AMS"
-
-#, fuzzy
-#~ msgid "Use mathdo&ts package"
-#~ msgstr "Использовать пакет AMS"
-
-#, fuzzy
-#~ msgid "Use mhchem &package automatically"
-#~ msgstr "Автоматически &использовать пакет esint"
-
-#, fuzzy
-#~ msgid "The LaTeX package mhchem is always used"
-#~ msgstr "LaTeX пакет esint уже используется"
-
-#, fuzzy
-#~ msgid "Use mh&chem package"
 #~ msgstr "Использовать пакет &esint"
 
 #~ msgid "&First:"
@@ -34591,22 +34394,11 @@ msgstr "Неизвестный пользователь"
 #~ msgid "&Rotate table 90 degrees"
 #~ msgstr "Повернуть таблицу на 90 градусов"
 
-# ?
-#, fuzzy
-#~ msgid "institute mark"
-#~ msgstr "штамп учреждения"
-
 #~ msgid "Fig. ---"
 #~ msgstr "Рис. ---"
 
-#~ msgid "LatinOn"
-#~ msgstr "LatinOn"
-
 #~ msgid "Latin on"
 #~ msgstr "Включить латиницу"
-
-#~ msgid "LatinOff"
-#~ msgstr "LatinOff"
 
 #~ msgid "Latin off"
 #~ msgstr "Отключить латиницу"
@@ -34621,28 +34413,8 @@ msgstr "Неизвестный пользователь"
 #~ msgstr "________________________________"
 
 #, fuzzy
-#~ msgid "Institute mark"
-#~ msgstr "Institute"
-
-#, fuzzy
 #~ msgid "Maintext"
 #~ msgstr "ОснТекст"
-
-#, fuzzy
-#~ msgid "Space"
-#~ msgstr "&Заменить"
-
-#, fuzzy
-#~ msgid "Space:"
-#~ msgstr "&Заменить"
-
-#, fuzzy
-#~ msgid "Computer:"
-#~ msgstr "Копии:"
-
-#, fuzzy
-#~ msgid "Close Section"
-#~ msgstr "Выделенная область"
 
 #~ msgid "Table Caption"
 #~ msgstr "Название_Таблицы"
@@ -34666,15 +34438,8 @@ msgstr "Неизвестный пользователь"
 #~ msgid "Settings...|g"
 #~ msgstr "Настройки...|Н"
 
-#~ msgid "Save in Bundled Format|F"
-#~ msgstr "Сохранить в виде пакета"
-
 #~ msgid "Braille Manual|B"
 #~ msgstr "Руководство по шрифту Брайля|Б"
-
-#, fuzzy
-#~ msgid "LilyPond Manual|P"
-#~ msgstr "LilyPond music"
 
 #~ msgid "Linguistics Manual|L"
 #~ msgstr "Лингвистические руководства"
@@ -34709,28 +34474,6 @@ msgstr "Неизвестный пользователь"
 #~ msgid "AMS Operators"
 #~ msgstr "Операторы AMS"
 
-#~ msgid "Bitmap: $$AbsOrRelPathParent$$Basename"
-#~ msgstr "Bitmap: $$AbsOrRelPathParent$$Basename"
-
-#~ msgid "Xfig: $$AbsOrRelPathParent$$Basename"
-#~ msgstr "Xfig: $$AbsOrRelPathParent$$Basename"
-
-#~ msgid "Chess: $$AbsOrRelPathParent$$Basename"
-#~ msgstr "Chess: $$AbsOrRelPathParent$$Basename"
-
-#~ msgid "PDF pages: $$AbsOrRelPathParent$$Basename"
-#~ msgstr "PDF страницы: $$AbsOrRelPathParent$$Basename"
-
-#~ msgid "Dia: $$AbsOrRelPathParent$$Basename"
-#~ msgstr "Dia: $$AbsOrRelPathParent$$Basename"
-
-#~ msgid "HTML|H"
-#~ msgstr "HTML|H"
-
-#, fuzzy
-#~ msgid "LyX Preview (LilyPond book)"
-#~ msgstr "Предварительный просмотр (pLaTeX)"
-
 #~ msgid "LyX Preview (pLaTeX)"
 #~ msgstr "Предварительный просмотр (pLaTeX)"
 
@@ -34748,9 +34491,6 @@ msgstr "Неизвестный пользователь"
 
 #~ msgid "Paragraph not properly initialized"
 #~ msgstr "Параграф инициализирован некорректно"
-
-#~ msgid "Utopia"
-#~ msgstr "Utopia"
 
 #~ msgid " (unknown)"
 #~ msgstr " (неизвестен)"
@@ -34780,7 +34520,6 @@ msgstr "Неизвестный пользователь"
 #~ msgid "List of Changes"
 #~ msgstr "Список изменений"
 
-# ?
 #~ msgid "Automatic help"
 #~ msgstr "Автоматическая помощь"
 
@@ -34789,20 +34528,6 @@ msgstr "Неизвестный пользователь"
 
 #~ msgid "Documents"
 #~ msgstr "Документы"
-
-#, fuzzy
-#~ msgid "Japanese (non-CJK) (utf8)"
-#~ msgstr "Японский (не-CJK) (JIS)"
-
-#, fuzzy
-#~ msgid "&Output Format:"
-#~ msgstr "Вывод пуст"
-
-#~ msgid "MM"
-#~ msgstr "MM"
-
-#~ msgid "MMMMM"
-#~ msgstr "MMMMM"
 
 #, fuzzy
 #~ msgid "Theorem \\thetheorem"
@@ -34858,10 +34583,6 @@ msgstr "Неизвестный пользователь"
 #~ msgid "Enter the command to load the language package (default: babel)"
 #~ msgstr "Введите команду для загрузки пакета с языком (по умолчанию: babel)"
 
-#, fuzzy
-#~ msgid "Preface:"
-#~ msgstr "Размещение:"
-
 #~ msgid "Contributor \\Roman{svmultlsti}:"
 #~ msgstr "Участник  \\Roman{svmultlsti}:"
 
@@ -34874,10 +34595,6 @@ msgstr "Неизвестный пользователь"
 
 #~ msgid "TOC depth (provide a number):"
 #~ msgstr "Глубина TOC(поставьте номер):"
-
-#, fuzzy
-#~ msgid "List of Abbreviations & Symbols"
-#~ msgstr "Список цитат"
 
 #~ msgid "branch"
 #~ msgstr "Ветка"
@@ -35034,9 +34751,6 @@ msgstr "Неизвестный пользователь"
 
 #~ msgid "Index Entry|I"
 #~ msgstr "Элемент указателя|у"
-
-#~ msgid "URL...|U"
-#~ msgstr "URL...|U"
 
 #~ msgid "Lists & TOC|O"
 #~ msgstr "Списки и содержания|C"
@@ -35208,10 +34922,6 @@ msgstr "Неизвестный пользователь"
 #~ "Пользовательское значение, требует тип промежутка \"Пользовательский\"."
 
 #, fuzzy
-#~ msgid "Affilation:"
-#~ msgstr "Affiliation"
-
-#, fuzzy
 #~ msgid "DockWidget"
 #~ msgstr "Ширина"
 
@@ -35235,14 +34945,6 @@ msgstr "Неизвестный пользователь"
 
 #~ msgid "&Use babel"
 #~ msgstr "Использовать &babel"
-
-#, fuzzy
-#~ msgid "Flex:Institute"
-#~ msgstr "Institute"
-
-#, fuzzy
-#~ msgid "Flex:E-Mail"
-#~ msgstr "E-Mail"
 
 #~ msgid "scheme"
 #~ msgstr "схема"
@@ -35300,74 +35002,6 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Flex:Citation-number"
 #~ msgstr "Ссылка на источник"
-
-#, fuzzy
-#~ msgid "Flex:Volume"
-#~ msgstr "Колонок"
-
-#, fuzzy
-#~ msgid "Flex:Day"
-#~ msgstr "Сводка"
-
-#, fuzzy
-#~ msgid "Flex:Month"
-#~ msgstr "Element:Month"
-
-#, fuzzy
-#~ msgid "Flex:Year"
-#~ msgstr "Сводка"
-
-#, fuzzy
-#~ msgid "Flex:Issue-number"
-#~ msgstr "msnumber"
-
-#, fuzzy
-#~ msgid "Flex:Issue-day"
-#~ msgstr "День выпуска"
-
-#, fuzzy
-#~ msgid "Flex:Issue-months"
-#~ msgstr "Месяцы выпуска"
-
-#, fuzzy
-#~ msgid "Flex:ISSN"
-#~ msgstr "&Размещение:"
-
-#, fuzzy
-#~ msgid "Flex:CODEN"
-#~ msgstr "Элемент:CODEN"
-
-#, fuzzy
-#~ msgid "Flex:SS-Code"
-#~ msgstr "Код"
-
-#, fuzzy
-#~ msgid "Flex:SS-Title"
-#~ msgstr "Заглавие"
-
-#, fuzzy
-#~ msgid "Flex:CCC-Code"
-#~ msgstr "Код"
-
-#, fuzzy
-#~ msgid "Flex:Code"
-#~ msgstr "&Размещение:"
-
-#, fuzzy
-#~ msgid "Flex:Dscr"
-#~ msgstr "Благодарности"
-
-#, fuzzy
-#~ msgid "Flex:Keyword"
-#~ msgstr "Ключевое слово"
-
-#, fuzzy
-#~ msgid "Flex:Orgdiv"
-#~ msgstr "Элемент:Orgdiv"
-
-#, fuzzy
-#~ msgid "Flex:Orgname"
-#~ msgstr "Отчество"
 
 #, fuzzy
 #~ msgid "Flex:Street"
@@ -35473,12 +35107,6 @@ msgstr "Неизвестный пользователь"
 #~ msgid "Flex:Strong"
 #~ msgstr "СтильСимвола:Strong"
 
-#~ msgid "Norsk"
-#~ msgstr "Норвежский"
-
-#~ msgid "Nynorsk"
-#~ msgstr "Нюноршк"
-
 #, fuzzy
 #~ msgid "master document[[scope]]"
 #~ msgstr "Главный документ"
@@ -35486,22 +35114,6 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Keywordsr"
 #~ msgstr "Ключевые слова"
-
-#, fuzzy
-#~ msgid "A&vailable indices:"
-#~ msgstr "&Доступные ветки:"
-
-#, fuzzy
-#~ msgid "Vert. Phantom"
-#~ msgstr "Эсперанто"
-
-#, fuzzy
-#~ msgid "All indices"
-#~ msgstr "Все файлы"
-
-#, fuzzy
-#~ msgid "&Ok"
-#~ msgstr "&OK"
 
 #~ msgid "&Dummy"
 #~ msgstr "&Пустой"
@@ -35563,74 +35175,6 @@ msgstr "Неизвестный пользователь"
 #~ msgid "Block ( ERT[{title}] alert text ):"
 #~ msgstr "Блок ( ERT[{title}] alert text ):"
 
-#, fuzzy
-#~ msgid "CharStyle:Alert"
-#~ msgstr "Стр. от:"
-
-#, fuzzy
-#~ msgid "CharStyle:Structure"
-#~ msgstr "Стр. от:"
-
-#~ msgid "Strasse"
-#~ msgstr "Улица"
-
-#~ msgid "Land"
-#~ msgstr "Land"
-
-#~ msgid "BLZ"
-#~ msgstr "BLZ"
-
-#~ msgid "Konto"
-#~ msgstr "Konto"
-
-#, fuzzy
-#~ msgid "Element:Firstname"
-#~ msgstr "Имя"
-
-#, fuzzy
-#~ msgid "Element:Fname"
-#~ msgstr "Element:Fname"
-
-#, fuzzy
-#~ msgid "Element:Filename"
-#~ msgstr "Название файла"
-
-#, fuzzy
-#~ msgid "Element:Citation-number"
-#~ msgstr "Ссылка на источник"
-
-#, fuzzy
-#~ msgid "Element:Issue-number"
-#~ msgstr "msnumber"
-
-#, fuzzy
-#~ msgid "Element:Issue-day"
-#~ msgstr "Element:Issue-day"
-
-#, fuzzy
-#~ msgid "Element:Issue-months"
-#~ msgstr "Элемент:месяцы выпуска"
-
-#, fuzzy
-#~ msgid "Element:SS-Title"
-#~ msgstr "Заглавие"
-
-#, fuzzy
-#~ msgid "Element:CCC-Code"
-#~ msgstr "Код"
-
-#, fuzzy
-#~ msgid "Element:Postcode"
-#~ msgstr "Вставить"
-
-#, fuzzy
-#~ msgid "Element:Directory"
-#~ msgstr "Каталоги"
-
-#, fuzzy
-#~ msgid "Element:KeyCombo"
-#~ msgstr "Клавиатура"
-
 #~ msgid "Custom:Endnote"
 #~ msgstr "Выборочно:Примечание"
 
@@ -35651,9 +35195,6 @@ msgstr "Неизвестный пользователь"
 
 #~ msgid "Insert|n"
 #~ msgstr "Вставить|В"
-
-#~ msgid "Dissolve Inset|l"
-#~ msgstr "Разложить вклейку|Р"
 
 #~ msgid "View DVI"
 #~ msgstr "Просмотреть DVI"
@@ -35793,9 +35334,6 @@ msgstr "Неизвестный пользователь"
 #~ msgstr ""
 #~ "Введите параметры листингов справа. Нажмите ? для списка параметров."
 
-#~ msgid "Length"
-#~ msgstr "Указать длину"
-
 #~ msgid "Thin space"
 #~ msgstr "Тонкий пробел"
 
@@ -35805,38 +35343,17 @@ msgstr "Неизвестный пользователь"
 #~ msgid "Thick space"
 #~ msgstr "Толстый пробел"
 
-#~ msgid "Negative thin space"
-#~ msgstr "Отрицательный тонкий промежуток"
-
-#~ msgid "Negative medium space"
-#~ msgstr "Отрицательный средний промежуток"
-
-#~ msgid "Negative thick space"
-#~ msgstr "Отрицательный толстый промежуток"
-
 #~ msgid "Inter-word space"
 #~ msgstr "Пробел"
 
 #~ msgid "No LaTeX log file found."
 #~ msgstr "Не найден лог-файл LaTeX."
 
-#~ msgid "aspell"
-#~ msgstr "aspell"
-
-#~ msgid "hspell"
-#~ msgstr "hspell"
-
 #~ msgid "pspell (library)"
 #~ msgstr "pspell (библиотека)"
 
 #~ msgid "aspell (library)"
 #~ msgstr "aspell (библиотека)"
-
-#~ msgid "*.pws"
-#~ msgstr "*.pws"
-
-#~ msgid "*.ispell"
-#~ msgstr "*.ispell"
 
 #~ msgid "Spellchecker error"
 #~ msgstr "Ошибка проверки правописания"
@@ -35856,9 +35373,6 @@ msgstr "Неизвестный пользователь"
 
 #~ msgid "No Table of contents"
 #~ msgstr "Нет содержания"
-
-#~ msgid "Opened inset"
-#~ msgstr "Открытая вкладка"
 
 #, fuzzy
 #~ msgid "Uncodable characters in bibliography item"
@@ -35993,101 +35507,6 @@ msgstr "Неизвестный пользователь"
 #~ "Горячая клавиша `%1$s' уже привязана к:\n"
 #~ "%2$s"
 
-#, fuzzy
-#~ msgid "Anschrift:"
-#~ msgstr "Unterschrift"
-
-#, fuzzy
-#~ msgid "Zusatz:"
-#~ msgstr "Zusatz"
-
-#, fuzzy
-#~ msgid "Ihre Zeichen:"
-#~ msgstr "IhrZeichen"
-
-#, fuzzy
-#~ msgid "Unsere Zeichen:"
-#~ msgstr "IhrZeichen"
-
-#, fuzzy
-#~ msgid "Unterschrift:"
-#~ msgstr "Unterschrift"
-
-#, fuzzy
-#~ msgid "Vorwahl:"
-#~ msgstr "Нормальный:"
-
-#, fuzzy
-#~ msgid "Telefon:"
-#~ msgstr "Телефон"
-
-#, fuzzy
-#~ msgid "Ort:"
-#~ msgstr "Ort"
-
-#, fuzzy
-#~ msgid "Datum:"
-#~ msgstr "Дата"
-
-#, fuzzy
-#~ msgid "Betreff:"
-#~ msgstr "Betreff"
-
-#, fuzzy
-#~ msgid "Anrede:"
-#~ msgstr "Anrede"
-
-#, fuzzy
-#~ msgid "Gruss:"
-#~ msgstr "Gruss"
-
-#, fuzzy
-#~ msgid "Anlage(n):"
-#~ msgstr "Anlagen"
-
-#, fuzzy
-#~ msgid "Verteiler:"
-#~ msgstr "Verteiler"
-
-#, fuzzy
-#~ msgid "Strasse:"
-#~ msgstr "Улица"
-
-#, fuzzy
-#~ msgid "Land:"
-#~ msgstr "Land"
-
-#, fuzzy
-#~ msgid "RetourAdresse:"
-#~ msgstr "Обратный адрес"
-
-#, fuzzy
-#~ msgid "MeinZeichen:"
-#~ msgstr "MeinZeichen"
-
-#, fuzzy
-#~ msgid "IhrZeichen:"
-#~ msgstr "IhrZeichen"
-
-#, fuzzy
-#~ msgid "IhrSchreiben:"
-#~ msgstr "IhrSchreiben"
-
-#, fuzzy
-#~ msgid "BLZ:"
-#~ msgstr "BLZ"
-
-#, fuzzy
-#~ msgid "Konto:"
-#~ msgstr "Konto"
-
-#~ msgid "Adresse:"
-#~ msgstr "Адрес:"
-
-#, fuzzy
-#~ msgid "Anlagen:"
-#~ msgstr "Anlagen"
-
 #~ msgid "Numbers theorems and the like by section."
 #~ msgstr "Нумеровать теоремы и прочее по разделам."
 
@@ -36193,10 +35612,6 @@ msgstr "Неизвестный пользователь"
 #~ msgstr "Канадский"
 
 #, fuzzy
-#~ msgid "Gruß:"
-#~ msgstr "Gruss"
-
-#, fuzzy
 #~ msgid "Reference\t"
 #~ msgstr "Перекрёстная ссылка"
 
@@ -36207,34 +35622,6 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Backaddress\t# scrletter"
 #~ msgstr "Обратный адрес"
-
-#, fuzzy
-#~ msgid "RetourAdresse\t# g-brief-de"
-#~ msgstr "Обратный адрес"
-
-#, fuzzy
-#~ msgid "Postvermerk\t# g-brief-de"
-#~ msgstr "Postvermerk"
-
-#, fuzzy
-#~ msgid "IhrZeichen\t# g-brief-de"
-#~ msgstr "IhrZeichen"
-
-#, fuzzy
-#~ msgid "IhrSchreiben\t# g-brief-de"
-#~ msgstr "IhrSchreiben"
-
-#, fuzzy
-#~ msgid "MeinZeichen\t# g-brief-de"
-#~ msgstr "MeinZeichen"
-
-#, fuzzy
-#~ msgid "Unterschrift\t# g-brief-de"
-#~ msgstr "Unterschrift"
-
-#, fuzzy
-#~ msgid "Stadt:"
-#~ msgstr "Stadt"
 
 #~ msgid "Vertical alignment for fixed width columns"
 #~ msgstr "Вертикальное выравнивание для столбцов фиксированной ширины"
@@ -36309,26 +35696,14 @@ msgstr "Неизвестный пользователь"
 #~ msgid "Unknown action %1$s"
 #~ msgstr "Неизвестная команда"
 
-#, fuzzy
-#~ msgid "Clear group"
-#~ msgstr "Новая страница (\\clearpage)"
-
 #~ msgid " (auto)"
 #~ msgstr " (авто)"
-
-#, fuzzy
-#~ msgid "Toggle tabba&r"
-#~ msgstr "Вкл/выкл панель таблиц"
 
 #~ msgid "&Edit File..."
 #~ msgstr "Р&едактировать файл..."
 
 #~ msgid "LyX View"
 #~ msgstr "Просмотр в LyX"
-
-#, fuzzy
-#~ msgid "Movie"
-#~ msgstr "Больше"
 
 #~ msgid "<- C&lear"
 #~ msgstr "<- Оч&истить"
@@ -36357,14 +35732,6 @@ msgstr "Неизвестный пользователь"
 #~ msgstr "По середине"
 
 #, fuzzy
-#~ msgid "Use &bundled format for new documents"
-#~ msgstr "Невозможно прочесть документ"
-
-#, fuzzy
-#~ msgid "Failed to read embedded files"
-#~ msgstr "Встроенные объекты:"
-
-#, fuzzy
 #~ msgid " writing embedded files."
 #~ msgstr " запись внедрённых файлов!"
 
@@ -36373,23 +35740,11 @@ msgstr "Неизвестный пользователь"
 #~ msgstr "Ошибка записи файла!"
 
 #, fuzzy
-#~ msgid "Failed to extract file"
-#~ msgstr "Выделить внешний файл"
-
-#, fuzzy
 #~ msgid "External file %1$s already exists, do you want to overwrite it?"
 #~ msgstr ""
 #~ "Документ %1$s уже существует.\n"
 #~ "\n"
 #~ "Хотите перезаписать его?"
-
-#, fuzzy
-#~ msgid "Copy file failure"
-#~ msgstr "Просмотр файла невозможен"
-
-#, fuzzy
-#~ msgid "Failed to embed file"
-#~ msgstr "Встроенные объекты:"
 
 #~ msgid "Update embedded file?"
 #~ msgstr "Обновить внедрённый файл?"
@@ -36440,14 +35795,6 @@ msgstr "Неизвестный пользователь"
 #~ msgid " (embedded)"
 #~ msgstr " (внедрённые)"
 
-#, fuzzy
-#~ msgid "Enspace|E"
-#~ msgstr "пробел"
-
-#, fuzzy
-#~ msgid "InsetCommandParams error: "
-#~ msgstr "Следующая команда"
-
 #~ msgid "Properties...|P"
 #~ msgstr "Свойства...|С"
 
@@ -36493,20 +35840,8 @@ msgstr "Неизвестный пользователь"
 #~ msgstr "По&дпись:"
 
 #, fuzzy
-#~ msgid "Show ERT inline"
-#~ msgstr "Показывать содержимое ERT"
-
-#, fuzzy
-#~ msgid "Framed in box"
-#~ msgstr "Рамка"
-
-#, fuzzy
 #~ msgid "Box with shaded background"
 #~ msgstr "затенённый фон"
-
-#, fuzzy
-#~ msgid "&Shaded"
-#~ msgstr "&Сохранить"
 
 #~ msgid "L&ine spacing:"
 #~ msgstr "&Междустрочный интервал:"
@@ -36521,10 +35856,6 @@ msgstr "Неизвестный пользователь"
 #~ msgid "&File formats"
 #~ msgstr "Форматы файлов"
 
-#, fuzzy
-#~ msgid "&GUI name:"
-#~ msgstr "&Имя:"
-
 #~ msgid "External Applications"
 #~ msgstr "Внешние приложения"
 
@@ -36538,49 +35869,11 @@ msgstr "Неизвестный пользователь"
 #~ msgid " every"
 #~ msgstr " каждый"
 
-#~ msgid "Pixmap Cache"
-#~ msgstr "Кэш растровых изображений"
-
-#~ msgid "Enable Pi&xmap Cache"
-#~ msgstr "Использовать кэш растровых изображений"
-
-#, fuzzy
-#~ msgid "&URL:"
-#~ msgstr "URL:"
-
 #~ msgid "&Units:"
 #~ msgstr "Единицы:"
 
-#, fuzzy
-#~ msgid "Step \\arabic{step}."
-#~ msgstr "Подраздел"
-
 #~ msgid "Theorem \\arabic{theorem}."
 #~ msgstr "Теорема \\arabic{theorem}."
-
-#, fuzzy
-#~ msgid "Prop \\arabic{prop}."
-#~ msgstr "Раздел \\arabic{section}"
-
-#, fuzzy
-#~ msgid "Question \\arabic{question}."
-#~ msgstr "Раздел \\arabic{section}"
-
-#, fuzzy
-#~ msgid "Definition @Section@.\\arabic{definition}."
-#~ msgstr "Определение"
-
-#, fuzzy
-#~ msgid "Example @Section@.\\arabic{example}."
-#~ msgstr "Пример"
-
-#, fuzzy
-#~ msgid "Remark @Section@.\\arabic{remark}."
-#~ msgstr "Раздел \\arabic{section}"
-
-#, fuzzy
-#~ msgid "Notation @Section@.\\arabic{notation}."
-#~ msgstr "Раздел \\arabic{section}"
 
 #, fuzzy
 #~ msgid "Theorem @Section@.\\arabic{theorem}."
@@ -36589,10 +35882,6 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Corollary @Section@.\\arabic{corollary}."
 #~ msgstr "Вывод"
-
-#, fuzzy
-#~ msgid "Lemma @Section@.\\arabic{lemma}."
-#~ msgstr "Раздел \\arabic{section}"
 
 #, fuzzy
 #~ msgid "Proposition @Section@.\\arabic{proposition}."
@@ -36624,104 +35913,6 @@ msgstr "Неизвестный пользователь"
 #~ msgid "Corollary @Section@.\\arabic{theorem}."
 #~ msgstr "Вывод"
 
-#, fuzzy
-#~ msgid "Lemma @Section@.\\arabic{theorem}."
-#~ msgstr "Теорема \\arabic{theorem}."
-
-#, fuzzy
-#~ msgid "Proposition @Section@.\\arabic{theorem}."
-#~ msgstr "Утверждение"
-
-#, fuzzy
-#~ msgid "Conjecture @Section@.\\arabic{theorem}."
-#~ msgstr "Предположение"
-
-#, fuzzy
-#~ msgid "Criterion @Section@.\\arabic{theorem}."
-#~ msgstr "Теорема \\arabic{theorem}."
-
-#, fuzzy
-#~ msgid "Algorithm @Section@.\\arabic{theorem}."
-#~ msgstr "Теорема \\arabic{theorem}."
-
-#, fuzzy
-#~ msgid "Fact @Section@.\\arabic{theorem}."
-#~ msgstr "Теорема \\arabic{theorem}."
-
-#, fuzzy
-#~ msgid "Axiom @Section@.\\arabic{theorem}."
-#~ msgstr "Теорема \\arabic{theorem}."
-
-#, fuzzy
-#~ msgid "Definition @Section@.\\arabic{theorem}."
-#~ msgstr "Определение"
-
-#, fuzzy
-#~ msgid "Example @Section@.\\arabic{theorem}."
-#~ msgstr "Пример"
-
-#, fuzzy
-#~ msgid "Condition @Section@.\\arabic{theorem}."
-#~ msgstr "Теорема \\arabic{theorem}."
-
-#, fuzzy
-#~ msgid "Problem @Section@.\\arabic{theorem}."
-#~ msgstr "Теорема \\arabic{theorem}."
-
-#, fuzzy
-#~ msgid "Exercise @Section@.\\arabic{theorem}."
-#~ msgstr "Теорема \\arabic{theorem}."
-
-#, fuzzy
-#~ msgid "Remark @Section@.\\arabic{theorem}."
-#~ msgstr "Теорема \\arabic{theorem}."
-
-#, fuzzy
-#~ msgid "Claim @Section@.\\arabic{theorem}."
-#~ msgstr "Теорема \\arabic{theorem}."
-
-#, fuzzy
-#~ msgid "Note @Section@.\\arabic{theorem}."
-#~ msgstr "Теорема \\arabic{theorem}."
-
-#, fuzzy
-#~ msgid "Notation @Section@.\\arabic{theorem}."
-#~ msgstr "Раздел \\arabic{section}"
-
-#, fuzzy
-#~ msgid "Summary @Section@.\\arabic{theorem}."
-#~ msgstr "Теорема \\arabic{theorem}."
-
-#, fuzzy
-#~ msgid "Acknowledgement @Section@.\\arabic{theorem}."
-#~ msgstr "Теорема \\arabic{theorem}."
-
-#, fuzzy
-#~ msgid "Conclusion @Section@.\\arabic{theorem}."
-#~ msgstr "Теорема \\arabic{theorem}."
-
-#, fuzzy
-#~ msgid "Assumption @Section@.\\arabic{theorem}."
-#~ msgstr "Теорема \\arabic{theorem}."
-
-#, fuzzy
-#~ msgid "@Section@.\\arabic{subsection}"
-#~ msgstr "Раздел \\arabic{section}"
-
-#, fuzzy
-#~ msgid "@Subsection@.\\arabic{subsubsection}"
-#~ msgstr "Раздел \\arabic{section}"
-
-#, fuzzy
-#~ msgid "@Subsubsection@.\\arabic{paragraph}"
-#~ msgstr "Раздел \\arabic{section}"
-
-#~ msgid "\\arabic{chapter}.\\arabic{section}"
-#~ msgstr "\\arabic{chapter}.\\arabic{section}"
-
-#~ msgid "\\Alph{chapter}.\\arabic{section}"
-#~ msgstr "\\Alph{chapter}.\\arabic{section}"
-
 #~ msgid "Magyar"
 #~ msgstr "Венгерский"
 
@@ -36731,10 +35922,6 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Framed|F"
 #~ msgstr "Рамка"
-
-#, fuzzy
-#~ msgid "Shaded|S"
-#~ msgstr "Сохранить|х"
 
 #~ msgid "Insert URL"
 #~ msgstr "Вставить URL"
