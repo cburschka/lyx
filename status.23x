@@ -57,6 +57,9 @@ What's new
 
 - Fix ChkTeX on Windows (requires ChkTeX 1.7.7 at least) (bug 9989).
 
+- When entering a math macro name, Escape properly cancels the
+  operation (bug 9251).
+
 
 * INTERNALS
 
