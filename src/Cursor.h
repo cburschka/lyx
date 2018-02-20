@@ -501,9 +501,9 @@ public:
 	///
 	void plainInsert(MathAtom const & at);
 
-	/// interpret name of a macro. Returns true if something got
-	/// inserted.
-	bool macroModeClose();
+	/// interpret name of a macro or ditch it if \c cancel is true.
+	/// Returns true if something got inserted.
+	bool macroModeClose(bool cancel = false);
 	/// are we currently typing the name of a macro?
 	bool inMacroMode() const;
 	/// get access to the macro we are currently typing

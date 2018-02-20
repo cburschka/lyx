@@ -836,8 +836,12 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 		if (cur.selection())
 			cur.clearSelection();
 		else  {
-			cmd = FuncRequest(LFUN_FINISHED_FORWARD);
-			cur.undispatched();
+			if (cur.inMacroMode())
+				cur.macroModeClose(true);
+			else {
+				cmd = FuncRequest(LFUN_FINISHED_FORWARD);
+				cur.undispatched();
+			}
 		}
 		break;
 
