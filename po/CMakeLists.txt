@@ -95,7 +95,7 @@ add_gettext_python(encodings lib encodings)
 add_gettext_python(ui lib/ui *.ui *.inc)
 add_gettext_python(external lib/xtemplates *.xtemplate)
 add_gettext_python(formats lib configure.py)
-add_gettext_python(layouttranslations lib layouts/*.layout layouts/*.inc layouts/*.module citeengines/*.citeengines)
+add_gettext_python(layouttranslations lib layouts/*.layout layouts/*.inc layouts/*.module citeengines/*.citeengine)
 
 ADD_CUSTOM_COMMAND(
     OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/${_lyxname}.cat.pot"
