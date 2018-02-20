@@ -1528,7 +1528,7 @@ bool Cursor::down()
 }
 
 
-bool Cursor::macroModeClose()
+bool Cursor::macroModeClose(bool cancel)
 {
 	if (!inMacroMode())
 		return false;
@@ -1541,7 +1541,7 @@ bool Cursor::macroModeClose()
 	cell().erase(pos());
 
 	// do nothing if the macro name is empty
-	if (s == "\\")
+	if (s == "\\" || cancel)
 		return false;
 
 	// trigger updates of macros, at least, if no full
