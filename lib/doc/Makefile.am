@@ -1,7 +1,5 @@
 include $(top_srcdir)/config/common.am
 
-EXTRA_DIST = README.Documentation
-
 docdir = $(pkgdatadir)/doc
 dist_doc_DATA = \
 	Additional.lyx \
