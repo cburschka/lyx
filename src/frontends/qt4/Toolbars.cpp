@@ -229,7 +229,7 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 				FuncRequest func(lfun, f->name(),
 						FuncRequest::TOOLBAR);
 				add(ToolbarItem(ToolbarItem::COMMAND, func,
-						bformat(tooltip, prettyname)));
+						bformat(tooltip, translateIfPossible(prettyname))));
 			}
 			break;
 		}
