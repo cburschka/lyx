@@ -701,6 +701,9 @@ static void handleExportStatus(GuiView * view, Buffer::ExportStatus status,
 	case Buffer::PreviewError:
 		msg = bformat(_("Error while previewing format: %1$s"), fmt);
 		break;
+	case Buffer::ExportKilled:
+		msg = bformat(_("Conversion cancelled while previewing format: %1$s"), fmt);
+		break;
 	}
 	view->message(msg);
 }
@@ -2369,8 +2372,8 @@ static bool import(GuiView * lv, FileName const & filename,
 			string const tofile =
 				support::changeExtension(filename.absFileName(),
 				theFormats().extension(*it));
-			if (!theConverters().convert(0, filename, FileName(tofile),
-				filename, format, *it, errorList))
+			if (theConverters().convert(0, filename, FileName(tofile),
+				filename, format, *it, errorList) != Converters::SUCCESS)
 				return false;
 			loader_format = *it;
 			break;

@@ -18,6 +18,7 @@
 
 #include "Buffer.h"
 #include "BufferView.h"
+#include "Converter.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
 #include "Exporter.h"
@@ -728,19 +729,26 @@ void InsetExternal::latex(otexstream & os, OutputParams const & runparams) const
 			et.formats.find("PDFLaTeX");
 
 		if (cit != et.formats.end()) {
-			external::writeExternal(params_, "PDFLaTeX",
-						buffer(), os,
-						*(runparams.exportdata),
-						external_in_tmpdir,
-						dryrun);
+			external::RetVal retval =
+				external::writeExternal(params_, "PDFLaTeX", buffer(), os,
+				    *(runparams.exportdata), external_in_tmpdir, dryrun);
+			if (retval == external::KILLED) {
+				LYXERR0("External template preparation killed.");
+				if (buffer().isClone() && buffer().isExporting())
+					throw ConversionException();
+			}
 			return;
 		}
 	}
 
-	external::writeExternal(params_, "LaTeX", buffer(), os,
-				*(runparams.exportdata),
-				external_in_tmpdir,
-				dryrun);
+	external::RetVal retval =
+		external::writeExternal(params_, "LaTeX", buffer(), os,
+		    *(runparams.exportdata), external_in_tmpdir, dryrun);
+	if (retval == external::KILLED) {
+		LYXERR0("External template preparation killed.");
+		if (buffer().isClone() && buffer().isExporting())
+			throw ConversionException();
+	}
 }
 
 
@@ -755,8 +763,14 @@ int InsetExternal::plaintext(odocstringstream & os,
 	bool const dryrun = runparams.dryrun || runparams.inComment;
 	otexstream ots(os);
 	ots << '\n'; // output external material on a new line
-	external::writeExternal(params_, "Ascii", buffer(), ots,
-				*(runparams.exportdata), external_in_tmpdir, dryrun);
+	external::RetVal retval =
+		external::writeExternal(params_, "Ascii", buffer(), ots,
+		    *(runparams.exportdata), external_in_tmpdir, dryrun);
+	if (retval == external::KILLED) {
+		LYXERR0("External template preparation killed.");
+		if (buffer().isClone() && buffer().isExporting())
+			throw ConversionException();
+	}
 	return PLAINTEXT_NEWLINE;
 }
 
@@ -768,8 +782,14 @@ int InsetExternal::docbook(odocstream & os,
 	bool const dryrun = runparams.dryrun || runparams.inComment;
 	odocstringstream ods;
 	otexstream ots(ods);
-	external::writeExternal(params_, "DocBook", buffer(), ots,
-				*(runparams.exportdata), external_in_tmpdir, dryrun);
+	external::RetVal retval =
+		external::writeExternal(params_, "DocBook", buffer(), ots,
+		    *(runparams.exportdata), external_in_tmpdir, dryrun);
+	if (retval == external::KILLED) {
+		LYXERR0("External template preparation killed.");
+		if (buffer().isClone() && buffer().isExporting())
+			throw ConversionException();
+	}
 	os << ods.str();
 	return int(count(ods.str().begin(), ods.str().end(), '\n'));
 }
@@ -782,8 +802,14 @@ docstring InsetExternal::xhtml(XHTMLStream & xs,
 	bool const dryrun = runparams.dryrun || runparams.inComment;
 	odocstringstream ods;
 	otexstream ots(ods);
-	external::writeExternal(params_, "XHTML", buffer(), ots,
-				       *(runparams.exportdata), external_in_tmpdir, dryrun);
+	external::RetVal retval =
+		external::writeExternal(params_, "XHTML", buffer(), ots,
+		    *(runparams.exportdata), external_in_tmpdir, dryrun);
+	if (retval == external::KILLED) {
+		LYXERR0("External template preparation killed.");
+		if (buffer().isClone() && buffer().isExporting())
+			throw ConversionException();
+	}
 	xs << XHTMLStream::ESCAPE_NONE << ods.str();
 	return docstring();
 }

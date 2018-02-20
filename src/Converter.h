@@ -30,8 +30,16 @@ class ErrorList;
 class Format;
 class Formats;
 
-typedef std::vector<Format const *> FormatList;
+class ConversionException : public std::exception {
+public:
+	ConversionException() {}
+	virtual ~ConversionException() throw() {}
+	virtual const char * what() const throw() 
+		{ return "Exception caught in conversion routine!"; }
+};
 
+
+typedef std::vector<Format const *> FormatList;
 
 ///
 class Converter {
@@ -128,7 +136,13 @@ public:
 	typedef std::vector<Converter> ConverterList;
 	///
 	typedef ConverterList::const_iterator const_iterator;
-
+	/// Return values for converter runs
+	enum RetVal {
+		SUCCESS = 0,
+		FAILURE = 1,
+		KILLED  = 1000
+	};
+	
 	///
 	Converter const & get(int i) const { return converterlist_[i]; }
 	///
@@ -175,7 +189,7 @@ public:
 		try_cache = 1 << 1
 	};
 	///
-	bool convert(Buffer const * buffer,
+	RetVal convert(Buffer const * buffer,
 		     support::FileName const & from_file, support::FileName const & to_file,
 		     support::FileName const & orig_from,
 		     std::string const & from_format, std::string const & to_format,
@@ -216,7 +230,7 @@ private:
 	bool scanLog(Buffer const & buffer, std::string const & command,
 		     support::FileName const & filename, ErrorList & errorList);
 	///
-	bool runLaTeX(Buffer const & buffer, std::string const & command,
+	RetVal runLaTeX(Buffer const & buffer, std::string const & command,
 		      OutputParams const &, ErrorList & errorList);
 	///
 	ConverterList converterlist_;

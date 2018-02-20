@@ -133,6 +133,7 @@ public:
 		// export
 		ExportSuccess,
 		ExportCancel,
+		ExportKilled,
 		ExportError,
 		ExportNoPathToFormat,
 		ExportTexPathHasSpaces,
@@ -297,7 +298,7 @@ public:
 	};
 
 	/// Just a wrapper for writeLaTeXSource, first creating the ofstream.
-	bool makeLaTeXFile(support::FileName const & filename,
+	ExportStatus makeLaTeXFile(support::FileName const & filename,
 			   std::string const & original_path,
 			   OutputParams const &,
 			   OutputWhat output = FullSource) const;
@@ -323,23 +324,23 @@ public:
 	    ofs.close();
 	    \endcode
 	 */
-	void writeLaTeXSource(otexstream & os,
+	ExportStatus writeLaTeXSource(otexstream & os,
 			   std::string const & original_path,
 			   OutputParams const &,
 			   OutputWhat output = FullSource) const;
 	///
-	void makeDocBookFile(support::FileName const & filename,
+	ExportStatus makeDocBookFile(support::FileName const & filename,
 			     OutputParams const & runparams_in,
 			     OutputWhat output = FullSource) const;
 	///
-	void writeDocBookSource(odocstream & os, std::string const & filename,
+	ExportStatus writeDocBookSource(odocstream & os, std::string const & filename,
 			     OutputParams const & runparams_in,
 			     OutputWhat output = FullSource) const;
 	///
-	void makeLyXHTMLFile(support::FileName const & filename,
+	ExportStatus makeLyXHTMLFile(support::FileName const & filename,
 			     OutputParams const & runparams_in) const;
 	///
-	void writeLyXHTMLSource(odocstream & os,
+	ExportStatus writeLyXHTMLSource(odocstream & os,
 			     OutputParams const & runparams_in,
 			     OutputWhat output = FullSource) const;
 	/// returns the main language for the buffer (document)

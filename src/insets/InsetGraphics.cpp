@@ -714,9 +714,15 @@ string InsetGraphics::prepareFile(OutputParams const & runparams) const
 
 	// FIXME (Abdel 12/08/06): Is there a need to show these errors?
 	ErrorList el;
-	if (theConverters().convert(&buffer(), temp_file, to_file, params().filename,
+	Converters::RetVal const rv = 
+	    theConverters().convert(&buffer(), temp_file, to_file, params().filename,
 			       from, to, el,
-			       Converters::try_default | Converters::try_cache)) {
+			       Converters::try_default | Converters::try_cache);
+	if (rv == Converters::KILLED) {
+		LYXERR0("Graphics preparation killed.");
+		if (buffer().isClone() && buffer().isExporting())
+			throw ConversionException();
+	} else if (rv == Converters::SUCCESS) {
 		runparams.exportdata->addExternalFile(tex_format,
 				to_file, output_to_file);
 		runparams.exportdata->addExternalFile("dvi",
@@ -939,10 +945,15 @@ string InsetGraphics::prepareHTMLFile(OutputParams const & runparams) const
 
 	// FIXME (Abdel 12/08/06): Is there a need to show these errors?
 	ErrorList el;
-	bool const success =
+	Converters::RetVal const rv =
 		theConverters().convert(&buffer(), temp_file, to_file, params().filename,
 			from, to, el, Converters::try_default | Converters::try_cache);
-	if (!success)
+	if (rv == Converters::KILLED) {
+		if (buffer().isClone() && buffer().isExporting())
+			throw ConversionException();
+		return string();
+	}
+	if (rv != Converters::SUCCESS)
 		return string();
 	runparams.exportdata->addExternalFile("xhtml", to_file, output_to_file);
 	return output_to_file;

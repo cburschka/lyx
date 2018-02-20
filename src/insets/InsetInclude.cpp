@@ -788,8 +788,16 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		runparams.par_begin = 0;
 		runparams.par_end = tmp->paragraphs().size();
 		runparams.is_child = true;
-		if (!tmp->makeLaTeXFile(tmpwritefile, masterFileName(buffer()).
-				onlyPath().absFileName(), runparams, Buffer::OnlyBody)) {
+		Buffer::ExportStatus retval =
+			tmp->makeLaTeXFile(tmpwritefile, masterFileName(buffer()).
+				onlyPath().absFileName(), runparams, Buffer::OnlyBody);
+		if (retval == Buffer::ExportKilled && buffer().isClone() &&
+		      buffer().isExporting()) {
+		  // We really shouldn't get here, I don't think.
+		  LYXERR0("No conversion exception?");
+			throw ConversionException();
+		}
+		else if (retval != Buffer::ExportSuccess) {
 			if (!runparams.silent) {
 				docstring msg = bformat(_("Included file `%1$s' "
 					"was not exported correctly.\n "
@@ -811,12 +819,15 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 		// If needed, use converters to produce a latex file from the child
 		if (tmpwritefile != writefile) {
 			ErrorList el;
-			bool const success =
+			Converters::RetVal const retval =
 				theConverters().convert(tmp, tmpwritefile, writefile,
-							included_file,
-							inc_format, tex_format, el);
-
-			if (!success && !runparams.silent) {
+				    included_file, inc_format, tex_format, el);
+			if (retval == Converters::KILLED && buffer().isClone() &&
+			    buffer().isExporting()) {
+				// We really shouldn't get here, I don't think.
+				LYXERR0("No conversion exception?");
+				throw ConversionException();
+			} else if (retval != Converters::SUCCESS && !runparams.silent) {
 				docstring msg = bformat(_("Included file `%1$s' "
 						"was not exported correctly.\n "
 						"LaTeX export is probably incomplete."),

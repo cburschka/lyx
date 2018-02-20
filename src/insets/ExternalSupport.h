@@ -25,6 +25,13 @@ class otexstream;
 
 namespace external {
 
+enum RetVal {
+	SUCCESS,
+	NOT_NEEDED,
+	FAILURE,
+	KILLED
+};
+
 class Template;
 
 /// A shorthand, helper function
@@ -63,7 +70,7 @@ std::string const doSubstitution(InsetExternalParams const & params,
     If \p external_in_tmpdir == true, then the generated file is
     place in the buffer's temporary directory.
 */
-void writeExternal(InsetExternalParams const &,
+RetVal writeExternal(InsetExternalParams const &,
 		   std::string const & format,
 		   Buffer const &,
 		   otexstream &,

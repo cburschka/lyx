@@ -213,7 +213,7 @@ namespace {
     If \p external_in_tmpdir == true, then the generated file is
     placed in the buffer's temporary directory.
 */
-void updateExternal(InsetExternalParams const & params,
+RetVal updateExternal(InsetExternalParams const & params,
 		    string const & format,
 		    Buffer const & buffer,
 		    ExportData & exportdata,
@@ -222,38 +222,38 @@ void updateExternal(InsetExternalParams const & params,
 {
 	Template const * const et_ptr = getTemplatePtr(params);
 	if (!et_ptr)
-		return; // FAILURE
+		return FAILURE;
 	Template const & et = *et_ptr;
 
 	if (!et.automaticProduction)
-		return; // NOT_NEEDED
+		return NOT_NEEDED;
 
 	Template::Formats::const_iterator cit = et.formats.find(format);
 	if (cit == et.formats.end())
-		return; // FAILURE
+		return FAILURE;
 
 	Template::Format const & outputFormat = cit->second;
 	if (outputFormat.updateResult.empty())
-		return; // NOT_NEEDED
+		return NOT_NEEDED;
 
 	string from_format = et.inputFormat;
 	if (from_format.empty())
-		return; // NOT_NEEDED
+		return NOT_NEEDED;
 
 	if (from_format == "*") {
 		if (params.filename.empty())
-			return; // NOT_NEEDED
+			return NOT_NEEDED;
 
 		// Try and ascertain the file format from its contents.
 		from_format = theFormats().getFormatFromFile(params.filename);
 		if (from_format.empty())
-			return; // FAILURE
+			return FAILURE;
 	}
 
 	string const to_format = doSubstitution(params, buffer,
 		outputFormat.updateFormat, false, external_in_tmpdir, FORMATS);
 	if (to_format.empty())
-		return; // NOT_NEEDED
+		return NOT_NEEDED;
 
 	// The master buffer. This is useful when there are multiple levels
 	// of include files
@@ -274,7 +274,7 @@ void updateExternal(InsetExternalParams const & params,
 			if (!mover.copy(params.filename, temp_file)) {
 				LYXERR(Debug::EXTERNAL, "external::updateExternal. "
 					<< "Unable to copy " << params.filename << " to " << temp_file);
-				return; // FAILURE
+				return FAILURE;
 			}
 		}
 	}
@@ -324,21 +324,26 @@ void updateExternal(InsetExternalParams const & params,
 	// Yes if to_file does not exist or if from_file is newer than to_file
 	// or if from_file is a directory (bug 9925)
 	if (!isDir && compare_timestamps(temp_file, abs_to_file) < 0)
-		return; // SUCCESS
+		return SUCCESS;
 
 	// FIXME (Abdel 12/08/06): Is there a need to show these errors?
 	ErrorList el;
-	bool const success =
+	Converters::RetVal const success =
 		theConverters().convert(&buffer, temp_file, abs_to_file,
 				   params.filename, from_format, to_format, el,
 				   Converters::try_default | Converters::try_cache);
-
-	if (!success) {
+	switch (success) {
+	case Converters::SUCCESS:
+		return SUCCESS;
+	case Converters::FAILURE:
 		LYXERR(Debug::EXTERNAL, "external::updateExternal. "
 			<< "Unable to convert from " << from_format << " to " << to_format);
+			return FAILURE;
+	case Converters::KILLED:
+		return KILLED;
 	}
-
-	// return success
+	// squash warning
+	return SUCCESS;
 }
 
 
@@ -351,7 +356,7 @@ string const substituteOptions(InsetExternalParams const & params,
 } // namespace
 
 
-void writeExternal(InsetExternalParams const & params,
+RetVal writeExternal(InsetExternalParams const & params,
 		   string const & format,
 		   Buffer const & buffer, otexstream & os,
 		   ExportData & exportdata,
@@ -360,19 +365,23 @@ void writeExternal(InsetExternalParams const & params,
 {
 	Template const * const et_ptr = getTemplatePtr(params);
 	if (!et_ptr)
-		return;
+		return FAILURE;
 	Template const & et = *et_ptr;
 
 	Template::Formats::const_iterator cit = et.formats.find(format);
 	if (cit == et.formats.end()) {
 		LYXERR(Debug::EXTERNAL, "External template format '" << format
 			<< "' not specified in template " << params.templatename());
-		return;
+		return FAILURE;
 	}
 
-	if (!dryrun || contains(cit->second.product, "$$Contents"))
-		updateExternal(params, format, buffer, exportdata,
-			       external_in_tmpdir, dryrun);
+	if (!dryrun || contains(cit->second.product, "$$Contents")) {
+		RetVal const success = 
+			updateExternal(params, format, buffer, exportdata, 
+				external_in_tmpdir, dryrun);
+		if (success == FAILURE || success == KILLED)
+			return success;
+	}
 
 	bool const use_latex_path = format == "LaTeX";
 	string str = doSubstitution(params, buffer, cit->second.product,
@@ -401,7 +410,7 @@ void writeExternal(InsetExternalParams const & params,
 	str = substituteOptions(params, str, format);
 	// FIXME UNICODE
 	os << from_utf8(str);
-	return;
+	return SUCCESS;
 }
 
 namespace {
