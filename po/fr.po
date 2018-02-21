@@ -341,12 +341,14 @@
 # -----------------------------------------------------------------
 # 28 janvier 2018 : dernières corrections avant 2.3.0rc2
 # -----------------------------------------------------------------
+# 21 février 2018 : revue traduction strike/cross out avant 2.3.0
+# -----------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-01-28 21:42-0500\n"
-"PO-Revision-Date: 2018-02-18 22:46+0100\n"
+"PO-Revision-Date: 2018-02-21 14:06+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -27220,12 +27222,12 @@ msgstr "Souligné %1$s, "
 #: src/Font.cpp:169
 #, c-format
 msgid "Strike out %1$s, "
-msgstr "Biffer %1$s, "
+msgstr "Rayer %1$s, "
 
 #: src/Font.cpp:172
 #, c-format
 msgid "Cross out %1$s, "
-msgstr "Rayer %1$s, "
+msgstr "Raturer %1$s, "
 
 #: src/Font.cpp:175
 #, c-format
@@ -29586,11 +29588,11 @@ msgstr "Vaguement souligné"
 
 #: src/frontends/qt4/GuiCharacter.cpp:88
 msgid "Strike out"
-msgstr "Biffé"
+msgstr "Rayé"
 
 #: src/frontends/qt4/GuiCharacter.cpp:89
 msgid "Cross out"
-msgstr "Rayé"
+msgstr "Raturé"
 
 #: src/frontends/qt4/GuiCharacter.cpp:180
 msgid "No color"
