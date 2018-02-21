@@ -9030,12 +9030,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -9048,6 +9050,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -9080,6 +9083,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -11412,26 +11416,19 @@ Pour diviser une liste existante en deux listes, mettez le curseur à la
  
 \family sans
 Insertion\SpecialChar menuseparator
-
-\lang english
-Separated <Name> Above
+Environnement <nom> séparé au-dessus
 \family default
-\lang french
  ou 
 \family sans
 Insertion\SpecialChar menuseparator
-
-\lang english
-Separated <Name> Below
+Environnement <nom> séparé au-dessous
 \family default
-\lang french
 .
  Ceci insère un séparateur ordinaire (une ligne rouge dans la fenêtre \SpecialChar LyX
 )
  et la nouvelle liste avant ou après.
- 
-\lang english
-Inside nested environments, it is also possible to split the outer environment.
+ Dans les environnements emboîtés; il est également possible de séparer
+ l'environnement extérieur.
 \end_layout
 
 \begin_layout Standard
@@ -15936,24 +15933,13 @@ Utilisé fréquemment pour marquer une version ancienne qui a changé depuis;
 \labelwidthstring 00.00.0000
 
 \family sans
-\lang english
-Cross
-\begin_inset space ~
-\end_inset
-
-out
+Raturé
 \family default
- 
-\xout on
-This is text with Cross out on.
-\xout default
-
+ ceci est un texte raturé
 \begin_inset Newline newline
 \end_inset
 
-This is used to make text hardly readable
-\lang french
-;
+Utilisé pour rentre un texte difficilement lisible.
 \end_layout
 
 \begin_layout Labeling
@@ -29827,22 +29813,13 @@ literal "false"
 \family sans
 Littéral
 \family default
- 
-\lang english
-in the
-\lang french
- paramètres d'hyperlien 
-\lang english
-dialog allows to input \SpecialChar TeX
- code to the
-\lang french
- 
+ dans le menu des paramètres d'hyperlien permet de saisir du code \SpecialChar TeX
+ dans
+ le champ 
 \family sans
 Nom
 \family default
- 
-\lang english
-field.
+.
 \end_layout
 
 \begin_layout Standard
@@ -30121,51 +30098,27 @@ Clé
 .
  La clé est le nom symbolique que vous allez utiliser pour faire référence
  à cette entrée bibliographique.
- 
-\lang english
-Each entry needs to be given a unique key, which is one word consisting
- of ASCII characters only.
+ Chaque entrée doit avoir une clé unique, constituées d'un seul mot composé
+ de caractères ASCII uniquement
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-ASCII means 
+ASCII désigne 
 \begin_inset CommandInset href
 LatexCommand href
-name "this set"
+name "ce jeu"
 target "https://fr.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange#Table_des_128_caract.C3.A8res_ASCII"
 literal "false"
 
 \end_inset
 
- of characters
-\lang french
-:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Flex URL
-status collapsed
-
-\begin_layout Plain Layout
-
-https://fr.wikipedia.org/wiki/American_Standard_Code_for_Information_Interchange
-\backslash
-#Table_des_128_caract.C3.A8res_ASCII
+ de caractères.
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\end_inset
-
-
-\lang french
+.
  Par exemple, la seconde entrée de notre bibliographie est un livre sur
  \SpecialChar LaTeX
  et nous avons utilisé comme clé 
@@ -30184,35 +30137,19 @@ Si vous avez défini une
 \family sans
 Étiquette
 \family default
-, 
-\lang english
-references to it will appear with this
-\lang french
- étiquette à la place du nombre 
-\lang english
-of the entry
-\lang french
-.
+, les références à celle-ci apparaîtront avec cette étiquette à la place
+ du numéro de l'entrée.
  L'option 
 \family sans
 Littéral
 \family default
- 
-\lang english
-in the
-\lang french
- paramètres de champs bibliographiques 
-\lang english
-dialog allows to input \SpecialChar TeX
- code to the
-\lang french
- 
+ dans le menu des paramètres de champ bibliographique permet de saisir du
+ code \SpecialChar TeX
+ dans le champ 
 \family sans
 Étiquette
 \family default
- 
-\lang english
-field.
+.
 \end_layout
 
 \begin_layout Standard
@@ -30278,14 +30215,14 @@ literal "true"
 
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
-
+Vous pouvez également obtenir des citations auteur-année ou auteur-numéro,
+ via le paquetage
 \lang english
-You can also produce author-year or author-number citations, using the\SpecialChar LaTeX
- package
+ \SpecialChar LaTeX
  
 \series bold
 natbib
@@ -30305,7 +30242,7 @@ Paquetages \SpecialChar LaTeX
 
 \lang english
 .
- In order to do so, the label needs to be given the form 
+ Pour ce faire, l'étiquette doit être sous le forme 
 \begin_inset Quotes eld
 \end_inset
 
@@ -40112,11 +40049,8 @@ Barres d'outils
 \end_layout
 
 \begin_layout Standard
-Avec ce menu, vous pouvez 
-\lang english
-set the icon size
-\lang french
- et déterminer les barres d'outils qui sont visibles.
+Avec ce menu, vous pouvez régler la taille des icônes et déterminer les
+ barres d'outils qui sont visibles.
  Toutes les barres d'outils ainsi que la 
 \family sans
 zone de commande
@@ -41494,10 +41428,7 @@ reference "sec:Notes_en_Marge"
 \end_layout
 
 \begin_layout Subsection
-
-\family sans
-\lang english
-Separate <Name> (Above/Below)
+Environnement <nom> séparé (dessus/dessous)
 \end_layout
 
 \begin_layout Standard
@@ -50970,9 +50901,7 @@ Interligne %
 \begin_inset Text
 
 \begin_layout Plain Layout
-% de hauteur 
-\lang english
-between baselines of two subsequent text lines
+% de hauteur entre les lignes de base de deux lignes de texte successives
 \end_layout
 
 \end_inset
@@ -51955,7 +51884,11 @@ literal "false"
 
 \end_inset
 
- du paquetage \SpecialChar LaTeX
+ du 
+\lang english
+between baselines of two subsequent text lines
+\lang french
+paquetage \SpecialChar LaTeX
  
 \series bold
 prettyref
@@ -52357,17 +52290,14 @@ nobreakspace{}#1}}
 \lang english
 
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
-
-\lang english
-This command makes the page number a clickable hyperlink, see sec.
+Cette commande rend le numéro de page cliquable vers un lien hypertextuel,
+ voir la sec.
 \begin_inset space ~
 \end_inset
 
-
-\lang french
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -52375,9 +52305,7 @@ reference "subsec:Options-de-glossaire"
 
 \end_inset
 
-
-\lang english
- for more info.
+ pour les détails.
 \end_layout
 
 \end_inset
