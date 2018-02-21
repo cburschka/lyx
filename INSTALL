@@ -6,7 +6,7 @@ Quick compilation guide
 
 These four steps will compile, test and install LyX:
 
-	0) Linux users beware: You need qt4 and qt4-devel packages
+	0) Linux users beware: You need qt5 and qt5-devel packages
 	   of the same version to compile LyX.
 
 	   In general, it is also recommended to have pkg-config
@@ -15,7 +15,7 @@ These four steps will compile, test and install LyX:
 
 	1) ./configure configures LyX according to your system. You
 	   may have to set --with-qt-dir=<path-to-your-qt-installation>
-	   (for example, "--with-qt-dir=/usr/share/qt4/") if the
+	   (for example, "--with-qt-dir=/usr/share/qt5/") if the
 	   environment variable QTDIR is not set and pkg-config is not
 	   available.
 
