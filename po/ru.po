@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-01-28 21:42-0500\n"
-"PO-Revision-Date: 2018-02-19 03:53+0200\n"
+"PO-Revision-Date: 2018-02-21 17:02+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -1776,13 +1776,13 @@ msgstr "Выбрать гарнитуру для формул"
 
 #: src/frontends/qt4/ui/FontUi.ui:253
 msgid "C&JK:"
-msgstr "C&JK:"
+msgstr "КК&Я:"
 
 #: src/frontends/qt4/ui/FontUi.ui:263
 msgid "Input the font to be used for Chinese, Japanese or Korean (CJK) script"
 msgstr ""
-"Введите шрифт, который будет использоваться для китайского, японского или "
-"корейского (CJK) языка"
+"Введите шрифт, который будет использоваться для китайского, корейского или "
+"японского (ККЯ) языка"
 
 #: src/frontends/qt4/ui/FontUi.ui:270
 msgid "Use a real small caps shape, if the font provides one"
@@ -2098,7 +2098,7 @@ msgstr "Поставьте этот флажок для ввода параме�
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:82
 #: src/frontends/qt4/ui/ListingsUi.ui:510
 msgid "&Bypass validation"
-msgstr "Обойти проверку"
+msgstr "Пропускать проверку"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:86
 msgid "C&aption:"
@@ -2784,14 +2784,13 @@ msgstr "Скобки матрицы"
 msgid "All packages:"
 msgstr "Все пакеты:"
 
-# ?
 #: src/frontends/qt4/ui/MathsUi.ui:27
 msgid "Load A&utomatically"
 msgstr "Автоматически"
 
 #: src/frontends/qt4/ui/MathsUi.ui:34
 msgid "Load Alwa&ys"
-msgstr "Загружать всегда"
+msgstr "Всегда загружать"
 
 #: src/frontends/qt4/ui/MathsUi.ui:41
 msgid "Do &Not Load"
@@ -16891,7 +16890,7 @@ msgstr "Амхарский"
 
 #: lib/languages:158
 msgid "Greek (ancient)"
-msgstr "Греческий (политонический)"
+msgstr "Греческий (древний)"
 
 #: lib/languages:175
 msgid "Arabic (ArabTeX)"
@@ -17092,7 +17091,7 @@ msgstr "Японский"
 
 #: lib/languages:730
 msgid "Japanese (CJK)"
-msgstr "Японский (CJK)"
+msgstr "Японский (ККЯ)"
 
 #: lib/languages:739 src/frontends/qt4/GuiSymbols.cpp:72
 msgid "Kannada"
@@ -17152,11 +17151,11 @@ msgstr "Английский (Новая Зеландия)"
 
 #: lib/languages:886
 msgid "Norwegian (Bokmaal)"
-msgstr "Норвежский (Bokmaal)"
+msgstr "Норвежский (Букмол)"
 
 #: lib/languages:896
 msgid "Norwegian (Nynorsk)"
-msgstr "Норвежский (Nynorsk)"
+msgstr "Норвежский (Нюнорск)"
 
 #: lib/languages:907
 msgid "Occitan"
@@ -17669,7 +17668,7 @@ msgstr "Китайский (традиционный) (Big5)"
 
 #: lib/encodings:187
 msgid "Japanese (CJK) (SJIS)"
-msgstr "Японский (CJK) (JIS)"
+msgstr "Японский (ККЯ) (SJIS)"
 
 #: lib/encodings:194
 msgid "Chinese (simplified) (EUC-CN)"
@@ -17681,7 +17680,7 @@ msgstr "Китайский (упрощённый) (GBK)"
 
 #: lib/encodings:202
 msgid "Japanese (CJK) (JIS)"
-msgstr "Японский (CJK) (JIS)"
+msgstr "Японский (ККЯ) (JIS)"
 
 #: lib/encodings:206
 msgid "Korean (EUC-KR)"
@@ -17689,7 +17688,7 @@ msgstr "Корейский (EUC-KR)"
 
 #: lib/encodings:210
 msgid "Unicode (CJK) (utf8)"
-msgstr "Юникод (CJK) (utf8)"
+msgstr "Юникод (ККЯ) (utf8)"
 
 #: lib/encodings:214
 msgid "Chinese (traditional) (EUC-TW)"
@@ -17697,23 +17696,23 @@ msgstr "Китайский (традиционный) (EUC-TW)"
 
 #: lib/encodings:218
 msgid "Japanese (CJK) (EUC-JP)"
-msgstr "Японский (CJK) (EUC-JP)"
+msgstr "Японский (ККЯ) (EUC-JP)"
 
 #: lib/encodings:225
 msgid "Japanese (pLaTeX) (EUC-JP)"
-msgstr "Японский (CJK) (EUC-JP)"
+msgstr "Японский (pLaTeX) (EUC-JP)"
 
 #: lib/encodings:227
 msgid "Japanese (pLaTeX) (JIS)"
-msgstr "Японский (CJK) (JIS)"
+msgstr "Японский (pLaTeX) (JIS)"
 
 #: lib/encodings:229
 msgid "Japanese (pLaTeX) (SJIS)"
-msgstr "Японский (CJK) (JIS)"
+msgstr "Японский (pLaTeX) (SJIS)"
 
 #: lib/encodings:231
 msgid "Japanese (pLaTeX) (UTF8)"
-msgstr "Японский (CJK) (EUC-JP)"
+msgstr "Японский (pLaTeX) (UTF8)"
 
 #: lib/encodings:238
 msgid "Thai (TIS 620-0)"
@@ -24914,15 +24913,15 @@ msgstr "LyX 2.2.x"
 
 #: lib/configure.py:755
 msgid "CJK LyX 1.4.x (big5)"
-msgstr "CJK LyX 1.4.x (big5)"
+msgstr "ККЯ LyX 1.4.x (big5)"
 
 #: lib/configure.py:756
 msgid "CJK LyX 1.4.x (euc-jp)"
-msgstr "CJK LyX 1.4.x (euc-jp)"
+msgstr "ККЯ LyX 1.4.x (euc-jp)"
 
 #: lib/configure.py:757
 msgid "CJK LyX 1.4.x (euc-kr)"
-msgstr "CJK LyX 1.4.x (euc-kr)"
+msgstr "ККЯ LyX 1.4.x (euc-kr)"
 
 #: lib/configure.py:758
 msgid "LyX Preview"
@@ -29574,10 +29573,9 @@ msgstr "Отображается в содержании"
 msgid "Package"
 msgstr "Пакет"
 
-# ?
 #: src/frontends/qt4/GuiDocument.cpp:1209
 msgid "Load automatically"
-msgstr "Загружать автоматически"
+msgstr "Автоматически"
 
 #: src/frontends/qt4/GuiDocument.cpp:1210
 msgid "Load always"
@@ -30769,35 +30767,35 @@ msgstr "Нет словарей для проверки правописания
 
 #: src/frontends/qt4/GuiSymbols.cpp:53
 msgid "Basic Latin"
-msgstr "Основной латинский"
+msgstr "Основная латиница"
 
 #: src/frontends/qt4/GuiSymbols.cpp:54
 msgid "Latin-1 Supplement"
-msgstr "Латинский-1 дополнительный"
+msgstr "Дополнительная латиница-1"
 
 #: src/frontends/qt4/GuiSymbols.cpp:55
 msgid "Latin Extended-A"
-msgstr "Латинский расширенный-A"
+msgstr "Расширенная латиница-A"
 
 #: src/frontends/qt4/GuiSymbols.cpp:56
 msgid "Latin Extended-B"
-msgstr "Латинский расширенный-B"
+msgstr "Расширенная латиница-B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:57
 msgid "IPA Extensions"
-msgstr "Расширения IPA"
+msgstr "Международный фонетический алфавит"
 
 #: src/frontends/qt4/GuiSymbols.cpp:58
 msgid "Spacing Modifier Letters"
-msgstr "Литеры модификации пробелов"
+msgstr "Некомбинируемые протяжённые символы-модификаторы"
 
 #: src/frontends/qt4/GuiSymbols.cpp:59
 msgid "Combining Diacritical Marks"
-msgstr "Комбинирующие диакритические знаки"
+msgstr "Комбинируемые диакритические знаки"
 
 #: src/frontends/qt4/GuiSymbols.cpp:61
 msgid "Cyrillic"
-msgstr "Кириллический"
+msgstr "Кириллица"
 
 #: src/frontends/qt4/GuiSymbols.cpp:64
 msgid "Arabic"
@@ -30829,7 +30827,7 @@ msgstr "Малаялам"
 
 #: src/frontends/qt4/GuiSymbols.cpp:78
 msgid "Hangul Jamo"
-msgstr "Хангыль Jamo"
+msgstr "Хангыль чамо"
 
 #: src/frontends/qt4/GuiSymbols.cpp:79
 msgid "Phonetic Extensions"
@@ -30837,35 +30835,35 @@ msgstr "Фонетические расширения"
 
 #: src/frontends/qt4/GuiSymbols.cpp:80
 msgid "Latin Extended Additional"
-msgstr "Латинский расширенный дополнительный"
+msgstr "Дополнительная расширенная латиница"
 
 #: src/frontends/qt4/GuiSymbols.cpp:81
 msgid "Greek Extended"
-msgstr "Греческий расширенный"
+msgstr "Расширенный набор символов греческого алфавита"
 
 #: src/frontends/qt4/GuiSymbols.cpp:82
 msgid "General Punctuation"
-msgstr "Общая пунктуация"
+msgstr "Знаки пунктуации"
 
 #: src/frontends/qt4/GuiSymbols.cpp:83
 msgid "Superscripts and Subscripts"
-msgstr "Верхние и нижние индексы"
+msgstr "Надстрочные и подстрочные знаки"
 
 #: src/frontends/qt4/GuiSymbols.cpp:84
 msgid "Currency Symbols"
-msgstr "Символы валюты"
+msgstr "Символы валют"
 
 #: src/frontends/qt4/GuiSymbols.cpp:85
 msgid "Combining Diacritical Marks for Symbols"
-msgstr "Комбинирующие диакритические знаки для символов"
+msgstr "Комбинируемые диакритические знаки для символов"
 
 #: src/frontends/qt4/GuiSymbols.cpp:86
 msgid "Letterlike Symbols"
-msgstr "Символы фонетики"
+msgstr "Буквоподобные символы"
 
 #: src/frontends/qt4/GuiSymbols.cpp:87
 msgid "Number Forms"
-msgstr "Формы чисел"
+msgstr "Числовые формы"
 
 #: src/frontends/qt4/GuiSymbols.cpp:89
 msgid "Mathematical Operators"
@@ -30873,27 +30871,27 @@ msgstr "Математические операторы"
 
 #: src/frontends/qt4/GuiSymbols.cpp:90
 msgid "Miscellaneous Technical"
-msgstr "Разные технические символы"
+msgstr "Разнообразные технические символы"
 
 #: src/frontends/qt4/GuiSymbols.cpp:91
 msgid "Control Pictures"
-msgstr "Управляющие изображения"
+msgstr "Значки управляющих кодов"
 
 #: src/frontends/qt4/GuiSymbols.cpp:92
 msgid "Optical Character Recognition"
-msgstr "Оптическое распознавание символов"
+msgstr "Символы оптического распознавания"
 
 #: src/frontends/qt4/GuiSymbols.cpp:93
 msgid "Enclosed Alphanumerics"
-msgstr "Числа в кружке"
+msgstr "Вложенные буквы и цифры"
 
 #: src/frontends/qt4/GuiSymbols.cpp:94
 msgid "Box Drawing"
-msgstr "Рисование блоков"
+msgstr "Символы для рисования рамок"
 
 #: src/frontends/qt4/GuiSymbols.cpp:95
 msgid "Block Elements"
-msgstr "Блочные элементы"
+msgstr "Символы заполнения"
 
 #: src/frontends/qt4/GuiSymbols.cpp:96
 msgid "Geometric Shapes"
@@ -30901,19 +30899,19 @@ msgstr "Геометрические фигуры"
 
 #: src/frontends/qt4/GuiSymbols.cpp:97
 msgid "Miscellaneous Symbols"
-msgstr "Различные символы"
+msgstr "Разнообразные символы"
 
 #: src/frontends/qt4/GuiSymbols.cpp:98
 msgid "Dingbats"
-msgstr "Dingbats"
+msgstr "Дингбаты"
 
 #: src/frontends/qt4/GuiSymbols.cpp:99
 msgid "Miscellaneous Mathematical Symbols-A"
-msgstr "Различные математические символы-A"
+msgstr "Разнообразные математические символы-A"
 
 #: src/frontends/qt4/GuiSymbols.cpp:100
 msgid "CJK Symbols and Punctuation"
-msgstr "CJK символы и пунктуация"
+msgstr "Символы и пунктуация ККЯ"
 
 #: src/frontends/qt4/GuiSymbols.cpp:101
 msgid "Hiragana"
@@ -30925,51 +30923,51 @@ msgstr "Катакана"
 
 #: src/frontends/qt4/GuiSymbols.cpp:103
 msgid "Bopomofo"
-msgstr "Чжуинь"
+msgstr "Чжуинь. Бопомофо"
 
 #: src/frontends/qt4/GuiSymbols.cpp:104
 msgid "Hangul Compatibility Jamo"
-msgstr "Хангыль-совместимый Jamo"
+msgstr "Комбинируемые чамо Хангыля"
 
 #: src/frontends/qt4/GuiSymbols.cpp:105
 msgid "Kanbun"
-msgstr "Камбун"
+msgstr "Канбун"
 
 #: src/frontends/qt4/GuiSymbols.cpp:106
 msgid "Enclosed CJK Letters and Months"
-msgstr "Иероглифы и названия месяцев в кружке"
+msgstr "Вложенные буквы и месяцы ККЯ"
 
 #: src/frontends/qt4/GuiSymbols.cpp:107
 msgid "CJK Compatibility"
-msgstr "CJK совместимость"
+msgstr "Знаки совместимости ККЯ"
 
 #: src/frontends/qt4/GuiSymbols.cpp:108
 msgid "CJK Unified Ideographs"
-msgstr "Унифицированные идеограммы CJK"
+msgstr "Унифицированные иероглифы ККЯ"
 
 #: src/frontends/qt4/GuiSymbols.cpp:109
 msgid "Hangul Syllables"
-msgstr "Звуки хангыля"
+msgstr "Слоги Хангыля"
 
 #: src/frontends/qt4/GuiSymbols.cpp:110
 msgid "High Surrogates"
-msgstr "Высшие суррогаты"
+msgstr "Верхняя часть суррогатных пар"
 
 #: src/frontends/qt4/GuiSymbols.cpp:111
 msgid "Private Use High Surrogates"
-msgstr "Высшие суррогаты для частного использования"
+msgstr "Верхняя часть суррогатных пар для частного использования"
 
 #: src/frontends/qt4/GuiSymbols.cpp:112
 msgid "Low Surrogates"
-msgstr "Низшие суррогаты"
+msgstr "Нижняя часть суррогатных пар"
 
 #: src/frontends/qt4/GuiSymbols.cpp:113
 msgid "Private Use Area"
-msgstr "Область частного использования"
+msgstr "Область для частного использования"
 
 #: src/frontends/qt4/GuiSymbols.cpp:114
 msgid "CJK Compatibility Ideographs"
-msgstr "Совместимые идеограммы CJK"
+msgstr "Унифицированные иероглифы ККЯ"
 
 #: src/frontends/qt4/GuiSymbols.cpp:115
 msgid "Alphabetic Presentation Forms"
@@ -30981,71 +30979,71 @@ msgstr "Арабские формы представления-A"
 
 #: src/frontends/qt4/GuiSymbols.cpp:117
 msgid "Combining Half Marks"
-msgstr "Совмещённые половинные метки"
+msgstr "Комбинируемые половинки символов"
 
 #: src/frontends/qt4/GuiSymbols.cpp:118
 msgid "CJK Compatibility Forms"
-msgstr "Формы CJK-совместимости"
+msgstr "Формы совместимости ККЯ"
 
 #: src/frontends/qt4/GuiSymbols.cpp:119
 msgid "Small Form Variants"
-msgstr "Варианты малых форм"
+msgstr "Варианты малого размера"
 
 #: src/frontends/qt4/GuiSymbols.cpp:120
 msgid "Arabic Presentation Forms-B"
-msgstr "Арабские формы представления-B"
+msgstr "Формы представления арабских букв-B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:121
 msgid "Halfwidth and Fullwidth Forms"
-msgstr "Полные и неполные формы"
+msgstr "Полуширинные и полноширинные формы"
 
 #: src/frontends/qt4/GuiSymbols.cpp:123
 msgid "Linear B Syllabary"
-msgstr "Линейные-B слоги"
+msgstr "Слоги линейного письма Б"
 
 #: src/frontends/qt4/GuiSymbols.cpp:124
 msgid "Linear B Ideograms"
-msgstr "Линейные-B иероглифы"
+msgstr "Идеограммы линейного письма Б"
 
 #: src/frontends/qt4/GuiSymbols.cpp:125
 msgid "Aegean Numbers"
-msgstr "Эгейские числа"
+msgstr "Эгейские цифры"
 
 #: src/frontends/qt4/GuiSymbols.cpp:126
 msgid "Ancient Greek Numbers"
-msgstr "Древнегреческие числа"
+msgstr "Древнегреческие единицы измерения"
 
 #: src/frontends/qt4/GuiSymbols.cpp:127
 msgid "Old Italic"
-msgstr "Древнеитальянский"
+msgstr "Этрусский (староитальянский) алфавит"
 
 #: src/frontends/qt4/GuiSymbols.cpp:128
 msgid "Gothic"
-msgstr "Готический"
+msgstr "Готский алфавит"
 
 #: src/frontends/qt4/GuiSymbols.cpp:129
 msgid "Ugaritic"
-msgstr "Ugaritic"
+msgstr "Угаритский алфавит"
 
 #: src/frontends/qt4/GuiSymbols.cpp:130
 msgid "Old Persian"
-msgstr "Древнеперсидский"
+msgstr "Древнеперсидский клинописный алфавит"
 
 #: src/frontends/qt4/GuiSymbols.cpp:131
 msgid "Deseret"
-msgstr "Deseret"
+msgstr "Дезеретский алфавит"
 
 #: src/frontends/qt4/GuiSymbols.cpp:132
 msgid "Shavian"
-msgstr "В стиле Бернарда Шоу"
+msgstr "Алфавит Бернарда Шоу"
 
 #: src/frontends/qt4/GuiSymbols.cpp:133
 msgid "Osmanya"
-msgstr "Османский"
+msgstr "Османья (сомалийский алфавит)"
 
 #: src/frontends/qt4/GuiSymbols.cpp:134
 msgid "Cypriot Syllabary"
-msgstr "Cypriot Syllabary"
+msgstr "Слоговая письменность острова Кипр"
 
 #: src/frontends/qt4/GuiSymbols.cpp:135
 msgid "Kharoshthi"
@@ -31061,11 +31059,11 @@ msgstr "Музыкальные символы"
 
 #: src/frontends/qt4/GuiSymbols.cpp:138
 msgid "Ancient Greek Musical Notation"
-msgstr "Древнегреческая музыкальная запись"
+msgstr "Древнегреческие музыкальные символы"
 
 #: src/frontends/qt4/GuiSymbols.cpp:139
 msgid "Tai Xuan Jing Symbols"
-msgstr "Символы Tai Xuan Jing"
+msgstr "Символы Тай Сюань Цзин"
 
 #: src/frontends/qt4/GuiSymbols.cpp:140
 msgid "Mathematical Alphanumeric Symbols"
@@ -31073,11 +31071,11 @@ msgstr "Математические буквенно-цифровые симв�
 
 #: src/frontends/qt4/GuiSymbols.cpp:141
 msgid "CJK Unified Ideographs Extension B"
-msgstr "Расширение B иероглифов CJK"
+msgstr "Унифицированные иероглифы ККЯ. Расширение B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:142
 msgid "CJK Compatibility Ideographs Supplement"
-msgstr "Дополнение совместимости иероглифов CJK"
+msgstr "Унифицированные иероглифы ККЯ (дополнение)"
 
 #: src/frontends/qt4/GuiSymbols.cpp:143
 msgid "Tags"
@@ -31085,15 +31083,15 @@ msgstr "Теги"
 
 #: src/frontends/qt4/GuiSymbols.cpp:144
 msgid "Variation Selectors Supplement"
-msgstr "Дополнение селекторов вариантов"
+msgstr "Селекторы вариантов начертания (дополнение)"
 
 #: src/frontends/qt4/GuiSymbols.cpp:145
 msgid "Supplementary Private Use Area-A"
-msgstr "Дополнительная зона частного использования-A"
+msgstr "Дополнительная зона для частного использования-A"
 
 #: src/frontends/qt4/GuiSymbols.cpp:146
 msgid "Supplementary Private Use Area-B"
-msgstr "Дополнительная зона частного использования-B"
+msgstr "Дополнительная зона для частного использования-B"
 
 #: src/frontends/qt4/GuiSymbols.cpp:245
 msgid "<p>LaTeX code: %1</p>"
