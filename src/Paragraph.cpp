@@ -3503,6 +3503,8 @@ void Paragraph::forOutliner(docstring & os, size_t const maxlen,
 	size_t tmplen = shorten ? maxlen + 1 : maxlen;
 	if (label && !labelString().empty())
 		os += labelString() + ' ';
+	if (!layout().isTocCaption())
+		return;
 	for (pos_type i = 0; i < size() && os.length() < tmplen; ++i) {
 		if (isDeleted(i))
 			continue;

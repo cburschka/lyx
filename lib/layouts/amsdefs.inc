@@ -226,4 +226,5 @@ Style Bibliography
 	  Shape               Smallcaps
 	EndFont
 	TocLevel             1
+	IsTocCaption         0
 End
