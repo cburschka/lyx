@@ -1123,7 +1123,7 @@ void MenuDefinition::expandFormats(MenuItem::Kind const kind, Buffer const * buf
 				add(MenuItem(MenuItem::Command, toqstr(lbl), FuncRequest(action)));
 				continue;
 			}
-		// fall through
+			break;
 		case MenuItem::ExportFormats:
 			if (!f->inExportMenu())
 				continue;

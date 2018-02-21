@@ -194,9 +194,13 @@ ToolbarInfo & ToolbarInfo::read(Lexer & lex)
 		case TO_IMPORTFORMATS:
 		case TO_UPDATEFORMATS:
 		case TO_VIEWFORMATS: {
-			FormatList formats = (code == TO_IMPORTFORMATS) ?
-				theConverters().importableFormats() :
-				theConverters().exportableFormats(true);
+			FormatList formats;
+			if (code == TO_IMPORTFORMATS)
+				formats = theConverters().importableFormats();
+			else if (code == TO_EXPORTFORMATS)
+				formats = theConverters().exportableFormats(false);
+			else
+				formats = theConverters().exportableFormats(true);
 			sort(formats.begin(), formats.end());
 			for (Format const * f : formats) {
 				if (f->dummy())
