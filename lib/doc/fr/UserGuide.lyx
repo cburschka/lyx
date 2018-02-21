@@ -30042,30 +30042,21 @@ reference "subsec:Environnement-biblio"
 ), sera utilisé.
  Si vous voulez avoir autre chose que les citations numériques que vous
  pouvez voir dans ce document, comme par exemple des citations auteur-année,
- 
-\lang english
-and if you have more than a handful of references
-\lang french
-, vous 
-\lang english
-should seriously consider
-\lang french
- utiliser une base de données bibliographique.
+ et si vous avez plus qu'une poignéee de références, vous deviriez sérieusement
+ envisager d'utiliserutiliser une base de données bibliographique.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In order to demonstrate the difference between these two approaches, we
- use two bibliographies in this document, a 
+Afin d'illustrer le différence entre les deux approches, nous utilisons
+ deux bibliographies dans le présent document, un environnement
 \family sans
-Bibliography
+ Bibliographie
 \family default
- environment and a database-generated bibliography.
- As you can see, the bibliography that is created from a database lists
- only the database entries that are referenced in the document.
- In other words, the database approach relieves you, amongst other things,
- from the burden to check which entries you have actually cited.
+ et une bibliographie créée à partir d'une base de données; Comme vous pouvez
+ le voir, cette dernière n'affiche, parmi l'ensemble des entrées de la base
+ de données, que les références citées dans le document.
+ En d'autres termes, l'approche par base de données vous délivre entre autres
+ choses de la corvée de la vérification des entrées effectivement citées.
 \end_layout
 
 \begin_layout Subsection
@@ -30220,14 +30211,11 @@ literal "true"
 
 \begin_layout Standard
 Vous pouvez également obtenir des citations auteur-année ou auteur-numéro,
- via le paquetage
-\lang english
- \SpecialChar LaTeX
+ via le paquetage \SpecialChar LaTeX
  
 \series bold
 natbib
 \series default
-\lang french
 
 \begin_inset Index idx
 status collapsed
@@ -30239,32 +30227,29 @@ Paquetages \SpecialChar LaTeX
 
 \end_inset
 
-
-\lang english
 .
  Pour ce faire, l'étiquette doit être sous le forme 
-\begin_inset Quotes eld
+\begin_inset Quotes cld
 \end_inset
 
-Author(Year)
-\begin_inset Quotes erd
+Auteur(Année)
+\begin_inset Quotes crd
 \end_inset
 
  or 
-\begin_inset Quotes eld
+\begin_inset Quotes cld
 \end_inset
 
-Author A and Author B(Year)
-\begin_inset Quotes erd
+Auteur A et Auteur B(Année)
+\begin_inset Quotes crd
 \end_inset
 
  
 \emph on
-without
+sans espace
 \emph default
- a blank between the author(s) and the opening parenthesis that delimits
- the year.
- Then, if you select 
+ entre le ou les auteurs et la parenthèse ouvrante délimitant l'année.
+ Ensuite, si vous sélectionnez 
 \family sans
 Natbib
 \begin_inset space ~
@@ -30272,9 +30257,7 @@ Natbib
 
 (BibTeX)
 \family default
- in the document settings
-\lang french
-
+ dans les paramètres du document
 \begin_inset Index idx
 status collapsed
 
@@ -30284,29 +30267,28 @@ Document ! Paramètres
 
 \end_inset
 
-
-\lang english
- under 
+ à la rubrique 
 \family sans
-Bibliography\SpecialChar menuseparator
+Bibliographie\SpecialChar menuseparator
 Style
 \begin_inset space ~
 \end_inset
 
-format
-\family default
- (see 
-\lang french
+de
+\begin_inset space ~
+\end_inset
 
+citation
+\family default
+ (voir 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Format-de-bibliographie"
 
 \end_inset
 
-
-\lang english
-), you can select between different author-year or author-number styles.
+), vous pouvez sélectionner parmi plusieurs styles auteur-année oui auteur-numér
+o.
 \end_layout
 
 \begin_layout Standard
@@ -30659,15 +30641,13 @@ literal "false"
 \end_inset
 
 .
+ Dans le présent document, nous utilisons le style Bib\SpecialChar TeX
  
-\lang english
-In this document we used the Bib\SpecialChar TeX
- style 
 \family sans
 alphadin.bst
 \family default
-, which provides an alpha-numeric style in accordance with the German Standards
- Institute (DIN).
+, qui fournit un style alphanumérique conforme à l'Institut Allemand de
+ Standardisation (DIN).
 \end_layout
 
 \begin_layout Standard
