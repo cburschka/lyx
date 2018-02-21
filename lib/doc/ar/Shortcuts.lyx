@@ -97,7 +97,7 @@ arg   "bind_file"
 
 \family default
 .
- تستطيع تعديل الاختصارات من قائمة الادوات
+ تستطيع تعديل الاختصارات من قائمة الأدوات
 \family sans
 \SpecialChar menuseparator
 تفضيلات\SpecialChar menuseparator
@@ -115,9 +115,7 @@ status open
 
 \end_inset
 
-
-\lang english
-Buffer
+أساسيات
 \end_layout
 
 \begin_layout Standard
@@ -648,7 +646,7 @@ arg   "cut"
 \begin_inset Text
 
 \begin_layout Plain Layout
-الة كاتبة
+آلة كاتبة
 \end_layout
 
 \end_inset
@@ -1199,7 +1197,7 @@ arg   "bookmark-goto 0"
 \end_layout
 
 \begin_layout Subsection*
-الرموز الاغريقية
+الرموز الإغريقية
 \end_layout
 
 \begin_layout Standard
@@ -3745,6 +3743,209 @@ arg   "math-delim | |"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section*
+إضافة اختصار
+\end_layout
+
+\begin_layout Standard
+يسمح ليك بإضافة أي عدد من الإختصارات بطريقة سهلة عن طريق الأدوات
+\family sans
+\SpecialChar menuseparator
+تفضيلات\SpecialChar menuseparator
+تحرير\SpecialChar menuseparator
+اختصارات\SpecialChar menuseparator
+جديد ، ثم نكتب الدالة ونختار الرمز.
+\end_layout
+
+\begin_layout Paragraph*
+مثال
+\numeric on
+1
+\end_layout
+
+\begin_layout Standard
+عند كتابة المعادلات والمسائل الرياضية نستخدم كثيرا إشارة الضرب 
+\begin_inset Formula $\times$
+\end_inset
+
+ ولإدراجها نذهب لشريط الرياضيات في الأسفل ثم 
+\begin_inset Quotes cld
+\end_inset
+
+رموز العلمليات الرياضية
+\begin_inset Quotes crd
+\end_inset
+
+ ونختارها، لكن باستخدام الاختصارات نختصر كل هذه الخطوات في خطوة واحدة.
+\end_layout
+
+\begin_layout Standard
+نذهب إلى الأدوات
+\family sans
+\SpecialChar menuseparator
+تفضيلات\SpecialChar menuseparator
+تحرير\SpecialChar menuseparator
+اختصارات\SpecialChar menuseparator
+جديد ، ونكتب في حقل الدالة
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align left
+
+\family sans
+\lang english
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+math-insert 
+\backslash
+times
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ثم ننقر على زر الاختصار الفارغ، ثم نضغط الزرين 
+\begin_inset Formula $Alt+8$
+\end_inset
+
+ ثم زر موافق، الآن إذا اردنا ادراج إشارة الضرب في أي معادلة نضغط الزرين
+ 
+\begin_inset Formula $Alt+8$
+\end_inset
+
+ ونختصر الكثير من الوقت.
+\end_layout
+
+\begin_layout Paragraph*
+مثال
+\numeric on
+2
+\end_layout
+
+\begin_layout Standard
+عند كتابة المسائل الرياضية والفيزيائية نستخدم كثيرا الأس للأساس عشرة 
+\begin_inset Formula $\times10^{}$
+\end_inset
+
+ ويمكن عمل اختصار لها بحيث ندرجها بنقرة زر.
+\end_layout
+
+\begin_layout Standard
+نذهب إلى الأدوات
+\family sans
+\SpecialChar menuseparator
+تفضيلات\SpecialChar menuseparator
+تحرير\SpecialChar menuseparator
+اختصارات\SpecialChar menuseparator
+جديد ، ونكتب في حقل الدالة
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\lang english
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+math-insert 
+\backslash
+times 10^
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ثم ننقر على زر الاختصار الفارغ، ثم نضغط الزرين 
+\begin_inset Formula $Alt+6$
+\end_inset
+
+ ثم زر موافق، الآن إذا اردنا ادراج إشارة الضرب في أي معادلة نضغط الزرين
+ 
+\begin_inset Formula $Alt+6$
+\end_inset
+
+ ونختصر الكثير من الوقت.
+\end_layout
+
+\begin_layout Paragraph*
+مثال
+\numeric on
+3
+\end_layout
+
+\begin_layout Standard
+عند كتابة المعادلات والمسائل الرياضية والفيزيائية نحتاج لكتابة اسم المعادلة
+ أو رمز لها أو كلمة مثل 
+\begin_inset Quotes cld
+\end_inset
+
+نعوض في
+\begin_inset Quotes crd
+\end_inset
+
+ على يمين أو يسار المعادلة.
+\end_layout
+
+\begin_layout Standard
+نذهب إلى الأدوات
+\family sans
+\SpecialChar menuseparator
+تفضيلات\SpecialChar menuseparator
+تحرير\SpecialChar menuseparator
+اختصارات\SpecialChar menuseparator
+جديد ، ونكتب في حقل الدالة
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\lang english
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+\lang english
+math-insert 
+\backslash
+tag*
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+ثم ننقر على زر الاختصار الفارغ، ثم نضغط الزرين 
+\begin_inset Formula $Alt+t$
+\end_inset
+
+ ثم زر موافق، الآن إذا اردنا ادراج إشارة الضرب في أي معادلة نضغط الزرين
+ 
+\begin_inset Formula $Alt+t$
+\end_inset
+
+ ونختصر الكثير من الوقت.
 \end_layout
 
 \end_body
