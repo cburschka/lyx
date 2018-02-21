@@ -120,7 +120,7 @@ enum LayoutTags {
 /////////////////////
 
 Layout::Layout()
-	: add_to_toc_(false), is_toc_caption_(false)
+	: add_to_toc_(false), is_toc_caption_(true)
 {
 	unknown_ = false;
 	margintype = MARGIN_STATIC;

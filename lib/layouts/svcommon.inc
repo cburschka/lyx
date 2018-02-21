@@ -594,6 +594,7 @@ Style Bibliography
 	  Series	Bold
 	EndFont
 	TocLevel        0
+	IsTocCaption    0
 End
 
 Style Description

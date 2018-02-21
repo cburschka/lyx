@@ -82,4 +82,5 @@ Style Bibliography
 		span.bibitemlabel:after { content: "] "; }
 	EndHTMLStyle
 	TocLevel              1
+	ISTocCaption          0
 End

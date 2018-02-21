@@ -177,6 +177,7 @@ Style Bibliography
 	  Size                Huge
 	EndFont
 	TocLevel              1
+	IsTocCaption          0
 End
 
 
