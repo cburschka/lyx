@@ -165,7 +165,7 @@ void GuiProgressView::levelChanged()
 
 void GuiProgressView::debugSelectionChanged()
 {
-	unsigned int level = Debug::NONE;
+	Debug::Type level = Debug::NONE;
 	if (widget_->debugAnyRB->isChecked())
 		level = Debug::ANY;
 	else if (widget_->debugSelectedRB->isChecked()) {
@@ -180,7 +180,7 @@ void GuiProgressView::debugSelectionChanged()
 		++it;
 	}
 	widget_->debugMessagesTW->setEnabled(false);
-	dispatch(FuncRequest(LFUN_DEBUG_LEVEL_SET, convert<string>(level)));
+	dispatch(FuncRequest(LFUN_DEBUG_LEVEL_SET, convert<string>((int)level)));
 }
 
 
