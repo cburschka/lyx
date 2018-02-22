@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR 2.2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-01-29 00:03-0500\n"
+"POT-Creation-Date: 2018-02-22 14:50-0500\n"
 "PO-Revision-Date: 2017-04-13 10:17-0300\n"
 "Last-Translator: Georger Araujo <georger underline br pound yahoo dot com "
 "dot br>\n"
@@ -26699,7 +26699,7 @@ msgstr "Modo de edição de matemática"
 msgid "No valid math formula"
 msgstr "Nenhuma fórmula matemática válida"
 
-#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1065
+#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1069
 msgid "Already in regular expression mode"
 msgstr "Já está no modo de expressão regular"
 
@@ -31666,24 +31666,24 @@ msgstr "Não é possível alterar número de linhas em '%1$s'"
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Não é possível alterar número de colunas em '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:735 src/mathed/InsetMathNest.cpp:1766
-#: src/mathed/InsetMathNest.cpp:1909
+#: src/mathed/InsetMathNest.cpp:735 src/mathed/InsetMathNest.cpp:1770
+#: src/mathed/InsetMathNest.cpp:1913
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Autocorreção Desligada ('!' para entrar)"
 
-#: src/mathed/InsetMathNest.cpp:1051
+#: src/mathed/InsetMathNest.cpp:1055
 msgid "create new math text environment ($...$)"
 msgstr "criar novo environment matemático ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1054
+#: src/mathed/InsetMathNest.cpp:1058
 msgid "entered math text mode (textrm)"
 msgstr "entrou no modo de texto matemático (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1076
+#: src/mathed/InsetMathNest.cpp:1080
 msgid "Regular expression editor mode"
 msgstr "Modo editor de expressão regular"
 
-#: src/mathed/InsetMathNest.cpp:1771 src/mathed/InsetMathNest.cpp:1911
+#: src/mathed/InsetMathNest.cpp:1775 src/mathed/InsetMathNest.cpp:1915
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Autocorreção Ligada (<espaço> para sair)"
 

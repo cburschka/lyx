@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-01-29 00:03-0500\n"
+"POT-Creation-Date: 2018-02-22 14:50-0500\n"
 "PO-Revision-Date: 2013-03-26 01:09-0800\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -26932,7 +26932,7 @@ msgstr "Mód matematického editoru"
 msgid "No valid math formula"
 msgstr "Žádný platný matematický vzorec"
 
-#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1065
+#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1069
 msgid "Already in regular expression mode"
 msgstr "Již jste v módu regulárních výrazů"
 
@@ -31897,24 +31897,24 @@ msgstr "Nelze změnit počet řádků v '%1$s'"
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Nelze změnit počet sloupců v '%1$s'"
 
-#: src/mathed/InsetMathNest.cpp:735 src/mathed/InsetMathNest.cpp:1766
-#: src/mathed/InsetMathNest.cpp:1909
+#: src/mathed/InsetMathNest.cpp:735 src/mathed/InsetMathNest.cpp:1770
+#: src/mathed/InsetMathNest.cpp:1913
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "Autoopravy vypnuty ('!' pro zapnutí)"
 
-#: src/mathed/InsetMathNest.cpp:1051
+#: src/mathed/InsetMathNest.cpp:1055
 msgid "create new math text environment ($...$)"
 msgstr "vytvořit textové prostředí uvnitř matematického ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1054
+#: src/mathed/InsetMathNest.cpp:1058
 msgid "entered math text mode (textrm)"
 msgstr "vstup do text. prostředí uvnitř matem. (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1076
+#: src/mathed/InsetMathNest.cpp:1080
 msgid "Regular expression editor mode"
 msgstr "Editace v módu regulárních výrazů"
 
-#: src/mathed/InsetMathNest.cpp:1771 src/mathed/InsetMathNest.cpp:1911
+#: src/mathed/InsetMathNest.cpp:1775 src/mathed/InsetMathNest.cpp:1915
 msgid "Autocorrect On (<space> to exit)"
 msgstr "Autoopravy zapnuty (<mezerník> k ukončení)"
 

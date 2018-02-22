@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0svn\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-01-29 00:03-0500\n"
+"POT-Creation-Date: 2018-02-22 14:50-0500\n"
 "PO-Revision-Date: 2011-04-26 21:20+0100\n"
 "Last-Translator: Szőke Sándor <alex@lyx.hu>\n"
 "Language-Team: LyX-hu <alex@lyx.hu>\n"
@@ -27699,7 +27699,7 @@ msgstr "Képletszerkesztő mód"
 msgid "No valid math formula"
 msgstr "Nincs érvényes képlet formula"
 
-#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1065
+#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1069
 #, fuzzy
 msgid "Already in regular expression mode"
 msgstr "Reguláris kifejez&és"
@@ -32779,25 +32779,25 @@ msgstr "A sorok száma itt: '%1$s' nem változtatható"
 msgid "Can't change number of columns in '%1$s'"
 msgstr "Az oszlopok száma itt: '%1$s' nem változtatható"
 
-#: src/mathed/InsetMathNest.cpp:735 src/mathed/InsetMathNest.cpp:1766
-#: src/mathed/InsetMathNest.cpp:1909
+#: src/mathed/InsetMathNest.cpp:735 src/mathed/InsetMathNest.cpp:1770
+#: src/mathed/InsetMathNest.cpp:1913
 msgid "Autocorrect Off ('!' to enter)"
 msgstr ""
 
-#: src/mathed/InsetMathNest.cpp:1051
+#: src/mathed/InsetMathNest.cpp:1055
 msgid "create new math text environment ($...$)"
 msgstr "Új képlet környezet létrehozása ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1054
+#: src/mathed/InsetMathNest.cpp:1058
 msgid "entered math text mode (textrm)"
 msgstr "képlet módba lépés (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1076
+#: src/mathed/InsetMathNest.cpp:1080
 #, fuzzy
 msgid "Regular expression editor mode"
 msgstr "Reguláris kifejez&és"
 
-#: src/mathed/InsetMathNest.cpp:1771 src/mathed/InsetMathNest.cpp:1911
+#: src/mathed/InsetMathNest.cpp:1775 src/mathed/InsetMathNest.cpp:1915
 msgid "Autocorrect On (<space> to exit)"
 msgstr ""
 

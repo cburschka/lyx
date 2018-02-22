@@ -107,7 +107,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 2.1.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-01-29 00:03-0500\n"
+"POT-Creation-Date: 2018-02-22 14:50-0500\n"
 "PO-Revision-Date: 2014-04-11 19:41+0800\n"
 "Last-Translator: Mingyi Wu <mingi.wu@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -26848,7 +26848,7 @@ msgstr "數學編輯器模式"
 msgid "No valid math formula"
 msgstr "沒有有效的數學公式"
 
-#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1065
+#: src/Text3.cpp:203 src/mathed/InsetMathNest.cpp:1069
 msgid "Already in regular expression mode"
 msgstr "已經在正規表示式模式了"
 
@@ -31779,24 +31779,24 @@ msgstr "無法在「%1$s」中變更列數"
 msgid "Can't change number of columns in '%1$s'"
 msgstr "無法在「%1$s」中變更欄數"
 
-#: src/mathed/InsetMathNest.cpp:735 src/mathed/InsetMathNest.cpp:1766
-#: src/mathed/InsetMathNest.cpp:1909
+#: src/mathed/InsetMathNest.cpp:735 src/mathed/InsetMathNest.cpp:1770
+#: src/mathed/InsetMathNest.cpp:1913
 msgid "Autocorrect Off ('!' to enter)"
 msgstr "自動修正 關閉 ('!' 開啟)"
 
-#: src/mathed/InsetMathNest.cpp:1051
+#: src/mathed/InsetMathNest.cpp:1055
 msgid "create new math text environment ($...$)"
 msgstr "建立新的數學文字環境 ($...$)"
 
-#: src/mathed/InsetMathNest.cpp:1054
+#: src/mathed/InsetMathNest.cpp:1058
 msgid "entered math text mode (textrm)"
 msgstr "已進入數學文字模式 (textrm)"
 
-#: src/mathed/InsetMathNest.cpp:1076
+#: src/mathed/InsetMathNest.cpp:1080
 msgid "Regular expression editor mode"
 msgstr "正規表示式編輯器模式"
 
-#: src/mathed/InsetMathNest.cpp:1771 src/mathed/InsetMathNest.cpp:1911
+#: src/mathed/InsetMathNest.cpp:1775 src/mathed/InsetMathNest.cpp:1915
 msgid "Autocorrect On (<space> to exit)"
 msgstr "自動修正 開啟 (<space> 離開)"
 
