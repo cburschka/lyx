@@ -78,9 +78,6 @@ private:
 	///
 	docstring screenLabel() const;
 	//@}
-
-	///
-	static ParamInfo param_info_;
 };
 
 
