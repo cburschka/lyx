@@ -88,10 +88,10 @@ public:
 	};
 
 	/// adds a new parameter
-	/// If ignore is true, then the parameter is never saved, and is always
+	/// If ignoreval is true, then the parameter is never saved, and is always
 	/// given the default value.
 	void add(std::string const & name, ParamType type,
-	         ParamHandling = HANDLING_NONE, bool ignore = false,
+	         ParamHandling = HANDLING_NONE, bool ignoreval = false,
 	         docstring default_value = docstring());
 	///
 	bool empty() const { return info_.empty(); }

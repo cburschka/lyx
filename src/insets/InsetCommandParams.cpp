@@ -132,10 +132,10 @@ bool ParamInfo::hasParam(std::string const & name) const
 
 
 void ParamInfo::add(std::string const & name, ParamType type,
-                    ParamHandling handling, bool ignore,
+                    ParamHandling handling, bool ignoreval,
                     docstring default_value)
 {
-	info_.push_back(ParamData(name, type, handling, ignore, default_value));
+	info_.push_back(ParamData(name, type, handling, ignoreval, default_value));
 }
 
 
