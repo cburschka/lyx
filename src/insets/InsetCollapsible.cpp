@@ -276,7 +276,7 @@ void InsetCollapsible::draw(PainterInfo & pi, int x, int y) const
 		}
 		// Do not draw the cue for INSERTED -- it is already in the button and
 		// that's enough.
-		Changer dummy = (pi.change_.type == Change::INSERTED)
+		Changer cdummy = (pi.change_.type == Change::INSERTED)
 			? make_change(pi.change_, Change())
 			: Changer();
 		InsetText::draw(pi, textx, texty);
@@ -293,9 +293,10 @@ void InsetCollapsible::draw(PainterInfo & pi, int x, int y) const
 	case Corners:
 		textx = x;
 		texty = baseline;
-		{	// We will take care of the frame and the change tracking cue
-			// ourselves, below.
-			Changer dummy = make_change(pi.change_, Change());
+		// We will take care of the frame and the change tracking cue
+		// ourselves, below.
+		{
+			Changer cdummy = make_change(pi.change_, Change());
 			const_cast<InsetCollapsible *>(this)->setDrawFrame(false);
 			InsetText::draw(pi, textx, texty);
 			const_cast<InsetCollapsible *>(this)->setDrawFrame(true);
