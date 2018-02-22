@@ -1951,8 +1951,10 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_BEGIN
  * \li Action: Move the cursor to the beginning of the current inset
-               if it is not already there, or at the beginning of the
-               enclosing inset otherwise
+               if it is not already there. If the cursor is already at
+               the beginning of the current inset, move it to the
+               beginning of the enclosing inset or the main work area,
+               respectively, if there is no enclosing inset.
  * \li Syntax: inset-begin
  * \li Origin: lasgouttes, 16 Mar 2009
  * \endvar
@@ -1962,8 +1964,10 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_BEGIN_SELECT
  * \li Action: Move the cursor to the beginning of the current inset
-               if it is not already there, or at the beginning of the
-               enclosing inset otherwise (adding the
+               if it is not already there. If the cursor is already at
+               the beginning of the current inset, move it to the
+               beginning of the enclosing inset or the main work area,
+               respectively, if there is no enclosing inset (adding the
                traversed text to the selection).
  * \li Syntax: inset-begin-select
  * \li Origin: lasgouttes, 16 Mar 2009
@@ -2022,9 +2026,11 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_END
- * \li Action: Move the cursor to the end of the current inset
-               if it is not already there, or at the end of the
-               enclosing inset otherwise
+ * \li Action: Move the cursor to the end of the current inset if it
+               is not already there. If the cursor is already at the
+               end of the current inset, move it to the end of the
+               enclosing inset or the main work area, respectively, if
+               there is no enclosing inset.
  * \li Syntax: inset-end
  * \li Origin: lasgouttes, 16 Mar 2009
  * \endvar
@@ -2033,9 +2039,11 @@ void LyXAction::init()
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_END_SELECT
- * \li Action: Move the cursor to the end of the current inset
-               if it is not already there, or at the end of the
-               enclosing inset otherwise (adding the
+ * \li Action: Move the cursor to the end of the current inset if it
+               is not already there. If the cursor is already at the
+               end of the current inset, move it to the end of the
+               enclosing inset or the main work area, respectively, if
+               there is no enclosing inset (adding the
                traversed text to the selection).
  * \li Syntax: inset-end-select
  * \li Origin: lasgouttes, 16 Mar 2009
