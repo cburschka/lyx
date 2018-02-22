@@ -491,8 +491,8 @@ void GuiRef::redoRefs()
 			QString const cat = refsCategories.at(i);
 			QTreeWidgetItem * item = new QTreeWidgetItem(refsTW);
 			item->setText(0, cat);
-			for (int i = 0; i < refsStrings.size(); ++i) {
-				QString const ref = refsStrings.at(i);
+			for (int j = 0; j < refsStrings.size(); ++j) {
+				QString const ref = refsStrings.at(j);
 				if ((ref.startsWith(cat + QString(":")))
 				    || (cat == qt_("<No prefix>")
 				       && (!ref.mid(1).contains(":") || ref.left(1).contains(":")))) {
@@ -609,9 +609,9 @@ void GuiRef::resetFilter()
 }
 
 
-bool GuiRef::initialiseParams(std::string const & data)
+bool GuiRef::initialiseParams(std::string const & sdata)
 {
-	InsetCommand::string2params(data, params_);
+	InsetCommand::string2params(sdata, params_);
 	return true;
 }
 
