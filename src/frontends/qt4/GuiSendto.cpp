@@ -143,14 +143,14 @@ void GuiSendTo::dispatchParams()
 	if (!format_ || format_->name().empty())
 		return;
 
-	string data = format_->name();
+	string sdata = format_->name();
 	if (!command_.isEmpty())
-		data += " " + fromqstr(command_);
+		sdata += " " + fromqstr(command_);
 
 	FuncCode const lfun = command_.isEmpty() ?
 		LFUN_BUFFER_EXPORT : getLfun();
 
-	dispatch(FuncRequest(lfun, data));
+	dispatch(FuncRequest(lfun, sdata));
 }
 
 Dialog * createGuiSendTo(GuiView & lv) { return new GuiSendTo(lv); }
