@@ -42,9 +42,6 @@ using namespace lyx::support;
 
 namespace lyx {
 
-ParamInfo InsetCitation::param_info_;
-
-
 InsetCitation::InsetCitation(Buffer * buf, InsetCommandParams const & p)
 	: InsetCommand(buf, p)
 {
@@ -64,6 +61,8 @@ InsetCitation::~InsetCitation()
 
 ParamInfo const & InsetCitation::findInfo(string const & /* cmdName */)
 {
+	static ParamInfo param_info_;
+
 	// standard cite does only take one argument, but biblatex, jurabib
 	// and natbib extend this to two arguments, so
 	// we have to allow both here. InsetCitation takes care that
@@ -580,10 +579,11 @@ void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 	if (qualified)
 		os << "s";
 
+	ParamInfo const & pinfo = findInfo(string());
 	docstring before = params().prepareCommand(runparams, getParam("before"),
-						   param_info_["before"].handling());
+						   pinfo["before"].handling());
 	docstring after = params().prepareCommand(runparams, getParam("after"),
-						   param_info_["after"].handling());
+						   pinfo["after"].handling());
 	if (!before.empty() && cs.textBefore) {
 		if (qualified)
 			os << '(' << protectArgument(before, '(', ')')
@@ -607,9 +607,9 @@ void InsetCitation::latex(otexstream & os, OutputParams const & runparams) const
 			map<docstring, docstring> posts = getQualifiedLists(getParam("posttextlist"));
 			for (docstring const & k: keys) {
 				docstring bef = params().prepareCommand(runparams, pres[k],
-									param_info_["pretextlist"].handling());
-				docstring aft  = params().prepareCommand(runparams, posts[k],
-									 param_info_["posttextlist"].handling());
+				                   pinfo["pretextlist"].handling());
+				docstring aft = params().prepareCommand(runparams, posts[k],
+				                   pinfo["posttextlist"].handling());
 				if (!bef.empty())
 					os << '[' << protectArgument(bef)
 					   << "][" << protectArgument(aft) << ']';
