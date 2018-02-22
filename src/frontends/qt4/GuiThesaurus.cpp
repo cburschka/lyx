@@ -237,15 +237,15 @@ void GuiThesaurus::replaceClicked()
 }
 
 
-bool GuiThesaurus::initialiseParams(string const & data)
+bool GuiThesaurus::initialiseParams(string const & sdata)
 {
 	string arg;
-	string const lang = rsplit(data, arg, ' ');
+	string const lang = rsplit(sdata, arg, ' ');
 	if (prefixIs(lang, "lang=")) {
 		lang_ = from_utf8(split(lang, '='));
 		text_ = from_utf8(arg);
 	} else {
-		text_ = from_utf8(data);
+		text_ = from_utf8(sdata);
 		if (bufferview())
 			lang_ = from_ascii(
 				bufferview()->buffer().params().language->lang());
@@ -267,13 +267,13 @@ void GuiThesaurus::replace(docstring const & newstr)
 	 * on a particular charpos in a paragraph that is broken on
 	 * deletion/change !
 	 */
-	docstring const data =
+	docstring const sdata =
 		replace2string(newstr, text_,
 				     true,  // case sensitive
 				     true,  // match word
 				     false, // all words
 				     true); // forward
-	dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
+	dispatch(FuncRequest(LFUN_WORD_REPLACE, sdata));
 }
 
 
