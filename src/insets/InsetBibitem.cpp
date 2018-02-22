@@ -249,6 +249,7 @@ docstring bibitemWidest(Buffer const & buffer, OutputParams const & runparams)
 	ParagraphList::const_iterator it = buffer.paragraphs().begin();
 	ParagraphList::const_iterator end = buffer.paragraphs().end();
 
+	bool is_literal = false;
 	for (; it != end; ++it) {
 		if (it->insetList().empty())
 			continue;
@@ -274,11 +275,14 @@ docstring bibitemWidest(Buffer const & buffer, OutputParams const & runparams)
 		if (wx > w) {
 			w = wx;
 			lbl = label;
+			is_literal = (bitem->getParam("literal") == "true");
 		}
 	}
 
 	if (!lbl.empty()) {
 		InsetCommandParams p(BIBITEM_CODE);
+		if (is_literal)
+			p["literal"] = from_ascii("true");
 		return p.prepareCommand(runparams, lbl, ParamInfo::HANDLING_LATEXIFY);
 	}
 
