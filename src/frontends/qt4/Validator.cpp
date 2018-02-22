@@ -231,10 +231,10 @@ QValidator::State PathValidator::validate(QString & qtext, int &) const
 }
 
 
-void PathValidator::setChecker(KernelDocType const & type, LyXRC const & lyxrc)
+void PathValidator::setChecker(KernelDocType const & type, LyXRC const & rc)
 {
 	latex_doc_ = type == LATEX;
-	tex_allows_spaces_ = lyxrc.tex_allows_spaces;
+	tex_allows_spaces_ = rc.tex_allows_spaces;
 }
 
 
