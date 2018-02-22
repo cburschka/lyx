@@ -180,10 +180,12 @@ typical places in .po files, where to fix the translation, can be seen on the
 following commit: https://www.lyx.org/trac/changeset/38169.
 
 If you need to manually regenerate the layouttranslations file from .po files
-- Under Linux: execute the command
+- Under Linux: If using autotools, execute the command
  `make ../lib/layouttranslations'
- in the po directory. The Python polib library is needed for building the output
- file.
+ in the po directory. If using CMake, execute the command
+ `make layouttranslations1'
+ in the build directory.
+ The Python polib library is needed for building the output file.
 - Under Windows:
  1. install the Python extensions "polib". To do this,
  1.1 open a commen line prompt in the folder where you find the file "pip.exe"
