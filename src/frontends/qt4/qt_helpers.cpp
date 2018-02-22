@@ -327,12 +327,12 @@ QStringList texFileList(QString const & filename)
 	// Normalise paths like /foo//bar ==> /foo/bar
 	QSet<QString> set;
 	for (size_t i = 0; i != doclist.size(); ++i) {
-		QString file = toqstr(doclist[i]);
-		file.replace("\r", "");
-		while (file.contains("//"))
-			file.replace("//", "/");
-		if (!file.isEmpty())
-			set.insert(file);
+		QString qfile = toqstr(doclist[i]);
+		qfile.replace("\r", "");
+		while (qfile.contains("//"))
+			qfile.replace("//", "/");
+		if (!qfile.isEmpty())
+			set.insert(qfile);
 	}
 
 	// remove duplicates
