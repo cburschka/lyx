@@ -27,6 +27,7 @@
 #include "TextClass.h"
 #include "FuncRequest.h"
 
+#include "insets/InsetCitation.h"
 #include "insets/InsetCommand.h"
 
 #include "support/debug.h"
@@ -92,7 +93,7 @@ static vector<lyx::docstring> to_docstring_vector(QStringList const & qlist)
 
 GuiCitation::GuiCitation(GuiView & lv)
 	: DialogView(lv, "citation", qt_("Citation")),
-	  style_(QString()), literal_(false), params_(insetCode("citation"))
+	  style_(QString()), params_(insetCode("citation"))
 {
 	setupUi(this);
 
@@ -237,7 +238,7 @@ void GuiCitation::on_restorePB_clicked()
 
 void GuiCitation::on_literalCB_clicked()
 {
-	literal_ = literalCB->isChecked();
+	InsetCitation::last_literal = literalCB->isChecked();
 	changed();
 }
 
@@ -768,7 +769,7 @@ void GuiCitation::init()
 	// if this is a new citation, we set the literal checkbox
 	// to its last set value.
 	if (cited_keys_.isEmpty())
-		literalCB->setChecked(literal_);
+		literalCB->setChecked(InsetCitation::last_literal);
 	else
 		literalCB->setChecked(params_["literal"] == "true");
 
@@ -1061,7 +1062,7 @@ void GuiCitation::saveSession(QSettings & settings) const
 	settings.setValue(
 		sessionKey() + "/citestyle", style_);
 	settings.setValue(
-		sessionKey() + "/literal", literal_);
+		sessionKey() + "/literal", InsetCitation::last_literal);
 }
 
 
@@ -1073,7 +1074,8 @@ void GuiCitation::restoreSession()
 	casesense_->setChecked(settings.value(sessionKey() + "/casesensitive").toBool());
 	instant_->setChecked(settings.value(sessionKey() + "/autofind", true).toBool());
 	style_ = settings.value(sessionKey() + "/citestyle").toString();
-	literal_ = settings.value(sessionKey() + "/literal", false).toBool();
+	InsetCitation::last_literal = 
+		settings.value(sessionKey() + "/literal", false).toBool();
 	updateFilterHint();
 }
 

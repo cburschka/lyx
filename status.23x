@@ -33,6 +33,9 @@ What's new
 - Handle properly top/bottom of inset with mac-like cursor movement
   (bug 10701).
 
+- Respect the last setting of the 'literal' checkbox when adding citations
+  via the LyX server (e.g., from JabRef).
+
 - Allow unification of graphic groups inside marked block via context
   menu.
 

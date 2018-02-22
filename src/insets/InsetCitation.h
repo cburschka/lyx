@@ -88,6 +88,8 @@ public:
 				       std::vector<CitationStyle> const & valid_styles) const;
 	///
 	std::map<docstring, docstring> getQualifiedLists(docstring const p) const;
+	///
+	static bool last_literal;
 
 private:
 	/// tries to make a pretty label and makes a basic one if not
