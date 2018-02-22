@@ -897,13 +897,13 @@ void MenuDefinition::expandLanguageSelector(Buffer const * buf)
 	if (languages_buffer.size() < 2)
 		return;
 
-	std::set<Language const *, sortLanguageByName> languages;
+	std::set<Language const *, sortLanguageByName> langs;
 
 	std::set<Language const *>::const_iterator const beg =
 		languages_buffer.begin();
 	for (std::set<Language const *>::const_iterator cit = beg;
 	     cit != languages_buffer.end(); ++cit) {
-		languages.insert(*cit);
+		langs.insert(*cit);
 	}
 
 	MenuItem item(MenuItem::Submenu, qt_("Language|L"));
@@ -912,9 +912,9 @@ void MenuDefinition::expandLanguageSelector(Buffer const * buf)
 	QStringList accelerators;
 	if (morelangs.contains('|'))
 		accelerators.append(morelangs.section('|', -1));
-	std::set<Language const *, sortLanguageByName>::const_iterator const begin = languages.begin();
+	std::set<Language const *, sortLanguageByName>::const_iterator const begin = langs.begin();
 	for (std::set<Language const *, sortLanguageByName>::const_iterator cit = begin;
-	     cit != languages.end(); ++cit) {
+			 cit != langs.end(); ++cit) {
 		QString label = qt_((*cit)->display());
 		// try to add an accelerator
 		bool success = false;
@@ -1608,12 +1608,12 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 
 	for (int ii = 1; cit != end; ++cit, ++ii) {
 		docstring label = cit->second;
-		CitationStyle cs = citeStyleList[ii - 1];
-		cs.forceUpperCase &= force;
-		cs.hasStarredVersion &= star;
+		CitationStyle ccs = citeStyleList[ii - 1];
+		ccs.forceUpperCase &= force;
+		ccs.hasStarredVersion &= star;
 		addWithStatusCheck(MenuItem(MenuItem::Command, toqstr(label),
 				    FuncRequest(LFUN_INSET_MODIFY,
-						"changetype " + from_utf8(citationStyleToString(cs)))));
+						"changetype " + from_utf8(citationStyleToString(ccs)))));
 	}
 
 	if (cs.hasStarredVersion) {
@@ -1629,10 +1629,10 @@ void MenuDefinition::expandCiteStyles(BufferView const * bv)
 			if (amps > 0) {
 				if (amps > 1)
 					starred = subst(starred, from_ascii("&&"), from_ascii("<:amp:>"));
-				size_t n = starred.find('&');
+				size_t nn = starred.find('&');
 				char_type accel = char_type();
-				if (n != docstring::npos && n < starred.size() - 1)
-					accel = starred[n + 1];
+				if (nn != docstring::npos && nn < starred.size() - 1)
+					accel = starred[nn + 1];
 				starred = subst(starred, from_ascii("&"), from_ascii(""));
 				if (amps > 1)
 					starred = subst(starred, from_ascii("<:amp:>"), from_ascii("&&"));
@@ -2545,8 +2545,8 @@ void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial)
 			continue;
 		}
 
-		Menu * menu = new Menu(view, m->submenuname(), true);
-		menu->setTitle(label(*m));
+		Menu * menuptr = new Menu(view, m->submenuname(), true);
+		menuptr->setTitle(label(*m));
 
 #if defined(Q_OS_MAC) && (defined(QT_MAC_USE_COCOA) || (QT_VERSION >= 0x050000))
 		// On Mac OS with QT/cocoa, the menu is not displayed if there is no action
@@ -2555,9 +2555,9 @@ void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial)
 		menu->addAction(action);
 #endif
 
-		qmb->addMenu(menu);
+		qmb->addMenu(menuptr);
 
-		d->name_map_[view][name] = menu;
+		d->name_map_[view][name] = menuptr;
 	}
 }
 
