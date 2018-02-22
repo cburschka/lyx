@@ -49,14 +49,12 @@ static QString credits()
 
 	if (!file.exists()) {
 		out << qt_("ERROR: LyX wasn't able to find the CREDITS file\n");
-		out << qt_("Please install correctly to estimate the great\n");
-		out << qt_("amount of work other people have done for the LyX project.");
+		out << qt_("Please install correctly to estimate the great\namount of work other people have done for the LyX project.");
 	} else {
 		file.open(QIODevice::ReadOnly);
 		if (!file.isReadable()) {
 			out << qt_("ERROR: LyX wasn't able to read the CREDITS file\n");
-			out << qt_("Please install correctly to estimate the great\n");
-			out << qt_("amount of work other people have done for the LyX project.");
+			out << qt_("Please install correctly to estimate the great\namount of work other people have done for the LyX project.");
 		} else {
 			QTextStream ts(&file);
 			ts.setCodec("UTF-8");
@@ -91,14 +89,12 @@ static QString release_notes()
 
 	if (!file.exists()) {
 		out << qt_("ERROR: LyX wasn't able to find the RELEASE-NOTES file\n");
-		out << qt_("Please install correctly to see what has changed\n");
-		out << qt_("for this version of LyX.");
+		out << qt_("Please install correctly to see what has changed\nfor this version of LyX.");
 	} else {
 		file.open(QIODevice::ReadOnly);
 		if (!file.isReadable()) {
 			out << qt_("ERROR: LyX wasn't able to read the RELEASE-NOTES file\n");
-			out << qt_("Please install correctly to see what has changed\n");
-			out << qt_("for this version of LyX.");
+			out << qt_("Please install correctly to see what has changed\nfor this version of LyX.");
 		} else {
 			QTextStream ts(&file);
 			ts.setCodec("UTF-8");
