@@ -287,8 +287,8 @@ static void setComboxFont(QComboBox * cb, string const & family,
 
 	// We count in reverse in order to prefer the Xft foundry
 	for (int i = cb->count(); --i >= 0;) {
-		string name, foundry;
-		parseFontName(cb->itemText(i), name, foundry);
+		string name, fnt_foundry;
+		parseFontName(cb->itemText(i), name, fnt_foundry);
 		if (compare_ascii_no_case(name, family) == 0) {
 			cb->setCurrentIndex(i);
 			return;
@@ -301,9 +301,9 @@ static void setComboxFont(QComboBox * cb, string const & family,
 
 	// We count in reverse in order to prefer the Xft foundry
 	for (int i = cb->count(); --i >= 0; ) {
-		string name, foundry;
-		parseFontName(cb->itemText(i), name, foundry);
-		if (compare_ascii_no_case(name, foundry) == 0) {
+		string name, fnt_foundry;
+		parseFontName(cb->itemText(i), name, fnt_foundry);
+		if (compare_ascii_no_case(name, fnt_foundry) == 0) {
 			cb->setCurrentIndex(i);
 			return;
 		}
