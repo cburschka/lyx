@@ -1345,11 +1345,11 @@ bool GuiApplication::getStatus(FuncRequest const & cmd, FuncStatus & flag) const
 static docstring makeDispatchMessage(docstring const & msg,
 				     FuncRequest const & cmd)
 {
-	const bool verbose = (cmd.origin() == FuncRequest::MENU
+	const bool be_verbose = (cmd.origin() == FuncRequest::MENU
 			      || cmd.origin() == FuncRequest::TOOLBAR
 			      || cmd.origin() == FuncRequest::COMMANDBUFFER);
 
-	if (cmd.action() == LFUN_SELF_INSERT || !verbose) {
+	if (cmd.action() == LFUN_SELF_INSERT || !be_verbose) {
 		LYXERR(Debug::ACTION, "dispatch msg is `" << msg << "'");
 		return msg;
 	}
