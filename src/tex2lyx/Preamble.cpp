@@ -259,7 +259,7 @@ vector<string> split_options(string const & input)
 			p.skip_spaces(true);
 			if (p.next_token().asInput() == "{")
 				option += '{' + p.getArg('{', '}') + '}';
-		} else if (t.cat() != catSpace)
+		} else if (t.cat() != catSpace && t.cat() != catComment)
 			option += t.asInput();
 	}
 
@@ -553,7 +553,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_use_geometry            = "false";
 	h_use_default_options     = "false";
 	h_use_hyperref            = "false";
-	h_use_microtype	          = "false";
+	h_use_microtype           = "false";
 	h_use_refstyle            = false;
 	h_use_minted              = false;
 	h_use_packages["amsmath"]    = "1";
