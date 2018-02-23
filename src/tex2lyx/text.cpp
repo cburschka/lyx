@@ -2477,7 +2477,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 	// nocite{*} option (needed for bibtex inset)
 	string btprint;
 	string contentslineContent;
-	string bibliographystyle = "default";
+	// Some classes provide a \bibliographystyle, so do not output
+	// any if none is explicitly set.
+	string bibliographystyle;
 	bool const use_natbib = isProvided("natbib");
 	bool const use_jurabib = isProvided("jurabib");
 	string last_env;
