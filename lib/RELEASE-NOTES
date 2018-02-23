@@ -134,6 +134,10 @@
   The Zoom value set by these is now relative to the default zoom value set in
   preferences.
 
+* environment-split
+  The new arguments "before" and "previous" can be used for finer control on
+  where/how the new environment is created.
+
 * inset-modify
   This function now also applies to quote insets. It takes a three-character
   string as an argument, referring (1.) to the style (e = ``english'',
@@ -152,6 +156,14 @@
    => change all quote insets to single quotes, keeping style and level
   "inset-forall Quotes inset-modify changetype g.s"
    => change all quote insets to German single quotes, keeping left/right setting
+
+* layout
+  The new argument "ignorenests" can be used to ignore nesting advice contained
+  in the layout tag "AutoNests".
+
+* paragraph-break
+  The new argument "ignoresep" can be used to break without accounting for
+  separators.
 
 * paragraph-goto
   The function has now two further optional arguments that determine end positions.
