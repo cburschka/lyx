@@ -64,6 +64,7 @@ GuiInclude::GuiInclude(GuiView & lv)
 	connect(previewCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(captionLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
 	connect(labelLE, SIGNAL(textChanged(const QString&)), this, SLOT(change_adaptor()));
+	connect(literalCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(listingsED, SIGNAL(textChanged()), this, SLOT(change_adaptor()));
 	connect(listingsED, SIGNAL(textChanged()), this, SLOT(setListingsMsg()));
 	connect(bypassCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
@@ -227,6 +228,7 @@ void GuiInclude::paramsToDialog(InsetCommandParams const & icp)
 		string extra = getStringFromVector(pars);
 		listingsED->setPlainText(toqstr(InsetListingsParams(extra).separatedParams()));
 	}
+	literalCB->setChecked(icp["literal"] == "true");
 
 	// Make sure that the bc is in the INITIAL state
 	if (bc().policy().buttonStatus(ButtonPolicy::OKAY))
@@ -265,6 +267,8 @@ void GuiInclude::applyView()
 		else
 			params_.setCmdName("verbatiminput");
 	}
+	params_["literal"] = literalCB->isChecked()
+			? from_ascii("true") : from_ascii("false");
 }
 
 

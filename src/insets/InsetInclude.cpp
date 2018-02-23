@@ -224,6 +224,7 @@ ParamInfo const & InsetInclude::findInfo(string const & /* cmdName */)
 	if (param_info_.empty()) {
 		param_info_.add("filename", ParamInfo::LATEX_REQUIRED);
 		param_info_.add("lstparams", ParamInfo::LATEX_OPTIONAL);
+		param_info_.add("literal", ParamInfo::LYX_INTERNAL);
 	}
 	return param_info_;
 }
@@ -631,9 +632,8 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 				language = opts[i].substr(9);
 				opts.erase(opts.begin() + i--);
 			} else if (prefixIs(opts[i], from_ascii("caption="))) {
-				// FIXME We should use HANDLING_LATEXIFY here,
-				// but that's a file format change (see #10455).
-				caption = opts[i].substr(8);
+				caption = params().prepareCommand(runparams, opts[i].substr(8),
+								  ParamInfo::HANDLING_LATEXIFY);
 				opts.erase(opts.begin() + i--);
 				if (!use_minted)
 					latexed_opts.push_back(from_ascii("caption=") + caption);

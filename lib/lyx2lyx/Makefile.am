@@ -34,6 +34,7 @@ dist_lyx2lyx_PYTHON = \
 	lyx_2_1.py \
 	lyx_2_2.py \
 	lyx_2_3.py \
+	lyx_2_4.py \
 	profiling.py \
 	test_parser_tools.py
 
