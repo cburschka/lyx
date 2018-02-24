@@ -984,8 +984,8 @@ void Text::insertChar(Cursor & cur, char_type c)
 			number(cur); // Set current_font.number to ON
 
 			if (cur.pos() != 0) {
-				char_type const c = par.getChar(cur.pos() - 1);
-				if (contains(number_unary_operators, c) &&
+				char_type const ch = par.getChar(cur.pos() - 1);
+				if (contains(number_unary_operators, ch) &&
 				    (cur.pos() == 1
 				     || par.isSeparator(cur.pos() - 2)
 				     || par.isEnvSeparator(cur.pos() - 2)
@@ -993,7 +993,7 @@ void Text::insertChar(Cursor & cur, char_type c)
 				  ) {
 					setCharFont(pit, cur.pos() - 1, cur.current_font,
 						tm.font_);
-				} else if (contains(number_separators, c)
+				} else if (contains(number_separators, ch)
 				     && cur.pos() >= 2
 				     && tm.displayFont(pit, cur.pos() - 2).fontInfo().number() == FONT_ON) {
 					setCharFont(pit, cur.pos() - 1, cur.current_font,
