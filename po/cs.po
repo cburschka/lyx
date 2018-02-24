@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Lyx 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-02-22 21:00+0100\n"
-"PO-Revision-Date: 2017-10-30 01:09-0800\n"
+"PO-Revision-Date: 2018-02-24 01:09-0800\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
 "Language: cs\n"
@@ -1812,11 +1812,11 @@ msgstr "Zap&nout mikrotypografické extenze"
 msgid ""
 "By default, a line break can occur after en- and em-dashes. Checking this "
 "box prevents that."
-msgstr ""
+msgstr "Konec řádku může standardně následovat po dlouhých/čtverčíkových pomlčkách. Zaškrtnutím tuto možnost zakážete."
 
 #: src/frontends/qt4/ui/FontUi.ui:303
 msgid "Disallow l&ine breaks after dashes"
-msgstr ""
+msgstr "Zakázat zalomení za pomlčkami"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:43
 msgid "&Graphics"
@@ -1930,9 +1930,8 @@ msgid "Graphics Group"
 msgstr "Skupiny obrázků"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:627
-#, fuzzy
 msgid "A&ssigned to group:"
-msgstr "&Přiřadit ke skupině:"
+msgstr "&Přiřazeno ke skupině:"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:637
 msgid "Click to define a new graphics group."
@@ -8924,7 +8923,7 @@ msgstr "Vlastní vložky|s"
 #: lib/layouts/powerdot.layout:333 lib/layouts/stdlists.inc:34
 #: lib/layouts/stdlists.inc:63 lib/layouts/theorems-case.inc:54
 msgid "A customized item string"
-msgstr ""
+msgstr "Přizpůsobený řetězec položky"
 
 #: lib/layouts/apa.layout:405 lib/layouts/apa6.layout:506
 msgid "Seriate"
@@ -11113,7 +11112,7 @@ msgstr "Picture:"
 
 #: lib/layouts/europasscv.layout:177
 msgid "Resize photo to this width"
-msgstr ""
+msgstr "Resize photo to this width"
 
 #: lib/layouts/europasscv.layout:181 lib/layouts/europecv.layout:117
 msgid "AfterPicture"
@@ -13038,7 +13037,6 @@ msgid "\\theexamplei (\\alph{subexamplei})"
 msgstr "Příklad \\theexample"
 
 #: lib/layouts/linguistics.module:32 lib/layouts/linguistics.module:260
-#, fuzzy
 msgid "Tableaux"
 msgstr "Tablo"
 
@@ -13051,14 +13049,12 @@ msgid "Numbered Examples (consecutive)"
 msgstr "Číslovaný příklad (nepřetržitý)"
 
 #: lib/layouts/linguistics.module:75
-#, fuzzy
 msgid "Custom Numbering|s"
-msgstr "Přepnout číslování|l"
+msgstr "Vlastní číslování|l"
 
 #: lib/layouts/linguistics.module:76
-#, fuzzy
 msgid "Customize the numeration"
-msgstr "Přizpůsobení LyXu|i"
+msgstr "Přizpůsobení číslování"
 
 #: lib/layouts/linguistics.module:89
 msgid "Subexample"
@@ -13069,32 +13065,28 @@ msgid "Glosse"
 msgstr "Glosa"
 
 #: lib/layouts/linguistics.module:134 lib/layouts/linguistics.module:169
-#, fuzzy
 msgid "Translation"
-msgstr "Translator"
+msgstr "Překlad"
 
 #: lib/layouts/linguistics.module:135 lib/layouts/linguistics.module:170
-#, fuzzy
 msgid "Glosse Translation|s"
-msgstr "IEEE Transactions"
+msgstr "Překlad glos|g"
 
 #: lib/layouts/linguistics.module:136 lib/layouts/linguistics.module:171
-#, fuzzy
 msgid "Add a translation for the glosse"
-msgstr "Přidat nový rejstřík do seznamu"
+msgstr "Přidat překlad glosy"
 
 #: lib/layouts/linguistics.module:142 lib/layouts/linguistics.module:144
 msgid "Tri-Glosse"
 msgstr "Tri-Glosa"
 
 #: lib/layouts/linguistics.module:177
-#, fuzzy
 msgid "Structure Tree"
-msgstr "Structure"
+msgstr "Stromová struktura"
 
 #: lib/layouts/linguistics.module:179
 msgid "Tree"
-msgstr ""
+msgstr "Strom"
 
 #: lib/layouts/linguistics.module:203
 msgid "Expression"
@@ -13122,12 +13114,11 @@ msgstr "význam"
 
 #: lib/layouts/linguistics.module:250
 msgid "GroupGlossedWords"
-msgstr ""
+msgstr "SeskupitGlosovanáSlova"
 
 #: lib/layouts/linguistics.module:252
-#, fuzzy
 msgid "Group"
-msgstr "&Seskupit"
+msgstr "Skupina"
 
 #: lib/layouts/linguistics.module:264
 msgid "Tableau"
@@ -13142,9 +13133,8 @@ msgid "Chunk ##"
 msgstr "Útržek ##"
 
 #: lib/layouts/litinsets.inc:15
-#, fuzzy
 msgid "Literate programming"
-msgstr "Log z dokumentovaného programování"
+msgstr "Dokumentované programování"
 
 #: lib/layouts/litinsets.inc:17 lib/layouts/litinsets.inc:18
 msgid "Chunk"
@@ -15491,7 +15481,7 @@ msgstr "Podrovnice"
 msgid ""
 "Provide a straightforward way to segregate subequations in LyX. See the "
 "subequations.lyx example file."
-msgstr ""
+msgstr "Poskytne možnost segregace podrovnic v LyX-u. Viz příklad v souboru subequations.lyx."
 
 #: lib/layouts/svcommon.inc:68
 msgid "Front Matter"
@@ -16866,7 +16856,7 @@ msgstr "Angličtina (USA)"
 
 #: lib/languages:149
 msgid "Amharic"
-msgstr ""
+msgstr "Amharština"
 
 #: lib/languages:158
 msgid "Greek (ancient)"
@@ -17006,7 +16996,7 @@ msgstr "Francouzština"
 
 #: lib/languages:529
 msgid "Friulian"
-msgstr ""
+msgstr "Furlanština"
 
 #: lib/languages:539
 msgid "Galician"
@@ -17143,7 +17133,7 @@ msgstr "Okcitánština"
 
 #: lib/languages:928
 msgid "Piedmontese"
-msgstr ""
+msgstr "Piedmontština"
 
 #: lib/languages:938
 msgid "Polish"
@@ -20743,22 +20733,19 @@ msgstr "cancelto"
 
 #: lib/ui/stdtoolbars.inc:468
 msgid "Insert left/right side scripts"
-msgstr ""
+msgstr "Vložit levý/pravý boční text"
 
 #: lib/ui/stdtoolbars.inc:469
-#, fuzzy
 msgid "Insert right side scripts"
-msgstr "Vložit oddělovače"
+msgstr "Vložit pravý boční text"
 
 #: lib/ui/stdtoolbars.inc:470
-#, fuzzy
 msgid "Insert left side scripts"
-msgstr "Vložit oddělovače"
+msgstr "Vložit levý boční text"
 
 #: lib/ui/stdtoolbars.inc:471
-#, fuzzy
 msgid "Insert side scripts"
-msgstr "Vložit oddělovače"
+msgstr "Vložit boční text"
 
 #: lib/ui/stdtoolbars.inc:472
 msgid "overset"
@@ -24449,7 +24436,7 @@ msgstr "Rastrový obrázek"
 msgid ""
 "A bitmap file.\n"
 "Use this template to include bitmap images of any kind.\n"
-msgstr ""
+msgstr "Bitmapový soubor.\nPoužijte pro vložení bitmapových obrázků libovolného typu.\n"
 
 #: lib/xtemplates/vector_graphics.xtemplate:14
 msgid "VectorGraphics"
@@ -24470,6 +24457,11 @@ msgid ""
 "The specialized templates allow to automatically use the document font in\n"
 "the figures, which is not possible with this general template.\n"
 msgstr ""
+"Vektorový soubor s grafikou.\n"
+"Použijte pro vložení vektorových obrázků libovolného typu.\n"
+"Lyx se pokusí získat vlastnosti obrázku pro koncový výstup.\n"
+"Formáty Xfig a Dia mají vlastní šablony. Specializované šablony\n"
+"umožnují použít font dokumnetu v obrázcích, což není možné s touto\nobecnou šablonou"
 
 #: lib/xtemplates/xfig.xtemplate:33
 msgid "XFig"
@@ -25189,6 +25181,7 @@ msgid ""
 "But the file has successfully been saved as:\n"
 "  %2$s."
 msgstr ""
+"Nelze přesunout uložený soubor do:\n  %1$s.\nPodařilo se ho ovšem uložit jako:\n  %2$s."
 
 #: src/Buffer.cpp:1529
 #, c-format
@@ -25287,22 +25280,22 @@ msgstr ""
 #: src/Buffer.cpp:1926
 #, c-format
 msgid "The languages %1$s are only supported by Babel."
-msgstr ""
+msgstr "Jazyky %1$s jsou podporované pouze Babel-em."
 
 #: src/Buffer.cpp:1927
 #, c-format
 msgid "The language %1$s is only supported by Babel."
-msgstr ""
+msgstr "Jazyk %1$s je podporovaný pouze Babel-em."
 
 #: src/Buffer.cpp:1937
 #, c-format
 msgid "The languages %1$s are only supported by Polyglossia."
-msgstr ""
+msgstr "Jazyky %1$s jsou podporované pouze balíčkem Polyglossia."
 
 #: src/Buffer.cpp:1938
 #, c-format
 msgid "The language %1$s is only supported by Polyglossia."
-msgstr ""
+msgstr "Jazyk %1$s je podporovaný pouze balíčkem Polyglossia."
 
 #: src/Buffer.cpp:1944
 msgid "Incompatible Languages!"
@@ -25342,9 +25335,8 @@ msgid "Error exporting to format: %1$s."
 msgstr "Chyba při exportu do formátu %1$s."
 
 #: src/Buffer.cpp:2681
-#, fuzzy
 msgid "Error generating literate programming code."
-msgstr "Noweb dokumentované programování"
+msgstr "Chyba při generování kódu pro dokumnetované programování."
 
 #: src/Buffer.cpp:2761
 #, c-format
@@ -26483,7 +26475,7 @@ msgstr ""
 
 #: src/Converter.cpp:540 src/frontends/qt4/GuiDocument.cpp:1636
 msgid "Pygments driver command not found!"
-msgstr ""
+msgstr "Příkaz ovladače balíčku Pygments nenalezen!"
 
 #: src/Converter.cpp:541 src/frontends/qt4/GuiDocument.cpp:1637
 msgid ""
@@ -26497,6 +26489,12 @@ msgid ""
 "\n"
 "where 'driver' is name of the driver command."
 msgstr ""
+"Příkaz ovladače nutný pro použití balíčku minted (pygmentize)\nnebyl nalezen. Ujistěte se, že je nainstalován python-pygments\nmodul. V případě, že rozdílného jména olvadače volžte do preamble dokumentu\n"
+"\n"
+"\\AtBeginDocument{\\renewcommand{\\MintedPygmentize}{driver}}\n"
+"\n"
+"kde 'driver' je jméno příkazu ovladače."
+
 
 #: src/Converter.cpp:630 src/Format.cpp:722 src/Format.cpp:793
 msgid "Executing command: "
@@ -26898,7 +26896,7 @@ msgstr "Font není dostupný"
 msgid ""
 "The LaTeX package `%1$s' needed for the font `%2$s'\n"
 "is not available on your system. LyX will fall back to the default font."
-msgstr ""
+msgstr "LaTeX-ový balíček `%1$s' potřebný pro font `%2$s'\nnení dostupný. LyX použije standardní font."
 
 #: src/LyX.cpp:148
 msgid "Could not read configuration file"
@@ -27168,7 +27166,7 @@ msgstr ""
 
 #: src/LyX.cpp:1232 src/frontends/qt4/GuiAbout.cpp:244
 msgid "  Git commit hash "
-msgstr ""
+msgstr "  Git commit hash "
 
 #: src/LyX.cpp:1243 src/support/Package.cpp:647
 msgid "No system directory"
@@ -27293,13 +27291,13 @@ msgstr ""
 msgid ""
 "Forbid use of external converters with 'needauth' option to prevent "
 "undesired effects."
-msgstr ""
+msgstr "Zákaz použití externích konvertorů vyžadujích autorizaci, prevence před nevyžádanými efekty."
 
 #: src/LyXRC.cpp:3129
 msgid ""
 "Ask user before calling external converters with 'needauth' option to "
 "prevent undesired effects."
-msgstr ""
+msgstr "Vyžadovat potvrzení před spuštením externích konvertorů vyžadujích autorizaci, prevence před nevyžádanými efekty."
 
 #: src/LyXRC.cpp:3136
 msgid ""
@@ -27428,7 +27426,7 @@ msgstr ""
 
 #: src/LyXRC.cpp:3216
 msgid "The command to run the python pygments syntax highlighter."
-msgstr ""
+msgstr "Příkaz pro běh python-balíčku pygments (zvýraznění syntaxe)."
 
 #: src/LyXRC.cpp:3225
 msgid ""
@@ -27612,7 +27610,7 @@ msgstr "Vyberte pro visuální/logický pohyb kurzoru v dvojsměrném módu (bid
 msgid ""
 "Specify whether, closing the last view of an open document, LyX should close "
 "the document (yes), hide it (no), or ask the user (ask)."
-msgstr ""
+msgstr "Vybrat akci po zavření posledního náhledu na otevřený dokumentu - uzavření (yes), skrytí (no), dotaz (ask)."
 
 #: src/LyXRC.cpp:3364
 msgid ""
@@ -28624,7 +28622,7 @@ msgstr ""
 
 #: src/frontends/qt4/GuiAbout.cpp:219
 msgid "Built from git commit hash "
-msgstr ""
+msgstr "Sestaven na základě git commitu "
 
 #: src/frontends/qt4/GuiAbout.cpp:226
 msgid "Library directory: "
@@ -29125,11 +29123,9 @@ msgid "Text that follows the reference (e.g., pages)"
 msgstr "Text následující citaci (např. \"stránky\")"
 
 #: src/frontends/qt4/GuiCitation.cpp:314
-#, fuzzy
 msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")."
 msgstr ""
-"Vynutit velké písmo ve jménech (\"Del Piero\", nikoliv \"del Piero\"), "
-"pakliže je podporováno současným stylem"
+"Vynutit velké písmo ve jménech (\"Del Piero\", nikoliv \"del Piero\")."
 
 #: src/frontends/qt4/GuiCitation.cpp:349
 msgid "Always list all authors (rather than using \"et al.\")"
@@ -29640,9 +29636,8 @@ msgid "Class Default"
 msgstr "Standardní nastavení třídy"
 
 #: src/frontends/qt4/GuiDocument.cpp:2312
-#, fuzzy
 msgid "Layouts|#o#O"
-msgstr "Rozvržení|R"
+msgstr "Rozvržení|#o#O"
 
 #: src/frontends/qt4/GuiDocument.cpp:2314
 msgid "LyX Layout (*.layout)"
@@ -30012,9 +30007,8 @@ msgid "Select graphics file"
 msgstr "Vybrat soubor s obrázkem"
 
 #: src/frontends/qt4/GuiGraphics.cpp:792
-#, fuzzy
 msgid "Clipart|#C#c"
-msgstr "&Klipart"
+msgstr "Klipart|#K#k"
 
 #: src/frontends/qt4/GuiHSpace.cpp:45 src/frontends/qt4/GuiHSpace.cpp:58
 #: src/insets/InsetSpace.cpp:69
@@ -30325,14 +30319,12 @@ msgid "Phantom Settings"
 msgstr "Nastavení fantómu"
 
 #: src/frontends/qt4/GuiPrefs.cpp:141
-#, fuzzy
 msgid "System files|#S#s"
-msgstr "&Systémové soubory"
+msgstr "Systémové soubory|#S#s"
 
 #: src/frontends/qt4/GuiPrefs.cpp:145
-#, fuzzy
 msgid "User files|#U#u"
-msgstr "&Uživatelské soubory"
+msgstr "Uživatelské soubory|#U#u"
 
 #: src/frontends/qt4/GuiPrefs.cpp:251
 msgid "Look & Feel"
@@ -30430,7 +30422,7 @@ msgstr "Konvertory"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1890
 msgid "SECURITY WARNING!"
-msgstr ""
+msgstr "BEZPEČNOSTNÍ UPOZORNĚNÍ"
 
 #: src/frontends/qt4/GuiPrefs.cpp:1890
 msgid ""
@@ -30438,7 +30430,7 @@ msgid ""
 "would be run without asking your permission first. This is UNSAFE and NOT "
 "recommended, unless you know what you are doing. Are you sure you would like "
 "to proceed ? The recommended and safe answer is NO!"
-msgstr ""
+msgstr "Výmaz této volby znamená, že potenciálně nebezpečné konvertory budou spuštěny bez explicitního dotazu. Toto nastavení je NEBEZPEČNÉ a NENÍ doporučeno, pakliže nevíte, co činíte. Přejete si přesto zrušit tuto volbu? Doporučená a bezpečná odpověď zní NE."
 
 #: src/frontends/qt4/GuiPrefs.cpp:2010
 msgid "File Formats"
@@ -30537,7 +30529,7 @@ msgstr "Neznámá nebo chybná LyX-funkce"
 
 #: src/frontends/qt4/GuiPrefs.cpp:3300
 msgid "This LyX function is hidden and cannot be bound."
-msgstr ""
+msgstr "Tato funkce LyX-u je skrytá a nelze přiřadit."
 
 #: src/frontends/qt4/GuiPrefs.cpp:3306
 msgid "Invalid or empty key sequence"
@@ -30597,9 +30589,8 @@ msgid "Longest label width"
 msgstr "Nejdelší šířka značky"
 
 #: src/frontends/qt4/GuiPrintNomencl.h:40
-#, fuzzy
 msgid "Nomenclature List Settings"
-msgstr "Nastavení nomenklatury"
+msgstr "Nastavení seznamu nomenklatury"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:37
 msgid "Index Settings"
@@ -31144,7 +31135,7 @@ msgstr "Neznámý panel nástrojů \"%1$s\""
 
 #: src/frontends/qt4/GuiView.cpp:2087 src/frontends/qt4/GuiView.cpp:2100
 msgid "Zoom level cannot be less than %1$d%."
-msgstr ""
+msgstr "Lupa nemůže být méně než %1$d%."
 
 #: src/frontends/qt4/GuiView.cpp:2195
 msgid "Select template file"
@@ -31543,11 +31534,11 @@ msgstr "Všechny dokumenty uloženy."
 
 #: src/frontends/qt4/GuiView.cpp:3913
 msgid "Developer mode is now enabled."
-msgstr ""
+msgstr "Vývojářský mód je nyní zapnut."
 
 #: src/frontends/qt4/GuiView.cpp:3915
 msgid "Developer mode is now disabled."
-msgstr ""
+msgstr "Vývojářský mód je nyní vypnut."
 
 #: src/frontends/qt4/GuiView.cpp:3939
 msgid "Toolbars unlocked."
@@ -31581,7 +31572,7 @@ msgstr "Nebylo možné postupovat dále."
 
 #: src/frontends/qt4/GuiView.cpp:4698
 msgid "Disable Shell Escape"
-msgstr ""
+msgstr "Vypnout 'escapování' znaků"
 
 #: src/frontends/qt4/GuiViewSource.cpp:402
 #: src/frontends/qt4/GuiViewSource.cpp:456
@@ -31991,7 +31982,7 @@ msgid ""
 "Note: This bibliography is not output, since bibliographies in the master "
 "file are not allowed with the setting 'Multiple bibliographies per child "
 "document'"
-msgstr ""
+msgstr "Poznámka: Tato bibliografie nejde na výstup, jelikož bibliografie potomků v hlavním dokumentu nejsou povoleny ('Vícenásobné bibliografie')"
 
 #: src/insets/InsetBibtex.cpp:249
 msgid "Options: "
@@ -32067,7 +32058,7 @@ msgid ""
 "Branch Name: %1$s\n"
 "Branch Status: %2$s\n"
 "Inset Status: %3$s"
-msgstr ""
+msgstr "Jméno větve: %1$s\nStav větve: %2$s\nStav vložky: %3$s"
 
 #: src/insets/InsetBranch.cpp:120
 msgid "Branch: "
@@ -32109,7 +32100,7 @@ msgstr "Není definována žádná bibliografie!"
 #: src/insets/InsetCitation.cpp:262
 #, c-format
 msgid "+ %1$d more entries."
-msgstr ""
+msgstr "+ %1$d dalších položek."
 
 #: src/insets/InsetCommand.cpp:156
 msgid "LaTeX Command: "
@@ -32635,7 +32626,7 @@ msgstr "Rodina písma latexu (např. tt, sf, rm)"
 
 #: src/insets/InsetListingsParams.cpp:781
 msgid "A latex series such as m, b, c, bx, sb"
-msgstr ""
+msgstr "Duktus písma latexu (např.  m, b, c, bx, sb)"
 
 #: src/insets/InsetListingsParams.cpp:784
 msgid "A latex name such as \\small"
@@ -32643,11 +32634,11 @@ msgstr "Jméno velikosti (např. \\small)"
 
 #: src/insets/InsetListingsParams.cpp:787
 msgid "A latex shape such as n, it, sl, sc"
-msgstr ""
+msgstr "Řez písma latexu (např. n, it, sl, sc)"
 
 #: src/insets/InsetListingsParams.cpp:806
 msgid "A range of lines such as {1,3-4}"
-msgstr ""
+msgstr "Rozsah řádek (např. {1,3-4})"
 
 #: src/insets/InsetListingsParams.cpp:815
 msgid ""
@@ -32658,32 +32649,32 @@ msgstr ""
 
 #: src/insets/InsetListingsParams.cpp:838
 msgid "File encoding used by Pygments for highlighting"
-msgstr ""
+msgstr "Kódování souboru použítý pro zvýraznění (Pygments) "
 
 #: src/insets/InsetListingsParams.cpp:841
 msgid "Apply Python 3 highlighting"
-msgstr ""
+msgstr "Použít zvýraznění Python 3"
 
 #: src/insets/InsetListingsParams.cpp:854
 msgid "A macro. Default: \\textvisiblespace"
-msgstr ""
+msgstr "Makro. Standardně: \\textvisiblespace"
 
 #: src/insets/InsetListingsParams.cpp:858
 msgid "For PHP only"
-msgstr ""
+msgstr "Jen pro PHP"
 
 #: src/insets/InsetListingsParams.cpp:861
 msgid "The style used by Pygments"
-msgstr ""
+msgstr "Použitý styl (Pygments)"
 
 #: src/insets/InsetListingsParams.cpp:874
 msgid "A macro to redefine visible tabs"
-msgstr ""
+msgstr "Makro pro předefinování viditelných tabelátorů"
 
 #: src/insets/InsetListingsParams.cpp:881
 #: src/insets/InsetListingsParams.cpp:884
 msgid "Enables latex code in comments"
-msgstr ""
+msgstr "Zapíná kód latexu v komentářích"
 
 #: src/insets/InsetListingsParams.cpp:898
 msgid "Invalid (empty) listing parameter name."
@@ -32934,11 +32925,11 @@ msgstr "Výběry nejsou podporovány."
 
 #: src/insets/InsetTabular.cpp:4608
 msgid "Multi-column in current or destination column."
-msgstr ""
+msgstr "Vícesloupcově v současném nebo určeném sloupci."
 
 #: src/insets/InsetTabular.cpp:4620
 msgid "Multi-row in current or destination row."
-msgstr ""
+msgstr "Víceřádkově v současném nebo určeném řádku."
 
 #: src/insets/InsetTabular.cpp:5060
 msgid "Selection size should match clipboard content."
@@ -33299,7 +33290,7 @@ msgstr "Současný odstavec"
 msgid ""
 "You are using at least one layout (%1$s) intended for the title, after using "
 "non-title layouts. This could lead to missing or incorrect output."
-msgstr ""
+msgstr "Používáte nejméně jedno rozvržení (%1$s) určené pro titulek poté, co jste použili netitulkové rozvržení. To může vést k chybnému výstupu."
 
 #: src/output_plaintext.cpp:144
 msgid "Abstract: "
