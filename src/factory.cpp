@@ -652,8 +652,8 @@ Inset * readInset(Lexer & lex, Buffer * buf)
 			inset.reset(new InsetFloat(buf, string()));
 		} else if (tmptok == "Wrap") {
 			lex.next();
-			string tmptok = lex.getString();
-			inset.reset(new InsetWrap(buf, tmptok));
+			string tmptok2 = lex.getString();
+			inset.reset(new InsetWrap(buf, tmptok2));
 		} else if (tmptok == "Caption") {
 			lex.eatLine();
 			string s = lex.getString();
