@@ -4678,7 +4678,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			bool known_hspace = false;
 			bool known_vspace = false;
 			bool known_unit = false;
-			double value;
+			double value = 0.0;
 			if (valid) {
 				istringstream iss(valstring);
 				iss >> value;
