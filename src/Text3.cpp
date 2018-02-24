@@ -106,9 +106,9 @@ static Font freefont(ignore_font, ignore_language);
 static bool toggleall = false;
 
 static void toggleAndShow(Cursor & cur, Text * text,
-	Font const & font, bool toggleall = true)
+	Font const & font, bool togall = true)
 {
-	text->toggleFree(cur, font, toggleall);
+	text->toggleFree(cur, font, togall);
 
 	if (font.language() != ignore_language ||
 	    font.fontInfo().number() != FONT_IGNORE) {
@@ -1092,8 +1092,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		} else {
 			// Maybe we shouldn't allow tabs within a line, because they
 			// are not (yet) aligned as one might do expect.
-			FuncRequest cmd(LFUN_SELF_INSERT, from_ascii("\t"));
-			dispatch(cur, cmd);
+			FuncRequest ncmd(LFUN_SELF_INSERT, from_ascii("\t"));
+			dispatch(cur, ncmd);
 		}
 		break;
 	}
@@ -1239,13 +1239,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		// If we have a list and autoinsert item insets,
 		// insert them now.
 		Layout::LaTeXArgMap args = par.layout().args();
-		Layout::LaTeXArgMap::const_iterator lait = args.begin();
-		Layout::LaTeXArgMap::const_iterator const laend = args.end();
-		for (; lait != laend; ++lait) {
-			Layout::latexarg arg = (*lait).second;
-			if (arg.autoinsert && prefixIs((*lait).first, "item:")) {
-				FuncRequest cmd(LFUN_ARGUMENT_INSERT, (*lait).first);
-				lyx::dispatch(cmd);
+		for (auto const & thearg : args) {
+			Layout::latexarg arg = thearg.second;
+			if (arg.autoinsert && prefixIs(thearg.first, "item:")) {
+				FuncRequest cmd2(LFUN_ARGUMENT_INSERT, thearg.first);
+				lyx::dispatch(cmd2);
 			}
 		}
 		break;
@@ -1584,8 +1582,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		for (; lait != laend; ++lait) {
 			Layout::latexarg arg = (*lait).second;
 			if (arg.autoinsert) {
-				FuncRequest cmd(LFUN_ARGUMENT_INSERT, (*lait).first);
-				lyx::dispatch(cmd);
+				FuncRequest cmd2(LFUN_ARGUMENT_INSERT, (*lait).first);
+				lyx::dispatch(cmd2);
 			}
 		}
 
@@ -2070,8 +2068,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 			if (arg.autoinsert) {
 				// The cursor might have been invalidated by the replaceSelection.
 				cur.buffer()->changed(true);
-				FuncRequest cmd(LFUN_ARGUMENT_INSERT, (*lait).first);
-				lyx::dispatch(cmd);
+				FuncRequest cmd2(LFUN_ARGUMENT_INSERT, (*lait).first);
+				lyx::dispatch(cmd2);
 				autoargs = true;
 			}
 		}
