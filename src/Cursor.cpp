@@ -2104,15 +2104,15 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 
 	// with and without selection are handled differently
 	if (!selection()) {
-		int yo = bv().getPos(*this).y_;
+		int yo1 = bv().getPos(*this).y_;
 		Cursor old = *this;
 		// To next/previous row
 		// FIXME: the y position is often guessed wrongly across styles and
 		// insets, which leads to weird behaviour.
 		if (up)
-			tm.editXY(*this, xo, yo - textRow().ascent() - 1);
+			tm.editXY(*this, xo, yo1 - textRow().ascent() - 1);
 		else
-			tm.editXY(*this, xo, yo + textRow().descent() + 1);
+			tm.editXY(*this, xo, yo1 + textRow().descent() + 1);
 		x_target_ = old.x_target_;
 		clearSelection();
 
@@ -2140,10 +2140,10 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 				--next_row;
 			} else if (pit() > 0) {
 				--pit();
-				TextMetrics & tm = bv_->textMetrics(text());
-				if (!tm.contains(pit()))
-					tm.newParMetricsUp();
-				ParagraphMetrics const & pmcur = tm.parMetrics(pit());
+				TextMetrics & tm2 = bv_->textMetrics(text());
+				if (!tm2.contains(pit()))
+					tm2.newParMetricsUp();
+				ParagraphMetrics const & pmcur = tm2.parMetrics(pit());
 				next_row = pmcur.rows().size() - 1;
 			}
 		} else {
@@ -2151,9 +2151,9 @@ bool Cursor::upDownInText(bool up, bool & updateNeeded)
 				++next_row;
 			} else if (pit() + 1 < int(text()->paragraphs().size())) {
 				++pit();
-				TextMetrics & tm = bv_->textMetrics(text());
-				if (!tm.contains(pit()))
-					tm.newParMetricsDown();
+				TextMetrics & tm2 = bv_->textMetrics(text());
+				if (!tm2.contains(pit()))
+					tm2.newParMetricsDown();
 				next_row = 0;
 			}
 		}
