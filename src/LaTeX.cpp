@@ -478,21 +478,21 @@ int LaTeX::startscript()
 }
 
 
-int LaTeX::runMakeIndex(string const & f, OutputParams const & runparams,
+int LaTeX::runMakeIndex(string const & f, OutputParams const & rp,
 			 string const & params)
 {
-	string tmp = runparams.use_japanese ?
+	string tmp = rp.use_japanese ?
 		lyxrc.jindex_command : lyxrc.index_command;
 
-	if (!runparams.index_command.empty())
-		tmp = runparams.index_command;
+	if (!rp.index_command.empty())
+		tmp = rp.index_command;
 
 	LYXERR(Debug::LATEX,
 		"idx file has been made, running index processor ("
 		<< tmp << ") on file " << f);
 
-	tmp = subst(tmp, "$$lang", runparams.document_language);
-	if (runparams.use_indices) {
+	tmp = subst(tmp, "$$lang", rp.document_language);
+	if (rp.use_indices) {
 		tmp = lyxrc.splitindex_command + " -m " + quoteName(tmp);
 		LYXERR(Debug::LATEX,
 		"Multiple indices. Using splitindex command: " << tmp);
@@ -507,16 +507,16 @@ int LaTeX::runMakeIndex(string const & f, OutputParams const & runparams,
 }
 
 
-int LaTeX::runMakeIndexNomencl(FileName const & file,
+int LaTeX::runMakeIndexNomencl(FileName const & fname,
 		string const & nlo, string const & nls)
 {
 	LYXERR(Debug::LATEX, "Running MakeIndex for nomencl.");
 	message(_("Running MakeIndex for nomencl."));
 	string tmp = lyxrc.nomencl_command + ' ';
 	// onlyFileName() is needed for cygwin
-	tmp += quoteName(onlyFileName(changeExtension(file.absFileName(), nlo)));
+	tmp += quoteName(onlyFileName(changeExtension(fname.absFileName(), nlo)));
 	tmp += " -o "
-		+ onlyFileName(changeExtension(file.toFilesystemEncoding(), nls));
+		+ onlyFileName(changeExtension(fname.toFilesystemEncoding(), nls));
 	Systemcall one;
 	Systemcall::Starttype const starttype = 
 		allow_cancel ? Systemcall::WaitLoop : Systemcall::Wait;
@@ -525,7 +525,7 @@ int LaTeX::runMakeIndexNomencl(FileName const & file,
 
 
 vector<AuxInfo> const
-LaTeX::scanAuxFiles(FileName const & file, bool const only_childbibs)
+LaTeX::scanAuxFiles(FileName const & fname, bool const only_childbibs)
 {
 	vector<AuxInfo> result;
 
@@ -534,7 +534,7 @@ LaTeX::scanAuxFiles(FileName const & file, bool const only_childbibs)
 	if (only_childbibs) {
 		for (string const &s: children) {
 			FileName fn =
-				makeAbsPath(s, file.onlyPath().realPath());
+				makeAbsPath(s, fname.onlyPath().realPath());
 			fn.changeExtension("aux");
 			if (fn.exists())
 				result.push_back(scanAuxFile(fn));
@@ -542,10 +542,10 @@ LaTeX::scanAuxFiles(FileName const & file, bool const only_childbibs)
 		return result;
 	}
 
-	result.push_back(scanAuxFile(file));
+	result.push_back(scanAuxFile(fname));
 
 	// This is for bibtopic
-	string const basename = removeExtension(file.absFileName());
+	string const basename = removeExtension(fname.absFileName());
 	for (int i = 1; i < 1000; ++i) {
 		FileName const file2(basename
 			+ '.' + convert<string>(i)
@@ -558,20 +558,20 @@ LaTeX::scanAuxFiles(FileName const & file, bool const only_childbibs)
 }
 
 
-AuxInfo const LaTeX::scanAuxFile(FileName const & file)
+AuxInfo const LaTeX::scanAuxFile(FileName const & fname)
 {
 	AuxInfo result;
-	result.aux_file = file;
-	scanAuxFile(file, result);
+	result.aux_file = fname;
+	scanAuxFile(fname, result);
 	return result;
 }
 
 
-void LaTeX::scanAuxFile(FileName const & file, AuxInfo & aux_info)
+void LaTeX::scanAuxFile(FileName const & fname, AuxInfo & aux_info)
 {
-	LYXERR(Debug::LATEX, "Scanning aux file: " << file);
+	LYXERR(Debug::LATEX, "Scanning aux file: " << fname);
 
-	ifstream ifs(file.toFilesystemEncoding().c_str());
+	ifstream ifs(fname.toFilesystemEncoding().c_str());
 	string token;
 	static regex const reg1("\\\\citation\\{([^}]+)\\}");
 	static regex const reg2("\\\\bibdata\\{([^}]+)\\}");
@@ -654,7 +654,7 @@ void LaTeX::updateBibtexDependencies(DepTable & dep,
 
 
 bool LaTeX::runBibTeX(vector<AuxInfo> const & bibtex_info,
-		      OutputParams const & runparams, int & exit_code)
+		      OutputParams const & rp, int & exit_code)
 {
 	bool result = false;
 	exit_code = 0;
@@ -664,7 +664,7 @@ bool LaTeX::runBibTeX(vector<AuxInfo> const & bibtex_info,
 			continue;
 		result = true;
 
-		string tmp = runparams.bibtex_command;
+		string tmp = rp.bibtex_command;
 		tmp += " ";
 		// onlyFileName() is needed for cygwin
 		tmp += quoteName(onlyFileName(removeExtension(
@@ -878,7 +878,6 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 			}
 
 			// get the next line
-			string tmp;
 			int count = 0;
 			do {
 				if (!getline(ifs, tmp))
@@ -1390,32 +1389,32 @@ int LaTeX::scanBlgFile(DepTable & dep, TeXErrors & terr)
 			 || regex_match(token, sub, bibtexError5)) {
 			retval |= BIBTEX_ERROR;
 			string errstr = N_("BibTeX error: ") + token;
-			string message;
+			string msg;
 			if ((prefixIs(token, "while executing---line")
 			     || prefixIs(token, "---line ")
 			     || prefixIs(token, "*Please notify the BibTeX"))
 			    && !prevtoken.empty()) {
 				errstr = N_("BibTeX error: ") + prevtoken;
-				message = prevtoken + '\n';
+				msg = prevtoken + '\n';
 			}
-			message += token;
+			msg += token;
 			terr.insertError(0,
 					 from_local8bit(errstr),
-					 from_local8bit(message));
+					 from_local8bit(msg));
 		} else if (regex_match(prevtoken, sub, bibtexError3)) {
 			retval |= BIBTEX_ERROR;
 			string errstr = N_("BibTeX error: ") + prevtoken;
-			string message = prevtoken + '\n' + token;
+			string msg = prevtoken + '\n' + token;
 			terr.insertError(0,
 					 from_local8bit(errstr),
-					 from_local8bit(message));
+					 from_local8bit(msg));
 		} else if (regex_match(token, sub, biberError)) {
 			retval |= BIBTEX_ERROR;
 			string errstr = N_("Biber error: ") + sub.str(2);
-			string message = token;
+			string msg = token;
 			terr.insertError(0,
 					 from_local8bit(errstr),
-					 from_local8bit(message));
+					 from_local8bit(msg));
 		}
 		prevtoken = token;
 	}
