@@ -199,8 +199,8 @@ bool LyXComm::pipeServer()
 	LYXERR(Debug::LYXSERVER, "LyXComm: Connection established");
 	ready_ = true;
 	outbuf_.erase();
-	DWORD status;
-	bool success;
+	DWORD status = 0;
+	bool success = false;
 
 	while (!checkStopServer()) {
 		// Indefinitely wait for the completion of an overlapped
