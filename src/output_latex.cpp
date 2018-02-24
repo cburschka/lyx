@@ -363,12 +363,12 @@ void TeXEnvironment(Buffer const & buf, Text const & text,
 		    pit_type & pit, otexstream & os)
 {
 	ParagraphList const & paragraphs = text.paragraphs();
-	ParagraphList::const_iterator par = paragraphs.constIterator(pit);
+	ParagraphList::const_iterator ipar = paragraphs.constIterator(pit);
 	LYXERR(Debug::LATEX, "TeXEnvironment for paragraph " << pit);
 
-	Layout const & current_layout = par->layout();
-	depth_type const current_depth = par->params().depth();
-	Length const & current_left_indent = par->params().leftIndent();
+	Layout const & current_layout = ipar->layout();
+	depth_type const current_depth = ipar->params().depth();
+	Length const & current_left_indent = ipar->params().leftIndent();
 
 	// This is for debugging purpose at the end.
 	pit_type const par_begin = pit;
@@ -436,10 +436,8 @@ void getArgInsets(otexstream & os, OutputParams const & runparams, Layout::LaTeX
 
 	// Default and preset args are always output, so if they require
 	// other arguments, consider this.
-	Layout::LaTeXArgMap::const_iterator lit = latexargs.begin();
-	Layout::LaTeXArgMap::const_iterator const lend = latexargs.end();
-	for (; lit != lend; ++lit) {
-		Layout::latexarg arg = (*lit).second;
+	for (auto const & larg : latexargs) {
+		Layout::latexarg const & arg = larg.second;
 		if ((!arg.presetarg.empty() || !arg.defaultarg.empty()) && !arg.requires.empty()) {
 				vector<string> req = getVectorFromString(arg.requires);
 				required.insert(required.end(), req.begin(), req.end());
