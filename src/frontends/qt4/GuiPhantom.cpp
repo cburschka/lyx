@@ -72,9 +72,9 @@ void GuiPhantom::applyView()
 }
 
 
-bool GuiPhantom::initialiseParams(string const & data)
+bool GuiPhantom::initialiseParams(string const & sdata)
 {
-	InsetPhantom::string2params(data, params_);
+	InsetPhantom::string2params(sdata, params_);
 	return true;
 }
 

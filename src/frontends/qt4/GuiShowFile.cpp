@@ -50,9 +50,9 @@ void GuiShowFile::updateContents()
 }
 
 
-bool GuiShowFile::initialiseParams(string const & data)
+bool GuiShowFile::initialiseParams(string const & sdata)
 {
-	filename_ = FileName(data);
+	filename_ = FileName(sdata);
 	return true;
 }
 

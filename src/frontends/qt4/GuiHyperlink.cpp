@@ -71,10 +71,10 @@ void GuiHyperlink::paramsToDialog(Inset const * inset)
 }
 
 
-bool GuiHyperlink::initialiseParams(std::string const & data)
+bool GuiHyperlink::initialiseParams(std::string const & sdata)
 {
 	InsetCommandParams params(insetCode());
-	if (!InsetCommand::string2params(data, params))
+	if (!InsetCommand::string2params(sdata, params))
 		return false;
 	targetED->setText(toqstr(params["target"]));
 	nameED->setText(toqstr(params["name"]));

@@ -48,9 +48,9 @@ void GuiToc::updateView()
 }
 
 
-bool GuiToc::initialiseParams(string const & data)
+bool GuiToc::initialiseParams(string const & sdata)
 {
-	widget_->init(toqstr(data));
+	widget_->init(toqstr(sdata));
 	return true;
 }
 

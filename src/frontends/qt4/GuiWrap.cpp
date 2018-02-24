@@ -187,9 +187,9 @@ void GuiWrap::paramsToDialog(InsetWrapParams const & params)
 }
 
 
-bool GuiWrap::initialiseParams(string const & data)
+bool GuiWrap::initialiseParams(string const & sdata)
 {
-	InsetWrap::string2params(data, params_);
+	InsetWrap::string2params(sdata, params_);
 	paramsToDialog(params_);
 	return true;
 }

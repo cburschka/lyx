@@ -340,9 +340,9 @@ ParagraphParameters const & GuiParagraph::params() const
 
 void GuiParagraph::dispatchParams()
 {
-	ostringstream data;
-	params_.write(data);
-	FuncRequest const fr(getLfun(), data.str());
+	ostringstream os;
+	params_.write(os);
+	FuncRequest const fr(getLfun(), os.str());
 	dispatch(fr);
 }
 

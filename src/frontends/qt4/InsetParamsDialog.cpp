@@ -90,9 +90,9 @@ InsetParamsDialog::~InsetParamsDialog()
 }
 
 
-bool InsetParamsDialog::initialiseParams(std::string const & data)
+bool InsetParamsDialog::initialiseParams(std::string const & sdata)
 {
-	if (!d->widget_->initialiseParams(data))
+	if (!d->widget_->initialiseParams(sdata))
 		on_restorePB_clicked();
 	return true;
 }

@@ -79,9 +79,9 @@ void GuiIndex::applyView()
 }
 
 
-bool GuiIndex::initialiseParams(string const & data)
+bool GuiIndex::initialiseParams(string const & sdata)
 {
-	InsetIndex::string2params(data, params_);
+	InsetIndex::string2params(sdata, params_);
 	return true;
 }
 

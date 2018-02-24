@@ -142,12 +142,12 @@ ErrorList const & GuiErrorList::errorList() const
 }
 
 
-bool GuiErrorList::initialiseParams(string const & data)
+bool GuiErrorList::initialiseParams(string const & sdata)
 {
-	from_master_ = prefixIs(data, "from_master|");
-	string error_type = data;
+	from_master_ = prefixIs(sdata, "from_master|");
+	string error_type = sdata;
 	if (from_master_)
-		error_type = split(data, '|');
+		error_type = split(sdata, '|');
 	error_type_ = error_type;
 	buf_ = from_master_ ?
 		bufferview()->buffer().masterBuffer()

@@ -661,9 +661,9 @@ bool GuiListings::isValid()
 }
 
 
-bool GuiListings::initialiseParams(string const & data)
+bool GuiListings::initialiseParams(string const & sdata)
 {
-	InsetListings::string2params(data, params_);
+	InsetListings::string2params(sdata, params_);
 	return true;
 }
 

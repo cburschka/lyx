@@ -1704,10 +1704,10 @@ void GuiView::errors(string const & error_type, bool from_master)
 	if (el.empty())
 		return;
 
-	string data = error_type;
+	string err = error_type;
 	if (from_master)
-		data = "from_master|" + error_type;
-	showDialog("errorlist", data);
+		err = "from_master|" + error_type;
+	showDialog("errorlist", err);
 }
 
 
@@ -1732,7 +1732,7 @@ void GuiView::structureChanged()
 }
 
 
-void GuiView::updateDialog(string const & name, string const & data)
+void GuiView::updateDialog(string const & name, string const & sdata)
 {
 	if (!isDialogVisible(name))
 		return;
@@ -1743,7 +1743,7 @@ void GuiView::updateDialog(string const & name, string const & data)
 
 	Dialog * const dialog = it->second.get();
 	if (dialog->isVisibleView())
-		dialog->initialiseParams(data);
+		dialog->initialiseParams(sdata);
 }
 
 
@@ -4044,43 +4044,43 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 
 		case LFUN_DIALOG_SHOW: {
 			string const name = cmd.getArg(0);
-			string data = trim(to_utf8(cmd.argument()).substr(name.size()));
+			string sdata = trim(to_utf8(cmd.argument()).substr(name.size()));
 
 			if (name == "character") {
-				data = freefont2string();
-				if (!data.empty())
-					showDialog("character", data);
+				sdata = freefont2string();
+				if (!sdata.empty())
+					showDialog("character", sdata);
 			} else if (name == "latexlog") {
-				// getStatus checks that
+				// gettatus checks that
 				LATTEST(doc_buffer);
 				Buffer::LogType type;
 				string const logfile = doc_buffer->logName(&type);
 				switch (type) {
 				case Buffer::latexlog:
-					data = "latex ";
+					sdata = "latex ";
 					break;
 				case Buffer::buildlog:
-					data = "literate ";
+					sdata = "literate ";
 					break;
 				}
-				data += Lexer::quoteString(logfile);
-				showDialog("log", data);
+				sdata += Lexer::quoteString(logfile);
+				showDialog("log", sdata);
 			} else if (name == "vclog") {
 				// getStatus checks that
 				LATTEST(doc_buffer);
-				string const data = "vc " +
+				string const sdata2 = "vc " +
 					Lexer::quoteString(doc_buffer->lyxvc().getLogFile());
-				showDialog("log", data);
+				showDialog("log", sdata2);
 			} else if (name == "symbols") {
-				data = bv->cursor().getEncoding()->name();
-				if (!data.empty())
-					showDialog("symbols", data);
+				sdata = bv->cursor().getEncoding()->name();
+				if (!sdata.empty())
+					showDialog("symbols", sdata);
 			// bug 5274
 			} else if (name == "prefs" && isFullScreen()) {
 				lfunUiToggle("fullscreen");
-				showDialog("prefs", data);
+				showDialog("prefs", sdata);
 			} else
-				showDialog(name, data);
+				showDialog(name, sdata);
 			break;
 		}
 
@@ -4506,10 +4506,10 @@ Dialog * GuiView::findOrBuild(string const & name, bool hide_it)
 }
 
 
-void GuiView::showDialog(string const & name, string const & data,
+void GuiView::showDialog(string const & name, string const & sdata,
 	Inset * inset)
 {
-	triggerShowDialog(toqstr(name), toqstr(data), inset);
+	triggerShowDialog(toqstr(name), toqstr(sdata), inset);
 }
 
 
@@ -4520,14 +4520,14 @@ void GuiView::doShowDialog(QString const & qname, QString const & qdata,
 		return;
 
 	const string name = fromqstr(qname);
-	const string data = fromqstr(qdata);
+	const string sdata = fromqstr(qdata);
 
 	d.in_show_ = true;
 	try {
 		Dialog * dialog = findOrBuild(name, false);
 		if (dialog) {
 			bool const visible = dialog->isVisibleView();
-			dialog->showData(data);
+			dialog->showData(sdata);
 			if (inset && currentBufferView())
 				currentBufferView()->editInset(name, inset);
 			// We only set the focus to the new dialog if it was not yet

@@ -93,8 +93,9 @@ void GuiTabularCreate::clearParams()
 
 void GuiTabularCreate::dispatchParams()
 {
-	string const data = convert<string>(params().first) + ' ' + convert<string>(params().second);
-	dispatch(FuncRequest(getLfun(), data));
+	string const sdata = 
+		convert<string>(params().first) + ' ' + convert<string>(params().second);
+	dispatch(FuncRequest(getLfun(), sdata));
 }
 
 

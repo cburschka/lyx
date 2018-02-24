@@ -58,10 +58,10 @@ docstring GuiLabel::dialogToParams() const
 }
 
 
-bool GuiLabel::initialiseParams(std::string const & data)
+bool GuiLabel::initialiseParams(std::string const & sdata)
 {
 	InsetCommandParams p(insetCode());
-	if (!InsetCommand::string2params(data, p))
+	if (!InsetCommand::string2params(sdata, p))
 		return false;
 	keywordED->setText(toqstr(p["name"]));
 	return true;

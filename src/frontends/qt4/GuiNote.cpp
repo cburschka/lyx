@@ -73,9 +73,9 @@ void GuiNote::applyView()
 }
 
 
-bool GuiNote::initialiseParams(string const & data)
+bool GuiNote::initialiseParams(string const & sdata)
 {
-	InsetNote::string2params(data, params_);
+	InsetNote::string2params(sdata, params_);
 	return true;
 }
 

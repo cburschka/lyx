@@ -219,9 +219,9 @@ bool GuiLog::contains(QRegExp const & exp) const
 }
 
 
-bool GuiLog::initialiseParams(string const & data)
+bool GuiLog::initialiseParams(string const & sdata)
 {
-	istringstream is(data);
+	istringstream is(sdata);
 	Lexer lex;
 	lex.setStream(is);
 

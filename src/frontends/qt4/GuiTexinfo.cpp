@@ -93,10 +93,10 @@ void GuiTexInfo::viewClicked()
 	// takes advantage of enum order
 	static QString const ext[] = { "cls", "sty", "bst", "bib", "bbx", "cbx" };
 	int const fitem = fileListLW->currentRow();
-	QStringList const & data = texdata_[activeStyle_];
-	QString file = data[fitem];
+	QStringList const & sdata = texdata_[activeStyle_];
+	QString file = sdata[fitem];
 	if (!pathCB->isChecked())
-		file = texFileFromList(data[fitem], ext[activeStyle_]);
+		file = texFileFromList(sdata[fitem], ext[activeStyle_]);
 	viewFile(file);
 }
 
@@ -124,28 +124,28 @@ void GuiTexInfo::updateStyles(TexFileType type)
 
 	QString const filename = filenames[type];
 
-	QStringList data = texFileList(filename);
-	if (data.empty()) {
+	QStringList flist = texFileList(filename);
+	if (flist.empty()) {
 		// build filelists of all availabe bst/cls/sty-files.
 		// Done through kpsewhich and an external script,
 		// saved in *Files.lst
 		rescanTexStyles();
-		data = texFileList(filename);
+		flist = texFileList(filename);
 	}
 
 	if (!pathCB->isChecked()) {
-		for (int i = 0; i != data.size(); ++i)
-			data[i] = onlyFileName(data[i]);
+		for (int i = 0; i != flist.size(); ++i)
+			flist[i] = onlyFileName(flist[i]);
 	}
 	// sort on filename only (no path)
-	data.sort();
+	flist.sort();
 
 	fileListLW->clear();
-	for(QString const & item : data)
+	for(QString const & item : flist)
 		fileListLW->addItem(item);
 
 	activeStyle_ = type;
-	texdata_[type] = data;
+	texdata_[type] = flist;
 }
 
 

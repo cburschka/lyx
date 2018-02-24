@@ -123,9 +123,9 @@ void GuiSearch::replaceallClicked()
 void GuiSearch::find(docstring const & search, bool casesensitive,
 			 bool matchword, bool forward)
 {
-	docstring const data =
+	docstring const sdata =
 		find2string(search, casesensitive, matchword, forward);
-	dispatch(FuncRequest(LFUN_WORD_FIND, data));
+	dispatch(FuncRequest(LFUN_WORD_FIND, sdata));
 }
 
 
@@ -133,10 +133,10 @@ void GuiSearch::replace(docstring const & search, docstring const & replace,
 			    bool casesensitive, bool matchword,
 			    bool forward, bool all)
 {
-	docstring const data =
+	docstring const sdata =
 		replace2string(replace, search, casesensitive,
 				     matchword, all, forward);
-	dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
+	dispatch(FuncRequest(LFUN_WORD_REPLACE, sdata));
 }
 
 
