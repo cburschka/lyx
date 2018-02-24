@@ -2661,7 +2661,7 @@ void Paragraph::latex(BufferParams const & bparams,
 					ParagraphList const & pars =
 						textinset->text().paragraphs();
 					pit_type const pit = pars.size() - 1;
-					Font const last_font =
+					Font const lastfont =
 						pit < 0 || pars[pit].empty()
 						? pars[pit].getLayoutFont(
 								bparams,
@@ -2669,7 +2669,7 @@ void Paragraph::latex(BufferParams const & bparams,
 						: pars[pit].getFont(bparams,
 							pars[pit].size() - 1,
 							outerfont);
-					if (last_font.fontInfo().size() !=
+					if (lastfont.fontInfo().size() !=
 					    basefont.fontInfo().size()) {
 						++parInline;
 						incremented = true;
@@ -3435,28 +3435,22 @@ void Paragraph::changeLanguage(BufferParams const & bparams,
 bool Paragraph::isMultiLingual(BufferParams const & bparams) const
 {
 	Language const * doc_language = bparams.language;
-	FontList::const_iterator cit = d->fontlist_.begin();
-	FontList::const_iterator end = d->fontlist_.end();
-
-	for (; cit != end; ++cit)
-		if (cit->font().language() != ignore_language &&
-		    cit->font().language() != latex_language &&
-		    cit->font().language() != doc_language)
+	for (auto const & f : d->fontlist_)
+		if (f.font().language() != ignore_language &&
+		    f.font().language() != latex_language &&
+		    f.font().language() != doc_language)
 			return true;
 	return false;
 }
 
 
-void Paragraph::getLanguages(std::set<Language const *> & languages) const
+void Paragraph::getLanguages(std::set<Language const *> & langs) const
 {
-	FontList::const_iterator cit = d->fontlist_.begin();
-	FontList::const_iterator end = d->fontlist_.end();
-
-	for (; cit != end; ++cit) {
-		Language const * lang = cit->font().language();
+	for (auto const & f : d->fontlist_) {
+		Language const * lang = f.font().language();
 		if (lang != ignore_language &&
 		    lang != latex_language)
-			languages.insert(lang);
+			langs.insert(lang);
 	}
 }
 
