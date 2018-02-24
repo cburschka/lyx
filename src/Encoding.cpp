@@ -715,16 +715,16 @@ void Encodings::read(FileName const & encfile, FileName const & symbolsfile)
 				flags |= CharInfoForce;
 				forced.insert(symbol);
 			} else if (prefixIs(flag, "force=")) {
-				vector<string> encodings =
+				vector<string> encs =
 					getVectorFromString(flag.substr(6), ";");
-				for (size_t i = 0; i < encodings.size(); ++i)
-					forcedselected[encodings[i]].insert(symbol);
+				for (size_t i = 0; i < encs.size(); ++i)
+					forcedselected[encs[i]].insert(symbol);
 				flags |= CharInfoForceSelected;
 			} else if (prefixIs(flag, "force!=")) {
-				vector<string> encodings =
+				vector<string> encs =
 					getVectorFromString(flag.substr(7), ";");
-				for (size_t i = 0; i < encodings.size(); ++i)
-					forcednotselected[encodings[i]].insert(symbol);
+				for (size_t i = 0; i < encs.size(); ++i)
+					forcednotselected[encs[i]].insert(symbol);
 				flags |= CharInfoForceSelected;
 			} else if (flag == "mathalpha") {
 				mathalpha.insert(symbol);
