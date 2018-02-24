@@ -480,22 +480,22 @@ void InsetPrintIndex::doDispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_INSET_MODIFY: {
 		if (cmd.argument() == from_ascii("toggle-subindex")) {
-			string cmd = getCmdName();
-			if (contains(cmd, "printindex"))
-				cmd = subst(cmd, "printindex", "printsubindex");
+			string scmd = getCmdName();
+			if (contains(scmd, "printindex"))
+				scmd = subst(scmd, "printindex", "printsubindex");
 			else
-				cmd = subst(cmd, "printsubindex", "printindex");
+				scmd = subst(scmd, "printsubindex", "printindex");
 			cur.recordUndo();
-			setCmdName(cmd);
+			setCmdName(scmd);
 			break;
 		} else if (cmd.argument() == from_ascii("check-printindex*")) {
-			string cmd = getCmdName();
-			if (suffixIs(cmd, '*'))
+			string scmd = getCmdName();
+			if (suffixIs(scmd, '*'))
 				break;
-			cmd += '*';
+			scmd += '*';
 			cur.recordUndo();
 			setParam("type", docstring());
-			setCmdName(cmd);
+			setCmdName(scmd);
 			break;
 		}
 		InsetCommandParams p(INDEX_PRINT_CODE);

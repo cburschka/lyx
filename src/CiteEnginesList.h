@@ -22,8 +22,7 @@ namespace lyx {
 
 /**
  *  This class represents a particular LyX "cite engine", which defines the features
- * of a particular citation backend such as natbib or biblatex. In that sense, it is more like
- *  a LaTeX package, where a layout file corresponds to a LaTeX class.
+ *  of a particular citation backend such as natbib or biblatex.
  *
  *  In general, a given cite engine can be used with any document class. That said,
  *  one cite engine may `require' another, or it may `exclude' some other cite engine.
@@ -101,7 +100,7 @@ private:
 	/// the LaTeX packages on which this depends, if any
 	std::vector<std::string> package_list_;
 	// these are mutable because they are used to cache the results
-	// or an otherwise const operation.
+	// of an otherwise const operation.
 	///
 	mutable bool checked_;
 	///
