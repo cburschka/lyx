@@ -190,11 +190,11 @@ bool IndicesList::add(docstring const & n, docstring const & s)
 			docstring sc = s.empty() ?
 				trim(lowercase(name.substr(0, 3))) : s;
 			if (findShortcut(sc) != 0) {
-				int i = 1;
-				docstring scn = sc + convert<docstring>(i);
+				int k = 1;
+				docstring scn = sc + convert<docstring>(k);
 				while (findShortcut(scn) != 0) {
-					++i;
-					scn = sc + convert<docstring>(i);
+					++k;
+					scn = sc + convert<docstring>(k);
 				}
 				in.setShortcut(scn);
 			} else
