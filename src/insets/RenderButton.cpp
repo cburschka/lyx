@@ -33,11 +33,11 @@ RenderBase * RenderButton::clone(Inset const *) const
 
 
 void RenderButton::update(docstring const & text, bool editable,
-                          bool inherit_font)
+                          bool inherit)
 {
 	text_ = text;
 	editable_ = editable;
-	inherit_font_ = inherit_font;
+	inherit_font_ = inherit;
 }
 
 
