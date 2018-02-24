@@ -1046,8 +1046,8 @@ int TextMetrics::parTopSpacing(pit_type const pit) const
 	if (prev != pit_type(pars.size())) {
 		asc += int(pars[prev].layout().parsep * dh);
 	} else if (pit != 0) {
-		Paragraph const & prevpar = pars[pit - 1];
-		if (prevpar.getDepth() != 0 || prevpar.layout() == layout)
+		Paragraph const & prevpar2 = pars[pit - 1];
+		if (prevpar2.getDepth() != 0 || prevpar2.layout() == layout)
 			asc += int(layout.parsep * dh);
 	}
 
@@ -1107,9 +1107,9 @@ void TextMetrics::setRowHeight(Row & row) const
 			maxasc = max(maxasc, cit->dim.ascent());
 			maxdes = max(maxdes, cit->dim.descent());
 		} else {
-			FontMetrics const & fm = theFontMetrics(cit->font);
-			maxasc = max(maxasc, int(fm.maxAscent() * spacing_val));
-			maxdes = max(maxdes, int(fm.maxDescent() * spacing_val));
+			FontMetrics const & fm2 = theFontMetrics(cit->font);
+			maxasc = max(maxasc, int(fm2.maxAscent() * spacing_val));
+			maxdes = max(maxdes, int(fm2.maxDescent() * spacing_val));
 		}
 	}
 
@@ -1295,9 +1295,9 @@ pit_type TextMetrics::getPitNearY(int y)
 		LYXERR(Debug::DEBUG, "examining: pit: " << it->first
 			<< " y: " << it->second.position());
 
-		ParagraphMetrics const & pm = par_metrics_[it->first];
+		ParagraphMetrics const & pm2 = par_metrics_[it->first];
 
-		if (it->first >= pit && int(it->second.position()) - int(pm.ascent()) <= y) {
+		if (it->first >= pit && int(it->second.position()) - int(pm2.ascent()) <= y) {
 			pit = it->first;
 			yy = it->second.position();
 		}
