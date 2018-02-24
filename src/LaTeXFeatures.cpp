@@ -831,7 +831,7 @@ vector<string> LaTeXFeatures::getBabelExclusiveLanguages() const
 
 string LaTeXFeatures::getBabelLanguages() const
 {
-	ostringstream languages;
+	ostringstream langs;
 
 	bool first = true;
 	LanguageList::const_iterator const begin = UsedLanguages_.begin();
@@ -841,27 +841,27 @@ string LaTeXFeatures::getBabelLanguages() const
 		if ((*cit)->babel().empty())
 			continue;
 		if (!first)
-			languages << ',';
+			langs << ',';
 		else
 			first = false;
-		languages << (*cit)->babel();
+		langs << (*cit)->babel();
 	}
-	return languages.str();
+	return langs.str();
 }
 
 
 set<string> LaTeXFeatures::getPolyglossiaLanguages() const
 {
-	set<string> languages;
+	set<string> langs;
 
 	LanguageList::const_iterator const begin = UsedLanguages_.begin();
 	for (LanguageList::const_iterator cit = begin;
 	     cit != UsedLanguages_.end();
 	     ++cit) {
 		// We do not need the variants here
-		languages.insert((*cit)->polyglossia());
+		langs.insert((*cit)->polyglossia());
 	}
-	return languages;
+	return langs;
 }
 
 
@@ -870,39 +870,34 @@ set<string> LaTeXFeatures::getEncodingSet(string const & doc_encoding) const
 	// This does only find encodings of languages supported by babel, but
 	// that does not matter since we don't have a language with an
 	// encoding supported by inputenc but without babel support.
-	set<string> encodings;
-	LanguageList::const_iterator it  = UsedLanguages_.begin();
-	LanguageList::const_iterator end = UsedLanguages_.end();
-	for (; it != end; ++it)
-		if ((*it)->encoding()->latexName() != doc_encoding &&
-		    ((*it)->encoding()->package() == Encoding::inputenc
-		     || (*it)->encoding()->package() == Encoding::japanese))
-			encodings.insert((*it)->encoding()->latexName());
-	return encodings;
+	set<string> encs;
+	for (auto const & lang : UsedLanguages_)
+		if (lang->encoding()->latexName() != doc_encoding &&
+		    (lang->encoding()->package() == Encoding::inputenc
+		     || lang->encoding()->package() == Encoding::japanese))
+			encs.insert(lang->encoding()->latexName());
+	return encs;
 }
 
 
-void LaTeXFeatures::getFontEncodings(vector<string> & encodings) const
+void LaTeXFeatures::getFontEncodings(vector<string> & encs) const
 {
 	// these must be loaded if glyphs of this script are used
 	// unless a language providing them is used in the document
 	if (mustProvide("textgreek")
-	    && find(encodings.begin(), encodings.end(), "LGR") == encodings.end())
-		encodings.insert(encodings.begin(), "LGR");
+	    && find(encs.begin(), encs.end(), "LGR") == encs.end())
+		encs.insert(encs.begin(), "LGR");
 	if (mustProvide("textcyr")
-	    && find(encodings.begin(), encodings.end(), "T2A") == encodings.end())
-		encodings.insert(encodings.begin(), "T2A");
+	    && find(encs.begin(), encs.end(), "T2A") == encs.end())
+		encs.insert(encs.begin(), "T2A");
 
-	LanguageList::const_iterator it  = UsedLanguages_.begin();
-	LanguageList::const_iterator end = UsedLanguages_.end();
-	for (; it != end; ++it)
-		if (!(*it)->fontenc().empty()
-		    && ascii_lowercase((*it)->fontenc()) != "none") {
-			vector<string> extraencs = getVectorFromString((*it)->fontenc());
-			vector<string>::const_iterator fit = extraencs.begin();
-			for (; fit != extraencs.end(); ++fit) {
-				if (find(encodings.begin(), encodings.end(), *fit) == encodings.end())
-					encodings.insert(encodings.begin(), *fit);
+	for (auto const & lang : UsedLanguages_)
+		if (!lang->fontenc().empty()
+		    && ascii_lowercase(lang->fontenc()) != "none") {
+			vector<string> extraencs = getVectorFromString(lang->fontenc());
+			for (auto const & extra : extraencs) {
+				if (find(encs.begin(), encs.end(), extra) == encs.end())
+					encs.insert(encs.begin(), extra);
 			}
 		}
 }
