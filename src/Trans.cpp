@@ -190,10 +190,10 @@ void Trans::addDeadkey(tex_accent accent, docstring const & keys)
 		// FIXME This is a hack.
 		// tmp is no valid UCS4 string, but misused to store the
 		// accent.
-		docstring tmp;
-		tmp += char_type(0);
-		tmp += char_type(accent);
-		keymap_[keys[i]] = tmp;
+		docstring tmpd;
+		tmpd += char_type(0);
+		tmpd += char_type(accent);
+		keymap_[keys[i]] = tmpd;
 	}
 }
 
