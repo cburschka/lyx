@@ -1169,8 +1169,8 @@ docstring latexifyFromCursor(DocIterator const & cur, int len)
 		// Retrieve the math environment type, and add '$' or '$]'
 		// or others (\end{equation}) accordingly
 		for (int s = cur.depth() - 1; s >= 0; --s) {
-			CursorSlice const & cs = cur[s];
-			InsetMath * inset = cs.asInsetMath();
+			CursorSlice const & cs2 = cur[s];
+			InsetMath * inset = cs2.asInsetMath();
 			if (inset && inset->asHullInset()) {
 				WriteStream ws(os);
 				inset->asHullInset()->footer_write(ws);
@@ -1239,9 +1239,9 @@ int findForwardAdv(DocIterator & cur, MatchStringAdv & match)
 		if (match_len) {
 			for (; !theApp()->longOperationCancelled() && cur; cur.forwardPos()) {
 				LYXERR(Debug::FIND, "Advancing cur: " << cur);
-				int match_len = match(cur);
-				LYXERR(Debug::FIND, "match_len: " << match_len);
-				if (match_len) {
+				int match_len2 = match(cur);
+				LYXERR(Debug::FIND, "match_len: " << match_len2);
+				if (match_len2) {
 					// Sometimes in finalize we understand it wasn't a match
 					// and we need to continue the outest loop
 					int len = findAdvFinalize(cur, match);
