@@ -720,7 +720,7 @@ string Parser::verbatim_item()
 	if (next_token().cat() == catBegin) {
 		Token t = get_token(); // skip brace
 		string res;
-		for (Token t = get_token(); t.cat() != catEnd && good(); t = get_token()) {
+		for (t = get_token(); t.cat() != catEnd && good(); t = get_token()) {
 			if (t.cat() == catBegin) {
 				putback();
 				res += '{' + verbatim_item() + '}';
