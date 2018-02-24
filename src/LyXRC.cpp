@@ -430,7 +430,7 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 		return ReadError;
 
 	// format prior to 2.0 and introduction of format tag
-	unsigned int format = 0;
+	unsigned int rc_format = 0;
 
 	while (lexrc.isOK()) {
 		// By using two switches we take advantage of the compiler
@@ -453,7 +453,7 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 		switch (static_cast<LyXRCTags>(le)) {
 		case RC_LYXRCFORMAT:
 			if (lexrc.next())
-				format = lexrc.getInteger();
+				rc_format = lexrc.getInteger();
 			break;
 		case RC_INPUT: // Include file
 			if (lexrc.next()) {
@@ -1232,7 +1232,7 @@ LyXRC::ReturnValues LyXRC::read(Lexer & lexrc, bool check_format)
 
 		// This is triggered the first time through the loop unless
 		// we hit a format tag.
-		if (check_format && format != LYXRC_FILEFORMAT)
+		if (check_format && rc_format != LYXRC_FILEFORMAT)
 			return FormatMismatch;
 	}
 
