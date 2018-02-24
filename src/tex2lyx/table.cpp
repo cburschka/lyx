@@ -1117,19 +1117,19 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				     << cells[cell] << "'." << endl;
 				continue;
 			}
-			Parser p(cells[cell]);
-			p.skip_spaces();
+			Parser parse(cells[cell]);
+			parse.skip_spaces();
 			//cells[cell] << "'\n";
-			if (p.next_token().cs() == "multicolumn") {
+			if (parse.next_token().cs() == "multicolumn") {
 				// how many cells?
-				p.get_token();
+				parse.get_token();
 				size_t const ncells =
-					convert<unsigned int>(p.verbatim_item());
+					convert<unsigned int>(parse.verbatim_item());
 
 				// special cell properties alignment
 				vector<ColInfo> t;
-				handle_colalign(p, t, ColInfo());
-				p.skip_spaces(true);
+				handle_colalign(parse, t, ColInfo());
+				parse.skip_spaces(true);
 				ColInfo & ci = t.front();
 
 				// The logic of LyX for multicolumn vertical
@@ -1144,8 +1144,8 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				cellinfo[row][col].special    = ci.special;
 				cellinfo[row][col].leftlines  = ci.leftlines;
 				cellinfo[row][col].rightlines = ci.rightlines;
-				ostringstream os;
-				parse_text_in_inset(p, os, FLAG_ITEM, false, context);
+				ostringstream os2;
+				parse_text_in_inset(parse, os2, FLAG_ITEM, false, context);
 				if (!cellinfo[row][col].content.empty()) {
 					// This may or may not work in LaTeX,
 					// but it does not work in LyX.
@@ -1156,7 +1156,7 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 						"This will probably not work."
 					     << endl;
 				}
-				cellinfo[row][col].content += os.str();
+				cellinfo[row][col].content += os2.str();
 
 				// add dummy cells for multicol
 				for (size_t i = 0; i < ncells - 1; ++i) {
@@ -1179,7 +1179,7 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 
 			} else if (col == 0 && colinfo.size() > 1 &&
 			           is_long_tabular &&
-			           p.next_token().cs() == "caption") {
+			           parse.next_token().cs() == "caption") {
 				// longtable caption support in LyX is a hack:
 				// Captions require a row of their own with
 				// the caption flag set to true, having only
@@ -1202,51 +1202,51 @@ void handle_tabular(Parser & p, ostream & os, string const & name,
 				cells.resize(1);
 				cellinfo[row][col].align      = colinfo[col].align;
 				cellinfo[row][col].multi      = CELL_BEGIN_OF_MULTICOLUMN;
-				ostringstream os;
-				parse_text_in_inset(p, os, FLAG_CELL, false, context);
-				cellinfo[row][col].content += os.str();
+				ostringstream os2;
+				parse_text_in_inset(parse, os2, FLAG_CELL, false, context);
+				cellinfo[row][col].content += os2.str();
 				// add dummy multicolumn cells
 				for (size_t c = 1; c < colinfo.size(); ++c)
 					cellinfo[row][c].multi = CELL_PART_OF_MULTICOLUMN;
 			} else {
 				bool turn = false;
 				int rotate = 0;
-				if (p.next_token().cs() == "begin") {
-					p.pushPosition();
-					p.get_token();
-					string const env = p.getArg('{', '}');
+				if (parse.next_token().cs() == "begin") {
+					parse.pushPosition();
+					parse.get_token();
+					string const env = parse.getArg('{', '}');
 					if (env == "sideways" || env == "turn") {
 						string angle = "90";
 						if (env == "turn") {
 							turn = true;
-							angle = p.getArg('{', '}');
+							angle = parse.getArg('{', '}');
 						}
 						active_environments.push_back(env);
-						p.ertEnvironment(env);
+						parse.ertEnvironment(env);
 						active_environments.pop_back();
-						p.skip_spaces();
-						if (!p.good() && support::isStrInt(angle))
+						parse.skip_spaces();
+						if (!parse.good() && support::isStrInt(angle))
 							rotate = convert<int>(angle);
 					}
-					p.popPosition();
+					parse.popPosition();
 				}
 				cellinfo[row][col].leftlines  = colinfo[col].leftlines;
 				cellinfo[row][col].rightlines = colinfo[col].rightlines;
 				cellinfo[row][col].align      = colinfo[col].align;
-				ostringstream os;
+				ostringstream os2;
 				if (rotate != 0) {
 					cellinfo[row][col].rotate = rotate;
-					p.get_token();
-					active_environments.push_back(p.getArg('{', '}'));
+					parse.get_token();
+					active_environments.push_back(parse.getArg('{', '}'));
 					if (turn)
-						p.getArg('{', '}');
-					parse_text_in_inset(p, os, FLAG_END, false, context);
+						parse.getArg('{', '}');
+					parse_text_in_inset(parse, os2, FLAG_END, false, context);
 					active_environments.pop_back();
 					preamble.registerAutomaticallyLoadedPackage("rotating");
 				} else {
-					parse_text_in_inset(p, os, FLAG_CELL, false, context);
+					parse_text_in_inset(parse, os2, FLAG_CELL, false, context);
 				}
-				cellinfo[row][col].content += os.str();
+				cellinfo[row][col].content += os2.str();
 			}
 		}
 
