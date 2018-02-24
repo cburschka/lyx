@@ -3455,7 +3455,7 @@ void GuiView::openChildDocument(string const & fname)
 bool GuiView::goToFileRow(string const & argument)
 {
 	string file_name;
-	int row;
+	int row = -1;
 	size_t i = argument.find_last_of(' ');
 	if (i != string::npos) {
 		file_name = os::internal_path(trim(argument.substr(0, i)));
