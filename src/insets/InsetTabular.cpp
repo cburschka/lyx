@@ -1162,12 +1162,12 @@ void Tabular::setColumnPWidth(Cursor & cur, idx_type cell,
 	if (column_info[c].p_width.zero())
 		column_info[c].valignment = LYX_VALIGN_TOP;
 	for (row_type r = 0; r < nrows(); ++r) {
-		idx_type const cell = cellIndex(r, c);
+		idx_type const cidx = cellIndex(r, c);
 		// because of multicolumns
-		toggleFixedWidth(cur, cellInset(cell).get(),
-				 !getPWidth(cell).zero());
-		if (isMultiRow(cell))
-			setAlignment(cell, LYX_ALIGN_LEFT, false);
+		toggleFixedWidth(cur, cellInset(cidx).get(),
+				 !getPWidth(cidx).zero());
+		if (isMultiRow(cidx))
+			setAlignment(cidx, LYX_ALIGN_LEFT, false);
 	}
 	// cur paragraph can become invalid after paragraphs were merged
 	if (cur.pit() > cur.lastpit())
@@ -2564,12 +2564,12 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 		     OutputParams const & runparams) const
 {
 	idx_type cell = cellIndex(row, 0);
-	InsetTableCell const * inset = cellInset(cell);
-	Paragraph const & par = inset->paragraphs().front();
-	string const lang = par.getParLanguage(buffer().params())->lang();
+	InsetTableCell const * cinset = cellInset(cell);
+	Paragraph const & cpar = cinset->paragraphs().front();
+	string const clang = cpar.getParLanguage(buffer().params())->lang();
 
 	//output the top line
-	TeXTopHLine(os, row, lang);
+	TeXTopHLine(os, row, clang);
 
 	if (row_info[row].top_space_default) {
 		if (use_booktabs)
@@ -2698,7 +2698,7 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 	os << '\n';
 
 	//output the bottom line
-	TeXBottomHLine(os, row, lang);
+	TeXBottomHLine(os, row, clang);
 
 	if (row_info[row].interline_space_default) {
 		if (use_booktabs)
@@ -3686,15 +3686,15 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 				// multicolumn or multirow cell, but not first one
 				continue;
 			idx_type const cell = tabular.cellIndex(r, c);
-			Dimension dim;
+			Dimension dim0;
 			MetricsInfo m = mi;
 			Length const p_width = tabular.getPWidth(cell);
 			if (!p_width.zero())
 				m.base.textwidth = mi.base.inPixels(p_width);
-			tabular.cellInset(cell)->metrics(m, dim);
+			tabular.cellInset(cell)->metrics(m, dim0);
 			if (!p_width.zero())
-				dim.wid = m.base.textwidth;
-			tabular.cellInfo(cell).width = dim.wid + 2 * WIDTH_OF_LINE
+				dim0.wid = m.base.textwidth;
+			tabular.cellInfo(cell).width = dim0.wid + 2 * WIDTH_OF_LINE
 				+ tabular.interColumnSpace(cell);
 
 			// FIXME(?): do we need a second metrics call?
@@ -3739,15 +3739,15 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 				case Tabular::LYX_VALIGN_TOP:
 					break;
 				case Tabular::LYX_VALIGN_MIDDLE:
-					offset = -(dim.des - lastpardes)/2;
+					offset = -(dim0.des - lastpardes)/2;
 					break;
 				case Tabular::LYX_VALIGN_BOTTOM:
-					offset = -(dim.des - lastpardes);
+					offset = -(dim0.des - lastpardes);
 					break;
 			}
 			tabular.cell_info[r][c].voffset = offset;
-			maxasc = max(maxasc, dim.asc - offset);
-			maxdes = max(maxdes, dim.des + offset);
+			maxasc = max(maxasc, dim0.asc - offset);
+			maxdes = max(maxdes, dim0.des + offset);
 		}
 		int const top_space = tabular.row_info[r].top_space_default ?
 		    default_line_space :
