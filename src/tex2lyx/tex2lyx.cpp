@@ -172,30 +172,26 @@ void add_known_theorem(string const & theorem, string const & o1,
 }
 
 
-Layout const * findLayoutWithoutModule(TextClass const & textclass,
+Layout const * findLayoutWithoutModule(TextClass const & tc,
                                        string const & name, bool command)
 {
-	DocumentClass::const_iterator it = textclass.begin();
-	DocumentClass::const_iterator en = textclass.end();
-	for (; it != en; ++it) {
-		if (it->latexname() == name &&
-		    ((command && it->isCommand()) || (!command && it->isEnvironment())))
-			return &*it;
+	for (auto const & lay : tc) {
+		if (lay.latexname() == name &&
+		    ((command && lay.isCommand()) || (!command && lay.isEnvironment())))
+			return &lay;
 	}
 	return 0;
 }
 
 
-InsetLayout const * findInsetLayoutWithoutModule(TextClass const & textclass,
+InsetLayout const * findInsetLayoutWithoutModule(TextClass const & tc,
                                                  string const & name, bool command)
 {
-	DocumentClass::InsetLayouts::const_iterator it = textclass.insetLayouts().begin();
-	DocumentClass::InsetLayouts::const_iterator en = textclass.insetLayouts().end();
-	for (; it != en; ++it) {
-		if (it->second.latexname() == name &&
-		    ((command && it->second.latextype() == InsetLayout::COMMAND) ||
-		     (!command && it->second.latextype() == InsetLayout::ENVIRONMENT)))
-			return &(it->second);
+	for (auto const & ilay : tc.insetLayouts()) {
+		if (ilay.second.latexname() == name &&
+		    ((command && ilay.second.latextype() == InsetLayout::COMMAND) ||
+		     (!command && ilay.second.latextype() == InsetLayout::ENVIRONMENT)))
+			return &(ilay.second);
 	}
 	return 0;
 }
@@ -359,29 +355,29 @@ bool checkModule(string const & name, bool command)
 		Layout const * layout = findLayoutWithoutModule(*c, name, command);
 		InsetLayout const * insetlayout = layout ? 0 :
 			findInsetLayoutWithoutModule(*c, name, command);
-		docstring preamble;
+		docstring dpre;
 		if (layout)
-			preamble = layout->preamble();
+			dpre = layout->preamble();
 		else if (insetlayout)
-			preamble = insetlayout->preamble();
-		if (preamble.empty())
+			dpre = insetlayout->preamble();
+		if (dpre.empty())
 			continue;
 		bool add = false;
 		if (command) {
 			FullCommand const & cmd =
 				possible_textclass_commands['\\' + name];
-			if (preamble.find(cmd.def) != docstring::npos)
+			if (dpre.find(cmd.def) != docstring::npos)
 				add = true;
 		} else if (theorem) {
 			FullCommand const & thm =
 				possible_textclass_theorems[name];
-			if (preamble.find(thm.def) != docstring::npos)
+			if (dpre.find(thm.def) != docstring::npos)
 				add = true;
 		} else {
 			FullEnvironment const & env =
 				possible_textclass_environments[name];
-			if (preamble.find(env.beg) != docstring::npos &&
-			    preamble.find(env.end) != docstring::npos)
+			if (dpre.find(env.beg) != docstring::npos &&
+			    dpre.find(env.end) != docstring::npos)
 				add = true;
 		}
 		if (add) {
