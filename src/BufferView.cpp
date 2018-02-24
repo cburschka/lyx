@@ -164,7 +164,7 @@ bool findInset(DocIterator & dit, vector<InsetCode> const & codes,
 
 	if (!findNextInset(tmpdit, codes, contents)) {
 		if (dit.depth() != 1 || dit.pit() != 0 || dit.pos() != 0) {
-			Inset * inset = &tmpdit.bottom().inset();
+			inset = &tmpdit.bottom().inset();
 			tmpdit = doc_iterator_begin(&inset->buffer(), inset);
 			if (!findNextInset(tmpdit, codes, contents))
 				return false;
@@ -1463,14 +1463,14 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		for (Buffer * b = &buffer_; i == 0 || b != &buffer_;
 			b = theBufferList().next(b)) {
 
-			Cursor cur(*this);
-			cur.setCursor(b->getParFromID(id));
-			if (cur.atEnd()) {
+			Cursor curs(*this);
+			curs.setCursor(b->getParFromID(id));
+			if (curs.atEnd()) {
 				LYXERR(Debug::INFO, "No matching paragraph found! [" << id << "].");
 				++i;
 				continue;
 			}
-			LYXERR(Debug::INFO, "Paragraph " << cur.paragraph().id()
+			LYXERR(Debug::INFO, "Paragraph " << curs.paragraph().id()
 				<< " found in buffer `"
 				<< b->absFileName() << "'.");
 
@@ -1478,8 +1478,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				bool success;
 				if (str_id_end.empty() || str_pos_end.empty()) {
 					// Set the cursor
-					cur.pos() = pos;
-					mouseSetCursor(cur);
+					curs.pos() = pos;
+					mouseSetCursor(curs);
 					success = true;
 				} else {
 					int const id_end = convert<int>(str_id_end);
@@ -1917,20 +1917,20 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		// an arbitrary number to limit number of iterations
 		const int max_iter = 100000;
 		int iterations = 0;
-		Cursor & cur = d->cursor_;
-		Cursor const savecur = cur;
-		cur.reset();
-		if (!cur.nextInset())
-			cur.forwardInset();
-		cur.beginUndoGroup();
-		while(cur && iterations < max_iter) {
-			Inset * const ins = cur.nextInset();
+		Cursor & curs = d->cursor_;
+		Cursor const savecur = curs;
+		curs.reset();
+		if (!curs.nextInset())
+			curs.forwardInset();
+		curs.beginUndoGroup();
+		while(curs && iterations < max_iter) {
+			Inset * const ins = curs.nextInset();
 			if (!ins)
 				break;
 			docstring insname = ins->layoutName();
 			while (!insname.empty()) {
 				if (insname == name || name == from_utf8("*")) {
-					cur.recordUndo();
+					curs.recordUndo();
 					lyx::dispatch(fr, dr);
 					++iterations;
 					break;
@@ -1941,11 +1941,11 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 				insname = insname.substr(0, i);
 			}
 			// if we did not delete the inset, skip it
-			if (!cur.nextInset() || cur.nextInset() == ins)
-				cur.forwardInset();
+			if (!curs.nextInset() || curs.nextInset() == ins)
+				curs.forwardInset();
 		}
-		cur = savecur;
-		cur.fixIfBroken();
+		curs = savecur;
+		curs.fixIfBroken();
 		/** This is a dummy undo record only to remember the cursor
 		 * that has just been set; this will be used on a redo action
 		 * (see ticket #10097)
@@ -1953,8 +1953,8 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		 * FIXME: a better fix would be to have a way to set the
 		 * cursor value directly, but I am not sure it is worth it.
 		 */
-		cur.recordUndo();
-		cur.endUndoGroup();
+		curs.recordUndo();
+		curs.endUndoGroup();
 		dr.screenUpdate(Update::Force);
 		dr.forceBufferUpdate();
 
