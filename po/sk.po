@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-02-08 23:23+0100\n"
-"PO-Revision-Date: 2018-02-08 22:31+0000\n"
+"POT-Creation-Date: 2018-02-24 14:46+0100\n"
+"PO-Revision-Date: 2018-02-25 11:15+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1085,6 +1085,14 @@ msgstr ""
 "Podaj obsah poľa `Text pred' a `Text za' priamo pre LaTeX. Označte toto keď "
 "vkladáte LaTeX kód."
 
+#: src/frontends/qt4/ui/IncludeUi.ui:295
+msgid ""
+"Pass content of the `Caption' field literally to LaTeX. Check this if you "
+"want to enter LaTeX code."
+msgstr ""
+"Podaj obsah poľa `Popis' priamo pre LaTeX. Označte toto keď chcete vložiť "
+"LaTeX kód."
+
 #: src/frontends/qt4/ui/CitationUi.ui:388
 msgid ""
 "Force upper case in names (\"Del Piero\", not \"del Piero\"), if the current "
@@ -2122,18 +2130,6 @@ msgstr "Vyberte to pre parametre ktoré LyX nepozná"
 msgid "&Bypass validation"
 msgstr "Nes&kontrolovať platnosť"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:86
-msgid "C&aption:"
-msgstr "Pop&is:"
-
-#: src/frontends/qt4/ui/IncludeUi.ui:99
-msgid "La&bel:"
-msgstr "Ná&vestie:"
-
-#: src/frontends/qt4/ui/IncludeUi.ui:109
-msgid "Mo&re parameters"
-msgstr "Ď&alšie parametre"
-
 #: src/frontends/qt4/ui/IncludeUi.ui:183
 msgid "Underline spaces in generated output"
 msgstr "Podčiarknuť medzery v generovanom výstupe"
@@ -2146,9 +2142,9 @@ msgstr "Označiť &medzery vo výstupe"
 msgid "Show LaTeX preview"
 msgstr "Zobraziť LaTeX náhľad"
 
-#: src/frontends/qt4/ui/IncludeUi.ui:204
+#: src/frontends/qt4/ui/IncludeUi.ui:155
 msgid "&Show preview"
-msgstr "Zobraziť &náhľad"
+msgstr "Zo&braziť náhľad"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:275
 msgid "File name to include"
@@ -3427,6 +3423,10 @@ msgstr "&Do formátu:"
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:54
 msgid "&Modify"
 msgstr "&Modifikovať"
+
+#: src/frontends/qt4/ui/IncludeUi.ui:285
+msgid "&More parameters"
+msgstr "Ď&alšie parametre"
 
 #: src/frontends/qt4/ui/PrefConvertersUi.ui:209
 #: src/frontends/qt4/ui/PrefShortcutsUi.ui:61
@@ -8683,6 +8683,22 @@ msgstr "Tlačová Poznámka:"
 #: lib/layouts/aguplus.inc:182
 msgid "Plates"
 msgstr "Vyobrazenia"
+
+#: src/frontends/qt4/GuiAbout.cpp:52 src/frontends/qt4/GuiAbout.cpp:57
+msgid ""
+"Please install correctly to estimate the great\n"
+"amount of work other people have done for the LyX project."
+msgstr ""
+"Prosím vykonajte správnu inštaláciu na ocenenie veľkého\n"
+"množstva práce všetkých ľudí, ktorí pracovali pre LyX projekt."
+
+#: src/frontends/qt4/GuiAbout.cpp:92 src/frontends/qt4/GuiAbout.cpp:97
+msgid ""
+"Please install correctly to see what has changed\n"
+"for this version of LyX."
+msgstr ""
+"Prosím vykonajte správnu inštaláciu keď chcete zistiť čo sa zmenilo\n"
+"pre túto verziu LyXu."
 
 #: lib/layouts/aguplus.inc:183
 msgid "Planotables"
@@ -24799,6 +24815,10 @@ msgstr "LyX 2.1.x"
 msgid "LyX 2.2.x"
 msgstr "LyX 2.2.x"
 
+#: lib/configure.py:758
+msgid "LyX 2.3.x"
+msgstr "LyX 2.3.x"
+
 #: lib/configure.py:759
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
@@ -26661,6 +26681,10 @@ msgstr "Prepísať &všetko"
 #: src/Exporter.cpp:51
 msgid "&Cancel export"
 msgstr "&Zrušiť export"
+
+#: src/frontends/qt4/ui/IncludeUi.ui:248
+msgid "&Caption:"
+msgstr "&Popis:"
 
 #: src/Exporter.cpp:97
 msgid "Couldn't copy file"
@@ -28538,14 +28562,6 @@ msgstr "Nastavenia Plávajúceho Objektu"
 msgid "ERROR: LyX wasn't able to find the CREDITS file\n"
 msgstr "CHYBA: LyXu sa nepodarilo nájsť súbor CREDITS\n"
 
-#: src/frontends/qt4/GuiAbout.cpp:52 src/frontends/qt4/GuiAbout.cpp:58
-msgid "Please install correctly to estimate the great\n"
-msgstr "Prosím vykonajte správnu inštaláciu na ocenenie veľkého\n"
-
-#: src/frontends/qt4/GuiAbout.cpp:53 src/frontends/qt4/GuiAbout.cpp:59
-msgid "amount of work other people have done for the LyX project."
-msgstr "množstva práce všetkých ľudí, ktorí pracovali pre LyX projekt."
-
 #: src/frontends/qt4/GuiAbout.cpp:57
 msgid "ERROR: LyX wasn't able to read the CREDITS file\n"
 msgstr "CHYBA: LyXu sa nepodarilo načítať súbor CREDITS\n"
@@ -28553,14 +28569,6 @@ msgstr "CHYBA: LyXu sa nepodarilo načítať súbor CREDITS\n"
 #: src/frontends/qt4/GuiAbout.cpp:93
 msgid "ERROR: LyX wasn't able to find the RELEASE-NOTES file\n"
 msgstr "CHYBA: LyXu sa nepodarilo nájsť súbor RELEASE-NOTES\n"
-
-#: src/frontends/qt4/GuiAbout.cpp:94 src/frontends/qt4/GuiAbout.cpp:100
-msgid "Please install correctly to see what has changed\n"
-msgstr "Prosím vykonajte správnu inštaláciu keď chcete zistiť čo sa zmenilo\n"
-
-#: src/frontends/qt4/GuiAbout.cpp:95 src/frontends/qt4/GuiAbout.cpp:101
-msgid "for this version of LyX."
-msgstr "pre túto verziu LyXu."
 
 #: src/frontends/qt4/GuiAbout.cpp:99
 msgid "ERROR: LyX wasn't able to read the RELEASE-NOTES file\n"
@@ -33614,6 +33622,18 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#~ msgid "C&aption:"
+#~ msgstr "Pop&is:"
+
+#~ msgid "La&bel:"
+#~ msgstr "Ná&vestie:"
+
+#~ msgid "Please install correctly to estimate the great\n"
+#~ msgstr "Prosím vykonajte správnu inštaláciu na ocenenie veľkého\n"
+
+#~ msgid "for this version of LyX."
+#~ msgstr "pre túto verziu LyXu."
+
 #~ msgid " et al."
 #~ msgstr " a kol."
 
@@ -38092,3 +38112,12 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Insert side scripts"
 #~ msgstr "Vložiť bočné formuly"
+
+#~ msgid "Mo&re parameters"
+#~ msgstr "Ď&alšie parametre"
+
+#~ msgid "amount of work other people have done for the LyX project."
+#~ msgstr "množstva práce všetkých ľudí, ktorí pracovali pre LyX projekt."
+
+#~ msgid "Please install correctly to see what has changed\n"
+#~ msgstr "Prosím vykonajte správnu inštaláciu keď chcete zistiť čo sa zmenilo\n"
