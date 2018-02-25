@@ -5293,7 +5293,6 @@ void Buffer::Impl::fileExternallyModified(bool const exists)
 		       "checksum unchanged: " << filename);
 		return;
 	}
-	lyx_clean = bak_clean = false;
 	// If the file has been deleted, only mark the file as dirty since it is
 	// pointless to prompt for reloading. If later a file is moved into this
 	// location, then the externally modified warning will appear then.
