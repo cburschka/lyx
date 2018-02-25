@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lyx 2.1\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-02-22 21:00+0100\n"
+"POT-Creation-Date: 2018-02-24 19:14-0500\n"
 "PO-Revision-Date: 2018-02-24 01:09-0800\n"
 "Last-Translator: Pavel Sanda <sanda@lyx.org>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -1812,7 +1812,9 @@ msgstr "Zap&nout mikrotypografické extenze"
 msgid ""
 "By default, a line break can occur after en- and em-dashes. Checking this "
 "box prevents that."
-msgstr "Konec řádku může standardně následovat po dlouhých/čtverčíkových pomlčkách. Zaškrtnutím tuto možnost zakážete."
+msgstr ""
+"Konec řádku může standardně následovat po dlouhých/čtverčíkových pomlčkách. "
+"Zaškrtnutím tuto možnost zakážete."
 
 #: src/frontends/qt4/ui/FontUi.ui:303
 msgid "Disallow l&ine breaks after dashes"
@@ -15481,7 +15483,9 @@ msgstr "Podrovnice"
 msgid ""
 "Provide a straightforward way to segregate subequations in LyX. See the "
 "subequations.lyx example file."
-msgstr "Poskytne možnost segregace podrovnic v LyX-u. Viz příklad v souboru subequations.lyx."
+msgstr ""
+"Poskytne možnost segregace podrovnic v LyX-u. Viz příklad v souboru "
+"subequations.lyx."
 
 #: lib/layouts/svcommon.inc:68
 msgid "Front Matter"
@@ -24436,7 +24440,9 @@ msgstr "Rastrový obrázek"
 msgid ""
 "A bitmap file.\n"
 "Use this template to include bitmap images of any kind.\n"
-msgstr "Bitmapový soubor.\nPoužijte pro vložení bitmapových obrázků libovolného typu.\n"
+msgstr ""
+"Bitmapový soubor.\n"
+"Použijte pro vložení bitmapových obrázků libovolného typu.\n"
 
 #: lib/xtemplates/vector_graphics.xtemplate:14
 msgid "VectorGraphics"
@@ -24461,7 +24467,8 @@ msgstr ""
 "Použijte pro vložení vektorových obrázků libovolného typu.\n"
 "Lyx se pokusí získat vlastnosti obrázku pro koncový výstup.\n"
 "Formáty Xfig a Dia mají vlastní šablony. Specializované šablony\n"
-"umožnují použít font dokumnetu v obrázcích, což není možné s touto\nobecnou šablonou\n"
+"umožnují použít font dokumnetu v obrázcích, což není možné s touto\n"
+"obecnou šablonou\n"
 
 #: lib/xtemplates/xfig.xtemplate:33
 msgid "XFig"
@@ -25181,7 +25188,10 @@ msgid ""
 "But the file has successfully been saved as:\n"
 "  %2$s."
 msgstr ""
-"Nelze přesunout uložený soubor do:\n  %1$s.\nPodařilo se ho ovšem uložit jako:\n  %2$s."
+"Nelze přesunout uložený soubor do:\n"
+"  %1$s.\n"
+"Podařilo se ho ovšem uložit jako:\n"
+"  %2$s."
 
 #: src/Buffer.cpp:1529
 #, c-format
@@ -26489,12 +26499,13 @@ msgid ""
 "\n"
 "where 'driver' is name of the driver command."
 msgstr ""
-"Příkaz ovladače nutný pro použití balíčku minted (pygmentize)\nnebyl nalezen. Ujistěte se, že je nainstalován python-pygments\nmodul. V případě, že rozdílného jména olvadače volžte do preamble dokumentu\n"
+"Příkaz ovladače nutný pro použití balíčku minted (pygmentize)\n"
+"nebyl nalezen. Ujistěte se, že je nainstalován python-pygments\n"
+"modul. V případě, že rozdílného jména olvadače volžte do preamble dokumentu\n"
 "\n"
 "\\AtBeginDocument{\\renewcommand{\\MintedPygmentize}{driver}}\n"
 "\n"
 "kde 'driver' je jméno příkazu ovladače."
-
 
 #: src/Converter.cpp:630 src/Format.cpp:722 src/Format.cpp:793
 msgid "Executing command: "
@@ -26896,7 +26907,9 @@ msgstr "Font není dostupný"
 msgid ""
 "The LaTeX package `%1$s' needed for the font `%2$s'\n"
 "is not available on your system. LyX will fall back to the default font."
-msgstr "LaTeX-ový balíček `%1$s' potřebný pro font `%2$s'\nnení dostupný. LyX použije standardní font."
+msgstr ""
+"LaTeX-ový balíček `%1$s' potřebný pro font `%2$s'\n"
+"není dostupný. LyX použije standardní font."
 
 #: src/LyX.cpp:148
 msgid "Could not read configuration file"
@@ -27291,13 +27304,17 @@ msgstr ""
 msgid ""
 "Forbid use of external converters with 'needauth' option to prevent "
 "undesired effects."
-msgstr "Zákaz použití externích konvertorů vyžadujích autorizaci, prevence před nevyžádanými efekty."
+msgstr ""
+"Zákaz použití externích konvertorů vyžadujích autorizaci, prevence před "
+"nevyžádanými efekty."
 
 #: src/LyXRC.cpp:3129
 msgid ""
 "Ask user before calling external converters with 'needauth' option to "
 "prevent undesired effects."
-msgstr "Vyžadovat potvrzení před spuštením externích konvertorů vyžadujích autorizaci, prevence před nevyžádanými efekty."
+msgstr ""
+"Vyžadovat potvrzení před spuštením externích konvertorů vyžadujích "
+"autorizaci, prevence před nevyžádanými efekty."
 
 #: src/LyXRC.cpp:3136
 msgid ""
@@ -27610,7 +27627,9 @@ msgstr "Vyberte pro visuální/logický pohyb kurzoru v dvojsměrném módu (bid
 msgid ""
 "Specify whether, closing the last view of an open document, LyX should close "
 "the document (yes), hide it (no), or ask the user (ask)."
-msgstr "Vybrat akci po zavření posledního náhledu na otevřený dokumentu - uzavření (yes), skrytí (no), dotaz (ask)."
+msgstr ""
+"Vybrat akci po zavření posledního náhledu na otevřený dokumentu - uzavření "
+"(yes), skrytí (no), dotaz (ask)."
 
 #: src/LyXRC.cpp:3364
 msgid ""
@@ -29124,8 +29143,7 @@ msgstr "Text následující citaci (např. \"stránky\")"
 
 #: src/frontends/qt4/GuiCitation.cpp:314
 msgid "Force upper case in names (\"Del Piero\", not \"del Piero\")."
-msgstr ""
-"Vynutit velké písmo ve jménech (\"Del Piero\", nikoliv \"del Piero\")."
+msgstr "Vynutit velké písmo ve jménech (\"Del Piero\", nikoliv \"del Piero\")."
 
 #: src/frontends/qt4/GuiCitation.cpp:349
 msgid "Always list all authors (rather than using \"et al.\")"
@@ -30430,7 +30448,11 @@ msgid ""
 "would be run without asking your permission first. This is UNSAFE and NOT "
 "recommended, unless you know what you are doing. Are you sure you would like "
 "to proceed ? The recommended and safe answer is NO!"
-msgstr "Výmaz této volby znamená, že potenciálně nebezpečné konvertory budou spuštěny bez explicitního dotazu. Toto nastavení je NEBEZPEČNÉ a NENÍ doporučeno, pakliže nevíte, co činíte. Přejete si přesto zrušit tuto volbu? Doporučená a bezpečná odpověď zní NE."
+msgstr ""
+"Výmaz této volby znamená, že potenciálně nebezpečné konvertory budou "
+"spuštěny bez explicitního dotazu. Toto nastavení je NEBEZPEČNÉ a NENÍ "
+"doporučeno, pakliže nevíte, co činíte. Přejete si přesto zrušit tuto volbu? "
+"Doporučená a bezpečná odpověď zní NE."
 
 #: src/frontends/qt4/GuiPrefs.cpp:2010
 msgid "File Formats"
@@ -31982,7 +32004,9 @@ msgid ""
 "Note: This bibliography is not output, since bibliographies in the master "
 "file are not allowed with the setting 'Multiple bibliographies per child "
 "document'"
-msgstr "Poznámka: Tato bibliografie nejde na výstup, jelikož bibliografie potomků v hlavním dokumentu nejsou povoleny ('Vícenásobné bibliografie')"
+msgstr ""
+"Poznámka: Tato bibliografie nejde na výstup, jelikož bibliografie potomků v "
+"hlavním dokumentu nejsou povoleny ('Vícenásobné bibliografie')"
 
 #: src/insets/InsetBibtex.cpp:249
 msgid "Options: "
@@ -32058,7 +32082,10 @@ msgid ""
 "Branch Name: %1$s\n"
 "Branch Status: %2$s\n"
 "Inset Status: %3$s"
-msgstr "Jméno větve: %1$s\nStav větve: %2$s\nStav vložky: %3$s"
+msgstr ""
+"Jméno větve: %1$s\n"
+"Stav větve: %2$s\n"
+"Stav vložky: %3$s"
 
 #: src/insets/InsetBranch.cpp:120
 msgid "Branch: "
@@ -33290,7 +33317,9 @@ msgstr "Současný odstavec"
 msgid ""
 "You are using at least one layout (%1$s) intended for the title, after using "
 "non-title layouts. This could lead to missing or incorrect output."
-msgstr "Používáte nejméně jedno rozvržení (%1$s) určené pro titulek poté, co jste použili netitulkové rozvržení. To může vést k chybnému výstupu."
+msgstr ""
+"Používáte nejméně jedno rozvržení (%1$s) určené pro titulek poté, co jste "
+"použili netitulkové rozvržení. To může vést k chybnému výstupu."
 
 #: src/output_plaintext.cpp:144
 msgid "Abstract: "

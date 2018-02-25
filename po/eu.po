@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx_2.0.0_eu\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-02-12 16:39+0100\n"
+"POT-Creation-Date: 2018-02-24 19:14-0500\n"
 "PO-Revision-Date: 2018-02-17 18:34+0100\n"
 "Last-Translator: Inaki Larranaga Murgoitio <dooteo@zundan.com>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
@@ -281,7 +281,7 @@ msgstr "&Arakatu..."
 #: src/frontends/qt4/ui/BibtexAddUi.ui:162
 #: src/frontends/qt4/ui/BranchesUi.ui:113
 #: src/frontends/qt4/ui/CitationUi.ui:143 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:409
+#: src/CutAndPaste.cpp:412
 msgid "&Add"
 msgstr "&Gehitu"
 
@@ -768,7 +768,7 @@ msgstr "&Tamaina:"
 #: src/frontends/qt4/GuiDocument.cpp:2200
 #: src/frontends/qt4/GuiDocument.cpp:2285
 #: src/frontends/qt4/GuiDocument.cpp:2836
-#: src/frontends/qt4/GuiDocument.cpp:4228 src/frontends/qt4/GuiExternal.cpp:77
+#: src/frontends/qt4/GuiDocument.cpp:4234 src/frontends/qt4/GuiExternal.cpp:77
 #: src/frontends/qt4/GuiGraphics.cpp:71 src/frontends/qt4/GuiIndices.cpp:58
 #: src/frontends/qt4/GuiListings.cpp:154 src/frontends/qt4/GuiListings.cpp:161
 #: src/frontends/qt4/GuiPrefs.cpp:2462 src/frontends/qt4/GuiPrefs.cpp:2575
@@ -974,7 +974,7 @@ msgstr "Aplikatu aldaketak &berehala"
 #: src/frontends/qt4/ui/SymbolsUi.ui:59 src/frontends/qt4/ui/WrapUi.ui:163
 #: src/frontends/qt4/GuiDocument.cpp:2406
 #: src/frontends/qt4/GuiDocument.cpp:2708
-#: src/frontends/qt4/GuiDocument.cpp:4165
+#: src/frontends/qt4/GuiDocument.cpp:4171
 msgid "&Apply"
 msgstr "&Aplikatu"
 
@@ -2086,7 +2086,7 @@ msgid "Fi&le"
 msgstr "&Fitxategia"
 
 # 'listing'  pakete baten izena da, progamazioko iturburua nabarmentzeko eginbidea eskaintzen du. LyX-eko agerpenetan 'zerrendatua' gisa euskaratu da.
-# 
+#
 # https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
 #: src/frontends/qt4/ui/IncludeUi.ui:36
 msgid "Listing Parameters"
@@ -4577,11 +4577,11 @@ msgstr "&Hautatutako etiketak:"
 msgid "Select a label from the list above or enter a label manually"
 msgstr "Hautatu etiketa bat gaineko zerrendatik, edo sartu etiketa eskuz"
 
-#: src/frontends/qt4/ui/RefUi.ui:218 src/frontends/qt4/GuiRef.cpp:389
+#: src/frontends/qt4/ui/RefUi.ui:218 src/frontends/qt4/GuiRef.cpp:412
 msgid "Jump to the selected label"
 msgstr "jauzi hautatutako etiketara"
 
-#: src/frontends/qt4/ui/RefUi.ui:221 src/frontends/qt4/GuiRef.cpp:388
+#: src/frontends/qt4/ui/RefUi.ui:221 src/frontends/qt4/GuiRef.cpp:411
 msgid "&Go to Label"
 msgstr "&Joan etiketara"
 
@@ -4593,35 +4593,36 @@ msgstr "Erreferentzia-for&matua:"
 msgid "Adjust the style of the cross-reference"
 msgstr "Doitu erreferentzia gurutzatuen estiloa"
 
-#: src/frontends/qt4/ui/RefUi.ui:255
+#: src/frontends/qt4/ui/RefUi.ui:255 src/frontends/qt4/GuiRef.cpp:307
 msgid "<reference>"
 msgstr "<erreferentzia>"
 
-#: src/frontends/qt4/ui/RefUi.ui:260
+#: src/frontends/qt4/ui/RefUi.ui:260 src/frontends/qt4/GuiRef.cpp:308
 msgid "(<reference>)"
 msgstr "(<erreferentzia>)"
 
-#: src/frontends/qt4/ui/RefUi.ui:265
+#: src/frontends/qt4/ui/RefUi.ui:265 src/frontends/qt4/GuiRef.cpp:309
 msgid "<page>"
 msgstr "<orrialdea>"
 
-#: src/frontends/qt4/ui/RefUi.ui:270
+#: src/frontends/qt4/ui/RefUi.ui:270 src/frontends/qt4/GuiRef.cpp:310
 msgid "on page <page>"
 msgstr "<orrialdea> orrialdean"
 
-#: src/frontends/qt4/ui/RefUi.ui:275
+#: src/frontends/qt4/ui/RefUi.ui:275 src/frontends/qt4/GuiRef.cpp:311
 msgid "<reference> on page <page>"
 msgstr "<erreferentzia> <orrialdea> orrialdean"
 
-#: src/frontends/qt4/ui/RefUi.ui:280
+#: src/frontends/qt4/ui/RefUi.ui:280 src/frontends/qt4/GuiRef.cpp:313
+#: src/frontends/qt4/GuiRef.cpp:317
 msgid "Formatted reference"
 msgstr "Formatudun erreferentzia"
 
-#: src/frontends/qt4/ui/RefUi.ui:285
+#: src/frontends/qt4/ui/RefUi.ui:285 src/frontends/qt4/GuiRef.cpp:314
 msgid "Textual reference"
 msgstr "Testu-erreferentzia"
 
-#: src/frontends/qt4/ui/RefUi.ui:290
+#: src/frontends/qt4/ui/RefUi.ui:290 src/frontends/qt4/GuiRef.cpp:315
 msgid "Label only"
 msgstr "Etiketa soilik"
 
@@ -6514,7 +6515,7 @@ msgstr "IEEE Transakzioak (Transactions)"
 #: lib/layouts/slides.layout:61 lib/layouts/stdclass.inc:28
 #: lib/layouts/stdinsets.inc:637 lib/layouts/stdletter.inc:12
 #: lib/layouts/svcommon.inc:26 lib/layouts/tufte-book.layout:20
-#: lib/ui/stdtoolbars.inc:69 src/insets/InsetRef.cpp:418
+#: lib/ui/stdtoolbars.inc:69 src/insets/InsetRef.cpp:419
 msgid "Standard"
 msgstr "Arrunta"
 
@@ -11488,16 +11489,13 @@ msgid ""
 "functionality of fixltx2e, so the fixltx2e module becomes obsolete with "
 "newer LaTeX distributions."
 msgstr ""
-"LaTeX-eko fixltx2e paketea kargatzen du. Pakete honek LaTeX-eko akats batzuen "
-"konponketak dauzka. Konponketa hauek ez daude LaTeX-eko nukleoaren barruan "
-"atzeranzko bateragarritasuna dela eta. Modulu hau erabiltzen baduzu, zure "
-"dokumentuko letra-tipoak itxura desberdina eduki dezakete fixltx2e paketearen "
-"bertsioaren "
-"arabera. Oharra: LaTeX-en azken bertsioetan (2015/01/01 datatik hona) "
-"fixltx2e-n "
-"funtzionaltasuna barneratuta daudenez, fixltx2e modulua zaharkitua dago "
-"LaTeX-en "
-"banaketa berrienetan."
+"LaTeX-eko fixltx2e paketea kargatzen du. Pakete honek LaTeX-eko akats "
+"batzuen konponketak dauzka. Konponketa hauek ez daude LaTeX-eko nukleoaren "
+"barruan atzeranzko bateragarritasuna dela eta. Modulu hau erabiltzen baduzu, "
+"zure dokumentuko letra-tipoak itxura desberdina eduki dezakete fixltx2e "
+"paketearen bertsioaren arabera. Oharra: LaTeX-en azken bertsioetan "
+"(2015/01/01 datatik hona) fixltx2e-n funtzionaltasuna barneratuta daudenez, "
+"fixltx2e modulua zaharkitua dago LaTeX-en banaketa berrienetan."
 
 #: lib/layouts/fixme.module:2
 msgid "FiXme"
@@ -11565,7 +11563,7 @@ msgstr "Finkatu errorea"
 #: lib/layouts/fixme.module:82 src/frontends/qt4/GuiCompare.cpp:198
 #: src/frontends/qt4/GuiDocument.cpp:2343
 #: src/frontends/qt4/GuiDocument.cpp:2417
-#: src/frontends/qt4/GuiDocument.cpp:4173
+#: src/frontends/qt4/GuiDocument.cpp:4179
 msgid "Error"
 msgstr "Errorea"
 
@@ -26600,16 +26598,16 @@ msgstr ", gelaxka: "
 msgid ", Position: "
 msgstr ", posizioa: "
 
-#: src/CutAndPaste.cpp:184
+#: src/CutAndPaste.cpp:187
 #, c-format
 msgid ""
 "The character \"%1$s\" is uncodable in this verbatim context and thus has "
 "not been pasted."
 msgstr ""
-"\"%1$s\" karakterea kodekaitza da hitzez hitzeko testuinguru honetan, "
-"beraz, ez da itsatsi."
+"\"%1$s\" karakterea kodekaitza da hitzez hitzeko testuinguru honetan, beraz, "
+"ez da itsatsi."
 
-#: src/CutAndPaste.cpp:188
+#: src/CutAndPaste.cpp:191
 #, c-format
 msgid ""
 "The characters \"%1$s\" are uncodable in this verbatim context and thus have "
@@ -26618,11 +26616,11 @@ msgstr ""
 "\"%1$s\" karakterea kodekaitzak dira hitzez hitzeko testuinguru honetan, "
 "beraz, ez dira itsatsi."
 
-#: src/CutAndPaste.cpp:231
+#: src/CutAndPaste.cpp:234
 msgid "Uncodable content"
 msgstr "Kodetu ezin daitekeen edukia"
 
-#: src/CutAndPaste.cpp:405
+#: src/CutAndPaste.cpp:408
 #, c-format
 msgid ""
 "The pasted branch \"%1$s\" is undefined.\n"
@@ -26632,31 +26630,31 @@ msgstr ""
 "\n"
 "Nahi duzu hura dokumentuaren adarraren zerrendari gehitzea?"
 
-#: src/CutAndPaste.cpp:408
+#: src/CutAndPaste.cpp:411
 msgid "Unknown branch"
 msgstr "Adar ezezaguna"
 
-#: src/CutAndPaste.cpp:409
+#: src/CutAndPaste.cpp:412
 msgid "&Don't Add"
 msgstr "&Ez gehitu"
 
-#: src/CutAndPaste.cpp:795 src/Text.cpp:393
+#: src/CutAndPaste.cpp:798 src/Text.cpp:393
 #, c-format
 msgid "Layout `%1$s' was not found."
 msgstr "Ez da '%1$s' diseinua aurkitu."
 
-#: src/CutAndPaste.cpp:796 src/Text.cpp:394
+#: src/CutAndPaste.cpp:799 src/Text.cpp:394
 msgid "Layout Not Found"
 msgstr "Ez da diseinua aurkitu"
 
-#: src/CutAndPaste.cpp:824
+#: src/CutAndPaste.cpp:827
 #, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr ""
 "%1$s txertakuntza malgua definitu gabe dago '%2$s' diseinua birkargatu "
 "ostean."
 
-#: src/CutAndPaste.cpp:827
+#: src/CutAndPaste.cpp:830
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
@@ -26665,7 +26663,7 @@ msgstr ""
 "%1$s txertakuntza malgua definitu gabe dago klasearen bihurketa dela eta \n"
 "%2$s-tik %3$s-ra"
 
-#: src/CutAndPaste.cpp:832
+#: src/CutAndPaste.cpp:835
 msgid "Undefined flex inset"
 msgstr "Definitu gabeko txertakuntza malgua"
 
@@ -26706,17 +26704,17 @@ msgid "Copying %1$s to %2$s failed."
 msgstr "Huts egin du %1$s %2$s gisa kopiatzean."
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:137
-#: src/frontends/qt4/GuiDocument.cpp:4228 src/frontends/qt4/GuiListings.cpp:161
+#: src/frontends/qt4/GuiDocument.cpp:4234 src/frontends/qt4/GuiListings.cpp:161
 msgid "Roman"
 msgstr "Erromatarra"
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:138
-#: src/frontends/qt4/GuiDocument.cpp:4228 src/frontends/qt4/GuiListings.cpp:161
+#: src/frontends/qt4/GuiDocument.cpp:4234 src/frontends/qt4/GuiListings.cpp:161
 msgid "Sans Serif"
 msgstr "Sans Serif"
 
 #: src/Font.cpp:60 src/frontends/qt4/GuiCharacter.cpp:139
-#: src/frontends/qt4/GuiDocument.cpp:4228 src/frontends/qt4/GuiListings.cpp:161
+#: src/frontends/qt4/GuiDocument.cpp:4234 src/frontends/qt4/GuiListings.cpp:161
 msgid "Typewriter"
 msgstr "Idazmakina"
 
@@ -29133,7 +29131,7 @@ msgstr "Kolore gabea"
 msgid "Text Style"
 msgstr "Testu-estiloa"
 
-#: src/frontends/qt4/GuiCitation.cpp:103 src/frontends/qt4/GuiRef.cpp:58
+#: src/frontends/qt4/GuiCitation.cpp:103 src/frontends/qt4/GuiRef.cpp:60
 #: src/frontends/qt4/PanelStack.cpp:77
 msgid "Clear text"
 msgstr "Garbitu testua"
@@ -29760,13 +29758,13 @@ msgstr "LyX fitxategiak (*.lyx)"
 
 #: src/frontends/qt4/GuiDocument.cpp:2403
 #: src/frontends/qt4/GuiDocument.cpp:2705
-#: src/frontends/qt4/GuiDocument.cpp:4162
+#: src/frontends/qt4/GuiDocument.cpp:4168
 msgid "Unapplied changes"
 msgstr "Aplikatu gabeko aldaketak"
 
 #: src/frontends/qt4/GuiDocument.cpp:2404
 #: src/frontends/qt4/GuiDocument.cpp:2706
-#: src/frontends/qt4/GuiDocument.cpp:4163
+#: src/frontends/qt4/GuiDocument.cpp:4169
 msgid ""
 "Some changes in the dialog were not yet applied.\n"
 "If you do not apply now, they will be lost after this action."
@@ -29776,12 +29774,12 @@ msgstr ""
 
 #: src/frontends/qt4/GuiDocument.cpp:2406
 #: src/frontends/qt4/GuiDocument.cpp:2708
-#: src/frontends/qt4/GuiDocument.cpp:4165
+#: src/frontends/qt4/GuiDocument.cpp:4171
 msgid "&Dismiss"
 msgstr "&Baztertu"
 
 #: src/frontends/qt4/GuiDocument.cpp:2417
-#: src/frontends/qt4/GuiDocument.cpp:4173
+#: src/frontends/qt4/GuiDocument.cpp:4179
 msgid "Unable to set document class."
 msgstr "Ezin da dokumentu-klasea ezarri."
 
@@ -29881,24 +29879,24 @@ msgstr "&Pertsonalizatu Hyperref aukerak"
 msgid "&Use Hyperref Support"
 msgstr "&Erabili Hyperref euskarria"
 
-#: src/frontends/qt4/GuiDocument.cpp:4185
+#: src/frontends/qt4/GuiDocument.cpp:4191
 msgid "Can't set layout!"
 msgstr "Ezin da diseinua ezarri."
 
-#: src/frontends/qt4/GuiDocument.cpp:4186
+#: src/frontends/qt4/GuiDocument.cpp:4192
 #, c-format
 msgid "Unable to set layout for ID: %1$s"
 msgstr "Ezin da diseinua ezarri IDarentzako: %1$s"
 
-#: src/frontends/qt4/GuiDocument.cpp:4282
+#: src/frontends/qt4/GuiDocument.cpp:4288
 msgid "Not Found"
 msgstr "Ez da aurkitu"
 
-#: src/frontends/qt4/GuiDocument.cpp:4342
+#: src/frontends/qt4/GuiDocument.cpp:4348
 msgid "Assigned master does not include this file"
 msgstr "Esleitutako maisuak ez du fitxategi hau"
 
-#: src/frontends/qt4/GuiDocument.cpp:4343
+#: src/frontends/qt4/GuiDocument.cpp:4349
 #, c-format
 msgid ""
 "You must include this file in the document\n"
@@ -29908,11 +29906,11 @@ msgstr ""
 "Fitxategi hau sartu behar duzu %1$s dokumentuan,\n"
 "dokumentu maisuaren eginbidea erabil ahal izateko."
 
-#: src/frontends/qt4/GuiDocument.cpp:4347
+#: src/frontends/qt4/GuiDocument.cpp:4353
 msgid "Could not load master"
 msgstr "Ezin izan da maisua kargatu"
 
-#: src/frontends/qt4/GuiDocument.cpp:4348
+#: src/frontends/qt4/GuiDocument.cpp:4354
 #, c-format
 msgid ""
 "The master document '%1$s'\n"
@@ -29921,7 +29919,7 @@ msgstr ""
 "%1$s dokumentu maisua\n"
 "ezin izan da kargatu."
 
-#: src/frontends/qt4/GuiDocument.cpp:4485
+#: src/frontends/qt4/GuiDocument.cpp:4491
 msgid "(Module name: %1)"
 msgstr "(Moduluaren izena: %1)"
 
@@ -30167,7 +30165,8 @@ msgstr "Hiperestekaren ezarpenak"
 msgid ""
 "Input listing parameters on the right. Enter ? for a list of parameters."
 msgstr ""
-"Sartu zerrendatuaren parametroak eskuinean. Sartu ? parametroak zerrendatzeko."
+"Sartu zerrendatuaren parametroak eskuinean. Sartu ? parametroak "
+"zerrendatzeko."
 
 #: src/frontends/qt4/GuiInclude.cpp:312
 msgid "Select document to include"
@@ -30701,39 +30700,39 @@ msgstr "Arazketa-maila"
 msgid "Set"
 msgstr "Ezarri"
 
-#: src/frontends/qt4/GuiRef.cpp:47
+#: src/frontends/qt4/GuiRef.cpp:49
 msgid "Cross-reference"
 msgstr "Erreferentzia gurutzatua"
 
-#: src/frontends/qt4/GuiRef.cpp:60
+#: src/frontends/qt4/GuiRef.cpp:62
 msgid "All available labels"
 msgstr "Etiketa erabilgarri guztiak"
 
-#: src/frontends/qt4/GuiRef.cpp:61
+#: src/frontends/qt4/GuiRef.cpp:63
 msgid "Enter string to filter the list of available labels"
 msgstr "Sartu katea etiketa erabilgarrien zerrenda iragazteko"
 
-#: src/frontends/qt4/GuiRef.cpp:73
+#: src/frontends/qt4/GuiRef.cpp:75
 msgid "By Occurrence"
 msgstr "Gertaeren arabera"
 
-#: src/frontends/qt4/GuiRef.cpp:74
+#: src/frontends/qt4/GuiRef.cpp:76
 msgid "Alphabetically (Case-Insensitive)"
 msgstr "Alfabetikoki (Maius/minus. bereizigabea)"
 
-#: src/frontends/qt4/GuiRef.cpp:75
+#: src/frontends/qt4/GuiRef.cpp:77
 msgid "Alphabetically (Case-Sensitive)"
 msgstr "Alfabetikoki (Maius/minus. bereizi)"
 
-#: src/frontends/qt4/GuiRef.cpp:381
+#: src/frontends/qt4/GuiRef.cpp:404
 msgid "&Go Back"
 msgstr "&Joan atzerantz"
 
-#: src/frontends/qt4/GuiRef.cpp:382
+#: src/frontends/qt4/GuiRef.cpp:405
 msgid "Jump back to the original cursor location"
 msgstr "Itzuli kurtsorearen jatorrizko posiziora"
 
-#: src/frontends/qt4/GuiRef.cpp:454 src/frontends/qt4/GuiRef.cpp:474
+#: src/frontends/qt4/GuiRef.cpp:477 src/frontends/qt4/GuiRef.cpp:497
 msgid "<No prefix>"
 msgstr "<Aurrizkirik ez>"
 
@@ -32746,8 +32745,7 @@ msgid ""
 "a language not offered there, otherwise the combo box will be disabled."
 msgstr ""
 "Sartu onartutako hizkuntzetariko bat. Hala ere, zerrendatuaren txertakuntza "
-"bat "
-"definitzen ari bazara, egokiagoa da hizkuntzaren konbinazio-koadroa "
+"bat definitzen ari bazara, egokiagoa da hizkuntzaren konbinazio-koadroa "
 "erabiltzea, hemen eskaintzen ez den hizkuntza bat sartu behar ez baduzu "
 "bederen. Bestela, konbinazio-koadroa desgaituko baita."
 
@@ -32891,67 +32889,67 @@ msgstr "%1$stestua"
 msgid "text%1$s"
 msgstr "testua%1$s"
 
-#: src/insets/InsetRef.cpp:362
+#: src/insets/InsetRef.cpp:363
 msgid "BROKEN: "
 msgstr "HAUTSITA: "
 
-#: src/insets/InsetRef.cpp:418 src/mathed/InsetMathRef.cpp:240
+#: src/insets/InsetRef.cpp:419 src/mathed/InsetMathRef.cpp:240
 msgid "Ref: "
 msgstr "Erref: "
 
-#: src/insets/InsetRef.cpp:419 src/mathed/InsetMathRef.cpp:241
+#: src/insets/InsetRef.cpp:420 src/mathed/InsetMathRef.cpp:241
 msgid "Equation"
 msgstr "Ekuazioa"
 
-#: src/insets/InsetRef.cpp:419 src/mathed/InsetMathRef.cpp:241
+#: src/insets/InsetRef.cpp:420 src/mathed/InsetMathRef.cpp:241
 msgid "EqRef: "
 msgstr "EkErref: "
 
-#: src/insets/InsetRef.cpp:420 src/mathed/InsetMathRef.cpp:242
+#: src/insets/InsetRef.cpp:421 src/mathed/InsetMathRef.cpp:242
 msgid "Page Number"
 msgstr "Orri-zenbakia"
 
-#: src/insets/InsetRef.cpp:420 src/mathed/InsetMathRef.cpp:242
+#: src/insets/InsetRef.cpp:421 src/mathed/InsetMathRef.cpp:242
 msgid "Page: "
 msgstr "Orrialdea: "
 
-#: src/insets/InsetRef.cpp:421 src/mathed/InsetMathRef.cpp:243
+#: src/insets/InsetRef.cpp:422 src/mathed/InsetMathRef.cpp:243
 msgid "Textual Page Number"
 msgstr "Testu-erako orri-zenbakia"
 
-#: src/insets/InsetRef.cpp:421 src/mathed/InsetMathRef.cpp:243
+#: src/insets/InsetRef.cpp:422 src/mathed/InsetMathRef.cpp:243
 msgid "TextPage: "
 msgstr "Testu-orria: "
 
-#: src/insets/InsetRef.cpp:422 src/mathed/InsetMathRef.cpp:244
+#: src/insets/InsetRef.cpp:423 src/mathed/InsetMathRef.cpp:244
 msgid "Standard+Textual Page"
 msgstr "Arrunta+Testu-orria"
 
-#: src/insets/InsetRef.cpp:422 src/mathed/InsetMathRef.cpp:244
+#: src/insets/InsetRef.cpp:423 src/mathed/InsetMathRef.cpp:244
 msgid "Ref+Text: "
 msgstr "Erref+Testua: "
 
-#: src/insets/InsetRef.cpp:423
+#: src/insets/InsetRef.cpp:424
 msgid "Formatted"
 msgstr "Formatuarekin"
 
-#: src/insets/InsetRef.cpp:423
+#: src/insets/InsetRef.cpp:424
 msgid "Format: "
 msgstr "Formatua: "
 
-#: src/insets/InsetRef.cpp:424
+#: src/insets/InsetRef.cpp:425
 msgid "Reference to Name"
 msgstr "Izenaren erreferentzia"
 
-#: src/insets/InsetRef.cpp:424
+#: src/insets/InsetRef.cpp:425
 msgid "NameRef: "
 msgstr "IzenaErref: "
 
-#: src/insets/InsetRef.cpp:425
+#: src/insets/InsetRef.cpp:426
 msgid "Label Only"
 msgstr "Etiketa soilik"
 
-#: src/insets/InsetRef.cpp:425
+#: src/insets/InsetRef.cpp:426
 msgid "Label: "
 msgstr "Etiketa: "
 
@@ -33357,7 +33355,7 @@ msgid "Autocorrect On (<space> to exit)"
 msgstr "Zuzenketa automatikoa gaituta (<zuriunea> amaitzeko)"
 
 # Oharra [[xxxx]] ez da euskaratu edo itzuli behar. Itzulpenaren testuingurua azaltzeko soilik erabiltzen da.
-# 
+#
 # mathref
 #: src/mathed/InsetMathRef.cpp:240
 msgid "Standard[[mathref]]"
