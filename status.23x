@@ -57,6 +57,9 @@ What's new
 
 - Respect 'literal' setting when calculating longest bibitem (bug 10817).
 
+- Do not embrace numbers in \beginL ... \endL with polyglossia in Right-
+  to-Left languages, since bidi handles the numbers automatically.
+
 
 * LYX2LYX
 
