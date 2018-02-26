@@ -349,9 +349,11 @@ int Font::latexWriteStartChanges(odocstream & os, BufferParams const & bparams,
 
 	// If the current language is Hebrew, Arabic, or Farsi
 	// the numbers are written Left-to-Right. ArabTeX package
-	// reorders the number automatically but the packages used
-	// for Hebrew and Farsi (Arabi) do not.
-	if (!runparams.pass_thru && bits_.number() == FONT_ON
+	// and bidi (polyglossia) reorder the number automatically
+	// but the packages used for Hebrew and Farsi (Arabi) do not.
+	if (!runparams.use_polyglossia
+	    && !runparams.pass_thru
+	    && bits_.number() == FONT_ON
 	    && prev.fontInfo().number() != FONT_ON
 	    && (language()->lang() == "hebrew"
 		|| language()->lang() == "farsi"
@@ -552,9 +554,11 @@ int Font::latexWriteEndChanges(otexstream & os, BufferParams const & bparams,
 
 	// If the current language is Hebrew, Arabic, or Farsi
 	// the numbers are written Left-to-Right. ArabTeX package
-	// reorders the number automatically but the packages used
-	// for Hebrew and Farsi (Arabi) do not.
-	if (!runparams.pass_thru && bits_.number() == FONT_ON
+	// and bidi (polyglossia) reorder the number automatically
+	// but the packages used for Hebrew and Farsi (Arabi) do not.
+	if (!runparams.use_polyglossia
+	    && !runparams.pass_thru
+	    && bits_.number() == FONT_ON
 	    && next.fontInfo().number() != FONT_ON
 	    && (language()->lang() == "hebrew"
 		|| language()->lang() == "farsi"
