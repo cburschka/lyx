@@ -2552,7 +2552,7 @@ void Menus::fillMenuBar(QMenuBar * qmb, GuiView * view, bool initial)
 		// On Mac OS with QT/cocoa, the menu is not displayed if there is no action
 		// so we create a temporary one here
 		QAction * action = new QAction(menuptr);
-		menu->addAction(action);
+		menuptr->addAction(action);
 #endif
 
 		qmb->addMenu(menuptr);
