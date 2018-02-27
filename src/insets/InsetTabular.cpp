@@ -2174,23 +2174,24 @@ bool Tabular::isPartOfMultiRow(row_type row, col_type column) const
 }
 
 
-void Tabular::TeXTopHLine(otexstream & os, row_type row, string const & lang) const
+void Tabular::TeXTopHLine(otexstream & os, row_type row, string const & lang,
+			  list<col_type> columns) const
 {
 	// we only output complete row lines and the 1st row here, the rest
 	// is done in Tabular::TeXBottomHLine(...)
 
 	// get for each column the topline (if any)
-	vector<bool> topline;
+	map<col_type, bool> topline;
 	col_type nset = 0;
-	for (col_type c = 0; c < ncols(); ++c) {
-		topline.push_back(topLine(cellIndex(row, c)));
+	for (auto const & c : columns) {
+		topline[c] = topLine(cellIndex(row, c));
 		// If cell is part of a multirow and not the first cell of the
 		// multirow, no line must be drawn.
 		if (row != 0)
 			if (isMultiRow(cellIndex(row, c))
 			    && cell_info[row][c].multirow != CELL_BEGIN_OF_MULTIROW)
 				topline[c] = false;
-		if (topline[c])
+		if (topline.find(c) != topline.end() && topline.find(c)->second)
 			++nset;
 	}
 
@@ -2206,8 +2207,8 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, string const & lang) co
 			os << "\\hline ";
 		}
 	} else if (row == 0) {
-		for (col_type c = 0; c < ncols(); ++c) {
-			if (topline[c]) {
+		for (auto & c : columns) {
+			if (topline.find(c)->second) {
 				col_type offset = 0;
 				for (col_type j = 0 ; j < c; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
@@ -2222,7 +2223,7 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, string const & lang) co
 					os << (use_booktabs ? "\\cmidrule{" : "\\cline{") << c + 1 + offset << '-';
 
 				col_type cstart = c;
-				for ( ; c < ncols() && topline[c]; ++c) {}
+				for ( ; c < ncols() && topline.find(c)->second; ++c) {}
 
 				for (col_type j = cstart ; j < c ; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
@@ -2236,18 +2237,19 @@ void Tabular::TeXTopHLine(otexstream & os, row_type row, string const & lang) co
 }
 
 
-void Tabular::TeXBottomHLine(otexstream & os, row_type row, string const & lang) const
+void Tabular::TeXBottomHLine(otexstream & os, row_type row, string const & lang,
+			     list<col_type> columns) const
 {
 	// we output bottomlines of row r and the toplines of row r+1
 	// if the latter do not span the whole tabular
 
 	// get the bottomlines of row r, and toplines in next row
 	bool lastrow = row == nrows() - 1;
-	vector<bool> bottomline, topline;
+	map<col_type, bool> bottomline, topline;
 	bool nextrowset = true;
-	for (col_type c = 0; c < ncols(); ++c) {
-		bottomline.push_back(bottomLine(cellIndex(row, c)));
-		topline.push_back(!lastrow && topLine(cellIndex(row + 1, c)));
+	for (auto const & c : columns) {
+		bottomline[c] = bottomLine(cellIndex(row, c));
+		topline[c] =  !lastrow && topLine(cellIndex(row + 1, c));
 		// If cell is part of a multirow and not the last cell of the
 		// multirow, no line must be drawn.
 		if (!lastrow)
@@ -2257,15 +2259,15 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, string const & lang)
 				bottomline[c] = false;
 				topline[c] = false;
 				}
-		nextrowset &= topline[c];
+		nextrowset &= topline.find(c) != topline.end() && topline.find(c)->second;
 	}
 
 	// combine this row's bottom lines and next row's toplines if necessary
 	col_type nset = 0;
-	for (col_type c = 0; c < ncols(); ++c) {
+	for (auto const & c : columns) {
 		if (!nextrowset)
-			bottomline[c] = bottomline[c] || topline[c];
-		if (bottomline[c])
+			bottomline[c] = bottomline.find(c)->second || topline.find(c)->second;
+		if (bottomline.find(c)->second)
 			++nset;
 	}
 
@@ -2279,8 +2281,8 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, string const & lang)
 		else
 			os << "\\hline ";
 	} else {
-		for (col_type c = 0; c < ncols(); ++c) {
-			if (bottomline[c]) {
+		for (auto & c : columns) {
+			if (bottomline.find(c)->second) {
 				col_type offset = 0;
 				for (col_type j = 0 ; j < c; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
@@ -2295,7 +2297,7 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, string const & lang)
 					os << (use_booktabs ? "\\cmidrule{" : "\\cline{") << c + 1 + offset << '-';
 
 				col_type cstart = c;
-				for ( ; c < ncols() && bottomline[c]; ++c) {}
+				for ( ; c < ncols() && bottomline.find(c)->second; ++c) {}
 
 				for (col_type j = cstart ; j < c ; ++j)
 					if (column_info[j].alignment == LYX_ALIGN_DECIMAL)
@@ -2310,7 +2312,8 @@ void Tabular::TeXBottomHLine(otexstream & os, row_type row, string const & lang)
 
 
 void Tabular::TeXCellPreamble(otexstream & os, idx_type cell,
-			      bool & ismulticol, bool & ismultirow) const
+			      bool & ismulticol, bool & ismultirow,
+			      bool const bidi) const
 {
 	row_type const r = cellRow(cell);
 	if (is_long_tabular && row_info[r].caption)
@@ -2320,8 +2323,10 @@ void Tabular::TeXCellPreamble(otexstream & os, idx_type cell,
 	LyXAlignment align = getAlignment(cell, !isMultiColumn(cell));
 	// figure out how to set the lines
 	// we always set double lines to the right of the cell
+	// or left in bidi RTL, respectively.
 	col_type const c = cellColumn(cell);
 	col_type const nextcol = c + columnSpan(cell);
+	bool const decimal = column_info[c].alignment == LYX_ALIGN_DECIMAL;
 	bool colright = columnRightLine(c);
 	bool colleft = columnLeftLine(c);
 	bool nextcolleft = nextcol < ncols() && columnLeftLine(nextcol);
@@ -2330,28 +2335,35 @@ void Tabular::TeXCellPreamble(otexstream & os, idx_type cell,
 	bool coldouble = colright && nextcolleft;
 	bool celldouble = rightLine(cell) && nextcellleft;
 
-	ismulticol = isMultiColumn(cell)
-		|| (c == 0 && colleft != leftLine(cell))
-		|| ((colright || nextcolleft) && !rightLine(cell) && !nextcellleft)
-		|| (!colright && !nextcolleft && (rightLine(cell) || nextcellleft))
-		|| (coldouble != celldouble);
+	ismulticol = (isMultiColumn(cell)
+		      || (c == 0 && colleft != leftLine(cell))
+		      || ((colright || nextcolleft) && !rightLine(cell) && !nextcellleft)
+		      || (!colright && !nextcolleft && (rightLine(cell) || nextcellleft))
+		      || (coldouble != celldouble))
+		     && !decimal;
 
 	// we center in multicol when no decimal point
-	if (column_info[c].alignment == LYX_ALIGN_DECIMAL) {
+	if (decimal) {
 		docstring const align_d = column_info[c].decimal_point;
 		DocIterator const dit = separatorPos(cellInset(cell), align_d);
-		ismulticol |= !dit;
+		bool const nosep = !dit;
+		ismulticol |= nosep;
+		celldouble &= nosep;
 	}
 
 	// up counter by 1 for each decimally aligned col since they use 2 latex cols
 	int latexcolspan = columnSpan(cell);
-	for(col_type col = c; col < c + columnSpan(cell); ++col)
+	for (col_type col = c; col < c + columnSpan(cell); ++col)
 		if (column_info[col].alignment == LYX_ALIGN_DECIMAL)
 			++latexcolspan;
 
 	if (ismulticol) {
 		os << "\\multicolumn{" << latexcolspan << "}{";
-		if (c ==0 && leftLine(cell))
+		if (((bidi && c == getLastCellInRow(cellRow(0)) && rightLine(cell))
+		     || (!bidi && c == 0 && leftLine(cell))))
+			os << '|';
+		if (bidi && celldouble)
+			// add extra vertical line if we want a double one
 			os << '|';
 		if (!cellInfo(cell).align_special.empty()) {
 			os << cellInfo(cell).align_special;
@@ -2398,9 +2410,9 @@ void Tabular::TeXCellPreamble(otexstream & os, idx_type cell,
 				}
 			} // end if else !getPWidth
 		} // end if else !cellinfo_of_cell
-		if (rightLine(cell) || nextcellleft)
+		if ((bidi && leftLine(cell)) || (!bidi && rightLine(cell)) || nextcellleft)
 			os << '|';
-		if (celldouble)
+		if (!bidi && celldouble)
 			// add extra vertical line if we want a double one
 			os << '|';
 		os << "}{";
@@ -2480,7 +2492,8 @@ void Tabular::TeXCellPostamble(otexstream & os, idx_type cell,
 
 
 void Tabular::TeXLongtableHeaderFooter(otexstream & os,
-					OutputParams const & runparams) const
+				       OutputParams const & runparams,
+				       list<col_type> columns) const
 {
 	if (!is_long_tabular)
 		return;
@@ -2492,7 +2505,7 @@ void Tabular::TeXLongtableHeaderFooter(otexstream & os,
 			if (row_info[r].caption &&
 			    !row_info[r].endfirsthead && !row_info[r].endhead &&
 			    !row_info[r].endfoot && !row_info[r].endlastfoot)
-				TeXRow(os, r, runparams);
+				TeXRow(os, r, runparams, columns);
 		}
 	}
 	// output first header info
@@ -2501,7 +2514,7 @@ void Tabular::TeXLongtableHeaderFooter(otexstream & os,
 			os << "\\hline\n";
 		for (row_type r = 0; r < nrows(); ++r) {
 			if (row_info[r].endfirsthead)
-				TeXRow(os, r, runparams);
+				TeXRow(os, r, runparams, columns);
 		}
 		if (endfirsthead.bottomDL)
 			os << "\\hline\n";
@@ -2515,7 +2528,7 @@ void Tabular::TeXLongtableHeaderFooter(otexstream & os,
 			os << "\\hline\n";
 		for (row_type r = 0; r < nrows(); ++r) {
 			if (row_info[r].endhead)
-				TeXRow(os, r, runparams);
+				TeXRow(os, r, runparams, columns);
 		}
 		if (endhead.bottomDL)
 			os << "\\hline\n";
@@ -2527,7 +2540,7 @@ void Tabular::TeXLongtableHeaderFooter(otexstream & os,
 			os << "\\hline\n";
 		for (row_type r = 0; r < nrows(); ++r) {
 			if (row_info[r].endfoot)
-				TeXRow(os, r, runparams);
+				TeXRow(os, r, runparams, columns);
 		}
 		if (endfoot.bottomDL)
 			os << "\\hline\n";
@@ -2541,7 +2554,7 @@ void Tabular::TeXLongtableHeaderFooter(otexstream & os,
 			os << "\\hline\n";
 		for (row_type r = 0; r < nrows(); ++r) {
 			if (row_info[r].endlastfoot)
-				TeXRow(os, r, runparams);
+				TeXRow(os, r, runparams, columns);
 		}
 		if (endlastfoot.bottomDL)
 			os << "\\hline\n";
@@ -2561,7 +2574,8 @@ bool Tabular::isValidRow(row_type row) const
 
 
 void Tabular::TeXRow(otexstream & os, row_type row,
-		     OutputParams const & runparams) const
+		     OutputParams const & runparams,
+		     list<col_type> columns) const
 {
 	idx_type cell = cellIndex(row, 0);
 	InsetTableCell const * cinset = cellInset(cell);
@@ -2569,7 +2583,7 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 	string const clang = cpar.getParLanguage(buffer().params())->lang();
 
 	//output the top line
-	TeXTopHLine(os, row, clang);
+	TeXTopHLine(os, row, clang, columns);
 
 	if (row_info[row].top_space_default) {
 		if (use_booktabs)
@@ -2589,7 +2603,15 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 	}
 	bool ismulticol = false;
 	bool ismultirow = false;
-	for (col_type c = 0; c < ncols(); ++c) {
+
+	// The bidi package (loaded by polyglossia) reverses RTL table columns
+	bool const bidi_rtl =
+		runparams.local_font->isRightToLeft()
+		&& runparams.use_polyglossia;
+	idx_type lastcell =
+		bidi_rtl ? getFirstCellInRow(row) : getLastCellInRow(row);
+
+	for (auto const & c : columns) {
 		if (isPartOfMultiColumn(row, c))
 			continue;
 
@@ -2597,12 +2619,12 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 
 		if (isPartOfMultiRow(row, c)
 		    && column_info[c].alignment != LYX_ALIGN_DECIMAL) {
-			if (cell != getLastCellInRow(row))
+			if (cell != lastcell)
 				os << " & ";
 			continue;
 		}
 
-		TeXCellPreamble(os, cell, ismulticol, ismultirow);
+		TeXCellPreamble(os, cell, ismulticol, ismultirow, bidi_rtl);
 		InsetTableCell const * inset = cellInset(cell);
 
 		Paragraph const & par = inset->paragraphs().front();
@@ -2644,14 +2666,24 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 			head.setMacrocontextPositionRecursive(dit);
 			bool hassep = false;
 			InsetTableCell tail = splitCell(head, column_info[c].decimal_point, hassep);
-			head.latex(os, newrp);
 			if (hassep) {
-				os << '&';
 				tail.setBuffer(head.buffer());
 				dit.pop_back();
 				dit.push_back(CursorSlice(tail));
 				tail.setMacrocontextPositionRecursive(dit);
-				tail.latex(os, newrp);
+			}
+			if (bidi_rtl) {
+				if (hassep) {
+					tail.latex(os, newrp);
+					os << '&';
+				}
+				head.latex(os, newrp);
+			} else {
+				head.latex(os, newrp);
+				if (hassep) {
+					os << '&';
+					tail.latex(os, newrp);
+				}
 			}
 		} else if (ltCaption(row)) {
 			// Inside longtable caption rows, we must only output the caption inset
@@ -2675,7 +2707,7 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 			os << '}';
 
 		TeXCellPostamble(os, cell, ismulticol, ismultirow);
-		if (cell != getLastCellInRow(row)) { // not last cell in row
+		if (cell != lastcell) { // not last cell in row
 			if (runparams.nice)
 				os << " & ";
 			else
@@ -2698,7 +2730,7 @@ void Tabular::TeXRow(otexstream & os, row_type row,
 	os << '\n';
 
 	//output the bottom line
-	TeXBottomHLine(os, row, clang);
+	TeXBottomHLine(os, row, clang, columns);
 
 	if (row_info[row].interline_space_default) {
 		if (use_booktabs)
@@ -2768,8 +2800,21 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 	if (is_tabular_star)
 		os << "@{\\extracolsep{\\fill}}";
 
-	for (col_type c = 0; c < ncols(); ++c) {
-		if (columnLeftLine(c))
+	// The bidi package (loaded by polyglossia) swaps the column
+	// order for RTL (#9686). Thus we use this list.
+	bool const bidi_rtl =
+		runparams.local_font->isRightToLeft()
+		&& runparams.use_polyglossia;
+	list<col_type> columns;
+	for (col_type cl = 0; cl < ncols(); ++cl) {
+		if (bidi_rtl)
+			columns.push_front(cl);
+		else
+			columns.push_back(cl);
+	}
+
+	for (auto const & c : columns) {
+		if ((bidi_rtl && columnRightLine(c)) || (!bidi_rtl && columnLeftLine(c)))
 			os << '|';
 		if (!column_info[c].align_special.empty()) {
 			os << column_info[c].align_special;
@@ -2791,10 +2836,14 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 				case LYX_ALIGN_LAYOUT:
 				case LYX_ALIGN_SPECIAL:
 					break;
-				case LYX_ALIGN_DECIMAL:
-					os << ">{\\raggedleft}";
+				case LYX_ALIGN_DECIMAL: {
+					if (bidi_rtl)
+						os << ">{\\raggedright}";
+					else
+						os << ">{\\raggedleft}";
 					decimal = true;
 					break;
+				}
 				}
 
 				char valign = 'p';
@@ -2850,12 +2899,12 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 				}
 			} // end if else !column_info[i].p_width
 		} // end if else !column_info[i].align_special
-		if (columnRightLine(c))
+		if ((bidi_rtl && columnLeftLine(c)) || (!bidi_rtl && columnRightLine(c)))
 			os << '|';
 	}
 	os << "}\n";
 
-	TeXLongtableHeaderFooter(os, runparams);
+	TeXLongtableHeaderFooter(os, runparams, columns);
 
 	//+---------------------------------------------------------------------
 	//+                      the single row and columns (cells)            +
@@ -2863,7 +2912,7 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 
 	for (row_type r = 0; r < nrows(); ++r) {
 		if (isValidRow(r)) {
-			TeXRow(os, r, runparams);
+			TeXRow(os, r, runparams, columns);
 			if (is_long_tabular && row_info[r].newpage)
 				os << "\\newpage\n";
 		}
