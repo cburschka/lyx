@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-01-28 21:42-0500\n"
-"PO-Revision-Date: 2018-02-21 17:02+0200\n"
+"PO-Revision-Date: 2018-02-27 18:29+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -18184,11 +18184,11 @@ msgstr "Двойной чистый лист|Д"
 
 #: lib/ui/stdcontext.inc:317 lib/ui/stdmenus.inc:442
 msgid "Ragged Line Break|R"
-msgstr "Неровный разрыв строки|с"
+msgstr "Разрыв строки|с"
 
 #: lib/ui/stdcontext.inc:318 lib/ui/stdmenus.inc:443
 msgid "Justified Line Break|J"
-msgstr "Равномерный разрыв строки|з"
+msgstr "Разрыв строки с выравниванием|з"
 
 #: lib/ui/stdcontext.inc:325
 msgid "Plain Separator|P"
@@ -18611,7 +18611,7 @@ msgstr "Помощь|щ"
 
 #: lib/ui/stdmenus.inc:45
 msgid "New|N"
-msgstr "Новый|й"
+msgstr "Создать|з"
 
 #: lib/ui/stdmenus.inc:46
 msgid "New from Template...|m"
@@ -18623,7 +18623,7 @@ msgstr "Открыть...|О"
 
 #: lib/ui/stdmenus.inc:48
 msgid "Open Recent|t"
-msgstr "Открыть недавний|д"
+msgstr "Недавние документы|д"
 
 #: lib/ui/stdmenus.inc:50
 msgid "Close|C"
@@ -19156,7 +19156,7 @@ msgstr "Математика|а"
 
 #: lib/ui/stdmenus.inc:371
 msgid "Special Character|p"
-msgstr "Специальные символы|ц"
+msgstr "Специальный символ|ц"
 
 #: lib/ui/stdmenus.inc:372
 msgid "Formatting|o"
@@ -19340,7 +19340,7 @@ msgstr "Разрыв лигатуры|л"
 
 #: lib/ui/stdmenus.inc:441
 msgid "Optional Line Break|B"
-msgstr "Разрыв строки|Р"
+msgstr "Возможный разрыв строки|р"
 
 #: lib/ui/stdmenus.inc:454
 msgid "Display Formula|D"
@@ -19404,7 +19404,7 @@ msgstr "Добавить новую ветку..."
 
 #: lib/ui/stdmenus.inc:538
 msgid "Change Tracking|C"
-msgstr "Начать/Остановить слежение"
+msgstr "Отслеживание изменений"
 
 #: lib/ui/stdmenus.inc:539
 msgid "Build Program|B"
@@ -19480,23 +19480,23 @@ msgstr "Перейти к метке|м"
 
 #: lib/ui/stdmenus.inc:578
 msgid "Save Bookmark 1|S"
-msgstr "Заложить закладку 1|З"
+msgstr "Сохранить закладку 1|з"
 
 #: lib/ui/stdmenus.inc:579
 msgid "Save Bookmark 2"
-msgstr "Заложить закладку 2"
+msgstr "Сохранить закладку 2"
 
 #: lib/ui/stdmenus.inc:580
 msgid "Save Bookmark 3"
-msgstr "Заложить закладку 3"
+msgstr "Сохранить закладку 3"
 
 #: lib/ui/stdmenus.inc:581
 msgid "Save Bookmark 4"
-msgstr "Заложить закладку 4"
+msgstr "Сохранить закладку 4"
 
 #: lib/ui/stdmenus.inc:582
 msgid "Save Bookmark 5"
-msgstr "Заложить закладку 4"
+msgstr "Сохранить закладку 5"
 
 #: lib/ui/stdmenus.inc:583
 msgid "Clear Bookmarks|C"
@@ -19504,7 +19504,7 @@ msgstr "Очистить закладки|О"
 
 #: lib/ui/stdmenus.inc:585
 msgid "Navigate Back|B"
-msgstr "Обратная прокрутка|б"
+msgstr "Вернуться назад|н"
 
 #: lib/ui/stdmenus.inc:594
 msgid "Spellchecker...|S"
@@ -28646,8 +28646,8 @@ msgid ""
 "LyX is Copyright (C) 1995 by Matthias Ettrich,\n"
 "1995--%1$s LyX Team"
 msgstr ""
-"Авторское право на LyX (C) 1995 Matthias Ettrich,\n"
-"1995--%1$s Группа разработки LyX"
+"LyX -- Copyright (C) 1995 Matthias Ettrich,\n"
+"1995--%1$s команда разработки LyX"
 
 #: src/frontends/qt4/GuiAbout.cpp:191
 msgid ""
@@ -28656,10 +28656,11 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
-"Эта программа - свободная; вы можете распространять её и/или изменять\n"
-"в соответствии с условиями GNU General Public License, опубликованной\n"
-"Free Software Foundation; в Лицензии версии 2, или (по вашему усмотрению)\n"
-"любой более поздней версии."
+"Эта программа является свободным программным обеспечением; вы можете "
+"распространять и/или модифицировать её согласно условиям GNU General Public "
+"License, опубликованной Фондом свободного программного обеспечения (Free "
+"Software Foundation); либо версии 2 лицензии, либо (по вашему выбору) любой "
+"более поздней версии."
 
 #: src/frontends/qt4/GuiAbout.cpp:197
 msgid ""
@@ -28671,10 +28672,13 @@ msgid ""
 "this program; if not, write to the Free Software Foundation, Inc., 51 "
 "Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA."
 msgstr ""
-"LyX распространяется с надеждой, что он будет полезен, но БЕЗ ВСЯКИХ "
-"ГАРАНТИЙ; даже без подразумевающейся ДОПУСТИМОСТИ ПРОДАЖИ или ПРИГОДНОСТИ "
-"ДЛЯ ОБЫЧНЫХ ЦЕЛЕЙ. Подробнее см. GNU General Public License; если Вы не "
-"получили её копию вместе с программой, пишите в the Free Software "
+"LyX распространяется в надежде, что он будет полезен, но БЕЗ КАКИХ-ЛИБО "
+"ГАРАНТИЙ; даже без подразумеваемой гарантии ЦЕННОСТИ или ПРИГОДНОСТИ ДЛЯ "
+"КОНКРЕТНОЙ ЦЕЛИ.\n"
+"Смотрите GNU General Public License для получения дополнительной "
+"информации.\n"
+"Вы должны были получить копию лицензии вместе с этой программой; если нет, "
+"напишите в Фонд свободного программного обеспечения: Free Software "
 "Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, "
 "USA."
 
