@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3.0\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-02-24 19:14-0500\n"
-"PO-Revision-Date: 2018-02-19 16:27+0300\n"
+"POT-Creation-Date: 2018-03-01 19:07+0100\n"
+"PO-Revision-Date: 2018-02-26 17:53+0300\n"
 "Last-Translator: Hatim Alahmady <dr.hatim@hotmail.com>\n"
 "Language-Team: Hatim Alahmady <dr.hatim@hotmail.com>\n"
 "Language: ar\n"
@@ -7343,11 +7343,11 @@ msgstr "رسم بياني"
 
 #: lib/layouts/achemso.layout:190 lib/layouts/achemso.layout:202
 msgid "Chart"
-msgstr "رسم بياني"
+msgstr "جدول بياني"
 
 #: lib/layouts/achemso.layout:196
 msgid "List of Charts"
-msgstr "قائمة الرسوم البيانية"
+msgstr "قائمة الجداول البيانية"
 
 #: lib/layouts/achemso.layout:210
 msgid "Graphs[[mathematical]]"
@@ -7355,11 +7355,11 @@ msgstr "رسم[[mathematical]]"
 
 #: lib/layouts/achemso.layout:216 lib/layouts/achemso.layout:228
 msgid "Graph[[mathematical]]"
-msgstr "شكل بياني"
+msgstr "رسم بياني"
 
 #: lib/layouts/achemso.layout:222
 msgid "List of Graphs[[mathematical]]"
-msgstr "قائمة الأشكال البيانية"
+msgstr "قائمة الرسوم البيانية"
 
 #: lib/layouts/achemso.layout:256
 msgid "SupplementalInfo"
@@ -7531,9 +7531,8 @@ msgid "State"
 msgstr "المحافظة"
 
 #: lib/layouts/acmart.layout:278 lib/layouts/acmart.layout:280
-#, fuzzy
 msgid "Postal Code"
-msgstr "تعليق البريد"
+msgstr "الرمز البريدي"
 
 #: lib/layouts/acmart.layout:286
 msgid "TitleNote"
@@ -7701,14 +7700,12 @@ msgid "Computing Classification Scheme: "
 msgstr "كود التصنيف"
 
 #: lib/layouts/acmart.layout:444
-#, fuzzy
 msgid "Set Copyright"
 msgstr "تعيين حقوق النشر"
 
 #: lib/layouts/acmart.layout:446
-#, fuzzy
 msgid "Set Copyright: "
-msgstr "تعيين حقوق النشر"
+msgstr "تعيين حقوق النشر:"
 
 #: lib/layouts/acmart.layout:450
 msgid "Copyright Year"
@@ -9332,15 +9329,15 @@ msgstr "على الشرائح فقط"
 
 #: lib/layouts/beamer.layout:867
 msgid "Block"
-msgstr ""
+msgstr "الكتلة"
 
 #: lib/layouts/beamer.layout:868
 msgid "Blocks"
-msgstr ""
+msgstr "الكتل"
 
 #: lib/layouts/beamer.layout:877
 msgid "Block:"
-msgstr ""
+msgstr "الكتلة:"
 
 #: lib/layouts/beamer.layout:888
 msgid "Action Specification|S"
@@ -9348,11 +9345,11 @@ msgstr "تخصيص تأثير|S"
 
 #: lib/layouts/beamer.layout:895
 msgid "Block Title"
-msgstr ""
+msgstr "عنوان الكتلة"
 
 #: lib/layouts/beamer.layout:896
 msgid "Enter the block title here"
-msgstr ""
+msgstr "كتابة عنوان الكتلة هنا"
 
 #: lib/layouts/beamer.layout:911
 msgid "ExampleBlock"
@@ -9601,7 +9598,7 @@ msgstr "Beamerposter"
 
 #: lib/layouts/bicaption.module:2
 msgid "Multilingual Captions"
-msgstr ""
+msgstr "تعليق متعدد اللغات"
 
 #: lib/layouts/bicaption.module:6
 msgid ""
@@ -11065,14 +11062,12 @@ msgid "Text (right side)"
 msgstr "نص (جهة اليمين)"
 
 #: lib/layouts/europasscv.layout:290
-#, fuzzy
 msgid "BlueItem"
-msgstr "بند مزدوج"
+msgstr "بند ازرق"
 
 #: lib/layouts/europasscv.layout:293
-#, fuzzy
 msgid "Blue item:"
-msgstr "بند مزدوج:"
+msgstr "بند ازرق:"
 
 #: lib/layouts/europasscv.layout:296
 msgid "BlueItemInset"
@@ -12536,14 +12531,12 @@ msgid "Vita:"
 msgstr ""
 
 #: lib/layouts/iucr.layout:206
-#, fuzzy
 msgid "PDB reference"
-msgstr "تفضيلات"
+msgstr "مرجع PDB"
 
 #: lib/layouts/iucr.layout:209
-#, fuzzy
 msgid "PDB reference:"
-msgstr "تفضيلات"
+msgstr "مرجع PDB :"
 
 #: lib/layouts/iucr.layout:212
 msgid "Optional name"
@@ -13017,7 +13010,7 @@ msgstr "مؤلف جدول المحتويات:"
 
 #: lib/layouts/llncs.layout:310
 msgid "Case #."
-msgstr ""
+msgstr "الحالة #."
 
 #: lib/layouts/llncs.layout:320 lib/layouts/svmono.layout:84
 #: lib/layouts/theorems-starred.inc:279
@@ -13094,11 +13087,11 @@ msgstr "مائل"
 
 #: lib/layouts/logicalmkup.module:46
 msgid "Strong"
-msgstr ""
+msgstr "قوي"
 
 #: lib/layouts/logicalmkup.module:48
 msgid "strong"
-msgstr ""
+msgstr "قوي"
 
 #: lib/layouts/ltugboat.layout:3
 msgid "TUGboat"
@@ -13741,7 +13734,7 @@ msgstr ""
 
 #: lib/layouts/pdfcomment.module:19
 msgid "Define Avatar"
-msgstr ""
+msgstr "تعيين الصورة الرمزية"
 
 #: lib/layouts/pdfcomment.module:20
 msgid "PDF-comment"
@@ -13753,7 +13746,7 @@ msgstr ""
 
 #: lib/layouts/pdfcomment.module:30
 msgid "Name of the Avatar"
-msgstr ""
+msgstr "اسم الصورة الرمزية"
 
 #: lib/layouts/pdfcomment.module:41
 msgid "Define PDF-Comment Style"
@@ -13914,7 +13907,7 @@ msgstr ""
 
 #: lib/layouts/pdfcomment.module:192
 msgid "Insert the tooltip text here"
-msgstr ""
+msgstr "إدراج نص التلميح هنا"
 
 #: lib/layouts/pdfcomment.module:200
 msgid "List of PDF Comments"
@@ -13969,11 +13962,11 @@ msgstr "نهاية نموذج PDF"
 
 #: lib/layouts/pdfform.module:47
 msgid "PDF Link Setup"
-msgstr ""
+msgstr "إعداد رابط PDF"
 
 #: lib/layouts/pdfform.module:50
 msgid "PDF link setup"
-msgstr ""
+msgstr "إعداد رابط PDF"
 
 #: lib/layouts/pdfform.module:58 lib/layouts/pdfform.module:63
 msgid "TextField"
@@ -13997,7 +13990,7 @@ msgstr "إدراج الملصق هنا"
 
 #: lib/layouts/pdfform.module:96 lib/layouts/pdfform.module:99
 msgid "PushButton"
-msgstr ""
+msgstr "نقر الزر"
 
 #: lib/layouts/pdfform.module:102 lib/layouts/pdfform.module:105
 msgid "SubmitButton"
@@ -14009,11 +14002,11 @@ msgstr "زر مسح"
 
 #: lib/layouts/pdfform.module:118 lib/layouts/pdfform.module:121
 msgid "PDFAction"
-msgstr ""
+msgstr "إجراء PDF"
 
 #: lib/layouts/pdfform.module:126
 msgid "The name of the PDF action"
-msgstr ""
+msgstr "اسم إجراء PDF"
 
 #: lib/layouts/pdfform.module:134
 msgid "Text Field Style"
@@ -14321,7 +14314,7 @@ msgstr "خاص"
 
 #: lib/layouts/revtex4-1.layout:242
 msgid "Turn Page"
-msgstr ""
+msgstr "تدوير الصفحة"
 
 #: lib/layouts/revtex4-1.layout:250
 msgid "Wide Text"
@@ -14400,7 +14393,7 @@ msgstr ""
 
 #: lib/layouts/rsphrase.module:39
 msgid "Safety phrase"
-msgstr ""
+msgstr "عبارة الأمان"
 
 #: lib/layouts/rsphrase.module:46
 msgid "Phrase Text"
@@ -14963,11 +14956,11 @@ msgstr "بيانات حقوق النشر:"
 
 #: lib/layouts/sigplanconf.layout:112
 msgid "TitleBanner"
-msgstr ""
+msgstr "شعار العنوان"
 
 #: lib/layouts/sigplanconf.layout:115
 msgid "Title banner:"
-msgstr ""
+msgstr "شعار العنوان:"
 
 #: lib/layouts/sigplanconf.layout:119
 msgid "PreprintFooter"
@@ -14979,7 +14972,7 @@ msgstr "تذييل ما قبل الطباعة:"
 
 #: lib/layouts/sigplanconf.layout:129
 msgid "Digital Object Identifier:"
-msgstr ""
+msgstr "المعرف الرقمي للكائن:"
 
 #: lib/layouts/sigplanconf.layout:170
 msgid "Affiliation and/or address of the author"
@@ -15187,15 +15180,15 @@ msgstr "استعراض"
 
 #: lib/layouts/stdinsets.inc:703 lib/layouts/stdinsets.inc:711
 msgid "see equation[[nomencl]]"
-msgstr "أنظر السؤال"
+msgstr ""
 
 #: lib/layouts/stdinsets.inc:704 lib/layouts/stdinsets.inc:712
 msgid "page[[nomencl]]"
-msgstr "صفحة"
+msgstr ""
 
 #: lib/layouts/stdinsets.inc:705 lib/layouts/stdinsets.inc:713
 msgid "Nomenclature[[output]]"
-msgstr "المصطلحات"
+msgstr "المصطلح"
 
 #: lib/layouts/stdlayouts.inc:99
 msgid "Verbatim*"
@@ -15310,19 +15303,19 @@ msgstr "تنفيذ المؤلف"
 
 #: lib/layouts/svcommon.inc:414 lib/layouts/svmult.layout:115
 msgid "Running Chapter"
-msgstr ""
+msgstr "تنفيذ الفصل"
 
 #: lib/layouts/svcommon.inc:419
 msgid "Running chapter:"
-msgstr ""
+msgstr "تنفيذ الفصل:"
 
 #: lib/layouts/svcommon.inc:422
 msgid "Running Section"
-msgstr ""
+msgstr "تنفيذ القسم"
 
 #: lib/layouts/svcommon.inc:425
 msgid "Running section:"
-msgstr ""
+msgstr "تنفيذ القسم:"
 
 #: lib/layouts/svcommon.inc:449
 msgid "Abstract*"
@@ -15667,7 +15660,7 @@ msgstr "مشكلة \\theproblem."
 #: lib/layouts/theorems-ams-bytype.inc:259 lib/layouts/theorems-bytype.inc:228
 #: lib/layouts/theorems-without-preamble.inc:308
 msgid "Exercise \\theexercise."
-msgstr ""
+msgstr "تدريب \\theexercise."
 
 #: lib/layouts/theorems-ams-bytype.module:2
 msgid "Theorems (AMS, Numbered by Type)"
@@ -15865,7 +15858,7 @@ msgstr "ملاحظة."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:240
 msgid "Notation \\thenotation."
-msgstr ""
+msgstr "تدوين \\thenotation."
 
 #: lib/layouts/theorems-ams-extended-bytype.module:255
 #: lib/layouts/theorems-ams-extended-chap-bytype.module:283
@@ -16078,7 +16071,7 @@ msgstr "ملاحظة \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:211
 msgid "Notation \\thetheorem."
-msgstr ""
+msgstr "تدوين \\thetheorem."
 
 #: lib/layouts/theorems-ams-extended.module:245
 msgid "Summary \\thetheorem."
@@ -16252,7 +16245,7 @@ msgstr "متطلب*"
 
 #: lib/layouts/theorems-proof.inc:22
 msgid "Alternative proof string"
-msgstr ""
+msgstr "معطى برهان بديل"
 
 #: lib/layouts/theorems-sec-bytype.module:2
 msgid "Theorems (Numbered by Type within Sections)"
@@ -16339,7 +16332,7 @@ msgstr "الاسم/العنوان"
 
 #: lib/layouts/theorems-without-preamble.inc:45
 msgid "Alternative optional name or title"
-msgstr ""
+msgstr "عنوان أو اسم اختياري بديل"
 
 #: lib/layouts/theorems-without-preamble.inc:131
 msgid "Prop \\theprop."
@@ -18796,7 +18789,7 @@ msgstr "مجلد ماكرو الرياضيات|d"
 
 #: lib/ui/stdmenus.inc:339
 msgid "Outline Pane|u"
-msgstr "نافذة الخلاصة|u"
+msgstr "نافذة الخطوط العريضة|u"
 
 #: lib/ui/stdmenus.inc:340
 msgid "Code Preview Pane|P"
@@ -19289,11 +19282,11 @@ msgstr "لغوي|L"
 
 #: lib/ui/stdmenus.inc:635
 msgid "Multilingual Captions|C"
-msgstr ""
+msgstr "تعليق متعدد اللغات|C"
 
 #: lib/ui/stdmenus.inc:636
 msgid "Paralist|t"
-msgstr ""
+msgstr "قائمة فقرات|t"
 
 #: lib/ui/stdmenus.inc:637
 msgid "PDF comments|D"
@@ -19937,7 +19930,7 @@ msgstr "العمليات الرياضية"
 
 #: lib/ui/stdtoolbars.inc:310 lib/ui/stdtoolbars.inc:1169
 msgid "Operators (extended)"
-msgstr ""
+msgstr "عمليات (ممتدة)"
 
 #: lib/ui/stdtoolbars.inc:311 lib/ui/stdtoolbars.inc:552
 msgid "Relations"
@@ -19945,11 +19938,11 @@ msgstr "العلاقات"
 
 #: lib/ui/stdtoolbars.inc:312 lib/ui/stdtoolbars.inc:983
 msgid "Relations (extended)"
-msgstr ""
+msgstr "علاقات (ممتدة)"
 
 #: lib/ui/stdtoolbars.inc:313
 msgid "Negative relations (extended)"
-msgstr ""
+msgstr "علاقات عكسية (ممتدة)"
 
 #: lib/ui/stdtoolbars.inc:314 lib/ui/stdtoolbars.inc:420
 msgid "Dots"
@@ -20453,19 +20446,19 @@ msgstr "cancelto"
 
 #: lib/ui/stdtoolbars.inc:468
 msgid "Insert left/right side scripts"
-msgstr ""
+msgstr "إدراج سكريبت أتجاه يمين/يسار"
 
 #: lib/ui/stdtoolbars.inc:469
 msgid "Insert right side scripts"
-msgstr ""
+msgstr "إدراج سكريبت اتجاه اليمين"
 
 #: lib/ui/stdtoolbars.inc:470
 msgid "Insert left side scripts"
-msgstr ""
+msgstr "إدراج سكريبت اتجاه اليسار"
 
 #: lib/ui/stdtoolbars.inc:471
 msgid "Insert side scripts"
-msgstr ""
+msgstr "إدراج سكريبت الاتجاه"
 
 #: lib/ui/stdtoolbars.inc:472
 msgid "overset"
@@ -26034,7 +26027,7 @@ msgstr "اس&مح"
 
 #: src/Converter.cpp:356
 msgid "&Run"
-msgstr ""
+msgstr "&تنفيذ"
 
 #: src/Converter.cpp:358
 msgid "&Always allow for this document"
@@ -26310,7 +26303,7 @@ msgstr "ثبت"
 #: src/Font.cpp:163
 #, c-format
 msgid "Emphasis %1$s, "
-msgstr ""
+msgstr "تأكيد %1$s, "
 
 #: src/Font.cpp:166
 #, c-format
@@ -28399,12 +28392,11 @@ msgid "Merge Changes"
 msgstr "دمج التغييرات"
 
 #: src/frontends/qt4/GuiChanges.cpp:73
-#, fuzzy
 msgid ""
 "Changed by %1\n"
 "\n"
 msgstr ""
-"تغير بواسطة  %1$s\n"
+"تغير بواسطة %1\n"
 "\n"
 
 #: src/frontends/qt4/GuiChanges.cpp:78
@@ -30398,7 +30390,7 @@ msgstr "لا توجد موسوعات متاحة لهذه اللغة!"
 
 #: src/frontends/qt4/GuiToc.cpp:36
 msgid "Outline"
-msgstr "الخلاصة"
+msgstr "الخطوط العريضة"
 
 #: src/frontends/qt4/GuiToolbar.cpp:387 src/frontends/qt4/Toolbars.cpp:377
 msgid "auto"
@@ -31053,7 +31045,7 @@ msgstr "(جدول محتويات فارغ)"
 
 #: src/frontends/qt4/Menus.cpp:1377
 msgid "Open Outliner..."
-msgstr "فتح مجموعة جديدة..."
+msgstr "فتح الخطوط العريضة..."
 
 #: src/frontends/qt4/Menus.cpp:1414
 msgid "Other Toolbars"
@@ -31142,9 +31134,8 @@ msgid "Reset to language default (%1$s)|l"
 msgstr ""
 
 #: src/frontends/qt4/Menus.cpp:1851
-#, fuzzy
 msgid "Change Style|y"
-msgstr "تغيير نوع محدد|L"
+msgstr "تغيير الاسلوب|L"
 
 #: src/frontends/qt4/Menus.cpp:1893
 #, c-format
