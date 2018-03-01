@@ -233,6 +233,7 @@ void GuiCitation::on_restorePB_clicked()
 {
 	init();
 	updateFilterHint();
+	filterPressed();
 }
 
 
