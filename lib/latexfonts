@@ -171,8 +171,15 @@ Font libertine
 	Family           rm
 	OsfOption        osf
 	Package          libertineRoman
-	CompleteFont     libertine
+	CompleteFont     libertine-full
 	AltFonts         libertine-type1,libertine-2012,libertine-legacy
+EndFont
+
+AltFont libertine-full
+	GuiName          "Libertine"
+	Family           rm
+	Package          libertine
+	Requires         libertineRoman
 EndFont
 
 AltFont libertine-type1
