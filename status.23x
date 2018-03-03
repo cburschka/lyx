@@ -15,6 +15,8 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
+- Updated Arabic, Russian and Slovakian user interface localization.
+
 
 * TEX2LYX IMPROVEMENTS
 
@@ -65,7 +67,7 @@ What's new
 
 * INTERNALS
 
-- Properly quote python interpreter when scanning TeX files.
+- Fix bug that TeX files were not detected when reconfiguring LyX (bug 11053).
 
 
 * DOCUMENTATION AND LOCALIZATION
