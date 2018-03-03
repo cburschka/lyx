@@ -1771,14 +1771,14 @@ def checkTeXAllowSpaces():
 def rescanTeXFiles():
     ''' Run kpsewhich to update information about TeX files '''
     logger.info("+Indexing TeX files... ")
-    if not os.path.isfile( os.path.join(srcdir, 'scripts', 'TeXFiles.py') ):
+    tfscript = os.path.join(srcdir, 'scripts', 'TeXFiles.py')
+    if not os.path.isfile(tfscript):
         logger.error("configure: error: cannot find TeXFiles.py script")
         sys.exit(1)
     interpreter = sys.executable
     if interpreter == '':
         interpreter = "python"
-    tfp = cmdOutput('"%s" -tt "%s"' % (interpreter,\
-          os.path.join(srcdir, 'scripts', 'TeXFiles.py')))
+    tfp = cmdOutput('"%s" -tt "%s"' % (interpreter, tfscript))
     logger.info(tfp)
     logger.info("\tdone")
 
