@@ -1772,8 +1772,8 @@ def rescanTeXFiles():
     interpreter = sys.executable
     if interpreter == '':
         interpreter = "python"
-    tfp = cmdOutput(interpreter + " -tt " + '"'
-                    + os.path.join(srcdir, 'scripts', 'TeXFiles.py') + '"')
+    tfp = cmdOutput('"%s" -tt "%s"' % (interpreter,\
+          os.path.join(srcdir, 'scripts', 'TeXFiles.py')))
     logger.info(tfp)
     logger.info("\tdone")
 
