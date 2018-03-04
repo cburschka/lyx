@@ -328,12 +328,14 @@
 # ------------------------------------------------------------------
 # 22 septembre 2017 : résolution de conflits de raccourcis
 # ------------------------------------------------------------------
+# 4 mars 2018 : dernière vérification avant 2.2.4
+# ------------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-02-22 14:50-0500\n"
-"PO-Revision-Date: 2017-09-22 22:28+0200\n"
+"PO-Revision-Date: 2018-03-04 22:12+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -10921,7 +10923,6 @@ msgid "Fix LaTeX"
 msgstr "Correction LaTeX"
 
 #: lib/layouts/fixltx2e.module:10
-#, fuzzy
 msgid ""
 "Loads the LaTeX package fixltx2e which contains some bug fixes for LaTeX. "
 "Those fixes were not part of older LaTeX kernels because of backward "
@@ -10932,10 +10933,13 @@ msgid ""
 "newer LaTeX distributions."
 msgstr ""
 "Charge le paquetage LaTeX fixltx2e qui contient quelques corrections "
-"d'erreurs LaTeX. Ces corrections ne figure pas dans le noyau LaTeX pour des "
-"raisons de rétro-compatibilité. Si vous utilisez ce module, votre document "
-"imprimé pourra se présenter différemment avec de futures versions de LaTeX, "
-"parce que fixltx2e pourra proposer de nouvelles corrections dans le futur."
+"d'erreurs LaTeX. Ces corrections ne figuraient pas dans le noyau LaTeX plus "
+"anciens pour des raisons de rétro-compatibilité. Si vous utilisez ce module, "
+"votre document imprimé pourra se présenter différemment avec différentes "
+"versions de LaTeX, en fonction des versions respectives de fixltx2e. Nota : "
+"les noyaux LaTeX récents (à partir du 01/01/2015) contiennent  les "
+"fonctionnalités de fixltx2e, par conséquent le module  fixltx2e devient "
+"obsolète avec des distributions LaTeX plus récentes."
 
 #: lib/layouts/fixme.module:2
 msgid "FiXme"
