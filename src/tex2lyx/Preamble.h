@@ -241,6 +241,8 @@ private:
 	AuthorList authors_;
 	/// special table column types
 	std::map<char, int> special_columns_;
+	///
+	std::map<std::string, std::string> extra_package_options_;
 };
 
 
