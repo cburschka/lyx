@@ -1073,6 +1073,16 @@ void Preamble::handle_package(Parser &p, string const & name,
 			if (!opt.empty())
 				h_biblatex_bibstyle = opt;
 		}
+		opt = process_keyval_opt(options, "refsection");
+		if (!opt.empty()) {
+			if (opt == "none" || opt == "part"
+			    || opt == "chapter" || opt == "section"
+			    || opt == "subsection")
+				h_multibib = opt;
+			else
+				cerr << "Ignoring unkown refesection value '"
+				     << opt << "'.";
+		}
 		if (!options.empty()) {
 			h_biblio_options = join(options, ",");
 			options.clear();
@@ -1312,6 +1322,8 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 		os << "\\biblatex_bibstyle " << h_biblatex_bibstyle << "\n";
 	if (!h_biblatex_citestyle.empty())
 		os << "\\biblatex_citestyle " << h_biblatex_citestyle << "\n";
+	if (!h_multibib.empty())
+		os << "\\multibib " << h_multibib << "\n";
 	os << "\\use_indices " << h_use_indices << "\n"
 	   << "\\paperorientation " << h_paperorientation << '\n'
 	   << "\\suppress_date " << h_suppress_date << '\n'

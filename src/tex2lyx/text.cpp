@@ -4665,6 +4665,35 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			need_commentbib = false;
 		}
 
+		else if (t.cs() == "bibbysection") {
+			context.check_layout(os);
+			string BibOpts;
+			string bbloptions = p.hasOpt() ? p.getArg('[', ']') : string();
+			vector<string> opts = getVectorFromString(bbloptions);
+			vector<string>::iterator it =
+				find(opts.begin(), opts.end(), "heading=bibintoc");
+			if (it != opts.end()) {
+				opts.erase(it);
+				BibOpts = "bibtotoc";
+			}
+			bbloptions = getStringFromVector(opts);
+			begin_command_inset(os, "bibtex", "bibtex");
+			os << "btprint " << '"' << "bibbysection" << '"' << "\n";
+			string bibfiles;
+			for (auto const & bf : preamble.biblatex_bibliographies) {
+				if (!bibfiles.empty())
+					bibfiles += ",";
+				bibfiles += normalize_filename(bf);
+			}
+			if (!bibfiles.empty())
+				os << "bibfiles " << '"' << bibfiles << '"' << "\n";
+			os << "options " << '"' << BibOpts << '"' << "\n";
+			if (!bbloptions.empty())
+				os << "biblatexopts " << '"' << bbloptions << '"' << "\n";
+			end_inset(os);
+			need_commentbib = false;
+		}
+
 		else if (t.cs() == "parbox") {
 			// Test whether this is an outer box of a shaded box
 			p.pushPosition();
