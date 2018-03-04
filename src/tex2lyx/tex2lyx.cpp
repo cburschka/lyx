@@ -874,6 +874,8 @@ bool tex2lyx(idocstream & is, ostream & os, string const & encoding,
 	context.font.language = preamble.defaultLanguage();
 	// parse the main text
 	parse_text(p, ss, FLAG_END, true, context);
+	// check if we need a commented bibtex inset (biblatex)
+	check_comment_bib(ss, context);
 	if (Context::empty)
 		// Empty document body. LyX needs at least one paragraph.
 		context.check_layout(ss);

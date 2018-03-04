@@ -104,6 +104,8 @@ public:
 	static const char * const polyglossia_languages[];
 	/// the same as polyglossia_languages with .lyx names
 	static const char * const coded_polyglossia_languages[];
+	///
+	std::vector<std::string> biblatex_bibliographies;
 
 private:
 	///
@@ -132,6 +134,9 @@ private:
 	std::ostringstream h_preamble;
 	std::string h_backgroundcolor;
 	std::string h_biblio_style;
+	std::string h_biblio_options;
+	std::string h_biblatex_bibstyle;
+	std::string h_biblatex_citestyle;
 	std::string h_bibtex_command;
 	std::string h_boxbgcolor;
 	std::string h_cite_engine;

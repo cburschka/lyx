@@ -49,6 +49,7 @@ std::string translate_len(std::string const &);
 
 void parse_text(Parser & p, std::ostream & os, unsigned flags, bool outer,
 		Context & context);
+void check_comment_bib(std::ostream & os, Context & context);
 
 /*!
  * Parses a subdocument, usually useful in insets (whence the name).
