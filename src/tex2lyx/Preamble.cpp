@@ -1046,10 +1046,45 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_biblio_options = join(options, ",");
 	}
 
+	else if (name == "biblatex") {
+		h_biblio_style = "plainnat";
+		h_cite_engine = "biblatex";
+		h_cite_engine_type = "authoryear";
+		string opt;
+		vector<string>::iterator it =
+			find(options.begin(), options.end(), "natbib");
+		if (it != options.end()) {
+			options.erase(it);
+			h_cite_engine = "biblatex-natbib";
+		} else {
+			opt = process_keyval_opt(options, "natbib");
+			if (opt == "true")
+				h_cite_engine = "biblatex-natbib";
+		}
+		opt = process_keyval_opt(options, "style");
+		if (!opt.empty()) {
+			h_biblatex_citestyle = opt;
+			h_biblatex_bibstyle = opt;
+		} else {
+			opt = process_keyval_opt(options, "citestyle");
+			if (!opt.empty())
+				h_biblatex_citestyle = opt;
+			opt = process_keyval_opt(options, "bibstyle");
+			if (!opt.empty())
+				h_biblatex_bibstyle = opt;
+		}
+		if (!options.empty()) {
+			h_biblio_options = join(options, ",");
+			options.clear();
+		}
+	}
+
 	else if (name == "jurabib") {
 		h_biblio_style = "jurabib";
 		h_cite_engine = "jurabib";
 		h_cite_engine_type = "authoryear";
+		if (!options.empty())
+			h_biblio_options = join(options, ",");
 	}
 
 	else if (name == "bibtopic")
@@ -1270,8 +1305,14 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 	os << "\\cite_engine " << h_cite_engine << '\n'
 	   << "\\cite_engine_type " << h_cite_engine_type << '\n'
 	   << "\\biblio_style " << h_biblio_style << "\n"
-	   << "\\use_bibtopic " << h_use_bibtopic << "\n"
-	   << "\\use_indices " << h_use_indices << "\n"
+	   << "\\use_bibtopic " << h_use_bibtopic << "\n";
+	if (!h_biblio_options.empty())
+		os << "\\biblio_options " << h_biblio_options << "\n";
+	if (!h_biblatex_bibstyle.empty())
+		os << "\\biblatex_bibstyle " << h_biblatex_bibstyle << "\n";
+	if (!h_biblatex_citestyle.empty())
+		os << "\\biblatex_citestyle " << h_biblatex_citestyle << "\n";
+	os << "\\use_indices " << h_use_indices << "\n"
 	   << "\\paperorientation " << h_paperorientation << '\n'
 	   << "\\suppress_date " << h_suppress_date << '\n'
 	   << "\\justification " << h_justification << '\n'
@@ -1564,6 +1605,14 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			h_shortcut[index_number] = shortcut;
 			index_number += 1;
 			p.skip_spaces();
+		}
+
+		else if (t.cs() == "addbibresource")
+			biblatex_bibliographies.push_back(removeExtension(p.getArg('{', '}')));
+
+		else if (t.cs() == "bibliography") {
+			vector<string> bibs = getVectorFromString(p.getArg('{', '}'));
+			biblatex_bibliographies.insert(biblatex_bibliographies.end(), bibs.begin(), bibs.end());
 		}
 
 		else if (t.cs() == "RS@ifundefined") {
