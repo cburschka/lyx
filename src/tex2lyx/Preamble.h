@@ -133,6 +133,7 @@ private:
 
 	std::ostringstream h_preamble;
 	std::string h_backgroundcolor;
+	std::string h_multibib;
 	std::string h_biblio_style;
 	std::string h_biblio_options;
 	std::string h_biblatex_bibstyle;

@@ -114,13 +114,9 @@ Format LaTeX feature                        LyX feature
       Same for:
       \Cites, \textcites, \Textcites, \parencites, \Parencites, \smartcites, \Smartcites, \autocites, Autocites
 533   Multibib support
-      \begin{btUnit}...\end{btUnit}        \multibib {none|part|chapter|section|subsetion}
+      \begin{btUnit}...\end{btUnit}        \multibib {none|part|chapter|section|subsection}
         (if a part, chapter, section etc.
          follows the \begin...)
-      \usepackage[refsection=<val>         \multibib <val>
-      \bibbysection[<opts>]                \begin_inset CommandInset bibtex
-                                             biblatexopts "<opts>"
-                                             btprint "bibbysection"
 534   Chapterbib support
       \usepackage{chapterbib}              \multibib child
 
