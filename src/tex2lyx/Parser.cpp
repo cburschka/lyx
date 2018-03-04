@@ -533,11 +533,11 @@ string Parser::getArg(char left, char right, bool allow_escaping)
 }
 
 
-string Parser::getFullOpt(bool keepws)
+string Parser::getFullOpt(bool keepws, char left, char right)
 {
-	Arg arg = getFullArg('[', ']');
+	Arg arg = getFullArg(left, right);
 	if (arg.first)
-		return '[' + arg.second + ']';
+		return left + arg.second + right;
 	if (keepws)
 		unskip_spaces(true);
 	return string();

@@ -191,7 +191,8 @@ char const * const known_jurabib_commands[] = { "cite", "citet", "citep",
 char const * const known_biblatex_commands[] = { "cite", "Cite", "textcite", "Textcite",
 "parencite", "Parencite", "citeauthor", "Citeauthor", "citeyear", "smartcite", "Smartcite",
  "footcite", "Footcite", "autocite", "Autocite", "citetitle", "fullcite", "footfullcite",
-"supercite", 0 };
+"supercite", "cites", "Cites", "textcites", "Textcites", "parencites", "Parencites",
+"smartcites", "Smartcites", "autocites", "Autocites", 0 };
 
 // Whether we need to insert a bibtex inset in a comment
 bool need_commentbib = false;
@@ -2148,17 +2149,17 @@ void parse_text_attributes(Parser & p, ostream & os, unsigned flags, bool outer,
 
 /// get the arguments of a natbib or jurabib citation command
 void get_cite_arguments(Parser & p, bool natbibOrder,
-	string & before, string & after)
+	string & before, string & after, bool const qualified = false)
 {
 	// We need to distinguish "" and "[]", so we can't use p.getOpt().
 
 	// text before the citation
 	before.clear();
 	// text after the citation
-	after = p.getFullOpt();
+	after = qualified ? p.getFullOpt(false, '(', ')') : p.getFullOpt();
 
 	if (!after.empty()) {
-		before = p.getFullOpt();
+		before = qualified ? p.getFullOpt(false, '(', ')') : p.getFullOpt();
 		if (natbibOrder && !before.empty())
 			swap(before, after);
 	}
@@ -3836,14 +3837,23 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				preamble.citeEngine("natbib");
 		}
 
-		else if (use_biblatex
+		else if ((use_biblatex
 			 && is_known(t.cs(), known_biblatex_commands)
 			 && ((t.cs() == "cite"
 			     || t.cs() == "citeauthor"
 			     || t.cs() == "Citeauthor"
 			     || t.cs() == "parencite"
 			     || t.cs() == "citetitle")
-			 || p.next_token().asInput() != "*")) {
+			 || p.next_token().asInput() != "*"))
+			|| (use_biblatex_natbib
+			    && (is_known(t.cs(), known_biblatex_commands)
+			      || is_known(t.cs(), known_natbib_commands))
+			    && ((t.cs() == "cite" || t.cs() == "citet" || t.cs() == "Citet"
+			       || t.cs() == "citep" || t.cs() == "Citep" || t.cs() == "citealt"
+			       || t.cs() == "Citealt" || t.cs() == "citealp" || t.cs() == "Citealp"
+			       || t.cs() == "citeauthor" || t.cs() == "Citeauthor"
+			       || t.cs() == "parencite" || t.cs() == "citetitle")
+			       || p.next_token().asInput() != "*"))){
 			context.check_layout(os);
 			string command = t.cs();
 			if (p.next_token().asInput() == "*") {
@@ -3851,11 +3861,15 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				p.get_token();
 			}
 
+			bool const qualified = suffixIs(command, "s");
+			if (qualified)
+				command = rtrim(command, "s");
+
 			// text before the citation
 			string before;
 			// text after the citation
 			string after;
-			get_cite_arguments(p, true, before, after);
+			get_cite_arguments(p, true, before, after, qualified);
 
 			// These use natbib cmd names in LyX
 			// for inter-citeengine compativility
@@ -3878,10 +3892,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			else if (command == "Smartcite")
 				command = "Footcite";
 
-			if (before.empty() && after == "[]")
+			string const emptyarg = qualified ? "()" : "[]";
+			if (before.empty() && after == emptyarg)
 				// avoid \cite[]{a}
 				after.erase();
-			else if (before == "[]" && after == "[]") {
+			else if (before == emptyarg && after == emptyarg) {
 				// avoid \cite[][]{a}
 				before.erase();
 				after.erase();
@@ -3897,94 +3912,77 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				before.erase(before.length() - 1, 1);
 				before = convert_command_inset_arg(before);
 			}
+			string keys, pretextlist, posttextlist;
+			if (qualified) {
+				map<string, string> pres;
+				map<string, string> posts;
+				vector<string> lkeys;
+				// text before the citation
+				string lbefore;
+				// text after the citation
+				string lafter;
+				string lkey;
+				while (true) {
+					get_cite_arguments(p, true, lbefore, lafter);
+					// remove the brackets around after and before
+					if (!lafter.empty()) {
+						lafter.erase(0, 1);
+						lafter.erase(lafter.length() - 1, 1);
+						lafter = convert_command_inset_arg(lafter);
+					}
+					if (!lbefore.empty()) {
+						lbefore.erase(0, 1);
+						lbefore.erase(lbefore.length() - 1, 1);
+						lbefore = convert_command_inset_arg(lbefore);
+					}
+					if (lbefore.empty() && lafter == "[]")
+						// avoid \cite[]{a}
+						lafter.erase();
+					else if (lbefore == "[]" && lafter == "[]") {
+						// avoid \cite[][]{a}
+						lbefore.erase();
+						lafter.erase();
+					}
+					lkey = p.getArg('{', '}');
+					if (lkey.empty())
+						break;
+					if (!lbefore.empty())
+						pres.insert(make_pair(lkey, lbefore));
+					if (!lafter.empty())
+						posts.insert(make_pair(lkey, lafter));
+					lkeys.push_back(lkey);
+				}
+				keys = convert_command_inset_arg(getStringFromVector(lkeys));
+				for (auto const & ptl : pres) {
+					if (!pretextlist.empty())
+						pretextlist += '\t';
+					pretextlist += ptl.first + " " + ptl.second;
+				}
+				for (auto const & potl : posts) {
+					if (!posttextlist.empty())
+						posttextlist += '\t';
+					posttextlist += potl.first + " " + potl.second;
+				}
+			} else
+				keys = convert_command_inset_arg(p.verbatim_item());
 			begin_command_inset(os, "citation", command);
 			os << "after " << '"' << after << '"' << "\n";
 			os << "before " << '"' << before << '"' << "\n";
 			os << "key \""
-			   << convert_command_inset_arg(p.verbatim_item())
-			   << "\"\n"
-			   << "literal \"true\"\n";
+			   << keys
+			   << "\"\n";
+			if (!pretextlist.empty())
+				os << "pretextlist " << '"'  << pretextlist << '"' << "\n";
+			if (!posttextlist.empty())
+				os << "posttextlist " << '"'  << posttextlist << '"' << "\n";
+			os << "literal \"true\"\n";
 			end_inset(os);
 			// Need to set the cite engine if biblatex is loaded by
 			// the document class directly
 			if (preamble.citeEngine() == "basic")
-				preamble.citeEngine("biblatex");
-		}
-
-		else if (use_biblatex_natbib
-			 && (is_known(t.cs(), known_biblatex_commands)
-			     || is_known(t.cs(), known_natbib_commands))
-			 && ((t.cs() == "cite" || t.cs() == "citet" || t.cs() == "Citet"
-			      || t.cs() == "citep" || t.cs() == "Citep" || t.cs() == "citealt"
-			      || t.cs() == "Citealt" || t.cs() == "citealp" || t.cs() == "Citealp"
-			      || t.cs() == "citeauthor" || t.cs() == "Citeauthor"
-			      || t.cs() == "parencite" || t.cs() == "citetitle")
-			    || p.next_token().asInput() != "*")) {
-			context.check_layout(os);
-			string command = t.cs();
-			if (p.next_token().asInput() == "*") {
-				command += '*';
-				p.get_token();
-			}
-
-			// text before the citation
-			string before;
-			// text after the citation
-			string after;
-			get_cite_arguments(p, true, before, after);
-
-			// These use natbib cmd names in LyX
-			// for inter-citeengine compativility
-			if (command == "citeyear")
-				command = "citebyear";
-			else if (command == "cite*")
-				command = "citeyear";
-			else if (command == "textcite")
-				command = "citet";
-			else if (command == "Textcite")
-				command = "Citet";
-			else if (command == "parencite")
-				command = "citep";
-			else if (command == "Parencite")
-				command = "Citep";
-			else if (command == "parencite*")
-				command = "citeyearpar";
-			else if (command == "smartcite")
-				command = "footcite";
-			else if (command == "Smartcite")
-				command = "Footcite";
-
-			if (before.empty() && after == "[]")
-				// avoid \cite[]{a}
-				after.erase();
-			else if (before == "[]" && after == "[]") {
-				// avoid \cite[][]{a}
-				before.erase();
-				after.erase();
-			}
-			// remove the brackets around after and before
-			if (!after.empty()) {
-				after.erase(0, 1);
-				after.erase(after.length() - 1, 1);
-				after = convert_command_inset_arg(after);
-			}
-			if (!before.empty()) {
-				before.erase(0, 1);
-				before.erase(before.length() - 1, 1);
-				before = convert_command_inset_arg(before);
-			}
-			begin_command_inset(os, "citation", command);
-			os << "after " << '"' << after << '"' << "\n";
-			os << "before " << '"' << before << '"' << "\n";
-			os << "key \""
-			   << convert_command_inset_arg(p.verbatim_item())
-			   << "\"\n"
-			   << "literal \"true\"\n";
-			end_inset(os);
-			// Need to set the cite engine if biblatex is loaded by
-			// the document class directly
-			if (preamble.citeEngine() == "basic")
-				preamble.citeEngine("biblatex-natbib");
+				use_biblatex_natbib ?
+					  preamble.citeEngine("biblatex-natbib")
+					: preamble.citeEngine("biblatex");
 		}
 
 		else if (use_jurabib &&
