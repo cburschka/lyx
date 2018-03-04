@@ -2632,6 +2632,32 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cat() == catSpace || (t.cat() == catNewline && ! p.isParagraph()))
 			check_space(p, os, context);
 
+		// babel shorthands (also used by polyglossia)
+		// Since these can have different meanings for different languages
+		// we import them as ERT (but they must be put in ERT to get output
+		// verbatim).
+		else if (t.asInput() == "\"") {
+			string s = "\"";
+			// These are known pairs. We put them together in
+			// one ERT inset. In other cases (such as "a), only
+			// the quotation mark is ERTed.
+			if (p.next_token().asInput() == "\""
+			    || p.next_token().asInput() == "|"
+			    || p.next_token().asInput() == "-"
+			    || p.next_token().asInput() == "~"
+			    || p.next_token().asInput() == "="
+			    || p.next_token().asInput() == "/"
+			    || p.next_token().asInput() == "~"
+			    || p.next_token().asInput() == "'"
+			    || p.next_token().asInput() == "`"
+			    || p.next_token().asInput() == "<"
+			    || p.next_token().asInput() == ">") {
+				s += p.next_token().asInput();
+				p.get_token();
+			}
+			output_ert_inset(os, s, context);
+		}
+
 		else if (t.character() == '[' && noweb_mode &&
 			 p.next_token().character() == '[') {
 			// These can contain underscores
