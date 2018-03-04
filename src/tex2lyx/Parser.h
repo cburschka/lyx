@@ -240,7 +240,8 @@ public:
 	 * Like getOpt(), but distinguishes between a missing argument ""
 	 * and an empty argument "[]".
 	 */
-	std::string getFullOpt(bool keepws = false);
+	std::string getFullOpt(bool keepws = false,
+			       char left = '[', char right = ']');
 	/*!
 	 * \returns getArg('[', ']') including the brackets or the
 	 * empty string if there is no such argument.
