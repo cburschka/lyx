@@ -418,6 +418,15 @@ void Preamble::add_package(string const & name, vector<string> & options)
 	if (used_packages.find(name) == used_packages.end())
 		used_packages[name] = split_options(h_options);
 
+	// Insert options passed via PassOptionsToPackage
+	for (auto const & p : extra_package_options_) {
+		if (p.first == name) {
+			vector<string> eo = getVectorFromString(p.second);
+			for (auto const & eoi : eo)
+				options.push_back(eoi);
+		}
+
+	}
 	vector<string> & v = used_packages[name];
 	v.insert(v.end(), options.begin(), options.end());
 	if (name == "jurabib") {
@@ -1033,6 +1042,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 				options.erase(it);
 			}
 		}
+		if (!options.empty())
+			h_biblio_options = join(options, ",");
 	}
 
 	else if (name == "jurabib") {
@@ -1405,6 +1416,12 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				in_lyx_preamble = false;
 			else if (!in_lyx_preamble)
 				h_preamble << t.asInput();
+		}
+
+		else if (t.cs() == "PassOptionsToPackage") {
+			string const poptions = p.getArg('{', '}');
+			string const package = p.verbatim_item();
+			extra_package_options_.insert(make_pair(package, poptions));
 		}
 
 		else if (t.cs() == "pagestyle")
