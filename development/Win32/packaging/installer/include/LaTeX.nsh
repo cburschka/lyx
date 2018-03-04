@@ -388,21 +388,58 @@ FunctionEnd
 Function UpdateMiKTeX
  # asks to update MiKTeX
 
-  MessageBox MB_YESNO|MB_ICONINFORMATION "$(MiKTeXInfo)" /SD IDNO IDYES UpdateNow IDNO UpdateLater
-  UpdateNow:
-  # the update wizard is started by the miktex-update.exe
+  # only for the 2.3.0 installer: force a silent update of MiKTeX then restore
+  # MiKTeX's inernal links
+  # The reason is that MikTeX uses a new package handling system LyX must use
+  # Due to a bug in the old MikTeX package handling the update to the new package
+  # handling might fail and users cannot use LaTeX at all afterwards - they then
+  # would have no other choice than to reinstall MiKTeX
+  # This case is fixed by forcing the restoration of the internal links
+  #MessageBox MB_YESNO|MB_ICONINFORMATION "$(MiKTeXInfo)" #/SD IDNO IDYES UpdateNow IDNO UpdateLater
+  #UpdateNow:
+  # graphical update:
+  #MessageBox MB_OK|MB_ICONINFORMATION 'To assure that LyX can create PDF files the MiKTeX update program must be run two times.$\r$\n\
+  # Please click in the MiKTeX update program only on the "Next" button.$\r$\n\
+  # If "Next" is disabled, click on "Cancel" or "Finish".'
+  #${if} $MultiUser.Privileges != "Admin"
+  #${andif} $MultiUser.Privileges != "Power"
+  # # call the non-admin version
+  # nsExec::ExecToLog '"$PathLaTeX\internal\miktex-update.exe"'
+  #${else}
+  # ${if} $MiKTeXUser != "HKCU" # call the admin version
+  #  nsExec::ExecToLog '"$PathLaTeX\internal\miktex-update_admin.exe"'
+  # ${else}
+  #   nsExec::ExecToLog '"$PathLaTeX\internal\miktex-update.exe"'
+  # ${endif}
+  #${endif}
+  # silent update:
+  MessageBox MB_OK|MB_ICONINFORMATION "MiKTeX must be updated to assure that LyX can create PDF files.$\r$\n\
+   This update can take several minutes, depending on your Internet speed.$\r$\n\
+   Please do not close the LyX installer until it is finished!" /SD IDOK
   ${if} $MultiUser.Privileges != "Admin"
   ${andif} $MultiUser.Privileges != "Power"
    # call the non-admin version
-    ExecWait '"$PathLaTeX\internal\miktex-update.exe"'
+   nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--update"'
   ${else}
    ${if} $MiKTeXUser != "HKCU" # call the admin version
-    ExecWait '"$PathLaTeX\internal\miktex-update_admin.exe"'
+    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--update"'
    ${else}
-     ExecWait '"$PathLaTeX\internal\miktex-update.exe"'
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--update"'
    ${endif}
   ${endif}
-  UpdateLater:
+  # restore possibly broken internal MiKTeX links after the update
+  # suggested by the MikTeX maintainer: https://github.com/MiKTeX/miktex/issues/82
+  ${if} $MultiUser.Privileges != "Admin"
+  ${andif} $MultiUser.Privileges != "Power"
+   # call the non-admin version
+   nsExec::ExecToLog '"$PathLaTeX\initexmf.exe" "--mklinks" "--force"'
+  ${else}
+   ${if} $MiKTeXUser != "HKCU" # call the admin version
+    nsExec::ExecToLog '"$PathLaTeX\initexmf.exe" "--admin" "--mklinks" "--force"'
+   ${else}
+     nsExec::ExecToLog '"$PathLaTeX\initexmf.exe" "--mklinks" "--force"'
+   ${endif}
+  ${endif}
+  #UpdateLater:
 
 FunctionEnd
-
