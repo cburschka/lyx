@@ -2526,7 +2526,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 	bool have_cycled = false;
 	while (p.good()) {
-		// Leave hear only after at least one cycle
+		// Leave here only after at least one cycle
 		if (have_cycled && flags & FLAG_LEAVE) {
 			flags &= ~FLAG_LEAVE;
 			break;
