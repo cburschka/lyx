@@ -145,13 +145,24 @@ int gettimeofday(struct timeval * tv, struct timezone * /*tz*/)
 
 namespace {
 
+void dumpTime(long long value)
+{
+	std::cerr << std::fixed << std::setprecision(2);
+	if (value >= 1000000)
+		std::cerr << value / 1000000 << "sec";
+	else if (value >= 1000)
+		std::cerr << value / 1000 << "msec";
+	else
+		std::cerr << value << "usec";
+}
+
 void dump(long long sec, long long usec, unsigned long long count) {
 	double const total = sec * 1000000 + usec;
-	std::cerr << std::fixed << std::setprecision(2)
-			  << total / count
-			  << "usec, count=" << count
-			  << ", total=" << total * 0.001 << "msec"
-			  << std::endl;
+	dumpTime(total / count);
+	std::cerr << ", count=" << count
+			  << ", total=";
+	dumpTime(total);
+	std::cerr << std::endl;
 }
 
 } // namespace
