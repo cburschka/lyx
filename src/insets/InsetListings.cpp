@@ -127,6 +127,7 @@ Encoding const * InsetListings::forcedEncoding(Encoding const * inner_enc,
 	// such as XeTeX or LuaTeX are used, and with pLaTeX.
 	// Minted can deal with all encodings.
 	if (buffer().params().use_minted
+		|| inner_enc->name() == "utf8-plain"
 		|| (buffer().params().encoding().package() == Encoding::japanese
 			&& inner_enc->package() == Encoding::japanese)
 		|| inner_enc->hasFixedWidth())
