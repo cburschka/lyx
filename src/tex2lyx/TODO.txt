@@ -24,7 +24,6 @@ Format LaTeX feature                        LyX feature
        is just a string or if the file should be included and as what type)
 254    esint.sty                            \use_esint
 267    XeTeX                                utf8 encoding
-270    \alert, \structure (beamer)          layout
 281    ?                                    modules
 293    ?                                    InsetInfo
 322    ?                                    local layout
@@ -69,7 +68,7 @@ Format LaTeX feature                        LyX feature
        \onslide<slide> text ...
        \end{overprint}
 455    beamer frametitle command            \begin_layout FrameTitle
-       \frametitle<overlay>[short}{long}
+       \frametitle<overlay>[short]{long}
 456    memoir: \epigraph{text}{source}      layout Epigraph, InsetArgument
 457    automatic stackrel loading           \use_package stackrel
 459    beamer: \begin{frame},               \begin_layout Frame
