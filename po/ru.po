@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-01-28 21:42-0500\n"
-"PO-Revision-Date: 2018-02-27 18:29+0200\n"
+"PO-Revision-Date: 2018-03-05 15:11+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -1684,11 +1684,11 @@ msgstr "&Низ страницы"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:100
 msgid "&Span columns"
-msgstr "&Охватывать все столбцы"
+msgstr "&Занимать все столбцы"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:107
 msgid "&Rotate sideways"
-msgstr "Пов&ернуть в сторону"
+msgstr "Пов&ернуть набок"
 
 #: src/frontends/qt4/ui/FontUi.ui:14
 msgid "FontUi"
@@ -5407,27 +5407,27 @@ msgstr "Единицы измерения ширины"
 
 #: src/frontends/qt4/ui/WrapUi.ui:68
 msgid "number of needed lines"
-msgstr "нужное количество строк"
+msgstr "Количество строк"
 
 #: src/frontends/qt4/ui/WrapUi.ui:75
 msgid "use number of lines"
-msgstr "использовать количество строк"
+msgstr "Использовать заданное количество строк"
 
 #: src/frontends/qt4/ui/WrapUi.ui:78
 msgid "&Line span:"
-msgstr "&Междустрочный интервал:"
+msgstr "&Строки:"
 
 #: src/frontends/qt4/ui/WrapUi.ui:199
 msgid "Outer (default)"
-msgstr "Наружный (по умолчанию)"
+msgstr "Наружное (по умолчанию)"
 
 #: src/frontends/qt4/ui/WrapUi.ui:204
 msgid "Inner"
-msgstr "Внутренний"
+msgstr "Внутреннее"
 
 #: src/frontends/qt4/ui/WrapUi.ui:222
 msgid "use overhang"
-msgstr "с выступом"
+msgstr "Использовать выступ"
 
 #: src/frontends/qt4/ui/WrapUi.ui:225
 msgid "Over&hang:"
@@ -5435,7 +5435,7 @@ msgstr "Выступ:"
 
 #: src/frontends/qt4/ui/WrapUi.ui:246
 msgid "Overhang value"
-msgstr "Выступ"
+msgstr "Значение выступа"
 
 #: src/frontends/qt4/ui/WrapUi.ui:273
 msgid "Unit of overhang value"
@@ -5443,7 +5443,7 @@ msgstr "Единицы измерения выступа"
 
 #: src/frontends/qt4/ui/WrapUi.ui:280
 msgid "Check this to allow flexible placement"
-msgstr "Отметьте для разрешения гибкого расположения"
+msgstr "Отметьте для плавающего размещения объекта"
 
 #: src/frontends/qt4/ui/WrapUi.ui:283
 msgid "Allow &floating"
@@ -17757,7 +17757,7 @@ msgstr "Ограничители...|г"
 
 #: lib/ui/stdcontext.inc:38 lib/ui/stdmenus.inc:472
 msgid "Matrix...|x"
-msgstr "Матрица|М"
+msgstr "Матрица...|М"
 
 #: lib/ui/stdcontext.inc:39 lib/ui/stdmenus.inc:473
 msgid "Macro|o"
@@ -17971,15 +17971,15 @@ msgstr "Простая рамка, разрывы строк|р"
 
 #: lib/ui/stdcontext.inc:183 lib/ui/stdmenus.inc:504
 msgid "Oval, Thin|a"
-msgstr "Овальная, тонкая|а"
+msgstr "Тонкая овальная рамка|о"
 
 #: lib/ui/stdcontext.inc:184 lib/ui/stdmenus.inc:505
 msgid "Oval, Thick|v"
-msgstr "Овальная, толстая|я"
+msgstr "Толстая овальная рамка|в"
 
 #: lib/ui/stdcontext.inc:185 lib/ui/stdmenus.inc:506
 msgid "Drop Shadow|w"
-msgstr "Отбрасывать тень|т"
+msgstr "Рамка с тенью|т"
 
 #: lib/ui/stdcontext.inc:186 lib/ui/stdmenus.inc:507
 msgid "Shaded Background|B"
@@ -18024,7 +18024,7 @@ msgstr "Вертикальный фантом"
 
 #: lib/ui/stdcontext.inc:234 lib/ui/stdmenus.inc:432
 msgid "Interword Space|w"
-msgstr "Пробел между слов|б"
+msgstr "Пробел между словами|б"
 
 #: lib/ui/stdcontext.inc:235
 msgid "Protected Space|o"
@@ -18040,30 +18040,30 @@ msgstr "Тонкий пробел|Т"
 
 #: lib/ui/stdcontext.inc:238 lib/ui/stdcontext.inc:263
 msgid "Negative Thin Space|N"
-msgstr "Отрицательный промежуток|О"
+msgstr "Отрицательный тонкий пробел|О"
 
 #: lib/ui/stdcontext.inc:239 lib/ui/stdcontext.inc:266
 msgid "Half Quad Space (Enskip)|k"
-msgstr "Полуквадрат (Enskip)|л"
+msgstr "Полуквадрат (enskip)|л"
 
 # Неразрывный пробел в пол квадрата?
 #: lib/ui/stdcontext.inc:240
 msgid "Protected Half Quad Space (Enspace)|E"
-msgstr "Узкий неразрывный пробел (Enspace)|У"
+msgstr "Защищённый полуквадрат (enspace)|щ"
 
 # ?
 #: lib/ui/stdcontext.inc:241 lib/ui/stdcontext.inc:267
 msgid "Quad Space|Q"
-msgstr "Пробел в 1em|П"
+msgstr "Квадрат (1em)|К"
 
 # ?
 #: lib/ui/stdcontext.inc:242 lib/ui/stdcontext.inc:268
 msgid "Double Quad Space|u"
-msgstr "Пробел в 2em|р"
+msgstr "Двойной квадрат (2em)|Д"
 
 #: lib/ui/stdcontext.inc:243
 msgid "Horizontal Fill|F"
-msgstr "Гор. заполнение|Г"
+msgstr "Горизонтальное заполнение|Г"
 
 # ?
 #: lib/ui/stdcontext.inc:244
@@ -18072,11 +18072,11 @@ msgstr "Защищённое горизонтальное заполнение|�
 
 #: lib/ui/stdcontext.inc:245
 msgid "Horizontal Fill (Dots)|D"
-msgstr "Горизонтальное заполнение(точки)|т"
+msgstr "Горизонтальное заполнение (точки)|т"
 
 #: lib/ui/stdcontext.inc:246
 msgid "Horizontal Fill (Rule)|R"
-msgstr "Горизонтальное заполнение(линия)|л"
+msgstr "Горизонтальное заполнение (линия)|л"
 
 #: lib/ui/stdcontext.inc:247
 msgid "Horizontal Fill (Left Arrow)|L"
@@ -18096,7 +18096,7 @@ msgstr "Горизонтальное заполнение (нижняя скоб
 
 #: lib/ui/stdcontext.inc:251 lib/ui/stdcontext.inc:269
 msgid "Custom Length|C"
-msgstr "Выборочная длина|В"
+msgstr "Заданная длина|и"
 
 #: lib/ui/stdcontext.inc:261
 msgid "Medium Space|M"
@@ -18144,11 +18144,11 @@ msgstr "Настройки...|Н"
 
 #: lib/ui/stdcontext.inc:292 lib/ui/stdcontext.inc:577
 msgid "Include|c"
-msgstr "Включение|к"
+msgstr "Включить|к"
 
 #: lib/ui/stdcontext.inc:293 lib/ui/stdcontext.inc:578
 msgid "Input|p"
-msgstr "Вхождение|х"
+msgstr "Ввести|х"
 
 #: lib/ui/stdcontext.inc:294 lib/ui/stdcontext.inc:579
 msgid "Verbatim|V"
@@ -18156,7 +18156,7 @@ msgstr "Дословно|Д"
 
 #: lib/ui/stdcontext.inc:295 lib/ui/stdcontext.inc:580
 msgid "Verbatim (marked blanks)|b"
-msgstr "Дословно (отмеченные пробелы)|Д"
+msgstr "Дословно (видимые пробелы)|Д"
 
 #: lib/ui/stdcontext.inc:296 lib/ui/stdcontext.inc:581
 msgid "Listing|L"
@@ -18675,7 +18675,7 @@ msgstr "Закрыть окно|ы"
 
 #: lib/ui/stdmenus.inc:65
 msgid "Exit|x"
-msgstr "Выйти|В"
+msgstr "Выход|В"
 
 #: lib/ui/stdmenus.inc:73
 msgid "Register...|R"
@@ -18884,7 +18884,7 @@ msgstr "Разложить стиль текста"
 
 #: lib/ui/stdmenus.inc:186
 msgid "Customized...|C"
-msgstr "Выборочно...|В"
+msgstr "Заданный пользователем...|З"
 
 #: lib/ui/stdmenus.inc:188
 msgid "Capitalize|a"
@@ -19320,7 +19320,7 @@ msgstr "Горизонтальный отступ...|Г"
 
 #: lib/ui/stdmenus.inc:435
 msgid "Horizontal Line...|L"
-msgstr "Горизонтальная линия"
+msgstr "Горизонтальная линия..."
 
 #: lib/ui/stdmenus.inc:436
 msgid "Vertical Space...|V"
@@ -19580,7 +19580,7 @@ msgstr "Специальные руководства"
 
 #: lib/ui/stdmenus.inc:624
 msgid "About LyX|X"
-msgstr "О LyX|X"
+msgstr "О программе LyX...|X"
 
 #: lib/ui/stdmenus.inc:628
 msgid "Beamer Presentations|B"
@@ -25920,7 +25920,7 @@ msgstr "Ветка уже существует"
 #: src/BufferView.cpp:2752
 #, c-format
 msgid "Inserting document %1$s..."
-msgstr "Документ вставляется %1$s..."
+msgstr "Вставка документа %1$s..."
 
 #: src/BufferView.cpp:2763
 #, c-format
@@ -27237,7 +27237,8 @@ msgstr "Отсутствует команда после ключа --execute"
 
 #: src/LyX.cpp:1279
 msgid "Missing file type [eg latex, ps...] after --export-to switch"
-msgstr "Отсутствует тип файла [например, latex, ps...] после ключа --export-to"
+msgstr ""
+"Отсутствует тип файла [например, latex, ps, ...] после ключа --export-to"
 
 #: src/LyX.cpp:1284
 msgid "Missing destination filename after --export-to switch"
@@ -27245,11 +27246,11 @@ msgstr "Отсутствует имя файла после ключа --export-
 
 #: src/LyX.cpp:1297
 msgid "Missing file type [eg latex, ps...] after --export switch"
-msgstr "Отсутствует тип файла [например, latex, ps...] после ключа --export"
+msgstr "Отсутствует тип файла [например, latex, ps, ...] после ключа --export"
 
 #: src/LyX.cpp:1310
 msgid "Missing file type [eg latex, ps...] after --import switch"
-msgstr "Отсутствует тип файла [например, latex, ps...] после ключа --import"
+msgstr "Отсутствует тип файла [например, latex, ps, ...] после ключа --import"
 
 #: src/LyX.cpp:1315
 msgid "Missing filename for --import"
@@ -28298,7 +28299,7 @@ msgstr "Прервать"
 
 #: src/VCBackend.cpp:967 src/VCBackend.cpp:1528
 msgid "View &Log ..."
-msgstr "Просмотр &журнала ..."
+msgstr "Просмотр &журнала..."
 
 #: src/VCBackend.cpp:987
 #, c-format
@@ -28416,23 +28417,23 @@ msgstr "Не забывайте зафиксировать блокировку 
 
 #: src/VSpace.cpp:162
 msgid "Default skip"
-msgstr "Вертикальный отступ по молчанию"
+msgstr "по умолчанию"
 
 #: src/VSpace.cpp:165
 msgid "Small skip"
-msgstr "Маленький вертикальный отступ"
+msgstr "маленький"
 
 #: src/VSpace.cpp:168
 msgid "Medium skip"
-msgstr "Нормальный вертикальный отступ"
+msgstr "средний"
 
 #: src/VSpace.cpp:171
 msgid "Big skip"
-msgstr "Большой вертикальный отступ"
+msgstr "большой"
 
 #: src/VSpace.cpp:174
 msgid "Vertical fill"
-msgstr "Вертикальное заполнение"
+msgstr "заполнение"
 
 #: src/VSpace.cpp:181
 msgid "protected"
@@ -28720,7 +28721,7 @@ msgstr "Версия Qt (компиляция): %1$s"
 
 #: src/frontends/qt4/GuiAbout.cpp:259
 msgid "About LyX"
-msgstr "О LyX"
+msgstr "О программе LyX"
 
 #: src/frontends/qt4/GuiAlert.cpp:100 src/frontends/qt4/GuiAlert.cpp:164
 #: src/frontends/qt4/GuiAlert.cpp:220 src/frontends/qt4/GuiAlert.cpp:266
@@ -28994,7 +28995,7 @@ msgstr "Толстая овальная рамка"
 
 #: src/frontends/qt4/GuiBox.cpp:60
 msgid "Drop shadow"
-msgstr "Отбрасывать тень"
+msgstr "Рамка с тенью"
 
 #: src/frontends/qt4/GuiBox.cpp:60
 msgid "Shaded background"
@@ -32103,19 +32104,19 @@ msgstr "простая рамка, разрыв страницы"
 
 #: src/insets/InsetBox.cpp:73
 msgid "oval, thin"
-msgstr "тонкий овал"
+msgstr "тонкая овальная рамка"
 
 #: src/insets/InsetBox.cpp:74
 msgid "oval, thick"
-msgstr "толстый овал"
+msgstr "толстая овальная рамка"
 
 #: src/insets/InsetBox.cpp:75
 msgid "drop shadow"
-msgstr "отбрасывать тень"
+msgstr "рамка с тенью"
 
 #: src/insets/InsetBox.cpp:76
 msgid "shaded background"
-msgstr "затенённый фон"
+msgstr "закрашенный фон"
 
 #: src/insets/InsetBox.cpp:77
 msgid "double frame"
@@ -32325,11 +32326,11 @@ msgstr "Гиперссылка (%1$s) на %2$s"
 
 #: src/insets/InsetInclude.cpp:383
 msgid "Verbatim Input"
-msgstr "Буквальная вставка файла"
+msgstr "Дословно"
 
 #: src/insets/InsetInclude.cpp:386
 msgid "Verbatim Input*"
-msgstr "Буквальная вставка файла*"
+msgstr "Дословно*"
 
 #: src/insets/InsetInclude.cpp:392
 msgid "Include (excluded)"
@@ -33038,11 +33039,11 @@ msgstr "Размер выделения должен совпадать с ра�
 
 #: src/insets/InsetWrap.cpp:68
 msgid "wrap: "
-msgstr "обтекать: "
+msgstr "обтекаемый объект: "
 
 #: src/insets/InsetWrap.cpp:201
 msgid "wrap"
-msgstr "обтекать"
+msgstr "обтекаемый объект"
 
 #: src/insets/RenderGraphic.cpp:85 src/insets/RenderGraphic.cpp:89
 msgid "Not shown."
@@ -33062,7 +33063,7 @@ msgstr "Загружено в память. Генерируется растр�
 
 #: src/insets/RenderGraphic.cpp:101
 msgid "Scaling etc..."
-msgstr "Масштабирование и др."
+msgstr "Масштабирование и т. п."
 
 #: src/insets/RenderGraphic.cpp:104
 msgid "Ready to display"
@@ -33126,7 +33127,7 @@ msgstr "пика"
 
 #: src/lengthcommon.cpp:43
 msgid "pt"
-msgstr "пункт"
+msgstr "пт"
 
 #: src/lengthcommon.cpp:43
 msgid "sp"
