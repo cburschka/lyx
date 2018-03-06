@@ -60,6 +60,8 @@ What's new
 - Do not embrace numbers in \beginL ... \endL with polyglossia in Right-
   to-Left languages, since bidi handles the numbers automatically.
 
+- Fix polyglossia language switches for Arabic (bug 11057).
+
 
 * LYX2LYX
 
