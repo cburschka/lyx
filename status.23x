@@ -21,6 +21,10 @@ What's new
 
 * TEX2LYX IMPROVEMENTS
 
+- support for most commands provided by the biblatex package
+
+- support biblatex's qualified citation lists:
+  \cites(pre)(post)[pre1][post1]{key1}[pre2][post2]{key2}...
 
 
 * USER INTERFACE
