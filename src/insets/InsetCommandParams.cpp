@@ -464,14 +464,15 @@ docstring InsetCommandParams::prepareCommand(OutputParams const & runparams,
 		}
 		// Now escape special commands
 		static docstring const backslash = from_ascii("\\");
-		static char_type const chars_escape[6] = {
-			'&', '_', '$', '%', '#', '^'};
+		int const nchars_escape = 8;
+		static char_type const chars_escape[nchars_escape] = {
+			'&', '_', '$', '%', '#', '^', '{', '}'};
 
 		if (!result.empty()) {
 			int previous;
 			// The characters in chars_name[] need to be changed to a command when
 			// they are LaTeXified.
-			for (int k = 0; k < 6; k++)
+			for (int k = 0; k < nchars_escape; k++)
 				for (size_t i = 0, pos;
 					(pos = result.find(chars_escape[k], i)) != string::npos;
 					i = pos + 2) {
