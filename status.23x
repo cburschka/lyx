@@ -97,6 +97,8 @@ What's new
 
 * TEX2LYX
 
+- Fix import of subfloats without caption (bug 10385).
+
 - Import straight quotations marks (e.g. babel shorthands) as ERT (bug 75).
 
 - Consider options passed via \PassOptionsToPackage.

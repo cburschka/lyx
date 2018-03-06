@@ -3176,7 +3176,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		if (t.cs() == "subfloat") {
 			// the syntax is \subfloat[list entry][sub caption]{content}
 			// if it is a table of figure depends on the surrounding float
-			// FIXME: second optional argument is not parsed
 			p.skip_spaces();
 			// do nothing if there is no outer float
 			if (!float_type.empty()) {
@@ -3195,6 +3194,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 							caption = parse_text_snippet(p, FLAG_BRACK_LAST, outer, context);
 							has_caption = true;
 				}
+				// In case we have two optional args, the second is the caption.
+				if (p.next_token().cat() != catEscape &&
+						p.next_token().character() == '[') {
+							p.get_token(); // eat '['
+							caption = parse_text_snippet(p, FLAG_BRACK_LAST, outer, context);
+				}
 				// the content
 				parse_text_in_inset(p, os, FLAG_ITEM, outer, context);
 				// the caption comes always as the last
@@ -3208,31 +3213,25 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					newcontext.check_layout(os);
 					os << caption << "\n";
 					newcontext.check_end_layout(os);
-					// We don't need really a new paragraph, but
-					// we must make sure that the next item gets a \begin_layout.
-					//newcontext.new_paragraph(os);
 					end_inset(os);
 					p.skip_spaces();
+					// close the layout we opened
+					os << "\n\\end_layout";
 				}
-				// We don't need really a new paragraph, but
-				// we must make sure that the next item gets a \begin_layout.
-				if (has_caption)
-					context.new_paragraph(os);
 				end_inset(os);
 				p.skip_spaces();
-				context.check_end_layout(os);
-				// close the layout we opened
-				if (has_caption)
-					os << "\n\\end_layout\n";
 			} else {
 				// if the float type is not supported or there is no surrounding float
 				// output it as ERT
+				string opt_arg1;
+				string opt_arg2;
 				if (p.hasOpt()) {
-					string opt_arg = convert_command_inset_arg(p.getArg('[', ']'));
-					output_ert_inset(os, t.asInput() + '[' + opt_arg +
-				               "]{" + p.verbatim_item() + '}', context);
-				} else
-					output_ert_inset(os, t.asInput() + "{" + p.verbatim_item() + '}', context);
+					opt_arg1 = convert_command_inset_arg(p.getFullOpt());
+					if (p.hasOpt())
+						opt_arg2 = convert_command_inset_arg(p.getFullOpt());
+				}
+				output_ert_inset(os, t.asInput() + opt_arg1 + opt_arg2
+						 + "{" + p.verbatim_item() + '}', context);
 			}
 			continue;
 		}
