@@ -142,11 +142,16 @@ string const getPolyglossiaEnvName(Language const * lang)
 
 
 string const getPolyglossiaBegin(string const & lang_begin_command,
-				 string const & lang, string const & opts)
+				 string const & lang, string const & opts,
+				 bool const localswitch = false)
 {
 	string result;
-	if (!lang.empty())
-		result = subst(lang_begin_command, "$$lang", lang);
+	if (!lang.empty()) {
+		// we need to revert the upcasing done in getPolyglossiaEnvName()
+		// in case we have a local polyglossia command (\textarabic).
+		string language = localswitch ? ascii_lowercase(lang) : lang;
+		result = subst(lang_begin_command, "$$lang", language);
+	}
 	string options = opts.empty() ?
 		    string() : "[" + opts + "]";
 	result = subst(result, "$$opts", options);
@@ -903,7 +908,9 @@ void TeXOnePar(Buffer const & buf,
 			    && (par_lang != openLanguageName(state) || localswitch)
 			    && !par_lang.empty()) {
 				string bc = use_polyglossia ?
-					  getPolyglossiaBegin(lang_begin_command, par_lang, par_language->polyglossiaOpts())
+					  getPolyglossiaBegin(lang_begin_command, par_lang,
+					  		      par_language->polyglossiaOpts(),
+					  		      localswitch)
 					  : subst(lang_begin_command, "$$lang", par_lang);
 				os << bc;
 				os << lang_command_termination;
@@ -962,11 +969,13 @@ void TeXOnePar(Buffer const & buf,
 				if (runparams.encoding->package() == Encoding::CJK
 				    && par_lang != openLanguageName(state)
 				    && !par_lang.empty()) {
-					os << from_ascii(subst(
-						lang_begin_command,
-						"$$lang",
-						par_lang))
-					<< lang_command_termination;
+				    	string bc = use_polyglossia ?
+						    getPolyglossiaBegin(lang_begin_command, par_lang,
+						    			par_language->polyglossiaOpts(),
+						    			localswitch)
+						    : subst(lang_begin_command, "$$lang", par_lang);
+					os << bc
+					   << lang_command_termination;
 					if (using_begin_end)
 						pushLanguageName(par_lang, localswitch);
 				}
@@ -1133,7 +1142,8 @@ void TeXOnePar(Buffer const & buf,
 				    && current_lang != openLanguageName(state)) {
 					string bc = use_polyglossia ?
 						    getPolyglossiaBegin(lang_begin_command, current_lang,
-									current_language->polyglossiaOpts())
+									current_language->polyglossiaOpts(),
+									localswitch)
 						  : subst(lang_begin_command, "$$lang", current_lang);
 					os << bc;
 					pending_newline = !localswitch;
