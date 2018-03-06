@@ -1896,12 +1896,18 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 	// Alignment and spacing settings
 	// FIXME (bug xxxx): These settings can span multiple paragraphs and
 	//					 therefore are totally broken!
-	// Note that \centering, raggedright, and raggedleft cannot be handled, as
+	// Note that \centering, \raggedright, and \raggedleft cannot be handled, as
 	// they are commands not environments. They are furthermore switches that
 	// can be ended by another switches, but also by commands like \footnote or
 	// \parbox. So the only safe way is to leave them untouched.
+	// However, we support the pseudo-environments
+	// \begin{centering} ... \end{centering}
+	// \begin{raggedright} ... \end{raggedright}
+	// \begin{raggedleft} ... \end{raggedleft}
+	// since they are used by LyX in floats (for spacing reasons)
 	else if (name == "center" || name == "centering" ||
-		 name == "flushleft" || name == "flushright" ||
+		 name == "flushleft" || name == "raggedright" ||
+		 name == "flushright" || name == "raggedleft" ||
 		 name == "singlespace" || name == "onehalfspace" ||
 		 name == "doublespace" || name == "spacing") {
 		eat_whitespace(p, os, parent_context, false);
@@ -1910,9 +1916,9 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			parent_context.check_end_layout(os);
 			parent_context.new_paragraph(os);
 		}
-		if (name == "flushleft")
+		if (name == "flushleft" || name == "raggedright")
 			parent_context.add_extra_stuff("\\align left\n");
-		else if (name == "flushright")
+		else if (name == "flushright" || name == "raggedleft")
 			parent_context.add_extra_stuff("\\align right\n");
 		else if (name == "center" || name == "centering")
 			parent_context.add_extra_stuff("\\align center\n");
