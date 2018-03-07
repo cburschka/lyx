@@ -1952,6 +1952,8 @@ docstring Text::currentState(CursorData const & cur, bool devel_mode) const
 
 	if (devel_mode) {
 		os << _(", Inset: ") << &cur.inset();
+		if (cur.lastidx() > 0)
+			os << _(", Cell: ") << cur.idx();
 		os << _(", Paragraph: ") << cur.pit();
 		os << _(", Id: ") << par.id();
 		os << _(", Position: ") << cur.pos();
