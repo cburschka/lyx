@@ -518,8 +518,12 @@ bool skip_braces(Parser & p)
 
 /// replace LaTeX commands in \p s from the unicodesymbols file with their
 /// unicode points
-docstring convert_unicodesymbols(docstring s)
+pair<bool, docstring> convert_unicodesymbols(docstring s)
 {
+	bool res = true;
+	int const nchars_escape = 8;
+	static char_type const chars_escape[nchars_escape] = {
+			'&', '_', '$', '%', '#', '^', '{', '}'};
 	odocstringstream os;
 	for (size_t i = 0; i < s.size();) {
 		if (s[i] != '\\') {
@@ -540,23 +544,41 @@ docstring convert_unicodesymbols(docstring s)
 		s = rem;
 		if (s.empty() || s[0] != '\\')
 			i = 0;
-		else
+		else {
+			res = false;
+			for (int k = 0; k < nchars_escape; k++)
+				if (prefixIs(s, from_ascii("\\") + chars_escape[k]))
+					res = true;
 			i = 1;
+		}
 	}
-	return os.str();
+	return make_pair(res, os.str());
 }
 
 
 /// try to convert \p s to a valid InsetCommand argument
-string convert_command_inset_arg(string s)
+/// return whether this succeeded. If not, these command insets
+/// get the "literate" flag.
+pair<bool, string> convert_latexed_command_inset_arg(string s)
 {
-	if (isAscii(s))
+	bool success = false;
+	if (isAscii(s)) {
 		// since we don't know the input encoding we can't use from_utf8
-		s = to_utf8(convert_unicodesymbols(from_ascii(s)));
+		pair<bool, docstring> res = convert_unicodesymbols(from_ascii(s));
+		success = res.first;
+		s = to_utf8(res.second);
+	}
+	// LyX cannot handle newlines in a latex command
+	return make_pair(success, subst(s, "\n", " "));
+}
+
+/// try to convert \p s to a valid InsetCommand argument
+/// without trying to recode macros.
+string convert_literate_command_inset_arg(string s)
+{
 	// LyX cannot handle newlines in a latex command
 	return subst(s, "\n", " ");
 }
-
 
 void output_ert(ostream & os, string const & s, Context & context)
 {
@@ -3012,20 +3034,17 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.set_item();
 			context.check_layout(os);
 			eat_whitespace(p, os, context, false);
-			string label = convert_command_inset_arg(p.verbatimOption());
-			string key = convert_command_inset_arg(p.verbatim_item());
-			if (contains(label, '\\') || contains(key, '\\')) {
-				// LyX can't handle LaTeX commands in labels or keys
-				output_ert_inset(os, t.asInput() + '[' + label +
-				               "]{" + p.verbatim_item() + '}',
-				           context);
-			} else {
-				begin_command_inset(os, "bibitem", "bibitem");
-				os << "label \"" << label << "\"\n"
-				   << "key \"" << key << "\"\n"
-				   << "literal \"true\"\n";
-				end_inset(os);
-			}
+			string label = p.verbatimOption();
+			pair<bool, string> lbl = convert_latexed_command_inset_arg(label);
+			bool const literal = !lbl.first;
+			label = literal ? subst(label, "\n", " ") : lbl.second;
+			string lit = literal ? "\"true\"" : "\"false\"";
+			string key = convert_literate_command_inset_arg(p.verbatim_item());
+			begin_command_inset(os, "bibitem", "bibitem");
+			os << "label \"" << label << "\"\n"
+			   << "key \"" << key << "\"\n"
+			   << "literal " << lit << "\n";
+			end_inset(os);
 			continue;
 		}
 
@@ -3232,9 +3251,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				string opt_arg1;
 				string opt_arg2;
 				if (p.hasOpt()) {
-					opt_arg1 = convert_command_inset_arg(p.getFullOpt());
+					opt_arg1 = convert_literate_command_inset_arg(p.getFullOpt());
 					if (p.hasOpt())
-						opt_arg2 = convert_command_inset_arg(p.getFullOpt());
+						opt_arg2 = convert_literate_command_inset_arg(p.getFullOpt());
 				}
 				output_ert_inset(os, t.asInput() + opt_arg1 + opt_arg2
 						 + "{" + p.verbatim_item() + '}', context);
@@ -3727,8 +3746,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		if (t.cs() == "href") {
 			context.check_layout(os);
-			string target = convert_command_inset_arg(p.verbatim_item());
-			string name = convert_command_inset_arg(p.verbatim_item());
+			string target = convert_literate_command_inset_arg(p.verbatim_item());
+			string name = p.verbatim_item();
+			pair<bool, string> nm = convert_latexed_command_inset_arg(name);
+			bool const literal = !nm.first;
+			name = literal ? subst(name, "\n", " ") : nm.second;
+			string lit = literal ? "\"true\"" : "\"false\"";
 			string type;
 			size_t i = target.find(':');
 			if (i != string::npos) {
@@ -3745,7 +3768,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "target \"" << target << "\"\n";
 			if (type == "mailto:" || type == "file:")
 				os << "type \"" << type << "\"\n";
-			os << "literal \"true\"\n";
+			os << "literal " << lit << "\n";
 			end_inset(os);
 			skip_spaces_braces(p);
 			continue;
@@ -3804,7 +3827,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "reference \"";
 			os << known_refstyle_prefixes[where - known_refstyle_commands]
 			   << ":";
-			os << convert_command_inset_arg(p.verbatim_item())
+			os << convert_literate_command_inset_arg(p.verbatim_item())
 			   << "\"\n";
 			os << "plural \"false\"\n";
 			os << "caps \"false\"\n";
@@ -3824,7 +3847,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				begin_command_inset(os, "ref",
 					known_coded_ref_commands[where - known_ref_commands]);
 				os << "reference \""
-				   << convert_command_inset_arg(p.verbatim_item())
+				   << convert_literate_command_inset_arg(p.verbatim_item())
 				   << "\"\n";
 				os << "plural \"false\"\n";
 				os << "caps \"false\"\n";
@@ -3881,24 +3904,34 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				before.erase();
 				after.erase();
 			}
+			bool literal = false;
+			pair<bool, string> aft;
+			pair<bool, string> bef;
 			// remove the brackets around after and before
 			if (!after.empty()) {
 				after.erase(0, 1);
 				after.erase(after.length() - 1, 1);
-				after = convert_command_inset_arg(after);
+				aft = convert_latexed_command_inset_arg(after);
+				literal = !aft.first;
+				after = literal ? subst(after, "\n", " ") : aft.second;
 			}
 			if (!before.empty()) {
 				before.erase(0, 1);
 				before.erase(before.length() - 1, 1);
-				before = convert_command_inset_arg(before);
+				bef = convert_latexed_command_inset_arg(after);
+				literal |= !bef.first;
+				before = literal ? subst(before, "\n", " ") : bef.second;
+				if (literal && !after.empty())
+					after = subst(after, "\n", " ");
 			}
+			string lit = literal ? "\"true\"" : "\"false\"";
 			begin_command_inset(os, "citation", command);
 			os << "after " << '"' << after << '"' << "\n";
 			os << "before " << '"' << before << '"' << "\n";
 			os << "key \""
-			   << convert_command_inset_arg(p.verbatim_item())
+			   << convert_literate_command_inset_arg(p.verbatim_item())
 			   << "\"\n"
-			   << "literal \"true\"\n";
+			   << "literal " << lit << "\n";
 			end_inset(os);
 			// Need to set the cite engine if natbib is loaded by
 			// the document class directly
@@ -3971,58 +4004,83 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				before.erase();
 				after.erase();
 			}
+			bool literal = false;
+			pair<bool, string> aft;
+			pair<bool, string> bef;
 			// remove the brackets around after and before
 			if (!after.empty()) {
 				after.erase(0, 1);
 				after.erase(after.length() - 1, 1);
-				after = convert_command_inset_arg(after);
+				aft = convert_latexed_command_inset_arg(after);
+				literal = !aft.first;
+				after = literal ? subst(after, "\n", " ") : aft.second;
 			}
 			if (!before.empty()) {
 				before.erase(0, 1);
 				before.erase(before.length() - 1, 1);
-				before = convert_command_inset_arg(before);
+				bef = convert_latexed_command_inset_arg(after);
+				literal |= !bef.first;
+				before = literal ? subst(before, "\n", " ") : bef.second;
 			}
 			string keys, pretextlist, posttextlist;
 			if (qualified) {
-				map<string, string> pres;
-				map<string, string> posts;
+				map<string, string> pres, posts, preslit, postslit;
 				vector<string> lkeys;
 				// text before the citation
-				string lbefore;
+				string lbefore, lbeforelit;
 				// text after the citation
-				string lafter;
-				string lkey;
+				string lafter, lafterlit;
+				string lkey;	
+				pair<bool, string> laft, lbef;
 				while (true) {
 					get_cite_arguments(p, true, lbefore, lafter);
 					// remove the brackets around after and before
 					if (!lafter.empty()) {
 						lafter.erase(0, 1);
 						lafter.erase(lafter.length() - 1, 1);
-						lafter = convert_command_inset_arg(lafter);
+						laft = convert_latexed_command_inset_arg(lafter);
+						literal |= !laft.first;
+						lafter = laft.second;
+						lafterlit = subst(lbefore, "\n", " ");
 					}
 					if (!lbefore.empty()) {
 						lbefore.erase(0, 1);
 						lbefore.erase(lbefore.length() - 1, 1);
-						lbefore = convert_command_inset_arg(lbefore);
+						lbef = convert_latexed_command_inset_arg(lbefore);
+						literal |= !lbef.first;
+						lbefore = lbef.second;
+						lbeforelit = subst(lbefore, "\n", " ");
 					}
-					if (lbefore.empty() && lafter == "[]")
+					if (lbefore.empty() && lafter == "[]") {
 						// avoid \cite[]{a}
 						lafter.erase();
+						lafterlit.erase();
+					}
 					else if (lbefore == "[]" && lafter == "[]") {
 						// avoid \cite[][]{a}
 						lbefore.erase();
 						lafter.erase();
+						lbeforelit.erase();
+						lafterlit.erase();
 					}
 					lkey = p.getArg('{', '}');
 					if (lkey.empty())
 						break;
-					if (!lbefore.empty())
+					if (!lbefore.empty()) {
 						pres.insert(make_pair(lkey, lbefore));
-					if (!lafter.empty())
+						preslit.insert(make_pair(lkey, lbeforelit));
+					}
+					if (!lafter.empty()) {
 						posts.insert(make_pair(lkey, lafter));
+						postslit.insert(make_pair(lkey, lafterlit));
+					}
 					lkeys.push_back(lkey);
 				}
-				keys = convert_command_inset_arg(getStringFromVector(lkeys));
+				keys = convert_literate_command_inset_arg(getStringFromVector(lkeys));
+				if (literal) {
+					pres = preslit;
+					posts = postslit;
+				}
 				for (auto const & ptl : pres) {
 					if (!pretextlist.empty())
 						pretextlist += '\t';
@@ -4034,7 +4092,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					posttextlist += potl.first + " " + potl.second;
 				}
 			} else
-				keys = convert_command_inset_arg(p.verbatim_item());
+				keys = convert_literate_command_inset_arg(p.verbatim_item());
+			if (literal) {
+				if (!after.empty())
+					after = subst(after, "\n", " ");
+				if (!before.empty())
+					before = subst(after, "\n", " ");
+			}
+			string lit = literal ? "\"true\"" : "\"false\"";
 			begin_command_inset(os, "citation", command);
 			os << "after " << '"' << after << '"' << "\n";
 			os << "before " << '"' << before << '"' << "\n";
@@ -4045,7 +4110,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				os << "pretextlist " << '"'  << pretextlist << '"' << "\n";
 			if (!posttextlist.empty())
 				os << "posttextlist " << '"'  << posttextlist << '"' << "\n";
-			os << "literal \"true\"\n";
+			os << "literal " << lit << "\n";
 			end_inset(os);
 			// Need to set the cite engine if biblatex is loaded by
 			// the document class directly
@@ -4091,19 +4156,32 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					"package options if you used an\n"
 					"earlier jurabib version." << endl;
 			}
+			bool literal = false;
+			pair<bool, string> aft;
+			pair<bool, string> bef;
+			// remove the brackets around after and before
 			if (!after.empty()) {
 				after.erase(0, 1);
 				after.erase(after.length() - 1, 1);
+				aft = convert_latexed_command_inset_arg(after);
+				literal = !aft.first;
+				after = literal ? subst(after, "\n", " ") : aft.second;
 			}
 			if (!before.empty()) {
 				before.erase(0, 1);
 				before.erase(before.length() - 1, 1);
+				bef = convert_latexed_command_inset_arg(after);
+				literal |= !bef.first;
+				before = literal ? subst(before, "\n", " ") : bef.second;
+				if (literal && !after.empty())
+					after = subst(after, "\n", " ");
 			}
+			string lit = literal ? "\"true\"" : "\"false\"";
 			begin_command_inset(os, "citation", command);
 			os << "after " << '"' << after << "\"\n"
 			   << "before " << '"' << before << "\"\n"
 			   << "key " << '"' << citation << "\"\n"
-			   << "literal \"true\"\n";
+			   << "literal " << lit << "\n";
 			end_inset(os);
 			// Need to set the cite engine if jurabib is loaded by
 			// the document class directly
@@ -4115,15 +4193,19 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		if (t.cs() == "cite"
 			|| t.cs() == "nocite") {
 			context.check_layout(os);
-			string after = convert_command_inset_arg(p.getArg('[', ']'));
-			string key = convert_command_inset_arg(p.verbatim_item());
+			string after = p.getArg('[', ']');
+			pair<bool, string> aft = convert_latexed_command_inset_arg(after);
+			bool const literal = !aft.first;
+			after = literal ? subst(after, "\n", " ") : aft.second;
+			string lit = literal ? "\"true\"" : "\"false\"";
+			string key = convert_literate_command_inset_arg(p.verbatim_item());
 			// store the case that it is "\nocite{*}" to use it later for
 			// the BibTeX inset
 			if (key != "*") {
 				begin_command_inset(os, "citation", t.cs());
 				os << "after " << '"' << after << "\"\n"
 				   << "key " << '"' << key << "\"\n"
-				   << "literal \"true\"\n";
+				   << "literal " << lit << "\n";
 				end_inset(os);
 			} else if (t.cs() == "nocite")
 				btprint = key;
@@ -4148,15 +4230,27 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		if (t.cs() == "nomenclature") {
 			context.check_layout(os);
 			begin_command_inset(os, "nomenclature", "nomenclature");
-			string prefix = convert_command_inset_arg(p.getArg('[', ']'));
+			string prefix = convert_literate_command_inset_arg(p.getArg('[', ']'));
 			if (!prefix.empty())
 				os << "prefix " << '"' << prefix << '"' << "\n";
-			os << "symbol " << '"'
-			   << convert_command_inset_arg(p.verbatim_item());
+			string symbol = p.verbatim_item();
+			pair<bool, string> sym = convert_latexed_command_inset_arg(symbol);
+			bool literal = !sym.first;
+			string description = p.verbatim_item();
+			pair<bool, string> desc = convert_latexed_command_inset_arg(description);
+			literal |= !desc.first;
+			if (literal) {
+				symbol = subst(symbol, "\n", " ");
+				description = subst(description, "\n", " ");
+			} else {
+				symbol = sym.second;
+				description = desc.second;
+			}
+			string lit = literal ? "\"true\"" : "\"false\"";
+			os << "symbol " << '"' << symbol;
 			os << "\"\ndescription \""
-			   << convert_command_inset_arg(p.verbatim_item())
-			   << "\"\n"
-			   << "literal \"true\"\n";
+			   << description << "\"\n"
+			   << "literal " << lit << "\n";
 			end_inset(os);
 			preamble.registerAutomaticallyLoadedPackage("nomencl");
 			continue;
@@ -4166,7 +4260,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.check_layout(os);
 			begin_command_inset(os, "label", "label");
 			os << "name \""
-			   << convert_command_inset_arg(p.verbatim_item())
+			   << convert_literate_command_inset_arg(p.verbatim_item())
 			   << "\"\n";
 			end_inset(os);
 			continue;
@@ -4229,7 +4323,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			// via \settowidth{\nomlabelwidth}{***} cannot be supported
 			// because the user could have set anything, not only the width
 			// of the longest label (which would be width_type = "auto")
-			string label = convert_command_inset_arg(p.getArg('{', '}'));
+			string label = convert_literate_command_inset_arg(p.getArg('{', '}'));
 			if (label.empty() && width_type.empty())
 				width_type = "none";
 			os << "set_width \"" << width_type << "\"\n";
