@@ -395,6 +395,8 @@ Function UpdateMiKTeX
   # handling might fail and users cannot use LaTeX at all afterwards - they then
   # would have no other choice than to reinstall MiKTeX
   # This case is fixed by forcing the restoration of the internal links
+  # There is another issue: the MiKTeX update program needs to be replaced by
+  # the new MiKTeX console. This is a 3-step process.
   #MessageBox MB_YESNO|MB_ICONINFORMATION "$(MiKTeXInfo)" #/SD IDNO IDYES UpdateNow IDNO UpdateLater
   #UpdateNow:
   # graphical update:
@@ -419,9 +421,17 @@ Function UpdateMiKTeX
   ${if} $MultiUser.Privileges != "Admin"
   ${andif} $MultiUser.Privileges != "Power"
    # call the non-admin version
+   # the order of the different commands is important!
+   nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--update=miktex-bin-2.9"'
+   nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--install=miktex-console-bin-2.9"'
+   nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--uninstall=miktex-mpm-bin-2.9"'
    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--update"'
   ${else}
    ${if} $MiKTeXUser != "HKCU" # call the admin version
+    # the order of the different commands is important!
+    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--update=miktex-bin-2.9"'
+    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--install=miktex-console-bin-2.9"'
+    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--uninstall=miktex-mpm-bin-2.9"'
     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--update"'
    ${else}
      nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--update"'
