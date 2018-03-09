@@ -32,6 +32,9 @@ Format LaTeX feature                        LyX feature
 332    ?                                    InsetGraphics groupId
 343    ?                                    \use_default_options
 358    custom bibtex command                \bibtex_command
+       Maybe via the
+       % !BIB program = 
+       comment understood by some TeX editors
 358    custom makeindex command             \index_command
 363    horizontal longtable alignment       InsetTabular
 364    branch file name suffix              \filename_suffix
@@ -55,8 +58,6 @@ Format LaTeX feature                        LyX feature
 443    unicode-math.sty                     InsetMath*
 445    URW Classico LaTeX font              \font_sans uop
        \renewcommand{\sffamily}{uop}
-446    Optional and required arguments      InsetArgument
-       now numbered by order
 448
 451    beamer overlay arguments             InsetArgument
        \command<arg>, \begin{env}<arg>
@@ -69,7 +70,6 @@ Format LaTeX feature                        LyX feature
        \end{overprint}
 455    beamer frametitle command            \begin_layout FrameTitle
        \frametitle<overlay>[short]{long}
-456    memoir: \epigraph{text}{source}      layout Epigraph, InsetArgument
 457    automatic stackrel loading           \use_package stackrel
 459    beamer: \begin{frame},               \begin_layout Frame
        \begin{frame}[plain],                \begin_layout PlainFrame
@@ -99,14 +99,11 @@ Format LaTeX feature                        LyX feature
 523    CJK Quote Styles                      InsetQuote
        - cjk (corner brackets)               \begin_inset Quotes j..
        - cjkangle (angle brackets)           \begin_inset Quotes k..
-526
-       Plural and capitalized refstyles      InsetRef
+526   Plural and capitalized refstyles      InsetRef
 533   Multibib support
       \begin{btUnit}...\end{btUnit}        \multibib {none|part|chapter|section|subsection}
         (if a part, chapter, section etc.
          follows the \begin...)
-534   Chapterbib support
-      \usepackage{chapterbib}              \multibib child
 
 
 
