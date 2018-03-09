@@ -482,22 +482,6 @@ void translate_box_len(string const & length, string & value, string & unit, str
 }
 
 
-/*!
- * Find a file with basename \p name in path \p path and an extension
- * in \p extensions.
- */
-string find_file(string const & name, string const & path,
-		 char const * const * extensions)
-{
-	for (char const * const * what = extensions; *what; ++what) {
-		string const trial = addExtension(name, *what);
-		if (makeAbsPath(trial, path).exists())
-			return trial;
-	}
-	return string();
-}
-
-
 void begin_inset(ostream & os, string const & name)
 {
 	os << "\n\\begin_inset " << name;
@@ -2194,96 +2178,6 @@ void get_cite_arguments(Parser & p, bool natbibOrder,
 }
 
 
-/// Convert filenames with TeX macros and/or quotes to something LyX
-/// can understand
-string const normalize_filename(string const & name)
-{
-	Parser p(name);
-	ostringstream os;
-	while (p.good()) {
-		Token const & t = p.get_token();
-		if (t.cat() != catEscape)
-			os << t.asInput();
-		else if (t.cs() == "lyxdot") {
-			// This is used by LyX for simple dots in relative
-			// names
-			os << '.';
-			p.skip_spaces();
-		} else if (t.cs() == "space") {
-			os << ' ';
-			p.skip_spaces();
-		} else if (t.cs() == "string") {
-			// Convert \string" to " and \string~ to ~
-			Token const & n = p.next_token();
-			if (n.asInput() != "\"" && n.asInput() != "~")
-				os << t.asInput();
-		} else
-			os << t.asInput();
-	}
-	// Strip quotes. This is a bit complicated (see latex_path()).
-	string full = os.str();
-	if (!full.empty() && full[0] == '"') {
-		string base = removeExtension(full);
-		string ext = getExtension(full);
-		if (!base.empty() && base[base.length()-1] == '"')
-			// "a b"
-			// "a b".tex
-			return addExtension(trim(base, "\""), ext);
-		if (full[full.length()-1] == '"')
-			// "a b.c"
-			// "a b.c".tex
-			return trim(full, "\"");
-	}
-	return full;
-}
-
-
-/// Convert \p name from TeX convention (relative to master file) to LyX
-/// convention (relative to .lyx file) if it is relative
-void fix_child_filename(string & name)
-{
-	string const absMasterTeX = getMasterFilePath(true);
-	bool const isabs = FileName::isAbsolute(name);
-	// convert from "relative to .tex master" to absolute original path
-	if (!isabs)
-		name = makeAbsPath(name, absMasterTeX).absFileName();
-	bool copyfile = copyFiles();
-	string const absParentLyX = getParentFilePath(false);
-	string abs = name;
-	if (copyfile) {
-		// convert from absolute original path to "relative to master file"
-		string const rel = to_utf8(makeRelPath(from_utf8(name),
-		                                       from_utf8(absMasterTeX)));
-		// re-interpret "relative to .tex file" as "relative to .lyx file"
-		// (is different if the master .lyx file resides in a
-		// different path than the master .tex file)
-		string const absMasterLyX = getMasterFilePath(false);
-		abs = makeAbsPath(rel, absMasterLyX).absFileName();
-		// Do not copy if the new path is impossible to create. Example:
-		// absMasterTeX = "/foo/bar/"
-		// absMasterLyX = "/bar/"
-		// name = "/baz.eps" => new absolute name would be "/../baz.eps"
-		if (contains(name, "/../"))
-			copyfile = false;
-	}
-	if (copyfile) {
-		if (isabs)
-			name = abs;
-		else {
-			// convert from absolute original path to
-			// "relative to .lyx file"
-			name = to_utf8(makeRelPath(from_utf8(abs),
-			                           from_utf8(absParentLyX)));
-		}
-	}
-	else if (!isabs) {
-		// convert from absolute original path to "relative to .lyx file"
-		name = to_utf8(makeRelPath(from_utf8(name),
-		                           from_utf8(absParentLyX)));
-	}
-}
-
-
 void copy_file(FileName const & src, string dstname)
 {
 	if (!copyFiles())
@@ -2506,6 +2400,112 @@ void registerExternalTemplatePackages(string const & name)
 }
 
 } // anonymous namespace
+
+
+/*!
+ * Find a file with basename \p name in path \p path and an extension
+ * in \p extensions.
+ */
+string find_file(string const & name, string const & path,
+		 char const * const * extensions)
+{
+	for (char const * const * what = extensions; *what; ++what) {
+		string const trial = addExtension(name, *what);
+		if (makeAbsPath(trial, path).exists())
+			return trial;
+	}
+	return string();
+}
+
+
+/// Convert filenames with TeX macros and/or quotes to something LyX
+/// can understand
+string const normalize_filename(string const & name)
+{
+	Parser p(name);
+	ostringstream os;
+	while (p.good()) {
+		Token const & t = p.get_token();
+		if (t.cat() != catEscape)
+			os << t.asInput();
+		else if (t.cs() == "lyxdot") {
+			// This is used by LyX for simple dots in relative
+			// names
+			os << '.';
+			p.skip_spaces();
+		} else if (t.cs() == "space") {
+			os << ' ';
+			p.skip_spaces();
+		} else if (t.cs() == "string") {
+			// Convert \string" to " and \string~ to ~
+			Token const & n = p.next_token();
+			if (n.asInput() != "\"" && n.asInput() != "~")
+				os << t.asInput();
+		} else
+			os << t.asInput();
+	}
+	// Strip quotes. This is a bit complicated (see latex_path()).
+	string full = os.str();
+	if (!full.empty() && full[0] == '"') {
+		string base = removeExtension(full);
+		string ext = getExtension(full);
+		if (!base.empty() && base[base.length()-1] == '"')
+			// "a b"
+			// "a b".tex
+			return addExtension(trim(base, "\""), ext);
+		if (full[full.length()-1] == '"')
+			// "a b.c"
+			// "a b.c".tex
+			return trim(full, "\"");
+	}
+	return full;
+}
+
+
+/// Convert \p name from TeX convention (relative to master file) to LyX
+/// convention (relative to .lyx file) if it is relative
+void fix_child_filename(string & name)
+{
+	string const absMasterTeX = getMasterFilePath(true);
+	bool const isabs = FileName::isAbsolute(name);
+	// convert from "relative to .tex master" to absolute original path
+	if (!isabs)
+		name = makeAbsPath(name, absMasterTeX).absFileName();
+	bool copyfile = copyFiles();
+	string const absParentLyX = getParentFilePath(false);
+	string abs = name;
+	if (copyfile) {
+		// convert from absolute original path to "relative to master file"
+		string const rel = to_utf8(makeRelPath(from_utf8(name),
+						       from_utf8(absMasterTeX)));
+		// re-interpret "relative to .tex file" as "relative to .lyx file"
+		// (is different if the master .lyx file resides in a
+		// different path than the master .tex file)
+		string const absMasterLyX = getMasterFilePath(false);
+		abs = makeAbsPath(rel, absMasterLyX).absFileName();
+		// Do not copy if the new path is impossible to create. Example:
+		// absMasterTeX = "/foo/bar/"
+		// absMasterLyX = "/bar/"
+		// name = "/baz.eps" => new absolute name would be "/../baz.eps"
+		if (contains(name, "/../"))
+			copyfile = false;
+	}
+	if (copyfile) {
+		if (isabs)
+			name = abs;
+		else {
+			// convert from absolute original path to
+			// "relative to .lyx file"
+			name = to_utf8(makeRelPath(from_utf8(abs),
+						   from_utf8(absParentLyX)));
+		}
+	}
+	else if (!isabs) {
+		// convert from absolute original path to "relative to .lyx file"
+		name = to_utf8(makeRelPath(from_utf8(name),
+					   from_utf8(absParentLyX)));
+	}
+}
 
 
 void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,

@@ -223,6 +223,7 @@ private:
 	std::map<std::string, std::string> h_use_packages;
 	std::string h_use_default_options;
 	std::string h_use_hyperref;
+	std::vector<std::string> h_includeonlys;
 	bool h_use_refstyle;
 	bool h_use_minted;
 
