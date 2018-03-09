@@ -3407,6 +3407,19 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			continue;
 		}
 
+		if (t.cs() == "xymatrix") {
+			// we must open a new math because LyX's xy support is in math
+			context.check_layout(os);
+			begin_inset(os, "Formula ");
+			os << '$';
+			os << "\\" << t.cs() << '{';
+			parse_math(p, os, FLAG_ITEM, MATH_MODE);
+			os << '}' << '$';
+			end_inset(os);
+			preamble.registerAutomaticallyLoadedPackage("xy");
+			continue;
+		}
+
 		if (t.cs() == "includegraphics") {
 			bool const clip = p.next_token().asInput() == "*";
 			if (clip)
