@@ -51,6 +51,13 @@ void parse_text(Parser & p, std::ostream & os, unsigned flags, bool outer,
 		Context & context);
 void check_comment_bib(std::ostream & os, Context & context);
 
+void fix_child_filename(std::string & name);
+
+std::string const normalize_filename(std::string const & name);
+
+std::string find_file(std::string const & name, std::string const & path,
+		 char const * const * extensions);
+
 /*!
  * Parses a subdocument, usually useful in insets (whence the name).
  *

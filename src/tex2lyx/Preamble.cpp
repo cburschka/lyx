@@ -173,6 +173,11 @@ const char * const known_basic_color_codes[] = {"#000000", "#0000ff", "#964B00",
 const char * const known_if_3arg_commands[] = {"@ifundefined", "IfFileExists",
 0};
 
+/*!
+ * Known file extensions for TeX files as used by \\includeonly
+ */
+char const * const known_tex_extensions[] = {"tex", 0};
+
 /// packages that work only in xetex
 /// polyglossia is handled separately
 const char * const known_xetex_packages[] = {"arabxetex", "fixlatvian",
@@ -1252,6 +1257,12 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 			os << *it << '\n';
 		os << "\\end_modules\n";
 	}
+	if (!h_includeonlys.empty()) {
+		os << "\\begin_includeonly\n";
+		for (auto const & iofile : h_includeonlys)
+			os << iofile << '\n';
+		os << "\\end_includeonly\n";
+	}
 	os << "\\maintain_unincluded_children " << h_maintain_unincluded_children << "\n"
 	   << "\\language " << h_language << "\n"
 	   << "\\language_package " << h_language_package << "\n"
@@ -2037,6 +2048,33 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			if (!hypersetup.empty()) {
 				h_preamble << "\\hypersetup{"
 				           << join(hypersetup, ",") << '}';
+			}
+		}
+
+		if (t.cs() == "includeonly") {
+			vector<string> includeonlys = getVectorFromString(p.getArg('{', '}'));
+			for (auto & iofile : includeonlys) {
+				string filename(normalize_filename(iofile));
+				string const path = getMasterFilePath(true);
+				// We want to preserve relative/absolute filenames,
+				// therefore path is only used for testing
+				if (!makeAbsPath(filename, path).exists()) {
+					// The file extension is probably missing.
+					// Now try to find it out.
+					string const tex_name =
+						find_file(filename, path,
+							  known_tex_extensions);
+					if (!tex_name.empty())
+						filename = tex_name;
+				}
+				string outname;
+				if (makeAbsPath(filename, path).exists())
+					fix_child_filename(filename);
+				else
+					cerr << "Warning: Could not find included file '"
+					     << filename << "'." << endl;
+				outname = changeExtension(filename, "lyx");
+				h_includeonlys.push_back(outname);
 			}
 		}
 
