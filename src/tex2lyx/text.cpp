@@ -3937,7 +3937,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (!before.empty()) {
 				before.erase(0, 1);
 				before.erase(before.length() - 1, 1);
-				bef = convert_latexed_command_inset_arg(after);
+				bef = convert_latexed_command_inset_arg(before);
 				literal |= !bef.first;
 				before = literal ? subst(before, "\n", " ") : bef.second;
 				if (literal && !after.empty())
@@ -4037,7 +4037,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (!before.empty()) {
 				before.erase(0, 1);
 				before.erase(before.length() - 1, 1);
-				bef = convert_latexed_command_inset_arg(after);
+				bef = convert_latexed_command_inset_arg(before);
 				literal |= !bef.first;
 				before = literal ? subst(before, "\n", " ") : bef.second;
 			}
@@ -4189,7 +4189,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (!before.empty()) {
 				before.erase(0, 1);
 				before.erase(before.length() - 1, 1);
-				bef = convert_latexed_command_inset_arg(after);
+				bef = convert_latexed_command_inset_arg(before);
 				literal |= !bef.first;
 				before = literal ? subst(before, "\n", " ") : bef.second;
 				if (literal && !after.empty())
