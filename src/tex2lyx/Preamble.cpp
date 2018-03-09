@@ -1100,6 +1100,9 @@ void Preamble::handle_package(Parser &p, string const & name,
 	else if (name == "bibtopic")
 		h_use_bibtopic = "true";
 
+	else if (name == "chapterbib")
+		h_multibib = "child";
+
 	else if (name == "hyperref")
 		handle_hyperref(options);
 
