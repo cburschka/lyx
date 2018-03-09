@@ -32,6 +32,9 @@ Format LaTeX feature                        LyX feature
 332    ?                                    InsetGraphics groupId
 343    ?                                    \use_default_options
 358    custom bibtex command                \bibtex_command
+       Maybe via the
+       % !BIB program = 
+       comment understoff by some TeX editors
 358    custom makeindex command             \index_command
 363    horizontal longtable alignment       InsetTabular
 364    branch file name suffix              \filename_suffix
@@ -96,8 +99,7 @@ Format LaTeX feature                        LyX feature
 523    CJK Quote Styles                      InsetQuote
        - cjk (corner brackets)               \begin_inset Quotes j..
        - cjkangle (angle brackets)           \begin_inset Quotes k..
-526
-       Plural and capitalized refstyles      InsetRef
+526   Plural and capitalized refstyles      InsetRef
 533   Multibib support
       \begin{btUnit}...\end{btUnit}        \multibib {none|part|chapter|section|subsection}
         (if a part, chapter, section etc.
