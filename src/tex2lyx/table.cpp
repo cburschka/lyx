@@ -322,6 +322,9 @@ void handle_colalign(Parser & p, vector<ColInfo> & colinfo,
 		}
 
 		switch (t.character()) {
+			case ' ':
+				// whitespace, ignore.
+				break;
 			case 'c':
 			case 'l':
 			case 'r':
