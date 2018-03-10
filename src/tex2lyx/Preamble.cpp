@@ -127,16 +127,17 @@ char const * const known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 const char * const known_roman_fonts[] = { "ae", "beraserif", "bookman",
 "ccfonts", "chancery", "charter", "cmr", "cochineal", "crimson", "fourier",
 "garamondx", "libertine", "libertine-type1", "lmodern", "mathdesign", "mathpazo",
-"mathptmx", "newcent", "NotoSerif-TLF", "tgbonum", "tgchorus", "tgpagella", "tgschola",
-"tgtermes", "utopia", 0};
+"mathptmx", "newcent", "NotoSerif-TLF", "PTSerif-TLF", "tgbonum", "tgchorus",
+"tgpagella", "tgschola", "tgtermes", "utopia", 0 };
 
 const char * const known_sans_fonts[] = { "avant", "berasans", "biolinum-type1",
 "cmbr", "cmss", "helvet", "iwona", "iwonac", "iwonal", "iwonalc", "kurier",
-"kurierc", "kurierl", "kurierlc", "lmss", "NotoSans-TLF", "tgadventor", "tgheros", 0};
+"kurierc", "kurierl", "kurierlc", "lmss", "NotoSans-TLF", "PTSans-TLF", "tgadventor",
+"tgheros", 0 };
 
 const char * const known_typewriter_fonts[] = { "beramono", "cmtl", "cmtt",
 "courier", "lmtt", "luximono", "fourier", "libertineMono-type1", "lmodern",
-"mathpazo", "mathptmx", "newcent", "NotoMono-TLF", "tgcursor", "txtt", 0};
+"mathpazo", "mathptmx", "newcent", "NotoMono-TLF", "PTMono-TLF", "tgcursor", "txtt", 0 };
 
 const char * const known_math_fonts[] = { "eulervm", "newtxmath", 0};
 
@@ -798,6 +799,16 @@ void Preamble::handle_package(Parser &p, string const & name,
 		// special cases are handled in handling of \rmdefault and \sfdefault
 	}
 
+	if (name == "paratype") {
+		// in this case all fonts are ParaType
+		h_font_roman[0] = "PTSerif-TLF";
+		h_font_sans[0] = "default";
+		h_font_typewriter[0] = "default";
+	}
+
+	if (name == "PTSerif")
+		h_font_roman[0] = "PTSerif-TLF";
+
 	// sansserif fonts
 	if (is_known(name, known_sans_fonts)) {
 		h_font_sans[0] = name;
@@ -815,6 +826,14 @@ void Preamble::handle_package(Parser &p, string const & name,
 			h_font_osf = "true";
 	}
 
+	if (name == "PTSans") {
+		h_font_sans[0] = "PTSans-TLF";
+		if (options.size() >= 1) {
+			if (scale_as_percentage(opts, h_font_sf_scale[0]))
+				options.clear();
+		}
+	}
+
 	// typewriter fonts
 	if (is_known(name, known_typewriter_fonts)) {
 		// fourier can be set as roman font _only_
@@ -828,8 +847,15 @@ void Preamble::handle_package(Parser &p, string const & name,
 		}
 	}
 
-	if (name == "libertineMono-type1") {
+	if (name == "libertineMono-type1")
 		h_font_typewriter[0] = "libertine-mono";
+
+	if (name == "PTMono") {
+		h_font_typewriter[0] = "PTMono-TLF";
+		if (options.size() >= 1) {
+			if (scale_as_percentage(opts, h_font_tt_scale[0]))
+				options.clear();
+		}
 	}
 
 	// font uses old-style figure

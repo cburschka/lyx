@@ -7,8 +7,13 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
-2018-02-23  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2018-03-10 Uwe Stöhr <uwestoehr@web.de>
+ 	* Format incremented to 546: support for ParaType fonts.
+	  - \usepackage{PTSerif} > \font_roman "PTSerif-TLF"
+	  - \usepackage[scaled=x.xx]{PTSans} > \font_sans "PTSans-TLF""
+	  - \usepackage[scaled=x.xx]{PTMono} > \font_typewriter "PTMono-TLF"
 
+2018-02-23  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 	* format incremented to 545: Add "literal" param to inset include
           This is used by the lstinput caption.
 

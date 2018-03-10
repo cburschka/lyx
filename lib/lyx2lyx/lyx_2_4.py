@@ -24,7 +24,7 @@ import sys, os
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import (find_end_of_inset, find_token) 
+from parser_tools import (find_end_of_inset, find_token, get_value) 
 #    del_token, del_value, del_complete_lines,
 #    find_complete_lines, find_end_of, find_end_of_layout, 
 #    find_re, find_substring, find_token_backwards,
@@ -32,8 +32,8 @@ from parser_tools import (find_end_of_inset, find_token)
 #    get_quoted_value, is_in_inset, set_bool_value
 #    find_tokens, find_token_exact, check_token, get_option_value
 
-#from lyx2lyx_tools import (add_to_preamble, put_cmd_in_ert, revert_font_attrs,
-#                           insert_to_preamble, latex_length)
+from lyx2lyx_tools import (add_to_preamble)
+#  put_cmd_in_ert, revert_font_attrs, insert_to_preamble, latex_length
 #  get_ert, lyx2latex, lyx2verbatim, length_in_bp, convert_info_insets
 #  revert_flex_inset, hex2ratio, str2bool
 
@@ -87,16 +87,57 @@ def revert_lst_literalparam(document):
         del document.body[k]
 
 
+def revert_paratype(document):
+    " Revert ParaType font definitions to LaTeX "
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        preamble = ""
+        i1 = find_token(document.header, "\\font_roman \"PTSerif-TLF\"", 0)
+        i2 = find_token(document.header, "\\font_sans \"default\"", 0)
+        i3 = find_token(document.header, "\\font_typewriter \"default\"", 0)
+        j = find_token(document.header, "\\font_sans \"PTSans-TLF\"", 0)
+        sfval = get_value(document.header, "\\font_sf_scale", 0)
+        document.warning("sfval: " + str(sfval))
+        # cutoff " 100"
+        sfval = sfval[:-4]
+        sfoption = ""
+        if sfval != "100":
+            sfoption = "scaled=" + format(float(sfval) / 100, '.2f')
+        k = find_token(document.header, "\\font_typewriter \"PTMono-TLF\"", 0)
+        ttval = get_value(document.header, "\\font_tt_scale", 0)
+        # cutoff " 100"
+        ttval = ttval[:-4]
+        ttoption = ""
+        if ttval != "100":
+            ttoption = "scaled=" + format(float(ttval) / 100, '.2f')
+        if i1 != -1 and i2 != -1 and i3!= -1:
+            add_to_preamble(document, ["\\usepackage{paratype}"])
+        else:
+            if i1!= -1: 
+                add_to_preamble(document, ["\\usepackage{PTSerif}"])
+            if j!= -1: 
+                if sfoption != "":
+                	add_to_preamble(document, ["\\usepackage[" + sfoption + "]{PTSans}"])
+                else:
+                	add_to_preamble(document, ["\\usepackage{PTSans}"])
+            if k!= -1: 
+                if ttoption != "":
+                	add_to_preamble(document, ["\\usepackage[" + ttoption + "]{PTMono}"])
+                else:
+                	add_to_preamble(document, ["\\usepackage{PTMono}"])
+
 ##
 # Conversion hub
 #
 
 supported_versions = ["2.4.0", "2.4"]
 convert = [
-           [545, [convert_lst_literalparam]]
+           [545, [convert_lst_literalparam]],
+           [546, []]
           ]
 
 revert =  [
+           [545, [revert_paratype]],
            [544, [revert_lst_literalparam]]
           ]
 
