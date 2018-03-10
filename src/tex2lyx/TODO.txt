@@ -34,7 +34,7 @@ Format LaTeX feature                        LyX feature
 358    custom bibtex command                \bibtex_command
        Maybe via the
        % !BIB program = 
-       comment understoff by some TeX editors
+       comment understood by some TeX editors
 358    custom makeindex command             \index_command
 363    horizontal longtable alignment       InsetTabular
 364    branch file name suffix              \filename_suffix
@@ -102,6 +102,12 @@ Format LaTeX feature                        LyX feature
       \begin{btUnit}...\end{btUnit}        \multibib {none|part|chapter|section|subsection}
         (if a part, chapter, section etc.
          follows the \begin...)
+544   Minted support
+      \usepackage{minted}                  \use_minted
+      \begin{minted}{lang}                 \begin_inset listings
+      \end{minted}
+      \lyxmintcaption[]{caption\label{}}   add to include inset
+      \inputminted{tex}{Intro.fls}         \begin_inset include ...
 
 
 
