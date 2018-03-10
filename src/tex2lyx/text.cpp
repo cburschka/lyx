@@ -4632,12 +4632,23 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		if (t.cs() == "input" || t.cs() == "include"
-		    || t.cs() == "verbatiminput") {
+		    || t.cs() == "verbatiminput"
+		    || t.cs() == "lstinputlisting") {
 			string name = t.cs();
-			if (t.cs() == "verbatiminput"
+			if (name == "verbatiminput"
 			    && p.next_token().asInput() == "*")
 				name += p.get_token().asInput();
 			context.check_layout(os);
+			string lstparams;
+			bool literal = false;
+			if (name == "lstinputlisting" && p.hasOpt()) {
+				lstparams = p.getArg('[', ']');
+				pair<bool, string> oa = convert_latexed_command_inset_arg(lstparams);
+				literal = !oa.first;
+				if (literal)
+					lstparams = subst(lstparams, "\n", " ");
+			}
+			string lit = literal ? "\"true\"" : "\"false\"";
 			string filename(normalize_filename(p.getArg('{', '}')));
 			string const path = getMasterFilePath(true);
 			// We want to preserve relative / absolute filenames,
@@ -4745,6 +4756,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				outname = subst(outname, "\"", "\\\"");
 				os << "preview false\n"
 				      "filename \"" << outname << "\"\n";
+				if (!lstparams.empty())
+					os << "lstparams \"" << lstparams << "\"\n";
+				os << "literal " << lit << "\n";
 				if (t.cs() == "verbatiminput")
 					preamble.registerAutomaticallyLoadedPackage("verbatim");
 			}
