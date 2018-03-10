@@ -1451,14 +1451,18 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		     t.cat() == catBegin ||
 		     t.cat() == catEnd ||
 		     t.cat() == catAlign ||
-		     t.cat() == catParameter))
+		     t.cat() == catParameter)) {
 			h_preamble << t.cs();
+			continue;
+		}
 
-		else if (!in_lyx_preamble &&
-			 (t.cat() == catSpace || t.cat() == catNewline))
+		if (!in_lyx_preamble &&
+		    (t.cat() == catSpace || t.cat() == catNewline)) {
 			h_preamble << t.asInput();
+			continue;
+		}
 
-		else if (t.cat() == catComment) {
+		if (t.cat() == catComment) {
 			static regex const islyxfile("%% LyX .* created this file");
 			static regex const usercommands("User specified LaTeX commands");
 
@@ -1483,18 +1487,22 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				in_lyx_preamble = false;
 			else if (!in_lyx_preamble)
 				h_preamble << t.asInput();
+			continue;
 		}
 
-		else if (t.cs() == "PassOptionsToPackage") {
+		if (t.cs() == "PassOptionsToPackage") {
 			string const poptions = p.getArg('{', '}');
 			string const package = p.verbatim_item();
 			extra_package_options_.insert(make_pair(package, poptions));
+			continue;
 		}
 
-		else if (t.cs() == "pagestyle")
+		if (t.cs() == "pagestyle") {
 			h_paperpagestyle = p.verbatim_item();
+			continue;
+		}
 
-		else if (t.cs() == "setdefaultlanguage") {
+		if (t.cs() == "setdefaultlanguage") {
 			xetex = true;
 			// We don't yet care about non-language variant options
 			// because LyX doesn't support this yet, see bug #8214
@@ -1517,22 +1525,25 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				h_language = p.verbatim_item();
 			//finally translate the poyglossia name to a LyX name
 			h_language = polyglossia2lyx(h_language);
+			continue;
 		}
 
-		else if (t.cs() == "setotherlanguage") {
+		if (t.cs() == "setotherlanguage") {
 			// We don't yet care about the option because LyX doesn't
 			// support this yet, see bug #8214
 			p.hasOpt() ? p.getOpt() : string();
 			p.verbatim_item();
+			continue;
 		}
 
-		else if (t.cs() == "setmainfont") {
+		if (t.cs() == "setmainfont") {
 			// we don't care about the option
 			p.hasOpt() ? p.getOpt() : string();
 			h_font_roman[1] = p.getArg('{', '}');
+			continue;
 		}
 
-		else if (t.cs() == "setsansfont" || t.cs() == "setmonofont") {
+		if (t.cs() == "setsansfont" || t.cs() == "setmonofont") {
 			// LyX currently only supports the scale option
 			string scale;
 			if (p.hasOpt()) {
@@ -1556,6 +1567,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 					h_font_tt_scale[1] = scale;
 				h_font_typewriter[1] = p.getArg('{', '}');
 			}
+			continue;
 		}
 
 		else if (t.cs() == "date") {
@@ -1566,7 +1578,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				h_preamble << t.asInput() << '{' << argument << '}';
 		}
 
-		else if (t.cs() == "color") {
+		if (t.cs() == "color") {
 			string const space =
 				(p.hasOpt() ? p.getOpt() : string());
 			string argument = p.getArg('{', '}');
@@ -1587,9 +1599,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				// is parsed before this
 				h_fontcolor = "";
 			}
+			continue;
 		}
 
-		else if (t.cs() == "pagecolor") {
+		if (t.cs() == "pagecolor") {
 			string argument = p.getArg('{', '}');
 			// check the case that a standard color is used
 			if (is_known(argument, known_basic_colors)) {
@@ -1604,24 +1617,28 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				// is parsed before this
 				h_backgroundcolor = "";
 			}
+			continue;
 		}
 
-		else if (t.cs() == "makeatletter") {
+		if (t.cs() == "makeatletter") {
 			// LyX takes care of this
 			p.setCatcode('@', catLetter);
+			continue;
 		}
 
-		else if (t.cs() == "makeatother") {
+		if (t.cs() == "makeatother") {
 			// LyX takes care of this
 			p.setCatcode('@', catOther);
+			continue;
 		}
 
-		else if (t.cs() == "makeindex") {
+		if (t.cs() == "makeindex") {
 			// LyX will re-add this if a print index command is found
 			p.skip_spaces();
+			continue;
 		}
 
-		else if (t.cs() == "newindex") {
+		if (t.cs() == "newindex") {
 			string const indexname = p.getArg('[', ']');
 			string const shortcut = p.verbatim_item();
 			if (!indexname.empty())
@@ -1631,17 +1648,21 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			h_shortcut[index_number] = shortcut;
 			index_number += 1;
 			p.skip_spaces();
+			continue;
 		}
 
-		else if (t.cs() == "addbibresource")
+		if (t.cs() == "addbibresource") {
 			biblatex_bibliographies.push_back(removeExtension(p.getArg('{', '}')));
+			continue;
+		}
 
-		else if (t.cs() == "bibliography") {
+		if (t.cs() == "bibliography") {
 			vector<string> bibs = getVectorFromString(p.getArg('{', '}'));
 			biblatex_bibliographies.insert(biblatex_bibliographies.end(), bibs.begin(), bibs.end());
+			continue;
 		}
 
-		else if (t.cs() == "RS@ifundefined") {
+		if (t.cs() == "RS@ifundefined") {
 			string const name = p.verbatim_item();
 			string const body1 = p.verbatim_item();
 			string const body2 = p.verbatim_item();
@@ -1657,9 +1678,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				   << '{' << body2 << '}';
 				h_preamble << ss.str();
 			}
+			continue;
 		}
 
-		else if (t.cs() == "AtBeginDocument") {
+		if (t.cs() == "AtBeginDocument") {
 			string const name = p.verbatim_item();
 			// only non-lyxspecific stuff
 			if (in_lyx_preamble &&
@@ -1685,15 +1707,16 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				ss << '{' << name << '}';
 				h_preamble << ss.str();
 			}
+			continue;
 		}
 
-		else if (t.cs() == "newcommand" || t.cs() == "newcommandx"
-		      || t.cs() == "renewcommand" || t.cs() == "renewcommandx"
-		      || t.cs() == "providecommand" || t.cs() == "providecommandx"
-				|| t.cs() == "DeclareRobustCommand"
-		      || t.cs() == "DeclareRobustCommandx"
-				|| t.cs() == "ProvideTextCommandDefault"
-				|| t.cs() == "DeclareMathAccent") {
+		if (t.cs() == "newcommand" || t.cs() == "newcommandx"
+		    || t.cs() == "renewcommand" || t.cs() == "renewcommandx"
+		    || t.cs() == "providecommand" || t.cs() == "providecommandx"
+		    || t.cs() == "DeclareRobustCommand"
+		    || t.cs() == "DeclareRobustCommandx"
+		    || t.cs() == "ProvideTextCommandDefault"
+		    || t.cs() == "DeclareMathAccent") {
 			bool star = false;
 			if (p.next_token().character() == '*') {
 				p.get_token();
@@ -1762,9 +1785,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			}
 			// restore the in_lyx_preamble setting
 			in_lyx_preamble = was_in_lyx_preamble;
+			continue;
 		}
 
-		else if (t.cs() == "documentclass") {
+		if (t.cs() == "documentclass") {
 			vector<string>::iterator it;
 			vector<string> opts = split_options(p.getArg('[', ']'));
 			handle_opt(opts, known_fontsizes, h_paperfontsize);
@@ -1835,9 +1859,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			//       different name in LyX than in LaTeX
 			h_textclass = p.getArg('{', '}');
 			p.skip_spaces();
+			continue;
 		}
 
-		else if (t.cs() == "usepackage") {
+		if (t.cs() == "usepackage") {
 			string const options = p.getArg('[', ']');
 			string const name = p.getArg('{', '}');
 			vector<string> vecnames;
@@ -1847,9 +1872,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			for (; it != end; ++it)
 				handle_package(p, trimSpaceAndEol(*it), options,
 					       in_lyx_preamble, detectEncoding);
+			continue;
 		}
 
-		else if (t.cs() == "inputencoding") {
+		if (t.cs() == "inputencoding") {
 			string const encoding = p.getArg('{','}');
 			Encoding const * const enc = encodings.fromLaTeXName(
 				encoding, Encoding::inputenc, true);
@@ -1862,9 +1888,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 					h_inputencoding = enc->name();
 				p.setEncoding(enc->iconvName());
 			}
+			continue;
 		}
 
-		else if (t.cs() == "newenvironment") {
+		if (t.cs() == "newenvironment") {
 			string const name = p.getArg('{', '}');
 			string const opt1 = p.getFullOpt();
 			string const opt2 = p.getFullOpt();
@@ -1877,10 +1904,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			}
 			add_known_environment(name, opt1, !opt2.empty(),
 			                      from_utf8(beg), from_utf8(end));
-
+			continue;
 		}
 
-		else if (t.cs() == "newtheorem") {
+		if (t.cs() == "newtheorem") {
 			bool star = false;
 			if (p.next_token().character() == '*') {
 				p.get_token();
@@ -1900,9 +1927,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 
 			if (!in_lyx_preamble)
 				h_preamble << complete;
+			continue;
 		}
 
-		else if (t.cs() == "def") {
+		if (t.cs() == "def") {
 			string name = p.get_token().cs();
 			// In fact, name may be more than the name:
 			// In the test case of bug 8116
@@ -1913,9 +1941,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			if (!in_lyx_preamble)
 				h_preamble << "\\def\\" << name << '{'
 					   << p.verbatim_item() << "}";
+			continue;
 		}
 
-		else if (t.cs() == "newcolumntype") {
+		if (t.cs() == "newcolumntype") {
 			string const name = p.getArg('{', '}');
 			trimSpaceAndEol(name);
 			int nargs = 0;
@@ -1929,9 +1958,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			if (nargs)
 				h_preamble << "[" << nargs << "]";
 			h_preamble << "{" << p.verbatim_item() << "}";
+			continue;
 		}
 
-		else if (t.cs() == "setcounter") {
+		if (t.cs() == "setcounter") {
 			string const name = p.getArg('{', '}');
 			string const content = p.getArg('{', '}');
 			if (name == "secnumdepth")
@@ -1940,9 +1970,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				h_tocdepth = content;
 			else
 				h_preamble << "\\setcounter{" << name << "}{" << content << "}";
+			continue;
 		}
 
-		else if (t.cs() == "setlength") {
+		if (t.cs() == "setlength") {
 			string const name = p.verbatim_item();
 			string const content = p.verbatim_item();
 			// the paragraphs are only not indented when \parindent is set to zero
@@ -1964,18 +1995,25 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				h_mathindentation = translate_len(content);
 			} else
 				h_preamble << "\\setlength{" << name << "}{" << content << "}";
+			continue;
 		}
 
-		else if (t.cs() == "onehalfspacing")
+		if (t.cs() == "onehalfspacing") {
 			h_spacing = "onehalf";
+			continue;
+		}
 
-		else if (t.cs() == "doublespacing")
+		if (t.cs() == "doublespacing") {
 			h_spacing = "double";
+			continue;
+		}
 
-		else if (t.cs() == "setstretch")
+		if (t.cs() == "setstretch") {
 			h_spacing = "other " + p.verbatim_item();
+			continue;
+		}
 
-		else if (t.cs() == "synctex") {
+		if (t.cs() == "synctex") {
 			// the scheme is \synctex=value
 			// where value can only be "1" or "-1"
 			h_output_sync = "1";
@@ -1986,21 +2024,24 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			if (value == "-")
 				value += p.get_token().asInput();
 			h_output_sync_macro = "\\synctex=" + value;
+			continue;
 		}
 
-		else if (t.cs() == "begin") {
+		if (t.cs() == "begin") {
 			string const name = p.getArg('{', '}');
 			if (name == "document")
 				break;
 			h_preamble << "\\begin{" << name << "}";
+			continue;
 		}
 
-		else if (t.cs() == "geometry") {
+		if (t.cs() == "geometry") {
 			vector<string> opts = split_options(p.getArg('{', '}'));
 			handle_geometry(opts);
+			continue;
 		}
 
-		else if (t.cs() == "definecolor") {
+		if (t.cs() == "definecolor") {
 			string const color = p.getArg('{', '}');
 			string const space = p.getArg('{', '}');
 			string const value = p.getArg('{', '}');
@@ -2021,12 +2062,15 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				           << "}{" << space << "}{" << value
 				           << '}';
 			}
+			continue;
 		}
 
-		else if (t.cs() == "bibliographystyle")
+		if (t.cs() == "bibliographystyle") {
 			h_biblio_style = p.verbatim_item();
+			continue;
+		}
 
-		else if (t.cs() == "jurabibsetup") {
+		if (t.cs() == "jurabibsetup") {
 			// FIXME p.getArg('{', '}') is most probably wrong (it
 			//       does not handle nested braces).
 			//       Use p.verbatim_item() instead.
@@ -2038,9 +2082,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				h_preamble << "\\jurabibsetup{"
 					   << join(jurabibsetup, ",") << '}';
 			}
+			continue;
 		}
 
-		else if (t.cs() == "hypersetup") {
+		if (t.cs() == "hypersetup") {
 			vector<string> hypersetup =
 				split_options(p.verbatim_item());
 			// add hypersetup to the hyperref package options
@@ -2049,9 +2094,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				h_preamble << "\\hypersetup{"
 				           << join(hypersetup, ",") << '}';
 			}
+			continue;
 		}
 
-		else if (t.cs() == "includeonly") {
+		if (t.cs() == "includeonly") {
 			vector<string> includeonlys = getVectorFromString(p.getArg('{', '}'));
 			for (auto & iofile : includeonlys) {
 				string filename(normalize_filename(iofile));
@@ -2076,9 +2122,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				outname = changeExtension(filename, "lyx");
 				h_includeonlys.push_back(outname);
 			}
+			continue;
 		}
 
-		else if (is_known(t.cs(), known_if_3arg_commands)) {
+		if (is_known(t.cs(), known_if_3arg_commands)) {
 			// prevent misparsing of \usepackage if it is used
 			// as an argument (see e.g. our own output of
 			// \@ifundefined above)
@@ -2115,18 +2162,22 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				           << '{' << arg2 << '}'
 				           << '{' << arg3 << '}';
 			}
+			continue;
 		}
 
-		else if (is_known(t.cs(), known_if_commands)) {
+		if (is_known(t.cs(), known_if_commands)) {
 			// must not parse anything in conditional code, since
 			// LyX would output the parsed contents unconditionally
 			if (!in_lyx_preamble)
 				h_preamble << t.asInput();
 			handle_if(p, in_lyx_preamble);
+			continue;
 		}
 
-		else if (!t.cs().empty() && !in_lyx_preamble)
+		if (!t.cs().empty() && !in_lyx_preamble) {
 			h_preamble << '\\' << t.cs();
+			continue;
+		}
 	}
 
 	// remove the whitespace
