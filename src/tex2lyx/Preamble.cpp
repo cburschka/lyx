@@ -2051,7 +2051,7 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			}
 		}
 
-		if (t.cs() == "includeonly") {
+		else if (t.cs() == "includeonly") {
 			vector<string> includeonlys = getVectorFromString(p.getArg('{', '}'));
 			for (auto & iofile : includeonlys) {
 				string filename(normalize_filename(iofile));
