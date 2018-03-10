@@ -343,6 +343,10 @@ bool minted_float_has_caption = false;
 // The caption for non-floating minted listings
 string minted_nonfloat_caption = "";
 
+// Characters that have to be escaped by \\ in LaTeX
+char const * const known_escaped_chars[] = {
+		"&", "_", "$", "%", "#", "^", "{", "}"};
+
 
 /// splits "x=z, y=b" into a map and an ordered keyword vector
 void split_map(string const & s, map<string, string> & res, vector<string> & keys)
@@ -521,9 +525,6 @@ bool skip_braces(Parser & p)
 pair<bool, docstring> convert_unicodesymbols(docstring s)
 {
 	bool res = true;
-	int const nchars_escape = 8;
-	static char_type const chars_escape[nchars_escape] = {
-			'&', '_', '$', '%', '#', '^', '{', '}'};
 	odocstringstream os;
 	for (size_t i = 0; i < s.size();) {
 		if (s[i] != '\\') {
@@ -546,8 +547,8 @@ pair<bool, docstring> convert_unicodesymbols(docstring s)
 			i = 0;
 		else {
 			res = false;
-			for (int k = 0; k < nchars_escape; k++)
-				if (prefixIs(s, from_ascii("\\") + chars_escape[k]))
+			for (auto const & c : known_escaped_chars)
+				if (prefixIs(s, from_ascii("\\") + c))
 					res = true;
 			i = 1;
 		}
@@ -1719,10 +1720,10 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			//        things like comments are completely wrong.
 			string const s = p.plainEnvironment("CJK");
 			for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
-				if (*it == '\\')
-					output_ert_inset(os, "\\", parent_context);
-				else if (*it == '$')
-					output_ert_inset(os, "$", parent_context);
+				string snip;
+				snip += *it;
+				if (snip == "\\" || is_known(snip, known_escaped_chars))
+					output_ert_inset(os, snip, parent_context);
 				else if (*it == '\n' && it + 1 != et && s.begin() + 1 != it)
 					os << "\n ";
 				else
