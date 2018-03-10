@@ -1,5 +1,5 @@
 #LyX file created by tex2lyx 2.3
-\lyxformat 544
+\lyxformat 545
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -2878,7 +2878,47 @@ Characters
 \begin_layout Standard
 
 \size normal
-from package "ascii" and "ifsym": ®↨◻◼◙
+from package 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+"
+\end_layout
+
+\end_inset
+
+ascii
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+"
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+"
+\end_layout
+
+\end_inset
+
+ifsym
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+"
+\end_layout
+
+\end_inset
+
+: ®↨◻◼◙
 \end_layout
 
 \begin_layout Standard
@@ -2890,7 +2930,19 @@ from textcomp: №™
 \begin_layout Standard
 
 \size normal
-from textgreek and textcyr: ἀв
+from textgreek and textcyr: 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\backslash
+textgreek{>a}
+\end_layout
+
+\end_inset
+
+в
 \end_layout
 
 \begin_layout Standard
