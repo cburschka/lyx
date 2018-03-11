@@ -126,17 +126,17 @@ char const * const known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 
 const char * const known_roman_fonts[] = { "ae", "beraserif", "bookman",
 "ccfonts", "chancery", "charter", "cmr", "cochineal", "crimson", "fourier",
-"garamondx", "libertine", "libertine-type1", "lmodern", "mathdesign", "mathpazo",
-"mathptmx", "newcent", "NotoSerif-TLF", "PTSerif-TLF", "tgbonum", "tgchorus",
+"garamondx", "libertine", "libertineRoman", "libertine-type1", "lmodern", "mathdesign", "mathpazo",
+"mathptmx", "MinionPro", "newcent", "NotoSerif-TLF", "PTSerif-TLF", "tgbonum", "tgchorus",
 "tgpagella", "tgschola", "tgtermes", "utopia", 0 };
 
-const char * const known_sans_fonts[] = { "avant", "berasans", "biolinum-type1",
-"cmbr", "cmss", "helvet", "iwona", "iwonac", "iwonal", "iwonalc", "kurier",
-"kurierc", "kurierl", "kurierlc", "lmss", "NotoSans-TLF", "PTSans-TLF", "tgadventor",
-"tgheros", 0 };
+const char * const known_sans_fonts[] = { "avant", "berasans", "biolinum",
+"biolinum-type1", "cmbr", "cmss", "helvet", "iwona", "iwonac", "iwonal", "iwonalc",
+"kurier", "kurierc", "kurierl", "kurierlc", "lmss", "NotoSans-TLF", "PTSans-TLF",
+"tgadventor", "tgheros", "uop", 0 };
 
 const char * const known_typewriter_fonts[] = { "beramono", "cmtl", "cmtt",
-"courier", "lmtt", "luximono", "fourier", "libertineMono-type1", "lmodern",
+"courier", "lmtt", "luximono", "fourier", "libertineMono", "libertineMono-type1", "lmodern",
 "mathpazo", "mathptmx", "newcent", "NotoMono-TLF", "PTMono-TLF", "tgcursor", "txtt", 0 };
 
 const char * const known_math_fonts[] = { "eulervm", "newtxmath", 0};
@@ -734,20 +734,35 @@ void Preamble::handle_package(Parser &p, string const & name,
 		h_font_roman[0] = "libertine";
 		// this automatically invokes biolinum
 		h_font_sans[0] = "biolinum";
+		// as well as libertineMono
+		h_font_typewriter[0] = "libertine-mono";
 		if (opts == "osf")
 			h_font_osf = "true";
 		else if (opts == "lining")
 			h_font_osf = "false";
 	}
 
-	if (name == "libertine-type1") {
+	if (name == "libertineRoman" || name == "libertine-type1") {
 		h_font_roman[0] = "libertine";
-		// NOTE: contrary to libertine.sty, libertine-type1
-		// does not automatically invoke biolinum
+		// NOTE: contrary to libertine.sty, libertineRoman
+		// and libertine-type1 do not automatically invoke
+		// biolinum and libertineMono
 		if (opts == "lining")
 			h_font_osf = "false";
 		else if (opts == "osf")
 			h_font_osf = "true";
+	}
+
+	if (name == "MinionPro") {
+		h_font_roman[0] = "minionpro";
+		if (opts.find("lf") != string::npos)
+			h_font_osf = "false";
+		else
+			h_font_osf = "true";
+		if (opts.find("onlytext") != string::npos)
+			h_font_math[0] = "default";
+		else
+			h_font_math[0] = "auto";
 	}
 
 	if (name == "mathdesign") {
@@ -818,7 +833,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 		}
 	}
 
-	if (name == "biolinum-type1") {
+	if (name == "biolinum" || name == "biolinum-type1") {
 		h_font_sans[0] = "biolinum";
 		// biolinum can have several options, e.g. [osf,scaled=0.97]
 		string::size_type pos = opts.find("osf");
@@ -847,7 +862,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 		}
 	}
 
-	if (name == "libertineMono-type1")
+	if (name == "libertineMono" || name == "libertineMono-type1")
 		h_font_typewriter[0] = "libertine-mono";
 
 	if (name == "PTMono") {
