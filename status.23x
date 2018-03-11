@@ -29,6 +29,9 @@ What's new
 
 - Add support for URW Classico, MinionPro and the new Libertine fonts.
 
+- Implement better parsing of some command options (via "literate"
+  function of some insets) (bug 9563).
+
 
 * USER INTERFACE
 
@@ -114,6 +117,8 @@ What's new
 
 - Add support for alignment pseudo-environments as used inside floats
   (bug 7857).
+
+- Fix parsing issue in nested CJK (bug 9562).
 
 
 * ADVANCED FIND AND REPLACE
