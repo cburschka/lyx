@@ -422,19 +422,40 @@ Function UpdateMiKTeX
   ${andif} $MultiUser.Privileges != "Power"
    # call the non-admin version
    # the order of the different commands is important!
-   nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--update=miktex-bin-2.9"'
-   nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--install=miktex-console-bin-2.9"'
-   nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--uninstall=miktex-mpm-bin-2.9"'
+   ${if} $Is64bit == "true"
+    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--update=miktex-bin-x64-2.9"'
+    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--install=miktex-console-bin-x64-2.9"'
+    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--uninstall=miktex-mpm-bin-x64-2.9"'
+   ${else}
+    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--update=miktex-bin-2.9"'
+    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--install=miktex-console-bin-2.9"'
+    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--uninstall=miktex-mpm-bin-2.9"'
+   ${endif}
    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--update"'
   ${else}
    ${if} $MiKTeXUser != "HKCU" # call the admin version
     # the order of the different commands is important!
-    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--update=miktex-bin-2.9"'
-    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--install=miktex-console-bin-2.9"'
-    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--uninstall=miktex-mpm-bin-2.9"'
+    ${if} $Is64bit == "true"
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--update=miktex-bin-x64-2.9"'
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--install=miktex-console-bin-x64-2.9"'
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--uninstall=miktex-mpm-bin-x64-2.9"'
+    ${else}
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--update=miktex-bin-2.9"'
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--install=miktex-console-bin-2.9"'
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--uninstall=miktex-mpm-bin-2.9"'
+    ${endif}
     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--admin" "--update"'
    ${else}
-     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--update"'
+    ${if} $Is64bit == "true"
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--update=miktex-bin-x64-2.9"'
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--install=miktex-console-bin-x64-2.9"'
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--uninstall=miktex-mpm-bin-x64-2.9"'
+    ${else}
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--update=miktex-bin-2.9"'
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--install=miktex-console-bin-2.9"'
+     nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--uninstall=miktex-mpm-bin-2.9"'
+    ${endif}
+    nsExec::ExecToLog '"$PathLaTeX\mpm.exe" "--update"'
    ${endif}
   ${endif}
   # restore possibly broken internal MiKTeX links after the update
