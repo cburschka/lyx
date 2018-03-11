@@ -54,6 +54,8 @@ public:
 	std::string docLanguage() const { return h_language; }
 	/// The language of text which is not explicitly marked
 	std::string defaultLanguage() const  { return default_language; }
+	/// The quotation marks style
+	std::string quotesStyle() const { return h_quotes_style; }
 	///
 	bool usePolyglossia() const;
 	///

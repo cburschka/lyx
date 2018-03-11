@@ -201,13 +201,14 @@ bool need_commentbib = false;
 char const * const known_quotes[] = { "dq", "guillemotleft", "flqq", "og",
 "guillemotright", "frqq", "fg", "glq", "glqq", "textquoteleft", "grq", "grqq",
 "quotedblbase", "textquotedblleft", "quotesinglbase", "textquoteright", "flq",
-"guilsinglleft", "frq", "guilsinglright", 0};
+"guilsinglleft", "frq", "guilsinglright", "textquotedblright", "textquotesingle",
+"textquotedbl", 0};
 
 /// the same as known_quotes with .lyx names
-char const * const known_coded_quotes[] = { "prd", "ard", "ard", "ard",
-"ald", "ald", "ald", "gls", "gld", "els", "els", "grd",
-"gld", "grd", "gls", "ers", "fls",
-"fls", "frs", "frs", 0};
+char const * const known_coded_quotes[] = { "qrd", "ard", "ard", "ard",
+"ald", "ald", "ald", "gls", "gld", "els", "els", "eld",
+"gld", "eld", "gls", "ers", "ars",
+"ars", "als", "als", "erd", "qrs", "qrd", 0};
 
 /// LaTeX names for font sizes
 char const * const known_sizes[] = { "tiny", "scriptsize", "footnotesize",
@@ -445,6 +446,78 @@ bool translate_len(string const & length, string & valstring, string & unit)
 	}
 	return true;
 }
+
+
+/// If we have ambiguous quotation marks, make a smart guess
+/// based on main quote style
+string guessQuoteStyle(string in, bool const opening)
+{
+	string res = in;
+	if (prefixIs(in, "qr")) {// straight quote
+		if (!opening)
+			res = subst(res, "r", "l");
+	} else if (in == "eld") {// ``
+		if (preamble.quotesStyle() == "german")
+			res = "grd";
+		else if (preamble.quotesStyle() == "british")
+			res = "bls";
+		else if (preamble.quotesStyle() == "french")
+			res = "fls";
+		else if (preamble.quotesStyle() == "russian")
+			res = "rrs";
+	} else if (in == "erd") {// ''
+		if (preamble.quotesStyle() == "polish")
+			res = "prd";
+		else if (preamble.quotesStyle() == "british")
+			res = "brs";
+		else if (preamble.quotesStyle() == "french")
+			res = "frs";
+		else if (preamble.quotesStyle() == "swedish")
+			res = opening ? "sld" : "srd";
+	} else if (in == "els") {// `
+		if (preamble.quotesStyle() == "german")
+			res = "grs";
+		else if (preamble.quotesStyle() == "british")
+			res = "bld";
+	} else if (in == "ers") {// '
+		if (preamble.quotesStyle() == "polish")
+			res = "prs";
+		else if (preamble.quotesStyle() == "british")
+			res = "brd";
+		else if (preamble.quotesStyle() == "swedish")
+			res = opening ? "sls" : "srs";
+	} else if (in == "ard") {// >>
+		if (preamble.quotesStyle() == "swiss")
+			res = "cld";
+		else if (preamble.quotesStyle() == "french")
+			res = "fld";
+		else if (preamble.quotesStyle() == "russian")
+			res = "rld";
+	} else if (in == "ald") {// <<
+		if (preamble.quotesStyle() == "swiss")
+			res = "crd";
+		else if (preamble.quotesStyle() == "french")
+			res = "frd";
+		else if (preamble.quotesStyle() == "russian")
+			res = "rrd";
+	} else if (in == "ars") {// >
+		if (preamble.quotesStyle() == "swiss")
+			res = "cls";
+	} else if (in == "als") {// <
+		if (preamble.quotesStyle() == "swiss")
+			res = "crs";
+	} else if (in == "gld") {// ,,
+		if (preamble.quotesStyle() == "polish")
+			res = "pld";
+		else if (preamble.quotesStyle() == "russian")
+			res = "rls";
+	} else if (in == "gls") {// ,
+		if (preamble.quotesStyle() == "polish")
+			res = "pls";
+	}
+	return res;
+}
+
 
 } // namespace
 
@@ -2634,14 +2707,17 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			continue;
 		}
 
-		// Basic support for english quotes. This should be
-		// extended to other quotes, but is not so easy (a
-		// left english quote is the same as a right german
-		// quote...)
+		// Basic support for quotes. We try to disambiguate
+		// quotes from the context (e.g., a left english quote is
+		// the same as a right german quote...).
+		// Try to make a smart guess about the side
+		Token const prev = p.prev_token();
+		bool const opening = (prev.cat() != catSpace && prev.character() != 0
+				&& prev.character() != '\n' && prev.character() != '~');
 		if (t.asInput() == "`" && p.next_token().asInput() == "`") {
 			context.check_layout(os);
 			begin_inset(os, "Quotes ");
-			os << "eld";
+			os << guessQuoteStyle("eld", opening);
 			end_inset(os);
 			p.get_token();
 			skip_braces(p);
@@ -2650,7 +2726,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		if (t.asInput() == "'" && p.next_token().asInput() == "'") {
 			context.check_layout(os);
 			begin_inset(os, "Quotes ");
-			os << "erd";
+			os << guessQuoteStyle("erd", opening);
 			end_inset(os);
 			p.get_token();
 			skip_braces(p);
@@ -2660,7 +2736,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		if (t.asInput() == ">" && p.next_token().asInput() == ">") {
 			context.check_layout(os);
 			begin_inset(os, "Quotes ");
-			os << "ald";
+			os << guessQuoteStyle("ald", opening);
 			end_inset(os);
 			p.get_token();
 			skip_braces(p);
@@ -2681,9 +2757,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			if (!has_chunk) {
 				context.check_layout(os);
 				begin_inset(os, "Quotes ");
-				//FIXME: this is a right danish quote;
-				// why not a left french quote?
-				os << "ard";
+				os << guessQuoteStyle("ard", opening);
 				end_inset(os);
 				p.get_token();
 				skip_braces(p);
@@ -2809,8 +2883,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			           is_known(next.cs(), known_quotes) &&
 			           end.cat() == catEnd) {
 				// Something like {\textquoteright} (e.g.
-				// from writer2latex). LyX writes
-				// \textquoteright{}, so we may skip the
+				// from writer2latex). We may skip the
 				// braces here for better readability.
 				parse_text_snippet(p, os, FLAG_BRACE_LAST,
 				                   outer, context);
@@ -4375,7 +4448,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		if ((where = is_known(t.cs(), known_quotes))) {
 			context.check_layout(os);
 			begin_inset(os, "Quotes ");
-			os << known_coded_quotes[where - known_quotes];
+			string quotetype = known_coded_quotes[where - known_quotes];
+			// try to make a smart guess about the side
+			Token const prev = p.prev_token();
+			bool const opening = (prev.cat() != catSpace && prev.character() != 0
+					&& prev.character() != '\n' && prev.character() != '~');
+			quotetype = guessQuoteStyle(quotetype, opening);
+			os << quotetype;
 			end_inset(os);
 			// LyX adds {} after the quote, so we have to eat
 			// spaces here if there are any before a possible
@@ -4386,7 +4465,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		}
 
 		if ((where = is_known(t.cs(), known_sizes)) &&
-			 context.new_layout_allowed) {
+			context.new_layout_allowed) {
 			context.check_layout(os);
 			TeXFont const oldFont = context.font;
 			context.font.size = known_coded_sizes[where - known_sizes];
@@ -4548,13 +4627,6 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			else
 				os << "\\SpecialChar endofsentence\n";
 			p.get_token();
-			continue;
-		}
-
-		if (t.cs() == "textquotedbl") {
-			context.check_layout(os);
-			os << "\"";
-			skip_braces(p);
 			continue;
 		}
 
