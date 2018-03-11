@@ -1600,12 +1600,13 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			continue;
 		}
 
-		else if (t.cs() == "date") {
+		if (t.cs() == "date") {
 			string argument = p.getArg('{', '}');
 			if (argument.empty())
 				h_suppress_date = "true";
 			else
 				h_preamble << t.asInput() << '{' << argument << '}';
+			continue;
 		}
 
 		if (t.cs() == "color") {
