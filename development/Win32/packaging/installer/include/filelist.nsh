@@ -1,4 +1,4 @@
-/*
+﻿/*
 
 filelist.nsh
 
@@ -22,7 +22,6 @@ Lists of files to include in the installer
   ${FILE}Qt5Svg.dll"
   ${FILE}Qt5Widgets.dll"
   ${FILE}Qt5WinExtras.dll"
-  ${FILE}Qt5Xml.dll"
 
 !macroend
 
