@@ -51,11 +51,7 @@ Format LaTeX feature                        LyX feature
 411    support for polyglossia              \language_package	(the cases of no package, of babel and of custom package is supported)
 415    automatic undertilde loading         \use_package undertilde
 438    \t*{ }                               InsetTIPA
-439    MinionPro.sty                        \font_roman, \font_osf
-440    MinionPro.sty,                       \font_math
 443    unicode-math.sty                     InsetMath*
-445    URW Classico LaTeX font              \font_sans uop
-       \renewcommand{\sffamily}{uop}
 448
 451    beamer overlay arguments             InsetArgument
        \command<arg>, \begin{env}<arg>
