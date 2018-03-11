@@ -1100,7 +1100,7 @@ and bibliography:
 LatexCommand bibitem
 label ""
 key "FOO"
-literal "true"
+literal "false"
 
 \end_inset
 
@@ -1117,7 +1117,7 @@ The Foo Book
 LatexCommand bibitem
 label ""
 key "FO2"
-literal "true"
+literal "false"
 
 \end_inset
 
