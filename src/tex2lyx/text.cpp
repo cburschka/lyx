@@ -3681,9 +3681,14 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			continue;
 		}
 
-		if (t.cs() == "texttoptiebar" || t.cs() == "textbottomtiebar") {
+		if ((preamble.isPackageUsed("tipa") && t.cs() == "t" && p.next_token().asInput() == "*")
+		    || t.cs() == "texttoptiebar" || t.cs() == "textbottomtiebar") {
 			context.check_layout(os);
-			begin_inset(os, "IPADeco " + t.cs().substr(4) + "\n");
+			if (t.cs() == "t")
+				// swallow star
+				p.get_token();
+			string const type = (t.cs() == "t") ? "bottomtiebar" : t.cs().substr(4);
+			begin_inset(os, "IPADeco " + type + "\n");
 			os << "status open\n";
 			parse_text_in_inset(p, os, FLAG_ITEM, outer, context);
 			end_inset(os);
