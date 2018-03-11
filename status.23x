@@ -27,6 +27,12 @@ What's new
 
 - Add support for \includeonly.
 
+- Update tex2lyx quotation marks detection:
+  * Consider new quote styles of LyX 2.3.
+  * Consider changed quote styles in LYX 2.3.
+  * Try to be a bit smarter with ambiguous quotation marks,
+    depending on the main quote style and the local context.
+
 - Add support for URW Classico, MinionPro and the new Libertine fonts.
 
 - Add support for the \t*{} (bottomtiebar) macro of TIPA.

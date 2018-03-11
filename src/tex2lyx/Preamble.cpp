@@ -88,35 +88,51 @@ const char * const known_coded_languages[] = {"french", "afrikaans", "albanian",
 "vietnamese", "welsh",
 0};
 
+/// languages with british quotes (.lyx names)
+const char * const known_british_quotes_languages[] = {"british", "welsh", 0};
+
+/// languages with cjk quotes (.lyx names)
+const char * const known_cjk_quotes_languages[] = {"chinese-traditional",
+"japanese", "japanese-cjk", 0};
+
+/// languages with cjk-angle quotes (.lyx names)
+const char * const known_cjkangle_quotes_languages[] = {"korean", 0};
+
 /// languages with danish quotes (.lyx names)
 const char * const known_danish_quotes_languages[] = {"danish", 0};
 
 /// languages with english quotes (.lyx names)
 const char * const known_english_quotes_languages[] = {"american", "australian",
 "bahasa", "bahasam", "brazilian", "canadian", "chinese-simplified", "english",
-"esperanto", "hebrew", "irish", "korean", "newzealand", "portuguese", "scottish",
-"thai", 0};
+"esperanto", "farsi", "interlingua", "irish", "newzealand", "scottish",
+"thai", "turkish", "vietnamese", 0};
 
 /// languages with french quotes (.lyx names)
-const char * const known_french_quotes_languages[] = {"albanian",
-"arabic_arabi", "arabic_arabtex", "asturian", "basque", "canadien", "catalan",
-"french", "friulan", "galician", "greek", "italian", "norsk", "nynorsk",
-"piedmontese", "polutonikogreek", "russian", "spanish", "spanish-mexico",
-"turkish", "turkmen", "ukrainian", "vietnamese", 0};
+const char * const known_french_quotes_languages[] = {"ancientgreek",
+"arabic_arabi", "arabic_arabtex", "asturian", "belarusian", "breton",
+"canadien", "catalan", "french", "friulan", "galician", "italian", "occitan",
+"piedmontese", "portuguese", "spanish", "spanish-mexico", 0};
 
 /// languages with german quotes (.lyx names)
 const char * const known_german_quotes_languages[] = {"austrian", "bulgarian",
-"czech", "german", "georgian", "icelandic", "lithuanian", "lowersorbian", "macedonian",
-"naustrian", "ngerman", "romansh", "serbian", "serbian-latin", "slovak", "slovene",
+"czech", "estonian", "georgian", "german", "icelandic", "latvian", "lithuanian",
+"lowersorbian", "macedonian", "naustrian", "ngerman", "romansh", "slovak", "slovene",
 "uppersorbian", 0};
 
 /// languages with polish quotes (.lyx names)
 const char * const known_polish_quotes_languages[] = {"afrikaans", "bosnian", "croatian",
-"dutch", "estonian", "magyar", "polish", "romanian", 0};
+"dutch", "magyar", "polish", "romanian", "serbian", "serbian-latin", 0};
+
+/// languages with russian quotes (.lyx names)
+const char * const known_russian_quotes_languages[] = {"russian", "ukrainian", 0};
 
 /// languages with swedish quotes (.lyx names)
-const char * const known_swedish_quotes_languages[] = {"finnish",
-"swedish", 0};
+const char * const known_swedish_quotes_languages[] = {"finnish", "swedish", 0};
+
+/// languages with swiss quotes (.lyx names)
+const char * const known_swiss_quotes_languages[] = {"albanian",
+"armenian", "basque", "german-ch", "german-ch-old",
+"norsk", "nynorsk", "turkmen", "ukrainian", "vietnamese", 0};
 
 /// known language packages from the times before babel
 const char * const known_old_language_packages[] = {"french", "frenchle",
@@ -1188,33 +1204,6 @@ void Preamble::handle_if(Parser & p, bool in_lyx_preamble)
 
 bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiledir)
 {
-	// set the quote language
-	// LyX only knows the following quotes languages:
-	// english, swedish, german, polish, french and danish
-	// (quotes for "japanese" and "chinese-traditional" are missing because
-	//  they wouldn't be useful: https://www.lyx.org/trac/ticket/6383)
-	// conversion list taken from
-	// https://en.wikipedia.org/wiki/Quotation_mark,_non-English_usage
-	// (quotes for kazakh and interlingua are unknown)
-	// danish
-	if (is_known(h_language, known_danish_quotes_languages))
-		h_quotes_style = "danish";
-	// french
-	else if (is_known(h_language, known_french_quotes_languages))
-		h_quotes_style = "french";
-	// german
-	else if (is_known(h_language, known_german_quotes_languages))
-		h_quotes_style = "german";
-	// polish
-	else if (is_known(h_language, known_polish_quotes_languages))
-		h_quotes_style = "polish";
-	// swedish
-	else if (is_known(h_language, known_swedish_quotes_languages))
-		h_quotes_style = "swedish";
-	//english
-	else if (is_known(h_language, known_english_quotes_languages))
-		h_quotes_style = "english";
-
 	if (contains(h_float_placement, "H"))
 		registerAutomaticallyLoadedPackage("float");
 	if (h_spacing != "single" && h_spacing != "default")
@@ -2239,6 +2228,47 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				h_options += ',' + lyx2babel(default_language);
 		}
 	}
+
+	// Finally, set the quote style.
+	// LyX knows the following quotes styles:
+	// british, cjk, cjkangle, danish, english, french, german,
+	// polish, russian, swedish and swiss
+	// conversion list taken from
+	// https://en.wikipedia.org/wiki/Quotation_mark,_non-English_usage
+	// (quotes for kazakh are unknown)
+	// british
+	if (is_known(h_language, known_british_quotes_languages))
+		h_quotes_style = "british";
+	// cjk
+	else if (is_known(h_language, known_cjk_quotes_languages))
+		h_quotes_style = "cjk";
+	// cjkangle
+	else if (is_known(h_language, known_cjkangle_quotes_languages))
+		h_quotes_style = "cjkangle";
+	// danish
+	else if (is_known(h_language, known_danish_quotes_languages))
+		h_quotes_style = "danish";
+	// french
+	else if (is_known(h_language, known_french_quotes_languages))
+		h_quotes_style = "french";
+	// german
+	else if (is_known(h_language, known_german_quotes_languages))
+		h_quotes_style = "german";
+	// polish
+	else if (is_known(h_language, known_polish_quotes_languages))
+		h_quotes_style = "polish";
+	// russian
+	else if (is_known(h_language, known_russian_quotes_languages))
+		h_quotes_style = "russian";
+	// swedish
+	else if (is_known(h_language, known_swedish_quotes_languages))
+		h_quotes_style = "swedish";
+	// swiss
+	else if (is_known(h_language, known_swiss_quotes_languages))
+		h_quotes_style = "swiss";
+	// english
+	else if (is_known(h_language, known_english_quotes_languages))
+		h_quotes_style = "english";
 }
 
 
