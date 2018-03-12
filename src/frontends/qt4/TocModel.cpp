@@ -303,17 +303,17 @@ QModelIndex TocModels::currentIndex(QString const & type,
 }
 
 
-void TocModels::goTo(QString const & type, QModelIndex const & index) const
+FuncRequest TocModels::goTo(QString const & type, QModelIndex const & index) const
 {
 	const_iterator it = models_.find(type);
 	if (it == models_.end() || !index.isValid()) {
 		LYXERR(Debug::GUI, "TocModels::goTo(): QModelIndex is invalid!");
-		return;
+		return FuncRequest(LFUN_NOACTION);
 	}
-	LASSERT(index.model() == it.value()->model(), return);
+	LASSERT(index.model() == it.value()->model(), return FuncRequest(LFUN_NOACTION));
 	TocItem const item = it.value()->tocItem(index);
 	LYXERR(Debug::GUI, "TocModels::goTo " << item.asString());
-	dispatch(item.action());
+	return item.action();
 }
 
 

@@ -1387,7 +1387,16 @@ static docstring makeDispatchMessage(docstring const & msg,
 
 DispatchResult const & GuiApplication::dispatch(FuncRequest const & cmd)
 {
+	DispatchResult dr;
+
 	Buffer * buffer = 0;
+	if (cmd.view_origin() && current_view_ != cmd.view_origin()) {
+		//setCurrentView(cmd.view_origin); //does not work
+		dr.setError(true);
+		dr.setMessage(_("Wrong focus!"));
+		d->dispatch_result_ = dr;
+		return d->dispatch_result_;
+	}
 	if (current_view_ && current_view_->currentBufferView()) {
 		current_view_->currentBufferView()->cursor().saveBeforeDispatchPosXY();
 		buffer = &current_view_->currentBufferView()->buffer();
@@ -1395,7 +1404,6 @@ DispatchResult const & GuiApplication::dispatch(FuncRequest const & cmd)
 	// This handles undo groups automagically
 	UndoGroupHelper ugh(buffer);
 
-	DispatchResult dr;
 	// redraw the screen at the end (first of the two drawing steps).
 	// This is done unless explicitly requested otherwise
 	dr.screenUpdate(Update::FitCursor);

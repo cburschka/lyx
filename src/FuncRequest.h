@@ -24,6 +24,10 @@ namespace lyx {
 
 class LyXErr;
 
+namespace frontend {
+	class GuiView;
+}
+
 /**
  * This class encapsulates a LyX action and its argument
  * in order to pass it around easily.
@@ -70,6 +74,10 @@ public:
 	///
 	void setOrigin(Origin o) { origin_ = o; }
 	///
+	frontend::GuiView* view_origin() const { return view_origin_; }
+	///
+	void setViewOrigin(frontend::GuiView* o) { view_origin_ = o; }
+	///
 	int x() const { return x_; }
 	///
 	int y() const { return y_; }
@@ -97,6 +105,9 @@ private:
 	docstring argument_;
 	/// who initiated the action
 	Origin origin_;
+	/// to which view should be this command sent (see bug #11004)
+	/// NULL=current view
+	frontend::GuiView* view_origin_;
 	/// the x coordinate of a mouse press
 	int x_;
 	/// the y coordinate of a mouse press

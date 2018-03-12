@@ -40,6 +40,9 @@ public:
 	void init(QString const & str);
 	///
 	void doDispatch(Cursor & cur, FuncRequest const & fr);
+	///send request to lyx::dispatch with proper guiview handle
+	///(if ToC is detached current_view can be different window)
+	void sendDispatch(FuncRequest fr);
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & fr, FuncStatus & status)
 		const;

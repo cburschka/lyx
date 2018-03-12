@@ -178,6 +178,7 @@ bool TocWidget::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 void TocWidget::doDispatch(Cursor & cur, FuncRequest const & cmd)
 {
+
 	Inset * inset = itemInset();
 	FuncRequest tmpcmd(cmd);
 
@@ -235,6 +236,7 @@ void TocWidget::on_tocTV_activated(QModelIndex const & index)
 
 void TocWidget::on_tocTV_pressed(QModelIndex const & index)
 {
+
 	Qt::MouseButtons const button = QApplication::mouseButtons();
 	if (button & Qt::LeftButton) {
 		goTo(index);
@@ -249,7 +251,7 @@ void TocWidget::goTo(QModelIndex const & index)
 	LYXERR(Debug::GUI, "goto " << index.row()
 		<< ", " << index.column());
 
-	gui_view_.tocModels().goTo(current_type_, index);
+	sendDispatch(gui_view_.tocModels().goTo(current_type_, index));
 }
 
 
@@ -314,6 +316,7 @@ void TocWidget::setTreeDepth(int depth)
 
 void TocWidget::on_typeCO_currentIndexChanged(int index)
 {
+
 	if (index == -1)
 		return;
 	current_type_ = typeCO->itemData(index).toString();
@@ -328,11 +331,26 @@ void TocWidget::outline(FuncCode func_code)
 	QModelIndexList const & list = tocTV->selectionModel()->selectedIndexes();
 	if (list.isEmpty())
 		return;
+
+	//if another window is active, this attempt will fail,
+	//but it will work at least for the second attempt
+	gui_view_.activateWindow(); 
+
 	enableControls(false);
 	goTo(list[0]);
-	dispatch(FuncRequest(func_code));
+	sendDispatch(FuncRequest(func_code));
 	enableControls(true);
 	gui_view_.setFocus();
+}
+
+
+void TocWidget::sendDispatch(FuncRequest fr)
+{
+
+	fr.setViewOrigin(&gui_view_);
+	DispatchResult dr=dispatch(fr);
+	if (dr.error())
+		gui_view_.message(dr.message());
 }
 
 

@@ -22,6 +22,7 @@ namespace lyx {
 class Buffer;
 class BufferView;
 class DocIterator;
+class FuncRequest;
 
 namespace frontend {
 
@@ -124,9 +125,7 @@ public:
 	QModelIndex currentIndex(QString const & type,
 	                         DocIterator const & dit) const;
 	///
-	void goTo(QString const & type, QModelIndex const & index) const;
-	///
-	void init(Buffer const & buffer);
+	FuncRequest goTo(QString const & type, QModelIndex const & index) const;
 	///
 	void updateItem(QString const & type, DocIterator const & dit);
 	///
