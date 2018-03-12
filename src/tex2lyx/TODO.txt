@@ -52,10 +52,6 @@ Format LaTeX feature                        LyX feature
 415    automatic undertilde loading         \use_package undertilde
 443    unicode-math.sty                     InsetMath*
 448
-451    beamer overlay arguments             InsetArgument
-       \command<arg>, \begin{env}<arg>
-452    beamer block arguments               InsetArgument
-       \begin{block}<overlay>{title}
 453    automatic stmaryrd loading           \use_package stmaryrd
 454    beamer overprint environment         InsetArgument, layout Overprint
        \begin{overprint}[maxlength]
@@ -64,9 +60,6 @@ Format LaTeX feature                        LyX feature
 455    beamer frametitle command            \begin_layout FrameTitle
        \frametitle<overlay>[short]{long}
 457    automatic stackrel loading           \use_package stackrel
-459    beamer: \begin{frame},               \begin_layout Frame
-       \begin{frame}[plain],                \begin_layout PlainFrame
-       \begin{frame}[fragile]               \begin_layout FragileFrame
 466    Powerdot updates:
        \pause[]                              layout Pause
        \onslide{}{}                          InsetFlex, InsetArgument
