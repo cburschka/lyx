@@ -346,7 +346,7 @@ string minted_nonfloat_caption = "";
 
 // Characters that have to be escaped by \\ in LaTeX
 char const * const known_escaped_chars[] = {
-		"&", "_", "$", "%", "#", "^", "{", "}"};
+		"&", "_", "$", "%", "#", "^", "{", "}", 0};
 
 
 /// splits "x=z, y=b" into a map and an ordered keyword vector
@@ -621,7 +621,7 @@ pair<bool, docstring> convert_unicodesymbols(docstring s)
 		else {
 			res = false;
 			for (auto const & c : known_escaped_chars)
-				if (prefixIs(s, from_ascii("\\") + c))
+				if (c != 0 && prefixIs(s, from_ascii("\\") + c))
 					res = true;
 			i = 1;
 		}
