@@ -623,7 +623,7 @@ pair<bool, docstring> convert_unicodesymbols(docstring s)
 		else {
 			res = false;
 			for (auto const & c : known_escaped_chars)
-				if (prefixIs(s, from_ascii("\\") + c))
+				if (c != 0 && prefixIs(s, from_ascii("\\") + c))
 					res = true;
 			i = 1;
 		}
