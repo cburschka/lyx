@@ -348,7 +348,7 @@ string minted_nonfloat_caption = "";
 
 // Characters that have to be escaped by \\ in LaTeX
 char const * const known_escaped_chars[] = {
-		"&", "_", "$", "%", "#", "^", "{", "}"};
+		"&", "_", "$", "%", "#", "^", "{", "}", 0};
 
 
 /// splits "x=z, y=b" into a map and an ordered keyword vector
