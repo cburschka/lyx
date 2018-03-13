@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-02-24 14:46+0100\n"
-"PO-Revision-Date: 2018-02-25 11:15+0000\n"
+"POT-Creation-Date: 2018-03-13 16:23+0100\n"
+"PO-Revision-Date: 2018-03-13 16:00+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -8659,6 +8659,18 @@ msgstr "CCC Kód:"
 #: lib/layouts/aguplus.inc:148
 msgid "PaperId"
 msgstr "Paper-Id"
+
+#: lib/latexfonts:696
+msgid "ParaType Mono"
+msgstr "ParaType Mono"
+
+#: lib/latexfonts:600
+msgid "ParaType Sans"
+msgstr "ParaType Sans"
+
+#: lib/latexfonts:360 lib/latexfonts:368
+msgid "ParaType Serif"
+msgstr "ParaType Serif"
 
 #: lib/layouts/aguplus.inc:152
 msgid "Paper Id:"
@@ -26950,6 +26962,10 @@ msgstr "Nedá sa zmazať pomocný adresár %1$s"
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Zlá voľba v príkazovom riadku `%1$s'. Končím."
+
+#: src/frontends/qt4/GuiApplication.cpp:1396
+msgid "Wrong focus!"
+msgstr "Chybný fókus!"
 
 #: src/LyX.cpp:497
 msgid "Missing filename for this operation."
