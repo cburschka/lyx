@@ -247,6 +247,8 @@ void Context::dump(ostream & os, string const & desc) const
 		os << "extrastuff=[" << extra_stuff << "] ";
 	if (!par_extra_stuff.empty())
 		os << "parextrastuff=[" << par_extra_stuff << "] ";
+	if (!list_extra_stuff.empty())
+		os << "listextrastuff=[" << list_extra_stuff << "] ";
 	os << "textclass=" << textclass.name()
 	   << " layout=" << to_utf8(layout->name())
 	   << " parent_layout=" << to_utf8(parent_layout->name()) << "] font=["

@@ -128,6 +128,8 @@ public:
 	std::string extra_stuff;
 	/// We may need to add something after this \\begin_layout command
 	std::string par_extra_stuff;
+	/// We may need to add something at the beginning of a list.
+	std::string list_extra_stuff;
 	/// If there has been an \\begin_deeper, we'll need a matching
 	/// \\end_deeper
 	bool need_end_deeper;
