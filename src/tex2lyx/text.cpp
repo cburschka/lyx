@@ -3627,14 +3627,16 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			continue;
 		}
 
-		if ((where = is_known(t.cs(), known_text_font_series))) {
+		// beamer has a \textbf<overlay>{} inset
+		if (!p.hasOpt("<") && (where = is_known(t.cs(), known_text_font_series))) {
 			parse_text_attributes(p, os, FLAG_ITEM, outer,
 				context, "\\series", context.font.series,
 				known_coded_font_series[where - known_text_font_series]);
 			continue;
 		}
 
-		if ((where = is_known(t.cs(), known_text_font_shapes))) {
+		// beamer has a \textit<overlay>{} inset
+		if (!p.hasOpt("<") && (where = is_known(t.cs(), known_text_font_shapes))) {
 			parse_text_attributes(p, os, FLAG_ITEM, outer,
 				context, "\\shape", context.font.shape,
 				known_coded_font_shapes[where - known_text_font_shapes]);
@@ -3713,9 +3715,10 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			continue;
 		}
 
-		if (t.cs() == "uuline" || t.cs() == "uwave"
+		// beamer has an \emph<overlay>{} inset
+		if ((t.cs() == "uuline" || t.cs() == "uwave"
 		        || t.cs() == "emph" || t.cs() == "noun"
-		        || t.cs() == "xout") {
+		        || t.cs() == "xout") && !p.hasOpt("<")) {
 			context.check_layout(os);
 			os << "\n\\" << t.cs() << " on\n";
 			parse_text_snippet(p, os, FLAG_ITEM, outer, context);
