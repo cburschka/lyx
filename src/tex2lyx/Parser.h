@@ -214,7 +214,7 @@ public:
 	void dump() const;
 
 	/// Does an optional argument follow after the current token?
-	bool hasOpt();
+	bool hasOpt(std::string const l = "[");
 	///
 	typedef std::pair<bool, std::string> Arg;
 	/*!

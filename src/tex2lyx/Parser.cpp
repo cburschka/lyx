@@ -453,7 +453,7 @@ bool Parser::good()
 }
 
 
-bool Parser::hasOpt()
+bool Parser::hasOpt(string const l)
 {
 	// An optional argument can occur in any of the following forms:
 	// - \foo[bar]
@@ -479,7 +479,7 @@ bool Parser::hasOpt()
 		putback();
 		break;
 	}
-	bool const retval = (next_token().asInput() == "[");
+	bool const retval = (next_token().asInput() == l);
 	pos_ = oldpos;
 	return retval;
 }
