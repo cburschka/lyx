@@ -133,7 +133,19 @@ if (extension MATCHES "\\.lyx$")
     endif()
     # Check if result file identical to source file
     if(result_md5sum STREQUAL ${source_md5sum})
+      if (format MATCHES "lyx(1[0-9]|2[01])x")
+        # Do not compile, missing \origin statement prevents inclusion of
+        # files with relative path
+        message(STATUS "Not exporting due to missing \\origin statement")
+        break()
+      endif()
       message(STATUS "Source(${LYX_SOURCE}) and dest(${result_file_name}) are equal")
+      message(STATUS "Now try to export the lyx2lyx created file")
+      message(STATUS "Executing ${lyx} -userdir \"${LYX_TESTS_USERDIR}\" -E default \"${result_file_name}.default\" \"${result_file_name}\"")
+      execute_process(
+        COMMAND ${lyx} -userdir "${LYX_TESTS_USERDIR}" -E default "${result_file_name}.default" "${result_file_name}"
+        RESULT_VARIABLE _err
+        ERROR_VARIABLE lyxerr)
       break()
     else()
       message(STATUS "Source(${LYX_SOURCE}) and dest(${result_file_name}) are still different")
