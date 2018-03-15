@@ -144,7 +144,7 @@ const char * const known_roman_fonts[] = { "ae", "beraserif", "bookman",
 "ccfonts", "chancery", "charter", "cmr", "cochineal", "crimson", "fourier",
 "garamondx", "libertine", "libertineRoman", "libertine-type1", "lmodern", "mathdesign", "mathpazo",
 "mathptmx", "MinionPro", "newcent", "NotoSerif-TLF", "PTSerif-TLF", "tgbonum", "tgchorus",
-"tgpagella", "tgschola", "tgtermes", "utopia", 0 };
+"tgpagella", "tgschola", "tgtermes", "utopia", "xcharter", 0 };
 
 const char * const known_sans_fonts[] = { "avant", "berasans", "biolinum",
 "biolinum-type1", "cmbr", "cmss", "helvet", "iwona", "iwonac", "iwonal", "iwonalc",
@@ -840,6 +840,12 @@ void Preamble::handle_package(Parser &p, string const & name,
 	if (name == "PTSerif")
 		h_font_roman[0] = "PTSerif-TLF";
 
+	if (name == "XCharter") {
+		h_font_roman[0] = "xcharter";
+		if (opts == "osf")
+			h_font_osf = "true";
+	}
+	
 	// sansserif fonts
 	if (is_known(name, known_sans_fonts)) {
 		h_font_sans[0] = name;

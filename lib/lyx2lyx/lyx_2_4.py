@@ -126,6 +126,17 @@ def revert_paratype(document):
                 else:
                 	add_to_preamble(document, ["\\usepackage{PTMono}"])
 
+
+def revert_xcharter(document):
+    " Revert XCharter font definitions to LaTeX "
+
+    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
+        preamble = ""
+        i1 = find_token(document.header, "\\font_roman \"xcharter\"", 0)
+        if i1 != -1:
+            add_to_preamble(document, ["\\usepackage{XCharter}"])
+
+
 ##
 # Conversion hub
 #
@@ -133,10 +144,12 @@ def revert_paratype(document):
 supported_versions = ["2.4.0", "2.4"]
 convert = [
            [545, [convert_lst_literalparam]],
-           [546, []]
+           [546, []],
+           [547, []]
           ]
 
 revert =  [
+           [546, [revert_xcharter]],
            [545, [revert_paratype]],
            [544, [revert_lst_literalparam]]
           ]
