@@ -24,11 +24,11 @@ import sys, os
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import (find_end_of_inset, find_token, get_value) 
+from parser_tools import (find_end_of_inset, find_token, get_bool_value, get_value) 
 #    del_token, del_value, del_complete_lines,
 #    find_complete_lines, find_end_of, find_end_of_layout, 
 #    find_re, find_substring, find_token_backwards,
-#    get_containing_inset, get_containing_layout, get_bool_value, get_value,
+#    get_containing_inset, get_containing_layout, get_value,
 #    get_quoted_value, is_in_inset, set_bool_value
 #    find_tokens, find_token_exact, check_token, get_option_value
 
@@ -97,7 +97,6 @@ def revert_paratype(document):
         i3 = find_token(document.header, "\\font_typewriter \"default\"", 0)
         j = find_token(document.header, "\\font_sans \"PTSans-TLF\"", 0)
         sfval = get_value(document.header, "\\font_sf_scale", 0)
-        document.warning("sfval: " + str(sfval))
         # cutoff " 100"
         sfval = sfval[:-4]
         sfoption = ""
@@ -115,26 +114,43 @@ def revert_paratype(document):
         else:
             if i1!= -1: 
                 add_to_preamble(document, ["\\usepackage{PTSerif}"])
+                document.header[i1] = document.header[i1].replace("PTSerif-TLF", "default")
             if j!= -1: 
                 if sfoption != "":
                 	add_to_preamble(document, ["\\usepackage[" + sfoption + "]{PTSans}"])
                 else:
                 	add_to_preamble(document, ["\\usepackage{PTSans}"])
+                document.header[j] = document.header[j].replace("PTSans-TLF", "default")
             if k!= -1: 
                 if ttoption != "":
                 	add_to_preamble(document, ["\\usepackage[" + ttoption + "]{PTMono}"])
                 else:
-                	add_to_preamble(document, ["\\usepackage{PTMono}"])
+                	add_to_preamble(document, ["\\usepackage{PTMono}"])    
+                document.header[k] = document.header[k].replace("PTMono-TLF", "default")
 
 
 def revert_xcharter(document):
     " Revert XCharter font definitions to LaTeX "
 
-    if find_token(document.header, "\\use_non_tex_fonts false", 0) != -1:
-        preamble = ""
-        i1 = find_token(document.header, "\\font_roman \"xcharter\"", 0)
-        if i1 != -1:
-            add_to_preamble(document, ["\\usepackage{XCharter}"])
+    i = find_token(document.header, "\\font_roman \"xcharter\"", 0)
+    if i == -1:
+        return
+
+    # replace unsupported font setting
+    document.header[i] = document.header[i].replace("xcharter", "default")
+    # no need for preamble code with system fonts
+    if get_bool_value(document.header, "\\use_non_tex_fonts"):
+        return
+
+    # transfer old style figures setting to package options
+    j = find_token(document.header, "\\font_osf true")
+    if j != -1:
+        options = "[osf]"
+        document.header[j] = "\\font_osf false"
+    else:
+        options = ""
+    if i != -1:
+        add_to_preamble(document, ["\\usepackage%s{XCharter}"%options])
 
 
 ##
