@@ -650,6 +650,27 @@ string const Parser::plainCommand(char left, char right, string const & name)
 }
 
 
+string const Parser::getCommandLatexParam()
+{
+	if (!good())
+		return string();
+	string res;
+	size_t offset = 0;
+	while (true) {
+		if (pos_ + offset >= tokens_.size())
+			tokenize_one();
+		if (pos_ + offset >= tokens_.size())
+			break;
+		Token t = tokens_[pos_ + offset];
+		if (t.cat() == catBegin)
+			break;
+		res += t.asInput();
+		++offset;
+	}
+	return res;
+}
+
+
 Parser::Arg Parser::verbatimStuff(string const & end_string, bool const allow_linebreak)
 {
 	if (!good())

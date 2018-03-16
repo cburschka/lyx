@@ -45,7 +45,6 @@ Format LaTeX feature                        LyX feature
 386    LyX version                          InsetInfo
 390    forward/reverse search               \forward_search, \forward_macro
 391    decimal alignment in tables          InsetTabular
-392    new beamer format                    InsetLayout
 399    automatic mathdots loading           \use_mathdots
 407    vertical offset for multirows        InsetTabular
 411    support for polyglossia              \language_package	(the cases of no package, of babel and of custom package is supported)
@@ -53,21 +52,7 @@ Format LaTeX feature                        LyX feature
 443    unicode-math.sty                     InsetMath*
 448
 453    automatic stmaryrd loading           \use_package stmaryrd
-454    beamer overprint environment         InsetArgument, layout Overprint
-       \begin{overprint}[maxlength]
-       \onslide<slide> text ...
-       \end{overprint}
-455    beamer frametitle command            \begin_layout FrameTitle
-       \frametitle<overlay>[short]{long}
 457    automatic stackrel loading           \use_package stackrel
-466    Powerdot updates:
-       \pause[]                              layout Pause
-       \onslide{}{}                          InsetFlex, InsetArgument
-       \onslide*{}{}                         InsetFlex, InsetArgument
-       \onslide+{}{}                         InsetFlex, InsetArgument
-       \twocolumn[]{}{}                      Layout Twocolumn, InsetArgument
-       \item[]<>                             InsetArgument
-       \begin{enumerate|itemize|...}[]       InsetArgument
 526   Plural and capitalized refstyles      InsetRef
 533   Multibib support
       \begin{btUnit}...\end{btUnit}        \multibib {none|part|chapter|section|subsection}
