@@ -279,6 +279,11 @@ public:
 	 */
 	std::string const plainCommand(char left, char right, std::string const & name);
 	/*
+	 * Returns everything before the main command argument.
+	 * This is where the LaTeXParam value of a layout is output.
+	 */
+	std::string const getCommandLatexParam();
+	/*
 	 * Basically the same as plainEnvironment() but the parsing is
 	 * stopped at string \p end_string. Contrary to the other
 	 * methods, this uses proper catcode setting. This function is

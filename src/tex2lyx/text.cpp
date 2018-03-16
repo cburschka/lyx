@@ -67,6 +67,13 @@ void parse_text_in_inset(Parser & p, ostream & os, unsigned flags, bool outer,
 	if (layout)
 		output_arguments(os, p, outer, false, string(), newcontext,
 		                 layout->latexargs());
+	// If we have a latex param, we eat it here.
+	if (!context.latexparam.empty()) {
+		ostringstream oss;
+		Context dummy(true, context.textclass);
+		parse_text(p, oss, FLAG_RDELIM, outer, dummy,
+			   string(1, context.latexparam.back()));
+	}
 	parse_text(p, os, flags, outer, newcontext, rdelim);
 	if (layout)
 		output_arguments(os, p, outer, false, "post", newcontext,
@@ -697,24 +704,27 @@ void output_comment(Parser & p, ostream & os, string const & s,
 }
 
 
-Layout const * findLayout(TextClass const & textclass, string const & name, bool command)
+Layout const * findLayout(TextClass const & textclass, string const & name, bool command,
+			  string const & latexparam = string())
 {
-	Layout const * layout = findLayoutWithoutModule(textclass, name, command);
+	Layout const * layout = findLayoutWithoutModule(textclass, name, command, latexparam);
 	if (layout)
 		return layout;
 	if (checkModule(name, command))
-		return findLayoutWithoutModule(textclass, name, command);
+		return findLayoutWithoutModule(textclass, name, command, latexparam);
 	return layout;
 }
 
 
-InsetLayout const * findInsetLayout(TextClass const & textclass, string const & name, bool command)
+InsetLayout const * findInsetLayout(TextClass const & textclass, string const & name, bool command,
+				    string const & latexparam = string())
 {
-	InsetLayout const * insetlayout = findInsetLayoutWithoutModule(textclass, name, command);
+	InsetLayout const * insetlayout =
+		findInsetLayoutWithoutModule(textclass, name, command, latexparam);
 	if (insetlayout)
 		return insetlayout;
 	if (checkModule(name, command))
-		return findInsetLayoutWithoutModule(textclass, name, command);
+		return findInsetLayoutWithoutModule(textclass, name, command, latexparam);
 	return insetlayout;
 }
 
@@ -844,6 +854,13 @@ void output_command_layout(ostream & os, Parser & p, bool outer,
 	context.check_deeper(os);
 	output_arguments(os, p, outer, true, string(), context,
 	                 context.layout->latexargs());
+	// If we have a latex param, we eat it here.
+	if (!parent_context.latexparam.empty()) {
+		ostringstream oss;
+		Context dummy(true, parent_context.textclass);
+		parse_text(p, oss, FLAG_RDELIM, outer, dummy,
+			   string(1, parent_context.latexparam.back()));
+	}
 	parse_text(p, os, FLAG_ITEM, outer, context);
 	output_arguments(os, p, outer, false, "post", context,
 	                 context.layout->postcommandargs());
@@ -3275,6 +3292,25 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			continue;
 		}
 
+		// Before we look for the layout name with star and alone below, we check the layouts including
+		// the LateXParam, which might be one or several options or a star.
+		// The single '=' is meant here.
+		if (context.new_layout_allowed &&
+		   (newlayout = findLayout(context.textclass, t.cs(), true, p.getCommandLatexParam()))) {
+			// store the latexparam here. This is eaten in output_command_layout
+			context.latexparam = newlayout->latexparam();
+			// write the layout
+			output_command_layout(os, p, outer, context, newlayout);
+			p.skip_spaces();
+			if (!preamble.titleLayoutFound())
+				preamble.titleLayoutFound(newlayout->intitle);
+			set<string> const & req = newlayout->requires();
+			for (set<string>::const_iterator it = req.begin(); it != req.end(); ++it)
+				preamble.registerAutomaticallyLoadedPackage(*it);
+			continue;
+		}
+
+
 		// Starred section headings
 		// Must attempt to parse "Section*" before "Section".
 		if ((p.next_token().asInput() == "*") &&
@@ -5419,6 +5455,57 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				} else
 					output_ert_inset(os, name + '{' + length + '}', context);
 			}
+			continue;
+		}
+
+		// Before we look for the layout name alone below, we check the layouts including the LateXParam, which
+		// might be one or several options or a star.
+		// The single '=' is meant here.
+		if ((newinsetlayout = findInsetLayout(context.textclass, starredname, true, p.getCommandLatexParam()))) {
+			if (starred)
+				p.get_token();
+			p.skip_spaces();
+			context.check_layout(os);
+			// store the latexparam here. This is eaten in parse_text_in_inset
+			context.latexparam = newinsetlayout->latexparam();
+			docstring name = newinsetlayout->name();
+			bool const caption = name.find(from_ascii("Caption:")) == 0;
+			if (caption) {
+				// Already done for floating minted listings.
+				if (minted_float.empty()) {
+					begin_inset(os, "Caption ");
+					os << to_utf8(name.substr(8)) << '\n';
+				}
+			} else {
+				// FIXME: what do we do if the prefix is not Flex: ?
+				if (prefixIs(name, from_ascii("Flex:")))
+					name.erase(0, 5);
+				begin_inset(os, "Flex ");
+				os << to_utf8(name) << '\n'
+				   << "status collapsed\n";
+			}
+			if (!minted_float.empty()) {
+				parse_text_snippet(p, os, FLAG_ITEM, false, context);
+			} else if (newinsetlayout->isPassThru()) {
+				// set catcodes to verbatim early, just in case.
+				p.setCatcodes(VERBATIM_CATCODES);
+				string delim = p.get_token().asInput();
+				if (delim != "{")
+					cerr << "Warning: bad delimiter for command " << t.asInput() << endl;
+				//FIXME: handle error condition
+				string const arg = p.verbatimStuff("}").second;
+				Context newcontext(true, context.textclass);
+				if (newinsetlayout->forcePlainLayout())
+					newcontext.layout = &context.textclass.plainLayout();
+				output_ert(os, arg, newcontext);
+			} else
+				parse_text_in_inset(p, os, FLAG_ITEM, false, context, newinsetlayout);
+			if (caption)
+				p.skip_spaces();
+			// Minted caption insets are not closed here because
+			// we collect everything into the caption.
+			if (minted_float.empty())
+				end_inset(os);
 			continue;
 		}
 

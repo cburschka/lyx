@@ -173,10 +173,13 @@ void add_known_theorem(string const & theorem, string const & o1,
 
 
 Layout const * findLayoutWithoutModule(TextClass const & tc,
-                                       string const & name, bool command)
+                                       string const & name, bool command,
+                                       string const & latexparam)
 {
 	for (auto const & lay : tc) {
 		if (lay.latexname() == name &&
+		    (latexparam.empty() ||
+		     (!lay.latexparam().empty() && suffixIs(latexparam, lay.latexparam()))) &&
 		    ((command && lay.isCommand()) || (!command && lay.isEnvironment())))
 			return &lay;
 	}
@@ -185,10 +188,13 @@ Layout const * findLayoutWithoutModule(TextClass const & tc,
 
 
 InsetLayout const * findInsetLayoutWithoutModule(TextClass const & tc,
-                                                 string const & name, bool command)
+                                                 string const & name, bool command,
+                                                 string const & latexparam)
 {
 	for (auto const & ilay : tc.insetLayouts()) {
 		if (ilay.second.latexname() == name &&
+		    (latexparam.empty() ||
+		     (!ilay.second.latexparam().empty() && suffixIs(latexparam, ilay.second.latexparam()))) &&
 		    ((command && ilay.second.latextype() == InsetLayout::COMMAND) ||
 		     (!command && ilay.second.latextype() == InsetLayout::ENVIRONMENT)))
 			return &(ilay.second);
