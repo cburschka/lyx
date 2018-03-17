@@ -4801,6 +4801,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				literal = !oa.first;
 				if (literal)
 					lstparams = subst(lstparams, "\n", " ");
+				else
+					lstparams = oa.second;
 			} else if (name == "inputminted") {
 				name = "lstinputlisting";
 				string const lang = p.getArg('{', '}');
@@ -4833,6 +4835,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 					literal = !oa.first;
 					if (literal)
 						lstparams = subst(lstparams, "\n", " ");
+					else
+						lstparams = oa.second;
 				}
 			}
 			string lit = literal ? "\"true\"" : "\"false\"";
