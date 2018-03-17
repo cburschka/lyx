@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 # This file is part of lyx2lyx
-# -*- coding: utf-8 -*-
 # Copyright (C) 2015 The LyX team
 #
 # This program is free software; you can redistribute it and/or
@@ -78,7 +77,7 @@ def revert_Argument_to_TeX_brace(document, line, endline, n, nmax, environment, 
             if nolastopt == False:
               document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}{")
             else:
-              document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}") 
+              document.body[endInset - 2 : endInset + 1] = put_cmd_in_ert("}")
             del(document.body[lineArg : beginPlain + 1])
             wasOpt = False
           else:
@@ -153,7 +152,7 @@ def convert_separator(document):
         }
 
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_deeper", i)
         if i == -1:
             break
@@ -175,7 +174,7 @@ def convert_separator(document):
             i = i + 1
 
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\align", i)
         if i == -1:
             break
@@ -187,6 +186,13 @@ def convert_separator(document):
 
         j = find_token_backwards(document.body, "\\end_layout", i-1)
         if j != -1:
+            # Very old LyX files do not have Plain Layout in insets (but Standard).
+            # So we additionally check here if there is no inset boundary
+            # between the previous layout and this one.
+            n = find_token(document.body, "\\end_inset", j, lay[1])
+            if n != -1:
+                i = i + 1
+                continue
             lay = get_containing_layout(document.body, j-1)
             if lay != False and lay[0] == "Standard" \
                and find_token(document.body, "\\align", lay[1], lay[2]) == -1 \
@@ -208,7 +214,7 @@ def convert_separator(document):
     regexp = re.compile(r'^\\begin_layout (?:(-*)|(\s*))(Separator|EndOfSlide)(?:(-*)|(\s*))$', re.IGNORECASE)
 
     i = 0
-    while 1:
+    while True:
         i = find_re(document.body, regexp, i)
         if i == -1:
             return
@@ -249,7 +255,7 @@ def revert_separator(document):
               "", "\\end_inset", ""]
 
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset Separator", i)
         if i == -1:
             return
@@ -341,7 +347,7 @@ def convert_parbreak(document):
     """
     parbreakinset = "\\begin_inset Separator parbreak"
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, parbreakinset, i)
         if i == -1:
             return
@@ -366,7 +372,7 @@ def revert_parbreak(document):
     Revert latexpar separators to parbreak separators.
     """
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset Separator latexpar", i)
         if i == -1:
             return
@@ -619,12 +625,15 @@ def convert_dashes(document):
     i = 0
     while i < len(document.body):
         words = document.body[i].split()
-        if len(words) > 1 and words[0] == "\\begin_inset" and \
-           words[1] in ["CommandInset", "ERT", "External", "Formula", "FormulaMacro", "Graphics", "IPA", "listings"]:
+        if (len(words) > 1 and words[0] == "\\begin_inset"
+            and (words[1] in ["CommandInset", "ERT", "External", "Formula",
+                              "FormulaMacro", "Graphics", "IPA", "listings"]
+                 or ' '.join(words[1:]) == "Flex Code")):
             # must not replace anything in insets that store LaTeX contents in .lyx files
-            # (math and command insets withut overridden read() and write() methods
+            # (math and command insets without overridden read() and write() methods
             # filtering out IPA makes Text::readParToken() more simple
             # skip ERT as well since it is not needed there
+            # Flex Code is logical markup, typically rendered as typewriter
             j = find_end_of_inset(document.body, i)
             if j == -1:
                 document.warning("Malformed LyX document: Can't find end of " + words[1] + " inset at line " + str(i))
@@ -632,6 +641,16 @@ def convert_dashes(document):
             else:
                 i = j
             continue
+        if document.body[i] == "\\begin_layout LyX-Code":
+            j = find_end_of_layout(document.body, i)
+            if j == -1:
+                document.warning("Malformed LyX document: "
+                    "Can't find end of %s layout at line %d" % (words[1],i))
+                i += 1
+            else:
+                i = j
+            continue
+
         if len(words) > 0 and words[0] in ["\\leftindent", "\\paragraph_spacing", "\\align", "\\labelwidthstring"]:
             # skip paragraph parameters (bug 10243)
             i += 1
@@ -660,6 +679,12 @@ def convert_dashes(document):
 def revert_dashes(document):
     "convert \\twohyphens and \\threehyphens to -- and ---"
 
+    # eventually remove preamble code from 2.3->2.2 conversion:
+    for i, line in enumerate(document.preamble):
+        if i > 1 and line == r'\renewcommand{\textemdash}{---}':
+            if (document.preamble[i-1] == r'\renewcommand{\textendash}{--}'
+                and document.preamble[i-2] == '% Added by lyx2lyx'):
+                del document.preamble[i-2:i+1]
     i = 0
     while i < len(document.body):
         words = document.body[i].split()
@@ -800,7 +825,7 @@ def convert_specialchar_internal(document, forward):
             else:
                 i = j
             continue
-        for key, value in specialchars.iteritems():
+        for key, value in specialchars.items():
             if forward:
                 document.body[i] = document.body[i].replace("\\SpecialChar " + key, "\\SpecialChar " + value)
                 document.body[i] = document.body[i].replace("\\SpecialCharNoPassThru " + key, "\\SpecialCharNoPassThru " + value)
@@ -1151,11 +1176,11 @@ def convert_origin(document):
     if i == -1:
         document.warning("Malformed LyX document: No \\textclass!!")
         return
-    if document.dir == "":
-        origin = "stdin"
+    if document.dir == u'':
+        origin = u'stdin'
     else:
-        relpath = ''
-        if document.systemlyxdir and document.systemlyxdir != '':
+        relpath = u''
+        if document.systemlyxdir and document.systemlyxdir != u'':
             try:
                 if os.path.isabs(document.dir):
                     absdir = os.path.normpath(document.dir)
@@ -1166,15 +1191,14 @@ def convert_origin(document):
                 else:
                     abssys = os.path.normpath(os.path.abspath(document.systemlyxdir))
                 relpath = os.path.relpath(absdir, abssys)
-                if relpath.find('..') == 0:
-                    relpath = ''
+                if relpath.find(u'..') == 0:
+                    relpath = u''
             except:
-                relpath = ''
-        if relpath == '':
-            origin = document.dir.replace('\\', '/') + '/'
+                relpath = u''
+        if relpath == u'':
+            origin = document.dir.replace(u'\\', u'/') + u'/'
         else:
-            origin = os.path.join("/systemlyxdir", relpath).replace('\\', '/') + '/'
-        origin = unicode(origin, sys.getfilesystemencoding())
+            origin = os.path.join(u"/systemlyxdir", relpath).replace(u'\\', u'/') + u'/'
     document.header[i:i] = ["\\origin " + origin]
 
 
@@ -1213,7 +1237,7 @@ def revert_textcolor(document):
                     j = find_token(document.body, "\\color", i + 1)
                     k = find_token(document.body, "\\end_layout", i + 1)
                     if j == -1 and k != -1:
-                        j = k +1 
+                        j = k +1
                     # output TeX code
                     # first output the closing brace
                     if k < j:
@@ -1239,7 +1263,7 @@ def convert_colorbox(document):
 
 def revert_colorbox(document):
     " outputs color settings for boxes as TeX code "
-
+    
     i = 0
     defaultframecolor = "black"
     defaultbackcolor = "none"
@@ -1883,7 +1907,7 @@ def revert_tcolorbox_8(document):
 
 def revert_moderncv_1(document):
   " Reverts the new inset of moderncv to TeX-code in preamble "
-  
+
   if document.textclass != "moderncv":
     return
   i = 0
@@ -1951,7 +1975,7 @@ def revert_moderncv_1(document):
 
 def revert_moderncv_2(document):
   " Reverts the phone inset of moderncv to the obsoleted mobile or fax "
-  
+
   if document.textclass != "moderncv":
     return
   i = 0
@@ -2093,7 +2117,7 @@ def convert_moderncv_name(document):
 
 def revert_achemso(document):
   " Reverts the flex inset Latin to TeX code "
-  
+
   if document.textclass != "achemso":
     return
   i = 0

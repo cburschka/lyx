@@ -26,7 +26,7 @@ def space_before_layout(document):
     " Remove empty line before \\layout. "
     lines = document.body
     i = 2 # skip first layout
-    while 1:
+    while True:
         i = find_token(lines, '\\layout', i)
         if i == -1:
             break
@@ -41,7 +41,7 @@ def formula_inset_space_eat(document):
     " Remove space after inset formula."
     lines = document.body
     i = 0
-    while 1:
+    while True:
         i = find_token(lines, "\\begin_inset Formula", i)
         if i == -1:
             break
@@ -56,7 +56,7 @@ def update_tabular(document):
     lines = document.body
     lyxtable_re = re.compile(r".*\\LyXTable$")
     i = 0
-    while 1:
+    while True:
         i = find_re(lines, lyxtable_re, i)
         if i == -1:
             break
@@ -108,7 +108,7 @@ def update_inset_label(document):
     " Update inset Label."
     lines = document.body
     i = 0
-    while 1:
+    while True:
         i = find_token(lines, '\\begin_inset Label', i)
         if i == -1:
             return
@@ -120,7 +120,7 @@ def update_latexdel(document):
     " Update inset LatexDel."
     lines = document.body
     i = 0
-    while 1:
+    while True:
         i = find_token(lines, '\\begin_inset LatexDel', i)
         if i == -1:
             return
@@ -163,7 +163,7 @@ def remove_cursor(document):
     lines = document.body
     i = 0
     cursor_re = re.compile(r'.*(\\cursor \d*)')
-    while 1:
+    while True:
         i = find_re(lines, cursor_re, i)
         if i == -1:
             break
@@ -176,7 +176,7 @@ def remove_empty_insets(document):
     " Remove empty insets."
     lines = document.body
     i = 0
-    while 1:
+    while True:
         i = find_token(lines, '\\begin_inset ', i)
         if i == -1:
             break
@@ -190,7 +190,7 @@ def remove_formula_latex(document):
     " Remove formula latex."
     lines = document.body
     i = 0
-    while 1:
+    while True:
         i = find_token(lines, '\\latex formula_latex ', i)
         if i == -1:
             break
@@ -268,7 +268,7 @@ def update_latexaccents(document):
     " Update latex accent insets."
     body = document.body
     i = 1
-    while 1:
+    while True:
         i = find_token(body, '\\i ', i)
         if i == -1:
             return
@@ -297,7 +297,7 @@ def obsolete_latex_title(document):
     " Replace layout Latex_Title with Title."
     body = document.body
     i = 0
-    while 1:
+    while True:
         i = find_token(body, '\\layout', i)
         if i == -1:
             return
@@ -313,7 +313,7 @@ def remove_inset_latex(document):
     body = document.body
 
     i = 0
-    while 1:
+    while True:
         i = find_token(body, '\\begin_inset Latex', i)
         if i == -1:
             return

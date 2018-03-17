@@ -23,6 +23,7 @@ import unicodedata
 import sys, os
 
 from parser_tools import find_token, find_end_of, find_tokens, get_value
+from unicode_symbols import read_unicodesymbols
 
 ####################################################################
 # Private helper functions
@@ -145,9 +146,18 @@ def set_option(document, m, option, value):
     return l
 
 
-# FIXME: Use the version in unicode_symbols.py which has some bug fixes
-def read_unicodesymbols():
+# FIXME: Remove this function if the version imported from unicode_symbols works.
+# This function was the predecessor from that function, that in the meanwhile got
+# new fixes.
+def read_unicodesymbols2():
     " Read the unicodesymbols list of unicode characters and corresponding commands."
+
+    # Provide support for both python 2 and 3
+    PY2 = sys.version_info[0] == 2
+    if not PY2:
+        unichr = chr
+    # End of code to support for both python 2 and 3
+
     pathname = os.path.abspath(os.path.dirname(sys.argv[0]))
     fp = open(os.path.join(pathname.strip('lyx2lyx'), 'unicodesymbols'))
     spec_chars = []
@@ -424,7 +434,7 @@ def lyx2latex(document, lines):
             continue
         inert = ert_end >= curline
         content += lyxline2latex(document, lines[curline], inert)
-      
+
     return content
 
 
@@ -966,7 +976,7 @@ def revert_pdf_options(document):
 def remove_inzip_options(document):
     "Remove inzipName and embed options from the Graphics inset"
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset Graphics", i)
         if i == -1:
             return
@@ -994,7 +1004,7 @@ def convert_inset_command(document):
             LatexCommand cmd
     """
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset LatexCommand", i)
         if i == -1:
             return
@@ -1033,7 +1043,7 @@ def revert_inset_command(document):
         will not be able to recognize. Not sure what to do about that.
     """
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset CommandInset", i)
         if i == -1:
             return
@@ -1103,7 +1113,7 @@ def revert_wrapfig_options(document):
 
 
 def convert_latexcommand_index(document):
-    "Convert from LatexCommand form to collapsable form."
+    "Convert from LatexCommand form to collapsible form."
     i = 0
     r1 = re.compile('name "(.*)"')
     while True:
@@ -1135,7 +1145,7 @@ def convert_latexcommand_index(document):
 
 
 def revert_latexcommand_index(document):
-    "Revert from collapsable form to LatexCommand form."
+    "Revert from collapsible form to LatexCommand form."
     i = 0
     while True:
         i = find_token(document.body, "\\begin_inset Index", i)
@@ -1256,7 +1266,7 @@ def revert_japanese_encoding(document):
 def revert_inset_info(document):
     'Replace info inset with its content'
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, '\\begin_inset Info', i)
         if i == -1:
             return
@@ -1737,7 +1747,7 @@ def convert_serbocroatian(document):
 def convert_framed_notes(document):
     "Convert framed notes to boxes. "
     i = 0
-    while 1:
+    while True:
         i = find_tokens(document.body, ["\\begin_inset Note Framed", "\\begin_inset Note Shaded"], i)
         if i == -1:
             return
@@ -1814,7 +1824,7 @@ def revert_colsep(document):
 def revert_framed_notes(document):
     "Revert framed boxes to notes. "
     i = 0
-    while 1:
+    while True:
         i = find_tokens(document.body, ["\\begin_inset Box Framed", "\\begin_inset Box Shaded"], i)
 
         if i == -1:
@@ -1932,7 +1942,7 @@ def revert_nocite_key(body, start, end):
 def revert_nocite(document):
     "Revert LatexCommand nocite to ERT"
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset CommandInset citation", i)
         if i == -1:
             return
@@ -2050,7 +2060,7 @@ def revert_serbianlatin(document):
 def revert_rotfloat(document):
     " Revert sideways custom floats. "
     i = 0
-    while 1:
+    while True:
         # whitespace intended (exclude \\begin_inset FloatList)
         i = find_token(document.body, "\\begin_inset Float ", i)
         if i == -1:
@@ -2113,7 +2123,7 @@ def revert_rotfloat(document):
 def revert_widesideways(document):
     " Revert wide sideways floats. "
     i = 0
-    while 1:
+    while True:
         # whitespace intended (exclude \\begin_inset FloatList)
         i = find_token(document.body, '\\begin_inset Float ', i)
         if i == -1:
@@ -2165,7 +2175,7 @@ def revert_widesideways(document):
 def revert_inset_embedding(document, type):
     ' Remove embed tag from certain type of insets'
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset %s" % type, i)
         if i == -1:
             return
@@ -2190,7 +2200,7 @@ def revert_external_embedding(document):
 def convert_subfig(document):
     " Convert subfigures to subfloats. "
     i = 0
-    while 1:
+    while True:
         addedLines = 0
         i = find_token(document.body, '\\begin_inset Graphics', i)
         if i == -1:
@@ -2230,7 +2240,7 @@ def convert_subfig(document):
 def revert_subfig(document):
     " Revert subfloats. "
     i = 0
-    while 1:
+    while True:
         # whitespace intended (exclude \\begin_inset FloatList)
         i = find_tokens(document.body, ['\\begin_inset Float ', '\\begin_inset Wrap'], i)
         if i == -1:
@@ -2734,7 +2744,7 @@ def convert_japanese_plain(document):
 def revert_pdfpages(document):
     ' Revert pdfpages external inset to ERT '
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset External", i)
         if i == -1:
             return
@@ -2836,7 +2846,7 @@ def revert_master(document):
 def revert_graphics_group(document):
     ' Revert group information from graphics insets '
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_inset Graphics", i)
         if i == -1:
             return
@@ -2866,7 +2876,7 @@ def update_apa_styles(document):
                     "Paragraph*":      "Paragraph",
                     "Subparagraph*":   "Subparagraph"}
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_layout", i)
         if i == -1:
             return

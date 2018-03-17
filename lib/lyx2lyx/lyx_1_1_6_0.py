@@ -26,7 +26,7 @@ def update_tabular(document):
     " Update tabular to version 1 (xml like syntax). "
     lines = document.body
     i=0
-    while 1:
+    while True:
         i = find_re(lines, lyxtable_re, i)
         if i == -1:
             break

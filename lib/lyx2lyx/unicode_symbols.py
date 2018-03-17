@@ -29,7 +29,12 @@ if not PY2:
 def read_unicodesymbols():
     " Read the unicodesymbols list of unicode characters and corresponding commands."
     pathname = os.path.abspath(os.path.dirname(sys.argv[0]))
-    fp = open(os.path.join(pathname.strip('lyx2lyx'), 'unicodesymbols'))
+    filename = os.path.join(pathname.strip('lyx2lyx'), 'unicodesymbols')
+
+    # For python 3+ we have to specify the encoding for those systems
+    # where the default is not UTF-8
+    fp = open(filename, encoding="utf8") if (not PY2) else open(filename)
+
     spec_chars = []
     # A backslash, followed by some non-word character, and then a character
     # in brackets. The idea is to check for constructs like: \"{u}, which is how

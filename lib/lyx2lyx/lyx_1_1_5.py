@@ -40,7 +40,7 @@ def replace_protected_separator(document):
     " Replace protected separator. "
     lines = document.body
     i=0
-    while 1:
+    while True:
         i = find_token(lines, "\\protected_separator", i)
         if i == -1:
             break
@@ -65,7 +65,7 @@ def merge_formula_inset(document):
     " Merge formula insets. "
     lines = document.body
     i=0
-    while 1:
+    while True:
         i = find_token(lines, "\\begin_inset Formula", i)
         if i == -1: break
         if lines[i+1] in math_env:
@@ -79,7 +79,7 @@ def update_tabular(document):
     lines = document.body
     lyxtable_re = re.compile(r".*\\LyXTable$")
     i=0
-    while 1:
+    while True:
         i = find_re(lines, lyxtable_re, i)
         if i == -1:
             break
@@ -111,7 +111,7 @@ def update_toc(document):
     " Update table of contents. "
     lines = document.body
     i = 0
-    while 1:
+    while True:
         i = find_token(lines,
                        '\\begin_inset LatexCommand \\tableofcontents', i)
         if i == -1:
@@ -158,7 +158,7 @@ def remove_space_in_units(document):
 
     for margin in margins:
         i = 0
-        while 1:
+        while True:
             i = find_token(lines, margin, i)
             if i == -1:
                 break
@@ -174,7 +174,7 @@ def latexdel_getargs(document, i):
     lines = document.body
 
     # play safe, clean empty lines
-    while 1:
+    while True:
         if lines[i]:
             break
         del lines[i]
@@ -191,7 +191,7 @@ def latexdel_getargs(document, i):
     del lines[i:j + 1]
 
     # play safe, clean empty lines
-    while 1:
+    while True:
         if lines[i]:
             break
         del lines[i]
@@ -212,7 +212,7 @@ def update_ref(document):
     " Update reference inset. "
     lines = document.body
     i = 0
-    while 1:
+    while True:
         i = find_token(lines, '\\begin_inset LatexCommand', i)
         if i == -1:
             return
@@ -230,7 +230,7 @@ def update_latexdel(document):
     lines = document.body
     i = 0
     latexdel_re = re.compile(r".*\\begin_inset LatexDel")
-    while 1:
+    while True:
         i = find_re(lines, latexdel_re, i)
         if i == -1:
             return

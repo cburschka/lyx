@@ -19,58 +19,66 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 " Program used to convert between different versions of the lyx file format."
-import optparse
+import argparse
 import sys
 import LyX
 
+# Provide support for both python 2 and 3
+PY2 = sys.version_info[0] == 2
+if PY2:
+    # argparse returns strings in the commandline encoding, we need to convert.
+    # sys.getdefaultencoding() would not always be correct, see
+    # http://legacy.python.org/dev/peps/pep-0383/
+    def cmd_arg(arg):
+        return arg.decode(sys.getfilesystemencoding())
+else:
+    cmd_arg = str
+# End of code to support for both python 2 and 3
+
 def main():
     args = {}
-    args["usage"] = "usage: %prog [options] [file]"
-
-    args["version"] = """lyx2lyx, version %s
-Copyright (C) 2011 The LyX Team, José Matos and Dekel Tsur""" % LyX.version__
+    args["usage"] = "%(prog)s [options] [file]"
 
     args["description"] = """Convert old lyx file <file> to newer format,
     files can be compressed with gzip.  If there no file is specified then
     the standard input is assumed, in this case gziped files are not
     handled."""
 
-    parser = optparse.OptionParser(**args)
+    parser = argparse.ArgumentParser(**args)
 
     parser.set_defaults(debug=LyX.default_debug__, cjk_encoding = '')
-    parser.add_option("-d", "--debug", type="int",
+    parser.add_argument("-d", "--debug", type=int, dest="debug",
                       help="level=0..2 (O_ quiet, 10_verbose) default: 2")
-    parser.add_option("-q", "--quiet",
+    parser.add_argument("-q", "--quiet",
                       action="store_const", const=0, dest="debug")
-    parser.add_option("-v", "--verbose",
+    parser.add_argument("-v", "--verbose",
                       action="store_const", const=1, dest="debug")
-    parser.add_option("--noisy",
+    parser.add_argument("--noisy",
                       action="store_const", const=10, dest="debug")
-    parser.add_option("-c", "--encoding", dest="cjk_encoding",
+    parser.add_argument("-c", "--encoding", type=cmd_arg, dest="cjk_encoding",
                       help="files in format 413 and lower are read and"
                            " written in the format of CJK-LyX."
                            "If encoding is not given or 'auto' the encoding"
                            "is determined from the locale.")
-    parser.add_option("-e", "--err", dest="error",
+    parser.add_argument("-e", "--err", type=cmd_arg, dest="error",
                       help= "file name of the error file else goes to stderr")
-    parser.add_option("-o", "--output",
+    parser.add_argument("-o", "--output", type=cmd_arg, dest="output",
                       help= "name of the output file else goes to stdout")
-    parser.add_option("-t", "--to", dest= "end_format",
+    parser.add_argument("-t", "--to", type=cmd_arg, dest= "end_format",
                       help= "destination file format, default (latest)")
-    parser.add_option("-V", "--final_version", dest= "final_version",
+    parser.add_argument("-V", "--final_version", type=cmd_arg, dest= "final_version",
                       help= "destination version, default (latest)")
-    parser.add_option("-l", "--list", action="store_true",
+    parser.add_argument("-l", "--list", action="store_true",
                       help = "list all available formats and supported versions")
-    parser.add_option("-n", "--try-hard", action="store_true",
+    parser.add_argument("-n", "--try-hard", action="store_true",
                       help = "try hard (ignore any convertion errors)")
-    parser.add_option("-s", "--systemlyxdir", dest= "systemlyxdir",
+    parser.add_argument("-s", "--systemlyxdir", type=cmd_arg, dest= "systemlyxdir",
                       help= "LyX system directory for conversion from version 489 or older")
+    parser.add_argument('--version', action='version', version="""lyx2lyx, version %s
+Copyright (C) 2011 The LyX Team, José Matos and Dekel Tsur""" % LyX.version__)
+    parser.add_argument("input", nargs='?', type=cmd_arg, default=None)
 
-    (options, args) = parser.parse_args()
-    if args:
-        options.input = args[0]
-    else:
-        options.input = None
+    options = parser.parse_args()
 
     if options.list:
         sys.stderr.write(LyX.format_info())

@@ -65,28 +65,28 @@ class TestParserTools(unittest.TestCase):
     def test_check_token(self):
         line = "\\begin_layout Standard"
 
-        self.assertEquals(check_token(line, '\\begin_layout'), True)
-        self.assertEquals(check_token(line, 'Standard'), False)
+        self.assertEqual(check_token(line, '\\begin_layout'), True)
+        self.assertEqual(check_token(line, 'Standard'), False)
 
 
     def test_is_nonempty_line(self):
-        self.assertEquals(is_nonempty_line(lines[0]), False)
-        self.assertEquals(is_nonempty_line(lines[1]), True)
-        self.assertEquals(is_nonempty_line(" "*5), False)
+        self.assertEqual(is_nonempty_line(lines[0]), False)
+        self.assertEqual(is_nonempty_line(lines[1]), True)
+        self.assertEqual(is_nonempty_line(" "*5), False)
 
 
     def test_find_token(self):
-        self.assertEquals(find_token(lines, '\\emph', 0), 7)
-        self.assertEquals(find_token(lines, '\\emph', 0, 5), -1)
-        self.assertEquals(find_token(lines, '\\emp', 0, 0, True), -1)
-        self.assertEquals(find_token(lines, '\\emp', 0, 0, False), 7)
-        self.assertEquals(find_token(lines, 'emph', 0), -1)
+        self.assertEqual(find_token(lines, '\\emph', 0), 7)
+        self.assertEqual(find_token(lines, '\\emph', 0, 5), -1)
+        self.assertEqual(find_token(lines, '\\emp', 0, 0, True), -1)
+        self.assertEqual(find_token(lines, '\\emp', 0, 0, False), 7)
+        self.assertEqual(find_token(lines, 'emph', 0), -1)
 
 
     def test_find_tokens(self):
         tokens = ['\\emph', '\\end_inset']
-        self.assertEquals(find_tokens(lines, tokens, 0), 4)
-        self.assertEquals(find_tokens(lines, tokens, 0, 4), -1)
+        self.assertEqual(find_tokens(lines, tokens, 0), 4)
+        self.assertEqual(find_tokens(lines, tokens, 0, 4), -1)
 
 
 if __name__ == '__main__':  

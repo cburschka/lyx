@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 # This file is part of lyx2lyx
-# -*- coding: utf-8 -*-
 # Copyright (C) 2011 The LyX team
 #
 # This program is free software; you can redistribute it and/or
@@ -27,7 +26,7 @@ from parser_tools import find_token, find_end_of, find_tokens, \
   find_token_exact, find_end_of_inset, find_end_of_layout, \
   find_token_backwards, is_in_inset, get_value, get_quoted_value, \
   del_token, check_token, get_option_value
-  
+
 from lyx2lyx_tools import add_to_preamble, insert_to_preamble, \
   put_cmd_in_ert, lyx2latex, latex_length, revert_flex_inset, \
   revert_font_attrs, hex2ratio, str2bool
@@ -156,7 +155,7 @@ def revert_phantom_types(document, ptype, cmd):
           i = end
           continue
       substi = ["\\begin_inset ERT", "status collapsed", "",
-                "\\begin_layout Plain Layout", "", "", "\\backslash", 
+                "\\begin_layout Plain Layout", "", "", "\\backslash",
                 cmd + "{", "\\end_layout", "", "\\end_inset"]
       substj = ["\\size default", "", "\\begin_inset ERT", "status collapsed", "",
                 "\\begin_layout Plain Layout", "", "}", "\\end_layout", "", "\\end_inset"]
@@ -168,7 +167,7 @@ def revert_phantom_types(document, ptype, cmd):
 
 def revert_phantom(document):
     revert_phantom_types(document, "Phantom", "phantom")
-    
+
 def revert_hphantom(document):
     revert_phantom_types(document, "HPhantom", "hphantom")
 
@@ -200,7 +199,7 @@ def revert_xetex(document):
     roman = sans = typew = "default"
     osf = False
     sf_scale = tt_scale = 100.0
-    
+
     i = find_token(document.header, "\\font_roman", 0)
     if i == -1:
         document.warning("Malformed LyX document: Missing \\font_roman.")
@@ -214,7 +213,7 @@ def revert_xetex(document):
     else:
         sans = get_value(document.header, "\\font_sans", i)
         document.header[i] = "\\font_sans default"
-    
+
     i = find_token(document.header, "\\font_typewriter", 0)
     if i == -1:
         document.warning("Malformed LyX document: Missing \\font_typewriter.")
@@ -235,7 +234,7 @@ def revert_xetex(document):
     else:
         # we do not need this value.
         document.header[i] = "\\font_sc false"
-    
+
     i = find_token(document.header, "\\font_sf_scale", 0)
     if i == -1:
         document.warning("Malformed LyX document: Missing \\font_sf_scale.")
@@ -279,14 +278,14 @@ def revert_xetex(document):
         pretext.append(tw)
     if osf:
         pretext.append('\\defaultfontfeatures{Numbers=OldStyle}')
-    pretext.append('\usepackage{xunicode}')
-    pretext.append('\usepackage{xltxtra}')
+    pretext.append('\\usepackage{xunicode}')
+    pretext.append('\\usepackage{xltxtra}')
     insert_to_preamble(document, pretext)
 
 
 def revert_outputformat(document):
     " Remove default output format param "
-    
+
     if not del_token(document.header, '\\default_output_format', 0):
         document.warning("Malformed LyX document: Missing \\default_output_format.")
 
@@ -344,7 +343,7 @@ def revert_splitindex(document):
     preamble = []
     if useindices:
          preamble.append("\\usepackage{splitidx})")
-    
+
     # deal with index declarations in the preamble
     i = 0
     while True:
@@ -355,7 +354,7 @@ def revert_splitindex(document):
         if k == -1:
             document.warning("Malformed LyX document: Missing \\end_index.")
             return
-        if useindices:    
+        if useindices:
           line = document.header[i]
           l = re.compile(r'\\index (.*)$')
           m = l.match(line)
@@ -366,7 +365,7 @@ def revert_splitindex(document):
         del document.header[i:k + 1]
     if preamble:
         insert_to_preamble(document, preamble)
-        
+
     # deal with index insets
     # these need to have the argument removed
     i = 0
@@ -392,7 +391,7 @@ def revert_splitindex(document):
             subst = put_cmd_in_ert("\\sindex[" + itype + "]{" + content + "}")
             document.body[i:k + 1] = subst
         i = i + 1
-        
+
     # deal with index_print insets
     i = 0
     while True:
@@ -431,7 +430,7 @@ def convert_splitindex(document):
         if document.body[i + 1].find('LatexCommand printindex') == -1:
             document.warning("Malformed LyX document: Incomplete printindex inset.")
             return
-        subst = ["LatexCommand printindex", 
+        subst = ["LatexCommand printindex",
             "type \"idx\""]
         document.body[i + 1:i + 2] = subst
         i = i + 1
@@ -515,10 +514,10 @@ def revert_ulinelatex(document):
 
 def revert_custom_processors(document):
     " Remove bibtex_command and index_command params "
-    
+
     if not del_token(document.header, '\\bibtex_command', 0):
         document.warning("Malformed LyX document: Missing \\bibtex_command.")
-    
+
     if not del_token(document.header, '\\index_command', 0):
         document.warning("Malformed LyX document: Missing \\index_command.")
 
@@ -596,10 +595,10 @@ def revert_longtable_align(document):
       if j == -1:
           i += 1
           continue
-      # FIXME Is this correct? It wipes out everything after the 
+      # FIXME Is this correct? It wipes out everything after the
       # one we found.
       document.body[fline] = document.body[fline][:j - 1] + '>'
-      # since there could be a tabular inside this one, we 
+      # since there could be a tabular inside this one, we
       # cannot jump to end.
       i += 1
 
@@ -743,7 +742,7 @@ def convert_author_id(document):
     i = 0
     anum = 1
     re_author = re.compile(r'(\\author) (\".*\")\s*(.*)$')
-    
+
     while True:
         i = find_token(document.header, "\\author", i)
         if i == -1:
@@ -755,7 +754,7 @@ def convert_author_id(document):
             document.header[i] = "\\author %i %s %s" % (anum, name, email)
         anum += 1
         i += 1
-        
+
     i = 0
     while True:
         i = find_token(document.body, "\\change_", i)
@@ -821,7 +820,7 @@ def revert_suppress_date(document):
 
 def convert_mhchem(document):
     "Set mhchem to off for versions older than 1.6.x"
-    if document.start < 277:
+    if document.initial_format < 277:
         # LyX 1.5.x and older did never load mhchem.
         # Therefore we must switch it off: Documents that use mhchem have
         # a manual \usepackage anyway, and documents not using mhchem but
@@ -859,7 +858,7 @@ def revert_mhchem(document):
 
     if mhchem == "off":
       # don't load case
-      return 
+      return
 
     if mhchem == "auto":
         i = 0
@@ -874,9 +873,9 @@ def revert_mhchem(document):
             i += 1
 
     if mhchem == "on":
-        pre = ["\\PassOptionsToPackage{version=3}{mhchem}", 
+        pre = ["\\PassOptionsToPackage{version=3}{mhchem}",
           "\\usepackage{mhchem}"]
-        insert_to_preamble(document, pre) 
+        insert_to_preamble(document, pre)
 
 
 def revert_fontenc(document):
@@ -916,7 +915,7 @@ def merge_gbrief(document):
                     "Verteiler":       "cc",
                     "Gruss":           "Closing"}
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, "\\begin_layout", i)
         if i == -1:
             break
@@ -926,7 +925,7 @@ def merge_gbrief(document):
             document.body[i] = "\\begin_layout " + obsoletedby[layout]
 
         i += 1
-        
+
     document.textclass = "g-brief"
     document.set_textclass()
 
@@ -989,7 +988,7 @@ def revert_multirow(document):
         if i == -1:
             begin_table = end_table
             continue
-        
+
         # store the number of rows and columns
         numrows = get_option_value(document.body[begin_table], "rows")
         numcols = get_option_value(document.body[begin_table], "columns")
@@ -1016,13 +1015,13 @@ def revert_multirow(document):
               break
             begin_cell = begin_row
             multirows.append([])
-            for column in range(numcols):            
+            for column in range(numcols):
                 begin_cell = find_token(document.body, '<cell ', begin_cell, end_row)
                 if begin_cell == -1:
                   document.warning("Can't find column " + str(column + 1) + \
                     "in row " + str(row + 1))
                   break
-                # NOTE 
+                # NOTE
                 # this will fail if someone puts "</cell>" in a cell, but
                 # that seems fairly unlikely.
                 end_cell = find_end_of(document.body, begin_cell, '<cell', '</cell>')
@@ -1122,7 +1121,7 @@ def revert_math_output(document):
     else:
         document.warning("Unable to match " + document.header[i])
     document.header[i] = "\\html_use_mathml " + newval
-                
+
 
 
 def revert_inset_preview(document):
@@ -1137,7 +1136,7 @@ def revert_inset_preview(document):
           document.warning("Malformed LyX document: Could not find end of Preview inset.")
           i += 1
           continue
-      
+
       # This has several issues.
       # We need to do something about the layouts inside InsetPreview.
       # If we just leave the first one, then we have something like:
@@ -1146,16 +1145,16 @@ def revert_inset_preview(document):
       # \begin_layout Standard
       # and we get a "no \end_layout" error. So something has to be done.
       # Ideally, we would check if it is the same as the layout we are in.
-      # If so, we just remove it; if not, we end the active one. But it is 
+      # If so, we just remove it; if not, we end the active one. But it is
       # not easy to know what layout we are in, due to depth changes, etc,
       # and it is not clear to me how much work it is worth doing. In most
       # cases, the layout will probably be the same.
-      # 
+      #
       # For the same reason, we have to remove the \end_layout tag at the
       # end of the last layout in the inset. Again, that will sometimes be
       # wrong, but it will usually be right. To know what to do, we would
       # again have to know what layout the inset is in.
-      
+
       blay = find_token(document.body, "\\begin_layout", i, iend)
       if blay == -1:
           document.warning("Can't find layout for preview inset!")
@@ -1167,13 +1166,13 @@ def revert_inset_preview(document):
 
       # This is where we would check what layout we are in.
       # The check for Standard is definitely wrong.
-      # 
+      #
       # lay = document.body[blay].split(None, 1)[1]
       # if lay != oldlayout:
       #     # record a boolean to tell us what to do later....
       #     # better to do it later, since (a) it won't mess up
       #     # the numbering and (b) we only modify at the end.
-        
+
       # we want to delete the last \\end_layout in this inset, too.
       # note that this may not be the \\end_layout that goes with blay!!
       bend = find_end_of_layout(document.body, blay)
@@ -1193,7 +1192,7 @@ def revert_inset_preview(document):
       del document.body[bend]
       del document.body[i:blay + 1]
       # we do not need to reset i
-                
+
 
 def revert_equalspacing_xymatrix(document):
     " Revert a Formula with xymatrix@! to an ERT inset "
@@ -1210,12 +1209,12 @@ def revert_equalspacing_xymatrix(document):
           document.warning("Malformed LyX document: Could not find end of Formula inset.")
           i += 1
           continue
-      
+
       for curline in range(i,j):
           found = document.body[curline].find("\\xymatrix@!")
           if found != -1:
               break
- 
+
       if found != -1:
           has_equal_spacing = True
           content = [document.body[i][21:]]
@@ -1230,7 +1229,7 @@ def revert_equalspacing_xymatrix(document):
                   has_preamble = True;
                   break;
           i = j + 1
-  
+
     if has_equal_spacing and not has_preamble:
         add_to_preamble(document, ['\\usepackage[all]{xy}'])
 
@@ -1247,7 +1246,7 @@ def revert_notefontcolor(document):
 
     # are there any grey notes?
     if find_token(document.body, "\\begin_inset Note Greyedout", 0) == -1:
-        # no need to do anything else, and \renewcommand will throw 
+        # no need to do anything else, and \renewcommand will throw
         # an error since lyxgreyedout will not exist.
         return
 
@@ -1265,21 +1264,21 @@ def revert_notefontcolor(document):
 
 
 def revert_turkmen(document):
-    "Set language Turkmen to English" 
+    "Set language Turkmen to English"
 
-    if document.language == "turkmen": 
-        document.language = "english" 
-        i = find_token(document.header, "\\language", 0) 
-        if i != -1: 
-            document.header[i] = "\\language english" 
+    if document.language == "turkmen":
+        document.language = "english"
+        i = find_token(document.header, "\\language", 0)
+        if i != -1:
+            document.header[i] = "\\language english"
 
-    j = 0 
-    while True: 
-        j = find_token(document.body, "\\lang turkmen", j) 
-        if j == -1: 
-            return 
-        document.body[j] = document.body[j].replace("\\lang turkmen", "\\lang english") 
-        j += 1 
+    j = 0
+    while True:
+        j = find_token(document.body, "\\lang turkmen", j)
+        if j == -1:
+            return
+        document.body[j] = document.body[j].replace("\\lang turkmen", "\\lang english")
+        j += 1
 
 
 def revert_fontcolor(document):
@@ -1332,7 +1331,7 @@ def revert_lyx_version(document):
         pass
 
     i = 0
-    while 1:
+    while True:
         i = find_token(document.body, '\\begin_inset Info', i)
         if i == -1:
             return
@@ -1406,7 +1405,7 @@ def convert_html_quotes(document):
     m = l.match(line)
     if m:
       document.header[i] = "\\html_latex_start " + m.group(1)
-      
+
   i = find_token(document.header, '\\html_latex_end', 0)
   if i != -1:
     line = document.header[i]
@@ -1414,11 +1413,11 @@ def convert_html_quotes(document):
     m = l.match(line)
     if m:
       document.header[i] = "\\html_latex_end " + m.group(1)
-      
+
 
 def revert_html_quotes(document):
   " Remove quotes around html_latex_start and html_latex_end "
-  
+
   i = find_token(document.header, '\\html_latex_start', 0)
   if i != -1:
     line = document.header[i]
@@ -1429,7 +1428,7 @@ def revert_html_quotes(document):
         del document.header[i]
     else:
         document.header[i] = "\\html_latex_start \"" + m.group(1) + "\""
-      
+
   i = find_token(document.header, '\\html_latex_end', 0)
   if i != -1:
     line = document.header[i]
@@ -1481,7 +1480,7 @@ def revert_align_decimal(document):
 def convert_optarg(document):
   " Convert \\begin_inset OptArg to \\begin_inset Argument "
   i = 0
-  while 1:
+  while True:
     i = find_token(document.body, '\\begin_inset OptArg', i)
     if i == -1:
       return
@@ -1492,7 +1491,7 @@ def convert_optarg(document):
 def revert_argument(document):
   " Convert \\begin_inset Argument to \\begin_inset OptArg "
   i = 0
-  while 1:
+  while True:
     i = find_token(document.body, '\\begin_inset Argument', i)
     if i == -1:
       return
@@ -1621,8 +1620,8 @@ def convert_prettyref(document):
 			document.body[k] = "LatexCommand formatted"
 		i = j + 1
 	document.header.insert(-1, "\\use_refstyle 0")
-		
- 
+
+
 def revert_refstyle(document):
 	" Reverts neutral formatted refs to prettyref "
 	re_ref = re.compile("^reference\s+\"(\w+):(\S+)\"")
@@ -1645,7 +1644,7 @@ def revert_refstyle(document):
 	i = find_token(document.header, "\\use_refstyle", 0)
 	if i != -1:
 		document.header.pop(i)
- 
+
 
 def revert_nameref(document):
   " Convert namerefs to regular references "
@@ -1655,7 +1654,7 @@ def revert_nameref(document):
   for cmd in cmds:
     i = 0
     oldcmd = "LatexCommand " + cmd
-    while 1:
+    while True:
       # It seems better to look for this, as most of the reference
       # insets won't be ones we care about.
       i = find_token(document.body, oldcmd, i)
@@ -1686,13 +1685,13 @@ def revert_nameref(document):
       document.body[stins:endins + 1] = newcontent
 
   if foundone:
-    add_to_preamble(document, ["\usepackage{nameref}"])
+    add_to_preamble(document, ["\\usepackage{nameref}"])
 
 
 def remove_Nameref(document):
   " Convert Nameref commands to nameref commands "
   i = 0
-  while 1:
+  while True:
     # It seems better to look for this, as most of the reference
     # insets won't be ones we care about.
     i = find_token(document.body, "LatexCommand Nameref" , i)
@@ -1700,7 +1699,7 @@ def remove_Nameref(document):
       break
     cmdloc = i
     i += 1
-    
+
     # Make sure it is actually in an inset!
     val = is_in_inset(document.body, cmdloc, \
         "\\begin_inset CommandInset ref")
@@ -1720,7 +1719,7 @@ def revert_mathrsfs(document):
 
 def convert_flexnames(document):
     "Convert \\begin_inset Flex Custom:Style to \\begin_inset Flex Style and similarly for CharStyle and Element."
-    
+
     i = 0
     rx = re.compile(r'^\\begin_inset Flex (?:Custom|CharStyle|Element):(.+)$')
     while True:
@@ -1800,7 +1799,7 @@ def revert_flexnames(document):
     flexlist = flex_insets
   else:
     flexlist = flex_elements
-  
+
   rx = re.compile(r'^\\begin_inset Flex\s+(.+)$')
   i = 0
   while True:
@@ -1857,7 +1856,7 @@ def revert_mathdots(document):
         # force load case
         add_to_preamble(document, ["\\usepackage{mathdots}"])
         return
-    
+
     # so we are in the auto case. we want to load mathdots if \iddots is used.
     i = 0
     while True:
@@ -1879,7 +1878,7 @@ def revert_mathdots(document):
 def convert_rule(document):
     " Convert \\lyxline to CommandInset line. "
     i = 0
-    
+
     inset = ['\\begin_inset CommandInset line',
       'LatexCommand rule',
       'offset "0.5ex"',
@@ -1934,7 +1933,7 @@ def convert_rule(document):
 def revert_rule(document):
     " Revert line insets to Tex code "
     i = 0
-    while 1:
+    while True:
       i = find_token(document.body, "\\begin_inset CommandInset line" , i)
       if i == -1:
         return
@@ -1969,7 +1968,7 @@ def revert_diagram(document):
     j = find_end_of_inset(document.body, i)
     if j == -1:
         document.warning("Malformed LyX document: Can't find end of Formula inset.")
-        return 
+        return
     lines = "\n".join(document.body[i:j])
     if lines.find("\\Diagram") == -1:
       i = j
@@ -1978,9 +1977,9 @@ def revert_diagram(document):
     # only need to do it once!
     return
 
-chapters = ("amsbook", "book", "docbook-book", "elsart", "extbook", "extreport", 
-    "jbook", "jreport", "jsbook", "literate-book", "literate-report", "memoir", 
-    "mwbk", "mwrep", "recipebook", "report", "scrbook", "scrreprt", "svmono", 
+chapters = ("amsbook", "book", "docbook-book", "elsart", "extbook", "extreport",
+    "jbook", "jreport", "jsbook", "literate-book", "literate-report", "memoir",
+    "mwbk", "mwrep", "recipebook", "report", "scrbook", "scrreprt", "svmono",
     "svmult", "tbook", "treport", "tufte-book")
 
 def convert_bibtex_clearpage(document):
@@ -2024,13 +2023,13 @@ def convert_bibtex_clearpage(document):
       document.warning("Can't find options for bibliography inset at line " + str(j))
       j = k
       continue
-    
+
     if val.find("bibtotoc") == -1:
       j = k
       continue
-    
+
     # so we want to insert a new page right before the paragraph that
-    # this bibliography thing is in. 
+    # this bibliography thing is in.
     lay = find_token_backwards(document.body, "\\begin_layout", j)
     if lay == -1:
       document.warning("Can't find layout containing bibliography inset at line " + str(j))
@@ -2065,7 +2064,7 @@ def convert_passthru(document):
     " http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg161298.html "
     if not check_passthru:
       return
-    
+
     rx = re.compile("\\\\begin_layout \s*(\w+)")
     beg = 0
     for lay in ["Chunk", "Scrap"]:
@@ -2124,7 +2123,7 @@ def convert_passthru(document):
         beg = end + 1
         if didit:
           beg += 4 # for the extra layout
-    
+
 
 def revert_passthru(document):
     " http://www.mail-archive.com/lyx-devel@lists.lyx.org/msg161298.html "
@@ -2142,7 +2141,7 @@ def revert_passthru(document):
           document.warning("Can't find end of layout at line " + str(beg))
           beg += 1
           continue
-        
+
         # we now want to find out if the next layout is the
         # same as this one. but we will need to do this over and
         # over again.
@@ -2160,7 +2159,6 @@ def revert_passthru(document):
           # but first let's check and make sure there is no content between the
           # two layouts. i'm not sure if that can happen or not.
           for l in range(end + 1, next):
-            document.warning("c'" + document.body[l] + "'")
             if document.body[l] != "":
               document.warning("Found content between adjacent " + lay + " layouts!")
               break
@@ -2170,7 +2168,6 @@ def revert_passthru(document):
             break
           empty = True
           for l in range(next + 1, nextend):
-            document.warning("e'" + document.body[l] + "'")
             if document.body[l] != "":
               empty = False
               break
@@ -2225,7 +2222,7 @@ def revert_multirowOffset(document):
         if i == -1:
             begin_table = end_table
             continue
-        
+
         # store the number of rows and columns
         numrows = get_option_value(document.body[begin_table], "rows")
         numcols = get_option_value(document.body[begin_table], "columns")
@@ -2252,13 +2249,13 @@ def revert_multirowOffset(document):
               break
             begin_cell = begin_row
             multirows.append([])
-            for column in range(numcols):            
+            for column in range(numcols):
                 begin_cell = find_token(document.body, '<cell ', begin_cell, end_row)
                 if begin_cell == -1:
                   document.warning("Can't find column " + str(column + 1) + \
                     "in row " + str(row + 1))
                   break
-                # NOTE 
+                # NOTE
                 # this will fail if someone puts "</cell>" in a cell, but
                 # that seems fairly unlikely.
                 end_cell = find_end_of(document.body, begin_cell, '<cell', '</cell>')
@@ -2310,7 +2307,7 @@ def revert_multirowOffset(document):
               replace('valignment="middle"', 'valignment="top"')
             # remove mroffset option
             document.body[bcell] = rgx.sub('', document.body[bcell])
-            
+
             blay = find_token(document.body, "\\begin_layout", bcell, ecell)
             if blay == -1:
               document.warning("Can't find layout for cell!")
@@ -2336,7 +2333,7 @@ def revert_script(document):
     " Convert subscript/superscript inset to TeX code "
     i = 0
     foundsubscript = False
-    while 1:
+    while True:
         i = find_token(document.body, '\\begin_inset script', i)
         if i == -1:
             break
