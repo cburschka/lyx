@@ -786,7 +786,7 @@ void output_arguments(ostream & os, Parser & p, bool outer, bool need_layout, st
 				rdelim = "}";
 			p.get_token(); // eat ldelim
 			if (ldelim.size() > 1)
-		    		p.get_token(); // eat ldelim
+				p.get_token(); // eat ldelim
 			if (need_layout) {
 				context.check_layout(os);
 				need_layout = false;
@@ -812,7 +812,7 @@ void output_arguments(ostream & os, Parser & p, bool outer, bool need_layout, st
 				continue;
 			p.get_token(); // eat ldelim
 			if (ldelim.size() > 1)
-		    		p.get_token(); // eat ldelim
+				p.get_token(); // eat ldelim
 			if (need_layout) {
 				context.check_layout(os);
 				need_layout = false;
@@ -3295,6 +3295,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			context.latexparam = newlayout->latexparam();
 			// write the layout
 			output_command_layout(os, p, outer, context, newlayout);
+			context.latexparam.clear();
 			p.skip_spaces();
 			if (!preamble.titleLayoutFound())
 				preamble.titleLayoutFound(newlayout->intitle);
@@ -5467,6 +5468,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				output_ert(os, arg, newcontext);
 			} else
 				parse_text_in_inset(p, os, FLAG_ITEM, false, context, newinsetlayout);
+			context.latexparam.clear();
 			if (caption)
 				p.skip_spaces();
 			// Minted caption insets are not closed here because
