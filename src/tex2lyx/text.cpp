@@ -2099,6 +2099,12 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			break;
 		}
 		context.check_deeper(os);
+		if (newlayout->keepempty) {
+			// We need to start a new paragraph
+			// even if it is empty.
+			context.new_paragraph(os);
+			context.check_layout(os);
+		}
 		// handle known optional and required arguments
 		if (context.layout->latextype == LATEX_ENVIRONMENT)
 			output_arguments(os, p, outer, false, string(), context,
