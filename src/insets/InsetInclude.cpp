@@ -632,7 +632,7 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 				language = opts[i].substr(9);
 				opts.erase(opts.begin() + i--);
 			} else if (prefixIs(opts[i], from_ascii("caption="))) {
-				caption = params().prepareCommand(runparams, opts[i].substr(8),
+				caption = params().prepareCommand(runparams, trim(opts[i].substr(8), "{}"),
 								  ParamInfo::HANDLING_LATEXIFY);
 				opts.erase(opts.begin() + i--);
 				if (!use_minted)
