@@ -1483,7 +1483,7 @@ void parse_listings(Parser & p, ostream & os, Context & parent_context,
 		os << "inline true\n";
 	else
 		os << "inline false\n";
-	os << "status collapsed\n";
+	os << "status open\n";
 	Context context(true, parent_context.textclass);
 	context.layout = &parent_context.textclass.plainLayout();
 	if (use_minted && prefixIs(minted_nonfloat_caption, "[t]")) {
@@ -2001,6 +2001,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 						parse_text_snippet(p, FLAG_ITEM,
 							false, parent_context);
 					minted_nonfloat_caption = "[b]" + caption;
+					eat_whitespace(p, os, parent_context, true);
 				}
 			}
 			p.popPosition();
@@ -4450,6 +4451,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				// so simply skip it.
 				parse_text_snippet(p, FLAG_ITEM, false, context);
 			}
+			eat_whitespace(p, os, context, true);
 			continue;
 		}
 
@@ -4784,7 +4786,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 
 		if (t.cs() == "input" || t.cs() == "include"
 		    || t.cs() == "verbatiminput"
-		    || t.cs() == "lstinputlisting") {
+		    || t.cs() == "lstinputlisting"
+		    || t.cs() == "inputminted") {
 			string name = t.cs();
 			if (name == "verbatiminput"
 			    && p.next_token().asInput() == "*")
@@ -4798,6 +4801,39 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 				literal = !oa.first;
 				if (literal)
 					lstparams = subst(lstparams, "\n", " ");
+			} else if (name == "inputminted") {
+				name = "lstinputlisting";
+				string const lang = p.getArg('{', '}');
+				if (lang != "tex") {
+					string cmd = "\\inputminted{" + lang + "}{";
+					cmd += p.getArg('{', '}') + "}";
+					output_ert_inset(os, cmd, context);
+					continue;
+				}
+				if (prefixIs(minted_nonfloat_caption, "[t]")) {
+					minted_nonfloat_caption.erase(0,3);
+					// extract label and caption from the already produced LyX code
+					vector<string> nfc = getVectorFromString(minted_nonfloat_caption, "\n");
+					string const caption = nfc.front();
+					string label;
+					vector<string>::iterator it =
+						find(nfc.begin(), nfc.end(), "LatexCommand label");
+					if (it != nfc.end()) {
+						++it;
+						if (it != nfc.end())
+							label = *it;
+						label = support::split(label, '"');
+						label.pop_back();
+					}
+					minted_nonfloat_caption.clear();
+					lstparams = "caption=" + caption;
+					if (!label.empty())
+						lstparams += ",label=" + label;
+					pair<bool, string> oa = convert_latexed_command_inset_arg(lstparams);
+					literal = !oa.first;
+					if (literal)
+						lstparams = subst(lstparams, "\n", " ");
+				}
 			}
 			string lit = literal ? "\"true\"" : "\"false\"";
 			string filename(normalize_filename(p.getArg('{', '}')));

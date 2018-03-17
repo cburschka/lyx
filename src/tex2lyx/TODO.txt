@@ -58,12 +58,6 @@ Format LaTeX feature                        LyX feature
       \begin{btUnit}...\end{btUnit}        \multibib {none|part|chapter|section|subsection}
         (if a part, chapter, section etc.
          follows the \begin...)
-544   Minted support
-      \usepackage{minted}                  \use_minted
-      \begin{minted}{lang}                 \begin_inset listings
-      \end{minted}
-      \lyxmintcaption[]{caption\label{}}   add to include inset
-      \inputminted{tex}{Intro.fls}         \begin_inset include ...
 
 
 

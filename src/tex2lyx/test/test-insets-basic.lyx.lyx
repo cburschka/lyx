@@ -1118,7 +1118,7 @@ Inline:
 \begin_inset listings
 lstparams "language={C++},keywordstyle={\color{green}}"
 inline true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 int a=5;
@@ -1138,7 +1138,7 @@ int a=5;
 \begin_inset listings
 lstparams "caption={Example Listing float},label={lst:Example-Listing},language=Python"
 inline false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 # Example listing float
@@ -1222,7 +1222,7 @@ symbol
 \begin_inset listings
 lstparams "extendedchars=true,firstline=3,language=Python,lastline=8,numbers=left,showspaces=true,stepnumber=3"
 inline false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 def func(param):
@@ -1270,7 +1270,7 @@ Special cases:
 \begin_inset listings
 lstparams "abovecaptionskip=2em,basicstyle={\large\ttfamily},breaklines=true,extendedchars=true,firstline=2,float=h,language={[R/3 3.1]ABAP},lastline=5,numbers=left,numberstyle={\scriptsize},showspaces=true,showstringspaces=false,stepnumber=3,tabsize=4"
 inline false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 hello
@@ -1286,7 +1286,7 @@ hello
 \begin_inset listings
 lstparams "language=TeX"
 inline true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
