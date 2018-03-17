@@ -23,6 +23,8 @@ What's new
 
 - Add support for biblatex.
 
+- Add support for beamer overlay arguments (bug 11068).
+
 - Add support for chapterbib.
 
 - Add support for \includeonly.
@@ -33,12 +35,17 @@ What's new
   * Try to be a bit smarter with ambiguous quotation marks,
     depending on the main quote style and the local context.
 
+- Consider options passed via \PassOptionsToPackage.
+
 - Add support for URW Classico, MinionPro and the new Libertine fonts.
 
 - Add support for the \t*{} (bottomtiebar) macro of TIPA.
 
 - Implement better parsing of some command options (via "literate"
   function of some insets) (bug 9563).
+
+- Add support for alignment pseudo-environments as used inside floats
+  (bug 7857).
 
 
 * USER INTERFACE
@@ -121,10 +128,9 @@ What's new
 
 - Import straight quotations marks (e.g. babel shorthands) as ERT (bug 75).
 
-- Consider options passed via \PassOptionsToPackage.
+- Do not add duplicate \makebeamertitle.
 
-- Add support for alignment pseudo-environments as used inside floats
-  (bug 7857).
+- Keep empty paragraph it keepempty is true (bug 11078).
 
 - Fix parsing issue in nested CJK (bug 9562).
 
