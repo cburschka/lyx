@@ -15,7 +15,7 @@ reliable and more stable. We have fixed a number of bugs and made several
 improvements. Most users, however, will want to upgrade to LyX 2.3.0, which 
 was released shortly before 2.2.4. Users who want or need to continue using
 the 2.2.x series, however, should in most cases upgrade to 2.2.4. Perhaps its
-most imortant new feature is that it is able to read and write files in the
+most important new feature is that it is able to read and write files in the
 2.3.x format. Please note, however, that the conversion process back and forth 
 usually will not leave one with an identical file, so we do not recommend that
 users of 2.2.4 try to collaborate with users of 2.3.x.
@@ -40,3 +40,170 @@ http://www.lyx.org
 
 What's new
 ==========
+
+** Updates:
+***********
+
+* USER INTERFACE
+
+- On Windows, allow to automatically bring the LyX window to top (bug 10469).
+
+- Cache information on exportable formats (bug 9980).
+
+- Shorten the time required to save the session state on exit.
+
+
+* DOCUMENTATION AND LOCALIZATION
+
+- Updated Arabic, Czech and Japanese user interface localization.
+
+
+* BUILD/INSTALLATION
+
+- Mark some intentional fall-throughs in order to silence false
+  -Wimplicit-fallthrough warnings with gcc7.
+
+
+** Bug fixes:
+*************
+
+* DOCUMENT INPUT/OUTPUT
+
+- Fix wrong spacing in output when the font size is changed inside
+  a center environment or a greyed out note (bugs 9598 and 10650).
+
+- Assure properly nested \begin{lang} and \end{lang} tags even when
+  no language package is selected (bug 10685).
+
+- Catch "! Incomplete \if[x]" LaTeX error (bug 10666).
+
+- Ignore LaTeX error on missing ZWNJ (ligature break) characters
+  (bug 10727).
+
+- Fix PDF output of clipped graphics with recent graphics package (bug 7910).
+
+- Catch xdvipdfmx driver error that breaks XeTeX compilation (bug 10076).
+
+- Fix caption handling in listings insets when it is split into multiple
+  lines in the LaTeX output (bug 10705).
+
+- Do not let the natbibapa module overwrite what the class or other packages
+  add to the preamble.
+
+- Assure the color package is loaded before polyglossia in preview snippets
+  This fixes preview image generation with polyglossia and bidi (bug 10716).
+
+- Fix babel name of Vietnamese language. This requires now babel-vietnamese
+  (2013ff.) instead of vietnam.ldf that was shipped with vntex previously
+  (bug 10743).
+
+- Fix issue with language nesting when using Asian languages (bug 10778).
+
+- Fix bug that TeX files were not detected when reconfiguring LyX (bug 11053).
+
+
+* USER INTERFACE
+
+- Fix crash occurring in certain circumstances when previewing the source
+  of a single paragraph containing a language switch (bug 10636).
+
+- Fix crash when closing master file with full view source open (bug 10560).
+
+- Fix crash when closing master document with dirty child while Document
+  Settings dialog is open (bug 9979).
+
+- Fix crash when closing master with children and grandchildren
+  (bug 10766).
+
+- Fix crash when pasting multiple cells into a multi-paragraph cell of
+  a table (bug 9983).
+
+- Fix random crash when dissolving inset (bug 10667).
+
+- Fix potential crash when cursor enters an inset (bug 10691).
+
+- Avoid crash when selecting long text (bug 10324).
+
+- Fix crash with undo and child documents (bug 10643).
+
+- Fix completely broken undo in Advanced Find & Replace edit areas
+  (bug 10847).
+
+- Fix crash when changing preview preferences while previewable
+  external inset is open (bug 10785).
+
+- Fix problem with decimal special height/width values in the Box
+  dialog in some localizations (bug 11000).
+
+- Remove duplicate entries from the Symbols dialog (bug 10644).
+
+- Always show the float type in the float inset label (bug 10618).
+
+- Show correct color name for green in the status bar (bug 10656).
+
+- fixes to cursor positionning on mouse click for right-to-left text
+  (bug 10569).
+
+- Fix metrics of full-width insets when paragraph endings are shown
+  (bug #10537).
+
+- Fix glacial performance with ancient Hebrew text on macOS.
+
+- Fix hole in selection for some zoom and justification values (bug
+  8883).
+
+- Fix some rare cases of bad on-screen line breaking (bug #10700).
+
+- Fix bad justification before a displayed inset (bug 10699).
+
+- Fix selection display glitch with paragraph label (bug 10972).
+
+- Fix cursor state after double/triple click in mathed (bug #10686).
+
+- Avoid a case of stuck cursor after entering an inset (bug 10630).
+
+- Fix problems with hidden "BibTeX Add" dialogs on MacOSX by using drawers
+  instead of modal subdialogs (bug 10662).
+
+- Don't swallow labels not entered through the toolbar in mathed (bug 10546).
+
+- Fix bad context menu on insets that do not have one (bug 10616).
+
+- Enable OK/Apply buttons when resetting to class defaults.
+
+- Fix untranslated GUI string in Box dialog (bug 10999).
+
+- Fix untranslated GUI strings on View/Update toolbar button menu (bug 11040).
+
+- When entering a math macro name, Escape properly cancels the
+  operation (bug 9251).
+
+
+* INTERNALS
+
+- Fix execution of set-graphics-group function.
+
+
+* DOCUMENTATION AND LOCALIZATION
+
+- Fix loading of math packages in many manuals (bug 10661).
+
+- Add note that the fixltx2e package (and so module) is obsolete as of
+  TeXLive 2015 (bug 9361).
+
+- Updated French user interface localization.
+
+
+* TEX2LYX
+
+- Fix import of \newtheorem* declarations (bug 10622).
+
+- Fix import of (specific) BibTeX paths (bug 7637).
+
+- Fix import of flalign* environment (bug 10501).
+
+
+* BUILD/INSTALLATION
+
+- Update tex2lyx tests (bug 10800).
+
