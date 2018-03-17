@@ -74,6 +74,7 @@ def main(argv):
     else:
         files = ['test.ltx', \
                  'algo2e.tex', \
+                 'beamer.tex', \
                  'box-color-size-space-align.tex', \
                  'CJK.tex', \
                  'CJKutf8.tex', \
