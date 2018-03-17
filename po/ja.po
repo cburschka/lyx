@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-02-22 14:50-0500\n"
+"POT-Creation-Date: 2018-03-17 13:52-0400\n"
 "PO-Revision-Date: 2017-05-26 17:43+0900\n"
 "Last-Translator: Koji Yokota <yokota6@gmail.com>\n"
 "Language-Team: Japanese <lyx-docs@list.lyx.org>\n"
@@ -23618,11 +23618,11 @@ msgstr "DVI (LuaTeX)|V"
 msgid "DraftDVI"
 msgstr "DraftDVI"
 
-#: lib/configure.py:678 lib/configure.py:714
+#: lib/configure.py:678 lib/configure.py:715
 msgid "htm"
 msgstr "htm"
 
-#: lib/configure.py:678 lib/configure.py:714
+#: lib/configure.py:678 lib/configure.py:715
 msgid "htm|HTML"
 msgstr "html|HTML"
 
@@ -23704,50 +23704,55 @@ msgid "LyX 2.1.x"
 msgstr "LyX 2.1.x"
 
 #: lib/configure.py:705
+#, fuzzy
+msgid "LyX 2.3.x"
+msgstr "LyX 2.0.x"
+
+#: lib/configure.py:706
 msgid "CJK LyX 1.4.x (big5)"
 msgstr "CJK LyX 1.4.x (big5)"
 
-#: lib/configure.py:706
+#: lib/configure.py:707
 msgid "CJK LyX 1.4.x (euc-jp)"
 msgstr "CJK LyX 1.4.x (euc-jp)"
 
-#: lib/configure.py:707
+#: lib/configure.py:708
 msgid "CJK LyX 1.4.x (euc-kr)"
 msgstr "CJK LyX 1.4.x (euc-kr)"
 
-#: lib/configure.py:708
+#: lib/configure.py:709
 msgid "LyX Preview"
 msgstr "LyXプレビュー"
 
-#: lib/configure.py:709
+#: lib/configure.py:710
 msgid "PDFTEX"
 msgstr "PDFTEX"
 
-#: lib/configure.py:710
+#: lib/configure.py:711
 msgid "Program"
 msgstr "プログラム"
 
-#: lib/configure.py:711
+#: lib/configure.py:712
 msgid "PSTEX"
 msgstr "PSTEX"
 
-#: lib/configure.py:712 src/frontends/qt4/GuiClipboard.cpp:173
+#: lib/configure.py:713 src/frontends/qt4/GuiClipboard.cpp:173
 msgid "Windows Metafile"
 msgstr "Windowsメタファイル"
 
-#: lib/configure.py:713 src/frontends/qt4/GuiClipboard.cpp:172
+#: lib/configure.py:714 src/frontends/qt4/GuiClipboard.cpp:172
 msgid "Enhanced Metafile"
 msgstr "拡張メタファイル"
 
-#: lib/configure.py:826
+#: lib/configure.py:827
 msgid "LyXBlogger"
 msgstr "LyxBlogger"
 
-#: lib/configure.py:1087
+#: lib/configure.py:1088
 msgid "LyX Archive (zip)"
 msgstr "LyX書庫(zip)"
 
-#: lib/configure.py:1090
+#: lib/configure.py:1091
 msgid "LyX Archive (tar.gz)"
 msgstr "LyX書庫(tar.gz)"
 
