@@ -3629,7 +3629,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			continue;
 		}
 
-		else if (t.cs() == "makeindex" || t.cs() == "maketitle") {
+		else if (t.cs() == "makeindex" || t.cs() == "maketitle" || t.cs() == "makebeamertitle") {
 			if (preamble.titleLayoutFound()) {
 				// swallow this
 				skip_spaces_braces(p);
