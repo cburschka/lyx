@@ -102,7 +102,7 @@ Inline:
 \begin_inset listings
 lstparams "style=bw,language=C++"
 inline true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 int a=5;
@@ -137,7 +137,7 @@ noprefix "false"
 \begin_inset listings
 lstparams "language=Python,float=h"
 inline false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 # Example listing float
@@ -216,7 +216,7 @@ symbol
 \begin_inset listings
 lstparams "firstline=4,numbers=left,showspaces=true,language=Python"
 inline false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 def func(param):
@@ -252,7 +252,7 @@ A floating one-liner with [h] placement and without caption:
 \begin_inset listings
 lstparams "fontfamily=tt,fontsize={\large},bgcolor=lightgray,language=ABAP,float=h"
 inline false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 hello
@@ -269,7 +269,7 @@ Another inline listing:
 \begin_inset listings
 lstparams "language=TeX"
 inline true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -298,11 +298,11 @@ noprefix "false"
 
 \end_inset
 
-):  
+): 
 \begin_inset listings
 lstparams "numbers=left,frame=lines,language=C"
 inline false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -372,7 +372,7 @@ noprefix "false"
 \begin_inset listings
 lstparams "numbers=left,frame=lines,language=Fortran"
 inline false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 subroutine incr(i)
@@ -417,10 +417,6 @@ A Fortran subroutine
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 A framed floating listing with a caption and a label (Listing
 \begin_inset space ~
 
@@ -440,7 +436,7 @@ noprefix "false"
 \begin_inset listings
 lstparams "frame=single,language=Python,float=h"
 inline false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 def boring(args = None):
@@ -495,7 +491,7 @@ noprefix "false"
 ): \begin_inset listings
 lstparams "frame=single,language=Python,float=h"
 inline false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 def boring(args = None):
