@@ -25,6 +25,7 @@ TEST_FILES = \
 	test/runtests.cmake \
 	test/runtests.py \
 	test/algo2e.tex \
+	test/beamer.tex \
 	test/box-color-size-space-align.tex \
 	test/CJK.tex \
 	test/CJKutf8.tex \
@@ -49,6 +50,7 @@ TEST_FILES = \
 
 TEST_RESULTS = \
 	test/algo2e.lyx.lyx \
+	test/beamer.lyx.lyx \
 	test/box-color-size-space-align.lyx.lyx \
 	test/CJK.lyx.lyx \
 	test/CJKutf8.lyx.lyx \
