@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-03-17 16:03-0400\n"
-"PO-Revision-Date: 2018-03-05 15:11+0200\n"
+"PO-Revision-Date: 2018-03-18 15:56+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -1900,6 +1900,8 @@ msgid ""
 "Clip to the coordinates specified below (bounding box for DVI/PS output, "
 "viewport for PDF output)"
 msgstr ""
+"Обрезать по координатам, указанным ниже (bounding box для вывода DVI/PS, "
+"viewport для вывода PDF)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:350
 msgid "Clip to c&oordinates"
@@ -1920,6 +1922,8 @@ msgid ""
 "Read coordinates from the file (bounding box value in case of PostScript "
 "files, graphic dimensions in case of other file types)"
 msgstr ""
+"Читать координаты из файла (значение bounding box для файлов PostScript, "
+"размеры изображения - для файлов других типов)"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:520
 #: src/frontends/qt4/ui/GraphicsUi.ui:527
@@ -1955,7 +1959,6 @@ msgid "Graphics Group"
 msgstr "Группа изображений"
 
 #: src/frontends/qt4/ui/GraphicsUi.ui:680
-#, fuzzy
 msgid "Assigned &to group:"
 msgstr "П&рисоединено к группе:"
 
@@ -2153,7 +2156,6 @@ msgid "Listing Parameters"
 msgstr "Параметры листинга"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:248
-#, fuzzy
 msgid "&Caption:"
 msgstr "Подпись:"
 
@@ -2170,12 +2172,10 @@ msgid "&Bypass validation"
 msgstr "Пропускать проверку"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:285
-#, fuzzy
 msgid "&More parameters"
 msgstr "До&полнительные параметры"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:295
-#, fuzzy
 msgid ""
 "Pass content of the `Caption' field literally to LaTeX. Check this if you "
 "want to enter LaTeX code."
@@ -17322,9 +17322,8 @@ msgid "Palatino"
 msgstr "Palatino"
 
 #: lib/latexfonts:360 lib/latexfonts:368
-#, fuzzy
 msgid "ParaType Serif"
-msgstr "Bera Serif"
+msgstr "ParaType Serif"
 
 #: lib/latexfonts:374 lib/latexfonts:383 lib/latexfonts:390 lib/latexfonts:396
 msgid "Times Roman"
@@ -17355,9 +17354,8 @@ msgid "Utopia (Fourier)"
 msgstr "Utopia (Fourier)"
 
 #: lib/latexfonts:464
-#, fuzzy
 msgid "Bitstream Charter (XCharter)"
-msgstr "Bitstream Charter (Mathdesign)"
+msgstr "Bitstream Charter (XCharter)"
 
 #: lib/latexfonts:475
 msgid "Avant Garde"
@@ -17424,9 +17422,8 @@ msgid "Noto Sans"
 msgstr "Noto Sans"
 
 #: lib/latexfonts:606
-#, fuzzy
 msgid "ParaType Sans"
-msgstr "Bera Sans"
+msgstr "ParaType Sans"
 
 #: lib/latexfonts:614
 msgid "TeX Gyre Adventor"
@@ -17473,9 +17470,8 @@ msgid "Noto Mono"
 msgstr "Noto Mono"
 
 #: lib/latexfonts:702
-#, fuzzy
 msgid "ParaType Mono"
-msgstr "Bera Mono"
+msgstr "ParaType Mono"
 
 #: lib/latexfonts:710
 msgid "TeX Gyre Cursor"
@@ -18268,9 +18264,8 @@ msgid "Paragraph Settings...|P"
 msgstr "Настройки абзаца...|а"
 
 #: lib/ui/stdcontext.inc:361
-#, fuzzy
 msgid "Unify Graphics Groups|U"
-msgstr "Группа изображений"
+msgstr "Объединить группы изображений|б"
 
 #: lib/ui/stdcontext.inc:364
 msgid "Fullscreen Mode"
@@ -19423,9 +19418,8 @@ msgid "Update Master Document|a"
 msgstr "Обновить главный документ"
 
 #: lib/ui/stdmenus.inc:547
-#, fuzzy
 msgid "Cancel Background Process|P"
-msgstr "Закрашенный фон|З"
+msgstr "Отменить фоновый процесс|ф"
 
 #: lib/ui/stdmenus.inc:549
 msgid "Compressed|o"
@@ -20775,24 +20769,20 @@ msgid "cancelto"
 msgstr "cancelto"
 
 #: lib/ui/stdtoolbars.inc:469
-#, fuzzy
 msgid "Insert left/right side scripts (sideset)"
-msgstr "Вставка левых/правых боковых скриптов"
+msgstr "Сторонние индексы слева/справа (sideset)"
 
 #: lib/ui/stdtoolbars.inc:470
-#, fuzzy
 msgid "Insert right side scripts (sidesetr)"
-msgstr "Вставка правых скриптов"
+msgstr "Cторонние индексы справа (sidesetr)"
 
 #: lib/ui/stdtoolbars.inc:471
-#, fuzzy
 msgid "Insert left side scripts (sidesetl)"
-msgstr "Вставка левых скриптов"
+msgstr "Сторонние индексы слева (sidesetl)"
 
 #: lib/ui/stdtoolbars.inc:472
-#, fuzzy
 msgid "Insert side scripts (sidesetn)"
-msgstr "Вставка боковых скриптов"
+msgstr "Сторонние индексы (sidesetn)"
 
 #: lib/ui/stdtoolbars.inc:473
 msgid "overset"
@@ -24917,9 +24907,8 @@ msgid "LyX 2.2.x"
 msgstr "LyX 2.2.x"
 
 #: lib/configure.py:758
-#, fuzzy
 msgid "LyX 2.3.x"
-msgstr "LyX 2.0.x"
+msgstr "LyX 2.3.x"
 
 #: lib/configure.py:759
 msgid "CJK LyX 1.4.x (big5)"
@@ -25275,21 +25264,19 @@ msgstr ""
 "Пожалуйста проверьте что программное обеспечение, поддерживающее Вашу "
 "кодировку (%1$s), корректно установлено"
 
-# code point - место в коде?
 #: src/Buffer.cpp:1710
-#, fuzzy, c-format
+#, c-format
 msgid "Uncodable character '%1$s' (code point %2$s)"
-msgstr "Не удалось найти команду LaTeX для символа '%1$s' (code point %2$s)"
+msgstr "Некодируемый символ '%1$s' (code point %2$s)"
 
 #: src/Buffer.cpp:1713
-#, fuzzy
 msgid ""
 "Some characters of your document are not representable in specific verbatim "
 "contexts.\n"
 "Changing the document encoding to utf8 could help."
 msgstr ""
-"Некоторые из символов Вашего документа не могут быть представлены в "
-"выбранной кодировке.\n"
+"Некоторые из символов вашего документа не могут быть представлены в "
+"дословном контексте.\n"
 "Может помочь смена кодировки документа на utf8."
 
 # code point - место в коде?
@@ -26528,9 +26515,8 @@ msgid "&Always run for this document"
 msgstr "Всегда запускать для этого документа"
 
 #: src/Converter.cpp:427 src/Converter.cpp:668 src/Converter.cpp:697
-#, fuzzy
 msgid "Converter killed"
-msgstr "Кэш-файл конвертера"
+msgstr "Конвертер завершён"
 
 #: src/Converter.cpp:428 src/Converter.cpp:669 src/Converter.cpp:698
 #, c-format
@@ -26539,6 +26525,9 @@ msgid ""
 " %1$s\n"
 "was killed by the user."
 msgstr ""
+"Запущенный конвертер\n"
+"%1$s\n"
+"был завершён пользователем."
 
 #: src/Converter.cpp:447 src/Converter.cpp:722 src/Converter.cpp:745
 #: src/Converter.cpp:788
@@ -26585,22 +26574,21 @@ msgid "Executing command: "
 msgstr "Исполняется команда: "
 
 #: src/Converter.cpp:709
-#, fuzzy
 msgid "Process Killed"
-msgstr "&Продолжить"
+msgstr "Процесс завершён"
 
 #: src/Converter.cpp:710
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "The conversion process was killed while running:\n"
 "%1$s"
 msgstr ""
-"Произошла ошибка при выполнении:\n"
+"Преобразование было завершено при выполнении:\n"
 "%1$s"
 
 #: src/Converter.cpp:713
 msgid "Process Timed Out"
-msgstr ""
+msgstr "Время ожидания процесса истекло"
 
 #: src/Converter.cpp:714
 #, c-format
@@ -26609,6 +26597,9 @@ msgid ""
 "%1$s\n"
 "timed out before completing."
 msgstr ""
+"Время ожидания процесса преобразования:\n"
+"%1$s\n"
+"истекло до завершения."
 
 #: src/Converter.cpp:717
 msgid "Build errors"
@@ -26647,13 +26638,12 @@ msgid "Running LaTeX..."
 msgstr "Запуск LaTeX..."
 
 #: src/Converter.cpp:852
-#, fuzzy
 msgid "Export canceled"
-msgstr "Экспорт документа отменён."
+msgstr "Экспорт документа отменён"
 
 #: src/Converter.cpp:853
 msgid "The export process was terminated by the user."
-msgstr ""
+msgstr "Процесс экспорта был завершен пользователем."
 
 #: src/Converter.cpp:867
 #, c-format
@@ -28689,11 +28679,12 @@ msgid "ERROR: LyX wasn't able to find the CREDITS file\n"
 msgstr "ОШИБКА: Невозможно прочитать файл CREDITS\n"
 
 #: src/frontends/qt4/GuiAbout.cpp:52 src/frontends/qt4/GuiAbout.cpp:57
-#, fuzzy
 msgid ""
 "Please install correctly to estimate the great\n"
 "amount of work other people have done for the LyX project."
-msgstr "тот огромный труд, который множество людей вложили в LyX."
+msgstr ""
+"Пожалуйста, выполните корректную установку, чтобы оценить\n"
+"тот огромный труд, который множество людей вложили в LyX."
 
 #: src/frontends/qt4/GuiAbout.cpp:56
 msgid "ERROR: LyX wasn't able to read the CREDITS file\n"
@@ -28704,11 +28695,12 @@ msgid "ERROR: LyX wasn't able to find the RELEASE-NOTES file\n"
 msgstr "Ошибка: Невозможно прочитать файл RELEASE-NOTES\n"
 
 #: src/frontends/qt4/GuiAbout.cpp:92 src/frontends/qt4/GuiAbout.cpp:97
-#, fuzzy
 msgid ""
 "Please install correctly to see what has changed\n"
 "for this version of LyX."
-msgstr "Пожалуйста, установите всё корректно, чтобы увидеть изменения\n"
+msgstr ""
+"Пожалуйста, выполните корректную установку, чтобы увидеть изменения\n"
+"для этой версии LyX."
 
 #: src/frontends/qt4/GuiAbout.cpp:96
 msgid "ERROR: LyX wasn't able to read the RELEASE-NOTES file\n"
@@ -28845,7 +28837,7 @@ msgstr "аргумент <LFUN-COMMAND> buffer-forall не верен"
 
 #: src/frontends/qt4/GuiApplication.cpp:1396
 msgid "Wrong focus!"
-msgstr ""
+msgstr "Неверный фокус!"
 
 #: src/frontends/qt4/GuiApplication.cpp:1526
 msgid "Running configure..."
@@ -29035,9 +29027,8 @@ msgstr "все ссылки"
 #: src/frontends/qt4/GuiView.cpp:2232 src/frontends/qt4/GuiView.cpp:2291
 #: src/frontends/qt4/GuiView.cpp:2429 src/frontends/qt4/GuiView.cpp:2562
 #: src/frontends/qt4/GuiView.cpp:2602 src/frontends/qt4/GuiView.cpp:2720
-#, fuzzy
 msgid "D&ocuments"
-msgstr "Документы"
+msgstr "Д&окументы"
 
 #: src/frontends/qt4/GuiBibtex.cpp:437
 msgid "BibTeX Databases (*.bib)"
@@ -29795,9 +29786,8 @@ msgid "Class Default"
 msgstr "Использовать умолчания для класса"
 
 #: src/frontends/qt4/GuiDocument.cpp:2312
-#, fuzzy
 msgid "Lay&outs"
-msgstr "Макеты|#o#O"
+msgstr "&Макеты"
 
 #: src/frontends/qt4/GuiDocument.cpp:2314
 msgid "LyX Layout (*.layout)"
@@ -30170,9 +30160,8 @@ msgid "Select graphics file"
 msgstr "Выберите файл с изображением"
 
 #: src/frontends/qt4/GuiGraphics.cpp:792
-#, fuzzy
 msgid "&Clipart"
-msgstr "Галерея|#Г#г"
+msgstr "&Галерея"
 
 #: src/frontends/qt4/GuiHSpace.cpp:45 src/frontends/qt4/GuiHSpace.cpp:58
 #: src/insets/InsetSpace.cpp:69
@@ -30482,14 +30471,12 @@ msgid "Phantom Settings"
 msgstr "Настройки фантома"
 
 #: src/frontends/qt4/GuiPrefs.cpp:141
-#, fuzzy
 msgid "&System files"
-msgstr "Системные файлы|#С#с"
+msgstr "&Системные файлы"
 
 #: src/frontends/qt4/GuiPrefs.cpp:145
-#, fuzzy
 msgid "&User files"
-msgstr "Пользовательские файлы|#П#п"
+msgstr "&Пользовательские файлы"
 
 #: src/frontends/qt4/GuiPrefs.cpp:251
 msgid "Look & Feel"
@@ -31313,9 +31300,8 @@ msgid "Select template file"
 msgstr "Выберите файл шаблона"
 
 #: src/frontends/qt4/GuiView.cpp:2233 src/frontends/qt4/GuiView.cpp:2603
-#, fuzzy
 msgid "&Templates"
-msgstr "&Шаблон"
+msgstr "&Шаблоны"
 
 #: src/frontends/qt4/GuiView.cpp:2260
 msgid "Document not loaded."
@@ -31327,9 +31313,8 @@ msgstr "Выберите документ для открытия"
 
 #: src/frontends/qt4/GuiView.cpp:2292 src/frontends/qt4/GuiView.cpp:2430
 #: src/frontends/qt4/GuiView.cpp:2563
-#, fuzzy
 msgid "&Examples"
-msgstr "Примеры"
+msgstr "&Примеры"
 
 #: src/frontends/qt4/GuiView.cpp:2320
 #, c-format
@@ -33811,25 +33796,7 @@ msgstr "Неизвестный пользователь"
 #~ msgid " et al."
 #~ msgstr " и др."
 
-#~ msgid ", [[separate author names in citation, except for last name]]"
-#~ msgstr ", "
-
-#~ msgid ", and [[separate name of last author in citation]]"
-#~ msgstr " и "
-
-#~ msgid " and [[separate two authors in citation]]"
-#~ msgstr " и "
-
-#~ msgid "/"
-#~ msgstr "/"
-
-#~ msgid "pp."
-#~ msgstr "с."
-
 #~ msgid "ed."
-#~ msgstr "ред."
-
-#~ msgid "eds."
 #~ msgstr "ред."
 
 #~ msgid "vol."
@@ -33837,12 +33804,6 @@ msgstr "Неизвестный пользователь"
 
 #~ msgid "no."
 #~ msgstr "номер"
-
-#~ msgid "in"
-#~ msgstr "в"
-
-#~ msgid "Please install correctly to estimate the great\n"
-#~ msgstr "Пожалуйста, установите всё корректно, чтобы оценить\n"
 
 #~ msgid "for this version of LyX."
 #~ msgstr "для этой версии LyX."
@@ -34039,24 +34000,6 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Conversion Failed!"
 #~ msgstr "Конверсия не выполнена"
-
-#~ msgid "``text''"
-#~ msgstr "“текст”"
-
-#~ msgid "''text''"
-#~ msgstr "”текст”"
-
-#~ msgid ",,text``"
-#~ msgstr "„текст“"
-
-#~ msgid ",,text''"
-#~ msgstr "„текст”"
-
-#~ msgid "<<text>>"
-#~ msgstr "«текст»"
-
-#~ msgid ">>text<<"
-#~ msgstr "»текст«"
 
 #~ msgid "Jump back"
 #~ msgstr "Вернуться обратно"
