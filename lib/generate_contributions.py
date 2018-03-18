@@ -879,8 +879,8 @@ contributors = [
                  "23 December 2016",
                  u"File opening enhancement"),
 
-     contributor(u"Richard Heck",
-                 "rgheck () comcast ! net",
+     contributor(u"Richard Kimberly Heck",
+                 "rikiheck () lyx ! org",
                  "GPL",
                  "GPL Statement",
                  "m=117501689204059",
