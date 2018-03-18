@@ -343,12 +343,14 @@
 # -----------------------------------------------------------------
 # 21 février 2018 : revue traduction strike/cross out avant 2.3.0
 # -----------------------------------------------------------------
+# 18 mars 2018 : traduction message sideset (2.3.0 est publié)
+# -----------------------------------------------------------------
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-03-17 15:55-0400\n"
-"PO-Revision-Date: 2018-02-21 14:06+0100\n"
+"PO-Revision-Date: 2018-03-18 09:54+0100\n"
 "Last-Translator: Jean-Pierre Chrétien <jeanpierre.chretien@free.fr>\n"
 "Language-Team: lyxfr\n"
 "Language: fr\n"
@@ -21127,24 +21129,20 @@ msgid "cancelto"
 msgstr "cancelto"
 
 #: lib/ui/stdtoolbars.inc:468
-#, fuzzy
 msgid "Insert left/right side scripts (sideset)"
-msgstr "Insérer des indices/exposants latéraux droits/gauches"
+msgstr "Insérer des scripts latéraux droits/gauches (sideset)"
 
 #: lib/ui/stdtoolbars.inc:469
-#, fuzzy
 msgid "Insert right side scripts (sidesetr)"
-msgstr "Insérer des indices/exposants latéraux droits"
+msgstr "Insérer des scripts latéraux droits (sidesetr)"
 
 #: lib/ui/stdtoolbars.inc:470
-#, fuzzy
 msgid "Insert left side scripts (sidesetl)"
-msgstr "Insérer des indices/exposants latéraux gauches"
+msgstr "Insérer des scripts latéraux gauches (sidesetl)"
 
 #: lib/ui/stdtoolbars.inc:471
-#, fuzzy
 msgid "Insert side scripts (sidesetn)"
-msgstr "Insérer des indices/exposants latéraux"
+msgstr "Insérer des scripts latéraux (sidesetn)"
 
 #: lib/ui/stdtoolbars.inc:472
 msgid "overset"
