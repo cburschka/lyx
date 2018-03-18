@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-03-17 15:55-0400\n"
-"PO-Revision-Date: 2018-03-05 15:11+0200\n"
+"PO-Revision-Date: 2018-03-18 09:52+0200\n"
 "Last-Translator: Yuriy Skalko <yuriy.skalko@gmail.com>\n"
 "Language-Team: Russian <lyx-docs@lists.lyx.org>\n"
 "Language: ru\n"
@@ -20723,24 +20723,20 @@ msgid "cancelto"
 msgstr "cancelto"
 
 #: lib/ui/stdtoolbars.inc:468
-#, fuzzy
 msgid "Insert left/right side scripts (sideset)"
-msgstr "Вставка левых/правых боковых скриптов"
+msgstr "Сторонние индексы слева/справа (sideset)"
 
 #: lib/ui/stdtoolbars.inc:469
-#, fuzzy
 msgid "Insert right side scripts (sidesetr)"
-msgstr "Вставка правых скриптов"
+msgstr "Cторонние индексы справа (sidesetr)"
 
 #: lib/ui/stdtoolbars.inc:470
-#, fuzzy
 msgid "Insert left side scripts (sidesetl)"
-msgstr "Вставка левых скриптов"
+msgstr "Сторонние индексы слева (sidesetl)"
 
 #: lib/ui/stdtoolbars.inc:471
-#, fuzzy
 msgid "Insert side scripts (sidesetn)"
-msgstr "Вставка боковых скриптов"
+msgstr "Сторонние индексы (sidesetn)"
 
 #: lib/ui/stdtoolbars.inc:472
 msgid "overset"
@@ -33671,25 +33667,7 @@ msgstr "Неизвестный пользователь"
 #~ msgid " et al."
 #~ msgstr " и др."
 
-#~ msgid ", [[separate author names in citation, except for last name]]"
-#~ msgstr ", "
-
-#~ msgid ", and [[separate name of last author in citation]]"
-#~ msgstr " и "
-
-#~ msgid " and [[separate two authors in citation]]"
-#~ msgstr " и "
-
-#~ msgid "/"
-#~ msgstr "/"
-
-#~ msgid "pp."
-#~ msgstr "с."
-
 #~ msgid "ed."
-#~ msgstr "ред."
-
-#~ msgid "eds."
 #~ msgstr "ред."
 
 #~ msgid "vol."
@@ -33697,9 +33675,6 @@ msgstr "Неизвестный пользователь"
 
 #~ msgid "no."
 #~ msgstr "номер"
-
-#~ msgid "in"
-#~ msgstr "в"
 
 #~ msgid ""
 #~ "Use font ligatures -- and --- instead of \\textendash and \\textemdash "
@@ -33890,24 +33865,6 @@ msgstr "Неизвестный пользователь"
 #, fuzzy
 #~ msgid "Conversion Failed!"
 #~ msgstr "Конверсия не выполнена"
-
-#~ msgid "``text''"
-#~ msgstr "“текст”"
-
-#~ msgid "''text''"
-#~ msgstr "”текст”"
-
-#~ msgid ",,text``"
-#~ msgstr "„текст“"
-
-#~ msgid ",,text''"
-#~ msgstr "„текст”"
-
-#~ msgid "<<text>>"
-#~ msgstr "«текст»"
-
-#~ msgid ">>text<<"
-#~ msgstr "»текст«"
 
 #~ msgid "Jump back"
 #~ msgstr "Вернуться обратно"
