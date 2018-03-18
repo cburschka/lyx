@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-03-17 16:03-0400\n"
-"PO-Revision-Date: 2018-01-27 11:19+0100\n"
+"POT-Creation-Date: 2018-03-18 09:44+0100\n"
+"PO-Revision-Date: 2018-03-18 09:50+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -2251,9 +2251,8 @@ msgid "Listing Parameters"
 msgstr "Listing-Parameter"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:248
-#, fuzzy
 msgid "&Caption:"
-msgstr "Legende:"
+msgstr "Le&gende:"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:275
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:79
@@ -2270,17 +2269,16 @@ msgid "&Bypass validation"
 msgstr "Überprüfung &umgehen"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:285
-#, fuzzy
 msgid "&More parameters"
 msgstr "&Weitere Parameter"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:295
-#, fuzzy
 msgid ""
 "Pass content of the `Caption' field literally to LaTeX. Check this if you "
 "want to enter LaTeX code."
 msgstr ""
-"Übergebe den Inhalt des Feldes ,Name` unformatiert an LaTeX. Aktivieren Sie "
+"Übergebe den Inhalt des Feldes ,Legende` unformatiert an LaTeX. Aktivieren"
+" Sie "
 "dies, wenn Sie LaTeX-Code eingeben wollen."
 
 #: src/frontends/qt4/ui/IndexUi.ui:59 src/frontends/qt4/ui/IndicesUi.ui:143
@@ -17452,9 +17450,8 @@ msgid "Palatino"
 msgstr "Palatino"
 
 #: lib/latexfonts:360 lib/latexfonts:368
-#, fuzzy
 msgid "ParaType Serif"
-msgstr "Bera Serif"
+msgstr "ParaType Serif"
 
 #: lib/latexfonts:374 lib/latexfonts:383 lib/latexfonts:390 lib/latexfonts:396
 msgid "Times Roman"
@@ -17485,9 +17482,8 @@ msgid "Utopia (Fourier)"
 msgstr "Utopia (Fourier)"
 
 #: lib/latexfonts:464
-#, fuzzy
 msgid "Bitstream Charter (XCharter)"
-msgstr "Bitstream Charter (Mathdesign)"
+msgstr "Bitstream Charter (XCharter)"
 
 #: lib/latexfonts:475
 msgid "Avant Garde"
@@ -17554,9 +17550,8 @@ msgid "Noto Sans"
 msgstr "Noto Sans"
 
 #: lib/latexfonts:606
-#, fuzzy
 msgid "ParaType Sans"
-msgstr "Bera Sans"
+msgstr "ParaType Sans"
 
 #: lib/latexfonts:614
 msgid "TeX Gyre Adventor"
@@ -17603,9 +17598,8 @@ msgid "Noto Mono"
 msgstr "Noto Mono"
 
 #: lib/latexfonts:702
-#, fuzzy
 msgid "ParaType Mono"
-msgstr "Bera Mono"
+msgstr "ParaType Mono"
 
 #: lib/latexfonts:710
 msgid "TeX Gyre Cursor"
@@ -18389,9 +18383,8 @@ msgid "Paragraph Settings...|P"
 msgstr "Absatz-Einstellungen...|A"
 
 #: lib/ui/stdcontext.inc:361
-#, fuzzy
 msgid "Unify Graphics Groups|U"
-msgstr "Grafikgruppe"
+msgstr "Grafikgruppe zusammenstellen|z"
 
 #: lib/ui/stdcontext.inc:364
 msgid "Fullscreen Mode"
@@ -20893,24 +20886,20 @@ msgid "cancelto"
 msgstr "cancelto"
 
 #: lib/ui/stdtoolbars.inc:469
-#, fuzzy
 msgid "Insert left/right side scripts (sideset)"
-msgstr "Indices rechts/links einfügen"
+msgstr "Indices rechts/links einfügen (sideset)"
 
 #: lib/ui/stdtoolbars.inc:470
-#, fuzzy
 msgid "Insert right side scripts (sidesetr)"
-msgstr "Indices rechts einfügen"
+msgstr "Indices rechts einfügen (sitesetr)"
 
 #: lib/ui/stdtoolbars.inc:471
-#, fuzzy
 msgid "Insert left side scripts (sidesetl)"
-msgstr "Indices links einfügen"
+msgstr "Indices links einfügen (sidesetl)"
 
 #: lib/ui/stdtoolbars.inc:472
-#, fuzzy
 msgid "Insert side scripts (sidesetn)"
-msgstr "Seitliche Indices einfügen"
+msgstr "Seitliche Indices einfügen (sitesetn)"
 
 #: lib/ui/stdtoolbars.inc:473
 msgid "overset"
@@ -25036,9 +25025,8 @@ msgid "LyX 2.2.x"
 msgstr "LyX 2.2.x"
 
 #: lib/configure.py:758
-#, fuzzy
 msgid "LyX 2.3.x"
-msgstr "LyX 2.0.x"
+msgstr "LyX 2.3.x"
 
 #: lib/configure.py:759
 msgid "CJK LyX 1.4.x (big5)"
@@ -28899,11 +28887,12 @@ msgid "ERROR: LyX wasn't able to find the CREDITS file\n"
 msgstr "Fehler: LyX konnte die Datei CREDITS nicht finden\n"
 
 #: src/frontends/qt4/GuiAbout.cpp:52 src/frontends/qt4/GuiAbout.cpp:57
-#, fuzzy
 msgid ""
 "Please install correctly to estimate the great\n"
 "amount of work other people have done for the LyX project."
-msgstr "an Arbeit abschätzen zu können, die andere in LyX gesteckt haben."
+msgstr ""
+"Bitte installieren Sie diese Datei, um die große Menge\n"
+"an Arbeit abschätzen zu können, die andere in LyX gesteckt haben."
 
 #: src/frontends/qt4/GuiAbout.cpp:56
 msgid "ERROR: LyX wasn't able to read the CREDITS file\n"
@@ -28914,11 +28903,12 @@ msgid "ERROR: LyX wasn't able to find the RELEASE-NOTES file\n"
 msgstr "Fehler: LyX konnte die Datei RELEASE-NOTES nicht finden\n"
 
 #: src/frontends/qt4/GuiAbout.cpp:92 src/frontends/qt4/GuiAbout.cpp:97
-#, fuzzy
 msgid ""
 "Please install correctly to see what has changed\n"
 "for this version of LyX."
-msgstr "Bitte installieren Sie diese Datei, um zu sehen, was sich\n"
+msgstr ""
+"Bitte installieren Sie diese Datei, um zu sehen, was sich\n"
+"für diese LyX-Version grundlegend geändert hat."
 
 #: src/frontends/qt4/GuiAbout.cpp:96
 msgid "ERROR: LyX wasn't able to read the RELEASE-NOTES file\n"
@@ -29052,7 +29042,7 @@ msgstr "Das <LFUN-COMMAND>-Argument des Befehls 'buffer-forall' ist ungültig."
 
 #: src/frontends/qt4/GuiApplication.cpp:1396
 msgid "Wrong focus!"
-msgstr ""
+msgstr "Fokusfehler!"
 
 #: src/frontends/qt4/GuiApplication.cpp:1526
 msgid "Running configure..."
