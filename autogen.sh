@@ -16,11 +16,11 @@ else
 fi
 
 case $automake_version in
-    *' '1.1[45]*)
+    *' '1.1[456]*)
 	;;
     *)
 	echo "This automake version is not supported by LyX."
-	echo "LyX only supports automake 1.14 to 1.15."
+	echo "LyX only supports automake 1.14 through 1.16."
 	exit 1
 	;;
 esac
