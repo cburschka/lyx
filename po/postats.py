@@ -31,7 +31,7 @@ from __future__ import print_function
 # modify this when you change branch
 # Note that an empty lyx_branch variable (ie svn trunk)
 # will "do the right thing".
-lyx_branch=""
+lyx_branch="2.3.x"
 # these po-files will be skipped:
 ommitted = ('en.po')
 
