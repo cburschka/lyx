@@ -68,7 +68,11 @@ What's new
 
 - Fix list of viewable formats in view/update menu (bug 11044).
 
-- Fix encoding problems with listings insets and non-TeX fonts (bug 11056).
+- Fix encoding problems with listings insets and non-TeX fonts (bug
+  11056).
+
+- When only Enchant is configured as a spell checker, configure it
+  properly as default.
 
 
 * INTERNALS
