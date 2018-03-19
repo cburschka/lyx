@@ -284,6 +284,8 @@ void LyXRC::setDefaults()
 // FIXME: this check should test the target platform (darwin)
 #if defined(USE_MACOSX_PACKAGING)
 	spellchecker = "native";
+#elif defined(USE_ENCHANT)
+	spellchecker = "enchant";
 #elif defined(USE_ASPELL)
 	spellchecker = "aspell";
 #elif defined(USE_HUNSPELL)
