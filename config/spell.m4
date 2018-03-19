@@ -45,8 +45,8 @@ AC_DEFUN([CHECK_WITH_ENCHANT],
 	test "$with_enchant" = "no" && lyx_use_enchant=false
 
 	if $lyx_use_enchant; then
-		PKG_CHECK_MODULES([ENCHANT], [enchant], [],
-		    [PKG_CHECK_MODULES([ENCHANT], [enchant-2], [],
+		PKG_CHECK_MODULES([ENCHANT], [enchant-2], [],
+		    [PKG_CHECK_MODULES([ENCHANT], [enchant], [],
 		        [lyx_use_enchant=false])])
 		AC_MSG_CHECKING([whether to use enchant])
 		if $lyx_use_enchant ; then
