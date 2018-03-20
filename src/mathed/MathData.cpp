@@ -261,6 +261,15 @@ bool isInside(DocIterator const & it, MathData const & ar,
 
 void MathData::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	// This is the only point where the drawing font is known.
+	// We set cursor current font so that the blinking caret height
+	// adapts to math font.
+	Cursor & cur = mi.base.bv->cursor();
+	if (cur.inMathed() && &cur.cell() == this) {
+		cur.current_font.fontInfo() = mi.base.font;
+		cur.real_current_font.fontInfo() = mi.base.font;
+	}
+
 	frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
 	dim = fm.dimension('I');
 	int xascent = fm.dimension('x').ascent();

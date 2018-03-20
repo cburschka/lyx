@@ -2965,8 +2965,16 @@ void BufferView::caretPosAndHeight(Point & p, int & h) const
 	Cursor const & cur = cursor();
 	Font const font = cur.real_current_font;
 	frontend::FontMetrics const & fm = theFontMetrics(font);
-	int const asc = fm.maxAscent();
-	int const des = fm.maxDescent();
+	int asc = fm.maxAscent();
+	int des = fm.maxDescent();
+	// If the cursor is in mathed and it has cached metrics, reduce
+	// the height to fit the inner cell (mathed cells are tight
+	// vertically).
+	if (cur.inMathed() && coordCache().getArrays().hasDim(&cur.cell())) {
+		Dimension const dim = cur.cell().dimension(*this);
+		asc = min(asc, dim.asc);
+		des = min(des, dim.des);
+	}
 	h = asc + des;
 	p = getPos(cur);
 	p.y_ -= asc;
