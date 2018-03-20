@@ -368,54 +368,39 @@ name "sec:LaTeX-Setup"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can edit documents in \SpecialChar LyX
- without having \SpecialChar LaTeX
- installed, but you will not be
- able to create PDFs or print your documents unless you do have it installed.
- However, some \SpecialChar LyX
- documents use DocBook as the “backend” that can produce
- PDFs and the like, and every \SpecialChar LyX
- document can always be output as plain text
- or as XHTML.
+تستطيع تحرير مستند \SpecialChar LyX
+ بدون تركيب \SpecialChar LaTeX
+ ، لكنك لن تستطيع إنتاج ملفات PDF أو طباعة
+ المستندات.
+ إن بعض مستندات \SpecialChar LyX
+ تستخدم DocBook وأمثاله كخلفية لإنتاج ملفات PDF .
+ وكل مستند \SpecialChar LyX
+ يمكن تصديره كملف نصي بسيط أو صفحة ويب تفاعلية XHTML .
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Some document classes may depend upon specific \SpecialChar LaTeX
- or DocBook classes or packages.
- Such document classes can be used even if you do not have the required
- files installed, but you will not be able to produce certain kinds of output.
+بعض أنواع المستندات ربما تعتمد على حزم خاصة من \SpecialChar LaTeX
+ أو DocBook .
+ ومع هذا بعض المستندات يمكن استخدامها حتى بدون تركيب الحزم المطلوبة، لكنك
+ بالتأكيد لن تستطيع إنتاج أو تصديرها إلى أي نوع من الملفات.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The \SpecialChar LaTeX
- packages that \SpecialChar LyX
- has found on your system are listed in a file you can
- view from the menu 
+حزم \SpecialChar LaTeX
+ الموجودة على النظام يمكن مشاهدتها في \SpecialChar LyX
+ عن طريق 
 \family sans
-Help\SpecialChar menuseparator
-LaTeX
-\begin_inset space ~
-\end_inset
-
-Configuration
+مساعدة\SpecialChar menuseparator
+ضبط لتيك .
+ إذا افتقدت حزم تحتاجها، فإن عليك تركيبها ثم إعادة ضبط 
 \family default
-.
- If you are missing packages you need, then you must install them and then
- reconfigure \SpecialChar LyX
- (menu 
+\SpecialChar LyX
+ عن طريق قائمة 
 \family sans
-Tools\SpecialChar menuseparator
-Reconfigure
+أدوات\SpecialChar menuseparator
+إعادة ضبط النظام
 \family default
-)
-\lang arabic_arabi
-.
+
 \begin_inset Index idx
 status collapsed
 
@@ -425,19 +410,14 @@ status collapsed
 
 \end_inset
 
-
-\lang english
- See section 
+.
+ أنظر قسم تركيب ملفات 
 \emph on
-Installing new \SpecialChar LaTeX
- files
+\SpecialChar LaTeX
+ جديدة في كتيب التخصيص لتعرف معلومات أكثر عن تركيب حزم 
 \emph default
- of the 
-\emph on
-Customization
-\emph default
- manual for more information on installing additional \SpecialChar LaTeX
- packages.
+\SpecialChar LaTeX
+ الإضافية.
 \end_layout
 
 \begin_layout Chapter
@@ -460,14 +440,8 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Under the 
-\family sans
-File
-\family default
- menu and in the standard toolbar are basic operations for any word processor
- in addition to some more advanced operations:
+تحت قائمة ملف وفي شريط الأدوات القياسي توجد العمليات الأساسية التي تراها
+ في أي معالج كلمات بالإضافة إلى بعض العمليات المتقدمة:
 \end_layout
 
 \begin_layout Itemize
@@ -625,31 +599,29 @@ arg   "lyx-quit"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-They all do pretty much the same thing as in other word processors, with
- a few minor differences.
- The 
+يمكننا أن نقوم بالكثير من الأشياء الجميلة بالشكل الذي نقوم به في معالجات
+ الكلمات الأخرى.، مع بعض الاختلافات البسيطة.
+ مثلا إن الأمر 
 \family sans
-File\SpecialChar menuseparator
-New
+ملف\SpecialChar menuseparator
+جديد
 \begin_inset space ~
 \end_inset
 
-from
+من
 \begin_inset space ~
 \end_inset
 
-Template
+قالب يعرض قائمة بالقوالب المتاحة.
+ وعند اختيار قالب معين سوف يتم آليا تعيين خصائص النسق الخاص به للمستند،
+ إن هذه الخصائص كان عليك تعديلها يدويا لكن 
 \family default
- command lists the available templates.
- Selecting a template will automatically set certain layout features for
- the document, features you would otherwise need to change manually.
- They can be of use for certain classes, especially those for writing letters
- (see section
-\begin_inset space ~
-\end_inset
+\SpecialChar LyX
 
+\family sans
+ أراحك من ذلك.
+ فربما تستخدم نوع معين من المستندات، وخصوصا كتابة الرسائل (أنظر قسم 
+\family default
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -657,6 +629,8 @@ reference "sec:Document-Classes"
 
 \end_inset
 
+
+\family sans
 ).
 \end_layout
 
@@ -664,7 +638,7 @@ reference "sec:Document-Classes"
 
 \lang english
 \begin_inset Note Greyedout
-status open
+status collapsed
 
 \begin_layout Plain Layout
 
@@ -707,68 +681,93 @@ scratch.
 \end_layout
 
 \begin_layout Standard
-
-\family sans
-\lang english
-Revert
-\begin_inset space ~
-\end_inset
-
-to
-\begin_inset space ~
-\end_inset
-
-saved
-\family default
- and 
-\family sans
-Version
-\begin_inset space ~
-\end_inset
-
-Control
-\family default
- are useful if more people work on the same document at the same time.
-\begin_inset Foot
+\begin_inset Note Greyedout
 status collapsed
 
 \begin_layout Plain Layout
+ملاحظة: لا يوجد 
+\begin_inset Quotes fld
+\end_inset
 
-\lang english
-If you plan to do this, you should check out the Version Control feature
- in \SpecialChar LyX
- also.
- Read Additional Features\SpecialChar endofsentence
+ملف افتراضي
+\begin_inset Quotes frd
+\end_inset
 
+ أو مستند باسم 
+\begin_inset Quotes fld
+\end_inset
+
+غير معنون
+\begin_inset Quotes frd
+\end_inset
+
+.
+ إلا إذا طلبت من \SpecialChar LyX
+ إنشاء ملف جديد أو فتح ملف موجود.
 \end_layout
 
 \end_inset
 
+
+\end_layout
+
+\begin_layout Standard
+إن العودة
+\family sans
+\lang english
+
+\begin_inset space ~
+\end_inset
+
+
+\family default
+\lang arabic_arabi
+للمحفوظ وتحكم
+\family sans
+\lang english
+
+\begin_inset space ~
+\end_inset
+
+
+\lang arabic_arabi
+الإصدار عملية لكثير من الناس الذين يعملون على نفس المستند وفي نفس الوقت.
+\family default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+إذا كنت تخطط لعمل هذا، فإن عليك الخروج من ميزة تحكم الإصدار في \SpecialChar LyX
+ أيضا.
+ اقرأ كتيب خصائص إضافية.
  
+\end_layout
+
+\end_inset
+
+
 \family sans
-Revert
+ العودة
+\lang english
+
 \begin_inset space ~
 \end_inset
 
-to
+
+\lang arabic_arabi
+للمحفوظ سوف تعيد تحميل المستند من القرص الصلب.
+ أنت تستطيع استخدامه أيضا إذا ندمت على تعديل المستند وأردت الرجوع لآخر حفظ.
+ مع تحكم
+\lang english
+
 \begin_inset space ~
 \end_inset
 
-saved
-\family default
- will reload the document from disk.
- You can of course also use it if you regret that you changed a document
- and want to restore it to the last save.
- With
-\family sans
- Version
-\begin_inset space ~
-\end_inset
 
-Control 
-\family default
-you can register the changes you made to a document so that others can identify
- them as your changes.
+\lang arabic_arabi
+الإصدار تستطيع تسجيل التعديلات التي صنعتها في مستند معين وبهذا يستطيع الآخرين
+ التعرف على تغييراتك.
 \end_layout
 
 \begin_layout Section
@@ -793,29 +792,22 @@ name "sec:Basic-Editing-Features"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Like most modern word processors, \SpecialChar LyX
- can perform cut and paste operations
- on blocks of text, can move by character, word, or page of text, and can
- delete whole words as well as individual characters.
- The next four sections cover the basic \SpecialChar LyX
- editing features and how to access
- them.
- We will start with cut and paste.
+مثل معظم معالجات النصوص الحديثة، \SpecialChar LyX
+ يستطيع القيام بعمليات قص ولصق مقاطع نصية،
+ ويستطيع نقل كلمات أو نصوص، ويستطيع حذف الكلمات والحروف طبعا.
+ الأقسام الأربعة التالية تغطي مميزات التحرير الأساسية في \SpecialChar LyX
+ وكيفية الحصول
+ عليها.
 \end_layout
 
 \begin_layout Standard
+كما قد تتوقع بالضبط، قائمة تحرير وشريط الأدوات القياسي يملك وظائف القص واللصق،
+ مع وظائف التحرير المعروفة الأخرى.
+ بعض منها خاص وتم شرحه في أقسام أخرى.
+\end_layout
 
-\lang english
-As you might expect, the 
-\family sans
-Edit
-\family default
- menu and the standard toolbar has the cut and paste commands, along with
- various other editing features.
- Some of these are special and covered in later sections.
- The basic ones are:
+\begin_layout Standard
+الأساسية منها:
 \end_layout
 
 \begin_layout Itemize
@@ -997,70 +989,39 @@ arg   "dialog-show findreplace"
 \end_layout
 
 \begin_layout Standard
-
+إن أول ثلاثة أشياء تعرفها، أنك تستطيع نسخ النصوص بين ليك والبرامج الأخرى
+ باستخدام قص، نسخ ولصق.
+ قص و لصق تضع النص داخل الحافظة في شكلين (مهيأ وغير مهيأ)، لهذا البرامج
+ الأخرى تستطيع اختيار الشكل المناسب لها.
+ أما وظيفة لصق فتدعم الاختيار اليدوي للنص المهيأ أو غير المهيأ عن طريق قائمة
+ تحرير، وطبعا يمكن قص ونسخ ولصق الصور.
+ إن هذه الوظائف تحاول التعامل مع محتوى الحافظة بطريقة ذكية.
+ مثلا إذا كان النص في الحافظة بهيئة CSV والمؤشر داخل الجدول، فإن النص سيلصق
+ داخل الخلايا.
+ أيضا وظيفة آخر
+\family sans
 \lang english
-The first three are self-explanatory.
- You can also copy text between \SpecialChar LyX
- and other programs by 
-\family sans
-Cut
-\family default
-, 
-\family sans
-Copy
-\family default
- and 
-\family sans
-Paste
-\family default
-.
- 
-\family sans
-Cut
-\family default
- and 
-\family sans
-Copy
-\family default
- put text in two versions into the clipboard (formatted and unformatted),
- so that other programs can choose the most suitable form.
- 
-\family sans
-Paste
-\family default
- supports formatted and unformatted text as well, and additionally graphics.
- It tries to interpret the clipboard contents in an intelligent way.
- For example if the clipboard contains text in the format of comma separated
- values (CSV) and the cursor is inside a table, the text will be pasted
- into individual cells.
- The submenu of 
-\family sans
-Paste
+
 \begin_inset space ~
 \end_inset
 
-Recent
-\family default
- shows you a list with the last strings you have pasted.
- You can insert one at the current cursor position by clicking on a list
- entry.
+
+\lang arabic_arabi
+لصق تظهر لك قائمة بآخر الأشياء التي لصقتها، وتستطيع إدراج أي واحد منها في
+ المكان الذي به المؤشر عن طريق النقر على أي واحد منها في القائمة.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The submenu 
+أما قائمة لصق
 \family sans
-Paste
+
 \begin_inset space ~
 \end_inset
 
-Special
+خاص فتحتوي على عناصر اختيارية لهيئات ملفات خاصة، بناء على محتوى الحافظة.
 \family default
- contains optional items for specific formats, depending on the clipboard
- contents.
- These include HTML, \SpecialChar LaTeX
-, Linkback
+مثل HTML، \SpecialChar LaTeX
+، Linkback
 \begin_inset space ~
 \end_inset
 
@@ -1069,104 +1030,73 @@ PDF
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-OS X only
+في ماك فقط.
 \end_layout
 
 \end_inset
 
-, PDF, PNG, JPEG and EMF.
- These menu items are useful if the clipboard contains the same contents
- in different formats, and you want to select one format explicitly.
- (E.
+، PDF، PNG، JPEG و EMF.
+
+\family sans
+ عناصر هذه القائمة تكون عملية إذا كانت الحافظة بها نفس المحتوى ولكن بهيئات
+ مختلفة، واردت اختيار هيئة واحدة.
+ (مثلا بعض البرامج تقوم بنسخ الصور في الحافظة كرسم وكنص) عنصر القائمة لصق
+\begin_inset space ~
+\end_inset
+
+خاص\SpecialChar menuseparator
+نص
+\begin_inset space ~
+\end_inset
+
+بسيط,
 \begin_inset space \thinspace{}
 \end_inset
 
-g.
-\begin_inset space \space{}
-\end_inset
-
-some programs put an image into the clipboard as graphics and as a short
- text which is often meaningless.) The menu item 
-\family sans
-Paste
+دمج
 \begin_inset space ~
 \end_inset
 
-Special\SpecialChar menuseparator
-Plain
+الأسطر يشبه ما سبق، مع اختلاف واحد وهو أنه يعمل مع النصوص فقط.
+ إنه سوف يدرج النص من الحافظة ولهذا سيدرج كل النصوص في الحافظة كفقرة واحدة.
+ والفقرة الجديدة ستبدأ في سطر فارغ جديد.
+ وبدون دمج
 \begin_inset space ~
 \end_inset
 
-Text,
+السطور سيدرج النص كفقرات في المكان الذي الذي انتهى فيه السطر.
+ كمثال عملي نسخ محتوى جدول من صفحة ويب إلى جدول في ليك.
+ الوظيفتين لصق
+\begin_inset space ~
+\end_inset
+
+خاص\SpecialChar menuseparator
+التحديد,
 \begin_inset space \thinspace{}
 \end_inset
 
-Join
+دمج
 \begin_inset space ~
 \end_inset
 
-Lines
+الأسطر
 \family default
- is equivalent to 
+ و 
 \family sans
-Paste
-\family default
-, with the only difference that it acts on text only.
- It will insert the text in the clipboard so that the whole text is inserted
- as one paragraph.
- A new paragraph is only started when there is a blank line in the text.
- Without 
-\family sans
-Join
+لصق
 \begin_inset space ~
 \end_inset
 
-Lines
-\family default
- the text is inserted as paragraphs where the line breaks of the text will
- start a new paragraph.
- This is for example useful to copy contents of tables from webpages to
- a table in \SpecialChar LyX
-.
- The items 
-\family sans
-Paste
-\begin_inset space ~
-\end_inset
-
-Special\SpecialChar menuseparator
-Selection,
-\begin_inset space \thinspace{}
-\end_inset
-
-Join
-\begin_inset space ~
-\end_inset
-
-Lines
-\family default
- and 
-\family sans
-Paste
-\begin_inset space ~
-\end_inset
-
-Special\SpecialChar menuseparator
-Selection
-\family default
- paste from the primary selection.
- This is normally the currently selected text.
+خاص\SpecialChar menuseparator
+التحديد من التحديد الرئيسي.
+ هذا عادة هو النص المحدد حاليا.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The 
+اختيار 
 \family sans
-Edit\SpecialChar menuseparator
-Find
+تحرير\SpecialChar menuseparator
+بحث
 \begin_inset space ~
 \end_inset
 
@@ -1174,140 +1104,44 @@ Find
 \begin_inset space ~
 \end_inset
 
-Replace
+استبدال
 \family default
- item opens the 
+ سيفتح نافذة 
 \family sans
-Find
+بحث
 \begin_inset space ~
 \end_inset
 
-and
+و
 \begin_inset space ~
 \end_inset
 
-Replace
+استبدال.
+ وبمجرد العثور على الكلمة أو الجملة المطلوبة، سيقوم 
 \family default
- dialog.
- Once you have found a word or expression, \SpecialChar LyX
- selects it.
- Hitting the 
+\SpecialChar LyX
+
 \family sans
-Replace
+ بتحديدها.
+ النقر على زر استبدال سيستبدل الكلمة المحددة بالكلمة أو الجملة التي كتبتها
+ في حقل استبدال بـ .
+ وتستطيع النقر على زر بحث التالي لتخطي الكلمة الحالية.
+ أما النقر على زر استبدال الكل سوف يستبدل كل الكلمة المراد استبدالها بشكل
+ آلي.
+ إن خيار حالة الأحرف يمكن استخدامه إذا كنت تريد أن يراعي البحث حالة الأحرف
+ الانجليزية (Capital، small) .
+ فإذا تم اختياره، لن تجد وظيفة البحث كلمة Test إذا كتبت الكلمة في حقل البحث
+ بحروف صغيره test .
+ الخيار التالي هو كلمات كاملة فقط، فمثلا عند البحث عن كلمة يذهب لن يتوقف
+ عند كلمة يذهبون لأنها غير مطابقة لها تماما في عدد الأحرف.
+ يمتلك 
 \family default
- button replaces the selected text with the contents of the 
+\SpecialChar LyX
+
 \family sans
-Replace
-\begin_inset space ~
-\end_inset
-
-with
+ أيضا ميزة البحث المتقدم والذي يحتوي على خيارات أكثر، ويمكن الاطلاع على
+ تفاصيل أكثر عنه في قسم 
 \family default
- field.
- You can click the 
-\family sans
-Find
-\begin_inset space ~
-\end_inset
-
-Next
-\family default
- button to skip the current word.
- Hit 
-\family sans
-Replace
-\begin_inset space ~
-\end_inset
-
-All
-\family default
- to replace all occurrences of the text in the document automatically.
- The 
-\family sans
-Case
-\begin_inset space ~
-\end_inset
-
-sensitive
-\family default
- option can be used if you want the search to consider the case of the search
- word.
- If the toggle is set, searching for 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
-Test
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- will not match the word 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
-test
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- The 
-\family sans
-Match whole words only
-\family default
- option can be used to force \SpecialChar LyX
- to only find complete words, e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g., searching for 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
-star
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- will not match 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
-starlet
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- \SpecialChar LyX
- offers also an advanced 
-\family sans
-Find
-\begin_inset space ~
-\end_inset
-
-&
-\begin_inset space ~
-\end_inset
-
-Replace
-\family default
- feature that is described in section
-\begin_inset space ~
-\end_inset
-
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -1315,7 +1149,7 @@ reference "sec:Advanced-Find-and"
 
 \end_inset
 
-.
+ .
 \end_layout
 
 \begin_layout Standard
@@ -1349,54 +1183,13 @@ Delete
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Using the shortcut 
-\lang arabic_arabi
-
-\begin_inset Info
-type  "shortcuts"
-arg   "inset-select-all"
-\end_inset
-
-
-\lang english
- while the cursor is in normal text selects the whole document.
- When the cursor is inside an inset 
-\lang arabic_arabi
-
-\begin_inset Info
-type  "shortcuts"
-arg   "inset-select-all"
-\end_inset
-
-
-\lang english
- selects the content of the inset.
- Using 
-\lang arabic_arabi
-
-\begin_inset Info
-type  "shortcuts"
-arg   "inset-select-all"
-\end_inset
-
-
-\lang english
- consecutively will increase the selection to the whole inset and then to
- the whole document.
- The shortcut 
-\lang arabic_arabi
-
-\begin_inset Info
-type  "shortcuts"
-arg   "command-sequence buffer-begin ; buffer-end-select"
-\end_inset
-
-
-\lang english
- selects the whole document in every case and puts the cursor to the end
- of the document.
+استخدام الاختصار Ctrl+A سيحدد كامل النص في المستند.
+ بينما لو استخدمنا نفس الاختصار أثناء وجود المؤشر داخل مربع إدارج (ملاحظة
+ مظللة مثلا) فإنه سيتم تحديد ما في داخل الملاحظة المظللة فقط.
+ لكن النقر على Ctrl+A بشكل متتالي سيجعل التحديد يشمل مربع الإدراج، ثم سيقوم
+ بتحديد كامل المستند.
+ أخيرا إذا استخدمنا المفاتيح Ctrl+Alt+A فإن كامل المستند سيتم تحديده بالإضافة
+ إلى أن المؤشر سيصبح في نهاية المستند.
 \end_layout
 
 \begin_layout Section
@@ -1431,33 +1224,52 @@ name "sec:Undo-and-Redo"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-If you make a mistake, you can easily recover from it.
- \SpecialChar LyX
- has a large-capacity undo/redo buffer.
- Select 
+إذا وقعت بخطأ، يمكنك العودة عنه بسهولة.
+ إن \SpecialChar LyX
+ يخصص سعة كبيرة في الذاكرة المؤقتة لخاصيتي تراجع/تكرار.
+ اختر 
 \family sans
-Edit\SpecialChar menuseparator
-Undo
+تحرير\SpecialChar menuseparator
+تراجع أو زر 
 \family default
- or the toolbar button 
-\lang arabic_arabi
 
 \begin_inset Info
 type  "icon"
 arg   "undo"
 \end_inset
 
-
-\lang english
- to undo some mistake.
- If you accidentally undo too much, use 
+ في شريط الأدوات لتراجع عن خطأ ما.
+ وإذا تراجعت أكثر من اللازم يمكنك استخدام
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
 \family sans
-Edit\SpecialChar menuseparator
-Redo
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+تحرير\SpecialChar menuseparator
+تكرار أو زر
 \family default
- or the toolbar button 
+\lang english
+ 
 \lang arabic_arabi
 
 \begin_inset Info
@@ -1465,57 +1277,19 @@ type  "icon"
 arg   "redo"
 \end_inset
 
-
-\lang english
- to 
-\begin_inset Quotes eld
-\end_inset
-
-undo the undo.
-\begin_inset Quotes erd
-\end_inset
-
- The undo mechanism is currently limited to 100
-\begin_inset space \thinspace{}
-\end_inset
-
-steps to minimize memory overhead.
+ في شريط الأدوات.
+ إن خاصية التراجع والتكرار محدودة بمئة خطوة لعدم استهلاك الذاكرة.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Note that if you revert back all changes to arrive at the document as it
- was last saved, the 
-\begin_inset Quotes eld
-\end_inset
-
-changed
-\begin_inset Quotes erd
-\end_inset
-
- status of the document is unfortunately not reset.
- This is a consequence of the 100
-\begin_inset space \thinspace{}
-\end_inset
-
-step undo limit mentioned above.
+لاحظ أنك إذا تراجعت عن جميع الخطوات، أي إلى آخر عملية حفظ، فإن مفتاح الترجع
+ سيصبح غير مفعل، ولن تستطيع للأسف التراجع عن عمليات قمت بها سابقا.
 \end_layout
 
 \begin_layout Standard
-
-\family sans
-\lang english
-Undo
-\family default
- and 
-\family sans
-Redo
-\family default
- work on almost everything in \SpecialChar LyX
-.
- But they will not undo or redo text character by character, but by blocks
- of text.
+عمليتي التراجع و التكرار تعمل مع أي شيء في \SpecialChar LyX
+ ، لكنها لا تسمح بالتراجع حرف
+ حرف، وإنما التراجع عن كامل المقطع.
 \end_layout
 
 \begin_layout Section
@@ -1542,14 +1316,9 @@ status collapsed
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
-Click the 
-\emph on
-left mouse button
-\emph default
- once anywhere in the edit window.
- The cursor moves to the text under the mouse.
+عند النقر بزر الفارة الأيسر في أي مكان من المستند في نافذة التحرير.
+ نقرة واحدة يصبح المؤشر داخل النص، وعند النقر على الكلمة نقرتين يم تحديد
+ الكلمة، وعند النقر عليها ثلاث مرات يتم تحديد كامل السطر.
 \end_layout
 
 \end_deeper
@@ -1559,49 +1328,32 @@ left mouse button
 
 \begin_deeper
 \begin_layout Itemize
-
-\lang english
-Hold down the 
-\emph on
-left mouse button
-\emph default
- and drag the mouse.
- \SpecialChar LyX
- marks the text between the old and new mouse positions.
- Use 
+ضع المؤشر حيث تريد أن يبدأ التحديد ثم انقر على زر الفارة الأيسر، ثم اسحب
+ إلى نهاية التحديد وارفع إصبعك عن زر الفارة.
+ سيقوم \SpecialChar LyX
+ بتحديد النص بين نقطتي البداية والنهاية اللتين قمت بتحديدهما.
+ استخدم 
 \family sans
-Edit\SpecialChar menuseparator
-Copy
-\family default
- to create a copy of the text in \SpecialChar LyX
-'s buffer (and the clipboard).
+تحرير\SpecialChar menuseparator
+نسخ أو Ctrl+C لإنشاء نسخة من النص في الحافظة.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Re-position the cursor and then paste the text back into \SpecialChar LyX
- using 
+ضع المؤشر حيث تريد لصق النص في نافذة التحرير ثم 
 \family sans
-Edit\SpecialChar menuseparator
-Paste
-\family default
-.
+تحرير\SpecialChar menuseparator
+لصق أو Ctrl+V .
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-
-\lang english
-Insets (Footnotes, Notes, Floats, etc.)
+الإدراج (تذييل، ملاحظة، تعويم، إلخ.)
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
-
-\lang english
-Right-click on them to set their properties.
- Also check the appropriate section of this manual for more details.
+أنقر بزر الفارة الأيمن على الكائن الذي أدرجته ثم اختر إعدادات.
+ أيضا اطلع على appropriate القسم في هذا الكتيب للمزيد من التفاصيل.
 \end_layout
 
 \end_deeper
@@ -1627,96 +1379,68 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \SpecialChar LyX
- offers you several ways to navigate in documents:
+ يعرض عليك عدة طرق للاستكشاف داخل المستندات:
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-The 
-\family sans
-Navigate
-\family default
- menu lists all sections of the document as submenu entries that you can
- click to jump to the corresponding document part.
+قائمة استكشاف تحتوي قائمة بكل أقسام المستند وتستطيع الانتقال لأي منها بالنقر
+ على اسمه.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-The “Outline”, which is accessed either by the menu 
+الخلاصة، تستطيع الوصول لها عن طريق 
 \family sans
-View\SpecialChar menuseparator
-Outline
+عرض\SpecialChar menuseparator
+نافذة
 \begin_inset space ~
 \end_inset
 
-Pane
+
 \family default
- or by the toolbar button
-\lang arabic_arabi
- 
+الخلاصة أو بالنقر على رمز الخلاصة 
 \begin_inset Info
 type  "icon"
 arg   "dialog-toggle toc"
 \end_inset
 
-.
+ في شريط الأدوات.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-You can set bookmarks in your document under 
+يمكنك تعيين العلامات الإشارات المرجعية في مستندك عن طريق 
 \family sans
-Navigate\SpecialChar menuseparator
-Bookmarks
+استكشاف\SpecialChar menuseparator
+
 \family default
- and use the same menu to return to them.
- Note that bookmarks are saved between sessions.
+العلامات ومن نفس القائمة يمكنك العودة لها.
+ مع ملاحظة أن هذه العلامات تحفظ بين الجلسات.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The toolbar button 
-\lang arabic_arabi
-
+إن زر 
 \begin_inset Info
 type  "icon"
 arg   "bookmark-goto 0"
 \end_inset
 
-
-\lang english
- (also 
+ 
 \family sans
-Navigate\SpecialChar menuseparator
-Bookmarks\SpecialChar menuseparator
-Navigate
+أو استكشاف\SpecialChar menuseparator
+العلامات\SpecialChar menuseparator
+استكشاف
 \begin_inset space ~
 \end_inset
 
-Back
+
 \family default
-) jumps to the position in the document where you recently changed something.
- This is useful when you have a large document and have navigated or scrolled
- to another document part to look for something, and want to go back to
- your last editing position.
+للخلف أو Ctrl+< سوف يعود بك لأخر موقع قمت بالتعديل عليه.
+ وهذا عملي عندما يكون لديك مستند كبير وتكون في جزء معين منه لمشاهدة شيء
+ ما، ثم ترغب بالعودة لآخر مكان قمت بتعديله.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-By pressing the 
-\family sans
-F5
-\family default
- key the cursor will be vertically centered in \SpecialChar LyX
-'s main window.
+أخير بالنقر على زر F5 يتحرك مؤشر الفارة إلى وسط نافذة التحرير.
 \end_layout
 
 \begin_layout Subsection
@@ -1751,12 +1475,10 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-In the pull-down box at the top of the outline window, you can choose between
- several different lists, including other TOC-like objects, such as lists
- of tables and figures, but also lists of footnotes, or labels and cross-referen
-ces (see section
+في أعلى نافذة الخلاصة توجد قائمة منسدلة، تستطيع من خلال اختيار عدة أنواع
+ من القوائم، مثل جدول المحتويات، وقائمة الرسوم التوضيحية وقائمة الجداول
+ وغيرها.
+ (أنظر القسم
 \begin_inset space ~
 \end_inset
 
@@ -1767,7 +1489,7 @@ reference "sec:Cross-References"
 
 \end_inset
 
-), or notes, or citations (see section
+)، أو الملاحظات ولاستشهادات (أنظر القسم
 \begin_inset space ~
 \end_inset
 
@@ -1779,41 +1501,23 @@ reference "sec:Bibliography"
 \end_inset
 
 ).
- Clicking on any of these will take you to the corresponding object in your
- document.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Right-clicking on elements in the Outline opens in many cases a context
- menu that will allow for direct modification of those elements.
- For example, with citations, the context menu allows you to open the citation
- dialog and to modify the citation.
+إن النقر على أي من محتويات هذه القوائم سوف ينتقل بك إليه.
 \end_layout
 
 \begin_layout Standard
+عند النقر على أي عنصر بزر الفارة الأيمن سوف يعرض الخيارات والإعدادات الخاصة
+ به، مثلا النقر على استشهاد معين بزر الفارة الأيمن سوف يظهر خيار إعدادات
+ ليسمح لك بالتعديل على الاستشهاد.
+\end_layout
 
-\lang english
-The 
-\family sans
-Filter
-\family default
- field at the top allows you to restrict which entries appear in the outline.
- For example, if you are displaying the list of 
-\emph on
-Labels and References
-\emph default
- and wish to see only references to subsections, you can enter the text
- 
-\begin_inset Quotes eld
-\end_inset
-
-sub
-\begin_inset Quotes erd
-\end_inset
-
- in the filter, and only entries containing that text will be displayed.
+\begin_layout Standard
+إن حقل المرشح في أعلى النافذة يسمح لك بتقييد المدخلات التي ستظهر في الخلاصة.
+ مثلا، إذا كنت تعرض قائمة الملصقات والمراجع وترغب برؤية مراجع الأقسام الفرعية
+ فقط، أكتب كلمة sub في المرشح، عندها سيتم عرض العناصر التي تحتوي هذه الكلمة
+ فقط.
 \end_layout
 
 \begin_layout Standard
@@ -1869,106 +1573,123 @@ depth
 \end_layout
 
 \begin_layout Standard
+في اسفل نافذة الخلاصة توجد عدة أزرار تسمح لك بالمزيد من التحكم بالعرض، فالخيار
+ فرز يرتب القائمة الحالية هجائيا.
+ وبدون هذا الخيار ستظهر عناصر القائمة مرتبة حسب مكان وجودها في المستند.
+\end_layout
 
-\lang english
-The 
-\lang arabic_arabi
-
+\begin_layout Standard
+الزر 
 \begin_inset Info
 type  "icon"
 arg   "reload"
 \end_inset
 
-
-\lang english
- button refreshes the TOC (though this should not usually be necessary).
- Next to it are buttons that allow you to change the position of sections
- in your document.
- The 
-\lang arabic_arabi
-
+ يستخدم لتحديث القائمة (وهو غير مهم عادة).
+ أما بقية الأزرار فتسمح بتغيير موقع عنصر معين في قسم داخل المستند.
+ فمثلا الزرين 
 \begin_inset Info
 type  "icon"
 arg   "outline-down"
 \end_inset
 
-
-\lang english
- and 
-\lang arabic_arabi
-
+ و 
 \begin_inset Info
 type  "icon"
 arg   "outline-up"
 \end_inset
 
-
-\lang english
- buttons move sections up and down in the document.
- So, for example, you can move section
-\begin_inset space ~
-\end_inset
-
-2.5 before section
-\begin_inset space ~
-\end_inset
-
-2.4 or after section
-\begin_inset space ~
-\end_inset
-
-2.6.
- \SpecialChar LyX
- will then automatically renumber the sections to the new order.
- With the buttons 
-\lang arabic_arabi
-
+ يسمحان بالتعديل للأعلى والأسفل مع المحافظة على المستوى، مثلا القسم 
+\numeric on
+2.5
+\numeric off
+ يمكن نقله للأعلى ليصبح 
+\numeric on
+2.4
+\numeric off
+ والقسم الذي قبله ستحول رقمه تلقائيا إلى 
+\numeric on
+2.5
+\numeric off
+ ، وكذلك يمكن نقله للأسفل ليصبح 
+\numeric on
+2.6
+\numeric off
+ .
+ أما الزرين 
 \begin_inset Info
 type  "icon"
 arg   "outline-out"
 \end_inset
 
-
-\lang english
- and 
-\lang arabic_arabi
-
+ و 
 \begin_inset Info
 type  "icon"
 arg   "outline-in"
 \end_inset
 
-
-\lang english
- (or the corresponding key bindings 
-\family sans
-Tab
-\family default
- and 
-\family sans
-Shift-Tab
-\family default
-) you can change the level of sections.
- So you can for example make section
-\begin_inset space ~
+ فيسمحان برفع أو حفظ مستوى القسم للأعلى والاسفل ، مثلا القسم 
+\numeric on
+2.5
+\numeric off
+ عند رفعه سيتحول من 
+\begin_inset Quotes fld
 \end_inset
 
-2.5 chapter
-\begin_inset space ~
+قسم
+\begin_inset Quotes frd
 \end_inset
 
-3 or subsection
-\begin_inset space ~
+ إلى 
+\begin_inset Quotes fld
 \end_inset
 
-2.4.1.
+فصل
+\begin_inset Quotes frd
+\end_inset
+
+ وبالتالي يتحول رقمه من 
+\numeric on
+2.5
+\numeric off
+ إلى 
+\numeric on
+3
+\numeric off
+ ، وكذلك بالنسبة لزر الخفض، فعند النقر عليه سيخفض مستوى القسم 
+\numeric on
+2.5
+\numeric off
+ من 
+\begin_inset Quotes fld
+\end_inset
+
+مستوى
+\begin_inset Quotes frd
+\end_inset
+
+ إلى 
+\begin_inset Quotes fld
+\end_inset
+
+مستوى فرعي
+\begin_inset Quotes frd
+\end_inset
+
+ في القسم السابق له، وبالتالي يتحول رقمه من 
+\numeric on
+2.5
+\numeric off
+ إلى 
+\numeric on
+2.4.1
+\numeric off
+ .
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-By right-clicking on a section in the outliner you can select the whole
- section to copy, cut or delete it.
+بالنقر بزر الفارة الأيمن على قسم في نافذة الخلاصة يمكنك نسخ كامل القسم،
+ أو قصه أو حذفه.
 \end_layout
 
 \begin_layout Subsection
@@ -1986,52 +1707,35 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-\SpecialChar LyX
- does not have a horizontal scrollbar because the standard output page formats
- like e.
-\begin_inset space \thinspace{}
-\end_inset
-
-g.
-\begin_inset space \space{}
-\end_inset
-
-ISO
-\begin_inset space ~
-\end_inset
-
-A4 are less wide than PC or laptop screens.
- Therefore you will get troubles in the output of your document if document
- parts exceed the width of the \SpecialChar LyX
- main screen.
+لا يملك \SpecialChar LyX
+ شريط أفقي لأن هيئة صفحات الخرج مثل A
+\numeric on
+4
+\numeric off
+ أقل عرضا من شاشة الحاسب الشخصي أو الحاسب المحمول.
+ وسوف لن تواجه مشكلة في استعراض ملف الخرج إذا كان عرضه أكبر من عرض الشاشة.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are of course exceptions where horizontal scrolling is necessary.
- For example
+هناك بعض الحالات التي يكون فيها من الضروري وجود شريط التمرير الأفقي.
+ مثل
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
 \SpecialChar LyX
- is used on a small tablet computer
+ يستخدم في الأجهزة اللوحية الصغيرة
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Wide tables that are rotated 90° to fit a whole page
+يتم تدوير الجهاز اللوحي °
+\numeric on
+90
+\numeric off
+ لملء كامل الشاشة
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 See section 
 \emph on
 Rotated Floats
@@ -2053,60 +1757,43 @@ Objects
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-Math constructs with long command names
+إنشاء عمليات رياضية بأسماء أوامر طويلة
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-For these cases \SpecialChar LyX
- has an mechanism that scrolls automatically when the cursor
- is moved.
- As example shrink the \SpecialChar LyX
- windows so that table
-\begin_inset space ~
-\end_inset
-
-
+ولهذه الحالات \SpecialChar LyX
+ يملك آلية للتنقل داخل المستند.
+ مثلا عند تقلص شاشة \SpecialChar LyX
+ أثناء تحرير جدول عريض 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Horizontal-scrollong-test"
 
 \end_inset
 
- is wider.
- You will now see a dotted red line at the right or the left side of the
- table.
- Put the cursor into the table and move it with the Tab or the arrow keys
- to see the horizontal scrolling of the table.
+ .
+ يمكننا التنقل بين خلاليا الجدول باستخدام مفتاح الجدولة Tab في لوحة لمفاتح
+ أو عن طريق أزرار الأسهم.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Float table
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Horizontal-scrollong-test"
 
 \end_inset
 
-Horizontal scrolling test.
+اختبار شريط التمرير الأفقي.
 \end_layout
 
 \end_inset
@@ -2116,8 +1803,6 @@ Horizontal scrolling test.
 
 \begin_layout Plain Layout
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="3">
 <features tabularvalignment="middle">
@@ -2129,9 +1814,7 @@ Horizontal scrolling test.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-a
+أ
 \end_layout
 
 \end_inset
@@ -2140,9 +1823,7 @@ a
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-b
+ب
 \end_layout
 
 \end_inset
@@ -2151,9 +1832,7 @@ b
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-c
+ج
 \end_layout
 
 \end_inset
@@ -2628,9 +2307,7 @@ End
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are three modifier keys:
+توجد ثلاث مفاتح للتعديل:
 \end_layout
 
 \begin_layout Labeling
@@ -2656,7 +2333,7 @@ Ctrl
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "Ctrl"
-description "Control key"
+description "مفتاح التحكم"
 literal "false"
 
 \end_inset
@@ -2729,7 +2406,7 @@ Shift
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "Shift"
-description "Shift key"
+description "مفتاح علوي"
 literal "false"
 
 \end_inset
@@ -2761,7 +2438,7 @@ Alt
 \begin_inset CommandInset nomenclature
 LatexCommand nomenclature
 symbol "Alt"
-description "Alt or Meta key"
+description "مفتاح Alt"
 literal "false"
 
 \end_inset
@@ -2983,15 +2660,12 @@ name "sec:Document-Classes"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can select a class using the 
+تستطيع اختيار نوع المستند عن طريق 
 \family sans
-Document\SpecialChar menuseparator
-Settings\SpecialChar menuseparator
-Document Class
+مستند\SpecialChar menuseparator
+إعدادات\SpecialChar menuseparator
+نوع المستند 
 \family default
-\lang arabic_arabi
 
 \begin_inset Index idx
 status collapsed
@@ -3003,10 +2677,9 @@ status collapsed
 \end_inset
 
 
-\lang english
- dialog.
- Select the class you want to use, and make any fine tunings of the options
- you may need.
+\family sans
+.
+ اختر نوع المستند الذي تريد، ثم اضبطه بالخيارات التي تريد.
 \end_layout
 
 \begin_layout Subsubsection
@@ -3014,76 +2687,46 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are four standard document classes in \SpecialChar LyX
-.
- They are:
+يحتوي ليك على أربعة أنواع من المستندات الأساسية.
+ هي:
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Article for basic articles
+مقالة للمقالات البسيطة
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Report for basic reports
+تقرير للتقارير البسيطة
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Book for writing a book
+كتاب لكتابة الكتب
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Letter for US-style letters
+رسالة للرسائل بالأسلوب الأمريكي
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are also some non-standard classes, which \SpecialChar LyX
- only uses if you have installed
- the corresponding \SpecialChar LaTeX
- class files, though most \SpecialChar LaTeX
- distributions will include
- many of these.
- Here are some of the classes.
- The full list with detailed explanations can be found in chapter 
-\emph on
-Special Document Classes
-\emph default
- in the 
-\emph on
-Additional Features
-\emph default
- manual:
+هناك أنواع غير قياسية أخرى، والتي يستخدمها \SpecialChar LyX
+ إذا كانت إذا كانت ملفات \SpecialChar LaTeX
+ الخاصة
+ بها مركبة، على الرقم من أن معظم هذه الملفات يتم تركيبها بشكل افتراضي.
+ وسنستعرض في الأسطر القادمة بعضا منها.
+ أما إذا أردت مشاهدة قائمة كاملة بكل أنواع المستندات فستجدها في فصل أنواع
+ المستندات الخاصة في كتيب خصائص إضافية:
 \end_layout
 
 \begin_layout Description
-
-\lang english
-A&A Journal articles in the style and format used in Astronomy & Astrophysics
+A&A مقالة حسب نسق وهيئة صحفية علم الفلك والفيزياء الفلكية.
 \end_layout
 
 \begin_layout Description
-
-\lang english
-ACS For submissions to the journals published by the American Chemistry
- Society
+ACS مقالة حسب نسق وهيئة صحفية مجتمع الكيميائيين الأمريكيين.
 \end_layout
 
 \begin_layout Description
-
-\lang english
-AGU For submissions to the journals published by the American Geophysical
- Union
+AGU مقالة حسب نسق وهيئة صحفية اتحاد الجيوفيزيائيين الأمريكيين.
 \end_layout
 
 \begin_layout Description
@@ -3111,151 +2754,101 @@ sequential numbering
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Beamer Layout for presentations
+Beamer نسق للعروض التقديمية، وهو الأفضل من بقية حزم العروض التقديمية.
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Broadway Layout for writing plays.
- It is not an existing \SpecialChar LaTeX
- document class, but a new one that is distributed
- with \SpecialChar LyX
-.
+Broadway نسق كتابة الألعاب.
+ إنه ليس نوع موجود في \SpecialChar LaTeX
+، لكنه نوع جديد تم إنشاءه في \SpecialChar LyX
+ .
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Chess Layout to write about chess games
+Chess نسق للكتابة عن لعبة الشطرنج.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 Curriculum
 \begin_inset space ~
 \end_inset
 
-vitae classes to create curriculum vitae
+vitae نوع لإنشاء بيان السيرة
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Elsarticle Layout for journals of the Elsevier publishing group
+Elsarticle نسق صحيفة مجموعة النشر Elsevier
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Foils Used to make transparencies
+Foils يستخدم لإنتاج الشفافيات
 \end_layout
 
 \begin_layout Description
+Hollywood يستخدم في كتابة سكربتات الأفلام الأمريكية.
+ إنه ليس نوع موجود في \SpecialChar LaTeX
+، لكنه نوع جديد تم إنشاءه في \SpecialChar LyX
+ .
+\end_layout
 
-\lang english
-Hollywood Used to type spec scripts for the US film industry.
- It is not an existing \SpecialChar LaTeX
- document class, but a new one that is distributed
- with \SpecialChar LyX
+\begin_layout Description
+IEEEtran نسق صحيفة معهد الإلكترونيات ومهندسي الإلكترونيات (IEEE) 
+\end_layout
+
+\begin_layout Description
+IOP نسق صحيفة مجموعة نشر معهد الفيزياء
+\end_layout
+
+\begin_layout Description
+Kluwer نسق صحيفة مجموعة النشر Kluwer
+\end_layout
+
+\begin_layout Description
+KOMA-Script بديل لنوع المستند القياسي، ويملك الكثير من المميزات العملية
+ مما جعله الأكثر استخداما لإنتاج الكتب الكبيرة والرسائل العلمية.
+ (مستخدم في هذا المستند.)
+\end_layout
+
+\begin_layout Description
+Memoir بديل آخر للنوع القياسي
+\end_layout
+
+\begin_layout Description
+Powerdot نسق للعروض التقديمية لكنه أقل دعما للصور من Beamer .
+\end_layout
+
+\begin_layout Description
+REVTeX يستخدم في نشر مقالات مجتمع الفيزياء الأمريكي (APS), والمعهد الأمريكي
+ للفيزياء (AIP), ومجتمع البصريات الأمريكي (OSA).
+ وهذا النوع غير متوافق تماما مع \SpecialChar LyX
 .
 \end_layout
 
 \begin_layout Description
-
-\lang english
-IEEEtran Layout for the journals published by the Institute of Electrical
- and Electronics Engineers (IEEE)
+Slides نوع قديم يستخدم لإنتاج الشفافيات
 \end_layout
 
 \begin_layout Description
-
-\lang english
-IOP Layout for journals of the Institute of Physics publishing group
-\end_layout
-
-\begin_layout Description
-
-\lang english
-Kluwer Layout for journals of the Kluwer publishing group
-\end_layout
-
-\begin_layout Description
-
-\lang english
-KOMA-Script a replacement for the standard classes, offers many useful features
- like caption formatting, automatic print space calculation etc.
- (Is used by this document.)
-\end_layout
-
-\begin_layout Description
-
-\lang english
-Memoir another replacement for the standard classes
-\end_layout
-
-\begin_layout Description
-
-\lang english
-Powerdot Layout for presentations
-\end_layout
-
-\begin_layout Description
-
-\lang english
-REV
-\family sans
-TeX
-\family default
- is used to write articles for the publications of the American Physical
- Society (APS), American Institute of Physics (AIP), and Optical Society
- of America (OSA).
- This class is not completely compatible with all \SpecialChar LyX
- features.
-\end_layout
-
-\begin_layout Description
-
-\lang english
-Slides Used to make transparencies
-\end_layout
-
-\begin_layout Description
-
-\lang english
 SPIE
 \begin_inset space ~
 \end_inset
 
-Proceedings Layout for the journals published by The International Society
- for Optical Engineering (SPIE)
+Proceedings نسق صحيفة المجتمع الدولي لمهندسي البصريات (SPIE)
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Springer Layouts for journals of the Springer publishing group
+Springer نسق صحيفة مجموعة النشر Springer
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-We will not go into detail about how to use these different document classes
- here.
- You can find details about the non-standard classes in chapter 
+لم نقم بالدخول في تفاصيل كيفية استخدام أنواع المستندات السابقة.
+ 
 \emph on
-Special Document Classes
+ويمكنك العثور على تفاصيل عن الأنواع غير القياسية في فصل أنواع المستندات
+ غير القياسية في كتيب
 \emph default
- of the 
-\emph on
-Additional Features
-\emph default
- manual.
- Here, we will settle for a list of some of the common properties of all
- of the document classes.
+ خصائص إضافية.
+ إلى هنا، سوف نكتفي ببعض الخصائص الأكثر شيوعا لهذه الأنواع.
 \end_layout
 
 \begin_layout Subsubsection
@@ -4137,24 +3730,20 @@ name "subsec:Paper-Size,-Orientation"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can find the following options in the menu 
+يمكن أن تجد الخيارات التالية في 
 \family sans
-Page
+نسق
 \begin_inset space ~
 \end_inset
 
-Layout
+الصفحة 
 \family default
- of the 
+في 
 \family sans
-Document\SpecialChar menuseparator
-Settings
+مستند\SpecialChar menuseparator
+
 \family default
- dialog
-\lang arabic_arabi
-:
+إعدادات:
 \begin_inset Index idx
 status collapsed
 
@@ -4171,65 +3760,57 @@ status collapsed
 \labelwidthstring 00.00.0000
 
 \family sans
-\lang english
-Paper
+هيئة
 \begin_inset space ~
 \end_inset
 
-Format
+الصفحة
 \family default
- What size paper to print on.
- The choices are
+ ما هو حجم ورق الطباعة المتاح.
+ الخيارات هي
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \family sans
-\lang english
-Default
+افتراضي
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
-A0 – A6
+أ0 – أ6
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
-B0 – B6
+ب0 – ب6
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
-C0 – C6
+ج0 – ج6
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
-US letter, US legal, US executive
+رسائل أمريكية, قانوني أمريكي, إداري أمريكي
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
-JIS B0 – JIS B6
+ياباني B0 – ياباني B6
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
-Custom
+مخصص
 \end_layout
 
 \end_deeper
@@ -5100,59 +4681,104 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-There are 7 numbered types of section headings.
- They are:
+توجد
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\numeric on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+7
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\numeric off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+أنواع من العناوين الجانبية المرقمة.
+ هي:
 \end_layout
 
 \begin_layout Enumerate
 
 \family sans
-\lang english
-Part
+جزء
 \end_layout
 
 \begin_layout Enumerate
 
 \family sans
-\lang english
-Chapter
+فصل
 \end_layout
 
 \begin_layout Enumerate
 
 \family sans
-\lang english
-Section
+قسم
 \end_layout
 
 \begin_layout Enumerate
 
 \family sans
-\lang english
-Subsection
+قسم فرعي
 \end_layout
 
 \begin_layout Enumerate
 
 \family sans
-\lang english
-Subsubsection
+قسم تحت فرعي
 \end_layout
 
 \begin_layout Enumerate
 
 \family sans
-\lang english
-Paragraph
+فقرة
 \end_layout
 
 \begin_layout Enumerate
 
 \family sans
-\lang english
-Subparagraph
+فقرة فرعية
 \end_layout
 
 \begin_layout Standard
@@ -5175,85 +4801,27 @@ Headings all subdivide your document into different pieces of text.
 \end_layout
 
 \begin_layout Itemize
-
-\family sans
-\lang english
-Part
-\family default
- is divided into either 
-\family sans
-Chapter
-\family default
-s or 
-\family sans
-Section
-\family default
-s
+الجزء ينقسم إلى فصول أو أقسام
 \end_layout
 
 \begin_layout Itemize
-
-\family sans
-\lang english
-Chapter
-\family default
-s are divided into 
-\family sans
-Section
-\family default
-s
+الفصل ينقسم إلى أقسام
 \end_layout
 
 \begin_layout Itemize
-
-\family sans
-\lang english
-Section
-\family default
-s are divided into 
-\family sans
-Subsection
-\family default
-s
+القسم ينقسم إلى أقسام فرعية
 \end_layout
 
 \begin_layout Itemize
-
-\family sans
-\lang english
-Subsection
-\family default
-s are divided into 
-\family sans
-Subsubsection
-\family default
-s
+القسم الفرعي ينقسم إلى أقسام تحت فرعية
 \end_layout
 
 \begin_layout Itemize
-
-\family sans
-\lang english
-Subsubsection
-\family default
-s are divided into 
-\family sans
-Paragraph
-\family default
-s
+القسم تحت الفرعي ينقسم إلى فقرات
 \end_layout
 
 \begin_layout Itemize
-
-\family sans
-\lang english
-Paragraph
-\family default
-s are divided into 
-\family sans
-Subparagraph
-\family default
-s
+الفقرة تنقسم إلى فقرات فرعية
 \end_layout
 
 \begin_layout Standard
@@ -5533,27 +5101,19 @@ The following information applies to all section headings:
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-You cannot do any nesting with these environments.
+لا تستطيع التفريخ داخلها.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-You cannot use a margin note in any of these environments.
+لا تستطيع إضافة ملاحظة هامشية داخلها.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-You can only use inline math in these environments.
+لا تستطيع إدراج معادلة رياضية فيها.
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-You can use labels and cross-references to refer to their numbers.
+لا تستطيع إدراج ملصق أو إشارة مرجعية لرقمها.
 \end_layout
 
 \begin_layout Subsection
@@ -6487,13 +6047,7 @@ word
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Example: This is an example of the 
-\family sans
-Description
-\family default
- environment.
+مثال: هذا مثال على بيئة الوصف.
 \end_layout
 
 \begin_layout Standard
@@ -7167,20 +6721,14 @@ To change the numbering for the list sublevels, replace the 'i' in the command
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is a list with custom numbering:
+هنا قائمة بالترقيم المخصص:
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -7202,19 +6750,15 @@ Alph{enumi}
 
 \end_inset
 
-Level 1
+مستوى 1
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-
-\lang english
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -7234,25 +6778,19 @@ arabic{enumii}
 
 \end_inset
 
-Level 2
+مستوى 2
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Level 2
+مستوى 2
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-
-\lang english
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -7272,19 +6810,15 @@ arabic{enumiii}}
 
 \end_inset
 
-Level 3
+مستوى 3
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-
-\lang english
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -7304,7 +6838,7 @@ roman{enumiv})}
 
 \end_inset
 
-Level 4
+مستوى 4
 \end_layout
 
 \end_deeper
@@ -7414,14 +6948,10 @@ Enumerations can be resumed after intermediate paragraphs:
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -7439,7 +6969,7 @@ arabic{enumi}.
 
 \end_inset
 
-first
+الأول
 \begin_inset Note Note
 status open
 
@@ -7455,21 +6985,15 @@ goes back to default numbering
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-second
+الثاني
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-regular text
+نص منظم
 \end_layout
 
 \begin_layout Enumerate-Resume
-
-\lang english
-resumed
+مستأنف
 \end_layout
 
 \begin_layout Standard
@@ -7545,20 +7069,14 @@ number
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Enumeration starting at a given value:
+الترقيم العددي يبدأ بالقيمة المعطاة:
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
 \begin_inset Argument 1
 status open
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset ERT
 status open
 
@@ -7574,7 +7092,7 @@ start=4
 
 \end_inset
 
-This enumeration starts at 4
+الترقيم العددي يبدأ من 4
 \end_layout
 
 \begin_layout Subsubsection
@@ -7600,15 +7118,11 @@ In some cases you might want less or more vertical space between the items
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-A bullet list
+ترقيم نقطي
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-with standard spacing 
+مع مسافة قياسية
 \end_layout
 
 \begin_layout Standard
@@ -7643,21 +7157,15 @@ nolistsep
 
 \end_inset
 
-
-\lang english
-A bullet list
+ترقيم نقطي
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-without additional
+بدون إضافة
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-vertical space
+مسافة رأسية
 \end_layout
 
 \begin_layout Standard
@@ -7731,15 +7239,11 @@ parindent, labelsep=2cm
 
 \end_inset
 
-
-\lang english
-An enumeration
+ترقيم عددي
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-with negative indentation
+مع عكس المسافة البادئة
 \end_layout
 
 \begin_layout Subsubsection
@@ -8012,21 +7516,19 @@ Address
 \end_layout
 
 \begin_layout Right Address
-
-\lang english
-Right Address
+العنوان الأيمن
 \begin_inset Newline newline
 \end_inset
 
-Who I am
+من أنا
 \begin_inset Newline newline
 \end_inset
 
-Where I am
+أين أنا
 \begin_inset Newline newline
 \end_inset
 
-When is it? What is today?
+متى؟ تاريخ اليوم؟
 \end_layout
 
 \begin_layout Standard
@@ -8052,17 +7554,15 @@ Address
 \end_layout
 
 \begin_layout Address
-
-\lang english
-Who are you
+من أنت
 \begin_inset Newline newline
 \end_inset
 
-Where do I send this
+إلى أين أرسلها
 \begin_inset Newline newline
 \end_inset
 
-Your post office and country
+بريدك ودولتك
 \end_layout
 
 \begin_layout Standard
@@ -8255,17 +7755,15 @@ Abstract
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename ../clipart/Abstract.pdf
+	filename D:/Program Files/LyX 2.3/Resources/doc/clipart/Abstract.pdf
 
 \end_inset
 
@@ -8273,24 +7771,16 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Paragraph-in-the"
 
 \end_inset
 
-Paragraph in the 
-\family sans
-Abstract
-\family default
- environment
+فقرة في بيئة الملخص
 \end_layout
 
 \end_inset
@@ -8695,9 +8185,7 @@ arg   "self-insert \""
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is an example:
+هذا مثال:
 \end_layout
 
 \begin_layout LyX-Code
@@ -8980,35 +8468,25 @@ attached
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-one
+واحد
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-two
+اثنان
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-
-\lang english
-sublist – item #1
+ترقيم فرعي – عنصر #1
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-sublist – item #2
+ترقيم فرعي – عنصر #2
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-
-\lang english
-three
+ثلاثة
 \end_layout
 
 \begin_layout Standard
@@ -9576,7 +9054,7 @@ This is (a) and it's nested.
 \begin_inset Text
 
 \begin_layout Plain Layout
-a
+أ
 \end_layout
 
 \end_inset
@@ -9585,7 +9063,7 @@ a
 \begin_inset Text
 
 \begin_layout Plain Layout
-b
+ب
 \end_layout
 
 \end_inset
@@ -9596,7 +9074,7 @@ b
 \begin_inset Text
 
 \begin_layout Plain Layout
-c
+ج
 \end_layout
 
 \end_inset
@@ -9605,7 +9083,7 @@ c
 \begin_inset Text
 
 \begin_layout Plain Layout
-d
+د
 \end_layout
 
 \end_inset
@@ -9679,7 +9157,7 @@ This is (a) and it's nested.
 \begin_inset Text
 
 \begin_layout Plain Layout
-a
+أ
 \end_layout
 
 \end_inset
@@ -9688,7 +9166,7 @@ a
 \begin_inset Text
 
 \begin_layout Plain Layout
-b
+ب
 \end_layout
 
 \end_inset
@@ -9699,7 +9177,7 @@ b
 \begin_inset Text
 
 \begin_layout Plain Layout
-c
+ج
 \end_layout
 
 \end_inset
@@ -9708,7 +9186,7 @@ c
 \begin_inset Text
 
 \begin_layout Plain Layout
-d
+د
 \end_layout
 
 \end_inset
@@ -9794,7 +9272,7 @@ This is (a) and it's nested.
 \begin_inset Text
 
 \begin_layout Plain Layout
-a
+أ
 \end_layout
 
 \end_inset
@@ -9803,7 +9281,7 @@ a
 \begin_inset Text
 
 \begin_layout Plain Layout
-b
+ب
 \end_layout
 
 \end_inset
@@ -9814,7 +9292,7 @@ b
 \begin_inset Text
 
 \begin_layout Plain Layout
-c
+ج
 \end_layout
 
 \end_inset
@@ -9823,7 +9301,7 @@ c
 \begin_inset Text
 
 \begin_layout Plain Layout
-d
+د
 \end_layout
 
 \end_inset
@@ -10910,8 +10388,6 @@ Here comes a table:
 
 \begin_layout Standard
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features tabularvalignment="middle">
@@ -10922,17 +10398,7 @@ Here comes a table:
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
-one-fish
+سمكة
 \end_layout
 
 \end_inset
@@ -10941,17 +10407,7 @@ one-fish
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
-two-fish
+سمكتين
 \end_layout
 
 \end_inset
@@ -10962,17 +10418,7 @@ two-fish
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
-red-fish
+سمكة حمراء
 \end_layout
 
 \end_inset
@@ -10981,17 +10427,7 @@ red-fish
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
-blue-fish
+سمكة زرقاء
 \end_layout
 
 \end_inset
@@ -11288,28 +10724,20 @@ It is sometimes necessary to have two consecutive environments of the same
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Hello
+مرحبا
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-
-\lang english
-this is an
+هذا
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-
-\lang english
-enumeration
+ترقيم عددي
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Separator plain
 \end_inset
 
@@ -11317,16 +10745,12 @@ enumeration
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-itemize list
+ترقيم نقطي
 \end_layout
 
 \end_deeper
 \end_deeper
 \begin_layout Standard
-
-\lang english
 \begin_inset Separator parbreak
 \end_inset
 
@@ -11334,21 +10758,15 @@ itemize list
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-Hi
+أهلا
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-this is another
+هذا ترقيم
 \end_layout
 
 \begin_layout Enumerate
-
-\lang english
-enumeration
+عددي آخر
 \end_layout
 
 \begin_layout Standard
@@ -11563,6 +10981,8 @@ Horizontal Space
 \family default
 .
  The length units are listed in Appendix
+\lang arabic_arabi
+
 \begin_inset space ~
 \end_inset
 
@@ -11752,9 +11172,7 @@ arg   "space-insert thin"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can also insert the following space types:
+يمكنك إدراج أنواع المسافات التالية:
 \end_layout
 
 \begin_layout Description
@@ -11986,28 +11404,22 @@ reference "tab:Width-of-the"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Width-of-the"
 
 \end_inset
 
-Width of the different horizontal spaces.
+عرض المسافات الأفقية المختلفة.
 \end_layout
 
 \end_inset
@@ -12017,8 +11429,6 @@ Width of the different horizontal spaces.
 
 \begin_layout Plain Layout
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="10" columns="2">
 <features tabularvalignment="middle">
@@ -12031,8 +11441,7 @@ Width of the different horizontal spaces.
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Space
+المسافة
 \end_layout
 
 \end_inset
@@ -12043,8 +11452,7 @@ Space
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Width
+العرض
 \end_layout
 
 \end_inset
@@ -12055,9 +11463,7 @@ Width
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Normal
+عادي
 \end_layout
 
 \end_inset
@@ -12066,8 +11472,6 @@ Normal
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 1/3
 \begin_inset space \thinspace{}
 \end_inset
@@ -12083,9 +11487,7 @@ em
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Protected
+حماية
 \end_layout
 
 \end_inset
@@ -12094,8 +11496,6 @@ Protected
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 1/3
 \begin_inset space \thinspace{}
 \end_inset
@@ -12111,9 +11511,7 @@ em
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Thin
+رفيعة
 \end_layout
 
 \end_inset
@@ -12122,8 +11520,6 @@ Thin
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 1/6
 \begin_inset space \thinspace{}
 \end_inset
@@ -12139,9 +11535,7 @@ em
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Negative thin
+رفيع سالب
 \end_layout
 
 \end_inset
@@ -12150,8 +11544,6 @@ Negative thin
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -1/6
 \begin_inset space \thinspace{}
 \end_inset
@@ -12175,9 +11567,7 @@ mu
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Negative medium
+متوسط سالب
 \end_layout
 
 \end_inset
@@ -12186,8 +11576,6 @@ Negative medium
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -4
 \begin_inset space \thinspace{}
 \end_inset
@@ -12203,9 +11591,7 @@ mu
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Negative thick
+سميك سالب
 \end_layout
 
 \end_inset
@@ -12214,8 +11600,6 @@ Negative thick
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -5
 \begin_inset space \thinspace{}
 \end_inset
@@ -12231,8 +11615,6 @@ mu
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Enspace (0.5
 \begin_inset space \thinspace{}
 \end_inset
@@ -12246,8 +11628,6 @@ em)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 0.5
 \begin_inset space \thinspace{}
 \end_inset
@@ -12263,9 +11643,7 @@ em
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Quad (1
+كواد (1
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -12278,8 +11656,6 @@ em)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \begin_inset space \thinspace{}
 \end_inset
@@ -12295,9 +11671,7 @@ em
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-QQuad (2
+كوادان (2
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -12310,8 +11684,6 @@ em)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 2
 \begin_inset space \thinspace{}
 \end_inset
@@ -12368,39 +11740,33 @@ Here are a few examples of what you can do with them:
 
 \begin_layout Quote
 \noindent
-
-\lang english
-This is on the left side
+هذا في الاتجاه اليسار
 \begin_inset space \hfill{}
 \end_inset
 
-This is on the right
+هذا في الاتجاه اليمين
 \end_layout
 
 \begin_layout Quote
 \noindent
-
-\lang english
-Left
+يسار
 \begin_inset space \hfill{}
 \end_inset
 
-Middle
+وسط
 \begin_inset space \hfill{}
 \end_inset
 
-Right
+يمين
 \end_layout
 
 \begin_layout Quote
 \noindent
-
-\lang english
-Left
+يسار
 \begin_inset space \hfill{}
 \end_inset
 
-1/3 Left
+1/3 يسار
 \begin_inset space \hfill{}
 \end_inset
 
@@ -12408,7 +11774,7 @@ Left
 \begin_inset space \hfill{}
 \end_inset
 
-Right
+يمين
 \end_layout
 
 \begin_layout Standard
@@ -12454,9 +11820,7 @@ s in the space dialog: The following patterns are available:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Dots: 
+نقط: 
 \begin_inset space \dotfill{}
 \end_inset
 
@@ -12468,9 +11832,7 @@ Dots:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Rule: 
+مسطرة: 
 \begin_inset space \hrulefill{}
 \end_inset
 
@@ -12482,9 +11844,7 @@ Rule:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Left arrow: 
+سهم أيسر: 
 \begin_inset space \leftarrowfill{}
 \end_inset
 
@@ -12496,9 +11856,7 @@ Left arrow:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Right arrow: 
+سهم أيمن: 
 \begin_inset space \rightarrowfill{}
 \end_inset
 
@@ -12510,9 +11868,7 @@ Right arrow:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Up brace: 
+قوس علوي: 
 \begin_inset space \downbracefill{}
 \end_inset
 
@@ -12524,9 +11880,7 @@ Up brace:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Down brace: 
+قوس سفلي: 
 \begin_inset space \upbracefill{}
 \end_inset
 
@@ -12831,8 +12185,6 @@ VFill
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 مسافات ! ملء
 \end_layout
 
@@ -12958,119 +12310,88 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can change the paragraph alignment with the 
+يمكنك تغيير محاذاة الفقرة عن طريق 
 \family sans
-Edit\SpecialChar menuseparator
-Paragraph Settings
+تحرير\SpecialChar menuseparator
+إعدادات الفقرة
 \family default
- dialog (toolbar button 
-\lang arabic_arabi
-
+ (زر شريط الأدوات 
 \begin_inset Info
 type  "icon"
 arg   "layout-paragraph"
 \end_inset
 
-
-\lang english
 ).
- There are five possibilities: 
+ توجد خمسة احتمالات: 
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
-Justified
+ضبط
 \family default
- (shortcut 
-\lang arabic_arabi
-
+ (الاختصار 
 \begin_inset Info
 type  "shortcut"
 arg   "paragraph-params \\align block"
 \end_inset
 
-
-\lang english
 )
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
-Left
+يسار
 \family default
  (
-\lang arabic_arabi
-
 \begin_inset Info
 type  "shortcut"
 arg   "paragraph-params \\align left"
 \end_inset
 
-
-\lang english
 )
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
-Right
+يمين
 \family default
  (
-\lang arabic_arabi
-
 \begin_inset Info
 type  "shortcut"
 arg   "paragraph-params \\align right"
 \end_inset
 
-
-\lang english
 )
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
-Center
+وسط
 \family default
  (
-\lang arabic_arabi
-
 \begin_inset Info
 type  "shortcut"
 arg   "paragraph-params \\align center"
 \end_inset
 
-
-\lang english
 )
 \end_layout
 
 \begin_layout Itemize
 
 \family sans
-\lang english
-Default
+افتراضي
 \family default
  (
-\lang arabic_arabi
-
 \begin_inset Info
 type  "shortcut"
 arg   "paragraph-params \\align default"
 \end_inset
 
-
-\lang english
 )
 \end_layout
 
@@ -13085,23 +12406,19 @@ The default in most cases is justified alignment, in which the inter-word
 
 \begin_layout Standard
 \align right
-
-\lang english
-This paragraph is right aligned,
+هذه الفقرة محاذاة يمين
 \end_layout
 
 \begin_layout Standard
 \align center
-
-\lang english
-this one is centered,
+وهذه في الوسط،
 \end_layout
 
 \begin_layout Standard
 \align left
-
+وهذه محاذاة يسار
 \lang english
-this one is left aligned.
+.
 \end_layout
 
 \begin_layout Subsection
@@ -13727,7 +13044,7 @@ emphasized style
 \end_layout
 
 \begin_layout Subsection
-دعم الخطوط في لتيكس \SpecialChar LaTeX
+دعم الخطوط في لتيك \SpecialChar LaTeX
 
 \begin_inset CommandInset label
 LatexCommand label
@@ -14840,11 +14157,7 @@ Noun
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-click on the toolbar button 
-\lang arabic_arabi
-
+انقر على الزر التالي في شريط الأدوات 
 \begin_inset Info
 type  "icon"
 arg   "font-noun"
@@ -14854,11 +14167,7 @@ arg   "font-noun"
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-use the key binding 
-\lang arabic_arabi
-
+استخدم مفتاح الربط 
 \begin_inset Info
 type  "shortcut"
 arg   "font-noun"
@@ -14918,11 +14227,7 @@ Emphasized
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-clicking on the toolbar button 
-\lang arabic_arabi
-
+انقر على الزر التالي في شريط الأدوات
 \begin_inset Info
 type  "icon"
 arg   "font-emph"
@@ -14932,11 +14237,7 @@ arg   "font-emph"
 \end_layout
 
 \begin_layout Itemize
-
-\lang english
-using the keybindings 
-\lang arabic_arabi
-
+استخدم مفتاح الربط
 \begin_inset Info
 type  "shortcut"
 arg   "font-emph"
@@ -17180,14 +16481,10 @@ Portable Network Graphics
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-You can export your document to PDF via the menu 
+يمكنك تصدير مستندك إلى PDF بعد طرق من خلال 
 \family sans
-File\SpecialChar menuseparator
-Export
-\family default
- in different ways:
+ملف\SpecialChar menuseparator
+تصدير :
 \end_layout
 
 \begin_layout Description
@@ -20056,17 +19353,13 @@ Logos
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \SpecialChar LyX
- The name of the game.
+ اسم هذا البرنامج.
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \SpecialChar TeX
- The typesetting engine used by \SpecialChar LyX
+ محرك المحارف المستخدم في هذا البرنامج \SpecialChar LyX
 .
 \end_layout
 
@@ -20080,10 +19373,8 @@ Logos
 \end_layout
 
 \begin_layout Description
-
-\lang english
 \SpecialChar LaTeX2e
- The current version of \SpecialChar LaTeX
+ الإصدار الحالي من \SpecialChar LaTeX
 .
 \end_layout
 
@@ -20185,14 +19476,10 @@ arg   "space-insert thin"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Here is an example to show the differences:
+هذا مثال لتشاهد الفرق:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
 <features tabularvalignment="middle">
@@ -20203,8 +19490,6 @@ Here is an example to show the differences:
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 24
 \begin_inset space ~
 \end_inset
@@ -20222,9 +19507,7 @@ h
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-space between number and unit
+المسافة بين الرقم والوحدة
 \end_layout
 
 \end_inset
@@ -20235,8 +19518,6 @@ space between number and unit
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 24
 \begin_inset space \thinspace{}
 \end_inset
@@ -20254,9 +19535,7 @@ h
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-half space between number and unit
+نصف المسافة بين الرقم والوحدة
 \end_layout
 
 \end_inset
@@ -20825,13 +20104,11 @@ At the side of this sentence is an example marginal note.
 \series medium
 
 \begin_inset Marginal
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align left
-
-\lang english
-This is a marginal note.
+هذه ملاحظة هامشية
 \end_layout
 
 \end_inset
@@ -21698,7 +20975,7 @@ Table
 \begin_inset Text
 
 \begin_layout Plain Layout
-A
+أ
 \end_layout
 
 \end_inset
@@ -21736,7 +21013,7 @@ A
 \begin_inset Text
 
 \begin_layout Plain Layout
-B
+ب
 \end_layout
 
 \end_inset
@@ -21774,7 +21051,7 @@ B
 \begin_inset Text
 
 \begin_layout Plain Layout
-C
+ج
 \end_layout
 
 \end_inset
@@ -21910,8 +21187,6 @@ one
 
 \begin_layout Standard
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="4">
 <features firstHeadTopDL="true" firstHeadBottomDL="true" tabularvalignment="middle">
@@ -21924,9 +21199,7 @@ one
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-abc
+ألفا
 \end_layout
 
 \end_inset
@@ -21935,9 +21208,7 @@ abc
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-def ghi
+بيتا
 \end_layout
 
 \end_inset
@@ -21955,9 +21226,7 @@ def ghi
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-jkl
+غاما
 \end_layout
 
 \end_inset
@@ -21968,17 +21237,7 @@ jkl
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
-A
+أ
 \end_layout
 
 \end_inset
@@ -21987,9 +21246,7 @@ A
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-B
+ب
 \end_layout
 
 \end_inset
@@ -21998,9 +21255,7 @@ B
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-C
+ج
 \end_layout
 
 \end_inset
@@ -22009,9 +21264,7 @@ C
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-D
+د
 \end_layout
 
 \end_inset
@@ -22022,8 +21275,6 @@ D
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 1
 \end_layout
 
@@ -22033,8 +21284,6 @@ D
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 2
 \end_layout
 
@@ -22044,8 +21293,6 @@ D
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 3
 \end_layout
 
@@ -22055,8 +21302,6 @@ D
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 4
 \end_layout
 
@@ -22307,8 +21552,6 @@ header
 
 \begin_layout Standard
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="69" columns="3">
 <features islongtable="true" longtabularalignment="center">
@@ -22322,8 +21565,7 @@ header
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-Example Phone List (ignore the names)
+مثال قائمة الهاتف (تجاهل الأسماء)
 \end_layout
 
 \end_inset
@@ -22354,8 +21596,7 @@ Example Phone List (ignore the names)
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-NAME
+الاسم
 \end_layout
 
 \end_inset
@@ -22375,8 +21616,7 @@ NAME
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-TEL.
+الهاتف.
 \end_layout
 
 \end_inset
@@ -22388,10 +21628,8 @@ TEL.
 
 \begin_layout Plain Layout
 
-\lang english
- 
 \series bold
-Example Phone List
+مثال قائمة الهاتف
 \end_layout
 
 \end_inset
@@ -22422,8 +21660,7 @@ Example Phone List
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-NAME
+الاسم
 \end_layout
 
 \end_inset
@@ -22443,8 +21680,7 @@ NAME
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-TEL.
+الهاتف.
 \end_layout
 
 \end_inset
@@ -22456,10 +21692,8 @@ TEL.
 
 \begin_layout Plain Layout
 
-\lang english
- 
 \series bold
-continue ...
+استمر ...
 \end_layout
 
 \end_inset
@@ -22490,7 +21724,6 @@ continue ...
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Annovi
 \end_layout
 
@@ -22500,8 +21733,6 @@ Annovi
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Silvia
 \end_layout
 
@@ -22511,8 +21742,6 @@ Silvia
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -22526,7 +21755,6 @@ Silvia
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Bertoli
 \end_layout
 
@@ -22536,8 +21764,6 @@ Bertoli
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Stefano
 \end_layout
 
@@ -22547,8 +21773,6 @@ Stefano
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -22562,7 +21786,6 @@ Stefano
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Bozzi
 \end_layout
 
@@ -22572,8 +21795,6 @@ Bozzi
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Walter
 \end_layout
 
@@ -22583,8 +21804,6 @@ Walter
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -22598,7 +21817,6 @@ Walter
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Cachia
 \end_layout
 
@@ -22608,8 +21826,6 @@ Cachia
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Maria
 \end_layout
 
@@ -22619,8 +21835,6 @@ Maria
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -22634,7 +21848,6 @@ Maria
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Cachia
 \end_layout
 
@@ -22644,8 +21857,6 @@ Cachia
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Maurizio
 \end_layout
 
@@ -22655,8 +21866,6 @@ Maurizio
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -22670,7 +21879,6 @@ Maurizio
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Cinquemani
 \end_layout
 
@@ -22680,8 +21888,6 @@ Cinquemani
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Giusi
 \end_layout
 
@@ -22691,8 +21897,6 @@ Giusi
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -22706,7 +21910,6 @@ Giusi
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Colin
 \end_layout
 
@@ -22716,8 +21919,6 @@ Colin
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Bernard
 \end_layout
 
@@ -22727,8 +21928,6 @@ Bernard
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -22742,7 +21941,6 @@ Bernard
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Concli
 \end_layout
 
@@ -22752,8 +21950,6 @@ Concli
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Gianfranco
 \end_layout
 
@@ -22763,8 +21959,6 @@ Gianfranco
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -22778,7 +21972,6 @@ Gianfranco
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Dal Bosco
 \end_layout
 
@@ -22788,8 +21981,6 @@ Dal Bosco
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Carolina
 \end_layout
 
@@ -22799,8 +21990,6 @@ Carolina
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -22814,7 +22003,6 @@ Carolina
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Dalpiaz
 \end_layout
 
@@ -22824,8 +22012,6 @@ Dalpiaz
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Annamaria
 \end_layout
 
@@ -22835,8 +22021,6 @@ Annamaria
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -22850,7 +22034,6 @@ Annamaria
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Feliciello
 \end_layout
 
@@ -22860,8 +22043,6 @@ Feliciello
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Domenico
 \end_layout
 
@@ -22871,8 +22052,6 @@ Domenico
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -22886,7 +22065,6 @@ Domenico
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Focarelli
 \end_layout
 
@@ -22896,8 +22074,6 @@ Focarelli
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Paola
 \end_layout
 
@@ -22907,8 +22083,6 @@ Paola
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -22922,7 +22096,6 @@ Paola
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Galletti
 \end_layout
 
@@ -22932,8 +22105,6 @@ Galletti
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Oreste
 \end_layout
 
@@ -22943,8 +22114,6 @@ Oreste
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -22958,7 +22127,6 @@ Oreste
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Gasparini
 \end_layout
 
@@ -22968,8 +22136,6 @@ Gasparini
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Franca
 \end_layout
 
@@ -22979,8 +22145,6 @@ Franca
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -22994,7 +22158,6 @@ Franca
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Rizzardi
 \end_layout
 
@@ -23004,8 +22167,6 @@ Rizzardi
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Paola
 \end_layout
 
@@ -23015,8 +22176,6 @@ Paola
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -23030,7 +22189,6 @@ Paola
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Lassini
 \end_layout
 
@@ -23040,8 +22198,6 @@ Lassini
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Giancarlo
 \end_layout
 
@@ -23051,8 +22207,6 @@ Giancarlo
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -23066,7 +22220,6 @@ Giancarlo
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Malfatti
 \end_layout
 
@@ -23076,8 +22229,6 @@ Malfatti
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Luciano
 \end_layout
 
@@ -23087,8 +22238,6 @@ Luciano
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -23102,7 +22251,6 @@ Luciano
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Malfatti
 \end_layout
 
@@ -23112,8 +22260,6 @@ Malfatti
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Valeriano
 \end_layout
 
@@ -23123,8 +22269,6 @@ Valeriano
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -23138,7 +22282,6 @@ Valeriano
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Meneguzzo
 \end_layout
 
@@ -23148,8 +22291,6 @@ Meneguzzo
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Roberto
 \end_layout
 
@@ -23159,8 +22300,6 @@ Roberto
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -23174,7 +22313,6 @@ Roberto
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Mezzadra
 \end_layout
 
@@ -23184,8 +22322,6 @@ Mezzadra
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Roberto
 \end_layout
 
@@ -23195,8 +22331,6 @@ Roberto
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -23210,7 +22344,6 @@ Roberto
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Pirpamer
 \end_layout
 
@@ -23220,8 +22353,6 @@ Pirpamer
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Erich
 \end_layout
 
@@ -23231,8 +22362,6 @@ Erich
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -23246,7 +22375,6 @@ Erich
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Pochiesa
 \end_layout
 
@@ -23256,8 +22384,6 @@ Pochiesa
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Paolo
 \end_layout
 
@@ -23267,8 +22393,6 @@ Paolo
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111, 222
 \end_layout
 
@@ -23282,7 +22406,6 @@ Paolo
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Radina
 \end_layout
 
@@ -23292,8 +22415,6 @@ Radina
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Claudio
 \end_layout
 
@@ -23303,8 +22424,6 @@ Claudio
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -23318,7 +22437,6 @@ Claudio
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Stuffer
 \end_layout
 
@@ -23328,8 +22446,6 @@ Stuffer
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Oskar
 \end_layout
 
@@ -23339,8 +22455,6 @@ Oskar
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -23354,7 +22468,6 @@ Oskar
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Tacchelli
 \end_layout
 
@@ -23364,8 +22477,6 @@ Tacchelli
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Ugo
 \end_layout
 
@@ -23375,8 +22486,6 @@ Ugo
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -23390,7 +22499,6 @@ Ugo
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Tezzele
 \end_layout
 
@@ -23400,8 +22508,6 @@ Tezzele
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Margit
 \end_layout
 
@@ -23411,8 +22517,6 @@ Margit
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -23426,7 +22530,6 @@ Margit
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Unterkalmsteiner
 \end_layout
 
@@ -23436,8 +22539,6 @@ Unterkalmsteiner
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Frieda
 \end_layout
 
@@ -23447,8 +22548,6 @@ Frieda
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -23462,7 +22561,6 @@ Frieda
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Vieider
 \end_layout
 
@@ -23472,8 +22570,6 @@ Vieider
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Hilde
 \end_layout
 
@@ -23483,8 +22579,6 @@ Hilde
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -23498,7 +22592,6 @@ Hilde
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Vigna
 \end_layout
 
@@ -23508,8 +22601,6 @@ Vigna
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Jürgen
 \end_layout
 
@@ -23519,8 +22610,6 @@ Jürgen
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -23534,7 +22623,6 @@ Jürgen
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Weber
 \end_layout
 
@@ -23544,8 +22632,6 @@ Weber
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Maurizio
 \end_layout
 
@@ -23555,8 +22641,6 @@ Maurizio
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -23570,7 +22654,6 @@ Maurizio
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Winkler
 \end_layout
 
@@ -23580,8 +22663,6 @@ Winkler
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Franz
 \end_layout
 
@@ -23591,8 +22672,6 @@ Franz
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 111
 \end_layout
 
@@ -23604,8 +22683,6 @@ Franz
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
  
 \end_layout
 
@@ -23637,7 +22714,6 @@ Franz
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Annovi
 \end_layout
 
@@ -23647,8 +22723,6 @@ Annovi
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Silvia
 \end_layout
 
@@ -23658,8 +22732,6 @@ Silvia
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -23673,7 +22745,6 @@ Silvia
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Bertoli
 \end_layout
 
@@ -23683,8 +22754,6 @@ Bertoli
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Stefano
 \end_layout
 
@@ -23694,8 +22763,6 @@ Stefano
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -23709,7 +22776,6 @@ Stefano
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Bozzi
 \end_layout
 
@@ -23719,8 +22785,6 @@ Bozzi
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Walter
 \end_layout
 
@@ -23730,8 +22794,6 @@ Walter
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -23745,7 +22807,6 @@ Walter
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Cachia
 \end_layout
 
@@ -23755,8 +22816,6 @@ Cachia
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Maria
 \end_layout
 
@@ -23766,8 +22825,6 @@ Maria
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -23781,7 +22838,6 @@ Maria
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Cachia
 \end_layout
 
@@ -23791,8 +22847,6 @@ Cachia
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Maurizio
 \end_layout
 
@@ -23802,8 +22856,6 @@ Maurizio
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -23817,7 +22869,6 @@ Maurizio
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Cinquemani
 \end_layout
 
@@ -23827,8 +22878,6 @@ Cinquemani
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Giusi
 \end_layout
 
@@ -23838,8 +22887,6 @@ Giusi
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -23853,7 +22900,6 @@ Giusi
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Colin
 \end_layout
 
@@ -23863,8 +22909,6 @@ Colin
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Bernard
 \end_layout
 
@@ -23874,8 +22918,6 @@ Bernard
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -23889,7 +22931,6 @@ Bernard
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Concli
 \end_layout
 
@@ -23899,8 +22940,6 @@ Concli
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Gianfranco
 \end_layout
 
@@ -23910,8 +22949,6 @@ Gianfranco
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -23925,7 +22962,6 @@ Gianfranco
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Dal Bosco
 \end_layout
 
@@ -23935,8 +22971,6 @@ Dal Bosco
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Carolina
 \end_layout
 
@@ -23946,8 +22980,6 @@ Carolina
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -23961,7 +22993,6 @@ Carolina
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Dalpiaz
 \end_layout
 
@@ -23971,8 +23002,6 @@ Dalpiaz
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Annamaria
 \end_layout
 
@@ -23982,8 +23011,6 @@ Annamaria
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -23997,7 +23024,6 @@ Annamaria
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Feliciello
 \end_layout
 
@@ -24007,8 +23033,6 @@ Feliciello
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Domenico
 \end_layout
 
@@ -24018,8 +23042,6 @@ Domenico
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -24033,7 +23055,6 @@ Domenico
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Focarelli
 \end_layout
 
@@ -24043,8 +23064,6 @@ Focarelli
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Paola
 \end_layout
 
@@ -24054,8 +23073,6 @@ Paola
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -24069,7 +23086,6 @@ Paola
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Galletti
 \end_layout
 
@@ -24079,8 +23095,6 @@ Galletti
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Oreste
 \end_layout
 
@@ -24090,8 +23104,6 @@ Oreste
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -24105,7 +23117,6 @@ Oreste
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Gasparini
 \end_layout
 
@@ -24115,8 +23126,6 @@ Gasparini
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Franca
 \end_layout
 
@@ -24126,8 +23135,6 @@ Franca
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -24141,7 +23148,6 @@ Franca
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Rizzardi
 \end_layout
 
@@ -24151,8 +23157,6 @@ Rizzardi
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Paola
 \end_layout
 
@@ -24162,8 +23166,6 @@ Paola
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -24177,7 +23179,6 @@ Paola
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Lassini
 \end_layout
 
@@ -24187,8 +23188,6 @@ Lassini
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Giancarlo
 \end_layout
 
@@ -24198,8 +23197,6 @@ Giancarlo
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -24213,7 +23210,6 @@ Giancarlo
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Malfatti
 \end_layout
 
@@ -24223,8 +23219,6 @@ Malfatti
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Luciano
 \end_layout
 
@@ -24234,8 +23228,6 @@ Luciano
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -24249,7 +23241,6 @@ Luciano
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Malfatti
 \end_layout
 
@@ -24259,8 +23250,6 @@ Malfatti
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Valeriano
 \end_layout
 
@@ -24270,8 +23259,6 @@ Valeriano
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -24285,7 +23272,6 @@ Valeriano
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Meneguzzo
 \end_layout
 
@@ -24295,8 +23281,6 @@ Meneguzzo
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Roberto
 \end_layout
 
@@ -24306,8 +23290,6 @@ Roberto
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -24321,7 +23303,6 @@ Roberto
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Mezzadra
 \end_layout
 
@@ -24331,8 +23312,6 @@ Mezzadra
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Roberto
 \end_layout
 
@@ -24342,8 +23321,6 @@ Roberto
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -24357,7 +23334,6 @@ Roberto
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Pirpamer
 \end_layout
 
@@ -24367,8 +23343,6 @@ Pirpamer
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Erich
 \end_layout
 
@@ -24378,8 +23352,6 @@ Erich
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -24393,7 +23365,6 @@ Erich
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Pochiesa
 \end_layout
 
@@ -24403,8 +23374,6 @@ Pochiesa
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Paolo
 \end_layout
 
@@ -24414,8 +23383,6 @@ Paolo
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555, 222
 \end_layout
 
@@ -24429,7 +23396,6 @@ Paolo
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Radina
 \end_layout
 
@@ -24439,8 +23405,6 @@ Radina
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Claudio
 \end_layout
 
@@ -24450,8 +23414,6 @@ Claudio
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -24465,7 +23427,6 @@ Claudio
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Stuffer
 \end_layout
 
@@ -24475,8 +23436,6 @@ Stuffer
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Oskar
 \end_layout
 
@@ -24486,8 +23445,6 @@ Oskar
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -24501,7 +23458,6 @@ Oskar
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Tacchelli
 \end_layout
 
@@ -24511,8 +23467,6 @@ Tacchelli
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Ugo
 \end_layout
 
@@ -24522,8 +23476,6 @@ Ugo
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -24537,7 +23489,6 @@ Ugo
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Tezzele
 \end_layout
 
@@ -24547,8 +23498,6 @@ Tezzele
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Margit
 \end_layout
 
@@ -24558,8 +23507,6 @@ Margit
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -24573,7 +23520,6 @@ Margit
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Unterkalmsteiner
 \end_layout
 
@@ -24583,8 +23529,6 @@ Unterkalmsteiner
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Frieda
 \end_layout
 
@@ -24594,8 +23538,6 @@ Frieda
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -24609,7 +23551,6 @@ Frieda
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Vieider
 \end_layout
 
@@ -24619,8 +23560,6 @@ Vieider
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Hilde
 \end_layout
 
@@ -24630,8 +23569,6 @@ Hilde
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -24645,7 +23582,6 @@ Hilde
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Vigna
 \end_layout
 
@@ -24655,8 +23591,6 @@ Vigna
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Jürgen
 \end_layout
 
@@ -24666,8 +23600,6 @@ Jürgen
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 999
 \end_layout
 
@@ -24681,7 +23613,6 @@ Jürgen
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Weber
 \end_layout
 
@@ -24691,8 +23622,6 @@ Weber
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Maurizio
 \end_layout
 
@@ -24702,8 +23631,6 @@ Maurizio
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -24717,7 +23644,6 @@ Maurizio
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 Winkler
 \end_layout
 
@@ -24727,8 +23653,6 @@ Winkler
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 Franz
 \end_layout
 
@@ -24738,8 +23662,6 @@ Franz
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 555
 \end_layout
 
@@ -24753,8 +23675,7 @@ Franz
 \begin_layout Plain Layout
 
 \series bold
-\lang english
-End
+النهاية
 \end_layout
 
 \end_inset
@@ -25334,12 +24255,10 @@ arg   "layout-paragraph"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -25354,20 +24273,16 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:A-star-in"
 
 \end_inset
 
-A star in a float.
+النجمة في التعويم.
 \end_layout
 
 \end_inset
@@ -25503,16 +24418,12 @@ reference "fig:Star"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Float figure
 wide false
 sideways false
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset space \hfill{}
 \end_inset
 
@@ -25523,20 +24434,16 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Undefinable"
 
 \end_inset
 
-Undefinable
+غير معين
 \end_layout
 
 \end_inset
@@ -25545,10 +24452,8 @@ Undefinable
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
-	filename ..c/clipart/3D-structure-distort.pdf
+	filename ../clipart/3D-structure-distort.pdf
 	lyxscale 60
 	width 45col%
 
@@ -25570,20 +24475,16 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Star"
 
 \end_inset
 
-Star
+نجم
 \end_layout
 
 \end_inset
@@ -25592,8 +24493,6 @@ Star
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Graphics
 	filename ../clipart/Star-structure.pdf
 	lyxscale 60
@@ -25614,20 +24513,16 @@ Star
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Two-images"
 
 \end_inset
 
-Two images.
+صورتين.
 \end_layout
 
 \end_inset
@@ -25655,65 +24550,47 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Table floats can be inserted using the menu 
+تعويم الجدول يمكن إدراجه باستخدام قائمة 
 \family sans
-Insert\SpecialChar menuseparator
-Float\SpecialChar menuseparator
-Table
+إدراج\SpecialChar menuseparator
+تعويم\SpecialChar menuseparator
+جدول
 \family default
- or the toolbar button 
-\lang arabic_arabi
-
+ أو زر 
 \begin_inset Info
 type  "icon"
 arg   "float-insert table"
 \end_inset
 
-
-\lang english
-.
- They have the same properties as figure floats except that the table in
- the float is normally placed below the caption and not above like for figures
- and that the label begins with “tab:”.
- Table
-\begin_inset space ~
-\end_inset
-
-
+ في شريط الأدوات.
+ وله نفس إعدادات تعويم الرسم التوضيحي باستثناء أن التعليق يكون فوق الجدول
+ ولي تحته مثل تعليق الرسم التوضيحي ويبدأ التعليق بكلمة جدول 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:Table-float"
 
 \end_inset
 
- is a table float.
+ .
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Table-float"
 
 \end_inset
 
-A table float.
+تعويم الجدول.
 \end_layout
 
 \end_inset
@@ -25723,8 +24600,6 @@ A table float.
 
 \begin_layout Plain Layout
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="3" columns="3">
 <features tabularvalignment="middle">
@@ -25736,16 +24611,6 @@ A table float.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 1
 \end_layout
 
@@ -25755,16 +24620,6 @@ A table float.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 2
 \end_layout
 
@@ -25774,16 +24629,6 @@ A table float.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 3
 \end_layout
 
@@ -25795,17 +24640,7 @@ A table float.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
-Joe
+ألفا
 \end_layout
 
 \end_inset
@@ -25814,17 +24649,7 @@ Joe
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
-Mary
+بيتا
 \end_layout
 
 \end_inset
@@ -25833,17 +24658,7 @@ Mary
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
-Ted
+غاما
 \end_layout
 
 \end_inset
@@ -25854,16 +24669,6 @@ Ted
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 \begin_inset Formula $\int x^{2}dx$
 \end_inset
 
@@ -25876,16 +24681,6 @@ Ted
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 \begin_inset Formula $\left[\begin{array}{cc}
 a & b\\
 c & d
@@ -25901,16 +24696,6 @@ c & d
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 \begin_inset Formula $1+1=2$
 \end_inset
 
@@ -26056,15 +24841,15 @@ Minipages are often used for text in another language or text that needs
 \end_inset
 
 
-\lang english
-If you place two minipages side-by-side, you can use 
-\family sans
-Horizontal Fills
-\family default
- as described in section
-\begin_inset space ~
-\end_inset
+\end_layout
 
+\begin_layout Standard
+إذا وضعت صندوقين نصيين بجوار بعضهما، يمكنك استخدام 
+\noun on
+ملء أفقي
+\noun default
+ بينهما، شاهد القسم 
+\lang english
 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -26072,9 +24857,34 @@ reference "subsec:Horizontal-Space"
 
 \end_inset
 
-:
-\lang arabic_arabi
 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\lang arabic_arabi
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+.
 \begin_inset VSpace medskip
 \end_inset
 
@@ -26103,10 +24913,8 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-This is a minipage with some stupid dummy text.
- This dummy text is used to increase the size of the minipage.
+عالمية العلم، عالمية العلم، عالمية العلم،عالمية العلم،عالمية العلم،عالمية
+ العلم.
 \end_layout
 
 \end_inset
@@ -26135,10 +24943,8 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-
-\lang english
-This is a minipage with some stupid dummy text.
- This dummy text is used to increase the size of the minipage.
+عالمية العلم، عالمية العلم، عالمية العلم،عالمية العلم،عالمية العلم،عالمية
+ العلم.
 \end_layout
 
 \end_inset
@@ -26755,62 +25561,44 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Roots can be created using the 
-\family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Panel
-\family default
- buttons 
-\lang arabic_arabi
-
+الجذور يمكن إدراجها باستخدام الزرين 
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\sqrt"
 \end_inset
 
-
-\lang english
- or 
-\lang arabic_arabi
-
+ أو 
 \begin_inset Info
 type  "icon"
 arg   "math-insert \\root"
 \end_inset
 
-
-\lang english
- or the commands 
+ ، أو الأمرين 
 \series bold
 
 \backslash
 sqrt
 \series default
- or 
+ أو 
 \series bold
 
 \backslash
-root
+root 
 \series default
 .
- With the command 
-\series bold
-
-\backslash
-root
-\series default
- you can produce roots of higher orders, like cube roots, while 
+ والفرق بينهما أن 
 \series bold
 
 \backslash
 sqrt
 \series default
- always produces a square root.
+ خاص بالجذر التربيعي فقط، أما 
+\series bold
+
+\backslash
+root
+\series default
+ فهو لأي جذر.
 \end_layout
 
 \begin_layout Subsection
@@ -27334,28 +26122,22 @@ reference "tab:Accent-names-and"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Accent-names-and"
 
 \end_inset
 
-Accent names and the corresponding commands.
+أسماء اللهجات والأوامر المقابلة لها.
 \end_layout
 
 \end_inset
@@ -27365,8 +26147,6 @@ Accent names and the corresponding commands.
 
 \begin_layout Plain Layout
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="11" columns="3">
 <features tabularvalignment="middle">
@@ -27378,9 +26158,7 @@ Accent names and the corresponding commands.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Name
+الاسم
 \end_layout
 
 \end_inset
@@ -27389,9 +26167,7 @@ Name
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Command
+الأمر
 \end_layout
 
 \end_inset
@@ -27400,18 +26176,7 @@ Command
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-E
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-xample
+مثال
 \end_layout
 
 \end_inset
@@ -27422,16 +26187,6 @@ xample
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 circumflex
 \end_layout
 
@@ -27443,7 +26198,6 @@ circumflex
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 hat
@@ -27455,16 +26209,6 @@ hat
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 \begin_inset Formula $\hat{a}$
 \end_inset
 
@@ -27479,16 +26223,6 @@ hat
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 grave
 \end_layout
 
@@ -27500,7 +26234,6 @@ grave
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 grave
@@ -27512,16 +26245,6 @@ grave
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 \begin_inset Formula $\grave{a}$
 \end_inset
 
@@ -27536,16 +26259,6 @@ grave
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 acute
 \end_layout
 
@@ -27557,7 +26270,6 @@ acute
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 acute
@@ -27569,16 +26281,6 @@ acute
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 \begin_inset Formula $\acute{a}$
 \end_inset
 
@@ -27593,16 +26295,6 @@ acute
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 umlaut
 \end_layout
 
@@ -27614,7 +26306,6 @@ umlaut
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 ddot
@@ -27626,16 +26317,6 @@ ddot
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 \begin_inset Formula $\ddot{a}$
 \end_inset
 
@@ -27650,16 +26331,6 @@ ddot
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 tilde
 \end_layout
 
@@ -27671,7 +26342,6 @@ tilde
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 tilde
@@ -27683,16 +26353,6 @@ tilde
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 \begin_inset Formula $\tilde{a}$
 \end_inset
 
@@ -27707,16 +26367,6 @@ tilde
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 dot
 \end_layout
 
@@ -27728,7 +26378,6 @@ dot
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 dot
@@ -27740,16 +26389,6 @@ dot
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 \begin_inset Formula $\dot{a}$
 \end_inset
 
@@ -27764,16 +26403,6 @@ dot
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 breve
 \end_layout
 
@@ -27785,7 +26414,6 @@ breve
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 breve
@@ -27797,16 +26425,6 @@ breve
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 \begin_inset Formula $\breve{a}$
 \end_inset
 
@@ -27821,16 +26439,6 @@ breve
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 caron
 \end_layout
 
@@ -27842,7 +26450,6 @@ caron
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 check
@@ -27854,16 +26461,6 @@ check
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 \begin_inset Formula $\check{a}$
 \end_inset
 
@@ -27878,16 +26475,6 @@ check
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 macron
 \end_layout
 
@@ -27899,7 +26486,6 @@ macron
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 bar
@@ -27911,16 +26497,6 @@ bar
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 \begin_inset Formula $\bar{a}$
 \end_inset
 
@@ -27935,8 +26511,6 @@ bar
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 vector
 \end_layout
 
@@ -27948,7 +26522,6 @@ vector
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 vec
@@ -27960,16 +26533,6 @@ vec
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\noun off
-\color none
-\lang english
 \begin_inset Formula $\vec{a}$
 \end_inset
 
@@ -28202,30 +26765,16 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Matrices are entered in \SpecialChar LyX
- using the 
-\family sans
-Math
-\begin_inset space ~
-\end_inset
-
-Panel
-\family default
- matrix button 
-\lang arabic_arabi
-
+المصفوفات يتم إدراجها في \SpecialChar LyX
+ عن طريق الزر 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show mathmatrix"
 \end_inset
 
-
-\lang english
-.
- It will open a dialog for you to choose the number of rows/columns.
- Here is an example:
+ في شريط الرياضيات.
+ وسيتم فتح نافذة تسمح بتحديد عدد الصفوف والأعمدة.
+ وهنا مثال:
 \begin_inset Formula 
 \[
 \left(\begin{array}{ccc}
@@ -28237,6 +26786,8 @@ arg   "dialog-show mathmatrix"
 
 \end_inset
 
+
+\lang english
 The parentheses aren't automatic, but you can add them as described in section
 \begin_inset space ~
 \end_inset
@@ -28854,28 +27405,22 @@ reference "tab:Typefaces-and-the"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Float table
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:Typefaces-and-the"
 
 \end_inset
 
-Typefaces and the corresponding commands.
+مظهر الخط والأمر الخاص به.
 \end_layout
 
 \end_inset
@@ -28885,8 +27430,6 @@ Typefaces and the corresponding commands.
 
 \begin_layout Plain Layout
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
 <features tabularvalignment="middle">
@@ -28897,9 +27440,7 @@ Typefaces and the corresponding commands.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Font
+الخط
 \end_layout
 
 \end_inset
@@ -28908,9 +27449,7 @@ Font
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Command
+الأمر
 \end_layout
 
 \end_inset
@@ -28921,13 +27460,6 @@ Command
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\shape up
-\size normal
-\bar no
-\noun off
-\color none
-\lang english
 \begin_inset Formula $\mathrm{Roman}$
 \end_inset
 
@@ -28942,7 +27474,6 @@ Command
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 mathrm
@@ -28956,8 +27487,6 @@ mathrm
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Formula $\mathbf{\mathbf{Bold}}$
 \end_inset
 
@@ -28972,7 +27501,6 @@ mathrm
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 mathbf
@@ -28986,8 +27514,6 @@ mathbf
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Formula $\mathit{Italic}$
 \end_inset
 
@@ -29002,7 +27528,6 @@ mathbf
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 mathit
@@ -29016,13 +27541,6 @@ mathit
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\shape up
-\size normal
-\bar no
-\noun off
-\color none
-\lang english
 \begin_inset Formula $\mathtt{Typewriter}$
 \end_inset
 
@@ -29037,7 +27555,6 @@ mathit
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 mathtt
@@ -29051,8 +27568,6 @@ mathtt
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Formula $\mathbf{\mathbb{BLACKBOARD}}$
 \end_inset
 
@@ -29067,7 +27582,6 @@ mathtt
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 mathbb
@@ -29081,8 +27595,6 @@ mathbb
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Formula $\mathfrak{Fraktur}$
 \end_inset
 
@@ -29097,7 +27609,6 @@ mathbb
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 mathfrak
@@ -29112,13 +27623,7 @@ mathfrak
 
 \begin_layout Plain Layout
 
-\shape up
-\size normal
 \emph on
-\bar no
-\noun off
-\color none
-\lang english
 \begin_inset Formula $\mathcal{CALLIGRAPHIC}$
 \end_inset
 
@@ -29133,7 +27638,6 @@ mathfrak
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 mathcal
@@ -29147,8 +27651,6 @@ mathcal
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Formula $\mathsf{SansSerif}$
 \end_inset
 
@@ -29163,7 +27665,6 @@ mathcal
 \begin_layout Plain Layout
 
 \series bold
-\lang english
 
 \backslash
 mathsf
@@ -33277,8 +31778,7 @@ You can also format the page number using the character
 \begin_layout Standard
 
 \series bold
-\lang english
-italic page number:|textit
+رقم صفحة إيطالي:|textit
 \end_layout
 
 \begin_layout Standard
@@ -33416,9 +31916,7 @@ textit{#1}}
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-and write
+واكتب
 \end_layout
 
 \begin_layout Standard
@@ -34753,33 +33251,27 @@ Nomenclature
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Default a space of 1
+افتراضي المسافة المستخدمة 1
 \begin_inset space \thinspace{}
 \end_inset
 
-cm is used
+cm 
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Longest
+عرض
 \begin_inset space ~
 \end_inset
 
-label
+ملصق
 \begin_inset space ~
 \end_inset
 
-width the width of the widest symbol of all nomenclature entries is used
+طويل the width of the widest symbol of all nomenclature entries is used
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Custom custom space
+مخصص مسافة مخصصة
 \end_layout
 
 \begin_layout Standard
@@ -35027,10 +33519,9 @@ status open
 \begin_layout Standard
 
 \series bold
-\lang english
-Question:
+سؤال:
 \series default
- Who was the first physics Nobel prize winner?
+ من هو أول فيزيائي يفوز بجازة نوبل؟
 \end_layout
 
 \end_inset
@@ -35043,15 +33534,14 @@ Question:
 \lang english
 \begin_inset Branch Answer
 inverted 0
-status collapsed
+status open
 
 \begin_layout Standard
 
 \series bold
-\lang english
-Answer:
+الاجابة:
 \series default
- Wilhelm Conrad Röntgen
+ وليام كونراد رونتجن.
 \end_layout
 
 \end_inset
@@ -35623,30 +34113,27 @@ links
 \labelwidthstring 00.00.0000
 
 \color magenta
-\lang english
 magenta
 \color inherit
- for hyperlinks and URLs
+ للروابط والروابط التشعبية
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \color red
-\lang english
 red
 \color inherit
- for links
+ للروابط
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \color green
-\lang english
 green
 \color inherit
- for citations
+ للاستشهادات
 \end_layout
 
 \begin_layout Standard
@@ -35890,9 +34377,7 @@ gives
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-This is a line with a 
+هذا 
 \begin_inset ERT
 status collapsed
 
@@ -35905,7 +34390,7 @@ fbox{
 
 \end_inset
 
-framed
+إطار
 \begin_inset ERT
 status collapsed
 
@@ -35916,7 +34401,7 @@ status collapsed
 
 \end_inset
 
- word.
+ كلمة.
 \end_layout
 
 \begin_layout Standard
@@ -36368,9 +34853,9 @@ status collapsed
 
 \end_inset
 
-
+كود سحري:
 \lang english
-Magic code:
+
 \begin_inset Newline newline
 \end_inset
 
@@ -36575,19 +35060,15 @@ reference "fig:Page-layout"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Float figure
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="5" columns="3">
 <features tabularvalignment="middle">
@@ -36599,9 +35080,7 @@ status open
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Left Header
+رأس أيسر
 \end_layout
 
 \end_inset
@@ -36610,9 +35089,7 @@ Left Header
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Center Header
+رأس أوسط
 \end_layout
 
 \end_inset
@@ -36621,9 +35098,7 @@ Center Header
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Right Header
+رأس أيمن
 \end_layout
 
 \end_inset
@@ -36634,8 +35109,6 @@ Right Header
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset space ~
 \end_inset
 
@@ -36648,8 +35121,6 @@ Right Header
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset space ~
 \end_inset
 
@@ -36662,8 +35133,6 @@ Right Header
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset space ~
 \end_inset
 
@@ -36678,8 +35147,6 @@ Right Header
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 The normal text on the page goes here.
  The running header is above the text, and the footer is below (including
  footnotes).
@@ -36713,8 +35180,6 @@ The normal text on the page goes here.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset space ~
 \end_inset
 
@@ -36727,8 +35192,6 @@ The normal text on the page goes here.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset space ~
 \end_inset
 
@@ -36741,8 +35204,6 @@ The normal text on the page goes here.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset space ~
 \end_inset
 
@@ -36757,9 +35218,7 @@ The normal text on the page goes here.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Left Footer
+تذييل ايسر
 \end_layout
 
 \end_inset
@@ -36768,9 +35227,7 @@ Left Footer
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Center Footer
+تذييل أوسط
 \end_layout
 
 \end_inset
@@ -36779,9 +35236,7 @@ Center Footer
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Right Footer
+تذييل أيمن
 \end_layout
 
 \end_inset
@@ -36795,20 +35250,16 @@ Right Footer
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset CommandInset label
 LatexCommand label
 name "fig:Page-layout"
 
 \end_inset
 
-Page layout with custom header and footer line.
+نسق الصفحة مع تخصيص الرأس والتذييل.
 \end_layout
 
 \end_inset
@@ -36889,26 +35340,20 @@ Code
 
 \begin_layout Description
 
-\lang english
-
 \backslash
-thepage prints the current page number
+thepage طباعة رقم الصفحة الحالية
 \end_layout
 
 \begin_layout Description
 
-\lang english
-
 \backslash
-Roman{page} prints the current page number with capital roman numerals
+Roman{page} طبعة رقم الصفحة الحالية على شكل أرقام رومانية كبيرة
 \end_layout
 
 \begin_layout Description
 
-\lang english
-
 \backslash
-roman{page} prints the current page number with small roman numerals
+roman{page} طبعة رقم الصفحة الحالية على شكل أرقام رومانية صغيرة
 \end_layout
 
 \begin_layout Description
@@ -37662,9 +36107,7 @@ Objects
 \begin_inset Preview
 
 \begin_layout Standard
-
-\lang english
-This is a line
+هنا
 \begin_inset ERT
 status collapsed
 
@@ -37697,9 +36140,7 @@ backgroundcolor "none"
 status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
-with rotated
+مع تدوير
 \end_layout
 
 \end_inset
@@ -37715,7 +36156,7 @@ status collapsed
 
 \end_inset
 
- framed text 
+ نص الإطار 
 \begin_inset ERT
 status collapsed
 
@@ -37743,7 +36184,7 @@ status collapsed
 
 \end_inset
 
- and a formula.
+ والمعادلة.
 \end_layout
 
 \end_inset
@@ -37801,8 +36242,6 @@ Objects
 \begin_inset Preview
 
 \begin_layout Standard
-
-\lang english
 \begin_inset ERT
 status collapsed
 
@@ -37830,7 +36269,7 @@ fcolorbox{cyan}{magenta}{
 
 \end_inset
 
-This is text within a colored, framed box.
+هذا نص بإطار ملون.
 \begin_inset ERT
 status collapsed
 
@@ -44230,9 +42669,7 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Spell checking is explained in section
+المدقق الإملائي مشروح في القسم
 \begin_inset space ~
 \end_inset
 
@@ -44251,9 +42688,7 @@ reference "sec:Spellchecking"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The thesaurus is described in section
+المكنز مشروح في القسم
 \begin_inset space ~
 \end_inset
 
@@ -44620,12 +43055,10 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The standard toolbar as shown above contains from left to right the following
- buttons:
+شريط الأدوات الأساسي الذي يظهر في أعلى النافذة يحتوي على مجموعة من الوظائف،
+ هي من اليمين لليسار:
 \begin_inset ERT
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -44659,8 +43092,6 @@ Embedded Objects
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset VSpace defskip
 \end_inset
 
@@ -44693,7 +43124,7 @@ Embedded Objects
 \begin_inset Text
 
 \begin_layout Plain Layout
-pull-down box for the environments
+قائمة منسدلة بالبيئات التنسيقية المتوفرة في نوع المستند
 \end_layout
 
 \end_inset
@@ -44707,8 +43138,6 @@ pull-down box for the environments
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset VSpace -10mm
 \end_inset
 
@@ -44923,7 +43352,7 @@ arg   "redo"
 
 \family sans
 تحرير\SpecialChar menuseparator
-إعاده
+تكرار
 \end_layout
 
 \end_inset
@@ -45455,15 +43884,11 @@ status collapsed
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The extra toolbar as shown above contains from left to right the following
- buttons:
+شريط الأدوات الإضافي الذي يظهر فوق النص مباشرة يحتوي على مجموعة من الوظائف،
+ هي من اليمين لليسار:
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset VSpace defskip
 \end_inset
 
@@ -45497,9 +43922,7 @@ arg   "layout"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Default
+افتراضي
 \end_layout
 
 \end_inset
@@ -45526,9 +43949,7 @@ arg   "layout Enumerate"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Numbered list
+ترقيم عددي
 \end_layout
 
 \end_inset
@@ -45555,9 +43976,7 @@ arg   "layout Itemize"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Itemized list
+ترقيم نقطي
 \end_layout
 
 \end_inset
@@ -45584,9 +44003,7 @@ arg   "layout List"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-List
+قائمة
 \end_layout
 
 \end_inset
@@ -45613,9 +44030,7 @@ arg   "layout Description"
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Description list
+قائمة وصف
 \end_layout
 
 \end_inset
@@ -45644,17 +44059,16 @@ arg   "depth-increment"
 \begin_layout Plain Layout
 
 \family sans
-\lang english
-Edit\SpecialChar menuseparator
-Increase
+تحرير\SpecialChar menuseparator
+زيادة
 \begin_inset space ~
 \end_inset
 
-List
+عمق
 \begin_inset space ~
 \end_inset
 
-Depth
+القائمة
 \end_layout
 
 \end_inset
@@ -45683,17 +44097,16 @@ arg   "depth-decrement"
 \begin_layout Plain Layout
 
 \family sans
-\lang english
-Edit\SpecialChar menuseparator
-Decrease
+تحرير\SpecialChar menuseparator
+إنقاص
 \begin_inset space ~
 \end_inset
 
-List
+عمق
 \begin_inset space ~
 \end_inset
 
-Depth
+القائمة
 \end_layout
 
 \end_inset
@@ -45722,10 +44135,9 @@ arg   "float-insert figure"
 \begin_layout Plain Layout
 
 \family sans
-\lang english
-Insert\SpecialChar menuseparator
-Float\SpecialChar menuseparator
-Figure
+إدراج\SpecialChar menuseparator
+تعويم\SpecialChar menuseparator
+رسم توضيحي
 \end_layout
 
 \end_inset
@@ -45754,10 +44166,9 @@ arg   "float-insert table"
 \begin_layout Plain Layout
 
 \family sans
-\lang english
-Insert\SpecialChar menuseparator
-Float\SpecialChar menuseparator
-Table
+إدراج\SpecialChar menuseparator
+تعويم\SpecialChar menuseparator
+جدول
 \end_layout
 
 \end_inset
@@ -45786,9 +44197,8 @@ arg   "label-insert"
 \begin_layout Plain Layout
 
 \family sans
-\lang english
-Insert\SpecialChar menuseparator
-Label
+إدراج\SpecialChar menuseparator
+ملصق
 \end_layout
 
 \end_inset
@@ -45817,9 +44227,8 @@ arg   "dialog-show-new-inset ref"
 \begin_layout Plain Layout
 
 \family sans
-\lang english
-Insert\SpecialChar menuseparator
-Cross-Reference
+إدراج\SpecialChar menuseparator
+إشارة مرجعية
 \end_layout
 
 \end_inset
@@ -45848,9 +44257,8 @@ arg   "dialog-show-new-inset citation"
 \begin_layout Plain Layout
 
 \family sans
-\lang english
-Insert\SpecialChar menuseparator
-Citation
+إدراج\SpecialChar menuseparator
+استشهاد
 \end_layout
 
 \end_inset
@@ -45879,13 +44287,12 @@ arg   "index-insert"
 \begin_layout Plain Layout
 
 \family sans
-\lang english
-Insert\SpecialChar menuseparator
-Index
+إدراج\SpecialChar menuseparator
+مدخل
 \begin_inset space ~
 \end_inset
 
-Entry
+فهرس
 \end_layout
 
 \end_inset
@@ -45914,13 +44321,12 @@ arg   "nomencl-insert"
 \begin_layout Plain Layout
 
 \family sans
-\lang english
-Insert\SpecialChar menuseparator
-Nomenclature
+إدراج\SpecialChar menuseparator
+مدخل
 \begin_inset space ~
 \end_inset
 
-Entry
+مصطلح
 \end_layout
 
 \end_inset
@@ -45949,9 +44355,8 @@ arg   "footnote-insert"
 \begin_layout Plain Layout
 
 \family sans
-\lang english
-Insert\SpecialChar menuseparator
-Footnote
+إدراج\SpecialChar menuseparator
+تذييل
 \end_layout
 
 \end_inset
@@ -45980,13 +44385,12 @@ arg   "marginalnote-insert"
 \begin_layout Plain Layout
 
 \family sans
-\lang english
-Insert\SpecialChar menuseparator
-Marginal
+إدراج\SpecialChar menuseparator
+ملاحظة
 \begin_inset space ~
 \end_inset
 
-Note
+هامشية
 \end_layout
 
 \end_inset
@@ -46015,14 +44419,13 @@ arg   "note-insert"
 \begin_layout Plain Layout
 
 \family sans
-\lang english
-Insert\SpecialChar menuseparator
-Note\SpecialChar menuseparator
-LyX
+إدراج\SpecialChar menuseparator
+ملاحظة\SpecialChar menuseparator
+ملاحظة
 \begin_inset space ~
 \end_inset
 
-Note
+ليك
 \end_layout
 
 \end_inset
@@ -46051,9 +44454,8 @@ arg   "box-insert Frameless"
 \begin_layout Plain Layout
 
 \family sans
-\lang english
-Insert\SpecialChar menuseparator
-Box
+إدراج\SpecialChar menuseparator
+صندوق
 \end_layout
 
 \end_inset
@@ -46082,9 +44484,8 @@ arg   "href-insert"
 \begin_layout Plain Layout
 
 \family sans
-\lang english
-Insert\SpecialChar menuseparator
-Hyperlink
+إدراج\SpecialChar menuseparator
+رابط تشعبي
 \end_layout
 
 \end_inset
@@ -46113,13 +44514,12 @@ arg   "ert-insert"
 \begin_layout Plain Layout
 
 \family sans
-\lang english
-Insert\SpecialChar menuseparator
-TeX
+إدراج\SpecialChar menuseparator
+كود
 \begin_inset space ~
 \end_inset
 
-Code
+تيك
 \end_layout
 
 \end_inset
@@ -46148,10 +44548,9 @@ arg   "math-macro newmacroname newcommand"
 \begin_layout Plain Layout
 
 \family sans
-\lang english
-Insert\SpecialChar menuseparator
-Math\SpecialChar menuseparator
-Macro
+إدراج\SpecialChar menuseparator
+رياضيات\SpecialChar menuseparator
+ماكرو
 \end_layout
 
 \end_inset
@@ -46180,14 +44579,13 @@ arg   "dialog-show-new-inset include"
 \begin_layout Plain Layout
 
 \family sans
-\lang english
-Insert\SpecialChar menuseparator
-File\SpecialChar menuseparator
-Child
+إدراج\SpecialChar menuseparator
+ملف\SpecialChar menuseparator
+مستند
 \begin_inset space ~
 \end_inset
 
-Document
+فرعي
 \end_layout
 
 \end_inset
@@ -46216,14 +44614,13 @@ arg   "dialog-show character"
 \begin_layout Plain Layout
 
 \family sans
-\lang english
-Edit\SpecialChar menuseparator
-Text
+تحرير\SpecialChar menuseparator
+أسلوب
 \begin_inset space ~
 \end_inset
 
-Style\SpecialChar menuseparator
-Customized
+النص\SpecialChar menuseparator
+اختيار
 \end_layout
 
 \end_inset
@@ -46252,13 +44649,12 @@ arg   "layout-paragraph"
 \begin_layout Plain Layout
 
 \family sans
-\lang english
-Edit\SpecialChar menuseparator
-Paragraph
+تحرير\SpecialChar menuseparator
+إعدادات
 \begin_inset space ~
 \end_inset
 
-Settings
+الفقرة
 \end_layout
 
 \end_inset
@@ -46287,9 +44683,8 @@ arg   "thesaurus-entry"
 \begin_layout Plain Layout
 
 \family sans
-\lang english
-Tools\SpecialChar menuseparator
-Thesaurus
+أدوات\SpecialChar menuseparator
+مكنز
 \end_layout
 
 \end_inset
@@ -51853,9 +50248,7 @@ movement When writing RTL, you can define if the left and right arrow keys
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The spellchecker settings are explained in section
+إعدادات المدقق الإملائي مشروحة في القسم
 \begin_inset space ~
 \end_inset
 
@@ -52043,7 +50436,11 @@ http://man7.org/linux/man-pages/man1/date.1.html
 \begin_inset Newline newline
 \end_inset
 
-For example the format
+
+\lang arabic_arabi
+بهيئة مثل
+\lang english
+
 \begin_inset Newline newline
 \end_inset
 
@@ -52051,7 +50448,9 @@ For example the format
 \begin_inset Newline newline
 \end_inset
 
-prints the date as day/month/year.
+
+\lang arabic_arabi
+طباعة التاريخ بالشكل يوم/شهر/عام
 \end_layout
 
 \begin_layout Description
@@ -52190,13 +50589,15 @@ Here you can also specify options and commands with parameters for processors.
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Bibliography
+إنتاج
 \begin_inset space ~
 \end_inset
 
-generation Settings for the generation of the bibliography, see section
+ثبت
+\begin_inset space ~
+\end_inset
+
+المراجع إعدادات إنتاج ثبت المراجع، انظر قسم
 \begin_inset space ~
 \end_inset
 
@@ -52211,13 +50612,11 @@ reference "subsec:Bibliography-databases"
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Index
+إنتاج
 \begin_inset space ~
 \end_inset
 
-generation Settings for the generation of the index, see section
+الفهرس إعدادات إنتاج الفهرس، انظر القسم 
 \begin_inset space ~
 \end_inset
 
@@ -52232,13 +50631,15 @@ reference "subsec:Index-Program"
 \end_layout
 
 \begin_layout Description
-
-\lang english
-Nomenclature
+إنتاج
 \begin_inset space ~
 \end_inset
 
-command Command for the program that generates the nomenclature, see section
+قائمة
+\begin_inset space ~
+\end_inset
+
+المصطلحات إعدادات إنتاج قائمة المصطلحات، انظر القسم 
 \begin_inset space ~
 \end_inset
 
@@ -52641,9 +51042,7 @@ name "chap:Units-available-in"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-Table
+الجدول
 \begin_inset space ~
 \end_inset
 
@@ -52654,22 +51053,18 @@ reference "tab:Units"
 
 \end_inset
 
- explains all the units available in \SpecialChar LyX
- and used in this documentation.
+ يشرح كل الوحدات المتاحة في \SpecialChar LyX
+ وتستخدم في هذا المستند.
 \end_layout
 
 \begin_layout Standard
-
-\lang english
 \begin_inset Float table
 placement h
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -52681,7 +51076,9 @@ name "tab:Units"
 
 \end_inset
 
-Units
+
+\lang arabic_arabi
+الوحدات
 \end_layout
 
 \end_inset
@@ -52690,8 +51087,6 @@ Units
 \end_layout
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset VSpace medskip
 \end_inset
 
@@ -52700,8 +51095,6 @@ Units
 
 \begin_layout Plain Layout
 \align center
-
-\lang english
 \begin_inset Tabular
 <lyxtabular version="3" rows="21" columns="3">
 <features tabularvalignment="middle">
@@ -52713,9 +51106,7 @@ Units
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-unit
+الوحدة
 \end_layout
 
 \end_inset
@@ -52724,9 +51115,7 @@ unit
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-name/description
+الاسم/الوصف
 \end_layout
 
 \end_inset
@@ -52735,10 +51124,7 @@ name/description
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-\SpecialChar LaTeX
- command
+أمر لتيك
 \end_layout
 
 \end_inset
@@ -52749,8 +51135,6 @@ name/description
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 bp
 \end_layout
 
@@ -52760,9 +51144,7 @@ bp
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-big point (72
+نقطة كبيرة (72
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -52779,8 +51161,6 @@ in)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -52792,8 +51172,6 @@ in)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 cc
 \end_layout
 
@@ -52803,8 +51181,6 @@ cc
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 cicero (1
 \begin_inset space \thinspace{}
 \end_inset
@@ -52822,8 +51198,6 @@ dd)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -52835,8 +51209,6 @@ dd)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 cm
 \end_layout
 
@@ -52846,9 +51218,7 @@ cm
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-centimeter
+سنتمتر
 \end_layout
 
 \end_inset
@@ -52857,8 +51227,6 @@ centimeter
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -52870,8 +51238,6 @@ centimeter
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 dd
 \end_layout
 
@@ -52881,8 +51247,6 @@ dd
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 didot (1
 \begin_inset space \thinspace{}
 \end_inset
@@ -52904,8 +51268,6 @@ mm)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -52917,8 +51279,6 @@ mm)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 em
 \end_layout
 
@@ -52928,13 +51288,7 @@ em
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-width of letter 
-\emph on
-M
-\emph default
- in current font
+عرض حرف M في الخط الحالي
 \end_layout
 
 \end_inset
@@ -52943,8 +51297,6 @@ M
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -52956,8 +51308,6 @@ M
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 ex
 \end_layout
 
@@ -52967,13 +51317,7 @@ ex
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-height of letter 
-\emph on
-x
-\emph default
- in current font
+ارتفاع حرف X في الخط الحالي
 \end_layout
 
 \end_inset
@@ -52982,8 +51326,6 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -52995,8 +51337,6 @@ x
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 in
 \end_layout
 
@@ -53006,9 +51346,7 @@ in
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-inch
+إنش
 \end_layout
 
 \end_inset
@@ -53017,8 +51355,6 @@ inch
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -53030,8 +51366,6 @@ inch
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 mm
 \end_layout
 
@@ -53041,9 +51375,7 @@ mm
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-millimeter
+ملي متر
 \end_layout
 
 \end_inset
@@ -53052,8 +51384,6 @@ millimeter
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -53065,8 +51395,6 @@ millimeter
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 mu
 \end_layout
 
@@ -53076,9 +51404,7 @@ mu
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-math unit (1
+وحدة رياضية (1
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -53095,8 +51421,6 @@ em)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -53108,8 +51432,6 @@ em)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 pt
 \end_layout
 
@@ -53119,9 +51441,7 @@ pt
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-point (72.27
+نقطة (72.27
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -53138,8 +51458,6 @@ in)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -53151,8 +51469,6 @@ in)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 pc
 \end_layout
 
@@ -53162,8 +51478,6 @@ pc
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 pica (1
 \begin_inset space \thinspace{}
 \end_inset
@@ -53181,8 +51495,6 @@ pt)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -53194,8 +51506,6 @@ pt)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 sp
 \end_layout
 
@@ -53205,8 +51515,6 @@ sp
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 scaled point (65536
 \begin_inset space \thinspace{}
 \end_inset
@@ -53224,8 +51532,6 @@ pt)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 -
 \end_layout
 
@@ -53237,9 +51543,7 @@ pt)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Column Width %
+عرض العمود %
 \end_layout
 
 \end_inset
@@ -53248,9 +51552,7 @@ Column Width %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-% of column width
+% من عرض العمود
 \end_layout
 
 \end_inset
@@ -53259,8 +51561,6 @@ Column Width %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 columnwidth
@@ -53274,9 +51574,7 @@ columnwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Line Distance %
+ارتفاع السطر %
 \end_layout
 
 \end_inset
@@ -53285,8 +51583,6 @@ Line Distance %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 % of height between baselines of two subsequent text lines
 \end_layout
 
@@ -53296,8 +51592,6 @@ Line Distance %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 baselineskip
@@ -53311,9 +51605,7 @@ baselineskip
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Line Width %
+عرض السطر %
 \end_layout
 
 \end_inset
@@ -53322,9 +51614,7 @@ Line Width %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-% of line width
+% من عرض السطر
 \end_layout
 
 \end_inset
@@ -53333,8 +51623,6 @@ Line Width %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 linewidth
@@ -53348,9 +51636,7 @@ linewidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Page Height %
+ارتفاع الصفحة %
 \end_layout
 
 \end_inset
@@ -53359,9 +51645,7 @@ Page Height %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-% of paper height
+% من ارتفاع الصفحة
 \end_layout
 
 \end_inset
@@ -53370,8 +51654,6 @@ Page Height %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 paperheight
@@ -53385,9 +51667,7 @@ paperheight
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Page Width %
+عرض الصفحة %
 \end_layout
 
 \end_inset
@@ -53396,9 +51676,7 @@ Page Width %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-% of paper width
+% من عرض الصفحة
 \end_layout
 
 \end_inset
@@ -53407,8 +51685,6 @@ Page Width %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 paperwidth
@@ -53422,9 +51698,7 @@ paperwidth
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Scale Graphics %
+مقياس الصورة %
 \end_layout
 
 \end_inset
@@ -53433,9 +51707,7 @@ Scale Graphics %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-% of original image width
+% من العرض الأصلي للصورة
 \end_layout
 
 \end_inset
@@ -53444,8 +51716,6 @@ Scale Graphics %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 \begin_inset space ~
 \end_inset
 
@@ -53460,9 +51730,7 @@ Scale Graphics %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Text Height %
+ارتفاع النص %
 \end_layout
 
 \end_inset
@@ -53471,9 +51739,7 @@ Text Height %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-% of text height
+% من ارتفاع النص
 \end_layout
 
 \end_inset
@@ -53482,8 +51748,6 @@ Text Height %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 textheight
@@ -53497,9 +51761,7 @@ textheight
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-Text Width %
+عرض النص %
 \end_layout
 
 \end_inset
@@ -53508,9 +51770,7 @@ Text Width %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
-% of text width
+% من عرض النص
 \end_layout
 
 \end_inset
@@ -53519,8 +51779,6 @@ Text Width %
 \begin_inset Text
 
 \begin_layout Plain Layout
-
-\lang english
 
 \backslash
 textwidth
@@ -53547,11 +51805,11 @@ textwidth
 \begin_inset Newpage newpage
 \end_inset
 
-The bibliography on the following page was created with the 
-\family sans
-Bibliography
-\family default
- environment.
+
+\end_layout
+
+\begin_layout Standard
+ثبت المراجع التالي تم إنشاءه باستخدام بيئة ثبت المراجع.
 \end_layout
 
 \begin_layout Bibliography
@@ -53678,12 +51936,8 @@ literal "true"
 
 \end_inset
 
-
-\lang english
-The \SpecialChar TeX
- Catalogue:
-\lang arabic_arabi
-
+ أصناف \SpecialChar TeX
+:
 \begin_inset Newline newline
 \end_inset
 
@@ -53709,12 +51963,8 @@ literal "true"
 
 \end_inset
 
-
-\lang english
-The \SpecialChar LaTeX
- FAQ:
-\lang arabic_arabi
-
+ أسئلة شائعة عن \SpecialChar LaTeX
+:
 \begin_inset Newline newline
 \end_inset
 
@@ -53741,19 +51991,15 @@ literal "true"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "وثيقة عن"
 target "https://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/btxdoc.pdf"
 literal "false"
 
 \end_inset
 
- of the program
-\lang arabic_arabi
- 
+ عن برنامج 
 \family sans
 Bib\SpecialChar TeX
 
@@ -53785,19 +52031,15 @@ literal "true"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "وثيقة عن"
 target "https://www.ctan.org/tex-archive/info/bibtex/tamethebeast/ttb_en.pdf"
 literal "false"
 
 \end_inset
 
- how to use the program
-\lang arabic_arabi
- 
+ كيف تستخدم برنامج 
 \family sans
 Bib\SpecialChar TeX
 
@@ -53829,20 +52071,15 @@ literal "true"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "وثيقة عن"
 target "https://www.ctan.org/tex-archive/macros/latex/contrib/biblatex/doc/biblatex.pdf"
 literal "false"
 
 \end_inset
 
- of the \SpecialChar LaTeX
- package
-\lang arabic_arabi
- 
+ عن حزمة 
 \series bold
 biblatex
 \series default
@@ -53883,19 +52120,15 @@ literal "true"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "وثيقة"
 target "https://www.ctan.org/tex-archive/biblio/biber/documentation/biber.pdf"
 literal "false"
 
 \end_inset
 
- of the \SpecialChar LaTeX
- package
-\lang arabic_arabi
+عن حزمة \SpecialChar LaTeX
  
 \series bold
 biber
@@ -53937,19 +52170,15 @@ literal "true"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "وثيقة"
 target "https://www.ctan.org/tex-archive/indexing/makeindex/doc/makeindex.pdf"
 literal "false"
 
 \end_inset
 
- of the program
-\lang arabic_arabi
- 
+ عن برنامج 
 \family sans
 makeindex
 \family default
@@ -53980,19 +52209,15 @@ literal "true"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Options"
+name "خيارات"
 target "https://www.ctan.org/tex-archive/indexing/makeindex/doc/manpages.dvi"
 literal "false"
 
 \end_inset
 
- for the program
-\lang arabic_arabi
- 
+ عن برنامج 
 \family sans
 makeindex
 \family default
@@ -54023,19 +52248,15 @@ literal "true"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "وثيقة عن"
 target "http://www.xindy.org/documentation.html"
 literal "false"
 
 \end_inset
 
- of the program
-\lang arabic_arabi
- 
+ عن برنامج 
 \family sans
 xindy
 \family default
@@ -54066,20 +52287,16 @@ literal "true"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "وثيقة"
 target "https://www.ams.org/publications/authors/tex/amslatex"
 literal "false"
 
 \end_inset
 
- of the AMS \SpecialChar LaTeX
--packages
-\lang arabic_arabi
-:
+ عن حزمة AMS \SpecialChar LaTeX
+ :
 \begin_inset Newline newline
 \end_inset
 
@@ -54106,19 +52323,15 @@ literal "true"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "وثيقة"
 target "https://www.ctan.org/tex-archive/macros/latex/contrib/caption/caption-eng.pdf"
 literal "false"
 
 \end_inset
 
- of the \SpecialChar LaTeX
- package
-\lang arabic_arabi
+ عن حزمة \SpecialChar LaTeX
  
 \series bold
 caption
@@ -54160,19 +52373,15 @@ literal "true"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "وثيقة"
 target "https://www.ctan.org/tex-archive/macros/latex/contrib/enumitem/enumitem.pdf"
 literal "false"
 
 \end_inset
 
- of the \SpecialChar LaTeX
- package
-\lang arabic_arabi
+ عن حزمة \SpecialChar LaTeX
  
 \series bold
 enumitem
@@ -54214,19 +52423,15 @@ literal "true"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "وثيقة"
 target "https://www.ctan.org/tex-archive/macros/latex/contrib/fancyhdr/fancyhdr.pdf"
 literal "false"
 
 \end_inset
 
- of the \SpecialChar LaTeX
- package
-\lang arabic_arabi
+ عن حزمة \SpecialChar LaTeX
  
 \series bold
 fancyhdr
@@ -54268,19 +52473,15 @@ literal "true"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "وثيقة"
 target "https://www.ctan.org/tex-archive/macros/latex/contrib/hyperref/doc/manual.pdf"
 literal "false"
 
 \end_inset
 
- of the \SpecialChar LaTeX
- package
-\lang arabic_arabi
+ عن حزمة \SpecialChar LaTeX
  
 \series bold
 hyperref
@@ -54322,19 +52523,15 @@ literal "true"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "وثيقة"
 target "https://www.ctan.org/tex-archive/macros/latex/contrib/microtype/microtype.pdf"
 literal "false"
 
 \end_inset
 
- of the \SpecialChar LaTeX
- package
-\lang arabic_arabi
+ عن حزمة \SpecialChar LaTeX
  
 \series bold
 microtpye
@@ -54376,19 +52573,15 @@ literal "true"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "وثيقة"
 target "https://www.ctan.org/tex-archive/macros/latex/contrib/nomencl/nomencl.pdf"
 literal "false"
 
 \end_inset
 
- of the \SpecialChar LaTeX
- package
-\lang arabic_arabi
+ عن حزمة \SpecialChar LaTeX
  
 \series bold
 nomencl
@@ -54430,19 +52623,15 @@ literal "true"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "وثيقة"
 target "https://www.ctan.org/tex-archive/macros/latex/contrib/prettyref/prettyref.pdf"
 literal "false"
 
 \end_inset
 
- of the \SpecialChar LaTeX
- package
-\lang arabic_arabi
+ عن حزمة \SpecialChar LaTeX
  
 \series bold
 prettyref
@@ -54484,19 +52673,15 @@ literal "true"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Documentation"
+name "وثيقة"
 target "https://www.ctan.org/tex-archive/macros/latex/contrib/refstyle/refstyle.pdf"
 literal "false"
 
 \end_inset
 
- of the \SpecialChar LaTeX
- package
-\lang arabic_arabi
+ عن حزمة \SpecialChar LaTeX
  
 \series bold
 refstyle
@@ -54538,20 +52723,16 @@ literal "true"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Wiki-page"
+name "صفحة-ويكي"
 target "https://wiki.lyx.org/Windows/Arabic"
 literal "false"
 
 \end_inset
 
- how to set up \SpecialChar LyX
- for Arabic
-\lang arabic_arabi
-:
+ كيف تعد \SpecialChar LyX
+ للكتابة بالعربية:
 \begin_inset Newline newline
 \end_inset
 
@@ -54578,20 +52759,16 @@ literal "true"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Wiki-page"
+name "صفحة-ويكي"
 target "https://wiki.lyx.org/Windows/Armenian"
 literal "false"
 
 \end_inset
 
- how to set up \SpecialChar LyX
- for Armenian
-\lang arabic_arabi
-:
+ كيف تعد \SpecialChar LyX
+ للكتابة بالأرمنية:
 \begin_inset Newline newline
 \end_inset
 
@@ -54622,16 +52799,16 @@ literal "true"
 
 \begin_inset CommandInset href
 LatexCommand href
-name "Wiki-page"
+name "صفحة-ويكي"
 target "https://wiki.lyx.org/Windows/Cyrillic"
 literal "false"
 
 \end_inset
 
- how to set up \SpecialChar LyX
- for Cyrillic languages
+ 
 \lang arabic_arabi
-:
+كيف تعد \SpecialChar LyX
+ للكتابة بالسيريلية:
 \begin_inset Newline newline
 \end_inset
 
@@ -54658,20 +52835,16 @@ literal "true"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Wiki-page"
+name "صفحة-ويكي"
 target "https://wiki.lyx.org/Windows/Farsi"
 literal "false"
 
 \end_inset
 
- how to set up \SpecialChar LyX
- for Farsi:
-\lang arabic_arabi
-
+ كيف تعد \SpecialChar LyX
+ للكتابة بالفارسية:
 \begin_inset Newline newline
 \end_inset
 
@@ -54698,20 +52871,16 @@ literal "true"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Wiki-page"
+name "صفحة-ويكي"
 target "https://wiki.lyx.org/Windows/Hebrew"
 literal "false"
 
 \end_inset
 
- how to set up \SpecialChar LyX
- for Hebrew
-\lang arabic_arabi
-:
+ كيف تعد \SpecialChar LyX
+ للكتابة بالعبرية:
 \begin_inset Newline newline
 \end_inset
 
@@ -54738,20 +52907,16 @@ literal "true"
 \end_inset
 
 
-\lang english
-
 \begin_inset CommandInset href
 LatexCommand href
-name "Wiki-page"
+name "صفحة-ويكي"
 target "https://wiki.lyx.org/Windows/Japanese"
 literal "false"
 
 \end_inset
 
- how to set up \SpecialChar LyX
- for Japanese
-\lang arabic_arabi
-:
+ كيف تعد \SpecialChar LyX
+ للكتابة باليابانية:
 \begin_inset Newline newline
 \end_inset
 
@@ -54841,10 +53006,8 @@ options "../biblio/alphadin"
 \end_layout
 
 \begin_layout Standard
-
-\lang english
-The above bibliography is created from a Bib\SpecialChar TeX
- database.
+ثبت المراجع في الأعلى تم إنشاءه من قاعدة بيانات Bib\SpecialChar TeX
+.
 \end_layout
 
 \begin_layout Standard
