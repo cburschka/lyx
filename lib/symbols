@@ -1032,17 +1032,17 @@ iiintop            esint        005    0  mathop  &tint;        esint
 iiiint             esint        007    0  mathop  &qint;        esint|amsmath
 
 iiiintop           esint        007    0  mathop  &qint;        esint
-oint               esint        011    0  mathop  &conint;      esint
+oint               esint        043    0  mathop  &conint;      esint
 
-ointop             esint        011    0  mathop  &conint;      esint
-oiint              esint        013    0  mathop  &Conint;      esint
-oiintop            esint        013    0  mathop  &Conint;      esint
+ointop             esint        043    0  mathop  &conint;      esint
+oiint              esint        045    0  mathop  &Conint;      esint
+oiintop            esint        045    0  mathop  &Conint;      esint
 sqint              esint        015    0  mathop  x             esint
 sqintop            esint        015    0  mathop  x             esint
 sqiint             esint        017    0  mathop  x             esint
 sqiintop           esint        017    0  mathop  x             esint
-dotsint            esint        019    0  mathop  &int;&ctdot;&int; esint
-dotsintop          esint        019    0  mathop  &int;&ctdot;&int; esint
+dotsint            esint        041    0  mathop  &int;&ctdot;&int; esint
+dotsintop          esint        042    0  mathop  &int;&ctdot;&int; esint
 ointctrclockwise   esint        023    0  mathop  &awconint;    esint
 ointctrclockwiseop esint        023    0  mathop  &awconint;    esint
 ointclockwise      esint        025    0  mathop  &cwconint;    esint
