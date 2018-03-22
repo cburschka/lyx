@@ -1249,14 +1249,19 @@ void InsetMathNest::doDispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_UNICODE_INSERT: {
 		if (cmd.argument().empty())
 			break;
-		docstring hexstring = cmd.argument();
-		if (isHex(hexstring)) {
-			char_type c = hexToInt(hexstring);
+		// splits on whitespace
+		vector<docstring> args =
+			getVectorFromString(cmd.argument(), from_ascii(" "), false, true);
+		for (auto const & arg : args) {
+			if (!isHex(arg)) {
+				LYXERR0("Not a hexstring: " << arg);
+				continue;
+			}
+			char_type c = hexToInt(arg);
 			if (c >= 32 && c < 0x10ffff) {
-				docstring s = docstring(1, c);
 				FuncCode code = currentMode() == MATH_MODE ?
 					LFUN_MATH_INSERT : LFUN_SELF_INSERT;
-				lyx::dispatch(FuncRequest(code, s));
+				lyx::dispatch(FuncRequest(code, docstring(1, c)));
 			}
 		}
 		break;

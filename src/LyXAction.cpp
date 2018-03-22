@@ -3850,10 +3850,10 @@ void LyXAction::init()
 /*!
  * \var lyx::FuncCode lyx::LFUN_UNICODE_INSERT
  * \li Action: Inserts a single unicode character.
- * \li Syntax: unicode-insert <CHAR>
- * \li Params: <CHAR>: The character to insert, given as its code
+ * \li Syntax: unicode-insert <CHAR1> <CHAR2> ...
+ * \li Params: <CHARn>: The character to insert, given as its code
                        point, in hexadecimal.
- * \li Sample: unicode-insert 0x0100
+ * \li Sample: unicode-insert 0x0100 0x0259
  * \li Origin: Lgb, 22 Oct 2006
  * \endvar
  */
