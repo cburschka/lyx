@@ -2467,6 +2467,9 @@ void Buffer::collectBibKeys(FileNameList & checkedFiles) const
 
 void Buffer::addBiblioInfo(BiblioInfo const & bin) const
 {
+	// We add the biblio info to the master buffer,
+	// if there is one, but also to every single buffer,
+	// in case a child is compiled alone.
 	BiblioInfo & bi = d->bibinfo_;
 	bi.mergeBiblioInfo(bin);
 
@@ -2477,12 +2480,18 @@ void Buffer::addBiblioInfo(BiblioInfo const & bin) const
 }
 
 
-void Buffer::addBibTeXInfo(docstring const & key, BibTeXInfo const & bi) const
+void Buffer::addBibTeXInfo(docstring const & key, BibTeXInfo const & bin) const
 {
-	Buffer const * tmp = masterBuffer();
-	BiblioInfo & masterbi = (tmp == this) ?
-		d->bibinfo_ : tmp->d->bibinfo_;
-	masterbi[key] = bi;
+	// We add the bibtex info to the master buffer,
+	// if there is one, but also to every single buffer,
+	// in case a child is compiled alone.
+	BiblioInfo & bi = d->bibinfo_;
+	bi[key] = bin;
+
+	if (parent() != 0) {
+		BiblioInfo & masterbi = parent()->d->bibinfo_;
+		masterbi[key] = bin;
+	}
 }
 
 
