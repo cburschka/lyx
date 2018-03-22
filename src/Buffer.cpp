@@ -2406,6 +2406,12 @@ BiblioInfo const & Buffer::masterBibInfo() const
 }
 
 
+BiblioInfo const & Buffer::bibInfo() const
+{
+	return d->bibinfo_;
+}
+
+
 void Buffer::checkIfBibInfoCacheIsValid() const
 {
 	// use the master's cache
@@ -2459,12 +2465,15 @@ void Buffer::collectBibKeys(FileNameList & checkedFiles) const
 }
 
 
-void Buffer::addBiblioInfo(BiblioInfo const & bi) const
+void Buffer::addBiblioInfo(BiblioInfo const & bin) const
 {
-	Buffer const * tmp = masterBuffer();
-	BiblioInfo & masterbi = (tmp == this) ?
-		d->bibinfo_ : tmp->d->bibinfo_;
-	masterbi.mergeBiblioInfo(bi);
+	BiblioInfo & bi = d->bibinfo_;
+	bi.mergeBiblioInfo(bin);
+
+	if (parent() != 0) {
+		BiblioInfo & masterbi = parent()->d->bibinfo_;
+		masterbi.mergeBiblioInfo(bin);
+	}
 }
 
 
