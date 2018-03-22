@@ -2356,6 +2356,9 @@ BiblioInfo const & Buffer::bibInfo() const
 
 
 void Buffer::registerBibfiles(FileNamePairList const & bf) const {
+	// We register the bib files in the master buffer,
+	// if there is one, but also in every single buffer,
+	// in case a child is compiled alone.
 	Buffer const * const tmp = masterBuffer();
 	if (tmp != this)
 		tmp->registerBibfiles(bf);
@@ -2429,6 +2432,9 @@ void Buffer::collectBibKeys(FileNameList & checkedFiles) const
 
 void Buffer::addBiblioInfo(BiblioInfo const & bin) const
 {
+	// We add the biblio info to the master buffer,
+	// if there is one, but also to every single buffer,
+	// in case a child is compiled alone.
 	BiblioInfo & bi = d->bibinfo_;
 	bi.mergeBiblioInfo(bin);
 
