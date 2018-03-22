@@ -2343,10 +2343,16 @@ BiblioInfo const & Buffer::masterBibInfo() const
 }
 
 
+BiblioInfo const & Buffer::bibInfo() const
+{
+	return d->bibinfo_;
+}
+
+
 void Buffer::registerBibfiles(FileNamePairList const & bf) const {
 	Buffer const * const tmp = masterBuffer();
 	if (tmp != this)
-		return tmp->registerBibfiles(bf);
+		tmp->registerBibfiles(bf);
 
 	for (auto const & p : bf) {
 		FileNamePairList::const_iterator temp =
@@ -2415,12 +2421,15 @@ void Buffer::collectBibKeys(FileNameList & checkedFiles) const
 }
 
 
-void Buffer::addBiblioInfo(BiblioInfo const & bi) const
+void Buffer::addBiblioInfo(BiblioInfo const & bin) const
 {
-	Buffer const * tmp = masterBuffer();
-	BiblioInfo & masterbi = (tmp == this) ?
-		d->bibinfo_ : tmp->d->bibinfo_;
-	masterbi.mergeBiblioInfo(bi);
+	BiblioInfo & bi = d->bibinfo_;
+	bi.mergeBiblioInfo(bin);
+
+	if (parent() != 0) {
+		BiblioInfo & masterbi = parent()->d->bibinfo_;
+		masterbi.mergeBiblioInfo(bin);
+	}
 }
 
 

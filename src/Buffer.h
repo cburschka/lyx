@@ -508,6 +508,8 @@ public:
 	/// \return the bibliography information for this buffer's master,
 	/// or just for it, if it isn't a child.
 	BiblioInfo const & masterBibInfo() const;
+	/// \return this buffer's bibliography information
+	BiblioInfo const & bibInfo() const;
 	/// collect bibliography info from the various insets in this buffer.
 	void collectBibKeys(support::FileNameList &) const;
 	/// add some BiblioInfo to our cache
