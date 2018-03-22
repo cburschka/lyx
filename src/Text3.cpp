@@ -1695,21 +1695,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		bv->buffer().errors("Paste");
 		break;
 
-	case LFUN_UNICODE_INSERT: {
-		if (cmd.argument().empty())
-			break;
-		docstring hexstring = cmd.argument();
-		if (isHex(hexstring)) {
-			char_type c = hexToInt(hexstring);
-			if (c >= 32 && c < 0x10ffff) {
-				lyxerr << "Inserting c: " << c << endl;
-				docstring s = docstring(1, c);
-				lyx::dispatch(FuncRequest(LFUN_SELF_INSERT, s));
-			}
-		}
-		break;
-	}
-
 	case LFUN_QUOTE_INSERT: {
 		cap::replaceSelection(cur);
 		cur.recordUndo();

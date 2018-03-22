@@ -326,6 +326,8 @@ docstring wrapParas(docstring const & str, int const indent = 0,
 /// If \p keepempty is true, empty strings will be pushed to the vector as well
 /// If \p trimit is true, leading and trailing whitespace will be trimmed from
 /// all values. Note that this can affect what counts as "empty".
+/// NOTE: If you want to split a string on whitespace, then do:
+///    getVectorFromString(str, " ", false, true);
 std::vector<std::string> const getVectorFromString(std::string const & str,
         std::string const & delim = std::string(","),
         bool keepempty = false, bool trimit = true);
