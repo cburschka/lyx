@@ -866,14 +866,16 @@ Ydown              stmry   5   0 mathbin    x  stmaryrd
 Yleft              stmry   6   0 mathbin    x  stmaryrd
 Yright             stmry   7   0 mathbin    x  stmaryrd
 varcurlyvee        stmry   8   0 mathbin    x  stmaryrd
-# qt does not display characters at the \t position (0x09)
-# therefore our .ttf font contains a copy at 254 (0xfe)
+# qt4 does not display characters at the \t position (0x09)
+# therefore our .ttf font contains a copy at 170 (0xaa)
 #varcurlywedge      stmry   9   0 mathbin    x  stmaryrd
-varcurlywedge      stmry 254   0 mathbin    x  stmaryrd
-minuso             stmry  10   0 mathbin    x  stmaryrd
+#10,12,13 codepoints broken in qt5
+varcurlywedge      stmry 170   0 mathbin    x  stmaryrd
+minuso             stmry 171   0 mathbin    x  stmaryrd
 baro               stmry  11   0 mathbin    x  stmaryrd
-sslash             stmry  12   0 mathbin    x  stmaryrd
-bbslash            stmry  13   0 mathbin    x  stmaryrd
+sslash             stmry 172   0 mathbin    x  stmaryrd
+#for whatever reason qt5 refuses to display anything at position 173
+bbslash            stmry 174   0 mathbin    x  stmaryrd
 moo                stmry  14   0 mathbin    x  stmaryrd
 varotimes          stmry  15   0 mathbin    x  stmaryrd
 varoast            stmry  16   0 mathbin    x  stmaryrd
@@ -1032,6 +1034,7 @@ iiintop            esint        005    0  mathop  &tint;        esint
 iiiint             esint        007    0  mathop  &qint;        esint|amsmath
 
 iiiintop           esint        007    0  mathop  &qint;        esint
+#9 codepoint forbidden in qt4, 10,12,13 in qt5
 oint               esint        043    0  mathop  &conint;      esint
 
 ointop             esint        043    0  mathop  &conint;      esint
