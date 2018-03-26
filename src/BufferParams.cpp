@@ -394,7 +394,7 @@ BufferParams::BufferParams()
 	papersize = PAPER_DEFAULT;
 	orientation = ORIENTATION_PORTRAIT;
 	use_geometry = false;
-	biblio_style = "plain";
+	biblio_style = string();
 	use_bibtopic = false;
 	multibib = string();
 	use_indices = false;
@@ -3425,6 +3425,9 @@ bool BufferParams::addCiteEngine(vector<string> const & engine)
 
 string const & BufferParams::defaultBiblioStyle() const
 {
+	if (!biblio_style.empty())
+		return biblio_style;
+
 	map<string, string> const & bs = documentClass().defaultBiblioStyle();
 	auto cit = bs.find(theCiteEnginesList.getTypeAsString(citeEngineType()));
 	if (cit != bs.end())
