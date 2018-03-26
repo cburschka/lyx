@@ -555,7 +555,8 @@ This file contains each symbol of the font stmary10.ttf that is made accessible
 \end_layout
 
 \begin_layout Standard
-The critical points for qt4/qt5 transition (9,10,12,13):
+The critical codepoints (9,10,12,13) for qt4/qt5 transition (compare mathed
+ and instant preview result):
 \end_layout
 
 \begin_layout Standard
@@ -569,6 +570,14 @@ stmary10:
 \begin_layout Standard
 esint10: 
 \begin_inset Formula $\dotsint\,\dotsintop\,\oint\,\oiint$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+wasy10: 
+\begin_inset Formula $\text{\pointer}\bell\,\quarternote\,\halfnote$
 \end_inset
 
 

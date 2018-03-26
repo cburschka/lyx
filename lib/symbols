@@ -700,8 +700,8 @@ phone              wasy          7   0 textmode &phone;  wasysym,amstext,lyxmath
 recorder           wasy          6   0 textmode &telrec; wasysym,amstext,lyxmathsym # works in text mode only (produces \Sigma in math mode)
 clock              wasy          28  0 textmode &clock;  wasysym,amstext,lyxmathsym # works in text mode only (produces \o in math mode)
 lightning          wasy          18  0 textmode &#x2607; wasysym,amstext,lyxmathsym # works in text mode only (produces ` in math mode)
-# FIXME Display is wrong (bug 8493): qt does not display characters at the \t position (0x09)
-pointer            wasy          9   0 textmode x        wasysym,amstext,lyxmathsym # works in text mode only (produces \Psi in math mode)
+# qt does not display characters at the \t position (0x09)
+pointer            wasy          170   0 textmode x        wasysym,amstext,lyxmathsym # works in text mode only (produces \Psi in math mode)
 RIGHTarrow         wasy          17  0 textmode &#x25B6; wasysym,amstext,lyxmathsym # works in text mode only (produces \jmath in math mode)
 LEFTarrow          wasy          16  0 textmode &#x25C0; wasysym,amstext,lyxmathsym # works in text mode only (produces \imath in math mode)
 UParrow            wasy          75  0 textmode &#x25B2; wasysym,amstext,lyxmathsym # works in text mode only (produces K in math mode)
@@ -729,10 +729,10 @@ frownie            wasy          47  0 x        &#x2639;
 blacksmiley        wasy          45  0 x        &#x263B;
 sun                wasy          46  0 x        &#x263C;
 checked            wasy          8   0 x        &#x2713;
-bell               wasy          10  0 x        &#x237E;
+bell               wasy          171 0 x        &#x237E;
 eighthnote         wasy          11  0 x        &#x266E;
-quarternote        wasy          12  0 x        &#x2669;
-halfnote           wasy          13  0 x        &#x1d15e;
+quarternote        wasy          172 0 x        &#x2669;
+halfnote           wasy          174 0 x        &#x1d15e;
 fullnote           wasy          14  0 x        &#x1d15d;
 twonotes           wasy          15  0 x        &#x266B;
 brokenvert         wasy          124 0 x        &brvbar;
