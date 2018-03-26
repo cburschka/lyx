@@ -35,7 +35,7 @@ try:
     import lyx2lyx_version
     version__ = lyx2lyx_version.version
 except: # we are running from build directory so assume the last version
-    version__ = '2.3'
+    version__ = '2.4'
 
 default_debug__ = 2
 
