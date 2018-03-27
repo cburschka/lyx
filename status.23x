@@ -191,6 +191,11 @@ What's new
 
 - Ignore deleted material when generating a proposed label (bug 11102).
 
+- Reload citation list when undoing or redoing removal of bibliography
+  inset (bug 9158).
+
+- Fix some master/child issues with biblatex (bug 11083).
+
 
 * INTERNALS
 
