@@ -8,7 +8,7 @@
 \use_default_options false
 \maintain_unincluded_children false
 \language french
-\language_package default
+\language_package babel
 \inputencoding auto
 \fontencoding global
 \font_roman "default" "FreeSans"
@@ -89,6 +89,23 @@ La liste des styles couvre tous les éléments d'une lettre qui apparaissent
 
 \begin_layout Plain Layout
 L'ordre des éléments est indifférent.
+\end_layout
+
+\begin_layout Plain Layout
+Le paquetage de langue est forcé à 
+\family sans
+babel
+\family default
+, l'utilisation de 
+\family sans
+polyglossia
+\family default
+ (implicite normalement avec des polices non-TeX) provoque des erreurs avec
+ XeTeX et LuaTeX (voir le message 
+\family typewriter
+https://www.mail-archive.com/lyx-devel@lists.lyx.org/msg201529.html
+\family default
+ et les suivants).
 \end_layout
 
 \begin_layout Plain Layout
