@@ -16,7 +16,7 @@ EXTRA_DIST = \
 	1.6.2/src/hunspell/hunvisapi.h.in \
 	1.6.2/src/hunspell/utf_info.cxx
 
-AM_CPPFLAGS += -DHUNSPELL_STATIC
+AM_CPPFLAGS += -DHUNSPELL_STATIC @STDLIB_DEBUG@
 
 liblyxhunspell_a_SOURCES = \
 	1.6.2/src/hunspell/affentry.cxx \

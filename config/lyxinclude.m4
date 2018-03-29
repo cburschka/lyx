@@ -420,6 +420,7 @@ if test x$GXX = xyes; then
         lyx_flags="$lyx_flags stdlib-debug"
 	AC_DEFINE(_GLIBCXX_DEBUG, 1, [libstdc++ debug mode])
 	AC_DEFINE(_GLIBCXX_DEBUG_PEDANTIC, 1, [libstdc++ pedantic debug mode])
+	AC_SUBST(STDLIB_DEBUG, "-D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC")
         ;;
     esac
   fi
