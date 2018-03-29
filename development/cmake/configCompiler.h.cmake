@@ -66,6 +66,9 @@
 #define HAVE_ALLOCA
 #endif
 
+/* whether hunspell C++ (rather than C) ABI is provided */
+#cmakedefine HAVE_HUNSPELL_CXXABI 1
+
 #cmakedefine HAVE_ICONV_CONST 1
 #ifdef HAVE_ICONV_CONST
 #define ICONV_CONST const

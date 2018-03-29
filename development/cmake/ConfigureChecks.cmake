@@ -72,6 +72,25 @@ check_type_size("long long"  HAVE_LONG_LONG)
 check_type_size(wchar_t HAVE_WCHAR_T)
 check_type_size(wint_t  HAVE_WINT_T)
 
+# check whether hunspell C++ (rather than C) ABI is provided
+if(LYX_EXTERNAL_HUNSPELL)
+  set(CMAKE_REQUIRED_INCLUDES ${HUNSPELL_INCLUDE_DIR})
+  set(CMAKE_REQUIRED_LIBRARIES ${HUNSPELL_LIBRARY})
+  check_cxx_source_compiles(
+	"
+	#include <hunspell/hunspell.hxx>
+	int main()
+	{
+		Hunspell sp(\"foo\", \"bar\");
+		int i = sp.stem(\"test\").size();
+		return(0);
+	}
+	"
+  HAVE_HUNSPELL_CXXABI)
+else()
+  # Not compiling the 3rdparty source, because ${HUNSPELL_LIBRARY} does not exists yet to link with
+  set(HAVE_HUNSPELL_CXXABI 1 CACHE BOOL "whether hunspell C++ (rather than C) ABI is provided")
+endif()
 
 #check_cxx_source_compiles(
 #	"
