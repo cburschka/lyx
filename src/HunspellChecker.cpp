@@ -356,7 +356,11 @@ SpellChecker::Result HunspellChecker::check(WordLangTuple const & wl)
 
 	LYXERR(Debug::GUI, "spellCheck: \"" <<
 		   wl.word() << "\", lang = " << wl.lang()->lang()) ;
+#ifdef HAVE_HUNSPELL_CXXABI
+	if (h->spell(word_to_check, &info))
+#else
 	if (h->spell(word_to_check.c_str(), &info))
+#endif
 		return d->learned(wl) ? LEARNED_WORD : WORD_OK;
 
 	if (info & SPELL_COMPOUND) {
@@ -411,6 +415,11 @@ void HunspellChecker::suggest(WordLangTuple const & wl,
 		return;
 	string const encoding = h->get_dic_encoding();
 	string const word_to_check = to_iconv_encoding(wl.word(), encoding);
+#ifdef HAVE_HUNSPELL_CXXABI
+	vector<string> wlst = h->suggest(word_to_check);
+	for (auto const s : wlst)
+		suggestions.push_back(from_iconv_encoding(s, encoding));
+#else
 	char ** suggestion_list;
 	int const suggestion_number = h->suggest(&suggestion_list, word_to_check.c_str());
 	if (suggestion_number <= 0)
@@ -418,6 +427,7 @@ void HunspellChecker::suggest(WordLangTuple const & wl,
 	for (int i = 0; i != suggestion_number; ++i)
 		suggestions.push_back(from_iconv_encoding(suggestion_list[i], encoding));
 	h->free_list(&suggestion_list, suggestion_number);
+#endif
 }
 
 
@@ -430,6 +440,11 @@ void HunspellChecker::stem(WordLangTuple const & wl,
 		return;
 	string const encoding = h->get_dic_encoding();
 	string const word_to_check = to_iconv_encoding(wl.word(), encoding);
+#ifdef HAVE_HUNSPELL_CXXABI
+	vector<string> wlst = h->stem(word_to_check);
+	for (auto const s : wlst)
+		suggestions.push_back(from_iconv_encoding(s, encoding));
+#else
 	char ** suggestion_list;
 	int const suggestion_number = h->stem(&suggestion_list, word_to_check.c_str());
 	if (suggestion_number <= 0)
@@ -437,6 +452,7 @@ void HunspellChecker::stem(WordLangTuple const & wl,
 	for (int i = 0; i != suggestion_number; ++i)
 		suggestions.push_back(from_iconv_encoding(suggestion_list[i], encoding));
 	h->free_list(&suggestion_list, suggestion_number);
+#endif
 }
 
 

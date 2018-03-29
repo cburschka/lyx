@@ -60,6 +60,23 @@ AC_DEFUN([CHECK_WITH_ENCHANT],
     	fi
     ])
 
+AC_DEFUN([LYX_HAVE_HUNSPELL_CXXABI],
+[
+  AC_MSG_CHECKING([whether hunspell C++ (rather than C) ABI is provided])
+  save_CXXFLAGS=$CXXFLAGS
+  CXXFLAGS="$ENCHANT_CFLAGS $AM_CXXFLAGS $CXXFLAGS"
+
+# in the C++ ABI, stem() returns a vector, in the C ABI, it returns an int
+  AC_TRY_COMPILE([#include <hunspell/hunspell.hxx>],
+      [Hunspell sp("foo", "bar");
+       int i = sp.stem("test").size();],
+      [AC_MSG_RESULT(yes)
+       AC_DEFINE(HAVE_HUNSPELL_CXXABI, 1, [Define to 1 if hunspell C++ (rather than C) ABI is detected])
+      ],
+      [AC_MSG_RESULT(no)])
+  CXXFLAGS=$save_CXXFLAGS
+])
+
 # Macro to add for using hunspell spellchecker libraries!     -*- sh -*-
 AC_DEFUN([CHECK_WITH_HUNSPELL],
 [
@@ -83,6 +100,7 @@ AC_DEFUN([CHECK_WITH_HUNSPELL],
 		AC_MSG_RESULT(no)
 	fi
     fi
+		LYX_HAVE_HUNSPELL_CXXABI
     ])
 
 dnl Usage: LYX_USE_INCLUDED_HUNSPELL : select if the included hunspell should
@@ -113,6 +131,7 @@ AC_DEFUN([LYX_CHECK_SPELL_ENGINES],
 dnl the user wanted to use the included hunspell, so do not check for external hunspell
 		lyx_use_hunspell=true
 		AC_DEFINE(USE_HUNSPELL, 1, [Define as 1 to use the hunspell library])
+		AC_DEFINE(HAVE_HUNSPELL_CXXABI, 1, [Define to 1 if hunspell C++ (rather than C) ABI is detected])
 		lyx_flags="$lyx_flags use-hunspell"
 	else
 		CHECK_WITH_HUNSPELL
