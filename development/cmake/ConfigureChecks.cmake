@@ -72,31 +72,33 @@ check_type_size("long long"  HAVE_LONG_LONG)
 check_type_size(wchar_t HAVE_WCHAR_T)
 check_type_size(wint_t  HAVE_WINT_T)
 
-# check whether hunspell C++ (rather than C) ABI is provided
-set(HunspellTestFile "${CMAKE_BINARY_DIR}/hunspelltest.cpp")
-file(WRITE "${HunspellTestFile}"
-"
-#include <hunspell/hunspell.hxx>
+if(HUNSPELL_FOUND)
+  # check whether hunspell C++ (rather than C) ABI is provided
+  set(HunspellTestFile "${CMAKE_BINARY_DIR}/hunspelltest.cpp")
+  file(WRITE "${HunspellTestFile}"
+  "
+  #include <hunspell/hunspell.hxx>
 
-int main()
-{
-  Hunspell sp(\"foo\", \"bar\");
-  int i = sp.stem(\"test\").size();
+  int main()
+  {
+    Hunspell sp(\"foo\", \"bar\");
+    int i = sp.stem(\"test\").size();
   return(0);
-}
-"
-)
+  }
+  "
+  )
 
-try_compile(HAVE_HUNSPELL_CXXABI
-  "${CMAKE_BINARY_DIR}"
-  "${HunspellTestFile}"
-  CMAKE_FLAGS
-    "-DINCLUDE_DIRECTORIES:STRING=${HUNSPELL_INCLUDE_DIR}"
-    "-DCMAKE_CXX_LINK_EXECUTABLE='${CMAKE_COMMAD} echo not linking now...'"
+  try_compile(HAVE_HUNSPELL_CXXABI
+    "${CMAKE_BINARY_DIR}"
+    "${HunspellTestFile}"
+    CMAKE_FLAGS
+      "-DINCLUDE_DIRECTORIES:STRING=${HUNSPELL_INCLUDE_DIR}"
+      "-DCMAKE_CXX_LINK_EXECUTABLE='${CMAKE_COMMAD} echo not linking now...'"
   OUTPUT_VARIABLE  LOG2)
 
-message(STATUS "HAVE_HUNSPELL_CXXABI = ${HAVE_HUNSPELL_CXXABI}")
-#message(STATUS "LOG2 = ${LOG2}")
+  message(STATUS "HAVE_HUNSPELL_CXXABI = ${HAVE_HUNSPELL_CXXABI}")
+  #message(STATUS "LOG2 = ${LOG2}")
+endif()
 
 #check_cxx_source_compiles(
 #	"
