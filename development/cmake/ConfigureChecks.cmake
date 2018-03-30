@@ -73,24 +73,30 @@ check_type_size(wchar_t HAVE_WCHAR_T)
 check_type_size(wint_t  HAVE_WINT_T)
 
 # check whether hunspell C++ (rather than C) ABI is provided
-if(LYX_EXTERNAL_HUNSPELL)
-  set(CMAKE_REQUIRED_INCLUDES ${HUNSPELL_INCLUDE_DIR})
-  set(CMAKE_REQUIRED_LIBRARIES ${HUNSPELL_LIBRARY})
-  check_cxx_source_compiles(
-	"
-	#include <hunspell/hunspell.hxx>
-	int main()
-	{
-		Hunspell sp(\"foo\", \"bar\");
-		int i = sp.stem(\"test\").size();
-		return(0);
-	}
-	"
-  HAVE_HUNSPELL_CXXABI)
-else()
-  # Not compiling the 3rdparty source, because ${HUNSPELL_LIBRARY} does not exists yet to link with
-  set(HAVE_HUNSPELL_CXXABI 1 CACHE BOOL "whether hunspell C++ (rather than C) ABI is provided")
-endif()
+set(HunspellTestFile "${CMAKE_BINARY_DIR}/hunspelltest.cpp")
+file(WRITE "${HunspellTestFile}"
+"
+#include <hunspell/hunspell.hxx>
+
+int main()
+{
+  Hunspell sp(\"foo\", \"bar\");
+  int i = sp.stem(\"test\").size();
+  return(0);
+}
+"
+)
+
+try_compile(HAVE_HUNSPELL_CXXABI
+  "${CMAKE_BINARY_DIR}"
+  "${HunspellTestFile}"
+  CMAKE_FLAGS
+    "-DINCLUDE_DIRECTORIES:STRING=${HUNSPELL_INCLUDE_DIR}"
+    "-DCMAKE_CXX_LINK_EXECUTABLE='${CMAKE_COMMAD} echo not linking now...'"
+  OUTPUT_VARIABLE  LOG2)
+
+message(STATUS "HAVE_HUNSPELL_CXXABI = ${HAVE_HUNSPELL_CXXABI}")
+#message(STATUS "LOG2 = ${LOG2}")
 
 #check_cxx_source_compiles(
 #	"
