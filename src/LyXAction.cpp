@@ -1359,8 +1359,9 @@ void LyXAction::init()
  * \li Action: Inserts the current date.
  * \li Syntax: date-insert [<ARG>]
  * \li Params: <ARG>: Format of date. The default value (%x) can be set
-                     in Preferences->Date format. For possible formats
-                     see manual page of strftime function.
+                      in Preferences->Output->General->Date format. For
+                      possible formats see the manual page of the
+                      strftime function.
  * \li Origin: jdblair, 31 Jan 2000
  * \endvar
  */
