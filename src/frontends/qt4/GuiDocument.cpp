@@ -469,6 +469,29 @@ PreambleModule::PreambleModule(QWidget * parent)
 	preambleTE->setWordWrapMode(QTextOption::NoWrap);
 	setFocusProxy(preambleTE);
 	connect(preambleTE, SIGNAL(textChanged()), this, SIGNAL(changed()));
+	connect(findLE, SIGNAL(textEdited(const QString &)), this, SLOT(checkFindButton()));
+	connect(findButtonPB, SIGNAL(clicked()), this, SLOT(findText()));
+	connect(findLE, SIGNAL(returnPressed()), this, SLOT(findText()));
+	checkFindButton();
+}
+
+
+void PreambleModule::checkFindButton()
+{
+	findButtonPB->setEnabled(!findLE->text().isEmpty());
+}
+
+
+void PreambleModule::findText()
+{
+	bool const found = preambleTE->find(findLE->text());
+	if (!found) {
+		// wrap
+		QTextCursor qtcur = preambleTE->textCursor();
+		qtcur.movePosition(QTextCursor::Start);
+		preambleTE->setTextCursor(qtcur);
+		preambleTE->find(findLE->text());
+	}
 }
 
 
