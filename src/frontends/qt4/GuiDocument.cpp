@@ -473,6 +473,10 @@ PreambleModule::PreambleModule(QWidget * parent)
 	connect(findButtonPB, SIGNAL(clicked()), this, SLOT(findText()));
 	connect(findLE, SIGNAL(returnPressed()), this, SLOT(findText()));
 	checkFindButton();
+	// https://stackoverflow.com/questions/13027091/how-to-override-tab-width-in-qt
+	const int tabStop = 4;
+	QFontMetrics metrics(preambleTE->currentFont());
+	preambleTE->setTabStopWidth(tabStop * metrics.width(' '));
 }
 
 
