@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-03-17 16:03-0400\n"
-"PO-Revision-Date: 2018-03-17 15:42+0000\n"
+"POT-Creation-Date: 2018-04-02 10:54+0200\n"
+"PO-Revision-Date: 2018-04-02 08:59+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -17930,7 +17930,7 @@ msgstr "Horizontálny Fantóm|H"
 
 #: lib/ui/stdcontext.inc:219 lib/ui/stdmenus.inc:526
 msgid "Vertical Phantom|V"
-msgstr "Vertikálny Fantóm|V"
+msgstr "Vertikálny Fantóm|á"
 
 #: lib/ui/stdcontext.inc:234 lib/ui/stdmenus.inc:432
 msgid "Interword Space|w"
@@ -18183,7 +18183,7 @@ msgstr "Nastavenia Odstavca…|O"
 
 #: lib/ui/stdcontext.inc:361
 msgid "Unify Graphics Groups|U"
-msgstr "Zjednotiť Skupinu Obrázkov|Z"
+msgstr "Zjednotiť Skupinu Obrázkov|b"
 
 #: lib/ui/stdcontext.inc:364
 msgid "Fullscreen Mode"
@@ -24534,7 +24534,7 @@ msgstr "Sweave (japonský)"
 
 #: lib/configure.py:656
 msgid "Sweave (Japanese)|S"
-msgstr "Sweave (japonský)|S"
+msgstr "Sweave (japonský)|e"
 
 #: lib/configure.py:657
 msgid "R/S code"
@@ -31646,6 +31646,10 @@ msgstr "Kliknite pre odpojenie"
 msgid "Filtering layouts with \"%1$s\". Press ESC to remove filter."
 msgstr "Filtrovanie schém pomocou \"%1$s\". Použite ESC na odstránenie filtru."
 
+#: src/frontends/qt4/ui/PreambleUi.ui:38
+msgid "Find"
+msgstr "Hľadať"
+
 #: src/frontends/qt4/LayoutBox.cpp:403 src/frontends/qt4/LayoutBox.cpp:458
 msgid "Enter characters to filter the layout list."
 msgstr "Zadajte znaky na výber z listiny schém."
@@ -31677,7 +31681,7 @@ msgstr "Ignorovať všade|g"
 
 #: src/frontends/qt4/Menus.cpp:868
 msgid "Remove from personal dictionary|r"
-msgstr "Vyhodiť z osobného slovníka|h"
+msgstr "Vyhodiť z osobného slovníka|y"
 
 #: src/frontends/qt4/Menus.cpp:909
 msgid "Language|L"
