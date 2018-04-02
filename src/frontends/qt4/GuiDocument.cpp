@@ -68,11 +68,12 @@
 #include "frontends/alert.h"
 
 #include <QAbstractItemModel>
-#include <QHeaderView>
+#include <QButtonGroup>
 #include <QColor>
 #include <QColorDialog>
 #include <QCloseEvent>
 #include <QFontDatabase>
+#include <QHeaderView>
 #include <QScrollBar>
 #include <QTextBoundaryFinder>
 #include <QTextCursor>
