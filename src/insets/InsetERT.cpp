@@ -17,7 +17,9 @@
 #include "BufferParams.h"
 #include "BufferView.h"
 #include "Cursor.h"
+#include "CutAndPaste.h"
 #include "DispatchResult.h"
+#include "Format.h"
 #include "FuncRequest.h"
 #include "FuncStatus.h"
 #include "Language.h"
@@ -29,8 +31,11 @@
 #include "Paragraph.h"
 #include "TextClass.h"
 
+#include "support/docstream.h"
+#include "support/FileName.h"
 #include "support/gettext.h"
 #include "support/lstrings.h"
+#include "support/TempFile.h"
 
 #include <sstream>
 
@@ -43,6 +48,21 @@ InsetERT::InsetERT(Buffer * buf, CollapseStatus status)
 	: InsetCollapsible(buf)
 {
 	status_ = status;
+}
+
+
+// Do not copy the temp file on purpose: If a copy of an inset which is
+// currently being edited is made, then we simply copy the current contents.
+InsetERT::InsetERT(InsetERT const & that) : InsetCollapsible(that)
+{}
+
+
+InsetERT & InsetERT::operator=(InsetERT const & that)
+{
+	if (&that == this)
+		return *this;
+	tempfile_.reset();
+	return *this;
 }
 
 
@@ -109,6 +129,40 @@ int InsetERT::docbook(odocstream & os, OutputParams const &) const
 void InsetERT::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action()) {
+	case LFUN_INSET_EDIT: {
+		cur.push(*this);
+		text().selectAll(cur);
+		string const format =
+			cur.buffer()->params().documentClass().outputFormat();
+		string const ext = theFormats().extension(format);
+		tempfile_.reset(new TempFile("ert_editXXXXXX." + ext));
+		FileName const tempfilename = tempfile_->name();
+		string const name = tempfilename.toFilesystemEncoding();
+		ofdocstream os(name.c_str());
+		os << cur.selectionAsString(false);
+		os.close();
+		// Since we lock the inset while the external file is edited,
+		// we need to move the cursor outside and clear any selection inside
+		cur.clearSelection();
+		cur.pop();
+		cur.leaveInset(*this);
+		theFormats().edit(buffer(), tempfilename, format);
+		break;
+	}
+	case LFUN_INSET_END_EDIT: {
+		FileName const tempfilename = tempfile_->name();
+		docstring const s = tempfilename.fileContents("UTF-8");
+		cur.recordUndoInset(this);
+		cur.push(*this);
+		text().selectAll(cur);
+		cap::replaceSelection(cur);
+		cur.text()->insertStringAsLines(cur, s, cur.current_font);
+		// FIXME it crashes without this
+		cur.fixIfBroken();
+		tempfile_.reset();
+		cur.pop();
+		break;
+	}
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "ert") {
 			cur.recordUndoInset(this);
@@ -128,6 +182,12 @@ bool InsetERT::getStatus(Cursor & cur, FuncRequest const & cmd,
 	FuncStatus & status) const
 {
 	switch (cmd.action()) {
+	case LFUN_INSET_EDIT:
+		status.setEnabled(tempfile_ == 0);
+		return true;
+	case LFUN_INSET_END_EDIT:
+		status.setEnabled(tempfile_ != 0);
+		return true;
 	case LFUN_INSET_MODIFY:
 		if (cmd.getArg(0) == "ert") {
 			status.setEnabled(true);
@@ -138,6 +198,22 @@ bool InsetERT::getStatus(Cursor & cur, FuncRequest const & cmd,
 	default:
 		return InsetCollapsible::getStatus(cur, cmd, status);
 	}
+}
+
+
+bool InsetERT::editable() const
+{
+	if (tempfile_)
+		return false;
+	return InsetCollapsible::editable();
+}
+
+
+bool InsetERT::descendable(BufferView const & bv) const
+{
+	if (tempfile_)
+		return false;
+	return InsetCollapsible::descendable(bv);
 }
 
 

@@ -664,6 +664,9 @@ Menuset
 	Menu "context-ert"
 		# repeat 1 is added as a work-around to not indicate this action as toggable
 		Item "Wrap by Preview|y" "command-sequence repeat 1;inset-toggle;char-forward;char-backward;char-forward-select;preview-insert;char-backward;char-backward;inset-toggle"
+		Separator 
+		Item "Edit Externally...|x" "inset-edit" 
+		Item "End Editing Externally...|e" "inset-end-edit"
 	End
 
 #

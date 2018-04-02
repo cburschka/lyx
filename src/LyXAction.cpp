@@ -2014,6 +2014,11 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_INSET_EDIT
  * \li Action: Edit the inset at cursor with an external application,
                if one is attributed.
+               If the inset is file based, the referenced file is edited.
+               Otherwise, the inset contents is written to a temporary file,
+               the inset is locked, and the temporary file is edited.
+               In this case, #LFUN_INSET_END_EDIT must be called to overtake
+               the changes and unlock the inset after editing is finished.
  * \li Syntax: inset-edit [<INSET_PARAMS>]
  * \li Params: <INSET_PARAMS>: Parameters for the inset. \n
                                Currently only the filename will be considered.
@@ -2022,6 +2027,17 @@ void LyXAction::init()
  */
 		{ LFUN_INSET_EDIT, "inset-edit", ReadOnly | AtPoint, Edit },
 
+
+ /*!
+ * \var lyx::FuncCode lyx::LFUN_INSET_END_EDIT
+ * \li Action: End editing the inset at cursor with an external application.
+ *             This replaces the inset contents with the contents of the
+ *             temporary file, deletes the file and unlocks the inset.
+ * \li Syntax: inset-end-edit 
+ * \li Origin: gb, 11 Oct 2015
+ * \endvar
+ */
+		{ LFUN_INSET_END_EDIT, "inset-end-edit", ReadOnly | AtPoint, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_INSET_END
