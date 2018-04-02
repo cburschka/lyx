@@ -15,7 +15,6 @@
 
 #include "InsetCollapsible.h"
 
-
 namespace lyx {
 
 /** A collapsible text inset for LaTeX insertions.
@@ -29,10 +28,18 @@ namespace lyx {
 
 class Language;
 
+namespace support {
+	class TempFile;
+}
+
 class InsetERT : public InsetCollapsible {
 public:
 	///
 	InsetERT(Buffer *, CollapseStatus status = Open);
+ 	///
+	InsetERT(InsetERT const &);
+	///
+	InsetERT & operator=(InsetERT const &);
 	///
 	static CollapseStatus string2params(std::string const &);
 	///
@@ -62,12 +69,18 @@ private:
 	void doDispatch(Cursor & cur, FuncRequest & cmd);
 	///
 	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus &) const;
+ 	///
+	bool editable() const;
+	///
+	bool descendable(BufferView const &) const;
 	///
 	Inset * clone() const { return new InsetERT(*this); }
 	///
 	docstring const buttonLabel(BufferView const & bv) const;
 	///
 	bool allowSpellCheck() const { return false; }
+	///
+	unique_ptr<support::TempFile> tempfile_;
 };
 
 
