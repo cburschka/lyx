@@ -1977,7 +1977,7 @@ docstring Text::getPossibleLabel(Cursor const & cur) const
 	Layout const * layout = &(pars_[pit].layout());
 
 	docstring text;
-	docstring par_text = pars_[pit].asString();
+	docstring par_text = pars_[pit].asString(AS_STR_SKIPDELETE);
 
 	// The return string of math matrices might contain linebreaks
 	par_text = subst(par_text, '\n', '-');
