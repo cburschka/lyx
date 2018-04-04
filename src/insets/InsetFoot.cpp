@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include "InsetFoot.h"
+#include "InsetBox.h"
 
 #include "Buffer.h"
 #include "BufferParams.h"
@@ -64,6 +65,14 @@ void InsetFoot::updateBuffer(ParIterator const & it, UpdateType utype)
 		intable = true;
 	if (it.innerInsetOfType(FLOAT_CODE) != 0)
 		infloattable_ = intable;
+	// If we are in a table in a float, but the table is also in a minipage,
+	// we do not use tablefootnote, since minipages provide their own footnotes.
+	if (intable && infloattable_ && it.innerInsetOfType(BOX_CODE) != 0) {
+		InsetBoxParams const & boxp =
+				static_cast<InsetBox*>(it.innerInsetOfType(BOX_CODE))->params();
+		if (boxp.inner_box && !boxp.use_parbox && !boxp.use_makebox)
+			infloattable_ = false;
+	}
 	for (size_type sl = 0 ; sl < it.depth() ; ++sl) {
 		if (it[sl].text() && it[sl].paragraph().layout().intitle) {
 			intitle_ = true;
