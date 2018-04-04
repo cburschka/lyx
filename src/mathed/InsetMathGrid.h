@@ -162,10 +162,10 @@ public:
 	bool idxBackward(Cursor &) const;
 	///
 	bool idxForward(Cursor &) const;
-	///
-	bool idxFirst(Cursor &) const;
-	///
-	bool idxLast(Cursor &) const;
+	//
+	idx_type firstIdx() const;
+	//
+	idx_type lastIdx() const;
 	///
 	bool idxDelete(idx_type & idx);
 	/// pulls cell after pressing erase

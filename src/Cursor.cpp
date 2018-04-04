@@ -1646,6 +1646,12 @@ void Cursor::handleNest(MathAtom const & a, int c)
 }
 
 
+void Cursor::handleNest(MathAtom const & a)
+{
+	handleNest(a, a.nucleus()->asNestInset()->firstIdx());
+}
+
+
 int Cursor::targetX() const
 {
 	if (x_target() != -1)
@@ -1703,6 +1709,7 @@ bool Cursor::macroModeClose(bool cancel)
 	// try to put argument into macro, if we just inserted a macro
 	bool macroArg = false;
 	InsetMathMacro * atomAsMacro = atom.nucleus()->asMacro();
+	InsetMathNest * atomAsNest = atom.nucleus()->asNestInset();
 	if (atomAsMacro) {
 		// macros here are still unfolded (in init mode in fact). So
 		// we have to resolve the macro here manually and check its arity
@@ -1717,8 +1724,8 @@ bool Cursor::macroModeClose(bool cancel)
 	}
 
 	// insert remembered selection into first argument of a non-macro
-	else if (atom.nucleus()->nargs() > 0)
-		atom.nucleus()->cell(0).append(selection);
+	else if (atomAsNest && atomAsNest->nargs() > 0)
+		atomAsNest->cell(atomAsNest->firstIdx()).append(selection);
 
 	MathWordList const & words = mathedWordList();
 	MathWordList::const_iterator it = words.find(name);

@@ -419,22 +419,6 @@ InsetMath::mode_type InsetMathHull::currentMode() const
 }
 
 
-bool InsetMathHull::idxFirst(Cursor & cur) const
-{
-	cur.idx() = 0;
-	cur.pos() = 0;
-	return true;
-}
-
-
-bool InsetMathHull::idxLast(Cursor & cur) const
-{
-	cur.idx() = nargs() - 1;
-	cur.pos() = cur.lastpos();
-	return true;
-}
-
-
 // FIXME: InsetMathGrid should be changed to let the real column alignment be
 // given by a virtual method like displayColAlign, because the values produced
 // by defaultColAlign can be invalidated by lfuns such as add-column. For the
@@ -2253,17 +2237,14 @@ void InsetMathHull::handleFont2(Cursor & cur, docstring const & arg)
 	font.fromString(to_utf8(arg), b);
 	if (font.fontInfo().color() != Color_inherit) {
 		MathAtom at = MathAtom(new InsetMathColor(buffer_, true, font.fontInfo().color()));
-		cur.handleNest(at, 0);
+		cur.handleNest(at);
 	}
 }
 
 
 void InsetMathHull::edit(Cursor & cur, bool front, EntryDirection entry_from)
 {
-	cur.push(*this);
-	bool enter_front = (entry_from == Inset::ENTRY_DIRECTION_LEFT ||
-		(entry_from == Inset::ENTRY_DIRECTION_IGNORE && front));
-	enter_front ? idxFirst(cur) : idxLast(cur);
+	InsetMathNest::edit(cur, front, entry_from);
 	// The inset formula dimension is not necessarily the same as the
 	// one of the instant preview image, so we have to indicate to the
 	// BufferView that a metrics update is needed.

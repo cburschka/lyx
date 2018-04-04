@@ -62,6 +62,11 @@ public:
 	/// move to previous cell
 	bool idxPrev(Cursor &) const;
 
+	// The index of the cell entered while moving forward
+	virtual idx_type firstIdx() const { return 0; }
+	// The index of the cell entered while moving backward
+	virtual idx_type lastIdx() const { return nargs() - 1; }
+
 	/// target pos when we enter the inset while moving forward
 	bool idxFirst(Cursor &) const;
 	/// target pos when we enter the inset while moving backwards

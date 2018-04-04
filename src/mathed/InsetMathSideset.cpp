@@ -62,22 +62,6 @@ Inset * InsetMathSideset::clone() const
 }
 
 
-bool InsetMathSideset::idxFirst(Cursor & cur) const
-{
-	cur.idx() = 0;
-	cur.pos() = 0;
-	return true;
-}
-
-
-bool InsetMathSideset::idxLast(Cursor & cur) const
-{
-	cur.idx() = 0;
-	cur.pos() = nuc().size();
-	return true;
-}
-
-
 int InsetMathSideset::dybt(BufferView const & bv, int asc, int des, bool top) const
 {
 	bool isCharBox = nuc().empty() ? false : isAlphaSymbol(nuc().back());

@@ -46,10 +46,8 @@ public:
 	bool idxForward(Cursor & cur) const;
 	/// move cursor up or down
 	bool idxUpDown(Cursor & cur, bool up) const;
-	/// Target pos when we enter the inset while moving forward
-	bool idxFirst(Cursor & cur) const;
-	/// Target pos when we enter the inset while moving backwards
-	bool idxLast(Cursor & cur) const;
+	/// The index of the cell entered while moving backward
+	size_type lastIdx() const { return 0; }
 
 	/// write LaTeX and Lyx code
 	void write(WriteStream & os) const;

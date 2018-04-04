@@ -57,22 +57,6 @@ void InsetMathOverset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-bool InsetMathOverset::idxFirst(Cursor & cur) const
-{
-	cur.idx() = 1;
-	cur.pos() = 0;
-	return true;
-}
-
-
-bool InsetMathOverset::idxLast(Cursor & cur) const
-{
-	cur.idx() = 1;
-	cur.pos() = cur.lastpos();
-	return true;
-}
-
-
 void InsetMathOverset::write(WriteStream & os) const
 {
 	MathEnsurer ensurer(os);

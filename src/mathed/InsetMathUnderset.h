@@ -28,9 +28,9 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	bool idxFirst(Cursor & cur) const;
+	idx_type firstIdx() const { return 1; }
 	///
-	bool idxLast(Cursor & cur) const;
+	idx_type lastIdx() const { return 1; }
 	///
 	bool idxUpDown(Cursor & cur, bool up) const;
 	///

@@ -120,10 +120,6 @@ public:
 	char defaultColAlign(col_type col);
 	///
 	char displayColAlign(idx_type idx) const;
-	///
-	bool idxFirst(Cursor &) const;
-	///
-	bool idxLast(Cursor &) const;
 
 	///
 	void write(WriteStream & os) const;

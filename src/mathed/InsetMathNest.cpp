@@ -235,7 +235,7 @@ bool InsetMathNest::idxFirst(Cursor & cur) const
 	LASSERT(&cur.inset() == this, return false);
 	if (nargs() == 0)
 		return false;
-	cur.idx() = 0;
+	cur.idx() = firstIdx();
 	cur.pos() = 0;
 	return true;
 }
@@ -246,7 +246,7 @@ bool InsetMathNest::idxLast(Cursor & cur) const
 	LASSERT(&cur.inset() == this, return false);
 	if (nargs() == 0)
 		return false;
-	cur.idx() = cur.lastidx();
+	cur.idx() = lastIdx();
 	cur.pos() = cur.lastpos();
 	return true;
 }
@@ -1491,10 +1491,9 @@ bool InsetMathNest::getStatus(Cursor & cur, FuncRequest const & cmd,
 void InsetMathNest::edit(Cursor & cur, bool front, EntryDirection entry_from)
 {
 	cur.push(*this);
-	bool enter_front = (entry_from == Inset::ENTRY_DIRECTION_RIGHT ||
+	bool enter_front = (entry_from == Inset::ENTRY_DIRECTION_LEFT ||
 		(entry_from == Inset::ENTRY_DIRECTION_IGNORE && front));
-	cur.idx() = enter_front ? 0 : cur.lastidx();
-	cur.pos() = enter_front ? 0 : cur.lastpos();
+	enter_front ? idxFirst(cur) : idxLast(cur);
 	cur.resetAnchor();
 	//lyxerr << "InsetMathNest::edit, cur:\n" << cur << endl;
 }
@@ -1734,7 +1733,7 @@ bool InsetMathNest::interpretChar(Cursor & cur, char_type const c)
 			MathAtom const atom = cur.prevAtom();
 			if (atom->asNestInset() && atom->isActive()) {
 				cur.posBackward();
-				cur.pushBackward(*cur.nextInset());
+				cur.nextInset()->edit(cur, true);
 			}
 		}
 		if (c == '{')

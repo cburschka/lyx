@@ -72,22 +72,6 @@ InsetMathScript * InsetMathScript::asScriptInset()
 }
 
 
-bool InsetMathScript::idxFirst(Cursor & cur) const
-{
-	cur.idx() = 0;
-	cur.pos() = 0;
-	return true;
-}
-
-
-bool InsetMathScript::idxLast(Cursor & cur) const
-{
-	cur.idx() = 0;
-	cur.pos() = nuc().size();
-	return true;
-}
-
-
 MathData const & InsetMathScript::down() const
 {
 	if (nargs() == 3)

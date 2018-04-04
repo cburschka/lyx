@@ -515,8 +515,11 @@ public:
 
 
 	/// replace selected stuff with at, placing the former
+	// selection in entry cell of atom
+	void handleNest(MathAtom const & at);
+	/// replace selected stuff with at, placing the former
 	// selection in given cell of atom
-	void handleNest(MathAtom const & at, int cell = 0);
+	void handleNest(MathAtom const & at, int cell);
 
 	/// make sure cursor position is valid
 	/// FIXME: It does a subset of fixIfBroken. Maybe merge them?

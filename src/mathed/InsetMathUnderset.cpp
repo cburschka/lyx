@@ -58,22 +58,6 @@ void InsetMathUnderset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-bool InsetMathUnderset::idxFirst(Cursor & cur) const
-{
-	cur.idx() = 1;
-	cur.pos() = 0;
-	return true;
-}
-
-
-bool InsetMathUnderset::idxLast(Cursor & cur) const
-{
-	cur.idx() = 1;
-	cur.pos() = cur.lastpos();
-	return true;
-}
-
-
 bool InsetMathUnderset::idxUpDown(Cursor & cur, bool up) const
 {
 	idx_type target = up; // up ? 1 : 0, since upper cell has idx 1
