@@ -328,9 +328,9 @@ void GuiRef::updateContents()
 	typeCO->addItem(qt_("<page>"), "pageref");
 	typeCO->addItem(qt_("on page <page>"), "vpageref");
 	typeCO->addItem(qt_("<reference> on page <page>"), "vref");
+	typeCO->addItem(qt_("Textual reference"), "nameref");
 	if (bufferview()->cursor().inTexted()) {
 		typeCO->addItem(qt_("Formatted reference"), "formatted");
-		typeCO->addItem(qt_("Textual reference"), "nameref");
 		typeCO->addItem(qt_("Label only"), "labelonly");
 	} else
 		typeCO->addItem(qt_("Formatted reference"), "prettyref");

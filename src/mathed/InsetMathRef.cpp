@@ -168,6 +168,8 @@ void InsetMathRef::validate(LaTeXFeatures & features) const
 		features.require("prettyref");
 	else if (commandname() == "eqref")
 		features.require("amsmath");
+	else if (commandname() == "nameref")
+		features.require("nameref");
 }
 
 
@@ -243,6 +245,7 @@ InsetMathRef::ref_type_info InsetMathRef::types[] = {
 	{ from_ascii("vpageref"),  from_ascii(N_("Textual Page Number")),   from_ascii(N_("TextPage: "))},
 	{ from_ascii("vref"),      from_ascii(N_("Standard+Textual Page")), from_ascii(N_("Ref+Text: "))},
 	{ from_ascii("prettyref"), from_ascii(N_("PrettyRef")),             from_ascii(N_("FormatRef: "))},
+	{ from_ascii("nameref"),   from_ascii(N_("Reference to Name")),     from_ascii(N_("NameRef: "))},
 	{ from_ascii(""), from_ascii(""), from_ascii("") }
 };
 

@@ -1552,7 +1552,8 @@ bool Parser::parse1(InsetMathGrid & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "ref" || t.cs() == "eqref" || t.cs() == "prettyref"
-			  || t.cs() == "pageref" || t.cs() == "vpageref" || t.cs() == "vref") {
+			  || t.cs() == "nameref" || t.cs() == "pageref"
+			  || t.cs() == "vpageref" || t.cs() == "vref") {
 			cell->push_back(MathAtom(new InsetMathRef(buf, t.cs())));
 			docstring const opt = parse_verbatim_option();
 			docstring const ref = parse_verbatim_item();
