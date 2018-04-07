@@ -1124,7 +1124,8 @@ cmd_ret const runCommand(string const & cmd)
 }
 
 
-FileName const findtexfile(string const & fil, string const & /*format*/)
+FileName const findtexfile(string const & fil, string const & /*format*/,
+						   bool const onlykpse)
 {
 	/* There is no problem to extend this function too use other
 	   methods to look for files. It could be setup to look
@@ -1137,9 +1138,11 @@ FileName const findtexfile(string const & fil, string const & /*format*/)
 
 	// If the file can be found directly, we just return a
 	// absolute path version of it.
-	FileName const absfile(makeAbsPath(fil));
-	if (absfile.exists())
-		return absfile;
+	if (!onlykpse) {
+		FileName const absfile(makeAbsPath(fil));
+		if (absfile.exists())
+			return absfile;
+	}
 
 	// Now we try to find it using kpsewhich.
 	// It seems from the kpsewhich manual page that it is safe to use
