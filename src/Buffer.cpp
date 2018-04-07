@@ -3185,9 +3185,27 @@ vector<docstring> const Buffer::prepareBibFilePaths(OutputParams const & runpara
 		string utf8input = to_utf8(it->first);
 		string database =
 			prepareFileNameForLaTeX(utf8input, ".bib", runparams.nice);
-		FileName const try_in_file =
+		FileName try_in_file =
 			makeAbsPath(database + ".bib", filePath());
-		bool const not_from_texmf = try_in_file.isReadableFile();
+		bool not_from_texmf = try_in_file.isReadableFile();
+		// If the file has not been found, try with the real file name
+		// (it might come from a child in a sub-directory)
+		if (!not_from_texmf) {
+			try_in_file = it->second;
+			if (try_in_file.isReadableFile()) {
+				// Check if the file is in texmf
+				FileName kpsefile(findtexfile(changeExtension(utf8input, "bib"), "bib", true));
+				not_from_texmf = kpsefile.empty()
+						|| kpsefile.absFileName() != try_in_file.absFileName();
+				if (not_from_texmf)
+					// If this exists, make path relative to the master
+					// FIXME Unicode
+					database = removeExtension(
+							prepareFileNameForLaTeX(to_utf8(makeRelPath(from_utf8(try_in_file.absFileName()),
+												    from_utf8(filePath()))),
+										".bib", runparams.nice));
+			}
+		}
 
 		if (!runparams.inComment && !runparams.dryrun && !runparams.nice &&
 		    not_from_texmf) {

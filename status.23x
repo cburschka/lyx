@@ -94,7 +94,7 @@ What's new
 
 * DOCUMENT INPUT/OUTPUT
 
-- Fix language settings annd line spacing in InPreamble-titles
+- Fix language settings and line spacing in InPreamble-titles
   (bug 9332, 1049).
 
 - Respect 'literal' setting when calculating longest bibitem (bug 10817).
@@ -103,6 +103,9 @@ What's new
   to-Left languages, since bidi handles the numbers automatically.
 
 - Fix polyglossia language switches for Arabic (bug 11057).
+
+- Set correct path to (biblatex) bibliography databases that are entered
+  relative to child documents (bug 11105).
 
 
 * LYX2LYX
