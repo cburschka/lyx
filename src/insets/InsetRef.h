@@ -40,6 +40,10 @@ public:
 	/// \name Public functions inherited from Inset class
 	//@{
 	///
+	void doDispatch(Cursor & cur, FuncRequest & cmd);
+	///
+	bool getStatus(Cursor & cur, FuncRequest const & cmd, FuncStatus & status) const;
+	///
 	bool isLabeled() const { return true; }
 	///
 	docstring toolTip(BufferView const &, int, int) const

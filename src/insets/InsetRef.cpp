@@ -15,6 +15,7 @@
 #include "BufferParams.h"
 #include "Cursor.h"
 #include "DispatchResult.h"
+#include "FuncStatus.h"
 #include "InsetLabel.h"
 #include "Language.h"
 #include "LaTeXFeatures.h"
@@ -75,6 +76,60 @@ ParamInfo const & InsetRef::findInfo(string const & /* cmdName */)
 		param_info_.add("noprefix", ParamInfo::LYX_INTERNAL);
 	}
 	return param_info_;
+}
+
+
+void InsetRef::doDispatch(Cursor & cur, FuncRequest & cmd)
+{
+	string const inset = cmd.getArg(0);
+	string const arg   = cmd.getArg(1);
+	string pstring;
+	if (cmd.action() == LFUN_INSET_MODIFY && inset == "ref") {
+		if (arg == "toggle-plural")
+			pstring = "plural";
+		else if (arg == "toggle-caps")
+			pstring = "caps";
+		else if (arg == "toggle-noprefix")
+			pstring = "noprefix";
+	}
+	// otherwise not for us
+	if (pstring.empty())
+		return InsetCommand::doDispatch(cur, cmd);
+
+	bool const isSet = (getParam(pstring) == "true");
+	setParam(pstring, from_ascii(isSet ? "false"  : "true"));
+}
+
+
+bool InsetRef::getStatus(Cursor & cur, FuncRequest const & cmd,
+	FuncStatus & status) const
+{
+	if (cmd.action() != LFUN_INSET_MODIFY)
+		return InsetCommand::getStatus(cur, cmd, status);
+	if (cmd.getArg(0) != "ref")
+		return InsetCommand::getStatus(cur, cmd, status);
+
+	string const arg = cmd.getArg(1);
+	string pstring;
+	if (arg == "toggle-plural")
+		pstring = "plural";
+	else if (arg == "toggle-caps")
+		pstring = "caps";
+	if (!pstring.empty()) {
+		status.setEnabled(buffer().params().use_refstyle &&
+			params().getCmdName() == "formatted");
+		bool const isSet = (getParam(pstring) == "true");
+		status.setOnOff(isSet);
+		return true;
+	}
+	if (arg == "toggle-noprefix") {
+		status.setEnabled(params().getCmdName() == "labelonly");
+		bool const isSet = (getParam("noprefix") == "true");
+		status.setOnOff(isSet);
+		return true;
+	}
+	// otherwise not for us
+	return InsetCommand::getStatus(cur, cmd, status);
 }
 
 

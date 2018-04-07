@@ -96,6 +96,10 @@ Menuset
 		Item "Textual Reference|x" "inset-modify changetype nameref"
 		Item "Label Only|L" "inset-modify changetype labelonly"
 		Separator
+		OptItem "Plural|a" "inset-modify ref toggle-plural"
+		OptItem "Capitalize|C" "inset-modify ref toggle-caps"
+		Item "No Prefix" "inset-modify ref toggle-noprefix"
+		Separator
 		Item "Settings...|S" "inset-settings"
 	End
 
