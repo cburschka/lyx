@@ -725,7 +725,10 @@ void GuiView::processingThreadFinished()
 		errors("Export");
 		return;
 	}
-	errors(d.last_export_format);
+	if (status != Buffer::ExportSuccess && status != Buffer::PreviewSuccess &&
+	    status != Buffer::ExportCancel) {
+		errors(d.last_export_format);
+	}
 }
 
 
