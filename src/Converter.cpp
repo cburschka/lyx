@@ -136,6 +136,8 @@ void Converter::readFlags()
 			nice_ = true;
 		else if (flag_name == "needauth")
 			need_auth_ = true;
+		else if (flag_name == "hyperref-driver")
+			href_driver_ = flag_value;
 	}
 	if (!result_dir_.empty() && result_file_.empty())
 		result_file_ = "index." + theFormats().extension(to_);
@@ -280,6 +282,18 @@ OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path,
 	}
 	return buffer ? buffer->params().getOutputFlavor()
 		      : OutputParams::LATEX;
+}
+
+
+string Converters::getHyperrefDriver(Graph::EdgePath const & path)
+{
+	for (Graph::EdgePath::const_iterator cit = path.begin();
+	     cit != path.end(); ++cit) {
+		Converter const & conv = converterlist_[*cit];
+		if (!conv.hyperref_driver().empty())
+			return conv.hyperref_driver();
+	}
+	return string();
 }
 
 

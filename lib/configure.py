@@ -772,10 +772,10 @@ def checkFormatEntries(dtl_tools):
 def checkConverterEntries():
     ''' Check all converters (\converter entries) '''
     checkProg('the pdflatex program', ['pdflatex $$i'],
-        rc_entry = [ r'\converter pdflatex   pdf2       "%%"	"latex=pdflatex"' ])
+        rc_entry = [ r'\converter pdflatex   pdf2       "%%"	"latex=pdflatex,hyperref-driver=pdftex"' ])
 
     checkProg('XeTeX', ['xelatex $$i'],
-        rc_entry = [ r'\converter xetex      pdf4       "%%"	"latex=xelatex"' ])
+        rc_entry = [ r'\converter xetex      pdf4       "%%"	"latex=xelatex,hyperref-driver=xetex"' ])
 
     checkLuatex()
 
@@ -927,7 +927,7 @@ def checkConverterEntries():
         rc_entry = [ r'\converter rtf      html        "%%"	""' ])
     # Do not define a converter to pdf6, ps is a pure export format
     checkProg('a PS to PDF converter', ['ps2pdf $$i $$o'],
-        rc_entry = [ r'\converter ps         pdf        "%%"	""' ])
+        rc_entry = [ r'\converter ps         pdf        "%%"	"hyperref-driver=dvips"' ])
     #
     checkProg('a PS to TXT converter', ['pstotext $$i > $$o'],
         rc_entry = [ r'\converter ps         text2      "%%"	""' ])
@@ -977,13 +977,13 @@ def checkConverterEntries():
         rc_entry = [ r'\converter dvi        text4      "%%"	""' ])
     #
     checkProg('a DVI to PS converter', ['dvips -o $$o $$i'],
-        rc_entry = [ r'\converter dvi        ps         "%%"	""' ])
+        rc_entry = [ r'\converter dvi        ps         "%%"	"hyperref-driver=dvips"' ])
     #
     checkProg('a DVI to cropped EPS converter', ['dvips -E -o $$o $$i'],
         rc_entry = [ r'\converter dvi        eps3         "%%"	""' ])
     #
-    checkProg('a DVI to PDF converter', ['dvipdfmx -o $$o $$i', 'dvipdfm -o $$o $$i'],
-        rc_entry = [ r'\converter dvi        pdf3       "%%"	""' ])
+    checkProg('a DVI to PDF converter', ['dvipdfmx', 'dvipdfm'],
+        rc_entry = [ r'\converter dvi        pdf3       "%%  -o $$o $$i"	"hyperref-driver=%%"' ])
     #
     checkProg('a fax program', ['kdeprintfax $$i', 'ksendfax $$i', 'hylapex $$i'],
         rc_entry = [ r'\converter ps         fax        "%%"	""'])

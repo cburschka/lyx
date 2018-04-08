@@ -4267,6 +4267,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 			return ExportNoPathToFormat;
 		}
 		runparams.flavor = converters.getFlavor(path, this);
+		runparams.hyperref_driver = converters.getHyperrefDriver(path);
 		for (auto const & edge : path)
 			if (theConverters().get(edge).nice()) {
 				need_nice_file = true;
