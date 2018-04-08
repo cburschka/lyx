@@ -4319,6 +4319,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 			return ExportNoPathToFormat;
 		}
 		runparams.flavor = converters.getFlavor(path, this);
+		runparams.hyperref_driver = converters.getHyperrefDriver(path);
 		Graph::EdgePath::const_iterator it = path.begin();
 		Graph::EdgePath::const_iterator en = path.end();
 		for (; it != en; ++it)

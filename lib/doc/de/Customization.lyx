@@ -1990,6 +1990,25 @@ key=value
 \labelwidthstring 00.00.0000
 
 \family typewriter
+hyperref-driver 
+\family default
+Der Name der Treiberdatei, die für diesen Konverter mit dem 
+\family sans
+Hyperref
+\family default
+-Paket geladen werden soll.
+ Dies ist nötig, um bestimmte PDF-Features verwenden zu können.
+ Konsultieren Sie das 
+\family sans
+Hyperref
+\family default
+-Handbuch für Einzelheiten.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family typewriter
 parselog
 \family default
  Wenn das gesetzt ist, werden der Standardfehler des Konverters in die Datei
@@ -2082,9 +2101,11 @@ index
 \end_layout
 
 \begin_layout Standard
-Keines dieser Flags wird zur Zeit in einem Konverter benutzt, der zusammen
- mit \SpecialChar LyX
- installiert wird.
+Ein passender Hyperref-Treiber wird für einige mit \SpecialChar LyX
+ installierten Konverter
+ definiert.
+ Die zuletzt aufgeführten drei Flags hingegen werden zurzeit von keinem
+ der vorinstallierten Konverter verwendet.
 \end_layout
 
 \begin_layout Standard

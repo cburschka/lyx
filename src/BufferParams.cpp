@@ -2094,8 +2094,8 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 		OutputParams tmp_params = features.runparams();
 		pdfoptions().writeLaTeX(tmp_params, os,
 					features.isProvided("hyperref"));
-		// correctly break URLs with hyperref and dvi output
-		if (features.runparams().flavor == OutputParams::LATEX
+		// correctly break URLs with hyperref and dvi/ps output
+		if (features.runparams().hyperref_driver == "dvips"
 		    && features.isAvailable("breakurl"))
 			os << "\\usepackage{breakurl}\n";
 	} else if (features.isRequired("nameref"))

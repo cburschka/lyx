@@ -97,6 +97,10 @@ void PDFOptions::writeLaTeX(OutputParams & runparams, otexstream & os,
 	string opt;
 	string hyperset;
 
+	// Driver needed by specific converters
+	if (!runparams.hyperref_driver.empty())
+		opt += runparams.hyperref_driver + ",";
+
 	// since LyX uses unicode, also set the PDF strings to unicode strings with the
 	// hyperref option "unicode"
 	opt += "unicode=true,";
