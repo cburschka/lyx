@@ -1695,8 +1695,8 @@ void GuiView::errors(string const & error_type, bool from_master)
 	// have to figure out whether that is the case or not.
 	ErrorList & el = bv->buffer().errorList(error_type);
 	if (el.empty()) {
-	    el = bv->buffer().masterBuffer()->errorList(error_type);
-	    from_master = true;
+		el = bv->buffer().masterBuffer()->errorList(error_type);
+		from_master = true;
 	}
 #else
 	ErrorList const & el = from_master ?
