@@ -725,9 +725,18 @@ void GuiView::processingThreadFinished()
 		errors("Export");
 		return;
 	}
-	if (status != Buffer::ExportSuccess && status != Buffer::PreviewSuccess &&
-	    status != Buffer::ExportCancel) {
-		errors(d.last_export_format);
+
+	bool const error = (status != Buffer::ExportSuccess &&
+			    status != Buffer::PreviewSuccess &&
+			    status != Buffer::ExportCancel);
+	if (error) {
+		ErrorList & el = bv->buffer().errorList(d.last_export_format);
+		// at this point, we do not know if buffer-view or
+		// master-buffer-view was called. If there was an export error,
+		// and the current buffer's error log is empty, we guess that
+		// it must be master-buffer-view that was called so we set
+		// from_master=true.
+		errors(d.last_export_format, el.empty());
 	}
 }
 
@@ -1690,19 +1699,9 @@ void GuiView::errors(string const & error_type, bool from_master)
 	if (!bv)
 		return;
 
-#if EXPORT_in_THREAD
-	// We are called with from_master == false by default, so we
-	// have to figure out whether that is the case or not.
-	ErrorList & el = bv->buffer().errorList(error_type);
-	if (el.empty()) {
-		el = bv->buffer().masterBuffer()->errorList(error_type);
-		from_master = true;
-	}
-#else
 	ErrorList const & el = from_master ?
 		bv->buffer().masterBuffer()->errorList(error_type) :
 		bv->buffer().errorList(error_type);
-#endif
 
 	if (el.empty())
 		return;
