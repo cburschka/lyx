@@ -72,6 +72,7 @@ AC_DEFUN([LYX_HAVE_HUNSPELL_CXXABI],
        int i = sp.stem("test").size();],
       [AC_MSG_RESULT(yes)
        AC_DEFINE(HAVE_HUNSPELL_CXXABI, 1, [Define to 1 if hunspell C++ (rather than C) ABI is detected])
+       have_hunspell_cxx_abi=yes
       ],
       [AC_MSG_RESULT(no)])
   CXXFLAGS=$save_CXXFLAGS
@@ -100,7 +101,12 @@ AC_DEFUN([CHECK_WITH_HUNSPELL],
 		AC_MSG_RESULT(no)
 	fi
     fi
-		LYX_HAVE_HUNSPELL_CXXABI
+	LYX_HAVE_HUNSPELL_CXXABI
+	if test $enable_stdlib_debug = "yes" -a -n "$have_hunspell_cxx_abi" ; then
+		LYX_WARNING([Compiling LyX with stdlib-debug and system hunspell libraries may lead to
+   crashes. Consider using --disable-stdlib-debug or --with-included-hunspell.])
+	      fi
+
     ])
 
 dnl Usage: LYX_USE_INCLUDED_HUNSPELL : select if the included hunspell should
