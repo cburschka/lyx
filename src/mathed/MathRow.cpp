@@ -236,7 +236,10 @@ int MathRow::after(int i) const
 
 void MathRow::metrics(MetricsInfo & mi, Dimension & dim)
 {
-	dim.asc = 0;
+	frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
+	// FIXME: this is the minimal ascent seen empirically, check
+	// what the TeXbook says.
+	dim.asc = fm.ascent('x');
 	dim.wid = 0;
 	// In order to compute the dimension of macros and their
 	// arguments, it is necessary to keep track of them.
@@ -284,7 +287,7 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim)
 			}
 			break;
 		case BOX:
-			d = theFontMetrics(mi.base.font).dimension('I');
+			d = fm.dimension('I');
 			if (e.color != Color_none) {
 				// allow for one pixel before/after the box.
 				d.wid += e.before + e.after + 2;
