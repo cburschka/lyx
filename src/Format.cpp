@@ -232,7 +232,7 @@ string guessFormatFromContents(FileName const & fn)
 	static string const zipStamp = "PK";
 
 	// ZIP containers (koffice, openoffice.org etc).
-	static string const nonzipStamp = "\008\0\0\0mimetypeapplication/";
+	static string const nonzipStamp = "\010\0\0\0mimetypeapplication/";
 
 	// compress
 	static string const compressStamp = "\037\235";
