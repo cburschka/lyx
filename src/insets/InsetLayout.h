@@ -162,6 +162,8 @@ public:
 	///
 	bool isNeedProtect() const { return needprotect_; }
 	///
+	bool needsCProtect() const { return needcprotect_; }
+	///
 	bool isFreeSpacing() const { return freespacing_; }
 	///
 	bool isKeepEmpty() const { return keepempty_; }
@@ -283,6 +285,8 @@ private:
 	bool forceownlines_;
 	///
 	bool needprotect_;
+	///
+	bool needcprotect_;
 	/// should the contents be written to TOC strings?
 	bool intoc_;
 	/// check spelling of this inset?

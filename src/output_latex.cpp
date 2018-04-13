@@ -654,6 +654,8 @@ void parStartCommand(Paragraph const & par, otexstream & os,
 {
 	switch (style.latextype) {
 	case LATEX_COMMAND:
+		if (par.needsCProtection())
+			os << "\\cprotect";
 		os << '\\' << from_ascii(style.latexname());
 
 		// Command arguments

@@ -424,6 +424,9 @@ public:
 	/// True if the element at this point is a hard hyphen or a apostrophe
 	/// If it is enclosed by spaces return false
 	bool isHardHyphenOrApostrophe(pos_type pos) const;
+	/// Return true if this paragraph has verbatim content that needs to be
+	/// protected by \cprotect
+	bool needsCProtection() const;
 
 	/// returns true if at least one line break or line separator has been deleted
 	/// at the beginning of the paragraph (either physically or logically)

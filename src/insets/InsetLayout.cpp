@@ -42,8 +42,8 @@ InsetLayout::InsetLayout() :
 	htmlisblock_(true), multipar_(true), custompars_(true),
 	forceplain_(false), passthru_(false), parbreakisnewline_(false),
 	freespacing_(false), keepempty_(false), forceltr_(false),
-	forceownlines_(false), needprotect_(false), intoc_(false),
-	spellcheck_(true), resetsfont_(false), display_(true),
+	forceownlines_(false), needprotect_(false), needcprotect_(false),
+	intoc_(false), spellcheck_(true), resetsfont_(false), display_(true),
 	forcelocalfontswitch_(false), add_to_toc_(false), is_toc_caption_(false)
 {
 	labelfont_.setColor(Color_error);
@@ -119,6 +119,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		IL_OBSOLETEDBY,
 		IL_KEEPEMPTY,
 		IL_MULTIPAR,
+		IL_NEEDCPROTECT,
 		IL_NEEDPROTECT,
 		IL_PASSTHRU,
 		IL_PASSTHRU_CHARS,
@@ -174,6 +175,7 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 		{ "leftdelim", IL_LEFTDELIM },
 		{ "lyxtype", IL_LYXTYPE },
 		{ "multipar", IL_MULTIPAR },
+		{ "needcprotect", IL_NEEDCPROTECT },
 		{ "needprotect", IL_NEEDPROTECT },
 		{ "obsoletedby", IL_OBSOLETEDBY },
 		{ "parbreakisnewline", IL_PARBREAKISNEWLINE },
@@ -321,6 +323,9 @@ bool InsetLayout::read(Lexer & lex, TextClass const & tclass)
 			break;
 		case IL_NEEDPROTECT:
 			lex >> needprotect_;
+			break;
+		case IL_NEEDCPROTECT:
+			lex >> needcprotect_;
 			break;
 		case IL_CONTENTASLABEL:
 			lex >> contentaslabel_;

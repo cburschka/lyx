@@ -458,7 +458,9 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 			// FIXME UNICODE
 			// FIXME \protect should only be used for fragile
 			//    commands, but we do not provide this information yet.
-			if (runparams.moving_arg)
+			if (hasCProtectContent())
+				os << "\\cprotect";
+			else if (runparams.moving_arg)
 				os << "\\protect";
 			os << '\\' << from_utf8(il.latexname());
 			if (!il.latexargs().empty())
@@ -757,6 +759,19 @@ ParagraphList const & InsetText::paragraphs() const
 ParagraphList & InsetText::paragraphs()
 {
 	return text_.paragraphs();
+}
+
+
+bool InsetText::hasCProtectContent() const
+{
+	ParagraphList const & pars = paragraphs();
+	pit_type pend = paragraphs().size();
+	for (pit_type pit = 0; pit != pend; ++pit) {
+		Paragraph const & par = pars[pit];
+		if (par.needsCProtection())
+			return true;
+	}
+	return false;
 }
 
 
@@ -1068,6 +1083,37 @@ docstring InsetText::toolTipText(docstring prefix, size_t const len) const
 InsetText::XHTMLOptions operator|(InsetText::XHTMLOptions a1, InsetText::XHTMLOptions a2)
 {
 	return static_cast<InsetText::XHTMLOptions>((int)a1 | (int)a2);
+}
+
+
+bool InsetText::needsCProtection() const
+{
+	if (!getLayout().needsCProtect())
+		return false;
+
+	// Environments need cprotection regardless the content
+	if (getLayout().latextype() == InsetLayout::ENVIRONMENT)
+		return true;
+
+	// Commands need cprotection if they contain specific chars
+	int const nchars_escape = 9;
+	static char_type const chars_escape[nchars_escape] = {
+		'&', '_', '$', '%', '#', '^', '{', '}', '\\'};
+
+	ParagraphList const & pars = paragraphs();
+	pit_type pend = paragraphs().size();
+
+	for (pit_type pit = 0; pit != pend; ++pit) {
+		Paragraph const & par = pars[pit];
+		if (par.needsCProtection())
+			return true;
+		docstring const pars = par.asString();
+		for (int k = 0; k < nchars_escape; k++) {
+			if (contains(pars, chars_escape[k]))
+				return true;
+		}
+	}
+	return false;
 }
 
 } // namespace lyx

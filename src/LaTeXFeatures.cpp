@@ -908,6 +908,7 @@ char const * simplefeatures[] = {
 // note that the package order here will be the same in the LaTeX-output
 	"array",
 	"verbatim",
+	"cprotect",
 	"longtable",
 	"rotating",
 	"latexsym",

@@ -1694,6 +1694,8 @@ void Paragraph::write(ostream & os, BufferParams const & bparams,
 void Paragraph::validate(LaTeXFeatures & features) const
 {
 	d->validate(features);
+	if (needsCProtection())
+		features.require("cprotect");
 }
 
 
@@ -3373,6 +3375,17 @@ bool Paragraph::isHardHyphenOrApostrophe(pos_type pos) const
 		&& (pos == 0 || isSpace(prevpos)))
 		return false;
 	return true;
+}
+
+
+bool Paragraph::needsCProtection() const
+{
+	pos_type size = d->text_.size();
+	for (pos_type i = 0; i < size; ++i)
+		if (isInset(i))
+			return getInset(i)->needsCProtection();
+
+	return false;
 }
 
 

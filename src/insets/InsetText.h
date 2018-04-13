@@ -223,6 +223,9 @@ public:
 	///
 	bool confirmDeletion() const { return !text().empty(); }
 
+	///
+	bool needsCProtection() const;
+
 protected:
 	///
 	void iterateForToc(DocIterator const & cdit, bool output_active,
@@ -237,6 +240,8 @@ private:
 	/// Close a toc item opened in start and closed in end
 	void closeAddToTocForParagraph(pit_type start, pit_type end,
 	                               TocBackend & backend) const;
+	///
+	bool hasCProtectContent() const;
 	///
 	bool drawFrame_;
 	///
