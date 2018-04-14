@@ -6,7 +6,7 @@
 # Note that this file is included in sweave.module,
 # knitr.module and noweb.module.
 
-Format 66
+Format 67
 
 Counter chunk
     PrettyFormat "Chunk ##"

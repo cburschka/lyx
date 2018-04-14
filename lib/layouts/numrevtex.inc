@@ -2,7 +2,7 @@
 # This include files contains label definitions for a article-like numbering.
 
 
-Format 66
+Format 67
 Style Section
 	LabelType             Static
 	LabelCounter          section

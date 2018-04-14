@@ -62,7 +62,7 @@ namespace lyx {
 // You should also run the development/tools/updatelayouts.py script,
 // to update the format of all of our layout files.
 //
-int const LAYOUT_FORMAT = 66; //spitz: New layout tag AutoNests
+int const LAYOUT_FORMAT = 67; //spitz: New layout tag NeedsCProtect
 
 
 // Layout format for the current lyx file format. Controls which format is
