@@ -14762,6 +14762,76 @@ protect
 not
 \emph default
  whether this command should itself be protected.)
+\change_inserted -712698321 1523696949
+
+\end_layout
+
+\begin_layout Description
+
+\change_inserted -712698321 1523696969
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1523696950
+NeedCProtect
+\end_layout
+
+\end_inset
+
+ [
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1523696950
+
+\emph on
+0
+\end_layout
+
+\end_inset
+
+,
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1523696950
+1
+\end_layout
+
+\end_inset
+
+] This causes macros that contain this layout to be protected with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1523696950
+
+\backslash
+cprotect
+\end_layout
+
+\end_inset
+
+ (cf.
+ package 
+\family sans
+cprotect
+\family default
+) if necessary and thus allows (some) verbatim stuff in macros.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description

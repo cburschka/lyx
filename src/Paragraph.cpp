@@ -3380,6 +3380,25 @@ bool Paragraph::isHardHyphenOrApostrophe(pos_type pos) const
 
 bool Paragraph::needsCProtection() const
 {
+	// first check the layout of the paragraph
+	if (layout().needcprotect) {
+		// Environments need cprotection regardless the content
+		if (layout().latextype == LATEX_ENVIRONMENT)
+			return true;
+
+		// Commands need cprotection if they contain specific chars
+		int const nchars_escape = 9;
+		static char_type const chars_escape[nchars_escape] = {
+			'&', '_', '$', '%', '#', '^', '{', '}', '\\'};
+
+		docstring const pars = asString();
+		for (int k = 0; k < nchars_escape; k++) {
+			if (contains(pars, chars_escape[k]))
+				return true;
+		}
+	}
+
+	// now check whether we have insets that need cprotection
 	pos_type size = d->text_.size();
 	for (pos_type i = 0; i < size; ++i)
 		if (isInset(i))

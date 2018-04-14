@@ -74,6 +74,7 @@ enum LayoutTags {
 	LT_LATEXTYPE,
 	LT_LEFTDELIM,
 	LT_LEFTMARGIN,
+	LT_NEED_CPROTECT,
 	LT_NEED_PROTECT,
 	LT_NEWLINE,
 	LT_NEXTNOINDENT,
@@ -130,6 +131,7 @@ Layout::Layout()
 	intitle = false;
 	inpreamble = false;
 	needprotect = false;
+	needcprotect = false;
 	keepempty = false;
 	font = inherit_font;
 	labelfont = inherit_font;
@@ -242,6 +244,7 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 		{ "leftdelim",      LT_LEFTDELIM },
 		{ "leftmargin",     LT_LEFTMARGIN },
 		{ "margin",         LT_MARGIN },
+		{ "needcprotect",    LT_NEED_CPROTECT },
 		{ "needprotect",    LT_NEED_PROTECT },
 		{ "newline",        LT_NEWLINE },
 		{ "nextnoindent",   LT_NEXTNOINDENT },
@@ -391,6 +394,10 @@ bool Layout::readIgnoreForcelocal(Lexer & lex, TextClass const & tclass)
 
 		case LT_NEED_PROTECT:
 			lex >> needprotect;
+			break;
+
+		case LT_NEED_CPROTECT:
+			lex >> needcprotect;
 			break;
 
 		case LT_KEEPEMPTY:
@@ -1212,6 +1219,7 @@ void Layout::write(ostream & os) const
 	     it != postcommandargs_.end(); ++it)
 		writeArgument(os, it->first, it->second);
 	os << "\tNeedProtect " << needprotect << "\n"
+	      "\tNeedCProtect " << needcprotect << "\n"
 	      "\tKeepEmpty " << keepempty << '\n';
 	if (labelfont == font)
 		lyxWrite(os, font, "Font", 1);
