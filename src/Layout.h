@@ -311,7 +311,7 @@ public:
 	/** true when the fragile commands in the paragraph need to be
 	    \protect'ed. */
 	bool needprotect;
-	/** true when the verbatim stuff of this layout needs to ce
+	/** true when the verbatim stuff of this layout needs to be
 	    \cprotect'ed. */
 	bool needcprotect;
 	/// true when empty paragraphs should be kept.
