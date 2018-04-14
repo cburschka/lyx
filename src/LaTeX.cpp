@@ -1120,8 +1120,8 @@ bool completeFilename(string const & ff, DepTable & head)
 }
 
 
-int iterateLine(string const & token, regex const & reg, string const & closing,
-		int fragment_pos, DepTable & head)
+int iterateLine(string const & token, regex const & reg, string const & opening,
+		string const & closing, int fragment_pos, DepTable & head)
 {
 	smatch what;
 	string::const_iterator first = token.begin();
@@ -1138,6 +1138,15 @@ int iterateLine(string const & token, regex const & reg, string const & closing,
 				// since we had a closing bracket,
 				// do not investigate further
 				fragment = false;
+			} else if (what.str(2) == opening) {
+				// if we have another opening bracket,
+				// we might have a nested file chain
+				// as is (file.ext (subfile.ext))
+				fragment = !handleFoundFile(rtrim(what.str(1)), head);
+				// decrease first position by one in order to
+				// consider the opening delimiter on next iteration
+				if (first > token.begin())
+					--first;
 			} else
 				// if we have no closing bracket,
 				// try to handle as file nevertheless
@@ -1321,7 +1330,7 @@ void LaTeX::deplog(DepTable & head)
 		if (regex_match(token, sub, reg5)) {
 			// search for strings in <...>
 			static regex const reg5_1("<([^>]+)(.)");
-			fragment_pos = iterateLine(token, reg5_1, ">",
+			fragment_pos = iterateLine(token, reg5_1, "<", ">",
 						   fragment_pos, head);
 			fragment = (fragment_pos != -1);
 		}
@@ -1334,7 +1343,7 @@ void LaTeX::deplog(DepTable & head)
 		if (regex_match(token, sub, reg6)) {
 			// search for strings in (...)
 			static regex const reg6_1("\\(([^()]+)(.)");
-			fragment_pos = iterateLine(token, reg6_1, ")",
+			fragment_pos = iterateLine(token, reg6_1, "(", ")",
 						   fragment_pos, head);
 			fragment = (fragment_pos != -1);
 		}
