@@ -225,6 +225,8 @@ public:
 
 	///
 	bool needsCProtection() const;
+	///
+	bool hasCProtectContent() const;
 
 protected:
 	///
@@ -240,8 +242,6 @@ private:
 	/// Close a toc item opened in start and closed in end
 	void closeAddToTocForParagraph(pit_type start, pit_type end,
 	                               TocBackend & backend) const;
-	///
-	bool hasCProtectContent() const;
 	///
 	bool drawFrame_;
 	///

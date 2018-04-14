@@ -336,6 +336,7 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 	string separation_string = params_.separation.asLatexString();
 	string shadowsize_string = params_.shadowsize.asLatexString();
 	bool stdwidth = false;
+	string const cprotect = hasCProtectContent() ? "\\cprotect" : string();
 	// in general the overall width of some decorated boxes is wider thean the inner box
 	// we could therefore calculate the real width for all sizes so that if the user wants
 	// e.g. 0.1\columnwidth or 2cm he gets exactly this size
@@ -406,10 +407,10 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 			os << "{\\fboxsep " << from_ascii(separation_string);
 		if (!params_.inner_box && !width_string.empty()) {
 			if (params_.framecolor != "black" || params_.backgroundcolor != "none") {
-				os << "\\fcolorbox{" << params_.framecolor << "}{" << params_.backgroundcolor << "}{";
+				os << cprotect << "\\fcolorbox{" << params_.framecolor << "}{" << params_.backgroundcolor << "}{";
 				os << "\\makebox";
 			} else
-				os << "\\framebox";
+				os << cprotect << "\\framebox";
 			// Special widths, see usrguide sec. 3.5
 			// FIXME UNICODE
 			if (params_.special != "none") {
@@ -424,21 +425,21 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 				os << "[" << params_.hor_pos << "]";
 		} else {
 			if (params_.framecolor != "black" || params_.backgroundcolor != "none")
-				os << "\\fcolorbox{" << params_.framecolor << "}{" << params_.backgroundcolor << "}";
+				os << cprotect << "\\fcolorbox{" << params_.framecolor << "}{" << params_.backgroundcolor << "}";
 			else
-				os << "\\fbox";
+				os << cprotect << "\\fbox";
 		}
 		os << "{";
 		break;
 	case ovalbox:
 		if (!separation_string.empty() && separation_string != defaultSep)
 			os << "{\\fboxsep " << from_ascii(separation_string);
-		os << "\\ovalbox{";
+		os << cprotect << "\\ovalbox{";
 		break;
 	case Ovalbox:
 		if (!separation_string.empty() && separation_string != defaultSep)
 			os << "{\\fboxsep " << from_ascii(separation_string);
-		os << "\\Ovalbox{";
+		os << cprotect << "\\Ovalbox{";
 		break;
 	case Shadowbox:
 		if (thickness_string != defaultThick) {
@@ -460,7 +461,7 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 				&& separation_string == defaultSep
 				&& thickness_string == defaultThick)
 				os << "{\\shadowsize " << from_ascii(shadowsize_string);
-		os << "\\shadowbox{";
+		os << cprotect << "\\shadowbox{";
 		break;
 	case Shaded:
 		// must be set later because e.g. the width settings only work when
@@ -474,7 +475,7 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 		}
 		if (separation_string != defaultSep && thickness_string == defaultThick)
 			os << "{\\fboxsep " << from_ascii(separation_string);
-		os << "\\doublebox{";
+		os << cprotect << "\\doublebox{";
 		break;
 	}
 
