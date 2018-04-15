@@ -1091,8 +1091,9 @@ bool InsetText::needsCProtection() const
 	if (!getLayout().needsCProtect())
 		return false;
 
-	// Environments need cprotection regardless the content
-	if (getLayout().latextype() == InsetLayout::ENVIRONMENT)
+	// Environments and "no latex" types (e.g., knitr chunks)
+	// need cprotection regardless the content
+	if (getLayout().latextype() != InsetLayout::COMMAND)
 		return true;
 
 	// Commands need cprotection if they contain specific chars
