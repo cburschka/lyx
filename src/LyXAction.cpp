@@ -3777,7 +3777,7 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_TEXTSTYLE_UPDATE
  * \li Action: Apply text style and update the settings to be used by #LFUN_TEXTSTYLE_APPLY.
  * \li Syntax: textstyle-update <FONT_INFO>
- * \li Params: <FONT_INFO>: specifies font atributes, e.g. family, series, shape,
+ * \li Params: <FONT_INFO>: specifies font attributes, e.g. family, series, shape,
                             size, emph, noun, underbar, number, color, language,
                             toggleall.\n
                             Use lyx -dbg action for exact syntax of text-style
