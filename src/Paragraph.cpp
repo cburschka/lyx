@@ -3402,7 +3402,8 @@ bool Paragraph::needsCProtection() const
 	pos_type size = d->text_.size();
 	for (pos_type i = 0; i < size; ++i)
 		if (isInset(i))
-			return getInset(i)->needsCProtection();
+			if (getInset(i)->needsCProtection())
+				return true;
 
 	return false;
 }
