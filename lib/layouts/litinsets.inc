@@ -51,4 +51,5 @@ InsetLayout "Flex:Chunk"
     EndArgument
     ResetsFont            false
     ForceOwnlines         true
+    NeedCProtect          true
 End
