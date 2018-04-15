@@ -393,16 +393,16 @@ RetVal writeExternal(InsetExternalParams const & params,
 	if (!dryrun && !external_in_tmpdir) {
 		if (!isValidLaTeXFileName(absname)) {
 			lyx::frontend::Alert::warning(_("Invalid filename"),
-				         _("The following filename will cause troubles "
-					       "when running the exported file through LaTeX: ") +
-					     from_utf8(absname));
+			         _("The following filename will cause troubles "
+			         "when running the exported file through LaTeX: ") +
+			      from_utf8(absname));
 		}
 		if (!isValidDVIFileName(absname)) {
 			lyx::frontend::Alert::warning(_("Problematic filename for DVI"),
-				         _("The following filename can cause troubles "
-					       "when running the exported file through LaTeX "
-						   "and opening the resulting DVI: ") +
-					     from_utf8(absname), true);
+			         _("The following filename can cause troubles "
+			         "when running the exported file through LaTeX "
+			         "and opening the resulting DVI: ") +
+			       from_utf8(absname), true);
 		}
 	}
 

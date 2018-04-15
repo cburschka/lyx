@@ -806,10 +806,8 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 				ErrorList const & el = tmp->errorList("Export");
 				if (!el.empty())
 					msg = bformat(from_ascii("%1$s\n\n%2$s\n\n%3$s"),
-						msg, el.begin()->error,
-						el.begin()->description);
-				throw ExceptionMessage(ErrorException, _("Error: "),
-						       msg);
+					        msg, el.begin()->error, el.begin()->description);
+				throw ExceptionMessage(ErrorException, _("Error: "), msg);
 			}
 		}
 		runparams.encoding = oldEnc;
@@ -834,10 +832,8 @@ void InsetInclude::latex(otexstream & os, OutputParams const & runparams) const
 						included_file.displayName());
 				if (!el.empty())
 					msg = bformat(from_ascii("%1$s\n\n%2$s\n\n%3$s"),
-							msg, el.begin()->error,
-							el.begin()->description);
-				throw ExceptionMessage(ErrorException, _("Error: "),
-						       msg);
+					        msg, el.begin()->error, el.begin()->description);
+				throw ExceptionMessage(ErrorException, _("Error: "), msg);
 			}
 		}
 	} else {
