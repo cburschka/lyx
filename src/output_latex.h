@@ -91,7 +91,8 @@ void TeXOnePar(Buffer const & buf,
 	           otexstream & os,
 	           OutputParams const & runparams,
 	           std::string const & everypar = std::string(),
-	           int start_pos = -1, int end_pos = -1);
+	           int start_pos = -1, int end_pos = -1,
+	           bool const force = false);
 
 } // namespace lyx
 

@@ -37,6 +37,9 @@ public:
 	GuiPainter(QPaintDevice *, double pixel_ratio);
 	virtual ~GuiPainter();
 
+	/// This painter paints
+	virtual bool isNull() const { return false; }
+
 	/// draw a line from point to point
 	virtual void line(
 		int x1, int y1,

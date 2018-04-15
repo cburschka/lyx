@@ -24,7 +24,6 @@ Format LaTeX feature                        LyX feature
        is just a string or if the file should be included and as what type)
 254    esint.sty                            \use_esint
 267    XeTeX                                utf8 encoding
-270    \alert, \structure (beamer)          layout
 281    ?                                    modules
 293    ?                                    InsetInfo
 322    ?                                    local layout
@@ -33,124 +32,32 @@ Format LaTeX feature                        LyX feature
 332    ?                                    InsetGraphics groupId
 343    ?                                    \use_default_options
 358    custom bibtex command                \bibtex_command
+       Maybe via the
+       % !BIB program = 
+       comment understood by some TeX editors
 358    custom makeindex command             \index_command
 363    horizontal longtable alignment       InsetTabular
 364    branch file name suffix              \filename_suffix
 371    automatic mhchem loading             \use_mhchem
-375    \includeonly                         \{begin,end}_includeonly
-376    update .aux of unincluded children   \maintain_unincluded_children
 377    multirow.sty                         InsetTabular
 378    revision info                        InsetInfo
 380    ?                                    InsetPreview
 386    LyX version                          InsetInfo
 390    forward/reverse search               \forward_search, \forward_macro
 391    decimal alignment in tables          InsetTabular
-392    new beamer format                    InsetLayout
 399    automatic mathdots loading           \use_mathdots
 407    vertical offset for multirows        InsetTabular
 411    support for polyglossia              \language_package	(the cases of no package, of babel and of custom package is supported)
 415    automatic undertilde loading         \use_package undertilde
-438    \t*{ }                               InsetTIPA
-439    MinionPro.sty                        \font_roman, \font_osf
-440    MinionPro.sty,                       \font_math
 443    unicode-math.sty                     InsetMath*
-445    URW Classico LaTeX font              \font_sans uop
-       \renewcommand{\sffamily}{uop}
-446    Optional and required arguments      InsetArgument
-       now numbered by order
 448
-451    beamer overlay arguments             InsetArgument
-       \command<arg>, \begin{env}<arg>
-452    beamer block arguments               InsetArgument
-       \begin{block}<overlay>{title}
 453    automatic stmaryrd loading           \use_package stmaryrd
-454    beamer overprint environment         InsetArgument, layout Overprint
-       \begin{overprint}[maxlength]
-       \onslide<slide> text ...
-       \end{overprint}
-455    beamer frametitle command            \begin_layout FrameTitle
-       \frametitle<overlay>[short}{long}
-456    memoir: \epigraph{text}{source}      layout Epigraph, InsetArgument
 457    automatic stackrel loading           \use_package stackrel
-459    beamer: \begin{frame},               \begin_layout Frame
-       \begin{frame}[plain],                \begin_layout PlainFrame
-       \begin{frame}[fragile]               \begin_layout FragileFrame
-466    Powerdot updates:
-       \pause[]                              layout Pause
-       \onslide{}{}                          InsetFlex, InsetArgument
-       \onslide*{}{}                         InsetFlex, InsetArgument
-       \onslide+{}{}                         InsetFlex, InsetArgument
-       \twocolumn[]{}{}                      Layout Twocolumn, InsetArgument
-       \item[]<>                             InsetArgument
-       \begin{enumerate|itemize|...}[]       InsetArgument
-520    Plain InsetQuote Style:
-       \textquotesingle                      \begin_inset Quotes qls, \begin_inset Quotes qrs
-       \textquotedbl                         \begin_inset Quotes qld, \begin_inset Quotes qrd
-521    New Quote Styles                      InsetQuote
-       - british                             \begin_inset Quotes b..
-       - swiss                               \begin_inset Quotes c..
-       - swedishg                            \begin_inset Quotes w..
-       - frenchin                            \begin_inset Quotes i..
-       - russian                             \begin_inset Quotes r..
-       Change default behavior               \begin_inset Quotes f..
-       of French quote style:
-       - Inner quotes are now ``...''.
-       - Former french style is now
-         called "swiss"
-523    CJK Quote Styles                      InsetQuote
-       - cjk (corner brackets)               \begin_inset Quotes j..
-       - cjkangle (angle brackets)           \begin_inset Quotes k..
-526
-       Plural and capitalized refstyles      InsetRef
-528    Biblatex
-       \usepackage{biblatex}                 \cite_engine biblatex
-       ...[...natbib=true...]...             \cite_engine biblatex-natbib
-       ...[...style=<val>...]...             \biblatex_bibstyle <val>
-                                             \biblatex_citestyle <val>
-       ...[...bibstyle=<val>...]...          \biblatex_bibstyle <val>
-       ...[...citestyle=<val>...]...         \biblatex_citestyle <val>
-       ...[...<any other opt>...]...         \biblio_options <any other opt>
-       \printbibliography[<opts>]            \begin_inset CommandInset bibtex
-                                              biblatexopts "<opts>"
-       \addbibresource{file.bib}            \begin_inset CommandInset bibtex
-         [multiple possible!]                 bibfiles "...,file,..."         [NB: strip ext!]
-       \bibliography{file1,file2,...}      \begin_inset CommandInset bibtex
-                                              bibfiles "...,file1,file2,..."
-                                           \begin_inset CommandInset citation
-       \Cite                                LatexCmd Cite
-       \cite*                               LatexCmd citeyear
-       \citeyear                            LatexCmd citebyear
-       \{T,t}extcite                        LatexCmd {C,c}itet
-       \{P,p}arencite                       LatexCmd {C,c}itep
-       \parencite*                          LatexCmd citeyearpar
-       \{S,s}martcite                       LatexCmd {F,f}ootcite
-       \{F,f}ootcite                        LatexCmd {F,f}ootcite
-       \{A,a}utocite                        LatexCmd {A,a}utocite
-       \citecite[*]                         LatexCmd citecite[*]
-       \fullcite                            LatexCmd fullcite
-       \footfullcite                        LatexCmd footfullcite
-       \supercite                           LatexCmd supercite
-531    Biblatex "qualified citation lists"
-       \cites(pre)(post)[pre1][post1]{key1}[pre2][post2]{key2}...
-                                           \begin_inset CommandInset citation
-                                           LatexCmd cite
-                                           after "post"
-                                           before "pre"
-                                           key "key1,key2..."
-                                           pretextlist "key1 pre1\tab key2 pre2..."
-                                           posttextlist "key1 post1\tab key2 post2..."
-      Same for:
-      \Cites, \textcites, \Textcites, \parencites, \Parencites, \smartcites, \Smartcites, \autocites, Autocites
+526   Plural and capitalized refstyles      InsetRef
 533   Multibib support
-      \begin{btUnit}...\end{btUnit}        \multibib {none|part|chapter|section|subsetion}
+      \begin{btUnit}...\end{btUnit}        \multibib {none|part|chapter|section|subsection}
         (if a part, chapter, section etc.
          follows the \begin...)
-      \usepackage[refsection=<val>         \multibib <val>
-      \bibbysection[<opts>]                \begin_inset CommandInset bibtex
-                                             biblatexopts "<opts>"
-                                             btprint "bibbysection"
-534   Chapterbib support
-      \usepackage{chapterbib}              \multibib child
 
 
 

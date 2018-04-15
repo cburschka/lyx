@@ -124,11 +124,12 @@ logicalmkup
 \papercolumns 1
 \papersides 2
 \paperpagestyle headings
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -2517,6 +2518,35 @@ value
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
+
+\change_inserted -712698321 1523206314
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1523206193
+hyperref-driver
+\end_layout
+
+\end_inset
+
+ The name of the driver that needs to be loaded with the 
+\family sans
+hyperref
+\family default
+ package for this converter.
+ The loading of the correct driver is necessary to get some PDF-specific
+ features.
+ See the 
+\family sans
+hyperref
+\family default
+ manual for details.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
 \begin_inset Flex Code
 status collapsed
 
@@ -2622,8 +2652,34 @@ $$b
 \end_layout
 
 \begin_layout Standard
-None of these last three are presently used in any of the converters that
- are installed with \SpecialChar LyX
+
+\change_inserted -712698321 1523206384
+A suitable hyperref-driver is set for some converters that are installed
+ with \SpecialChar LyX
+.
+ 
+\change_deleted -712698321 1523206388
+None of these
+\change_inserted -712698321 1523206389
+The
+\change_unchanged
+ last three
+\change_inserted -712698321 1523206400
+ flags, however,
+\change_unchanged
+ are presently 
+\change_inserted -712698321 1523206407
+not 
+\change_unchanged
+used in any of the 
+\change_inserted -712698321 1523206437
+pre-installed 
+\change_unchanged
+converters
+\change_deleted -712698321 1523206442
+ that are installed with \SpecialChar LyX
+
+\change_unchanged
 .
  
 \end_layout

@@ -12,6 +12,7 @@
 
 #include "InsetMathSqrt.h"
 
+#include "InsetMathRoot.h"
 #include "MathData.h"
 #include "MathStream.h"
 #include "MathSupport.h"
@@ -38,33 +39,13 @@ Inset * InsetMathSqrt::clone() const
 
 void InsetMathSqrt::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	Changer dummy = mi.base.changeEnsureMath();
-	cell(0).metrics(mi, dim);
-	// make sure that the dim is high enough for any character
-	Dimension fontDim;
-	math_font_max_dim(mi.base.font, fontDim.asc, fontDim.des);
-	dim += fontDim;
-	// Some room for the decoration
-	dim.asc += 1;
-	dim.wid += 7;
+	mathed_root_metrics(mi, cell(0), nullptr, dim);
 }
 
 
 void InsetMathSqrt::draw(PainterInfo & pi, int x, int y) const
 {
-	Changer dummy = pi.base.changeEnsureMath();
-	cell(0).draw(pi, x + 9, y);
-	Dimension const dim = dimension(*pi.base.bv);
-	int const a = dim.ascent();
-	int const d = dim.descent();
-	int xp[3];
-	int yp[3];
-	pi.pain.line(x + dim.width(), y - a + 1,
-		x + 7, y - a + 1, pi.base.font.color());
-	xp[0] = x + 7;            yp[0] = y - a + 1;
-	xp[1] = x + 4;            yp[1] = y + d - 1;
-	xp[2] = x;                yp[2] = y + (d - a)/2;
-	pi.pain.lines(xp, yp, 3, pi.base.font.color());
+	mathed_draw_root(pi, x, y, cell(0), nullptr, dimension(*pi.base.bv));
 }
 
 

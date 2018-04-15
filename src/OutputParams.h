@@ -172,6 +172,10 @@ public:
 	*/
 	std::string index_command;
 
+	/** Hyperref driver
+	*/
+	std::string hyperref_driver;
+
 	/** Line length to use with plaintext or LaTeX export.
 	*/
 	size_type linelen;

@@ -35,7 +35,7 @@ void WorkAreaManager::remove(WorkArea * wa)
 void WorkAreaManager::redrawAll(bool update_metrics)
 {
 	for (WorkArea * wa : work_areas_)
-		wa->redraw(update_metrics);
+		wa->scheduleRedraw(update_metrics);
 }
 
 

@@ -183,9 +183,6 @@ private:
 
 	/// last used citation style
 	QString style_;
-	/// last set value for literal
-	/// this is used only for new citations
-	bool literal_;
 	///
 	GuiSelectionManager * selectionManager;
 	/// available keys.

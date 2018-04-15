@@ -62,6 +62,11 @@ public:
 	///
 	void newParMetricsUp();
 
+	/// The "nodraw" drawing stage for one single paragraph: set the
+	/// positions of the insets contained this paragraph in metrics
+	/// cache. Related to BufferView::updatePosCache.
+	void updatePosCache(pit_type pit) const;
+
 	/// Gets the fully instantiated font at a given position in a paragraph
 	/// Basically the same routine as Paragraph::getFont() in Paragraph.cpp.
 	/// The difference is that this one is used for displaying, and thus we

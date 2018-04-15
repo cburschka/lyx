@@ -74,7 +74,7 @@
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style english
+\quotes_style cjk
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -143,7 +143,27 @@ status collapsed
 
 \end_inset
 
-texttt{hei} mapping,
+texttt
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+{
+\end_layout
+
+\end_inset
+
+hei
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+}
+\end_layout
+
+\end_inset
+
+ mapping,
  and the first mapping is empty.
 \begin_inset ERT
 status collapsed

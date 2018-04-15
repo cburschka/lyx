@@ -470,6 +470,33 @@ PreambleModule::PreambleModule(QWidget * parent)
 	preambleTE->setWordWrapMode(QTextOption::NoWrap);
 	setFocusProxy(preambleTE);
 	connect(preambleTE, SIGNAL(textChanged()), this, SIGNAL(changed()));
+	connect(findLE, SIGNAL(textEdited(const QString &)), this, SLOT(checkFindButton()));
+	connect(findButtonPB, SIGNAL(clicked()), this, SLOT(findText()));
+	connect(findLE, SIGNAL(returnPressed()), this, SLOT(findText()));
+	checkFindButton();
+	// https://stackoverflow.com/questions/13027091/how-to-override-tab-width-in-qt
+	const int tabStop = 4;
+	QFontMetrics metrics(preambleTE->currentFont());
+	preambleTE->setTabStopWidth(tabStop * metrics.width(' '));
+}
+
+
+void PreambleModule::checkFindButton()
+{
+	findButtonPB->setEnabled(!findLE->text().isEmpty());
+}
+
+
+void PreambleModule::findText()
+{
+	bool const found = preambleTE->find(findLE->text());
+	if (!found) {
+		// wrap
+		QTextCursor qtcur = preambleTE->textCursor();
+		qtcur.movePosition(QTextCursor::Start);
+		preambleTE->setTextCursor(qtcur);
+		preambleTE->find(findLE->text());
+	}
 }
 
 
@@ -529,6 +556,8 @@ void PreambleModule::closeEvent(QCloseEvent * e)
 LocalLayout::LocalLayout(QWidget * parent)
 	: UiWidget<Ui::LocalLayoutUi>(parent), current_id_(0), validated_(false)
 {
+	locallayoutTE->setFont(guiApp->typewriterSystemFont());
+	locallayoutTE->setWordWrapMode(QTextOption::NoWrap);
 	connect(locallayoutTE, SIGNAL(textChanged()), this, SLOT(textChanged()));
 	connect(validatePB, SIGNAL(clicked()), this, SLOT(validatePressed()));
 	connect(convertPB, SIGNAL(clicked()), this, SLOT(convertPressed()));
@@ -1217,7 +1246,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	setSectionResizeMode(mathsModule->packagesTW->horizontalHeader(), QHeaderView::Stretch);
 	map<string, string> const & packages = BufferParams::auto_packages();
 	mathsModule->packagesTW->setRowCount(packages.size());
-	int i = 0;
+	int packnum = 0;
 	for (map<string, string>::const_iterator it = packages.begin();
 	     it != packages.end(); ++it) {
 		docstring const package = from_ascii(it->first);
@@ -1248,11 +1277,35 @@ GuiDocument::GuiDocument(GuiView & lv)
 		autoRB->setToolTip(autoTooltip);
 		alwaysRB->setToolTip(alwaysTooltip);
 		neverRB->setToolTip(neverTooltip);
+
+		// Pack the buttons in a layout in order to get proper alignment
+		QWidget * autoRBWidget = new QWidget();
+		QHBoxLayout * autoRBLayout = new QHBoxLayout(autoRBWidget);
+		autoRBLayout->addWidget(autoRB);
+		autoRBLayout->setAlignment(Qt::AlignCenter);
+		autoRBLayout->setContentsMargins(0, 0, 0, 0);
+		autoRBWidget->setLayout(autoRBLayout);
+
+		QWidget * alwaysRBWidget = new QWidget();
+		QHBoxLayout * alwaysRBLayout = new QHBoxLayout(alwaysRBWidget);
+		alwaysRBLayout->addWidget(alwaysRB);
+		alwaysRBLayout->setAlignment(Qt::AlignCenter);
+		alwaysRBLayout->setContentsMargins(0, 0, 0, 0);
+		alwaysRBWidget->setLayout(alwaysRBLayout);
+
+		QWidget * neverRBWidget = new QWidget();
+		QHBoxLayout * neverRBLayout = new QHBoxLayout(neverRBWidget);
+		neverRBLayout->addWidget(neverRB);
+		neverRBLayout->setAlignment(Qt::AlignCenter);
+		neverRBLayout->setContentsMargins(0, 0, 0, 0);
+		neverRBWidget->setLayout(neverRBLayout);
+
 		QTableWidgetItem * pack = new QTableWidgetItem(toqstr(package));
-		mathsModule->packagesTW->setItem(i, 0, pack);
-		mathsModule->packagesTW->setCellWidget(i, 1, autoRB);
-		mathsModule->packagesTW->setCellWidget(i, 2, alwaysRB);
-		mathsModule->packagesTW->setCellWidget(i, 3, neverRB);
+
+		mathsModule->packagesTW->setItem(packnum, 0, pack);
+		mathsModule->packagesTW->setCellWidget(packnum, 1, autoRBWidget);
+		mathsModule->packagesTW->setCellWidget(packnum, 2, alwaysRBWidget);
+		mathsModule->packagesTW->setCellWidget(packnum, 3, neverRBWidget);
 
 		connect(autoRB, SIGNAL(clicked()),
 		        this, SLOT(change_adaptor()));
@@ -1260,7 +1313,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 		        this, SLOT(change_adaptor()));
 		connect(neverRB, SIGNAL(clicked()),
 		        this, SLOT(change_adaptor()));
-		++i;
+		++packnum;
 	}
 	connect(mathsModule->allPackagesAutoPB, SIGNAL(clicked()),
 		this, SLOT(allPackagesAuto()));
@@ -3001,17 +3054,19 @@ void GuiDocument::applyView()
 		if (!item)
 			continue;
 		int row = mathsModule->packagesTW->row(item);
-		QRadioButton * rb = (QRadioButton*)mathsModule->packagesTW->cellWidget(row, 1);
+
+		QRadioButton * rb =
+			(QRadioButton*)mathsModule->packagesTW->cellWidget(row, 1)->layout()->itemAt(0)->widget();
 		if (rb->isChecked()) {
 			bp_.use_package(it->first, BufferParams::package_auto);
 			continue;
 		}
-		rb = (QRadioButton*)mathsModule->packagesTW->cellWidget(row, 2);
+		rb = (QRadioButton*)mathsModule->packagesTW->cellWidget(row, 2)->layout()->itemAt(0)->widget();
 		if (rb->isChecked()) {
 			bp_.use_package(it->first, BufferParams::package_on);
 			continue;
 		}
-		rb = (QRadioButton*)mathsModule->packagesTW->cellWidget(row, 3);
+		rb = (QRadioButton*)mathsModule->packagesTW->cellWidget(row, 3)->layout()->itemAt(0)->widget();
 		if (rb->isChecked())
 			bp_.use_package(it->first, BufferParams::package_off);
 	}
@@ -3546,17 +3601,20 @@ void GuiDocument::paramsToDialog()
 		int row = mathsModule->packagesTW->row(item);
 		switch (bp_.use_package(it->first)) {
 			case BufferParams::package_off: {
-				QRadioButton * rb = (QRadioButton*)mathsModule->packagesTW->cellWidget(row, 3);
+				QRadioButton * rb =
+					(QRadioButton*)mathsModule->packagesTW->cellWidget(row, 3)->layout()->itemAt(0)->widget();
 				rb->setChecked(true);
 				break;
 			}
 			case BufferParams::package_on: {
-				QRadioButton * rb = (QRadioButton*)mathsModule->packagesTW->cellWidget(row, 2);
+				QRadioButton * rb =
+					(QRadioButton*)mathsModule->packagesTW->cellWidget(row, 2)->layout()->itemAt(0)->widget();
 				rb->setChecked(true);
 				break;
 			}
 			case BufferParams::package_auto: {
-				QRadioButton * rb = (QRadioButton*)mathsModule->packagesTW->cellWidget(row, 1);
+				QRadioButton * rb =
+					(QRadioButton*)mathsModule->packagesTW->cellWidget(row, 1)->layout()->itemAt(0)->widget();
 				rb->setChecked(true);
 				break;
 			}
@@ -4328,7 +4386,8 @@ void GuiDocument::dispatchParams()
 	// We need a non-const buffer object.
 	Buffer & buf = const_cast<BufferView *>(bufferview())->buffer();
 	// There may be several undo records; group them (bug #8998)
-	buf.undo().beginUndoGroup();
+	// This handles undo groups automagically
+	UndoGroupHelper ugh(&buf);
 
 	// This must come first so that a language change is correctly noticed
 	setLanguage();
@@ -4395,10 +4454,6 @@ void GuiDocument::dispatchParams()
 	// If we used an LFUN, we would not need these two lines:
 	BufferView * bv = const_cast<BufferView *>(bufferview());
 	bv->processUpdateFlags(Update::Force | Update::FitCursor);
-
-	// Don't forget to close the group. Note that it is important
-	// to check that there is no early return in the method.
-	buf.undo().endUndoGroup();
 }
 
 
@@ -4569,7 +4624,8 @@ void GuiDocument::allPackagesNot()
 void GuiDocument::allPackages(int col)
 {
 	for (int row = 0; row < mathsModule->packagesTW->rowCount(); ++row) {
-		QRadioButton * rb = (QRadioButton*)mathsModule->packagesTW->cellWidget(row, col);
+		QRadioButton * rb =
+			(QRadioButton*)mathsModule->packagesTW->cellWidget(row, col)->layout()->itemAt(0)->widget();
 		rb->setChecked(true);
 	}
 }

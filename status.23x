@@ -17,11 +17,69 @@ What's new
 
 - Updated Arabic, Russian and Slovakian user interface localization.
 
+- It possible to anonymize document's content for bug submissions
+  via buffer-anonymize lfun (bug 7259).
+
 
 * TEX2LYX IMPROVEMENTS
 
 
 * USER INTERFACE
+
+- Add support for beamer overlay arguments (bug 11068).
+
+- Update tex2lyx quotation marks detection:
+  * Consider new quote styles of LyX 2.3.
+  * Consider changed quote styles in LYX 2.3.
+  * Try to be a bit smarter with ambiguous quotation marks,
+    depending on the main quote style and the local context.
+
+- Consider options passed via \PassOptionsToPackage.
+
+- Add support for URW Classico, MinionPro and the new Libertine fonts.
+
+- Add support for \lstinputlisting and \inputminted.
+
+- Add support for the \t*{} (bottomtiebar) macro of TIPA.
+
+- Implement better parsing of some command options (via "literate"
+  function of some insets) (bug 9563).
+
+- Add support for alignment pseudo-environments as used inside floats
+  (bug 7857).
+
+
+* USER INTERFACE
+
+- Overhaul the document painting mechanism. Now the screen is updated
+  asyncronously (as all normal applications do), which makes LyX
+  snappier, especially on repeated events. As an added bonus, subpixel
+  aliasing is honored in the work area.
+
+- Use native file dialogs on all platforms by default. It is now
+  possible to switch to LyX custom dialogs (which have extra shortcuts
+  to relevant directories) by setting the preference
+  \use_native_filedialog true
+
+- Handle properly top/bottom of inset with mac-like cursor movement
+  (bug 10701).
+
+- Respect the last setting of the 'literal' checkbox when adding citations
+  via the LyX server (e.g., from JabRef).
+
+- Allow unification of graphic groups inside marked block via context
+  menu.
+
+- Cosmetic polishment of the "Math Options" pane of Document Settings
+  (bug 10777).
+
+- UI improvements in the graphics dialog (bug 10771).
+
+- Set tab stop in preamble editor to four characters.
+
+- Provide simple search functionality in preamble (bug 11099).
+
+- Change Settings -> Local Layout to Fixed-width Font and Nowrap (bug 10992).
 
 
 * DOCUMENTATION AND LOCALIZATION
@@ -30,6 +88,9 @@ What's new
 * BUILD/INSTALLATION
 
 - Add support for v.2 of the enchant spell checker (bug 10986).
+
+- Support new hunspell C++ ABI if LyX is built against hunspell >= 1.5
+  (bug 10547).
 
 
 
@@ -51,6 +112,21 @@ What's new
 
 - Fix detection of Open Document files.
 
+- Fix language settings and line spacing in InPreamble-titles
+  (bug 9332, 1049).
+
+- Respect 'literal' setting when calculating longest bibitem (bug 10817).
+
+- Do not embrace numbers in \beginL ... \endL with polyglossia in Right-
+  to-Left languages, since bidi handles the numbers automatically.
+
+- Fix polyglossia language switches for Arabic (bug 11057).
+
+- Set correct path to (biblatex) bibliography databases that are entered
+  relative to child documents (bug 11105).
+
+- Load hyperref with a suitable driver (bug 6418).
+
 
 * LYX2LYX
 
@@ -59,7 +135,8 @@ What's new
 
 - Fix "Paste from LaTeX" on Windows (bug 9139).
 
-- Disable BUFFER_EXPORT and BUFFER_EXPORT_AS while buffer is processed (bug 8338).
+- Disable BUFFER_EXPORT and BUFFER_EXPORT_AS while buffer is processed
+  (bug 8338).
 
 - Disable CheckTeX while buffer is processed (bug 7434).
 
@@ -84,10 +161,36 @@ What's new
 
 - Do not show errors from master when compiling child (bug 11106).
 
+- Fix crash with server-get-xy and tall inset (bug 8120).
+
+- Improve Undo for operations that act on several buffers (bug 10823).
+
+- Improve rendering of square roots in math editor (bug 10814).
+
+- Fix display of citation labels when pasting from a document
+  with other citation type (bug 10829).
+
+- Save the list of recent files when a file is open/saved so that it
+  is up to date after a crash (bug 10712).
+
+- Only show header for bibliography in outliner (bug 11045).
+
+- Take actual font height into account when drawing placeholder box
+  for graphics (bug 11048).
+
+- Correctly set default bibliography style in the Document Settings
+  dialog (bug 11088).
+
+- Assure that the External Inset dialog is opened at first tab for
+  new insets (bug 11081).
+
+- Ignore deleted material when generating a proposed label (bug 11102).
+
 
 * INTERNALS
 
-- Fix bug that TeX files were not detected when reconfiguring LyX (bug 11053).
+- Fix bug that TeX files were not detected when reconfiguring LyX 
+  (bug 11053).
 
 
 * DOCUMENTATION AND LOCALIZATION
@@ -106,6 +209,20 @@ What's new
 - Handle whitespace in table column declaration (bug 10804).
 
 - Fix import of flalign* environment (bug 10501).
+
+- Fix import of subfloats without caption (bug 10385).
+
+- Import straight quotations marks (e.g. babel shorthands) as ERT (bug 75).
+
+- Do not add duplicate \makebeamertitle.
+
+- Keep empty paragraph it keepempty is true (bug 11078).
+
+- Fix parsing issue in nested CJK (bug 9562).
+
+- Fix import of package options with comments (bug 5737).
+
+- Fix import of xymatrix (bug 10638).
 
 
 * ADVANCED FIND AND REPLACE

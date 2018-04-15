@@ -332,10 +332,14 @@ private:
 	void closeEvent(QCloseEvent *);
 	void on_preambleTE_textChanged() { changed(); }
 
-private:
 	typedef std::map<BufferId, std::pair<int,int> > Coords;
 	Coords preamble_coords_;
 	BufferId current_id_;
+
+private Q_SLOTS:
+	///
+	void checkFindButton();
+	void findText();
 };
 
 

@@ -157,6 +157,7 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.des = 0;
 
 	int font_width = 0;
+	int font_height = 0;
 
 	FontInfo msgFont(mi.base.font);
 	msgFont.setFamily(SANS_FAMILY);
@@ -166,6 +167,7 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 	if (!justname.empty()) {
 		msgFont.setSize(FONT_SIZE_FOOTNOTE);
 		font_width = theFontMetrics(msgFont).width(justname);
+		font_height = theFontMetrics(msgFont).maxHeight();
 	}
 
 	docstring const msg = statusMessage(params_, loader_.status());
@@ -173,9 +175,12 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 		msgFont.setSize(FONT_SIZE_TINY);
 		font_width = max(font_width,
 			theFontMetrics(msgFont).width(msg));
+		font_height += theFontMetrics(msgFont).maxAscent();
+		dim.des = theFontMetrics(msgFont).maxDescent();
 	}
 
 	dim.wid = max(50, font_width + 15);
+	dim.asc = max(50, font_height + 15);
 
 	dim_ = dim;
 }

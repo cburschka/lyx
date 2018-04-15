@@ -135,15 +135,9 @@ private:
  */
 class UndoGroupHelper {
 public:
-	UndoGroupHelper(Buffer * buf = 0) : buffer_(0)
-	{
-		resetBuffer(buf);
-	}
+	UndoGroupHelper(Buffer * buf = 0);
 
-	~UndoGroupHelper()
-	{
-		resetBuffer(0);
-	}
+	~UndoGroupHelper();
 
 	/** Close the current undo group if necessary and create a new one
 	 * for buffer \c buf.
@@ -151,7 +145,8 @@ public:
 	void resetBuffer(Buffer * buf);
 
 private:
-	Buffer * buffer_;
+	class Impl;
+	Impl * const d;
 };
 
 

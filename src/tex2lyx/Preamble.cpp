@@ -88,35 +88,51 @@ const char * const known_coded_languages[] = {"french", "afrikaans", "albanian",
 "vietnamese", "welsh",
 0};
 
+/// languages with british quotes (.lyx names)
+const char * const known_british_quotes_languages[] = {"british", "welsh", 0};
+
+/// languages with cjk quotes (.lyx names)
+const char * const known_cjk_quotes_languages[] = {"chinese-traditional",
+"japanese", "japanese-cjk", 0};
+
+/// languages with cjk-angle quotes (.lyx names)
+const char * const known_cjkangle_quotes_languages[] = {"korean", 0};
+
 /// languages with danish quotes (.lyx names)
 const char * const known_danish_quotes_languages[] = {"danish", 0};
 
 /// languages with english quotes (.lyx names)
 const char * const known_english_quotes_languages[] = {"american", "australian",
 "bahasa", "bahasam", "brazilian", "canadian", "chinese-simplified", "english",
-"esperanto", "hebrew", "irish", "korean", "newzealand", "portuguese", "scottish",
-"thai", 0};
+"esperanto", "farsi", "interlingua", "irish", "newzealand", "scottish",
+"thai", "turkish", "vietnamese", 0};
 
 /// languages with french quotes (.lyx names)
-const char * const known_french_quotes_languages[] = {"albanian",
-"arabic_arabi", "arabic_arabtex", "asturian", "basque", "canadien", "catalan",
-"french", "friulan", "galician", "greek", "italian", "norsk", "nynorsk",
-"piedmontese", "polutonikogreek", "russian", "spanish", "spanish-mexico",
-"turkish", "turkmen", "ukrainian", "vietnamese", 0};
+const char * const known_french_quotes_languages[] = {"ancientgreek",
+"arabic_arabi", "arabic_arabtex", "asturian", "belarusian", "breton",
+"canadien", "catalan", "french", "friulan", "galician", "italian", "occitan",
+"piedmontese", "portuguese", "spanish", "spanish-mexico", 0};
 
 /// languages with german quotes (.lyx names)
 const char * const known_german_quotes_languages[] = {"austrian", "bulgarian",
-"czech", "german", "georgian", "icelandic", "lithuanian", "lowersorbian", "macedonian",
-"naustrian", "ngerman", "romansh", "serbian", "serbian-latin", "slovak", "slovene",
+"czech", "estonian", "georgian", "german", "icelandic", "latvian", "lithuanian",
+"lowersorbian", "macedonian", "naustrian", "ngerman", "romansh", "slovak", "slovene",
 "uppersorbian", 0};
 
 /// languages with polish quotes (.lyx names)
 const char * const known_polish_quotes_languages[] = {"afrikaans", "bosnian", "croatian",
-"dutch", "estonian", "magyar", "polish", "romanian", 0};
+"dutch", "magyar", "polish", "romanian", "serbian", "serbian-latin", 0};
+
+/// languages with russian quotes (.lyx names)
+const char * const known_russian_quotes_languages[] = {"russian", "ukrainian", 0};
 
 /// languages with swedish quotes (.lyx names)
-const char * const known_swedish_quotes_languages[] = {"finnish",
-"swedish", 0};
+const char * const known_swedish_quotes_languages[] = {"finnish", "swedish", 0};
+
+/// languages with swiss quotes (.lyx names)
+const char * const known_swiss_quotes_languages[] = {"albanian",
+"armenian", "basque", "german-ch", "german-ch-old",
+"norsk", "nynorsk", "turkmen", "ukrainian", "vietnamese", 0};
 
 /// known language packages from the times before babel
 const char * const known_old_language_packages[] = {"french", "frenchle",
@@ -126,17 +142,18 @@ char const * const known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 
 const char * const known_roman_fonts[] = { "ae", "beraserif", "bookman",
 "ccfonts", "chancery", "charter", "cmr", "cochineal", "crimson", "fourier",
-"garamondx", "libertine", "libertine-type1", "lmodern", "mathdesign", "mathpazo",
-"mathptmx", "newcent", "NotoSerif-TLF", "tgbonum", "tgchorus", "tgpagella", "tgschola",
-"tgtermes", "utopia", 0};
+"garamondx", "libertine", "libertineRoman", "libertine-type1", "lmodern", "mathdesign",
+"mathpazo", "mathptmx", "MinionPro", "newcent", "NotoSerif-TLF", "tgbonum", "tgchorus",
+"tgpagella", "tgschola", "tgtermes", "utopia", 0 };
 
-const char * const known_sans_fonts[] = { "avant", "berasans", "biolinum-type1",
-"cmbr", "cmss", "helvet", "iwona", "iwonac", "iwonal", "iwonalc", "kurier",
-"kurierc", "kurierl", "kurierlc", "lmss", "NotoSans-TLF", "tgadventor", "tgheros", 0};
+const char * const known_sans_fonts[] = { "avant", "berasans", "biolinum",
+"biolinum-type1", "cmbr", "cmss", "helvet", "iwona", "iwonac", "iwonal", "iwonalc",
+"kurier", "kurierc", "kurierl", "kurierlc", "lmss", "NotoSans-TLF",
+"tgadventor", "tgheros", "uop", 0 };
 
 const char * const known_typewriter_fonts[] = { "beramono", "cmtl", "cmtt",
-"courier", "lmtt", "luximono", "fourier", "libertineMono-type1", "lmodern",
-"mathpazo", "mathptmx", "newcent", "NotoMono-TLF", "tgcursor", "txtt", 0};
+"courier", "lmtt", "luximono", "fourier", "libertineMono", "libertineMono-type1", "lmodern",
+"mathpazo", "mathptmx", "newcent", "NotoMono-TLF", "tgcursor", "txtt", 0 };
 
 const char * const known_math_fonts[] = { "eulervm", "newtxmath", 0};
 
@@ -172,6 +189,11 @@ const char * const known_basic_color_codes[] = {"#000000", "#0000ff", "#964B00",
 /// conditional commands with three arguments like \@ifundefined{}{}{}
 const char * const known_if_3arg_commands[] = {"@ifundefined", "IfFileExists",
 0};
+
+/*!
+ * Known file extensions for TeX files as used by \\includeonly
+ */
+char const * const known_tex_extensions[] = {"tex", 0};
 
 /// packages that work only in xetex
 /// polyglossia is handled separately
@@ -259,7 +281,7 @@ vector<string> split_options(string const & input)
 			p.skip_spaces(true);
 			if (p.next_token().asInput() == "{")
 				option += '{' + p.getArg('{', '}') + '}';
-		} else if (t.cat() != catSpace)
+		} else if (t.cat() != catSpace && t.cat() != catComment)
 			option += t.asInput();
 	}
 
@@ -418,6 +440,15 @@ void Preamble::add_package(string const & name, vector<string> & options)
 	if (used_packages.find(name) == used_packages.end())
 		used_packages[name] = split_options(h_options);
 
+	// Insert options passed via PassOptionsToPackage
+	for (auto const & p : extra_package_options_) {
+		if (p.first == name) {
+			vector<string> eo = getVectorFromString(p.second);
+			for (auto const & eoi : eo)
+				options.push_back(eoi);
+		}
+
+	}
 	vector<string> & v = used_packages[name];
 	v.insert(v.end(), options.begin(), options.end());
 	if (name == "jurabib") {
@@ -553,7 +584,7 @@ Preamble::Preamble() : one_language(true), explicit_babel(false),
 	h_use_geometry            = "false";
 	h_use_default_options     = "false";
 	h_use_hyperref            = "false";
-	h_use_microtype	          = "false";
+	h_use_microtype           = "false";
 	h_use_refstyle            = false;
 	h_use_minted              = false;
 	h_use_packages["amsmath"]    = "1";
@@ -719,20 +750,35 @@ void Preamble::handle_package(Parser &p, string const & name,
 		h_font_roman[0] = "libertine";
 		// this automatically invokes biolinum
 		h_font_sans[0] = "biolinum";
+		// as well as libertineMono
+		h_font_typewriter[0] = "libertine-mono";
 		if (opts == "osf")
 			h_font_osf = "true";
 		else if (opts == "lining")
 			h_font_osf = "false";
 	}
 
-	if (name == "libertine-type1") {
+	if (name == "libertineRoman" || name == "libertine-type1") {
 		h_font_roman[0] = "libertine";
-		// NOTE: contrary to libertine.sty, libertine-type1
-		// does not automatically invoke biolinum
+		// NOTE: contrary to libertine.sty, libertineRoman
+		// and libertine-type1 do not automatically invoke
+		// biolinum and libertineMono
 		if (opts == "lining")
 			h_font_osf = "false";
 		else if (opts == "osf")
 			h_font_osf = "true";
+	}
+
+	if (name == "MinionPro") {
+		h_font_roman[0] = "minionpro";
+		if (opts.find("lf") != string::npos)
+			h_font_osf = "false";
+		else
+			h_font_osf = "true";
+		if (opts.find("onlytext") != string::npos)
+			h_font_math[0] = "default";
+		else
+			h_font_math[0] = "auto";
 	}
 
 	if (name == "mathdesign") {
@@ -793,7 +839,7 @@ void Preamble::handle_package(Parser &p, string const & name,
 		}
 	}
 
-	if (name == "biolinum-type1") {
+	if (name == "biolinum" || name == "biolinum-type1") {
 		h_font_sans[0] = "biolinum";
 		// biolinum can have several options, e.g. [osf,scaled=0.97]
 		string::size_type pos = opts.find("osf");
@@ -814,9 +860,8 @@ void Preamble::handle_package(Parser &p, string const & name,
 		}
 	}
 
-	if (name == "libertineMono-type1") {
+	if (name == "libertineMono" || name == "libertineMono-type1")
 		h_font_typewriter[0] = "libertine-mono";
-	}
 
 	// font uses old-style figure
 	if (name == "eco")
@@ -1033,16 +1078,66 @@ void Preamble::handle_package(Parser &p, string const & name,
 				options.erase(it);
 			}
 		}
+		if (!options.empty())
+			h_biblio_options = join(options, ",");
+	}
+
+	else if (name == "biblatex") {
+		h_biblio_style = "plainnat";
+		h_cite_engine = "biblatex";
+		h_cite_engine_type = "authoryear";
+		string opt;
+		vector<string>::iterator it =
+			find(options.begin(), options.end(), "natbib");
+		if (it != options.end()) {
+			options.erase(it);
+			h_cite_engine = "biblatex-natbib";
+		} else {
+			opt = process_keyval_opt(options, "natbib");
+			if (opt == "true")
+				h_cite_engine = "biblatex-natbib";
+		}
+		opt = process_keyval_opt(options, "style");
+		if (!opt.empty()) {
+			h_biblatex_citestyle = opt;
+			h_biblatex_bibstyle = opt;
+		} else {
+			opt = process_keyval_opt(options, "citestyle");
+			if (!opt.empty())
+				h_biblatex_citestyle = opt;
+			opt = process_keyval_opt(options, "bibstyle");
+			if (!opt.empty())
+				h_biblatex_bibstyle = opt;
+		}
+		opt = process_keyval_opt(options, "refsection");
+		if (!opt.empty()) {
+			if (opt == "none" || opt == "part"
+			    || opt == "chapter" || opt == "section"
+			    || opt == "subsection")
+				h_multibib = opt;
+			else
+				cerr << "Ignoring unkown refesection value '"
+				     << opt << "'.";
+		}
+		if (!options.empty()) {
+			h_biblio_options = join(options, ",");
+			options.clear();
+		}
 	}
 
 	else if (name == "jurabib") {
 		h_biblio_style = "jurabib";
 		h_cite_engine = "jurabib";
 		h_cite_engine_type = "authoryear";
+		if (!options.empty())
+			h_biblio_options = join(options, ",");
 	}
 
 	else if (name == "bibtopic")
 		h_use_bibtopic = "true";
+
+	else if (name == "chapterbib")
+		h_multibib = "child";
 
 	else if (name == "hyperref")
 		handle_hyperref(options);
@@ -1109,33 +1204,6 @@ void Preamble::handle_if(Parser & p, bool in_lyx_preamble)
 
 bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiledir)
 {
-	// set the quote language
-	// LyX only knows the following quotes languages:
-	// english, swedish, german, polish, french and danish
-	// (quotes for "japanese" and "chinese-traditional" are missing because
-	//  they wouldn't be useful: https://www.lyx.org/trac/ticket/6383)
-	// conversion list taken from
-	// https://en.wikipedia.org/wiki/Quotation_mark,_non-English_usage
-	// (quotes for kazakh and interlingua are unknown)
-	// danish
-	if (is_known(h_language, known_danish_quotes_languages))
-		h_quotes_style = "danish";
-	// french
-	else if (is_known(h_language, known_french_quotes_languages))
-		h_quotes_style = "french";
-	// german
-	else if (is_known(h_language, known_german_quotes_languages))
-		h_quotes_style = "german";
-	// polish
-	else if (is_known(h_language, known_polish_quotes_languages))
-		h_quotes_style = "polish";
-	// swedish
-	else if (is_known(h_language, known_swedish_quotes_languages))
-		h_quotes_style = "swedish";
-	//english
-	else if (is_known(h_language, known_english_quotes_languages))
-		h_quotes_style = "english";
-
 	if (contains(h_float_placement, "H"))
 		registerAutomaticallyLoadedPackage("float");
 	if (h_spacing != "single" && h_spacing != "default")
@@ -1192,6 +1260,12 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 		for (; it != end; ++it)
 			os << *it << '\n';
 		os << "\\end_modules\n";
+	}
+	if (!h_includeonlys.empty()) {
+		os << "\\begin_includeonly\n";
+		for (auto const & iofile : h_includeonlys)
+			os << iofile << '\n';
+		os << "\\end_includeonly\n";
 	}
 	os << "\\maintain_unincluded_children " << h_maintain_unincluded_children << "\n"
 	   << "\\language " << h_language << "\n"
@@ -1259,8 +1333,16 @@ bool Preamble::writeLyXHeader(ostream & os, bool subdoc, string const & outfiled
 	os << "\\cite_engine " << h_cite_engine << '\n'
 	   << "\\cite_engine_type " << h_cite_engine_type << '\n'
 	   << "\\biblio_style " << h_biblio_style << "\n"
-	   << "\\use_bibtopic " << h_use_bibtopic << "\n"
-	   << "\\use_indices " << h_use_indices << "\n"
+	   << "\\use_bibtopic " << h_use_bibtopic << "\n";
+	if (!h_biblio_options.empty())
+		os << "\\biblio_options " << h_biblio_options << "\n";
+	if (!h_biblatex_bibstyle.empty())
+		os << "\\biblatex_bibstyle " << h_biblatex_bibstyle << "\n";
+	if (!h_biblatex_citestyle.empty())
+		os << "\\biblatex_citestyle " << h_biblatex_citestyle << "\n";
+	if (!h_multibib.empty())
+		os << "\\multibib " << h_multibib << "\n";
+	os << "\\use_indices " << h_use_indices << "\n"
 	   << "\\paperorientation " << h_paperorientation << '\n'
 	   << "\\suppress_date " << h_suppress_date << '\n'
 	   << "\\justification " << h_justification << '\n'
@@ -1373,14 +1455,18 @@ void Preamble::parse(Parser & p, string const & forceclass,
 		     t.cat() == catBegin ||
 		     t.cat() == catEnd ||
 		     t.cat() == catAlign ||
-		     t.cat() == catParameter))
+		     t.cat() == catParameter)) {
 			h_preamble << t.cs();
+			continue;
+		}
 
-		else if (!in_lyx_preamble &&
-			 (t.cat() == catSpace || t.cat() == catNewline))
+		if (!in_lyx_preamble &&
+		    (t.cat() == catSpace || t.cat() == catNewline)) {
 			h_preamble << t.asInput();
+			continue;
+		}
 
-		else if (t.cat() == catComment) {
+		if (t.cat() == catComment) {
 			static regex const islyxfile("%% LyX .* created this file");
 			static regex const usercommands("User specified LaTeX commands");
 
@@ -1405,12 +1491,22 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				in_lyx_preamble = false;
 			else if (!in_lyx_preamble)
 				h_preamble << t.asInput();
+			continue;
 		}
 
-		else if (t.cs() == "pagestyle")
-			h_paperpagestyle = p.verbatim_item();
+		if (t.cs() == "PassOptionsToPackage") {
+			string const poptions = p.getArg('{', '}');
+			string const package = p.verbatim_item();
+			extra_package_options_.insert(make_pair(package, poptions));
+			continue;
+		}
 
-		else if (t.cs() == "setdefaultlanguage") {
+		if (t.cs() == "pagestyle") {
+			h_paperpagestyle = p.verbatim_item();
+			continue;
+		}
+
+		if (t.cs() == "setdefaultlanguage") {
 			xetex = true;
 			// We don't yet care about non-language variant options
 			// because LyX doesn't support this yet, see bug #8214
@@ -1433,22 +1529,25 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				h_language = p.verbatim_item();
 			//finally translate the poyglossia name to a LyX name
 			h_language = polyglossia2lyx(h_language);
+			continue;
 		}
 
-		else if (t.cs() == "setotherlanguage") {
+		if (t.cs() == "setotherlanguage") {
 			// We don't yet care about the option because LyX doesn't
 			// support this yet, see bug #8214
 			p.hasOpt() ? p.getOpt() : string();
 			p.verbatim_item();
+			continue;
 		}
 
-		else if (t.cs() == "setmainfont") {
+		if (t.cs() == "setmainfont") {
 			// we don't care about the option
 			p.hasOpt() ? p.getOpt() : string();
 			h_font_roman[1] = p.getArg('{', '}');
+			continue;
 		}
 
-		else if (t.cs() == "setsansfont" || t.cs() == "setmonofont") {
+		if (t.cs() == "setsansfont" || t.cs() == "setmonofont") {
 			// LyX currently only supports the scale option
 			string scale;
 			if (p.hasOpt()) {
@@ -1472,17 +1571,19 @@ void Preamble::parse(Parser & p, string const & forceclass,
 					h_font_tt_scale[1] = scale;
 				h_font_typewriter[1] = p.getArg('{', '}');
 			}
+			continue;
 		}
 
-		else if (t.cs() == "date") {
+		if (t.cs() == "date") {
 			string argument = p.getArg('{', '}');
 			if (argument.empty())
 				h_suppress_date = "true";
 			else
 				h_preamble << t.asInput() << '{' << argument << '}';
+			continue;
 		}
 
-		else if (t.cs() == "color") {
+		if (t.cs() == "color") {
 			string const space =
 				(p.hasOpt() ? p.getOpt() : string());
 			string argument = p.getArg('{', '}');
@@ -1503,9 +1604,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				// is parsed before this
 				h_fontcolor = "";
 			}
+			continue;
 		}
 
-		else if (t.cs() == "pagecolor") {
+		if (t.cs() == "pagecolor") {
 			string argument = p.getArg('{', '}');
 			// check the case that a standard color is used
 			if (is_known(argument, known_basic_colors)) {
@@ -1520,24 +1622,28 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				// is parsed before this
 				h_backgroundcolor = "";
 			}
+			continue;
 		}
 
-		else if (t.cs() == "makeatletter") {
+		if (t.cs() == "makeatletter") {
 			// LyX takes care of this
 			p.setCatcode('@', catLetter);
+			continue;
 		}
 
-		else if (t.cs() == "makeatother") {
+		if (t.cs() == "makeatother") {
 			// LyX takes care of this
 			p.setCatcode('@', catOther);
+			continue;
 		}
 
-		else if (t.cs() == "makeindex") {
+		if (t.cs() == "makeindex") {
 			// LyX will re-add this if a print index command is found
 			p.skip_spaces();
+			continue;
 		}
 
-		else if (t.cs() == "newindex") {
+		if (t.cs() == "newindex") {
 			string const indexname = p.getArg('[', ']');
 			string const shortcut = p.verbatim_item();
 			if (!indexname.empty())
@@ -1547,9 +1653,21 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			h_shortcut[index_number] = shortcut;
 			index_number += 1;
 			p.skip_spaces();
+			continue;
 		}
 
-		else if (t.cs() == "RS@ifundefined") {
+		if (t.cs() == "addbibresource") {
+			biblatex_bibliographies.push_back(removeExtension(p.getArg('{', '}')));
+			continue;
+		}
+
+		if (t.cs() == "bibliography") {
+			vector<string> bibs = getVectorFromString(p.getArg('{', '}'));
+			biblatex_bibliographies.insert(biblatex_bibliographies.end(), bibs.begin(), bibs.end());
+			continue;
+		}
+
+		if (t.cs() == "RS@ifundefined") {
 			string const name = p.verbatim_item();
 			string const body1 = p.verbatim_item();
 			string const body2 = p.verbatim_item();
@@ -1565,9 +1683,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				   << '{' << body2 << '}';
 				h_preamble << ss.str();
 			}
+			continue;
 		}
 
-		else if (t.cs() == "AtBeginDocument") {
+		if (t.cs() == "AtBeginDocument") {
 			string const name = p.verbatim_item();
 			// only non-lyxspecific stuff
 			if (in_lyx_preamble &&
@@ -1593,15 +1712,16 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				ss << '{' << name << '}';
 				h_preamble << ss.str();
 			}
+			continue;
 		}
 
-		else if (t.cs() == "newcommand" || t.cs() == "newcommandx"
-		      || t.cs() == "renewcommand" || t.cs() == "renewcommandx"
-		      || t.cs() == "providecommand" || t.cs() == "providecommandx"
-				|| t.cs() == "DeclareRobustCommand"
-		      || t.cs() == "DeclareRobustCommandx"
-				|| t.cs() == "ProvideTextCommandDefault"
-				|| t.cs() == "DeclareMathAccent") {
+		if (t.cs() == "newcommand" || t.cs() == "newcommandx"
+		    || t.cs() == "renewcommand" || t.cs() == "renewcommandx"
+		    || t.cs() == "providecommand" || t.cs() == "providecommandx"
+		    || t.cs() == "DeclareRobustCommand"
+		    || t.cs() == "DeclareRobustCommandx"
+		    || t.cs() == "ProvideTextCommandDefault"
+		    || t.cs() == "DeclareMathAccent") {
 			bool star = false;
 			if (p.next_token().character() == '*') {
 				p.get_token();
@@ -1670,9 +1790,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			}
 			// restore the in_lyx_preamble setting
 			in_lyx_preamble = was_in_lyx_preamble;
+			continue;
 		}
 
-		else if (t.cs() == "documentclass") {
+		if (t.cs() == "documentclass") {
 			vector<string>::iterator it;
 			vector<string> opts = split_options(p.getArg('[', ']'));
 			handle_opt(opts, known_fontsizes, h_paperfontsize);
@@ -1743,9 +1864,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			//       different name in LyX than in LaTeX
 			h_textclass = p.getArg('{', '}');
 			p.skip_spaces();
+			continue;
 		}
 
-		else if (t.cs() == "usepackage") {
+		if (t.cs() == "usepackage") {
 			string const options = p.getArg('[', ']');
 			string const name = p.getArg('{', '}');
 			vector<string> vecnames;
@@ -1755,9 +1877,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			for (; it != end; ++it)
 				handle_package(p, trimSpaceAndEol(*it), options,
 					       in_lyx_preamble, detectEncoding);
+			continue;
 		}
 
-		else if (t.cs() == "inputencoding") {
+		if (t.cs() == "inputencoding") {
 			string const encoding = p.getArg('{','}');
 			Encoding const * const enc = encodings.fromLaTeXName(
 				encoding, Encoding::inputenc, true);
@@ -1770,9 +1893,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 					h_inputencoding = enc->name();
 				p.setEncoding(enc->iconvName());
 			}
+			continue;
 		}
 
-		else if (t.cs() == "newenvironment") {
+		if (t.cs() == "newenvironment") {
 			string const name = p.getArg('{', '}');
 			string const opt1 = p.getFullOpt();
 			string const opt2 = p.getFullOpt();
@@ -1785,10 +1909,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			}
 			add_known_environment(name, opt1, !opt2.empty(),
 			                      from_utf8(beg), from_utf8(end));
-
+			continue;
 		}
 
-		else if (t.cs() == "newtheorem") {
+		if (t.cs() == "newtheorem") {
 			bool star = false;
 			if (p.next_token().character() == '*') {
 				p.get_token();
@@ -1808,9 +1932,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 
 			if (!in_lyx_preamble)
 				h_preamble << complete;
+			continue;
 		}
 
-		else if (t.cs() == "def") {
+		if (t.cs() == "def") {
 			string name = p.get_token().cs();
 			// In fact, name may be more than the name:
 			// In the test case of bug 8116
@@ -1821,9 +1946,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			if (!in_lyx_preamble)
 				h_preamble << "\\def\\" << name << '{'
 					   << p.verbatim_item() << "}";
+			continue;
 		}
 
-		else if (t.cs() == "newcolumntype") {
+		if (t.cs() == "newcolumntype") {
 			string const name = p.getArg('{', '}');
 			trimSpaceAndEol(name);
 			int nargs = 0;
@@ -1837,9 +1963,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			if (nargs)
 				h_preamble << "[" << nargs << "]";
 			h_preamble << "{" << p.verbatim_item() << "}";
+			continue;
 		}
 
-		else if (t.cs() == "setcounter") {
+		if (t.cs() == "setcounter") {
 			string const name = p.getArg('{', '}');
 			string const content = p.getArg('{', '}');
 			if (name == "secnumdepth")
@@ -1848,9 +1975,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				h_tocdepth = content;
 			else
 				h_preamble << "\\setcounter{" << name << "}{" << content << "}";
+			continue;
 		}
 
-		else if (t.cs() == "setlength") {
+		if (t.cs() == "setlength") {
 			string const name = p.verbatim_item();
 			string const content = p.verbatim_item();
 			// the paragraphs are only not indented when \parindent is set to zero
@@ -1872,18 +2000,25 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				h_mathindentation = translate_len(content);
 			} else
 				h_preamble << "\\setlength{" << name << "}{" << content << "}";
+			continue;
 		}
 
-		else if (t.cs() == "onehalfspacing")
+		if (t.cs() == "onehalfspacing") {
 			h_spacing = "onehalf";
+			continue;
+		}
 
-		else if (t.cs() == "doublespacing")
+		if (t.cs() == "doublespacing") {
 			h_spacing = "double";
+			continue;
+		}
 
-		else if (t.cs() == "setstretch")
+		if (t.cs() == "setstretch") {
 			h_spacing = "other " + p.verbatim_item();
+			continue;
+		}
 
-		else if (t.cs() == "synctex") {
+		if (t.cs() == "synctex") {
 			// the scheme is \synctex=value
 			// where value can only be "1" or "-1"
 			h_output_sync = "1";
@@ -1894,21 +2029,24 @@ void Preamble::parse(Parser & p, string const & forceclass,
 			if (value == "-")
 				value += p.get_token().asInput();
 			h_output_sync_macro = "\\synctex=" + value;
+			continue;
 		}
 
-		else if (t.cs() == "begin") {
+		if (t.cs() == "begin") {
 			string const name = p.getArg('{', '}');
 			if (name == "document")
 				break;
 			h_preamble << "\\begin{" << name << "}";
+			continue;
 		}
 
-		else if (t.cs() == "geometry") {
+		if (t.cs() == "geometry") {
 			vector<string> opts = split_options(p.getArg('{', '}'));
 			handle_geometry(opts);
+			continue;
 		}
 
-		else if (t.cs() == "definecolor") {
+		if (t.cs() == "definecolor") {
 			string const color = p.getArg('{', '}');
 			string const space = p.getArg('{', '}');
 			string const value = p.getArg('{', '}');
@@ -1929,12 +2067,15 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				           << "}{" << space << "}{" << value
 				           << '}';
 			}
+			continue;
 		}
 
-		else if (t.cs() == "bibliographystyle")
+		if (t.cs() == "bibliographystyle") {
 			h_biblio_style = p.verbatim_item();
+			continue;
+		}
 
-		else if (t.cs() == "jurabibsetup") {
+		if (t.cs() == "jurabibsetup") {
 			// FIXME p.getArg('{', '}') is most probably wrong (it
 			//       does not handle nested braces).
 			//       Use p.verbatim_item() instead.
@@ -1946,9 +2087,10 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				h_preamble << "\\jurabibsetup{"
 					   << join(jurabibsetup, ",") << '}';
 			}
+			continue;
 		}
 
-		else if (t.cs() == "hypersetup") {
+		if (t.cs() == "hypersetup") {
 			vector<string> hypersetup =
 				split_options(p.verbatim_item());
 			// add hypersetup to the hyperref package options
@@ -1957,9 +2099,38 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				h_preamble << "\\hypersetup{"
 				           << join(hypersetup, ",") << '}';
 			}
+			continue;
 		}
 
-		else if (is_known(t.cs(), known_if_3arg_commands)) {
+		if (t.cs() == "includeonly") {
+			vector<string> includeonlys = getVectorFromString(p.getArg('{', '}'));
+			for (auto & iofile : includeonlys) {
+				string filename(normalize_filename(iofile));
+				string const path = getMasterFilePath(true);
+				// We want to preserve relative/absolute filenames,
+				// therefore path is only used for testing
+				if (!makeAbsPath(filename, path).exists()) {
+					// The file extension is probably missing.
+					// Now try to find it out.
+					string const tex_name =
+						find_file(filename, path,
+							  known_tex_extensions);
+					if (!tex_name.empty())
+						filename = tex_name;
+				}
+				string outname;
+				if (makeAbsPath(filename, path).exists())
+					fix_child_filename(filename);
+				else
+					cerr << "Warning: Could not find included file '"
+					     << filename << "'." << endl;
+				outname = changeExtension(filename, "lyx");
+				h_includeonlys.push_back(outname);
+			}
+			continue;
+		}
+
+		if (is_known(t.cs(), known_if_3arg_commands)) {
 			// prevent misparsing of \usepackage if it is used
 			// as an argument (see e.g. our own output of
 			// \@ifundefined above)
@@ -1996,18 +2167,22 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				           << '{' << arg2 << '}'
 				           << '{' << arg3 << '}';
 			}
+			continue;
 		}
 
-		else if (is_known(t.cs(), known_if_commands)) {
+		if (is_known(t.cs(), known_if_commands)) {
 			// must not parse anything in conditional code, since
 			// LyX would output the parsed contents unconditionally
 			if (!in_lyx_preamble)
 				h_preamble << t.asInput();
 			handle_if(p, in_lyx_preamble);
+			continue;
 		}
 
-		else if (!t.cs().empty() && !in_lyx_preamble)
+		if (!t.cs().empty() && !in_lyx_preamble) {
 			h_preamble << '\\' << t.cs();
+			continue;
+		}
 	}
 
 	// remove the whitespace
@@ -2053,6 +2228,47 @@ void Preamble::parse(Parser & p, string const & forceclass,
 				h_options += ',' + lyx2babel(default_language);
 		}
 	}
+
+	// Finally, set the quote style.
+	// LyX knows the following quotes styles:
+	// british, cjk, cjkangle, danish, english, french, german,
+	// polish, russian, swedish and swiss
+	// conversion list taken from
+	// https://en.wikipedia.org/wiki/Quotation_mark,_non-English_usage
+	// (quotes for kazakh are unknown)
+	// british
+	if (is_known(h_language, known_british_quotes_languages))
+		h_quotes_style = "british";
+	// cjk
+	else if (is_known(h_language, known_cjk_quotes_languages))
+		h_quotes_style = "cjk";
+	// cjkangle
+	else if (is_known(h_language, known_cjkangle_quotes_languages))
+		h_quotes_style = "cjkangle";
+	// danish
+	else if (is_known(h_language, known_danish_quotes_languages))
+		h_quotes_style = "danish";
+	// french
+	else if (is_known(h_language, known_french_quotes_languages))
+		h_quotes_style = "french";
+	// german
+	else if (is_known(h_language, known_german_quotes_languages))
+		h_quotes_style = "german";
+	// polish
+	else if (is_known(h_language, known_polish_quotes_languages))
+		h_quotes_style = "polish";
+	// russian
+	else if (is_known(h_language, known_russian_quotes_languages))
+		h_quotes_style = "russian";
+	// swedish
+	else if (is_known(h_language, known_swedish_quotes_languages))
+		h_quotes_style = "swedish";
+	// swiss
+	else if (is_known(h_language, known_swiss_quotes_languages))
+		h_quotes_style = "swiss";
+	// english
+	else if (is_known(h_language, known_english_quotes_languages))
+		h_quotes_style = "english";
 }
 
 

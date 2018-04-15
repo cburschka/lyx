@@ -82,10 +82,14 @@ public:
 	static bool isCompatibleCommand(std::string const &);
 	//@}
 	///
+	void redoLabel() { cache.recalculate = true; }
+	///
 	CitationStyle getCitationStyle(BufferParams const & bp, std::string const & input,
 				       std::vector<CitationStyle> const & valid_styles) const;
 	///
 	std::map<docstring, docstring> getQualifiedLists(docstring const p) const;
+	///
+	static bool last_literal;
 
 private:
 	/// tries to make a pretty label and makes a basic one if not

@@ -215,7 +215,7 @@ A section with optional argument
 
 \begin_layout Standard
 This causes the 
-\begin_inset Flex Flex:Strong
+\begin_inset Flex Strong
 status collapsed
 
 \begin_layout Plain Layout
@@ -604,7 +604,6 @@ klöä
 
 
 \end_layout
-
 \end_inset
 
 
@@ -651,7 +650,6 @@ te%st
 
 
 \end_layout
-
 \end_inset
 
 
@@ -686,7 +684,6 @@ subfigure 2ö
 
 
 \end_layout
-
 \end_inset
 
 
@@ -895,9 +892,10 @@ the second item
 \begin_layout Itemize
 
 \begin_inset Argument item:1
-status open
+status collapsed
 
-\begin_layout Plain Layout
+
+\begin_layout Standard
 custom label
 \end_layout
 
@@ -1103,7 +1101,7 @@ and bibliography:
 LatexCommand bibitem
 label ""
 key "FOO"
-literal "true"
+literal "false"
 
 \end_inset
 
@@ -1120,7 +1118,7 @@ The Foo Book
 LatexCommand bibitem
 label ""
 key "FO2"
-literal "true"
+literal "false"
 
 \end_inset
 

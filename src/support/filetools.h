@@ -305,7 +305,8 @@ bool readLink(FileName const & file, FileName & link);
  * \param format The file format as used by kpsewhich, e.g. "bib", "bst" etc.
  */
 FileName const findtexfile(std::string const & fil,
-			      std::string const & format);
+						   std::string const & format,
+						   bool const onlykpse = false);
 
 /** \param file1, file2 the two files to be compared. Must have absolute paths.
  *  \returns 1 if \c file1 has a more recent timestamp than \c file2,

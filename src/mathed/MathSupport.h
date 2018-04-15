@@ -32,6 +32,8 @@ class LaTeXFeatures;
 
 int mathed_font_em(FontInfo const &);
 
+int mathed_font_x_height(FontInfo const & font);
+
 int mathed_mu(FontInfo const & font, double mu);
 
 int mathed_thinmuskip(FontInfo const & font);

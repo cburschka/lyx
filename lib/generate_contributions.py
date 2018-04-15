@@ -647,6 +647,14 @@ contributors = [
                  "27 April 2014",
                  u"Chinese (simplified) translations"),
 
+     contributor(u"Alexander Dunlap",
+                 "alexander.dunlap () gmail ! com",
+                 "GPL",
+                 "licensing statement",
+                 "m=151914230920804",
+                 "20 February 2018",
+                 u"Improvement to recent files support"),
+
      contributor(u"Anders Ekberg",
                  "anek () chalmers ! se",
                  "GPL",

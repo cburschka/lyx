@@ -59,6 +59,12 @@ InsetCitation::~InsetCitation()
 }
 
 
+// May well be over-ridden when session settings are loaded
+// in GuiCitation. Unfortunately, that will not happen until
+// such a dialog is created.
+bool InsetCitation::last_literal = true;
+
+
 ParamInfo const & InsetCitation::findInfo(string const & /* cmdName */)
 {
 	static ParamInfo param_info_;

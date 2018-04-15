@@ -54,6 +54,11 @@ private:
 	virtual Inset * clone() const;
 };
 
+void mathed_root_metrics(MetricsInfo & mi, MathData const & nucleus,
+                         MathData const * root, Dimension & dim);
+
+void mathed_draw_root(PainterInfo & pi, int x, int y, MathData const & nucleus,
+                      MathData const * root, Dimension const & dim);
 
 
 } // namespace lyx

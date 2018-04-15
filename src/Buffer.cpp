@@ -2626,15 +2626,16 @@ bool Buffer::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 		flag.setOnOff(params().output_changes);
 		break;
 
-	case LFUN_BUFFER_TOGGLE_COMPRESSION: {
+	case LFUN_BUFFER_TOGGLE_COMPRESSION:
 		flag.setOnOff(params().compressed);
 		break;
-	}
 
-	case LFUN_BUFFER_TOGGLE_OUTPUT_SYNC: {
+	case LFUN_BUFFER_TOGGLE_OUTPUT_SYNC:
 		flag.setOnOff(params().output_sync);
 		break;
-	}
+
+	case LFUN_BUFFER_ANONYMIZE:
+		break;
 
 	default:
 		return false;
@@ -2664,7 +2665,8 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 	string const argument = to_utf8(func.argument());
 	// We'll set this back to false if need be.
 	bool dispatched = true;
-	undo().beginUndoGroup();
+	// This handles undo groups automagically
+	UndoGroupHelper ugh(this);
 
 	switch (func.action()) {
 	case LFUN_BUFFER_TOGGLE_READ_ONLY:
@@ -2907,12 +2909,20 @@ void Buffer::dispatch(FuncRequest const & func, DispatchResult & dr)
 		params().output_sync = !params().output_sync;
 		break;
 
+	case LFUN_BUFFER_ANONYMIZE: {
+		undo().recordUndoFullBuffer(CursorData());
+		CursorData cur(doc_iterator_begin(this));
+		for ( ; cur ; cur.forwardPar())
+			cur.paragraph().anonymize();
+		dr.forceBufferUpdate();
+		break;
+	}
+
 	default:
 		dispatched = false;
 		break;
 	}
 	dr.dispatched(dispatched);
-	undo().endUndoGroup();
 }
 
 
@@ -3185,9 +3195,27 @@ vector<docstring> const Buffer::prepareBibFilePaths(OutputParams const & runpara
 		string utf8input = to_utf8(it->first);
 		string database =
 			prepareFileNameForLaTeX(utf8input, ".bib", runparams.nice);
-		FileName const try_in_file =
+		FileName try_in_file =
 			makeAbsPath(database + ".bib", filePath());
-		bool const not_from_texmf = try_in_file.isReadableFile();
+		bool not_from_texmf = try_in_file.isReadableFile();
+		// If the file has not been found, try with the real file name
+		// (it might come from a child in a sub-directory)
+		if (!not_from_texmf) {
+			try_in_file = it->second;
+			if (try_in_file.isReadableFile()) {
+				// Check if the file is in texmf
+				FileName kpsefile(findtexfile(changeExtension(utf8input, "bib"), "bib", true));
+				not_from_texmf = kpsefile.empty()
+						|| kpsefile.absFileName() != try_in_file.absFileName();
+				if (not_from_texmf)
+					// If this exists, make path relative to the master
+					// FIXME Unicode
+					database = removeExtension(
+							prepareFileNameForLaTeX(to_utf8(makeRelPath(from_utf8(try_in_file.absFileName()),
+												    from_utf8(filePath()))),
+										".bib", runparams.nice));
+			}
+		}
 
 		if (!runparams.inComment && !runparams.dryrun && !runparams.nice &&
 		    not_from_texmf) {
@@ -4301,6 +4329,7 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 			return ExportNoPathToFormat;
 		}
 		runparams.flavor = converters.getFlavor(path, this);
+		runparams.hyperref_driver = converters.getHyperrefDriver(path);
 		Graph::EdgePath::const_iterator it = path.begin();
 		Graph::EdgePath::const_iterator en = path.end();
 		for (; it != en; ++it)
@@ -5360,7 +5389,6 @@ void Buffer::Impl::fileExternallyModified(bool const exists)
 		       "checksum unchanged: " << filename);
 		return;
 	}
-	lyx_clean = bak_clean = false;
 	// If the file has been deleted, only mark the file as dirty since it is
 	// pointless to prompt for reloading. If later a file is moved into this
 	// location, then the externally modified warning will appear then.

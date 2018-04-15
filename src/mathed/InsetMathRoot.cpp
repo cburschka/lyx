@@ -13,7 +13,6 @@
 
 #include "InsetMathRoot.h"
 
-#include "MathData.h"
 #include "MathStream.h"
 #include "MathSupport.h"
 
@@ -28,6 +27,7 @@ using namespace std;
 
 namespace lyx {
 
+using namespace frontend;
 
 InsetMathRoot::InsetMathRoot(Buffer * buf)
 	: InsetMathNest(buf, 2)
@@ -40,56 +40,101 @@ Inset * InsetMathRoot::clone() const
 }
 
 
-void InsetMathRoot::metrics(MetricsInfo & mi, Dimension & dim) const
+void mathed_root_metrics(MetricsInfo & mi, MathData const & nucleus,
+                         MathData const * root, Dimension & dim)
 {
 	Changer dummy = mi.base.changeEnsureMath();
-	Dimension dim0;
-	{
+	Dimension dimr;
+	if (root) {
 		Changer script = mi.base.font.changeStyle(LM_ST_SCRIPTSCRIPT);
-		cell(0).metrics(mi, dim0);
+		root->metrics(mi, dimr);
 		// make sure that the dim is high enough for any character
 		Dimension fontDim;
 		math_font_max_dim(mi.base.font, fontDim.asc, fontDim.des);
-		dim0 += fontDim;
+		dimr += fontDim;
 	}
 
-	Dimension dim1;
-	cell(1).metrics(mi, dim1);
+	Dimension dimn;
+	nucleus.metrics(mi, dimn);
 	// make sure that the dim is high enough for any character
-	Dimension fontDim;
-	math_font_max_dim(mi.base.font, fontDim.asc, fontDim.des);
-	dim1 += fontDim;
+	// Dimension fontDim;
+	// math_font_max_dim(mi.base.font, fontDim.asc, fontDim.des);
+	// dimn += fontDim;
 
-	dim.asc = max(dim0.ascent()  + 5, dim1.ascent()) + 1;
-	dim.des = max(dim0.descent() - 5, dim1.descent());
-	dim.wid = dim0.width() + dim1.width() + 4;
+	// Some room for the decoration
+	// The width of left decoration was 9 pixels with a 10em font
+	int const w = 9 * mathed_font_em(mi.base.font) / 10;
+	/* See rule 11 in Appendix G of Rhe TeXbook for the computation of the spacing
+	 * above nucleus.
+	 * FIXME more work is needed to implement properly rule 11.
+	 * * Ideally, we should use sqrt glyphs from the math fonts. Note
+         that then we would get rule thickness from there.
+	 * * The positioning of the root MathData is arbitrary. It should
+     *   follow the definition of \root...\of... in The Texbook in
+     *   Apprendix B page 360.
+	 *
+	 */
+	int const t = mi.base.solidLineThickness();
+	int const x_height = mathed_font_x_height(mi.base.font);
+	int const phi = (mi.base.font.style() == LM_ST_DISPLAY) ? x_height : t;
+	// first part is the spacing, second part is the line width
+	// itself, and last one is the spacing above.
+	int const space_above = (t + phi / 4) + t + t;
+	int const a = dimn.ascent();
+	int const d = dimn.descent();
+	// Not sure what the 1 stands for, it is needed to have some spacing at small sizes.
+	dim.asc = max(dimr.ascent() + (d - a) / 2, a + space_above) + 1;
+	dim.des = max(dimr.descent() - (d - a) / 2, d);
+	dim.wid = max(dimr.width() + 3 * w / 8, w) + dimn.width();
+}
+
+
+void InsetMathRoot::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	mathed_root_metrics(mi, cell(1), &cell(0), dim);
+}
+
+
+void mathed_draw_root(PainterInfo & pi, int x, int y, MathData const & nucleus,
+                      MathData const * root, Dimension const & dim)
+{
+	Changer dummy = pi.base.changeEnsureMath();
+	// The width of left decoration was 9 pixels with a 10em font
+	int const w = 9 * mathed_font_em(pi.base.font) / 10;
+	// the height of the hook was 5 with a 10em font
+	int const h = 5 * mathed_font_em(pi.base.font) / 10;
+	int const a = dim.ascent();
+	int const d = dim.descent();
+	int const t = pi.base.solidLineThickness();
+	Dimension const dimn = nucleus.dimension(*pi.base.bv);
+	// the width of the left part of the root
+	int const wl = dim.width() - dimn.width();
+	// the "exponent"
+	if (root) {
+		Changer script = pi.base.font.changeStyle(LM_ST_SCRIPTSCRIPT);
+		Dimension const dimr = root->dimension(*pi.base.bv);
+		int const root_offset = wl - 3 * w / 8 - dimr.width();
+		root->draw(pi, x + root_offset, y + (d - a)/2);
+	}
+	// the "base"
+	nucleus.draw(pi, x + wl, y);
+	int xp[4];
+	int yp[4];
+	pi.pain.line(x + dim.width(), y - a + 2 * t,
+	             x + wl, y - a + 2 * t, pi.base.font.color(),
+	             Painter::line_solid, t);
+	xp[0] = x + wl;              yp[0] = y - a + 2 * t + 1;
+	xp[1] = x + wl - w / 2;      yp[1] = y + d;
+	xp[2] = x + wl - w + h / 4;  yp[2] = y + d - h;
+	xp[3] = x + wl - w;          yp[3] = y + d - h + h / 4;
+	pi.pain.lines(xp, yp, 4, pi.base.font.color(),
+	              Painter::fill_none, Painter::line_solid, t);
 }
 
 
 void InsetMathRoot::draw(PainterInfo & pi, int x, int y) const
 {
-	Changer dummy = pi.base.changeEnsureMath();
-	Dimension const dim = dimension(*pi.base.bv);
-	int const a = dim.ascent();
-	int const d = dim.descent();
-	Dimension const & dim0 = cell(0).dimension(*pi.base.bv);
-	int const w = dim0.width();
-	// the "exponent"
-	{
-		Changer script = pi.base.font.changeStyle(LM_ST_SCRIPTSCRIPT);
-		cell(0).draw(pi, x, y + (d - a)/2 - dim0.descent());
-	}
-	// the "base"
-	cell(1).draw(pi, x + w + 4, y);
-	int xp[4];
-	int yp[4];
-	pi.pain.line(x + dim.width(), y - a + 1,
-				x + w + 4, y - a + 1, pi.base.font.color());
-	xp[0] = x + w + 4;         yp[0] = y - a + 1;
-	xp[1] = x + w;             yp[1] = y + d;
-	xp[2] = x + w - 2;         yp[2] = y + (d - a)/2 + 2;
-	xp[3] = x + w - 5;         yp[3] = y + (d - a)/2 + 4;
-	pi.pain.lines(xp, yp, 4, pi.base.font.color());
+	mathed_draw_root(pi, x, y, cell(1), &cell(0), dimension(*pi.base.bv));
 }
 
 

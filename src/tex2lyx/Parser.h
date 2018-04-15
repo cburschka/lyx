@@ -67,7 +67,8 @@ enum {
 	FLAG_OPTION     = 1 << 11, //  read [...] style option
 	FLAG_BRACED     = 1 << 12, //  read {...} style argument
 	FLAG_CELL       = 1 << 13, //  read table cell
-	FLAG_TABBING    = 1 << 14  //  We are inside a tabbing environment
+	FLAG_TABBING    = 1 << 14,  //  We are inside a tabbing environment
+	FLAG_RDELIM     = 1 << 15,  //  next right delimiter ends the parsing
 };
 
 
@@ -213,7 +214,7 @@ public:
 	void dump() const;
 
 	/// Does an optional argument follow after the current token?
-	bool hasOpt();
+	bool hasOpt(std::string const l = "[");
 	///
 	typedef std::pair<bool, std::string> Arg;
 	/*!
@@ -240,7 +241,8 @@ public:
 	 * Like getOpt(), but distinguishes between a missing argument ""
 	 * and an empty argument "[]".
 	 */
-	std::string getFullOpt(bool keepws = false);
+	std::string getFullOpt(bool keepws = false,
+			       char left = '[', char right = ']');
 	/*!
 	 * \returns getArg('[', ']') including the brackets or the
 	 * empty string if there is no such argument.
@@ -276,6 +278,11 @@ public:
 	 * This function is designed to parse verbatim commands.
 	 */
 	std::string const plainCommand(char left, char right, std::string const & name);
+	/*
+	 * Returns everything before the main command argument.
+	 * This is where the LaTeXParam value of a layout is output.
+	 */
+	std::string const getCommandLatexParam();
 	/*
 	 * Basically the same as plainEnvironment() but the parsing is
 	 * stopped at string \p end_string. Contrary to the other

@@ -36,8 +36,8 @@ public:
 	///
 	virtual ~WorkArea() {}
 
-	/// redraw the screen, without using existing pixmap
-	virtual void redraw(bool update_metrics) = 0;
+	/// Update metrics if needed and schedule a paint event
+	virtual void scheduleRedraw(bool update_metrics) = 0;
 
 	/// close this work area.
 	/// Slot for Buffer::closing signal.

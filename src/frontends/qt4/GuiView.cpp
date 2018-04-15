@@ -1882,7 +1882,8 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 
 	case LFUN_BUFFER_RELOAD:
 		enable = doc_buffer && !doc_buffer->isUnnamed()
-			&& doc_buffer->fileName().exists() && !doc_buffer->isClean();
+			&& doc_buffer->fileName().exists()
+			&& (!doc_buffer->isClean() || doc_buffer->notifiesExternalModification());
 		break;
 
 	case LFUN_BUFFER_CHILD_OPEN:
@@ -2262,8 +2263,10 @@ Buffer * GuiView::loadDocument(FileName const & filename, bool tolastfiles)
 	setBuffer(newBuffer);
 	newBuffer->errors("Parse");
 
-	if (tolastfiles)
+	if (tolastfiles) {
 		theSession().lastFiles().add(filename);
+		theSession().writeFile();
+  }
 
 	return newBuffer;
 }
@@ -2802,6 +2805,7 @@ bool GuiView::saveBuffer(Buffer & b, FileName const & fn)
 	bool const success = (fn.empty() ? b.save() : b.saveAs(fn));
 	if (success) {
 		theSession().lastFiles().add(b.fileName());
+		theSession().writeFile();
 		return true;
 	}
 
@@ -4191,7 +4195,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			// painting so we must reset it.
 			QPixmapCache::clear();
 			guiApp->fontLoader().update();
-			lyx::dispatch(FuncRequest(LFUN_SCREEN_FONT_UPDATE));
+			dr.screenUpdate(Update::Force | Update::FitCursor);
 			break;
 		}
 
@@ -4387,19 +4391,19 @@ Buffer const * GuiView::updateInset(Inset const * inset)
 			continue;
 		Buffer const * buffer = &(wa->bufferView().buffer());
 		if (inset_buffer == buffer)
-			wa->scheduleRedraw();
+			wa->scheduleRedraw(true);
 	}
 	return inset_buffer;
 }
 
 
-void GuiView::restartCursor()
+void GuiView::restartCaret()
 {
 	/* When we move around, or type, it's nice to be able to see
-	 * the cursor immediately after the keypress.
+	 * the caret immediately after the keypress.
 	 */
 	if (d.current_work_area_)
-		d.current_work_area_->startBlinkingCursor();
+		d.current_work_area_->startBlinkingCaret();
 
 	// Take this occasion to update the other GUI elements.
 	updateDialogs();
@@ -4468,7 +4472,7 @@ void GuiView::resetDialogs()
 	// Now update controls with current buffer.
 	guiApp->setCurrentView(this);
 	restoreLayout();
-	restartCursor();
+	restartCaret();
 }
 
 

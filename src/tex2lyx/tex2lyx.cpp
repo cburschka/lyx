@@ -172,30 +172,32 @@ void add_known_theorem(string const & theorem, string const & o1,
 }
 
 
-Layout const * findLayoutWithoutModule(TextClass const & textclass,
-                                       string const & name, bool command)
+Layout const * findLayoutWithoutModule(TextClass const & tc,
+                                       string const & name, bool command,
+                                       string const & latexparam)
 {
-	DocumentClass::const_iterator it = textclass.begin();
-	DocumentClass::const_iterator en = textclass.end();
-	for (; it != en; ++it) {
-		if (it->latexname() == name &&
-		    ((command && it->isCommand()) || (!command && it->isEnvironment())))
-			return &*it;
+	for (auto const & lay : tc) {
+		if (lay.latexname() == name &&
+		    (latexparam.empty() ||
+		     (!lay.latexparam().empty() && suffixIs(latexparam, lay.latexparam()))) &&
+		    ((command && lay.isCommand()) || (!command && lay.isEnvironment())))
+			return &lay;
 	}
 	return 0;
 }
 
 
-InsetLayout const * findInsetLayoutWithoutModule(TextClass const & textclass,
-                                                 string const & name, bool command)
+InsetLayout const * findInsetLayoutWithoutModule(TextClass const & tc,
+                                                 string const & name, bool command,
+                                                 string const & latexparam)
 {
-	DocumentClass::InsetLayouts::const_iterator it = textclass.insetLayouts().begin();
-	DocumentClass::InsetLayouts::const_iterator en = textclass.insetLayouts().end();
-	for (; it != en; ++it) {
-		if (it->second.latexname() == name &&
-		    ((command && it->second.latextype() == InsetLayout::COMMAND) ||
-		     (!command && it->second.latextype() == InsetLayout::ENVIRONMENT)))
-			return &(it->second);
+	for (auto const & ilay : tc.insetLayouts()) {
+		if (ilay.second.latexname() == name &&
+		    (latexparam.empty() ||
+		     (!ilay.second.latexparam().empty() && suffixIs(latexparam, ilay.second.latexparam()))) &&
+		    ((command && ilay.second.latextype() == InsetLayout::COMMAND) ||
+		     (!command && ilay.second.latextype() == InsetLayout::ENVIRONMENT)))
+			return &(ilay.second);
 	}
 	return 0;
 }
@@ -878,6 +880,8 @@ bool tex2lyx(idocstream & is, ostream & os, string const & encoding,
 	context.font.language = preamble.defaultLanguage();
 	// parse the main text
 	parse_text(p, ss, FLAG_END, true, context);
+	// check if we need a commented bibtex inset (biblatex)
+	check_comment_bib(ss, context);
 	if (Context::empty)
 		// Empty document body. LyX needs at least one paragraph.
 		context.check_layout(ss);

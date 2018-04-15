@@ -453,7 +453,7 @@ bool Parser::good()
 }
 
 
-bool Parser::hasOpt()
+bool Parser::hasOpt(string const l)
 {
 	// An optional argument can occur in any of the following forms:
 	// - \foo[bar]
@@ -479,7 +479,7 @@ bool Parser::hasOpt()
 		putback();
 		break;
 	}
-	bool const retval = (next_token().asInput() == "[");
+	bool const retval = (next_token().asInput() == l);
 	pos_ = oldpos;
 	return retval;
 }
@@ -494,6 +494,7 @@ Parser::Arg Parser::getFullArg(char left, char right, bool allow_escaping)
 	if (! good())
 		return make_pair(false, string());
 
+	int group_level = 0;
 	string result;
 	Token t = get_token();
 
@@ -504,6 +505,15 @@ Parser::Arg Parser::getFullArg(char left, char right, bool allow_escaping)
 	} else {
 		while (good()) {
 			t = get_token();
+			// honor grouping
+			if (left != '{' && t.cat() == catBegin) {
+				++group_level;
+				continue;
+			}
+			if (left != '{' && t.cat() == catEnd) {
+				--group_level;
+				continue;
+			}
 			// Ignore comments
 			if (t.cat() == catComment) {
 				if (!t.cs().empty())
@@ -511,13 +521,15 @@ Parser::Arg Parser::getFullArg(char left, char right, bool allow_escaping)
 				continue;
 			}
 			if (allow_escaping) {
-				if (t.cat() != catEscape && t.character() == right)
+				if (t.cat() != catEscape && t.character() == right
+				    && group_level == 0)
 					break;
 			} else {
 				if (t.character() == right) {
 					if (t.cat() == catEscape)
 						result += '\\';
-					break;
+					if (group_level == 0)
+						break;
 				}
 			}
 			result += t.asInput();
@@ -533,11 +545,11 @@ string Parser::getArg(char left, char right, bool allow_escaping)
 }
 
 
-string Parser::getFullOpt(bool keepws)
+string Parser::getFullOpt(bool keepws, char left, char right)
 {
-	Arg arg = getFullArg('[', ']');
+	Arg arg = getFullArg(left, right);
 	if (arg.first)
-		return '[' + arg.second + ']';
+		return left + arg.second + right;
 	if (keepws)
 		unskip_spaces(true);
 	return string();
@@ -635,6 +647,27 @@ string const Parser::plainCommand(char left, char right, string const & name)
 	}
 	cerr << "unexpected end of input" << endl;
 	return os.str();
+}
+
+
+string const Parser::getCommandLatexParam()
+{
+	if (!good())
+		return string();
+	string res;
+	size_t offset = 0;
+	while (true) {
+		if (pos_ + offset >= tokens_.size())
+			tokenize_one();
+		if (pos_ + offset >= tokens_.size())
+			break;
+		Token t = tokens_[pos_ + offset];
+		if (t.cat() == catBegin)
+			break;
+		res += t.asInput();
+		++offset;
+	}
+	return res;
 }
 
 

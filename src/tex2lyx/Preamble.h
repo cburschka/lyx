@@ -54,6 +54,8 @@ public:
 	std::string docLanguage() const { return h_language; }
 	/// The language of text which is not explicitly marked
 	std::string defaultLanguage() const  { return default_language; }
+	/// The quotation marks style
+	std::string quotesStyle() const { return h_quotes_style; }
 	///
 	bool usePolyglossia() const;
 	///
@@ -104,6 +106,8 @@ public:
 	static const char * const polyglossia_languages[];
 	/// the same as polyglossia_languages with .lyx names
 	static const char * const coded_polyglossia_languages[];
+	///
+	std::vector<std::string> biblatex_bibliographies;
 
 private:
 	///
@@ -131,7 +135,11 @@ private:
 
 	std::ostringstream h_preamble;
 	std::string h_backgroundcolor;
+	std::string h_multibib;
 	std::string h_biblio_style;
+	std::string h_biblio_options;
+	std::string h_biblatex_bibstyle;
+	std::string h_biblatex_citestyle;
 	std::string h_bibtex_command;
 	std::string h_boxbgcolor;
 	std::string h_cite_engine;
@@ -217,6 +225,7 @@ private:
 	std::map<std::string, std::string> h_use_packages;
 	std::string h_use_default_options;
 	std::string h_use_hyperref;
+	std::vector<std::string> h_includeonlys;
 	bool h_use_refstyle;
 	bool h_use_minted;
 
@@ -241,6 +250,8 @@ private:
 	AuthorList authors_;
 	/// special table column types
 	std::map<char, int> special_columns_;
+	///
+	std::map<std::string, std::string> extra_package_options_;
 };
 
 

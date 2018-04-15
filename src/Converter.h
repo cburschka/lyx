@@ -79,6 +79,8 @@ public:
 	std::string const result_file() const { return result_file_; }
 	///
 	std::string const parselog() const { return parselog_; }
+	///
+	std::string const hyperref_driver() const { return href_driver_; }
 
 private:
 	///
@@ -114,6 +116,8 @@ private:
 	trivstring result_file_;
 	/// Command to convert the program output to a LaTeX log file format
 	trivstring parselog_;
+	/// The hyperref driver
+	trivstring href_driver_;
 };
 
 
@@ -159,6 +163,8 @@ public:
 	///
 	OutputParams::FLAVOR getFlavor(Graph::EdgePath const & path,
 				       Buffer const * buffer = 0);
+	///
+	std::string getHyperrefDriver(Graph::EdgePath const & path);
 	/// Flags for converting files
 	enum ConversionFlags {
 		/// No special flags
