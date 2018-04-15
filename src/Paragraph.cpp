@@ -3401,9 +3401,8 @@ bool Paragraph::needsCProtection() const
 	// now check whether we have insets that need cprotection
 	pos_type size = d->text_.size();
 	for (pos_type i = 0; i < size; ++i)
-		if (isInset(i))
-			if (getInset(i)->needsCProtection())
-				return true;
+		if (isInset(i) && getInset(i)->needsCProtection())
+			return true;
 
 	return false;
 }
