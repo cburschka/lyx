@@ -487,6 +487,17 @@ void LyXAction::init()
 
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_BUFFER_ANONYMIZE
+ * \li Action: For debug purposes only. Convert all [a-zA-Z0-1] characters to
+               single character. Useful when submitting docs to list or bugzilla.
+ * \li Syntax: buffer-anonymize
+ * \li Origin: sanda, Feb 1 2018
+ * \endvar
+ */
+		{ LFUN_BUFFER_ANONYMIZE, "buffer-anonymize", Noop, Edit },
+
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_BUFFER_AUTO_SAVE
  * \li Action: Saves the current buffer to a temporary file.
  * \li Notion: Saves the current buffer to a file named "#filename#". This LFUN
@@ -4237,16 +4248,6 @@ void LyXAction::init()
  * \endvar
  */
 		{ LFUN_WORD_REPLACE, "word-replace", Noop, Edit },
-
-/*!
- * \var lyx::FuncCode lyx::LFUN_BUFFER_ANONYMIZE
- * \li Action: For debug purposes only. Convert all [a-zA-Z0-1] characters to
-               single character. Useful when submitting docs to list or bugzilla.
- * \li Syntax: buffer-anonymize
- * \li Origin: sanda, Feb 1 2018
- * \endvar
- */
-		{ LFUN_BUFFER_ANONYMIZE, "buffer-anonymize", Noop, Edit },
 
 /*!
  * \var lyx::FuncCode lyx::LFUN_WORD_RIGHT
