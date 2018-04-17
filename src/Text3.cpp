@@ -1696,29 +1696,6 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		bv->buffer().errors("Paste");
 		break;
 
-	case LFUN_UNICODE_INSERT: {
-		if (cmd.argument().empty())
-			break;
-		int i = 0;
-		while (true) {
-			docstring const arg = from_utf8(cmd.getArg(i));
-			if (arg.empty())
-				break;
-			if (!isHex(arg)) {
-				LYXERR0("Not a hexstring: " << arg);
-				++i;
-				continue;
-			}
-			char_type c = hexToInt(arg);
-			if (c >= 32 && c < 0x10ffff) {
-				LYXERR(Debug::KEY, "Inserting c: " << c);
-				lyx::dispatch(FuncRequest(LFUN_SELF_INSERT, docstring(1, c)));
-			}
-			++i;
-		}
-		break;
-	}
-
 	case LFUN_QUOTE_INSERT: {
 		cap::replaceSelection(cur);
 		cur.recordUndo();

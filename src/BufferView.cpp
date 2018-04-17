@@ -65,6 +65,7 @@
 #include "insets/InsetText.h"
 
 #include "mathed/MathData.h"
+#include "mathed/InsetMathNest.h"
 
 #include "frontends/alert.h"
 #include "frontends/Application.h"
@@ -1903,6 +1904,33 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		}
 		cur.setCurrentFont();
 		dr.screenUpdate(Update::Force);
+		break;
+	}
+
+
+	case LFUN_UNICODE_INSERT: {
+		if (cmd.argument().empty())
+			break;
+
+		FuncCode code = cur.inset().currentMode() == Inset::MATH_MODE ?
+			LFUN_MATH_INSERT : LFUN_SELF_INSERT;
+		int i = 0;
+		while (true) {
+			docstring const arg = from_utf8(cmd.getArg(i));
+			if (arg.empty())
+				break;
+			if (!isHex(arg)) {
+				LYXERR0("Not a hexstring: " << arg);
+				++i;
+				continue;
+			}
+			char_type c = hexToInt(arg);
+			if (c >= 32 && c < 0x10ffff) {
+				LYXERR(Debug::KEY, "Inserting c: " << c);
+				lyx::dispatch(FuncRequest(code, docstring(1, c)));
+			}
+			++i;
+		}
 		break;
 	}
 
