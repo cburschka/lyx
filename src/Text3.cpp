@@ -1699,12 +1699,14 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 	case LFUN_UNICODE_INSERT: {
 		if (cmd.argument().empty())
 			break;
-		// splits on whitespace
-		vector<docstring> args =
-			getVectorFromString(cmd.argument(), from_ascii(" "), false, true);
-		for (auto const & arg : args) {
+		int i = 0;
+		while (true) {
+			docstring const arg = from_utf8(cmd.getArg(i));
+			if (arg.empty())
+				break;
 			if (!isHex(arg)) {
 				LYXERR0("Not a hexstring: " << arg);
+				++i;
 				continue;
 			}
 			char_type c = hexToInt(arg);
@@ -1712,6 +1714,7 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 				LYXERR(Debug::KEY, "Inserting c: " << c);
 				lyx::dispatch(FuncRequest(LFUN_SELF_INSERT, docstring(1, c)));
 			}
+			++i;
 		}
 		break;
 	}
