@@ -20,7 +20,7 @@ changes happened in particular if possible. A good example would be
 	  - \usepackage[scaled=x.xx]{PTSans} > \font_sans "PTSans-TLF""
 	  - \usepackage[scaled=x.xx]{PTMono} > \font_typewriter "PTMono-TLF"
 
-2018-02-23  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2018-02-23  Jürgen Spitzmüller <spitz@lyx.org>
 	* format incremented to 545: Add "literal" param to inset include
           This is used by the lstinput caption.
 
@@ -1178,7 +1178,7 @@ changes happened in particular if possible. A good example would be
 2009-01-03 Vincent van Ravesteijn <V.F.vanRavesteijn@tudelft.nl>
 	* Format incremented to 347: support for tabular valign.
 
-2008-11-28 Jürgen Spitzmüller <j.spitzmueller@gmx.de>
+2008-11-28 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 346: support for German (Switzerland):
 	  (bug 5450)
 
@@ -1190,7 +1190,7 @@ changes happened in particular if possible. A good example would be
 	* Format incremented to 344: sanitize backreference settings
 	  for hyperref (fix bug 5340).
 
-2008-10-12 Jürgen Spitzmüller <j.spitzmueller@gmx.de>
+2008-10-12 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 343: new param \use_default_options
 	  (fix bug 2114).
 
@@ -1212,7 +1212,7 @@ changes happened in particular if possible. A good example would be
 2008-06-13 Abdelrazak Younes <younes@lyx.org>
 	* Format incremented to 337: convert/revert graphics display param.
 
-2008-06-04 Jürgen Spitzmüller <j.spitzmueller@gmx.de>
+2008-06-04 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 336: new param \font_cjk.
 
 2008-05-30 Richard Heck <rgheck@lyx.org>
@@ -1221,7 +1221,7 @@ changes happened in particular if possible. A good example would be
 2008-05-16 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 334: fix for bug 4868.
 
-2008-05-09 Jürgen Spitzmüller <j.spitzmueller@gmx.de>
+2008-05-09 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 333: fixes in the APA layout.
 
 2008-05-06 Pavel Sanda <sanda@lyx.org>
@@ -1232,7 +1232,7 @@ changes happened in particular if possible. A good example would be
 	  - \leftarrowfill, \rightarrowfill
 	  - \upbracefill, \downbracefill
 
-2008-04-28 Jürgen Spitzmüller <j.spitzmueller@gmx.de>
+2008-04-28 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 329: new param \master.
 
 2008-04-18 Bo Peng <ben.bob@gmail.com>
@@ -1241,17 +1241,17 @@ changes happened in particular if possible. A good example would be
 2008-04-16 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 327: support for Mexican Spanish.
 
-2008-04-11 Jürgen Spitzmüller <j.spitzmueller@gmx.de>
+2008-04-11 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 326: support for pdflatex via external inset.
 
 2008-03-29 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 325: merge the two Japanese languages to one that is
 	  encoding independent.
 
-2008-03-25 Jürgen Spitzmüller <j.spitzmueller@gmx.de>
+2008-03-25 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 324: merge the two newline insets.
 
-2008-03-25 Jürgen Spitzmüller <j.spitzmueller@gmx.de>
+2008-03-25 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 323: merge the diverse newpage insets.
 
 2008-03-24 Richard Heck <rgheck@lyx.org>
@@ -1263,11 +1263,11 @@ changes happened in particular if possible. A good example would be
 	  Make the separation between \begin_inset and Tabular a
 	  single space (it used to be a double space for lyx < 1.4)
 
-2008-03-18 Jürgen Spitzmüller <j.spitzmueller@gmx.de>
+2008-03-18 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 320: support for protected horizontal fill
 	  (\hspace*{\fill})
 
-2008-03-10 Jürgen Spitzmüller <j.spitzmueller@gmx.de>
+2008-03-10 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 319: hspace and extended hfill support
 
 2008-03-09 Bo Peng <ben.bob@gmail.com>
@@ -1276,7 +1276,7 @@ changes happened in particular if possible. A good example would be
 2008-03-02 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 317: support floating placements for wrap floats
 
-2008-03-02 Jürgen Spitzmüller <j.spitzmueller@gmx.de>
+2008-03-02 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 316: support for subfloats (subfig package)
 
 2008-02-18 Richard Heck <rgheck@lyx.org>
@@ -1288,7 +1288,7 @@ changes happened in particular if possible. A good example would be
 2008-01-12 Richard Heck <rgheck@lyx.org>
 	* Format incremented to 313: change in how modules are represented
 
-2008-01-11 Jürgen Spitzmüller <j.spitzmueller@gmx.de>
+2008-01-11 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 312: support for sidewaysalgorithm (rotfloat)
 	  and wide sideways{figure,table}.
 
@@ -1304,7 +1304,7 @@ changes happened in particular if possible. A good example would be
 2007-12-15 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 308: support for Serbian (Latin)
 
-2007-12-05 Jürgen Spitzmüller <j.spitzmueller@gmx.de>
+2007-12-05 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 307: support for \slash and \nobreakdash
 
 2007-12-05 Uwe Stöhr <uwestoehr@web.de>
@@ -1313,7 +1313,7 @@ changes happened in particular if possible. A good example would be
 2007-12-05 Uwe Stöhr <uwestoehr@web.de>
 	* Format incremented to 305: support for Bahasa Malaysia
 
-2007-12-03 Jürgen Spitzmüller <j.spitzmueller@gmx.de>
+2007-12-03 Jürgen Spitzmüller <spitz@lyx.org>
 	* Format incremented to 304: framed and shaded boxes are now real boxes
 	  (not notes).
 
@@ -1440,7 +1440,7 @@ changes happened in particular if possible. A good example would be
 		'arabic_arabtex'; this is to differentiate from the new arabic support
 		using the arabi package.
 
-2007-05-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2007-05-04  Jürgen Spitzmüller  <spitz@lyx.org>
 
 	* format incremented to 275: add graphics params scaleBeforeRotation
 	(fix bug 1749).
@@ -1489,7 +1489,7 @@ changes happened in particular if possible. A good example would be
 	- lib/languages allows now to set an empty language for babel
 	  in this case babel isn't called.
 
-2007-05-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2007-05-04  Jürgen Spitzmüller  <spitz@lyx.org>
 
 	* format incremented to 267: add plain utf8 encoding (for XeTeX).
 
@@ -1627,7 +1627,7 @@ changes happened in particular if possible. A good example would be
 	The order of the parameters and for each parameter the name and
 	optional/required bit is now stored in InsetCommandParams.
 
-2006-10-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2006-10-03  Jürgen Spitzmüller  <spitz@lyx.org>
 
 	* format incremented to 251: save show_label param for charstyles.
 
@@ -1674,7 +1674,7 @@ changes happened in particular if possible. A good example would be
 	topspace, bottomspace and interlinespace. All take a LyXLength
 	as value, or the special keyword "default".
 
-2006-06-10  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2006-06-10  Jürgen Spitzmüller  <spitz@lyx.org>
 
 	* format incremented to 247. The Grand Font Interface Rewrite.
 	(1) Split font selection to rm, sf, tt:
@@ -1717,12 +1717,12 @@ changes happened in particular if possible. A good example would be
 	* format incremented to 246. The framed.sty package is
 	now supported with note types framed and shaded.
 
-2005-10-12  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2005-10-12  Jürgen Spitzmüller  <spitz@lyx.org>
 
 	* format incremented to 245. The \quotes_times parameter
 	has been removed.
 
-2005-09-24  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2005-09-24  Jürgen Spitzmüller  <spitz@lyx.org>
 
 	* format incremented to 244. Rename '\InsetSpace \,'
 	to '\InsetSpace \thinspace{}', because the comma was
@@ -1853,7 +1853,7 @@ Paragraph text.
 	* insetgraphics does not allow filenames without extension anymore.
 	The complete filename has to be given.
 
-2004-03-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2004-03-29  Jürgen Spitzmüller  <spitz@lyx.org>
 
 	* format incremented to 232.
 
@@ -1873,7 +1873,7 @@ Paragraph text.
 	  \end{btSect}
 	  has to be inserted.
 
-2004-03-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2004-03-29  Jürgen Spitzmüller  <spitz@lyx.org>
 
 	* format incremented to 231.
 
@@ -1886,7 +1886,7 @@ Paragraph text.
 	\begin{sidewaystable} <content> \end{sidewaystable}
 	i.e. ERT.
 
-2004-02-23  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2004-02-23  Jürgen Spitzmüller  <spitz@lyx.org>
 
 	* format incremented to 230.
 
@@ -1902,7 +1902,7 @@ Paragraph text.
 	(jurabib fails if babel is called afterwards). If the natbib commands
 	are used together with jurabib, they have to be converted to ERT too.
 
-2003-12-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2003-12-29  Jürgen Spitzmüller  <spitz@lyx.org>
 
 	* format incremented to 229.
 	* Minipages cannot be read anymore. All minipage insets will
@@ -2074,7 +2074,7 @@ Paragraph text.
 	Moreover, the RasterImage template has been scrapped. All RasterImage
 	external insets are now converted to Graphics insets.
 
-2003-05-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+2003-05-20  Jürgen Spitzmüller  <spitz@lyx.org>
 
 	* Added new space insets:
 		\SpecialChar ~ is now \InsetSpace ~
