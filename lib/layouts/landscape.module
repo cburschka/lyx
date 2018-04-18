@@ -21,3 +21,12 @@ InsetLayout Flex:Landscape
 	EndFont
 	Requires        lscape
 End
+
+InsetLayout Flex:Landscape_(Floating)
+	CopyStyle	Flex:Landscape
+	LatexType	none
+	LabelString	"Landscape (floating)"
+	LeftDelim	\afterpage{\begin{landscape}<br/>
+	RightDelim	<br/>\end{landscape}}
+	Requires        lscape,afterpage
+End

@@ -170,8 +170,14 @@ def revert_lscape(document):
             i += 1
             continue
 
-        document.body[j - 2 : j + 1] = put_cmd_in_ert("\\end{landscape}")
-        document.body[i : i + 4] = put_cmd_in_ert("\\begin{landscape}")
+        if document.body[i] == "\\begin_inset Flex Landscape (Floating)":
+            document.body[j - 2 : j + 1] = put_cmd_in_ert("\\end{landscape}}")
+            document.body[i : i + 4] = put_cmd_in_ert("\\afterpage{\\begin{landscape}")
+            add_to_preamble(document, ["\\usepackage{afterpage}"])
+        else:
+            document.body[j - 2 : j + 1] = put_cmd_in_ert("\\end{landscape}")
+            document.body[i : i + 4] = put_cmd_in_ert("\\begin{landscape}")
+
         add_to_preamble(document, ["\\usepackage{pdflscape}"])
         # no need to reset i
 
