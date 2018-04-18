@@ -2212,6 +2212,7 @@ dist_layouts_DATA =\
 	layouts/jss.layout \
 	layouts/kluwer.layout \
 	layouts/knitr.module \
+	layouts/landscape.module \
 	layouts/latex8.layout \
 	layouts/letter.layout \
 	layouts/lettre.layout \

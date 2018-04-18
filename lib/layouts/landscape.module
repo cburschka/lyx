@@ -1,0 +1,23 @@
+#\DeclareLyXModule{Landscape}
+#DescriptionBegin
+#Output parts of the document in landscape mode.
+#DescriptionEnd
+#
+#Author: Jürgen Spitzmüller <spitz@lyx.org>
+
+Format 67
+
+InsetLayout Flex:Landscape
+	LyXType		custom
+	Decoration	classic
+	ResetsFont	0
+	MultiPar	1
+	LabelString	Landscape
+	LatexName	landscape
+	LatexType	environment
+	LabelFont
+	  Family	Roman
+	  Color		red
+	EndFont
+	Requires        lscape
+End

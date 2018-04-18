@@ -58,6 +58,9 @@ Format LaTeX feature                        LyX feature
       \begin{btUnit}...\end{btUnit}        \multibib {none|part|chapter|section|subsection}
         (if a part, chapter, section etc.
          follows the \begin...)
+546   Landscape support
+      \begin{landscape}...\end{landscape}  \begin_inset Flex Landscape
+      with longtable content:              <features rotate ="90"...>
 
 
 

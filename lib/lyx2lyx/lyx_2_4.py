@@ -24,16 +24,16 @@ import sys, os
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import (find_end_of_inset, find_token, get_bool_value, get_value) 
+from parser_tools import (find_end_of_inset, find_end_of_layout, find_token, get_bool_value, get_value) 
 #    del_token, del_value, del_complete_lines,
-#    find_complete_lines, find_end_of, find_end_of_layout, 
+#    find_complete_lines, find_end_of, 
 #    find_re, find_substring, find_token_backwards,
 #    get_containing_inset, get_containing_layout, get_value,
 #    get_quoted_value, is_in_inset, set_bool_value
 #    find_tokens, find_token_exact, check_token, get_option_value
 
-from lyx2lyx_tools import (add_to_preamble)
-#  put_cmd_in_ert, revert_font_attrs, insert_to_preamble, latex_length
+from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble)
+#  revert_font_attrs, insert_to_preamble, latex_length
 #  get_ert, lyx2latex, lyx2verbatim, length_in_bp, convert_info_insets
 #  revert_flex_inset, hex2ratio, str2bool
 
@@ -153,6 +153,29 @@ def revert_xcharter(document):
         add_to_preamble(document, ["\\usepackage%s{XCharter}"%options])
 
 
+def revert_lscape(document):
+    " Reverts the landscape environment (Landscape module) to TeX-code "
+
+    if not "landscape" in document.get_module_list():
+        return
+
+    i = 0
+    while True:
+        i = find_token(document.body, "\\begin_inset Flex Landscape", i)
+        if i == -1:
+            return
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of Landscape inset")
+            i += 1
+            continue
+
+        document.body[j - 2 : j + 1] = put_cmd_in_ert("\\end{landscape}")
+        document.body[i : i + 4] = put_cmd_in_ert("\\begin{landscape}")
+        add_to_preamble(document, ["\\usepackage{pdflscape}"])
+        # no need to reset i
+
+
 ##
 # Conversion hub
 #
@@ -161,10 +184,12 @@ supported_versions = ["2.4.0", "2.4"]
 convert = [
            [545, [convert_lst_literalparam]],
            [546, []],
-           [547, []]
+           [547, []],
+           [548, []]
           ]
 
 revert =  [
+           [547, [revert_lscape]],
            [546, [revert_xcharter]],
            [545, [revert_paratype]],
            [544, [revert_lst_literalparam]]
