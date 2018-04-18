@@ -2162,6 +2162,30 @@ def revert_minted(document):
     del_token(document.header, "\\use_minted")
 
 
+def revert_longtable_lscape(document):
+    " revert the longtable landcape mode to ERT "
+    i = 0
+    regexp = re.compile(r'^<features rotate=\"90\"\s.*islongtable=\"true\"\s.*$', re.IGNORECASE)
+    while True:
+        i = find_re(document.body, regexp, i)
+        if i == -1:
+            return
+
+        document.body[i] = document.body[i].replace(" rotate=\"90\"", "")
+        lay = get_containing_layout(document.body, i)
+        if lay == False:
+            document.warning("Longtable has not layout!")
+            i += 1
+            continue
+        begcmd = put_cmd_in_ert("\\begin{landscape}")
+        endcmd = put_cmd_in_ert("\\end{landscape}")
+        document.body[lay[2] : lay[2]] = endcmd + ["\\end_layout"]
+        document.body[lay[1] : lay[1]] = ["\\begin_layout " + lay[0], ""] + begcmd
+
+        add_to_preamble(document, ["\\usepackage{pdflscape}"])
+        i = lay[2]
+
+
 ##
 # Conversion hub
 #
@@ -2207,7 +2231,7 @@ convert = [
           ]
 
 revert =  [
-           [543, [revert_minted]],
+           [543, [revert_minted, revert_longtable_lscape]],
            [542, [revert_mathnumberingname]],
            [541, [revert_mathnumberpos]],
            [540, [revert_allowbreak]],
