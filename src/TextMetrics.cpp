@@ -1891,8 +1891,7 @@ void TextMetrics::drawParagraph(PainterInfo & pi, pit_type const pit, int const 
 
 		// has row changed since last paint?
 		bool row_has_changed = row.changed()
-			|| bv_->hadHorizScrollOffset(text_, pit, row.pos())
-			|| bv_->needRepaint(text_, row);
+			|| bv_->hadHorizScrollOffset(text_, pit, row.pos());
 
 		// Take this opportunity to spellcheck the row contents.
 		if (row_has_changed && pi.do_spellcheck && lyxrc.spellcheck_continuously) {
