@@ -1285,6 +1285,7 @@ void GuiWorkArea::inputMethodEvent(QInputMethodEvent * e)
 		d->buffer_view_->cursor().insert(qstring_to_ucs4(e->commitString()));
 		d->buffer_view_->updateMetrics();
 		d->buffer_view_->cursor().endUndoGroup();
+		d->updateCaretGeometry();
 		viewport()->update();
 	}
 
