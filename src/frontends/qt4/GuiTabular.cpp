@@ -230,7 +230,8 @@ void GuiTabular::enableWidgets() const
 	tabularWidthED->setEnabled(setwidth);
 	tabularWidthUnitLC->setEnabled(setwidth);
 
-	rotateTabularAngleSB->setEnabled(rotateTabularCB->isChecked());
+	rotateTabularAngleSB->setEnabled(rotateTabularCB->isChecked()
+					 && !longTabularCB->isChecked());
 	rotateCellAngleSB->setEnabled(rotateCellCB->isChecked());
 
 	bool const enable_valign =
@@ -258,11 +259,8 @@ void GuiTabular::enableWidgets() const
 	// longtables and tabular* cannot have a vertical alignment
 	TableAlignLA->setDisabled(is_tabular_star || longtabular);
 	TableAlignCO->setDisabled(is_tabular_star || longtabular);
-	// longtable cannot be rotated (with rotating package)
-	// FIXME: Add support for [pdf]lscape
-	rotateTabularCB->setDisabled(longtabular);
-	rotateTabularLA->setDisabled(longtabular);
-	// this one would also be disabled with [pdf]lscape
+	// longtable cannot be rotated with rotating package, only
+	// with [pdf]lscape, which only supports 90 deg.
 	rotateTabularAngleSB->setDisabled(longtabular);
 
 	// FIXME: This Dialog is really horrible, disabling/enabling a checkbox
@@ -743,11 +741,15 @@ void GuiTabular::paramsToDialog(Inset const * inset)
 			rotateCellAngleSB->setValue(90);
 	}
 
-	rotateTabularCB->setChecked(tabular.rotate != 0);
-	if (rotateTabularCB->isChecked())
-		rotateTabularAngleSB->setValue(tabular.rotate != 0 ? tabular.rotate : 90);
-
 	longTabularCB->setChecked(tabular.is_long_tabular);
+
+	rotateTabularCB->setChecked(tabular.rotate != 0);
+	if (rotateTabularCB->isChecked()) {
+		if (longTabularCB->isChecked())
+			rotateTabularAngleSB->setValue(90);
+		else
+			rotateTabularAngleSB->setValue(tabular.rotate != 0 ? tabular.rotate : 90);
+	}
 
 	borders->setTop(tabular.topLine(cell));
 	borders->setBottom(tabular.bottomLine(cell));

@@ -2731,8 +2731,12 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 	if (!TexRow::isNone(pos))
 		os.texrow().start(pos);
 
-	if (rotate != 0 && !is_long_tabular)
-		os << "\\begin{turn}{" << convert<string>(rotate) << "}\n";
+	if (rotate != 0) {
+		if (is_long_tabular)
+			os << "\\begin{landscape}\n";
+		else
+			os << "\\begin{turn}{" << convert<string>(rotate) << "}\n";
+	}
 
 	if (is_long_tabular) {
 		os << "\\begin{longtable}";
@@ -2882,8 +2886,12 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 			os << "\\end{tabular}";
 	}
 
-	if (rotate != 0 && !is_long_tabular)
-		os << breakln << "\\end{turn}";
+	if (rotate != 0) {
+		if (is_long_tabular)
+			os << breakln << "\\end{landscape}";
+		else
+			os << breakln << "\\end{turn}";
+	}
 
 	if (!TexRow::isNone(pos))
 		os.texrow().start(pos);
@@ -3428,6 +3436,8 @@ void Tabular::validate(LaTeXFeatures & features) const
 		features.require("booktabs");
 	if (is_long_tabular)
 		features.require("longtable");
+	if (rotate && is_long_tabular)
+		features.require("lscape");
 	if (needRotating())
 		features.require("rotating");
 	for (idx_type cell = 0; cell < numberofcells; ++cell) {
