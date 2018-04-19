@@ -2911,11 +2911,6 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 	}
 	case LFUN_NOTE_INSERT:
 		code = NOTE_CODE;
-		// in commands (sections etc.) and description items,
-		// only Notes are allowed
-		enable = (cmd.argument().empty() || cmd.getArg(0) == "Note" ||
-			  (!cur.paragraph().layout().isCommand()
-			   && !inDescriptionItem(cur)));
 		break;
 	case LFUN_FLEX_INSERT: {
 		code = FLEX_CODE;

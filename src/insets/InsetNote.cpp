@@ -186,9 +186,6 @@ bool InsetNote::getStatus(Cursor & cur, FuncRequest const & cmd,
 	switch (cmd.action()) {
 
 	case LFUN_INSET_MODIFY:
-		// disallow comment and greyed out in commands
-		flag.setEnabled(!cur.paragraph().layout().isCommand() ||
-				cmd.getArg(2) == "Note");
 		if (cmd.getArg(0) == "note") {
 			InsetNoteParams params;
 			string2params(to_utf8(cmd.argument()), params);
