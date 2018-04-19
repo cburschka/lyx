@@ -484,13 +484,17 @@ public:
 	string processing_format;
 
 	static QSet<Buffer const *> busyBuffers;
-	static Buffer::ExportStatus previewAndDestroy(Buffer const * orig, Buffer * buffer, string const & format);
-	static Buffer::ExportStatus exportAndDestroy(Buffer const * orig, Buffer * buffer, string const & format);
-	static Buffer::ExportStatus compileAndDestroy(Buffer const * orig, Buffer * buffer, string const & format);
+	static Buffer::ExportStatus previewAndDestroy(Buffer const * orig,
+			Buffer * buffer, string const & format);
+	static Buffer::ExportStatus exportAndDestroy(Buffer const * orig,
+			Buffer * buffer, string const & format);
+	static Buffer::ExportStatus compileAndDestroy(Buffer const * orig,
+			Buffer * buffer, string const & format);
 	static docstring autosaveAndDestroy(Buffer const * orig, Buffer * buffer);
 
 	template<class T>
-	static Buffer::ExportStatus runAndDestroy(const T& func, Buffer const * orig, Buffer * buffer, string const & format);
+	static Buffer::ExportStatus runAndDestroy(const T& func,
+			Buffer const * orig, Buffer * buffer, string const & format);
 
 	// TODO syncFunc/previewFunc: use bind
 	bool asyncBufferProcessing(string const & argument,
