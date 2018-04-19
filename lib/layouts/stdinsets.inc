@@ -197,6 +197,7 @@ InsetLayout Note:Greyedout
 	HTMLIsBlock           false
 	AddToToc              note
 	IsTocCaption          true
+	NeedCProtect          true
 End
 
 InsetLayout ERT
