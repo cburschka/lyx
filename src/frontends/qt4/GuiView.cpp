@@ -3536,7 +3536,8 @@ void GuiView::toolBarPopup(const QPoint & /*pos*/)
 
 
 template<class T>
-Buffer::ExportStatus GuiView::GuiViewPrivate::runAndDestroy(const T& func, Buffer const * orig, Buffer * clone, string const & format)
+Buffer::ExportStatus GuiView::GuiViewPrivate::runAndDestroy(const T& func,
+		Buffer const * orig, Buffer * clone, string const & format)
 {
 	Buffer::ExportStatus const status = func(format);
 
@@ -3549,23 +3550,29 @@ Buffer::ExportStatus GuiView::GuiViewPrivate::runAndDestroy(const T& func, Buffe
 }
 
 
-Buffer::ExportStatus GuiView::GuiViewPrivate::compileAndDestroy(Buffer const * orig, Buffer * clone, string const & format)
+Buffer::ExportStatus GuiView::GuiViewPrivate::compileAndDestroy(
+		Buffer const * orig, Buffer * clone, string const & format)
 {
-	Buffer::ExportStatus (Buffer::* mem_func)(std::string const &, bool) const = &Buffer::doExport;
+	Buffer::ExportStatus (Buffer::* mem_func)(std::string const &, bool) const =
+			&Buffer::doExport;
 	return runAndDestroy(lyx::bind(mem_func, clone, _1, true), orig, clone, format);
 }
 
 
-Buffer::ExportStatus GuiView::GuiViewPrivate::exportAndDestroy(Buffer const * orig, Buffer * clone, string const & format)
+Buffer::ExportStatus GuiView::GuiViewPrivate::exportAndDestroy(
+		Buffer const * orig, Buffer * clone, string const & format)
 {
-	Buffer::ExportStatus (Buffer::* mem_func)(std::string const &, bool) const = &Buffer::doExport;
+	Buffer::ExportStatus (Buffer::* mem_func)(std::string const &, bool) const =
+			&Buffer::doExport;
 	return runAndDestroy(lyx::bind(mem_func, clone, _1, false), orig, clone, format);
 }
 
 
-Buffer::ExportStatus GuiView::GuiViewPrivate::previewAndDestroy(Buffer const * orig, Buffer * clone, string const & format)
+Buffer::ExportStatus GuiView::GuiViewPrivate::previewAndDestroy(
+		Buffer const * orig, Buffer * clone, string const & format)
 {
-	Buffer::ExportStatus (Buffer::* mem_func)(std::string const &) const = &Buffer::preview;
+	Buffer::ExportStatus (Buffer::* mem_func)(std::string const &) const =
+			&Buffer::preview;
 	return runAndDestroy(lyx::bind(mem_func, clone, _1), orig, clone, format);
 }
 
