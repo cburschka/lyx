@@ -1854,8 +1854,11 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			dr.setMessage(bformat(_("Cannot iterate more than %1$d times"), max_iter));
 			dr.setError(true);
 		} else {
-			for (int i = 0; i < count; ++i)
-				dispatch(lyxaction.lookupFunc(rest));
+			for (int i = 0; i < count; ++i) {
+				FuncRequest lfun = lyxaction.lookupFunc(rest);
+				lfun.allowAsync(false);
+				dispatch(lfun);
+			}
 		}
 		break;
 	}
@@ -1872,6 +1875,7 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			string first;
 			arg = split(arg, first, ';');
 			FuncRequest func(lyxaction.lookupFunc(first));
+			func.allowAsync(false);
 			func.setOrigin(cmd.origin());
 			dispatch(func);
 		}

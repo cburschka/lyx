@@ -98,6 +98,11 @@ public:
 	static FuncRequest const unknown;
 	///
 	static FuncRequest const noaction;
+	///
+	bool allowAsync() const { return allow_async_; }
+	///
+	void allowAsync(bool allow_async) { allow_async_ = allow_async; }
+	
 private:
 	/// the action
 	FuncCode action_;
@@ -116,6 +121,8 @@ private:
 	mouse_button::state button_;
 	///
 	KeyModifier modifier_;
+	///
+	bool allow_async_;
 };
 
 
