@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-04-02 10:54+0200\n"
-"PO-Revision-Date: 2018-04-02 08:59+0000\n"
+"POT-Creation-Date: 2018-04-19 09:36+0200\n"
+"PO-Revision-Date: 2018-04-19 08:14+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 2.0\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
 "X-Language: sk_SK\n"
 "X-Source-Language: en_US\n"
@@ -2567,6 +2567,19 @@ msgstr "Rozšírená ta&buľka znakov"
 #: src/frontends/qt4/ui/ListingsUi.ui:345
 msgid "Lan&guage:"
 msgstr "&Jazyk:"
+
+#: lib/layouts/landscape.module:2 lib/layouts/landscape.module:10
+#: lib/layouts/landscape.module:15
+msgid "Landscape"
+msgstr "Na Šírku"
+
+#: lib/layouts/landscape.module:25
+msgid "Landscape (Floating)"
+msgstr "Na Šírku (Plávanie)"
+
+#: lib/layouts/landscape.module:28
+msgid "Landscape (floating)"
+msgstr "Na Šírku (plávanie)"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:355
 msgid "Select the programming language"
@@ -11007,6 +11020,11 @@ msgstr ""
 "Kontroluje schému pre číslovanie, položky, opis a listina/etiketovanie.\n"
 "Pozrite si sekciu 'Customized Lists' v Užívateľskej Príručke pre detailné "
 "vysvetlenie."
+
+#: src/frontends/qt4/GuiView.cpp:709
+#, c-format
+msgid "Conversion cancelled while previewing format: %1$s"
+msgstr "Konverzia bola zrušená počas náhľadu formátu: %1$s"
 
 #: lib/layouts/enumitem.module:58 lib/layouts/paralist.module:29
 #: lib/layouts/powerdot.layout:276
@@ -26422,17 +26440,6 @@ msgstr "&Vždy spustiť pre tento dokument"
 msgid "Converter killed"
 msgstr "Konvertor prerušený"
 
-#: src/Converter.cpp:428 src/Converter.cpp:669 src/Converter.cpp:698
-#, c-format
-msgid ""
-"The running converter\n"
-" %1$s\n"
-"was killed by the user."
-msgstr ""
-"Beh konverzie\n"
-" %1$s\n"
-"bol prerušený užívateľom."
-
 #: src/Converter.cpp:447 src/Converter.cpp:722 src/Converter.cpp:745
 #: src/Converter.cpp:788
 msgid "Cannot convert file"
@@ -26578,6 +26585,10 @@ msgstr ""
 #: src/Converter.cpp:879
 msgid "Output is empty"
 msgstr "Výstup je prázdny"
+
+#: lib/layouts/landscape.module:5
+msgid "Output parts of the document in landscape mode."
+msgstr "Vytlačiť čiastky z dokumentu na šírku."
 
 #: src/Converter.cpp:880
 msgid "No output file was generated."
@@ -32181,6 +32192,15 @@ msgstr ""
 "Nasledujúce znaky použité vo vložke %1$s sú nereprezentovateľné\n"
 "v aktuálnom kódovaní a boli vynechané:\n"
 "%2$s."
+
+#: src/Converter.cpp:444 src/Converter.cpp:686 src/Converter.cpp:715
+#, c-format
+msgid ""
+"The following converter was killed by the user.\n"
+" %1$s\n"
+msgstr ""
+"Nasledujúci konvertor bol zrušený používateľom.\n"
+"  %1$s\n"
 
 #: src/insets/InsetExternal.cpp:403
 #, c-format
@@ -38149,3 +38169,12 @@ msgstr "Neznámy používateľ"
 #~ msgid "Please install correctly to see what has changed\n"
 #~ msgstr ""
 #~ "Prosím vykonajte správnu inštaláciu keď chcete zistiť čo sa zmenilo\n"
+
+#~ msgid ""
+#~ "The running converter\n"
+#~ " %1$s\n"
+#~ "was killed by the user."
+#~ msgstr ""
+#~ "Beh konverzie\n"
+#~ " %1$s\n"
+#~ "bol prerušený užívateľom."
