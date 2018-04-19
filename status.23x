@@ -22,6 +22,9 @@ What's new
 
 - Support rotation of multi-page tables via (pdf)lscape (bug 9194).
 
+- Added LFUN_MASTER_BUFFER_EXPORT, which exports the master buffer, along
+  the lines of LFUN_MASTER_BUFFER_VIEW (bug 11118).
+
 
 * TEX2LYX IMPROVEMENTS
 

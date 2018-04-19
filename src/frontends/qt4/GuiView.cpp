@@ -1859,6 +1859,15 @@ bool GuiView::getStatus(FuncRequest const & cmd, FuncStatus & flag)
 	case LFUN_BUFFER_IMPORT:
 		break;
 
+	case LFUN_MASTER_BUFFER_EXPORT:
+		enable = doc_buffer
+			&& (doc_buffer->parent() != 0
+			    || doc_buffer->hasChildren())
+			&& !d.processing_thread_watcher_.isRunning()
+			// this launches a dialog, which would be in the wrong Buffer
+			&& !(::lyx::operator==(cmd.argument(), "custom"));
+		break;
+
 	case LFUN_MASTER_BUFFER_UPDATE:
 	case LFUN_MASTER_BUFFER_VIEW:
 		enable = doc_buffer
@@ -3684,11 +3693,19 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			importDocument(to_utf8(cmd.argument()));
 			break;
 
+		case LFUN_MASTER_BUFFER_EXPORT:
+			if (doc_buffer)
+				doc_buffer = const_cast<Buffer *>(doc_buffer->masterBuffer());
+			// fall through
 		case LFUN_BUFFER_EXPORT: {
 			if (!doc_buffer)
 				break;
 			// GCC only sees strfwd.h when building merged
 			if (::lyx::operator==(cmd.argument(), "custom")) {
+				// LFUN_MASTER_BUFFER_EXPORT is not enabled for this case,
+				// so the following test should not be needed.
+				// In principle, we could try to switch to such a view...
+				// if (cmd.action() == LFUN_BUFFER_EXPORT)
 				dispatch(FuncRequest(LFUN_DIALOG_SHOW, "sendto"), dr);
 				break;
 			}
