@@ -478,6 +478,7 @@ enum FuncCode
 	LFUN_EXPORT_CANCEL,             // rgh, 20171227
 	LFUN_BUFFER_ANONYMIZE,          // sanda, 20180201
 	LFUN_GRAPHICS_UNIFY,            // sanda, 20180207
+	LFUN_MASTER_BUFFER_EXPORT,      // rkh, 20180417
 	LFUN_LASTACTION                 // end of the table
 };
 

@@ -2507,6 +2507,25 @@ void LyXAction::init()
 
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_MASTER_BUFFER_EXPORT
+ * \li Action: Exports the master buffer (document) to the given format.
+ * \li Syntax: master-buffer-export [<FORMAT>] [<DEST>]
+ * \li Params: <FORMAT> is one of the formats which you can find in 
+                        Tools->Preferences->File formats->Format.
+                        Usual format you will enter is "pdf2" (pdflatex),
+                        "pdflatex" (plain tex for pdflatex) or "ps" for postscript.\n
+                        Note that "custom" is not allowed in this case.\n
+                        If absent or "default", then the default output format of the
+                        document is used.\n
+               <DEST>   If present, this argument provides the export destination
+                        filename. Its containing folder will also be the destination
+                        folder, where all the needed external files will be copied.
+ * \li Origin: rkh, 18 April 2018
+ * \endvar
+ */
+		{ LFUN_MASTER_BUFFER_EXPORT, "master-buffer-export", ReadOnly, Buffer },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_MASTER_BUFFER_UPDATE
  * \li Action: Update (export) the document built from the master buffer,
                if the current buffer is part of a master/child document.
