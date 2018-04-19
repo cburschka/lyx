@@ -569,13 +569,6 @@ void InsetMathHull::metrics(MetricsInfo & mi, Dimension & dim) const
 
 	// reserve some space for marker.
 	dim.wid += 2;
-
-	// make it at least as high as the current font
-	int asc = 0;
-	int des = 0;
-	math_font_max_dim(mi.base.font, asc, des);
-	dim.asc = max(dim.asc, asc);
-	dim.des = max(dim.des, des);
 }
 
 

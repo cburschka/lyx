@@ -259,13 +259,13 @@ bool isInside(DocIterator const & it, MathData const & ar,
 #endif
 
 
-void MathData::metrics(MetricsInfo & mi, Dimension & dim) const
+void MathData::metrics(MetricsInfo & mi, Dimension & dim, bool tight) const
 {
 	frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
-	dim = fm.dimension('I');
+	int const Iascent = fm.dimension('I').ascent();
 	int xascent = fm.dimension('x').ascent();
-	if (xascent >= dim.asc)
-		xascent = (2 * dim.asc) / 3;
+	if (xascent >= Iascent)
+		xascent = (2 * Iascent) / 3;
 	minasc_ = xascent;
 	mindes_ = (3 * xascent) / 4;
 	slevel_ = (4 * xascent) / 5;
@@ -275,6 +275,16 @@ void MathData::metrics(MetricsInfo & mi, Dimension & dim) const
 	mrow.metrics(mi, dim);
 	mrow_cache_[mi.base.bv] = mrow;
 	kerning_ = mrow.kerning(mi.base.bv);
+
+	// Set a minimal ascent/descent for the cell
+	if (tight)
+		// FIXME: this is the minimal ascent seen empirically, check
+		// what the TeXbook says.
+		dim.asc = max(dim.asc, fm.ascent('x'));
+	else {
+		dim.asc = max(dim.asc, fm.maxAscent());
+		dim.des = max(dim.des, fm.maxDescent());
+	}
 
 	// Cache the dimension.
 	mi.base.bv->coordCache().arrays().add(this, dim);

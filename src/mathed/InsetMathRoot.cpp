@@ -47,19 +47,12 @@ void mathed_root_metrics(MetricsInfo & mi, MathData const & nucleus,
 	Dimension dimr;
 	if (root) {
 		Changer script = mi.base.font.changeStyle(LM_ST_SCRIPTSCRIPT);
-		root->metrics(mi, dimr);
 		// make sure that the dim is high enough for any character
-		Dimension fontDim;
-		math_font_max_dim(mi.base.font, fontDim.asc, fontDim.des);
-		dimr += fontDim;
+		root->metrics(mi, dimr, false);
 	}
 
 	Dimension dimn;
 	nucleus.metrics(mi, dimn);
-	// make sure that the dim is high enough for any character
-	// Dimension fontDim;
-	// math_font_max_dim(mi.base.font, fontDim.asc, fontDim.des);
-	// dimn += fontDim;
 
 	// Some room for the decoration
 	// The width of left decoration was 9 pixels with a 10em font

@@ -397,7 +397,8 @@ void InsetMathGrid::metrics(MetricsInfo & mi, Dimension & dim) const
 	for (idx_type i = 0; i < nargs(); ++i) {
 		if (cellinfo_[i].multi_ != CELL_PART_OF_MULTICOLUMN) {
 			Dimension dimc;
-			cell(i).metrics(mi, dimc);
+			// the 'false' is to make sure that the cell is tall enough
+			cell(i).metrics(mi, dimc, false);
 		}
 	}
 
