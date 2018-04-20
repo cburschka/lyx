@@ -118,6 +118,9 @@ public:
 	 */
 	std::string document_language;
 
+	/// main font encoding of the document
+	std::string main_fontenc;
+
 	/** The master language. Non-null only for child documents.
 	    Note that this is not the language of the top level master, but
 	    of the direct parent for nested includes.

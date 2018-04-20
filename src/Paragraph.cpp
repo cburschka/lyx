@@ -331,7 +331,8 @@ public:
 	/// specified by the latex macro \p ltx, to \p os starting from \p i.
 	/// \return the number of characters written.
 	int writeScriptChars(otexstream & os, docstring const & ltx,
-			   Change const &, Encoding const &, pos_type & i);
+			     Change const &, Encoding const &,
+			     std::string const, pos_type & i);
 
 	/// This could go to ParagraphParameters if we want to.
 	int startTeXParParams(BufferParams const &, otexstream &,
@@ -883,7 +884,27 @@ int Paragraph::Private::latexSurrogatePair(otexstream & os, char_type c,
 			latex1 = from_ascii(tipashortcut);
 		}
 	}
-	docstring const latex2 = encoding.latexChar(c).first;
+	docstring latex2 = encoding.latexChar(c).first;
+
+	docstring::size_type const brace1 = latex2.find_first_of(from_ascii("{"));
+	docstring::size_type const brace2 = latex2.find_last_of(from_ascii("}"));
+	string script = to_ascii(latex2.substr(1, brace1 - 1));
+	int pos = 0;
+	int length = brace2;
+	string fontenc;
+	if (runparams.local_font)
+		fontenc = runparams.local_font->language()->fontenc();
+	else
+		fontenc = runparams.main_fontenc;
+	if ((script == "textgreek" && fontenc == "LGR")
+	    ||(script == "textcyr" && (fontenc == "T2A" || fontenc == "T2B"
+				       || fontenc == "T2C" || fontenc == "X2"))) {
+		// Correct font encoding is being used, so we can avoid \text[greek|cyr].
+		pos = brace1 + 1;
+		length -= pos;
+		latex2 = latex2.substr(pos, length);
+	}
+
 	if (docstring(1, next) == latex1) {
 		// the encoding supports the combination
 		os << latex2 << latex1;
@@ -948,6 +969,7 @@ int Paragraph::Private::writeScriptChars(otexstream & os,
 					 docstring const & ltx,
 					 Change const & runningChange,
 					 Encoding const & encoding,
+					 string const fontenc,
 					 pos_type & i)
 {
 	// FIXME: modifying i here is not very nice...
@@ -955,10 +977,6 @@ int Paragraph::Private::writeScriptChars(otexstream & os,
 	// We only arrive here when character text_[i] could not be translated
 	// into the current latex encoding (or its latex translation has been forced,)
 	// and it belongs to a known script.
-	// TODO: We need \textcyr and \textgreek wrappers also for characters
-	//       that can be encoded in the "LaTeX encoding" but not in the
-	//       current *font encoding*.
-	//       (See #9681 for details and test)
 	// Parameter ltx contains the latex translation of text_[i] as specified
 	// in the unicodesymbols file and is something like "\textXXX{<spec>}".
 	// The latex macro name "textXXX" specifies the script to which text_[i]
@@ -972,12 +990,10 @@ int Paragraph::Private::writeScriptChars(otexstream & os,
 	int pos = 0;
 	int length = brace2;
 	bool closing_brace = true;
-	if (script == "textgreek" && encoding.latexName() == "iso-8859-7") {
-		// Correct encoding is being used, so we can avoid \textgreek.
-		// TODO: wrong test: we need to check the *font encoding*
-		//       (i.e. the active language and its FontEncoding tag)
-	        // 	 instead of the LaTeX *input encoding*!
-		// 	 See #9637 for details and test-cases.
+	if ((script == "textgreek" && fontenc == "LGR")
+	    ||(script == "textcyr" && (fontenc == "T2A" || fontenc == "T2B"
+				       || fontenc == "T2C" || fontenc == "X2"))) {
+		// Correct font encoding is being used, so we can avoid \text[greek|cyr].
 		pos = brace1 + 1;
 		length -= pos;
 		closing_brace = false;
@@ -1341,10 +1357,16 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 				tipas = true;
 			}
 		}
+		string fontenc;
+		if (running_font.language()->lang() == runparams.document_language)
+			fontenc = runparams.main_fontenc;
+		else
+			fontenc = running_font.language()->fontenc();
 		if (Encodings::isKnownScriptChar(c, script)
 		    && prefixIs(latex.first, from_ascii("\\" + script)))
 			column += writeScriptChars(os, latex.first,
-					running_change, encoding, i) - 1;
+						   running_change, encoding,
+						   fontenc, i) - 1;
 		else if (latex.second
 			 && ((!prefixIs(nextlatex, '\\')
 			       && !prefixIs(nextlatex, '{')
