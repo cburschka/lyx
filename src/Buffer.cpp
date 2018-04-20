@@ -4799,10 +4799,18 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 		// labels. Nothing else will have changed. So we could create a new 
 		// UpdateType that would signal that fact, if we needed to do so.
 		parit = cbuf.par_iterator_begin();
+		// we will be re-doing the counters and references and such.
+		textclass.counters().reset();
+		clearReferenceCache();
+		// we should not need to do this again?
+		// updateMacros();
+		setChangesPresent(false);
 		updateBuffer(parit, utype);
 	}
-	else
+	else {
+		// this is also set to true on the other path, by reloadBibInfoCache.
 		d->bibinfo_cache_valid_ = true;
+	}
 	d->cite_labels_valid_ = true;
 	/// FIXME: Perf
 	cbuf.tocBackend().update(true, utype);
