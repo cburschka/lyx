@@ -330,7 +330,8 @@ public:
 	/// Output consecutive unicode chars, belonging to the same script as
 	/// specified by the latex macro \p ltx, to \p os starting from \p i.
 	/// \return the number of characters written.
-	int writeScriptChars(otexstream & os, docstring const & ltx,
+	int writeScriptChars(OutputParams const &, otexstream & os,
+			     docstring const & ltx,
 			     Change const &, Encoding const &,
 			     std::string const, pos_type & i);
 
@@ -965,7 +966,8 @@ bool Paragraph::Private::simpleTeXBlanks(OutputParams const & runparams,
 }
 
 
-int Paragraph::Private::writeScriptChars(otexstream & os,
+int Paragraph::Private::writeScriptChars(OutputParams const & runparams,
+					 otexstream & os,
 					 docstring const & ltx,
 					 Change const & runningChange,
 					 Encoding const & encoding,
@@ -1022,6 +1024,18 @@ int Paragraph::Private::writeScriptChars(otexstream & os,
 		// Stop here if there is a font attribute or encoding change.
 		if (found && cit != end && prev_font != cit->font())
 			break;
+
+		// Check whether we have a combining pair
+		char_type next_next = '\0';
+		if (i + 2 < size) {
+			next_next = text_[i + 2];
+			if (Encodings::isCombiningChar(next_next)) {
+				length += latexSurrogatePair(os, next, next_next, runparams) - 1;
+				i += 2;
+				continue;
+			}
+		}
+
 		docstring const latex = encoding.latexChar(next).first;
 		docstring::size_type const b1 =
 					latex.find_first_of(from_ascii("{"));
@@ -1364,7 +1378,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 			fontenc = running_font.language()->fontenc();
 		if (Encodings::isKnownScriptChar(c, script)
 		    && prefixIs(latex.first, from_ascii("\\" + script)))
-			column += writeScriptChars(os, latex.first,
+			column += writeScriptChars(runparams, os, latex.first,
 						   running_change, encoding,
 						   fontenc, i) - 1;
 		else if (latex.second
