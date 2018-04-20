@@ -44,6 +44,10 @@ class LayoutModuleList;
 class LyXModule;
 class TextClass;
 
+namespace support {
+	class TempFile;
+}
+
 namespace frontend {
 
 class FloatPlacement;
@@ -55,7 +59,7 @@ class LocalLayout;
 class FontModule;
 
 ///
-typedef void const * BufferId;
+typedef Buffer const * BufferId;
 
 template<class UI>
 class UiWidget : public QWidget, public UI
@@ -323,6 +327,7 @@ public:
 	PreambleModule(QWidget * parent);
 	void update(BufferParams const & params, BufferId id);
 	void apply(BufferParams & params);
+	bool editing() const { return (bool)tempfile_; }
 
 Q_SIGNALS:
 	/// signal that something's changed in the Widget.
@@ -335,11 +340,13 @@ private:
 	typedef std::map<BufferId, std::pair<int,int> > Coords;
 	Coords preamble_coords_;
 	BufferId current_id_;
+	unique_ptr<support::TempFile> tempfile_;
 
 private Q_SLOTS:
 	///
 	void checkFindButton();
 	void findText();
+	void editExternal();
 };
 
 
@@ -351,6 +358,7 @@ public:
 	void update(BufferParams const & params, BufferId id);
 	void apply(BufferParams & params);
 	bool isValid() const { return validated_; }
+	bool editing() const { return (bool)tempfile_; }
 
 Q_SIGNALS:
 	/// signal that something's changed in the Widget.
@@ -364,10 +372,12 @@ private Q_SLOTS:
 	void textChanged();
 	void validatePressed();
 	void convertPressed();
+	void editExternal();
 
 private:
 	BufferId current_id_;
 	bool validated_;
+	unique_ptr<support::TempFile> tempfile_;
 };
 
 
