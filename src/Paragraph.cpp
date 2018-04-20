@@ -1372,16 +1372,20 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 			}
 		}
 		string fontenc;
-		if (running_font.language()->lang() == runparams.document_language)
+		if (running_font.language()->lang() == bparams.language->lang())
 			fontenc = runparams.main_fontenc;
 		else
 			fontenc = running_font.language()->fontenc();
-		if (Encodings::isKnownScriptChar(c, script)
-		    && prefixIs(latex.first, from_ascii("\\" + script)))
-			column += writeScriptChars(runparams, os, latex.first,
-						   running_change, encoding,
-						   fontenc, i) - 1;
-		else if (latex.second
+		// "Script chars" need to embraced in \textcyr and \textgreek notwithstanding
+		// whether they are encodable or not (it only depends on the font encoding)
+		if (!runparams.isFullUnicode() && Encodings::isKnownScriptChar(c, script)) {
+			docstring const wrapper = from_ascii("\\" + script + "{");
+			docstring ltx = latex.first;
+			if (!prefixIs(ltx, wrapper))
+				ltx = wrapper + latex.first + from_ascii("}");
+			column += writeScriptChars(runparams, os, ltx, running_change,
+						   encoding, fontenc, i) - 1;
+		} else if (latex.second
 			 && ((!prefixIs(nextlatex, '\\')
 			       && !prefixIs(nextlatex, '{')
 			       && !prefixIs(nextlatex, '}'))

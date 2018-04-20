@@ -1781,6 +1781,9 @@ Buffer::ExportStatus Buffer::writeLaTeXSource(otexstream & os,
 	//        (or not reached) and characters encodable in the current
 	//        encoding are not converted to ASCII-representation.
 
+	// Some macros rely on font encoding
+	runparams.main_fontenc = params().main_font_encoding();
+
 	// If we are compiling a file standalone, even if this is the
 	// child of some other buffer, let's cut the link here, so the
 	// file is really independent and no concurring settings from
