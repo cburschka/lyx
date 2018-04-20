@@ -59,11 +59,13 @@
 #include "insets/InsetListingsParams.h"
 
 #include "support/debug.h"
+#include "support/docstream.h"
 #include "support/FileName.h"
 #include "support/filetools.h"
 #include "support/gettext.h"
 #include "support/lassert.h"
 #include "support/lstrings.h"
+#include "support/TempFile.h"
 
 #include "frontends/alert.h"
 
@@ -472,6 +474,7 @@ PreambleModule::PreambleModule(QWidget * parent)
 	connect(preambleTE, SIGNAL(textChanged()), this, SIGNAL(changed()));
 	connect(findLE, SIGNAL(textEdited(const QString &)), this, SLOT(checkFindButton()));
 	connect(findButtonPB, SIGNAL(clicked()), this, SLOT(findText()));
+	connect(editPB, SIGNAL(clicked()), this, SLOT(editExternal()));
 	connect(findLE, SIGNAL(returnPressed()), this, SLOT(findText()));
 	checkFindButton();
 	// https://stackoverflow.com/questions/13027091/how-to-override-tab-width-in-qt
@@ -546,6 +549,36 @@ void PreambleModule::closeEvent(QCloseEvent * e)
 }
 
 
+void PreambleModule::editExternal() {
+	if (!current_id_)
+		return;
+
+	if (tempfile_) {
+		preambleTE->setReadOnly(false);
+		FileName const tempfilename = tempfile_->name();
+		docstring const s = tempfilename.fileContents("UTF-8");
+		preambleTE->document()->setPlainText(toqstr(s));
+		tempfile_.reset();
+		editPB->setText(qt_("Edit"));
+		changed();
+		return;
+	}
+
+	string const format =
+		current_id_->params().documentClass().outputFormat();
+	string const ext = theFormats().extension(format);
+	tempfile_.reset(new TempFile("preamble_editXXXXXX" + ext));
+	FileName const tempfilename = tempfile_->name();
+	string const name = tempfilename.toFilesystemEncoding();
+	ofdocstream os(name.c_str());
+	os << qstring_to_ucs4(preambleTE->document()->toPlainText());
+	os.close();
+	preambleTE->setReadOnly(true);
+	theFormats().edit(*current_id_, tempfilename, format);
+	editPB->setText(qt_("End Edit"));
+	changed();
+}
+
 /////////////////////////////////////////////////////////////////////
 //
 // LocalLayout
@@ -561,6 +594,7 @@ LocalLayout::LocalLayout(QWidget * parent)
 	connect(locallayoutTE, SIGNAL(textChanged()), this, SLOT(textChanged()));
 	connect(validatePB, SIGNAL(clicked()), this, SLOT(validatePressed()));
 	connect(convertPB, SIGNAL(clicked()), this, SLOT(convertPressed()));
+	connect(editPB, SIGNAL(clicked()), this, SLOT(editExternal()));
 }
 
 
@@ -684,6 +718,38 @@ void LocalLayout::validatePressed() {
 	changed();
 }
 
+
+void LocalLayout::editExternal() {
+	if (!current_id_)
+		return;
+
+	if (tempfile_) {
+		locallayoutTE->setReadOnly(false);
+		FileName const tempfilename = tempfile_->name();
+		docstring const s = tempfilename.fileContents("UTF-8");
+		locallayoutTE->document()->setPlainText(toqstr(s));
+		tempfile_.reset();
+		editPB->setText(qt_("Edit"));
+		changed();
+		return;
+	}
+
+	string const format =
+		current_id_->params().documentClass().outputFormat();
+	string const ext = theFormats().extension(format);
+	tempfile_.reset(new TempFile("preamble_editXXXXXX" + ext));
+	FileName const tempfilename = tempfile_->name();
+	string const name = tempfilename.toFilesystemEncoding();
+	ofdocstream os(name.c_str());
+	os << qstring_to_ucs4(locallayoutTE->document()->toPlainText());
+	os.close();
+	locallayoutTE->setReadOnly(true);
+	theFormats().edit(*current_id_, tempfilename, format);
+	editPB->setText(qt_("End Edit"));
+	validatePB->setEnabled(false);
+	hideConvert();
+	changed();
+}
 
 /////////////////////////////////////////////////////////////////////
 //
@@ -4262,6 +4328,8 @@ bool GuiDocument::isValid()
 	return
 		validateListingsParameters().isEmpty() &&
 		localLayout->isValid() &&
+		!localLayout->editing() &&
+		!preambleModule->editing() &&
 		(
 			// if we're asking for skips between paragraphs
 			!textLayoutModule->skipRB->isChecked() ||
