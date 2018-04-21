@@ -26,6 +26,7 @@
 #	  <extra latex code inserted after babel>
 #	EndPostBabelPreamble
 #	Requires           <requirement>
+#	Provides           <feature>
 # End
 #
 #
@@ -167,6 +168,7 @@ Language ancientgreek
 	InternalEncoding  true
 	FontEncoding      LGR
 	LangCode          grc_GR
+	Provides          textgreek
 End
 
 # FIXME: dummy babel language for arabic_arabtex to be able
@@ -618,6 +620,7 @@ Language greek
 	InternalEncoding  true
 	FontEncoding      LGR
 	LangCode          el_GR
+	Provides          textgreek
 End
 
 Language polutonikogreek
@@ -630,6 +633,7 @@ Language polutonikogreek
 	InternalEncoding  true
 	FontEncoding      LGR
 	LangCode          el_GR
+	Provides          textgreek
 End
 
 Language hebrew

@@ -50,6 +50,8 @@ public:
 	std::string const quoteStyle() const { return quote_style_; }
 	/// requirement (package, function)
 	std::string const requires() const { return requires_; }
+	/// provides feature
+	std::string const provides() const { return provides_; }
 	/// translatable GUI name
 	std::string const display() const { return display_; }
 	/// is this a RTL language?
@@ -108,6 +110,8 @@ private:
 	trivstring quote_style_;
 	///
 	trivstring requires_;
+	///
+	trivstring provides_;
 	///
 	trivstring display_;
 	///

@@ -544,6 +544,12 @@ void LaTeXFeatures::require(set<string> const & names)
 }
 
 
+void LaTeXFeatures::provide(string const & name)
+{
+	provides_.insert(name);
+}
+
+
 void LaTeXFeatures::useLayout(docstring const & layoutname)
 {
 	useLayout(layoutname, 0);
@@ -609,19 +615,11 @@ bool LaTeXFeatures::isRequired(string const & name) const
 
 bool LaTeXFeatures::isProvided(string const & name) const
 {
-	// \textgreek is provided by babel globally if a Greek language/variety
-	// is used in the document
-	if (useBabel() && name == "textgreek"
-	    && params_.main_font_encoding() != "default") {
-		// get main font encodings
-		vector<string> fontencs = params_.font_encodings();
-		// get font encodings of secondary languages
-		getFontEncodings(fontencs, true);
-		for (auto & fe : fontencs) {
-			if (!Encodings::needsScriptWrapper(name, fe))
-				return true;
-		}
-	}
+	// \textgreek is provided by babel globally if a Greek
+	// language/variety is used in the document
+	if (provides_.find(name) != provides_.end())
+		return true;
+
 	// FIXME: Analoguously, babel provides a command \textcyrillic, but
 	//        for some reason, we roll our own \textcyr definition
 	//        We should use \textcyrillic instead and only define it
@@ -756,6 +754,9 @@ void LaTeXFeatures::useLanguage(Language const * lang)
 		UsedLanguages_.insert(lang);
 	if (!lang->requires().empty())
 		require(lang->requires());
+	// currently only supported for Babel
+	if (!lang->provides().empty() && useBabel())
+		provide(lang->provides());
 	// CJK languages do not have a babel name.
 	// They use the CJK package
 	if (lang->encoding()->package() == Encoding::CJK)

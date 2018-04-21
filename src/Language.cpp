@@ -87,9 +87,10 @@ bool Language::readLanguage(Lexer & lex)
 		LA_POLYGLOSSIANAME,
 		LA_POLYGLOSSIAOPTS,
 		LA_POSTBABELPREAMBLE,
-		LA_QUOTESTYLE,
 		LA_PREBABELPREAMBLE,
+		LA_PROVIDES,
 		LA_REQUIRES,
+		LA_QUOTESTYLE,
 		LA_RTL
 	};
 
@@ -109,6 +110,7 @@ bool Language::readLanguage(Lexer & lex)
 		{ "polyglossiaopts",      LA_POLYGLOSSIAOPTS },
 		{ "postbabelpreamble",    LA_POSTBABELPREAMBLE },
 		{ "prebabelpreamble",     LA_PREBABELPREAMBLE },
+		{ "provides",             LA_PROVIDES },
 		{ "quotestyle",           LA_QUOTESTYLE },
 		{ "requires",             LA_REQUIRES },
 		{ "rtl",                  LA_RTL }
@@ -183,6 +185,9 @@ bool Language::readLanguage(Lexer & lex)
 			break;
 		case LA_REQUIRES:
 			lex >> requires_;
+			break;
+		case LA_PROVIDES:
+			lex >> provides_;
 			break;
 		case LA_RTL:
 			lex >> rightToLeft_;
