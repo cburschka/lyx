@@ -7,8 +7,12 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2018-04-24  Jürgen Spitzmüller <spitz@lyx.org>
+	* format incremented to 549: change \textcyr to \textcyrillic.
+	  Dummy format change for now (in case it turns out we need to do something).
+
 2018-04-18  Jürgen Spitzmüller <spitz@lyx.org>
-	* format incremented to 546: Add Landscape flex inset in Landscape module.
+	* format incremented to 548: Add Landscape flex inset in Landscape module.
 	  \begin{landscape}...\end{landscape} > \begin_inset Flex Landscape
 
 2018-03-14 Yuriy Skalko <yuriy.skalko@gmail.com>

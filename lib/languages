@@ -336,6 +336,7 @@ Language bulgarian
 	Encoding         cp1251
 	FontEncoding     T2A
 	LangCode         bg_BG
+	Provides         textcyrillic
 End
 
 # not yet supported by polyglossia
@@ -854,6 +855,7 @@ Language macedonian
 	Encoding         cp1251
 	FontEncoding     T2A
 	LangCode         mk_MK
+	Provides         textcyrillic
 End
 
 # not supported by babel
@@ -874,6 +876,7 @@ Language mongolian
 	FontEncoding     T2A
 	LangCode         mn_MN
 	AsBabelOptions   true
+	Provides         textcyrillic
 End
 
 Language newzealand
@@ -988,6 +991,7 @@ Language russian
 	Encoding         koi8-r
 	FontEncoding     T2A
 	LangCode         ru_RU
+	Provides         textcyrillic
 End
 
 Language samin
@@ -1177,6 +1181,7 @@ Language ukrainian
 	Encoding         koi8-u
 	FontEncoding     T2A
 	LangCode         uk_UA
+	Provides         textcyrillic
 End
 
 Language uppersorbian

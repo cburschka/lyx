@@ -258,7 +258,7 @@ static docstring const textcyr_T2A_def = from_ascii(
 static docstring const textcyr_def = from_ascii(
 	"\\DeclareRobustCommand{\\cyrtext}{%\n"
 	"  \\fontencoding{T2A}\\selectfont\\def\\encodingdefault{T2A}}\n"
-	"\\DeclareRobustCommand{\\textcyr}[1]{\\leavevmode{\\cyrtext #1}}\n");
+	"\\DeclareRobustCommand{\\textcyrillic}[1]{\\leavevmode{\\cyrtext #1}}\n");
 
 static docstring const lyxmathsym_def = from_ascii(
 	"\\newcommand{\\lyxmathsym}[1]{\\ifmmode\\begingroup\\def\\b@ld{bold}\n"
@@ -615,18 +615,13 @@ bool LaTeXFeatures::isRequired(string const & name) const
 
 bool LaTeXFeatures::isProvided(string const & name) const
 {
-	// \textgreek is provided by babel globally if a Greek
-	// language/variety is used in the document
+	// Currently, this is only features provided by babel languages
+	// (such as textgreek)
 	if (provides_.find(name) != provides_.end())
 		return true;
 
-	// FIXME: Analoguously, babel provides a command \textcyrillic, but
-	//        for some reason, we roll our own \textcyr definition
-	//        We should use \textcyrillic instead and only define it
-	//        if we do not use a respective language that features it (i.e.,
-	//        add "textcyrillic" to the test above.
 	// FIXME: the "textbaltic" definitions are only needed if the context
-	//        font-encoding where the respective char is is not l7x.
+	//        font encoding of the respective char is not l7x.
 	//        We cannot check this here as we have no context information.
 
 	if (params_.useNonTeXFonts)
@@ -908,7 +903,7 @@ void LaTeXFeatures::getFontEncodings(vector<string> & encs, bool const onlylangs
 		if (mustProvide("textgreek")
 		    && find(encs.begin(), encs.end(), "LGR") == encs.end())
 			encs.insert(encs.begin(), "LGR");
-		if (mustProvide("textcyr")
+		if (mustProvide("textcyrillic")
 		    && find(encs.begin(), encs.end(), "T2A") == encs.end())
 			encs.insert(encs.begin(), "T2A");
 	}
@@ -1389,7 +1384,7 @@ TexString LaTeXFeatures::getMacros() const
 		macros << textgreek_def << '\n';
 	}
 
-	if (!usePolyglossia() && mustProvide("textcyr")) {
+	if (!usePolyglossia() && mustProvide("textcyrillic")) {
 		// ensure T2A font encoding is set up also if fontenc is not loaded by LyX
 		if (params_.main_font_encoding() == "default")
 			macros << textcyr_T2A_def;

@@ -5718,7 +5718,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		// and math commands may be invalid (bug 6797)
 		string name = t.asInput();
 		// handle the dingbats, cyrillic and greek
-		if (name == "\\ding" || name == "\\textcyr" ||
+		if (name == "\\textcyr")
+			name = "\\textcyrillic";
+		if (name == "\\ding" || name == "\\textcyrillic" ||
 		    (name == "\\textgreek" && !preamble.usePolyglossia()))
 			name = name + '{' + p.getArg('{', '}') + '}';
 		// handle the ifsym characters

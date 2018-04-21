@@ -894,11 +894,11 @@ int Paragraph::Private::latexSurrogatePair(otexstream & os, char_type c,
 		return latex1.length() + latex2.length();
 	}
 
-	// Handle combining characters in "script" context (i.e., \textgreek and \textcyr)
+	// Handle combining characters in "script" context (i.e., \textgreek and \textcyrillic)
 	docstring::size_type const brace1 = latex2.find_first_of(from_ascii("{"));
 	docstring::size_type const brace2 = latex2.find_last_of(from_ascii("}"));
 	string script = to_ascii(latex2.substr(1, brace1 - 1));
-	// "Script chars" need to embraced in \textcyr and \textgreek notwithstanding
+	// "Script chars" need to embraced in \textcyrillic and \textgreek notwithstanding
 	// whether they are encodable or not (it only depends on the font encoding)
 	if (!runparams.isFullUnicode())
 		// This will get us a script value to deal with below
@@ -912,7 +912,7 @@ int Paragraph::Private::latexSurrogatePair(otexstream & os, char_type c,
 		fontenc = runparams.main_fontenc;
 	docstring scriptmacro;
 	docstring cb;
-	if (script == "textgreek" || script == "textcyr") {
+	if (script == "textgreek" || script == "textcyrillic") {
 		// We separate the script macro (\text[greek|cyr]) from the rest,
 		// since we need to include the combining char in it (#6463).
 		// This is "the rest":
@@ -1393,7 +1393,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 			fontenc = runparams.main_fontenc;
 		else
 			fontenc = running_font.language()->fontenc();
-		// "Script chars" need to embraced in \textcyr and \textgreek notwithstanding
+		// "Script chars" need to embraced in \textcyrillic and \textgreek notwithstanding
 		// whether they are encodable or not (it only depends on the font encoding)
 		if (!runparams.isFullUnicode() && Encodings::isKnownScriptChar(c, script)) {
 			docstring const wrapper = from_ascii("\\" + script + "{");
