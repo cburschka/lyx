@@ -920,9 +920,7 @@ int Paragraph::Private::latexSurrogatePair(otexstream & os, char_type c,
 		length -= pos;
 		latex2 = latex2.substr(pos, length);
 		// We only need the script macro with non-native font encodings
-		if ((script == "textgreek" && fontenc != "LGR")
-		    || (script == "textcyr" && fontenc != "T2A" && fontenc != "T2B"
-			&& fontenc != "T2C" && fontenc != "X2")) {
+		if (Encodings::needsScriptWrapper(script, fontenc)) {
 			scriptmacro = from_ascii("\\" + script + "{");
 			cb = from_ascii("}");
 		}
@@ -1013,9 +1011,7 @@ int Paragraph::Private::writeScriptChars(OutputParams const & runparams,
 	int pos = 0;
 	int length = brace2;
 	bool closing_brace = true;
-	if ((script == "textgreek" && fontenc == "LGR")
-	    ||(script == "textcyr" && (fontenc == "T2A" || fontenc == "T2B"
-				       || fontenc == "T2C" || fontenc == "X2"))) {
+	if (!Encodings::needsScriptWrapper(script, fontenc)) {
 		// Correct font encoding is being used, so we can avoid \text[greek|cyr].
 		pos = brace1 + 1;
 		length -= pos;

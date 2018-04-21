@@ -599,6 +599,20 @@ bool Encodings::isKnownScriptChar(char_type const c, string & preamble)
 }
 
 
+bool Encodings::needsScriptWrapper(string const & script, string const & fontenc)
+{
+	if (script == "textgreek")
+		return (fontenc != "LGR");
+	if (script == "textcyr") {
+		return (fontenc != "T2A" && fontenc != "T2B"
+			&& fontenc != "T2C" && fontenc != "X2");
+	}
+	if (script == "textbaltic")
+		return (fontenc != "L7x");
+	return false;
+}
+
+
 bool Encodings::isMathAlpha(char_type c)
 {
 	return mathalpha.count(c);

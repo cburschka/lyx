@@ -280,6 +280,9 @@ public:
 	 * \p c is a known character matching the preamble entry.
 	 */
 	static bool isKnownScriptChar(char_type const c, std::string & preamble);
+	/// Do we need to wrap scripts into \text<script> macros?
+	static bool needsScriptWrapper(std::string const & script,
+				       std::string const & fontenc);
 	/**
 	 * Do we have to display in italics this character when in mathmode?
 	 * This is true if the "mathalpha" flag is set. We use this for
