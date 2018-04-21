@@ -1088,6 +1088,11 @@ InsetText::XHTMLOptions operator|(InsetText::XHTMLOptions a1, InsetText::XHTMLOp
 
 bool InsetText::needsCProtection() const
 {
+	// Nested cprotect content needs \cprotect
+	// on each level
+	if (hasCProtectContent())
+		return true;
+
 	if (!getLayout().needsCProtect())
 		return false;
 
