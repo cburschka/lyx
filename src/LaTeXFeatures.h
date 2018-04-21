@@ -136,7 +136,8 @@ public:
 	///
 	std::set<std::string> getEncodingSet(std::string const & doc_encoding) const;
 	///
-	void getFontEncodings(std::vector<std::string> & encodings) const;
+	void getFontEncodings(std::vector<std::string> & encodings,
+			      bool const onlylangs = false) const;
 	///
 	void useLayout(docstring const & lyt);
 	///

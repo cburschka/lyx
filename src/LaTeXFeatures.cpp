@@ -609,6 +609,28 @@ bool LaTeXFeatures::isRequired(string const & name) const
 
 bool LaTeXFeatures::isProvided(string const & name) const
 {
+	// \textgreek is provided by babel globally if a Greek language/variety
+	// is used in the document
+	if (useBabel() && name == "textgreek"
+	    && params_.main_font_encoding() != "default") {
+		// get main font encodings
+		vector<string> fontencs = params_.font_encodings();
+		// get font encodings of secondary languages
+		getFontEncodings(fontencs, true);
+		for (auto & fe : fontencs) {
+			if (!Encodings::needsScriptWrapper(name, fe))
+				return true;
+		}
+	}
+	// FIXME: Analoguously, babel provides a command \textcyrillic, but
+	//        for some reason, we roll our own \textcyr definition
+	//        We should use \textcyrillic instead and only define it
+	//        if we do not use a respective language that features it (i.e.,
+	//        add "textcyrillic" to the test above.
+	// FIXME: the "textbaltic" definitions are only needed if the context
+	//        font-encoding where the respective char is is not l7x.
+	//        We cannot check this here as we have no context information.
+
 	if (params_.useNonTeXFonts)
 		return params_.documentClass().provides(name);
 
@@ -634,9 +656,6 @@ bool LaTeXFeatures::isProvided(string const & name) const
 			from_ascii(params_.fontsMath())).provides(name, ot1,
 								       complete,
 								       nomath);
-	// TODO: "textbaltic" provided, if the font-encoding is "L7x"
-	//       "textgreek" provided, if a language with font-encoding LGR is used in the document
-	//       "textcyr" provided, if a language with font-encoding T2A is used in the document
 }
 
 
@@ -880,16 +899,18 @@ set<string> LaTeXFeatures::getEncodingSet(string const & doc_encoding) const
 }
 
 
-void LaTeXFeatures::getFontEncodings(vector<string> & encs) const
+void LaTeXFeatures::getFontEncodings(vector<string> & encs, bool const onlylangs) const
 {
-	// these must be loaded if glyphs of this script are used
-	// unless a language providing them is used in the document
-	if (mustProvide("textgreek")
-	    && find(encs.begin(), encs.end(), "LGR") == encs.end())
-		encs.insert(encs.begin(), "LGR");
-	if (mustProvide("textcyr")
-	    && find(encs.begin(), encs.end(), "T2A") == encs.end())
-		encs.insert(encs.begin(), "T2A");
+	if (!onlylangs) {
+		// these must be loaded if glyphs of this script are used
+		// unless a language providing them is used in the document
+		if (mustProvide("textgreek")
+		    && find(encs.begin(), encs.end(), "LGR") == encs.end())
+			encs.insert(encs.begin(), "LGR");
+		if (mustProvide("textcyr")
+		    && find(encs.begin(), encs.end(), "T2A") == encs.end())
+			encs.insert(encs.begin(), "T2A");
+	}
 
 	for (auto const & lang : UsedLanguages_)
 		if (!lang->fontenc().empty()
