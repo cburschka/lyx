@@ -887,9 +887,22 @@ int Paragraph::Private::latexSurrogatePair(otexstream & os, char_type c,
 	}
 	docstring latex2 = encoding.latexChar(c).first;
 
+	if (docstring(1, next) == latex1) {
+		// The encoding supports the combination:
+		// output as is (combining char after base char).
+		os << latex2 << latex1;
+		return latex1.length() + latex2.length();
+	}
+
+	// Handle combining characters in "script" context (i.e., \textgreek and \textcyr)
 	docstring::size_type const brace1 = latex2.find_first_of(from_ascii("{"));
 	docstring::size_type const brace2 = latex2.find_last_of(from_ascii("}"));
 	string script = to_ascii(latex2.substr(1, brace1 - 1));
+	// "Script chars" need to embraced in \textcyr and \textgreek notwithstanding
+	// whether they are encodable or not (it only depends on the font encoding)
+	if (!runparams.isFullUnicode())
+		// This will get us a script value to deal with below
+		Encodings::isKnownScriptChar(c, script);
 	int pos = 0;
 	int length = brace2;
 	string fontenc;
@@ -897,27 +910,35 @@ int Paragraph::Private::latexSurrogatePair(otexstream & os, char_type c,
 		fontenc = runparams.local_font->language()->fontenc();
 	else
 		fontenc = runparams.main_fontenc;
-	if ((script == "textgreek" && fontenc == "LGR")
-	    ||(script == "textcyr" && (fontenc == "T2A" || fontenc == "T2B"
-				       || fontenc == "T2C" || fontenc == "X2"))) {
-		// Correct font encoding is being used, so we can avoid \text[greek|cyr].
+	docstring scriptmacro;
+	docstring cb;
+	if (script == "textgreek" || script == "textcyr") {
+		// We separate the script macro (\text[greek|cyr]) from the rest,
+		// since we need to include the combining char in it (#6463).
+		// This is "the rest":
 		pos = brace1 + 1;
 		length -= pos;
 		latex2 = latex2.substr(pos, length);
+		// We only need the script macro with non-native font encodings
+		if ((script == "textgreek" && fontenc != "LGR")
+		    || (script == "textcyr" && fontenc != "T2A" && fontenc != "T2B"
+			&& fontenc != "T2C" && fontenc != "X2")) {
+			scriptmacro = from_ascii("\\" + script + "{");
+			cb = from_ascii("}");
+		}
 	}
 
-	if (docstring(1, next) == latex1) {
-		// the encoding supports the combination
-		os << latex2 << latex1;
-		return latex1.length() + latex2.length();
-	} else if (runparams.local_font &&
-		   runparams.local_font->language()->lang() == "polutonikogreek") {
-		// polutonikogreek only works without the brackets
-		os << latex1 << latex2;
-		return latex1.length() + latex2.length();
-	} else
-		os << latex1 << '{' << latex2 << '}';
-	return latex1.length() + latex2.length() + 2;
+	docstring lb;
+	docstring rb;
+	// polutonikogreek does not play nice with brackets
+	if (!runparams.local_font
+	    || runparams.local_font->language()->lang() != "polutonikogreek") {
+		lb = from_ascii("{");
+		rb = from_ascii("}");
+	}
+
+	os << scriptmacro << latex1 << lb << latex2 << rb << cb;
+	return latex1.length() + latex2.length() + lb.length() + rb.length() + cb.length();
 }
 
 
