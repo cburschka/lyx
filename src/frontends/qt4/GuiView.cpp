@@ -3632,12 +3632,9 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 		// We are asynchronous, so we don't know here anything about the success
 		return true;
 	} else {
-#endif
-		// this will be run unconditionally in case EXPORT_in_THREAD
-		// is not defined.
 		Buffer::ExportStatus status;
 		if (syncFunc) {
-			status = (used_buffer->*syncFunc)(format, true);
+			status = (used_buffer->*syncFunc)(format, false);
 		} else if (previewFunc) {
 			status = (used_buffer->*previewFunc)(format);
 		} else
@@ -3646,9 +3643,19 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 		(void) asyncFunc;
 		return (status == Buffer::ExportSuccess
 				|| status == Buffer::PreviewSuccess);
-#if EXPORT_in_THREAD
-	// the end of the else clause in that case.
 	}
+#else
+	Buffer::ExportStatus status;
+	if (syncFunc) {
+		status = (used_buffer->*syncFunc)(format, true);
+	} else if (previewFunc) {
+		status = (used_buffer->*previewFunc)(format);
+	} else
+		return false;
+	handleExportStatus(gv_, status, format);
+	(void) asyncFunc;
+	return (status == Buffer::ExportSuccess
+			|| status == Buffer::PreviewSuccess);
 #endif
 }
 
