@@ -121,7 +121,8 @@ private:
 	mouse_button::state button_;
 	///
 	KeyModifier modifier_;
-	///
+	/// Commands should be run synchronously when they
+	/// are launched via "command-sequence" or "repeat"
 	bool allow_async_;
 };
 
