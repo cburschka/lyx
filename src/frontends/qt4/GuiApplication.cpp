@@ -1883,7 +1883,8 @@ void GuiApplication::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 	}
 
 	case LFUN_BUFFER_FORALL: {
-		FuncRequest const funcToRun = lyxaction.lookupFunc(cmd.getLongArg(0));
+		FuncRequest funcToRun = lyxaction.lookupFunc(cmd.getLongArg(0));
+		funcToRun.allowAsync(false);
 
 		map<Buffer *, GuiView *> views_lVisible;
 		map<GuiView *, Buffer *> activeBuffers;
