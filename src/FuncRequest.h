@@ -102,7 +102,7 @@ public:
 	bool allowAsync() const { return allow_async_; }
 	///
 	void allowAsync(bool allow_async) { allow_async_ = allow_async; }
-	
+
 private:
 	/// the action
 	FuncCode action_;
