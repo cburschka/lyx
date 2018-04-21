@@ -361,6 +361,7 @@ InsetLayout Listings
 	KeepEmpty             true
 	FreeSpacing           true
 	ForceLTR              true
+	NeedCProtect          true
 	RefPrefix             lst
 	HTMLTag               pre
 	HTMLStyle
