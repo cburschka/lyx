@@ -406,7 +406,7 @@ BufferParams::BufferParams()
 	secnumdepth = 3;
 	tocdepth = 3;
 	language = default_language;
-	fontenc = "global";
+	fontenc = "auto";
 	fonts_roman[0] = "default";
 	fonts_roman[1] = "default";
 	fonts_sans[0] = "default";
@@ -3120,20 +3120,21 @@ string const BufferParams::main_font_encoding() const
 
 vector<string> const BufferParams::font_encodings() const
 {
-	string doc_fontenc = (fontenc == "global") ? lyxrc.fontenc : fontenc;
+	string doc_fontenc = (fontenc == "auto") ? string() : fontenc;
 
 	vector<string> fontencs;
 
 	// "default" means "no explicit font encoding"
 	if (doc_fontenc != "default") {
-		fontencs = getVectorFromString(doc_fontenc);
-		if (!language->fontenc().empty()
-		    && ascii_lowercase(language->fontenc()) != "none") {
-			vector<string> fencs = getVectorFromString(language->fontenc());
-			vector<string>::const_iterator fit = fencs.begin();
-			for (; fit != fencs.end(); ++fit) {
-				if (find(fontencs.begin(), fontencs.end(), *fit) == fontencs.end())
-					fontencs.push_back(*fit);
+		if (!doc_fontenc.empty())
+			// If we have a custom setting, we use only that!
+			return getVectorFromString(doc_fontenc);
+		if (!language->fontenc(*this).empty()
+		    && ascii_lowercase(language->fontenc(*this)) != "none") {
+			vector<string> fencs = getVectorFromString(language->fontenc(*this));
+			for (auto & fe : fencs) {
+				if (find(fontencs.begin(), fontencs.end(), fe) == fontencs.end())
+					fontencs.push_back(fe);
 			}
 		}
 	}

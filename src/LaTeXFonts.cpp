@@ -310,6 +310,16 @@ string const LaTeXFont::getLaTeXCode(bool dryrun, bool ot1, bool complete, bool 
 }
 
 
+bool LaTeXFont::hasFontenc(string const & name) const
+{
+	for (auto const & fe : fontenc_) {
+		if (fe == name)
+			return true;
+	}
+	return false;
+}
+
+
 bool LaTeXFont::readFont(Lexer & lex)
 {
 	enum LaTeXFontTags {
@@ -317,6 +327,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		LF_COMPLETE_FONT,
 		LF_END,
 		LF_FAMILY,
+		LF_FONTENC,
 		LF_GUINAME,
 		LF_NOMATHFONT,
 		LF_OSFDEFAULT,
@@ -340,6 +351,7 @@ bool LaTeXFont::readFont(Lexer & lex)
 		{ "completefont",         LF_COMPLETE_FONT },
 		{ "endfont",              LF_END },
 		{ "family",               LF_FAMILY },
+		{ "fontencoding",         LF_FONTENC },
 		{ "guiname",              LF_GUINAME },
 		{ "nomathfont",           LF_NOMATHFONT },
 		{ "osfdefault",           LF_OSFDEFAULT },
@@ -395,6 +407,12 @@ bool LaTeXFont::readFont(Lexer & lex)
 		case LF_GUINAME:
 			lex >> guiname_;
 			break;
+		case LF_FONTENC: {
+			lex.eatLine();
+			string fe = lex.getString();
+			fontenc_ = getVectorFromString(fe);
+			break;
+		}
 		case LF_NOMATHFONT:
 			lex >> nomathfont_;
 			break;
@@ -467,6 +485,9 @@ bool LaTeXFont::read(Lexer & lex)
 		LYXERR0("Error parsing LaTeX font `" << name_ << '\'');
 		return false;
 	}
+
+	if (fontenc_.empty())
+		fontenc_.push_back("T1");
 
 	return true;
 }

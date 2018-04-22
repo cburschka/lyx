@@ -35,6 +35,10 @@ public:
 	docstring const & family() { return family_; }
 	/// The package that provides this font
 	docstring const & package() { return package_; }
+	/// Does this provide a specific font encoding?
+	bool hasFontenc(std::string const &) const;
+	/// The font encoding(s)
+	std::vector<std::string> const & fontencs() const { return fontenc_; }
 	/// Alternative font if package() is not available
 	std::vector<docstring> const & altfonts() { return altfonts_; }
 	/// A font that provides all families
@@ -108,6 +112,8 @@ private:
 	docstring family_;
 	///
 	docstring package_;
+	///
+	std::vector<std::string> fontenc_;
 	///
 	std::vector<docstring> altfonts_;
 	///

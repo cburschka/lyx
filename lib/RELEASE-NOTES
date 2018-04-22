@@ -22,6 +22,10 @@
 
 !!!The following pref variables are obsoleted in 2.4:
 
+* \font_encoding
+  The font encoding is now automatically set depending on the document
+  fonts and languages.
+
 * \use_qimage
   This is no longer necessary due to the rewrite of the painter.
 

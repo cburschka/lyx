@@ -105,6 +105,9 @@
 # Incremented to format 25, by lasgouttes
 #   Remove use_qimage preference
 
+# Incremented to format 26, by spitz
+#   Rename font_encoding preference
+
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py.
 
@@ -394,6 +397,11 @@ def remove_use_qimage(line):
 		return no_match
 	return (True, "")
 
+def remove_font_encoding(line):
+	if not line.lower().startswith("\\font_encoding "):
+		return no_match
+	return (True, "")
+
 # End conversions for LyX 2.3 to 2.4
 ####################################
 
@@ -433,5 +441,6 @@ conversions = [
 	[ 22, []],
 	[ 23, []],
 	[ 24, [rename_collapsible]],
-	[ 25, [remove_use_qimage]]
+	[ 25, [remove_use_qimage]],
+	[ 26, [remove_font_encoding]]
 ]

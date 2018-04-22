@@ -80,7 +80,6 @@ public:
 		RC_ESC_CHARS,
 		RC_EXAMPLEPATH,
 		RC_EXPORT_OVERWRITE,
-		RC_FONT_ENCODING,
 		RC_FILEFORMAT,
 		RC_FORWARD_SEARCH_DVI,
 		RC_FORWARD_SEARCH_PDF,
@@ -307,8 +306,6 @@ public:
 	bool use_scalable_fonts;
 	/// DPI of monitor
 	unsigned int dpi;
-	///
-	std::string fontenc;
 	///
 	std::string roman_font_name;
 	///

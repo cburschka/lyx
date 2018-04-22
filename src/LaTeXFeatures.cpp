@@ -905,11 +905,10 @@ void LaTeXFeatures::getFontEncodings(vector<string> & encs, bool const onlylangs
 	}
 
 	for (auto const & lang : UsedLanguages_)
-		if (!lang->fontenc().empty()
-		    && ascii_lowercase(lang->fontenc()) != "none") {
-			vector<string> extraencs = getVectorFromString(lang->fontenc());
+		if (!lang->fontencs().empty()) {
+			vector<string> extraencs = lang->fontencs();
 			for (auto const & extra : extraencs) {
-				if (find(encs.begin(), encs.end(), extra) == encs.end())
+				if (extra != "none" && find(encs.begin(), encs.end(), extra) == encs.end())
 					encs.insert(encs.begin(), extra);
 			}
 		}

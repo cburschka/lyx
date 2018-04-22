@@ -630,7 +630,7 @@ InsetQuotes::InsetQuotes(Buffer * buf, char_type c, InsetQuotesParams::QuoteLeve
 		fontspec_ = buf->masterBuffer()->params().useNonTeXFonts;
 	} else {
 		global_style_ = InsetQuotesParams::EnglishQuotes;
-		fontenc_ = lyxrc.fontenc;
+		fontenc_ = "OT1";
 		fontspec_ = false;
 	}
 	if (style.empty())

@@ -16,6 +16,7 @@
 #include "Language.h"
 
 #include "Encoding.h"
+#include "LaTeXFonts.h"
 #include "Lexer.h"
 #include "LyXRC.h"
 
@@ -68,6 +69,37 @@ docstring const Language::translateLayout(string const & m) const
 	docstring t = from_ascii(m);
 	cleanTranslation(t);
 	return t;
+}
+
+
+vector<string> Language::fontencs() const
+{
+	return fontenc_;
+}
+
+
+string Language::fontenc(BufferParams const & params) const
+{
+	// Determine optimal font encoding
+	// We check whether the used rm font supports an encoding our language supports
+	for (auto & fe : fontenc_) {
+		LaTeXFont const & lf = theLaTeXFonts().getLaTeXFont(from_ascii(params.fontsRoman()));
+		// ASCII means: support all T* encodings plus OT1
+		if (fe == "ASCII") {
+			vector<string> const lfe = lf.fontencs();
+			for (auto & afe : lfe) {
+				if (afe == "OT1" || prefixIs(afe, "T"))
+					// we found a suitable one; return that.
+					return afe;
+			}
+		}
+		// For other encodings, just check whether the font supports it
+		if (lf.hasFontenc(fe))
+			return fe;
+	}
+	// We did not find a suitable one; just take the first in the list,
+	// the priorized one (which is "T1" for ASCII).
+	return fontencs().front() == "ASCII" ? "T1" : fontencs().front();
 }
 
 
@@ -157,9 +189,13 @@ bool Language::readLanguage(Lexer & lex)
 		case LA_ENCODING:
 			lex >> encodingStr_;
 			break;
-		case LA_FONTENC:
-			lex >> fontenc_;
+		case LA_FONTENC: {
+			lex.eatLine();
+			vector<string> const fe =
+				getVectorFromString(lex.getString(true), "|");
+			fontenc_.insert(fontenc_.end(), fe.begin(), fe.end());
 			break;
+		}
 		case LA_GUINAME:
 			lex >> display_;
 			break;
@@ -223,6 +259,8 @@ bool Language::read(Lexer & lex)
 		encoding_ = encodings.fromLyXName("iso8859-1");
 		LYXERR0("Unknown encoding " << encodingStr_);
 	}
+	if (fontenc_.empty())
+		fontenc_.push_back("ASCII");
 	return true;
 }
 

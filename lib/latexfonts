@@ -7,6 +7,7 @@
 # Font <name>
 #	GuiName            "<Gui Name>"
 #	Family             <rm|sf|tt|math>
+#	FontEncoding       <font encoding>
 #	SwitchDefault      <0|1>
 #	Package            <LaTeX package to be loaded>
 #	Requires           <LaTeX package to test for>
@@ -33,6 +34,7 @@
 # * Adding a new font results in a FILE FORMAT CHANGE. So if a new font
 #   is added for the LyX distribution, the according changes need to be
 #   done.
+# * If FontEncoding is not specified, T1 is assumed.
 # * "SwitchDefault 1" makes the font to be loaded by switching the default
 #   family to <name> (e.g., \renewcommand{\rmdefault}{cmr}), whereas
 #   Package <package> loads it via \usepackage{package}. Only one of these
@@ -141,6 +143,7 @@ EndFont
 Font cmr
 	GuiName          "Computer Modern Roman"
 	Family           rm
+	FontEncoding     OT1
 	SwitchDefault    1
 	OsfFont          eco
 EndFont
@@ -521,6 +524,7 @@ EndFont
 Font cmss
 	GuiName          "Computer Modern Sans"
 	Family           sf
+	FontEncoding     OT1
 	SwitchDefault    1
 EndFont
 
@@ -652,6 +656,7 @@ EndFont
 Font cmtt
 	GuiName          "Computer Modern Typewriter"
 	Family           tt
+	FontEncoding     OT1
 	SwitchDefault    1
 EndFont
 

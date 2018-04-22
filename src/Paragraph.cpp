@@ -314,13 +314,15 @@ public:
 
 	/// Output the surrogate pair formed by \p c and \p next to \p os.
 	/// \return the number of characters written.
-	int latexSurrogatePair(otexstream & os, char_type c, char_type next,
+	int latexSurrogatePair(BufferParams const &, otexstream & os,
+			       char_type c, char_type next,
 			       OutputParams const &);
 
 	/// Output a space in appropriate formatting (or a surrogate pair
 	/// if the next character is a combining character).
 	/// \return whether a surrogate pair was output.
-	bool simpleTeXBlanks(OutputParams const &,
+	bool simpleTeXBlanks(BufferParams const &,
+			     OutputParams const &,
 			     otexstream &,
 			     pos_type i,
 			     unsigned int & column,
@@ -330,7 +332,8 @@ public:
 	/// Output consecutive unicode chars, belonging to the same script as
 	/// specified by the latex macro \p ltx, to \p os starting from \p i.
 	/// \return the number of characters written.
-	int writeScriptChars(OutputParams const &, otexstream & os,
+	int writeScriptChars(BufferParams const &, OutputParams const &,
+			     otexstream & os,
 			     docstring const & ltx,
 			     Change const &, Encoding const &,
 			     std::string const, pos_type & i);
@@ -867,8 +870,9 @@ int Paragraph::eraseChars(pos_type start, pos_type end, bool trackChanges)
 }
 
 
-int Paragraph::Private::latexSurrogatePair(otexstream & os, char_type c,
-		char_type next, OutputParams const & runparams)
+int Paragraph::Private::latexSurrogatePair(BufferParams const & bparams,
+		otexstream & os, char_type c, char_type next,
+		OutputParams const & runparams)
 {
 	// Writing next here may circumvent a possible font change between
 	// c and next. Since next is only output if it forms a surrogate pair
@@ -907,7 +911,7 @@ int Paragraph::Private::latexSurrogatePair(otexstream & os, char_type c,
 	int length = brace2;
 	string fontenc;
 	if (runparams.local_font)
-		fontenc = runparams.local_font->language()->fontenc();
+		fontenc = runparams.local_font->language()->fontenc(bparams);
 	else
 		fontenc = runparams.main_fontenc;
 	docstring scriptmacro;
@@ -940,7 +944,8 @@ int Paragraph::Private::latexSurrogatePair(otexstream & os, char_type c,
 }
 
 
-bool Paragraph::Private::simpleTeXBlanks(OutputParams const & runparams,
+bool Paragraph::Private::simpleTeXBlanks(BufferParams const & bparams,
+				       OutputParams const & runparams,
 				       otexstream & os,
 				       pos_type i,
 				       unsigned int & column,
@@ -954,7 +959,7 @@ bool Paragraph::Private::simpleTeXBlanks(OutputParams const & runparams,
 		char_type next = text_[i + 1];
 		if (Encodings::isCombiningChar(next)) {
 			// This space has an accent, so we must always output it.
-			column += latexSurrogatePair(os, ' ', next, runparams) - 1;
+			column += latexSurrogatePair(bparams, os, ' ', next, runparams) - 1;
 			return true;
 		}
 	}
@@ -985,7 +990,8 @@ bool Paragraph::Private::simpleTeXBlanks(OutputParams const & runparams,
 }
 
 
-int Paragraph::Private::writeScriptChars(OutputParams const & runparams,
+int Paragraph::Private::writeScriptChars(BufferParams const & bparams,
+					 OutputParams const & runparams,
 					 otexstream & os,
 					 docstring const & ltx,
 					 Change const & runningChange,
@@ -1047,7 +1053,7 @@ int Paragraph::Private::writeScriptChars(OutputParams const & runparams,
 		if (i + 2 < size) {
 			next_next = text_[i + 2];
 			if (Encodings::isCombiningChar(next_next)) {
-				length += latexSurrogatePair(os, next, next_next, runparams) - 1;
+				length += latexSurrogatePair(bparams, os, next, next_next, runparams) - 1;
 				i += 2;
 				continue;
 			}
@@ -1362,7 +1368,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		if (i + 1 < int(text_.size())) {
 			next = text_[i + 1];
 			if (Encodings::isCombiningChar(next)) {
-				column += latexSurrogatePair(os, c, next, runparams) - 1;
+				column += latexSurrogatePair(bparams, os, c, next, runparams) - 1;
 				++i;
 				break;
 			}
@@ -1392,7 +1398,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 		if (running_font.language()->lang() == bparams.language->lang())
 			fontenc = runparams.main_fontenc;
 		else
-			fontenc = running_font.language()->fontenc();
+			fontenc = running_font.language()->fontenc(bparams);
 		// "Script chars" need to embraced in \textcyrillic and \textgreek notwithstanding
 		// whether they are encodable or not (it only depends on the font encoding)
 		if (!runparams.isFullUnicode() && Encodings::isKnownScriptChar(c, script)) {
@@ -1400,7 +1406,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 			docstring ltx = latex.first;
 			if (!prefixIs(ltx, wrapper))
 				ltx = wrapper + latex.first + from_ascii("}");
-			column += writeScriptChars(runparams, os, ltx, running_change,
+			column += writeScriptChars(bparams, runparams, os, ltx, running_change,
 						   encoding, fontenc, i) - 1;
 		} else if (latex.second
 			 && ((!prefixIs(nextlatex, '\\')
@@ -1557,7 +1563,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 				 || ((&owner_->getFontSettings(bp, i))->language()->internalFontEncoding()))
 				features.require("textquotedbl");
 		} else if (Encodings::isKnownScriptChar(c, bscript)){
-			string fontenc = (&owner_->getFontSettings(bp, i))->language()->fontenc();
+			string fontenc = (&owner_->getFontSettings(bp, i))->language()->fontenc(bp);
 			if (fontenc.empty())
 				fontenc = features.runparams().main_fontenc;
 			if (Encodings::needsScriptWrapper("textbaltic", fontenc))
@@ -2689,7 +2695,7 @@ void Paragraph::latex(BufferParams const & bparams,
 			// latexSpecialChar ignores spaces if
 			// style.pass_thru is false.
 			if (i != body_pos - 1) {
-				if (d->simpleTeXBlanks(runparams, os,
+				if (d->simpleTeXBlanks(bparams, runparams, os,
 						i, column, current_font, style)) {
 					// A surrogate pair was output. We
 					// must not call latexSpecialChar

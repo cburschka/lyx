@@ -725,7 +725,6 @@ PrefLatex::PrefLatex(GuiPreferences * form)
 {
 	setupUi(this);
 
-	latexEncodingED->setValidator(new NoNewLineValidator(latexEncodingED));
 	latexDviPaperED->setValidator(new NoNewLineValidator(latexDviPaperED));
 	latexBibtexED->setValidator(new NoNewLineValidator(latexBibtexED));
 	latexJBibtexED->setValidator(new NoNewLineValidator(latexJBibtexED));
@@ -734,10 +733,6 @@ PrefLatex::PrefLatex(GuiPreferences * form)
 	latexNomenclED->setValidator(new NoNewLineValidator(latexNomenclED));
 	latexChecktexED->setValidator(new NoNewLineValidator(latexChecktexED));
 
-	connect(latexEncodingCB, SIGNAL(clicked()),
-		this, SIGNAL(changed()));
-	connect(latexEncodingED, SIGNAL(textChanged(QString)),
-		this, SIGNAL(changed()));
 	connect(latexChecktexED, SIGNAL(textChanged(QString)),
 		this, SIGNAL(changed()));
 	connect(latexBibtexCO, SIGNAL(activated(int)),
@@ -768,12 +763,6 @@ PrefLatex::PrefLatex(GuiPreferences * form)
 #else
 	pathCB->setVisible(false);
 #endif
-}
-
-
-void PrefLatex::on_latexEncodingCB_stateChanged(int state)
-{
-	latexEncodingED->setEnabled(state == Qt::Checked);
 }
 
 
@@ -890,10 +879,6 @@ void PrefLatex::applyRC(LyXRC & rc) const
 	else
 		rc.index_command = fromqstr(index) + " " + fromqstr(idxopt);
 
-	if (latexEncodingCB->isChecked())
-		rc.fontenc = fromqstr(latexEncodingED->text());
-	else
-		rc.fontenc = "default";
 	rc.chktex_command = fromqstr(latexChecktexED->text());
 	rc.jindex_command = fromqstr(latexJIndexED->text());
 	rc.nomencl_command = fromqstr(latexNomenclED->text());
@@ -990,14 +975,6 @@ void PrefLatex::updateRC(LyXRC const & rc)
 		latexIndexOptionsLA->setText(qt_("Co&mmand:"));
 	}
 
-	if (rc.fontenc == "default") {
-		latexEncodingCB->setChecked(false);
-		latexEncodingED->setEnabled(false);
-	} else {
-		latexEncodingCB->setChecked(true);
-		latexEncodingED->setEnabled(true);
-		latexEncodingED->setText(toqstr(rc.fontenc));
-	}
 	latexChecktexED->setText(toqstr(rc.chktex_command));
 	latexJIndexED->setText(toqstr(rc.jindex_command));
 	latexNomenclED->setText(toqstr(rc.nomencl_command));

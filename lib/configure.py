@@ -1442,18 +1442,13 @@ def checkLatexConfig(check_config, bool_docbook):
     if rmcopy:
         removeFiles( [ 'chkconfig.ltx' ] )
     #
-    # currently, values in chkconfig are only used to set
-    # \font_encoding
-    values = {}
-    for line in open('chkconfig.vars').readlines():
-        key, val = re.sub('-', '_', line).split('=')
-        val = val.strip()
-        values[key] = val.strip("'")
-    # chk_fontenc may not exist
-    try:
-        addToRC(r'\font_encoding "%s"' % values["chk_fontenc"])
-    except:
-        pass
+    # values in chkconfig were only used to set
+    # \font_encoding, which is obsolete
+#    values = {}
+#    for line in open('chkconfig.vars').readlines():
+#        key, val = re.sub('-', '_', line).split('=')
+#        val = val.strip()
+#        values[key] = val.strip("'")
     # if configure successed, move textclass.lst.tmp to textclass.lst
     # and packages.lst.tmp to packages.lst
     if (os.path.isfile('textclass.lst.tmp')
@@ -1795,7 +1790,7 @@ if __name__ == '__main__':
     lyx_check_config = True
     lyx_kpsewhich = True
     outfile = 'lyxrc.defaults'
-    lyxrc_fileformat = 25
+    lyxrc_fileformat = 26
     rc_entries = ''
     lyx_keep_temps = False
     version_suffix = ''

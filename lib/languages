@@ -10,10 +10,10 @@
 #	BabelName          <babelname>
 #	PolyglossiaName    <polyglossianame>
 #	PolyglossiaOpts    "<language-specific options>"
-#	Encoding           <encoding>
-#	FontEncoding       <font encoding>
 #	QuoteStyle         <british|danish|english|french|frenchin|
 #                           german|polish|russian|swedish|swedishg|swiss|plain>
+#	Encoding           <encoding>
+#	FontEncoding       <font encoding|font encoding|...]>
 #	InternalEncoding   <true|false>
 #	RTL                <true|false>
 #	AsBabelOptions     <true|false>
@@ -68,13 +68,23 @@
 #   is set to "Language Default" and "use non-TeX fonts" is FALSE.
 #   Encoding "inherit" means: keep encoding of the context (used by
 #   latex_language).
-# * InternalEncoding is used to tell LyX that babel internally sets a
-#   non-standard font encoding (such as hebrew to LHE or greek to LGR).
-#   If True, LyX cares for characters/macros that do not exist in
-#   some font encodings ("<", ">", "|" and straight quote).
-#   It is not required for standard encodings like T2A. See bug #5091.
+# * FontEncoding is a bar-separated list of font encodings.
+#   The first value is the required font encoding for correct hyphenation with
+#   8-bit TeX (http://www.hyphenation.org). Eventually following values may be
+#   used if the selected font is unavailable in FontEncoding. They provide all
+#   letters used in the language, but some only as "surrogate pairs" with
+#   possible problems for hyphenation and drag-and-drop from the generated
+#   documents.
+#   If not given, all standard text encodings (T<n>) as well as OT1 work.
 # * "FontEncoding none" tells LyX that fontenc should not be loaded with this
 #   language.
+# * "FontEncoding ASCII" means: "works with any standard text encoding
+#   as well as OT1".
+# * InternalEncoding is used to tell LyX that babel internally sets a
+#   non-standard font encoding (such as hebrew to LHE or greek to LGR).
+#   If True, LyX takes care for characters/macros that do not exist in
+#   some font encodings ("<", ">", "|" and straight quote).
+#   It is not required for standard encodings like T2A. See bug #5091.
 # * AsBabelOptions advices LyX to pass the languages locally to babel, not
 #   globally to the class. Some languages (basically those not directly
 #   supported by babel) need this.
@@ -126,15 +136,18 @@ Language afrikaans
 	BabelName        afrikaans
 	QuoteStyle       polish
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         af_ZA
 End
 
+# FontEncoding: no hyphenation, but uses Ç/ç und Ë/ë
 Language albanian
 	GuiName          "Albanian"
 	BabelName        albanian
 	PolyglossiaName  albanian
 	QuoteStyle       swiss
 	Encoding         iso8859-2
+	FontEncoding     T1|OT1
 	LangCode         sq_AL
 End
 
@@ -145,6 +158,7 @@ Language american
 	PolyglossiaOpts  "variant=american"
 	QuoteStyle       english
 	Encoding         iso8859-15
+	FontEncoding	 ASCII
 	LangCode         en_US
 End
 
@@ -217,12 +231,14 @@ Language asturian
 	LangCode         ast_ES
 End
 
+
 Language australian
 	GuiName          "English (Australia)"
 	BabelName        australian
 	PolyglossiaName  english
 	PolyglossiaOpts  "variant=australian"
 	Encoding         iso8859-15
+	FontEncoding	 ASCII
 	QuoteStyle       english
 	LangCode         en_AU
 End
@@ -236,6 +252,7 @@ Language austrian
 	PolyglossiaOpts  "variant=austrian,spelling=old,babelshorthands=true"
 	QuoteStyle       german
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         de_AT
 End
 
@@ -248,6 +265,7 @@ Language naustrian
 	PolyglossiaOpts  "variant=austrian,spelling=new,babelshorthands=true"
 	QuoteStyle       german
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         de_AT
 End
 
@@ -258,6 +276,7 @@ Language bahasa
 	PolyglossiaName  bahasai
 	QuoteStyle       english
 	Encoding         iso8859-15
+	FontEncoding	 ASCII
 	LangCode         id_ID
 End
 
@@ -277,6 +296,7 @@ Language basque
 	PolyglossiaName  basque
 	QuoteStyle       swiss
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         eu_ES
 	PostBabelPreamble
 	\addto\extrasbasque{\bbl@deactivate{~}}
@@ -289,6 +309,7 @@ Language belarusian
 	BabelName        belarusian
 	QuoteStyle       french
 	Encoding         cp1251
+	FontEncoding	 T2A
 	LangCode         be_BY
 	AsBabelOptions   true
 End
@@ -299,6 +320,7 @@ Language bosnian
 	BabelName        bosnian
 	QuoteStyle       polish
 	Encoding         iso8859-2
+	FontEncoding	 T1|OT1
 	LangCode         bs_BA
 End
 
@@ -309,15 +331,18 @@ Language brazilian
 	PolyglossiaName  brazil
 	QuoteStyle       english
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         pt_BR
 End
 
+# FontEncoding: # ? no hyphenation, but uses ñ
 Language breton
 	GuiName          "Breton"
 	BabelName        breton
 	PolyglossiaName  breton
 	QuoteStyle       french
 	Encoding         iso8859-15
+	#FontEncoding    T1
 	LangCode         br_FR
 End
 
@@ -328,6 +353,7 @@ Language british
 	PolyglossiaOpts  "variant=british"
 	QuoteStyle       british
 	Encoding         iso8859-15
+	FontEncoding	 ASCII
 	LangCode         en_GB
 End
 
@@ -350,6 +376,7 @@ Language canadian
 #	PolyglossiaOpts  "variant=canadian"
 	QuoteStyle       english
 	Encoding         iso8859-15
+	FontEncoding	 ASCII
 	LangCode         en_CA
 End
 
@@ -363,6 +390,7 @@ Language canadien
 #	PolyglossiaOpts  "variant=canadien"
 	QuoteStyle       french
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         fr_CA
 End
 
@@ -374,6 +402,7 @@ Language catalan
 	PolyglossiaOpts  "babelshorthands=true"
 	QuoteStyle       french
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         ca_ES
 End
 
@@ -411,6 +440,7 @@ Language croatian
 	PolyglossiaName  croatian
 	QuoteStyle       polish
 	Encoding         iso8859-2
+	FontEncoding	 T1|OT1
 	LangCode         hr_HR
 End
 
@@ -421,6 +451,7 @@ Language czech
 	PolyglossiaName  czech
 	QuoteStyle       german
 	Encoding         iso8859-2
+	FontEncoding	 T1|OT1
 	LangCode         cs_CZ
 End
 
@@ -431,6 +462,7 @@ Language danish
 	PolyglossiaName  danish
 	QuoteStyle       danish
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         da_DK
 End
 
@@ -450,6 +482,7 @@ Language dutch
 	PolyglossiaOpts  "babelshorthands=true"
 	QuoteStyle       polish
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         nl_NL
 End
 
@@ -461,6 +494,7 @@ Language english
 	PolyglossiaOpts  "variant=american"
 	QuoteStyle       english
 	Encoding         iso8859-15
+	FontEncoding	 ASCII
 	LangCode         en_US
 End
 
@@ -472,6 +506,7 @@ Language esperanto
 	PolyglossiaName  esperanto
 	QuoteStyle       english
 	Encoding         iso8859-3
+	FontEncoding	 IL3|T1|OT1
 	LangCode         eo_EO
 End
 
@@ -481,6 +516,7 @@ Language estonian
 	PolyglossiaName  estonian
 	QuoteStyle       german
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         et_EE
 	PostBabelPreamble
 	\addto\extrasestonian{\bbl@deactivate{~}}
@@ -511,6 +547,7 @@ Language finnish
 	PolyglossiaName  finnish
 	QuoteStyle       swedish
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         fi_FI
 End
 
@@ -522,6 +559,7 @@ Language french
 	PolyglossiaName  french
 	QuoteStyle       french
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         fr_FR
 	PostBabelPreamble
 	\addto\extrasfrench{%
@@ -538,6 +576,7 @@ Language friulan
 	PolyglossiaName  friulan
 	QuoteStyle       french
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         fur_IT
 End
 
@@ -548,6 +587,7 @@ Language galician
 	PolyglossiaName  galician
 	QuoteStyle       french
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         gl_ES
 	PostBabelPreamble
 	\addto\shorthandsgalician{\galiciandeactivate{~}}
@@ -571,6 +611,7 @@ Language german
 	PolyglossiaOpts  "variant=german,spelling=old,babelshorthands=true"
 	QuoteStyle       german
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         de
 	LangVariety      alt
 End
@@ -583,6 +624,7 @@ Language ngerman
 	PolyglossiaOpts  "variant=german,spelling=new,babelshorthands=true"
 	QuoteStyle       german
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         de_DE
 End
 
@@ -597,6 +639,7 @@ Language german-ch
 	PolyglossiaOpts  "variant=swiss,spelling=new,babelshorthands=true"
 	QuoteStyle       swiss
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         de_CH
 End
 
@@ -610,6 +653,7 @@ Language german-ch-old
  	PolyglossiaOpts  "variant=swiss,spelling=old,babelshorthands=true"
  	QuoteStyle       swiss
  	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
  	LangCode         de_CH
 End
 
@@ -675,12 +719,14 @@ End
 #       QuoteStyle      polish
 #End
 
+# FontEncoding: OT1 misses ð and Þ
 Language icelandic
 	GuiName          "Icelandic"
 	BabelName        icelandic
 	PolyglossiaName  icelandic
 	QuoteStyle       german
 	Encoding         iso8859-15
+	FontEncoding	 T1
 	LangCode         is_IS
 End
 
@@ -692,6 +738,7 @@ Language interlingua
 	BabelName        interlingua
 	PolyglossiaName  interlingua
 	Encoding         iso8859-15
+	FontEncoding	 ASCII
 	LangCode         ia_IA
 	QuoteStyle       english
 End
@@ -702,6 +749,7 @@ Language irish
 	PolyglossiaName  irish
 	QuoteStyle       english
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         ga_IE
 End
 
@@ -712,6 +760,7 @@ Language italian
 	PolyglossiaName  italian
 	QuoteStyle       french
 	Encoding         iso8859-15
+	FontEncoding	 ASCII
 	LangCode         it_IT
 End
 
@@ -753,9 +802,10 @@ End
 # not yet supported by polyglossia
 # not supported by babel
 Language kazakh
-	GuiName         "Kazakh"
-	Encoding        ascii
-	LangCode        kk_KZ
+	GuiName          "Kazakh"
+	Encoding         ascii
+	FontEncoding     T2A
+	LangCode         kk_KZ
 	PostBabelPreamble
 	\input{t2aenc.def}
 	\AtBeginDocument{\fontencoding{T2A}\selectfont}
@@ -783,6 +833,7 @@ Language kurmanji
 	GuiName          "Kurmanji"
 	BabelName        kurmanji
 	Encoding         utf8
+	FontEncoding	 T1|OT1
 	LangCode         kmr
 	AsBabelOptions   true
 End
@@ -802,24 +853,27 @@ Language latin
 	BabelName        latin
 	PolyglossiaName  latin
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         la_LA
 End
 
 # latvian must be loaded locally with babel options,
 # not globally via class options
+# FontEncoding: L7x required for hyphenation but not set by Babel
 Language latvian
 	GuiName          "Latvian"
 	BabelName        latvian
 	PolyglossiaName  latvian
 	QuoteStyle       german
 	Encoding         iso8859-4
-#	FontEncoding     L7x # (required for hyphenation but not set by babel)
+	FontEncoding     L7x|T1|OT1
 	LangCode         lv_LV
 	AsBabelOptions   true
 End
 
 # lithuanian must be loaded locally with babel options,
 # not globally via class options
+# FontEncoding: L7x set by Babel
 Language lithuanian
 	GuiName          "Lithuanian"
 	BabelName        lithuanian
@@ -837,6 +891,7 @@ Language lowersorbian
 	PolyglossiaName  lsorbian
 	QuoteStyle       german
 	Encoding         iso8859-2
+	FontEncoding	 T1|OT1
 	LangCode         dsb_DE
 End
 
@@ -847,6 +902,7 @@ Language magyar
 	PolyglossiaName  magyar
 	QuoteStyle       polish
 	Encoding         iso8859-2
+	FontEncoding	 T1|OT1
 	LangCode         hu_HU
 End
 
@@ -889,6 +945,7 @@ Language newzealand
 	PolyglossiaOpts  "variant=newzealand"
 	QuoteStyle       english
 	Encoding         iso8859-15
+	FontEncoding	 ASCII
 	LangCode         en_NZ
 End
 
@@ -899,6 +956,7 @@ Language norsk
 	PolyglossiaName  norsk
 	QuoteStyle       swiss
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         nb_NO
 End
 
@@ -909,6 +967,7 @@ Language nynorsk
 	PolyglossiaName  nynorsk
 	QuoteStyle       swiss
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         nn_NO
 End
 
@@ -941,9 +1000,11 @@ Language piedmontese
 	PolyglossiaName  piedmontese
 	QuoteStyle       french
 	Encoding         iso8859-15
+	FontEncoding	 ASCII
 	LangCode         pms_IT
 End
 
+# FontEncoding: QX required for hyphenation but not set by babel
 Language polish
 	GuiName          "Polish"
 	HasGuiSupport    true
@@ -951,7 +1012,7 @@ Language polish
 	PolyglossiaName  polish
 	QuoteStyle       polish
 	Encoding         iso8859-2
-#	FontEncoding     QX # (required for hyphenation but not set by babel)
+	FontEncoding     QX|T1|OT1
 	LangCode         pl_PL
 End
 
@@ -962,6 +1023,7 @@ Language portuguese
 	PolyglossiaName  portuges
 	QuoteStyle       french
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         pt_PT
 End
 
@@ -972,6 +1034,7 @@ Language romanian
 	PolyglossiaName  romanian
 	QuoteStyle       polish
 	Encoding         iso8859-16
+	FontEncoding	 T1|OT1
 	LangCode         ro_RO
 End
 
@@ -982,6 +1045,7 @@ Language romansh
 	PolyglossiaName  romansh
 	QuoteStyle       german
 	Encoding         iso8859-15
+	FontEncoding	 ASCII
 	LangCode         rm_CH
 End
 
@@ -997,11 +1061,13 @@ Language russian
 	Provides         textcyrillic
 End
 
+# FontEncoding: no hyphenation, but diacritics
 Language samin
 	GuiName          "North Sami"
 	BabelName        samin
 	PolyglossiaName  samin
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         se_NO
 End
 
@@ -1013,12 +1079,15 @@ Language sanskrit
 	LangCode         sa_IN
 End
 
+# Gaidhlig (Scottish Gaelic)
+# FontEncoding: no hyphenation, grave accent (à, è, ì, ò, ù)
 Language scottish
 	GuiName          "Scottish"
 	BabelName        scottish
 	PolyglossiaName  scottish
 	QuoteStyle       english
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         gd_GB
 End
 
@@ -1046,6 +1115,7 @@ Language serbian-latin
 	PolyglossiaOpts  "script=Latin"
 	QuoteStyle       polish
 	Encoding         iso8859-2
+	FontEncoding	 T1|OT1
 	LangCode         sr_RS-Latin
 End
 
@@ -1056,6 +1126,7 @@ Language slovak
 	PolyglossiaName  slovak
 	QuoteStyle       german
 	Encoding         iso8859-2
+	FontEncoding	 T1|OT1
 	LangCode         sk_SK
 End
 
@@ -1065,6 +1136,7 @@ Language slovene
 	PolyglossiaName  slovenian
 	QuoteStyle       german
 	Encoding         iso8859-2
+	FontEncoding	 T1|OT1
 	LangCode         sl_SI
 End
 
@@ -1075,6 +1147,7 @@ Language spanish
 	PolyglossiaName  spanish
 	QuoteStyle       french
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         es_ES
 	PostBabelPreamble
 	\addto\shorthandsspanish{\spanishdeactivate{~<>}}
@@ -1088,6 +1161,7 @@ Language spanish-mexico
 	PolyglossiaName  spanish
 	QuoteStyle       french
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         es_MX
 	PostBabelPreamble
 	\addto\shorthandsspanish{\spanishdeactivate{~<>.}}
@@ -1101,6 +1175,7 @@ Language swedish
 	PolyglossiaName  swedish
 	QuoteStyle       swedish
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         sv_SE
 End
 
@@ -1135,7 +1210,7 @@ Language thai
 	PolyglossiaName  thai
 	QuoteStyle       english
 	Encoding         tis620-0
-#	FontEncoding     LTH
+	FontEncoding     LTH
 	LangCode         th_TH
 	PostBabelPreamble
 	\usepackage{thswitch}
@@ -1157,6 +1232,7 @@ Language turkish
 	PolyglossiaName  turkish
 	QuoteStyle       english
 	Encoding         iso8859-9
+	FontEncoding	 T1|OT1
 	LangCode         tr_TR
 	PostBabelPreamble
 	\usepackage{xkeyval}
@@ -1171,6 +1247,7 @@ Language turkmen
 	PolyglossiaName  turkmen
 	QuoteStyle       swiss
 	Encoding         utf8
+	FontEncoding	 T1|OT1
 	LangCode         tk_TM
 	AsBabelOptions   true
 End
@@ -1193,6 +1270,7 @@ Language uppersorbian
 	PolyglossiaName  usorbian
 	QuoteStyle       german
 	Encoding         iso8859-2
+	FontEncoding	 T1|OT1
 	LangCode         hsb_DE
 End
 
@@ -1211,6 +1289,7 @@ Language vietnamese
 	PolyglossiaName  vietnamese
 	QuoteStyle       english
 	Encoding         utf8
+	FontEncoding	 T5
 	LangCode         vi_VN
 End
 
@@ -1220,5 +1299,6 @@ Language welsh
 	PolyglossiaName  welsh
 	QuoteStyle       british
 	Encoding         iso8859-15
+	FontEncoding	 T1|OT1
 	LangCode         cy_GB
 End

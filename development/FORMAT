@@ -7,7 +7,11 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
-2018-04-24  Jürgen Spitzmüller <spitz@lyx.org>
+2018-04-22  Jürgen Spitzmüller <spitz@lyx.org>
+	* format incremented to 550: rename \fontencoding global to \fontencoding auto.
+	  Semantic change: this is now automatically set depending on the document fonts.
+
+2018-04-21  Jürgen Spitzmüller <spitz@lyx.org>
 	* format incremented to 549: change \textcyr to \textcyrillic.
 	  Dummy format change for now (in case it turns out we need to do something).
 

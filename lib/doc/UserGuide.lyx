@@ -140,11 +140,12 @@ enumitem
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict true
+\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -8335,12 +8336,14 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
+
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
+
 The following 2 lines are empty:
 \end_layout
 
@@ -8353,6 +8356,7 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
+
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8376,6 +8380,7 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
+
 This is Verbatim*.
 \end_layout
 
@@ -12842,8 +12847,19 @@ Default
 Default,
 \family default
  the font that is preset by the current document class is used.
- With LyX's default font encoding, this is a look-alike of the standard
- \SpecialChar TeX
+ With LyX's 
+\change_deleted -712698321 1524413696
+default
+\change_inserted -712698321 1524413700
+automatic
+\change_unchanged
+ font encoding, this is
+\change_inserted -712698321 1524413733
+, depending on the document language,
+\change_unchanged
+ 
+\change_inserted -712698321 1524413747
+either the the standard \SpecialChar TeX
  font 
 \begin_inset Quotes eld
 \end_inset
@@ -12864,7 +12880,36 @@ Modern
 \family typewriter
 cm
 \family default
-): either 
+) or 
+\change_unchanged
+a look-alike of
+\change_deleted -712698321 1524413754
+ the standard \SpecialChar TeX
+ font 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+Computer
+\begin_inset space ~
+\end_inset
+
+Modern
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ (
+\family typewriter
+cm
+\family default
+)
+\change_inserted -712698321 1524413756
+ this font
+\change_unchanged
+: either 
 \begin_inset Quotes eld
 \end_inset
 
@@ -13244,6 +13289,8 @@ status collapsed
 
 \end_inset
 
+
+\change_deleted -712698321 1524413571
  (see also section
 \begin_inset space ~
 \end_inset
@@ -13255,11 +13302,19 @@ reference "subsec:LaTeX-settings"
 
 \end_inset
 
-).
+)
+\change_unchanged
+.
  Normally, you do not need to change (or even understand) this.
  Unless you have specific reasons, use 
+\change_deleted -712698321 1524413471
+
 \family sans
 Default
+\change_inserted -712698321 1524413474
+Automatic
+\change_unchanged
+
 \family default
 .
 \end_layout
@@ -47833,6 +47888,8 @@ Settings ! \SpecialChar LaTeX
 \end_layout
 
 \begin_layout Description
+
+\change_deleted -712698321 1524413534
 Use
 \begin_inset space ~
 \end_inset
@@ -47893,6 +47950,8 @@ T1, T2B
  \SpecialChar LyX
  sets up in the background.
  So there is no need to change the default encoding.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description

@@ -1011,11 +1011,6 @@ void Preamble::handle_package(Parser &p, string const & name,
 
 	else if (name == "fontenc") {
 		h_fontencoding = getStringFromVector(options, ",");
-		/* We could do the following for better round trip support,
-		 * but this makes the document less portable, so I skip it:
-		if (h_fontencoding == lyxrc.fontenc)
-			h_fontencoding = "global";
-		 */
 		options.clear();
 	}
 

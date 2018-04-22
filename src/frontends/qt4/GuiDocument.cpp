@@ -841,6 +841,62 @@ GuiDocument::GuiDocument(GuiView & lv)
 	connect(outputModule->saveTransientPropertiesCB, SIGNAL(clicked()),
 	        this, SLOT(change_adaptor()));
 
+
+	// language & quote
+	// this must preceed font, since fonts depend on this
+	langModule = new UiWidget<Ui::LanguageUi>(this);
+	connect(langModule->languageCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(langModule->languageCO, SIGNAL(activated(int)),
+		this, SLOT(languageChanged(int)));
+	connect(langModule->defaultencodingRB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(langModule->otherencodingRB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+	connect(langModule->encodingCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(langModule->quoteStyleCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(langModule->languagePackageCO, SIGNAL(activated(int)),
+		this, SLOT(change_adaptor()));
+	connect(langModule->languagePackageLE, SIGNAL(textChanged(QString)),
+		this, SLOT(change_adaptor()));
+	connect(langModule->languagePackageCO, SIGNAL(currentIndexChanged(int)),
+		this, SLOT(languagePackageChanged(int)));
+	connect(langModule->dynamicQuotesCB, SIGNAL(clicked()),
+		this, SLOT(change_adaptor()));
+
+	langModule->languagePackageLE->setValidator(new NoNewLineValidator(
+		langModule->languagePackageLE));
+
+	QAbstractItemModel * language_model = guiApp->languageModel();
+	// FIXME: it would be nice if sorting was enabled/disabled via a checkbox.
+	language_model->sort(0);
+	langModule->languageCO->setModel(language_model);
+	langModule->languageCO->setModelColumn(0);
+
+	// Always put the default encoding in the first position.
+	langModule->encodingCO->addItem(qt_("Language Default (no inputenc)"));
+	QStringList encodinglist;
+	for (auto const & encvar : encodings) {
+		if (!encvar.unsafe() && !encvar.guiName().empty())
+			encodinglist.append(qt_(encvar.guiName()));
+	}
+	encodinglist.sort();
+	langModule->encodingCO->addItems(encodinglist);
+
+	langModule->languagePackageCO->addItem(
+		qt_("Default"), toqstr("default"));
+	langModule->languagePackageCO->addItem(
+		qt_("Automatic"), toqstr("auto"));
+	langModule->languagePackageCO->addItem(
+		qt_("Always Babel"), toqstr("babel"));
+	langModule->languagePackageCO->addItem(
+		qt_("Custom"), toqstr("custom"));
+	langModule->languagePackageCO->addItem(
+		qt_("None[[language package]]"), toqstr("none"));
+
+
 	// fonts
 	fontModule = new FontModule(this);
 	connect(fontModule->osFontsCB, SIGNAL(clicked()),
@@ -904,9 +960,9 @@ GuiDocument::GuiDocument(GuiView & lv)
 	fontModule->fontsizeCO->addItem(qt_("11"));
 	fontModule->fontsizeCO->addItem(qt_("12"));
 
-	fontModule->fontencCO->addItem(qt_("Default"), QString("global"));
+	fontModule->fontencCO->addItem(qt_("Automatic"), QString("auto"));
+	fontModule->fontencCO->addItem(qt_("Class default"), QString("default"));
 	fontModule->fontencCO->addItem(qt_("Custom"), QString("custom"));
-	fontModule->fontencCO->addItem(qt_("None (no fontenc)"), QString("default"));
 
 	for (int n = 0; GuiDocument::fontfamilies_gui[n][0]; ++n)
 		fontModule->fontsDefaultCO->addItem(
@@ -1069,60 +1125,6 @@ GuiDocument::GuiDocument(GuiView & lv)
 		marginsModule->footskipL);
 	bc().addCheckedLineEdit(marginsModule->columnsepLE,
 		marginsModule->columnsepL);
-
-
-	// language & quote
-	langModule = new UiWidget<Ui::LanguageUi>(this);
-	connect(langModule->languageCO, SIGNAL(activated(int)),
-		this, SLOT(change_adaptor()));
-	connect(langModule->languageCO, SIGNAL(activated(int)),
-		this, SLOT(languageChanged(int)));
-	connect(langModule->defaultencodingRB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
-	connect(langModule->otherencodingRB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
-	connect(langModule->encodingCO, SIGNAL(activated(int)),
-		this, SLOT(change_adaptor()));
-	connect(langModule->quoteStyleCO, SIGNAL(activated(int)),
-		this, SLOT(change_adaptor()));
-	connect(langModule->languagePackageCO, SIGNAL(activated(int)),
-		this, SLOT(change_adaptor()));
-	connect(langModule->languagePackageLE, SIGNAL(textChanged(QString)),
-		this, SLOT(change_adaptor()));
-	connect(langModule->languagePackageCO, SIGNAL(currentIndexChanged(int)),
-		this, SLOT(languagePackageChanged(int)));
-	connect(langModule->dynamicQuotesCB, SIGNAL(clicked()),
-		this, SLOT(change_adaptor()));
-
-	langModule->languagePackageLE->setValidator(new NoNewLineValidator(
-		langModule->languagePackageLE));
-
-	QAbstractItemModel * language_model = guiApp->languageModel();
-	// FIXME: it would be nice if sorting was enabled/disabled via a checkbox.
-	language_model->sort(0);
-	langModule->languageCO->setModel(language_model);
-	langModule->languageCO->setModelColumn(0);
-
-	// Always put the default encoding in the first position.
-	langModule->encodingCO->addItem(qt_("Language Default (no inputenc)"));
-	QStringList encodinglist;
-	for (auto const & encvar : encodings) {
-		if (!encvar.unsafe() && !encvar.guiName().empty())
-			encodinglist.append(qt_(encvar.guiName()));
-	}
-	encodinglist.sort();
-	langModule->encodingCO->addItems(encodinglist);
-
-	langModule->languagePackageCO->addItem(
-		qt_("Default"), toqstr("default"));
-	langModule->languagePackageCO->addItem(
-		qt_("Automatic"), toqstr("auto"));
-	langModule->languagePackageCO->addItem(
-		qt_("Always Babel"), toqstr("babel"));
-	langModule->languagePackageCO->addItem(
-		qt_("Custom"), toqstr("custom"));
-	langModule->languagePackageCO->addItem(
-		qt_("None[[language package]]"), toqstr("none"));
 
 
 	// color
@@ -2151,8 +2153,13 @@ bool GuiDocument::ot1() const
 {
 	QString const fontenc =
 		fontModule->fontencCO->itemData(fontModule->fontencCO->currentIndex()).toString();
+	int const i = langModule->languageCO->currentIndex();
+	if (i == -1)
+		return false;
+	QString const langname = langModule->languageCO->itemData(i).toString();
+	Language const * newlang = lyx::languages.getLanguage(fromqstr(langname));
 	return (fontenc == "default"
-		|| (fontenc == "global" && (lyxrc.fontenc == "default" || lyxrc.fontenc == "OT1"))
+		|| (fontenc == "auto" && newlang->fontenc(buffer().params()) == "OT1")
 		|| (fontenc == "custom" && fontModule->fontencLE->text() == "OT1"));
 }
 
@@ -3837,12 +3844,13 @@ void GuiDocument::paramsToDialog()
 	if (nn >= 0)
 		fontModule->fontsDefaultCO->setCurrentIndex(nn);
 
-	if (bp_.fontenc == "global" || bp_.fontenc == "default") {
+	if (bp_.fontenc == "auto" || bp_.fontenc == "default") {
 		fontModule->fontencCO->setCurrentIndex(
 			fontModule->fontencCO->findData(toqstr(bp_.fontenc)));
 		fontModule->fontencLE->setEnabled(false);
 	} else {
-		fontModule->fontencCO->setCurrentIndex(1);
+		fontModule->fontencCO->setCurrentIndex(
+					fontModule->fontencCO->findData("custom"));
 		fontModule->fontencLE->setText(toqstr(bp_.fontenc));
 	}
 
