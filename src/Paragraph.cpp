@@ -3449,8 +3449,13 @@ bool Paragraph::isHardHyphenOrApostrophe(pos_type pos) const
 
 bool Paragraph::needsCProtection() const
 {
-	// first check the layout of the paragraph
-	if (layout().needcprotect) {
+	// first check the layout of the paragraph, but only in insets
+	InsetText const * textinset = inInset().asInsetText();
+	bool const maintext = textinset
+		? textinset->text().isMainText()
+		: false;
+
+	if (!maintext && layout().needcprotect) {
 		// Environments need cprotection regardless the content
 		if (layout().latextype == LATEX_ENVIRONMENT)
 			return true;
