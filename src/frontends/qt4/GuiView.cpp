@@ -3645,6 +3645,7 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 				|| status == Buffer::PreviewSuccess);
 	}
 #else
+	(void) allow_async;
 	Buffer::ExportStatus status;
 	if (syncFunc) {
 		status = (used_buffer->*syncFunc)(format, true);
