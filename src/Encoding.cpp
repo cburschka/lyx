@@ -589,10 +589,11 @@ bool Encodings::isKnownScriptChar(char_type const c, string & preamble)
 		return false;
 
 	if (it->second.textpreamble() != "textgreek"
-	    && it->second.textpreamble() != "textcyrillic")
+	    && it->second.textpreamble() != "textcyrillic"
+	    && it->second.textpreamble() != "textbaltic")
 		return false;
 
-	if (preamble.empty()) {
+	if (preamble.empty() && it->second.textpreamble() != "textbaltic") {
 		preamble = it->second.textpreamble();
 		return true;
 	}

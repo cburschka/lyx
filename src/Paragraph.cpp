@@ -1547,6 +1547,7 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 	// then the contents
 	BufferParams const bp = features.runparams().is_child
 		? features.buffer().masterParams() : features.buffer().params();
+	string bscript = "textbaltic";
 	for (pos_type i = 0; i < int(text_.size()) ; ++i) {
 		char_type c = text_[i];
 		if (c == 0x0022) {
@@ -1555,11 +1556,16 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 			else if (bp.main_font_encoding() != "T1"
 				 || ((&owner_->getFontSettings(bp, i))->language()->internalFontEncoding()))
 				features.require("textquotedbl");
-		}
-		if (!bp.use_dash_ligatures
-		    && (c == 0x2013 || c == 0x2014)
-		    && bp.useNonTeXFonts
-		    && features.runparams().flavor == OutputParams::XETEX)
+		} else if (Encodings::isKnownScriptChar(c, bscript)){
+			string fontenc = (&owner_->getFontSettings(bp, i))->language()->fontenc();
+			if (fontenc.empty())
+				fontenc = features.runparams().main_fontenc;
+			if (Encodings::needsScriptWrapper("textbaltic", fontenc))
+				features.require("textbalticdefs");
+		} else if (!bp.use_dash_ligatures
+			   && (c == 0x2013 || c == 0x2014)
+			   && bp.useNonTeXFonts
+			   && features.runparams().flavor == OutputParams::XETEX)
 			// XeTeX's dash behaviour is determined via a global setting
 			features.require("xetexdashbreakstate");
 		BufferEncodings::validate(c, features);

@@ -620,10 +620,6 @@ bool LaTeXFeatures::isProvided(string const & name) const
 	if (provides_.find(name) != provides_.end())
 		return true;
 
-	// FIXME: the "textbaltic" definitions are only needed if the context
-	//        font encoding of the respective char is not l7x.
-	//        We cannot check this here as we have no context information.
-
 	if (params_.useNonTeXFonts)
 		return params_.documentClass().provides(name);
 
@@ -1393,19 +1389,19 @@ TexString LaTeXFeatures::getMacros() const
 
 	// non-standard text accents:
 	if (mustProvide("textcommaabove") || mustProvide("textcommaaboveright") ||
-	    mustProvide("textcommabelow") || mustProvide("textbaltic"))
+	    mustProvide("textcommabelow") || mustProvide("textbalticdefs"))
 		macros << lyxaccent_def;
 
-	if (mustProvide("textcommabelow") || mustProvide("textbaltic"))
+	if (mustProvide("textcommabelow") || mustProvide("textbalticdefs"))
 		macros << textcommabelow_def << '\n';
 
-	if (mustProvide("textcommaabove") || mustProvide("textbaltic"))
+	if (mustProvide("textcommaabove") || mustProvide("textbalticdefs"))
 		macros << textcommaabove_def << '\n';
 
 	if (mustProvide("textcommaaboveright"))
 		macros << textcommaaboveright_def << '\n';
 
-	if (mustProvide("textbaltic"))
+	if (mustProvide("textbalticdefs"))
 		macros << textbaltic_def << '\n';
 
 	// split-level fractions
