@@ -1,7 +1,16 @@
+### This file is part of
+### ========================================================
+###          LyX, The Document Processor
+###
+###          Copyright 1995 Matthias Ettrich
+###          Copyright 1995-2018 The LyX Team.
+###
+### ========================================================
+
 # This file is written by LyX, if you want to make your own
 # modifications you should do them from inside LyX and save
 
-Format 22
+Format 25
 
 \texinputs_prefix ".:@LYX_ABS_INSTALLED_DATADIR@/@LYX_DATA_SUBDIR@tex"
 
