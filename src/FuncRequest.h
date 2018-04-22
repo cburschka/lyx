@@ -122,7 +122,7 @@ private:
 	///
 	KeyModifier modifier_;
 	/// Commands should be run synchronously when they
-	/// are launched via "command-sequence" or "repeat"
+	/// are launched via "command-sequence" or "repeat" or "buffer-forall"
 	bool allow_async_;
 };
 
