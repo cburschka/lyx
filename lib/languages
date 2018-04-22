@@ -26,7 +26,7 @@
 #	  <extra latex code inserted after babel>
 #	EndPostBabelPreamble
 #	Requires           <requirement>
-#	Provides           <feature>
+#	Provides           <babel language feature>
 # End
 #
 #
@@ -92,6 +92,9 @@
 #   pre-1998 and post-1998 spelling). The aspell dictionaries are named
 #   language[_REGION][-variety].multi, e.g. de-alt.multi for "German (old
 #   spelling)" (see http://aspell.net/man-html/Dictionary-Naming.html)
+# * Provides lists features that are provided by specific Babel languages,
+#   but are available globally if this language is used (not only for this
+#   language. Examples are \textgreek (Greek) and \textcyrillic (Russian).
 #
 ##########################################################################
 
