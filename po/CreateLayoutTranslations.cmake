@@ -34,7 +34,11 @@ die_if(_err "Copy of layouttranslations failed")
 execute_process(COMMAND ${LYX_PYTHON_EXECUTABLE}
   "${TOP_SRC_DIR}/po/lyx_pot.py" -b "${TOP_SRC_DIR}" -o "${_dst}" -t ${type}
   "--src_file=${_src_files}"
+  OUTPUT_VARIABLE _err_out
   RESULT_VARIABLE _err)
+if(_err)
+  message(STATUS "${_err_out}")
+endif()
 die_if(_err "Calling lyx_pot.py failed")
 
 execute_process(COMMAND ${CMAKE_COMMAND} -E copy_if_different "${_dst}" "${TOP_SRC_DIR}/lib/layouttranslations"
