@@ -906,7 +906,8 @@ void LaTeXFeatures::getFontEncodings(vector<string> & encs, bool const onlylangs
 
 	for (auto const & lang : UsedLanguages_)
 		if (!lang->fontencs().empty()) {
-			vector<string> extraencs = lang->fontencs();
+			vector<string> extraencs =
+				getVectorFromString(lang->fontenc(buffer().masterParams()));
 			for (auto const & extra : extraencs) {
 				if (extra != "none" && find(encs.begin(), encs.end(), extra) == encs.end())
 					encs.insert(encs.begin(), extra);
