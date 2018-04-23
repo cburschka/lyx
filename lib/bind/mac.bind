@@ -152,6 +152,7 @@ Format 4
 #  +: "Option-Command-H"             # Hide the windows of all other running applications
 #  -: "Command-I"                    # Italicize the selected text or toggle italic text on or off
 \bind "C-i"                          "inset-toggle" # 'i' for Inset
+\bind "C-M-i"                        "inset-settings"
 #  -: "Option-Command-I"             # Display an inspector window
 #  -: "Command-J"                    # Scroll to a selection
 \bind "C-k"                          "line-delete-forward"
