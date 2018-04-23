@@ -904,15 +904,14 @@ void LaTeXFeatures::getFontEncodings(vector<string> & encs, bool const onlylangs
 			encs.insert(encs.begin(), "T2A");
 	}
 
-	for (auto const & lang : UsedLanguages_)
-		if (!lang->fontencs().empty()) {
-			vector<string> extraencs =
-				getVectorFromString(lang->fontenc(buffer().masterParams()));
-			for (auto const & extra : extraencs) {
-				if (extra != "none" && find(encs.begin(), encs.end(), extra) == encs.end())
-					encs.insert(encs.begin(), extra);
-			}
+	for (auto const & lang : UsedLanguages_) {
+		vector<string> extraencs =
+			getVectorFromString(lang->fontenc(buffer().masterParams()));
+		for (auto const & extra : extraencs) {
+			if (extra != "none" && find(encs.begin(), encs.end(), extra) == encs.end())
+				encs.insert(encs.begin(), extra);
 		}
+	}
 }
 
 namespace {

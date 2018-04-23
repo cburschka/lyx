@@ -72,12 +72,6 @@ docstring const Language::translateLayout(string const & m) const
 }
 
 
-vector<string> Language::fontencs() const
-{
-	return fontenc_;
-}
-
-
 string Language::fontenc(BufferParams const & params) const
 {
 	// Determine optimal font encoding
@@ -99,7 +93,7 @@ string Language::fontenc(BufferParams const & params) const
 	}
 	// We did not find a suitable one; just take the first in the list,
 	// the priorized one (which is "T1" for ASCII).
-	return fontencs().front() == "ASCII" ? "T1" : fontencs().front();
+	return fontenc_.front() == "ASCII" ? "T1" : fontenc_.front();
 }
 
 

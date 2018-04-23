@@ -84,10 +84,8 @@ public:
 	docstring babel_presettings() const { return babel_presettings_; }
 	/// This language internally sets a font encoding
 	bool internalFontEncoding() const { return internal_enc_; }
-	/// fontenc encoding(s)
+	/// The most suitable font encoding(s) for the selected document font
 	std::string fontenc(BufferParams const &) const;
-	/// fontenc encoding(s)
-	std::vector<std::string> fontencs() const;
 	/// This language needs to be passed to babel itself (not the class)
 	bool asBabelOptions() const { return as_babel_options_; }
 	/// This language corresponds to a translation of the GUI
