@@ -1086,7 +1086,7 @@ InsetText::XHTMLOptions operator|(InsetText::XHTMLOptions a1, InsetText::XHTMLOp
 }
 
 
-bool InsetText::needsCProtection() const
+bool InsetText::needsCProtection(bool const maintext) const
 {
 	// Nested cprotect content needs \cprotect
 	// on each level
@@ -1098,7 +1098,7 @@ bool InsetText::needsCProtection() const
 
 	// Environments and "no latex" types (e.g., knitr chunks)
 	// need cprotection regardless the content
-	if (getLayout().latextype() != InsetLayout::COMMAND)
+	if (!maintext && getLayout().latextype() != InsetLayout::COMMAND)
 		return true;
 
 	// Commands need cprotection if they contain specific chars
