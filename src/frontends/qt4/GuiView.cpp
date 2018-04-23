@@ -3935,8 +3935,8 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		case LFUN_BUFFER_RELOAD: {
 			LASSERT(doc_buffer, break);
 
-			//drop changes?
-			bool drop = (cmd.argument()=="dump");
+			// drop changes?
+			bool drop = (cmd.argument() == "dump");
 
 			int ret = 0;
 			if (!drop && !doc_buffer->isClean()) {
