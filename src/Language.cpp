@@ -76,11 +76,12 @@ string Language::fontenc(BufferParams const & params) const
 {
 	// Determine optimal font encoding
 	// We check whether the used rm font supports an encoding our language supports
+	LaTeXFont const & lf =
+		theLaTeXFonts().getLaTeXFont(from_ascii(params.fontsRoman()));
+	vector<string> const lfe = lf.fontencs();
 	for (auto & fe : fontenc_) {
-		LaTeXFont const & lf = theLaTeXFonts().getLaTeXFont(from_ascii(params.fontsRoman()));
 		// ASCII means: support all T* encodings plus OT1
 		if (fe == "ASCII") {
-			vector<string> const lfe = lf.fontencs();
 			for (auto & afe : lfe) {
 				if (afe == "OT1" || prefixIs(afe, "T"))
 					// we found a suitable one; return that.
