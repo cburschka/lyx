@@ -1,48 +1,36 @@
-Public release of LyX version 2.3.0
-========================================
+Public release of LyX version 2.3.1
+===================================
 
-We are proud to announce the release of LyX 2.3.0.
+We are proud to announce the release of LyX 2.3.1. This is the first
+maintenance release in the 2.3.x series. 
 
-With this release, LyX celebrates 22 years of existence. The 2.3 series
-has a rich set of new features compared to the current stable series.
+You can download LyX 2.3.1 from http://www.lyx.org/Download/.
 
-LyX 2.3.0 is the culmination of two years of hard work. An overview
-of the new features can be found here:
-  https://wiki.lyx.org/LyX/NewInLyX23
+LyX is a document processor that encourages an approach to writing based 
+on the structure of your documents and not simply their appearance. It is
+released under a Free and Open Source Software license.
 
-You can download LyX 2.3.0 from https://www.lyx.org/Download/.
+LyX 2.3.1 is the result of on-going efforts to make our stable version more 
+reliable and more stable. <CONTINUE>
 
-For Windows users, if you installed a pre-release of LyX 2.3.0, you
-should uninstall that version before installing this newer release.
+One oft-requested enhancement was to restore a keyboard shortcut for opening
+the 'settings' menu of graphics, reference, etc, insets. This is now Control-
+Alt-i, on Windows and Linux, and Control-Option-i on OSX (assuming you are
+using the default keybindings).
 
-We hope you will enjoy the result!
+If you think you have found a bug in LyX 2.3.1, please open a bug report at
+http://www.lyx.org/trac/wiki/BugTrackerHome. If you're not sure whether it
+really is a bug, you can e-mail the LyX developers' mailing list (lyx-devel 
+<at> lists.lyx.org) and ask. 
 
-If a file from an earlier version of LyX is opened *and saved* with
-any version of 2.3.x, then the original file will automatically be
-backed up. The backup file will be found in the backup directory, if one
-is set under Tools> Preferences> Paths, or else in the same folder as
-the original file, if no backup directory is set. The filename of the
-backup file will be:
-    ORIGNAME-lyxformat-NUM.lyx~
-where NUM is the LyX format number of the original file. In the case of
-a 2.2.x file, this will be 508, but in the case of older files it will be
-different.
+If you have trouble using LyX or have a question, consult the documentation 
+that comes with LyX (under the Help or Apple menu) and the LyX wiki, which 
+is at http://wiki.lyx.org/. If you can't find the answer there, e-mail the 
+LyX users' list (lyx-users <at> lists.lyx.org), where you will find an 
+active community of people who are ready to help.
 
-The file lib/RELEASE-NOTES lists some known issues and problems compared
-to the current stable releases (LyX 2.2.x). We strongly recommend that
-packagers of LyX on various platforms and distributions read this file.
-
-As with any major release, this one comes with a lot of new features but
-also some bugs. If you think you have found a bug in LyX 2.3.0, either
-email the LyX developers' mailing list (lyx-devel at lists.lyx.org),
-or open a bug report at https://www.lyx.org/trac/wiki/BugTrackerHome .
-Please specify if the behavior you are reporting is different from behavior
-in a previous LyX version.
-
-If you have trouble using LyX or have a question, consult the
-documentation that comes with LyX (under Help) and the LyX wiki, which you
-will find at https://wiki.lyx.org/. You can also send email to the LyX users'
-list (lyx-users at lists.lyx.org).
+We hope you enjoy using LyX 2.3.1.
 
 The LyX team.
-https://www.lyx.org
+http://www.lyx.org
+
