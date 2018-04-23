@@ -26,7 +26,8 @@ class Lexer;
 class LaTeXFont {
 public:
 	/// TeX font
-	LaTeXFont() : osfdefault_(false), switchdefault_(false) {}
+	// FIXME Add fontenc tag to classes which is used if no font is specified?
+	LaTeXFont() : osfdefault_(false), switchdefault_(false) { fontenc_.push_back("T1"); }
 	/// The font name
 	docstring const & name() { return name_; }
 	/// The name to appear in the document dialog
