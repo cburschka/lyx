@@ -3114,7 +3114,12 @@ string const BufferParams::dvips_options() const
 
 string const BufferParams::main_font_encoding() const
 {
-	return font_encodings().empty() ? "default" : font_encodings().back();
+	if (font_encodings().empty()) {
+		if (ascii_lowercase(language->fontenc(*this)) == "none")
+			return "none";
+		return "default";
+	}
+	return font_encodings().back();
 }
 
 
