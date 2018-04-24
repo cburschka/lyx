@@ -219,6 +219,9 @@ What's new
 - When adding a label in the first paragraph after a division (section,
   etc), use the label prefix for it (bug 10624).
 
+- Fix crash when canceling entry of macro name in a mathed subscript
+  (bug 11125).
+
 
 * INTERNALS
 
