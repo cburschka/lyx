@@ -1690,13 +1690,14 @@ bool Cursor::macroModeClose(bool cancel)
 	--pos();
 	cell().erase(pos());
 
-	// do nothing if the macro name is empty
-	if (s == "\\" || cancel)
-		return false;
-
 	// trigger updates of macros, at least, if no full
 	// updates take place anyway
 	screenUpdateFlags(Update::Force);
+
+	// do nothing if the macro name is empty
+	if (s == "\\" || cancel) {
+		return false;
+	}
 
 	docstring const name = s.substr(1);
 	InsetMathNest * const in = inset().asInsetMath()->asNestInset();
