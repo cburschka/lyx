@@ -411,6 +411,8 @@ bool LyXRC::read(FileName const & filename, bool check_format)
 		lexrc2.setFile(tempfile);
 		LYXERR(Debug::LYXRC, "Reading '" << tempfile << "'...");
 		retval = read(lexrc2, check_format);
+		if (retval == FormatMismatch)
+			LYXERR0("Conversion failed for " << filename.absFileName());
 	}
 	return retval == ReadOK;
 }
