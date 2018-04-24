@@ -441,10 +441,10 @@
 0x0215 "\\textdoublegrave{u}"     "tipa" "force,mathalpha" "\\dgrave{u}" "tipasymb,dgrave" # LATIN SMALL LETTER U WITH DOUBLE GRAVE
 0x0216 "\\textroundcap{U}"        "tipa" "force,mathalpha" "\\rcap{U}" "tipasymb,rcap" # LATIN CAPITAL LETTER U WITH INVERTED BREVE
 0x0217 "\\textroundcap{u}"        "tipa" "force,mathalpha" "\\rcap{u}" "tipasymb,rcap" # LATIN SMALL LETTER U WITH INVERTED BREVE
-0x0218 "\\textcommabelow{S}"      "textcommabelow" "force" # LATIN CAPITAL LETTER S WITH COMMA BELOW
-0x0219 "\\textcommabelow{s}"      "textcommabelow" "force" # LATIN SMALL LETTER S WITH COMMA BELOW
-0x021a "\\textcommabelow{T}"      "textcommabelow" "force" # LATIN CAPITAL LETTER T WITH COMMA BELOW
-0x021b "\\textcommabelow{t}"      "textcommabelow" "force" # LATIN SMALL LETTER T WITH COMMA BELOW
+0x0218 "\\textcommabelow{S}"      "textcommabelow" "" # LATIN CAPITAL LETTER S WITH COMMA BELOW
+0x0219 "\\textcommabelow{s}"      "textcommabelow" "" # LATIN SMALL LETTER S WITH COMMA BELOW
+0x021a "\\textcommabelow{T}"      "textcommabelow" "" # LATIN CAPITAL LETTER T WITH COMMA BELOW
+0x021b "\\textcommabelow{t}"      "textcommabelow" "" # LATIN SMALL LETTER T WITH COMMA BELOW
 #0x021c ""                         "" "" # LATIN CAPITAL LETTER YOGH
 #0x021d ""                         "" "" # LATIN SMALL LETTER YOGH
 0x021e "\\v{H}"                   "" "mathalpha,force=utf8" "\\check{H}" # LATIN CAPITAL LETTER H WITH CARON
