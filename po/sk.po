@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-04-19 09:36+0200\n"
-"PO-Revision-Date: 2018-04-19 08:14+0000\n"
+"POT-Creation-Date: 2018-04-25 18:53+0200\n"
+"PO-Revision-Date: 2018-04-25 17:06+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2310,6 +2310,10 @@ msgstr "&Lokálna schéma…"
 msgid "Class Options"
 msgstr "Nastavenie Triedy"
 
+#: src/frontends/qt4/GuiDocument.cpp:964
+msgid "Class default"
+msgstr "Triedny štandard"
+
 #: src/frontends/qt4/ui/LaTeXUi.ui:64
 msgid "Enable to use the options that are predefined in the layout file"
 msgstr "Umožni voľby preddefinované v súbore so schémou"
@@ -4010,17 +4014,6 @@ msgstr "&Logický"
 #: src/frontends/qt4/ui/PrefLanguageUi.ui:257
 msgid "&Visual"
 msgstr "&Vizuálny"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:34
-msgid ""
-"Enable if a specific font encoding (such as T1) should be used (via fontenc)"
-msgstr ""
-"Zapnúť keď potrebujete špecifické kódovanie písiem (ako napr. T1) (cez "
-"fontenc)"
-
-#: src/frontends/qt4/ui/PrefLatexUi.ui:37
-msgid "Use LaTe&X font encoding:"
-msgstr "Použiť LaTe&X kódovanie:"
 
 #: src/frontends/qt4/ui/PrefLatexUi.ui:51
 msgid "&DVI viewer paper size options:"
@@ -25417,10 +25410,6 @@ msgstr "Žiadne informácie pre export formátu %1$s."
 msgid "File name error"
 msgstr "Chyba v názve súboru"
 
-#: src/Buffer.cpp:4284
-msgid "The directory path to the document cannot contain spaces."
-msgstr "Cesta k dokumentu nesmie obsahovať medzery."
-
 #: src/Buffer.cpp:4364 src/Buffer.cpp:4394 src/frontends/qt4/GuiView.cpp:690
 msgid "Document export cancelled."
 msgstr "Exportovanie dokumentu bolo zrušené."
@@ -27429,14 +27418,6 @@ msgstr ""
 "Cesta, ktorú vám LyX pri voľbe príkladov ponúkne. Prázdna hodnota spôsobí, "
 "že bude nastavený adresár, z ktorého bol LyX spustený."
 
-#: src/LyXRC.cpp:3182
-msgid ""
-"The font encoding used for the LaTeX2e fontenc package. T1 is highly "
-"recommended for non-English languages."
-msgstr ""
-"Kódovanie písma použité pre LaTeX2e balíček fontenc. T1 je vrelo odporučené "
-"pre neanglické jazyky."
-
 #: src/LyXRC.cpp:3189
 msgid ""
 "Define the options of makeindex (cf. man makeindex) or select an alternative "
@@ -29370,10 +29351,6 @@ msgstr "11"
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt4/GuiDocument.cpp:879
-msgid "None (no fontenc)"
-msgstr "Žiadne (bez fontenc)"
-
 #: src/frontends/qt4/GuiDocument.cpp:887
 msgid ""
 "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)\n"
@@ -29668,10 +29645,10 @@ msgstr " (nedostupný)"
 msgid "Class Default (TeX Fonts)"
 msgstr "Triedny Štandard (TeX fonty)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2208
-#: src/frontends/qt4/GuiDocument.cpp:2235
+#: src/frontends/qt4/GuiDocument.cpp:2264
+#: src/frontends/qt4/GuiDocument.cpp:2291
 msgid "Class Default"
-msgstr "Triedny štandard"
+msgstr "Triedny Štandard"
 
 #: src/frontends/qt4/GuiDocument.cpp:2312
 msgid "Lay&outs"
@@ -31209,6 +31186,17 @@ msgstr ""
 "Adresár v uvedenej ceste\n"
 "%1$s\n"
 "neexistuje."
+
+#: src/Buffer.cpp:4366
+#, c-format
+msgid ""
+"The directory path to the document\n"
+"%1$s\n"
+"contains spaces, but your TeX installation does not allow them."
+msgstr ""
+"Cesta do adresára dokumentu\n"
+"%1$s\n"
+"obsahuje medzery, ale vaša inštalácia TeXu to nepovoľuje."
 
 #: src/frontends/qt4/GuiView.cpp:2337
 #, c-format
@@ -33668,6 +33656,26 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid ""
+#~ "Enable if a specific font encoding (such as T1) should be used (via "
+#~ "fontenc)"
+#~ msgstr ""
+#~ "Zapnúť keď potrebujete špecifické kódovanie písiem (ako napr. T1) (cez "
+#~ "fontenc)"
+
+#~ msgid "None (no fontenc)"
+#~ msgstr "Žiadne (bez fontenc)"
+
+#~ msgid ""
+#~ "The font encoding used for the LaTeX2e fontenc package. T1 is highly "
+#~ "recommended for non-English languages."
+#~ msgstr ""
+#~ "Kódovanie písma použité pre LaTeX2e balíček fontenc. T1 je vrelo "
+#~ "odporučené pre neanglické jazyky."
+
+#~ msgid "Use LaTe&X font encoding:"
+#~ msgstr "Použiť LaTe&X kódovanie:"
 
 #~ msgid "C&aption:"
 #~ msgstr "Pop&is:"
@@ -38178,3 +38186,6 @@ msgstr "Neznámy používateľ"
 #~ "Beh konverzie\n"
 #~ " %1$s\n"
 #~ "bol prerušený užívateľom."
+
+#~ msgid "The directory path to the document cannot contain spaces."
+#~ msgstr "Cesta k dokumentu nesmie obsahovať medzery."
