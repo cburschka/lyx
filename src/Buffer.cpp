@@ -4791,9 +4791,13 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 		return;
 
 	// if the bibfiles changed, the cache of bibinfo is invalid
-	sort(d->bibfiles_cache_.begin(), d->bibfiles_cache_.end());
-	// the old one should already be sorted
-	if (old_bibfiles != d->bibfiles_cache_) {
+	FileNamePairList new_bibfiles = d->bibfiles_cache_;
+	// this is a trick to determine whether the two vectors have
+	// the same elements.
+	sort(new_bibfiles.begin(), new_bibfiles.end());
+	sort(old_bibfiles.begin(), old_bibfiles.end());
+	if (old_bibfiles != new_bibfiles) {
+		LYXERR(Debug::FILES, "Reloading bibinfo cache.");
 		invalidateBibinfoCache();
 		reloadBibInfoCache();
 		// We relied upon the bibinfo cache when recalculating labels. But that
@@ -4810,8 +4814,11 @@ void Buffer::updateBuffer(UpdateScope scope, UpdateType utype) const
 		// updateMacros();
 		setChangesPresent(false);
 		updateBuffer(parit, utype);
+		// this will already have been done by reloadBibInfoCache();
+		// d->bibinfo_cache_valid_ = true;
 	}
 	else {
+		LYXERR(Debug::FILES, "Bibfiles unchanged.");
 		// this is also set to true on the other path, by reloadBibInfoCache.
 		d->bibinfo_cache_valid_ = true;
 	}
