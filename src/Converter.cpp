@@ -123,9 +123,11 @@ void Converter::readFlags()
 				"latex" : flag_value;
 		} else if (flag_name == "xml")
 			xml_ = true;
-		else if (flag_name == "needaux")
+		else if (flag_name == "needaux") {
 			need_aux_ = true;
-		else if (flag_name == "resultdir")
+			latex_flavor_ = flag_value.empty() ?
+				"latex" : flag_value;
+		} else if (flag_name == "resultdir")
 			result_dir_ = (flag_value.empty())
 				? token_base : flag_value;
 		else if (flag_name == "resultfile")
@@ -265,7 +267,7 @@ OutputParams::FLAVOR Converters::getFlavor(Graph::EdgePath const & path,
 	for (Graph::EdgePath::const_iterator cit = path.begin();
 	     cit != path.end(); ++cit) {
 		Converter const & conv = converterlist_[*cit];
-		if (conv.latex()) {
+		if (conv.latex() || conv.need_aux()) {
 			if (conv.latex_flavor() == "latex")
 				return OutputParams::LATEX;
 			if (conv.latex_flavor() == "xelatex")

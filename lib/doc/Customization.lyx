@@ -2409,6 +2409,10 @@ status collapsed
 
 \begin_layout Plain Layout
 latex
+\change_inserted -712698321 1524656940
+=flavor
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -2418,6 +2422,55 @@ latex
  This will make \SpecialChar LyX
 's \SpecialChar LaTeX
  error logs available.
+
+\change_inserted -712698321 1524657018
+ The optional 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1524657012
+flavor
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ value specifies the form of \SpecialChar LaTeX
+ that is run (
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1524657005
+latex, pdflatex, platex, xetex, luatex
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+).
+ If no value is specified, 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1524657018
+latex
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+ is used.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Labeling
@@ -2427,6 +2480,10 @@ status collapsed
 
 \begin_layout Plain Layout
 needaux
+\change_inserted -712698321 1524656935
+=flavor
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -2443,6 +2500,61 @@ status collapsed
 \end_inset
 
  file for the conversion.
+
+\change_inserted -712698321 1524657047
+ The optional 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1524657030
+flavor
+\end_layout
+
+\end_inset
+
+ value specifies the form of \SpecialChar LaTeX
+ that is run in order to generate the 
+\begin_inset Flex Noun
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1524657047
+.aux
+\end_layout
+
+\end_inset
+
+ file (
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1524657030
+latex, pdflatex, platex, xetex, luatex
+\end_layout
+
+\end_inset
+
+).
+ If no value is specified, 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1524657030
+latex
+\end_layout
+
+\end_inset
+
+ is used.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Labeling

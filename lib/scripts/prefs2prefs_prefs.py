@@ -108,6 +108,9 @@
 # Incremented to format 26, by spitz
 #   Rename font_encoding preference
 
+# Incremented to format 27, by spitz
+#   Add optional flavor value to needaux flag
+
 # NOTE: The format should also be updated in LYXRC.cpp and
 # in configure.py.
 
@@ -442,5 +445,6 @@ conversions = [
 	[ 23, []],
 	[ 24, [rename_collapsible]],
 	[ 25, [remove_use_qimage]],
-	[ 26, [remove_font_encoding]]
+	[ 26, [remove_font_encoding]],
+	[ 27, []]
 ]
