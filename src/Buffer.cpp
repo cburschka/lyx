@@ -4356,7 +4356,9 @@ Buffer::ExportStatus Buffer::doExport(string const & target, bool put_in_tempdir
 	} else if (!lyxrc.tex_allows_spaces
 		   && contains(filePath(), ' ')) {
 		Alert::error(_("File name error"),
-			   _("The directory path to the document cannot contain spaces."));
+			bformat(_("The directory path to the document\n%1$s\n"
+			    "contains spaces, but your TeX installation does "
+			    "not allow them."), from_ascii(filePath())));
 		return ExportTexPathHasSpaces;
 	} else {
 		runparams.nice = false;
