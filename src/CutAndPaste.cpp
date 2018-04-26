@@ -1070,6 +1070,12 @@ void copySelectionToStack()
 }
 
 
+void copySelectionToTemp(Cursor & cur)
+{
+	copySelectionToStack(cur, tempCut);
+}
+
+
 void copySelection(Cursor const & cur, docstring const & plaintext)
 {
 	// In tablemode, because copy and paste actually use special table stack
