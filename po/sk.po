@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-04-25 18:53+0200\n"
-"PO-Revision-Date: 2018-04-25 17:06+0000\n"
+"POT-Creation-Date: 2018-04-26 07:18+0200\n"
+"PO-Revision-Date: 2018-04-26 05:25+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -27920,14 +27920,6 @@ msgstr ", Okraj: "
 msgid "No font change defined."
 msgstr "Žiadna zmena fontu nie je definovaná."
 
-#: src/Text2.cpp:449
-msgid "Nothing to index!"
-msgstr "Nie je čo indexovať!"
-
-#: src/Text2.cpp:451
-msgid "Cannot index more than one paragraph!"
-msgstr "Nie je možné indexovať viac ako jeden odstavec!"
-
 #: src/Text3.cpp:194
 msgid "Math editor mode"
 msgstr "Režim matematického editoru"
@@ -31192,11 +31184,13 @@ msgstr ""
 msgid ""
 "The directory path to the document\n"
 "%1$s\n"
-"contains spaces, but your TeX installation does not allow them."
+"contains spaces, but your TeX installation does not allow them. You should "
+"save the file to a directory whose name does not contain spaces."
 msgstr ""
 "Cesta do adresára dokumentu\n"
 "%1$s\n"
-"obsahuje medzery, ale vaša inštalácia TeXu to nepovoľuje."
+"obsahuje medzery, ale vaša inštalácia TeXu to nepovoľuje. Súbor by ste mali "
+"uložiť do adresára ktorého meno neobsahuje medzery."
 
 #: src/frontends/qt4/GuiView.cpp:2337
 #, c-format
@@ -33656,6 +33650,12 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Cannot index more than one paragraph!"
+#~ msgstr "Nie je možné indexovať viac ako jeden odstavec!"
+
+#~ msgid "Nothing to index!"
+#~ msgstr "Nie je čo indexovať!"
 
 #~ msgid ""
 #~ "Enable if a specific font encoding (such as T1) should be used (via "
