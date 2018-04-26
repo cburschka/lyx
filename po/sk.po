@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.3\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-04-15 07:57+0200\n"
-"PO-Revision-Date: 2018-04-15 16:55+0000\n"
+"POT-Creation-Date: 2018-04-26 07:16+0200\n"
+"PO-Revision-Date: 2018-04-26 05:30+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 1.5\n"
+"X-Generator: Lokalize 2.0\n"
 "Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
 "X-Language: sk_SK\n"
 "X-Source-Language: en_US\n"
@@ -25358,9 +25358,18 @@ msgstr "Žiadne informácie pre export formátu %1$s."
 msgid "File name error"
 msgstr "Chyba v názve súboru"
 
-#: src/Buffer.cpp:4342
-msgid "The directory path to the document cannot contain spaces."
-msgstr "Cesta k dokumentu nesmie obsahovať medzery."
+#: src/Buffer.cpp:4359
+#, c-format
+msgid ""
+"The directory path to the document\n"
+"%1$s\n"
+"contains spaces, but your TeX installation does not allow them. You should "
+"save the file to a directory whose name does not contain spaces."
+msgstr ""
+"Cesta do adresára dokumentu\n"
+"%1$s\n"
+"obsahuje medzery, ale vaša inštalácia TeXu to nepovoľuje. Súbor by ste mali "
+"uložiť do adresára ktorého meno neobsahuje medzery."
 
 #: src/Buffer.cpp:4442 src/Buffer.cpp:4456 src/frontends/qt4/GuiView.cpp:690
 msgid "Document export cancelled."
@@ -29561,10 +29570,10 @@ msgstr " (nedostupný)"
 msgid "Class Default (TeX Fonts)"
 msgstr "Triedny Štandard (TeX fonty)"
 
-#: src/frontends/qt4/GuiDocument.cpp:2208
-#: src/frontends/qt4/GuiDocument.cpp:2235
+#: src/frontends/qt4/GuiDocument.cpp:2262
+#: src/frontends/qt4/GuiDocument.cpp:2289
 msgid "Class Default"
-msgstr "Triedny štandard"
+msgstr "Triedny Štandard"
 
 #: src/frontends/qt4/GuiDocument.cpp:2312
 msgid "Layouts|#o#O"
@@ -37989,3 +37998,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "A&ssigned to group:"
 #~ msgstr "&Priradené ku skupine:"
+
+#~ msgid "The directory path to the document cannot contain spaces."
+#~ msgstr "Cesta k dokumentu nesmie obsahovať medzery."
