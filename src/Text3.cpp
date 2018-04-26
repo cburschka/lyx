@@ -2128,9 +2128,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 	case LFUN_NOMENCL_INSERT: {
 		InsetCommandParams p(NOMENCL_CODE);
-		if (cmd.argument().empty())
-			p["symbol"] = bv->cursor().innerText()->getStringToIndex(bv->cursor());
-		else
+		if (cmd.argument().empty()) {
+			p["symbol"] = 
+				bv->cursor().innerText()->getStringForDialog(bv->cursor());
+			cur.clearSelection();
+		} else
 			p["symbol"] = cmd.argument();
 		string const data = InsetCommand::params2string(p);
 		bv->showDialog("nomenclature", data);

@@ -432,7 +432,7 @@ void Text::toggleFree(Cursor & cur, Font const & font, bool toggleall)
 }
 
 
-docstring Text::getStringToIndex(Cursor const & cur)
+docstring Text::getStringForDialog(Cursor & cur)
 {
 	LBUFERR(this == cur.text());
 
@@ -442,17 +442,10 @@ docstring Text::getStringToIndex(Cursor const & cur)
 	// Try implicit word selection. If there is a change
 	// in the language the implicit word selection is
 	// disabled.
-	Cursor tmpcur = cur;
-	selectWord(tmpcur, PREVIOUS_WORD);
-
-	if (!tmpcur.selection())
-		cur.message(_("Nothing to index!"));
-	else if (tmpcur.selBegin().pit() != tmpcur.selEnd().pit())
-		cur.message(_("Cannot index more than one paragraph!"));
-	else
-		return tmpcur.selectionAsString(false);
-
-	return docstring();
+	selectWordWhenUnderCursor(cur, WHOLE_WORD);
+	docstring const & retval = cur.selectionAsString(false);
+	cur.clearSelection();
+	return retval;
 }
 
 

@@ -112,7 +112,7 @@ public:
 
 	/// ???
 	/// FIXME: replace Cursor with DocIterator.
-	docstring getStringToIndex(Cursor const & cur);
+	docstring getStringForDialog(Cursor & cur);
 
 	/// Convert the paragraphs to a string.
 	/// \param AsStringParameter options. This can contain any combination of
