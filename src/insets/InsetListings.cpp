@@ -201,7 +201,7 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 				&& par->getInset(0)->lyxCode() == CAPTION_CODE;
 
 	while (par != end) {
-		pos_type siz = par->size();
+		pos_type const siz = par->size();
 		bool captionline = false;
 		for (pos_type i = 0; i < siz; ++i) {
 			if (i == 0 && par->isInset(i) && i + 1 == siz)
