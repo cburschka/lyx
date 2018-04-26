@@ -262,6 +262,7 @@ bool isInside(DocIterator const & it, MathData const & ar,
 void MathData::metrics(MetricsInfo & mi, Dimension & dim, bool tight) const
 {
 	frontend::FontMetrics const & fm = theFontMetrics(mi.base.font);
+	BufferView * bv = mi.base.bv;
 	int const Iascent = fm.dimension('I').ascent();
 	int xascent = fm.dimension('x').ascent();
 	if (xascent >= Iascent)
@@ -273,8 +274,8 @@ void MathData::metrics(MetricsInfo & mi, Dimension & dim, bool tight) const
 
 	MathRow mrow(mi, this);
 	mrow.metrics(mi, dim);
-	mrow_cache_[mi.base.bv] = mrow;
-	kerning_ = mrow.kerning(mi.base.bv);
+	mrow_cache_[bv] = mrow;
+	kerning_ = mrow.kerning(bv);
 
 	// Set a minimal ascent/descent for the cell
 	if (tight)
@@ -286,8 +287,15 @@ void MathData::metrics(MetricsInfo & mi, Dimension & dim, bool tight) const
 		dim.des = max(dim.des, fm.maxDescent());
 	}
 
+	// This is one of the the few points where the drawing font is known,
+	// so that we can set the caret vertical dimensions.
+	Cursor & cur = bv->cursor();
+	if (cur.inMathed() && &cur.cell() == this)
+		bv->setCaretAscentDescent(min(dim.asc, fm.maxAscent()),
+		                          min(dim.des, fm.maxDescent()));
+
 	// Cache the dimension.
-	mi.base.bv->coordCache().arrays().add(this, dim);
+	bv->coordCache().arrays().add(this, dim);
 }
 
 
