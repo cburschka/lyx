@@ -89,6 +89,7 @@ using namespace lyx::support;
 namespace lyx {
 
 using cap::copySelection;
+using cap::copySelectionToTemp;
 using cap::cutSelection;
 using cap::cutSelectionToTemp;
 using cap::pasteFromStack;
@@ -288,9 +289,16 @@ static bool doInsertInset(Cursor & cur, Text * text,
 
 	bool gotsel = false;
 	if (cur.selection()) {
-		cutSelectionToTemp(cur, false, pastesel);
-		cur.clearSelection();
-		gotsel = true;
+		if (cmd.action() == LFUN_INDEX_INSERT)
+				copySelectionToTemp(cur);
+			else
+				cutSelectionToTemp(cur, false, pastesel);
+			cur.clearSelection();
+			gotsel = true;
+		} else if (cmd.action() == LFUN_INDEX_INSERT) {
+			gotsel = text->selectWordWhenUnderCursor(cur, WHOLE_WORD);
+			copySelectionToTemp(cur);
+			cur.clearSelection();
 	}
 	text->insertInset(cur, inset);
 
