@@ -73,6 +73,8 @@ What's new
   to relevant directories) by setting the preference
   \use_native_filedialog true
 
+- Let caret height depend on character size in math editor.
+
 - Handle properly top/bottom of inset with mac-like cursor movement
   (bug 10701).
 
@@ -196,6 +198,8 @@ What's new
 - Improve Undo for operations that act on several buffers (bug 10823).
 
 - Improve rendering of square roots in math editor (bug 10814).
+
+- Set minimum height for math cells (bug 11050).
 
 - Fix display of citation labels when pasting from a document
   with other citation type (bug 10829).

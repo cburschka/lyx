@@ -229,7 +229,8 @@ enum ScreenUpdateStrategy {
 
 struct BufferView::Private
 {
-	Private(BufferView & bv) : update_strategy_(FullScreenUpdate),
+	Private(BufferView & bv) :
+		update_strategy_(FullScreenUpdate),
 		update_flags_(Update::Force),
 		wh_(0), cursor_(bv),
 		anchor_pit_(0), anchor_ypos_(0),
@@ -237,7 +238,8 @@ struct BufferView::Private
 		last_inset_(0), clickable_inset_(false),
 		mouse_position_cache_(),
 		bookmark_edit_position_(-1), gui_(0),
-		horiz_scroll_offset_(0)
+		horiz_scroll_offset_(0),
+		caret_ascent_(0), caret_descent_(0)
 	{
 		xsel_cache_.set = false;
 	}
@@ -316,6 +318,12 @@ struct BufferView::Private
 	/// a slice pointing to the start of the row where cursor was
 	/// at previous draw event
 	CursorSlice last_row_slice_;
+
+	// The vertical size of the blinking caret. Only used for math
+	// Using it for text could be bad when undo restores the cursor
+	// current font, since the caret size could become wrong.
+	int caret_ascent_;
+	int caret_descent_;
 };
 
 
@@ -2984,13 +2992,26 @@ bool BufferView::paragraphVisible(DocIterator const & dit) const
 }
 
 
+void BufferView::setCaretAscentDescent(int asc, int des)
+{
+	d->caret_ascent_ = asc;
+	d->caret_descent_ = des;
+}
+
+
 void BufferView::caretPosAndHeight(Point & p, int & h) const
 {
+	int asc, des;
 	Cursor const & cur = cursor();
-	Font const font = cur.real_current_font;
-	frontend::FontMetrics const & fm = theFontMetrics(font);
-	int const asc = fm.maxAscent();
-	int const des = fm.maxDescent();
+	if (cur.inMathed()) {
+		asc = d->caret_ascent_;
+		des = d->caret_descent_;
+	} else {
+		Font const font = cur.real_current_font;
+		frontend::FontMetrics const & fm = theFontMetrics(font);
+		asc = fm.maxAscent();
+		des = fm.maxDescent();
+	}
 	h = asc + des;
 	p = getPos(cur);
 	p.y_ -= asc;
