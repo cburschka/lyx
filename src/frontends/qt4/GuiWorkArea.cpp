@@ -1247,6 +1247,10 @@ void GuiWorkArea::Private::paintPreeditText(GuiPainter & pain)
 
 void GuiWorkArea::paintEvent(QPaintEvent * ev)
 {
+	// Hopefully fixes bug #10989.
+	if (view().busy())
+		return;
+
 	// LYXERR(Debug::PAINTING, "paintEvent begin: x: " << rc.x()
 	//	<< " y: " << rc.y() << " w: " << rc.width() << " h: " << rc.height());
 
