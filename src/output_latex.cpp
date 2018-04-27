@@ -840,9 +840,11 @@ void TeXOnePar(Buffer const & buf,
 		lang_end_command = "}";
 		lang_command_termination.clear();
 	}
+	
+	bool const localswitch_needed = localswitch && par_lang != outer_lang;
 
 	// localswitches need to be closed and reopened at each par
-	if ((par_lang != prev_lang || localswitch)
+	if ((par_lang != prev_lang || localswitch_needed)
 	     // check if we already put language command in TeXEnvironment()
 	     && !(style.isEnvironment()
 		  && (pit == 0 || (priorpar->layout() != par.layout()
@@ -1117,7 +1119,7 @@ void TeXOnePar(Buffer const & buf,
 		&&((nextpar && par_lang != nextpar_lang)
 		   || (runparams.isLastPar && par_lang != outer_lang));
 
-	if (localswitch
+	if (localswitch_needed
 	    || (intitle_command && using_begin_end)
 	    || closing_rtl_ltr_environment
 	    || ((runparams.isLastPar || close_lang_switch)
