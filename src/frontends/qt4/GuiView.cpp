@@ -513,7 +513,8 @@ QSet<Buffer const *> GuiView::GuiViewPrivate::busyBuffers;
 
 GuiView::GuiView(int id)
 	: d(*new GuiViewPrivate(this)), id_(id), closing_(false), busy_(0),
-	  command_execute_(false), minibuffer_focus_(false), devel_mode_(false)
+	  command_execute_(false), minibuffer_focus_(false), toolbarsMovable_(true),
+	  devel_mode_(false)
 {
 	connect(this, SIGNAL(bufferViewChanged()),
 	        this, SLOT(onBufferViewChanged()));
