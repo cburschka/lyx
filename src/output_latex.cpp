@@ -841,22 +841,22 @@ void TeXOnePar(Buffer const & buf,
 		lang_command_termination.clear();
 	}
 
-	if (par_lang != prev_lang
-		// check if we already put language command in TeXEnvironment()
-		&& !(style.isEnvironment()
-		     && (pit == 0 || (priorpar->layout() != par.layout()
-			                  && priorpar->getDepth() <= par.getDepth())
-		                  || priorpar->getDepth() < par.getDepth())))
-	{
-		if ((!using_begin_end || langOpenedAtThisLevel(state)) &&
-		    !lang_end_command.empty() &&
-		    prev_lang != outer_lang &&
-		    !prev_lang.empty() &&
-		    (!using_begin_end || !style.isEnvironment()))
-		{
+	// localswitches need to be closed and reopened at each par
+	if ((par_lang != prev_lang || localswitch)
+	     // check if we already put language command in TeXEnvironment()
+	     && !(style.isEnvironment()
+		  && (pit == 0 || (priorpar->layout() != par.layout()
+			           && priorpar->getDepth() <= par.getDepth())
+		      || priorpar->getDepth() < par.getDepth()))) {
+		if (!localswitch
+		    && (!using_begin_end || langOpenedAtThisLevel(state))
+		    && !lang_end_command.empty()
+		    && prev_lang != outer_lang 
+		    && !prev_lang.empty()
+		    && (!using_begin_end || !style.isEnvironment())) {
 			os << from_ascii(subst(lang_end_command,
-				"$$lang",
-				prev_lang))
+					       "$$lang",
+					       prev_lang))
 			   << lang_command_termination;
 			if (using_begin_end)
 				popLanguageName();
@@ -1117,7 +1117,8 @@ void TeXOnePar(Buffer const & buf,
 		&&((nextpar && par_lang != nextpar_lang)
 		   || (runparams.isLastPar && par_lang != outer_lang));
 
-	if ((intitle_command && using_begin_end)
+	if (localswitch
+	    || (intitle_command && using_begin_end)
 	    || closing_rtl_ltr_environment
 	    || ((runparams.isLastPar || close_lang_switch)
 	        && (par_lang != outer_lang || (using_begin_end
@@ -1127,7 +1128,7 @@ void TeXOnePar(Buffer const & buf,
 		// we need to reset the language at the end of footnote or
 		// float.
 
-		if (pending_newline || close_lang_switch)
+		if (!localswitch && (pending_newline || close_lang_switch))
 			os << '\n';
 
 		// when the paragraph uses CJK, the language has to be closed earlier
