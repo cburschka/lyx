@@ -1798,7 +1798,7 @@ def convert_dashligatures(document):
                                 ['% Added by lyx2lyx',
                                  r'\renewcommand{\textendash}{--}',
                                  r'\renewcommand{\textemdash}{---}']) or None
-    
+
     if use_dash_ligatures is None:
         # Look for dashes (Documents by LyX 2.1 or older have "\twohyphens\n"
         # or "\threehyphens\n" as interim representation for -- an ---.)

@@ -667,7 +667,7 @@ def convert_dashes(document):
     # remove ligature breaks between dashes
     i = 0
     while True:
-        i = find_substring(document.body, 
+        i = find_substring(document.body,
                            r"-\SpecialChar \textcompwordmark{}", i+1)
         if i == -1:
             break
@@ -1293,7 +1293,7 @@ def revert_colorbox(document):
         if framecolor == "black" and backcolor == "none": # default values
             i += 15 # skip box option lines
             continue
-        
+
         # Emulate non-default colours with LaTeX code:
         einset = find_end_of_inset(document.body, i)
         if einset == -1:
