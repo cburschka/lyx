@@ -34,8 +34,10 @@ import codecs
 try:
     import lyx2lyx_version
     version__ = lyx2lyx_version.version
+    stable_version = True
 except: # we are running from build directory so assume the last version
     version__ = '2.4'
+    stable_version = False
 
 default_debug__ = 2
 
@@ -120,19 +122,29 @@ def formats_list():
 
 
 def format_info():
-    " Returns a list with supported file formats."
-    out = """Major version:
-	minor versions
-	formats
+    " Returns a list with the supported file formats."
+    template = """
+%s\tstable format:       %s
+  \tstable versions:     %s
+  \tdevelopment formats: %s
 """
+
+    out = "version: formats and versions"
     for version in format_relation:
         major = str(version[2][0])
         versions = str(version[2][1:])
         if len(version[1]) == 1:
             formats = str(version[1][0])
+            stable_format = str(version[1][0])
+        elif not stable_version and major == version__:
+            stable_format = "-- not yet --"
+            versions = "-- not yet --"
+            formats = "%s - %s" % (version[1][0], version[1][-1])
         else:
-            formats = "%s - %s" % (version[1][-1], version[1][0])
-        out += "%s\n\t%s\n\t%s\n\n" % (major, versions, formats)
+            formats = "%s - %s" % (version[1][0], version[1][-2])
+            stable_format = str(version[1][-1])
+
+        out += template % (major, stable_format, versions, formats)
     return out + '\n'
 
 
