@@ -65,19 +65,27 @@ lyx2verbatim(document, lines):
   can and return a string containing the translated material.
 
 latex_length(slen):
-    Convert lengths (in LyX form) to their LaTeX representation. Returns
-    (bool, length), where the bool tells us if it was a percentage, and
-    the length is the LaTeX representation.
+  Convert lengths (in LyX form) to their LaTeX representation. Returns
+  (bool, length), where the bool tells us if it was a percentage, and
+  the length is the LaTeX representation.
 
 convert_info_insets(document, type, func):
-    Applies func to the argument of all info insets matching certain types
-    type : the type to match. This can be a regular expression.
-    func : function from string to string to apply to the "arg" field of
-           the info insets.
+  Applies func to the argument of all info insets matching certain types
+  type : the type to match. This can be a regular expression.
+  func : function from string to string to apply to the "arg" field of
+         the info insets.
+
+is_document_option(document, option):
+  Find if _option_ is a document option (\\options in the header).
+
+insert_document_option(document, option):
+  Insert _option_ as a document option.
+
+remove_document_option(document, option):
+  Remove _option_ as a document option.
 '''
 
 import re
-import string
 from parser_tools import find_token, find_end_of_inset
 from unicode_symbols import unicode_reps
 
@@ -318,7 +326,7 @@ def latex_length(slen):
     # Convert relative lengths to LaTeX units
     units = {"col%": "\\columnwidth",
              "text%": "\\textwidth",
-             "page%": "\\paperwidth", 
+             "page%": "\\paperwidth",
              "line%": "\\linewidth",
              "theight%": "\\textheight",
              "pheight%": "\\paperheight",
@@ -533,3 +541,66 @@ def convert_info_insets(document, type, func):
                 new_arg = func(arg.group(1))
                 document.body[i + 2] = 'arg   "%s"' % new_arg
         i += 3
+
+
+def insert_document_option(document, option):
+    "Insert _option_ as a document option."
+
+    # Find \options in the header
+    options_line = find_token(document.header, "\\options", 0)
+
+    # if the options does not exists add it after the textclass
+    if options_line == -1:
+        textclass_line = find_token(document.header, "\\textclass", 0)
+        document.header.insert(textclass_line +1,
+                               r"\options %s" % option)
+        return
+
+    # add it to the end of the options
+    document.header[options_line] += " ,%s" % option
+
+
+def remove_document_option(document, option):
+    """ Remove _option_ as a document option.
+
+    It is assumed that option belongs to the \options.
+    That can be done running is_document_option(document, option)."""
+
+    options_line = find_token(document.header, "\\options", 0)
+    option_pos = document.header[options_line].find(option)
+
+    # Remove option from \options
+    comma_before_pos = document.header[options_line].rfind(',', 0, option_pos)
+    comma_after_pos  = document.header[options_line].find(',', option_pos)
+
+    # if there are no commas then it is the single option
+    # and the options line should be removed since it will be empty
+    if comma_before_pos == comma_after_pos == -1:
+        del document.header[options_line]
+        return
+
+    # last option
+    options = document.header[options_line]
+    if comma_after_pos == -1:
+        document.header[options_line] = options[:comma_before_pos].rsplit()
+        return
+
+    document.header[options_line] = options[comma_before_pos: comma_after_pos]
+
+
+def is_document_option(document, option):
+    "Find if _option_ is a document option"
+
+    # Find \options in the header
+    options_line = find_token(document.header, "\\options", 0)
+
+    # \options is not present in the header
+    if options_line == -1:
+        return False
+
+    option_pos = document.header[options_line].find(option)
+    # option is not present in the \options
+    if option_pos == -1:
+        return False
+
+    return True

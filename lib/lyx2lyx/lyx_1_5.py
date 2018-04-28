@@ -24,6 +24,7 @@ import unicodedata
 import sys, os
 
 from parser_tools import find_re, find_token, find_token_backwards, find_token_exact, find_tokens, find_end_of, get_value, find_beginning_of, find_nonempty_line
+from lyx2lyx_tools import insert_document_option
 from LyX import get_encoding
 
 # Provide support for both python 2 and 3
@@ -1907,13 +1908,7 @@ def revert_ext_font_sizes(document):
 
     i = find_token(document.header, '\\paperfontsize', 0)
     document.header[i] = '\\paperfontsize default'
-
-    i = find_token(document.header, '\\options', 0)
-    if i == -1:
-        i = find_token(document.header, '\\textclass', 0) + 1
-        document.header[i:i] = ['\\options %s' % fontsize]
-    else:
-        document.header[i] += ',%s' % fontsize
+    insert_document_option(document, fontsize)
 
 
 def convert_ext_font_sizes(document):
