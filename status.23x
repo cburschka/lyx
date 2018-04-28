@@ -146,6 +146,9 @@ What's new
 - Output list of bibliography files in the order given in the dialog, rather
   than sorted.
 
+- Fixed the last python scripts to support both python 2 and 3 (bug 11101). All 
+  scripts should now be able to run in a python 3 only environment.
+
 
 * LYX2LYX
 
