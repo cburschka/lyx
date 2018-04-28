@@ -1917,9 +1917,10 @@ void MenuDefinition::expandEnvironmentSeparators(BufferView const * bv,
 				translateIfPossible(prevlayout));
 		// We use command-alternatives here since this is how the binding is defined
 		// (otherwise, the binding is not displayed in the menu)
-		add(MenuItem(MenuItem::Command, toqstr(label),
-			     FuncRequest(LFUN_COMMAND_ALTERNATIVES,
-					 from_ascii("environment-split ; environment-split previous"))));
+		if (getStatus(FuncRequest(LFUN_ENVIRONMENT_SPLIT)).enabled())
+			add(MenuItem(MenuItem::Command, toqstr(label),
+				     FuncRequest(LFUN_COMMAND_ALTERNATIVES,
+						 from_ascii("environment-split ; environment-split previous"))));
 	}
 	if (!outerlayout.empty()) {
 		docstring label;
