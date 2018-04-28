@@ -1,62 +1,79 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>PrefsUi</class>
- <widget class="QDialog" name="PrefsUi" >
-  <property name="geometry" >
+ <widget class="QDialog" name="PrefsUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>433</width>
+    <width>650</width>
     <height>352</height>
    </rect>
   </property>
-  <property name="sizePolicy" >
-   <sizepolicy>
-    <hsizetype>1</hsizetype>
-    <vsizetype>1</vsizetype>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string/>
   </property>
-  <property name="sizeGripEnabled" >
+  <property name="sizeGripEnabled">
    <bool>true</bool>
   </property>
-  <layout class="QGridLayout" >
-   <property name="margin" >
+  <layout class="QGridLayout">
+   <property name="leftMargin">
     <number>11</number>
    </property>
-   <property name="spacing" >
+   <property name="topMargin">
+    <number>11</number>
+   </property>
+   <property name="rightMargin">
+    <number>11</number>
+   </property>
+   <property name="bottomMargin">
+    <number>11</number>
+   </property>
+   <property name="spacing">
     <number>6</number>
    </property>
-   <item row="1" column="0" >
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
+   <item row="1" column="0">
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>6</number>
      </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <item>
-      <widget class="QPushButton" name="restorePB" >
-       <property name="text" >
+      <widget class="QPushButton" name="restorePB">
+       <property name="text">
         <string>&amp;Restore</string>
        </property>
-       <property name="autoDefault" >
+       <property name="autoDefault">
         <bool>false</bool>
        </property>
       </widget>
      </item>
      <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeType" >
+       <property name="sizeType">
         <enum>QSizePolicy::Expanding</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>20</width>
          <height>20</height>
@@ -65,39 +82,49 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="savePB" >
-       <property name="text" >
-        <string>&amp;Save</string>
+      <widget class="QCheckBox" name="tempSaveCB">
+       <property name="toolTip">
+        <string>If this is checked, pressing OK or Apply will save the changes only for the current LyX session, not permanently.</string>
        </property>
-       <property name="autoDefault" >
+       <property name="text">
+        <string>A&amp;pply to current session only</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="okPB">
+       <property name="text">
+        <string>&amp;OK</string>
+       </property>
+       <property name="autoDefault">
         <bool>false</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="applyPB" >
-       <property name="text" >
+      <widget class="QPushButton" name="applyPB">
+       <property name="text">
         <string>&amp;Apply</string>
        </property>
-       <property name="autoDefault" >
+       <property name="autoDefault">
         <bool>false</bool>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="closePB" >
-       <property name="text" >
+      <widget class="QPushButton" name="closePB">
+       <property name="text">
         <string>&amp;Close</string>
        </property>
-       <property name="autoDefault" >
+       <property name="autoDefault">
         <bool>false</bool>
        </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item row="0" column="0" >
-    <widget class="lyx::frontend::PanelStack" native="1" name="prefsPS" />
+   <item row="0" column="0">
+    <widget class="lyx::frontend::PanelStack" name="prefsPS" native="true"/>
    </item>
   </layout>
  </widget>
@@ -112,12 +139,12 @@
  <tabstops>
   <tabstop>prefsPS</tabstop>
   <tabstop>restorePB</tabstop>
-  <tabstop>savePB</tabstop>
+  <tabstop>okPB</tabstop>
   <tabstop>applyPB</tabstop>
   <tabstop>closePB</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
  <connections/>
