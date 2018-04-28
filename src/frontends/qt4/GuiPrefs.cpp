@@ -3417,7 +3417,7 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 
 	QDialog::setModal(false);
 
-	connect(savePB, SIGNAL(clicked()), this, SLOT(slotOK()));
+	connect(okPB, SIGNAL(clicked()), this, SLOT(slotOK()));
 	connect(applyPB, SIGNAL(clicked()), this, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()), this, SLOT(slotClose()));
 	connect(restorePB, SIGNAL(clicked()), this, SLOT(slotRestore()));
@@ -3462,7 +3462,7 @@ GuiPreferences::GuiPreferences(GuiView & lv)
 #endif
 
 	bc().setPolicy(ButtonPolicy::PreferencesPolicy);
-	bc().setOK(savePB);
+	bc().setOK(okPB);
 	bc().setApply(applyPB);
 	bc().setCancel(closePB);
 	bc().setRestore(restorePB);
@@ -3573,8 +3573,8 @@ void GuiPreferences::dispatchParams()
 		update_previews_ = false;
 	}
 
-	// The Save button has been pressed
-	if (isClosing())
+	// Save permanently
+	if (!tempSaveCB->isChecked())
 		dispatch(FuncRequest(LFUN_PREFERENCES_SAVE));
 }
 
