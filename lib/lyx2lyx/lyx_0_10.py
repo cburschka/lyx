@@ -32,18 +32,17 @@ def regularise_header(document):
 
 def find_next_space(line, j):
     """ Return position of next space or backslash, which one comes
-    first, starting from position k, if not existing return last
-    position in line."""
-    l = line.find(' ', j)
-    if l == -1:
-        l = len(line)
-    k = line.find('\\', j)
-    if k == -1:
-        k = len(line)
+    first, starting from position j, if none exists returns last
+    position in line (+1)."""
+    space_pos = line.find(' ', j)
+    if space_pos == -1:
+        space_pos = len(line)
 
-    if k < l:
-        return k
-    return l
+    bksl_pos = line.find('\\', j)
+    if bksl_pos == -1:
+        bksl_pos = len(line)
+
+    return min(space_pos, bksl_pos)
 
 
 def regularise_body(document):
@@ -65,36 +64,38 @@ def regularise_body(document):
     while i < len(document.body):
         line = document.body[i]
         j = 0
-        tmp = []
+        new_block = []
         while j < len(line):
             k = line.find('\\', j)
 
             if k == -1:
-                tmp += [line[j:]]
+                new_block += [line[j:]]
                 break
 
             if k != j:
-                tmp += [line[j: k]]
+                #document.warning("j=%d\tk=%d\t#%s#%s#" % (j,k,line,line[j: k]))
+                new_block += [line[j: k]]
                 j = k
 
             k = find_next_space(line, j+1)
 
-            # These tokens take the rest of the line
             token = line[j+1:k]
+            # These tokens take the rest of the line
             if token in getline_tokens:
-                tmp += [line[j:]]
+                #document.warning("getline_token:%s\tj=%d\t\t#%s#%s#" % (token,j,line,line[j:]))
+                new_block += [line[j:]]
                 break
 
             # These tokens take no arguments
             if token in noargs_tokens:
-                tmp += [line[j:k]]
+                new_block += [line[j:k]]
                 j = k
                 continue
 
             # These tokens take one argument
             if token in onearg_tokens:
                 k = find_next_space(line, k + 1)
-                tmp += [line[j:k]]
+                new_block += [line[j:k]]
                 j = k
                 continue
 
@@ -104,29 +105,30 @@ def regularise_body(document):
                 inset = line[k+1: l]
 
                 if inset == "Latex":
-                    tmp += [line[j:l]]
+                    new_block += [line[j:l]]
                     j = l
                     continue
 
-                if inset in ["LatexCommand", "LatexDel"]:
-                    tmp += [line[j:]]
+                if inset in ["LatexCommand", "LatexDel", "Label", "Figure",
+                             "Formula"]:
+                    new_block += [line[j:]]
                     break
 
                 if inset == "Quotes":
                     l = find_next_space(line, l + 1)
-                    tmp += [line[j:l]]
+                    new_block += [line[j:l]]
                     j = l
                     continue
 
-                document.warning("unkown inset %s" % line)
+                document.warning("unkown inset %s" % inset)
                 assert(False)
 
             # We are inside a latex inset, pass the text verbatim
-            tmp += [line[j:]]
+            new_block += [line[j:]]
             break
 
-        document.body[i: i+1] = tmp
-        i += len(tmp)
+        document.body[i: i+1] = new_block
+        i += len(new_block)
 
 
 supported_versions = ["0.10.%d" % i for i in range(8)] + ["0.10"]
