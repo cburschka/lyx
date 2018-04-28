@@ -26,6 +26,7 @@
 #   the real eps file will be overwritten by a tex file named file.eps.
 #
 
+from __future__ import print_function
 import os, sys
 
 # We expect two args, the names of the input and output files.
@@ -45,5 +46,5 @@ outbase = os.path.splitext(output)[0]
 # Generate the PSTEX_T file
 if os.system('fig2dev -Lpstex %s %s.eps' % (input, outbase)) != 0 or \
   os.system('fig2dev -Lpstex_t -p%s %s %s' % (outbase, input, output)) != 0:
-  print 'fig2dev fails'
+  print ('fig2dev fails')
   sys.exit(1)

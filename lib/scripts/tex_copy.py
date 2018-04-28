@@ -52,6 +52,10 @@ def main(argv):
     latex_file = argv[3]
     latex_base, latex_ext = os.path.splitext(latex_file)
 
+    # convert strings to bytes since we are using binary files
+    from_base = from_base.encode()
+    latex_base = latex_base.encode()
+
     # Read the input file and write the output file
     if(not os.path.isfile(abs_from_file)):
          error("%s is not a valid file.\n" % abs_from_file)

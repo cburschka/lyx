@@ -26,7 +26,7 @@
 #   the real pdf file will be overwritten by a tex file named file.pdf.
 #
 
-
+from __future__ import print_function
 import os, sys, re
 
 
@@ -35,7 +35,7 @@ def runCommand(cmd):
         run a command, quit if fails
     '''
     if os.system(cmd) != 0:
-        print "Command '%s' fails." % cmd
+        print("Command '%s' fails." % cmd)
         sys.exit(1)
 
 
@@ -78,15 +78,15 @@ else:
     # with tetex.
     epsfile = outbase + '.pstex'
     tmp = mkstemp()
-    boundingboxline = re.compile('%%BoundingBox:\s+(\d*)\s+(\d*)\s+(\d*)\s+(\d*)')
-    for line in open(epsfile).xreadlines():
-        if line[:13] == '%%BoundingBox':
-            (llx, lly, urx, ury) = map(int, boundingboxline.search(line).groups())
+    boundingboxline = re.compile(b'%%BoundingBox:\s+(\d*)\s+(\d*)\s+(\d*)\s+(\d*)')
+    for line in open(epsfile, 'rb'):
+        if line[:13] == b'%%BoundingBox':
+            (llx, lly, urx, ury) = list(map(int, boundingboxline.search(line).groups()))
             width = urx - llx
             height = ury - lly
             xoffset = - llx
             yoffset = - lly
-            tmp.write('''%%%%BoundingBox: 0 0 %d %d
+            tmp.write(b'''%%%%BoundingBox: 0 0 %d %d
 << /PageSize  [%d %d] >> setpagedevice
 gsave %d %d translate
 ''' % (width, height, width, height, xoffset, yoffset))
