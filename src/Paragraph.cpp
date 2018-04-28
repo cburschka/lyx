@@ -1553,21 +1553,52 @@ void Paragraph::Private::validate(LaTeXFeatures & features) const
 	// then the contents
 	BufferParams const bp = features.runparams().is_child
 		? features.buffer().masterParams() : features.buffer().params();
-	string bscript = "textbaltic";
 	for (pos_type i = 0; i < int(text_.size()) ; ++i) {
 		char_type c = text_[i];
+		CharInfo const & ci = Encodings::unicodeCharInfo(c);
 		if (c == 0x0022) {
 			if (features.runparams().isFullUnicode() && bp.useNonTeXFonts)
 				features.require("textquotedblp");
 			else if (bp.main_font_encoding() != "T1"
 				 || ((&owner_->getFontSettings(bp, i))->language()->internalFontEncoding()))
 				features.require("textquotedbl");
-		} else if (Encodings::isKnownScriptChar(c, bscript)){
+		} else if (ci.textfeature() && contains(ci.textpreamble(), '=')) {
+			// features that depend on the font or input encoding
+			string feats = ci.textpreamble();
 			string fontenc = (&owner_->getFontSettings(bp, i))->language()->fontenc(bp);
 			if (fontenc.empty())
 				fontenc = features.runparams().main_fontenc;
-			if (Encodings::needsScriptWrapper("textbaltic", fontenc))
-				features.require("textbalticdefs");
+			while (!feats.empty()) {
+				string feat;
+				feats = split(feats, feat, ',');
+				if (contains(feat, "!=")) {
+					// a feature that is required except for the spcified
+					// font or input encodings
+					string realfeature;
+					string const contexts = ltrim(split(feat, realfeature, '!'), "=");
+					// multiple encodings are separated by semicolon
+					vector<string> context = getVectorFromString(contexts, ";");
+					// require feature if the context matches neither current font
+					// nor input encoding
+					if (std::find(context.begin(), context.end(), fontenc) == context.end()
+					    && std::find(context.begin(), context.end(),
+							 features.runparams().encoding->name()) == context.end())
+						features.require(realfeature);
+				} else if (contains(feat, '=')) {
+					// a feature that is required only for the spcified
+					// font or input encodings
+					string realfeature;
+					string const contexts = split(feat, realfeature, '=');
+					// multiple encodings are separated by semicolon
+					vector<string> context = getVectorFromString(contexts, ";");
+					// require feature if the context matches either current font
+					// or input encoding
+					if (std::find(context.begin(), context.end(), fontenc) != context.end()
+					    || std::find(context.begin(), context.end(),
+							 features.runparams().encoding->name()) != context.end())
+						features.require(realfeature);
+				}
+			}
 		} else if (!bp.use_dash_ligatures
 			   && (c == 0x2013 || c == 0x2014)
 			   && bp.useNonTeXFonts

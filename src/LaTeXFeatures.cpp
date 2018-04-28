@@ -1388,19 +1388,19 @@ TexString LaTeXFeatures::getMacros() const
 
 	// non-standard text accents:
 	if (mustProvide("textcommaabove") || mustProvide("textcommaaboveright") ||
-	    mustProvide("textcommabelow") || mustProvide("textbalticdefs"))
+	    mustProvide("textcommabelow") || mustProvide("textbaltic"))
 		macros << lyxaccent_def;
 
-	if (mustProvide("textcommabelow") || mustProvide("textbalticdefs"))
+	if (mustProvide("textcommabelow") || mustProvide("textbaltic"))
 		macros << textcommabelow_def << '\n';
 
-	if (mustProvide("textcommaabove") || mustProvide("textbalticdefs"))
+	if (mustProvide("textcommaabove") || mustProvide("textbaltic"))
 		macros << textcommaabove_def << '\n';
 
 	if (mustProvide("textcommaaboveright"))
 		macros << textcommaaboveright_def << '\n';
 
-	if (mustProvide("textbalticdefs"))
+	if (mustProvide("textbaltic"))
 		macros << textbaltic_def << '\n';
 
 	// split-level fractions

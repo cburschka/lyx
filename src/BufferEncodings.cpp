@@ -93,7 +93,10 @@ void BufferEncodings::validate(char_type c, LaTeXFeatures & features, bool for_m
 					while (!feats.empty()) {
 						string feat;
 						feats = split(feats, feat, ',');
-						features.require(feat);
+						// context-dependent features are handled
+						// in Paragraph::Private::validate()
+						if (!contains(feat, '='))
+							features.require(feat);
 					}
 				} else
 					features.addPreambleSnippet(from_utf8(textpreamble));
