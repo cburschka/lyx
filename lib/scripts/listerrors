@@ -22,20 +22,21 @@ Bernard Michael Hurley <berhardh@westherts.ac.uk>
     modifications to original listerrors."""
 __copyright__ = "Copyright 2002 - Kayvan A. Sylvan."
 
+from __future__ import print_function
 import sys, string
 
 def write_error(msg, tool = "noweb", line_number = 1):
   """Write out the given message in TeX error style.
 
   called like: write_error(msg, tool, line_number)."""
-  print "! Build Error: ==> %s ==>\n" % (tool),
-  print " ...\n\nl.%d ...\n" % (line_number),
+  print ("! Build Error: ==> %s ==>" % tool)
+  print (" ...\n\nl.%d ..." % line_number)
   if type(msg) == type("str"): # simple string
-    print msg
+    print (msg)
   else: # some kind of list (sequence or tuple)
     for m in msg:
-        if m != "": print m,
-    print
+        if m != "": print (m, end=" ")
+    print ()
 
 __lines = [] # lines pushed back
 
@@ -62,12 +63,13 @@ def main():
 
   Reads stdin and writes to stdout. Filter errors"""
 
-  while 1:
+  while True:
     line = getline()
     if line == "": break
     try_patterns_dispatch = [ noweb_try, gcc_try, xlc_try ]
     for predicate in try_patterns_dispatch:
       if predicate(line): break
+
 def noweb_try(line):
   """see if line is a noweb error.
 

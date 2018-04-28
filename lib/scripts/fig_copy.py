@@ -17,14 +17,15 @@
 # picture files that are stored as relative paths are replaced
 # with the absolute path.
 
+from __future__ import print_function
 import os, sys
 
 if len(sys.argv) != 3:
-    print >> sys.stderr, "Usage: fig_copy.py <from file> <to file>"
+    print ("Usage: fig_copy.py <from file> <to file>", file=sys.stderr)
     sys.exit(1)
 
 if not os.path.isfile(sys.argv[1]):
-    print >> sys.stderr, "Unable to read", sys.argv[1]
+    print ("Unable to read", sys.argv[1], file=sys.stderr)
     sys.exit(1)
 
 from_dir = os.path.split(os.path.realpath(sys.argv[1]))[0]
@@ -45,14 +46,14 @@ import re
 # We're looking for a line of text that defines an entry of
 # type '2' (a polyline), subtype '5' (an external picture file).
 # The line has 14 other data fields.
-patternline = re.compile(r'^\s*2\s+5(\s+[0-9.+-]+){14}\s*$')
-emptyline   = re.compile(r'^\s*$')
-commentline = re.compile(r'^\s*#.*$')
+patternline = re.compile(br'^\s*2\s+5(\s+[0-9.+-]+){14}\s*$')
+emptyline   = re.compile(br'^\s*$')
+commentline = re.compile(br'^\s*#.*$')
 # we allow space in path name
-figureline  = re.compile(r'^(\s*[01]\s*)(\S[\S ]*)(\s*)$')
+figureline  = re.compile(br'^(\s*[01]\s*)(\S[\S ]*)(\s*)$')
 
-input = open(sys.argv[1], 'r')
-output = open(sys.argv[2], 'w')
+input = open(sys.argv[1], 'rb')
+output = open(sys.argv[2], 'wb')
 
 # path in the fig is relative to this path
 os.chdir(from_dir)
@@ -68,7 +69,7 @@ for line in input:
         found = False
     elif patternline.match(line):
         found = True
-    print >> output, line,
+    output.write(line)
 
 input.close()
 output.close()

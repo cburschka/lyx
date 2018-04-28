@@ -9,6 +9,7 @@
 # This script will convert a chess position in the FEN
 # format to an ascii representation of the position.
 
+from __future__ import print_function
 import sys,string,os
 
 os.close(0)
@@ -26,7 +27,7 @@ comp=string.split(line,'/')
 cont=1
 margin= " "*6
 
-print margin+'   +'+"-"*15+'+'
+print (margin+'   +'+"-"*15+'+')
 for i in range(8):
     cont = cont + 1
     tmp=""
@@ -42,7 +43,7 @@ for i in range(8):
             cont = cont + 1
 
     row = 8 - i
-    print margin, row, tmp+"|"
+    print (margin, row, tmp+"|")
 
-print margin+'   +'+"-"*15+'+'
-print margin+'    a b c d e f g h '
+print (margin+'   +'+"-"*15+'+')
+print (margin+'    a b c d e f g h ')
