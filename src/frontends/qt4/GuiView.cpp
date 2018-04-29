@@ -158,6 +158,7 @@ public:
 			return;
 		/// The text to be written on top of the pixmap
 		QString const htext = qt_("The Document\nProcessor[[welcome banner]]");
+		QString const htextsize = qt_("20[[possibly adjust the welcome banner text size; float value allowed]]");
 		/// The text to be written on top of the pixmap
 		QString const text = lyx_version ?
 			qt_("version ") + lyx_version : qt_("unknown version");
@@ -180,6 +181,10 @@ public:
 		QPainter pain(&splash_);
 		pain.setPen(QColor(0, 0, 0));
 		qreal const fsize = fontSize();
+		bool ok;
+		qreal hfsize = htextsize.toFloat(&ok);
+		if (!ok)
+			hfsize = 20;
 		QPointF const position = textPosition(false);
 		QPointF const hposition = textPosition(true);
 		QRectF const hrect(hposition, splashSize());
@@ -197,7 +202,7 @@ public:
 		// The font used to display the version info
 		font.setStyleHint(QFont::SansSerif);
 		font.setWeight(QFont::Normal);
-		font.setPointSize(20);
+		font.setPointSizeF(hfsize);
 		pain.setFont(font);
 		pain.drawText(hrect, Qt::AlignLeft, htext);
 		setFocusPolicy(Qt::StrongFocus);
