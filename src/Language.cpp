@@ -74,6 +74,11 @@ docstring const Language::translateLayout(string const & m) const
 
 string Language::fontenc(BufferParams const & params) const
 {
+	// Don't use LaTeX fonts, so just return the language's preferred
+	// (although this is not used with nonTeXFonts anyway).
+	if (params.useNonTeXFonts)
+		return fontenc_.front() == "ASCII" ? "T1" : fontenc_.front();
+
 	// Determine optimal font encoding
 	// We check whether the used rm font supports an encoding our language supports
 	LaTeXFont const & lf =
