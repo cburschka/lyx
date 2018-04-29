@@ -790,6 +790,9 @@ void TeXOnePar(Buffer const & buf,
 	// environment with nesting depth greater than (or equal to, but with
 	// a different layout) the current one. If there is no previous
 	// paragraph, the previous language is the outer language.
+	// Note further that we take the outer language also if the prior par
+	// is PassThru, since in that case it has latex_language, and all secondary
+	// languages have been closed (#10793).
 	bool const use_prev_env_language = state->prev_env_language_ != 0
 			&& priorpar
 			&& priorpar->layout().isEnvironment()
@@ -797,11 +800,10 @@ void TeXOnePar(Buffer const & buf,
 			    || (priorpar->getDepth() == par.getDepth()
 				    && priorpar->layout() != par.layout()));
 	Language const * const prev_language =
-		(pit != 0)
+		(priorpar && !priorpar->isPassThru())
 		? (use_prev_env_language ? state->prev_env_language_
 					 : priorpar->getParLanguage(bparams))
 		: outer_language;
-
 
 	bool const use_polyglossia = runparams.use_polyglossia;
 	string const par_lang = use_polyglossia ?
