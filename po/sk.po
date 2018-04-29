@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-04-26 07:18+0200\n"
-"PO-Revision-Date: 2018-04-26 05:25+0000\n"
+"POT-Creation-Date: 2018-04-29 12:06+0200\n"
+"PO-Revision-Date: 2018-04-29 10:25+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -346,6 +346,12 @@ msgstr "hľadať nové databázy a štýle"
 #: src/frontends/qt4/ui/BibtexUi.ui:120
 msgid "The BibTeX style"
 msgstr "BibTeX štýl"
+
+#: src/frontends/qt4/GuiView.cpp:160
+msgid ""
+"The Document\n"
+"Processor[[welcome banner]]"
+msgstr "Krásne Spracovať\nDokumenty"
 
 #: src/frontends/qt4/ui/BibtexUi.ui:123
 msgid "St&yle"
@@ -1425,6 +1431,10 @@ msgstr "S&tredobod:"
 #: src/frontends/qt4/ui/ExternalUi.ui:361
 msgid "A&ngle:"
 msgstr "&Uhol:"
+
+#: src/frontends/qt4/ui/PrefsUi.ui:90
+msgid "A&pply to current session only"
+msgstr "Použiť len súčasné sedenie"
 
 #: src/frontends/qt4/ui/ExternalUi.ui:376 lib/layouts/shapepar.module:122
 msgid "Scale"
@@ -3575,6 +3585,14 @@ msgstr ""
 "Keď zaškrtnuté, nové dokumenty sa štandardne budú ukladať komprimované. "
 "Ukladanie existujúcich dokumentov zostáva v ich aktuánom stave (komprimované "
 "či nekomprimované)."
+
+#: src/frontends/qt4/ui/PrefsUi.ui:87
+msgid ""
+"If this is checked, pressing OK or Apply will save the changes only for the "
+"current LyX session, not permanently."
+msgstr ""
+"Keď zaškrtnuté, tlačením 'OK' alebo 'Použiť' sa zmeny ukladnú len pre "
+"súčasné LyX-sedenie a nie na trvalo."
 
 #: src/frontends/qt4/ui/PrefDocHandlingUi.ui:148
 msgid "&Save new documents compressed by default"
@@ -8879,6 +8897,10 @@ msgstr "TematickáOblasť"
 #: lib/layouts/amsdefs.inc:199
 msgid "2000 Mathematics Subject Classification:"
 msgstr "Klasifikácia Matematických Oblastí 2000:"
+
+#: src/frontends/qt4/GuiView.cpp:161
+msgid "20[[possibly adjust the welcome banner text size; float value allowed]]"
+msgstr "19"
 
 #: lib/layouts/apa.layout:3
 msgid "American Psychological Association (APA)"
