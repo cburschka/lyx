@@ -157,6 +157,8 @@ public:
 		if (!lyxrc.show_banner)
 			return;
 		/// The text to be written on top of the pixmap
+		QString const htext = qt_("The Document\nProcessor[[welcome banner]]");
+		/// The text to be written on top of the pixmap
 		QString const text = lyx_version ?
 			qt_("version ") + lyx_version : qt_("unknown version");
 #if QT_VERSION >= 0x050000
@@ -178,7 +180,9 @@ public:
 		QPainter pain(&splash_);
 		pain.setPen(QColor(0, 0, 0));
 		qreal const fsize = fontSize();
-		QPointF const position = textPosition();
+		QPointF const position = textPosition(false);
+		QPointF const hposition = textPosition(true);
+		QRectF const hrect(hposition, splashSize());
 		LYXERR(Debug::GUI,
 			"widget pixel ratio: " << pixelRatio() <<
 			" splash pixel ratio: " << splashPixelRatio() <<
@@ -190,6 +194,12 @@ public:
 		font.setPointSizeF(fsize);
 		pain.setFont(font);
 		pain.drawText(position, text);
+		// The font used to display the version info
+		font.setStyleHint(QFont::SansSerif);
+		font.setWeight(QFont::Normal);
+		font.setPointSize(20);
+		pain.setFont(font);
+		pain.drawText(hrect, Qt::AlignLeft, htext);
 		setFocusPolicy(Qt::StrongFocus);
 	}
 
@@ -237,8 +247,9 @@ private:
 		return toqstr(lyxrc.font_sizes[FONT_SIZE_NORMAL]).toDouble();
 	}
 
-	QPointF textPosition() const {
-		return QPointF(width_/2 - 18, height_/2 + 45);
+	QPointF textPosition(bool const heading) const {
+		return heading ? QPointF(width_/2 - 18, height_/2 - 45)
+			       : QPointF(width_/2 - 18, height_/2 + 45);
 	}
 
 	QSize splashSize() const {
