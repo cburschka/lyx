@@ -827,12 +827,12 @@ def checkConverterEntries():
 \converter knitr   dviluatex  "%%"	"needauth"'''])
     #
     checkProg('a Sweave -> R/S code converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxstangle.R $$i $$e $$r'],
-        rc_entry = [ r'\converter sweave      r      "%%"    "needauth"',
-                     r'\converter sweave-ja   r      "%%"    "needauth"' ])
+        rc_entry = [ r'\converter sweave      r      "%%"    ""',
+                     r'\converter sweave-ja   r      "%%"    ""' ])
     #
     checkProg('a knitr -> R/S code converter', ['Rscript --verbose --no-save --no-restore $$s/scripts/lyxknitr.R $$p$$i $$p$$o $$e $$r tangle'],
-        rc_entry = [ r'\converter knitr      r      "%%"    "needauth"',
-                     r'\converter knitr-ja   r      "%%"    "needauth"' ])
+        rc_entry = [ r'\converter knitr      r      "%%"    ""',
+                     r'\converter knitr-ja   r      "%%"    ""' ])
     #
     checkProg('an HTML -> LaTeX converter', ['html2latex $$i', 'gnuhtml2latex',
         'htmltolatex -input $$i -output $$o', 'htmltolatex.jar -input $$i -output $$o'],
