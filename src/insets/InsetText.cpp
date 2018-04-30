@@ -1093,8 +1093,7 @@ bool InsetText::needsCProtection(bool const maintext, bool const fragile) const
 	if (hasCProtectContent(fragile))
 		return true;
 
-	// Environments and "no latex" types (e.g., knitr chunks)
-	// need cprotection regardless the content
+	// Environments generally need cprotection in fragile context
 	if (fragile && getLayout().latextype() == InsetLayout::ENVIRONMENT)
 		return true;
 
