@@ -853,8 +853,11 @@ void InsetQuotes::latex(otexstream & os, OutputParams const & runparams) const
 		// (spacing and kerning is then handled respectively)
 		qstr = docstring(1, quotechar);
 	}
+	// The CJK marks are not yet covered by utf8 inputenc (we don't have the entry in
+	// unicodesymbols, since we don't want to add fake synbols there).
 	else if (style == InsetQuotesParams::CJKQuotes || style  == InsetQuotesParams::CJKAngleQuotes) {
-		if (runparams.encoding && runparams.encoding->encodable(quotechar))
+		if (runparams.encoding && runparams.encoding->name() != "utf8"
+		    && runparams.encoding->encodable(quotechar))
 			qstr = docstring(1, quotechar);
 		else
 			qstr = quoteparams.getLaTeXQuote(quotechar, "int");
@@ -1045,10 +1048,12 @@ void InsetQuotes::validate(LaTeXFeatures & features) const
 			features.require("textquotedbl");
 		break;
 	}
-	// we fake these from math
+	// we fake these from math (also for utf8 inputenc
+	// currently; see above)
 	case 0x300e: // LEFT WHITE CORNER BRACKET
 	case 0x300f: // RIGHT WHITE CORNER BRACKET
 		if (!features.runparams().encoding
+		    || features.runparams().encoding->name() == "utf8"
 		    || !features.runparams().encoding->encodable(type))
 			features.require("stmaryrd");
 		break;
