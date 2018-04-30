@@ -25,6 +25,8 @@ What's new
 - Added LFUN_MASTER_BUFFER_EXPORT, which exports the master buffer, along
   the lines of LFUN_MASTER_BUFFER_VIEW (bug 11118).
 
+- Needauth is not needed for exporting R code (only when executing the code).
+
 
 * TEX2LYX IMPROVEMENTS
 
