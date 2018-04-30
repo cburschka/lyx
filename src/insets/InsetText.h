@@ -224,9 +224,10 @@ public:
 	bool confirmDeletion() const { return !text().empty(); }
 
 	///
-	bool needsCProtection(bool const maintext = false) const;
+	bool needsCProtection(bool const maintext = false,
+			      bool const fragile = false) const;
 	///
-	bool hasCProtectContent() const;
+	bool hasCProtectContent(bool const fragile = false) const;
 
 protected:
 	///

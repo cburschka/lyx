@@ -201,6 +201,17 @@ bool InsetBox::forcePlainLayout(idx_type) const
 }
 
 
+bool InsetBox::needsCProtection(bool const maintext, bool const fragile) const
+{
+	// We need to cprotect boxes that use minipages as inner box
+	// in fragile context
+	if (fragile && params_.inner_box && !params_.use_parbox && !params_.use_makebox)
+		return true;
+
+	return InsetText::needsCProtection(maintext, fragile);
+}
+
+
 ColorCode InsetBox::backgroundColor(PainterInfo const &) const
 {
 	// we only support background color for 3 types
@@ -336,7 +347,7 @@ void InsetBox::latex(otexstream & os, OutputParams const & runparams) const
 	string separation_string = params_.separation.asLatexString();
 	string shadowsize_string = params_.shadowsize.asLatexString();
 	bool stdwidth = false;
-	string const cprotect = hasCProtectContent() ? "\\cprotect" : string();
+	string const cprotect = hasCProtectContent(runparams.moving_arg) ? "\\cprotect" : string();
 	// in general the overall width of some decorated boxes is wider thean the inner box
 	// we could therefore calculate the real width for all sizes so that if the user wants
 	// e.g. 0.1\columnwidth or 2cm he gets exactly this size

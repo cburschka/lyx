@@ -508,6 +508,7 @@ InsetLayout Box:Doublebox
 End
 
 InsetLayout Float
+	LaTeXType             environment
 	LabelFont
 	  Color               collapsible
 	  Size                Small

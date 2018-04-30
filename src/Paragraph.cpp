@@ -1794,7 +1794,9 @@ void Paragraph::write(ostream & os, BufferParams const & bparams,
 void Paragraph::validate(LaTeXFeatures & features) const
 {
 	d->validate(features);
-	if (needsCProtection())
+	bool fragile = features.runparams().moving_arg;
+	fragile |= layout().needprotect;
+	if (needsCProtection(fragile))
 		features.require("cprotect");
 }
 
@@ -3478,7 +3480,7 @@ bool Paragraph::isHardHyphenOrApostrophe(pos_type pos) const
 }
 
 
-bool Paragraph::needsCProtection() const
+bool Paragraph::needsCProtection(bool const fragile) const
 {
 	// first check the layout of the paragraph, but only in insets
 	InsetText const * textinset = inInset().asInsetText();
@@ -3506,7 +3508,7 @@ bool Paragraph::needsCProtection() const
 	// now check whether we have insets that need cprotection
 	pos_type size = d->text_.size();
 	for (pos_type i = 0; i < size; ++i)
-		if (isInset(i) && getInset(i)->needsCProtection(maintext))
+		if (isInset(i) && getInset(i)->needsCProtection(maintext, fragile))
 			return true;
 
 	return false;

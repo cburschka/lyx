@@ -458,7 +458,7 @@ void InsetText::latex(otexstream & os, OutputParams const & runparams) const
 			// FIXME UNICODE
 			// FIXME \protect should only be used for fragile
 			//    commands, but we do not provide this information yet.
-			if (hasCProtectContent())
+			if (hasCProtectContent(runparams.moving_arg))
 				os << "\\cprotect";
 			else if (runparams.moving_arg)
 				os << "\\protect";
@@ -762,13 +762,13 @@ ParagraphList & InsetText::paragraphs()
 }
 
 
-bool InsetText::hasCProtectContent() const
+bool InsetText::hasCProtectContent(bool const fragile) const
 {
 	ParagraphList const & pars = paragraphs();
 	pit_type pend = paragraphs().size();
 	for (pit_type pit = 0; pit != pend; ++pit) {
 		Paragraph const & par = pars[pit];
-		if (par.needsCProtection())
+		if (par.needsCProtection(fragile))
 			return true;
 	}
 	return false;
@@ -1086,11 +1086,16 @@ InsetText::XHTMLOptions operator|(InsetText::XHTMLOptions a1, InsetText::XHTMLOp
 }
 
 
-bool InsetText::needsCProtection(bool const maintext) const
+bool InsetText::needsCProtection(bool const maintext, bool const fragile) const
 {
 	// Nested cprotect content needs \cprotect
 	// on each level
-	if (hasCProtectContent())
+	if (hasCProtectContent(fragile))
+		return true;
+
+	// Environments and "no latex" types (e.g., knitr chunks)
+	// need cprotection regardless the content
+	if (fragile && getLayout().latextype() == InsetLayout::ENVIRONMENT)
 		return true;
 
 	if (!getLayout().needsCProtect())
@@ -1111,7 +1116,7 @@ bool InsetText::needsCProtection(bool const maintext) const
 
 	for (pit_type pit = 0; pit != pend; ++pit) {
 		Paragraph const & par = pars[pit];
-		if (par.needsCProtection())
+		if (par.needsCProtection(fragile))
 			return true;
 		docstring const pars = par.asString();
 		for (int k = 0; k < nchars_escape; k++) {

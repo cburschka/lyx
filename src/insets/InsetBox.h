@@ -123,6 +123,9 @@ public:
 	///
 	bool forcePlainLayout(idx_type = 0) const;
 	///
+	bool needsCProtection(bool const maintext = false,
+			      bool const fragile = false) const;
+	///
 	bool neverIndent() const { return true; }
 	///
 	bool inheritFont() const { return false; }
