@@ -1090,7 +1090,7 @@ bool InsetText::needsCProtection(bool const maintext, bool const fragile) const
 {
 	// Nested cprotect content needs \cprotect
 	// on each level
-	if (hasCProtectContent(fragile))
+	if (producesOutput() && hasCProtectContent(fragile))
 		return true;
 
 	// Environments generally need cprotection in fragile context
@@ -1104,6 +1104,11 @@ bool InsetText::needsCProtection(bool const maintext, bool const fragile) const
 	// need cprotection regardless the content
 	if (!maintext && getLayout().latextype() != InsetLayout::COMMAND)
 		return true;
+
+	// If the inset does not produce output (e.g. Note or Branch),
+	// we can ignore the contained paragraphs
+	if (!producesOutput())
+		return false;
 
 	// Commands need cprotection if they contain specific chars
 	int const nchars_escape = 9;
