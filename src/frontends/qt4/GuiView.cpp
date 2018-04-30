@@ -158,7 +158,7 @@ public:
 			return;
 		/// The text to be written on top of the pixmap
 		QString const htext = qt_("The Document\nProcessor[[welcome banner]]");
-		QString const htextsize = qt_("20[[possibly adjust the welcome banner text size; float value allowed]]");
+		QString const htextsize = qt_("1.0[[possibly scale the welcome banner text size]]");
 		/// The text to be written on top of the pixmap
 		QString const text = lyx_version ?
 			qt_("version ") + lyx_version : qt_("unknown version");
@@ -182,9 +182,10 @@ public:
 		pain.setPen(QColor(0, 0, 0));
 		qreal const fsize = fontSize();
 		bool ok;
-		qreal hfsize = htextsize.toFloat(&ok);
+		int hfsize = 20;
+		qreal locscale = htextsize.toFloat(&ok);
 		if (!ok)
-			hfsize = 20;
+			locscale = 1.0;
 		QPointF const position = textPosition(false);
 		QPointF const hposition = textPosition(true);
 		QRectF const hrect(hposition, splashSize());
@@ -203,6 +204,30 @@ public:
 		font.setStyleHint(QFont::SansSerif);
 		font.setWeight(QFont::Normal);
 		font.setPointSizeF(hfsize);
+		// Check how long the logo gets with the current font
+		// and adapt if the font is running wider than what
+		// we assume
+		QFontMetrics fm(font);
+		// Split the title into lines to measure the longest line
+		// in the current l7n.
+		QStringList titlesegs = htext.split('\n');
+		int wline = 0;
+		int hline = fm.height();
+		QStringList::const_iterator sit;
+		for (sit = titlesegs.constBegin(); sit != titlesegs.constEnd(); ++sit) {
+			if (fm.width(*sit) > wline)
+				wline = fm.width(*sit);
+		}
+		// The longest line in the reference font (for English)
+		// is 180. Calculate scale factor from that.
+		double const wscale = (180.0 / wline);
+		// Now do the same for the height (necessary for condensed fonts)
+		double const hscale = (34.0 / hline);
+		// take the lower of the two scale factors.
+		double const scale = min(wscale, hscale);
+		// Now rescale. Also consider l7n's offset factor.
+		font.setPointSizeF(hfsize * scale * locscale);
+
 		pain.setFont(font);
 		pain.drawText(hrect, Qt::AlignLeft, htext);
 		setFocusPolicy(Qt::StrongFocus);
