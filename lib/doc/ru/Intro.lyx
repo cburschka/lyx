@@ -434,12 +434,23 @@ status collapsed
 
 
 \backslash
-'
+'{
 \end_layout
 
 \end_inset
 
-ать и вставлять разделы, при этом все разделы документа будут автоматически
+а
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ть и вставлять разделы, при этом все разделы документа будут автоматически
  перенумерованы.
  И если вы правильно (путём вставки 
 \emph on
@@ -791,12 +802,23 @@ status collapsed
 
 
 \backslash
-'
+'{
 \end_layout
 
 \end_inset
 
-ех
+е
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+х
 \begin_inset Quotes crd
 \end_inset
 
@@ -2262,12 +2284,24 @@ status collapsed
 
 
 \backslash
-'
+'{
 \end_layout
 
 \end_inset
 
-аете
+а
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+\emph on
+}
+\end_layout
+
+\end_inset
+
+ете
 \emph default
 , как использовать \SpecialChar LyX
 .
