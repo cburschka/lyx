@@ -335,7 +335,7 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 			}
 			os << from_utf8(param_string) << "]\n";
 		}
-		os << code  << "\\end{lstlisting}\n";
+		os << code << breakln << "\\end{lstlisting}\n";
 	}
 
 	if (encoding_switched){
