@@ -800,7 +800,7 @@ void InsetQuotes::doDispatch(Cursor & cur, FuncRequest & cmd)
 		}
 		cur.recordUndoInset(this);
 		parseString(cmd.getArg(1), true);
-		cur.buffer()->updateBuffer();
+		cur.forceBufferUpdate();
 		break;
 	}
 	default:
