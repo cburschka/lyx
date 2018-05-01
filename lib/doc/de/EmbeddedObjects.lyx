@@ -41600,7 +41600,7 @@ reference "lst:Datei-Listing"
 \begin_inset space \thinspace{}
 \end_inset
 
--
+–
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -41611,7 +41611,7 @@ reference "lst:Datei-Listing"
 \begin_inset CommandInset include
 LatexCommand lstinputlisting
 filename "EmbeddedObjects.lyx"
-lstparams "breaklines=true,extendedchars=true,firstline=10,language={[LaTeX]TeX},lastline=15,literate={{Ã€}{{\\\"a}}1 {Ã¶}{{\\\"o}}1 {ÃŒ}{{\\\"u}}1},caption={Zeilen 10 - 15 dieser LyX-Datei},label={lst:Datei-Listing}"
+lstparams "breaklines=true,extendedchars=true,firstline=10,language={[LaTeX]TeX},lastline=15,literate={{ä}{{\\\"a}}1 {ö}{{\\\"o}}1 {ü}{{\\\"u}}1{Ã€}{{\\\"a}}1 {Ã¶}{{\\\"o}}1 {ÃŒ}{{\\\"u}}1},caption={Zeilen 10--15 dieser LyX-Datei},label={lst:Datei-Listing}"
 
 \end_inset
 
