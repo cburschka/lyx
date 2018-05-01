@@ -82,7 +82,7 @@ void latexParagraphs(Buffer const & buf,
 std::pair<bool, int> switchEncoding(odocstream & os,
 		     BufferParams const & bparams,
 		     OutputParams const &, Encoding const & newEnc,
-		     bool force = false);
+		     bool force = false, bool noswitchmacro = false);
 
 /// FIXME: this should not be visible.
 void TeXOnePar(Buffer const & buf,

@@ -1543,7 +1543,7 @@ void latexParagraphs(Buffer const & buf,
 
 pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 		   OutputParams const & runparams, Encoding const & newEnc,
-		   bool force)
+		   bool force, bool noswitchmacro)
 {
 	// XeTeX/LuaTeX use only one encoding per document:
 	// * with useNonTeXFonts: "utf8plain",
@@ -1612,7 +1612,7 @@ pair<bool, int> switchEncoding(odocstream & os, BufferParams const & bparams,
 				state->open_encoding_ = inputenc;
 			}
 			// with the japanese option, inputenc is omitted.
-			if (runparams.use_japanese)
+			if (runparams.use_japanese || noswitchmacro)
 				return make_pair(true, count);
 			os << "\\inputencoding{" << inputenc_arg << '}';
 			return make_pair(true, count + 16);

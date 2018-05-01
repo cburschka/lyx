@@ -120,7 +120,7 @@ void InsetListings::read(Lexer & lex)
 
 
 Encoding const * InsetListings::forcedEncoding(Encoding const * inner_enc,
-											   Encoding const * outer_enc) const
+					       Encoding const * outer_enc) const
 {
 	// The listings package cannot deal with multi-byte-encoded
 	// glyphs, except if full-unicode aware backends
@@ -192,6 +192,9 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 		// the restrictions of the listings package (see above).
 		// This needs to be consistent with
 		// LaTeXFeatures::getTClassI18nPreamble().
+		// We need to put this into a group in order to prevent encoding leaks
+		// (happens with cprotect).
+		os << "\\bgroup";
 		switchEncoding(os.os(), buffer().params(), runparams, *fixedlstenc, true);
 		runparams.encoding = fixedlstenc;
 		encoding_switched = true;
@@ -332,12 +335,14 @@ void InsetListings::latex(otexstream & os, OutputParams const & runparams) const
 			}
 			os << from_utf8(param_string) << "]\n";
 		}
-		os << code << breakln << "\\end{lstlisting}\n";
+		os << code  << "\\end{lstlisting}\n";
 	}
 
 	if (encoding_switched){
 		// Switch back
-		switchEncoding(os.os(), buffer().params(), runparams, *save_enc, true);
+		switchEncoding(os.os(), buffer().params(),
+			       runparams, *save_enc, true, true);
+		os << "\\egroup" << breakln;
 		runparams.encoding = save_enc;
 	}
 
