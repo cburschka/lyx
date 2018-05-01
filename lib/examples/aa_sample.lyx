@@ -43,8 +43,8 @@
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine basic
-\cite_engine_type default
+\cite_engine natbib
+\cite_engine_type authoryear
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -512,7 +512,7 @@ literal "true"
 
 \end_inset
 
-), originally used to study the Cepheı̈d pulsation mechanism, will be briefly
+), originally used to study the Cepheïd pulsation mechanism, will be briefly
  reviewed.
  The resulting stability criteria will be rewritten in terms of local state
  variables, local timescales and constitutive relations.
@@ -1203,7 +1203,7 @@ For solar composition gas the
  dissociation and the combined H, first He ionization zone, as indicated
  by vibrational instability.
  These regions of instability are much larger in extent and degree of instabilit
-y than the second He ionization zone that drives the Cepheı̈d pulsations.
+y than the second He ionization zone that drives the Cepheïd pulsations.
  
 \end_layout
 
@@ -1243,7 +1243,7 @@ status open
 Note:
 \series default
  If you cannot see the bibliography in the output, assure that you have
- gievn the full path to the Bib\SpecialChar TeX
+ given the full path to the Bib\SpecialChar TeX
  style file 
 \family sans
 aa.bst
