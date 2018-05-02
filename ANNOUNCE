@@ -13,6 +13,9 @@ released under a Free and Open Source Software license.
 LyX 2.3.1 is the result of on-going efforts to make our stable version more 
 reliable and more stable. <CONTINUE>
 
+All python scripts distributed with LyX should now be compatible with both
+python 2.x and python 3.x.
+
 One oft-requested enhancement was to restore a keyboard shortcut for opening
 the 'settings' menu of graphics, reference, etc, insets. This is now Control-
 Alt-i, on Windows and Linux, and Control-Option-i on OSX (assuming you are
