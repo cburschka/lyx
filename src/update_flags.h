@@ -19,14 +19,13 @@ namespace Update {
 		/// No screen update is needed.
 		None = 0,
 		/// Recenter the screen around the cursor if is found outside the
-		/// visible area.
+		/// visible area. This will trigger a full metrics update if needed.
 		FitCursor = 1,
 		/// Force a full screen metrics update and a full draw.
 		Force = 2,
 		/// Force a full redraw (but no metrics computations)
 		ForceDraw = 4,
 		/// Try to rebreak only the current paragraph metrics.
-		/// (currently ignored!)
 		SinglePar = 8,
 		/// Only the inset decorations need to be redrawn, no text metrics
 		/// update is needed.
