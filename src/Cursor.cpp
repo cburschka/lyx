@@ -2239,6 +2239,12 @@ void Cursor::screenUpdateFlags(Update::flags f) const
 }
 
 
+void Cursor::noScreenUpdate() const
+{
+	disp_.screenUpdate(Update::None);
+}
+
+
 void Cursor::forceBufferUpdate() const
 {
 	disp_.forceBufferUpdate();
@@ -2254,12 +2260,6 @@ void Cursor::clearBufferUpdate() const
 bool Cursor::needBufferUpdate() const
 {
 	return disp_.needBufferUpdate();
-}
-
-
-void Cursor::noScreenUpdate() const
-{
-	disp_.screenUpdate(Update::None);
 }
 
 
