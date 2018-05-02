@@ -290,15 +290,15 @@ static bool doInsertInset(Cursor & cur, Text * text,
 	bool gotsel = false;
 	if (cur.selection()) {
 		if (cmd.action() == LFUN_INDEX_INSERT)
-				copySelectionToTemp(cur);
-			else
-				cutSelectionToTemp(cur, false, pastesel);
-			cur.clearSelection();
-			gotsel = true;
-		} else if (cmd.action() == LFUN_INDEX_INSERT) {
-			gotsel = text->selectWordWhenUnderCursor(cur, WHOLE_WORD);
 			copySelectionToTemp(cur);
-			cur.clearSelection();
+		else
+			cutSelectionToTemp(cur, false, pastesel);
+		cur.clearSelection();
+		gotsel = true;
+	} else if (cmd.action() == LFUN_INDEX_INSERT) {
+		gotsel = text->selectWordWhenUnderCursor(cur, WHOLE_WORD);
+		copySelectionToTemp(cur);
+		cur.clearSelection();
 	}
 	text->insertInset(cur, inset);
 
