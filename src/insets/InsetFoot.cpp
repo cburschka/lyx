@@ -84,9 +84,14 @@ void InsetFoot::updateBuffer(ParIterator const & it, UpdateType utype)
 	InsetLayout const & il = getLayout();
 	docstring const & count = il.counter();
 	custom_label_ = translateIfPossible(il.labelstring());
-	if (cnts.hasCounter(count))
-		cnts.step(count, utype);
-	custom_label_ += ' ' + cnts.theCounter(count, lang->code());
+
+	Paragraph const & par = it.paragraph();
+	if (!par.isDeleted(it.pos())) {
+		if (cnts.hasCounter(count))
+			cnts.step(count, utype);
+		custom_label_ += ' ' + cnts.theCounter(count, lang->code());
+	} else
+		custom_label_ += ' ' + from_ascii("#");
 	setLabel(custom_label_);
 
 	InsetCollapsible::updateBuffer(it, utype);
