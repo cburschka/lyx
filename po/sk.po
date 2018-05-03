@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-04-29 21:41+0200\n"
-"PO-Revision-Date: 2018-04-30 05:40+0000\n"
+"POT-Creation-Date: 2018-05-03 08:32+0200\n"
+"PO-Revision-Date: 2018-05-03 06:38+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -3891,6 +3891,10 @@ msgstr ""
 "1.0 je štandardná rýchlosť rolovania kolieskom myši. Vyššie hodnoty "
 "zrýchlia, nižšie spomalia."
 
+#: src/frontends/qt4/GuiView.cpp:161
+msgid "1.0[[possibly scale the welcome banner text size]]"
+msgstr "0.95"
+
 #: src/frontends/qt4/ui/PrefInputUi.ui:194
 msgid ""
 "If this is checked, the middle mouse button will paste the recent selection"
@@ -4656,6 +4660,10 @@ msgstr ""
 msgid "Plural"
 msgstr "Plurál"
 
+#: lib/ui/stdcontext.inc:99
+msgid "Plural|a"
+msgstr "Plurál|u"
+
 #: src/frontends/qt4/ui/RefUi.ui:399
 msgid ""
 "Use capitalized form of formatted reference. (Works only for formatted "
@@ -4667,6 +4675,10 @@ msgstr ""
 #: src/frontends/qt4/ui/RefUi.ui:402
 msgid "Capitalized"
 msgstr "Veľké písmená"
+
+#: lib/ui/stdcontext.inc:100
+msgid "Capitalize|C"
+msgstr "Prvé Veľké|V"
 
 #: src/frontends/qt4/ui/RefUi.ui:409
 msgid "Do not output part of label before \":\""
@@ -8897,10 +8909,6 @@ msgstr "TematickáOblasť"
 #: lib/layouts/amsdefs.inc:199
 msgid "2000 Mathematics Subject Classification:"
 msgstr "Klasifikácia Matematických Oblastí 2000:"
-
-#: src/frontends/qt4/GuiView.cpp:161
-msgid "20[[possibly adjust the welcome banner text size; float value allowed]]"
-msgstr "0.95"
 
 #: lib/layouts/apa.layout:3
 msgid "American Psychological Association (APA)"
