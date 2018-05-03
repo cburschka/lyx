@@ -316,8 +316,12 @@ void InsetMathHull::updateBuffer(ParIterator const & it, UpdateType utype)
 				counter_map[eqstr] = cnts.value(eqstr);
 			for (size_t i = 0; i != label_.size(); ++i) {
 				if (numbered(i)) {
-					cnts.step(eqstr, utype);
-					numbers_[i] = cnts.theCounter(eqstr, lang);
+					Paragraph const & par = it.paragraph();
+					if (!par.isDeleted(it.pos())) {
+						cnts.step(eqstr, utype);
+						numbers_[i] = cnts.theCounter(eqstr, lang);
+					} else
+						numbers_[i] = from_ascii("#");
 				} else
 					numbers_[i] = empty_docstring();
 			}
