@@ -146,9 +146,13 @@ void InsetFlex::updateBuffer(ParIterator const & it, UpdateType utype)
 	docstring const & count = il.counter();
 	bool const have_counter = cnts.hasCounter(count);
 	if (have_counter) {
-		cnts.step(count, utype);
-		custom_label += ' ' +
-			cnts.theCounter(count, it.paragraph().getParLanguage(bp)->code());
+		Paragraph const & par = it.paragraph();
+		if (!par.isDeleted(it.pos())) {
+			cnts.step(count, utype);
+			custom_label += ' ' +
+				cnts.theCounter(count, it.paragraph().getParLanguage(bp)->code());
+		} else
+			custom_label += ' ' + from_ascii("#");
 	}
 	setLabel(custom_label);
 
