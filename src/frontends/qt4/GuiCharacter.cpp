@@ -400,11 +400,11 @@ void GuiCharacter::updateContents()
 	if (bufferview()->cursor().selection()) {
 		Font font = bufferview()->cursor().real_current_font;
 		FontInfo fi = font.fontInfo();
-		BufferParams const bp = buffer().masterParams();
+		BufferParams const & bp = buffer().masterParams();
 
 		// Check if each font attribute is constant for the selection range.
-		DocIterator from = bufferview()->cursor().selectionBegin();
-		DocIterator to = bufferview()->cursor().selectionEnd();
+		DocIterator const from = bufferview()->cursor().selectionBegin();
+		DocIterator const to = bufferview()->cursor().selectionEnd();
 		for (DocIterator dit = from ; dit != to && !dit.atEnd(); ) {
 			if (!dit.inTexted()) {
 				dit.forwardPos();
