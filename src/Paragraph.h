@@ -263,10 +263,12 @@ public:
 	/// look up change at given pos
 	Change const & lookupChange(pos_type pos) const;
 
-	/// is there a change within the given range ?
+	/// is there a change within the given range (does not
+	/// check contained paragraphs)
 	bool isChanged(pos_type start, pos_type end) const;
 	/// is there an unchanged char at the given pos ?
 	bool isChanged(pos_type pos) const;
+
 	/// is there an insertion at the given pos ?
 	bool isInserted(pos_type pos) const;
 	/// is there a deletion at the given pos ?

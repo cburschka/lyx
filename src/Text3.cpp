@@ -3185,17 +3185,31 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 
 	case LFUN_CHANGE_ACCEPT:
 	case LFUN_CHANGE_REJECT:
-		// In principle, these LFUNs should only be enabled if there
-		// is a change at the current position/in the current selection.
-		// However, without proper optimizations, this will inevitably
-		// result in unacceptable performance - just imagine a user who
-		// wants to select the complete content of a long document.
 		if (!cur.selection())
 			enable = cur.paragraph().isChanged(cur.pos());
-		else
-			// TODO: context-sensitive enabling of LFUN_CHANGE_ACCEPT/REJECT
-			// for selections.
-			enable = true;
+		else {
+			// will enable if there is a change in the selection
+			enable = false;
+
+			// cheap improvement for efficiency: using cached
+			// buffer variable, if there is no change in the
+			// document, no need to check further.
+			if (!cur.buffer()->areChangesPresent())
+				break;
+
+			for (DocIterator it = cur.selectionBegin(); it < cur.selectionEnd(); it.forwardPar()) {
+				pos_type const beg = it.pos();
+				pos_type end;
+				if (it.paragraph().id() == cur.selectionEnd().paragraph().id())
+					end = cur.selectionEnd().pos();
+				else
+					end = it.paragraph().size();
+				if (beg != end && it.paragraph().isChanged(beg, end)) {
+					enable = true;
+					break;
+				}
+			}
+		}
 		break;
 
 	case LFUN_OUTLINE_UP:
