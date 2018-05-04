@@ -3869,6 +3869,9 @@ unique_ptr<TexRow> Buffer::getSourceCode(odocstream & os, string const & format,
 	// No side effect of file copying and image conversion
 	runparams.dryrun = true;
 
+	// Some macros rely on font encoding
+	runparams.main_fontenc = params().main_font_encoding();
+
 	if (output == CurrentParagraph) {
 		runparams.par_begin = par_begin;
 		runparams.par_end = par_end;
