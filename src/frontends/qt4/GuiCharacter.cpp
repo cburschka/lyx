@@ -6,6 +6,7 @@
  * \author Angus Leeming
  * \author Edwin Leuven
  * \author John Levon
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -81,15 +82,24 @@ static QList<BarPair> barData()
 {
 	QList<BarPair> bars;
 	bars << BarPair(qt_("No change"), IGNORE);
-	bars << BarPair(qt_("Emph"),      EMPH_TOGGLE);
-	bars << BarPair(qt_("Underbar"),  UNDERBAR_TOGGLE);
-	bars << BarPair(qt_("Double underbar"),  UULINE_TOGGLE);
-	bars << BarPair(qt_("Wavy underbar"),  UWAVE_TOGGLE);
-	bars << BarPair(qt_("Strike out"),  STRIKEOUT_TOGGLE);
-	bars << BarPair(qt_("Cross out"),  XOUT_TOGGLE);
-	bars << BarPair(qt_("Noun"),      NOUN_TOGGLE);
-	bars << BarPair(qt_("Reset"),     INHERIT);
+	bars << BarPair(qt_("(Without)[[underlining]]"), NONE);
+	bars << BarPair(qt_("Single"), UNDERBAR);
+	bars << BarPair(qt_("Double"), UULINE);
+	bars << BarPair(qt_("Wavy"), UWAVE);
+	bars << BarPair(qt_("Reset"), INHERIT);
 	return bars;
+}
+
+
+static QList<BarPair> strikeData()
+{
+	QList<BarPair> strike;
+	strike << BarPair(qt_("No change"), IGNORE);
+	strike << BarPair(qt_("(Without)[[strikethrough]]"), NONE);
+	strike << BarPair(qt_("Single"), STRIKEOUT);
+	strike << BarPair(qt_("With /"), XOUT);
+	strike << BarPair(qt_("Reset"), INHERIT);
+	return strike;
 }
 
 
@@ -196,8 +206,8 @@ void fillComboColor(QComboBox * combo, QList<T> const & list)
 } // namespace
 
 GuiCharacter::GuiCharacter(GuiView & lv)
-	: GuiDialog(lv, "character", qt_("Text Style")), font_(ignore_font, ignore_language),
-	  toggleall_(false)
+	: GuiDialog(lv, "character", qt_("Text Style")),
+	  font_(ignore_font, ignore_language), emph_(false), noun_(false)
 {
 	setupUi(this);
 
@@ -207,20 +217,22 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	connect(autoapplyCB, SIGNAL(stateChanged(int)), this,
 		SLOT(slotAutoApply()));
 
-	connect(miscCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(ulineCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(strikeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
+	connect(emphCB, SIGNAL(clicked(bool)), this, SLOT(change_adaptor()));
 	connect(sizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(familyCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(seriesCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(shapeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(colorCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(langCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(toggleallCB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 
 	family = familyData();
 	series = seriesData();
 	shape  = shapeData();
 	size   = sizeData();
 	bar    = barData();
+	strike = strikeData();
 	color  = colorData();
 	qSort(color.begin(), color.end(), ColorSorter);
 
@@ -232,7 +244,8 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	fillCombo(seriesCO, series);
 	fillCombo(sizeCO, size);
 	fillCombo(shapeCO, shape);
-	fillCombo(miscCO, bar);
+	fillCombo(ulineCO, bar);
+	fillCombo(strikeCO, strike);
 	fillComboColor(colorCO, color);
 	fillCombo(langCO, language);
 
@@ -245,10 +258,12 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	bc().addReadOnly(seriesCO);
 	bc().addReadOnly(sizeCO);
 	bc().addReadOnly(shapeCO);
-	bc().addReadOnly(miscCO);
+	bc().addReadOnly(ulineCO);
+	bc().addReadOnly(strikeCO);
+	bc().addReadOnly(nounCB);
+	bc().addReadOnly(emphCB);
 	bc().addReadOnly(langCO);
 	bc().addReadOnly(colorCO);
-	bc().addReadOnly(toggleallCB);
 	bc().addReadOnly(autoapplyCB);
 
 #ifdef Q_OS_MAC
@@ -264,6 +279,28 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	// qt resizes the comboboxes only after show(), so ...
 	QDialog::show();
 #endif
+}
+
+
+void GuiCharacter::on_emphCB_clicked()
+{
+	// skip intermediate state at user click
+	if (!emph_) {
+		emphCB->setCheckState(Qt::Checked);
+		emph_ = true;
+	}
+	change_adaptor();
+}
+
+
+void GuiCharacter::on_nounCB_clicked()
+{
+	// skip intermediate state at user click
+	if (!noun_) {
+		nounCB->setCheckState(Qt::Checked);
+		noun_ = true;
+	}
+	change_adaptor();
 }
 
 
@@ -292,111 +329,187 @@ static int findPos2nd(QList<P> const & vec, B const & val)
 }
 
 
+namespace{
+FontState getBar(FontInfo const & fi)
+{
+	if (fi.underbar() == FONT_ON)
+		return UNDERBAR;
+
+	if (fi.uuline() == FONT_ON)
+		return UULINE;
+
+	if (fi.uwave() == FONT_ON)
+		return UWAVE;
+
+	if (fi.underbar() == FONT_IGNORE)
+		return IGNORE;
+
+	return NONE;
+}
+
+
+FontState getStrike(FontInfo const & fi)
+{
+	if (fi.strikeout() == FONT_ON)
+		return STRIKEOUT;
+
+	if (fi.xout() == FONT_ON)
+		return XOUT;
+
+	if (fi.strikeout() == FONT_IGNORE)
+		return IGNORE;
+
+	return NONE;
+}
+
+
+Qt::CheckState getMarkupState(lyx::FontState fs)
+{
+	switch (fs) {
+	case FONT_OFF:
+		return Qt::Unchecked;
+	case FONT_ON:
+		return Qt::Checked;
+	case FONT_TOGGLE:
+	case FONT_INHERIT:
+	case FONT_IGNORE:
+	default:
+		return Qt::PartiallyChecked;
+	}
+}
+
+lyx::FontState setMarkupState(Qt::CheckState cs)
+{
+	switch (cs) {
+	case Qt::Unchecked:
+		return FONT_OFF;
+	case Qt::Checked:
+		return FONT_ON;
+	case Qt::PartiallyChecked:
+	default:
+		return FONT_IGNORE;
+	}
+}
+
+} // end namespace anon
+
+
 void GuiCharacter::updateContents()
 {
-	if (!autoapplyCB->isChecked()) {
-		bc().setValid(true);
-		return;
-	}
 	if (bufferview()->cursor().selection()) {
-		//FIXME: it would be better to check if each font attribute is constant
-		// for the selection range.
-		font_ = Font(ignore_font, ignore_language);
+		Font font = bufferview()->cursor().real_current_font;
+		FontInfo fi = font.fontInfo();
+		BufferParams const bp = buffer().masterParams();
+
+		// Check if each font attribute is constant for the selection range.
+		DocIterator from = bufferview()->cursor().selectionBegin();
+		DocIterator to = bufferview()->cursor().selectionEnd();
+		for (DocIterator dit = from ; dit != to && !dit.atEnd(); ) {
+			if (!dit.inTexted()) {
+				dit.forwardPos();
+				continue;
+			}
+			Paragraph const & par = dit.paragraph();
+			pos_type const pos = dit.pos();
+			Font tmp = par.getFont(bp, pos, font);
+			if (font.language() != tmp.language())
+				font.setLanguage(ignore_language);
+			if (fi.family() != tmp.fontInfo().family())
+				font.fontInfo().setFamily(IGNORE_FAMILY);
+			if (fi.series() != tmp.fontInfo().series())
+				font.fontInfo().setSeries(IGNORE_SERIES);
+			if (fi.shape() != tmp.fontInfo().shape())
+				font.fontInfo().setShape(IGNORE_SHAPE);
+			if (fi.size() != tmp.fontInfo().size())
+				font.fontInfo().setSize(FONT_SIZE_IGNORE);
+			if (fi.emph() != tmp.fontInfo().emph())
+				font.fontInfo().setEmph(FONT_IGNORE);
+			if (fi.noun() != tmp.fontInfo().noun())
+				font.fontInfo().setNoun(FONT_IGNORE);
+			if (fi.color() != tmp.fontInfo().color())
+				font.fontInfo().setColor(Color_ignore);
+			if (fi.underbar() != tmp.fontInfo().underbar()
+			    || fi.uuline() != tmp.fontInfo().uuline()
+			    || fi.uwave() != tmp.fontInfo().uwave())
+				setBar(font.fontInfo(), IGNORE);
+			if (fi.strikeout() != tmp.fontInfo().strikeout()
+			    || fi.xout() != tmp.fontInfo().xout())
+				setStrike(font.fontInfo(), IGNORE);
+			dit.forwardPos();
+		}
+		font_ = font;
 	} else
-		font_ = bufferview()->cursor().current_font;
+		font_ = bufferview()->cursor().real_current_font;
 
 	paramsToDialog(font_);
 }
 
 
-static FontState getBar(FontInfo const & fi)
-{
-	if (fi.emph() == FONT_TOGGLE)
-		return EMPH_TOGGLE;
-
-	if (fi.underbar() == FONT_TOGGLE)
-		return UNDERBAR_TOGGLE;
-
-	if (fi.strikeout() == FONT_TOGGLE)
-		return STRIKEOUT_TOGGLE;
-
-	if (fi.xout() == FONT_TOGGLE)
-		return XOUT_TOGGLE;
-
-	if (fi.uuline() == FONT_TOGGLE)
-		return UULINE_TOGGLE;
-
-	if (fi.uwave() == FONT_TOGGLE)
-		return UWAVE_TOGGLE;
-
-	if (fi.noun() == FONT_TOGGLE)
-		return NOUN_TOGGLE;
-
-	if (fi.emph() == FONT_IGNORE
-	    && fi.underbar() == FONT_IGNORE
-	    && fi.noun() == FONT_IGNORE)
-		return IGNORE;
-
-	return INHERIT;
-}
-
-
-static void setBar(FontInfo & fi, FontState val)
+void GuiCharacter::setBar(FontInfo & fi, FontState val)
 {
 	switch (val) {
 	case IGNORE:
-		fi.setEmph(FONT_IGNORE);
 		fi.setUnderbar(FONT_IGNORE);
-		fi.setStrikeout(FONT_IGNORE);
-		fi.setXout(FONT_IGNORE);
 		fi.setUuline(FONT_IGNORE);
 		fi.setUwave(FONT_IGNORE);
-		fi.setNoun(FONT_IGNORE);
 		break;
-
-	case EMPH_TOGGLE:
-		setBar(fi, INHERIT);
-		fi.setEmph(FONT_TOGGLE);
+	case UNDERBAR:
+		setBar(fi, NONE);
+		fi.setUnderbar(FONT_ON);
 		break;
-
-	case UNDERBAR_TOGGLE:
-		setBar(fi, INHERIT);
-		fi.setUnderbar(FONT_TOGGLE);
+	case UULINE:
+		setBar(fi, NONE);
+		fi.setUuline(FONT_ON);
 		break;
-
-	case STRIKEOUT_TOGGLE:
-		setBar(fi, INHERIT);
-		fi.setStrikeout(FONT_TOGGLE);
+	case UWAVE:
+		setBar(fi, NONE);
+		fi.setUwave(FONT_ON);
 		break;
-
-	case XOUT_TOGGLE:
-		setBar(fi, INHERIT);
-		fi.setXout(FONT_TOGGLE);
-		break;
-
-	case UULINE_TOGGLE:
-		setBar(fi, INHERIT);
-		fi.setUuline(FONT_TOGGLE);
-		break;
-
-	case UWAVE_TOGGLE:
-		setBar(fi, INHERIT);
-		fi.setUwave(FONT_TOGGLE);
-		break;
-
-	case NOUN_TOGGLE:
-		setBar(fi, INHERIT);
-		fi.setNoun(FONT_TOGGLE);
-		break;
-
 	case INHERIT:
-		fi.setEmph(FONT_INHERIT);
 		fi.setUnderbar(FONT_INHERIT);
-		fi.setStrikeout(FONT_INHERIT);
-		fi.setXout(FONT_INHERIT);
 		fi.setUuline(FONT_INHERIT);
 		fi.setUwave(FONT_INHERIT);
-		fi.setNoun(FONT_INHERIT);
+		break;
+	case NONE:
+		fi.setUnderbar(FONT_OFF);
+		fi.setUuline(FONT_OFF);
+		fi.setUwave(FONT_OFF);
+		break;
+	case XOUT:
+	case STRIKEOUT:
+	default:
+		break;
+	}
+}
+
+
+void GuiCharacter::setStrike(FontInfo & fi, FontState val)
+{
+	switch (val) {
+	case IGNORE:
+		fi.setStrikeout(FONT_IGNORE);
+		fi.setXout(FONT_IGNORE);
+		break;
+	case STRIKEOUT:
+		setStrike(fi, NONE);
+		fi.setStrikeout(FONT_ON);
+		break;
+	case XOUT:
+		setStrike(fi, NONE);
+		fi.setXout(FONT_ON);
+		break;
+	case INHERIT:
+		fi.setStrikeout(FONT_INHERIT);
+		fi.setXout(FONT_INHERIT);
+		break;
+	case NONE:
+		fi.setStrikeout(FONT_OFF);
+		fi.setXout(FONT_OFF);
+		break;
+	case UNDERBAR:
+	case UWAVE:
+	case UULINE:
+	default:
 		break;
 	}
 }
@@ -409,15 +522,18 @@ void GuiCharacter::paramsToDialog(Font const & font)
 	seriesCO->setCurrentIndex(findPos2nd(series, fi.series()));
 	shapeCO->setCurrentIndex(findPos2nd(shape, fi.shape()));
 	sizeCO->setCurrentIndex(findPos2nd(size, fi.size()));
-	miscCO->setCurrentIndex(findPos2nd(bar, getBar(fi)));
+	ulineCO->setCurrentIndex(findPos2nd(bar, getBar(fi)));
+	strikeCO->setCurrentIndex(findPos2nd(strike, getStrike(fi)));
 	colorCO->setCurrentIndex(colorCO->findData(toqstr(lcolor.getLyXName(fi.color()))));
+	emphCB->setCheckState(getMarkupState(fi.emph()));
+	nounCB->setCheckState(getMarkupState(fi.noun()));
+	emph_ = emphCB->checkState() == Qt::Checked;
+	noun_ = nounCB->checkState() == Qt::Checked;
 
 	// reset_language is a null pointer.
 	QString const lang = (font.language() == reset_language)
 		? "reset" : toqstr(font.language()->lang());
 	langCO->setCurrentIndex(findPos2nd(language, lang));
-
-	toggleallCB->setChecked(toggleall_);
 }
 
 
@@ -428,13 +544,14 @@ void GuiCharacter::applyView()
 	fi.setSeries(series[seriesCO->currentIndex()].second);
 	fi.setShape(shape[shapeCO->currentIndex()].second);
 	fi.setSize(size[sizeCO->currentIndex()].second);
-	setBar(fi, bar[miscCO->currentIndex()].second);
+	fi.setEmph(setMarkupState(emphCB->checkState()));
+	fi.setNoun(setMarkupState(nounCB->checkState()));
+	setBar(fi, bar[ulineCO->currentIndex()].second);
+	setStrike(fi, strike[strikeCO->currentIndex()].second);
 	fi.setColor(lcolor.getFromLyXName(fromqstr(colorCO->itemData(colorCO->currentIndex()).toString())));
 
 	font_.setLanguage(languages.getLanguage(
 		fromqstr(language[langCO->currentIndex()].second)));
-
-	toggleall_ = toggleallCB->isChecked();
 }
 
 
@@ -462,14 +579,13 @@ bool GuiCharacter::initialiseParams(string const &)
 
 void GuiCharacter::dispatchParams()
 {
-	dispatch(FuncRequest(getLfun(), font_.toString(toggleall_)));
+	dispatch(FuncRequest(getLfun(), font_.toString(false)));
 }
 
 
 void GuiCharacter::saveSession(QSettings & settings) const
 {
 	Dialog::saveSession(settings);
-	settings.setValue(sessionKey() + "/toggleall", toggleallCB->isChecked());
 	settings.setValue(sessionKey() + "/autoapply", autoapplyCB->isChecked());
 }
 
@@ -478,8 +594,6 @@ void GuiCharacter::restoreSession()
 {
 	Dialog::restoreSession();
 	QSettings settings;
-	toggleallCB->setChecked(
-		settings.value(sessionKey() + "/toggleall").toBool());
 	autoapplyCB->setChecked(
 		settings.value(sessionKey() + "/autoapply").toBool());
 }
