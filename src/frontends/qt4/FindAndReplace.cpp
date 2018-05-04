@@ -67,6 +67,8 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 	// We don't want two cursors blinking.
 	find_work_area_->stopBlinkingCaret();
 	replace_work_area_->stopBlinkingCaret();
+	old_buffer_ = view_.documentBufferView() ? 
+	    &(view_.documentBufferView()->buffer()) : 0;
 }
 
 
@@ -605,8 +607,17 @@ bool FindAndReplace::initialiseParams(std::string const & params)
 
 void FindAndReplaceWidget::updateGUI()
 {
-	bool replace_enabled = view_.documentBufferView()
-		&& !view_.documentBufferView()->buffer().isReadonly();
+	BufferView * bv = view_.documentBufferView();
+	if (bv) {
+		if (old_buffer_ != &bv->buffer()) {
+				copy_params(*bv, find_work_area_->bufferView());
+				copy_params(*bv, replace_work_area_->bufferView());
+				old_buffer_ = &bv->buffer();
+		}
+	} else
+		old_buffer_ = 0;
+
+	bool const replace_enabled = bv && !bv->buffer().isReadonly();
 	replace_work_area_->setEnabled(replace_enabled);
 	replacePB->setEnabled(replace_enabled);
 	replaceallPB->setEnabled(replace_enabled);

@@ -40,6 +40,8 @@ public Q_SLOTS:
 private:
 	///
 	GuiView & view_;
+	///
+	Buffer * old_buffer_;
 
 	/// add a string to the combo if needed
 	void remember(std::string const & find, QComboBox & combo);
