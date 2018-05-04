@@ -426,31 +426,7 @@ status collapsed
 
 \begin_layout Standard
 Вот и всё.
- Вы можете вырез
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-'{
-\end_layout
-
-\end_inset
-
-а
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-ть и вставлять разделы, при этом все разделы документа будут автоматически
+ Вы можете выреза́ть и вставлять разделы, при этом все разделы документа будут автоматически
  перенумерованы.
  И если вы правильно (путём вставки 
 \emph on
@@ -794,31 +770,7 @@ status collapsed
 \begin_inset Quotes cld
 \end_inset
 
-лат
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-'{
-\end_layout
-
-\end_inset
-
-е
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-х
+лате́х
 \begin_inset Quotes crd
 \end_inset
 
@@ -2276,32 +2228,7 @@ em)
  что \SpecialChar LaTeX
  какое-то тянущееся вещество,— но вы 
 \emph on
-узн
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-
-\backslash
-'{
-\end_layout
-
-\end_inset
-
-а
-\begin_inset ERT
-status collapsed
-
-\begin_layout Plain Layout
-
-\emph on
-}
-\end_layout
-
-\end_inset
-
-ете
+узна́ете
 \emph default
 , как использовать \SpecialChar LyX
 .
@@ -2691,9 +2618,13 @@ literal "false"
 \begin_layout Enumerate
 Получите исходный код последней версии \SpecialChar LyX
  с 
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset CommandInset href
 LatexCommand href
-target "https://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master "
+target "https://www.lyx.org/trac/browser/lyxgit/lib/doc?rev=master"
 literal "false"
 
 \end_inset
