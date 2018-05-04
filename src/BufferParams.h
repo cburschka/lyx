@@ -546,6 +546,10 @@ public:
 	bool setLanguage(std::string const & lang);
 	///
 	void invalidateConverterCache() const;
+	/// Copies over some of the settings from \param bp,
+	/// namely the ones need by Advanced F&R. We don't want
+	/// to copy them all, e.g., not the default master.
+	void copyForAdvFR(BufferParams const & bp);
 
 private:
 	///
@@ -614,7 +618,6 @@ private:
 		static void destroy(Impl *);
 	};
 	support::copied_ptr<Impl, MemoryTraits> pimpl_;
-
 };
 
 } // namespace lyx

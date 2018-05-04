@@ -3516,4 +3516,16 @@ void BufferParams::invalidateConverterCache() const
 	pimpl_->isViewCacheValid = false;
 }
 
+
+// We shouldn't need to reset the params here, since anything
+// we need will be recopied.
+void BufferParams::copyForAdvFR(const BufferParams & bp)
+{
+	string const & lang = bp.language->lang();
+	setLanguage(lang);
+	layout_modules_ = bp.layout_modules_;
+	string const & doc_class = bp.documentClass().name();
+	setBaseClass(doc_class);
+}
+
 } // namespace lyx

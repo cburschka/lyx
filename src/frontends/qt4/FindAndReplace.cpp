@@ -526,16 +526,12 @@ void FindAndReplaceWidget::on_replaceallPB_clicked()
 }
 
 
-/** Copy selected elements from bv's BufferParams to the dest_bv's one
- ** We don't want to copy'em all, e.g., not the default master **/
+// Copy selected elements from bv's BufferParams to the dest_bv's
 static void copy_params(BufferView const & bv, BufferView & dest_bv) {
 	Buffer const & doc_buf = bv.buffer();
 	BufferParams const & doc_bp = doc_buf.params();
-	string const & lang = doc_bp.language->lang();
-	string const & doc_class = doc_bp.documentClass().name();
 	Buffer & dest_buf = dest_bv.buffer();
-	dest_buf.params().setLanguage(lang);
-	dest_buf.params().setBaseClass(doc_class);
+	dest_buf.params().copyForAdvFR(doc_bp);
 	dest_bv.makeDocumentClass();
 	dest_bv.cursor().current_font.setLanguage(doc_bp.language);
 }
