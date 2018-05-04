@@ -1662,6 +1662,7 @@ bool Text::backspacePos0(Cursor & cur)
 		plist.erase(lyx::next(plist.begin(), prevcur.pit()));
 		needsUpdate = true;
 	}
+	// FIXME: Do we really not want to allow this???
 	// Pasting is not allowed, if the paragraphs have different
 	// layouts. I think it is a real bug of all other
 	// word processors to allow it. It confuses the user.
