@@ -236,6 +236,13 @@ bool InsetInclude::isCompatibleCommand(string const & s)
 }
 
 
+bool InsetInclude::needsCProtection(bool const /*maintext*/, bool const fragile) const
+{
+	// We need to \cprotect all types in fragile context
+	return fragile;
+}
+
+
 void InsetInclude::doDispatch(Cursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action()) {

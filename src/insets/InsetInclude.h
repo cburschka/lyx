@@ -117,6 +117,9 @@ public:
 	static std::string defaultCommand() { return "include"; }
 	///
 	static bool isCompatibleCommand(std::string const & s);
+	///
+	bool needsCProtection(bool const maintext = false,
+			      bool const fragile = false) const;
 	//@}
 
 protected:
