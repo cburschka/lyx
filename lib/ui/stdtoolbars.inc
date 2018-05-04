@@ -87,18 +87,17 @@ ToolbarSet
 		Item "Toggle emphasis" "font-emph"
 		Item "Toggle noun" "font-noun"
 		Item "Apply last" "textstyle-apply"
+		DynamicMenu "dynamic-char-styles" "Character Styles"
 		Separator
 		Item "Insert math" "math-mode on"
 		Item "Insert graphics" "dialog-show-new-inset graphics"
 		TableInsert "Insert table"
+		DynamicMenu "dynamic-custom-insets" "Custom Insets"
 		Separator
 		Item "Toggle outline" "dialog-toggle toc"
 		Item "Toggle math toolbar" "toolbar-toggle math"
 		Item "Toggle table toolbar" "toolbar-toggle table"
 		Item "Toggle review toolbar" "toolbar-toggle review"
-		Separator
-		DynamicMenu "dynamic-custom-insets" "Custom Insets"
-		DynamicMenu "dynamic-char-styles" "Character Styles"
 	End
 
 	Toolbar "view/update" "View/Update"
