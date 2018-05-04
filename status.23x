@@ -143,6 +143,8 @@ What's new
 
 - Load hyperref with a suitable driver (bug 6418).
 
+- Fix LaTeX errors with nested ulem commands.
+
 - Recompile grandchildren when they have updated (bug 11112).
 
 - Output list of bibliography files in the order given in the dialog, rather
