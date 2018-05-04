@@ -67,6 +67,8 @@ FindAndReplaceWidget::FindAndReplaceWidget(GuiView & view)
 	// We don't want two cursors blinking.
 	find_work_area_->stopBlinkingCaret();
 	replace_work_area_->stopBlinkingCaret();
+	old_buffer_ = view_.documentBufferView() ? 
+	    &(view_.documentBufferView()->buffer()) : 0;
 }
 
 
@@ -526,16 +528,12 @@ void FindAndReplaceWidget::on_replaceallPB_clicked()
 }
 
 
-/** Copy selected elements from bv's BufferParams to the dest_bv's one
- ** We don't want to copy'em all, e.g., not the default master **/
+// Copy selected elements from bv's BufferParams to the dest_bv's
 static void copy_params(BufferView const & bv, BufferView & dest_bv) {
 	Buffer const & doc_buf = bv.buffer();
 	BufferParams const & doc_bp = doc_buf.params();
-	string const & lang = doc_bp.language->lang();
-	string const & doc_class = doc_bp.documentClass().name();
 	Buffer & dest_buf = dest_bv.buffer();
-	dest_buf.params().setLanguage(lang);
-	dest_buf.params().setBaseClass(doc_class);
+	dest_buf.params().copyForAdvFR(doc_bp);
 	dest_bv.makeDocumentClass();
 	dest_bv.cursor().current_font.setLanguage(doc_bp.language);
 }
@@ -609,8 +607,17 @@ bool FindAndReplace::initialiseParams(std::string const & params)
 
 void FindAndReplaceWidget::updateGUI()
 {
-	bool replace_enabled = view_.documentBufferView()
-		&& !view_.documentBufferView()->buffer().isReadonly();
+	BufferView * bv = view_.documentBufferView();
+	if (bv) {
+		if (old_buffer_ != &bv->buffer()) {
+				copy_params(*bv, find_work_area_->bufferView());
+				copy_params(*bv, replace_work_area_->bufferView());
+				old_buffer_ = &bv->buffer();
+		}
+	} else
+		old_buffer_ = 0;
+
+	bool const replace_enabled = bv && !bv->buffer().isReadonly();
 	replace_work_area_->setEnabled(replace_enabled);
 	replacePB->setEnabled(replace_enabled);
 	replaceallPB->setEnabled(replace_enabled);
