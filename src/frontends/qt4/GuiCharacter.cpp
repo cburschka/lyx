@@ -527,7 +527,8 @@ void GuiCharacter::paramsToDialog(Font const & font)
 		? "reset" : toqstr(font.language()->lang());
 	langCO->setCurrentIndex(findPos2nd(language, lang));
 	// disable the OK/Apply buttons, since we have no changes yet
-	bc().setValid(false);
+	if (!autoapplyCB->isChecked())
+		bc().setValid(false);
 }
 
 
