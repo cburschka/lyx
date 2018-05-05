@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-05-05 11:50+0200\n"
-"PO-Revision-Date: 2018-05-05 15:50+0100\n"
+"POT-Creation-Date: 2018-05-05 18:54+0200\n"
+"PO-Revision-Date: 2018-05-05 18:55+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -488,7 +488,7 @@ msgstr ""
 "Optionen des Biblatex-Bibliographiebefehls. Konsultieren Sie das Biblatex-"
 "Handbuch für Einzelheiten."
 
-#: src/frontends/qt4/ui/BibtexUi.ui:283 src/frontends/qt4/ui/CharacterUi.ui:376
+#: src/frontends/qt4/ui/BibtexUi.ui:283 src/frontends/qt4/ui/CharacterUi.ui:362
 #: src/frontends/qt4/ui/CitationUi.ui:453
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:183
 #: src/frontends/qt4/ui/CompareUi.ui:153 src/frontends/qt4/ui/DocumentUi.ui:67
@@ -660,7 +660,7 @@ msgstr "Zentriert"
 msgid "Right"
 msgstr "Rechts"
 
-#: src/frontends/qt4/ui/BoxUi.ui:299 src/frontends/qt4/ui/CharacterUi.ui:140
+#: src/frontends/qt4/ui/BoxUi.ui:299 src/frontends/qt4/ui/CharacterUi.ui:142
 #: src/frontends/qt4/ui/MathMatrixUi.ui:210
 msgid "Decoration"
 msgstr "Verzierung"
@@ -836,7 +836,7 @@ msgstr "&Undefinierte Zweige:"
 msgid "&Font:"
 msgstr "&Schrift:"
 
-#: src/frontends/qt4/ui/BulletsUi.ui:44 src/frontends/qt4/ui/CharacterUi.ui:112
+#: src/frontends/qt4/ui/BulletsUi.ui:44 src/frontends/qt4/ui/CharacterUi.ui:114
 #: src/frontends/qt4/ui/DelimiterUi.ui:100
 msgid "Si&ze:"
 msgstr "&Größe:"
@@ -965,69 +965,72 @@ msgstr "Diese Änderung ablehnen"
 msgid "&Reject"
 msgstr "&Ablehnen"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:23
+#: src/frontends/qt4/ui/CharacterUi.ui:25
 msgid "Font Properties"
 msgstr "Schrifteigenschaften"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:31
-#: src/frontends/qt4/ui/CharacterUi.ui:50
+#: src/frontends/qt4/ui/CharacterUi.ui:33
+#: src/frontends/qt4/ui/CharacterUi.ui:52
 msgid "Font family"
 msgstr "Schriftfamilie"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:34
+#: src/frontends/qt4/ui/CharacterUi.ui:36
 msgid "Fa&mily:"
 msgstr "&Familie:"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:57
-#: src/frontends/qt4/ui/CharacterUi.ui:76
+#: src/frontends/qt4/ui/CharacterUi.ui:59
+#: src/frontends/qt4/ui/CharacterUi.ui:78
 msgid "Font series"
 msgstr "Strichstärke"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:60
+#: src/frontends/qt4/ui/CharacterUi.ui:62
 msgid "&Series:"
 msgstr "S&trichstärke:"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:83
-#: src/frontends/qt4/ui/CharacterUi.ui:102
+#: src/frontends/qt4/ui/CharacterUi.ui:85
+#: src/frontends/qt4/ui/CharacterUi.ui:104
 msgid "Font shape"
 msgstr "Schriftschnitt"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:86
+#: src/frontends/qt4/ui/CharacterUi.ui:88
 msgid "S&hape:"
 msgstr "Sch&nitt:"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:109
-#: src/frontends/qt4/ui/CharacterUi.ui:128
+#: src/frontends/qt4/ui/CharacterUi.ui:111
+#: src/frontends/qt4/ui/CharacterUi.ui:130
 msgid "Font size"
 msgstr "Schriftgrad"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:151
-#: src/frontends/qt4/ui/CharacterUi.ui:170
+#: src/frontends/qt4/ui/CharacterUi.ui:153
+#: src/frontends/qt4/ui/CharacterUi.ui:172
 msgid "Font color"
 msgstr "Schriftfarbe"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:154
+#: src/frontends/qt4/ui/CharacterUi.ui:156
 msgid "&Color:"
 msgstr "F&arbe:"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:177
+#: src/frontends/qt4/ui/CharacterUi.ui:179
 msgid "U&nderlining:"
 msgstr "&Unterstreichung:"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:193
+#: src/frontends/qt4/ui/CharacterUi.ui:195
 msgid "Underlining of text"
 msgstr "Unterstreichung des Texts"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:200
+#: src/frontends/qt4/ui/CharacterUi.ui:202
 msgid "S&trikethrough:"
 msgstr "&Durchstreichung:"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:216
+#: src/frontends/qt4/ui/CharacterUi.ui:218
 msgid "Strike-through text"
 msgstr "Durchstreichung des Texts"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:258
-#: src/frontends/qt4/ui/CharacterUi.ui:277
+#: src/frontends/qt4/ui/CharacterUi.ui:250
+msgid "&Language"
+msgstr "S&prache"
+
+#: src/frontends/qt4/ui/CharacterUi.ui:262
 #: src/frontends/qt4/ui/ListingsUi.ui:339 lib/layouts/bicaption.module:15
 #: lib/layouts/europasscv.layout:340 lib/layouts/europasscv.layout:373
 #: lib/layouts/europasscv.layout:380 lib/layouts/europecv.layout:247
@@ -1037,46 +1040,39 @@ msgstr "Durchstreichung des Texts"
 msgid "Language"
 msgstr "Sprache"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:261
-#: src/frontends/qt4/ui/LanguageUi.ui:113
-#: src/frontends/qt4/ui/SpellcheckerUi.ui:27
-#: src/frontends/qt4/ui/ThesaurusUi.ui:22
-msgid "&Language:"
-msgstr "S&prache:"
-
-#: src/frontends/qt4/ui/CharacterUi.ui:288
+#: src/frontends/qt4/ui/CharacterUi.ui:272
 msgid "Semantic Markup"
 msgstr "Semantische Auszeichnung"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:294
+#: src/frontends/qt4/ui/CharacterUi.ui:278
 msgid "Semantic emphasizing (italic by default, but can be adapted)"
 msgstr ""
-"Semantische Hervorhebung (in der Voreinstellung kursiv, kann jedoch angepasst"
-" werden)"
+"Semantische Hervorhebung (in der Voreinstellung kursiv, kann jedoch "
+"angepasst werden)"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:297
+#: src/frontends/qt4/ui/CharacterUi.ui:281
 msgid "&Emphasized"
 msgstr "&Hervorgehoben"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:304
+#: src/frontends/qt4/ui/CharacterUi.ui:288
 msgid "Semantic markup of nouns (small caps by default, but can be adapted)"
 msgstr ""
-"Semantische Auszeichnung von Namen (in der Voreinstellung Kapitälchen, kann"
-" jedoch angepasst werden)"
+"Semantische Auszeichnung von Namen (in der Voreinstellung Kapitälchen, kann "
+"jedoch angepasst werden)"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:307
+#: src/frontends/qt4/ui/CharacterUi.ui:291
 msgid "&Noun"
 msgstr "&Eigenname"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:350
+#: src/frontends/qt4/ui/CharacterUi.ui:336
 msgid "Apply each change automatically"
 msgstr "Jede Änderung automatisch übernehmen"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:353
+#: src/frontends/qt4/ui/CharacterUi.ui:339
 msgid "Apply changes &immediately"
 msgstr "Änderungen &sofort übernehmen"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:386
+#: src/frontends/qt4/ui/CharacterUi.ui:372
 #: src/frontends/qt4/ui/DocumentUi.ui:77 src/frontends/qt4/ui/ExternalUi.ui:610
 #: src/frontends/qt4/ui/GraphicsUi.ui:792
 #: src/frontends/qt4/ui/InsetParamsUi.ui:128
@@ -1090,7 +1086,7 @@ msgstr "Änderungen &sofort übernehmen"
 msgid "&Apply"
 msgstr "&Übernehmen"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:396
+#: src/frontends/qt4/ui/CharacterUi.ui:382
 #: src/frontends/qt4/ui/GraphicsUi.ui:811
 #: src/frontends/qt4/ui/MathMatrixUi.ui:270 src/frontends/qt4/ui/NoteUi.ui:28
 #: src/frontends/qt4/ui/PhantomUi.ui:28
@@ -2501,6 +2497,12 @@ msgid ""
 msgstr ""
 "Geben Sie den Befehl zum Laden des Sprachpakets ein (Voreinstellung: "
 "\\usepackage{babel})"
+
+#: src/frontends/qt4/ui/LanguageUi.ui:113
+#: src/frontends/qt4/ui/SpellcheckerUi.ui:27
+#: src/frontends/qt4/ui/ThesaurusUi.ui:22
+msgid "&Language:"
+msgstr "S&prache:"
 
 #: src/frontends/qt4/ui/LanguageUi.ui:123
 msgid "Encoding"
@@ -18351,17 +18353,17 @@ msgid "Paragraph Break|B"
 msgstr "Absatzumbruch|b"
 
 #: lib/ui/stdcontext.inc:339 lib/ui/stdmenus.inc:106 lib/ui/stdtoolbars.inc:80
-#: src/Text3.cpp:1474 src/mathed/InsetMathNest.cpp:564
+#: src/Text3.cpp:1468 src/mathed/InsetMathNest.cpp:564
 msgid "Cut"
 msgstr "Ausschneiden"
 
 #: lib/ui/stdcontext.inc:340 lib/ui/stdmenus.inc:107 lib/ui/stdtoolbars.inc:81
-#: src/Text3.cpp:1479 src/mathed/InsetMathNest.cpp:573
+#: src/Text3.cpp:1473 src/mathed/InsetMathNest.cpp:573
 msgid "Copy"
 msgstr "Kopieren"
 
 #: lib/ui/stdcontext.inc:341 lib/ui/stdmenus.inc:108 lib/ui/stdtoolbars.inc:82
-#: src/Text3.cpp:1420 src/mathed/InsetMathGrid.cpp:1582
+#: src/Text3.cpp:1414 src/mathed/InsetMathGrid.cpp:1582
 #: src/mathed/InsetMathNest.cpp:543
 msgid "Paste"
 msgstr "Einfügen"
@@ -25915,14 +25917,14 @@ msgstr ""
 msgid "Document class not available"
 msgstr "Die Dokumentklasse ist nicht verfügbar"
 
-#: src/BufferParams.cpp:2157 src/Encoding.cpp:246 src/Paragraph.cpp:2795
+#: src/BufferParams.cpp:2157 src/Encoding.cpp:246 src/Paragraph.cpp:2792
 #: src/frontends/qt4/LaTeXHighlighter.cpp:122 src/insets/InsetListings.cpp:234
 #: src/insets/InsetListings.cpp:242 src/insets/InsetListings.cpp:265
 #: src/mathed/MathExtern.cpp:1483
 msgid "LyX Warning: "
 msgstr "LyX-Warnung: "
 
-#: src/BufferParams.cpp:2158 src/Encoding.cpp:247 src/Paragraph.cpp:2796
+#: src/BufferParams.cpp:2158 src/Encoding.cpp:247 src/Paragraph.cpp:2793
 #: src/insets/InsetListings.cpp:235 src/insets/InsetListings.cpp:243
 #: src/mathed/MathExtern.cpp:1484
 msgid "uncodable character"
@@ -26697,11 +26699,11 @@ msgstr "Für dieses &Dokument immer erlauben"
 msgid "&Always run for this document"
 msgstr "Für dieses &Dokument immer ausführen"
 
-#: src/Converter.cpp:445 src/Converter.cpp:688 src/Converter.cpp:717
+#: src/Converter.cpp:445 src/Converter.cpp:690 src/Converter.cpp:719
 msgid "Converter killed"
 msgstr "Konverter getötet"
 
-#: src/Converter.cpp:446 src/Converter.cpp:689 src/Converter.cpp:718
+#: src/Converter.cpp:446 src/Converter.cpp:691 src/Converter.cpp:720
 #, c-format
 msgid ""
 "The following converter was killed by the user.\n"
@@ -26710,8 +26712,8 @@ msgstr ""
 "Der folgende Konverter wurde vom Benutzer getötet:\n"
 " %1$s\n"
 
-#: src/Converter.cpp:465 src/Converter.cpp:746 src/Converter.cpp:769
-#: src/Converter.cpp:812
+#: src/Converter.cpp:465 src/Converter.cpp:748 src/Converter.cpp:771
+#: src/Converter.cpp:814
 msgid "Cannot convert file"
 msgstr "Die Datei kann nicht konvertiert werden"
 
@@ -26725,11 +26727,11 @@ msgstr ""
 "konvertieren.\n"
 "Definieren Sie einen Konverter in den Einstellungen."
 
-#: src/Converter.cpp:569 src/frontends/qt4/GuiDocument.cpp:1687
+#: src/Converter.cpp:571 src/frontends/qt4/GuiDocument.cpp:1687
 msgid "Pygments driver command not found!"
 msgstr "Pygments-Treiberbefehl nicht gefunden!"
 
-#: src/Converter.cpp:570 src/frontends/qt4/GuiDocument.cpp:1688
+#: src/Converter.cpp:572 src/frontends/qt4/GuiDocument.cpp:1688
 msgid ""
 "The driver command necessary to use the minted package\n"
 "(pygmentize) has not been found. Make sure you have\n"
@@ -26751,15 +26753,15 @@ msgstr ""
 "\n"
 "Ersetzen Sie dabei ,Treiber` durch den Namen des Treibers."
 
-#: src/Converter.cpp:664 src/Format.cpp:722 src/Format.cpp:793
+#: src/Converter.cpp:666 src/Format.cpp:722 src/Format.cpp:793
 msgid "Executing command: "
 msgstr "Befehl wird ausgeführt: "
 
-#: src/Converter.cpp:729
+#: src/Converter.cpp:731
 msgid "Process Killed"
 msgstr "Prozess getötet"
 
-#: src/Converter.cpp:730
+#: src/Converter.cpp:732
 #, c-format
 msgid ""
 "The conversion process was killed while running:\n"
@@ -26768,11 +26770,11 @@ msgstr ""
 "Der Konvertierungsprozess wurde getötet, während folgender Prozess lief:\n"
 "%1$s"
 
-#: src/Converter.cpp:735
+#: src/Converter.cpp:737
 msgid "Process Timed Out"
 msgstr "Prozesszeit abgelaufen"
 
-#: src/Converter.cpp:736
+#: src/Converter.cpp:738
 #, c-format
 msgid ""
 "The conversion process:\n"
@@ -26783,15 +26785,15 @@ msgstr ""
 "wurde wegen Zeitüberschreitung abgebrochen:\n"
 "%1$s"
 
-#: src/Converter.cpp:741
+#: src/Converter.cpp:743
 msgid "Build errors"
 msgstr "Fehler bei der Erstellung"
 
-#: src/Converter.cpp:742
+#: src/Converter.cpp:744
 msgid "There were errors during the build process."
 msgstr "Während des Erstellungsprozesses sind Fehler aufgetreten."
 
-#: src/Converter.cpp:747
+#: src/Converter.cpp:749
 #, c-format
 msgid ""
 "An error occurred while running:\n"
@@ -26801,36 +26803,36 @@ msgstr ""
 "%1$s\n"
 "ist ein Fehler aufgetreten"
 
-#: src/Converter.cpp:770
+#: src/Converter.cpp:772
 #, c-format
 msgid "Could not move a temporary directory from %1$s to %2$s."
 msgstr ""
 "Ein temporäres Verzeichnis konnte nicht von %1$s nach %2$s verschoben werden."
 
-#: src/Converter.cpp:814
+#: src/Converter.cpp:816
 #, c-format
 msgid "Could not copy a temporary file from %1$s to %2$s."
 msgstr "Eine temporäre Datei konnte nicht von %1$s nach %2$s kopiert werden."
 
-#: src/Converter.cpp:815
+#: src/Converter.cpp:817
 #, c-format
 msgid "Could not move a temporary file from %1$s to %2$s."
 msgstr ""
 "Eine temporäre Datei konnte nicht von %1$s nach %2$s verschoben werden."
 
-#: src/Converter.cpp:857
+#: src/Converter.cpp:859
 msgid "Running LaTeX..."
 msgstr "LaTeX wird ausgeführt..."
 
-#: src/Converter.cpp:874
+#: src/Converter.cpp:876
 msgid "Export canceled"
 msgstr "Export abgebrochen"
 
-#: src/Converter.cpp:875
+#: src/Converter.cpp:877
 msgid "The export process was terminated by the user."
 msgstr "Der Export-Prozess wurde vom Benutzer beendet."
 
-#: src/Converter.cpp:889
+#: src/Converter.cpp:891
 #, c-format
 msgid ""
 "LaTeX did not run successfully. Additionally, LyX could not locate the LaTeX "
@@ -26839,11 +26841,11 @@ msgstr ""
 "LaTeX wurde nicht erfolgreich ausgeführt. Außerdem konnte LyX die LaTeX-"
 "Protokolldatei %1$s nicht finden."
 
-#: src/Converter.cpp:892 src/Converter.cpp:899
+#: src/Converter.cpp:894 src/Converter.cpp:901
 msgid "LaTeX failed"
 msgstr "LaTeX ist fehlgeschlagen"
 
-#: src/Converter.cpp:895
+#: src/Converter.cpp:897
 #, c-format
 msgid ""
 "The external program\n"
@@ -26856,11 +26858,11 @@ msgstr ""
 "wurde mit einem Fehler beendet. Es wird empfohlen, dass Sie die\n"
 "Ursache des Programmfehlers beheben (prüfen Sie die Fehlermeldungen). "
 
-#: src/Converter.cpp:901
+#: src/Converter.cpp:903
 msgid "Output is empty"
 msgstr "Die Ausgabe ist leer"
 
-#: src/Converter.cpp:902
+#: src/Converter.cpp:904
 msgid "No output file was generated."
 msgstr "Es wurde keine Ausgabedatei erzeugt."
 
@@ -28163,15 +28165,15 @@ msgstr "Zur gespeicherten Version des Dokuments zurückkehren?"
 msgid "&Revert"
 msgstr "&Wiederherstellen"
 
-#: src/Paragraph.cpp:2130
+#: src/Paragraph.cpp:2127
 msgid "Senseless with this layout!"
 msgstr "Für dieses Format nicht relevant!"
 
-#: src/Paragraph.cpp:2191
+#: src/Paragraph.cpp:2188
 msgid "Alignment not permitted"
 msgstr "Ausrichtung nicht erlaubt"
 
-#: src/Paragraph.cpp:2192
+#: src/Paragraph.cpp:2189
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
 "Setting to default."
@@ -28292,27 +28294,27 @@ msgstr "Bereits im Regexp-Modus"
 msgid "Regexp editor mode"
 msgstr "Regexp-Editor-Modus"
 
-#: src/Text3.cpp:1540
+#: src/Text3.cpp:1534
 msgid "Layout "
 msgstr "Format "
 
-#: src/Text3.cpp:1541
+#: src/Text3.cpp:1535
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/Text3.cpp:2214 src/frontends/qt4/GuiApplication.cpp:1708
+#: src/Text3.cpp:2208 src/frontends/qt4/GuiApplication.cpp:1708
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
-#: src/Text3.cpp:2366 src/Text3.cpp:2378
+#: src/Text3.cpp:2360 src/Text3.cpp:2372
 msgid "Character set"
 msgstr "Zeichensatz"
 
-#: src/Text3.cpp:2531
+#: src/Text3.cpp:2525
 msgid "Path to thesaurus directory not set!"
 msgstr "Pfad zum Thesaurus-Wörterbuch nicht festlegt!"
 
-#: src/Text3.cpp:2532
+#: src/Text3.cpp:2526
 msgid ""
 "The path to the thesaurus directory has not been specified.\n"
 "The thesaurus is not functional.\n"
@@ -28324,7 +28326,7 @@ msgstr ""
 "Im Benutzerhandbuch, Abschnitt 6.15.11, finden Sie Hinweise,\n"
 "um den Thesaurus einzurichten."
 
-#: src/Text3.cpp:2599 src/Text3.cpp:2610
+#: src/Text3.cpp:2593 src/Text3.cpp:2604
 msgid "Paragraph layout set"
 msgstr "Absatzformat festgelegt"
 
