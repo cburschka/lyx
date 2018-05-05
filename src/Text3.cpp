@@ -346,12 +346,6 @@ static bool doInsertInset(Cursor & cur, Text * text,
 }
 
 
-string const freefont2string()
-{
-	return freefont.toString(toggleall);
-}
-
-
 /// the type of outline operation
 enum OutlineOp {
 	OutlineUp, // Move this header with text down

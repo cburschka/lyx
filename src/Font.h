@@ -132,11 +132,6 @@ bool operator!=(Font const & font1, Font const & font2)
 	return !(font1 == font2);
 }
 
-/** Returns the current freefont, encoded as a std::string to be passed to the
- *  frontends. Implemented in Text3.cpp.
- */
-std::string const freefont2string();
-
 } // namespace lyx
 
 #endif
