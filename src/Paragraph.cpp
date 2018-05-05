@@ -913,7 +913,7 @@ int Paragraph::Private::latexSurrogatePair(BufferParams const & bparams,
 	if (runparams.local_font)
 		fontenc = runparams.local_font->language()->fontenc(bparams);
 	else
-		fontenc = runparams.main_fontenc;
+		fontenc = bparams.language->fontenc(bparams);
 	docstring scriptmacro;
 	docstring cb;
 	if (script == "textgreek" || script == "textcyrillic") {
@@ -1395,10 +1395,7 @@ void Paragraph::Private::latexSpecialChar(otexstream & os,
 			}
 		}
 		string fontenc;
-		if (running_font.language()->lang() == bparams.language->lang())
-			fontenc = runparams.main_fontenc;
-		else
-			fontenc = running_font.language()->fontenc(bparams);
+		fontenc = running_font.language()->fontenc(bparams);
 		// "Script chars" need to embraced in \textcyrillic and \textgreek notwithstanding
 		// whether they are encodable or not (it only depends on the font encoding)
 		if (!runparams.isFullUnicode() && Encodings::isKnownScriptChar(c, script)) {
