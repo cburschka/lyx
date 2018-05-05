@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-05-03 08:32+0200\n"
-"PO-Revision-Date: 2018-05-03 06:38+0000\n"
+"POT-Creation-Date: 2018-05-05 11:29+0200\n"
+"PO-Revision-Date: 2018-05-05 09:52+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -884,10 +884,6 @@ msgstr "&Odmietnuť"
 msgid "Font family"
 msgstr "Rodina písma"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:47
-msgid "&Family:"
-msgstr "&Rodina:"
-
 #: src/frontends/qt4/ui/CharacterUi.ui:65
 #: src/frontends/qt4/ui/CharacterUi.ui:72
 msgid "Font shape"
@@ -933,35 +929,10 @@ msgstr "&Séria:"
 msgid "&Color:"
 msgstr "&Farba:"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:197
-msgid "Never Toggled"
-msgstr "Nikdy neprepnuté"
-
 #: src/frontends/qt4/ui/CharacterUi.ui:209
 #: src/frontends/qt4/ui/CharacterUi.ui:230
 msgid "Font size"
 msgstr "Veľkosť písma"
-
-#: src/frontends/qt4/ui/CharacterUi.ui:240
-#: src/frontends/qt4/ui/CharacterUi.ui:273
-msgid "Other font settings"
-msgstr "Ďalšie nastavenie písma"
-
-#: src/frontends/qt4/ui/CharacterUi.ui:243
-msgid "Always Toggled"
-msgstr "Vždy prepnuté"
-
-#: src/frontends/qt4/ui/CharacterUi.ui:255
-msgid "&Misc:"
-msgstr "Rô&zne:"
-
-#: src/frontends/qt4/ui/CharacterUi.ui:295
-msgid "toggle font on all of the above"
-msgstr "Prepnúť všetky vyššie uvedené vlastnosti písma"
-
-#: src/frontends/qt4/ui/CharacterUi.ui:298
-msgid "&Toggle all"
-msgstr "Vš&etko prepnúť"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:305
 msgid "Apply each change automatically"
@@ -2144,9 +2115,17 @@ msgstr "Upraviť súbor"
 msgid "&Edit"
 msgstr "&Upraviť"
 
+#: src/frontends/qt4/ui/CharacterUi.ui:294
+msgid "&Emphasized"
+msgstr "&Zvýraznenie"
+
 #: src/frontends/qt4/ui/IncludeUi.ui:136
 msgid "Underline spaces in generated output"
 msgstr "Podčiarknuť medzery v generovanom výstupe"
+
+#: src/frontends/qt4/ui/CharacterUi.ui:193
+msgid "Underlining of text"
+msgstr "Podčiarknutie textu"
 
 #: src/frontends/qt4/ui/IncludeUi.ui:139
 msgid "&Mark spaces in output"
@@ -2509,6 +2488,10 @@ msgstr "Na ktorej strane by mali byť vytlačené čísla riadkov?"
 msgid "S&tep:"
 msgstr "K&rok:"
 
+#: src/frontends/qt4/ui/CharacterUi.ui:200
+msgid "S&trikethrough:"
+msgstr "Pr&eškrtnutie:"
+
 #: src/frontends/qt4/ui/ListingsUi.ui:132
 msgid "Difference between two numbered lines"
 msgstr "Odstup v číslovaní riadkov"
@@ -2537,6 +2520,10 @@ msgstr "Základná veľkosť písma"
 #: src/frontends/qt4/ui/ListingsUi.ui:231
 msgid "Font Famil&y:"
 msgstr "Rodi&na písma:"
+
+#: src/frontends/qt4/ui/CharacterUi.ui:23
+msgid "Font Properties"
+msgstr "Vlastnosti Písma"
 
 #: src/frontends/qt4/ui/ListingsUi.ui:252
 msgid "The content's base font style"
@@ -3218,10 +3205,18 @@ msgstr "&Najdlhšie návestie"
 msgid "Line &spacing"
 msgstr "Rozst&up riadkov"
 
-#: src/frontends/qt4/ui/ParagraphUi.ui:121 src/Text.cpp:1936
-#: src/frontends/qt4/GuiDocument.cpp:749
+#: src/frontends/qt4/ui/ParagraphUi.ui:121 src/Text.cpp:1937
+#: src/frontends/qt4/GuiDocument.cpp:779
 msgid "Single"
 msgstr "Jednoduchý"
+
+#: src/frontends/qt4/GuiCharacter.cpp:99
+msgid "Single[[strikethrough]]"
+msgstr "Jednoduché"
+
+#: src/frontends/qt4/GuiCharacter.cpp:86
+msgid "Single[[underlining]]"
+msgstr "Jednoduché"
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:126
 msgid "1.5"
@@ -3826,6 +3821,10 @@ msgstr "Pre ni&e-TeX fonty:"
 msgid "With &TeX fonts:"
 msgstr "Pre &TeX fonty:"
 
+#: src/frontends/qt4/GuiCharacter.cpp:100
+msgid "With /"
+msgstr "S /"
+
 #: src/frontends/qt4/ui/PrefFileformatsUi.ui:294
 msgid "&Japanese:"
 msgstr "&Japonsky:"
@@ -4326,6 +4325,10 @@ msgstr "&Malé:"
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:377
 msgid "&Normal:"
 msgstr "No&rmálne:"
+
+#: src/frontends/qt4/ui/CharacterUi.ui:301
+msgid "&Noun"
+msgstr "&Meno"
 
 #: src/frontends/qt4/ui/PrefScreenFontsUi.ui:387
 msgid "&Tiny:"
@@ -13645,6 +13648,10 @@ msgstr "Pravý súhrn"
 msgid "DoubleListItem"
 msgstr "ZáznamDvojitáListina"
 
+#: src/frontends/qt4/GuiCharacter.cpp:87
+msgid "Double[[underlining]]"
+msgstr "Dvojité"
+
 #: lib/layouts/moderncv.layout:457
 msgid "Double List Item:"
 msgstr "Záznam pre dvojitú listinu:"
@@ -18819,6 +18826,21 @@ msgstr "Prostý Text, Riadky Spojiť|S"
 msgid "Selection|S"
 msgstr "Výber|V"
 
+#: src/frontends/qt4/ui/CharacterUi.ui:288
+msgid "Semantic Markup"
+msgstr "Sémantické Značkovanie"
+
+#: src/frontends/qt4/ui/CharacterUi.ui:294
+msgid "Semantic emphasizing (italic by default, but can be adapted)"
+msgstr ""
+"Sémantické zvýraznenie (štandard je kurzíva, ale môže byť prispôsobené)"
+
+#: src/frontends/qt4/ui/CharacterUi.ui:304
+msgid "Semantic markup of nouns (small caps by default, but can be adapted)"
+msgstr ""
+"Sémantické označenie mien (štandard sú malé kapitálky, ale môže byť "
+"prispôsobené)"
+
 #: lib/ui/stdmenus.inc:169
 msgid "Selection, Join Lines|i"
 msgstr "Výber, Spojiť Riadky|b"
@@ -20556,6 +20578,10 @@ msgstr "Kurzíva\t\\mathit"
 #: lib/ui/stdtoolbars.inc:413
 msgid "Typewriter\t\\mathtt"
 msgstr "Strojopis\t\\mathtt"
+
+#: src/frontends/qt4/ui/CharacterUi.ui:177
+msgid "U&nderlining:"
+msgstr "Po&dčiarnutie:"
 
 #: lib/ui/stdtoolbars.inc:414
 msgid "Blackboard\t\\mathbb"
@@ -23789,6 +23815,18 @@ msgstr "Dentálna mľaskavka"
 msgid "(Post)alveolar click"
 msgstr "Alveolárna mľaskavka"
 
+#: src/frontends/qt4/GuiCharacter.cpp:190
+msgid "(Without)[[color]]"
+msgstr "(Bez)"
+
+#: src/frontends/qt4/GuiCharacter.cpp:98
+msgid "(Without)[[strikethrough]]"
+msgstr "(Bez)"
+
+#: src/frontends/qt4/GuiCharacter.cpp:85
+msgid "(Without)[[underlining]]"
+msgstr "(Bez)"
+
 #: lib/ui/stdtoolbars.inc:1336
 msgid "Palatoalveolar click"
 msgstr "Palatálna mľaskavka"
@@ -24459,6 +24497,10 @@ msgstr "tgo|Tgif"
 #: lib/configure.py:609
 msgid "FIG"
 msgstr "FIG"
+
+#: src/frontends/qt4/ui/CharacterUi.ui:34
+msgid "Fa&mily:"
+msgstr "&Rodina:"
 
 #: lib/configure.py:612
 msgid "DIA"
@@ -26795,6 +26837,10 @@ msgstr "Podčiarknuť %1$s, "
 msgid "Strike out %1$s, "
 msgstr "Preškrtnúť %1$s, "
 
+#: src/frontends/qt4/ui/CharacterUi.ui:216
+msgid "Strike-through text"
+msgstr "Preškrtnutý text"
+
 #: src/Font.cpp:172
 #, c-format
 msgid "Cross out %1$s, "
@@ -29081,30 +29127,6 @@ msgstr "Malé kapitálky"
 #: src/frontends/qt4/GuiCharacter.cpp:228
 msgid "Reset"
 msgstr "Vynulovať"
-
-#: src/frontends/qt4/GuiCharacter.cpp:85
-msgid "Underbar"
-msgstr "Podčiarknuté"
-
-#: src/frontends/qt4/GuiCharacter.cpp:86
-msgid "Double underbar"
-msgstr "Dvojito podčiarknuté"
-
-#: src/frontends/qt4/GuiCharacter.cpp:87
-msgid "Wavy underbar"
-msgstr "Vlnovkou podčiarknuté"
-
-#: src/frontends/qt4/GuiCharacter.cpp:88
-msgid "Strike out"
-msgstr "Preškrtnuté"
-
-#: src/frontends/qt4/GuiCharacter.cpp:89
-msgid "Cross out"
-msgstr "Šikmo začiarkované"
-
-#: src/frontends/qt4/GuiCharacter.cpp:180
-msgid "No color"
-msgstr "Bez farby"
 
 #: src/frontends/qt4/GuiCharacter.cpp:199
 msgid "Text Style"
@@ -33629,6 +33651,10 @@ msgstr ""
 msgid "Warning!"
 msgstr "Varovanie!"
 
+#: src/frontends/qt4/GuiCharacter.cpp:88
+msgid "Wavy"
+msgstr "Vlnovka"
+
 #: src/support/lassert.cpp:80
 msgid ""
 "There has been an error with this document.\n"
@@ -33680,6 +33706,42 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Other font settings"
+#~ msgstr "Ďalšie nastavenie písma"
+
+#~ msgid "No color"
+#~ msgstr "Bez farby"
+
+#~ msgid "&Misc:"
+#~ msgstr "Rô&zne:"
+
+#~ msgid "&Toggle all"
+#~ msgstr "Vš&etko prepnúť"
+
+#~ msgid "Always Toggled"
+#~ msgstr "Vždy prepnuté"
+
+#~ msgid "Cross out"
+#~ msgstr "Šikmo začiarkované"
+
+#~ msgid "Double underbar"
+#~ msgstr "Dvojito podčiarknuté"
+
+#~ msgid "Never Toggled"
+#~ msgstr "Nikdy neprepnuté"
+
+#~ msgid "Strike out"
+#~ msgstr "Preškrtnuté"
+
+#~ msgid "Underbar"
+#~ msgstr "Podčiarknuté"
+
+#~ msgid "Wavy underbar"
+#~ msgstr "Vlnovkou podčiarknuté"
+
+#~ msgid "toggle font on all of the above"
+#~ msgstr "Prepnúť všetky vyššie uvedené vlastnosti písma"
 
 #~ msgid "Cannot index more than one paragraph!"
 #~ msgstr "Nie je možné indexovať viac ako jeden odstavec!"
@@ -38219,3 +38281,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "The directory path to the document cannot contain spaces."
 #~ msgstr "Cesta k dokumentu nesmie obsahovať medzery."
+
+#~ msgid "&Family:"
+#~ msgstr "&Rodina:"
