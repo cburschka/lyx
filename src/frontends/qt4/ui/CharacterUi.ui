@@ -190,7 +190,7 @@
            </sizepolicy>
           </property>
           <property name="toolTip">
-           <string>Other font settings</string>
+           <string>Underlining of text</string>
           </property>
          </widget>
         </item>
@@ -213,7 +213,7 @@
            </sizepolicy>
           </property>
           <property name="toolTip">
-           <string>Other font settings</string>
+           <string>Strike-through text</string>
           </property>
          </widget>
         </item>
@@ -290,6 +290,9 @@
      <layout class="QGridLayout" name="gridLayout_5">
       <item row="0" column="0">
        <widget class="QCheckBox" name="emphCB">
+        <property name="toolTip">
+         <string>Semantic emphasizing (italic by default, but can be adapted)</string>
+        </property>
         <property name="text">
          <string>&amp;Emphasized</string>
         </property>
@@ -297,6 +300,9 @@
       </item>
       <item row="0" column="1">
        <widget class="QCheckBox" name="nounCB">
+        <property name="toolTip">
+         <string>Semantic markup of nouns (small caps by default, but can be adapted)</string>
+        </property>
         <property name="text">
          <string>&amp;Noun</string>
         </property>
