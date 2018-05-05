@@ -219,8 +219,6 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 
 	connect(ulineCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(strikeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
-	connect(emphCB, SIGNAL(clicked(bool)), this, SLOT(change_adaptor()));
-	connect(nounCB, SIGNAL(clicked(bool)), this, SLOT(change_adaptor()));
 	connect(sizeCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(familyCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
 	connect(seriesCO, SIGNAL(activated(int)), this, SLOT(change_adaptor()));
