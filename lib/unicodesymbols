@@ -441,10 +441,10 @@
 0x0215 "\\textdoublegrave{u}"     "tipa" "force,mathalpha" "\\dgrave{u}" "tipasymb,dgrave" # LATIN SMALL LETTER U WITH DOUBLE GRAVE
 0x0216 "\\textroundcap{U}"        "tipa" "force,mathalpha" "\\rcap{U}" "tipasymb,rcap" # LATIN CAPITAL LETTER U WITH INVERTED BREVE
 0x0217 "\\textroundcap{u}"        "tipa" "force,mathalpha" "\\rcap{u}" "tipasymb,rcap" # LATIN SMALL LETTER U WITH INVERTED BREVE
-0x0218 "\\textcommabelow{S}"      "textcommabelow" "" # LATIN CAPITAL LETTER S WITH COMMA BELOW
-0x0219 "\\textcommabelow{s}"      "textcommabelow" "" # LATIN SMALL LETTER S WITH COMMA BELOW
-0x021a "\\textcommabelow{T}"      "textcommabelow" "" # LATIN CAPITAL LETTER T WITH COMMA BELOW
-0x021b "\\textcommabelow{t}"      "textcommabelow" "" # LATIN SMALL LETTER T WITH COMMA BELOW
+0x0218 "\\textcommabelow{S}"      "textcommabelow!=utf8;iso8859-16" "" # LATIN CAPITAL LETTER S WITH COMMA BELOW
+0x0219 "\\textcommabelow{s}"      "textcommabelow!=utf8;iso8859-16" "" # LATIN SMALL LETTER S WITH COMMA BELOW
+0x021a "\\textcommabelow{T}"      "textcommabelow!=utf8;iso8859-16" "" # LATIN CAPITAL LETTER T WITH COMMA BELOW
+0x021b "\\textcommabelow{t}"      "textcommabelow!=utf8;iso8859-16" "" # LATIN SMALL LETTER T WITH COMMA BELOW
 #0x021c ""                         "" "" # LATIN CAPITAL LETTER YOGH
 #0x021d ""                         "" "" # LATIN SMALL LETTER YOGH
 0x021e "\\v{H}"                   "" "mathalpha,force=utf8" "\\check{H}" # LATIN CAPITAL LETTER H WITH CARON
@@ -719,7 +719,7 @@
 0x0323 "\\d"                      "" "combining,force" # COMBINING DOT BELOW
 0x0324 "\\textsubumlaut"          "tipa" "combining,force" # COMBINING DIAERESIS BELOW
 0x0325 "\\textsubring"            "tipa" "combining,force" # COMBINING RING BELOW
-0x0326 "\\textcommabelow"         "textcommabelow" "combining,force" # COMBINING COMMA BELOW
+0x0326 "\\textcommabelow"         "textcommabelow!=utf8;iso8859-16" "combining,force" # COMBINING COMMA BELOW
 0x0327 "\\c"                      "" "combining,force" # COMBINING CEDILLA
 0x0328 "\\k"                      "" "combining,force" # COMBINING OGONEK
 0x0329 "\\textsyllabic"           "tipa" "combining,force" # COMBINING VERTICAL LINE BELOW
