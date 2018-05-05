@@ -476,19 +476,21 @@ Converters::RetVal Converters::convert(Buffer const * buffer,
 	runparams.flavor = getFlavor(edgepath, buffer);
 
 	if (buffer) {
+		BufferParams const & bp = buffer->params();
 		runparams.use_japanese =
-			(buffer->params().bufferFormat() == "latex"
-			 || suffixIs(buffer->params().bufferFormat(), "-ja"))
-			&& buffer->params().encoding().package() == Encoding::japanese;
-		runparams.use_indices = buffer->params().use_indices;
-		runparams.bibtex_command = buffer->params().bibtexCommand();
-		runparams.index_command = (buffer->params().index_command == "default") ?
-			string() : buffer->params().index_command;
-		runparams.document_language = buffer->params().language->babel();
-		runparams.main_fontenc = buffer->params().main_font_encoding();
-		runparams.only_childbibs = !buffer->params().useBiblatex()
-				&& !buffer->params().useBibtopic()
-				&& buffer->params().multibib == "child";
+			(bp.bufferFormat() == "latex"
+			 || suffixIs(bp.bufferFormat(), "-ja"))
+			&& bp.encoding().package() == Encoding::japanese;
+		runparams.use_indices = bp.use_indices;
+		runparams.bibtex_command = bp.bibtexCommand();
+		runparams.index_command = (bp.index_command == "default") ?
+			string() : bp.index_command;
+		runparams.document_language = bp.language->babel();
+		// Some macros rely on font encoding
+		runparams.main_fontenc = bp.main_font_encoding();
+		runparams.only_childbibs = !bp.useBiblatex()
+				&& !bp.useBibtopic()
+				&& bp.multibib == "child";
 	}
 
 	// Some converters (e.g. lilypond) can only output files to the
