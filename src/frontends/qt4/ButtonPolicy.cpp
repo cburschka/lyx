@@ -595,7 +595,6 @@ void ButtonPolicy::Private::initOkApplyCancelAutoReadOnly()
 	state_machine_[INVALID][SMI_INVALID] = INVALID;
 	state_machine_[INVALID][SMI_READ_WRITE] = INVALID;
 	state_machine_[INVALID][SMI_VALID] = VALID;
-	state_machine_[INVALID][SMI_OKAY] = INITIAL;
 	state_machine_[INVALID][SMI_RESTORE] = INITIAL;
 	state_machine_[INVALID][SMI_READ_ONLY] = RO_INVALID;
 	state_machine_[INVALID][SMI_AUTOAPPLY] = AUTOAPPLY_CHANGED;
@@ -609,6 +608,7 @@ void ButtonPolicy::Private::initOkApplyCancelAutoReadOnly()
 	state_machine_[APPLIED][SMI_AUTOAPPLY] = AUTOAPPLY_INITIAL;
 	// State::AUTOAPPLY_INITIAL
 	state_machine_[AUTOAPPLY_INITIAL][SMI_AUTOAPPLY] = APPLIED;
+	state_machine_[AUTOAPPLY_INITIAL][SMI_APPLY] = AUTOAPPLY_INITIAL;
 	state_machine_[AUTOAPPLY_INITIAL][SMI_READ_ONLY] = RO_AUTOAPPLY;
 	state_machine_[AUTOAPPLY_INITIAL][SMI_VALID] = AUTOAPPLY_CHANGED;
 	state_machine_[AUTOAPPLY_INITIAL][SMI_INVALID] = AUTOAPPLY_CHANGED;

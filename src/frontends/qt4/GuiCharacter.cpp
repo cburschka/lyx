@@ -526,9 +526,6 @@ void GuiCharacter::paramsToDialog(Font const & font)
 	QString const lang = (font.language() == reset_language)
 		? "reset" : toqstr(font.language()->lang());
 	langCO->setCurrentIndex(findPos2nd(language, lang));
-	// disable the OK/Apply buttons, since we have no changes yet
-	if (!autoapplyCB->isChecked())
-		bc().setValid(false);
 }
 
 
@@ -568,6 +565,9 @@ bool GuiCharacter::initialiseParams(string const &)
 		setButtonsValid(true);
 
 	paramsToDialog(font_);
+	// Make sure that the bc is in the INITIAL state
+	if (bc().policy().buttonStatus(ButtonPolicy::OKAY))
+		bc().restore();
 	return true;
 }
 
