@@ -271,13 +271,6 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	setWindowFlags(Qt::Tool);
 	autoapplyCB->setChecked(true);
 #endif
-
-// FIXME: hack to work around resizing bug in Qt >= 4.2
-// bug verified with Qt 4.2.{0-3} (JSpitzm)
-#if QT_VERSION >= 0x040200
-	// qt resizes the comboboxes only after show(), so ...
-	QDialog::show();
-#endif
 }
 
 
