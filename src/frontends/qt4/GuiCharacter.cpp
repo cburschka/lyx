@@ -83,8 +83,8 @@ static QList<BarPair> barData()
 	QList<BarPair> bars;
 	bars << BarPair(qt_("No change"), IGNORE);
 	bars << BarPair(qt_("(Without)[[underlining]]"), NONE);
-	bars << BarPair(qt_("Single"), UNDERBAR);
-	bars << BarPair(qt_("Double"), UULINE);
+	bars << BarPair(qt_("Single[[underlining]]"), UNDERBAR);
+	bars << BarPair(qt_("Double[[underlining]]"), UULINE);
 	bars << BarPair(qt_("Wavy"), UWAVE);
 	bars << BarPair(qt_("Reset"), INHERIT);
 	return bars;
@@ -96,7 +96,7 @@ static QList<BarPair> strikeData()
 	QList<BarPair> strike;
 	strike << BarPair(qt_("No change"), IGNORE);
 	strike << BarPair(qt_("(Without)[[strikethrough]]"), NONE);
-	strike << BarPair(qt_("Single"), STRIKEOUT);
+	strike << BarPair(qt_("Single[[strikethrough]]"), STRIKEOUT);
 	strike << BarPair(qt_("With /"), XOUT);
 	strike << BarPair(qt_("Reset"), INHERIT);
 	return strike;
@@ -187,7 +187,7 @@ void fillComboColor(QComboBox * combo, QList<T> const & list)
 {
 	// at first add the 2 colors "No change" and "No color"
 	combo->addItem(qt_("No change"), "ignore");
-	combo->addItem(qt_("No color"), "none");
+	combo->addItem(qt_("(Without)[[color]]"), "none");
 	// now add the real colors
 	QPixmap coloritem(32, 32);
 	QColor color;
