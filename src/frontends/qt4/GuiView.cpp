@@ -4139,11 +4139,7 @@ void GuiView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 			string const name = cmd.getArg(0);
 			string sdata = trim(to_utf8(cmd.argument()).substr(name.size()));
 
-			if (name == "character") {
-				sdata = freefont2string();
-				if (!sdata.empty())
-					showDialog("character", sdata);
-			} else if (name == "latexlog") {
+			if (name == "latexlog") {
 				// gettatus checks that
 				LATTEST(doc_buffer);
 				Buffer::LogType type;
