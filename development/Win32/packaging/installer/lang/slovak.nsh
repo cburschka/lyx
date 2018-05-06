@@ -42,7 +42,7 @@ ${LangFileString} EnterLaTeXFolder 'Tu môžte nastaviť cestu k $\"latex.exe$\"
 					LaTeX-distribúciu, ktorá by mala byť používaná LyXom.\r\n\
 					Bez LaTeXu, LyX nedokáže produkovať dokumenty!\r\n\
 					\r\n\
-					Inštalatér detegoval LaTeX-distribúciu \
+					Inštalatér objavil LaTeX-distribúciu \
 					$\"$LaTeXName$\" na vašom systéme. Dolu je zobrazená jeho cesta.'
 ${LangFileString} EnterLaTeXFolderNone 'Nastavte dolu cestu k $\"latex.exe$\". Tým nastavíte, ktorá \
 					LaTeX-distribúcia má byť používaná LyXom.\r\n\
@@ -54,7 +54,7 @@ ${LangFileString} DontUseLaTeX "Nepoužiť LaTeX"
 ${LangFileString} InvalidLaTeXFolder 'Súbor $\"latex.exe$\" nie je na špecifikovanej ceste.'
 
 ${LangFileString} LatexInfo 'Teraz štartuje inštalatér LaTeX distribúcie $\"MiKTeX$\".$\r$\n\
-				Na inštalovanie programu tlačte $\"Next$\" v okne inštalátora až inštalácia začne.$\r$\n\
+				Na inštalovanie programu stlačte $\"Next$\" v okne inštalátora až inštalácia začne.$\r$\n\
 				$\r$\n\
 				!!! Prosím použite všetky štandardné možnosti inštalatéra MiKTeX !!!'
 
@@ -105,7 +105,7 @@ ${LangFileString} FinishPageRun "Spustiť LyX"
 ${LangFileString} UnNotInRegistryLabel "Nemôžem nájsť LyX v registre.$\r$\n\
 					Skratky na pracovnej ploche a v štartovacom Menu sa nedajú odstrániť."
 ${LangFileString} UnInstallRunning "Najprv treba zavrieť LyX!"
-${LangFileString} UnNotAdminLabel "Pre odinštaláciu LyX potrebujete administrátorské práva!"
+${LangFileString} UnNotAdminLabel "Pre odinštaláciu LyXu potrebujete administrátorské práva!"
 ${LangFileString} UnReallyRemoveLabel "Ste si istý, že chcete kompletne odinštalovať LyX a všetky jeho súčiastky?"
 ${LangFileString} UnLyXPreferencesTitle 'LyXove užívateľské nastavenia'
 
