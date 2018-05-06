@@ -57,7 +57,9 @@ public:
 	void paintSelection() const;
 
 private:
+	void paintLanguageMarkings(Row::Element const & e) const;
 	void paintForeignMark(Row::Element const & e) const;
+	void paintNoSpellingMark(Row::Element const & e) const;
 	void paintStringAndSel(Row::Element const & e) const;
 	void paintMisspelledMark(Row::Element const & e) const;
 	void paintChange(Row::Element const & e) const;

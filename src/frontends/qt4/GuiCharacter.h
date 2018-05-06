@@ -65,6 +65,7 @@ protected Q_SLOTS:
 	void change_adaptor();
 	void on_emphCB_clicked();
 	void on_nounCB_clicked();
+	void on_nospellcheckCB_clicked();
 
 private:
 	/// \name Dialog inherited methods
@@ -102,6 +103,8 @@ private:
 	bool emph_;
 	///
 	bool noun_;
+	///
+	bool nospellcheck_;
 };
 
 } // namespace frontend

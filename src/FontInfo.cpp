@@ -71,6 +71,7 @@ FontInfo const sane_font(
 	FONT_OFF,
 	FONT_OFF,
 	FONT_OFF,
+	FONT_OFF,
 	FONT_OFF);
 
 FontInfo const inherit_font(
@@ -87,7 +88,8 @@ FontInfo const inherit_font(
 	FONT_INHERIT,
 	FONT_INHERIT,
 	FONT_INHERIT,
-	FONT_OFF);
+	FONT_OFF,
+	FONT_INHERIT);
 
 FontInfo const ignore_font(
 	IGNORE_FAMILY,
@@ -96,6 +98,7 @@ FontInfo const ignore_font(
 	FONT_SIZE_IGNORE,
 	Color_ignore,
 	Color_ignore,
+	FONT_IGNORE,
 	FONT_IGNORE,
 	FONT_IGNORE,
 	FONT_IGNORE,
@@ -226,6 +229,8 @@ void FontInfo::reduce(FontInfo const & tmplt)
 		color_ = Color_inherit;
 	if (background_ == tmplt.background_)
 		background_ = Color_inherit;
+	if (nospellcheck_ == tmplt.nospellcheck_)
+		noun_ = FONT_INHERIT;
 }
 
 
@@ -275,6 +280,9 @@ FontInfo & FontInfo::realize(FontInfo const & tmplt)
 
 	if (background_ == Color_inherit)
 		background_ = tmplt.background_;
+
+	if (nospellcheck_ == FONT_INHERIT)
+		nospellcheck_ = tmplt.nospellcheck_;
 
 	return *this;
 }
@@ -375,6 +383,7 @@ void FontInfo::update(FontInfo const & newfont, bool toggleall)
 	setUwave(setMisc(newfont.uwave_, uwave_));
 	setNoun(setMisc(newfont.noun_, noun_));
 	setNumber(setMisc(newfont.number_, number_));
+	setNoSpellcheck(setMisc(newfont.nospellcheck_, nospellcheck_));
 
 	if (newfont.color_ == color_ && toggleall)
 		setColor(Color_inherit); // toggle 'back'
@@ -396,7 +405,7 @@ bool FontInfo::resolved() const
 		&& uuline_ != FONT_INHERIT && uwave_ != FONT_INHERIT
 		&& strikeout_ != FONT_INHERIT && xout_ != FONT_INHERIT
 		&& noun_ != FONT_INHERIT && color_ != Color_inherit
-		&& background_ != Color_inherit);
+		&& background_ != Color_inherit && nospellcheck_ != FONT_INHERIT);
 }
 
 
@@ -689,6 +698,10 @@ FontInfo lyxRead(Lexer & lex, FontInfo const & fi)
 				f.setUwave(FONT_ON);
 			} else if (ttok == "noun") {
 				f.setNoun(FONT_ON);
+			} else if (ttok == "nospellcheck") {
+				f.setNoSpellcheck(FONT_ON);
+			} else if (ttok == "no_nospellcheck") {
+				f.setNoSpellcheck(FONT_OFF);
 			} else {
 				lex.printError("Illegal misc type");
 			}
@@ -751,6 +764,10 @@ void lyxWrite(ostream & os, FontInfo const & f, string const & start, int level)
 		oss << indent << "\tMisc Noun\n";
 	else if (f.noun() == FONT_OFF)
 		oss << indent << "\tMisc No_Noun\n";
+	if (f.nospellcheck() == FONT_ON)
+		oss << indent << "\tMisc NoSpellcheck\n";
+	else if (f.nospellcheck() == FONT_OFF)
+		oss << indent << "\tMisc No_NoSpellcheck\n";
 	if (f.color() != Color_inherit && f.color() != Color_none)
 		oss << indent << "\tColor " << lcolor.getLyXName(f.color())
 		    << '\n';

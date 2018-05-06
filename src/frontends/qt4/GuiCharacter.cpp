@@ -261,6 +261,7 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	bc().addReadOnly(strikeCO);
 	bc().addReadOnly(nounCB);
 	bc().addReadOnly(emphCB);
+	bc().addReadOnly(nospellcheckCB);
 	bc().addReadOnly(langCO);
 	bc().addReadOnly(colorCO);
 	bc().addReadOnly(autoapplyCB);
@@ -294,6 +295,18 @@ void GuiCharacter::on_nounCB_clicked()
 	}
 	change_adaptor();
 }
+
+
+void GuiCharacter::on_nospellcheckCB_clicked()
+{
+	// skip intermediate state at user click
+	if (!nospellcheck_) {
+		nospellcheckCB->setCheckState(Qt::Checked);
+		nospellcheck_ = true;
+	}
+	change_adaptor();
+}
+
 
 
 void GuiCharacter::change_adaptor()
@@ -418,6 +431,8 @@ void GuiCharacter::updateContents()
 				font.fontInfo().setEmph(FONT_IGNORE);
 			if (fi.noun() != tmp.fontInfo().noun())
 				font.fontInfo().setNoun(FONT_IGNORE);
+			if (fi.nospellcheck() != tmp.fontInfo().nospellcheck())
+				font.fontInfo().setNoSpellcheck(FONT_IGNORE);
 			if (fi.color() != tmp.fontInfo().color())
 				font.fontInfo().setColor(Color_ignore);
 			if (fi.underbar() != tmp.fontInfo().underbar()
@@ -519,8 +534,10 @@ void GuiCharacter::paramsToDialog(Font const & font)
 	colorCO->setCurrentIndex(colorCO->findData(toqstr(lcolor.getLyXName(fi.color()))));
 	emphCB->setCheckState(getMarkupState(fi.emph()));
 	nounCB->setCheckState(getMarkupState(fi.noun()));
+	nospellcheckCB->setCheckState(getMarkupState(fi.nospellcheck()));
 	emph_ = emphCB->checkState() == Qt::Checked;
 	noun_ = nounCB->checkState() == Qt::Checked;
+	nospellcheck_ = nospellcheckCB->checkState() == Qt::Checked;
 
 	// reset_language is a null pointer.
 	QString const lang = (font.language() == reset_language)
@@ -538,6 +555,7 @@ void GuiCharacter::applyView()
 	fi.setSize(size[sizeCO->currentIndex()].second);
 	fi.setEmph(setMarkupState(emphCB->checkState()));
 	fi.setNoun(setMarkupState(nounCB->checkState()));
+	fi.setNoSpellcheck(setMarkupState(nospellcheckCB->checkState()));
 	setBar(fi, bar[ulineCO->currentIndex()].second);
 	setStrike(fi, strike[strikeCO->currentIndex()].second);
 	fi.setColor(lcolor.getFromLyXName(fromqstr(colorCO->itemData(colorCO->currentIndex()).toString())));

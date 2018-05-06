@@ -347,6 +347,8 @@ void Text::setFont(Cursor & cur, Font const & font, bool toggleall)
 			newfi.setNoun(oldfi.noun() == FONT_OFF ? FONT_ON : FONT_OFF);
 		if (newfi.number() == FONT_TOGGLE)
 			newfi.setNumber(oldfi.number() == FONT_OFF ? FONT_ON : FONT_OFF);
+		if (newfi.nospellcheck() == FONT_TOGGLE)
+			newfi.setNoSpellcheck(oldfi.nospellcheck() == FONT_OFF ? FONT_ON : FONT_OFF);
 	}
 
 	setFont(cur.bv(), cur.selectionBegin().top(),

@@ -445,6 +445,9 @@ void Text::readParToken(Paragraph & par, Lexer & lex,
 	} else if (token == "\\numeric") {
 		lex.next();
 		font.fontInfo().setNumber(setLyXMisc(lex.getString()));
+	} else if (token == "\\nospellcheck") {
+		lex.next();
+		font.fontInfo().setNoSpellcheck(setLyXMisc(lex.getString()));
 	} else if (token == "\\emph") {
 		lex.next();
 		font.fontInfo().setEmph(setLyXMisc(lex.getString()));

@@ -4231,6 +4231,9 @@ SpellChecker::Result Paragraph::spellCheck(pos_type & from, pos_type & to,
 	docstring word = asString(from, to, AS_STR_INSETS | AS_STR_SKIPDELETE);
 	Language * lang = d->getSpellLanguage(from);
 
+	if (getFontSettings(d->inset_owner_->buffer().params(), from).fontInfo().nospellcheck() == FONT_ON)
+		return result;
+
 	wl = WordLangTuple(word, lang);
 
 	if (word.empty())

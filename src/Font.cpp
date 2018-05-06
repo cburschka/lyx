@@ -225,6 +225,8 @@ void Font::lyxWriteChanges(Font const & orgfont,
 		os << "\\emph " << LyXMiscNames[bits_.emph()] << "\n";
 	if (orgfont.fontInfo().number() != bits_.number())
 		os << "\\numeric " << LyXMiscNames[bits_.number()] << "\n";
+	if (orgfont.fontInfo().nospellcheck() != bits_.nospellcheck())
+		os << "\\nospellcheck " << LyXMiscNames[bits_.nospellcheck()] << "\n";
 	if (orgfont.fontInfo().underbar() != bits_.underbar()) {
 		// This is only for backwards compatibility
 		switch (bits_.underbar()) {
@@ -619,6 +621,7 @@ string Font::toString(bool const toggle) const
 	   << "uwave " << bits_.uwave() << '\n'
 	   << "noun " << bits_.noun() << '\n'
 	   << "number " << bits_.number() << '\n'
+	   << "nospellcheck " << bits_.nospellcheck() << '\n'
 	   << "color " << bits_.color() << '\n'
 	   << "language " << lang << '\n'
 	   << "toggleall " << convert<string>(toggle);
@@ -660,7 +663,8 @@ bool Font::fromString(string const & data, bool & toggle)
 		} else if (token == "emph" || token == "underbar"
 			|| token == "noun" || token == "number"
 			|| token == "uuline" || token == "uwave"
-			|| token == "strikeout" || token == "xout") {
+			|| token == "strikeout" || token == "xout"
+			|| token == "nospellcheck") {
 
 			int const next = lex.getInteger();
 			FontState const misc = FontState(next);
@@ -681,6 +685,8 @@ bool Font::fromString(string const & data, bool & toggle)
 				bits_.setNoun(misc);
 			else if (token == "number")
 				bits_.setNumber(misc);
+			else if (token == "nospellcheck")
+				bits_.setNoSpellcheck(misc);
 
 		} else if (token == "color") {
 			int const next = lex.getInteger();
@@ -809,7 +815,8 @@ ostream & operator<<(ostream & os, FontInfo const & f)
 		<< " uuline " << f.uuline()
 		<< " uwave " << f.uwave()
 		<< " noun " << f.noun()
-		<< " number " << f.number();
+		<< " number " << f.number()
+		<< " nospellcheck " << f.nospellcheck();
 }
 
 

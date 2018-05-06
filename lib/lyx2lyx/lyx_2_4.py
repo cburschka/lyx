@@ -202,6 +202,17 @@ def revert_fontenc(document):
     document.header[i] = document.header[i].replace("auto", "global")
 
 
+def revert_nospellcheck(document):
+    " Remove nospellcheck font info param "
+
+    i = 0
+    while True:
+        i = find_token(document.body, '\\nospellcheck', i)
+        if i == -1:
+            return
+        del document.body[i]
+
+
 ##
 # Conversion hub
 #
@@ -213,10 +224,12 @@ convert = [
            [547, []],
            [548, []],
            [549, []],
-           [550, [convert_fontenc]]
+           [550, [convert_fontenc]],
+           [551, []]
           ]
 
 revert =  [
+           [549, [revert_nospellcheck]],
            [549, [revert_fontenc]],
            [548, []],# dummy format change
            [547, [revert_lscape]],
