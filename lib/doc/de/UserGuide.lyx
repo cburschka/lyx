@@ -50,12 +50,16 @@
 % only uncomment this when you are using makindex
 %\let\OrgIndex\index 
 %\renewcommand*{\index}[1]{\OrgIndex{#1}}
+
+% Trennausnahmen
+\hyphenation{Text-ei-gen-schaf-ten}
 \end_preamble
 \options refpage,intoc,bibliography=totoc,index=totoc,BCOR7.5mm,captions=tableheading
 \use_default_options false
 \begin_modules
 customHeadersFooters
 enumitem
+logicalmkup
 \end_modules
 \maintain_unincluded_children false
 \language ngerman
@@ -8597,10 +8601,12 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim
+
 Dies ist Unformatiert.
 \end_layout
 
 \begin_layout Verbatim
+
 Die folgenden 2 Zeilen sind leer:
 \end_layout
 
@@ -8613,6 +8619,7 @@ Die folgenden 2 Zeilen sind leer:
 \end_layout
 
 \begin_layout Verbatim
+
 Fast alles ist in Unformatiert erlaubt:"%&$§#~'`
 \backslash
 }][{|
@@ -8636,6 +8643,7 @@ Unformatiert
 \end_layout
 
 \begin_layout Verbatim*
+
 Dies ist Unformatiert*.
 \end_layout
 
@@ -13740,12 +13748,12 @@ Modern
 \end_layout
 
 \begin_layout Subsection
-Gebrauch unterschiedlicher Buchstabenstile
+Gebrauch von Textstilen
 \begin_inset Index idx
 status collapsed
 
 \begin_layout Plain Layout
-Buchstabenstile
+Textstile
 \end_layout
 
 \end_inset
@@ -13757,31 +13765,186 @@ Buchstabenstile
 Wie wir bereits gesehen haben, ändert \SpecialChar LyX
  automatisch den 
 \color black
-Buchstabenstil
+Stil
 \color inherit
  für gewisse Absatzumgebungen.
- Wir haben bereits den Buchstabenstil 
-\family sans
-Hervorhebung
-\family default
- erwähnt.
- Es gibt auch 
+ In diesem Abschnitt erklären wir, wie der Stil ausgewählter Textpassagen
+ geändert werden kann.
+ An dieser Stelle lernen wir das Konzept 
+\emph on
+Textstil
+\emph default
+ kennen.
+\end_layout
+
+\begin_layout Standard
+Von Haus aus unterstützt \SpecialChar LyX
+ zwei Textstile, 
+\emph on
+Hervorgehoben
+\emph default
+ und 
+\noun on
+Eigenname
+\noun default
+.
+ Diese sind fest 
+\emph on
+eingebaut
+\emph default
+, also mit jeder Dokumentklasse verfügbar.
+ Ergänzend zu diesen bieten manche Dokumentklassen oder Module 
+\emph on
+benutzerdefinierte Textstile
+\emph default
+ für bestimmte Zwecke.
+ Wir beschreiben beide Formen von Textstilen gleich.
+\end_layout
+
+\begin_layout Standard
+Bevor wir das tun, möchten wir noch kurz erläutern, was wir mit 
+\emph on
+Textstilen
+\emph default
+ im Gegensatz zu 
+\emph on
+Texteigenschaften
+\emph default
+ meinen.
+ Traditionelle Textverarbeitungsprogramme haben vor allem so genannte 
+\emph on
+formale Auszeichnung
+\emph default
+ unterstützt: Wenn Sie ein Wort hervorheben wollten, haben Sie es ausgewählt
+ und bspw.
+ 
+\begin_inset Quotes gld
+\end_inset
+
+Fettdruck
+\begin_inset Quotes grd
+\end_inset
+
+ aktiviert – Sie haben damit die 
+\emph on
+Texteigenschaften
+\emph default
+ angepasst.
+ Moderne Programme, unter ihnen auch \SpecialChar LyX
+, forcieren demgegenüber die Verwendung
+ von 
+\emph on
+semantischer
+\emph default
+ (oder 
+\emph on
+logischer
+\emph default
+) 
+\emph on
+Auszeichnung
+\emph default
+ (auch wenn formale Auszeichnung nach wie vor möglich ist; siehe dazu Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Textstil-Dialog"
+
+\end_inset
+
+).
+ Statt an 
+\emph on
+Texteigenschaften
+\emph default
+ herumzuschrauben, forcieren sie die Verwendung von 
+\emph on
+Textstilen
+\emph default
+, die mit Blick auf ihre Funktion (bspw.
+ 
+\begin_inset Quotes gls
+\end_inset
+
+hervorheben
+\begin_inset Quotes grs
+\end_inset
+
+) definiert sind, nicht mit Blick auf ihre Form (etwa 
+\begin_inset Quotes gls
+\end_inset
+
+fett
+\begin_inset Quotes grs
+\end_inset
+
+).
+ Dieser semantische Ansatz hat viele Vorteile.
+ So erinnert Sie die Verwendung funktionaler Kategorien daran, darüber nachzuden
+ken, warum Sie eine Auszeichnung verwenden, ob Ihre Auszeichnungen konsistent
+ und systematisch sind und ob diese spezifische Auszeichnung, die Sie gerade
+ vornehmen wollen, sinnvoll ist.
+ Aber es gibt auch praktischere Argumente: Es wird viel leichter, Formatierungen
+ zu ändern, sollte dies nötig sein.
+ Denken Sie an folgenden Fall: Sie schreiben einen Aufsatz und heben alle
+ Eigennamen mit 
+\shape smallcaps
+Kapitälchen
+\shape default
+ hervor.
+ Wenn nun der Verlag von Ihnen verlangt, Eigennamen doch anders auszuzeichnen
+ (etwa in GROSSBUCHSTABEN) oder auch gar nicht, müssten Sie mit formaler
+ Auszeichnung jedes einzelne Vorkommen im Text ändern.
+ Mit semantischer Auszeichnung (wie etwa 
+\noun on
+Eigenname
+\noun default
+; siehe dazu unten) müssten Sie nur die Definition von 
 \family sans
 Eigenname
 \family default
- (meistens ist das 
+ einmal ändern.
+ Wenn Sie wissen, wie man das entsprechende \SpecialChar LaTeX
+-Makro umdefiniert, ist das
+ eine Änderung, die nicht mehr als ein paar Sekunden braucht.
+ Darüber hinaus erlaubt Ihnen semantische Auszeichnung sogar, verschiedene
+ Versionen Ihres Dokuments zu produzieren, die jeweils einer eigenen Auszeichnun
+gssemantik folgen.
+\end_layout
+
+\begin_layout Standard
+Mit diesen Ausführungen im Hinterkopf kommen wir nun zu den Zeichenstilen,
+ die von \SpecialChar LyX
+ angeboten werden.
+\end_layout
+
+\begin_layout Subsubsection
+Eingebaute Textstile
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Eingebaute-Textstile"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Die beiden eingebauten Textstile kann man mit Tastenkürzeln, über den Dialog
+ 
 \family sans
-Kapitälchen
+Zeichenstil
 \family default
-).
- Beide kann man mit Tastenkürzeln, über die Menüs oder die Werkzeugleiste
- auswählen.
+ oder die Werkzeugleiste auswählen.
 \end_layout
 
 \begin_layout Standard
 Um 
 \family sans
-Kapitälchen
+Eigenname
 \family default
  zu aktivieren, machen Sie folgendes:
 \end_layout
@@ -13793,29 +13956,67 @@ type  "icon"
 arg   "font-noun"
 \end_inset
 
-, oder Sie drücken 
+,
+\end_layout
+
+\begin_layout Itemize
+Sie drücken 
 \family sans
 Alt+Z
 \begin_inset space ~
 \end_inset
 
-K.
+K
+\end_layout
+
+\begin_layout Itemize
+oder sie verwenden den Dialog 
+\family sans
+Textstil
+\family default
+ (
+\begin_inset Info
+type  "menu"
+arg   "dialog-show character"
+\end_inset
+
+ oder 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+), wie in Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Textstil-Dialog"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ beschrieben.
 \end_layout
 
 \begin_layout Standard
 Diese Befehle sind Umschalter: ist 
 \family sans
-Eigenname/Kapitälchen
+Eigenname
 \family default
  aktiviert, so wird es durch den Befehl deaktiviert und umgekehrt.
 \end_layout
 
 \begin_layout Standard
-Eine typische Anwendung für 
+Eine typische Anwendung für den Textstil 
 \family sans
-Eigenname/Kapitälchen
+Eigenname
 \family default
--Stil sind Namen, zum Beispiel 
+ sind, wie der Name sagt, Eigennamen, zum Beispiel 
 \noun on
 
 \begin_inset Quotes gld
@@ -13832,15 +14033,25 @@ Matthias Ettrich
 \end_layout
 
 \begin_layout Standard
-Der 
+In der Voreinstellung produziert 
+\family sans
+Eigenname
+\family default
+ Text in 
+\shape smallcaps
+Kapitälchen
+\shape default
+, aber die Definition kann geändert werden.
+\end_layout
+
+\begin_layout Standard
+Der Textstil 
 \family sans
 Hervorhebung
 \family default
-sstil wird häufiger benutzt.
- Man kann ihn folgendermaßen (de)ak\SpecialChar softhyphen
-ti\SpecialChar softhyphen
-vie\SpecialChar softhyphen
-ren – es sind ebenfalls Umschalter:
+ wird häufiger benutzt.
+ Man kann ihn folgendermaßen (de)aktivieren – das folgende sind ebenfalls
+ Umschalter:
 \end_layout
 
 \begin_layout Itemize
@@ -13850,7 +14061,11 @@ type  "icon"
 arg   "font-emph"
 \end_inset
 
-, oder Sie drücken 
+,
+\end_layout
+
+\begin_layout Itemize
+Sie drücken 
 \family sans
 Alt+Z
 \begin_inset space ~
@@ -13862,45 +14077,86 @@ H
  oder 
 \family sans
 Strg+E
+\end_layout
+
+\begin_layout Itemize
+oder sie verwenden den Dialog 
+\family sans
+Textstil
 \family default
-.
+ (
+\begin_inset Info
+type  "menu"
+arg   "dialog-show character"
+\end_inset
+
+ oder 
+\begin_inset Info
+type  "icon"
+arg   "dialog-show character"
+\end_inset
+
+), wie in Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Textstil-Dialog"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ beschrieben.
 \end_layout
 
 \begin_layout Standard
-Zur Zeit ist der 
+In der Voreinstellung ist 
 \family sans
 Hervorhebung
 \family default
-sstil gleichbedeutend mit einer kursiven Schrift.
- Wir wollen dem Benutzer in Zukunft ermöglichen, eine andere Zuordnung zu
- treffen.
+ gleichbedeutend mit einer Kursivsetzung, aber manche Dokumentklassen produziere
+n ein anderes Erscheinungsbild, und Sie können den Stil auch selbst ändern,
+ indem Sie die entsprechende \SpecialChar LaTeX
+-Definition ändern.
 \end_layout
 
 \begin_layout Standard
-Den 
+Den Textstil
 \family sans
-Hervorhebung
+ Hervorhebung
 \family default
-sstil haben wir überall in diesem Dokument benutzt.
+ haben wir mehrfach in diesem Dokument benutzt.
  Hier ist noch ein Beispiel:
 \end_layout
 
 \begin_layout Quotation
 
 \emph on
-Übertreiben Sie den Gebrauch von Buchstabenstilen nicht!
+Übertreiben Sie den Gebrauch von Textstilen nicht!
 \end_layout
 
 \begin_layout Standard
-Über das Beispiel hinaus ist es eine Warnung.
+Das ist nicht nur ein Beispiel, sondern auch eine Warnung.
  Man sollte in etwa so schreiben, wie man sich unterhält.
- Da man sich ja nicht dauernd anschreit, sollte man vermeiden, Dinge zu
- oft hervorzuheben.
+ Da man sich ja auch nicht dauernd anschreit, sollte man vermeiden, zu viele
+ Dinge typographisch hervorzuheben.
 \end_layout
 
 \begin_layout Standard
-Man kann den Buchstabenstil auf die Voreinstellung zurücksetzen, indem man
- entweder das Tastenkürzel 
+Im Gegensatz zu den benutzerdefinierten Zeichenstilen sind die eingebauten
+ im \SpecialChar LyX
+-Arbeitsbereich als normale Schriftänderungen dargestellt, und sie sind
+ auch in den 
+\family sans
+Textstil
+\family default
+-Dialog integriert.
+ Deshalb können Sie diese jederzeit auf die Voreinstellung zurücksetzen,
+ indem Sie entweder das Tastenkürzel 
 \family sans
 Alt+C
 \begin_inset space ~
@@ -13908,19 +14164,169 @@ Alt+C
 
 Leerzeichen
 \family default
- oder den Dialog 
+ oder diesen Dialog verwenden (
+\begin_inset Info
+type  "menu"
+arg   "dialog-show character"
+\end_inset
+
+ 
 \family sans
-Bearbeiten\SpecialChar menuseparator
-Textstil\SpecialChar menuseparator
-Benutzerdefiniert
+bzw.
+
 \family default
- (
+ 
 \begin_inset Info
 type  "icon"
 arg   "dialog-show character"
 \end_inset
 
-) verwendet.
+).
+\end_layout
+
+\begin_layout Subsubsection
+Benutzerdefinierte Textstile
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Benutzerdefinierte-Textstile"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Benutzerdefinierte Textstile können von der Dokumentklasse angeboten werden,
+ von einem Modul (siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Module"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) oder mittels einer lokalen Format-Anpassung (siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Lokales-Format"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Wie die beiden eingebauten Textstile auch bieten die benutzerdefinierten
+ semantische Auszeichnung für spezifische Funktionen.
+ Beispielsweise bietet \SpecialChar LyX
+ ein Modul 
+\emph on
+Linguistik
+\emph default
+, das unter anderem einige Textstile zur Auszeichnung linguistischer Ebenen
+ bietet: 
+\emph on
+Ausdrücke
+\emph default
+, 
+\noun on
+Begriffe
+\noun default
+ und 
+\begin_inset Quotes gls
+\end_inset
+
+Bedeutungen
+\begin_inset Quotes grs
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Diese Stile sind, falls verfügbar, im Menü 
+\family sans
+Bearbeiten\SpecialChar menuseparator
+Textstil
+\family default
+ zugänglich.
+\end_layout
+
+\begin_layout Standard
+Zu Demonstrationszwecken haben wir in diesem Dokument das optionale Modul
+ 
+\family sans
+Logisches Markup
+\family default
+ geladen, das die beiden eingebauten Stile repliziert und ergänzt.
+ Am Beispiel des Stils 
+\family sans
+Hervorhebung
+\family default
+ können wir dabei Unterschiede in Aussehen und Handhabung erkennen (auch
+ wenn die Ausgabe der beiden Stile letztlich identisch ist): Während der
+ eingebaute Stil 
+\emph on
+Hervorhebung
+\emph default
+ als normale Schriftänderung erscheint, erscheint der benutzerdefinierte
+ Stil 
+\begin_inset Flex Emph
+status open
+
+\begin_layout Plain Layout
+Hervorgehoben
+\end_layout
+
+\end_inset
+
+ als Einfügung mit einer Marke unter dem ausgezeichneten Text, welche die
+ Bedeutung benennt.
+ So (ähnlich) sehen alle benutzerdefinierten Textstile aus.
+ Beispielsweise sind die drei anderen von dem von uns geladenen Modul: 
+\begin_inset Flex Code
+status open
+
+\begin_layout Plain Layout
+Code
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Flex Strong
+status open
+
+\begin_layout Plain Layout
+Stark
+\end_layout
+
+\end_inset
+
+ und 
+\begin_inset Flex Noun
+status open
+
+\begin_layout Plain Layout
+Eigenname
+\end_layout
+
+\end_inset
+
+.
+ Beachten Sie, dass die benutzerdefinierten Stile nicht immer, wie in diesen
+ Beispielen, ihre formale Erscheinung im \SpecialChar LyX
+-Arbeitsbereich emulieren.
 \end_layout
 
 \begin_layout Subsection
@@ -13934,7 +14340,7 @@ Feineinstellung!der Zeichen
 
 \end_inset
 
- mit dem Textstil-Dialog
+ der Texteigenschaften mit dem Textstil-Dialog
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Textstil-Dialog"
@@ -13945,38 +14351,53 @@ name "subsec:Textstil-Dialog"
 \end_layout
 
 \begin_layout Standard
-Es gibt immer Situationen, in denen man Feineinstellungen vornehmen muss.
- Deshalb hat \SpecialChar LyX
- Möglichkeiten, den Buchstabenstil zu verändern.
- Zum Beispiel schreiben ein wissenschaftliches Journal oder eine Firma vor,
- dass eine Schrift ohne Serifen in gewissen Situationen zu benutzen ist.
+Es gibt immer Situationen, in denen man formale Feineinstellungen vornehmen
+ muss.
+ Deshalb bietet \SpecialChar LyX
+ Möglichkeiten, die Texteigenschaften bestimmter Passagen
+ zu verändern.
+ Zum Beispiel schreiben eine Fachzeitschrift oder eine Firma vor, dass in
+ gewissen Situationen eine serifenlose Schrift zu benutzen ist.
  Schriftsteller benutzen manchmal eine andere Schrift, um die Gedanken einer
  Person von einem gewöhnlichen Dialog abzuheben.
 \end_layout
 
 \begin_layout Standard
-Bevor wir beschreiben, wie man Buchstabenstile ändern kann, wollen wir eine
- Warnung wiederholen: Übertreiben Sie den Gebrauch von Buchstabenstilen
- nicht.
- Viele moderne Textverarbeitungen bieten viele Schriften an, womit Sie die
- Stärke der Presse besitzen.
- Unglücklicherweise gibt es eine Tendenz, damit zu verschwenderisch umzugehen.
+Falls weder von der Dokumentklasse noch von einem Modul benutzerdefinierte
+ Textstile für solche Zwecke bereitgestellt werden (was, wie oben beschrieben,
+ generell der bessere Weg wäre, solche Dinge anzugehen), finden Sie sich
+ möglicherweise in der Situation gezwungen zu sein, schnell die Eigenschaften
+ der entsprechenden Textpassagen anzupassen.
+ Hier kommt dann 
+\emph on
+formale Auszeichnung
+\emph default
+ als letzter Ausweg ins Spiel.
+\end_layout
+
+\begin_layout Standard
+Bevor wir beschreiben, wie man Texteigenschaften ändern kann, wollen wir
+ eine Warnung wiederholen: Übertreiben Sie dies nicht! Viele moderne Textverarbe
+itungen bieten verführerisch viele Möglichkeiten, Texteigenschaften zu variieren.
+ Unglücklicherweise führt das oft dazu, dass damit verschwenderisch und
+ unsystematisch umgegangen wird.
  Es hat etwas von 
 \emph on
 mit Kanonen auf Spatzen schießen
 \emph default
 .
- Außerdem sieht ein Dokument, das sehr viele Schriften und Größen benutzt,
+ Außerdem sieht ein Dokument, das ständig die Texteigenschaften variiert,
  wirklich so aus, als hätte jemand Löcher hinein geschossen.
- – Aber genug gejammert.
+ Aber genug gejammert.
 \end_layout
 
 \begin_layout Standard
-Um Schriften zu verändern, wählen Sie 
-\family sans
-Bearbeiten\SpecialChar menuseparator
-Textstil
-\family default
+Um Texteigenschaften zu verändern, wählen Sie 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show character"
+\end_inset
+
  oder klicken Sie auf 
 \begin_inset Info
 type  "icon"
@@ -13988,10 +14409,10 @@ arg   "dialog-show character"
 Textstil
 \family default
  angezeigt zu bekommen.
- Dieses Menü hat sieben Schaltflächen für die verschiedenen Schrifteigenschaften
-, die man auswählen kann.
- Klickt man auf eine Schaltfläche, kann man eine Einstellung wählen oder
- mit 
+ Dieses Dialogfenster hat mehrere Auswahlboxen für die verschiedenen Texteigensc
+haften.
+ Klickt man auf eine dieser Auswahlboxen, kann man eine Einstellung wählen
+ oder mit 
 \family sans
 Keine
 \begin_inset space ~
@@ -13999,19 +14420,19 @@ Keine
 
 Änderung
 \family default
- alles beim alten lassen.
+ alles beim Alten lassen.
  Mit 
 \family sans
 Zurücksetzen
 \family default
  wird die Eigenschaft auf ihren Standardwert in der gerade benutzten Absatzumgeb
 ung zurückgesetzt.
- Damit kann man auf einen Schlag Attribute für verschiedene Absatzumgebungen
- zurücksetzen.
+ Damit kann man auf einen Schlag die Eigenschaften über mehrere Absätze
+ und Absatzstile hinweg zurücksetzen.
 \end_layout
 
 \begin_layout Standard
-Die sieben Schrifteigenschaften und ihre möglichen Werte (plus 
+Die Texteigenschaften und ihre möglichen Werte (plus 
 \family sans
 Keine
 \begin_inset space ~
@@ -14042,11 +14463,7 @@ Schriften ! Familie
 
 
 \family default
- Das 
-\emph on
-allgemeine Aussehen
-\emph default
- der Schrift.
+ Der generelle Charakter der Schrift.
  Es gibt folgende Möglichkeiten:
 \end_layout
 
@@ -14054,10 +14471,10 @@ allgemeine Aussehen
 \begin_layout Standard
 
 \family sans
-Roman
+Serifenschrift
 \family default
- Dies ist die Schriftfamilie Roman.
- Es ist auch die Standardfamilie.
+ Dies ist die Serifenschrift.
+ Es ist auch die Standard-Schriftfamile.
  (Tastenkürzel 
 \family sans
 Alt+Z
@@ -14073,11 +14490,11 @@ R
 \labelwidthstring 00.00.0000
 
 \family sans
-Serifenfrei
+Serifenlos
 \family default
  
 \family sans
-Dies ist die Schriftfamilie Sans Serif.
+Dies ist die Schriftfamilie Serifenlos.
 
 \family default
  (Tastenkürzel 
@@ -14110,6 +14527,117 @@ Alt+Z C
 )
 \end_layout
 
+\begin_layout Standard
+Die wesentlichen Unterschiede der drei Schriftfamilien sind:
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Serifenschrift
+\family default
+ Schriftarten verwenden Zeichen mit Serifen.
+ Dies sind die kleinen 
+\begin_inset Quotes gld
+\end_inset
+
+Anhängsel
+\begin_inset Quotes grd
+\end_inset
+
+ am Ende der Striche, die ein Zeichen bilden.
+ Das folgende Beispiel zeigt den Unterschied:
+\begin_inset Newline newline
+\end_inset
+
+Text mit Serifen
+\begin_inset Newline newline
+\end_inset
+
+
+\family sans
+Text ohne Serifen
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+Serifen ermöglichen ein schnelles und leichtes Lesen.
+ Diese Schriften werden daher als Standardschrift verwendet.
+\end_layout
+
+\begin_layout Itemize
+
+\family sans
+Serifenlos
+\family default
+ wird nicht als Grundtyp empfohlen.
+ Diese Schrift wird daher oft nur für Abschnittsüberschriften und Kurztexte
+ verwendet.
+ In diesem Dokument wird er zur Hervorhebung von Menünamen verwendet.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+Schreibmaschine
+\family default
+ ist eine sogenannte 
+\begin_inset Quotes gld
+\end_inset
+
+nichtproportionale
+\begin_inset Quotes grd
+\end_inset
+
+ Schriftart, was bedeutet, dass jedes Zeichen dieselbe Breite hat; das 'i'
+ ist so breit wie das 'm'.
+ Hier ist ein Beispiel
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Phantom HPhantom
+status open
+
+\begin_layout Plain Layout
+kein 
+\end_layout
+
+\end_inset
+
+
+\family typewriter
+Schreibmaschine-Text
+\family default
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Für mehr über Phantom-Leerräume, siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Phantom-Leerraum"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+kein Schreibmaschine-Text
+\end_layout
+
 \end_deeper
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
@@ -14127,17 +14655,8 @@ Strichstärke
 
 
 \family default
- Dies ist die Druckstärke
-\begin_inset Index idx
-status collapsed
-
-\begin_layout Plain Layout
-Druckstärke
-\end_layout
-
-\end_inset
-
- mit folgenden Optionen:
+ Die Dicke bzw.
+ das optische Gewicht der Schrift im Druck mit folgenden Optionen:
 \end_layout
 
 \begin_deeper
@@ -14147,7 +14666,7 @@ Druckstärke
 \family sans
 Mittel
 \family default
- Dies ist die Druckstärke mittel.
+ Dies ist die Strichstärke mittel.
  Es ist auch die Standardstärke.
 \end_layout
 
@@ -14159,7 +14678,7 @@ Fett
 \family default
  
 \series bold
-Dies ist die Druckstärke fett.
+Dies ist die Strichstärke fett.
 
 \series default
  Fettdruck kann man mit 
@@ -14194,7 +14713,7 @@ Schnitt
 
 
 \family default
- Wie der Name schon sagt mit folgenden Optionen:
+ Formale Varianten einer Familie, mit folgenden Optionen:
 \end_layout
 
 \begin_deeper
@@ -14286,11 +14805,7 @@ Farbe ! Text
  Hiermit können Sie eine Textfarbe auswählen.
  Neben 
 \family sans
-Keine
-\begin_inset space ~
-\end_inset
-
-Farbe
+(Ohne)
 \family default
 , was bedeutet, dass die Farbe verwendet wird, die im Menü 
 \family sans
@@ -14438,10 +14953,11 @@ Schriften ! Größe
 
 \end_inset
 
-.
+ bzw.
+ den Schriftgrad.
  Sie werden hier keine Zahlenwerte finden; alle möglichen Größen sind proportion
 al zur Standard-Schriftgröße.
- Noch einmal, Sie füttern \SpecialChar LyX
+ Noch einmal: Sie füttern \SpecialChar LyX
  nicht mit Details, sondern mit einer Beschreibung
  von dem, was Sie machen wollen.
 \end_layout
@@ -14841,7 +15357,7 @@ Wir warnen Sie
 \emph on
 noch einmal
 \emph default
-: spielen Sie mit dieser Funktion nicht verrückt.
+: Übertreiben Sie es hiermit nicht.
  Die Schriftgröße müssen Sie so gut wie nie ändern.
  \SpecialChar LyX
  ändert die Schriftgröße für verschiedene Absatzumgebungen automatisch
@@ -14853,9 +15369,17 @@ noch einmal
 \labelwidthstring 00.00.0000
 
 \family sans
-Diverses
+Unterstreichung
 \family default
- Hier können Sie auf Buchstabenniveau noch ein paar andere Dinge ändern:
+ Hier können Sie Textstellen unterstreichen.
+ Achtung: Vermeiden Sie unterstrichenen Text, wo immer es geht! Dies ist
+ ein Überbleibsel aus der Zeit der Schreibmaschine, als man Schriften nicht
+ ändern konnte.
+ Man muss heutzutage Text nicht mehr durch Unterstreichung hervorheben.
+ Dies ist in \SpecialChar LyX
+ nur verfügbar, da einige Leute dies brauchen um Stilvorschriften
+ von Journalen einzuhalten.
+ Sie haben folgende Auswahlmöglichkeiten:
 \end_layout
 
 \begin_deeper
@@ -14863,39 +15387,20 @@ Diverses
 \labelwidthstring 00.00.0000
 
 \family sans
-Hervorgehoben
+(Ohne)
 \family default
- 
-\emph on
-Dies ist hervorgehobener Text
-\emph default
-.
-\begin_inset Newline newline
-\end_inset
-
-Dies mag wie 
-\shape italic
-kursiv
-\shape default
- aussehen, aber es ist ein wenig anders.
- Wenn Sie bei kursivem Text hervorheben benutzen, wird es normaler Text.
- Bei zukünftigen \SpecialChar LyX
--Versionen können Sie diese 
-\emph on
-logische
-\emph default
- Eigenschaft hoffentlich Ihren Wünschen entsprechend anpassen.
+ Keine Unterstreichung verwenden.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
-Unterstrichen
+Einfach
 \family default
  
 \bar under
-Dies ist unterstrichener Text.
+Dies ist einfach unterstrichener Text.
 \bar default
 
 \begin_inset Newline newline
@@ -14917,12 +15422,7 @@ Strg+U
 \begin_inset Newline newline
 \end_inset
 
-Vermeiden Sie unterstrichenen Text wo immer es geht! Dies ist ein Überbleibsel
- aus der Zeit der Schreibmaschine, als man Schriften nicht ändern konnte.
- Man muss heutzutage Text nicht mehr durch Unterstreichung hervorheben.
- Dies ist in \SpecialChar LyX
- nur verfügbar, da einige Leute dies brauchen um Stilvorschriften
- von Journalen einzuhalten.
+
 \end_layout
 
 \begin_layout Labeling
@@ -14930,10 +15430,6 @@ Vermeiden Sie unterstrichenen Text wo immer es geht! Dies ist ein Überbleibsel
 
 \family sans
 Doppelt
-\begin_inset space ~
-\end_inset
-
-unterstrichen
 \family default
  
 \uuline on
@@ -14963,11 +15459,7 @@ Da wir Sie eben vor unterstrichenem Text gewarnt haben, können Sie sich
 \labelwidthstring 00.00.0000
 
 \family sans
-Wellig
-\begin_inset space ~
-\end_inset
-
-unterstrichen
+Gewellt
 \family default
  
 \uwave on
@@ -14990,17 +15482,38 @@ W
 \end_inset
 
 Verwenden Sie dies nur wenn ein Journal unbedingt darauf besteht.
- Halten Sie Tabletten gegen Übelkeit parat.
+ Halten Sie Tabletten gegen Brechreiz parat.
+\end_layout
+
+\end_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+Durchstreichung
+\family default
+ Hier können Sie Textstellen in zwei Weisen durchstreichen.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\family sans
+(Ohne)
+\family default
+ Keine Durchstreichung verwenden.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
 
 \family sans
-Durchgestrichen 
+Einfach 
 \family default
 \strikeout on
-Dies ist durchgestrichener Text.
+Dies ist einfach durchgestrichener Text.
 \strikeout default
 
 \begin_inset Newline newline
@@ -15022,10 +15535,14 @@ Dies wird oft verwendet, um eine alte Version eines Textes zu kennzeichnen,
 \labelwidthstring 00.00.0000
 
 \family sans
-Durchgekreuzt 
+Mit
+\begin_inset space ~
+\end_inset
+
+/ 
 \family default
 \xout on
-Dies ist durchgekreuzter Text.
+Dies ist mit / durchstrichener Text.
 \xout default
 
 \begin_inset Newline newline
@@ -15034,104 +15551,92 @@ Dies ist durchgekreuzter Text.
 Dies wird verwendet, um Text schwer lesbar zu machen.
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\end_deeper
+\begin_layout Standard
+Ergänzend zur eben beschrieben formalen Auszeichnung bietet das Dialogfenster
+ auch die Möglichkeit, die beiden eingebauten semantischen Textstile (siehe
+ Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Eingebaute-Textstile"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) auszuwählen:
+\end_layout
+
+\begin_layout Itemize
 
 \family sans
-Eigenname/Kapitälchen
+Eigenname
 \family default
  
 \noun on
-Dies ist Text mit Kapitälchen.
-\noun default
+Dies ist Text mit dem Stil Eigenname.
+\end_layout
 
-\begin_inset Newline newline
-\end_inset
+\begin_layout Itemize
 
-Dies ist ebenso wie 
 \family sans
 Hervorgehoben
 \family default
- ein logisches Attribut.
- Zur Zeit ist es 
-\family sans
-Kapitälchen
-\family default
-, aber es wird eines Tages wählbar sein.
-\end_layout
-
-\begin_layout Standard
-Vermeiden Sie zu unterstreichen, wenn Sie können! Es ist ein Überbleibsel
- aus den Schreibmaschinentagen, als man Schriften nicht wechseln konnte.
- Wir brauchen auf das Unterstreichen nicht mehr zurückzugreifen, um etwas
- hervorzuheben.
- Es ist nur deshalb in \SpecialChar LyX
-, weil es auch in \SpecialChar LaTeX
- ist und weil einige es 
+ 
 \emph on
-möglicherweise
+Dies ist hervorgehobener Text
 \emph default
- benötigen, um Stilvorschriften zu genügen.
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\noindent
-Sie können aus einer großen Zahl von Kombinationsmöglichkeiten wählen.
+.
 \end_layout
 
 \begin_layout Standard
-Nachdem Sie mit Hilfe des Dialogs 
-\family sans
-Bearbeiten\SpecialChar menuseparator
-Textstil\SpecialChar menuseparator
-Benutzerdefiniert
-\family default
+Nachdem Sie mithilfe von 
+\begin_inset Info
+type  "menu"
+arg   "dialog-show character"
+\end_inset
+
  (
 \begin_inset Info
 type  "icon"
 arg   "dialog-show character"
 \end_inset
 
-) einen neuen Buchstabenstil gewählt haben, 
+) Texteigenschaften angepasst und angewandt haben, werden diese zeitweilig
+ gespeichert.
+ 
 \shape italic
 \emph on
-können
+M
 \shape default
 \emph default
- Sie ihn mit dem Werkzeugleistenknopf 
+it dem Werkzeugleistenknopf 
 \begin_inset Info
 type  "icon"
 arg   "textstyle-apply"
 \end_inset
 
- aktivieren.
- (Sie können natürlich auch die Knöpfe 
-\family sans
-Übernehmen
-\family default
- und 
-\family sans
-Schließen
-\family default
- benutzen.) Mit dem Werkzeugleistenknopf kann man auch dann umschalten, 
+ können Sie jeweils die zuletzt derart angewandten Texteigenschaften erneut
+ anwenden.
+ Das geht auch, 
 \color black
-wenn
+nachdem
 \color inherit
- das 
-\color black
-Menü
-\color inherit
- 
+ das Dialogfenster 
 \family sans
-Zeichenformat
+Textstil
 \family default
- nicht zu sehen ist.
+ geschlossen wurde.
 \end_layout
 
 \begin_layout Standard
-Um den Buchstabenstil komplett auf die Voreinstellung zurückzusetzen, drückt
- man 
+Um die Texteigenschaften komplett auf die Voreinstellung zurückzusetzen,
+ drückt man 
 \family sans
 Alt+Z
 \begin_inset space ~
@@ -15140,274 +15645,13 @@ Alt+Z
 Leertaste
 \family default
 .
- Will man nur die Einstellungen umschalten, die man gerade geändert hat
- (angenommen man hat gerade den Schnitt auf 
-\begin_inset Quotes gld
-\end_inset
-
-geneigt
-\begin_inset Quotes grd
-\end_inset
-
- und die Strichstärke auf 
-\begin_inset Quotes gld
-\end_inset
-
-fett
-\begin_inset Quotes grd
-\end_inset
-
- gesetzt), verwendet man die Option 
-\family sans
-Alle
-\begin_inset space ~
-\end_inset
-
-umschalten
-\family default
- und drückt 
-\family sans
-Übernehmen
-\family default
-.
 \end_layout
 
 \begin_layout Standard
-Sie sollten den Unterschied zwischen den drei Hauptschrifttypen kennen 
-\family sans
-Serifenschrift
-\family default
-, 
-\family sans
-Serifenlos
-\family default
-, und 
-\family typewriter
-Schreibmaschine
-\family default
-:
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-Schreibmaschine
-\family default
- ist eine sogenannte 
-\begin_inset Quotes gld
-\end_inset
-
-nichtproportionale
-\begin_inset Quotes grd
-\end_inset
-
- Schriftart, was bedeutet, dass jedes Zeichen dieselbe Breite hat; das 'i'
- ist so breit wie das 'm'.
- Hier ist ein Beispiel
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Phantom HPhantom
-status open
-
-\begin_layout Plain Layout
-kein 
-\end_layout
-
-\end_inset
-
-
-\family typewriter
-Schreibmaschine-Text
-\family default
-
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Für mehr über Phantom-Leerräume, siehe Abschnitt
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Phantom-Leerraum"
-
-\end_inset
-
-.
-\end_layout
-
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-kein Schreibmaschine-Text
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Serifenschrift
-\family default
- Schriftarten verwenden Zeichen mit Serifen.
- Dies sind die kleinen 
-\begin_inset Quotes gld
-\end_inset
-
-Anhängsel
-\begin_inset Quotes grd
-\end_inset
-
- am Ende der Striche, die ein Zeichen bilden.
- Das folgende Beispiel zeigt den Unterschied:
-\begin_inset Newline newline
-\end_inset
-
-Text mit Serifen
-\begin_inset Newline newline
-\end_inset
-
-
-\family sans
-Text ohne Serifen
-\family default
-
-\begin_inset Newline newline
-\end_inset
-
-Serifen ermöglichen ein schnelles und leichtes Lesen.
- Diese Schriften werden daher als Standardschrift verwendet.
-\end_layout
-
-\begin_layout Itemize
-
-\family sans
-Serifenlos
-\family default
- wird nicht als Grundtyp empfohlen.
- Diese Schrift wird daher oft nur für Abschnittsüberschriften und Kurztexte
- verwendet.
- In diesem Dokument wird er zur Hervorhebung von Menünamen verwendet.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Quotes gld
-\end_inset
-
-Umschalten
-\begin_inset Quotes grd
-\end_inset
-
- bezieht sich auf das Setzen oder Entfernen von Schrifteigenschaften.
- Wenn eine Eigenschaft fürs Umschalten im Textstil-Dialog ausgewählt ist,
- wird sie vom ausgewählten Text entfernt, wenn dieser schon die Eigenschaft
- besitzt.
- Wenn man z.
-\begin_inset space \thinspace{}
-\end_inset
-
-B.
- einen Stil mit den Eigenschaften A, B und C für Text anwendet, der aktuell
- die Schrifteigenschaften B, C, F und G hat, und wenn B auf umschalten,
- C auf nicht umschalten gesetzt ist, wird der Text danach die Eigenschaften
- A, C, F und G haben.
- 
-\begin_inset Quotes gld
-\end_inset
-
-Niemals Umschalten
-\begin_inset Quotes grd
-\end_inset
-
- und 
-\begin_inset Quotes gld
-\end_inset
-
-Immer Umschalten
-\begin_inset Quotes grd
-\end_inset
-
- bedeutet, dass man die Umschalt-Eigenschaft nicht kontrolliert.
- Für die Eigenschaften der linken Seite des Dialogs (
-\begin_inset Quotes gld
-\end_inset
-
-Familie
-\begin_inset Quotes grd
-\end_inset
-
- usw.) entscheidet man selbst über das Umschalten.
- Wenn 
-\family sans
-Alle
-\begin_inset space ~
-\end_inset
-
-umschalten
-\family default
- gewählt ist, werden alle Eigenschaften der linken Dialogseite umgeschaltet;
- standardmäßig werden sie nicht umgeschaltet.
- Die Einstellung 
-\begin_inset Quotes gld
-\end_inset
-
-Zurücksetzen
-\begin_inset Quotes grd
-\end_inset
-
- wird nie umgeschaltet.
- Wenn man z.
-\begin_inset space \thinspace{}
-\end_inset
-
-B: 
-\begin_inset Quotes gld
-\end_inset
-
-Strichstärke
-\begin_inset Quotes grd
-\end_inset
-
- auf 
-\begin_inset Quotes gld
-\end_inset
-
-Zurücksetzen
-\begin_inset Quotes grd
-\end_inset
-
- setzt, 
-\family sans
-Alle
-\begin_inset space ~
-\end_inset
-
-umschalten
-\family default
- wählt und dies auf fett gesetzten Text anwendet, wird auf die Voreinstellung
- 
-\begin_inset Quotes gld
-\end_inset
-
-Mittel
-\begin_inset Quotes grd
-\end_inset
-
- zurückgesetzt, egal wie oft man den Stil anwendet.
-\end_layout
-
-\begin_layout Standard
-Es wird zum Schluss nochmals gewarnt: Übertreiben Sie den Gebrauch von
-\emph on
- 
-\emph default
-Schriften nicht! Sie sind ansonsten nur ein vorgetäuschter Ersatz für gutes
- Schreiben.
+Wie Sie sehen, können also aus einer großen Zahl von Kombinationsmöglichkeiten
+ wählen.
+ Wir beenden diesen Abschnitt aber nochmal mit der Warnung, die Sie inzwischen
+ sicher schon nervt: Übertreiben Sie es hiermit nicht!
 \end_layout
 
 \begin_layout Section
@@ -37410,7 +37654,22 @@ Textstil
 \end_layout
 
 \begin_layout Standard
-Beschrieben in Abschnitt
+Dieses Untermenü bietet verschiedene Möglichkeiten, um das Erscheinungsbild
+ ausgewählter Textpassagen anzupassen.
+ Sie können
+\end_layout
+
+\begin_layout Enumerate
+Texteigenschaften mit Hilfe des Dialogs 
+\family sans
+Textstil
+\family default
+ anpassen (via 
+\family sans
+Benutzerdefiniert\SpecialChar ldots
+
+\family default
+; das ist in Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -37421,7 +37680,59 @@ reference "subsec:Textstil-Dialog"
 
 \end_inset
 
-.
+ beschrieben),
+\end_layout
+
+\begin_layout Enumerate
+die Groß- und Kleinschreibung von ausgewähltem Text ändern (
+\family sans
+Große Anfangsbuchstaben
+\family default
+, 
+\family sans
+Großbuchstaben
+\family default
+, 
+\family sans
+Kleinbuchstaben
+\family default
+)
+\end_layout
+
+\begin_layout Enumerate
+Benutzerdefinierte Textstile auswählen, wenn sie von der Dokumentklasse
+ oder einem geladenen Modul zur Verfügung gestellt werden (im Fall dieses
+ Dokuments sind dies: 
+\family sans
+Code
+\family default
+, 
+\family sans
+Hervorgehoben
+\family default
+, 
+\family sans
+Eigenname
+\family default
+ und 
+\family sans
+Stark
+\family default
+; siehe Abschnitt
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Benutzerdefinierte-Textstile"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Subsection
