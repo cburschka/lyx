@@ -230,7 +230,7 @@ void FontInfo::reduce(FontInfo const & tmplt)
 	if (background_ == tmplt.background_)
 		background_ = Color_inherit;
 	if (nospellcheck_ == tmplt.nospellcheck_)
-		noun_ = FONT_INHERIT;
+		nospellcheck_ = FONT_INHERIT;
 }
 
 
