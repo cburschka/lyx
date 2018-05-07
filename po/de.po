@@ -95,10 +95,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-05-07 09:20+0200\n"
-"PO-Revision-Date: 2018-05-07 09:26+0100\n"
+"POT-Creation-Date: 2018-05-07 14:40+0200\n"
+"PO-Revision-Date: 2018-05-07 14:43+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
-"Language-Team: German <lyx-docs@lists.lyx.org>\n"
+"Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -374,7 +374,7 @@ msgstr "&Durchsuchen..."
 #: src/frontends/qt4/ui/BibtexAddUi.ui:162
 #: src/frontends/qt4/ui/BranchesUi.ui:113
 #: src/frontends/qt4/ui/CitationUi.ui:143 src/frontends/qt4/ui/IndicesUi.ui:134
-#: src/CutAndPaste.cpp:431
+#: src/CutAndPaste.cpp:423
 msgid "&Add"
 msgstr "&Hinzufügen"
 
@@ -1087,8 +1087,8 @@ msgstr "Sprache"
 #: src/frontends/qt4/ui/CharacterUi.ui:359
 msgid "If this is selected, the marked text will not be spellchecked"
 msgstr ""
-"Wenn dies ausgewählt ist, wird der markierte Text von der Rechtschreibprüfung"
-" ausgenommen."
+"Wenn dies ausgewählt ist, wird der markierte Text von der "
+"Rechtschreibprüfung ausgenommen."
 
 #: src/frontends/qt4/ui/CharacterUi.ui:362
 msgid "E&xclude from Spellchecking"
@@ -13481,7 +13481,7 @@ msgid ""
 "Defines some character styles for logical markup: noun, emph, strong, and "
 "code."
 msgstr ""
-"Definiert Buchstabenstile für logische Auszeichnungen: Eigennamen, "
+"Definiert Textstile für semantische Auszeichnungen: Eigennamen, "
 "Hervorgehoben, Stark und Code."
 
 #: lib/layouts/logicalmkup.module:5
@@ -15647,6 +15647,34 @@ msgstr "Kapitel \\thechapter"
 #: lib/layouts/stdsections.inc:49
 msgid "Appendix \\thechapter"
 msgstr "Anhang \\thechapter"
+
+#: lib/layouts/stdspecialchars.inc:8 lib/ui/stdmenus.inc:440
+msgid "Ligature Break|k"
+msgstr "Ligaturtrenner|r"
+
+#: lib/layouts/stdspecialchars.inc:17 lib/ui/stdmenus.inc:409
+msgid "End of Sentence|E"
+msgstr "Satzendepunkt|S"
+
+#: lib/layouts/stdspecialchars.inc:26 lib/ui/stdmenus.inc:408
+msgid "Ellipsis|i"
+msgstr "Fortsetzungspunkte|F"
+
+#: lib/layouts/stdspecialchars.inc:36 lib/ui/stdmenus.inc:415
+msgid "Menu Separator|M"
+msgstr "Menütrenner|M"
+
+#: lib/layouts/stdspecialchars.inc:49 lib/ui/stdmenus.inc:439
+msgid "Hyphenation Point|H"
+msgstr "Trennmöglichkeit|ö"
+
+#: lib/layouts/stdspecialchars.inc:56 lib/ui/stdmenus.inc:413
+msgid "Breakable Slash|a"
+msgstr "Umbruchfähiger Schrägstrich|ä"
+
+#: lib/layouts/stdspecialchars.inc:65 lib/ui/stdmenus.inc:412
+msgid "Protected Hyphen|y"
+msgstr "Geschützter Trennstrich|T"
 
 #: lib/layouts/subequations.module:2 lib/layouts/subequations.module:10
 #: lib/layouts/subequations.module:13
@@ -19345,7 +19373,7 @@ msgstr "Notiz|N"
 msgid "Branch|B"
 msgstr "Zweig|w"
 
-#: lib/ui/stdmenus.inc:377
+#: lib/ui/stdmenus.inc:377 lib/ui/stdtoolbars.inc:95
 msgid "Custom Insets"
 msgstr "Benutzerdefinierte Einfügungen"
 
@@ -19413,14 +19441,6 @@ msgstr "Vorschau|V"
 msgid "Symbols...|b"
 msgstr "Symbole...|b"
 
-#: lib/ui/stdmenus.inc:408
-msgid "Ellipsis|i"
-msgstr "Fortsetzungspunkte|F"
-
-#: lib/ui/stdmenus.inc:409
-msgid "End of Sentence|E"
-msgstr "Satzendepunkt|S"
-
 #: lib/ui/stdmenus.inc:410
 msgid "Plain Quotation Mark|Q"
 msgstr "Nicht-typographisches Anführungszeichen|N"
@@ -19429,21 +19449,9 @@ msgstr "Nicht-typographisches Anführungszeichen|N"
 msgid "Inner Quotation Mark|n"
 msgstr "Inneres Anführungszeichen|I"
 
-#: lib/ui/stdmenus.inc:412
-msgid "Protected Hyphen|y"
-msgstr "Geschützter Trennstrich|T"
-
-#: lib/ui/stdmenus.inc:413
-msgid "Breakable Slash|a"
-msgstr "Umbruchfähiger Schrägstrich|ä"
-
 #: lib/ui/stdmenus.inc:414
 msgid "Visible Space|V"
 msgstr "Sichtbares Leerzeichen|L"
-
-#: lib/ui/stdmenus.inc:415
-msgid "Menu Separator|M"
-msgstr "Menütrenner|M"
 
 #: lib/ui/stdmenus.inc:416
 msgid "Phonetic Symbols|P"
@@ -19496,14 +19504,6 @@ msgstr "Vertikaler Abstand...|V"
 #: lib/ui/stdmenus.inc:437
 msgid "Phantom|m"
 msgstr "Phantom|m"
-
-#: lib/ui/stdmenus.inc:439
-msgid "Hyphenation Point|H"
-msgstr "Trennmöglichkeit|ö"
-
-#: lib/ui/stdmenus.inc:440
-msgid "Ligature Break|k"
-msgstr "Ligaturtrenner|r"
 
 #: lib/ui/stdmenus.inc:441
 msgid "Optional Line Break|B"
@@ -19862,6 +19862,10 @@ msgstr "Eigenname an/aus"
 #: lib/ui/stdtoolbars.inc:89
 msgid "Apply last"
 msgstr "Letzte Einstellung übernehmen"
+
+#: lib/ui/stdtoolbars.inc:90
+msgid "Character Styles"
+msgstr "Textstile"
 
 #: lib/ui/stdtoolbars.inc:92
 msgid "Insert math"
@@ -26894,7 +26898,7 @@ msgstr ", Zelle: "
 msgid ", Position: "
 msgstr ", Position: "
 
-#: src/CutAndPaste.cpp:196
+#: src/CutAndPaste.cpp:188
 #, c-format
 msgid ""
 "The character \"%1$s\" is uncodable in this verbatim context and thus has "
@@ -26903,7 +26907,7 @@ msgstr ""
 "Das Zeichen \"%1$s\" ist in diesem unformatierten Absatz nicht kodierbar und "
 "wurde daher nicht eingefügt."
 
-#: src/CutAndPaste.cpp:200
+#: src/CutAndPaste.cpp:192
 #, c-format
 msgid ""
 "The characters \"%1$s\" are uncodable in this verbatim context and thus have "
@@ -26912,11 +26916,11 @@ msgstr ""
 "Die Zeichen \"%1$s\" sind in diesem unformatierten Absatz nicht kodierbar "
 "und wurden daher nicht eingefügt."
 
-#: src/CutAndPaste.cpp:243
+#: src/CutAndPaste.cpp:235
 msgid "Uncodable content"
 msgstr "Nicht kodierbarer Inhalt"
 
-#: src/CutAndPaste.cpp:427
+#: src/CutAndPaste.cpp:419
 #, c-format
 msgid ""
 "The pasted branch \"%1$s\" is undefined.\n"
@@ -26926,31 +26930,31 @@ msgstr ""
 "\n"
 "Möchten Sie ihn zur Liste der Zweige dieses Dokuments hinzufügen?"
 
-#: src/CutAndPaste.cpp:430
+#: src/CutAndPaste.cpp:422
 msgid "Unknown branch"
 msgstr "Unbekannter Zweig"
 
-#: src/CutAndPaste.cpp:431
+#: src/CutAndPaste.cpp:423
 msgid "&Don't Add"
 msgstr "&Nicht hinzufügen"
 
-#: src/CutAndPaste.cpp:817 src/Text.cpp:393
+#: src/CutAndPaste.cpp:809 src/Text.cpp:393
 #, c-format
 msgid "Layout `%1$s' was not found."
 msgstr "Der Absatzstil ,%1$s` wurde nicht gefunden."
 
-#: src/CutAndPaste.cpp:818 src/Text.cpp:394
+#: src/CutAndPaste.cpp:810 src/Text.cpp:394
 msgid "Layout Not Found"
 msgstr "Absatzstil nicht gefunden"
 
-#: src/CutAndPaste.cpp:846
+#: src/CutAndPaste.cpp:838
 #, c-format
 msgid "Flex inset %1$s is undefined after reloading `%2$s' layout."
 msgstr ""
 "Die Einfügung %1$s ist nach dem Laden des Dokumentformats\n"
 ",%2$s` undefiniert."
 
-#: src/CutAndPaste.cpp:849
+#: src/CutAndPaste.cpp:841
 #, c-format
 msgid ""
 "Flex inset %1$s is undefined because of conversion from `%2$s' layout to `"
@@ -26959,7 +26963,7 @@ msgstr ""
 "Der Zeichenstil %1$s ist aufgrund des Wechsels vom\n"
 "Dokumentformat ,%2$s` zu ,%3$s` undefiniert."
 
-#: src/CutAndPaste.cpp:854
+#: src/CutAndPaste.cpp:846
 msgid "Undefined flex inset"
 msgstr "Undefinierter Zeichenstil"
 
