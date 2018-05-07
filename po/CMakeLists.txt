@@ -58,7 +58,7 @@ macro(add_gettext_python  _par _dir)
 	"-DSources=${_src_files}"
         "-DLYX_PY_POLIB=${LYX_PY_POLIB}"
 	-P "${TOP_SRC_DIR}/po/CreateLayoutTranslations.cmake"
-      DEPENDS ${_sources} ${_src_files} "${TOP_SRC_DIR}/lib/layouttranslations"
+      DEPENDS ${_sources} ${_src_files} "${TOP_SRC_DIR}/lib/layouttranslations" "${TOP_SRC_DIR}/po/lyx_pot.py"
       COMMENT "${LYX_PYTHON_EXECUTABLE} ${TOP_SRC_DIR}/po/lyx_pot.py -b ${TOP_SRC_DIR} -o  ${_dst} -t ${_par1} --src_file=${_src_files}"
       )
     ADD_CUSTOM_TARGET(layouttranslations1 DEPENDS "${_dst}")
@@ -74,7 +74,7 @@ macro(add_gettext_python  _par _dir)
       PRE_BUILD
       COMMAND ${LYX_PYTHON_EXECUTABLE}
       ARGS "${TOP_SRC_DIR}/po/lyx_pot.py" -b "${TOP_SRC_DIR}" -o "${_dst}" -t ${_par1} "--src_file=${_src_files}"
-      DEPENDS ${_sources} ${_src_files}
+      DEPENDS ${_sources} ${_src_files} "${TOP_SRC_DIR}/po/lyx_pot.py"
       COMMENT "${LYX_PYTHON_EXECUTABLE} ${TOP_SRC_DIR}/po/lyx_pot.py -b ${TOP_SRC_DIR} -o  ${_dst} -t ${_par1} --src_file=${_src_files}"
       )
     LIST(APPEND _py_sources "${_dst}")
