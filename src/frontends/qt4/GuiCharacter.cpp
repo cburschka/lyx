@@ -48,11 +48,11 @@ static QList<ShapePair> shapeData()
 {
 	QList<ShapePair> shapes;
 	shapes << ShapePair(qt_("No change"), IGNORE_SHAPE);
+	shapes << ShapePair(qt_("Default"), INHERIT_SHAPE);
 	shapes << ShapePair(qt_("Upright"), UP_SHAPE);
 	shapes << ShapePair(qt_("Italic"), ITALIC_SHAPE);
 	shapes << ShapePair(qt_("Slanted"), SLANTED_SHAPE);
 	shapes << ShapePair(qt_("Small Caps"), SMALLCAPS_SHAPE);
-	shapes << ShapePair(qt_("Reset"), INHERIT_SHAPE);
 	return shapes;
 }
 
@@ -61,6 +61,7 @@ static QList<SizePair> sizeData()
 {
 	QList<SizePair> sizes;
 	sizes << SizePair(qt_("No change"), FONT_SIZE_IGNORE);
+	sizes << SizePair(qt_("Default"), FONT_SIZE_INHERIT);
 	sizes << SizePair(qt_("Tiny"), FONT_SIZE_TINY);
 	sizes << SizePair(qt_("Smallest"), FONT_SIZE_SCRIPT);
 	sizes << SizePair(qt_("Smaller"), FONT_SIZE_FOOTNOTE);
@@ -73,7 +74,6 @@ static QList<SizePair> sizeData()
 	sizes << SizePair(qt_("Huger"), FONT_SIZE_HUGER);
 	sizes << SizePair(qt_("Increase"), FONT_SIZE_INCREASE);
 	sizes << SizePair(qt_("Decrease"), FONT_SIZE_DECREASE);
-	sizes << SizePair(qt_("Reset"), FONT_SIZE_INHERIT);
 	return sizes;
 }
 
@@ -82,11 +82,11 @@ static QList<BarPair> barData()
 {
 	QList<BarPair> bars;
 	bars << BarPair(qt_("No change"), IGNORE);
+	bars << BarPair(qt_("Default"), INHERIT);
 	bars << BarPair(qt_("(Without)[[underlining]]"), NONE);
 	bars << BarPair(qt_("Single[[underlining]]"), UNDERBAR);
 	bars << BarPair(qt_("Double[[underlining]]"), UULINE);
 	bars << BarPair(qt_("Wavy"), UWAVE);
-	bars << BarPair(qt_("Reset"), INHERIT);
 	return bars;
 }
 
@@ -95,10 +95,10 @@ static QList<BarPair> strikeData()
 {
 	QList<BarPair> strike;
 	strike << BarPair(qt_("No change"), IGNORE);
+	strike << BarPair(qt_("Default"), INHERIT);
 	strike << BarPair(qt_("(Without)[[strikethrough]]"), NONE);
 	strike << BarPair(qt_("Single[[strikethrough]]"), STRIKEOUT);
 	strike << BarPair(qt_("With /"), XOUT);
-	strike << BarPair(qt_("Reset"), INHERIT);
 	return strike;
 }
 
@@ -133,9 +133,9 @@ static QList<SeriesPair> seriesData()
 {
 	QList<SeriesPair> series;
 	series << SeriesPair(qt_("No change"), IGNORE_SERIES);
+	series << SeriesPair(qt_("Default"),     INHERIT_SERIES);
 	series << SeriesPair(qt_("Medium"),    MEDIUM_SERIES);
 	series << SeriesPair(qt_("Bold"),      BOLD_SERIES);
-	series << SeriesPair(qt_("Reset"),     INHERIT_SERIES);
 	return series;
 }
 
@@ -144,10 +144,10 @@ static QList<FamilyPair> familyData()
 {
 	QList<FamilyPair> families;
 	families << FamilyPair(qt_("No change"),  IGNORE_FAMILY);
+	families << FamilyPair(qt_("Default"),      INHERIT_FAMILY);
 	families << FamilyPair(qt_("Roman"),      ROMAN_FAMILY);
 	families << FamilyPair(qt_("Sans Serif"), SANS_FAMILY);
 	families << FamilyPair(qt_("Typewriter"), TYPEWRITER_FAMILY);
-	families << FamilyPair(qt_("Reset"),      INHERIT_FAMILY);
 	return families;
 }
 
@@ -157,7 +157,7 @@ static QList<LanguagePair> languageData()
 	QList<LanguagePair> list;
 	// FIXME (Abdel 14/05/2008): it would be nice if we could use this model
 	// directly in the language combo; but, as we need also the 'No Change' and
-	// 'Reset' items, this is not possible right now. Separating those two
+	// 'Default' items, this is not possible right now. Separating those two
 	// entries in radio buttons would be a better GUI IMHO.
 	QAbstractItemModel * language_model = guiApp->languageModel();
 	// Make sure the items are sorted.
@@ -187,6 +187,7 @@ void fillComboColor(QComboBox * combo, QList<T> const & list)
 {
 	// at first add the 2 colors "No change" and "No color"
 	combo->addItem(qt_("No change"), "ignore");
+	combo->addItem(qt_("Default"), "inherit");
 	combo->addItem(qt_("(Without)[[color]]"), "none");
 	// now add the real colors
 	QPixmap coloritem(32, 32);
@@ -199,8 +200,6 @@ void fillComboColor(QComboBox * combo, QList<T> const & list)
 		coloritem.fill(color);
 		combo->addItem(QIcon(coloritem), guiname, lyxname);
 	}
-	//the last color is "Reset"
-	combo->addItem(qt_("Reset"), "inherit");
 }
 
 } // namespace
@@ -236,7 +235,7 @@ GuiCharacter::GuiCharacter(GuiView & lv)
 	qSort(color.begin(), color.end(), ColorSorter);
 
 	language = languageData();
-	language.prepend(LanguagePair(qt_("Reset"), "reset"));
+	language.prepend(LanguagePair(qt_("Default"), "reset"));
 	language.prepend(LanguagePair(qt_("No change"), "ignore"));
 
 	fillCombo(familyCO, family);
