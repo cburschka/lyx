@@ -8337,14 +8337,12 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim
-
 This is Verbatim.
 \end_layout
 
 \begin_layout Verbatim
 \noindent
 \align block
-
 The following 2 lines are empty:
 \end_layout
 
@@ -8357,7 +8355,6 @@ The following 2 lines are empty:
 \end_layout
 
 \begin_layout Verbatim
-
 Almost everything is allowed in Verbatim:"%&$§#~'`
 \backslash
 }][{|
@@ -8381,7 +8378,6 @@ Verbatim
 \end_layout
 
 \begin_layout Verbatim*
-
 This is Verbatim*.
 \end_layout
 
@@ -14541,8 +14537,16 @@ change
 \family default
 , which keeps the current state of that property.
  The item 
+\change_deleted -712698321 1525677079
+
 \family sans
-Reset
+R
+\change_inserted -712698321 1525677076
+Default
+\change_deleted -712698321 1525677077
+eset
+\change_unchanged
+
 \family default
  will reset the property to whatever is the default.
  You can use this to reset attributes across a bunch of different paragraph
@@ -14565,8 +14569,14 @@ No
 change
 \family default
  and 
+\change_deleted -712698321 1525677094
+
 \family sans
 Reset
+\change_inserted -712698321 1525677096
+Default
+\change_unchanged
+
 \family default
 ) are:
 \end_layout
