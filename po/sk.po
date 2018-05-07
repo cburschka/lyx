@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-05-05 19:12+0200\n"
-"PO-Revision-Date: 2018-05-05 17:13+0000\n"
+"POT-Creation-Date: 2018-05-07 09:14+0200\n"
+"PO-Revision-Date: 2018-05-07 07:14+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -2074,6 +2074,10 @@ msgstr "Odkaz na e-mailovú adresu"
 msgid "E&mail"
 msgstr "E-ma&il"
 
+#: src/frontends/qt4/ui/CharacterUi.ui:362
+msgid "E&xclude from Spellchecking"
+msgstr "&Bez Kontroly Písma"
+
 #: src/frontends/qt4/ui/HyperlinkUi.ui:153
 msgid "Link to a file"
 msgstr "Odkaz na súbor"
@@ -3167,10 +3171,6 @@ msgstr "Na výš&ku"
 msgid "&Landscape"
 msgstr "Na šírk&u"
 
-#: src/frontends/qt4/ui/CharacterUi.ui:250
-msgid "&Language"
-msgstr "&Jazyk"
-
 #: src/frontends/qt4/ui/PageLayoutUi.ui:162
 #: src/frontends/qt4/GuiDocument.cpp:1499
 msgid "Page Layout"
@@ -3902,6 +3902,10 @@ msgstr "0.95"
 msgid ""
 "If this is checked, the middle mouse button will paste the recent selection"
 msgstr "Aktivuje vlepenie výberu stredným tlačidlom myši"
+
+#: src/frontends/qt4/ui/CharacterUi.ui:359
+msgid "If this is selected, the marked text will not be spellchecked"
+msgstr "Keď zaškrtnuté, tak vybraný text je vyňatý z kontroly pravopisu"
 
 #: src/frontends/qt4/ui/PrefInputUi.ui:197
 msgid "&Middle mouse button pasting"
@@ -29123,14 +29127,6 @@ msgstr "Bez zmeny"
 #: src/frontends/qt4/GuiCharacter.cpp:53
 msgid "Small Caps"
 msgstr "Malé kapitálky"
-
-#: src/frontends/qt4/GuiCharacter.cpp:54 src/frontends/qt4/GuiCharacter.cpp:75
-#: src/frontends/qt4/GuiCharacter.cpp:91 src/frontends/qt4/GuiCharacter.cpp:128
-#: src/frontends/qt4/GuiCharacter.cpp:140
-#: src/frontends/qt4/GuiCharacter.cpp:193
-#: src/frontends/qt4/GuiCharacter.cpp:228
-msgid "Reset"
-msgstr "Vynulovať"
 
 #: src/frontends/qt4/GuiCharacter.cpp:199
 msgid "Text Style"
