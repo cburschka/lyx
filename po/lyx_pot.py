@@ -47,6 +47,7 @@ def ui_l10n(input_files, output, base):
     output = io.open(output, 'w', encoding='utf_8', newline='\n')
     Submenu = re.compile(r'^[^#]*Submenu\s+"([^"]*)"', re.IGNORECASE)
     Popupmenu = re.compile(r'^[^#]*PopupMenu\s+"[^"]+"\s+"([^"]*)"', re.IGNORECASE)
+    Dynamicmenu = re.compile(r'^[^#]*DynamicMenu\s+"[^"]+"\s+"([^"]*)"', re.IGNORECASE)
     IconPalette = re.compile(r'^[^#]*IconPalette\s+"[^"]+"\s+"([^"]*)"', re.IGNORECASE)
     Toolbar = re.compile(r'^[^#]*Toolbar\s+"[^"]+"\s+"([^"]*)"', re.IGNORECASE)
     Item = re.compile(r'[^#]*Item\s+"([^"]*)"', re.IGNORECASE)
@@ -59,6 +60,8 @@ def ui_l10n(input_files, output, base):
                 string = string.replace('_', ' ')
             elif Popupmenu.match(line):
                 (string,) = Popupmenu.match(line).groups()
+            elif Dynamicmenu.match(line):
+                (string,) = Dynamicmenu.match(line).groups()
             elif IconPalette.match(line):
                 (string,) = IconPalette.match(line).groups()
             elif Toolbar.match(line):
