@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-05-07 09:14+0200\n"
-"PO-Revision-Date: 2018-05-07 07:14+0000\n"
+"POT-Creation-Date: 2018-05-08 07:56+0200\n"
+"PO-Revision-Date: 2018-05-08 06:36+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -937,6 +937,10 @@ msgstr "Veľkosť písma"
 #: src/frontends/qt4/ui/CharacterUi.ui:305
 msgid "Apply each change automatically"
 msgstr "Používať každú zmenu automaticky"
+
+#: lib/ui/stdtoolbars.inc:90
+msgid "Apply last text properties"
+msgstr "Použiť posledné vlastnosti textu"
 
 #: src/frontends/qt4/ui/CharacterUi.ui:308
 msgid "Apply changes &immediately"
@@ -4974,6 +4978,10 @@ msgstr "LaTe&X argument:"
 msgid "Custom column format (LaTeX)"
 msgstr "Vlastný formát stĺpca (LaTeX)"
 
+#: lib/ui/stdtoolbars.inc:95
+msgid "Custom insets"
+msgstr "Vlastné vložky"
+
 #: src/frontends/qt4/ui/TabularUi.ui:584
 msgid "&Borders"
 msgstr "Okra&je"
@@ -6006,6 +6014,10 @@ msgstr "Poznámka Tabuľky"
 #: lib/layouts/AEA.layout:143
 msgid "Text of a note in a table"
 msgstr "Text poznámky v tabuľke"
+
+#: lib/ui/stdtoolbars.inc:141
+msgid "Text properties"
+msgstr "Vlastnosti textu"
 
 #: lib/layouts/AEA.layout:147 lib/layouts/acmart.layout:545
 #: lib/layouts/beamer.layout:1305 lib/layouts/elsart.layout:272
@@ -13117,6 +13129,10 @@ msgstr "Vlastné Číslovanie|V"
 msgid "Customize the numeration"
 msgstr "Prispôsobiť číslovanie"
 
+#: lib/ui/stdmenus.inc:183
+msgid "Customize...|C"
+msgstr "Prispôsobiť…|r"
+
 #: lib/layouts/linguistics.module:89
 msgid "Subexample"
 msgstr "Podpríklad"
@@ -15047,6 +15063,10 @@ msgstr "[Obsah Pokroku]"
 #: lib/layouts/shapepar.module:2
 msgid "Custom Paragraph Shapes"
 msgstr "Vlastné Tvary Odstavca"
+
+#: lib/ui/stdcontext.inc:363 lib/ui/stdmenus.inc:123
+msgid "Custom Text Styles|S"
+msgstr "Vlastné Štýly Textu|x"
 
 #: lib/layouts/shapepar.module:7
 msgid ""
@@ -18181,9 +18201,9 @@ msgstr "Vlepiť"
 msgid "Paste Recent|e"
 msgstr "Vlepiť Nedávne|l"
 
-#: lib/ui/stdcontext.inc:340
+#: lib/ui/stdcontext.inc:344
 msgid "Jump Back to Saved Bookmark|B"
-msgstr "Skoč Späť na Uloženú Záložku|u"
+msgstr "Skoč Späť na Uloženú Záložku|S"
 
 #: lib/ui/stdcontext.inc:341 lib/ui/stdmenus.inc:573
 msgid "Forward Search|F"
@@ -18224,14 +18244,6 @@ msgstr "Akceptovať Zmenu|e"
 #: lib/ui/stdcontext.inc:356
 msgid "Reject Change|j"
 msgstr "Odmietnuť Zmenu|m"
-
-#: lib/ui/stdcontext.inc:358
-msgid "Apply Last Text Style|A"
-msgstr "Použiť Posledný Štýl Textu|s"
-
-#: lib/ui/stdcontext.inc:359
-msgid "Text Style|x"
-msgstr "Štýl Textu|T"
 
 #: lib/ui/stdcontext.inc:360 lib/ui/stdmenus.inc:123
 msgid "Paragraph Settings...|P"
@@ -18718,10 +18730,6 @@ msgstr "Nájsť a Nahradiť (Rýchle)…|N"
 msgid "Find & Replace (Advanced)..."
 msgstr "Nájsť a Nahradiť (Rozšírené)…"
 
-#: lib/ui/stdmenus.inc:121
-msgid "Text Style|S"
-msgstr "Štýl Textu|x"
-
 #: lib/ui/stdmenus.inc:126
 msgid "Table|T"
 msgstr "Tabuľka|T"
@@ -18770,17 +18778,9 @@ msgstr "Nastavenia Fantómu…|F"
 msgid "Branch Settings...|B"
 msgstr "Nastavenia Vetvy…|e"
 
-#: lib/ui/stdmenus.inc:145
-msgid "Box Settings...|x"
-msgstr "Nastavenia Rámiku…|R"
-
 #: lib/ui/stdmenus.inc:146
 msgid "Index Entry Settings...|y"
 msgstr "Nastavenia Registrových Hesiel…|c"
-
-#: lib/ui/stdmenus.inc:147
-msgid "Index Settings...|x"
-msgstr "Nastavenia Registra…|g"
 
 #: lib/ui/stdmenus.inc:148
 msgid "Info Settings...|n"
@@ -18790,9 +18790,9 @@ msgstr "Nastavenia pre Info…|I"
 msgid "Listings Settings...|g"
 msgstr "Nastavenia Výpisu…|a"
 
-#: lib/ui/stdmenus.inc:153
+#: lib/ui/stdmenus.inc:154
 msgid "Table Settings...|a"
-msgstr "Nastavenia Tabuľky…|u"
+msgstr "Nastavenia Tabuľky…|ľ"
 
 #: lib/ui/stdmenus.inc:157
 msgid "Paste from HTML|H"
@@ -18856,10 +18856,6 @@ msgstr "Výber, Spojiť Riadky|b"
 #: lib/ui/stdmenus.inc:182
 msgid "Dissolve Text Style"
 msgstr "Rozpustiť Štýl Znakov do Textu"
-
-#: lib/ui/stdmenus.inc:186
-msgid "Customized...|C"
-msgstr "Vlastné…|l"
 
 #: lib/ui/stdmenus.inc:188
 msgid "Capitalize|a"
@@ -18941,10 +18937,6 @@ msgstr "Definícia Makra"
 msgid "Change Formula Type|F"
 msgstr "Zmeniť Typ Vzorcov|V"
 
-#: lib/ui/stdmenus.inc:243
-msgid "Text Style|T"
-msgstr "Štýl Textu|T"
-
 #: lib/ui/stdmenus.inc:245
 msgid "Use Computer Algebra System|S"
 msgstr "Použiť Systém Computer Algebra|S"
@@ -19012,6 +19004,18 @@ msgstr "Mat. Tučný Duktus|D"
 #: lib/ui/stdmenus.inc:291
 msgid "Text Normal Font|T"
 msgstr "Text. Normálne Písmo|T"
+
+#: src/frontends/qt4/GuiCharacter.cpp:208
+msgid "Text Properties"
+msgstr "Vlastnosti Textu"
+
+#: lib/ui/stdmenus.inc:247
+msgid "Text Properties|T"
+msgstr "Vlastnosti Textu|T"
+
+#: lib/ui/stdcontext.inc:362 lib/ui/stdmenus.inc:122
+msgid "Text Properties|x"
+msgstr "Vlastnosti Textu|u"
 
 #: lib/ui/stdmenus.inc:293
 msgid "Text Roman Family"
@@ -19665,10 +19669,6 @@ msgstr "Prepnúť zvýraznenie"
 msgid "Toggle noun"
 msgstr "Prepnúť štýl Meno"
 
-#: lib/ui/stdtoolbars.inc:89
-msgid "Apply last"
-msgstr "Použiť posledné"
-
 #: lib/ui/stdtoolbars.inc:91
 msgid "Insert math"
 msgstr "Vložiť matematiku"
@@ -19808,10 +19808,6 @@ msgstr "Vložiť mat. makro"
 #: lib/ui/stdtoolbars.inc:137
 msgid "Include file"
 msgstr "Zahrnúť súbor"
-
-#: lib/ui/stdtoolbars.inc:139
-msgid "Text style"
-msgstr "Štýl textu"
 
 #: lib/ui/stdtoolbars.inc:140
 msgid "Paragraph settings"
@@ -25916,6 +25912,10 @@ msgstr "`inset-forall' prerušené lebo počet akcií je väčší ako %1$d"
 msgid "Applied \"%1$s\" to %2$d insets"
 msgstr "Aplikované \"%1$s\" na %2$d vložkách"
 
+#: lib/ui/stdmenus.inc:184
+msgid "Apply Last Settings|A"
+msgstr "Použiť Posledné Nastavenia|s"
+
 #: src/BufferView.cpp:1973
 msgid "Branch name"
 msgstr "Meno vetvy"
@@ -29040,6 +29040,10 @@ msgstr "Makebox"
 msgid "Box Settings"
 msgstr "Nastavenia Rámiku"
 
+#: lib/ui/stdmenus.inc:146
+msgid "Box Settings...|S"
+msgstr "Nastavenia Rámiku…|R"
+
 #: src/frontends/qt4/GuiBranch.h:35
 msgid "Branch Settings"
 msgstr "Nastavenia Vetvy"
@@ -29127,10 +29131,6 @@ msgstr "Bez zmeny"
 #: src/frontends/qt4/GuiCharacter.cpp:53
 msgid "Small Caps"
 msgstr "Malé kapitálky"
-
-#: src/frontends/qt4/GuiCharacter.cpp:199
-msgid "Text Style"
-msgstr "Štýl Textu"
 
 #: src/frontends/qt4/GuiCitation.cpp:104 src/frontends/qt4/GuiRef.cpp:60
 #: src/frontends/qt4/PanelStack.cpp:77
@@ -30660,6 +30660,10 @@ msgstr "Nastavenia Listiny Nomenklatúry"
 #: src/frontends/qt4/GuiPrintindex.cpp:37
 msgid "Index Settings"
 msgstr "Nastavenia Registra"
+
+#: lib/ui/stdmenus.inc:148
+msgid "Index Settings...|S"
+msgstr "Nastavenia Registra…|g"
 
 #: src/frontends/qt4/GuiPrintindex.cpp:70
 msgid "<All indexes>"
@@ -33521,6 +33525,10 @@ msgstr "Čítanie konfiguračných súborov"
 msgid "Custom keyboard definition"
 msgstr "Vlastná definícia klávesnice"
 
+#: lib/ui/stdtoolbars.inc:89
+msgid "Custom text styles"
+msgstr "Vlastné štýly textu|V"
+
 #: src/support/debug.cpp:49
 msgid "LaTeX generation/execution"
 msgstr "Spúšťanie/generovanie LaTeX-u"
@@ -33706,6 +33714,24 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
+
+#~ msgid "Character Styles"
+#~ msgstr "Štýly Znakov"
+
+#~ msgid "Text Style|x"
+#~ msgstr "Štýl Textu|T"
+
+#~ msgid "Text Style|T"
+#~ msgstr "Štýl Textu|T"
+
+#~ msgid "Apply last"
+#~ msgstr "Použiť posledné"
+
+#~ msgid "Text style"
+#~ msgstr "Štýl textu"
+
+#~ msgid "Text Style"
+#~ msgstr "Štýl Textu"
 
 #~ msgid "Other font settings"
 #~ msgstr "Ďalšie nastavenie písma"
@@ -38284,3 +38310,18 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "&Family:"
 #~ msgstr "&Rodina:"
+
+#~ msgid "Apply Last Text Style|A"
+#~ msgstr "Použiť Posledný Štýl Textu|s"
+
+#~ msgid "Text Style|S"
+#~ msgstr "Štýl Textu|x"
+
+#~ msgid "Box Settings...|x"
+#~ msgstr "Nastavenia Rámiku…|R"
+
+#~ msgid "Index Settings...|x"
+#~ msgstr "Nastavenia Registra…|g"
+
+#~ msgid "Customized...|C"
+#~ msgstr "Vlastné…|l"
