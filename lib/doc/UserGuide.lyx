@@ -3360,7 +3360,13 @@ Modules are to \SpecialChar LyX
  If you often find yourself needing the same sort of thing in different
  documents, you should consider writing a module for this purpose.
  Sometimes, however, a particular document has very special needs, but you
- need a specific inset or character style only that one time.
+ need a specific inset or 
+\change_deleted -712698321 1525757388
+character
+\change_inserted -712698321 1525757388
+text
+\change_unchanged
+ style only that one time.
  You want something that is like a document's own \SpecialChar LaTeX
  preamble.
  What you want is \SpecialChar LyX
@@ -12599,7 +12605,13 @@ To see which fonts are used in a PDF-document, look at its document properties.
 
 \begin_layout Standard
 Many modern typesetting and markup languages have begun to move towards
- specifying character styles rather than specifying a particular font.
+ specifying 
+\change_deleted -712698321 1525757415
+character
+\change_inserted -712698321 1525757415
+text
+\change_unchanged
+ styles rather than specifying a particular font.
  For example, instead of changing to an italicized version of the current
  font to emphasize text, you use an 
 \begin_inset Quotes eld
@@ -13644,7 +13656,13 @@ Modern
 \end_layout
 
 \begin_layout Subsection
-Using Different Character Styles
+Using Different 
+\change_deleted -712698321 1525757119
+Character
+\change_inserted -712698321 1525757120
+Text
+\change_unchanged
+ Styles
 \change_inserted -712698321 1525595783
 
 \begin_inset CommandInset label
@@ -13686,12 +13704,12 @@ character
 \change_unchanged
 style for certain paragraph environments.
 
-\change_inserted -712698321 1525601107
+\change_inserted -712698321 1525757169
  In this section, we will explain how the style of selected text passages
  can by changed.
  This is where we meet the concept of 
 \emph on
-character styles
+text styles
 \emph default
 .
 
@@ -13707,7 +13725,13 @@ character styles
 By default, 
 \change_unchanged
 \SpecialChar LyX
- supports two character styles, 
+ supports two 
+\change_deleted -712698321 1525757160
+character
+\change_inserted -712698321 1525757161
+text
+\change_unchanged
+ styles, 
 \emph on
 Emphasized
 \emph default
@@ -13717,7 +13741,7 @@ Noun
 \noun default
 .
  
-\change_inserted -712698321 1525601215
+\change_inserted -712698321 1525757189
 These are 
 \emph on
 builtin
@@ -13729,19 +13753,19 @@ builtin
 e., available with all document classes.
  On top of that, some document classes and modules provide 
 \emph on
-custom character styles
+custom text styles
 \emph default
  for specific purposes.
- We describe both types of characters styles in a minute.
+ We describe both types of text styles in a minute.
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted -712698321 1525601474
+\change_inserted -712698321 1525757201
 Before we do that, though, allow us just a few words of what we mean by
  
 \emph on
-character styles
+text styles
 \emph default
  in contrast to 
 \emph on
@@ -13801,15 +13825,7 @@ text properties
 \emph default
 , they encourage the use of 
 \emph on
-character 
-\emph default
-(or 
-\emph on
-text
-\emph default
-)
-\emph on
- styles
+text styles
 \emph default
 , who are defined with regard to their function (e.
 \begin_inset space \thinspace{}
@@ -13865,9 +13881,9 @@ Noun
 
 \begin_layout Standard
 
-\change_inserted -712698321 1525597858
-With that in mind, we now turn to the semantic character styles that are
- provided by \SpecialChar LyX
+\change_inserted -712698321 1525757213
+With that in mind, we now turn to the semantic text styles that are provided
+ by \SpecialChar LyX
 .
 \change_unchanged
 
@@ -13875,8 +13891,8 @@ With that in mind, we now turn to the semantic character styles that are
 
 \begin_layout Subsubsection
 
-\change_inserted -712698321 1525600514
-Builtin Character Styles
+\change_inserted -712698321 1525757220
+Builtin Text Styles
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Builtin-Character-Styles"
@@ -13888,8 +13904,8 @@ name "subsec:Builtin-Character-Styles"
 
 \begin_layout Standard
 
-\change_inserted -712698321 1525596484
-The two builtin character styles can be 
+\change_inserted -712698321 1525757226
+The two builtin text styles can be 
 \change_deleted -712698321 1525596489
 You can 
 \change_unchanged
@@ -14031,7 +14047,13 @@ Small Caps
 \end_layout
 
 \begin_layout Standard
-A more widely used character style is the 
+A more widely used 
+\change_deleted -712698321 1525757229
+character
+\change_inserted -712698321 1525757229
+text
+\change_unchanged
+ style is the 
 \family sans
 Emphasized
 \family default
@@ -14132,14 +14154,26 @@ Emphasized
 \begin_layout Quotation
 
 \emph on
-Do not overuse character styles!
+Do not overuse 
+\change_deleted -712698321 1525757231
+character
+\change_inserted -712698321 1525757231
+text
+\change_unchanged
+ styles!
 \end_layout
 
 \begin_layout Standard
 It's also a warning in addition to an example.
  One's writing should parallel ordinary conversation.
  Since we don't all constantly scream at each other, we should also avoid
- the common tendency to overuse character styles.
+ the common tendency to overuse 
+\change_deleted -712698321 1525757236
+character
+\change_inserted -712698321 1525757236
+text
+\change_unchanged
+ styles.
  
 \change_inserted -712698321 1525598419
 
@@ -14147,11 +14181,11 @@ It's also a warning in addition to an example.
 
 \begin_layout Standard
 
-\change_inserted -712698321 1525598505
-In contrast to the custom character styles, the builtin styles are represented
+\change_inserted -712698321 1525757709
+In contrast to the custom text styles, the builtin styles are represented
  only as font changes and integrated in the 
 \family sans
-Text Style
+Text Properties
 \family default
  dialog.
  
@@ -14213,8 +14247,8 @@ arg   "dialog-show character"
 
 \begin_layout Subsubsection
 
-\change_inserted -712698321 1525599406
-Custom Character Styles
+\change_inserted -712698321 1525756578
+Custom Text Styles
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Custom-Character-Styles"
@@ -14226,9 +14260,9 @@ name "subsec:Custom-Character-Styles"
 
 \begin_layout Standard
 
-\change_inserted -712698321 1525598904
-Custom character styles can be provided by the document class, a module
- (see section
+\change_inserted -712698321 1525757241
+Custom text styles can be provided by the document class, a module (see
+ section
 \begin_inset space ~
 \end_inset
 
@@ -14264,8 +14298,8 @@ semantic
 \emph on
 Linguistics
 \emph default
- module that provides, among other things, some custom character styles
- to markup linguistic levels: 
+ module that provides, among other things, some custom text styles to markup
+ linguistic levels: 
 \emph on
 expressions
 \emph default
@@ -14286,18 +14320,18 @@ meanings
 
 \begin_layout Standard
 
-\change_inserted -712698321 1525598951
+\change_inserted -712698321 1525757806
 These styles can be found, if available, in the 
 \family sans
 Edit\SpecialChar menuseparator
-Text Style
+Text Styles
 \family default
  menu.
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted -712698321 1525599380
+\change_inserted -712698321 1525757245
 For the purpose of demonstration, we have loaded in this document the optional
  module 
 \family sans
@@ -14310,7 +14344,7 @@ Logical Markup
 \emph on
 emphasized style
 \emph default
- appears as normal font change, the custom character style 
+ appears as normal font change, the custom text style 
 \begin_inset Flex Emph
 status open
 
@@ -14325,7 +14359,7 @@ Emph
 \end_inset
 
  appears as an inset, with a label below that identifies its semantics.
- This is the way all custom character styles look and feel like.
+ This is the way all custom text styles look and feel like.
  For instance, the three others from the module we have loaded are: 
 \begin_inset Flex Code
 status open
@@ -14369,8 +14403,8 @@ Noun
 \end_inset
 
 .
- Note that custom character styles might (as in the example) or might not
- emulate on screen their formal appearance.
+ Note that custom text styles might (as in the example) or might not emulate
+ on screen their formal appearance.
 \change_unchanged
 
 \end_layout
@@ -14384,11 +14418,17 @@ Tweaking
 \change_unchanged
  
 \change_inserted -712698321 1525599462
-Text Properties 
+Text 
 \change_unchanged
 with the 
 \family sans
-Text Style
+Text 
+\change_deleted -712698321 1525756524
+Style
+\change_inserted -712698321 1525756526
+Properties
+\change_unchanged
+
 \family default
  
 \change_deleted -712698321 1525599485
@@ -14445,11 +14485,11 @@ character style
 
 \begin_layout Standard
 
-\change_inserted -712698321 1525601791
-If there are no custom character styles provided by the document class or
- a module for this purpose (which is, as written above, generally the better
- way of handling such issues), you often find yourself wanting to quickly
- tweak the properties of the respective text passages.
+\change_inserted -712698321 1525757255
+If there are no custom text styles provided by the document class or a module
+ for this purpose (which is, as written above, generally the better way
+ of handling such issues), you often find yourself wanting to quickly tweak
+ the properties of the respective text passages.
  That's where 
 \emph on
 formal markup
@@ -15829,9 +15869,9 @@ This is used to make text hardly readable.
 \end_deeper
 \begin_layout Standard
 
-\change_inserted -712698321 1525600643
+\change_inserted -712698321 1525757268
 In addition to all the formal markup described above, the dialog also provides
- you access to the two builtin semantic character styles (see section
+ you access to the two builtin semantic text styles (see section
 \begin_inset space ~
 \end_inset
 
@@ -29681,9 +29721,7 @@ status open
 
 \begin_layout Plain Layout
 
-https://en.wikipedia.org/wiki/ASCII
-\backslash
-#Character_set
+https://en.wikipedia.org/wiki/ASCII#Character_set
 \end_layout
 
 \end_inset
@@ -39105,36 +39143,15 @@ This shifts the paragraph in which the cursor currently is one paragraph
 \end_layout
 
 \begin_layout Subsection
+
+\change_deleted -712698321 1525756612
 Text Style
 \end_layout
 
 \begin_layout Standard
 
-\change_inserted -712698321 1525595818
-This sub-menu provides several ways to customize the appearance of text
- passages.
- You can
-\end_layout
-
-\begin_layout Enumerate
-
-\change_inserted -712698321 1525595876
-Customize text properties by means of the 
-\family sans
-Text Style
-\family default
- dialog (via 
-\family sans
-Customized\SpecialChar ldots
-
-\family default
-; this is 
-\change_deleted -712698321 1525595580
-D
-\change_inserted -712698321 1525595580
-d
-\change_unchanged
-escribed in section
+\change_deleted -712698321 1525756612
+Described in section
 \begin_inset space ~
 \end_inset
 
@@ -39145,65 +39162,7 @@ reference "subsec:Fine-Tuning-with-the"
 
 \end_inset
 
-
-\change_inserted -712698321 1525595582
-)
-\change_deleted -712698321 1525595616
 .
-\change_inserted -712698321 1525595617
-
-\end_layout
-
-\begin_layout Enumerate
-
-\change_inserted -712698321 1525595704
-Change the casing of selected text (
-\family sans
-Capitalize
-\family default
-, 
-\family sans
-Uppercase
-\family default
-, 
-\family sans
-Lowercase
-\family default
-)
-\end_layout
-
-\begin_layout Enumerate
-
-\change_inserted -712698321 1525599421
-Select custom character styles if provided by the document class or a module
- (in the case of this document: 
-\family sans
-Code
-\family default
-, 
-\family sans
-Emph
-\family default
-, 
-\family sans
-Noun
-\family default
- and 
-\family sans
-Strong
-\family default
-; see section
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:Custom-Character-Styles"
-
-\end_inset
-
-)
 \change_unchanged
 
 \end_layout
@@ -39245,6 +39204,121 @@ Text
 Layout
 \family default
  dialog.
+\change_inserted -712698321 1525756614
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1525756624
+Text Properties
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1525756615
+This sub-menu provides several ways to customize the appearance of text
+ passages.
+ You can
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -712698321 1525756657
+Customize text properties by means of the 
+\family sans
+Text Properties
+\family default
+ dialog (via 
+\family sans
+Customize\SpecialChar ldots
+
+\family default
+; this is described in section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Fine-Tuning-with-the"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -712698321 1525756942
+Apply the last settings done in this dialog via 
+\family sans
+Apply last settings
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted -712698321 1525756615
+Change the casing of selected text (
+\family sans
+Capitalize
+\family default
+, 
+\family sans
+Uppercase
+\family default
+, 
+\family sans
+Lowercase
+\family default
+)
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1525756641
+Custom Text Styles
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1525756787
+This sub-menu only appears the document class or a module provides custom
+ text styles (in the case of this document: 
+\family sans
+Code
+\family default
+, 
+\family sans
+Emph
+\family default
+, 
+\family sans
+Noun
+\family default
+ and 
+\family sans
+Strong
+\family default
+, provided by the 
+\family sans
+Logical Markup
+\family default
+ module).
+ See section
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Custom-Character-Styles"
+
+\end_inset
+
+ for details.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection
@@ -42641,6 +42715,8 @@ arg   "font-emph"
 
 \begin_layout Plain Layout
 Emphasize text, function of the 
+\change_deleted -712698321 1525758222
+
 \family sans
 Edit\SpecialChar menuseparator
 Text
@@ -42649,7 +42725,17 @@ Text
 
 Style\SpecialChar menuseparator
 Customized
+\change_inserted -712698321 1525758222
+
 \family default
+
+\begin_inset Info
+type  "menu"
+arg   "dialog-show character"
+\end_inset
+
+
+\change_unchanged
  dialog
 \end_layout
 
@@ -42678,6 +42764,8 @@ arg   "font-noun"
 
 \begin_layout Plain Layout
 Set text to noun style, function of the 
+\change_deleted -712698321 1525758226
+
 \family sans
 Edit\SpecialChar menuseparator
 Text
@@ -42686,7 +42774,17 @@ Text
 
 Style\SpecialChar menuseparator
 Customized
+\change_inserted -712698321 1525758226
+
 \family default
+
+\begin_inset Info
+type  "menu"
+arg   "dialog-show character"
+\end_inset
+
+
+\change_unchanged
  dialog
 \end_layout
 
@@ -42715,6 +42813,8 @@ arg   "textstyle-apply"
 
 \begin_layout Plain Layout
 Format text using the current settings in the 
+\change_deleted -712698321 1525758229
+
 \family sans
 Edit\SpecialChar menuseparator
 Text
@@ -42723,7 +42823,17 @@ Text
 
 Style\SpecialChar menuseparator
 Customized
+\change_inserted -712698321 1525758229
+
 \family default
+
+\begin_inset Info
+type  "menu"
+arg   "dialog-show character"
+\end_inset
+
+
+\change_unchanged
  dialog
 \end_layout
 

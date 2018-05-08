@@ -205,7 +205,7 @@ void fillComboColor(QComboBox * combo, QList<T> const & list)
 } // namespace
 
 GuiCharacter::GuiCharacter(GuiView & lv)
-	: GuiDialog(lv, "character", qt_("Text Style")),
+	: GuiDialog(lv, "character", qt_("Text Properties")),
 	  font_(ignore_font, ignore_language), emph_(false), noun_(false)
 {
 	setupUi(this);

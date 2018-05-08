@@ -359,8 +359,8 @@ Menuset
 		OptItem "Accept Change|c" "change-accept"
 		OptItem "Reject Change|j" "change-reject"
 		Separator
-		Item "Apply Last Text Style|A" "textstyle-apply"
-		Submenu "Text Style|x" "edit_textstyles"
+		Submenu "Text Properties|x" "edit_textprops"
+		OptSubmenu "Custom Text Styles|S" "edit_textstyles"
 		Item "Paragraph Settings...|P" "layout-paragraph"
 		OptItem "Unify Graphics Groups|U" "graphics-unify"
 		LanguageSelector

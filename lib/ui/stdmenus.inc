@@ -118,9 +118,10 @@ Menuset
 		Item "Move Paragraph Up|o" "paragraph-move-up"
 		Item "Move Paragraph Down|v" "paragraph-move-down"
 		Separator
-		Submenu "Text Style|S" "edit_textstyles"
-		LanguageSelector
 		Item "Paragraph Settings...|P" "layout-paragraph"
+		Submenu "Text Properties|x" "edit_textprops"
+		OptSubmenu "Custom Text Styles|S" "edit_textstyles"
+		LanguageSelector
 		Separator
 # Mathed b0rkage means these don't work properly
 		OptSubmenu "Table|T" "edit_tabular"
@@ -142,9 +143,9 @@ Menuset
 		OptItem "Note Settings...|N" "inset-settings note"
 		OptItem "Phantom Settings...|h" "inset-settings phantom"
 		OptItem "Branch Settings...|B" "inset-settings branch"
-		OptItem "Box Settings...|x" "inset-settings box"
+		OptItem "Box Settings...|S" "inset-settings box"
 		OptItem "Index Entry Settings...|y" "inset-settings index"
-		OptItem "Index Settings...|x" "inset-settings index_print"
+		OptItem "Index Settings...|S" "inset-settings index_print"
 		OptItem "Info Settings...|n" "inset-settings info"
 		OptItem "Listings Settings...|g" "inset-settings listings"
 # Hey, guess what's broken ? Surprise surprise, it's tabular stuff
@@ -178,16 +179,19 @@ Menuset
 		PasteRecent
 	End
 
-	Menu "edit_textstyles"
-		Item "Dissolve Text Style" "inset-dissolve charstyle"
-		CharStyles
-		Elements
-		Separator
-		Item "Customized...|C" "dialog-show character"
+	Menu "edit_textprops"
+		Item "Customize...|C" "dialog-show character"
+		Item "Apply Last Settings|A" "textstyle-apply"
 		Separator
 		Item "Capitalize|a" "word-capitalize"
 		Item "Uppercase|U" "word-upcase"
 		Item "Lowercase|L" "word-lowcase"
+	End
+
+	Menu "edit_textstyles"
+		OptItem "Dissolve Text Style" "inset-dissolve charstyle"
+		CharStyles
+		Elements
 	End
 
 # not much we can do to help here
@@ -240,7 +244,7 @@ Menuset
 		Separator
 		Submenu "Change Formula Type|F" "edit_math_mutate"
 		Separator
-		Submenu "Text Style|T" "edit_math_fontstyles"
+		Submenu "Text Properties|T" "edit_math_fontstyles"
 		Separator
 		Submenu "Use Computer Algebra System|S" "edit_math_extern"
 		Separator
