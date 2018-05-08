@@ -472,6 +472,7 @@ void Undo::Private::doTextUndoOrRedo(CursorData & cur, UndoElementStack & stack,
 		//LYXERR0("undo.array: " << *undo.array);
 		LBUFERR(undo.array);
 		dit.cell().swap(*undo.array);
+		dit.inset().setBuffer(buffer_);
 		delete undo.array;
 		undo.array = 0;
 	} else {
