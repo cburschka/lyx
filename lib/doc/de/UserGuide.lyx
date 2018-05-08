@@ -13791,7 +13791,7 @@ eingebaut
 , also mit jeder Dokumentklasse verfügbar.
  Ergänzend zu diesen bieten manche Dokumentklassen oder Module 
 \emph on
-benutzerdefinierte Textstile
+spezifische Textstile
 \emph default
  für bestimmte Zwecke.
  Wir beschreiben beide Formen von Textstilen gleich.
@@ -14143,10 +14143,10 @@ Das ist nicht nur ein Beispiel, sondern auch eine Warnung.
 \end_layout
 
 \begin_layout Standard
-Im Gegensatz zu den benutzerdefinierten Zeichenstilen sind die eingebauten
- im \SpecialChar LyX
--Arbeitsbereich als normale Schriftänderungen dargestellt, und sie sind
- auch in den 
+Im Gegensatz zu den spezifischen Textstilen sind die eingebauten im \SpecialChar LyX
+-Arbeitsbere
+ich als normale Schriftänderungen dargestellt, und sie sind auch in den
+ 
 \family sans
 Texteigenschaften
 \family default
@@ -14181,7 +14181,7 @@ arg   "dialog-show character"
 \end_layout
 
 \begin_layout Subsubsection
-Benutzerdefinierte Textstile
+Spezifische Textstile
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Benutzerdefinierte-Textstile"
@@ -14192,8 +14192,8 @@ name "subsec:Benutzerdefinierte-Textstile"
 \end_layout
 
 \begin_layout Standard
-Benutzerdefinierte Textstile können von der Dokumentklasse angeboten werden,
- von einem Modul (siehe Abschnitt
+Spezifische Textstile können von der Dokumentklasse angeboten werden, von
+ einem Modul (siehe Abschnitt
 \begin_inset space ~
 \end_inset
 
@@ -14222,8 +14222,8 @@ noprefix "false"
 \end_inset
 
 ).
- Wie die beiden eingebauten Textstile auch bieten die benutzerdefinierten
- semantische Auszeichnung für spezifische Funktionen.
+ Wie die beiden eingebauten Textstile auch bieten die spezifischen semantische
+ Auszeichnung für spezifische Funktionen.
  Beispielsweise bietet \SpecialChar LyX
  ein Modul 
 \emph on
@@ -14275,8 +14275,7 @@ Hervorhebung
 \emph on
 Hervorhebung
 \emph default
- als normale Schriftänderung erscheint, erscheint der benutzerdefinierte
- Stil 
+ als normale Schriftänderung erscheint, erscheint der spezifische Stil 
 \begin_inset Flex Emph
 status open
 
@@ -14288,7 +14287,7 @@ Hervorgehoben
 
  als Einfügung mit einer Marke unter dem ausgezeichneten Text, welche die
  Bedeutung benennt.
- So (ähnlich) sehen alle benutzerdefinierten Textstile aus.
+ So (ähnlich) sehen alle spezifischen Textstile aus.
  Beispielsweise sind die drei anderen von dem von uns geladenen Modul: 
 \begin_inset Flex Code
 status open
@@ -14320,8 +14319,8 @@ Eigenname
 \end_inset
 
 .
- Beachten Sie, dass die benutzerdefinierten Stile nicht immer, wie in diesen
- Beispielen, ihre formale Erscheinung im \SpecialChar LyX
+ Beachten Sie, dass die spezifischen Stile nicht immer, wie in diesen Beispielen
+, ihre formale Erscheinung im \SpecialChar LyX
 -Arbeitsbereich emulieren.
 \end_layout
 
@@ -14359,11 +14358,11 @@ Es gibt immer Situationen, in denen man formale Feineinstellungen vornehmen
 \end_layout
 
 \begin_layout Standard
-Falls weder von der Dokumentklasse noch von einem Modul benutzerdefinierte
- Textstile für solche Zwecke bereitgestellt werden (was, wie oben beschrieben,
- generell der bessere Weg wäre, solche Dinge anzugehen), finden Sie sich
- möglicherweise in der Situation gezwungen zu sein, schnell die Eigenschaften
- der entsprechenden Textpassagen anzupassen.
+Falls weder von der Dokumentklasse noch von einem Modul spezifische Textstile
+ für solche Zwecke bereitgestellt werden (was, wie oben beschrieben, generell
+ der bessere Weg wäre, solche Dinge anzugehen), finden Sie sich möglicherweise
+ in der Situation gezwungen zu sein, schnell die Eigenschaften der entsprechende
+n Textpassagen anzupassen.
  Hier kommt dann 
 \emph on
 formale Auszeichnung
@@ -37753,13 +37752,13 @@ Kleinbuchstaben
 \end_layout
 
 \begin_layout Subsection
-Benutzerdefinierte Textstile
+Spezifische Textstile
 \end_layout
 
 \begin_layout Standard
 Dieses Untermenü erscheint nur, wenn die Dokumentklasse oder ein geladenes
- Modul benutzerdefinierte Textstile zur Verfügung stellt (im Fall dieses
- Dokuments sind dies: 
+ Modul spezifische Textstile zur Verfügung stellt (im Fall dieses Dokuments
+ sind dies: 
 \family sans
 Code
 \family default
@@ -38909,15 +38908,15 @@ reference "sec:Zweige"
 \end_layout
 
 \begin_layout Subsection
-Benutzerdefinierte Einfügungen
+Spezifische Einfügungen
 \end_layout
 
 \begin_layout Standard
 Fügt dokumentklassen-spezifische Einfügungen ein.
  Solche Einfügungen existieren nur, wenn sie in der Layout-Datei der Dokumentkla
 sse definiert sind.
- Ein Beispiel ist die Dokumentklasse „article (Elsevier)“ mit drei benutzerdefin
-ierten Einfügungen.
+ Ein Beispiel ist die Dokumentklasse „article (Elsevier)“ mit drei spezifischen
+ Einfügungen.
  Der Abschnitt 
 \emph on
 Flexible Einfügungen und InsetLayout
@@ -38934,7 +38933,7 @@ Das Layout-Dateiformat
 \emph on
 Anpassung
 \emph default
- Handbuchs erklärt, wie benutzerdefinierte Einfügungen definiert werden.
+ Handbuchs erklärt, wie spezifische Einfügungen definiert werden.
 \end_layout
 
 \begin_layout Subsection

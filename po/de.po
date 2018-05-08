@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2018-05-08 07:48+0200\n"
-"PO-Revision-Date: 2018-05-08 07:54+0100\n"
+"PO-Revision-Date: 2018-05-08 08:30+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -13925,7 +13925,7 @@ msgid ""
 "default). See the Additional manual, section 'Multiple Text Columns', for a "
 "detailed description of multiple columns."
 msgstr ""
-"Fügt eine benutzerdefinierte Einfügung hinzu, deren Inhalt in mehrere "
+"Fügt eine spezifische Einfügung hinzu, deren Inhalt in mehrere "
 "Spalten gesetzt wird (zwei per Voreinstellung). Siehe die "
 "Handbuchergänzungen für eine detaillierte Beschreibung von Mehrfachspalten."
 
@@ -15241,7 +15241,7 @@ msgstr "[Fortschritt Inhalte]"
 
 #: lib/layouts/shapepar.module:2
 msgid "Custom Paragraph Shapes"
-msgstr "Benutzerdefinierte Absatzumrisse"
+msgstr "Spezifische Absatzumrisse"
 
 #: lib/layouts/shapepar.module:7
 msgid ""
@@ -15964,7 +15964,7 @@ msgid ""
 "Adds custom insets that support colored boxes via the tcolorbox package. See "
 "the tcolorbox documentation for details."
 msgstr ""
-"Stellt benutzerdefinierte Einfügungen zur Verfügung, die elegante  farbige "
+"Stellt spezifische Einfügungen zur Verfügung, die elegante  farbige "
 "Boxen mithilfe des Pakets 'tcolorbox' erzeugen. Konsultieren Sie die "
 "Dokumentation des Pakets für Details."
 
@@ -16062,7 +16062,7 @@ msgstr "Standardwert für das Argument"
 
 #: lib/layouts/tcolorbox.module:154 lib/layouts/tcolorbox.module:156
 msgid "Custom Color Box 1"
-msgstr "Benutzerdefinierte Farbbox 1"
+msgstr "Maßgeschneiderte Farbbox 1"
 
 #: lib/layouts/tcolorbox.module:159
 msgid "More Color Box Options"
@@ -16075,19 +16075,19 @@ msgstr ""
 
 #: lib/layouts/tcolorbox.module:165 lib/layouts/tcolorbox.module:167
 msgid "Custom Color Box 2"
-msgstr "Benutzerdefinierte Farbbox 2"
+msgstr "Maßgeschneiderte Farbbox 2"
 
 #: lib/layouts/tcolorbox.module:171 lib/layouts/tcolorbox.module:173
 msgid "Custom Color Box 3"
-msgstr "Benutzerdefinierte Farbbox 3"
+msgstr "Maßgeschneiderte Farbbox 3"
 
 #: lib/layouts/tcolorbox.module:177 lib/layouts/tcolorbox.module:179
 msgid "Custom Color Box 4"
-msgstr "Benutzerdefinierte Farbbox 4"
+msgstr "Maßgeschneiderte Farbbox 4"
 
 #: lib/layouts/tcolorbox.module:183 lib/layouts/tcolorbox.module:185
 msgid "Custom Color Box 5"
-msgstr "Benutzerdefinierte Farbbox 5"
+msgstr "Maßgeschneiderte Farbbox 5"
 
 #: lib/layouts/theorems-ams-bytype.inc:178 lib/layouts/theorems-bytype.inc:147
 #: lib/layouts/theorems-without-preamble.inc:170
@@ -16837,7 +16837,7 @@ msgid ""
 "provides a paragraph style. Passing 'final' as document class option "
 "suppresses the output of TODO notes."
 msgstr ""
-"Stellt benutzerdefinierte Einfügungen zur Verfügung, mit denen Sie TODO- "
+"Stellt spezifische Einfügungen zur Verfügung, mit denen Sie TODO- "
 "Notizen in Ihr Dokument einfügen können (benutzt das Paket 'todonotes'). Um "
 "eine 'Liste der TODO-Notizen' zu erzeugen, benutzen Sie den entsprechenden "
 "Absatzstil. Wenn Sie die Klassenoption 'final' eingeben, werden die TODO-"
@@ -18438,7 +18438,7 @@ msgstr "Texteigenschaften|x"
 
 #: lib/ui/stdcontext.inc:363 lib/ui/stdmenus.inc:123
 msgid "Custom Text Styles|S"
-msgstr "Benutzerdefinierte Textstile|T"
+msgstr "Spezifische Textstile|T"
 
 #: lib/ui/stdcontext.inc:364 lib/ui/stdmenus.inc:121
 msgid "Paragraph Settings...|P"
@@ -19347,7 +19347,7 @@ msgstr "Zweig|w"
 
 #: lib/ui/stdmenus.inc:381
 msgid "Custom Insets"
-msgstr "Benutzerdefinierte Einfügungen"
+msgstr "Spezifische Einfügungen"
 
 #: lib/ui/stdmenus.inc:382
 msgid "File|e"
@@ -19861,7 +19861,7 @@ msgstr "Eigenname an/aus"
 
 #: lib/ui/stdtoolbars.inc:89
 msgid "Custom text styles"
-msgstr "Benutzerdefinierte Textstile"
+msgstr "Spezifische Textstile"
 
 #: lib/ui/stdtoolbars.inc:90
 msgid "Apply last text properties"
@@ -19881,7 +19881,7 @@ msgstr "Tabelle einfügen"
 
 #: lib/ui/stdtoolbars.inc:95
 msgid "Custom insets"
-msgstr "Benutzerdefinierte Einfügungen"
+msgstr "Spezifische Einfügungen"
 
 #: lib/ui/stdtoolbars.inc:97
 msgid "Toggle outline"
@@ -32167,7 +32167,7 @@ msgstr "Aktualisieren [%1$s]|u"
 
 #: src/frontends/qt4/Menus.cpp:1233
 msgid "No Custom Insets Defined!"
-msgstr "Es gibt keine benutzerdefinierten Einfügungen!"
+msgstr "Es gibt keine spezifischen Einfügungen!"
 
 #: src/frontends/qt4/Menus.cpp:1322
 msgid "(No Document Open)"
