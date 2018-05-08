@@ -2777,6 +2777,7 @@ void Tabular::latex(otexstream & os, OutputParams const & runparams) const
 			os << "[l]";
 			break;
 		case LYX_LONGTABULAR_ALIGN_CENTER:
+			os << "[c]";
 			break;
 		case LYX_LONGTABULAR_ALIGN_RIGHT:
 			os << "[r]";
