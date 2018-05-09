@@ -1329,14 +1329,37 @@ Buffer::ReadStatus Buffer::convertLyXFormat(FileName const & fn,
 
 
 FileName Buffer::getBackupName() const {
+	map<int, string> const file_formats = {
+	  {544, "23"},
+	  {508, "22"},
+	  {474, "21"},
+	  {413, "20"},
+	  {345, "16"},
+	  {276, "15"},
+	  {245, "14"},
+	  {221, "13"},
+	  {220, "12"},
+	  {218, "1163"},
+	  {217, "116"},
+	  {216, "115"},
+	  {215, "11"},
+	  {210, "010"},
+	  {200, "006"}
+	};
 	FileName const & fn = fileName();
 	string const fname = fn.onlyFileNameWithoutExt();
 	string const fext  = fn.extension() + "~";
 	string const fpath = lyxrc.backupdir_path.empty() ?
 		fn.onlyPath().absFileName() :
 		lyxrc.backupdir_path;
-	string const fform = convert<string>(d->file_format);
-	string const backname = fname + "-lyxformat-" + fform;
+	string backup_suffix;
+	// If file format is from a stable series use version instead of file format
+	auto const it = file_formats.find(d->file_format);
+	if (it != file_formats.end())
+		backup_suffix = "-lyx" + it->second;
+	else
+		backup_suffix = "-lyxformat-" + convert<string>(d->file_format);
+	string const backname = fname + backup_suffix;
 	FileName backup(addName(fpath, addExtension(backname, fext)));
 
 	// limit recursion, just in case
