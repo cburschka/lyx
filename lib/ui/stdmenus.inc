@@ -183,7 +183,7 @@ Menuset
 		Item "Customize...|C" "dialog-show character"
 		Item "Apply Last Settings|A" "textstyle-apply"
 		Separator
-		Item "Capitalize|a" "word-capitalize"
+		Item "Capitalize|p" "word-capitalize"
 		Item "Uppercase|U" "word-upcase"
 		Item "Lowercase|L" "word-lowcase"
 	End
