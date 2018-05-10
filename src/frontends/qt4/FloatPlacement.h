@@ -45,21 +45,25 @@ public:
 	///
 	void useSideways();
 	///
-	void set(std::string const & placement);
+	void setPlacement(std::string const & placement);
 	///
-	std::string const get() const;
+	void setAlignment(std::string const & placement);
+	///
+	std::string const getPlacement() const;
+	///
+	std::string const getAlignment() const;
 
 private Q_SLOTS:
-	void on_defaultsCB_stateChanged(int state);
+	void on_placementCO_currentIndexChanged(QString const &);
 	void changedSlot();
 
 private:
 	///
 	void checkAllowed() const;
 	///
-	std::string const get(bool & wide, bool & sideways) const;
-	///
 	void initFloatTypeCO(FloatList const & floats);
+	///
+	void initFloatPlacementCO(bool const);
 	///
 	bool possiblePlacement(char const & p) const;
 

@@ -5,6 +5,7 @@
  *
  * \author Edwin Leuven
  * \author John Levon
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -33,12 +34,13 @@ namespace lyx {
 namespace frontend {
 
 FloatPlacement::FloatPlacement(bool show_options, QWidget * parent)
-	: InsetParamsWidget(parent), standardfloat_ (true),
+	: InsetParamsWidget(parent), standardfloat_(true),
 	  allows_wide_(true), allows_sideways_(true), float_list_(0)
 {
 	setupUi(this);
 
 	connect(floatTypeCO, SIGNAL(activated(int)), this, SLOT(changedSlot()));
+	connect(placementCO, SIGNAL(activated(int)), this, SLOT(changedSlot()));
 	connect(topCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
 	connect(bottomCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
 	connect(pageCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
@@ -47,11 +49,19 @@ FloatPlacement::FloatPlacement(bool show_options, QWidget * parent)
 	connect(ignoreCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
 	connect(spanCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
 	connect(sidewaysCB, SIGNAL(clicked()), this, SLOT(changedSlot()));
+	connect(alignClassDefaultRB, SIGNAL(clicked()), this, SLOT(changedSlot()));
+	connect(alignDocDefaultRB, SIGNAL(clicked()), this, SLOT(changedSlot()));
+	connect(alignLeftRB, SIGNAL(clicked()), this, SLOT(changedSlot()));
+	connect(alignCenterRB, SIGNAL(clicked()), this, SLOT(changedSlot()));
+	connect(alignRightRB, SIGNAL(clicked()), this, SLOT(changedSlot()));
 
 	floatTypeTitle->setVisible(show_options);
 	floatTypeCO->setVisible(show_options);
+	alignDocDefaultRB->setVisible(show_options);
 	spanCB->setVisible(show_options);
 	sidewaysCB->setVisible(show_options);
+	optionsGB->setVisible(show_options);
+	initFloatPlacementCO(show_options);
 }
 
 
@@ -59,7 +69,10 @@ docstring FloatPlacement::dialogToParams() const
 {
 	InsetFloatParams params;
 	params.type = fromqstr(floatTypeCO->itemData(floatTypeCO->currentIndex()).toString());
-	params.placement = get(params.wide, params.sideways);
+	params.wide = spanCB->isChecked();
+	params.sideways = sidewaysCB->isChecked();
+	params.alignment = getAlignment();
+	params.placement = getPlacement();
 	return from_ascii(InsetFloat::params2string(params));
 }
 
@@ -82,9 +95,10 @@ bool FloatPlacement::possiblePlacement(char const & p) const
 }
 
 
-void FloatPlacement::set(string const & placement)
+void FloatPlacement::setPlacement(string const & placement)
 {
 	bool def_placement = false;
+	bool doc_placement = false;
 	bool top = false;
 	bool bottom = false;
 	bool page = false;
@@ -92,9 +106,11 @@ void FloatPlacement::set(string const & placement)
 	bool force = false;
 	bool here_definitely = false;
 
-	if (placement.empty()) {
+	if (placement.empty() || placement == "class")
 		def_placement = true;
-	} else if (contains(placement, 'H') && possiblePlacement('H')) {
+	else if (placement == "document")
+		doc_placement = true;
+	else if (contains(placement, 'H') && possiblePlacement('H')) {
 		here_definitely = true;
 	} else {
 		if (contains(placement, '!') && possiblePlacement('!')) {
@@ -114,7 +130,12 @@ void FloatPlacement::set(string const & placement)
 		}
 	}
 
-	defaultsCB->setChecked(def_placement);
+	if (def_placement)
+		placementCO->setCurrentIndex(placementCO->findData(toqstr("class")));
+	else if (doc_placement)
+		placementCO->setCurrentIndex(placementCO->findData(toqstr("document")));
+	else
+		placementCO->setCurrentIndex(placementCO->findData(toqstr("custom")));
 	topCB->setChecked(top);
 	bottomCB->setChecked(bottom);
 	pageCB->setChecked(page);
@@ -122,6 +143,21 @@ void FloatPlacement::set(string const & placement)
 	ignoreCB->setChecked(force);
 	heredefinitelyCB->setChecked(here_definitely);
 	checkAllowed();
+}
+
+
+void FloatPlacement::setAlignment(string const & alignment)
+{
+	if (alignment == "document")
+		alignDocDefaultRB->setChecked(true);
+	else if (alignment == "left")
+		alignLeftRB->setChecked(true);
+	else if (alignment == "center")
+		alignCenterRB->setChecked(true);
+	else if (alignment == "right")
+		alignRightRB->setChecked(true);
+	else
+		alignClassDefaultRB->setChecked(true);
 }
 
 
@@ -141,6 +177,15 @@ void FloatPlacement::initFloatTypeCO(FloatList const & floats)
 }
 
 
+void FloatPlacement::initFloatPlacementCO(bool const local)
+{
+	placementCO->addItem(qt_("Class Defaults"), "class");
+	if (local)
+		placementCO->addItem(qt_("Document Defaults"), "document");
+	placementCO->addItem(qt_("Custom"), "custom");
+}
+
+
 void FloatPlacement::paramsToDialog(Inset const * inset)
 {
 	InsetFloat const * fl = static_cast<InsetFloat const *>(inset);
@@ -157,7 +202,8 @@ void FloatPlacement::paramsToDialog(Inset const * inset)
 	allows_sideways_ = floats.allowsSideways(params.type);
 	allows_wide_ = floats.allowsWide(params.type);
 
-	set(params.placement);
+	setPlacement(params.placement);
+	setAlignment(params.alignment);
 
 	standardfloat_ = (params.type == "figure"
 		|| params.type == "table");
@@ -175,21 +221,16 @@ void FloatPlacement::paramsToDialog(Inset const * inset)
 }
 
 
-string const FloatPlacement::get(bool & wide, bool & sideways) const
-{
-	wide = spanCB->isChecked();
-	sideways = sidewaysCB->isChecked();
-
-	return get();
-}
-
-
-string const FloatPlacement::get() const
+string const FloatPlacement::getPlacement() const
 {
 	string placement;
 
-	if (defaultsCB->isChecked())
-		return placement;
+	QString const data =
+		placementCO->itemData(placementCO->currentIndex()).toString();
+	if (data == "class")
+		return "class";
+	if (data == "document")
+		return "document";
 
 	if (heredefinitelyCB->isChecked()) {
 		placement += 'H';
@@ -214,10 +255,24 @@ string const FloatPlacement::get() const
 }
 
 
-void FloatPlacement::on_defaultsCB_stateChanged(int state)
+string const FloatPlacement::getAlignment() const
+{
+	if (alignDocDefaultRB->isChecked())
+		return "document";
+	if (alignLeftRB->isChecked())
+		return "left";
+	if (alignCenterRB->isChecked())
+		return "center";
+	if (alignRightRB->isChecked())
+		return "right";
+	return "class";
+}
+
+
+void FloatPlacement::on_placementCO_currentIndexChanged(QString const & text)
 {
 	checkAllowed();
-	if (state == Qt::Checked)
+	if (text != "custom")
 		return;
 	if (topCB->isChecked() || bottomCB->isChecked()
 	   || pageCB->isChecked() || herepossiblyCB->isChecked()
@@ -235,7 +290,8 @@ void FloatPlacement::changedSlot()
 
 void FloatPlacement::checkAllowed() const
 {
-	bool const defaults = defaultsCB->isChecked();
+	bool const defaults =
+		placementCO->itemData(placementCO->currentIndex()).toString() != "custom";
 	bool const ignore = topCB->isChecked() || bottomCB->isChecked()
 		      || pageCB->isChecked() || herepossiblyCB->isChecked();
 	bool const heredefinitely = heredefinitelyCB->isChecked();
@@ -273,7 +329,7 @@ void FloatPlacement::checkAllowed() const
 			bottomCB->setChecked(false);
 		spanCB->setEnabled(allows_wide_ && (!sideways || standardfloat_));
 		sidewaysCB->setEnabled(allows_sideways_);
-		defaultsCB->setEnabled(!(sideways && span));
+		placementCO->setEnabled(!(sideways && span));
 	} else {
 		topCB->setEnabled(!defaults && !heredefinitely);
 		bottomCB->setEnabled(!defaults && !heredefinitely);
@@ -289,8 +345,8 @@ bool FloatPlacement::checkWidgets(bool readonly) const
 {
 	if (readonly) {
 		floatTypeCO->setEnabled(false);
-		defaultsCB->setEnabled(false);
-		options->setEnabled(false);
+		placementCO->setEnabled(false);
+		aligmentGB->setEnabled(false);
 		spanCB->setEnabled(false);
 		sidewaysCB->setEnabled(false);
 	} else

@@ -888,6 +888,7 @@ int Buffer::readHeader(Lexer & lex)
 	params().options.erase();
 	params().master.erase();
 	params().float_placement.erase();
+	params().float_alignment.erase();
 	params().paperwidth.erase();
 	params().paperheight.erase();
 	params().leftmargin.erase();

@@ -1,121 +1,258 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>FloatPlacementUi</class>
- <widget class="QWidget" name="FloatPlacementUi" >
-  <property name="geometry" >
+ <widget class="QWidget" name="FloatPlacementUi">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>207</width>
-    <height>382</height>
+    <width>530</width>
+    <height>413</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout" >
-   <item row="0" column="0" >
-    <widget class="QLabel" name="floatTypeTitle" >
-     <property name="text" >
-      <string>Float Type:</string>
-     </property>
-    </widget>
+  <layout class="QGridLayout" name="gridLayout_3">
+   <item row="0" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="floatTypeTitle">
+       <property name="text">
+        <string>Float T&amp;ype:</string>
+       </property>
+       <property name="buddy">
+        <cstring>floatTypeCO</cstring>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="floatTypeCO">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>1</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item row="0" column="1" colspan="2" >
-    <widget class="QComboBox" name="floatTypeCO" >
-     <property name="sizePolicy" >
-      <sizepolicy vsizetype="Fixed" hsizetype="Preferred" >
-       <horstretch>1</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+   <item row="2" column="3" rowspan="3">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
      </property>
-    </widget>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>154</height>
+      </size>
+     </property>
+    </spacer>
    </item>
-   <item row="1" column="0" colspan="4" >
-    <widget class="QCheckBox" name="defaultsCB" >
-     <property name="text" >
-      <string>Use &amp;default placement</string>
+   <item row="4" column="0">
+    <spacer>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
      </property>
-    </widget>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
    </item>
-   <item row="2" column="0" colspan="4" >
-    <widget class="QGroupBox" name="options" >
-     <property name="title" >
-      <string>Advanced Placement Options</string>
+   <item row="1" column="3">
+    <widget class="QGroupBox" name="aligmentGB">
+     <property name="title">
+      <string>Alignment of Contents</string>
      </property>
-     <layout class="QGridLayout" >
-      <property name="margin" >
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <layout class="QGridLayout" name="_2">
+      <property name="leftMargin">
        <number>9</number>
       </property>
-      <property name="spacing" >
+      <property name="topMargin">
+       <number>9</number>
+      </property>
+      <property name="rightMargin">
+       <number>9</number>
+      </property>
+      <property name="bottomMargin">
+       <number>9</number>
+      </property>
+      <property name="spacing">
        <number>6</number>
       </property>
-      <item row="0" column="0" >
-       <widget class="QCheckBox" name="topCB" >
-        <property name="text" >
-         <string>&amp;Top of page</string>
+      <item row="1" column="0">
+       <widget class="QRadioButton" name="alignDocDefaultRB">
+        <property name="toolTip">
+         <string>Use the document's default alignment for floats, as specified in Document Settings.</string>
+        </property>
+        <property name="text">
+         <string>D&amp;ocument Defaults</string>
         </property>
        </widget>
       </item>
-      <item row="5" column="0" >
-       <widget class="QCheckBox" name="ignoreCB" >
-        <property name="text" >
-         <string>&amp;Ignore LaTeX rules</string>
+      <item row="2" column="0">
+       <widget class="QRadioButton" name="alignLeftRB">
+        <property name="toolTip">
+         <string>Left-align float contents</string>
+        </property>
+        <property name="text">
+         <string>&amp;Left</string>
         </property>
        </widget>
       </item>
-      <item row="4" column="0" >
-       <widget class="QCheckBox" name="heredefinitelyCB" >
-        <property name="text" >
-         <string>Here de&amp;finitely</string>
+      <item row="3" column="0">
+       <widget class="QRadioButton" name="alignCenterRB">
+        <property name="toolTip">
+         <string>Center float contents</string>
+        </property>
+        <property name="text">
+         <string>&amp;Center</string>
         </property>
        </widget>
       </item>
-      <item row="3" column="0" >
-       <widget class="QCheckBox" name="herepossiblyCB" >
-        <property name="text" >
-         <string>&amp;Here if possible</string>
+      <item row="4" column="0">
+       <widget class="QRadioButton" name="alignRightRB">
+        <property name="toolTip">
+         <string>Right-align float contents</string>
+        </property>
+        <property name="text">
+         <string>&amp;Right</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="0" >
-       <widget class="QCheckBox" name="pageCB" >
-        <property name="text" >
-         <string>&amp;Page of floats</string>
+      <item row="0" column="0">
+       <widget class="QRadioButton" name="alignClassDefaultRB">
+        <property name="toolTip">
+         <string>Use the class' default alignment for floats, whatever it is.</string>
         </property>
-       </widget>
-      </item>
-      <item row="1" column="0" >
-       <widget class="QCheckBox" name="bottomCB" >
-        <property name="text" >
-         <string>&amp;Bottom of page</string>
+        <property name="text">
+         <string>Class &amp;Defaults</string>
         </property>
        </widget>
       </item>
      </layout>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2" >
-    <widget class="QCheckBox" name="spanCB" >
-     <property name="text" >
-      <string>&amp;Span columns</string>
+   <item row="3" column="0" colspan="2">
+    <widget class="QGroupBox" name="optionsGB">
+     <property name="title">
+      <string>Further Options</string>
      </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="0" column="0">
+       <widget class="QCheckBox" name="spanCB">
+        <property name="text">
+         <string>&amp;Span columns</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QCheckBox" name="sidewaysCB">
+        <property name="text">
+         <string>Rotate side&amp;ways</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
-   <item row="4" column="0" colspan="2" >
-    <widget class="QCheckBox" name="sidewaysCB" >
-     <property name="text" >
-      <string>&amp;Rotate sideways</string>
+   <item row="1" column="0" rowspan="2" colspan="2">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Position on Page</string>
      </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="placementLA">
+          <property name="text">
+           <string>Place&amp;ment Settings:</string>
+          </property>
+          <property name="buddy">
+           <cstring>placementCO</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="placementCO"/>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="0">
+       <widget class="QCheckBox" name="topCB">
+        <property name="text">
+         <string>&amp;Top of page</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QCheckBox" name="bottomCB">
+        <property name="text">
+         <string>&amp;Bottom of page</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QCheckBox" name="pageCB">
+        <property name="text">
+         <string>&amp;Page of floats</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QCheckBox" name="herepossiblyCB">
+        <property name="text">
+         <string>&amp;Here if possible</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0">
+       <widget class="QCheckBox" name="heredefinitelyCB">
+        <property name="text">
+         <string>Here de&amp;finitely</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QCheckBox" name="ignoreCB">
+        <property name="text">
+         <string>&amp;Ignore LaTeX rules</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
-   <item row="5" column="2" colspan="2" >
-    <spacer>
-     <property name="orientation" >
-      <enum>Qt::Vertical</enum>
+   <item row="0" column="1" colspan="3">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
      </property>
-     <property name="sizeHint" stdset="0" >
+     <property name="sizeHint" stdset="0">
       <size>
-       <width>20</width>
+       <width>303</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="4">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
        <height>20</height>
       </size>
      </property>
@@ -124,7 +261,6 @@
   </layout>
  </widget>
  <tabstops>
-  <tabstop>defaultsCB</tabstop>
   <tabstop>topCB</tabstop>
   <tabstop>bottomCB</tabstop>
   <tabstop>pageCB</tabstop>
@@ -133,25 +269,8 @@
   <tabstop>ignoreCB</tabstop>
  </tabstops>
  <includes>
-  <include location="local" >qt_i18n.h</include>
+  <include location="local">qt_i18n.h</include>
  </includes>
  <resources/>
- <connections>
-  <connection>
-   <sender>defaultsCB</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>options</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel" >
-     <x>51</x>
-     <y>20</y>
-    </hint>
-    <hint type="destinationlabel" >
-     <x>201</x>
-     <y>47</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

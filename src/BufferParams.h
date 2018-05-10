@@ -352,6 +352,8 @@ public:
 	///
 	std::string float_placement;
 	///
+	std::string float_alignment;
+	///
 	unsigned int columns;
 	///
 	bool justification;

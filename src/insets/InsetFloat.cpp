@@ -166,6 +166,7 @@ void InsetFloat::doDispatch(Cursor & cur, FuncRequest & cmd)
 			params_.wide      = params.wide;
 			params_.sideways  = params.sideways;
 		}
+		params_.alignment  = params.alignment;
 		setNewLabel();
 		if (params_.type != params.type)
 			setCaptionType(params.type);
@@ -235,6 +236,8 @@ void InsetFloatParams::write(ostream & os) const
 
 	if (!placement.empty())
 		os << "placement " << placement << "\n";
+	if (!alignment.empty())
+		os << "alignment " << alignment << "\n";
 
 	if (wide)
 		os << "wide true\n";
@@ -254,6 +257,8 @@ void InsetFloatParams::read(Lexer & lex)
 	lex >> type;
 	if (lex.checkFor("placement"))
 		lex >> placement;
+	if (lex.checkFor("alignment"))
+		lex >> alignment;
 	lex >> "wide" >> wide;
 	lex >> "sideways" >> sideways;
 }
@@ -366,13 +371,14 @@ void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 	string tmpplacement;
 	string const buf_placement = buffer().params().float_placement;
 	string const def_placement = floats.defaultPlacement(params_.type);
-	if (!params_.placement.empty()
-	    && params_.placement != def_placement) {
-		tmpplacement = params_.placement;
-	} else if (params_.placement.empty()
-		   && !buf_placement.empty()
-		   && buf_placement != def_placement) {
+	if (params_.placement == "document"
+	    && !buf_placement.empty()
+	    && buf_placement != def_placement) {
 		tmpplacement = buf_placement;
+	} else if (!params_.placement.empty()
+		   && params_.placement != "document"
+		   && params_.placement != def_placement) {
+		tmpplacement = params_.placement;
 	}
 
 	// Check if placement is allowed by this float
@@ -386,6 +392,17 @@ void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 			placement += *lit;
 	}
 
+	string alignment;
+	string const buf_alignment = buffer().params().float_alignment;
+	if (params_.alignment == "document"
+	    && !buf_alignment.empty()) {
+		alignment = buf_alignment;
+	} else if (!params_.alignment.empty()
+		   && params_.alignment != "class"
+		   && params_.alignment != "document") {
+		alignment = params_.alignment;
+	}
+
 	// Force \begin{<floatname>} to appear in a new line.
 	os << breakln << "\\begin{" << from_ascii(tmptype) << '}';
 	if (runparams.lastid != -1)
@@ -397,6 +414,12 @@ void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 	    && (!params_.sideways || (params_.sideways && from_ascii(placement) != "p")))
 		os << '[' << from_ascii(placement) << ']';
 	os << '\n';
+	if (alignment == "left")
+		os << "\\raggedright" << breakln;
+	else if (alignment == "center")
+		os << "\\centering" << breakln;
+	else if (alignment == "right")
+		os << "\\raggedleft" << breakln;
 
 	InsetText::latex(os, runparams);
 

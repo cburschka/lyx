@@ -25,7 +25,8 @@ class InsetFloatParams
 {
 public:
 	///
-	InsetFloatParams() : type("senseless"), wide(false), sideways(false), subfloat(false) {}
+	InsetFloatParams() : type("senseless"), placement("document"), alignment("document"),
+		wide(false), sideways(false), subfloat(false) {}
 	///
 	void write(std::ostream & os) const;
 	///
@@ -34,6 +35,8 @@ public:
 	std::string type;
 	///
 	std::string placement;
+	///
+	std::string alignment;
 	/// span columns
 	bool wide;
 	///

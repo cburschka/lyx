@@ -1556,7 +1556,7 @@ GuiDocument::GuiDocument(GuiView & lv)
 	docPS->addPanel(indicesModule, N_("Indexes"));
 	docPS->addPanel(pdfSupportModule, N_("PDF Properties"));
 	docPS->addPanel(mathsModule, N_("Math Options"));
-	docPS->addPanel(floatModule, N_("Float Placement"));
+	docPS->addPanel(floatModule, N_("Float Settings"));
 	docPS->addPanel(listingsModule, N_("Listings[[inset]]"));
 	docPS->addPanel(bulletsModule, N_("Bullets"));
 	docPS->addPanel(branchesModule, N_("Branches"));
@@ -3216,8 +3216,9 @@ void GuiDocument::applyView()
 	bp_.maintain_unincluded_children =
 		masterChildModule->maintainAuxCB->isChecked();
 
-	// Float Placement
-	bp_.float_placement = floatModule->get();
+	// Float Settings
+	bp_.float_placement = floatModule->getPlacement();
+	bp_.float_alignment = floatModule->getAlignment();
 
 	// Listings
 	// text should have passed validation
@@ -3747,7 +3748,8 @@ void GuiDocument::paramsToDialog()
 		bp_.maintain_unincluded_children);
 
 	// Float Settings
-	floatModule->set(bp_.float_placement);
+	floatModule->setPlacement(bp_.float_placement);
+	floatModule->setAlignment(bp_.float_alignment);
 
 	// ListingsSettings
 	// break listings_params to multiple lines

@@ -213,6 +213,74 @@ def revert_nospellcheck(document):
         del document.body[i]
 
 
+def revert_floatpclass(document):
+    " Remove float placement params 'document' and 'class' "
+
+    i = 0
+    i = find_token(document.header, "\\float_placement class", 0)
+    if i != -1:
+        del document.header[i]
+
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_inset Float', i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        k = find_token(document.body, 'placement class', i, i + 2)
+        if k == -1:
+            k = find_token(document.body, 'placement document', i, i + 2)
+            if k != -1:
+                del document.body[k]
+            i = j
+            continue
+        del document.body[k]
+
+
+def revert_floatalignment(document):
+    " Remove float alignment params "
+
+    i = 0
+    i = find_token(document.header, "\\float_alignment", 0)
+    galignment = ""
+    if i != -1:
+        galignment = get_value(document.header, "\\float_alignment", i)
+        del document.header[i]
+
+    i = 0
+    while True:
+        i = find_token(document.body, '\\begin_inset Float', i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Malformed LyX document: Can't find end of inset at line " + str(i))
+            i += 1
+        k = find_token(document.body, 'alignment', i, i + 4)
+        if k == -1:
+            i = j
+            continue
+        alignment = get_value(document.body, "alignment", k)
+        if alignment == "document":
+            alignment = galignment
+        del document.body[k]
+        l = find_token(document.body, "\\begin_layout Plain Layout", i, j)
+        if l == -1:
+            document.warning("Can't find float layout!")
+            i = j
+            continue
+        alcmd = []
+        if alignment == "left":
+            alcmd = put_cmd_in_ert("\\raggedright{}")
+        elif alignment == "center":
+            alcmd = put_cmd_in_ert("\\centering{}")
+        elif alignment == "right":
+            alcmd = put_cmd_in_ert("\\raggedleft{}")
+        if len(alcmd) > 0:
+            document.body[l+1:l+1] = alcmd
+        i = j 
+
+
 ##
 # Conversion hub
 #
@@ -225,11 +293,13 @@ convert = [
            [548, []],
            [549, []],
            [550, [convert_fontenc]],
-           [551, []]
+           [551, []],
+           [552, []]
           ]
 
 revert =  [
-           [549, [revert_nospellcheck]],
+           [551, [revert_floatpclass, revert_floatalignment]],
+           [550, [revert_nospellcheck]],
            [549, [revert_fontenc]],
            [548, []],# dummy format change
            [547, [revert_lscape]],
