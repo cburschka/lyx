@@ -179,9 +179,9 @@ void FloatPlacement::initFloatTypeCO(FloatList const & floats)
 
 void FloatPlacement::initFloatPlacementCO(bool const local)
 {
-	placementCO->addItem(qt_("Class Defaults"), "class");
+	placementCO->addItem(qt_("Class Default"), "class");
 	if (local)
-		placementCO->addItem(qt_("Document Defaults"), "document");
+		placementCO->addItem(qt_("Document Default"), "document");
 	placementCO->addItem(qt_("Custom"), "custom");
 }
 
