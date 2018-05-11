@@ -1399,6 +1399,7 @@ InsetLayout Flex:Bold
     PassThru       1
   EndArgument
   ResetsFont       true
+  CustomPars       false
 End
 
 InsetLayout Flex:Emphasize
@@ -1418,6 +1419,7 @@ InsetLayout Flex:Emphasize
     PassThru       1
   EndArgument
   ResetsFont       true
+  CustomPars       false
 End
 
 InsetLayout Flex:Alert
@@ -1437,6 +1439,7 @@ InsetLayout Flex:Alert
     PassThru       1
   EndArgument
   ResetsFont       true
+  CustomPars       false
 End
 
 InsetLayout Flex:Structure
@@ -1456,6 +1459,7 @@ InsetLayout Flex:Structure
     PassThru       1
   EndArgument
   ResetsFont       true
+  CustomPars       false
 End
 
 InsetLayout Flex:Only
@@ -1476,6 +1480,7 @@ InsetLayout Flex:Only
     AutoInsert     1
   EndArgument
   ResetsFont       true
+  CustomPars       false
 End
 
 InsetLayout Flex:Uncover
@@ -1496,6 +1501,7 @@ InsetLayout Flex:Uncover
     AutoInsert     1
   EndArgument
   ResetsFont       true
+  CustomPars       false
 End
 
 InsetLayout Flex:Visible
@@ -1516,6 +1522,7 @@ InsetLayout Flex:Visible
     AutoInsert     1
   EndArgument
   ResetsFont       true
+  CustomPars       false
 End
 
 InsetLayout Flex:Invisible
@@ -1536,6 +1543,7 @@ InsetLayout Flex:Invisible
     AutoInsert     1
   EndArgument
   ResetsFont       true
+  CustomPars       false
 End
 
 InsetLayout Flex:Alternative
@@ -1560,6 +1568,7 @@ InsetLayout Flex:Alternative
     Mandatory      1
   EndArgument
   ResetsFont       true
+  CustomPars       false
 End
 
 InsetLayout Flex:Beamer_Note
