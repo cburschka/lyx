@@ -142,6 +142,14 @@ pasteSelectionHelper(DocIterator const & cur, ParagraphList const & parlist,
 	// Now remove all out of the pars which is NOT allowed in the
 	// new environment and set also another font if that is required.
 
+	// Merge paragraphs that are to be pasted into a text inset
+	// that does not allow multiple pars.
+	InsetText * inset_text = target_inset->asInsetText();
+	if (inset_text && !inset_text->allowMultiPar()) {
+		while (insertion.size() > 1)
+			mergeParagraph(buffer.params(), insertion, 0);
+	}
+
 	// Convert newline to paragraph break in ParbreakIsNewline
 	if (target_inset->getLayout().parbreakIsNewline()
 	    || pars[pit].layout().parbreak_is_newline) {
