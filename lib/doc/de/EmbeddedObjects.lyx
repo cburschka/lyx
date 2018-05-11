@@ -27094,6 +27094,57 @@ hypcap
 \end_layout
 
 \begin_layout Section
+Gleitobjekt-Einstellungen
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Gleitobjekt-Einstellungen"
+
+\end_inset
+
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Gleitobjekte ! Einstellungen
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Gleitobjekt-Einstellungen können in \SpecialChar LyX
+ an zwei Orten vorgenommen werden: In
+ 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Gleitobjekt-Einstellungen
+\family default
+ können Sie einige Einstellungen (bezüglich Platzierung auf der Seite und
+ Ausrichtung der Inhalte) vornehmen, die per Voreinstellung für alle Gleitobjekt
+e des Dokuments gelten, so lange Sie nicht die lokalen Einstellungen eines
+ Gleitobjekts modifizieren.
+\end_layout
+
+\begin_layout Standard
+Dieses können Sie per Rechtsklick auf ein Gleitobjekt-Kästchen und Klicken
+ auf 
+\family sans
+Einstellungen\SpecialChar ldots
+ 
+\family default
+tun.
+ Dies öffnet einen Dialog, in dem Sie – nun nur für dieses spezifische Gleitobje
+kt –, die globalen Einstellungen modifizieren können.
+ Außerdem können Sie einige Einstellungen vornehmen, die es nur für einzelne
+ Gleitobjekte gibt.
+ All dies beschrieben wir in den folgenden Abschnitten.
+\end_layout
+
+\begin_layout Subsection
 Gleitobjekt-Platzierung
 \begin_inset CommandInset label
 LatexCommand label
@@ -27115,59 +27166,53 @@ Gleitobjekte ! Platzierung
 \end_layout
 
 \begin_layout Standard
-Ein Rechtsklick auf ein Gleitobjekt-Kästchen und Klicken auf 
+Sowohl in 
 \family sans
-Einstellungen 
+Dokument\SpecialChar menuseparator
+Einstellungen
 \family default
-öffnet einen Dialog, in dem Sie die \SpecialChar LaTeX
--Optionen für die Gleitobjekt-Platzierung
- ändern können.
-\begin_inset Newline newline
-\end_inset
-
-Die Option 
+ als auch im lokalen Dialog 
 \family sans
-Spalten
-\begin_inset space ~
-\end_inset
+Einstellungen\SpecialChar ldots
 
-überspannen
 \family default
- ist nur bei zweispaltigen Dokumenten sinnvoll.
- Wenn Sie sie wählen, wird das Gleitobjekt über beide Spalten gesetzt.
-\begin_inset Newline newline
-\end_inset
-
-Die Option 
+ können Sie den Algorithmus anpassen, den \SpecialChar LaTeX
+ verwendet, um Gleitobjekte möglichst
+ gut auf der Seite zu platzieren.
+ Im ersteren Fall geschieht dies für alle Gleitobjekte, im zweiten nur für
+ das aktuelle.
+ Hierfür gibt es die Option 
 \family sans
-Seitwärts
-\begin_inset space ~
-\end_inset
-
-drehen
+Platzierungseinstellungen
 \family default
- ist in Abschnitt 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "abs:Gedrehte-Gleitobjekte"
-
-\end_inset
-
- beschrieben.
-\end_layout
-
-\begin_layout Standard
-Sie können eine oder mehrere der folgenden Optionen im Gleitobjekt-Dialog
- verwenden, um die Platzierung einzelner Gleitobjekte zu beeinflussen, wenn
- Sie die Option 
+.
+ Per Voreinstellung übernimmt \SpecialChar LyX
+ hier die Einstellungen der Dokumentklasse
+ (in 
 \family sans
-Standard-Platzierung
-\begin_inset space ~
-\end_inset
-
-verwenden
+Dokument\SpecialChar menuseparator
+Einstellungen
 \family default
- nicht verwenden:
+ ist die Voreinstellung entsprechend 
+\family sans
+Klassenvoreinstellung
+\family default
+, im lokalen Dialog 
+\family sans
+Dokumentvoreinstellung
+\family default
+, welches die Einstellung von 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen
+\family default
+ übernimmt).
+ Wenn Sie das ändern möchten, wählen Sie 
+\family sans
+Platzierungseinstellungen: Benutzerdefiniert
+\family default
+.
+ Danach können Sie eine oder mehrere der folgenden Optionen auswählen:
 \end_layout
 
 \begin_layout Description
@@ -27611,6 +27656,110 @@ literal "true"
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Subsection
+Ausrichtung des Inhalts
+\end_layout
+
+\begin_layout Standard
+In dieser Liste von Optionen können Sie festlegen, wie die Inhalte eines
+ Gleitobjekts (oder aller Gleitobjekte, wenn Sie das in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen
+\family default
+ festlegen), horizontal ausgerichtet werden.
+ 
+\family sans
+Klassenvoreinstellung
+\family default
+ bedeutet, dass die Ausrichtung, wie Sie in der Klasse (bzw.
+ von \SpecialChar LaTeX
+) für Gleitobjekte voreingestellt ist, übernommen wird.
+ 
+\family sans
+Dokumentvoreinstellung
+\family default
+ (nur im lokalen Dialog Gleitobjekt-Einstellungen sichtbar, nicht in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen
+\family default
+) übernimmt die Einstellungen aus 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen
+\family default
+ (standardmäßig sind das ebenfalls die Klassenvoreinstellungen).
+ Die anderen drei Optionen, 
+\family sans
+Links
+\family default
+, 
+\family sans
+Rechts
+\family default
+ und 
+\family sans
+Zentriert
+\family default
+, sind selbsterklärend.
+ Wenn eine dieser drei in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen\SpecialChar menuseparator
+Gleitobjekt-Einstellungen
+\family default
+ gewählt wurde, werden alle Gleitobjekte standardmäßig so ausgerichtet (es
+ ist also recht einfach, beispielsweise alle Gleitobjekte zentriert auszurichten
+).
+\end_layout
+
+\begin_layout Subsection
+Weitere Optionen
+\end_layout
+
+\begin_layout Standard
+Diese Optionen sind nur im lokalen Dialog Gleitobjekt-Einstellungen sichtbar,
+ nicht in 
+\family sans
+Dokument\SpecialChar menuseparator
+Einstellungen
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Die Option 
+\family sans
+Spalten
+\begin_inset space ~
+\end_inset
+
+überspannen
+\family default
+ ist bei zweispaltigen Dokumenten sinnvoll.
+ Wenn Sie sie wählen, wird das Gleitobjekt über beide Spalten gesetzt.
+\end_layout
+
+\begin_layout Standard
+Die Option 
+\family sans
+Seitwärts
+\begin_inset space ~
+\end_inset
+
+drehen
+\family default
+ ist in Abschnitt 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "abs:Gedrehte-Gleitobjekte"
+
+\end_inset
+
+ beschrieben.
 \end_layout
 
 \begin_layout Section

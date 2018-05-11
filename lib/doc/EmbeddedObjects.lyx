@@ -234,11 +234,12 @@ varwidth
 \papercolumns 1
 \papersides 2
 \paperpagestyle default
-\tracking_changes false
+\tracking_changes true
 \output_changes false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author -712698321 "Jürgen Spitzmüller"
 \end_header
 
 \begin_body
@@ -26952,10 +26953,16 @@ hypcap
 \end_layout
 
 \begin_layout Section
-Float Placement
+Float 
+\change_deleted -712698321 1526031763
+Placement 
+\change_inserted -712698321 1526031765
+Settings
+\change_unchanged
+
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Float-Placement"
+name "sec:Float-Settings"
 
 \end_inset
 
@@ -26964,7 +26971,13 @@ name "sec:Float-Placement"
 status collapsed
 
 \begin_layout Plain Layout
-Floats ! Placement
+Floats ! 
+\change_deleted -712698321 1526031841
+Placement
+\change_inserted -712698321 1526031842
+Settings
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -26973,13 +26986,77 @@ Floats ! Placement
 \end_layout
 
 \begin_layout Standard
-Right-clicking on a float-box and clicking on 
+
+\change_inserted -712698321 1526033385
+Float Settings can be adjusted at two places in \SpecialChar LyX
+: In 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar ldots
+\SpecialChar menuseparator
+Float Settings
+\family default
+, you can set some options that are used by default for all floats of the
+ document (placement on page and alignment of contents), unless you modify
+ the local settings of a float.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1526032513
+The latter can be done by 
+\change_deleted -712698321 1526032513
+R
+\change_inserted -712698321 1526032513
+r
+\change_unchanged
+ight-clicking on a float-box and clicking on 
 \family sans
 Settings
+\change_inserted -712698321 1526033387
+\SpecialChar ldots
+
+\change_unchanged
+
 \family default
- opens a dialog where you can alter the placement options that \SpecialChar LaTeX
- uses for
- positioning the float.
+ 
+\change_inserted -712698321 1526032520
+This 
+\change_unchanged
+opens a dialog where you can
+\change_inserted -712698321 1526032584
+, now only for the given float,
+\change_unchanged
+ alter the 
+\change_inserted -712698321 1526033452
+global 
+\change_unchanged
+placement 
+\change_deleted -712698321 1526033439
+options that \SpecialChar LaTeX
+ uses for positioning the float
+\change_inserted -712698321 1526033493
+ and alignment options, and adapt some other options that are only available
+ for single floats
+\change_unchanged
+.
+
+\change_inserted -712698321 1526032658
+ All these options, both for 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Float Settings
+\family default
+ and for local 
+\family sans
+Float Settings
+\family default
+, are described in turn.
+\change_deleted -712698321 1526031652
+
 \begin_inset Newline newline
 \end_inset
 
@@ -27012,12 +27089,136 @@ reference "sec:Rotated-Floats"
 \end_inset
 
 .
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1526031775
+Float Placement
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Float-Placement"
+
+\end_inset
+
+
+\begin_inset Index idx
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1526031775
+Floats ! Placement
+\end_layout
+
+\end_inset
+
+
+\change_unchanged
+
 \end_layout
 
 \begin_layout Standard
-You can use one or more of the following options in the float dialog to
- set the placement for a particular float when you uncheck the option 
+
+\change_inserted -712698321 1526032697
+Both in 
 \family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Float Settings
+\family default
+ and in the local 
+\family sans
+Float Settings
+\family default
+ dialog, you can 
+\change_deleted -712698321 1526032811
+You can use one or more of the following options in the float dialog to
+ set
+\change_inserted -712698321 1526032812
+modify
+\change_unchanged
+ the placement 
+\change_inserted -712698321 1526033558
+algorithm that \SpecialChar LaTeX
+ uses for positioning floats on the page, either 
+\change_unchanged
+for 
+\change_inserted -712698321 1526033535
+all floats (
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Float Settings
+\family default
+) or 
+\change_unchanged
+a particular float
+\change_inserted -712698321 1526033570
+ (local 
+\family sans
+Float Settings
+\family default
+ dialog).
+ This is done via 
+\family sans
+Placement Settings
+\family default
+.
+ By default, this is set to
+\change_unchanged
+ 
+\change_inserted -712698321 1526033604
+
+\family sans
+Class Default
+\family default
+ in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Float Settings
+\family default
+ (meaning that the default placement algorithm of the document class is
+ used) or 
+\family sans
+Document Default
+\family default
+ in the local 
+\family sans
+Float Settings
+\family default
+ dialog (meaning that the settings in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Float Settings
+\family default
+ are used, which are the Class Defaults by default).
+ If you want to change this, 
+\change_deleted -712698321 1526033009
+when you uncheck
+\change_inserted -712698321 1526033535
+select
+\change_unchanged
+ 
+\change_deleted -712698321 1526031920
+the option
+\change_inserted -712698321 1526033535
+
+\family sans
+Placement Settings:
+\change_unchanged
+
+\family default
+ 
+\change_inserted -712698321 1526033535
+
+\family sans
+Custom.
+\change_deleted -712698321 1526031908
 Use
 \begin_inset space ~
 \end_inset
@@ -27027,7 +27228,11 @@ default
 \end_inset
 
 placement
+\change_inserted -712698321 1526033535
+
 \family default
+ This allows you to select one or more from
+\change_unchanged
 :
 \end_layout
 
@@ -27501,6 +27706,135 @@ literal "true"
 \end_inset
 
 .
+\change_inserted -712698321 1526030561
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1526031989
+Alignment of Float Contents
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1526032316
+In this list of options, you can define how the contents of a float (or
+ all floats by default, if selected from 
+\family sans
+Document\SpecialChar menuseparator
+Settings
+\family default
+) are aligned.
+ 
+\family sans
+Class Default
+\family default
+ means that the alignment of the class, or the default alignment of \SpecialChar LaTeX
+, is
+ used.
+ 
+\family sans
+Document Default
+\family default
+ (only visible in the 
+\family sans
+Float Settings
+\family default
+ dialog, not in 
+\family sans
+Document\SpecialChar menuseparator
+Settings
+\family default
+) takes the setting specified in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Float Settings
+\family default
+.
+ The other three options, 
+\family sans
+Left
+\family default
+, 
+\family sans
+Center
+\family default
+, or 
+\family sans
+Right
+\family default
+, are self-explanatory.
+ If one of these is selected in 
+\family sans
+Document\SpecialChar menuseparator
+Settings\SpecialChar menuseparator
+Float Settings
+\family default
+, all floats of the document will have this setting by default (so it is
+ fairly easy, for instance, to center all floats).
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -712698321 1526030571
+Other Float Options
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1526035716
+These two options are only visible in the local 
+\family sans
+Float Settings
+\family default
+ dialog, not in 
+\family sans
+Document\SpecialChar menuseparator
+Settings.
+\change_unchanged
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1526033931
+The option 
+\family sans
+Span
+\begin_inset space ~
+\end_inset
+
+columns
+\family default
+ is useful for two-column documents: If you select it, the float will span
+ both columns on the page instead of being confined to just one.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1526030572
+The option 
+\family sans
+Rotate
+\begin_inset space ~
+\end_inset
+
+sideways
+\family default
+ is used to rotate floats, see section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Rotated-Floats"
+
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Section
@@ -40943,7 +41277,7 @@ p
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Float-Placement"
+reference "sec:Float-Settings"
 
 \end_inset
 
