@@ -477,7 +477,8 @@ string flagsAsString(Update::flags flags)
 	return string((flags & Update::FitCursor) ? "FitCursor " : "")
 		+ ((flags & Update::Force) ? "Force " : "")
 		+ ((flags & Update::ForceDraw) ? "ForceDraw " : "")
-		+ ((flags & Update::SinglePar) ? "SinglePar " : "");
+		+ ((flags & Update::SinglePar) ? "SinglePar " : "")
+		+ ((flags & Update::Decoration) ? "Decoration " : "");
 }
 
 }
@@ -503,6 +504,16 @@ void BufferView::processUpdateFlags(Update::flags flags)
 		updateMetrics(flags);
 	}
 
+	// Detect whether we can only repaint a single paragraph.
+	// We handle this before FitCursor because the later will require
+	// correct metrics at cursor position.
+	if (!(flags & Update::ForceDraw)) {
+		if (singleParUpdate())
+			flags = flags | Update::SinglePar;
+		else
+			updateMetrics(flags);
+	}
+
 	// Then make sure that the screen contains the cursor if needed
 	if (flags & Update::FitCursor) {
 		if (needsFitCursor()) {
@@ -511,14 +522,6 @@ void BufferView::processUpdateFlags(Update::flags flags)
 			updateMetrics(flags);
 		}
 		flags = flags & ~Update::FitCursor;
-	}
-
-	// Finally detect whether we can only repaint a single paragraph
-	if (!(flags & Update::ForceDraw)) {
-		if (singleParUpdate())
-			flags = flags | Update::SinglePar;
-		else
-			updateMetrics(flags);
 	}
 
 	// Add flags to the the update flags. These will be reset to None
