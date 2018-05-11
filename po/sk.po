@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX-2.4\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-05-08 08:41+0200\n"
-"PO-Revision-Date: 2018-05-08 06:57+0000\n"
+"POT-Creation-Date: 2018-05-11 19:06+0200\n"
+"PO-Revision-Date: 2018-05-11 17:43+0000\n"
 "Last-Translator: Kornel Benko <kornel@lyx.org>\n"
 "Language-Team: Slovak <kornel@lyx.org>\n"
 "Language: sk\n"
@@ -1154,6 +1154,10 @@ msgstr "Porovnať revízie"
 msgid "&Revisions back"
 msgstr "&Revízie naspäť"
 
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:127
+msgid "&Right"
+msgstr "Vp&ravo"
+
 #: src/frontends/qt4/ui/CompareHistoryUi.ui:83
 msgid "&Between revisions"
 msgstr "&Medzi revíziami"
@@ -1625,21 +1629,9 @@ msgstr "Prehľadať len mat. vzork&y"
 msgid "Form"
 msgstr "Form"
 
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:19
-msgid "Float Type:"
-msgstr "Typ plávajúceho objektu:"
-
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:36
-msgid "Use &default placement"
-msgstr "P&oužiť štandardné umiestňovanie"
-
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:43
-msgid "Advanced Placement Options"
-msgstr "Voľby Rozšírené Umiestňovanie"
-
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:55
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:193
 msgid "&Top of page"
-msgstr "&Vrch strany"
+msgstr "Vr&ch strany"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:62
 msgid "&Ignore LaTeX rules"
@@ -1664,10 +1656,6 @@ msgstr "&Spodok strany"
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:100
 msgid "&Span columns"
 msgstr "&Preklepnúť stĺpce"
-
-#: src/frontends/qt4/ui/FloatPlacementUi.ui:107
-msgid "&Rotate sideways"
-msgstr "Otočiť &bokom"
 
 #: src/frontends/qt4/ui/FontUi.ui:14
 msgid "FontUi"
@@ -2155,6 +2143,10 @@ msgstr "Parameteri výpisu"
 msgid "&Caption:"
 msgstr "&Popis:"
 
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:117
+msgid "&Center"
+msgstr "&Na stred"
+
 #: src/frontends/qt4/ui/IncludeUi.ui:275
 #: src/frontends/qt4/ui/ListingsSettingsUi.ui:79
 #: src/frontends/qt4/ui/ListingsUi.ui:507
@@ -2306,10 +2298,6 @@ msgstr "&Lokálna schéma…"
 #: src/frontends/qt4/ui/LaTeXUi.ui:58
 msgid "Class Options"
 msgstr "Nastavenie Triedy"
-
-#: src/frontends/qt4/GuiDocument.cpp:964
-msgid "Class default"
-msgstr "Triedny štandard"
 
 #: src/frontends/qt4/ui/LaTeXUi.ui:64
 msgid "Enable to use the options that are predefined in the layout file"
@@ -3276,6 +3264,14 @@ msgstr "Vp&ravo"
 msgid "Use the default alignment for this paragraph, whatever it is."
 msgstr ""
 "Použiť štandardné zarovnanie pre tento odstavec, nech už to je čo chce."
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:94
+msgid ""
+"Use the document's default alignment for floats, as specified in Document "
+"Settings."
+msgstr ""
+"Použiť štandardné zarovnanie pre plávajúce objekty, ako je určené v "
+"Nastaveniach Dokumentu."
 
 #: src/frontends/qt4/ui/ParagraphUi.ui:200
 msgid "Paragraph's &Default"
@@ -4694,6 +4690,10 @@ msgstr "Veľké písmená"
 #: lib/ui/stdcontext.inc:100
 msgid "Capitalize|C"
 msgstr "Prvé Veľké|V"
+
+#: lib/ui/stdmenus.inc:186
+msgid "Capitalize|p"
+msgstr "Prvé Veľké|P"
 
 #: src/frontends/qt4/ui/RefUi.ui:409
 msgid "Do not output part of label before \":\""
@@ -7349,6 +7349,10 @@ msgstr "UmiestnenieTabuľky"
 msgid "Place Table here:"
 msgstr "Tabuľku tu umiestniť:"
 
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:178
+msgid "Place&ment Settings:"
+msgstr "N&astavenia Umiestnenia:"
+
 #: lib/layouts/aastex.layout:388
 msgid "[Appendix]"
 msgstr "[Príloha]"
@@ -7708,6 +7712,10 @@ msgstr "Prídavné Príslušenstvo: "
 #: lib/layouts/acmart.layout:222 lib/layouts/acmart.layout:226
 msgid "Position"
 msgstr "Postavenie"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:170
+msgid "Position on Page"
+msgstr "Umiestnenie na Strane"
 
 #: lib/layouts/acmart.layout:231 lib/layouts/acmart.layout:233
 #: lib/layouts/paper.layout:163
@@ -8805,6 +8813,11 @@ msgstr ""
 "Použiť balík algorithm2e pre plávajúce algoritmy namiesto LyXovej samohonky "
 "plávajúcich algoritmov. Použiť štýl 'Algorithm' na vklad a odsadenie "
 "algoritmu."
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:134
+msgid "Use the class' default alignment for floats, whatever it is."
+msgstr ""
+"Použiť štandardné zarovnanie pre plávajúce objekty, nech už to je čo chce."
 
 #: lib/layouts/algorithm2e.module:25 lib/layouts/powerdot.layout:549
 #: lib/layouts/revtex4-1.layout:270 lib/layouts/stdfloats.inc:48
@@ -10176,6 +10189,10 @@ msgstr "Hlavička Stred"
 #: lib/layouts/customHeadersFooters.module:36
 msgid "Center Header:"
 msgstr "Hlavička Stred:"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:114
+msgid "Center float contents"
+msgstr "Obsah plávajúceho objektu do stredu"
 
 #: lib/layouts/customHeadersFooters.module:45
 msgid "Left Footer"
@@ -13258,6 +13275,10 @@ msgstr "Prípad #."
 msgid "Claim."
 msgstr "Nárok."
 
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:137
+msgid "Class &Default"
+msgstr "&Triedny Štandard"
+
 #: lib/layouts/llncs.layout:328
 msgid "Conjecture #."
 msgstr "Hypotéza #."
@@ -13660,6 +13681,10 @@ msgstr "Ľavý Text"
 msgid "Left text"
 msgstr "Ľavý text"
 
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:104
+msgid "Left-align float contents"
+msgstr "Obsah plávajúceho objektu zarovnať doľava"
+
 #: lib/layouts/moderncv.layout:449
 msgid "Right Summary"
 msgstr "Pravý Súhrn"
@@ -13667,6 +13692,10 @@ msgstr "Pravý Súhrn"
 #: lib/layouts/moderncv.layout:450
 msgid "Right summary"
 msgstr "Pravý súhrn"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:124
+msgid "Right-align float contents"
+msgstr "Obsah plávajúceho objektu zarovnať doprava"
 
 #: lib/layouts/moderncv.layout:454
 msgid "DoubleListItem"
@@ -16957,6 +16986,10 @@ msgstr "Chorvátsky"
 msgid "Czech"
 msgstr "Česky"
 
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:97
+msgid "D&ocument Default"
+msgstr "Štan&dardné Nastavenia Dokumentu"
+
 #: lib/languages:422
 msgid "Danish"
 msgstr "Dánsky"
@@ -18762,6 +18795,10 @@ msgstr "Nastavenia TeX Kódu…|K"
 msgid "Float Settings...|a"
 msgstr "Nastavenia Plávajúceho Objektu…|h"
 
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:22
+msgid "Float T&ype:"
+msgstr "T&yp Plávajúceho Objektu:"
+
 #: lib/ui/stdmenus.inc:141
 msgid "Text Wrap Settings...|W"
 msgstr "Nastavenia Obtekania Textu…|b"
@@ -18856,10 +18893,6 @@ msgstr "Výber, Spojiť Riadky|b"
 #: lib/ui/stdmenus.inc:182
 msgid "Dissolve Text Style"
 msgstr "Rozpustiť Štýl Znakov do Textu"
-
-#: lib/ui/stdmenus.inc:188
-msgid "Capitalize|a"
-msgstr "Prvé Veľké|P"
 
 #: lib/ui/stdmenus.inc:189
 msgid "Uppercase|U"
@@ -19905,6 +19938,10 @@ msgstr "Zarovnať dospodu"
 msgid "Rotate cell by 90 degrees or unset rotation"
 msgstr "Otočiť túto bunku o 90 stupňov alebo vymazať rotáciu"
 
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:160
+msgid "Rotate side&ways"
+msgstr "Otočiť &bokom"
+
 #: lib/ui/stdtoolbars.inc:172
 msgid "Rotate table by 90 degrees or unset rotation"
 msgstr "Otočiť túto bunku o 90 stupňov alebo vymazať rotáciu"
@@ -20205,6 +20242,10 @@ msgstr "Písma"
 #: lib/ui/stdtoolbars.inc:303 lib/ui/stdtoolbars.inc:320
 msgid "Functions"
 msgstr "Funkcie"
+
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:147
+msgid "Further Options"
+msgstr "Ďalšie Voľby"
 
 #: lib/ui/stdtoolbars.inc:304
 msgid "Frame decorations"
@@ -27902,6 +27943,10 @@ msgstr "S touto schémou to nemá zmysel!"
 msgid "Alignment not permitted"
 msgstr "Zarovnanie nepovolené"
 
+#: src/frontends/qt4/ui/FloatPlacementUi.ui:70
+msgid "Alignment of Contents"
+msgstr "Zarovnanie Obsahu"
+
 #: src/Paragraph.cpp:2088
 msgid ""
 "The new layout does not permit the alignment previously used.\n"
@@ -29612,6 +29657,10 @@ msgstr ""
 msgid "Document Class"
 msgstr "Trieda dokumentu"
 
+#: src/frontends/qt4/FloatPlacement.cpp:184
+msgid "Document Default"
+msgstr "Štandardné Nastavenia Dokumentu"
+
 #: src/frontends/qt4/GuiDocument.cpp:1495
 msgid "Modules"
 msgstr "Moduly"
@@ -29647,10 +29696,6 @@ msgstr "PDF Vlastnosti"
 #: src/frontends/qt4/GuiDocument.cpp:1507
 msgid "Math Options"
 msgstr "Voľby pre Matematiku"
-
-#: src/frontends/qt4/GuiDocument.cpp:1508
-msgid "Float Placement"
-msgstr "Umiestnenie plávajúcich objektov"
 
 #: src/frontends/qt4/GuiDocument.cpp:1510
 msgid "Bullets"
@@ -33715,6 +33760,25 @@ msgstr ""
 msgid "Unknown user"
 msgstr "Neznámy používateľ"
 
+#, fuzzy
+#~ msgid "Class Defaults"
+#~ msgstr "Triedny Štandard"
+
+#~ msgid "Class default"
+#~ msgstr "Triedny štandard"
+
+#~ msgid "Advanced Placement Options"
+#~ msgstr "Voľby Rozšírené Umiestňovanie"
+
+#~ msgid "Capitalize|a"
+#~ msgstr "Prvé Veľké|P"
+
+#~ msgid "Float Placement"
+#~ msgstr "Umiestnenie plávajúcich objektov"
+
+#~ msgid "Use &default placement"
+#~ msgstr "P&oužiť štandardné umiestňovanie"
+
 #~ msgid "Character Styles"
 #~ msgstr "Štýly Znakov"
 
@@ -36924,9 +36988,6 @@ msgstr "Neznámy používateľ"
 #~ msgid "LyX View"
 #~ msgstr "LyX zobrazenie"
 
-#~ msgid "&Center"
-#~ msgstr "Na stred"
-
 #~ msgid "&Clipping"
 #~ msgstr "&Orezanie"
 
@@ -37147,9 +37208,6 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Placeholders"
 #~ msgstr "Umiestnenie_Tabuľky"
-
-#~ msgid "&Right"
-#~ msgstr "Vpravo"
 
 #~ msgid "Case."
 #~ msgstr "Vložiť"
@@ -38325,3 +38383,9 @@ msgstr "Neznámy používateľ"
 
 #~ msgid "Customized...|C"
 #~ msgstr "Vlastné…|l"
+
+#~ msgid "Float Type:"
+#~ msgstr "Typ plávajúceho objektu:"
+
+#~ msgid "&Rotate sideways"
+#~ msgstr "Otočiť &bokom"
