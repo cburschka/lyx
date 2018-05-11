@@ -61,6 +61,9 @@ What's new
 - When cloning a buffer, do not start from a parent if it is not the
   current master (e.g., when compiling a child alone).
 
+-  Disallow paragraph customization in some single-par charstyle insets
+   (bug 9192).
+
 
 * USER INTERFACE
 
