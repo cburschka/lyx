@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 2.4git\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2018-05-11 10:54+0200\n"
-"PO-Revision-Date: 2018-05-11 11:05+0100\n"
+"POT-Creation-Date: 2018-05-11 12:47+0200\n"
+"PO-Revision-Date: 2018-05-11 12:50+0100\n"
 "Last-Translator: Juergen Spitzmueller <spitz@lyx.org>\n"
 "Language-Team: German <lyx-docs@lists.lyx.org>\n"
 "Language: de\n"
@@ -1790,12 +1790,11 @@ msgid ""
 "Use the document's default alignment for floats, as specified in Document "
 "Settings."
 msgstr ""
-"Die Standardausrichtung für Gleitobjekte verwenden, wie sie in den"
-" Dokument-Einstellungen definiert "
-"ist."
+"Die Standardausrichtung für Gleitobjekte verwenden, wie sie in den Dokument-"
+"Einstellungen definiert ist."
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:97
-msgid "D&ocument Defaults"
+msgid "D&ocument Default"
 msgstr "D&okumentvoreinstellung"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:104
@@ -1826,13 +1825,12 @@ msgstr "&Rechts"
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:134
 msgid "Use the class' default alignment for floats, whatever it is."
 msgstr ""
-"Die Standardausrichtung der Klasse für Gleitobjekte verwenden, wie immer sie"
-" definiert "
-"ist."
+"Die Standardausrichtung der Klasse für Gleitobjekte verwenden, wie immer sie "
+"definiert ist."
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:137
-msgid "Class &Defaults"
-msgstr "&Klassenvoreinstellungen"
+msgid "Class &Default"
+msgstr "&Klassenvoreinstellung"
 
 #: src/frontends/qt4/ui/FloatPlacementUi.ui:147
 msgid "Further Options"
@@ -3415,10 +3413,10 @@ msgstr "Doppelt"
 #: src/frontends/qt4/ui/TabularUi.ui:1209
 #: src/frontends/qt4/ui/TabularUi.ui:1228
 #: src/frontends/qt4/ui/TabularUi.ui:1276 src/frontends/qt4/ui/VSpaceUi.ui:107
-#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/GuiDocument.cpp:773
-#: src/frontends/qt4/GuiDocument.cpp:777 src/frontends/qt4/GuiDocument.cpp:785
-#: src/frontends/qt4/GuiDocument.cpp:895 src/frontends/qt4/GuiDocument.cpp:965
-#: src/frontends/qt4/GuiDocument.cpp:1016
+#: lib/layouts/stdcustom.inc:8 src/frontends/qt4/FloatPlacement.cpp:185
+#: src/frontends/qt4/GuiDocument.cpp:773 src/frontends/qt4/GuiDocument.cpp:777
+#: src/frontends/qt4/GuiDocument.cpp:785 src/frontends/qt4/GuiDocument.cpp:895
+#: src/frontends/qt4/GuiDocument.cpp:965 src/frontends/qt4/GuiDocument.cpp:1016
 #: src/frontends/qt4/GuiDocument.cpp:1347 src/frontends/qt4/GuiHSpace.cpp:56
 #: src/frontends/qt4/GuiHSpace.cpp:67 src/frontends/qt4/GuiPrefs.cpp:898
 #: src/frontends/qt4/GuiPrefs.cpp:926 src/frontends/qt4/GuiPrefs.cpp:953
@@ -28992,6 +28990,16 @@ msgstr "Keine Dokumente geöffnet, in denen gesucht werden kann"
 msgid "Advanced Find and Replace"
 msgstr "Erweitertes Suchen und Ersetzen"
 
+#: src/frontends/qt4/FloatPlacement.cpp:182
+#: src/frontends/qt4/GuiDocument.cpp:964 src/frontends/qt4/GuiDocument.cpp:2264
+#: src/frontends/qt4/GuiDocument.cpp:2291
+msgid "Class Default"
+msgstr "Klassenvoreinstellungen"
+
+#: src/frontends/qt4/FloatPlacement.cpp:184
+msgid "Document Default"
+msgstr "Dokumentvoreinstellung"
+
 #: src/frontends/qt4/FloatPlacement.h:38 src/frontends/qt4/GuiDocument.cpp:1559
 msgid "Float Settings"
 msgstr "Gleitobjekt-Einstellungen"
@@ -29815,10 +29823,6 @@ msgstr "11"
 msgid "12"
 msgstr "12"
 
-#: src/frontends/qt4/GuiDocument.cpp:964
-msgid "Class default"
-msgstr "Klassenvoreinstellung"
-
 #: src/frontends/qt4/GuiDocument.cpp:973
 msgid ""
 "Use OpenType and TrueType fonts directly (requires XeTeX or LuaTeX)\n"
@@ -30108,11 +30112,6 @@ msgstr " (nicht verfügbar)"
 #: src/frontends/qt4/GuiDocument.cpp:2226
 msgid "Class Default (TeX Fonts)"
 msgstr "Klassenvoreinstellungen (TeX-Schriften)"
-
-#: src/frontends/qt4/GuiDocument.cpp:2264
-#: src/frontends/qt4/GuiDocument.cpp:2291
-msgid "Class Default"
-msgstr "Klassenvoreinstellungen"
 
 #: src/frontends/qt4/GuiDocument.cpp:2368
 msgid "Lay&outs"
@@ -34165,6 +34164,13 @@ msgstr ""
 #: src/support/userinfo.cpp:45
 msgid "Unknown user"
 msgstr "Unbekannter Benutzer"
+
+#, fuzzy
+#~ msgid "Class Defaults"
+#~ msgstr "&Klassenvoreinstellung"
+
+#~ msgid "Class default"
+#~ msgstr "Klassenvoreinstellung"
 
 #~ msgid "Use &default placement"
 #~ msgstr "Standard-&Platzierung verwenden"
