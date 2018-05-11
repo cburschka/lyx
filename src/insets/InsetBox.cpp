@@ -238,7 +238,9 @@ ColorCode InsetBox::backgroundColor(PainterInfo const &) const
 
 LyXAlignment InsetBox::contentAlignment() const
 {
-	if (!params_.use_makebox)
+	// Custom horizontal alignment is only allowed with a fixed width
+	// and if either makebox or no inner box are used
+	if (params_.width.empty() || !(params_.use_makebox || !params_.inner_box))
 		return LYX_ALIGN_NONE;
 
 	// The default value below is actually irrelevant
