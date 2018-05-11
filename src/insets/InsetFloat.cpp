@@ -225,6 +225,37 @@ bool InsetFloat::hasSubCaptions(ParIterator const & it) const
 }
 
 
+string InsetFloat::getAlignment() const
+{
+	string alignment;
+	string const buf_alignment = buffer().params().float_alignment;
+	if (params_.alignment == "document"
+	    && !buf_alignment.empty()) {
+		alignment = buf_alignment;
+	} else if (!params_.alignment.empty()
+		   && params_.alignment != "class"
+		   && params_.alignment != "document") {
+		alignment = params_.alignment;
+	}
+	return alignment;
+}
+
+
+LyXAlignment InsetFloat::contentAlignment() const
+{
+	LyXAlignment align = LYX_ALIGN_NONE;
+	string alignment = getAlignment();
+	if (alignment == "left")
+		align = LYX_ALIGN_LEFT;
+	else if (alignment == "center")
+		align = LYX_ALIGN_CENTER;
+	else if (alignment == "right")
+		align = LYX_ALIGN_RIGHT;
+
+	return align;
+}
+
+
 void InsetFloatParams::write(ostream & os) const
 {
 	if (type.empty()) {
@@ -392,17 +423,6 @@ void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 			placement += *lit;
 	}
 
-	string alignment;
-	string const buf_alignment = buffer().params().float_alignment;
-	if (params_.alignment == "document"
-	    && !buf_alignment.empty()) {
-		alignment = buf_alignment;
-	} else if (!params_.alignment.empty()
-		   && params_.alignment != "class"
-		   && params_.alignment != "document") {
-		alignment = params_.alignment;
-	}
-
 	// Force \begin{<floatname>} to appear in a new line.
 	os << breakln << "\\begin{" << from_ascii(tmptype) << '}';
 	if (runparams.lastid != -1)
@@ -414,6 +434,8 @@ void InsetFloat::latex(otexstream & os, OutputParams const & runparams_in) const
 	    && (!params_.sideways || (params_.sideways && from_ascii(placement) != "p")))
 		os << '[' << from_ascii(placement) << ']';
 	os << '\n';
+
+	string alignment = getAlignment();
 	if (alignment == "left")
 		os << "\\raggedright" << breakln;
 	else if (alignment == "center")

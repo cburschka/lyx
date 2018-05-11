@@ -74,6 +74,8 @@ public:
 	InsetFloatParams const & params() const { return params_; }
 	///
 	bool allowsCaptionVariation(std::string const &) const;
+	///
+	LyXAlignment contentAlignment() const;
 private:
 	///
 	void setCaptionType(std::string const & type);
@@ -116,6 +118,8 @@ private:
 	bool isPartOfTextSequence() const { return false; }
 	///
 	TexString getCaption(OutputParams const &) const;
+	///
+	std::string getAlignment() const;
 
 	InsetFloatParams params_;
 };
