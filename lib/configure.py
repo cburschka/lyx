@@ -168,14 +168,14 @@ def checkUpgrade():
         logger.info('Checking for upgrade from previous version.')
         parent = os.path.dirname(cwd)
         appname = basename[:(-len(version_suffix))]
-        for version in ['-2.1', '-2.0', '-1.6' ]:
+        for version in ['-2.3', '-2.2', '-2.1', '-2.0', '-1.6' ]:
             logger.debug('Checking for upgrade from previous version ' + version)
             previous = os.path.join(parent, appname + version)
             logger.debug('previous = ' + previous)
             if os.path.isdir( previous ):
                 logger.info('Found directory "%s".', previous)
                 copy_tree( previous, cwd, True )
-                logger.info('Content copied to directory "%s".', cwd)
+                logger.info('Content copied from directory "%s".', previous)
                 return
 
 
