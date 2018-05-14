@@ -2333,6 +2333,19 @@ void LyXAction::init()
 		{ LFUN_LAYOUT, "layout", Noop, Layout },
 
 /*!
+ * \var lyx::FuncCode lyx::LFUN_LAYOUT_TOGGLE
+ * \li Action: Toggles the layout (that is, environment) for the current paragraph.
+ * \li Notion: Contrary to `layout', this function resets the current
+ * (or selection) layout to the standard layout it already has the
+ * correct layout. Useful for toolbar icons.
+ * \li Syntax: layout-toggle <LAYOUT> [ignorenests]
+ * \li Params: <LAYOUT>: the layout to toggle\n
+               ignorenests: If specified, nesting advices will be ignored.
+ * \endvar
+ */
+		{ LFUN_LAYOUT_TOGGLE, "layout-toggle", Noop, Layout },
+
+/*!
  * \var lyx::FuncCode lyx::LFUN_LAYOUT_MODULES_CLEAR
  * \li Action: Clears the module list.
  * \li Notion: Clears the list of included modules for the current buffer.

@@ -572,16 +572,16 @@ Language const * getLanguage(Cursor const & cur, string const & lang)
 }
 
 
-docstring resolveLayout(docstring layout, Cursor const & cur)
+docstring resolveLayout(docstring layout, DocIterator const & dit)
 {
-	Paragraph const & par = cur.paragraph();
+	Paragraph const & par = dit.paragraph();
 	docstring const old_layout = par.layout().name();
-	DocumentClass const & tclass = cur.buffer()->params().documentClass();
+	DocumentClass const & tclass = dit.buffer()->params().documentClass();
 
 	if (layout.empty())
 		layout = tclass.defaultLayoutName();
 
-	if (cur.inset().forcePlainLayout(cur.idx()))
+	if (dit.inset().forcePlainLayout(dit.idx()))
 		// in this case only the empty layout is allowed
 		layout = tclass.plainLayoutName();
 	else if (par.usePlainLayout()) {
@@ -606,7 +606,7 @@ docstring resolveLayout(docstring layout, Cursor const & cur)
 }
 
 
-bool isAlreadyLayout(docstring const & layout, Cursor const & cur)
+bool isAlreadyLayout(docstring const & layout, CursorData const & cur)
 {
 	ParagraphList const & pars = cur.text()->paragraphs();
 
@@ -1546,7 +1546,8 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 		cur.message(cur.paragraph().layout().name());
 		break;
 
-	case LFUN_LAYOUT: {
+	case LFUN_LAYOUT:
+	case LFUN_LAYOUT_TOGGLE: {
 		bool const ignoreautonests = cmd.getArg(1) == "ignoreautonests";
 		docstring req_layout = ignoreautonests ? from_utf8(cmd.getArg(0)) : cmd.argument();
 		LYXERR(Debug::INFO, "LFUN_LAYOUT: (arg) " << to_utf8(req_layout));
@@ -1560,6 +1561,11 @@ void Text::dispatch(Cursor & cur, FuncRequest & cmd)
 
 		docstring const old_layout = cur.paragraph().layout().name();
 		bool change_layout = !isAlreadyLayout(layout, cur);
+
+		if (cmd.action() == LFUN_LAYOUT_TOGGLE && !change_layout) {
+			change_layout = true;
+			layout = resolveLayout(docstring(), cur);
+		}
 
 		if (change_layout) {
 			setLayout(cur, layout);
@@ -3286,7 +3292,8 @@ bool Text::getStatus(Cursor & cur, FuncRequest const & cmd,
 		}
 		break;
 
-	case LFUN_LAYOUT: {
+	case LFUN_LAYOUT:
+	case LFUN_LAYOUT_TOGGLE: {
 		bool const ignoreautonests = cmd.getArg(1) == "ignoreautonests";
 		docstring const req_layout = ignoreautonests ? from_utf8(cmd.getArg(0)) : cmd.argument();
 		docstring const layout = resolveLayout(req_layout, cur);
