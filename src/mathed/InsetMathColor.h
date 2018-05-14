@@ -49,8 +49,6 @@ public:
 	InsetCode lyxCode() const { return MATH_COLOR_CODE; }
 private:
 	virtual Inset * clone() const;
-	/// width of '[' in current font
-	mutable int w_;
 	///
 	bool oldstyle_;
 	/// Our color. Only valid LaTeX colors are allowed.
