@@ -2141,8 +2141,8 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_INSET_SELECT_ALL
  * \li Action: Select all contents of an inset.
  * \li Notion: There are 3 successive levels: select current cell,
- *   select all cells of inset, select the inset from outside
- *   (in the enclosing inset).
+ *             select all cells of inset, select the inset from outside
+ *             (in the enclosing inset).
  * \li Syntax: inset-select-all
  * \li Origin: vfr, 22 Aug 2009; lasgouttes 1 Nov 2014
  * \endvar
@@ -2336,11 +2336,12 @@ void LyXAction::init()
  * \var lyx::FuncCode lyx::LFUN_LAYOUT_TOGGLE
  * \li Action: Toggles the layout (that is, environment) for the current paragraph.
  * \li Notion: Contrary to `layout', this function resets the current
- * (or selection) layout to the standard layout it already has the
- * correct layout. Useful for toolbar icons.
+ *             (or selection) layout to the standard layout it already has the
+ *             correct layout. Useful for toolbar icons.
  * \li Syntax: layout-toggle <LAYOUT> [ignorenests]
  * \li Params: <LAYOUT>: the layout to toggle\n
                ignorenests: If specified, nesting advices will be ignored.
+ * \li Origin: lasgouttes, 14 May 2018
  * \endvar
  */
 		{ LFUN_LAYOUT_TOGGLE, "layout-toggle", Noop, Layout },
