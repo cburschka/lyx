@@ -3598,10 +3598,10 @@ bool GuiView::GuiViewPrivate::asyncBufferProcessing(
 #if EXPORT_in_THREAD
 	if (allow_async) {
 		GuiViewPrivate::busyBuffers.insert(used_buffer);
-		Buffer * cloned_buffer = used_buffer->cloneFromMaster();
+		Buffer * cloned_buffer = used_buffer->cloneWithChildren();
 		if (!cloned_buffer) {
 			Alert::error(_("Export Error"),
-									 _("Error cloning the Buffer."));
+				     _("Error cloning the Buffer."));
 			return false;
 		}
 		QFuture<Buffer::ExportStatus> f = QtConcurrent::run(

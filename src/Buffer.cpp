@@ -570,13 +570,13 @@ Buffer::~Buffer()
 }
 
 
-Buffer * Buffer::cloneFromMaster() const
+Buffer * Buffer::cloneWithChildren() const
 {
 	BufferMap bufmap;
 	cloned_buffers.push_back(new CloneList);
 	CloneList * clones = cloned_buffers.back();
 
-	masterBuffer()->cloneWithChildren(bufmap, clones);
+	cloneWithChildren(bufmap, clones);
 
 	// make sure we got cloned
 	BufferMap::const_iterator bit = bufmap.find(this);
