@@ -159,9 +159,9 @@ public:
 	/// Destructor
 	~Buffer();
 
-	/// Clones the entire structure of which this Buffer is part, starting
-	/// with the master and cloning all the children, too.
-	Buffer * cloneFromMaster() const;
+	/// Clones the entire structure of which this Buffer is part, 
+	/// cloning all the children, too.
+	Buffer * cloneWithChildren() const;
 	/// Just clones this single Buffer. For autosave.
 	Buffer * cloneBufferOnly() const;
 	///
