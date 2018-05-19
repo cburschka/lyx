@@ -253,6 +253,9 @@ What's new
 - Correct list of previous versions to check for user directory contents
   (bug 11142 on Mac).
 
+- Honor the syntax highlighting package choice when adding listing params
+  without actually inserting a listing (bug 11151).
+
 * INTERNALS
 
 - Fix bug that TeX files were not detected when reconfiguring LyX 
