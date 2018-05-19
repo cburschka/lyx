@@ -2267,16 +2267,16 @@ bool BufferParams::writeLaTeX(otexstream & os, LaTeXFeatures & features,
 	if (!listings_params.empty()
 	    || features.mustProvide("listings")
 	    || features.mustProvide("minted")) {
-		if (features.mustProvide("listings"))
-			os << "\\usepackage{listings}\n";
-		else
+		if (use_minted)
 			os << "\\usepackage{minted}\n";
+		else
+			os << "\\usepackage{listings}\n";
 	}
 	if (!listings_params.empty()) {
-		if (features.mustProvide("listings"))
-			os << "\\lstset{";
-		else
+		if (use_minted)
 			os << "\\setminted{";
+		else
+			os << "\\lstset{";
 		// do not test validity because listings_params is
 		// supposed to be valid
 		string par =
