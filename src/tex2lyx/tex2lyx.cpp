@@ -284,11 +284,10 @@ void initModules()
 		for (; it != end; ++it) {
 			string const module = it->getID();
 			LayoutModuleList m;
-			LayoutModuleList c;
 			vector<string> v;
 			if (!addModule(module, baseClass, m, v))
 				continue;
-			modules[module] = getDocumentClass(baseClass, m, c);
+			modules[module] = getDocumentClass(baseClass, m);
 		}
 		init = false;
 	}

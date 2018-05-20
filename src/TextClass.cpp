@@ -1666,8 +1666,7 @@ Layout TextClass::createBasicLayout(docstring const & name, bool unknown) const
 
 DocumentClassPtr getDocumentClass(
 		LayoutFile const & baseClass, LayoutModuleList const & modlist,
-		LayoutModuleList const & celist,
-		bool const clone)
+		string const & cengine, bool const clone)
 {
 	DocumentClassPtr doc_class =
 	    DocumentClassPtr(new DocumentClass(baseClass));
@@ -1706,37 +1705,31 @@ DocumentClassPtr getDocumentClass(
 		}
 	}
 
-	LayoutModuleList::const_iterator cit = celist.begin();
-	LayoutModuleList::const_iterator cen = celist.end();
-	for (; cit != cen; ++cit) {
-		string const ceName = *cit;
-		LyXCiteEngine * ce = theCiteEnginesList[ceName];
-		if (!ce) {
-			docstring const msg =
-						bformat(_("The cite engine %1$s has been requested by\n"
-						"this document but has not been found in the list of\n"
-						"available engines. If you recently installed it, you\n"
-						"probably need to reconfigure LyX.\n"), from_utf8(ceName));
-			if (!clone)
-				frontend::Alert::warning(_("Cite Engine not available"), msg);
-			continue;
-		}
-		if (!ce->isAvailable() && !clone) {
-			docstring const prereqs = from_utf8(getStringFromVector(ce->prerequisites(), "\n\t"));
-			docstring const msg =
-				bformat(_("The cite engine %1$s requires a package that is not\n"
-					"available in your LaTeX installation, or a converter that\n"
-					"you have not installed. LaTeX output may not be possible.\n"
-					"Missing prerequisites:\n"
-						"\t%2$s\n"
-					"See section 3.1.2.3 (Modules) of the User's Guide for more information."),
-				from_utf8(ceName), prereqs);
-			frontend::Alert::warning(_("Package not available"), msg, true);
-		}
+	LyXCiteEngine * ce = theCiteEnginesList[cengine];
+	if (!ce) {
+		docstring const msg =
+					bformat(_("The cite engine %1$s has been requested by\n"
+					"this document but has not been found in the list of\n"
+					"available engines. If you recently installed it, you\n"
+					"probably need to reconfigure LyX.\n"), from_utf8(cengine));
+		if (!clone)
+			frontend::Alert::warning(_("Cite Engine not available"), msg);
+	} else if (!ce->isAvailable() && !clone) {
+		docstring const prereqs = from_utf8(getStringFromVector(ce->prerequisites(), "\n\t"));
+		docstring const msg =
+			bformat(_("The cite engine %1$s requires a package that is not\n"
+				"available in your LaTeX installation, or a converter that\n"
+				"you have not installed. LaTeX output may not be possible.\n"
+				"Missing prerequisites:\n"
+					"\t%2$s\n"
+				"See section 3.1.2.3 (Modules) of the User's Guide for more information."),
+			from_utf8(cengine), prereqs);
+		frontend::Alert::warning(_("Package not available"), msg, true);
+	} else {
 		FileName layout_file = libFileSearch("citeengines", ce->getFilename());
 		if (!doc_class->read(layout_file, TextClass::CITE_ENGINE)) {
 			docstring const msg =
-						bformat(_("Error reading cite engine %1$s\n"), from_utf8(ceName));
+						bformat(_("Error reading cite engine %1$s\n"), from_utf8(cengine));
 			frontend::Alert::warning(_("Read Error"), msg);
 		}
 	}

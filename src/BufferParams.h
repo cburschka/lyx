@@ -168,8 +168,6 @@ public:
 	/// checks to make sure module's requriements are satisfied, that it does
 	/// not conflict with already-present modules, isn't already loaded, etc.
 	bool layoutModuleCanBeAdded(std::string const & modName) const;
-	/// same, but for citaton modules.
-	bool citationModuleCanBeAdded(std::string const & modName) const;
 	///
 	void addRemovedModule(std::string const & modName)
 			{ removed_modules_.push_back(modName); }
@@ -465,21 +463,12 @@ public:
 	std::string const loadFonts(LaTeXFeatures & features) const;
 
 	/// the cite engine modules
-	LayoutModuleList const & citeEngine() const
-		{ return cite_engine_; }
+	std::string const & citeEngine() const { return cite_engine_; }
 	/// the type of cite engine (authoryear or numerical)
 	CiteEngineType const & citeEngineType() const
 		{ return cite_engine_type_; }
 	/// add the module to the cite engine modules
-	bool addCiteEngine(std::string const &);
-	/// add the modules to the cite engine modules
-	bool addCiteEngine(std::vector<std::string> const &);
-	/// clear the list of cite engine modules
-	void clearCiteEngine() { cite_engine_.clear(); }
-	/// set the cite engine module
-	void setCiteEngine(std::string const &);
-	/// set the cite engine modules
-	void setCiteEngine(std::vector<std::string> const &);
+	void setCiteEngine(std::string const & eng) { cite_engine_ = eng; }
 	/// set the cite engine type
 	void setCiteEngineType(CiteEngineType const & engine_type)
 		{ cite_engine_type_ = engine_type; }
@@ -577,8 +566,8 @@ private:
 	typedef std::map<std::string, OutputParams::FLAVOR> DefaultFlavorCache;
 	///
 	mutable DefaultFlavorCache default_flavors_;
-	/// the cite engine modules
-	LayoutModuleList cite_engine_;
+	/// the cite engine
+	std::string cite_engine_;
 	/// the type of cite engine (authoryear or numerical)
 	CiteEngineType cite_engine_type_;
 	/// the default BibTeX style file for the document

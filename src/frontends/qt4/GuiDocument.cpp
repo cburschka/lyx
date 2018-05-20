@@ -3399,7 +3399,7 @@ void GuiDocument::paramsToDialog()
 	latexModule->refstyleCB->setChecked(bp_.use_refstyle);
 
 	// biblio
-	string const cite_engine = bp_.citeEngine().list().front();
+	string const cite_engine = bp_.citeEngine();
 
 	biblioModule->citeEngineCO->setCurrentIndex(
 		biblioModule->citeEngineCO->findData(toqstr(cite_engine)));

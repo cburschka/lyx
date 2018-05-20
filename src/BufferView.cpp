@@ -1395,14 +1395,14 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		// We need to find out if the bibliography information
 		// has changed. See bug #11055.
 		// So these should not be references...
-		LayoutModuleList const engines = buffer().params().citeEngine();
+		string const engine = buffer().params().citeEngine();
 		CiteEngineType const enginetype = buffer().params().citeEngineType();
 		if (!cur.textUndo())
 			dr.setMessage(_("No further undo information"));
 		else {
 			dr.screenUpdate(Update::Force | Update::FitCursor);
 			dr.forceBufferUpdate();
-			if (buffer().params().citeEngine() != engines ||
+			if (buffer().params().citeEngine() != engine ||
 			    buffer().params().citeEngineType() != enginetype)
 				buffer().invalidateCiteLabels();
 		}
@@ -1415,14 +1415,14 @@ void BufferView::dispatch(FuncRequest const & cmd, DispatchResult & dr)
 		// We need to find out if the bibliography information
 		// has changed. See bug #11055.
 		// So these should not be references...
-		LayoutModuleList const engines = buffer().params().citeEngine();
+		string const engine = buffer().params().citeEngine();
 		CiteEngineType const enginetype = buffer().params().citeEngineType();
 		if (!cur.textRedo())
 			dr.setMessage(_("No further redo information"));
 		else {
 			dr.screenUpdate(Update::Force | Update::FitCursor);
 			dr.forceBufferUpdate();
-			if (buffer().params().citeEngine() != engines ||
+			if (buffer().params().citeEngine() != engine ||
 			    buffer().params().citeEngineType() != enginetype)
 				buffer().invalidateCiteLabels();
 		}

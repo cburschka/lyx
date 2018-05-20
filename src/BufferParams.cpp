@@ -380,7 +380,7 @@ BufferParams::BufferParams()
 	: pimpl_(new Impl)
 {
 	setBaseClass(defaultBaseclass());
-	cite_engine_.push_back("basic");
+	cite_engine_ = "basic";
 	cite_engine_type_ = ENGINE_TYPE_DEFAULT;
 	makeDocumentClass();
 	paragraph_separation = ParagraphIndentSeparation;
@@ -901,8 +901,7 @@ string BufferParams::readToken(Lexer & lex, string const & token,
 		use_package(package, packagetranslator().find(use));
 	} else if (token == "\\cite_engine") {
 		lex.eatLine();
-		vector<string> engine = getVectorFromString(lex.getString());
-		setCiteEngine(engine);
+		cite_engine_ = lex.getString();
 	} else if (token == "\\cite_engine_type") {
 		string engine_type;
 		lex >> engine_type;
@@ -1282,17 +1281,10 @@ void BufferParams::writeFile(ostream & os, Buffer const * buf) const
 
 	os << "\n\\cite_engine ";
 
-	if (!cite_engine_.empty()) {
-		LayoutModuleList::const_iterator be = cite_engine_.begin();
-		LayoutModuleList::const_iterator en = cite_engine_.end();
-		for (LayoutModuleList::const_iterator it = be; it != en; ++it) {
-			if (it != be)
-				os << ',';
-			os << *it;
-		}
-	} else {
+	if (!cite_engine_.empty())
+		os << cite_engine_;
+	else
 		os << "basic";
-	}
 
 	os << "\n\\cite_engine_type " << theCiteEnginesList.getTypeAsString(cite_engine_type_);
 
@@ -2493,18 +2485,12 @@ void BufferParams::makeDocumentClass(bool const clone)
 
 	invalidateConverterCache();
 	LayoutModuleList mods;
-	LayoutModuleList ces;
 	LayoutModuleList::iterator it = layout_modules_.begin();
 	LayoutModuleList::iterator en = layout_modules_.end();
 	for (; it != en; ++it)
 		mods.push_back(*it);
 
-	it = cite_engine_.begin();
-	en = cite_engine_.end();
-	for (; it != en; ++it)
-		ces.push_back(*it);
-
-	doc_class_ = getDocumentClass(*baseClass(), mods, ces, clone);
+	doc_class_ = getDocumentClass(*baseClass(), mods, cite_engine_, clone);
 
 	TextClass::ReturnValues success = TextClass::OK;
 	if (!forced_local_layout_.empty())
@@ -2523,12 +2509,6 @@ void BufferParams::makeDocumentClass(bool const clone)
 bool BufferParams::layoutModuleCanBeAdded(string const & modName) const
 {
 	return layout_modules_.moduleCanBeAdded(modName, baseClass());
-}
-
-
-bool BufferParams::citationModuleCanBeAdded(string const & modName) const
-{
-	return cite_engine_.moduleCanBeAdded(modName, baseClass());
 }
 
 
@@ -3408,30 +3388,6 @@ Encoding const & BufferParams::encoding() const
 }
 
 
-bool BufferParams::addCiteEngine(string const & engine)
-{
-	LayoutModuleList::const_iterator it = cite_engine_.begin();
-	LayoutModuleList::const_iterator en = cite_engine_.end();
-	for (; it != en; ++it)
-		if (*it == engine)
-			return false;
-	cite_engine_.push_back(engine);
-	return true;
-}
-
-
-bool BufferParams::addCiteEngine(vector<string> const & engine)
-{
-	vector<string>::const_iterator it = engine.begin();
-	vector<string>::const_iterator en = engine.end();
-	bool ret = true;
-	for (; it != en; ++it)
-		if (!addCiteEngine(*it))
-			ret = false;
-	return ret;
-}
-
-
 string const & BufferParams::defaultBiblioStyle() const
 {
 	if (!biblio_style.empty())
@@ -3463,20 +3419,6 @@ string BufferParams::getCiteAlias(string const & s) const
 	if (aliases.find(s) != aliases.end())
 		return aliases[s];
 	return string();
-}
-
-
-void BufferParams::setCiteEngine(string const & engine)
-{
-	clearCiteEngine();
-	addCiteEngine(engine);
-}
-
-
-void BufferParams::setCiteEngine(vector<string> const & engine)
-{
-	clearCiteEngine();
-	addCiteEngine(engine);
 }
 
 
@@ -3543,8 +3485,7 @@ string const BufferParams::bibtexCommand() const
 
 bool BufferParams::useBiblatex() const
 {
-	return theCiteEnginesList[citeEngine().list().front()]
-			->getCiteFramework() == "biblatex";
+	return theCiteEnginesList[citeEngine()]->getCiteFramework() == "biblatex";
 }
 
 

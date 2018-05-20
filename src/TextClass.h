@@ -524,7 +524,7 @@ private:
 	/// The only way to make a DocumentClass is to call this function.
 	friend DocumentClassPtr
 		getDocumentClass(LayoutFile const &, LayoutModuleList const &,
-				 LayoutModuleList const &,
+				 std::string const &,
 				 bool const clone);
 };
 
@@ -535,7 +535,7 @@ private:
 /// on the CutStack.
 DocumentClassPtr getDocumentClass(LayoutFile const & baseClass,
 			LayoutModuleList const & modlist,
-			LayoutModuleList const & celist,
+			std::string const & cengine = std::string(),
 			bool const clone = false);
 
 /// convert page sides option to text 1 or 2
