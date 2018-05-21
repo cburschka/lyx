@@ -8909,6 +8909,49 @@ status collapsed
 \end_layout
 
 \begin_layout Description
+
+\change_inserted -712698321 1526899478
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1526898610
+AddToCiteEngine <engine>
+\end_layout
+
+\end_inset
+
+ Extends the possibilities for displaying citation references.
+ See 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Citation-engine-description"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for details.
+ Must end with 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1526898823
+End
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Description
 \begin_inset Flex Code
 status collapsed
 
@@ -9050,6 +9093,27 @@ noprefix "false"
 \end_inset
 
 ).
+
+\change_inserted -712698321 1526898530
+ Note that if you specify this in a layout file or module, any cite engine
+ definition will be overridden.
+ Also see 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1526898530
+AddToCiteEngine
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -9101,6 +9165,12 @@ noprefix "false"
 \end_inset
 
 ).
+
+\change_inserted -712698321 1526898585
+ A cite format defined in a layout or module will override the cite engine
+ definition.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Description
@@ -22137,6 +22207,36 @@ Biblatex
 Biblatex
 \family default
  manual for details.
+\change_inserted -712698321 1526898670
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -712698321 1526899524
+If you want to add a cite command to a cite engine (e.
+\begin_inset space \thinspace{}
+\end_inset
+
+g., add a specific command provided by a class), you can use 
+\begin_inset Flex Code
+status collapsed
+
+\begin_layout Plain Layout
+
+\change_inserted -712698321 1526898768
+AddToCiteEngine <engine type> \SpecialChar ldots
+ End
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+.
+ Note that only cite commands that do not exist yet are added.
+\change_unchanged
+
 \end_layout
 
 \begin_layout Subsection

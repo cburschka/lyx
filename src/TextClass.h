@@ -351,6 +351,8 @@ protected:
 	bool cite_full_author_list_;
 	/// The possible citation styles
 	std::map<CiteEngineType, std::vector<CitationStyle> > cite_styles_;
+	/// Class-added citation styles
+	std::map<CiteEngineType, std::vector<CitationStyle> > class_cite_styles_;
 	///
 	std::map<std::string, docstring> outliner_names_;
 private:
@@ -380,11 +382,13 @@ private:
 	///
 	bool readFloat(Lexer &);
 	///
-	bool readCiteEngine(Lexer &);
+	std::vector<CitationStyle> const & citeStyles(CiteEngineType const &) const;
+	///
+	bool readCiteEngine(Lexer &, ReadType, bool const add = false);
 	///
 	int readCiteEngineType(Lexer &) const;
 	///
-	bool readCiteFormat(Lexer &);
+	bool readCiteFormat(Lexer &, ReadType);
 	///
 	bool readOutlinerName(Lexer &);
 };

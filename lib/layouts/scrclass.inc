@@ -8,7 +8,7 @@
 # Labeling is now used also in non-KOMA classes
 
 
-Format 67
+Format 68
 SecNumDepth             2
 TocDepth                2
 DefaultStyle            Standard

@@ -11,7 +11,7 @@
 # This script will update a .layout file to current format
 
 # The latest layout format is also defined in src/TextClass.cpp
-currentFormat = 67
+currentFormat = 68
 
 
 # Incremented to format 4, 6 April 2007, lasgouttes
@@ -226,6 +226,9 @@ currentFormat = 67
 
 # Incremented to format 67, 14 April 2018 by spitz
 # New Layout tag "NeedsCProtect"
+
+# Incremented to format 68, 21 May 2018 by spitz
+# New Layout tag "AddToCiteEngine"
 
 # Do not forget to document format change in Customization
 # Manual (section "Declaring a new text class").
@@ -476,7 +479,7 @@ def convert(lines, end_format):
                 i += 1
             continue
 
-        if format >= 65 and format <= 66:
+        if format >= 65 and format <= 67:
             # nothing to do.
             i += 1
             continue
