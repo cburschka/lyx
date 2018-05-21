@@ -1769,6 +1769,9 @@ DocumentClassPtr getDocumentClass(
 		}
 	}
 
+	if (cengine.empty())
+		return doc_class;
+
 	LyXCiteEngine * ce = theCiteEnginesList[cengine];
 	if (!ce) {
 		docstring const msg =
