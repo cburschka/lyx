@@ -236,6 +236,7 @@ int MathRow::after(int i) const
 
 void MathRow::metrics(MetricsInfo & mi, Dimension & dim)
 {
+	dim.wid = 0;
 	// In order to compute the dimension of macros and their
 	// arguments, it is necessary to keep track of them.
 	vector<pair<InsetMath const *, Dimension>> dim_insets;
