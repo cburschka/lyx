@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 553
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -10,7 +10,7 @@
 \language english
 \language_package default
 \inputencoding auto
-\fontencoding global
+\fontencoding auto
 \font_roman "default" "default"
 \font_sans "helvet" "default"
 \font_typewriter "default" "default"
@@ -52,8 +52,8 @@
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine basic
-\cite_engine_type default
+\cite_engine natbib
+\cite_engine_type authoryear
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -554,6 +554,8 @@ Note: unfortunately, the counting inside the \SpecialChar LyX
 
  
 \begin_inset Float marginfigure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -664,6 +666,8 @@ reference "fig:textfig"
  is an example of the normal figure float.
  
 \begin_inset Float figure
+placement document
+alignment document
 wide true
 sideways false
 status open
@@ -740,6 +744,7 @@ name "fig:fullfig"
 \begin_layout Standard
 \begin_inset Float figure
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -834,6 +839,7 @@ formal
 \begin_layout Standard
 \begin_inset Float table
 placement ht
+alignment document
 wide false
 sideways false
 status open

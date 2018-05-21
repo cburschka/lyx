@@ -17,6 +17,20 @@ ClassOptions
 	Other		nohyper
 end
 
+# Tufte uses \cite for margin note citations
+AddToCiteEngine authoryear
+	cite[][]
+End
+
+CiteFormat authoryear
+	_sidenote Sidenote
+	_side sidenote
+	_fullcite bibl. entry
+	_bibentry Full bibliography entry.
+	# "Margin: Full bibliography entry." (dialog) / "Margin: Key (bibliography entry)"
+	cite {%dialog%[[%_sidenote%]][[%_side%]]}: {%dialog%[[%_bibentry%]][[{%label%[[%!fullcite%]][[%key%%!nextkey% (%_fullcite%)]]}]]}
+End
+
 Style Standard
 	Margin		Static
 	LatexType	Paragraph

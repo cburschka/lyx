@@ -24,12 +24,13 @@ import sys, os
 
 # Uncomment only what you need to import, please.
 
-from parser_tools import (find_end_of_inset, find_end_of_layout, find_token, get_bool_value, get_value) 
+from parser_tools import (find_end_of_inset, find_end_of_layout, find_token,
+get_bool_value, get_value, get_quoted_value) 
 #    del_token, del_value, del_complete_lines,
 #    find_complete_lines, find_end_of, 
 #    find_re, find_substring, find_token_backwards,
-#    get_containing_inset, get_containing_layout, get_value,
-#    get_quoted_value, is_in_inset, set_bool_value
+#    get_containing_inset, get_containing_layout,
+#    is_in_inset, set_bool_value
 #    find_tokens, find_token_exact, check_token, get_option_value
 
 from lyx2lyx_tools import (put_cmd_in_ert, add_to_preamble)
@@ -281,6 +282,51 @@ def revert_floatalignment(document):
         i = j 
 
 
+def revert_tuftecite(document):
+    " Revert \cite commands in tufte classes "
+
+    tufte = ["tufte-book", "tufte-handout"]
+    if document.textclass not in tufte:
+        return
+
+    i = 0
+    while (True):
+        i = find_token(document.body, "\\begin_inset CommandInset citation", i)
+        if i == -1:
+            break
+        j = find_end_of_inset(document.body, i)
+        if j == -1:
+            document.warning("Can't find end of citation inset at line %d!!" %(i))
+            i += 1
+            continue
+        k = find_token(document.body, "LatexCommand", i, j)
+        if k == -1:
+            document.warning("Can't find LatexCommand for citation inset at line %d!" %(i))
+            i = j + 1
+            continue
+        cmd = get_value(document.body, "LatexCommand", k)
+        if cmd != "cite":
+            i = j + 1
+            continue
+        pre = get_quoted_value(document.body, "before", i, j)
+        post = get_quoted_value(document.body, "after", i, j)
+        key = get_quoted_value(document.body, "key", i, j)
+        if not key:
+            document.warning("Citation inset at line %d does not have a key!" %(i))
+            key = "???"
+        # Replace command with ERT
+        res = "\\cite"
+        if pre:
+            res += "[" + pre + "]"
+        if post:
+            res += "[" + post + "]"
+        elif pre:
+            res += "[]"
+        res += "{" + key + "}"
+        document.body[i:j+1] = put_cmd_in_ert([res])
+        i = j + 1
+
+
 ##
 # Conversion hub
 #
@@ -294,10 +340,12 @@ convert = [
            [549, []],
            [550, [convert_fontenc]],
            [551, []],
-           [552, []]
+           [552, []],
+           [553, []]
           ]
 
 revert =  [
+           [552, [revert_tuftecite]],
            [551, [revert_floatpclass, revert_floatalignment]],
            [550, [revert_nospellcheck]],
            [549, [revert_fontenc]],

@@ -7,6 +7,10 @@ changes happened in particular if possible. A good example would be
 
 -----------------------
 
+2018-05-21  Jürgen Spitzmüller <spitz@lyx.org>
+	* format incremented to 553: Support \cite command in tufte classes.
+	  This builds on an extension of the natbib CiteEngine by tufte.
+
 2018-05-10  Jürgen Spitzmüller <spitz@lyx.org>
 	* format incremented to 552: support for float alignment
 	  - add buffer param \float_alignment [class|left|center|right]

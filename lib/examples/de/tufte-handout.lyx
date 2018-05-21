@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 553
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -10,7 +10,7 @@
 \language ngerman
 \language_package default
 \inputencoding auto
-\fontencoding global
+\fontencoding auto
 \font_roman "default" "default"
 \font_sans "helvet" "default"
 \font_typewriter "default" "default"
@@ -28,6 +28,8 @@
 \output_sync 0
 \bibtex_command bibtex
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -43,8 +45,8 @@
 \use_package stackrel 1
 \use_package stmaryrd 1
 \use_package undertilde 1
-\cite_engine basic
-\cite_engine_type default
+\cite_engine natbib
+\cite_engine_type authoryear
 \biblio_style plain
 \use_bibtopic false
 \use_indices false
@@ -556,6 +558,8 @@ Leider ist die Zählung im \SpecialChar LyX
 
  
 \begin_inset Float marginfigure
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -639,6 +643,8 @@ reference "fig:Textabbildung"
  eine, die dies nicht tut (normale Gleitabbildung).
  
 \begin_inset Float figure
+placement document
+alignment document
 wide true
 sideways false
 status open
@@ -708,6 +714,7 @@ name "fig:Ganzabbildung"
 \begin_layout Standard
 \begin_inset Float figure
 placement h
+alignment document
 wide false
 sideways false
 status open
@@ -802,6 +809,7 @@ formal
 \begin_layout Standard
 \begin_inset Float table
 placement ht
+alignment document
 wide false
 sideways false
 status open
