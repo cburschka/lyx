@@ -1792,6 +1792,16 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 		preamble.registerAutomaticallyLoadedPackage("tipa");
 		preamble.registerAutomaticallyLoadedPackage("tipx");
 	}
+	
+	else if (name == parent_context.textclass.titlename()
+		 && parent_context.textclass.titletype() == TITLE_ENVIRONMENT) {
+			parse_text(p, os, FLAG_END, outer, parent_context);
+			// Just in case the environment is empty
+			parent_context.extra_stuff.erase();
+			// We must begin a new paragraph
+			parent_context.new_paragraph(os);
+			p.skip_spaces();
+	}
 
 	else if (name == "CJK") {
 		// the scheme is \begin{CJK}{encoding}{mapping}text\end{CJK}
@@ -3630,7 +3640,9 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			continue;
 		}
 
-		else if (t.cs() == "makeindex" || t.cs() == "maketitle" || t.cs() == "makebeamertitle") {
+		else if (t.cs() == "makeindex"
+			 || (t.cs() == context.textclass.titlename()
+			     && context.textclass.titletype() == TITLE_COMMAND_AFTER)) {
 			if (preamble.titleLayoutFound()) {
 				// swallow this
 				skip_spaces_braces(p);
