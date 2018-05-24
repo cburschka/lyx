@@ -234,8 +234,10 @@ int MathRow::after(int i) const
 }
 
 
-void MathRow::metrics(MetricsInfo & mi, Dimension & dim)
+bool MathRow::metrics(MetricsInfo & mi, Dimension & dim)
 {
+	bool has_caret = false;
+
 	dim.wid = 0;
 	// In order to compute the dimension of macros and their
 	// arguments, it is necessary to keep track of them.
@@ -260,8 +262,10 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim)
 				d.wid = e.before + e.after;
 				e.inset->beforeMetrics();
 			}
-			if (e.ar)
+			if (e.ar) {
 				dim_arrays.push_back(make_pair(e.ar, Dimension()));
+				has_caret |= e.ar->hasCaret(mi.base.bv);
+			}
 			break;
 		case END:
 			if (e.inset) {
@@ -310,6 +314,7 @@ void MathRow::metrics(MetricsInfo & mi, Dimension & dim)
 		dim.wid += mathed_string_width(font, e.compl_text);
 	}
 	LATTEST(dim_insets.empty() && dim_arrays.empty());
+	return has_caret;
 }
 
 

@@ -110,8 +110,8 @@ public:
 	// compute the spacings.
 	MathRow(MetricsInfo & mi, MathData const * ar);
 
-	//
-	void metrics(MetricsInfo & mi, Dimension & dim);
+	// this returns true if the caret is here
+	bool metrics(MetricsInfo & mi, Dimension & dim);
 	//
 	void draw(PainterInfo & pi, int const x, int const y) const;
 
